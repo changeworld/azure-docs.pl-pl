@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 39bcaac2ca94eedebd991a1c4e93f324ef651888
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2bfdf1046c67ed1651f792191923bf4c533d0299
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76961338"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205727"
 ---
 W tym artykule przedstawiono kilka często zadawanych pytań dotyczących usługi Azure Managed Disks i Azure SSD w warstwie Premium Disks.
 
@@ -33,7 +33,7 @@ Tak. Opłata jest naliczana za każdą transakcję. Aby uzyskać więcej informa
 
 **Czy w przypadku dysku zarządzanego w warstwie Standardowa zostanie naliczona opłata za rzeczywisty rozmiar danych na dysku lub dla pojemności dysku?**
 
-Opłata jest naliczana na podstawie aprowizowanej pojemności dysku. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/storage).
+Opłata jest naliczana na podstawie zainicjowanej pojemności dysku. Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.microsoft.com/pricing/details/storage).
 
 **Czym różnią się ceny dysków zarządzanych w warstwie Premium od dysków niezarządzanych?**
 
@@ -148,7 +148,7 @@ SSD w warstwie Premium, standardowy dysk SSD i standardowe dyski twarde obsługu
 **Co to są rezerwacje dysku platformy Azure?**
 Rezerwacja dysku to opcja zakupu jednego roku magazynu dyskowego z wyprzedzeniem i zmniejszenia łącznego kosztu. Aby uzyskać szczegółowe informacje dotyczące rezerwacji dysku platformy Azure, zobacz nasz artykuł w temacie: [informacje na temat sposobu zastosowania rabatu rezerwacji na dysk platformy Azure](../articles/cost-management-billing/reservations/understand-disk-reservations.md).
 
-**Jakie opcje oferuje oferta rezerwacji dysku platformy Azure?** Rezerwacja dysku platformy Azure udostępnia opcję zakupu dysków SSD Premium w określonych jednostkach SKU z P30 (1 TiB) do P80 (32 TiB) przez okres jednego roku. Nie ma ograniczenia dotyczącego minimalnej ilości dysków koniecznych do zakupu rezerwacji dysku. Ponadto możesz wybrać jednorazową zapłatę z góry lub płatności miesięczne. Managed Disks SSD w warstwie Premium nie ma dodatkowych kosztów transakcyjnych. 
+**Jakie opcje oferuje oferta rezerwacji dysku platformy Azure?** Rezerwacja dysku platformy Azure udostępnia opcję zakupu dysków SSD Premium w określonych jednostkach SKU z P30 (1 TiB) do P80 (32 TiB) przez okres jednego roku. Nie ma ograniczenia dotyczącego minimalnej ilości dysków koniecznych do zakupu rezerwacji dysku. Ponadto możesz wybrać opcję płacenia z jedną, z góry płatnością lub miesięczną płatnością. Managed Disks SSD w warstwie Premium nie ma dodatkowych kosztów transakcyjnych. 
 
 Rezerwacje są wykonywane w postaci dysków, a nie pojemności. Innymi słowy, gdy zarezerwujesz dysk z systemem P80 (32 TiB), otrzymujesz jeden dysk P80, ale nie można podzielić tego konkretnej rezerwacji na dwa mniejsze dyski P70 (16 TiB). Można oczywiście zarezerwować dowolną liczbę lub kilka dysków, w tym dwa oddzielne dyski P70 (16 TiB).
 
@@ -160,6 +160,44 @@ Rezerwacja dysków Azure jest zakupionych dla określonego regionu i jednostki S
 
 **Co się stanie w przypadku wygaśnięcia rezerwacji z usługi Azure disks?**    
 Powiadomienia e-mail będą wysyłane na 30 dni przed wygaśnięciem i od daty wygaśnięcia. Po wygaśnięciu rezerwacji wdrożone dyski będą nadal działać i opłaty są naliczane przy użyciu najnowszych [stawek płatności zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/managed-disks/)użyciem.
+
+### <a name="azure-shared-disks"></a>Udostępnione dyski platformy Azure
+
+**Czy funkcja dysków udostępnionych jest obsługiwana w przypadku dysków niezarządzanych lub stronicowych obiektów BLOB?**
+
+Nie, jest obsługiwana tylko w przypadku dysków zarządzanych SSD w warstwie Premium.
+
+**Jakie regiony obsługują dyski udostępnione?**
+
+Obecnie tylko zachodnie stany USA.
+
+**Czy dyski udostępnione mogą być używane jako dysk systemu operacyjnego?**
+
+Nie, dyski udostępnione są obsługiwane tylko w przypadku dysków z danymi.
+
+**Jakie rozmiary dysków obsługują dyski udostępnione?**
+
+Tylko Premium dysków SSD, które są P15 lub większe obsługują dyski udostępnione.
+
+**Jeśli mam dysk SSD w warstwie Premium, czy mogę włączyć na nim dyski udostępnione?**
+
+Wszystkie dyski zarządzane utworzone przy użyciu interfejsu API w wersji 2019-07-01 lub nowszej mogą umożliwić udostępnianie dysków. W tym celu należy odinstalować dysk ze wszystkich maszyn wirtualnych, do których jest dołączony. Następnie Edytuj Właściwość `maxShares` na dysku.
+
+**Jeśli nie chcesz już używać dysku w trybie udostępniania, jak go wyłączyć?**
+
+Odinstaluj dysk ze wszystkich maszyn wirtualnych, do których jest dołączony. Następnie zmień właściwość maxShare na dysku na 1.
+
+**Czy można zmienić rozmiar dysku udostępnionego?**
+
+Tak.
+
+**Czy mogę włączyć akcelerator zapisu na dysku, na którym również są włączone udostępnione dyski?**
+
+Nie.
+
+**Czy mogę włączyć buforowanie hosta dla dysku z włączonym dyskiem udostępnionym?**
+
+Jedyną obsługiwaną opcją buforowania hosta jest "none".
 
 ## <a name="ultra-disks"></a>Ultra disks
 
@@ -245,7 +283,7 @@ W poniższym przykładzie przedstawiono sekcję *Properties. obszarze storagepro
 Aby zapoznać się z kompletnym przykładem szablonu dotyczącego tworzenia dysku SSD w warstwie Standardowa z szablonem, zobacz [Tworzenie maszyny wirtualnej na podstawie obrazu systemu Windows z dyskami danych SSD w warstwie Standardowa](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
 
 **Czy mogę przekonwertować istniejące dyski na SSD w warstwie Standardowa?**
-Tak, możesz. Zapoznaj się z tematem [konwertowanie magazynu Azure Managed disks z warstwy Standardowa na Premium i na odwrót,](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) Aby uzyskać ogólne wytyczne dotyczące konwersji Managed Disks. I użyj następującej wartości, aby zaktualizować typ dysku do SSD w warstwie Standardowa.
+Tak, można. Zapoznaj się z tematem [konwertowanie magazynu Azure Managed disks z warstwy Standardowa na Premium i na odwrót,](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) Aby uzyskać ogólne wytyczne dotyczące konwersji Managed Disks. I użyj następującej wartości, aby zaktualizować typ dysku do SSD w warstwie Standardowa.
 -AccountType StandardSSD_LRS
 
 **Jakie korzyści przynosi korzystanie z SSD w warstwie Standardowa dysków zamiast DYSKowych?**
@@ -293,7 +331,7 @@ Nie. Dostępne są Azure Site Recovery ochrony platformy Azure na platformie Azu
 
 **Czy można migrować maszyny wirtualne z dyskami niezarządzanymi, które znajdują się na kontach magazynu, które zostały wcześniej zaszyfrowane do dysków zarządzanych?**
 
-Tak
+Yes
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks i szyfrowanie usługi Storage
 
@@ -334,7 +372,7 @@ Tak. Wszystkie zarządzane migawki i obrazy utworzone po 9 czerwca 2017 są auto
 
 **Czy mogę przekonwertować maszyny wirtualne z dyskami niezarządzanymi, które znajdują się na kontach magazynu, które zostały wcześniej zaszyfrowane do dysków zarządzanych?**
 
-Tak
+Yes
 
 **Czy plik wirtualnego dysku twardego z dysku zarządzanego lub migawki zostanie również zaszyfrowany?**
 
@@ -406,7 +444,7 @@ Nie musisz uaktualniać istniejących narzędzi platformy Azure, aby tworzyć, d
 
 |Narzędzia platformy Azure      | Obsługiwane wersje                                |
 |-----------------|---------------------------------------------------|
-|Program Azure PowerShell | Numer wersji 4.1.0: wydanie 2017 czerwca lub nowszej|
+|Azure PowerShell | Numer wersji 4.1.0: wydanie 2017 czerwca lub nowszej|
 |Interfejs wiersza polecenia platformy Azure w wersji 1     | Numer wersji 0.10.13:2017 maja lub nowszej|
 |Interfejs wiersza polecenia platformy Azure w wersji 2     | Numer wersji 2.0.12: wydanie 2017 lipca lub nowszej|
 |Narzędzie AzCopy           | Numer wersji 6.1.0: wydanie 2017 czerwca lub nowszej|

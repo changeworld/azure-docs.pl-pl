@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87f3e815f541ad4cfabc22d917ca9cecba47b50f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077609"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186233"
 ---
 # <a name="building-a-conditional-access-policy"></a>Tworzenie zasad dostępu warunkowego
 
@@ -32,15 +32,15 @@ Część przypisania kontroluje osoby, co i gdzie zasady dostępu warunkowego.
 
 ### <a name="users-and-groups"></a>Użytkownicy i grupy
 
-Użytkownicy i grupy mogą przypisywać osoby, które te zasady uwzględnią lub wykluczają. To przypisanie może obejmować wszystkich użytkowników, określonych grup użytkowników, ról katalogów lub użytkowników zewnętrznych Gości. 
+[Użytkownicy i grupy](concept-conditional-access-users-groups.md) mogą przypisywać osoby, które te zasady uwzględnią lub wykluczają. To przypisanie może obejmować wszystkich użytkowników, określonych grup użytkowników, ról katalogów lub użytkowników zewnętrznych Gości. 
 
 ### <a name="cloud-apps-or-actions"></a>Aplikacje w chmurze lub akcje
 
-Aplikacje w chmurze lub akcje mogą zawierać lub wykluczać aplikacje w chmurze lub akcje użytkownika, które będą podlegać zasadom.
+[Aplikacje w chmurze lub akcje](concept-conditional-access-cloud-apps.md) mogą zawierać lub wykluczać aplikacje w chmurze lub akcje użytkownika, które będą podlegać zasadom.
 
 ### <a name="conditions"></a>Warunki
 
-Zasady mogą zawierać wiele warunków.
+Zasady mogą zawierać wiele [warunków](concept-conditional-access-conditions.md).
 
 #### <a name="sign-in-risk"></a>Ryzyko związane z logowaniem
 
@@ -66,17 +66,19 @@ Ten warunek przypisania umożliwia zasadom dostępu warunkowego kierowanie okre�
 
 Ta kontrolka służy do wykluczania urządzeń, które są dołączone do hybrydowej usługi Azure AD lub oznaczone jako zgodne w usłudze Intune. To wykluczenie można wykonać w celu zablokowania urządzeń niezarządzanych. 
 
-## <a name="access-controls"></a>Kontrole dostępu
+## <a name="access-controls"></a>Kontrola dostępu
 
 Część kontroli dostępu w zasadach dostępu warunkowego steruje sposobem wymuszania zasad.
 
-### <a name="grant"></a>Udziel
+### <a name="grant"></a>Dawać
+
+[Przyznaj](concept-conditional-access-grant.md) administratorom środki wymuszania zasad, które mogą blokować lub przyznawać dostęp.
 
 #### <a name="block-access"></a>Blokuj dostęp
 
 Blokuj dostęp to po prostu, że będzie blokować dostęp w określonych przypisaniach. Formant bloku jest zaawansowany i powinien być wielded z odpowiednią wiedzą.
 
-#### <a name="grant-access"></a>Przyznaj dostęp
+#### <a name="grant-access"></a>Udzielanie dostępu
 
 Formant Grant może wyzwalać wymuszanie jednej lub więcej kontrolek. 
 
@@ -84,7 +86,7 @@ Formant Grant może wyzwalać wymuszanie jednej lub więcej kontrolek.
 - Wymagaj, aby urządzenie było oznaczone jako zgodne (Intune)
 - Wymagaj hybrydowego urządzenia dołączonego do usługi Azure AD
 - Wymagaj zatwierdzonej aplikacji klienckiej
-- Wymagaj zasad ochrony aplikacji
+- Wymaganie zasad ochrony aplikacji
 
 Administratorzy mogą wybrać, aby wymagać jednej z powyższych kontrolek lub wszystkich wybranych kontrolek przy użyciu poniższych opcji. Wartością domyślną dla wielu kontrolek jest wymaganie wszystkie.
 
@@ -93,19 +95,19 @@ Administratorzy mogą wybrać, aby wymagać jednej z powyższych kontrolek lub w
 
 ### <a name="session"></a>Sesja
 
-Kontrolki sesji mogą ograniczyć środowisko 
+[Kontrolki sesji](concept-conditional-access-session.md) mogą ograniczyć środowisko 
 
 - Użyj ograniczeń wymuszonych przez aplikację
    - Obecnie działa tylko z usługami Exchange Online i SharePoint Online.
       - Przekazuje informacje o urządzeniach, aby umożliwić kontrolę nad zapewnianiem pełnego lub ograniczonego dostępu.
-- Użyj Kontroli dostępu warunkowego aplikacji
+- Użyj Kontrola dostępu warunkowego aplikacji
    - Używa sygnałów z Microsoft Cloud App Security, aby wykonać następujące czynności: 
       - Blokuj pobieranie, wycinanie, kopiowanie i drukowanie poufnych dokumentów.
       - Monitoruj ryzykowne zachowanie sesji.
       - Wymagaj etykietowania poufnych plików.
 - Częstotliwość logowania
    - Możliwość zmiany domyślnej częstotliwości logowania dla nowoczesnego uwierzytelniania.
-- Trwała sesja przeglądarki
+- Sesja trwałej przeglądarki
    - Umożliwia użytkownikom zalogowanie się po zamknięciu i ponownym otwarciu okna przeglądarki.
 
 ## <a name="simple-policies"></a>Zasady proste
@@ -121,11 +123,11 @@ Zasady dostępu warunkowego muszą zawierać co najmniej następujące elementy,
 
 ![Puste zasady dostępu warunkowego](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
+Artykuł [typowe zasady dostępu warunkowego](concept-conditional-access-policy-common.md) obejmują pewne zasady, które będą przydatne dla większości organizacji.
+
 ## <a name="next-steps"></a>Następne kroki
 
 [Symulowanie zachowania logowania za pomocą narzędzia What If dostępu warunkowego](troubleshoot-conditional-access-what-if.md)
-
-[Typowe zasady dostępu warunkowego](concept-conditional-access-policy-common.md)
 
 [Planowanie wdrożenia usługi Azure Multi-Factor Authentication opartej na chmurze](../authentication/howto-mfa-getstarted.md)
 

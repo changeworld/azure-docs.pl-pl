@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: f1b15688004d23e8a568695b565b5b34d7b466d6
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.date: 02/12/2020
+ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110190"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187810"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Ciągła integracja i dostarczanie w Azure Data Factory
 
@@ -139,6 +139,9 @@ Poniżej przedstawiono Przewodnik konfigurowania wersji Azure Pipelines, która 
 
    ![Wybierz pozycję Utwórz wydanie](media/continuous-integration-deployment/continuous-integration-image10.png)
 
+> [!IMPORTANT]
+> W scenariuszach ciągłej integracji/ciągłego wdrażania typ środowiska Integration Runtime (IR) w różnych środowiskach musi być taki sam. Na przykład jeśli masz własne środowisko IR w środowisku deweloperskim, ten sam IR musi być również typu samodzielnego w innych środowiskach, na przykład test i środowisko produkcyjne. Podobnie, jeśli udostępniasz środowiska Integration Runtime na wielu etapach, musisz skonfigurować środowisko Integration Runtime jako połączone samodzielnie hostowane we wszystkich środowiskach, takich jak programowanie, testowanie i środowisko produkcyjne.
+
 ### <a name="get-secrets-from-azure-key-vault"></a>Pobierz wpisy tajne z Azure Key Vault
 
 Jeśli masz wpisy tajne do przekazania szablonu Azure Resource Manager, zalecamy użycie Azure Key Vault z wersją Azure Pipelines.
@@ -184,11 +187,11 @@ Istnieją dwa sposoby obsługi wpisów tajnych:
 
 Wdrożenie może zakończyć się niepowodzeniem, jeśli spróbujesz zaktualizować aktywne wyzwalacze. Aby zaktualizować aktywne wyzwalacze, należy je ręcznie zatrzymać, a następnie uruchomić ponownie po wdrożeniu. Można to zrobić za pomocą Azure PowerShell zadania:
 
-1.  Na karcie **zadania** w wersji dodaj zadanie **Azure PowerShell** .
+1.  Na karcie **zadania** w wersji dodaj zadanie **Azure PowerShell** . Wybierz zadanie wersja 4. *. 
 
-1.  Wybierz **Azure Resource Manager** jako typ połączenia, a następnie wybierz swoją subskrypcję.
+1.  Wybierz subskrypcję, w której znajduje się Twoja fabryka.
 
-1.  Wybierz **skrypt wbudowany** jako typ skryptu, a następnie podaj swój kod. Poniższy kod powoduje zatrzymanie wyzwalaczy:
+1.  Wybierz **ścieżkę pliku skryptu** jako typ skryptu. Wymaga to zapisania skryptu programu PowerShell w repozytorium. Za pomocą następującego skryptu programu PowerShell można zatrzymać wyzwalacze:
 
     ```powershell
     $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -196,21 +199,28 @@ Wdrożenie może zakończyć się niepowodzeniem, jeśli spróbujesz zaktualizow
     $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
-    ![Azure PowerShell, zadanie](media/continuous-integration-deployment/continuous-integration-image11.png)
-
 Możesz wykonać podobne kroki (z funkcją `Start-AzDataFactoryV2Trigger`), aby ponownie uruchomić Wyzwalacze po wdrożeniu.
 
-> [!IMPORTANT]
-> W scenariuszach ciągłej integracji/ciągłego wdrażania typ środowiska Integration Runtime (IR) w różnych środowiskach musi być taki sam. Na przykład jeśli masz własne środowisko IR w środowisku deweloperskim, ten sam IR musi być również typu samodzielnego w innych środowiskach, na przykład test i środowisko produkcyjne. Podobnie, jeśli udostępniasz środowiska Integration Runtime na wielu etapach, musisz skonfigurować środowisko Integration Runtime jako połączone samodzielnie hostowane we wszystkich środowiskach, takich jak programowanie, testowanie i środowisko produkcyjne.
+### <a name="sample-pre--and-post-deployment-script"></a>Przykładowy skrypt przed wdrożeniem i po wdrożeniu
 
-#### <a name="sample-pre--and-post-deployment-script"></a>Przykładowy skrypt przed wdrożeniem i po wdrożeniu
+Następujący przykładowy skrypt może służyć do zatrzymania wyzwalaczy przed wdrożeniem i ponownego uruchamiania ich później. Skrypt zawiera również kod służący do usuwania zasobów, które zostały usunięte. Zapisz skrypt w repozytorium git usługi Azure DevOps i odwołuje się do niego za pośrednictwem zadania Azure PowerShell przy użyciu wersji 4. *.
 
-Poniższy przykładowy skrypt pokazuje, jak zatrzymać wyzwalacze przed wdrożeniem i ponownie uruchomić je później. Skrypt zawiera również kod służący do usuwania zasobów, które zostały usunięte. Aby zainstalować najnowszą wersję Azure PowerShell, zobacz [install Azure PowerShell in Windows with PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Podczas uruchamiania skryptu przed wdrożeniem należy określić zmianę następujących parametrów w polu **argumenty skryptu** .
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $true -deleteDeployment $false`
+
+
+Podczas uruchamiania skryptu powdrożeniowego należy określić odmianę następujących parametrów w polu **argumenty skryptu** .
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+
+    ![Azure PowerShell task](media/continuous-integration-deployment/continuous-integration-image11.png)
+
+Oto skrypt, którego można użyć do wykonania wstępnego i po wdrożeniu. Konta IT dla usuniętych zasobów i odwołań do zasobów.
 
 ```powershell
 param
 (
-    [parameter(Mandatory = $false)] [String] $rootFolder,
     [parameter(Mandatory = $false)] [String] $armTemplate,
     [parameter(Mandatory = $false)] [String] $ResourceGroupName,
     [parameter(Mandatory = $false)] [String] $DataFactoryName,

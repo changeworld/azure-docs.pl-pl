@@ -1,20 +1,20 @@
 ---
-title: Partnerzy wirtualnych sieci WAN platformy Azure | Microsoft Docs
+title: Wskazówki dotyczące automatyzacji wirtualnych sieci WAN platformy Azure | Microsoft Docs
 description: Ten artykuł pomaga partnerom skonfigurować automatyzację sieci wirtualnej platformy Azure.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775317"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190417"
 ---
-# <a name="virtual-wan-partners"></a>Partnerzy wirtualnej sieci WAN
+# <a name="automation-guidelines-for-virtual-wan-partners"></a>Wskazówki dotyczące automatyzacji dla partnerów wirtualnych sieci WAN
 
 Ten artykuł pomaga zrozumieć, jak skonfigurować środowisko automatyzacji do łączenia i konfigurowania urządzenia rozgałęzienia (lokalnego urządzenia sieci VPN lub SDWAN CPE) dla wirtualnej sieci WAN platformy Azure. Jeśli jesteś dostawcą udostępniającym urządzenia oddziałów, które mogą obsługiwać połączenia sieci VPN za pośrednictwem protokołu IPsec/IKEv2 lub protokołu IPsec/IKEv1, ten artykuł jest dla Ciebie.
 

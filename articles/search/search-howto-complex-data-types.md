@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 657cded5e16897f9581bbcf365bacc2d2f1a821a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2edd62825de08becf22f2f953a63a7f89f55e0a6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754360"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190991"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Jak modelować złożone typy danych w usłudze Azure Wyszukiwanie poznawcze
 
@@ -125,7 +125,7 @@ Jeśli chcesz, aby były one widoczne w wynikach wyszukiwania, pola muszą być 
 
 ## <a name="filter-facet-and-sort-complex-fields"></a>Filtrowanie, zestaw reguł i sortowanie pól złożonych
 
-Tej samej [składni ścieżki OData](query-odata-filter-orderby-syntax.md) używanej do filtrowania i wyszukiwania pól można także użyć do tworzenia aspektów, sortowania i wybierania pól w żądaniu wyszukiwania. W przypadku typów złożonych reguły mają zastosowanie, które określają, które pola podrzędne mogą być oznaczone jako do sortowania lub do tworzenia. Aby uzyskać więcej informacji na temat tych reguł, zobacz temat [Tworzenie indeksu interfejsu API](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
+Tej samej [składni ścieżki OData](query-odata-filter-orderby-syntax.md) używanej do filtrowania i wyszukiwania pól można także użyć do tworzenia aspektów, sortowania i wybierania pól w żądaniu wyszukiwania. W przypadku typów złożonych reguły mają zastosowanie, które określają, które pola podrzędne mogą być oznaczone jako do sortowania lub do tworzenia. Aby uzyskać więcej informacji na temat tych reguł, zobacz temat [Tworzenie indeksu interfejsu API](/rest/api/searchservice/create-index).
 
 ### <a name="faceting-sub-fields"></a>Podpola aspektów
 
@@ -149,7 +149,7 @@ Aby odfiltrować w polu kolekcji złożonej, można użyć **wyrażenia lambda**
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-Podobnie jak w przypadku pól prostych najwyższego poziomu, proste pola podrzędne pól złożonych mogą być uwzględniane tylko w filtrach, jeśli mają atrybut z możliwością **filtrowania** ustawioną `true` w definicji indeksu. Aby uzyskać więcej informacji, zobacz [Dokumentacja interfejsu API tworzenia indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
+Podobnie jak w przypadku pól prostych najwyższego poziomu, proste pola podrzędne pól złożonych mogą być uwzględniane tylko w filtrach, jeśli mają atrybut z możliwością **filtrowania** ustawioną `true` w definicji indeksu. Aby uzyskać więcej informacji, zobacz [Dokumentacja interfejsu API tworzenia indeksu](/rest/api/searchservice/create-index).
 
 ## <a name="next-steps"></a>Następne kroki
 

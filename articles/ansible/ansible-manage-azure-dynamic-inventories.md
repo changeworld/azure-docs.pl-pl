@@ -4,12 +4,12 @@ description: Dowiedz się, jak zarządzać spisami dynamicznymi na platformie Az
 keywords: ansible, azure, devops, bash, cloudshell, dynamic inventory
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d2ebf202cfc9f94b28fc7a512e1fea452401aec6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442784"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193603"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Samouczek: Konfigurowanie dynamicznych spisów zasobów platformy Azure przy użyciu rozwiązania ansible
 
@@ -32,7 +32,7 @@ Za pomocą rozwiązania Ansible można ściągać informacje o spisie z różnyc
 
 ## <a name="create-the-test-vms"></a>Tworzenie testowych maszyn wirtualnych
 
-1. Zaloguj się do [Portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się do [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otwórz usługę [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
@@ -47,7 +47,7 @@ Za pomocą rozwiązania Ansible można ściągać informacje o spisie z różnyc
 
 1. Utwórz dwie maszyny wirtualne systemu Linux na platformie Azure przy użyciu jednej z następujących technik:
 
-    - **Element playbook rozwiązania Ansible** — artykuł [Tworzenie podstawowej maszyny wirtualnej na platformie Azure za pomocą rozwiązania Ansible](/azure/virtual-machines/linux/ansible-create-vm) pokazuje, jak utworzyć maszynę wirtualną na podstawie elementu playbook rozwiązania Ansible. Jeśli definiujesz jedną lub obydwie maszyny wirtualne za pomocą elementu playbook, upewnij się, że zamiast hasła jest używane połączenie SSH.
+    - **Element playbook rozwiązania Ansible** — artykuł [Tworzenie podstawowej maszyny wirtualnej na platformie Azure za pomocą rozwiązania Ansible](./ansible-create-vm.md) pokazuje, jak utworzyć maszynę wirtualną na podstawie elementu playbook rozwiązania Ansible. Jeśli definiujesz jedną lub obydwie maszyny wirtualne za pomocą elementu playbook, upewnij się, że zamiast hasła jest używane połączenie SSH.
 
     - **Interfejs wiersza polecenia platformy Azure** — aby utworzyć dwie maszyny wirtualne, uruchom każde z następujących poleceń w usłudze Cloud Shell:
 
@@ -237,7 +237,7 @@ Celem tagów jest umożliwienie szybkiej i łatwej pracy z podgrupami maszyn wir
               service: name=nginx state=started
     ```
 
-1. Zapisz plik i zamknij edytor.
+1. Zapisz plik i Zamknij Edytor.
 
 1. Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
 
@@ -316,4 +316,4 @@ W tej sekcji przedstawiono jedną technikę, za pomocą której można sprawdzi�
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Szybki Start: Konfigurowanie maszyn wirtualnych z systemem Linux na platformie Azure przy użyciu rozwiązania ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Szybki Start: Konfigurowanie maszyn wirtualnych z systemem Linux na platformie Azure przy użyciu rozwiązania ansible](./ansible-create-vm.md)

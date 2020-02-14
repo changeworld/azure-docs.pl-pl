@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Konfigurowanie punktów końcowych sieci wirtualnej IPv6 (wersja zapoznawcza)
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Konfigurowanie frontonu protokołu IPv6
 titlesuffix: Azure Virtual Network
 description: Włączanie punktów końcowych IPv6 przy użyciu interfejsu wiersza polecenia platformy Azure na platformie Azure Virtual Network
 services: virtual-network
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: 3df475ce89a3b1f5a1acfb20dc427fdb7a9b7d16
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0661c5231e2fce4d6a675c07be6b0ae914c99997
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248903"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201370"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Przykład konfiguracji punktów końcowych protokołu IPv6 w skrypcie sieci wirtualnej (wersja zapoznawcza)
 

@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 047579550172995378d92327ecf22d63712bf407
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 598fdd5e3682226253ef8f2611ede2bbeba596f7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967135"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190437"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Często zadawane pytania dotyczące konfiguracji i zarządzania dla Web Apps na platformie Azure
 
@@ -141,7 +141,7 @@ W przypadku korzystania z Połączenia hybrydowe w celu uzyskania dostępu do SQ
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Wyjątek został spowodowany przez problem z Menedżer połączeń hybrydowych, który został usunięty. Aby rozwiązać ten problem, należy [zaktualizować Menedżer połączeń hybrydowych](https://go.microsoft.com/fwlink/?LinkID=841308) .
 
@@ -314,4 +314,4 @@ Można również określić określone dynamiczne i statyczne typy MIME, które 
 
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Jak mogę przeprowadzić migrację z środowiska lokalnego do App Service?
 
-Aby migrować lokacje z serwerów sieci Web z systemami Windows i Linux do App Service, można użyć Azure App Service Asystent migracji. Narzędzie do migracji tworzy aplikacje sieci Web i bazy danych na platformie Azure zgodnie z wymaganiami, a następnie publikuje zawartość. Aby uzyskać więcej informacji, zobacz [Azure App Service Asystent migracji](https://www.migratetoazure.net/).
+Aby migrować lokacje z serwerów sieci Web z systemami Windows i Linux do App Service, można użyć Azure App Service Asystent migracji. Narzędzie do migracji tworzy aplikacje sieci Web i bazy danych na platformie Azure zgodnie z wymaganiami, a następnie publikuje zawartość. Aby uzyskać więcej informacji, zobacz [Azure App Service Asystent migracji](https://appmigration.microsoft.com/).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5846934a8ad8455ca375b4bc54fc46d45aba1cd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379976"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185880"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Rozwiązywanie problemów przy użyciu narzędzia What If w dostępie warunkowym
 
@@ -26,7 +26,7 @@ W tym artykule wyjaśniono, jak można użyć tego narzędzia do testowania zasa
 
 ## <a name="what-it-is"></a>Co to jest
 
-**Narzędzie zasady What If dostępu warunkowego** pozwala zrozumieć wpływ zasad dostępu warunkowego w danym środowisku. Zamiast testować zasady, przeprowadzając wiele logowań w sposób ręczny, to narzędzie umożliwia ocenianie symulowanego logowania użytkownika. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji. Raport nie tylko zawiera zasady dostępu warunkowego, ale również [zasady klasyczne](policy-migration.md#classic-policies) , jeśli istnieją.    
+**Narzędzie zasady What If dostępu warunkowego** pozwala zrozumieć wpływ zasad dostępu warunkowego w danym środowisku. Zamiast testować swoje zasady przez ręczne przeprowadzenie wielu logowań, to narzędzie umożliwia ocenę symulowanego logowania użytkownika. Symulacja szacuje wpływ tego logowania na zasady i generuje raport symulacji. Raport nie tylko zawiera zasady dostępu warunkowego, ale również [zasady klasyczne](policy-migration.md#classic-policies) , jeśli istnieją.    
 
 Narzędzie **What If** umożliwia szybkie ustalenie zasad, które mają zastosowanie do określonego użytkownika. Możesz użyć tych informacji, na przykład jeśli trzeba rozwiązać problem.    
 
@@ -48,7 +48,7 @@ Narzędzie **What If** można znaleźć na stronie **[zasady dostępu warunkoweg
 
 Aby uruchomić narzędzie, na pasku narzędzi na górze listy zasad kliknij pozycję **What If**.
 
-![What If](./media/what-if-tool/01.png)
+![Co, jeśli](./media/what-if-tool/01.png)
 
 Aby można było uruchomić ocenę, należy skonfigurować ustawienia.
 
@@ -56,7 +56,7 @@ Aby można było uruchomić ocenę, należy skonfigurować ustawienia.
 
 Ta sekcja zawiera informacje o ustawieniach przebiegu symulacji.
 
-![What If](./media/what-if-tool/02.png)
+![Co, jeśli](./media/what-if-tool/02.png)
 
 ### <a name="user"></a>Użytkownik
 
@@ -72,11 +72,11 @@ Adres IP jest pojedynczym adresem IPv4, aby naśladować [warunek lokalizacji](l
 
 ### <a name="device-platforms"></a>Platformy urządzeń
 
-To ustawienie naśladuje [warunek platformy urządzeń](conditions.md#device-platforms) i reprezentuje odpowiednik **wszystkich platform (w tym nieobsługiwane)** . 
+To ustawienie naśladuje [warunek platformy urządzeń](concept-conditional-access-conditions.md#device-platforms) i reprezentuje odpowiednik **wszystkich platform (w tym nieobsługiwane)** . 
 
 ### <a name="client-apps"></a>Aplikacje klienckie
 
-To ustawienie naśladuje [warunek aplikacji klienckich](conditions.md#client-apps).
+To ustawienie naśladuje [warunek aplikacji klienckich](concept-conditional-access-conditions.md#client-apps-preview).
 Domyślnie to ustawienie powoduje obliczenie wszystkich zasad mających zarówno **przeglądarkę** , **jak i aplikacje mobilne oraz klientów klasycznych** pojedynczo lub oba wybrane. Wykrywa także zasady, które wymuszają program **Exchange ActiveSync (EAS)** . To ustawienie można zawęzić, wybierając pozycję:
 
 - **Przeglądarka** oceni wszystkie zasady, które mają co najmniej wybraną **przeglądarkę** . 
@@ -84,13 +84,13 @@ Domyślnie to ustawienie powoduje obliczenie wszystkich zasad mających zarówno
 
 ### <a name="sign-in-risk"></a>Ryzyko związane z logowaniem
 
-To ustawienie naśladuje [warunek ryzyka związanego z logowaniem](conditions.md#sign-in-risk).   
+To ustawienie naśladuje [warunek ryzyka związanego z logowaniem](concept-conditional-access-conditions.md#sign-in-risk).   
 
 ## <a name="evaluation"></a>Sprawozdanie 
 
 Aby rozpocząć ocenę, kliknij **What If**. Wynik oceny zawiera raport, który składa się z: 
 
-![What If](./media/what-if-tool/03.png)
+![Co, jeśli](./media/what-if-tool/03.png)
 
 - Wskaźnik określający, czy w środowisku istnieją zasady klasyczne
 - Zasady dotyczące użytkownika

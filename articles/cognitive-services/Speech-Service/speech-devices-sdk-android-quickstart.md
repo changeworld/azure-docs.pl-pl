@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 2def0eaa2e1ee22498202228cf62257605d940e5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 657cf0a0648cd53e5692a2cf5333ba29951b77a4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380324"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189119"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Szybki Start: uruchamianie przykładowej aplikacji zestawu Speech Devices SDK w systemie Android
 
@@ -23,7 +23,7 @@ W tym przewodniku szybki start dowiesz się, jak utworzyć produkt z obsługą m
 
 Ten przewodnik wymaga konta [Cognitive Services platformy Azure](get-started.md) z zasobem usługi mowy. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
 
-Kod źródłowy przykładowej aplikacji jest dołączone do zestawu Speech Devices SDK. Warto również [dostępne w serwisie GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+Kod źródłowy przykładowej aplikacji jest dołączone do zestawu Speech Devices SDK. Jest ona również [dostępna w witrynie GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,7 +34,7 @@ Przed rozpoczęciem korzystania z zestawu SDK usługi Speech Devices należy:
 - Pobierz najnowszą wersję [zestawu Speech Devices SDK](https://aka.ms/sdsdk-download)i wyodrębnij plik zip do katalogu roboczego.
 
   > [!NOTE]
-  > Plik Android-Sample-Release. zip zawiera przykładową aplikację dla systemu Android, a w tym przewodniku szybki start założono, że aplikacja została wyodrębniona do C:\SDSDK\Android-Sample-Release
+  > W tym przewodniku szybki start przyjęto założenie, że aplikacja została wyodrębniona do C:\SDSDK\Android-Sample-Release
 
 - Aby uzyskać [klucz subskrypcji platformy Azure dla usługi mowy](get-started.md)
 
@@ -42,9 +42,9 @@ Przed rozpoczęciem korzystania z zestawu SDK usługi Speech Devices należy:
 
 - Jeśli planujesz używać usługi mowy do identyfikowania intencji (lub działań) z wyrażenia długości użytkownika, będziesz potrzebować subskrypcji [usługi Language Understanding Service (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) . Aby dowiedzieć się więcej na temat LUIS i rozpoznawania intencji, zobacz Rozpoznawanie założeń [mowy C#przy użyciu Luis, ](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 
-  Możesz [Tworzenie prostego modelu usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/) lub użyj przykładu model usługi LUIS, example.json usługi LUIS. Przykładowy model usługi LUIS jest dostępny z [witryny pobierania zestawu Speech Devices SDK](https://aka.ms/sdsdk-luis). Można przekazać swój model pliku JSON do [portal usługi LUIS](https://www.luis.ai/home), wybierz opcję **importowania Nowa aplikacja**, a następnie wybierz plik JSON.
+  Można [utworzyć prosty model Luis](https://docs.microsoft.com/azure/cognitive-services/luis/) lub użyć przykładowego modelu LUIS, Luis-example. JSON. Przykładowy model LUIS jest dostępny w [witrynie pobierania zestawu SDK urządzeń mowy](https://aka.ms/sdsdk-luis). Aby przekazać plik JSON modelu do [portalu Luis](https://www.luis.ai/home), wybierz pozycję **Importuj nową aplikację**, a następnie wybierz plik JSON.
 
-- Zainstaluj [programu Android Studio](https://developer.android.com/studio/) i [Vysor](https://vysor.io/download/) na komputerze.
+- Zainstaluj [Android Studio](https://developer.android.com/studio/) i [Vysor](https://vysor.io/download/) na komputerze.
 
 ## <a name="set-up-the-device"></a>Konfigurowanie urządzenia
 
@@ -52,9 +52,9 @@ Przed rozpoczęciem korzystania z zestawu SDK usługi Speech Devices należy:
 
    ![Vysor](media/speech-devices-sdk/qsg-3.png)
 
-1. Urządzenia powinny zostać wyświetlone w obszarze **wybierz urządzenie**. Wybierz **widoku** przycisk obok urządzenia.
+1. Urządzenie powinno być wyświetlane w obszarze **Wybierz urządzenie**. Wybierz przycisk **Widok** obok urządzenia.
 
-1. Łączenie z siecią bezprzewodową, wybierając ikonę folderu, a następnie wybierz **ustawienia** > **WLAN**.
+1. Połącz się z siecią bezprzewodową, wybierając ikonę folderu, a następnie wybierz pozycję **ustawienia** > **WLAN**.
 
    ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
 
@@ -65,7 +65,7 @@ Przed rozpoczęciem korzystania z zestawu SDK usługi Speech Devices należy:
    >
    > ![Folder plików Vysor](media/speech-devices-sdk/qsg-10.png)
    >
-   > Wybierz **ustawienia**. Wyszukaj "mac address", a następnie wybierz pozycję **adres Mac** > **zaawansowane WLAN**. Zanotuj adres MAC, który pojawia się w dolnej części okna dialogowego.
+   > Wybierz pozycję **Ustawienia**. Wyszukaj ciąg "adres MAC", a następnie wybierz pozycję **adres mac** > **zaawansowaną sieć WLAN**. Zanotuj adres MAC, który pojawia się w dolnej części okna dialogowego.
    >
    > ![Adres Vysor MAC](media/speech-devices-sdk/qsg-11.png)
    >
@@ -81,9 +81,32 @@ Aby sprawdzić poprawność instalacji zestawu deweloperskiego, skompiluj i zain
 
    ![Android Studio — Otwórz istniejący projekt](media/speech-devices-sdk/qsg-5.png)
 
-1. Przejdź do C:\SDSDK\Android-Sample-Release\example. Wybierz **OK** otworzyć projektu w przykładzie.
+1. Przejdź do C:\SDSDK\Android-Sample-Release\example. Wybierz **przycisk OK** , aby otworzyć przykładowy projekt.
 
-1. Dodaj swój klucz subskrypcji mowy do kodu źródłowego. Do wypróbowania rozpoznawanie intencji, również należy dodać swoje [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) klucz subskrypcji i aplikacji identyfikatora.
+1. Skonfiguruj Gradle, aby odwoływać się do zestawu Speech SDK. Następujące pliki można znaleźć w obszarze **skrypty Gradle** w Android Studio.
+
+    Zaktualizuj element **Build. Gradle (Project: example)** , blok allprojects powinien odpowiadać poniżej, dodając linie Maven.
+
+    ```xml
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+            mavenCentral()
+            maven {
+                url 'https://csspeechstorage.blob.core.windows.net/maven/'
+            }
+        }
+    }
+    ```
+
+    Zaktualizuj program **Build. Gradle (module: App)** , dodając ten wiersz do sekcji zależności. 
+    
+    ```xml
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.9.0'
+    ```
+    
+1. Dodaj swój klucz subskrypcji mowy do kodu źródłowego. Jeśli chcesz wypróbować funkcję rozpoznawania intencji, Dodaj również klucz subskrypcji [usługi Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) i identyfikator aplikacji.
 
    W przypadku mowy i LUIS informacje trafiają do MAINS. Java:
 
@@ -129,16 +152,16 @@ Aby sprawdzić poprawność instalacji zestawu deweloperskiego, skompiluj i zain
 
    | Zmienna | Znaczenie | Dostępne wartości |
    | -------- | ------- | ---------------- |
-   | `DeviceGeometry` | Konfiguracji fizycznej mic | Aby uzyskać cykliczne zestaw deweloperski: `Circular6+1` |
-   |          |         | Aby uzyskać liniowej zestaw deweloperski: `Linear4` |
-   | `SelectedGeometry` | Konfiguracja kontroli integralności uprawnień oprogramowania | Dla okręgu deweloperski, który używa mikrofonu wszystkich: `Circular6+1` |
-   |          |         | Aby uzyskać zestaw cykliczne deweloperów, która używa czterech mikrofonu: `Circular3+1` |
-   |          |         | Dla liniowych deweloperski, który używa mikrofonu wszystkich: `Linear4` |
-   |          |         | Dla zestawu SDK do dev liniowy, który używa dwóch mikrofonu: `Linear2` |
+   | `DeviceGeometry` | Konfiguracji fizycznej mic | Dla cyklicznego zestawu deweloperskiego: `Circular6+1` |
+   |          |         | W przypadku zestawu liniowego dla deweloperów: `Linear4` |
+   | `SelectedGeometry` | Konfiguracja kontroli integralności uprawnień oprogramowania | Dla cyklicznego zestawu deweloperskiego, który używa wszystkich Mics: `Circular6+1` |
+   |          |         | Dla cyklicznego zestawu deweloperskiego, który używa czterech Mics: `Circular3+1` |
+   |          |         | W przypadku zestawu liniowego dev, który używa wszystkich Mics: `Linear4` |
+   |          |         | W przypadku zestawu liniowego dev, który używa dwóch Mics: `Linear2` |
 
-1. Aby skompilować aplikację, na **Uruchom** menu, wybierz opcję **Uruchom "aplikację"** . **Wybierz cel wdrożenia** pojawi się okno dialogowe.
+1. Aby skompilować aplikację, w menu **Uruchom** wybierz polecenie **Uruchom aplikację**. Zostanie wyświetlone okno dialogowe **Wybieranie celu wdrożenia** .
 
-1. Wybierz urządzenie, a następnie wybierz **OK** wdrożyć aplikację na urządzeniu.
+1. Wybierz urządzenie, a następnie wybierz przycisk **OK** , aby wdrożyć aplikację na urządzeniu.
 
    ![Wybierz cel wdrożenia — okno dialogowe](media/speech-devices-sdk/qsg-7.png)
 
@@ -161,7 +184,7 @@ Jeśli nie możesz nawiązać połączenia z urządzeniem mowy. Wpisz następuj�
 ```
 
 > [!NOTE]
-> To polecenie używa Android Debug Bridge, `adb.exe`, który jest częścią instalacji Android Studio. To narzędzie znajduje się w C:\Users\[nazwa_użytkownika] \AppData\Local\Android\Sdk\platform narzędzia. Ten katalog można dodać do swojej ścieżki, aby był bardziej wygodne do wywołania `adb`. W przeciwnym razie należy określić pełną ścieżkę do instalacji adb.exe w każdego polecenia, który wywołuje `adb`.
+> To polecenie używa Android Debug Bridge, `adb.exe`, który jest częścią instalacji Android Studio. To narzędzie znajduje się w lokalizacji C:\Users\[nazwa użytkownika] \AppData\Local\Android\Sdk\platform-tools. Możesz dodać ten katalog do ścieżki, aby uczynić go wygodniejszym do wywoływania `adb`. W przeciwnym razie należy określić pełną ścieżkę do instalacji programu ADB. exe w każdym poleceniu, które wywołuje `adb`.
 >
 > Jeśli zostanie wyświetlony komunikat o błędzie `no devices/emulators found`, sprawdź, czy kabel USB jest podłączony i czy jest używany kabel wysokiej jakości.
 

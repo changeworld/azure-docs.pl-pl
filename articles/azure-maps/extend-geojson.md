@@ -8,17 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 75ad83411edfdfe7545e8f80df17fea56e317ee0
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911634"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198279"
 ---
 # <a name="extended-geojson-geometries"></a>Rozszerzony geometrie GEOJSON
 
-Azure Maps zawiera listę zaawansowanych interfejsów API do przeszukiwania wewnątrz i wzdłużnych funkcji geograficznych.
-Te interfejsy API służą do standaryzacji [specyfikacji GEOJSON][1] dla reprezentowania funkcji geograficznych (na przykład granic stanu, tras).  
+Azure Maps zawiera listę zaawansowanych interfejsów API do wyszukiwania w funkcjach geograficznych i. Te interfejsy API są zgodne ze standardową [specyfikacją GEOJSON][1] reprezentującą funkcje geograficzne.  
 
 [Specyfikacja GEOJSON][1] obsługuje tylko następujące geometrie:
 
@@ -27,10 +26,10 @@ Te interfejsy API służą do standaryzacji [specyfikacji GEOJSON][1] dla reprez
 * MultiLineString
 * MultiPoint
 * MultiPolygon
-* Punkt
+* Moment
 * Tworząc
 
-Niektóre Azure Maps interfejsy API (na przykład: [Search w geometrii](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) akceptują geometrie, takie jak "Circle", które nie są częścią [specyfikacji GEOJSON][1].
+Niektóre Azure Maps interfejsy API akceptują geometrie, które nie są częścią [specyfikacji GEOJSON][1]. Na przykład [Wyszukiwanie w](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) interfejsie API geometry akceptuje okrąg i wielokąty.
 
 Ten artykuł zawiera szczegółowy opis sposobu, w jaki Azure Maps rozszerza [specyfikację GEOJSON][1] , aby reprezentować niektóre geometrie.
 
@@ -38,23 +37,23 @@ Ten artykuł zawiera szczegółowy opis sposobu, w jaki Azure Maps rozszerza [sp
 
 Geometria `Circle` nie jest obsługiwana przez [specyfikację GEOJSON][1]. Używamy obiektu `GeoJSON Point Feature` do reprezentowania okręgu.
 
-Geometria `Circle` reprezentowana przy użyciu obiektu `GeoJSON Feature` __musi__ zawierać następujące elementy:
+Geometria `Circle` reprezentowana przy użyciu obiektu `GeoJSON Feature` __musi__ zawierać następujące współrzędne i właściwości:
 
 - Center
 
     Środek okręgu jest reprezentowany przy użyciu obiektu `GeoJSON Point`.
 
-- Promień
+- promienie
 
     `radius` okręgu jest reprezentowana przy użyciu właściwości `GeoJSON Feature`. Wartość promienia jest w _metrach_ i musi być typu `double`.
 
 - SubType
 
-    Geometria koła musi również zawierać właściwość `subType`. Ta właściwość musi być częścią właściwości `GeoJSON Feature`, a jej wartością powinna być _okrąg_
+    Geometria okręgu musi zawierać również właściwość `subType`. Ta właściwość musi być częścią właściwości `GeoJSON Feature`, a jej wartością powinna być _okrąg_
 
 #### <a name="example"></a>Przykład
 
-Poniżej przedstawiono sposób reprezentowania okręgu wyśrodkowanego na stronie (Latitude: 47,639754, Długość geograficzna: 122,126986) z promień równą 100 liczników przy użyciu obiektu `GeoJSON Feature`:
+Poniżej przedstawiono sposób reprezentowania okręgu przy użyciu obiektu `GeoJSON Feature`. Wyśrodkuj okrąg na szerokości geograficznej: 47,639754 i długości geograficznej:-122,126986 i przypisz mu promień równy 100 mierników:
 
 ```json            
 {
@@ -74,11 +73,11 @@ Poniżej przedstawiono sposób reprezentowania okręgu wyśrodkowanego na stroni
 
 Geometria `Rectangle` nie jest obsługiwana przez [specyfikację GEOJSON][1]. Używamy obiektu `GeoJSON Polygon Feature` do reprezentowania prostokąta. Rozszerzenie prostokąta jest używane głównie przez moduł narzędzi do rysowania zestawu SDK sieci Web.
 
-Geometria `Rectangle` reprezentowana przy użyciu obiektu `GeoJSON Polygon Feature` __musi__ zawierać następujące elementy:
+Geometria `Rectangle` reprezentowana przy użyciu obiektu `GeoJSON Polygon Feature` __musi__ zawierać następujące współrzędne i właściwości:
 
 - Rogi
 
-    Rogi prostokąta są reprezentowane za pomocą współrzędnych obiektu `GeoJSON Polygon`. Powinna istnieć pięć współrzędnych, jeden dla każdego rogu i piąta Współrzędna, która jest taka sama jak wartość 1, aby zamknąć pierścień wielokąta. Współrzędne te zostaną zamierzone i obrócone odpowiednio przez dewelopera.
+    Rogi prostokąta są reprezentowane za pomocą współrzędnych obiektu `GeoJSON Polygon`. Należy mieć pięć współrzędnych, po jednym dla każdego rogu. I, piąta Współrzędna, która jest taka sama jak pierwsza Współrzędna, w celu zamknięcia pierścienia wielokąta. Zakłada się, że te współrzędne są wyrównane, a deweloper może je obrócić.
 
 - SubType
 

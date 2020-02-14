@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a9b545d71f21138c0374cf199ce10dc2dc246afb
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: d94237d2cfeb814b2e15d43c9f8863a76c0bcd11
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732148"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190672"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Włączanie i tworzenie dużych udziałów plików
 
-Początkowo standardowe udziały plików mogą skalować maksymalnie do 5 TiB. Teraz dzięki dużym udziałom plików można skalować w górę do 100 TiB. Skalowanie można włączyć na istniejących kontach magazynu dla istniejących udziałów plików. Domyślnie można skalować do 100 TiB.
+Po włączeniu dużych udziałów plików na koncie magazynu udziały plików można skalować do 100 TiB. Skalowanie można włączyć na istniejących kontach magazynu dla istniejących udziałów plików.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -26,14 +26,14 @@ Początkowo standardowe udziały plików mogą skalować maksymalnie do 5 TiB. T
 
 ## <a name="restrictions"></a>Ograniczenia
 
-Na razie można używać tylko LRS lub ZRS na kontach z włączonym dużym udziałem plików. Nie można używać GZRS, GRS lub RA-GRS.
+Na razie można używać tylko magazynu lokalnie nadmiarowego (LRS) lub magazynu Strefowo nadmiarowego (ZRS) na kontach z włączonym dużym udziałem plików. Nie można używać magazynu geograficznie nadmiarowego (GZRS), magazynu geograficznie nadmiarowego (GRS) lub magazynu geograficznie nadmiarowego dostępnego do odczytu (RA-GRS).
 Włączenie dużych udziałów plików na koncie jest procesem nieodwracalnym. Po włączeniu tej operacji nie będzie możliwe przekonwertowanie konta na GZRS, GRS lub RA-GRS.
 
 ## <a name="create-a-new-storage-account"></a>Tworzenie nowego konta magazynu
 
 ### <a name="portal"></a>Portal
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. 
 1. Na liście zasobów wprowadź **konto magazynu**. Podczas wpisywania lista jest filtrowana na podstawie danych wejściowych. Wybierz pozycję **Konta usługi Storage**.
 1. W wyświetlonym oknie **konta magazynu** wybierz pozycję **Dodaj**.
@@ -50,7 +50,7 @@ Włączenie dużych udziałów plików na koncie jest procesem nieodwracalnym. P
    |Pole  |Wartość  |
    |---------|---------|
    |Model wdrażania     |Resource Manager         |
-   |Wydajność     |Standardowa         |
+   |Wydajność     |Standard         |
    |Rodzaj konta     |StorageV2 (ogólnego przeznaczenia wersja 2)         |
    |Warstwa dostępu     |Gorąca         |
 
@@ -61,7 +61,7 @@ Włączenie dużych udziałów plików na koncie jest procesem nieodwracalnym. P
 
 1. Wybierz pozycję **Utwórz**.
 
-### <a name="cli"></a>Interfejs CLI
+### <a name="cli"></a>Interfejs wiersza polecenia
 
 Najpierw [Zainstaluj najnowszą wersję interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , aby umożliwić obsługę dużych udziałów plików.
 
@@ -72,7 +72,7 @@ Aby utworzyć konto magazynu z włączonymi dużymi udziałami plików, użyj na
 az storage account create --name <yourStorageAccountName> -g <yourResourceGroup> -l <yourDesiredRegion> --sku Standard_LRS --kind StorageV2 --enable-large-file-share
 ```
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 Najpierw [Zainstaluj najnowszą wersję programu PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) , aby można było włączyć duże udziały plików.
 
@@ -100,7 +100,7 @@ Na koncie magazynu są teraz włączone duże udziały plików. Następnie nale�
 
 Jeśli zostanie wyświetlony komunikat o błędzie "duże udziały plików nie są jeszcze dostępne dla konta", region może być w trakcie wykonywania jego wdrożenia. Skontaktuj się z pomocą techniczną, jeśli masz pilną potrzebę w przypadku dużych udziałów plików.
 
-### <a name="cli"></a>Interfejs CLI
+### <a name="cli"></a>Interfejs wiersza polecenia
 
 Aby włączyć duże udziały plików na istniejącym koncie, użyj następującego polecenia. Zastąp `<yourStorageAccountName>` i `<yourResourceGroup>` informacjami.
 
@@ -108,7 +108,7 @@ Aby włączyć duże udziały plików na istniejącym koncie, użyj następując
 az storage account update --name <yourStorageAccountName> -g <yourResourceGroup> --enable-large-file-share
 ```
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 Aby włączyć duże udziały plików na istniejącym koncie, użyj następującego polecenia. Zastąp `<yourStorageAccountName>` i `<yourResourceGroup>` informacjami.
 
@@ -130,7 +130,7 @@ Tworzenie dużego udziału plików jest niemal identyczne z tworzeniem standardo
 
 ![Interfejs użytkownika Azure Portal przedstawiający pola Nazwa i limit przydziału](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 
-### <a name="cli"></a>Interfejs CLI
+### <a name="cli"></a>Interfejs wiersza polecenia
 
 Aby utworzyć duży udział plików, użyj następującego polecenia. Zastąp `<yourStorageAccountName>`, `<yourStorageAccountKey>`i `<yourFileShareName>` informacjami.
 
@@ -138,7 +138,7 @@ Aby utworzyć duży udział plików, użyj następującego polecenia. Zastąp `<
 az storage share create --account-name <yourStorageAccountName> --account-key <yourStorageAccountKey> --name <yourFileShareName>
 ```
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 Aby utworzyć duży udział plików, użyj następującego polecenia. Zastąp `<YourStorageAccountName>`, `<YourStorageAccountKey>`i `<YourStorageAccountFileShareName>` informacjami.
 
@@ -163,7 +163,7 @@ Po włączeniu dużych udziałów plików na koncie magazynu można również ro
 
 ![Interfejs użytkownika Azure Portal z przydziałem istniejących udziałów plików](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
 
-### <a name="cli"></a>Interfejs CLI
+### <a name="cli"></a>Interfejs wiersza polecenia
 
 Aby ustawić limit przydziału na maksymalny rozmiar, użyj następującego polecenia. Zastąp `<yourStorageAccountName>`, `<yourStorageAccountKey>`i `<yourFileShareName>` informacjami.
 
@@ -171,7 +171,7 @@ Aby ustawić limit przydziału na maksymalny rozmiar, użyj następującego pole
 az storage share update --account-name <yourStorageAccountName> --account-key <yourStorageAccountKey> --name <yourFileShareName> --quota 102400
 ```
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 Aby ustawić limit przydziału na maksymalny rozmiar, użyj następującego polecenia. Zastąp `<YourStorageAccountName>`, `<YourStorageAccountKey>`i `<YourStorageAccountFileShareName>` informacjami.
 

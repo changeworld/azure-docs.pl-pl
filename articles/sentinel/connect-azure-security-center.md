@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8d8f960d8cf1310ec0a380e75bdaa714408e2cac
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 4c75d1870ca3b966acdd658c91c0af8fd7465bfb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563670"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190876"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Łączenie danych z Azure Security Center
 
@@ -26,11 +26,10 @@ System Azure — wskaźnik produkcji umożliwia łączenie alertów z [Azure Sec
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli chcesz wyeksportować alerty z Azure Security Center, musisz być współautorem subskrypcji, której rejestrujesz dzienniki.
+- Aby wyeksportować alerty z Azure Security Center, musisz mieć rolę czytnika zabezpieczeń w subskrypcji przesyłanych strumieniowo dzienników.
 
 - W ramach subskrypcji musi być uruchomiona [Azure Security Center warstwa standardowa](../security-center/security-center-pricing.md) . W przeciwnym razie [Uaktualnij subskrypcję do wersji Standard](https://azure.microsoft.com/pricing/details/security-center/).
 
-- Musisz zalogować się przy użyciu użytkownika, który ma uprawnienia administratora globalnego lub administratora zabezpieczeń dla każdej subskrypcji, którą chcesz połączyć.
 
 
 ## <a name="connect-to-azure-security-center"></a>Połącz z Azure Security Center
@@ -41,7 +40,7 @@ System Azure — wskaźnik produkcji umożliwia łączenie alertów z [Azure Sec
 
 1. Możesz wybrać, czy alerty od Azure Security Center mają automatycznie generować zdarzenia na platformie Azure. W obszarze **Tworzenie zdarzeń** wybierz pozycję **Włącz** , aby włączyć domyślną regułę analityczną, która automatycznie tworzy zdarzenia z alertów generowanych w połączonej usłudze zabezpieczeń. Następnie można edytować tę regułę w obszarze **Analiza** , a następnie **aktywne reguły**.
 
-3. Kliknij przycisk **Połącz**.
+3. Kliknij przycisk **Connect** (Połącz).
 
 4. Aby użyć odpowiedniego schematu w Log Analytics dla alertów Azure Security Center, Wyszukaj pozycję **SecurityAlert**.
 

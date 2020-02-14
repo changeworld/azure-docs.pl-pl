@@ -1,6 +1,6 @@
 ---
 title: Zabezpieczanie komunikatów B2B przy użyciu certyfikatów
-description: Dodawanie certyfikatów do zabezpieczania komunikatów B2B w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
+description: Dodaj certyfikaty, aby pomóc w zabezpieczaniu komunikatów B2B w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,19 +8,19 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 6c5de6eba000c9052c7eb7b31d75804b9f454607
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c1b48ae8191e2e5313d9037c791eca73c8a55691
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790687"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191385"
 ---
-# <a name="secure-b2b-messages-with-certificates"></a>Zabezpieczanie komunikatów B2B przy użyciu certyfikatów
+# <a name="improve-security-for-b2b-messages-by-using-certificates"></a>Zwiększ bezpieczeństwo komunikatów B2B przy użyciu certyfikatów
 
-Jeśli musisz zachować poufną komunikację B2B, możesz zabezpieczyć komunikację B2B dla aplikacji integracji przedsiębiorstwa, a w odniesieniu do aplikacji logiki, dodając certyfikaty do konta integracji. Certyfikaty to dokumenty cyfrowe, które sprawdzają tożsamość uczestników w komunikacji elektronicznej i pomagają w zabezpieczaniu komunikacji w następujący sposób:
+W przypadku konieczności zachowania poufności komunikacji B2B można zwiększyć bezpieczeństwo komunikacji B2B w aplikacjach integracji przedsiębiorstwa, a w odniesieniu do aplikacji logiki, dodając certyfikaty do konta integracji. Certyfikaty to dokumenty cyfrowe, które sprawdzają tożsamość uczestników w komunikacji elektronicznej i pomagają w zabezpieczaniu komunikacji w następujący sposób:
 
 * Szyfruj zawartość wiadomości.
-* Cyfrowe podpisywanie wiadomości. 
+* Cyfrowe podpisywanie wiadomości.
 
 Możesz użyć tych certyfikatów w aplikacjach integracji przedsiębiorstwa:
 
@@ -34,7 +34,7 @@ Możesz użyć tych certyfikatów w aplikacjach integracji przedsiębiorstwa:
 
 Aby używać *publicznego certyfikatu* w usłudze Logic Apps z możliwościami B2B, należy najpierw przekazać certyfikat do konta integracji. Po zdefiniowaniu właściwości w tworzonych [umowach](logic-apps-enterprise-integration-agreements.md) certyfikat jest dostępny, aby pomóc w zabezpieczeniu wiadomości B2B.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). W głównym menu platformy Azure wybierz pozycję **wszystkie zasoby**. W polu wyszukiwania wprowadź nazwę konta integracji, a następnie wybierz odpowiednie konto integracji.
+1. Zaloguj się do [Azure portal](https://portal.azure.com). W głównym menu platformy Azure wybierz pozycję **wszystkie zasoby**. W polu wyszukiwania wprowadź nazwę konta integracji, a następnie wybierz odpowiednie konto integracji.
 
    ![Znajdź i wybierz swoje konto integracji](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
@@ -47,7 +47,7 @@ Aby używać *publicznego certyfikatu* w usłudze Logic Apps z możliwościami B
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
    | **Nazwa** | <*nazwę certyfikatu*> | Nazwa certyfikatu, czyli "publicCert" w tym przykładzie | 
-   | **Typ certyfikatu** | Publiczne | Typ certyfikatu |
+   | **Typ certyfikatu** | Public | Typ certyfikatu |
    | **Certyfikat** | <*Nazwa pliku certyfikatu*> | Aby znaleźć i wybrać plik certyfikatu, który ma zostać przekazany, wybierz ikonę folderu obok pola **certyfikat** . |
    ||||
 
@@ -73,7 +73,7 @@ Po zdefiniowaniu właściwości w tworzonych [umowach](logic-apps-enterprise-int
    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
-3. Zaloguj się do [portalu Azure](https://portal.azure.com). W głównym menu platformy Azure wybierz pozycję **wszystkie zasoby**. W polu wyszukiwania wprowadź nazwę konta integracji, a następnie wybierz odpowiednie konto integracji.
+3. Zaloguj się do [Azure portal](https://portal.azure.com). W głównym menu platformy Azure wybierz pozycję **wszystkie zasoby**. W polu wyszukiwania wprowadź nazwę konta integracji, a następnie wybierz odpowiednie konto integracji.
 
    ![Znajdowanie konta integracji](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 
@@ -86,7 +86,7 @@ Po zdefiniowaniu właściwości w tworzonych [umowach](logic-apps-enterprise-int
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
    | **Nazwa** | <*nazwę certyfikatu*> | Nazwa certyfikatu, czyli "privateCert" w tym przykładzie | 
-   | **Typ certyfikatu** | Prywatne | Typ certyfikatu |
+   | **Typ certyfikatu** | Private | Typ certyfikatu |
    | **Certyfikat** | <*Nazwa pliku certyfikatu*> | Aby znaleźć i wybrać plik certyfikatu, który ma zostać przekazany, wybierz ikonę folderu obok pola **certyfikat** . W przypadku korzystania z magazynu kluczy dla klucza prywatnego przekazany plik będzie certyfikatem publicznym. | 
    | **Grupa zasobów** | <*Integration-Account-resource-group*> | Grupa zasobów konta integracji, która jest w tym przykładzie "grupą zasobów" | 
    | **Usługa Key Vault** | <*Nazwa magazynu kluczy*> | Nazwa magazynu kluczy platformy Azure |

@@ -5,24 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad897ea73f32327b894558c5c04449c667663dad
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e81039328aa9382a19412c961e28bc3275c08ec8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379762"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194470"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Rozwiązywanie problemów Enterprise State Roaming ustawień w Azure Active Directory
 
 Ten temat zawiera informacje dotyczące rozwiązywania problemów i diagnozowania problemów z programem Enterprise State Roaming i zawiera listę znanych problemów.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> Ten artykuł ma zastosowanie do starszej przeglądarki opartej na języku HTML Microsoft Edge, która została uruchomiona z systemem Windows 10 w lipcu 2015. Artykuł nie ma zastosowania do nowej przeglądarki opartej na formacie chromu Microsoft Edge wydanej 15 stycznia 2020. Aby uzyskać więcej informacji na temat zachowania synchronizacji dla nowej przeglądarki Microsoft Edge, zobacz artykuł [Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync).
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>Kroki wstępne dotyczące rozwiązywania problemów 
 
@@ -31,7 +34,7 @@ Przed rozpoczęciem rozwiązywania problemów sprawdź, czy użytkownik i urząd
 1. System Windows 10 z najnowszymi aktualizacjami i minimalna wersja 1511 (kompilacja systemu operacyjnego 10586 lub nowsza) jest zainstalowana na urządzeniu. 
 1. Urządzenie jest dołączone do usługi Azure AD lub hybrydowej usługi Azure AD. Aby uzyskać więcej informacji, zobacz [jak uzyskać urządzenie pod kontrolą usługi Azure AD](overview.md).
 1. Upewnij się, że **Enterprise State roaming** jest włączona dla dzierżawy w usłudze Azure AD, zgodnie z opisem w artykule [Aby włączyć Enterprise State roaming](enterprise-state-roaming-enable.md). Możesz włączyć roaming dla wszystkich użytkowników lub tylko dla wybranej grupy użytkowników.
-1. Użytkownik musi mieć już przypisaną licencję Azure Active Directory — wersja Premium.  
+1. Użytkownikowi przypisano licencję Azure Active Directory — wersja Premium.  
 1. Urządzenie musi zostać ponownie uruchomione i użytkownik musi się zalogować, aby uzyskać dostęp do funkcji Enterprise State Roaming.
 
 ## <a name="information-to-include-when-you-need-help"></a>Informacje do dołączenia, gdy potrzebna jest pomoc
@@ -46,6 +49,7 @@ Jeśli nie możesz rozwiązać problemu z poniższymi wskazówkami, możesz skon
 W tym informacje pomagają nam szybko rozwiązać swój problem.
 
 ## <a name="troubleshooting-and-diagnosing-issues"></a>Rozwiązywanie i diagnozowanie problemów
+
 Ta sekcja zawiera sugestie dotyczące rozwiązywania problemów i diagnozowania zagadnień związanych z Enterprise State Roaming.
 
 ## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>Weryfikowanie synchronizacji i strony ustawień "Synchronizuj ustawienia" 
@@ -66,13 +70,13 @@ Enterprise State Roaming wymaga zarejestrowania urządzenia w usłudze Azure AD.
 1. Po otwarciu wiersza polecenia wpisz "*dsregcmd. exe/status*".
 1. W przypadku oczekiwanych danych wyjściowych wartość pola **AzureAdJoined** powinna być równa "yes", wartość pola **WamDefaultSet** powinna być równa "yes", a wartość pola **WamDefaultGUID** powinna być identyfikatorem GUID z "(AzureAd)" na końcu.
 
-**Potencjalny problem**: **WamDefaultSet** i **AzureAdJoined** mają w wartości pola wartość "No", urządzenie zostało przyłączone do domeny i zarejestrowane w usłudze Azure AD, a urządzenie nie jest zsynchronizowane. Jeśli ta opcja jest wyświetlana, może być konieczne zaczekanie, aż zasady zostaną zastosowane lub uwierzytelnianie urządzenia nie powiodło się podczas nawiązywania połączenia z usługą Azure AD. Użytkownik może zaczekać kilka godzin, aby zastosować zasady. Inne kroki rozwiązywania problemów mogą obejmować ponowną rejestrację autorejestracji przez wylogowanie się i ponowne zarejestrowanie lub uruchomienie zadania w Harmonogram zadań. W niektórych przypadkach uruchomienie "*dsregcmd. exe/Leave*" w oknie wiersza polecenia z podwyższonym poziomem uprawnień, ponowne uruchomienie i próba rejestracji może pomóc w rozwiązaniu tego problemu.
+**Potencjalny problem**: **WamDefaultSet** i **AzureAdJoined** mają w wartości pola wartość "No", urządzenie zostało przyłączone do domeny i zarejestrowane w usłudze Azure AD, a urządzenie nie jest zsynchronizowane. Jeśli ta opcja jest wyświetlana, może być konieczne zaczekanie, aż zasady zostaną zastosowane lub uwierzytelnianie urządzenia nie powiodło się podczas nawiązywania połączenia z usługą Azure AD. Użytkownik może zaczekać kilka godzin, aby zastosować zasady. Inne kroki rozwiązywania problemów mogą obejmować ponowną próbę autorejestracji przez wylogowanie się i ponowne zarejestrowanie lub uruchomienie zadania w Harmonogram zadań. W niektórych przypadkach uruchomienie "*dsregcmd. exe/Leave*" w oknie wiersza polecenia z podwyższonym poziomem uprawnień, ponowne uruchomienie i próba rejestracji może pomóc w rozwiązaniu tego problemu.
 
-**Potencjalny problem**: pole dla elementu **SettingsUrl** jest puste, a urządzenie nie jest zsynchronizowane. Użytkownik mógł zostać ostatnio zalogowany na urządzeniu przed włączeniem Enterprise State Roaming w portalu Azure Active Directory. Uruchom ponownie urządzenie i zaloguj się. Opcjonalnie, w portalu, spróbuj mieć administrator IT przejdź do **Azure Active Directory** > **urządzeń** > **Enterprise State roaming** wyłączyć i ponownie włączyć **użytkowników może synchronizować ustawienia i dane aplikacji między urządzeniami**. Po ponownym włączeniu ponownie uruchom urządzenie i zaloguj się. Jeśli to nie rozwiąże problemu, **SettingsUrl** może być pusty w przypadku złego certyfikatu urządzenia. W takim przypadku należy uruchomić polecenie "*dsregcmd. exe/Leave*" w oknie wiersza polecenia z podwyższonym poziomem uprawnień, ponownie uruchomić i ponowić próbę rejestracji.
+**Potencjalny problem**: pole dla elementu **SettingsUrl** jest puste, a urządzenie nie jest zsynchronizowane. Użytkownik mógł zostać ostatnio zalogowany na urządzeniu przed włączeniem Enterprise State Roaming w portalu Azure Active Directory. Uruchom ponownie urządzenie i zaloguj się. Opcjonalnie, w portalu, spróbuj mieć administrator IT przejdź do **Azure Active Directory** > **urządzeń** > **Enterprise State roaming** wyłączyć i ponownie włączyć **użytkowników może synchronizować ustawienia i dane aplikacji między urządzeniami**. Po ponownym włączeniu ponownie uruchom urządzenie i zaloguj się. Jeśli to nie rozwiąże problemu, **SettingsUrl** może być puste, jeśli istnieje nieprawidłowy certyfikat urządzenia. W takim przypadku należy uruchomić polecenie "*dsregcmd. exe/Leave*" w oknie wiersza polecenia z podwyższonym poziomem uprawnień, ponownie uruchomić i ponowić próbę rejestracji.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming i Multi-Factor Authentication 
 
-W pewnych warunkach Enterprise State Roaming nie mogą synchronizować danych w przypadku skonfigurowania usługi Azure Multi-Factor Authentication. Aby uzyskać dodatkowe informacje na temat tych objawów, zobacz dokument pomocy technicznej [KB3193683](https://support.microsoft.com/kb/3193683). 
+W pewnych warunkach Enterprise State Roaming nie mogą synchronizować danych w przypadku skonfigurowania usługi Azure Multi-Factor Authentication. Aby uzyskać więcej informacji na temat tych objawów, zobacz dokument pomocy technicznej [KB3193683](https://support.microsoft.com/kb/3193683). 
 
 **Potencjalny problem**: Jeśli na urządzeniu skonfigurowano wymaganie Multi-Factor Authentication w portalu Azure Active Directory, nie można zsynchronizować ustawień podczas logowania się do urządzenia z systemem Windows 10 przy użyciu hasła. Ten typ konfiguracji Multi-Factor Authentication jest przeznaczony do ochrony konta administratora platformy Azure. Użytkownicy administracyjni mogą nadal synchronizować się, logując się na urządzeniach z systemem Windows 10 przy użyciu numeru PIN Microsoft Passport for Work lub wykonując Multi-Factor Authentication podczas uzyskiwania dostępu do innych usług platformy Azure, takich jak Office 365.
 
@@ -149,7 +153,7 @@ Połącz urządzenie z siecią firmową, aby można było wznowić synchronizacj
 
 ### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>Urządzenie dołączone do usługi Azure AD nie jest zsynchronizowane, a użytkownik ma nazwę podmiotu zabezpieczeń użytkownika o mieszanym przypadku.
 
-Jeśli użytkownik ma mieszane nazwy UPN przypadku (np. UserName zamiast username), a użytkownik znajduje się na urządzeniu dołączonym do usługi Azure AD, które zostało uaktualnione z systemu Windows 10 Build 10586 do 14393, nie można zsynchronizować urządzenia użytkownika. 
+Jeśli użytkownik ma mieszane nazwy UPN przypadku (na przykład UserName zamiast username), a użytkownik znajduje się na urządzeniu dołączonym do usługi Azure AD, które zostało uaktualnione z systemu Windows 10 Build 10586 do 14393, nie można zsynchronizować urządzenia użytkownika. 
 
 **Zalecana akcja**  
 Użytkownik będzie musiał odłączyć urządzenie i ponownie dołączyć je do chmury. W tym celu zaloguj się jako administrator lokalny i Odłączaj urządzenie, przechodząc do **opcji ustawienia** > **system** > **i** wybierz pozycję "Zarządzaj lub Rozłącz z pracy lub szkoły". Wyczyść poniższe pliki, a następnie ponownie Dołącz usługę Azure AD do urządzenia w **ustawieniach** > **system** ** > i** wybierz pozycję "Połącz z siecią firmową lub szkołą". Kontynuuj dołączanie urządzenia do Azure Active Directory i dokończ przepływ.

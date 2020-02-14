@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4289f4870ca03657afabec07049b3333412f3899
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 75880f4c533a503852d62ff940e53d4bcc30d218
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180331"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186119"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Co to jest tryb tylko do raportowania dostępu warunkowego?
 
@@ -25,7 +25,8 @@ Dostęp warunkowy jest szeroko używany przez naszych klientów w celu zapewnien
 Tryb tylko do raportowania jest nowym stanem zasad dostępu warunkowego, który umożliwia administratorom ocenę wpływu zasad dostępu warunkowego przed włączeniem ich w środowisku.  Z wersją trybu tylko do raportowania:
 
 - Zasady dostępu warunkowego można włączyć w trybie tylko raportowanie.
-- Zasady w trybie tylko do raportowania są oceniane, ale nie są wymuszane. Wyniki są rejestrowane na kartach **dostęp warunkowy** i **tylko raport (wersja zapoznawcza)** dziennika logowania.
+- Zasady w trybie tylko do raportowania są oceniane, ale nie są wymuszane.
+- Wyniki są rejestrowane na kartach **dostęp warunkowy** i **tylko raport (wersja zapoznawcza)** dziennika logowania.
 - Klienci z subskrypcją Azure Monitor mogą monitorować wpływ ich zasad dostępu warunkowego za pomocą skoroszytu dostępu warunkowego usługi Insights.
 
 > [!WARNING]

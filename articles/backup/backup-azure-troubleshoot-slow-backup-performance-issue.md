@@ -4,12 +4,12 @@ description: Zawiera wskazówki dotyczące rozwiązywania problemów ułatwiają
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 2b7b8903da0d8dd83591b260bacb496b0c253ae3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 01fff1d970a76d0d4d38c2536b41d58a4db301c8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172580"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198624"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Rozwiązywanie problemów związanych z powolnym tworzeniem kopii zapasowych plików i folderów w usłudze Azure Backup
 
@@ -25,6 +25,18 @@ Przed rozpoczęciem rozwiązywania problemów zalecamy pobranie i zainstalowanie
 Zdecydowanie zalecamy także przejrzenie [często zadawanych pytań dotyczących usługi Azure Backup](backup-azure-backup-faq.md) , aby upewnić się, że nie występują żadne typowe problemy z konfiguracją.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+## <a name="cause-backup-job-running-in-unoptimized-mode"></a>Przyczyna: zadanie tworzenia kopii zapasowej działa w trybie niezoptymalizowanym
+
+* Agent MARS może uruchomić zadanie tworzenia kopii zapasowej w **trybie zoptymalizowanym** przy użyciu numeru USN (numer sekwencyjny aktualizacji) lub w **trybie niezoptymalizowanym** , sprawdzając zmiany w katalogach lub plikach przez skanowanie całego woluminu.
+* Tryb niezoptymalizowany działa wolno, ponieważ Agent programu musi skanować każdy plik w woluminie i porównać go z metadanymi w celu określenia zmienionych plików.
+* Aby to sprawdzić, Otwórz **szczegóły zadania** z konsoli agenta Mars i sprawdź stan, aby sprawdzić, czy mówi **, że dane są transferowane (niezoptymalizowane, może upłynąć więcej czasu)** , jak pokazano poniżej:
+
+    ![Uruchamianie w trybie niezoptymalizowanym](./media/backup-azure-troubleshoot-slow-backup-performance-issue/unoptimized-mode.png)
+
+* Następujące warunki mogą spowodować uruchomienie zadania tworzenia kopii zapasowej w trybie niezoptymalizowanym:
+  * Pierwsza kopia zapasowa (znana również jako replikacja początkowa) będzie zawsze uruchamiana w trybie niezoptymalizowanym
+  * Jeśli poprzednie zadanie tworzenia kopii zapasowej zakończy się niepowodzeniem, następne zaplanowane zadanie tworzenia kopii zapasowej zostanie uruchomione jako niezoptymalizowane.
 
 <a id="cause1"></a>
 

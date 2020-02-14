@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 01/09/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 77eb54f5d7194f3006ce463fc5f905165bdfc659
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 2d440db3e55638fcf2e3d3f3fe76f82ac4d25948
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833933"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192988"
 ---
 ## <a name="limitations"></a>Ograniczenia
 
 - Zestawy skalowania maszyn wirtualnych nie są obecnie obsługiwane na dedykowanych hostach.
-- Początkowa wersja obsługuje następujące serie maszyn wirtualnych: DSv3 i ESv3. 
+- Początkowa wersja obsługuje następujące serie maszyn wirtualnych: DSv3, ESv3 i Fsv2. 
 
 ## <a name="create-a-host-group"></a>Tworzenie grupy hostów
 
@@ -54,7 +54,7 @@ Utworzenie grupy hostów może trwać zaledwie kilka minut.
 
 ## <a name="create-a-dedicated-host"></a>Tworzenie dedykowanego hosta
 
-Teraz Utwórz dedykowanego hosta w grupie hostów. Oprócz nazwy hosta, należy podać jednostkę SKU dla hosta. Jednostka SKU hosta przechwytuje obsługiwaną serię maszyn wirtualnych oraz generowanie sprzętu dla dedykowanego hosta. Obsługiwane są następujące wartości jednostki SKU hosta: DSv3_Type1 i ESv3_Type1.
+Teraz Utwórz dedykowanego hosta w grupie hostów. Oprócz nazwy hosta, należy podać jednostkę SKU dla hosta. Jednostka SKU hosta przechwytuje obsługiwaną serię maszyn wirtualnych oraz generowanie sprzętu dla dedykowanego hosta.
 
 Aby uzyskać więcej informacji o jednostkach SKU i cenach hosta, zobacz [Cennik dedykowanego hosta platformy Azure](https://aka.ms/ADHPricing).
 

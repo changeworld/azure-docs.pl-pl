@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2ad8894078a15bf37a5383cdff3721f4bf7be910
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424970"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186225"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co to są kontrole dostępu w Azure Active Directory dostęp warunkowy?
 
@@ -55,7 +55,7 @@ Dzięki udzieleniu kontroli można zablokować dostęp całkowicie lub zezwolić
 
 Za pomocą tego formantu można wymagać uwierzytelniania wieloskładnikowego w celu uzyskania dostępu do określonej aplikacji w chmurze. Ta kontrolka obsługuje następujących dostawców wieloskładnikowych:
 
-- Usługa Azure Multi-Factor Authentication
+- Azure Multi-Factor Authentication
 - Dostawca lokalnego uwierzytelniania wieloskładnikowego, połączony z Active Directory Federation Services (AD FS).
 
 Korzystanie z uwierzytelniania wieloskładnikowego pomaga chronić zasoby przed dostępem nieautoryzowanego użytkownika, którzy mieli dostęp do podstawowych poświadczeń prawidłowego użytkownika.
@@ -85,18 +85,18 @@ Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostępu warunkowe
 Ze względu na to, że pracownicy korzystają z urządzeń przenośnych zarówno do zadań osobistych, jak i służbowych, warto mieć możliwość ochrony danych firmowych, do których uzyskuje się dostęp za pomocą urządzeń, nawet w przypadku, gdy nie są zarządzane przez Ciebie.
 [Zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) umożliwiają ochronę danych firmy niezależnie od dowolnego rozwiązania do zarządzania urządzeniami mobilnymi (MDM).
 
-W przypadku zatwierdzonych aplikacji klienckich można wymagać aplikacji klienckiej, która próbuje uzyskać dostęp do aplikacji w chmurze w celu obsługi [zasad ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy). Na przykład możesz ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook. Zasady dostępu warunkowego, które wymagają zatwierdzonych aplikacji klienckich, są również nazywane [zasadami dostępu warunkowego na podstawie aplikacji](app-based-conditional-access.md). Aby uzyskać listę obsługiwanych zatwierdzonych aplikacji klienckich, zobacz [wymagania dotyczące zatwierdzonej aplikacji klienckiej](technical-reference.md#approved-client-app-requirement).
+W przypadku zatwierdzonych aplikacji klienckich można wymagać aplikacji klienckiej, która próbuje uzyskać dostęp do aplikacji w chmurze w celu obsługi [zasad ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy). Na przykład możesz ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook. Zasady dostępu warunkowego, które wymagają zatwierdzonych aplikacji klienckich, są również nazywane [zasadami dostępu warunkowego na podstawie aplikacji](app-based-conditional-access.md). Aby uzyskać listę obsługiwanych zatwierdzonych aplikacji klienckich, zobacz [wymagania dotyczące zatwierdzonej aplikacji klienckiej](concept-conditional-access-grant.md#require-approved-client-app).
 
 ### <a name="app-protection-policy-preview"></a>Zasady ochrony aplikacji (wersja zapoznawcza)
 
 Ze względu na to, że pracownicy korzystają z urządzeń przenośnych zarówno do zadań osobistych, jak i służbowych, warto mieć możliwość ochrony danych firmowych, do których uzyskuje się dostęp za pomocą urządzeń, nawet w przypadku, gdy nie są zarządzane przez Ciebie.
 [Zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) umożliwiają ochronę danych firmy niezależnie od dowolnego rozwiązania do zarządzania urządzeniami mobilnymi (MDM).
 
-Korzystając z zasad ochrony aplikacji, można ograniczyć dostęp do aplikacji klienckich, które zostały zgłoszone do usługi Azure AD, po odebraniu [zasad ochrony aplikacji w usłudze Intune](https://docs.microsoft.com/intune/app-protection-policy). Można na przykład ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook, która ma zasady ochrony aplikacji w usłudze Intune. Zasady dostępu warunkowego, które wymagają zasad ochrony aplikacji, są również znane jako [zasady dostępu warunkowego opartego na ochronie aplikacji](app-protection-based-conditional-access.md). 
+Korzystając z zasad ochrony aplikacji, można ograniczyć dostęp do aplikacji klienckich, które zostały zgłoszone do usługi Azure AD, po odebraniu [zasad ochrony aplikacji w usłudze Intune](https://docs.microsoft.com/intune/app-protection-policy). Można na przykład ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook, która ma zasady ochrony aplikacji w usłudze Intune. Zasady dostępu warunkowego, które wymagają zasad ochrony aplikacji, są również znane jako [zasady dostępu warunkowego opartego na ochronie aplikacji](concept-conditional-access-session.md#application-enforced-restrictions). 
 
 Urządzenie musi zostać zarejestrowane w usłudze Azure AD, aby można było oznaczyć aplikację jako chronioną przez zasady.
 
-Aby uzyskać listę obsługiwanych aplikacji klienckich chronionych przez zasady, zobacz [wymagania dotyczące zasad ochrony aplikacji](technical-reference.md#app-protection-policy-requirement).
+Aby uzyskać listę obsługiwanych aplikacji klienckich chronionych przez zasady, zobacz [wymagania dotyczące zasad ochrony aplikacji](concept-conditional-access-session.md#application-enforced-restrictions).
 
 ### <a name="terms-of-use"></a>Warunki użytkowania
 
@@ -123,7 +123,7 @@ Dostawcy oferujący obecnie zgodną usługę obejmują:
 
 Aby uzyskać więcej informacji na temat tych usług, skontaktuj się bezpośrednio z dostawcami.
 
-### <a name="creating-custom-controls"></a>Tworzenie niestandardowych formantów
+### <a name="creating-custom-controls"></a>Tworzenie niestandardowych kontrolek
 
 Aby utworzyć kontrolkę niestandardową, należy najpierw skontaktować się z dostawcą, którego chcesz użyć. Każdy dostawca firmy innej niż Microsoft ma własny proces i wymagania, aby zarejestrować się, subskrybować lub w inny sposób stać się częścią usługi i wskazać, że chcesz zintegrować się z dostępem warunkowym. W tym momencie dostawca dostarczy blok danych w formacie JSON. Te dane umożliwiają dostawcy i dostęp warunkowy współdziałanie dla dzierżawy, tworzy nową kontrolkę i definiuje, jak dostęp warunkowy może stwierdzić, czy użytkownicy pomyślnie przeprowadzili weryfikację u dostawcy.
 

@@ -6,14 +6,14 @@ ms.author: lcozzens
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 269ae5630d1524cb8f89d3af8728892079f6eb5f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ce8d42ec7c37b19378b6f4ae0c81548f2eff5c9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899626"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190376"
 ---
-# <a name="sync-your-app-configuration-instance-using-github-actions"></a>Synchronizowanie wystąpienia konfiguracji aplikacji za pomocą akcji usługi GitHub
+# <a name="sync-your-app-configuration-instance-using-github-actions"></a>Synchronizowanie wystąpienia usługi App Configuration przy użyciu funkcji GitHub Actions
 Usługa Azure App Configuration używa akcji usługi GitHub do aktualizowania wystąpienia konfiguracji aplikacji, gdy jest wyzwalane przez akcję wykonywaną w repozytorium GitHub. Korzystając z przepływów pracy usługi GitHub, można aktualizować konfigurację aplikacji, umożliwiając integrację aktualizacji konfiguracji aplikacji w tym samym przepływie pracy, który służy do aktualizowania kodu aplikacji.
 
 [Przepływ pracy](https://help.github.com/articles/about-github-actions#workflow) akcji usługi GitHub to zautomatyzowany proces zdefiniowany w repozytorium GitHub. Ten proces zawiera informacje dotyczące kompilowania i wdrażania projektu GitHub w witrynie GitHub. Usługa Azure App Configuration udostępnia akcję *synchronizacji konfiguracji aplikacji platformy Azure* w celu włączenia aktualizacji wystąpienia konfiguracji aplikacji w przypadku wprowadzenia zmian w repozytorium źródłowym. 
@@ -25,8 +25,7 @@ Zdarzenia GitHub, takie jak wypychanie do repozytorium, mogą wyzwalać przepły
 [Dokumentacja](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) usługi GitHub zawiera szczegółowy widok przepływów pracy i akcji usługi GitHub. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>Włączanie akcji usługi GitHub w repozytorium
-Aby rozpocząć korzystanie z tej akcji usługi GitHub, przejdź do repozytorium i wybierz kartę **Akcje** . Znajdź i wybierz akcję GitHub w portalu Marketplace, wyszukując frazę "Azure App Configuration Sync". 
-
+Aby rozpocząć korzystanie z tej akcji usługi GitHub, przejdź do repozytorium i wybierz kartę **Akcje** . kliknij pozycję "nowy przepływ pracy", a następnie "samodzielnie Skonfiguruj przepływ pracy". W tym miejscu Wyszukaj ciąg "Azure App Configuration Sync" w portalu Marketplace.
 > [!div class="mx-imgBorder"]
 > ![wybierz kartę Akcja](media/find-github-action.png)
 
@@ -186,14 +185,14 @@ Parametry wejściowe określają dane używane przez akcję podczas środowiska 
 
 | Nazwa wejściowa | Wymagana? | Wartość |
 |----|----|----|
-| configurationFile | Tak | Ścieżka do pliku konfiguracji w repozytorium względem katalogu głównego repozytorium.  Wzorce globalizowania są obsługiwane i mogą zawierać wiele plików. |
-| format | Tak | Format pliku konfiguracji.  Prawidłowe formaty to: JSON, YAML i właściwości. |
-| connectionString | Tak | Parametry połączenia dla wystąpienia konfiguracji aplikacji. Parametry połączenia powinny być przechowywane jako wpis tajny w repozytorium GitHub, a w przepływie pracy powinna być użyta tylko nazwa klucza tajnego. |
-| rozdzielając | Tak | Separator używany podczas spłaszczania pliku konfiguracji do par klucz-wartość.  Prawidłowe wartości to:. , ; : - _ __ / |
+| configurationFile | Yes | Ścieżka do pliku konfiguracji w repozytorium względem katalogu głównego repozytorium.  Wzorce globalizowania są obsługiwane i mogą zawierać wiele plików. |
+| format | Yes | Format pliku konfiguracji.  Prawidłowe formaty to: JSON, YAML i właściwości. |
+| connectionString | Yes | Parametry połączenia dla wystąpienia konfiguracji aplikacji. Parametry połączenia powinny być przechowywane jako wpis tajny w repozytorium GitHub, a w przepływie pracy powinna być użyta tylko nazwa klucza tajnego. |
+| rozdzielając | Yes | Separator używany podczas spłaszczania pliku konfiguracji do par klucz-wartość.  Prawidłowe wartości to:. , ; : - _ __ / |
 | prefix | Nie | Prefiks, który ma zostać dodany do początku kluczy. |
 | label | Nie | Etykieta użyta podczas ustawiania par klucz-wartość. Jeśli nie zostanie określony, zostanie użyta etykieta o wartości null. |
 | surowszych | Nie | Wartość logiczna określająca, czy tryb Strict jest włączony. Wartość domyślna to false. |
-| Ścisł | Nie | Maksymalna głębokość spłaszczania pliku konfiguracji.  Głębokość musi być liczbą dodatnią.  Wartość domyślna nie będzie mieć maksymalnej głębokości. |
+| ścisł | Nie | Maksymalna głębokość spłaszczania pliku konfiguracji.  Głębokość musi być liczbą dodatnią.  Wartość domyślna nie będzie mieć maksymalnej głębokości. |
 | tags | Nie | Określa zestaw tagów dla par klucz-wartość.  Oczekiwany format to skonwertowaneja postać obiektu JSON o następującym kształcie: {[propertyName: String]: String;} Każda właściwość name-value jest tagiem. |
 
 ## <a name="next-steps"></a>Następne kroki

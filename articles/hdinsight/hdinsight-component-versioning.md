@@ -1,20 +1,19 @@
 ---
 title: Apache Hadoop składniki i wersje — Azure HDInsight
 description: Poznaj składniki Apache Hadoop i wersje w usłudze Azure HDInsight.
-keywords: wersje usługi Hadoop, składniki ekosystemu usługi Hadoop, składniki usługi Hadoop, Sprawdzanie wersji usługi Hadoop
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/21/2019
-ms.openlocfilehash: ed4175d55d3c462c75dad7305f95e2ec4f84baf9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/02/2020
+ms.openlocfilehash: 13c064701a5ecae2090a99980249f5daaa8d5395
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76764470"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198960"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie składniki Apache Hadoop i wersje są dostępne w usłudze HDInsight?
 
@@ -33,7 +32,7 @@ Wersje składników skojarzone z wersjami klastra usługi HDInsight są wymienio
 |------------------------|---------------|-----------------------------|
 | Apache Hadoop i PRZĘDZa | 3.1.1         | 2.7.3                       |
 | Apache Tez             | 0.9.1         | 0.7.0                       |
-| Apache Pig             | 0.16.0        | 0.16.0                      |
+| Apache świni             | 0.16.0        | 0.16.0                      |
 | Apache Hive            | 3.1.0         | 2.1.0, 1.2.1                |
 | Apache Tez Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
@@ -72,10 +71,10 @@ W poniższej tabeli wymieniono wersje usługi HDInsight, które są dostępne w 
 
 | Wersja usługi HDInsight | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wycofania | Wysoka dostępność |  Dostępność w Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |Ubuntu 16.0.4 LTS |24 września 2018 r. | | |Tak |Tak |
-| HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 | 31 grudnia 2020 |31 grudnia 2020 |Tak |Tak |
+| HDInsight 4.0 |Ubuntu 16.0.4 LTS |24 września 2018 | | |Yes |Yes |
+| HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 | 31 grudnia 2020 |31 grudnia 2020 |Yes |Yes |
 
-Platforma Spark 2,1, 2,2 & Kafka 1,0 wygaśnie 30 czerwca, 2020.
+Platforma Spark 2,1, 2,2 & Kafka 1,0 wygaśnie 30 czerwca 2020.
 
 > [!NOTE]  
 > Po wygaśnięciu obsługi wersji program może nie być dostępny w Microsoft Azure Portal. Wersje klastra są jednak nadal dostępne przy użyciu `Version` parametru w AzHDInsightCluster polecenia programu Windows PowerShell [New-](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) i zestawu .NET SDK do momentu wycofania wersji.
@@ -86,14 +85,14 @@ W poniższej tabeli wymieniono wersje usługi HDInsight, które **nie** są dost
 
 | Wersja usługi HDInsight | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wycofania | Wysoka dostępność |  Dostępność Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3,5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30 września 2016 |5 września 2017 |28 czerwca 2018 r. |Tak |Nie |
-| HDInsight 3,4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 marca 2016 r. |29 grudnia 2016 |9 stycznia 2018 r. |Tak |Nie |
-| HDInsight 3,3 |HDP 2.3 |Windows Server 2012 R2 |2 grudnia 2015 |27 czerwca 2016 |31 lipca 2018 r. |Tak |Nie |
-| HDInsight 3,3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 grudnia 2015 |27 czerwca 2016 |31 lipca 2017 |Tak |Nie |
-| HDInsight 3,2 |HDP 2.2 |Ubuntu 12,04 LTS lub Windows Server 2012 R2 |18 lutego 2015 |1 marca 2016 |1 kwietnia 2017 |Tak |Nie |
-| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24 czerwca 2014 |18 maja 2015 |30 czerwca 2016 r. |Tak |Nie |
-| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11 lutego 2014 |17 września 2014 |30 czerwca 2015 |Tak |Nie |
-| HDInsight 2.1 |HDP 1,3 |Windows Server 2012 R2 |28 października 2013 |12 maja 2014 |31 maja 2015 |Tak |Nie |
+| HDInsight 3,5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30 września 2016 |5 września 2017 |28 czerwca 2018 |Yes |Nie |
+| HDInsight 3,4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 marca 2016 r. |29 grudnia 2016 |9 stycznia 2018 r. |Yes |Nie |
+| HDInsight 3,3 |HDP 2.3 |Windows Server 2012 R2 |2 grudnia 2015 |27 czerwca 2016 |31 lipca 2018 r. |Yes |Nie |
+| HDInsight 3,3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 grudnia 2015 |27 czerwca 2016 |31 lipca 2017 |Yes |Nie |
+| HDInsight 3,2 |HDP 2.2 |Ubuntu 12,04 LTS lub Windows Server 2012 R2 |18 lutego 2015 |1 marca 2016 |1 kwietnia 2017 |Yes |Nie |
+| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24 czerwca 2014 |18 maja 2015 |30 czerwca 2016 r. |Yes |Nie |
+| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11 lutego 2014 |17 września 2014 |30 czerwca 2015 |Yes |Nie |
+| HDInsight 2.1 |HDP 1,3 |Windows Server 2012 R2 |28 października 2013 |12 maja 2014 |31 maja 2015 |Yes |Nie |
 | HDInsight 1,6 |HDP 1.1 | |28 października 2013 |26 kwietnia 2014 |31 maja 2015 |Nie |Nie |
 
 > [!NOTE]  
@@ -130,8 +129,10 @@ Zabezpieczenia przedsiębiorstwa to opcjonalny pakiet, który można dodać do k
 Obecnie tylko następujące typy klastrów obsługują pakiet Enterprise Security:
 
 - Hadoop (tylko Usługa HDInsight 3,6)
-- Spark
-- Zapytanie interaktywne
+- platforma Spark
+- Kafka
+- HBase
+- Zapytanie interakcyjne
 
 ### <a name="support-for-azure-data-lake-storage"></a>Obsługa usługi Azure Data Lake Storage
 
@@ -149,9 +150,6 @@ Umowa dotycząca poziomu usług (SLA) jest definiowana w obszarze _okna obsługi
 - Formuła 2: dodanie 90 dni do daty, w której klaster usługi HDInsight w wersji X + 1 jest udostępniony w Azure Portal.
 
 _Data wycofania_ to data, po której nie można utworzyć wersji klastra w usłudze HDInsight. Od 31 lipca 2017 nie można zmienić rozmiaru klastra usługi HDInsight po jego dacie wycofania.
-
-> [!NOTE]  
-> Klastry systemu Windows HDInsight (w tym wersje 2,1, 3,0, 3,1, 3,2 i 3,3) działają w rodzinie systemów operacyjnych gościa platformy Azure w wersji 4, która używa wersji 64-bitowej systemu Windows Server 2012 R2. Rodzina systemów operacyjnych gościa platformy Azure w wersji 4 obsługuje .NET Framework wersje 4,0, 4,5, 4.5.1 i 4.5.2.
 
 ## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>Informacje o wersji Hortonworks skojarzone z wersjami usługi HDInsight
 

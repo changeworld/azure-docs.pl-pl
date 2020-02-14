@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8a2cf6c50e05a0fecff387f2e125c50931b95f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: bf7e4837aaf65b0df28ea4a07fb485948309bc7c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608724"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185572"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Zarządzanie dostępem użytkowników zewnętrznych w usłudze Azure AD upoważnienia
 
@@ -91,7 +91,7 @@ Aby zapewnić, że osoby spoza organizacji mogą żądać dostępu do pakietów 
 
 ### <a name="review-your-conditional-access-policies"></a>Przeglądanie zasad dostępu warunkowego
 
-- Upewnij się, że nie zostaną wykluczone Goście z zasad dostępu warunkowego, których nowi użytkownicy-Goście nie będą mogli obsłużyć, ponieważ spowoduje to zablokowanie możliwości zalogowania się do katalogu. Na przykład Goście prawdopodobnie nie mają zarejestrowanego urządzenia, nie znajdują się w znanej lokalizacji i nie chcą ponownie rejestrować się w celu uwierzytelniania wieloskładnikowego (MFA), więc dodanie tych wymagań w zasadach dostępu warunkowego uniemożliwi Gościom korzystanie z uprawnień administracyjnego. Aby uzyskać więcej informacji, zobacz [co to są warunki w Azure Active Directory dostęp warunkowy?](../conditional-access/conditions.md).
+- Upewnij się, że nie zostaną wykluczone Goście z zasad dostępu warunkowego, których nowi użytkownicy-Goście nie będą mogli obsłużyć, ponieważ spowoduje to zablokowanie możliwości zalogowania się do katalogu. Na przykład Goście prawdopodobnie nie mają zarejestrowanego urządzenia, nie znajdują się w znanej lokalizacji i nie chcą ponownie rejestrować się w celu uwierzytelniania wieloskładnikowego (MFA), więc dodanie tych wymagań w zasadach dostępu warunkowego uniemożliwi Gościom korzystanie z uprawnień administracyjnego. Aby uzyskać więcej informacji, zobacz [co to są warunki w Azure Active Directory dostęp warunkowy?](../conditional-access/concept-conditional-access-conditions.md).
 
     ![Ustawienia wykluczania zasad dostępu warunkowego usługi Azure AD](./media/entitlement-management-external-users/conditional-access-exclude.png)
 
@@ -143,7 +143,7 @@ Możesz wybrać, co się stanie, gdy użytkownik zewnętrzny, który został zap
 
 1. Jeśli chcesz usunąć konto użytkownika-gościa w tym katalogu, możesz ustawić liczbę dni, po której ma zostać usunięta. Jeśli chcesz usunąć konto użytkownika-gościa, gdy tylko utracisz swoje ostatnie przypisanie do wszystkich pakietów dostępu, ustaw **liczbę dni przed usunięciem użytkownika zewnętrznego z tego katalogu** do **0**.
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 ## <a name="next-steps"></a>Następne kroki
 

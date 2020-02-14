@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bb9dc16eabbd6065e05d26258c1421aa7a46dbd7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: fbb81764262d98a401a26cd089e53ad37007050c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911393"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198194"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Wprowadzenie do Azure Maps Android SDK
 
@@ -28,7 +28,7 @@ Aby wykonać procedury opisane w tym artykule, musisz najpierw [utworzyć konto 
 
 Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](./how-to-manage-authentication.md).
 
-### <a name="download-android-studio"></a>Pobierz program Android Studio
+### <a name="download-android-studio"></a>Pobierz Android Studio
 
 Przed zainstalowaniem Android SDK Azure Maps należy pobrać Android Studio i utworzyć projekt z pustą aktywnością. Android Studio można [pobrać](https://developer.android.com/studio/) bezpłatnie z usługi Google. 
 
@@ -103,7 +103,7 @@ Następnym krokiem tworzenia aplikacji jest zainstalowanie Android SDK Azure Map
     </FrameLayout>
     ```
 
-4. W pliku **MAINS. Java** należy wykonać następujące:
+4. W pliku **MAINS. Java** należy:
     
     * Dodaj Importy dla zestawu SDK Azure Maps
     * Ustawianie informacji o uwierzytelnianiu Azure Maps
@@ -111,7 +111,7 @@ Następnym krokiem tworzenia aplikacji jest zainstalowanie Android SDK Azure Map
 
     Ustawienie informacji o uwierzytelnianiu w klasie `AzureMaps` globalnie przy użyciu metod `setSubscriptionKey` lub `setAadProperties` sprawia, że nie będzie trzeba dodawać informacji o uwierzytelnianiu w każdym widoku. 
 
-    Kontrolka mapy zawiera własne metody cyklu życia do zarządzania cyklem życia OpenGL dla systemu Android, które muszą być wywoływane bezpośrednio z działania zawierającego. Aby aplikacja mogła prawidłowo, wywołaj metody cyklu życia kontrolki mapy, należy zastąpić następujące metody cyklu życia w działaniu zawierającym formant mapy i wywołać odpowiednią metodę kontroli mapy. 
+    Kontrolka mapy zawiera własne metody cyklu życia do zarządzania cyklem życia OpenGL dla systemu Android. Te metody cyklu życia muszą być wywoływane bezpośrednio z działania zawierającego. Aby aplikacja poprawnie wywołała metody cyklu życia kontrolki mapy, należy zastąpić następujące metody cyklu życia w działaniu, które zawiera formant mapy. I, należy wywołać odpowiednią metodę kontroli mapy. 
 
     * OnCreate (pakiet) 
     * OnStart () 

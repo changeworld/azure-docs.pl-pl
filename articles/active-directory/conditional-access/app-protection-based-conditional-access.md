@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbbe882acda532a54333ca8013693121d5b677b7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3c853ef3a5a40381aba4e1c13eaf9ad7d8653170
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964093"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186634"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Wymagaj zasad ochrony aplikacji dla dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego (wersja zapoznawcza)
 
@@ -24,7 +24,7 @@ Pracownicy używają urządzeń przenośnych zarówno do celów służbowych, ja
 
 W tym artykule wyjaśniono, jak skonfigurować zasady dostępu warunkowego, które mogą wymagać zasad ochrony aplikacji przed udzieleniem dostępu do danych.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Za pomocą [dostępu warunkowego usługi Azure AD](overview.md)możesz dostosować sposób, w jaki autoryzowani użytkownicy mogą uzyskiwać dostęp do zasobów. Można na przykład ograniczyć dostęp do aplikacji w chmurze do zaufanych urządzeń.
 
@@ -36,7 +36,7 @@ W terminologii dostępu warunkowego te aplikacje klienckie są znane jako zasady
 
 ![Dostęp warunkowy](./media/app-protection-based-conditional-access/05.png)
 
-Aby uzyskać listę aplikacji klienckich chronionych przez zasady, zobacz [wymagania dotyczące zasad ochrony aplikacji](technical-reference.md#approved-client-app-requirement).
+Aby uzyskać listę aplikacji klienckich chronionych przez zasady, zobacz [wymagania dotyczące zasad ochrony aplikacji](concept-conditional-access-grant.md).
 
 Zasady dostępu warunkowego opartego na ochronie aplikacji można łączyć z innymi zasadami, takimi jak [zasady dostępu warunkowego oparte na urządzeniach](require-managed-devices.md). W ten sposób można zapewnić elastyczność w zakresie ochrony danych zarówno na urządzeniach osobistych, jak i firmowych.
 
@@ -55,8 +55,8 @@ Podobnie jak w przypadku zgodności raportowanej przez usługę Intune dla syste
 
 W tym artykule założono, że znasz:
 
-- Informacje techniczne [dotyczące wymagań zasad ochrony aplikacji](technical-reference.md#app-protection-policy-requirement) .
-- Informacje techniczne [dotyczące zatwierdzonej aplikacji klienckiej](technical-reference.md#approved-client-app-requirement) .
+- [Wymaganie zasad ochrony aplikacji](concept-conditional-access-grant.md).
+- [Wymagania dotyczące zatwierdzonej aplikacji klienckiej](concept-conditional-access-grant.md).
 - Podstawowe pojęcia związane z [dostępem warunkowym w Azure Active Directory](overview.md).
 - Jak [skonfigurować zasady dostępu warunkowego](app-based-mfa.md).
 
@@ -89,7 +89,7 @@ W tym scenariuszu przyjęto założenie, że użytkownik:
 
 Aby uzyskać dostęp do danych firmowych, wszystkie zasady ochrony aplikacji usługi Intune muszą znajdować się w aplikacji. Zasady mogą monitować użytkownika o ponowne uruchomienie aplikacji lub użycie dodatkowego numeru PIN. Dotyczy to sytuacji, gdy zasady są skonfigurowane dla aplikacji i platformy.
 
-### <a name="configuration"></a>Konfigurowanie
+### <a name="configuration"></a>Konfiguracja
 
 **Krok 1. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
 
@@ -159,7 +159,7 @@ W tym scenariuszu przyjęto założenie, że:
 - Użytkownik może uzyskać dostęp do poczty e-mail przy użyciu programu Outlook i zasad ochrony aplikacji usługi Intune, jeśli nie zostały zarejestrowane.
 - Użytkownik może uzyskać dostęp do poczty e-mail w programie Outlook, jeśli urządzenie jest zarejestrowane.
 
-### <a name="configuration"></a>Konfigurowanie
+### <a name="configuration"></a>Konfiguracja
 
 **Krok 1. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
 
@@ -240,7 +240,7 @@ W tym scenariuszu przyjęto założenie, że użytkownik:
 
 Wszystkie zasady ochrony aplikacji usługi Intune są aktywowane przed udzieleniem dostępu do danych firmowych. Zasady mogą monitować użytkownika o ponowne uruchomienie aplikacji lub użycie dodatkowego numeru PIN. Dotyczy to sytuacji, gdy zasady są skonfigurowane dla aplikacji i platformy.
 
-### <a name="configuration"></a>Konfigurowanie
+### <a name="configuration"></a>Konfiguracja
 
 **Krok 1. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
 
@@ -328,7 +328,7 @@ Przed uzyskaniem dostępu do danych firmowych wymagane są wszystkie zasady ochr
 - Tego scenariusza można użyć, jeśli chcesz obsługiwać zasady dostępu warunkowego opartego na ochronie aplikacji i aplikacji.
 - W ramach tego *lub* zasad aplikacje z wymaganiem zasad ochrony aplikacji są oceniane pod kątem dostępu najpierw przed wymaganiem zatwierdzonych aplikacji klienckich.
 
-### <a name="configuration"></a>Konfigurowanie
+### <a name="configuration"></a>Konfiguracja
 
 **Krok 1. Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usług Exchange Online i SharePoint Online**
 

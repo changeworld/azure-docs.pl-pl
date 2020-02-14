@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/21/2018
 ms.author: nzthiago
 ms.custom: include file
-ms.openlocfilehash: 3501ff3f92ae045019df2766bbcf7fc2c3fec5b0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: eca2d3359614875e5bff0c9bb67f006f0a8cdba1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768926"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198330"
 ---
 ## <a name="timeout"></a>Czas trwania aplikacji funkcji 
 
@@ -24,6 +24,9 @@ Czas trwania aplikacji funkcji jest definiowany przez właściwość `functionTi
 | Zużycie | 1.x | 5 | 10 |
 | Zużycie | 2.x | 5 | 10 |
 | Zużycie | wersji | 5 | 10 |
+| Premium | 1.x | 30 | Nieograniczona liczba |
+| Premium | 2.x | 30 | Nieograniczona liczba |
+| Premium | wersji | 30 | Nieograniczona liczba |
 | App Service | 1.x | Nieograniczona liczba | Nieograniczona liczba |
 | App Service | 2.x | 30 | Nieograniczona liczba |
 | App Service | wersji | 30 | Nieograniczona liczba |

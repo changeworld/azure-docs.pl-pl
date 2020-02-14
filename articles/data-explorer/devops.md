@@ -1,6 +1,6 @@
 ---
-title: Zadanie usługi Azure DevOps w Eksploratorze danych platformy Azure
-description: W tym temacie dowiesz się utworzyć potok tworzenia wersji i wdrożyć
+title: Zadanie usługi Azure DevOps dla platformy Azure Eksplorator danych
+description: W tym temacie dowiesz się, jak utworzyć potok wydania i wdrożyć
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,113 +8,113 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/05/2019
-ms.openlocfilehash: 0628d5c07d7258cc4d68727c364e65bd81c78e8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6394d7149bd4e80f0a17a59a6259eedf4c806fd4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388990"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188173"
 ---
-# <a name="azure-devops-task-for-azure-data-explorer"></a>Zadanie usługi Azure DevOps w Eksploratorze danych platformy Azure
+# <a name="azure-devops-task-for-azure-data-explorer"></a>Zadanie usługi Azure DevOps dla platformy Azure Eksplorator danych
 
-[Usługi Azure DevOps](https://azure.microsoft.com/services/devops/) zapewnia narzędzi do współpracy, takie jak potoki o wysokiej wydajności, bezpłatne prywatne repozytoria Git, konfigurowalne tablice Kanban i rozbudowane możliwości testowania automatycznego i ciągłego programowania. [Potoki usługi Azure](https://azure.microsoft.com/services/devops/pipelines/) jest możliwość DevOps platformy Azure, która pozwala na zarządzanie ciągłej integracji/ciągłego wdrażania umożliwia wdrażanie kodu w taki sposób, w przypadku potoków o wysokiej wydajności tę pracę za pomocą dowolnego języka, platformy i chmury.
-[Eksplorator danych platformy Azure — polecenia administratora](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) jest zadanie potoki usługi Azure, która pozwala na tworzenie potoków wydania i wdrażanie bazy danych zmienia się na bazach danych Eksploratora danych usługi Azure. Jest dostępna bezpłatnie w [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
+[Azure DevOps Services](https://azure.microsoft.com/services/devops/) udostępnia narzędzia do współpracy deweloperskiej, takie jak potoki o wysokiej wydajności, bezpłatne prywatne repozytoria Git, konfigurowalne tablice Kanban i zaawansowane możliwości testowania automatycznego i ciągłego. [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) to funkcja platformy Azure DevOps, która umożliwia zarządzanie ciągłej integracji/ciągłego wdrażania kodu przy użyciu potoków o wysokiej wydajności, które działają z dowolnym językiem, platformą i chmurą.
+[Azure Eksplorator danych — polecenia administratora](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) to Azure Pipelines zadanie, które umożliwia tworzenie potoków wydań i wdrażanie zmian bazy danych w bazach danych usługi Azure Eksplorator danych. Jest ona dostępna bezpłatnie w [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 
-W tym dokumencie opisano prosty przykład korzystający z **Eksplorator danych platformy Azure — polecenia administratora** zadanie, aby wdrożyć schemat zmienia się z bazą danych. Pełne potoków ciągłej integracji/ciągłego wdrażania, można znaleźć [dokumentacji usługi Azure DevOps](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops#vsts).
+W tym dokumencie opisano prosty przykład użycia zadania **Eksplorator danych platformy Azure — administrator** do wdrażania zmian schematu w bazie danych programu. Aby uzyskać kompletne potoki ciągłej integracji/ciągłego wdrażania, zapoznaj się z [dokumentacją usługi Azure DevOps](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops#vsts).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
-* Konfiguracja klastra Eksploratora danych usługi Azure:
-    * [Klastra Azure Eksploratora danych i bazy danych](/azure/data-explorer/create-cluster-database-portal)
-    * Tworzenie aplikacji usługi Azure Active Directory (Azure AD), [inicjowania obsługi administracyjnej aplikacji usługi Azure AD](/azure/kusto/management/access-control/how-to-provision-aad-app).
-    * Udzielić dostępu do aplikacji usługi Azure AD w bazie danych przez Eksploratora usługi Azure Data [Zarządzanie uprawnieniami bazy danych Azure Eksplorator danych](/azure/data-explorer/manage-database-permissions).
+* Konfiguracja klastra usługi Azure Eksplorator danych:
+    * [Klaster Eksplorator danych i baza danych platformy Azure](/azure/data-explorer/create-cluster-database-portal)
+    * Tworzenie aplikacji Azure Active Directory (Azure AD) przez [zainicjowanie obsługi aplikacji usługi Azure AD](/azure/kusto/management/access-control/how-to-provision-aad-app).
+    * Przyznaj dostęp do aplikacja usługi Azure AD w usłudze Azure Eksplorator danych Database, [zarządzając uprawnieniami azure Eksplorator danych Database](/azure/data-explorer/manage-database-permissions).
 * Konfiguracja usługi Azure DevOps:
-    * [Załóż bezpłatne organizacji](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops)
-    * [Utwórz organizację](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-    * [Tworzenie projektu w DevOps platformy Azure](/azure/devops/organizations/projects/create-project?view=azure-devops)
-    * [Kod za pomocą narzędzia Git](/azure/devops/user-guide/code-with-git?view=azure-devops)
+    * [Utwórz konto w bezpłatnej organizacji](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops)
+    * [Tworzenie organizacji](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
+    * [Tworzenie projektu na platformie Azure DevOps](/azure/devops/organizations/projects/create-project?view=azure-devops)
+    * [Kod w usłudze git](/azure/devops/user-guide/code-with-git?view=azure-devops)
 
 ## <a name="create-folders"></a>Tworzenie folderów
 
-Utwórz następujące foldery przykładowe (*funkcje*, *zasady*, *tabel*) w repozytorium Git. Skopiuj pliki z [tutaj](https://github.com/Azure/azure-kusto-docs-samples/tree/master/DevOps_release_pipeline) do odpowiednich folderów wyświetlanego poniżej i zatwierdź zmiany. Przykładowe pliki znajdują się wykonać poniższy przepływ pracy.
+Utwórz następujące przykładowe foldery (*funkcje*, *zasady*, *tabele*) w repozytorium git. Skopiuj pliki z tego [miejsca](https://github.com/Azure/azure-kusto-docs-samples/tree/master/DevOps_release_pipeline) do odpowiednich folderów, jak pokazano poniżej, i zatwierdź zmiany. Pliki przykładowe są dostarczane w celu wykonania poniższego przepływu pracy.
 
 ![Tworzenie folderów](media/devops/create-folders.png)
 
 > [!TIP]
-> Podczas tworzenia własnego przepływu pracy, firma Microsoft zaleca, dzięki czemu idempotentne Twojego kodu. Na przykład użyć [tabeli scalania .create](/azure/kusto/management/tables#create-merge-tables) zamiast [tabeli .create](/azure/kusto/management/tables#create-table)i użyj [.create lub alter](/azure/kusto/management/functions#create-or-alter-function) zamiast funkcji [.create](/azure/kusto/management/functions#create-function) Funkcja.
+> Podczas tworzenia własnego przepływu pracy zalecamy utworzenie kodu idempotentne. Można na przykład użyć [. Create-Scale Table](/azure/kusto/management/create-table-command#create-merge-table) zamiast [. Create Table](/azure/kusto/management/create-table-command)i USE [. Create-lub-ALTER](/azure/kusto/management/functions#create-or-alter-function) zamiast. [Create](/azure/kusto/management/functions#create-function) .
 
-## <a name="create-a-release-pipeline"></a>Tworzenie potoku tworzenia wersji
+## <a name="create-a-release-pipeline"></a>Tworzenie potoku wydania
 
-1. Zaloguj się do Twojej [DevOps platformy Azure organizacji](https://dev.azure.com/).
-1. Wybierz **potoki** > **wersji** z menu po lewej stronie i wybierz przycisk **nowy potok**.
+1. Zaloguj się do swojej [organizacji usługi Azure DevOps](https://dev.azure.com/).
+1. Wybierz pozycję **potoki** > **wersje** z menu po lewej stronie i wybierz pozycję **Nowy potok**.
 
     ![Nowy potok](media/devops/new-pipeline.png)
 
-1. **Potoku wydania nowe** zostanie otwarte okno. W **potoki** na karcie **wybierz szablon** okienku wybierz **puste zadanie**.
+1. Zostanie otwarte okno **nowe potoku wydania** . Na karcie **potoki** w okienku **Wybierz szablon** wybierz pozycję **puste zadanie**.
 
      ![Wybierz szablon](media/devops/select-template.png)
 
-1. Wybierz **etapu** przycisku. W **etapu** okienko, Dodaj **Nazwa etapu**. Wybierz **Zapisz** można zapisać swój potok.
+1. Wybierz przycisk **etapu** . W okienku **etap** Dodaj **nazwę etapu**. Wybierz pozycję **Zapisz** , aby zapisać potok.
 
-    ![Nazwa etapu](media/devops/stage-name.png)
+    ![Nadaj nazwę etapowi](media/devops/stage-name.png)
 
-1. Wybierz **Dodawanie artefaktu** przycisku. W **Dodawanie artefaktu** okienku wybierz repozytorium, w której istnieje kodu, wprowadź odpowiednie informacje i kliknij przycisk **Dodaj**. Wybierz **Zapisz** można zapisać swój potok.
+1. Wybierz przycisk **Dodaj artefakt** . W okienku **Dodawanie artefaktu** wybierz repozytorium, w którym znajduje się kod, podaj odpowiednie informacje i kliknij przycisk **Dodaj**. Wybierz pozycję **Zapisz** , aby zapisać potok.
 
     ![Dodawanie artefaktu](media/devops/add-artifact.png)
 
-1. W **zmienne** zaznacz **+ Dodaj** utworzyć zmienną **adresu URL punktu końcowego** który będzie używany w zadaniu. Zapis **nazwa** i **wartość** punktu końcowego. Wybierz **Zapisz** można zapisać swój potok. 
+1. Na karcie **zmienne** wybierz pozycję **+ Dodaj** , aby utworzyć zmienną dla **adresu URL punktu końcowego** , który będzie używany w zadaniu. Napisz **nazwę** i **wartość** punktu końcowego. Wybierz pozycję **Zapisz** , aby zapisać potok. 
 
     ![Utwórz zmienną](media/devops/create-variable.png)
 
-    Można znaleźć usługi Endpoint_URL na stronie Przegląd usługi **klastra Eksploratora danych usługi Azure** w witrynie Azure portal zawiera identyfikator URI klastra Eksploratora danych usługi Azure. Konstruowania identyfikatorów URI w następującym formacie `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`.  Na przykład https:\//kustodocs.westus.kusto.windows.net?DatabaseName=SampleDB
+    Aby znaleźć Endpoint_URL, Strona przegląd **klastra Eksplorator danych platformy Azure** w Azure Portal zawiera identyfikator URI klastra Eksplorator danych platformy Azure. Konstruowanie identyfikatora URI w następującym formacie `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>`.  Na przykład https:\//kustodocs.westus.Kusto.Windows.NET? DatabaseName = SampleDB
 
-    ![Usługa Azure identyfikator URI klastra Eksplorator danych](media/devops/adx-cluster-uri.png)
+    ![Identyfikator URI klastra usługi Azure Eksplorator danych](media/devops/adx-cluster-uri.png)
 
-## <a name="create-tasks-to-deploy"></a>Tworzenie zadania w celu wdrożenia
+## <a name="create-tasks-to-deploy"></a>Utwórz zadania do wdrożenia
 
-1. W **potoku** kartę, kliknij pozycję **zadanie 1, 0 zadanie** można dodać zadania. 
+1. Na karcie **potok** kliknij **1 zadanie, 0 zadanie,** aby dodać zadania. 
 
     ![Dodaj zadania](media/devops/add-task.png)
 
-1. Utwórz trzy zadania w celu wdrożenia **tabel**, **funkcje**, i **zasady**, w następującej kolejności. 
+1. Utwórz trzy zadania do wdrożenia **tabel**, **funkcji**i **zasad**w tej kolejności. 
 
-1. W **zadania** zaznacz **+** przez **zadania agenta**. Wyszukaj pozycję **Azure Data Explorer**. W **Marketplace**, zainstaluj **Eksplorator danych platformy Azure — polecenia administratora** rozszerzenia. Następnie wybierz **Dodaj** w **Uruchom polecenie Eksploratora danych usługi Azure**.
+1. Na karcie **zadania** wybierz pozycję **+** według **zadania agenta**. Wyszukaj pozycję **Azure Data Explorer**. W **witrynie Marketplace**Zainstaluj rozszerzenie **polecenia platformy Azure Eksplorator danych — administrator** . Następnie wybierz pozycję **Dodaj** w obszarze **Uruchom Eksplorator danych platformy Azure**.
 
-     ![Dodano polecenia administratora](media/devops/add-admin-commands.png)
+     ![Dodawanie poleceń administratora](media/devops/add-admin-commands.png)
 
-1. Kliknij pozycję **polecenia Kusto** po lewej i aktualizacji zadań z poniższymi informacjami:
+1. Kliknij **polecenie Kusto** po lewej stronie i zaktualizuj zadanie przy użyciu następujących informacji:
     * **Nazwa wyświetlana**: Nazwa zadania
-    * **Ścieżka pliku**: W **tabel** zadań, określić */Tables/* .csl, ponieważ pliki tworzenia tabeli znajdują się w *tabeli* folderu.
-    * **Adres URL punktu końcowego**: wprowadź `EndPoint URL`zmiennej utworzonej w poprzednim kroku.
-    * Wybierz **punktu końcowego usługi** i wybierz **+ nowy**.
+    * **Ścieżka pliku**: w obszarze zadania w **tabelach** należy określić */Tables/* . CSL, ponieważ pliki tworzenia tabel znajdują się w folderze *tabeli* .
+    * **Adres URL punktu końcowego**: wprowadź zmienną `EndPoint URL`utworzoną w poprzednim kroku.
+    * Wybierz pozycję **Użyj punktu końcowego usługi** i wybierz pozycję **+ Nowy**.
 
-    ![Aktualizacja zadania polecenia Kusto](media/devops/kusto-command-task.png)
+    ![Aktualizuj zadanie polecenia Kusto](media/devops/kusto-command-task.png)
 
-1. Podaj następujące informacje w **połączenia z usługą Dodaj Eksploratora usługi Azure Data** okna:
+1. Wykonaj następujące informacje w oknie **Dodawanie połączenia z usługą Azure Eksplorator danych** :
 
     |Ustawienie  |Sugerowana wartość  |
     |---------|---------|
     |**Nazwa połączenia**     |    Wprowadź nazwę identyfikującą ten punkt końcowy usługi     |
-    |**Adres Url klastra**    |    Wartość można znaleźć w sekcji Przegląd klastra Eksploratora danych usługi Azure w witrynie Azure portal | 
-    |**Identyfikator jednostki usługi**    |    Wprowadź identyfikator aplikacji usługi AAD (utworzonego jako warunek wstępny)     |
-    |**Klucz aplikacji jednostki usługi**     |    Wprowadź klucz aplikacji usługi AAD (utworzonego jako warunek wstępny)    |
-    |**Identyfikator dzierżawy usługi AAD**    |      Wprowadź dzierżawy usługi AAD (np. microsoft.com, contoso.com...)    |
+    |**Adres URL klastra**    |    Wartość można znaleźć w sekcji Przegląd klastra Eksplorator danych platformy Azure w Azure Portal | 
+    |**Identyfikator jednostki usługi**    |    Wprowadź identyfikator aplikacji usługi AAD (utworzony jako warunek wstępny)     |
+    |**Klucz aplikacji głównej usługi**     |    Wprowadź klucz aplikacji usługi AAD (utworzony jako warunek wstępny)    |
+    |**Identyfikator dzierżawy usługi AAD**    |      Wprowadź dzierżawcę usługi AAD (na przykład microsoft.com, contoso.com...)    |
 
-    Wybierz **Zezwalaj na wszystkie potoki, aby korzystać z tego połączenia** pola wyboru. Kliknij przycisk **OK**.
+    Zaznacz pole wyboru **Zezwalaj wszystkim potokom na korzystanie z tego połączenia** . Kliknij przycisk **OK**.
 
-    ![Dodawanie połączenia z usługą](media/devops/add-service-connection.png)
+    ![Dodaj połączenie usługi](media/devops/add-service-connection.png)
 
-1. Powtórz kroki od 1 do 5 innego dwa razy, aby wdrożyć pliki z *funkcje* i *zasady* folderów. Wybierz pozycję **Zapisz**. W **zadania** kartę, zobacz te trzy zadania utworzone: **Wdrażanie tabel**, **wdrażanie funkcji**, i **wdrożenie zasad**.
+1. Powtórz kroki 1-5 jeszcze dwa razy, aby wdrożyć pliki z folderów *funkcje* i *zasady* . Wybierz pozycję **Zapisz**. Na karcie **zadania** zapoznaj się z trzema utworzonymi zadaniami: **Wdróż tabele**, **Wdróż funkcje**i **Wdróż zasady**.
 
-    ![Wdrażanie wszystkich folderów](media/devops/deploy-all-folders.png)
+    ![Wdróż wszystkie foldery](media/devops/deploy-all-folders.png)
 
-1. Wybierz **+ wydanie** > **utworzyć wersję** tworzenie wydań.
+1. Wybierz pozycję **+ wersja** > **Utwórz wydanie** , aby utworzyć wydanie.
 
-    ![Tworzenie wydania](media/devops/create-release.png)
+    ![Tworzenie wersji](media/devops/create-release.png)
 
-1. W **dzienniki** kartę, należy sprawdzić stan wdrożenia zakończy się pomyślnie.
+1. Na karcie **dzienniki** Sprawdź, czy stan wdrożenia zakończył się pomyślnie.
 
-    ![Wdrożenie powiodło się](media/devops/deployment-successful.png)
+    ![Wdrożenie zakończyło się pomyślnie](media/devops/deployment-successful.png)
 
-Ukończono tworzenie potoku wydania na potrzeby wdrażania trzy zadania podrzędne do produkcji wstępnej.
+Teraz ukończono tworzenie potoku wydania dla wdrożenia trzech zadań do przedprodukcyjnego.

@@ -1,25 +1,25 @@
 ---
 title: Dodawanie uwierzytelniania na potrzeby zabezpieczania wywołań niestandardowych interfejsów API
-description: Jak skonfigurować uwierzytelnianie na potrzeby zabezpieczania wywołań niestandardowych interfejsów API z Azure Logic Apps
+description: Jak skonfigurować uwierzytelnianie, aby zwiększyć bezpieczeństwo wywołań niestandardowych interfejsów API z Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666900"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191406"
 ---
-# <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Bezpieczne wywołania niestandardowych interfejsów API z Azure Logic Apps
+# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Zwiększ bezpieczeństwo wywołań niestandardowych interfejsów API z Azure Logic Apps
 
-Aby zabezpieczyć wywołania interfejsów API, można skonfigurować uwierzytelnianie Azure Active Directory (Azure AD) za pomocą Azure Portal, dzięki czemu nie trzeba aktualizować kodu. Alternatywnie można wymagać i wymuszać uwierzytelnianie za pomocą kodu interfejsu API.
+Aby zwiększyć bezpieczeństwo wywołań interfejsów API, można skonfigurować uwierzytelnianie Azure Active Directory (Azure AD) za pomocą Azure Portal, dzięki czemu nie trzeba aktualizować kodu. Alternatywnie można wymagać i wymuszać uwierzytelnianie za pomocą kodu interfejsu API.
 
 ## <a name="authentication-options-for-your-api"></a>Opcje uwierzytelniania dla interfejsu API
 
-Możesz zabezpieczyć wywołania niestandardowego interfejsu API w następujący sposób:
+Możesz poprawić zabezpieczenia wywołań niestandardowego interfejsu API w następujący sposób:
 
 * [Brak zmian w kodzie](#no-code): Chroń swój interfejs API za pomocą [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) za pomocą Azure Portal, więc nie musisz aktualizować kodu ani ponownie wdrażać interfejsu API.
 
@@ -197,16 +197,16 @@ Otwórz definicję aplikacji logiki w widoku Kod, przejdź do definicji akcji **
 }
 ```
 
-| Właściwość | Wymagane | Opis | 
+| Właściwość | Wymagany | Opis | 
 | -------- | -------- | ----------- | 
-| tenant | Tak | Identyfikator GUID dzierżawy usługi Azure AD | 
-| audience | Tak | Identyfikator GUID zasobu docelowego, do którego chcesz uzyskać dostęp, czyli identyfikator klienta z tożsamości aplikacji dla aplikacji sieci Web lub aplikacji interfejsu API | 
-| clientId | Tak | Identyfikator GUID klienta żądającego dostępu, który jest IDENTYFIKATORem klienta z tożsamości aplikacji dla aplikacji logiki | 
-| wpis tajny | Tak | Klucz lub hasło tożsamości aplikacji dla klienta żądającego tokenu dostępu | 
-| type | Tak | Typ uwierzytelnienia. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość jest `ActiveDirectoryOAuth`. | 
+| tenant | Yes | Identyfikator GUID dzierżawy usługi Azure AD | 
+| audience | Yes | Identyfikator GUID zasobu docelowego, do którego chcesz uzyskać dostęp, czyli identyfikator klienta z tożsamości aplikacji dla aplikacji sieci Web lub aplikacji interfejsu API | 
+| clientId | Yes | Identyfikator GUID klienta żądającego dostępu, który jest IDENTYFIKATORem klienta z tożsamości aplikacji dla aplikacji logiki | 
+| wpis tajny | Yes | Klucz lub hasło tożsamości aplikacji dla klienta żądającego tokenu dostępu | 
+| type | Yes | Typ uwierzytelnienia. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość jest `ActiveDirectoryOAuth`. | 
 |||| 
 
-Przykład:
+Na przykład:
 
 ``` json
 {
@@ -248,11 +248,11 @@ W sekcji **autoryzacja** uwzględnij następujące właściwości:
 } 
 ```
 
-| Właściwość | Wymagane | Opis |
+| Właściwość | Wymagany | Opis |
 | -------- | -------- | ----------- |
-| `type` | Tak | Typ uwierzytelnienia. W przypadku certyfikatów klienta SSL wartość musi być `ClientCertificate`. |
+| `type` | Yes | Typ uwierzytelnienia. W przypadku certyfikatów klienta SSL wartość musi być `ClientCertificate`. |
 | `password` | Nie | Hasło do uzyskiwania dostępu do certyfikatu klienta (plik PFX) |
-| `pfx` | Tak | Zakodowana w formacie base64 zawartość certyfikatu klienta (plik PFX) |
+| `pfx` | Yes | Zakodowana w formacie base64 zawartość certyfikatu klienta (plik PFX) |
 ||||
 
 <a name="basic"></a>
@@ -271,11 +271,11 @@ W sekcji **autoryzacja** uwzględnij następujące właściwości:
 }
 ```
 
-| Właściwość | Wymagane | Opis | 
+| Właściwość | Wymagany | Opis | 
 | -------- | -------- | ----------- | 
-| type | Tak | Typ uwierzytelniania, którego chcesz użyć. W przypadku uwierzytelniania podstawowego należy `Basic`wartość. | 
-| nazwa użytkownika | Tak | Nazwa użytkownika, która ma być używana do uwierzytelniania | 
-| hasło | Tak | Hasło, które ma być używane do uwierzytelniania | 
+| type | Yes | Typ uwierzytelniania, którego chcesz użyć. W przypadku uwierzytelniania podstawowego należy `Basic`wartość. | 
+| nazwa użytkownika | Yes | Nazwa użytkownika, która ma być używana do uwierzytelniania | 
+| hasło | Yes | Hasło, które ma być używane do uwierzytelniania | 
 |||| 
 
 <a name="azure-ad-code"></a>

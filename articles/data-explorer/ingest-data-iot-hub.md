@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 93c0b3e27156655acee24d424cd890b48bb8e4e7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 78455c90bab694b77a5e4a56d0b40518867d8d8c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064992"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188368"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>Pozyskiwanie danych z IoT Hub na platformie Azure Eksplorator danych 
 
@@ -80,10 +80,10 @@ Teraz nawiążesz połączenie z IoT Hubą z usługi Azure Eksplorator danych. P
     **Ustawienie** | **Opis pola**
     |---|---|
     | Nazwa połączenia danych | Nazwa połączenia, które chcesz utworzyć na platformie Azure Eksplorator danych
-    | Centrum IoT | Nazwa IoT Hub |
+    | Usługa IoT Hub | Nazwa IoT Hub |
     | Zasady dostępu współdzielonego | Nazwa zasad dostępu współdzielonego. Musi mieć uprawnienia do odczytu |
     | Grupa konsumentów |  Grupa odbiorców zdefiniowana w IoT Hub wbudowanym punkcie końcowym |
-    | Właściwości systemu zdarzeń | [Właściwości systemu zdarzeń IoT Hub](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Podczas dodawania właściwości systemu [Utwórz](/azure/kusto/management/tables#create-table) lub [zaktualizuj](/azure/kusto/management/tables#alter-table-and-alter-merge-table) schemat i [Mapowanie](/azure/kusto/management/mappings) tabeli w celu uwzględnienia wybranych właściwości. | | | 
+    | Właściwości systemu zdarzeń | [Właściwości systemu zdarzeń IoT Hub](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Podczas dodawania właściwości systemu [Utwórz](/azure/kusto/management/create-table-command) lub [zaktualizuj](/azure/kusto/management/alter-table-command) schemat i [Mapowanie](/azure/kusto/management/mappings) tabeli w celu uwzględnienia wybranych właściwości. | | | 
 
     > [!NOTE]
     > W przypadku [ręcznego przełączania do trybu failover](/azure/iot-hub/iot-hub-ha-dr#manual-failover)należy ponownie utworzyć połączenie danych.

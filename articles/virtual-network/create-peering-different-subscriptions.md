@@ -1,5 +1,5 @@
 ---
-title: Tworzenie komunikacji równorzędnej sieci wirtualnej platformy Azure — różne subskrypcje Menedżer zasobów
+title: Tworzenie komunikacji równorzędnej sieci wirtualnej — różne subskrypcje
 titlesuffix: Azure Virtual Network
 description: Dowiedz się, jak utworzyć sieć wirtualną sieci równorzędnej między sieciami wirtualnymi utworzonymi za pomocą Menedżer zasobów istniejących w różnych subskrypcjach platformy Azure.
 services: virtual-network
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: da85d8904fcd44788d6a87a22ea14d683982e333
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d085279167b498b13cfb79b97703cfdff7d6dd8a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020016"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201768"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Tworzenie komunikacji równorzędnej sieci wirtualnej — Menedżer zasobów, różne subskrypcje
 
@@ -311,7 +311,7 @@ Po zakończeniu tego samouczka możesz chcieć usunąć zasoby utworzone w samou
    az group delete --name myResourceGroupB --yes
    ```
 
-### <a name="delete-powershell"></a>PowerShell
+### <a name="delete-powershell"></a>Narzędzia
 
 1. Zaloguj się do platformy Azure jako UserA i wykonaj następujące polecenie:
 

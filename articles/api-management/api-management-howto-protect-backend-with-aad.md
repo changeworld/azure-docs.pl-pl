@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 213e5523c0c99309c3244e19a406a7b82297188f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161804"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190364"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrona interfejsu API przy użyciu protokołu OAuth 2,0 z Azure Active Directory i API Management
 
@@ -71,7 +71,7 @@ Aby chronić interfejs API za pomocą usługi Azure AD, pierwszy krok polega na 
 
 Każda aplikacja kliencka, która wywołuje interfejs API, musi zostać zarejestrowana jako aplikacja w usłudze Azure AD. W tym przykładzie aplikacja kliencka jest konsolą dewelopera w portalu API Management developer. Poniżej przedstawiono sposób rejestrowania innej aplikacji w usłudze Azure AD do reprezentowania konsoli dewelopera.
 
-1. Przejdź do [Azure Portal](https://portal.azure.com) , aby zarejestrować aplikację. Wyszukaj i wybierz pozycję **rejestracje interfejsu API**.
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby zarejestrować aplikację. Wyszukaj i wybierz pozycję **rejestracje aplikacji**.
 
 1. Wybierz pozycję **Nowa rejestracja**.
 
@@ -97,7 +97,7 @@ Po utworzeniu wpisu tajnego należy zwrócić uwagę na wartość klucza do uży
 
 Po zarejestrowaniu dwóch aplikacji do reprezentowania interfejsu API i konsoli dewelopera należy przyznać uprawnienia, aby umożliwić aplikacji klienta wywoływanie aplikacji zaplecza.  
 
-1. Przejdź do [Azure Portal](https://portal.azure.com) , aby udzielić uprawnień do aplikacji klienckiej. Wyszukaj i wybierz pozycję **rejestracje interfejsu API**.
+1. Przejdź do [Azure Portal](https://portal.azure.com) , aby udzielić uprawnień do aplikacji klienckiej. Wyszukaj i wybierz pozycję **rejestracje aplikacji**.
 
 1. Wybierz aplikację kliencką. Następnie na liście stron dla aplikacji wybierz pozycję **uprawnienia interfejsu API**.
 
@@ -202,7 +202,7 @@ Za pomocą [walidacji zasad JWT](api-management-access-restriction-policies.md#V
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID URI of backend-app}</value>
+            <value>{Application ID of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>

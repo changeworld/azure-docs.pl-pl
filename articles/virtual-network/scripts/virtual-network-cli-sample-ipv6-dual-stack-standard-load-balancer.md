@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Konfigurowanie punktów końcowych sieci wirtualnej IPv6 — usługa Load Balancer w warstwie Standardowa (wersja zapoznawcza)
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — Konfigurowanie frontonu IPv6 usługa Load Balancer w warstwie Standardowa
 titlesuffix: Azure Virtual Network
 description: Włączanie punktów końcowych IPv6 przy użyciu interfejsu wiersza polecenia platformy Azure na platformie Azure Virtual Network
 services: virtual-network
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: afeb0c83c6e9afca16d0f0b21adafac4b7f3f2c2
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 86c8acedb230989fa7a7f28690bd4be9c51ead9e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269717"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201343"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>Przykładowa konfiguracja punktów końcowych protokołu IPv6 w skrypcie sieci wirtualnej przy użyciu usługa Load Balancer w warstwie Standardowa (wersja zapoznawcza)
 

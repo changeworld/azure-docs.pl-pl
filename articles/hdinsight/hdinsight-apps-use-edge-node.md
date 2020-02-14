@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/27/2020
-ms.openlocfilehash: b8bb68f7da74e547b020ae00a4672e10d70cbfd1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844466"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199011"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Używanie pustych węzłów brzegowych w klastrach Apache Hadoop w usłudze HDInsight
 
@@ -52,7 +52,7 @@ Po utworzeniu klastra można dodać pusty węzeł brzegowy do istniejącego klas
 
 Jak pokazano w przykładzie, można opcjonalnie wywołać [akcję skryptu](hdinsight-hadoop-customize-cluster-linux.md) , aby wykonać dodatkową konfigurację, taką jak instalowanie [odcienia Apache](hdinsight-hadoop-hue-linux.md) w węźle brzegowym. Skrypt akcji skryptu musi być publicznie dostępny w sieci Web.  Jeśli na przykład skrypt jest przechowywany w usłudze Azure Storage, należy użyć kontenerów publicznych lub publicznych obiektów BLOB.
 
-Rozmiar maszyny wirtualnej węzła brzegowego musi być zgodny z wymaganiami dotyczącymi rozmiaru maszyny wirtualnej klastra usługi HDInsight. Aby uzyskać zalecane rozmiary maszyn wirtualnych węzłów procesu roboczego, zobacz [Tworzenie klastrów Apache Hadoop w usłudze HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types).
+Rozmiar maszyny wirtualnej węzła brzegowego musi być zgodny z wymaganiami dotyczącymi rozmiaru maszyny wirtualnej klastra usługi HDInsight. Aby uzyskać zalecane rozmiary maszyn wirtualnych węzłów procesu roboczego, zobacz [Tworzenie klastrów Apache Hadoop w usłudze HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-type).
 
 Po utworzeniu węzła brzegowego można nawiązać połączenie z węzłem brzegowym przy użyciu protokołu SSH, a następnie uruchomić narzędzia klienckie w celu uzyskania dostępu do klastra Hadoop w usłudze HDInsight.
 
@@ -161,8 +161,8 @@ Węzeł brzegowy można usunąć z Azure Portal.
 W tym artykule wyjaśniono, jak dodać węzeł brzegowy i jak uzyskać dostęp do węzła brzegowego. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Instalowanie aplikacji usługi HDInsight](hdinsight-apps-install-applications.md): dowiedz się, jak instalować aplikacje usługi HDInsight w klastrach.
-* [Instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć nieopublikowane aplikację HDInsight w usłudze HDInsight.
+* [Instalowanie niestandardowych aplikacji usługi HDInsight](hdinsight-apps-install-custom-applications.md): Dowiedz się, jak wdrożyć nieopublikowaną aplikację usługi HDInsight w usłudze HDInsight.
 * [Publikowanie aplikacji usługi HDInsight](hdinsight-apps-publish-applications.md): dowiedz się, jak opublikować niestandardowe aplikacje usługi HDInsight w portalu Azure Marketplace.
 * [MSDN: instalowanie aplikacji usługi HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): dowiedz się, jak zdefiniować aplikacje usługi HDInsight.
 * [Dostosowywanie klastrów usługi HDInsight opartych na systemie Linux przy użyciu akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md): dowiedz się, jak instalować dodatkowe aplikacje za pomocą akcji skryptu.
-* [Tworzenie klastrów opartych na systemie Linux Apache Hadoop w HDInsight przy użyciu szablonów usługi Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Dowiedz się, jak wywoływać szablony usługi Resource Manager w celu tworzenia klastrów HDInsight.
+* [Tworzenie klastrów Apache Hadoop opartych na systemie Linux w usłudze HDInsight przy użyciu szablonów Menedżer zasobów](hdinsight-hadoop-create-linux-clusters-arm-templates.md): informacje o sposobie wywoływania szablonów Menedżer zasobów do tworzenia klastrów usługi HDInsight.

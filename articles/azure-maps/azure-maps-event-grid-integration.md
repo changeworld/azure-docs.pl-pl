@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a89983a9ae45f21deb7a823de049373b4ff9b935
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ca77d4704fb71972090ce0b96dfdb888ef7d1d2c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989063"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190332"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Reagowanie na zdarzenia Azure Maps przy użyciu Event Grid 
 
-Azure Maps integruje się z Azure Event Grid, dzięki czemu użytkownicy mogą wysyłać powiadomienia o zdarzeniach do innych usług i wyzwalać procesy podrzędne. Celem tego artykułu jest ułatwienie konfigurowania aplikacji firmowych do nasłuchiwania zdarzeń Azure Maps. Ta usługa umożliwia reagowanie na krytyczne zdarzenia w niezawodny, skalowalny i bezpieczny sposób. Na przykład użytkownicy mogą utworzyć aplikację w celu zaktualizowania bazy danych, utworzenia biletu i dostarczenia powiadomienia e-mail za każdym razem, gdy urządzenie przejdzie do geofencingu.
+Azure Maps integruje się z Azure Event Grid, dzięki czemu użytkownicy mogą wysyłać powiadomienia o zdarzeniach do innych usług i wyzwalać procesy podrzędne. Celem tego artykułu jest ułatwienie konfigurowania aplikacji firmowych do nasłuchiwania zdarzeń Azure Maps. Dzięki temu użytkownicy mogą reagować na krytyczne zdarzenia w niezawodny, skalowalny i bezpieczny sposób. Na przykład użytkownicy mogą utworzyć aplikację w celu zaktualizowania bazy danych, utworzenia biletu i dostarczenia powiadomienia e-mail za każdym razem, gdy urządzenie przejdzie do geofencingu.
 
 Azure Event Grid to w pełni zarządzana usługa routingu zdarzeń, która używa modelu publikowania/subskrybowania. Event Grid ma wbudowaną obsługę usług platformy Azure, takich jak [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) i [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview). Może ona dostarczać alerty zdarzeń do usług innych niż Azure przy użyciu elementów webhook. Aby zapoznać się z pełną listą programów obsługi zdarzeń obsługiwanych przez Event Grid, zobacz [wprowadzenie do Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
 
@@ -32,7 +32,7 @@ Funkcja Event Grid używa [subskrypcji zdarzeń](https://docs.microsoft.com/azur
 
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
-| Microsoft.Maps.GeofenceEntered | Wywoływane, gdy otrzymane współrzędne zostały przeniesione z zewnątrz danego elementu geołożonego do wewnątrz |
+| Microsoft.Maps.GeofenceEntered | Wywoływane, gdy odebrane współrzędne przeniesiono spoza danego elementu geołożonego do wewnątrz |
 | Microsoft.Maps.GeofenceExited | Wywoływane, gdy odebrane współrzędne przeniesiono z wewnątrz danego elementu geołożonego do zewnątrz |
 | Microsoft.Maps.GeofenceResult | Wywoływane za każdym razem, gdy zapytanie geofencingu zwraca wynik, niezależnie od stanu |
 
@@ -80,9 +80,9 @@ W poniższym przykładzie przedstawiono schemat dla GeofenceResult:
 
 Aplikacje, które obsługują zdarzenia geofencingu Azure Maps powinny spełniać kilka zalecanych praktyk:
 
-* Można skonfigurować wiele subskrypcji, aby kierować zdarzenia do tego samego programu obsługi zdarzeń. Ważne jest, aby nie założyć, że zdarzenia pochodzą z określonego źródła. Zawsze sprawdzaj temat wiadomości, aby upewnić się, że pochodzi od oczekiwanego źródła.
-* Komunikaty mogą być przychodzące z kolejności lub po opóźnieniu. Użyj pola `X-Correlation-id` w nagłówku odpowiedzi, aby zrozumieć, czy informacje o obiektach są aktualne.
-* Gdy interfejs API get i POST jest wywoływany z parametrem Mode ustawionym na `EnterAndExit`, zdarzenie Enter lub Exit jest generowane dla każdej geometrii w geoogrodzeniu, dla którego stan zmienił się od poprzedniego wywołania interfejsu API z geoogrodzeniem.
+* Skonfiguruj wiele subskrypcji, aby kierować zdarzenia do tego samego programu obsługi zdarzeń. Ważne jest, aby nie założyć, że zdarzenia pochodzą z określonego źródła. Zawsze sprawdzaj temat wiadomości, aby upewnić się, że wiadomość pochodzi od oczekiwanego źródła.
+* Użyj pola `X-Correlation-id` w nagłówku odpowiedzi, aby zrozumieć, czy informacje o obiektach są aktualne. Komunikaty mogą być przychodzące z kolejności lub po opóźnieniu.
+* Gdy żądanie GET lub POST w interfejsie API geoogrodzenia jest wywoływane z parametrem Mode ustawionym na `EnterAndExit`, to zdarzenie Enter lub Exit jest generowane dla każdej geometrii w obszarze geoogrodzenia, dla którego stan zmienił się od poprzedniego wywołania interfejsu API z geoogrodzeniem.
 
 ## <a name="next-steps"></a>Następne kroki
 

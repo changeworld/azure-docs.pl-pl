@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
-ms.openlocfilehash: e4200d09a02da1fd95f9bf5051b7f9d5fca5aa98
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793222"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191442"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Tworzenie niestandardowych interfejsów API, które można wywołać z Azure Logic Apps
 
@@ -172,7 +172,7 @@ Na przykład aby okresowo sprawdzać usługę pod kątem nowych plików, można 
 | Żądanie zawiera `triggerState`? | Odpowiedź interfejsu API | 
 | -------------------------------- | -------------| 
 | Nie | Zwróć `202 ACCEPTED` stanu i `location` nagłówka z `triggerState` ustawiony na bieżącą godzinę, a interwał `retry-after` do 15 sekund. | 
-| Tak | Sprawdź, czy usługa zawiera pliki dodane po `DateTime` dla `triggerState`. | 
+| Yes | Sprawdź, czy usługa zawiera pliki dodane po `DateTime` dla `triggerState`. | 
 ||| 
 
 | Liczba znalezionych plików | Odpowiedź interfejsu API | 
@@ -206,9 +206,9 @@ Wyzwalacze elementu webhook działają podobnie jak [Akcje elementu webhook](#we
 > [!TIP]
 > Przykładowy wzorzec elementu webhook zapoznaj się z tym przykładem [kontrolera wyzwalacza elementu webhook w usłudze GitHub](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-## <a name="secure-calls-to-your-apis-from-logic-apps"></a>Bezpieczne wywołania interfejsów API z usługi Logic Apps
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Zwiększ bezpieczeństwo wywołań interfejsów API z usługi Logic Apps
 
-Po utworzeniu niestandardowych interfejsów API Skonfiguruj uwierzytelnianie dla swoich interfejsów API, aby można było je bezpiecznie wywoływać z aplikacji logiki. Dowiedz się [, jak zabezpieczyć wywołania niestandardowych interfejsów API z poziomu aplikacji logiki](../logic-apps/logic-apps-custom-api-authentication.md).
+Po utworzeniu niestandardowych interfejsów API Skonfiguruj uwierzytelnianie dla swoich interfejsów API, aby można było je bezpiecznie wywoływać z aplikacji logiki. Dowiedz się [, jak zwiększyć bezpieczeństwo wywołań niestandardowych interfejsów API z usługi Logic Apps](../logic-apps/logic-apps-custom-api-authentication.md).
 
 ## <a name="deploy-and-call-your-apis"></a>Wdrażanie i wywoływanie interfejsów API
 
@@ -220,7 +220,7 @@ Aby udostępnić niestandardowe interfejsy API innym użytkownikom Logic Apps na
 
 Aby udostępnić niestandardowe interfejsy API wszystkim użytkownikom w Logic Apps, w usłudze Automatyzacja i aplikacjach Microsoft PowerShell, musisz dodać zabezpieczenia, zarejestrować interfejsy API jako łączniki aplikacji logiki i wyznaczyć łączniki dla [programu certyfikowanego Microsoft Azure](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/). 
 
-## <a name="get-support"></a>Uzyskaj pomoc techniczną
+## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Aby uzyskać pomoc dotyczącą niestandardowych interfejsów API, skontaktuj się z [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com).
 

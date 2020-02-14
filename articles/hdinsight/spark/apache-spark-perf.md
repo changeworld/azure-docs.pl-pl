@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/01/2019
-ms.openlocfilehash: 0d8890eeba7fcb53517d6ee653c8dd09866805ef
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 02/12/2020
+ms.openlocfilehash: 3d8f4a28961be7e0ece517e00026d9711d8f67e9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177363"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198875"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Optymalizowanie Apache Spark zadań w usłudze HDInsight
 
-Dowiedz się, jak zoptymalizować konfigurację klastra [Apache Spark](https://spark.apache.org/) dla określonego obciążenia.  Najczęstszym wyzwaniem jest wykorzystanie pamięci z powodu nieprawidłowych konfiguracji (szczególnie programów wykonujących niewłaściwe rozmiary), długotrwałych operacji i zadań, które powodują operacje kartezjańskiego. Można przyspieszyć zadania z odpowiednimi buforowaniem i zezwalać na [pochylenie danych](#optimize-joins-and-shuffles). Aby uzyskać najlepszą wydajność, Monitoruj i sprawdzaj długotrwałe i czasochłonne wykonywanie zadań platformy Spark.
+Dowiedz się, jak zoptymalizować konfigurację klastra [Apache Spark](https://spark.apache.org/) dla określonego obciążenia.  Najczęstszym wyzwaniem jest wykorzystanie pamięci z powodu nieprawidłowych konfiguracji (szczególnie programów wykonujących niewłaściwe rozmiary), długotrwałych operacji i zadań, które powodują operacje kartezjańskiego. Można przyspieszyć zadania z odpowiednimi buforowaniem i zezwalać na [pochylenie danych](#optimize-joins-and-shuffles). Aby uzyskać najlepszą wydajność, Monitoruj i sprawdzaj długotrwałe i czasochłonne wykonywanie zadań platformy Spark. Aby uzyskać informacje na temat rozpoczynania pracy z usługą Apache Spark w usłudze HDInsight, zobacz [Tworzenie klastra Apache Spark przy użyciu Azure Portal](apache-spark-jupyter-spark-sql-use-portal.md).
 
 W poniższych sekcjach opisano typowe optymalizacje i rekomendacje zadań platformy Spark.
 
@@ -57,13 +57,15 @@ Najlepszym formatem wydajności jest Parquet z *kompresją przyciągania*, któr
 
 Podczas tworzenia nowego klastra Spark można wybrać platformę Azure Blob Storage lub Azure Data Lake Storage jako domyślny magazyn klastra. Obie opcje umożliwiają korzystanie z magazynu długoterminowego na potrzeby klastrów przejściowych, dzięki czemu dane nie są automatycznie usuwane po usunięciu klastra. Możesz ponownie utworzyć tymczasowy klaster i nadal uzyskiwać dostęp do danych.
 
-| Typ magazynu | System plików | Szybkość | Administracyjnej | Przypadki użycia |
+| Typ magazynu | System plików | Szybkość | Przejściowe | Przypadki użycia |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:** //URL/ | **Standard** | Tak | Przejściowy klaster |
-| Azure Blob Storage (bezpieczna) | **wasbs:** //URL/ | **Standard** | Tak | Przejściowy klaster |
-| Azure Data Lake Storage Gen 2| **ABFS:** //URL/ | **Większej** | Tak | Przejściowy klaster |
-| Azure Data Lake Storage Gen 1| **ADL:** //URL/ | **Większej** | Tak | Przejściowy klaster |
+| Azure Blob Storage | **wasb:** //URL/ | **Standard** | Yes | Przejściowy klaster |
+| Azure Blob Storage (bezpieczna) | **wasbs:** //URL/ | **Standard** | Yes | Przejściowy klaster |
+| Azure Data Lake Storage Gen 2| **ABFS:** //URL/ | **Większej** | Yes | Przejściowy klaster |
+| Azure Data Lake Storage Gen 1| **ADL:** //URL/ | **Większej** | Yes | Przejściowy klaster |
 | Lokalny system plików HDFS | **HDFS:** //URL/ | **Najlepszy** | Nie | Interaktywny klaster 24/7 |
+
+Pełny opis opcji magazynu dostępnych dla klastrów usługi HDInsight można znaleźć w temacie [porównanie opcji magazynu do użycia z klastrami Azure HDInsight](../hdinsight-hadoop-compare-storage-options.md).
 
 ## <a name="use-the-cache"></a>Użyj pamięci podręcznej
 
@@ -74,7 +76,7 @@ Platforma Spark zapewnia własne natywne mechanizmy buforowania, które mogą by
     * Nie działa z partycjonowaniem, co może ulec zmianie w przyszłych wersjach platformy Spark.
 
 * Buforowanie na poziomie magazynu (zalecane)
-    * Można zaimplementować przy użyciu [Alluxio](https://www.alluxio.io/).
+    * Można zaimplementować w usłudze HDInsight przy użyciu funkcji [pamięci podręcznej we/wy](apache-spark-improve-performance-iocache.md) .
     * Używa buforowania w pamięci i dysku SSD.
 
 * Lokalny system plików HDFS (zalecane)
@@ -106,6 +108,8 @@ Aby rozwiązać komunikaty o braku pamięci, spróbuj wykonać następujące dzi
 * Preferuj `TreeReduce`, która wykonuje więcej zadań na wykonawczych lub partycjach, do `Reduce`, które działają na sterowniku.
 * Wykorzystanie ramek danych zamiast obiektów RDD niskiego poziomu.
 * Utwórz ComplexType, które hermetyzują akcje, takie jak "pierwsze N", różne agregacje lub operacje okienkowe.
+
+Dodatkowe kroki rozwiązywania problemów można znaleźć [w temacie OutOfMemoryError Exceptions for Apache Spark in Azure HDInsight](apache-spark-troubleshoot-outofmemory.md).
 
 ## <a name="optimize-data-serialization"></a>Optymalizowanie serializacji danych
 
@@ -193,7 +197,11 @@ Podczas uruchamiania współbieżnych zapytań należy wziąć pod uwagę nastę
 3. Dystrybuuj zapytania w aplikacjach równoległych.
 4. Zmodyfikuj rozmiar na podstawie zarówno w przypadku wersji próbnej, jak i w powyższych czynnikach, takich jak obciążenie GC.
 
-Monitoruj wydajność zapytań pod kątem wartości odstających lub innych problemów z wydajnością, przeglądając widok oś czasu, program SQL Graph, statystyki zadań i tak dalej. Czasami jeden lub kilka z wykonawców jest wolniejsze niż inne, a wykonywanie zadań trwa znacznie dłużej. Często odbywa się to w większych klastrach (> 30 węzłach). W takim przypadku należy podzielić pracę na większą liczbę zadań, aby harmonogram mógł wyrównać powolne zadania. Na przykład należy mieć co najmniej dwa razy więcej zadań jako liczbę rdzeni wykonawców w aplikacji. Możesz również włączyć spekulacyjne wykonywanie zadań przy użyciu `conf: spark.speculation = true`.
+Aby uzyskać więcej informacji na temat używania Ambari do konfigurowania modułów wykonujących, zobacz [ustawienia Apache Spark — wykonawcze platformy Spark](apache-spark-settings.md#configuring-spark-executors).
+
+Monitoruj wydajność zapytań pod kątem wartości odstających lub innych problemów z wydajnością, przeglądając widok oś czasu, program SQL Graph, statystyki zadań i tak dalej. Aby uzyskać informacje na temat debugowania zadań platformy Spark przy użyciu PRZĘDZy i serwera historii platformy Spark, zobacz [debugowanie Apache Spark zadania uruchomione w usłudze Azure HDInsight](apache-spark-job-debugging.md). Aby uzyskać porady na temat używania serwera osi czasu PRZĘDZy, zobacz [dostęp Apache Hadoop Dzienniki aplikacji przędzy](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
+
+Czasami jeden lub kilka z wykonawców jest wolniejsze niż inne, a wykonywanie zadań trwa znacznie dłużej. Często odbywa się to w większych klastrach (> 30 węzłach). W takim przypadku należy podzielić pracę na większą liczbę zadań, aby harmonogram mógł wyrównać powolne zadania. Na przykład należy mieć co najmniej dwa razy więcej zadań jako liczbę rdzeni wykonawców w aplikacji. Możesz również włączyć spekulacyjne wykonywanie zadań przy użyciu `conf: spark.speculation = true`.
 
 ## <a name="optimize-job-execution"></a>Optymalizuj wykonywanie zadania
 

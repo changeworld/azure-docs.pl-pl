@@ -3,12 +3,12 @@ title: Dokumentacja C# dla deweloperów Azure Functions
 description: Dowiedz się, jak opracowywać C#Azure Functions przy użyciu programu.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 89b3ae927b14454ac3f58fb510626e315842240f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: cfa53fe2defca768196af595c1d088d41bc60f71
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921042"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198381"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Dokumentacja C# dla deweloperów Azure Functions
 
@@ -21,7 +21,7 @@ Azure Functions obsługuje C# Języki C# programowania skryptów i. Jeśli szuka
 W tym artykule przyjęto założenie, że zostały już przeczytane następujące artykuły:
 
 * [Przewodnik dla deweloperów Azure Functions](functions-reference.md)
-* [Azure Functions Visual Studio 2019 Tools](functions-develop-vs.md)
+* [Azure Functions narzędzia programu Visual Studio 2019](functions-develop-vs.md)
 
 ## <a name="supported-versions"></a>Obsługiwane wersje
 
@@ -204,7 +204,7 @@ Jeśli instalujesz podstawowe narzędzia przy użyciu programu npm, które nie m
 
 ## <a name="supported-types-for-bindings"></a>Obsługiwane typy powiązań
 
-Każde powiązanie ma własne obsługiwane typy; na przykład atrybut wyzwalacza obiektu BLOB może być stosowany do parametru ciągu, POCO parametru, parametru `CloudBlockBlob` lub dowolnego innego obsługiwanego typu. [Artykuł dotyczący powiązań powiązań obiektów BLOB](functions-bindings-storage-blob.md#trigger---usage) zawiera listę wszystkich obsługiwanych typów parametrów. Aby uzyskać więcej informacji, zobacz [wyzwalacze i powiązania](functions-triggers-bindings.md) oraz [dokumenty referencyjne powiązań dla każdego typu powiązania](functions-triggers-bindings.md#next-steps).
+Każde powiązanie ma własne obsługiwane typy; na przykład atrybut wyzwalacza obiektu BLOB może być stosowany do parametru ciągu, POCO parametru, parametru `CloudBlockBlob` lub dowolnego innego obsługiwanego typu. [Artykuł dotyczący powiązań powiązań obiektów BLOB](functions-bindings-storage-blob-trigger.md#usage) zawiera listę wszystkich obsługiwanych typów parametrów. Aby uzyskać więcej informacji, zobacz [wyzwalacze i powiązania](functions-triggers-bindings.md) oraz [dokumenty referencyjne powiązań dla każdego typu powiązania](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -255,7 +255,7 @@ public static class SimpleExample
 
 Należy unikać używania `Console.Write` w Azure Functions. Aby uzyskać więcej informacji, zobacz [Zapisywanie dzienników C# w funkcjach](functions-monitoring.md#write-logs-in-c-functions) w artykule **monitor Azure Functions** .
 
-## <a name="async"></a>Async
+## <a name="async"></a>Asynchroniczne
 
 Aby wykonać funkcję [asynchroniczną](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/), należy użyć słowa kluczowego `async` i zwrócić obiekt `Task`.
 
@@ -353,7 +353,7 @@ Zdefiniuj bezwzględne powiązanie w następujący sposób:
 
 ### <a name="single-attribute-example"></a>Przykład pojedynczego atrybutu
 
-Poniższy przykładowy kod tworzy [powiązanie danych wyjściowych obiektu blob magazynu](functions-bindings-storage-blob.md#output) z ścieżką obiektu BLOB, która jest zdefiniowana w czasie wykonywania, a następnie zapisuje ciąg do obiektu BLOB.
+Poniższy przykładowy kod tworzy [powiązanie danych wyjściowych obiektu blob magazynu](functions-bindings-storage-blob-output.md) z ścieżką obiektu BLOB, która jest zdefiniowana w czasie wykonywania, a następnie zapisuje ciąg do obiektu BLOB.
 
 ```cs
 public static class IBinderExample
@@ -378,7 +378,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>Przykład wielu atrybutów
 
-Powyższy przykład pobiera ustawienie aplikacji dla głównych parametrów połączenia konta magazynu aplikacji funkcji (czyli `AzureWebJobsStorage`). Możesz określić niestandardowe ustawienie aplikacji do użycia dla konta magazynu, dodając [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) i przekazując tablicę atrybutów do `BindAsync<T>()`. Użyj `Binder` parametru, a nie `IBinder`.  Przykład:
+Powyższy przykład pobiera ustawienie aplikacji dla głównych parametrów połączenia konta magazynu aplikacji funkcji (czyli `AzureWebJobsStorage`). Możesz określić niestandardowe ustawienie aplikacji do użycia dla konta magazynu, dodając [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) i przekazując tablicę atrybutów do `BindAsync<T>()`. Użyj `Binder` parametru, a nie `IBinder`.  Na przykład:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

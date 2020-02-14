@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 54401d4fd8a911fc9cf5bc67d4324e84005fa752
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 4846a19c403cce16bed704ed4e7c70499f3b5d13
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157248"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187994"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Pozyskiwanie danych Eksplorator danych platformy Azure
 
@@ -90,7 +90,7 @@ Kusto oferuje zestaw SDK klienta, który może służyć do pozyskiwania i wykon
 
 | Metoda | Opóźnienie |
 | --- | --- |
-| **Pozyskiwanie wbudowane** | Pośredni |
+| **Pozyskiwanie wbudowane** | Natychmiastowe |
 | **Pozyskiwanie z zapytania** | Czas wykonywania zapytania + czas przetwarzania |
 | **Pozyskiwanie z magazynu** | Czas pobierania + czas przetwarzania |
 | **Przyjmowanie w kolejce** | Przetwarzanie wsadowe + czas przetwarzania |
@@ -133,8 +133,8 @@ W przypadku wszystkich metod pozyskiwania innych niż pozyskiwanie z kwerendy sf
 
 Mapowanie schematu pomaga powiązać pola danych źródłowych z kolumnami tabeli docelowej.
 
-* [Mapowanie CSV](/azure/kusto/management/mappings?branch=master#csv-mapping) (opcjonalnie) działa ze wszystkimi formatami opartymi na liczbie porządkowej. Można go wykonać przy użyciu parametru polecenia pozyskiwania lub [wstępnie utworzonego w tabeli](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) i przywoływanych przez parametr polecenia pozyskiwania.
-* [Mapowanie JSON](/azure/kusto/management/mappings?branch=master#json-mapping) (obowiązkowe) i [Mapowanie Avro](/azure/kusto/management/mappings?branch=master#avro-mapping) (obowiązkowe) można wykonać za pomocą parametru polecenia pozyskiwania. Mogą być również [wstępnie utworzone w tabeli](/azure/kusto/management/tables#create-ingestion-mapping) i przywoływane przez parametr polecenia pozyskiwania.
+* [Mapowanie CSV](/azure/kusto/management/mappings?branch=master#csv-mapping) (opcjonalnie) działa ze wszystkimi formatami opartymi na liczbie porządkowej. Można go wykonać przy użyciu parametru polecenia pozyskiwania lub [wstępnie utworzonego w tabeli](/azure/kusto/management/create-ingestion-mapping-command) i przywoływanych przez parametr polecenia pozyskiwania.
+* [Mapowanie JSON](/azure/kusto/management/mappings?branch=master#json-mapping) (obowiązkowe) i [Mapowanie Avro](/azure/kusto/management/mappings?branch=master#avro-mapping) (obowiązkowe) można wykonać za pomocą parametru polecenia pozyskiwania. Mogą być również [wstępnie utworzone w tabeli](/azure/kusto/management/create-ingestion-mapping-command) i przywoływane przez parametr polecenia pozyskiwania.
 
 ## <a name="next-steps"></a>Następne kroki
 

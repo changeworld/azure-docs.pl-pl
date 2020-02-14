@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: d85f6ba9d50b7d30930322ca34cb15edb30e1472
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 683b35661a41325cfd5baa877acdb0e37529bb94
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775014"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198738"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Przenosimy obrazy maszyn wirtualnych (VM) w witrynie Azure Marketplace do magazynu dyskowego zarządzanego
 
@@ -61,6 +61,6 @@ Podczas przenoszenia nie można wprowadzać aktualizacji obrazów maszyn wirtual
 
 Nie, proces publikowania pozostanie taki sam. 
 
-## <a name="next-steps"></a>Następne kroki
+### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>Czy Wydawca może przenieść swoje oferty na dysk zarządzany?
 
-Odwiedź stronę [Przewodnik wydawcy z ofertą maszyny wirtualnej](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) .
+Nie, wydawcy nie mogą przenieść swoich ofert do dysku zarządzanego. Będą musieli czekać, a ich obrazy będą przenoszone automatycznie. Wyślemy powiadomienia do wydawcy przed wprowadzeniem jakichkolwiek zmian.

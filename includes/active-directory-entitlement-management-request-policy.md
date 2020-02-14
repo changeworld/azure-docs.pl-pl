@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980522"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193026"
 ---
 ## <a name="for-users-in-your-directory"></a>Dla użytkowników w katalogu
 
@@ -81,7 +81,7 @@ Wykonaj następujące kroki, aby zezwolić użytkownikom, którzy nie należą d
 1. Po wybraniu wszystkich połączonych organizacji kliknij pozycję **Wybierz**.
 
     > [!NOTE]
-    > Wszyscy użytkownicy z wybranych połączonych organizacji będą mogli zażądać tego pakietu dostępu. Obejmuje to użytkowników w usłudze Azure AD ze wszystkich poddomen skojarzonych z organizacją, chyba że te domeny są blokowane przez listę dozwolonych lub zablokowanych warunków B2B platformy Azure. Aby uzyskać więcej informacji, zobacz [dozwolonych lub zablokowanych zaproszeń do użytkowników B2B z określonym organizacjom](../articles/active-directory/b2b/allow-deny-list.md).
+    > Wszyscy użytkownicy z wybranych połączonych organizacji będą mogli zażądać tego pakietu dostępu. Obejmuje to użytkowników w usłudze Azure AD ze wszystkich poddomen skojarzonych z organizacją, chyba że te domeny są blokowane przez listę dozwolonych lub zablokowanych warunków B2B platformy Azure. Aby uzyskać więcej informacji, zobacz [Zezwalanie lub blokowanie zaproszeń użytkownikom B2B z określonych organizacji](../articles/active-directory/b2b/allow-deny-list.md).
 
 1. Przejdź do sekcji [zatwierdzenie](#approval) .
 
@@ -198,7 +198,7 @@ Na przykład, jeśli w pierwszej osoby zatwierdzającej wystawiłeś Alicja i Ro
 
 ## <a name="enable-requests"></a>Włącz żądania
 
-1. Jeśli chcesz, aby pakiet dostępu został natychmiast udostępniony dla użytkowników w zasadach żądania, kliknij przycisk **tak** , aby włączyć.
+1. Jeśli chcesz, aby pakiet dostępu był natychmiast dostępny dla użytkowników w zasadach żądania, przesuń przełącznik Enable na **wartość tak**.
 
     Zawsze możesz włączyć ją w przyszłości po zakończeniu tworzenia pakietu dostępu.
 

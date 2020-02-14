@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 148ded0eba61221a2bdf0b8a50392da47a4c5f20
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122495"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201632"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Rejestrowanie SQL Server maszyny wirtualnej na platformie Azure przy użyciu dostawcy zasobów maszyny wirtualnej SQL
 
@@ -126,7 +126,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="lightweight-management-mode"></a>Uproszczony tryb zarządzania
 
-Jeśli na maszynie wirtualnej nie zainstalowano [rozszerzenia agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md) , zaleca się zarejestrowanie się w trybie uproszczonym dostawcy zasobów maszyny wirtualnej SQL. Spowoduje to zainstalowanie rozszerzenia SQL IaaS w [trybie uproszczonym](#management-modes) i uniemożliwienie ponownego uruchamiania usługi SQL Server. Następnie można przeprowadzić uaktualnienie do trybu pełnego w dowolnym momencie, ale spowoduje to ponowne uruchomienie usługi SQL Server, dlatego zaleca się zaczekanie do czasu zaplanowanego okna obsługi. Musisz podać typ SQL Server licencji jako płatność zgodnie z rzeczywistym użyciem (`PAYG`) do płacenia za użycie lub Korzyść użycia hybrydowego platformy Azure (`AHUB`), aby korzystać z własnej licencji.
+Jeśli na maszynie wirtualnej nie zainstalowano [rozszerzenia agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md) , zaleca się zarejestrowanie się w trybie uproszczonym dostawcy zasobów maszyny wirtualnej SQL. Spowoduje to zainstalowanie rozszerzenia SQL IaaS w [trybie uproszczonym](#management-modes) i uniemożliwienie ponownego uruchamiania usługi SQL Server. Następnie można przeprowadzić uaktualnienie do trybu pełnego w dowolnym momencie, ale spowoduje to ponowne uruchomienie usługi SQL Server, dlatego zaleca się zaczekanie do czasu zaplanowanego okna obsługi. 
+
+Podaj SQL Server typ licencji jako płatność zgodnie z rzeczywistym użyciem (`PAYG`), aby uregulować opłaty za użycie, Korzyść użycia hybrydowego platformy Azure (`AHUB`) do korzystania z własnej licencji lub odzyskiwania po awarii (`DR`) w celu aktywowania [bezpłatnej licencji na program Dr Replica](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure).
 
 Wystąpienia klastra trybu failover i wdrożenia z obsługą wiele wystąpień mogą być rejestrowane tylko w trybie uproszczonym dostawcy zasobów maszyny wirtualnej SQL. 
 
@@ -176,7 +178,7 @@ Aby zarejestrować SQL Server maszynę wirtualną bezpośrednio w trybie pełnym
 
 SQL Server 2008 i 2008 R2 zainstalowane w systemie Windows Server 2008 (_nie R2_) mogą być zarejestrowane przy użyciu dostawcy zasobów maszyny wirtualnej SQL w [trybie noagent](#management-modes). Ta opcja zapewnia zgodność i umożliwia monitorowanie SQL Server maszyny wirtualnej w Azure Portal z ograniczoną funkcjonalnością.
 
-Określ `AHUB` lub `PAYG` jako **Sqllicensetype**, a `SQL2008-WS2008` lub `SQL2008R2-WS2008` jako **sqlImageOffer**. 
+Określ `AHUB`, `PAYG`lub `DR` jako **Sqllicensetype**, a `SQL2008-WS2008` lub `SQL2008R2-WS2008` jako **sqlImageOffer**. 
 
 Aby zarejestrować wystąpienie SQL Server 2008 lub 2008 R2 w wystąpieniu systemu Windows Server 2008, użyj następującego polecenia AZ CLI i PowerShell Code fragment: 
 

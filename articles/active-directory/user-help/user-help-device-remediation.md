@@ -13,12 +13,12 @@ ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: d29168f154c80eb2c66d0316f773375325ded67f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2484de4e554d16ba049d206981a44654ede28a3f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062187"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190029"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>Komunikat o błędzie "nie można uzyskać z tego miejsca"
 
@@ -29,7 +29,7 @@ Jeśli zostanie wyświetlony komunikat z informacją **o tym,** że próbujesz u
 
 ![Komunikat o błędzie związany z obsługą przeglądarki](media/user-help-device-remediation/browser-version.png)
 
-Aby rozwiązać ten problem, należy zainstalować i uruchomić obsługiwaną przeglądarkę w zależności od używanego systemu operacyjnego. W przypadku korzystania z systemu Windows 10 obsługiwane przeglądarki obejmują programy Microsoft Edge, Internet Explorer i Google Chrome. Jeśli używasz innego systemu operacyjnego, możesz zapoznać się z pełną listą [obsługiwanych przeglądarek](../conditional-access/technical-reference.md#supported-browsers).
+Aby rozwiązać ten problem, należy zainstalować i uruchomić obsługiwaną przeglądarkę w zależności od używanego systemu operacyjnego. W przypadku korzystania z systemu Windows 10 obsługiwane przeglądarki obejmują programy Microsoft Edge, Internet Explorer i Google Chrome. Jeśli używasz innego systemu operacyjnego, możesz zapoznać się z pełną listą [obsługiwanych przeglądarek](../conditional-access/concept-conditional-access-conditions.md#supported-browsers).
 
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>Upewnij się, że korzystasz z obsługiwanego systemu operacyjnego
 Upewnij się, że korzystasz z obsługiwanej wersji systemu operacyjnego, w tym:

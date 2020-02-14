@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 10/03/2019
-ms.openlocfilehash: 8c5fe1970857a04c7b237a101ac228dea024815b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,mvc
+ms.date: 02/12/2020
+ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494497"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198892"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Samouczek: ładowanie danych i uruchamianie zapytań w klastrze platformy Apache Spark w usłudze Azure HDInsight
 
@@ -60,7 +60,9 @@ Aplikacje mogą tworzyć ramki danych bezpośrednio z plików lub folderów w ma
 
     ![Stan interakcyjnego zapytania Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Stan interakcyjnego zapytania Spark SQL")
 
-2. Uruchom następujący kod, aby utworzyć ramkę danych i tabelę tymczasową (**hvac**).
+1. Zwróć uwagę na zwrócony identyfikator sesji. Na powyższym rysunku identyfikator sesji to 0. W razie potrzeby można pobrać szczegóły sesji, przechodząc do `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` gdzie CLUSTERname jest nazwą klastra Spark, a IDENTYFIKATORem identyfikatora sesji.
+
+1. Uruchom następujący kod, aby utworzyć ramkę danych i tabelę tymczasową (**hvac**).
 
     ```python
     # Create a dataframe and table from sample data

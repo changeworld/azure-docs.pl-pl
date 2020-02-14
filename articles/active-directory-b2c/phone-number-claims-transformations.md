@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c43e3386886456eed0c58fefd0fb1212795db66c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 38763f414b1e5373af79d2501850a44e8e813451
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480166"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185476"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Definiowanie przekształceń oświadczeń numeru telefonu w Azure AD B2C
 
@@ -32,8 +32,8 @@ To stwierdzenie weryfikuje format numeru telefonu. Jeśli jest w prawidłowym fo
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | Oświadczenie inputclaim | string | Wniosek typu ciąg przekonwertowany z. |
-| Oświadczenie outputclaim | Oświadczenie outputclaim | string | Wynik tej transformacji oświadczeń. |
+| Oświadczenie inputclaim | Oświadczenie inputclaim | ciąg | Wniosek typu ciąg przekonwertowany z. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | phoneNumber | Wynik tej transformacji oświadczeń. |
 
 Transformacja oświadczeń **ConvertStringToPhoneNumberClaim** jest zawsze wykonywana z poziomu [profilu technicznego weryfikacji](validation-technical-profile.md) , który jest wywoływany przez [własny profil techniczny](self-asserted-technical-profile.md) lub [kontrolkę wyświetlania](display-controls.md). Metadane profilu technicznego **UserMessageIfClaimsTransformationInvalidPhoneNumber** z własnym potwierdzeń są kontrolowane przez komunikat o błędzie wyświetlany użytkownikowi.
 
@@ -76,11 +76,11 @@ Spowoduje to wyodrębnienie kodu kraju i numeru Narodowego z roszczeń wejściow
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | phoneNumber | string | Ciąg określający numer telefonu. Numer telefonu musi znajdować się w formacie międzynarodowym i kończyć się wiodącym kodem "+" i państwowym. |
+| Oświadczenie inputclaim | phoneNumber | ciąg | Ciąg określający numer telefonu. Numer telefonu musi znajdować się w formacie międzynarodowym i kończyć się wiodącym kodem "+" i państwowym. |
 | InputParameter | throwExceptionOnFailure | wartość logiczna | Obowiązkowe Parametr wskazujący, czy wyjątek jest zgłaszany, gdy numer telefonu jest nieprawidłowy. Wartość domyślna to false. |
-| InputParameter | countryCodeType | string | Obowiązkowe Parametr wskazujący typ kodu kraju w poroście danych wyjściowych. Dostępne wartości to **CallingCode** (międzynarodowy kod wywołujący dla kraju, na przykład + 1) lub **ISO3166** (dwuliterowy kod kraju ISO-3166). |
-| Oświadczenie outputclaim | nationalNumber | string | Ciąg określający numer Narodowy numeru telefonu. |
-| Oświadczenie outputclaim | countryCode | string | Ciąg jako numer kierunkowy kraju numeru telefonu. |
+| InputParameter | countryCodeType | ciąg | Obowiązkowe Parametr wskazujący typ kodu kraju w poroście danych wyjściowych. Dostępne wartości to **CallingCode** (międzynarodowy kod wywołujący dla kraju, na przykład + 1) lub **ISO3166** (dwuliterowy kod kraju ISO-3166). |
+| Oświadczenie outputclaim | nationalNumber | ciąg | Ciąg określający numer Narodowy numeru telefonu. |
+| Oświadczenie outputclaim | countryCode | ciąg | Ciąg jako numer kierunkowy kraju numeru telefonu. |
 
 
 Jeśli przekształcenie oświadczeń **GetNationalNumberAndCountryCodeFromPhoneNumberString** jest wykonywane z poziomu [profilu technicznego sprawdzania poprawności](validation-technical-profile.md) , który jest wywoływany przez [samodzielnie potwierdzony profil techniczny](self-asserted-technical-profile.md) lub [Akcja kontrolki wyświetlania](display-controls.md#display-control-actions), wówczas metadane profilu technicznego **UserMessageIfPhoneNumberParseFailure** z własnym potwierdzeniem są kontrolowane przez komunikat o błędzie wyświetlany użytkownikowi.

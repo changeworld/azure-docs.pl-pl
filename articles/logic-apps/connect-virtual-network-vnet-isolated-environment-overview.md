@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 12/16/2019
-ms.openlocfilehash: d8d57c15fffaa6a9d18ad3c83716f99247512c15
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/10/2020
+ms.openlocfilehash: 1f743384f467e4559412fa1a46d48011b568d249
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860757"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191566"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Dostęp do zasobów platformy Azure Virtual Network z Azure Logic Apps przy użyciu środowisk usługi integracji (ISEs)
 
@@ -45,7 +45,7 @@ Podczas tworzenia zintegrowanego środowiska usługi (ISE) na platformie Azure M
 
 Usługa Logic Apps w ISE zapewnia te same środowiska użytkownika i podobne funkcje jak publiczna Logic Apps globalna. Można użyć wszystkich wbudowanych wyzwalaczy, akcji i łączników zarządzanych, które są dostępne w globalnej usłudze Logic Apps. Niektóre zarządzane łączniki oferują dodatkowe wersje ISE. Różnica istnieje w miejscu, w którym są uruchamiane, oraz etykiet, które są wyświetlane w Projektancie aplikacji logiki podczas pracy w ISE.
 
-![Łączniki z etykietami i bez nich w ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-built-in-actions-triggers-managed-connectors.png)
+![Łączniki z etykietami i bez nich w ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-trigger-actions-integration-service-environment.png)
 
 * Wbudowane wyzwalacze i akcje wyświetlają etykietę **podstawową** i są zawsze uruchamiane w tym samym ISE, co aplikacja logiki. Łączniki zarządzane, które wyświetlają etykietę **ISE** , są również uruchamiane w tym samym ISE, jak w aplikacji logiki.
 
@@ -111,10 +111,10 @@ W przypadku systemów lokalnych, które są połączone z siecią wirtualną pla
 * Łącznik niestandardowy
 
   * Jeśli masz łączniki niestandardowe wymagające lokalnej bramy danych i utworzono te łączniki poza ISE, Aplikacje logiki w ISE mogą również używać tych łączników.
-  
+
   * Łączniki niestandardowe utworzone w ISE nie współpracują z lokalną bramą danych. Jednak te łączniki mogą bezpośrednio uzyskać dostęp do lokalnych źródeł danych, które są połączone z siecią wirtualną hostującym ISE. W związku z tym aplikacje logiki w ISE najprawdopodobniej nie potrzebują bramy danych podczas komunikowania się z tymi zasobami.
 
-W przypadku systemów lokalnych, które nie są połączone z siecią wirtualną ani nie mają łączników ISE-labled, należy najpierw [skonfigurować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md) , zanim Aplikacje logiki będą mogły łączyć się z tymi systemami.
+W przypadku systemów lokalnych, które nie są połączone z siecią wirtualną ani nie mają łączników z ISEmi, musisz najpierw [skonfigurować lokalną bramę danych](../logic-apps/logic-apps-gateway-install.md) , aby umożliwić aplikacjom logiki łączenie się z tymi systemami.
 
 <a name="create-integration-account-environment"></a>
 

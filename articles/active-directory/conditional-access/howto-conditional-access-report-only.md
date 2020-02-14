@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3cd57c09c08ab4c86feeca27915639123b439d0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180305"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186084"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Konfigurowanie zasad dostępu warunkowego w trybie tylko do raportowania (wersja zapoznawcza)
 
@@ -41,9 +41,12 @@ Aby wyświetlić wynik zasad dotyczących tylko raportów dotyczących określon
 1. Wybierz pozycję Zaloguj lub Dodaj filtry, aby zawęzić wyniki.
 1. W szufladzie **szczegółów** wybierz kartę **tylko raport (wersja zapoznawcza)** , aby wyświetlić zasady oceniane podczas logowania.
 
+> [!NOTE]
+> Podczas pobierania dzienników logowania wybierz format JSON, aby dołączyć raport dostępu warunkowego — tylko dane wynikowe.
+
 ## <a name="set-up-azure-monitor-integration-with-azure-ad"></a>Konfigurowanie integracji Azure Monitor z usługą Azure AD
 
-Aby wyświetlić zagregowany wpływ zasad dostępu warunkowego przy użyciu nowego skoroszytu dostępu warunkowego, należy zintegrować Azure Monitor z usługą Azure AD i wyeksportować dzienniki logowania. Aby ustawić tę integrację, należy wykonać dwie czynności: 
+Aby wyświetlić zagregowany wpływ zasad dostępu warunkowego przy użyciu nowego skoroszytu dostępu warunkowego, należy zintegrować Azure Monitor z usługą Azure AD i wyeksportować dzienniki logowania. Aby skonfigurować tę integrację, należy wykonać dwie czynności: 
 
 1. [Zarejestruj się, aby uzyskać subskrypcję Azure monitor i utworzyć obszar roboczy](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 1. [Wyeksportuj dzienniki logowania z usługi Azure AD do Azure monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
@@ -61,7 +64,7 @@ Po zintegrowaniu dzienników usługi Azure AD z Azure Monitor można monitorowa�
 1. Wybierz zakres czasu (Jeśli zakres czasu przekracza dostęp do dostępnego zestawu danych, raport będzie zawierać wszystkie dostępne dane). Po ustawieniu **zasad dostępu warunkowego** i parametrów **zakresu czasu** raport zostanie załadowany.
    1. Opcjonalnie można wyszukać poszczególnych **użytkowników** lub **aplikacje** , aby zawęzić zakres raportu.
 1. Wybierz między wyświetlaniem danych w przedziale czasowym przez liczbę użytkowników lub liczbę logowań.
-1. W zależności od **widoku danych**, **Podsumowanie wpływu** wyświetla liczbę użytkowników lub logowania w zakresie wybranych parametrów, pogrupowane według łącznej liczby, **sukcesu**, **niepowodzenia**, **wymaganej akcji użytkownika**i **nie zostały zastosowane** . Wybierz kafelek, aby zapoznać się z logowaniem określonego typu wyniku. 
+1. W zależności od **widoku danych**, **Podsumowanie wpływu** wyświetla liczbę użytkowników lub logowania w zakresie wybranych parametrów, pogrupowane według łącznej liczby, **sukcesu**, **niepowodzenia**, **wymaganej akcji użytkownika**i **nie zostały zastosowane**. Wybierz kafelek, aby zapoznać się z logowaniem określonego typu wyniku. 
    1. Jeśli zmieniono parametry skoroszytu, możesz zapisać kopię do użycia w przyszłości. Wybierz ikonę Zapisz u góry raportu i podaj nazwę i lokalizację, w której chcesz zapisać.
 1. Przewiń w dół, aby wyświetlić podział logowań dla każdego warunku.
 1. Wyświetl **szczegóły logowania** w dolnej części raportu, aby sprawdzić, czy poszczególne zdarzenia logowania zostały przefiltrowane według powyższych opcji.

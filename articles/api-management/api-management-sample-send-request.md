@@ -1,6 +1,6 @@
 ---
-title: Do generowania żądań HTTP przy użyciu usługi API Management
-description: Dowiedz się, jak używać zasad żądań i odpowiedzi w usłudze API Management do wywołania usług zewnętrznych z interfejsu API
+title: Generowanie żądań HTTP przy użyciu usługi API Management
+description: Dowiedz się, jak używać zasad żądań i odpowiedzi w API Management do wywoływania usług zewnętrznych z poziomu interfejsu API
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 2c4e5d0117f046343b140ef2b2c46c074c835075
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557939"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190011"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Korzystanie z usług zewnętrznych z usługi Azure API Management
-Zasady dostępne w usłudze Azure API Management można wykonać szeroką gamę przydatnych działań oparte wyłącznie na żądanie przychodzące, Wychodzące odpowiedzi i podstawowe informacje o konfiguracji. Jednak możliwość interakcji z usługami zewnętrznymi z usługi API Management zasady otwiera wiele więcej.
+Zasady dostępne w usłudze Azure API Management mogą wykonywać szeroką gamę przydatnych działań na przykład na żądanie przychodzące, odpowiedź wychodzącą i podstawowe informacje o konfiguracji. Jednak możliwość współpracy z usługami zewnętrznymi z poziomu zasad API Management otwiera dużo więcej szans.
 
-Zauważyliśmy już wcześniej sposób interakcji z [usługi Azure Event Hub, rejestrowanie, monitorowanie i analizy](api-management-log-to-eventhub-sample.md). W tym artykule przedstawiono zasady, które umożliwiają korzystanie z dowolnymi usługami zewnętrznych oparty na protokole HTTP. Te zasady może służyć do wyzwalania zdalnych zdarzeń lub do odzyskiwania informacji, które jest używane do manipulowania oryginalnego żądania i odpowiedzi w jakiś sposób.
+Wcześniej dowiesz się, jak korzystać z [usługi Azure Event Hub na potrzeby rejestrowania, monitorowania i analizy](api-management-log-to-eventhub-sample.md). W tym artykule przedstawiono zasady, które umożliwiają współpracującie z dowolną zewnętrzną usługą opartą na protokole HTTP. Te zasady mogą służyć do wyzwalania zdarzeń zdalnych lub do pobierania informacji, które są używane do manipulowania pierwotnym żądaniem i odpowiedzi w jakiś sposób.
 
-## <a name="send-one-way-request"></a>Send-One-Way-Request
-Prawdopodobnie najprostszą interakcja zewnętrznych jest styl pożarowego i zapominać żądania, które umożliwia usługi zewnętrznej w celu otrzymywania powiadomień z pewnego rodzaju ważnych zdarzeń. Zasady przepływu sterowania `choose` może służyć do wykrywania dowolnego rodzaju warunek, który Cię interesuje.  Jeśli warunek jest spełniony, można wprowadzić zewnętrzny HTTP żądania przy użyciu [-co sposób — żądanie wysłania](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) zasad. To żądanie, aby system obsługi komunikatów, takich jak usługi Hipchat Slack i/lub wiadomość e-mail interfejsu API usługi SendGrid lub MailChimp, lub dla zdarzeń krytycznych wymagających pomocy technicznej coś w rodzaju usługi PagerDuty. Wszystkie te systemy obsługi komunikatów ma proste interfejsy API protokołu HTTP, który może być wywoływany.
+## <a name="send-one-way-request"></a>Wyślij-jednokierunkowe-żądanie
+Prawdopodobnie najprostsza interakcja zewnętrzna jest stylem żądania, który pozwala na powiadamianie usługi zewnętrznej o jakimś rodzaju ważnych wydarzeniach. Zasady przepływu sterowania `choose` mogą służyć do wykrywania dowolnego rodzaju warunku, który Cię interesuje.  Jeśli warunek jest spełniony, można wykonać zewnętrzne żądanie HTTP przy użyciu zasad [wysyłania jednokierunkowego](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) . Może to być żądanie do systemu obsługi komunikatów, takiego jak HipChat lub zapasowy, lub interfejs API poczty, taki jak SendGrid lub MailChimp, lub dla krytycznych zdarzeń pomocy technicznej, takich jak usługi PagerDuty. Wszystkie te systemy obsługi komunikatów mają proste interfejsy API protokołu HTTP, które mogą być wywoływane.
 
-### <a name="alerting-with-slack"></a>Alerty z Slack
-Poniższy przykład pokazuje, jak wysyłać komunikat do pokoju rozmów Slack, jeśli kod stanu odpowiedzi HTTP jest większa niż lub równy 500. Błąd zakresu 500 wskazuje na problem z zaplecza interfejsu API klienta interfejsu API nie można rozwiązać samodzielnie. Zwykle wymaga pewnego rodzaju interwencji ze strony usługi API Management.  
+### <a name="alerting-with-slack"></a>Alerty z zapasem czasu
+W poniższym przykładzie pokazano, jak wysłać komunikat do pokoju rozmów zapasowych, jeśli kod stanu odpowiedzi HTTP jest większy lub równy 500. Błąd zakresu 500 wskazuje na problem z interfejsem API zaplecza, który nie może zostać rozwiązany przez klienta interfejsu API. Zwykle wymaga pewnego rodzaju interwencji na API Management część.  
 
 ```xml
 <choose>
@@ -57,31 +57,31 @@ Poniższy przykład pokazuje, jak wysyłać komunikat do pokoju rozmów Slack, j
 </choose>
 ```
 
-Slack jest pojęcie punkty zaczepienia przychodzącego ruchu internetowego. Podczas konfigurowania punktu zaczepienia przychodzącego ruchu internetowego, Slack generuje specjalny adres URL, dzięki czemu można w tym prostego żądania POST i przekazać komunikat do kanału Slack. Treść kodu JSON, które tworzysz jest oparty na formacie definicją Slack.
+Zapasowy element ma koncepcję przychodzących elementów sieci Web. Podczas konfigurowania przychodzącego elementu Hook sieci Web funkcja zapasowa generuje specjalny adres URL, dzięki czemu można wykonać proste żądanie POST i przekazać komunikat do kanału zapasowego. Utworzona treść JSON jest oparta na formacie zdefiniowanym za pomocą zapasu.
 
-![Slack Web Hook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
+![Element webhook w sieci Web](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
-### <a name="is-fire-and-forget-good-enough"></a>Jest uruchomiony i zapomnij wystarczająco dobra?
-Istnieją pewne wady i zalety, korzystając z pożarowego i zapominać styl żądania. Jeśli jakichś powodów, żądanie nie powiedzie się, wówczas nie jest zgłaszany błąd. W szczególności takim złożoność po awarii pomocniczej raportowania systemu oraz wyższą wydajność kosztu oczekiwania na odpowiedź nie jest uzasadnione. W scenariuszach, gdzie jest niezbędne, aby sprawdzić odpowiedzi a następnie [żądań wysłania](/azure/api-management/api-management-advanced-policies#SendRequest) zasad jest lepszym rozwiązaniem.
+### <a name="is-fire-and-forget-good-enough"></a>Czy jest to dobre i zapomniane?
+W przypadku korzystania z stylu żądania "Uruchom i zapomnij" istnieją pewne kompromisy. Jeśli z jakiegoś powodu żądanie nie powiedzie się, błąd nie zostanie zgłoszony. W tej sytuacji złożoność posiadania dodatkowego systemu raportowania awarii i dodatkowego kosztu wydajności oczekiwania na odpowiedź nie jest uzasadnione. W przypadku scenariuszy, w których konieczna jest kontrola odpowiedzi, zasady [wysyłania żądań](/azure/api-management/api-management-advanced-policies#SendRequest) są lepszym rozwiązaniem.
 
 ## <a name="send-request"></a>Send-Request
-`send-request` Umożliwia zasad przy użyciu usługi zewnętrznej do wykonywania zadań złożone przetwarzanie i zwraca dane do usługi API management usługi, która może służyć do dalszego przetwarzania zasad.
+Zasady `send-request` umożliwiają użycie usługi zewnętrznej do wykonywania złożonych funkcji przetwarzania i zwracania danych do usługi API Management, która może być używana do dalszej przetwarzania zasad.
 
-### <a name="authorizing-reference-tokens"></a>Autoryzowanie tokenów odwołań
-Najważniejszych funkcji usługi API Management chroni zasoby zaplecza. Jeśli serwer autoryzacji używany przez interfejs API tworzy [tokenów JWT](https://jwt.io/) jako część jego przepływu OAuth2 jako [usługi Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) jest, wówczas można użyć `validate-jwt` zasad w celu zweryfikowania jego ważności tokenu. Niektóre serwery autoryzacji tworzenia, są nazywane [odwołać tokeny](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) nie można zweryfikować bez wprowadzania wywołanie zwrotne do autoryzacji serwera.
+### <a name="authorizing-reference-tokens"></a>Autoryzowanie tokenów odwołania
+Główną funkcją API Management jest ochrona zasobów zaplecza. Jeśli serwer autoryzacji używany przez interfejs API tworzy [tokeny JWT](https://jwt.io/) w ramach przepływu OAuth2, jako [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) , można użyć zasad `validate-jwt` do zweryfikowania poprawności tokenu. Niektóre serwery autoryzacji tworzą elementy o nazwie [tokeny odwołania](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) , których nie można zweryfikować bez wywołania zwrotnego do serwera autoryzacji.
 
 ### <a name="standardized-introspection"></a>Standardowe introspekcji
-W przeszłości została żaden standardowy sposób sprawdzania, czy token odwołania, za pomocą serwera autoryzacji. Jednak ostatnio proponowany standard [RFC 7662](https://tools.ietf.org/html/rfc7662) została opublikowana przez grupę IETF, który definiuje, jak serwer zasobów można sprawdzić poprawność tokenu.
+W przeszłości nie było standardowego sposobu weryfikowania tokenu odwołania z serwerem autoryzacji. Jednak ostatnio zaproponowana standardowa [Specyfikacja RFC 7662](https://tools.ietf.org/html/rfc7662) została opublikowana przez grupę IETF, która definiuje, w jaki sposób serwer zasobów może weryfikować ważność tokenu.
 
-### <a name="extracting-the-token"></a>Trwa wyodrębnianie tokenu
-Pierwszym krokiem jest token zostanie wyodrębniony z nagłówka autoryzacji. Wartość nagłówka powinien być sformatowany za pomocą `Bearer` schemat autoryzacji, pojedynczą spację, a następnie token autoryzacji zgodnie [RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1). Niestety istnieją przypadki, w której zostanie pominięty schemat autoryzacji. Zostało to podczas analizowania, API Management dzieli wartość nagłówka w miejscu i wybiera ostatni ciąg z zwróconej tablicy ciągów. Zapewnia to obejście dla nagłówków autoryzacji niepoprawnie sformatowana.
+### <a name="extracting-the-token"></a>Wyodrębnianie tokenu
+Pierwszym krokiem jest wyodrębnienie tokenu z nagłówka autoryzacji. Wartość nagłówka powinna być sformatowana przy użyciu schematu autoryzacji `Bearer`, pojedynczej spacji, a następnie tokenu autoryzacji zgodnie z [dokumentem RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1). Niestety, istnieją przypadki, w których schemat autoryzacji został pominięty. Aby uwzględnić to podczas analizowania, API Management dzieli wartość nagłówka w miejscu i wybiera ostatni ciąg z zwróconej tablicy ciągów. Zapewnia to obejście dla nieprawidłowo sformatowanych nagłówków autoryzacji.
 
 ```xml
 <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
 ```
 
-### <a name="making-the-validation-request"></a>Tworzenie żądania walidacji
-Gdy usługa API Management ma token autoryzacji, API Management można wprowadzać żądania do zweryfikowania tokenu. RFC 7662 wywołuje introspekcji ten proces i wymaga, aby użytkownik `POST` formularza HTML do zasobu introspekcji. Formularza HTML przy użyciu klucza musi zawierać co najmniej pary klucz/wartość `token`. To żądanie do autoryzacji serwera musi także zostać uwierzytelniony, aby upewnić się, że złośliwego klientów nie można go trawling prawidłowy tokenów.
+### <a name="making-the-validation-request"></a>Wykonywanie żądania weryfikacji
+Gdy API Management ma token autoryzacji, API Management może wykonać żądanie zweryfikowania tokenu. Specyfikacja RFC 7662 wywołuje ten proces introspekcji i wymaga `POST` formularza HTML do zasobu introspekcji. Formularz HTML musi zawierać co najmniej parę klucz/wartość z kluczem `token`. To żądanie należy również uwierzytelnić na serwerze autoryzacji, aby upewnić się, że złośliwi klienci nie będą mogli nawiązać prawidłowego tokenu.
 
 ```xml
 <send-request mode="new" response-variable-name="tokenstate" timeout="20" ignore-error="true">
@@ -98,12 +98,16 @@ Gdy usługa API Management ma token autoryzacji, API Management można wprowadza
 ```
 
 ### <a name="checking-the-response"></a>Sprawdzanie odpowiedzi
-`response-variable-name` Atrybut jest używany w celu udzielenia dostępu zwrócona odpowiedź. Z nazwą zdefiniowaną w tej właściwości może służyć jako klucz do `context.Variables` słownika, aby uzyskać dostęp do `IResponse` obiektu.
+Atrybut `response-variable-name` służy do udzielania dostępu do zwróconej odpowiedzi. Nazwa zdefiniowana w tej właściwości może służyć jako klucz w słowniku `context.Variables`, aby uzyskać dostęp do obiektu `IResponse`.
 
-Z obiektu odpowiedzi, można pobrać treści i RFC 7622 informuje usługa API Management, czy odpowiedź musi być obiektem JSON i musi zawierać co najmniej właściwość o nazwie `active` oznacza to wartość typu boolean. Gdy `active` ma wartość true, a następnie token jest uznawany za ważny.
+Z obiektu Response można pobrać treść i dokument RFC 7622 informuje API Management, że odpowiedź musi być obiektem JSON i musi zawierać co najmniej właściwość o nazwie `active`, która jest wartością logiczną. Gdy `active` ma wartość true, token jest uznawany za ważny.
 
-### <a name="reporting-failure"></a>Zgłaszanie błędu
-Możesz użyć `<choose>` zasady, aby wykryć, czy token jest nieprawidłowy, a jeśli tak, zwracają odpowiedzi 401.
+Alternatywnie, jeśli serwer autoryzacji nie zawiera pola "aktywne", aby wskazać, czy token jest prawidłowy, użyj narzędzia takiego jak Poster, aby określić, jakie właściwości są ustawiane w prawidłowym tokenie. Na przykład jeśli prawidłowa odpowiedź tokenu zawiera właściwość o nazwie "expires_in", sprawdź, czy ta nazwa właściwości istnieje na serwerze autoryzacji w następujący sposób:
+
+<, gdy warunek = "@ ((IResponse) kontekst. Zmienne ["tokenstate"]). Body.As<JObject>(). Właściwość ("expires_in") = = null) ">
+
+### <a name="reporting-failure"></a>Raportowanie niepowodzeń
+Korzystając z zasad `<choose>`, można wykryć, czy token jest nieprawidłowy, a jeśli tak, zwrócić odpowiedź 401.
 
 ```xml
 <choose>
@@ -118,10 +122,10 @@ Możesz użyć `<choose>` zasady, aby wykryć, czy token jest nieprawidłowy, a 
 </choose>
 ```
 
-Zgodnie [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) opisano jak `bearer` tokeny powinny być używane, API Management zwraca również wartość `WWW-Authenticate` nagłówek odpowiedzi 401. WWW-Authenticate ma na celu poinstruowania klienta, jak utworzyć żądanie prawidłowo autoryzowanych. Z powodu różnych metod, które można zrobić za pomocą OAuth2 framework jest trudne do komunikowania się wszystkie wymagane informacje. Na szczęście istnieją wysiłki w toku, aby ułatwić [klientów Dowiedz się, jak poprawnie autoryzować żądania do serwera zasobów](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
+Zgodnie z opisem w [dokumencie RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) , który opisuje sposób używania tokenów `bearer`, API Management również zwraca nagłówek `WWW-Authenticate` z odpowiedzią 401. Usługa WWW-Authenticate służy do nakazuje klientowi utworzenie prawidłowo autoryzowanego żądania. Ze względu na szeroką gamę metod OAuth2 Framework trudno jest komunikować się ze wszystkimi wymaganymi informacjami. Na szczęście istnieją wysiłki, aby pomóc [klientom w ustaleniu, jak prawidłowo autoryzować żądania do serwera zasobów](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
 
-### <a name="final-solution"></a>Ostateczna rozwiązania
-Po zakończeniu otrzymasz następujące zasady:
+### <a name="final-solution"></a>Ostateczne rozwiązanie
+Na końcu uzyskasz następujące zasady:
 
 ```xml
 <inbound>
@@ -157,32 +161,32 @@ Po zakończeniu otrzymasz następujące zasady:
 </inbound>
 ```
 
-Jest to tylko jeden z wielu przykładów jak `send-request` zasady mogą służyć do integracji usług zewnętrznych przydatne przetwarzania żądań i odpowiedzi przepływają przez usługę API Management.
+Jest to tylko jeden z wielu przykładów zastosowania zasad `send-request` do integrowania przydatnych usług zewnętrznych w procesie żądań i odpowiedzi przepływających przez usługę API Management.
 
 ## <a name="response-composition"></a>Kompozycja odpowiedzi
-`send-request` Zasady mogą być używane z wzbogacać żądania podstawowego do systemu zaplecza, jak opisany w poprzednim przykładzie, lub może służyć jako ukończone Zastąp dla wywołania wewnętrznej bazy danych. Przy użyciu tej metody można łatwo utworzyć złożone zasoby, które są agregowane z wielu różnych systemach.
+Zasady `send-request` mogą służyć do ulepszania podstawowego żądania do systemu zaplecza, jak zostało to opisane w poprzednim przykładzie, lub może być używane jako pełne zastąpienie dla wywołania zaplecza. Korzystając z tej techniki, można łatwo tworzyć zasoby złożone, które są agregowane z wielu różnych systemów.
 
-### <a name="building-a-dashboard"></a>Tworzenie pulpitu nawigacyjnego
-Czasami chcesz być w stanie, aby spowodować ujawnienie informacji, która znajduje się w wielu systemów zaplecza, na przykład dysk na pulpicie nawigacyjnym. Kluczowych wskaźników wydajności pochodzą wszystkie różne zapleczy, ale wolisz nie zapewniać bezpośredni dostęp do nich i byłoby nieuprzywilejowany można pobrać wszystkich informacji w jednym żądaniu. Być może niektóre informacje wewnętrznej bazy danych musi niektóre dzielenie i grupowanie i nieco podczas czyszczenia najpierw! Możliwość złożonego zasobu w pamięci podręcznej będzie przydatna do zmniejszenia obciążenia wewnętrznej bazy danych, ponieważ wiadomo, że użytkownicy mają rodzaj atakowaniu klawisz F5, aby sprawdzić, czy ich o niskiej efektywności metryk mogą ulec zmianie.    
+### <a name="building-a-dashboard"></a>Kompilowanie pulpitu nawigacyjnego
+Czasami chcesz mieć możliwość uwidaczniania informacji, które istnieją w wielu systemach zaplecza, na przykład w celu kierowania pulpitu nawigacyjnego. Wskaźniki KPI pochodzą ze wszystkich różnych zapleczów, ale wolisz, aby nie zapewnić bezpośredniego dostępu do nich i byłoby to dobre, jeśli wszystkie informacje można pobrać w jednym żądaniu. Być może niektóre informacje o zapleczu wymagają pewnego wycinka i grupowanie, a najpierw zostanie nieco oczyszczone. Możliwość buforowania tego zasobu złożonego jest przydatna do zredukowania obciążenia zaplecza, ponieważ użytkownicy mają wykonywaćy do wydzielenia przez siebie, aby sprawdzić, czy ich przeprowadzenie może ulec zmianie.    
 
-### <a name="faking-the-resource"></a>Faking zasobu
-Pierwszym krokiem do tworzenia zasobów pulpitu nawigacyjnego jest skonfigurować nową operację w witrynie Azure portal. Jest to operacja symbolu zastępczego, używany do konfigurowania zasad składu w celu kompilacji dynamicznych zasobów.
+### <a name="faking-the-resource"></a>Faking zasób
+Pierwszym krokiem tworzenia zasobu pulpitu nawigacyjnego jest skonfigurowanie nowej operacji w Azure Portal. Jest to operacja zastępcza użyta do skonfigurowania zasad kompozycji w celu skompilowania zasobu dynamicznego.
 
 ![Operacja pulpitu nawigacyjnego](./media/api-management-sample-send-request/api-management-dashboard-operation.png)
 
-### <a name="making-the-requests"></a>Tworzenie żądania
-Po utworzeniu operacji można skonfigurować zasady specjalnie dla tej operacji. 
+### <a name="making-the-requests"></a>Wykonywanie żądań
+Po utworzeniu operacji można skonfigurować zasady przeznaczone dla tej operacji. 
 
 ![Operacja pulpitu nawigacyjnego](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
-Pierwszym krokiem jest wyodrębnić wszystkie parametry zapytania z żądania przychodzącego, dzięki czemu możesz je przekazywać do zaplecza. W tym przykładzie pulpit nawigacyjny jest wyświetlane informacje oparte na czasie i dlatego ma `fromDate` i `toDate` parametru. Możesz użyć `set-variable` zasad do wyodrębnienia informacji z adresu URL żądania.
+Pierwszym krokiem jest wyodrębnienie wszystkich parametrów zapytania z przychodzącego żądania, dzięki czemu można je przesłać dalej do zaplecza. W tym przykładzie pulpit nawigacyjny wyświetla informacje w oparciu o pewien czas i w związku z tym ma `fromDate` i `toDate` parametr. Korzystając z zasad `set-variable`, można wyodrębnić informacje z adresu URL żądania.
 
 ```xml
 <set-variable name="fromDate" value="@(context.Request.Url.Query["fromDate"].Last())">
 <set-variable name="toDate" value="@(context.Request.Url.Query["toDate"].Last())">
 ```
 
-Gdy te informacje mogą wysyłać żądania do wszystkich systemów zaplecza. Każde żądanie tworzy nowy adres URL z informacje o parametrach i wywołuje jego odpowiedniego serwera i odpowiedzi są przechowywane w zmiennej kontekstowej.
+Po uzyskaniu tych informacji można wykonać żądania do wszystkich systemów zaplecza. Każde żądanie konstruuje nowy adres URL z informacjami o parametrach i wywołuje odpowiedni serwer i zapisuje odpowiedź w zmiennej kontekstowej.
 
 ```xml
 <send-request mode="new" response-variable-name="revenuedata" timeout="20" ignore-error="true">
@@ -206,10 +210,10 @@ Gdy te informacje mogą wysyłać żądania do wszystkich systemów zaplecza. Ka
 </send-request>
 ```
 
-Te żądania są wykonywane w sekwencji, która nie jest idealnym rozwiązaniem. 
+Te żądania są wykonywane w kolejności, która nie jest idealnym rozwiązaniem. 
 
-### <a name="responding"></a>Odpowiada
-Aby utworzyć złożone reakcji, można użyć [odpowiedzi zwracany](/azure/api-management/api-management-advanced-policies#ReturnResponse) zasad. `set-body` Elementu można użyć wyrażenia do utworzenia nowego `JObject` przy użyciu reprezentacji składnika osadzonego jako właściwości.
+### <a name="responding"></a>Zwan
+Do skonstruowania odpowiedzi złożonej można użyć zasad [powrotu odpowiedzi](/azure/api-management/api-management-advanced-policies#ReturnResponse) . Element `set-body` może użyć wyrażenia, aby utworzyć nowy `JObject` ze wszystkimi reprezentacjami składników osadzonymi jako właściwości.
 
 ```xml
 <return-response response-variable-name="existing response variable">
@@ -227,7 +231,7 @@ Aby utworzyć złożone reakcji, można użyć [odpowiedzi zwracany](/azure/api-
 </return-response>
 ```
 
-Pełne zasad wygląda następująco:
+Pełne zasady wyglądają następująco:
 
 ```xml
 <policies>
@@ -279,8 +283,8 @@ Pełne zasad wygląda następująco:
 </policies>
 ```
 
-W konfiguracji operacji symbolu zastępczego można skonfigurować zasobów pulpitu nawigacyjnego przechowywanie w pamięci podręcznej na co najmniej godzinę. 
+W konfiguracji operacji symbolu zastępczego można skonfigurować zasób pulpitu nawigacyjnego, który ma zostać zbuforowany przez co najmniej godzinę. 
 
 ## <a name="summary"></a>Podsumowanie
-Usługa API Management zapewnia elastyczne zasady, które można wybiórczo zastosować do ruchu HTTP oraz umożliwia tworzenie usług zaplecza. Czy chcesz poprawić bramy interfejsu API za pomocą alertów, funkcje, weryfikacji i sprawdzania poprawności możliwości lub utworzyć nowe zasoby złożone oparte na wielu usług zaplecza, `send-request` i powiązane zasady to droga możliwości.
+Usługa Azure API Management zapewnia elastyczne zasady, które można wybiórczo stosować do ruchu HTTP i umożliwiają składanie usług zaplecza. Bez względu na to, czy chcesz ulepszyć bramę interfejsu API za pomocą funkcji alertów, weryfikacji, możliwości sprawdzania poprawności lub tworzyć nowe zasoby złożone na podstawie wielu usług zaplecza, `send-request` i powiązane zasady otwierają światowe możliwości.
 

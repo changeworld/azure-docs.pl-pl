@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 54e2516211495f7f044f716c518291ca8008f92d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 02ae140568150b0db8ebdea065ee683e4f4eec9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118936"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189002"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Samouczek: Tworzenie modelu dzierżawy (wersja zapoznawcza)
 
@@ -79,9 +79,9 @@ Gdy administrator włączył model dzierżawy dla Twojej organizacji, możesz ut
 
    > [!NOTE]
    > Klienci korzystający z pakietu Office 365 Enterprise w Ameryka Północna mogą tworzyć model dzierżawy (angielski). Jeśli jesteś Skrytka klientam, kluczem klienta lub klientem programu Office 365 dla instytucji rządowych, ta funkcja jest niedostępna. Aby określić, czy jesteś klientem z kluczem Skrytka klienta lub klientem, zobacz:
-   > * [Skrytka klienta](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
-   > * [Klucz klienta](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
-   > * [Pakiet Office 365 dla instytucji rządowych](https://www.microsoft.com/microsoft-365/government)
+   > * [Skrytka klienta](/microsoft-365/compliance/customer-lockbox-requests)
+   > * [Klucz klienta](/microsoft-365/compliance/customer-key-overview)
+   > * [Pakiet Office 365 dla instytucji rządowych](/microsoft-365/government)
 
 1. Wybierz pozycję **Wyraź zgodę**.
 

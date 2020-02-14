@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: c0aa33cce8dc163722557b1ef868cf0de8bea8fe
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c2db107302e4851641ef430db61ec9b29ee151f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928730"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187479"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Rozwiązywanie problemów z wykonywaniem pakietów w środowisku SSIS Integration Runtime
 
@@ -30,7 +30,7 @@ Użyj wykazu usług SSIS (SSISDB), aby sprawdzić dzienniki szczegółów wykona
 
 ## <a name="common-errors-causes-and-solutions"></a>Typowe błędy, przyczyny i rozwiązania
 
-### <a name="error-message-connection-timeout-expired-or-the-service-has-encountered-an-error-processing-your-request-please-try-again"></a>Komunikat o błędzie: "Upłynął limit czasu połączenia" lub "usługa napotkała błąd podczas przetwarzania żądania. Spróbuj ponownie. "
+### <a name="error-message-connection-timeout-expired-or-the-service-has-encountered-an-error-processing-your-request-please-try-again"></a>Komunikat o błędzie: "Upłynął limit czasu połączenia" lub "usługa napotkała błąd podczas przetwarzania żądania. Spróbuj ponownie”.
 
 Oto potencjalne przyczyny i zalecane akcje:
 * Źródło danych lub miejsce docelowe są przeciążone. Sprawdź obciążenie źródła danych lub miejsca docelowego i zobacz, czy ma ono wystarczającą pojemność. Na przykład jeśli używasz Azure SQL Database, rozważ skalowanie w górę, jeśli baza danych prawdopodobnie przekroczy limit czasu.
@@ -142,7 +142,7 @@ Upewnij się, że własne środowisko Integration Runtime jest zainstalowane i u
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>Komunikat o błędzie: "błąd zadania przemieszczania: ErrorCode: 2906, ErrorMessage: wykonywanie pakietu nie powiodło się., wynik: {" OperationErrorMessages ":" błąd: żądany dostawca OLE DB... nie jest zarejestrowany. Jeśli sterownik 64-bitowy nie został zainstalowany, Uruchom pakiet w trybie 32-bitowym... "
 
-Upewnij się, że odpowiedni Dostawca używany przez łączniki OLE DB w pakiecie jest zainstalowany lokalnie na własnym komputerze Integration Runtime. Więcej szczegółów można znaleźć w temacie [Konfigurowanie samodzielnego środowiska IR jako serwera proxy dla Azure-SSIS IR w usłudze ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
+Upewnij się, że odpowiedni Dostawca używany przez łączniki OLE DB w pakiecie jest zainstalowany lokalnie na własnym komputerze Integration Runtime. Więcej szczegółów można znaleźć w temacie [Konfigurowanie samodzielnego środowiska IR jako serwera proxy dla Azure-SSIS IR w usłudze ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Komunikat o błędzie: "błąd zadania przemieszczania: ErrorCode: 2906, ErrorMessage: wykonywanie pakietu nie powiodło się., dane wyjściowe: {" OperationErrorMessages ":" Error: System. IO. FileLoadException: nie można załadować pliku lub zestawu "Microsoft. WindowsAzure. Storage, Version =..., Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' lub jeden z jego zależności. Zlokalizowana definicja manifestu zestawu nie odpowiada odwołaniu do zestawu. ..."
 
@@ -157,7 +157,7 @@ Jedną z potencjalnych przyczyn jest to, że własne środowisko Integration Run
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Komunikat o błędzie: "stan zadania przemieszczania: niepowodzenie. Błąd zadania przemieszczania: kod błędu: 2906, ErrorMessage: wykonanie pakietu nie powiodło się. wynik: {"OperationErrorMessages": "kod zakończenia modułu SSIS:-1. \ n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration":..., "durationInQueue": {"integrationRuntimeQueue":...}} "
 
-Upewnij się, C++ że środowisko uruchomieniowe języka Visual jest zainstalowane na własnym komputerze Integration Runtime. Więcej szczegółów można znaleźć w temacie [Konfigurowanie samodzielnego środowiska IR jako serwera proxy dla Azure-SSIS IR w usłudze ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
+Upewnij się, C++ że środowisko uruchomieniowe języka Visual jest zainstalowane na własnym komputerze Integration Runtime. Więcej szczegółów można znaleźć w temacie [Konfigurowanie samodzielnego środowiska IR jako serwera proxy dla Azure-SSIS IR w usłudze ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
 ### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>Nieoczekiwane wyzwolenie wielu wykonań pakietów
 

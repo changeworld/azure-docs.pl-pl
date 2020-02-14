@@ -5,12 +5,12 @@ author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 750ccbfa885b4679dfa61240b49ea9ec86a46d51
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 01e07eaee705634b03cc4462c4058e290daa8bc2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120645"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198500"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Przewodnik dewelopera dotyczący trwałych jednostek w programie .NET
 
@@ -203,7 +203,7 @@ Poza zapewnieniem kontroli typów interfejsy są przydatne do lepszego oddzielen
 
 ### <a name="example-client-signals-entity-through-interface"></a>Przykład: klient sygnalizuje jednostkę za pośrednictwem interfejsu
 
-Kod klienta umożliwia wysyłanie sygnałów do jednostek implementujących `TEntityInterface`przy użyciu `SignalEntityAsync<TEntityInterface>`. Przykład:
+Kod klienta umożliwia wysyłanie sygnałów do jednostek implementujących `TEntityInterface`przy użyciu `SignalEntityAsync<TEntityInterface>`. Na przykład:
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -371,7 +371,7 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 
 W przeciwieństwie do funkcji regularnych, metody klasy jednostek nie mają bezpośredniego dostępu do powiązań wejściowych i wyjściowych. Zamiast tego, dane wiążące muszą być przechwytywane w deklaracji funkcji punktu wejścia, a następnie przekazywać do metody `DispatchAsync<T>`. Wszystkie obiekty przenoszone do `DispatchAsync<T>` będą automatycznie przekazywać do konstruktora klasy jednostki jako argument.
 
-Poniższy przykład pokazuje, jak odwołanie `CloudBlobContainer` z [powiązania danych wejściowych obiektu BLOB](../functions-bindings-storage-blob.md#input) może zostać udostępnione jednostce opartej na klasie.
+Poniższy przykład pokazuje, jak odwołanie `CloudBlobContainer` z [powiązania danych wejściowych obiektu BLOB](../functions-bindings-storage-blob-input.md) może zostać udostępnione jednostce opartej na klasie.
 
 ```csharp
 public class BlobBackedEntity

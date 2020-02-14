@@ -3,16 +3,16 @@ title: Konfigurowanie hybrydowych klastrów Kubernetes za pomocą Azure Monitor 
 description: W tym artykule opisano sposób konfigurowania Azure Monitor kontenerów do monitorowania klastrów Kubernetes hostowanych w Azure Stack lub innym środowisku.
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6d03716b988b1139e01d41120f48ea9a9bf34be1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759896"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198058"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurowanie hybrydowych klastrów Kubernetes za pomocą Azure Monitor dla kontenerów
 
-Azure Monitor dla kontenerów zapewnia rozbudowane środowisko monitorowania dla klastrów usługi Azure Kubernetes Service (AKS) i AKS Engine hostowanych na platformie Azure. W tym artykule opisano, jak włączyć monitorowanie klastrów Kubernetes hostowanych poza platformą Azure i osiągnąć podobne środowisko monitorowania.
+Azure Monitor dla kontenerów zapewnia rozbudowane środowisko monitorowania dla usługi Azure Kubernetes Service (AKS) i [aparatu AKS na platformie Azure](https://github.com/Azure/aks-engine), która jest klastrem z własnym zarządzaniem Kubernetes hostowanym na platformie Azure. W tym artykule opisano, jak włączyć monitorowanie klastrów Kubernetes hostowanych poza platformą Azure i osiągnąć podobne środowisko monitorowania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -72,9 +72,9 @@ Jeśli znasz koncepcji wdrażanie zasobów za pomocą szablonu, zobacz:
 
 * [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../../azure-resource-manager/templates/deploy-powershell.md)
 
-* [Wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/templates/deploy-cli.md)
+* [Wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/templates/deploy-cli.md)
 
-Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Jeśli musisz zainstalować lub uaktualnić wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Aby zidentyfikować swoją wersję, uruchom `az --version`. Jeśli konieczne jest zainstalowanie lub uaktualnienie interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 Ta metoda obejmuje dwa szablony JSON. Jeden szablon Określa konfigurację, aby włączyć monitorowanie, a drugi zawiera wartości parametrów, które można skonfigurować w celu określ następujące ustawienia:
 
@@ -285,8 +285,8 @@ Jeśli wystąpi błąd podczas próby włączenia monitorowania dla hybrydowego 
 
 * Określony obszar roboczy Log Analytics jest prawidłowy
 * W obszarze roboczym Log Analytics jest konfigurowany Azure Monitor rozwiązanie kontenerów. W przeciwnym razie Skonfiguruj obszar roboczy.
-* OmsAgent REPLICASET pod kontrolą
-* OmsAgent elementu daemonset pod kontrolą
+* OmsAgent REPLICASET są uruchomione
+* OmsAgent elementu daemonset są uruchomione
 * Usługa OmsAgent Health jest uruchomiona
 * Identyfikator i klucz obszaru roboczego Log Analytics skonfigurowany na kontenerze kontenera jest zgodny z obszarem roboczym, w którym skonfigurowano szczegółowe informacje.
 * Sprawdź, czy wszystkie węzły procesów roboczych systemu Linux mają etykietę `kubernetes.io/role=agent`, aby zaplanować RS. Jeśli nie istnieje, Dodaj ją.

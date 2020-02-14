@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 894530aa9624af18f2f33a061d5cde683e9f01be
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880277"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185901"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Instrukcje: Planowanie wdrożenia dostępu warunkowego w Azure Active Directory
 
@@ -53,7 +53,7 @@ Użyj następującego przykładowego szablonu, aby utworzyć zasady dostępu war
 |Podjęto próbę dostępu:<br>— Do aplikacji w chmurze *<br>— według użytkowników i grup*<br>Użyciu<br>-Warunek 1 (na przykład poza siecią firmową)<br>-Warunek 2 (na przykład platformy urządzeń)|Udziel dostępu za pomocą (i):<br>-Wymaganie 1 (na przykład MFA)<br>-Wymaganie 2 (na przykład zgodność urządzenia)|
 |Podjęto próbę dostępu:<br>— Do aplikacji w chmurze *<br>— według użytkowników i grup*<br>Użyciu<br>-Warunek 1 (na przykład poza siecią firmową)<br>-Warunek 2 (na przykład platformy urządzeń)|Udziel dostępu za pomocą (lub):<br>-Wymaganie 1 (na przykład MFA)<br>-Wymaganie 2 (na przykład zgodność urządzenia)|
 
-Co najmniej wtedy, **gdy ma to miejsce** , definiuje podmiot zabezpieczeń **, który**próbuje uzyskać dostęp do aplikacji w chmurze (**co**). W razie potrzeby można również dołączać, w **jaki sposób** jest podejmowana próba dostępu. W przypadku dostępu warunkowego elementy, które określają, kto, co i jak są znane jako warunki. Aby uzyskać więcej informacji, zobacz [co to są warunki w Azure Active Directory dostęp warunkowy?](conditions.md) 
+Co najmniej wtedy, **gdy ma to miejsce** , definiuje podmiot zabezpieczeń **, który**próbuje uzyskać dostęp do aplikacji w chmurze (**co**). W razie potrzeby można również dołączać, w **jaki sposób** jest podejmowana próba dostępu. W przypadku dostępu warunkowego elementy, które określają, kto, co i jak są znane jako warunki. Aby uzyskać więcej informacji, zobacz [co to są warunki w Azure Active Directory dostęp warunkowy?](concept-conditional-access-conditions.md) 
 
 W **tym**celu należy zdefiniować odpowiedź zasad na warunek dostępu. W odpowiedzi można zablokować lub udzielić dostępu z dodatkowymi wymaganiami, na przykład uwierzytelnianie wieloskładnikowe (MFA). Aby zapoznać się z pełnym omówieniem, zobacz [co to są kontrole dostępu w Azure Active Directory dostęp warunkowy?](controls.md)  
 
@@ -116,7 +116,7 @@ Typowe przypadki użycia wymagane przez uwierzytelnianie wieloskładnikowe:
 
 Korzystając z zasad dostępu warunkowego, można zaimplementować automatyczne odpowiedzi na potrzeby logowania z potencjalnie złamanych tożsamości. Prawdopodobieństwo naruszenia zabezpieczeń konta jest wyrażone w formie poziomów ryzyka. Istnieją dwa poziomy ryzyka obliczone przez ochronę tożsamości: ryzyko związane z logowaniem i ryzykiem użytkownika. Aby zaimplementować odpowiedź na ryzyko związane z logowaniem, dostępne są dwie opcje:
 
-- [Warunek dotyczący ryzyka związanego z logowaniem](conditions.md#sign-in-risk) w zasadach dostępu warunkowego
+- [Warunek dotyczący ryzyka związanego z logowaniem](concept-conditional-access-conditions.md#sign-in-risk) w zasadach dostępu warunkowego
 - [Zasady dotyczące ryzyka związanego z logowaniem](../identity-protection/howto-sign-in-risk-policy.md) w usłudze Identity Protection 
 
 Rozwiązywanie ryzyka związanego z logowaniem jako warunek jest preferowaną metodą, ponieważ zapewnia więcej opcji dostosowywania.
@@ -131,7 +131,7 @@ Rozprzestrzenianie się obsługiwanych urządzeń w celu uzyskania dostępu do z
 
 ### <a name="require-approved-client-apps"></a>Wymaganie zatwierdzonych aplikacji klienckich
 
-Jedną z pierwszych decyzji, które należy podjąć w celu przeprowadzenia swoich własnych urządzeń (BYOD), jest to, czy należy zarządzać całym urządzeniem, czy tylko danymi na nim. Pracownicy używają urządzeń przenośnych zarówno do zadań osobistych, jak i służbowych. Zapewniając, że pracownicy mogą pracować wydajnie, możesz również zapobiec utracie danych. Za pomocą dostępu warunkowego usługi Azure Active Directory (Azure AD) można ograniczyć dostęp do aplikacji w chmurze do zatwierdzonych aplikacji klienckich, które mogą chronić dane firmowe. Aby uzyskać więcej informacji, zobacz artykuł [jak wymagać zatwierdzonych aplikacji klienckich do uzyskiwania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](app-based-conditional-access.md).
+Jedną z pierwszych decyzji, które należy podjąć w celu przeprowadzenia swoich własnych urządzeń (BYOD), jest to, czy należy zarządzać całym urządzeniem, czy tylko danymi na nim. Pracownicy używają urządzeń przenośnych zarówno do celów służbowych, jak i prywatnych. Zapewniając, że pracownicy mogą pracować wydajnie, możesz również zapobiec utracie danych. Za pomocą dostępu warunkowego usługi Azure Active Directory (Azure AD) można ograniczyć dostęp do aplikacji w chmurze do zatwierdzonych aplikacji klienckich, które mogą chronić dane firmowe. Aby uzyskać więcej informacji, zobacz artykuł [jak wymagać zatwierdzonych aplikacji klienckich do uzyskiwania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](app-based-conditional-access.md).
 
 ### <a name="block-legacy-authentication"></a>Blokowanie starszego uwierzytelniania
 
@@ -220,7 +220,7 @@ W przypadku konieczności wycofania nowo wdrożonych zasad należy użyć co naj
 
 1. **Wyłączenie zasad** — wyłączenie zasad gwarantuje, że nie ma zastosowania, gdy użytkownik próbuje się zalogować. Zawsze możesz wrócić i włączyć zasady, jeśli chcesz korzystać z niej.
 
-   ![Wyłącz zasady](media/plan-conditional-access/07.png)
+   ![Wyłączanie zasad](media/plan-conditional-access/07.png)
 
 1. **Wykluczanie użytkownika/grupy z zasad** — Jeśli użytkownik nie ma dostępu do aplikacji, możesz wybrać opcję wykluczenia użytkownika z zasad
 

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: e622abd16f900ca811385ddada187f3c96e7d758
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773939"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188186"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
 
@@ -33,7 +33,7 @@ Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com/).
+Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń
 
@@ -49,7 +49,7 @@ W tym artykule opisano generowanie przykładowych danych i wysyłanie ich do cen
 
 1. Wybierz subskrypcję, w której chcesz utworzyć centrum zdarzeń, i utwórz grupę zasobów o nazwie *test-hub-rg*.
 
-    ![Tworzenie grupy zasobów](media/ingest-data-event-hub/create-resource-group.png)
+    ![Utwórz grupę zasobów](media/ingest-data-event-hub/create-resource-group.png)
 
 1. Wypełnij formularz, używając poniższych informacji.
 
@@ -117,8 +117,8 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawi
     | Przestrzeń nazw centrum zdarzeń | Unikatowa nazwa przestrzeni nazw | Wybrana wcześniej nazwa, która identyfikuje Twoją przestrzeń nazw. |
     | Centrum zdarzeń | *test-hub* | Utworzone przez Ciebie centrum zdarzeń. |
     | Grupa konsumentów | *test-group* | Grupa konsumentów zdefiniowana w utworzonym przez Ciebie centrum zdarzeń. |
-    | Właściwości systemu zdarzeń | Wybierz odpowiednie właściwości | [Właściwości systemu centrum zdarzeń](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Jeśli istnieje wiele rekordów dla każdego komunikatu o zdarzeniu, właściwości systemu zostaną dodane do pierwszej z nich. Podczas dodawania właściwości systemu [Utwórz](/azure/kusto/management/tables#create-table) lub [zaktualizuj](/azure/kusto/management/tables#alter-table-and-alter-merge-table) schemat i [Mapowanie](/azure/kusto/management/mappings) tabeli w celu uwzględnienia wybranych właściwości. |
-    | Kompresja | *Brak* | Typ kompresji ładunku komunikatów centrum zdarzeń. Obsługiwane typy kompresji: *Brak, gzip*.|
+    | Właściwości systemu zdarzeń | Wybierz odpowiednie właściwości | [Właściwości systemu centrum zdarzeń](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Jeśli istnieje wiele rekordów dla każdego komunikatu o zdarzeniu, właściwości systemu zostaną dodane do pierwszej z nich. Podczas dodawania właściwości systemu [Utwórz](/azure/kusto/management/create-table-command) lub [zaktualizuj](/azure/kusto/management/alter-table-command) schemat i [Mapowanie](/azure/kusto/management/mappings) tabeli w celu uwzględnienia wybranych właściwości. |
+    | Kompresja | *Dawaj* | Typ kompresji ładunku komunikatów centrum zdarzeń. Obsługiwane typy kompresji: *Brak, gzip*.|
     | | |
 
     **Tabela docelowa:**

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 9ca2ea6a45bdf37f15f2ab4fd9c685f11f6d7f64
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 09051ad3633ddc720cb34d3d145ccf649fa9cb08
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031496"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200116"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Używanie wpisów tajnych usługi Azure Key Vault w działaniach potoku
 
@@ -63,7 +63,7 @@ Ta funkcja opiera się na tożsamości zarządzanej przez fabrykę danych.  Dowi
     > [!CAUTION]
     > Ustaw opcję bezpieczne wyjście na wartość true, aby uniemożliwić Logowanie wartości klucza tajnego w postaci zwykłego tekstu.  Wszelkie dalsze działania, które zużywają tę wartość, powinny mieć ustawioną opcję bezpiecznego wprowadzania wartość true.
 
-5. Aby użyć wartości w innym działaniu, użyj następującego wyrażenia kodu **@activity("Web"). Output. Value**.
+5. Aby użyć wartości w innym działaniu, użyj następującego wyrażenia kodu **@activity("sieci Web 1"). Output. Value**.
 
     ![Wyrażenie kodu](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

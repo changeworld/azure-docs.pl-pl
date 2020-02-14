@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie stref wyszukiwania wstecznego na potrzeby kontroli baneru SMTP na platformie Azure
+title: Skonfiguruj strefy wyszukiwania wstecznego na potrzeby kontroli baneru SMTP
 titlesuffix: Azure Virtual Network
 description: Opisuje sposób konfigurowania stref wyszukiwania wstecznego na potrzeby sprawdzania transparentu SMTP na platformie Azure
 services: virtual-network
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 084fdb7f850f3819738a982127fa98efab114197
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 6c37ba61005c9936e6421d06369d1f52b93ac264
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059022"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201700"
 ---
 # <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Skonfiguruj strefy wyszukiwania wstecznego na potrzeby kontroli baneru SMTP
 
@@ -28,7 +28,7 @@ W tym artykule opisano, jak używać strefy odwrotnej w Azure DNS i utworzyć re
 
 W przypadku hostowania serwera SMTP w Microsoft Azure może zostać wyświetlony następujący komunikat o błędzie podczas wysyłania lub odbierania komunikatu z serwerów poczty zdalnej:
 
-**554: Brak rekordu PTR**
+**554: brak rekordu PTR**
 
 ## <a name="solution"></a>Rozwiązanie
 

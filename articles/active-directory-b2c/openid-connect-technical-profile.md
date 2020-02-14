@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/24/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8bda1d3bcce37cbb7b5306d460bddd4652349fe9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fde27c468b6b5285e9e98f10a5fd04ee53c3c775
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840353"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198007"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny OpenID Connect Connect w zasadach niestandardowych Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "76840353"
 
 Azure Active Directory B2C (Azure AD B2C) zapewnia obsługę dostawcy tożsamości protokołu [OpenID Connect Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) . OpenID Connect Connect 1,0 definiuje warstwę tożsamości na serwerze OAuth 2,0 i reprezentuje stan grafiki w nowoczesnych protokołach uwierzytelniania. Za pomocą profilu technicznego OpenID Connect Connect można sfederować przy użyciu dostawcy tożsamości usługi OpenID Connect Connect, takiego jak Azure AD. Federowanie z dostawcą tożsamości umożliwia użytkownikom logowanie się przy użyciu istniejących tożsamości społecznościowych lub firmowych.
 
-## <a name="protocol"></a>Protocol (Protokół)
+## <a name="protocol"></a>Protokół
 
 Atrybut **name** elementu **Protocol** musi mieć wartość `OpenIdConnect`. Na przykład protokół dla profilu technicznego **MSA-OIDC** jest `OpenIdConnect`:
 
@@ -74,11 +74,11 @@ Profil techniczny zwraca również oświadczenia, które nie są zwracane przez 
 
 ## <a name="metadata"></a>Metadane
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| client_id | Tak | Identyfikator aplikacji dostawcy tożsamości. |
+| client_id | Yes | Identyfikator aplikacji dostawcy tożsamości. |
 | IdTokenAudience | Nie | Odbiorcy id_token. Jeśli ta wartość jest określona, Azure AD B2C sprawdza, czy token znajduje się w ramach żądania zwróconego przez dostawcę tożsamości i jest równy określonemu. |
-| METADANE | Tak | Adres URL wskazujący na dokument konfiguracji JSON sformatowany zgodnie ze specyfikacją odnajdywania OpenID Connect Connect, który jest również znany jako dobrze znany punkt końcowy konfiguracji OpenID Connect. |
+| METADANE | Yes | Adres URL wskazujący na dokument konfiguracji JSON sformatowany zgodnie ze specyfikacją odnajdywania OpenID Connect Connect, który jest również znany jako dobrze znany punkt końcowy konfiguracji OpenID Connect. |
 | ProviderName | Nie | Nazwa dostawcy tożsamości. |
 | response_types | Nie | Typ odpowiedzi zgodnie z specyfikacją OpenID Connect Connect Core 1,0. Możliwe wartości: `id_token`, `code`lub `token`. |
 | response_mode | Nie | Metoda wykorzystywana przez dostawcę tożsamości do wysyłania wyniku z powrotem do Azure AD B2C. Możliwe wartości: `query`, `form_post` (wartość domyślna) lub `fragment`. |
@@ -88,14 +88,15 @@ Profil techniczny zwraca również oświadczenia, które nie są zwracane przez 
 | UsePolicyInRedirectUri | Nie | Wskazuje, czy należy używać zasad podczas konstruowania identyfikatora URI przekierowania. Podczas konfigurowania aplikacji w dostawcy tożsamości należy określić identyfikator URI przekierowania. Identyfikator URI przekierowania wskazuje Azure AD B2C, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`.  W przypadku określenia `false`należy dodać identyfikator URI przekierowania dla każdej używanej zasady. Na przykład: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
 | MarkAsFailureOnStatusCode5xx | Nie | Wskazuje, czy żądanie do usługi zewnętrznej powinno być oznaczone jako błąd, jeśli kod stanu HTTP znajduje się w zakresie 5xx. Wartość domyślna to `false`. |
 | DiscoverMetadataByTokenIssuer | Nie | Wskazuje, czy metadane OIDC powinny być odnajdywane przy użyciu wystawcy w tokenie JWT. |
+| IncludeClaimResolvingInClaimsHandling  | Nie | W przypadku oświadczeń wejściowych i wyjściowych określa, czy w profilu technicznym znajduje się [rozpoznawanie oświadczeń](claim-resolver-overview.md) . Możliwe wartości: `true`lub `false` (wartość domyślna). Jeśli chcesz użyć programu rozpoznawania oświadczeń w profilu technicznym, ustaw tę opcję na `true`. |
 
 ## <a name="cryptographic-keys"></a>Klucze kryptograficzne
 
 Element **CryptographicKeys** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| client_secret | Tak | Klucz tajny klienta aplikacji dostawcy tożsamości. Klucz kryptograficzny jest wymagany tylko wtedy, gdy metadane **response_types** są ustawione na `code`. W takim przypadku Azure AD B2C wykonuje inne wywołanie wymiany kodu autoryzacji dla tokenu dostępu. Jeśli metadane są ustawione na `id_token` można pominąć klucz kryptograficzny.  |
+| client_secret | Yes | Klucz tajny klienta aplikacji dostawcy tożsamości. Klucz kryptograficzny jest wymagany tylko wtedy, gdy metadane **response_types** są ustawione na `code`. W takim przypadku Azure AD B2C wykonuje inne wywołanie wymiany kodu autoryzacji dla tokenu dostępu. Jeśli metadane są ustawione na `id_token` można pominąć klucz kryptograficzny.  |
 
 ## <a name="redirect-uri"></a>Identyfikator URI przekierowania
 

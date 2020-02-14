@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: d3afc784688a14e4d5d2fc6ae9dc5c1a9e45c4a0
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: cafa9d6100e03d8315bf5dd19d863ca90aadd4bb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057213"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190891"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pięć kroków związanych z zabezpieczaniem infrastruktury tożsamości
 
@@ -107,7 +107,7 @@ Aplikacje korzystające z własnych starszych metod do uwierzytelniania w usłud
 
 1. Blokuj [starsze uwierzytelnianie, jeśli używasz AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. Skonfiguruj [SharePoint Online i usługi Exchange Online do korzystania z nowoczesnego uwierzytelniania](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md).
-3. Jeśli masz Azure AD — wersja Premium, użyj [zasad dostępu warunkowego](../../active-directory/conditional-access/conditions.md) , aby zablokować starsze uwierzytelnianie, w przeciwnym razie użyj [domyślnych ustawień zabezpieczeń usługi Azure AD](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
+3. Jeśli masz Azure AD — wersja Premium, użyj [zasad dostępu warunkowego](../../active-directory/conditional-access/overview.md) , aby zablokować starsze uwierzytelnianie, w przeciwnym razie użyj [domyślnych ustawień zabezpieczeń usługi Azure AD](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
 ### <a name="block-invalid-authentication-entry-points"></a>Blokuj nieprawidłowe punkty wejścia uwierzytelniania
 

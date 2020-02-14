@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 01/17/2020
+ms.date: 02/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 04a3af7c85a361878e37cf3ee210e8a5c9f3cd30
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 9858f7ac25f2063e62dce0322f1859a0a7fcf83b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121981"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198670"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role dla zasobów platformy Azure
 
@@ -422,7 +422,8 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **Identyfikator** | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Odczytuj role i przypisania ról |
-> | Microsoft.Insights/alertRules/* | Tworzenie reguł alertów i zarządzanie nimi |
+> | Microsoft.Insights/alertRules/* | Tworzenie klasycznych reguł alertów i zarządzanie nimi |
+> | Microsoft. Insights/metricAlerts/* | Tworzenie nowych reguł alertów i zarządzanie nimi |
 > | Microsoft.Insights/components/* | Tworzenie składników usługi Insights i zarządzanie nimi |
 > | Microsoft.Insights/webtests/* | Tworzenie testów sieci Web i zarządzanie nimi |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stan dostępności dla wszystkich zasobów w określonym zakresie |

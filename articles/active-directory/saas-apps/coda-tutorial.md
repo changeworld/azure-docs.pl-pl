@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f015b1568098b506abc847608a1fca91ef72b6e9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 74da278dbbc0ac32407c345524e224ca5f7616da
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761224"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194718"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>Samouczek: integracja z logowaniem jednokrotnym (SSO) Azure Active Directory z użyciem formatu CODA
 
@@ -37,7 +37,7 @@ Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zo
 Aby rozpocząć, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) w formacie Coda.
+* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) w formacie Coda (Enterprise) z wyłączoną integracją GDrive. Skontaktuj się z [zespołem pomocy technicznej Coda](mailto:support@coda.io) , aby wyłączyć integrację usługi GDrive dla Twojej organizacji, jeśli jest ona obecnie włączona.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
@@ -47,7 +47,7 @@ W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure A
 
 * Format Coda obsługuje funkcję aprowizacji użytkowników **just in Time**
 
-* Po skonfigurowaniu formatu CODA można wymusić kontrolki sesji, które chronią eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolki sesji wykraczają poza dostęp warunkowy. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po skonfigurowaniu formatu CODA można wymusić kontrolę sesji chroniącą eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolki sesji wykraczają poza dostęp warunkowy. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-coda-from-the-gallery"></a>Dodawanie formatu CODA z galerii
 
@@ -67,12 +67,33 @@ Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą forma
 
 Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy użyciu formatu CODA, wykonaj następujące bloki konstrukcyjne:
 
+1. **[Rozpocznij Konfigurowanie logowania jednokrotnego](#begin-configuration-of-coda-sso)** w formacie Coda — aby rozpocząć konfigurację logowania jednokrotnego w postaci Coda.
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
-    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-1. **[Skonfiguruj Logowanie jednokrotne](#configure-coda-sso)** w formacie Coda — w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
-    * **[Utwórz użytkownika testowego Coda](#create-coda-test-user)** — Aby uzyskać odpowiednik elementu B. Simon w formacie Coda, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+   * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+   * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
+1. **[Skonfiguruj Logowanie jednokrotne](#configure-coda-sso)** w formacie Coda — aby ukończyć konfigurację logowania jednokrotnego w formacie Coda.
+   * **[Utwórz użytkownika testowego Coda](#create-coda-test-user)** — Aby uzyskać odpowiednik elementu B. Simon w formacie Coda, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
 1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
+
+## <a name="begin-configuration-of-coda-sso"></a>Rozpocznij konfigurację rejestracji jednokrotnej w formacie Coda
+
+Aby rozpocząć, wykonaj następujące kroki w formacie Coda.
+
+1. W formacie Coda Otwórz panel **Ustawienia organizacji** .
+
+   ![Otwórz ustawienia organizacji](media/coda-tutorial/org-settings.png)
+
+1. Upewnij się, że Twoja organizacja ma wyłączoną integrację z GDrive. Jeśli jest ona obecnie włączona, skontaktuj się z [zespołem pomocy technicznej Coda](mailto:support@coda.io) , aby ułatwić migrację z GDrive.
+
+   ![GDrive wyłączone](media/coda-tutorial/gdrive-off.png)
+
+1. W obszarze **uwierzytelnianie przy użyciu logowania jednokrotnego (SAML)** wybierz opcję **Konfiguruj SAML** .
+
+   ![Ustawienia SAML](media/coda-tutorial/saml-settings-link.png)
+
+1. Zwróć uwagę na wartości **identyfikatora jednostki** i **adresu URL odpowiedzi SAML**, które będą potrzebne w kolejnych krokach.
+
+   ![Identyfikator jednostki i adres URL odpowiedzi SAML do użycia na platformie Azure](media/coda-tutorial/azure-settings.png)
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
@@ -86,20 +107,20 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** wprowadź wartości dla następujących pól:
 
-    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://coda.io/samlId/<CUSTOMID>`
+   a. W polu tekstowym **Identyfikator** wprowadź wartość "identyfikator jednostki" z powyższych. Powinien postępować zgodnie z wzorcem: `https://coda.io/samlId/<CUSTOMID>`
 
-    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://coda.io/samlId/<CUSTOMID>/consume`
+   b. W polu tekstowym **adres URL odpowiedzi** wprowadź wartość "adres URL odpowiedzi SAML" z powyższych. Powinien postępować zgodnie z wzorcem: `https://coda.io/login/sso/saml/<CUSTOMID>/consume`
 
-    > [!NOTE]
-    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem obsługi klienta Coda](mailto:support@coda.io) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+   > [!NOTE]
+   > Twoje wartości różnią się od powyższych; wartości można znaleźć w obszarze "Konfigurowanie SAML" w formacie Coda. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
-    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+   ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
 1. W sekcji **Konfigurowanie formatu CODA** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
-    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
+   ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -108,10 +129,10 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 1. We właściwościach **użytkownika** wykonaj następujące kroki:
-   1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
+   1. W polu **Nazwa** wprowadź wartość `B.Simon`.
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -125,7 +146,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
 
-    ![Link Dodaj użytkownika](common/add-assign-user.png)
+   ![Link Dodaj użytkownika](common/add-assign-user.png)
 
 1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
 1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
@@ -133,19 +154,29 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ## <a name="configure-coda-sso"></a>Konfigurowanie logowania jednokrotnego w formacie Coda
 
-Aby skonfigurować Logowanie jednokrotne po stronie **Coda** , należy wysłać pobrany **certyfikat (base64)** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej Coda](mailto:support@coda.io). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby ukończyć instalację, wprowadź wartości z Azure Active Directory w panelu protokołu **SAML** w formacie Coda.
+
+1. W formacie Coda Otwórz panel **Ustawienia organizacji** .
+1. W obszarze **uwierzytelnianie przy użyciu logowania jednokrotnego (SAML)** wybierz opcję **Konfiguruj SAML** .
+1. Ustaw **dostawcę SAML** na **Azure Active Directory**.
+1. W polu **adres URL logowania dostawcy tożsamości**wklej **adres URL logowania** z konsoli platformy Azure.
+1. W obszarze **wystawcy dostawcy tożsamości**wklej **Identyfikator usługi Azure AD** z konsoli platformy Azure.
+1. W obszarze **certyfikat publiczny dostawcy tożsamości**wybierz opcję **Przekaż certyfikat** i wybierz pobrany wcześniej plik certyfikatu.
+1. Wybierz pozycję **Zapisz**.
+
+Spowoduje to zakończenie pracy niezbędnej do ustawienia połączenia SSO protokołu SAML.
 
 ### <a name="create-coda-test-user"></a>Utwórz użytkownika testowego Coda
 
 W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w formacie Coda. Format Coda obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w formacie Coda, po uwierzytelnieniu zostanie utworzony nowy.
 
-## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Coda w panelu dostępu należy automatycznie zalogować się do formatu CODA, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: dfa7681b43bd18e15ee929156ab9a45bb9790c5b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6e066d28afc4b0959b15284378cde682fbc05615
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845586"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190464"
 ---
 # <a name="plan-virtual-networks"></a>Planowanie sieci wirtualnych
 
@@ -27,7 +27,7 @@ Tworzenie sieci wirtualnej na potrzeby eksperymentowania z programem jest wystar
 
 ## <a name="naming"></a>Nazewnictwo
 
-Wszystkie zasoby platformy Azure mają nazwę. Nazwa musi być unikatowa w zakresie, który może się różnić w zależności od typu zasobu. Na przykład nazwa sieci wirtualnej musi być unikatowa w ramach [grupy zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), ale może być zduplikowana w ramach [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) lub [regionu](https://azure.microsoft.com/regions/#services)świadczenia usługi Azure. Definiowanie konwencji nazewnictwa, która może być stosowana spójnie podczas określania nazw zasobów, jest przydatna podczas zarządzania kilkoma zasobami sieciowymi w czasie. Aby uzyskać sugestie, zobacz [konwencje nazewnictwa](/azure/architecture/best-practices/resource-naming#networking).
+Wszystkie zasoby platformy Azure mają nazwę. Nazwa musi być unikatowa w zakresie, który może się różnić w zależności od typu zasobu. Na przykład nazwa sieci wirtualnej musi być unikatowa w ramach [grupy zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), ale może być zduplikowana w ramach [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) lub [regionu](https://azure.microsoft.com/regions/#services)świadczenia usługi Azure. Definiowanie konwencji nazewnictwa, która może być stosowana spójnie podczas określania nazw zasobów, jest przydatna podczas zarządzania kilkoma zasobami sieciowymi w czasie. Aby uzyskać sugestie, zobacz [konwencje nazewnictwa](../azure-resource-manager/management/resource-name-rules.md#microsoftnetwork).
 
 ## <a name="regions"></a>Regiony
 
@@ -66,7 +66,7 @@ Sieć wirtualna może zostać ujęta w jedną lub więcej podsieci do [limitów]
 - Możesz ograniczyć dostęp do zasobów platformy Azure, takich jak konto usługi Azure Storage lub usługa Azure SQL Database, do określonych podsieci za pomocą punktu końcowego usługi sieci wirtualnej. Ponadto możesz odmówić dostępu do zasobów z Internetu. Można utworzyć wiele podsieci i włączyć punkt końcowy usługi dla niektórych podsieci, ale nie do innych. Dowiedz się więcej o [punktach końcowych usługi](virtual-network-service-endpoints-overview.md)i zasobach platformy Azure, na których można je włączyć.
 - Można skojarzyć zero lub jedną sieciową grupę zabezpieczeń z każdą podsiecią w sieci wirtualnej. Do każdej podsieci można skojarzyć tę samą lub inną sieciową grupę zabezpieczeń. Każda sieciowa Grupa zabezpieczeń zawiera reguły, które zezwalają na ruch do i ze źródeł i miejsc docelowych lub odmawiają go. Dowiedz się więcej na temat [sieciowych grup zabezpieczeń](#traffic-filtering).
 
-## <a name="security"></a>Zabezpieczenia
+## <a name="security"></a>Bezpieczeństwo
 
 Ruch sieciowy do i z zasobów w sieci wirtualnej można filtrować przy użyciu sieciowych grup zabezpieczeń i sieciowych urządzeń wirtualnych. Można kontrolować sposób, w jaki platforma Azure kieruje ruchem z podsieci. Można także ograniczyć, kto w organizacji może współpracować z zasobami w sieciach wirtualnych.
 

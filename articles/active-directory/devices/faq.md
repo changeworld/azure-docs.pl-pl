@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a27c9ae1b75b9517bd3af92486df96434c5b34fb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207387"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185845"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory często zadawane pytania dotyczące zarządzania urządzeniami
 
@@ -55,9 +55,9 @@ Odp **.:** Stan dołączania urządzenia, wyświetlany przez **deviceID**, musi 
 
 ---
 
-### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>P: Dlaczego mój użytkownicy widzą komunikat o błędzie informujący o tym, że Twoja organizacja usunęła urządzenie "lub" Twoja organizacja wyłączyła urządzenie "na swoich urządzeniach z systemem Windows 10?
+### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>P: Dlaczego mój użytkownicy widzą komunikat o błędzie informujący o tym, że Twoja organizacja usunęła urządzenie "lub" Twoja organizacja wyłączyła urządzenie "na swoich urządzeniach z systemem Windows 10?
 
-Odp **.:** Na urządzeniach z systemem Windows 10 dołączonych lub zarejestrowanych w usłudze Azure AD użytkownicy są wystawiani jako [podstawowy token odświeżania (PRT)](concept-primary-refresh-token.md) , który umożliwia logowanie jednokrotne. Ważność PRT jest oparta na validaity samego urządzenia. Ten komunikat jest wyświetlany, jeśli urządzenie zostało usunięte lub wyłączone w usłudze Azure AD bez inicjowania akcji z samego urządzenia. Urządzenie można usunąć lub wyłączyć w usłudze Azure AD w jednym z następujących scenariuszy: 
+Odp **.:** Na urządzeniach z systemem Windows 10 dołączonych lub zarejestrowanych w usłudze Azure AD użytkownicy są wystawiani jako [podstawowy token odświeżania (PRT)](concept-primary-refresh-token.md) , który umożliwia logowanie jednokrotne. Ważność PRT jest oparta na ważności samego urządzenia. Ten komunikat jest wyświetlany, jeśli urządzenie zostało usunięte lub wyłączone w usłudze Azure AD bez inicjowania akcji z samego urządzenia. Urządzenie można usunąć lub wyłączyć w usłudze Azure AD w jednym z następujących scenariuszy: 
 
 - Użytkownik wyłącza urządzenie w portalu My Apps. 
 - Administrator (lub użytkownik) usuwa lub wyłącza urządzenie w Azure Portal lub przy użyciu programu PowerShell
@@ -71,7 +71,7 @@ Poniżej znajdują się informacje o tym, jak można skorygować te akcje.
 
 ### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>P: wyłączono lub usunięto urządzenie w Azure Portal lub przy użyciu programu Windows PowerShell. Jednak stan lokalny na urządzeniu wskazuje, że jest on nadal zarejestrowany. Co mam zrobić?
 
-Odp **.:** Ta operacja jest zaprojektowana. W takim przypadku urządzenie nie ma dostępu do zasobów w chmurze. Administratorzy mogą wykonać tę akcję w przypadku starych, zagubionych lub skradzionych urządzeń, aby zapobiec nieautoryzowanemu dostępowi. Jeśli ta akcja została wykonana przypadkowo, należy ponownie włączyć lub ponownie zarejestrować urządzenie zgodnie z poniższym opisem
+Odp **.:** Ta operacja jest zaprojektowana. W takim przypadku urządzenie nie ma dostępu do zasobów w chmurze. Administratorzy mogą wykonać tę akcję dla starych, zagubionych lub skradzionych urządzeń, aby zapobiec nieautoryzowanemu dostępowi. Jeśli ta akcja została wykonana przypadkowo, należy ponownie włączyć lub ponownie zarejestrować urządzenie zgodnie z poniższym opisem
 
 - Jeśli urządzenie zostało wyłączone w usłudze Azure AD, administrator z odpowiednimi uprawnieniami może je włączyć z poziomu portalu usługi Azure AD.  
   > [!NOTE]
@@ -119,7 +119,7 @@ Odp **.:** Ta operacja jest zaprojektowana. W takim przypadku urządzenie nie ma
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>P: czy rejestracja urządzeń z systemem Windows 10 w usłudze Azure AD obsługuje moduły TPM w trybie FIPS?
 
-Odp **.:** Rejestracja urządzeń z systemem Windows 10 jest obsługiwana tylko w przypadku modułu TPM zgodnego ze standardem FIPS 2,0 i nie jest obsługiwana przez moduł TPM 1,2. Jeśli na urządzeniach jest używany moduł TPM zgodny ze standardem FIPS 1,2, należy je wyłączyć przed przejściem do usługi Azure AD Join lub hybrydowego sprzężenia usługi Azure AD. Należy pamiętać, że firma Microsoft nie udostępnia żadnych narzędzi do wyłączania trybu FIPS dla moduły TPM, ponieważ jest on zależny od producenta modułu TPM. Aby uzyskać pomoc techniczną, skontaktuj się z producentem OEM. 
+Odp **.:** Rejestracja urządzeń z systemem Windows 10 jest obsługiwana tylko w przypadku modułu TPM zgodnego ze standardem FIPS 2,0 i nie jest obsługiwana przez moduł TPM 1,2. Jeśli na urządzeniach jest używany moduł TPM zgodny ze standardem FIPS 1,2, należy je wyłączyć przed przejściem do usługi Azure AD Join lub hybrydowego sprzężenia usługi Azure AD. Firma Microsoft nie udostępnia żadnych narzędzi do wyłączania trybu FIPS dla moduły TPM, ponieważ jest on zależny od producenta modułu TPM. Skontaktuj się z producentem OEM, aby uzyskać pomoc techniczną. 
 
 ---
 
@@ -288,12 +288,12 @@ Odp **.:** Jeśli hasło zostanie zmienione poza siecią firmową (na przykład 
 **Odp.:** 
 - W przypadku zarejestrowanych urządzeń z systemem Windows 10 w usłudze Azure AD przejdź do pozycji **ustawienia** > **konta** > **dostęp do zasobów służbowych**. Wybierz swoje konto i wybierz pozycję **Rozłącz**. Rejestracja urządzenia dotyczy profilu użytkownika w systemie Windows 10.
 - W przypadku systemów iOS i Android można użyć **ustawień** aplikacji Microsoft Authenticator > **rejestracji urządzeń** i wybrać pozycję **Wyrejestruj urządzenie**.
-- W przypadku usługi macOS można użyć aplikacji Portal firmy Microsoft Intune, aby wyrejestrować urządzenie z zarządzania i usunąć wszelkie rejestracje. 
+- W przypadku macOS można użyć aplikacji Portal firmy Microsoft Intune, aby wyrejestrować urządzenie z zarządzania i usunąć wszelkie rejestracje. 
 
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>P: jak zablokować użytkownikom możliwość dodawania dodatkowych kont służbowych (zarejestrowanych w usłudze Azure AD) na urządzeniach z systemem Windows 10 firmowych?
 
-Odp **.:** Włącz następujący rejestr, aby zablokować użytkownikom możliwość dodawania dodatkowych kont służbowych do domeny firmowej, przyłączonej do usługi Azure AD lub urządzeń z systemem Windows 10 przyłączonych do hybrydowej usługi Azure AD. Te zasady mogą również służyć do blokowania nieumyślnego uzyskiwania usługi Azure AD zarejestrowane przy użyciu tego samego konta użytkownika przez maszyny przyłączone do domeny. 
+Odp **.:** Włącz następujący rejestr, aby uniemożliwić użytkownikom dodawanie dodatkowych kont służbowych do dołączanej domeny firmowej, przyłączonej do usługi Azure AD lub do hybrydowych urządzeń z systemem Windows 10 dołączonych do usługi Azure AD. Te zasady mogą również służyć do blokowania nieumyślnego uzyskiwania usługi Azure AD zarejestrowane przy użyciu tego samego konta użytkownika przez maszyny przyłączone do domeny. 
 
 `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001`
 
@@ -312,7 +312,7 @@ Odp **.:** Wykonaj następujące czynności:
 
 **Uwagi**
 
-- Użytkownicy włączeni do zasad dostępu warunkowego potrzebują [obsługiwanej wersji pakietu Office dla programu macOS](../conditional-access/technical-reference.md#client-apps-condition) w celu uzyskania dostępu do zasobów. 
+- Użytkownicy włączeni do zasad dostępu warunkowego potrzebują [obsługiwanej wersji pakietu Office dla programu macOS](../conditional-access/concept-conditional-access-conditions.md) w celu uzyskania dostępu do zasobów. 
 - Podczas pierwszego dostępu spróbuj użyć monitu o zarejestrowanie urządzenia przy użyciu portalu firmy.
 
 ---

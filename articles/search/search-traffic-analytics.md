@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 84e60b0a942bad94d8e36eb20b5be8e3f55af80a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426988"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190938"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>Implementowanie analizy ruchu wyszukiwania na platformie Azure Wyszukiwanie poznawcze
 
@@ -106,7 +106,7 @@ Za każdym razem, gdy użytkownik wystawia żądanie wyszukiwania, należy je za
 **SearchServiceName**: (String) nazwa usługi wyszukiwania **SearchId**: (GUID) unikatowy identyfikator zapytania wyszukiwania (znajduje się w odpowiedzi wyszukiwania) **IndexName**: (String) indeks usługi wyszukiwania do zapytania **QueryTerms**: (String) warunki wyszukiwania podane przez użytkownika **Właściwości resultcount dla**: (int) liczba zwróconych dokumentów (znajduje się w odpowiedzi na wyszukiwanie) **ScoringProfile**: (ciąg) nazwa używanego profilu oceniania, jeśli istnieje
 
 > [!NOTE]
-> Liczba żądań dla zapytań generowanych przez użytkownika przez dodanie $count = true do zapytania wyszukiwania. Zobacz więcej informacji [tutaj](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)
+> Liczba żądań dla zapytań generowanych przez użytkownika przez dodanie $count = true do zapytania wyszukiwania. Więcej informacji można znaleźć [tutaj](/rest/api/searchservice/search-documents#counttrue--false).
 >
 
 > [!NOTE]
@@ -179,7 +179,7 @@ Po przydzieleniu aplikacji i zweryfikowaniu, że aplikacja jest prawidłowo poł
 
 3. Raport zostanie otwarty w Power BI Desktop i zostanie wyświetlony monit o połączenie z Application Insights i podanie poświadczeń. Informacje o połączeniu można znaleźć na Azure Portal stronach dla zasobu Application Insights. W polu poświadczenia podaj tę samą nazwę użytkownika i hasło, które są używane podczas logowania do portalu.
 
-   ![Połącz z Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Połączenie z usługą Application Insights")
+   ![Połącz z Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Połącz z Application Insights")
 
 4. Kliknij przycisk **Załaduj**.
 

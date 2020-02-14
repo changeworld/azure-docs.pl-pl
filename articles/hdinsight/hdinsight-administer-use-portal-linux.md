@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 4cf979c99c596abff075eb38f3358c6389a6b07e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.custom: hdinsightactive
+ms.date: 02/12/2020
+ms.openlocfilehash: d030e44f59d41c32c9a76c0b89c0bce1c8c54a69
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264288"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186853"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Apache Hadoop w usłudze HDInsight przy użyciu Azure Portal
 
@@ -35,7 +35,7 @@ Na stronie **Klastry usługi HDInsight** zostaną wystawione istniejące klastry
 1. W menu po lewej stronie wybierz pozycję **wszystkie usługi** .
 2. Wybierz pozycję **Klastry usługi HDInsight** w obszarze **Analiza**.
 
-## <a name="homePage"></a>Strona główna klastra 
+## <a name="homePage"></a>Strona główna klastra
 
 Wybierz nazwę klastra na stronie [**Klastry usługi HDInsight**](#showClusters) .  Spowoduje to otwarcie widoku **przeglądu** , który wygląda podobnie do poniższego obrazu:
 
@@ -46,8 +46,8 @@ Wybierz nazwę klastra na stronie [**Klastry usługi HDInsight**](#showClusters)
 | Element| Opis |
 |---|---|
 |Move|Przenosi klaster do innej grupy zasobów lub innej subskrypcji.|
-|Usuń|Usuwa klaster. |
-|Odśwież|Odświeża widok.|
+|Usuwanie|Usuwa klaster. |
+|Odświeżanie|Odświeża widok.|
 
 **Menu po lewej:**  
 
@@ -55,7 +55,7 @@ Wybierz nazwę klastra na stronie [**Klastry usługi HDInsight**](#showClusters)
 
     | Element| Opis |
     |---|---|
-    |Przegląd|Zawiera ogólne informacje o klastrze.|
+    |Omówienie|Zawiera ogólne informacje o klastrze.|
     |Dziennik aktywności|Pokaż i zbadaj dzienniki aktywności.|
     |Kontrola dostępu (IAM)|Korzystanie z przypisań ról.  Zobacz [Korzystanie z przypisań ról w celu zarządzania dostępem do zasobów subskrypcji platformy Azure](../role-based-access-control/role-assignments-portal.md).|
     |Tagi|Pozwala ustawić pary klucz/wartość, aby zdefiniować niestandardową taksonomię usług w chmurze. Na przykład możesz utworzyć klucz o nazwie **projekt**, a następnie użyć wspólnej wartości dla wszystkich usług skojarzonych z określonym projektem.|
@@ -70,7 +70,7 @@ Wybierz nazwę klastra na stronie [**Klastry usługi HDInsight**](#showClusters)
     |Rozmiar klastra|Sprawdź, Zwiększ i zmniejsz liczbę węzłów procesu roboczego klastra. Zobacz [skalowanie klastrów](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Limity przydziału|Wyświetl używane i dostępne rdzenie dla subskrypcji.|
     |SSH + logowanie do klastra|Zawiera instrukcje dotyczące łączenia się z klastrem przy użyciu połączenia Secure Shell (SSH). Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).|
-    |Data Lake Storage 1. generacji|Skonfiguruj Data Lake Storage Gen1 dostępu.  Zobacz [Szybki Start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
+    |Usługa Data Lake Storage 1. generacji|Skonfiguruj Data Lake Storage Gen1 dostępu.  Zobacz [Szybki Start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
     |Konta magazynu|Wyświetlanie kont magazynu i kluczy. Konta magazynu są konfigurowane podczas procesu tworzenia klastra.|
     |Aplikacje|Dodawanie/usuwanie aplikacji usługi HDInsight.  Zobacz [Instalowanie niestandardowych aplikacji usługi HDInsight](hdinsight-apps-install-custom-applications.md).|
     |Akcje skryptu|Uruchom skrypty bash w klastrze. Zobacz [Dostosowywanie klastrów usługi HDInsight opartych na systemie Linux przy użyciu akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).|
@@ -93,7 +93,7 @@ Wybierz nazwę klastra na stronie [**Klastry usługi HDInsight**](#showClusters)
 
     | Element| Opis |
     |---|---|
-    |Resource Health|Zobacz [Omówienie usługi Azure Resource Health](../service-health/resource-health-overview.md).|
+    |Kondycja zasobów|Zobacz [Omówienie usługi Azure Resource Health](../service-health/resource-health-overview.md).|
     |Nowe żądanie pomocy technicznej|Umożliwia utworzenie biletu pomocy technicznej w ramach pomocy technicznej firmy Microsoft.|
 
 ## <a name="properties"></a>Właściwości klastra
@@ -107,12 +107,13 @@ Na [stronie głównej klastra](#homePage)w obszarze **Ustawienia** wybierz pozyc
 |Prywatny punkt końcowy|Prywatny punkt końcowy klastra.|
 |Secure Shell (SSH)|Nazwa użytkownika i hosta, które mają być używane podczas uzyskiwania dostępu do klastra za pośrednictwem protokołu SSH.|
 |STAN|Jedno z: przerwane, zaakceptowane, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, operacyjne, uruchomione, Error, usuwanie, usunięte, TimedOut, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued lub ClusterCustomization.|
-|REGION|Lokalizacja platformy Azure. Aby zapoznać się z listą obsługiwanych lokalizacji platformy Azure, zobacz pole listy rozwijanej **region** w [cenniku usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).|
+|OKOLICY|Lokalizacja platformy Azure. Aby zapoznać się z listą obsługiwanych lokalizacji platformy Azure, zobacz pole listy rozwijanej **region** w [cenniku usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).|
 |DATA UTWORZENIA|Data wdrożenia klastra.|
-|System operacyjny|**System Windows** lub **Linux**.|
-|TYP|Hadoop, HBase, burza, Spark.|
+|SYSTEM OPERACYJNY|**System Windows** lub **Linux**.|
+|TYPE|Hadoop, HBase, burza, Spark.|
 |Wersja|Zobacz [wersje usługi HDInsight](hdinsight-component-versioning.md).|
-|RAMACH|Nazwa subskrypcji.|
+|Minimalna wersja protokołu TLS|Wersja protokołu TLS.|
+|SUBSKRYPCJA|Nazwa subskrypcji.|
 |DOMYŚLNE ŹRÓDŁO DANYCH|Domyślny system plików klastra.|
 |Rozmiary węzłów procesu roboczego|Wybrany rozmiar maszyny wirtualnej węzłów procesu roboczego.|
 |Rozmiar węzła głównego|Wybrany rozmiar maszyny wirtualnej węzłów głównych.|
@@ -221,9 +222,9 @@ Hasło zostanie zmienione we wszystkich węzłach w klastrze.
    | Pole | Wartość |
    | --- | --- |
    | Typ skryptu | Z listy rozwijanej wybierz pozycję **— niestandardowa** .|
-   | Nazwa |"Zmień hasło ssh" |
+   | Name (Nazwa) |"Zmień hasło ssh" |
    | Identyfikator URI skryptu bash |Identyfikator URI pliku changepassword.sh |
-   | Typy węzłów: (kierownik, proces roboczy, Nimbus, Nadzorca, dozorcy itp.) |✓ dla wszystkich typów węzłów na liście |
+   | Typy węzłów: (kierownik, proces roboczy, Nimbus, Nadzorca lub dozorcy). |✓ dla wszystkich typów węzłów na liście |
    | Parametry |Wprowadź nazwę użytkownika SSH, a następnie nowe hasło. Między nazwą użytkownika i hasłem powinna być jedna spacja. |
    | Utrwalaj tę akcję skryptu... |Nie zaznaczaj tego pola. |
 

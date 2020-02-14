@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 3d741361cdeb25d6fc063f95da7bc301178f31fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 557cfeb66301650e932e5ce271080e9fc8a256d6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818077"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191167"
 ---
 # <a name="storefront-details-tab"></a>Karta szczegółów sklepu
 
 W tym artykule wyjaśniono, jak wprowadzić szczegóły dotyczące Twojego sklepu. Karta **szczegóły witryny sklepu** zawiera następujące sekcje:
 
--   **Szczegóły ofert**
+-   **Szczegóły oferty**
 -   **Informacje o wydawcy**
 -   **Szczegóły listy**
 -   **Artefakty marketingowe**
@@ -71,7 +71,7 @@ Wprowadź opis oferty usługi konsultingowej w polu **opis oferty** . Dobry opis
 
 Podaj swój adres e-mail lub numer telefonu w opisie oferty. Przycisk **kontakt ze mną** jest dołączony do oferty, aby przekazać potencjalni klienci do docelowego zarządzania potencjalnym liderem.
 
-Wprowadź opis oferty w formacie promocji. Jeśli nie masz doświadczenia w zakresie promocji lub formatowania kodu HTML, zobacz [Korzystanie z promocji w przypadku pisania dokumentów](https://docs.microsoft.com/contribute/how-to-write-use-markdown).
+Wprowadź opis oferty w formacie promocji. Jeśli nie masz doświadczenia w zakresie promocji lub formatowania kodu HTML, zobacz [Korzystanie z promocji w przypadku pisania dokumentów](/contribute/markdown-reference).
 
 Użyj tych formatów, aby upewnić się, że Twoja oferta jest łatwa do odczytania przez klientów.
 
@@ -85,13 +85,13 @@ Poniższy przykład ilustruje dobrze utworzony opis oferty oraz jego powiązaną
 
 **Opis oferty**: te 3-dniowe warsztaty są przeznaczone dla liderów technicznych i służbowych i są przechowywane w lokacji klienta.
 
-Plan
+Punktu
 
-Dzień 1
+1 dzień
 
 -   Koncentruj się na sposobach zabezpieczania, skalowania i organizowania danych w chmurze firmy Microsoft przy użyciu Azure Data Lake, usługi Azure HDInsight lub Azure SQL Data Warehouse.
 
-Dzień 2
+2 dni
 
 -   Opisuje sposób konfigurowania i wdrażania zaawansowanych rozwiązań analitycznych za pomocą oprogramowania Microsoft R i Azure Machine Learning.
 

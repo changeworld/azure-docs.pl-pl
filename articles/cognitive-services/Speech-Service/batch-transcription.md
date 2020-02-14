@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 8a53f1cfbde2f518848e7ef1104bf41ba4996961
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: dc473c814cdd69204cddd976bc77f19b5db567b1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936402"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200082"
 ---
 # <a name="how-to-use-batch-transcription"></a>Jak korzystać z transkrypcji partii
 
@@ -38,7 +38,7 @@ Obok łatwego w użyciu interfejsu API nie musisz wdrażać niestandardowych pun
 
 ### <a name="subscription-key"></a>Klucz subskrypcji
 
-Jak z wszystkich funkcji usługi rozpoznawania mowy, tworzenie klucz subskrypcji z [witryny Azure portal](https://portal.azure.com) postępując zgodnie z naszym [Wprowadzenie — przewodnik](get-started.md).
+Podobnie jak w przypadku wszystkich funkcji usługi Speech, można utworzyć klucz subskrypcji z [Azure Portal](https://portal.azure.com) , postępując zgodnie z [przewodnikiem](get-started.md)wprowadzenie.
 
 >[!NOTE]
 > Aby można było użyć transkrypcji partii, wymagana jest Standardowa subskrypcja (S0) dla usługi rozpoznawania mowy. Bezpłatna subskrypcja kluczy (F0) nie będzie działać. Aby uzyskać więcej informacji, zobacz [Cennik i limity](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
@@ -61,7 +61,7 @@ Interfejs API transkrypcji usługi Batch obsługuje następujące formaty:
 
 W przypadku strumieni stereofonicznych audio lewy i prawy są dzielone podczas transkrypcji. Dla każdego kanału tworzony jest plik wynikowy JSON. Sygnatury czasowe wygenerowane na wypowiedź umożliwiają deweloperowi utworzenie uporządkowanej końcowej transkrypcji.
 
-### <a name="configuration"></a>Konfigurowanie
+### <a name="configuration"></a>Konfiguracja
 
 Parametry konfiguracji są podane jako dane JSON:
 
@@ -89,14 +89,14 @@ Użyj tych opcjonalnych właściwości, aby skonfigurować transkrypcję:
 
 | Parametr | Opis |
 |-----------|-------------|
-| `ProfanityFilterMode` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `None` która wyłącza filtrowanie wulgaryzmów `Masked` gwiazdek, która zastępuje wulgaryzmów `Removed` z wyników, które powoduje usunięcie wszystkich wulgaryzmów lub `Tags` dodaje tagi "wulgaryzmów". Ustawieniem domyślnym jest `Masked`. |
-| `PunctuationMode` | Określa sposób obsługi znaków interpunkcyjnych w wyniki rozpoznawania. Akceptowane wartości to `None` która wyłącza znak interpunkcyjny, `Dictated` co oznacza jawne znak interpunkcyjny, `Automatic` umożliwiającą dekodera przeciwdziałania znak interpunkcyjny, lub `DictatedAndAutomatic` co oznacza definiowane znaków interpunkcyjnych lub automatyczny. |
+| `ProfanityFilterMode` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `None`, które uniemożliwiają filtrowanie z powodu niedostępności, `Masked` które zastępują niewulgarne gwiazdkami, `Removed`, które usuwają z wyniku wszystkie niezbyt wulgarne dane, lub `Tags`, które dodaje Tagi "wulgarności". Ustawieniem domyślnym jest `Masked`. |
+| `PunctuationMode` | Określa sposób obsługi znaków interpunkcyjnych w wyniki rozpoznawania. Akceptowane wartości to `None`, które wyłączają interpunkcję, `Dictated`, która oznacza jawną interpunkcję, `Automatic`, która umożliwia dekoderowi odliczanie z interpunkcją, lub `DictatedAndAutomatic`, które oznacza podyktowane znaczniki interpunkcyjne lub automatyczne. |
 | `AddWordLevelTimestamps` | Określa, czy sygnatury czasowe poziomu słowa mają być dodawane do danych wyjściowych. Akceptowane wartości to `true`, które umożliwiają wyłączanie sygnatur czasowych na poziomie programu Word i `false` (wartość domyślna). |
 | `AddSentiment` | Należy dodać tonacji do wypowiedź. Akceptowane wartości to `true`, które umożliwiają wyłączenie opcji tonacji na wypowiedź i `false` (wartość domyślna). |
 | `AddDiarization` | Określa, że analiza diarization powinna zostać przeprowadzona na wejściu, który powinien być kanałem mono zawierającym dwa głosy. Akceptowane wartości to `true`, które umożliwiają wyłączenie programu diarization i `false` (wartość domyślna). Wymaga również, aby `AddWordLevelTimestamps` mieć wartość true.|
 |`TranscriptionResultsContainerUrl`|Opcjonalny adres URL z [sygnaturą dostępu współdzielonego usługi](../../storage/common/storage-sas-overview.md) do zapisywalnego kontenera na platformie Azure. Wynik zostanie zapisany w tym kontenerze.
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 
 Transkrypcja usługi Batch obsługuje [usługę Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) do odczytu i zapisywania transkrypcji w magazynie.
 
@@ -129,8 +129,8 @@ W przypadku wejścia audio mono jest tworzony jeden plik wynikowy transkrypcji. 
                                                              speakerId as a string if
                                                              diarization requested for
                                                              mono audio file'
-          "Offset": number                                  'time in milliseconds'
-          "Duration": number                                'time in milliseconds'
+          "Offset": number                                  'time in ticks (1 tick is 100 nanosec)'
+          "Duration": number                                'time in ticks (1 tick is 100 nanosec)'
           "OffsetInSeconds" : number                        'Real number. Two decimal places'
           "DurationInSeconds" : number                      'Real number. Two decimal places'
           "NBest": [
@@ -150,8 +150,8 @@ W przypadku wejścia audio mono jest tworzony jeden plik wynikowy transkrypcji. 
               "Words": [
                 {
                   "Word": string
-                  "Offset": number                          'time in milliseconds'
-                  "Duration": number                        'time in milliseconds'
+                  "Offset": number                          'time in ticks (1 tick is 100 nanosec)'
+                  "Duration": number                        'time in ticks (1 tick is 100 nanosec)'
                   "OffsetInSeconds": number                 'Real number. Two decimal places'
                   "DurationInSeconds": number               'Real number. Two decimal places'
                   "Confidence": number                      'between 0 and 1'
@@ -199,7 +199,7 @@ Aby zażądać diarization, wystarczy dodać odpowiedni parametr w żądaniu HTT
 
 Znaczniki czasu na poziomie słowa również muszą mieć wartość "włączone", ponieważ parametry w powyższym żądaniu wskazują.
 
-## <a name="sentiment-analysis"></a>Analiza opinii
+## <a name="sentiment-analysis"></a>Analiza tonacji
 
 Funkcja tonacji szacuje tonacji wyrażoną w dźwięku. Tonacji jest wyrażona wartością z zakresu od 0 do 1 dla `Negative`, `Neutral`i `Positive` tonacji. Na przykład analiza tonacji może być używana w scenariuszach centrum połączeń:
 
@@ -247,7 +247,7 @@ Przykład danych wyjściowych JSON wygląda następująco:
 }
 ```
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 
 Usługa transkrypcji może obsłużyć dużą liczbę przesłanych transkrypcji. Można badać stan transkrypcji za pomocą `GET` w [metodzie transkrypcji](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions). Zachowaj informacje zwracane do rozsądnego rozmiaru, określając parametr `take` (kilka setek). [Usuwanie transkrypcji](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription) regularnie z usługi po pobraniu wyników. Pozwoli to zagwarantować szybkie odpowiedzi od wywołań zarządzania transkrypcji.
 
@@ -265,7 +265,7 @@ Przykładowy kod skonfiguruje klienta i prześle żądanie transkrypcji. Następ
 
 Aby uzyskać szczegółowe informacje o poprzednich wywołaniach, zobacz [dokument struktury Swagger](https://westus.cris.ai/swagger/ui/index). Aby wyświetlić pełny przykład, przejdź do witryny [GitHub](https://aka.ms/csspeech/samples) w podkatalogu `samples/batch`.
 
-Zwróć uwagę na asynchroniczne Instalatora w celu opublikowanie audio i odbieranie stanu transkrypcji. Klient, który tworzysz to klient HTTP platformy .NET. Brak `PostTranscriptions` Metoda przesyłania plików audio i `GetTranscriptions` metody do odbierania wyników. `PostTranscriptions` Zwraca uchwyt, a `GetTranscriptions` używa jej do utworzenia dojście można pobrać stanu transkrypcji.
+Zwróć uwagę na asynchroniczne Instalatora w celu opublikowanie audio i odbieranie stanu transkrypcji. Klient, który tworzysz to klient HTTP platformy .NET. Istnieje `PostTranscriptions` metoda wysyłania szczegółów pliku audio i metody `GetTranscriptions` na potrzeby otrzymywania wyników. `PostTranscriptions` zwraca dojście, a `GetTranscriptions` używa go do utworzenia dojścia w celu uzyskania stanu transkrypcji.
 
 Bieżący kod przykładowy nie określono modelu niestandardowego. Usługa używa modele planu bazowego dla przepisywania pliku lub plików. Aby określić te modele, można przekazać w tej samej metody identyfikatory modelu akustycznego i modelu języka.
 

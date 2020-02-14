@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 1c3fc4ebaffe2347a9c46b626b94042d1c9cfe11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: df4ec6ddbba029eb29d2440717697968f8c79302
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031857"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191069"
 ---
 # <a name="troubleshoot-private-endpoint-connectivity-problems"></a>Rozwiązywanie problemów z łącznością z prywatnym punktem końcowym
 
@@ -100,7 +100,7 @@ Wykonaj kroki opisane poniżej, aby upewnić się, że wszystkie typowe konfigur
        ![Reguły ruchu wychodzącego sieciowej grupy zabezpieczeń](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
 5. Jeśli połączenie ma zweryfikowane wyniki, problem z łącznością może być związany z innymi aspektami, takimi jak wpisy tajne, tokeny i hasła w warstwie aplikacji.
-   - W takim przypadku Przejrzyj konfigurację zasobu linku prywatnego skojarzonego z prywatnym punktem końcowym. Zapoznaj się z [przewodnikiem rozwiązywania problemów z prywatnym linkiem](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting). 
+   - W takim przypadku Przejrzyj konfigurację zasobu linku prywatnego skojarzonego z prywatnym punktem końcowym. Zapoznaj się z [przewodnikiem rozwiązywania problemów z prywatnym linkiem](troubleshoot-private-link-connectivity.md). 
 
 6. Skontaktuj się z zespołem [pomocy technicznej platformy Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , jeśli problem nadal nie został rozwiązany i nadal istnieje problem z połączeniem. 
 
@@ -108,4 +108,4 @@ Wykonaj kroki opisane poniżej, aby upewnić się, że wszystkie typowe konfigur
 
  * [Utwórz prywatny punkt końcowy w zaktualizowanej podsieci (Azure Portal)](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
 
- * [Przewodnik rozwiązywania problemów z linkiem prywatnym](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting)
+ * [Przewodnik rozwiązywania problemów z linkiem prywatnym](troubleshoot-private-link-connectivity.md)

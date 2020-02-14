@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f4ce3cd0db20f76aa6169f15254cf36ee64151a5
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 03333e853a2ab7606ebe60cc3f68bcb5facfbdb4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406740"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191021"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Filtry na platformie Azure Wyszukiwanie poznawcze 
 
@@ -51,7 +51,7 @@ Jeśli chcesz zawęzić efekt wyszukiwania, filtry nie są jedynym wyborem. Te a
 
 + parametr `$select` służy do określania, które pola mają być uwzględnione w zestawie wyników, efektywnie przycinania odpowiedzi przed wysłaniem jej do aplikacji wywołującej. Ten parametr nie ogranicza zapytania ani nie zmniejsza kolekcji dokumentów, ale jeśli celem jest mniejsza odpowiedź, ten parametr jest opcją do uwzględnienia. 
 
-Aby uzyskać więcej informacji na temat każdego z parametrów, zobacz [Wyszukiwanie dokumentów > żądanie > parametry zapytania](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
+Aby uzyskać więcej informacji na temat każdego z parametrów, zobacz [Wyszukiwanie dokumentów > żądanie > parametry zapytania](/rest/api/searchservice/search-documents#query-parameters).
 
 
 ## <a name="how-filters-are-executed"></a>Jak są wykonywane filtry
@@ -197,8 +197,8 @@ Aby obejść więcej przykładów, zobacz [składnia wyrażenia filtru OData > p
 
 ## <a name="see-also"></a>Zobacz też
 
-+ [Jak działa wyszukiwanie pełnotekstowe na platformie Azure Wyszukiwanie poznawcze](search-lucene-query-architecture.md)
-+ [Interfejs API REST dokumentów wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Jak działa wyszukiwanie pełnotekstowe w usłudze Azure Cognitive Search](search-lucene-query-architecture.md)
++ [Interfejs API REST wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [Prosta składnia zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Składnia zapytań Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 + [Obsługiwane typy danych](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)

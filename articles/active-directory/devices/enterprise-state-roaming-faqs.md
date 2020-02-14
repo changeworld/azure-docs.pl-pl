@@ -1,124 +1,140 @@
 ---
-title: Często zadawane pytania dotyczące roaming ustawień i danych | Dokumentacja firmy Microsoft
-description: Zawiera odpowiedzi na pytania administratorów IT może być o ustawieniach i synchronizowanie danych aplikacji.
+title: Często zadawane pytania Enterprise State Roaming — Azure Active Directory
+description: Często zadawane pytania dotyczące ESR
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 06/28/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f9270aff6bc2aab7e210716ffe3e21efb07b8ed
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 87a9c9b808e737f8e72da803085bfebd8263319a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481951"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194351"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Roaming ustawień i danych — często zadawane pytania
-Ten artykuł zawiera odpowiedzi na kilka pytań, na które Administratorzy IT mogą się pojawić w ustawień i synchronizacji danych w aplikacji.
 
-## <a name="what-data-roams"></a>Jakich danych uzyskuje mobilny dostęp?
-**Ustawienia Windows**: ustawienia komputera, które są wbudowane w system operacyjny Windows. Ogólnie rzecz biorąc są to ustawienia, które personalizowanie komputera użytkownika i obejmują one następujące ogólne kategorie:
+W tym artykule znajdują się odpowiedzi na pytania, które mogą być dostępne dla administratorów IT dotyczących ustawień i synchronizacji danych aplikacji.
 
-* *Motyw*, która obejmuje funkcje, takie jak ustawienia motywu i paska zadań pulpitu.
-* *Ustawienia programu Internet Explorer*, włącznie z ostatnio otwartych karty i Ulubione.
-* *Ustawienia przeglądarki Microsoft Edge*, na przykład Ulubione i przeczytania.
+## <a name="what-data-roams"></a>Jakie dane są przekazywane?
+
+**Ustawienia systemu Windows**: ustawienia komputera wbudowane w system operacyjny Windows. Zazwyczaj są to ustawienia, które spersonalizują Twój komputer i obejmują następujące szerokie Kategorie:
+
+* *Motyw*, który obejmuje funkcje, takie jak kompozycja pulpitu i ustawienia paska zadań.
+* *Ustawienia programu Internet Explorer*, w tym ostatnio otwierane karty i Ulubione.
+* *Ustawienia przeglądarki Microsoft Edge*, takie jak Ulubione i listy do czytania.
 * *Hasła*, w tym hasła internetowe, profile sieci Wi-Fi i inne.
-* *Preferencje językowe*, który zawiera ustawienia układów klawiatury, językiem, daty i godziny oraz więcej.
-* *Łatwość dostępu do funkcji*, takich jak motyw o wysokim kontraście i Narrator, Lupa.
-* *Inne ustawienia Windows*, takie jak ustawienia myszy.
-
-**Dane aplikacji**: Uniwersalne aplikacje Windows mogła zapisywać dane ustawienia, do folderu mobilnego, a wszystkie dane zapisywane do tego folderu zostaną automatycznie zsynchronizowane. To Ty deweloperem poszczególnych aplikacji, aby zaprojektować aplikację, aby skorzystać z tej możliwości. Aby uzyskać więcej informacji na temat programowania aplikacji uniwersalnych Windows, która korzysta z roamingu, zobacz [interfejsu API usługi storage appdata](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) i [systemu Windows 8 appdata roaming blog deweloperów](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
-
-## <a name="what-account-is-used-for-settings-sync"></a>Które konto jest używane do celów synchronizacji ustawień?
-W Windows 8.1 ustawienia synchronizacji zawsze używane kont Microsoft konsumenta. Użytkownicy korporacyjni miał możliwość łączenia z konta Microsoft do swojego konta domeny usługi Active Directory do uzyskania dostępu do ustawień synchronizacji. W systemie Windows 10 to połączone konta Microsoft, że funkcja została zastąpiona framework konta podstawowy/dodatkowy.
-
-Konto podstawowy jest zdefiniowany jako konto używane do logowania się na Windows. Może to być konto Microsoft, konta usługi Azure Active Directory (Azure AD), konto usługi Active Directory w środowisku lokalnym lub kontem lokalnym. Oprócz podstawowego konta użytkowników systemu Windows 10 można dodać co najmniej jedno konto dodatkowej chmury na urządzenie. Drugie konto jest zazwyczaj kontem Microsoft, konta usługi Azure AD lub niektóre inne konto, takiego jak Gmail lub Facebook. Te konta pomocnicze zapewniają dostęp do dodatkowych usług, takich jak logowanie jednokrotne i Store Windows, ale nie są one w stanie zasilania, ustawienia synchronizacji.
-
-W systemie Windows 10, konto podstawowe dla tego urządzenia może służyć do synchronizacji ustawień (zobacz [jak wykonać uaktualnienie z synchronizacja ustawień konta Microsoft w systemie Windows 8 do usługi Azure AD synchronizacja ustawień w systemie Windows 10?](enterprise-state-roaming-faqs.md#how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10)).
-
-Dane nigdy nie jest mieszane między kontami innego użytkownika na urządzeniu. Istnieją dwie reguły synchronizacji ustawień:
-
-* Windows ustawienia "wędrują" zawsze przy użyciu podstawowego konta.
-* Dane aplikacji są oznaczane za pomocą konta używanego do nabywania aplikacji. Tylko aplikacje oznaczone przy użyciu podstawowego konta zostanie zsynchronizowany. Znakowanie własność aplikacji jest określana w przypadku aplikacji ładowanych za pośrednictwem Windows Store lub zarządzania urządzeniami przenośnymi (MDM).
-
-Jeśli nie można zidentyfikować właściciela aplikacji, jej "wędrują" z kontem podstawowym. Jeśli urządzenie zostanie uaktualniony z systemu Windows 8 lub Windows 8.1 do systemu Windows 10, wszystkie aplikacje są oznaczane jako uzyskanych przy użyciu konta Microsoft. Jest to spowodowane większość użytkowników nabywania aplikacji za pośrednictwem Windows Store i wystąpił brak obsługi Windows Store dla konta usługi Azure AD przed systemem Windows 10. Jeśli aplikacja zostanie zainstalowana za pomocą licencji offline, aplikacja zostanie oznaczone przy użyciu podstawowego konta na urządzeniu.
+* *Preferencje językowe*, które obejmują ustawienia układów klawiatury, języka systemu, daty i godziny itd.
+* *Ułatwienia dostępu*, takie jak motyw o wysokim kontraście, narrator i Lupa.
+* *Inne ustawienia systemu Windows*, takie jak ustawienia myszy.
 
 > [!NOTE]
-> Urządzenia z systemem Windows 10, są należących do przedsiębiorstwa, które są połączone z usługą Azure AD można już połączyć swoje konta Microsoft do konta domeny. Łączenie konta Microsoft z kontem domeny i mają synchronizacji danych wszystkich użytkowników do konta Microsoft (czyli konto Microsoft mobilnych za pomocą połączonego konta Microsoft i funkcjonalności usługi Active Directory) zostanie usunięty z systemu Windows 10 urządzenia, które są przyłączone do połączone środowisko usługi Active Directory lub Azure AD.
->
->
+> Ten artykuł ma zastosowanie do starszej przeglądarki opartej na języku HTML Microsoft Edge, która została uruchomiona z systemem Windows 10 w lipcu 2015. Artykuł nie ma zastosowania do nowej przeglądarki opartej na formacie chromu Microsoft Edge wydanej 15 stycznia 2020. Aby uzyskać więcej informacji na temat zachowania synchronizacji dla nowej przeglądarki Microsoft Edge, zobacz artykuł [Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync).
 
-## <a name="how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10"></a>Jak uaktualnić z synchronizacja ustawień konta Microsoft w systemie Windows 8 do usługi Azure AD synchronizacja ustawień w systemie Windows 10?
-Jeśli użytkownik są przyłączone do domeny usługi Active Directory z systemem Windows 8.1 za pomocą połączonego konta Microsoft, zsynchronizuje ustawienia za pomocą konta Microsoft. Po uaktualnieniu do systemu Windows 10, będziesz synchronizować ustawienia użytkownika za pomocą konta Microsoft, tak długo, jak są przyłączone do domeny użytkownika i domeną usługi Active Directory nie łączy się z usługą Azure AD.
+**Dane aplikacji**: Aplikacje uniwersalne systemu Windows mogą zapisywać dane ustawień w folderze mobilnym, a wszystkie dane zapisane w tym folderze zostaną automatycznie zsynchronizowane. Aby skorzystać z tej możliwości, można zaprojektować aplikację przy użyciu poszczególnych deweloperów aplikacji. Aby uzyskać więcej informacji na temat sposobu tworzenia uniwersalnej aplikacji systemu Windows, która korzysta z roamingu, zobacz blog [interfejsu API magazynu AppData](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) i [Windows 8 AppData mobilnego dewelopera](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
 
-Jeśli lokalnej domeny usługi Active Directory łączą się z usługą Azure AD, urządzenie podejmie próbę synchronizacji ustawień za pomocą połączonym koncie usługi Azure AD. Jeśli administrator usługi Azure AD nie zostanie włączony Roaming stanu dla przedsiębiorstw, usługi połączone konto usługi Azure AD zostanie zatrzymane, synchronizowanie ustawień. Jeśli jesteś użytkownikiem systemu Windows 10 i zaloguj się przy użyciu tożsamości usługi Azure AD, możesz rozpocząć, synchronizowanie ustawień systemu windows, tak szybko, jak administrator włącza synchronizację ustawień za pomocą usługi Azure AD.
+## <a name="what-account-is-used-for-settings-sync"></a>Jakie konto jest używane na potrzeby synchronizacji ustawień?
 
-Jeśli jakiekolwiek dane osobowe są przechowywane na urządzeniu z systemem firmowych, należy pamiętać, że systemu operacyjnego Windows i danych aplikacji rozpocznie się synchronizacja z usługą Azure AD. Ma to następujące skutki:
+W Windows 8.1 ustawienia synchronizują zawsze używane odbiorcy konta Microsoft. Użytkownicy korporacyjni mieli możliwość łączenia konto Microsoft z Active Directory konta domeny w celu uzyskania dostępu do synchronizacji ustawień. W systemie Windows 10 ta podłączona funkcja konto Microsoft jest zastępowana przez podstawową/pomocniczą strukturę konta.
 
-* Ustawienia osobiste konta Microsoft zostanie odstępstw niezależnie od ustawienia na pracy lub szkołą kont usługi Azure AD. Jest to spowodowane synchronizowanie konta Microsoft i ustawienia usługi Azure AD są teraz przy użyciu osobnych kont.
-* Dane osobowe, takie jak hasła sieci Wi-Fi, sieci web, poświadczeń i Ulubione programu Internet Explorer, które wcześniej zostały zsynchronizowane za pośrednictwem połączonego konta Microsoft zostaną zsynchronizowane za pomocą usługi Azure AD.
+Konto podstawowe jest zdefiniowane jako konto używane do logowania się do systemu Windows. Może to być konto Microsoft, konto Azure Active Directory (Azure AD), konto Active Directory lokalnego lub konto lokalne. Oprócz konta podstawowego użytkownicy systemu Windows 10 mogą dodać do urządzenia co najmniej jedno konto chmury dodatkowej. Konto pomocnicze to zwykle konto Microsoft, konto usługi Azure AD lub inne konto, takie jak Gmail lub Facebook. Te konta pomocnicze zapewniają dostęp do dodatkowych usług, takich jak logowanie jednokrotne i Sklep Windows, ale nie mają możliwości synchronizacji ustawień.
 
-## <a name="how-do-microsoft-account-and-azure-ad-enterprise-state-roaming-interoperability-work"></a>W jaki sposób konto Microsoft i Roaming stanu przedsiębiorstwa AD Azure współdziałania pracę?
-W listopadzie 2015 lub nowszej wersje systemu Windows 10 Roaming stanu dla przedsiębiorstw jest obsługiwana tylko dla jednego konta w danym momencie. Zaloguj się do Windows przy użyciu służbowego lub szkolnego konta usługi Azure AD, wszystkie dane zostaną zsynchronizowane za pomocą usługi Azure AD. Jeśli możesz zalogować się do Windows przy użyciu osobistego konta Microsoft, wszystkie dane zostaną zsynchronizowane za pomocą konta Microsoft. Appdata uniwersalne "wędrują" przy użyciu tylko podstawowego logowania konta na urządzeniu, a jej "wędrują" tylko wtedy, gdy licencji aplikacji jest własnością podstawowego konta. Uniwersalne appdata na aplikacje należące do żadnych dodatkowych kont, nie zostaną zsynchronizowane.
+W systemie Windows 10 do synchronizacji ustawień można używać tylko konta podstawowego dla tego urządzenia (zobacz [Jak mogę upgrade from konto Microsoft Settings Sync w systemie Windows 8 do synchronizacji ustawień usługi Azure AD w systemie Windows 10?](enterprise-state-roaming-faqs.md#how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10)).
 
-## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>Czy ustawienia synchronizacji dla kont usługi Azure AD z wieloma dzierżawcami?
-W przypadku wielu usługi Azure AD konta za pośrednictwem różnych dzierżaw usługi Azure AD znajdują się na tym samym urządzeniu, należy zaktualizować rejestr urządzenia w celu komunikowania się z usługą Azure Rights Management dla każdej dzierżawy usługi Azure AD.  
+Dane nigdy nie są mieszane między różnymi kontami użytkowników na urządzeniu. Istnieją dwie reguły synchronizacji ustawień:
 
-1. Znajdź identyfikator GUID dla każdego dzierżawcy usługi Azure AD. Otwórz witrynę Azure portal i wybierz dzierżawę usługi Azure AD. Identyfikator GUID dla dzierżawy znajduje się na stronie właściwości dla wybranej dzierżawy (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties), oznaczone **identyfikator katalogu**. 
-2. Po utworzeniu identyfikatora GUID, musisz dodać klucz rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<dzierżawy identyfikator GUID >** .
-   Z **dzierżawy identyfikator GUID** klucza, Utwórz nową wartość ciągu wielokrotnego (REG-MULTI-SZ) o nazwie **AllowedRMSServerUrls**. W przypadku własnych danych należy określić licencjonowania punktu dystrybucji, adresy URL z innych dzierżaw usługi Azure, do których uzyskuje dostęp urządzenia.
-3. Adresy URL licencjonowania punktu dystrybucji można znaleźć, uruchamiając **Get-AadrmConfiguration** polecenia cmdlet w module AADRM. Jeśli wartości **LicensingIntranetDistributionPointUrl** i **LicensingExtranetDistributionPointUrl** są różne, określ obie wartości. Jeśli wartości są takie same, określ wartość tylko raz.
+* Ustawienia systemu Windows będą zawsze przenoszone do konta głównego.
+* Dane aplikacji będą znakowane przy użyciu konta używanego do uzyskiwania aplikacji. Synchronizowane będą tylko aplikacje otagowane przy użyciu konta podstawowego. Znakowanie własności aplikacji jest określane, gdy aplikacja jest ładowana bezpośrednio przez Sklep Windows lub zarządzanie urządzeniami przenośnymi (MDM).
 
-## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>Jakie są opcje Ustawienia roamingu, dla istniejących aplikacji klasycznych Windows?
-Roaming działa tylko dla aplikacji Universal Windows apps. Dostępne są dwie opcje umożliwiające mobilnego na istniejącą aplikację pulpitu Windows:
+Jeśli nie można zidentyfikować właściciela aplikacji, będzie ona przenoszona z kontem podstawowym. Jeśli urządzenie zostanie uaktualnione z systemu Windows 8 lub Windows 8.1 do systemu Windows 10, wszystkie aplikacje zostaną oznaczone jako pobrane przez konto Microsoft. Wynika to z faktu, że większość użytkowników uzyskuje aplikacje za pomocą Sklepu Windows i nie ma pomocy technicznej sklepu Windows dla kont usługi Azure AD przed systemem Windows 10. Jeśli aplikacja zostanie zainstalowana za pośrednictwem licencji w trybie offline, aplikacja zostanie otagowana przy użyciu konta podstawowego na urządzeniu.
 
-* [Desktop Bridge](https://aka.ms/desktopbridge) pomaga przenieść istniejące aplikacje pulpitu Windows Universal platformę Windows. W tym miejscu minimalnych zmianach w kodzie, będą musieli korzystać z zalet mobilne dane aplikacji w usłudze Azure AD. Desktop Bridge udostępnia swoje aplikacje za pomocą tożsamości aplikacji, co jest wymagane do włączenia danych aplikacji mobilnych dla istniejących aplikacji komputerowych.
-* [Wirtualizacji środowiska użytkownika (wirtualizacji środowiska użytkownika)](https://technet.microsoft.com/library/dn458947.aspx) pomaga utworzyć szablon ustawienia niestandardowe dla istniejących aplikacji komputerowych Windows i włączanie roamingu dla aplikacji Win32. Ta opcja nie wymaga deweloperem aplikacji, aby zmienić kod aplikacji. Wirtualizacji środowiska użytkownika jest ograniczona do lokalnej usługi Active Directory mobilne dla klientów, którzy kupili pakietu Microsoft Desktop Optimization Pack.
+> [!NOTE]
+> Urządzenia z systemem Windows 10 należące do firmy i połączone z usługą Azure AD nie mogą już łączyć kont Microsoft z kontem domeny. Możliwość łączenia konto Microsoft z kontem domeny i synchronizowania danych użytkownika z konto Microsoft (oznacza to, że konto Microsoft roaming za pośrednictwem funkcji połączonej konto Microsoft i Active Directory) zostanie usunięty z systemu Windows 10 urządzenia, które są połączone z podłączonym Active Directory lub środowiskiem usługi Azure AD.
 
-Administratorzy mogą skonfigurować wirtualizacji środowiska użytkownika są przekazywane dane klasycznych aplikacji Windows, zmieniając roaming ustawień systemu operacyjnego Windows i danych aplikacji uniwersalnej za pośrednictwem [wirtualizacji środowiska użytkownika, zasady grupy](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2), w tym:
+## <a name="how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10"></a>Jak mogę uaktualnianie konto Microsoft synchronizacji ustawień w systemie Windows 8 do usługi Azure AD ustawienia synchronizacji w systemie Windows 10?
 
-* Zasady grupy systemu Windows ustawienia roamingu
-* Nie Synchronizuj aplikacje Windows zasad grupy
-* W sekcji aplikacji w programie Internet Explorer
+W przypadku przyłączenia do domeny Active Directory z Windows 8.1 z podłączonym konto Microsoft, ustawienia zostaną zsynchronizowane za pomocą konto Microsoft. Po uaktualnieniu do systemu Windows 10 będziesz w dalszym ciągu synchronizować ustawienia użytkownika za pośrednictwem konto Microsoft, o ile jesteś przyłączony do domeny, a domena Active Directory nie łączy się z usługą Azure AD.
 
-W przyszłości Microsoft może zbadać sposobów na głęboko zintegrowane Windows wirtualizacji środowiska użytkownika i rozszerzyć wirtualizacji środowiska użytkownika z roamingu ustawień za pomocą chmury usługi Azure AD.
+Jeśli domena lokalna Active Directory nawiązuje połączenie z usługą Azure AD, urządzenie podejmie próbę synchronizacji ustawień przy użyciu połączonego konta usługi Azure AD. Jeśli administrator usługi Azure AD nie włączy Enterprise State Roaming, połączone konto usługi Azure AD przestanie synchronizować ustawienia. Jeśli jesteś użytkownikiem systemu Windows 10 i zalogujesz się przy użyciu tożsamości usługi Azure AD, będziesz rozpoczynać synchronizację ustawień systemu Windows, gdy tylko administrator włączy synchronizację ustawień za pośrednictwem usługi Azure AD.
 
-## <a name="can-i-store-synced-settings-and-data-on-premises"></a>Czy mogę przechowywać zsynchronizowanych ustawień i danych w środowisku lokalnym?
-Roaming stanu dla przedsiębiorstw przechowuje wszystkie zsynchronizowane dane w chmurze firmy Microsoft. Wirtualizacji środowiska użytkownika oferuje lokalnych rozwiązań mobilnych.
+Jeśli dane osobowe są przechowywane na urządzeniu firmowym, należy pamiętać, że system operacyjny Windows i dane aplikacji rozpoczną synchronizację z usługą Azure AD. Ma to następujące konsekwencje:
 
-## <a name="who-owns-the-data-thats-being-roamed"></a>Kto jest właścicielem danych, które jest objęte roamingiem?
-Przedsiębiorstwom własne dane są przekazywane za pośrednictwem Roaming stanu dla przedsiębiorstw. Dane są przechowywane w centrum danych platformy Azure. Wszystkie dane użytkownika są szyfrowane zarówno podczas przesyłania i przechowywane w chmurze przy użyciu usługi Azure Rights Management z usługi Azure Information Protection. Jest to ulepszenia w porównaniu do synchronizacji ustawieniami opartymi na konto Microsoft, który szyfruje tylko niektórych poufnych danych, takich jak poświadczenia użytkownika przed opuszczeniem urządzenia.
+* Twoje ustawienia konto Microsoft osobistych zostaną oddzielone od ustawień na kontach usługi Azure AD w firmie lub szkole. Wynika to z faktu, że usługa konto Microsoft i Synchronizacja ustawień usługi Azure AD używają teraz oddzielnych kont.
+* Dane osobowe, takie jak hasła Wi-Fi, poświadczenia sieci Web i Ulubione programu Internet Explorer, które zostały wcześniej zsynchronizowane za pośrednictwem połączonego konto Microsoft, zostaną zsynchronizowane za pośrednictwem usługi Azure AD.
 
-Firma Microsoft jest zaangażowana w ochronę danych klienta. Dane ustawienia użytkownika w przedsiębiorstwie są automatycznie szyfrowane przez usługę Azure Rights Management przed opuszczeniem urządzenia systemu Windows 10, tak aby żaden inny użytkownik może odczytywać te dane. Jeśli Twoja organizacja ma płatnej subskrypcji usługi Azure Rights Management, można używać innych funkcji ochrony, takie jak śledzenie i odwoływanie dokumentów, automatycznie chronić wiadomości e-mail zawierające poufne informacje i zarządzać własnymi kluczami ("bring Your own key"rozwiązanie także znana jako BYOK). Aby uzyskać więcej informacji o tych funkcjach i jak działa ta usługa ochrony, zobacz [co to jest Azure Rights Management](/azure/information-protection/what-is-information-protection).
+## <a name="how-do-microsoft-account-and-azure-ad-enterprise-state-roaming-interoperability-work"></a>Jak działają konto Microsoft i współdziałanie usługi Azure AD Enterprise State Roaming?
 
-## <a name="can-i-manage-sync-for-a-specific-app-or-setting"></a>Może zarządzać synchronizacji dla określonej aplikacji lub ustawienia?
-W systemie Windows 10 nie ma zarządzania urządzeniami Przenośnymi lub zasad grupy ustawienia można wyłączyć roamingu dla poszczególnych aplikacji. Administratorzy dzierżawy mogą wyłączyć appdata synchronizacji dla wszystkich aplikacji na zarządzanym urządzeniu, ale ma nie bardziej precyzyjną kontrolę na poziomie aplikacji lub w ramach aplikacji.
+W listopadzie 2015 lub nowszych wersjach systemu Windows 10 Enterprise State Roaming jest obsługiwane tylko dla jednego konta naraz. Jeśli zalogujesz się do systemu Windows przy użyciu służbowego konta usługi Azure AD, wszystkie dane zostaną zsynchronizowane za pośrednictwem usługi Azure AD. Jeśli zalogujesz się do systemu Windows za pomocą konto Microsoft osobistych, wszystkie dane zostaną zsynchronizowane za pośrednictwem konto Microsoft. Uniwersalne AppData będzie przenoszone tylko przy użyciu konta podstawowego logowania na urządzeniu i będzie przenoszona tylko wtedy, gdy licencja aplikacji jest własnością konta podstawowego. Uniwersalnego elementu AppData dla aplikacji należących do wszystkich kont dodatkowych nie będzie synchronizowany.
 
-## <a name="how-can-i-enable-or-disable-roaming"></a>Jak włączyć lub wyłączyć mobilnych?
-W **ustawienia** aplikację, przejdź do **kont** > **synchronizować ustawienia**. Na tej stronie zostanie wyświetlony, konto, które jest używane do ustawienia roamingu, a można włączyć lub wyłączyć poszczególne grupy ustawień, które można korzystania z roamingu.
+## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>Czy synchronizacja ustawień dla kont usługi Azure AD jest przeprowadzana z wielu dzierżawców?
 
-## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Co to jest firma Microsoft zaleca się włączania roamingu w systemie Windows 10?
-Firma Microsoft ma kilka różnych ustawień roamingu rozwiązań, takich jak profile użytkowników mobilnych, wirtualizacji środowiska użytkownika i roamingu stanu przedsiębiorstwa.  Firma Microsoft jest zaangażowana w tworzenie inwestycji w przedsiębiorstwie, stan roamingu w przyszłych wersjach systemu Windows. Jeśli Twoja organizacja nie jest gotowe lub doświadczenia z przenoszeniem danych do chmury, zalecamy użycie wirtualizacji środowiska użytkownika jako podstawowej technologii mobilnych. Jeśli Twoja organizacja wymaga roaming obsługę istniejących aplikacji klasycznych Windows, ale chce przenieść do chmury, firma Microsoft zaleca korzystanie z roamingu stanu przedsiębiorstwa i wirtualizacji środowiska użytkownika. Mimo że wirtualizacji środowiska użytkownika i Roaming stanu dla przedsiębiorstw są bardzo podobne technologie, nie są one wzajemnie się wykluczają. Uzupełniają one wzajemnie, aby mieć pewność, że Twoja organizacja udostępnia usług mobilnych, które użytkownicy muszą.  
+Gdy wiele kont usługi Azure AD z różnych dzierżaw usługi Azure AD znajduje się na tym samym urządzeniu, należy zaktualizować rejestr urządzenia, aby komunikować się z usługą Azure Rights Management dla każdej dzierżawy usługi Azure AD.  
 
-Korzystając z Roaming stanu dla przedsiębiorstw i wirtualizacji środowiska użytkownika, mają zastosowanie następujące reguły:
+1. Znajdź identyfikator GUID dla każdej dzierżawy usługi Azure AD. Otwórz Azure Portal i wybierz dzierżawę usługi Azure AD. Identyfikator GUID dzierżawy znajduje się na stronie właściwości wybranej dzierżawy (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties), **Identyfikator katalogu**oznaczonego jako. 
+2. Po skonfigurowaniu identyfikatora GUID należy dodać klucz rejestru **HKEY_LOCAL_MACHINE \software\microsoft\windows\settingsync\winmsipc\<identyfikatora dzierżawy identyfikator GUID >** .
+   W kluczu **GUID identyfikatora dzierżawy** Utwórz nową wartość ciągu wielociągowego (reg-wiele-SZ) o nazwie **AllowedRMSServerUrls**. W przypadku danych określ adresy URL punktów dystrybucji licencjonowania innych dzierżawców platformy Azure, do których uzyskuje dostęp urządzenie.
+3. Adresy URL punktów dystrybucji licencjonowania można znaleźć, uruchamiając polecenie cmdlet **Get-AadrmConfiguration** w module aadrm. Jeśli wartości dla **LicensingIntranetDistributionPointUrl** i **LicensingExtranetDistributionPointUrl** są różne, określ obie wartości. Jeśli wartości są takie same, określ wartość tylko raz.
 
-* Roaming stanu dla przedsiębiorstw jest podstawowym agenta roamingu na urządzeniu. Wirtualizacji środowiska użytkownika jest używany jako uzupełnienie "przerwa Win32".
-* Powinno być wyłączone wirtualizacji środowiska użytkownika mobilnego dla ustawień Windows i nowoczesnych danych aplikacji platformy uniwersalnej systemu Windows, gdy zasady za pomocą grupy wirtualizacji środowiska użytkownika. Te są już objęte Roaming stanu dla przedsiębiorstw.
+## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>Jakie są opcje ustawień roamingu dla istniejących aplikacji klasycznych systemu Windows?
 
-## <a name="how-does-enterprise-state-roaming-support-virtual-desktop-infrastructure-vdi"></a>Jak usługa Roaming stanu dla przedsiębiorstw obsługuje infrastruktury pulpitu wirtualnego (VDI)?
-Roaming stanu dla przedsiębiorstw jest obsługiwana w kliencie systemu Windows 10 jednostek SKU, ale nie na serwerze jednostki SKU. Jeśli możesz zdalnie Zaloguj się do maszyny wirtualnej maszyny Wirtualnej klienta znajduje się na komputerze funkcji hypervisor, dane są przenoszone. Jeśli wielu użytkowników współużytkować ten sam system operacyjny i zdalnego logowania do serwera w celu korzystania z pełnej pulpitu, roaming może nie działać. Ostatni scenariusz oparte na sesji nie jest oficjalnie obsługiwany.
+Roaming działa tylko w przypadku aplikacji uniwersalnych systemu Windows. Dostępne są dwie opcje włączania roamingu w istniejącej aplikacji klasycznej systemu Windows:
 
-## <a name="what-happens-when-my-organization-purchases-a-subscription-that-includes-azure-rights-management-after-using-roaming"></a>Co się stanie, gdy Moja organizacja nabywa subskrypcję obejmuje usługę Azure Rights Management po zakończeniu korzystania z roamingu?
-Jeśli Twoja organizacja używa już roamingu w systemie Windows 10 z ograniczeniami użycia usługi Azure Rights Management w bezpłatnej subskrypcji, zakup [płatną subskrypcję](https://azure.microsoft.com/pricing/details/information-protection/) zawierającej bez ochrony usługi Azure Rights Management żadnego wpływu na działanie funkcji roamingu i bez zmian konfiguracji będzie wymagane przez administratora IT.
+* [Mostek Desktop](https://aka.ms/desktopbridge) ułatwia przenoszenie istniejących aplikacji klasycznych systemu Windows do platforma uniwersalna systemu Windows. W tym miejscu wymagane są minimalne zmiany w kodzie, aby móc korzystać z roamingu danych aplikacji usługi Azure AD. Mostek Desktop oferuje aplikacje z tożsamością aplikacji, która jest wymagana do włączenia roamingu danych aplikacji dla istniejących aplikacji klasycznych.
+* [Wirtualizacja środowiska użytkownika (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) pomaga utworzyć niestandardowy szablon ustawień dla istniejących aplikacji klasycznych systemu Windows i włączyć roaming dla aplikacji Win32. Ta opcja nie wymaga, aby Deweloper aplikacji zmienił kod aplikacji. W przypadku klientów, którzy kupili pakiet Microsoft Desktop Optimization Pack, są ograniczone do lokalnego Active Directory roamingu.
+
+Administratorzy mogą skonfigurować program UE-V do roamingu danych aplikacji klasycznych systemu Windows, zmieniając roaming ustawień systemu operacyjnego Windows i danych aplikacji uniwersalnej za pomocą [zasad grupy UE-V](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2), w tym:
+
+* Roaming zasad grupy ustawień systemu Windows
+* Nie Synchronizuj zasad grupy aplikacji systemu Windows
+* Roaming programu Internet Explorer w sekcji aplikacje
+
+W przyszłości firma Microsoft może zbadać metody, które pozwalają na przechodzenie do systemu Windows w wersji UE-V, i rozbudowanie w celu przechodzenia do ustawień w chmurze usługi Azure AD.
+
+## <a name="can-i-store-synced-settings-and-data-on-premises"></a>Czy można przechowywać zsynchronizowane ustawienia i dane lokalnie?
+
+Enterprise State Roaming przechowuje wszystkie zsynchronizowane dane w chmurze firmy Microsoft. UE-V oferuje lokalne rozwiązanie do roamingu.
+
+## <a name="who-owns-the-data-thats-being-roamed"></a>Kto jest właścicielem danych, które są przekazywane?
+
+Przedsiębiorstwa są własnością danych przenoszona przez Enterprise State Roaming. Dane są przechowywane w centrum danych platformy Azure. Wszystkie dane użytkownika są szyfrowane zarówno podczas przesyłania, jak i w chmurze za pomocą usługi Rights Management platformy Azure z Azure Information Protection. Jest to udoskonalenie w porównaniu do synchronizacji ustawień opartych na konto Microsoft, która szyfruje tylko pewne dane poufne, takie jak poświadczenia użytkownika, zanim opuściją urządzenie.
+
+Firma Microsoft dokłada starań, aby chronić dane klientów. Dane ustawień użytkownika przedsiębiorstwa są automatycznie szyfrowane przez usługę Rights Management platformy Azure, zanim opuściją urządzenie z systemem Windows 10, więc żaden inny użytkownik nie będzie mógł odczytać tych danych. Jeśli Twoja organizacja ma płatną subskrypcję usługi Azure Rights Management, możesz użyć innych funkcji ochrony, takich jak śledzenie i odwoływanie dokumentów, automatyczne włączanie ochrony wiadomości e-mail zawierających informacje poufne i zarządzanie własnymi kluczami ("Przesuń" własne kluczowe rozwiązanie, znane także jako BYOK). Aby uzyskać więcej informacji o tych funkcjach i sposobie działania tej usługi ochrony, zobacz artykuł [co to jest usługa Azure Rights Management](/azure/information-protection/what-is-information-protection).
+
+## <a name="can-i-manage-sync-for-a-specific-app-or-setting"></a>Czy mogę zarządzać synchronizacją dla określonej aplikacji lub ustawienia?
+
+W systemie Windows 10 nie ma ustawienia MDM ani zasady grupy, aby wyłączyć roaming dla pojedynczej aplikacji. Administratorzy dzierżawy mogą wyłączyć funkcję synchronizacji programu AppData dla wszystkich aplikacji na zarządzanym urządzeniu, ale nie ma bardziej precyzyjnej kontroli na poziomie aplikacji lub w aplikacji.
+
+## <a name="how-can-i-enable-or-disable-roaming"></a>Jak włączyć lub wyłączyć roaming?
+
+W aplikacji **Ustawienia** przejdź do pozycji **konta** > **zsynchronizuj ustawienia**. Na tej stronie można sprawdzić, które konto jest używane do roamingu ustawień, a także włączyć lub wyłączyć poszczególne grupy ustawień do przeroamingu.
+
+## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Jakie są zalecenia firmy Microsoft dotyczące włączania roamingu w systemie Windows 10?
+
+Firma Microsoft oferuje kilka różnych ustawień dostępnych dla rozwiązań mobilnych, w tym profile użytkowników mobilnych, UE-V i Enterprise State Roaming.  Firma Microsoft dokłada starań, aby inwestycje w Enterprise State Roaming w przyszłych wersjach systemu Windows. Jeśli Twoja organizacja nie jest gotowa lub nie ma doświadczenia z przeniesieniem danych do chmury, zalecamy użycie wersji UE-V jako podstawowej technologii mobilnej. Jeśli Twoja organizacja wymaga obsługi roamingu dla istniejących aplikacji klasycznych systemu Windows, ale eager przenieść się do chmury, zalecamy użycie obu Enterprise State Roaming i UE-V. Chociaż Stany IT i Enterprise State Roaming są bardzo podobne, nie wykluczają się wzajemnie. Są one uzupełniane, aby pomóc w zapewnieniu, że organizacja udostępnia Usługi mobilne, których potrzebują użytkownicy.  
+
+W przypadku używania zarówno Enterprise State Roaming, jak i UE-V są stosowane następujące reguły:
+
+* Enterprise State Roaming jest głównym agentem roamingu na urządzeniu. UE-V jest używany do uzupełnienia "przerwy Win32".
+* W przypadku korzystania z zasad grupy programu UE-v mobilne dane dla ustawień systemu Windows i nowoczesnych aplikacji platformy UWP powinny być wyłączone. Są one już objęte Enterprise State Roaming.
+
+## <a name="how-does-enterprise-state-roaming-support-virtual-desktop-infrastructure-vdi"></a>Jak Enterprise State Roaming obsługiwać infrastrukturę pulpitu wirtualnego (VDI)?
+
+Enterprise State Roaming jest obsługiwana w jednostkach SKU klienta systemu Windows 10, ale nie w jednostkach SKU serwera. Jeśli maszyna wirtualna klienta jest hostowana na komputerze funkcji hypervisor i użytkownik jest zdalnie zalogowany do maszyny wirtualnej, Twoje dane będą przenoszone. Jeśli wielu użytkowników współużytkują ten sam system operacyjny i Użytkownicy logują się zdalnie na serwerze w celu pełnego środowiska pulpitu, roaming może nie zadziałał. Ostatni Scenariusz oparty na sesji nie jest oficjalnie obsługiwany.
+
+## <a name="what-happens-when-my-organization-purchases-a-subscription-that-includes-azure-rights-management-after-using-roaming"></a>Co się stanie, gdy moja Organizacja kupuje subskrypcję obejmującą usługę Azure Rights Management po użyciu roamingu?
+
+Jeśli Twoja organizacja korzysta już z roamingu w systemie Windows 10 i korzysta z bezpłatnej subskrypcji usługi Azure Rights Management Limited, kupowanie [płatnej subskrypcji](https://azure.microsoft.com/pricing/details/information-protection/) obejmującej usługę Azure Rights Management Protection nie będzie miało żadnego wpływu na funkcjonalność funkcji roamingu, a administrator IT nie wymaga żadnych zmian konfiguracji.
 
 ## <a name="known-issues"></a>Znane problemy
-Można znaleźć w dokumentacji w [Rozwiązywanie problemów z](enterprise-state-roaming-troubleshooting.md) sekcja zawiera listę znanych problemów. 
 
-## <a name="next-steps"></a>Kolejne kroki 
+Listę znanych problemów można znaleźć w dokumentacji w sekcji [Rozwiązywanie problemów](enterprise-state-roaming-troubleshooting.md) . 
 
-Aby uzyskać przegląd, zobacz [Przegląd roaming stanu dla przedsiębiorstw](enterprise-state-roaming-overview.md)
+## <a name="next-steps"></a>Następne kroki 
+
+Aby zapoznać się z omówieniem, zobacz [Omówienie usługi Enterprise State roaming](enterprise-state-roaming-overview.md)

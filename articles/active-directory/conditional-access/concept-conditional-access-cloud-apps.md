@@ -1,31 +1,31 @@
 ---
-title: Aplikacje klienckie w zasadach dostępu warunkowego — Azure Active Directory
-description: ''
+title: Aplikacje w chmurze lub akcje w zasadach dostępu warunkowego — Azure Active Directory
+description: Co to są aplikacje w chmurze lub akcje w zasadach dostępu warunkowego usługi Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9afc25c906ecd3b7807e6bf3e0763ac1673ebd99
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a9d2780e09c099d76aa2ef4ec2638a410793481d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544059"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186380"
 ---
-# <a name="conditional-access-cloud-apps-and-actions"></a>Dostęp warunkowy: aplikacje i akcje w chmurze
+# <a name="conditional-access-cloud-apps-or-actions"></a>Dostęp warunkowy: aplikacje lub akcje w chmurze
 
-Aplikacje w chmurze lub akcje są kluczową częścią zasad dostępu warunkowego. Zasady dostępu warunkowego umożliwiają administratorom przypisywanie formantów do określonych aplikacji lub akcji. 
+Aplikacje w chmurze lub akcje są kluczowym sygnałem w zasadach dostępu warunkowego. Zasady dostępu warunkowego umożliwiają administratorom przypisywanie formantów do określonych aplikacji lub akcji.
 
 - Administratorzy mogą wybrać z listy aplikacji, które zawierają wbudowane aplikacje firmy Microsoft i wszystkie [zintegrowane aplikacje usługi Azure AD](../manage-apps/what-is-application-management.md) , w tym galerię, nie galerię i aplikacje publikowane za pośrednictwem [serwera proxy aplikacji](../manage-apps/what-is-application-proxy.md).
 - Administratorzy mogą określić, że zasady nie są oparte na aplikacji w chmurze, ale w akcji użytkownika. Jedyną obsługiwaną akcją jest rejestrowanie informacji o zabezpieczeniach (wersja zapoznawcza), co umożliwia dostęp warunkowy do wymuszania kontroli nad [połączonym doświadczeniem rejestracji informacji o zabezpieczeniach](../authentication/howto-registration-mfa-sspr-combined.md).
 
-![Definiowanie zasad dostępu warunkowego i określanie aplikacji w chmurze](./media/concept-conditional-access-cloud-apps/conditional-access-define-policy-specify-cloud-apps.png)
+![Definiowanie zasad dostępu warunkowego i określanie aplikacji w chmurze](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
 ## <a name="microsoft-cloud-applications"></a>Aplikacje w chmurze firmy Microsoft
 
@@ -65,7 +65,7 @@ Administratorzy mogą przypisywać zasady dostępu warunkowego do następującyc
 - Project Online
 - Skype dla firm Online
 - Wirtualna sieć prywatna (VPN)
-- Zaawansowana ochrona przed zagrożeniami w usłudze Windows Defender
+- Windows Defender ATP
 
 ### <a name="office-365-preview"></a>Office 365 (wersja zapoznawcza)
 
@@ -87,10 +87,10 @@ Najważniejsze aplikacje, które są zawarte w aplikacji klienckiej pakietu Offi
    - Search Service pakietu Office 365
    - Usługa Yammer pakietu Office 365
    - Office Delve
-   - Office Online
+   - Pakiet Office Online
    - Office.com
    - OneDrive
-   - Aplikacje PowerApp
+   - PowerApps
    - Skype dla firm Online
    - Sway
 
@@ -98,10 +98,10 @@ Najważniejsze aplikacje, które są zawarte w aplikacji klienckiej pakietu Offi
 
 Aplikacja do zarządzania Microsoft Azure obejmuje wiele podstawowych usług. 
 
-   - Portal Azure
+   - Portalu Azure
    - Dostawca Azure Resource Manager
    - Interfejsy API klasycznego modelu wdrażania
-   - Program Azure PowerShell
+   - Azure PowerShell
    - Portal administratora subskrypcji programu Visual Studio
    - Azure DevOps
    - Portal Azure Data Factory
@@ -124,6 +124,7 @@ Akcje użytkownika to zadania, które mogą być wykonywane przez użytkownika. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Składniki zasad dostępu warunkowego](concept-conditional-access-policies.md)
+- [Dostęp warunkowy: warunki](concept-conditional-access-conditions.md)
+
+- [Wspólne zasady dostępu warunkowego](concept-conditional-access-policy-common.md)
 - [Zależności aplikacji klienckich](service-dependencies.md)
-- [Microsoft Intune: Wymagaj uwierzytelniania wieloskładnikowego na potrzeby rejestracji urządzeń](https://docs.microsoft.com/intune/enrollment/multi-factor-authentication)

@@ -8,23 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 4d5d3cc6159a4601f0a398e87b89eea9b8d3aba6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c12aaea1dbc99a3f6db064e03b4b49e569f15194
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446941"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189053"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Informacje o wersji: zestaw SDK urządzeń mowy
 
 W poniższych sekcjach przedstawiono zmiany w najnowszych wersjach.
 
+## <a name="speech-devices-sdk-190"></a>1\.9.0 zestawu SDK urządzeń mowy:
+
+- Podano początkowe pliki binarne dla [zestawu DDK Urbetter](https://aka.ms/sdsdk-download-urbetter) (Linux arm64).
+- Roobo V1 teraz używa Maven dla zestawu Speech SDK
+- Zaktualizowano składnik [zestawu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) do wersji 1.9.0. Aby uzyskać więcej informacji, zobacz informacje o [wersji](https://aka.ms/csspeech/whatsnew).
+
 ## <a name="speech-devices-sdk-170"></a>1\.7.0 zestawu SDK urządzeń mowy:
 
 - System Linux ARM jest teraz obsługiwany.
-- Dostępne są początkowe pliki binarne dla roobo v2 (Linux ARM64).
+- Dostępne są początkowe pliki binarne dla [zestawu DDK systemu roobo v2](https://aka.ms/sdsdk-download-roobov2) (Linux arm64).
 - Użytkownicy systemu Windows mogą używać `AudioConfig.fromDefaultMicrophoneInput()` lub `AudioConfig.fromMicrophoneInput(deviceName)` do określenia mikrofonu, który ma być używany.
 - Rozmiar biblioteki został zoptymalizowany.
 - Obsługa rozpoznawania wieloskładnikowego przy użyciu tego samego obiektu rozpoznawania mowy/konwersji.
@@ -49,7 +55,7 @@ W poniższych sekcjach przedstawiono zmiany w najnowszych wersjach.
 - Nowa technologia słowa kluczowego zapewnia znaczące ulepszenia jakości, zobacz artykuł wprowadzenie zmian.
 - Nowy potok przetwarzania audio dla ulepszonego rozpoznawania pól.
 
-**Fundamentalne zmiany**
+**Istotne zmiany**
 
 - Ze względu na nową technologię słów kluczowych wszystkie słowa kluczowe muszą zostać utworzone w naszym ulepszonym portalu słów kluczowych. Aby w pełni usunąć stare słowa kluczowe z urządzenia, Odinstaluj starą aplikację.
   - ADB Odinstaluj com. Microsoft. coginitiveservices. Speech. Samples. sdsdkstarterapp
@@ -64,7 +70,7 @@ W poniższych sekcjach przedstawiono zmiany w najnowszych wersjach.
 - Obsługa zaktualizowanych słów kluczowych, zobacz istotne zmiany.
 - Przykładowa aplikacja dodaje wybór języka dla rozpoznawania mowy i tłumaczenia.
 
-**Fundamentalne zmiany**
+**Istotne zmiany**
 
 - [Instalacja słowa kluczowego](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) została uproszczona, jest teraz częścią aplikacji i nie wymaga osobnej instalacji na urządzeniu.
 - Rozpoznawanie słów kluczowych zostało zmienione i obsługiwane są dwa zdarzenia.
@@ -83,7 +89,7 @@ W poniższych sekcjach przedstawiono zmiany w najnowszych wersjach.
 - Dokładność rozpoznawania mowy zostanie ulepszona dzięki ulepszonemu algorytmowi przetwarzania dźwięku
 - Została naprawiona jedna usterka sesji audio ciągłego rozpoznawania.
 
-**Fundamentalne zmiany**
+**Istotne zmiany**
 
 - W tej wersji wprowadzono szereg istotnych zmian. Sprawdź [Tę stronę](https://aka.ms/csspeech/breakingchanges_1_0_0) , aby uzyskać szczegółowe informacje dotyczące interfejsów API.
 - Pliki modelu KWS są niezgodne z zestawem SDK urządzeń Speech 1.0.1. Istniejące pliki słów kluczowych zostaną usunięte po zapisaniu nowych plików słów kluczowych na urządzeniu.

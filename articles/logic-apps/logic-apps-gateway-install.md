@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 12/05/2019
-ms.openlocfilehash: 4fbfb31feb2183e3175a96023cbb3b08c4d18027
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 797cd82327d68003d4e5f007d1f16e9534092ac0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893693"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191355"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla Azure Logic Apps
 
@@ -49,7 +49,7 @@ W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną br
   **Minimalne wymagania**
 
   * .NET Framework 4.7.2
-  * 64-bitowa wersja systemu Windows 7 lub Windows Server 2008 R2 (lub nowszego)
+  * 64 — bitowa wersja systemu Windows 7 lub Windows Server 2008 R2 (lub nowszego)
 
   **Zalecane wymagania**
 
@@ -96,7 +96,7 @@ W tym artykule pokazano, jak pobrać, zainstalować i skonfigurować lokalną br
 
    Instalacja bramy może być połączona tylko z jednym kontem platformy Azure.
 
-1. Wybierz pozycję **Zarejestruj nową bramę na tym komputerze** > **Dalej**. Ten krok rejestruje instalację bramy w [usłudze bramy w chmurze](#gateway-cloud-service).
+1. Wybierz pozycję **zarejestruj nową bramę na tym komputerze** , > **dalej**. Ten krok rejestruje instalację bramy w [usłudze bramy w chmurze](#gateway-cloud-service).
 
    ![Zarejestruj bramę na komputerze lokalnym](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -188,7 +188,7 @@ Aby uzyskać wgląd we wszystkie lokalne bramy danych w dzierżawie usługi Azur
 
 <a name="restart-gateway"></a>
 
-## <a name="restart-gateway"></a>Ponowne uruchamianie bramy
+## <a name="restart-gateway"></a>Uruchom ponownie bramę
 
 Domyślnie instalacja bramy na komputerze lokalnym działa jako konto usługi systemu Windows o nazwie "lokalna Brama danych". Jednak instalacja bramy używa nazwy `NT SERVICE\PBIEgwService` na potrzeby poświadczeń konta "Zaloguj się jako" i ma uprawnienia "Logowanie w trybie usługi".
 
@@ -199,11 +199,11 @@ Podobnie jak w przypadku każdej innej usługi systemu Windows, można uruchomi�
 
 <a name="gateway-cloud-service"></a>
 
-## <a name="how-the-gateway-works"></a>Jak działa brama
+## <a name="how-the-gateway-works"></a>Jak działa Brama
 
 Użytkownicy w organizacji mogą uzyskiwać dostęp do danych lokalnych, do których mają już dostęp autoryzowany. Jednak zanim użytkownicy będą mogli połączyć się z lokalnym źródłem danych, należy zainstalować i skonfigurować lokalną bramę danych. Zazwyczaj administrator jest osobą, która instaluje i konfiguruje bramę. Te akcje mogą wymagać uprawnień administratora serwera lub specjalnej wiedzy o serwerach lokalnych.
 
-Brama ułatwia szybkie i bezpieczne komunikowanie się w tle. Ta komunikacja odbywa się między użytkownikiem w chmurze, usługą bramy w chmurze i lokalnym źródłem danych. Usługa bramy w chmurze szyfruje i przechowuje poświadczenia źródła danych oraz szczegóły bramy. Usługa kieruje także zapytania i ich wyniki między użytkownikiem, bramą i lokalnym źródłem danych.
+Brama ułatwia szybsze i bardziej bezpieczną komunikację w tle. Ta komunikacja odbywa się między użytkownikiem w chmurze, usługą bramy w chmurze i lokalnym źródłem danych. Usługa bramy w chmurze szyfruje i przechowuje poświadczenia źródła danych oraz szczegóły bramy. Usługa kieruje także zapytania i ich wyniki między użytkownikiem, bramą i lokalnym źródłem danych.
 
 Brama współpracuje z zaporami i używa tylko połączeń wychodzących. Cały ruch pochodzący z agenta bramy jest zabezpieczonym ruchem wychodzącym. Brama przekazuje dane ze źródeł lokalnych w zaszyfrowanej kanale za pośrednictwem [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). Ta usługa Service Bus tworzy kanał między bramą a usługą wywołującą, ale nie przechowuje żadnych danych. Wszystkie dane przesyłane przez bramę są szyfrowane.
 
@@ -226,7 +226,7 @@ W tych krokach opisano, co się dzieje w przypadku korzystania z elementu połą
 
 1. Wyniki są wysyłane ze źródła danych z powrotem do bramy, a następnie do usługi bramy w chmurze. Następnie Usługa bramy w chmurze używa wyników.
 
-### <a name="authentication-to-on-premises-data-sources"></a>Uwierzytelnianie w lokalnych źródłach danych
+### <a name="authentication-to-on-premises-data-sources"></a>Uwierzytelnianie do lokalnych źródeł danych
 
 Przechowywane poświadczenia są używane do nawiązywania połączenia z bramą z lokalnymi źródłami danych. Niezależnie od użytkownika, brama używa przechowywanych poświadczeń do nawiązania połączenia. Mogą wystąpić wyjątki uwierzytelniania dla określonych usług, takich jak zapytania bezpośrednie i LiveConnect Analysis Services w Power BI.
 
@@ -238,7 +238,7 @@ Usługi w chmurze firmy Microsoft używają usługi [Azure AD](../active-directo
 
 Jeśli nie jesteś administratorem domeny, być może nie znasz nazwy UPN. Aby znaleźć nazwę UPN dla Twojego konta, uruchom polecenie `whoami /upn` na stacji roboczej. Mimo że wynik wygląda podobnie do adresu e-mail, wynik jest nazwą UPN dla lokalnego konta domeny.
 
-### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Synchronizowanie lokalnej usługi Active Directory z usługą Azure AD
+### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Synchronizowanie Active Directory lokalnego z usługą Azure AD
 
 Nazwa UPN lokalnych kont Active Directory i kont usługi Azure AD musi być taka sama. Upewnij się, że każde konto Active Directory lokalnego jest zgodne z kontem usługi Azure AD. Usługi w chmurze wiedzą tylko o kontach w usłudze Azure AD. W związku z tym nie musisz dodawać konta do Active Directory lokalnego. Jeśli konto nie istnieje w usłudze Azure AD, nie można użyć tego konta.
 

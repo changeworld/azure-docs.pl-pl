@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 54fcd1fb936b5dd41715798408b604106a24bcf9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112598"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190983"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Jak korzystać z usługi Azure Wyszukiwanie poznawcze z poziomu aplikacji platformy .NET
 
@@ -33,8 +33,8 @@ Inne pakiety NuGet w zestawie SDK są następujące:
 
 Różne biblioteki klienta definiują klasy, takie jak `Index`, `Field`i `Document`, a także operacje, takie jak `Indexes.Create` i `Documents.Search` w klasach `SearchServiceClient` i `SearchIndexClient`. Te klasy są zorganizowane w następujące przestrzenie nazw:
 
-* [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
-* [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
+* [Microsoft. Azure. Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
+* [Microsoft. Azure. Search. models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
 Jeśli chcesz przekazać opinię na temat przyszłej aktualizacji zestawu SDK, zobacz [stronę z opiniami](https://feedback.azure.com/forums/263029-azure-search/) lub Utwórz problem w witrynie [GitHub](https://github.com/azure/azure-sdk-for-net/issues) i podaj "wyszukiwanie poznawcze platformy Azure" w tytule problemu.
 
@@ -462,7 +462,7 @@ Najpierw należy zauważyć, że nazwa każdej właściwości publicznej w klasi
 > 
 > 
 
-Druga należy zauważyć, że każda Właściwość zawiera atrybuty, takie jak `IsFilterable`, `IsSearchable`, `Key`i `Analyzer`. Te atrybuty są mapowane bezpośrednio do [odpowiednich atrybutów pól w indeksie wyszukiwanie poznawcze platformy Azure](https://docs.microsoft.com/rest/api/searchservice/create-index#request). Klasa `FieldBuilder` używa tych właściwości do konstruowania definicji pól dla indeksu.
+Druga należy zauważyć, że każda Właściwość zawiera atrybuty, takie jak `IsFilterable`, `IsSearchable`, `Key`i `Analyzer`. Te atrybuty są mapowane bezpośrednio do [odpowiednich atrybutów pól w indeksie wyszukiwanie poznawcze platformy Azure](/rest/api/searchservice/create-index). Klasa `FieldBuilder` używa tych właściwości do konstruowania definicji pól dla indeksu.
 
 Trzecią istotną kwestią dotyczącą klasy `Hotel` są typy danych właściwości publicznych. Typy .NET tych właściwości są mapowane na odpowiadające im typy pól w definicji indeksu. Na przykład właściwość ciągu `Category` jest mapowana na pole `category` mające typ `Edm.String`. Istnieją podobne mapowania typu między `bool?`, `Edm.Boolean`, `DateTimeOffset?`i `Edm.DateTimeOffset` i tak dalej. Określone reguły mapowania typów są udokumentowane za pomocą metody `Documents.Get` w [Kompendium zestawu SDK platformy Azure wyszukiwanie poznawcze .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get). Klasa `FieldBuilder` wymaga tego mapowania, ale nadal może być zrozumiałe w przypadku konieczności rozwiązywania problemów z serializacji.
 

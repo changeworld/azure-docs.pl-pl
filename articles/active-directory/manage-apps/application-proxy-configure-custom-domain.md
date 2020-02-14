@@ -1,5 +1,5 @@
 ---
-title: Domeny niestandardowe na platformie Azure serwer proxy aplikacji usługi Azure AD | Microsoft Docs
+title: Domeny niestandardowe na serwerze Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
 description: Konfigurowanie domen niestandardowych i zarządzanie nimi w usłudze Azure serwer proxy aplikacji usługi Azure AD.
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062522"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185537"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurowanie domen niestandardowych za pomocą usługi Azure serwer proxy aplikacji usługi Azure AD
 
-Po opublikowaniu aplikacji za poorednictwem serwer proxy aplikacji usługi Azure Active Directory należy utworzyć zewnętrzny adres URL dla użytkowników. Ten adres URL pobiera domyślną domenę *yourtenant.msappproxy.NET*. Na przykład jeśli opublikujesz aplikację o nazwie *wydatki* w dzierżawie o nazwie *contoso*, zewnętrzny adres URL to *https: \//Expenses-contoso.msappproxy.NET*. Jeśli chcesz użyć własnej nazwy domeny zamiast *msappproxy.NET*, możesz skonfigurować domenę niestandardową dla swojej aplikacji. 
+Po opublikowaniu aplikacji za poorednictwem serwer proxy aplikacji usługi Azure Active Directory należy utworzyć zewnętrzny adres URL dla użytkowników. Ten adres URL pobiera domyślną domenę *yourtenant.msappproxy.NET*. Na przykład jeśli opublikujesz aplikację o nazwie *wydatki* w dzierżawie o nazwie *contoso*, zewnętrzny adres URL to *https:\//Expenses-contoso.msappproxy.NET*. Jeśli chcesz użyć własnej nazwy domeny zamiast *msappproxy.NET*, możesz skonfigurować domenę niestandardową dla swojej aplikacji. 
 
 ## <a name="benefits-of-custom-domains"></a>Zalety domen niestandardowych
 
@@ -49,7 +49,7 @@ Istnieje kilka opcji konfigurowania konfiguracji DNS, w zależności od wymagań
 
 Jeśli nie chcesz, aby użytkownicy wewnętrzni korzystali z serwera proxy aplikacji, możesz skonfigurować serwer DNS z *podziałem mózgów*. Podzielona infrastruktura DNS kieruje hosty wewnętrzne do wewnętrznego serwera nazw domen i zewnętrznych hostów do zewnętrznego serwera nazw domen, na potrzeby rozpoznawania nazw. 
 
-![Serwer DNS z podziałem mózgów](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
+![Środowisko DNS z podziałem informacji](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
 
 ### <a name="different-internal-and-external-urls"></a>Różne wewnętrzne i zewnętrzne adresy URL 
 
@@ -144,5 +144,5 @@ Po wygaśnięciu certyfikatu zostanie wyświetlone ostrzeżenie z informacją o 
 
 ## <a name="next-steps"></a>Następne kroki
 * [Włącz logowanie jednokrotne](application-proxy-configure-single-sign-on-with-kcd.md) do opublikowanych aplikacji przy użyciu uwierzytelniania usługi Azure AD.
-* [Włącz dostęp warunkowy](../conditional-access/technical-reference.md#cloud-apps-assignments) do opublikowanych aplikacji.
+* [Włącz dostęp warunkowy](../conditional-access/overview.md) do opublikowanych aplikacji.
 

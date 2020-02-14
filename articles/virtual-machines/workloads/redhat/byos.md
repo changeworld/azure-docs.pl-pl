@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: b0ef6030b1b460d118a255ede3c46719616fe3b0
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a54e1c9cbc9a80139d71a89f86ac51ecf5ce9902
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133837"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190496"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux Przenieś własne obrazy z subskrypcji na platformę Azure
 
@@ -175,7 +175,7 @@ Poniżej znajduje się przykładowy skrypt. Należy zastąpić grupę zasobów, 
 
 Red Hat Enterprise Linux można zabezpieczyć obrazy ze stosu do własnych subskrypcji, korzystając z [Azure Disk Encryption](../../linux/disk-encryption-overview.md). Jednak przed włączeniem szyfrowania **należy** zarejestrować subskrypcję.  Szczegółowe informacje na temat rejestrowania obrazu RHEL BYOS Gold są dostępne w witrynie Red Hat. Zobacz [, jak zarejestrować i subskrybować system w portalu Red Hat Customer przy użyciu usługi Red Hat Subscription-Manager](https://access.redhat.com/solutions/253273). Jeśli masz aktywną subskrypcję Red Hat, możesz również przeczytać temat [Tworzenie kluczy aktywacji w portalu Red Hat Customer Portal](https://access.redhat.com/articles/1378093).
 
-Azure Disk Encryption nie są obsługiwane w [obrazach niestandardowych Red Hat](/linux/redhat-create-upload-vhd). Dodatkowe wymagania dotyczące programu ADE i wymagania wstępne są udokumentowane w [Azure Disk Encryption dla maszyn wirtualnych z systemem Linux](../../linux/disk-encryption-overview.md#additional-vm-requirements).
+Azure Disk Encryption nie są obsługiwane w [obrazach niestandardowych Red Hat](../../linux/redhat-create-upload-vhd.md). Dodatkowe wymagania dotyczące programu ADE i wymagania wstępne są udokumentowane w [Azure Disk Encryption dla maszyn wirtualnych z systemem Linux](../../linux/disk-encryption-overview.md#additional-vm-requirements).
 
 Kroki dotyczące stosowania Azure Disk Encryption są dostępne w [Azure Disk Encryption scenariuszach na maszynach wirtualnych z systemem Linux i w](../../linux/disk-encryption-linux.md) powiązanych artykułach.
 

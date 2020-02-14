@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.openlocfilehash: e1eb852b7cf7aea887dea429e19b0a3b1ac5805a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 02/14/2020
+ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989862"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201802"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Poziom zgodności dla zadań usługi Azure Stream Analytics
 
@@ -49,9 +49,13 @@ Aby zaktualizować poziom zgodności zadania w Azure Portal:
 
 Podczas aktualizowania poziomu zgodności, kompilator języka T sprawdza poprawność zadania z składnią odpowiadającą wybranemu poziomowi zgodności.
 
-## <a name="compatibility-level-12"></a>Poziom zgodności 1.2
+## <a name="compatibility-level-12"></a>Poziom zgodności 1,2
 
 Następujące istotne zmiany są wprowadzane w obszarze poziom zgodności 1,2:
+
+###  <a name="amqp-messaging-protocol"></a>AMQP Messaging Protocol
+
+**poziom 1,2**: Azure Stream Analytics używa protokołu obsługi komunikatów [protokołu Advanced Message Queueing Protocol (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) do zapisu w Service Bus kolejkach i tematach. AMQP umożliwia tworzenie aplikacji hybrydowych dla wielu platform przy użyciu protokołu Open Standard.
 
 ### <a name="geospatial-functions"></a>Funkcje geoprzestrzenne
 
@@ -119,7 +123,7 @@ Następujące istotne zmiany są wprowadzane przy poziomie zgodności 1.1:
 
 ### <a name="service-bus-xml-format"></a>Service Bus format XML
 
-**poziom 1,0:** Azure Stream Analytics użyciu DataContractSerializer, więc zawartość komunikatów zawiera tagi XML. Przykład:
+**poziom 1,0:** Azure Stream Analytics użyciu DataContractSerializer, więc zawartość komunikatów zawiera tagi XML. Na przykład:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
@@ -148,5 +152,5 @@ Następujące istotne zmiany są wprowadzane przy poziomie zgodności 1.1:
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Rozwiązywanie problemów z danych wejściowych usługi Azure Stream Analytics](stream-analytics-troubleshoot-input.md)
+* [Rozwiązywanie problemów Azure Stream Analytics danych wejściowych](stream-analytics-troubleshoot-input.md)
 * [Stream Analytics kondycji zasobów](stream-analytics-resource-health.md)

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/20/2019
-ms.openlocfilehash: 069fc83e773c00be41e21e23fc01c589c13d687d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372707"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201275"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Rozszerzenia PostgreSQL w Azure Database for PostgreSQL — pojedynczy serwer
 PostgreSQL zapewnia możliwość rozszerzenia funkcjonalności bazy danych przy użyciu rozszerzeń. Rozszerzenia rozszerzają wiele powiązanych obiektów SQL razem w jednym pakiecie, który można załadować lub usunąć z bazy danych za pomocą jednego polecenia. Po załadowaniu do bazy danych programu rozszerzenia działają jak wbudowane funkcje.
@@ -26,14 +26,14 @@ Azure Database for PostgreSQL obsługuje podzestaw rozszerzeń kluczy, jak pokaz
 Następujące rozszerzenia są dostępne na serwerach Azure Database for PostgreSQL, które mają Postgres w wersji 11. 
 
 > [!div class="mx-tableFixed"]
-> | **Rozszerzenie**| **Wersja rozszerzenia** | **Opis** |
+> | **Rozszerzenia**| **Wersja rozszerzenia** | **Opis** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Służy do analizowania adresu w elementach składowych. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Przykład dotyczący zestawu danych standaryzacji z nami|
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | Obsługa indeksowania wspólnych typów danych w ĄTEK|
 > |[btree_gist](https://www.postgresql.org/docs/11/btree-gist.html)                   | 1.5             | Obsługa indeksowania wspólnych typów danych w rejestrze|
 > |[citext](https://www.postgresql.org/docs/11/citext.html)                       | 1.5             | Typ danych dla ciągów znaków bez uwzględniania wielkości liter|
-> |[cube](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | Typ danych dla modułów wielowymiarowych|
+> |[modułów](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | Typ danych dla modułów wielowymiarowych|
 > |[dblink](https://www.postgresql.org/docs/11/dblink.html)                       | 1.2             | Łączenie z innymi bazami danych PostgreSQL z poziomu bazy danych|
 > |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1.0             | szablon słownika wyszukiwania tekstu dla liczb całkowitych|
 > |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1.1             | Oblicz duże odległości na powierzchni ziemi|
@@ -63,15 +63,15 @@ Następujące rozszerzenia są dostępne na serwerach Azure Database for Postgre
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | otoka danych obcych dla zdalnych serwerów PostgreSQL|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | funkcje, które manipulują całymi tabelami, w tym krzyżowo|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | Włącza skalowalne i złożone zapytania dla danych szeregów czasowych|
-> |[unaccent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | słownik wyszukiwania tekstu, który usuwa akcenty|
-> |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | Generuj unikatowe identyfikatory uniwersalne (UUID)|
+> |[deakcentowanie](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | słownik wyszukiwania tekstu, który usuwa akcenty|
+> |[identyfikator UUID — OSSP](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | Generuj unikatowe identyfikatory uniwersalne (UUID)|
 
 ## <a name="postgres-10-extensions"></a>Rozszerzenia Postgres 10 
 
 Następujące rozszerzenia są dostępne na serwerach Azure Database for PostgreSQL z Postgres wersja 10.
 
 > [!div class="mx-tableFixed"]
-> | **Rozszerzenie**| **Wersja rozszerzenia** | **Opis** |
+> | **Rozszerzenia**| **Wersja rozszerzenia** | **Opis** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Służy do analizowania adresu w elementach składowych. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Przykład dotyczący zestawu danych standaryzacji z nami|
@@ -79,7 +79,7 @@ Następujące rozszerzenia są dostępne na serwerach Azure Database for Postgre
 > |[btree_gist](https://www.postgresql.org/docs/10/btree-gist.html)                   | 1.5             | Obsługa indeksowania wspólnych typów danych w rejestrze|
 > |[chkpass](https://www.postgresql.org/docs/10/chkpass.html)                       | 1.0             | Typ danych dla haseł szyfrowanych autoszyfrowanie|
 > |[citext](https://www.postgresql.org/docs/10/citext.html)                       | 1.4             | Typ danych dla ciągów znaków bez uwzględniania wielkości liter|
-> |[cube](https://www.postgresql.org/docs/10/cube.html)                         | 1.2             | Typ danych dla modułów wielowymiarowych|
+> |[modułów](https://www.postgresql.org/docs/10/cube.html)                         | 1.2             | Typ danych dla modułów wielowymiarowych|
 > |[dblink](https://www.postgresql.org/docs/10/dblink.html)                       | 1.2             | Łączenie z innymi bazami danych PostgreSQL z poziomu bazy danych|
 > |[dict_int](https://www.postgresql.org/docs/10/dict-int.html)                     | 1.0             | szablon słownika wyszukiwania tekstu dla liczb całkowitych|
 > |[earthdistance](https://www.postgresql.org/docs/10/earthdistance.html)                | 1.1             | Oblicz duże odległości na powierzchni ziemi|
@@ -109,15 +109,15 @@ Następujące rozszerzenia są dostępne na serwerach Azure Database for Postgre
 > |[postgres_fdw](https://www.postgresql.org/docs/10/postgres-fdw.html)                 | 1.0             | otoka danych obcych dla zdalnych serwerów PostgreSQL|
 > |[tablefunc](https://www.postgresql.org/docs/10/tablefunc.html)                    | 1.0             | funkcje, które manipulują całymi tabelami, w tym krzyżowo|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | Włącza skalowalne i złożone zapytania dla danych szeregów czasowych|
-> |[unaccent](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | słownik wyszukiwania tekstu, który usuwa akcenty|
-> |[uuid-ossp](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | Generuj unikatowe identyfikatory uniwersalne (UUID)|
+> |[deakcentowanie](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | słownik wyszukiwania tekstu, który usuwa akcenty|
+> |[identyfikator UUID — OSSP](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | Generuj unikatowe identyfikatory uniwersalne (UUID)|
 
 ## <a name="postgres-96-extensions"></a>Rozszerzenia Postgres 9,6 
 
 Następujące rozszerzenia są dostępne na serwerach Azure Database for PostgreSQL, które mają Postgres w wersji 9,6.
 
 > [!div class="mx-tableFixed"]
-> | **Rozszerzenie**| **Wersja rozszerzenia** | **Opis** |
+> | **Rozszerzenia**| **Wersja rozszerzenia** | **Opis** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | Służy do analizowania adresu w elementach składowych. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Przykład dotyczący zestawu danych standaryzacji z nami|
@@ -125,7 +125,7 @@ Następujące rozszerzenia są dostępne na serwerach Azure Database for Postgre
 > |[btree_gist](https://www.postgresql.org/docs/9.6/btree-gist.html)                   | 1.2             | Obsługa indeksowania wspólnych typów danych w rejestrze|
 > |[chkpass](https://www.postgresql.org/docs/9.6/chkpass.html)                       | 1.0             | Typ danych dla haseł szyfrowanych autoszyfrowanie|
 > |[citext](https://www.postgresql.org/docs/9.6/citext.html)                       | 1.3             | Typ danych dla ciągów znaków bez uwzględniania wielkości liter|
-> |[cube](https://www.postgresql.org/docs/9.6/cube.html)                         | 1.2             | Typ danych dla modułów wielowymiarowych|
+> |[modułów](https://www.postgresql.org/docs/9.6/cube.html)                         | 1.2             | Typ danych dla modułów wielowymiarowych|
 > |[dblink](https://www.postgresql.org/docs/9.6/dblink.html)                       | 1.2             | Łączenie z innymi bazami danych PostgreSQL z poziomu bazy danych|
 > |[dict_int](https://www.postgresql.org/docs/9.6/dict-int.html)                     | 1.0             | szablon słownika wyszukiwania tekstu dla liczb całkowitych|
 > |[earthdistance](https://www.postgresql.org/docs/9.6/earthdistance.html)                | 1.1             | Oblicz duże odległości na powierzchni ziemi|
@@ -155,15 +155,15 @@ Następujące rozszerzenia są dostępne na serwerach Azure Database for Postgre
 > |[postgres_fdw](https://www.postgresql.org/docs/9.6/postgres-fdw.html)                 | 1.0             | otoka danych obcych dla zdalnych serwerów PostgreSQL|
 > |[tablefunc](https://www.postgresql.org/docs/9.6/tablefunc.html)                    | 1.0             | funkcje, które manipulują całymi tabelami, w tym krzyżowo|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | Włącza skalowalne i złożone zapytania dla danych szeregów czasowych|
-> |[unaccent](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | słownik wyszukiwania tekstu, który usuwa akcenty|
-> |[uuid-ossp](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | Generuj unikatowe identyfikatory uniwersalne (UUID)|
+> |[deakcentowanie](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | słownik wyszukiwania tekstu, który usuwa akcenty|
+> |[identyfikator UUID — OSSP](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | Generuj unikatowe identyfikatory uniwersalne (UUID)|
 
 ## <a name="postgres-95-extensions"></a>Rozszerzenia Postgres 9,5 
 
 Następujące rozszerzenia są dostępne na serwerach Azure Database for PostgreSQL, które mają Postgres w wersji 9,5.
 
 > [!div class="mx-tableFixed"]
-> | **Rozszerzenie**| **Wersja rozszerzenia** | **Opis** |
+> | **Rozszerzenia**| **Wersja rozszerzenia** | **Opis** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | Służy do analizowania adresu w elementach składowych. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Przykład dotyczący zestawu danych standaryzacji z nami|
@@ -171,7 +171,7 @@ Następujące rozszerzenia są dostępne na serwerach Azure Database for Postgre
 > |[btree_gist](https://www.postgresql.org/docs/9.5/btree-gist.html)                   | 1.1             | Obsługa indeksowania wspólnych typów danych w rejestrze|
 > |[chkpass](https://www.postgresql.org/docs/9.5/chkpass.html)                       | 1.0             | Typ danych dla haseł szyfrowanych autoszyfrowanie|
 > |[citext](https://www.postgresql.org/docs/9.5/citext.html)                       | 1.1             | Typ danych dla ciągów znaków bez uwzględniania wielkości liter|
-> |[cube](https://www.postgresql.org/docs/9.5/cube.html)                         | 1.0             | Typ danych dla modułów wielowymiarowych|
+> |[modułów](https://www.postgresql.org/docs/9.5/cube.html)                         | 1.0             | Typ danych dla modułów wielowymiarowych|
 > |[dblink](https://www.postgresql.org/docs/9.5/dblink.html)                       | 1.1             | Łączenie z innymi bazami danych PostgreSQL z poziomu bazy danych|
 > |[dict_int](https://www.postgresql.org/docs/9.5/dict-int.html)                     | 1.0             | szablon słownika wyszukiwania tekstu dla liczb całkowitych|
 > |[earthdistance](https://www.postgresql.org/docs/9.5/earthdistance.html)                | 1.0             | Oblicz duże odległości na powierzchni ziemi|
@@ -199,27 +199,31 @@ Następujące rozszerzenia są dostępne na serwerach Azure Database for Postgre
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.3.0           | Typy i funkcje przestrzenne topologii PostGIS|
 > |[postgres_fdw](https://www.postgresql.org/docs/9.5/postgres-fdw.html)                 | 1.0             | otoka danych obcych dla zdalnych serwerów PostgreSQL|
 > |[tablefunc](https://www.postgresql.org/docs/9.5/tablefunc.html)                    | 1.0             | funkcje, które manipulują całymi tabelami, w tym krzyżowo|
-> |[unaccent](https://www.postgresql.org/docs/9.5/unaccent.html)                     | 1.0             | słownik wyszukiwania tekstu, który usuwa akcenty|
-> |[uuid-ossp](https://www.postgresql.org/docs/9.5/uuid-ossp.html)                    | 1.0             | Generuj unikatowe identyfikatory uniwersalne (UUID)|
+> |[deakcentowanie](https://www.postgresql.org/docs/9.5/unaccent.html)                     | 1.0             | słownik wyszukiwania tekstu, który usuwa akcenty|
+> |[identyfikator UUID — OSSP](https://www.postgresql.org/docs/9.5/uuid-ossp.html)                    | 1.0             | Generuj unikatowe identyfikatory uniwersalne (UUID)|
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
-Pg_stat_statements rozszerzenie jest wstępnie załadowane na każdym serwerze Azure Database for PostgreSQL, aby zapewnić możliwość śledzenia statystyk wykonywania instrukcji SQL.
+[Pg_stat_statements rozszerzenie](https://www.postgresql.org/docs/current/pgstatstatements.html) jest wstępnie załadowane na każdym serwerze Azure Database for PostgreSQL, aby zapewnić możliwość śledzenia statystyk wykonywania instrukcji SQL.
 Ustawienie `pg_stat_statements.track`, które określa, jakie instrukcje są zliczane przez rozszerzenie, jest wartością domyślną `top`, co oznacza, że wszystkie instrukcje wydawane bezpośrednio przez klientów są śledzone. Dwa inne poziomy śledzenia są `none` i `all`. To ustawienie można skonfigurować jako parametr serwera za pomocą [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
 
 Istnieje kompromis między informacjami o wykonywaniu zapytania pg_stat_statements zapewnia i wpływ na wydajność serwera podczas rejestrowania każdej instrukcji SQL. Jeśli nie korzystasz aktywnie z rozszerzenia pg_stat_statements, zalecamy ustawienie `pg_stat_statements.track` na `none`. Zwróć uwagę na to, że niektóre usługi monitorowania innych firm mogą polegać na pg_stat_statements w celu dostarczenia szczegółowych informacji o wydajności zapytań, więc Potwierdź, czy tak się dzieje.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink i postgres_fdw
-dblink i postgres_fdw umożliwiają łączenie się z jednego serwera PostgreSQL z innym lub z inną bazą danych na tym samym serwerze. Serwer otrzymujący musi zezwalać na połączenia z serwera wysyłającego za pośrednictwem jego zapory. Korzystając z tych rozszerzeń do łączenia się między serwerami Azure Database for PostgreSQL, można to zrobić przez ustawienie opcji "Zezwalaj na dostęp do usług platformy Azure" na wartość włączone. Jest to również wymagane, jeśli chcesz użyć rozszerzeń do zapętlenia z powrotem do tego samego serwera. Ustawienie "Zezwalaj na dostęp do usług platformy Azure" można znaleźć na stronie Azure Portal serwera Postgres, w obszarze zabezpieczenia połączeń. Włączenie opcji "Zezwalaj na dostęp do usług platformy Azure" spowoduje umieszczenie wszystkich adresów IP platformy Azure na liście dozwolonych.
+[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) i [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) umożliwiają łączenie się z jednego serwera PostgreSQL z innym lub z inną bazą danych na tym samym serwerze. Serwer otrzymujący musi zezwalać na połączenia z serwera wysyłającego za pośrednictwem jego zapory. Korzystając z tych rozszerzeń do łączenia się między serwerami Azure Database for PostgreSQL, można to zrobić przez ustawienie opcji "Zezwalaj na dostęp do usług platformy Azure" na wartość włączone. Jest to również wymagane, jeśli chcesz użyć rozszerzeń do zapętlenia z powrotem do tego samego serwera. Ustawienie "Zezwalaj na dostęp do usług platformy Azure" można znaleźć na stronie Azure Portal serwera Postgres, w obszarze zabezpieczenia połączeń. Włączenie opcji "Zezwalaj na dostęp do usług platformy Azure" spowoduje umieszczenie wszystkich adresów IP platformy Azure na liście dozwolonych.
 
 Obecnie połączenia wychodzące z Azure Database for PostgreSQL nie są obsługiwane, z wyjątkiem połączeń z innymi serwerami Azure Database for PostgreSQL.
 
 ## <a name="uuid"></a>uuid
-Jeśli planujesz użyć `uuid_generate_v4()` z rozszerzenia UUID-OSSP, rozważ porównanie z `gen_random_uuid()` z rozszerzenia pgcrypto w celu uzyskania korzyści z wydajności.
-
+Jeśli planujesz użyć `uuid_generate_v4()` z [rozszerzenia UUID-OSSP](https://www.postgresql.org/docs/current/uuid-ossp.html), rozważ porównanie z `gen_random_uuid()` z [rozszerzenia pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) w celu uzyskania korzyści z wydajności.
 
 ## <a name="pgaudit"></a>pgAudit
-Rozszerzenie pgAudit zapewnia rejestrowanie inspekcji sesji i obiektu. Aby dowiedzieć się, jak używać tego rozszerzenia w Azure Database for PostgreSQL, zapoznaj się z [artykułem pojęcia dotyczące inspekcji](concepts-audit.md). 
+[Rozszerzenie pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md) zapewnia rejestrowanie inspekcji sesji i obiektu. Aby dowiedzieć się, jak używać tego rozszerzenia w Azure Database for PostgreSQL, zapoznaj się z [artykułem pojęcia dotyczące inspekcji](concepts-audit.md). 
+
+## <a name="pg_prewarm"></a>pg_prewarm
+Rozszerzenie pg_prewarm ładuje dane relacyjne do pamięci podręcznej. Przedgrzane pamięci podręczne oznacza, że zapytania mają większe czasy reakcji podczas pierwszego uruchomienia po ponownym uruchomieniu. W Postgres 10 i poniżej, przedgrzane jest wykonywane ręcznie przy użyciu [funkcji przedgrzanej](https://www.postgresql.org/docs/10/pgprewarm.html).
+
+W Postgres 11 i nowszych można skonfigurować [Automatyczne](https://www.postgresql.org/docs/current/pgprewarm.html)rozgrzewanie. Musisz dołączyć pg_prewarm na liście parametrów `shared_preload_libraries` i ponownie uruchomić serwer, aby zastosować zmianę. Parametry można ustawić na podstawie szablonu [Azure Portal](howto-configure-server-parameters-using-portal.md), [CLI](howto-configure-server-parameters-using-cli.md), interfejsu API REST lub usługi ARM. 
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB to baza danych szeregów czasowych spakowana jako rozszerzenie dla PostgreSQL. TimescaleDB zapewnia funkcje analityczne zorientowane czasowo, optymalizacje oraz skaluje Postgres dla obciążeń szeregów czasowych.

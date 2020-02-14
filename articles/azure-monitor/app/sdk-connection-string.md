@@ -8,16 +8,16 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2cf3c784c711977a6fe758bb9017e1f0dc404c33
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8febe1fd749842a6db0cd1c9991f4002eb7cf2ad
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992068"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190094"
 ---
 # <a name="connection-strings"></a>Parametry połączeń
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Parametry połączenia zapewniają użytkownikom usługi Application Insights jedno ustawienie konfiguracji, eliminując konieczność stosowania wielu ustawień serwera proxy. Wysoce przydatne w przypadku intranetowych serwerów sieci Web, suwerennych lub hybrydowych środowisk w chmurze, które chcą wysyłać dane do usługi monitorowania.
 
@@ -140,10 +140,10 @@ W tym przykładzie parametry połączenia określają jawne zastąpienia dla ka�
 - Domyślna wartość schematu autoryzacji to "iKey" 
 - Klucz Instrumentacji: 00000000-0000-0000-0000-000000000000
 - Identyfikatory URI usługi regionalnej są oparte na wartościach jawnego zastąpienia: 
-   - Pozyskiwanie: https://custom.com:111/
-   - Metryki na żywo: https://custom.com:222/
-   - Profiler: https://custom.com:333/ 
-   - Debuger: https://custom.com:444/   
+   - Pozyskiwanie: https:\//custom.com:111/
+   - Metryki na żywo: https:\//custom.com:222/
+   - Profiler: https:\//custom.com:333/ 
+   - Debuger: https:\//custom.com:444/   
 
 
 ## <a name="how-to-set-a-connection-string"></a>Jak ustawić parametry połączenia

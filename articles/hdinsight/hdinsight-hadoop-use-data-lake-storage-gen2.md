@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
-ms.openlocfilehash: 6ed0742a214b001ab773e33e851abfb94495984b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aeb86823ddb25bbe0340630b55360806faef59e9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767674"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186881"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Używanie Azure Data Lake Storage Gen2 z klastrami usługi Azure HDInsight
 
@@ -36,7 +36,7 @@ Aby utworzyć klaster usługi HDInsight, który używa Data Lake Storage Gen2 dl
 
 Utwórz tożsamość zarządzaną przypisaną przez użytkownika, jeśli jeszcze jej nie masz.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. W lewym górnym rogu kliknij pozycję **Utwórz zasób**.
 1. W polu wyszukiwania wpisz przypisane przez **użytkownika** , a następnie kliknij pozycję **tożsamość zarządzana przypisana przez użytkownika**.
 1. Kliknij przycisk **Utwórz**.
@@ -47,17 +47,17 @@ Aby uzyskać więcej informacji na temat działania tożsamości zarządzanych w
 
 ![Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
 
-### <a name="create-a-data-lake-storage-gen2-account"></a>Tworzenie konta usługi Data Lake Storage Gen2
+### <a name="create-a-data-lake-storage-gen2-account"></a>Utwórz konto Data Lake Storage Gen2
 
 Utwórz konto usługi Azure Data Lake Storage Gen2.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. W lewym górnym rogu kliknij pozycję **Utwórz zasób**.
 1. W polu wyszukiwania wpisz **Storage** i kliknij pozycję **konto magazynu**.
 1. Kliknij przycisk **Utwórz**.
 1. Na ekranie **Tworzenie konta magazynu** :
     1. Wybierz prawidłową subskrypcję i grupę zasobów.
-    1. Wprowadź nazwę konta Data Lake Storage Gen2. Aby uzyskać więcej informacji na temat konwencji nazewnictwa kont magazynu, zobacz [konwencje nazewnictwa dla zasobów platformy Azure](/azure/architecture/best-practices/resource-naming#storage).
+    1. Wprowadź nazwę konta Data Lake Storage Gen2. Aby uzyskać więcej informacji na temat konwencji nazewnictwa kont magazynu, zobacz [konwencje nazewnictwa dla zasobów platformy Azure](/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).
     1. Kliknij kartę **Zaawansowane** .
     1. Kliknij pozycję **włączone** obok **hierarchicznej przestrzeni nazw** w obszarze **Data Lake Storage Gen2**.
     1. Kliknij pozycję **Przegląd + utwórz**.

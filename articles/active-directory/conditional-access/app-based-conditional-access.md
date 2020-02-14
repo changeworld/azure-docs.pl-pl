@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c173d0e17166911e28fea3d1c5820879d17af4a8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1a8832234978a2c8b2db25d88b5dd6c211b634b7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381118"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186452"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Instrukcje: wymaganie zatwierdzonych aplikacji klienckich do uzyskiwania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego 
 
-Pracownicy używają urządzeń przenośnych zarówno do zadań osobistych, jak i służbowych. Zapewniając, że pracownicy mogą pracować wydajnie, możesz również zapobiec utracie danych. Za pomocą dostępu warunkowego usługi Azure Active Directory (Azure AD) można ograniczyć dostęp do aplikacji w chmurze do zatwierdzonych aplikacji klienckich, które mogą chronić dane firmowe.  
+Pracownicy używają urządzeń przenośnych zarówno do celów służbowych, jak i prywatnych. Zapewniając, że pracownicy mogą pracować wydajnie, możesz również zapobiec utracie danych. Za pomocą dostępu warunkowego usługi Azure Active Directory (Azure AD) można ograniczyć dostęp do aplikacji w chmurze do zatwierdzonych aplikacji klienckich, które mogą chronić dane firmowe.  
 
 W tym temacie opisano sposób konfigurowania zasad dostępu warunku, które wymagają zatwierdzonych aplikacji klienckich.
 
@@ -36,7 +36,7 @@ W terminologii dostępu warunkowego te aplikacje klienckie są nazywane **zatwie
 
 ![Dostęp warunkowy](./media/app-based-conditional-access/05.png)
 
-Aby uzyskać listę zatwierdzonych aplikacji klienckich, zobacz [wymagania dotyczące zatwierdzonej aplikacji klienckiej](technical-reference.md#approved-client-app-requirement).
+Aby uzyskać listę zatwierdzonych aplikacji klienckich, zobacz [wymagania dotyczące zatwierdzonej aplikacji klienckiej](concept-conditional-access-grant.md).
 
 Zasady dostępu warunkowego opartego na aplikacji można łączyć z innymi zasadami, takimi jak [zasady dostępu warunkowego oparte na urządzeniach](require-managed-devices.md) , aby zapewnić elastyczność w zakresie ochrony danych zarówno na urządzeniach osobistych, jak i firmowych.
 
@@ -44,7 +44,7 @@ Zasady dostępu warunkowego opartego na aplikacji można łączyć z innymi zasa
 
 W tym temacie założono, że znasz:
 
-- Informacje techniczne [dotyczące zatwierdzonej aplikacji klienckiej](technical-reference.md#approved-client-app-requirement) .
+- [Wymagania dotyczące zatwierdzonej aplikacji klienckiej](concept-conditional-access-grant.md).
 - Podstawowe pojęcia związane z [dostępem warunkowym w Azure Active Directory](overview.md).
 - Jak [skonfigurować zasady dostępu warunkowego](app-based-mfa.md).
 - [Migracja zasad dostępu warunkowego](best-practices.md#policy-migration).
@@ -72,7 +72,7 @@ W tym scenariuszu przyjęto założenie, że użytkownik:
 
 Wszystkie zasady ochrony aplikacji usługi Intune są aktywowane w momencie uzyskiwania dostępu do danych firmowych i mogą monitować użytkownika o ponowne uruchomienie aplikacji, użycie dodatkowego numeru PIN itp. (jeśli jest skonfigurowany dla aplikacji i platformy).
 
-### <a name="configuration"></a>Konfigurowanie 
+### <a name="configuration"></a>Konfiguracja 
 
 **Krok 1 — Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usługi Exchange Online**
 
@@ -117,7 +117,7 @@ W tym scenariuszu przyjęto założenie, że użytkownik:
 - Próbuje zalogować się przy użyciu tych samych poświadczeń, które są poświadczeniami aplikacji Outlook
 - Nie musi ponownie rejestrować i uzyskać dostępu do zasobów
 
-### <a name="configuration"></a>Konfigurowanie
+### <a name="configuration"></a>Konfiguracja
 
 **Krok 1 — Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usług Exchange Online i SharePoint Online**
 
@@ -139,7 +139,7 @@ W przypadku zasad dostępu warunkowego w tym kroku należy skonfigurować nastę
 
 1. **Nazwa** zasad dostępu warunkowego.
 1. **Użytkownicy i grupy**: dla każdej zasady dostępu warunkowego należy wybrać co najmniej jednego użytkownika lub grupę.
-1. **Aplikacje w chmurze:** Jako aplikacje w chmurze musisz wybrać **pakiet Office 365 Exchange Online**. Online 
+1. **Aplikacje w chmurze:** Jako aplikacje w chmurze musisz wybrać **pakiet Office 365 Exchange Online**. Sieci 
 1. **Warunki:** W przypadku **warunków**należy skonfigurować **aplikacje klienckie**:
    1. Jako **aplikacje klienckie (wersja zapoznawcza)** wybierz pozycję **aplikacje mobilne i klienci stacjonarni** oraz **klienci programu Exchange ActiveSync**.
    1. Jako **kontroli dostępu**musisz mieć wybraną pozycję **Wymagaj zatwierdzonej aplikacji klienckiej (wersja zapoznawcza)** .
@@ -164,7 +164,7 @@ W tym scenariuszu przyjęto założenie, że:
 - Użytkownicy, którzy nie są zarejestrowani i zarejestrowani w usłudze Azure AD przy użyciu aplikacji chronionej przez aplikację, muszą zarejestrować urządzenie w celu uzyskania dostępu do zasobów
 - Zarejestrowani użytkownicy korzystający z aplikacji chronionej przez aplikację nie muszą ponownie rejestrować urządzenia
 
-### <a name="configuration"></a>Konfigurowanie
+### <a name="configuration"></a>Konfiguracja
 
 **Krok 1 — Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usług Exchange Online i SharePoint Online**
 
@@ -220,7 +220,7 @@ W tym scenariuszu przyjęto założenie, że użytkownik:
 
 Wszystkie zasady ochrony aplikacji usługi Intune są aktywowane w momencie uzyskiwania dostępu do danych firmowych i mogą monitować użytkownika o ponowne uruchomienie aplikacji, użycie dodatkowego numeru PIN itp. (jeśli jest skonfigurowany dla aplikacji i platformy)
 
-### <a name="configuration"></a>Konfigurowanie
+### <a name="configuration"></a>Konfiguracja
 
 **Krok 1 — Konfigurowanie zasad dostępu warunkowego usługi Azure AD dla usług Exchange Online i SharePoint Online**
 

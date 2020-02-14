@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c6ce46af8fb9a9ab4be5fcc63ccd4909374e4f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846179"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185907"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>Migracja zasad dostępu warunkowego do klasycznej zasady
 
@@ -89,7 +89,7 @@ Jeśli masz nowe zasady, dla których skonfigurowano warunek aplikacji klienta *
 
 ![Warunki dostępu warunkowego](./media/policy-migration/16.png)
  
-Klasyczne zasady [oparte na aplikacji](technical-reference.md#approved-client-app-requirement) dla pakietu Office 365 Exchange Online, które zawierają **Exchange Active Sync** jako warunek aplikacji klienckich Zezwalaj na **obsługiwane** i **nieobsługiwane** [platformy urządzeń](technical-reference.md#device-platform-condition). Chociaż nie można skonfigurować poszczególnych platform urządzeń w odniesieniu do pokrewnych nowych zasad, można ograniczyć obsługę tylko do [obsługiwanych platform urządzeń](technical-reference.md#device-platform-condition) . 
+Klasyczne zasady oparte na aplikacji dla pakietu Office 365 Exchange Online, które zawierają **Exchange Active Sync** jako warunek aplikacji klienckich Zezwalaj na **obsługiwane** i **nieobsługiwane** platformy urządzeń. Chociaż nie można skonfigurować poszczególnych platform urządzeń w odniesieniu do pokrewnych nowych zasad, można ograniczyć obsługę tylko do [obsługiwanych platform urządzeń](concept-conditional-access-conditions.md#device-platforms) . 
 
 ![Dostęp warunkowy wybierz pozycję Exchange ActiveSync](./media/policy-migration/65.png)
 
@@ -109,9 +109,9 @@ W takim przypadku można skonsolidować zasady klasyczne do jednej nowej zasady,
 
 ### <a name="device-platforms"></a>Platformy urządzeń
 
-Zasady klasyczne z [kontrolkami opartymi na aplikacji](technical-reference.md#approved-client-app-requirement) są wstępnie skonfigurowane z systemami iOS i Android jako [warunek platformy urządzenia](technical-reference.md#device-platform-condition). 
+Zasady klasyczne z kontrolkami opartymi na aplikacji są wstępnie skonfigurowane z systemami iOS i Android jako warunek platformy urządzenia. 
 
-W nowych zasadach należy wybrać [platformy urządzeń](technical-reference.md#device-platform-condition) , które mają być obsługiwane pojedynczo.
+W nowych zasadach należy wybrać [platformy urządzeń](concept-conditional-access-conditions.md#device-platforms) , które mają być obsługiwane pojedynczo.
 
 ![Wybór platform urządzeń z dostępem warunkowym](./media/policy-migration/41.png)
 

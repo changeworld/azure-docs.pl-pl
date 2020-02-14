@@ -15,12 +15,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f9686be08de2589cddadf741dadf243d0e7895
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174439"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185557"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory głębokiego uwierzytelniania przekazującego zabezpieczeń szczegółowe
 
@@ -38,14 +38,14 @@ Tematy poświęcone:
 Oto kluczowe aspekty zabezpieczeń tej funkcji:
 - Jest on oparty na bezpiecznej architekturze z wieloma dzierżawcami, która zapewnia izolację żądań logowania między dzierżawcami.
 - Hasła lokalne nigdy nie są przechowywane w chmurze w żadnej postaci.
-- Agenci uwierzytelniania lokalnego, którzy nasłuchują i odpowiadają na żądania weryfikacji haseł, umożliwiają tylko połączenia wychodzące z sieci. Nie jest wymagane, aby zainstalować tych agentów uwierzytelniania w sieci obwodowej (DMZ). Najlepszym rozwiązaniem jest traktowanie wszystkich serwerów, na których są uruchomione agenci uwierzytelniania jako systemy warstwy 0 (zobacz [odwołanie](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+- Agenci uwierzytelniania lokalnego, którzy nasłuchują i odpowiadają na żądania weryfikacji haseł, umożliwiają tylko połączenia wychodzące z sieci. Nie jest wymagane do zainstalowania tych agentów uwierzytelniania w sieci obwodowej. Najlepszym rozwiązaniem jest traktowanie wszystkich serwerów, na których są uruchomione agenci uwierzytelniania jako systemy warstwy 0 (zobacz [odwołanie](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 - Do komunikacji wychodzącej z agentów uwierzytelniania do usługi Azure AD są używane tylko porty standardowe (80 i 443). Nie trzeba otwierać portów przychodzących w zaporze. 
   - Port 443 jest używany do całej uwierzytelnionej komunikacji wychodzącej.
   - Port 80 jest używany tylko do pobierania list odwołania certyfikatów (CRL), aby upewnić się, że żaden z certyfikatów używanych przez tę funkcję nie został odwołany.
   - Aby zapoznać się z pełną listą wymagań sieci, zobacz [Azure Active Directory uwierzytelniania przekazywanego: Szybki Start](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
 - Hasła zapewniane przez użytkowników podczas logowania są szyfrowane w chmurze przed zaakceptowaniem przez agentów lokalnego uwierzytelniania do walidacji w odniesieniu do Active Directory.
 - Kanał HTTPS między usługą Azure AD a agentem uwierzytelniania lokalnego jest zabezpieczony przy użyciu wzajemnego uwierzytelniania.
-- Chroni Twoje konta użytkowników, bezproblemowo korzystając z [zasad dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md), w tym Multi-Factor Authentication (MFA), [blokując starsze uwierzytelnianie](../conditional-access/conditions.md) i przez [odfiltrowanie ataków z hasłami](../authentication/howto-password-smart-lockout.md)bezprawnego.
+- Chroni Twoje konta użytkowników, bezproblemowo korzystając z [zasad dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md), w tym Multi-Factor Authentication (MFA), [blokując starsze uwierzytelnianie](../conditional-access/concept-conditional-access-conditions.md) i przez [odfiltrowanie ataków z hasłami](../authentication/howto-password-smart-lockout.md)bezprawnego.
 
 ## <a name="components-involved"></a>Uwzględnione składniki
 
@@ -72,7 +72,7 @@ W poniższych sekcjach szczegółowo omówiono te etapy.
 
 ### <a name="authentication-agent-installation"></a>Instalacja agenta uwierzytelniania
 
-Tylko Administratorzy globalni mogą instalować agenta uwierzytelniania (przy użyciu Azure AD Connect lub autonomicznego) na serwerze lokalnym. Instalacja dodaje dwa nowe wpisy do **Panelu sterowania** > **programy** >  listy**programów i funkcji** :
+Tylko Administratorzy globalni mogą instalować agenta uwierzytelniania (przy użyciu Azure AD Connect lub autonomicznego) na serwerze lokalnym. Instalacja dodaje dwa nowe wpisy do **Panelu sterowania** > **programy** > **programy i funkcje** :
 - Sama aplikacja agenta uwierzytelniania. Ta aplikacja działa z uprawnieniami [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) .
 - Aplikacja Aktualizator, która służy do autoaktualizacji agenta uwierzytelniania. Ta aplikacja jest uruchamiana z uprawnieniami [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) .
 
@@ -157,7 +157,7 @@ Uwierzytelnianie przekazywane obsługuje żądanie logowania użytkownika w nast
 
 Aby zapewnić, że uwierzytelnianie przekazywane pozostaje bezpieczne, usługa Azure AD okresowo odnawia certyfikaty agentów uwierzytelniania. Usługa Azure AD wyzwala odnowienia. Odnowienia nie podlegają samym agentom uwierzytelniania.
 
-![Zabezpieczenia operacyjne](./media/how-to-connect-pta-security-deep-dive/pta4.png)
+![Bezpieczeństwo działania](./media/how-to-connect-pta-security-deep-dive/pta4.png)
 
 Aby odnowić zaufanie agenta uwierzytelniania za pomocą usługi Azure AD:
 
@@ -213,7 +213,7 @@ Aby zaktualizować agenta uwierzytelniania:
 
 ## <a name="next-steps"></a>Następne kroki
 - [Bieżące ograniczenia](how-to-connect-pta-current-limitations.md): informacje o scenariuszach, które są obsługiwane i które nie są.
-- [Szybki Start](how-to-connect-pta-quick-start.md): Rozpoczynanie pracy z uwierzytelnianiem przekazywanym usługi Azure AD.
+- [Szybki Start](how-to-connect-pta-quick-start.md): Rozpoczynanie pracy przy użyciu uwierzytelniania przekazywanego usługi Azure AD.
 - [Migrowanie z AD FS do uwierzytelniania przekazywanego](https://aka.ms/adfstoptadpdownload) — szczegółowy przewodnik migracji z AD FS (lub innych technologii federacyjnych) do uwierzytelniania przekazywanego.
 - [Inteligentna blokada](../authentication/howto-password-smart-lockout.md): Skonfiguruj funkcję inteligentnego blokowania w dzierżawie, aby chronić konta użytkowników.
 - [Jak to działa](how-to-connect-pta-how-it-works.md): Poznaj podstawowe informacje na temat sposobu działania uwierzytelniania przekazywanego przez usługę Azure AD.

@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 60d5d8efb10cce54743038599238cc6f61922369
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "70934098"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192738"
 ---
 ## <a name="create-the-webapi-project"></a>Tworzenie projektu interfejsu WebAPI
 
 W poniższych sekcjach omówiono proces tworzenia nowego zaplecza interfejsu WebAPI platformy ASP.NET. Ten proces ma trzy główne cele:
 
-- **Uwierzytelnianie klientów**: procedura obsługi komunikatów jest dodawana w celu uwierzytelnienia żądań klientów i skojarzenia użytkownika z żądaniem.
-- **Rejestrowanie na potrzeby powiadomień za pomocą zaplecza interfejsu WebAPI**: później dodasz kontroler do obsługi nowych rejestracji, aby urządzenie klienckie mogło otrzymywać powiadomienia. Nazwa uwierzytelnionego użytkownika jest automatycznie dodawana do rejestracji jako [tag](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md).
+- **Uwierzytelnianie klientów**: procedura obsługi komunikatów jest dodawana w celu uwierzytelnienia żądań klientów i kojarzenia użytkownika z żądaniem.
+- **Rejestrowanie do używania powiadomień za pomocą zaplecza interfejsu WebAPI**: kontroler jest dodawany w celu obsługi nowych rejestracji, aby urządzenie klienckie mogło otrzymywać powiadomienia. Nazwa uwierzytelnionego użytkownika jest automatycznie dodawana do rejestracji jako [tag](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md).
 - **Wysyłanie powiadomień do klientów**: jest dodawany kontroler udostępniający użytkownikom możliwość wyzwalania bezpiecznej operacji wypychania do urządzeń i klientów skojarzonych z tagiem.
 
 Utwórz nowe zaplecze interfejsu WebAPI na platformie ASP.NET, wykonując następujące akcje:
@@ -108,7 +108,7 @@ W tej sekcji tworzysz nową klasę procedury obsługi komunikatów o nazwie **Au
                 string user = authorizationUserAndPwd.Split(':')[0];
                 string password = authorizationUserAndPwd.Split(':')[1];
 
-                if (verifyUserAndPwd(user, password))
+                if (VerifyUserAndPwd(user, password))
                 {
                     // Attach the new principal object to the current HttpContext object
                     HttpContext.Current.User =
@@ -123,7 +123,7 @@ W tej sekcji tworzysz nową klasę procedury obsługi komunikatów o nazwie **Au
             return base.SendAsync(request, cancellationToken);
         }
 
-        private bool verifyUserAndPwd(string user, string password)
+        private bool VerifyUserAndPwd(string user, string password)
         {
             // This is not a real authentication scheme.
             return user == password;

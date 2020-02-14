@@ -1,32 +1,36 @@
 ---
-title: Włącz Enterprise State Roaming w Azure Active Directory | Microsoft Docs
+title: Włączanie roamingu stanu przedsiębiorstwa w usłudze Azure Active Directory
 description: Często zadawane pytania dotyczące ustawień Enterprise State Roaming na urządzeniach z systemem Windows.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0f4a260bb52fb10147f6d6b9e74aa5cd4fd0e1a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6887edacafb4fd4a68cfbe7d97e788c71dc68522
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562158"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194453"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Włączanie roamingu stanu przedsiębiorstwa w usłudze Azure Active Directory
+
 Enterprise State Roaming jest dostępna dla każdej organizacji z licencją Azure AD — wersja Premium lub Enterprise Mobility + Security (EMS). Aby uzyskać więcej informacji na temat uzyskiwania subskrypcji usługi Azure AD, zobacz [stronę produktu usługi Azure AD](https://azure.microsoft.com/services/active-directory).
 
-Po włączeniu Enterprise State Roaming organizacja zostanie automatycznie udzielona bezpłatną licencję ograniczonej użytkowania na potrzeby ochrony za pomocą usługi Azure Rights Management z Azure Information Protection. Ta bezpłatna subskrypcja jest ograniczona do szyfrowania i odszyfrowywania ustawień przedsiębiorstwa oraz danych aplikacji synchronizowanych przez Enterprise State Roaming. Aby korzystać z [](https://azure.microsoft.com/pricing/details/information-protection/) pełnych możliwości usługi Azure Rights Management, musisz mieć płatną subskrypcję.
+Po włączeniu Enterprise State Roaming organizacja zostanie automatycznie udzielona bezpłatną licencję ograniczonej użytkowania na potrzeby ochrony za pomocą usługi Azure Rights Management z Azure Information Protection. Ta bezpłatna subskrypcja jest ograniczona do szyfrowania i odszyfrowywania ustawień przedsiębiorstwa oraz danych aplikacji synchronizowanych przez Enterprise State Roaming. Aby korzystać z pełnych możliwości usługi Azure Rights Management, musisz mieć [płatną subskrypcję](https://azure.microsoft.com/pricing/details/information-protection/) .
+
+> [!NOTE]
+> Ten artykuł ma zastosowanie do starszej przeglądarki opartej na języku HTML Microsoft Edge, która została uruchomiona z systemem Windows 10 w lipcu 2015. Artykuł nie ma zastosowania do nowej przeglądarki opartej na formacie chromu Microsoft Edge wydanej 15 stycznia 2020. Aby uzyskać więcej informacji na temat zachowania synchronizacji dla nowej przeglądarki Microsoft Edge, zobacz artykuł [Microsoft Edge Sync](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync).
 
 ## <a name="to-enable-enterprise-state-roaming"></a>Aby włączyć Enterprise State Roaming
 
 1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com/).
-1. Wybierz pozycję **Azure Active Directory** &gt; **urządzenia** &gt; **Enterprise State roaming**.
+1. Wybierz **Azure Active Directory** **urządzenia** &gt; &gt; **Enterprise State roaming**.
 1. Wybierz pozycję **Użytkownicy mogą synchronizować ustawienia i dane aplikacji między urządzeniami**. Aby uzyskać więcej informacji, zobacz [jak skonfigurować ustawienia urządzenia](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
   
    ![obraz ustawienia urządzenia z etykietą użytkownicy mogą synchronizować ustawienia i dane aplikacji między urządzeniami](./media/enterprise-state-roaming-enable/device-settings.png)
@@ -34,7 +38,8 @@ Po włączeniu Enterprise State Roaming organizacja zostanie automatycznie udzie
 Aby urządzenie z systemem Windows 10 używało usługi Enterprise State Roaming, urządzenie musi uwierzytelnić się przy użyciu tożsamości usługi Azure AD. W przypadku urządzeń przyłączonych do usługi Azure AD tożsamość logowania użytkownika podstawowego jest tożsamością usługi Azure AD, więc nie jest wymagana żadna dodatkowa konfiguracja. W przypadku urządzeń korzystających z Active Directory lokalnych administrator IT musi [skonfigurować urządzenia hybrydowe Azure Active Directory dołączone](hybrid-azuread-join-manual-steps.md). 
 
 ## <a name="data-storage"></a>Magazyn danych
-Enterprise State Roaming dane są hostowane w co najmniej jednym [regionie platformy Azure](https://azure.microsoft.com/regions/) , który najlepiej odpowiada wartości kraju/regionu ustawionej w wystąpieniu Azure Active Directory. Enterprise State Roaming dane są partycjonowane na podstawie trzech głównych regionów geograficznych: Ameryka Północna, EMEA i Azja I Pacyfik. Enterprise State Roaming dane dla dzierżawy znajdują się lokalnie w regionie geograficznym i nie są replikowane między regionami.  Przykład:
+
+Enterprise State Roaming dane są hostowane w co najmniej jednym [regionie platformy Azure](https://azure.microsoft.com/regions/) , który najlepiej odpowiada wartości kraju/regionu ustawionej w wystąpieniu Azure Active Directory. Enterprise State Roaming dane są partycjonowane na podstawie trzech głównych regionów geograficznych: Ameryka Północna, EMEA i Azja I Pacyfik. Enterprise State Roaming dane dla dzierżawy znajdują się lokalnie w regionie geograficznym i nie są replikowane między regionami.  Na przykład:
 
 | Wartość kraju/regionu | ma dane hostowane w |
 | -------------------- | ------------------------ |
@@ -46,6 +51,7 @@ Enterprise State Roaming dane są hostowane w co najmniej jednym [regionie platf
 Wartość kraju/regionu jest ustawiana jako część procesu tworzenia katalogu usługi Azure AD i nie można jej zmodyfikować. Jeśli potrzebujesz więcej szczegółów dotyczących lokalizacji przechowywania danych, Zastąp bilet z pomocą [techniczną platformy Azure](https://azure.microsoft.com/support/options/).
 
 ## <a name="view-per-user-device-sync-status"></a>Wyświetl stan synchronizacji urządzenia użytkownika
+
 Wykonaj następujące kroki, aby wyświetlić raport o stanie synchronizacji urządzeń poszczególnych użytkowników.
 
 1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com/).
@@ -60,16 +66,19 @@ Wykonaj następujące kroki, aby wyświetlić raport o stanie synchronizacji urz
    ![obraz przedstawiający dane kolumnowy urządzenia](./media/enterprise-state-roaming-enable/device-status-row.png)
 
 ## <a name="data-retention"></a>Przechowywanie danych
+
 Dane zsynchronizowane z chmurą firmy Microsoft przy użyciu Enterprise State Roaming są zachowywane do momentu ręcznego usunięcia lub do momentu ustalenia, że dane są nieaktualne. 
 
 ### <a name="explicit-deletion"></a>Jawne usunięcie
+
 Jawne usunięcie jest możliwe, gdy administrator platformy Azure usunie użytkownika lub katalog lub jawnie poprosi o usunięcie danych.
 
-* **Usuwanie użytkownika**: Po usunięciu użytkownika w usłudze Azure AD dane mobilne konta użytkownika są usuwane po 90 do 180 dni. 
-* **Usuwanie katalogu**: Usuwanie całego katalogu w usłudze Azure AD jest operacją natychmiastową. Wszystkie dane ustawień skojarzonych z tym katalogiem zostaną usunięte po 90 do 180 dni. 
-* **Przy usuwaniu żądania**: Jeśli administrator usługi Azure AD chce ręcznie usunąć dane dotyczące danych lub ustawień określonego użytkownika, administrator może zaplikować bilet z pomocą [techniczną platformy Azure](https://azure.microsoft.com/support/). 
+* **Usuwanie użytkownika**: po usunięciu użytkownika z usługi Azure AD dane mobilne konta użytkownika są usuwane po 90 do 180 dni. 
+* **Usuwanie katalogu**: usuwanie całego katalogu w usłudze Azure AD jest operacją natychmiastową. Wszystkie dane ustawień skojarzonych z tym katalogiem zostaną usunięte po 90 do 180 dni. 
+* **Przy usuwaniu żądania**: Jeśli administrator usługi Azure AD chce ręcznie usunąć dane danych lub ustawień określonego użytkownika, administrator może wysłać bilet z pomocą [techniczną platformy Azure](https://azure.microsoft.com/support/). 
 
 ### <a name="stale-data-deletion"></a>Usuwanie starych danych
+
 Dane, do których nie uzyskano dostępu przez rok ("okres przechowywania") będą traktowane jako nieodświeżone i mogą zostać usunięte z chmury firmy Microsoft. Okres przechowywania może ulec zmianie, ale nie będzie krótszy niż 90 dni. Nieodświeżone dane mogą być określonym zestawem ustawień systemu Windows/aplikacji lub wszystkich ustawień dla użytkownika. Na przykład:
 
 * Jeśli żadne urządzenie nie uzyskuje dostępu do określonej kolekcji ustawień (na przykład aplikacja zostanie usunięta z urządzenia lub grupa ustawień, taka jak "motyw" jest wyłączona dla wszystkich urządzeń użytkownika), ta kolekcja będzie nieaktualna po okresie przechowywania i może zostać usunięta . 
@@ -77,6 +86,7 @@ Dane, do których nie uzyskano dostępu przez rok ("okres przechowywania") będ�
 * Jeśli administrator katalogu usługi Azure AD wyłączy Enterprise State Roaming dla całego katalogu, wszyscy użytkownicy w tym katalogu zatrzymają synchronizację ustawień, a wszystkie dane ustawień dla wszystkich użytkowników staną się nieaktualne i mogą zostać usunięte po okresie przechowywania. 
 
 ### <a name="deleted-data-recovery"></a>Odzyskiwanie danych usuniętych
+
 Zasad przechowywania danych nie można konfigurować. Gdy dane zostaną trwale usunięte, nie można ich odzyskać. Jednak dane ustawień zostaną usunięte tylko z chmury firmy Microsoft, a nie z urządzenia użytkownika końcowego. Jeśli dowolne urządzenie ponownie nawiązuje połączenie z usługą Enterprise State Roaming, ustawienia zostaną ponownie zsynchronizowane i zapisane w chmurze firmy Microsoft.
 
 ## <a name="next-steps"></a>Następne kroki

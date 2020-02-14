@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931122"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190928"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Rozwiązywanie typowych problemów indeksatora na platformie Azure Wyszukiwanie poznawcze
 
@@ -112,6 +112,6 @@ Indeksatory Znajdź dokumenty ze [źródła danych](https://docs.microsoft.com/r
 
 * Dokument nie został zindeksowany. Sprawdź, czy Portal zakończył działanie indeksatora.
 * Dokument został zaktualizowany po uruchomieniu indeksatora. Jeśli indeksator jest zgodnie z [harmonogramem](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule), zostanie on ostatecznie uruchomiony i zostanie pobrany do dokumentu.
-* [Zapytanie](https://docs.microsoft.com/rest/api/searchservice/create-data-source#request-body-syntax) określone w źródle danych wyklucza dokument. Indeksatory nie mogą indeksować dokumentów, które nie są częścią źródła danych.
+* [Zapytanie](/rest/api/searchservice/create-data-source) określone w źródle danych wyklucza dokument. Indeksatory nie mogą indeksować dokumentów, które nie są częścią źródła danych.
 * [Mapowania pól](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) lub [wzbogacania AI](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) zmieniły dokument i wyglądają inaczej niż oczekiwano.
 * Użyj [interfejsu API dokumentu wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/lookup-document) , aby znaleźć dokument.

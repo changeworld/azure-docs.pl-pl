@@ -16,12 +16,12 @@ ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e77f507f2a3bd89069f25bf984cf4059009faa6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 5499c8808c3916842071df1f03a865efd98719f6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932640"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185760"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co to są przeglądy dostępu w usłudze Azure AD?
 
@@ -58,13 +58,13 @@ W zależności od tego, co chcesz przejrzeć, możesz utworzyć przegląd dostę
 | --- | --- | --- | --- |
 | Członkowie grupy zabezpieczeń</br>Członkowie grupy pakietu Office | Określeni recenzenci</br>Właściciele grupy</br>Samoobsługowe przeglądanie | Przeglądy dostępu w usłudze Azure AD</br>Grupy usługi Azure AD | Panel dostępu |
 | Przypisane do połączonej aplikacji | Określeni recenzenci</br>Samoobsługowe przeglądanie | Przeglądy dostępu w usłudze Azure AD</br>Aplikacje dla przedsiębiorstw usługi Azure AD (w wersji zapoznawczej) | Panel dostępu |
-| Rola usługi Azure AD | Określeni recenzenci</br>Samoobsługowe przeglądanie | [Usługa Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Portal Azure |
-| Rola zasobów platformy Azure | Określeni recenzenci</br>Samoobsługowe przeglądanie | [Usługa Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Portal Azure |
+| Rola usługi Azure AD | Określeni recenzenci</br>Samoobsługowe przeglądanie | [Usługa Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Portalu Azure |
+| Rola zasobów platformy Azure | Określeni recenzenci</br>Samoobsługowe przeglądanie | [Usługa Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Portalu Azure |
 
 
-## <a name="onboard-access-reviews"></a>Dołączanie przeglądów dostępu
+## <a name="create-access-reviews"></a>Tworzenie przeglądów dostępu
 
-Aby dołączać przeglądy dostępu, wykonaj następujące kroki.
+Aby utworzyć przeglądy dostępu, wykonaj następujące kroki:
 
 1. Przejdź do [Azure Portal](https://portal.azure.com) , aby zarządzać recenzjami dostępu i zalogować się jako Administrator globalny lub administrator użytkowników.
 
@@ -74,13 +74,9 @@ Aby dołączać przeglądy dostępu, wykonaj następujące kroki.
 
 1. Wybierz pozycję **Zarządzanie tożsamościami**.
 
-1. Kliknij pozycję **przeglądy dostępu**.
- 
-    ![Strona początkowa przeglądów dostępu](./media/access-reviews-overview/access-reviews-overview-onboard.png)
+1. Na stronie Wprowadzenie kliknij przycisk **Utwórz przegląd dostępu** .
 
-1. Na stronie kliknij przycisk Dołącz **teraz** .
-    
-      ![Przeglądy dostępu](./media/access-reviews-overview/access-reviews-overview-select-onboard.png)
+   ![Strona początkowa przeglądów dostępu](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
 
 
 ## <a name="learn-about-access-reviews"></a>Dowiedz się więcej o przeglądach dostępu

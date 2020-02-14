@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 41410d4e534d0940050521ecc86e8a384566f439
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 486f90d82af729a3dbfd836239d2d19ebdf44819
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972699"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191419"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Przegląd: Automatyzowanie wdrażania Azure Logic Apps przy użyciu szablonów Azure Resource Manager
 
@@ -145,11 +145,11 @@ W tym przykładzie przedstawiono tylko parametry szablonu dla wartości używany
 
 Oprócz parametrów, które obsługują wartości, które są wrażliwe lub muszą być zabezpieczone, takich jak nazwy użytkowników, hasła i wpisy tajne, wszystkie te parametry obejmują atrybuty `defaultValue`, chociaż w niektórych przypadkach wartości domyślne są pustymi wartościami. Wartości wdrożenia, które mają być używane dla tych parametrów szablonu, są dostarczane przez przykładowy [plik parametrów](#template-parameter-files) opisany w dalszej części tego tematu.
 
-Aby zabezpieczyć parametry szablonu, zobacz następujące tematy:
+Aby uzyskać więcej informacji na temat zabezpieczania parametrów szablonu, zobacz następujące tematy:
 
 * [Zalecenia dotyczące zabezpieczeń dla parametrów szablonu](../azure-resource-manager/templates/template-best-practices.md#parameters)
-* [Parametry bezpiecznego szablonu](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [Przekazywanie bezpiecznych wartości parametrów za pomocą Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
+* [Poprawa zabezpieczeń parametrów szablonu](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+* [Przekaż zabezpieczone wartości parametrów za pomocą Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 Inne obiekty szablonu często odwołują się do parametrów szablonu, dzięki czemu mogą korzystać z wartości, które przechodzą przez parametry szablonu, na przykład:
 
@@ -171,9 +171,9 @@ Poniżej przedstawiono niektóre najlepsze rozwiązania dotyczące definiowania 
 
   * [Zalecenia dotyczące zabezpieczeń dla parametrów szablonu](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
-  * [Parametry bezpiecznego szablonu](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+  * [Poprawa zabezpieczeń parametrów szablonu](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [Przekazywanie bezpiecznych wartości parametrów za pomocą Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
+  * [Przekaż zabezpieczone wartości parametrów za pomocą Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * Aby rozróżnić nazwy parametrów szablonu od nazw parametrów definicji przepływu pracy, można użyć opisowych nazw parametrów szablonu, na przykład: `TemplateFabrikamPassword`
 
@@ -188,7 +188,7 @@ Aby podać wartości parametrów szablonu, Zapisz te wartości w [pliku parametr
 * Nazwa pliku szablonu aplikacji logiki: **<*logiki-App-Name*>. JSON**
 * Nazwa pliku parametrów: **<*Logic-App-Name*>. Parameters. JSON**
 
-Poniżej znajduje się struktura wewnątrz pliku parametrów, która zawiera odwołanie do magazynu kluczy w celu [przekazania bezpiecznej wartości parametru Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md):
+Poniżej znajduje się struktura wewnątrz pliku parametrów, która zawiera odwołanie do magazynu kluczy do [przekazywania zabezpieczonej wartości parametru z Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md):
 
 ```json
 {
@@ -319,11 +319,11 @@ Definicja zasobu aplikacji logiki rozpoczyna się od obiektu `properties`, któr
 
 Poniżej znajdują się atrybuty specyficzne dla definicji zasobu aplikacji logiki:
 
-| Atrybut | Wymagane | Typ | Opis |
+| Atrybut | Wymagany | Typ | Opis |
 |-----------|----------|------|-------------|
-| `state` | Tak | Ciąg | Stan aplikacji logiki przy wdrożeniu, gdzie `Enabled` oznacza, że aplikacja logiki działa, a `Disabled` oznacza, że aplikacja logiki jest nieaktywna. Jeśli na przykład nie masz gotowości do korzystania z aplikacji logiki, ale chcesz wdrożyć wersję roboczą, możesz użyć opcji `Disabled`. |
+| `state` | Yes | Ciąg | Stan aplikacji logiki przy wdrożeniu, gdzie `Enabled` oznacza, że aplikacja logiki działa, a `Disabled` oznacza, że aplikacja logiki jest nieaktywna. Jeśli na przykład nie masz gotowości do korzystania z aplikacji logiki, ale chcesz wdrożyć wersję roboczą, możesz użyć opcji `Disabled`. |
 | `integrationAccount` | Nie | Obiekt | Jeśli aplikacja logiki korzysta z konta integracji, które przechowuje artefakty dla scenariuszy biznes-to-Business (B2B), ten obiekt zawiera atrybut `id`, który określa identyfikator konta integracji. |
-| `definition` | Tak | Obiekt | Podstawowa definicja przepływu pracy aplikacji logiki, która jest tym samym obiektem, który pojawia się w widoku kodu i jest w pełni opisana w [dokumentacji schematu dotyczącej języka definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md) . W tej definicji przepływu pracy obiekt `parameters` deklaruje parametry dla wartości, które mają być używane w środowisku uruchomieniowym aplikacji logiki. Aby uzyskać więcej informacji, zobacz [definicji i parametrów przepływu pracy](#workflow-definition-parameters). <p><p>Aby wyświetlić atrybuty w definicji przepływu pracy aplikacji logiki, przejdź od "Widok projektu" do "Widok kodu" w Azure Portal lub Visual Studio lub za pomocą narzędzia, takiego jak [Azure Resource Explorer](https://resources.azure.com). |
+| `definition` | Yes | Obiekt | Podstawowa definicja przepływu pracy aplikacji logiki, która jest tym samym obiektem, który pojawia się w widoku kodu i jest w pełni opisana w [dokumentacji schematu dotyczącej języka definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md) . W tej definicji przepływu pracy obiekt `parameters` deklaruje parametry dla wartości, które mają być używane w środowisku uruchomieniowym aplikacji logiki. Aby uzyskać więcej informacji, zobacz [definicji i parametrów przepływu pracy](#workflow-definition-parameters). <p><p>Aby wyświetlić atrybuty w definicji przepływu pracy aplikacji logiki, przejdź od "Widok projektu" do "Widok kodu" w Azure Portal lub Visual Studio lub za pomocą narzędzia, takiego jak [Azure Resource Explorer](https://resources.azure.com). |
 | `parameters` | Nie | Obiekt | [Wartości parametrów definicji przepływu pracy](#workflow-definition-parameters) do użycia w środowisku uruchomieniowym aplikacji logiki. Definicje parametrów dla tych wartości są wyświetlane w [obiekcie parametrów definicji przepływu pracy](#workflow-definition-parameters). Ponadto, jeśli aplikacja logiki korzysta z [łączników zarządzanych](../connectors/apis-list.md) do uzyskiwania dostępu do innych usług i systemów, ten obiekt zawiera `$connections` obiektu, który ustawia wartości połączenia do użycia w czasie wykonywania. |
 | `accessControl` | Nie | Obiekt | Do określania atrybutów zabezpieczeń aplikacji logiki, takich jak ograniczanie dostępu do adresów IP do wyzwalaczy żądań lub uruchamianie historii danych wejściowych i wyjściowych. Aby uzyskać więcej informacji, zobacz [bezpieczny dostęp do usługi Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||
@@ -413,7 +413,7 @@ Aby ustawić wartość parametru definicji przepływu pracy, użyj obiektu `para
 
 Ten przykładowy szablon pokazuje, jak można wykonać te zadania, definiując zabezpieczone parametry w razie potrzeby, aby można było przechowywać ich wartości w Azure Key Vault:
 
-* Zadeklaruj bezpieczne parametry dla wartości używanych do uwierzytelniania dostępu.
+* Zadeklaruj zabezpieczone parametry dla wartości używanych do uwierzytelniania dostępu.
 * Użyj tych wartości zarówno na poziomach szablonu, jak i w definicji przepływu pracy.
 * Podaj te wartości przy użyciu pliku parametrów.
 

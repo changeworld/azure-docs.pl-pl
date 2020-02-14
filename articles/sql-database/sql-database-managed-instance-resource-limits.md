@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 11/27/2019
-ms.openlocfilehash: 90f39a5edd32225b7fed259ca48dcf4802d0ced3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443826"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201734"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Przegląd Azure SQL Database limitów zasobów wystąpienia zarządzanego
 
@@ -38,8 +38,8 @@ Wystąpienie zarządzane ma cechy i limity zasobów, które są zależne od pods
 | Maksymalna ilość zarezerwowanego wystąpienia |  Ogólnego przeznaczenia: 8 TB<br/>Krytyczne dla działania firmy: 1 TB | Ogólnego przeznaczenia: 8 TB<br/> Krytyczne dla działania firmy 1 TB, 2 TB lub 4 TB w zależności od liczby rdzeni |
 
 > [!IMPORTANT]
-> - Obliczenia sprzęt jest stopniowo wycofywany. Zaleca się wdrożenie nowych wystąpień zarządzanych na sprzęcie 5 rdzeń.
-> - W tej chwili obliczenia sprzęt jest nadal dostępny tylko w następujących regionach: Europa Północna, Europa Zachodnia, Wschodnie stany USA, Południowo-środkowe stany USA, Północno-środkowe stany USA, zachodnie stany USA 2, środkowe stany USA, Kanada środkowa, Indie Południowe, Azja Południowo-Wschodnia i Korea środkowa.
+> - Sprzęt obliczenia jest stopniowo wycofywany i nie jest już dostępny dla nowych wdrożeń. Wszystkie nowe wystąpienia zarządzane muszą zostać wdrożone na sprzęcie 5 rdzeń.
+> - Rozważ [przeniesienie wystąpień zarządzanych do sprzętu gen 5](sql-database-service-tiers-vcore.md) w celu uzyskania szerszego zakresu skalowalności rdzeń wirtualny i pamięci masowej, przyspieszonej sieci, najlepszej wydajności operacji we/wy i minimalnych opóźnień.
 
 ### <a name="in-memory-oltp-available-space"></a>Dostępne miejsce w pamięci OLTP 
 
@@ -47,7 +47,7 @@ Ilość miejsca OLTP w pamięci w [krytyczne dla działania firmy](sql-database-
 
 | Przestrzeń OLTP w pamięci  | **5 rdzeń** | **Obliczenia** |
 | --- | --- | --- |
-| 4 rdzenie wirtualne  | 3,14 GB | |   
+| 4 rdzeni wirtualnych  | 3,14 GB | |   
 | 8 rdzeni wirtualnych  | 6,28 GB | 8 GB |
 | 16 rdzeni wirtualnych | 15,77 GB | 20 GB |
 | 24 rdzeni wirtualnych | 25,25 GB | 36 GB |
@@ -78,7 +78,7 @@ Wystąpienie zarządzane ma dwie warstwy usług: [ogólnego przeznaczenia](sql-d
 | Limit przepływności zapisu dziennika (na wystąpienie) | 3 MB/s na rdzeń wirtualny<br/>Maks. 22 MB/s | 4 MB/s na rdzeń wirtualny<br/>Maks 48 MB/s |
 | Przepływność danych (przybliżona) | 100 – 250 MB/s na plik<br/>\*[zwiększyć rozmiar pliku, aby uzyskać lepszą wydajność operacji we/wy](#file-io-characteristics-in-general-purpose-tier) | Nieograniczone. |
 | Opóźnienie operacji we/wy magazynu (w przybliżeniu) | 5-10 ms | 1-2 MS |
-| Przetwarzanie OLTP danych w pamięci | Brak obsługi | Dostępne, [rozmiar zależy od liczby rdzeń wirtualny](#in-memory-oltp-available-space) |
+| Przetwarzanie OLTP danych w pamięci | Nieobsługiwane | Dostępne, [rozmiar zależy od liczby rdzeń wirtualny](#in-memory-oltp-available-space) |
 | Maksymalna liczba sesji | 30000 | 30000 |
 | [Repliki tylko do odczytu](sql-database-read-scale-out.md) | 0 | 1 (wliczone w cenę) |
 
@@ -137,7 +137,7 @@ W poniższej tabeli przedstawiono **domyślne limity** dla obsługiwanych typów
 |Płatność zgodnie z rzeczywistym użyciem|3|320|
 |CSP |8 (15 w niektórych regionach * *)|960 (1440 w niektórych regionach * *)|
 |Płatność zgodnie z rzeczywistym użyciem — tworzenie i testowanie|3|320|
-|Tworzenie i testowanie (przedsiębiorstwo)|3|320|
+|Enterprise — tworzenie i testowanie|3|320|
 |EA|8 (15 w niektórych regionach * *)|960 (1440 w niektórych regionach * *)|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional i Platformy MSDN|2|32|
@@ -153,7 +153,7 @@ Aby zainicjować proces uzyskiwania większego przydziału:
 
 1. Otwórz **Pomoc i pomoc techniczną**, a następnie kliknij pozycję **nowe żądanie obsługi**.
 
-   ![Pomoc i obsługa techniczna](media/sql-database-managed-instance-resource-limits/help-and-support.png)
+   ![Pomoc i wsparcie techniczne](media/sql-database-managed-instance-resource-limits/help-and-support.png)
 2. Na karcie podstawowe informacje o nowym żądaniu obsługi:
    - W obszarze **typ problemu**wybierz pozycję **usługi i limity subskrypcji (przydziały)** .
    - W polu **Subskrypcja** wybierz subskrypcję.

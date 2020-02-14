@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: ddcc7fcc14c7958e8c0d012c2395ad2b6c422f4f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63c6329ad62289cd127902c1438073b28fc8683e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157911"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201853"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurowanie połączenia Sieć wirtualna-sieć wirtualna (klasyczna)
 
@@ -61,9 +61,9 @@ Sieci wirtualne można łączyć z następujących powodów:
 
 Więcej informacji na temat połączeń między sieciami wirtualnymi znajduje się w sekcji [Zagadnienia dotyczące połączeń między sieciami wirtualnymi](#faq) na końcu tego artykułu.
 
-### <a name="before-you-begin"></a>Przed rozpoczęciem
+### <a name="powershell"></a>Praca z Azure PowerShell
 
-Przed rozpoczęciem tego ćwiczenia Pobierz i zainstaluj najnowszą wersję poleceń cmdlet programu PowerShell dla usługi Azure Service Management (SM). Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview). W przypadku większości kroków używamy portalu, ale należy użyć programu PowerShell do utworzenia połączeń między sieci wirtualnych. Nie można utworzyć połączeń przy użyciu Azure Portal.
+W przypadku większości kroków używamy portalu, ale należy użyć programu PowerShell do utworzenia połączeń między sieci wirtualnych. Nie można utworzyć połączeń przy użyciu Azure Portal. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="plan"></a>Krok 1 — Planowanie zakresów adresów IP
 
@@ -209,37 +209,34 @@ Po utworzeniu klasycznego sieci wirtualnych w Azure Portal nazwa wyświetlana ni
 
 W poniższych krokach nawiążesz połączenie z kontem platformy Azure i pobierzesz plik konfiguracji sieci i wyświetli go w celu uzyskania wartości wymaganych dla połączeń.
 
-1. Pobierz i zainstaluj najnowszą wersję poleceń cmdlet programu PowerShell dla usługi Azure Service Management (SM). Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+1. Pobierz i zainstaluj najnowszą wersję poleceń cmdlet programu PowerShell dla usługi Azure Service Management (SM). Aby uzyskać więcej informacji, zobacz [Praca z Azure PowerShell](#powershell).
 
-2. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
-
-   ```powershell
-   Connect-AzAccount
-   ```
-
-   Sprawdź subskrypcje dostępne na koncie.
+2. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień. Poniższe przykłady ułatwiają nawiązanie połączenia. Te polecenia należy uruchomić lokalnie przy użyciu modułu zarządzania usługą programu PowerShell. Aby przełączyć się do zarządzania usługami, użyj tego polecenia:
 
    ```powershell
-   Get-AzSubscription
+   azure config mode asm
    ```
-
-   Jeśli masz więcej niż jedną subskrypcję, wybierz tę, której chcesz użyć.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-   Następnie użyj następującego polecenia cmdlet, aby dodać subskrypcję platformy Azure do programu PowerShell dla klasycznego modelu wdrażania.
+3. Połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
 
    ```powershell
    Add-AzureAccount
    ```
-3. Eksportuj i wyświetlaj plik konfiguracji sieci. Utwórz katalog na komputerze, a następnie wyeksportuj plik konfiguracji sieci do tego katalogu. W tym przykładzie plik konfiguracji sieci jest eksportowany do **C:\AzureNet**.
+4. Sprawdź subskrypcje dostępne na koncie.
+
+   ```powershell
+   Get-AzureSubscription
+   ```
+5. Jeśli masz więcej niż jedną subskrypcję, wybierz tę, której chcesz użyć.
+
+   ```powershell
+   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
+   ```
+6. Eksportuj i wyświetlaj plik konfiguracji sieci. Utwórz katalog na komputerze, a następnie wyeksportuj plik konfiguracji sieci do tego katalogu. W tym przykładzie plik konfiguracji sieci jest eksportowany do **C:\AzureNet**.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-4. Otwórz plik za pomocą edytora tekstów i Wyświetl nazwy sieci wirtualnych i witryn. Będzie to nazwa używana podczas tworzenia połączeń.<br>Nazwy sieci wirtualnej są wyświetlane jako **VirtualNetworkSite nazwa =**<br>Nazwy lokacji są wyświetlane jako **Nazwa LocalNetworkSiteRef =**
+7. Otwórz plik za pomocą edytora tekstów i Wyświetl nazwy sieci wirtualnych i witryn. Nazwy te będą nazwami używanymi podczas tworzenia połączeń.<br>Nazwy sieci wirtualnej są wyświetlane jako **VirtualNetworkSite nazwa =**<br>Nazwy lokacji są wyświetlane jako **Nazwa LocalNetworkSiteRef =**
 
 ## <a name="createconnections"></a>Krok 8. Tworzenie połączeń bramy sieci VPN
 
@@ -273,7 +270,7 @@ W przykładach należy zauważyć, że klucz współużytkowany jest dokładnie 
 ## <a name="faq"></a>Zagadnienia dotyczące połączeń między sieciami wirtualnymi dotyczące klasycznej sieci wirtualnych
 * Sieci wirtualne mogą znajdować się w tych samych lub różnych subskrypcjach.
 * Sieci wirtualne mogą znajdować się w tym samym regionie lub w różnych regionach (lokalizacjach) świadczenia usługi Azure.
-* Usługa w chmurze ani punkt końcowy z równoważeniem obciążenia nie mogą rozciągać się na sieci wirtualne, nawet jeśli są one ze sobą połączone.
+* Usługa w chmurze lub punkt końcowy równoważenia obciążenia nie może obejmować między sieciami wirtualnymi, nawet jeśli są połączone ze sobą.
 * Łączenie wielu sieci wirtualnych nie wymaga żadnych urządzeń sieci VPN.
 * Sieć wirtualna-sieć wirtualna obsługuje łączenie sieci wirtualnych platformy Azure. Nie obsługuje on łączenia maszyn wirtualnych ani usług w chmurze, które nie zostały wdrożone w sieci wirtualnej.
 * Sieć wirtualna-sieć wirtualna wymaga dynamicznych bram routingu. Bramy routingu statycznego platformy Azure nie są obsługiwane.

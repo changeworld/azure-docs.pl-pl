@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1c1995b4daf3b76abf7663d8d6c1f4cb7b1d6e2b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835016"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201683"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database często zadawane pytania dotyczące wystąpienia zarządzanego
 
@@ -82,21 +82,11 @@ Jedną z opcji jest [wyeksportowanie bazy danych do BACPAC](sql-database-export.
 
 Jest to zalecane rozwiązanie, jeśli baza danych jest mniejsza niż 100 GB. Jeśli wszystkie tabele w bazie danych mają klucze podstawowe, można użyć replikacji transakcyjnej.
 
-## <a name="gen-4-vs-gen-5"></a>Gen 4 a gen 5 
-
-**Jak mogę wybrać generowanie sprzętu generacji 4 i pokolenia 5 dla wystąpienia zarządzanego?**
-
-Jest to zależne od obciążenia, ponieważ niektóre typy obciążeń są lepsze w przypadku niektórych typów obciążenia. Chociaż temat wydajności jest raczej skomplikowany, aby uprościć, poniżej przedstawiono różnice między generacjami sprzętowymi wpływającymi na wydajność obciążeń:
-- Gen 4 oferuje lepszą obsługę obliczeniową, która jest oparta na procesorach fizycznych, a w przypadku generacji 5 opartych na procesorach rdzeń wirtualny. Może być bardziej korzystne w przypadku obciążeń intensywnie korzystających z obliczeń.
-- Funkcja gen 5 obsługuje przyspieszone sieci, co zapewnia lepszą przepustowość we/wy do magazynu zdalnego. Może być korzystne w przypadku obciążeń intensywnie korzystających z operacji we/wy na Ogólnego przeznaczenia warstwach usług. W przypadku generacji 5 są stosowane szybsze dyski lokalne SSD w porównaniu do generacji 4. Może być korzystne w przypadku obciążeń intensywnie korzystających z operacji we/wy dla krytycznych warstw usług.
-
-Zdecydowanie zaleca się przetestowanie wydajności rzeczywistych obciążeń przeznaczonych dla środowiska produkcyjnego przed rozpoczęciem pracy, aby określić, które Generowanie sprzętu będzie lepiej w konkretnym przypadku.
-
 ## <a name="switch-hardware-generation"></a>Przełącz generowanie sprzętu 
 
 **Czy mogę przełączać generowanie sprzętu wystąpienia zarządzanego między programem gen 4 i gen 5 online?**
 
-Automatyczne przełączanie do trybu online między generacjami sprzętowymi jest możliwe, jeśli w regionie, w którym zainicjowano wystąpienie zarządzane, są dostępne oba generacji sprzętowe. W takim przypadku można użyć [skryptu z wpisu w blogu](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824) wyjaśniającego, jak przełączać się między generacjami sprzętowymi.
+Automatyczne przełączanie do trybu online między generacjami sprzętowymi jest możliwe, jeśli w regionie, w którym zainicjowano wystąpienie zarządzane, są dostępne oba generacji sprzętowe. W takim przypadku można sprawdzić na [stronie Przegląd modelu rdzeń wirtualny](sql-database-service-tiers-vcore.md) , jak przełączać się między generacjami sprzętowymi.
 
 Jest to długotrwała operacja, ponieważ nowe wystąpienie zarządzane zostanie udostępnione w tle, a bazy danych zostaną automatycznie przeniesione między starym i nowym wystąpieniem z szybką pracą w trybie failover na końcu procesu. 
 
@@ -108,8 +98,6 @@ Jeśli oba generacje sprzętowe nie są obsługiwane w tym samym regionie, zmian
 **Jak mogę dostosować wydajność wystąpienia zarządzanego?**
 
 Ogólnego przeznaczenia zarządzanym wystąpieniem używa magazynu zdalnego, ponieważ rozmiar danych i plików dziennika jest istotny dla wydajności. Aby uzyskać więcej informacji, zobacz [wpływ rozmiaru pliku dziennika na wydajność wystąpienia zarządzanego ogólnego przeznaczenia](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
-
-W przypadku obciążeń intensywnie korzystających z operacji we/wy należy rozważyć użycie sprzętu generacji 5 w przeciwieństwie do generacji 4 obciążeń intensywnie korzystających z obliczeń. Aby uzyskać więcej informacji, zobacz [Jak mogę wybrać między gen 4 i gen 5](#gen-4-vs-gen-5).
 
 Jeśli obciążenie obejmuje wiele małych transakcji, rozważ przełączenie typu połączenia z serwera proxy do trybu przekierowania.
 

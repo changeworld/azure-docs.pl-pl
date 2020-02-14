@@ -8,37 +8,36 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5a8a0778ce279846b0d7a66b1729b6898e80a4b5
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: c1572eddf78ca2d5f8f4e3ee9f1fe47b0d43f5aa
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911715"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190251"
 ---
 # <a name="consumption-model"></a>Model użycia
 
-Routing online zawiera zestaw parametrów dla szczegółowego opisu modelu zużycia specyficznego dla pojazdu.
-W zależności od wartości parametru **vehicleEngineType** obsługiwane są dwa główne modele zużycia: _Combustion_ i _Electric_. Określanie w jednym żądaniu parametrów, które należą do różnych modeli, jest błędne.
-Modelu zużycia nie można używać w połączeniu z parametrem **travelMode** mającym wartości _bicycle_ i _pedestrian_.
+Usługa routingu zawiera zestaw parametrów dla szczegółowego opisu modelu zużycia specyficznego dla pojazdu.
+W zależności od wartości **vehicleEngineType**obsługiwane są dwa główne modele użycia: _spalanie_ i _elektryczny_. Nie można określić parametrów, które należą do różnych modeli w tym samym żądaniu. Ponadto parametry modelu zużycia nie mogą być używane z następującymi wartościami **skokumode** : _rower_ i _pies_.
 
 ## <a name="parameter-constraints-for-consumption-model"></a>Ograniczenia parametrów dla modelu zużycia
 
-W obu modelach użycia jawnie Określanie niektórych parametrów wymaga również określenia innych. Te zależności są następujące:
+W obu modelach użycia istnieją pewne zależności podczas określania parametrów. Oznacza to, że jawne określenie niektórych parametrów może wymagać określenia innych parametrów. Poniżej znajdują się następujące zależności:
 
-* Wszystkie parametry wymagają określenia **constantSpeedConsumption** przez użytkownika. Wystąpił błąd podczas określania dowolnego innego parametru modelu zużycia, z wyjątkiem **vehicleWeight**, jeśli **constantSpeedConsumption** nie jest określony.
-* **accelerationEfficiency** i **decelerationEfficiency** muszą być zawsze określone jako para (tj. oba lub None).
+* Wszystkie parametry wymagają określenia **constantSpeedConsumption** przez użytkownika. Wystąpił błąd podczas określania dowolnego innego parametru modelu zużycia, jeśli nie określono **constantSpeedConsumption** . Parametr **vehicleWeight** jest wyjątkiem dla tego wymagania.
+* elementy **accelerationEfficiency** i **decelerationEfficiency** muszą być zawsze określone jako para (to jest lub None).
 * Jeśli **accelerationEfficiency** i **decelerationEfficiency** są określone, iloczyn ich wartości nie może być większy niż 1 (w celu uniknięcia bezterminowego ruchu).
-* **uphillEfficiency** i **downhillEfficiency** muszą być zawsze określone jako para (tj. oba lub None).
+* elementy **uphillEfficiency** i **downhillEfficiency** muszą być zawsze określone jako para (takie jak lub None).
 * Jeśli **uphillEfficiency** i **downhillEfficiency** są określone, iloczyn ich wartości nie może być większy niż 1 (w celu uniknięcia bezterminowego ruchu).
 * Jeśli użytkownik określił \*parametry __wydajności__ , należy również określić **vehicleWeight** . Gdy **vehicleEngineType** jest _spalany_, należy również określić **fuelEnergyDensityInMJoulesPerLiter** .
-* **maxChargeInkWh** i **currentChargeInkWh** muszą być zawsze określone jako para (tj. oba lub None).
+* elementy **maxChargeInkWh** i **currentChargeInkWh** muszą być zawsze określone jako para (to jest lub None).
 
 > [!NOTE]
 > Jeśli **constantSpeedConsumption** jest określony, żadne inne aspekty użycia, takie jak zbocze i przyspieszenie pojazdów, są brane pod uwagę w przypadku obliczeń zużycia.
 
 ## <a name="combustion-consumption-model"></a>Model użycia spalania
 
-Model zużycia spalania jest używany, gdy parametr **vehicleEngineType** ma wartość _combustion_.
+Model zużycia spalania jest używany, gdy **vehicleEngineType** jest ustawiony na _spalanie_.
 Poniżej znajduje się lista parametrów należących do tego modelu. Szczegółowy opis można znaleźć w sekcji parametry.
 
 * constantSpeedConsumptionInLitersPerHundredkm
@@ -68,5 +67,5 @@ Poniżej znajduje się lista parametrów należących do tego modelu. Szczegół
 
 ## <a name="sensible-values-of-consumption-parameters"></a>Rozsądne wartości parametrów zużycia
 
-Określony zestaw parametrów zużycia można odrzucić, nawet jeśli może spełnić wszystkie jawne wymagania określone powyżej. Dzieje się tak, gdy wartość określonego parametru lub kombinacja wartości kilku parametrów jest uznawana za potencjalną do nieuzasadnionej wielkości wartości zużycia. Jeśli tak się stanie, najprawdopodobniej wskazuje to na błąd danych wejściowych, ponieważ należy zwrócić uwagę na wszystkie rozsądne wartości parametrów zużycia. W przypadku odrzucenia określonego zestawu parametrów zużycia, towarzyszący komunikat o błędzie będzie zawierać tekstowe wyjaśnienie przyczyn.
+Określony zestaw parametrów zużycia można odrzucić, nawet jeśli zestaw może spełnić wszystkie jawne wymagania. Dzieje się tak, gdy wartość określonego parametru lub kombinacja wartości kilku parametrów jest traktowana jako prowadząca do nierozsądnych wielkości wartości zużycia. Jeśli tak się stanie, najprawdopodobniej wskazuje to na błąd danych wejściowych, ponieważ należy zwrócić uwagę na wszystkie rozsądne wartości parametrów zużycia. W przypadku odrzucenia określonego zestawu parametrów zużycia, towarzyszący komunikat o błędzie będzie zawierać tekstowe wyjaśnienie przyczyn.
 Szczegółowe opisy parametrów zawierają przykłady rozsądnych wartości dla obu modeli.

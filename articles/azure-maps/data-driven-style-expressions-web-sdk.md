@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 8372012734d937da99c32d2d18fed91ae52c7444
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e3e8476d09541518d964bfaff4dabad47755eeb9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911780"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189649"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Wyrażenia stylów oparte na danych (zestaw SDK sieci Web)
 
-Wyrażenia umożliwiają stosowanie logiki biznesowej do opcji stylu, które obserwują właściwości zdefiniowane w poszczególnych kształtach w źródle danych. Wyrażeń można także używać do filtrowania danych w źródle danych lub w warstwie. Wyrażenia mogą składać się z logiki warunkowej, takich jak if-Statements, i mogą być również używane do manipulowania danymi za pomocą polecenia. Operatory String, Logical i matematyczne. 
+Wyrażenia umożliwiają stosowanie logiki biznesowej do opcji stylu, które obserwują właściwości zdefiniowane w poszczególnych kształtach w źródle danych. Wyrażenia mogą odfiltrować dane w źródle danych lub warstwie. Wyrażenia mogą składać się z logiki warunkowej, takich jak if-Statements. I można ich używać do manipulowania danymi przy użyciu: operatory String, operatory logiczne i operatory matematyczne.
 
-Style oparte na danych mogą zmniejszyć ilość kodu wymaganą do zaimplementowania logiki biznesowej wokół stylów. W przypadku użycia z warstwami wyrażenia są oceniane w czasie renderowania w osobnym wątku, który zapewnia lepszą wydajność w porównaniu do oceny logiki biznesowej w wątku interfejsu użytkownika.
+Style oparte na danych zmniejszają ilość kodu wymaganą do zaimplementowania logiki biznesowej wokół stylów. W przypadku użycia z warstwami wyrażenia są oceniane w czasie renderowania w osobnym wątku. Ta funkcja zapewnia zwiększoną wydajność w porównaniu do oceny logiki biznesowej w wątku interfejsu użytkownika.
 
-Poniższy klip wideo zawiera omówienie stylów opartych na danych w Azure Maps Web SDK.
+Ten film wideo zawiera omówienie stylów opartych na danych w zestawie SDK sieci Web Azure Maps.
 
 <br/>
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-Wyrażenia są reprezentowane jako tablice JSON. Pierwszy element wyrażenia w tablicy jest ciągiem, który określa nazwę operatora wyrażenia. Na przykład "+" lub "Case". Następne elementy (jeśli istnieją) są argumentami wyrażenia. Każdy argument jest wartością literału (ciągiem, liczbą, wartością logiczną lub `null`) lub inną tablicą wyrażeń. Poniższe pseudokodzie definiuje podstawową strukturę wyrażenia. 
+Wyrażenia są reprezentowane jako tablice JSON. Pierwszy element wyrażenia w tablicy jest ciągiem, który określa nazwę operatora wyrażenia. Na przykład "+" lub "Case". Następne elementy (jeśli istnieją) są argumentami wyrażenia. Każdy argument jest wartością literału (ciągiem, liczbą, wartością logiczną lub `null`) lub inną tablicą wyrażeń. Poniższy pseudokodzie definiuje podstawową strukturę wyrażenia. 
 
 ```javascript
 [ 
@@ -39,11 +39,11 @@ Wyrażenia są reprezentowane jako tablice JSON. Pierwszy element wyrażenia w t
 ] 
 ```
 
-Zestaw SDK sieci Web Azure Maps obsługuje wiele typów, które mogą być używane samodzielnie lub w połączeniu z innymi wyrażeniami.
+Zestaw SDK sieci Web Azure Maps obsługuje wiele typów wyrażeń. Wyrażenia mogą być używane samodzielnie lub w połączeniu z innymi wyrażeniami.
 
 | Typ wyrażeń | Opis |
 |---------------------|-------------|
-| [Wyrażenie agregujące](#aggregate-expression) | Wyrażenie definiujące obliczenia, które jest przetwarzane przez zestaw danych i może być używane z opcją `clusterProperties` `DataSource`. |
+| [Wyrażenie agregujące](#aggregate-expression) | Wyrażenie definiujące obliczenia przetwarzane przez zestaw danych i może być używane z opcją `clusterProperties` `DataSource`. |
 | [Wyrażenia logiczne](#boolean-expressions) | Wyrażenia logiczne zawierają zestaw wyrażeń operatorów logicznych do oceniania porównania wartości logicznych. |
 | [Wyrażenia koloru](#color-expressions) | Wyrażenia kolorów ułatwiają tworzenie wartości kolorów i manipulowanie nimi. |
 | [Wyrażenia warunkowe](#conditional-expressions) | Wyrażenia warunkowe udostępniają operacje logiki, które są podobne do instrukcji if-Statement. |
@@ -53,10 +53,10 @@ Zestaw SDK sieci Web Azure Maps obsługuje wiele typów, które mogą być używ
 | [Wyrażenia matematyczne](#math-expressions) | Udostępnia operatory matematyczne do wykonywania obliczeń opartych na danych w ramach struktury wyrażeń. |
 | [Wyrażenia operatora ciągu](#string-operator-expressions) | Wyrażenia operatora ciągu wykonują operacje konwersji na ciągach, takich jak łączenie i konwertowanie wielkości liter. |
 | [Wyrażenia typu](#type-expressions) | Wyrażenia typu dostarczają narzędzia do testowania i konwertowania różnych typów danych, takich jak ciągi, liczby i wartości logiczne. |
-| [Wyrażenia powiązań zmiennych](#variable-binding-expressions) | Wyrażenia powiązań zmiennych umożliwiają przechowywanie wyników obliczeń w zmiennej i odwoływanie się w innym miejscu wyrażenia bez konieczności ponownego obliczania przechowywanej wartości. |
+| [Wyrażenia powiązań zmiennych](#variable-binding-expressions) | Wyrażenia powiązań zmiennych przechowują wyniki obliczeń w zmiennej i występujące w innym miejscu w wyrażeniu wielokrotnie bez konieczności ponownego obliczania przechowywanej wartości. |
 | [Wyrażenie powiększenia](#zoom-expression) | Pobiera bieżący poziom powiększenia mapy w czasie renderowania. |
 
-We wszystkich przykładach w tym dokumencie zostanie użyta następująca funkcja, aby przedstawić różne sposoby używania różnych typów wyrażeń. 
+We wszystkich przykładach w tym dokumencie użyto następującej funkcji, aby przedstawić różne sposoby używania różnych typów wyrażeń. 
 
 ```javascript
 {
@@ -84,7 +84,7 @@ Wyrażenia danych zapewniają dostęp do danych właściwości w funkcji.
 | Wyrażenie | Zwracany typ | Opis |
 |------------|-------------|-------------|
 | `['at', number, array]` | obiekt | Pobiera element z tablicy. |
-| `['geometry-type']` | string | Pobiera typ geometrii funkcji: punkt, MultiPoint, LineString, MultiLineString, Wielokąt, MultiPolygon. |
+| `['geometry-type']` | ciąg | Pobiera typ geometrii funkcji: punkt, MultiPoint, LineString, MultiLineString, Wielokąt, MultiPolygon. |
 | `['get', string]` | wartość | Pobiera wartość właściwości z właściwości bieżącej funkcji. Zwraca wartość null, jeśli brakuje żądanej właściwości. |
 | `['get', string, object]` | wartość | Pobiera wartość właściwości z właściwości podanego obiektu. Zwraca wartość null, jeśli brakuje żądanej właściwości. |
 | `['has', string]` | wartość logiczna | Określa, czy właściwości funkcji mają określoną właściwość. |
@@ -94,7 +94,7 @@ Wyrażenia danych zapewniają dostęp do danych właściwości w funkcji.
 
 **Przykłady**
 
-Do właściwości funkcji można uzyskać dostęp bezpośrednio w wyrażeniu przy użyciu wyrażenia `get`. Poniższy przykład używa wartości "zoneColor" funkcji, aby określić Właściwość Color warstwy bąbelkowej. 
+Do właściwości funkcji można uzyskać dostęp bezpośrednio w wyrażeniu przy użyciu wyrażenia `get`. W tym przykładzie użyta jest wartość "zoneColor" funkcji, aby określić Właściwość Color warstwy bąbelkowej. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -102,7 +102,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Powyższy przykład będzie działał prawidłowo, jeśli wszystkie funkcje punktu mają właściwość `zoneColor`, ale w przeciwnym razie kolor będzie prawdopodobnie przywrócony do "czerni". Aby zmodyfikować kolor rezerwowy, wyrażenie `case` może być używane w połączeniu z wyrażeniem `has`, aby sprawdzić, czy właściwość istnieje i czy nie zwróci koloru rezerwowego.
+Powyższy przykład będzie działał prawidłowo, jeśli wszystkie funkcje punktu mają właściwość `zoneColor`. Jeśli nie, kolor będzie prawdopodobnie zawracać do "czerni". Aby zmodyfikować kolor rezerwowy, użyj wyrażenia `case` w połączeniu z wyrażeniem `has`, aby sprawdzić, czy właściwość istnieje. Jeśli właściwość nie istnieje, zwróć kolor rezerwowy.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -117,7 +117,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Warstwy bąbelków i symboli domyślnie renderują współrzędne wszystkich kształtów w źródle danych. Można to zrobić, aby wyróżnić wierzchołki wielokątów lub linii. Opcja `filter` warstwy może służyć do ograniczenia typu geometrii funkcji renderowanych przy użyciu wyrażenia `['geometry-type']` w wyrażeniu logicznym. Poniższy przykład ogranicza warstwę bąbelków, tak aby były renderowane tylko funkcje `Point`.
+Warstwy bąbelków i symboli domyślnie renderują współrzędne wszystkich kształtów w źródle danych. Takie zachowanie może wyróżnić wierzchołki wielokąta lub linii. Opcja `filter` warstwy może służyć do ograniczenia typu geometrii funkcji, które renderuje, przy użyciu wyrażenia `['geometry-type']` w wyrażeniu logicznym. Poniższy przykład ogranicza warstwę bąbelków, tak aby były renderowane tylko funkcje `Point`.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -125,7 +125,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-W poniższym przykładzie zostanie wyrenderowana zarówno funkcja `Point`, jak i `MultiPoint`. 
+Poniższy przykład umożliwia renderowanie funkcji `Point` i `MultiPoint`. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -170,15 +170,15 @@ Wyrażenia matematyczne zapewniają operatory matematyczne do wykonywania oblicz
 
 ## <a name="aggregate-expression"></a>Wyrażenie agregujące
 
-Wyrażenie agregujące definiuje obliczenia przetwarzane w zestawie danych i może być używane z `clusterProperties` opcją `DataSource`. Wynik tych wyrażeń musi być liczbą lub wartością logiczną. 
+Wyrażenie agregujące definiuje obliczenia przetwarzane przez zestaw danych i może być używane z `clusterProperties` opcją `DataSource`. Wynik tych wyrażeń musi być liczbą lub wartością logiczną. 
 
-Wyrażenie agregujące przyjmuje trzy wartości: wartość operatora i wartość początkowa oraz wyrażenie służące do pobierania właściwości z poszczególnych funkcji w danych w celu zastosowania operacji agregowania. To wyrażenie ma następujący format:
+Wyrażenie agregujące przyjmuje trzy wartości: wartość operatora i wartość początkową oraz wyrażenie służące do pobierania właściwości z poszczególnych funkcji w danych w celu zastosowania operacji agregowania. To wyrażenie ma następujący format:
 
 ```javascript
 [operator: string, initialValue: boolean | number, mapExpression: Expression]
 ```
 
-- operator: funkcja wyrażenia, która zostanie następnie zastosowana do wszystkich wartości obliczanych przez `mapExpression` dla każdego punktu w klastrze. Obsługiwane operatory; 
+- operator: funkcja wyrażenia, która następnie jest stosowana do wszystkich wartości obliczanych przez `mapExpression` dla każdego punktu w klastrze. Obsługiwane operatory: 
     - Dla liczb: `+`, `*`, `max``min`
     - W przypadku wartości logicznych: `all`, `any`
 - initialValue: wartość początkowa, w której agregowana jest pierwsza wartość obliczeniowa.
@@ -186,7 +186,7 @@ Wyrażenie agregujące przyjmuje trzy wartości: wartość operatora i wartość
 
 **Przykłady**
 
-Jeśli wszystkie funkcje w zestawie danych mają właściwość `revenue`, która jest liczbą. Łączny przychód wszystkich punktów w klastrze utworzonym na podstawie zestawu danych można obliczyć przy użyciu następującego wyrażenia agregującego: `['+', 0, ['get', 'revenue']]`
+Jeśli wszystkie funkcje w zestawie danych mają właściwość `revenue`, która jest liczbą. Następnie można obliczyć łączny przychód wszystkich punktów w klastrze, które są tworzone na podstawie zestawu danych. To obliczenie jest wykonywane przy użyciu następującego wyrażenia agregującego: `['+', 0, ['get', 'revenue']]`
 
 ## <a name="boolean-expressions"></a>Wyrażenia logiczne
 
@@ -214,7 +214,7 @@ Następujące wyrażenia wykonują warunkowe operacje logiki na danych wejściow
 
 ### <a name="case-expression"></a>Wyrażenie CASE
 
-Wyrażenie `case` jest typem wyrażenia warunkowego, które zawiera instrukcję if-Statement, taką jak Logic (if/then/else). Tego typu wyrażenie jest wykonywane przez listę warunków logicznych i zwraca wartość wyjściową pierwszego warunku logicznego, który ma wartość true.
+Wyrażenie `case` jest typem wyrażenia warunkowego, które udostępnia logikę "if/then/else". Tego typu wyrażenie jest wykonywane przez listę warunków logicznych. Zwraca wartość wyjściową pierwszego warunku logicznego, który ma zostać obliczony na wartość true.
 
 Poniższy pseudokodzie definiuje strukturę wyrażenia `case`. 
 
@@ -294,7 +294,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-W poniższym przykładzie zastosowano tablicę, aby wyświetlić zestaw etykiet, które powinny zwracać tę samą wartość. Jest to znacznie bardziej wydajne niż wyświetlanie każdej etykiety osobno. W takim przypadku, jeśli właściwość `entityType` jest "restauracji" lub "grocery_store", zostanie zwrócony kolor "Red".
+W poniższym przykładzie zastosowano tablicę, aby wyświetlić zestaw etykiet, które powinny zwracać tę samą wartość. Takie podejście jest znacznie bardziej wydajne niż wymienianie każdej etykiety osobno. W takim przypadku, jeśli właściwość `entityType` jest "restauracji" lub "grocery_store", zostanie zwrócony kolor "Red".
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -315,7 +315,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-W poniższym przykładzie używane jest wyrażenie Match do wykonania filtru typu "in Array" lub "Array Contains", w tym przypadku filtrowanie danych mających wartość identyfikatora, który znajduje się na liście dozwolonych identyfikatorów. W przypadku używania wyrażeń z filtrami wynik musi być wartością logiczną.
+Poniższy przykład używa wyrażenia dopasowania, aby wykonać filtr typu "in Array" lub "Array Contains". W takim przypadku wyrażenie filtruje dane, które mają wartość identyfikatora, która znajduje się na liście dozwolonych identyfikatorów. W przypadku używania wyrażeń z filtrami wynik musi być wartością logiczną.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -400,12 +400,12 @@ Wyrażenia typu dostarczają narzędzia do testowania i konwertowania różnych 
 | Wyrażenie | Zwracany typ | Opis |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | Array \| — obiekt | Zwraca tablicę literałową lub wartość obiektu. Użyj tego wyrażenia, aby zapobiec ocenie tablicy lub obiektu jako wyrażenia. Jest to konieczne, gdy tablica lub obiekt musi zostać zwrócony przez wyrażenie. |
-| `['image', string]` | string | Sprawdza, czy określony identyfikator obrazu jest ładowany do Sprite obrazu mapy. Jeśli jest, zwracany jest identyfikator, w przeciwnym razie zwracana jest wartość null. |
+| `['image', string]` | ciąg | Sprawdza, czy określony identyfikator obrazu jest ładowany do Sprite obrazu mapy. Jeśli jest, zwracany jest identyfikator, w przeciwnym razie zwracana jest wartość null. |
 | `['to-boolean', value]` | wartość logiczna | Konwertuje wartość wejściową do wartości logicznej. Wynik jest `false`, gdy dane wejściowe są pustym ciągiem, `0`, `false`, `null`lub `NaN`. w przeciwnym razie `true`. |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Konwertuje wartość wejściową na kolor. Jeśli podano wiele wartości, każda z nich jest szacowana w kolejności do momentu uzyskania pierwszej pomyślnej konwersji. Jeśli żadne dane wejściowe nie mogą być konwertowane, wyrażenie jest błędem. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | numer | Konwertuje wartość wejściową na liczbę, jeśli jest to możliwe. Jeśli dane wejściowe są `null` lub `false`, wynik wynosi 0. Jeśli dane wejściowe są `true`, wynik wynosi 1. Jeśli dane wejściowe są ciągami, są konwertowane na liczbę przy użyciu funkcji [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) String specyfikacji języka ECMAScript. Jeśli podano wiele wartości, każda z nich jest szacowana w kolejności do momentu uzyskania pierwszej pomyślnej konwersji. Jeśli żadne dane wejściowe nie mogą być konwertowane, wyrażenie jest błędem. |
-| `['to-string', value]` | string | Konwertuje wartość wejściową na ciąg. Jeśli dane wejściowe są `null`, wynik jest `""`. Jeśli dane wejściowe są wartością logiczną, wynik jest `"true"` lub `"false"`. Jeśli dane wejściowe są liczbami, są konwertowane na ciąg przy użyciu funkcji [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number specyfikacji języka ECMAScript. Jeśli dane wejściowe są kolorem, są konwertowane na ciąg koloru RGBA CSS `"rgba(r,g,b,a)"`. W przeciwnym razie dane wejściowe są konwertowane na ciąg przy użyciu funkcji [JSON. stringify](https://tc39.github.io/ecma262/#sec-json.stringify) specyfikacji języka ECMAScript. |
-| `['typeof', value]` | string | Zwraca ciąg opisujący typ danej wartości. |
+| `['to-string', value]` | ciąg | Konwertuje wartość wejściową na ciąg. Jeśli dane wejściowe są `null`, wynik jest `""`. Jeśli dane wejściowe są wartością logiczną, wynik jest `"true"` lub `"false"`. Jeśli dane wejściowe są liczbami, są konwertowane na ciąg przy użyciu funkcji [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number specyfikacji języka ECMAScript. Jeśli dane wejściowe są kolorem, są konwertowane na ciąg koloru RGBA CSS `"rgba(r,g,b,a)"`. W przeciwnym razie dane wejściowe są konwertowane na ciąg przy użyciu funkcji [JSON. stringify](https://tc39.github.io/ecma262/#sec-json.stringify) specyfikacji języka ECMAScript. |
+| `['typeof', value]` | ciąg | Zwraca ciąg opisujący typ danej wartości. |
 
 > [!TIP]
 > Jeśli komunikat o błędzie podobny do `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` pojawia się w konsoli przeglądarki, oznacza to, że w kodzie znajduje się wyrażenie, które zawiera tablicę, która nie ma ciągu dla swojej pierwszej wartości. Jeśli chcesz, aby wyrażenie zwracało tablicę, zawiń tablicę za pomocą wyrażenia `literal`. Poniższy przykład ustawia ikonę `offset` opcji warstwy symboli, która musi być tablicą zawierającą dwie liczby, przy użyciu wyrażenia `match` do wyboru między dwiema wartościami przesunięcia na podstawie wartości właściwości `entityType` funkcji punktu.
@@ -441,7 +441,7 @@ Wyrażenia kolorów ułatwiają tworzenie wartości kolorów i manipulowanie nim
 
 **Przykład**
 
-Poniższy przykład tworzy i RGB wartość koloru, która ma *czerwoną* wartość `255`, oraz wartości *zielony* i *niebieski* , które są obliczane przez pomnożenie `2.5` przez wartość właściwości `temperature`. Po zmianie temperatury kolor zmieni się na różne odcienie *czerwieni*.
+Poniższy przykład tworzy wartość koloru RGB, która ma *czerwoną* wartość `255`, oraz wartości *zielony* i *niebieski* , które są obliczane przez pomnożenie `2.5` przez wartość właściwości `temperature`. W miarę zmieniania temperatury kolor zmieni się na różne odcienie *czerwieni*.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -463,9 +463,9 @@ Wyrażenia operatora ciągu wykonują operacje konwersji na ciągach, takich jak
 
 | Wyrażenie | Zwracany typ | Opis |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | string | Łączy wiele ciągów ze sobą. Każda wartość musi być ciągiem. Użyj wyrażenia typu `to-string`, aby przekonwertować inne typy wartości na ciąg w razie potrzeby. |
-| `['downcase', string]` | string | Konwertuje określony ciąg na małe litery. |
-| `['upcase', string]` | string | Konwertuje określony ciąg na wielkie litery. |
+| `['concat', string, string, …]` | ciąg | Łączy wiele ciągów ze sobą. Każda wartość musi być ciągiem. Użyj wyrażenia typu `to-string`, aby przekonwertować inne typy wartości na ciąg w razie potrzeby. |
+| `['downcase', string]` | ciąg | Konwertuje określony ciąg na małe litery. |
+| `['upcase', string]` | ciąg | Konwertuje określony ciąg na wielkie litery. |
 
 **Przykład**
 
@@ -492,7 +492,7 @@ przykład ![wyrażenia operatora ciągu](media/how-to-expressions/string-operato
 
 ## <a name="interpolate-and-step-expressions"></a>Wyrażenia interpolowane i krokowe
 
-Wyrażenia interpolacji i kroku mogą służyć do obliczania wartości w interpolowanej krzywej lub funkcji kroku. Wyrażenia te przyjmują wyrażenie, które zwraca wartość liczbową jako dane wejściowe, na przykład `['get',  'temperature']`. Wartość wejściowa jest oceniana pod kątem par wartości wejściowych i wyjściowych o nazwie "Stop", aby określić wartość, która najlepiej pasuje do interpolowanej krzywej lub funkcji Step. Wartości wejściowe dla każdego zatrzymania muszą być liczbą i być uporządkowane rosnąco. Wartości wyjściowe muszą być liczbami, tablicami liczb lub kolorem.
+Wyrażenia interpolacji i kroku mogą służyć do obliczania wartości w interpolowanej krzywej lub funkcji kroku. Wyrażenia te przyjmują wyrażenie, które zwraca wartość liczbową jako dane wejściowe, na przykład `['get',  'temperature']`. Wartość wejściowa jest oceniana pod kątem par wartości wejściowych i wyjściowych, aby określić wartość, która najlepiej pasuje do interpolowanej krzywej lub funkcji Step. Wartości wyjściowe są nazywane "zatrzymania". Wartości wejściowe dla każdego zatrzymania muszą być liczbą i być uporządkowane rosnąco. Wartości wyjściowe muszą być liczbami, tablicami liczb lub kolorem.
 
 ### <a name="interpolate-expression"></a>Wyrażenie interpolacji
 
@@ -527,7 +527,7 @@ Poniższy pseudokodzie definiuje strukturę wyrażenia `interpolate`.
 
 **Przykład**
 
-Poniższy przykład używa wyrażenia `linear interpolate`, aby ustawić właściwość `color` warstwy bąbelkowej na podstawie właściwości `temperature` funkcji Point. Jeśli `temperature` wartość jest mniejsza niż 60, zostaną zwrócone "niebieska", jeśli między 60 i mniej niż 70 zostanie zwrócone żółte, jeśli między 70 i mniej niż 80 zostanie zwrócone "pomarańczowy", jeśli zostanie wyświetlona wartość 80 lub większa, zostanie zwrócony czerwony znak "Red".
+Poniższy przykład używa wyrażenia `linear interpolate`, aby ustawić właściwość `color` warstwy bąbelkowej na podstawie właściwości `temperature` funkcji Point. Jeśli wartość `temperature` jest mniejsza niż 60, zostaną zwrócone "niebieskie". Jeśli jest to od 60 do 70, zostaną zwrócone żółte. Jeśli wartość jest z zakresu od 70 do 80, zostanie zwrócony "pomarańczowy". Jeśli jest to 80 lub więcej, zostanie zwrócony czerwony znak "Red".
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -576,7 +576,7 @@ Wyrażenia kroków zwracają wartość wyjściową elementu Stop tuż przed wart
 
 **Przykład**
 
-Poniższy przykład używa wyrażenia `step`, aby ustawić właściwość `color` warstwy bąbelkowej na podstawie właściwości `temperature` funkcji Point. Jeśli `temperature` wartość jest mniejsza niż 60, zostaną zwrócone "niebieska", jeśli między 60 i mniej niż 70 zostanie zwrócone "żółty", jeśli między 70 i mniej niż 80 zostanie zwrócone "pomarańczowy", jeśli zostanie wyświetlona wartość 80 lub większa, zostanie zwrócony czerwony znak "Red".
+Poniższy przykład używa wyrażenia `step`, aby ustawić właściwość `color` warstwy bąbelkowej na podstawie właściwości `temperature` funkcji Point. Jeśli wartość `temperature` jest mniejsza niż 60, zostaną zwrócone "niebieskie". Jeśli wartość jest z zakresu od 60 do 70, zostanie zwrócony "żółty". Jeśli wartość jest z zakresu od 70 do 80, zostanie zwrócony "pomarańczowy". Jeśli jest to 80 lub więcej, zostanie zwrócony czerwony znak "Red".
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -607,10 +607,10 @@ Specjalne wyrażenia mające zastosowanie tylko do określonych warstw.
 
 ### <a name="heat-map-density-expression"></a>Wyrażenie gęstości mapy cieplnej
 
-Wyrażenie gęstości mapy cieplnej Pobiera wartość gęstości mapy cieplnej dla każdego piksela w warstwie mapy cieplnej i jest definiowana jako `['heatmap-density']`. Ta wartość jest liczbą między `0` i `1` i jest używana w połączeniu z wyrażeniem `interpolation` lub `step` do definiowania gradientu koloru używanego do kolorowania mapy cieplnej. Tego wyrażenia można używać tylko w [opcji Color](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) warstwy mapy cieplnej.
+Wyrażenie gęstości mapy cieplnej Pobiera wartość gęstości mapy cieplnej dla każdego piksela w warstwie mapy cieplnej i jest definiowana jako `['heatmap-density']`. Ta wartość jest liczbą między `0` i `1`. Jest on używany w połączeniu z wyrażeniem `interpolation` lub `step` w celu zdefiniowania gradientu koloru używanego do kolorowania mapy cieplnej. Tego wyrażenia można używać tylko w [opcji Color](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) warstwy mapy cieplnej.
 
 > [!TIP]
-> Kolor na indeksie 0 w wyrażeniu interpolacji lub domyślnym kolorem kroku, definiuje kolor obszaru, w którym nie ma danych i może służyć do definiowania koloru tła. Wiele woli ustawić tę wartość na przezroczystą lub częściowo przezroczystą czerń. 
+> Kolor pod indeksem 0, w wyrażeniu interpolacji lub domyślnym kolorem kroku, definiuje kolor obszaru, w którym nie ma żadnych danych. Kolor pod indeksem 0 może służyć do definiowania koloru tła. Wiele woli ustawić tę wartość na przezroczystą lub częściowo przezroczystą czerń.
 
 **Przykład**
 
@@ -630,7 +630,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 });
 ```
 
-Oprócz używania gładkiego gradientu do kolorowania mapy cieplnej, kolory można określić w ramach zestawu zakresów przy użyciu wyrażenia `step`. Użycie wyrażenia `step` na potrzeby kolorowania mapy cieplnej powoduje oddzielenie gęstości na wizualizację w taki sposób, aby była podobna do mapy stylu konturu lub wykresu radarowego.  
+Oprócz używania gładkiego gradientu do kolorowania mapy cieplnej, kolory można określić w ramach zestawu zakresów przy użyciu wyrażenia `step`. Użycie wyrażenia `step` do kolorowania mapy cieplnej wizualnie dzieli gęstość na zakresy, które są podobne do mapy stylu konturu lub wykresu radarowego.  
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -651,14 +651,14 @@ Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą [dodawania do 
 
 ### <a name="line-progress-expression"></a>Wyrażenie postępu wiersza
 
-Wyrażenie postępu wiersza pobiera postęp wzdłuż linii gradientu w warstwie liniowej i jest zdefiniowany jako `['line-progress']`. Ta wartość jest liczbą z zakresu od 0 do 1 i jest używana w połączeniu z wyrażeniem `interpolation` lub `step`. Tego wyrażenia można używać tylko z [opcją strokeGradient]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) warstwy liniowej. 
+Wyrażenie postępu wiersza pobiera postęp wzdłuż linii gradientu w warstwie liniowej i jest zdefiniowany jako `['line-progress']`. Ta wartość jest liczbą z zakresu od 0 do 1. Jest on używany w połączeniu z wyrażeniem `interpolation` lub `step`. Tego wyrażenia można używać tylko z [opcją strokeGradient]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) warstwy liniowej. 
 
 > [!NOTE]
 > Opcja `strokeGradient` warstwy liniowej wymaga, aby opcja `lineMetrics` źródła danych była ustawiona na `true`.
 
 **Przykład**
 
-Poniższy przykład używa wyrażenia `['line-progress']`, aby zastosować gradient koloru do obrysu wiersza.
+W tym przykładzie używa wyrażenia `['line-progress']`, aby zastosować gradient koloru do obrysu wiersza.
 
 ```javascript
 var layer = new atlas.layer.LineLayer(datasource, null, {
@@ -793,11 +793,11 @@ przykład ![wyrażenia formatu liczbowego](media/how-to-expressions/number-forma
 
 ## <a name="zoom-expression"></a>Wyrażenie powiększenia
 
-Wyrażenie `zoom` służy do pobierania bieżącego poziomu powiększenia mapy w czasie renderowania i jest definiowana jako `['zoom']`. To wyrażenie zwraca liczbę z przedziału minimalnego i maksymalnego poziomu powiększenia mapy. Użycie tego wyrażenia umożliwia dynamiczne modyfikowanie stylów, gdy poziom powiększenia mapy zostanie zmieniony. Wyrażenia `zoom` można używać tylko z wyrażeniami `interpolate` i `step`.
+Wyrażenie `zoom` służy do pobierania bieżącego poziomu powiększenia mapy w czasie renderowania i jest definiowana jako `['zoom']`. To wyrażenie zwraca liczbę z przedziału minimalnego i maksymalnego poziomu powiększenia mapy. Azure Maps formanty interaktywnej mapy dla sieci Web i Android obsługują 25 poziomów powiększenia, numerowane od 0 do 24. Użycie wyrażenia `zoom` umożliwia dynamiczne modyfikowanie stylów, gdy poziom powiększenia mapy zostanie zmieniony. Wyrażenia `zoom` można używać tylko z wyrażeniami `interpolate` i `step`.
 
 **Przykład**
 
-Domyślnie promienie punktów danych renderowane w warstwie mapy cieplnej mają stały promień pikseli dla wszystkich poziomów powiększenia. Ponieważ mapa jest powiększona, zagregowane dane są sumowane i wygląda inaczej niż warstwa mapy cieplnej. Wyrażenie `zoom` może służyć do skalowania promienia dla każdego poziomu powiększenia, tak że każdy punkt danych obejmuje ten sam obszar fizyczny mapy. Spowoduje to, że warstwa mapy cieplnej będzie wyglądać bardziej statyczna i spójna. Każdy poziom powiększenia mapy ma dwa piksele w pionie i poziomie jako poprzedni poziom powiększenia. Skalowanie promienia w taki sposób, że podwaja z każdym poziomem powiększenia, spowoduje utworzenie mapy cieplnej, która będzie wyglądać spójnie na wszystkich poziomach powiększenia. Można to osiągnąć przy użyciu wyrażenia `zoom` z wyrażeniem `base 2 exponential interpolation`, jak pokazano poniżej. 
+Domyślnie promienie punktów danych renderowane w warstwie mapy cieplnej mają stały promień pikseli dla wszystkich poziomów powiększenia. W miarę powiększania mapy dane zagregowane i warstwy mapy cieplnej wyglądają inaczej. Wyrażenie `zoom` może służyć do skalowania promienia dla każdego poziomu powiększenia, tak że każdy punkt danych obejmuje ten sam obszar fizyczny mapy. Spowoduje to, że warstwa mapy cieplnej będzie wyglądać bardziej statyczna i spójna. Każdy poziom powiększenia mapy ma dwa piksele w pionie i poziomie jako poprzedni poziom powiększenia. Skalowanie promienia, w taki sposób, że podwaja się z każdym poziomem powiększenia, spowoduje utworzenie mapy cieplnej, która będzie wyglądać spójnie na wszystkich poziomach powiększenia. Można to zrobić za pomocą wyrażenia `zoom` z wyrażeniem `base 2 exponential interpolation`, jak pokazano poniżej. 
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -819,7 +819,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 ## <a name="variable-binding-expressions"></a>Wyrażenia powiązań zmiennych
 
-Wyrażenia powiązań zmiennych przechowują wyniki obliczeń w zmiennej, dzięki czemu można odwoływać się w innym miejscu w wyrażeniu wielokrotnie bez konieczności ponownego obliczania. Jest to przydatna Optymalizacja dla wyrażeń obejmujących wiele obliczeń
+Wyrażenia powiązań zmiennych przechowują wyniki obliczeń w zmiennej. Tak więc wyniki obliczeń mogą być przywoływane w innym miejscu w wyrażeniu. Jest to przydatna Optymalizacja dla wyrażeń, które obejmują wiele obliczeń.
 
 | Wyrażenie | Zwracany typ | Opis |
 |--------------|---------------|--------------|
@@ -828,7 +828,7 @@ Wyrażenia powiązań zmiennych przechowują wyniki obliczeń w zmiennej, dzięk
 
 **Przykład**
 
-W tym przykładzie używane jest wyrażenie, które oblicza przychód względem współczynnika temperatury, a następnie używa wyrażenia `case`, aby oszacować różne operacje logiczne dla tej wartości. Wyrażenie `let` służy do przechowywania przychodów względem współczynnika temperatury, tak aby tylko raz była obliczana tylko raz, a wyrażenie `var` odwołuje się do tej zmiennej tak często, jak to konieczne, bez konieczności ponownego obliczania.
+W tym przykładzie używane jest wyrażenie, które oblicza przychód względem współczynnika temperatury, a następnie używa wyrażenia `case`, aby oszacować różne operacje logiczne dla tej wartości. Wyrażenie `let` służy do przechowywania przychodów względem współczynnika temperatury, tak aby tylko raz obliczyć tylko raz. Wyrażenie `var` odwołuje się do tej zmiennej tak często, jak to konieczne, bez konieczności ponownego obliczania.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {

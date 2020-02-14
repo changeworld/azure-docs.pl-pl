@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 96515d81668bf172325f88e3e5bac8d8cccfa999
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262731"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190860"
 ---
 # <a name="connect-your-domain-name-server"></a>Łączenie serwera nazw domen
 
@@ -45,12 +45,12 @@ W poniższej tabeli opisano połączone źródła, które są obsługiwane przez
 | --- | --- | --- |
 | [Agenci dla systemu Windows](../azure-monitor/platform/agent-windows.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów dla Windows. |
 | [Agenci dla systemu Linux](../azure-monitor/learn/quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje DNS z bezpośrednich agentów systemu Linux. |
-| [Grupa zarządzania programu System Center Operations Manager](../azure-monitor/platform/om-agents.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów w połączonej grupie zarządzania programu Operations Manager. Bezpośrednie połączenie z agenta Operations Manager do Azure Monitor nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
+| [System Center Operations Manager grupy zarządzania](../azure-monitor/platform/om-agents.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów w połączonej grupie zarządzania programu Operations Manager. Bezpośrednie połączenie z agenta Operations Manager do Azure Monitor nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
 | [Konto usługi Azure Storage](../azure-monitor/platform/collect-azure-metrics-logs.md) | Nie | Usługa Azure storage nie jest używana przez to rozwiązanie. |
 
 ### <a name="data-collection-details"></a>Szczegóły dotyczące zbierania danych
 
-Rozwiązanie zbiera spis DNS i dane dotyczące zdarzeń DNS z serwerów DNS, którym jest zainstalowany agent usługi Log Analytics. Dane dotyczące zapasów, takie jak liczba serwerów DNS, strefy i rekordy zasobów są zbierane przez uruchomienie polecenia cmdlet programu DNS PowerShell. Dane są aktualizowane co dwa dni. Dane dotyczące zdarzeń są zbierane w czasie rzeczywistym z [analitycznych i dzienników inspekcji](https://technet.microsoft.com/library/dn800669.aspx#enhanc) podał rozszerzonych DNS rejestrowania i diagnostyki w systemie Windows Server 2012 R2.
+Rozwiązanie zbiera spis DNS i dane dotyczące zdarzeń DNS z serwerów DNS, którym jest zainstalowany agent usługi Log Analytics. Dane dotyczące zapasów, takie jak liczba serwerów DNS, strefy i rekordy zasobów są zbierane przez uruchomienie polecenia cmdlet programu DNS PowerShell. Dane są aktualizowane co dwa dni. Dane związane ze zdarzeniami są zbierane niemal w czasie rzeczywistym z [dzienników analitycznych i inspekcji](https://technet.microsoft.com/library/dn800669.aspx#enhanc) dostarczonych przez ulepszone rejestrowanie i diagnostykę DNS w systemie Windows Server 2012 R2.
 
 
 ## <a name="connect-your-dns-appliance"></a>Połącz urządzenie DNS
@@ -69,11 +69,21 @@ Rozwiązanie zbiera spis DNS i dane dotyczące zdarzeń DNS z serwerów DNS, kt�
 
 3. Aby użyć odpowiedniego schematu w Log Analytics dla dzienników DNS, wyszukaj ciąg **DnsEvents**.
 
-## <a name="validate"></a>Weryfikuj 
+## <a name="validate"></a>Walidacja 
 
 W Log Analytics Wyszukaj schemat **DnsEvents** i upewnij się, że istnieją zdarzenia.
 
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+Jeśli zapytania wyszukiwania nie są wyświetlane na platformie Azure, wykonaj następujące kroki, aby zapytania były wyświetlane prawidłowo:
+1. Włącz [dzienniki DNS Analytics na serwerach](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)).
+2. Upewnij się, że DNSEvents pojawia się na liście kolekcji Log Analytics.
+3. Włącz [Azure DNS analizy](../azure-monitor/insights/dns-analytics.md).
+4. W Azure DNS Analytics w obszarze **Konfiguracja**zmień dowolne ustawienia, Zapisz je, a następnie zmień je ponownie, jeśli zachodzi taka potrzeba, a następnie Zapisz je ponownie.
+5. Sprawdź Azure DNS analizy, aby upewnić się, że zapytania są teraz wyświetlane.
+
 ## <a name="next-steps"></a>Następne kroki
+
 W tym dokumencie przedstawiono sposób nawiązywania połączenia z lokalnymi urządzeniami DNS z systemem Azure wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
 - Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
 - Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).

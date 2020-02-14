@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: f7dcf342a1b9b2107138044dfc207d6dbcb42e9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4259868ff3b3c9ca9f9818532acd7e865e0300d7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260825"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205754"
 ---
 Aby utworzyć i zarządzać maszyn wirtualnych (VM) w sposób ciągły na dużą skalę, zwykle jest pożądane jakąś formę automatyzacji. Istnieje wiele narzędzi i rozwiązań, które umożliwiają automatyzację wdrażania całej infrastruktury platformy Azure i zarządzanie cyklem życia. W tym artykule przedstawiono niektóre z narzędzi automatyzacji infrastruktury, które można użyć na platformie Azure. Te narzędzia często mieści się w jednej z następujących metod:
 
@@ -29,9 +29,9 @@ Aby utworzyć i zarządzać maszyn wirtualnych (VM) w sposób ciągły na dużą
 
 Instrukcje:
 
-- [Zainstaluj i skonfiguruj rozwiązania ansible w systemie Linux do użycia z platformą Azure](../articles/virtual-machines/linux/ansible-install-configure.md).
-- [Utwórz maszynę wirtualną z systemem Linux](../articles/virtual-machines/linux/ansible-create-vm.md).
-- [Zarządzanie maszyną wirtualną z systemem Linux](../articles/virtual-machines/linux/ansible-manage-linux-vm.md).
+- [Zainstaluj i skonfiguruj rozwiązania ansible w systemie Linux do użycia z platformą Azure](../articles/ansible/ansible-install-configure.md).
+- [Utwórz maszynę wirtualną z systemem Linux](../articles/ansible/ansible-create-vm.md).
+- [Zarządzanie maszyną wirtualną z systemem Linux](../articles/ansible/ansible-manage-linux-vm.md).
 
 
 ## <a name="chef"></a>Chef
@@ -62,7 +62,7 @@ Aktywnie współpracujemy z partnerami zalecanych dystrybucji systemu Linux, aby
 - [Wypróbuj samouczek dotyczący zautomatyzowanej konfiguracji maszyny wirtualnej przy użyciu funkcji Cloud-init](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
 
 
-## <a name="powershell-dsc"></a>PowerShell DSC
+## <a name="powershell-dsc"></a>Rozszerzenie DSC programu PowerShell
 [Konfiguracja żądanego stanu programu PowerShell (DSC)](/powershell/scripting/dsc/overview/overview) to platforma zarządzania służąca do definiowania konfiguracji maszyn docelowych. Konfiguracja DSC może być również używana w systemie Linux za pomocą [serwera infrastruktury Open Management Infrastructure (OMI)](https://collaboration.opengroup.org/omi/).
 
 Konfiguracje DSC definiują, co należy zainstalować na komputerze oraz sposób konfigurowania hosta. Aparat lokalnego Configuration Manager (LCM) działa w każdym węźle docelowym, która przetwarza żądane akcje na podstawie konfiguracji wypychanie. Serwer ściągania jest usługą internetową, która działa na hoście centralnej do przechowywania konfiguracji DSC i skojarzonych zasobów. Serwerze ściągania komunikuje się z aparatem LCM na każdym hoście docelowym, podaj wymagane konfiguracje i sporządzić raport na temat zgodności.

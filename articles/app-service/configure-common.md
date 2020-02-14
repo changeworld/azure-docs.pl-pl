@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4ba7326d9c23bed2406e62fe1a206501d05a1b1
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 021941339bbbf72112628c54f5b05d5fd305bd0f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666191"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198585"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Skonfiguruj aplikację App Service w Azure Portal
 
@@ -84,13 +84,13 @@ Ustawienia aplikacji mają następujące formatowanie JSON:
 ]
 ```
 
-## <a name="configure-connection-strings"></a>Konfigurowanie parametrów połączeń
+## <a name="configure-connection-strings"></a>Konfigurowanie parametrów połączenia
 
 W [Azure Portal]Wyszukaj i wybierz pozycję **App Services**, a następnie wybierz aplikację. W menu po lewej stronie aplikacji wybierz pozycję **konfiguracja** > **Ustawienia aplikacji**.
 
 ![Ustawienia aplikacji](./media/configure-common/open-ui.png)
 
-W przypadku deweloperów ASP.NET i ASP.NET Core, ustawianie parametrów połączenia w App Service przypomina Ustawianie ich w `<connectionStrings>` w *Web. config*, ale wartości ustawionych w App Service przesłaniają te elementy w *pliku Web. config*. Ustawienia programistyczne (na przykład plik bazy danych) można zachować w pliku *Web. config* i w tajemnicach produkcyjnych (na przykład SQL Database poświadczenia) bezpiecznie w App Service. Ten sam kod używa ustawień programistycznych podczas debugowania lokalnego i korzysta z wpisów tajnych produkcji w przypadku wdrożenia na platformie Azure.
+W przypadku deweloperów ASP.NET i ASP.NET Core, ustawianie parametrów połączenia w App Service przypomina Ustawianie ich w `<connectionStrings>` w *Web. config*, ale wartości ustawionych w App Service przesłaniają te elementy w *pliku Web. config*. Możesz przechowywać ustawienia programistyczne (na przykład plik bazy danych) w pliku *Web. config* i w tajemnicach produkcyjnych (na przykład SQL Database poświadczenia) bezpiecznie w App Service. Ten sam kod używa ustawień programistycznych podczas debugowania lokalnego i korzysta z wpisów tajnych produkcji w przypadku wdrożenia na platformie Azure.
 
 W przypadku innych stosów języka lepiej jest używać [ustawień aplikacji](#configure-app-settings) , ponieważ parametry połączeń wymagają specjalnego formatowania w kluczach zmiennych w celu uzyskania dostępu do wartości. Poniżej przedstawiono jeden wyjątek: w przypadku konfigurowania parametrów połączenia w aplikacji kopie zapasowe niektórych typów baz danych platformy Azure są tworzone razem z aplikacją. Aby uzyskać więcej informacji, zobacz [co to jest kopia zapasowa](manage-backup.md#what-gets-backed-up). Jeśli ta zautomatyzowana kopia zapasowa nie jest potrzebna, Użyj ustawień aplikacji.
 
@@ -182,7 +182,7 @@ To ustawienie dotyczy tylko aplikacji systemu Windows.
 
 W [Azure Portal]Wyszukaj i wybierz pozycję **App Services**, a następnie wybierz aplikację. W menu po lewej stronie aplikacji wybierz pozycję **konfiguracja** > **dokumenty domyślne**.
 
-![Domyślne dokumenty](./media/configure-common/open-documents.png)
+![Dokumenty domyślne](./media/configure-common/open-documents.png)
 
 Dokument domyślny jest stroną sieci Web, która jest wyświetlana na głównym adresie URL witryny sieci Web. Używany jest pierwszy pasujący plik na liście. Aby dodać nowy dokument domyślny, kliknij pozycję **Nowy dokument**. Nie zapomnij kliknąć przycisk **Zapisz**.
 

@@ -1,25 +1,24 @@
 ---
-title: Przykładowy skrypt Azure PowerShell — Konfigurowanie punktów końcowych sieci wirtualnej IPv6 przy użyciu usługa Load Balancer w warstwie Standardowa (wersja zapoznawcza)
+title: Przykładowy skrypt Azure PowerShell — Konfigurowanie frontonu protokołu IPv6 przy użyciu usługa Load Balancer w warstwie Standardowa (wersja zapoznawcza)
 titlesuffix: Azure Virtual Network
 description: Włączanie punktów końcowych protokołu IPv6 przy użyciu programu PowerShell na platformie Azure Virtual Network
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: fc5bc23ffec0956cb53e62f0cd14d7135d5fbcca
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 24d25813a5cafc98f04d3daef2803aa44acc7f69
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269704"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201326"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>Przykład konfiguracji punktów końcowych protokołu IPv6 w skrypcie sieci wirtualnej przy użyciu usługa Load Balancer w warstwie Standardowa (wersja zapoznawcza)
+# <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>Przykład konfiguracji frontonu IPv6 w skrypcie sieci wirtualnej przy użyciu usługa Load Balancer w warstwie Standardowa (wersja zapoznawcza)
 
 W tym artykule opisano sposób wdrażania aplikacji podwójnego stosu (IPv4 + IPv6) na platformie Azure, która obejmuje sieć wirtualną o podwójnej stercie z podsiecią podwójnego stosu, moduł równoważenia obciążenia z dwoma sieciami frontonu (IPv4 + IPv6), maszyny wirtualne z kartami sieciowymi z konfiguracją Dual IP, podwójne reguły sieciowej grupy zabezpieczeń i dwa publiczne adresy IP.
 

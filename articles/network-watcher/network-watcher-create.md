@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b091c501fb565fb267c40f686dc037e41f3c90ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845127"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191178"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Tworzenie wystąpienia usługi Azure Network Watcher
 
@@ -132,5 +132,3 @@ Teraz, gdy masz już wystąpienie Network Watcher, zapoznaj się z dostępnymi f
 * [Widok grupy zabezpieczeń](network-watcher-security-group-view-overview.md)
 * [Rejestrowanie przepływu sieciowej grupy zabezpieczeń](network-watcher-nsg-flow-logging-overview.md)
 * [Rozwiązywanie problemów z bramą Virtual Network](network-watcher-troubleshoot-overview.md)
-
-Po wystąpieniu Network Watcher można włączyć funkcję przechwytywania pakietów na maszynach wirtualnych. Aby dowiedzieć się, jak to zrobić, zobacz artykuł [Tworzenie wyzwalanego przechwytywania pakietów przez alert](network-watcher-alert-triggered-packet-capture.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: Twój pierwszy model sieci przy użyciu języka R'
+title: 'Samouczek: model regresji logistycznej w języku R'
 titleSuffix: Azure Machine Learning
-description: W ramach tego samouczka nauczysz się podstawowe wzorce projektowe w Azure Machine Learning i nauczysz model modelu regresji logistycznej przy użyciu pakietów R azuremlsdk i karetki, aby przewidzieć prawdopodobieństwo wystąpienia krytycznego w przypadku awarii.
+description: W tym samouczku utworzysz model regresji logistycznej przy użyciu pakietów R azuremlsdk i karetki, aby przewidzieć prawdopodobieństwo wystąpienia krytycznego poziomu się awarii.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,31 +9,32 @@ ms.topic: tutorial
 ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
-ms.date: 11/04/2019
-ms.openlocfilehash: 7ea02fa4544b478e6b041e0b9c342bccdfe6c48c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/07/2020
+ms.openlocfilehash: 37f2f98e594f558a9cd3c3e5994bf17a71ff1899
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533447"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191257"
 ---
-# <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Samouczek: uczenie i wdrażanie pierwszego modelu w języku R z Azure Machine Learning
+# <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>Samouczek: Tworzenie modelu regresji logistycznej w języku R przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W ramach tego samouczka nauczysz się podstawowe wzorce projektowe w Azure Machine Learning.  Nauczysz się i wdrożono model **karetki** , aby przewidzieć prawdopodobieństwo wystąpienia krytycznego poziomu się awarii. Po ukończeniu tego samouczka będziesz mieć praktyczną wiedzę na temat zestawu SDK języka R, aby skalować w górę do tworzenia bardziej złożonych eksperymentów i przepływów pracy.
+W tym samouczku użyjesz języka R i Azure Machine Learning, aby utworzyć model regresji logistycznej, który przewiduje prawdopodobieństwo wystąpienia niekrytycznego działania w razie awarii. Po ukończeniu tego samouczka uzyskasz praktyczną wiedzę na temat Azure Machine Learning zestawu SDK języka R do skalowania w górę w celu opracowywania bardziej złożonych eksperymentów i przepływów pracy.
 
-W tym samouczku nauczysz się wykonywać następujące zadania:
-
+Ten samouczek obejmuje wykonanie następujących zadań:
 > [!div class="checklist"]
-> * Łączenie obszaru roboczego
+> * Tworzenie obszaru roboczego usługi Azure Machine Learning
+> * Klonowanie folderu notesu przy użyciu plików niezbędnych do uruchomienia tego samouczka w obszarze roboczym
+> * Otwórz RStudio z obszaru roboczego
 > * Ładowanie danych i przygotowanie do szkolenia
 > * Przekaż dane do magazynu danych, aby były dostępne do szkolenia zdalnego
-> * Utwórz zasób obliczeniowy
-> * Uczenie modelu karetki do przewidywania prawdopodobieństwa krytycznego
+> * Utwórz zasób obliczeniowy, aby zdalnie nauczyć model
+> * Uczenie modelu `caret` do przewidywania prawdopodobieństwa krytycznego
 > * Wdrażanie punktu końcowego przewidywania
 > * Testowanie modelu przy użyciu języka R
 
-Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
@@ -66,13 +67,11 @@ Należy wykonać następujące czynności w celu skonfigurowania i uruchomienia 
 
 1. Otwórz w folderze numer wersji.  Ta liczba reprezentuje bieżącą wersję zestawu R SDK.
 
-1. Otwórz folder **vignettes** .
-
-1. Wybierz pozycję **"..."** po prawej stronie folderu **pociąg-and-Deploy-to-ACI** , a następnie wybierz pozycję **Klonuj**.
+1. Wybierz pozycję **"..."** po prawej stronie folderu **vignettes** , a następnie wybierz pozycję **Klonuj**.
 
     ![Klonuj folder](media/tutorial-1st-r-experiment/clone-folder.png)
 
-1. Zostanie wyświetlona lista folderów pokazująca każdego użytkownika, który uzyskuje dostęp do obszaru roboczego.  Wybierz folder, w którym ma zostać sklonowany folder **uczenie i wdrażanie do ACI** .
+1. Zostanie wyświetlona lista folderów pokazująca każdego użytkownika, który uzyskuje dostęp do obszaru roboczego.  Wybierz folder, w którym ma zostać sklonowany folder **vignettes** .
 
 ## <a name="a-nameopenopen-rstudio"></a><a name="open">otworzyć RStudio
 
@@ -84,12 +83,13 @@ Użyj RStudio na wystąpieniu obliczeniowym lub maszynie wirtualnej z notesem, a
 
 1. Po uruchomieniu obliczeń Użyj linku **RStudio** , aby otworzyć RStudio.
 
-1. W programie RStudio folder **szkolenia i--Deploy-to-ACI** to kilka poziomów w dół od **użytkowników** w sekcji **pliki** w prawym dolnym rogu.  Wybierz folder **uczenie i wdrażanie-do-ACI** , aby znaleźć pliki wymagane w tym samouczku.
+1. W programie RStudio folder *vignettes* to kilka poziomów w dół od *użytkowników* w sekcji **pliki** w prawym dolnym rogu.  W obszarze *vignettes*wybierz folder *uczenie i wdrażanie-do-ACI* , aby znaleźć pliki wymagane w tym samouczku.
 
 > [!Important]
-> Pozostała część tego artykułu zawiera tę samą zawartość, która jest widoczna w części **uczenie i wdrażanie-do-ACI. Plik RMD** . Jeśli masz doświadczenie z RMarkdown, możesz użyć kodu z tego pliku.  Można też skopiować/wkleić fragmenty kodu z tego miejsca lub z tego artykułu do skryptu języka R lub wiersza polecenia.  
+> Pozostała część tego artykułu zawiera tę samą zawartość, która jest widoczna w części *uczenie i wdrażanie-do-ACI. Plik RMD* . Jeśli masz doświadczenie z RMarkdown, możesz użyć kodu z tego pliku.  Można też skopiować/wkleić fragmenty kodu z tego miejsca lub z tego artykułu do skryptu języka R lub wiersza polecenia.  
 
-## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska programistycznego
+
+## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska projektowego
 Konfiguracja dla pracy programistycznej w tym samouczku obejmuje następujące działania:
 
 * Instalowanie wymaganych pakietów
@@ -102,12 +102,6 @@ W tym samouczku przyjęto założenie, że masz już zainstalowaną usługę Azu
 
 ```R
 library(azuremlsdk)
-```
-
-Samouczek używa danych z [pakietu **DAAG** ](https://cran.r-project.org/package=DAAG). Zainstaluj pakiet, jeśli go nie masz.
-
-```R
-install.packages("DAAG")
 ```
 
 Skrypty szkoleń i oceniania (`accidents.R` i `accident_predict.R`) mają pewne dodatkowe zależności. Jeśli planujesz uruchamiać te skrypty lokalnie, upewnij się, że masz również wymagane pakiety.
@@ -147,15 +141,21 @@ wait_for_provisioning_completion(compute_target)
 ```
 
 ## <a name="prepare-data-for-training"></a>Przygotowywanie danych do szkolenia
-Ten samouczek używa danych z pakietu **DAAG** . Ten zestaw danych zawiera dane z ponad 25 000 samochodów w Stanach Zjednoczonych ze zmiennymi, których można użyć do przewidywania prawdopodobieństwa krytyczne. Najpierw zaimportuj dane do języka R i Przekształć je do nowej ramki danych `accidents` na potrzeby analizy i wyeksportuj go do pliku `Rdata`.
+W tym samouczku są stosowane dane z [administracji krajowej bezpieczeństwa ruchu](https://cdan.nhtsa.gov/tsftables/tsfar.htm) drogowego USA (z podziękowaniami dla [Mary C. Meyer i Tremika Finney](https://www.stat.colostate.edu/~meyer/airbags.htm)).
+Ten zestaw danych zawiera dane z ponad 25 000 samochodów w Stanach Zjednoczonych ze zmiennymi, których można użyć do przewidywania prawdopodobieństwa krytyczne. Najpierw zaimportuj dane do języka R i Przekształć je do nowej ramki danych `accidents` na potrzeby analizy i wyeksportuj go do pliku `Rdata`.
 
 ```R
-library(DAAG)
-data(nassCDS)
-
+nassCDS <- read.csv("nassCDS.csv", 
+                     colClasses=c("factor","numeric","factor",
+                                  "factor","factor","numeric",
+                                  "factor","numeric","numeric",
+                                  "numeric","character","character",
+                                  "numeric","numeric","character"))
 accidents <- na.omit(nassCDS[,c("dead","dvcat","seatbelt","frontal","sex","ageOFocc","yearVeh","airbag","occRole")])
 accidents$frontal <- factor(accidents$frontal, labels=c("notfrontal","frontal"))
 accidents$occRole <- factor(accidents$occRole)
+accidents$dvcat <- ordered(accidents$dvcat, 
+                          levels=c("1-9km/h","10-24","25-39","40-54","55+"))
 
 saveRDS(accidents, file="accidents.Rd")
 ```
@@ -174,7 +174,7 @@ upload_files_to_datastore(ds,
 ```
 
 
-## <a name="train-a-model"></a>Trenowanie modelu
+## <a name="train-a-model"></a>Szkolenie modelu
 
 Na potrzeby tego samouczka Dopasuj model regresji logistycznej do przekazanych danych przy użyciu zdalnego klastra obliczeniowego. Aby przesłać zadanie, musisz:
 
@@ -394,5 +394,6 @@ Możesz też zachować grupę zasobów i usunąć jeden obszar roboczy. Wyświet
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, po ukończeniu pierwszego Azure Machine Learning eksperymentu w języku R, Dowiedz się więcej na temat [Azure Machine Learning SDK dla języka r](https://azure.github.io/azureml-sdk-for-r/index.html).
+* Teraz, po ukończeniu pierwszego Azure Machine Learning eksperymentu w języku R, Dowiedz się więcej na temat [Azure Machine Learning SDK dla języka r](https://azure.github.io/azureml-sdk-for-r/index.html).
 
+* Dowiedz się więcej o Azure Machine Learning z językiem R w przykładach w innych folderach *vignettes* .

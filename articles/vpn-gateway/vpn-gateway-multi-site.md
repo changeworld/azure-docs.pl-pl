@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: yushwang
-ms.openlocfilehash: 5bedf5bd6d061d74201dbac3f1f99ed0d4c381aa
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902434"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198103"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Dodawanie połączenia lokacja-lokacja do sieci wirtualnej z istniejącym połączeniem bramy sieci VPN (klasyczne)
 
@@ -55,10 +55,13 @@ Przed rozpoczęciem konfiguracji Sprawdź, czy masz następujące elementy:
 
 * Zgodny sprzęt sieci VPN dla każdej lokalizacji lokalnej. Sprawdź [Informacje o urządzeniach sieci VPN pod kątem łączności Virtual Network](vpn-gateway-about-vpn-devices.md) , aby sprawdzić, czy urządzenie, którego chcesz użyć, jest znane jako zgodne.
 * Zewnętrzny adres IP protokołu IPv4 dla każdego urządzenia sieci VPN. Adres IP nie może znajdować się za translatorem adresów sieciowych. Jest to wymagane.
-* Niezbędne jest zainstalowanie najnowszej wersji poleceń cmdlet programu Azure PowerShell. Upewnij się, że oprócz wersji Menedżer zasobów została zainstalowana wersja Service Management (SM). Aby uzyskać więcej informacji [, zobacz Jak zainstalować i skonfigurować Azure PowerShell](/powershell/azure/overview) .
 * Osoba, która jest w sposób nieużywany do konfigurowania sprzętu sieci VPN. Musisz mieć silny opis sposobu konfigurowania urządzenia sieci VPN lub pracy z osobą, która robi.
 * Zakresy adresów IP, które mają być używane dla sieci wirtualnej (jeśli jeszcze nie zostały utworzone).
 * Zakresy adresów IP dla każdej z lokacji sieci lokalnej, z którymi będziesz się łączyć. Należy upewnić się, że zakresy adresów IP dla każdej z lokacji sieci lokalnej, z którymi chcesz się połączyć, nie nakładają się na siebie. W przeciwnym razie Portal lub interfejs API REST odrzuci zakazaną konfigurację.<br>Na przykład jeśli masz dwie lokalne lokacje sieciowe, które zawierają zakres adresów IP 10.2.3.0/24 i masz pakiet z adresem docelowym 10.2.3.3, platforma Azure nie będzie mogła wiedzieć, do której lokacji chcesz wysłać pakiet, ponieważ zakresy adresów nakładają się na siebie. Aby zapobiec problemom z routingiem, platforma Azure nie zezwala na przekazywanie pliku konfiguracji, który ma nakładające się zakresy.
+
+### <a name="working-with-azure-powershell"></a>Praca z programem Azure PowerShell
+
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="1-create-a-site-to-site-vpn"></a>1. Tworzenie sieci VPN typu lokacja-lokacja
 Jeśli masz już sieć VPN typu lokacja-lokacja z bramą dynamicznego routingu, świetnie! Możesz przystępować [eksport ustawień konfiguracji sieci wirtualnej](#export). Jeśli nie, wykonaj następujące czynności:
@@ -72,6 +75,19 @@ Jeśli masz już sieć VPN typu lokacja-lokacja z bramą dynamicznego routingu, 
 2. Konfigurowanie bramy routingu dynamicznego przy użyciu następujących instrukcji: [skonfiguruj VPN Gateway](vpn-gateway-configure-vpn-gateway-mp.md). Upewnij się, że wybrano opcję **Routing dynamiczny** dla danego typu bramy.
 
 ## <a name="export"></a>2. Wyeksportuj plik konfiguracji sieci
+
+Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień. Aby przełączyć się do zarządzania usługami, użyj tego polecenia:
+
+```powershell
+azure config mode asm
+```
+
+Połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
+
+```powershell
+Add-AzureAccount
+```
+
 Wyeksportuj plik konfiguracji sieci platformy Azure, uruchamiając następujące polecenie. W razie potrzeby można zmienić lokalizację pliku do wyeksportowania do innej lokalizacji.
 
 ```powershell
@@ -156,7 +172,7 @@ Zaimportuj plik konfiguracji sieci. Po zaimportowaniu tego pliku ze zmianami zos
 ## <a name="6-download-keys"></a>6. Pobierz klucze
 Po dodaniu nowych tuneli należy użyć polecenia cmdlet "Get-AzureVNetGatewayKey" programu PowerShell, aby pobrać klucze wstępne protokołu IPsec/IKE dla każdego tunelu.
 
-Przykład:
+Na przykład:
 
 ```powershell
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"

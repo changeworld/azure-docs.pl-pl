@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: c49c37ced4a5d5cc7cdde0737b889aad3b538f7f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f56929e14aef34f675139782328ed5c559df12c7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899009"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198633"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurowanie bramy aplikacji za pomocą punktu końcowego wewnętrznego modułu równoważenia obciążenia (ILB)
 
@@ -25,11 +25,11 @@ W tym artykule opisano kroki konfigurowania bramy aplikacji z prywatnym adresem 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do Azure Portal na <https://portal.azure.com>KV
+Zaloguj się do Azure Portal w <https://portal.azure.com>
 
-## <a name="create-an-application-gateway"></a>Tworzenie bramy Application Gateway
+## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
 Do komunikacji między tworzonymi zasobami platforma Azure potrzebuje sieci wirtualnej. Można utworzyć nową sieć wirtualną lub użyć istniejącej. W tym przykładzie utworzysz nową sieć wirtualną. Sieć wirtualną można utworzyć podczas tworzenia bramy aplikacji. Wystąpienia Application Gateway są tworzone w różnych podsieciach. W tym przykładzie tworzysz dwie podsieci: jedną dla bramy aplikacji i drugą dla serwerów zaplecza.
 
@@ -110,7 +110,7 @@ W tym celu:
 ### <a name="install-iis"></a>Instalowanie usług IIS
 
 1. Otwórz Cloud Shell i upewnij się, że jest ustawiony na program **PowerShell**.
-    ![private-frontendip-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
+    ![prywatny-frontendip-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
 2. Uruchom następujące polecenie, aby zainstalować usługi IIS na maszynie wirtualnej:
 
    ```azurepowershell
@@ -141,7 +141,7 @@ W tym celu:
 ### <a name="add-backend-servers-to-backend-pool"></a>Dodawanie serwerów zaplecza do puli zaplecza
 
 1. Wybierz pozycję **Wszystkie zasoby**, a następnie wybierz pozycję **myAppGateway**.
-2. Wybierz **pule zaplecza**. Wybierz pozycję **appGatewayBackendPool**.
+2. Wybierz pozycję **Pule zaplecza**. Wybierz pozycję **appGatewayBackendPool**.
 3. W obszarze **Typ docelowy** wybierz pozycję **maszyna wirtualna** i w obszarze **cel**wybierz pozycję wirtualnej karty sieciowej skojarzona z myVM.
 4. Powtarzaj, aby dodać MyVM2.
    ![prywatny-frontendip-4](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-4.png)

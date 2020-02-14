@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: f8d49a62ae9006e65ef86db1ae90cd5a5e9f1c6d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d2313bfc47026ed9655d0ca25f0a0fdf3f86d8a5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647377"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191082"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co to jest usługa Azure Private Link Service?
 
@@ -55,6 +55,7 @@ Usługa link prywatny określa następujące właściwości:
 |Konfiguracja adresu IP frontonu Load Balancer (loadBalancerFrontendIpConfigurations)    |    Usługa link prywatny jest powiązana z adresem IP frontonu usługa Load Balancer w warstwie Standardowa. Cały ruch przychodzący do usługi będzie docierał do frontonu modułu równoważenia obciążenia. Można skonfigurować reguły modułu równoważenia obciążenia, aby skierować ten ruch do odpowiednich pul zaplecza, w których są uruchomione aplikacje. Konfiguracje adresów IP frontonu modułu równoważenia obciążenia różnią się od konfiguracji protokołu IP NAT.      |
 |Konfiguracja protokołu IP translatora adresów sieciowych (Ipconfiguration)    |    Ta właściwość odnosi się do konfiguracji protokołu IP NAT (translator adresów sieciowych) dla usługi link prywatny. Adres IP NAT można wybrać z dowolnej podsieci w sieci wirtualnej dostawcy usług. Usługa link prywatny Wykonuje translację NAT po stronie docelowej na ruch związany z linkiem prywatnym. Dzięki temu nie występuje konflikt adresów IP między źródłem (po stronie klienta) a miejscem docelowym (dostawcy usług). Po stronie docelowej (po stronie dostawcy usług) adres IP translatora adresów sieciowych będzie wyświetlany jako źródłowy IP dla wszystkich pakietów odebranych przez usługę i docelowy adres IP dla wszystkich pakietów wysłanych przez usługę.       |
 |Połączenia prywatnych punktów końcowych (privateEndpointConnections)     |  Ta właściwość zawiera listę prywatnych punktów końcowych łączących się z usługą link prywatny. Wiele prywatnych punktów końcowych może połączyć się z tą samą usługą łącza prywatnego, a dostawca usług może kontrolować stan poszczególnych prywatnych punktów końcowych.        |
+|Serwer proxy TCP v2 (EnableProxyProtocol)     |  Ta właściwość umożliwia dostawcy usług użycie protokołu TCP proxy v2 do pobrania informacji o połączeniu z klientem usługi. Dostawca usług jest odpowiedzialny za konfigurowanie konfiguracji odbiorników, aby mogli analizować nagłówek protokołu proxy w wersji 2.        |
 |||
 
 
@@ -95,14 +96,28 @@ Konsumenci mający wpływ (kontrolowany przez ustawienie widoczności) do usług
 
 Akcję zatwierdzania połączeń można zautomatyzować za pomocą właściwości automatycznego zatwierdzania w usłudze link prywatny. Automatyczne zatwierdzanie umożliwia dostawcom usług wstępne zatwierdzenie zestawu subskrypcji w celu automatycznego dostępu do ich usługi. Klienci będą musieli udostępnić swoje subskrypcje w trybie offline dla dostawców usług, aby dodać je do listy autozatwierdzania. Autozatwierdzanie jest podzbiorem tablicy widoczności. Widoczność kontroluje ustawienia ekspozycji, podczas gdy autozatwierdzanie kontroluje ustawienia zatwierdzenia dla usługi. Jeśli klient zażąda połączenia z subskrypcji na liście automatycznego zatwierdzania, połączenie zostanie automatycznie zatwierdzone i zostanie nawiązane połączenie. Dostawcy usług nie muszą już ręcznie zatwierdzać żądania. Z drugiej strony, jeśli klient zażąda połączenia z subskrypcji w tablicy widoczność, a nie w tablicy autozatwierdzania, żądanie zostanie wysłane do dostawcy usługi, ale dostawca usług musi ręcznie zatwierdzić połączenia.
 
+## <a name="getting-connection-information-using-tcp-proxy-v2"></a>Uzyskiwanie informacji o połączeniu przy użyciu serwera proxy TCP v2
+
+W przypadku korzystania z usługi link prywatny źródłowy adres IP pakietów pochodzących z prywatnego punktu końcowego jest tłumaczony przez adres sieciowy (NAT) po stronie dostawcy usługi przy użyciu adresu IP NAT przydzielony z sieci wirtualnej dostawcy. W związku z tym aplikacje otrzymują przypisany adres IP translatora adresów sieciowych zamiast rzeczywistego źródłowego adresu IP konsumentów usługi. Jeśli aplikacja wymaga rzeczywistego źródłowego adresu IP po stronie klienta, możesz włączyć protokół proxy w usłudze i pobrać informacje z nagłówka protokołu proxy. Oprócz źródłowego adresu IP nagłówek protokołu proxy również zawiera LinkID prywatnego punktu końcowego. Kombinacja źródłowych adresów IP i LinkID może pomóc dostawcom usług w unikatowym identyfikowaniu swoich klientów. Więcej informacji o protokole proxy można znaleźć tutaj. 
+
+Te informacje są kodowane przy użyciu niestandardowego wektora długości typu (TLV) w następujący sposób:
+
+Szczegóły niestandardowego TLV:
+
+|Pole |Długość (oktety)  |Opis  |
+|---------|---------|----------|
+|Typ  |1        |PP2_TYPE_AZURE (0xEE)|
+|Długość  |2      |Długość wartości|
+|Wartość  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
+|  |4        |UINT32 (4 bajty) reprezentujący LINKID prywatnego punktu końcowego. Zakodowane w formacie little endian.|
+
+
 ## <a name="limitations"></a>Ograniczenia
 
 Poniżej przedstawiono znane ograniczenia dotyczące korzystania z usługi link prywatny:
 - Obsługiwane tylko na usługa Load Balancer w warstwie Standardowa 
 - Obsługuje tylko ruch IPv4
 - Obsługuje tylko ruch TCP
-- Tworzenie i zarządzanie doświadczeniem z Azure Portal nie jest obsługiwane
-- Informacje o połączeniu klientów przy użyciu protokołu proxy nie są dostępne dla dostawcy usług
 
 ## <a name="next-steps"></a>Następne kroki
 - [Tworzenie usługi linku prywatnego przy użyciu Azure PowerShell](create-private-link-service-powershell.md)

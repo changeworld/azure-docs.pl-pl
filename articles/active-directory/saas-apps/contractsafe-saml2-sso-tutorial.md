@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4f625999ff9cbdad6aeefb662e39a6b30a1881
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291536"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185630"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Samouczek: integracja Azure Active Directory logowania jednokrotnego (SSO) z usługą ContractSafe SAML2 Logowanie jednokrotne
 
@@ -85,7 +85,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne w usłudze Azu
     b. W polu tekstowym **adres URL odpowiedzi** wprowadź adres URL, używając następującego formatu: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
     > [!NOTE]
-    > To nie są rzeczywiste wartości. Należy je zastąpić rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Aby uzyskać te wartości, skontaktuj się z [zespołem obsługi klienta rejestracji jednokrotnej ContractSafe SAML2](mailto:donne@contractsafe.com) . Można również odnieść się do formatów przedstawionych w sekcji podstawowe informacje o **konfiguracji SAML** w Azure Portal.
+    > To nie są rzeczywiste wartości. Należy je zastąpić rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Aby uzyskać te wartości, skontaktuj się z [zespołem obsługi klienta rejestracji jednokrotnej ContractSafe SAML2](mailto:support@contractsafe.com) . Można również odnieść się do formatów przedstawionych w sekcji podstawowe informacje o **konfiguracji SAML** w Azure Portal.
 
 1. ContractSafe SAML2 Logowanie jednokrotne oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
@@ -93,7 +93,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne w usłudze Azu
 
 1. Oprócz atrybutów domyślnych aplikacja ContractSafe SAML2 SSO oczekuje kilku atrybutów do przekazania z powrotem do odpowiedzi SAML. Te atrybuty są wstępnie wypełnione, ale można je przejrzeć zgodnie z wymaganiami. Poniższa lista zawiera dodatkowe atrybuty.
 
-    | Nazwa | Atrybut źródłowy|
+    | Name (Nazwa) | Atrybut źródłowy|
     | ---------------| --------------- |
     | adres e-mail | user.userprincipalname |
     | e-mail | User. onpremisesuserprincipalname |
@@ -138,17 +138,17 @@ W tej sekcji włączysz funkcję **B. Simon** do korzystania z logowania jednokr
 
 ## <a name="configure-contractsafe-saml2-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze ContractSafe SAML2
 
-Aby skonfigurować Logowanie jednokrotne na stronie logowania jednokrotnego w usłudze **ContractSafe SAML2** , należy wysłać pobrany **kod XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej rejestracji jednokrotnej ContractSafe SAML2](mailto:donne@contractsafe.com). Zespół jest odpowiedzialny za prawidłowe skonfigurowanie połączenia SSO protokołu SAML na obu stronach.
+Aby skonfigurować Logowanie jednokrotne na stronie logowania jednokrotnego w usłudze **ContractSafe SAML2** , należy wysłać pobrany **kod XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej rejestracji jednokrotnej ContractSafe SAML2](mailto:support@contractsafe.com). Zespół jest odpowiedzialny za prawidłowe skonfigurowanie połączenia SSO protokołu SAML na obu stronach.
 
 ## <a name="create-a-contractsafe-saml2-sso-test-user"></a>Tworzenie użytkownika testowego logowania jednokrotnego w usłudze ContractSafe SAML2
 
-Utwórz użytkownika o nazwie B. Simon w usłudze ContractSafe SAML2 SSO. Współpracuj z [zespołem obsługi rejestracji jednokrotnej ContractSafe SAML2](mailto:donne@contractsafe.com) , aby dodać użytkowników na platformie CONTRACTSAFE SAML2 SSO. Przed użyciem logowania jednokrotnego należy utworzyć i aktywować użytkowników.
+Utwórz użytkownika o nazwie B. Simon w usłudze ContractSafe SAML2 SSO. Współpracuj z [zespołem obsługi rejestracji jednokrotnej ContractSafe SAML2](mailto:support@contractsafe.com) , aby dodać użytkowników na platformie CONTRACTSAFE SAML2 SSO. Przed użyciem logowania jednokrotnego należy utworzyć i aktywować użytkowników.
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne
 
 Przetestuj konfigurację rejestracji jednokrotnej usługi Azure AD za pomocą panelu dostępu. Po wybraniu kafelka SSO usługi ContractSafe SAML2 w panelu dostępu należy automatycznie zalogować się do usługi ContractSafe SAML2 SSO, dla której skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

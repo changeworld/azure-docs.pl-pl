@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: c504e2f574970142942945de5a0a9fb409bb166b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498311"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188717"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Czas wygaśnięcia (TTL) w Azure Cosmos DB 
 
@@ -44,9 +44,7 @@ Wartość czasu wygaśnięcia jest ustawiana w sekundach i interpretowana jako D
 
 * Jeśli wartość czasu wygaśnięcia nie jest ustawiona w kontenerze, czas wygaśnięcia dla elementu w tym kontenerze nie ma żadnego wpływu. 
 
-* Jeśli wartość czasu wygaśnięcia dla kontenera wynosi-1, element w tym kontenerze, który ma wartość czasu wygaśnięcia ustawioną na n, utraci ważność po n sekundach, a pozostałe elementy nie wygasną. 
-
-Usuwanie elementów na podstawie czasu wygaśnięcia jest bezpłatne. Nie ma dodatkowych kosztów (oznacza to, że nie są używane żadne dodatkowe jednostek ru), gdy element zostanie usunięty z powodu wygaśnięcia czasu wygaśnięcia (TTL).
+* Jeśli wartość czasu wygaśnięcia dla kontenera wynosi-1, element w tym kontenerze, który ma wartość czasu wygaśnięcia ustawioną na n, utraci ważność po n sekundach, a pozostałe elementy nie wygasną.
 
 ## <a name="examples"></a>Przykłady
 
@@ -60,7 +58,7 @@ Wartość parametru TTL w kontenerze ma wartość null (DefaultTimeToLive = null
 |---|---|
 |TTL = null|    Czas wygaśnięcia jest wyłączony. Element nigdy nie wygaśnie (domyślnie).|
 |czas wygaśnięcia =-1   |Czas wygaśnięcia jest wyłączony. Element nigdy nie wygaśnie.|
-|czas wygaśnięcia = 2000 |Czas wygaśnięcia jest wyłączony. Element nigdy nie wygaśnie.|
+|ttl = 2000 |Czas wygaśnięcia jest wyłączony. Element nigdy nie wygaśnie.|
 
 
 ### <a name="example-2"></a>Przykład 2
@@ -71,7 +69,7 @@ Wartość parametru TTL w kontenerze jest ustawiona na-1 (DefaultTimeToLive =-1)
 |---|---|
 |TTL = null |Czas wygaśnięcia jest włączony. Element nigdy nie wygaśnie (domyślnie).|
 |czas wygaśnięcia =-1   |Czas wygaśnięcia jest włączony. Element nigdy nie wygaśnie.|
-|czas wygaśnięcia = 2000 |Czas wygaśnięcia jest włączony. Element wygaśnie po upływie 2000 sekund.|
+|ttl = 2000 |Czas wygaśnięcia jest włączony. Element wygaśnie po upływie 2000 sekund.|
 
 
 ### <a name="example-3"></a>Przykład 3
@@ -82,7 +80,7 @@ Wartość parametru TTL w kontenerze jest ustawiona na 1000 (DefaultTimeToLive =
 |---|---|
 |TTL = null|    Czas wygaśnięcia jest włączony. Element wygaśnie po 1000 sekundach (wartość domyślna).|
 |czas wygaśnięcia =-1   |Czas wygaśnięcia jest włączony. Element nigdy nie wygaśnie.|
-|czas wygaśnięcia = 2000 |Czas wygaśnięcia jest włączony. Element wygaśnie po upływie 2000 sekund.|
+|ttl = 2000 |Czas wygaśnięcia jest włączony. Element wygaśnie po upływie 2000 sekund.|
 
 ## <a name="next-steps"></a>Następne kroki
 

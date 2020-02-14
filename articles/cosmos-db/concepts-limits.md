@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2cce9cbe20121376ad77692773df1d58fcf5257f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: d250cc3c74f27079d633fa24c49eb11b94135ead
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759776"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200048"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Przydziały usługi Azure Cosmos DB
 
@@ -26,10 +26,10 @@ Po utworzeniu konta usługi Azure Cosmos w ramach subskrypcji możesz zarządza�
 | Maksymalna jednostek ru na kontener ([tryb aprowizacji dedykowanej przepustowości](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 domyślnie. Możesz ją zwiększyć, [bilet pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) |
 | Maksymalna liczba jednostek ru na bazę danych ([tryb aprowizacji udostępnionej przepustowości](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 domyślnie. Możesz ją zwiększyć, [bilet pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) |
 | Maksymalny jednostek ru na (logiczny) klucz partycji | 10 000 |
-| Maksymalny rozmiar magazynu dla wszystkich elementów na (logiczne) klucza partycji| 10 GB |
-| Maksymalna liczba różnych (logicznych) kluczy partycji | Bez ograniczeń |
-| Maksymalny rozmiar magazynu na kontener | Bez ograniczeń |
-| Maksymalny rozmiar magazynu na bazę danych | Bez ograniczeń |
+| Maksymalny rozmiar magazynu dla wszystkich elementów na (logiczne) klucza partycji| 10 GB |
+| Maksymalna liczba różnych (logicznych) kluczy partycji | Nieograniczona liczba |
+| Maksymalny rozmiar magazynu na kontener | Nieograniczona liczba |
+| Maksymalny rozmiar magazynu na bazę danych | Nieograniczona liczba |
 | Maksymalny rozmiar załączników na konto (funkcja załącznika jest amortyzowana) | 2 GB |
 | Minimalna jednostek ru wymagana na 1 GB | 10 RU/s |
 
@@ -76,8 +76,8 @@ Cosmos DB automatycznie pobiera kopie zapasowe danych w regularnych odstępach c
 
 | Zasób | Limit domyślny |
 | --- | --- |
-| Maksymalna liczba baz danych | Bez ograniczeń |
-| Maksymalna liczba kontenerów na bazę danych (lub konto) | Bez ograniczeń |
+| Maksymalna liczba baz danych | Nieograniczona liczba |
+| Maksymalna liczba kontenerów, które mogą być udostępniane w bazie danych z udostępnioną przepływność |25 |
 | Maksymalna liczba regionów | Brak limitu (wszystkie regiony platformy Azure) |
 
 ## <a name="per-container-limits"></a>Limity dla kontenerów
@@ -179,7 +179,7 @@ W poniższej tabeli przedstawiono limity dla [Azure Cosmos DB Wypróbuj bezpłat
 | Maksymalna liczba kontenerów na subskrypcję (interfejs API MongoDB) | 3 |
 | Maksymalna przepływność na kontener | 5000 |
 | Maksymalna przepływność na wspólną bazę danych przepływności | 20000 |
-| Maksymalna liczba magazynów na konto | 10 GB |
+| Maksymalna liczba magazynów na konto | 10 GB |
 
 Wypróbuj Cosmos DB obsługuje dystrybucję globalną tylko w regionach Środkowe stany USA, Europa Północna i Azja Południowo-Wschodnia. Nie można utworzyć biletów pomocy technicznej systemu Azure dla usług try Azure Cosmos DB. Jednak pomoc techniczna jest świadczona dla subskrybentów z istniejącymi planami pomocy technicznej.
 

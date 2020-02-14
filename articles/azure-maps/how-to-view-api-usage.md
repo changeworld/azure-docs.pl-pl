@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7ba50f63fb015a8696904df3decd13c811625459
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cd60552abf247f448acdaad700396dca0cd1a1f7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911335"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198126"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Wyświetlanie metryk użycia interfejsu API usługi Azure Maps
 
-W tym artykule pokazano, jak wyświetlić metryki użycia interfejsu API dla konta Azure Maps w [portalu](https://portal.azure.com). Metryki są wyświetlane w wygodnym formacie grafu, co umożliwia dostosowanie czasu trwania.
+W tym artykule pokazano, jak wyświetlić metryki użycia interfejsu API dla konta Azure Maps w [Azure Portal](https://portal.azure.com). Metryki są wyświetlane w wygodnym formacie grafu, co umożliwia dostosowanie czasu trwania.
 
 ## <a name="view-metric-snapshot"></a>Wyświetl migawkę metryki
 
@@ -35,7 +35,7 @@ Przejdź do następnej sekcji, jeśli chcesz dostosować te wykresy do konkretne
 
 3. Po otwarciu konta Maps kliknij menu **metryki** po lewej stronie.
 
-4. W okienku **metryki** wybierz jeden z następujących elementów:
+4. W okienku **metryki** wybierz jedną z następujących opcji:
 
    1. **Dostępność** — który pokazuje *ŚREDNIĄ* dostępność interfejsu API w danym okresie czasu.
    2. **Użycie** — pokazuje, jak *licznik* użycia dla Twojego konta.
@@ -46,11 +46,11 @@ Przejdź do następnej sekcji, jeśli chcesz dostosować te wykresy do konkretne
 
     ![Zakres czasu metryk Azure Maps](media/how-to-view-api-usage/time-range.png)
 
-6. Po dodaniu metryki można **dodać filtr** spośród właściwości odpowiednich do tej metryki, a następnie wybrać wartość właściwości, dla której ma zostać wyświetlony wykres.
+6. Po dodaniu metryki możesz **dodać filtr** z właściwości odpowiednich dla tej metryki. Następnie wybierz wartość właściwości, która ma być widoczna na grafie.
 
     ![Filtr metryk użycia Azure Maps](media/how-to-view-api-usage/filter.png)
 
-7. Możesz również **zastosować dzielenie** dla metryki na podstawie wybranej właściwości metryki. Pozwala to na dzielenie grafu na wiele wykresów, po jednym dla każdej wartości tej właściwości. Na poniższej ilustracji kolor każdego wykresu odpowiada wartości właściwości widocznej w dolnej części wykresu.
+7. Możesz również **zastosować dzielenie** dla metryki na podstawie wybranej właściwości metryki. Umożliwia to dzielenie wykresu na wiele wykresów, dla każdej wartości tej właściwości. Na poniższej ilustracji kolor każdego wykresu odpowiada wartości właściwości widocznej w dolnej części wykresu.
 
     ![Dzielenie metryk użycia Azure Maps](media/how-to-view-api-usage/splitting.png)
 

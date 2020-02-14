@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: cb182a5db77a517b11fb1863665f8c54d58b254a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911572"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198228"
 ---
 # <a name="how-to-use-image-templates"></a>Jak używać szablonów obrazów
 
@@ -24,7 +24,7 @@ Obrazy mogą być używane ze znacznikami HTML i różnymi warstwami w Azure Map
  - Warstwy wielokątów mogą być renderowane przy użyciu obrazu deseniu wypełnienia. 
  - Znaczniki HTML mogą renderować punkty przy użyciu obrazów i innych elementów HTML.
 
-Aby zapewnić dobrą wydajność przy użyciu warstw, te obrazy muszą zostać załadowane do zasobu mapy ikon obrazu przed renderowaniem. [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions) SymbolLayer wstępnie ładuje kilka obrazów znaczników w kilkue kolory do ikon obrazu mapy domyślnie. Te same obrazy znaczników i inne są dostępne jako szablony SVG i mogą być używane do tworzenia obrazów z skalami niestandardowymi, a także kolorem podstawowym i pomocniczym klienta. W sumie dostępne są 42 szablony obrazów; 27 ikon symboli i 15 wzorców wypełnienia wielokąta.
+Aby zapewnić dobrą wydajność przy użyciu warstw, Załaduj obrazy do zasobu mapy Sprite Image przed renderowaniem. [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions), SymbolLayer, wstępnie ładuje kilka obrazów znaczników w kilkuie kolorów do ikon obrazu mapy. Te obrazy znaczników i inne są dostępne jako szablony SVG. Mogą służyć do tworzenia obrazów z niestandardowymi skalami lub używany jako kolor podstawowy i pomocniczy klienta. W sumie dostępne są 42 szablony obrazów: 27 ikon symboli i 15 wielokątów wypełnienia.
 
 Szablony obrazów można dodawać do zasobów Sprite obrazu mapy za pomocą funkcji `map.imageSprite.createFromTemplate`. Ta funkcja umożliwia przekazanie maksymalnie pięciu parametrów;
 
@@ -32,9 +32,9 @@ Szablony obrazów można dodawać do zasobów Sprite obrazu mapy za pomocą funk
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-gdzie `id` jest unikatowym identyfikatorem tworzonym do obrazu, gdy zostanie on dodany do ikon obrazu mapy. Użyj tego identyfikatora w warstwach, aby określić, który zasób obrazu ma być renderowany. `templateName` Określa szablon obrazu, który ma być używany. Opcja `color` ustawia kolor podstawowy obrazu, a opcje `secondaryColor` ustawia kolor pomocniczy obrazu. Opcja `scale` skaluje szablon obrazu przed zastosowaniem go do ikonki obrazu. Gdy obraz zostanie zastosowany do ikon obrazu, jest konwertowany na PNG. Aby zapewnić wyraźne renderowanie, lepiej skalować szablon obrazu przed dodaniem go do Sprite, aby skalować go w warstwie.
+`id` jest tworzonym unikatowym identyfikatorem. `id` jest przypisywana do obrazu po jego dodaniu do ikonki obrazu mapy. Użyj tego identyfikatora w warstwach, aby określić, który zasób obrazu ma być renderowany. `templateName` Określa szablon obrazu, który ma być używany. Opcja `color` ustawia kolor podstawowy obrazu, a opcje `secondaryColor` ustawia kolor pomocniczy obrazu. Opcja `scale` skaluje szablon obrazu przed zastosowaniem go do ikonki obrazu. Gdy obraz zostanie zastosowany do ikon obrazu, jest konwertowany na PNG. Aby zapewnić wyraźne renderowanie, lepiej jest skalować szablon obrazu przed dodaniem go do Sprite, niż w celu skalowania go w warstwie.
 
-Ta funkcja asynchronicznie ładuje obraz do ikon obrazu i w ten sposób zwraca obietnicę, która może poczekać na ukończenie tej funkcji.
+Ta funkcja asynchronicznie ładuje obraz do Sprite ikon obrazu. W ten sposób zwraca obietnicę, która może poczekać na ukończenie tej funkcji.
 
 Poniższy kod przedstawia sposób tworzenia obrazu z jednego z wbudowanych szablonów i używania go z warstwą symboli.
 
@@ -106,12 +106,12 @@ Zobacz <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>znacznik HTML pióra p
 
 ## <a name="create-custom-reusable-templates"></a>Tworzenie niestandardowych szablonów do wielokrotnego użytku
 
-Jeśli aplikacja używa tej samej ikony z różnymi ikonami lub jeśli tworzysz moduł, który dodaje dodatkowe szablony obrazów, można łatwo dodawać i pobierać te ikony z Azure Maps Web SDK przy użyciu następujących funkcji statycznych w przestrzeni nazw `atlas`.
+Jeśli aplikacja używa tej samej ikony z różnymi ikonami lub jeśli tworzysz moduł, który dodaje dodatkowe szablony obrazów, możesz łatwo dodać te ikony i pobrać je z zestawu Azure Maps Web SDK. Użyj następujących funkcji statycznych w przestrzeni nazw `atlas`.
 
-| Nazwa | Typ zwracany | Opis | 
+| Name (Nazwa) | Typ zwracany | Opis | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Dodaje niestandardowy szablon obrazu SVG do przestrzeni nazw szczytu. |
-|  `getImageTemplate(templateName: string, scale?: number)`| string | Pobiera szablon SVG według nazwy. |
+|  `getImageTemplate(templateName: string, scale?: number)`| ciąg | Pobiera szablon SVG według nazwy. |
 | `getAllImageTemplateNames()` | string[] |  Pobiera szablon SVG według nazwy. |
 
 Szablony obrazów SVG obsługują następujące wartości zastępcze:
@@ -133,22 +133,22 @@ Zobacz pióro <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>Dodaj niestanda
 
 ## <a name="list-of-image-templates"></a>Lista szablonów obrazów
 
-Poniższa tabela zawiera listę wszystkich szablonów obrazu dostępnych obecnie w Azure Maps Web SDK z nazwą szablonu powyżej każdego obrazu. Domyślnie kolor podstawowy jest niebieski i kolor pomocniczy jest biały. Aby ułatwić wyświetlanie koloru pomocniczego na białym tle, kolor pomocniczy jest ustawiany na czarnym.
+Ta tabela zawiera listę wszystkich szablonów obrazów dostępnych obecnie w Azure Maps Web SDK. Nazwa szablonu znajduje się powyżej każdego obrazu. Domyślnie kolor podstawowy jest niebieski i kolor pomocniczy jest biały. Aby ułatwić wyświetlanie koloru pomocniczego na białym tle, kolor pomocniczy jest ustawiany na czarnym.
 
 **Szablony ikon symboli**
 
 |||||
 |:-:|:-:|:-:|:-:|
-| Obrys | znacznik — gruby | znacznik — okrąg | znacznik — Flat |
+| obrys | znacznik — gruby | znacznik — okrąg | znacznik — Flat |
 |![ikona znacznika](./media/image-templates/marker.png)|![ikona o szerokim znaczniku](./media/image-templates/marker-thick.png)|![znacznik — ikona okręgu](./media/image-templates/marker-circle.png)|![znacznik — ikona płaska](./media/image-templates/marker-flat.png)|
 ||||
 | znacznik — kwadrat | znacznik — kwadrat — klaster | znacznik — strzałka | znacznik — piłka — numer PIN | 
 |![znacznik — ikona kwadratu](./media/image-templates/marker-square.png)|![znacznik — prostokąt — ikona klastra](./media/image-templates/marker-square-cluster.png)|![ikona strzałki w dół](./media/image-templates/marker-arrow.png)|![znacznik — piłka — ikona pinezki](./media/image-templates/marker-ball-pin.png)|
 ||||
-| znacznik — zaokrąglony kwadrat | znacznik — zaokrąglony do kwadratu — klaster | flag | Flaga-Trójkąt |
+| znacznik — zaokrąglony kwadrat | znacznik — zaokrąglony do kwadratu — klaster | znacznik | Flaga-Trójkąt |
 | ![znacznik — ikona zaokrąglona kwadratowo](./media/image-templates/marker-square-rounded.png) | ![znacznik — zaokrąglony prostokąt-ikona klastra](./media/image-templates/marker-square-rounded-cluster.png) | ![ikona flagi](./media/image-templates/flag.png) | ![ikona trójkąta flaga](./media/image-templates/flag-triangle.png) |
 ||||
-| trójkąt | Trójkąt — gruby | Trójkąt — Strzałka w górę | Trójkąt — Strzałka w lewo |
+| widoczny | Trójkąt — gruby | Trójkąt — Strzałka w górę | Trójkąt — Strzałka w lewo |
 | ![ikona trójkąta](./media/image-templates/triangle.png) | ![ikona o szerokim trójkącie](./media/image-templates/triangle-thick.png) | ![Trójkąt — ikona strzałki w górę](./media/image-templates/triangle-arrow-up.png) | ![Trójkąt-Strzałka w lewo](./media/image-templates/triangle-arrow-left.png) |
 ||||
 | sześciokąt | sześciokątny | zaokrąglony | sześciokąt — zaokrąglony |
@@ -157,7 +157,7 @@ Poniższa tabela zawiera listę wszystkich szablonów obrazu dostępnych obecnie
 | Kod PIN | kod PIN — Zaokrąglij | zaokrąglony kwadrat | zaokrąglona-kwadratowa |
 | ![ikona przypinania](./media/image-templates/pin.png) | ![ikona z zaokrągleniem numeru PIN](./media/image-templates/pin-round.png) | ![ikona zaokrąglony kwadrat](./media/image-templates/rounded-square.png) | ![ikona o zaokrąglonej grubości kwadratowej](./media/image-templates/rounded-square-thick.png) |
 ||||
-| Strzałka w górę | Strzałka w górę — cienka | car ||
+| Strzałka w górę | Strzałka w górę — cienka | samochód ||
 | ![ikona strzałki w górę](./media/image-templates/arrow-up.png) | ![Strzałka w górę — ikona cienkiej](./media/image-templates/arrow-up-thin.png) | ![ikona samochodu](./media/image-templates/car.png) | |
 
 **Szablony deseni wypełnienia wielokąta**

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 797475bfe0f1ec077ad39c6fce1f0facdf679802
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483464"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195066"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurowanie zarządzania sesjami uwierzytelniania przy użyciu dostępu warunkowego
 
@@ -49,7 +49,24 @@ Ustawienie częstotliwości logowania działa z aplikacjami, które mają wdroż
 - Program SharePoint i usługa OneDrive
 - Klient sieci Web dla zespołów
 - Dynamics CRM Online
-- Azure Portal
+- Portalu Azure
+
+### <a name="user-sign-in-frequency-and-device-identities"></a>Częstotliwość logowania użytkownika i tożsamości urządzeń
+
+W przypadku przyłączenia do usługi Azure AD hybrydowej usługi Azure AD lub zarejestrowanych urządzeń usługi Azure AD, gdy użytkownik odblokowuje urządzenie lub loguje się interaktywnie, to zdarzenie będzie również spełniało zasady częstotliwości logowania. W następującej 2 Przykładowa częstotliwość logowania użytkownika jest ustawiona na 1 godzinę:
+
+Przykład 1:
+
+- W dniu 00:00 użytkownik loguje się do urządzenia dołączonego do usługi Azure AD systemu Windows 10 i zaczyna pracę nad dokumentem przechowywanym w usłudze SharePoint Online.
+- Użytkownik kontynuuje pracę nad tym samym dokumentem na swoim urządzeniu przez godzinę.
+- W dniu 01:00 użytkownik jest monitowany o ponowne zalogowanie się na podstawie wymagań dotyczących częstotliwości logowania w zasadach dostępu warunkowego skonfigurowanych przez administratora.
+
+Przykład 2:
+
+- W dniu 00:00 użytkownik loguje się do urządzenia dołączonego do usługi Azure AD systemu Windows 10 i zaczyna pracę nad dokumentem przechowywanym w usłudze SharePoint Online.
+- O godzinie 00:30 użytkownik otrzymuje i zablokuje zablokowanie urządzenia.
+- O 00:45 użytkownik wraca z ich przerw i odblokowuje urządzenie.
+- W dniu 01:45 użytkownik jest monitowany o ponowne zalogowanie się na podstawie wymagań dotyczących częstotliwości logowania w zasadach dostępu warunkowego skonfigurowanych przez ich administratora od momentu ostatniego zalogowania się o 00:45.
 
 ## <a name="persistence-of-browsing-sessions"></a>Trwałość sesji przeglądania
 
@@ -67,7 +84,7 @@ Dostęp warunkowy jest możliwością Azure AD — wersja Premium i wymaga licen
 
 ### <a name="policy-1-sign-in-frequency-control"></a>Zasady 1: kontrola częstotliwości logowania
 
-1. Utwórz nowe zasady
+1. Tworzenie nowych zasad
 1. Wybierz wszystkie wymagane warunki dla środowiska klienta, w tym docelowe aplikacje w chmurze.
 
    > [!NOTE]
@@ -86,7 +103,7 @@ Jeśli skonfigurowano inną częstotliwość logowania dla różnych aplikacji s
 
 ### <a name="policy-2-persistent-browser-session"></a>Zasady 2: nietrwała sesja przeglądarki
 
-1. Utwórz nowe zasady
+1. Tworzenie nowych zasad
 1. Wybierz wszystkie wymagane warunki.
 
    > [!NOTE]

@@ -1,6 +1,6 @@
 ---
-title: Rozwiązania StorSimple Virtual Array awaryjnego odzyskiwania urządzenia trybu failover i | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej na temat trybu failover rozwiązania StorSimple Virtual Array.
+title: Odzyskiwanie po awarii macierzy wirtualnej StorSimple i przełączanie do trybu failover urządzenia | Microsoft Docs
+description: Dowiedz się więcej na temat przełączania do trybu failover macierzy wirtualnej StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,170 +15,170 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be3d98dc0b3a8119fb853493440c6fc78d65c5a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19a676f4187af2d358934539e4ca29dbc5c25897
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61409624"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190635"
 ---
-# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Awaryjnego odzyskiwania i urządzenia w trybie failover rozwiązania StorSimple Virtual Array za pośrednictwem witryny Azure portal
+# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Odzyskiwanie po awarii i tryb failover urządzenia dla macierzy wirtualnej StorSimple za pośrednictwem Azure Portal
 
 ## <a name="overview"></a>Omówienie
-W tym artykule opisano odzyskiwania po awarii dla usługi Microsoft Azure StorSimple Virtual Array szczegółowe instrukcje zostały podane w tym do trybu failover do innej macierzy wirtualnej. Tryb failover umożliwia przenoszenie danych z *źródła* urządzenia w centrum danych, aby *docelowej* urządzenia. Urządzenie docelowe może znajdować się w tej samej lub innej lokalizacji geograficznej. Tryb failover urządzenia dotyczy całego urządzenia. Podczas pracy w trybie failover danych w chmurze dla urządzenia źródłowego zmiany prawa własności do tego urządzenia docelowego.
+W tym artykule opisano odzyskiwanie po awarii dla Microsoft Azure StorSimple macierzy wirtualnej, w tym szczegółowe kroki umożliwiające przełączenie w tryb failover do innej macierzy wirtualnej. W trybie failover można przenieść dane z urządzenia *źródłowego* w centrum danych na urządzenie *docelowe* . Urządzenie docelowe może znajdować się w tej samej lub innej lokalizacji geograficznej. Tryb failover urządzenia jest przeznaczony dla całego urządzenia. Podczas pracy w trybie failover dane w chmurze dla urządzenia źródłowego zmieniają własność na urządzenie docelowe.
 
-Ten artykuł dotyczy macierze wirtualne StorSimple tylko. Do trybu failover urządzenia z serii 8000, przejdź do [urządzenia trybu failover i odzyskiwanie po awarii urządzenia StorSimple](storsimple-device-failover-disaster-recovery.md).
+Ten artykuł dotyczy tylko tablic wirtualnych StorSimple. Aby przełączyć urządzenie z serii 8000, przejdź do [trybu failover urządzenia i odzyskiwanie po awarii urządzenia StorSimple](storsimple-device-failover-disaster-recovery.md).
 
-## <a name="what-is-disaster-recovery-and-device-failover"></a>Co to jest tryb failover odzyskiwania i urządzenia po awarii?
+## <a name="what-is-disaster-recovery-and-device-failover"></a>Co to jest odzyskiwanie po awarii i tryb failover urządzenia?
 
-W scenariuszu odzyskiwania po awarii (DR) urządzenie podstawowe przestanie działać. W tym scenariuszu można przenieść danych skojarzone z urządzeniem nie powiodło się na inne urządzenie w chmurze. Można użyć urządzenie podstawowe jako *źródła* i określ innego urządzenia jako *docelowej*. Ten proces jest nazywany *trybu failover*. Podczas pracy w trybie failover wszystkie woluminy lub udziały z urządzenia źródłowego zmieniają właściciela i zostają przekazane na urządzeniu docelowym. Dozwolone jest nie filtrowania danych.
+W scenariuszu odzyskiwania po awarii urządzenie podstawowe przestaje działać. W tym scenariuszu dane w chmurze powiązane z urządzeniem zakończonym niepowodzeniem można przenieść na inne urządzenie. Urządzenia podstawowego można użyć jako *źródła* i określić inne urządzenie jako *element docelowy*. Ten proces jest określany jako *tryb failover*. Podczas pracy w trybie failover wszystkie woluminy lub udziały z urządzenia źródłowego zmieniają własność i są transferowane do urządzenia docelowego. Filtrowanie danych nie jest dozwolone.
 
-Odzyskiwanie po awarii jest modelowane jako Przywracanie pełnej urządzenia przy użyciu częstości dostępu oparte na mapie warstw i śledzenia. Mapa cieplna jest definiowany przez przypisywanie wartości częstości dostępu do danych na podstawie na odczyt i zapis wzorców. Ta ciepła mapy następnie warstwy najniższy fragmentów danych częstości dostępu do chmury najpierw przy jednoczesnym zachowaniu ciepło (najczęściej używane) fragmentów danych w warstwie lokalnej. Podczas odzyskiwania po awarii usługa StorSimple używa Mapa cieplna, aby przywrócić i przywrócenia z magazynu trwałego danych z chmury. Urządzenie pobiera wszystkich woluminów/udziałów w ostatnim ostatniej kopii zapasowej (zgodnie z określoną wewnętrznie) i wykonuje przywracanie z tej kopii zapasowej. Macierz wirtualna organizuje cały proces odzyskiwania po awarii.
+Program DR jest modelowany jako pełne przywracanie urządzenia przy użyciu warstwowych i śledzenia opartych na mapie cieplnej. Mapa cieplna jest definiowana przez przypisanie wartości cieplnej do danych na podstawie wzorców odczytu i zapisu. Ta mapa cieplna powoduje, że najpierw warstwy najniższych fragmentów danych ciepła do chmury przy zachowaniu dużej ilości danych w warstwie lokalnej. Podczas odzyskiwania po awarii program StorSimple używa mapy cieplnej do przywracania i dehydratacji danych z chmury. Urządzenie pobiera wszystkie woluminy/udziały w ostatniej najnowszej kopii zapasowej (zgodnie z definicją wewnętrznie) i wykonuje przywracanie z tej kopii zapasowej. Macierz wirtualna organizuje cały proces odzyskiwania po awarii.
 
 > [!IMPORTANT]
-> Urządzenie źródłowe jest usuwany po zakończeniu trybu failover urządzenia i dlatego nie jest obsługiwana podczas powrotu po awarii.
+> Urządzenie źródłowe zostało usunięte po zakończeniu pracy w trybie failover, a więc powrót po awarii nie jest obsługiwany.
 > 
 > 
 
-Odzyskiwanie po awarii jest zorganizowanych za pośrednictwem funkcji trybu failover urządzenia i jest inicjowane z **urządzeń** bloku. Ten blok rejestruje wszystkie urządzenia StorSimple połączoną z usługą Menedżera urządzeń StorSimple. Dla każdego urządzenia widać, przyjazna nazwa, stan, elastycznie i maksymalną pojemność, typ i modelu.
+Odzyskiwanie po awarii jest zorganizowane przez funkcję przełączania do trybu failover urządzenia i jest inicjowane z bloku **urządzenia** . Ten blok umożliwia tabulację wszystkich urządzeń StorSimple podłączonych do usługi StorSimple Menedżer urządzeń. Dla każdego urządzenia można wyświetlić przyjazną nazwę, stan, zainicjowaną i maksymalną pojemność, typ i model.
 
-## <a name="prerequisites-for-device-failover"></a>Wymagania wstępne dotyczące urządzenia w tryb failover
+## <a name="prerequisites-for-device-failover"></a>Wymagania wstępne dotyczące przełączenia urządzenia w tryb failover
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Przejścia w tryb failover urządzenia upewnij się, że są spełnione następujące wymagania wstępne:
+W przypadku przełączenia urządzenia w tryb failover upewnij się, że spełnione są następujące wymagania wstępne:
 
-* Urządzenie źródłowe musi być zapisana w **Deactivated** stanu.
-* Na urządzeniu docelowym musi stanowić **gotowe do skonfigurowania** w witrynie Azure portal. Aprowizowanie macierzy wirtualnej docelowego o tej samej lub większej pojemności. Aby skonfigurować i pomyślnie zarejestrować macierz wirtualną w docelowej, należy użyć lokalnego Interfejsu w przeglądarce.
+* Urządzenie źródłowe musi być w stanie **dezaktywowania** .
+* Urządzenie docelowe musi być widoczne jako **gotowe do skonfigurowania** w Azure Portal. Zainicjuj obsługę docelowej macierzy wirtualnej o tej samej lub większej pojemności. Użyj lokalnego interfejsu użytkownika sieci Web do skonfigurowania i pomyślnego zarejestrowania docelowej macierzy wirtualnej.
   
   > [!IMPORTANT]
-  > Nie należy próbować skonfigurować zarejestrowane urządzenia wirtualnego za pośrednictwem usługi. Konfiguracja urządzenia nie powinno być przeprowadzane za pośrednictwem usługi.
+  > Nie należy próbować konfigurować zarejestrowanego urządzenia wirtualnego za pomocą usługi. Żadna konfiguracja urządzenia nie powinna być wykonywana przez usługę.
   > 
   > 
-* Na urządzeniu docelowym nie może mieć taką samą nazwę jak urządzenie źródłowe.
-* Urządzenie źródłowe i docelowe muszą być tego samego typu. Można jedynie przejścia w tryb failover macierzy wirtualnej skonfigurowany jako serwer plików do innego serwera plików. Dotyczy to na serwerze iSCSI.
-* Dla serwera plików odzyskiwania po awarii zaleca się przyłączyć urządzenie docelowe do tej samej domenie co źródłowy. Ta konfiguracja gwarantuje, że uprawnienia udziału zostały automatycznie rozwiązane. Tylko tryb failover na urządzeniu docelowym w tej samej domenie.
-* Te urządzenia dostępne do odzyskiwania po awarii są urządzeń o takiej samej lub większej pojemności w porównaniu do urządzenia źródłowego. Urządzenia, które są połączone z usługą, ale nie spełniają kryteriów wystarczającej ilości miejsca, nie są dostępne jako urządzenia docelowe.
+* Urządzenie docelowe nie może mieć takiej samej nazwy jak urządzenie źródłowe.
+* Urządzenie źródłowe i docelowe muszą być tego samego typu. Można przełączyć się w tryb failover macierzy wirtualnej skonfigurowanej jako serwer plików do innego serwera plików. Ta sama wartość dotyczy serwera iSCSI.
+* W przypadku serwera plików DR zaleca się dołączenie urządzenia docelowego do tej samej domeny, co źródło. Ta konfiguracja gwarantuje, że uprawnienia udziału są automatycznie rozwiązywane. Obsługiwane jest tylko przejście w tryb failover do urządzenia docelowego w tej samej domenie.
+* Dostępne urządzenia docelowe dla odzyskiwania po awarii to urządzenia o tej samej lub większej pojemności w porównaniu z urządzeniem źródłowym. Urządzenia, które są połączone z usługą, ale nie spełniają kryteriów wystarczającej ilości miejsca, nie są dostępne jako urządzenia docelowe.
 
 ### <a name="other-considerations"></a>Inne zagadnienia
 
-* Do planowanego trybu failover 
+* W przypadku planowanego przejścia w tryb failover:
   
-  * Zaleca się wykonać wszystkie woluminy lub udziały na urządzeniu źródłowym w trybie offline.
-  * Firma Microsoft zaleca tworzenie kopii zapasowej urządzenia, a następnie kontynuować pracy w trybie failover, aby zminimalizować ryzyko utraty danych. 
-* W przypadku nieplanowanego trybu failover urządzenie używa najnowszej kopii zapasowej do przywrócenia danych.
+  * Zalecamy, aby wszystkie woluminy lub udziały na urządzeniu źródłowym zostały przełączony do trybu offline.
+  * Zalecamy wykonanie kopii zapasowej urządzenia, a następnie przejście do trybu failover w celu zminimalizowania utraty danych.
+* W przypadku nieplanowanego przejścia w tryb failover urządzenie używa najnowszej kopii zapasowej do przywracania danych.
 
-### <a name="device-failover-prechecks"></a>Prechecks trybu failover urządzenia
+### <a name="device-failover-prechecks"></a>Sprawdzanie przed przełączeniem do trybu failover urządzenia
 
-Przed rozpoczęciem odzyskiwania po awarii, urządzenie wykonuje prechecks. Te sprawdzenia pomoc, upewnij się, że nie występują błędy podczas odzyskiwania po awarii zaczyna. Prechecks obejmują:
+Przed rozpoczęciem odzyskiwania po awarii urządzenie wykonuje presprawdzanie. Te kontrole zapewniają, że nie występują żadne błędy po rozpoczęciu odzyskiwania. Sprawdzenia są następujące:
 
 * Sprawdzanie poprawności konta magazynu.
-* Sprawdzanie łączności chmury na platformie Azure.
-* Sprawdzanie wolnego miejsca na urządzeniu docelowym.
-* Sprawdzanie, czy ma woluminie urządzenia źródłowy serwer iSCSI
+* Sprawdzanie łączności z chmurą z platformą Azure.
+* Sprawdzanie dostępnego miejsca na urządzeniu docelowym.
+* Sprawdzanie, czy wolumin urządzenia źródłowego serwera iSCSI ma
   
-  * Prawidłowe nazwy rejestru Azure container Registry.
-  * prawidłową nazwę IQN (nie przekraczającą 220 znaków).
-  * Nieprawidłowa haseł protokołu CHAP (maksymalnie 12 – 16 znaków).
+  * prawidłowe nazwy ACR.
+  * prawidłowa nazwa IQN (nie przekracza 220 znaków).
+  * prawidłowe hasła protokołu CHAP (liczba znaków: 12-16).
 
-Jeśli dowolny z poprzednim prechecks kończyć się niepowodzeniem, nie można kontynuować odzyskiwania po awarii. Rozwiąż te problemy, a następnie ponów próbę odzyskiwania po awarii.
+Jeśli którykolwiek z poprzednich sprawdzania nie powiedzie się, nie można kontynuować wykonywania operacji odzyskiwania po awarii. Rozwiąż te problemy, a następnie ponów próbę wykonania operacji odzyskiwania po awarii.
 
-Po pomyślnym zakończeniu DR, własności danych w chmurze na urządzeniu źródłowym jest przekazywany do urządzenia docelowego. Urządzenie źródłowe następnie nie jest już dostępne w portalu. To zablokowanie dostępu do wszystkich woluminów/udziałów na urządzenie źródłowe i docelowe urządzenie stanie się aktywny.
-
-> [!IMPORTANT]
-> Jeśli urządzenie nie jest już dostępna, maszyna wirtualna aprowizowana przez Ciebie w systemie hosta jest nadal zużywają zasoby. Gdy DR zostanie ukończone pomyślnie, można usunąć tej maszyny wirtualnej w systemie hosta.
-> 
-> 
-
-## <a name="fail-over-to-a-virtual-array"></a>Funkcjonować w trybie awaryjnym macierzy wirtualnej
-
-Zaleca się aprowizowanie, konfigurowanie i rejestrowanie innej macierzy wirtualnej StorSimple przy użyciu usługi Menedżer urządzeń StorSimple, przed rozpoczęciem tej procedury.
+Po pomyślnym zakończeniu odzyskiwania po awarii, własność danych w chmurze na urządzeniu źródłowym zostanie przetransferowana na urządzenie docelowe. Urządzenie źródłowe nie jest już dostępne w portalu. Dostęp do wszystkich woluminów/udziałów na urządzeniu źródłowym jest zablokowany, a urządzenie docelowe zostanie uaktywnione.
 
 > [!IMPORTANT]
+> Chociaż urządzenie nie jest już dostępne, maszyna wirtualna, która została zainicjowana w systemie hosta, nadal zużywa zasoby. Po pomyślnym zakończeniu odzyskiwania po awarii można usunąć tę maszynę wirtualną z systemu hosta.
 > 
-> * Użytkownik nie może przełączyć się z urządzenia StorSimple 8000 series do urządzenia wirtualnego 1200.
-> * Możesz przełączać awaryjnie z urządzenia wirtualnego informacji przetwarzania Standard FIPS (Federal) włączone na innym urządzeniu FIPS włączone lub na urządzeniu — ze standardem FIPS, wdrożone w portalu dla instytucji rządowych.
+> 
+
+## <a name="fail-over-to-a-virtual-array"></a>Przechodzenie w tryb failover do macierzy wirtualnej
+
+Zalecamy, aby przed uruchomieniem tej procedury zainicjować obsługę administracyjną, skonfigurować i zarejestrować kolejną macierz wirtualną StorSimple w usłudze StorSimple Menedżer urządzeń.
+
+> [!IMPORTANT]
+> 
+> * Nie można przejść w tryb failover z urządzenia z serii StorSimple 8000 do urządzenia wirtualnego 1200.
+> * Można przejść w tryb failover z urządzenia wirtualnego z obsługą FIPS (Federal Information Processing Standard) do innego urządzenia z obsługą FIPS lub na urządzenie niezgodne ze standardem FIPS wdrożone w portalu dla instytucji rządowych.
 
 
-Wykonaj poniższe kroki, aby przywrócić urządzenia docelowego urządzenia wirtualnego StorSimple.
+Wykonaj następujące kroki, aby przywrócić urządzenie do docelowego urządzenia wirtualnego StorSimple.
 
-1. Aprowizowanie i konfigurowanie urządzenia docelowego, który spełnia [wymagania wstępne dotyczące urządzenia w tryb failover](#prerequisites). Ukończ konfigurację urządzenia przy użyciu lokalnego Interfejsu w przeglądarce i zarejestruj je do usługi Menedżer urządzeń StorSimple. W przypadku tworzenia serwera plików, przejdź do kroku 1 [skonfigurowany jako serwer plików](storsimple-virtual-array-deploy3-fs-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device). Jeśli tworzenie serwera iSCSI, przejdź do kroku 1 procedury [Konfigurowanie serwera jako serwera iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device).
+1. Inicjowanie obsługi administracyjnej i Konfigurowanie urządzenia docelowego spełniającego [wymagania wstępne dotyczące przełączenia urządzenia w tryb failover](#prerequisites). Zakończ konfigurację urządzenia za pomocą lokalnego interfejsu użytkownika sieci Web i zarejestruj go w usłudze StorSimple Menedżer urządzeń. W przypadku tworzenia serwera plików przejdź do kroku 1 [konfiguracji jako serwer plików](storsimple-virtual-array-deploy3-fs-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device). W przypadku tworzenia serwera iSCSI przejdź do kroku 1 [konfiguracji jako serwer iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md#step-1-complete-the-local-web-ui-setup-and-register-your-device).
 
-2. Podjąć woluminów/udziałów w trybie offline na hoście. Aby móc woluminów/udziałów w trybie offline, zapoznaj się z instrukcjami specyficzne dla systemu operacyjnego hosta. Jeśli nie już w trybie offline, należy wykonać wszystkich woluminów/udziałów w trybie offline na urządzeniu, wykonując następujące czynności.
+2. Przełącz woluminy/udziały w tryb offline na hoście. Aby przełączyć woluminy/udziały w tryb offline, zapoznaj się z instrukcjami dotyczącymi hosta w systemie operacyjnym. Jeśli nie jest jeszcze w trybie offline, musisz przełączyć wszystkie woluminy/udziały w tryb offline na urządzeniu, wykonując następujące czynności.
    
-    1. Przejdź do **urządzeń** bloku i wybierz swoje urządzenie.
+    1. Przejdź do bloku **urządzenia** i wybierz urządzenie.
    
-    2. Przejdź do **Ustawienia > Zarządzaj > udziałów** (lub **Ustawienia > Zarządzaj > woluminów**). 
+    2. Przejdź do pozycji **ustawienia > Zarządzanie udziałami >** (lub **ustawieniami > zarządzanie woluminami >** ). 
    
-    3. Wybierz wolumin/udział, kliknij prawym przyciskiem myszy i wybierz **przełączyć do trybu offline**. 
+    3. Wybierz udział/wolumin, kliknij prawym przyciskiem myszy i wybierz polecenie **Przełącz do trybu offline**. 
    
-    4. Po wyświetleniu monitu o potwierdzenie, sprawdź **rozumiem konsekwencje przełączenia tego udziału w tryb offline.** 
+    4. Po wyświetleniu monitu o potwierdzenie Sprawdź, **jaki jest wpływ przełączenia tego udziału w tryb offline.** 
    
-    5. Kliknij przycisk **przełączyć do trybu offline**.
+    5. Kliknij pozycję **Przełącz do trybu offline**.
 
-3. W usłudze Menedżer urządzeń StorSimple przejdź do **zarządzania > urządzenia**. W **urządzeń** bloku, wybierz i kliknij swoje urządzenie źródłowe.
+3. W usłudze StorSimple Menedżer urządzeń przejdź do pozycji **zarządzanie > urządzenia**. W bloku **urządzenia** wybierz i kliknij swoje urządzenie źródłowe.
 
-4. W swojej **pulpit nawigacyjny urządzeń** bloku kliknij **Dezaktywuj**.
+4. W bloku **pulpitu nawigacyjnego urządzenia** kliknij pozycję **Dezaktywuj**.
 
-5. W **Dezaktywuj** bloku zostanie wyświetlony monit o potwierdzenie. Dezaktywacja urządzenia jest *stałe* procesu, którego nie można cofnąć. Zostanie wyświetlone przypomnienie do wykonania akcji/woluminów w tryb offline na hoście. Wpisz nazwę urządzenia, aby potwierdzić, a następnie kliknij przycisk **Dezaktywuj**.
+5. W bloku **dezaktywacji** zostanie wyświetlony monit o potwierdzenie. Dezaktywacja urządzenia jest *stałym* procesem, którego nie można cofnąć. Przypomnisz również, że udziały/woluminy zostaną przełączone do trybu offline na hoście. Wpisz nazwę urządzenia, aby potwierdzić, a następnie kliknij pozycję **Dezaktywuj**.
    
     ![](./media/storsimple-virtual-array-failover-dr/failover1.png)
-6. Rozpoczyna się dezaktywację. Otrzymasz powiadomienie po pomyślnym zakończeniu dezaktywację.
+6. Zostanie rozpoczęta dezaktywacja. Po pomyślnym zakończeniu dezaktywacji otrzymasz powiadomienie.
    
     ![](./media/storsimple-virtual-array-failover-dr/failover2.png)
-7. Na stronie urządzenia, stan urządzenia teraz zmieni się na **Deactivated**.
+7. Na stronie urządzenia stan urządzenia zostanie teraz zmieniony na **zdezaktywowane**.
     ![](./media/storsimple-virtual-array-failover-dr/failover3.png)
-8. W **urządzeń** bloku, wybierz i kliknij urządzenie źródłowe dezaktywowane, pracy w trybie Failover. 
-9. W **pulpit nawigacyjny urządzeń** bloku kliknij **w trybie Failover**. 
-10. W **w trybie Failover urządzenia** blok, wykonaj następujące czynności:
+8. W bloku **urządzenia** wybierz i kliknij dezaktywowane urządzenie źródłowe w celu przełączenia w tryb failover. 
+9. W bloku **pulpitu nawigacyjnego urządzenia** kliknij pozycję **tryb failover**. 
+10. W bloku **Praca** awaryjna urządzenia wykonaj następujące czynności:
     
-    1. Pola urządzenia źródłowego jest wypełniane automatycznie. Należy pamiętać, łącznemu rozmiarowi danych do urządzenia źródłowego. Rozmiar danych powinien być mniejszy niż dostępna pojemność na urządzeniu docelowym. Przejrzyj szczegóły skojarzone z urządzenia źródłowego, takich jak nazwa urządzenia, łączna pojemność i nazwy akcji, które są w trybie Failover.
+    1. Pole urządzenie źródłowe jest wypełniane automatycznie. Zwróć uwagę na łączny rozmiar danych urządzenia źródłowego. Rozmiar danych powinien być mniejszy niż dostępna pojemność na urządzeniu docelowym. Przejrzyj szczegóły skojarzone z urządzeniem źródłowym, takie jak nazwa urządzenia, łączna pojemność i nazwy udziałów, które są przełączone w tryb failover.
 
-    2. Wybierz z listy rozwijanej dostępnych urządzeń, **urządzenie docelowe**. Tylko urządzenia, które mają wystarczającą pojemność są wyświetlane na liście rozwijanej.
+    2. Z listy rozwijanej dostępne urządzenia wybierz **urządzenie docelowe**. Na liście rozwijanej są wyświetlane tylko urządzenia z wystarczającą pojemnością.
 
-    3. Sprawdź, czy **zdaję sobie sprawę, że ta operacja zakończy się niepowodzeniem, nad danymi na urządzeniu docelowym**. 
+    3. Upewnij się, że **rozumiem, że ta operacja spowoduje przełączenie danych w tryb failover na urządzenie docelowe**. 
 
-    4. Kliknij przycisk **w trybie Failover**.
+    4. Kliknij pozycję **tryb failover**.
     
         ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
-11. Inicjuje zadania trybu failover, a otrzymasz powiadomienie. Przejdź do **urządzeń > zadania** do monitorowania pracy w trybie failover.
+11. Zadanie trybu failover jest inicjowane i otrzymujesz powiadomienie. Przejdź do pozycji **urządzenia > zadania** , aby monitorować tryb failover.
     
      ![](./media/storsimple-virtual-array-failover-dr/failover5.png)
-12. W **zadań** wyświetlony blok zadania trybu failover utworzone dla urządzenia źródłowego. To zadanie przeprowadza prechecks odzyskiwania po awarii.
+12. W bloku **zadania** zostanie wyświetlone zadanie trybu failover utworzone dla urządzenia źródłowego. To zadanie wykonuje pretesty odzyskiwania po awarii.
     
     ![](./media/storsimple-virtual-array-failover-dr/failover6.png)
     
-     Po pomyślnym prechecks odzyskiwania po awarii zadania trybu failover będzie zduplikować zadania przywracania dla każdego udziału/woluminu, która istnieje na urządzeniu źródłowym.
+     Po pomyślnym sprawdzeniu przez program DR zadania trybu failover spowodują zduplikowanie zadań przywracania dla każdego udziału/woluminu, który istnieje na urządzeniu źródłowym.
     
     ![](./media/storsimple-virtual-array-failover-dr/failover7.png)
-13. Po zakończeniu pracy w trybie failover, przejdź do **urządzeń** bloku.
+13. Po zakończeniu pracy w trybie failover przejdź do bloku **urządzenia** .
     
-    1. Wybierz i kliknij urządzenie StorSimple, która została użyta jako urządzenie docelowe dla procesu pracy awaryjnej.
-    2. Przejdź do **Ustawienia > Zarządzanie > udziałów** (lub **woluminów** Jeśli serwer iSCSI). W **udziałów** bloku można wyświetlić wszystkie udziały (woluminy) ze starym urządzeniem.
+    1. Wybierz i kliknij urządzenie StorSimple, które było używane jako urządzenie docelowe dla procesu przełączania do trybu failover.
+    2. Przejdź do pozycji **ustawienia > zarządzanie > udziały** (lub **woluminy** , jeśli serwer iSCSI). W bloku **udziały** można wyświetlić wszystkie udziały (woluminy) ze starego urządzenia.
         ![](./media/storsimple-virtual-array-failover-dr/failover9.png)
-14. Konieczne będzie [Utwórz DNS alias](https://support.microsoft.com/kb/168322) tak, aby wszystkie aplikacje, które próbujesz nawiązać połączenie, może uzyskać przekierowany do nowego urządzenia.
+14. Należy [utworzyć alias DNS](https://support.microsoft.com/kb/168322) , aby wszystkie aplikacje, które próbują nawiązać połączenie, mogły zostać przekierowane do nowego urządzenia.
 
 ## <a name="errors-during-dr"></a>Błędy podczas odzyskiwania po awarii
 
-**Awaria łączności chmury podczas odzyskiwania po awarii**
+**Awaria połączenia z chmurą podczas odzyskiwania po awarii**
 
-Łączność z chmurą jest zakłócone. przed rozpoczęciem odzyskiwania po awarii i przed Przywracanie zostało ukończone, DR zakończy się niepowodzeniem. Zostanie wyświetlone powiadomienie o awarii. Urządzenie docelowe do odzyskiwania po awarii jest oznaczony jako *uniemożliwiającym jego używanie.* Nie można używać na tym samym urządzeniu docelowym usługi rejestracji urządzeń w przyszłości.
+Jeśli połączenie z chmurą zostanie zakłócone po rozpoczęciu odzyskiwania po awarii, a ukończenie przywracania urządzenia zakończy się niepowodzeniem. Otrzymasz powiadomienie o niepowodzeniu. Urządzenie docelowe dla odzyskiwania po awarii jest oznaczone jako *niemożliwe do użycia.* Nie można użyć tego samego urządzenia docelowego dla przyszłych DRs.
 
-**Nie urządzeń zgodnych docelowych**
+**Brak zgodnych urządzeń docelowych**
 
-Jeśli nie ma wystarczającą ilość miejsca na dostępnych urządzeń, zostanie wyświetlony błąd potwierdzające, że nie istnieją żadne urządzenia docelowego zgodne.
+Jeśli dostępne urządzenia docelowe nie mają wystarczającej ilości miejsca, zobaczysz błąd, że nie ma żadnych zgodnych urządzeń docelowych.
 
-**Sprawdź błędy**
+**Błędy sprawdzania błędów**
 
-Jeśli jeden z prechecks nie jest spełniony, zostanie wyświetlony precheck błędów.
+Jeśli jedno z tych zaewidencjonowania nie jest spełnione, zobaczysz błędy sprawdzania wymagań.
 
-## <a name="business-continuity-disaster-recovery-bcdr"></a>Odzyskiwanie po awarii ciągłość działania firmy (BCDR)
+## <a name="business-continuity-disaster-recovery-bcdr"></a>Ciągłość działania — odzyskiwanie po awarii (BCDR)
 
-Dotyczy scenariusza biznesowego ciągłości działania po awarii recovery (BCDR) występuje, gdy całe centrum danych platformy Azure, przestanie działać. Może to wpłynąć na usługi Menedżer urządzeń StorSimple i skojarzone urządzenia StorSimple.
+Scenariusz ciągłości działania odzyskiwania po awarii (BCDR) występuje, gdy całe centrum danych platformy Azure przestanie działać. Może to mieć wpływ na usługę StorSimple Menedżer urządzeń i skojarzone urządzenia StorSimple.
 
-W przypadku urządzeń StorSimple, które zostały zarejestrowane przed wystąpienia awarii, a następnie może trzeba będzie usunąć te urządzenia StorSimple. Po awarii można ponownie utworzyć i skonfigurować te urządzenia.
+W przypadku urządzeń StorSimple, które zostały zarejestrowane tuż przed wystąpieniem awarii, może być konieczne usunięcie tych urządzeń StorSimple. Po awarii możesz ponownie utworzyć i skonfigurować te urządzenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat [administrowania rozwiązania StorSimple Virtual Array przy użyciu lokalnego Interfejsu w przeglądarce](storsimple-ova-web-ui-admin.md).
+Dowiedz się więcej o sposobach [administrowania wirtualną macierzą StorSimple przy użyciu lokalnego interfejsu użytkownika sieci Web](storsimple-ova-web-ui-admin.md).
 

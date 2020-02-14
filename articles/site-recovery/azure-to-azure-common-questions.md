@@ -1,260 +1,310 @@
 ---
 title: Często zadawane pytania dotyczące odzyskiwania po awarii maszyny wirtualnej platformy Azure za pomocą Azure Site Recovery
-description: Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące odzyskiwania po awarii maszyny wirtualnej platformy Azure przy użyciu Azure Site Recovery.
+description: W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące odzyskiwania po awarii maszyny wirtualnej platformy Azure przy użyciu programu Azure Site Recovery.
 author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 051e8b0add7cf7ab2c4cb2f02ed4e33ea9a23c9b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 99fed1d2b1246e4c099f275708f694e5d7ea2f22
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973805"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190822"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Często zadawane pytania: odzyskiwanie po awarii z platformy Azure do platformy Azure
 
-Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące odzyskiwania po awarii maszyn wirtualnych platformy Azure do innego regionu platformy Azure przy użyciu [Site Recovery](site-recovery-overview.md).
-
+Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące odzyskiwania po awarii maszyn wirtualnych platformy Azure w innym regionie świadczenia usługi Azure w przypadku korzystania z [Azure Site Recovery](site-recovery-overview.md).
 
 ## <a name="general"></a>Ogólne
 
 ### <a name="how-is-site-recovery-priced"></a>W jaki sposób Site Recovery cena?
-Przejrzyj szczegóły [cennika Azure Site Recovery](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) .
-### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Jak działa bezpłatna warstwa usługi Azure Site Recovery?
-Każde wystąpienie chronione przez usługę Azure Site Recovery jest bezpłatne przez pierwsze 31 dni tej ochrony. Od 32. dnia opłaty za ochronę wystąpienia są naliczane według powyższych stawek.
-### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Czy podczas pierwszych 31 dni będą naliczane inne opłaty usługi Azure?
-Tak, nawet jeśli usługa Azure Site Recovery będzie bezpłatna przez pierwsze 31 dni dla chronionego wystąpienia, mogą zostać naliczone opłaty za usługę Azure Storage, transakcje magazynowe i transfer danych. Opłaty za zasoby obliczeniowe platformy Azure mogą zostać również naliczone dla odzyskanej maszyny wirtualnej. Uzyskaj pełne szczegóły [dotyczące cen](https://azure.microsoft.com/pricing/details/site-recovery)
 
-### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>Gdzie mogę znaleźć najlepsze rozwiązania dotyczące odzyskiwania po awarii maszyny wirtualnej platformy Azure?
+Zapoznaj się z [Azure Site Recovery cennikami maszyn wirtualnych](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/).
+
+### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Jak działa bezpłatna warstwa Azure Site Recovery?
+
+Każde wystąpienie chronione za pomocą Azure Site Recovery jest bezpłatne przez pierwsze 31 dni ochrony. Po upływie tego okresu ochrona każdego wystąpienia ma na [Azure Site Recovery ceny za usługę Azure Virtual Machines](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/).
+
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Czy w ciągu pierwszych 31 dni będą naliczane inne opłaty za korzystanie z platformy Azure?
+
+Tak. Mimo że Azure Site Recovery jest bezpłatny w ciągu pierwszych 31 dni chronionego wystąpienia, mogą zostać naliczone opłaty za usługę Azure Storage, transakcje magazynu i transfery danych. Odzyskana maszyna wirtualna może również naliczać opłaty za usługę Azure COMPUTE. Zapoznaj się ze szczegółowymi informacjami na temat cen [Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery).
+
+### <a name="what-are-the-best-practices-for-azure-virtual-machines-disaster-recovery"></a>Jakie są najlepsze rozwiązania dotyczące odzyskiwania po awarii w usłudze Azure Virtual Machines?
+
 1. [Informacje o architekturze platformy Azure do platformy Azure](azure-to-azure-architecture.md)
-2. [Przejrzyj obsługiwane i nieobsługiwane konfiguracje](azure-to-azure-support-matrix.md)
-3. [Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure](azure-to-azure-how-to-enable-replication.md)
-4. [Wykonywanie testu przejścia w tryb failover](azure-to-azure-tutorial-dr-drill.md)
-5. [Przełączenie w tryb failover i powrót po awarii do regionu podstawowego](azure-to-azure-tutorial-failover-failback.md)
+1. [Przejrzyj obsługiwane i nieobsługiwane konfiguracje](azure-to-azure-support-matrix.md)
+1. [Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure](azure-to-azure-how-to-enable-replication.md)
+1. [Wykonywanie testu przejścia w tryb failover](azure-to-azure-tutorial-dr-drill.md)
+1. [Przełączenie w tryb failover i powrót po awarii do regionu podstawowego](azure-to-azure-tutorial-failover-failback.md)
 
-### <a name="how-is-capacity-guaranteed-in-the-target-region"></a>Jak jest gwarantowane zapotrzebowanie w regionie docelowym?
-Zespół Site Recovery współpracuje z zespołem zarządzania pojemnością platformy Azure w celu zaplanowania wystarczającej pojemności infrastruktury i zapewnienia, że maszyny wirtualne chronione przez Site Recovery dla programu zostaną pomyślnie wdrożone w przypadku zainicjowania trybu failover.
+### <a name="how-is-capacity-ensured-in-the-target-region"></a>Jak jest zapewniona pojemność w regionie docelowym?
+
+Plan zespołu Site Recovery i zarządzanie pojemnością platformy Azure w celu zapewnienia wystarczającej pojemności infrastruktury. Po uruchomieniu trybu failover zespoły mogą także zapewnić, że wystąpienia maszyn wirtualnych chronione przez Site Recovery zostaną wdrożone w regionie docelowym.
 
 ## <a name="replication"></a>Replikacja
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>Czy można replikować maszyny wirtualne z włączoną funkcją szyfrowania dysków Azure?
 
-Tak, Site Recovery obsługuje odzyskiwanie po awarii maszyn wirtualnych z włączonym usługą Azure Disk Encryption (ADE). Po włączeniu replikacji wszystkie wymagane klucze szyfrowania dysków i wpisy tajne są kopiowane z regionu źródłowego do regionu docelowego w kontekście użytkownika. Jeśli nie masz odpowiednich uprawnień, gotowy do użycia skrypt może być przekazywany do administratora zabezpieczeń, aby skopiować klucze i wpisy tajne.
+Tak. Site Recovery obsługuje odzyskiwanie po awarii maszyn wirtualnych z włączonymi Azure Disk Encryption. Po włączeniu replikacji platforma Azure kopiuje wszystkie wymagane klucze szyfrowania dysków i wpisy tajne z regionu źródłowego do regionu docelowego w kontekście użytkownika. Jeśli nie masz odpowiednich uprawnień, administrator zabezpieczeń może skopiować klucze i wpisy tajne za pomocą skryptu.
 
-- Site Recovery obsługuje ADE dla maszyn wirtualnych platformy Azure z systemem Windows.
-- Site Recovery obsługuje ADE w wersji 0,1 ze schematem przy użyciu usługi Azure Active Directory (AAD) i wersji 1,1 bez usługi AAD. [Dowiedz się więcej](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
-- W wersji 1,1, maszyny wirtualne z systemem Windows muszą używać dysków zarządzanych.
-- [Dowiedz się więcej](azure-to-azure-how-to-enable-replication-ade-vms.md) na temat włączania replikacji szyfrowanych maszyn wirtualnych.
-
-
+- Site Recovery obsługuje Azure Disk Encryption maszyn wirtualnych platformy Azure z systemem Windows.
+- Site Recovery obsługuje Azure Disk Encryption wersji 0,1, która zawiera schemat, który wymaga Azure Active Directory (Azure AD). Site Recovery obsługuje również wersję 1,1, która nie wymaga usługi Azure AD. [Dowiedz się więcej o rozszerzeniu schematu na potrzeby usługi Azure Disk Encryption](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
+  - W przypadku Azure Disk Encryption w wersji 1,1 musisz użyć maszyn wirtualnych z systemem Windows z dyskami zarządzanymi.
+  - [Dowiedz się więcej](azure-to-azure-how-to-enable-replication-ade-vms.md) na temat włączania replikacji szyfrowanych maszyn wirtualnych.
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>Czy można replikować maszyny wirtualne do innej subskrypcji?
+
 Tak. maszyny wirtualne platformy Azure można replikować do innej subskrypcji w ramach tej samej dzierżawy usługi Azure AD.
-Konfigurowanie odzyskiwania po awarii [w ramach subskrypcji](https://azure.microsoft.com/blog/cross-subscription-dr) jest proste. W momencie replikacji można wybrać kolejną subskrypcję.
+
+Skonfiguruj odzyskiwanie po awarii [w różnych subskrypcjach](https://azure.microsoft.com/blog/cross-subscription-dr) , wybierając kolejną subskrypcję w momencie replikacji.
 
 ### <a name="can-i-replicate-zone-pinned-azure-vms-to-another-region"></a>Czy można replikować przypięte do strefy maszyny wirtualne platformy Azure do innego regionu?
+
 Tak, można [replikować przypięte strefy maszyny wirtualne](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region) do innego regionu.
 
 ### <a name="can-i-exclude-disks"></a>Czy można wykluczać dyski?
 
-Tak, możesz wykluczyć dyski w czasie ochrony przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [artykuł](azure-to-azure-exclude-disks.md)
+Tak, możesz wykluczyć dyski w czasie ochrony przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [jak wykluczać dyski z replikacji](azure-to-azure-exclude-disks.md).
 
 ### <a name="can-i-add-new-disks-to-replicated-vms-and-enable-replication-for-them"></a>Czy mogę dodać nowe dyski do replikowanych maszyn wirtualnych i włączyć dla nich replikację?
 
-Tak, jest to obsługiwane w przypadku maszyn wirtualnych platformy Azure z dyskami zarządzanymi. Po dodaniu nowego dysku do maszyny wirtualnej platformy Azure, na której włączono replikację, kondycja replikacji dla maszyny wirtualnej zawiera ostrzeżenie z adnotacją określającą, że co najmniej jeden dysk w maszynie wirtualnej jest dostępny do ochrony. Można włączyć replikację dla dodanych dysków.
+Tak, dodanie nowych dysków do replikowanych maszyn wirtualnych i włączenie dla nich replikacji jest obsługiwane w przypadku maszyn wirtualnych platformy Azure z dyskami zarządzanymi. Po dodaniu nowego dysku do maszyny wirtualnej platformy Azure, na której włączono replikację, kondycja replikacji maszyny wirtualnej wyświetla ostrzeżenie. To ostrzeżenie oznacza, że co najmniej jeden dysk w maszynie wirtualnej jest dostępny do ochrony. Można włączyć replikację dla dodanych dysków.
+
 - Jeśli włączysz ochronę dla dodanych dysków, ostrzeżenie zniknie po replikacji początkowej.
-- Jeśli nie zdecydujesz się na włączenie replikacji dla dysku, możesz wybrać opcję odrzucania ostrzeżenia.
-- Po przełączeniu w tryb failover maszyny wirtualnej, do której został dodany dysk i włączeniu dla niej replikacji, punkty replikacji będą zawierać dyski dostępne do odzyskania. Na przykład jeśli maszyna wirtualna ma jeden dysk i dodasz nowy, punkty replikacji, które zostały utworzone przed dodaniem dysku, będą wskazywać, że punkt replikacji składa się z "1 z 2 dysków".
+- Jeśli nie włączysz replikacji dla dysku, możesz odrzucić ostrzeżenie.
+- W przypadku przełączenia w tryb failover maszyny wirtualnej, która ma dodany dysk i włączono replikację, istnieją punkty replikacji. Punkty replikacji będą zawierać dyski dostępne do odzyskania. 
+
+Załóżmy na przykład, że maszyna wirtualna ma jeden dysk i zostanie dodany nowy. Może istnieć punkt replikacji, który został utworzony przed dodaniem dysku. Ten punkt replikacji pokazuje, że składa się z "1 z 2 dysków".
 
 Site Recovery nie obsługuje "gorąca usuwanie" dysku z zreplikowanej maszyny wirtualnej. W przypadku usunięcia dysku maszyny wirtualnej należy wyłączyć i ponownie włączyć replikację maszyny wirtualnej.
 
-
 ### <a name="how-often-can-i-replicate-to-azure"></a>Jak często mogę przeprowadzić replikację do platformy Azure?
+
 Replikacja jest ciągła w przypadku replikowania maszyn wirtualnych platformy Azure do innego regionu platformy Azure. Aby uzyskać więcej informacji, zobacz [Architektura replikacji z platformy Azure do platformy Azure](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process).
 
-### <a name="can-i-replicate-virtual-machines-within-a-region-i-need-this-to-migrate-vms"></a>Czy można replikować maszyny wirtualne w obrębie regionu? Muszę przeprowadzić migrację maszyn wirtualnych.
-Nie można użyć rozwiązania Azure-to-Azure DR do replikowania maszyn wirtualnych w danym regionie.
+### <a name="can-i-replicate-virtual-machines-within-a-region-i-need-this-functionality-to-migrate-vms"></a>Czy można replikować maszyny wirtualne w obrębie regionu? Potrzebuję tej funkcji do migrowania maszyn wirtualnych.
 
-### <a name="can-i-replicate-vms-to-any-azure-region"></a>Czy można replikować maszyny wirtualne do dowolnego regionu platformy Azure?
+Nie można użyć rozwiązania odzyskiwania dysku z platformy Azure na platformę Azure do replikowania maszyn wirtualnych w regionie.
+
+### <a name="can-i-replicate-vm-instances-to-any-azure-region"></a>Czy można replikować wystąpienia maszyn wirtualnych do dowolnego regionu platformy Azure?
+
 Za pomocą Site Recovery można replikować i odzyskiwać maszyny wirtualne między dowolnymi dwoma regionami w tym samym klastrze geograficznym. Klastry geograficzne są definiowane z uwzględnieniem opóźnień danych i suwerenności. Aby uzyskać więcej informacji, zobacz [Macierz obsługi Site Recovery regionie](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support).
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Czy Site Recovery wymaga połączenia z Internetem?
 
-Nie, Site Recovery nie wymaga łączności z Internetem. Jednak wymaga dostępu do Site Recovery adresów URL i zakresów adresów IP, jak wspomniano w [tym artykule](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges).
+Nie, Site Recovery nie wymaga łączności z Internetem. Jednak wymaga dostępu do Site Recovery adresów URL i zakresów adresów IP, jak wspomniano w temacie [Obsługa sieci w przypadku odzyskiwania po awarii maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges).
 
-### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Czy można replikować aplikację mającą osobną grupę zasobów dla różnych warstw?
+### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>Czy można replikować aplikację, która ma osobną grupę zasobów dla różnych warstw?
+
 Tak, można replikować aplikację i zachować konfigurację odzyskiwania po awarii w osobnej grupie zasobów.
-Na przykład jeśli masz aplikację z każdą aplikacją warstwy, bazą danych i siecią Web w oddzielnej grupie zasobów, musisz kliknąć [Kreatora replikacji](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) trzy razy dziennie, aby chronić wszystkie warstwy. Site Recovery będą replikować te trzy warstwy w trzech różnych grupach zasobów.
+
+Jeśli na przykład aplikacja ma aplikację, bazę danych i sieć Web każdej warstwy, należy wybrać [Kreatora replikacji](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) trzy razy, aby chronić wszystkie warstwy. Site Recovery będą replikować te trzy warstwy do trzech różnych grup zasobów.
 
 ## <a name="replication-policy"></a>Zasady replikacji
 
 ### <a name="what-is-a-replication-policy"></a>Co to są zasady replikacji?
-Definiuje on ustawienia historii przechowywania punktów odzyskiwania oraz częstotliwość migawek spójnych z aplikacjami. Domyślnie Azure Site Recovery tworzy nowe zasady replikacji z ustawieniami domyślnymi:
 
-* 24 godziny dla historii przechowywania punktów odzyskiwania.
-* 60 minut dla częstotliwości migawek spójnych z aplikacjami.
+Zasady replikacji określają ustawienia dla historii przechowywania punktów odzyskiwania. Zasady definiują również częstotliwość migawek spójnych z aplikacjami. Domyślnie Azure Site Recovery tworzy nowe zasady replikacji z ustawieniami domyślnymi:
 
-[Dowiedz się więcej](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings).
+- 24 godziny dla historii przechowywania punktów odzyskiwania.
+- 60 minut dla częstotliwości migawek spójnych z aplikacjami.
+
+[Dowiedz się więcej o ustawieniach replikacji](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings).
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Co to jest punkt odzyskiwania spójny na poziomie awarii?
-Punkt odzyskiwania spójny na poziomie awarii reprezentuje dane na dysku, tak jak gdyby maszyna wirtualna uległa awarii lub przewód zasilający został pobrany z serwera w czasie trwania migawki. Nie obejmuje to niczego, co było w pamięci podczas tworzenia migawki.
+
+Punkt odzyskiwania spójny na poziomie awarii zawiera dane na dysku, tak jak w przypadku ściągania przewodu z serwera podczas tworzenia migawki. Punkt odzyskiwania spójny na poziomie awarii nie obejmuje niczego, co było w pamięci podczas tworzenia migawki.
 
 Obecnie większość aplikacji może odzyskać z migawek spójnych na poziomie awarii. Punkt odzyskiwania spójny na poziomie awarii jest zwykle wystarczający dla systemów operacyjnych i aplikacji, takich jak serwery plików, serwery DHCP i serwery wydruku.
 
 ### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Jaka jest częstotliwość generowania punktów odzyskiwania spójnych na poziomie awarii?
+
 Site Recovery tworzy punkt odzyskiwania spójny na poziomie awarii co 5 minut.
 
 ### <a name="what-is-an-application-consistent-recovery-point"></a>Co to jest punkt odzyskiwania spójny na poziomie aplikacji?
-Punkty odzyskiwania spójne z aplikacją są tworzone na podstawie migawek spójnych z aplikacjami. Punkty odzyskiwania spójne z aplikacją przechwytują te same dane co migawki spójne z awarią, dodając wszystkie dane w pamięci i wszystkie transakcje w procesie.
-Ze względu na dodatkową zawartość migawki spójne z aplikacjami są najbardziej wykorzystywane i przejęcie najdłużej. Zalecamy używanie punktów odzyskiwania spójnych na poziomie aplikacji dla systemów operacyjnych i aplikacji baz danych, takich jak SQL Server.
+
+Punkty odzyskiwania spójne z aplikacją są tworzone na podstawie migawek spójnych z aplikacjami. Punkty odzyskiwania spójne z aplikacją przechwytują te same dane co migawki spójne z awarią, a także przechwytują dane w pamięci i wszystkie transakcje w procesie.
+
+Ze względu na dodatkową zawartość migawki spójne z aplikacjami są najbardziej wykorzystywane i są najdłuższe. Zalecamy używanie punktów odzyskiwania spójnych na poziomie aplikacji dla systemów operacyjnych i aplikacji baz danych, takich jak SQL Server.
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Jaki jest wpływ punktów odzyskiwania spójnych na poziomie aplikacji na wydajność aplikacji?
-Biorąc pod uwagę, że punkty odzyskiwania spójne z aplikacją przechwytuje wszystkie dane w pamięci i w procesie, wymagają one środowiska, takiego jak VSS w systemie Windows, aby przełączać aplikację w stan spoczynku. W przypadku bardzo częstego działania mogą mieć wpływ na wydajność, jeśli obciążenie jest już bardzo zajęte. W przypadku punktów odzyskiwania spójnych z aplikacjami nie należy używać niskiej częstotliwości dla obciążeń niezwiązanych z bazą danych, a nawet w przypadku obciążenia bazy danych 1 godzina wystarcza.
+
+Punkty odzyskiwania spójne z aplikacją przechwytują wszystkie dane w pamięci i w procesie. Ponieważ punkty odzyskiwania przechwytują te dane, wymagają one struktury, takiej jak Usługa kopiowania woluminów w tle w systemie Windows w celu przełączenia aplikacji w stan spoczynku. Jeśli proces przechwytywania jest częsty, może mieć wpływ na wydajność, gdy obciążenie jest już zajęte. Nie zalecamy używania niskich częstotliwości dla punktów odzyskiwania spójnych z aplikacjami dla obciążeń niezwiązanych z bazą danych. Nawet w przypadku obciążenia bazy danych wystarczy 1 godzinę.
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Jaka jest minimalna częstotliwość generowania punktów odzyskiwania spójnych z aplikacjami?
-Site Recovery może utworzyć punkt odzyskiwania spójny na poziomie aplikacji z minimalną częstotliwością wynoszącą 1 godzinę.
+
+Site Recovery można utworzyć punkt odzyskiwania spójny dla aplikacji o minimalnej częstotliwości wynoszącej 1 godzinę.
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>Jak są generowane i zapisywane punkty odzyskiwania?
-Aby zrozumieć, jak Site Recovery generuje punkty odzyskiwania, należymy przykładem zasad replikacji, które mają okno przechowywania punktu odzyskiwania przez 24 godziny, a migawka częstotliwości spójnej na poziomie aplikacji wynosząca 1 godzinę.
 
-Site Recovery tworzy punkt odzyskiwania spójny na poziomie awarii co 5 minut. Użytkownik nie może zmienić tej częstotliwości. W ciągu ostatniej godziny użytkownik będzie miał 12 punktów spójnych pod względem awarii i 1 punkt spójny z aplikacją do wyboru. W miarę upływu czasu program Site Recovery czyści wszystkie punkty odzyskiwania poza ostatnią 1 godziną i zapisuje tylko 1 punkt odzyskiwania na godzinę.
+Aby zrozumieć, jak Site Recovery generuje punkty odzyskiwania, zobacz przykład zasad replikacji. Te zasady replikacji mają punkt odzyskiwania z 24-godzinnym okresem przechowywania i migawką częstotliwości zgodną z aplikacją (1 godzina).
+
+Site Recovery tworzy punkt odzyskiwania spójny na poziomie awarii co 5 minut. Tej częstotliwości nie można zmienić. W ciągu ostatniej godziny można wybrać jeden z 12 punktów spójnych z awarią i 1 punkt spójności aplikacji. W miarę upływu czasu program Site Recovery czyści wszystkie punkty odzyskiwania poza ostatnią godziną i zapisuje tylko 1 punkt odzyskiwania na godzinę.
 
 Poniższy zrzut ekranu ilustruje przykład. Zrzut ekranu:
 
-1. W przypadku okresu krótszego niż Ostatnia godzina istnieją punkty odzyskiwania z częstotliwością wynoszącą 5 minut.
-2. W przypadku przekroczenia czasu w ciągu ostatnich 1 godziny Site Recovery zachowuje tylko 1 punkt odzyskiwania.
+- W ciągu ostatniej godziny istnieją punkty odzyskiwania z częstotliwością wynoszącą 5 minut.
+- W ciągu ostatniej godziny Site Recovery zachowuje tylko 1 punkt odzyskiwania.
 
    ![Lista wygenerowanych punktów odzyskiwania](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
 
-
 ### <a name="how-far-back-can-i-recover"></a>Jak daleko z powrotem mogę odzyskać?
+
 Najstarszym punktem odzyskiwania, którego można użyć, jest 72 godzin.
 
-### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>Co się stanie, jeśli będę mieć zasady replikacji przez 24 godziny, a problem uniemożliwia Site Recovery wygenerowanie punktów odzyskiwania przez ponad 24 godziny? Czy moje poprzednie punkty odzyskiwania zostaną utracone?
-Nie, Site Recovery będzie przechowywać wszystkie poprzednie punkty odzyskiwania. W zależności od okna przechowywania punktów odzyskiwania 24 godziny w tym przypadku Site Recovery zastępuje najstarszego punktu tylko wtedy, gdy istnieje generacja nowych punktów. W takim przypadku, ponieważ nie będzie żadnych nowych punktów odzyskiwania wygenerowanych z powodu niektórych problemów, wszystkie stare punkty pozostaną nienaruszone po osiągnięciu okna przechowywania.
+### <a name="i-have-a-replication-policy-of-24-hours-what-will-happen-if-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>Mam zasady replikacji przez 24 godziny. Co się stanie, jeśli problem uniemożliwia Site Recovery wygenerowanie punktów odzyskiwania przez ponad 24 godziny? Czy moje poprzednie punkty odzyskiwania zostaną utracone?
+
+Nie, Site Recovery będzie przechowywać wszystkie poprzednie punkty odzyskiwania. W zależności od okna przechowywania punktów odzyskiwania Site Recovery zastępuje najstarszy punkt tylko wtedy, gdy generuje nowe punkty. Z powodu problemu Site Recovery nie może wygenerować żadnych nowych punktów odzyskiwania. Dopóki nie pojawią się nowe punkty odzyskiwania, wszystkie stare punkty pozostaną po przejściu do okna przechowywania.
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Jak zmienić zasady replikacji po włączeniu replikacji na maszynie wirtualnej?
+
 Przejdź do **magazynu Site Recovery** > **Site Recovery infrastruktury** > **zasady replikacji**. Wybierz zasady, które chcesz edytować, i Zapisz zmiany. Każda zmiana zostanie również zastosowana do wszystkich istniejących replikacji.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Czy wszystkie punkty odzyskiwania są kompletną kopią maszyny wirtualnej czy różnicą?
+
 Pierwszy wygenerowany punkt odzyskiwania ma kompletną kopię. Wszystkie kolejne punkty odzyskiwania mają zmiany różnicowe.
 
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Czy zwiększenie okresu przechowywania punktów odzyskiwania zwiększa koszt magazynu?
-Tak. Jeśli okres przechowywania zostanie zwiększony z 24 godzin do 72 godzin, Site Recovery będzie zapisywać punkty odzyskiwania dla dodatkowych 48 godzin. Dodatkowy czas będzie powodować naliczanie opłat za magazyn. Na przykład jeśli pojedynczy punkt odzyskiwania ma zmiany różnicowe o wartości 10 GB, a koszt za GB wynosi $0,16 miesięcznie, dodatkowe opłaty będą wynosić $1,6 * 48 miesięcznie.
+
+Tak, jeśli okres przechowywania zostanie zwiększony z 24 godzin do 72 godzin, Site Recovery będzie zapisywać punkty odzyskiwania dla dodatkowych 48 godzin. Dodatkowy czas będzie powodować naliczanie opłat za magazyn. Na przykład pojedynczy punkt odzyskiwania może mieć zmiany różnicowe o wartości 10 GB i koszt za GB wynoszący $0,16 miesięcznie. Dodatkowe opłaty byłyby $1,60 × 48 miesięcznie.
 
 ## <a name="multi-vm-consistency"></a>Spójność między MASZYNami wirtualnymi
 
 ### <a name="what-is-multi-vm-consistency"></a>Co to jest spójność między MASZYNami wirtualnymi?
-Oznacza to, że punkt odzyskiwania jest spójny dla wszystkich zreplikowanych maszyn wirtualnych.
-Site Recovery zapewnia opcję "spójność z obsługą wiele maszyn wirtualnych", co oznacza, że po jej wybraniu program tworzy grupę replikacji w celu replikowania wszystkich maszyn, które są częścią grupy.
-Po przełączeniu w tryb failover wszystkie maszyny wirtualne będą miały udostępnione punkty odzyskiwania spójne z awarią i aplikacjami.
+
+Spójność wielu maszyn wirtualnych gwarantuje, że punkt odzyskiwania będzie spójny dla wszystkich zreplikowanych maszyn.
+
+Site Recovery zapewnia opcję **spójności obejmującą wiele maszyn wirtualnych** , która tworzy grupę replikacji wszystkich maszyn.
+
+Gdy maszyny wirtualne zostaną przełączone w tryb failover, będą mieć udostępnione punkty odzyskiwania spójne pod kątem awarii i aplikacje.
+
 Zapoznaj się z samouczkiem, aby [włączyć spójność między maszynami](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm)wirtualnymi.
 
-### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Czy można przełączyć do trybu failover pojedynczą maszynę wirtualną w ramach grupy replikacji spójności z obsługą kilku maszyn wirtualnych?
-Wybierając opcję "spójność z obsługą wiele maszyn wirtualnych", oznacza to, że aplikacja ma zależność od wszystkich maszyn wirtualnych w grupie. W związku z tym pojedynczy tryb failover maszyny wirtualnej jest niedozwolony.
+### <a name="can-i-fail-over-a-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Czy można przełączyć pojedynczą maszynę wirtualną do trybu failover w grupie replikacji spójnej z wielomaszynową kontrolą?
+
+Po wybraniu opcji **spójności dotyczącej wiele maszyn** wirtualnych oznacza to, że aplikacja ma zależność na wszystkich maszynach, które znajdują się w grupie. Tryb failover pojedynczej maszyny wirtualnej jest niedozwolony.
 
 ### <a name="how-many-virtual-machines-can-i-replicate-as-a-part-of-a-multi-vm-consistency-replication-group"></a>Ile maszyn wirtualnych można replikować jako część grupy replikacji spójności z wieloma MASZYNami wirtualnymi?
+
 Można replikować 16 maszyn wirtualnych razem w grupie replikacji.
 
-### <a name="when-should-i-enable-multi-vm-consistency-"></a>Kiedy należy włączyć spójność wiele maszyn wirtualnych?
-Ponieważ jest to intensywnie obciążające procesor CPU, włączenie spójności wielu maszyn wirtualnych może wpłynąć na wydajność obciążeń. Powinna być używana tylko wtedy, gdy na maszynach działa to samo obciążenie i wymagana jest spójność na wielu komputerach. Na przykład jeśli masz dwa SQL Server wystąpienia i dwa serwery sieci Web w aplikacji, należy mieć tylko spójność dla SQL Server wystąpień.
+### <a name="when-should-i-enable-multi-vm-consistency"></a>Kiedy należy włączyć spójność wiele maszyn wirtualnych?
 
+Ponieważ spójność wielu maszyn wirtualnych jest intensywnym PROCESORem, włączenie jej może wpłynąć na wydajność obciążeń. Spójność wielu maszyn wirtualnych należy stosować tylko wtedy, gdy na maszynach są uruchomione te same obciążenia i wymagana jest spójność między wieloma maszynami. Na przykład jeśli masz dwa SQL Server wystąpienia i dwa serwery sieci Web w aplikacji, należy mieć tylko spójność dla SQL Server wystąpień.
 
 ## <a name="failover"></a>Tryb failover
 
-### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Jak jest zapewniana pojemność w regionie docelowym maszyn wirtualnych platformy Azure?
-Zespół Site Recovery współpracuje z zespołem zarządzania pojemnością platformy Azure w celu zaplanowania wystarczającej pojemności infrastruktury, aby zapewnić, że maszyny wirtualne z obsługą odzyskiwania po awarii zostaną pomyślnie wdrożone w regionie docelowym po zainicjowaniu trybu failover.
+### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Jak jest zapewniana pojemność w regionie docelowym maszyn wirtualnych platformy Azure?
+
+Plan zespołu Site Recovery i zarządzanie pojemnością platformy Azure w celu zapewnienia wystarczającej pojemności infrastruktury. Po uruchomieniu trybu failover zespoły mogą także zapewnić, że wystąpienia maszyn wirtualnych chronione przez Site Recovery zostaną wdrożone w regionie docelowym.
 
 ### <a name="is-failover-automatic"></a>Czy tryb failover jest automatyczny?
 
-Tryb failover nie jest automatyczny. Uruchamiasz tryb failover za pomocą jednego kliknięcia w portalu lub możesz użyć [programu PowerShell](azure-to-azure-powershell.md) do wyzwolenia trybu failover.
+Tryb failover nie jest automatyczny. Można uruchomić tryb failover za pomocą jednego kliknięcia w portalu lub można użyć [programu PowerShell](azure-to-azure-powershell.md) do wyzwolenia trybu failover.
 
-### <a name="can-i-retain-a-public-ip-address-after-failover"></a>Czy można zachować publiczny adres IP po przejściu do trybu failover?
+### <a name="can-i-keep-a-public-ip-address-after-a-failover"></a>Czy można zachować publiczny adres IP po przejściu w tryb failover?
 
 Nie można zachować publicznego adresu IP aplikacji produkcyjnej po przejściu do trybu failover.
-- Obciążenia, które są tworzone w ramach procesu przełączania do trybu failover, muszą mieć przypisany zasób publicznego adresu IP platformy Azure, który jest dostępny w regionie docelowym.
-- Można to zrobić ręcznie lub zautomatyzować przy użyciu planu odzyskiwania.
-- Dowiedz się, jak [skonfigurować publiczne adresy IP po](concepts-public-ip-address-with-site-recovery.md#public-ip-address-assignment-using-recovery-plan)przejściu do trybu failover.  
 
-### <a name="can-i-retain-a-private-ip-address-during-failover"></a>Czy można zachować prywatny adres IP podczas pracy w trybie failover?
-Tak, możesz zachować prywatny adres IP. Domyślnie po włączeniu odzyskiwania po awarii dla maszyn wirtualnych platformy Azure Site Recovery tworzy zasoby docelowe na podstawie ustawień zasobów źródłowych. — W przypadku maszyn wirtualnych platformy Azure skonfigurowanych ze statycznymi adresami IP Site Recovery próbuje zainicjować ten sam adres IP dla docelowej maszyny wirtualnej, jeśli nie jest używany.
-Dowiedz się więcej na temat [zachowywania adresów IP podczas pracy w trybie failover](site-recovery-retain-ip-azure-vm-failover.md).
+Podczas przełączania obciążenia w ramach procesu przełączania do trybu failover należy przypisać do obciążenia zasób publicznego adresu IP platformy Azure. Zasób publicznego adresu IP platformy Azure musi być dostępny w regionie docelowym. Możesz ręcznie przypisać zasób publicznego adresu IP platformy Azure lub zautomatyzować go przy użyciu planu odzyskiwania. Dowiedz się, jak [skonfigurować publiczne adresy IP po](concepts-public-ip-address-with-site-recovery.md#public-ip-address-assignment-using-recovery-plan)przejściu do trybu failover.  
 
-### <a name="after-failover-why-is-the-server-assigned-a-new-ip-address"></a>Dlaczego po przejściu do trybu failover serwer przypisał nowy adres IP?
+### <a name="can-i-keep-a-private-ip-address-during-a-failover"></a>Czy można zachować prywatny adres IP podczas pracy w trybie failover?
+
+Tak, możesz zachować prywatny adres IP. Domyślnie po włączeniu odzyskiwania po awarii dla maszyn wirtualnych platformy Azure Site Recovery tworzy zasoby docelowe na podstawie ustawień zasobów źródłowych. W przypadku usługi Azure Virtual Machines skonfigurowanych ze statycznymi adresami IP Site Recovery próbuje zainicjować ten sam adres IP dla docelowej maszyny wirtualnej, jeśli nie jest używany.
+Informacje na temat [zachowywania adresów IP podczas pracy w trybie failover](site-recovery-retain-ip-azure-vm-failover.md).
+
+### <a name="after-a-failover-why-is-the-server-assigned-a-new-ip-address"></a>Dlaczego po przejściu w tryb failover serwer przypisał nowy adres IP?
 
 Site Recovery próbuje podać adres IP w momencie przejścia w tryb failover. Jeśli dla tego adresu jest przydana inna maszyna wirtualna, Site Recovery ustawia następny dostępny adres IP jako element docelowy.
+
 Dowiedz się więcej o [konfigurowaniu mapowania sieci i adresowania IP dla sieci wirtualnych](azure-to-azure-network-mapping.md#set-up-ip-addressing-for-target-vms).
 
 ### <a name="what-are-latest-lowest-rpo-recovery-points"></a>Co to są najnowsze punkty odzyskiwania **(najniższy cel RPO)** ?
-**Najnowsza opcja (najniższy cel punktu odzyskiwania)** najpierw przetwarza wszystkie dane, które zostały wysłane do usługi Site Recovery, aby utworzyć punkt odzyskiwania dla każdej maszyny wirtualnej przed przejściem do trybu failover. Ta opcja zapewnia najniższy cel punktu odzyskiwania (RPO), ponieważ maszyna wirtualna utworzona po przejściu w tryb failover ma wszystkie dane zreplikowane do Site Recovery podczas wyzwolenia trybu failover.
+
+**Najnowsza opcja (najniższy cel punktu odzyskiwania)** najpierw przetwarza wszystkie dane, które zostały wysłane do Site Recovery. Gdy usługa przetwarza dane, tworzy punkt odzyskiwania dla każdej maszyny wirtualnej przed przejściem do trybu failover na maszynie wirtualnej. Ta opcja zapewnia najniższy cel punktu odzyskiwania (RPO). Maszyna wirtualna utworzona po przejściu w tryb failover ma wszystkie dane zreplikowane do Site Recovery z momentu wyzwolenia trybu failover.
 
 ### <a name="do-latest-lowest-rpo-recovery-points-have-an-impact-on-failover-rto"></a>Czy **najnowsze punkty odzyskiwania (najniższych RPO)** mają wpływ na RTO pracy awaryjnej?
+
 Tak. Site Recovery przetwarza wszystkie oczekujące dane przed przełączeniem w tryb failover, dlatego ta opcja ma wyższy cel czasu odzyskiwania (RTO) w porównaniu z innymi opcjami.
 
 ### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>Co oznacza **Najnowsza przetworzona** opcja w punktach odzyskiwania?
-**Ostatnia przetworzona** opcja przejdzie w tryb failover wszystkich maszyn wirtualnych w planie do najnowszego punktu odzyskiwania, który Site Recovery przetworzony. Aby wyświetlić najnowszy punkt odzyskiwania dla określonej maszyny wirtualnej, sprawdź **najnowsze punkty odzyskiwania** w ustawieniach maszyny wirtualnej. Ta opcja zapewnia niską RTO, ponieważ nie ma czasu poświęcanego na przetwarzanie nieprzetworzonych danych.
+
+**Najnowsza przetworzona** opcja przejdzie w tryb failover wszystkich maszyn wirtualnych w planie do najnowszego punktu odzyskiwania, który Site Recovery przetworzony. Aby wyświetlić najnowszy punkt odzyskiwania dla określonej maszyny wirtualnej, sprawdź **najnowsze punkty odzyskiwania** w ustawieniach maszyny wirtualnej. Ta opcja zapewnia niską RTO, ponieważ nie ma czasu poświęcanego na przetwarzanie nieprzetworzonych danych.
 
 ### <a name="what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>Co się stanie, jeśli w regionie podstawowym wystąpił nieoczekiwany przestój?
-Po awarii można wyzwolić przejście w tryb failover. Site Recovery nie wymaga łączności z regionu podstawowego w celu przeprowadzenia przejścia w tryb failover.
 
-### <a name="what-is-a-rto-of-a-vm-failover-"></a>Co to jest RTO maszyny wirtualnej w trybie failover?
-Site Recovery ma umowę [SLA RTO o wartości 2 godz](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). Jednak w ciągu kilku minut Site Recovery w trybie failover maszyn wirtualnych. Możesz obliczyć RTO, przechodząc do zadań trybu failover, które przedstawiają czas potrzebny na przełączenie maszyny wirtualnej. W przypadku planu odzyskiwania RTO zapoznaj się z sekcją poniżej.
+Po awarii można wyzwolić przejście w tryb failover. Site Recovery nie wymaga łączności z regionu podstawowego w celu przełączenia w tryb failover.
+
+### <a name="what-is-an-rto-of-a-vm-failover"></a>Co to jest RTO maszyny wirtualnej w trybie failover?
+
+Site Recovery ma umowę [SLA RTO o wartości 2 godz](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). Jednak w ciągu kilku minut Site Recovery przechodzić w tryb failover maszyn wirtualnych. Możesz obliczyć RTO, przechodząc do zadań trybu failover, co pokazuje czas trwania maszyny wirtualnej. W przypadku planu odzyskiwania RTO zapoznaj się z następną sekcją.
 
 ## <a name="recovery-plans"></a>Plany odzyskiwania
 
 ### <a name="what-is-a-recovery-plan"></a>Co to jest plan odzyskiwania?
-Plan odzyskiwania w Site Recovery organizuje odzyskiwanie maszyn wirtualnych w trybie failover. Ułatwia to odzyskiwanie spójnie, powtarzalne i zautomatyzowane. Plan odzyskiwania dotyczy następujących potrzeb użytkownika:
+
+Plan odzyskiwania w Site Recovery organizuje odzyskiwanie maszyn wirtualnych w trybie failover. Ułatwia to odzyskiwanie spójnie, powtarzalne i zautomatyzowane. Plan odzyskiwania dotyczy następujących wymagań:
 
 - Definiowanie grupy maszyn wirtualnych, które są łączone w tryb failover
 - Definiowanie zależności między maszynami wirtualnymi w celu dokładnego przetworzenia aplikacji
 - Automatyzowanie odzyskiwania wraz z niestandardowymi akcjami ręcznymi w celu uzyskania zadań innych niż tryb failover maszyn wirtualnych
 
-[Dowiedz się więcej](site-recovery-create-recovery-plans.md) o planach odzyskiwania.
+Dowiedz się więcej [o tworzeniu planów odzyskiwania](site-recovery-create-recovery-plans.md).
 
 ### <a name="how-is-sequencing-achieved-in-a-recovery-plan"></a>Jak odbywa się sekwencjonowanie w planie odzyskiwania?
 
 W planie odzyskiwania można utworzyć wiele grup, aby osiągnąć sekwencjonowanie. Każda grupa działa w trybie failover jednocześnie. Maszyny wirtualne, które są częścią tej samej grupy, są przełączane do trybu failover razem z inną grupą. Aby dowiedzieć się, jak modelować aplikację przy użyciu planu odzyskiwania, zobacz [Informacje o planach odzyskiwania](recovery-plan-overview.md#model-apps).
 
 ### <a name="how-can-i-find-the-rto-of-a-recovery-plan"></a>Jak mogę znaleźć RTO planu odzyskiwania?
+
 Aby sprawdzić RTO planu odzyskiwania, wykonaj test pracy w trybie failover dla planu odzyskiwania i przejdź do **Site Recovery zadań**.
-W poniższym przykładzie zadanie o nazwie SAPTestRecoveryPlan zajęło 8 minut i 59 sekund na przełączenie wszystkich maszyn wirtualnych do trybu failover i wykonanie określonych akcji.
+W poniższym przykładzie zapoznaj się z **SAPTestRecoveryPlan**zadania. Zadanie zajęło 8 minut i 59 sekund na przełączenie w tryb failover wszystkich maszyn wirtualnych i wykonanie określonych akcji.
 
 ![Lista zadań Site Recovery](./media/azure-to-azure-troubleshoot-errors/recoveryplanrto.PNG)
 
 ### <a name="can-i-add-automation-runbooks-to-the-recovery-plan"></a>Czy mogę dodać elementy Runbook usługi Automation do planu odzyskiwania?
-Tak, możesz zintegrować Azure Automation elementów Runbook z planem odzyskiwania. [Dowiedz się więcej](site-recovery-runbook-automation.md).
+
+Tak, możesz zintegrować Azure Automation elementów Runbook z planem odzyskiwania. Dowiedz się więcej o [dodawaniu Azure Automation elementów Runbook](site-recovery-runbook-automation.md).
 
 ## <a name="reprotection-and-failback"></a>Ochrona i powrót po awarii
 
-### <a name="after-a-failover-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>Czy po przejściu w tryb failover z regionu podstawowego do regionu odzyskiwania po awarii czy maszyny wirtualne w regionie DR są chronione automatycznie?
+### <a name="i-failed-over-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>Po przełączeniu w tryb failover z regionu podstawowego do regionu odzyskiwania po awarii. Czy maszyny wirtualne w regionie DR są chronione automatycznie?
+
 Nie. Po przełączeniu maszyn wirtualnych platformy Azure w [tryb failover](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) z jednego regionu do innego, maszyny wirtualne są uruchamiane w regionie odzyskiwania w stanie niechronionym. Aby zakończyć przywracanie maszyn wirtualnych do regionu podstawowego, należy ponownie [włączyć ochronę](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect) maszyn wirtualnych w regionie pomocniczym.
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>Czy w czasie ponownej ochrony program Site Recovery replikowania pełnych danych z regionu pomocniczego do regionu podstawowego?
-Zależy to od sytuacji. Na przykład jeśli istnieje maszyna wirtualna regionu źródłowego, synchronizowane są tylko zmiany między dyskiem źródłowym a dyskiem docelowym. Site Recovery oblicza różnic, porównując dyski, a następnie przesyła dane. Ten proces zazwyczaj trwa kilka godzin. Aby uzyskać więcej informacji na temat tego, co się dzieje podczas ponownej ochrony, zobacz Ponowne [Włączanie ochrony maszyn wirtualnych platformy Azure w trybie failover w regionie podstawowym]( https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection).
+
+Zależy to od sytuacji. Jeśli istnieje maszyna wirtualna regionu źródłowego, zostaną zsynchronizowane tylko zmiany między dyskiem źródłowym a dyskiem docelowym. Site Recovery oblicza różnic, porównując dyski, a następnie przesyła dane. Ten proces zazwyczaj trwa kilka godzin. Aby uzyskać więcej informacji na temat tego, co się dzieje podczas ponownej ochrony, zobacz Ponowne [Włączanie ochrony wystąpień maszyn wirtualnych platformy Azure w trybie failover w regionie podstawowym](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection).
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Ile czasu trwa powrót po awarii?
-Po włączeniu ochrony czas powrotu po awarii jest zwykle podobny do czasu, który był wymagany do przejścia w tryb failover z regionu podstawowego do regionu pomocniczego.
+
+Po przeprowadzeniu ochrony powrót po awarii pobiera ten sam czas pracy awaryjnej z regionu podstawowego do regionu pomocniczego.
 
 ## <a name="capacity"></a>Pojemności
 
-### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Jak jest zapewniana pojemność w regionie docelowym maszyn wirtualnych platformy Azure?
-Zespół Site Recovery współpracuje z zespołem zarządzania pojemnością platformy Azure w celu zaplanowania wystarczającej pojemności infrastruktury, aby zapewnić, że maszyny wirtualne z włączonym odzyskiwaniem po awarii zostaną pomyślnie wdrożone w regionie docelowym po zainicjowaniu trybu failover.
+### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Jak jest zapewniana pojemność w regionie docelowym maszyn wirtualnych platformy Azure?
+
+Plan zespołu Site Recovery i zarządzanie pojemnością platformy Azure w celu zapewnienia wystarczającej pojemności infrastruktury. Po uruchomieniu trybu failover zespoły mogą także zapewnić, że wystąpienia maszyn wirtualnych chronione przez Site Recovery zostaną wdrożone w regionie docelowym.
 
 ### <a name="does-site-recovery-work-with-reserved-instances"></a>Czy Site Recovery współpracuje z wystąpieniami zarezerwowanymi?
-Tak. w regionie odzyskiwania po awarii można zakupić [wystąpienia rezerwowe](https://azure.microsoft.com/pricing/reserved-vm-instances/) , a Site Recovery będą z nich korzystać operacje trybu failover. </br> Dodatkowa konfiguracja nie jest potrzebna.
 
+Tak. [zarezerwowanych maszyn wirtualnych platformy Azure](https://azure.microsoft.com/pricing/reserved-vm-instances/) można zakupić w regionie odzyskiwania po awarii, a Site Recovery będzie używać ich w ramach operacji przejścia w tryb failover. Dodatkowa konfiguracja nie jest potrzebna.
 
-## <a name="security"></a>Zabezpieczenia
+## <a name="security"></a>Bezpieczeństwo
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Czy dane replikacji są wysyłane do usługi Site Recovery?
+
 Nie, Site Recovery nie przechwytuje replikowanych danych i nie zawiera żadnych informacji o działaniach na maszynach wirtualnych. Do usługi Site Recovery są wysyłane jedynie metadane wymagane do organizowania replikacji i trybu failover.  
-Site Recovery to ISO 27001:2013, 27018, HIPAA, DPA certyfikowany i jest w trakcie oceny SOC2 i FedRAMP JAB.
+
+Site Recovery to ISO 27001:2013, 27018, HIPAA i DPA certyfikowane. Usługa jest SOC2 i FedRAMP oceny JAB.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Czy usługa Site Recovery szyfruje replikację?
+
 Tak, obsługiwane są zarówno szyfrowanie podczas przesyłania, jak i [szyfrowanie na platformie Azure](https://docs.microsoft.com/azure/storage/storage-service-encryption) .
 
 ## <a name="next-steps"></a>Następne kroki
-* [Przejrzyj](azure-to-azure-support-matrix.md) wymagania dotyczące pomocy technicznej.
-* [Konfiguracja](azure-to-azure-tutorial-enable-replication.md) Replikacja z platformy Azure do platformy Azure.
+
+- [Przejrzyj wymagania dotyczące pomocy technicznej platformy Azure na platformie Azure](azure-to-azure-support-matrix.md).
+- [Skonfiguruj replikację z platformy Azure na platformę Azure](azure-to-azure-tutorial-enable-replication.md).
 - Jeśli masz pytania po przeczytaniu tego artykułu, Opublikuj je na [Forum usługi Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).

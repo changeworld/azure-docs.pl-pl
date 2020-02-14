@@ -1,26 +1,25 @@
 ---
-title: Konfiguracja klastra dla oprogramowania Apache i R Server w usłudze Azure HDInsight
+title: Konfigurowanie klastrów w usłudze HDInsight przy użyciu Apache Hadoop, Apache Spark, Apache Kafka i innych
 description: Konfigurowanie klastrów Hadoop, Kafka, Spark, HBase, R Server lub burzy dla usługi HDInsight z poziomu przeglądarki, klasycznego interfejsu wiersza polecenia platformy Azure, Azure PowerShell, REST lub zestawu SDK.
-keywords: Konfiguracja klastra usługi Hadoop, Konfiguracja klastra Kafka, Konfiguracja klastra Spark, co to jest klaster w usłudze Hadoop
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.date: 02/03/2020
-ms.openlocfilehash: 2c9c5b35110be8f9e51d2205f9fe63dfa4ef8e10
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/12/2020
+ms.openlocfilehash: b4922326b92efa88552eb100488a29fc53e1f914
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031058"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198988"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Konfigurowanie klastrów w usłudze HDInsight przy użyciu Apache Hadoop, Apache Spark, Apache Kafka i innych
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Dowiedz się, jak skonfigurować i skonfigurować klastry w usłudze HDInsight przy użyciu Apache Hadoop, Apache Spark, Apache Kafka, interakcyjnych zapytań, usług Apache HBase, l Services lub Apache Storm. Dowiedz się również, jak dostosować klastry i dodać zabezpieczenia, dołączając je do domeny.
+Dowiedz się, jak skonfigurować i skonfigurować Apache Hadoop, Apache Spark, Apache Kafka, interakcyjne zapytania, Apache HBase, usługi ML lub Apache Storm w usłudze HDInsight. Dowiedz się również, jak dostosować klastry i dodać zabezpieczenia, dołączając je do domeny.
 
 Klaster Hadoop składa się z kilku maszyn wirtualnych (węzłów), które są używane do rozproszonego przetwarzania zadań. Usługa Azure HDInsight obsługuje szczegóły implementacji instalacji i konfiguracji poszczególnych węzłów, dlatego należy jedynie podać ogólne informacje o konfiguracji.
 
@@ -40,25 +39,33 @@ W poniższej tabeli przedstawiono różne metody konfigurowania klastra usługi 
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Szablony Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
-## <a name="basic-cluster-setup"></a>Konfiguracja klastra podstawowego
-
 Ten artykuł przeprowadzi Cię przez proces instalacji w [Azure Portal](https://portal.azure.com), w którym można utworzyć klaster usługi HDInsight przy użyciu widoku domyślnego lub *klasycznego*.
 
-![Usługa HDInsight — Tworzenie niestandardowych opcji szybkiego tworzenia](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
+## <a name="basics"></a>Podstawy
 
-Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie. Poniżej przedstawiono szczegóły dotyczące:
+![Tworzenie niestandardowych opcji usługi HDInsight — szybkie](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
 
-* [Nazwa grupy zasobów](#resource-group-name)
-* [Typy i konfiguracja klastra](#cluster-types)
-* [Nazwa klastra](#cluster-name)
-* [Logowanie do klastra i nazwa użytkownika SSH](#cluster-login-and-ssh-username)
-* [Lokalizacja](#location)
+### <a name="project-details"></a>Szczegóły projektu
 
-## <a name="resource-group-name"></a>Nazwa grupy zasobów
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) pomaga w pracy z zasobami w aplikacji jako grupą, nazywaną [grupą zasobów](../azure-resource-manager/management/overview.md#resource-groups)platformy Azure. Można wdrożyć, zaktualizować, monitorować lub usunąć wszystkie zasoby aplikacji w ramach jednej skoordynowanej operacji.
 
-[Azure Resource Manager](../azure-resource-manager/management/overview.md) pomaga w pracy z zasobami w aplikacji jako grupą, nazywaną grupą zasobów platformy Azure. Można wdrożyć, zaktualizować, monitorować lub usunąć wszystkie zasoby aplikacji w ramach jednej skoordynowanej operacji.
+### <a name="cluster-details"></a>Szczegóły klastra
 
-## <a name="cluster-types"></a>Typy i konfiguracja klastra
+#### <a name="cluster-name"></a>Nazwa klastra
+
+Nazwy klastrów usługi HDInsight mają następujące ograniczenia:
+
+* Dozwolone znaki: a-z, 0-9, A-Z
+* Maksymalna długość: 59
+* Zastrzeżone nazwy: aplikacje
+* Zakres nazewnictwa klastrów dotyczy wszystkich subskrypcji platformy Azure. Nazwa klastra musi być unikatowa na całym świecie.
+* Pierwsze sześć znaków musi być unikatowe w obrębie sieci wirtualnej
+
+#### <a name="region"></a>Region
+
+Nie musisz jawnie określać lokalizacji klastra: klaster znajduje się w tej samej lokalizacji co magazyn domyślny. Aby uzyskać listę obsługiwanych regionów, wybierz listę rozwijaną **region** w [cenniku usługi HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
+
+#### <a name="cluster-type"></a>Typ klastra
 
 Usługa Azure HDInsight obecnie udostępnia następujące typy klastrów, z których każdy zawiera zestaw składników zapewniających pewne funkcje.
 
@@ -75,47 +82,33 @@ Usługa Azure HDInsight obecnie udostępnia następujące typy klastrów, z któ
 | [Spark](spark/apache-spark-overview.md) |Przetwarzanie w pamięci, interaktywne zapytania, przetwarzanie strumienia mikropartii |
 | [Burz](storm/apache-storm-overview.md) |Przetwarzanie zdarzeń w czasie rzeczywistym |
 
-### <a name="hdinsight-version"></a>Wersja usługi HDInsight
+#### <a name="version"></a>Wersja
 
 Wybierz wersję usługi HDInsight dla tego klastra. Aby uzyskać więcej informacji, zobacz [obsługiwane wersje usługi HDInsight](hdinsight-component-versioning.md#supported-hdinsight-versions).
 
-## <a name="cluster-name"></a>Nazwa klastra
-
-Nazwy klastrów usługi HDInsight mają następujące ograniczenia:
-
-* Dozwolone znaki: a-z, 0-9, A-Z
-* Maksymalna długość: 59
-* Zastrzeżone nazwy: aplikacje
-* Zakres nazewnictwa klastrów dotyczy wszystkich subskrypcji platformy Azure. Nazwa klastra musi być unikatowa na całym świecie.
-* Pierwsze sześć znaków musi być unikatowe w obrębie sieci wirtualnej
-
-## <a name="cluster-login-and-ssh-username"></a>Logowanie do klastra i nazwa użytkownika SSH
+### <a name="cluster-credentials"></a>Poświadczenia klastra
 
 Klastry usługi HDInsight umożliwiają skonfigurowanie dwóch kont użytkowników podczas tworzenia klastra:
 
-* Użytkownik HTTP: domyślna nazwa użytkownika to *admin*. Używa konfiguracji podstawowej w Azure Portal. Czasami jest nazywana "użytkownik klastra".
-* Użytkownik SSH: używany do nawiązywania połączenia z klastrem za pośrednictwem protokołu SSH. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+* Nazwa użytkownika logowania klastra: domyślna nazwa użytkownika to *admin*. Używa konfiguracji podstawowej w Azure Portal. Czasami jest to nazywane "użytkownikiem klastra" lub "HTTP User".
+* Nazwa użytkownika Secure Shell (SSH): służy do nawiązywania połączenia z klastrem za pośrednictwem protokołu SSH. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Nazwa użytkownika HTTP ma następujące ograniczenia:
 
-* Dozwolone znaki specjalne: _ i @
+* Dozwolone znaki specjalne: `_` i `@`
 * Znaki nie są dozwolone: #;. "',\/: '! *? $ (){}[] < > | &--= +% ~ ^ Space
 * Maksymalna długość: 20
 
 Nazwa użytkownika SSH ma następujące ograniczenia:
 
-* Dozwolone znaki specjalne: _ i @
+* Dozwolone znaki specjalne:`_` i `@`
 * Znaki nie są dozwolone: #;. "',\/: '! *? $ (){}[] < > | &--= +% ~ ^ Space
 * Maksymalna długość: 64
 * Nazwy zastrzeżonych: Hadoop, users, Oozie, Hive, mapred, Ambari-pytań i odpowiedzi, dozorcy, tez, HDFS, Sqoop, przędzy, hcat, AMS, HBase, burza, administrator, administrator, użytkownik, Użytkownik1, test, TEST1, 123 user3 gość, Jan, właściciel, główny, serwer, SQL, pomoc techniczna, support_388945a0, sys, TEST2, test3, user4, user5, Spark
 
-Pakiet Enterprise Security Package umożliwia integrację usługi HDInsight z usługami Active Directory i Apache Ranger. Wielu użytkowników można utworzyć przy użyciu pakietu Enterprise Security.
+## <a name="storage"></a>Storage
 
-## <a name="location"></a>Lokalizacja (regiony) klastrów i magazynu
-
-Nie musisz jawnie określać lokalizacji klastra: klaster znajduje się w tej samej lokalizacji co magazyn domyślny. Aby uzyskać listę obsługiwanych regionów, kliknij listę rozwijaną **region** w [cenniku usługi HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
-
-## <a name="storage-endpoints-for-clusters"></a>Punkty końcowe magazynu dla klastrów
+![Ustawienia magazynu klastra: punkty końcowe zgodne z systemem HDFS](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
 
 Mimo że lokalna instalacja usługi Hadoop wykorzystuje rozproszony system plików platformy Hadoop (HDFS) do magazynowania w klastrze, w chmurze używane są punkty końcowe usługi Storage połączone z klastrem. Korzystanie z magazynu w chmurze pozwala bezpiecznie usuwać klastry usługi HDInsight używane do obliczeń przy zachowaniu danych.
 
@@ -134,11 +127,9 @@ Aby uzyskać więcej informacji na temat opcji magazynu w usłudze HDInsight, zo
 
 Podczas konfiguracji dla domyślnego punktu końcowego magazynu należy określić kontener obiektów BLOB dla konta usługi Azure Storage lub Data Lake Storage. Domyślny magazyn zawiera Dzienniki aplikacji i systemu. Opcjonalnie można określić dodatkowe połączone konta usługi Azure Storage i konta Data Lake Storage, do których może uzyskać dostęp klaster. Klaster usługi HDInsight i zależne konta magazynu muszą znajdować się w tej samej lokalizacji platformy Azure.
 
-![Ustawienia magazynu klastra: punkty końcowe magazynu zgodnego z systemem HDFS](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
-
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-### <a name="optional-metastores"></a>Opcjonalne magazyny metadanych
+### <a name="metastore-settings"></a>Ustawienia magazynu metadanych
 
 Możesz tworzyć opcjonalne magazyny Hive lub Apache Oozie. Nie wszystkie typy klastrów obsługują jednak magazyny metadanych, a Azure SQL Data Warehouse nie są zgodne z magazynami metadanych.
 
@@ -147,28 +138,40 @@ Aby uzyskać więcej informacji, zobacz [Korzystanie z zewnętrznych magazynów 
 > [!IMPORTANT]  
 > Podczas tworzenia niestandardowego magazynu metadanych nie należy używać kresek, łączników ani spacji w nazwie bazy danych. Może to spowodować niepowodzenie procesu tworzenia klastra.
 
-### <a name="use-hiveoozie-metastore"></a>magazyn metadanych Hive
+#### <a name="sql-database-for-hive"></a>Baza danych SQL dla programu Hive
 
 Jeśli tabele programu Hive mają być zachowywane po usunięciu klastra usługi HDInsight, Użyj niestandardowego magazynu metadanych. Następnie można dołączyć magazyn metadanych do innego klastra usługi HDInsight.
 
 HDInsight An magazynu metadanych utworzonego dla jednej wersji klastra usługi HDInsight nie można współużytkować w różnych wersjach klastra usługi HDInsight. Aby zapoznać się z listą wersji usługi HDInsight, zobacz [obsługiwane wersje usługi HDInsight](hdinsight-component-versioning.md#supported-hdinsight-versions).
 
-### <a name="oozie-metastore"></a>Magazyn metadanych Oozie
+#### <a name="sql-database-for-oozie"></a>Baza danych SQL dla Oozie
 
 Aby zwiększyć wydajność podczas korzystania z programu Oozie, Użyj niestandardowego magazynu metadanych. Magazyn metadanych może także zapewnić dostęp do danych zadania Oozie po usunięciu klastra.
+
+#### <a name="sql-database-for-ambari"></a>Baza danych SQL dla Ambari
+
+Ambari służy do monitorowania klastrów usługi HDInsight, wprowadzania zmian konfiguracji i przechowywania informacji o zarządzaniu klastrami oraz historii zadań. Funkcja Custom Ambari DB pozwala wdrożyć nowy klaster i skonfigurować Ambari w zewnętrznej zarządzanej bazie danych. Aby uzyskać więcej informacji, zobacz temat [Custom AMBARI DB](./hdinsight-custom-ambari-db.md).
 
 > [!IMPORTANT]  
 > Nie można ponownie użyć niestandardowego magazynu metadanych Oozie. Aby użyć niestandardowego magazynu metadanych Oozie, należy podać puste Azure SQL Database podczas tworzenia klastra usługi HDInsight.
 
-## <a name="enterprise-security-package"></a>Pakiet zabezpieczeń przedsiębiorstwa
+## <a name="security--networking"></a>Bezpieczeństwo i obsługa sieci
+
+![Opcje tworzenia usługi HDInsight wybierz pozycję pakiet zabezpieczeń przedsiębiorstwa](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking.png)
+
+### <a name="enterprise-security-package"></a>Pakiet zabezpieczeń przedsiębiorstwa
 
 W przypadku typów klastrów usługi Hadoop, Spark, HBase, Kafka i interakcyjnych zapytań można włączyć **pakiet Enterprise Security**. Ten pakiet zapewnia bezpieczniejsze Konfigurowanie klastra przy użyciu usługi Apache Ranger i integrację z usługą Azure Active Directory. Aby uzyskać więcej informacji, zobacz [Omówienie zabezpieczeń przedsiębiorstwa w usłudze Azure HDInsight](./domain-joined/hdinsight-security-overview.md).
 
-![Opcje tworzenia usługi HDInsight wybierz pozycję pakiet zabezpieczeń przedsiębiorstwa](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking-esp.png)
+Pakiet Enterprise Security Package umożliwia integrację usługi HDInsight z usługami Active Directory i Apache Ranger. Wielu użytkowników można utworzyć przy użyciu pakietu Enterprise Security.
 
 Aby uzyskać więcej informacji na temat tworzenia przyłączonych do domeny klastrów usługi HDInsight, zobacz [Tworzenie przyłączonych do domeny środowiska piaskownicy usługi HDInsight](./domain-joined/apache-domain-joined-configure.md).
 
-## <a name="extend-clusters-with-a-virtual-network"></a>Zwiększanie klastrów przy użyciu sieci wirtualnej
+### <a name="tls"></a>TLS
+
+Aby uzyskać więcej informacji, zobacz [Transport Layer Security](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security)
+
+### <a name="virtual-network"></a>Sieć wirtualna
 
 Jeśli rozwiązanie wymaga technologii, które są rozłożone na wiele typów klastrów usługi HDInsight, [Sieć wirtualna platformy Azure](https://docs.microsoft.com/azure/virtual-network) może połączyć wymagane typy klastrów. Ta konfiguracja umożliwia Klastrom oraz wszelki wdrożony kod, aby bezpośrednio komunikować się ze sobą.
 
@@ -176,11 +179,25 @@ Aby uzyskać więcej informacji na temat używania sieci wirtualnej platformy Az
 
 Aby zapoznać się z przykładem użycia dwóch typów klastrów w ramach sieci wirtualnej platformy Azure, zobacz [używanie Apache Spark strukturalnych przesyłania strumieniowego z Apache Kafka](hdinsight-apache-kafka-spark-structured-streaming.md). Aby uzyskać więcej informacji na temat korzystania z usługi HDInsight z siecią wirtualną, w tym określonych wymagań konfiguracji dla sieci wirtualnej, zobacz [Planowanie sieci wirtualnej dla usługi HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
-## <a name="configure-cluster-size"></a>Konfigurowanie rozmiaru klastra
+### <a name="disk-encryption-setting"></a>Ustawienie szyfrowania dysku
+
+Aby uzyskać więcej informacji, zobacz [szyfrowanie dysków kluczy zarządzanych przez klienta](./disk-encryption.md).
+
+### <a name="kafka-rest-proxy"></a>Serwer proxy REST Kafka
+
+To ustawienie jest dostępne tylko dla typu klastra Kafka. Aby uzyskać więcej informacji, zobacz [Korzystanie z serwera proxy REST](./kafka/rest-proxy.md).
+
+### <a name="identity"></a>Tożsamość
+
+Aby uzyskać więcej informacji, zobacz [zarządzane tożsamości w usłudze Azure HDInsight](./hdinsight-managed-identities.md).
+
+## <a name="configuration--pricing"></a>Konfiguracja i Cennik
+
+![HDInsight Wybieranie rozmiaru węzła](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png)
 
 Opłaty za użycie węzłów są naliczane tak długo, jak klaster istnieje. Rozliczanie zaczyna się w momencie utworzenia klastra i zostaje zatrzymane po usunięciu klastra. Klastrów nie można cofnąć przydziału ani wstrzymać.
 
-### <a name="number-of-nodes-for-each-cluster-type"></a>Liczba węzłów dla każdego typu klastra
+### <a name="node-configuration"></a>Konfiguracja węzła
 
 Każdy typ klastra ma własną liczbę węzłów, terminologię dla węzłów i domyślny rozmiar maszyny wirtualnej. W poniższej tabeli liczba węzłów dla każdego typu węzła jest w nawiasach.
 
@@ -211,8 +228,6 @@ W przypadku wypróbowania usługi HDInsight zalecamy użycie jednego węzła pro
 
 W przypadku konfigurowania klastra przy użyciu Azure Portal rozmiar węzła jest dostępny za pomocą karty **Konfiguracja i Cennik** . W portalu można także sprawdzić koszt związany z różnymi rozmiarami węzłów.
 
-![HDInsight Wybieranie rozmiaru węzła](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png)
-
 ### <a name="virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych
 
 Podczas wdrażania klastrów Wybierz zasoby obliczeniowe na podstawie rozwiązania, które planujesz wdrożyć. Następujące maszyny wirtualne są używane na potrzeby klastrów usługi HDInsight:
@@ -227,19 +242,15 @@ Aby dowiedzieć się, jakiej wartości należy użyć do określenia rozmiaru ma
 
 Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych](../virtual-machines/windows/sizes.md). Aby uzyskać informacje o cenach różnych rozmiarów, zobacz [Cennik usługi HDInsight](https://azure.microsoft.com/pricing/details/hdinsight).
 
-## <a name="install-hdinsight-applications-on-clusters"></a>Instalowanie aplikacji usługi HDInsight w klastrach
+### <a name="add-application"></a>Dodawanie aplikacji
 
 Aplikacja usługi HDInsight to aplikacja, którą użytkownicy mogą zainstalować w klastrze usługi HDInsight opartym na systemie Linux. Możesz korzystać z aplikacji udostępnianych przez firmę Microsoft, inne firmy lub samodzielnie. Aby uzyskać więcej informacji, zobacz [Instalowanie aplikacji Apache Hadoop innych firm w usłudze Azure HDInsight](hdinsight-apps-install-applications.md).
 
 Większość aplikacji usługi HDInsight jest instalowanych w pustym węźle krawędzi.  Pusty węzeł brzegowy to maszyna wirtualna z systemem Linux z tymi samymi narzędziami klienta zainstalowanymi i skonfigurowanymi jako w węźle głównym. Węzeł brzegowy służy do uzyskiwania dostępu do klastra, testowania aplikacji klienckich i hostowania aplikacji klienckich. Aby uzyskać więcej informacji, zobacz [używanie pustych węzłów brzegowych w usłudze HDInsight](hdinsight-apps-use-edge-node.md).
 
-![Azure Portal aplikacji konfiguracyjnych klastra](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration-applications.png)
-
-## <a name="script-actions"></a>Akcje skryptu
+### <a name="script-actions"></a>Akcje skryptu
 
 Możesz zainstalować dodatkowe składniki lub dostosować konfigurację klastra przy użyciu skryptów podczas tworzenia. Takie skrypty są wywoływane za pośrednictwem **akcji skryptu**, która jest opcją konfiguracji, której można użyć z Azure Portal, poleceń cmdlet programu Windows PowerShell usługi HDInsight lub zestawu .NET SDK usługi HDInsight. Aby uzyskać więcej informacji, zobacz [Dostosowywanie klastra usługi HDInsight za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md).
-
-![Akcje skryptu konfiguracji klastra Azure Portal](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration-scriptaction.png)
 
 Niektóre natywne składniki języka Java, takie jak Apache Mahout i kaskadowe, można uruchamiać w klastrze jako pliki archiwum Java (JAR). Te pliki JAR mogą być dystrybuowane do usługi Azure Storage i przesyłane do klastrów HDInsight przy użyciu mechanizmów przesyłania zadań w usłudze Hadoop. Aby uzyskać więcej informacji, zobacz artykuł [przesyłanie zadań Apache Hadoop programowo](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 

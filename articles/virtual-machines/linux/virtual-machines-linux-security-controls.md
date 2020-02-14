@@ -9,12 +9,12 @@ manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 00753d885985e2734f0d87fdad9f219f44277d5a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 300acaf4a9d2a11ef107e19df99452c909257d54
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828346"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190571"
 ---
 # <a name="security-controls-for-linux-virtual-machines"></a>Kontrolki zabezpieczeń dla Linux Virtual Machines
 
@@ -24,43 +24,43 @@ W tym artykule opisano kontrolki zabezpieczeń wbudowane w Linux Virtual Machine
 
 ## <a name="network"></a>Sieć
 
-| Kontrola zabezpieczeń | Tak/nie | Uwagi |
+| Kontrola zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Obsługa punktów końcowych usługi| Tak | |
-| Obsługa iniekcji sieci wirtualnej| Tak | |
-| Izolacja sieci i obsługa zapór| Tak |  |
-| Obsługa tunelowania wymuszonego| Tak | Zobacz [Konfigurowanie wymuszonego tunelowania przy użyciu Azure Resource Manager model wdrażania](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
+| Obsługa punktów końcowych usługi| Yes | |
+| Obsługa iniekcji sieci wirtualnej| Yes | |
+| Izolacja sieci i obsługa zapór| Yes |  |
+| Obsługa tunelowania wymuszonego| Yes | Zobacz [Konfigurowanie wymuszonego tunelowania przy użyciu Azure Resource Manager model wdrażania](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
 
 ## <a name="monitoring--logging"></a>Monitorowanie rejestrowania &
 
-| Kontrola zabezpieczeń | Tak/nie | Uwagi|
+| Kontrola zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Tak | Zobacz [monitorowanie i aktualizowanie maszyny wirtualnej z systemem Linux na platformie Azure](/azure/virtual-machines/linux/tutorial-monitoring). |
-| Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Tak |  |
+| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Yes | Zobacz [monitorowanie i aktualizowanie maszyny wirtualnej z systemem Linux na platformie Azure](/azure/virtual-machines/linux/tutorial-monitoring). |
+| Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Yes |  |
 | Rejestrowanie i inspekcja płaszczyzny danych | Nie |  |
 
 ## <a name="identity"></a>Tożsamość
 
-| Kontrola zabezpieczeń | Tak/nie | Uwagi|
+| Kontrola zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Uwierzytelnianie| Tak |  |
-| Autoryzacja| Tak |  |
+| Uwierzytelnianie| Yes |  |
+| Autoryzacja| Yes |  |
 
 ## <a name="data-protection"></a>Ochrona danych
 
-| Kontrola zabezpieczeń | Tak/nie | Uwagi |
+| Kontrola zabezpieczeń | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft | Tak | Zobacz [Azure Disk Encryption dla maszyn wirtualnych z systemem Linux](disk-encryption-overview.md). |
-| Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak | Usługa Azure Virtual Machines obsługuje szyfrowanie [ExpressRoute](/azure/expressroute) i wirtualne. Zobacz [szyfrowanie w trakcie przesyłania na maszynach wirtualnych](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
-| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Tak | Klucze zarządzane przez klienta to obsługiwany scenariusz szyfrowania platformy Azure; Zobacz [Omówienie usługi Azure Encryption](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
-| Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| Brak | |
-| Wywołania interfejsu API są szyfrowane| Tak | Za pośrednictwem protokołów HTTPS i SSL. |
+| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft | Yes | Zobacz [Azure Disk Encryption dla maszyn wirtualnych z systemem Linux](disk-encryption-overview.md). |
+| Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Yes | Usługa Azure Virtual Machines obsługuje szyfrowanie [ExpressRoute](/azure/expressroute) i wirtualne. Zobacz [szyfrowanie w trakcie przesyłania na maszynach wirtualnych](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
+| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Yes | Klucze zarządzane przez klienta to obsługiwany scenariusz szyfrowania platformy Azure; Zobacz [Omówienie usługi Azure Encryption](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
+| Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| Nie dotyczy | |
+| Wywołania interfejsu API są szyfrowane| Yes | Za pośrednictwem protokołów HTTPS i TLS. |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 
-| Kontrola zabezpieczeń | Tak/nie | Uwagi|
+| Kontrola zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa zarządzania konfiguracją (wersja konfiguracji itp.)| Tak |  | 
+| Obsługa zarządzania konfiguracją (wersja konfiguracji itp.)| Yes |  | 
 
 ## <a name="next-steps"></a>Następne kroki
 

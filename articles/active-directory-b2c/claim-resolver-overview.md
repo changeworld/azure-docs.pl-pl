@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3a80628e5729813e1d405e58ecb623925b63076
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836052"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193383"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informacje o rozpoznawaniu roszczeń w Azure Active Directory B2C zasadach niestandardowych
 
@@ -48,9 +48,9 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 
 | Claim | Opis | Przykład |
 | ----- | ----------- | --------|
-| {Culture: LanguageName} | Dwuliterowy kod ISO dla języka. | en |
+| {Culture: LanguageName} | Dwuliterowy kod ISO dla języka. | pl |
 | {Culture: LCID}   | Identyfikator LCID kodu języka. | 1033 |
-| {Culture: RegionName} | Dwuliterowy kod ISO dla regionu. | Stany Zjednoczone |
+| {Culture: RegionName} | Dwuliterowy kod ISO dla regionu. | USA |
 | {Culture: RFC5646} | Kod języka RFC5646. | pl-PL |
 
 ### <a name="policy"></a>Zasady
@@ -66,14 +66,14 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 
 | Claim | Opis | Przykład |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |`acr_values` parametr ciągu zapytania. | ND |
+| {OIDC: AuthenticationContextReferences} |`acr_values` parametr ciągu zapytania. | Nie dotyczy |
 | {OIDC:ClientId} |`client_id` parametr ciągu zapytania. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC: DomainHint} |`domain_hint` parametr ciągu zapytania. | facebook.com |
 | {OIDC: LoginHint} |  `login_hint` parametr ciągu zapytania. | someone@contoso.com |
-| {OIDC:MaxAge} | Element `max_age`. | ND |
+| {OIDC:MaxAge} | Element `max_age`. | Nie dotyczy |
 | {OIDC: nonce} |`Nonce` parametr ciągu zapytania. | defaultNonce |
 | {OIDC: Prompt} | `prompt` parametr ciągu zapytania. | logowanie |
-| {OIDC: Resource} |`resource` parametr ciągu zapytania. | ND |
+| {OIDC: Resource} |`resource` parametr ciągu zapytania. | Nie dotyczy |
 | {OIDC: Scope} |`scope` parametr ciągu zapytania. | OpenID Connect |
 
 ### <a name="context"></a>Kontekst
@@ -96,13 +96,35 @@ Wszelkie nazwy parametrów dołączone jako część żądania OIDC lub OAuth2 m
 | {OAUTH-KV: campaignId} | Parametr ciągu zapytania. | Hawaje |
 | {OAUTH-KV: app_session} | Parametr ciągu zapytania. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Parametr ciągu zapytania. | 1234 |
-| {OAUTH-KV: dowolny niestandardowy ciąg zapytania} | Parametr ciągu zapytania. | ND |
+| {OAUTH-KV: dowolny niestandardowy ciąg zapytania} | Parametr ciągu zapytania. | Nie dotyczy |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Claim | Opis | Przykład |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | Token dostępu. | ND |
+| {oauth2:access_token} | Token dostępu. | Nie dotyczy |
+
+## <a name="using-claim-resolvers"></a>Korzystanie z resolverów roszczeń 
+
+Można użyć resolverów oświadczeń z następującymi elementami: 
+
+| Element | Element | Ustawienia |
+| ----- | ----------------------- | --------|
+|Profil techniczny Application Insights |`InputClaim` | |
+|Profil techniczny [Azure Active Directory](active-directory-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
+|Profil techniczny [OAuth2](oauth2-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
+|Profil techniczny [OpenID Connect Connect](openid-connect-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
+|Profil techniczny [transformacji oświadczeń](claims-transformation-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
+|Profil techniczny [dostawcy RESTful](restful-technical-profile.md)| `InputClaim`| 1, 2|
+|Profil techniczny [SAML2](saml-technical-profile.md)| `OutputClaim`| 1, 2|
+|Profil techniczny [z własnym potwierdzeniem](self-asserted-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
+|[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
+|[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
+|Profil techniczny [RelyingParty](relyingparty.md#technicalprofile)| `OutputClaim`| 2 |
+
+Ustawienia: 
+1. Metadane `IncludeClaimResolvingInClaimsHandling` muszą mieć wartość `true`
+1. `AlwaysUseDefaultValue` atrybutu oświadczeń wejściowych lub wyjściowych musi być ustawiona na `true`
 
 ## <a name="how-to-use-claim-resolvers"></a>Jak korzystać z resolverów roszczeń
 

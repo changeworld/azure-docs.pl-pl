@@ -1,5 +1,5 @@
 ---
-title: Przykładowy skrypt Azure PowerShell — Konfigurowanie punktów końcowych sieci wirtualnej IPv6 (wersja zapoznawcza)
+title: Przykładowy skrypt Azure PowerShell — Konfigurowanie punktów końcowych protokołu IPv6
 titlesuffix: Azure Virtual Network
 description: Włączanie punktów końcowych protokołu IPv6 przy użyciu programu PowerShell na platformie Azure Virtual Network
 services: virtual-network
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 4f07aae0e8baae44ade152cf3fe20facc7fe6770
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5e8102cbf89d601c027e3b969c1c431da8807018
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248809"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201373"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Przykład konfiguracji punktów końcowych protokołu IPv6 w skrypcie sieci wirtualnej (wersja zapoznawcza)
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/13/2020
 ms.author: helohr
-ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906861"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201785"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
@@ -46,6 +46,8 @@ Jako zatwierdzony dostawca korzyści z pulpitu wirtualnego systemu Windows zosta
 Technologia 10ZiG przy użyciu sprzętu i oprogramowania z możliwością obniżenia i zerowego systemu jest partnerem od dawna dba z firmą Microsoft i dedykowanym partnerem usług pulpitu wirtualnego Microsoft Azure. 10ZiG wąskie komputery klienckie z systemem Windows 10 są zaawansowane, niezawodne i niedrogie punkty końcowe dla wszystkich użytkowników pulpitu wirtualnego systemu Windows. Oprogramowanie 10ZiG Manager oferuje wyjątkowe zarządzanie i wdrażanie bez ograniczeń licencji. Zespół techy 10ZiG, program gwarancyjny z góry i niekłopotowe pokazy są jednym z zatrzymywania rozwiązania do obsługi wielu sesji klasycznego pulpitu wirtualnego systemu Windows w chmurze.
 
 10ZiG's na świecie liderów w wąskich i zerowych urządzeniach punktu końcowego klienta oraz oprogramowaniu do zarządzania dla pulpitów wirtualnych to exemplified, jak działają dla swoich klientów. Jego sprzęt zubożony jest dostarczany z Thoughtfully skonstruowanych funkcji i opcji korzyści, dzięki którym klienci otrzymują odpowiednie urządzenia klienckie w zależności od potrzeb. 10ZiG dostosowuje swoje urządzenia do środowiska klienta z klientami opartymi na systemie Windows i Linux, które zapewniają najlepszą możliwą wydajność na pulpitach wirtualnych, zarówno wewnątrz, jak i poza chmurą.
+
+- [Przejdź do witryny sieci Web partnera](https://www.10zig.com/).
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -148,6 +150,8 @@ Program liquider Essentials rozszerza wartość pulpitu wirtualnego systemu Wind
 Usługa agregacji i dostarczania aplikacji Liquit umożliwia przedsiębiorstwom i dostawcom usług nawiązywanie połączeń i łączenie ze wszystkimi obszarami roboczymi zaplecza (Citrix, VMWare, Windows Virtual Desktop, RDP i Legacy) oraz zapewnia dostosowany i spójny klient. środowisko pracy, niezależnie od miejsca, w którym znajdują się aplikacje klienta. Gdy klient opublikuje ikonę inteligentną, Liquit decyduje o tym, gdzie uruchomić aplikację na podstawie lokalizacji, urządzenia i uprawnień w profilu klienta.
 
 Jako certyfikowany partner Integration Liquit pomaga przyspieszyć przejście do chmury bez opóźnień protokołu RIP i Zamień. Pulpit wirtualny systemu Windows umożliwia łatwe łączenie się z istniejącym środowiskiem, tworzenie obszaru roboczego i dostarczanie pulpitu. Następnie możesz Poświęć czas na migrację starych platform i wprowadzić zmiany na zapleczu bez konieczności obserwowanie użytkowników. Uzyskaj spójne środowisko użytkownika końcowego, elastyczną infrastrukturę i Zachowaj kontrolę nad aplikacjami bez względu na to, gdzie się znajdują.
+
+- [Przejdź do witryny sieci Web partnera](https://www.liquit.com/wvd/).
 
 ## <a name="login-vsi"></a>VSI logowania
 

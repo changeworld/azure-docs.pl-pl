@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 47b9c0f89cb3db1610b8e3d98f408283c6ff9980
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 3a7fc8028348ae20403df62cd03c76a266edf07c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116932"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191317"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpieczanie dostępu i danych w Azure Logic Apps
 
@@ -29,7 +29,7 @@ Aby kontrolować dostęp i chronić dane w Azure Logic Apps, można skonfigurowa
 
 Jeśli aplikacja logiki korzysta z wyzwalacza opartego na żądaniach, który odbiera przychodzące wywołania lub żądania, takie jak wyzwalacz [żądania](../connectors/connectors-native-reqres.md) lub [elementu webhook](../connectors/connectors-native-webhook.md) , można ograniczyć dostęp, tak aby tylko autoryzowani klienci mogli wywołać aplikację logiki. Wszystkie żądania odebrane przez aplikację logiki są szyfrowane i zabezpieczone przy użyciu protokołu SSL (SSL).
 
-Poniżej przedstawiono sposoby zabezpieczenia dostępu do tego typu wyzwalacza:
+Poniżej przedstawiono opcje, które mogą pomóc w zabezpieczeniu dostępu do tego typu wyzwalacza:
 
 * [Generowanie sygnatur dostępu współdzielonego](#sas)
 * [Ogranicz przychodzące adresy IP](#restrict-inbound-ip-addresses)
@@ -62,7 +62,7 @@ Aby uzyskać więcej informacji na temat zabezpieczania dostępu za pomocą SAS,
 
 #### <a name="regenerate-access-keys"></a>Generowanie ponowne kluczy dostępu
 
-Aby wygenerować nowy bezpieczny klucz dostępu w dowolnym momencie, użyj interfejsu API REST lub Azure Portal platformy Azure. Wszystkie wcześniej wygenerowane adresy URL używające starego klucza są unieważnione i nie mają już autoryzacji do wyzwalania aplikacji logiki. Adresy URL, które należy pobrać po ponownym uruchomieniu, są podpisane przy użyciu nowego klucza dostępu.
+Aby wygenerować nowy klucz dostępu zabezpieczeń w dowolnym momencie, użyj interfejsu API REST lub Azure Portal platformy Azure. Wszystkie wcześniej wygenerowane adresy URL używające starego klucza są unieważnione i nie mają już autoryzacji do wyzwalania aplikacji logiki. Adresy URL, które należy pobrać po ponownym uruchomieniu, są podpisane przy użyciu nowego klucza dostępu.
 
 1. W [Azure Portal](https://portal.azure.com)Otwórz aplikację logiki, która ma klucz, który chcesz wygenerować ponownie.
 
@@ -188,7 +188,7 @@ Aby kontrolować dostęp do wejść i wyjść w historii uruchamiania aplikacji 
 
 * [Ogranicz dostęp według zakresu adresów IP](#restrict-ip).
 
-  Ta opcja umożliwia zabezpieczenie dostępu do historii uruchamiania na podstawie żądań z określonego zakresu adresów IP.
+  Ta opcja pomaga w zabezpieczeniu dostępu do historii uruchamiania na podstawie żądań z określonego zakresu adresów IP.
 
 * [Ukryj dane z historii uruchamiania przy użyciu zaciemniania](#obfuscate).
 
@@ -257,21 +257,21 @@ W przypadku [automatyzowania wdrażania aplikacji logiki przy użyciu szablonów
 
 ### <a name="hide-data-from-run-history-by-using-obfuscation"></a>Ukryj dane z historii uruchamiania przy użyciu zaciemniania
 
-Wiele wyzwalaczy i akcji ma ustawienia umożliwiające ukrycie danych wejściowych, wyjściowych lub zarówno z historii uruchamiania aplikacji logiki. Poniżej przedstawiono kilka [kwestii, które](#obfuscation-considerations) należy wykonać w celu zapoznania się z tymi ustawieniami w celu zabezpieczenia tych danych.
+Wiele wyzwalaczy i akcji ma ustawienia umożliwiające ukrycie danych wejściowych, wyjściowych lub zarówno z historii uruchamiania aplikacji logiki. Poniżej przedstawiono kilka [kwestii, które należy wziąć pod uwagę](#obfuscation-considerations) podczas korzystania z tych ustawień, aby zabezpieczyć te dane.
 
-#### <a name="secure-inputs-and-outputs-in-the-designer"></a>Zabezpieczanie wejść i wyjść w projektancie
+#### <a name="hide-inputs-and-outputs-in-the-designer"></a>Ukrywanie wejść i wyjść w projektancie
 
 1. W [Azure Portal](https://portal.azure.com)Otwórz aplikację logiki w Projektancie aplikacji logiki.
 
    ![Otwórz aplikację logiki w Projektancie aplikacji logiki](./media/logic-apps-securing-a-logic-app/open-sample-logic-app-in-designer.png)
 
-1. Na wyzwalaczu lub akcji, w której chcesz zabezpieczyć dane, wybierz przycisk wielokropka ( **...** ), a następnie wybierz pozycję **Ustawienia**.
+1. Na wyzwalaczu lub akcji, w której chcesz ukryć poufne dane, wybierz przycisk wielokropka ( **...** ), a następnie wybierz pozycję **Ustawienia**.
 
    ![Otwórz wyzwalacz lub ustawienia akcji](./media/logic-apps-securing-a-logic-app/open-action-trigger-settings.png)
 
 1. Włącz opcję **Zabezpiecz dane wejściowe**, **bezpieczne wyjście**lub oba te elementy. Po zakończeniu wybierz pozycję **Gotowe**.
 
-   ![Włącz bezpieczne dane wejściowe lub wyjściowe](./media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
+   ![Włącz "bezpieczne dane wejściowe" lub "bezpieczne wyjście"](./media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
 
    Akcja lub wyzwalacz zawiera teraz ikonę kłódki na pasku tytułu.
 
@@ -287,20 +287,20 @@ Wiele wyzwalaczy i akcji ma ustawienia umożliwiające ukrycie danych wejściowy
 
    1. W okienku **uruchamiania aplikacji logiki** rozwiń akcje, które chcesz przejrzeć.
 
-      W przypadku wybrania opcji zabezpieczenia danych wejściowych i wyjściowych te wartości zostaną wyświetlone jako ukryte.
+      W przypadku wybrania opcji przesłaniania danych wejściowych i wyjściowych te wartości zostaną wyświetlone jako ukryte.
 
       ![Ukryte dane wejściowe i wyjściowe w historii uruchamiania](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
 <a name="secure-data-code-view"></a>
 
-#### <a name="secure-inputs-and-outputs-in-code-view"></a>Zabezpiecz dane wejściowe i wyjściowe w widoku kodu
+#### <a name="hide-inputs-and-outputs-in-code-view"></a>Ukryj dane wejściowe i wyjściowe w widoku kodu
 
 W podstawowym wyzwalaczu lub definicji akcji Dodaj lub zaktualizuj tablicę `runtimeConfiguration.secureData.properties` przy użyciu jednej lub obu tych wartości:
 
 * `"inputs"`: zabezpiecza dane wejściowe w historii uruchamiania.
 * `"outputs"`: zabezpiecza dane wyjściowe w historii uruchamiania.
 
-Poniżej przedstawiono kilka [kwestii, które](#obfuscation-considerations) należy wykonać w celu zapoznania się z tymi ustawieniami w celu zabezpieczenia tych danych.
+Poniżej przedstawiono kilka [kwestii, które należy wziąć pod uwagę](#obfuscation-considerations) podczas korzystania z tych ustawień, aby zabezpieczyć te dane.
 
 ```json
 "<trigger-or-action-name>": {
@@ -324,13 +324,13 @@ Poniżej przedstawiono kilka [kwestii, które](#obfuscation-considerations) nale
 
 #### <a name="considerations-when-hiding-inputs-and-outputs"></a>Zagadnienia dotyczące ukrywania danych wejściowych i wyjść
 
-* W przypadku zabezpieczania danych wejściowych lub danych wyjściowych wyzwalacza lub akcji, Logic Apps nie wysyła zabezpieczone dane do usługi Azure Log Analytics. Nie można również dodać [śledzonych właściwości](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) do tego wyzwalacza lub akcji do monitorowania.
+* Gdy ukrywasz dane wejściowe lub dane wyjściowe wyzwalacza lub akcji, Logic Apps nie wysyłaj zabezpieczonych danych do usługi Azure Log Analytics. Nie można również dodać [śledzonych właściwości](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) do tego wyzwalacza lub akcji do monitorowania.
 
 * [Interfejs API Logic Apps obsługujący historię przepływu pracy](https://docs.microsoft.com/rest/api/logic/) nie zwraca zabezpieczonych danych wyjściowych.
 
-* Aby zabezpieczyć wyjście z akcji, która zabezpiecza dane wejściowe lub jawnie używa zabezpieczonych danych wyjściowych, należy ręcznie włączyć **bezpieczne wyjście** w ramach tej akcji.
+* Aby ukryć wyjście z akcji, która zasłania dane wejściowe lub jawnie zasłania wyjścia, należy ręcznie włączyć **bezpieczne wyjście** w ramach tej akcji.
 
-* Upewnij się, że włączasz **bezpieczne dane wejściowe** lub **zabezpieczone wyjścia** w akcjach podrzędnych, w których oczekuje się, że historia uruchamiania ma zabezpieczyć te dane.
+* Upewnij się, że włączasz **bezpieczne dane wejściowe** lub **zabezpieczone wyjścia** w akcjach podrzędnych, w których oczekuje się, że historia uruchamiania ma zasłaniać te dane.
 
   **Ustawienia bezpiecznego wyjścia**
 
@@ -358,7 +358,7 @@ Poniżej przedstawiono kilka [kwestii, które](#obfuscation-considerations) nale
 
 W przypadku wdrażania w różnych środowiskach należy rozważyć parametryzacja wartości w definicji przepływu pracy, które różnią się w zależności od tych środowisk. Dzięki temu można uniknąć zakodowanych danych przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/templates/overview.md) , aby wdrożyć aplikację logiki, chronić poufne dane przez zdefiniowanie zabezpieczonych parametrów i przekazać te dane jako osobny dane wejściowe za pomocą [parametrów szablonu](../azure-resource-manager/templates/template-parameters.md) przy użyciu [pliku parametrów](../azure-resource-manager/templates/parameter-files.md).
 
-Na przykład jeśli uwierzytelniasz akcje HTTP za pomocą [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication), możesz zdefiniować i zabezpieczyć parametry akceptujące identyfikator klienta i klucz tajny klienta, które są używane do uwierzytelniania. Aby zdefiniować te parametry w aplikacji logiki, użyj sekcji `parameters` w definicji przepływu pracy aplikacji logiki i szablonu Menedżer zasobów do wdrożenia. Aby ukryć wartości parametrów, które nie mają być wyświetlane podczas edytowania aplikacji logiki lub wyświetlania historii uruchamiania, zdefiniuj parametry przy użyciu `securestring` lub `secureobject` typu i użyj kodowania w razie potrzeby. Parametry, które mają ten typ nie są zwracane z definicją zasobu i nie są dostępne podczas wyświetlania zasobu po wdrożeniu. Aby uzyskać dostęp do tych wartości parametrów podczas wykonywania, użyj wyrażenia `@parameters('<parameter-name>')` wewnątrz definicji przepływu pracy. To wyrażenie jest oceniane tylko w czasie wykonywania i jest opisane przez [Język definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md).
+Na przykład jeśli uwierzytelniasz akcje HTTP za pomocą [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication), możesz definiować i zasłaniać parametry, które akceptują identyfikator klienta i klucz tajny klienta, które są używane do uwierzytelniania. Aby zdefiniować te parametry w aplikacji logiki, użyj sekcji `parameters` w definicji przepływu pracy aplikacji logiki i szablonu Menedżer zasobów do wdrożenia. Aby ukryć wartości parametrów, które nie mają być wyświetlane podczas edytowania aplikacji logiki lub wyświetlania historii uruchamiania, zdefiniuj parametry przy użyciu `securestring` lub `secureobject` typu i użyj kodowania w razie potrzeby. Parametry, które mają ten typ nie są zwracane z definicją zasobu i nie są dostępne podczas wyświetlania zasobu po wdrożeniu. Aby uzyskać dostęp do tych wartości parametrów podczas wykonywania, użyj wyrażenia `@parameters('<parameter-name>')` wewnątrz definicji przepływu pracy. To wyrażenie jest oceniane tylko w czasie wykonywania i jest opisane przez [Język definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md).
 
 > [!NOTE]
 > Jeśli używasz parametru w nagłówku żądania lub treści, ten parametr może być widoczny podczas wyświetlania historii uruchamiania aplikacji logiki i wychodzącego żądania HTTP. Upewnij się, że ustawiono również zasady dostępu do zawartości. Można również użyć [zaciemniania](#obfuscate) , aby ukryć wejścia i wyjścia w historii uruchamiania. Nagłówki autoryzacji nigdy nie są widoczne za poorednictwem danych wejściowych lub wyjściowych. Dlatego jeśli w tym miejscu jest używany wpis tajny, ten klucz tajny nie jest możliwy do pobierania.
@@ -586,13 +586,13 @@ Oto kilka sposobów zabezpieczania punktów końcowych, które odbierają wywoł
 
   Wszystkie wywołania punktów końcowych z usługi Logic Apps pochodzą z określonych wyznaczone adresy IP, które są oparte na regionach aplikacji logiki. Można dodać filtrowanie akceptujące żądania tylko z tych adresów IP. Aby uzyskać te adresy IP, zobacz [limity i konfiguracja dla Azure Logic Apps](logic-apps-limits-and-config.md#configuration).
 
-* Bezpieczne połączenia z systemami lokalnymi.
+* Zwiększ bezpieczeństwo połączeń z systemami lokalnymi.
 
-  Azure Logic Apps zapewnia integrację z tymi usługami w celu bezpiecznej i niezawodnej komunikacji lokalnej.
+  Azure Logic Apps zapewnia integrację z tymi usługami, aby zapewnić lepszą bezpieczną i niezawodną komunikację lokalną.
 
   * Lokalna Brama danych
 
-    Wiele zarządzanych łączników w Azure Logic Apps zapewnia bezpieczne połączenia z systemami lokalnymi, takimi jak system plików, SQL, SharePoint i DB2. Brama wysyła dane ze źródeł lokalnych w zaszyfrowanej kanale za pośrednictwem Azure Service Bus. Cały ruch pochodzący z agenta bramy jest zabezpieczonym ruchem wychodzącym. Dowiedz się [, jak działa lokalna Brama danych](logic-apps-gateway-install.md#gateway-cloud-service).
+    Wiele zarządzanych łączników w Azure Logic Apps ułatwiają bezpieczne połączenia z systemami lokalnymi, takimi jak system plików, SQL, SharePoint i DB2. Brama wysyła dane ze źródeł lokalnych w zaszyfrowanej kanale za pośrednictwem Azure Service Bus. Cały ruch pochodzący z agenta bramy jest zabezpieczonym ruchem wychodzącym. Dowiedz się [, jak działa lokalna Brama danych](logic-apps-gateway-install.md#gateway-cloud-service).
 
   * Nawiązywanie połączenia za pomocą usługi Azure API Management
 
@@ -680,9 +680,9 @@ W przypadku używania [zabezpieczonych parametrów](#secure-action-parameters) d
 
 Aby uzyskać więcej informacji na temat zabezpieczania usług przy użyciu uwierzytelniania certyfikatów klientów, zobacz następujące tematy:
 
-* [Zabezpieczanie interfejsów API przy użyciu uwierzytelniania certyfikatów klientów na platformie Azure API Management](../api-management/api-management-howto-mutual-certificates-for-clients.md)
-* [Zabezpieczanie usług zaplecza przy użyciu uwierzytelniania certyfikatów klientów na platformie Azure API Management](../api-management/api-management-howto-mutual-certificates.md)
-* [Zabezpieczanie usługi RESTfuL przy użyciu certyfikatów klienta](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
+* [Ulepszanie zabezpieczeń interfejsów API przy użyciu uwierzytelniania certyfikatów klientów na platformie Azure API Management](../api-management/api-management-howto-mutual-certificates-for-clients.md)
+* [Ulepszanie zabezpieczeń usług zaplecza przy użyciu uwierzytelniania certyfikatów klientów na platformie Azure API Management](../api-management/api-management-howto-mutual-certificates.md)
+* [Zwiększ bezpieczeństwo usługi RESTfuL przy użyciu certyfikatów klienta](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
 * [Poświadczenia certyfikatu na potrzeby uwierzytelniania aplikacji](../active-directory/develop/active-directory-certificate-credentials.md)
 * [Użyj certyfikatu protokołu SSL w kodzie aplikacji w Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 

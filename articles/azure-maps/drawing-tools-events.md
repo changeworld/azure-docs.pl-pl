@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: fd235f3f39d67f86c8387add79ca0dbf17dc5906
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cf9c79f608aa3ffd1137be41ff3348f62b890867
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911667"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198313"
 ---
 # <a name="drawing-tool-events"></a>Zdarzenia narzędzia do rysowania
 
-W przypadku korzystania z narzędzi do rysowania na mapie często warto reagować na niektóre zdarzenia, gdy użytkownik rysuje na mapie. W poniższej tabeli wymieniono wszystkie zdarzenia obsługiwane przez klasę `DrawingManager`.
+W przypadku korzystania z narzędzi do rysowania na mapie warto reagować na niektóre zdarzenia, gdy użytkownik rysuje na mapie. W tej tabeli wymieniono wszystkie zdarzenia obsługiwane przez klasę `DrawingManager`.
 
 | Wydarzenie | Opis |
 |-------|-------------|
 | `drawingchanged` | Uruchamiany, gdy dodaliśmy lub zmieniono dowolna Współrzędna kształtu. | 
-| `drawingchanging` | Uruchamiany, gdy zostanie wyświetlona Współrzędna podglądu dla kształtu. Na przykład program uruchamia wiele razy, gdy Współrzędna zostanie przeciągnięta. | 
+| `drawingchanging` | Uruchamiany, gdy zostanie wyświetlona Współrzędna podglądu dla kształtu. Na przykład to zdarzenie zostanie wyzwolone wiele razy, gdy Współrzędna zostanie przeciągnięta. | 
 | `drawingcomplete` | Uruchamiany po zakończeniu rysowania lub wyjęciu kształtu w trybie edycji. |
 | `drawingmodechanged` | Uruchamiany po zmianie trybu rysowania. Nowy tryb rysowania jest przenoszona do procedury obsługi zdarzeń. |
 | `drawingstarted` | Uruchamiany, gdy użytkownik rozpocznie Rysowanie kształtu lub umieszcza kształt w trybie edycji.  |
@@ -39,11 +39,11 @@ Zobacz <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>zdarzenia narzędzi do
 
 ## <a name="examples"></a>Przykłady
 
-Poniżej przedstawiono przykłady niektórych typowych scenariuszy korzystających z zdarzeń narzędzi do rysowania.
+Zapoznaj się z typowymi scenariuszami korzystającymi z zdarzeń narzędzi do rysowania.
 
 ### <a name="select-points-in-polygon-area"></a>Wybierz punkty w obszarze wielokąta
 
-Poniższy kod pokazuje, jak monitorować rysowanie kształtów reprezentujących obszary wielokąta (wielokąty, prostokąty i okręgi), a następnie określić, które punkty danych na mapie znajdują się w obszarze rysunku. Zdarzenie `drawingcomplete` służy do wyzwalania logiki SELECT. W ramach logiki SELECT wszystkie punkty danych na mapie są załączone i przetestowane pod kątem przechodzenia do sekcji z wieloczęściowym obszarem rysowania kształtu. W tym przykładzie użyto biblioteki typu open source [Turf. js](https://turfjs.org/) do wykonania obliczeń między częściami przestrzennymi.
+Ten kod demonstruje sposób monitorowania zdarzenia kształtów rysowania przez użytkownika. W tym przykładzie kod monitoruje kształty wielokątów, prostokątów i okręgów. Następnie określa, które punkty danych na mapie znajdują się w obszarze rysunku. Zdarzenie `drawingcomplete` służy do wyzwalania logiki SELECT. W ramach logiki SELECT kod przechodzi przez wszystkie punkty danych na mapie. Sprawdza, czy istnieje część przecięcia punktu i obszaru rysowanego kształtu. W tym przykładzie użyto biblioteki typu open source [Turf. js](https://turfjs.org/) do wykonania obliczeń między częściami przestrzennymi.
 
 <br/>
 
@@ -55,7 +55,7 @@ Zapoznaj się z piórem <a href='https://codepen.io/azuremaps/pen/XWJdeja'>Wybie
 
 ### <a name="draw-and-search-in-polygon-area"></a>Rysowanie i wyszukiwanie w obszarze wielokąta
 
-Poniższy kod pokazuje, jak przeprowadzić wyszukiwanie punktów zainteresowania w obszarze kształtu po zakończeniu rysowania kształtu przez użytkownika. Zdarzenie `drawingcomplete` służy do wyzwalania logiki wyszukiwania. Jeśli użytkownik rysuje prostokąt lub Wielokąt, wykonywane jest wyszukiwanie wewnątrz geometrii. Jeśli okrąg jest rysowany, pozycja promień i środek zostanie użyta do przeprowadzenia wyszukiwania w punkcie zainteresowania. Zdarzenie `drawingmodechanged` służy do ustalania, kiedy użytkownik przechodzi do trybu rysowania, i czyści kanwę rysunku.
+Ten kod wyszukuje punkty zainteresowań w obszarze kształtu po zakończeniu rysowania kształtu przez użytkownika. Możesz zmodyfikować i wykonać kod, klikając pozycję "Edytuj przy użyciu pióra kodu" w prawym górnym rogu ramki. Zdarzenie `drawingcomplete` służy do wyzwalania logiki wyszukiwania. Jeśli użytkownik rysuje prostokąt lub Wielokąt, wykonywane jest wyszukiwanie wewnątrz geometrii. Jeśli okrąg jest rysowany, pozycja promień i środek zostanie użyta do przeprowadzenia wyszukiwania w punkcie zainteresowania. Zdarzenie `drawingmodechanged` służy do określenia, kiedy użytkownik przełącza się do trybu rysowania, a to zdarzenie czyści kanwę rysunku.
 
 <br/>
 
@@ -67,7 +67,7 @@ Zobacz <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>rysowanie i wyszukiwan
 
 ### <a name="create-a-measuring-tool"></a>Tworzenie narzędzia pomiarowego
 
-Poniższy kod pokazuje, jak zdarzenia rysowania mogą być używane do tworzenia narzędzia pomiarowego. `drawingchanging` służy do monitorowania kształtu podczas jego rysowania. Gdy użytkownik przesuwa mysz, są obliczane wymiary kształtu. Zdarzenie `drawingcomplete` służy do wykonywania ostatecznego obliczenia na kształcie po jego narysowaniu. Zdarzenie `drawingmodechanged` służy do ustalania, kiedy użytkownik przechodzi do trybu rysowania, i czyści kanwę rysunku i stare informacje o pomiarach.
+Poniższy kod pokazuje, jak można użyć zdarzeń rysowania do utworzenia narzędzia pomiarowego. `drawingchanging` służy do monitorowania kształtu w miarę jego rysowania. Gdy użytkownik przesuwa mysz, są obliczane wymiary kształtu. Zdarzenie `drawingcomplete` służy do wykonywania ostatecznego obliczenia na kształcie po jego narysowaniu. Zdarzenie `drawingmodechanged` służy do ustalania, kiedy użytkownik przechodzi do trybu rysowania. Ponadto zdarzenie `drawingmodechanged` czyści kanwę rysowania i czyści informacje o starych pomiarach.
 
 <br/>
 

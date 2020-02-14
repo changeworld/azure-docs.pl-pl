@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 00ab3e9c7902e253d39a38eb0e98ee166244bca2
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b7f837c56214d2d01d0f119e0107a095bcfd782b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048584"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198773"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie zautomatyzowanych eksperymentów ML w języku Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -174,6 +174,8 @@ Oto niektóre przykłady:
 
 Trzy różne wartości parametrów `task` (trzeci typ zadania to `forecasting`i używa podobnej puli algorytmu jako `regression` zadania) określają listę modeli do zastosowania. Użyj parametrów `whitelist` lub `blacklist`, aby kontynuować modyfikowanie iteracji z dostępnymi modelami do dołączania lub wykluczania. Listę obsługiwanych modeli można znaleźć w [klasie SupportedModels](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) ([Klasyfikacja](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [prognozowanie](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)i [regresja](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)).
 
+Automatyczna walidacja servicea ML wymaga, aby `experiment_timeout_minutes` ustawić na minimalny limit czasu wynoszący 15 minut, aby zapobiec błędom przekroczenia limitu czasu eksperymentu.
+
 ### <a name="primary-metric"></a>Podstawowe metryki
 Metryka podstawowa określa metrykę, która ma być używana podczas uczenia modelu na potrzeby optymalizacji. Dostępne metryki, które można wybrać, są określane przez wybrany typ zadania, a w poniższej tabeli przedstawiono prawidłowe Podstawowe metryki dla każdego typu zadania.
 
@@ -307,7 +309,7 @@ project_folder = './sample_projects/automl-classification'
 experiment = Experiment(ws, experiment_name)
 ```
 
-Przesyłanie eksperymentu do uruchamiania i wygenerować model. Przekaż `AutoMLConfig` do metody `submit`, aby wygenerować model.
+Prześlij eksperyment, aby uruchomić i wygenerować model. Przekaż `AutoMLConfig` do metody `submit`, aby wygenerować model.
 
 ```python
 run = experiment.submit(automl_config, show_output=True)

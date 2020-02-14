@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: mialdrid
-ms.openlocfilehash: 143f2f36cc93a9d67a3ab800782c9a6bb8a52af0
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b4a83013d2cbeb2871a3963ec0c95144c02f4d66
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067359"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187025"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>Programowanie i Integracja interfejsu API ExpressRoute CrossConnnections
 
@@ -51,7 +51,7 @@ Testowanie lokalizacji komunikacji równorzędnej: urządzenia fikcyjne i porty 
 
 ### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2. Zarejestruj subskrypcję Dev_Provider, aby uzyskać dostęp do interfejsu API expressRouteCrossConnections
 
-Aby można było uzyskać dostęp do interfejsu API expressRouteCrossConnections, subskrypcja partnera musi zostać zarejestrowana w **dostawcy zasobów Microsoft. Network**. Wykonaj kroki opisane w artykule [dostawcy zasobów platformy Azure i typy](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#portal) artykułów, aby ukończyć proces rejestracji.
+Aby można było uzyskać dostęp do interfejsu API expressRouteCrossConnections, subskrypcja partnera musi zostać zarejestrowana w **dostawcy zasobów Microsoft. Network**. Wykonaj kroki opisane w artykule [dostawcy zasobów platformy Azure i typy](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) artykułów, aby ukończyć proces rejestracji.
 
 ### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3. Skonfiguruj uwierzytelnianie dla wywołań interfejsu API REST Azure Resource Manager
 

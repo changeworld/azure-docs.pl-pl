@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: dbb91106ad00e1a82e2e6e9c470e61764a4ad4c4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d5b5a69c7927d07c0ae6b3b56ec97b6551e5d46b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792033"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191332"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Wywoływanie, wyzwalanie lub zagnieżdżanie aplikacji logiki za pomocą punktów końcowych HTTP w Azure Logic Apps
 
@@ -36,7 +36,7 @@ Jeśli dopiero zaczynasz tworzyć aplikacje logiki, zobacz [co to jest Azure Log
 
 ## <a name="create-a-callable-endpoint"></a>Utwórz możliwy do nawoływać punkt końcowy
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). Utwórz i Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Utwórz i Otwórz pustą aplikację logiki w Projektancie aplikacji logiki.
 
    W tym przykładzie użyto wyzwalacza żądania, ale można użyć dowolnego wyzwalacza, który może odbierać przychodzące żądania HTTP. Wszystkie zasady identycznie stosują te wyzwalacze. Aby uzyskać więcej informacji na temat wyzwalacza żądania, zobacz [Odbieranie i odpowiadanie na przychodzące wywołania HTTPS przy użyciu Azure Logic Apps](../connectors/connectors-native-reqres.md).
 
@@ -309,10 +309,10 @@ Aby wyświetlić definicję JSON dla akcji odpowiedzi i kompletnej definicji JSO
 Odp **.: usługa**Azure bezpiecznie generuje adresy URL wywołania zwrotnego aplikacji logiki przy użyciu [sygnatury dostępu współdzielonego (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature). Ten podpis przechodzi przez parametr zapytania i musi być zweryfikowany, aby można było uruchomić aplikację logiki. Platforma Azure generuje podpis przy użyciu unikatowej kombinacji klucza tajnego na aplikację logiki, nazwę wyzwalacza i wykonywaną operację. Jeśli jednak ktoś nie ma dostępu do klucza aplikacji logiki tajnej, nie może wygenerować prawidłowego podpisu.
 
 > [!IMPORTANT]
-> W przypadku systemów produkcyjnych i zabezpieczających firma Microsoft zdecydowanie odradza wywoływanie aplikacji logiki bezpośrednio z przeglądarki z następujących powodów:
+> W przypadku systemów bezpieczeństwa i wyższych zabezpieczeń zdecydowanie odradzamy wywoływanie aplikacji logiki bezpośrednio z przeglądarki z następujących powodów:
 >
 > * Klucz dostępu współdzielonego zostanie wyświetlony w adresie URL.
-> * Nie można zarządzać bezpiecznymi zasadami zawartości ze względu na domeny udostępnione w ramach klientów Azure Logic Apps.
+> * Nie można zarządzać zasadami zawartości zabezpieczeń ze względu na domeny udostępnione w ramach klientów Azure Logic Apps.
 
 #### <a name="q-can-i-configure-http-endpoints-further"></a>P: Czy można już skonfigurować punkty końcowe HTTP?
 

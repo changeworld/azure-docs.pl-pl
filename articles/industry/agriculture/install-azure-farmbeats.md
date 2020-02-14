@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: b7d99c3bf61de17f9cebba834234cc8ea52f30d6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 701e42caba5325df34bdbb2381389708b9b5a03f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131880"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198858"
 ---
 # <a name="install-azure-farmbeats"></a>Zainstaluj projekt Azure FarmBeats
 
@@ -83,7 +83,9 @@ Do zainstalowania usługi Azure FarmBeats wymagane są następujące uprawnienia
 - Subskrypcja — właściciel
 - Grupa zasobów, w której jest instalowana FarmBeats — właściciel
 
-Pierwsze dwa uprawnienia są niezbędne do [utworzenia kroku aplikacji usługi AAD](#create-an-aad-application) . W razie potrzeby możesz uzyskać kogoś z odpowiednimi uprawnieniami do tworzenia aplikacji usługi AAD. Osoba instalująca FarmBeats musi być właścicielem grupy zasobów, w której jest instalowany FarmBeats.
+Pierwsze dwa uprawnienia są niezbędne do [utworzenia kroku aplikacji usługi AAD](#create-an-aad-application) . W razie potrzeby możesz uzyskać kogoś z odpowiednimi uprawnieniami do tworzenia aplikacji usługi AAD.
+
+Osoba, która uruchamia instalację FarmBeats z witryny Marketplace, musi być właścicielem grupy zasobów, w której jest instalowany FarmBeats. W przypadku właścicieli subskrypcji jest to wykonywane automatycznie podczas tworzenia grupy zasobów. W przypadku innych użytkowników należy najpierw utworzyć grupę zasobów i poproś właściciela subskrypcji o utworzenie właściciela grupy zasobów.
 
 Możesz sprawdzić uprawnienia dostępu w Azure Portal, postępując zgodnie z instrukcjami na stronie [Kontrola dostępu oparta na rolach](https://docs.microsoft.com/azure/role-based-access-control/check-access).
 
@@ -120,7 +122,15 @@ Wykonaj następujące kroki w wystąpieniu Cloud Shell przy użyciu środowiska 
         ./create_aad_script.ps1
     ```
 
-4. Skrypt usługi AAD zajmuje około 2 minut na uruchomienie i wyjście wartości na ekranie oraz do pliku JSON w tym samym katalogu. Jeśli ktoś inny uruchomił skrypt, poproś go o udostępnienie danych wyjściowych.
+4. Skrypt pyta o następujące trzy dane wejściowe:
+
+    - Nazwa witryny internetowej FarmBeats: jest to unikatowy prefiks adresu URL aplikacji sieci Web FarmBeats. W przypadku, gdy prefiks został już pobrany, skrypt wystąpi błąd. Po zainstalowaniu wdrożenie FarmBeats będzie dostępne z https://\<FarmBeats-Website-Name >. azurewebsites. NET, a interfejsy API struktury Swagger będą mieć wartość https://\<FarmBeats-Website-Name >-api.azurewebsites.net
+
+    - Identyfikator logowania platformy Azure: podaj identyfikator logowania platformy Azure dla użytkownika, który ma zostać dodany jako administrator FarmBeats. Ten użytkownik może następnie udzielić dostępu FarmBeats aplikacji sieci Web innym użytkownikom. Identyfikator logowania ma zwykle postać john.doe@domain.com. Dostępna jest również nazwa UPN platformy Azure.
+
+    - Identyfikator subskrypcji: to jest Identyfikator subskrypcji, w której chcesz zainstalować usługę Azure FarmBeats
+
+5. Skrypt usługi AAD zajmuje około 2 minut na uruchomienie i wyjście wartości na ekranie oraz do pliku JSON w tym samym katalogu. Jeśli ktoś inny uruchomił skrypt, poproś go o udostępnienie danych wyjściowych.
 
 ### <a name="create-sentinel-account"></a>Utwórz konto wskaźnikiem
 

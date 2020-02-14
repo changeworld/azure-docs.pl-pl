@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/19/2019
+ms.date: 02/07/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f31dec1d654124f9071c01c0e5d033db4b65a1d3
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 4a7c27beeb7208efcf6687e49193c8d3b68f5300
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509669"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186506"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizowanie demona zabezpieczeń usługi IoT Edge i środowiska uruchomieniowego
 
@@ -22,24 +22,29 @@ Ponieważ usługa IoT Edge zwalnia nowe wersje, należy zaktualizować urządzen
 
 Dwa składniki urządzenia usługi IoT Edge należy zaktualizować, jeśli chcesz przejść do nowszej wersji. Pierwszy to demon zabezpieczeń, który działa na urządzeniu i uruchamia moduły środowiska uruchomieniowego, gdy urządzenie zostanie uruchomione. Obecnie usługa demona zabezpieczeń można aktualizować tylko z samego urządzenia. Drugi składnik to środowisko uruchomieniowe składające się z centrów IoT Edge i IoT Edge agentów. W zależności od strukturą wdrożenia środowisko uruchomieniowe może zostać zaktualizowana z urządzenia lub zdalnie.
 
-Aby uzyskać najnowszą wersję usługi Azure IoT Edge, zobacz [wersje usługi Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
+Aby znaleźć najnowszą wersję Azure IoT Edge, zobacz [wersje Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
 
 ## <a name="update-the-security-daemon"></a>Aktualizacja demona zabezpieczeń
 
 Demon zabezpieczeń usługi IoT Edge jest natywny składnik, który musi zostać zaktualizowana przy użyciu Menedżera pakietów na urządzeniu usługi IoT Edge.
 
-Zapoznaj się z wersją demona zabezpieczeń na urządzeniu z za pomocą polecenia `iotedge version`.
+Sprawdź wersję demona zabezpieczeń działającą na urządzeniu za pomocą polecenia `iotedge version`.
 
 ### <a name="linux-devices"></a>Urządzeniami z systemem Linux
 
-Na urządzeniach z systemem Linux x64 Użyj apt-get lub odpowiedniego Menedżera pakietów, aby zaktualizować demona zabezpieczeń.
+Na urządzeniach z systemem Linux x64 Użyj apt-get lub odpowiedniego Menedżera pakietów, aby zaktualizować demona zabezpieczeń do najnowszej wersji.
 
 ```bash
 apt-get update
 apt-get install libiothsm iotedge
 ```
 
-Na urządzeniach z systemem Linux ARM32 wykonaj kroki opisane w temacie [Install Azure IoT Edge Runtime on Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) , aby zainstalować najnowszą wersję demona zabezpieczeń.
+Jeśli chcesz przeprowadzić aktualizację do określonej wersji demona zabezpieczeń, Znajdź wersję, której chcesz użyć w [wersjach IoT Edge](https://github.com/Azure/azure-iotedge/releases). W tej wersji Znajdź odpowiednie pliki **libiothsm-STD** i **iotedge** dla urządzenia. Dla każdego pliku kliknij prawym przyciskiem myszy łącze plik i skopiuj adres łącza. Użyj adresu linku, aby zainstalować określone wersje tych składników:
+
+```bash
+curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
+curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
+```
 
 ### <a name="windows-devices"></a>Urządzenia Windows
 
@@ -51,7 +56,16 @@ Na urządzeniach z systemem Windows należy zaktualizować demona zabezpieczeń 
 
 Uruchomienie polecenia Update-IoTEdge powoduje usunięcie i zaktualizowanie demona zabezpieczeń z urządzenia wraz z dwoma obrazami kontenera środowiska uruchomieniowego. Plik config. YAML jest przechowywany na urządzeniu, a także dane z aparatu kontenera Moby (Jeśli używasz kontenerów systemu Windows). Przechowywanie informacji o konfiguracji oznacza, że nie trzeba podawać parametrów połączenia ani informacji o usłudze Device Provisioning dla urządzenia ponownie w trakcie procesu aktualizacji.
 
-Jeśli chcesz zainstalować określoną wersję demona zabezpieczeń, Pobierz odpowiedni plik Microsoft-Azure-IoTEdge. cab z [wersji IoT Edge](https://github.com/Azure/azure-iotedge/releases). Następnie użyj parametru `-OfflineInstallationPath`, aby wskazać lokalizację pliku. Aby uzyskać więcej informacji, zobacz [Instalacja w trybie offline](how-to-install-iot-edge-windows.md#offline-installation).
+Jeśli chcesz przeprowadzić aktualizację do określonej wersji demona zabezpieczeń, Znajdź wersję, której chcesz użyć w [wersjach IoT Edge](https://github.com/Azure/azure-iotedge/releases). W tej wersji Pobierz plik **Microsoft-Azure-IoTEdge. cab** . Następnie użyj parametru `-OfflineInstallationPath`, aby wskazać lokalizację pliku lokalnego. Na przykład:
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
+```
+
+>[!NOTE]
+>`-OfflineInstallationPath` parametr szuka pliku o nazwie **Microsoft-Azure-IoTEdge. cab** w podanym katalogu. Począwszy od IoT Edge wersji 1.0.9-RC4 dostępne są dwa pliki cab, które mogą być używane, jeden dla urządzeń AMD64 i jeden dla ARM32. Pobierz właściwy plik dla urządzenia, a następnie zmień nazwę pliku, aby usunąć sufiks architektury.
+
+Aby uzyskać więcej informacji na temat opcji aktualizacji, użyj polecenia `Get-Help Update-IoTEdge -full` lub zapoznaj się ze [wszystkimi parametrami instalacji](how-to-install-iot-edge-windows.md#all-installation-parameters).
 
 ## <a name="update-the-runtime-containers"></a>Aktualizuj kontenerów środowiska wykonawczego
 
@@ -65,13 +79,13 @@ Sprawdź wersję agenta IoT Edge i IoT Edge modułów centrów dostępnych obecn
 
 Obraz IoT Edge i centrum IoT Edge są oznaczone za pomocą IoT Edge wersji, z którą są skojarzone. Istnieją dwa różne sposoby przy użyciu obrazów środowiska uruchomieniowego za pomocą tagów:
 
-* **Stopniowe tagi** — Użyj tylko dwie pierwsze wartości numer wersji można pobrać najnowszego obrazu, który odpowiada te cyfry. Na przykład 1.0 jest aktualizowany zawsze wtedy, gdy istnieje nowa wersja, aby wskazywał najnowszą wersję 1.0.x. Jeśli kontener środowiska uruchomieniowego na urządzeniu usługi IoT Edge ściąga obraz ponownie, moduły środowiska uruchomieniowego są aktualizowane do najnowszej wersji. To podejście jest zalecane do celów programistycznych. Wdrożenia z domyślnego portalu Azure do stopniowego tagów.
+* **Tagi walcowe** — Użyj tylko dwóch pierwszych wartości numeru wersji, aby uzyskać najnowszy obraz, który jest zgodny z tymi cyframi. Na przykład 1.0 jest aktualizowany zawsze wtedy, gdy istnieje nowa wersja, aby wskazywał najnowszą wersję 1.0.x. Jeśli kontener środowiska uruchomieniowego na urządzeniu usługi IoT Edge ściąga obraz ponownie, moduły środowiska uruchomieniowego są aktualizowane do najnowszej wersji. To podejście jest zalecane do celów programistycznych. Wdrożenia z domyślnego portalu Azure do stopniowego tagów.
 
-* **Określone znaczniki** — Użyj wszystkich trzech wartości numer wersji można jawnie ustawić wersję obrazu. Na przykład 1.0.7 nie zmieni się po początkowej wersji. Gdy wszystko będzie gotowe do aktualizacji, można zadeklarować nowego numeru wersji w pliku manifestu wdrożenia. To podejście jest zalecane do celów produkcyjnych.
+* **Określone Tagi** — Użyj wszystkich trzech wartości numeru wersji, aby jawnie ustawić wersję obrazu. Na przykład 1.0.7 nie zmieni się po początkowej wersji. Gdy wszystko będzie gotowe do aktualizacji, można zadeklarować nowego numeru wersji w pliku manifestu wdrożenia. To podejście jest zalecane do celów produkcyjnych.
 
 ### <a name="update-a-rolling-tag-image"></a>Uaktualnianie stopniowe obrazu znacznika
 
-Jeśli używasz stopniowe tagów w danym wdrożeniu (na przykład mcr.microsoft.com/azureiotedge-hub:**1.0**), a następnie należy wymusić kontener środowiska uruchomieniowego na urządzeniu, aby ściągnąć najnowszą wersję obrazu.
+Jeśli używasz znaczników stopniowych we wdrożeniu (na przykład mcr.microsoft.com/azureiotedge-hub:**1,0**), musisz wymusić na urządzeniu środowisko uruchomieniowe kontenera, aby ściągnąć najnowszą wersję obrazu.
 
 Usuń lokalną wersję obrazu z urządzenia usługi IoT Edge. Na maszynach z systemem Windows Dezinstalacja demona zabezpieczeń usuwa również obrazy środowiska uruchomieniowego, więc nie trzeba ponownie wykonać tego kroku.
 
@@ -80,7 +94,7 @@ docker rmi mcr.microsoft.com/azureiotedge-hub:1.0
 docker rmi mcr.microsoft.com/azureiotedge-agent:1.0
 ```
 
-Może być konieczne użycie uruchomionego z wymuszeniem `-f` flagę, aby usunąć obrazy.
+Aby usunąć obrazy, może być konieczne użycie flagi Force `-f`.
 
 Usługa IoT Edge pobierania najnowszych wersji obrazów środowiska uruchomieniowego i automatyczne uruchamianie ich na swoim urządzeniu ponownie.
 
@@ -108,17 +122,30 @@ Jeśli używasz określonych tagów we wdrożeniu (na przykład mcr.microsoft.co
 
 ## <a name="update-to-a-release-candidate-version"></a>Aktualizacja do wersji Release Candidate
 
-Azure IoT Edge regularnie zwalnia nowe wersje usługi IoT Edge. Przed każdą stabilną wersją jest dostępna co najmniej jedna wersja Release Candidate (RC). Wersje RC obejmują wszystkie planowane funkcje wydania, ale nadal przechodzą przez procesy testowania i sprawdzania poprawności wymagane do stabilnej wersji. Jeśli chcesz przetestować nową funkcję wcześniej, możesz zainstalować wersję RC i przekazać opinię za pomocą usługi GitHub.
+Azure IoT Edge regularnie zwalnia nowe wersje usługi IoT Edge. Przed każdą stabilną wersją jest dostępna co najmniej jedna wersja Release Candidate (RC). Wersje RC obejmują wszystkie planowane funkcje wydania, ale nadal przechodzą przez testowanie i weryfikację. Jeśli chcesz przetestować nową funkcję wcześniej, możesz zainstalować wersję RC i przekazać opinię za pomocą usługi GitHub.
 
 Wersje Release Candidate są zgodne z tą samą konwencją numerowania wydań, ale mają **-RC** Plus numer przyrostowy dołączony do końca. Kandydatów wersji można zobaczyć na tej samej liście wersji [Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases) , co w przypadku stabilnych wersji. Na przykład Znajdź **1.0.7-RC1** i **1.0.7-RC2**, dwie wersje kandydatów, które zostały dostarczone przed **1.0.7**. Możesz również sprawdzić, czy wersje RC są oznaczone etykietami **wersji wstępnej** .
 
-W ramach wersji zapoznawczych wersje Release Candidate nie są uwzględniane w najnowszej wersji docelowej zwykłych instalatorów. Zamiast tego należy ręcznie określić zasoby dla wersji RC, która ma zostać przetestowana. W zależności od systemu operacyjnego urządzenia IoT Edge należy skorzystać z poniższych sekcji w celu zaktualizowania IoT Edge do określonej wersji:
+Agent IoT Edge i moduły centralne mają wersje RC oznaczone tą samą konwencją. Na przykład **MCR.Microsoft.com/azureiotedge-Hub:1.0.7-RC2**.
+
+W ramach wersji zapoznawczych wersje Release Candidate nie są uwzględniane w najnowszej wersji docelowej zwykłych instalatorów. Zamiast tego należy ręcznie określić zasoby dla wersji RC, która ma zostać przetestowana. W większości przypadków Instalowanie lub aktualizowanie wersji RC jest takie samo, jak w przypadku każdej innej konkretnej wersji programu IoT Edge, z wyjątkiem jednej różnicy w przypadku urządzeń z systemem Windows. 
+
+W wersji Release Candidate skrypt programu PowerShell umożliwiający zainstalowanie demona zabezpieczeń IoT Edge na urządzeniu z systemem Windows i zarządzanie nim może mieć inne funkcje niż Najnowsza ogólnie dostępna wersja. Oprócz pobierania pliku IoT Edge. cab dla wersji RC należy również pobrać skrypt **IotEdgeSecurityDaemon. ps1** . Użyj [pochodzenia kropka](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) , aby uruchomić pobrany skrypt w bieżącym źródle. Na przykład: 
+
+```powershell
+. <path>\IoTEdgeSecurityDaemon.ps1
+Update-IoTEdge -OfflineInstallationPath <path>
+```
+
+Skorzystaj z sekcji w tym artykule, aby dowiedzieć się, jak zaktualizować urządzenie IoT Edge do określonej wersji modułów demonów zabezpieczeń lub środowiska uruchomieniowego.
+
+Jeśli instalujesz IoT Edge na nowym komputerze, Skorzystaj z poniższych linków, aby dowiedzieć się, jak zainstalować określoną wersję w zależności od systemu operacyjnego urządzenia:
 
 * [Linux](how-to-install-iot-edge-linux.md#install-a-specific-runtime-version)
-* [Windows](how-to-install-iot-edge-windows.md#offline-installation)
+* [Windows](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wyświetl najnowsze [wersje usługi Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
+Zapoznaj się z najnowszymi [wersjami Azure IoT Edge](https://github.com/Azure/azure-iotedge/releases).
 
 Bądź na bieżąco z najnowszymi aktualizacjami i ogłoszeniemi w [blogu Internet rzeczy](https://azure.microsoft.com/blog/topics/internet-of-things/)

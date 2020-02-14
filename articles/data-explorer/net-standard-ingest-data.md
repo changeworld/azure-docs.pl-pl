@@ -1,22 +1,22 @@
 ---
-title: Pozyskiwanie danych przy użyciu usługi Azure Data Explorer zestaw .NET Standard SDK (wersja zapoznawcza)
-description: W tym artykule dowiesz się, jak w celu pozyskiwania danych (załaduj) do Eksploratora danych Azure przy użyciu zestawu SDK programu .NET Standard.
+title: Pozyskiwanie danych przy użyciu usługi Azure Eksplorator danych .NET Standard SDK (wersja zapoznawcza)
+description: W tym artykule dowiesz się, jak pozyskiwanie (ładować) danych do platformy Azure Eksplorator danych przy użyciu zestawu .NET Standard SDK.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 53cf055a0900a25923fe67b961755c1f4367e1fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fb1301ae7e0cdff36f3771a44769c8bf9cc9c62
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66496891"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187911"
 ---
-# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Pozyskiwanie danych przy użyciu usługi Azure Data Explorer zestaw .NET Standard SDK (wersja zapoznawcza)
+# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Pozyskiwanie danych przy użyciu usługi Azure Eksplorator danych .NET Standard SDK (wersja zapoznawcza)
 
-Azure Data Explorer (ADX) to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa ADX udostępnia dwie biblioteki klienckie dla platformy .NET Standard: [bibliotekę pozyskiwania](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) i [bibliotekę danych](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Te biblioteki umożliwiają pozyskiwanie (ładowanie) danych do klastra i wykonywanie zapytań o dane z kodu. W tym artykule należy najpierw utworzyć tabelę i mapowanie danych klastra testowego. Następnie umieścisz pozyskiwanie w kolejce do klastra i sprawdzisz poprawność wyników.
+Azure Data Explorer (ADX) to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa ADX udostępnia dwie biblioteki klienckie dla platformy .NET Standard: [bibliotekę pozyskiwania](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) i [bibliotekę danych](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Te biblioteki umożliwiają pozyskiwanie (ładowanie) danych do klastra i wykonywanie zapytań o dane z kodu. W tym artykule należy najpierw utworzyć mapowanie tabeli i danych w klastrze testowym. Następnie umieścisz pozyskiwanie w kolejce do klastra i sprawdzisz poprawność wyników.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -30,7 +30,7 @@ Azure Data Explorer (ADX) to szybka i wysoce skalowalna usługa eksploracji dany
 Install-Package Microsoft.Azure.Kusto.Ingest.NETStandard
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Uwierzytelnianie
 
 Usługa Azure Data Explorer korzysta z identyfikatora dzierżawy usługi AAD w celu uwierzytelnienia aplikacji. Aby odnaleźć identyfikator dzierżawy, użyj następującego adresu URL, zastępując ciąg *YourDomain* nazwą domeny.
 
@@ -123,7 +123,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 ## <a name="define-ingestion-mapping"></a>Definiowanie mapowania pozyskiwania
 
 Zamapuj przychodzące dane CSV na nazwy kolumn używane podczas tworzenia tabeli.
-Aprowizacja [obiektu mapowania kolumn CSV](/azure/kusto/management/tables#create-ingestion-mapping) w tej tabeli
+Aprowizacja [obiektu mapowania kolumn CSV](/azure/kusto/management/create-ingestion-mapping-command) w tej tabeli
 
 ```csharp
 var tableMapping = "StormEvents_CSV_Mapping";
@@ -226,12 +226,12 @@ Uruchom następujące polecenie, aby wyświetlić stan wszystkich operacji pozys
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli planujesz wykonać nasze inne artykuły, zachować zasoby, które utworzono. W przeciwnym razie uruchom następujące polecenie w bazie danych, aby wyczyścić tabelę `StormEvents`.
+Jeśli planujesz postępować zgodnie z innymi artykułami, Zachowaj utworzone zasoby. W przeciwnym razie uruchom następujące polecenie w bazie danych, aby wyczyścić tabelę `StormEvents`.
 
 ```Kusto
 .drop table StormEvents
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Pisanie zapytań](write-queries.md)

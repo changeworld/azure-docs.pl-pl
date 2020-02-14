@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 7f6793cab3d2d7cc54252bae3a7393f836256bdd
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 854e7beb2afd8ae838455f77ff448f13d8b3fbea
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815531"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188977"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Informacje o zestawie Speech Devices SDK
 
@@ -27,27 +27,29 @@ Zestawu Speech Devices SDK może ułatwić:
 - Łatwo zintegrować usługę rozpoznawania mowy opartej na chmurze urządzenia.
 - Utwórz środowisko użytkownika wyjątkowych dla swoich klientów.
 
-Korzysta z zestawu Speech Devices SDK [zestaw SDK rozpoznawania mowy](speech-sdk.md). Zestaw SDK rozpoznawania mowy używa do wysyłania dźwięk, który jest przetwarzany przez naszych algorytm zaawansowane przetwarzanie audio z tablicy mikrofonu urządzenia do [usługa rozpoznawania mowy](overview.md). Aby zapewnić bardziej precyzyjne daleko pole używa audio wielokanałowe [rozpoznawania mowy](speech-to-text.md) za pośrednictwem pomijanie szumu, echa i kształtowaniem wiązki oraz dereverberation.
+Zestaw SDK urządzeń mowy korzysta z [zestawu Speech SDK](speech-sdk.md). Korzystając z naszych zaawansowanych algorytmów przetwarzania dźwięku z tablicą mikrofonu urządzenia, można wysłać dźwięk do [usługi mowy](overview.md). Zapewnia dokładne [rozpoznawanie mowy](speech-to-text.md) z odłożeniami przy użyciu funkcji pomijania szumów, anulowania echa, Beamforming i dereverberation.
 
-Za pomocą zestawu Speech Devices SDK można także tworzyć urządzenia otoczenia, które mają własne [niestandardowe słowo kluczowe](speech-devices-sdk-create-kws.md) , dzięki czemu wskaźnik inicjujący interakcję użytkownika jest unikatowy dla Twojej marki.
+Za pomocą zestawu Speech Devices SDK można także tworzyć urządzenia otoczenia z własnymi własnymi [słowami kluczowymi](speech-devices-sdk-create-kws.md). Słowo kluczowe Custom zawiera wskaźnik uruchamiający interakcję użytkownika, która jest unikatowa dla Twojej marki.
 
-Zestaw SDK urządzeń mowy ułatwia różne scenariusze z obsługą głosu, takie jak [asystentów głosowych](https://aka.ms/bots/speech/va), systemów do określania kolejności, [transkrypcji konwersacji](conversation-transcription-service.md)i inteligentnych głośników. Pozwalające reagować na użytkowników z tekstu, mowy posiadającej w domyślnej lub [niestandardowych voice](how-to-customize-voice-font.md), podaj wyniki wyszukiwania [tłumaczenie](speech-translation.md) na inne języki itd. Chętnie oglądanie, jakie zapewnia!
+Zestaw SDK urządzeń mowy umożliwia korzystanie z różnych scenariuszy z obsługą głosu, takich jak [asystentów głosowych](https://aka.ms/bots/speech/va), systemów porządkujących się na stacjach, [transkrypcji konwersacji](conversation-transcription-service.md)i inteligentnych głośników. Możesz odpowiedzieć użytkownikom z tekstem, mówić z powrotem do nich przy użyciu domyślnego lub [niestandardowego głosu](how-to-customize-voice-font.md), podać wyniki wyszukiwania, [przetłumaczać](speech-translation.md) je na inne języki i nie tylko. Chętnie oglądanie, jakie zapewnia!
 
 ## <a name="get-the-speech-devices-sdk"></a>Pobieranie zestawu Speech Devices SDK
 
 ### <a name="android"></a>Android
 
-W przypadku urządzeń z systemem Android pobierana jest Najnowsza wersja [zestawu SDK urządzeń z systemem Android](https://aka.ms/sdsdk-download-android).
+W przypadku systemu Android urządzenia pobierają najnowszą wersję [zestawu SDK urządzeń z systemem Android Speech](https://aka.ms/sdsdk-download-android).
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>System Windows
 
-W przypadku systemu Windows Przykładowa aplikacja jest dostarczana jako aplikacja Java dla wielu platform. Pobierz najnowszą wersję [zestawu SDK urządzeń mowy środowiska JRE](https://aka.ms/sdsdk-download-JRE).
+W przypadku systemu Windows Przykładowa aplikacja jest udostępniana jako aplikacja Java dla wielu platform. Pobierz najnowszą wersję [zestawu SDK urządzeń mowy środowiska JRE](https://aka.ms/sdsdk-download-JRE).
 Aplikacja została skompilowana przy użyciu pakietu zestawu Speech SDK, a środowisko IDE środowiska Java (v4) w systemie 64-bitowym. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
 
 ### <a name="linux"></a>Linux
 
 W przypadku systemu Linux Przykładowa aplikacja jest udostępniana jako aplikacja w języku Java dla wielu platform. Pobierz najnowszą wersję [zestawu SDK urządzeń mowy środowiska JRE](https://aka.ms/sdsdk-download-JRE).
 Aplikacja została skompilowana przy użyciu pakietu zestawu Speech SDK, a środowisko IDE języka Java (v4) w systemie 64-bitowym Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9). Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
+
+Dodatkowe pliki binarne są udostępniane do obsługi nadchodzących urządzeń, [zestawu DDK dla systemu roobo v2](https://aka.ms/sdsdk-download-roobov2)i [zestawu DDK Urbetter](https://aka.ms/sdsdk-download-urbetter).
 
 ## <a name="next-steps"></a>Następne kroki
 

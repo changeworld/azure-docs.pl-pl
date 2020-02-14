@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 60ff148e044df81e64b54fc48c1cb6f67aee14df
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275656"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189108"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>PRZESTARZAŁE Mikrousługi wersji Kanaryjskich z pomocą systemu Vamp na klastrze DC/OS Azure Container Service
 
@@ -127,13 +127,13 @@ Gdy Elasticsearch raporty jako **uruchomione**, możesz dodać pakiet platformy 
 
 Teraz, gdy pomocą systemu Vamp jest uruchomiona, wdróż usługę z planu. 
 
-W najprostszej postaci [pomocą systemu Vamp plan](https://vamp.io/documentation/using-vamp/blueprints/) opisuje punkty końcowe (bramy), klastry i usługi do wdrożenia. Pomocą systemu Vamp używa klastrów do grupowania różnych wariantów tej samej usługi w grupy logiczne dla testowania wydawania i/B.  
+W najprostszej postaci [pomocą systemu Vamp plan](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments) opisuje punkty końcowe (bramy), klastry i usługi do wdrożenia. Pomocą systemu Vamp używa klastrów do grupowania różnych wariantów tej samej usługi w grupy logiczne dla testowania wydawania i/B.  
 
 W tym scenariuszu jest stosowana Przykładowa aplikacja monolityczna o nazwie [**Sava**](https://github.com/magneticio/sava), która jest w wersji 1,0. Monolitu znajduje się w kontenerze platformy Docker, który znajduje się w usłudze Docker Hub w obszarze magneticio/Sava: 1.0.0. Aplikacja normalnie działa na porcie 8080, ale w tym przypadku chcesz ją uwidocznić w porcie 9050. Wdróż aplikację za pośrednictwem usługi pomocą systemu Vamp przy użyciu prostego planu.
 
 1. Przejdź do pozycji **wdrożenia**.
 
-2. Kliknij pozycję **Dodaj**.
+2. Kliknij pozycję **Add** (Dodaj).
 
 3. Wklej w poniższej strategii YAML. Ten plan zawiera jeden klaster z tylko jedną odmianą usługi, która została zmieniona w kolejnym kroku:
 
@@ -151,7 +151,7 @@ W tym scenariuszu jest stosowana Przykładowa aplikacja monolityczna o nazwie [*
               webport: 8080/http # cluster endpoint, used for canary releasing
    ```
 
-4. Kliknij pozycję **Zapisz**. Pomocą systemu Vamp inicjuje wdrożenie.
+4. Kliknij przycisk **Save** (Zapisz). Pomocą systemu Vamp inicjuje wdrożenie.
 
 Wdrożenie jest wyświetlane na stronie **wdrożenia** . Kliknij wdrożenie, aby monitorować jego stan.
 
@@ -211,7 +211,7 @@ Aby scalić nową usługę Sava 1,1 z uruchomionym wdrożeniem:
               webport: 8080/http # cluster endpoint to update
    ```
   
-3. Kliknij pozycję **Zapisz**. Plan jest przechowywany i wyświetlany na stronie **plany** .
+3. Kliknij przycisk **Save** (Zapisz). Plan jest przechowywany i wyświetlany na stronie **plany** .
 
 4. Otwórz menu Akcja w planie Sava: 1.1 i kliknij pozycję **Scal z**.
 
@@ -287,9 +287,9 @@ Wprowadzono również pewne zaawansowane funkcje pomocą systemu Vamp: scalanie 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o zarządzaniu akcjami pomocą systemu Vamp za pomocą [interfejsu API REST pomocą systemu Vamp](https://vamp.io/documentation/api/api-reference/).
+* Dowiedz się więcej o zarządzaniu akcjami pomocą systemu Vamp za pomocą [interfejsu API REST pomocą systemu Vamp](https://docs.vamp.io/how-vamp-works/events-and-metrics#events).
 
-* Twórz skrypty automatyzacji pomocą systemu Vamp w programie Node. js i uruchamiaj je jako [przepływy pracy pomocą systemu Vamp](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow).
+* Twórz skrypty automatyzacji pomocą systemu Vamp w programie Node. js i uruchamiaj je jako [przepływy pracy pomocą systemu Vamp](https://docs.vamp.io/how-vamp-works/concepts-and-components#workflows).
 
-* Zobacz dodatkowe [samouczki pomocą systemu Vamp](https://vamp.io/documentation/tutorials/).
+* Zobacz dodatkowe [samouczki pomocą systemu Vamp](https://docs.vamp.io/tutorials/).
 

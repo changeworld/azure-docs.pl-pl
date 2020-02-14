@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: eb4b51c94a62ad9f700b7cd448ff0f53485a16bf
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.date: 02/13/2020
+ms.openlocfilehash: 2fa43cb9ec526cfab2367431712e09406556a529
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110460"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191819"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Nawiązywanie połączenia z sieciami wirtualnymi platformy Azure z Azure Logic Apps przy użyciu środowiska usługi integracji (ISE)
 
-W przypadku scenariuszy, w których aplikacje logiki i konta integracji potrzebują dostępu do [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md), Utwórz [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE to środowisko prywatne i izolowane korzystające z dedykowanego magazynu i innych zasobów, które są oddzielone od publicznej "globalnej" Logic Apps usługi wielodostępnej. Ta separacja również zmniejsza wpływ innych dzierżawców platformy Azure na wydajność aplikacji. ISE udostępnia także własne statyczne adresy IP. Te adresy IP są niezależne od statycznych adresów IP, które są współużytkowane przez aplikacje logiki w publicznej, wielodostępnej usłudze.
+W przypadku scenariuszy, w których aplikacje logiki i konta integracji potrzebują dostępu do [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md), Utwórz [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE to środowisko izolowane korzystające z dedykowanego magazynu i innych zasobów, które są oddzielone od publicznej "globalnej" Logic Apps usługi wielodostępnej. Ta separacja również zmniejsza wpływ innych dzierżawców platformy Azure na wydajność aplikacji. ISE udostępnia także własne statyczne adresy IP. Te adresy IP są niezależne od statycznych adresów IP, które są współużytkowane przez aplikacje logiki w publicznej, wielodostępnej usłudze.
 
 Po utworzeniu ISE platforma Azure wprowadza tę ISE do sieci wirtualnej platformy Azure *, która następnie* wdraża usługę Logic Apps w sieci wirtualnej. Podczas tworzenia aplikacji logiki lub konta integracji wybierz swój ISE jako lokalizację. Aplikacja logiki lub konto integracji może następnie bezpośrednio uzyskać dostęp do zasobów, takich jak maszyny wirtualne, serwery, systemy i usługi, w sieci wirtualnej.
 
@@ -49,7 +49,7 @@ W tym artykule przedstawiono sposób wykonywania następujących zadań:
 
   * Upewnij się, że sieć wirtualna [umożliwia dostęp do usługi ISE](#enable-access) , dzięki czemu ISE może działać prawidłowo i pozostać dostępne.
 
-  * Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md), który zapewnia połączenie prywatne z usługami w chmurze firmy Microsoft, musisz [utworzyć tabelę tras](../virtual-network/manage-route-table.md) , która ma następującą trasę i połączyć tę tabelę z każdą podsiecią używaną przez ISE:
+  * Jeśli używasz [ExpressRoute](../expressroute/expressroute-introduction.md), który zapewnia prywatne połączenie z usługami w chmurze firmy Microsoft, które są obsługiwane przez dostawcę połączeń, musisz [utworzyć tabelę tras](../virtual-network/manage-route-table.md) , która ma następującą trasę i połączyć tę tabelę z każdą podsiecią używaną przez ISE:
 
     **Nazwa**: <*nazwę trasy*><br>
     **Prefiks adresu**: 0.0.0.0/0<br>
@@ -75,9 +75,10 @@ Aby upewnić się, że ISE jest dostępny i że aplikacje logiki w tym ISE mogą
 
 * W przypadku utworzenia nowej sieci wirtualnej platformy Azure i podsieci bez żadnych ograniczeń nie trzeba konfigurować [sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń)](../virtual-network/security-overview.md#network-security-groups) w sieci wirtualnej, aby kontrolować ruch w różnych podsieciach.
 
-* W istniejącej sieci wirtualnej można *Opcjonalnie* skonfigurować sieciowych grup zabezpieczeń przez [Filtrowanie ruchu sieciowego między podsieciami](../virtual-network/tutorial-filter-network-traffic.md). W przypadku wybrania tej trasy w sieci wirtualnej, w której chcesz skonfigurować sieciowych grup zabezpieczeń, upewnij się, że [porty zostały otwarte w tej tabeli](#network-ports-for-ise). W przypadku używania [reguł zabezpieczeń sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md#security-rules)wymagane są zarówno protokoły TCP, jak i UDP.
+* W istniejącej sieci wirtualnej można *Opcjonalnie* skonfigurować sieciowych grup zabezpieczeń przez [Filtrowanie ruchu sieciowego między podsieciami](../virtual-network/tutorial-filter-network-traffic.md). Jeśli chcesz przejść do tej trasy lub jeśli korzystasz już z sieciowych grup zabezpieczeń, upewnij się, że masz [otwarte porty w tej tabeli](#network-ports-for-ise) w sieci wirtualnej, w której masz sieciowych grup zabezpieczeń, lub chcesz skonfigurować sieciowych grup zabezpieczeń.
 
-* Jeśli wcześniej korzystasz z sieciowych grup zabezpieczeń, upewnij się, że zostały [otwarte porty w tej tabeli](#network-ports-for-ise). W przypadku używania [reguł zabezpieczeń sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md#security-rules)wymagane są zarówno protokoły TCP, jak i UDP.
+  > [!NOTE]
+  > W przypadku używania [reguł zabezpieczeń sieciowej grupy zabezpieczeń](../virtual-network/security-overview.md#security-rules)należy używać *zarówno* protokołów TCP, jak i UDP. SIECIOWEJ grupy zabezpieczeń reguły zabezpieczeń zawierają informacje o portach, które muszą być otwarte dla adresów IP, które wymagają dostępu do tych portów. Upewnij się, że wszystkie zapory, routery lub inne elementy, które istnieją między tymi punktami końcowymi, zachowują również dostęp do tych adresów IP.
 
 <a name="network-ports-for-ise"></a>
 
@@ -94,17 +95,17 @@ W tej tabeli opisano porty w sieci wirtualnej platformy Azure używane przez ISE
 | Komunikacja między sieciami | Przychodzące & wychodzące | 80, 443 | VirtualNetwork | VirtualNetwork | Do komunikacji między podsieciami |
 | Komunikacja z Azure Logic Apps | Wychodzący | 80, 443 | VirtualNetwork | Internet | Port zależy od usługi zewnętrznej, z którą komunikuje się usługa Logic Apps |
 | Azure Active Directory | Wychodzący | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
-| Zależność usługi Azure Storage | Wychodzący | 80, 443 | VirtualNetwork | Storage | |
+| Zależność usługi Azure Storage | Wychodzący | 80, 443, 445 | VirtualNetwork | Storage | |
 | Komunikacja do Azure Logic Apps | Przychodzący | 443 | ISE wewnętrzny: <br>VirtualNetwork <p><p>ISE zewnętrzne: <br>Internet | VirtualNetwork | Adres IP komputera lub usługi, który wywołuje wszystkie wyzwalacze żądań lub elementy webhook w aplikacji logiki. Zamknięcie lub zablokowanie tego portu uniemożliwia wywołania HTTP aplikacjom logiki z wyzwalaczami żądań. |
 | Historia uruchamiania aplikacji logiki | Przychodzący | 443 | ISE wewnętrzny: <br>VirtualNetwork <p><p>ISE zewnętrzne: <br>Internet | VirtualNetwork | Adres IP komputera, z którego ma zostać wyświetlona historia uruchamiania aplikacji logiki. Mimo że zamknięcie lub zablokowanie tego portu nie uniemożliwia wyświetlenia historii uruchamiania, nie można wyświetlić danych wejściowych i wyjściowych dla każdego kroku w tej historii uruchamiania. |
 | Zarządzanie połączeniami | Wychodzący | 443 | VirtualNetwork  | AppService | |
 | Publikowanie dzienników diagnostycznych & metryki | Wychodzący | 443 | VirtualNetwork  | AzureMonitor | |
 | Komunikacja z Traffic Manager platformy Azure | Przychodzący | ISE wewnętrzny: 454 <p><p>ISE zewnętrzne: 443 | AzureTrafficManager | VirtualNetwork | |
-| Logic Apps Designer — właściwości dynamiczne | Przychodzący | 454 | Zobacz kolumna uwagi dla adresów IP, aby zezwolić | VirtualNetwork | Żądania pochodzą z Logic Apps adresów IP [ruchu przychodzącego](../logic-apps/logic-apps-limits-and-config.md#inbound) punktu końcowego dostępu dla danego regionu. |
-| Sprawdzenie kondycji sieci | Przychodzący | 454 | Zobacz kolumna uwagi dla adresów IP, aby zezwolić | VirtualNetwork | Żądania pochodzą z punktu końcowego dostępu Logic Apps dla adresów IP zarówno dla [ruchu przychodzącego](../logic-apps/logic-apps-limits-and-config.md#inbound) , jak i [wychodzącego](../logic-apps/logic-apps-limits-and-config.md#outbound) . |
+| Logic Apps Designer — właściwości dynamiczne | Przychodzący | 454 | Zobacz kolumna **uwagi** dla adresów IP, aby zezwolić | VirtualNetwork | Żądania pochodzą z Logic Apps adresów IP [ruchu przychodzącego](../logic-apps/logic-apps-limits-and-config.md#inbound) punktu końcowego dostępu dla danego regionu. |
+| Sprawdzenie kondycji sieci | Przychodzący | 454 | Zobacz kolumna **uwagi** dla adresów IP, aby zezwolić | VirtualNetwork | Żądania pochodzą z punktu końcowego dostępu Logic Apps dla adresów IP zarówno dla [ruchu przychodzącego](../logic-apps/logic-apps-limits-and-config.md#inbound) , jak i [wychodzącego](../logic-apps/logic-apps-limits-and-config.md#outbound) . |
 | Zależność zarządzania App Service | Przychodzący | 454, 455 | AppServiceManagement | VirtualNetwork | |
 | Wdrożenie łącznika | Przychodzący | 454 | AzureConnectors | VirtualNetwork | Niezbędne do wdrażania i aktualizowania łączników. Zamknięcie lub zablokowanie tego portu powoduje, że wdrożenia ISE kończą się niepowodzeniem i uniemożliwiają aktualizacje lub poprawki łącznika. |
-| Wdrożenie zasad łącznika | Przychodzący | 3443 | Internet | VirtualNetwork | Niezbędne do wdrażania i aktualizowania łączników. Zamknięcie lub zablokowanie tego portu powoduje, że wdrożenia ISE kończą się niepowodzeniem i uniemożliwiają aktualizacje lub poprawki łącznika. |
+| Wdrożenie zasad łącznika | Przychodzący | 3443 | APIManagement | VirtualNetwork | Niezbędne do wdrażania i aktualizowania łączników. Zamknięcie lub zablokowanie tego portu powoduje, że wdrożenia ISE kończą się niepowodzeniem i uniemożliwiają aktualizacje lub poprawki łącznika. |
 | Zależność SQL platformy Azure | Wychodzący | 1433 | VirtualNetwork | SQL | |
 | Azure Resource Health | Wychodzący | 1886 | VirtualNetwork | AzureMonitor | Aby opublikować stan kondycji Resource Health |
 | Punkt końcowy zarządzania API Management | Przychodzący | 3443 | APIManagement | VirtualNetwork | |
@@ -117,16 +118,13 @@ W tej tabeli opisano porty w sieci wirtualnej platformy Azure używane przez ISE
 
 ## <a name="create-your-ise"></a>Tworzenie ISE
 
-Aby utworzyć środowisko usługi integracji (ISE), wykonaj następujące kroki:
+1. W [Azure Portal](https://portal.azure.com)w głównym polu wyszukiwania platformy Azure wprowadź `integration service environments` jako filtr, a następnie wybierz pozycję **środowiska usługi integracji**.
 
-1. W [Azure Portal](https://portal.azure.com)w głównym menu platformy Azure wybierz pozycję **Utwórz zasób**.
-W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
+   ![Znajdowanie i wybieranie "środowisk usługi integracji"](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
 
-   ![Tworzenie nowego zasobu](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
+1. W okienku **środowiska usługi integracji** wybierz pozycję **Dodaj**.
 
-1. W okienku tworzenia środowisko usługi integracji wybierz pozycję **Utwórz**.
-
-   ![Wybierz pozycję "Utwórz"](./media/connect-virtual-network-vnet-isolated-environment/create-integration-service-environment.png)
+   ![Znajdowanie i wybieranie "środowisk usługi integracji"](./media/connect-virtual-network-vnet-isolated-environment/add-integration-service-environment.png)
 
 1. Podaj te szczegóły dla danego środowiska, a następnie wybierz pozycję **Przegląd + Utwórz**, na przykład:
 
@@ -135,13 +133,13 @@ W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
    | Właściwość | Wymagany | Wartość | Opis |
    |----------|----------|-------|-------------|
    | **Subskrypcja** | Yes | <*Azure-subscription-name*> | Subskrypcja platformy Azure do użycia w danym środowisku |
-   | **Grupa zasobów** | Yes | <*Azure-Resource-Group-name*> | Grupa zasobów platformy Azure, w której ma zostać utworzone środowisko |
+   | **Grupa zasobów** | Yes | <*Azure-Resource-Group-name*> | Nowa lub istniejąca Grupa zasobów platformy Azure, w której chcesz utworzyć środowisko |
    | **Nazwa środowiska usługi integracji** | Yes | <*Nazwa środowiska*> | Nazwa ISE, która może zawierać tylko litery, cyfry, łączniki (`-`), podkreślenia (`_`) i okresów (`.`). |
    | **Lokalizacja** | Yes | <> *platformy Azure — centrum* danych | Region centrum danych platformy Azure, w którym ma zostać wdrożone środowisko |
    | **SKU** | Yes | **Premium** lub **Developer (bez umowy SLA)** | Jednostka SKU ISE do utworzenia i użycia. Aby uzyskać różnice między tymi jednostkami SKU, zobacz [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). <p><p>**Ważne**: Ta opcja jest dostępna tylko podczas tworzenia ISE i nie można jej później zmienić. |
    | **Dodatkowa pojemność** | Tytułu <br>Yes <p><p>Pisał <br>Nie dotyczy | Tytułu <br>od 0 do 10 <p><p>Pisał <br>Nie dotyczy | Liczba dodatkowych jednostek przetwarzania, które mają być używane dla tego zasobu ISE. Aby dodać pojemność po utworzeniu, zobacz [Dodawanie pojemności ISE](#add-capacity). |
    | **Punkt końcowy dostępu** | Yes | **Wewnętrzne** lub **zewnętrzne** | Typ punktów końcowych dostępu, które mają być używane dla ISE. Te punkty końcowe określają, czy wyzwalacze żądań lub elementów webhook w usłudze Logic Apps w ISE mogą odbierać wywołania spoza sieci wirtualnej. <p><p>Wybór ma także wpływ na sposób wyświetlania i uzyskiwania dostępu do danych wejściowych i wyjściowych w historii uruchamiania aplikacji logiki. Aby uzyskać więcej informacji, zobacz [ISE Endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Ważne**: Ta opcja jest dostępna tylko podczas tworzenia ISE i nie można jej później zmienić. |
-   | **Sieć wirtualna** | Yes | <*Azure-Virtual-Network-name*> | Sieć wirtualna platformy Azure, w której chcesz wstrzyknąć środowisko, aby aplikacje logiki w tym środowisku mogły uzyskiwać dostęp do sieci wirtualnej. Jeśli nie masz sieci, [najpierw Utwórz sieć wirtualną platformy Azure](../virtual-network/quick-create-portal.md). <p>**Ważne**: to iniekcja można wykonać *tylko* po utworzeniu ISE. |
+   | **Sieć wirtualna** | Yes | <*Azure-Virtual-Network-name*> | Sieć wirtualna platformy Azure, w której chcesz wstrzyknąć środowisko, aby aplikacje logiki w tym środowisku mogły uzyskiwać dostęp do sieci wirtualnej. Jeśli nie masz sieci, [najpierw Utwórz sieć wirtualną platformy Azure](../virtual-network/quick-create-portal.md). <p><p>**Ważne**: to iniekcja można wykonać *tylko* po utworzeniu ISE. |
    | **Podsieci** | Yes | <*podsieć-Lista zasobów*> | ISE wymaga czterech *pustych* podsieci do tworzenia i wdrażania zasobów w środowisku. Aby utworzyć każdą podsieć, [wykonaj kroki opisane w tej tabeli](#create-subnet). |
    |||||
 
@@ -175,22 +173,22 @@ W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
      **Prefiks adresu**: 0.0.0.0/0<br>
      **Następny przeskok**: Internet
 
-   1. Na liście **podsieci** wybierz kolejno pozycje **Zarządzaj konfiguracja podsieci**.
+   1. Na liście **podsieci** wybierz pozycję **Zarządzaj konfiguracją podsieci**.
 
-      ![Zarządzanie konfiguracją podsieci](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
+      ![Zarządzanie konfiguracją podsieci](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet-configuration.png)
 
-   1. W okienku **podsieci** wybierz **podsieć**.
+   1. W okienku **podsieci** wybierz pozycję **podsieć**.
 
-      ![Dodawanie podsieci](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
+      ![Dodaj cztery puste podsieci](./media/connect-virtual-network-vnet-isolated-environment/add-empty-subnets.png)
 
    1. W okienku **Dodaj podsieć** podaj te informacje.
 
       * **Name**: Nazwa podsieci
       * **Zakres adresów (blok CIDR)** : zakres podsieci w sieci wirtualnej i w formacie CIDR
 
-      ![Dodawanie szczegółów podsieci](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
+      ![Dodawanie szczegółów podsieci](./media/connect-virtual-network-vnet-isolated-environment/provide-subnet-details.png)
 
-   1. Gdy wszystko będzie gotowe, wybierz pozycję **OK**.
+   1. Gdy skończysz, wybierz opcję **OK**.
 
    1. Powtórz te kroki dla trzech więcej podsieci.
 
@@ -209,7 +207,7 @@ W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
 
    Jeśli wdrożenie zakończyło się pomyślnie, na platformie Azure zostanie wyświetlone następujące powiadomienie:
 
-   ![Wdrożenie powiodło się](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
+   ![Wdrożenie powiodło się](./media/connect-virtual-network-vnet-isolated-environment/deployment-success-message.png)
 
    W przeciwnym razie postępuj zgodnie z Azure Portal instrukcjami dotyczącymi rozwiązywania problemów z wdrażaniem.
 
@@ -233,23 +231,42 @@ W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
 
 ## <a name="add-ise-capacity"></a>Dodawanie pojemności ISE
 
-Jednostka bazowa ISE Premium ma stałą pojemność, więc jeśli potrzebujesz większej przepływności, możesz dodać więcej jednostek skalowania podczas tworzenia lub później. Możesz automatycznie skalować na podstawie metryk wydajności lub w oparciu o kilka dodatkowych jednostek przetwarzania. W przypadku wybrania opcji Skalowanie automatyczne na podstawie metryk można wybrać różne kryteria i określić warunki progowe spełniające te kryteria. Jednostka SKU dla deweloperów nie obejmuje możliwości dodawania jednostek skalowania.
+Jednostka bazowa ISE Premium ma stałą pojemność, więc jeśli potrzebujesz większej przepływności, możesz dodać więcej jednostek skalowania podczas tworzenia lub później. Jednostka SKU dla deweloperów nie obejmuje możliwości dodawania jednostek skalowania.
 
 1. W Azure Portal Znajdź swój ISE.
 
-1. Aby sprawdzić metryki użycia i wydajności dla ISE, w menu głównym ISE wybierz pozycję **Przegląd**.
+1. Aby sprawdzić metryki użycia i wydajności dla ISE, w menu ISE wybierz pozycję **Przegląd**.
 
    ![Wyświetl użycie dla ISE](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-usage.png)
 
-1. Aby skonfigurować Skalowanie automatyczne, w obszarze **Ustawienia**wybierz pozycję **Skaluj w poziomie**. Na karcie **Konfiguracja** wybierz pozycję **Włącz automatyczne skalowanie**.
+1. W obszarze **Ustawienia**wybierz pozycję **Skaluj w poziomie**. W okienku **Konfigurowanie** wybierz jedną z następujących opcji:
 
-   ![Włącz Skalowanie automatyczne](./media/connect-virtual-network-vnet-isolated-environment/scale-out.png)
+   * [**Skalowanie ręczne**](#manual-scale): skalowanie w oparciu o liczbę jednostek przetwarzania, których chcesz użyć.
+   * [**Niestandardowe automatyczne skalowanie**](#custom-autoscale): skalowanie w oparciu o metryki wydajności, wybierając spośród różnych kryteriów i określając warunki progowe spełniające te kryteria.
 
-1. W obszarze **Nazwa ustawienia automatycznego skalowania**Podaj nazwę ustawienia.
+   ![Wybierz odpowiedni typ skalowania](./media/connect-virtual-network-vnet-isolated-environment/select-scale-out-options.png)
 
-1. W sekcji **domyślnej** wybierz pozycję **skalowanie na podstawie metryki** lub **skali do określonej liczby wystąpień**.
+<a name="manual-scale"></a>
 
-   * Jeśli wybierzesz opcję oparty na wystąpieniu, wprowadź liczbę jednostek przetwarzania z przedziału od 0 do 10 włącznie.
+### <a name="manual-scale"></a>Skalowanie ręczne
+
+1. Po wybraniu opcji **skalowanie ręczne**wybierz liczbę jednostek skalowania **, które**mają być używane.
+
+   ![Wybierz odpowiedni typ skalowania](./media/connect-virtual-network-vnet-isolated-environment/select-manual-scale-out-units.png)
+
+1. Po zakończeniu wybierz pozycję **Zapisz**.
+
+<a name="custom-autoscale"></a>
+
+### <a name="custom-autoscale"></a>Niestandardowe Skalowanie automatyczne
+
+1. Po wybraniu opcji **niestandardowe automatyczne skalowanie**dla **nazwy ustawienia automatycznego skalowania**Podaj nazwę ustawienia i opcjonalnie wybierz grupę zasobów platformy Azure, do której należy to ustawienie.
+
+   ![Podaj nazwę ustawienia automatycznego skalowania i wybierz grupę zasobów](./media/connect-virtual-network-vnet-isolated-environment/select-custom-autoscale.png)
+
+1. W przypadku warunku **domyślnego** wybierz opcję **skalowanie na podstawie metryki** lub **skali do określonej liczby wystąpień**.
+
+   * Jeśli wybierzesz opcję oparty na wystąpieniu, wprowadź liczbę jednostek przetwarzania, która jest wartością z przedziału od 0 do 10.
 
    * W przypadku wybrania opcji opartych na pomiarach wykonaj następujące czynności:
 
@@ -257,7 +274,13 @@ Jednostka bazowa ISE Premium ma stałą pojemność, więc jeśli potrzebujesz w
 
      1. W okienku **reguła skalowania** Skonfiguruj swoje kryteria i akcję, które mają być wykonywane po wyzwoleniu reguły.
 
-     1. Gdy skończysz, wybierz pozycję **Dodaj**.
+     1. W obszarze **limity wystąpień**określ następujące wartości:
+
+        * **Minimum**: minimalna liczba jednostek przetwarzania do użycia
+        * **Maksimum**: Maksymalna liczba jednostek przetwarzania do użycia
+        * **Domyślnie**: Jeśli wystąpią problemy podczas odczytywania metryk zasobów, a bieżąca pojemność jest mniejsza niż domyślna pojemność, Skalowanie automatyczne jest skalowane do domyślnej liczby jednostek przetwarzania. Jeśli jednak bieżąca pojemność przekracza pojemność domyślną, Skalowanie automatyczne nie jest skalowane.
+
+1. Aby dodać kolejny warunek, wybierz pozycję **Dodaj warunek skalowania**.
 
 1. Po zakończeniu korzystania z ustawień automatycznego skalowania Zapisz zmiany.
 

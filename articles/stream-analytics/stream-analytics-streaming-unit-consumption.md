@@ -7,14 +7,14 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: d270d38bce45c45f9323a971ad69dc2b931a9169
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369851"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201496"
 ---
-# <a name="understand-and-adjust-streaming-units"></a>Zrozumienie i Dostosowywanie jednostek przesyłania strumieniowego
+# <a name="understand-and-adjust-streaming-units"></a>Opis i dostosowywanie jednostek przesyłania strumieniowego
 
 Jednostki przesyłania strumieniowego (SUs) reprezentują zasoby obliczeniowe, które są przydzieleni do wykonywania zadania Stream Analytics. Im większa liczba jednostek przesyłania strumieniowego, tym większa ilość zasobów procesora i pamięci jest przydzielana do zadania. Ta pojemność umożliwia skoncentrowanie się na logice zapytania i umożliwia streszczenie konieczności zarządzania sprzętem w celu uruchomienia Stream Analytics zadania w odpowiednim czasie.
 
@@ -59,6 +59,8 @@ Dane czasowe (zorientowane czasie) są podstawowym zestawem operatorów stanowyc
 Należy pamiętać, że zadanie ze złożoną logiką zapytań może mieć wysokie użycie elementu SU% nawet wtedy, gdy nie będzie on ciągle otrzymywał zdarzeń wejściowych. Może to nastąpić po nagłym pojściu w zdarzeniach wejściowych i wyjściowych. Zadanie może nadal utrzymać stan w pamięci, jeśli zapytanie jest złożone.
 
 Użycie SU% może nagle porzucić do 0 przez krótki czas przed powrotem do oczekiwanego poziomu. Dzieje się tak z powodu błędów przejściowych lub uaktualnień inicjowanych przez system. Zwiększenie liczby jednostek przesyłania strumieniowego dla zadania może nie zmniejszyć użycia elementu SU%, jeśli zapytanie nie jest w [pełni równoległe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization).
+
+Porównując użycie w danym okresie czasu, użyj [metryk współczynnika zdarzeń](stream-analytics-monitoring.md). Metryki InputEvents i OutputEvents pokazują, ile zdarzeń zostało odczytanych i przetworzonych. Istnieją metryki wskazujące liczbę zdarzeń błędów, jak również błędy deserializacji. Po zwiększeniu liczby zdarzeń na jednostkę czasu SU% rośnie w większości przypadków.
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>Logiki zapytania stanowych w elementach danych czasowych
 Jednym z unikatowych możliwości zadania usługi Azure Stream Analytics jest wykonanie stanowych przetwarzania, takich jak okresowymi danych czasowych sprzężeń i funkcji analitycznych danych czasowych. Każdy z tych operatorów przechowuje informacje o stanie. Maksymalny rozmiar okna dla tych elementów zapytania wynosi siedem dni. 

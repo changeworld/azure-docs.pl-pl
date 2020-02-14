@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 7527cd59ef812c108cc53f84ad19f4d2cff9ec5e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: fdc6834f3fb5ee97f27a6397645b965863e90a6b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893561"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190534"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Instalowanie sterowników AMD GPU na maszynach wirtualnych serii N z systemem Windows
 
@@ -37,7 +37,7 @@ Aby zapoznać się z podstawowymi danymi, pojemnościami magazynu i szczegółam
 
 1. Połącz się Pulpit zdalny z każdą maszyną wirtualną serii NVv4.
 
-1. Pobierania i Wyodrębnij pliki instalacji sterownika. Przejdź do folderu i uruchom plik "Setup. exe" w celu zainstalowania obsługiwanego sterownika dla systemu operacyjnego Windows.
+1. Pobierz i Wyodrębnij pliki instalacji sterownika. Przejdź do folderu i uruchom plik "Setup. exe" w celu zainstalowania obsługiwanego sterownika dla systemu operacyjnego Windows.
 
 ## <a name="verify-driver-installation"></a>Weryfikuj instalację sterownika
 

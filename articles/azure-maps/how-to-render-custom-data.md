@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 049762382bb1a67da21f5b95fdf28319672bfca6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766042"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198211"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Renderowanie niestandardowych danych na mapie rastrowej
 
-W tym artykule wyjaśniono, jak używać [statycznej usługi obrazu](https://docs.microsoft.com/rest/api/maps/render/getmapimage) z funkcją kompozycji obrazu, aby zezwalać na nakładki na górze mapy rastrowej. Kompozycja obrazów obejmuje możliwość uzyskania kafelka rastrowego, z dodatkowymi danymi, takimi jak niestandardowe pinezki, etykiety i nakładki geometryczne.
+W tym artykule wyjaśniono, jak używać [usługi obrazu statycznego](https://docs.microsoft.com/rest/api/maps/render/getmapimage)z funkcją kompozycji obrazu, aby zezwolić na nakładki na górze mapy rastrowej. Kompozycja obrazów obejmuje możliwość uzyskania kafelka rastrowego, z dodatkowymi danymi, takimi jak niestandardowe pinezki, etykiety i nakładki geometryczne.
 
 Aby renderować niestandardowe pinezki, etykiety i nakładki geometryczne, można użyć aplikacji programu Poster. Za pomocą [interfejsów API usługi danych](https://docs.microsoft.com/rest/api/maps/data) Azure Maps można przechowywać i renderować nakładki.
 
@@ -43,7 +43,7 @@ Aby renderować pinezki z etykietami i obrazem niestandardowym, wykonaj następu
 
 1. Utwórz kolekcję, w której mają być przechowywane żądania. W aplikacji Poster wybierz pozycję **Nowy**. W oknie **Tworzenie nowego** okna wybierz pozycję **Kolekcja**. Nadaj kolekcji nazwę i wybierz przycisk **Utwórz** . 
 
-2. Aby utworzyć żądanie, wybierz pozycję **nowe** ponownie. W oknie **Tworzenie nowego** okna wybierz pozycję **Żądaj**. Wprowadź **nazwę żądania** dla pinezki. Wybierz kolekcję utworzoną w poprzednim kroku jako lokalizację, w której ma zostać zapisane żądanie, a następnie wybierz pozycję **Zapisz**.
+2. Aby utworzyć żądanie, wybierz pozycję **nowe** ponownie. W oknie **Tworzenie nowego** okna wybierz pozycję **Żądaj**. Wprowadź **nazwę żądania** dla pinezki. Wybierz kolekcję utworzoną w poprzednim kroku jako lokalizację, w której ma zostać zapisane żądanie. Następnie wybierz pozycję **Zapisz**.
     
     ![Utwórz żądanie w programie Poster](./media/how-to-render-custom-data/postman-new.png)
 
@@ -148,7 +148,7 @@ Możesz również uzyskać informacje o ścieżce i lokalizacji numeru PIN przy 
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. Aby uzyskać udId, Otwórz nową kartę w aplikacji Poster i wybierz pozycję Pobierz metodę HTTP na karcie Konstruktor i wprowadź żądanie GET w identyfikatorze URI stanu. Jeśli przekazywanie danych zakończyło się pomyślnie, otrzymasz udId w treści odpowiedzi. Skopiuj udId.
+6. Aby uzyskać udId, Otwórz nową kartę w aplikacji Poster. Na karcie Konstruktor wybierz pozycję Pobierz metodę HTTP. Wprowadź żądanie GET w identyfikatorze URI stanu. Jeśli przekazywanie danych zakończyło się pomyślnie, otrzymasz udId w treści odpowiedzi. Skopiuj udId.
 
    ```JSON
    {

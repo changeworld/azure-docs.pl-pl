@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 8c3e377faef4e18bff01fd7001751d1f1e347b8d
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030878"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198943"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Apache Hadoop w usłudze HDInsight
 
@@ -27,7 +27,7 @@ Usługa Hadoop zapewnia wysoką dostępność i niezawodność dzięki replikacj
 Węzły w klastrze usługi HDInsight są implementowane przy użyciu Virtual Machines platformy Azure. W poniższych sekcjach omówiono typy poszczególnych węzłów używane w usłudze HDInsight.
 
 > [!NOTE]  
-> Nie wszystkie typy węzłów są używane dla typu klastra. Na przykład typ klastra usługi Hadoop nie ma żadnych węzłów Nimbus. Aby uzyskać więcej informacji na temat węzłów używanych przez typy klastrów usługi HDInsight, zobacz sekcję typy klastrów w dokumencie [Tworzenie klastrów Hadoop opartych na systemie Linux w usłudze HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) .
+> Nie wszystkie typy węzłów są używane dla typu klastra. Na przykład typ klastra usługi Hadoop nie ma żadnych węzłów Nimbus. Aby uzyskać więcej informacji na temat węzłów używanych przez typy klastrów usługi HDInsight, zobacz sekcję typy klastrów w dokumencie [Tworzenie klastrów Hadoop opartych na systemie Linux w usłudze HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-type) .
 
 ### <a name="head-nodes"></a>Węzły główne
 

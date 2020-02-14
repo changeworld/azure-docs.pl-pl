@@ -2,20 +2,20 @@
 title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: functions
-author: ggailey777
-manager: cfowler
+author: craigshoemaker
+manager: gwallace
 ms.service: azure-functions
 ms.topic: include
-ms.date: 05/17/2018
-ms.author: tdykstra
+ms.date: 01/28/2020
+ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: c2fff707dcaafac69efcad3dbf33446a7b797396
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6a37850eb6536c5399d63144e60ea210fbc194d8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67608309"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198426"
 ---
-### <a name="azure-storage-sdk-version-in-functions-1x"></a>Wersja usługi Azure Storage SDK w funkcjach 1.x
+#### <a name="azure-storage-sdk-version-in-functions-1x"></a>Wersja zestawu SDK usługi Azure Storage w funkcjach 1. x
 
-W przypadku funkcji 1.x magazynu wyzwalaczy i powiązań Użyj 7.2.1 wersję zestawu SDK usługi Azure Storage ([WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1) pakietu NuGet). Jeśli odwołujesz się inną wersję zestawu SDK usługi Storage i powiązać typu zestawu SDK usługi Storage w podpisie funkcji, środowisko uruchomieniowe usługi Functions może zgłaszać, nie można powiązać jej do tego typu. Rozwiązanie jest, aby upewnić się, że odwołania projektu [WindowsAzure.Storage 7.2.1](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1).
+W funkcjach 1. x wyzwalacze magazynu i powiązania używają wersji 7.2.1 zestawu SDK usługi Azure Storage (pakiet NuGet[windowsazure. Storage](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1) ). Jeśli odwołujesz się do innej wersji zestawu SDK magazynu i utworzysz powiązanie z typem zestawu SDK magazynu w podpisie funkcji, środowisko uruchomieniowe funkcji może zgłosić, że nie można powiązać z tym typem. Rozwiązaniem jest upewnienie się, że projekt odwołuje się do [windowsazure. Storage 7.2.1](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1).
