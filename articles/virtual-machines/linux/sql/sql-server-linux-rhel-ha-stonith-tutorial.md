@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 01/27/2020
-ms.openlocfilehash: 3f5f51c944cab84c00e29b2f72433a726ed70d33
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0eaff1685cea88d352f1a22f382b7af2ed0ed6cb
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024351"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252216"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Samouczek: Konfigurowanie grup dostępności dla SQL Server na maszynach wirtualnych RHEL na platformie Azure 
 
@@ -22,7 +22,7 @@ ms.locfileid: "77024351"
 >
 > W tym samouczku używamy SQL Server 2017 z RHEL 7,6, ale można użyć SQL Server 2019 w RHEL 7 lub RHEL 8, aby skonfigurować HA. Polecenia służące do konfigurowania zasobów grupy dostępności zostały zmienione w RHEL 8. Aby zapoznać się z artykułem, [Utwórz zasób grupy dostępności](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) i zasoby RHEL 8, aby uzyskać więcej informacji na temat prawidłowych poleceń.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > - Tworzenie nowej grupy zasobów, zestawu dostępności i usługi Azure Linux Virtual Machines (VM)
@@ -196,7 +196,7 @@ W przypadku pomyślnego nawiązania połączenia powinny zostać wyświetlone na
 
 Wpisz `exit`, aby opuścić sesję SSH.
 
-## <a name="enable-high-availability"></a>Włącz tryb wysokiej dostępności
+## <a name="enable-high-availability"></a>Włącz wysoką dostępność
 
 > [!IMPORTANT]
 > Aby ukończyć tę część samouczka, musisz mieć subskrypcję usługi RHEL i dodatek o wysokiej dostępności. Jeśli używasz obrazu zalecanego w poprzedniej sekcji, nie musisz rejestrować kolejnej subskrypcji.
@@ -355,7 +355,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
 
 ### <a name="register-a-new-application-in-azure-active-directory"></a>Zarejestruj nową aplikację w Azure Active Directory
  
- 1. Przejdź do usługi https://portal.azure.com
+ 1. Przejdź do strony https://portal.azure.com
  2. Otwórz [blok Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties). Przejdź do właściwości i zanotuj nazwę katalogu. Jest to `tenant ID`
  3. Kliknij [ **rejestracje aplikacji**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. Kliknij pozycję **Nowa rejestracja**
@@ -435,7 +435,7 @@ Powinny zostać wyświetlone następujące dane wyjściowe:
 
 Przypisz rolę niestandardową `Linux Fence Agent Role-<username>` utworzoną w ostatnim kroku do nazwy głównej usługi. Nie używaj roli właściciel już!
  
-1. Przejdź do usługi https://portal.azure.com
+1. Przejdź do strony https://portal.azure.com
 2. Otwórz [blok wszystkie zasoby](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAll)
 3. Wybierz maszynę wirtualną, w pierwszym węźle klastra
 4. Kliknij pozycję **Kontrola dostępu (IAM)**
@@ -543,7 +543,7 @@ sudo /opt/mssql/bin/mssql-conf set hadr.hadrenabled 1
 sudo systemctl restart mssql-server
 ```
 
-### <a name="create-a-certificate"></a>Tworzenie certyfikatu
+### <a name="create-a-certificate"></a>Utwórz certyfikat
 
 Obecnie nie obsługujemy uwierzytelniania usługi AD w punkcie końcowym AG. W związku z tym musimy używać certyfikatu do szyfrowania za pomocą usługi AG.
 
@@ -786,7 +786,7 @@ Jeśli lista `synchronization_state_desc` SYNCHRONIZOWANA dla `db1`, oznacza to,
 
 ### <a name="create-the-ag-cluster-resource"></a>Tworzenie zasobu w klastrze AG
 
-1. Użyj poniższego polecenia, aby utworzyć zasób `ag_cluster` w `ag1`dostępnej grupie.
+1. Użyj poniższego polecenia, aby utworzyć zasób `ag_cluster` w `ag1`grupy dostępności.
 
     ```bash
     sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
@@ -960,7 +960,7 @@ sudo pcs stonith fence <VM3> --debug
 > [!NOTE]
 > Domyślnie akcja ogrodzenia powoduje, że węzeł jest wyłączony, a następnie włączony. Jeśli chcesz tylko przełączyć węzeł do trybu offline, użyj opcji `--off` w poleceniu.
 
-Należy uzyskać następujące dane wyjściowe:
+Należy uzyskać następujące wyniki:
 
 ```output
 [<username>@<VM1> ~]$ sudo pcs stonith fence <VM3> --debug

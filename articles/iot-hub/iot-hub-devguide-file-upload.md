@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure IoT Hub, przekazywanie pliku | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — Użyj funkcji przekazywania plików w usłudze IoT Hub do zarządzania, przekazywanie plików z urządzenia do kontenera obiektów blob usługi Azure storage.
+title: Informacje o przekazywaniu plików przez usługę Azure IoT Hub | Microsoft Docs
+description: Przewodnik dla deweloperów — Użyj funkcji przekazywania plików IoT Hub, aby zarządzać przekazywaniem plików z urządzenia do kontenera obiektów BLOB usługi Azure Storage.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -8,40 +8,40 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 3ae87523e66ae49d17f198a1f70b0f449ca0a713
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 35e10c0f9babca7719ff496e7068ad1564670fee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080416"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209158"
 ---
-# <a name="upload-files-with-iot-hub"></a>Przekazywanie plików za pomocą usługi IoT Hub
+# <a name="upload-files-with-iot-hub"></a>Przekazywanie plików za pomocą IoT Hub
 
-Jak wyjaśniono w [punktów końcowych usługi IoT Hub](iot-hub-devguide-endpoints.md) artykułu, urządzenie można uruchomić przekazywanie pliku przez wysyłanie powiadomień za pośrednictwem punktu końcowego dostępnego z urządzenia ( **/devices/ {deviceId} / pliki**). Gdy urządzenie usługi IoT Hub powiadamia o zakończeniu przekazywania, usługi IoT Hub wysyła komunikat z powiadomieniem przekazywanie plików za pośrednictwem **/messages/servicebound/filenotifications** przeznaczonych dla usług punktu końcowego.
+Zgodnie z opisem w artykule [IoT Hub punkty końcowe](iot-hub-devguide-endpoints.md) urządzenie może rozpocząć przekazywanie plików przez wysłanie powiadomienia za pomocą punktu końcowego dostępnego na urządzeniu ( **/Devices/{deviceId}/Files**). Gdy urządzenie powiadamia IoT Hub o ukończeniu przekazywania, IoT Hub wysyła komunikat z powiadomieniem o przekazaniu pliku za pomocą punktu końcowego połączonego z usługą **/messages/servicebound/filenotifications** .
 
-Zamiast pośrednictwa wiadomości za pomocą samej usługi IoT Hub IoT Hub zamiast działa jako wysyłający do skojarzonego konta usługi Azure Storage. Urządzenie wymaga tokenu magazynu z usługi IoT Hub, które są specyficzne dla pliku, który chce przekazać urządzenia. Urządzenie używa identyfikatora URI sygnatury dostępu Współdzielonego można przekazać pliku do magazynu, a po zakończeniu przekazywania urządzenie wysyła powiadomienie o zakończeniu do usługi IoT Hub. Usługa IoT Hub umożliwia sprawdzenie, przekazywanie pliku zostało ukończone, a następnie dodaje komunikat z powiadomieniem przekazywania pliku, do punktu końcowego powiadomienia dla plików przeznaczonych dla usługi.
+Zamiast brokera komunikatów za pośrednictwem IoT Hub samego siebie, IoT Hub zamiast tego działa jako Dyspozytor do skojarzonego konta usługi Azure Storage. Urządzenie żąda tokenu magazynu z IoT Hub, który jest specyficzny dla pliku, który urządzenie chce przekazać. Urządzenie używa identyfikatora URI sygnatury dostępu współdzielonego, aby przekazać plik do magazynu, a po zakończeniu przekazywania urządzenie wysyła powiadomienie o zakończeniu do IoT Hub. IoT Hub sprawdza, czy przekazywanie plików zostało ukończone, a następnie dodaje komunikat powiadomienia o przekazywaniu pliku do punktu końcowego powiadomienia o pliku dostępnym dla usługi.
 
-Zanim przekażesz plik do usługi IoT Hub z urządzenia należy skonfigurować Centrum przez [kojarzenie usługi Azure Storage](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub) konta do niego.
+Przed przekazaniem pliku do IoT Hub z urządzenia należy skonfigurować centrum, kojarząc z nim konto [usługi Azure Storage](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub) .
 
-Urządzenia można następnie [zainicjować przekazywania](iot-hub-devguide-file-upload.md#initialize-a-file-upload) i następnie [powiadomić usługi IoT hub](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload) po zakończeniu przekazywania. Opcjonalnie, gdy urządzenia usługi IoT Hub powiadamia o zakończeniu przekazywania, usługa może wygenerować [wiadomość z powiadomieniem](iot-hub-devguide-file-upload.md#file-upload-notifications).
+Urządzenie może następnie [inicjować przekazywanie](iot-hub-devguide-file-upload.md#initialize-a-file-upload) , a następnie [powiadamiać Centrum IoT o](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload) zakończeniu przekazywania. Opcjonalnie, gdy urządzenie powiadamia IoT Hub o ukończeniu przekazywania, usługa może wygenerować [komunikat z powiadomieniem](iot-hub-devguide-file-upload.md#file-upload-notifications).
 
 ### <a name="when-to-use"></a>Kiedy stosować
 
-Umożliwia wysyłanie plików multimedialnych i telemetrii dużych partii przekazany przez urządzenia połączone sporadycznie lub skompresować, aby oszczędzić przepustowość przekazywania plików.
+Za pomocą przekazywania plików można wysyłać pliki multimedialne i duże partie danych telemetrycznych przesłane przez sporadycznie połączone urządzenia lub skompresowane, aby zaoszczędzić przepustowość.
 
-Zapoznaj się [wskazówki dotyczące komunikacji urządzenia do chmury](iot-hub-devguide-d2c-guidance.md) if w stanie wątpliwości między za pomocą zgłoszonych właściwości, komunikaty z urządzenia do chmury lub przekazywanie pliku.
+Zapoznaj się z tematem [wskazówki dotyczące komunikacji między urządzeniami i chmurą](iot-hub-devguide-d2c-guidance.md) , jeśli masz wątpliwości między korzystaniem z raportowanych właściwości, komunikatami z urządzenia do chmury lub przekazywaniem plików.
 
 ## <a name="associate-an-azure-storage-account-with-iot-hub"></a>Skojarz konto usługi Azure Storage z usługą IoT Hub
 
-Przy użyciu funkcji przekazywania plików, należy najpierw połączyć konto usługi Azure Storage do usługi IoT Hub. Możesz wykonać tego zadania za pomocą witryny Azure portal lub programowo za pośrednictwem [dostawcy zasobów usługi IoT Hub interfejsów API REST](/rest/api/iothub/iothubresource). Po konta usługi Azure Storage skojarzonych z Twoim Centrum IoT Hub, usługa zwraca identyfikator URI sygnatury dostępu Współdzielonego na urządzeniu, gdy urządzenie zostanie uruchomione żądanie przekazania pliku.
+Aby skorzystać z funkcji przekazywania plików, musisz najpierw połączyć konto usługi Azure Storage z IoT Hub. To zadanie można wykonać za pomocą Azure Portal lub programowo przy użyciu [interfejsów API REST dostawcy zasobów IoT Hub](/rest/api/iothub/iothubresource). Po skojarzeniu konta usługi Azure Storage z IoT Hub usługa zwróci identyfikator URI sygnatury dostępu współdzielonego do urządzenia, gdy urządzenie rozpocznie żądanie przekazania pliku.
 
-[Przekazywanie plików z urządzenia do chmury za pomocą usługi IoT Hub](iot-hub-csharp-csharp-file-upload.md) przewodniki z instrukcjami zapewniają szczegółowy przewodnik proces przekazywania plików. Te przewodniki z instrukcjami dowiesz się, jak skojarzyć konto usługi storage z usługą IoT hub za pomocą witryny Azure portal.
+[Przekazanie plików z urządzenia do chmury z IoT Hub](iot-hub-csharp-csharp-file-upload.md) przewodniki po instrukcji zapewnia kompletny przewodnik dotyczący procesu przekazywania plików. Te przewodniki pokazują, jak używać Azure Portal do kojarzenia konta magazynu z usługą IoT Hub.
 
 > [!NOTE]
-> [Azure IoT SDKs](iot-hub-devguide-sdks.md) automatycznie obsługiwać podczas pobierania identyfikatora URI połączenia SAS, przekazanie pliku i powiadamianie IoT Hub przekazywanie zostało ukończone.
+> [Zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md) automatycznie obsługują pobieranie identyfikatora URI sygnatury dostępu współdzielonego, przekazywanie pliku oraz powiadamianie IoT Hub ukończonego przekazywania.
 
-## <a name="initialize-a-file-upload"></a>Inicjowanie przekazywania pliku
-Usługa IoT Hub ma punkt końcowy specjalnie dla żądanie identyfikatora URI sygnatury dostępu Współdzielonego dla magazynu do przekazania pliku na urządzeniach. Aby rozpocząć proces przekazywania plików, urządzenie wysyła żądanie POST `{iot hub}.azure-devices.net/devices/{deviceId}/files` za pomocą następujących treść kodu JSON:
+## <a name="initialize-a-file-upload"></a>Zainicjuj przekazywanie plików
+IoT Hub ma punkt końcowy przeznaczony dla urządzeń żądających identyfikatora URI sygnatury dostępu współdzielonego dla magazynu w celu przekazania pliku. Aby rozpocząć proces przekazywania plików, urządzenie wysyła żądanie POST do `{iot hub}.azure-devices.net/devices/{deviceId}/files` z następującą treścią JSON:
 
 ```json
 {
@@ -49,7 +49,7 @@ Usługa IoT Hub ma punkt końcowy specjalnie dla żądanie identyfikatora URI sy
 }
 ```
 
-Usługa IoT Hub zwróci następujące dane, który jest używany do przekazania pliku:
+IoT Hub zwraca następujące dane, których urządzenie używa do przekazania pliku:
 
 ```json
 {
@@ -61,20 +61,20 @@ Usługa IoT Hub zwróci następujące dane, który jest używany do przekazania 
 }
 ```
 
-### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>Przestarzałe: inicjowanie przekazywania pliku pobieranie
+### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>Przestarzałe: zainicjuj przekazywanie pliku za pomocą GET
 
 > [!NOTE]
-> W tej sekcji opisano przestarzałe funkcje dotyczące uzyskania identyfikatora URI sygnatury dostępu Współdzielonego z usługi IoT Hub. Użyj metody POST, które opisano wcześniej.
+> W tej sekcji opisano przestarzałą funkcję odbierania identyfikatora URI sygnatury dostępu współdzielonego z IoT Hub. Użyj opisanej wcześniej metody POST.
 
-Usługa IoT Hub ma dwa punkty końcowe REST, aby obsługiwać przekazywanie pliku, je, aby uzyskać identyfikatora URI połączenia SAS dla magazynu, a druga do powiadamiania IoT hub przekazywanie zostało ukończone. Urządzenie zostanie uruchomione proces przekazywania pliku, wysyłając GET do usługi IoT hub w `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}`. Zwraca usługę IoT hub:
+IoT Hub ma dwa punkty końcowe REST obsługujące przekazywanie plików, jeden w celu uzyskania identyfikatora URI sygnatury dostępu współdzielonego dla magazynu, a drugi w celu powiadomienia centrum IoT o ukończonym przekazywaniu. Urządzenie uruchamia proces przekazywania plików, wysyłając do centrum IoT Hub w `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}`. Centrum IoT Hub zwraca:
 
-* Identyfikatora URI połączenia SAS określonych w pliku do przekazania.
+* Identyfikator URI sygnatury dostępu współdzielonego dla pliku, który ma zostać przekazany.
 
-* Identyfikator korelacji ma być używany, gdy przekazywanie zostanie zakończone.
+* Identyfikator korelacji, który ma być używany po zakończeniu przekazywania.
 
-## <a name="notify-iot-hub-of-a-completed-file-upload"></a>Powiadomienie usługi IoT Hub przekazywania pliku ukończone
+## <a name="notify-iot-hub-of-a-completed-file-upload"></a>Powiadom IoT Hub ukończonego przekazywania plików
 
-Urządzenie przekazuje plik do magazynu przy użyciu zestawów SDK usługi Azure Storage. Po zakończeniu przekazywania urządzenie wysyła żądanie POST `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` za pomocą następujących treść kodu JSON:
+Urządzenie przekazuje plik do magazynu przy użyciu zestawów SDK usługi Azure Storage. Po zakończeniu przekazywania urządzenie wysyła żądanie POST do `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` z następującą treścią JSON:
 
 ```json
 {
@@ -85,28 +85,28 @@ Urządzenie przekazuje plik do magazynu przy użyciu zestawów SDK usługi Azure
 }
 ```
 
-Wartość `isSuccess` jest wartością logiczną, wskazującą, czy plik został pomyślnie przekazany. Kod stanu `statusCode` jest jego stan w celu przekazania pliku do magazynu, a `statusDescription` odpowiada `statusCode`.
+Wartość `isSuccess` jest wartością logiczną, która wskazuje, czy plik został pomyślnie przekazany. Kod stanu `statusCode` jest stanem przekazywania pliku do magazynu, a `statusDescription` odpowiada `statusCode`.
 
-## <a name="reference-topics"></a>Tematy referencyjne:
+## <a name="reference-topics"></a>Tematy dotyczące odwołań:
 
-W poniższych tematach odwołania udostępnić więcej informacji na temat przekazywania plików z urządzenia.
+Poniższe tematy referencyjne zawierają więcej informacji na temat przekazywania plików z urządzenia.
 
-## <a name="file-upload-notifications"></a>Powiadomienia o przekazywania plików
+## <a name="file-upload-notifications"></a>Powiadomienia dotyczące przekazywania plików
 
-Opcjonalnie gdy urządzenie usługi IoT Hub powiadamia o zakończeniu przekazywania, usługi IoT Hub generuje komunikat z powiadomieniem. Ten komunikat zawiera nazwy i magazynu lokalizację pliku.
+Opcjonalnie, gdy urządzenie powiadamia IoT Hub o ukończeniu przekazywania, IoT Hub generuje komunikat z powiadomieniem. Ten komunikat zawiera nazwę i lokalizację przechowywania pliku.
 
-Jak wyjaśniono w [punktów końcowych](iot-hub-devguide-endpoints.md), IoT Hub dostarczy powiadomienia o przekazywanie plików za pośrednictwem punktu końcowego usługi skierowaną ( **/messages/servicebound/fileuploadnotifications**) jako komunikaty. Semantyka odbierania powiadomień przekazywania pliku są takie same jak w przypadku komunikatów z chmury do urządzeń i mają taką samą [cykl życia komunikatu](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle). Każdy komunikat pobierane z punktu końcowego powiadomienia przekazywania plików jest rekordem JSON z następującymi właściwościami:
+Jak wyjaśniono w [punktach końcowych](iot-hub-devguide-endpoints.md), IoT Hub dostarcza powiadomienia o przekazywaniu plików przez punkt końcowy w ramach usługi ( **/messages/servicebound/fileuploadnotifications**) jako komunikaty. Semantyka odbierania powiadomień dotyczących przekazywania plików jest taka sama jak w przypadku komunikatów z chmury do urządzenia i ma ten sam [cykl życia wiadomości](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle). Każdy komunikat pobrany z punktu końcowego powiadomienia przekazywania plików jest rekordem JSON o następujących właściwościach:
 
 | Właściwość | Opis |
 | --- | --- |
-| EnqueuedTimeUtc |Sygnatura czasowa wskazująca, kiedy utworzono powiadomienie. |
-| DeviceId |**DeviceId** urządzenia, do którego przekazano plik. |
+| EnqueuedTimeUtc |Sygnatura czasowa wskazująca, kiedy powiadomienie zostało utworzone. |
+| DeviceId |Identyfikator **urządzenia, który** przesłał plik. |
 | BlobUri |Identyfikator URI przekazanego pliku. |
 | BlobName |Nazwa przekazanego pliku. |
-| LastUpdatedTime |Sygnatura czasowa wskazująca, kiedy plik ostatniej aktualizacji. |
+| LastUpdatedTime |Sygnatura czasowa wskazująca, kiedy plik został ostatnio zaktualizowany. |
 | BlobSizeInBytes |Rozmiar przekazanego pliku. |
 
-**Przykład**. Ten przykład przedstawia, treść pliku przekazywania wiadomości z powiadomieniem.
+**Przykład**. Ten przykład przedstawia treść komunikatu z powiadomieniem o przekazaniu pliku.
 
 ```json
 {
@@ -119,45 +119,47 @@ Jak wyjaśniono w [punktów końcowych](iot-hub-devguide-endpoints.md), IoT Hub 
 }
 ```
 
-## <a name="file-upload-notification-configuration-options"></a>Opcje konfiguracji powiadomień przekazywania pliku
+## <a name="file-upload-notification-configuration-options"></a>Opcje konfiguracji powiadomień o przekazywaniu plików
 
-Każde Centrum IoT hub ma następujące opcje konfiguracji dla pliku przekazywania powiadomień:
+Dla każdego centrum IoT Hub dostępne są następujące opcje konfiguracji powiadomień dotyczących przekazywania plików:
 
-| Właściwość | Opis | Zakres i domyślne |
+| Właściwość | Opis | Zakres i domyślny |
 | --- | --- | --- |
-| **enableFileUploadNotifications** |Określa, czy powiadomienia o przekazywania plików są zapisywane w pliku punktu końcowego powiadomienia. |Bool. Wartość domyślna: True. |
-| **fileNotifications.ttlAsIso8601** |Domyślny czas wygaśnięcia pliku przekazywania powiadomień. |ISO_8601 interwał maksymalnie 48 godz. (minimalna 1 minuta). Wartość domyślna: 1 godzinę. |
-| **fileNotifications.lockDuration** |Czas trwania blokady kolejki powiadomień przekazywania plików. |5-300 sekund (minimalna 5 sekund). Wartość domyślna: 60 sekund. |
-| **fileNotifications.maxDeliveryCount** |Maksymalna liczba prób dostarczenia pliku przekazać kolejka powiadomień. |1 do 100. Wartość domyślna: 100. |
+| **enableFileUploadNotifications** |Określa, czy powiadomienia dotyczące przekazywania plików są zapisywane w punkcie końcowym powiadomień dotyczących plików. |Bool. Wartość domyślna: true. |
+| **Jest. ttlAsIso8601** |Domyślny czas wygaśnięcia powiadomień dotyczących przekazywania plików. |Interwał ISO_8601 do 48H (co najmniej 1 minutę). Wartość domyślna: 1 godzina. |
+| **Jest. lockDuration** |Czas trwania blokady kolejki powiadomień przekazywania plików. |od 5 do 300 sekund (co najmniej 5 sekund). Wartość domyślna: 60 sekund. |
+| **Jest. maxDeliveryCount** |Maksymalna liczba dostaw dla kolejki powiadomień przekazywania pliku. |od 1 do 100. Wartość domyślna: 100. |
 
-## <a name="additional-reference-material"></a>Dodatkowe materiały
+Te właściwości można ustawić w centrum IoT Hub przy użyciu Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell. Aby dowiedzieć się, jak to zrobić, zobacz tematy w obszarze [Konfigurowanie przekazywania plików](iot-hub-configure-file-upload.md).
 
-Inne tematy referencyjne w przewodniku dla deweloperów usługi IoT Hub obejmują:
+## <a name="additional-reference-material"></a>Dodatkowe materiały referencyjne
 
-* [Punkty końcowe usługi IoT Hub](iot-hub-devguide-endpoints.md) w tym artykule opisano różne punkty końcowe Centrum IoT dla operacji zarządzania i środowiska wykonawczego.
+Inne tematy referencyjne w przewodniku dewelopera IoT Hub obejmują:
 
-* [Przydziału i ograniczanie przepływności](iot-hub-devguide-quotas-throttling.md) opisano limity przydziału i ograniczanie zachowań, które są stosowane do usługi IoT Hub.
+* [IoT Hub punkty końcowe](iot-hub-devguide-endpoints.md) opisują różne punkty końcowe usługi IoT Hub na potrzeby operacji w czasie wykonywania i zarządzania nimi.
 
-* [Usługa Azure IoT usługi zestawy SDK urządzeń i](iot-hub-devguide-sdks.md) Wyświetla język różnych zestawów SDK, można użyć podczas tworzenia aplikacji usług i urządzeń, które współdziałają z usługą IoT Hub.
+* [Ograniczanie i przydziały](iot-hub-devguide-quotas-throttling.md) opisują zachowania przydziałów i ograniczania przepustowości, które mają zastosowanie do usługi IoT Hub.
 
-* [Język zapytań usługi IoT Hub](iot-hub-devguide-query-language.md) opisuje język zapytań, można użyć, aby pobrać informacje z usługi IoT Hub o bliźniaczych reprezentacji urządzeń i zadań.
+* [Zestawy SDK urządzeń i usług Azure IoT](iot-hub-devguide-sdks.md) wymieniają różne zestawy SDK języka, których można używać podczas tworzenia aplikacji dla urządzeń i usług, które współpracują z usługą IoT Hub.
 
-* [Obsługa protokołu MQTT Centrum IoT](iot-hub-mqtt-support.md) zawiera więcej informacji na temat obsługi usługi IoT Hub dla protokołu MQTT.
+* [Język zapytań IoT Hub](iot-hub-devguide-query-language.md) zawiera opis języka zapytań, za pomocą którego można pobrać informacje z IoT Hub dotyczące bliźniaczych reprezentacji i zadań urządzenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+* [IoT Hub obsługa MQTT](iot-hub-mqtt-support.md) zawiera więcej informacji na temat obsługi IoT Hub protokołu MQTT.
 
-Teraz wyjaśniono sposób przekazywania plików z urządzeń przy użyciu usługi IoT Hub, mogą być zainteresowane w następujących tematach przewodnik dla deweloperów usługi IoT Hub:
+## <a name="next-steps"></a>Następne kroki
 
-* [Zarządzanie tożsamościami urządzeń w usłudze IoT Hub](iot-hub-devguide-identity-registry.md)
+Teraz wiesz już, jak przekazywać pliki z urządzeń za pomocą IoT Hub, możesz zainteresować Cię następujące IoT Hub tematy dotyczące przewodnika dla deweloperów:
+
+* [Zarządzanie tożsamościami urządzeń w IoT Hub](iot-hub-devguide-identity-registry.md)
 
 * [Kontrola dostępu do usługi IoT Hub](iot-hub-devguide-security.md)
 
-* [Przy użyciu bliźniaczych reprezentacji urządzeń do stanu i konfiguracji](iot-hub-devguide-device-twins.md)
+* [Synchronizowanie stanu i konfiguracji przy użyciu urządzenia bliźniaczych reprezentacji](iot-hub-devguide-device-twins.md)
 
-* [Wywoływanie metody bezpośredniej o urządzeniu](iot-hub-devguide-direct-methods.md)
+* [Wywoływanie metody bezpośredniej na urządzeniu](iot-hub-devguide-direct-methods.md)
 
 * [Planowanie zadań na wielu urządzeniach](iot-hub-devguide-jobs.md)
 
-Aby wypróbować pojęcia opisane w tym artykule, zobacz następujące samouczki usługi IoT Hub:
+Aby wypróbować niektóre koncepcje opisane w tym artykule, zobacz następujący samouczek IoT Hub:
 
-* [Sposób przekazywania plików z urządzeń do chmury za pomocą usługi IoT Hub](iot-hub-csharp-csharp-file-upload.md)
+* [Jak przekazywać pliki z urządzeń do chmury za pomocą IoT Hub](iot-hub-csharp-csharp-file-upload.md)

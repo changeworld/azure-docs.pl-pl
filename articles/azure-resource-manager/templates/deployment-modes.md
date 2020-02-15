@@ -3,12 +3,12 @@ title: Tryby wdrażania
 description: Opisuje, w jaki sposób należy określić, czy ma być używany pełny czy przyrostowy tryb wdrażania z Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: e53b8c58bf0919e64079e62c687b76ada1db7ff0
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 9cc0e8eb20a0375a98906524d4d598ccb473d2a8
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261028"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207591"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager tryby wdrażania
 
@@ -24,7 +24,7 @@ W trybie kompletnym Menedżer zasobów **usuwa** zasoby, które istnieją w grup
 
 Jeśli szablon zawiera zasób, który nie został wdrożony, ponieważ [warunek](conditional-resource-deployment.md) ma wartość false, wynik zależy od używanej wersji interfejsu API REST do wdrożenia szablonu. W przypadku używania wersji wcześniejszej niż 2019-05-10 zasób nie zostanie **usunięty**. W przypadku 2019-05-10 lub nowszych zasób **jest usuwany**. Najnowsze wersje Azure PowerShell i interfejsu wiersza polecenia platformy Azure usuwają zasób.
 
-Należy zachować ostrożność przy użyciu trybu kompletnego z [pętlami kopiowania](create-multiple-instances.md). Wszystkie zasoby, które nie są określone w szablonie po rozwiązaniu pętli kopiowania, są usuwane.
+Należy zachować ostrożność przy użyciu trybu kompletnego z [pętlami kopiowania](copy-resources.md). Wszystkie zasoby, które nie są określone w szablonie po rozwiązaniu pętli kopiowania, są usuwane.
 
 W przypadku wdrożenia w [więcej niż jednej grupie zasobów w szablonie](cross-resource-group-deployment.md)zasoby w grupie zasobów określonej w operacji wdrażania mogą zostać usunięte. Zasoby w dodatkowych grupach zasobów nie są usuwane.
 

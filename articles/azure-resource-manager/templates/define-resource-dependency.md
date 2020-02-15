@@ -3,12 +3,12 @@ title: Ustaw kolejność wdrażania dla zasobów
 description: Opisuje sposób ustawiania jednego zasobu jako zależnego od innego zasobu podczas wdrażania, aby zapewnić, że zasoby są wdrażane w odpowiedniej kolejności.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 44cf793859d2817695a58bd1159e2f4465c1f9c2
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: ffd6d6c65a1cbe9578b5f9162d29f3238e27ea71
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121968"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207693"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definiowanie kolejności wdrażania zasobów w szablonach Azure Resource Manager
 
@@ -40,7 +40,7 @@ Poniższy przykład przedstawia zestaw skalowania maszyn wirtualnych, który zal
 }
 ```
 
-W poprzednim przykładzie zależność jest uwzględniona w zasobach, które są tworzone za pomocą pętli kopiowania o nazwie **storageLoop**. Aby zapoznać się z przykładem, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](create-multiple-instances.md).
+W poprzednim przykładzie zależność jest uwzględniona w zasobach, które są tworzone za pomocą pętli kopiowania o nazwie **storageLoop**. Aby zapoznać się z przykładem, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](copy-resources.md).
 
 Podczas definiowania zależności można uwzględnić przestrzeń nazw dostawcy zasobów i typ zasobu, aby uniknąć niejednoznaczności. Aby na przykład wyjaśnić moduł równoważenia obciążenia i sieć wirtualną, które mogą mieć takie same nazwy jak inne zasoby, użyj następującego formatu:
 

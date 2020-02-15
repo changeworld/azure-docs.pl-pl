@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 4eafd0fbaed067a0852edea010408a1d82353392
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dd36895a34b36bbdf8e796cf629ab031613663cd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277979"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208886"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Pracuj z Azure Functions Core Tools
 
@@ -29,7 +29,7 @@ Tworzenie funkcji na komputerze lokalnym i publikowanie ich na platformie Azure 
 > * [Uruchom funkcję lokalnie.](#start)
 > * [Opublikuj projekt na platformie Azure.](#publish)
 
-## <a name="core-tools-versions"></a>Wersje narzędzi Core Tools
+## <a name="core-tools-versions"></a>Wersje podstawowych narzędzi
 
 Istnieją trzy wersje Azure Functions Core Tools. Używana wersja zależy od lokalnego środowiska programistycznego, [wyboru języka](supported-languages.md)i wymaganego poziomu pomocy technicznej:
 
@@ -218,7 +218,7 @@ Domyślnie te ustawienia nie są migrowane automatycznie, gdy projekt jest publi
 Wartości ustawień aplikacji funkcji można także odczytać w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji, zobacz sekcję zmienne środowiskowe w następujących tematach referencyjnych dotyczących języka:
 
 * [C#prekompilowanego](functions-dotnet-class-library.md#environment-variables)
-* [Skryptu C# (csx)](functions-reference-csharp.md#environment-variables)
+* [C#skrypt (. CSX)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -373,7 +373,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->W przypadku uruchamiania lokalnego autoryzacja nie jest wymuszana dla punktów końcowych HTTP. Oznacza to, że wszystkie lokalne żądania HTTP są obsługiwane jako `authLevel = "anonymous"`. Aby uzyskać więcej informacji, zobacz [artykuł dotyczący powiązań http](functions-bindings-http-webhook.md#authorization-keys).
+>W przypadku uruchamiania lokalnego autoryzacja nie jest wymuszana dla punktów końcowych HTTP. Oznacza to, że wszystkie lokalne żądania HTTP są obsługiwane jako `authLevel = "anonymous"`. Aby uzyskać więcej informacji, zobacz [artykuł dotyczący powiązań http](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
 ### <a name="passing-test-data-to-a-function"></a>Przekazywanie danych testowych do funkcji
 
@@ -517,7 +517,7 @@ Dostępne są następujące opcje wdrożenia kontenera niestandardowego:
 
 Zalecanym sposobem monitorowania wykonywania funkcji jest integracja z usługą Azure Application Insights. Dzienniki wykonywania można przesyłać strumieniowo na komputer lokalny. Aby dowiedzieć się więcej, zobacz [Monitor Azure Functions](functions-monitoring.md).
 
-### <a name="application-insights-integration"></a>Integracja z usługą Application Insights
+### <a name="application-insights-integration"></a>Integracja Application Insights
 
 Integracja Application Insights powinna być włączona podczas tworzenia aplikacji funkcji na platformie Azure. Jeśli z jakiegoś powodu aplikacja funkcji nie jest połączona z wystąpieniem Application Insights, można ją łatwo wykonać w Azure Portal. 
 
@@ -545,5 +545,5 @@ Aby zgłosić błąd lub żądanie funkcji, [Otwórz problem z usługą GitHub](
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
+[AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
 [Pakiety rozszerzeń]: functions-bindings-register.md#extension-bundles

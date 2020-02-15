@@ -1,6 +1,6 @@
 ---
 title: Utwórz dostępną aplikację mapy z Azure Maps | Mapy Microsoft Azure
-description: W tym artykule przedstawiono sposób tworzenia aplikacji z funkcjami ułatwień dostępu przy użyciu map Microsoft Azure.
+description: W tym artykule dowiesz się, jak utworzyć aplikację z funkcjami ułatwień dostępu przy użyciu map Microsoft Azure.
 services: azure-maps
 author: rbrundritt
 ms.author: richbrun
@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: e298aad6dc43f85f5b6c344eec56f5d8b37980d4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933298"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209787"
 ---
 # <a name="building-an-accessible-application"></a>Tworzenie dostępnej aplikacji
 
@@ -61,13 +61,13 @@ Istnieje kilka różnych sposobów, w których mapowanie może być powiększane
 - Korzystając z mapy, użyj klawisza Shift oraz klawiszy strzałek w górę lub w dół. 
 - Za pomocą kontrolki gęstość z klawiszem myszy, dotykiem lub klawiszem Tab/ENTER.
 
-**Zmiana stylu mapy** Nie wszyscy deweloperzy będą chcieć, aby wszystkie możliwe style mapy były dostępne w swojej aplikacji. Deweloper może programowo ustawiać i zmieniać styl mapy zgodnie z potrzebami. Jeśli deweloper wyświetli kontrolkę selektor stylu mapy, użytkownik będzie mógł zmienić styl mapy za pomocą myszy, dotyku lub klawiatury przy użyciu klawiszy Tab/ENTER. Deweloper może określić, które style mapy mają być dostępne w kontrolce selektor stylów mapy. 
+**Zmiana stylu mapy** Nie wszyscy deweloperzy chcą, aby wszystkie możliwe style mapy były dostępne w swojej aplikacji. Deweloper może programowo ustawiać i zmieniać styl mapy. Jeśli deweloper wyświetli kontrolkę selektora stylów mapy, użytkownik może zmienić styl mapy za pomocą myszy, dotyku lub klawiatury z klawiszem Tab lub ENTER. Deweloper może określić, które style mapy mają być dostępne w kontrolce selektor stylów mapy. 
 
 ## <a name="keyboard-shortcuts"></a>Skróty klawiaturowe
 
 Mapa zawiera wbudowane skróty klawiaturowe, które ułatwiają korzystanie z mapy. Te skróty klawiaturowe działają, gdy mapa ma fokus.
 
-| Klucz      | Działanie                            |
+| Klucz      | Akcja                            |
 |----------|-----------------------------------|
 | `Tab` | Nawigowanie między kontrolkami i okienkami podręcznymi na mapie. |
 | `ESC` | Przenieś fokus z dowolnego elementu na mapie do elementu mapy najwyższego poziomu. |
@@ -94,7 +94,7 @@ Wszelkie dodatkowe informacje umieszczane na mapie podstawowej powinny mieć odp
 
 ## <a name="make-popups-keyboard-accessible"></a>Zapewnianie dostępu do klawiatury podręcznej
 
-Znacznik lub symbol jest często używany do reprezentowania lokalizacji na mapie. Dodatkowe informacje o lokalizacji są zwykle wyświetlane w oknie podręcznym, gdy użytkownik współdziała ze znacznikiem. W przypadku większości aplikacji okna podręczne są wyświetlane, gdy użytkownik kliknie lub naciśnie znacznik, ale to zdarzenie wymaga, aby użytkownik korzystał z myszy lub ekranu dotykowego. Dobrym sposobem jest udostępnienie okien podręcznych w przypadku korzystania z klawiatury. Tę funkcję można osiągnąć przez utworzenie okna podręcznego dla każdego punktu danych i dodanie go do mapy. 
+Znacznik lub symbol jest często używany do reprezentowania lokalizacji na mapie. Dodatkowe informacje o lokalizacji są zwykle wyświetlane w oknie podręcznym, gdy użytkownik współdziała ze znacznikiem. W większości aplikacji wyskakujące okienka są wyświetlane, gdy użytkownik kliknie lub naciśnie znacznik. Jednak kliknięcie i naciśnięcie przycisku wymaga, aby użytkownik korzystał z myszy i ekranu dotykowego. Dobrym sposobem jest udostępnienie okien podręcznych w przypadku korzystania z klawiatury. Tę funkcję można osiągnąć przez utworzenie okna podręcznego dla każdego punktu danych i dodanie go do mapy. 
 
 Poniższy przykład ładuje punkty zainteresowań na mapie przy użyciu warstwy symboli i dodaje podręczne do mapy dla każdego punktu zainteresowania. Odwołanie do każdego okna podręcznego jest przechowywane we właściwościach każdego punktu danych. Można go również pobrać dla znacznika, na przykład po kliknięciu znacznika. Po skoncentrowaniu się na mapie naciśnięcie klawisza Tab umożliwi użytkownikowi przechodzenie przez poszczególne okienka podręczne na mapie.
 
@@ -116,12 +116,12 @@ Poniżej znajdują się dodatkowe porady ułatwiające dostęp do aplikacji do m
     - Ogranicz aktualizacje do co kilka sekund. 
     - Łączenie komunikatów w sposób logiczny. 
 - Należy unikać używania koloru jako jedynego sposobu przekazywania informacji. Użyj tekstu, ikon lub wzorców, aby uzupełnić lub zastąpić kolor. Niektóre zagadnienia:
-    - Jeśli używasz warstwy bąbelkowej do wyświetlania wartości względnej między punktami danych, rozważ przeskalowanie promienia każdego bąbelka, a także alternatywę do kolorowania. 
+    - Jeśli używasz warstwy bąbelkowej do wyświetlania wartości względnej między punktami danych, rozważ skalowanie promienia każdego bąbelka, kolorowanie bąbelków lub obu. 
     - Rozważ użycie warstwy symbol z różnymi ikonami dla różnych kategorii metryk, takich jak trójkąty, gwiazdki i kwadraty. Warstwa symboli obsługuje również skalowanie rozmiaru ikony. Etykieta tekstowa może również być wyświetlana.
     - W przypadku wyświetlania danych liniowych szerokość może być używana do reprezentowania wagi lub rozmiaru. Wzorzec tablic kreskowych może służyć do reprezentowania różnych kategorii linii. Warstwa symboli może być używana w połączeniu z linią do nakładania ikon wzdłuż linii. Użycie ikony strzałki jest przydatne do wyświetlania przepływu lub kierunku linii.
     - W przypadku wyświetlania danych wielokątów wzorzec, taki jak paski, może być używany jako alternatywa dla koloru. 
 - Niektóre wizualizacje, takie jak map cieplnych, warstwy kafelków i warstwy obrazów, nie są dostępne dla użytkowników z upośledzeniem programu Vision. Niektóre zagadnienia:
-    - Zapoznaj się z czytnikiem ekranu opisującym, co warstwa jest wyświetlana po dodaniu do mapy. Na przykład, jeśli zostanie wyświetlona warstwa kafelków radarowych, czytniki ekranu mówią, jak "dane radaru Pogoda na mapie".
+    - Zapoznaj się z czytnikiem ekranu opisującym, co warstwa jest wyświetlana po dodaniu do mapy. Na przykład, jeśli zostanie wyświetlona warstwa kafelków radarowych, wówczas czytniki ekranu mówią, że dane radaru Pogoda są nakładane na mapie.
 - Ogranicz liczbę funkcji, które wymagają przesuwania wskaźnika myszy. Te funkcje będą niedostępne dla użytkowników korzystających z klawiatury lub urządzenia dotykowego do korzystania z aplikacji. Pamiętaj, że nadal dobrym sposobem jest posiadanie stylu aktywowany dla zawartości interaktywnej, takiej jak ikony, linki i przyciski.
 - Spróbuj przejść do aplikacji przy użyciu klawiatury. Upewnij się, że kolejność tabulacji jest logiczna.
 - Jeśli tworzysz skróty klawiaturowe, spróbuj ograniczyć je do dwóch kluczy lub mniej. 

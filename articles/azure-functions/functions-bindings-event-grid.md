@@ -1,24 +1,25 @@
 ---
-title: Wyzwalacz Event Grid dla Azure Functions
+title: Azure Event Grid powiązania Azure Functions
 description: Informacje na temat obsługi zdarzeń Event Grid w Azure Functions.
 author: craigshoemaker
 ms.topic: reference
-ms.date: 09/04/2018
+ms.date: 02/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 812875be47cabdd23e6307403bb95d8d6ff174ec
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.custom: fasttrack-edit
+ms.openlocfilehash: df851a79ef3fbb7473e100619f58b7f35bce1d45
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77167505"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212005"
 ---
-# <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz Event Grid dla Azure Functions
+# <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Event Grid powiązania Azure Functions
 
 W tym artykule wyjaśniono, jak obsłużyć zdarzenia [Event Grid](../event-grid/overview.md) w Azure Functions. Aby uzyskać szczegółowe informacje na temat obsługi komunikatów Event Grid w punkcie końcowym HTTP, przeczytaj temat [odbieranie zdarzeń do punktu końcowego http](../event-grid/receive-events.md).
 
 Event Grid to usługa platformy Azure, która wysyła żądania HTTP w celu powiadomienia o zdarzeniach, które wystąpiły w *wydawcach*. Wydawca jest usługą lub zasobem, który pochodzi ze zdarzenia. Na przykład konto usługi Azure Blob Storage jest wydawcą, a [przekazywanie lub usuwanie obiektów BLOB jest zdarzeniem](../storage/blobs/storage-blob-event-overview.md). Niektóre [usługi platformy Azure mają wbudowaną obsługę publikowania zdarzeń do Event Grid](../event-grid/overview.md#event-sources).
 
-*Programy obsługi* zdarzeń odbierają i przetwarzają zdarzenia. Azure Functions to jedna z kilku [usług platformy Azure, która ma wbudowaną obsługę obsługi zdarzeń Event Grid](../event-grid/overview.md#event-handlers). W tym artykule dowiesz się, jak używać wyzwalacza Event Grid do wywołania funkcji po odebraniu zdarzenia z Event Grid.
+*Programy obsługi* zdarzeń odbierają i przetwarzają zdarzenia. Azure Functions to jedna z kilku [usług platformy Azure, która ma wbudowaną obsługę obsługi zdarzeń Event Grid](../event-grid/overview.md#event-handlers). W tym artykule dowiesz się, jak używać wyzwalacza Event Grid do wywołania funkcji, gdy zdarzenie jest odbierane z Event Grid, i aby użyć powiązania danych wyjściowych do wysyłania zdarzeń do [Event Gridego tematu niestandardowego](../event-grid/post-to-custom-topic.md).
 
 Jeśli wolisz, możesz użyć wyzwalacza HTTP do obsługi zdarzeń Event Grid; Zobacz [odbieranie zdarzeń do punktu końcowego http](../event-grid/receive-events.md). Obecnie nie można używać wyzwalacza Event Grid dla aplikacji Azure Functions, gdy zdarzenie jest dostarczane w [schemacie CloudEvents](../event-grid/cloudevents-schema.md#azure-functions). Zamiast tego należy użyć wyzwalacza HTTP.
 
@@ -26,7 +27,7 @@ Jeśli wolisz, możesz użyć wyzwalacza HTTP do obsługi zdarzeń Event Grid; Z
 
 ## <a name="packages---functions-2x-and-higher"></a>Pakiety — funkcje 2. x i nowsze
 
-Wyzwalacz Event Grid jest dostępny w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) w wersji 2. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-Functions-eventgrid-Extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) GitHub.
+Powiązania Event Grid są dostępne w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) w wersji 2. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-Functions-eventgrid-Extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -36,7 +37,11 @@ Wyzwalacz Event Grid jest dostępny w pakiecie NuGet [Microsoft. Azure. WebJobs.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="example"></a>Przykład
+## <a name="trigger"></a>Wyzwalacz
+
+Użyj wyzwalacza funkcji, aby odpowiedzieć na zdarzenie wysłane do Event Grid tematu.
+
+## <a name="trigger---example"></a>Wyzwalacz — przykład
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -66,7 +71,7 @@ namespace Company.Function
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz pakiety, [atrybuty](#attributes), [Konfiguracja](#configuration)i [użycie](#usage).
+Aby uzyskać więcej informacji, zobacz pakiety, [atrybuty](#trigger---attributes), [Konfiguracja](#trigger---configuration)i [użycie](#trigger---usage).
 
 ### <a name="version-1x"></a>Wersja 1. x
 
@@ -127,7 +132,7 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz pakiety, [atrybuty](#attributes), [Konfiguracja](#configuration)i [użycie](#usage).
+Aby uzyskać więcej informacji, zobacz pakiety, [atrybuty](#trigger---attributes), [Konfiguracja](#trigger---configuration)i [użycie](#trigger---usage).
 
 ### <a name="version-1x"></a>Wersja 1. x
 
@@ -284,7 +289,7 @@ W [bibliotece środowiska uruchomieniowego funkcji Java](/java/api/overview/azur
 
 ---
 
-## <a name="attributes"></a>Atrybuty
+## <a name="trigger---attributes"></a>Wyzwalacz — atrybuty
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -316,11 +321,11 @@ Atrybuty nie są obsługiwane przez język Python.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Adnotacja [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) umożliwia deklaratywne skonfigurowanie powiązania Event Grid przez podanie wartości konfiguracyjnych. Więcej szczegółów można znaleźć w sekcjach [przykładowych](#example) i [konfiguracyjnych](#configuration) .
+Adnotacja [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) umożliwia deklaratywne skonfigurowanie powiązania Event Grid przez podanie wartości konfiguracyjnych. Więcej szczegółów można znaleźć w sekcjach [przykładowych](#trigger---example) i [konfiguracyjnych](#trigger---configuration) .
 
 ---
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="trigger---configuration"></a>Wyzwalacz — Konfiguracja
 
 W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* . Brak parametrów lub właściwości konstruktora do ustawienia w atrybucie `EventGridTrigger`.
 
@@ -330,7 +335,7 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 | **direction** | Wymagane — musi być ustawiony na `in`. |
 | **Nazwij** | Wymagane — nazwa zmiennej używana w kodzie funkcji dla parametru, który odbiera dane zdarzenia. |
 
-## <a name="usage"></a>Sposób użycia
+## <a name="trigger---usage"></a>Wyzwalacz — użycie
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -370,11 +375,11 @@ Wystąpienie Event Grid jest dostępne za pośrednictwem parametru skonfigurowan
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Wystąpienie zdarzenia Event Grid jest dostępne za pośrednictwem parametru skojarzonego z atrybutem `EventGridTrigger`, który wpisano jako `EventSchema`. Zobacz [przykład](#example) , aby uzyskać więcej szczegółów.
+Wystąpienie zdarzenia Event Grid jest dostępne za pośrednictwem parametru skojarzonego z atrybutem `EventGridTrigger`, który wpisano jako `EventSchema`. Zobacz [przykład](#trigger---example) , aby uzyskać więcej szczegółów.
 
 ---
 
-## <a name="event-schema"></a>Schemat zdarzeń
+## <a name="trigger---event-schema"></a>Wyzwalacz — schemat zdarzenia
 
 Dane dla zdarzenia Event Grid są odbierane jako obiekt JSON w treści żądania HTTP. KOD JSON wygląda podobnie do poniższego przykładu:
 
@@ -412,7 +417,7 @@ Aby uzyskać wyjaśnienia dotyczące wspólnych i specyficznych dla zdarzeń wł
 
 Typ `EventGridEvent` definiuje tylko właściwości najwyższego poziomu; Właściwość `Data` jest `JObject`.
 
-## <a name="create-a-subscription"></a>Tworzenie subskrypcji
+## <a name="trigger---create-a-subscription"></a>Wyzwalacz — Tworzenie subskrypcji
 
 Aby rozpocząć otrzymywanie Event Grid żądania HTTP, Utwórz subskrypcję Event Grid, która określa adres URL punktu końcowego, który wywołuje funkcję.
 
@@ -486,7 +491,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_exten
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}
 ```
 
-Jest to interfejs API administratora, więc wymaga [klucza głównego](functions-bindings-http-webhook.md#authorization-keys)aplikacji funkcji. Nie należy mylić klucza systemowego (do wywoływania funkcji wyzwalacza Event Grid) za pomocą klucza głównego (na potrzeby wykonywania zadań administracyjnych w aplikacji funkcji). Gdy subskrybujesz temat Event Grid, pamiętaj, aby użyć klucza systemowego.
+Jest to interfejs API administratora, więc wymaga [klucza głównego](functions-bindings-http-webhook-trigger.md#authorization-keys)aplikacji funkcji. Nie należy mylić klucza systemowego (do wywoływania funkcji wyzwalacza Event Grid) za pomocą klucza głównego (na potrzeby wykonywania zadań administracyjnych w aplikacji funkcji). Gdy subskrybujesz temat Event Grid, pamiętaj, aby użyć klucza systemowego.
 
 Oto przykład odpowiedzi, która dostarcza klucz systemowy:
 
@@ -508,11 +513,11 @@ Klucz główny aplikacji funkcji można uzyskać z karty **Ustawienia aplikacji 
 > [!IMPORTANT]
 > Klucz główny zapewnia administratorowi dostęp do aplikacji funkcji. Nie udostępniaj tego klucza podmiotom trzecim ani nie rozpowszechniaj go w natywnych aplikacjach klienckich.
 
-Aby uzyskać więcej informacji, zobacz [klucze autoryzacji](functions-bindings-http-webhook.md#authorization-keys) w artykule odwołanie wyzwalacza http.
+Aby uzyskać więcej informacji, zobacz [klucze autoryzacji](functions-bindings-http-webhook-trigger.md#authorization-keys) w artykule odwołanie wyzwalacza http.
 
 Alternatywnie można wysłać polecenie HTTP PUT, aby samodzielnie określić wartość klucza.
 
-## <a name="local-testing-with-viewer-web-app"></a>Testowanie lokalne przy użyciu aplikacji internetowej przeglądarki
+## <a name="trigger---local-testing-with-viewer-web-app"></a>Test — testowanie lokalne przy użyciu aplikacji internetowej przeglądarki
 
 Aby przetestować wyzwalacz Event Grid lokalnie, należy uzyskać Event Grid żądania HTTP dostarczone z ich pochodzenia w chmurze do komputera lokalnego. Jednym ze sposobów jest przechwycenie żądań online i ręczne ponowne wysłanie ich na komputer lokalny:
 
@@ -584,6 +589,239 @@ Poniższe zrzuty ekranu pokazują nagłówki i treść żądania w programie Pos
 Funkcja wyzwalacza Event Grid wykonuje i pokazuje dzienniki podobne do poniższego przykładu:
 
 ![Przykładowe dzienniki funkcji wyzwalacza Event Grid](media/functions-bindings-event-grid/eg-output.png)
+
+## <a name="output"></a>Dane wyjściowe
+
+Użyj powiązania danych wyjściowych Event Grid do zapisywania zdarzeń w temacie niestandardowym. Musisz mieć prawidłowy [klucz dostępu dla tematu niestandardowego](../event-grid/security-authentication.md#custom-topic-publishing).
+
+> [!NOTE]
+> Powiązanie danych wyjściowych Event Grid nie obsługuje sygnatur dostępu współdzielonego (tokeny SAS). Musisz użyć klucza dostępu tematu.
+
+Przed podjęciem próby wdrożenia powiązania wyjściowego upewnij się, że istnieją odwołania do wymaganych pakietów.
+
+> [!IMPORTANT]
+> Powiązanie danych wyjściowych Event Grid jest dostępne tylko dla funkcji 2. x i wyższych.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+W poniższym przykładzie pokazano [ C# funkcję](functions-dotnet-class-library.md) , która zapisuje komunikat do Event Grid niestandardowego tematu przy użyciu metody zwracanej wartości jako dane wyjściowe:
+
+```csharp
+[FunctionName("EventGridOutput")]
+[return: EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]
+public static EventGridEvent Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
+{
+    return new EventGridEvent("message-id", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+}
+```
+
+W poniższym przykładzie pokazano, jak za pomocą interfejsu `IAsyncCollector` wysyłać partie komunikatów.
+
+```csharp
+[FunctionName("EventGridAsyncOutput")]
+public static async Task Run(
+    [TimerTrigger("0 */5 * * * *")] TimerInfo myTimer,
+    [EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]IAsyncCollector<EventGridEvent> outputEvents,
+    ILogger log)
+{
+    for (var i = 0; i < 3; i++)
+    {
+        var myEvent = new EventGridEvent("message-id-" + i, "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+        await outputEvents.AddAsync(myEvent);
+    }
+}
+```
+
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+
+Poniższy przykład przedstawia dane wyjściowe powiązania Event Grid w pliku *Function. JSON* .
+
+```json
+{
+    "type": "eventGrid",
+    "name": "outputEvent",
+    "topicEndpointUri": "MyEventGridTopicUriSetting",
+    "topicKeySetting": "MyEventGridTopicKeySetting",
+    "direction": "out"
+}
+```
+
+Kod C# skryptu, który tworzy jedno zdarzenie:
+
+```cs
+#r "Microsoft.Azure.EventGrid"
+using System;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Extensions.Logging;
+
+public static void Run(TimerInfo myTimer, out EventGridEvent outputEvent, ILogger log)
+{
+    outputEvent = new EventGridEvent("message-id", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+}
+```
+
+Kod C# skryptu, który tworzy wiele zdarzeń:
+
+```cs
+#r "Microsoft.Azure.EventGrid"
+using System;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Extensions.Logging;
+
+public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent, ILogger log)
+{
+    outputEvent.Add(new EventGridEvent("message-id-1", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0"));
+    outputEvent.Add(new EventGridEvent("message-id-2", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0"));
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Poniższy przykład przedstawia dane wyjściowe powiązania Event Grid w pliku *Function. JSON* .
+
+```json
+{
+    "type": "eventGrid",
+    "name": "outputEvent",
+    "topicEndpointUri": "MyEventGridTopicUriSetting",
+    "topicKeySetting": "MyEventGridTopicKeySetting",
+    "direction": "out"
+}
+```
+
+Oto kod JavaScript, który tworzy pojedyncze zdarzenie:
+
+```javascript
+module.exports = async function (context, myTimer) {
+    var timeStamp = new Date().toISOString();
+
+    context.bindings.outputEvent = {
+        id: 'message-id',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    };
+    context.done();
+};
+```
+
+Oto kod JavaScript, który tworzy wiele zdarzeń:
+
+```javascript
+module.exports = function(context) {
+    var timeStamp = new Date().toISOString();
+
+    context.bindings.outputEvent = [];
+
+    context.bindings.outputEvent.push({
+        id: 'message-id-1',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    });
+    context.bindings.outputEvent.push({
+        id: 'message-id-2',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    });
+    context.done();
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Powiązanie danych wyjściowych Event Grid nie jest dostępne dla języka Python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Powiązanie danych wyjściowych Event Grid nie jest dostępne dla języka Java.
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Dane wyjściowe — atrybuty i adnotacje
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+W przypadku [ C# bibliotek klas](functions-dotnet-class-library.md)Użyj atrybutu [EventGridAttribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs) .
+
+Konstruktor atrybutu przyjmuje nazwę ustawienia aplikacji, która zawiera nazwę tematu niestandardowego i nazwę ustawienia aplikacji, która zawiera klucz tematu. Aby uzyskać więcej informacji na temat tych ustawień, zobacz [Output-Configuration](#output---configuration). Oto przykład `EventGrid` atrybutu:
+
+```csharp
+[FunctionName("EventGridOutput")]
+[return: EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]
+public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
+{
+    ...
+}
+```
+
+Aby uzyskać pełny przykład, zobacz [Output- C# example](#output).
+
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+
+Atrybuty nie są obsługiwane przez C# skrypt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Atrybuty nie są obsługiwane przez język JavaScript.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Powiązanie danych wyjściowych Event Grid nie jest dostępne dla języka Python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Powiązanie danych wyjściowych Event Grid nie jest dostępne dla języka Java.
+
+---
+
+## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
+
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `EventGrid` atrybutu.
+
+|Właściwość Function.JSON | Właściwość atrybutu |Opis|
+|---------|---------|----------------------|
+|**type** | Nie dotyczy | Musi być ustawiona na wartość "eventGrid". |
+|**direction** | Nie dotyczy | Musi być równa "out". Ten parametr jest ustawiany automatycznie podczas tworzenia powiązania w Azure Portal. |
+|**Nazwij** | Nie dotyczy | Nazwa zmiennej używana w kodzie funkcji, która reprezentuje zdarzenie. |
+|**topicEndpointUri** |**TopicEndpointUri** | Nazwa ustawienia aplikacji, która zawiera identyfikator URI tematu niestandardowego, na przykład `MyTopicEndpointUri`. |
+|**topicKeySetting** |**TopicKeySetting** | Nazwa ustawienia aplikacji, która zawiera klucz dostępu dla tematu niestandardowego. |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+> [!IMPORTANT]
+> Upewnij się, że wartość właściwości konfiguracja `TopicEndpointUri` jest ustawiona na nazwę ustawienia aplikacji, która zawiera identyfikator URI tematu niestandardowego. Nie określaj identyfikatora URI tematu niestandardowego bezpośrednio w tej właściwości.
+
+## <a name="output---usage"></a>Dane wyjściowe — użycie
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Wysyłaj komunikaty przy użyciu parametru metody, takiego jak `out EventGridEvent paramName`. Aby pisać wiele komunikatów, można użyć `ICollector<EventGridEvent>` lub `IAsyncCollector<EventGridEvent>` zamiast `out EventGridEvent`.
+
+# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+
+Wysyłaj komunikaty przy użyciu parametru metody, takiego jak `out EventGridEvent paramName`. W C# skrypcie `paramName` jest wartością określoną we właściwości `name` *funkcji Function. JSON*. Aby pisać wiele komunikatów, można użyć `ICollector<EventGridEvent>` lub `IAsyncCollector<EventGridEvent>` zamiast `out EventGridEvent`.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Dostęp do zdarzenia wyjściowego przy użyciu `context.bindings.<name>`, gdzie `<name>` jest wartością określoną we właściwości `name` *funkcji Function. JSON*.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Powiązanie danych wyjściowych Event Grid nie jest dostępne dla języka Python.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Powiązanie danych wyjściowych Event Grid nie jest dostępne dla języka Java.
+
+---
 
 ## <a name="next-steps"></a>Następne kroki
 

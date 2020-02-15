@@ -1,20 +1,20 @@
 ---
 title: Dodawanie warstwy wytłoczenia wielokąta do mapy | Mapy Microsoft Azure
 description: Jak dodać warstwę wytłoczenia wielokąta do Microsoft Azure Maps Web SDK.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 10/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f01e07ea2bbfd0f6b3b0cc19dd219d71984a0d45
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 38a7e6c5f4c139343e735ae82616c11a224ae7ca
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988570"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209685"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Dodaj warstwę wytłoczenia wielokąta do mapy
 
@@ -45,7 +45,7 @@ Zapoznaj się z piórem <a href='https://codepen.io/azuremaps/pen/eYYYNox'>na ma
 
 ## <a name="add-a-circle-to-the-map"></a>Dodaj okrąg do mapy
 
-Azure Maps używa rozszerzonej wersji schematu GEOJSON, który zawiera definicję okręgów, jak pokazano [tutaj](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle). Wykreślone koło może być renderowane na mapie, tworząc `point` funkcję z właściwością `subType` `Circle` oraz numerowaną Właściwość `Radius` reprezentującą promień w **licznikach**. Przykład:
+Azure Maps używa rozszerzonej wersji schematu GEOJSON, który zawiera definicję okręgów, jak pokazano [tutaj](https://docs.microsoft.com/azure/azure-maps/extend-geojson#circle). Wykreślone koło może być renderowane na mapie, tworząc `point` funkcję z właściwością `subType` `Circle` oraz numerowaną Właściwość `Radius` reprezentującą promień w **licznikach**. Na przykład:
 
 ```Javascript
 {
@@ -88,7 +88,7 @@ Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 > [!div class="nextstepaction"]
 > [warstwa wytłoczenia wielokątu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest)
 
-Zasoby dodatkowe:
+Dodatkowe zasoby:
 
 > [!div class="nextstepaction"]
 > [Rozszerzenie specyfikacji GEOJSON Azure Maps](extend-geojson.md#circle)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 08d9245201a8e0899d47847eb10dcdff3c0d8d16
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 13daf20e364b1e629b3ae13be2c9406da3702211
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984680"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209651"
 ---
 # <a name="show-search-results-on-the-map"></a>Pokaż wyniki wyszukiwania na mapie
 
@@ -37,7 +37,7 @@ Czwarty blok kodu używa metody [SearchFuzzy](/javascript/api/azure-maps-rest/at
 
 Ostatni blok kodu dostosowuje granice aparatu dla mapy za pomocą właściwości [Setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) mapy.
 
-Żądanie wyszukiwania, źródło danych, warstwa symboli i granice aparatu znajdują się wewnątrz [odbiornika zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)gotowego do mapy. Chcemy mieć pewność, że wyniki są wyświetlane po całkowitym załadowaniu mapy.
+Żądanie wyszukiwania, źródło danych, warstwa symboli i granice aparatu znajdują się wewnątrz [odbiornika zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) mapy. Chcemy mieć pewność, że wyniki są wyświetlane po całkowitym załadowaniu mapy.
 
 
 ## <a name="make-a-search-request-via-fetch-api"></a>Utwórz żądanie wyszukiwania za pomocą interfejsu API pobierania

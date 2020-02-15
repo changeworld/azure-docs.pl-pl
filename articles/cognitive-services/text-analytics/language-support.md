@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 3e7402be79f7b57a426543c35f08524e0da9d283
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024538"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206178"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Obsługa języka i regionu dla interfejs API analizy tekstu
 
@@ -47,24 +47,24 @@ Obsługa języka jest początkowo wdrażana w wersji zapoznawczej, z stopniowani
 > [!NOTE]
 > Aby uzyskać szczegółowy opis obsługi języka nazwanego rozpoznawania jednostek (NER) v3 (publiczna wersja zapoznawcza), zobacz [nazwane typy jednostek](named-entity-types.md).
 
-| Język              | Kod języka | Opinia | Kluczowe frazy | Rozpoznawanie jednostek znaku | Łączenie jednostek |       Uwagi        |
+| Język              | Kod języka | Opinia | Kluczowe frazy | Rozpoznawanie jednostek nazwanych | Łączenie jednostek |       Uwagi        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
-| Arabski                |     `ar`      |           |             |           ✔ \*           |                |                    |
+| arabski                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | Czeski                 |     `cs`      |           |             |           ✔ \*           |                |                    |
-| Chiński (uproszczony)    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| Chiński (uproszczony)    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                | `zh` również zaakceptowana                   |
 | Chiński (tradycyjny)   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | Duński                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| Holenderski                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| holenderski                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Polski               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
 | Fiński               |     `fi`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Francuski                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
 | Niemiecki                |     `de`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
 | Grecki                 |     `el`      |   ✔ \*    |             |                          |                |                    |
-| węgierski             |     `hu`      |           |             |           ✔ \*           |                |                    |
+| Węgierski             |     `hu`      |           |             |           ✔ \*           |                |                    |
 | Włoski               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Japoński              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | Koreański                |     `ko`      |   ✔ \*\*  |      ✔      |           ✔ \*           |                |                    |
-| Norweski (bokmål)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Norweski (bokmål)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                | `nb` również zaakceptowana                   |
 | Polski                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | Portugalski (Portugalia) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` również zaakceptowana |
 | Portugalski (Brazylia)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |
@@ -77,7 +77,7 @@ Obsługa języków \* jest w wersji zapoznawczej
 
 \** również dostępna w [Analiza tonacji v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) i/lub [nazwane wersje zapoznawcze programu rozpoznawania jednostek](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) w wersji 3.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 [Strona dokumentacji Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)   
 [Strona produktu usług Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

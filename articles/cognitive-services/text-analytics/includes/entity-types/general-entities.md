@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: f95d7613926cf332a498cca84563dbc0ebcbbe9b
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086898"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211438"
 ---
 ## <a name="general-entity-types"></a>Ogólne typy jednostek:
 
@@ -22,11 +22,11 @@ ms.locfileid: "77086898"
 Rozpoznawaj nazwiska osób w tekście.
 
 Języki:
-* Publiczna wersja zapoznawcza: `English`
+* Publiczna wersja zapoznawcza: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` i `Turkish`
 
 | Nazwa podtypu | Opis                                                      | Dostępne począwszy od wersji modelu |
 |--------------|------------------------------------------------------------------|---------------------------------------|
-| Nie dotyczy          | Rozpoznawane nazwy osób, na przykład `Bill Gates`, `Marie Curie` | `2019-10-01`                          | 
+| N/D          | Rozpoznawane nazwy osób, na przykład `Bill Gates`, `Marie Curie` | `2019-10-01`                          | 
 
 ### <a name="persontype"></a>Persontype
 Typ zadania lub rola zatrzymywana przez osobę.
@@ -36,7 +36,7 @@ Języki:
 
 | Nazwa podtypu | Opis                                                                                | Dostępne począwszy od wersji modelu |
 |--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
-| Nie dotyczy          | Typy zadań na przykład `civil engineer`, `salesperson`, `chef`, `librarian`, `nursing aide` | `2020-02-01`                           |
+| N/D          | Typy zadań na przykład `civil engineer`, `salesperson`, `chef`, `librarian`, `nursing aide` | `2020-02-01`                           |
 
 ### <a name="location"></a>Lokalizacja
 
@@ -44,12 +44,12 @@ Tereny, struktury, funkcje geograficzne i geopolityczne.
 
 Języki:
 
-* Publiczna wersja zapoznawcza: `English`
+* Publiczna wersja zapoznawcza: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` i `Turkish`
 
 | Nazwa podtypu              | Opis                                                                              | Dostępne począwszy od wersji modelu |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
-| Nie dotyczy                       | lokalizacje, na przykład `Atlantic Ocean`, `library`, `Eiffel Tower``Statue of Liberty`  | `2019-10-01`                           |
-| Jednostka geopolityczna (GPE) | Miasta, kraje, Stany, na przykład `Seattle`, `Pennsylvania`, `South Africa``Tokyo` | `2020-02-01`                           |
+| N/D                       | lokalizacje, na przykład `Atlantic Ocean`, `library`, `Eiffel Tower``Statue of Liberty`  | `2019-10-01`                           |
+| Jednostka geopolityczna (GPE) — tylko w języku angielskim| Miasta, kraje, Stany, na przykład `Seattle`, `Pennsylvania`, `South Africa``Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Organizacja  
 
@@ -57,13 +57,13 @@ Uznawane organizacje, korporacje, agencje i inne grupy osób. Na przykład: firm
 
 Języki: 
 
-* Publiczna wersja zapoznawcza: `English`
+* Publiczna wersja zapoznawcza: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` i `Turkish`
 
 | Nazwa podtypu | Opis                                                                                             | Dostępne począwszy od wersji modelu |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
-| Nie dotyczy          | organizacje, na przykład `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration``VOA` | `2019-10-01`                           |
+| N/D          | organizacje, na przykład `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration``VOA` | `2019-10-01`                           |
 
-### <a name="event"></a>Wydarzenie  
+### <a name="event"></a>Zdarzenie  
 
 Zdarzenia historyczne, społeczne i naturalne.  
 
@@ -73,7 +73,7 @@ Języki:
 
 | Nazwa podtypu | Opis                                                            | Dostępne począwszy od wersji modelu |
 |--------------|------------------------------------------------------------------------|----------------------------------------|
-| Nie dotyczy          | Zdarzenia, takie jak `wedding`, `hurricane`, `car accident``solar eclipse`, `American Revolution` | `2020-02-01`                           |
+| N/D          | Zdarzenia, takie jak `wedding`, `hurricane`, `car accident``solar eclipse`, `American Revolution` | `2020-02-01`                           |
 
 ### <a name="product"></a>Product (Produkt)  
 
@@ -85,7 +85,7 @@ Języki:
 
 | Nazwa podtypu | Opis                                                                        | Dostępne począwszy od wersji modelu |
 |--------------|------------------------------------------------------------------------------------|----------------------------------------|
-| Nie dotyczy          | Na przykład `Microsoft Surface laptop`, `sunglasses`, `motorcycle`, `bag`, `Xbox` | `2020-02-01`                           |
+| N/D          | Na przykład `Microsoft Surface laptop`, `sunglasses`, `motorcycle`, `bag`, `Xbox` | `2020-02-01`                           |
 | Obliczanie    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
 
 ### <a name="skill"></a>Czy  
@@ -98,7 +98,7 @@ Języki:
 
 | Nazwa podtypu | Opis                                                                 | Dostępne począwszy od wersji modelu |
 |--------------|-----------------------------------------------------------------------------|----------------------------------------|
-| Nie dotyczy          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
+| N/D          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
 
 ### <a name="phone-number"></a>Numer telefonu
 
@@ -110,7 +110,7 @@ Języki:
 
 | Nazwa podtypu | Opis                                    | Dostępne począwszy od wersji modelu |
 |--------------|------------------------------------------------|----------------------------------------|
-| Nie dotyczy          | Numery telefonów US, na przykład `(312) 555-0176` | `2019-10-01`                           |
+| N/D          | Numery telefonów US, na przykład `(312) 555-0176` | `2019-10-01`                           |
 
 ### <a name="email"></a>Email
 
@@ -122,9 +122,9 @@ Języki:
 
 | Nazwa podtypu | Opis                                      | Dostępne począwszy od wersji modelu |
 |--------------|--------------------------------------------------|----------------------------------------|
-| Nie dotyczy          | Adres e-mail, na przykład `support@contoso.com` | `2019-10-01`                           |
+| N/D          | Adres e-mail, na przykład `support@contoso.com` | `2019-10-01`                           |
 
-### <a name="url"></a>Adres URL
+### <a name="url"></a>{1&gt;URL&lt;1}
 
 Internetowe adresy URL.
 
@@ -134,7 +134,7 @@ Języki:
 
 | Nazwa podtypu | Opis                                          | Dostępne począwszy od wersji modelu |
 |--------------|------------------------------------------------------|----------------------------------------|
-| Nie dotyczy          | Adresy URL do witryn sieci Web, na przykład `https://www.bing.com` | `2019-10-01`                           |
+| N/D          | Adresy URL do witryn sieci Web, na przykład `https://www.bing.com` | `2019-10-01`                           |
 
 ### <a name="ip-address"></a>Adres IP
 
@@ -146,7 +146,7 @@ Języki:
 
 | Nazwa podtypu | Opis                              | Dostępne począwszy od wersji modelu |
 |--------------|------------------------------------------|----------------------------------------|
-| Nie dotyczy          | Adres sieciowy na przykład `10.0.0.101` | `2019-10-01`                           |
+| N/D          | Adres sieciowy na przykład `10.0.0.101` | `2019-10-01`                           |
 
 ###  <a name="datetime"></a>DateTime
 
@@ -156,11 +156,11 @@ Jednostki daty i godziny.
 
 Języki:
 
-* Publiczna wersja zapoznawcza: `English`
+* Publiczna wersja zapoznawcza: `Chinese-Simplified`, `English`, `French`, `German` i `Spanish`
 
 | Nazwa podtypu    | Przykłady                     |
 |-------------|------------------------------|
-| Nie dotyczy         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
+| N/D         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
 | Date  | `May 2nd, 2017`, `05/02/2017`       |
 | Time     | `8:15`, `6AM`              |
 | DateRange    | `August 2nd to August 5th`         |
@@ -176,7 +176,7 @@ Liczby i ilości liczbowe.
 
 Języki:
 
-* Publiczna wersja zapoznawcza: `English`
+* Publiczna wersja zapoznawcza: `Chinese-Simplified`, `English`, `French`, `German` i `Spanish`
 
 | Nazwa podtypu    | Przykłady                     |
 |-------------|------------------------------|

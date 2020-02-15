@@ -3,21 +3,21 @@ title: Funkcje szablonu — porównanie
 description: Opisuje funkcje, które mają być używane w szablonie Azure Resource Manager do porównywania wartości.
 ms.topic: conceptual
 ms.date: 09/05/2017
-ms.openlocfilehash: 3f21066ae5882f51ef1e01343752eea725fece1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67cb1c1f92694ca217e99fb6528fb1d00f2cfcf6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484053"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207315"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Funkcje porównania dla Azure Resource Manager szablonów
 
 Menedżer zasobów udostępnia kilka funkcji do dokonywania porównań w szablonach.
 
-* [equals](#equals)
-* [greater](#greater)
+* [ubiegł](#equals)
+* [mniejszą](#greater)
 * [greaterOrEquals](#greaterorequals)
-* [less](#less)
+* [wcześniejsz](#less)
 * [lessOrEquals](#lessorequals)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -29,10 +29,10 @@ Sprawdza, czy dwie wartości są równe siebie.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |int, string, array lub object |Pierwsza wartość do sprawdzenia równości. |
-| arg2 |Tak |int, string, array lub object |Druga wartość do sprawdzenia równości. |
+| arg1 |Yes |int, string, array lub object |Pierwsza wartość do sprawdzenia równości. |
+| arg2 |Yes |int, string, array lub object |Druga wartość do sprawdzenia równości. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -124,12 +124,12 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| checkInts | Bool | Prawda |
-| checkStrings | Bool | Prawda |
-| checkArrays | Bool | Prawda |
-| checkObjects | Bool | Prawda |
+| checkInts | Bool | True |
+| checkStrings | Bool | True |
+| checkArrays | Bool | True |
+| checkObjects | Bool | True |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -162,9 +162,9 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | Prawda |
+| checkNotEquals | Bool | True |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -178,17 +178,17 @@ Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json 
 ```
 
-## <a name="greater"></a>greater
+## <a name="greater"></a>mniejszą
 `greater(arg1, arg2)`
 
 Sprawdza, czy pierwsza wartość jest większa od drugiej wartości.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |int lub String |Pierwsza wartość dla większego porównania. |
-| arg2 |Tak |int lub String |Druga wartość dla większego porównania. |
+| arg1 |Yes |int lub String |Pierwsza wartość dla większego porównania. |
+| arg2 |Yes |int lub String |Druga wartość dla większego porównania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -237,10 +237,10 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| checkInts | Bool | Fałsz |
-| checkStrings | Bool | Prawda |
+| checkInts | Bool | False |
+| checkStrings | Bool | True |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -261,10 +261,10 @@ Sprawdza, czy pierwsza wartość jest większa lub równa drugiej wartości.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |int lub String |Pierwsza wartość dla porównania wyższego lub równego. |
-| arg2 |Tak |int lub String |Druga wartość dla porównania wyższego lub równego. |
+| arg1 |Yes |int lub String |Pierwsza wartość dla porównania wyższego lub równego. |
+| arg2 |Yes |int lub String |Druga wartość dla porównania wyższego lub równego. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -313,10 +313,10 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| checkInts | Bool | Fałsz |
-| checkStrings | Bool | Prawda |
+| checkInts | Bool | False |
+| checkStrings | Bool | True |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -330,17 +330,17 @@ Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json 
 ```
 
-## <a name="less"></a>less
+## <a name="less"></a>wcześniejsz
 `less(arg1, arg2)`
 
 Sprawdza, czy pierwsza wartość jest mniejsza od drugiej wartości.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |int lub String |Pierwsza wartość dla mniejszego porównania. |
-| arg2 |Tak |int lub String |Druga wartość dla mniejszego porównania. |
+| arg1 |Yes |int lub String |Pierwsza wartość dla mniejszego porównania. |
+| arg2 |Yes |int lub String |Druga wartość dla mniejszego porównania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -389,10 +389,10 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| checkInts | Bool | Prawda |
-| checkStrings | Bool | Fałsz |
+| checkInts | Bool | True |
+| checkStrings | Bool | False |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -413,10 +413,10 @@ Sprawdza, czy pierwsza wartość jest mniejsza lub równa drugiej wartości.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |int lub String |Pierwsza wartość dla porównania less lub równa się. |
-| arg2 |Tak |int lub String |Druga wartość dla porównania less lub równa się. |
+| arg1 |Yes |int lub String |Pierwsza wartość dla porównania less lub równa się. |
+| arg2 |Yes |int lub String |Druga wartość dla porównania less lub równa się. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -465,10 +465,10 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| checkInts | Bool | Prawda |
-| checkStrings | Bool | Fałsz |
+| checkInts | Bool | True |
+| checkStrings | Bool | False |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -483,8 +483,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-* Aby uzyskać opis sekcje szablonu usługi Azure Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](template-syntax.md).
-* Aby scalić wiele szablonów, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](linked-templates.md).
-* Do iteracji określoną liczbę razy podczas tworzenia dla typu zasobów, zobacz [tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](create-multiple-instances.md).
+* Opis sekcji w szablonie Azure Resource Manager można znaleźć w temacie [tworzenie Azure Resource Manager szablonów](template-syntax.md).
+* Aby scalić wiele szablonów, zobacz [Używanie połączonych szablonów z Azure Resource Manager](linked-templates.md).
+* Aby powtórzyć określoną liczbę razy podczas tworzenia typu zasobu, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](copy-resources.md).
 * Aby dowiedzieć się, jak wdrożyć utworzony szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](deploy-powershell.md).
 

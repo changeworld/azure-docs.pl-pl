@@ -1,18 +1,18 @@
 ---
-title: Plan Premium usługi Azure Functions
+title: Plan Azure Functions Premium
 description: Szczegóły i opcje konfiguracji (Sieć wirtualna, brak nieograniczonego czasu wykonywania) dla planu Azure Functions Premium.
 author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: b373691a6b9649a43d68c9da93b49fd20536c42b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024640"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212473"
 ---
-# <a name="azure-functions-premium-plan"></a>Plan Premium usługi Azure Functions
+# <a name="azure-functions-premium-plan"></a>Plan Azure Functions Premium
 
 Plan Azure Functions Premium (nazywany czasem elastycznym planem Premium) jest opcją hostingu dla aplikacji funkcji. Plan Premium oferuje funkcje, takie jak łączność sieci wirtualnej, sprzęt zimnego startu i Premium.  Wiele aplikacji funkcji można wdrożyć w tym samym planie Premium, a plan umożliwia skonfigurowanie rozmiaru wystąpienia obliczeniowego, rozmiaru planu bazowego i maksymalnego rozmiaru planu.  Aby zapoznać się z porównaniem planu Premium i innych typów planów i hostingu, zobacz [Funkcja skalowanie i opcje hostingu](functions-scale.md).
 
@@ -88,11 +88,16 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Podczas tworzenia lub skalowania planu można wybrać jeden z trzech rozmiarów wystąpień.  Opłaty zostaną naliczone za łączną liczbę rdzeni i zużywaną pamięć na sekundę.  Aplikacja może automatycznie skalować w poziomie do wielu wystąpień stosownie do potrzeb.  
 
-|JSZ|Rdzenie|Pamięć|Usługa Storage|
+|SKU|Rdzenie|Pamięć|Storage|
 |--|--|--|--|
-|EP1|1|3,5 GB|250 GB|
-|EP2|2|7GB|250 GB|
-|EP3|4|14 GB|250 GB|
+|EP1|1|3,5 GB|250|
+|EP2|2|7GB|250|
+|EP3|4|14 GB|250|
+
+### <a name="memory-utilization-considerations"></a>Zagadnienia dotyczące wykorzystania pamięci
+Uruchamianie na komputerze z większą ilością pamięci nie zawsze oznacza, że aplikacja funkcji będzie używać całej dostępnej pamięci.
+
+Na przykład aplikacja funkcji JavaScript jest ograniczona przez domyślny limit pamięci w programie Node. js. Aby zwiększyć ten limit pamięci ustalonej, należy dodać ustawienie aplikacji `languageWorkers:node:arguments` z wartością `--max-old-space-size=<max memory in MB>`.
 
 ## <a name="regions"></a>Regiony
 

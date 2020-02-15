@@ -1,23 +1,23 @@
 ---
 title: Pokrycie mobilności (tranzytowe) | Mapy Microsoft Azure
 description: Ten artykuł zawiera informacje na temat zakresu mobilności w Microsoft Azure Maps
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 06/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8dcbfe7a47dba5a1783d6010d41e33073bc0bb20
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 04804f28b2b0b5c45ed8f523d2f465f81b6ab151
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048917"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208254"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps zasięg mobilności
 
-Azure Maps oferuje [usługę mobilności](https://aka.ms/AzureMapsMobilityService). Usługa mobilności skraca czas projektowania aplikacji z tranzytem publicznym, udziałem roweru i funkcjami udostępniania Scooter. Oferuje opcję kierowania z opcjami planowania podróży Multimodal. Funkcje do tranzytu publicznego obejmują wyszukiwanie w pobliżu stacji, wyszukiwanie zatrzymań, wyszukiwanie linii tranzytowych, pobieranie informacji o harmonogramie, pobieranie przychodzących tranzytów w czasie rzeczywistym oraz wyświetlanie listy zatrzymanych i prowadnic tras. Usługa zwraca informacje o dostępności w czasie rzeczywistym i statyczne do udostępnionych pojazdów, takich jak samochody, rowery i Scooters. Interfejs API zwraca szczegółowe i Multimodal trasy krok po kroku i alerty usług.
+Azure Maps oferuje [usługę mobilności](https://aka.ms/AzureMapsMobilityService). Usługa mobilności skraca czas projektowania aplikacji z tranzytem publicznym, udziałem roweru i funkcjami udostępniania Scooter. Funkcje do tranzytu publicznego obejmują wyszukiwanie w pobliżu stacji, wyszukiwanie zatrzymań, wyszukiwanie linii tranzytowych, pobieranie informacji o harmonogramie, pobieranie publicznych dostaw tranzytowych w czasie rzeczywistym, listy zatrzymanych i wyświetlanie przewodników tras. Usługa zwraca informacje o dostępności w czasie rzeczywistym i statyczne do udostępnionych pojazdów, takich jak samochody, rowery i Scooters. Ponadto usługa mobilności udostępnia funkcje routingu z opcjami planowania podróży Multimodal. Multimodale w trakcie podróży polegają na planowaniu i wyłączaniu i przesyłaniu w jednej podróży. Użytkownicy mają dostęp do szczegółowych i multimodalych trasy krok po kroku i alerty usług.
 
 Azure Maps nie ma tego samego poziomu informacji i dokładności dla wszystkich miast i krajów/regionów. Możliwość wywołania danych tranzytowych zależy od miasta. Dane mogą nie zawierać wszystkich opcji tranzytu publicznego i agencji, które obsługują miasto.
 
@@ -108,7 +108,7 @@ Poniższa tabela zawiera informacje o zapotrzebowaniu dotyczące usługi mobilno
 | Norwegia | Norwegia | 
 | Polska | <p>Wrocław, Białystok, Bydgoszcz, Elbląg, Gorzow, Kętrzyna, Kraków, Leszno, Lodz, Lublin, Mrągowo, Olsztyn, Poznań, Rzeszów, Sanok, Starachowice, Świonujście, Szczecin, Tricity, Warszawa, Wodzisław Śląski, Wrocław, Zakopane</p> |
 | Portugalia | Bragança, Coimbra, Funchal, Leiria, Lisboa, Portimao, Porto|
-| Malta | Malta | 
+| M alta | Malta | 
 | Rumunia | <p>Alba Iulia, Arad, Bistrița, Brăila, Braşov, Bukareszt, Buzau, Cluj Napoca, Constanța, Craiova, Deva, Focșani, Galati, Iaşi, Miercurea Ciuc, Oradea, Piatra Neamt, Pitești, Ploieşti, Reșița, Satu Mare, Sibiu, Suceava, Targu Mures, Timisoara, Tulcea, Zalau</p> | 
 | Rosja  | Rostov-on-Jan, Wołgograd, Jekaterynburg, Kazan, Kirov, Krasnodar, Moskwa, Nalchik, Nizhny Nowogród, Nowosybirsk, Noyabrsk, Omsk, uprawnienie, Sankt Petersburg, Tver, Tomsk ( |
 | Serbia  | Beograd, Kragujevac, NIS, Nowy Sad, Valjevo, Subotica | 

@@ -1,22 +1,14 @@
 ---
 title: Konwersacje wieloetapowe — QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Użyj wskazówek i kontekstu, aby zarządzać wielokrotnymi przepisaniami, nazywanymi wieloma przełączanymi, dla bot z jednego pytania do innego. Funkcja wielodostępna umożliwia konwersację z poprzednią i przechodzącą, w której kontekście poprzedniego pytania ma wpływ na następne pytanie i odpowiedź.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.author: diberry
-ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/13/2020
+ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843264"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210418"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Tworzenie wielu etapów konwersacji za pomocą dodatkowych monitów
 
@@ -31,6 +23,9 @@ Aby zobaczyć, jak działa wiele przełączania, Wyświetl następujące wideo d
 Niektórych pytań nie można udzielić na jednym z nich. Gdy projektujesz konwersacje aplikacji klienckiej (Chat bot), użytkownik może zadawać pytanie, które musi zostać przefiltrowane lub ulepszone, aby określić poprawną odpowiedź. Ten przepływ można wykonać za pomocą pytań możliwych do przesłania użytkownikowi z *monitami*.
 
 Gdy użytkownik prosi o pytanie, QnA Maker zwróci odpowiedź _i_ wszelkie monity monitujące. Ta odpowiedź umożliwia zaprezentowanie pytań uzupełniających jako wyborów.
+
+> [!CAUTION]
+> Monity o wiele wyłączeń nie są wyodrębniane z dokumentów często zadawanych pytań. Jeśli potrzebujesz wyodrębniania wieloskładnikowego, Usuń znaki zapytania, które wyznaczają pary QnA jako często zadawane pytania.
 
 ## <a name="example-multi-turn-conversation-with-chat-bot"></a>Przykład wieloletniej rozmowy z bot rozmowy
 

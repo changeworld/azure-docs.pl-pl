@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 376d7c1a9d2fe2ebce857362fd216e2047eb1f7b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 7916bbb28602d64e0916fce7badf16a65c242227
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934333"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251876"
 ---
 # <a name="security-control-network-security"></a>Kontrola zabezpieczeń: zabezpieczenia sieci
 
@@ -21,7 +21,7 @@ Zalecenia dotyczące zabezpieczeń sieci koncentrują się na określaniu, któr
 
 ## <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Ochrona zasobów przy użyciu sieciowych grup zabezpieczeń lub zapory platformy Azure na Virtual Network
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
 |--|--|--|
 | 1.1 | 9,2, 9,4, 14,1-14.3 | Klient |
 
@@ -47,7 +47,7 @@ https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
 ## <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: Monitoruj i Rejestruj konfigurację oraz ruch sieci wirtualnych, podsieci i kart sieciowych
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
 |--|--|--|
 | 1.2 | 9,3, 12,2 | Klient |
 
@@ -63,7 +63,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ## <a name="13-protect-critical-web-applications"></a>1,3: Ochrona krytycznych aplikacji sieci Web
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
 |--|--|--|
 | 1.3 | 9.5 | Klient |
 
@@ -75,7 +75,7 @@ https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-a
 
 ## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: odmowa komunikacji ze znanymi złośliwymi adresami IP
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
 |--|--|--|
 | 1.4 | 12,3 | Klient |
 
@@ -109,7 +109,7 @@ https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
 ## <a name="15-record-network-packets-and-flow-logs"></a>1,5: rejestrowanie pakietów sieciowych i dzienników przepływów
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
 |--|--|--|
 | 1.5 | 12,5, 15,8 | Klient |
 
@@ -125,7 +125,7 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: Wdróż systemy zapobiegania wykrywaniu dostępu do sieci/dostępu intruzów (identyfikatory/adresy IP)
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
 |--|--|--|
 | 1.6 | 12,6, 12,7 | Klient |
 
@@ -137,7 +137,7 @@ Jak skonfigurować alerty za pomocą zapory platformy Azure: https://docs.micros
 
 ## <a name="17-manage-traffic-to-web-applications"></a>1,7: zarządzanie ruchem do aplikacji sieci Web
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
 |--|--|--|
 | 1.7 | 12,9, 12,10 | Klient |
 
@@ -157,7 +157,7 @@ https://docs.microsoft.com/azure/application-gateway/overview
 
 ## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizacja złożoności i kosztów administracyjnych reguł zabezpieczeń sieci
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
 |--|--|--|
 | 1.8 | 1.5 | Klient |
 
@@ -169,7 +169,7 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Obsługa standardowych konfiguracji zabezpieczeń dla urządzeń sieciowych
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
 |--|--|--|
 | 1.9 | 11,1 | Klient |
 
@@ -183,7 +183,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Przykłady Azure Policy dla sieci:
 
-https://docs.microsoft.com/azure/governance/policy/samples/#network
+https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
 Jak utworzyć Azure Blueprint:
 
@@ -191,7 +191,7 @@ https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 ## <a name="110-document-traffic-configuration-rules"></a>1,10: udokumentowanie reguł konfiguracji ruchu
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
 |--|--|--|
 | 1.1 | 11.2 | Klient |
 
@@ -211,7 +211,7 @@ https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
 ## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: Użyj zautomatyzowanych narzędzi do monitorowania konfiguracji zasobów sieciowych i wykrywania zmian
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
 |--|--|--|
 | 1,11 | 11,3 | Klient |
 
@@ -223,7 +223,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Przykłady Azure Policy dla sieci:
 
-https://docs.microsoft.com/azure/governance/policy/samples/#network
+https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -6,18 +6,18 @@ author: diberry
 manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
-ms.subservice: luis
+ms.date: 02/14/2020
+ms.subservice: language-understanding
 ms.topic: include
-ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: aa080b40c20cbc8946db8cd163ee6cadb3b75972
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 636669ee4284d218d5ac2c6e2e7cdb37b00b3a5b
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74451635"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279622"
 ---
-1. W górnej części witryny internetowej usługi LUIS po prawej stronie wybierz przycisk **Train** (Ucz). 
+1. W górnej części witryny internetowej usługi LUIS po prawej stronie wybierz przycisk **Train** (Ucz).
 
     ![Przycisk Train (Ucz)](../media/train-button-preview.png)
 

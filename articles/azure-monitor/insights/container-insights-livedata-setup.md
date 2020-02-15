@@ -1,23 +1,24 @@
 ---
-title: Azure Monitor Instalatora dla kontenerów dane dynamiczne (wersja zapoznawcza) | Microsoft Docs
+title: Skonfiguruj Azure Monitor dla kontenerów dane dynamiczne (wersja zapoznawcza) | Microsoft Docs
 description: W tym artykule opisano sposób konfigurowania widoku w czasie rzeczywistym dzienników kontenerów (stdout/stderr) i zdarzeń bez używania polecenia kubectl z Azure Monitor dla kontenerów.
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: cf42eea99e437a76bb437b23f6eaffae1f1f3bc6
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/14/2019
+ms.openlocfilehash: 91f035b98a57fd9a37203cc48b3cc5d685967a13
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063768"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251791"
 ---
-# <a name="how-to-setup-the-live-data-preview-feature"></a>Jak skonfigurować funkcję Live Data (wersja zapoznawcza)
+# <a name="how-to-set-up-the-live-data-preview-feature"></a>Jak skonfigurować funkcję Live Data (wersja zapoznawcza)
 
 Aby wyświetlić dane na żywo (wersja zapoznawcza) przy użyciu Azure Monitor kontenerów z klastrów usługi Azure Kubernetes Service (AKS), należy skonfigurować uwierzytelnianie, aby udzielić uprawnień dostępu do danych Kubernetes. Ta konfiguracja zabezpieczeń umożliwia dostęp do danych w czasie rzeczywistym za pomocą interfejsu API Kubernetes bezpośrednio w Azure Portal.
 
-Ta funkcja obsługuje trzy różne metody kontroli dostępu do dzienników, zdarzeń i metryk:
+Ta funkcja obsługuje następujące metody kontroli dostępu do dzienników, zdarzeń i metryk:
 
 - AKS, bez autoryzacji Kubernetes RBAC włączone
 - Włączone z autoryzacji RBAC platformy Kubernetes w usłudze AKS
+    - AKS skonfigurowany przy użyciu powiązania roli klastra  **[clusterMonitoringUser](https://docs.microsoft.com/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)**
 - AKS włączone z logowaniem jednokrotnym opartym na protokole SAML Azure Active Directory (AD)
 
 Te instrukcje wymagają zarówno dostępu administracyjnego do klastra Kubernetes, jak i w przypadku konfigurowania do korzystania z Azure Active Directory (AD) do uwierzytelniania użytkowników, dostępu administracyjnego do usługi Azure AD.  
@@ -45,13 +46,21 @@ Azure Portal poprosi o zweryfikowanie poświadczeń logowania do klastra Azure A
 >[!IMPORTANT]
 >Aby możliwe było pobranie `kubeconfig` i użycie tej funkcji, użytkownicy tych funkcji muszą mieć [rolę użytkownika klastra usługi Azure Kubernetes](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) w klastrze. Użytkownicy **nie** wymagają dostępu współautora do klastra w celu korzystania z tej funkcji. 
 
+## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>Korzystanie z clusterMonitoringUser z klastrami obsługującymi funkcję RBAC
+
+Aby wyeliminować konieczność stosowania dodatkowych zmian w konfiguracji, zezwól Kubernetes reguły użytkownika **clusterUser** dostęp do funkcji dane dynamiczne (wersja zapoznawcza) po [włączeniu autoryzacji RBAC](#configure-kubernetes-rbac-authorization) , AKS dodał nowe powiązanie roli klastra Kubernetes o nazwie **clusterMonitoringUser**. To powiązanie roli klastra ma wszystkie niezbędne uprawnienia dostępne w celu uzyskania dostępu do interfejsu API Kubernetes oraz punktów końcowych służących do używania funkcji Live Data (wersja zapoznawcza). 
+
+Aby móc korzystać z funkcji danych na żywo (wersja zapoznawcza) z nowym użytkownikiem, musisz być członkiem roli [współautor](../../role-based-access-control/built-in-roles.md#contributor) w zasobie klastra AKS. Azure Monitor dla kontenerów, gdy jest włączone, jest skonfigurowany do uwierzytelniania przy użyciu tego użytkownika domyślnie. Jeśli w klastrze nie ma powiązania roli clusterMonitoringUser, w zamian jest używana wartość **clusterUser** w ramach uwierzytelniania.
+
+AKS to nowe powiązanie roli w styczniu 2020, dlatego klastry utworzone przed 2020 stycznia nie są dostępne. Jeśli masz klaster, który został utworzony przed stycznia 2020, nowy **clusterMonitoringUser** można dodać do istniejącego klastra przez wykonanie operacji Put w klastrze lub wykonanie jakiejkolwiek innej operacji w klastrze określona wykonuje operację Put w klastrze, na przykład aktualizując wersję klastra.
+
 ## <a name="kubernetes-cluster-without-rbac-enabled"></a>Klaster Kubernetes bez RBAC włączone
 
 Jeśli masz klaster Kubernetes, nie jest skonfigurowany z autoryzacji Kubernetes RBAC lub zintegrowana z usługą Azure AD logowania jednokrotnego, nie musisz wykonaj następujące kroki. Wynika to z faktu, że uprawnienia administracyjne są domyślnie dostępne w konfiguracji bez kontroli RBAC.
 
-## <a name="configure-kubernetes-rbac-authentication"></a>Konfigurowanie uwierzytelniania RBAC Kubernetes
+## <a name="configure-kubernetes-rbac-authorization"></a>Konfigurowanie autoryzacji RBAC Kubernetes
 
-Po włączeniu autoryzacji RBAC Kubernetes są wykorzystywane dwa użytkownicy: **clusterUser** i **clusterAdmin** , aby uzyskać dostęp do interfejsu API Kubernetes. Jest to podobne do uruchamiania `az aks get-credentials -n {cluster_name} -g {rg_name}` bez opcji administracyjnych. Oznacza to, że **clusterUser** musi mieć przyznane dostęp do punktów końcowych w interfejsie API Kubernetes.
+Po włączeniu autoryzacji RBAC Kubernetes są wykorzystywane dwa użytkownicy: **clusterUser** i **clusterAdmin** , aby uzyskać dostęp do interfejsu API Kubernetes. Jest to podobne do uruchamiania `az aks get-credentials -n {cluster_name} -g {rg_name}` bez opcji administracyjnych. Oznacza to, że **clusterUser** musi mieć przyznany dostęp do punktów końcowych w interfejsie API Kubernetes.
 
 Krokach w poniższym przykładzie pokazano sposób konfigurowania powiązania rolę klastra za pomocą tego szablonu konfiguracji yaml.
 
@@ -92,11 +101,11 @@ Krokach w poniższym przykładzie pokazano sposób konfigurowania powiązania ro
 >[!NOTE] 
 > Jeśli w klastrze zastosowano poprzednią wersję pliku `LogReaderRBAC.yaml`, zaktualizuj ją, kopiując i wklejając nowy kod przedstawiony w kroku 1 powyżej, a następnie uruchom polecenie pokazane w kroku 2, aby zastosować je do klastra.
 
-## <a name="configure-ad-integrated-authentication"></a>Konfigurowanie uwierzytelniania zintegrowanego usługi AD 
+## <a name="configure-ad-integrated-authentication"></a>Konfigurowanie uwierzytelniania zintegrowanego z usługą AD 
 
 Klaster AKS skonfigurowany do korzystania z Azure Active Directory (AD) do uwierzytelniania użytkowników korzysta z poświadczeń logowania osoby, która uzyskuje dostęp do tej funkcji. W tej konfiguracji możesz zalogować się do klastra AKS przy użyciu tokenu uwierzytelniania usługi Azure AD.
 
-Należy ponownie skonfigurować rejestrację klienta usługi Azure AD, aby umożliwić Azure Portal przekierowywanie stron autoryzacji jako zaufanego adresu URL przekierowania. Użytkownicy z usługi Azure AD uzyskują dostęp bezpośrednio do tych samych punktów końcowych interfejsu API Kubernetes za pośrednictwem **ClusterRoles** i **ClusterRoleBindings**. 
+Należy zmienić rejestrację klienta usługi Azure AD, aby umożliwić Azure Portal przekierowywanie stron autoryzacji jako zaufanego adresu URL przekierowania. Użytkownicy z usługi Azure AD uzyskują dostęp bezpośrednio do tych samych punktów końcowych interfejsu API Kubernetes za pośrednictwem **ClusterRoles** i **ClusterRoleBindings**. 
 
 Aby uzyskać więcej informacji na temat zaawansowanej konfiguracji zabezpieczeń w programie Kubernetes, zapoznaj się z [dokumentacją Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/). 
 
@@ -124,7 +133,7 @@ Aby uzyskać więcej informacji na temat zaawansowanej konfiguracji zabezpiecze�
 
 ## <a name="grant-permission"></a>Udziel uprawnienia
 
-Każde konto usługi Azure AD musi mieć uprawnienia do odpowiednich interfejsów API w programie Kubernetes, aby można było uzyskać dostęp do funkcji dane dynamiczne (wersja zapoznawcza). Kroki służące do przyznania konta Azure Active Directory są podobne do kroków opisanych w sekcji [KUBERNETES RBAC Authentication](#configure-kubernetes-rbac-authentication) . Przed zastosowaniem szablonu konfiguracji YAML do klastra Zastąp wartość **clusterUser** w obszarze **ClusterRoleBinding** wybranym użytkownikiem. 
+Każde konto usługi Azure AD musi mieć uprawnienia do odpowiednich interfejsów API w programie Kubernetes, aby można było uzyskać dostęp do funkcji dane dynamiczne (wersja zapoznawcza). Kroki służące do przyznania konta Azure Active Directory są podobne do kroków opisanych w sekcji [KUBERNETES RBAC Authentication](#configure-kubernetes-rbac-authorization) . Przed zastosowaniem szablonu konfiguracji YAML do klastra Zastąp wartość **clusterUser** w obszarze **ClusterRoleBinding** wybranym użytkownikiem. 
 
 >[!IMPORTANT]
 >Jeśli użytkownik, któremu przyznano powiązanie RBAC, jest w tej samej dzierżawie usługi Azure AD, przypisz uprawnienia na podstawie elementu userPrincipalName. Jeśli użytkownik znajduje się w innej dzierżawie usługi Azure AD, zapytaj o i Użyj właściwości objectId.

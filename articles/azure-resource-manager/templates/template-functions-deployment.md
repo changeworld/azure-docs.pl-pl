@@ -3,12 +3,12 @@ title: Funkcje szablonu — wdrożenie
 description: Opisuje funkcje, które mają być używane w szablonie Azure Resource Manager do pobierania informacji o wdrożeniu.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: f2939efc9481255233fbdda29f4fa30adcd24b7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484040"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207285"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkcje wdrażania dla Azure Resource Manager szablonów 
 
@@ -17,7 +17,7 @@ Menedżer zasobów udostępnia następujące funkcje do uzyskiwania wartości zw
 * [mieszczeniu](#deployment)
 * [naturalne](#environment)
 * [parameters](#parameters)
-* [variables](#variables)
+* [modyfikacj](#variables)
 
 Aby uzyskać wartości z zasobów, grup zasobów lub subskrypcji, zobacz temat [funkcje zasobów](template-functions-resource.md).
 
@@ -239,9 +239,9 @@ Zwraca wartość parametru. Określona nazwa parametru musi być zdefiniowana w 
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Tak |string |Nazwa parametru do zwrócenia. |
+| parameterName |Yes |ciąg |Nazwa parametru do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -326,7 +326,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | stringOutput | Ciąg | Opcja 1 |
 | intOutput | Int | 1 |
@@ -344,9 +344,9 @@ Zwraca wartość zmiennej. Określona nazwa zmiennej musi być zdefiniowana w se
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| variableName |Tak |Ciąg |Nazwa zmiennej do zwrócenia. |
+| variableName |Yes |Ciąg |Nazwa zmiennej do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -418,7 +418,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | exampleOutput1 | Ciąg | NazwaMojejZmiennej |
 | exampleOutput2 | Tablica | [1, 2, 3, 4] |
@@ -428,8 +428,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 Aby uzyskać więcej informacji o używaniu zmiennych, zobacz [zmienne w szablonie Azure Resource Manager](template-variables.md).
 
 ## <a name="next-steps"></a>Następne kroki
-* Aby uzyskać opis sekcje szablonu usługi Azure Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](template-syntax.md).
+* Opis sekcji w szablonie Azure Resource Manager można znaleźć w temacie [tworzenie Azure Resource Manager szablonów](template-syntax.md).
 * Aby scalić kilka szablonów, zobacz [Używanie połączonych szablonów z Azure Resource Manager](linked-templates.md).
-* Do iteracji określoną liczbę razy podczas tworzenia dla typu zasobów, zobacz [tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](create-multiple-instances.md).
-* Aby zobaczyć, jak wdrożyć szablon został utworzony, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](deploy-powershell.md).
+* Aby powtórzyć określoną liczbę razy podczas tworzenia typu zasobu, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](copy-resources.md).
+* Aby dowiedzieć się, jak wdrożyć utworzony szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](deploy-powershell.md).
 

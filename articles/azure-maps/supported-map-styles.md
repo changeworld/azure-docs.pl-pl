@@ -1,19 +1,19 @@
 ---
 title: Obsługiwane style mapy | Mapy Microsoft Azure
-description: W tym artykule opisano różne style renderowania mapy obsługiwane przez Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+description: W tym artykule omówiono różne style renderowania mapy obsługiwane przez Microsoft Azure Maps.
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 92e48486777d82589a56074790dd709c5d525859
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910643"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208288"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps obsługiwane style mapy
 Azure Maps obsługuje kilka różnych wbudowanych stylów mapy, zgodnie z poniższym opisem.
@@ -31,7 +31,7 @@ Mapa **drogowa** to standardowa mapa, która wyświetla drogi, naturalne i sztuc
 
 ## <a name="blank-and-blank_accessible"></a>puste i blank_accessible
 
-Style " **puste** " i " **blank_accessible** map" zawierają pustą kanwę, na której można wizualizować dane. Styl **blank_accessible** będzie w dalszym ciągu udostępniać aktualizacje czytnika ekranu informacjami o lokalizacji, w której znajduje się mapa, nawet jeśli mapa podstawowa nie jest wyświetlana.
+Style " **puste** " i " **blank_accessible** map" zawierają pustą kanwę, na której można wizualizować dane. Styl **blank_accessible** będzie nadal udostępniać aktualizacje czytnika ekranu ze szczegółami lokalizacji mapy, nawet jeśli mapa podstawowa nie jest wyświetlana.
 
 > [!Note]
 > W zestawie SDK sieci Web można zmienić kolor tła mapy, ustawiając styl CSS `background-color` stylu elementu DIV mapy.
@@ -39,7 +39,7 @@ Style " **puste** " i " **blank_accessible** map" zawierają pustą kanwę, na k
 **Odpowiednie interfejsy API:**
 * Kontrolka mapy zestawu SDK sieci Web
 
-## <a name="satellite"></a>satellite 
+## <a name="satellite"></a>urządzenia 
 Styl **satelity** to kombinacja zdjęć satelitarnych i antenowych.
 
 ![styl mapy kafelków satelitarnych](./media/supported-map-styles/satellite.png)
@@ -80,7 +80,7 @@ Ten styl mapy jest hybrydą dróg i etykiet, które są nakładane na Zdjęcia s
 * Kontrolka mapy systemu Android
 
 
-## <a name="night"></a>noc
+## <a name="night"></a>Godzinach
 **nocna** to ciemna wersja stylu mapy drogowej z kolorami dróg i symboli.
 
 ![styl mapy nocnej](./media/supported-map-styles/night.png)

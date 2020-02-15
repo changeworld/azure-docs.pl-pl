@@ -1,10 +1,10 @@
 ---
-title: Platforma Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver na Red Hat Enterprise Linux | Microsoft Docs
+title: Wysoka dostępność maszyn wirtualnych platformy Azure dla oprogramowania SAP NW w systemie RHEL | Microsoft Docs
 description: Platforma Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver na Red Hat Enterprise Linux
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: timlt
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
-ms.author: sedusch
-ms.openlocfilehash: a618a2cb976c90174125e54af645123c6b0a9dcd
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 02/13/2020
+ms.author: radeltch
+ms.openlocfilehash: f3b540fb9122655d0b2c12c90995daa181dd227f
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905033"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212798"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Platforma Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver na Red Hat Enterprise Linux
 
@@ -154,7 +154,7 @@ Portal Azure Marketplace zawiera obraz Red Hat Enterprise Linux, który służy 
    1. Nazwa użytkownika administratora, hasło administratora lub klucz SSH  
       Zostanie utworzony nowy użytkownik, którego można użyć do zalogowania się na komputerze.
    1. Identyfikator podsieci  
-   Jeśli chcesz wdrożyć maszynę wirtualną w istniejącej sieci wirtualnej, w której zdefiniowano podsieć, należy przypisać do niej identyfikator tej konkretnej podsieci. Identyfikator ma zwykle postać/subscriptions/ **&lt;Identyfikator subskrypcji&gt;** /resourceGroups/ **&lt;nazwa grupy zasobów&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;nazwa sieci wirtualnej&gt;** /subnets/ **&lt;nazwę podsieci&gt;**
+   Jeśli chcesz wdrożyć maszynę wirtualną w istniejącej sieci wirtualnej, w której zdefiniowano podsieć, należy przypisać do niej identyfikator tej konkretnej podsieci. Identyfikator ma zwykle postać/subscriptions/ **&lt;Identyfikator subskrypcji&gt;** /resourceGroups/ **&lt;nazwa grupy zasobów&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;nazwa sieci wirtualnej&gt;** /Subnets/ **&lt;nazwa podsieci&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ręczne wdrażanie systemu Linux za pośrednictwem Azure Portal
 
@@ -178,7 +178,7 @@ Najpierw musisz utworzyć maszyny wirtualne dla tego klastra. Następnie należy
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **NW1-ASCS-fronton**)
          1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.0.0.7**)
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. 10.0.0.8 adresu IP dla ASCS wykres WYWOŁUJĄCYCH
          * Powtórz powyższe kroki, aby utworzyć adres IP dla wykres WYWOŁUJĄCYCH (na przykład **10.0.0.8** i **NW1-AERS-zaplecza**)
    1. Tworzenie pul zaplecza
@@ -196,7 +196,7 @@ Najpierw musisz utworzyć maszyny wirtualne dla tego klastra. Następnie należy
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej sondy kondycji (na przykład **NW1-ASCS-HP**)
          1. Wybierz pozycję TCP jako protokół, port 620**00**, Zachowaj interwał 5 i próg złej kondycji 2
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. Port 621**02** dla ASCS wykres wywołujących
          * Powtórz powyższe kroki, aby utworzyć sondę kondycji dla wykres WYWOŁUJĄCYCH (na przykład 621**02** i **NW1-AERS-HP**)
    1. Reguły równoważenia obciążenia
@@ -207,7 +207,7 @@ Najpierw musisz utworzyć maszyny wirtualne dla tego klastra. Następnie należy
          1. Wybieranie **portów ha**
          1. Zwiększ limit czasu bezczynności do 30 minut
          1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
          * Powtórz powyższe kroki, aby utworzyć reguły równoważenia obciążenia dla wykres WYWOŁUJĄCYCH (na przykład **NW1-lb-wykres wywołujących**)
 1. Alternatywnie, jeśli scenariusz wymaga podstawowego modułu równoważenia obciążenia (wewnętrznego), wykonaj następujące czynności:  
    1. Utwórz adresy IP frontonu
@@ -215,7 +215,7 @@ Najpierw musisz utworzyć maszyny wirtualne dla tego klastra. Następnie należy
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **NW1-ASCS-fronton**)
          1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.0.0.7**)
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. 10.0.0.8 adresu IP dla ASCS wykres WYWOŁUJĄCYCH
          * Powtórz powyższe kroki, aby utworzyć adres IP dla wykres WYWOŁUJĄCYCH (na przykład **10.0.0.8** i **NW1-AERS-zaplecza**)
    1. Tworzenie pul zaplecza
@@ -225,7 +225,7 @@ Najpierw musisz utworzyć maszyny wirtualne dla tego klastra. Następnie należy
          1. Kliknij pozycję Dodaj maszynę wirtualną.
          1. Wybierz utworzony wcześniej zestaw dostępności
          1. Wybierz Maszyny wirtualne klastra SCS
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. Tworzenie puli zaplecza dla ASCS wykres WYWOŁUJĄCYCH
          * Powtórz powyższe kroki, aby utworzyć pulę zaplecza dla wykres WYWOŁUJĄCYCH (na przykład **NW1-AERS-zaplecza**)
    1. Tworzenie sond kondycji
@@ -233,7 +233,7 @@ Najpierw musisz utworzyć maszyny wirtualne dla tego klastra. Następnie należy
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej sondy kondycji (na przykład **NW1-ASCS-HP**)
          1. Wybierz pozycję TCP jako protokół, port 620**00**, Zachowaj interwał 5 i próg złej kondycji 2
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. Port 621**02** dla ASCS wykres wywołujących
          * Powtórz powyższe kroki, aby utworzyć sondę kondycji dla wykres WYWOŁUJĄCYCH (na przykład 621**02** i **NW1-AERS-HP**)
    1. Reguły równoważenia obciążenia
@@ -244,7 +244,7 @@ Najpierw musisz utworzyć maszyny wirtualne dla tego klastra. Następnie należy
          1. Utrzymywanie protokołu **TCP**, wprowadź port **3200**
          1. Zwiększ limit czasu bezczynności do 30 minut
          1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. Dodatkowe porty dla ASCS
          * Powtórz powyższe kroki dla portów 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 i TCP dla ASCS
       1. Dodatkowe porty dla ASCS wykres WYWOŁUJĄCYCH
@@ -262,9 +262,9 @@ Wykonaj kroki opisane w temacie [Konfigurowanie Pacemaker Red Hat Enterprise Lin
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Przygotowanie do instalacji oprogramowania SAP NetWeaver
 
-Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
+Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
 
-1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
+1. **[A]** rozpoznawanie nazw hostów
 
    Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach
@@ -403,7 +403,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 1. **[1]** Instalowanie oprogramowania SAP NetWeaver ASCS  
 
-   Zainstaluj oprogramowanie SAP NetWeaver ASCS jako element główny w pierwszym węźle przy użyciu wirtualnej nazwy hosta, która jest mapowana na adres IP konfiguracji frontonu modułu równoważenia obciążenia dla ASCS, na przykład <b>NW1-ASCS</b>, <b>10.0.0.7</b> i numer wystąpienia użyty dla sondy Moduł równoważenia obciążenia, na przykład <b>00</b>.
+   Zainstaluj oprogramowanie SAP NetWeaver ASCS jako element główny w pierwszym węźle przy użyciu wirtualnej nazwy hosta, która jest mapowana na adres IP konfiguracji frontonu modułu równoważenia obciążenia dla ASCS, na przykład <b>NW1-ASCS</b>, <b>10.0.0.7</b> i numer wystąpienia, który został użyty do sondowania modułu równoważenia obciążenia, na przykład <b>00</b>.
 
    SAPINST_REMOTE_ACCESS_USER parametru sapinst można użyć, aby zezwolić użytkownikowi niebędącemu głównym na łączenie się z sapinst.
 
@@ -459,7 +459,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 1. **[2]** Instalowanie oprogramowania SAP NetWeaver wykres wywołujących  
 
-   Zainstaluj program SAP NetWeaver wykres WYWOŁUJĄCYCH jako element główny w drugim węźle przy użyciu wirtualnej nazwy hosta, która jest mapowana na adres IP konfiguracji frontonu modułu równoważenia obciążenia dla wykres WYWOŁUJĄCYCH, na przykład <b>NW1-AERS</b>, <b>10.0.0.8</b> i numer wystąpienia użyty dla sondy Moduł równoważenia obciążenia, na przykład <b>02</b>.
+   Zainstaluj program SAP NetWeaver wykres WYWOŁUJĄCYCH jako element główny w drugim węźle przy użyciu wirtualnej nazwy hosta, która jest mapowana na adres IP konfiguracji frontonu modułu równoważenia obciążenia dla wykres WYWOŁUJĄCYCH, na przykład <b>NW1-AERS</b>, <b>10.0.0.8</b> i numer wystąpienia, który został użyty do sondowania modułu równoważenia obciążenia, na przykład <b>02</b>.
 
    SAPINST_REMOTE_ACCESS_USER parametru sapinst można użyć, aby zezwolić użytkownikowi niebędącemu głównym na łączenie się z sapinst.
 
@@ -535,12 +535,15 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo pcs resource create rsc_sap_<b>NW1</b>_ASCS00 SAPInstance \
     InstanceName=<b>NW1</b>_ASCS00_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS00_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 migration-threshold=1 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     InstanceName=<b>NW1</b>_ERS02_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS02_<b>nw1-aers</b>" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_AERS
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
@@ -559,12 +562,15 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo pcs resource create rsc_sap_<b>NW1</b>_ASCS00 SAPInstance \
     InstanceName=<b>NW1</b>_ASCS00_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS00_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     InstanceName=<b>NW1</b>_ERS02_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS02_<b>nw1-aers</b>" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_AERS
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
@@ -575,6 +581,9 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    </code></pre>
 
    W przypadku uaktualniania ze starszej wersji i przełączania do kolejki serwera 2, zobacz uwagi dotyczące oprogramowania SAP [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
+
+   > [!NOTE]
+   > Przekroczenia limitów czasu w powyższej konfiguracji są tylko przykłady i konieczne może być dostosowanie do określonej instalacji SAP. 
 
    Upewnij się, że klaster ma stan OK i że wszystkie zasoby zostały uruchomione. Nie ma znaczenia, w którym węźle są uruchomione zasoby.
 

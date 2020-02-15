@@ -3,12 +3,12 @@ title: Najlepsze rozwiązania dotyczące szablonów
 description: Opisuje zalecane podejścia do tworzenia szablonów Azure Resource Manager. Oferuje sugestie pozwalające uniknąć typowych problemów związanych z korzystaniem z szablonów.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b87f66f194b9e1daf8fa6a546c02aa4e86caabc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f623255a64404f0e041173fd29488ded24cd03b3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484248"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207489"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Najlepsze rozwiązania dotyczące szablonu Azure Resource Manager
 
@@ -156,7 +156,7 @@ Poniższe informacje mogą być przydatne podczas pracy ze [zmiennymi](template-
 
 * Dołącz zmienne nazw zasobów, które muszą być unikatowe.
 
-* Użyj [pętli kopiowania w zmiennych](create-multiple-instances.md#variable-iteration) , aby utworzyć powtarzający się wzorzec obiektów JSON.
+* Użyj [pętli kopiowania w zmiennych](copy-variables.md) , aby utworzyć powtarzający się wzorzec obiektów JSON.
 
 * Usuń nieużywane zmienne.
 

@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 14fee047e1f62ae7f7d3484d89779e1512e4bab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198721"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206110"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Punkty końcowe przesyłania strumieniowego (Źródło) w Azure Media Services
 
@@ -59,16 +59,16 @@ Aby uzyskać informacje o umowie SLA, zobacz [Cennik i Umowa SLA](https://azure.
 
 ## <a name="comparing-streaming-types"></a>Porównywanie typów przesyłania strumieniowego
 
-Cecha|Standard|Premium
+Cecha|Standardowy|Premium
 ---|---|---
 Przepływność |Do 600 MB/s i może zapewnić znacznie wyższą skuteczną przepływność w przypadku użycia sieci CDN.|200 MB/s na jednostkę przesyłania strumieniowego (SU). W przypadku korzystania z sieci CDN można zapewnić znacznie wyższą skuteczną przepływność.
 CDN|Azure CDN, Sieć CDN innej firmy lub brak sieci CDN.|Azure CDN, Sieć CDN innej firmy lub brak sieci CDN.
 Opłaty są naliczane proporcjonalnie| Codziennie|Codziennie
-Szyfrowanie dynamiczne|Yes|Yes
-Dynamiczne tworzenie pakietów|Yes|Yes
-Skalowanie|Automatycznie Skaluj do dostosowanej przepływności.|Dodatkowe usługi SUs
-Filtrowanie/G20 IP/Host niestandardowy <sup>1</sup>|Yes|Yes
-Pobieranie progresywne|Yes|Yes
+Szyfrowanie dynamiczne|Tak|Tak
+Dynamiczne tworzenie pakietów|Tak|Tak
+Skala|Automatycznie Skaluj do dostosowanej przepływności.|Dodatkowe usługi SUs
+Filtrowanie/G20 IP/Host niestandardowy <sup>1</sup>|Tak|Tak
+Pobieranie progresywne|Tak|Tak
 Zalecane użycie |Zalecane w przypadku większości scenariuszy przesyłania strumieniowego.|Profesjonalne użycie.
 
 <sup>1</sup> używany bezpośrednio w punkcie końcowym przesyłania strumieniowego, gdy sieć CDN nie jest włączona w punkcie końcowym.<br/>
@@ -147,17 +147,20 @@ Należy również wziąć pod uwagę sposób działania adaptacyjnego przesyłan
 
 ### <a name="enable-azure-cdn-integration"></a>Włącz integrację Azure CDN
 
+> [!IMPORTANT]
+> Nie można włączyć usługi CDN dla kont platformy Azure z wersji próbnej lub ucznia.
+>
+> Integracja z usługą CDN jest włączona we wszystkich centrach danych platformy Azure z wyjątkiem regionów federalnych i w Chinach.
+
 Po udostępnieniu punktu końcowego przesyłania strumieniowego z włączoną usługą CDN jest zdefiniowany czas oczekiwania na Media Services przed aktualizacją usługi DNS w celu zamapowania punktu końcowego przesyłania strumieniowego na punkt końcowy usługi CDN.
 
 Jeśli zechcesz później wyłączyć/włączyć usługę CDN, punkt końcowy przesyłania strumieniowego musi znajdować się w stanie **zatrzymanym** . Włączenie integracji Azure CDN może potrwać do dwóch godzin, a zmiany zostaną uaktywnione we wszystkich punktach pop usługi CDN. Można jednak uruchomić punkt końcowy przesyłania strumieniowego i strumień bez przerw w punkcie końcowym przesyłania strumieniowego, a po zakończeniu integracji zostanie dostarczony strumień z sieci CDN. W trakcie okresu aprowizacji punkt końcowy przesyłania strumieniowego będzie w stanie **uruchomienia** i może wystąpić spadek wydajności.
 
 Po utworzeniu standardowego punktu końcowego przesyłania strumieniowego jest on konfigurowany domyślnie przy użyciu standardowego Verizon. Korzystając z interfejsów API REST, można skonfigurować Verizon Premium lub standardowego dostawcy Akamai.
 
-Integracja z usługą CDN jest włączona we wszystkich centrach danych platformy Azure z wyjątkiem Chin i federalnych regionów rządowych.
-
 Integracja Azure Media Services z Azure CDN jest zaimplementowana w **Azure CDN z Verizon** dla standardowych punktów końcowych przesyłania strumieniowego. Punkty końcowe przesyłania strumieniowego w warstwie Premium można skonfigurować przy użyciu wszystkich **Azure CDN warstw cenowych i dostawców**. 
 
-> [!IMPORTANT]
+> [!NOTE]
 > Aby uzyskać szczegółowe informacje na temat Azure CDN, zobacz [Omówienie usługi CDN](../../cdn/cdn-overview.md).
 
 ### <a name="determine-if-dns-change-was-made"></a>Ustal, czy wprowadzono zmianę w systemie DNS

@@ -2,19 +2,21 @@
 title: Funkcje szablonów
 description: Opisuje funkcje, które mają być używane w szablonie Azure Resource Manager do pobierania wartości, pracy z ciągami i wartościami liczbowymi oraz pobierania informacji o wdrożeniu.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: aef813595df96449d5dd59ad1e95e77c4c198d0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: a9d10ad4899f35acd45069cb3d351a60632fed3a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483975"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207046"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Funkcje szablonu Azure Resource Manager
 
 W tym artykule opisano wszystkie funkcje, których można użyć w szablonie Azure Resource Manager. Aby uzyskać informacje o używaniu funkcji w szablonie, zobacz [składnia szablonu](template-expressions.md).
 
 Aby utworzyć własne funkcje, zobacz [funkcje zdefiniowane przez użytkownika](template-syntax.md#functions).
+
+Większość funkcji działa tak samo w przypadku wdrożenia w grupie zasobów, subskrypcji, grupie zarządzania lub dzierżawie. Nie można używać kilku funkcji we wszystkich zakresach. Są one wymienione na poniższej liście.
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -35,25 +37,26 @@ Aby utworzyć własne funkcje, zobacz [funkcje zdefiniowane przez użytkownika](
 <a id="union" aria-hidden="true" />
 
 ## <a name="array-and-object-functions"></a>Funkcje tablicy i obiektów
+
 Menedżer zasobów udostępnia kilka funkcji do pracy z tablicami i obiektami.
 
-* [array](template-functions-array.md#array)
+* [macierzy](template-functions-array.md#array)
 * [łączonych](template-functions-array.md#coalesce)
-* [concat](template-functions-array.md#concat)
-* [contains](template-functions-array.md#contains)
-* [createArray](template-functions-array.md#createarray)
-* [empty](template-functions-array.md#empty)
-* [first](template-functions-array.md#first)
-* [intersection](template-functions-array.md#intersection)
+* [Concat](template-functions-array.md#concat)
+* [wyświetlana](template-functions-array.md#contains)
+* [przearray](template-functions-array.md#createarray)
+* [ciągiem](template-functions-array.md#empty)
+* [pierwszego](template-functions-array.md#first)
+* [część wspólną](template-functions-array.md#intersection)
 * [kodu](template-functions-array.md#json)
-* [last](template-functions-array.md#last)
+* [ostatniego](template-functions-array.md#last)
 * [Długość](template-functions-array.md#length)
-* [min](template-functions-array.md#min)
-* [max](template-functions-array.md#max)
-* [range](template-functions-array.md#range)
-* [skip](template-functions-array.md#skip)
-* [take](template-functions-array.md#take)
-* [union](template-functions-array.md#union)
+* [długości](template-functions-array.md#min)
+* [Maksymalny](template-functions-array.md#max)
+* [zakresu](template-functions-array.md#range)
+* [Skocz](template-functions-array.md#skip)
+* [czasochłonn](template-functions-array.md#take)
+* [Unii](template-functions-array.md#union)
 
 <a id="equals" aria-hidden="true" />
 <a id="less" aria-hidden="true" />
@@ -62,12 +65,13 @@ Menedżer zasobów udostępnia kilka funkcji do pracy z tablicami i obiektami.
 <a id="greaterorequals" aria-hidden="true" />
 
 ## <a name="comparison-functions"></a>Funkcje porównania
+
 Menedżer zasobów udostępnia kilka funkcji do dokonywania porównań w szablonach.
 
-* [equals](template-functions-comparison.md#equals)
-* [less](template-functions-comparison.md#less)
+* [ubiegł](template-functions-comparison.md#equals)
+* [wcześniejsz](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
-* [greater](template-functions-comparison.md#greater)
+* [mniejszą](template-functions-comparison.md#greater)
 * [greaterOrEquals](template-functions-comparison.md#greaterorequals)
 
 <a id="deployment" aria-hidden="true" />
@@ -75,12 +79,13 @@ Menedżer zasobów udostępnia kilka funkcji do dokonywania porównań w szablon
 <a id="variables" aria-hidden="true" />
 
 ## <a name="deployment-value-functions"></a>Funkcje wartości wdrożenia
+
 Menedżer zasobów udostępnia następujące funkcje do uzyskiwania wartości z sekcji szablonu i wartości związanych ze wdrożeniem:
 
 * [mieszczeniu](template-functions-deployment.md#deployment)
 * [naturalne](template-functions-deployment.md#environment)
 * [parameters](template-functions-deployment.md#parameters)
-* [variables](template-functions-deployment.md#variables)
+* [modyfikacj](template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
 <a id="bool" aria-hidden="true" />
@@ -89,12 +94,13 @@ Menedżer zasobów udostępnia następujące funkcje do uzyskiwania wartości z 
 <a id="or" aria-hidden="true" />
 
 ## <a name="logical-functions"></a>Funkcje logiczne
+
 Menedżer zasobów udostępnia następujące funkcje do pracy z warunkami logicznymi:
 
-* [i](template-functions-logical.md#and)
-* [bool](template-functions-logical.md#bool)
-* [if](template-functions-logical.md#if)
-* [not](template-functions-logical.md#not)
+* [lub](template-functions-logical.md#and)
+* [logiczna](template-functions-logical.md#bool)
+* [przypadku](template-functions-logical.md#if)
+* [niemożliwe](template-functions-logical.md#not)
 * [lub](template-functions-logical.md#or)
 
 <a id="add" aria-hidden="true" />
@@ -109,18 +115,19 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z warunkami logicz
 <a id="sub" aria-hidden="true" />
 
 ## <a name="numeric-functions"></a>Funkcje liczbowe
+
 Menedżer zasobów udostępnia następujące funkcje do pracy z liczbami całkowitymi:
 
-* [add](template-functions-numeric.md#add)
-* [copyIndex](template-functions-numeric.md#copyindex)
-* [div](template-functions-numeric.md#div)
-* [liczba zmiennoprzecinkowa](template-functions-numeric.md#float)
-* [int](template-functions-numeric.md#int)
-* [min](template-functions-numeric.md#min)
-* [max](template-functions-numeric.md#max)
+* [dodana](template-functions-numeric.md#add)
+* [Funkcji copyindex](template-functions-numeric.md#copyindex)
+* [służąc](template-functions-numeric.md#div)
+* [float](template-functions-numeric.md#float)
+* [ZAOKR](template-functions-numeric.md#int)
+* [długości](template-functions-numeric.md#min)
+* [Maksymalny](template-functions-numeric.md#max)
 * [Funkcja](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
-* [sub](template-functions-numeric.md#sub)
+* [Sub](template-functions-numeric.md#sub)
 
 <a id="extensionResourceId" aria-hidden="true" />
 <a id="listkeys" aria-hidden="true" />
@@ -134,18 +141,19 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z liczbami całkow
 <a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Funkcje zasobów
+
 Usługa Resource Manager zapewnia następujące funkcje w celu uzyskania wartości zasobu:
 
 * [extensionResourceId](template-functions-resource.md#extensionresourceid)
 * [listAccountSas](template-functions-resource.md#list)
-* [klucze list](template-functions-resource.md#listkeys)
+* [listKeys](template-functions-resource.md#listkeys)
 * [listSecrets](template-functions-resource.md#list)
-* [Lista *](template-functions-resource.md#list)
-* [dostawcy](template-functions-resource.md#providers)
-* [Odwołanie](template-functions-resource.md#reference)
-* [resourceGroup](template-functions-resource.md#resourcegroup)
-* [resourceId](template-functions-resource.md#resourceid)
-* [Subskrypcja](template-functions-resource.md#subscription)
+* [staw](template-functions-resource.md#list)
+* [udostępnia](template-functions-resource.md#providers)
+* [odwoła](template-functions-resource.md#reference)
+* Grupa [zasobów — może](template-functions-resource.md#resourcegroup) być używana tylko we wdrożeniach w ramach grupy.
+* [ResourceID](template-functions-resource.md#resourceid) — można użyć w dowolnym zakresie, ale prawidłowe parametry zmieniają się w zależności od zakresu.
+* [subskrypcja](template-functions-resource.md#subscription) — może być używana tylko we wdrożeniach w grupie zasobów lub subskrypcji.
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
@@ -181,38 +189,39 @@ Usługa Resource Manager zapewnia następujące funkcje w celu uzyskania wartoś
 <a id="uricomponenttostring" aria-hidden="true" />
 
 ## <a name="string-functions"></a>Funkcje ciągów
+
 Menedżer zasobów udostępnia następujące funkcje do pracy z ciągami:
 
-* [base64](template-functions-string.md#base64)
+* [zakodowan](template-functions-string.md#base64)
 * [base64ToJson](template-functions-string.md#base64tojson)
 * [base64ToString](template-functions-string.md#base64tostring)
-* [concat](template-functions-string.md#concat)
-* [contains](template-functions-string.md#contains)
+* [Concat](template-functions-string.md#concat)
+* [wyświetlana](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
-* [empty](template-functions-string.md#empty)
+* [ciągiem](template-functions-string.md#empty)
 * [endsWith](template-functions-string.md#endswith)
-* [first](template-functions-string.md#first)
-* [format](template-functions-string.md#format)
-* [guid](template-functions-string.md#guid)
+* [pierwszego](template-functions-string.md#first)
+* [Formatowanie](template-functions-string.md#format)
+* [ident](template-functions-string.md#guid)
 * [indexOf](template-functions-string.md#indexof)
-* [last](template-functions-string.md#last)
+* [ostatniego](template-functions-string.md#last)
 * [lastIndexOf](template-functions-string.md#lastindexof)
 * [Długość](template-functions-string.md#length)
 * [newGuid](template-functions-string.md#newguid)
 * [padLeft](template-functions-string.md#padleft)
-* [replace](template-functions-string.md#replace)
-* [skip](template-functions-string.md#skip)
+* [stępować](template-functions-string.md#replace)
+* [Skocz](template-functions-string.md#skip)
 * [split](template-functions-string.md#split)
 * [startsWith](template-functions-string.md#startswith)
-* [string](template-functions-string.md#string)
-* [substring](template-functions-string.md#substring)
-* [take](template-functions-string.md#take)
+* [parametry](template-functions-string.md#string)
+* [podciąg](template-functions-string.md#substring)
+* [czasochłonn](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)
 * [toUpper](template-functions-string.md#toupper)
-* [trim](template-functions-string.md#trim)
+* [Trim](template-functions-string.md#trim)
 * [uniqueString](template-functions-string.md#uniquestring)
-* [uri](template-functions-string.md#uri)
+* [adresu](template-functions-string.md#uri)
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
 * [utcNow](template-functions-string.md#utcnow)
@@ -221,5 +230,5 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z ciągami:
 
 * Opis sekcji w szablonie Azure Resource Manager można znaleźć w temacie [tworzenie Azure Resource Manager szablonów](template-syntax.md) .
 * Aby scalić wiele szablonów, zobacz [Używanie połączonych szablonów z Azure Resource Manager](linked-templates.md)
-* Aby powtórzyć określoną liczbę razy podczas tworzenia typu zasobu, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](create-multiple-instances.md)
+* Aby powtórzyć określoną liczbę razy podczas tworzenia typu zasobu, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](copy-resources.md).
 * Aby dowiedzieć się, jak wdrożyć utworzony szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](deploy-powershell.md)

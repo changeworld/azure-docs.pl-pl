@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f808ff2a88a86df25b555f94257168e2d176e7f8
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: fd52c4cc5cd9d4c01ddb355bdfb28d0952e65759
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963664"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210263"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optymalizacja wydajności i niezawodności Azure Functions
 
@@ -112,13 +112,13 @@ W C# przypadku funkcji można zmienić typ na tablicę o jednoznacznie określon
 
 Plik `host.json` w aplikacji funkcji umożliwia konfigurację środowiska uruchomieniowego hosta i zachowań wyzwalacza.  Oprócz zachowań wsadowych można zarządzać współbieżnością dla wielu wyzwalaczy. Często dostosowanie wartości w tych opcjach może pomóc każdej skali wystąpienia odpowiednio do potrzeb wywołanych funkcji.
 
-Ustawienia w pliku host. JSON dotyczą wszystkich funkcji w aplikacji w ramach *jednego wystąpienia* funkcji. Jeśli na przykład aplikacja funkcji ma dwie funkcje HTTP i [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings) żądania ustawione na wartość 25, żądanie do wyzwalacza protokołu HTTP będzie wliczane do współużytkowanych 25 współbieżnych żądań.  Gdy aplikacja funkcji jest skalowana do 10 wystąpień, te dwie funkcje skutecznie zezwalają na 250 współbieżnych żądań (10 wystąpień * 25 współbieżnych żądań na wystąpienie). 
+Ustawienia w pliku host. JSON dotyczą wszystkich funkcji w aplikacji w ramach *jednego wystąpienia* funkcji. Jeśli na przykład aplikacja funkcji ma dwie funkcje HTTP i [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) żądania ustawione na wartość 25, żądanie do wyzwalacza protokołu HTTP będzie wliczane do współużytkowanych 25 współbieżnych żądań.  Gdy aplikacja funkcji jest skalowana do 10 wystąpień, te dwie funkcje skutecznie zezwalają na 250 współbieżnych żądań (10 wystąpień * 25 współbieżnych żądań na wystąpienie). 
 
 Inne opcje konfiguracji hosta znajdują się w [artykule Konfiguracja pliku host. JSON](functions-host-json.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji zawierają następujące zasoby:
+Więcej informacji można znaleźć w następujących zasobach:
 
 * [Jak zarządzać połączeniami w Azure Functions](manage-connections.md)
 * [Azure App Service najlepszych praktyk](../app-service/app-service-best-practices.md)

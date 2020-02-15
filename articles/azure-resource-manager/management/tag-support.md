@@ -2,13 +2,13 @@
 title: Obsługa tagów dla zasobów
 description: Pokazuje, które typy zasobów platformy Azure obsługują Tagi. Zawiera szczegółowe informacje dotyczące wszystkich usług platformy Azure.
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: e17e6a996f54d6211f87ec20765d3fde782b7d6d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/13/2020
+ms.openlocfilehash: 09dd71ef8c3ac4803a988dffbdca47116c967a0e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715606"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207931"
 ---
 # <a name="tag-support-for-azure-resources"></a>Obsługa tagów dla zasobów platformy Azure
 W tym artykule opisano, czy typ zasobu obsługuje [Tagi](tag-resources.md). Kolumna z etykietą **obsługuje znaczniki** wskazuje, czy typ zasobu ma właściwość dla tagu. Kolumna **tag z etykietą w raporcie koszt** wskazuje, czy ten typ zasobu przekazuje tag do raportu kosztów. Możesz wyświetlić koszty według tagów w [Cost Management analiza kosztów](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) oraz [dane dotyczące rozliczeń i dziennego użycia na platformie Azure](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -116,6 +116,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft. Migrowanie](#microsoftmigrate)
 > - [Microsoft. MixedReality](#microsoftmixedreality)
 > - [Microsoft. NetApp](#microsoftnetapp)
+> - [Microsoft. notesy](#microsoftnotebooks)
 > - [Microsoft. Network](#microsoftnetwork)
 > - [Microsoft. NotificationHubs](#microsoftnotificationhubs)
 > - [Microsoft. ObjectStore](#microsoftobjectstore)
@@ -148,6 +149,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft. SiteRecovery](#microsoftsiterecovery)
 > - [Microsoft. SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft. Solutions](#microsoftsolutions)
+> - [Microsoft. SpoolService](#microsoftspoolservice)
 > - [Microsoft. SQL](#microsoftsql)
 > - [Microsoft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft. Storage](#microsoftstorage)
@@ -367,6 +369,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | billingAccounts/billingProfiles/instrukcje | Nie | Nie |
 > | billingAccounts/billingProfiles/faktury | Nie | Nie |
 > | billingAccounts/billingProfiles/faktury/arkusza cen | Nie | Nie |
+> | billingAccounts/billingProfiles/faktury/transakcje | Nie | Nie |
 > | billingAccounts / billingProfiles / invoiceSections | Nie | Nie |
 > | billingAccounts / billingProfiles / invoiceSections / billingPermissions | Nie | Nie |
 > | billingAccounts / billingProfiles / invoiceSections / billingRoleAssignments | Nie | Nie |
@@ -430,7 +433,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | działów | Nie | Nie |
 > | enrollmentAccounts | Nie | Nie |
 > | faktur | Nie | Nie |
-> | sunięcia | Nie | Nie |
+> | Sunięcia | Nie | Nie |
 > | transfery/acceptTransfer | Nie | Nie |
 > | transfery/declineTransfer | Nie | Nie |
 > | transfery/operationStatus | Nie | Nie |
@@ -484,7 +487,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | Redis | Yes | Yes |
-> | RedisConfigDefinition | Nie | Nie |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -707,6 +709,9 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | rejestry/getBuildSourceUploadUrl | Nie | Nie |
 > | rejestry/getpoświadczenia | Nie | Nie |
 > | rejestry/importImage | Nie | Nie |
+> | rejestry/privateEndpointConnectionProxies | Nie | Nie |
+> | rejestry/privateEndpointConnectionProxies/weryfikacja | Nie | Nie |
+> | rejestry/privateLinkResources | Nie | Nie |
 > | rejestry/queueBuild | Nie | Nie |
 > | rejestry/regenerateCredential | Nie | Nie |
 > | rejestry/regenerateCredentials | Nie | Nie |
@@ -745,13 +750,13 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | Alerty | Nie | Nie |
-> | billingAccounts | Nie | Nie |
+> | BillingAccounts | Nie | Nie |
 > | Budżety | Nie | Nie |
 > | CloudConnectors | Nie | Nie |
 > | Łączniki | Yes | Yes |
-> | działów | Nie | Nie |
+> | Działów | Nie | Nie |
 > | Wymiary | Nie | Nie |
-> | enrollmentAccounts | Nie | Nie |
+> | EnrollmentAccounts | Nie | Nie |
 > | Eksportowanie | Nie | Nie |
 > | ExternalBillingAccounts | Nie | Nie |
 > | ExternalBillingAccounts/alerty | Nie | Nie |
@@ -792,7 +797,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | zadania | Yes | Yes |
+> | Zadania | Yes | Yes |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 
@@ -1170,7 +1175,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | zadania | Yes | Yes |
+> | Zadania | Yes | Yes |
 
 ## <a name="microsoftintune"></a>Microsoft. Intune
 
@@ -1393,6 +1398,13 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | netAppAccounts/capacityPools/woluminy/mountTargets | Yes | Nie |
 > | netAppAccounts/capacityPools/woluminy/migawki | Yes | Nie |
 
+## <a name="microsoftnotebooks"></a>Microsoft. notesy
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
+> | ------------- | ----------- | ----------- |
+> | NotebookProxies | Nie | Nie |
+
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1514,7 +1526,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | oparty | Yes | Yes |
-> | urządzenia | Nie | Nie |
 > | linkTargets | Nie | Nie |
 > | storageInsightConfigs | Nie | Nie |
 > | obszary robocze | Yes | Yes |
@@ -1525,6 +1536,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | obszary robocze/privateEndpointConnections | Nie | Nie |
 > | obszary robocze/privateLinkResources | Nie | Nie |
 > | obszary robocze/zapytanie | Nie | Nie |
+> | obszary robocze/scopedPrivateLinkProxies | Nie | Nie |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1658,7 +1670,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | notifyResourceJobs | Nie | Nie |
 > | dostawcy | Nie | Nie |
 > | resourceGroups | Yes | Nie |
-> | opłaty | Nie | Nie |
+> | opłaty | Yes | Nie |
 > | dzierżaw | Nie | Nie |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1747,8 +1759,10 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | zakładki | Nie | Nie |
 > | padkach | Nie | Nie |
 > | Połączenia dataconnecters | Nie | Nie |
+> | dataConnectorsCheckRequirements | Nie | Nie |
 > | jednostki | Nie | Nie |
 > | entityQueries | Nie | Nie |
+> | Zdarzenia | Nie | Nie |
 > | officeConsents | Nie | Nie |
 > | settings | Nie | Nie |
 
@@ -1782,6 +1796,8 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | containerGroupSets | Yes | Yes |
 > | edgeclusters | Yes | Yes |
 > | edgeclusters/aplikacje | Nie | Nie |
+> | managedclusters | Yes | Yes |
+> | managedclusters/elementów NodeType | Nie | Nie |
 > | sieci | Yes | Yes |
 > | secretstores | Yes | Yes |
 > | secretstores/certyfikaty | Nie | Nie |
@@ -1839,6 +1855,14 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | applicationDefinitions | Yes | Yes |
 > | aplikacje | Yes | Yes |
 > | jitRequests | Yes | Yes |
+
+## <a name="microsoftspoolservice"></a>Microsoft. SpoolService
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
+> | ------------- | ----------- | ----------- |
+> | registeredSubscriptions | Nie | Nie |
+> | bufory | Yes | Yes |
 
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
@@ -2004,6 +2028,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | urządzenia | Yes | Yes |
 > | dostawców | Nie | Nie |
 > | dostawcy/jednostki SKU | Nie | Nie |
+> | dostawcy/vnfs | Nie | Nie |
 > | vnfs | Yes | Yes |
 
 ## <a name="microsoftweb"></a>Microsoft.Web

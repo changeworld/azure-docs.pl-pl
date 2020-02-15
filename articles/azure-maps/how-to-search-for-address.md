@@ -1,19 +1,19 @@
 ---
 title: Wyszukaj lokalizację przy użyciu usług wyszukiwania Azure Maps | Mapy Microsoft Azure
 description: W tym artykule dowiesz się, jak wyszukiwać lokalizację przy użyciu Microsoft Azure Maps Search Service do geokodowania i odwrotnego geokodowania.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3b5da7eab9cff5c5e051fc4d5ab7ff582a95c20d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 40066f24fec00610a1efd10b2cb874b1100acdee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899227"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209889"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Wyszukiwanie lokalizacji przy użyciu usług wyszukiwania Azure Maps
 
@@ -59,7 +59,7 @@ Jeśli masz zestaw adresów do geokodowania, możesz użyć [interfejsu API usł
 |------------------|-------------------------| 
 | api-version | 1.0 | 
 | klucz subskrypcji | \<klucz Azure Maps\> | 
-| query | 400 Broad St, Seattle, WA 98109 | 
+| zapytanie | 400 Broad St, Seattle, WA 98109 | 
 
 4. Kliknij pozycję **Wyślij** i sprawdź treść odpowiedzi. 
 
@@ -75,7 +75,7 @@ W takim przypadku należy określić kompletne zapytanie dotyczące adresu i otr
 
 | Klucz | Wartość | 
 |-----|------------| 
-| typeahead | true | 
+| typeahead | {1&gt;true&lt;1} | 
 
 Flaga **typeahead** INSTRUUJE interfejs API wyszukiwania adresów, aby traktować zapytanie jako częściowe dane wejściowe i zwracało tablicę wartości predykcyjnych.
 
@@ -109,7 +109,7 @@ Większość zapytań wyszukiwania jest domyślnie `maxFuzzyLevel=1`, aby uzyska
     |------------------|-------------------------|
     | api-version | 1.0 |
     | klucz subskrypcji | \<klucz Azure Maps\> |
-    | query | pizza |
+    | zapytanie | pizza |
 
 4. Kliknij pozycję **Wyślij** i sprawdź treść odpowiedzi.
 
@@ -121,7 +121,7 @@ Większość zapytań wyszukiwania jest domyślnie `maxFuzzyLevel=1`, aby uzyska
 
     | Klucz | Wartość |
     |------------------|-------------------------|
-    | countrySet | Stany Zjednoczone |
+    | countrySet | US |
   
     Wyniki są teraz ograniczone przez kod kraju, a zapytanie zwraca Pizza Restauracje w Stany Zjednoczone.
   
@@ -163,7 +163,7 @@ Jeśli masz zestaw lokalizacji współrzędnych w celu odwrócenia geokodu, moż
     |------------------|-------------------------|
     | api-version | 1.0 |
     | klucz subskrypcji | \<klucz Azure Maps\> |
-    | query | 47.591180,-122,332700 |
+    | zapytanie | 47.591180,-122,332700 |
   
 4. Kliknij pozycję **Wyślij** i sprawdź treść odpowiedzi.
 
@@ -173,7 +173,7 @@ Jeśli masz zestaw lokalizacji współrzędnych w celu odwrócenia geokodu, moż
 
     | Klucz | Wartość |
     |-----|------------|
-    | numer | true |
+    | liczba | {1&gt;true&lt;1} |
 
     Jeśli parametr [Number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) jest wysyłany wraz z żądaniem, odpowiedź może zawierać stronę ulicy (lewą lub prawą), a także pozycję przesunięcia dla tego numeru.
   
@@ -181,7 +181,7 @@ Jeśli masz zestaw lokalizacji współrzędnych w celu odwrócenia geokodu, moż
 
     | Klucz | Wartość |
     |-----|------------|
-    | returnSpeedLimit | true |
+    | returnSpeedLimit | {1&gt;true&lt;1} |
   
     Gdy parametr zapytania [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) jest ustawiony, odpowiedź zwróci limit liczby opublikowanych prędkości.
 
@@ -189,7 +189,7 @@ Jeśli masz zestaw lokalizacji współrzędnych w celu odwrócenia geokodu, moż
 
     | Klucz | Wartość |
     |-----|------------|
-    | returnRoadUse | true |
+    | returnRoadUse | {1&gt;true&lt;1} |
 
     Gdy parametr zapytania [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) jest ustawiony, odpowiedź zwróci tablicę use do dróg w celu odwrócenia geokodowej na poziomie ulicy.
 
@@ -197,7 +197,7 @@ Jeśli masz zestaw lokalizacji współrzędnych w celu odwrócenia geokodu, moż
 
     | Klucz | Wartość |
     |-----|------------|
-    | roadUse | true |
+    | roadUse | {1&gt;true&lt;1} |
 
     Można ograniczyć zapytanie odwrotnego kodu do określonego typu drogi przy użyciu parametru zapytania [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) .
   
@@ -221,7 +221,7 @@ Jeśli masz zestaw lokalizacji współrzędnych w celu odwrócenia geokodu, moż
     |------------------|-------------------------|
     | api-version | 1.0 |
     | klucz subskrypcji | \<klucz Azure Maps\> |
-    | query | 47.591180,-122,332700 |
+    | zapytanie | 47.591180,-122,332700 |
   
 4. Kliknij pozycję **Wyślij** i sprawdź treść odpowiedzi.
 

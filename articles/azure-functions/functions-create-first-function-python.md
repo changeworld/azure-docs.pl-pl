@@ -4,12 +4,12 @@ description: Utwórz i Wdróż kod języka Python bezserwerowy w chmurze przy u�
 ms.date: 02/11/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: a781e10cee4cf433de5e837490d901020a875205
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 16d4d5627ea297d825092009511915f5b6e734b6
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157894"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212434"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>Szybki Start: Tworzenie funkcji języka Python na platformie Azure, która odpowiada na żądania HTTP
 
@@ -97,7 +97,7 @@ W Azure Functions, projekt funkcji jest kontenerem dla jednej lub kilku poszczeg
     cd LocalFunctionProj
     ```
     
-1. Dodaj funkcję do projektu za pomocą następującego polecenia, gdzie argument `--name` jest unikatową nazwą funkcji, a argument `--template` Określa wyzwalacz funkcji. `func new` utworzyć podfolder pasujący do nazwy funkcji, która zawiera plik kodu odpowiedni dla wybranego języka projektu i plik konfiguracji o nazwie *Function. JSON*.
+1. Dodaj funkcję do projektu za pomocą następującego polecenia, gdzie argument `--name` określa unikatową nazwę funkcji (HttpExample w tym przypadku), a argument `--template` Określa wyzwalacz funkcji (wyzwalacz HTTP). To polecenie `func new` tworzy podfolder pasujący do nazwy funkcji, która zawiera plik kodu odpowiedni dla wybranego języka projektu i plik konfiguracji o nazwie *Function. JSON*.
 
     ```
     func new --name HttpExample --template "HTTP trigger"
@@ -167,7 +167,7 @@ W przypadku wyzwalacza HTTP funkcja otrzymuje dane żądania w zmiennej `req` zg
 }
 ```
 
-Każde powiązanie wymaga kierunku, typu i unikatowej nazwy. Wyzwalacz HTTP ma powiązanie wejściowe typu [`httpTrigger`](functions-bindings-http-webhook.md#trigger) i dane wyjściowe powiązania typu [`http`](functions-bindings-http-webhook.md#output).
+Każde powiązanie wymaga kierunku, typu i unikatowej nazwy. Wyzwalacz HTTP ma powiązanie wejściowe typu [`httpTrigger`](functions-bindings-http-webhook-trigger.md) i dane wyjściowe powiązania typu [`http`](functions-bindings-http-webhook-output.md).
 
 
 ## <a name="run-the-function-locally"></a>Lokalne uruchamianie funkcji

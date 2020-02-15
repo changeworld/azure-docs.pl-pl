@@ -9,12 +9,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
-ms.openlocfilehash: 7011bf068a96fe9da035ec08a1f6ef7f80a0b240
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 686e426ef0b7706eff168e42ffc67417b2c5c743
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161957"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212897"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Wprowadzenie do inspekcji bazy danych SQL
 
@@ -90,7 +90,7 @@ Aby skonfigurować zapisywanie dzienników inspekcji na koncie magazynu, wybierz
 
    ![konto magazynu](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-Aby skonfigurować konto magazynu w ramach sieci wirtualnej lub zapory, na serwerze musi być [Active Directory administrator](/sql-database-aad-authentication-configure.md?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) , Włącz opcję **Zezwalaj zaufanym usługom firmy Microsoft na dostęp do tego konta magazynu** na koncie magazynu. Ponadto należy mieć uprawnienie "Microsoft. Authorization/roleAssignments/Write" na wybranym koncie magazynu.
+Aby skonfigurować konto magazynu w ramach sieci wirtualnej lub zapory, na serwerze musi być [Active Directory administrator](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-managed-instance) , Włącz opcję **Zezwalaj zaufanym usługom firmy Microsoft na dostęp do tego konta magazynu** na koncie magazynu. Ponadto należy mieć uprawnienie "Microsoft. Authorization/roleAssignments/Write" na wybranym koncie magazynu.
 
 Zalecamy, aby być [administratorem dostępu użytkowników](../role-based-access-control/built-in-roles.md#user-access-administrator) w celu udzielenia tożsamości zarządzanej roli "Współautor danych obiektu blob magazynu". Aby dowiedzieć się więcej o uprawnieniach i kontroli dostępu opartej na rolach, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC) dla zasobów platformy Azure?](../role-based-access-control/overview.md) i [Dodawanie lub usuwanie przypisań ról przy użyciu funkcji RBAC platformy Azure i Azure Portal](../role-based-access-control/role-assignments-portal.md)
 

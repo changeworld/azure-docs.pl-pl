@@ -3,12 +3,12 @@ title: Funkcje szablonu — zasoby
 description: Opisuje funkcje, aby użyć w szablonie usługi Azure Resource Manager można pobrać wartości dotyczące zasobów.
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cc8976b714549f7442e22b341b34e81d717c8742
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 10476f5a29c12d7437beb9a9f707feda815d7ba1
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120527"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207012"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -124,7 +124,7 @@ Składnia tej funkcji różni się od nazwy operacji na liście. Każda implemen
 
 ### <a name="valid-uses"></a>Prawidłowe zastosowania
 
-Funkcji list można używać tylko we właściwościach definicji zasobu i w sekcji dane wyjściowe szablonu lub wdrożenia. Gdy jest używany z [iteracją właściwości](create-multiple-instances.md#property-iteration), można użyć funkcji listy dla `input`, ponieważ wyrażenie jest przypisane do właściwości zasobów. Nie można ich używać z `count`, ponieważ liczba musi być określona przed rozliczeniem funkcji list.
+Funkcji list można używać tylko we właściwościach definicji zasobu i w sekcji dane wyjściowe szablonu lub wdrożenia. Gdy jest używany z [iteracją właściwości](copy-properties.md), można użyć funkcji listy dla `input`, ponieważ wyrażenie jest przypisane do właściwości zasobów. Nie można ich używać z `count`, ponieważ liczba musi być określona przed rozliczeniem funkcji list.
 
 ### <a name="implementations"></a>Implementacje
 
@@ -496,7 +496,7 @@ Użyj `'Full'`, gdy potrzebujesz wartości zasobów, które nie są częścią s
 
 ### <a name="valid-uses"></a>Prawidłowe zastosowania
 
-Odwołanie funkcji należy używać tylko w właściwości definicji zasobu i sekcję danych wyjściowych szablonu lub wdrożenia. Gdy jest używany z [iteracją właściwości](create-multiple-instances.md#property-iteration), można użyć funkcji reference dla `input`, ponieważ wyrażenie jest przypisane do właściwości Resource. Nie można użyć go z `count`, ponieważ liczba musi być określona przed rozwiązanym funkcją referencyjną.
+Odwołanie funkcji należy używać tylko w właściwości definicji zasobu i sekcję danych wyjściowych szablonu lub wdrożenia. Gdy jest używany z [iteracją właściwości](copy-properties.md), można użyć funkcji reference dla `input`, ponieważ wyrażenie jest przypisane do właściwości Resource. Nie można użyć go z `count`, ponieważ liczba musi być określona przed rozwiązanym funkcją referencyjną.
 
 Nie można użyć funkcji Reference w danych wyjściowych [szablonu zagnieżdżonego](linked-templates.md#nested-template) , aby zwrócić zasób wdrożony w szablonie zagnieżdżonym. Zamiast tego należy użyć [połączonego szablonu](linked-templates.md#linked-template).
 
@@ -758,7 +758,7 @@ Zwraca unikatowy identyfikator zasobu. Aby użyć tej funkcji, jeśli nazwa zaso
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Nie |ciąg (format identyfikatora GUID w) |Wartością domyślną jest bieżąca subskrypcja. Należy określić tę wartość, gdy jest potrzebne do pobierania zasobów w innej subskrypcji. |
+| subscriptionId |Nie |ciąg (format identyfikatora GUID w) |Wartością domyślną jest bieżąca subskrypcja. Należy określić tę wartość, gdy jest potrzebne do pobierania zasobów w innej subskrypcji. Podaj tę wartość tylko podczas wdrażania w zakresie grupy zasobów lub subskrypcji. |
 | resourceGroupName |Nie |ciąg |Wartość domyślna to bieżącej grupie zasobów. Należy określić tę wartość, gdy jest potrzebne do pobierania zasobów w innej grupie zasobów. Podaj tę wartość tylko w przypadku wdrażania w zakresie grupy zasobów. |
 | resourceType |Yes |ciąg |Typ zasobu, włącznie z przestrzenią nazw dostawcy zasobów. |
 | resourceName1 |Yes |ciąg |Nazwa zasobu. |
@@ -1064,6 +1064,6 @@ Ta funkcja służy do pobierania identyfikatora zasobu dla zasobu, który jest w
 
 * Opis sekcji w szablonie Azure Resource Manager można znaleźć w temacie [tworzenie Azure Resource Manager szablonów](template-syntax.md).
 * Aby scalić wiele szablonów, zobacz [Używanie połączonych szablonów z Azure Resource Manager](linked-templates.md).
-* Aby powtórzyć określoną liczbę razy podczas tworzenia typu zasobu, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](create-multiple-instances.md).
+* Aby powtórzyć określoną liczbę razy podczas tworzenia typu zasobu, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](copy-resources.md).
 * Aby dowiedzieć się, jak wdrożyć utworzony szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](deploy-powershell.md).
 

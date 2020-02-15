@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: e9647c1833416b9b225be988acaffb4022f655c1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422089"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211695"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Wskazówki dotyczące wdrażania aplikacji sieci Web za pomocą szablonów Azure Resource Manager
 
@@ -90,7 +90,7 @@ Jeśli szablon Menedżer zasobów używa MSDeploy, komunikaty o błędach wdroż
 
 1. Przejdź do [konsoli kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console)lokacji.
 2. Przejdź do folderu pod adresem D:\home\LogFiles\SiteExtensions\MSDeploy.
-3. Wyszukaj pliki appManagerStatus. XML i appManagerLog. XML. Pierwszy plik rejestruje stan. Drugi plik rejestruje informacje o błędzie. Jeśli błąd nie jest oczywisty, możesz dołączyć go, gdy zostanie wyświetlony monit o pomoc na forum.
+3. Wyszukaj pliki appManagerStatus. XML i appManagerLog. XML. Pierwszy plik rejestruje stan. Drugi plik rejestruje informacje o błędzie. Jeśli błąd nie jest oczywisty, możesz dołączyć go, gdy zostanie wyświetlony monit o pomoc na [forum](https://docs.microsoft.com/answers/topics/azure-webapps.html).
 
 ## <a name="choose-a-unique-web-app-name"></a>Wybierz unikatową nazwę aplikacji sieci Web
 

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: d7d3182ad00d0ce151c6d327b29584c7e2ff1323
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457868"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251638"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric Visual Studio Code
 
@@ -27,7 +27,7 @@ Poniższe wymagania wstępne muszą być zainstalowane we wszystkich środowiska
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Node.js](https://nodejs.org/)
-* [Git](https://git-scm.com/)
+* [Usługa Git](https://git-scm.com/)
 * [Zestaw SDK Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
 * Generatory narzędzia Yeoman — Zainstaluj odpowiednie generatory dla aplikacji
 
@@ -50,7 +50,7 @@ W przypadku programu .NET Core/C# Development należy zainstalować następując
 * [.NET Core](https://www.microsoft.com/net/learn/get-started) (wersja 2.0.0 lub nowsza)
 * [dla Visual Studio Code (obsługiwane przez OmniSharp) vs Code rozszerzenie C# ](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) Wymagany do debugowania C# usług. Możesz zainstalować program, klikając ikonę rozszerzenia na **pasku działania** w vs Code i wyszukując rozszerzenie lub z poziomu witryny vs Code Marketplace.
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 
 1. Otwórz VS Code.
 2. Kliknij ikonę rozszerzenia na **pasku działania** po lewej stronie vs Code. Wyszukaj ciąg "Service Fabric". Kliknij przycisk **Instaluj** dla rozszerzenia Service Fabric Reliable Services.
@@ -69,7 +69,7 @@ Rozszerzenie Service Fabric Reliable Services dla VS Code zawiera wiele poleceń
 
 Polecenie **Service Fabric: Create Application** tworzy nową aplikację Service Fabric w bieżącym obszarze roboczym. W zależności od tego, które generatory narzędzia Yeoman są zainstalowane na komputerze deweloperskim, można utworzyć kilka typów aplikacji Service Fabric, w tym C#Java, kontenerów i projektów Gości. 
 
-1.  Wybierz **Service Fabric: Dodaj usługę**
+1.  Wybierz polecenie **Service Fabric: Create Application**
 2.  Wybierz typ dla nowej aplikacji Service Fabric. 
 3.  Wprowadź nazwę aplikacji, którą chcesz utworzyć
 3.  Wybierz typ usługi, którą chcesz dodać do aplikacji Service Fabric. 

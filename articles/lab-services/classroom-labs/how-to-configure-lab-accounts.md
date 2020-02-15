@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 597bbfdc35c556b5c75968084c01ac222fc468f4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37a657093fd55ce752095417fe744f83946962db
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718087"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210583"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Konfigurowanie kont laboratorium w Azure Lab Services 
 W Azure Lab Services konto laboratorium jest kontenerem dla zarządzanych typów laboratorium, takich jak pracownie. Administrator konfiguruje konto laboratorium przy użyciu Azure Lab Services i zapewnia dostęp do właścicieli laboratorium, którzy mogą tworzyć laboratoria na koncie. W tym artykule opisano sposób tworzenia konta laboratorium, wyświetlania wszystkich kont laboratorium lub usuwania konta laboratorium.
@@ -30,25 +30,13 @@ Aby połączyć sieć wirtualną jako sieć równorzędną z siecią wirtualną 
 
     ![Strona konfiguracji laboratoriów](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
 1. W przypadku **równorzędnej sieci wirtualnej**wybierz opcję **włączone** lub **wyłączone**. Wartość domyślna jest **wyłączona**. Aby włączyć równorzędną sieć wirtualną, wykonaj następujące czynności: 
-    1. Wybierz pozycję **Włączone**.
+    1. Wybierz opcję **Włączona**.
     2. Wybierz **sieć wirtualną** z listy rozwijanej. 
 3. Wybierz pozycję **Zapisz** na pasku narzędzi. 
 
 Laboratoria utworzone na tym koncie są połączone z wybraną siecią wirtualną. Mogą oni uzyskać dostęp do zasobów w wybranej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [łączenie sieci laboratorium z równorzędną siecią wirtualną w Azure Lab Services](how-to-connect-peer-virtual-network.md).
 
 W przypadku wybrania sieci wirtualnej dla pola **równorzędna Sieć wirtualna** opcja **Zezwól na wybór laboratorium do wyboru lokalizacji laboratorium** jest wyłączona. Wynika to z faktu, że laboratorium na koncie laboratorium musi znajdować się w tym samym regionie co konto laboratorium, aby można było połączyć się z zasobami w równorzędnej sieci wirtualnej. 
-
-## <a name="allow-lab-creator-to-pick-location-for-the-lab"></a>Zezwól twórcy laboratorium na wybranie lokalizacji dla laboratorium
-Można zezwolić na tworzenie laboratoriów przez twórcę w innej lokalizacji niż lokalizacja konta laboratorium, wykonując następujące czynności: 
-
-1. Na stronie **konto laboratorium** wybierz pozycję **Konfiguracja laboratoriów** w menu po lewej stronie.
-2. W polu Zezwalaj na wybór laboratorium w celu wybrania **lokalizacji laboratorium**wybierz opcję **włączone** , jeśli chcesz, aby twórca laboratorium mógł wybrać lokalizację dla laboratorium. W przypadku wyłączenia tej funkcji laboratoria są tworzone automatycznie w tej samej lokalizacji, w której znajduje się konto laboratorium. 
-    
-    To pole jest wyłączone w przypadku wybrania sieci wirtualnej dla pola **równorzędnej sieci wirtualnej** . Jest to spowodowane tym, że laboratorium na koncie laboratorium musi znajdować się w tym samym regionie co konto laboratorium, aby uzyskać dostęp do zasobów w równorzędnej sieci wirtualnej. 
-1. Wybierz pozycję **Zapisz** na pasku narzędzi. 
-
-    ![Skonfiguruj ustawienie lokalizacji laboratorium](../media/how-to-manage-lab-accounts/labs-configuration-page-lab-location.png)
-
 
 ## <a name="specify-an-address-range-for-vms-in-the-lab"></a>Określ zakres adresów dla maszyn wirtualnych w laboratorium
 Poniższa procedura zawiera kroki umożliwiające określenie zakresu adresów dla maszyn wirtualnych w laboratorium. W przypadku aktualizacji zakresu, który został wcześniej określony, zmodyfikowany zakres adresów ma zastosowanie tylko do maszyn wirtualnych, które zostały utworzone po wprowadzeniu zmiany. 

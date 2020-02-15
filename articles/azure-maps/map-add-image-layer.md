@@ -1,6 +1,6 @@
 ---
 title: Dodawanie warstwy obrazu do mapy | Mapy Microsoft Azure
-description: Ten artykuł zawiera informacje na temat nałożenia obrazu na mapie przy użyciu zestawu Microsoft Azure mapy sieci Web.
+description: W tym artykule dowiesz się, jak nałożyć obraz na mapie przy użyciu zestawu Microsoft Azure Web SDK mapy.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cfdf7dfd4c16f70065e338f8983d2124d3f6f0ef
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 69bf41f9d88081b9a416b9bee91e8650a84f12c7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933215"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209719"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Dodawanie warstwy obrazu do mapy
 
-W tym artykule pokazano, jak można nałożyć obraz na stały zestaw współrzędnych na mapie. Poniżej przedstawiono kilka przykładów typu obrazów, które często są nałożone na mapy:
+W tym artykule pokazano, jak nałożyć obraz na stały zestaw współrzędnych. Poniżej przedstawiono kilka przykładów różnych typów obrazów, które mogą być nałożone na mapy:
 
 * Obrazy przechwycone z dronom
 * Kompilowanie Floorplans
@@ -62,9 +62,9 @@ Oto kompletny przykładowy kod dla poprzedniego kodu.
 
 ## <a name="import-a-kml-file-as-ground-overlay"></a>Importowanie pliku KML jako nakładki gruntowej
 
-Ten następny przykład pokazuje, jak nałożyć KMLe informacje o nakładki naziemnej jako warstwę obrazu na mapie. Nakładki naziemne KML zapewniają współrzędne północne, Południowe, wschodnie i zachodnie oraz obrót w prawo, natomiast warstwa obrazu oczekuje współrzędnych dla każdego rogu obrazu. Nakładka KML w tym przykładzie jest Chartres Cathedral i pochodzi od [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
+Ten przykład pokazuje, jak dodać informacje o nakładce KML ziemi jako warstwę obrazu na mapie. Nakładki naziemne KML zapewniają współrzędne północne, Południowe, wschodnie i zachodnie oraz obrót w prawo. Jednak warstwa obrazu oczekuje współrzędnych dla każdego rogu obrazu. Nakładka uziemienia KML w tym przykładzie jest dla Cathedral Chartres i jest źródłem z [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
 
-Poniższy kod używa funkcji static `getCoordinatesFromEdges` klasy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) . Oblicza cztery narożniki obrazu z obszaru północ, południe, wschód i zachód oraz informacje o obrocie z nakładki naziemnej KML.
+Kod używa funkcji statycznej `getCoordinatesFromEdges` z klasy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) . Oblicza cztery rogi obrazu przy użyciu informacji o północy, południe, wschód, zachód i rotacji nakładki naziemnej KML.
 
 <br/>
 

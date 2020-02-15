@@ -1,19 +1,19 @@
 ---
 title: Pojęcia dotyczące usług pogodowych | Mapy Microsoft Azure
 description: Ten artykuł zawiera informacje na temat pojęć, które dotyczą Microsoft Azure mapowania usług pogodowych.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bcf100236d4a2a707a007a24e9e51105cc9ca0ac
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: af7ea5c6e9d09b05b2f9271d6954162c0fd429c6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991395"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208730"
 ---
 # <a name="weather-services-in-azure-maps"></a>Usługi pogodowe w Azure Maps
 
@@ -71,7 +71,7 @@ Niektóre interfejsy API usługi Pogoda zwracają `iconCode` w odpowiedzi. `icon
 | 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | Tak |  Tak   | Thunderstorms|
 | 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | Tak |  Nie    | W większości chmur z Thunderstorms|
 | 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | Tak |  Nie    | Częściowo Sunny z Thunderstorms|
-| 18           |![](./media/weather-services-concepts/rain-i.png)                      | Tak |  Tak   | Deszcz|
+| 18           |![](./media/weather-services-concepts/rain-i.png)                      | Tak |  Tak   | Fartuch|
 | 19           |![](./media/weather-services-concepts/flurries-i.png)                  | Tak |  Tak   | Flurries|
 | 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | Tak |  Nie    | W większości chmur z Flurries|
 | 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | Tak |  Nie    | Częściowo Sunny z Flurries|
@@ -84,7 +84,7 @@ Niektóre interfejsy API usługi Pogoda zwracają `iconCode` w odpowiedzi. `icon
 | 30           |![](./media/weather-services-concepts/hot-i.png)                       | Tak |  Tak   | Gorąca|
 | 31           |![](./media/weather-services-concepts/cold-i.png)                      | Tak |  Tak   | Chłodn|
 | 32           |![](./media/weather-services-concepts/windy-i.png)                     | Tak |  Tak   | Wiatr|
-| 33           |![](./media/weather-services-concepts/clear-night.png)                | Nie  |  Tak   | Wyczyść|
+| 33           |![](./media/weather-services-concepts/clear-night.png)                | Nie  |  Tak   | Clear|
 | 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Nie  |  Tak   | Przede wszystkim|
 | 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | Nie  |  Tak   | Częściowo chmura|
 | 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | Nie  |  Tak   | Przerwy w chmurze|

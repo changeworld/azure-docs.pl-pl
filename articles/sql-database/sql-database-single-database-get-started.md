@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
-ms.reviewer: carlrab, sstein
-ms.date: 09/09/2019
-ms.openlocfilehash: 5cfccd6e79b7289b6fd59abcabba05abab6ab09b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.reviewer: carlrab, sstein, vanto
+ms.date: 02/14/2020
+ms.openlocfilehash: 2dacdfaa5443707ab82ae53922ac439319375276
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443841"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252155"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Szybki Start: Tworzenie pojedynczej bazy danych w Azure SQL Database przy użyciu Azure Portal, programu PowerShell i interfejsu wiersza polecenia platformy Azure
 

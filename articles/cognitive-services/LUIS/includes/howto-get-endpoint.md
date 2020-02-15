@@ -6,18 +6,18 @@ author: diberry
 manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
-ms.subservice: luis
+ms.date: 02/14/2020
+ms.subservice: language-understanding
 ms.topic: include
-ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: 39bfa5b6800c65112850faa8842b915ceedb9312
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 5b1b361778de145a5e32a07bb0164ff2293d9a1a
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648279"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279668"
 ---
-W sekcji **Zarządzanie** (menu w prawym górnym rogu) na stronie **zasoby platformy Azure** (menu po lewej) Skopiuj **przykładowy** adres URL zapytania i wklej go do nowej karty przeglądarki. 
+W sekcji **Zarządzanie** (menu w prawym górnym rogu) na stronie **zasoby platformy Azure** (menu po lewej) Skopiuj **przykładowy** adres URL zapytania i wklej go do nowej karty przeglądarki.
 
 Adres URL punktu końcowego wygląda tak, jak w następującym formacie, wraz z IDENTYFIKATORem aplikacji i kluczem punktu końcowego zastępującym identyfikator aplikacji i IDENTYFIKATORem klucza:
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169833"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252080"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co to jest wystąpienie obliczeniowe Azure Machine Learning?
 
@@ -141,11 +141,11 @@ Wystąpienia obliczeniowe mogą służyć jako [obiekt docelowy obliczeń szkole
 
 ## <a name="notebookvm"></a>Co się stało z maszyną wirtualną notesu?
 
-Wystąpienia obliczeniowe zamieniają maszynę wirtualną notesu.  W regionach, w których wystąpienia obliczeniowe nie są jeszcze dostępne, można nadal korzystać z maszyn wirtualnych notesu z pełną funkcjonalnością i tworzyć nowe maszyny wirtualne notesu.
+Wystąpienia obliczeniowe zamieniają maszynę wirtualną notesu.  
 
 Wszystkie pliki notesu przechowywane w udziale plików obszaru roboczego i dane w magazynach danych obszaru roboczego będą dostępne z wystąpienia obliczeniowego. Jednak wszystkie pakiety niestandardowe zainstalowane wcześniej na maszynie wirtualnej notesu będą musiały zostać ponownie zainstalowane w wystąpieniu obliczeniowym. Ograniczenia przydziałów, które dotyczą tworzenia klastrów obliczeniowych, będą również stosowane do tworzenia wystąpień obliczeniowych. 
 
-W regionach, w których są dostępne wystąpienia obliczeniowe, nie można utworzyć nowych maszyn wirtualnych notesu. Można jednak nadal uzyskiwać dostęp do utworzonych maszyn wirtualnych Notes i korzystać z nich z pełną funkcjonalnością. Wystąpienia obliczeniowe można tworzyć w tym samym obszarze roboczym, co istniejące maszyny wirtualne notesu. 
+Nie można utworzyć nowych maszyn wirtualnych notesu. Można jednak nadal uzyskiwać dostęp do utworzonych maszyn wirtualnych Notes i korzystać z nich z pełną funkcjonalnością. Wystąpienia obliczeniowe można tworzyć w tym samym obszarze roboczym, co istniejące maszyny wirtualne notesu. 
 
 
 ## <a name="next-steps"></a>Następne kroki

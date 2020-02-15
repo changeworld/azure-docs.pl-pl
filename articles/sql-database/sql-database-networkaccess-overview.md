@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894791"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251910"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database i kontrola dostępu do sieci hurtowni danych
 
@@ -113,7 +113,7 @@ Należy pamiętać o następujących kwestiach dotyczących sieci platformy Azur
 
 **Podsieć:** Sieć wirtualna zawiera **podsieci**. Wszystkie maszyny wirtualne platformy Azure, które są przypisane do podsieci. Jedna podsieć może zawierać wiele maszyn wirtualnych lub innych węzłów obliczeniowych. Węzły obliczeniowe znajdujące się poza siecią wirtualną nie mogą uzyskać dostępu do sieci wirtualnej, chyba że skonfigurowano zabezpieczenia, aby zezwolić na dostęp.
 
-**Virtual Network punkt końcowy usługi:** [Virtual Network Service Endpoint] [VM-Virtual-Network-Service-Endpoints-Overview-649d] jest podsiecią, której wartości właściwości zawierają co najmniej jedną formalną nazwę typu usługi platformy Azure. W tym artykule interesuje Cię nazwę typu **Microsoft. SQL**, która odnosi się do usługi platformy Azure o nazwie SQL Database.
+**Virtual Network punkt końcowy usługi:** [Punkt końcowy usługi Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md) jest podsiecią, której wartości właściwości zawierają co najmniej jedną formalną nazwę typu usługi platformy Azure. W tym artykule interesuje Cię nazwę typu **Microsoft. SQL**, która odnosi się do usługi platformy Azure o nazwie SQL Database.
 
 **Reguła sieci wirtualnej:** Reguła sieci wirtualnej dla serwera SQL Database to podsieć wymieniona na liście kontroli dostępu (ACL) serwera SQL Database. Aby można było uzyskać listę ACL SQL Database, podsieć musi zawierać nazwę typu **Microsoft. SQL** . Reguła sieci wirtualnej instruuje serwer SQL Database, aby akceptował komunikację z każdego węzła znajdującego się w podsieci.
 
@@ -122,7 +122,7 @@ Należy pamiętać o następujących kwestiach dotyczących sieci platformy Azur
 
 Zapora SQL Server platformy Azure umożliwia określenie zakresów adresów IP, z których ma zostać zaakceptowana komunikacja, SQL Database. To podejście jest odpowiednie dla stabilnych adresów IP, które są poza siecią prywatną platformy Azure. Jednak maszyny wirtualne w sieci prywatnej platformy Azure są skonfigurowane przy użyciu *dynamicznych* adresów IP. Dynamiczne adresy IP mogą ulec zmianie po ponownym uruchomieniu maszyny wirtualnej i w wyniku unieważnienia reguły zapory opartej na protokole IP. Folly do określenia dynamicznego adresu IP w regule zapory w środowisku produkcyjnym.
 
-To ograniczenie można obejść, uzyskując *statyczny* adres IP dla maszyny wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie prywatnych adresów IP dla maszyny wirtualnej przy użyciu Azure Portal] [VM-Configure-Private-IP-Address-for-a-Virtual-Machine-using-Azure-Portal-321w]. Jednak podejście ze statycznym adresem IP może być trudne do zarządzania i jest kosztowne, gdy jest wykonywane w odpowiedniej skali. 
+To ograniczenie można obejść, uzyskując *statyczny* adres IP dla maszyny wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie prywatnych adresów IP dla maszyny wirtualnej przy użyciu Azure Portal](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). Jednak podejście ze statycznym adresem IP może być trudne do zarządzania i jest kosztowne, gdy jest wykonywane w odpowiedniej skali. 
 
 Reguły sieci wirtualnej są łatwiejsze do ustanowienia i zarządzania dostępem z określonej podsieci zawierającej maszyny wirtualne.
 

@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8370b71bfa980dbd099ade59a3a19633dfd5dc72
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8107b16a3db76fb0e248f1681463b73cc4ee21cf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910891"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208424"
 ---
 # <a name="show-traffic-on-the-map"></a>Pokaż ruch na mapie
 
 Istnieją dwa typy danych ruchu dostępne w Azure Maps:
 
 - Dane zdarzenia — składa się z punktów i danych opartych na wierszu dla elementów, takich jak konstrukcja, zamknięcie dróg i awarie.
-- Dane przepływu — dostarcza metryki przepływu ruchu na drogach. Dane przepływu ruchu są często używane do kolorowania dróg w zależności od tego, jak dużo ruchu zmniejsza przepływ względem limitu szybkości lub innej metryki. Dane przepływu ruchu w Azure Maps mają trzy różne metryki pomiaru:
+- Dane przepływu — dostarcza metryki przepływu ruchu na drogach. Często dane przepływu ruchu są używane do kolorowania dróg. Kolory są zależne od tego, jaki ruch zmniejsza przepływ w stosunku do limitu szybkości lub innej metryki. Dane przepływu ruchu w Azure Maps mają trzy różne metryki pomiaru:
     - `relative` — jest określana względem prędkości swobodnego przepływu drogi.
     - `absolute` — to bezwzględna prędkość wszystkich pojazdów w podróży.
     - `relative-delay` — Wyświetla obszary, które są wolniejsze niż średnie oczekiwane opóźnienie.
@@ -58,7 +58,7 @@ Zobacz <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>opcje nakładki ruchu
 Dowiedz się więcej na temat klas i metod używanych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Zmapować](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [TrafficOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)

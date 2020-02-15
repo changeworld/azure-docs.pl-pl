@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: eaa95906e20072e2914d1486568d7a6ebeb64f2c
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: a2a65c6fcca4a037408c6b7e780708623aebed2b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114387"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212248"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -182,7 +182,7 @@ Wybierz poniższe opcje, jak pokazano na ilustracji:
 
 1. Wybierz pozycję *włączone* dla **stanu**
 2. Wybierz *wersję 2* dla **wersji dzienników przepływów**. Wersja 2 zawiera statystykę przepływu/sesji (bajty i pakiety)
-3. Wybierz istniejące konto magazynu, w którym mają być przechowywane dzienniki przepływów. Jeśli chcesz przechowywać dane w nieskończoność, ustaw wartość na *0*. Opłaty za usługę Azure Storage są naliczane za konto magazynu. Upewnij się, że magazyn nie ma ustawionej wartości "Data Lake Storage Gen2 hierarchiczny obszar nazw". Ponadto dzienniki przepływu sieciowej grupy zabezpieczeń nie mogą być przechowywane na koncie magazynu za pomocą zapory. 
+3. Wybierz istniejące konto magazynu, w którym mają być przechowywane dzienniki przepływów. Jeśli chcesz przechowywać dane w nieskończoność, ustaw wartość na *0*. Opłaty za usługę Azure Storage są naliczane za konto magazynu. Upewnij się, że magazyn nie ma ustawionej wartości "Data Lake Storage Gen2 hierarchiczny obszar nazw".
 4. Ustaw wartość **przechowywanie** na liczbę dni, przez którą mają być przechowywane dane.
 > [!IMPORTANT]
 > Obecnie występuje problem polegający na tym, że [dzienniki przepływu sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń)](network-watcher-nsg-flow-logging-overview.md) dla Network Watcher nie są automatycznie usuwane z magazynu obiektów BLOB na podstawie ustawień zasad przechowywania. Jeśli masz istniejące zasady przechowywania inne niż zero, zalecamy okresowe usuwanie obiektów blob magazynu, które przekroczyły okres przechowywania, aby uniknąć naliczania opłat. Aby uzyskać więcej informacji o usuwaniu blogu magazynu dzienników sieciowej grupy zabezpieczeń Flow, zobacz [usuwanie obiektów blob magazynu dzienników usługi sieciowej grupy zabezpieczeń Flow](network-watcher-delete-nsg-flow-log-blobs.md).

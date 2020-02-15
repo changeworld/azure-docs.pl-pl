@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d52d808813078c2aca7de59aa626e83f96221720
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986244"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208543"
 ---
 # <a name="add-a-heat-map-layer"></a>Dodawanie warstwy mapy cieplnej
 
@@ -79,10 +79,10 @@ Poprzedni przykład dostosowany do mapy cieplnej przez ustawienie opcji promień
   | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Interpolacja",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["liniowy"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["mapę cieplną-gęstość"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, "przezroczyste",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "purpurowy",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, "#fb00fb",<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, "#00c3ff"<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Step",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\["mapę cieplną-gęstość"\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"przezroczyste",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, "Granat",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, "zielony",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, "żółty",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, "Red"<br/>\] |   
 
 - `opacity`: określa sposób nieprzezroczystości lub przezroczystości warstwy mapy cieplnej.
-- `intensity`: stosuje mnożnik do wagi każdego punktu danych w celu zwiększenia całkowitego intensywności mapę cieplną. Pozwala to zwiększyć wagę punktów danych, ułatwiając wizualizację.
+- `intensity`: stosuje mnożnik do wagi każdego punktu danych w celu zwiększenia całkowitego intensywności mapę cieplną. Powoduje to różnicę wagi punktów danych, ułatwiając wizualizację.
 - `weight`: Domyślnie wszystkie punkty danych mają wagę 1 i są ważone w równym stopniu. Opcja wagi pełni rolę mnożnika i można ją ustawić jako liczbę lub wyrażenie. Jeśli liczba jest ustawiona jako waga, to równoważność umieszczania każdego punktu danych na mapie dwa razy. Na przykład, jeśli waga wynosi 2, to gęstość podwaja się. Ustawienie opcji wagi na liczbę renderuje mapę cieplną w podobny sposób, aby użyć opcji intensywność. 
 
-  Jeśli jednak używasz wyrażenia, waga każdego punktu danych może opierać się na właściwościach poszczególnych punktów danych. Załóżmy na przykład, że każdy punkt danych reprezentuje trzęsienie ziemi. Ważna Metryka każdego punktu danych trzęsienia ziemi była wartością wielkości. Zdarza się cały czas, ale większość z nich ma niską wartość i nie są zauważalne. Za pomocą wartości wielkości w wyrażeniu do przypisywania wagi do każdego punktu danych, można lepiej reprezentować znaczenie ziemi na mapie cieplnej.
+  Jeśli jednak używasz wyrażenia, waga każdego punktu danych może opierać się na właściwościach poszczególnych punktów danych. Załóżmy na przykład, że każdy punkt danych reprezentuje trzęsienie ziemi. Wartość wielkości jest ważną metryką dla każdego punktu danych trzęsienia. Zdarza się cały czas, ale większość z nich ma niską wartość i nie są zauważalne. Użyj wartości wielkości w wyrażeniu, aby przypisać wagę do każdego punktu danych. Przy użyciu wartości wielkości do przypisywania wagi, uzyskuje się lepszą reprezentację znaczenia ziemi w ramach mapy cieplnej.
 - `source` i `source-layer`: umożliwia zaktualizowanie źródła danych.
 
 Oto narzędzie do testowania różnych opcji warstwy mapy cieplnej.

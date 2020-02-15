@@ -1,19 +1,19 @@
 ---
 title: Obsługa lokalizacji | Mapy Microsoft Azure
-description: W tym artykule przedstawiono informacje o obsługiwanych językach dla usług w Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+description: Ten artykuł zawiera informacje na temat obsługiwanych języków dla usług w Microsoft Azure Maps.
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: eec8e47e75a6c92be8f893af893761a9ccddc650
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5de04b4e37e79a47f89bb235aad2b0f9cab69e6a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025439"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208152"
 ---
 # <a name="localization-support-in-azure-maps"></a>Obsługa lokalizacji w Azure Maps
 
@@ -25,10 +25,10 @@ Azure Maps obsługuje różne języki i widoki na podstawie kraju/regionu. W tym
 Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poniższej tabeli przedstawiono obsługiwane kody języka dla każdej usługi.  
   
 
-| ID         | Nazwa                   |  Mapy | Search | Wyznaczanie tras | Pogoda | Zdarzenia dotyczące ruchu | Formant mapy JS |
+| ID         | Name (Nazwa)                   |  Maps | Wyszukiwanie | Routing | Pogoda | Zdarzenia dotyczące ruchu | Formant mapy JS |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |         |                   |                |
-| ar-SA      | Arabski                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
+| ar-SA      | arabski                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
 | bn-BD      | Bengalski (Bangladesz)    |       |       |         |     ✓    |                   |                |
 | bn-IN      | Bengalski (Indie)         |       |       |         |     ✓    |                   |                |
 | BS — BA      | Bośniacki                 |       |       |         |     ✓    |                   |                |
@@ -36,7 +36,7 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 | bg-BG      | Bułgarski              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
 | ES urzędu certyfikacji      | Kataloński                |       |    ✓   |         |    ✓      |                   |                |
 | zh-HanS    | Chiński uproszczony   |       |  zh-CN |         |     zh-CN   |                   |                |
-| zh-HanT    | Chiński (SRA Hongkong)  |  |   |    |    zh-HK   |                   |           |
+| zh-HanT    | chiński (Hongkong)  |  |   |    |    zh-HK   |                   |           |
 | zh-HanT    | Chiński (Tajwan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | Chorwacki               |       |    ✓   |         |    ✓      |                   |                |
 | cs-CZ      | Czeski                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -46,7 +46,7 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 | EN-AU      | Angielski (Australia)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | EN NZ      | Angielski (Nowa Zelandia)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-GB      | Angielski (Wielka Brytania) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| pl-PL      | Angielski (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| pl-pl      | Angielski (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | et-EE      | Estoński               |       |    ✓   |         |      ✓    |         ✓         |                |
 | PLI — PH     | Filipino               |       |       |         |     ✓    |                   |                |
 | fi-FI      | Fiński                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
@@ -55,12 +55,12 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 | GL — ES      | Galicyjski               |       |    ✓   |         |         |                   |                |
 | de-DE.      | Niemiecki                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
 | el-GR      | Grecki                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
-| gu      | Gujarati                |       |       |         |     ✓    |                   |                |
-| HE-IL      | Hebrajski                 |       |    ✓   |         |     ✓    |         ✓         |                |
+| gu      | Gudżarati                |       |       |         |     ✓    |                   |                |
+| HE-IL      | hebrajski                 |       |    ✓   |         |     ✓    |         ✓         |                |
 | w      | Hindi                  |       |        |         |     ✓    |                   |                |
-| hu-HU      | węgierski              |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| IS-IS      | Islandzki              |       |       |         |     ✓    |                   |                |
-| id-ID      | Indonezyjski             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
+| hu-HU      | Węgierski              |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| IS-IS      | islandzki              |       |       |         |     ✓    |                   |                |
+| id-ID      | indonezyjski             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
 | IT-IT      | Włoski                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | ja-JP      | Japoński               |       |        |         |     ✓    |                   |                |
 | kn-IN      | Kannada                |       |       |         |     ✓    |                   |                |
@@ -78,8 +78,8 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 | pl-PL      | Polski                 |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | pt-BR      | Portugalski (Brazylia)    |   ✓   |    ✓   |    ✓    |      ✓   |                   |        ✓       |
 | pt-PT      | Portugalski (Portugalia)  |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| PA-IN      | Punjabi                 |       |       |         |     ✓    |                   |                |
-| RO RO      | Rumuński               |       |    ✓    |         |     ✓    |         ✓         |                |
+| PA-IN      | Pendżabski                 |       |       |         |     ✓    |                   |                |
+| RO RO      | rumuński               |       |    ✓    |         |     ✓    |         ✓         |                |
 | ru-RU      | Rosyjski                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | sr-Cyrl-RS | Serbski (Cyrylica)     |       |   Wirtualizacja SR-RS  |         |    Wirtualizacja SR-RS     |                   |                |
 | sr-latn-RS | Serbski (łaciński)        |       |       |         |     Wirtualizacja sr-latn    |                   |                |
@@ -90,12 +90,12 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 | sv-SE      | Szwedzki                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | Ta w      | Tamilski (Indie)                 |       |       |         |     ✓    |                   |                |
 | Twórz w      | Telugu (Indie)                 |       |       |         |     ✓    |                   |                |
-| th TH      | Tajlandzki                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| th TH      | Tajski                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | tr-TR      | Turecki                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | uk-UA      | Ukraiński               |       |    ✓   |         |     ✓    |                   |                |
-| Twoje — klucz podstawowy      | Urdu                 |       |       |         |     ✓    |                   |                |
+| Twoje — klucz podstawowy      | urdu                 |       |       |         |     ✓    |                   |                |
 | uz-Latn-UZ | Uzbek                 |       |       |         |     ✓    |                   |                |
-| vi-VN      | Wietnamski             |       |    ✓   |         |      ✓    |                  |                |
+| vi-VN      | wietnamski             |       |    ✓   |         |      ✓    |                  |                |
 
 
 ## <a name="azure-maps-supported-views"></a>Azure Maps obsługiwane widoki
@@ -109,7 +109,7 @@ Azure Maps zostały zlokalizowane w różnych językach w ramach usług. W poni�
 >
 > Po 1 sierpnia 2019 parametr **widoku** określi zawartość zamapowanej mapy dla nowych regionów/krajów wymienionych powyżej. Parametr **widoku** Azure Maps (określany również jako "parametr regionu użytkownika") to dwuliterowy kod kraju ISO-3166, który będzie pokazywał poprawne mapy dla danego kraju/regionu, określając, który zestaw geopoznawczych treści jest zwracany przez usługi Azure Maps, w tym obramowania i etykiety wyświetlane na mapie. 
 
-Upewnij się, że skonfigurowano parametr **View** wymagany dla interfejsów API REST i zestawów SDK używanych przez usługi.
+Upewnij się, że parametr **View** jest skonfigurowany jako wymagany dla interfejsów API REST i zestawów SDK, których usługi używają.
 >  
 >
 >  **Interfejsy API REST:**
@@ -142,12 +142,12 @@ Upewnij się, że skonfigurowano parametr **View** wymagany dla interfejsów API
 >    * Azure Maps Web SDK
 >    * Azure Maps Android SDK
 
-Domyślnie parametr widoku jest ustawiony na **ujednolicony**, nawet jeśli nie został zdefiniowany w żądaniu. Określ lokalizację użytkowników, a następnie ustaw dla tej lokalizacji parametr **widoku** . Alternatywnie można ustawić wartość "View = Auto", która zwróci dane mapy na podstawie adresu IP żądania.  Parametr **widoku** w Azure Maps musi być używany zgodnie z obowiązującymi przepisami, łącznie z tymi prawami dotyczącymi mapowania kraju, w którym są udostępniane mapy, obrazy i inne dane oraz zawartość innych firm, do których użytkownik jest uprawniony do dostępu za pośrednictwem Azure Maps.
+Domyślnie parametr widoku jest ustawiany na **zunifikowany**, nawet jeśli nie został zdefiniowany w żądaniu. Określ lokalizację użytkowników. Następnie ustaw parametr **widoku** poprawnie dla tej lokalizacji. Alternatywnie można ustawić wartość "View = Auto", która zwróci dane mapy na podstawie adresu IP żądania.  Parametr **widoku** w Azure Maps musi być używany zgodnie z obowiązującymi przepisami, łącznie z tymi prawami dotyczącymi mapowania kraju, w którym są udostępniane mapy, obrazy i inne dane oraz zawartość innych firm, do których użytkownik jest uprawniony do dostępu za pośrednictwem Azure Maps.
 
 
 W poniższej tabeli przedstawiono obsługiwane widoki.
 
-| Wyświetl         | Opis                            |  Mapy | Search | kontrolka mapy JS |
+| Widok         | Opis                            |  Maps | Wyszukiwanie | kontrolka mapy JS |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Zjednoczone Emiraty Arabskie (widok arabski)    |   ✓   |        |     ✓          |
 | AR           | Argentyna (widok argentyński)           |   ✓   |    ✓   |     ✓          |
@@ -166,4 +166,4 @@ W poniższej tabeli przedstawiono obsługiwane widoki.
 | SY           | Syria (widok arabski)                   |   ✓   |        |     ✓          |
 | YE           | Jemen (widok arabski)                   |   ✓   |        |     ✓          |
 | Automatycznie         | Zwróć dane mapy na podstawie adresu IP żądania.|   ✓   |    ✓   |     ✓          |
-| Zunifikowane      | Ujednolicony widok (inne)                  |   ✓   |   ✓     |     ✓          |
+| Ujednolicon      | Ujednolicony widok (inne)                  |   ✓   |   ✓     |     ✓          |

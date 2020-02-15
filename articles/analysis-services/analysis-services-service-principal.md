@@ -4,23 +4,21 @@ description: Dowiedz się, jak utworzyć jednostkę usługi do automatyzowania A
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5078fcc1ba5c581aca475025b286d0319d6024a6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c599abbf274eb4014323ec217c6d54d3c397b159
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572603"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251672"
 ---
 # <a name="automation-with-service-principals"></a>Automatyzacja przy użyciu jednostek usługi
 
 Jednostki usług to zasoby aplikacji usługi Azure Active Directory tworzone w ramach dzierżawy w celu przeprowadzania nienadzorowanych operacji na poziomie zasobu lub usługi. Są one unikatowym typem *tożsamości użytkownika* przy użyciu identyfikatora aplikacji i hasła lub certyfikatu. Jednostka usługi ma tylko te uprawnienia, które są niezbędne do wykonywania zadań zdefiniowanych przez role i uprawnienia, do których jest przypisany. 
 
 W Analysis Services nazwy główne usług są używane z Azure Automation, nienadzorowanym trybem programu PowerShell, niestandardowymi aplikacjami klienckimi i aplikacjami sieci Web do automatyzowania typowych zadań. Na przykład inicjowanie obsługi serwerów, wdrażanie modeli, odświeżanie danych, skalowanie w górę/w dół, a wstrzymywanie/wznawianie może być zautomatyzowane przy użyciu jednostek usługi. Uprawnienia są przypisywane do jednostek usługi za pomocą przynależności do roli, podobnie jak zwykłe konta UPN usługi Azure AD.
-
-Analysis Services obsługuje również operacje wykonywane przez zarządzane tożsamości przy użyciu jednostek usługi. Aby dowiedzieć się więcej, zobacz temat [zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) i [usług platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services).
 
 ## <a name="create-service-principals"></a>Tworzenie jednostek usługi
  
@@ -44,7 +42,7 @@ Aby można było użyć nazwy głównej usługi dla operacji zarządzania serwer
 
 Identyfikator appID i hasło i certyfikat jednostki usługi mogą być używane w parametrach połączenia w taki sam sposób, jak nazwa UPN.
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -92,7 +90,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO i ADOMD 
 
-Podczas nawiązywania połączenia z aplikacjami klienckimi i aplikacjami sieci Web, [bibliotekami klienckimi biblioteki AMO i ADOMD](analysis-services-data-providers.md) w wersji 15.0.2 i wyższych instalowalnych pakietów z usług NuGet w parametrach połączenia przy użyciu następującej składni: `app:AppID` i hasła lub @no_ _t_2_ .`cert:thumbprint` 
+Podczas nawiązywania połączenia z aplikacjami klienckimi i aplikacjami sieci Web, [bibliotekami klienckimi biblioteki AMO i ADOMD](analysis-services-data-providers.md) w wersji 15.0.2 i wyższych pakietów instalowalnych z usług NuGet w parametrach połączenia przy użyciu następującej składni: `app:AppID` i hasła lub `cert:thumbprint`. 
 
 W poniższym przykładzie `appID` i `password` są używane do wykonywania operacji odświeżania bazy danych modelu:
 

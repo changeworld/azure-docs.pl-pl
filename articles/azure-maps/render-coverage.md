@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 04e7aeddaa4e3aba38f1bf08893b0b0487109653
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7821b0b76fb9be1b62aaf334b3c07aaff1d0021a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025456"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209549"
 ---
 # <a name="azure-maps-render-coverage"></a>Pokrycie Azure Maps renderowania
 
-Azure Maps używa zarówno kafelków rastrowych, jak i kafelków wektorowych do tworzenia map. W najmniejszej rozdzielczości cały świat jest dopasowany do jednego kafelka. Przy najwyższej rozdzielczości pojedynczy kafelek reprezentuje 38 metrów kwadratowych. W miarę powiększania zobaczysz więcej szczegółów na temat kontynentów, regionów, miast i indywidualnych ulic. Aby uzyskać więcej informacji na temat kafelków, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md).
+Azure Maps używa zarówno kafelków rastrowych, jak i kafelków wektorowych do tworzenia map. W najmniejszej rozdzielczości cały świat jest dopasowany do jednego kafelka. Przy najwyższej rozdzielczości pojedynczy kafelek reprezentuje 38 metrów kwadratowych. Zobaczysz więcej szczegółów na temat kontynentów, regionów, miast i indywidualnych ulic w miarę powiększania mapy. Aby uzyskać więcej informacji na temat kafelków, zobacz [poziomy powiększenia i siatka kafelków](zoom-levels-and-tile-grid.md).
 
 Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystkich regionów. W poniższych tabelach szczegółowo przedstawiono poziom informacji, które można renderować dla każdego regionu.
 
@@ -40,13 +40,13 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Botswana                         | ✓ | ✓ |
 | Burkina Faso                     | ✓ | ✓ |
 | Burundi                          | ✓ | ✓ |
-| Wyspy Zielonego Przylądka                       | ✓ | ✓ |
+| Cabo Verde                       | ✓ | ✓ |
 | Kamerun                         | ✓ | ✓ |
 | Republika Środkowoafrykańska         | ✓ | Ø |
 | Czad                             | ✓ | Ø |
 | Komory                          | ✓ | Ø |
 | Demokratyczna Republika Konga | ✓ | ✓ |
-| Côte d’Ivoire                    | ✓ | Ø |
+| Wybrzeże Kości Słoniowej                    | ✓ | Ø |
 | Dżibuti                         | ✓ | Ø |
 | Egipt                            | ✓ | ✓ |
 | Gwinea Równikowa                | ✓ | Ø |
@@ -60,7 +60,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Kenia                            | ✓ | ✓ |
 | Lesotho                          | ✓ | ✓ |
 | Liberia                          | ✓ | Ø |
-| Libia                            | ✓ | Ø |
+| Libya                            | ✓ | Ø |
 | Madagaskar                       | ✓ | Ø |
 | Malawi                           | ✓ | ✓ |
 | Mali                             | ✓ | ✓ |
@@ -117,7 +117,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Ekwador                   | ✓ | ✓ |
 | Falklandy | ✓ | ✓ |
 | Gujana Francuska             | ✓ | ✓ |
-| Grenlandia                 | ✓ | Ø |
+| Objęt                 | ✓ | Ø |
 | Grenada                   | ✓ | ✓ |
 | Gwadelupa                | ✓ | ✓ |
 | Gwatemala                 | ✓ | ✓ |
@@ -145,7 +145,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Georgia Południowa i Sandwich Południowy | ✓ | ✓ |
 | Surinam                  | ✓ | ✓ |
 | Trynidad i Tobago       | ✓ | ✓ |
-| Turks i Caicos  | ✓ | ✓ |
+| Wyspy Turks i Caicos  | ✓ | ✓ |
 | Stany Zjednoczone             | ✓ | ✓ |
 | Urugwaj                   | ✓ | ✓ |
 | Wenezuela                 | ✓ | ✓ |
@@ -166,7 +166,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Chiny                     |   | Ø |
 | Wyspy Kokosowe (Keelinga)   |   | Ø |
 | Koreańska Republika Ludowo-Demokratyczna |   | Ø |
-| SRA Hongkong             | ✓ | ✓ |
+| Hongkong             | ✓ | ✓ |
 | Indie                     | Ø | ✓ | 
 | Indonezja                 | ✓ | ✓ |
 | Iran                      |   | Ø |
@@ -201,7 +201,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Timor-Leste               |   | Ø |
 | Turkmenistan              |   | Ø |
 | Zjednoczone Emiraty Arabskie      | ✓ | ✓ |
-| Odległe Mniejsze Wyspy Stanów Zjednoczonych |   | Ø |
+| Stany Zjednoczone odległe mniejsze wyspy |   | Ø |
 | Uzbekistan                |   | Ø |
 | Wietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
@@ -231,7 +231,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Wyspy Salomona           |   | Ø|
 | Tokelau                   |   | Ø |
 | Tonga                     |   | Ø |
-| Tuvalu                    |   | Ø |
+| Tuwalu                    |   | Ø |
 | Vanuatu                   |   | Ø |
 | Wallis i Futuna         |   | Ø |
 
@@ -251,7 +251,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Bułgaria                  | ✓ | ✓ |
 | Chorwacja                   | ✓ | ✓ |
 | Cypr                    | ✓ | ✓ |
-| Republika Czeska            | ✓ | ✓ |
+| Czechy            | ✓ | ✓ |
 | Dania                   | ✓ | ✓ |
 | Estonia                   | ✓ | ✓ |
 | Wyspy Owcze             | ✓ | Ø |
@@ -274,9 +274,9 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Litwa                 | ✓ | ✓ |
 | Luksemburg                | ✓ | ✓ |
 | Północna Macedonia           | ✓ | ✓ |
-| Malta                     | ✓ | ✓ |
+| M alta                     | ✓ | ✓ |
 | Mołdawia                   | ✓ | ✓ |
-| Monako                    | ✓ | ✓ |
+| Monaco                    | ✓ | ✓ |
 | Czarnogóra                | ✓ | ✓ |
 | Holandia               | ✓ | ✓ |
 | Norwegia                    | ✓ | ✓ |
@@ -295,7 +295,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Szwajcaria               | ✓ | ✓ |
 | Turcja                    | ✓ | ✓ |
 | Ukraina                   | ✓ | ✓ |
-| Zjednoczone Królestwo            | ✓ | ✓ |
+| Wielka Brytania            | ✓ | ✓ |
 | Watykan              | ✓ | ✓ |
 
 ## <a name="next-steps"></a>Następne kroki

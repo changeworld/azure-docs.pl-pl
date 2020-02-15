@@ -1,19 +1,19 @@
 ---
 title: Format danych GEOJSON dla geofencingu | Mapy Microsoft Azure
 description: W tym artykule dowiesz się, jak przygotować dane z geoogrodzenia, które mogą być używane w Microsoft Azure Maps Pobierz i umieść interfejs API z geoogrodzeniem.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: f853962bba7302affd78d5ef267460893ea80a33
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 7d1c9a1587771a020f5c9f89e2497a25eb1bba70
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911592"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210025"
 ---
 # <a name="geofencing-geojson-data"></a>Geogeofencingu dane GEOJSON
 
@@ -30,12 +30,12 @@ Dane dla geofencingu lub zestawu geoogrodzenia są reprezentowane przez `Feature
 * `expiredTime` to data i godzina wygaśnięcia danych dotyczących geofencingu. Jeśli wartość `userTime` w żądaniu jest późniejsza niż ta wartość, odpowiednie dane geoogrodzenia są uznawane za wygasłe i nie są wysyłane do zapytania. Z tego momentu geometryId danych geołożonych zostanie uwzględniony w tablicy `expiredGeofenceGeometryId` w obrębie odpowiedzi geoogrodzeniowej.
 * `validityPeriod` jest listą okresów ważności geoogrodzenia. Jeśli wartość `userTime` w żądaniu przypada poza okresem ważności, odpowiednie dane geoogrodzenia są traktowane jako nieprawidłowe i nie będą wysyłane do zapytania. GeometryId tych danych geograficznych jest dołączany do tablicy `invalidPeriodGeofenceGeometryId` w obrębie odpowiedzi geoogrodzenia. W poniższej tabeli przedstawiono właściwości elementu validityPeriod.
 
-| Nazwa | Typ | Wymagane  | Opis |
+| Name (Nazwa) | Typ | Wymagane  | Opis |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | Datetime  | true | Data i godzina rozpoczęcia okresu ważności. |
-| endTime   | Datetime  | true |  Data i godzina zakończenia okresu ważności. |
-| recurrenceType | string | false |   Typ cyklu okresu. Wartość może być `Daily`, `Weekly`, `Monthly`lub `Yearly`. Wartość domyślna to `Daily`.|
-| businessDayOnly | Wartość logiczna | false |  Wskazuje, czy dane są prawidłowe tylko w dniach roboczych. Wartość domyślna to `false`.|
+| startTime | Data/godzina  | {1&gt;true&lt;1} | Data i godzina rozpoczęcia okresu ważności. |
+| endTime   | Data/godzina  | {1&gt;true&lt;1} |  Data i godzina zakończenia okresu ważności. |
+| recurrenceType | ciąg | {1&gt;false&lt;1} |   Typ cyklu okresu. Wartość może być `Daily`, `Weekly`, `Monthly`lub `Yearly`. Wartość domyślna to `Daily`.|
+| businessDayOnly | Wartość logiczna | {1&gt;false&lt;1} |  Wskazuje, czy dane są prawidłowe tylko w dniach roboczych. Wartość domyślna to `false`.|
 
 
 * Wszystkie wartości współrzędnych są reprezentowane jako [Długość geograficzna, Szerokość geograficzna] zdefiniowane w `WGS84`.

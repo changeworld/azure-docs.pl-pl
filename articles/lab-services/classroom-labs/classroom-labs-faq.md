@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 551167cda28a2bb6007e66c1b4b458a0a7b2e396
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: a0361203f4a8a2e57d179b39ba6da2fb62f68720
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718018"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252063"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Pracowni Labs w Azure Lab Services — często zadawane pytania
 Uzyskaj odpowiedzi na kilka typowych pytań dotyczących laboratoriów stacjonarnych w Azure Lab Services. 
@@ -46,6 +46,12 @@ Porty to: 49152 – 65535. W laboratoriach stacjonarnych znajduje się za moduł
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Jaki zakres publicznych adresów IP należy otworzyć w ustawieniach zapory organizacji w celu połączenia z maszynami wirtualnymi laboratorium za pośrednictwem protokołu RDP/SSH?
 Zobacz [zakresy adresów IP i Tagi usług platformy Azure — chmura publiczna](https://www.microsoft.com/download/details.aspx?id=56519), która udostępnia publiczny zakres adresów IP dla centrów danych na platformie Azure. Możesz otworzyć adresy IP dla regionów, w których znajdują się konta w laboratorium.
+
+## <a name="virtual-machine-images"></a>Obrazy maszyn wirtualnych
+
+### <a name="as-a-lab-creator-why-cant-i-enable-additional-image-options-in-the-virtual-machine-images-dropdown-when-creating-a-new-lab"></a>Dlaczego jako twórca laboratorium nie można włączyć dodatkowych opcji obrazu na liście rozwijanej obrazy maszyn wirtualnych podczas tworzenia nowego laboratorium?
+
+Gdy administrator doda Cię jako twórcę laboratorium do konta laboratorium, otrzymujesz uprawnienia do tworzenia laboratoriów. Ale nie masz uprawnień do edytowania żadnych ustawień w ramach konta laboratorium, w tym listy włączonych obrazów maszyn wirtualnych. Aby włączyć dodatkowe obrazy, skontaktuj się z administratorem konta laboratorium, aby to zrobić, lub poproś administratora o dodanie Cię jako roli współautor do konta laboratorium. Rola współautor udzieli uprawnień do edytowania listy obrazów maszyn wirtualnych na koncie laboratorium.
 
 ## <a name="users"></a>Użytkownicy
 

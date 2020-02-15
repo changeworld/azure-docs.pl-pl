@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: mlearned
-ms.openlocfilehash: d1d04ab3ebb96d2739b991620b05aa307d9eaf91
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0583e773a344a6786d13a5da30be24369d75f11f
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767434"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251706"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Wersja zapoznawcza — Tworzenie kontenera systemu Windows Server w klastrze usługi Azure Kubernetes Service (AKS) przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -87,7 +87,7 @@ Chociaż ta funkcja jest dostępna w wersji zapoznawczej, obowiązują następuj
 * Klaster AKS może mieć maksymalnie 400 węzłów w ramach tych ośmiu pul węzłów.
 * Nazwa puli węzłów systemu Windows Server ma limit 6 znaków.
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Grupa zasobów platformy Azure to logiczna grupa przeznaczona do wdrażania zasobów platformy Azure i zarządzania nimi. Podczas tworzenia grupy zasobów użytkownik jest proszony o określenie lokalizacji. Ta lokalizacja wskazuje, gdzie są przechowywane metadane grupy zasobów, a także czy zasoby są uruchamiane na platformie Azure, jeśli nie określisz innego regionu podczas tworzenia zasobów. Utwórz grupę zasobów za pomocą polecenia [AZ Group Create][az-group-create] .
 
@@ -149,6 +149,10 @@ az aks create \
 > Jeśli zostanie wyświetlony komunikat o błędzie weryfikacji hasła, spróbuj utworzyć grupę zasobów w innym regionie.
 > Następnie spróbuj utworzyć klaster przy użyciu nowej grupy zasobów.
 
+> [!Note]
+> Jeśli nie możesz utworzyć klastra AKS, ponieważ wersja nie jest obsługiwana w tym regionie, możesz użyć polecenia [AZ AKS Get-Version--Location Wschodnie], aby znaleźć listę obsługiwanych wersji dla tego regionu.
+
+
 Po kilku minutach polecenie zostanie wykonane i zwróci informacje o klastrze w formacie JSON. Czasami klaster może trwać dłużej niż kilka minut. W takich przypadkach Zezwalaj na maksymalnie 10 minut. 
 
 ## <a name="add-a-windows-server-node-pool"></a>Dodawanie puli węzłów systemu Windows Server
@@ -175,7 +179,7 @@ Aby zarządzać klastrem Kubernetes, należy użyć [polecenia kubectl][kubectl]
 az aks install-cli
 ```
 
-Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][az-aks-get-credentials]. To polecenie powoduje pobranie poświadczeń i zastosowanie ich w konfiguracji interfejsu wiersza polecenia Kubernetes.
+Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][az-aks-get-credentials]. To polecenie powoduje pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes do ich użycia.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -288,6 +292,9 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 Aby wyświetlić przykładową aplikację w działaniu, Otwórz przeglądarkę internetową na zewnętrzny adres IP usługi.
 
 ![Obraz przedstawiający przeglądanie do aplikacji przykładowej ASP.NET](media/windows-container/asp-net-sample-app.png)
+
+> [!Note]
+> Jeśli podczas próby załadowania strony otrzymasz limit czasu połączenia, należy sprawdzić, czy Przykładowa aplikacja jest gotowa przy użyciu następującego polecenia [polecenia kubectl Get — Watch]. Czasami kontener systemu Windows nie zostanie uruchomiony przez czas dostępności zewnętrznego adresu IP.
 
 ## <a name="delete-cluster"></a>Usuwanie klastra
 

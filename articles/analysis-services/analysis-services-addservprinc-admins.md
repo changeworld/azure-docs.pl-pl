@@ -7,16 +7,20 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0a3a86283c8ec9876fbec049a2a1a110eb1a80f3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.custom: fasttrack-edit
+ms.openlocfilehash: b75740e9bff714ad68c93bea7e387e60da2f1c59
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573615"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212495"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Dodawanie jednostki usługi do roli administratora serwera 
 
- Aby zautomatyzować nienadzorowane zadania programu PowerShell, jednostka usługi musi mieć uprawnienia **administratora serwera** na zarządzanym serwerze Analysis Services. W tym artykule opisano sposób dodawania nazwy głównej usługi do roli Administratorzy serwera na platformie Azure jako serwer.
+ Aby zautomatyzować nienadzorowane zadania programu PowerShell, jednostka usługi musi mieć uprawnienia **administratora serwera** na zarządzanym serwerze Analysis Services. W tym artykule opisano sposób dodawania nazwy głównej usługi do roli Administratorzy serwera na platformie Azure jako serwer. Można to zrobić przy użyciu SQL Server Management Studio lub szablonu Menedżer zasobów.
+ 
+> [!NOTE]
+> W przypadku operacji serwera przy użyciu poleceń cmdlet Azure PowerShell, jednostka usługi musi również należeć do roli **właściciela** zasobu w [Access Control opartej na rolach (RBAC) na platformie Azure](../role-based-access-control/overview.md). 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Przed ukończeniem tego zadania musisz mieć nazwę główną usługi zarejestrowaną w Azure Active Directory.
@@ -24,10 +28,9 @@ Przed ukończeniem tego zadania musisz mieć nazwę główną usługi zarejestro
 [Tworzenie jednostki usługi —  Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)  
 [Tworzenie jednostki usługi — PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
-## <a name="required-permissions"></a>Wymagane uprawnienia
-Aby wykonać to zadanie, musisz mieć uprawnienia [administratora serwera](analysis-services-server-admins.md) na platformie Azure jako serwer. 
+## <a name="using-sql-server-management-studio"></a>Używanie programu SQL Server Management Studio
 
-## <a name="add-service-principal-to-server-administrators-role"></a>Dodawanie nazwy głównej usługi do roli Administratorzy serwera
+Administratorów serwera można skonfigurować przy użyciu SQL Server Management Studio (SSMS). Aby wykonać to zadanie, musisz mieć uprawnienia [administratora serwera](analysis-services-server-admins.md) na platformie Azure jako serwer. 
 
 1. W programie SSMS Połącz się z platformą Azure jako serwerem.
 2. W obszarze **Właściwości serwera** > **zabezpieczenia**kliknij przycisk **Dodaj**.
@@ -39,9 +42,60 @@ Aby wykonać to zadanie, musisz mieć uprawnienia [administratora serwera](analy
     
     ![Wyszukaj konto jednostki usługi](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
+## <a name="using-a-resource-manager-template"></a>Korzystanie z szablonu Menedżer zasobów
 
-> [!NOTE]
-> W przypadku operacji serwera przy użyciu poleceń cmdlet Azure PowerShell, jednostka usługi z uruchomionym harmonogramem musi również należeć do roli **właściciela** zasobu w [Access Control opartej na rolach (RBAC) na platformie Azure](../role-based-access-control/overview.md). 
+Administratorzy serwera można również skonfigurować, wdrażając serwer Analysis Services przy użyciu szablonu Azure Resource Manager. Tożsamość, w której działa wdrożenie, musi należeć do roli **współautor** dla zasobu w [Access Control opartej na rolach (RBAC) na platformie Azure](../role-based-access-control/overview.md).
+
+> [!IMPORTANT]
+> Nazwę główną usługi należy dodać przy użyciu `app:{service-principal-client-id}@{azure-ad-tenant-id}`format.
+
+Poniższy szablon Menedżer zasobów wdraża serwer Analysis Services z określoną jednostką usługi dodaną do roli administratora Analysis Services:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "analysisServicesServerName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "analysisServicesSkuName": {
+            "type": "string"
+        },
+        "analysisServicesCapacity": {
+            "type": "int"
+        },
+        "servicePrincipalClientId": {
+            "type": "string"
+        },
+        "servicePrincipalTenantId": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[parameters('analysisServicesServerName')]",
+            "type": "Microsoft.AnalysisServices/servers",
+            "apiVersion": "2017-08-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('analysisServicesSkuName')]",
+                "capacity": "[parameters('analysisServicesCapacity')]"
+            },
+            "properties": {
+                "asAdministrators": {
+                    "members": [
+                        "[concat('app:', parameters('servicePrincipalClientId'), '@', parameters('servicePrincipalTenantId'))]"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
 
 ## <a name="related-information"></a>Informacje pokrewne
 

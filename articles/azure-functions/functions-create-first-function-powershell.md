@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: b1a1caf985e9693e261684c1edb21184071ebfc8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e9aeb7234f5b840d790f6358bab2426462cc7986
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845909"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210229"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Tworzenie pierwszej funkcji programu PowerShell na platformie Azure
 
@@ -25,7 +25,7 @@ Poniższe kroki są obsługiwane w systemach operacyjnych macOS, Windows i Linux
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki start:
+Aby ukończyć ten przewodnik Szybki Start:
 
 * Instalowanie [programu PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
 
@@ -61,7 +61,7 @@ Szablon projektu usługi Azure Functions w programie Visual Studio Code umożliw
 1. Wybierz **wyzwalacz http** jako szablon pierwszej funkcji, użyj `HTTPTrigger` jako nazwy funkcji i wybierz poziom autoryzacji **funkcji**.
 
     > [!NOTE]
-    > Poziom autoryzacji **funkcji** wymaga wartości [klucza funkcji](functions-bindings-http-webhook.md#authorization-keys) podczas wywoływania punktu końcowego funkcji na platformie Azure. Dzięki temu tylko każdy użytkownik może wywołać swoją funkcję.
+    > Poziom autoryzacji **funkcji** wymaga wartości [klucza funkcji](functions-bindings-http-webhook-trigger.md#authorization-keys) podczas wywoływania punktu końcowego funkcji na platformie Azure. Dzięki temu tylko każdy użytkownik może wywołać swoją funkcję.
 
 1. Po wyświetleniu monitu wybierz pozycję **Add to workspace** (Dodaj do obszaru roboczego).
 

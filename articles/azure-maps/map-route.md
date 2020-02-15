@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 359f2b42ca6f56087be53a5aeb328fe43a478d63
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 63f7eac52a555be1877f235bd2f7f1d9315d53d5
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988291"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208509"
 ---
 # <a name="show-directions-from-a-to-b"></a>Wyświetlanie instrukcji dotyczących trasy z punktu A do punktu B
 
@@ -43,7 +43,7 @@ Szósty blok kodu wysyła zapytania do usługi routingu Azure Maps, która jest 
 
 Ostatni blok kodu ustawia granice mapy przy użyciu właściwości [Setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) mapy.
 
-Kwerenda trasy, źródło danych, symbol, warstwy liniowe i granice aparatu są tworzone i ustawiane wewnątrz [odbiornika zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)mapy. Ta struktura kodu gwarantuje, że wyniki są wyświetlane tylko po całkowitym załadowaniu mapy.
+Kwerenda trasy, źródło danych, symbol, warstwy liniowe i granice aparatu są tworzone wewnątrz [odbiornika zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events). Ta struktura kodu gwarantuje, że wyniki są wyświetlane tylko po całkowitym załadowaniu mapy.
 
 ## <a name="query-the-route-via-fetch-api"></a>Wykonywanie zapytań dotyczących trasy za pośrednictwem interfejsu API pobierania
 
@@ -54,7 +54,7 @@ W powyższym kodzie pierwszy blok kodu konstruuje obiekt mapy i ustawia mechaniz
 
 Drugi blok kodu tworzy i dodaje obiekt [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) do mapy.
 
-Trzeci blok kodu tworzy punkty początkowy i docelowy dla trasy i dodaje je do źródła danych. Aby uzyskać instrukcje dotyczące korzystania z funkcji [Addpinys](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest), [na mapie można zobaczyć kod PIN](map-add-pin.md) .
+Trzeci blok kodu tworzy punkty początkowy i docelowy dla trasy. Następnie dodaje je do źródła danych. Aby uzyskać instrukcje dotyczące korzystania z funkcji [Addpinys](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest), [na mapie można zobaczyć kod PIN](map-add-pin.md) .
 
 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) renderuje obiekty liniowe otoczone w [źródle danych](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako linie na mapie. Czwarty blok kodu tworzy i dodaje warstwę linii do mapy. Zobacz właściwości warstwy linii pod adresem [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest).
 
@@ -64,7 +64,7 @@ Następny blok kodu tworzy `SouthWest` i `NorthEast` punktów z punktu początko
 
 Ostatni blok kodu używa [interfejsu API pobierania](https://fetch.spec.whatwg.org/) do żądania wyszukiwania do [Azure Maps interfejsu API tras](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Odpowiedź jest następnie analizowana. Jeśli odpowiedź zakończyła się pomyślnie, informacje o szerokości i długości geograficznej są używane do tworzenia tablicy a linii przez połączenie tych punktów. Dane wiersza są następnie dodawane do źródła danych w celu renderowania trasy na mapie. Aby uzyskać instrukcje, można zobaczyć [, jak dodać wiersz na mapie](map-add-line-layer.md) .
 
-Kwerenda trasy, źródło danych, symbol, warstwy liniowe i granice aparatu są tworzone i ustawiane wewnątrz [odbiornika zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)mapy. W tym przypadku chcemy upewnić się, że wyniki są wyświetlane po całkowitym załadowaniu mapy.
+Kwerenda trasy, źródło danych, symbol, warstwy liniowe i granice aparatu są tworzone wewnątrz [odbiornika zdarzeń](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events). W tym przypadku chcemy upewnić się, że wyniki są wyświetlane po całkowitym załadowaniu mapy.
 
 ## <a name="next-steps"></a>Następne kroki
 

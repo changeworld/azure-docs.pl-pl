@@ -8,17 +8,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 955e1b84f897a5eb877033e0a58b8d661f143a14
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 1f1547d1fef797f8dc4c86c94c405d26c4ef9cec
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954183"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209260"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Ponowne włączanie ochrony maszyn wirtualnych platformy Azure zakończonych niepowodzeniem w regionie podstawowym
 
-
-Po przełączeniu maszyn wirtualnych platformy Azure w [tryb failover](site-recovery-failover.md) z jednego regionu do innego przy użyciu [Azure Site Recovery](site-recovery-overview.md)maszyny wirtualne są uruchamiane w regionie pomocniczym w stanie niechronionym. W przypadku powrotu po awarii maszyn wirtualnych do regionu podstawowego należy wykonać następujące czynności:
+Po przełączeniu maszyn wirtualnych platformy Azure w [tryb failover](site-recovery-failover.md) z jednego regionu do innego przy użyciu [Azure Site Recovery](site-recovery-overview.md)maszyny wirtualne są uruchamiane w regionie pomocniczym w stanie **niechronionym** . Jeśli chcesz zakończyć przywracanie maszyn wirtualnych do regionu podstawowego, musisz wykonać następujące czynności:
 
 - Ponownie Chroń maszyny wirtualne w regionie pomocniczym, tak aby rozpoczynać replikację do regionu podstawowego.
 - Po zakończeniu ponownych prób ochrony, gdy maszyny wirtualne są replikowane, można przełączać je w tryb failover z poziomu pomocniczego do regionu podstawowego.
@@ -40,9 +39,9 @@ Po przełączeniu maszyn wirtualnych platformy Azure w [tryb failover](site-reco
 
 ### <a name="customize-reprotect-settings"></a>Dostosuj ustawienia ponownego włączania ochrony
 
-Podczas ponownej ochrony można dostosować następujące właściwości docelowego VMe.
+Podczas ponownej ochrony można dostosować następujące właściwości docelowej maszyny wirtualnej.
 
-![Dostosuj](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
+![Dostosowywanie](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
 |Właściwość |Uwagi  |
 |---------|---------|
@@ -52,7 +51,6 @@ Podczas ponownej ochrony można dostosować następujące właściwości docelow
 |Dyski zarządzane repliki (pomocnicza maszyna wirtualna korzysta z dysków zarządzanych)    | Site Recovery tworzy dyski zarządzane repliki w regionie podstawowym w celu dublowania dysków zarządzanych pomocniczej maszyny wirtualnej.         |
 |Cache Storage     | Możesz określić konto magazynu pamięci podręcznej, które ma być używane podczas replikacji. Domyślnie zostanie utworzone nowe konto magazynu pamięci podręcznej, jeśli nie istnieje.         |
 |Zestaw dostępności     |Jeśli maszyna wirtualna w regionie pomocniczym jest częścią zestawu dostępności, możesz wybrać zestaw dostępności dla docelowej maszyny wirtualnej w regionie podstawowym. Domyślnie program Site Recovery próbuje znaleźć istniejący zestaw dostępności w regionie podstawowym i korzystać z niego. Podczas dostosowywania można określić nowy zestaw dostępności.         |
-
 
 ### <a name="what-happens-during-reprotection"></a>Co się stanie w trakcie ochrony?
 
@@ -68,30 +66,27 @@ Gdy Wyzwalasz zadanie ponownego włączania ochrony i istnieje docelowa maszyna 
 1. Maszyna wirtualna po stronie docelowej jest wyłączona, jeśli jest uruchomiona.
 2. Jeśli maszyna wirtualna korzysta z dysków zarządzanych, kopia oryginalnych dysków zostanie utworzona z sufiksem "-ASRReplica". Oryginalne dyski zostaną usunięte. Kopie "-ASRReplica" są używane na potrzeby replikacji.
 3. Jeśli maszyna wirtualna używa dysków niezarządzanych, docelowe dyski danych maszyny wirtualnej są odłączone i używane do replikacji. Kopia dysku systemu operacyjnego jest tworzona i dołączona do maszyny wirtualnej. Oryginalny dysk systemu operacyjnego zostanie odłączony i użyty do replikacji.
-4. Synchronizowane są tylko zmiany między dyskiem źródłowym a dyskiem docelowym. Różnice są obliczane przez porównanie dysków, a następnie przetransferowane. Aby znaleźć szacowane informacje o czasie poniżej.
-5. Po zakończeniu synchronizacji zostanie rozpoczęta replikacja różnicowa i zostanie utworzony punkt odzyskiwania w wierszu z zasadami replikacji.
+4. Synchronizowane są tylko zmiany między dyskiem źródłowym a dyskiem docelowym. Różnice są obliczane przez porównanie dysków, a następnie przetransferowane. Sprawdź poniżej, aby znaleźć szacowany czas na zakończenie ochrony.
+5. Po zakończeniu synchronizacji rozpocznie się replikacja różnicowa, a punkt odzyskiwania zostanie utworzony w wierszu z zasadami replikacji.
 
 Gdy Wyzwalasz zadanie ponownego włączania ochrony, a docelowa maszyna wirtualna i dyski nie istnieją, występują następujące sytuacje:
 1. Jeśli maszyna wirtualna korzysta z dysków zarządzanych, dyski repliki są tworzone przy użyciu sufiksu "-ASRReplica". Kopie "-ASRReplica" są używane na potrzeby replikacji.
 2. Jeśli maszyna wirtualna korzysta z dysków niezarządzanych, na docelowym koncie magazynu są tworzone dyski replik.
 3. Wszystkie dyski są kopiowane z obszaru przełączenia w tryb failover do nowego regionu docelowego.
-4. Po zakończeniu synchronizacji zostanie rozpoczęta replikacja różnicowa i zostanie utworzony punkt odzyskiwania w wierszu z zasadami replikacji.
+4. Po zakończeniu synchronizacji rozpocznie się replikacja różnicowa, a punkt odzyskiwania zostanie utworzony w wierszu z zasadami replikacji.
 
-#### <a name="estimated-time--to-do-the-reprotection"></a>Szacowany czas na przeprowadzenie ochrony 
+#### <a name="estimated-time-to-do-the-reprotection"></a>Szacowany czas na przeprowadzenie ochrony 
 
-W większości przypadków Azure Site Recovery nie replikuje kompletnych danych do regionu źródłowego. Poniżej znajdują się warunki, które określają, ile danych zostanie zreplikowanych:
+W większości przypadków Azure Site Recovery nie replikuje pełnych danych do regionu źródłowego. Poniżej znajdują się warunki, które określają, ile danych zostanie zreplikowanych:
 
-1.  Jeśli źródłowe dane maszyny wirtualnej zostaną usunięte, uszkodzone lub niedostępne z powodu pewnej przyczyny, takich jak zmiana/usunięcie grupy zasobów, a następnie po zakończeniu ponownej ochrony zostanie wykonane żadne dane, które nie są dostępne w regionie źródłowym do użycia.
-2.  Jeśli źródłowe dane maszyny wirtualnej są dostępne, tylko różnice są obliczane przez porównanie dysków, a następnie przetransferowane. Zapoznaj się z poniższą tabelą, aby uzyskać szacowany czas 
+1.  Jeśli źródłowe dane maszyny wirtualnej zostaną usunięte, uszkodzone lub niedostępne z jakiegoś powodu, jak w przypadku zmiany/usunięcia grupy zasobów, a następnie w trakcie ponownej Site Recovery ochrony nie będzie dostępnych danych w regionie źródłowym do użycia.
+2.  Jeśli źródłowe dane maszyny wirtualnej są dostępne, tylko różnice są obliczane przez porównanie dysków, a następnie przetransferowane. Zapoznaj się z tabelą poniżej, aby uzyskać szacowany czas.
 
-|\* * Przykładowa sytuacja * * | \* * Czas poświęcony na ponowne włączenie ochrony * * |
-|--- | --- |
-|Region źródłowy ma 1 maszynę wirtualną z 1 TB dysku standardowego<br/>-Są używane tylko dane 127 GB, a reszta dysku jest pusta<br/>-Typ dysku jest standardem dla przepływności MiB/S 60<br/>-Brak zmian danych po przejściu w tryb failover| Przybliżony czas 45 minut – 1,5 godz.<br/> -Podczas ponownej ochrony Site Recovery wypełni sumę kontrolną całych danych, co zajmie 127 GB/45 MB ~ 45 minut<br/>— Aby Site Recovery do skalowania automatycznego o 20-30 minut, wymagany jest pewien czas dodatkowy<br/>-Brak opłat za ruch wychodzący |
-|Region źródłowy ma 1 maszynę wirtualną z 1 TB dysku standardowego<br/>-Są używane tylko dane 127 GB, a reszta dysku jest pusta<br/>-Typ dysku jest standardem dla przepływności MiB/S 60<br/>-45 GB zmian danych po przejściu w tryb failover| Przybliżony czas 1 godz. — 2 godziny<br/>-Podczas ponownej ochrony Site Recovery wypełni sumę kontrolną całych danych, co zajmie 127 GB/45 MB ~ 45 minut<br/>-Czas transferu, aby zastosować zmiany z 45 GB, czyli 45 GB/45 MB/s ~ 17 minut<br/>-Opłaty za ruch wychodzący byłyby tylko dla danych 45 GB, a nie dla sumy kontrolnej|
+|Przykładowa sytuacja | Czas potrzebny do ponownego włączenia ochrony |
+|---|---|
+|Region źródłowy ma 1 maszynę wirtualną z 1 TB dysku standardowego<br/>-Są używane tylko dane 127 GB, a pozostała część dysku jest pusta<br/>-Typ dysku jest standardem dla przepływności MiB/S 60<br/>-Brak zmian danych po przejściu w tryb failover| Przybliżony czas: 45 minut – 1,5 godz.<br/> -Podczas ponownej ochrony Site Recovery wypełni sumę kontrolną wszystkich danych, które będą miały 127 GB/45 MB ~ 45 minut<br/>-Do Site Recovery automatycznego skalowania jest wymagany pewien czas narzutu: około 20-30 minut<br/>-Brak opłat za ruch wychodzący |
+|Region źródłowy ma 1 maszynę wirtualną z 1 TB dysku standardowego<br/>-Są używane tylko dane 127 GB, a reszta dysku jest pusta<br/>-Typ dysku jest standardem dla przepływności MiB/S 60<br/>-45 GB zmian danych po przejściu w tryb failover| Przybliżony czas: 1 godz. — 2 godziny<br/>-Podczas ponownej ochrony Site Recovery wypełni sumę kontrolną wszystkich danych, które będą miały 127 GB/45 MB ~ 45 minut<br/>-Czas transferu, aby zastosować zmiany z 45 GB, czyli 45 GB/45 MB/s ~ 17 minut<br/>— Opłaty za ruch wychodzący byłyby dla 45 GB zmian danych, a nie dla sumy kontrolnej |
  
-
-
-
 ## <a name="next-steps"></a>Następne kroki
 
-Po włączeniu ochrony maszyny wirtualnej można zainicjować pracę w trybie failover. Tryb failover zamyka maszynę wirtualną w regionie pomocniczym, a następnie tworzy i uruchamia maszynę wirtualną w regionie podstawowym z niewielkim przestojem. Zalecamy wybranie czasu odpowiednio i przeprowadzenie testowego przejścia w tryb failover przed zainicjowaniem pełnej pracy w trybie failover w lokacji głównej. [Dowiedz się więcej](site-recovery-failover.md) o trybie failover.
+Po włączeniu ochrony maszyny wirtualnej można zainicjować pracę w trybie failover. Tryb failover zamyka maszynę wirtualną w regionie pomocniczym i tworzy i uruchamia maszynę wirtualną w regionie podstawowym, z pewnym małym przestojem w trakcie tego procesu. Zalecamy wybranie odpowiedniego czasu dla tego procesu i przeprowadzenie testowego przejścia w tryb failover przed zainicjowaniem pełnej pracy w trybie failover w lokacji głównej. [Dowiedz się więcej](site-recovery-failover.md) o Azure Site Recovery pracy w trybie failover.

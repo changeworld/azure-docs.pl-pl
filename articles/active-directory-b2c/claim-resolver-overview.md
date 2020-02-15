@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e3a80628e5729813e1d405e58ecb623925b63076
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1734b063530f9e8a8f0429111c4c39d628bfad4e
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193383"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251774"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informacje o rozpoznawaniu roszczeń w Azure Active Directory B2C zasadach niestandardowych
 
@@ -50,8 +50,8 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 | ----- | ----------- | --------|
 | {Culture: LanguageName} | Dwuliterowy kod ISO dla języka. | pl |
 | {Culture: LCID}   | Identyfikator LCID kodu języka. | 1033 |
-| {Culture: RegionName} | Dwuliterowy kod ISO dla regionu. | USA |
-| {Culture: RFC5646} | Kod języka RFC5646. | pl-PL |
+| {Culture: RegionName} | Dwuliterowy kod ISO dla regionu. | US |
+| {Culture: RFC5646} | Kod języka RFC5646. | pl-pl |
 
 ### <a name="policy"></a>Zasady
 
@@ -66,14 +66,14 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 
 | Claim | Opis | Przykład |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |`acr_values` parametr ciągu zapytania. | Nie dotyczy |
+| {OIDC: AuthenticationContextReferences} |`acr_values` parametr ciągu zapytania. | N/D |
 | {OIDC:ClientId} |`client_id` parametr ciągu zapytania. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC: DomainHint} |`domain_hint` parametr ciągu zapytania. | facebook.com |
 | {OIDC: LoginHint} |  `login_hint` parametr ciągu zapytania. | someone@contoso.com |
-| {OIDC:MaxAge} | Element `max_age`. | Nie dotyczy |
+| {OIDC:MaxAge} | Element `max_age`. | N/D |
 | {OIDC: nonce} |`Nonce` parametr ciągu zapytania. | defaultNonce |
 | {OIDC: Prompt} | `prompt` parametr ciągu zapytania. | logowanie |
-| {OIDC: Resource} |`resource` parametr ciągu zapytania. | Nie dotyczy |
+| {OIDC: Resource} |`resource` parametr ciągu zapytania. | N/D |
 | {OIDC: Scope} |`scope` parametr ciągu zapytania. | OpenID Connect |
 
 ### <a name="context"></a>Kontekst
@@ -96,13 +96,13 @@ Wszelkie nazwy parametrów dołączone jako część żądania OIDC lub OAuth2 m
 | {OAUTH-KV: campaignId} | Parametr ciągu zapytania. | Hawaje |
 | {OAUTH-KV: app_session} | Parametr ciągu zapytania. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Parametr ciągu zapytania. | 1234 |
-| {OAUTH-KV: dowolny niestandardowy ciąg zapytania} | Parametr ciągu zapytania. | Nie dotyczy |
+| {OAUTH-KV: dowolny niestandardowy ciąg zapytania} | Parametr ciągu zapytania. | N/D |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Claim | Opis | Przykład |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | Token dostępu. | Nie dotyczy |
+| {oauth2:access_token} | Token dostępu. | N/D |
 
 ## <a name="using-claim-resolvers"></a>Korzystanie z resolverów roszczeń 
 
@@ -123,16 +123,16 @@ Można użyć resolverów oświadczeń z następującymi elementami:
 |Profil techniczny [RelyingParty](relyingparty.md#technicalprofile)| `OutputClaim`| 2 |
 
 Ustawienia: 
-1. Metadane `IncludeClaimResolvingInClaimsHandling` muszą mieć wartość `true`
-1. `AlwaysUseDefaultValue` atrybutu oświadczeń wejściowych lub wyjściowych musi być ustawiona na `true`
+1. Metadane `IncludeClaimResolvingInClaimsHandling` muszą być ustawione na `true`.
+1. `AlwaysUseDefaultValue` atrybutu oświadczeń wejściowych lub wyjściowych musi być ustawiona na `true`.
 
-## <a name="how-to-use-claim-resolvers"></a>Jak korzystać z resolverów roszczeń
+## <a name="claim-resolvers-samples"></a>Przykłady elementów rozpoznawania nazw
 
 ### <a name="restful-technical-profile"></a>Profil techniczny RESTful
 
 W profilu technicznym [RESTful](restful-technical-profile.md) może być konieczne wysłanie języka użytkownika, nazwy zasad, zakresu i identyfikatora klienta. Na podstawie tych oświadczeń interfejs API REST może uruchamiać niestandardową logikę biznesową i w razie potrzeby zgłaszać zlokalizowany komunikat o błędzie.
 
-W poniższym przykładzie przedstawiono profil techniczny RESTful:
+W poniższym przykładzie przedstawiono profil techniczny RESTful w tym scenariuszu:
 
 ```XML
 <TechnicalProfile Id="REST">
@@ -142,12 +142,13 @@ W poniższym przykładzie przedstawiono profil techniczny RESTful:
     <Item Key="ServiceUrl">https://your-app.azurewebsites.net/api/identity</Item>
     <Item Key="AuthenticationType">None</Item>
     <Item Key="SendClaimsIn">Body</Item>
+    <Item Key="IncludeClaimResolvingInClaimsHandling">true</Item>
   </Metadata>
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" />
-    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" />
-    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" />
+    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
 </TechnicalProfile>
@@ -159,9 +160,9 @@ Korzystając z resolverów roszczeń, można wstępnie wypełnić nazwę logowan
 
 ### <a name="dynamic-ui-customization"></a>Dynamiczne dostosowywanie interfejsu użytkownika
 
-Azure AD B2C umożliwia przekazywanie parametrów ciągu zapytania do punktów końcowych definicji zawartości HTML, dzięki czemu można dynamicznie renderować zawartość strony. Na przykład można zmienić obraz tła na stronie rejestracji lub logowania Azure AD B2C na podstawie parametru niestandardowego, który jest przekazywany z aplikacji sieci Web lub mobilnej. Aby uzyskać więcej informacji, zobacz [dynamiczne Konfigurowanie interfejsu użytkownika przy użyciu zasad niestandardowych w programie Azure Active Directory B2C](custom-policy-ui-customization-dynamic.md). Możesz również lokalizować stronę HTML na podstawie parametru języka lub można zmienić zawartość na podstawie identyfikatora klienta.
+Azure AD B2C umożliwia przekazywanie parametrów ciągu zapytania do punktów końcowych definicji zawartości HTML w celu dynamicznego renderowania zawartości strony. Na przykład pozwala to na modyfikowanie obrazu tła na stronie rejestracji i logowania na Azure AD B2C na podstawie parametru niestandardowego, który jest przekazywany z aplikacji sieci Web lub mobilnej. Aby uzyskać więcej informacji, zobacz [dynamiczne Konfigurowanie interfejsu użytkownika przy użyciu zasad niestandardowych w programie Azure Active Directory B2C](custom-policy-ui-customization-dynamic.md). Możesz również lokalizować stronę HTML na podstawie parametru języka lub można zmienić zawartość na podstawie identyfikatora klienta.
 
-Poniższy przykład przekazuje w ciągu zapytania parametr o nazwie **campaignId** z wartością `hawaii`, kod **języka** `en-US`i **aplikację** reprezentującą identyfikator klienta:
+Poniższy przykład przekazuje parametr ciągu zapytania o nazwie **campaignId** wartością `hawaii`, kod **języka** `en-US`i **aplikację** reprezentującą identyfikator klienta:
 
 ```XML
 <UserJourneyBehaviors>
@@ -173,10 +174,21 @@ Poniższy przykład przekazuje w ciągu zapytania parametr o nazwie **campaignId
 </UserJourneyBehaviors>
 ```
 
-W wyniku Azure AD B2C do strony zawartości HTML są wysyłane powyższe parametry:
+W związku z tym Azure AD B2C wysyła powyższe parametry do strony zawartości HTML:
 
 ```
 /selfAsserted.aspx?campaignId=hawaii&language=en-US&app=0239a9cc-309c-4d41-87f1-31288feb2e82
+```
+
+### <a name="content-definition"></a>Definicja zawartości
+
+W `LoadUri`[ContentDefinition](contentdefinitions.md) można wysyłać resolvery roszczeń w celu ściągania zawartości z różnych miejsc, na podstawie używanych parametrów. 
+
+```XML
+<ContentDefinition Id="api.signuporsignin">
+  <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
+  ...
+</ContentDefinition>
 ```
 
 ### <a name="application-insights-technical-profile"></a>Profil techniczny Application Insights
@@ -195,4 +207,29 @@ Za pomocą usługi Azure Application Insights i rozwiązania do rozwiązywania p
     <InputClaim ClaimTypeReferenceId="AppId" PartnerClaimType="{property:App}" DefaultValue="{OIDC:ClientId}" />
   </InputClaims>
 </TechnicalProfile>
+```
+
+### <a name="relying-party-policy"></a>Zasady jednostki uzależnionej
+
+W profilu technicznym zasad [jednostki uzależnionej](relyingparty.md) możesz chcieć wysłać identyfikator dzierżawy lub identyfikator korelacji do aplikacji jednostki uzależnionej w ramach tokenu JWT. 
+
+```XML
+<RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        <OutputClaim ClaimTypeReferenceId="email" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+        <OutputClaim ClaimTypeReferenceId="correlationId" AlwaysUseDefaultValue="true" DefaultValue="{Context:CorrelationId}" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+  </RelyingParty>
 ```

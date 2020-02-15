@@ -3,12 +3,12 @@ title: Wdrożenie warunkowe z szablonami
 description: Opisuje sposób warunkowego wdrażania zasobu w szablonie Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: b4ee733e81f3a923f268f33f5826387059923bcb
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 83aa22ba57e0111d060665778922437723481c69
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122002"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207795"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Wdrożenie warunkowe w szablonach Menedżer zasobów
 
@@ -88,4 +88,4 @@ Jeśli szablon zostanie wdrożony z [trybem kompletnym](deployment-modes.md) , a
 ## <a name="next-steps"></a>Następne kroki
 
 * Zalecenia dotyczące tworzenia szablonów można znaleźć w temacie [Azure Resource Manager Best Practices Template](template-best-practices.md).
-* Aby utworzyć wiele wystąpień zasobu, zapoznaj się z tematem " [Resource, Property" lub "Zmienna iteracji" w szablonach Azure Resource Manager](create-multiple-instances.md).
+* Aby utworzyć wiele wystąpień zasobu, zobacz [iteracja zasobów w szablonach Azure Resource Manager](copy-resources.md).

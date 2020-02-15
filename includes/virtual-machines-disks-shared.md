@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1bdb4e40d7e173dcb2368f2f0cf645581647f6ee
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 09e5a6c5eee21e5432c4cf96a63fd2337307954a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202205"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211396"
 ---
 Azure Shared disks (wersja zapoznawcza) to nowa funkcja dysków zarządzanych platformy Azure, która umożliwia równoczesne dołączanie dysku zarządzanego platformy Azure do wielu maszyn wirtualnych. Dołączenie dysku zarządzanego do wielu maszyn wirtualnych pozwala wdrożyć nowe lub migrować istniejące aplikacje klastrowane na platformę Azure.
 
@@ -35,7 +35,7 @@ Dyski zarządzane z włączonymi dyskami udostępnionymi nie zapewniają natywne
 
 ## <a name="sample-workloads"></a>Przykładowe obciążenia
 
-### <a name="windows"></a>System Windows
+### <a name="windows"></a>Windows
 
 Większość klastrów opartych na systemie Windows kompiluje się w usłudze WSFC, która obsługuje wszystkie podstawowe infrastruktury komunikacji węzłów klastra, co umożliwia aplikacjom korzystanie z wzorców dostępu równoległego. W zależności od używanej wersji systemu Windows Server usługi WSFC umożliwiają zarówno używanie woluminów CSV, jak i nieopartych na woluminach CSV. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie klastra trybu failover](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster).
 
@@ -55,7 +55,7 @@ Klastry systemu Linux mogą korzystać z menedżerów klastra, takich jak [Pacem
 
 Na poniższym diagramie przedstawiono przykładową klastrowaną aplikację bazy danych 2-węzłową, która wykorzystuje funkcję SCSI PR do przełączania trybu failover z jednego węzła do drugiego.
 
-![Shared-Disk-Updated-Two-Node-Cluster-diagram. png](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
+![Klaster z dwoma węzłami. Aplikacja działająca w klastrze obsługuje dostęp do dysku](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
 
 Przepływ jest następujący:
 
@@ -68,7 +68,7 @@ Przepływ jest następujący:
 
 Na poniższym diagramie przedstawiono inne typowe obciążenie klastrowane składające się z wielu węzłów odczytywania danych z dysku na potrzeby uruchamiania procesów równoległych, takich jak szkolenie modeli uczenia maszynowego.
 
-![Shared-Disk-Updated-Machine-Learning-Trainer-model. png](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
+![Klaster z czterema węzłami VM, każdy węzeł rejestruje przeznaczenie do zapisu, aplikacja pobiera wyłączną rezerwację, aby prawidłowo obsługiwać wyniki zapisu](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
 
 Przepływ jest następujący:
 

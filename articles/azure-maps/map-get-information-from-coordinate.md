@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0b1ab7b2c233eb1e6e231b0ae7935b6c24363948
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1a6b3b4665e6141fb4c95508a8d8405268de6d19
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988536"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208526"
 ---
 # <a name="get-information-from-a-coordinate"></a>Uzyskiwanie informacji na podstawie współrzędnych
 
@@ -37,7 +37,7 @@ Czwarty blok kodu dodaje [odbiornik zdarzeń](https://docs.microsoft.com/javascr
 
 Piąty blok kodu konfiguruje zawartość HTML podręczną, aby wyświetlić adres odpowiedzi dla klikniętej pozycji współrzędnej.
 
-W [detektorze zdarzeń ładowania](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) mapy wszystkie elementy kursora, obiektu podręcznego i zdarzenia kliknięcia są tworzone w celu zapewnienia całkowitego ładowania mapy przed pobraniem informacji o współrzędnych.
+Wszystkie zmiany dotyczące kursora, obiektu podręcznego i zdarzenia kliknięcia są tworzone w [detektorze zdarzeń ładowania](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)mapy. Ta struktura kodu zapewnia pełną załadowanie mapy przed pobraniem informacji o współrzędnych.
 
 ## <a name="make-a-reverse-search-request-via-fetch-api"></a>Utwórz żądanie wyszukiwania wstecznego za pośrednictwem interfejsu API pobierania
 
@@ -52,7 +52,7 @@ Drugi blok kodu aktualizuje styl kursora myszy do wskaźnika. Tworzy wystąpieni
 
 Trzeci blok kodu dodaje odbiornik zdarzeń do kliknięć myszą. Gdy klikniesz myszą, użyje [interfejsu API pobierania](https://fetch.spec.whatwg.org/) , aby wysłać zapytanie do [interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) dla klikniętego adresu Azure Maps. W przypadku pomyślnej odpowiedzi zbierany jest adres dla klikniętej lokalizacji. Definiuje zawartość podręczną i położenie przy użyciu funkcji [SetOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) klasy popup.
 
-W [detektorze zdarzeń ładowania](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) mapy wszystkie elementy kursora, obiekt podręczny i zdarzenie kliknięcia są tworzone w celu zapewnienia całkowitego ładowania mapy przed pobraniem informacji o współrzędnych.
+Wszystkie zmiany dotyczące kursora, obiektu podręcznego i zdarzenia kliknięcia są tworzone w [detektorze zdarzeń ładowania](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)mapy. Ta struktura kodu gwarantuje całkowite załadowanie mapy przed pobraniem informacji o współrzędnych.
 
 ## <a name="next-steps"></a>Następne kroki
 

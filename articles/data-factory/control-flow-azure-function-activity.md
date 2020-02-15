@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 781c5a579fa0cd0383e95b79df1f81f74008111c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ffb610634399594788afcb9b600ba00c6803dfdd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679956"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207029"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Działanie funkcji platformy Azure w Azure Data Factory
 
@@ -30,22 +30,22 @@ Aby uzyskać 8-minutowy wprowadzenie i demonstrację tej funkcji, Obejrzyj nast�
 
 Zwracany typ funkcji platformy Azure musi być prawidłowym `JObject`. (Należy pamiętać, że [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) *nie* jest `JObject`.) Każdy typ zwracany inny niż `JObject` kończy się niepowodzeniem i podnosi *zawartość odpowiedzi na błąd użytkownika nie jest prawidłowym JObject*.
 
-| **Property** | **Opis** | **Wymagane** |
+| **Właściwość** | **Opis** | **Wymagane** |
 | --- | --- | --- |
-| type   | Właściwość Type musi mieć wartość: **AzureFunction** | tak |
+| typ   | Właściwość Type musi mieć wartość: **AzureFunction** | tak |
 | adres URL aplikacji funkcji | Adres URL aplikacja funkcji platformy Azure. Format jest `https://<accountname>.azurewebsites.net`. Ten adres URL jest wartością w sekcji **adresu URL** podczas wyświetlania aplikacja funkcji w Azure Portal  | tak |
-| klucz funkcji | Klucz dostępu dla funkcji platformy Azure. Kliknij sekcję **Zarządzanie** odpowiednią funkcją i skopiuj **klucz funkcji** lub **klucz hosta**. Dowiedz się więcej tutaj: [Azure Functions wyzwalacze i powiązania HTTP](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | tak |
+| klucz funkcji | Klucz dostępu dla funkcji platformy Azure. Kliknij sekcję **Zarządzanie** odpowiednią funkcją i skopiuj **klucz funkcji** lub **klucz hosta**. Dowiedz się więcej tutaj: [Azure Functions wyzwalacze i powiązania HTTP](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | tak |
 |   |   |   |
 
 ## <a name="azure-function-activity"></a>Działanie funkcji platformy Azure
 
-| **Property**  | **Opis** | **Dozwolone wartości** | **Wymagane** |
+| **Właściwość**  | **Opis** | **Dozwolone wartości** | **Wymagane** |
 | --- | --- | --- | --- |
-| name  | Nazwa działania w potoku  | Ciąg | tak |
-| type  | Typ działania to "AzureFunctionActivity" | Ciąg | tak |
+| {1&gt;nazwa&lt;1}  | Nazwa działania w potoku  | Ciąg | tak |
+| typ  | Typ działania to "AzureFunctionActivity" | Ciąg | tak |
 | połączona usługa | Połączona usługa funkcji platformy Azure dla odpowiednich aplikacja funkcji platformy Azure  | Odwołanie do połączonej usługi | tak |
 | Nazwa funkcji  | Nazwa funkcji w aplikacja funkcji platformy Azure, którą wywołuje to działanie | Ciąg | tak |
-| method  | Metoda interfejsu API REST dla wywołania funkcji | Obsługiwane typy ciągów: "GET", "POST", "PUT"   | tak |
+| metoda  | Metoda interfejsu API REST dla wywołania funkcji | Obsługiwane typy ciągów: "GET", "POST", "PUT"   | tak |
 | nagłówek  | Nagłówki wysyłane do żądania. Na przykład, aby ustawić język i typ dla żądania: "heads": {"Accept-Language": "en-us", "Content-Type": "Application/JSON"} | Ciąg (lub wyrażenie z typem ResultType ciągu) | Nie |
 | jednostce  | treść, która jest wysyłana wraz z żądaniem do metody interfejsu API funkcji  | Ciąg (lub wyrażenie z typem ResultType String) lub Object.   | Wymagane dla metod PUT/POST |
 |   |   |   | |

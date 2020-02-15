@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 3c2cc3c280ba0da474898bed93bb8533a42ab07f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72075d4eff336af625bbf6d62f1276d2997bfed4
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967346"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251213"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurowanie niestandardowej nazwy domeny
 
@@ -27,7 +27,7 @@ Gdy tworzysz wystąpienie usługi Azure API Management, platforma Azure przypisz
 > API Management akceptuje tylko żądania zawierające wartości [nagłówka hosta](https://tools.ietf.org/html/rfc2616#section-14.23) zgodne z domyślną nazwą domeny lub dowolnymi skonfigurowanymi niestandardowymi nazwami domen.
 
 > [!WARNING]
-> Klienci, którzy chcą korzystać z przypinania certyfikatów w celu poprawy bezpieczeństwa aplikacji, muszą używać niestandardowej nazwy domeny > i certyfikatu, którym zarządzają, a nie z domyślnym certyfikatem. Klienci, którzy przystosują domyślnie certyfikat domyślny, będą korzystać z twardej zależności od właściwości niekontrolowanego certyfikatu, co nie jest zalecanym postępowaniem.
+> Klienci, którzy chcą korzystać z przypinania certyfikatów w celu poprawy bezpieczeństwa aplikacji, muszą używać niestandardowej nazwy domeny i certyfikatu, którym zarządzają, a nie z domyślnym certyfikatem. Klienci, którzy przystosują domyślnie certyfikat domyślny, będą korzystać z twardej zależności od właściwości niekontrolowanego certyfikatu, co nie jest zalecanym postępowaniem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -55,7 +55,7 @@ Aby wykonać kroki opisane w tym artykule, musisz dysponować:
     - **SCM** (domyślnie: `<apim-service-name>.scm.azure-api.net`).
 
     > [!NOTE]
-    > Tylko punkt końcowy **bramy** dostępny do konfiguracji w warstwie zużycia.
+    > Tylko punkt końcowy **bramy** jest dostępny do konfiguracji w warstwie zużycia.
     > Można zaktualizować wszystkie punkty końcowe lub niektóre z nich. Często klienci aktualizują **bramę** (ten adres URL jest używany do wywoływania interfejsu API uwidocznionego za pomocą API Management) i **portalu** (adres URL portalu dla deweloperów).
     > Punkty końcowe **zarządzania** i **SCM** są używane wewnętrznie przez właścicieli wystąpień API Management i w ten sposób rzadziej przypisywana jest niestandardowa nazwa domeny.
     > Warstwa **Premium** obsługuje ustawianie wielu nazw hostów dla punktu końcowego **bramy** .
@@ -73,7 +73,7 @@ Aby wykonać kroki opisane w tym artykule, musisz dysponować:
     > Zalecamy używanie Azure Key Vault do zarządzania certyfikatami i ustawiania ich na automatyczne obracanie.
     > Jeśli używasz Azure Key Vault do zarządzania certyfikatem SSL domeny niestandardowej, upewnij się, że certyfikat został wstawiony do Key Vault [jako _certyfikat_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), a nie _wpis tajny_.
     >
-    > Aby można było pobrać certyfikat SSL, API Management musi mieć uprawnienie Pobierz klucze tajne na Azure Key Vault zawierający certyfikat. W przypadku korzystania z Azure Portal wszystkie niezbędne kroki konfiguracji zostaną wykonane automatycznie. W przypadku korzystania z narzędzi wiersza polecenia lub interfejsu API zarządzania należy przyznać te uprawnienia ręcznie. Odbywa się to w dwóch krokach. Najpierw użyj strony tożsamości zarządzane w wystąpieniu API Management, aby upewnić się, że zarządzana tożsamość jest włączona, i zanotuj identyfikator podmiotu zabezpieczeń pokazywany na tej stronie. Następnie nadaj liście uprawnień i uzyskaj uprawnienia do tego identyfikatora podmiotu zabezpieczeń na Azure Key Vault zawierającym certyfikat.
+    > Aby można było pobrać certyfikat SSL, API Management musi mieć uprawnienia list i Pobierz klucze tajne na Azure Key Vault zawierający certyfikat. W przypadku korzystania z Azure Portal wszystkie niezbędne kroki konfiguracji zostaną wykonane automatycznie. W przypadku korzystania z narzędzi wiersza polecenia lub interfejsu API zarządzania należy przyznać te uprawnienia ręcznie. Odbywa się to w dwóch krokach. Najpierw użyj strony tożsamości zarządzane w wystąpieniu API Management, aby upewnić się, że zarządzana tożsamość jest włączona, i zanotuj identyfikator podmiotu zabezpieczeń pokazywany na tej stronie. Następnie nadaj liście uprawnień i uzyskaj uprawnienia do tego identyfikatora podmiotu zabezpieczeń na Azure Key Vault zawierającym certyfikat.
     >
     > Jeśli certyfikat jest ustawiony na automatyczne obracanie, API Management automatycznie pobierze najnowszą wersję bez żadnego przestoju usługi (Jeśli warstwa API Management ma umowę SLA-i. e. we wszystkich warstwach poza warstwą dewelopera).
 

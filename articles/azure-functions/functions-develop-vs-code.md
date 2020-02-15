@@ -3,12 +3,12 @@ title: Opracowywanie Azure Functions przy użyciu Visual Studio Code
 description: Dowiedz się, jak opracowywać i testować Azure Functions przy użyciu rozszerzenia Azure Functions dla Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964021"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210246"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Opracowywanie Azure Functions przy użyciu Visual Studio Code
 
@@ -26,7 +26,7 @@ Rozszerzenia można używać w następujących językach, które są obsługiwan
 * <sup>*skryptu</sup> [ C# ](functions-reference-csharp.md)
 * [JavaScript](functions-reference-node.md)
 * [Java](functions-reference-java.md)
-* [Program PowerShell](functions-reference-powershell.md)
+* [PowerShell](functions-reference-powershell.md)
 * [Python](functions-reference-python.md)
 
 <sup>*</sup> Wymaga [ustawienia C# skryptu jako domyślnego języka projektu](#c-script-projects).
@@ -71,7 +71,7 @@ Rozszerzenie Functions umożliwia utworzenie projektu aplikacji funkcji wraz z p
 
     ![Wybieranie szablonu wyzwalacza HTTP](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. W polu Nazwa funkcji wpisz **HttpExample** , a następnie wybierz pozycję ENTER, a następnie wybierz pozycję autoryzacja **funkcji** . Ten poziom autoryzacji wymaga podania [klucza funkcji](functions-bindings-http-webhook.md#authorization-keys) podczas wywoływania punktu końcowego funkcji.
+1. W polu Nazwa funkcji wpisz **HttpExample** , a następnie wybierz pozycję ENTER, a następnie wybierz pozycję autoryzacja **funkcji** . Ten poziom autoryzacji wymaga podania [klucza funkcji](functions-bindings-http-webhook-trigger.md#authorization-keys) podczas wywoływania punktu końcowego funkcji.
 
     ![Wybierz autoryzację funkcji](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -277,7 +277,7 @@ Projekt został odbudowany, ponownie opakowany i przekazany do platformy Azure. 
 
 ## <a name="get-the-url-of-the-deployed-function"></a>Pobierz adres URL wdrożonej funkcji
 
-Aby wywołać funkcję wyzwalaną przez protokół HTTP, należy uzyskać adres URL funkcji, gdy zostanie ona wdrożona w aplikacji funkcji. Ten adres URL zawiera wszystkie wymagane [klucze funkcji](functions-bindings-http-webhook.md#authorization-keys). Możesz użyć rozszerzenia, aby uzyskać te adresy URL dla wdrożonych funkcji.
+Aby wywołać funkcję wyzwalaną przez protokół HTTP, należy uzyskać adres URL funkcji, gdy zostanie ona wdrożona w aplikacji funkcji. Ten adres URL zawiera wszystkie wymagane [klucze funkcji](functions-bindings-http-webhook-trigger.md#authorization-keys). Możesz użyć rozszerzenia, aby uzyskać te adresy URL dla wdrożonych funkcji.
 
 1. Wybierz F1, aby otworzyć paletę poleceń, a następnie wyszukaj i uruchom polecenie **Azure Functions: Copy URL funkcji**.
 
@@ -301,7 +301,7 @@ Aby uruchomić projekt funkcji lokalnie, należy spełnić następujące wymagan
     | -------- | --------- |
     | **C#** | [C#rozszerzenia](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[Narzędzia interfejs wiersza polecenia platformy .NET Core](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [Debuger dla rozszerzenia Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 lub nowszy](https://maven.apache.org/) |
-    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
+    | **JavaScript** | <sup>*</sup> [Node. js](https://nodejs.org/) |  
     | **Python** | [Rozszerzenie języka Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>Zalecane środowisko [Python 3.6.8](https://www.python.org/downloads/)|
 
     <sup>*</sup> Aktywne wersje LTS LTS i Maintenance (zalecane 8.11.1 i 10.14.1).
@@ -341,7 +341,7 @@ Wartości w **connectionStrings** nigdy nie są publikowane.
 Wartości ustawień aplikacji funkcji można także odczytać w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji, zobacz sekcję zmienne środowiskowe w następujących artykułach referencyjnych dotyczących języka:
 
 * [C#prekompilowanego](functions-dotnet-class-library.md#environment-variables)
-* [Skryptu C# (csx)](functions-reference-csharp.md#environment-variables)
+* [C#skrypt (. CSX)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -438,7 +438,7 @@ Rozszerzenie Azure Functions zapewnia przydatny interfejs graficzny w obszarze d
 | **Ustaw AzureWebJobsStorage**| Ustawia wartość ustawienia aplikacji `AzureWebJobsStorage`. To ustawienie jest wymagane przez Azure Functions. Jest on ustawiany podczas tworzenia aplikacji funkcji na platformie Azure. |
 | **Rozpocznij** | Uruchamia zatrzymaną aplikację funkcji na platformie Azure. |
 | **Uruchom dzienniki przesyłania strumieniowego** | Uruchamia dzienniki przesyłania strumieniowego dla aplikacji funkcji na platformie Azure. Użyj dzienników przesyłania strumieniowego podczas zdalnego rozwiązywania problemów na platformie Azure, jeśli chcesz zobaczyć informacje o rejestrowaniu w czasie niemal rzeczywistym. Aby dowiedzieć się więcej, zobacz [dzienniki przesyłania strumieniowego](#streaming-logs). |
-| **Stop** | Powoduje zatrzymanie aplikacji funkcji działającej na platformie Azure. |
+| **Komunikat** | Powoduje zatrzymanie aplikacji funkcji działającej na platformie Azure. |
 | **Zatrzymywanie dzienników przesyłania strumieniowego** | Powoduje zatrzymanie dzienników przesyłania strumieniowego dla aplikacji funkcji na platformie Azure. |
 | **Przełącz jako ustawienie miejsca** | Gdy ta opcja jest włączona, zapewnia, że ustawienie aplikacji będzie trwało dla danego miejsca wdrożenia. |
 | **Odinstaluj Azure Functions Core Tools** | Usuwa Azure Functions Core Tools, które są wymagane przez rozszerzenie. |

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 429b8845e49158c906c02773f654c9487ff98d1e
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: ffc2681e487a51ce630d9433d6ded86961b5276c
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134759"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210371"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Szybki Start: Tworzenie aplikacji Cassandra przy użyciu zestawu SDK środowiska Node. js i Azure Cosmos DB
 
@@ -28,9 +28,11 @@ W tym przewodniku szybki start utworzysz konto usługi Azure Cosmos DB interfejs
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Konto platformy Azure z aktywną subskrypcją. [Utwórz je bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Lub [Wypróbuj bezpłatnie Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure.
-- [Node. js 0.10.29 +](https://nodejs.org/).
-- [Git](https://www.git-scm.com/downloads).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Można też [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) bez subskrypcji platformy Azure — nie wymaga to opłat ani zobowiązań.
+
+Potrzebne są też następujące elementy:
+* [Node.js](https://nodejs.org/dist/v0.10.29/x64/node-v0.10.29-x64.msi) w wersji 0.10.29 lub nowszej
+* [Usługa Git](https://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
 
@@ -110,42 +112,54 @@ Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak kod tworzy zasoby 
 * Wstawiane są jednostki klucz-wartość.
 
     ```javascript
-    ...
-       {
-          query: 'INSERT INTO  uprofile.user  (user_id, user_name , user_bcity) VALUES (?,?,?)',
-          params: [5, 'IvanaV', 'Belgaum']
-        }
-    ];
-    client.batch(queries, { prepare: true}, next);
+        function insert(next) {
+            console.log("\insert");
+            const arr = ['INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (1, \'AdrianaS\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (2, \'JiriK\', \'Toronto\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (3, \'IvanH\', \'Mumbai\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (4, \'IvanH\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (5, \'IvanaV\', \'Belgaum\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (6, \'LiliyaB\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (7, \'JindrichH\', \'Buenos Aires\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (8, \'AdrianaS\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (9, \'JozefM\', \'Seattle\')'];
+            arr.forEach(element => {
+            client.execute(element);
+            });
+            next();
+        },
     ```
 
 * Zapytanie o pobranie wszystkich wartości kluczy.
 
     ```javascript
-   var query = 'SELECT * FROM uprofile.user';
-    client.execute(query, { prepare: true}, function (err, result) {
-      if (err) return next(err);
-      result.rows.forEach(function(row) {
-        console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-      }, this);
-      next();
-    });
+        function selectAll(next) {
+            console.log("\Select ALL");
+            var query = 'SELECT * FROM uprofile.user';
+            client.execute(query, function (err, result) {
+            if (err) return next(err);
+            result.rows.forEach(function(row) {
+                console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
+            }, this);
+            next();
+            });
+        },
     ```  
     
 * Zapytanie o pobranie pary klucz-wartość.
 
     ```javascript
-    function selectById(next) {
-        console.log("\Getting by id");
-        var query = 'SELECT * FROM uprofile.user where user_id=1';
-        client.execute(query, { prepare: true}, function (err, result) {
-        if (err) return next(err);
+        function selectById(next) {
+            console.log("\Getting by id");
+            var query = 'SELECT * FROM uprofile.user where user_id=1';
+            client.execute(query, function (err, result) {
+            if (err) return next(err);
             result.rows.forEach(function(row) {
-            console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-        }, this);
-        next();
-        });
-    }
+                console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
+            }, this);
+            next();
+            });
+        }
     ```  
 
 ## <a name="update-your-connection-string"></a>Aktualizowanie parametrów połączenia
@@ -190,19 +204,41 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
 3. Zapisz plik `uprofile.js`.
 
+> [!NOTE]
+> Jeśli wystąpi błąd związany z certyfikatem w kolejnych krokach i jest uruchomiony na komputerze z systemem Windows, należy się upewnić, że wykonano proces prawidłowo przekonwertowane pliku CRT do formatu Microsoft. cer poniżej.
+> 
+> Kliknij dwukrotnie plik CRT, aby otworzyć go na ekranie certyfikatu. 
+>
+> ![Wyświetlanie i weryfikowanie danych wyjściowych](./media/create-cassandra-nodejs/crtcer1.gif)
+>
+> Naciśnij przycisk Dalej w Kreatorze certyfikatów. Wybierz pozycję Base-64 encoded X. 509 (. CER), a następnie kliknij przycisk Dalej.
+>
+> ![Wyświetlanie i weryfikowanie danych wyjściowych](./media/create-cassandra-nodejs/crtcer2.gif)
+>
+> Wybierz pozycję Przeglądaj (aby zlokalizować miejsce docelowe) i wpisz nazwę pliku.
+> Wybierz pozycję Dalej, a następnie kliknij przycisk Zakończ.
+>
+> Powinien być teraz poprawnie sformatowany plik CER. Upewnij się, że ścieżka w `uprofile.js` wskazuje na ten plik.
+
 ## <a name="run-the-nodejs-app"></a>Uruchamianie aplikacji Node.js
 
-1. W oknie terminalu usługi Git uruchom polecenie `npm install`, aby zainstalować wymagane moduły npm.
+1. W oknie terminalu usługi git upewnij się, że znajduje się w katalogu przykładowym, który został sklonowany wcześniej:
 
-2. Uruchom polecenie `node uprofile.js`, aby uruchomić aplikację Node.
+    ```bash
+    cd azure-cosmos-db-cassandra-nodejs-getting-started
+    ```
 
-3. W wierszu polecenia sprawdź, czy wyniki są zgodne z oczekiwaniami.
+2. Uruchom `npm install`, aby zainstalować wymagane moduły npm.
+
+3. Uruchom polecenie `node uprofile.js`, aby uruchomić aplikację Node.
+
+4. W wierszu polecenia sprawdź, czy wyniki są zgodne z oczekiwaniami.
 
     ![Wyświetlanie i weryfikowanie danych wyjściowych](./media/create-cassandra-nodejs/output.png)
 
     Naciśnij klawisze CTRL + C, aby zatrzymać wykonywanie programu i zamknąć okno konsoli. 
 
-4. W witrynie Azure Portal otwórz **Eksploratora danych**, aby wykonywać zapytania oraz modyfikować te nowe dane i pracować z nimi. 
+5. W witrynie Azure Portal otwórz **Eksploratora danych**, aby wykonywać zapytania oraz modyfikować te nowe dane i pracować z nimi. 
 
     ![Wyświetlanie danych w Eksploratorze danych](./media/create-cassandra-nodejs/data-explorer.png) 
 
@@ -220,5 +256,3 @@ W tym przewodniku szybki start przedstawiono sposób tworzenia konta Azure Cosmo
 
 > [!div class="nextstepaction"]
 > [Importowanie danych bazy danych Cassandra do usługi Azure Cosmos DB](cassandra-import-data.md)
-
-

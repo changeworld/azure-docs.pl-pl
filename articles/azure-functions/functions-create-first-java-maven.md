@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 813e65eadf9f54f7a0ac148681b25988ed6950b9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f226736050319d57cd0bc123fdb2211e0faeae11
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845449"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208850"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Szybki Start: używanie języka Java i Maven do tworzenia i publikowania funkcji na platformie Azure
 
@@ -51,7 +51,7 @@ mvn archetype:generate \
 > [!NOTE]
 > Jeśli występują problemy z uruchomieniem polecenia, należy zapoznać się z używaną wersją `maven-archetype-plugin`. Ponieważ uruchamiasz polecenie w pustym katalogu bez pliku `.pom`, może być podjęta próba użycia wtyczki starszej wersji od `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin`, jeśli uaktualniono Maven ze starszej wersji. Jeśli tak, spróbuj usunąć katalog `maven-archetype-plugin` i ponownie uruchomić polecenie.
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>System Windows
 
 ```powershell
 mvn archetype:generate `
@@ -119,7 +119,7 @@ curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```Output
 Hello AzureFunctions!
 ```
-[Klucz funkcji](functions-bindings-http-webhook.md#authorization-keys) nie jest wymagany w przypadku uruchamiania lokalnego. Aby zatrzymać wykonywanie kodu funkcji, użyj polecenia `Ctrl+C` w oknie terminala.
+[Klucz funkcji](functions-bindings-http-webhook-trigger.md#authorization-keys) nie jest wymagany w przypadku uruchamiania lokalnego. Aby zatrzymać wykonywanie kodu funkcji, użyj polecenia `Ctrl+C` w oknie terminala.
 
 > [!div class="nextstepaction"]
 > [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)

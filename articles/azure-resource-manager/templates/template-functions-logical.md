@@ -3,24 +3,24 @@ title: Funkcje szablonu — logiczne
 description: Opisuje funkcje, które mają być używane w szablonie Azure Resource Manager, aby określić wartości logiczne.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 48c6a05c5a449626c66f9d75c8578b217906d8e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aef520a26124a85f414c4f4aa1a3e307d383c29b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483962"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207217"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Funkcje logiczne dla szablonów Azure Resource Manager
 
 Menedżer zasobów udostępnia kilka funkcji do dokonywania porównań w szablonach.
 
-* [i](#and)
-* [bool](#bool)
-* [if](#if)
-* [not](#not)
+* [lub](#and)
+* [logiczna](#bool)
+* [przypadku](#if)
+* [niemożliwe](#not)
 * [lub](#or)
 
-## <a name="and"></a>oraz
+## <a name="and"></a>i
 
 `and(arg1, arg2, ...)`
 
@@ -28,10 +28,10 @@ Sprawdza, czy wszystkie wartości parametrów mają wartość true.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |wartość logiczna |Pierwsza wartość, aby sprawdzić, czy wartość jest równa true. |
-| arg2 |Tak |wartość logiczna |Druga wartość do sprawdzenia, czy ma wartość true. |
+| arg1 |Yes |wartość logiczna |Pierwsza wartość, aby sprawdzić, czy wartość jest równa true. |
+| arg2 |Yes |wartość logiczna |Druga wartość do sprawdzenia, czy ma wartość true. |
 | dodatkowe argumenty |Nie |wartość logiczna |Dodatkowe argumenty do sprawdzenia, czy są spełnione. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -66,13 +66,13 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | Fałsz |
-| orExampleOutput | Bool | Prawda |
-| notExampleOutput | Bool | Fałsz |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
-## <a name="bool"></a>bool
+## <a name="bool"></a>logiczna
 
 `bool(arg1)`
 
@@ -80,9 +80,9 @@ Konwertuje parametr na wartość logiczną.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |ciąg lub int |Wartość do przekonwertowania na wartość logiczną. |
+| arg1 |Yes |ciąg lub int |Wartość do przekonwertowania na wartość logiczną. |
 
 ### <a name="return-value"></a>Wartość zwracana
 Wartość logiczna przekonwertowanej wartości.
@@ -119,12 +119,12 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| trueString | Bool | Prawda |
-| falseString | Bool | Fałsz |
-| trueInt | Bool | Prawda |
-| falseInt | Bool | Fałsz |
+| trueString | Bool | True |
+| falseString | Bool | False |
+| trueInt | Bool | True |
+| falseInt | Bool | False |
 
 ## <a name="if"></a>if
 
@@ -134,11 +134,11 @@ Zwraca wartość na podstawie tego, czy warunek ma wartość true lub false.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| condition |Tak |wartość logiczna |Wartość, aby sprawdzić, czy jest to wartość true lub false. |
-| trueValue |Tak | ciąg, int, Object lub Array |Wartość, która ma zostać zwrócona, gdy warunek ma wartość true. |
-| falseValue |Tak | ciąg, int, Object lub Array |Wartość, która ma zostać zwrócona, gdy warunek ma wartość false. |
+| condition |Yes |wartość logiczna |Wartość, aby sprawdzić, czy jest to wartość true lub false. |
+| trueValue |Yes | ciąg, int, Object lub Array |Wartość, która ma zostać zwrócona, gdy warunek ma wartość true. |
+| falseValue |Yes | ciąg, int, Object lub Array |Wartość, która ma zostać zwrócona, gdy warunek ma wartość false. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -177,7 +177,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | yesOutput | Ciąg | tak |
 | NoOutput | Ciąg | nie |
@@ -231,7 +231,7 @@ Poniższy [przykładowy szablon](https://github.com/krnese/AzureDeploy/blob/mast
 }
 ```
 
-## <a name="not"></a>nie
+## <a name="not"></a>niemożliwe
 
 `not(arg1)`
 
@@ -239,9 +239,9 @@ Konwertuje wartość logiczną na wartość odwrotną.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |wartość logiczna |Wartość do przekonwertowania. |
+| arg1 |Yes |wartość logiczna |Wartość do przekonwertowania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -275,11 +275,11 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | Fałsz |
-| orExampleOutput | Bool | Prawda |
-| notExampleOutput | Bool | Fałsz |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) używa **nie** z [równą](template-functions-comparison.md#equals).
 
@@ -299,9 +299,9 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | Prawda |
+| checkNotEquals | Bool | True |
 
 ## <a name="or"></a>lub
 
@@ -311,10 +311,10 @@ Sprawdza, czy parametr ma wartość true.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Wymagane | Typ | Opis |
+| Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |wartość logiczna |Pierwsza wartość, aby sprawdzić, czy wartość jest równa true. |
-| arg2 |Tak |wartość logiczna |Druga wartość do sprawdzenia, czy ma wartość true. |
+| arg1 |Yes |wartość logiczna |Pierwsza wartość, aby sprawdzić, czy wartość jest równa true. |
+| arg2 |Yes |wartość logiczna |Druga wartość do sprawdzenia, czy ma wartość true. |
 | dodatkowe argumenty |Nie |wartość logiczna |Dodatkowe argumenty do sprawdzenia, czy są spełnione. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -349,16 +349,16 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu to:
 
-| Nazwa | Typ | Wartość |
+| Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | Fałsz |
-| orExampleOutput | Bool | Prawda |
-| notExampleOutput | Bool | Fałsz |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać opis sekcje szablonu usługi Azure Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](template-syntax.md).
-* Aby scalić wiele szablonów, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](linked-templates.md).
-* Do iteracji określoną liczbę razy podczas tworzenia dla typu zasobów, zobacz [tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](create-multiple-instances.md).
-* Aby zobaczyć, jak wdrożyć szablon został utworzony, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](deploy-powershell.md).
+* Opis sekcji w szablonie Azure Resource Manager można znaleźć w temacie [tworzenie Azure Resource Manager szablonów](template-syntax.md).
+* Aby scalić wiele szablonów, zobacz [Używanie połączonych szablonów z Azure Resource Manager](linked-templates.md).
+* Aby powtórzyć określoną liczbę razy podczas tworzenia typu zasobu, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](copy-resources.md).
+* Aby dowiedzieć się, jak wdrożyć utworzony szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](deploy-powershell.md).
 

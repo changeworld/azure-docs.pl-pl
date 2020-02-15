@@ -2,13 +2,13 @@
 title: Składnia i wyrażenia szablonu
 description: Zawiera opis deklaratywnej składni JSON dla szablonów Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 42649d4b04b03de32b82335fce68401192de75a3
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 02/13/2020
+ms.openlocfilehash: 7bca3125f80225d2180734f483194a63e39d9cf5
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120604"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207404"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Składnia i wyrażenia w szablonach Azure Resource Manager
 
@@ -16,11 +16,9 @@ Podstawowa składnia szablonu to JSON. Można jednak użyć wyrażeń do rozszer
 
 Wyrażenie szablonu nie może zawierać więcej niż 24 576 znaków.
 
-Wyrażenia obsługują notację JSON ("null") i właściwości obsługują wartość literalną o wartości null. W obu przypadkach Menedżer zasobów szablony traktują go tak, jakby właściwość nie jest obecna.
-
 ## <a name="use-functions"></a>Korzystanie z funkcji
 
-Poniższy przykład przedstawia wyrażenie w wartości domyślnej parametru:
+Azure Resource Manager udostępnia [funkcje](template-functions.md) , których można użyć w szablonie. Poniższy przykład przedstawia wyrażenie, które używa funkcji w wartości domyślnej parametru:
 
 ```json
 "parameters": {
@@ -40,6 +38,12 @@ Aby przekazać wartość ciągu jako parametr do funkcji, należy użyć apostro
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]"
 ```
+
+Większość funkcji działa tak samo, niezależnie od tego, czy zostały wdrożone w grupie zasobów, subskrypcji, grupie zarządzania czy dzierżawie. Następujące funkcje mają ograniczenia oparte na zakresie:
+
+* Grupa [zasobów — może](template-functions-resource.md#resourcegroup) być używana tylko we wdrożeniach w ramach grupy.
+* [ResourceID](template-functions-resource.md#resourceid) — można użyć w dowolnym zakresie, ale prawidłowe parametry zmieniają się w zależności od zakresu.
+* [subskrypcja](template-functions-resource.md#subscription) — może być używana tylko we wdrożeniach w grupie zasobów lub subskrypcji.
 
 ## <a name="escape-characters"></a>Znaki ucieczki
 
@@ -65,6 +69,15 @@ Aby wypróbować podwójne cudzysłowy w wyrażeniu, takie jak dodanie obiektu J
 "tags": {
     "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
 },
+```
+
+## <a name="null-values"></a>Wartości null
+
+Aby ustawić właściwość na null, można użyć **wartości null** lub **[JSON ("null")]** . [Funkcja JSON](template-functions-array.md#json) zwraca pusty obiekt, gdy podajesz `null` jako parametr. W obu przypadkach Menedżer zasobów szablony traktują go tak, jakby właściwość nie jest obecna.
+
+```json
+"stringValue": null,
+"objectValue": "[json('null')]"
 ```
 
 ## <a name="next-steps"></a>Następne kroki

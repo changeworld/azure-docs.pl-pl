@@ -3,14 +3,14 @@ title: Automatyzacja usługi mobilności na potrzeby odzyskiwania po awarii inst
 description: Sposób automatycznej instalacji usługi mobilności na potrzeby odzyskiwania po awarii serwera VMware/Physical Server z Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.topic: how-to
-ms.date: 12/22/2019
+ms.date: 2/5/2020
 ms.author: ramamill
-ms.openlocfilehash: 235b96cfd2da0c097bc576c63f5bd1c8ed224781
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896015"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252231"
 ---
 # <a name="automate-mobility-service-installation"></a>Automatyzowanie instalacji usługi mobilności
 
@@ -20,7 +20,7 @@ Podczas wdrażania Site Recovery na potrzeby odzyskiwania po awarii lokalnych ma
 
 - **Instalacja wypychana**: Pozwól Site Recovery zainstalować agenta usługi mobilności po włączeniu replikacji dla maszyny w Azure Portal.
 - **Instalacja ręczna**: należy ręcznie zainstalować usługę mobilności na poszczególnych komputerach. [Dowiedz się więcej](vmware-physical-mobility-service-overview.md) o instalacji wypychanej i ręcznej.
-- **Zautomatyzowane wdrażanie**: Automatyzowanie instalacji przy użyciu narzędzi do wdrażania oprogramowania, takich jak Microsoft Endpoint Configuration Manager, lub narzędzi innych firm, takich jak Intigua JetPatch.
+- **Zautomatyzowane wdrażanie**: Automatyzowanie instalacji przy użyciu narzędzi do wdrażania oprogramowania, takich jak Microsoft Endpoint Configuration Manager, lub narzędzi innych firm, takich jak JetPatch.
 
 Automatyczne instalowanie i aktualizowanie zapewnia rozwiązanie, jeśli:
 
@@ -352,11 +352,11 @@ cd /tmp
 
 1. Na stronie **Określanie informacji o tym programie standardowym** określ następujące wartości:
 
-    **Parametr** | **Wartość systemu Windows** | **Wartość systemu Linux**
+    **Konstruktora** | **Wartość systemu Windows** | **Wartość systemu Linux**
     --- | --- | ---
     **Nazwa** | Instalowanie usługi mobilności Microsoft Azure (Windows) | Zainstaluj usługę mobilności Microsoft Azure (Linux).
     **Wiersz polecenia** | install.bat | ./install_linux.sh
-    **Program może zostać uruchomiony** | Bez względu na to, czy użytkownik jest zalogowany | Bez względu na to, czy użytkownik jest zalogowany
+    **Program może zostać uruchomiony** | Niezależnie od tego, czy użytkownik jest zalogowany | Niezależnie od tego, czy użytkownik jest zalogowany
     **Inne parametry** | Użyj ustawienia domyślnego | Użyj ustawienia domyślnego
 
    ![Zrzut ekranu przedstawiający Kreatora tworzenia pakietu i programu](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)

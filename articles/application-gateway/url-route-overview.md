@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 2234ae4ce8257559f78d6aa50ecae59ae742ba33
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e20acb131b1a091fef858dab34705f4a8d3b4c4a
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910006"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251842"
 ---
 # <a name="url-path-based-routing-overview"></a>Routing oparty na ścieżkach URL — omówienie
 
@@ -20,14 +20,14 @@ Routing oparty na ścieżkach URL umożliwia kierowanie ruchu do pul serwerów z
 
 Jeden ze scenariuszy polega na kierowaniu żądań dla różnych typów zawartości do różnych pól serwerów zaplecza.
 
-W poniższym przykładzie Application Gateway obsługuje ruch dla contoso.com z trzech pul serwerów zaplecza na przykład: Puli videoserverpool, puli imageserverpool i DefaultServerPool.
+W poniższym przykładzie usługa Application Gateway obsługuje ruch dla domeny contoso.com z trzech pul serwerów zaplecza, na przykład: VideoServerPool, ImageServerPool i DefaultServerPool.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Żądania HTTP\://contoso.com/video/* są kierowane do puli videoserverpool, a protokół http\://contoso.com/images/* są kierowane do puli imageserverpool. Pula DefaultServerPool jest wybierana, jeśli żaden z wzorców ścieżki nie pasuje.
+Żądania dotyczące protokołu HTTP\://contoso.com/video/* są kierowane do puli videoserverpool, a protokół http\://contoso.com/images/* są kierowane do puli imageserverpool. Pula DefaultServerPool jest wybierana, jeśli żaden z wzorców ścieżki nie pasuje.
 
 > [!IMPORTANT]
-> Reguły są przetwarzane w kolejności, w jakiej znajdują się na liście w portalu. Zdecydowanie zaleca się skonfigurowanie odbiorników obejmujących wiele lokacji przed skonfigurowaniem podstawowego odbiornika.  Zapewnia to skierowanie ruchu do odpowiedniego zaplecza. Jeśli podstawowy odbiornik znajduje się na początku listy i jest zgodny z żądaniem przychodzącym, jest ono przetwarzane przez ten odbiornik.
+> W przypadku jednostki SKU V1 reguły są przetwarzane w kolejności, w której są wyświetlane w portalu. Jeśli podstawowy odbiornik znajduje się na początku listy i jest zgodny z żądaniem przychodzącym, jest ono przetwarzane przez ten odbiornik. W przypadku jednostki SKU v2 dokładne dopasowania mają wyższy priorytet. Jednak zdecydowanie zaleca się skonfigurowanie odbiorników z obsługą kilku lokacji najpierw przed skonfigurowaniem odbiornika podstawowego. Zapewnia to skierowanie ruchu do odpowiedniego zaplecza.
 
 ## <a name="urlpathmap-configuration-element"></a>Element konfiguracji UrlPathMap
 

@@ -2,13 +2,13 @@
 title: Limity i granice — QnA Maker
 description: Usługa QnA Maker ma meta limity dla części bazy wiedzy knowledge base i usługi. Należy zachować wiedzy w ramach tych limitów w celu testowania i publikowania.
 ms.topic: article
-ms.date: 01/23/2020
-ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.date: 02/14/2020
+ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760236"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252012"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Usługa QnA Maker wiedzy limity i granice
 
@@ -18,7 +18,7 @@ Podane poniżej limity QnA Maker są kombinacją [limitów warstwy cenowej platf
 
 Maksymalna liczba baz wiedzy zależy od [limitów warstwy wyszukiwanie poznawcze platformy Azure](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity).
 
-|**Warstwa usługi Azure Wyszukiwanie poznawcze** | **Bezpłatna** | **Podstawowa** |**S1** | **S2**| **S3** |**WYSOKA GĘSTOŚĆ S3**|
+|**Warstwa usługi Azure Wyszukiwanie poznawcze** | **Bezpłatna** | **Podstawowa** |**S1** | **S2**| **S3** |**WYJŚCIE S3 HD**|
 |---|---|---|---|---|---|----|
 |Dozwolona maksymalna liczba opublikowanych baz wiedzy|2|14|49|199|199|2,999|
 
@@ -55,11 +55,13 @@ Maksymalna liczba linków głębokiego, które mogą być przeszukiwane w celu w
 
 ## <a name="metadata-limits"></a>Limity metadanych
 
+Metadane są przechowywane i porównywane małymi literami.
+
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Według warstwy cenowej usługi Azure Wyszukiwanie poznawcze
 
 Maksymalna liczba pól metadanych na bazę wiedzy zależy od **[limitów warstwy wyszukiwanie poznawcze platformy Azure](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** .
 
-|**Warstwa usługi Azure Wyszukiwanie poznawcze** | **Bezpłatna** | **Podstawowa** |**S1** | **S2**| **S3** |**WYSOKA GĘSTOŚĆ S3**|
+|**Warstwa usługi Azure Wyszukiwanie poznawcze** | **Bezpłatna** | **Podstawowa** |**S1** | **S2**| **S3** |**WYJŚCIE S3 HD**|
 |---|---|---|---|---|---|----|
 |Pola metadanych maksymalnej dla danej usługi QnA Maker (we wszystkich artykułów bazy wiedzy)|1000|100 *|1000|1000|1000|1000|
 
@@ -69,7 +71,7 @@ W poniższej tabeli wymieniono długość i dopuszczalne znaki nazwy i wartości
 
 |Element|Dozwolone znaki|Dopasowanie wzorca wyrażenia regularnego|Maks. liczba znaków|
 |--|--|--|--|
-|Nazwa|Udostępnia<br>alfanumeryczne (litery i cyfry)<br>`_` (podkreślenie)|`^[a-zA-Z0-9_]+$`|100|
+|Name (Nazwa)|Udostępnia<br>alfanumeryczne (litery i cyfry)<br>`_` (podkreślenie)|`^[a-zA-Z0-9_]+$`|100|
 |Wartość|Zezwala na wszystko z wyjątkiem<br>`:` (dwukropek)<br>`|` (potok pionowy)|`^[^:|]+$`|500|
 |||||
 
@@ -87,13 +89,13 @@ Ogólne ograniczenia dotyczące zawartości w bazie wiedzy knowledge base:
 * Adres URL/strona HTML: 1 000 000 znaków
 
 ## <a name="create-knowledge-base-call-limits"></a>Utwórz limity wywołania w bazie wiedzy Knowledge base:
-Reprezentują one tworzenie limity dla każdego działania w bazie wiedzy knowledge base. oznacza to kliknięcie *tworzenie bazy wiedzy* lub wywołanie interfejsu API CreateKnowledgeBase.
+Reprezentują one limity dla każdej akcji tworzenia bazy wiedzy; oznacza to, że kliknięcie pozycji *Utwórz KB* lub wywołanie interfejsu API usługi.
 * Maksymalna liczba pytań alternatywnych na odpowiedź: 300
 * Maksymalna liczba adresów URL: 10
 * Maksymalna liczba plików: 10
 
 ## <a name="update-knowledge-base-call-limits"></a>Aktualizowanie limitów wywołanie bazy wiedzy
-Te reprezentują limity dla każdej akcji aktualizacji; oznacza to kliknięcie *Zapisz i szkolenie* lub wywołanie interfejsu API UpdateKnowledgeBase.
+Reprezentują one limity dla każdej akcji aktualizacji; oznacza to, że kliknięcie przycisku *Zapisz i pouczenie* lub wywołanie interfejsu API UpdateKnowledgeBase.
 * Długość nazwy źródła: 300
 * Maksymalna liczba dodanych lub usuniętych pytań alternatywnych: 300
 * Maksymalna liczba pól metadane dodawane lub usuwane: 10

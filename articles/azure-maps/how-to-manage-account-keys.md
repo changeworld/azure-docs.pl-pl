@@ -1,19 +1,19 @@
 ---
 title: Zarządzaj kontem Azure Maps w Azure Portal | Mapy Microsoft Azure
 description: W tym artykule dowiesz się, jak za pomocą Azure Portal zarządzać kontem Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: a983eab03e948d092af652962d75211eb8ee3e7b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1186c3ab0fc333896f3be4db5d103bcd6d12abf9
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025609"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209974"
 ---
 # <a name="manage-your-azure-maps-account"></a>Zarządzanie kontem Azure Maps
 
@@ -21,9 +21,9 @@ Możesz zarządzać kontem Azure Maps za pomocą Azure Portal. Po utworzeniu kon
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-new-account"></a>Utwórz nowe konto
+## <a name="create-a-new-account"></a>Tworzenie nowego konta
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 2. Wybierz pozycję **Utwórz zasób** w lewym górnym rogu Azure Portal.
 

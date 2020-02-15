@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b142d3561e7d05b9afaeab9768b6b50a33ef28ce
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 7595ef1b8742c2ba18a262d5afc5eea1b4d7a15c
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158166"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251621"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -246,7 +246,7 @@ Użytkownicy w tej roli mogą odczytywać ustawienia i informacje administracyjn
 > Te funkcje są obecnie opracowywane.
 >
 
-### <a name="group-administratorgroup-administrator-permissions"></a>[Administrator grupy](#group-administrator-permissions)
+### <a name="groups-administratorgroups-administrator-permissions"></a>[Administrator grup](#groups-administrator-permissions)
 
 Użytkownicy w tej roli mogą tworzyć grupy i ich ustawienia, takie jak zasady nazewnictwa i wygasania, oraz zarządzać nimi. Ważne jest, aby zrozumieć, że przypisanie użytkownika do tej roli daje im możliwość zarządzania wszystkimi grupami w dzierżawie w różnych obciążeniach, takimi jak zespoły, SharePoint, Yammer w dodatku do programu Outlook. Ponadto użytkownik będzie mógł zarządzać różnymi ustawieniami grup w różnych portalach administracyjnych, takich jak centrum administracyjne firmy Microsoft, Azure Portal, a także obciążenie specyficzne dla zespołów i centrów administracyjnych programu SharePoint.
 
@@ -449,7 +449,7 @@ Użytkownicy z tą rolą mogą tworzyć użytkowników i zarządzać wszystkimi 
 | --- | --- |
 |Uprawnienia ogólne|<p>Tworzenie użytkowników i grup</p><p>Tworzenie widoków użytkowników i zarządzanie nimi</p><p>Zarządzanie biletami pomocy technicznej pakietu Office<p>Aktualizowanie zasad wygasania haseł|
 |<p>Dla wszystkich użytkowników, w tym wszystkich administratorów</p>|<p>Zarządzanie licencjami</p><p>Zarządzanie wszystkimi właściwościami użytkowników z wyjątkiem głównej nazwy użytkownika</p>
-|Tylko dla użytkowników, którzy nie są administratorami ani w ramach jednej z następujących ograniczonych ról administratora:<ul><li>Czytelnicy katalogów<li>Zapraszający gościa<li>Administrator pomocy technicznej<li>Czytelnik centrum wiadomości<li>Czytelnik raportów<li>Administrator użytkowników|<p>Usuń i Przywróć</p><p>Wyłącz i Włącz</p><p>Unieważnianie tokenów odświeżania</p><p>Zarządzanie wszystkimi właściwościami użytkowników, w tym główną nazwą użytkownika</p><p>Resetowanie hasła</p><p>Aktualizuj klucze urządzeń (FIDO)</p>|
+|Tylko dla użytkowników, którzy nie są administratorami ani w ramach jednej z następujących ograniczonych ról administratora:<ul><li>Czytelnicy katalogów<li>Zapraszający gościa<li>Administrator pomocy technicznej<li>Czytelnik centrum wiadomości<li>Czytelnik raportów<li>Administrator użytkowników|<p>Usuń i Przywróć</p><p>Wyłącz i Włącz</p><p>Unieważnianie tokenów odświeżania</p><p>Zarządzanie wszystkimi właściwościami użytkowników, w tym główną nazwą użytkownika</p><p>Zresetuj hasło</p><p>Aktualizuj klucze urządzeń (FIDO)</p>|
 
 > [!IMPORTANT]
 > Użytkownicy z tą rolą mogą zmieniać hasła dla osób, które mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej wewnątrz i na zewnątrz Azure Active Directory. Zmiana hasła użytkownika może oznaczać, że założono, że tożsamość i uprawnienia tego użytkownika. Na przykład:
@@ -1081,7 +1081,7 @@ Może odczytywać wszystko, co Administrator globalny może, ale nie edytować n
 | microsoft.office365.usageReports/allEntities/read | Przeczytaj raporty dotyczące użycia pakietu Office 365. |
 | Microsoft. 365. webports/allEntities/Standard/Read   | Odczytywanie właściwości standardowych wszystkich zasobów w Microsoft. 365. webport. |
 
-### <a name="group-administrator-permissions"></a>Uprawnienia administratora grupy
+### <a name="groups-administrator-permissions"></a>Uprawnienia administratora grup
 Może zarządzać wszystkimi aspektami grup i ustawień grup, takimi jak zasady nazewnictwa i wygasania.
 
 | **Akcje** | **Opis** |
@@ -1718,7 +1718,7 @@ Autorzy katalogów | Autorzy katalogów | 9360feb5-f418-4baa-8175-e2a00bac4301
 Administrator usługi Exchange | Administrator programu Exchange | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Administrator zewnętrznego dostawcy tożsamości | Administrator zewnętrznego dostawcy tożsamości | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Czytnik globalny | Czytnik globalny | f2ef992c-3afb-46b9-b7cf-a126ee74c451
-Administrator grupy | Administrator grupy | fdd7a751-b60b-444a-984c-02652fe8fa1c 
+Administrator grup | Administrator grup | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 Zapraszający gościa | Zapraszający gościa | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Administrator pomocy technicznej | Administrator pomocy technicznej | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Administrator usługi Intune | Administrator usługi Intune | 3a2c62db-5318-420d-8d74-23affee5d9d5
@@ -1741,7 +1741,7 @@ Edytor wyszukiwania | Edytor wyszukiwania | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
 Administrator zabezpieczeń | Administrator zabezpieczeń | 194ae4cb-b126-40b2-bd5b-6091b380977d
 Operator zabezpieczeń | Operator zabezpieczeń | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 Czytelnik zabezpieczeń | Czytelnik zabezpieczeń | 5d6b6bb7-de71-4623-b4af-96380a352509
-Administrator pomocy technicznej usługi | Administrator usługi | f023fd81-a637-4b56-95fd-791ac0226033
+Administrator pomocy technicznej usługi | A dministrator usługi | f023fd81-a637-4b56-95fd-791ac0226033
 Administrator usługi SharePoint | Administrator programu SharePoint | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Administratorzy zespołu ds. komunikacji | Administratorzy zespołu ds. komunikacji | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Inżynierowie pomocy technicznej dla zespołów | Inżynierowie pomocy technicznej dla zespołów | f70938a0-fc10-4177-9e90-2178f8765737

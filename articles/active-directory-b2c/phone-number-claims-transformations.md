@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 38763f414b1e5373af79d2501850a44e8e813451
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c5beef98f03c52ca022a7ab8047d3b392755c0bf
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185476"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212203"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Definiowanie przekształceń oświadczeń numeru telefonu w Azure AD B2C
 
@@ -32,7 +32,8 @@ To stwierdzenie weryfikuje format numeru telefonu. Jeśli jest w prawidłowym fo
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | Oświadczenie inputclaim | ciąg | Wniosek typu ciąg przekonwertowany z. |
+| Oświadczenie inputclaim | phoneNumberString | ciąg |  Ciąg jako numer telefonu. Numer telefonu musi znajdować się w formacie międzynarodowym i kończyć się wiodącym kodem "+" i państwowym. Jeśli zostanie podane `country` żądania wejściowego, numer telefonu jest w formacie lokalnym (bez kodu kraju). |
+| Oświadczenie inputclaim | trzeciego | ciąg | Obowiązkowe Ciąg określający kod kraju numeru telefonu w formacie ISO3166 (dwuliterowy kod kraju ISO-3166). |
 | Oświadczenie outputclaim | Oświadczenie outputclaim | phoneNumber | Wynik tej transformacji oświadczeń. |
 
 Transformacja oświadczeń **ConvertStringToPhoneNumberClaim** jest zawsze wykonywana z poziomu [profilu technicznego weryfikacji](validation-technical-profile.md) , który jest wywoływany przez [własny profil techniczny](self-asserted-technical-profile.md) lub [kontrolkę wyświetlania](display-controls.md). Metadane profilu technicznego **UserMessageIfClaimsTransformationInvalidPhoneNumber** z własnym potwierdzeń są kontrolowane przez komunikat o błędzie wyświetlany użytkownikowi.
@@ -44,7 +45,8 @@ Możesz użyć tej transformacji oświadczeń, aby upewnić się, że podane oś
 ```XML
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="inputClaim" />
+    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
+    <InputClaim ClaimTypeReferenceId="countryCode" TransformationClaimType="country" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
@@ -63,11 +65,19 @@ Profil techniczny z własnym potwierdzeniem, który wywołuje profil techniczny 
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>Przykład
+### <a name="example-1"></a>Przykład 1
 
 - Oświadczenia wejściowe:
-  - **oświadczenie inputclaim**: + 1 (123) 456-7890
+  - **phoneNumberString**: 045 456-7890
+  - **kraj**: DK
 - Oświadczenia wyjściowe:
+  - **oświadczenie outputclaim**: + 450546148120
+
+### <a name="example-2"></a>Przykład 2
+
+- Oświadczenia wejściowe:
+  - **phoneNumberString**: + 1 (123) 456-7890
+- Oświadczenia wyjściowe: 
   - **oświadczenie outputclaim**: + 11234567890
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString

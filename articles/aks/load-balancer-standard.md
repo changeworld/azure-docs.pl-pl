@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b15c60d5436feada8558c83cb14efd7e21a22493
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025711"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212409"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Korzystanie ze standardowego modułu równoważenia obciążenia jednostki SKU w usłudze Azure Kubernetes Service (AKS)
 
@@ -57,7 +57,10 @@ Podczas tworzenia klastrów AKS i zarządzania nimi, które obsługują moduł r
 
 ## <a name="use-the-standard-sku-load-balancer"></a>Korzystanie ze *standardowego* modułu równoważenia obciążenia jednostki SKU
 
-Podczas tworzenia klastra AKS domyślnie używany jest *Standardowy* moduł równoważenia obciążenia jednostki SKU w przypadku uruchamiania usług w tym klastrze. Na przykład [Przewodnik Szybki Start przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart-cli] wdraża przykładową aplikację korzystającą ze *standardowego* modułu równoważenia obciążenia jednostki SKU. 
+Podczas tworzenia klastra AKS domyślnie używany jest *Standardowy* moduł równoważenia obciążenia jednostki SKU w przypadku uruchamiania usług w tym klastrze. Na przykład [Przewodnik Szybki Start przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart-cli] wdraża przykładową aplikację korzystającą ze *standardowego* modułu równoważenia obciążenia jednostki SKU.
+
+> [!IMPORTANT]
+> Publiczne adresy IP można uniknąć przez dostosowanie trasy zdefiniowanej przez użytkownika (UDR). Określenie typu wychodzącego klastra AKS jako UDR może pominąć instalację protokołu IP i pulę zaplecza dla AKS utworzonego modułu równoważenia obciążenia platformy Azure. Zobacz [ustawianie `outboundType` klastra na wartość "userDefinedRouting"](egress-outboundtype.md).
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Konfigurowanie usługi równoważenia obciążenia jako wewnętrznej
 
@@ -186,7 +189,7 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 
 Przykładowe dane wyjściowe pokazują wartość domyślną dla *AllocatedOutboundPorts* i *IdleTimeoutInMinutes*. Wartość 0 dla *AllocatedOutboundPorts* ustawia liczbę portów wychodzących przy użyciu automatycznego przypisywania dla liczby portów wychodzących na podstawie rozmiaru puli zaplecza. Na przykład jeśli klaster ma 50 lub mniej węzłów, przydzielono porty 1024 dla każdego węzła.
 
-Rozważ zmianę ustawienia *allocatedOutboundPorts* lub *IdleTimeoutInMinutes* , jeśli zamierzasz obsłużyć wyczerpanie adresów w oparciu o powyższą konfigurację domyślną. Każdy dodatkowy adres IP pozwala na 64 000 dodatkowych portów do alokacji, jednak usługa Azure usługa Load Balancer w warstwie Standardowa nie zwiększa automatycznie portów na węzeł po dodaniu większej liczby adresów IP. Można zmienić te wartości poprzez ustawienie parametrów *równoważenia obciążenia-ruchu wychodzącego* i *równoważenia obciążenia — bezczynny limit czasu* . Przykład:
+Rozważ zmianę ustawienia *allocatedOutboundPorts* lub *IdleTimeoutInMinutes* , jeśli zamierzasz obsłużyć wyczerpanie adresów w oparciu o powyższą konfigurację domyślną. Każdy dodatkowy adres IP pozwala na 64 000 dodatkowych portów do alokacji, jednak usługa Azure usługa Load Balancer w warstwie Standardowa nie zwiększa automatycznie portów na węzeł po dodaniu większej liczby adresów IP. Można zmienić te wartości poprzez ustawienie parametrów *równoważenia obciążenia-ruchu wychodzącego* i *równoważenia obciążenia — bezczynny limit czasu* . Na przykład:
 
 ```azurecli-interactive
 az aks update \
@@ -199,7 +202,7 @@ az aks update \
 > [!IMPORTANT]
 > Przed przystąpieniem do dostosowywania *allocatedOutboundPorts* należy [obliczyć limit przydziału][calculate-required-quota] , aby uniknąć problemów z łącznością lub skalowaniem. Wartość określona dla *allocatedOutboundPorts* musi być również wielokrotnością 8.
 
-Podczas tworzenia klastra można również użyć parametrów *równoważenia obciążenia-ruchu wychodzącego* i *równoważenia obciążenia-limit czasu bezczynności* , ale należy również określić moduł równoważenia obciążenia-wychodzący- *IP-Count*, *równoważenia obciążenia-wychodzącego*i IP, jak również *prefiksy równoważenia obciążenia* wychodzącego.  Przykład:
+Podczas tworzenia klastra można również użyć parametrów *równoważenia obciążenia-ruchu wychodzącego* i *równoważenia obciążenia-limit czasu bezczynności* , ale należy również określić moduł równoważenia obciążenia-wychodzący- *IP-Count*, *równoważenia obciążenia-wychodzącego*i IP, jak również *prefiksy równoważenia obciążenia* wychodzącego.  Na przykład:
 
 ```azurecli-interactive
 az aks create \

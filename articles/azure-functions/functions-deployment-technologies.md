@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: 7b95fae3c7b713a9f97c31578a3bb24a9062fa2e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029864"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210161"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie wdrażania w Azure Functions
 
@@ -51,7 +51,7 @@ Niektóre kluczowe koncepcje mają na celu zrozumienie, w jaki sposób wdrożeni
 Po zmianie któregokolwiek z wyzwalaczy infrastruktura funkcji musi pamiętać o zmianach. Synchronizacja odbywa się automatycznie w przypadku wielu technologii wdrażania. Jednak w niektórych przypadkach należy ręcznie zsynchronizować wyzwalacze. Podczas wdrażania aktualizacji przez odwołanie się do zewnętrznego adresu URL pakietu, lokalnego narzędzia Git, synchronizacji w chmurze lub FTP należy ręcznie zsynchronizować wyzwalacze. Wyzwalacze można synchronizować na jeden z trzech sposobów:
 
 * Uruchom ponownie aplikację funkcji w Azure Portal
-* Wyślij żądanie HTTP POST do `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` przy użyciu [klucza głównego](functions-bindings-http-webhook.md#authorization-keys).
+* Wyślij żądanie HTTP POST do `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` przy użyciu [klucza głównego](functions-bindings-http-webhook-trigger.md#authorization-keys).
 * Wyślij żądanie HTTP POST do `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`. Zamień symbole zastępcze na identyfikator subskrypcji, nazwę grupy zasobów i nazwę aplikacji funkcji.
 
 ### <a name="remote-build"></a>Kompilacja zdalna

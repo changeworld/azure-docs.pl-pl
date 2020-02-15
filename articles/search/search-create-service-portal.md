@@ -8,16 +8,16 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/10/2020
-ms.openlocfilehash: bd4798ba4faa1808ecafb6d09eee09ba734c293d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 3bc3edcd0e75d8f6e3e4d6f9b200032909318040
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121707"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209362"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Szybki Start: Tworzenie usługi Azure Wyszukiwanie poznawcze w portalu
 
-Usługa Azure Wyszukiwanie poznawcze to autonomiczny zasób służący do podłączenia środowiska wyszukiwania w aplikacjach niestandardowych. Mimo że platforma Azure Wyszukiwanie poznawcze łatwo integruje się z innymi usługami platformy Azure, można także użyć jej jako składnika autonomicznego lub zintegrować ją z aplikacjami na serwerach sieciowych lub z oprogramowaniem działającym na innych platformach w chmurze.
+Usługa Azure Wyszukiwanie poznawcze to zasób autonomiczny służący do podłączenia środowiska wyszukiwania do aplikacji niestandardowych. Platforma Azure Wyszukiwanie poznawcze łatwo integruje się z innymi usługami platformy Azure, aplikacjami na serwerach sieciowych lub z oprogramowaniem działającym na innych platformach w chmurze.
 
 W tym artykule dowiesz się, jak utworzyć zasób w [Azure Portal](https://portal.azure.com/).
 
@@ -45,18 +45,18 @@ Jeśli masz więcej niż jedną subskrypcję, wybierz jedną z nich dla usługi 
 
 ## <a name="set-a-resource-group"></a>Ustawianie grupy zasobów
 
-Grupa zasobów jest wymagana i jest przydatna do zarządzania zasobami, w tym do kosztów. Grupa zasobów może składać się z jednej usługi lub wielu używanych jednocześnie usług. Na przykład, jeśli używasz usługi Azure Wyszukiwanie poznawcze do indeksowania bazy danych Azure Cosmos DB, możesz udostępnić obie usługi w tej samej grupie zasobów na potrzeby zarządzania. 
+Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Jest to wymagane dla usługi wyszukiwania. Jest on również przydatny do zarządzania zasobami, w tym do kosztów. Grupa zasobów może składać się z jednej usługi lub wielu używanych jednocześnie usług. Na przykład, jeśli używasz usługi Azure Wyszukiwanie poznawcze do indeksowania bazy danych Azure Cosmos DB, możesz udostępnić obie usługi w tej samej grupie zasobów na potrzeby zarządzania. 
 
 Jeśli zasoby nie są łączone w pojedynczą grupę, a istniejące grupy zasobów są wypełniane zasobami używanymi w niepowiązanych rozwiązaniach, Utwórz nową grupę zasobów tylko dla zasobu usługi Azure Wyszukiwanie poznawcze. 
 
 ![Utwórz nową grupę zasobów](./media/search-create-service-portal/new-resource-group.png "Utworzenie nowej grupy zasobów")
 
-Wraz z upływem czasu można śledzić bieżące i przewidywane koszty wszystkie (jak pokazano na zrzucie ekranu) lub przewijać w dół, aby wyświetlić opłaty dla poszczególnych zasobów. Poniższy zrzut ekranu przedstawia rodzaj informacji o kosztach, które mogą być widoczne w przypadku łączenia wielu zasobów w jedną grupę.
+W miarę upływu czasu można śledzić bieżące i przewidywane koszty, a także wyświetlać opłaty dla poszczególnych zasobów. Poniższy zrzut ekranu przedstawia rodzaj informacji o kosztach, które można zobaczyć w przypadku łączenia wielu zasobów w jedną grupę.
 
 ![Zarządzanie kosztami na poziomie grupy zasobów](./media/search-create-service-portal/resource-group-cost-management.png "Zarządzanie kosztami na poziomie grupy zasobów")
 
 > [!TIP]
-> Grupy zasobów upraszczają czyszczenie, ponieważ usunięcie grupy spowoduje również usunięcie w niej usług. Umieszczenie w tej samej grupie zasobów wszystkich projektów będących prototypami korzystającymi z wielu usług ułatwia proces czyszczenia po zakończeniu projektu.
+> Grupy zasobów upraszczają czyszczenie, ponieważ usunięcie grupy powoduje usunięcie wszystkich znajdujących się w niej usług. Umieszczenie w tej samej grupie zasobów wszystkich projektów będących prototypami korzystającymi z wielu usług ułatwia proces czyszczenia po zakończeniu projektu.
 
 ## <a name="name-the-service"></a>Nazwij usługę
 
@@ -65,10 +65,10 @@ W obszarze Szczegóły wystąpienia Podaj nazwę usługi w polu **adres URL** . 
 Wymagania dotyczące nazwy usługi:
 
 * Musi być unikatowa w obrębie przestrzeni nazw search.windows.net
-* Długość musi zawierać się w przedziale od 2 do 60 znaków
-* Musi składać się z małych liter, cyfr lub łączników („-”)
-* Nie może zawierać łączników („-”) na pierwszych dwóch miejscach ani na ostatnim miejscu
-* Nie może zawierać następujących po sobie łączników („--”)
+* Długość musi należeć do zakresu od 2 do 60 znaków
+* Musisz użyć małych liter, cyfr lub kresek ("-")
+* Nie używaj kresek ("-") w pierwszych 2 znakach ani jako ostatni pojedynczy znak
+* Nie można używać kolejnych kresek ("--") w dowolnym miejscu
 
 > [!TIP]
 > Jeśli uważasz, że będziesz korzystać z wielu usług, zalecamy uwzględnienie regionu (lub lokalizacji) w nazwie usługi jako konwencji nazewnictwa. Usługi w ramach tego samego regionu mogą bezpłatnie wymieniać dane, więc jeśli platforma Azure Wyszukiwanie poznawcze jest w regionie zachodnie stany USA, a inne usługi znajdują się również w regionie zachodnie stany USA, nazwy takie jak `mysearchservice-westus` mogą zapisywać dane na stronie właściwości podczas podejmowania decyzji o sposobie łączenia lub dołączania zasobów.
@@ -79,7 +79,7 @@ Usługa Azure Wyszukiwanie poznawcze może być hostowana w centrach danych na c
 
 Możesz zminimalizować lub uniknąć opłat za przepustowość, wybierając tę samą lokalizację dla wielu usług. Na przykład w przypadku indeksowania danych dostarczanych przez inną usługę platformy Azure (Azure Storage, Azure Cosmos DB, Azure SQL Database) Tworzenie usługi Azure Wyszukiwanie poznawcze w tym samym regionie pozwala uniknąć naliczania opłat za przepustowość (nie są naliczane opłaty za dane wychodzące, gdy usługi znajdują się w tym samym regionie).
 
-Ponadto, jeśli używasz wzbogacania AI, Utwórz usługę w tym samym regionie co Cognitive Services. *Współpraca z platformą Azure wyszukiwanie poznawcze i Cognitive Services w tym samym regionie jest wymagana do wzbogacania AI*.
+Jeśli używasz wzbogacania AI, Utwórz usługę wyszukiwania w tym samym regionie co Cognitive Services. *Współpraca z platformą Azure wyszukiwanie poznawcze i Cognitive Services w tym samym regionie jest wymagana do wzbogacania AI*.
 
 > [!Note]
 > Indie Środkowe nie są obecnie dostępne dla nowych usług. W przypadku usług już znajdujących się w centralnym Indiach można skalować w górę bez ograniczeń, a usługa jest w pełni obsługiwana w tym regionie. Ograniczenie w tym regionie jest tymczasowe i ograniczone tylko do nowych usług. Ta uwaga zostanie usunięta, jeśli ograniczenie nie zostanie już zastosowane.
@@ -90,7 +90,7 @@ Ponadto, jeśli używasz wzbogacania AI, Utwórz usługę w tym samym regionie c
 
 Podstawowa i Standardowa są najbardziej typowymi opcjami dotyczącymi obciążeń produkcyjnych, ale większość klientów zaczyna się od bezpłatnej usługi. Najważniejsze różnice między warstwami to rozmiar partycji i szybkość oraz limity dotyczące liczby obiektów, które można utworzyć.
 
-Należy pamiętać, że nie można zmienić warstwy cenowej po utworzeniu usługi. W razie konieczności przejścia do warstwy wyższej lub niższej należy ponownie utworzyć usługę.
+Pamiętaj, że po utworzeniu usługi nie można zmienić warstwy cenowej. Jeśli potrzebujesz warstwy wyższej lub niższej, należy ponownie utworzyć usługę.
 
 ## <a name="create-your-service"></a>Tworzenie usługi
 
@@ -98,7 +98,7 @@ Po podaniu niezbędnych danych wejściowych przejdź dalej i Utwórz usługę.
 
 ![Przeglądanie i tworzenie usługi](./media/search-create-service-portal/new-service3.png "Przeglądanie i tworzenie usługi")
 
-Twoja usługa zostanie wdrożona w ciągu kilku minut, którą można monitorować za pomocą powiadomień platformy Azure. Rozważ możliwość przypięcia usługi do pulpitu nawigacyjnego w celu ułatwienia dostępu w przyszłości.
+Twoja usługa zostanie wdrożona w ciągu kilku minut. Możesz monitorować postęp za pomocą powiadomień platformy Azure. Rozważ możliwość przypięcia usługi do pulpitu nawigacyjnego w celu ułatwienia dostępu w przyszłości.
 
 ![Monitorowanie i Przypinanie usługi](./media/search-create-service-portal/monitor-notifications.png "Monitorowanie i Przypinanie usługi")
 

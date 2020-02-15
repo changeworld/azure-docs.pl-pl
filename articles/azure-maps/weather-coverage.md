@@ -1,23 +1,23 @@
 ---
 title: Pokrycie pogodowe | Mapy Microsoft Azure
 description: Ten artykuł zawiera informacje na temat pokrycia pogody w Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 77b95806c2040e7950e1133fcc4c7bc5e0e2ab53
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fdae00a07b364252ae6d297a6df5eb242beac262
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989607"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207948"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps pokrycie pogodowe
 
-Ten artykuł zawiera informacje o pokryciu dotyczące Azure Maps [usług pogodowych](https://aka.ms/AzureMapsWeatherService). Azure Maps usługi danych pogody zwracają szczegóły, takie jak kafelki radarowe, bieżące warunki pogodowe, prognozy pogody i Pogoda wzdłuż trasy.
+Ten artykuł zawiera informacje o pokryciu dotyczące Azure Maps [usług pogodowych](https://aka.ms/AzureMapsWeatherService). Azure Maps usługi danych pogody zwracają szczegóły, takie jak kafelki radarowe, bieżące warunki pogodowe, prognozy pogodowe i Pogoda wzdłuż trasy.
 
 Azure Maps nie ma tego samego poziomu informacji i dokładności dla wszystkich krajów i regionów.
 
@@ -58,7 +58,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Salwador                              | ✓ |   |  ✓| 
 | Falklandy                         | ✓ |   |  ✓| 
 | Gujana Francuska                            | ✓ |   |  ✓| 
-| Grenlandia                                | ✓ |   |  ✓| 
+| Objęt                                | ✓ |   |  ✓| 
 | Grenada                                  | ✓ |   |  ✓| 
 | Gwadelupa                               | ✓ |   |  ✓| 
 | Gwatemala                                | ✓ |   |  ✓| 
@@ -85,7 +85,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Wyspy Georgia Południowa i Sandwich Południowy | ✓ |   |  ✓| 
 | Surinam                                 | ✓ |   |  ✓| 
 | Trynidad i Tobago                      | ✓ |   |  ✓| 
-| Turks i Caicos                 | ✓ |   |  ✓| 
+| Wyspy Turks i Caicos                 | ✓ |   |  ✓| 
 | Odległe wyspy Stanów Zjednoczonych                    | ✓ |   |  ✓| 
 | Wyspy Dziewicze Stanów Zjednoczonych                      | ✓ |   |  ✓| 
 | Stany Zjednoczone                            | ✓ | ✓ |  ✓| 
@@ -102,11 +102,11 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Bahrajn                     | ✓               |                              |        ✓| 
 | Benin                       | ✓               |                              |        ✓| 
 | Botswana                    | ✓               |                              |        ✓| 
-| Wyspa Bouveta               | ✓               |                              |        ✓| 
+| Wyspa Bouvet               | ✓               |                              |        ✓| 
 | Burkina Faso                | ✓               |                              |        ✓| 
 | Burundi                     | ✓               |                              |        ✓| 
 | Kamerun                    | ✓               |                              |        ✓| 
-| Wyspy Zielonego Przylądka                  | ✓               |                              |        ✓| 
+| Cabo Verde                  | ✓               |                              |        ✓| 
 | Republika Środkowoafrykańska    | ✓               |                              |        ✓| 
 | Czad                        | ✓               |                              |        ✓| 
 | Komory                     | ✓               |                              |        ✓| 
@@ -133,7 +133,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Liban                     | ✓               |                              |        ✓| 
 | Lesotho                     | ✓               |                              |        ✓| 
 | Liberia                     | ✓               |                              |        ✓| 
-| Libia                       | ✓               |                              |        ✓| 
+| Libya                       | ✓               |                              |        ✓| 
 | Madagaskar                  | ✓               |                              |        ✓| 
 | Malawi                      | ✓               |                              |        ✓| 
 | Mali                        | ✓               |                              |        ✓| 
@@ -166,7 +166,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Tunezja                     | ✓               |                              |        ✓| 
 | Uganda                      | ✓               |                              |        ✓| 
 | Zjednoczone Emiraty Arabskie        | ✓               |                              |        ✓| 
-| Sahara Zachodnia              | ✓               |                              |        ✓| 
+| Sahara zachodni              | ✓               |                              |        ✓| 
 | Jemen                       | ✓               |                              |        ✓| 
 | Zambia                      | ✓               |                              |        ✓| 
 | Zimbabwe                    | ✓               |                              |        ✓| 
@@ -192,13 +192,13 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Polinezja Francuska                  | ✓ |   |  ✓| 
 | Guam                              | ✓ |   |  ✓| 
 | Wyspy Heard i McDonald | ✓ |   |  ✓| 
-| SRA Hongkong                     | ✓ |   |  ✓| 
+| Hongkong                     | ✓ |   |  ✓| 
 | Indie                             | ✓ |   |  ✓| 
 | Indonezja                         | ✓ |   |  ✓| 
 | Japonia                             | ✓ | ✓ |  ✓| 
 | Kazachstan                        | ✓ |   |  ✓| 
 | Kiribati                          | ✓ |   |  ✓| 
-| Korea Południowa                             | ✓ | ✓ |  ✓| 
+| Korea                             | ✓ | ✓ |  ✓| 
 | Kirgistan                        | ✓ |   |  ✓| 
 | Laos                              | ✓ |   |  ✓| 
 | SRA Makau                         | ✓ |   |  ✓| 
@@ -232,7 +232,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Tokelau                           | ✓ |   |  ✓| 
 | Tonga                             | ✓ |   |  ✓| 
 | Turkmenistan                      | ✓ |   |  ✓| 
-| Tuvalu                            | ✓ |   |  ✓| 
+| Tuwalu                            | ✓ |   |  ✓| 
 | Uzbekistan                        | ✓ |   |  ✓| 
 | Vanuatu                           | ✓ |   |  ✓| 
 | Wietnam                           | ✓ |   |  ✓| 
@@ -271,15 +271,15 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Włochy                  | ✓ |   |  ✓|
 | Wyspa Man            | ✓ |   |  ✓| 
 | Jersey                 | ✓ |   |  ✓| 
-| Kosowo                 | ✓ |   |  ✓| 
+| Kosowie                 | ✓ |   |  ✓| 
 | Łotwa                 | ✓ |   |  ✓| 
 | Liechtenstein          | ✓ | ✓ |  ✓| 
 | Litwa              | ✓ |   |  ✓| 
 | Luksemburg             | ✓ | ✓ |  ✓| 
 | Północna Macedonia        | ✓ |   |  ✓| 
-| Malta                  | ✓ |   |  ✓| 
+| M alta                  | ✓ |   |  ✓| 
 | Mołdawia                | ✓ | ✓ |  ✓| 
-| Monako                 | ✓ | ✓ |  ✓| 
+| Monaco                 | ✓ | ✓ |  ✓| 
 | Czarnogóra             | ✓ | ✓ |  ✓| 
 | Holandia            | ✓ | ✓ |  ✓| 
 | Norwegia                 | ✓ | ✓ |  ✓| 
@@ -298,5 +298,5 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Szwajcaria            | ✓ | ✓ |  ✓| 
 | Turcja                 | ✓ |   |  ✓| 
 | Ukraina                | ✓ |   |  ✓| 
-| Zjednoczone Królestwo         | ✓ | ✓ |  ✓| 
+| Wielka Brytania         | ✓ | ✓ |  ✓| 
 | Watykan           | ✓ |   |  ✓| 

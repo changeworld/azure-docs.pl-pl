@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.author: jgao
-ms.openlocfilehash: f18c9c6efb17f84446b9fee3d2df2c0977bed0c4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a67f360aa08f306d6462342d96f59e06a4d3b501
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757307"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251859"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Używanie skryptów wdrażania w szablonach (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ Zalety skryptu wdrażania:
 
 - Łatwe do kodu, używania i debugowania. Skrypty wdrażania można opracowywać w ulubionych środowiskach deweloperskich. Skrypty mogą być osadzone w szablonach lub w zewnętrznych plikach skryptów.
 - Możesz określić język skryptu i platformę. Obecnie obsługiwane są tylko Azure PowerShell skrypty wdrażania w środowisku systemu Linux.
-- Zezwalaj na Określanie tożsamości, które są używane do wykonywania skryptów. Obecnie obsługiwana jest tylko [tożsamość zarządzana przypisana przez użytkownika platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md) .
+- Zezwalaj na Określanie tożsamości, które są używane do wykonywania skryptów. Obecnie obsługiwana jest tylko [tożsamość zarządzana przypisana przez użytkownika platformy Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) .
 - Zezwalaj na przekazywanie do skryptu argumentów wiersza polecenia.
 - Można określić dane wyjściowe skryptu i przekazać je z powrotem do wdrożenia.
 
@@ -59,7 +59,7 @@ Zalety skryptu wdrażania:
 
 - **Azure PowerShell w wersji 2.7.0, 2.8.0 lub 3.0.0**. Te wersje nie są potrzebne do wdrażania szablonów. Jednak te wersje są zbędne do lokalnego testowania skryptów wdrażania. Zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Można użyć wstępnie skonfigurowanego obrazu platformy Docker.  Zobacz [Konfigurowanie środowiska deweloperskiego](#configure-development-environment).
 
-## <a name="resource-schema"></a>Schemat zasobów
+## <a name="sample-template"></a>Przykładowy szablon
 
 Poniższy kod JSON jest przykładem.  Najnowszy schemat szablonu można znaleźć [tutaj](/azure/templates/microsoft.resources/deploymentscripts).
 
@@ -87,7 +87,7 @@ Poniższy kod JSON jest przykładem.  Najnowszy schemat szablonu można znaleź�
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
     ",
-    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json",
+    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
     "supportingScriptUris":[],
     "timeout": "PT30M",
     "cleanupPreference": "OnSuccess",
@@ -122,7 +122,7 @@ Następujący szablon ma zdefiniowany jeden zasób z typem `Microsoft.Resources/
 > [!NOTE]
 > Ponieważ wbudowane skrypty wdrażania są ujęte w podwójne cudzysłowy, ciągi wewnątrz skryptów wdrażania muszą być ujęte w apostrofy. Znak ucieczki dla programu PowerShell **&#92;** to. Można również rozważyć użycie podstawienia ciągów, tak jak pokazano w poprzednim przykładzie JSON. Zobacz wartość domyślną parametru name.
 
-Skrypt przyjmuje jeden parametr i wyprowadza wartość parametru. **DeploymentScriptOutputs** jest używany do przechowywania danych wyjściowych.  W sekcji dane wyjściowe wiersz **wartości** pokazuje, jak uzyskać dostęp do przechowywanych wartości. `Write-Output` jest używany do celów debugowania. Aby dowiedzieć się, jak uzyskać dostęp do pliku wyjściowego, zobacz [debugowanie skryptów wdrażania](#debug-deployment-scripts).  Aby zapoznać się z opisami właściwości, zobacz [schemat zasobów](#resource-schema).
+Skrypt przyjmuje jeden parametr i wyprowadza wartość parametru. **DeploymentScriptOutputs** jest używany do przechowywania danych wyjściowych.  W sekcji dane wyjściowe wiersz **wartości** pokazuje, jak uzyskać dostęp do przechowywanych wartości. `Write-Output` jest używany do celów debugowania. Aby dowiedzieć się, jak uzyskać dostęp do pliku wyjściowego, zobacz [debugowanie skryptów wdrażania](#debug-deployment-scripts).  Aby zapoznać się z opisami właściwości, zobacz [przykładowy szablon](#sample-template).
 
 Aby uruchomić skrypt, wybierz opcję **Wypróbuj** , aby otworzyć usługę Cloud Shell, a następnie wklej następujący kod do okienka powłoki.
 
@@ -144,7 +144,7 @@ Dane wyjściowe wyglądają następująco:
 
 ## <a name="use-external-scripts"></a>Korzystanie ze skryptów zewnętrznych
 
-Oprócz skryptów wbudowanych można również używać zewnętrznych plików skryptów. Obecnie obsługiwane są tylko skrypty programu PowerShell z rozszerzeniem pliku **ps1** . Aby użyć zewnętrznych plików skryptów, Zastąp `scriptContent` z `primaryScriptUri`. Przykład:
+Oprócz skryptów wbudowanych można również używać zewnętrznych plików skryptów. Obecnie obsługiwane są tylko skrypty programu PowerShell z rozszerzeniem pliku **ps1** . Aby użyć zewnętrznych plików skryptów, Zastąp `scriptContent` z `primaryScriptUri`. Na przykład:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",

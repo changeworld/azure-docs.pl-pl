@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: e4f27e582e6b920e9de068fe2c3270af19ad8a17
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122426"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210469"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Przykład: Tworzenie niestandardowej umiejętności przy użyciu języka Python
 
@@ -52,7 +52,7 @@ Szablon projektu usługi Azure Functions w programie Visual Studio Code umożliw
 1. Wybierz wersję języka Python (wersja 3.7.5 jest obsługiwana przez Azure Functions)
 1. Wybierz szablon dla pierwszej funkcji projektu. Wybierz **wyzwalacz http** , aby utworzyć funkcję wyzwalaną przez protokół HTTP w nowej aplikacji funkcji.
 1. Podaj nazwę funkcji. W tym przypadku użyjemy **złączer** 
-1. Wybierz opcję **Funkcja** jako poziom autoryzacji. Oznacza to, że dostarczamy [klucz funkcji](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) do wywołania punktu końcowego http funkcji. 
+1. Wybierz opcję **Funkcja** jako poziom autoryzacji. Oznacza to, że dostarczamy [klucz funkcji](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) do wywołania punktu końcowego http funkcji. 
 1. Wybierz, w jaki sposób chcesz otworzyć projekt. W tym kroku wybierz pozycję **Dodaj do obszaru roboczego** , aby utworzyć aplikację funkcji w bieżącym obszarze roboczym.
 
 Program Visual Studio Code utworzy projekt aplikacji funkcji w nowym obszarze roboczym. Ten projekt zawiera pliki konfiguracyjne [host.json](../azure-functions/functions-host-json.md) i [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file), a także wszystkie specyficzne dla języka pliki projektu. 

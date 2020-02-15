@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: ec5c1295f883bb37ad5f016bc3346c134863e6bd
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a4f9833e8dd14dc7c8ec5849cb809bf2089a5dae
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118814"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206127"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejs API tłumaczenia tekstu w usłudze Translator
 
@@ -23,7 +23,7 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 
 [Dowiedz się więcej o tym, jak działa tłumaczenie maszynowe](https://www.microsoft.com/translator/mt.aspx)
 
-## <a name="translation"></a>Tłumaczenie
+## <a name="translation"></a>{1&gt;Translacja&lt;1}
 
 **Interfejs API usługi Translator w wersji 2**
 
@@ -43,7 +43,7 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 |Język|  Kod języka|  INTERFEJS API V3|
 |:-----|:-----:|:-----|
 |Afrikaans| `af`|   Neuronowych|
-|Arabski|    `ar`    |   Neuronowych|
+|arabski|    `ar`    |   Neuronowych|
 |Bengalski|    `bn`    |   Neuronowych|
 |Bośniacki (łaciński)|   `bs`    |   Neuronowych|
 |Bułgarski| `bg`    |   Neuronowych|
@@ -54,7 +54,7 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 |Chorwacki|  `hr`    |Neuronowych|
 |Czeski| `cs`    |   Neuronowych|
 |Duński|    `da`        |Neuronowych|
-|Holenderski| `nl`|   Neuronowych|
+|holenderski| `nl`|   Neuronowych|
 |Polski|   `en`    |   Neuronowych|
 |Estoński|  `et`    |   Neuronowych|
 |Fidżi|    `fj`    |   Statystyczn|
@@ -64,12 +64,12 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 |Niemiecki|    `de`    |   Neuronowych|
 |Grecki| `el`    |   Neuronowych|
 |Haitański|    `ht`        |Statystyczn|
-|Hebrajski |`he`   |Neuronowych
+|hebrajski |`he`   |Neuronowych
 |Hindi| `hi`    |   Neuronowych|
 |Hmong Daw| `mww`   |   Statystyczn|
 |Węgierski| `hu`    |   Neuronowych|
-|Islandzki| `is`    |   Neuronowych|
-|Indonezyjski|    `id`    |   Statystyczn|
+|islandzki| `is`    |   Neuronowych|
+|indonezyjski|    `id`    |   Statystyczn|
 |Irlandzki | `ga`| Neuronowych
 |Włoski|   `it`    |   Neuronowych|
 |Japoński|  `ja`    |   Neuronowych|
@@ -81,7 +81,7 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 |Łotewski|   `lv`    |   Neuronowych|
 |Litewski|    `lt`    |   Neuronowych|
 |Malgaski|  `mg`    |   Statystyczn|
-|Malajski| `ms`        |Statystyczn|
+|malajski| `ms`        |Statystyczn|
 |Malajalam| `ml` | Neuronowych
 |Maltański|   `mt`    |   Statystyczn|
 |Maoryjski| `mi`  | Neuronowych|
@@ -92,7 +92,7 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 |Portugalski (Portugalia)| `pt-pt` | Neuronowych
 |Pendżabski|`pa`|Neuronowych
 |Queretaro Otomi|   `otq`   |   Statystyczn|
-|Rumuński|  `ro`    |   Neuronowych|
+|rumuński|  `ro`    |   Neuronowych|
 |Rosyjski|   `ru`    |   Neuronowych|
 |(Samoa)|    `sm`    |   Statystyczn|
 |Serbski (Cyrylica)|    `sr-Cyrl`|  Statystyczn|
@@ -104,12 +104,12 @@ Interfejs API tłumaczenia tekstu w usłudze Translator obsługuje tłumaczenie 
 |Tahitian|  `ty`    |Statystyczn|
 |Tamilski| `ta`    |   Neuronowych|
 |Telugu|    `te`    |   Neuronowych|
-|Tajlandzki|  `th`    |   Neuronowych|
+|Tajski|  `th`    |   Neuronowych|
 |Pa'anga|    `to`    |   Statystyczn|
 |Turecki|   `tr`        |Neuronowych|
 |Ukraiński| `uk`    |   Neuronowych|
-|Urdu|  `ur`    |   Statystyczn|
-|Wietnamski|    `vi`    |   Neuronowych|
+|urdu|  `ur`    |   Statystyczn|
+|wietnamski|    `vi`    |   Neuronowych|
 |Walijski| `cy`    |   Neuronowych|
 |Yucatec Maya|  `yua`   |   Statystyczn|
 
@@ -122,14 +122,14 @@ Metoda transliteracji obsługuje następujące języki. W polu "do/z" <--> "wska
 
 | Język    | Kod języka | Skrypt | Do/z | Skrypt|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| Arabski | `ar` | `Arab` arabski | <--> | `Latn` łaciński |
+| arabski | `ar` | `Arab` arabski | <--> | `Latn` łaciński |
 |Bengalski  | `bn` | `Beng` bengalski | <--> | `Latn` łaciński |
 | Chiński uproszczony | `zh-Hans` | Chiński uproszczony `Hans`| <--> | `Latn` łaciński |
 | Chiński uproszczony | `zh-Hans` | Chiński uproszczony `Hans`| <--> | Chiński tradycyjny `Hant`|
-| Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | `Latn` łaciński |
-| Chiński (tradycyjny) | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | Chiński uproszczony `Hans` |
+| Chiński tradycyjny | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | `Latn` łaciński |
+| Chiński tradycyjny | `zh-Hant` | Chiński tradycyjny `Hant`| <--> | Chiński uproszczony `Hans` |
 | Gudżarati | `gu`  | `Gujr` gudżarati | --> | `Latn` łaciński |
-| Hebrajski | `he` | `Hebr` hebrajski | <--> | `Latn` łaciński |
+| hebrajski | `he` | `Hebr` hebrajski | <--> | `Latn` łaciński |
 | Hindi | `hi` | Devanagari `Deva` | <--> | `Latn` łaciński |
 | Japoński | `ja` | `Jpan` japoński | <--> | `Latn` łaciński |
 | Kannada | `kn` | `Knda` kannada | --> | `Latn` łaciński |
@@ -141,7 +141,7 @@ Metoda transliteracji obsługuje następujące języki. W polu "do/z" <--> "wska
 | Serbski (łaciński) | `sr-Latn` | `Latn` łaciński | --> | `Cyrl` cyrylicy|
 | Tamilski | `ta` | `Taml` tamilski | --> | `Latn` łaciński |
 | Telugu | `te` | `Telu` telugu | --> | `Latn` łaciński |
-| Tajlandzki | `th` | `Thai` tajlandzki | <--> | `Latn` łaciński |
+| Tajski | `th` | `Thai` tajlandzki | --> | `Latn` łaciński |
 
 ## <a name="dictionary"></a>Słownik
 
@@ -150,7 +150,7 @@ Słownik obsługuje następujące języki w języku angielskim lub z niego przy 
 | Język    | Kod języka |
 |:----------- |:-------------:|
 | Afrikaans      | `af`          |
-| Arabski       | `ar`          |
+| arabski       | `ar`          |
 | Bengalski      | `bn`          |
 | Bośniacki (łaciński)      | `bs`          |
 | Bułgarski      | `bg`          |
@@ -159,19 +159,19 @@ Słownik obsługuje następujące języki w języku angielskim lub z niego przy 
 | Chorwacki      | `hr`          |
 | Czeski      | `cs`          |
 | Duński      | `da`          |
-| Holenderski      | `nl`          |
+| holenderski      | `nl`          |
 | Estoński      | `et`          |
 | Fiński      | `fi`          |
 | Francuski      | `fr`          |
 | Niemiecki      | `de`          |
 | Grecki      | `el`          |
 | Haitański      | `ht`          |
-| Hebrajski      | `he`          |
+| hebrajski      | `he`          |
 | Hindi      | `hi`          |
 | Hmong Daw      | `mww`          |
 | Węgierski      | `hu`          |
-| Islandzki    | `is`  |
-| Indonezyjski      | `id`          |
+| islandzki    | `is`  |
+| indonezyjski      | `id`          |
 | Włoski      | `it`          |
 | Japoński      | `ja`          |
 | Suahili      | `sw`          |
@@ -179,13 +179,13 @@ Słownik obsługuje następujące języki w języku angielskim lub z niego przy 
 | Koreański      | `ko`          |
 | Łotewski      | `lv`          |
 | Litewski      | `lt`          |
-| Malajski      | `ms`          |
+| malajski      | `ms`          |
 | Maltański      | `mt`          |
 | Norweski      | `nb`          |
 | Perski      | `fa`          |
 | Polski      | `pl`          |
 | Portugalski (Brazylia)     | `pt-br`          |
-| Rumuński      | `ro`          |
+| rumuński      | `ro`          |
 | Rosyjski      | `ru`          |
 | Serbski (łaciński)      | `sr-Latn`          |
 | Słowacki     | `sk`          |
@@ -193,11 +193,11 @@ Słownik obsługuje następujące języki w języku angielskim lub z niego przy 
 | Hiszpański      | `es`          |
 | Szwedzki      | `sv`          |
 | Tamilski      | `ta`          |
-| Tajlandzki      | `th`          |
+| Tajski      | `th`          |
 | Turecki      | `tr`          |
 | Ukraiński      | `uk`          |
-| Urdu      | `ur`          |
-| Wietnamski      | `vi`          |
+| urdu      | `ur`          |
+| wietnamski      | `vi`          |
 | Walijski      | `cy`          |
 
 ## <a name="detect"></a>Wykrywanie
@@ -217,7 +217,7 @@ Następujące języki są dostępne do dostosowania do języka angielskiego lub 
 
 | Język    | Kod języka |
 |:----------- |:-------------:|
-| Arabski       | `ar`          |
+| arabski       | `ar`          |
 | Bengalski      | `bn`          |
 | Bośniacki (łaciński)      | `bs`          |
 | Bułgarski      | `bg`          |
@@ -226,18 +226,18 @@ Następujące języki są dostępne do dostosowania do języka angielskiego lub 
 | Chorwacki      | `hr`          |
 | Czeski      | `cs`          |
 | Duński      | `da`          |
-| Holenderski      | `nl`          |
+| holenderski      | `nl`          |
 | Polski    | `en`     |
 | Estoński      | `et`          |
 | Fiński      | `fi`          |
 | Francuski      | `fr`          |
 | Niemiecki      | `de`          |
 | Grecki      | `el`          |
-| Hebrajski      | `he`          |
+| hebrajski      | `he`          |
 | Hindi      | `hi`          |
 | Węgierski      | `hu`          |
-| Islandzki | `is` |
-| Indonezyjski|   `id`    |
+| islandzki | `is` |
+| indonezyjski|   `id`    |
 | Irlandzki | `ga`  |
 | Włoski      | `it`          |
 | Japoński      | `ja`          |
@@ -251,7 +251,7 @@ Następujące języki są dostępne do dostosowania do języka angielskiego lub 
 | Perski      | `fa`          |
 | Polski      | `pl`          |
 | Portugalski (Brazylia) | `pt-br` |
-| Rumuński      | `ro`          |
+| rumuński      | `ro`          |
 | Rosyjski      | `ru`          |
 | (Samoa)|   `sm`    |
 | Serbski (łaciński)      | `sr-Latn`          |
@@ -259,10 +259,10 @@ Następujące języki są dostępne do dostosowania do języka angielskiego lub 
 | Słoweński      | `sl`          |
 | Hiszpański      | `es`          |
 | Szwedzki      | `sv`          |
-| Tajlandzki      | `th`          |
+| Tajski      | `th`          |
 | Turecki      | `tr`          |
 | Ukraiński      | `uk`          |
-| Wietnamski      | `vi`          |
+| wietnamski      | `vi`          |
 | Walijski | `cy` |
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Dostęp do listy w witrynie sieci Web usługi Microsoft Translator

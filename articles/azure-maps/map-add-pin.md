@@ -1,6 +1,6 @@
 ---
 title: Dodawanie warstwy symboli do mapy | Mapy Microsoft Azure
-description: W tym artykule dowiesz się, jak za pomocą warstwy symboli dostosowywać i dodawać symbole na mapie przy użyciu zestawu SDK sieci Web Microsoft Azure Maps.
+description: W tym artykule dowiesz się, jak za pomocą warstwy symboli dostosować symbol i dodać symbole na mapie przy użyciu zestawu Microsoft Azure Web SDK Maps.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8c39c7b57167d65dfa639d41665f5d5b38110183
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b8d131dcc798fb2fe1d4bb650cd5b0a68903381b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933140"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209702"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Dodawanie warstwy symboli do mapy
 
-Symbol połączony ze źródłem danych i używany do renderowania ikony i/lub tekstu w danym punkcie. Warstwy symboli są renderowane przy użyciu WebGL i są używane do renderowania dużych kolekcji punktów na mapie. W porównaniu do znacznika HTML, warstwa symboli renderuje dużą liczbę danych punktów na mapie, co zapewnia lepszą wydajność. Jednak warstwa symboli nie obsługuje tradycyjnych stylów CSS i HTML do ustawiania stylów.  
+Połącz symbol ze źródłem danych i użyj go do renderowania ikony lub tekstu w danym punkcie. 
+
+Warstwy symboli są renderowane przy użyciu WebGL. Użyj warstwy symboli, aby renderować Duże kolekcje punktów na mapie. W porównaniu do znacznika HTML, warstwa symboli renderuje dużą liczbę danych punktów na mapie, co zapewnia lepszą wydajność. Jednak warstwa symboli nie obsługuje tradycyjnych stylów CSS i HTML do ustawiania stylów.  
 
 > [!TIP]
 > Warstwy symboli domyślnie będą renderować współrzędne wszystkich geometrie w źródle danych. Aby ograniczyć warstwę, która umożliwia renderowanie tylko funkcji geometrii punktów, ustaw właściwość `filter` warstwy na `['==', ['geometry-type'], 'Point']` lub `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` Jeśli chcesz, możesz również uwzględnić funkcje systemu MultiPoint.
@@ -33,7 +35,9 @@ Menedżer Sprite obrazu Maps ładuje obrazy niestandardowe używane przez warstw
 
 ## <a name="add-a-symbol-layer"></a>Dodawanie warstwy symboli
 
-Aby można było dodać warstwę symboli do mapy, należy wykonać kilka kroków. Najpierw Utwórz źródło danych i Dodaj je do mapy. Warstwę symboli można następnie utworzyć i przesłać do źródła danych w celu pobrania danych ze źródła danych. Na koniec dane muszą zostać dodane do źródła danych, aby było możliwe renderowanie elementu. Poniższy kod przedstawia kod, który ma zostać dodany do mapy po załadowaniu. Kod renderuje pojedynczy punkt na mapie za pomocą warstwy symboli. 
+Aby można było dodać warstwę symboli do mapy, należy wykonać kilka kroków. Najpierw Utwórz źródło danych i Dodaj je do mapy. Utwórz warstwę symboli. Następnie Przekaż źródło danych do warstwy symboli, aby pobrać dane ze źródła danych. Na koniec Dodaj dane do źródła danych, aby było możliwe renderowanie. 
+
+Poniższy kod pokazuje, co należy dodać do mapy po jej załadowaniu. Ten przykład renderuje pojedynczy punkt na mapie za pomocą warstwy symboli. 
 
 ```javascript
 //Create a data source and add it to the map.

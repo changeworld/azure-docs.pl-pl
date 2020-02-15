@@ -5,19 +5,19 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.date: 02/14/2020
+ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
-ms.date: 10/19/2019
 ms.author: diberry
-ms.openlocfilehash: ba400beb13d0bd4b29eee0c60617ec7ad128dd77
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e879afdbd4c34e9d74405644de86421fb2cbab46
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503738"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279537"
 ---
-Przykład wyrażenia długości jest zgodny z określonym formatem. 
+Przykład wyrażenia długości jest zgodny z określonym formatem.
 
 Pole `text` zawiera tekst przykładowej wypowiedzi. Pole `intentName` musi odpowiadać nazwie istniejącej wypowiedzi w aplikacji LUIS. Pole `entityLabels` jest wymagane. Jeśli nie chcesz dodawać etykiet do żadnych jednostek, podaj pustą tablicę.
 

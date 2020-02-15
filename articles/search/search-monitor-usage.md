@@ -1,181 +1,131 @@
 ---
-title: Monitorowanie użycia zasobów i metryk zapytania
+title: Monitorowanie operacji i aktywności
 titleSuffix: Azure Cognitive Search
 description: Włącz rejestrowanie, Pobierz metryki działania zapytania, użycie zasobów i inne dane systemu z usługi Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 7ef868f156ac537cb066f293872f69135c4df25f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/15/2020
+ms.openlocfilehash: c4a787362089dabf9c4eda9681358e7a70d8e78a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77059656"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210549"
 ---
-# <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Monitorowanie użycia zasobów i działania zapytań w usłudze Azure Wyszukiwanie poznawcze
+# <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Monitoruj operacje i działania Wyszukiwanie poznawcze platformy Azure
 
-Na stronie Przegląd usługi Azure Wyszukiwanie poznawcze można wyświetlić dane systemowe dotyczące użycia zasobów, metryk zapytania i ilość dostępnego przydziału, aby utworzyć więcej indeksów, indeksatorów i źródeł danych. Możesz również użyć portalu, aby skonfigurować usługę log Analytics lub inny zasób używany do trwałego zbierania danych. 
+W tym artykule wprowadzono monitorowanie na poziomie usługi (zasobów) na poziomie obciążenia (zapytania i indeksowanie) i sugeruje strukturę monitorowania dostępu użytkowników.
 
-Konfigurowanie dzienników jest przydatne w przypadku samoobsługowej diagnostyki i zachowywania historii operacyjnej. Wewnętrznie dzienniki znajdują się w zapleczu przez krótki czas, co jest wystarczające do zbadania i analizy w przypadku utworzenia biletu pomocy technicznej. Jeśli chcesz kontrolować i uzyskiwać dostęp do informacji o dziennikach, należy skonfigurować jedno z rozwiązań opisanych w tym artykule.
+W całym spektrum będziesz używać kombinacji wbudowanych usług, takich jak Azure Monitor, a także interfejsów API usługi, które zwracają statystyki, liczniki i stan. Zrozumienie zakresu możliwości ułatwia skonfigurowanie lub utworzenie efektywnego systemu komunikacyjnego na potrzeby proaktywnej reakcji na występujące problemy.
 
-Ten artykuł zawiera informacje na temat opcji monitorowania, sposobu włączania rejestrowania i przechowywania dzienników oraz wyświetlania zawartości dziennika.
+## <a name="use-azure-monitor"></a>Korzystanie z usługi Azure Monitor
 
-## <a name="metrics-at-a-glance"></a>Metryki w skrócie
+Wiele usług, w tym Azure Wyszukiwanie poznawcze, wykorzystują [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/) do alertów, metryk i danych diagnostycznych rejestrowania. W przypadku usługi Azure Wyszukiwanie poznawcze wbudowana infrastruktura monitorowania jest używana głównie do monitorowania na poziomie zasobów (kondycji usługi) i [monitorowania zapytań](search-monitor-queries.md).
 
-Sekcje **użycia** i **monitorowania** wbudowane na stronie przeglądu raportują o zużyciu zasobów i metrykach wykonywania zapytań. Te informacje stają się dostępne zaraz po rozpoczęciu korzystania z usługi, bez konieczności konfigurowania. Ta strona jest odświeżana co kilka minut. Jeśli podejmujesz decyzje dotyczące warstwy, [która ma być używana na potrzeby obciążeń produkcyjnych](search-sku-tier.md), lub czy należy [dostosować liczbę aktywnych replik i partycji](search-capacity-planning.md), te metryki mogą pomóc w podejmowaniu tych decyzji, pokazując, jak szybko zużywane są zasoby i jak również Bieżąca konfiguracja obsługuje istniejące obciążenie.
+Poniższy zrzut ekranu ułatwia zlokalizowanie funkcji Azure Monitor w portalu.
 
-Karta **użycie** pokazuje dostępność zasobów względem bieżących [limitów](search-limits-quotas-capacity.md). Poniższa ilustracja dotyczy bezpłatnej usługi, która jest ograniczona do 3 obiektów każdego typu i 50 MB miejsca w magazynie. Usługa podstawowa lub standardowa ma wyższe limity i w przypadku zwiększenia liczby partycji Maksymalna ilość miejsca w magazynie jest proporcjonalna.
++ Karta **monitorowanie** znajdująca się na stronie głównej omówienia pokazuje kluczowe metryki w skrócie.
++ **Dziennik aktywności**, poniżej przeglądu, raporty dotyczące akcji na poziomie zasobów: kondycja usługi i powiadomienia o żądaniu klucza interfejsu API.
++ **Monitorowanie**, dalsze Wyświetlanie listy, umożliwia Konfigurowanie alertów, metryk i dzienników diagnostycznych. Utwórz je, gdy będą potrzebne. Po zebraniu i zapisaniu danych można wykonywać zapytania lub wizualizować informacje w celu uzyskania szczegółowych informacji.
 
-![Stan użycia względem limitów obowiązujących](./media/search-monitor-usage/usage-tab.png
- "Stan użycia względem limitów obowiązujących")
+![Azure Monitor integrację w usłudze wyszukiwania](./media/search-monitor-usage/azure-monitor-search.png
+ "Azure Monitor integrację w usłudze wyszukiwania")
 
-## <a name="queries-per-second-qps-and-other-metrics"></a>Zapytania na sekundę (zapytań) i inne metryki
+### <a name="precision-of-reported-numbers"></a>Precyzja zgłoszonych liczb
 
-Na karcie **monitorowanie** wyświetlane są średnie przenoszone wartości metryk, takich jak *zapytania wyszukiwania na sekundę* (zapytań), zagregowane na minutę. 
-*Opóźnienie wyszukiwania* to ilość czasu wymagana przez usługę wyszukiwania do przetwarzania zapytań wyszukiwania, zagregowana na minutę. *Procent zapytań wyszukiwania z ograniczeniami* (niepokazywany) jest wartością procentową zapytań wyszukiwania, które zostały ograniczone, również zagregowanych na minutę.
+Strony portalu są odświeżane co kilka minut. W związku z tym liczby raportowane w portalu są przybliżone i mają na celu zapewnienie ogólnego znaczenia, jak dobrze system obsługuje żądania. Rzeczywiste metryki, takie jak zapytania na sekundę (zapytań), mogą być większe lub mniejsze niż liczba wyświetlana na stronie.
 
-Te liczby są przybliżone i mają na celu zapewnienie ogólnego pomysłu, jak dobrze system obsługuje żądania. Rzeczywista wartość zapytań może być większa lub mniejsza od liczby raportowanej w portalu.
+## <a name="activity-logs-and-service-health"></a>Dzienniki aktywności i kondycja usługi
 
-![Działanie zapytań na sekundę](./media/search-monitor-usage/monitoring-tab.png "Działanie zapytań na sekundę")
+[**Dziennik aktywności**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) zbiera informacje z Azure Resource Manager i raportów o zmianach w kondycji usługi. Dziennik aktywności można monitorować pod kątem krytycznych, błędów i ostrzeżeń związanych z kondycją usługi.
 
-## <a name="activity-logs"></a>Dzienniki aktywności
-
-**Dziennik aktywności** zbiera informacje z Azure Resource Manager. Przykłady informacji znajdujących się w dzienniku aktywności obejmują tworzenie lub usuwanie usługi, aktualizowanie grupy zasobów, sprawdzanie dostępności nazwy lub Uzyskiwanie klucza dostępu do usługi w celu obsługi żądania. 
+W przypadku zadań w ramach usługi — takich jak zapytania, indeksowanie lub tworzenie obiektów, zobaczysz ogólne powiadomienia informacyjne, takie jak *Pobieranie klucza administratora* i *Uzyskiwanie kluczy zapytań* dla każdego żądania, ale nie konkretnej akcji. Aby uzyskać informacje dotyczące tego ziarna, należy skonfigurować rejestrowanie diagnostyczne.
 
 Możesz uzyskać dostęp do **dziennika aktywności** z okienka nawigacji po lewej stronie lub z powiadomień w górnym pasku poleceń okna lub na stronie **diagnozowanie i rozwiązywanie problemów** .
 
-W przypadku zadań w usłudze, takich jak tworzenie indeksu lub usuwanie źródła danych, zobaczysz ogólne powiadomienia, takie jak "Pobierz klucz administratora" dla każdego żądania, ale nie konkretną akcję. W przypadku tego poziomu informacji należy włączyć rozwiązanie do monitorowania dodatków.
+## <a name="monitor-storage"></a>Monitorowanie magazynu
 
-## <a name="add-on-monitoring-solutions"></a>Rozwiązania do monitorowania dodatków
+Strony z kartami wbudowane na stronie Przegląd raportują na temat użycia zasobów. Te informacje stają się dostępne zaraz po rozpoczęciu korzystania z usługi, bez konieczności konfigurowania, a strona jest odświeżana co kilka minut. 
 
-Usługa Azure Wyszukiwanie poznawcze nie przechowuje żadnych danych poza obiektami, którymi zarządza, co oznacza, że dane dzienników mają być przechowywane zewnętrznie. Aby zachować dane dziennika, można skonfigurować dowolne z poniższych zasobów. 
+Jeśli podejmujesz decyzje dotyczące warstwy, [która ma być używana na potrzeby obciążeń produkcyjnych](search-sku-tier.md), lub czy należy [dostosować liczbę aktywnych replik i partycji](search-capacity-planning.md), te metryki mogą pomóc w podejmowaniu tych decyzji, pokazując, jak szybko zużywane są zasoby i jak również Bieżąca konfiguracja obsługuje istniejące obciążenie.
 
-W poniższej tabeli porównano opcje przechowywania dzienników i dodawania szczegółowego monitorowania operacji usługi i wykonywania zapytań do obciążeń za pomocą Application Insights.
+Alerty powiązane z magazynem nie są obecnie dostępne; Użycie magazynu nie jest agregowane lub nie zostało zarejestrowane w **AzureMetrics**. Należy utworzyć rozwiązanie niestandardowe, aby uzyskać powiadomienia związane z zasobami.
 
-| Zasób | Używana do |
-|----------|----------|
-| [Dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Zarejestrowane zdarzenia i metryki zapytań na podstawie schematów poniżej. Zdarzenia są rejestrowane w obszarze roboczym Log Analytics. Można uruchamiać zapytania w obszarze roboczym, aby zwracać szczegółowe informacje z dziennika. Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z dziennikami Azure monitor](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
-| [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Zarejestrowane zdarzenia i metryki zapytań na podstawie schematów poniżej. Zdarzenia są rejestrowane w kontenerze obiektów blob i przechowywane w plikach JSON. Aby wyświetlić zawartość plików, użyj edytora JSON.|
-| [Centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/) | Rejestrowane zdarzenia i metryki zapytań na podstawie schematów udokumentowanych w tym artykule. Wybierz tę opcję jako alternatywną usługę zbierania danych dla bardzo dużych dzienników. |
+W portalu karta **użycie** pokazuje dostępność zasobów względem bieżących [limitów](search-limits-quotas-capacity.md) narzuconych przez warstwę usług. 
 
-Zarówno dzienniki Azure Monitor, jak i magazyn obiektów BLOB są dostępne jako bezpłatna usługa, dzięki czemu można wypróbować ją bezpłatnie w okresie istnienia subskrypcji platformy Azure. Application Insights jest bezpłatny, aby zarejestrować się i używać tak długo, jak rozmiar danych aplikacji ma określone limity (szczegółowe informacje znajdują się na [stronie cennika](https://azure.microsoft.com/pricing/details/monitor/) ).
+Poniższa ilustracja dotyczy bezpłatnej usługi, która jest ograniczona do 3 obiektów każdego typu i 50 MB miejsca w magazynie. Usługa podstawowa lub standardowa ma wyższe limity i w przypadku zwiększenia liczby partycji Maksymalna ilość miejsca w magazynie jest proporcjonalna.
 
-Następna sekcja przeprowadzi Cię przez kroki umożliwiające włączenie i użycie usługi Azure Blob Storage w celu zbierania i uzyskiwania dostępu do danych dziennika utworzonych przez operacje Wyszukiwanie poznawcze platformy Azure.
+![Stan użycia względem limitów warstwy](./media/search-monitor-usage/usage-tab.png
+ "Stan użycia względem limitów warstwy")
 
-## <a name="enable-logging"></a>Włączanie rejestrowania
+## <a name="monitor-workloads"></a>Monitoruj obciążenia
 
-Rejestrowanie dla obciążeń indeksowania i zapytań jest domyślnie wyłączone i zależy od rozwiązań dodatków zarówno dla infrastruktury rejestrowania, jak i długoterminowego magazynu zewnętrznego. Same dane utrwalone na platformie Azure Wyszukiwanie poznawcze są tworzonymi i zarządzanymi obiektami, dlatego dzienniki muszą być przechowywane w innym miejscu.
+Zarejestrowane zdarzenia obejmują odnoszące się do indeksowania i zapytań. Tabela **Diagnostyka Azure** w log Analytics zbiera dane operacyjne powiązane z zapytaniami i indeksowanie.
 
-W tej sekcji dowiesz się, jak używać magazynu obiektów BLOB do przechowywania zarejestrowanych zdarzeń i danych metryk.
+Większość zarejestrowanych danych jest przeznaczonych dla operacji tylko do odczytu. W przypadku innych operacji Create-Update-Delete, które nie są przechwytywane w dzienniku, można wysłać zapytanie do usługi wyszukiwania w celu uzyskania informacji o systemie.
 
-1. [Utwórz konto magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , jeśli jeszcze go nie masz. Można ją umieścić w tej samej grupie zasobów co usługa Azure Wyszukiwanie poznawcze, aby uprościć czyszczenie później, jeśli chcesz usunąć wszystkie zasoby używane w tym ćwiczeniu.
+| OperationName | Opis |
+|---------------|-------------|
+| Servicestatystyka | Ta operacja to rutynowe wywołanie [pobierania statystyk usługi](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics), wywoływane bezpośrednio lub niejawnie, aby wypełnić stronę omówienia portalu po jej załadowaniu lub odświeżeniu. |
+| Zapytanie. Search |  Zażądaj zapytań względem indeksu, aby uzyskać informacje na temat zarejestrowanych zapytań, zobacz temat [monitorowanie zapytań](search-monitor-queries.md) .|
+| Indeksowanie. index  | Ta operacja jest wywołaniem do [dodawania, aktualizowania lub usuwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). |
+| zwiększa. Prototyp | Jest to indeks utworzony przez Kreatora importu danych. |
+| Indeksatory. Utwórz | Utwórz indeksator jawnie lub niejawnie za pomocą Kreatora importu danych. |
+| Indeksatory. Get | Zwraca nazwę indeksatora za każdym razem, gdy indeksator jest uruchomiony. |
+| Indeksatory. stan | Zwraca stan indeksatora za każdym razem, gdy indeksator jest uruchomiony. |
+| Źródła danych. Pobierz | Zwraca nazwę źródła danych przy każdym uruchomieniu indeksatora.|
+| Indeksy. Get | Zwraca nazwę indeksu za każdym razem, gdy indeksator jest uruchamiany. |
 
-   Konto magazynu musi znajdować się w tym samym regionie co usługa Azure Wyszukiwanie poznawcze.
+### <a name="kusto-queries-about-workloads"></a>Kusto zapytania dotyczące obciążeń
 
-2. Otwórz stronę omówienia usługi wyszukiwania. W okienku nawigacji po lewej stronie przewiń w dół do obszarze **monitorowanie** i kliknij pozycję **Ustawienia diagnostyczne**.
+Jeśli włączono rejestrowanie, możesz wysyłać zapytania do **AzureDiagnostics** , aby uzyskać listę operacji uruchomionych w usłudze i kiedy. Możesz również skorelować działanie, aby zbadać zmiany wydajności.
 
-   ![Ustawienia diagnostyczne](./media/search-monitor-usage/diagnostic-settings.png "Ustawienia diagnostyczne")
+#### <a name="example-list-operations"></a>Przykład: operacje na liście 
 
-3. Wybierz pozycję **Dodaj ustawienie diagnostyczne**
-
-4. Wybierz dane, którą chcesz wyeksportować: dzienniki, metryki lub obu. Możesz skopiować go do konta magazynu, wysłać do centrum zdarzeń lub wyeksportować do Azure Monitor dzienników.
-
-   W przypadku archiwizowania do usługi BLOB Storage musi istnieć tylko konto magazynu. Kontenery i obiekty blob zostaną utworzone w miarę konieczności podczas eksportowania danych dziennika.
-
-   ![Konfigurowanie archiwum magazynu obiektów BLOB](./media/search-monitor-usage/configure-blob-storage-archive.png "Konfigurowanie archiwum magazynu obiektów BLOB")
-
-5. Zapisz profil
-
-6. Rejestrowanie testowe przez tworzenie lub usuwanie obiektów (tworzy zdarzenia dziennika) i przesyłając zapytania (generuje metryki). 
-
-Rejestrowanie jest włączone po zapisaniu profilu. Kontenery są tworzone tylko w przypadku działania do rejestrowania lub mierzenia. Po skopiowaniu danych na konto magazynu dane są formatowane jako kod JSON i umieszczane w dwóch kontenerach:
-
-* insights — dzienniki operationlogs: dzienników ruchu wyszukiwania
-* insights — metryki pt1m: dla metryki
-
-**Trwa godzinę, zanim kontenery pojawią się w magazynie obiektów BLOB. Dla każdego kontenera istnieje jeden obiekt BLOB o godzinie.**
-
-Aby wyświetlić pliki, można użyć [Visual Studio Code](#download-and-open-in-visual-studio-code) lub innego edytora JSON. 
-
-### <a name="example-path"></a>Ścieżka Przykładowa
+Zwróć listę operacji i liczbę każdej z nich.
 
 ```
-resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2018/m=12/d=25/h=01/m=00/name=PT1H.json
+AzureDiagnostics
+| summarize count() by OperationName
 ```
 
-## <a name="log-schema"></a>Schemat dziennika
-Obiekty blob zawierające dzienniki ruchu usługi wyszukiwania są uporządkowane zgodnie z opisem w tej sekcji. Każdy obiekt BLOB ma jeden element główny o nazwie **Records** zawierający tablicę obiektów dziennika. Każdy obiekt BLOB zawiera rekordy dla wszystkich operacji, które miały miejsce w danej godzinie.
+#### <a name="example-correlate-operations"></a>Przykład: skorelowanie operacji
 
-| Name (Nazwa) | Typ | Przykład | Uwagi |
-| --- | --- | --- | --- |
-| time |datetime |"2018-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
-| resourceId |ciąg |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>DOSTAWCÓW/DOMYŚLNIE/RESOURCEGROUPS /<br/> FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Twoje ResourceId |
-| operationName |ciąg |"Query.Search" |Nazwa operacji |
-| operationVersion |ciąg |"2019-05-06" |Używana wersja interfejsu api |
-| category |ciąg |"OperationLogs" |— stała |
-| resultType |ciąg |Komunikat "success" |Możliwe wartości: powodzenie lub niepowodzenie |
-| resultSignature |int |200 |Kod wyniku protokołu HTTP |
-| durationMS |int |50 |Czas trwania działania (w milisekundach) |
-| właściwości |obiekt |Zobacz poniższą tabelę |Obiekt zawierający dane specyficzne dla operacji |
+Skorelować żądanie zapytania z operacjami indeksowania i Renderuj punkty danych na wykresie czasu, aby zobaczyć operacje, które się pokrywają.
 
-**Schemat właściwości**
+```
+AzureDiagnostics
+| summarize OperationName, Count=count()
+| where OperationName in ('Query.Search', 'Indexing.Index')
+| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
+| render timechart
+```
 
-| Name (Nazwa) | Typ | Przykład | Uwagi |
-| --- | --- | --- | --- |
-| Opis |ciąg |"Pobierz /indexes('content')/docs" |Operacja punktu końcowego |
-| Zapytanie |ciąg |"? Search = AzureSearch & $count = true & API-Version = 2019-05-06" |Parametry zapytania |
-| Dokumenty |int |42 |Liczba przetworzonych dokumentów |
-| indexName |ciąg |"testindex" |Nazwa indeksu skojarzone z operacją |
+### <a name="use-search-apis"></a>Korzystanie z interfejsów API wyszukiwania
 
-## <a name="metrics-schema"></a>Schemat metryki
-
-Metryki są przechwytywane dla żądań zapytań.
-
-| Name (Nazwa) | Typ | Przykład | Uwagi |
-| --- | --- | --- | --- |
-| resourceId |ciąg |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>DOSTAWCÓW/DOMYŚLNIE/RESOURCEGROUPS /<br/>FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Identyfikator zasobu |
-| metricName |ciąg |"Opóźnienie" |Nazwa metryki |
-| time |datetime |"2018-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
-| średnia |int |64 |Średnia wartość próbek pierwotnych w odstępie czasu metryki |
-| minimalnie |int |37 |Minimalna wartość nieprzetworzoną próbek w odstępie czasu metryki |
-| maksymalnie |int |78 |Wartość maksymalna pierwotne próbek w odstępie czasu metryki |
-| łącznie |int |258 |Łączna wartość pierwotne próbek w odstępie czasu metryki |
-| {1&gt;count&lt;1} |int |4 |Liczba próbek raw, używany do generowania metrykę |
-| ziarna czasu |ciąg |"PT1M" |Ziarno czasu metryką przy podejmowaniu ISO 8601 |
-
-Wszystkie metryki są raportowane w odstępach jednej minuty. Każdy pomiar przedstawia wartości minimalna, maksymalna i średnia na minutę.
-
-Metryki SearchQueriesPerSecond minimalna jest najniższa wartość dla zapytania wyszukiwania na sekundę, który został zarejestrowany w ciągu tej minuty. To samo dotyczy maksymalnej wartości. Średnia, to agregacji przez całą minutę.
-Pomyśl o tym scenariuszu podczas jednej minuty: sekundy wysoki załadować oznacza to maksymalną SearchQueriesPerSecond, następuje 58 sekund średnie obciążenie i na koniec co sekundę przy użyciu tylko jednego zapytania, który jest minimalnym warunkiem.
-
-Aby uzyskać ThrottledSearchQueriesPercentage, minimalna, maksymalna, średnia i total, wszystkie mają taką samą wartość: procent zapytań wyszukiwania, które zostały ograniczone z łączna liczba zapytań wyszukiwania w ciągu jednej minuty.
-
-## <a name="download-and-open-in-visual-studio-code"></a>Pobierz i Otwórz w Visual Studio Code
-
-Aby wyświetlić plik dziennika, można użyć dowolnego edytora JSON. Jeśli go nie masz, zalecamy [Visual Studio Code](https://code.visualstudio.com/download).
-
-1. W Azure Portal Otwórz konto magazynu. 
-
-2. W okienku nawigacji po lewej stronie kliknij pozycję **obiekty blob**. Powinny być widoczne informacje **Insights-Logs-operationlogs** i **Insights-Metrics-pt1m**. Te kontenery są tworzone przez usługę Azure Wyszukiwanie poznawcze podczas eksportowania danych dziennika do magazynu obiektów BLOB.
-
-3. Kliknij kolejno pozycje hierarchia folderów, aby uzyskać dostęp do pliku. JSON.  Użyj menu kontekstowego, aby pobrać plik.
-
-Po pobraniu pliku Otwórz go w edytorze JSON, aby wyświetlić jego zawartość.
-
-## <a name="use-system-apis"></a>Korzystanie z interfejsów API systemu
 Zarówno interfejs API REST platformy Azure Wyszukiwanie poznawcze, jak i zestaw .NET SDK zapewniają programistyczny dostęp do metryk usług, informacji o indeksie i indeksatorze oraz liczby dokumentów.
 
-* [Pobierz statystyki usług](/rest/api/searchservice/get-service-statistics)
-* [Pobierz statystyki indeksu](/rest/api/searchservice/get-index-statistics)
-* [Liczenie dokumentów](/rest/api/searchservice/count-documents)
-* [Pobierz stan indeksatora](/rest/api/searchservice/get-indexer-status)
++ [Pobierz statystyki usługi](/rest/api/searchservice/get-service-statistics)
++ [Pobierz statystyki indeksu](/rest/api/searchservice/get-index-statistics)
++ [Pobierz liczby dokumentów](/rest/api/searchservice/count-documents)
++ [Pobierz stan indeksatora](/rest/api/searchservice/get-indexer-status)
 
-Aby włączyć korzystanie z programu PowerShell lub interfejsu wiersza polecenia platformy Azure, zapoznaj się z dokumentacją [tutaj](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
+## <a name="monitor-user-access"></a>Monitorowanie dostępu użytkowników
+
+Ponieważ indeksy wyszukiwania są składnikiem większej aplikacji klienckiej, nie ma żadnej wbudowanej metodologii dla poszczególnych użytkowników do kontrolowania dostępu do indeksu. Założono, że żądania pochodzą z aplikacji klienckiej dla żądań administratora lub zapytania. Operacje odczytu i zapisu administratora obejmują tworzenie, aktualizowanie i usuwanie obiektów w całej usłudze. Operacje tylko do odczytu są zapytania względem kolekcji dokumentów, w zakresie do pojedynczego indeksu. 
+
+W związku z tym informacje widoczne w dziennikach są odwołaniami do wywołań przy użyciu kluczy administratora lub kluczy zapytań. Odpowiedni klucz jest uwzględniany w żądaniach pochodzących z kodu klienta. Usługa nie jest wyposażona w obsługę tokenów tożsamości ani personifikacji.
+
+Jeśli istnieją wymagania biznesowe dotyczące autoryzacji dla poszczególnych użytkowników, zalecenie jest integrowane z Azure Active Directory. Możesz użyć $filter i tożsamości użytkowników, aby [przyciąć wyniki wyszukiwania](search-security-trimming-for-azure-search-with-aad.md) dokumentów, których użytkownik nie powinien zobaczyć. 
+
+Nie ma możliwości rejestrowania tych informacji niezależnie od ciągu zapytania zawierającego parametr $filter. Aby uzyskać szczegółowe informacje o raportowaniu ciągów zapytań, zobacz temat [monitorowanie zapytań](search-monitor-queries.md) .
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Zarządzaj usługą wyszukiwania w Microsoft Azure](search-manage.md) , aby uzyskać więcej informacji na temat administrowania usługą i [wydajności i optymalizacji](search-performance-optimization.md) pod kątem wskazówek dotyczących dostrajania.
+Fluency z Azure Monitor jest niezbędne do nadzoru dowolnej usługi platformy Azure, w tym takich zasobów jak Azure Wyszukiwanie poznawcze. Jeśli nie znasz Azure Monitor, poświęć trochę czasu na zapoznanie się z artykułami dotyczącymi zasobów. Oprócz samouczków, w tym miejscu warto zacząć od artykułu.
+
+> [!div class="nextstepaction"]
+> [Monitorowanie zasobów platformy Azure za pomocą Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)

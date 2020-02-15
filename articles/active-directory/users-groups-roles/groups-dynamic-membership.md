@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841033"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206263"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w Azure Active Directory
 
@@ -86,14 +86,14 @@ Poniżej przedstawiono właściwości użytkownika, których można użyć do ut
 
 ### <a name="properties-of-type-boolean"></a>Właściwości typu Boolean
 
-| Właściwości | Dozwolone wartości | Użycie |
+| Właściwości | Dozwolone wartości | Sposób użycia |
 | --- | --- | --- |
 | accountEnabled |PRAWDA FAŁSZ |User. accountEnabled-EQ true |
 | dirSyncEnabled |PRAWDA FAŁSZ |User. dirSyncEnabled-EQ true |
 
 ### <a name="properties-of-type-string"></a>Właściwości typu String
 
-| Właściwości | Dozwolone wartości | Użycie |
+| Właściwości | Dozwolone wartości | Sposób użycia |
 | --- | --- | --- |
 | city |Dowolna wartość ciągu lub wartość *null* |(User. City-EQ "wartość") |
 | trzeciego |Dowolna wartość ciągu lub wartość *null* |(User. Country-EQ "wartość") |
@@ -104,7 +104,7 @@ Poniżej przedstawiono właściwości użytkownika, których można użyć do ut
 | facsimileTelephoneNumber |Dowolna wartość ciągu lub wartość *null* |(User. facsimileTelephoneNumber-EQ "wartość") |
 | givenName |Dowolna wartość ciągu lub wartość *null* |(User. podaną wartośćname-EQ ") |
 | Stanowisko |Dowolna wartość ciągu lub wartość *null* |(User. stanowiska-EQ "wartość") |
-| mail (poczta) |Dowolna wartość ciągu lub wartość *null* (adres SMTP użytkownika) |(User. mail-EQ "wartość") |
+| poczta |Dowolna wartość ciągu lub wartość *null* (adres SMTP użytkownika) |(User. mail-EQ "wartość") |
 | mailNickName |Dowolna wartość ciągu (alias poczty użytkownika) |(User. mailNickName-EQ "wartość") |
 | Telefon komórkowy |Dowolna wartość ciągu lub wartość *null* |(User. Mobile-EQ "wartość") |
 | Identyfikator obiektu |Identyfikator GUID obiektu użytkownika |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
@@ -120,11 +120,11 @@ Poniżej przedstawiono właściwości użytkownika, których można użyć do ut
 | telephoneNumber |Dowolna wartość ciągu lub wartość *null* |(User. teletelefon-EQ "wartość") |
 | usageLocation |Dwubajtowy kod kraju |(User. usageLocation-EQ "US") |
 | userPrincipalName |dowolna wartość ciągu |(User. userPrincipalName-EQ "alias@domain") |
-| userType |Gość elementu członkowskiego *ma wartość null* |(User. UserType-EQ "member") |
+| UserType |Gość elementu członkowskiego *ma wartość null* |(User. UserType-EQ "member") |
 
 ### <a name="properties-of-type-string-collection"></a>Właściwości kolekcji ciągów typu
 
-| Właściwości | Dozwolone wartości | Użycie |
+| Właściwości | Dozwolone wartości | Sposób użycia |
 | --- | --- | --- |
 | otherMails |dowolna wartość ciągu |(User. otherMails-zawiera "alias@domain") |
 | proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses-zawiera "SMTP: alias@domain") |
@@ -178,7 +178,7 @@ Wartości używane w wyrażeniu mogą składać się z kilku typów, w tym:
 
 * Ciągi
 * Wartość logiczna — prawda, FAŁSZ
-* Liczby
+* Numery
 * Tablice — tablica liczbowa, tablica ciągów
 
 Podczas określania wartości w wyrażeniu ważne jest używanie poprawnej składni w celu uniknięcia błędów. Niektóre wskazówki dotyczące składni:
@@ -249,7 +249,7 @@ Reguła członkostwa może składać się z złożonych wyrażeń, w których w�
 
 Właściwości wielowartościowe to kolekcje obiektów tego samego typu. Mogą służyć do tworzenia reguł członkostwa przy użyciu-any i-All operatorów logicznych.
 
-| Właściwości | Wartości | Użycie |
+| Właściwości | Wartości | Sposób użycia |
 | --- | --- | --- |
 | assignedPlans | Każdy obiekt w kolekcji uwidacznia następujące właściwości ciągu: capabilityStatus, Service, servicePlanId |User. assignedPlans-any (assignedPlan. servicePlanId-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-and assignedPlan. capabilityStatus-EQ "Enabled") |
 | proxyAddresses| SMTP: alias@domain SMTP: alias@domain | (User. proxyAddresses-any (\_-zawiera "contoso")) |
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Właściwości rozszerzenia i niestandardowe właściwości rozszerzenia
 
-Atrybuty rozszerzenia i niestandardowe właściwości rozszerzenia są obsługiwane jako właściwości ciągu w regułach dynamicznego członkostwa. Atrybuty rozszerzenia są synchronizowane z lokalnego serwera okien usługi AD i przyjmują format "ExtensionAttributeX", gdzie X jest równe 1-15. Oto przykład reguły, która używa atrybutu rozszerzenia jako właściwości:
+Atrybuty rozszerzenia i niestandardowe właściwości rozszerzenia są obsługiwane jako właściwości ciągu w regułach dynamicznego członkostwa. [Atrybuty rozszerzenia](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) są synchronizowane z lokalnego serwera okien usługi AD i przyjmują format "ExtensionAttributeX", gdzie X jest równe 1-15. Oto przykład reguły, która używa atrybutu rozszerzenia jako właściwości:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Niestandardowe właściwości rozszerzenia są synchronizowane z lokalnej usługi AD systemu Windows Server lub z połączonej aplikacji SaaS i mają format `user.extension_[GUID]_[Attribute]`, gdzie:
+[Niestandardowe właściwości rozszerzenia](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) są synchronizowane z lokalnej usługi AD systemu Windows Server lub z połączonej aplikacji SaaS i mają format `user.extension_[GUID]_[Attribute]`, gdzie:
 
 * [GUID] jest unikatowym identyfikatorem w usłudze Azure AD dla aplikacji, która utworzyła właściwość w usłudze Azure AD
 * [Attribute] jest nazwą właściwości, która została utworzona

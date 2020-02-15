@@ -1,19 +1,19 @@
 ---
 title: Zarządzanie uwierzytelnianiem | Mapy Microsoft Azure
 description: Użyj Azure Portal, aby zarządzać uwierzytelnianiem w usłudze Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 30eb637e9117818758ed4ab0e3adef9db29cc698
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: ef88f9794fcba8c702ee793044d5482912ec3d89
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057315"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210008"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Zarządzanie uwierzytelnianiem w Azure Maps
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 51e3bddef75bcf41b8c7a4d9693b622429130217
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 4750673eb60529d812e4df71de9203d4d59a0cc9
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930471"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212270"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Samouczek: wdrażanie sprzętowych modułów zabezpieczeń w istniejącej sieci wirtualnej przy użyciu interfejsu wiersza polecenia
 
@@ -232,20 +232,13 @@ Do tego momentu przydzielono wszystkie zasoby na potrzeby wdrożenia o wysokiej 
 
 ## <a name="delete-or-clean-up-resources"></a>Usuwanie lub czyszczenie zasobów
 
-Jeśli zakończono pracę z urządzeniem HSM, to można je usunąć jako zasób i zwrócić do dostępnej puli. Poważnym problemem w takim przypadku są jakiekolwiek poufne dane klienta znajdujące się na urządzeniu. Aby usunąć poufne dane klienta, należy zresetować urządzenie do ustawień fabrycznych za pomocą klienta firmy Gemalto. Zapoznaj się z przewodnikiem administratora firmy Gemalto dotyczącym urządzenia SafeNet Network Luna 7 i rozważ wykonanie poniższych poleceń w podanej kolejności.
-
-1. `hsm factoryReset -f`
-2. `sysconf config factoryReset -f -service all`
-3. `my file clear -f`
-4. `my public-key clear -f`
-5. `syslog rotate`
-
+Jeśli zakończono pracę z urządzeniem HSM, to można je usunąć jako zasób i zwrócić do dostępnej puli. Poważnym problemem w takim przypadku są jakiekolwiek poufne dane klienta znajdujące się na urządzeniu. Najlepszym sposobem na "zeroize" jest to, że hasło administratora modułu HSM jest niewłaściwe 3 razy (Uwaga: nie jest to administrator urządzenia — jest to rzeczywisty administrator HSM). Ze względów bezpieczeństwa w celu ochrony materiału kluczowego urządzenie nie może zostać usunięte jako zasób platformy Azure, dopóki nie będzie w stanie wyzerować.
 
 > [!NOTE]
 > Jeśli masz problemy z jakimikolwiek czynnościami konfiguracyjnymi dotyczącymi urządzeń firmy Gemalto, skontaktuj się [z pomocą techniczną firmy Gemalto](https://safenet.gemalto.com/technical-support/).
 
 
-Jeśli zakończono pracę z zasobami w tej grupie zasobów, możesz usunąć je wszystkie za pomocą następującego polecenia:
+Jeśli wszystkie zasoby w tej grupie zasobów zostały zakończone, można je usunąć za pomocą następującego polecenia:
 
 ```azurecli
 az group deployment delete \

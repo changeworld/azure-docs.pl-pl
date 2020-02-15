@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 28c971993721744245a5d3d57f1f5b68df58b492
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1d203fd0c6777eee96311f45f4d5dfb8728ff431
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841186"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210605"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Szyfrowanie po stronie serwera dla usługi Azure Managed disks
 
@@ -38,7 +38,7 @@ Możesz zarządzać szyfrowaniem na poziomie każdego dysku zarządzanego przy u
 
 Na poniższym diagramie pokazano, w jaki sposób dyski zarządzane używają Azure Active Directory i Azure Key Vault do wykonywania żądań przy użyciu klucza zarządzanego przez klienta:
 
-![Przepływy pracy kluczy zarządzanych przez klienta](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![Przepływ pracy dotyczący dysków zarządzanych i kluczy zarządzanych przez klienta. Administrator tworzy Azure Key Vault, tworzy zestaw szyfrowania dysków i konfiguruje zestaw szyfrowania dysków. Zestaw jest skojarzony z maszyną wirtualną, co pozwala dyskowi używać usługi Azure AD do uwierzytelniania](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
 Poniższa lista zawiera bardziej szczegółowe informacje o diagramie:
@@ -61,7 +61,7 @@ Obecnie obsługiwane są tylko następujące regiony:
 - Dostępna jako oferta w wersji załącznej w regionach Wschodnie stany USA, zachodnie stany USA 2 i Południowo-środkowe stany USA.
 - Dostępna jako publiczna wersja zapoznawcza w regionach zachodnie stany USA, Wschodnie stany USA 2, Kanada Środkowa i Europa Północna.
 
-### <a name="restrictions"></a>Ograniczenia
+### <a name="restrictions"></a>{1&gt;Ograniczenia&lt;1}
 
 Na razie klucze zarządzane przez klienta mają następujące ograniczenia:
 
@@ -73,7 +73,7 @@ Na razie klucze zarządzane przez klienta mają następujące ograniczenia:
 - Dyski, migawki i obrazy zaszyfrowane przy użyciu kluczy zarządzanych przez klienta nie mogą zostać przeniesione do innej subskrypcji.
 - Jeśli używasz Azure Portal do utworzenia zestawu szyfrowania dysku, nie możesz używać migawek teraz.
 
-### <a name="cli"></a>Interfejs CLI
+### <a name="cli"></a>Interfejs wiersza polecenia
 #### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>Konfigurowanie Azure Key Vault i DiskEncryptionSet
 
 1. Upewnij się, że zainstalowano najnowszy [interfejs wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zalogowano się na koncie platformy Azure za pomocą polecenia [AZ login](/cli/azure/reference-index).

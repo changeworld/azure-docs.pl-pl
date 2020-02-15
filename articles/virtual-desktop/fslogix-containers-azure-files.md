@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7003e5b8574d2caa05bfe66e500b93db0c1cdcfa
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d45fa08383d9f61776a739093d78fc033ad54a6b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891636"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212396"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontenery profili FSLogix i pliki platformy Azure
 
@@ -46,7 +46,7 @@ Istniejące i starsze rozwiązania firmy Microsoft dla profilów użytkowników 
 
 W poniższej tabeli przedstawiono zalety i ograniczenia dotyczące wcześniejszych technologii profilu użytkownika.
 
-| Technologia | Ustawienia nowoczesne | Ustawienia Win32 | Ustawienia systemu operacyjnego | Dane użytkowników | Obsługiwane w jednostce SKU serwera | Magazyn zaplecza na platformie Azure | Magazyn zaplecza lokalnego | Obsługa wersji | Kolejny czas logowania |Uwagi|
+| Technologia | Ustawienia nowoczesne | Ustawienia Win32 | Ustawienia systemu operacyjnego | Dane użytkownika | Obsługiwane w jednostce SKU serwera | Magazyn zaplecza na platformie Azure | Magazyn zaplecza lokalnego | Obsługa wersji | Kolejny czas logowania |Uwagi|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
 | **Dyski profilu użytkownika (UPD)** | Tak | Tak | Tak | Tak | Tak | Nie | Tak | Win 7 + | Tak | |
 | **Profil użytkownika mobilnego (RUP), tryb konserwacji** | Nie | Tak | Tak | Tak | Tak| Nie | Tak | Win 7 + | Nie | |
@@ -56,7 +56,7 @@ W poniższej tabeli przedstawiono zalety i ograniczenia dotyczące wcześniejszy
 
 #### <a name="performance"></a>Wydajność
 
-UPD wymaga [bezpośrednie miejsca do magazynowania (S2D)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) , aby rozwiązać wymagania dotyczące wydajności. UPD używa protokołu SMB (Server Message Block). Kopiuje profil do maszyny wirtualnej, w której użytkownik jest rejestrowany. UPD z funkcją S2D to rozwiązanie, które zalecamy dla pulpitu wirtualnego systemu Windows.  
+UPD wymaga [bezpośrednie miejsca do magazynowania (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) , aby rozwiązać wymagania dotyczące wydajności. UPD używa protokołu SMB (Server Message Block). Kopiuje profil do maszyny wirtualnej, w której użytkownik jest rejestrowany. UPD z funkcją S2D to rozwiązanie, które zalecamy dla pulpitu wirtualnego systemu Windows.  
 
 #### <a name="cost"></a>Koszty
 
@@ -70,15 +70,15 @@ Klastry funkcji S2D wymagają systemu operacyjnego, który jest instalowany, akt
 
 19 listopada 2018 [firma Microsoft pozyskali FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix rozwiązuje wiele wyzwań dotyczących kontenera profilu. Klucz między nimi:
 
-- **Wydajność:** [Kontenery profilu FSLogix](https://fslogix.com/products/profile-containers) są wysoce wydajne i rozwiązują problemy z wydajnością, które mają historycznie zablokowany tryb wymiany programu Exchange.
-- **Usługa OneDrive:** Bez kontenerów profilów FSLogix usługa OneDrive dla firm nie jest obsługiwana w środowiskach nietrwałych hosta usług pulpitu zdalnego lub infrastruktury VDI. [Najlepsze rozwiązania w zakresie usług OneDrive dla firm i FSLogix](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices) opisują sposób ich działania. Aby uzyskać więcej informacji, zobacz [Korzystanie z klienta synchronizacji na pulpitach wirtualnych](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi).
+- **Wydajność:** [Kontenery profilu FSLogix](/fslogix/configure-profile-container-tutorial/) są wysoce wydajne i rozwiązują problemy z wydajnością, które mają historycznie zablokowany tryb wymiany programu Exchange.
+- **Usługa OneDrive:** Bez kontenerów profilów FSLogix usługa OneDrive dla firm nie jest obsługiwana w środowiskach nietrwałych hosta usług pulpitu zdalnego lub infrastruktury VDI. [Najlepsze rozwiązania w zakresie usług OneDrive dla firm i FSLogix](/fslogix/overview/) opisują sposób ich działania. Aby uzyskać więcej informacji, zobacz [Korzystanie z klienta synchronizacji na pulpitach wirtualnych](/deployoffice/rds-onedrive-business-vdi/).
 - **Dodatkowe foldery:** FSLogix zapewnia możliwość rozbudowania profilów użytkowników w celu uwzględnienia dodatkowych folderów.
 
 Od momentu nabycia firma Microsoft rozpoczęła wymianę istniejących rozwiązań profilu użytkownika, takich jak UPD, z kontenerami profilu FSLogix.
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Files integrację z usługą domenową Azure Active Directory
 
-Wydajność i funkcje kontenerów profilów FSLogix korzystają z chmury. 7 sierpnia 2019 pliki Microsoft Azure ogłoszone ogólnie dostęp do [Azure Files uwierzytelniania przy użyciu usługi domeny Azure Active Directory (AD DS)](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview). Odnosząc się do kosztów i obciążeń administracyjnych, Azure Files z uwierzytelnianiem za pomocą usługi Azure AD DS to rozwiązanie Premium dla profilów użytkowników w usłudze pulpitów wirtualnych systemu Windows.
+Wydajność i funkcje kontenerów profilów FSLogix korzystają z chmury. 7 sierpnia 2019 pliki Microsoft Azure ogłoszone ogólnie dostęp do [Azure Files uwierzytelniania przy użyciu usługi domeny Azure Active Directory (AD DS)](../storage/files/storage-files-active-directory-overview.md). Odnosząc się do kosztów i obciążeń administracyjnych, Azure Files z uwierzytelnianiem za pomocą usługi Azure AD DS to rozwiązanie Premium dla profilów użytkowników w usłudze pulpitów wirtualnych systemu Windows.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Najlepsze rozwiązania dotyczące pulpitu wirtualnego systemu Windows
 
@@ -87,7 +87,7 @@ Pulpit wirtualny systemu Windows oferuje pełną kontrolę nad rozmiarem, typem 
 Aby zapewnić, że środowisko pulpitu wirtualnego systemu Windows jest zgodne z najlepszymi rozwiązaniami:
 
 - Konto magazynu Azure Files musi znajdować się w tym samym regionie co maszyny wirtualne hosta sesji.
-- Uprawnienia Azure Files powinny być zgodne z uprawnieniami opisanymi w [kontenerach wymagań — profile](https://docs.microsoft.com/fslogix/overview#requirements).
+- Uprawnienia Azure Files powinny być zgodne z uprawnieniami opisanymi w [kontenerach wymagań — profile](/fslogix/overview#requirements/).
 - Każda pula hostów musi być zbudowana z tego samego typu i rozmiaru maszyny wirtualnej na podstawie tego samego obrazu wzorcowego.
 - Każda maszyna wirtualna puli hostów musi znajdować się w tej samej grupie zasobów, aby ułatwić zarządzanie, skalowanie i aktualizowanie.
 - W celu uzyskania optymalnej wydajności rozwiązanie magazynu i kontener profilu FSLogix powinny znajdować się w tej samej lokalizacji centrum danych.
@@ -99,7 +99,7 @@ Poniższe przewodniki umożliwiają skonfigurowanie środowiska pulpitu wirtualn
 
 - Aby rozpocząć tworzenie rozwiązania do wirtualizacji pulpitu, zobacz [Tworzenie dzierżawy w systemie Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
 - Aby utworzyć pulę hostów w ramach dzierżawy pulpitu wirtualnego systemu Windows, zobacz [Tworzenie puli hostów za pomocą witryny Azure Marketplace](create-host-pools-azure-marketplace.md).
-- Aby skonfigurować w pełni zarządzane udziały plików w chmurze, zobacz [Konfigurowanie udziału Azure Files](/azure/storage/files/storage-files-active-directory-enable).
+- Aby skonfigurować w pełni zarządzane udziały plików w chmurze, zobacz [Konfigurowanie udziału Azure Files](/azure/storage/files/storage-files-active-directory-enable/).
 - Aby skonfigurować kontenery profilu FSLogix, zobacz [Tworzenie kontenera profilu dla puli hostów przy użyciu udziału plików](create-host-pools-user-profile.md).
 - Aby przypisać użytkowników do puli hostów, zobacz [Zarządzanie grupami aplikacji dla pulpitu wirtualnego systemu Windows](manage-app-groups.md).
 - Aby uzyskać dostęp do zasobów pulpitu wirtualnego systemu Windows z przeglądarki sieci Web, zobacz [nawiązywanie połączenia z pulpitem wirtualnym systemu Windows](connect-web.md).

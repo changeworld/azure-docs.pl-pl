@@ -3,12 +3,12 @@ title: Zasoby podrzędne w szablonach
 description: Opisuje sposób ustawiania nazwy i typu dla zasobów podrzędnych w szablonie Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 7d8a7a39bab3340b6f5c9e66d54b7398fa70ee3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 6de2b476fe19a057a62e4a54963dd8fde0d11579
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122019"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207897"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Ustawianie nazwy i typu dla zasobów podrzędnych
 
@@ -27,7 +27,7 @@ W szablonie Menedżera zasobów można określić zasób podrzędny w ramach zas
 ]
 ```
 
-W następnym przykładzie pokazano zasób podrzędny poza zasobem nadrzędnym. Tego podejścia można użyć, jeśli zasób nadrzędny nie jest wdrożony w tym samym szablonie lub jeśli chcesz użyć [kopii](create-multiple-instances.md) , aby utworzyć więcej niż jeden zasób podrzędny.
+W następnym przykładzie pokazano zasób podrzędny poza zasobem nadrzędnym. Tego podejścia można użyć, jeśli zasób nadrzędny nie jest wdrożony w tym samym szablonie lub jeśli chcesz użyć [kopii](copy-resources.md) , aby utworzyć więcej niż jeden zasób podrzędny.
 
 ```json
 "resources": [

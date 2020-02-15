@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d8d3204c8a5ace17ae47a17d4c4ffec2ec7977f2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/14/2020
+ms.openlocfilehash: 0603ad1fbecf33e5880fd7f18d35af51795f8e39
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112249"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251995"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>Samouczek REST: indeksowanie i wyszukiwanie danych częściowo strukturalnych (obiektów BLOB JSON) na platformie Azure Wyszukiwanie poznawcze
 
@@ -83,7 +83,7 @@ Wykonaj trzy następujące wywołania interfejsu API z poziomu klienta REST.
 
 ## <a name="create-a-data-source"></a>Tworzenie źródła danych
 
-[Interfejs API tworzenia źródła danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source)tworzy obiekt wyszukiwanie poznawcze platformy Azure, który określa, jakie dane mają być indeksowane.
+[Interfejs API tworzenia źródła danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source) tworzy obiekt wyszukiwanie poznawcze platformy Azure, który określa, jakie dane mają być indeksowane.
 
 Punkt końcowy tego wywołania to `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Zastąp element `[service name]` nazwą usługi wyszukiwania. 
 
@@ -126,7 +126,7 @@ Odpowiedź powinna wyglądać następująco:
 
 ## <a name="create-an-index"></a>Tworzenie indeksu
     
-Drugie wywołanie to [Tworzenie interfejsu API indeksu](https://docs.microsoft.com/rest/api/searchservice/create-indexer), tworzenie indeksu wyszukiwanie poznawcze platformy Azure, w którym są przechowywane wszystkie dane z możliwością wyszukiwania. Indeks określa wszystkie parametry i ich atrybuty.
+Drugie wywołanie to [Tworzenie interfejsu API indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index), tworzenie indeksu wyszukiwanie poznawcze platformy Azure, w którym są przechowywane wszystkie dane z możliwością wyszukiwania. Indeks określa wszystkie parametry i ich atrybuty.
 
 Adres URL dla tego wywołania wygląda następująco: `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Zastąp element `[service name]` nazwą usługi wyszukiwania.
 

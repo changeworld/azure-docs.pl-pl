@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 0ea9da894b9738fff634937294a07cc4b10624f0
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 73a505ce68ed046eba011d3b36991616f441506e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048874"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206309"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Szyfrowanie po stronie serwera dla usługi Azure Managed disks
 
@@ -38,7 +38,7 @@ Możesz zarządzać szyfrowaniem na poziomie każdego dysku zarządzanego przy u
 
 Na poniższym diagramie pokazano, w jaki sposób dyski zarządzane używają Azure Active Directory i Azure Key Vault do wykonywania żądań przy użyciu klucza zarządzanego przez klienta:
 
-![Przepływy pracy kluczy zarządzanych przez klienta](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![Przepływ pracy dotyczący dysków zarządzanych i kluczy zarządzanych przez klienta. Administrator tworzy Azure Key Vault, tworzy zestaw szyfrowania dysków i konfiguruje zestaw szyfrowania dysków. Zestaw jest skojarzony z maszyną wirtualną, co pozwala dyskowi używać usługi Azure AD do uwierzytelniania](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
 Poniższa lista zawiera bardziej szczegółowe informacje o diagramie:
@@ -61,7 +61,7 @@ Obecnie obsługiwane są tylko następujące regiony:
 - Dostępna jako oferta w wersji załącznej w regionach Wschodnie stany USA, zachodnie stany USA 2 i Południowo-środkowe stany USA.
 - Dostępna jako publiczna wersja zapoznawcza w regionach zachodnie stany USA, Wschodnie stany USA 2, Kanada Środkowa i Europa Północna.
 
-### <a name="restrictions"></a>Ograniczenia
+### <a name="restrictions"></a>{1&gt;Ograniczenia&lt;1}
 
 Na razie klucze zarządzane przez klienta mają następujące ograniczenia:
 

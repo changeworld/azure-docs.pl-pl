@@ -3,14 +3,15 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 02/14/2020
 ms.author: mathoma
-ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.reviewer: vanto
+ms.openlocfilehash: 3e2c8a424c9a3744bfb91d03632965c15613a424
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496152"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252152"
 ---
 W tym kroku utworzysz Azure SQL Database pojedynczą bazę danych. 
 
@@ -29,14 +30,14 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
 
    ![Tworzenie pojedynczej bazy danych](../media/sql-database-get-started-portal/create-single-database.png)
 
-3. Na karcie **podstawowe** w sekcji **szczegóły projektu** wpisz lub wybierz następujące wartości:
+4. Na karcie **podstawowe** w sekcji **szczegóły projektu** wpisz lub wybierz następujące wartości:
 
    - **Subskrypcja**: Lista rozwijana i wybierz prawidłową subskrypcję, jeśli nie jest wyświetlana.
    - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wpisz `myResourceGroup`, a następnie wybierz **przycisk OK**.
 
      ![Nowa baza danych SQL — Karta podstawowa](../media/sql-database-get-started-portal/new-sql-database-basics.png)
 
-4. W sekcji **szczegóły bazy danych** wpisz lub wybierz następujące wartości:
+5. W sekcji **szczegóły bazy danych** wpisz lub wybierz następujące wartości:
 
    - **Nazwa bazy danych**: wprowadź `mySampleDatabase`.
    - **Serwer**: wybierz pozycję **Utwórz nowy**, wprowadź następujące wartości, a następnie wybierz pozycję **Wybierz**.
@@ -63,20 +64,24 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
      - Opcjonalnie możesz również wybrać pozycję **Zmień konfigurację** , aby zmienić generowanie sprzętu.
    - Wybierz przycisk **Zastosuj**.
 
-5. Wybierz kartę **Ustawienia dodatkowe** . 
-6. W sekcji **Źródło danych** w obszarze **Użyj istniejących danych**wybierz pozycję `Sample`.
+6. Wybierz kartę **Sieć** i zdecyduj, czy chcesz [**zezwolić usługom i zasobom platformy Azure na dostęp do tego serwera**](../sql-database-networkaccess-overview.md), lub Dodaj [prywatny punkt końcowy](../../private-link/private-endpoint-overview.md).
+
+   ![Karta Sieć](../media/sql-database-get-started-portal/create-database-networking.png)
+
+7. Wybierz kartę **Ustawienia dodatkowe** . 
+8. W sekcji **Źródło danych** w obszarze **Użyj istniejących danych**wybierz pozycję `Sample`.
 
    ![Dodatkowe ustawienia bazy danych SQL](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
    > Pamiętaj, aby wybrać dane **Przykład (AdventureWorksLT)** , co umożliwi łatwe wykonanie tego i innych przewodników Szybki start usługi Azure SQL Database korzystających z tych danych.
 
-7. Pozostaw pozostałe wartości jako domyślne i wybierz pozycję **Przegląd + Utwórz** w dolnej części formularza.
-8. Sprawdź ustawienia końcowe i wybierz pozycję **Utwórz**.
+9. Pozostaw pozostałe wartości jako domyślne i wybierz pozycję **Przegląd + Utwórz** w dolnej części formularza.
+10. Sprawdź ustawienia końcowe i wybierz pozycję **Utwórz**.
 
-9. W formularzu **SQL Database** wybierz opcję **Utwórz**, aby wdrożyć i aprowizować grupę zasobów, serwer i bazę danych.
+11. W formularzu **SQL Database** wybierz opcję **Utwórz**, aby wdrożyć i aprowizować grupę zasobów, serwer i bazę danych.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
