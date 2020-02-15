@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68de948261ec8bad429daafcb27e63ca5f7efb7a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 65b343c79c60bc74f1a140411ff1a4a27119d225
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207307"
+ms.locfileid: "77251689"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Samouczek: Azure Active Directory integrację z logowaniem jednokrotnym przy użyciu Jamf Pro
 
@@ -151,16 +151,16 @@ W tej sekcji przyznano użytkownikowi B. Simon dostęp do Jamf Pro.
 
   b. Zaznacz pole wyboru **Włącz uwierzytelnianie logowania** jednokrotnego.
 
-    c. Wybierz pozycję **Azure** jako opcję z menu rozwijanego **dostawca tożsamości** .
+  c. Wybierz pozycję **Azure** jako opcję z menu rozwijanego **dostawca tożsamości** .
 
-    d. Skopiuj wartość **Identyfikator jednostki** i wklej ją do pola **Identyfikator (identyfikator jednostki)** w sekcji **Podstawowa konfiguracja SAML** w Azure Portal.
+  d. Skopiuj wartość **Identyfikator jednostki** i wklej ją do pola **Identyfikator (identyfikator jednostki)** w sekcji **Podstawowa konfiguracja SAML** w Azure Portal.
 
-    > [!NOTE]
-    > Użyj wartości w polu `<SUBDOMAIN>`, aby uzupełnić adres URL logowania i adres URL odpowiedzi w sekcji **Podstawowa konfiguracja SAML** w Azure Portal.
+> [!NOTE]
+> Użyj wartości w polu `<SUBDOMAIN>`, aby uzupełnić adres URL logowania i adres URL odpowiedzi w sekcji **Podstawowa konfiguracja SAML** w Azure Portal.
 
-    e. Wybierz pozycję **adres URL metadanych** z menu rozwijanego **Źródło metadanych dostawcy tożsamości** . W wyświetlonym polu wklej wartość **adresu URL metadanych federacji aplikacji** skopiowaną z Azure Portal.
+  e. Wybierz pozycję **adres URL metadanych** z menu rozwijanego **Źródło metadanych dostawcy tożsamości** . W wyświetlonym polu wklej wartość **adresu URL metadanych federacji aplikacji** skopiowaną z Azure Portal.
 
-    f. Obowiązkowe Edytuj wartość wygaśnięcia tokenu lub wybierz opcję "Wyłącz wygaśnięcie tokenu SAML".
+  f. Obowiązkowe Edytuj wartość wygaśnięcia tokenu lub wybierz opcję "Wyłącz wygaśnięcie tokenu SAML".
 
 7. Na tej samej stronie przewiń w dół do sekcji **Mapowanie użytkownika** . Następnie wykonaj poniższe czynności.
 
