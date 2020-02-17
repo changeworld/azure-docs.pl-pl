@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 056b2d2b1951b6630b61bbd6fd8a8c38b272900a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: bbb2ae0b10af795d71f0a78c045bec0c216ee378
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966816"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368419"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -30,8 +30,6 @@ ms.locfileid: "76966816"
 
 
 ## <a name="change-model-programmatically"></a>Programowo Zmień model
-
-Użyj języka go, aby dodać [interfejs API](https://aka.ms/luis-apim-v3-authoring) jednostki uczenia maszynowego do aplikacji.
 
 1. Utwórz nowy plik o nazwie `model.js`. Dodaj następujący kod:
 

@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z interfejsów API programu MS Graph do konfigurowania aprowizacji — Azure Active Directory | Microsoft Docs
-description: Potrzebujesz skonfigurować Inicjowanie obsługi dla wielu wystąpień aplikacji? Dowiedz się, jak zaoszczędzić czas, korzystając z interfejsów API programu MS Graph do automatyzowania konfigurowania automatycznej aprowizacji.
+title: Używanie Microsoft Graph interfejsów API do konfigurowania aprowizacji — Azure Active Directory | Microsoft Docs
+description: Potrzebujesz skonfigurować Inicjowanie obsługi dla wielu wystąpień aplikacji? Dowiedz się, jak zaoszczędzić czas przy użyciu interfejsów API Microsoft Graph, aby zautomatyzować konfigurację automatycznej aprowizacji.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f19f6e4add9bd677b05e09c627532a7a48354ce
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f5780227274e8f9574fcdfcd388d75e333cc3d42
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067190"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367827"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurowanie aprowizacji przy użyciu Microsoft Graph interfejsów API
 
-Azure Portal to wygodny sposób konfigurowania aprowizacji pojedynczych aplikacji pojedynczo. Ale jeśli tworzysz kilka, a nawet setki — wystąpienia aplikacji, można łatwiej zautomatyzować tworzenie i konfigurację aplikacji przy użyciu interfejsów API Microsoft Graph. W tym artykule opisano sposób automatyzacji konfigurowania aprowizacji za poorednictwem interfejsów API. Ta metoda jest często używana dla aplikacji, takich jak [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
+Azure Portal to wygodny sposób konfigurowania aprowizacji pojedynczych aplikacji pojedynczo. Ale jeśli tworzysz kilka, a nawet setki — wystąpienia aplikacji, łatwiejsze może być Automatyzacja tworzenia i konfigurowania aplikacji przy użyciu Microsoft Graph interfejsów API. W tym artykule opisano sposób automatyzacji konfigurowania aprowizacji za poorednictwem interfejsów API. Ta metoda jest często używana dla aplikacji, takich jak [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
 
 **Przegląd kroków dotyczących używania Microsoft Graph interfejsów API do automatyzowania konfigurowania aprowizacji**
 

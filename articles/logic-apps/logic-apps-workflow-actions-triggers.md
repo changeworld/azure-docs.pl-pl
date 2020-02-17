@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 336d2ef471e21e3157c7d8c81b3837bb6a962e2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191310"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366235"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Przewodnik odwołujący się do schematu dla wyzwalaczy i typów akcji w Azure Logic Apps
 
@@ -2304,7 +2304,7 @@ Ta akcja pętli zawiera akcje, które są uruchamiane do momentu, gdy określony
 | *Typ akcji* <> | Ciąg | Typ akcji, którą chcesz uruchomić | 
 | <*akcji — wejścia*> | Poszczególne | Dane wejściowe akcji do uruchomienia | 
 | <*warunek*> | Ciąg | Warunek lub wyrażenie do obliczenia po zakończeniu wszystkich akcji w pętli | 
-| <*liczba pętli*> | Liczba całkowita | Limit największej liczby pętli, które może wykonać akcja. Wartość domyślna `count` to 60. | 
+| <*liczba pętli*> | Liczba całkowita | Limit największej liczby pętli, które może wykonać akcja. Aby uzyskać więcej informacji na temat domyślnego limitu i maksymalnego limitu, zobacz [limity i konfiguracja dla Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). | 
 | <*przekroczenie limitu czasu pętli*> | Ciąg | Limit najdłuższego czasu, w którym można uruchomić pętlę. Wartość domyślna `timeout` jest `PT1H`, która jest wymaganym [formatem ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
 |||| 
 
@@ -2381,7 +2381,7 @@ Można zmienić domyślne zachowanie środowiska uruchomieniowego dla wyzwalaczy
 |----------|------|-------------|-------------------| 
 | `runtimeConfiguration.concurrency.runs` | Liczba całkowita | Zmień [*domyślny limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) liczby wystąpień przepływów pracy, które mogą być uruchamiane w tym samym czasie (współbieżnie lub równolegle). Dostosowanie tej wartości może pomóc w ograniczeniu liczby żądań odbieranych przez systemy zaplecza. <p>Ustawienie właściwości `runs` na `1` działa tak samo, jak ustawienie właściwości `operationOptions` na `SingleInstance`. Można ustawić każdą właściwość, ale nie obie jednocześnie. <p>Aby zmienić domyślny limit, zobacz [sekwencyjne Zmienianie wystąpień](#sequential-trigger) [współbieżności](#change-trigger-concurrency) lub wyzwalaczy wyzwalacza. | Wszystkie wyzwalacze | 
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | Liczba całkowita | Zmień [*domyślny limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) liczby wystąpień przepływów pracy, które muszą oczekiwać na uruchomienie, gdy w aplikacji logiki jest już uruchomiona Maksymalna liczba równoczesnych wystąpień. <p>Aby zmienić domyślny limit, zobacz [Limit uruchamiania oczekujących zmian](#change-waiting-runs). | Wszystkie wyzwalacze | 
-| `runtimeConfiguration.concurrency.repetitions` | Liczba całkowita | Zmień [*domyślny limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) liczby iteracji pętli "for each", które mogą być uruchamiane w tym samym czasie (współbieżnie lub równolegle). <p>Ustawienie właściwości `repetitions` na `1` działa tak samo, jak ustawienie właściwości `operationOptions` na `SingleInstance`. Można ustawić każdą właściwość, ale nie obie jednocześnie. <p>Aby zmienić domyślny limit, zobacz [zmiana "dla każdego" współbieżności](#change-for-each-concurrency) lub [uruchomienia "dla każdego" pętli sekwencyjnie](#sequential-for-each). | Działanie: <p>[Spowodował](#foreach-action) | 
+| `runtimeConfiguration.concurrency.repetitions` | Liczba całkowita | Zmień [*domyślny limit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) liczby iteracji pętli "for each", które mogą być uruchamiane w tym samym czasie (współbieżnie lub równolegle). <p>Ustawienie właściwości `repetitions` na `1` działa tak samo, jak ustawienie właściwości `operationOptions` na `SingleInstance`. Można ustawić każdą właściwość, ale nie obie jednocześnie. <p>Aby zmienić domyślny limit, zobacz [zmiana "dla każdego" współbieżności](#change-for-each-concurrency) lub [uruchomienia "dla każdego" pętli sekwencyjnie](#sequential-for-each). | Akcja: <p>[Spowodował](#foreach-action) | 
 | `runtimeConfiguration.paginationPolicy.minimumItemCount` | Liczba całkowita | W przypadku określonych akcji, które obsługują i mają włączone stronicowanie, ta wartość określa *minimalną* liczbę wyników do pobrania. <p>Aby włączyć podział na strony, zobacz [pobieranie danych zbiorczych, elementów lub wyników przy użyciu stronicowania](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) | Akcja: różnicowa |
 | `runtimeConfiguration.secureData.properties` | Tablica | W wielu wyzwalaczach i akcjach te ustawienia ukrywają dane wejściowe, wyjściowe lub zarówno z historii uruchamiania aplikacji logiki. <p>Aby dowiedzieć się więcej na temat zabezpieczania danych, zobacz [ukrywanie wejść i wyjść z historii uruchamiania](../logic-apps/logic-apps-securing-a-logic-app.md#secure-data-code-view). | Większość wyzwalaczy i akcji |
 | `runtimeConfiguration.staticResult` | Obiekt JSON | W przypadku akcji, które obsługują i mają włączone ustawienie [statycznego wyniku](../logic-apps/test-logic-apps-mock-data-static-results.md) , obiekt `staticResult` ma następujące atrybuty: <p>- `name`, który odwołuje się do nazwy definicji wyniku statycznego bieżącej akcji, która pojawia się wewnątrz atrybutu `staticResults` w atrybucie `definition` przepływu pracy aplikacji logiki. Aby uzyskać więcej informacji, zobacz [statyczne wyniki — dokumentacja schematu dla języka definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md#static-results). <p> - `staticResultOptions`, które określa, czy statyczne wyniki są `Enabled` lub nie dla bieżącej akcji. <p>Aby włączyć statyczne wyniki, zobacz [testowanie aplikacji logiki za pomocą danych makiety przez skonfigurowanie wyników statycznych](../logic-apps/test-logic-apps-mock-data-static-results.md) | Akcja: różnicowa |
@@ -2397,7 +2397,7 @@ Można zmienić domyślne zachowanie wyzwalaczy i akcji z właściwością `oper
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | Ciąg | Wykonywanie akcji opartych na protokole HTTP synchronicznie, a nie asynchronicznie. <p><p>Aby ustawić tę opcję, zobacz [Uruchamianie akcji synchronicznie](#asynchronous-patterns). | Akcje: <p>[ApiConnection](#apiconnection-action), <br>[Protokół http](#http-action), <br>[Odpowiedź](#response-action) | 
 | `OptimizedForHighThroughput` | Ciąg | Zmień [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) liczby wykonań akcji na 5 minut na [maksymalny limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Aby ustawić tę opcję, zobacz [Uruchamianie w trybie wysokiej przepływności](#run-high-throughput-mode). | Wszystkie akcje | 
-| `Sequential` | Ciąg | Uruchom "dla każdej" iteracji pętli pojedynczo, a nie wszystkie w tym samym czasie równolegle. <p>Ta opcja działa tak samo jak ustawienie właściwości `runtimeConfiguration.concurrency.repetitions` na `1`. Można ustawić każdą właściwość, ale nie obie jednocześnie. <p><p>Aby ustawić tę opcję, zobacz [Uruchom polecenie "for each" w sposób sekwencyjny](#sequential-for-each).| Działanie: <p>[Spowodował](#foreach-action) | 
+| `Sequential` | Ciąg | Uruchom "dla każdej" iteracji pętli pojedynczo, a nie wszystkie w tym samym czasie równolegle. <p>Ta opcja działa tak samo jak ustawienie właściwości `runtimeConfiguration.concurrency.repetitions` na `1`. Można ustawić każdą właściwość, ale nie obie jednocześnie. <p><p>Aby ustawić tę opcję, zobacz [Uruchom polecenie "for each" w sposób sekwencyjny](#sequential-for-each).| Akcja: <p>[Spowodował](#foreach-action) | 
 | `SingleInstance` | Ciąg | Uruchom wyzwalacz dla każdego wystąpienia aplikacji logiki sekwencyjnie i poczekaj na zakończenie poprzednio aktywnego uruchomienia przed wyzwoleniem następnego wystąpienia aplikacji logiki. <p><p>Ta opcja działa tak samo jak ustawienie właściwości `runtimeConfiguration.concurrency.runs` na `1`. Można ustawić każdą właściwość, ale nie obie jednocześnie. <p>Aby ustawić tę opcję, zobacz [wyzwalacze wystąpień sekwencyjnie](#sequential-trigger). | Wszystkie wyzwalacze | 
 ||||
 

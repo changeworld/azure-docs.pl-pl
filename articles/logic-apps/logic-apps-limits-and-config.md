@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 348c393a623f0059eec011faf823f9b5131508f3
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f0c38590b667894dd65d212124ef1d26c7918ff7
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122131"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366425"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informacje o limitach i konfiguracji Azure Logic Apps
 
@@ -89,7 +89,7 @@ Poniżej przedstawiono limity dla pojedynczego uruchomienia aplikacji logiki:
 | Elementy tablicy foreach | 100 000 | Ten limit opisuje największą liczbę elementów tablicy, które może przetworzyć pętla for each. <p><p>Aby filtrować większe tablice, można użyć [akcji zapytania](logic-apps-perform-data-operations.md#filter-array-action). |
 | Współbieżność foreach | 20 jest domyślnym limitem, gdy kontrola współbieżności jest wyłączona. Można zmienić wartość domyślną z przedziału od 1 do 50 włącznie. | Ten limit to największą liczbę iteracji pętli "for each", które mogą być uruchamiane w tym samym czasie lub równolegle. <p><p>Aby zmienić domyślny limit na wartość z przedziału od 1 do 50 włącznie, zobacz [zmiana "dla każdego" ograniczenia współbieżności](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) lub [uruchomienie "dla każdej" pętli sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
 | Elementy SplitOn | -100 000 bez współbieżności wyzwalacza <p><p>-100 z współbieżnością wyzwalacza | Dla wyzwalaczy, które zwracają tablicę, można określić wyrażenie używające właściwości "SplitOn", które [dzieli lub departia elementy tablicy w wielu wystąpieniach przepływu pracy](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) do przetworzenia, zamiast używać pętli "foreach". To wyrażenie odwołuje się do tablicy, która ma zostać użyta do utworzenia i uruchomienia wystąpienia przepływu pracy dla każdego elementu tablicy. <p><p>**Uwaga**: po włączeniu współbieżności limit SplitOn zostanie zmniejszony do 100 elementów. |
-| Do czasu iteracji | 5000 | |
+| Do czasu iteracji | -Wartość domyślna: 60 <p><p>-Maksimum: 5 000 | |
 ||||
 
 <a name="throughput-limits"></a>

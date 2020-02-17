@@ -1,5 +1,5 @@
 ---
-title: Czym jest usługa Active Directory systemu Azure? — Azure Active Directory | Microsoft Docs
+title: Co to jest usługa Azure Active Directory? — Azure Active Directory | Microsoft Docs
 description: Omówienie i pojęcia dotyczące Azure Active Directory, w tym terminologia, jakie licencje są dostępne, oraz listę powiązanych funkcji z linkami, aby uzyskać więcej informacji.
 services: active-directory
 author: msaburnley
@@ -11,14 +11,14 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4d32522ef88504b96d262c654dac7c08c292761
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: dd7b412e99526935738c2494d31a16fded7101a6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897461"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368037"
 ---
-# <a name="what-is-azure-active-directory"></a>Czym jest usługa Active Directory systemu Azure?
+# <a name="what-is-azure-active-directory"></a>Co to jest usługa Azure Active Directory?
 
 Azure Active Directory (Azure AD) to usługa zarządzania tożsamościami i dostępem opartymi na chmurze firmy Microsoft, która ułatwia pracownikom logowanie się i dostęp do zasobów w programie:
 
@@ -77,7 +77,7 @@ Aby lepiej zrozumieć usługę Azure AD i jej dokumentację, zalecamy zapoznanie
 |Administrator konta|Ta klasyczna rola administratora subskrypcji określa właściciela subskrypcji odpowiedzialnego za rozliczenia. Ta rola ma dostęp do [Centrum konta platformy Azure](https://account.azure.com/Subscriptions) i pozwala zarządzać wszystkimi subskrypcjami na koncie. Aby uzyskać więcej informacji, zobacz Role [administratora subskrypcji klasycznej, role kontroli dostępu opartej na rolach (RBAC) na platformie Azure i role administratorów usługi Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Administrator usługi|Ta klasyczna rola administratora subskrypcji umożliwia zarządzanie wszystkimi zasobami platformy Azure, włącznie z dostępem. Ta rola ma takie same uprawnienia dostępu co użytkownik, któremu przypisano rolę właściciela w zakresie subskrypcji. Aby uzyskać więcej informacji, zobacz [Role klasycznego administratora subskrypcji, role kontroli na podstawie ról (RBAC) platformy Azure i role administratora usługi Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Właściciel|Ta rola ułatwia zarządzanie wszystkimi zasobami platformy Azure, włącznie z dostępem. Ta rola bazuje na nowszym systemie autoryzacji, nazywanym kontrolą dostępu opartą na rolach (RBAC), który umożliwia szczegółowe zarządzanie dostępem do zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [Role klasycznego administratora subskrypcji, role kontroli na podstawie ról (RBAC) platformy Azure i role administratora usługi Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Administrator globalny usługi Azure AD|Ta rola administratora jest automatycznie przypisywana osobie, która utworzyła dzierżawę usługi Azure AD. Administratorzy globalni mogą wykonywać wszystkie funkcje administracyjne usługi Azure AD i wszystkie usługi, które sfederować do usługi Azure AD, takie jak Exchange Online, SharePoint Online i Skype dla firm Online. Może istnieć wielu administratorów globalnych, ale tylko administratorzy globalni mogą przypisywać użytkownikom role administratora (włącznie z przypisywaniem innych administratorów globalnych).<br><br>**Uwaga**<br>Ta rola administratora jest nazywana administratorem globalnym w witrynie Azure Portal, ale ma nazwę **administrator firmy** w interfejsie API programu Microsoft Graph, interfejsie API programu Graph w usłudze Azure AD oraz w usłudze Azure AD PowerShell.<br><br>Aby uzyskać więcej informacji o różnych rolach administratorów, zobacz [Administrator role permissions in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) (Uprawnienia ról administratorów w usłudze Azure Active Directory).|
+|Administrator globalny usługi Azure AD|Ta rola administratora jest automatycznie przypisywana osobie, która utworzyła dzierżawę usługi Azure AD. Administratorzy globalni mogą wykonywać wszystkie funkcje administracyjne usługi Azure AD i wszystkie usługi, które sfederować do usługi Azure AD, takie jak Exchange Online, SharePoint Online i Skype dla firm Online. Może istnieć wielu administratorów globalnych, ale tylko administratorzy globalni mogą przypisywać użytkownikom role administratora (włącznie z przypisywaniem innych administratorów globalnych).<br><br>**Uwaga**<br>Ta rola administratora jest nazywana administratorem globalnym w Azure Portal, ale jest nazywana **administratorem firmy** w interfejsie API Microsoft Graph i programie Azure AD PowerShell.<br><br>Aby uzyskać więcej informacji o różnych rolach administratorów, zobacz [Administrator role permissions in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) (Uprawnienia ról administratorów w usłudze Azure Active Directory).|
 |Konto Microsoft (nazywane też kontem MSA)|Konta osobiste, które zapewniają dostęp do produktów i usług w chmurze firmy Microsoft przeznaczonych dla konsumentów, takich jak Outlook, OneDrive, Xbox LIVE i Office 365. Konto Microsoft jest tworzone i przechowywane w systemie kont tożsamości konsumentów firmy Microsoft.|
 
 ## <a name="which-features-work-in-azure-ad"></a>Które funkcje działają w usłudze Azure AD?
@@ -87,7 +87,7 @@ Po wybraniu licencji usługi Azure AD uzyskasz dostęp do niektórych lub wszyst
 |Kategoria|Opis|
 |-------|-----------|
 |Zarządzanie aplikacjami|Zarządzanie aplikacjami w chmurze i lokalnymi przy użyciu serwera proxy aplikacji, logowania jednokrotnego, portalu Moje aplikacje (nazywanego też panelem dostępu) i aplikacji typu oprogramowanie jako usługa (SaaS). Aby uzyskać więcej informacji, zobacz temat [Jak zapewnić bezpieczny, zdalny dostęp do aplikacji lokalnych](../manage-apps/application-proxy.md) i [dokumentację zarządzania aplikacjami](../manage-apps/index.yml).|
-|Authentication|Zarządzanie samoobsługowym resetowaniem haseł, uwierzytelnianiem wieloskładnikowym, niestandardowymi listami zakazanych haseł i inteligentną blokadą usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [dokumentację uwierzytelniania w usłudze Azure AD](../authentication/index.yml).|
+|Uwierzytelnianie|Zarządzanie samoobsługowym resetowaniem haseł, uwierzytelnianiem wieloskładnikowym, niestandardowymi listami zakazanych haseł i inteligentną blokadą usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [dokumentację uwierzytelniania w usłudze Azure AD](../authentication/index.yml).|
 |Działania między firmami (B2B)|Zarządzanie użytkownikami-gośćmi i partnerami zewnętrznymi przy zachowaniu kontroli nad danymi firmowymi. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure Active Directory B2B](../b2b/index.yml).|
 |Działania między firmami i klientami (B2C)|Dostosowywanie i kontrolowanie sposobu tworzenia kont, logowania się i zarządzania profilami przez użytkowników podczas korzystania z aplikacji. Aby uzyskać więcej informacji, zobacz [dokumentację usługi Azure Active Directory B2C](../../active-directory-b2c/index.yml).|
 |Dostęp warunkowy|Zarządzanie dostępem do aplikacji w chmurze. Aby uzyskać więcej informacji, zobacz [dokumentację dostępu warunkowego w usłudze Azure AD](../conditional-access/index.yml).|
@@ -96,7 +96,7 @@ Po wybraniu licencji usługi Azure AD uzyskasz dostęp do niektórych lub wszyst
 |Usługi domenowe|Przyłączanie maszyn wirtualnych platformy Azure do domeny bez używania kontrolerów domeny. Aby uzyskać więcej informacji, zobacz [dokumentację usług Azure AD Domain Services](../../active-directory-domain-services/index.yml).|
 |Użytkownicy korporacyjni|Zarządzanie przypisywaniem licencji i dostępem do aplikacji oraz konfigurowanie delegatów za pomocą grup i ról administratora. Aby uzyskać więcej informacji, zobacz [dokumentację zarządzania użytkownikami usługi Azure Active Directory](../users-groups-roles/index.yml).|
 |Tożsamość hybrydowa|Używanie programów Azure Active Directory Connect i Connect Health w celu udostępniania pojedynczej tożsamości użytkownika na potrzeby uwierzytelniania i autoryzacji we wszystkich zasobach, niezależnie od lokalizacji (w chmurze lub lokalnie). Aby uzyskać więcej informacji, zobacz [dokumentację tożsamości hybrydowej](../hybrid/index.yml).|
-|Zapewnienie ładu w zakresie tożsamości|Zarządzanie tożsamością w organizacji za pośrednictwem mechanizmów kontroli dostępu pracowników, partnerów biznesowych, dostawców, usług i aplikacji. Można też przeprowadzać przeglądy dostępu. Aby uzyskać więcej informacji, zobacz [dokumentację zarządzania tożsamościami w usłudze Azure AD](../governance/identity-governance-overview.md) i temat [Przeglądy dostępu w usłudze Azure AD](../governance/access-reviews-overview.md).|
+|Nadzór nad tożsamościami|Zarządzanie tożsamością w organizacji za pośrednictwem mechanizmów kontroli dostępu pracowników, partnerów biznesowych, dostawców, usług i aplikacji. Można też przeprowadzać przeglądy dostępu. Aby uzyskać więcej informacji, zobacz [dokumentację zarządzania tożsamościami w usłudze Azure AD](../governance/identity-governance-overview.md) i temat [Przeglądy dostępu w usłudze Azure AD](../governance/access-reviews-overview.md).|
 |Ochrona tożsamości|Wykrywanie potencjalnych luk w zabezpieczeniach wpływających na tożsamości w organizacji, konfigurowanie zasad w celu reagowania na podejrzane działania oraz podejmowanie odpowiednich działań w celu rozwiązywania problemów. Aby uzyskać więcej informacji, zobacz [Usługa Azure AD Identity Protection](../identity-protection/index.yml).|
 |Tożsamości zarządzane dla zasobów platformy Azure|Zapewnia usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure AD, która umożliwia uwierzytelnianie dowolnych usług uwierzytelniania obsługiwanych przez usługę Azure AD, włącznie z usługą Key Vault. Aby uzyskać więcej informacji, zobacz [Czym są tożsamości zarządzane dla zasobów platformy Azure?](../managed-identities-azure-resources/overview.md).|
 |Privileged Identity Management (PIM)|Kontrolowanie i monitorowanie dostępu w organizacji oraz zarządzanie nim. Ta funkcja obejmuje dostęp do zasobów w usłudze Azure AD i na platformie Azure oraz w innych usługach online firmy Microsoft, takich jak Office 365 lub Intune. Aby uzyskać więcej informacji, zobacz [Usługa Azure AD Privileged Identity Management](../privileged-identity-management/index.yml).|

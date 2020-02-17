@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 5214395aa583bfa344f2c8e84066db84edb3939a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 92552a9870f037555a6cde9daa67d3af112ccee7
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966914"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368472"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -29,8 +29,6 @@ ms.locfileid: "76966914"
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
 ## <a name="change-model-programmatically"></a>Programowo Zmień model
-
-Użyj języka go, aby dodać [interfejs API](https://aka.ms/luis-apim-v3-authoring) jednostki uczenia maszynowego do aplikacji.
 
 1. Utwórz podkatalog o nazwie `lib` i skopiuj go do następującego libs języka Java:
 

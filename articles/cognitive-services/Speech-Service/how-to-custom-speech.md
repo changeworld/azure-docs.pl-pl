@@ -3,19 +3,19 @@ title: Wprowadzenie do usługi Custom Speech-Speech
 titleSuffix: Azure Cognitive Services
 description: Custom Speech to zestaw narzędzi online, dzięki którym można oszacować i poprawić dokładność zamiany mowy na tekst dla aplikacji, narzędzi i produktów. Wszystkie te rzeczy są potrzebne do rozpoczęcia pracy z kilkuem plików audio. Skorzystaj z poniższych linków, aby rozpocząć tworzenie niestandardowego środowiska zamiany mowy na tekst.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.author: erhopf
-ms.openlocfilehash: c8c849cb83ecb1db5e972c660d94c795092c458e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/14/2020
+ms.author: dapine
+ms.openlocfilehash: 0788ff84cd5b0d50e0798d0d72ee84b47cb5f0b1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806015"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368327"
 ---
 # <a name="what-is-custom-speech"></a>Co to jest Custom Speech?
 
@@ -60,6 +60,9 @@ Po utworzeniu konta platformy Azure i subskrypcji usługi mowy należy zalogowa�
 Zawartość, taka jak dane, modele, testy i punkty końcowe, są zorganizowane w **projekty** w [portalu Custom Speech](https://speech.microsoft.com/customspeech). Każdy projekt jest specyficzny dla domeny i kraju/języka. Na przykład możesz utworzyć projekt dla centrów wywołań, które używają języka angielskiego w Stany Zjednoczone.
 
 Aby utworzyć swój pierwszy projekt, wybierz **mowę zamiany mowy na tekst/niestandardową**, a następnie kliknij pozycję **Nowy projekt**. Postępuj zgodnie z instrukcjami wyświetlanymi przez kreatora, aby utworzyć projekt. Po utworzeniu projektu powinny zostać wyświetlone cztery karty: **dane**, **testowanie**, **szkolenia**i **wdrożenia**. Skorzystaj z linków w [sekcji Następne kroki](#next-steps) , aby dowiedzieć się, jak korzystać z każdej karty.
+
+> [!IMPORTANT]
+> [Portal Custom Speech](https://aka.ms/custom-speech) został niedawno zaktualizowany! Jeśli utworzono poprzednie projekty z danymi, modelami, testami i opublikowanymi punktami końcowymi w portalu CRI lub za pomocą interfejsów API, należy utworzyć nowy projekt w nowym portalu, aby połączyć się z tymi starymi jednostkami.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -3,19 +3,17 @@ title: Zarządzanie rezerwacjami platformy Azure
 description: Dowiedz się, jak zarządzać rezerwacjami platformy Azure.
 ms.service: cost-management-billing
 author: bandersmsft
-manager: yashesvi
+ms.reviewer: yashesvi
 ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/06/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 82bf250a7902cfe4b905991809fd4bbe5dea102a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75994053"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188520"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Zarządzanie rezerwacjami zasobów platformy Azure
 
@@ -128,7 +126,7 @@ Aby zaktualizować ustawienie optymalizacji dla rezerwacji:
 
 ## <a name="optimize-reservation-use"></a>Optymalizowanie użycia rezerwacji
 
-Oszczędności związane z rezerwacjami platformy Azure wynikają jedynie ze stałego użycia zasobów. Podczas dokonywania zakupu rezerwacji zasadniczo płacisz z góry 100% możliwego użycia zasobów w okresie jednego roku lub trzech lat. Staraj się zmaksymalizować rezerwację, aby uzyskać jak najwięcej użycia i oszczędności. W poniższych sekcjach wyjaśniono, jak monitorować rezerwację i optymalizować jej użycie.
+Oszczędności związane z rezerwacjami platformy Azure wynikają jedynie ze stałego użycia zasobów. Podczas dokonywania zakupu rezerwacji zasadniczo płacisz 100% możliwego użycia zasobów w okresie jednego roku lub trzech lat. Staraj się zmaksymalizować rezerwację, aby uzyskać jak najwięcej użycia i oszczędności. W poniższych sekcjach wyjaśniono, jak monitorować rezerwację i optymalizować jej użycie.
 
 ### <a name="view-reservation-use-in-the-azure-portal"></a>Wyświetlanie użycia rezerwacji w witrynie Azure Portal
 

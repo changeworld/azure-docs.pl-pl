@@ -2,28 +2,28 @@
 title: Płatność za subskrypcje platformy Azure przy użyciu faktury
 description: W artykule opisano płatność za subskrypcje platformy Azure przy użyciu faktury.
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: a0f012145788d2d1d4935e10691859e5aaf71255
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a471e859261dc735e92bfff743eb3a8e13dd9a35
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75994339"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133623"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Płatność za subskrypcje platformy Azure przy użyciu faktury
 
 Jeśli przełączysz się na płatność na podstawie faktury, konieczne będzie zapłacenie rachunku czekiem lub przelewem w ciągu 30 dni od daty jego wystawienia. Aby kwalifikować się do płacenia za subskrypcję platformy Azure na podstawie faktury, prześlij żądanie do pomocy technicznej platformy Azure. Jeśli Twoje żądanie zostanie zatwierdzone, w witrynie[Azure Portal](https://portal.azure.com) będzie można zmienić subskrypcję na płatność na podstawie faktury (czekiem lub przelewem).
 
 > [!IMPORTANT]
-> * Płatność na podstawie faktury (czekiem lub przelewem) jest dostępna tylko dla kont firmowych.
+> * Płatność na podstawie faktury (czek/przelew) jest dostępna tylko dla klientów korzystających z platformy Azure w imieniu firmy.
 > * Przed przełączeniem się na płatność na podstawie faktury musisz uregulować wszystkie zaległe opłaty.
 > * Obecnie płatność na podstawie faktury nie jest obsługiwana w przypadku globalnej platformy Azure w Chinach.
 

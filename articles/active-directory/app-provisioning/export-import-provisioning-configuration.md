@@ -1,6 +1,6 @@
 ---
-title: Eksportowanie lub importowanie konfiguracji aprowizacji przy użyciu interfejs API programu Graph | Microsoft Docs
-description: Dowiedz się, jak eksportować i importować konfigurację aprowizacji przy użyciu interfejs API programu Graph.
+title: Eksportowanie lub importowanie konfiguracji aprowizacji za pomocą interfejsu API Microsoft Graph | Microsoft Docs
+description: Dowiedz się, jak eksportować i importować konfigurację aprowizacji za pomocą interfejsu API Microsoft Graph.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -15,21 +15,21 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af699fa2201bce5627426dcdefc1b98c1d885ae5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e2fa80726875c82cfa4b5d4cf6a14f4e0dae1871
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066618"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367796"
 ---
-# <a name="export-or-import-your-provisioning-configuration-by-using-graph-api"></a>Eksportowanie lub importowanie konfiguracji aprowizacji za pomocą interfejs API programu Graph
+# <a name="export-or-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Eksportowanie lub importowanie konfiguracji aprowizacji za pomocą interfejsu API Microsoft Graph
 
-Za pomocą Microsoft Graph API i Eksploratora grafów można wyeksportować mapowania atrybutów aprowizacji użytkowników i schemat do pliku JSON, a następnie zaimportować je z powrotem do usługi Azure AD. Możesz również użyć tutaj przechwyconych kroków, aby utworzyć kopię zapasową konfiguracji aprowizacji. 
+Możesz użyć interfejsu API Microsoft Graph i Eksploratora Microsoft Graph, aby wyeksportować mapowania atrybutów aprowizacji użytkowników i schemat do pliku JSON, a następnie zaimportować go z powrotem do usługi Azure AD. Możesz również użyć tutaj przechwyconych kroków, aby utworzyć kopię zapasową konfiguracji aprowizacji. 
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Krok 1. Pobieranie inicjowania obsługi App Service Identyfikator podmiotu zabezpieczeń (identyfikator obiektu)
 
 1. Uruchom [Azure Portal](https://portal.azure.com)i przejdź do sekcji właściwości aplikacji aprowizacji. Na przykład jeśli chcesz wyeksportować swój *dzień roboczy do usługi AD, mapowanie aplikacji do inicjowania obsługi administracyjnej użytkowników* , przejdź do sekcji Właściwości tej aplikacji. 
-1. W sekcji właściwości aplikacji aprowizacji skopiuj wartość identyfikatora GUID skojarzoną z polem *Identyfikator obiektu* . Ta wartość jest również nazywana **ServicePrincipalId** aplikacji i będzie używana w operacjach Eksploratora grafu.
+1. W sekcji właściwości aplikacji aprowizacji skopiuj wartość identyfikatora GUID skojarzoną z polem *Identyfikator obiektu* . Ta wartość jest również nazywana **ServicePrincipalId** aplikacji i będzie używana w operacjach Microsoft Graph Explorer.
 
    ![Identyfikator podmiotu zabezpieczeń App Service Workday](./media/export-import-provisioning-configuration/wd_export_01.png)
 
@@ -38,7 +38,7 @@ Za pomocą Microsoft Graph API i Eksploratora grafów można wyeksportować mapo
 1. Uruchom [eksploratora Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer)
 1. Kliknij przycisk "Zaloguj się za pomocą firmy Microsoft" i zaloguj się przy użyciu poświadczeń administratora globalnego usługi Azure AD lub administratora aplikacji.
 
-    ![Logowanie grafu](./media/export-import-provisioning-configuration/wd_export_02.png)
+    ![Logowanie Microsoft Graph](./media/export-import-provisioning-configuration/wd_export_02.png)
 
 1. Po pomyślnym zalogowaniu zobaczysz szczegóły konta użytkownika w okienku po lewej stronie.
 

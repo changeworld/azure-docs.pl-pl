@@ -1,6 +1,6 @@
 ---
-title: Uwierzytelnianie oparte na nagłówkach za pomocą PingAccess dla platformy Azure serwer proxy aplikacji usługi Azure AD | Microsoft Docs
-description: Publikowanie aplikacji za pomocą PingAccess i serwera proxy aplikacji w celu obsługi uwierzytelniania opartego na nagłówkach.
+title: Uwierzytelnianie oparte na nagłówka z usługą PingAccess dla serwera Proxy aplikacji usługi Azure AD | Dokumentacja firmy Microsoft
+description: Publikowanie aplikacji z usługą PingAccess i serwera Proxy aplikacji obsługują uwierzytelnianie oparte na nagłówka.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,37 +16,37 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec115e0fa76e695809ba140202d5f13a319d33dd
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f3fb94629262519f8cfa5da72ee343726aa7d1c1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062703"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367986"
 ---
-# <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Uwierzytelnianie oparte na nagłówkach logowania jednokrotnego przy użyciu serwera proxy aplikacji i PingAccess
+# <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Na podstawie nagłówka uwierzytelniania dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji i PingAccess
 
 Serwer proxy aplikacji usługi Azure Active Directory (Azure AD) został partner PingAccess, dzięki czemu klienci usługi Azure AD mogą uzyskiwać dostęp do większej liczby aplikacji. PingAccess rozszerza [istniejące oferty serwera proxy aplikacji](application-proxy.md) w celu uwzględnienia dostępu logowania jednokrotnego do aplikacji, które używają nagłówków do uwierzytelniania.
 
 ## <a name="whats-pingaccess-for-azure-ad"></a>Co to jest PingAccess dla usługi Azure AD?
 
-Dzięki usłudze PingAccess dla usługi Azure AD możesz udzielić użytkownikom dostępu i logowania jednokrotnego do aplikacji, które używają nagłówków do uwierzytelniania. Serwer proxy aplikacji traktuje te aplikacje, takie jak inne, za pomocą usługi Azure AD do uwierzytelniania dostępu, a następnie przekazywania ruchu przez usługę łącznika. PingAccess znajduje się przed aplikacjami i tłumaczy token dostępu z usługi Azure AD na nagłówek. Następnie aplikacja odbiera uwierzytelnianie w formacie, który może odczytać.
+Dzięki usłudze PingAccess dla usługi Azure AD możesz udzielić użytkownikom dostępu i logowania jednokrotnego do aplikacji, które używają nagłówków do uwierzytelniania. Serwer Proxy aplikacji traktuje te aplikacje, takie jak każdy inny, za pomocą usługi Azure AD do uwierzytelniania dostępu i następnie przekazywanie ruchu za pośrednictwem usługi łącznika. PingAccess znajduje się przed aplikacjami i tłumaczy token dostępu z usługi Azure AD na nagłówek. Następnie aplikacja odbiera uwierzytelnianie w formacie, który może odczytać.
 
-Użytkownicy nie będą zarejestrowani w przypadku logowania się do korzystania z aplikacji firmowych. Mogą oni nadal korzystać z dowolnego miejsca na dowolnym urządzeniu. Łączniki serwera proxy aplikacji kierują ruch zdalny do wszystkich aplikacji bez względu na ich typ uwierzytelniania, dzięki czemu będą nadal zrównoważać obciążenia automatycznie.
+Użytkownicy nie będą zauważyć nic innego po zalogowaniu się do użycia aplikacje firmowe. One nadal pracować z dowolnego miejsca na dowolnym urządzeniu. Łączniki serwera proxy aplikacji kierują ruch zdalny do wszystkich aplikacji bez względu na ich typ uwierzytelniania, dzięki czemu będą nadal zrównoważać obciążenia automatycznie.
 
-## <a name="how-do-i-get-access"></a>Jak mogę uzyskać dostęp?
+## <a name="how-do-i-get-access"></a>Jak uzyskać dostęp?
 
-Ponieważ ten scenariusz pochodzi z partnerstwa między Azure Active Directory i PingAccess, potrzebujesz licencji dla obu usług. Jednak subskrypcje Azure Active Directory — wersja Premium obejmują podstawową licencję PingAccess, która obejmuje maksymalnie 20 aplikacji. Jeśli musisz opublikować więcej niż 20 aplikacji opartych na nagłówkach, możesz zakupić dodatkową licencję z PingAccess.
+Ponieważ ten scenariusz pochodzi z partnerstwa między Azure Active Directory i PingAccess, potrzebujesz licencji dla obu usług. Jednak subskrypcje usługi Azure Active Directory — wersja Premium obejmują licencję PingAccess podstawowe, który obejmuje maksymalnie 20 aplikacji. Jeśli trzeba opublikować więcej niż 20 aplikacji opartej na nagłówkach, możesz kupić dodatkową licencję z usługą PingAccess.
 
 Aby uzyskać więcej informacji, zobacz [Wersje usługi Azure Active Directory](../fundamentals/active-directory-whatis.md).
 
-## <a name="publish-your-application-in-azure"></a>Publikowanie aplikacji na platformie Azure
+## <a name="publish-your-application-in-azure"></a>Publikuj swoje aplikacje na platformie Azure
 
 Ten artykuł ma na celu opublikowanie aplikacji w tym scenariuszu po raz pierwszy. Oprócz szczegółów dotyczących etapów publikowania Przewodnik po wprowadzeniu do serwera proxy aplikacji i PingAccess. Jeśli skonfigurowano już obie usługi, ale chcesz, aby odświeżyć procedurę publikowania, przejdź do sekcji [Dodawanie aplikacji do usługi Azure AD za pomocą serwera proxy aplikacji](#add-your-application-to-azure-ad-with-application-proxy) .
 
 > [!NOTE]
-> Ponieważ ten scenariusz jest partnerstwem między usługą Azure AD i PingAccess, niektóre instrukcje znajdują się w witrynie ping Identity.
+> Ponieważ ten scenariusz jest partnerstwa między usługą Azure AD i PingAccess, istnieją niektóre instrukcje w witrynie Ping Identity.
 
-### <a name="install-an-application-proxy-connector"></a>Instalowanie łącznika serwera proxy aplikacji
+### <a name="install-an-application-proxy-connector"></a>Zainstaluj łącznik serwera Proxy aplikacji
 
 Jeśli włączono serwer proxy aplikacji włączony i został już zainstalowany łącznik, możesz pominąć tę sekcję i przejść do sekcji [Dodawanie aplikacji do usługi Azure AD za pomocą serwera proxy aplikacji](#add-your-application-to-azure-ad-with-application-proxy).
 
@@ -63,7 +63,7 @@ Pobranie łącznika powinno automatycznie włączyć serwer proxy aplikacji dla 
 
 ### <a name="add-your-application-to-azure-ad-with-application-proxy"></a>Dodawanie aplikacji do usługi Azure AD za pomocą serwera proxy aplikacji
 
-Istnieją dwie akcje, które należy wykonać w Azure Portal. Najpierw musisz opublikować aplikację przy użyciu serwera proxy aplikacji. Następnie należy zebrać pewne informacje dotyczące aplikacji, których można użyć podczas kroków PingAccess.
+Istnieją dwie akcje, które należy wykonać w witrynie Azure portal. Najpierw musisz opublikować aplikację przy użyciu serwera Proxy aplikacji. Następnie należy zebrać pewne informacje dotyczące aplikacji, których można użyć podczas kroków PingAccess.
 
 #### <a name="publish-your-application"></a>Publikowanie aplikacji
 
@@ -85,7 +85,7 @@ Aby opublikować własną aplikację lokalną:
    > [!NOTE]
    > Aby zapoznać się z bardziej szczegółowym opisem tego kroku, zobacz [Dodawanie aplikacji lokalnej do usługi Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
 
-   1. **Wewnętrzny adres URL**: zazwyczaj podajesz adres URL, który przeprowadzi Cię do strony logowania aplikacji, gdy jesteś w sieci firmowej. W tym scenariuszu łącznik musi traktować serwer proxy PingAccess jako stronę frontonu aplikacji. Użyj tego formatu: `https://<host name of your PingAccess server>:<port>`. Domyślnie port jest 3000, ale można go skonfigurować w PingAccess.
+   1. **Wewnętrzny adres URL**: zazwyczaj podajesz adres URL, który przeprowadzi Cię do strony logowania aplikacji, gdy jesteś w sieci firmowej. W tym scenariuszu łącznik musi traktować serwer proxy PingAccess jako stronę frontonu aplikacji. Użyj tego formatu: `https://<host name of your PingAccess server>:<port>`. Numer portu to 3000 domyślnie, ale można go skonfigurować w PingAccess.
 
       > [!WARNING]
       > W przypadku tego typu logowania jednokrotnego wewnętrzny adres URL musi używać `https` i nie może używać `http`.
@@ -94,7 +94,7 @@ Aby opublikować własną aplikację lokalną:
    1. **Tłumaczenie adresu URL w nagłówkach**: wybierz pozycję **nie**.
 
    > [!NOTE]
-   > Jeśli jest to Twoja pierwsza aplikacja, użyj portu 3000 do rozpoczęcia i wróć do aktualizacji tego ustawienia, jeśli zmienisz konfigurację PingAccess. W przypadku kolejnych aplikacji port będzie musiał odpowiadać odbiornikowi skonfigurowanemu w PingAccess. Dowiedz się więcej o [odbiornikach w PingAccess](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html).
+   > Jeśli jest to swoją pierwszą aplikację, należy użyć portu 3000 do uruchamiania i wróć, aby zaktualizować to ustawienie, jeśli zmienisz konfigurację PingAccess. W przypadku kolejnych aplikacji port będzie musiał odpowiadać odbiornikowi skonfigurowanemu w PingAccess. Dowiedz się więcej o [odbiornikach w PingAccess](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html).
 
 1. Wybierz pozycję **Dodaj**. Zostanie wyświetlona strona przegląd nowej aplikacji.
 
@@ -104,12 +104,12 @@ Teraz Przypisz użytkownika do testowania aplikacji i wybierz pozycję Logowanie
 
    ![Pokazuje listę użytkowników i grup](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
 
-1. Wybierz użytkownika do testowania aplikacji, a następnie wybierz pozycję **Wybierz**. Upewnij się, że to konto testowe ma dostęp do aplikacji lokalnej.
+1. Wybierz użytkownika do testowania aplikacji, a następnie wybierz pozycję **Wybierz**. Upewnij się, że to konto testu ma dostęp do aplikacji w środowisku lokalnym.
 1. Wybierz opcję **Przypisz**.
 1. Na pasku bocznym aplikacji wybierz pozycję **Logowanie** jednokrotne > **na podstawie nagłówka**.
 
    > [!TIP]
-   > Jeśli używasz logowania jednokrotnego opartego na nagłówkach, musisz zainstalować PingAccess. Aby upewnić się, że subskrypcja platformy Azure jest automatycznie skojarzona z instalacją PingAccess, Użyj linku na tej stronie logowania jednokrotnego, aby pobrać PingAccess. Możesz otworzyć witrynę pobierania teraz lub wrócić do tej strony później.
+   > Jeśli po raz pierwszy przy użyciu opartej na nagłówkach logowania jednokrotnego, musisz zainstalować oprogramowanie PingAccess. Aby upewnić się, że Twoja subskrypcja platformy Azure jest automatycznie kojarzony z instalacji oprogramowanie PingAccess, użyj łącza w tym — strona logowanie jednokrotne można pobrać oprogramowanie PingAccess. Możesz teraz otworzyć witryny pobierania lub późniejszy powrót do tej strony.
 
    ![Pokazuje ekran logowania na podstawie nagłówka i PingAccess](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
 
@@ -133,14 +133,14 @@ Na koniec Skonfiguruj swoją aplikację lokalną, aby użytkownicy mieli dostęp
 1. Wybierz pozycję **Dodaj uprawnienia**.
 1. Na stronie **uprawnienia interfejsu API** wybierz pozycję **Udziel zgody administrator na \<nazwy katalogu >** .
 
-#### <a name="collect-information-for-the-pingaccess-steps"></a>Zbierz informacje dotyczące kroków PingAccess
+#### <a name="collect-information-for-the-pingaccess-steps"></a>Gromadzenie informacji o krokach PingAccess
 
 Należy zebrać te trzy informacje (wszystkie identyfikatory GUID) w celu skonfigurowania aplikacji za pomocą PingAccess:
 
 | Nazwa pola usługi Azure AD | Nazwa pola PingAccess | Format danych |
 | --- | --- | --- |
-| **Identyfikator aplikacji (klienta)** | **Client ID (Identyfikator klienta)** | IDENT |
-| **Identyfikator katalogu (dzierżawcy)** | **Issuer** | IDENT |
+| **Identyfikator aplikacji (klienta)** | **Client ID (Identyfikator klienta)** | Identyfikator GUID |
+| **Identyfikator katalogu (dzierżawcy)** | **Issuer** | Identyfikator GUID |
 | `PingAccess key` | **Client Secret (Wpis tajny klienta)** | Ciąg losowy |
 
 Aby zebrać te informacje:
@@ -161,21 +161,7 @@ Aby zebrać te informacje:
 1. Wybierz pozycję **Dodaj**. Klucz PingAccess jest wyświetlany w tabeli wpisów tajnych klienta z losowym ciągiem, który jest wypełniany w polu **wartość** .
 1. Obok pola **wartość** klucza PingAccess wybierz ikonę **Kopiuj do schowka** , a następnie skopiuj i Zapisz. Tę wartość można określić później jako klucz tajny klienta PingAccess.
 
-### <a name="update-graphapi-to-send-custom-fields-optional"></a>Aktualizacja GraphAPI do wysyłania pól niestandardowych (opcjonalnie)
-
-Jeśli potrzebujesz niestandardowego żądania, które wysyła inne tokeny w access_token używane przez PingAccess, ustaw `acceptMappedClaims` pole aplikacji na `True`. Aby wprowadzić tę zmianę, można użyć Eksploratora grafów lub manifestu aplikacji portalu usługi Azure AD.
-
-**W tym przykładzie użyto Eksploratora wykresów:**
-
-```
-PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_your_application>
-
-{
-  "acceptMappedClaims":true
-}
-```
-
-**W tym przykładzie do aktualizowania pola `acceptMappedClaims` służy [Azure Active Directory Portal](https://aad.portal.azure.com/) :**
+**Aktualizowanie pola `acceptMappedClaims`:**
 
 1. Zaloguj się do [portalu Azure Active Directory](https://aad.portal.azure.com/) jako administrator aplikacji.
 1. Wybierz **Azure Active Directory** > **rejestracje aplikacji**. Zostanie wyświetlona lista aplikacji.
@@ -188,7 +174,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 
 Opcjonalne oświadczenia umożliwiają dodawanie niestandardowych oświadczeń, które nie są uwzględniane przez wszystkich użytkowników i dzierżawców. Można skonfigurować opcjonalne oświadczenia dla aplikacji, modyfikując manifest aplikacji. Aby uzyskać więcej informacji, zobacz [artykuł Omówienie manifestu aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest/)
 
-Przykład, aby uwzględnić adres e-mail w access_token, który będzie zużywał PingAccess:
+Przykład do dołączania adresu e-mail do access_token, które będą używane przez PingAccess:
 ```
     "optionalClaims": {
         "idToken": [],
@@ -211,9 +197,9 @@ Przykład, aby uwzględnić adres e-mail w access_token, który będzie zużywa�
 Aby aplikacja korzystała z oświadczenia niestandardowego i zawierać dodatkowe pola, upewnij się, że utworzono również [niestandardowe zasady mapowania oświadczeń i przypisano je do aplikacji](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 > [!NOTE]
-> Aby można było użyć niestandardowego żądania, należy także mieć zasady niestandardowe zdefiniowane i przypisane do aplikacji. Te zasady powinny obejmować wszystkie wymagane atrybuty niestandardowe.
+> Aby użyć oświadczenia niestandardowego, musi również mieć zasad niestandardowych, zdefiniowanych i przypisane do aplikacji. Ta zasada powinna zawierać wszystkie wymagane atrybutów niestandardowych.
 >
-> Możesz wykonywać definicje zasad i przypisywać je za pomocą programu PowerShell, Eksploratora Azure AD Graph lub Microsoft Graph. Jeśli wykonujesz je w programie PowerShell, może być konieczne pierwsze użycie `New-AzureADPolicy`, a następnie przypisanie go do aplikacji przy użyciu `Add-AzureADServicePrincipalPolicy`. Aby uzyskać więcej informacji, zobacz [przypisywanie zasad mapowania oświadczeń](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+> Można wykonywać definicje zasad i przypisywać je za poorednictwem programu PowerShell lub Microsoft Graph. Jeśli wykonujesz je w programie PowerShell, może być konieczne pierwsze użycie `New-AzureADPolicy`, a następnie przypisanie go do aplikacji przy użyciu `Add-AzureADServicePrincipalPolicy`. Aby uzyskać więcej informacji, zobacz [przypisywanie zasad mapowania oświadczeń](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 Przykład:
 ```powershell
@@ -230,11 +216,11 @@ Gdy skonfigurujesz PingAccess w poniższym kroku, sesja sieci Web, którą utwor
 
 ## <a name="download-pingaccess-and-configure-your-application"></a>Pobieranie PingAccess i Konfigurowanie aplikacji
 
-Po wykonaniu wszystkich czynności konfiguracyjnych Azure Active Directory można przejść do sekcji Konfigurowanie PingAccess.
+Teraz, że ukończono wszystkie kroki konfiguracji usługi Azure Active Directory, możesz przejść do konfigurowania PingAccess.
 
 Szczegółowe instrukcje dotyczące części PingAccess tego scenariusza są kontynuowane w dokumentacji ping Identity. Postępuj zgodnie z instrukcjami w temacie [Konfigurowanie PingAccess dla usługi Azure AD, aby chronić aplikacje opublikowane przy użyciu Microsoft Azure AD serwera proxy aplikacji](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html) w witrynie sieci Web usługi ping Identity.
 
-Te kroki ułatwiają zainstalowanie PingAccess i skonfigurowanie konta PingAccess (jeśli jeszcze go nie masz). Następnie w celu utworzenia połączenia usługi Azure AD OpenID Connect Connect (OIDC) można skonfigurować dostawcę tokenów z wartością **identyfikatora katalogu (dzierżawa)** skopiowaną z portalu usługi Azure AD. Następnie, aby utworzyć sesję sieci Web w usłudze PingAccess, użyj wartości **identyfikatora aplikacji (klienta)** i `PingAccess key`. Następnie można skonfigurować mapowanie tożsamości i utworzyć hosta wirtualnego, witryny i aplikacji.
+Te kroki ułatwiają zainstalowanie PingAccess i skonfigurowanie konta PingAccess (jeśli jeszcze go nie masz). Następnie w celu utworzenia połączenia usługi Azure AD OpenID Connect Connect (OIDC) można skonfigurować dostawcę tokenów z wartością **identyfikatora katalogu (dzierżawa)** skopiowaną z portalu usługi Azure AD. Następnie, aby utworzyć sesję sieci Web w usłudze PingAccess, użyj wartości **identyfikatora aplikacji (klienta)** i `PingAccess key`. Po tym można Konfigurowanie mapowania tożsamości i utworzyć hostów wirtualnych, witryn i aplikacji.
 
 ### <a name="test-your-application"></a>Testowanie aplikacji
 

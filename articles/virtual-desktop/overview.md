@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 168a345427be47dc1c33f43be1af47daa8f638ef
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7b8eed501571bdd3e7372a348ba34d0632ca2cd8
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772787"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367284"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co to jest Windows Virtual Desktop? 
 
@@ -72,7 +72,7 @@ Planujemy dodanie obsługi następujących systemów operacyjnych, więc upewnij
 
 Aby zapewnić obsługę pulpitu wirtualnego systemu Windows, Twoja infrastruktura wymaga następujących czynności:
 
-* [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+* [Azure Active Directory](/active-directory/)
 * Active Directory systemu Windows Server synchronizacja z Azure Active Directory. Można to skonfigurować przy użyciu jednego z następujących elementów:
   * Azure AD Connect (dla organizacji hybrydowych)
   * Azure AD Domain Services (dla organizacji hybrydowych lub w chmurze)
@@ -80,7 +80,7 @@ Aby zapewnić obsługę pulpitu wirtualnego systemu Windows, Twoja infrastruktur
   
 Maszyny wirtualne platformy Azure tworzone dla pulpitu wirtualnego systemu Windows muszą być:
 
-* [Standardowe przyłączone do domeny](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) lub [hybrydowe usługi AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Maszyny wirtualne nie mogą być przyłączone do usługi Azure AD.
+* [Standardowe przyłączone do domeny](../active-directory-domain-services/active-directory-ds-comparison.md) lub [hybrydowe usługi AD](../active-directory/devices/hybrid-azuread-join-plan.md). Maszyny wirtualne nie mogą być przyłączone do usługi Azure AD.
 * Uruchamianie jednego z następujących [obsługiwanych obrazów systemu operacyjnego](#supported-virtual-machine-os-images).
 
 >[!NOTE]
@@ -145,14 +145,14 @@ Dostępne opcje automatyzacji i wdrażania zależą od wybranego systemu operacy
 
 |System operacyjny|Galeria obrazów platformy Azure|Ręczne wdrożenie maszyny wirtualnej|Integracja z szablonem Azure Resource Manager|Inicjowanie obsługi pul hostów w witrynie Azure Marketplace|Aktualizacje agenta pulpitu wirtualnego systemu Windows|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Wiele sesji systemu Windows 10, wersja 1903|Tak|Tak|Tak|Tak|Automatyczny|
-|Wiele sesji systemu Windows 10, wersja 1809|Tak|Tak|Nie|Nie|Automatyczny|
-|Windows 10 Enterprise, wersja 1903|Tak|Tak|Tak|Tak|Automatyczny|
-|Windows 10 Enterprise, wersja 1809|Tak|Tak|Nie|Nie|Automatyczny|
-|Windows 7 Enterprise|Tak|Tak|Nie|Nie|Ręczna|
-|Windows Server 2019|Tak|Tak|Nie|Nie|Automatyczny|
-|Windows Server 2016|Tak|Tak|Tak|Tak|Automatyczny|
-|Windows Server 2012 R2|Tak|Tak|Nie|Nie|Automatyczny|
+|Wiele sesji systemu Windows 10, wersja 1903|Yes|Yes|Yes|Yes|Automatyczny|
+|Wiele sesji systemu Windows 10, wersja 1809|Yes|Yes|Nie|Nie|Automatyczny|
+|Windows 10 Enterprise, wersja 1903|Yes|Yes|Yes|Yes|Automatyczny|
+|Windows 10 Enterprise, wersja 1809|Yes|Yes|Nie|Nie|Automatyczny|
+|Windows 7 Enterprise|Yes|Yes|Nie|Nie|Ręcznie|
+|Windows Server 2019|Yes|Yes|Nie|Nie|Automatyczny|
+|Windows Server 2016|Yes|Yes|Yes|Yes|Automatyczny|
+|Windows Server 2012 R2|Yes|Yes|Nie|Nie|Automatyczny|
 
 ## <a name="next-steps"></a>Następne kroki
 

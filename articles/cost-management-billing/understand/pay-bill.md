@@ -2,22 +2,22 @@
 title: Opłacanie rachunku za korzystanie z platformy Microsoft Azure | Microsoft Docs
 description: W tym artykule opisano, jak opłacić fakturę w witrynie Azure Portal
 keywords: rozliczenie, zaległe, saldo, zapłać teraz,
-author: jureid
-manager: jureid
+author: banders
+manager: judupont
 tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: d486fe72a43465832ca13ac1a62a7f0a9aeaa65e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 214382693d942152d82b7ae5e487969b8ebaeaff
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989711"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188123"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Jak zapłacić rachunek za korzystanie z platformy Microsoft Azure
 
@@ -35,21 +35,12 @@ Aby opłacać faktury w witrynie Azure Portal, musisz być właścicielem, wspó
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com).
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
-1. W bloku **Przegląd** kliknij kartę *Podsumowanie*.
-
-    ![zrzut ekranu przedstawiający kartę Podsumowanie](./media/pay-bill/billing-account-overview.png)
-
-1. Jeśli masz bieżące lub zaległe faktury, zobaczysz łączną należną kwotę.
-1. Kliknij niebieski przycisk **Zapłać teraz**.
-
-    ![zrzut ekranu przedstawiający przycisk Zapłać teraz](./media/pay-bill/paynow-button-overview.png)
-
-1. W nowym bloku kliknij pozycję **Wybierz metodę płatności**, aby wybrać istniejącą kartę kredytową lub dodać nową.<!-- screenshot of select payment method link -->
+1. Z menu po lewej stronie wybierz pozycję **Faktury** w obszarze „Rozliczenia”.
+1. Jeśli dowolna z Twoich faktur jest należna lub opóźniona, zobaczysz niebieski link **Zapłać teraz** dla tej faktury. Wybierz link **Zapłać teraz**.
+1. W nowym bloku kliknij pozycję **Wybierz metodę płatności**, aby wybrać istniejącą kartę kredytową lub dodać nową.
 1. Po wybraniu metody płatności kliknij pozycję **Zapłać teraz**.
 
 W bloku faktur stan faktury zostanie zmieniony na opłacony.
-
-<!-- pay now from invoice blade -->
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a3b1b38063dcef1c61fbfb6fec529aeeed40a662
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121368"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367777"
 ---
 # <a name="how-provisioning-works"></a>Jak działa aprowizacja
 
@@ -91,7 +91,7 @@ Należy pamiętać, że element userPrincipalName dla użytkownika-gościa jest 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Cykle aprowizacji: początkowe i przyrostowe
 
-Gdy usługa Azure AD jest systemem źródłowym, do monitorowania użytkowników i grup za pomocą [funkcji tworzenia zapytań różnicowych usługi Azure ad interfejs API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query) . Usługa aprowizacji uruchamia cykl początkowy względem systemu źródłowego i systemu docelowego, a następnie okresowe cykle przyrostowe.
+Gdy usługa Azure AD jest systemem źródłowym, w usłudze aprowizacji są używane [zapytania różnicowe do śledzenia zmian w Microsoft Graph danych](https://docs.microsoft.com/graph/delta-query-overview) w celu monitorowania użytkowników i grup. Usługa aprowizacji uruchamia cykl początkowy względem systemu źródłowego i systemu docelowego, a następnie okresowe cykle przyrostowe.
 
 ### <a name="initial-cycle"></a>Cykl początkowy
 
@@ -142,8 +142,8 @@ Po początkowym cyklu wszystkie pozostałe cykle będą:
 
 Usługa aprowizacji nadal uruchamia cykliczne cykle przyrostowe, w odstępach czasu zdefiniowanych w [samouczku specyficznym dla każdej aplikacji](../saas-apps/tutorial-list.md). Cykle przyrostowe są kontynuowane do momentu wystąpienia jednego z następujących zdarzeń:
 
-- Usługa została zatrzymana ręcznie przy użyciu Azure Portal lub przy użyciu odpowiedniego polecenia interfejs API programu Graph 
-- Nowy cykl początkowy jest wyzwalany przy użyciu opcji **Wyczyść stan i uruchom ponownie** w Azure Portal lub przy użyciu odpowiedniego polecenia interfejs API programu Graph. Ta akcja Czyści wszystkie przechowywane znaki wodne i powoduje ponowną ocenę wszystkich obiektów źródłowych.
+- Usługa została zatrzymana ręcznie przy użyciu Azure Portal lub przy użyciu odpowiedniego polecenia API Microsoft Graph.
+- Nowy cykl początkowy jest wyzwalany przy użyciu opcji **Wyczyść stan i uruchom ponownie** w Azure Portal lub przy użyciu odpowiedniego polecenia API Microsoft Graph. Ta akcja Czyści wszystkie przechowywane znaki wodne i powoduje ponowną ocenę wszystkich obiektów źródłowych.
 - Nowy początkowy cykl jest wyzwalany ze względu na zmianę mapowań atrybutów lub filtrów określania zakresu. Ta akcja Czyści również wszystkie przechowywane znaki wodne i powoduje ponowne obliczenie wszystkich obiektów źródłowych.
 - Proces aprowizacji jest kierowany do kwarantanny (patrz poniżej) z powodu wysokiego współczynnika błędów i pozostaje w kwarantannie przez ponad cztery tygodnie. W tym zdarzeniu usługa zostanie automatycznie wyłączona.
 

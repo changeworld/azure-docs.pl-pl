@@ -105,9 +105,9 @@
           href: search-sku-tier.md
         - name: Limity usługi
           href: search-limits-quotas-capacity.md
-        - name: Skalowanie partycji i replik
+        - name: Dostosowywanie pojemności
           href: search-capacity-planning.md
-        - name: Strategie wdrażania i najlepsze rozwiązania
+        - name: Skalowanie pod kątem wydajności
           href: search-performance-optimization.md
         - name: Architektura wielodostępności
           href: search-modeling-multitenant-saas-applications.md
