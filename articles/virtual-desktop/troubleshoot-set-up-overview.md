@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 02/07/2020
 ms.author: helohr
-ms.openlocfilehash: dc4e4e271ac7108f4c29c82646e9849b9a5cd929
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 730d12625b134f411096b4b49641b79efb1a0d26
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110787"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368746"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Rozwiązywania problemów — omówienie, opinie i obsługa techniczna
 
@@ -24,7 +24,7 @@ Odwiedź [społeczność Tech. pulpitu wirtualnego systemu Windows](https://tech
 
 ## <a name="escalation-tracks"></a>Śledzenie eskalacji
 
-Skorzystaj z poniższej tabeli, aby zidentyfikować i rozwiązać problemy, które mogą wystąpić podczas konfigurowania środowiska dzierżawy przy użyciu Pulpit zdalny klienta. Po skonfigurowaniu dzierżawy możesz użyć naszej nowej [usługi diagnostycznej](https://docs.microsoft.com/azure/virtual-desktop/diagnostics-role-service) , aby zidentyfikować problemy dla typowych scenariuszy.
+Skorzystaj z poniższej tabeli, aby zidentyfikować i rozwiązać problemy, które mogą wystąpić podczas konfigurowania środowiska dzierżawy przy użyciu Pulpit zdalny klienta. Po skonfigurowaniu dzierżawy możesz użyć naszej nowej [usługi diagnostycznej](diagnostics-role-service.md) , aby zidentyfikować problemy dla typowych scenariuszy.
 
 >[!NOTE]
 > Mamy forum społeczności Tech., które można odwiedzić, aby omówić Twoje problemy z zespołem produktu i aktywnymi członkami społeczności. Odwiedź [społeczność Tech. pulpitu wirtualnego systemu Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , aby rozpocząć dyskusję.
@@ -38,7 +38,7 @@ Skorzystaj z poniższej tabeli, aby zidentyfikować i rozwiązać problemy, któ
 | Tworzenie maszyny wirtualnej puli hostów sesji, gdy Azure Resource Manager szablony udostępniane z pulpitem wirtualnym systemu Windows nie są używane | [Otwórz żądanie pomocy technicznej platformy Azure](https://azure.microsoft.com/support/create-ticket/), a następnie wybierz **maszynę wirtualną z systemem Windows** dla usługi. <br> <br> Problemy z szablonami Azure Resource Manager dostarczanymi z pulpitem wirtualnym systemu Windows można znaleźć w sekcji Tworzenie dzierżawy pulpitu wirtualnego systemu Windows w ramach [tworzenia dzierżawy i puli hostów](troubleshoot-set-up-issues.md). |
 | Zarządzanie środowiskiem hosta sesji usług pulpitu wirtualnego systemu Windows z Azure Portal    | [Otwórz żądanie pomocy technicznej platformy Azure](https://azure.microsoft.com/support/create-ticket/). <br> <br> W przypadku problemów z zarządzaniem przy użyciu programu PowerShell Usługi pulpitu zdalnego/Windows Virtual Desktop, zobacz [Windows Virtual Desktop PowerShell](troubleshoot-powershell.md) lub [Otwórz żądanie pomocy technicznej platformy Azure](https://azure.microsoft.com/support/create-ticket/), wybierz pozycję **pulpit wirtualny systemu Windows** dla usługi, wybierz pozycję **Konfiguracja i zarządzanie** dla typu problemu, a następnie wybierz pozycję **problemy Konfigurowanie dzierżawcy przy użyciu programu PowerShell** dla typu problemu. |
 | Zarządzanie konfiguracją pulpitu wirtualnego systemu Windows powiązane z pulami hostów i grupami aplikacji (grupami aplikacji)      | Zobacz [Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)lub [Otwórz żądanie pomocy technicznej platformy Azure](https://azure.microsoft.com/support/create-ticket/), wybierz pozycję **pulpit wirtualny systemu Windows** dla usługi, a następnie wybierz odpowiedni typ problemu.|
-| Wdrażanie kontenerów profilów FSLogix i zarządzanie nimi | Zobacz [Przewodnik rozwiązywania problemów dotyczących produktów FSLogix](https://docs.microsoft.com/fslogix/fslogix-trouble-shooting-ht) i jeśli nie rozwiąże to problemu, [Otwórz żądanie pomocy technicznej platformy Azure](https://azure.microsoft.com/support/create-ticket/), wybierz pozycję **pulpit wirtualny systemu Windows** dla usługi, wybierz pozycję **FSLogix** dla typu problemu, a następnie wybierz odpowiedni podtyp problemu. |
+| Wdrażanie kontenerów profilów FSLogix i zarządzanie nimi | Zobacz [Przewodnik rozwiązywania problemów dotyczących produktów FSLogix](/fslogix/fslogix-trouble-shooting-ht/) i jeśli nie rozwiąże to problemu, [Otwórz żądanie pomocy technicznej platformy Azure](https://azure.microsoft.com/support/create-ticket/), wybierz pozycję **pulpit wirtualny systemu Windows** dla usługi, wybierz pozycję **FSLogix** dla typu problemu, a następnie wybierz odpowiedni podtyp problemu. |
 | Klient pulpitu zdalnego działa nieprawidłowo przy uruchomieniu                                                 | Zobacz [Rozwiązywanie problemów z klientem pulpit zdalny](troubleshoot-client.md) i jeśli nie rozwiąże problemu, [Otwórz żądanie pomocy technicznej platformy Azure](https://azure.microsoft.com/support/create-ticket/), wybierz pozycję **pulpit wirtualny systemu Windows** dla usługi, a następnie wybierz pozycję **pulpit zdalny klienci** dla typu problemu.  <br> <br> Jeśli jest to problem z siecią, użytkownicy muszą skontaktować się z administratorem sieci. |
 | Połączony, ale brak kanału informacyjnego                                                                 | Rozwiązywanie problemów przy użyciu [użytkownika nawiązuje połączenie, ale nic nie jest wyświetlane (brak kanału informacyjnego)](troubleshoot-service-connection.md#user-connects-but-nothing-is-displayed-no-feed) w obszarze [połączenia usługi pulpitu wirtualnego systemu Windows](troubleshoot-service-connection.md). <br> <br> Jeśli użytkownicy zostali przypisani do grupy aplikacji, [Otwórz żądanie pomocy technicznej platformy Azure](https://azure.microsoft.com/support/create-ticket/), wybierz pozycję **pulpit wirtualny systemu Windows** dla usługi, a następnie wybierz pozycję **pulpit zdalny klienci** dla typu problemu. |
 | Problemy z odnajdywaniem źródła danych ze względu na sieć                                            | Użytkownicy muszą skontaktować się z administratorem sieci. |

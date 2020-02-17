@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 02/14/2020
 ms.author: mlearned
-ms.openlocfilehash: bbfb65c31bf6fd46cc18c9eee66086afbbff1d5f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 20cef402a81ef348d4492daf05e6b16a8d9f709f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157978"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365180"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Tworzenie i zarządzanie wieloma pulami węzłów dla klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -453,6 +453,61 @@ Events:
 
 Na węzłach w *gpunodepool*można zaplanować tylko te zasobniki, do których zastosowano ten przedział. Wszystkie inne na stronie zaplanowano w puli węzłów *nodepool1* . W przypadku tworzenia dodatkowych pul węzłów można użyć dodatkowych przydziałów i tolerowania, aby ograniczyć liczbę elementów, które można zaplanować w tych zasobach węzła.
 
+## <a name="specify-a-tag-for-a-node-pool"></a>Określ tag dla puli węzłów
+
+Możesz zastosować tag platformy Azure do pul węzłów w klastrze AKS. Tagi zastosowane do puli węzłów są stosowane do każdego węzła w puli węzłów i są utrwalane za pomocą uaktualnień. Tagi są również stosowane do nowych węzłów dodanych do puli węzłów podczas operacji skalowania w poziomie. Dodanie tagu może ułatwić wykonywanie zadań, takich jak śledzenie zasad lub szacowanie kosztów.
+
+> [!IMPORTANT]
+> Aby można było używać tagów puli węzłów, wymagany jest interfejs wiersza polecenia *AKS-Preview* w wersji 0.4.29 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji zapoznawczej* przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] :
+> 
+> ```azurecli-interactive
+> # Install the aks-preview extension
+> az extension add --name aks-preview
+> 
+> # Update the extension to make sure you have the latest version installed
+> az extension update --name aks-preview
+> ```
+
+Utwórz pulę węzłów za pomocą polecenia [AZ AKS Node Pool Add][az-aks-nodepool-add]. Określ nazwę *tagnodepool* i użyj parametru `--tag`, aby określić *Wydział = IT* i *costcenter = 9999* dla tagów.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name tagnodepool \
+    --node-count 1 \
+    --tags dept=IT costcenter=9999 \
+    --no-wait
+```
+
+> [!NOTE]
+> Za pomocą polecenia [AZ AKS nodepool Update][az-aks-nodepool-update] można także użyć parametru `--tags`, jak również podczas tworzenia klastra. Podczas tworzenia klastra `--tags` parametr stosuje tag do początkowej puli węzłów utworzonej w klastrze. Wszystkie nazwy tagów muszą być zgodne z ograniczeniami w sposobie [używania tagów do organizowania zasobów platformy Azure][tag-limitation]. Aktualizacja puli węzłów za pomocą parametru `--tags` aktualizuje wszystkie istniejące wartości tagów i dołącza wszelkie nowe tagi. Na przykład jeśli Pula węzłów ma *Wydział = IT* i *costcenter = 9999* dla tagów i Zaktualizowano ją z *zespołem = dev* i *costcenter = 111* dla tagów, nodepool byłoby miały *Wydział = IT*, *costcenter = 111*i *zespół = dev* for Tags.
+
+Następujące przykładowe dane wyjściowe z polecenia [AZ AKS nodepool list][az-aks-nodepool-list] pokazują, że *taggednodepool* *tworzy* węzły z określonym *tagiem*:
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "tagnodepool",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "tags": {
+      "dept": "IT",
+      "costcenter": "9999"
+    },
+    ...
+  },
+ ...
+]
+```
+
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>Zarządzanie pulami węzłów przy użyciu szablonu Menedżer zasobów
 
 W przypadku tworzenia i zarządzania zasobami przy użyciu szablonu Azure Resource Manager można zwykle zaktualizować ustawienia w szablonie i wdrożyć je ponownie w celu zaktualizowania zasobu. W przypadku pul węzłów w AKS nie można zaktualizować profilu początkowej puli węzłów po utworzeniu klastra AKS. To zachowanie oznacza, że nie można zaktualizować istniejącego szablonu Menedżer zasobów, wprowadzić zmiany w pulach węzłów i ponownie wdrożyć. Zamiast tego należy utworzyć oddzielny szablon Menedżer zasobów, który aktualizuje tylko pule węzłów dla istniejącego klastra AKS.
@@ -603,21 +658,25 @@ Aby utworzyć i użyć pul węzłów kontenera systemu Windows Server, zobacz [T
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 <!-- INTERNAL LINKS -->
-[quotas-skus-regions]: quotas-skus-regions.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-group-create]: /cli/azure/group#az-group-create
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-nodepool-add]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-list
-[az-aks-nodepool-upgrade]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-delete
-[vm-sizes]: ../virtual-machines/linux/sizes.md
-[taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
-[gpu-cluster]: gpu-cluster.md
-[az-group-delete]: /cli/azure/group#az-group-delete
-[install-azure-cli]: /cli/azure/install-azure-cli
-[supported-versions]: supported-kubernetes-versions.md
-[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-windows]: windows-container-cli.md
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-delete
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-group-create]: /cli/azure/group#az-group-create
+[az-group-delete]: /cli/azure/group#az-group-delete
 [az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[gpu-cluster]: gpu-cluster.md
+[install-azure-cli]: /cli/azure/install-azure-cli
+[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[quotas-skus-regions]: quotas-skus-regions.md
+[supported-versions]: supported-kubernetes-versions.md
+[tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
+[taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
+[vm-sizes]: ../virtual-machines/linux/sizes.md

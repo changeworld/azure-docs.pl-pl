@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/16/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd744e6283b00b0dfdd50805cb628f5bc40ab8d6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e814d9be4a0db2852bd9e21f3d3c1d54a45bd268
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846138"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368649"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Kształt zdarzeń za pomocą usługi Azure czas Series Insights w wersji zapoznawczej
 
 Ten artykuł pomaga w utworzeniu kształtu pliku JSON na potrzeby pozyskiwania i zmaksymalizowania wydajności zapytań Azure Time Series Insights w wersji zapoznawczej.
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 
 Zastanów się, jak wysyłasz zdarzenia do Time Series Insights wersji zapoznawczej. To znaczy należy zawsze:
 
@@ -80,7 +80,7 @@ Wystąpienie szeregów czasowych zawiera metadane urządzenia. Te metadane nie z
 ### <a name="time-series-instance"></a>Wystąpienia serii czasu 
 
 > [!NOTE]
-> Identyfikator serii czasu jest *deviceId*.
+> Identyfikator szeregów czasowych to *deviceId*.
 
 ```JSON
 [
@@ -115,7 +115,7 @@ Wystąpienie szeregów czasowych zawiera metadane urządzenia. Te metadane nie z
 ]
 ```
 
-Czas Series Insights w wersji zapoznawczej łączy tabeli (po spłaszczanie) podczas przeszukiwania. W tabeli przedstawiono dodatkowe kolumny **typu**. W poniższym przykładzie pokazano, jak można [kształtować](./time-series-insights-send-events.md#supported-json-shapes) dane telemetryczne.
+Czas Series Insights w wersji zapoznawczej łączy tabeli (po spłaszczanie) podczas przeszukiwania. Tabela zawiera dodatkowe kolumny, takie jak **Type**. W poniższym przykładzie pokazano, jak można [kształtować](./time-series-insights-send-events.md#supported-json-shapes) dane telemetryczne.
 
 | deviceId  | Typ | L1 | PAMIĘCI PODRĘCZNEJ L2 | sygnatura czasowa | Częstotliwość series_Flow ft3/s | series_Engine z użyciem nacisku oleju |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -148,7 +148,7 @@ Weź pod uwagę następujące dane JSON:
   "data_flow" : 1.76435072345733643
 }
 ```
-W powyższym przykładzie właściwość spłaszczone `data_flow` zaprezentuje kolizję nazw z właściwością `data_flow`. W takim przypadku *Najnowsza* wartość właściwości spowoduje zastąpienie wcześniejszej wartości. Jeśli to zachowanie jest wyzwaniem dla scenariuszy firmy, skontaktuj się z zespołem ds. platformy TSI.
+W powyższym przykładzie właściwość spłaszczone `data_flow` zaprezentuje kolizję nazw z właściwością `data_flow`. W takim przypadku *Najnowsza* wartość właściwości spowoduje zastąpienie wcześniejszej wartości. Jeśli takie zachowanie przedstawia wyzwanie dla scenariuszy firmy, skontaktuj się z zespołem ds. platformy TSI.
 
 > [!WARNING] 
 > W przypadkach, gdy zduplikowane właściwości znajdują się w tym samym ładunku zdarzeń z powodu spłaszczania lub innego mechanizmu, najnowsza wartość właściwości jest przechowywana, overwritting wszystkie poprzednie wartości.

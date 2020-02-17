@@ -1,6 +1,6 @@
 ---
-title: Przegląd architektury — Azure Active Directory | Microsoft Docs
-description: Dowiedz się, co to jest Azure Active Directory dzierżawa i jak zarządzać platformą Azure przy użyciu Azure Active Directory.
+title: Omówienie architektury — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jakie dzierżawy usługi Azure Active Directory i jak nią zarządzać za pomocą usługi Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -13,14 +13,14 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d0511f008a3d5bc39a0fb2d9406d33b72dbede6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 854fb4649f8c1113f20abe5807dd0ce473ba6ee3
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532940"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368068"
 ---
-# <a name="what-is-the-azure-active-directory-architecture"></a>Co to jest architektura Azure Active Directory?
+# <a name="what-is-the-azure-active-directory-architecture"></a>Co to jest architektura usługi Azure Active Directory?
 
 Usługa Azure Active Directory (Azure AD) umożliwia bezpieczne zarządzanie dostępem do usług i zasobów platformy Azure dla użytkowników. W ramach usługi Azure AD można skorzystać z pełnego zestawu możliwości zarządzania tożsamościami. Aby uzyskać więcej informacji na temat funkcji usługi Azure AD, zobacz [Co to jest usługa Azure Active Directory?](active-directory-whatis.md)
 
@@ -28,7 +28,7 @@ Za pomocą usługi Azure AD możesz tworzyć użytkowników i grupy oraz zarząd
 
 ## <a name="azure-ad-architecture"></a>Architektura usługi Azure AD
 
-Architektura rozproszona geograficznie usługi Azure AD obejmuje szerokie możliwości monitorowania, zautomatyzowanego ponownego routingu, pracy w trybie failover i odzyskiwania, które zapewniają klientom dostępność i wydajność w całej firmie.
+Rozproszona geograficznie Architektura usługi Azure AD łączy rozbudowane monitorowanie, automatyczne przekierowywanie, pracy awaryjnej i funkcje odzyskiwania, które dostarczają firmie dostępność i wydajność dla klientów.
 
 W tym artykule omówione są następujące elementy architektury:
 
@@ -59,15 +59,15 @@ Wszystkie *odczyty* katalogów są obsługiwane z *replik pomocniczych*, które 
 
 Skalowalność to możliwość rozszerzania działania usługi w związku z rosnącymi wymaganiami dotyczącymi wydajności. Skalowalność zapisu jest osiągana przez partycjonowanie danych. Skalowalność odczytu uzyskuje się przez replikację danych z jednej partycji do wielu replik pomocniczych rozproszonych na całym świecie.
 
-Żądania z aplikacji katalogu są kierowane do centrum danych, które są fizycznie najbliższe. Zapisy są w sposób niewidoczny dla użytkownika przekierowywane do repliki podstawowej w celu zapewnienia spójności odczytu i zapisu. Repliki pomocnicze znacznie rozszerzają skalę partycji, ponieważ katalogi zazwyczaj przez większość czasu obsługują operacje odczytu.
+Żądania z katalogu aplikacji są kierowane do centrum danych, które jest im fizycznie najbliższe. Zapisy są w sposób niewidoczny dla użytkownika przekierowywane do repliki podstawowej w celu zapewnienia spójności odczytu i zapisu. Repliki pomocnicze znacznie rozszerzają skalę partycji, ponieważ katalogi zazwyczaj przez większość czasu obsługują operacje odczytu.
 
-Aplikacje katalogów nawiązują połączenie z najbliższymi centrami danych. To połączenie zwiększa wydajność i w związku z tym skalowanie jest możliwe. Ponieważ partycje katalogów mogą mieć wiele replik pomocniczych, repliki pomocnicze można umieścić bliżej klientów katalogu. Tylko wewnętrzne składniki usługi katalogu przeprowadzające wiele operacji odczytu bezpośrednio komunikują się z aktywną repliką podstawową.
+Aplikacje katalogów nawiązują połączenie z najbliższymi centrami danych. To połączenie umożliwia zwiększenie wydajności i skalowania w poziomie jest możliwe. Ponieważ partycje katalogów mogą mieć wiele replik pomocniczych, repliki pomocnicze można umieścić bliżej klientów katalogu. Tylko wewnętrzne składniki usługi katalogu przeprowadzające wiele operacji odczytu bezpośrednio komunikują się z aktywną repliką podstawową.
 
 ### <a name="continuous-availability"></a>Ciągła dostępność
 
 Dostępność (lub czas dostępności) definiuje możliwość wykonywania przez system nieprzerwanej pracy. Klucz do wysokiej dostępności w usłudze Azure AD polega na tym, że usługi mogą szybko przenoszony ruch na wiele rozproszonych geograficznie centrów danych. Każde centrum danych jest niezależne, co umożliwia usuwanie nieskorelowanych trybów awarii. W tym projekcie o wysokiej dostępności usługa Azure AD nie wymaga żadnych przestojów w przypadku działań konserwacyjnych.
 
-Projekt partycji usługi Azure AD jest uproszczony w porównaniu z projektem przedsiębiorstwa usługi AD przy użyciu jednego wzorca, który obejmuje starannie zorganizowany i deterministyczny proces trybu failover repliki podstawowej.
+Projekt partycji usługi Azure AD jest uproszczony w porównaniu do organizacyjnego projektu usługi AD, przy użyciu projekt pojedynczego elementu głównego, który obejmuje starannie zorganizowany i deterministyczny replikę podstawową procesu trybu failover.
 
 #### <a name="fault-tolerance"></a>Odporność na uszkodzenia
 
@@ -81,8 +81,8 @@ Zapis jest trwale zatwierdzany do co najmniej dwóch centrów danych przed potwi
 
 Usługa Azure AD utrzymuje zerowy [cel czasu odzyskiwania (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) , aby nie utracić danych w trybie failover. Obejmuje to:
 
-* Wystawianie tokenów i odczyty katalogów
-* Zezwalanie na zapisywanie w katalogu tylko około 5 minut RTO
+* Wystawiania tokenów i operacje odczytu z katalogu
+* Zezwalanie tylko około 5 minut cel czasu odzyskiwania do zapisu w katalogu
 
 ### <a name="datacenters"></a>Centra danych
 
@@ -90,36 +90,36 @@ Repliki usługi Azure AD są przechowywane w centrach danych znajdujących się 
 
 Usługa Azure AD działa w centrach danych o następujących cechach:
 
-* Uwierzytelnianie, Graf i inne usługi AD znajdują się za usługą bramy. Brama zarządza równoważeniem obciążenia tych usług. Zostanie automatycznie przełączona w tryb failover w przypadku wykrycia wszelkich serwerów w złej kondycji przy użyciu transakcyjnych sond kondycji. W oparciu o te sondy kondycji Brama dynamicznie kieruje ruch do centrów danych w dobrej kondycji.
+* Uwierzytelnianie, wykresu i inne usługi AD znajdują się za usługą bramy. Brama zarządza równoważeniem obciążenia tych usług. Zakończy się niepowodzeniem przez automatycznie wszystkie serwery w złej kondycji w przypadku wykrycia użycie sond kondycji transakcyjnych. W oparciu o te sondy kondycji Brama dynamicznie kieruje ruch do centrów danych w dobrej kondycji.
 * W przypadku operacji *odczytu*katalog ma repliki pomocnicze i odpowiadające im usługi frontonu w konfiguracji aktywne-aktywne działające w wielu centrach danych. W przypadku awarii całego centrum danych ruch zostanie automatycznie przekierowany do innego centrum.
  \* W przypadku *operacji zapisu*katalog przejdzie do trybu failover (Master) repliki w centrach danych przez zaplanowaną (Nowa podstawowa jest synchronizowana z poprzednimi podstawowymi) lub awaryjnymi procedurami pracy awaryjnej. Trwałość danych jest uzyskiwana przez replikację wszelkich zatwierdzeń do co najmniej dwóch centrum danych.
 
 #### <a name="data-consistency"></a>Spójność danych
 
-Model katalogu jest jedną z ewentualnych spójności. Jednym z typowych problemów z rozproszonymi systemami replikacji asynchronicznej jest to, że dane zwracane z "konkretnej" repliki mogą być nieaktualne. 
+Model katalogu to jeden z ostateczną wyborami. Jednym z typowych problemów z systemami rozproszonymi asynchronicznie replikowane jest, że z danymi zwróconymi z "konkretnej" repliki mogą nie być aktualne. 
 
 Usługa Azure AD zapewnia spójność odczytu i zapisu dla aplikacji działających w ramach repliki pomocniczej, kierując jej operacje zapisu do repliki podstawowej i synchronicznie pobierając operacje zapisu do repliki pomocniczej.
 
-Operacje zapisu aplikacji wykonywane za pomocą interfejsu API programu Graph usługi Azure AD są odseparowane od operacji zapewniania koligacji z repliką katalogu w celu zapewnienia spójności odczytu i zapisu. Usługa Azure AD Graph obsługuje sesję logiczną, która ma koligację z repliką pomocniczą używaną do odczytu; koligacja jest przechwytywana w "token repliki", który usługa grafuje pamięci podręcznej za pomocą rozproszonej pamięci podręcznej w pomocniczym centrum danych repliki. Token ten jest następnie używany na potrzeby kolejnych operacji w ramach tej samej sesji logicznej. Aby nadal używać tej samej sesji logicznej, kolejne żądania muszą być kierowane do tego samego centrum danych usługi Azure AD. Nie można kontynuować sesji logicznej, jeśli żądania klienta katalogu są kierowane do wielu centrów danych usługi Azure AD; w takim przypadku klient ma wiele sesji logicznych, które mają niezależne spójności odczytu i zapisu.
+Operacje zapisu aplikacji przy użyciu interfejsu API Microsoft Graph usługi Azure AD są wyodrębniane z zachowania koligacji z repliką katalogu w celu zapewnienia spójności odczytu i zapisu. Usługa interfejsu API Microsoft Graph obsługuje sesję logiczną, która ma koligację z repliką pomocniczą używaną do odczytu; koligacja jest przechwytywana w "token repliki", który jest buforowany przez usługę przy użyciu rozproszonej pamięci podręcznej w pomocniczym centrum danych repliki. Token ten jest następnie używany na potrzeby kolejnych operacji w ramach tej samej sesji logicznej. Aby nadal używać tej samej sesji logicznej, kolejne żądania muszą być kierowane do tego samego centrum danych usługi Azure AD. Nie można kontynuować sesji logicznej, jeśli żądania klienta katalogu są kierowane do wielu centrów danych usługi Azure AD; w takim przypadku klient ma wiele sesji logicznych, które mają niezależne spójności odczytu i zapisu.
 
  >[!NOTE]
  >Operacje zapisu są natychmiast replikowane do repliki pomocniczej, dla której zostały utworzone operacje odczytu sesji logicznej.
 
 #### <a name="backup-protection"></a>Ochrona kopii zapasowych
 
-Katalog implementuje usuwanie elastyczne zamiast usuwania całkowitego w celu umożliwienia użytkownikom i dzierżawcom łatwego odzyskiwania w razie wykonania przypadkowego usunięcia przez klienta. Jeśli administrator dzierżawy przypadkowo usunie użytkowników, może łatwo cofnąć i przywrócić usuniętych użytkowników.
+Katalog implementuje usuwanie elastyczne zamiast usuwania całkowitego w celu umożliwienia użytkownikom i dzierżawcom łatwego odzyskiwania w razie wykonania przypadkowego usunięcia przez klienta. Jeśli administrator dzierżawy przypadkowym usunie użytkowników, mogą łatwo cofnąć i przywrócić usuniętych użytkowników.
 
-Usługa Azure AD implementuje codzienne tworzenie kopii zapasowych wszystkich danych i w związku z tym umożliwia autorytatywne przywrócenie danych w przypadku wykonania jakichkolwiek logicznych operacji usuwania lub uszkodzenia danych. Warstwa danych służy do poprawiania kodów błędów, dzięki czemu może sprawdzać występowanie błędów i automatycznie poprawiać błędy poszczególnych typów dysków.
+Usługa Azure AD implementuje codzienne tworzenie kopii zapasowych wszystkich danych i w związku z tym umożliwia autorytatywne przywrócenie danych w przypadku wykonania jakichkolwiek logicznych operacji usuwania lub uszkodzenia danych. Warstwy danych korzystają z kodu służącego do korygowania, dzięki czemu mogą sprawdzić błędy i automatyczne naprawienie określonych rodzajów błędów na dysku.
 
 #### <a name="metrics-and-monitors"></a>Metryki i monitory
 
-Uruchamianie usługi o wysokiej dostępności wymaga światowej klasy metryk i możliwości monitorowania. Usługa Azure AD stale analizuje i raportuje kluczowe metryki kondycji usługi i kryteria powodzenia dla każdej ze swoich usług. Istnieje również ciągły rozwój i dostrajanie metryk oraz monitorowania i alertów dla każdego scenariusza, w ramach każdej usługi Azure AD i dla wszystkich usług.
+Uruchamianie usługi o wysokiej dostępności wymaga światowej klasy metryk i możliwości monitorowania. Usługa Azure AD stale analizuje i raportuje kluczowe metryki kondycji usługi i kryteria powodzenia dla każdej ze swoich usług. Dostępna jest również ciągłego rozwoju i dostrajanie metryk i monitorowania i alertów w każdym scenariuszu, w ramach każdej usługi Azure AD i wszystkich innych usług.
 
-Jeśli jakakolwiek usługa Azure AD nie działa zgodnie z oczekiwaniami, akcje są natychmiast podejmowane w celu szybkiego przywrócenia funkcjonalności. Najważniejszymi metrykami śledzenia usługi Azure AD jest to, jak szybko problemy z witryną na żywo mogą być wykrywane i zmniejszane dla klientów. Ciężko pracujemy nad funkcjami monitorowania i alertów w celu zminimalizowania czasu wykrywania (docelowy czas wykrywania: poniżej 5 minut) oraz nad gotowością operacyjną w celu zminimalizowania czasu usuwania problemu (docelowy czas usuwania problemu: poniżej 30 minut).
+Jeśli z dowolnej usługi Azure AD nie działa zgodnie z oczekiwaniami, działania jest natychmiast podjęte w celu jak najszybszego przywrócenia jej funkcjonalności. Najważniejsze śledzi metryki usługi Azure AD jest jak szybko aktywnej witryny, problemy mogą być wykryte i skorygowane dla klientów. Ciężko pracujemy nad funkcjami monitorowania i alertów w celu zminimalizowania czasu wykrywania (docelowy czas wykrywania: poniżej 5 minut) oraz nad gotowością operacyjną w celu zminimalizowania czasu usuwania problemu (docelowy czas usuwania problemu: poniżej 30 minut).
 
 #### <a name="secure-operations"></a>Bezpieczne operacje
 
-Korzystanie z kontroli operacyjnych, takich jak uwierzytelnianie wieloskładnikowe (MFA) dla każdej operacji, a także Inspekcja wszystkich operacji. Ponadto przy użyciu systemu podniesienia uprawnień just-in-Time w celu zapewnienia ciągłego tymczasowego dostępu do każdego zadania operacyjnego na żądanie. Aby uzyskać więcej informacji, zobacz [Zaufana chmura](https://azure.microsoft.com/support/trust-center).
+Przy użyciu kontrole operacyjne, takie jak uwierzytelnianie wieloskładnikowe (MFA) dla każdej operacji, a także inspekcję wszystkich operacji. Ponadto przy użyciu systemu podniesienia uprawnień just-in-time udzielenia niezbędnego tymczasowego dostępu dla wszelkich operacyjnych zadań na żądanie w sposób ciągły. Aby uzyskać więcej informacji, zobacz [Zaufana chmura](https://azure.microsoft.com/support/trust-center).
 
 ## <a name="next-steps"></a>Następne kroki
 

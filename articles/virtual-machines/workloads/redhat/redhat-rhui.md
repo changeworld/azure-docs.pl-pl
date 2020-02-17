@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: e4213e67d9d752f3fc6450236b41e8bbf61f9957
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169304"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368907"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure maszyn wirtualnych systemu Linux Enterprise na żądanie w systemie Red Hat na platformie Azure
  Usługa [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umożliwia dostawcom usług w chmurze, takim jak Azure, duplikowanie zawartości repozytorium w systemie Red Hat, tworzenie niestandardowych repozytoriów z zawartością specyficzną dla platformy Azure i udostępnianie ich dla maszyn wirtualnych użytkownika końcowego.
@@ -27,6 +27,10 @@ Dodatkowe informacje na temat obrazów RHEL na platformie Azure, w tym zasady pu
 
 Informacje o zasadach obsługi systemu Red Hat dla wszystkich wersji programu RHEL można znaleźć na stronie [cykl życia Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .
 
+> [!IMPORTANT]
+> RHUI jest przeznaczona tylko dla obrazów z opcją płatność zgodnie z rzeczywistym użyciem (PAYGO). W przypadku obrazów niestandardowych i odnoszących się znanych również jako "Przenieś własną subskrypcję" (BYOS) system musi być dołączony do RHSM lub satelity w celu uzyskania aktualizacji. Zobacz [artykuł Red Hat](https://access.redhat.com/solutions/253273) , aby uzyskać więcej szczegółów.
+
+
 ## <a name="important-information-about-azure-rhui"></a>Ważne informacje na temat usługi RHUI platformy Azure
 
 * Azure RHUI to infrastruktura aktualizacji, która obsługuje wszystkie maszyny wirtualne RHEL PAYG utworzone na platformie Azure. Nie wyklucza to rejestrowania maszyn wirtualnych RHEL PAYG przy użyciu Menedżera subskrypcji ani satelity ani innego źródła aktualizacji, ale dzięki temu z maszyną wirtualną PAYG zostanie pośrednim podwójnym rozliczeniami. Aby uzyskać szczegółowe informacje, zobacz następujący punkt.
@@ -35,6 +39,7 @@ Informacje o zasadach obsługi systemu Red Hat dla wszystkich wersji programu RH
 * RHEL SAP PAYG obrazy na platformie Azure (RHEL for SAP, RHEL for SAP HANA i RHEL for SAP Business Applications) są połączone z dedykowanymi kanałami RHUI, które pozostają w określonej wersji pomocniczej RHEL, zgodnie z wymaganiami certyfikacji SAP.
 
 * Dostęp do RHUI hostowanych przez platformę Azure jest ograniczony do maszyn wirtualnych w ramach [zakresów adresów IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). Jeśli jesteś pośredniczenie cały ruch maszyny Wirtualnej za pomocą infrastruktury sieci w środowisku lokalnym, może być konieczne skonfigurować trasy zdefiniowane przez użytkownika, dostęp do usługi RHUI Azure maszyn wirtualnych PAYG systemu RHEL. W takim przypadku trasy zdefiniowane przez użytkownika będą musiały zostać dodane dla _wszystkich_ RHUI adresów IP.
+
 
 ## <a name="image-update-behavior"></a>Zachowanie aktualizacji obrazów
 

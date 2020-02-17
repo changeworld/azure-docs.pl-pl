@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z funkcji ułatwień dostępu w projektancie
+title: Korzystanie z funkcji ułatwień dostępu w projektancie (wersja zapoznawcza)
 titleSuffix: Azure Machine Learning
 description: Dowiedz się więcej na temat skrótów klawiaturowych i funkcji ułatwień dostępu czytnika ekranu dostępnych w projektancie.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d5c8047fea8e9081de08b582c537711714ea463
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314236"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366198"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>Używanie narzędzia Azure Machine Learning Designer przy użyciu klawiatury
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Korzystanie z klawiatury do korzystania z programu Azure Machine Learning Designer (wersja zapoznawcza)
 
 Dowiedz się, jak używać programu Azure Machine Learning Designer przy użyciu klawiatury i czytnika ekranu. Aby zapoznać się z listą skrótów klawiaturowych, które działają wszędzie na Azure Portal, zobacz [skróty klawiaturowe w Azure Portal](../azure-portal/azure-portal-keyboard-shortcuts.md)
 
@@ -24,7 +24,7 @@ Ten przepływ pracy został przetestowany przy użyciu programu [narrator](https
 
 ## <a name="navigate-the-pipeline-graph"></a>Nawigowanie po grafie potoku
 
-Wykres potoku jest zorganizowany jako lista list. Lista modułów najwyższego poziomu zawiera wszystkie moduły w potoku. Każdy element na liście modułów zawiera listę połączeń, która opisuje wszystkie połączenia. 
+Wykres potoku jest zorganizowany jako lista zagnieżdżona. Lista zewnętrzna to lista modułów, która opisuje wszystkie moduły na wykresie potoku. Lista wewnętrzna to lista połączeń, która opisuje wszystkie połączenia określonego modułu.  
 
 1. Na liście modułów Użyj klawisza Strzałka, aby przełączyć moduły.
 1. Użyj klawisza Tab, aby otworzyć listę połączeń dla modułu docelowego.
@@ -64,12 +64,12 @@ Aby dostosować właściwości modułu:
 
 Użyj następujących skrótów z kluczem dostępu. Aby uzyskać więcej informacji o kluczach dostępu, zobacz https://en.wikipedia.org/wiki/Access_key.
 
-| Keystroke | Działanie |
+| Keystroke | Akcja |
 |-|-|
-| Klucz dostępu + R | Uruchamianie |
-| Klucz dostępu + P | Publikuj |
-| Klucz dostępu + C | Klonuj |
-| Klucz dostępu + D | Implementacja |
+| Klucz dostępu + R | Uruchom polecenie |
+| Klucz dostępu + P | Publikowanie |
+| Klucz dostępu + C | Klonowanie |
+| Klucz dostępu + D | Wdrażanie |
 | Klucz dostępu + I | Utwórz/zaktualizuj potok wnioskowania |
 | Klucz dostępu + B | Utwórz/zaktualizuj potok wnioskowania dotyczącego partii |
 | Klucz dostępu + K | Otwórz listę rozwijaną "Utwórz potok wnioskowania" |

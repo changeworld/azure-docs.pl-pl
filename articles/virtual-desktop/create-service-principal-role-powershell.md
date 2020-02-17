@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 1141731697c9f649a4a8d4052cd550605049b52e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1e26af6c4bf86cfd412df7435379e610ffd69e85
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606939"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367422"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Samouczek: tworzenie jednostek usługi i przypisań ról przy użyciu programu PowerShell
 
@@ -38,7 +38,7 @@ Aby można było tworzyć jednostki usługi i przypisania ról, należy wykonać
     Install-Module AzureAD
     ```
 
-2. [Pobierz i zaimportuj moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview).
+2. [Pobierz i zaimportuj moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](/powershell/windows-virtual-desktop/overview/).
 
 3. Wykonaj wszystkie instrukcje zawarte w tym artykule w tej samej sesji programu PowerShell. Proces może nie zadziałać, jeśli sesja programu PowerShell zostanie przerwana przez zamknięcie okna i ponowne jego otwarcie.
 
@@ -58,7 +58,7 @@ Przed utworzeniem przypisania roli dla jednostki usługi, Wyświetl swoje poświ
 
 Poniżej przedstawiono trzy poświadczenia, które należy napisać, i polecenia cmdlet, które należy uruchomić, aby je pobrać:
 
-- Hasło
+- Hasło:
 
     ```powershell
     $svcPrincipalCreds.Value
@@ -80,7 +80,7 @@ Poniżej przedstawiono trzy poświadczenia, które należy napisać, i polecenia
 
 Następnie należy utworzyć przypisanie roli, aby nazwa główna usługi mogła zalogować się do pulpitu wirtualnego systemu Windows. Upewnij się, że logujesz się przy użyciu konta z uprawnieniami do tworzenia przypisań ról.
 
-Najpierw [Pobierz i zaimportuj moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono.
+Najpierw [Pobierz i zaimportuj moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](/powershell/windows-virtual-desktop/overview/) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono.
 
 Uruchom następujące polecenia cmdlet programu PowerShell, aby połączyć się z pulpitem wirtualnym systemu Windows i wyświetlić dzierżawców.
 

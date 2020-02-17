@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 2a7d10f41e343f21e16b10f4bf7c79670824ec2c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: e55641457e1ed27928e6bf380701b646b672cae8
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77115902"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368830"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Wdrażanie narzędzia do zarządzania przy użyciu programu PowerShell
 
@@ -36,7 +36,7 @@ Następujące przeglądarki są zgodne z narzędziem do zarządzania:
 Przed wdrożeniem narzędzia do zarządzania musisz mieć Azure Active Directory użytkownika (Azure AD), aby utworzyć rejestrację aplikacji i wdrożyć interfejs użytkownika zarządzania. Ten użytkownik musi:
 
 - Masz uprawnienia do tworzenia zasobów w ramach subskrypcji platformy Azure
-- Masz uprawnienia do tworzenia aplikacji usługi Azure AD. Wykonaj następujące kroki, aby sprawdzić, czy użytkownik ma wymagane uprawnienia, postępując zgodnie z instrukcjami w obszarze [wymagane uprawnienia](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+- Masz uprawnienia do tworzenia aplikacji usługi Azure AD. Wykonaj następujące kroki, aby sprawdzić, czy użytkownik ma wymagane uprawnienia, postępując zgodnie z instrukcjami w obszarze [wymagane uprawnienia](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
 W celu pomyślnego wdrożenia i skonfigurowania narzędzia do zarządzania należy najpierw pobrać następujące skrypty programu PowerShell z [repozytorium RDS-templates GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy/scripts) i zapisać je w tym samym folderze na komputerze lokalnym.
 

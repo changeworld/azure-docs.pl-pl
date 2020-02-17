@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75e7c6809810a78c81348bd4bbeb808e103f453f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bc6a478bebef0733847ef4744b722ed9e61a6c7f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805279"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367941"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Co nowego w Azure Active Directory w Microsoft 365 instytucji rządowych
 
@@ -51,11 +51,10 @@ Wcześniej klienci mogą zalogować się przy użyciu portali platformy Azure (p
 
 W poniższej tabeli przedstawiono punkty końcowe dla wszystkich klientów:
 
-| Nazwa | Szczegóły punktu końcowego |
+| Name (Nazwa) | Szczegóły punktu końcowego |
 |------|------------------|
-| Portale |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365e: https://portal.office365.us<p>Microsoft 365 rząd — DoD: https://portal.apps.mil |
+| Portali |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365e: https://portal.office365.us<p>Microsoft 365 rząd — DoD: https://portal.apps.mil |
 | Punkt końcowy urzędu Azure Active Directory | https://login.microsoftonline.us |
-| Interfejs API programu Graph usługi Azure Active Directory | https://graph.windows.net |
 | Microsoft Graph API dla Microsoft 365 instytucji rządowych — w ramach programu w zatoce | https://graph.microsoft.us |
 | Interfejs API Microsoft Graph dla Microsoft 365 dla instytucji rządowych — DoD | https://dod-graph.microsoft.us |
 | Punkty końcowe usług Azure Government Services | Aby uzyskać szczegółowe informacje, zobacz [przewodnik dewelopera Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |
