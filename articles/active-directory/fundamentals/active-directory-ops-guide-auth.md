@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511896"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368046"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Przewodnik dotyczący operacji zarządzania uwierzytelnianiem Azure Active Directory
 
@@ -105,7 +105,7 @@ Aby lepiej zrozumieć opcje uwierzytelniania, zobacz [Wybieranie odpowiedniej me
 
 ### <a name="programmatic-usage-of-credentials"></a>Programowe użycie poświadczeń
 
-Skrypty usługi Azure AD korzystające z programu PowerShell lub aplikacji przy użyciu interfejs API programu Graph wymagają bezpiecznego uwierzytelniania. Słabe zarządzanie poświadczeniami wykonuje te skrypty i narzędzia zwiększają ryzyko kradzieży poświadczeń. Jeśli używasz skryptów lub aplikacji korzystających z haseł zakodowanych lub monitów o hasło, należy najpierw przejrzeć hasła w plikach konfiguracyjnych lub kodzie źródłowym, zastąpić te zależności i korzystać z tożsamości zarządzanych przez platformę Azure, zintegrowanego uwierzytelniania systemu Windows lub [certyfikatów](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates) wszędzie tam, gdzie to możliwe. W przypadku aplikacji, w których poprzednie rozwiązania nie są możliwe, należy rozważyć użycie [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+Skrypty usługi Azure AD korzystające z programu PowerShell lub aplikacji korzystających z interfejsu API Microsoft Graph wymagają bezpiecznego uwierzytelniania. Słabe zarządzanie poświadczeniami wykonuje te skrypty i narzędzia zwiększają ryzyko kradzieży poświadczeń. Jeśli używasz skryptów lub aplikacji korzystających z haseł zakodowanych lub monitów o hasło, należy najpierw przejrzeć hasła w plikach konfiguracyjnych lub kodzie źródłowym, zastąpić te zależności i korzystać z tożsamości zarządzanych przez platformę Azure, zintegrowanego uwierzytelniania systemu Windows lub [certyfikatów](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates) wszędzie tam, gdzie to możliwe. W przypadku aplikacji, w których poprzednie rozwiązania nie są możliwe, należy rozważyć użycie [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
 Jeśli okaże się, że istnieją jednostki usługi z poświadczeniami hasła i nie masz pewności, jak te poświadczenia hasła są zabezpieczone przez skrypty lub aplikacje, skontaktuj się z właścicielem aplikacji, aby lepiej zrozumieć wzorce użycia.
 
@@ -141,7 +141,7 @@ Jeśli zarządzasz urządzeniami za pomocą rozwiązania MDM lub Microsoft Intun
 #### <a name="device-trust-access-policies-recommended-reading"></a>Zalecane odczytywanie zasad dostępu zaufania urządzeń
 
 - [Instrukcje: planowanie implementacji dołączania hybrydowego Azure Active Directory](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-- [Konfiguracje dostępu tożsamości i urządzenia](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Konfiguracje i dostęp do urządzeń](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello dla firm
 
@@ -205,7 +205,7 @@ Z [nazwanymi lokalizacjami](https://docs.microsoft.com/azure/active-directory/re
 
 Na podstawie priorytetu Skorzystaj z poniższej tabeli, aby znaleźć zalecane rozwiązanie, które najlepiej spełnia wymagania organizacji:
 
-| **Priorytet** | **Scenariusz** | **Zalecenie** |
+| **Priorytet** | **Scenariusz** | **Zaleca** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | 1 | Jeśli używasz PHS lub PTA i nazwane lokalizacje nie zostały zdefiniowane | Definiowanie nazwanych lokalizacji w celu usprawnienia wykrywania zdarzeń o podwyższonym ryzyku |
 | 2 | Jeśli jesteś federacyjnym i nie używasz żądania "insideCorporateNetwork" i nazwanych lokalizacji nie zostały zdefiniowane | Definiowanie nazwanych lokalizacji w celu usprawnienia wykrywania zdarzeń o podwyższonym ryzyku |
@@ -256,7 +256,7 @@ Dostęp warunkowy jest ważnym narzędziem do ulepszania stan zabezpieczeń orga
 #### <a name="conditional-access-recommended-reading"></a>Zalecane odczytywanie dostępu warunkowego
 
 - [Najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
-- [Konfiguracje dostępu tożsamości i urządzenia](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Konfiguracje i dostęp do urządzeń](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Azure Active Directory informacje o ustawieniach dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
 - [Typowe zasady dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
 
@@ -281,7 +281,7 @@ Jeśli starsze uwierzytelnianie jest powszechnie używane w danym środowisku, n
    
    b. Zaplanuj przedział czasu uruchomienie produkcyjne, aby zablokować na kolejne kroki.
    
-   d. Zidentyfikuj starsze aplikacje mające twardą zależność od starszego uwierzytelniania. Zobacz Krok 3 poniżej.
+   c. Zidentyfikuj starsze aplikacje mające twardą zależność od starszego uwierzytelniania. Zobacz Krok 3 poniżej.
 
 2. Wyłącz starsze protokoły w źródle (na przykład skrzynek pocztowych programu Exchange) dla użytkowników, którzy nie korzystają ze starszej wersji uwierzytelniania, aby uniknąć większej ekspozycji.
 3. W przypadku pozostałych kont (najlepiej związanych z tożsamościami nieludzkimi, takimi jak konta usług) Użyj [dostępu warunkowego, aby ograniczyć starsze protokoły](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Conditional-Access-support-for-blocking-legacy-auth-is/ba-p/245417) po uwierzytelnieniu.
@@ -305,23 +305,22 @@ Poniżej znajduje się lista aplikacji z uprawnieniami, które mogą być Scruti
 | Office 365 Exchange Online | Posiada. AccessAsUser. All |
 | | Interfejs. AccessAsUser. All |
 | | Poczta. Przeczytaj |
-| Microsoft Graph | Poczta. Przeczytaj |
+| Interfejs API Microsoft Graph | Poczta. Przeczytaj |
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-- Aplikacje otrzymują pełną personifikację użytkownika zalogowanego użytkownika. Przykład:
+- Aplikacje otrzymują pełną personifikację użytkownika zalogowanego użytkownika. Na przykład:
 
 |Zasób | Uprawnienie |
 | :- | :- |
-| Wykres usługi Azure AD | Katalog. AccessAsUser. All |
-| Microsoft Graph | Katalog. AccessAsUser. All |
+| Interfejs API Microsoft Graph| Katalog. AccessAsUser. All |
 | Interfejs API REST platformy Azure | user_impersonation |
 
 Aby uniknąć tego scenariusza, należy odnieść się do [wykrywania i korygowania nielegalnych dotacji do zgody w pakiecie Office 365](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) w celu identyfikowania i rozwiązywania wszelkich aplikacji z nielegalnymi dotacjami lub aplikacjami, które mają więcej dotacji niż jest to konieczne. Następnie [Usuń](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) samoobsługowe i [Ustal procedury ładu](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow). Na koniec Zaplanuj regularne przeglądy uprawnień aplikacji i usuń je, gdy nie są potrzebne.
 
 #### <a name="consent-grants-recommended-reading"></a>Zgoda udziela zalecanego odczytu
 
-- [Microsoft Graph permissions (Uprawnienia w programie Microsoft Graph)](https://docs.microsoft.com/graph/permissions-reference)
+- [Uprawnienia interfejsu API Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Ustawienia użytkownika i grupy
 

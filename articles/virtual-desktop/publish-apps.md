@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 896fd41cff0ab8257da7b91687aaae389a1c81ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 37fc089ab68bfb3cd26e1656ba84610fe8a47bc6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769663"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367271"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Publikowanie wbudowanych aplikacji w systemie Windows Virtual Desktop
 
@@ -23,7 +23,7 @@ W tym artykule przedstawiono sposób publikowania aplikacji w środowisku pulpit
 Aby opublikować wbudowaną aplikację:
 
 1. Nawiąż połączenie z jedną z maszyn wirtualnych w puli hostów.
-2. Pobierz **PackageFamilyName** aplikacji, którą chcesz opublikować, postępując zgodnie z instrukcjami w [tym artykule](https://docs.microsoft.com/powershell/module/appx/get-appxpackage?view=win10-ps).
+2. Pobierz **PackageFamilyName** aplikacji, którą chcesz opublikować, postępując zgodnie z instrukcjami w [tym artykule](/powershell/module/appx/get-appxpackage?view=win10-ps/).
 3. Na koniec Uruchom następujące polecenie cmdlet z `<PackageFamilyName>` zastąpione przez **PackageFamilyName** , które zostały znalezione w poprzednim kroku:
    
    ```powershell

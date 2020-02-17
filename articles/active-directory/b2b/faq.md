@@ -12,19 +12,19 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8be047caf8631cda4e48b7bf10987db616a9b86f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: d51359896b7a0d03626ead6843d3666f3ad3ef57
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608612"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368101"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory często zadawane pytania dotyczące współpracy B2B
 
 Te często zadawane pytania dotyczące współpracy między firmami (AD-i Business-to-biznesowe) w ramach programu Azure Active Directory (Azure Active Directory) są okresowo aktualizowane w celu uwzględnienia nowych tematów.
 
 ### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Czy mogę dostosować naszą stronę logowania, aby była bardziej intuicyjna dla naszych użytkowników-Gości współpracy B2B?
-Jak najbardziej! Zapoznaj się z naszym [wpisem w blogu dotyczącym tej funkcji](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Aby uzyskać więcej informacji na temat sposobu dostosowywania strony logowania w organizacji, zobacz [Dodawanie znakowania firmowego do stron logowania i panelu dostępu](../fundamentals/customize-branding.md).
+KONIECZN! Zapoznaj się z naszym [wpisem w blogu dotyczącym tej funkcji](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Aby uzyskać więcej informacji na temat sposobu dostosowywania strony logowania w organizacji, zobacz [Dodawanie znakowania firmowego do stron logowania i panelu dostępu](../fundamentals/customize-branding.md).
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>Czy użytkownicy współpracy B2B mogą uzyskiwać dostęp do usług SharePoint Online i OneDrive?
 Tak. Jednak możliwość wyszukiwania istniejących użytkowników-Gości w usłudze SharePoint Online przy użyciu selektora osób jest domyślnie **wyłączona** . Aby włączyć opcję wyszukiwania istniejących użytkowników-Gości, ustaw wartość **ShowPeoplePickerSuggestionsForGuestUsers** na **włączone**. To ustawienie można włączyć na poziomie dzierżawy lub na poziomie zbioru witryn. To ustawienie można zmienić za pomocą poleceń cmdlet Set-SPOTenant i Set-SPOSite. Za pomocą tych poleceń cmdlet członkowie mogą przeszukiwać wszystkich istniejących użytkowników-Gości w katalogu. Zmiany w zakresie dzierżawy nie wpływają na witryny usługi SharePoint Online, które zostały już zainicjowane.
@@ -51,21 +51,21 @@ Organizacja może chcieć dodać użytkowników współpracy B2B, udostępnić a
 Tak. Obiekty gościa nie są domyślnie widoczne na globalnej liście adresowej organizacji, ale można użyć programu Azure Active Directory PowerShell, aby je wyświetlić. Zobacz [, czy obiekty gościa są widoczne na globalnej liście adresów?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Czy mogę utworzyć użytkownika-gościa z ograniczonym administratorem?
-Oczywiście. Aby uzyskać więcej informacji, zobacz [Dodawanie użytkowników-Gości do roli](add-guest-to-role.md).
+Naturalnie. Aby uzyskać więcej informacji, zobacz [Dodawanie użytkowników-Gości do roli](add-guest-to-role.md).
 
 ### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Czy współpraca B2B w usłudze Azure AD umożliwia użytkownikom B2B dostęp do Azure Portal?
 Jeśli użytkownik nie ma przypisanej roli administratora z ograniczonym dostępem, użytkownicy współpracy B2B nie będą potrzebowali dostępu do Azure Portal. Jednak użytkownicy współpracy B2B, którzy mają przypisaną rolę ograniczonego administratora, mogą uzyskać dostęp do portalu. Ponadto, jeśli użytkownik-Gość, który nie ma przypisanej jednej z tych ról administratora, uzyskuje dostęp do portalu, może uzyskać dostęp do niektórych części tego środowiska. Rola użytkownika-Gość ma pewne uprawnienia w katalogu.
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Czy mogę zablokować dostęp do Azure Portal dla użytkowników-Gości?
 
-Tak. Można utworzyć zasady dostępu warunkowego, które blokują dostęp do Azure Portal wszystkim Gościom i użytkownikom zewnętrznym. Podczas konfigurowania tych zasad należy zachować ostrożność, aby zapobiec przypadkowemu zablokowaniu dostępu do członków i administratorów.
+Tak! Można utworzyć zasady dostępu warunkowego, które blokują dostęp do Azure Portal wszystkim Gościom i użytkownikom zewnętrznym. Podczas konfigurowania tych zasad należy zachować ostrożność, aby zapobiec przypadkowemu zablokowaniu dostępu do członków i administratorów.
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako administrator zabezpieczeń lub administrator dostępu warunkowego.
 2. W witrynie Azure Portal wybierz pozycję **Azure Active Directory**. 
 3. W obszarze **Zarządzaj**wybierz pozycję **zabezpieczenia**.
 4. W obszarze **Ochrona**wybierz pozycję **dostęp warunkowy**. Wybierz pozycję **nowe zasady**.
 5. Na **nowej** stronie, w polu tekstowym **Nazwa** wprowadź nazwę zasad (na przykład "Blokuj Gościom dostęp do portalu").
-6. W obszarze **Przypisania** wybierz pozycję **Użytkownicy i grupy**.
+6. W obszarze **przypisania**wybierz pozycję **Użytkownicy i grupy**.
 7. Na karcie **Dołącz** wybierz **pozycję Użytkownicy i grupy**, a następnie wybierz pozycję **Wszyscy użytkownicy i Goście (wersja zapoznawcza)** .
 9. Wybierz pozycję **Done** (Gotowe).
 10. Na stronie **Nowy** w sekcji **przypisania** wybierz pozycję **aplikacje w chmurze lub akcje**.
@@ -90,14 +90,14 @@ Tak, Dynamics 365 (online) obsługuje funkcję współpracy B2B usługi Azure AD
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Jaki jest okres istnienia początkowego hasła dla nowo utworzonego użytkownika współpracy B2B?
 Usługa Azure AD ma stały zestaw znaków, siłę hasła i wymagania dotyczące blokady konta, które są stosowane jednocześnie do wszystkich kont użytkowników w chmurze usługi Azure AD. Konta użytkowników w chmurze to konta, które nie są federacyjne przy użyciu innego dostawcy tożsamości, takie jak 
 * Konto Microsoft
-* Serwis Facebook
+* Facebook
 * Usługi Active Directory Federation Services
 * Inna dzierżawa w chmurze (na potrzeby współpracy B2B)
 
 W przypadku kont federacyjnych zasady haseł są zależne od zasad, które są stosowane w lokalnej dzierżawie i ustawieniach konto Microsoft użytkownika.
 
 ### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>Organizacja może chcieć mieć różne środowiska w swoich aplikacjach dla użytkowników dzierżawy i użytkowników-Gości. Czy istnieją standardowe wskazówki dotyczące tego? Czy obecność dostawcy tożsamości może zatwierdzić właściwy model do użycia?
-Użytkownik-gość może użyć dowolnego dostawcy tożsamości w celu uwierzytelnienia. Aby uzyskać więcej informacji, zobacz [właściwości użytkownika współpracy B2B](user-properties.md). Użyj właściwości **UserType** , aby określić środowisko użytkownika. W tokenie nie znajduje się obecnie oświadczenia **UserType** . Aplikacje powinny używać interfejs API programu Graph do wysyłania zapytań do katalogu dla użytkownika oraz do uzyskiwania elementu UserType.
+Użytkownik-gość może użyć dowolnego dostawcy tożsamości w celu uwierzytelnienia. Aby uzyskać więcej informacji, zobacz [właściwości użytkownika współpracy B2B](user-properties.md). Użyj właściwości **UserType** , aby określić środowisko użytkownika. W tokenie nie znajduje się obecnie oświadczenia **UserType** . Aplikacje powinny używać interfejsu API Microsoft Graph, aby wysłać zapytanie do katalogu dla użytkownika i uzyskać wartość UserType.
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Gdzie mogę znaleźć społeczność współpracy B2B do udostępniania rozwiązań i przesyłania pomysłów?
 Nieustannie nawiązujemy nam nasłuchiwanie opinii, aby poprawić współpracę B2B. Podziel się scenariuszami użytkownika, najlepszymi rozwiązaniami i zapoznaj się z informacjami o współpracy B2B w usłudze Azure AD. Dołącz do dyskusji w [społeczności technicznej firmy Microsoft](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).

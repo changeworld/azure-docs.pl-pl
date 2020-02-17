@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: f7a2e78ed2b1de770f7a60f1312e069dc1757cb6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2869384d4f4072e1e71ab0a69af81edc68e7a5b7
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191207"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366248"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
@@ -211,22 +211,71 @@ Następujące techniki są dodatkowymi opcjami obsługi niezrównoważonych dany
 
 Za pomocą Azure Machine Learning można użyć zautomatyzowanej ML do skompilowania modelu języka Python i przekonwertowania go na format ONNX. Środowisko uruchomieniowe ONNX C#obsługuje, dzięki czemu można użyć modelu skompilowanego automatycznie w C# aplikacjach bez konieczności ponownego kodowania lub dowolnych opóźnień sieci, które wprowadzają punkty końcowe Rest. Wypróbuj przykład tego przepływu [w tym notesie Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb).
 
-## <a name="automated-ml-across-microsoft"></a>Automatyczna ML w firmie Microsoft
+## <a name="automated-ml-in-azure-machine-learning"></a>Automatyczna ML w Azure Machine Learning
 
-Zautomatyzowana ML jest również dostępna w innych rozwiązaniach firmy Microsoft, takich jak:
+Azure Machine Learning oferuje dwa środowiska do pracy z automatycznymi ML
 
-|Integracje|Opis|
-|------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatyczny wybór modelu i szkolenia w aplikacjach .NET przy użyciu programu Visual Studio i Visual Studio Code ze ML.NET zautomatyzowanej ML.|
-|[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Równolegle Skaluj swoje zautomatyzowane zadania szkoleniowe dotyczące platformy Spark w klastrach usługi HDInsight.|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Wywołaj modele uczenia maszynowego bezpośrednio w Power BI.|
-|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Twórz nowe modele uczenia maszynowego za pośrednictwem danych w klastrach danych Big Data w SQL Server 2019.|
+* W przypadku kodów doświadczonych klientów [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) 
+
+* W przypadku klientów z ograniczoną ilością kodu, Azure Machine Learning Studio w [https://ml.azure.com](https://ml.azure.com/)  
+
+Poniżej przedstawiono podsumowanie zautomatyzowanych możliwości wysokiej klasy obsługiwanych w każdym środowisku.
+
+<a name="parity"></a>
+
+### <a name="experiment-settings"></a>Ustawienia eksperymentu 
+
+Poniższe ustawienia umożliwiają skonfigurowanie zautomatyzowanego eksperymentu ML. 
+
+| | Zestaw SDK dla języka Python| Studio
+----|:----:|:----:
+Dzielenie danych na zestawy uczenia/walidacji| ✓|✓
+Obsługuje zadania ML: Klasyfikacja, regresja i prognozowanie| ✓| ✓
+Optymalizuje na podstawie metryki podstawowej| ✓| ✓
+Obsługuje obliczenia AML jako element docelowy obliczeń | ✓|✓
+Konfigurowanie horyzontu prognoz, Target spowolnienia & przedziału|✓|✓
+Ustawianie kryteriów zakończenia |✓|✓ 
+Ustaw współbieżne iteracje| ✓|✓
+Upuszczanie kolumn| ✓|✓
+Algorytmy blokowania|✓|✓
+Krzyżowe sprawdzanie poprawności |✓|✓
+Obsługuje szkolenia dotyczące klastrów Azure Databricks| ✓|
+Przeglądanie nazw projektowanych funkcji|✓|
+Podsumowanie cechowania| ✓|
+Cechowania dni wolnych|✓|
+Poziom szczegółowości dla plików dziennika| ✓|
+
+### <a name="model-settings"></a>Ustawienia modelu
+
+Te ustawienia mogą być stosowane do najlepszego modelu w wyniku zautomatyzowanego eksperymentu ML.
+
+||Zestaw SDK dla języka Python|Studio
+----|:----:|:----:
+Najlepsza Rejestracja modelu| ✓|✓
+Najlepsze wdrożenie modelu| ✓| ✓
+Najlepsze wyjaśnienie modelu| ✓|✓
+Włącz głosujący zestawy kompletów & stosują modele| ✓|✓
+Pokaż najlepszy model na podstawie metryki innej niż podstawowa|✓|Włącz/Wyłącz zgodność modelu ONNX|✓|
+Testowanie modelu | ✓| |
+
+### <a name="run-control-settings"></a>Uruchom ustawienia kontrolki
+
+Te ustawienia umożliwiają przeglądanie i kontrolowanie przebiegów eksperymentów oraz ich przebiegów podrzędnych. 
+
+||Zestaw SDK dla języka Python| Studio
+----|:----:|:----:
+Uruchom tabelę podsumowania| ✓|✓
+Anuluj przebieg| ✓|✓
+Anuluj przebieg podrzędny| ✓| ✓
+Pobierz guardrails| ✓|✓
+Wstrzymaj przebieg| ✓| 
+Wznów przebieg| ✓| 
 
 ## <a name="next-steps"></a>Następne kroki
 
 Zobacz przykłady i Dowiedz się, jak tworzyć modele przy użyciu automatycznego uczenia maszynowego:
 
-+ Postępuj zgodnie z [samouczkiem: automatyczne uczenie modelu regresji przy użyciu automatycznego Machine Learning platformy Azure](tutorial-auto-train-models.md)
++ Postępuj zgodnie z [samouczkiem: automatyczne uczenie modelu regresji z Azure Machine Learning](tutorial-auto-train-models.md)
 
 + Skonfiguruj ustawienia dla eksperymentu automatycznego szkolenia:
   + W programie Azure Machine Learning Studio [wykonaj te kroki](how-to-create-portal-experiments.md).
@@ -235,3 +284,5 @@ Zobacz przykłady i Dowiedz się, jak tworzyć modele przy użyciu automatyczneg
 + Dowiedz się, jak korzystać z funkcji autouczenia przy użyciu danych szeregów czasowych, [wykonując następujące kroki](how-to-auto-train-forecast.md).
 
 + Wypróbuj [Jupyter Notebook przykłady w celu automatycznego uczenia maszynowego](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
+
+* Zautomatyzowana ML jest również dostępna w innych rozwiązaniach firmy Microsoft, takich jak [ml.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) i [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

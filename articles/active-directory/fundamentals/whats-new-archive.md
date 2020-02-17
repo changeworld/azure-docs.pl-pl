@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4e2e25189b35f7d17ef42536aa7cd86ac92ec82
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5ff7cda6a593b1517ad711a56f73d29a14345baf
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185864"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368021"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Co nowego w Azure Active Directory?
 
@@ -1126,7 +1126,7 @@ Następujące pola są zmieniane w schemacie logowania:
 
 |Nazwa pola|Co zostało zmienione|Stare wartości|Nowe wartości|
 |----------|------------|----------|----------|
-|appliedConditionalAccessPolicies|To było pole **conditionalaccessPolicies** . To teraz pole **appliedConditionalAccessPolicies** .|Bez zmian|Bez zmian|
+|appliedConditionalAccessPolicies|To było pole **conditionalaccessPolicies** . To teraz pole **appliedConditionalAccessPolicies** .|Nie wprowadzono zmian|Nie wprowadzono zmian|
 |conditionalAccessStatus|Zapewnia wynik stanu zasad dostępu warunkowego podczas logowania. Wcześniej było to wyliczone, ale teraz pokazywane są rzeczywiste wartości.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Powodzenie</li><li>Niepowodzenie</li><li>Nie zastosowano</li><li>Disabled (Wyłączony)</li></ul>|
 |appliedConditionalAccessPolicies: wynik|Zapewnia wynik poszczególnych stanów zasad dostępu warunkowego podczas logowania. Wcześniej było to wyliczone, ale teraz pokazywane są rzeczywiste wartości.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Powodzenie</li><li>Niepowodzenie</li><li>Nie zastosowano</li><li>Disabled (Wyłączony)</li></ul>|
 
@@ -1698,7 +1698,7 @@ Ta aktualizacja pozwala zobaczyć, które zasady są oceniane, gdy użytkownik l
 **Kategoria usługi:** Reporting  
 **Możliwość produktu:** Monitorowanie & raportowania
  
-Po wprowadzeniu pola **aplikacji klienta** w dziennikach aktywności logowania klienci mogą teraz zobaczyć użytkowników korzystających ze starszych uwierzytelnień. Klienci będą mogli uzyskać dostęp do tych informacji przy użyciu MS interfejs API programu Graph logowania lub dzienników aktywności logowania w portalu usługi Azure AD, w których można użyć kontroli **aplikacji klienta** do filtrowania starszych uwierzytelnień. Zapoznaj się z dokumentacją, aby uzyskać więcej informacji.
+Po wprowadzeniu pola **aplikacji klienta** w dziennikach aktywności logowania klienci mogą teraz zobaczyć użytkowników korzystających ze starszych uwierzytelnień. Klienci będą mogli uzyskać dostęp do tych informacji przy użyciu interfejsu API logowania Microsoft Graph lub za pośrednictwem dzienników aktywności logowania w portalu usługi Azure AD, gdzie można użyć kontrolki **App Client** do filtrowania starszych uwierzytelnień. Zapoznaj się z dokumentacją, aby uzyskać więcej informacji.
 
 ---
 
@@ -2092,7 +2092,7 @@ Przegląd dostępu grup i aplikacji jest teraz ogólnie dostępna w ramach usłu
 **Kategoria usługi:** Reporting  
 **Możliwość produktu:** Monitorowanie & raportowania
  
-Dzienniki aktywności usługi AD platformy Azure, co obejmuje dzienniki inspekcji i logowania, są teraz dostępne za pośrednictwem MS Graph. Udostępniliśmy dwie punktów końcowych za pośrednictwem MS Graph dostępu do tych dzienników. Zapoznaj się z naszymi [dokumentami](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) , aby uzyskać programistyczny dostęp do interfejsów API raportowania usługi Azure AD, aby rozpocząć pracę. 
+Dzienniki aktywności usługi Azure AD, które obejmują logowania i dzienniki inspekcji, są teraz dostępne za pomocą interfejsu API Microsoft Graph. Dodaliśmy dwa punkty końcowe za pomocą interfejsu API Microsoft Graph, aby uzyskać dostęp do tych dzienników. Zapoznaj się z naszymi [dokumentami](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) , aby uzyskać programistyczny dostęp do interfejsów API raportowania usługi Azure AD, aby rozpocząć pracę. 
 
 ---
  
@@ -2596,7 +2596,7 @@ Aby uzyskać więcej informacji na temat korzystania z tych raportów, zobacz [A
 **Kategoria usługi:** Reporting  
 **Możliwość produktu:** Monitorowanie & raportowania
 
-Jako część opinie klientów, aby włączyć role bez uprawnień administratora na dostęp do działania usługi Azure AD dzienników, udostępniliśmy możliwość dla użytkowników, którzy znajdują się w roli "Czytnik raportów" dostęp do logowania i działania inspekcji w witrynie Azure portal, jak i za pomocą naszych interfejsów API programu Graph. 
+Aby uzyskać dostęp do dzienników aktywności usługi Azure AD w ramach klientów, należy umożliwić użytkownikom należącym do roli "czytelnika raportu" dostęp do operacji logowania i inspekcji w ramach Azure Portal, jak również przy użyciu Microsoft Graph Interfejsu API. 
 
 Aby uzyskać więcej informacji, jak korzystać z tych raportów, zobacz [Azure Active Directory raportowanie](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal). 
 

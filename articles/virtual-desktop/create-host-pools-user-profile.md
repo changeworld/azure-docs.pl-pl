@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 65d800cc6c1b6818369807ffeae9cd350a34066f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a6bc8546a4047e921d62953e39eaddf546f38229
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606987"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367446"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Tworzenie kontenera profilu dla puli hostów za pomocą udziału plików
 
@@ -27,13 +27,13 @@ W tym artykule opisano sposób konfigurowania udziału kontenera FSLogix profile
 
 Podczas tworzenia maszyny wirtualnej należy ją umieścić w tej samej sieci wirtualnej co maszyny wirtualne puli hostów lub w sieci wirtualnej, która ma łączność z maszynami wirtualnymi puli hostów. Maszynę wirtualną można utworzyć na wiele sposobów:
 
-- [Tworzenie maszyny wirtualnej na podstawie obrazu z galerii platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
-- [Tworzenie maszyny wirtualnej na podstawie obrazu zarządzanego](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
+- [Tworzenie maszyny wirtualnej na podstawie obrazu z galerii platformy Azure](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [Tworzenie maszyny wirtualnej na podstawie obrazu zarządzanego](../virtual-machines/windows/create-vm-generalized-managed.md)
 - [Tworzenie maszyny wirtualnej na podstawie obrazu niezarządzanego](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
 Po utworzeniu maszyny wirtualnej Dołącz ją do domeny, wykonując następujące czynności:
 
-1. [Połącz się z maszyną wirtualną](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) przy użyciu poświadczeń podanych podczas tworzenia maszyny wirtualnej.
+1. [Połącz się z maszyną wirtualną](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) przy użyciu poświadczeń podanych podczas tworzenia maszyny wirtualnej.
 2. Na maszynie wirtualnej Uruchom **Panel sterowania** , a następnie wybierz pozycję **system**.
 3. Wybierz pozycję **Nazwa komputera**, wybierz pozycję **Zmień ustawienia**, a następnie wybierz pozycję **Zmień.**
 4. Wybierz pozycję **domena** , a następnie wprowadź domenę Active Directory w sieci wirtualnej.
@@ -43,29 +43,29 @@ Po utworzeniu maszyny wirtualnej Dołącz ją do domeny, wykonując następując
 
 Poniżej znajdują się ogólne instrukcje dotyczące przygotowania maszyny wirtualnej do działania jako udział plików dla profilów użytkowników:
 
-1. Dodaj pulpit wirtualny systemu Windows Active Directory użytkowników do [Active Directory grupy zabezpieczeń](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups). Ta grupa zabezpieczeń zostanie użyta do uwierzytelnienia użytkowników pulpitu wirtualnego systemu Windows na utworzoną maszynę wirtualną udziału plików.
-2. [Nawiąż połączenie z maszyną wirtualną udziału plików](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine).
+1. Dodaj pulpit wirtualny systemu Windows Active Directory użytkowników do [Active Directory grupy zabezpieczeń](/windows/security/identity-protection/access-control/active-directory-security-groups/). Ta grupa zabezpieczeń zostanie użyta do uwierzytelnienia użytkowników pulpitu wirtualnego systemu Windows na utworzoną maszynę wirtualną udziału plików.
+2. [Nawiąż połączenie z maszyną wirtualną udziału plików](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine).
 3. Na maszynie wirtualnej udziału plików Utwórz folder na **dysku C** , który będzie używany jako udział profilu.
 4. Kliknij prawym przyciskiem myszy nowy folder, wybierz pozycję **Właściwości**, wybierz pozycję **udostępnianie**, a następnie wybierz pozycję **Udostępnianie zaawansowane...** .
 5. Wybierz pozycję **Udostępnij ten folder**, wybierz pozycję **uprawnienia...** , a następnie wybierz pozycję **Dodaj.**
 6. Wyszukaj grupę zabezpieczeń, do której dodano użytkowników pulpitu wirtualnego systemu Windows, a następnie upewnij się, że grupa ma **pełną kontrolę**.
 7. Po dodaniu grupy zabezpieczeń kliknij prawym przyciskiem myszy folder, wybierz polecenie **Właściwości**, wybierz pozycję **udostępnianie**, a następnie skopiuj **ścieżkę sieciową** do użycia w przyszłości.
 
-Aby uzyskać więcej informacji o uprawnieniach, zobacz [dokumentację usługi FSLogix](https://docs.microsoft.com/fslogix/fslogix-storage-config-ht).
+Aby uzyskać więcej informacji o uprawnieniach, zobacz [dokumentację usługi FSLogix](/fslogix/fslogix-storage-config-ht/).
 
 ## <a name="configure-the-fslogix-profile-container"></a>Konfigurowanie kontenera profilu FSLogix
 
 Aby skonfigurować maszyny wirtualne przy użyciu oprogramowania FSLogix, wykonaj następujące czynności na każdym komputerze zarejestrowanym w puli hostów:
 
-1. [Połącz się z maszyną wirtualną](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) przy użyciu poświadczeń podanych podczas tworzenia maszyny wirtualnej.
+1. [Połącz się z maszyną wirtualną](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) przy użyciu poświadczeń podanych podczas tworzenia maszyny wirtualnej.
 2. Uruchom przeglądarkę internetową i przejdź do [tego linku](https://go.microsoft.com/fwlink/?linkid=2084562) , aby pobrać agenta FSLogix.
-3. Przejdź do \\\\Win32\\wydanie lub \\\\x64\\Release w pliku zip i uruchom program **FSLogixAppsSetup** w celu zainstalowania agenta FSLogix.  Aby dowiedzieć się więcej na temat sposobu instalowania programu FSLogix, zobacz [pobieranie i Instalowanie FSLogix](https://docs.microsoft.com/fslogix/install-ht).
+3. Przejdź do \\\\Win32\\wydanie lub \\\\x64\\Release w pliku zip i uruchom program **FSLogixAppsSetup** w celu zainstalowania agenta FSLogix.  Aby dowiedzieć się więcej na temat sposobu instalowania programu FSLogix, zobacz [pobieranie i Instalowanie FSLogix](/fslogix/install-ht/).
 4. Przejdź do **pliku Program Files** > **FSLogix** > **Apps** , aby potwierdzić, że Agent został zainstalowany.
-5. Z menu Start Uruchom polecenie **regedit** jako administrator. Przejdź do **komputera\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
+5. Z menu Start Uruchom polecenie **regedit** jako administrator. Przejdź do **komputera\\HKEY_LOCAL_MACHINE\\oprogramowania\\FSLogix**.
 6. Utwórz klucz o nazwie **Profile**.
 7. Utwórz następujące wartości dla klucza profile:
 
-| Nazwa                | Typ               | Dane/wartość                        |
+| Name (Nazwa)                | Typ               | Dane/wartość                        |
 |---------------------|--------------------|-----------------------------------|
 | Enabled (Włączony)             | Ostatnie              | 1                                 |
 | VHDLocations        | Wartość ciągu wielociągowego | "Ścieżka sieciowa udziału plików"     |

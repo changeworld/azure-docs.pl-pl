@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: c41a433ee19969546e1db2aa583c72ed166b7ebf
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: eee8fdf515861b43b58d5af111930e2224c9a60a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607474"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367237"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnozowanie problemów z wydajnością grafiki w programie Pulpit zdalny
 
@@ -69,9 +69,9 @@ Wysoka wartość dla wszystkich klatek pominiętych/sekund oznacza, że problem 
 
 Jeśli licznik ramki wyjściowe/drugi dopasowuje ramki wejściowe/sekundę, ale nadal zauważysz nietypowe opóźnienia lub ogiera, średni czas kodowania może być przyczyna. Kodowanie jest procesem synchronicznym, który występuje na serwerze w scenariuszu pojedynczej sesji (vGPU) i na maszynie wirtualnej w scenariuszu obejmującym wiele sesji. Średni czas kodowania powinien mieć mniej niż 33 MS. Jeśli średni czas kodowania jest równy 33 MS, ale nadal występują problemy z wydajnością, może wystąpić problem z aplikacją lub systemem operacyjnym, z którego korzystasz.
 
-Aby uzyskać więcej informacji o diagnozowaniu problemów związanych z aplikacjami, zobacz [liczniki wydajności opóźnienia danych wejściowych użytkownika](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters).
+Aby uzyskać więcej informacji o diagnozowaniu problemów związanych z aplikacjami, zobacz [liczniki wydajności opóźnienia danych wejściowych użytkownika](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/).
 
-Ponieważ protokół RDP obsługuje średni czas kodowania 33 MS, obsługuje wejściowy współczynnik ramek do 30 klatek na sekundę. Należy pamiętać, że 33 MS to maksymalna obsługiwana szybkość klatek. W wielu przypadkach częstotliwość klatek napotkanych przez użytkownika będzie niższa, w zależności od tego, jak często ramka jest dostarczana do protokołu RDP przez źródło. Na przykład zadania, takie jak oglądanie filmu wideo, wymagają pełnego współczynnika klatek wejścia o 30 klatek na sekundę, ale mniej znacznie intensywnie korzystających z nich zadań, takich jak rzadko edytowane są wyniki w postaci znacznie mniejszej wartości klatek wejścia/s, bez obniżenia wydajności. jakość środowiska.
+Ponieważ protokół RDP obsługuje średni czas kodowania 33 MS, obsługuje wejściowy współczynnik ramek do 30 klatek na sekundę. Należy pamiętać, że 33 MS to maksymalna obsługiwana szybkość klatek. W wielu przypadkach częstotliwość klatek napotkanych przez użytkownika będzie niższa, w zależności od tego, jak często ramka jest dostarczana do protokołu RDP przez źródło. Na przykład zadania, takie jak obserwowanie filmu wideo, wymagają pełnej szybkości klatek wejścia o 30 klatek/s, ale mniej znacznie intensywnie korzystających z nich zadań, takich jak rzadko edytowane są wyniki w postaci znacznie mniejszej wartości klatek wejścia/s, bez obniżenia jakości doświadczenia użytkownika.
 
 ### <a name="addressing-poor-frame-quality"></a>Rozwiązywanie słabej jakości ramki
 
@@ -101,6 +101,6 @@ Jeśli zasoby klienta powodują wąskie gardło, wypróbuj jedną z następując
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby utworzyć maszynę wirtualną platformy Azure zoptymalizowaną pod kątem procesora GPU, zobacz [Konfigurowanie przyspieszania procesora GPU dla środowiska pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu).
-- Aby zapoznać się z omówieniem rozwiązywania problemów i śledzenia eskalacji, zobacz [Omówienie rozwiązywania problemów, opinie i pomoc techniczną](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview).
-- Aby dowiedzieć się więcej na temat usługi, zobacz [Środowisko pulpitu systemu Windows](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Aby utworzyć maszynę wirtualną platformy Azure zoptymalizowaną pod kątem procesora GPU, zobacz [Konfigurowanie przyspieszania procesora GPU dla środowiska pulpitu wirtualnego systemu Windows](configure-vm-gpu.md).
+- Aby zapoznać się z omówieniem rozwiązywania problemów i śledzenia eskalacji, zobacz [Omówienie rozwiązywania problemów, opinie i pomoc techniczną](troubleshoot-set-up-overview.md).
+- Aby dowiedzieć się więcej na temat usługi, zobacz [Środowisko pulpitu systemu Windows](environment-setup.md).

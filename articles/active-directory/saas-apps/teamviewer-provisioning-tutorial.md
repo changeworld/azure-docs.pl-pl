@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0602757fad0eb4424e10fb0c1cf0272826ed0024
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: dc33cf9249a5b804ef46e75ff1822eaa5c6f9d6a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150701"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366435"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie programu TeamViewer do automatycznej aprowizacji użytkowników
 
@@ -101,7 +101,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Karta aprowizacji](common/provisioning-automatic.png)
 
-5. W sekcji **poświadczenia administratora** wprowadź poświadczenia administratora programu TeamViewer i nazwę użytkownika. Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może połączyć się z programem TeamViewer. Jeśli połączenie nie powiedzie się, upewnij się, że konto programu TeamViewer ma uprawnienia administratora, a następnie spróbuj ponownie.
+5. W sekcji **poświadczenia administratora** wprowadź `ttps://webapi.teamviewer.com/scim/v2` w polu żądany **adres URL** i wprowadź token skryptu utworzony wcześniej w **tokenie tajnym**. Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może połączyć się z programem TeamViewer. Jeśli połączenie nie powiedzie się, upewnij się, że konto programu TeamViewer ma uprawnienia administratora, a następnie spróbuj ponownie.
 
     ![aprowizacji](./media/teamViewer-provisioning-tutorial/provisioning.png)
 

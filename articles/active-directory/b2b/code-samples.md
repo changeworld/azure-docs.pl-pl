@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3a43ce4c560e89d88594d173aae7b2ad2db99ee
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 03a7a9c0c9ed308944b57e7659fefa81178af78b
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273108"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368129"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Przykłady kodu i programu PowerShell na potrzeby współpracy B2B w usłudze Azure Active Directory
 
@@ -26,7 +26,7 @@ Można zbiorczo zaprosić do organizacji użytkowników zewnętrznych za pomocą
 
 1. Przygotuj plik CSV. Utwórz nowy plik CSV i nadaj mu nazwę invitations.csv. W tym przykładzie plik został zapisany w folderze C:\data i zawiera następujące informacje:
   
-   Nazwa                  |  InvitedUserEmailAddress
+   Name (Nazwa)                  |  InvitedUserEmailAddress
    --------------------- | --------------------------
    Osoba zaproszona B2B w usłudze Gmail     | b2binvitee@gmail.com
    Osoba zaproszona B2B w usłudze Outlook   | b2binvitee@outlook.com
@@ -56,7 +56,7 @@ To polecenie cmdlet wysyła zaproszenie na adresy e-mail podane w pliku invitati
 - Wysyłanie wiadomości na adresy DW lub całkowite pominięcie wiadomości e-mail
 
 ## <a name="code-sample"></a>Przykład kodu
-Poniżej pokazano, jak wywoływać interfejs API zaproszenia w trybie „tylko dotyczący aplikacji”, aby pobrać adres URL realizacji dla zasobu, do którego zapraszasz użytkownika B2B. Celem jest wysłanie niestandardowej wiadomości e-mail z zaproszeniem. Wiadomość e-mail może zostać utworzona za pomocą klienta HTTP, więc można dostosować jej wygląd oraz wysłać za pośrednictwem interfejsu API programu Graph.
+Poniżej pokazano, jak wywoływać interfejs API zaproszenia w trybie „tylko dotyczący aplikacji”, aby pobrać adres URL realizacji dla zasobu, do którego zapraszasz użytkownika B2B. Celem jest wysłanie niestandardowej wiadomości e-mail z zaproszeniem. Wiadomość e-mail może składać się z klienta HTTP, dzięki czemu można dostosowywać wygląd i wysyłać go za pośrednictwem interfejsu API Microsoft Graph.
 
 ```csharp
 namespace SampleInviteApp
@@ -70,12 +70,12 @@ namespace SampleInviteApp
     class Program
     {
         /// <summary>
-        /// Microsoft graph resource.
+        /// Microsoft Graph resource.
         /// </summary>
         static readonly string GraphResource = "https://graph.microsoft.com";
  
         /// <summary>
-        /// Microsoft graph invite endpoint.
+        /// Microsoft Graph invite endpoint.
         /// </summary>
         static readonly string InviteEndPoint = "https://graph.microsoft.com/v1.0/invitations";
  
@@ -173,14 +173,14 @@ namespace SampleInviteApp
         }
  
         /// <summary>
-        /// Get the access token for our application to talk to microsoft graph.
+        /// Get the access token for our application to talk to Microsoft Graph.
         /// </summary>
-        /// <returns>Returns the access token for our application to talk to microsoft graph.</returns>
+        /// <returns>Returns the access token for our application to talk to Microsoft Graph.</returns>
         private static string GetAccessToken()
         {
             string accessToken = null;
  
-            // Get the access token for our application to talk to microsoft graph.
+            // Get the access token for our application to talk to Microsoft Graph.
             try
             {
                 AuthenticationContext testAuthContext =

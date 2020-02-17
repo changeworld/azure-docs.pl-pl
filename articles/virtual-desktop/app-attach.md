@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f6a8e4b9129018686aa5833a2ac260075e5627f9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772554"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367632"
 ---
 # <a name="set-up-msix-app-attach"></a>Konfigurowanie dołączania aplikacji MSIX
 
@@ -38,7 +38,7 @@ Najpierw należy uzyskać obraz systemu operacyjnego, który będzie używany dl
 1. Otwórz [Portal niejawnego testera systemu Windows](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) i zaloguj się.
 
      >[!NOTE]
-     >Aby uzyskać dostęp do portalu niejawnego testera systemu Windows, musisz być członkiem niejawnego programu testów systemu Windows. Aby dowiedzieć się więcej o programie testów systemu Windows, zapoznaj się z [dokumentacją zatestera systemu Windows](https://docs.microsoft.com/windows-insider/at-home/).
+     >Aby uzyskać dostęp do portalu niejawnego testera systemu Windows, musisz być członkiem niejawnego programu testów systemu Windows. Aby dowiedzieć się więcej o programie testów systemu Windows, zapoznaj się z [dokumentacją zatestera systemu Windows](/windows-insider/at-home/).
 
 2. Przewiń w dół do sekcji **Wybierz wersję** i wybierz pozycję **Windows 10 wersja zapoznawcza wersji zapoznawczej Enterprise (Fast) — Kompilacja 19035** lub nowsza.
 
@@ -79,7 +79,7 @@ Po przekazaniu wirtualnego dysku twardego na platformę Azure Utwórz pulę host
 
 ## <a name="prepare-the-application-for-msix-app-attach"></a>Przygotowywanie aplikacji do dołączenia do aplikacji MSIX 
 
-Jeśli masz już pakiet MSIX, przejdź do [konfiguracji infrastruktury pulpitów wirtualnych systemu Windows](#configure-windows-virtual-desktop-infrastructure). Jeśli chcesz przetestować starsze aplikacje, postępuj zgodnie z instrukcjami w temacie [Tworzenie pakietu MSIX z poziomu Instalatora pulpitu na maszynie wirtualnej](https://docs.microsoft.com/windows/msix/packaging-tool/create-app-package-msi-vm) w celu przekonwertowania starszej aplikacji na pakiet MSIX.
+Jeśli masz już pakiet MSIX, przejdź do [konfiguracji infrastruktury pulpitów wirtualnych systemu Windows](#configure-windows-virtual-desktop-infrastructure). Jeśli chcesz przetestować starsze aplikacje, postępuj zgodnie z instrukcjami w temacie [Tworzenie pakietu MSIX z poziomu Instalatora pulpitu na maszynie wirtualnej](/windows/msix/packaging-tool/create-app-package-msi-vm/) w celu przekonwertowania starszej aplikacji na pakiet MSIX.
 
 ## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>Wygeneruj pakiet VHD lub VHDX dla MSIX
 
@@ -184,8 +184,8 @@ Jeśli aplikacja używa certyfikatu, który nie jest zaufany lub został podpisa
 
 Dołączenie do aplikacji MSIX ma cztery różne etapy, które należy wykonać w następującej kolejności:
 
-1. Stage
-2. Zarejestruj
+1. Etap
+2. Zarejestruj subskrypcję
 3. Wyrejestrowania
 4. Cofnij przygotowanie
 
@@ -390,7 +390,7 @@ rmdir $packageName -Force -Verbose
 
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Konfigurowanie skryptów symulacji dla agenta dołączania aplikacji MSIX
 
-Po utworzeniu skryptów użytkownicy mogą ręcznie uruchamiać je lub konfigurować do uruchamiania automatycznie jako skrypty uruchamiania, logowania, wylogowywania i zamykania. Aby dowiedzieć się więcej na temat tych typów skryptów, zobacz [Używanie skryptów uruchamiania, zamykania, logowania i wylogowywania w zasady grupy](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)).
+Po utworzeniu skryptów użytkownicy mogą ręcznie uruchamiać je lub konfigurować do uruchamiania automatycznie jako skrypty uruchamiania, logowania, wylogowywania i zamykania. Aby dowiedzieć się więcej na temat tych typów skryptów, zobacz [Używanie skryptów uruchamiania, zamykania, logowania i wylogowywania w zasady grupy](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/).
 
 W każdym z tych skryptów automatycznych działa jedna faza dołączania skryptów:
 
@@ -407,7 +407,7 @@ Aby zainstalować pliki licencji, należy użyć skryptu programu PowerShell, kt
 
 Poniżej przedstawiono sposób konfigurowania licencji do użytku w trybie offline: 
 
-1. Pobierz pakiet aplikacji, licencje i wymagane platformy z Microsoft Store dla firm. Wymagane są zarówno zakodowane, jak i niezakodowane pliki licencji. Szczegółowe instrukcje dotyczące pobierania można znaleźć [tutaj](https://docs.microsoft.com/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
+1. Pobierz pakiet aplikacji, licencje i wymagane platformy z Microsoft Store dla firm. Wymagane są zarówno zakodowane, jak i niezakodowane pliki licencji. Szczegółowe instrukcje dotyczące pobierania można znaleźć [tutaj](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app/).
 2. Zaktualizuj następujące zmienne w skrypcie dla kroku 3:
       1. `$contentID` jest wartością identyfikatorze z niezakodowanego pliku licencji (XML). Możesz otworzyć plik licencji w wybranym edytorze tekstu.
       2. `$licenseBlob` to cały ciąg dla obiektu BLOB licencji w zakodowanym pliku licencji (bin). Możesz otworzyć zakodowany plik licencji w wybranym edytorze tekstu. 

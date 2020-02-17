@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 187c92f8e5b0148577f204f68077c58ea9ab9a3d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 032062dd200781b6d1f5abeb2391ae75c4c43e6a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887363"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367294"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Wdrażanie narzędzia do zarządzania przy użyciu szablonu Azure Resource Manager
 
@@ -36,7 +36,7 @@ Przed wdrożeniem narzędzia do zarządzania musisz mieć Azure Active Directory
 
 - Wyłączono usługę Azure Multi-Factor Authentication (MFA)
 - Masz uprawnienia do tworzenia zasobów w ramach subskrypcji platformy Azure
-- Masz uprawnienia do tworzenia aplikacji usługi Azure AD. Wykonaj następujące kroki, aby sprawdzić, czy użytkownik ma wymagane uprawnienia, postępując zgodnie z instrukcjami w obszarze [wymagane uprawnienia](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+- Masz uprawnienia do tworzenia aplikacji usługi Azure AD. Wykonaj następujące kroki, aby sprawdzić, czy użytkownik ma wymagane uprawnienia, postępując zgodnie z instrukcjami w obszarze [wymagane uprawnienia](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
 Po wdrożeniu i skonfigurowaniu narzędzia do zarządzania zalecamy poproszenie użytkownika o uruchomienie interfejsu użytkownika zarządzania, aby upewnić się, że wszystko działa. Użytkownik, który uruchamia interfejs użytkownika zarządzania, musi mieć przypisanie roli, które umożliwia im wyświetlanie lub edytowanie dzierżawy pulpitów wirtualnych systemu Windows.
 

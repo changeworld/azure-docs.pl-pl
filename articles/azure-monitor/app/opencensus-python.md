@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 091cf26a0c18aba0925ad23e61950f8622f6080b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b9d2bda1d3f01d2bf4bb152c0f62ade87bb61b4c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989522"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368270"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Konfigurowanie Azure Monitor aplikacji języka Python (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ Azure Monitor obsługuje śledzenie rozproszone, zbieranie metryk i rejestrowani
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Tworzenie zasobu Application Insights w Azure Monitor
 
@@ -107,7 +107,7 @@ Poniżej przedstawiono eksporterów, którzy OpenCensus są zamapowane na typy d
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. Chociaż wprowadzanie wartości jest przydatne w celach demonstracyjnych, ostatecznie chcemy emitować `SpanData` do Azure Monitor. Zmodyfikuj swój kod z poprzedniego kroku w oparciu o następujący przykład kodu:
+3. Chociaż wprowadzanie wartości jest przydatne w celach demonstracyjnych, ostatecznie chcemy emitować `SpanData` do Azure Monitor. Przekaż parametry połączenia bezpośrednio do eksportera lub możesz określić je w zmiennej środowiskowej `APPLICATIONINSIGHTS_CONNECTION_STRING`. Zmodyfikuj swój kod z poprzedniego kroku w oparciu o następujący przykład kodu:
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -193,7 +193,7 @@ Poniżej przedstawiono eksporterów, którzy OpenCensus są zamapowane na typy d
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. Chociaż wprowadzanie wartości jest przydatne w celach demonstracyjnych, ostatecznie chcemy emitować dane metryk do Azure Monitor. Zmodyfikuj swój kod z poprzedniego kroku w oparciu o następujący przykład kodu:
+3. Chociaż wprowadzanie wartości jest przydatne w celach demonstracyjnych, ostatecznie chcemy emitować dane metryk do Azure Monitor. Przekaż parametry połączenia bezpośrednio do eksportera lub możesz określić je w zmiennej środowiskowej `APPLICATIONINSIGHTS_CONNECTION_STRING`. Zmodyfikuj swój kod z poprzedniego kroku w oparciu o następujący przykład kodu:
 
     ```python
     from datetime import datetime
@@ -277,7 +277,7 @@ Poniżej przedstawiono eksporterów, którzy OpenCensus są zamapowane na typy d
     90
     ```
 
-3. Chociaż wprowadzanie wartości jest przydatne w celach demonstracyjnych, ostatecznie chcemy emitować dane dziennika do Azure Monitor. Zmodyfikuj swój kod z poprzedniego kroku w oparciu o następujący przykład kodu:
+3. Chociaż wprowadzanie wartości jest przydatne w celach demonstracyjnych, ostatecznie chcemy emitować dane dziennika do Azure Monitor. Przekaż parametry połączenia bezpośrednio do eksportera lub możesz określić je w zmiennej środowiskowej `APPLICATIONINSIGHTS_CONNECTION_STRING`. Zmodyfikuj swój kod z poprzedniego kroku w oparciu o następujący przykład kodu:
 
     ```python
     import logging

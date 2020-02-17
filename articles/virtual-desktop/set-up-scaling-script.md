@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: c201df03bb156bac3f63d03cc4ca35215792f65c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061530"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367253"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Skalowanie hostów sesji przy użyciu Azure Automation
 
@@ -35,7 +35,7 @@ Narzędzie do skalowania używa Azure Automation kombinacji elementów Runbook p
 W czasie szczytowego użycia zadanie sprawdza bieżącą liczbę sesji i pojemność maszyny wirtualnej aktualnie działającego hosta sesji dla każdej puli hostów. Te informacje służą do obliczenia, czy uruchomione maszyny wirtualne hosta sesji mogą obsługiwać istniejące sesje na podstawie parametru *SessionThresholdPerCPU* zdefiniowanego dla pliku **createazurelogicapp. ps1** . Jeśli maszyny wirtualne hosta sesji nie mogą obsługiwać istniejących sesji, zadanie uruchamia dodatkowe maszyny wirtualne hosta sesji w puli hostów.
 
 >[!NOTE]
->*SessionThresholdPerCPU* nie ogranicza liczby sesji na maszynie wirtualnej. Ten parametr określa tylko, kiedy należy uruchomić nowe maszyny wirtualne w celu równoważenia obciążenia połączeń. Aby ograniczyć liczbę sesji, należy postępować zgodnie z instrukcjami [Set-RdsHostPool](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/set-rdshostpool) , aby odpowiednio skonfigurować parametr *MaxSessionLimit* .
+>*SessionThresholdPerCPU* nie ogranicza liczby sesji na maszynie wirtualnej. Ten parametr określa tylko, kiedy należy uruchomić nowe maszyny wirtualne w celu równoważenia obciążenia połączeń. Aby ograniczyć liczbę sesji, należy postępować zgodnie z instrukcjami [Set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) , aby odpowiednio skonfigurować parametr *MaxSessionLimit* .
 
 W czasie użytkowania poza szczytem zadanie Określa, które maszyny wirtualne hosta sesji powinny zostać zamknięte na podstawie parametru *MinimumNumberOfRDSH* . Zadanie skonfiguruje maszyny wirtualne hosta sesji do trybu opróżniania, aby zapobiec łączeniu się nowych sesji z hostami. Jeśli parametr *LimitSecondsToForceLogOffUser* zostanie ustawiony na wartość różną od zera, skrypt powiadamia wszystkie aktualnie zalogowanych użytkowników o konieczności zapisania swojej pracy, zaczekaj na skonfigurowanie czasu, a następnie wymusić wylogowanie się użytkowników. Po wyrejestrowaniu wszystkich sesji użytkownika na maszynie wirtualnej hosta sesji skrypt zostanie zamknięty.
 
@@ -126,7 +126,7 @@ Aby utworzyć konto Uruchom jako na koncie platformy Azure:
 
 Następnie należy utworzyć przypisanie roli, aby AzureRunAsConnection mogły współdziałać z pulpitem wirtualnym systemu Windows. Upewnij się, że używasz programu PowerShell, aby zalogować się przy użyciu konta, które ma uprawnienia do tworzenia przypisań ról.
 
-Najpierw pobierz i zaimportuj [moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono. Uruchom następujące polecenia cmdlet programu PowerShell, aby połączyć się z pulpitem wirtualnym systemu Windows i wyświetlić dzierżawców.
+Najpierw pobierz i zaimportuj [moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](/powershell/windows-virtual-desktop/overview/) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono. Uruchom następujące polecenia cmdlet programu PowerShell, aby połączyć się z pulpitem wirtualnym systemu Windows i wyświetlić dzierżawców.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

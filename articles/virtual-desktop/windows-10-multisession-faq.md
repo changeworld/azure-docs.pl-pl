@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 6bdac3f06834ccb5454efa0d77bec5a5a6c5b5bf
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 543514683ff96449bfe0e5a21c525834f61f3027
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515109"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367136"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Wiele sesji systemu Windows 10 Enterprise — często zadawane pytania
 
@@ -28,7 +28,7 @@ Liczba interaktywnych sesji, które mogą być aktywne w tym samym czasie, zale�
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>Dlaczego moja aplikacja raportuje wiele sesji systemu Windows 10 Enterprise jako system operacyjny serwera?
 
-Wiele sesji systemu Windows 10 Enterprise to wersja wirtualna systemu Windows 10 Enterprise. Jedna z różnic polega na tym, że ten system operacyjny (OS) raportuje element [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) jako wartość 3 o takiej samej wartości jak system Windows Server. Ta właściwość utrzymuje system operacyjny zgodny z istniejącymi narzędziami do zarządzania hostami usług pulpitu zdalnego, aplikacjami obsługującymi wiele sesji hosta usług pulpitu zdalnego i większością optymalizacji wydajności systemu niskiego poziomu dla środowisk hosta usług pulpitu zdalnego. Niektóre Instalatory aplikacji mogą blokować instalację w wielu sesjach systemu Windows 10, w zależności od tego, czy wykrywane są ustawienia ProductType dla klienta. Jeśli Twoja aplikacja nie zostanie zainstalowana, skontaktuj się z dostawcą aplikacji w celu uzyskania zaktualizowanej wersji. 
+Wiele sesji systemu Windows 10 Enterprise to wersja wirtualna systemu Windows 10 Enterprise. Jedna z różnic polega na tym, że ten system operacyjny (OS) raportuje element [ProductType](/windows/desktop/cimwin32prov/win32-operatingsystem/) jako wartość 3 o takiej samej wartości jak system Windows Server. Ta właściwość utrzymuje system operacyjny zgodny z istniejącymi narzędziami do zarządzania hostami usług pulpitu zdalnego, aplikacjami obsługującymi wiele sesji hosta usług pulpitu zdalnego i większością optymalizacji wydajności systemu niskiego poziomu dla środowisk hosta usług pulpitu zdalnego. Niektóre Instalatory aplikacji mogą blokować instalację w wielu sesjach systemu Windows 10, w zależności od tego, czy wykrywane są ustawienia ProductType dla klienta. Jeśli Twoja aplikacja nie zostanie zainstalowana, skontaktuj się z dostawcą aplikacji w celu uzyskania zaktualizowanej wersji. 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Czy można uruchomić wiele sesji systemu Windows 10 Enterprise w środowisku lokalnym?
 
@@ -48,7 +48,7 @@ Możesz użyć dowolnego obsługiwanego narzędzia konfiguracji, ale zalecamy Co
  
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Czy dla wielu sesji systemu Windows 10 Enterprise można przyłączyć Azure Active Directory (AD)?
 
-Wielosesyjna obsługa systemu Windows 10 Enterprise jest obecnie obsługiwana w przypadku hybrydowej usługi Azure AD. Po przyłączeniu do domeny wielu sesji systemu Windows 10 Enterprise Użyj istniejącego obiektu zasady grupy, aby włączyć rejestrację usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Planowanie wdrożenia hybrydowego dołączania Azure Active Directory](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan).
+Wielosesyjna obsługa systemu Windows 10 Enterprise jest obecnie obsługiwana w przypadku hybrydowej usługi Azure AD. Po przyłączeniu do domeny wielu sesji systemu Windows 10 Enterprise Użyj istniejącego obiektu zasady grupy, aby włączyć rejestrację usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Planowanie wdrożenia hybrydowego dołączania Azure Active Directory](../active-directory/devices/hybrid-azuread-join-plan.md).
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Gdzie mogę znaleźć obraz wielosesyjny dla systemu Windows 10 Enterprise?
 

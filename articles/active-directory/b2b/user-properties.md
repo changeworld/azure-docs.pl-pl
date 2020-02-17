@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa282afdf910c2449b5d5ea0bc5e38a396f3aa02
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 70156335d0d5617b4c1ccb2d11ce8e9f8dc9d036
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608860"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368119"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Właściwości Azure Active Directory użytkownika współpracy B2B
 
@@ -68,12 +68,12 @@ Ta właściwość wskazuje relację użytkownika z dzierżawcą hosta. Ta właś
   > [!NOTE]
   > Użytkownik nie ma żadnego powiązania z logowaniem użytkownika, rolą katalogu użytkownika i tak dalej. Ta właściwość po prostu wskazuje relację użytkownika z organizacją hosta i umożliwia organizacji wymuszanie zasad, które są zależne od tej właściwości.
 
-### <a name="source"></a>Źródło
+### <a name="source"></a>Element źródłowy
 Ta właściwość wskazuje, w jaki sposób użytkownik loguje się.
 
 - Zaproszony użytkownik: ten użytkownik został zaproszony, ale jeszcze nie zakończył zaproszenia.
 
-- Active Directory zewnętrzne: ten użytkownik należy do organizacji zewnętrznej i uwierzytelnia się przy użyciu konta usługi Azure AD należącego do innej organizacji. Ten typ logowania odpowiada stanie 1.
+- Azure Active Directory zewnętrzne: ten użytkownik należy do organizacji zewnętrznej i uwierzytelnia się przy użyciu konta usługi Azure AD należącego do innej organizacji. Ten typ logowania odpowiada stanie 1.
 
 - Konto Microsoft: ten użytkownik jest w konto Microsoft i uwierzytelniany przy użyciu konto Microsoft. Ten typ logowania odpowiada stanie 2.
 

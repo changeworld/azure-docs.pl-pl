@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: 12b5b6ce84ad36d14a393b54745e530779d4ca95
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 438c391febc28a716c681aa81b3f42c155b720eb
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965741"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367215"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tworzenie dzierżawy i puli hosta
 
 W tym artykule opisano problemy podczas wstępnej instalacji dzierżawy usług pulpitu wirtualnego systemu Windows i infrastruktury puli powiązanych hostów sesji.
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 
 Odwiedź [społeczność Tech. pulpitu wirtualnego systemu Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , aby omówić usługę pulpitu wirtualnego systemu Windows z zespołem produktu i aktywnymi członkami społeczności.
 
@@ -53,7 +53,7 @@ Przykład nieprzetworzonego błędu:
 
 **Przyczyna:** Zalogowany użytkownik nie ma przypisanej roli TenantCreator w Azure Active Directory.
 
-**Poprawka:** Postępuj zgodnie z instrukcjami w temacie [Przypisywanie roli aplikacji TenantCreator do użytkownika w dzierżawie Azure Active Directory](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role). Po wykonaniu instrukcji uzyskasz użytkownikowi przypisaną rolę TenantCreator.
+**Poprawka:** Postępuj zgodnie z instrukcjami w temacie [Przypisywanie roli aplikacji TenantCreator do użytkownika w dzierżawie Azure Active Directory](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role). Po wykonaniu instrukcji uzyskasz użytkownikowi przypisaną rolę TenantCreator.
 
 ![Zrzut ekranu przedstawiający przypisaną rolę TenantCreator.](media/TenantCreatorRoleAssigned.png)
 
@@ -113,9 +113,9 @@ Jeśli szablon operacji przekracza limit przydziału, możesz wykonać jedną z 
 
 Postępuj zgodnie z poniższymi instrukcjami, aby rozwiązywać problemy z niepowodzeniem wdrożenia szablonów Azure Resource Manager i DSC programu PowerShell.
 
-1. Przejrzyj błędy we wdrożeniu, korzystając [z opcji Wyświetl operacje wdrażania z Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
-2. Jeśli wdrożenie nie zawiera żadnych błędów, Przejrzyj błędy w dzienniku aktywności, korzystając [z widoku dzienniki aktywności do inspekcji akcji na zasobach](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-3. Po zidentyfikowaniu tego błędu Użyj komunikatu o błędzie i zasobów w [rozwiązywaniu typowych błędów wdrażania platformy Azure z Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors) , aby rozwiązać problem.
+1. Przejrzyj błędy we wdrożeniu, korzystając [z opcji Wyświetl operacje wdrażania z Azure Resource Manager](../azure-resource-manager/resource-manager-deployment-operations.md).
+2. Jeśli wdrożenie nie zawiera żadnych błędów, Przejrzyj błędy w dzienniku aktywności, korzystając [z widoku dzienniki aktywności do inspekcji akcji na zasobach](../azure-resource-manager/resource-group-audit.md).
+3. Po zidentyfikowaniu tego błędu Użyj komunikatu o błędzie i zasobów w [rozwiązywaniu typowych błędów wdrażania platformy Azure z Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md) , aby rozwiązać problem.
 4. Usuń wszystkie zasoby utworzone w poprzednim wdrożeniu i ponów próbę wdrożenia szablonu.
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Błąd: wdrożenie nie powiodło się...\<nazwa hosta >/JoinDomain

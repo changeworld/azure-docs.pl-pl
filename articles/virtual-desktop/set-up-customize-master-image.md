@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 23763123ce8e92b6bb15b2b33a196ed1a1d75c9f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013143"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368801"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego
 
@@ -22,13 +22,13 @@ W tym artykule przedstawiono sposób przygotowania obrazu głównego wirtualnego
 
 Wiele sesji systemu Windows 10 Enterprise jest dostępnych w galerii obrazów platformy Azure. Dostępne są dwie opcje dostosowywania tego obrazu.
 
-Pierwszą opcją jest zainicjowanie obsługi administracyjnej maszyny wirtualnej na platformie Azure, postępując zgodnie z instrukcjami w temacie [Tworzenie maszyny wirtualnej z zarządzanego obrazu](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed), a następnie przejście do [przygotowania i instalacji oprogramowania](set-up-customize-master-image.md#software-preparation-and-installation).
+Pierwszą opcją jest zainicjowanie obsługi administracyjnej maszyny wirtualnej na platformie Azure, postępując zgodnie z instrukcjami w temacie [Tworzenie maszyny wirtualnej z zarządzanego obrazu](../virtual-machines/windows/create-vm-generalized-managed.md), a następnie przejście do [przygotowania i instalacji oprogramowania](set-up-customize-master-image.md#software-preparation-and-installation).
 
 Druga opcja polega na utworzeniu obrazu lokalnie przez pobranie obrazu, udostępnienie maszyny wirtualnej funkcji Hyper-V i dostosowanie jej do Twoich potrzeb, co obejmuje poniższą sekcję.
 
 ### <a name="local-image-creation"></a>Tworzenie obrazu lokalnego
 
-Po pobraniu obrazu do lokalizacji lokalnej Otwórz **Menedżera funkcji Hyper-V** , aby utworzyć maszynę wirtualną z SKOPIOWAnym dyskiem VHD. Poniższe instrukcje są prostą wersją, ale więcej szczegółowych instrukcji można znaleźć w temacie [Tworzenie maszyny wirtualnej w funkcji Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
+Po pobraniu obrazu do lokalizacji lokalnej Otwórz **Menedżera funkcji Hyper-V** , aby utworzyć maszynę wirtualną z SKOPIOWAnym dyskiem VHD. Poniższe instrukcje są prostą wersją, ale więcej szczegółowych instrukcji można znaleźć w temacie [Tworzenie maszyny wirtualnej w funkcji Hyper-V](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v/).
 
 Aby utworzyć maszynę wirtualną za pomocą skopiowanego wirtualnego dysku twardego:
 
@@ -50,7 +50,7 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 ### <a name="fixed-disk"></a>Dysk stały
 
-Jeśli utworzysz maszynę wirtualną na podstawie istniejącego wirtualnego dysku twardego, domyślnie zostanie utworzony dysk dynamiczny. Można go zmienić na dysk stały, wybierając pozycję **Edytuj dysk...** , jak pokazano na poniższej ilustracji. Aby uzyskać bardziej szczegółowe instrukcje, zobacz [Przygotowywanie wirtualnego dysku twardego systemu Windows lub dysku VHDX do przekazania do platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+Jeśli utworzysz maszynę wirtualną na podstawie istniejącego wirtualnego dysku twardego, domyślnie zostanie utworzony dysk dynamiczny. Można go zmienić na dysk stały, wybierając pozycję **Edytuj dysk...** , jak pokazano na poniższej ilustracji. Aby uzyskać bardziej szczegółowe instrukcje, zobacz [Przygotowywanie wirtualnego dysku twardego systemu Windows lub dysku VHDX do przekazania do platformy Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md).
 
 ![Zrzut ekranu przedstawiający opcję Edytuj dysk.](media/35772414b5a0f81f06f54065561d1414.png)
 
@@ -70,7 +70,7 @@ Jeśli użytkownicy muszą uzyskać dostęp do określonych aplikacji biznesowyc
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Konfigurowanie kontenera profilu użytkownika (FSLogix)
 
-Aby dołączyć kontener FSLogix jako część obrazu, postępuj zgodnie z instrukcjami w temacie [Tworzenie kontenera profilu dla puli hostów przy użyciu udziału plików](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). Funkcję kontenera FSLogix można testować za pomocą [tego przewodnika Szybki Start](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial).
+Aby dołączyć kontener FSLogix jako część obrazu, postępuj zgodnie z instrukcjami w temacie [Tworzenie kontenera profilu dla puli hostów przy użyciu udziału plików](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). Funkcję kontenera FSLogix można testować za pomocą [tego przewodnika Szybki Start](/fslogix/configure-cloud-cache-tutorial/).
 
 ### <a name="configure-windows-defender"></a>Konfiguruj usługę Windows Defender
 
@@ -78,9 +78,9 @@ Jeśli usługa Windows Defender jest skonfigurowana na maszynie wirtualnej, upew
 
 Ta konfiguracja usuwa tylko skanowanie plików VHD i VHDX podczas załączników, ale nie wpływa na skanowanie w czasie rzeczywistym.
 
-Aby uzyskać szczegółowe instrukcje dotyczące konfigurowania usługi Windows Defender w systemie Windows Server, zobacz [Konfigurowanie wykluczeń programu antywirusowego Windows Defender w systemie Windows Server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
+Aby uzyskać szczegółowe instrukcje dotyczące konfigurowania usługi Windows Defender w systemie Windows Server, zobacz [Konfigurowanie wykluczeń programu antywirusowego Windows Defender w systemie Windows Server](/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus/).
 
-Aby dowiedzieć się więcej o tym, jak skonfigurować usługę Windows Defender do wykluczania niektórych plików z skanowania, zobacz [Konfigurowanie i weryfikowanie wykluczeń na podstawie rozszerzenia pliku i lokalizacji folderu](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
+Aby dowiedzieć się więcej o tym, jak skonfigurować usługę Windows Defender do wykluczania niektórych plików z skanowania, zobacz [Konfigurowanie i weryfikowanie wykluczeń na podstawie rozszerzenia pliku i lokalizacji folderu](/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus/).
 
 ### <a name="disable-automatic-updates"></a>Wyłącz aktualizacje automatyczne
 
@@ -137,9 +137,9 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 Ten artykuł nie obejmuje konfigurowania języka i obsługi regionalnej. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Dodawanie języków do obrazów systemu Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
-- [Funkcje na żądanie](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
-- [Funkcje języka i regionu na żądanie (FDZ)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
+- [Dodawanie języków do obrazów systemu Windows](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
+- [Funkcje na żądanie](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
+- [Funkcje języka i regionu na żądanie (FDZ)](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/)
 
 ### <a name="other-applications-and-registry-configuration"></a>Inne aplikacje i konfiguracja rejestru
 
@@ -174,7 +174,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 ## <a name="prepare-the-image-for-upload-to-azure"></a>Przygotowywanie obrazu do przekazania do platformy Azure
 
-Po zakończeniu konfiguracji i zainstalowaniu wszystkich aplikacji postępuj zgodnie z instrukcjami w temacie [przygotowanie wirtualnego dysku twardego systemu Windows lub dysku VHDX do przekazania do platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) w celu przygotowania obrazu.
+Po zakończeniu konfiguracji i zainstalowaniu wszystkich aplikacji postępuj zgodnie z instrukcjami w temacie [przygotowanie wirtualnego dysku twardego systemu Windows lub dysku VHDX do przekazania do platformy Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) w celu przygotowania obrazu.
 
 Po przygotowaniu obrazu do przekazania upewnij się, że maszyna wirtualna pozostaje w stanie wyłączenia lub cofnięcia przydziału.
 

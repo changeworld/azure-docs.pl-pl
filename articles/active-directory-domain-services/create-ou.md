@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: e202eed8e3694245b5b4527578c02cfb518723f4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4db6ad83c44e0c811df0a3b91a473861e4e1ab87
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705341"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367144"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Tworzenie jednostki organizacyjnej (OU) w Azure AD Domain Services domenie zarządzanej
 
@@ -54,7 +54,7 @@ Gdy tworzysz niestandardowe jednostki organizacyjne w domenie zarządzanej AD DS
 * Zostanie utworzona domyślna jednostka organizacyjna dla *użytkowników AADDC* , która zawiera wszystkie synchronizowane konta użytkowników z dzierżawy usługi Azure AD.
     * Nie można przenieść użytkowników ani grup z jednostki organizacyjnej *Użytkownicy AADDC* do niestandardowych jednostek organizacyjnych, które tworzysz. Tylko konta użytkowników lub zasoby utworzone w domenie zarządzanej AD DS platformy Azure można przenieść do niestandardowych jednostek organizacyjnych.
 * Konta użytkowników, grupy, konta usług i obiekty komputerów tworzone w obszarze niestandardowe jednostki organizacyjne nie są dostępne w dzierżawie usługi Azure AD.
-    * Te obiekty nie są wyświetlane za pomocą usługi Azure AD interfejs API programu Graph ani w interfejsie użytkownika usługi Azure AD; są one dostępne tylko w domenie zarządzanej AD DS platformy Azure.
+    * Te obiekty nie są wyświetlane przy użyciu interfejsu API Microsoft Graph ani w interfejsie użytkownika usługi Azure AD; są one dostępne tylko w domenie zarządzanej AD DS platformy Azure.
 
 ## <a name="create-a-custom-ou"></a>Tworzenie niestandardowej jednostki organizacyjnej
 

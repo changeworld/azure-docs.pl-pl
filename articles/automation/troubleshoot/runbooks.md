@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 65006b8357db44c3e1b8f8d9e819615b5dd9db6e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 571be831d337c71a084780da18b480cdd1e42d20
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031752"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365214"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami Runbook
 
@@ -569,53 +569,77 @@ Konto nxautomationuser agenta Log Analytics dla systemu Linux nie zostało popra
 
 * Sprawdź konfigurację konta nxautomationuser w pliku sudo. Zobacz [Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook](../automation-hrw-run-runbooks.md)
 
+## <a name="scenario-cmdlet-failing-in-pnp-powershell-runbook-on-azure-automation"></a>Scenariusz: nie powiodło się polecenie cmdlet w elemencie Runbook programu PowerShell PnP na Azure Automation
+
+### <a name="issue"></a>Problem
+
+Gdy element Runbook zapisuje obiekt wygenerowany przez program PowerShell PnP do danych wyjściowych Azure Automation bezpośrednio, dane wyjściowe polecenia cmdlet nie mogą przesyłać strumieniowo do automatyzacji.
+
+### <a name="cause"></a>Przyczyna
+
+Ten problem jest najczęściej spowodowany tym, że Azure Automation przetwarza elementy Runbook, które wywołują polecenia cmdlet programu PowerShell PnP, na przykład **Add-pnplistitem**bez przechwytywania zwracanych obiektów.
+
+### <a name="resolution"></a>Rozwiązanie
+
+Edytuj skrypty, aby przypisać wszelkie wartości zwracane do zmiennych, aby polecenia cmdlet nie powodowały zapisywania całych obiektów w standardowym wyjściu. Skrypt może przekierować strumień wyjściowy do polecenia cmdlet, jak pokazano poniżej.
+
+```azurecli
+  $null = add-pnplistitem
+```
+Jeśli skrypt analizuje dane wyjściowe polecenia cmdlet, skrypt musi przechowywać dane wyjściowe w zmiennej i manipulować zmienną zamiast po prostu przesyła strumieniowo dane wyjściowe.
+
+```azurecli
+$SomeVariable = add-pnplistitem ....
+if ($SomeVariable.someproperty -eq ....
+```
+
 ## <a name="other"></a>Mój problem nie jest wymieniony powyżej
 
 W poniższych sekcjach wymieniono inne typowe błędy oprócz dokumentacji pomocniczej, które ułatwiają rozwiązanie problemu.
 
-## <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>Hybrydowy proces roboczy runbook nie uruchamia zadań lub nie odpowiada
+### <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>Hybrydowy proces roboczy runbook nie uruchamia zadań lub nie odpowiada
 
 W przypadku uruchamiania zadań przy użyciu hybrydowego procesu roboczego, a nie w Azure Automation, może być konieczne [rozwiązanie tego samego procesu](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker).
 
-## <a name="runbook-fails-with-no-permission-or-some-variation"></a>Działanie elementu runbook kończy się błędem „Brak uprawnienia” lub jego odmianą
+### <a name="runbook-fails-with-no-permission-or-some-variation"></a>Działanie elementu runbook kończy się błędem „Brak uprawnienia” lub jego odmianą
 
 Konta Uruchom jako mogą nie mieć tych samych uprawnień wobec zasobów platformy Azure jako bieżącego konta. Upewnij się, że konto Uruchom jako ma [uprawnienia dostępu do wszystkich zasobów](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) używanych w skrypcie.
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>Elementy runbook działały, ale nagle przestały
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Elementy runbook działały, ale nagle przestały
 
 * Jeśli elementy Runbook były wcześniej wykonywane, ale zatrzymane, upewnij się, że [konto Uruchom jako](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal) nie wygasło.
 * Jeśli używasz elementu webhook do uruchamiania elementów Runbook, upewnij się, że element [webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook) nie wygasł.
 
-## <a name="issues-passing-parameters-into-webhooks"></a>Problemy z przekazywaniem parametrów do elementów webhook
+### <a name="issues-passing-parameters-into-webhooks"></a>Problemy z przekazywaniem parametrów do elementów webhook
 
 Aby uzyskać pomoc dotyczącą przekazywania parametrów do elementów webhook, zobacz [Uruchamianie elementu Runbook z elementu webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters).
 
-## <a name="issues-using-az-modules"></a>Problemy przy użyciu polecenia AZ modules
+### <a name="issues-using-az-modules"></a>Problemy przy użyciu polecenia AZ modules
 
-Używanie modułów Az i modułów AzureRM w ramach tego samego konta usługi Automation nie jest obsługiwane. Aby uzyskać więcej informacji, zobacz [AZ modules in Runbooks](https://docs.microsoft.com/azure/automation/az-modules) , aby uzyskać więcej szczegółów.
+Korzystanie z modułów AZ module i AzureRM na tym samym koncie usługi Automation nie jest obsługiwane. Aby uzyskać więcej informacji, zobacz [AZ modules in Runbooks](https://docs.microsoft.com/azure/automation/az-modules) , aby uzyskać więcej szczegółów.
 
-## <a name="inconsistent-behavior-in-runbooks"></a>Niespójne zachowanie w elementach runbook
+### <a name="inconsistent-behavior-in-runbooks"></a>Niespójne zachowanie w elementach runbook
 
 Postępuj zgodnie ze wskazówkami w obszarze [wykonywania elementu Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior) , aby uniknąć problemów z współbieżnymi zadaniami, zasobów tworzonych wiele razy lub z inną logiką zależną od chronometrażu w elementach Runbook.
 
-## <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Element Runbook kończy się niepowodzeniem z powodu błędu Brak uprawnienia, dostęp zabroniony (403) lub odmiana
+### <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Element Runbook kończy się niepowodzeniem z powodu błędu Brak uprawnienia, dostęp zabroniony (403) lub odmiana
 
 Konta Uruchom jako mogą nie mieć tych samych uprawnień wobec zasobów platformy Azure jako bieżącego konta. Upewnij się, że konto Uruchom jako ma [uprawnienia dostępu do wszystkich zasobów](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) używanych w skrypcie.
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>Elementy runbook działały, ale nagle przestały
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Elementy runbook działały, ale nagle przestały
 
 * Jeśli elementy Runbook były wcześniej wykonywane, ale zatrzymane, upewnij się, że konto Uruchom jako nie wygasło. Zobacz [odnowienie certyfikacji](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
 * Jeśli używasz elementu webhook do uruchamiania elementów Runbook, upewnij się, że element webhook [nie wygasł](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook).
 
-## <a name="passing-parameters-into-webhooks"></a>Przekazywanie parametrów do elementów webhook
+### <a name="passing-parameters-into-webhooks"></a>Przekazywanie parametrów do elementów webhook
 
 Aby uzyskać pomoc dotyczącą przekazywania parametrów do elementów webhook, zobacz [Uruchamianie elementu Runbook z elementu webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters).
 
-## <a name="using-az-modules"></a>Korzystanie z modułów Az
+### <a name="using-az-modules"></a>Korzystanie z modułów Az
 
-Używanie modułów Az i modułów AzureRM w ramach tego samego konta usługi Automation nie jest obsługiwane. Zobacz [AZ modules in Runbooks](https://docs.microsoft.com/azure/automation/az-modules).
+Korzystanie z modułów AZ module i AzureRM na tym samym koncie usługi Automation nie jest obsługiwane. Zobacz [AZ modules in Runbooks](https://docs.microsoft.com/azure/automation/az-modules).
 
-## <a name="using-self-signed-certificates"></a>Korzystanie z certyfikatów z podpisem własnym
+### <a name="using-self-signed-certificates"></a>Korzystanie z certyfikatów z podpisem własnym
 
 Aby korzystać z certyfikatów z podpisem własnym, zobacz [Tworzenie nowego certyfikatu](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate).
 

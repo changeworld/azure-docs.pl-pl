@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 059748f6f08b1c73d56aa3a127aa785f55eb63ee
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1637cb7621d6071bbce2af66f3a106770139ad4e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539132"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368822"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Instalowanie pakietu Office w głównym obrazie wirtualnego dysku twardego
 
@@ -20,20 +20,20 @@ W tym artykule opisano, jak zainstalować pakiet Office 365 ProPlus, OneDrive i 
 
 W tym artykule przyjęto założenie, że utworzono już maszynę wirtualną (VM). Jeśli nie, zobacz [Przygotowywanie i dostosowywanie głównego obrazu wirtualnego dysku twardego](set-up-customize-master-image.md#create-a-vm) .
 
-W tym artykule przyjęto również, że masz podwyższony poziom dostępu do maszyny wirtualnej, niezależnie od tego, czy jest on zainicjowany na platformie Azure, czy w Menedżerze funkcji Hyper-V. Jeśli nie, zobacz [Podnieś poziom dostępu do zarządzania wszystkimi subskrypcjami i grupami zarządzania platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin).
+W tym artykule przyjęto również, że masz podwyższony poziom dostępu do maszyny wirtualnej, niezależnie od tego, czy jest on zainicjowany na platformie Azure, czy w Menedżerze funkcji Hyper-V. Jeśli nie, zobacz [Podnieś poziom dostępu do zarządzania wszystkimi subskrypcjami i grupami zarządzania platformy Azure](../role-based-access-control/elevate-access-global-admin.md).
 
 >[!NOTE]
 >Te instrukcje dotyczą konfiguracji specyficznej dla pulpitu wirtualnego systemu Windows, która może być używana z istniejącymi procesami w organizacji.
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Instalowanie pakietu Office w trybie aktywacji komputera udostępnionego
 
-Aktywacja na komputerze udostępnionym pozwala wdrożyć pakiet Office 365 ProPlus na komputerze w organizacji, do którego uzyskuje dostęp wielu użytkowników. Aby uzyskać więcej informacji na temat aktywacji komputera udostępnionego, zobacz [Omówienie aktywacji komputera udostępnionego dla pakietu Office 365 ProPlus](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus).
+Aktywacja na komputerze udostępnionym pozwala wdrożyć pakiet Office 365 ProPlus na komputerze w organizacji, do którego uzyskuje dostęp wielu użytkowników. Aby uzyskać więcej informacji na temat aktywacji komputera udostępnionego, zobacz [Omówienie aktywacji komputera udostępnionego dla pakietu Office 365 ProPlus](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/).
 
 Zainstaluj pakiet Office za pomocą [narzędzia wdrażania pakietu Office](https://www.microsoft.com/download/details.aspx?id=49117) . Wiele sesji systemu Windows 10 Enterprise obsługuje tylko następujące wersje pakietu Office:
-- Office 365 ProPlus
+- Pakiet Office 365 ProPlus
 - Pakiet Office 365 firmy, który jest dostarczany z subskrypcją Microsoft 365 Business
 
-Narzędzie wdrażania pakietu Office wymaga pliku XML konfiguracji. Aby dostosować Poniższy przykład, zobacz [Opcje konfiguracji narzędzia do wdrażania pakietu Office](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
+Narzędzie wdrażania pakietu Office wymaga pliku XML konfiguracji. Aby dostosować Poniższy przykład, zobacz [Opcje konfiguracji narzędzia do wdrażania pakietu Office](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/).
 
 Ten przykładowy plik XML konfiguracji wykona następujące czynności:
 

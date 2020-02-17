@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d94237d2cfeb814b2e15d43c9f8863a76c0bcd11
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 94a376c01229de20e6a1264da3f29532becefa8a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190672"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368663"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Włączanie i tworzenie dużych udziałów plików
 
@@ -43,7 +43,7 @@ Włączenie dużych udziałów plików na koncie jest procesem nieodwracalnym. P
     ![Zrzut ekranu przedstawiający sposób tworzenia grupy zasobów w portalu](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. Następnie wprowadź nazwę konta magazynu. Nazwa musi być unikatowa na platformie Azure. Nazwa musi również mieć długość od 3 do 24 znaków i może zawierać tylko cyfry i małe litery.
-1. Wybierz lokalizację dla konta magazynu i upewnij się, że jest to [jeden z regionów obsługiwanych przez duże udziały plików](storage-files-planning.md#regional-availability).
+1. Wybierz lokalizację dla konta magazynu i upewnij się, że jest to [jedna z obsługiwanych replikacji dla dużych udziałów plików](storage-files-planning.md#regional-availability).
 1. Ustaw replikację na magazyn **lokalnie nadmiarowy** lub magazynu **Strefowo nadmiarowego**.
 1. Pozostaw wartości domyślne tych pól:
 

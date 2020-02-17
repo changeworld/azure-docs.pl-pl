@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: 70cabc75ebdeb7ed6d7ffd000419295fce6303de
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459504"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368773"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Samouczek: Tworzenie dzierżawy w programie Virtual Desktop systemu Windows
 
@@ -121,7 +121,7 @@ Aby znaleźć identyfikator subskrypcji platformy Azure:
 
 Teraz, gdy masz uprawnienia usługi pulpitu wirtualnego systemu Windows do wykonywania zapytań Azure Active Directory i przypisywania roli TenantCreator do konta użytkownika, możesz utworzyć dzierżawę pulpitu wirtualnego systemu Windows.
 
-Najpierw [Pobierz i zaimportuj moduł pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono.
+Najpierw [Pobierz i zaimportuj moduł pulpitu wirtualnego systemu Windows](/powershell/windows-virtual-desktop/overview/) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono.
 
 Zaloguj się do pulpitu wirtualnego systemu Windows przy użyciu konta użytkownika TenantCreator za pomocą tego polecenia cmdlet:
 

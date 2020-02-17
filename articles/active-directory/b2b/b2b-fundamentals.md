@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aa6bc856fc7b7de071a45f3aa11c051e36eca4f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e17e0f1f01e836a7a240100c1c0e1f015da5f00
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480114"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368153"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory najlepszych rozwiązań B2B
 Ten artykuł zawiera zalecenia i najlepsze rozwiązania dotyczące współpracy między firmami (B2B, Business-to-Business) w Azure Active Directory (Azure AD).
@@ -33,7 +33,7 @@ Ten artykuł zawiera zalecenia i najlepsze rozwiązania dotyczące współpracy 
 | Wymuś zasady dostępu warunkowego dla Multi-Factor Authentication (MFA) | Zalecamy wymuszenie stosowania zasad MFA dla aplikacji, które mają być udostępniane partnerom z użytkownikami B2B. W ten sposób uwierzytelnianie wieloskładnikowe będzie stale wymuszane w aplikacjach w dzierżawie, niezależnie od tego, czy organizacja partnera korzysta z usługi MFA. Zobacz [dostęp warunkowy dla użytkowników współpracy B2B](conditional-access.md). |
 | W przypadku wymuszania zasad dostępu warunkowego opartego na urządzeniach Użyj list wykluczeń, aby zezwolić na dostęp do użytkowników B2B | Jeśli zasady dostępu warunkowego opartego na urządzeniach są włączone w organizacji, urządzenia użytkownika-gościa B2B będą blokowane, ponieważ nie są zarządzane przez organizację. Można utworzyć listę wykluczeń zawierającą określonych użytkowników partnerskich, aby wykluczyć ich z zasad dostępu warunkowego opartego na urządzeniach. Zobacz [dostęp warunkowy dla użytkowników współpracy B2B](conditional-access.md). |
 | Użyj adresu URL specyficznego dla dzierżawy podczas udostępniania bezpośrednich linków użytkownikom gościa B2B | Alternatywą dla wiadomości e-mail z zaproszeniem jest nadanie gościa bezpośredniego linku do aplikacji lub portalu. Ten bezpośredni link musi być specyficzny dla dzierżawców, co oznacza, że musi zawierać identyfikator dzierżawy lub zweryfikowaną domenę, aby można było uwierzytelnić gościa w dzierżawie, gdzie znajduje się aplikacja udostępniona. Zobacz [środowisko wykupu dla użytkownika-gościa](redemption-experience.md). |
-| Podczas tworzenia aplikacji użyj elementu UserType, aby określić środowisko użytkownika gościa  | Jeśli tworzysz aplikację i chcesz udostępnić różne środowiska użytkownikom dzierżawy i użytkownikom-Gościom, użyj właściwości UserType. W tokenie nie znajduje się obecnie oświadczenia UserType. Aplikacje powinny używać interfejs API programu Graph do wysyłania zapytań do katalogu, aby użytkownik mógł uzyskać użytkownika. |
+| Podczas tworzenia aplikacji użyj elementu UserType, aby określić środowisko użytkownika gościa  | Jeśli tworzysz aplikację i chcesz udostępnić różne środowiska użytkownikom dzierżawy i użytkownikom-Gościom, użyj właściwości UserType. W tokenie nie znajduje się obecnie oświadczenia UserType. Aplikacje powinny używać interfejsu API Microsoft Graph, aby wysłać zapytanie do katalogu, aby użytkownik mógł uzyskać użytkownika. |
 | Zmień właściwość UserType *tylko* wtedy, gdy zostanie zmieniona relacja użytkownika z organizacją | Mimo że można użyć programu PowerShell do przekonwertowania właściwości UserType dla użytkownika z elementu członkowskiego na gościa (i na odwrót), należy zmienić tę właściwość tylko wtedy, gdy relacja użytkownika jest zmieniana w organizacji. Zobacz [właściwości użytkownika-gościa B2B](user-properties.md).|
 
 ## <a name="next-steps"></a>Następne kroki

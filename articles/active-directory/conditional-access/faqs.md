@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baa44481c4641f69ead5335298316c837062d2c0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6842338bd27e4bea3436f0b249380ab773d60de6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186045"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368090"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory często zadawane pytania dotyczące dostępu warunkowego
 
@@ -40,7 +40,7 @@ Zasady dostępu warunkowego określają wymagania dotyczące uzyskiwania dostęp
 
 Zasady dostępu warunkowego są stosowane do wszystkich kont użytkowników. Obejmuje to konta użytkowników, które są używane jako konta usług. Często konto usługi z nienadzorowanym systemem nie spełnia wymagań zasad dostępu warunkowego. Na przykład może być wymagane uwierzytelnianie wieloskładnikowe. Konta usług można wykluczać z zasad przy użyciu ustawień zarządzania zasadami dostępu warunkowego. 
 
-## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>Czy są dostępne interfejsy API programu Graph do konfigurowania zasad dostępu warunkowego?
+## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Czy są dostępne Microsoft Graph interfejsów API do konfigurowania zasad dostępu warunkowego?
 
 Obecnie nie. 
 

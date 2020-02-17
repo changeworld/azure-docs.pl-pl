@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1300ecff416962bda4da800c5eff134951658846
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 600cd3f3ad8826b52648b51beb8c66a382766b80
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159169"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367883"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurowanie zachowania Azure Active Directory logowania dla aplikacji przy użyciu zasad odnajdywania obszaru głównego
 
@@ -100,9 +100,7 @@ Zasady zaczną obowiązywać tylko dla określonej aplikacji po dołączeniu ich
 
 Tylko jedna zasada HRD może być aktywna w jednostce usługi jednocześnie.  
 
-Do tworzenia zasad HRD i zarządzania nimi można użyć interfejsu API Microsoft Azure Active Directory Graph bezpośrednio lub poleceń cmdlet programu PowerShell Azure Active Directory.
-
-Interfejs API programu Graph, który manipuluje zasadami, został opisany w artykule [operacje dotyczące zasad](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) w witrynie MSDN.
+Za pomocą poleceń cmdlet programu PowerShell Azure Active Directory można tworzyć zasady HRD i zarządzać nimi.
 
 Poniżej znajduje się przykładowa definicja zasad HRD:
     
@@ -209,7 +207,7 @@ Aby zastosować zasady HRD po utworzeniu, można przypisać je do wielu nazw gł
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Krok 2. zlokalizuj jednostkę usługi, do której chcesz przypisać zasady  
 Potrzebujesz **identyfikatora objectid** nazwy głównej usługi, do której chcesz przypisać zasady. Istnieje kilka sposobów znajdowania **identyfikatora** obiektu nazw podmiotów usługi.    
 
-Możesz użyć portalu lub można wysyłać zapytania do [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Możesz również przejść do [narzędzia Eksplorator wykresu](https://developer.microsoft.com/graph/graph-explorer) i zalogować się do konta usługi Azure AD, aby zobaczyć wszystkie nazwy główne usługi w organizacji. 
+Możesz użyć portalu lub można wysyłać zapytania do [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta). Możesz również przejść do [narzędzia Eksplorator wykresu](https://developer.microsoft.com/graph/graph-explorer) i zalogować się do konta usługi Azure AD, aby zobaczyć wszystkie nazwy główne usługi w organizacji. 
 
 Ponieważ używasz programu PowerShell, możesz użyć następującego polecenia cmdlet, aby wyświetlić listę jednostek usługi i ich identyfikatorów.
 

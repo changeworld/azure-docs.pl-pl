@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137970"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367640"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać rozpoznawania jednostek nazwanych w analiza tekstu
 
@@ -28,7 +28,9 @@ Interfejs API analizy tekstu umożliwia przyjęcie tekstu bez struktury i zwróc
 
 ### <a name="named-entity-recognition-ner"></a>Rozpoznawanie jednostek nazwanych (NER)
 
-Funkcja rozpoznawania jednostek nazwanych (NER) to możliwość identyfikowania różnych jednostek w tekście i kategoryzowania ich w wstępnie zdefiniowanych klasach lub typach. Na przykład: osoby, miejsca i organizacje.
+Funkcja rozpoznawania jednostek nazwanych (NER) to możliwość identyfikowania różnych jednostek w tekście i kategoryzowania ich do wstępnie zdefiniowanych klas lub typów, takich jak: osoba, lokalizacja, wydarzenie, produkt i organizacja.  
+
+Począwszy od wersji 3, ta funkcja interfejs API analizy tekstu może również identyfikować informacje osobiste i poufne, takie jak numer telefonu, numer ubezpieczenia społecznego, adres e-mail i numer konta bankowego.  Zidentyfikowanie tych jednostek może pomóc w klasyfikowaniu poufnych dokumentów i redagowanie informacji osobistych.
 
 ## <a name="named-entity-recognition-versions-and-features"></a>Wersje i funkcje rozpoznawania jednostek nazwanych
 
@@ -89,7 +91,7 @@ NER
 | Liczba      | Liczbą       | "druga", "s"     |
 | Liczba      | Wiek           | "90 dzień dawna", "30 lat starych"    |
 | Liczba      | Waluta      | "$10,99"     |
-| Liczba      | Elementów     | "10 mil", "40 cm"     |
+| Liczba      | Wymiar     | "10 mil", "40 cm"     |
 | Liczba      | Temperatura   | "32 stopni"    |
 | DateTime      | Nie dotyczy\*         | "6:30 4 lutego 2012"      |
 | DateTime      | Date          | "Maj druga, 2017", "05/02/2017"   |

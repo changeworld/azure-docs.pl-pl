@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c92048d2fce4a098da1e707ec8f7d75479d563f1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: aa66299753ab11dcad280361cb5fb6f0c31ef242
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161583"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368175"
 ---
 # <a name="what-is-password-writeback"></a>Co to jest zapisywanie zwrotne haseł?
 
@@ -158,13 +158,13 @@ Hasła są zapisywane z powrotem we wszystkich następujących sytuacjach:
 Hasła *nie* są zapisywane z powrotem w żadnej z następujących sytuacji:
 
 * **Nieobsługiwane operacje użytkownika końcowego**
-   * Każdy użytkownik końcowy resetuje własne hasło przy użyciu programu PowerShell w wersji 1, wersji 2 lub interfejs API programu Graph usługi Azure AD
+   * Każdy użytkownik końcowy resetuje własne hasło przy użyciu programu PowerShell w wersji 1, wersji 2 lub interfejsu API Microsoft Graph
 * **Nieobsługiwane operacje administratora**
-   * Wszelkie zainicjowane przez administratora hasło użytkownika końcowego z programu PowerShell w wersji 1, wersji 2 lub interfejs API programu Graph usługi Azure AD
+   * Wszystkie zainicjowane przez administratora hasło użytkownika końcowego w programie PowerShell w wersji 1, 2 lub Microsoft Graph
    * Wszystkie zainicjowane przez administratora Resetowanie hasła użytkownika końcowego w [centrum administracyjnym Microsoft 365](https://admin.microsoft.com)
 
 > [!WARNING]
-> Użycie pola wyboru "użytkownik musi zmienić hasło przy następnym logowaniu" w lokalnych Active Directory narzędziach administracyjnych, takich jak Active Directory Użytkownicy i komputery, lub Centrum administracyjne usługi Active Directory jest obsługiwana jako funkcja w wersji zapoznawczej programu Azure AD Connect. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Implementacja synchronizacji skrótów haseł z synchronizacją Azure AD Connect](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon).
+> Użycie pola wyboru "użytkownik musi zmienić hasło przy następnym logowaniu" w lokalnych Active Directory narzędziach administracyjnych, takich jak Active Directory Użytkownicy i komputery, lub Centrum administracyjne usługi Active Directory jest obsługiwana jako funkcja w wersji zapoznawczej programu Azure AD Connect. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Implementacja synchronizacji skrótów haseł z synchronizacją Azure AD Connect](../hybrid/how-to-connect-password-hash-synchronization.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

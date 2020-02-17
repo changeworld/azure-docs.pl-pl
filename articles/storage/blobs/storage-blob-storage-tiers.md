@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: c402d47f40a351d70f688aa93c5e1501c93b39dd
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: f2f6be1022a7100a23f49534f2c18fc951d56284
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779884"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368709"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: warstwy dostępu gorąca, chłodna i archiwalna
 
@@ -26,7 +26,7 @@ Usługa Azure Storage oferuje różne warstwy dostępu, dzięki którym można p
 Poniższe uwagi dotyczą różnych warstw dostępu:
 
 - Na poziomie konta można ustawić tylko warstwy dostępu gorąca i chłodna. Warstwa dostępu archiwalnego nie jest dostępna na poziomie konta.
-- Warstwy gorąca, chłodna i archiwalna można ustawić na poziomie obiektu BLOB.
+- Warstwy gorąca, chłodna i archiwalna można ustawić na poziomie obiektu BLOB podczas przekazywania lub po przekazaniu.
 - Dane w warstwie dostępu chłodnego mogą być nieznacznie niższej dostępności, ale nadal wymagają dużej trwałości, opóźnienia pobierania i charakterystyki przepływności podobne do danych gorąca. W przypadku danych chłodnych nieznacznie niższa umowa dotycząca poziomu usług dostępności i wyższe koszty dostępu w porównaniu z gorącą usługą są akceptowalnymi kosztami niższych kosztów magazynowania.
 - Funkcja archiwalny magazyn przechowuje dane w trybie offline i oferuje najniższe koszty magazynowania, ale również najwyższą ilość danych i dostęp do nich.
 
@@ -77,7 +77,7 @@ Zmiana warstwy dostępu do konta ma zastosowanie do wszystkich obiektów _odrocz
 
 ## <a name="blob-level-tiering"></a>Obsługa warstw na poziomie obiektów blob
 
-Funkcja obsługi warstw na poziomie obiektów blob umożliwia zmianę warstwy danych na poziomie obiektu przy użyciu jednej operacji o nazwie [Ustawianie warstwy obiektu blob](/rest/api/storageservices/set-blob-tier). W odpowiedzi na zmiany wzorców użycia można łatwo zmieniać warstwy dostępu do obiektu blob (wybierając warstwę gorącą, chłodną lub archiwalną) bez przenoszenia danych między kontami. Wszystkie żądania zmiany warstwy są wykonywane natychmiast, a zmiany warstwy między gorącą i chłodną są chwilowo. Ponownego wypełniania obiekt BLOB z archiwum może jednak trwać kilka godzin.
+Obsługa warstw na poziomie obiektów BLOB umożliwia przekazywanie danych do wybranej warstwy dostępu przy użyciu operacji [Put BLOB](/rest/api/storageservices/put-blob) lub [Put Block list](/rest/api/storageservices/put-block-list) oraz zmianę warstwy danych na poziomie obiektu za pomocą funkcji [Ustaw warstwę obiektów BLOB](/rest/api/storageservices/set-blob-tier) lub funkcję [zarządzania cyklem życia](#blob-lifecycle-management) . Dane można przekazywać do wymaganej warstwy dostępu, a następnie łatwo zmienić warstwę dostępu do obiektów BLOB w warstwach gorąca, chłodna lub archiwalna w miarę zmiany wzorców użycia, bez konieczności przenoszenia danych między kontami. Wszystkie żądania zmiany warstwy są wykonywane natychmiast, a zmiany warstwy między gorącą i chłodną są chwilowo. Ponownego wypełniania obiekt BLOB z archiwum może jednak trwać kilka godzin.
 
 Czas ostatniej zmiany warstwy obiektu blob jest uwidaczniany za pomocą właściwości obiektu blob **Czas zmiany warstwy dostępu**. Podczas zastępowania obiektu BLOB w warstwie gorąca lub chłodna nowo utworzony obiekt BLOB dziedziczy warstwę obiektu BLOB, który został zastąpiony, chyba że nowa warstwa dostępu do obiektów BLOB jest jawnie ustawiona podczas tworzenia. Jeśli obiekt BLOB znajduje się w warstwie archiwum, nie można go zastąpić, więc przekazywanie tego samego obiektu BLOB nie jest dozwolone w tym scenariuszu. 
 
@@ -95,9 +95,11 @@ Blob Storage Zarządzanie cyklem życia obejmuje zaawansowane zasady oparte na r
 
 ### <a name="blob-level-tiering-billing"></a>Rozliczanie obsługi warstw na poziomie obiektów blob
 
+Gdy obiekt BLOB zostanie przekazany lub przeniesiony do warstwy gorąca, chłodna lub archiwalna, jest naliczana według odpowiedniej stawki bezpośrednio po zmianie warstwy.
+
 Gdy obiekt BLOB jest przenoszony do warstwy chłodnicy (gorąca > chłodna, archiwum gorąca > lub archiwum chłodnych >), operacja jest rozliczana jako operacja zapisu w warstwie docelowej, w przypadku której stosuje się opłaty za operacje zapisu (za 10 000) i zapis danych (za GB) dla warstwy docelowej.
 
-Gdy obiekt BLOB jest przenoszony do warstwy gorąca (archiwum-> chłodna, > archiwalna lub chłodna > gorąca), operacja jest rozliczana jako odczyt z warstwy źródłowej, gdzie stosowane są opłaty za operacje odczytu (za 10 000) i pobieranie danych (za GB) dla warstwy źródłowej. Mogą również obowiązywać opłaty za wczesne usunięcie dla dowolnego obiektu przeniesionego z warstwy Chłodna lub Archiwum. Poniższa tabela zawiera podsumowanie sposobu rozliczania zmian warstwy.
+Gdy obiekt BLOB jest przenoszony do warstwy gorąca (archiwum-> chłodna, > archiwalna lub chłodna > gorąca), operacja jest rozliczana jako odczyt z warstwy źródłowej, gdzie stosowane są opłaty za operacje odczytu (za 10 000) i pobieranie danych (za GB) dla warstwy źródłowej. Mogą również obowiązywać opłaty za wczesne usunięcie dla dowolnego obiektu przeniesionego z warstwy Chłodna lub Archiwum. [Dane ponownego wypełniania z archiwum](storage-blob-rehydration.md) zajmują czas, a dane będą obciążane cenami, dopóki dane nie zostaną przywrócone w trybie online, a zmiany warstwy obiektów BLOB na gorącą lub chłodną. Poniższa tabela zawiera podsumowanie sposobu rozliczania zmian warstwy:
 
 | | **Opłaty za zapis (operacja i dostęp)** | **Opłaty za odczyt (operacja i dostęp)**
 | ---- | ----- | ----- |
@@ -116,10 +118,10 @@ W poniższej tabeli przedstawiono porównanie magazynu obiektów BLOB wydajnośc
 |                                           | **Wydajność warstwy Premium**   | **Warstwa gorąca** | **Warstwa chłodna**       | **Warstwa Archiwum**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Dostępność**                          | 99,9%                     | 99,9%        | 99%                 | W trybie offline           |
-| **Dostępność** <br> **(odczyty RA-GRS)**  | ND                       | 99,99%       | 99,9%               | W trybie offline           |
+| **Dostępność** <br> **(odczyty RA-GRS)**  | Nie dotyczy                       | 99,99%       | 99,9%               | W trybie offline           |
 | **Opłaty za użycie**                         | Wyższe koszty magazynowania, niższy koszt dostępu i transakcji | Wyższe koszty magazynowania, niższy dostęp i koszty transakcji | Niższe koszty magazynowania, wyższego poziomu dostępu i kosztów transakcji | Najniższe koszty magazynowania, najwyższy poziom dostępu i koszty transakcji |
-| **Minimalny rozmiar obiektu**                   | ND                       | ND          | ND                 | ND               |
-| **Minimalny czas magazynowania**              | ND                       | ND          | 30 dni<sup>1</sup> | 180 dni
+| **Minimalny rozmiar obiektu**                   | Nie dotyczy                       | Nie dotyczy          | Nie dotyczy                 | Nie dotyczy               |
+| **Minimalny czas magazynowania**              | Nie dotyczy                       | Nie dotyczy          | 30 dni<sup>1</sup> | 180 dni
 | **Opóźnienie** <br> **(czas do pierwszego bajtu)** | Jednocyfrowe milisekundy | milisekundy | milisekundy        | godz.<sup>2</sup> |
 
 <sup>1</sup> obiekty w warstwie chłodna na kontach GPv2 mają minimalny okres przechowywania równy 30 dni. Konta usługi BLOB Storage nie mają minimalnego czasu trwania przechowywania dla warstwy chłodna.
@@ -139,7 +141,7 @@ W tej sekcji przedstawiono następujące scenariusze przy użyciu Azure Portal i
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>Zmienianie domyślnej warstwy dostępu konta GPv2 lub usługi Blob Storage
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 1. W Azure Portal Wyszukaj i wybierz pozycję **wszystkie zasoby**.
 
@@ -167,7 +169,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Zmienianie warstwy obiektu BLOB na koncie GPv2 lub BLOB Storage
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 1. W Azure Portal Wyszukaj i wybierz pozycję **wszystkie zasoby**.
 

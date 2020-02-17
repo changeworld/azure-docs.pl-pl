@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452425"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368848"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Wdrażanie narzędzia diagnostycznego
 
@@ -36,8 +36,8 @@ Aby można było wdrożyć szablon Azure Resource Manager dla narzędzia, należ
 
 Przed rozpoczęciem pracy należy również zainstalować te dwa moduły programu PowerShell:
 
-- [Moduł Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.4.0)
-- [Moduł usługi Azure AD](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+- [Moduł Azure PowerShell](/powershell/azure/install-az-ps?view=azps-2.4.0/)
+- [Moduł usługi Azure AD](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
 
 Upewnij się, że Twój identyfikator subskrypcji jest gotowy do momentu zalogowania się.
 
@@ -50,7 +50,7 @@ W tej sekcji przedstawiono sposób użycia programu PowerShell do tworzenia apli
 >[!NOTE]
 >Uprawnienia interfejsu API to pulpity wirtualne systemu Windows, Log Analytics i Microsoft Graph uprawnienia interfejsu API są dodawane do aplikacji Azure Active Directory.
 
-1. Uruchom program Windows PowerShell jako administrator.
+1. Otwórz program PowerShell jako administrator.
 2. Zaloguj się do platformy Azure przy użyciu konta, które ma uprawnienia właściciela lub współautora w ramach subskrypcji platformy Azure, której chcesz użyć dla narzędzia diagnostycznego:
    ```powershell
    Login-AzAccount
@@ -253,7 +253,7 @@ Możesz również korzystać z użytkowników na hoście sesji:
 
     - Próg: wartość wyższa niż 80% jest oznaczona jako zła.
 
-- [Opóźnienie danych wejściowych użytkownika na sesję (\*)\\maksymalne opóźnienie wejściowe](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [Opóźnienie danych wejściowych użytkownika na sesję (\*)\\maksymalne opóźnienie wejściowe](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
 
     - Próg: większe niż 2000 MS jest oznaczone jako złej kondycji.
 

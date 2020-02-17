@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 203bf584711fbfcfd0baeee8f5e4c7f70d96823b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9b71c4a5c0f245d9da97dc8f096d15c5386bf919
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157225"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368613"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -177,8 +177,6 @@ Ta sekcja ma zastosowanie tylko do standardowych udziałów plików. Wszystkie u
 Standardowe udziały plików z 100 TiB limit pojemności są dostępne globalnie we wszystkich regionach platformy Azure —
 
 - LRS: wszystkie regiony, z wyjątkiem Północna Republika Południowej Afryki i Zachodnia Republika Południowej Afryki.
-   - Wschodnie stany USA i Europa Zachodnia: wszystkie nowe konta są obsługiwane. Niewielka liczba istniejących kont nie ukończyła procesu uaktualniania. Możesz sprawdzić, czy istniejące konta magazynu ukończyły proces uaktualniania, podejmując próbę [włączenia dużych udziałów plików](storage-files-how-to-create-large-file-share.md).
-
 - ZRS: wszystkie regiony, z wyjątkiem regionu Japonia Wschodnia, Europa Północna, Północna Republika Południowej Afryki.
 - GRS/GZRS: nieobsługiwane.
 

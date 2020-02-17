@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: f8400cbefc514fa01dedb1434a60989b1df0528d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c15662409f9f5badf50765b78bce7dd71e9fb1bc
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980231"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367168"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguracja maszyny wirtualnej hosta sesji
 
 Ten artykuł służy do rozwiązywania problemów występujących podczas konfigurowania maszyn wirtualnych hosta sesji usług pulpitu wirtualnego systemu Windows.
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 
 Odwiedź [społeczność Tech. pulpitu wirtualnego systemu Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , aby omówić usługę pulpitu wirtualnego systemu Windows z zespołem produktu i aktywnymi członkami społeczności.
 
@@ -26,7 +26,7 @@ Odwiedź [społeczność Tech. pulpitu wirtualnego systemu Windows](https://tech
 
 Postępuj zgodnie z tymi instrukcjami, jeśli masz problemy z przyłączaniem maszyn wirtualnych do domeny.
 
-- Ręcznie Dołącz maszynę wirtualną przy użyciu procesu w [przyłączeniu maszyny wirtualnej z systemem Windows Server do domeny zarządzanej](https://docs.microsoft.com/azure/active-directory-domain-services/Active-directory-ds-admin-guide-join-windows-vm-portal) lub za pomocą [szablonu dołączania do domeny](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
+- Ręcznie Dołącz maszynę wirtualną przy użyciu procesu w [przyłączeniu maszyny wirtualnej z systemem Windows Server do domeny zarządzanej](../active-directory-domain-services/join-windows-vm.md) lub za pomocą [szablonu dołączania do domeny](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 - Spróbuj wysłać polecenie ping do nazwy domeny z wiersza polecenia na maszynie wirtualnej.
 - Przejrzyj listę komunikatów o błędach dołączania do domeny w [temacie Rozwiązywanie problemów z przyłączaniem do domeny](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx).
 
@@ -37,7 +37,7 @@ Postępuj zgodnie z tymi instrukcjami, jeśli masz problemy z przyłączaniem ma
 **Poprawka:** Wykonaj jedną z następujących czynności, aby rozwiązać ten problem.
 
 - Ręcznie Dodaj maszyny wirtualne do domeny.
-- Wdróż ponownie szablon po potwierdzeniu poświadczeń. Zobacz [Tworzenie puli hostów przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+- Wdróż ponownie szablon po potwierdzeniu poświadczeń. Zobacz [Tworzenie puli hostów przy użyciu programu PowerShell](create-host-pools-powershell.md).
 - Przyłączanie maszyn wirtualnych do domeny przy użyciu szablonu z [przyłączaniem istniejącej maszyny wirtualnej z systemem Windows do domeny usługi AD](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 
 ### <a name="error-timeout-waiting-for-user-input"></a>Błąd: przekroczono limit czasu oczekiwania na dane wejściowe użytkownika
@@ -62,17 +62,17 @@ Postępuj zgodnie z tymi instrukcjami, jeśli masz problemy z przyłączaniem ma
 
 **Przyczyna 1:** Maszyny wirtualne znajdują się w sieci wirtualnej, która nie jest skojarzona z siecią wirtualną (VNET), w której znajduje się domena.
 
-**Poprawka 1:** Utwórz sieć równorzędną sieci wirtualnej między siecią wirtualną, w której zainicjowano maszyny wirtualne i sieć wirtualną, w której jest uruchomiony kontroler domeny. Zobacz [Tworzenie komunikacji równorzędnej sieci wirtualnej — Menedżer zasobów, różne subskrypcje](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions).
+**Poprawka 1:** Utwórz sieć równorzędną sieci wirtualnej między siecią wirtualną, w której zainicjowano maszyny wirtualne i sieć wirtualną, w której jest uruchomiony kontroler domeny. Zobacz [Tworzenie komunikacji równorzędnej sieci wirtualnej — Menedżer zasobów, różne subskrypcje](../virtual-network/create-peering-different-subscriptions.md).
 
 **Przyczyna 2:** W przypadku korzystania z Azure Active Directory Domain Services (Azure AD DS) sieć wirtualna nie ma zaktualizowanych ustawień serwera DNS w celu wskazywania zarządzanych kontrolerów domeny.
 
-**Poprawka 2:** Aby zaktualizować ustawienia DNS dla sieci wirtualnej zawierającej AD DS platformy Azure, zobacz temat [Aktualizowanie ustawień DNS dla sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network).
+**Poprawka 2:** Aby zaktualizować ustawienia DNS dla sieci wirtualnej zawierającej AD DS platformy Azure, zobacz temat [Aktualizowanie ustawień DNS dla sieci wirtualnej platformy Azure](../active-directory-domain-services/tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network).
 
 **Przyczyna 3:** Ustawienia serwera DNS interfejsu sieciowego nie wskazują odpowiedniego serwera DNS w sieci wirtualnej.
 
 **Poprawka 3:** Wykonaj jedną z następujących czynności, aby rozwiązać ten problem, wykonując czynności opisane w temacie [Change DNS Servers].
-- Zmień ustawienia serwera DNS interfejsu sieciowego na **niestandardowe** , wykonując czynności opisane w części [Zmienianie serwerów DNS](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) i określ prywatne adresy IP serwerów DNS w sieci wirtualnej.
-- Zmień ustawienia serwera DNS interfejsu sieciowego, aby **dziedziczyć z sieci wirtualnej** z procedurami [zmiany serwerów DNS](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers), a następnie zmień ustawienia serwera DNS sieci wirtualnej na kroki z sekcji [zmiana serwerów DNS](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers).
+- Zmień ustawienia serwera DNS interfejsu sieciowego na **niestandardowe** , wykonując czynności opisane w części [Zmienianie serwerów DNS](../virtual-network/virtual-network-network-interface.md#change-dns-servers) i określ prywatne adresy IP serwerów DNS w sieci wirtualnej.
+- Zmień ustawienia serwera DNS interfejsu sieciowego, aby **dziedziczyć z sieci wirtualnej** z procedurami [zmiany serwerów DNS](../virtual-network/virtual-network-network-interface.md#change-dns-servers), a następnie zmień ustawienia serwera DNS sieci wirtualnej na kroki z sekcji [zmiana serwerów DNS](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Nie zainstalowano programu Windows Virtual Desktop Agent i modułu ładującego rozruchu pulpitu wirtualnego systemu Windows
 
@@ -88,7 +88,7 @@ Postępuj zgodnie z tymi instrukcjami, aby upewnić się, że składniki są zai
 
 **Przyczyna 1:** Poświadczenia podane podczas wprowadzania dla szablonu Azure Resource Manager były nieprawidłowe lub niewystarczające uprawnienia.
 
-**Poprawka 1:** Ręcznie Dodaj brakujące składniki do maszyn wirtualnych za pomocą polecenia [Utwórz pulę hostów za pomocą programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+**Poprawka 1:** Ręcznie Dodaj brakujące składniki do maszyn wirtualnych za pomocą polecenia [Utwórz pulę hostów za pomocą programu PowerShell](create-host-pools-powershell.md).
 
 **Przyczyna 2:** Program PowerShell DSC był w stanie uruchomić i wykonać, ale nie można go zakończyć, ponieważ nie może się zalogować do pulpitu wirtualnego systemu Windows i uzyskać wymaganych informacji.
 
@@ -147,7 +147,7 @@ Gdy Agent pulpitu wirtualnego systemu Windows jest instalowany po raz pierwszy n
 
 **Poprawka 2:** Postępuj zgodnie z tymi instrukcjami, aby otworzyć port 443.
 
-1. Upewnij się, że port 443 jest otwarty przez pobranie narzędzia PSPing z [narzędzi sysinternal](https://docs.microsoft.com/sysinternals/downloads/psping).
+1. Upewnij się, że port 443 jest otwarty przez pobranie narzędzia PSPing z [narzędzi sysinternal](/sysinternals/downloads/psping/).
 2. Zainstaluj program PSPing na maszynie wirtualnej hosta sesji, w której jest uruchomiony Agent programu.
 3. Otwórz wiersz polecenia jako administrator i wydaj poniższe polecenie:
 
@@ -189,7 +189,7 @@ Dane wyjściowe **qwinsta** będą wystawiać **protokół RDP-SxS** w danych wy
 
 ![Stos równoległy został zainstalowany lub włączony przy użyciu qwinsta, który jest wymieniony jako RDP-SxS w danych wyjściowych.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-Sprawdź wpisy rejestru wymienione poniżej i upewnij się, że ich wartości pasują do siebie. Jeśli brakuje kluczy rejestru lub wartości są niezgodne, postępuj zgodnie z instrukcjami w temacie [Tworzenie puli hostów przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) na temat sposobu ponownej instalacji stosu równoległego.
+Sprawdź wpisy rejestru wymienione poniżej i upewnij się, że ich wartości pasują do siebie. Jeśli brakuje kluczy rejestru lub wartości są niezgodne, postępuj zgodnie z instrukcjami w temacie [Tworzenie puli hostów przy użyciu programu PowerShell](create-host-pools-powershell.md) na temat sposobu ponownej instalacji stosu równoległego.
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
@@ -208,13 +208,13 @@ Sprawdź wpisy rejestru wymienione poniżej i upewnij się, że ich wartości pa
 **Poprawka:** Postępuj zgodnie z tymi instrukcjami, aby zainstalować stos równoległy na maszynie wirtualnej hosta sesji.
 
 1. Użyj Remote Desktop Protocol (RDP), aby przejść bezpośrednio do maszyny wirtualnej hosta sesji jako administrator lokalny.
-2. Pobierz i zaimportuj [moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono, Uruchom to polecenie cmdlet, aby zalogować się do konta:
+2. Pobierz i zaimportuj [moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](/powershell/windows-virtual-desktop/overview/) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono, Uruchom to polecenie cmdlet, aby zalogować się do konta:
 
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
     ```
 
-3. Zainstaluj stos równoległy przy użyciu polecenia [Utwórz pulę hostów za pomocą programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+3. Zainstaluj stos równoległy przy użyciu polecenia [Utwórz pulę hostów za pomocą programu PowerShell](create-host-pools-powershell.md).
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Jak naprawić stos równoległy pulpitu wirtualnego systemu Windows, który działa nieprawidłowo
 
@@ -226,7 +226,7 @@ Istnieją znane sytuacje, które mogą spowodować nieprawidłowe działanie sto
 - Uruchamianie enablesxsstackrc. ps1 wiele razy
 - Uruchamianie enablesxsstackrc. ps1 na koncie, które nie ma uprawnień administratora lokalnego
 
-Instrukcje przedstawione w tej sekcji mogą pomóc w odinstalowaniu stosu równoległego pulpitu wirtualnego systemu Windows. Po odinstalowaniu stosu równoległego przejdź do pozycji "Zarejestruj maszynę wirtualną w puli hostów systemu Windows Virtual Desktop" w temacie [Tworzenie puli hostów za pomocą programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) , aby ponownie zainstalować stos równoległy.
+Instrukcje przedstawione w tej sekcji mogą pomóc w odinstalowaniu stosu równoległego pulpitu wirtualnego systemu Windows. Po odinstalowaniu stosu równoległego przejdź do pozycji "Zarejestruj maszynę wirtualną w puli hostów systemu Windows Virtual Desktop" w temacie [Tworzenie puli hostów za pomocą programu PowerShell](create-host-pools-powershell.md) , aby ponownie zainstalować stos równoległy.
 
 Maszyna wirtualna używana do uruchamiania korygowania musi znajdować się w tej samej podsieci i domenie co maszyna wirtualna z nieprawidłowo działającym stosem równoległym.
 
@@ -305,7 +305,7 @@ W przypadku upływu limitu czasu zostanie wyświetlony komunikat o błędzie "Se
 Jeśli zobaczysz jeden z tych komunikatów, oznacza to, że obraz nie ma zainstalowanych najnowszych aktualizacji systemu Windows lub że tryb licencjonowania Pulpit zdalny jest konfigurowany za pomocą zasad grupy. Postępuj zgodnie z instrukcjami w następnych sekcjach, aby sprawdzić ustawienia zasad grupy, zidentyfikuj wersję wielosesyjną systemu Windows 10 Enterprise i zainstaluj odpowiednią aktualizację.  
 
 >[!NOTE]
->Pulpit wirtualny systemu Windows wymaga tylko licencji dostępu klienta RDS (CAL), gdy pula hostów zawiera hosty sesji systemu Windows Server. Aby dowiedzieć się, jak skonfigurować RDS CAL, zobacz [Licencjonowanie wdrożenia usług pulpitu zdalnego z licencjami dostępu klienta](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license).
+>Pulpit wirtualny systemu Windows wymaga tylko licencji dostępu klienta RDS (CAL), gdy pula hostów zawiera hosty sesji systemu Windows Server. Aby dowiedzieć się, jak skonfigurować RDS CAL, zobacz [Licencjonowanie wdrożenia usług pulpitu zdalnego z licencjami dostępu klienta](/windows-server/remote/remote-desktop-services/rds-client-access-license/).
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Wyłącz ustawienie zasad grupy trybu licencjonowania Pulpit zdalny
 
