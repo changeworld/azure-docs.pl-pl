@@ -1,5 +1,5 @@
 ---
-title: Ponowne uruchomienie systemu Azure Virtual Machines jest wstrzymywane po ponownym uruchomieniu, zamknięciu lub zatrzymywaniu usług | Microsoft Docs
+title: Usługa Azure Virtual Machines Shutdown jest zablokowana po ponownym uruchomieniu, zamknięciu lub zatrzymywaniu usług | Microsoft Docs
 description: Ten artykuł pomaga w rozwiązywaniu problemów z błędami usługi w usłudze Azure Windows Virtual Machines.
 services: virtual-machines-windows
 documentationCenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: db7b26402170236843891799738088b9229e4693
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477410"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371355"
 ---
-# <a name="azure-windows-vm-restart-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Ponowne uruchamianie maszyny wirtualnej systemu Windows Azure jest zablokowane na "ponowne uruchamianie", "zamykanie" lub "zatrzymywanie usług"
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Zamykanie maszyny wirtualnej systemu Windows Azure jest wstrzymywane po "ponownym uruchomieniu", "zamykanie" lub "zatrzymywanie usług"
 
 W tym artykule przedstawiono procedurę rozwiązywania problemów dotyczących "ponownego uruchamiania", "zamykania" lub "zatrzymywania usług", które mogą wystąpić podczas ponownego uruchamiania maszyny wirtualnej z systemem Windows w Microsoft Azure.
 
@@ -81,9 +81,9 @@ Jeśli problem nie zostanie rozwiązany po oczekiwaniu na zmiany w procesie, nal
 
 **Dołączanie dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania**
 
-1. Utwórz migawkę dysku systemu operacyjnego z zaatakowaną maszyną wirtualną jako kopię zapasową. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+1. Utwórz migawkę dysku systemu operacyjnego z zaatakowaną maszyną wirtualną jako kopię zapasową. Aby uzyskać więcej informacji, zobacz [migawka dysku](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
 
-2. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+2. [Dołącz dysk systemu operacyjnego do maszyny wirtualnej odzyskiwania](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
 
 3. Pulpit zdalny do maszyny wirtualnej odzyskiwania.
 
@@ -152,6 +152,6 @@ Aby włączyć dziennik zrzutu i konsoli szeregowej, uruchom następujący skryp
 
 8. Ponownie Dołącz dysk systemu operacyjnego do maszyny wirtualnej odzyskiwania, Zbierz plik zrzutu.
 
-## <a name="contact-microsoft-support"></a>Kontaktowanie się z pomocą techniczną firmy Microsoft
+## <a name="contact-microsoft-support"></a>Skontaktuj się z pomocą techniczną firmy Microsoft
 
 Po zebraniu pliku zrzutu skontaktuj się z pomocą techniczną firmy Microsoft, aby określić główną przyczynę.

@@ -177,8 +177,6 @@
             - name: Dostosowywanie interfejsu użytkownika
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
-            - name: Dynamiczne dostosowywanie interfejsu użytkownika
-              href: custom-policy-ui-customization-dynamic.md
             - name: Niestandardowy adres e-mail
               href: custom-email.md
               displayName: verification

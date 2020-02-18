@@ -1,25 +1,25 @@
 ---
 title: Lista wbudowanych definicji zasad
 description: Utwórz listę wbudowanych definicji zasad dla Azure Policy. Kategorie obejmują Tagi, zgodność z przepisami, Key Vault, Kubernetes, konfigurację gościa i inne.
-ms.date: 01/31/2020
+ms.date: 02/15/2020
 ms.topic: sample
-ms.openlocfilehash: a672089dd45169b59bfb87ff3b612bc029c02448
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 06c913bdccd8b35970a195f6ee658ce7b1d97a7b
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172709"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371211"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy wbudowane definicje zasad
 
 Ta strona jest indeksem Azure Policy wbudowanych definicji zasad.
 
-Nazwa każdego wbudowanego łącza do źródła definicji zasad w [Azure Policy repozytorium GitHub](https://github.com/Azure/azure-policy). Wbudowane elementy są pogrupowane według właściwości **Category** w **metadanych**. Aby przejść do określonej **kategorii**, użyj menu po prawej stronie. W przeciwnym razie użyj <kbd>kombinacji klawiszy Ctrl</kbd>-<kbd>F</kbd> , aby użyć funkcji wyszukiwania przeglądarki.
+Nazwa każdego wbudowanego łącza do definicji zasad w Azure Portal. Użyj linku w kolumnie **Źródło** , aby wyświetlić źródło w [Azure Policy repozytorium GitHub](https://github.com/Azure/azure-policy). Wbudowane elementy są pogrupowane według właściwości **Category** w **metadanych**. Aby przejść do określonej **kategorii**, użyj menu po prawej stronie. W przeciwnym razie użyj <kbd>kombinacji klawiszy Ctrl</kbd>-<kbd>F</kbd> , aby użyć funkcji wyszukiwania przeglądarki.
 
 [!INCLUDE [azure-policy-samples-policies-index](../../../../includes/azure-policy-samples-policies-index.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zapoznaj się z wbudowanymi [Azure Policy repozytorium GitHub](https://github.com/Azure/azure-policy).
+- Zobacz wbudowane elementy w [repozytorium GitHub usługi Azure Policy](https://github.com/Azure/azure-policy).
 - Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
 - Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).

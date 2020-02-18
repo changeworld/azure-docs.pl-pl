@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c1f08fa5623642538f2ea99b2de07947b1bd9206
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e0e918a2508bb65de176b030a73598e221aff676
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209600"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370161"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Samouczek: Konfigurowanie geoogrodzenia przy użyciu Azure Maps
 
@@ -176,7 +176,7 @@ W tej sekcji utworzymy procedurę obsługi zdarzeń, która odbiera powiadomieni
 
 Firma Microsoft udostępnia dwie [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) usług do obsługi zdarzeń wejścia i wyjścia. Gdy zdarzenia w wyzwalaczu Logic Apps, więcej zdarzeń wyzwalacza w sekwencji. Pomysłem jest wysłanie alertów, w tym przypadku wiadomości e-mail do Operations Manager. Poniższa ilustracja przedstawia tworzenie aplikacji logiki na potrzeby zdarzenia wjazdu na obszar wirtualnego ogrodzenia. W podobny sposób można utworzyć zdarzenie wyjazdu. Aby uzyskać więcej informacji, możesz wyświetlić wszystkie [obsługiwane programy obsługi zdarzeń](https://docs.microsoft.com/azure/event-grid/event-handlers).
 
-1. Tworzenie aplikacji logiki w witrynie Azure Portal
+1. Utwórz aplikację logiki w Azure Portal. Wybierz aplikację logiki w portalu Azure Marketplace. Następnie wybierz przycisk **Utwórz** .
 
    ![Tworzenie Azure Logic Apps do obsługi zdarzeń geoogrodzenia](./media/tutorial-geofence/logic-app.png)
 

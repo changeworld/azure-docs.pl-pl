@@ -2,20 +2,20 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/13/2019
+ms.date: 02/14/2019
 ms.author: aahi
-ms.openlocfilehash: efeb8581bd300f393d3447e3303273f5139d86dd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b553cd2bed68bc8df7241f4f843b32ec13b1a08a
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77054921"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77372133"
 ---
 <a name="HOLTop"></a>
 
 #### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
 
-[dokumentacja referencyjna v3](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-textanalytics/1.0.0b1/azure.ai.textanalytics.html) | [kod źródłowy biblioteki v3](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[dokumentacja referencyjna v3](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-textanalytics/1.0.0b2/azure.ai.textanalytics.html) | [kod źródłowy biblioteki v3](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 #### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
 
@@ -66,9 +66,9 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 #### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
 
-Klient analiza tekstu jest obiektem `TextAnalyticsClient`, który jest uwierzytelniany na platformie Azure przy użyciu klucza. Klient udostępnia kilka metod analizowania tekstu jako partii. Ten przewodnik Szybki Start używa kolekcji funkcji, aby szybko wysyłać pojedyncze dokumenty.
+Klient analiza tekstu jest obiektem `TextAnalyticsClient`, który jest uwierzytelniany na platformie Azure przy użyciu klucza. Klient udostępnia kilka metod analizowania tekstu jako partii. 
 
-Gdy tekst przetwarzania wsadowego jest wysyłany do interfejsu API jako lista `documents`, które są `dictionary` obiektów zawierających kombinację `id`, `text`i `language` atrybutów, w zależności od używanej metody. Atrybut `text` przechowuje tekst, który ma być analizowany w `language`źródłowym, a `id` może być dowolną wartością. Podczas przetwarzania pojedynczych dokumentów jest wymagana tylko `text` dane wejściowe, które mogą być widoczne w poniższych przykładach.  
+Gdy tekst przetwarzania wsadowego jest wysyłany do interfejsu API jako lista `documents`, które są `dictionary` obiektów zawierających kombinację `id`, `text`i `language` atrybutów, w zależności od używanej metody. Atrybut `text` przechowuje tekst, który ma być analizowany w `language`źródłowym, a `id` może być dowolną wartością. 
 
 Obiekt Response jest listą zawierającą informacje o analizie dla każdego dokumentu. 
 
@@ -84,65 +84,91 @@ Tekst jest wysyłany do interfejsu API jako lista `documents`, które są `dicti
 
 Te fragmenty kodu przedstawiają sposób wykonywania następujących zadań za pomocą biblioteki klienta analiza tekstu dla języka Python:
 
+* [Uwierzytelnianie klienta](#authenticate-the-client)
 * [analiza tonacji](#sentiment-analysis)
 * [Wykrywanie języka](#language-detection)
 * [Rozpoznawanie jednostek nazwanych](#named-entity-recognition-ner) 
 * [Łączenie jednostek](#entity-linking)
 * [Wyodrębnianie kluczowych fraz](#key-phrase-extraction)
 
+## <a name="authenticate-the-client"></a>Uwierzytelnianie klienta
+
+#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
+
+Utwórz funkcję, aby utworzyć wystąpienie obiektu `TextAnalyticsClient` przy użyciu `key` i `endpoint` utworzonego powyżej. Następnie Utwórz nowego klienta. 
+
+```python
+from azure.ai.textanalytics import TextAnalyticsClient, TextAnalyticsApiKeyCredential
+
+def authenticate_client():
+    ta_credential = TextAnalyticsApiKeyCredential(key)
+    text_analytics_client = TextAnalyticsClient(
+            endpoint=endpoint, credential=ta_credential)
+    return text_analytics_client
+
+client = authenticate_client()
+```
+
+#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+
+[!code-python[imports statements](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=imports)]
+
+Utwórz funkcję, aby utworzyć wystąpienie obiektu `TextAnalyticsClient` przy użyciu `key` i `endpoint` utworzonego powyżej. Następnie Utwórz nowego klienta. 
+
+[!code-python[version 2 authentication](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=authentication)]
+
+--- 
+
 ## <a name="sentiment-analysis"></a>Analiza tonacji
 
 #### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
 
-Utwórz nową funkcję o nazwie `sentiment_analysis_example()`, która przyjmuje punkt końcowy i klucz jako argumenty, a następnie wywołuje funkcję `single_analyze_sentiment()`. Zwrócony obiekt odpowiedzi będzie zawierać etykietę tonacji i ocenę całego dokumentu wejściowego, a także analizę tonacji dla każdego zdania.
+Utwórz nową funkcję o nazwie `sentiment_analysis_example()`, która przyjmuje klienta jako argument, a następnie wywołuje funkcję `analyze_sentiment()`. Zwrócony obiekt odpowiedzi będzie zawierać etykietę tonacji i ocenę całego dokumentu wejściowego, a także analizę tonacji dla każdego zdania.
 
 
 ```python
-from azure.ai.textanalytics import single_analyze_sentiment
+def sentiment_analysis_example(client):
 
-def sentiment_analysis_example(endpoint, key):
-
-    document = "I had the best day of my life. I wish you were there with me."
-
-    response = single_analyze_sentiment(endpoint=endpoint, credential=key, input_text=document)
+    document = ["I had the best day of my life. I wish you were there with me."]
+    response = client.analyze_sentiment(inputs=document)[0]
     print("Document Sentiment: {}".format(response.sentiment))
     print("Overall scores: positive={0:.3f}; neutral={1:.3f}; negative={2:.3f} \n".format(
-        response.document_scores.positive,
-        response.document_scores.neutral,
-        response.document_scores.negative,
+        response.sentiment_scores.positive,
+        response.sentiment_scores.neutral,
+        response.sentiment_scores.negative,
     ))
     for idx, sentence in enumerate(response.sentences):
         print("[Offset: {}, Length: {}]".format(sentence.offset, sentence.length))
         print("Sentence {} sentiment: {}".format(idx+1, sentence.sentiment))
         print("Sentence score:\nPositive={0:.3f}\nNeutral={1:.3f}\nNegative={2:.3f}\n".format(
-            sentence.sentence_scores.positive,
-            sentence.sentence_scores.neutral,
-            sentence.sentence_scores.negative,
+            sentence.sentiment_scores.positive,
+            sentence.sentiment_scores.neutral,
+            sentence.sentiment_scores.negative,
         ))
 
             
-sentiment_analysis_example(endpoint, key)
+sentiment_analysis_example(client)
 ```
 
 ### <a name="output"></a>Dane wyjściowe
 
 ```console
 Document Sentiment: positive
-Overall scores: positive=0.999; neutral=0.001; negative=0.000 
+Overall scores: positive=1.000; neutral=0.000; negative=0.000 
 
 [Offset: 0, Length: 30]
 Sentence 1 sentiment: positive
 Sentence score:
-positive=0.999
-neutral=0.001
-negative=0.000
+Positive=1.000
+Neutral=0.000
+Negative=0.000
 
 [Offset: 31, Length: 30]
 Sentence 2 sentiment: neutral
 Sentence score:
-positive=0.212
-neutral=0.771
-negative=0.017
+Positive=0.210
+Neutral=0.770
+Negative=0.020
 ```
 
 #### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
@@ -166,23 +192,21 @@ Document ID: 4 , Sentiment Score: 1.00
 
 #### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
 
-Utwórz nową funkcję o nazwie `language_detection_example()`, która przyjmuje punkt końcowy i klucz jako argumenty, a następnie wywołuje funkcję `single_detect_languages()`. Zwrócony obiekt odpowiedzi będzie zawierać wykryty język w `detected_languages`, jeśli się powiedzie, i `error`, jeśli nie.
+Utwórz nową funkcję o nazwie `language_detection_example()`, która przyjmuje klienta jako argument, a następnie wywołuje funkcję `detect_language()`. Zwrócony obiekt odpowiedzi będzie zawierać wykryty język w `primary_language`, jeśli się powiedzie, i `error`, jeśli nie.
 
 > [!Tip]
 > W niektórych przypadkach może być trudno odróżnić Języki w oparciu o dane wejściowe. Można użyć parametru `country_hint`, aby określić 2-literowy kod kraju. Domyślnie interfejs API używa "US" jako domyślnego countryHint, aby usunąć to zachowanie, można zresetować ten parametr, ustawiając tę wartość na pusty ciąg `country_hint : ""`. 
 
 ```python
-from azure.ai.textanalytics import single_detect_language
-
-def language_detection_example(endpoint, key):
+def language_detection_example(client):
     try:
-        document = "Ce document est rédigé en Français."
-        response = single_detect_language(endpoint=endpoint, credential=key, input_text= document)
+        document = ["Ce document est rédigé en Français."]
+        response = client.detect_language(inputs = document, country_hint = 'us')[0]
         print("Language: ", response.primary_language.name)
 
     except Exception as err:
         print("Encountered exception. {}".format(err))
-language_detection_example(endpoint, key)
+language_detection_example(client)
 ```
 
 
@@ -218,26 +242,24 @@ Document ID: 3 , Language: Chinese_Simplified
 > * NER obejmuje oddzielne metody wykrywania informacji osobistych. 
 > * Łączenie jednostek to oddzielne żądanie niż NER.
 
-Utwórz nową funkcję o nazwie `entity_recognition_example`, która przyjmuje punkt końcowy i klucz jako argumenty, a następnie wywołuje funkcję `single_recognize_entities()` i wykonuje iterację przez wyniki. Zwrócony obiekt odpowiedzi będzie zawierać listę wykrytych jednostek w `entity`, jeśli się powiedzie, i `error`, jeśli nie. W przypadku każdej wykrytej jednostki Wydrukuj jej typ i podtyp, jeśli istnieje.
+Utwórz nową funkcję o nazwie `entity_recognition_example`, która przyjmuje klienta jako argument, a następnie wywołuje funkcję `recognize_entities()` i wykonuje iterację przez wyniki. Zwrócony obiekt odpowiedzi będzie zawierać listę wykrytych jednostek w `entity`, jeśli się powiedzie, i `error`, jeśli nie. Dla każdej wykrytej jednostki Wydrukuj jej kategorię i podkategorię, jeśli istnieje.
 
 ```python
-from azure.ai.textanalytics import single_recognize_entities
-
-def entity_recognition_example(endpoint, key):
+def entity_recognition_example(client):
 
     try:
-        document = "I had a wonderful trip to Seattle last week."
-        result = single_recognize_entities(endpoint=endpoint, credential=key, input_text= document)
-        
+        document = ["I had a wonderful trip to Seattle last week."]
+        result = client.recognize_entities(inputs= document)[0]
+
         print("Named Entities:\n")
         for entity in result.entities:
-                print("\tText: \t", entity.text, "\tType: \t", entity.type, "\tSubType: \t", entity.subtype,
+                print("\tText: \t", entity.text, "\tCategory: \t", entity.category, "\tSubCategory: \t", entity.subcategory,
                       "\n\tOffset: \t", entity.offset, "\tLength: \t", entity.offset, 
                       "\tConfidence Score: \t", round(entity.score, 3), "\n")
 
     except Exception as err:
         print("Encountered exception. {}".format(err))
-entity_recognition_example(endpoint, key)
+entity_recognition_example(client)
 ```
 
 ### <a name="output"></a>Dane wyjściowe
@@ -245,60 +267,56 @@ entity_recognition_example(endpoint, key)
 ```console
 Named Entities:
 
-    Text:    Seattle    Type:    Location   SubType:     None 
-    Offset:      26     Length:      26     Confidence Score:    0.806 
+    Text:    Seattle    Category:    Location   SubCategory:     GPE 
+    Offset:      26     Length:      26     Confidence Score:    0.92 
 
-    Text:    last week  Type:    DateTime   SubType:     DateRange 
+    Text:    last week  Category:    DateTime   SubCategory:     DateRange 
     Offset:      34     Length:      34     Confidence Score:    0.8 
 ```
 
 ## <a name="using-ner-to-detect-personal-information"></a>Wykrywanie informacji osobistych za pomocą NER
 
-Utwórz nową funkcję o nazwie `entity_pii_example()`, która przyjmuje punkt końcowy i klucz jako argumenty, a następnie wywołuje funkcję `single_recognize_pii_entities()` i pobiera wynik. Następnie wykonaj iterację w wynikach i wydrukuj jednostki.
+Utwórz nową funkcję o nazwie `entity_pii_example()`, która przyjmuje klienta jako argument, a następnie wywołuje funkcję `recognize_pii_entities()` i pobiera wynik. Następnie wykonaj iterację w wynikach i wydrukuj jednostki.
 
 ```python
-from azure.ai.textanalytics import single_recognize_pii_entities
+def entity_pii_example(client):
 
-def entity_pii_example(endpoint, key):
-
-        document = "Insurance policy for SSN on file 123-12-1234 is here by approved."
+        document = ["Insurance policy for SSN on file 123-12-1234 is here by approved."]
 
 
-        result = single_recognize_pii_entities(endpoint=endpoint, credential=key, input_text= document)
+        result = client.recognize_pii_entities(inputs= document)[0]
         
         print("Personally Identifiable Information Entities: ")
         for entity in result.entities:
-            print("\tText: ",entity.text,"\tType: ", entity.type,"\tSub-Type: ", entity.subtype)
+            print("\tText: ",entity.text,"\tCategory: ", entity.category,"\tSubCategory: ", entity.subcategory)
             print("\t\tOffset: ", entity.offset, "\tLength: ", entity.length, "\tScore: {0:.3f}".format(entity.score), "\n")
         
-entity_pii_example(endpoint, key)
+entity_pii_example(client)
 ```
 
 ### <a name="output"></a>Dane wyjściowe
 
 ```console
 Personally Identifiable Information Entities: 
-    Text:  123-12-1234  Type:  U.S. Social Security Number (SSN)    Sub-Type:  
+    Text:  123-12-1234  Category:  U.S. Social Security Number (SSN)    SubCategory:  None
         Offset:  33     Length:  11     Score: 0.850 
 ```
 
 
 ## <a name="entity-linking"></a>Łączenie jednostek
 
-Utwórz nową funkcję o nazwie `entity_linking_example()`, która przyjmuje punkt końcowy i klucz jako argumenty, a następnie wywołuje funkcję `single_recognize_linked_entities()` i wykonuje iterację przez wyniki. Zwrócony obiekt odpowiedzi będzie zawierać listę wykrytych jednostek w `entities`, jeśli się powiedzie, i `error`, jeśli nie. Ponieważ połączone jednostki są jednoznacznie identyfikowane, wystąpienia tej samej jednostki są pogrupowane pod obiektem `entity` jako lista obiektów `match`.
+Utwórz nową funkcję o nazwie `entity_linking_example()`, która przyjmuje klienta jako argument, a następnie wywołuje funkcję `recognize_linked_entities()` i wykonuje iterację przez wyniki. Zwrócony obiekt odpowiedzi będzie zawierać listę wykrytych jednostek w `entities`, jeśli się powiedzie, i `error`, jeśli nie. Ponieważ połączone jednostki są jednoznacznie identyfikowane, wystąpienia tej samej jednostki są pogrupowane pod obiektem `entity` jako lista obiektów `match`.
 
 ```python
-from azure.ai.textanalytics import single_recognize_linked_entities
-
-def entity_linking_example(endpoint, key):
+def entity_linking_example(client):
 
     try:
-        document = """Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, 
+        document = ["""Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, 
         to develop and sell BASIC interpreters for the Altair 8800. 
         During his career at Microsoft, Gates held the positions of chairman,
         chief executive officer, president and chief software architect, 
-        while also being the largest individual shareholder until May 2014."""
-        result = single_recognize_linked_entities(endpoint=endpoint, credential=key, input_text= document)
+        while also being the largest individual shareholder until May 2014."""]
+        result = client.recognize_linked_entities(inputs= document)[0]
 
         print("Linked Entities:\n")
         for entity in result.entities:
@@ -312,7 +330,7 @@ def entity_linking_example(endpoint, key):
             
     except Exception as err:
         print("Encountered exception. {}".format(err))
-entity_linking_example(endpoint, key)
+entity_linking_example(client)
 ```
 
 ### <a name="output"></a>Dane wyjściowe
@@ -324,7 +342,7 @@ Linked Entities:
     Data Source:  Wikipedia
     Matches:
         Text: Altair 8800
-        Score: 0.777    Offset:  116    Length: 11
+        Score: 0.777    Offset:  125    Length: 11
 
     Name:  Bill Gates   Id:  Bill Gates     Url:  https://en.wikipedia.org/wiki/Bill_Gates 
     Data Source:  Wikipedia
@@ -333,7 +351,7 @@ Linked Entities:
         Score: 0.555    Offset:  25     Length: 10
 
         Text: Gates
-        Score: 0.555    Offset:  161    Length: 5
+        Score: 0.555    Offset:  179    Length: 5
 
     Name:  Paul Allen   Id:  Paul Allen     Url:  https://en.wikipedia.org/wiki/Paul_Allen 
     Data Source:  Wikipedia
@@ -348,7 +366,7 @@ Linked Entities:
         Score: 0.469    Offset:  0  Length: 9
 
         Text: Microsoft
-        Score: 0.469    Offset:  150    Length: 9
+        Score: 0.469    Offset:  168    Length: 9
 
     Name:  April 4  Id:  April 4    Url:  https://en.wikipedia.org/wiki/April_4 
     Data Source:  Wikipedia
@@ -360,7 +378,8 @@ Linked Entities:
     Data Source:  Wikipedia
     Matches:
         Text: BASIC
-        Score: 0.281    Offset:  89     Length: 5
+        Score: 0.281    Offset:  98     Length: 5
+
 ```
 
 #### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
@@ -418,17 +437,15 @@ Document ID: 2
 
 #### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
 
-Utwórz nową funkcję o nazwie `key_phrase_extraction_example()`, która przyjmuje punkt końcowy i klucz jako argumenty, a następnie wywołuje funkcję `single_extract_key_phrases()`. Wynik będzie zawierać listę wykrytych fraz kluczy w `key_phrases`, jeśli się powiedzie, i `error`, jeśli nie. Drukuj wszystkie wykryte frazy kluczy.
+Utwórz nową funkcję o nazwie `key_phrase_extraction_example()`, która przyjmuje klienta jako argument, a następnie wywołuje funkcję `extract_key_phrases()`. Wynik będzie zawierać listę wykrytych fraz kluczy w `key_phrases`, jeśli się powiedzie, i `error`, jeśli nie. Drukuj wszystkie wykryte frazy kluczy.
 
 ```python
-from azure.ai.textanalytics import single_extract_key_phrases
-
-def key_phrase_extraction_example(endpoint, key):
+def key_phrase_extraction_example(client):
 
     try:
-        document = "My cat might need to see a veterinarian."
+        document = ["My cat might need to see a veterinarian."]
 
-        response = single_extract_key_phrases(endpoint=endpoint, credential=key, input_text= document)
+        response = client.extract_key_phrases(inputs= document)[0]
 
         if not response.is_error:
             print("\tKey Phrases:")
@@ -440,7 +457,7 @@ def key_phrase_extraction_example(endpoint, key):
     except Exception as err:
         print("Encountered exception. {}".format(err))
         
-key_phrase_extraction_example(endpoint, key)
+key_phrase_extraction_example(client)
 ```
 
 

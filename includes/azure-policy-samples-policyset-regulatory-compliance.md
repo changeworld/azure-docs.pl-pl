@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 02/13/2020
 ms.author: dacoulte
-ms.openlocfilehash: 6960a985a5c6a752ced9d176db6eb9368fdf0779
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d5cf28244fadd6dc0d1d06d5a84a2082a1d1e7e9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192668"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77371832"
 ---
 |Name (Nazwa) |Opis |Zasady |Wersja |
 |---|---|---|---|
@@ -26,4 +26,4 @@ ms.locfileid: "77192668"
 |[Inspekcja FedRAMP o wysokiej kontroli i wdrażanie określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Ta inicjatywa obejmuje zasady wdrażania dla inspekcji i rozszerzenia maszyny wirtualnej, które dotyczą podzbioru kontrolek FedRAMP H. Dodatkowe zasady zostaną dodane w przyszłych wydaniach. Aby uzyskać więcej informacji, odwiedź stronę https://aka.ms/fedramph-blueprint. |81 |1.0.0 — wersja zapoznawcza |
 |[Inspekcja kontrolek HITRUST/HIPAA i wdrażanie określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Ta inicjatywa obejmuje zasady, które dotyczą podzbioru formantów HITRUST/HIPAA. Dodatkowe zasady zostaną dodane w przyszłych wydaniach. https://aka.ms/hipaa-blueprint |57 |1.0.0 |
 |[Inspekcja powiązań obrazu ruchu (MPAA) kontroli i wdrażania określonych rozszerzeń maszyn wirtualnych do obsługi wymagań inspekcji](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |Ta inicjatywa obejmuje zasady, które dotyczą podzbioru kontroli bezpieczeństwa i MPAA (Motion Picture Association). Dodatkowe zasady zostaną dodane w przyszłych wydaniach. Aby uzyskać więcej informacji, odwiedź stronę https://aka.ms/mpaa-blueprint |45 |1.0.0 — wersja zapoznawcza |
-|[Poziom wpływu na DoD 4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/DOD_IL4_audit.json) |Przypisuje zasady w celu rozdzielenia określonych kontrolek poziomu wpływu na 4 (IL4). Dowiedz się więcej — https://aka.ms/DoDIL4-blueprint. |81 |1.0.0 — wersja zapoznawcza |
+|[DoD Impact Level 4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/DOD_IL4_audit.json) |Przypisuje zasady w celu rozdzielenia określonych kontrolek poziomu wpływu na 4 (IL4). Dowiedz się więcej — https://aka.ms/DoDIL4-blueprint. |81 |1.0.0 — wersja zapoznawcza |

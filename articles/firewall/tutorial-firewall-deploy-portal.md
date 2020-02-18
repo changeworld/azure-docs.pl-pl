@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be39449c1c11acdbdc99bd96f917c51eebda44ae
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 38ee180fa59fec6619010a3ded1f6837a5ca5239
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195791"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371339"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -52,7 +52,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Najpierw utwórz grupę zasobów zawierającą zasoby wymagane do wdrożenia zapory. Następnie utwórz sieć wirtualną, podsieci i serwery do obsługi testowania.
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Grupa zasobów zawiera wszystkie zasoby wymagane w tym samouczku.
 
@@ -140,12 +140,12 @@ Wdróż zaporę w sieci wirtualnej.
 
    |Ustawienie  |Wartość  |
    |---------|---------|
-   |Subscription     |\<Twoja subskrypcja\>|
+   |Subskrypcja     |\<Twoja subskrypcja\>|
    |Grupa zasobów     |**Test-PD-RG** |
-   |Nazwa     |**Test-FW01**|
-   |Location     |Wybierz tę samą lokalizację, której użyto poprzednio|
+   |Name (Nazwa)     |**Test-FW01**|
+   |Lokalizacja     |Wybierz tę samą lokalizację, której użyto poprzednio|
    |Wybieranie sieci wirtualnej     |**Użyj istniejącej**: **test-PD-VN**|
-   |Publiczny adres IP     |**Utwórz nową**. Publiczny adres IP musi mieć typ Standardowa jednostka SKU.|
+   |Publiczny adres IP     |**Dodaj nowy**. Publiczny adres IP musi mieć typ Standardowa jednostka SKU.|
 
 5. Wybierz pozycję **Przegląd + utwórz**.
 6. Przejrzyj podsumowanie, a następnie wybierz pozycję **Utwórz** , aby utworzyć zaporę.

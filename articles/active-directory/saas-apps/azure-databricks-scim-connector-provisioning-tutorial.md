@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: de60b4ea1b09998e84bab4d204e3c8c3bc8779a4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: fe1260982edc877c049716bd74f1bb3e90d33b0f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050449"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370523"
 ---
 # <a name="tutorial-configure-azure-databricks-scim-connector-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie łącznika Azure Databricks Standard scim na potrzeby automatycznej aprowizacji użytkowników
 
@@ -96,7 +96,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Karta aprowizacji](common/provisioning-automatic.png)
 
-5. W sekcji **poświadczenia administratora** wprowadź poświadczenia administratora łącznika programu Azure Databricks Standard scim i nazwę użytkownika. Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z łącznikiem Azure Databricks Standard scim. Jeśli połączenie nie powiedzie się, upewnij się, że konto łącznika usługi Azure Databricks Standard scim ma uprawnienia administratora i spróbuj ponownie.
+5. W sekcji **poświadczenia administratora** wprowadź wartość punktu końcowego Standard scim w **adresie URL dzierżawy**. Adres URL dzierżawy powinien mieć format `https://<region>.azuredatabricks.net/api/2.0/preview/scim`, gdzie **region** można znaleźć w adresie URL Azure Databricks strony głównej. Na przykład standard scim punkt końcowy dla regionu **zachodniego** będzie `https://westus.azuredatabricks.net/api/2.0/preview/scim`. Wprowadź wartość tokenu pobraną wcześniej w **tokenie tajnym**. Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z łącznikiem Azure Databricks Standard scim. Jeśli połączenie nie powiedzie się, upewnij się, że konto łącznika usługi Azure Databricks Standard scim ma uprawnienia administratora i spróbuj ponownie.
 
     ![aprowizacji](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/provisioning.png)
 

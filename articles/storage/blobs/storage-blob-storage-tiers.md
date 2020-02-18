@@ -117,8 +117,8 @@ W poniższej tabeli przedstawiono porównanie magazynu obiektów BLOB wydajnośc
 
 |                                           | **Wydajność warstwy Premium**   | **Warstwa gorąca** | **Warstwa chłodna**       | **Warstwa Archiwum**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
-| **Dostępność**                          | 99,9%                     | 99,9%        | 99%                 | W trybie offline           |
-| **Dostępność** <br> **(odczyty RA-GRS)**  | Nie dotyczy                       | 99,99%       | 99,9%               | W trybie offline           |
+| **Dostępność**                          | 99,9%                     | 99,9%        | 99%                 | Taśma           |
+| **Dostępność** <br> **(odczyty RA-GRS)**  | Nie dotyczy                       | 99,99%       | 99,9%               | Taśma           |
 | **Opłaty za użycie**                         | Wyższe koszty magazynowania, niższy koszt dostępu i transakcji | Wyższe koszty magazynowania, niższy dostęp i koszty transakcji | Niższe koszty magazynowania, wyższego poziomu dostępu i kosztów transakcji | Najniższe koszty magazynowania, najwyższy poziom dostępu i koszty transakcji |
 | **Minimalny rozmiar obiektu**                   | Nie dotyczy                       | Nie dotyczy          | Nie dotyczy                 | Nie dotyczy               |
 | **Minimalny czas magazynowania**              | Nie dotyczy                       | Nie dotyczy          | 30 dni<sup>1</sup> | 180 dni
