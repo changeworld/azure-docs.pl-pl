@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f171d9d71d3e6f8fa57671578502675442293793
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2dcdc67f884d1f566c794ab9e996a74984ab61a4
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908948"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373155"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika w Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ Użyj [Azure Portal](tutorial-customize-ui.md) , aby skonfigurować Dostosowywan
 
 Jeśli używasz [zasad niestandardowych](custom-policy-overview.md) w celu zapewnienia rejestracji lub logowania, resetowania haseł lub edytowania profilu w aplikacji, użyj [plików zasad, aby dostosować interfejs użytkownika](custom-policy-ui-customization.md).
 
-Jeśli musisz dostarczyć zawartość dynamiczną na podstawie decyzji klienta, użyj zasad niestandardowych, które mogą [dynamicznie zmieniać zawartość strony](custom-policy-ui-customization-dynamic.md) w zależności od parametru, który jest wysyłany w ciągu zapytania. Na przykład można zmienić obraz tła na stronie rejestracji lub logowania na Azure AD B2C na podstawie parametru przekazanego z aplikacji sieci Web lub mobilnej.
+Jeśli musisz dostarczyć zawartość dynamiczną na podstawie decyzji klienta, użyj zasad niestandardowych, które mogą [dynamicznie zmieniać zawartość strony](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) w zależności od parametru, który jest wysyłany w ciągu zapytania. Na przykład można zmienić obraz tła na stronie rejestracji lub logowania na Azure AD B2C na podstawie parametru przekazanego z aplikacji sieci Web lub mobilnej.
 
 ### <a name="javascript"></a>JavaScript
 
@@ -61,7 +61,7 @@ W obszarze **Dostosuj** w menu po lewej stronie wybierz pozycję **układy stron
 
 Następnie wybierz szablon z listy. Poniżej przedstawiono przykłady stron logowania dla każdego szablonu:
 
-| Ocean niebieski | Szare | Klasyczny |
+| Ocean niebieski | Szare | Wdrożenie klasyczne |
 |:-:|:-:|:-:|
 |![Przykład niebieskiego szablonu oceanu renderowany podczas rejestracji na stronie logowania](media/customize-ui-overview/template-ocean-blue.png)|![Przykład szarego szablonu renderowanego na stronie logowania](media/customize-ui-overview/template-slate-gray.png)|![Przykładowy szablon klasyczny renderowany podczas rejestracji na stronie logowania](media/customize-ui-overview/template-classic.png)|
 
@@ -165,7 +165,7 @@ Aby dostosować strony przepływu użytkownika, należy najpierw skonfigurować 
 
 Zacznij od ustawienia logo transparentu, obrazu tła i koloru tła w obszarze **znakowania firmowego**.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. W obszarze **Zarządzaj**wybierz opcję **znakowanie firmowe**.

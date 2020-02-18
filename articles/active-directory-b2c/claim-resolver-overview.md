@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1734b063530f9e8a8f0429111c4c39d628bfad4e
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 74813d9f84f682447d30cea43984f0810954da85
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251774"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372706"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informacje o rozpoznawaniu roszczeń w Azure Active Directory B2C zasadach niestandardowych
 
@@ -50,8 +50,8 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 | ----- | ----------- | --------|
 | {Culture: LanguageName} | Dwuliterowy kod ISO dla języka. | pl |
 | {Culture: LCID}   | Identyfikator LCID kodu języka. | 1033 |
-| {Culture: RegionName} | Dwuliterowy kod ISO dla regionu. | US |
-| {Culture: RFC5646} | Kod języka RFC5646. | pl-pl |
+| {Culture: RegionName} | Dwuliterowy kod ISO dla regionu. | USA |
+| {Culture: RFC5646} | Kod języka RFC5646. | pl-PL |
 
 ### <a name="policy"></a>Zasady
 
@@ -66,14 +66,14 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 
 | Claim | Opis | Przykład |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |`acr_values` parametr ciągu zapytania. | N/D |
+| {OIDC: AuthenticationContextReferences} |`acr_values` parametr ciągu zapytania. | Nie dotyczy |
 | {OIDC:ClientId} |`client_id` parametr ciągu zapytania. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC: DomainHint} |`domain_hint` parametr ciągu zapytania. | facebook.com |
 | {OIDC: LoginHint} |  `login_hint` parametr ciągu zapytania. | someone@contoso.com |
-| {OIDC:MaxAge} | Element `max_age`. | N/D |
+| {OIDC:MaxAge} | Element `max_age`. | Nie dotyczy |
 | {OIDC: nonce} |`Nonce` parametr ciągu zapytania. | defaultNonce |
 | {OIDC: Prompt} | `prompt` parametr ciągu zapytania. | logowanie |
-| {OIDC: Resource} |`resource` parametr ciągu zapytania. | N/D |
+| {OIDC: Resource} |`resource` parametr ciągu zapytania. | Nie dotyczy |
 | {OIDC: Scope} |`scope` parametr ciągu zapytania. | OpenID Connect |
 
 ### <a name="context"></a>Kontekst
@@ -96,13 +96,13 @@ Wszelkie nazwy parametrów dołączone jako część żądania OIDC lub OAuth2 m
 | {OAUTH-KV: campaignId} | Parametr ciągu zapytania. | Hawaje |
 | {OAUTH-KV: app_session} | Parametr ciągu zapytania. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Parametr ciągu zapytania. | 1234 |
-| {OAUTH-KV: dowolny niestandardowy ciąg zapytania} | Parametr ciągu zapytania. | N/D |
+| {OAUTH-KV: dowolny niestandardowy ciąg zapytania} | Parametr ciągu zapytania. | Nie dotyczy |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Claim | Opis | Przykład |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | Token dostępu. | N/D |
+| {oauth2:access_token} | Token dostępu. | Nie dotyczy |
 
 ## <a name="using-claim-resolvers"></a>Korzystanie z resolverów roszczeń 
 
@@ -160,7 +160,7 @@ Korzystając z resolverów roszczeń, można wstępnie wypełnić nazwę logowan
 
 ### <a name="dynamic-ui-customization"></a>Dynamiczne dostosowywanie interfejsu użytkownika
 
-Azure AD B2C umożliwia przekazywanie parametrów ciągu zapytania do punktów końcowych definicji zawartości HTML w celu dynamicznego renderowania zawartości strony. Na przykład pozwala to na modyfikowanie obrazu tła na stronie rejestracji i logowania na Azure AD B2C na podstawie parametru niestandardowego, który jest przekazywany z aplikacji sieci Web lub mobilnej. Aby uzyskać więcej informacji, zobacz [dynamiczne Konfigurowanie interfejsu użytkownika przy użyciu zasad niestandardowych w programie Azure Active Directory B2C](custom-policy-ui-customization-dynamic.md). Możesz również lokalizować stronę HTML na podstawie parametru języka lub można zmienić zawartość na podstawie identyfikatora klienta.
+Azure AD B2C umożliwia przekazywanie parametrów ciągu zapytania do punktów końcowych definicji zawartości HTML w celu dynamicznego renderowania zawartości strony. Na przykład pozwala to na modyfikowanie obrazu tła na stronie rejestracji i logowania na Azure AD B2C na podstawie parametru niestandardowego, który jest przekazywany z aplikacji sieci Web lub mobilnej. Aby uzyskać więcej informacji, zobacz [dynamiczne Konfigurowanie interfejsu użytkownika przy użyciu zasad niestandardowych w programie Azure Active Directory B2C](custom-policy-ui-customization.md). Możesz również lokalizować stronę HTML na podstawie parametru języka lub można zmienić zawartość na podstawie identyfikatora klienta.
 
 Poniższy przykład przekazuje parametr ciągu zapytania o nazwie **campaignId** wartością `hawaii`, kod **języka** `en-US`i **aplikację** reprezentującą identyfikator klienta:
 

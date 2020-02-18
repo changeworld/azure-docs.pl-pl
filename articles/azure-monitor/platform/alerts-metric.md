@@ -4,19 +4,19 @@ description: Dowiedz się, jak używać Azure Portal lub interfejsu wiersza pole
 author: harelbr
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 02/16/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 00f5f37591ed2ed250cb756c686ea15136921512
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ef712c38303de27214ce75c9ca2b8022a5410efc
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705534"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372758"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Twórz i wyświetlaj alerty metryk i zarządzaj nimi za pomocą Azure Monitor
 
-Alerty dotyczące metryk w usłudze Azure Monitor umożliwiają otrzymywanie powiadomień, gdy jedna z metryk przekroczy wartość progową. Alerty dotyczące metryk działają na wielu metrykach wielowymiarowych platform, metrykach niestandardowych i standardowych i niestandardowych metrykach usługi Application Insights. W tym artykule opisano, jak tworzyć i wyświetlać reguły alertów dotyczących metryk oraz nimi zarządzać w witrynie Azure Portal oraz za pomocą interfejsu wiersza polecenia platformy Azure. Reguły alertów dotyczących metryk można również utworzyć za pomocą szablonów Azure Resource Manager, które opisano w [osobnym artykule](alerts-metric-create-templates.md).
+Alerty metryk w Azure Monitor umożliwiają otrzymywanie powiadomień, gdy jedna z metryk przekroczy próg. Alerty dotyczące metryk działają na wielu metrykach wielowymiarowych platform, metrykach niestandardowych i standardowych i niestandardowych metrykach usługi Application Insights. W tym artykule opisano sposób tworzenia i wyświetlania reguł alertów dotyczących metryk oraz zarządzania nimi za pomocą Azure Portal i interfejsu wiersza polecenia platformy Azure. Reguły alertów dotyczących metryk można również tworzyć przy użyciu szablonów Azure Resource Manager, które są opisane w [osobnym artykule](alerts-metric-create-templates.md).
 
 Aby dowiedzieć się więcej o tym, jak alerty metryk działają na podstawie [alertów dotyczących metryk](alerts-metric-overview.md).
 
@@ -39,21 +39,30 @@ Poniższa procedura opisuje sposób tworzenia reguły alertu dotyczącego metryk
 
 6. Zostanie wyświetlona lista sygnałów obsługiwanych dla zasobu, wybierz metrykę, dla której chcesz utworzyć alert.
 
-7. Opcjonalnie możesz ograniczyć metrykę przez dostosowanie **okresu** i **agregacji**. Jeśli Metryka ma wymiary, zostanie wyświetlona tabela **wymiarów** . Wybierz co najmniej jedną wartość na wymiar. Zostanie uruchomiony alert dotyczący metryki dla wszystkich wybranych kombinacji wartości. [Dowiedz się więcej o tym, jak działa alert dotyczący metryk wielowymiarowych](alerts-metric-overview.md). Możesz również **wybrać \*** dla dowolnego z wymiarów. **Wybierz \*** będzie dynamicznie skalować zaznaczenie do wszystkich bieżących i przyszłych wartości wymiaru.
+7. Zostanie wyświetlony wykres metryki dla ostatnich sześciu godzin. Za pomocą listy rozwijanej **Okres wykresu** wybierz opcję, aby wyświetlić dłuższą historię dla metryki.
 
-8. Zostanie wyświetlony wykres metryki dla ostatnich 6 godzin. Zdefiniuj parametry alertu; **Typ warunku**, **częstotliwość**, **operator** i **próg** lub **czułość**, spowoduje to określenie logiki, która będzie Szacowana przez regułę alertu metryki. [Dowiedz się więcej o opcjach typu i czułości wartości progów dynamicznych](alerts-dynamic-thresholds.md).
+8. Jeśli Metryka ma wymiary, zostanie wyświetlona tabela wymiarów. Wybierz co najmniej jedną wartość na wymiar.
+    - Wyświetlone wartości wymiarów są oparte na danych metryk z ostatnich trzech dni.
+    - Jeśli wartość wymiaru, którego szukasz, nie jest wyświetlana, kliknij przycisk "+", aby dodać wartość niestandardową.
+    - Możesz również **wybrać \*** dla dowolnego z wymiarów. **Wybierz \*** będzie dynamicznie skalować zaznaczenie do wszystkich bieżących i przyszłych wartości wymiaru.
 
-9. Jeśli jest używany próg statyczny, wykres metryk może pomóc w ustaleniu, co może być rozsądnym progiem. Jeśli używasz progów dynamicznych, wykres metryki będzie wyświetlał obliczone progi na podstawie ostatnich danych.
+    Reguła alertu metryki będzie szacować warunek dla wszystkich wybranych kombinacji wartości. [Dowiedz się więcej o tym, jak działa alert dotyczący metryk wielowymiarowych](alerts-metric-overview.md).
 
-10. Kliknij przycisk **Gotowe**
+9. Wybierz typ **progu** , **operator**i **typ agregacji**. Spowoduje to określenie logiki, która będzie Szacowana przez regułę alertu metryki.
+    - Jeśli używasz progu **statycznego** , Kontynuuj definiowanie **wartości progowej**. Wykres metryk może pomóc w ustaleniu, co może być rozsądnym progiem.
+    - Jeśli używasz progu **dynamicznego** , Kontynuuj definiowanie **czułości progowej**. Na wykresie metryki zostaną wyświetlone obliczone progi na podstawie ostatnich danych. [Dowiedz się więcej o opcjach typu i czułości wartości progów dynamicznych](alerts-dynamic-thresholds.md).
 
-11. Opcjonalnie dodaj kolejne kryteria, jeśli chcesz monitorować złożoną regułę alertów. Obecnie użytkownicy mogą mieć reguły alertów z kryteriami progów dynamicznych jako pojedyncze kryterium.
+10. Opcjonalnie można uściślić warunek przez dostosowanie **stopnia szczegółowości agregacji** i **częstotliwości obliczania**. 
 
-12. Wypełnij **szczegóły alertu** , takie jak nazwa, **Opis** i **ważność** **reguły alertu**
+11. Kliknij przycisk **Gotowe**.
 
-13. Dodaj grupę akcji do alertu, wybierając istniejącą grupę akcji lub tworząc nową grupę akcji.
+12. Opcjonalnie dodaj kolejne kryteria, jeśli chcesz monitorować złożoną regułę alertów. Obecnie użytkownicy mogą mieć reguły alertów z kryteriami progów dynamicznych jako pojedyncze kryterium.
 
-14. Kliknij przycisk **gotowe** , aby zapisać regułę alertu metryki.
+13. Wypełnij **szczegóły alertu** , takie jak nazwa, **Opis**i **ważność** **reguły alertu**.
+
+14. Dodaj grupę akcji do alertu, wybierając istniejącą grupę akcji lub tworząc nową grupę akcji.
+
+15. Kliknij przycisk **gotowe** , aby zapisać regułę alertu metryki.
 
 > [!NOTE]
 > Reguły alertów metryk utworzonych za pomocą portalu są tworzone w tej samej grupie zasobów co zasób docelowy.
@@ -66,7 +75,7 @@ Reguły alertów dotyczących metryk można wyświetlać i zarządzać nimi za p
 
 2. Kliknij pozycję **alerty** i **Zarządzaj regułami**
 
-3. W bloku **Zarządzanie regułami** można wyświetlić wszystkie reguły alertów w różnych subskrypcjach. Można dodatkowo filtrować reguły przy użyciu opcji **Grupa zasobów**, **Typ zasobu** i **zasób**. Jeśli chcesz zobaczyć tylko alerty metryk, wybierz pozycję **Typ sygnału** jako metryki.
+3. W bloku **Zarządzanie regułami** można wyświetlić wszystkie reguły alertów w różnych subskrypcjach. Można dodatkowo filtrować reguły przy użyciu **grupy zasobów**, **typu zasobu**i **zasobu**. Jeśli chcesz zobaczyć tylko alerty metryk, wybierz pozycję **Typ sygnału** jako metryki.
 
     > [!TIP]
     > W bloku **Zarządzanie regułami** możesz wybrać wiele reguł alertów i włączyć je/wyłączyć. Może to być przydatne w przypadku, gdy pewne zasoby docelowe muszą zostać umieszczone w trybie konserwacji
@@ -80,13 +89,13 @@ Reguły alertów dotyczących metryk można wyświetlać i zarządzać nimi za p
 
 6. Kliknij przycisk **gotowe** , aby zapisać zmiany.
 
-## <a name="with-azure-cli"></a>Z interfejsem wiersza polecenia platformy Azure
+## <a name="with-azure-cli"></a>Przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Poprzednie sekcje opisują sposób tworzenia, wyświetlania i zarządzania regułami alertów dotyczących metryk przy użyciu Azure Portal. W tej sekcji opisano, jak wykonać to samo przy użyciu wieloplatformowego [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). Najszybszym sposobem na rozpoczęcie korzystania z interfejsu wiersza polecenia platformy Azure jest [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest). W tym artykule będziemy używać usługi Cloud Shell.
+Poprzednie sekcje opisują sposób tworzenia i wyświetlania reguł alertów dotyczących metryk oraz zarządzania nimi przy użyciu Azure Portal. W tej sekcji opisano, jak wykonać to samo przy użyciu wieloplatformowego [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). Najszybszym sposobem na rozpoczęcie korzystania z interfejsu wiersza polecenia platformy Azure jest [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest). W tym artykule będziemy używać Cloud Shell.
 
 1. Przejdź do Azure Portal, kliknij pozycję **Cloud Shell**.
 
-2. W wierszu polecenia można użyć poleceń z opcją ``--help``, aby dowiedzieć się więcej o poleceniu i sposobach ich użycia. Na przykład następujące polecenie pokazuje listę poleceń dostępnych do tworzenia i wyświetlania alertów metryk i zarządzania nimi
+2. W wierszu polecenia można użyć poleceń z opcją ``--help``, aby dowiedzieć się więcej o poleceniu i sposobach ich użycia. Na przykład następujące polecenie pokazuje listę poleceń dostępnych do tworzenia i wyświetlania alertów metryk oraz zarządzania nimi
 
     ```azurecli
     az monitor metrics alert --help

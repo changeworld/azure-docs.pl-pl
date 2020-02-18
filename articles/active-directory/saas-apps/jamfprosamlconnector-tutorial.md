@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65b343c79c60bc74f1a140411ff1a4a27119d225
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 1d83dbe756e8e6acdb58861ac359801bc13a63c4
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251689"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373205"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Samouczek: Azure Active Directory integrację z logowaniem jednokrotnym przy użyciu Jamf Pro
 
@@ -31,7 +31,7 @@ W tym samouczku dowiesz się, jak zintegrować usługę Jamf Pro z usługą Azur
 * Automatyczne logowanie użytkowników do Jamf Pro z kontami usługi Azure AD.
 * Zarządzaj kontami w jednej centralnej lokalizacji: Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [Logowanie jednokrotne za pomocą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [Logowanie jednokrotne za pomocą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -42,7 +42,10 @@ Aby rozpocząć, potrzebne są następujące elementy:
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym. Usługa Jamf Pro obsługuje logowanie jednokrotne **zainicjowane przez usługę Sp** i **dostawcy tożsamości** .
+W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym. 
+
+* Usługa Jamf Pro obsługuje logowanie jednokrotne **zainicjowane przez usługę Sp** i **dostawcy tożsamości** .
+* Po skonfigurowaniu programu Jamf Pro można wymusić kontrolę sesji, która chroni eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolka sesji rozszerzy od dostępu warunkowego. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="add-jamf-pro-from-the-gallery"></a>Dodaj Jamf Pro z galerii
 
@@ -147,9 +150,9 @@ W tej sekcji przyznano użytkownikowi B. Simon dostęp do Jamf Pro.
 
     ![Strona logowania jednokrotnego w programie Jamf Pro](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-  a. Wybierz pozycję **Edit** (Edytuj).
+    a. Wybierz pozycję **Edit** (Edytuj).
 
-  b. Zaznacz pole wyboru **Włącz uwierzytelnianie logowania** jednokrotnego.
+    b. Zaznacz pole wyboru **Włącz uwierzytelnianie logowania** jednokrotnego.
 
   c. Wybierz pozycję **Azure** jako opcję z menu rozwijanego **dostawca tożsamości** .
 
@@ -200,7 +203,7 @@ Aby zainicjować obsługę administracyjną konta użytkownika, wykonaj następu
 
     ![Opcja Utwórz konto standardowe na stronie grupy & kont użytkowników Jamf Pro](./media/jamfprosamlconnector-tutorial/user3.png)
 
-6. W oknie dialogowym **nowe konto** wykonaj następujące czynności.
+6. W oknie dialogowym **nowe konto** wykonaj następujące czynności:
 
     ![Nowe opcje konfiguracji konta w ustawieniach systemu Jamf Pro](./media/jamfprosamlconnector-tutorial/user4.png)
 
@@ -228,8 +231,8 @@ Po wybraniu kafelka Jamf Pro w panelu dostępu należy automatycznie zalogować 
 
 - [Samouczki dotyczące integrowania aplikacji SaaS z Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Single sign-on to applications in Azure Active Directory (Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory)](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 - [Wypróbuj usługę Jamf Pro z usługą Azure AD](https://aad.portal.azure.com/)

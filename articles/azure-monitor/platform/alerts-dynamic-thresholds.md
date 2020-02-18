@@ -5,15 +5,15 @@ author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 02/16/2020
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 750aded128804468ae557d7c016a50c5378d9217
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f67dcf7f1f4f39a11eb995995a8d0acc278b5d4a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762520"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373415"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Alerty metryk z progami dynamicznymi w Azure Monitor
 
@@ -92,11 +92,11 @@ Prawdopodobnie nie. Dynamiczne progi są dobrym środkiem do wykrywania znacząc
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Ile danych jest używanych do podglądu, a następnie obliczania progów?
 
-Gdy po raz pierwszy zostanie utworzony alert, progi pojawiające się na wykresie są obliczane na podstawie wystarczającej ilości danych historycznych w celu obliczenia godzin lub dziennych wzorców sezonowych (10 dni). Po utworzeniu reguły alertu dynamiczne progi korzystają ze wszystkich wymaganych danych historycznych, które są dostępne i będą stale uczyć się i dostosowywać na podstawie nowych danych, aby zapewnić dokładniejsze wartości progowe. Oznacza to, że po obliczeniu, wykres będzie również wyświetlał wzorce cotygodniowe.
+Po pierwszym utworzeniu reguły alertu progi pojawiające się na wykresie są obliczane na podstawie wystarczających danych historycznych w celu obliczenia godzin lub dziennych wzorców sezonowych (10 dni). Po utworzeniu reguły alertu dynamiczne progi korzystają ze wszystkich wymaganych danych historycznych, które są dostępne i będą stale uczyć się i dostosowywać na podstawie nowych danych, aby zapewnić dokładniejsze wartości progowe. Oznacza to, że po obliczeniu, wykres będzie również wyświetlał wzorce cotygodniowe.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Ile danych jest potrzebnych do wyzwolenia alertu?
 
-Jeśli dysponujesz nowym zasobem lub brakuje danych metryk, dynamiczne progi nie będą wyzwalać alertów przed udostępnieniem przez trzy dni danych, aby zapewnić dokładne progi.
+Jeśli dysponujesz nowym zasobem lub brakuje danych metryk, dynamiczne progi nie będą wyzwalać alertów przed upływem trzech dni lub 30 próbek danych metryk, aby zapewnić dokładne progi.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Najlepsze praktyki dotyczące progów dynamicznych
 

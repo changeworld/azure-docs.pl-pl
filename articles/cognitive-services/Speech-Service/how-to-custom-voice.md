@@ -3,19 +3,19 @@ title: Co to jest głos niestandardowy? — Usługa mowy
 titleSuffix: Azure Cognitive Services
 description: Niestandardowy głos to zestaw narzędzi online, które umożliwiają tworzenie rozpoznawalnego, jednoczęściowego głosu dla marki. Wszystkie potrzebne do rozpoczęcia pracy to kilku plików audio i skojarzonych transkrypcji. Skorzystaj z poniższych linków, aby rozpocząć tworzenie niestandardowego środowiska zamiany mowy na tekst.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 0e40ca55a9cd198e1b086362a2559ab2fc0ba95e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/15/2020
+ms.author: dapine
+ms.openlocfilehash: 6edd8f89ed2db2927cce14ea86b589090bdc35ed
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805964"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371276"
 ---
 # <a name="get-started-with-custom-voice"></a>Wprowadzenie do usługi Custom Voice
 
@@ -29,13 +29,13 @@ Na poniższym diagramie przedstawiono kroki umożliwiające utworzenie niestanda
 
 ![Niestandardowy diagram architektury głosu](media/custom-voice/custom-voice-diagram.png)
 
-1.  [Subskrybuj i Utwórz projekt](#set-up-your-azure-account) — Utwórz konto platformy Azure i Utwórz subskrypcję usługi mowy. Ta ujednolicona subskrypcja zapewnia dostęp do funkcji zamiany mowy na tekst, zamiany tekstu na mowę, tłumaczenia mowy i niestandardowego portalu głosu. Następnie za pomocą subskrypcji usługi mowy Utwórz swój pierwszy niestandardowy projekt głosowy.
+1. [Subskrybuj i Utwórz projekt](#set-up-your-azure-account) — Utwórz konto platformy Azure i Utwórz subskrypcję usługi mowy. Ta ujednolicona subskrypcja zapewnia dostęp do funkcji zamiany mowy na tekst, zamiany tekstu na mowę, tłumaczenia mowy i niestandardowego portalu głosu. Następnie za pomocą subskrypcji usługi mowy Utwórz swój pierwszy niestandardowy projekt głosowy.
 
-2.  [Przekazuj](how-to-custom-voice-create-voice.md#upload-your-datasets) dane — przekazywanie danych (audio i tekstowych) przy użyciu niestandardowego portalu głosu lub niestandardowego interfejsu API mowy. Z poziomu portalu można zbadać i oszacować wyniki wymowy oraz współczynnik sygnałów do szumów. Aby uzyskać więcej informacji, zobacz [jak przygotować dane dla niestandardowego głosu](how-to-custom-voice-prepare-data.md).
+2. [Przekazuj](how-to-custom-voice-create-voice.md#upload-your-datasets) dane — przekazywanie danych (audio i tekstowych) przy użyciu niestandardowego portalu głosu lub niestandardowego interfejsu API mowy. Z poziomu portalu można zbadać i oszacować wyniki wymowy oraz współczynnik sygnałów do szumów. Aby uzyskać więcej informacji, zobacz [jak przygotować dane dla niestandardowego głosu](how-to-custom-voice-prepare-data.md).
 
-3.  [Uczenie modelu](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) — używanie danych do tworzenia niestandardowego modelu głosu zamiany tekstu na mowę. Możesz nauczyć model w różnych językach. Po przeprowadzeniu szkolenia Przetestuj model i, jeśli wynik jest zadowalający, możesz wdrożyć model.
+3. [Uczenie modelu](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) — używanie danych do tworzenia niestandardowego modelu głosu zamiany tekstu na mowę. Możesz nauczyć model w różnych językach. Po przeprowadzeniu szkolenia Przetestuj model i, jeśli wynik jest zadowalający, możesz wdrożyć model.
 
-4.  [Wdrażanie modelu](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) — Tworzenie niestandardowego punktu końcowego dla modelu głosu zamiany tekstu na mowę i używanie go na potrzeby syntezy mowy w produktach, narzędziach i aplikacjach.
+4. [Wdrażanie modelu](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) — Tworzenie niestandardowego punktu końcowego dla modelu głosu zamiany tekstu na mowę i używanie go na potrzeby syntezy mowy w produktach, narzędziach i aplikacjach.
 
 ## <a name="custom-neural-voices"></a>Niestandardowe głosy neuronowych
 
@@ -63,6 +63,9 @@ Po utworzeniu konta platformy Azure i subskrypcji usługi mowy należy zalogowa�
 Zawartość, taka jak dane, modele, testy i punkty końcowe, są zorganizowane w **projekty** w portalu niestandardowym. Każdy projekt jest specyficzny dla kraju/języka i płci głosu, który chcesz utworzyć. Na przykład możesz utworzyć projekt dla żeńskiego głosu dla rozmowy telefonicznej botów, która używa języka angielskiego w Stany Zjednoczone (EN-US).
 
 Aby utworzyć swój pierwszy projekt, wybierz kartę **Zamiana tekstu na mowę/niestandardową** , a następnie kliknij pozycję **Nowy projekt**. Postępuj zgodnie z instrukcjami wyświetlanymi przez kreatora, aby utworzyć projekt. Po utworzeniu projektu zobaczysz cztery karty: **dane**, **szkolenia**, **testowanie**i **wdrażanie**. Skorzystaj z linków w [sekcji Następne kroki](#next-steps) , aby dowiedzieć się, jak korzystać z każdej karty.
+
+> [!IMPORTANT]
+> [Niestandardowy Portal głosu](https://aka.ms/custom-voice) został niedawno zaktualizowany! Jeśli utworzono poprzednie projekty z danymi, modelami, testami i opublikowanymi punktami końcowymi w portalu CRI lub za pomocą interfejsów API, należy utworzyć nowy projekt w nowym portalu, aby połączyć się z tymi starymi jednostkami.
 
 ## <a name="next-steps"></a>Następne kroki
 

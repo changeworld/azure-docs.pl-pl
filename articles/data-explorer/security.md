@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 5f3bceb8398f9837f6f8eaa390def41456daf08d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 786950011f10e25d6bcb72061212c1878e79d45a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271590"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373357"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>Zabezpieczanie klastrów usługi Azure Eksplorator danych na platformie Azure
 
@@ -26,7 +26,7 @@ Usługa Azure Active Directory (Azure AD) zarządzana tożsamość dla zasobów 
 
 ## <a name="data-encryption"></a>Szyfrowanie danych
 
-### <a name="azure-disk-encryption"></a>Azure Disk Encryption
+### <a name="azure-disk-encryption"></a>Usługa Azure Disk Encryption
 
 [Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) pomaga chronić dane i zabezpieczać je w celu spełnienia wymagań dotyczących zabezpieczeń i zgodności w organizacji. Zapewnia szyfrowanie woluminów systemu operacyjnego i dysków danych maszyn wirtualnych klastra. Azure Disk Encryption integruje się również z [Azure Key Vault](/azure/key-vault/), co pozwala nam kontrolować klucze szyfrowania dysków i wpisy tajne oraz zarządzać nimi, a także upewnić się, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane. 
 
@@ -34,10 +34,10 @@ Usługa Azure Active Directory (Azure AD) zarządzana tożsamość dla zasobów 
 
 Domyślnie dane są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. Aby uzyskać dodatkową kontrolę nad kluczami szyfrowania, można podać klucze zarządzane przez klienta do szyfrowania danych. Możesz zarządzać szyfrowaniem danych na poziomie magazynu przy użyciu własnych kluczy. Klucz zarządzany przez klienta służy do ochrony i kontrolowania dostępu do głównego klucza szyfrowania używanego do szyfrowania i odszyfrowywania wszystkich danych. Klucze zarządzane przez klienta zapewniają większą elastyczność tworzenia, obracania, wyłączania i odwoływania kontroli dostępu. Możesz również przeprowadzać inspekcję kluczy szyfrowania używanych do ochrony danych.
 
-Użyj Azure Key Vault do przechowywania kluczy zarządzanych przez klienta. Możesz utworzyć własne klucze i zapisać je w magazynie kluczy lub użyć interfejsu API Azure Key Vault, aby generować klucze. Klaster Eksplorator danych platformy Azure i Azure Key Vault muszą znajdować się w tym samym regionie, ale mogą znajdować się w różnych subskrypcjach. Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](/azure/key-vault/key-vault-overview). Szczegółowe wyjaśnienie kluczy zarządzanych przez klienta można znaleźć w temacie [klucze zarządzane przez klienta z Azure Key Vault](/azure/storage/common/storage-service-encryption)
+Użyj Azure Key Vault do przechowywania kluczy zarządzanych przez klienta. Możesz utworzyć własne klucze i zapisać je w magazynie kluczy lub użyć interfejsu API Azure Key Vault, aby generować klucze. Klaster Eksplorator danych platformy Azure i Azure Key Vault muszą znajdować się w tym samym regionie, ale mogą znajdować się w różnych subskrypcjach. Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](/azure/key-vault/key-vault-overview). Szczegółowe wyjaśnienie kluczy zarządzanych przez klienta można znaleźć w temacie [klucze zarządzane przez klienta z Azure Key Vault](/azure/storage/common/storage-service-encryption). Konfigurowanie kluczy zarządzanych przez klienta w klastrze usługi Azure Eksplorator danych przy [C#](/azure/data-explorer/customer-managed-keys-csharp) użyciu [szablonu lub Azure Resource Manager](/azure/data-explorer/customer-managed-keys-resource-manager)
 
 > [!Note]
-> Klucze zarządzane przez klienta korzystają z zarządzanych tożsamości dla zasobów platformy Azure, funkcji Azure Active Directory (Azure AD). Aby skonfigurować klucze zarządzane przez klienta w Azure Portal, należy skonfigurować tożsamość zarządzaną **SystemAssigned** w klastrze.
+> Klucze zarządzane przez klienta korzystają z zarządzanych tożsamości dla zasobów platformy Azure, funkcji Azure Active Directory (Azure AD). Aby skonfigurować klucze zarządzane przez klienta w Azure Portal, należy skonfigurować tożsamość zarządzaną **SystemAssigned** w klastrze, zgodnie z opisem w temacie [Konfigurowanie zarządzanych tożsamości dla klastra Eksplorator danych platformy Azure](/azure/data-explorer/managed-identities).
 
 #### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Przechowuj klucze zarządzane przez klienta w Azure Key Vault
 
@@ -60,8 +60,8 @@ Przy użyciu [kontroli dostępu opartej na rolach (RBAC)](/azure/role-based-acce
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Konfigurowanie tożsamości zarządzanych dla klastra usługi Azure Eksplorator danych](managed-identities.md)
 * [Zabezpiecz klaster w usłudze Azure Eksplorator danych — Portal](manage-cluster-security.md) , włączając szyfrowanie w stanie spoczynku.
+* [Konfigurowanie tożsamości zarządzanych dla klastra usługi Azure Eksplorator danych](managed-identities.md)
 * [Konfigurowanie kluczy zarządzanych przez klienta przy użyciu szablonu Azure Resource Manager](customer-managed-keys-resource-manager.md)
 * [Konfigurowanie kluczy zarządzanych przez klienta przy użyciuC#](customer-managed-keys-csharp.md)
 

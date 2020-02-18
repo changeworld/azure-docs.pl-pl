@@ -7,16 +7,16 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3b0bb62de4a96a45d607e05b32a87feec692e4d4
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: e76ae2e072bb780ac9788902e9157db871e4f09d
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725977"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373374"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Konfigurowanie tożsamości zarządzanych dla klastra usługi Azure Eksplorator danych
 
-[Zarządzana tożsamość z Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) umożliwia klastrowi łatwe uzyskiwanie dostępu do innych zasobów chronionych przez usługi AAD, takich jak Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie wymaga aprowizacji ani rotacji żadnych wpisów tajnych. W tym artykule pokazano, jak utworzyć zarządzaną tożsamość dla klastrów Eksplorator danych platformy Azure. 
+[Zarządzana tożsamość z Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) umożliwia klastrowi łatwe uzyskiwanie dostępu do innych zasobów chronionych przez usługi AAD, takich jak Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie wymaga aprowizacji ani rotacji żadnych wpisów tajnych. W tym artykule pokazano, jak utworzyć zarządzaną tożsamość dla klastrów Eksplorator danych platformy Azure. Konfiguracja tożsamości zarządzanej jest obecnie obsługiwana tylko w celu [włączenia kluczy zarządzanych przez klienta w klastrze](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault).
 
 > [!Note]
 > Tożsamość zarządzana dla usługi Azure Eksplorator danych nie będzie działać zgodnie z oczekiwaniami, jeśli Twoja aplikacja jest migrowana między subskrypcjami lub dzierżawcami. Aplikacja będzie musiała uzyskać nową tożsamość, którą można wykonać, wyłączając i ponownie włączając funkcję przy użyciu polecenia [Usuń tożsamość](#remove-an-identity). Zasady dostępu do zasobów podrzędnych również muszą zostać zaktualizowane, aby można było korzystać z nowej tożsamości.
@@ -92,7 +92,7 @@ Dodanie typu przypisanego do systemu informuje platformę Azure, aby utworzył t
 }    
 ```
 
-Przykład:
+Na przykład:
 
 ```json
 {

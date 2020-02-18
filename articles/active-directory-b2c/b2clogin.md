@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5c9054daea76675ed621caf1630c509b16743f4e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: aa1e6d8705cf4aed975ed0940087f243a06a9019
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836346"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372694"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Ustaw adresy URL przekierowania na b2clogin.com dla Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Istnieje kilka modyfikacji, które trzeba wykonać, aby przeprowadzić migrację
 
 * Zmień adres URL przekierowania w aplikacjach dostawcy tożsamości, aby odwoływała się do *b2clogin.com*.
 * Zaktualizuj aplikacje Azure AD B2C, aby używać *b2clogin.com* w ich przepływie użytkownika i odwołaniach do punktów końcowych tokenu.
-* Zaktualizuj wszystkie **dozwolone źródła** zdefiniowane w ustawieniach mechanizmu CORS do [dostosowywania interfejsu użytkownika](custom-policy-ui-customization-dynamic.md).
+* Zaktualizuj wszystkie **dozwolone źródła** zdefiniowane w ustawieniach mechanizmu CORS do [dostosowywania interfejsu użytkownika](custom-policy-ui-customization.md).
 
 ## <a name="change-identity-provider-redirect-urls"></a>Zmienianie adresów URL przekierowań dostawcy tożsamości
 
@@ -58,7 +58,7 @@ Istnieją dwa formaty, których można użyć w odniesieniu do adresów URL prze
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-Druga opcja używa nazwy domeny dzierżawy w postaci `your-tenant-name.onmicrosoft.com`. Przykład:
+Druga opcja używa nazwy domeny dzierżawy w postaci `your-tenant-name.onmicrosoft.com`. Na przykład:
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
@@ -66,15 +66,15 @@ https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth
 
 Dla obu formatów:
 
-* Zastąp `{your-tenant-name}` nazwą dzierżawy usługi Azure AD B2C.
+* Zastąp `{your-tenant-name}` nazwą dzierżawy Azure AD B2C.
 * Usuń `/te`, jeśli istnieje w adresie URL.
 
 ## <a name="update-your-applications-and-apis"></a>Aktualizowanie aplikacji i interfejsów API
 
 Kod w aplikacjach i interfejsach API z obsługą Azure AD B2C mogą odwoływać się do `login.microsoftonline.com` w kilku miejscach. Na przykład kod może zawierać odwołania do przepływów użytkowników i punktów końcowych tokenu. Zaktualizuj następujące informacje `your-tenant-name.b2clogin.com`:
 
-* punkt końcowy autoryzacji
-* punkt końcowy tokenu
+* Punkt końcowy autoryzacji
+* Punkt końcowy tokenu
 * Wystawca tokenu
 
 Na przykład punkt końcowy urzędu certyfikacji dla zasad rejestracji/logowania w firmie Contoso będzie teraz:

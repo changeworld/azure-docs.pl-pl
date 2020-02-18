@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek Azure Active Directory: integracja z logowaniem jednokrotnym (SSO) przy użyciu łącznika danych usługi Azure AD programu Pszczelarzer | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i pszczelarstwem łącznika danych usługi Azure AD.
+title: 'Samouczek Azure Active Directory: integracja logowania jednokrotnego (SSO) z usługą pszczelarzy Azure AD SSO | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i Pszczelarzer Logowanie jednokrotne usługi Azure AD.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 02/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7484d71c6032b97341537a0564d8d52b3996cc8e
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: bbac5f6b26ff5df9114eebdf850faff263f7cd78
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050326"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373170"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beekeeper-azure-ad-data-connector"></a>Samouczek Azure Active Directory: integracja z logowaniem jednokrotnym (SSO) przy użyciu łącznika danych usługi Azure AD programu Pszczelarzer
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beekeeper-azure-ad-sso"></a>Samouczek Azure Active Directory: integracja z logowaniem jednokrotnym (SSO) w usłudze Azure AD — Logowanie jednokrotne
 
-W tym samouczku dowiesz się, jak zintegrować program pszczelarstwa usługi Azure AD Data Connector z usługą Azure Active Directory (Azure AD). Po zintegrowaniu programu pszczelarstwa usługi Azure AD Data Connector z usługą Azure AD można:
+W ramach tego samouczka dowiesz się, jak zintegrować program pszczelarski usługi Azure AD SSO z usługą Azure Active Directory (Azure AD). W przypadku integrowania usługi Azure AD z logowaniem jednokrotnym w usłudze Azure AD można:
 
-* Kontrolka w usłudze Azure AD, która ma dostęp do programu Pszczelarzer Data Connector usługi Azure AD.
-* Zezwól użytkownikom na automatyczne logowanie do programu pszczelarstwa usługi Azure AD Data Connector przy użyciu kont usługi Azure AD.
+* Kontrolka w usłudze Azure AD, która ma dostęp do pszczelarza rejestracji jednokrotnej usługi Azure AD.
+* Zezwól użytkownikom na automatyczne logowanie do pszczelarza usługi Azure AD Logowanie jednokrotne przy użyciu kont usługi Azure AD.
 * Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
 Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -37,46 +37,45 @@ Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zo
 Aby rozpocząć, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Usługa pszczelarzer — subskrypcja z włączonym logowaniem jednokrotnym (SSO) w usłudze Azure AD Connector.
+* Niezależna subskrypcja usługi Azure AD Logowanie jednokrotne (SSO).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Program pszczelarzer Łącznik danych usługi Azure AD obsługuje zainicjowanie rejestracji jednokrotnej **SP i dostawcy tożsamości**
-* Program pszczelarzer Łącznik danych usługi Azure AD obsługuje funkcję aprowizacji użytkowników **just in Time**
-* Po skonfigurowaniu programu Pszczelarzer Azure AD Data Connector można wymusić kontrolki sesji, które chronią eksfiltracji i niefiltrowanie danych poufnych organizacji w czasie rzeczywistym. Kontrolki sesji wykraczają poza dostęp warunkowy. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Program pszczelarzy usługi Azure AD SSO obsługuje logowanie jednokrotne **w usłudze SP i dostawcy tożsamości**
+* Program pszczelarzy usługi Azure AD SSO obsługuje funkcję aprowizacji użytkowników **just in Time**
+* Po skonfigurowaniu programu Pszczelarzer Logowanie jednokrotne w usłudze Azure AD można wymusić kontrolki sesji, które chronią eksfiltracji i niefiltrowanie danych poufnych w organizacji w czasie rzeczywistym. Kontrolka sesji rozszerzy od dostępu warunkowego. [Dowiedz się, jak wymuszać kontrolę sesji za pomocą Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-beekeeper-azure-ad-data-connector-from-the-gallery"></a>Dodawanie programu pszczelarstwa usługi Azure AD Data Connector z galerii
+## <a name="adding-beekeeper-azure-ad-sso-from-the-gallery"></a>Dodawanie pszczelarza usługi Azure AD SSO z galerii
 
-Aby skonfigurować integrację usługi Azure AD Data Connector z usługą Azure AD, należy dodać do programu Pszczelarzer Łącznik danych usługi Azure AD z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację usługi Azure AD SSO z logowaniem jednokrotnym w usłudze Azure AD, musisz dodać program pszczelarski do usługi Azure AD SSO z galerii do listy zarządzanych aplikacji SaaS.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
 1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
 1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
-1. W sekcji **Dodaj z galerii** wpisz Program **Pszczelarzer Azure AD Data Connector** w polu wyszukiwania.
-1. Wybierz pozycję program **pszczelarzer Azure AD Data Connector** z panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
+1. W sekcji **Dodaj z galerii** wpisz **pszczelarzer Logowanie jednokrotne usługi Azure AD** w polu wyszukiwania.
+1. Wybierz pozycję **pszczelarzer Logowanie jednokrotne usługi Azure AD** z poziomu panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
+## <a name="configure-and-test-azure-ad-single-sign-on-for-beekeeper-azure-ad-sso"></a>Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD dla programu pszczelarzy w usłudze Azure AD SSO
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-beekeeper-azure-ad-data-connector"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla pszczelarza Łącznik danych usługi Azure AD
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą programu pszczelarzy usługi Azure AD SSO przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w pszczelarstwie usługi Azure AD SSO.
 
-Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą programu pszczelarstwa Azure AD Data Connector przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w programie pszczelarzy Azure AD Data Connector.
-
-Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą programu pszczelarstwa Azure AD Data Connector, wykonaj następujące bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą programu Pszczelarzer rejestracji jednokrotnej usługi Azure AD, wykonaj następujące bloki konstrukcyjne:
 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
     * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
     * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-1. **[Konfigurowanie programu pszczelarzer Łącznik danych usługi Azure AD — logowanie JEDNOkrotne](#configure-beekeeper-azure-ad-data-connector-sso)** — aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-    * **[Utwórz pszczelarzy dla użytkownika testowego łącznika danych usługi Azure AD](#create-beekeeper-azure-ad-data-connector-test-user)** , aby dysponować odpowiednikiem B. Simon w programie pszczelarzy usługi Azure AD Data Connector, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Skonfiguruj pszczelarzy usługi Azure AD Logowanie jednokrotne](#configure-beekeeper-azure-ad-sso)** — aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+    * **[Utwórz pszczelarzy dla użytkownika testowego logowania jednokrotnego usługi Azure AD](#create-beekeeper-azure-ad-sso-test-user)** , aby uzyskać odpowiednik B. Simon w pszczelarstwie usługi Azure AD SSO, który jest połączony z reprezentacją usługi Azure AD.
 1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie programu pszczelarzer dotyczącej integracji aplikacji **łącznika danych usługi Azure AD** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie programu **pszczelarstwa usługi Azure AD SSO** aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
 1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
@@ -104,13 +103,13 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<your_company>.beekeeper.io/login`
 
     > [!NOTE]
-    > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Aby uzyskać tę wartość, skontaktuj się z biurem [obsługi klienta łącznika danych usługi Azure AD](mailto:support@beekeeper.io) . Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Aby uzyskać tę wartość, skontaktuj się z biurem [obsługi klienta rejestracji jednokrotnej usługi Azure AD](mailto:support@beekeeper.io) . Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Aplikacja łącznika danych usługi Azure AD programu pszczelarzer oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
+1. Program pszczelarzer aplikacji rejestracji jednokrotnej usługi Azure AD oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
     ![image](common/default-attributes.png)
 
-1. Poza powyższymi, Pszczelarzer aplikacja łącznika danych usługi Azure AD oczekuje kilku atrybutów do przekazania z powrotem do odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je sprawdzić zgodnie z wymaganiami.
+1. Oprócz powyższych, program Pszczelarzer aplikacji SSO usługi Azure AD oczekuje kilku atrybutów do przekazania z powrotem do odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je sprawdzić zgodnie z wymaganiami.
 
     | Name (Nazwa) | Atrybut źródłowy|
     | ------------ | --------- |
@@ -124,7 +123,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-1. W sekcji **Konfigurowanie łącznika danych usługi Azure AD programu pszczelarz** skopiuj odpowiednie adresy URL na podstawie wymagań.
+1. W sekcji **Konfigurowanie programu pszczelarskiego usługi Azure AD SSO** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -138,14 +137,14 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
    1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
-   1. Kliknij pozycję **Utwórz**.
+   1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do programu Pszczelarzer Data Connector usługi Azure AD.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure, przyznając dostęp do programu Pszczelarzer Logowanie jednokrotne usługi Azure AD.
 
 1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście Aplikacje wybierz pozycję program **pszczelarzer Azure AD Data Connector**.
+1. Na liście Aplikacje wybierz pozycję **pszczelarzer Logowanie jednokrotne usługi Azure AD**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
@@ -158,19 +157,19 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
 1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-## <a name="configure-beekeeper-azure-ad-data-connector-sso"></a>Konfigurowanie usługi Azure AD Data Connector — Logowanie jednokrotne
+## <a name="configure-beekeeper-azure-ad-sso"></a>Konfigurowanie pszczelarzy usługi Azure AD SSO
 
-Aby skonfigurować Logowanie jednokrotne na stronie programu **pszczelarstwa usługi Azure AD Data Connector** , musisz wysłać pobrany **kod XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [pszczelarzy zespołu pomocy technicznej łącznika danych usługi Azure AD](mailto:support@beekeeper.io). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować Logowanie jednokrotne w programie **pszczelarzer po stronie logowania jednokrotnego usługi Azure AD** , musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [pszczelarzy zespołu pomocy technicznej usługi Azure AD SSO](mailto:support@beekeeper.io). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
-### <a name="create-beekeeper-azure-ad-data-connector-test-user"></a>Tworzenie pszczelarzy użytkownika testowego łącznika danych usługi Azure AD
+### <a name="create-beekeeper-azure-ad-sso-test-user"></a>Tworzenie pszczelarzy użytkownika testowego logowania jednokrotnego usługi Azure AD
 
-W tej sekcji użytkownik o nazwie Britta Simon został utworzony w programie Pszczelarzer Azure AD Data Connector. Program pszczelarzer Łącznik danych usługi Azure AD obsługuje funkcję aprowizacji użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w programie Pszczelarstwo usługi Azure AD Data Connector, zostanie utworzony nowy po uwierzytelnieniu.
+W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w programie Pszczelarzer usługi Azure AD SSO. Program pszczelarzy usługi Azure AD SSO obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w programie pszczelarzy Azure AD SSO, po uwierzytelnieniu zostanie utworzony nowy.
 
 ## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka usługi Azure AD Data Connector w panelu dostępu należy automatycznie zalogować się do programu pszczelarstwa usługi Azure AD Data Connector, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka rejestracji jednokrotnej usługi Azure AD w panelu dostępu należy automatycznie zalogować się do programu Pszczelarzer usługi Azure AD SSO, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
@@ -180,6 +179,6 @@ Po kliknięciu kafelka usługi Azure AD Data Connector w panelu dostępu należy
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Wypróbuj program pszczelarstwa usługi Azure AD Data Connector z usługą Azure AD](https://aad.portal.azure.com/)
+- [Wypróbuj program Pszczelarzer usługi Azure AD SSO z usługą Azure AD](https://aad.portal.azure.com/)
 
 - [Co to jest kontrola sesji w Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

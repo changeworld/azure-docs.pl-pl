@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be1c0e93a51064870635d4f06bd5b365bbfe517a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847290"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370072"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Instrukcje: Włączanie resetowania hasła na ekranie logowania systemu Windows
 
@@ -27,7 +27,9 @@ W przypadku maszyn z systemem Windows 7, 8, 8,1 i 10 można umożliwić użytkow
 ## <a name="general-limitations"></a>Ogólne ograniczenia
 
 - Resetowanie hasła nie jest obecnie obsługiwane z poziomu Pulpit zdalny ani rozszerzonych sesji funkcji Hyper-V.
-- Ta funkcja nie działa w przypadku sieci z wdrożonym uwierzytelnianiem sieci 802.1x oraz opcji „Wykonaj bezpośrednio przed logowaniem użytkownika”. W sieciach z wdrożonym uwierzytelnianiem sieci 802.1x zalecane jest używanie uwierzytelniania maszynowego w celu włączenia tej funkcji.
+- Niektórzy dostawcy poświadczeń innych firm są znani, aby spowodować problemy z tą funkcją.
+- Wyłączenie funkcji Kontrola konta użytkownika przez modyfikację [klucza rejestru EnableLUA](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) jest znane, aby powodować problemy.
+- Ta funkcja nie działa w przypadku sieci z wdrożonym uwierzytelnianiem sieciowym 802.1 x i opcją "wykonaj bezpośrednio przed logowaniem użytkownika". W sieciach z wdrożonym uwierzytelnianiem sieci 802.1x zalecane jest używanie uwierzytelniania maszynowego w celu włączenia tej funkcji.
 - Hybrydowe maszyny przyłączone do usługi Azure AD muszą mieć linię łączności sieciowej z kontrolerem domeny, aby użyć nowego hasła i zaktualizować buforowane poświadczenia.
 - Jeśli używasz obrazu, przed uruchomieniem narzędzia Sysprep upewnij się, że pamięć podręczna sieci Web jest wyczyszczona dla wbudowanego administratora przed wykonaniem kroku CopyProfile. Więcej informacji na temat tego kroku można znaleźć w artykule dotyczącym pomocy technicznej [niska w przypadku używania niestandardowego domyślnego profilu użytkownika](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 - Następujące ustawienia są znane, aby zakłócać możliwość używania i resetowania haseł na urządzeniach z systemem Windows 10
@@ -113,7 +115,7 @@ Po zresetowaniu hasła przez użytkownika na ekranie logowania urządzenia z sys
 > [!WARNING]
 > Protokół TLS 1,2 musi być włączony, a nie tylko na wartość Autonegocjowanie
 
-### <a name="install"></a>Instalacja
+### <a name="install"></a>Instalowanie
 
 1. Pobierz odpowiedni Instalator dla wersji systemu Windows, którą chcesz włączyć.
    - Oprogramowanie jest dostępne w centrum pobierania Microsoft w witrynie [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
@@ -124,7 +126,7 @@ Po zresetowaniu hasła przez użytkownika na ekranie logowania urządzenia z sys
 
 ![Przykładowo w systemie Windows 7 kliknięto "zapomniane hasło?" Przepływ SSPR](media/howto-sspr-windows/windows-7-sspr.png)
 
-#### <a name="silent-installation"></a>Instalacja w trybie dyskretnym
+#### <a name="silent-installation"></a>Instalacja dyskretna
 
 - W przypadku instalacji dyskretnej Użyj polecenia "msiexec/i SsprWindowsLogon. PROD. msi/qn"
 - W przypadku dezinstalacji dyskretnej Użyj polecenia "msiexec/x SsprWindowsLogon. PROD. msi/qn"

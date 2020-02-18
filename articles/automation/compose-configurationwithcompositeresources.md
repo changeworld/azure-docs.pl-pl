@@ -6,25 +6,25 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2c6d9aa13c8c320dc46f6634f3a60e0c1730c710
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e5083ec55ee0a57cd7defd466f5baf1704336320
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418733"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370666"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Tworzenie konfiguracji DSC w Azure Automation konfiguracji stanu (DSC) przy użyciu zasobów złożonych
 
 Gdy zasób musi być zarządzany z więcej niż jedną konfiguracją konfiguracja konfiguracji stanu (DSC), najlepszą ścieżką jest użycie [zasobów złożonych](/powershell/scripting/dsc/resources/authoringresourcecomposite). Zasób złożony jest zagnieżdżoną i sparametryzowana konfiguracją używaną jako zasób DSC w innej konfiguracji. Pozwala to na tworzenie złożonych konfiguracji, jednocześnie umożliwiając zarządzanie i kompilowanie bazowych zasobów złożonych (Konfiguracja sparametryzowane).
 
-Azure Automation umożliwia [Importowanie i kompilowanie zasobów złożonych](automation-dsc-compile.md#compiling-configurations-in-azure-automation-that-contain-composite-resources).
+Azure Automation umożliwia [Importowanie i kompilowanie zasobów złożonych](automation-dsc-compile.md).
 Gdy zasoby złożone zostały zaimportowane na konto usługi Automation, można użyć funkcji tworzenia **konfiguracji** na stronie **Konfiguracja stanu (DSC)** .
 
 ## <a name="composing-a-configuration-from-composite-resources"></a>Redagowanie konfiguracji z zasobów złożonych
 
 Aby można było przypisać konfigurację z zasobów złożonych w Azure Portal, należy ją utworzyć. Można to zrobić, korzystając z **konfiguracji redagowania** na stronie **Konfiguracja stanu (DSC)** , a także na kartach **konfiguracje** lub **skompilowane konfiguracje** .
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Po lewej stronie kliknij pozycję **wszystkie zasoby** , a następnie nazwę konta usługi Automation.
 1. Na stronie **konto usługi Automation** wybierz pozycję **Konfiguracja stanu (DSC)** w obszarze **Zarządzanie konfiguracją**.
 1. Na stronie **Konfiguracja stanu (DSC)** kliknij kartę **konfiguracje** lub **skompilowane konfiguracje** , a następnie kliknij pozycję **Utwórz konfigurację** w menu w górnej części strony.

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/12/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76e2b1c221475a90dc63498d13d4ede7a78e0779
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185585"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372978"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -51,13 +51,31 @@ Element **ClaimType** zawiera następujące elementy:
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Tytuł wyświetlany użytkownikom na różnych ekranach. Wartość może być [zlokalizowana](localization.md). |
-| DataType | 1:1 | Typ oświadczenia. Można użyć typów danych typu Boolean, Date, dateTime, int, Long, String, StringCollection i numer telefonu. Typ danych pierwotnych reprezentuje odpowiednik typu C# danych zmiennej. ciągcollection reprezentuje kolekcję ciągów. Aby uzyskać więcej informacji [ C# , zobacz Typy i zmienne](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables). Data jest zgodna z Konwencją ISO 8601. |
+| DataType | 1:1 | Typ oświadczenia. |
 | DefaultPartnerClaimTypes | 0:1 | Domyślne typy roszczeń partnera, które mają być używane przez określony protokół. Wartość można zastąpić w **PartnerClaimType** określonym w elementach **oświadczenie inputclaim** lub **oświadczenie outputclaim** . Użyj tego elementu, aby określić nazwę domyślną dla protokołu.  |
 | Bitowa | 0:1 | Opcjonalny ciąg znaków maskowania, który można zastosować podczas wyświetlania żądania. Na przykład numer telefonu 324-232-4343 może być maskowany jako XXX-XXX-4343. |
 | UserHelpText | 0:1 | Opis typu zgłoszenia, który może być przydatny dla użytkowników, aby zrozumieć jego przeznaczenie. Wartość może być [zlokalizowana](localization.md). |
 | UserInputType | 0:1 | Typ kontrolki wejściowej, która powinna być dostępna dla użytkownika po ręcznym wprowadzeniu danych roszczeń dla typu zgłoszenia. Zobacz typy danych wejściowych użytkownika zdefiniowane w dalszej części tej strony. |
 | Ograniczenie | 0:1 | Ograniczenia wartości dla tego żądania, takie jak wyrażenie regularne (regularne) lub lista akceptowalnych wartości. Wartość może być [zlokalizowana](localization.md). |
 PredicateValidationReference| 0:1 | Odwołanie do elementu **PredicateValidationsInput** . Elementy **PredicateValidationReference** umożliwiają wykonywanie procesu walidacji w celu zapewnienia, że wprowadzane są tylko prawidłowo uformowane dane. Aby uzyskać więcej informacji, zobacz [predykaty](predicates.md). |
+
+### <a name="datatype"></a>DataType
+
+Element **DataType** obsługuje następujące wartości:
+
+| Typ | Opis |
+| ------- | ----------- | 
+|wartość logiczna|Reprezentuje wartość logiczną (`true` lub `false`).|
+|date| Reprezentuje chwilę w czasie, zazwyczaj wyrażoną jako dzień. Wartość daty jest zgodna z Konwencją ISO 8601.|
+|Data i godzina|Reprezentuje chwilę w czasie, zwykle wyrażoną jako datę i godzinę dnia. Wartość daty jest zgodna z Konwencją ISO 8601.|
+|duration|Reprezentuje przedział czasu w latach, miesiącach, dniach, godzinach, minutach i sekundach. Format jest `PnYnMnDTnHnMnS`, gdzie `P` wskazuje wartość dodatnią lub `N` dla wartości ujemnej. `nY` to liczba lat, po której następuje literał `Y`. `nMo` to liczba miesięcy, po których następuje `Mo`literału. `nD` to liczba dni, po której następuje literał `D`. Przykłady: `P21Y` reprezentuje 21 lat. `P1Y2Mo` reprezentuje rok i dwa miesiące. `P1Y2Mo5D` reprezentuje jeden rok, dwa miesiące i pięć dni.  `P1Y2M5DT8H5M620S` reprezentuje jeden rok, dwa miesiące, pięć dni, osiem godzin, pięć minut i dwadzieścia sekund.  |
+|phoneNumber|Reprezentuje numer telefonu. |
+|int| Reprezentuje liczbę z przedziału od-2 147 483 648 do 2 147 483 647|
+|long| Reprezentuje liczbę z przedziału od-zakresu od do 9 223 372 036 854 775 807 |
+|ciąg| Reprezentuje tekst jako sekwencję jednostek kodu UTF-16.|
+|stringCollection|Reprezentuje kolekcję `string`.|
+|Tożsamość użytkownika| Reprezentuje tożsamość użytkownika.|
+|userIdentityCollection|Reprezentuje kolekcję `userIdentity`.|
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
@@ -155,7 +173,7 @@ Element **ograniczenia** zawiera następujące elementy:
 | Wyliczenie | 1: n | Dostępne opcje w interfejsie użytkownika dla użytkownika, które mają zostać wybrane dla roszczeń, takie jak wartość z listy rozwijanej. |
 | Wzorce | 1:1 | Wyrażenie regularne, które ma być używane. |
 
-### <a name="enumeration"></a>Wyliczenie
+#### <a name="enumeration"></a>Wyliczenie
 
 Element **Enumeration** zawiera następujące atrybuty:
 
@@ -214,11 +232,26 @@ Platforma obsługi tożsamości renderuje to konto e-mail przy użyciu walidacji
 
 ![Pole tekstowe zawierające komunikat o błędzie wyzwalane przez ograniczenie wyrażenia regularnego](./media/claimsschema/pattern.png)
 
-## <a name="userinputtype"></a>UserInputType
+### <a name="userinputtype"></a>UserInputType
 
-Azure AD B2C obsługuje różne typy danych wejściowych użytkownika, takie jak pole tekstowe, hasło i lista rozwijana, które mogą być używane podczas ręcznego wprowadzania danych dotyczących roszczeń dla danego typu. Należy określić **UserInputType** , gdy zbierasz informacje od użytkownika przy użyciu [profilu technicznego z własnym potwierdzeniem](self-asserted-technical-profile.md).
+Azure AD B2C obsługuje różne typy danych wejściowych użytkownika, takie jak pole tekstowe, hasło i lista rozwijana, które mogą być używane podczas ręcznego wprowadzania danych dotyczących roszczeń dla danego typu. Należy określić **UserInputType** , gdy zbierasz informacje od użytkownika przy użyciu [własnego profilu technicznego](self-asserted-technical-profile.md) i [kontrolek wyświetlania](display-controls.md).
 
-### <a name="textbox"></a>TextBox
+Element **UserInputType** dostępne typy danych wejściowych użytkownika:
+
+| UserInputType | Obsługiwane oświadczenia | Opis |
+| --------- | -------- | ----------- |
+|CheckboxMultiSelect| `string` |Pole listy rozwijanej wiele zaznaczeń. Wartość żądania jest reprezentowana jako ciąg ogranicznika przecinki dla wybranych wartości. |
+|DateTimeDropdown | `date`, `dateTime` |Lista rozwijana, aby wybrać dzień, miesiąc i rok. |
+|DropdownSingleSelect |`string` |Pole listy rozwijanej pojedynczy wybór. Wartość żądania jest wybraną wartością.|
+|EmailBox | `string` |Pole wejściowe wiadomości e-mail. |
+|Akapitu | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`|Pole, w którym jest wyświetlany tekst tylko w znaczniku akapitu. |
+|Hasło | `string` |Pole tekstowe hasła.|
+|RadioSingleSelect |`string` | Kolekcja przycisków radiowych. Wartość żądania jest wybraną wartością.|
+|Trybie | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Pole tekstowe tylko do odczytu. |
+|TextBox |`boolean`, `int`, `string` |Jednowierszowe pole tekstowe. |
+
+
+#### <a name="textbox"></a>TextBox
 
 Typ danych **wejściowych użytkownika jest** używany do udostępniania jednowierszowego pola tekstowego.
 
@@ -233,7 +266,7 @@ Typ danych **wejściowych użytkownika jest** używany do udostępniania jednowi
 </ClaimType>
 ```
 
-### <a name="emailbox"></a>EmailBox
+#### <a name="emailbox"></a>EmailBox
 
 Typ danych wejściowych użytkownika **EmailBox** służy do dostarczania podstawowego pola wejściowego wiadomości e-mail.
 
@@ -251,7 +284,7 @@ Typ danych wejściowych użytkownika **EmailBox** służy do dostarczania podsta
 </ClaimType>
 ```
 
-### <a name="password"></a>Hasło
+#### <a name="password"></a>Hasło
 
 Typ danych wejściowych użytkownika **hasła** służy do rejestrowania hasła wprowadzonego przez użytkownika.
 
@@ -266,7 +299,7 @@ Typ danych wejściowych użytkownika **hasła** służy do rejestrowania hasła 
 </ClaimType>
 ```
 
-### <a name="datetimedropdown"></a>DateTimeDropdown
+#### <a name="datetimedropdown"></a>DateTimeDropdown
 
 Typ danych wejściowych użytkownika **DateTimeDropdown** służy do udostępniania zestawu list rozwijanych w celu wybrania dnia, miesiąca i roku. Można użyć predykatów i elementów PredicateValidations, aby kontrolować wartości minimalne i maksymalne daty. Aby uzyskać więcej informacji, zobacz sekcję **Konfigurowanie zakresu dat** [predykatów i PredicateValidations](predicates.md).
 
@@ -281,7 +314,7 @@ Typ danych wejściowych użytkownika **DateTimeDropdown** służy do udostępnia
 </ClaimType>
 ```
 
-### <a name="radiosingleselect"></a>RadioSingleSelect
+#### <a name="radiosingleselect"></a>RadioSingleSelect
 
 Typ danych wejściowych użytkownika **RadioSingleSelect** służy do udostępniania kolekcji przycisków radiowych, które umożliwiają użytkownikowi wybranie jednej opcji.
 
@@ -300,7 +333,7 @@ Typ danych wejściowych użytkownika **RadioSingleSelect** służy do udostępni
 </ClaimType>
 ```
 
-### <a name="dropdownsingleselect"></a>DropdownSingleSelect
+#### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
 Typ danych wejściowych użytkownika **DropdownSingleSelect** służy do udostępniania pola rozwijanego, które pozwala użytkownikowi wybrać jedną opcję.
 
@@ -319,7 +352,7 @@ Typ danych wejściowych użytkownika **DropdownSingleSelect** służy do udostę
 </ClaimType>
 ```
 
-### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
+#### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
 Typ danych wejściowych użytkownika **CheckboxMultiSelect** służy do udostępniania kolekcji pól wyboru, które umożliwiają użytkownikowi wybranie wielu opcji.
 
@@ -338,7 +371,7 @@ Typ danych wejściowych użytkownika **CheckboxMultiSelect** służy do udostęp
 </ClaimType>
 ```
 
-### <a name="readonly"></a>Trybie
+#### <a name="readonly"></a>Trybie
 
 Typ danych wejściowych użytkownika **tylko do odczytu** służy do udostępniania pola tylko do odczytu w celu wyświetlenia żądania i wartości.
 
@@ -354,9 +387,9 @@ Typ danych wejściowych użytkownika **tylko do odczytu** służy do udostępnia
 ```
 
 
-### <a name="paragraph"></a>Akapitu
+#### <a name="paragraph"></a>Akapitu
 
-Typ danych wejściowych użytkownika **akapitu** służy do podania pola, które wyświetla tekst tylko w znaczniku akapitu. Na przykład &lt;p&gt;tekst&lt;/p&gt;.
+Typ danych wejściowych użytkownika **akapitu** służy do podania pola, które wyświetla tekst tylko w znaczniku akapitu.  Na przykład &lt;p&gt;tekst&lt;/p&gt;. Typ danych wejściowych użytkownika **akapitu** `OutputClaim` z własnego profilu technicznego, należy ustawić atrybut `Required` `false` (wartość domyślna).
 
 ![Korzystanie z typu "Claim" z akapitem](./media/claimsschema/paragraph.png)
 
