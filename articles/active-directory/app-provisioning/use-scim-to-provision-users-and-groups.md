@@ -88,7 +88,7 @@ Należy pamiętać, że nie musisz obsługiwać użytkowników i grup ani wszyst
 | displayName |displayName |
 | mail (poczta) |wiadomości e-mail [typ eq "Praca"] .value |
 | mailNickname |displayName |
-| członkowie |członkowie |
+| elementy członkowskie |elementy członkowskie |
 | Identyfikator obiektu |externalId |
 | proxyAddresses |wiadomości e-mail [Wpisz eq "other"]. Wartość |
 

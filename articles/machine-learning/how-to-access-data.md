@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6867862c130bf6f0b7cc34098064f6ce6eec282b
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6d68599af644e5bb03fc850a880b07c6a4d262a9
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543499"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370468"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Dostęp do danych w usługach Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Magazyny danych można tworzyć na podstawie [tych rozwiązań usługi Azure Sto
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Będą potrzebne:
-- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Konto usługi Azure Storage z [kontenerem obiektów blob platformy Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) lub [udziałem plików platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
@@ -53,9 +53,9 @@ Magazyny danych obsługują obecnie przechowywanie informacji o połączeniu z u
 ---|---|---|---|---|---
 [Usługa Azure&nbsp;BLOB&nbsp;Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Klucz konta <br> Token SAS | ✓ | ✓ | ✓ |✓
 [Udział&nbsp;plików&nbsp;platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Klucz konta <br> Token SAS | ✓ | ✓ | ✓ |✓
-[Magazyn Azure&nbsp;Data Lake&nbsp;gen&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| Jednostka usługi| ✓ | ✓ | ✓ |✓
-[Magazyn Azure&nbsp;Data Lake&nbsp;gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Jednostka usługi| ✓ | ✓ | ✓ |✓
-Baza danych SQL&nbsp;usługi Azure&nbsp;| Uwierzytelnianie SQL <br>Jednostka usługi| ✓ | ✓ | ✓ |✓
+[Magazyn Azure&nbsp;Data Lake&nbsp;gen&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| Nazwa główna usługi| ✓ | ✓ | ✓ |✓
+[Magazyn Azure&nbsp;Data Lake&nbsp;gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Nazwa główna usługi| ✓ | ✓ | ✓ |✓
+Baza danych SQL&nbsp;usługi Azure&nbsp;| Uwierzytelnianie SQL <br>Nazwa główna usługi| ✓ | ✓ | ✓ |✓
 Usługa Azure&nbsp;PostgreSQL | Uwierzytelnianie SQL| ✓ | ✓ | ✓ |✓
 Usługa Azure&nbsp;Database&nbsp;dla programu&nbsp;MySQL | Uwierzytelnianie SQL|  | ✓ | ✓ |✓
 &nbsp;&nbsp;system plików| Brak uwierzytelniania | | ✓* | ✓ * |✓* 
@@ -134,7 +134,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage generacja 2
 
-W przypadku magazynu danych Azure Data Lake Storage Generation 2 (ADLS Gen 2) należy użyć [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) do zarejestrowania magazynu danych poświadczeń połączonego z magazynem usługi Azure datalake Generation 2 z uprawnieniami nazw głównych. Dowiedz się więcej [na temat kontroli dostępu skonfigurowanej do ADLS generacji 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+W przypadku magazynu danych Azure Data Lake Storage Generation 2 (ADLS Gen 2) należy użyć [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) do zarejestrowania magazynu danych poświadczeń połączonego z magazynem usługi Azure datalake Generation 2 z [uprawnieniami nazw głównych](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Dowiedz się więcej [na temat kontroli dostępu skonfigurowanej do ADLS generacji 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
 Poniższy kod tworzy i rejestruje magazyn danych `adlsgen2_datastore_name` w obszarze roboczym `ws`. Ten magazyn danych uzyskuje dostęp do systemu plików `test` na koncie magazynu `account_name` przy użyciu podanych poświadczeń jednostki usługi.
 
@@ -211,7 +211,7 @@ ws.set_default_datastore('your datastore name')
 
 Metody [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-) i [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) opisane w poniższych przykładach są specyficzne dla i działają identycznie dla klas [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) i [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) .
 
-### <a name="upload"></a>Przekazywanie
+### <a name="upload"></a>Upload
 
 Przekaż katalog lub pojedyncze pliki do magazynu danych przy użyciu zestawu SDK języka Python:
 
@@ -226,7 +226,7 @@ datastore.upload(src_dir='your source directory',
 
 Możesz również przekazać listę pojedynczych plików do magazynu danych za pomocą metody `upload_files()`.
 
-### <a name="download"></a>Pobierz
+### <a name="download"></a>Pobieranie
 
 Pobierz dane z magazynu danych do lokalnego systemu plików:
 
@@ -236,7 +236,7 @@ datastore.download(target_path='your target path',
                    show_progress=True)
 ```
 
-Parametr `target_path` jest lokalizacją katalogu lokalnego, do którego mają zostać pobrane dane. Aby określić ścieżkę do folderu w udziale plików (lub kontenera obiektów blob) do pobrania, należy podać tę ścieżkę, aby `prefix`. Jeśli `prefix` jest `None`, zostanie pobrana cała zawartość udziału plików (lub kontenera obiektów BLOB).
+Parametr `target_path` jest lokalizacją katalogu lokalnego, do którego mają zostać pobrane dane. Aby określić ścieżkę do folderu w udziale plików (lub kontenerze obiektów BLOB) do pobrania, podaj tę ścieżkę do `prefix`. Jeśli `prefix` jest `None`, zostanie pobrana cała zawartość udziału plików (lub kontenera obiektów BLOB).
 
 <a name="train"></a>
 

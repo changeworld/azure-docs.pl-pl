@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: b0b5147faf82fedb6dc3c2eea54dcff1b9343f7a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 119690b9046821ab538d879e1209c6ef77277370
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087481"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370687"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie PureCloud przez Genesys w celu automatycznego aprowizacji użytkowników
 
@@ -90,7 +90,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Karta aprowizacji](common/provisioning-automatic.png)
 
-5. W sekcji **poświadczenia administratora** wprowadź odpowiednio adres URL interfejsu API usługi PureCloud według Genesys i token OAuth w polach **adres URL dzierżawy** i **token klucza tajnego** . Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z PureCloud przez Genesys. Jeśli połączenie nie powiedzie się, upewnij się, że konto PureCloud przez Genesys ma uprawnienia administratora i spróbuj ponownie.
+5. W sekcji **poświadczenia administratora** wprowadź odpowiednio adres URL interfejsu API usługi PureCloud według Genesys i token OAuth w polach **adres URL dzierżawy** i **token klucza tajnego** . Adres URL interfejsu API będzie miał strukturę `{{API Url}}/api/v2/scim/v2`przy użyciu adresu URL interfejsu API dla regionu PureCloud z [Centrum deweloperów PureCloud](https://developer.mypurecloud.com/api/rest/index.html). Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może nawiązać połączenie z PureCloud przez Genesys. Jeśli połączenie nie powiedzie się, upewnij się, że konto PureCloud przez Genesys ma uprawnienia administratora i spróbuj ponownie.
 
     ![aprowizacji](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 
@@ -124,7 +124,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
       |---|---|
       |displayName|Ciąg|
       |externalId|Ciąg|
-      |członkowie|Dokumentacja|
+      |elementy członkowskie|Dokumentacja|
 
 12. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
