@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: dcb4c30fe485559834791fa567856bc78cff067e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 28229ad71327daefb8e42881cf001b6a3ddd3a53
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770333"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086843"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Łączenie konta Amazon Web Services
 
@@ -41,7 +41,7 @@ Pierwszym krokiem jest uzyskanie unikatowego hasła połączenia z portalu Cloud
 
 ### <a name="add-aws-read-only-role-based-access"></a>Dodawanie dostępu tylko do odczytu opartego na rolach na platformie AWS
 
-1. Zaloguj się do konsoli platformy AWS na stronie https://console.aws.amazon.com/iam/home, a następnie wybierz pozycje **Roles (Role)** .
+1. Zaloguj się do konsoli platformy AWS na stronie [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home), a następnie wybierz pozycję **Roles (Role)** .
 2. Kliknij pozycję **Create Role (Utwórz rolę)** , a następnie wybierz pozycję **Another AWS account (Inne konto platformy AWS)** .
 3. W polu **Account ID (Identyfikator konta)** wklej ciąg `432263259397`. Ten identyfikator konta określa konto modułu zbierającego dane usługi Cloudyn przypisane przez platformę AWS do tej usługi. Użyj wyświetlonego identyfikatora konta.
 4. Obok pozycji **Options (Opcje)** wybierz pozycję **Require external ID (Wymagaj identyfikatora zewnętrznego)** . Wklej unikatową wartość, która została wcześniej skopiowana z pola **Identyfikator zewnętrzny** w usłudze Cloudyn. Następnie kliknij pozycję **Dalej: Permissions** (Dalej: uprawnienia).  
@@ -76,7 +76,7 @@ W poniższych sekcjach omówiono tworzenie roli tylko do odczytu w celu zapewnie
 
 ### <a name="add-aws-read-only-user-based-access"></a>Dodawanie dostępu tylko do odczytu opartego na użytkownikach na platformie AWS
 
-1. Zaloguj się do konsoli platformy AWS na stronie https://console.aws.amazon.com/iam/home, a następnie wybierz pozycje **Users (Użytkownicy)** .
+1. Zaloguj się do konsoli platformy AWS na stronie [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home), a następnie wybierz pozycję **Users (Użytkownicy)** .
 2. Kliknij pozycję **Add User** (Dodaj użytkownika).
 3. W polu **User name (Nazwa użytkownika)** wpisz nazwę użytkownika.
 4. W polu **Access type (Typ dostępu)** wybierz pozycję **Programmatic access (Dostęp programowy)** , następnie kliknij pozycję **Next: Permissions** (Dalej: uprawnienia).  
@@ -107,7 +107,7 @@ Usługa Cloudyn rozpoczyna zbieranie danych i wypełnianie raportów. Następnie
 
 Wykonaj następujące kroki, aby uzyskać nazwę ARN roli platformy AWS. Nazwa ARN roli jest używana do udzielania uprawnień do odczytu w zasobniku rozliczeń.
 
-1. Zaloguj się do konsoli platformy AWS na stronie https://console.aws.amazon.com, a następnie wybierz pozycje **Services (Usługi)** .
+1. Zaloguj się do konsoli platformy AWS na stronie [https://console.aws.amazon.com](https://console.aws.amazon.com), a następnie wybierz pozycję **Services (Usługi)** .
 2. W polu wyszukiwania usług wpisz *IAM*, a następnie wybierz tę opcję.
 3. Wybierz pozycję **Roles (Role)** z menu po lewej stronie.
 4. Na liście ról wybierz rolę utworzoną na potrzeby dostępu do usługi Cloudyn.
@@ -117,7 +117,7 @@ Wykonaj następujące kroki, aby uzyskać nazwę ARN roli platformy AWS. Nazwa A
 
 Zasobnik usługi S3 jest tworzony w celu przechowywania szczegółowych informacji o rozliczeniach.
 
-1. Zaloguj się do konsoli platformy AWS na stronie https://console.aws.amazon.com, a następnie wybierz pozycje **Services (Usługi)** .
+1. Zaloguj się do konsoli platformy AWS na stronie [https://console.aws.amazon.com](https://console.aws.amazon.com), a następnie wybierz pozycję **Services (Usługi)** .
 2. W polu Service Search (Wyszukiwanie usługi) wpisz ciąg *S3*, a następnie wybierz pozycję **S3**.
 3. Na stronie Amazon S3 kliknij pozycję **Create bucket (Utwórz zasobnik)** .
 4. W kreatorze tworzenia zasobnika wybierz nazwę i region zasobnika, a następnie kliknij pozycję **Next (Dalej)** .  

@@ -1,116 +1,113 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Hub
 title: Dokumentacja usługi Virtual Machines
+summary: Dowiedz się, jak tworzyć i wdrażać maszyny wirtualne z systemem Windows lub Linux na platformie Azure oraz zarządzać nimi.
+brand: azure
 metadata:
-  title: Dokumentacja maszyny wirtualnej na platformie Azure — samouczki i dokumentacja interfejsu API
-  meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
+  title: Azure Virtual Machines
+  description: Dowiedz się, jak tworzyć i wdrażać maszyny wirtualne z systemem Windows lub Linux na platformie Azure oraz zarządzać nimi.
   services: virtual-machines
-  author: georgewallace
-  manager: gwallace
   ms.service: virtual-machines
-  ms.tgt_pltfrm: na
-  ms.topic: landing-page
-  ms.date: 01/23/2017
-  ms.author: gwallace
-  description: 'Dowiedz się, jak tworzyć i wdrażać maszyny wirtualne z systemem Windows i Linux na platformie Azure.'
-sections:
-  - title: null
+  ms.topic: hub-page
+  author: cynthn
+  ms.author: cynthn
+  ms.date: 02/14/2020
+  ms.openlocfilehash: c226f41723fa3247a62af5dfa6318aa2cdd416ce
+  ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 02/16/2020
+  ms.locfileid: "77370630"
+highlightedContent:
+  items:
+  - title: Tworzenie maszyny wirtualnej z systemem Linux za pomocą interfejsu wiersza polecenia platformy Azure
+    itemType: quickstart
+    url: https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli
+  - title: Tworzenie maszyny wirtualnej z systemem Windows za pomocą programu PowerShell
+    itemType: quickstart
+    url: https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell
+  - title: Tworzenie zestawu skalowania maszyn wirtualnych w portalu
+    itemType: quickstart
+    url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-portal
+  - title: Maszyny wirtualne typu spot — używaj naszej niewykorzystanej pojemności po znacznie obniżonych kosztach.
+    itemType: concept
+    url: https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms
+  - title: Dedykowane hosty — serwery fizyczne do hostowania jednej lub wielu maszyn wirtualnych.
+    itemType: concept
+    url: https://docs.microsoft.com/azure/virtual-machines/linux/dedicated-hosts
+  - title: Grupy umieszczania w pobliżu — umieść maszyny wirtualne możliwie jak najbliżej siebie, aby zmniejszyć opóźnienie.
+    itemType: how-to-guide
+    url: https://docs.microsoft.com/azure/virtual-machines/linux/proximity-placement-groups
+conceptualContent:
+  items:
+  - title: Maszyny wirtualne z systemem Linux
+    links:
+    - url: https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros
+      itemType: concept
+      text: Dystrybucje zatwierdzone
+    - url: https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks
+      itemType: tutorial
+      text: Tworzenie dysków i zarządzanie nimi
+    - url: https://docs.microsoft.com/azure/virtual-machines/linux/image-builder
+      itemType: how-to-guide
+      text: Konstruktor obrazów platformy Azure
+    footerLink:
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/
+      text: Zobacz więcej
+  - title: Maszyny wirtualne z systemem Windows
+    links:
+    - url: https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell
+      itemType: how-to-guide
+      text: Tworzenie maszyny wirtualnej przy użyciu programu PowerShell
+    - url: https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-data-disk
+      itemType: tutorial
+      text: Tworzenie dysków i zarządzanie nimi
+    - url: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+      itemType: how-to-guide
+      text: Konfigurowanie tożsamości zarządzanych
+    footerLink:
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/
+      text: Zobacz więcej
+  - title: Zestawy skalowania maszyn wirtualnych
+    links:
+    - url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-powershell
+      itemType: how-to-guide
+      text: Tworzenie zestawu skalowania przy użyciu programu PowerShell
+    - url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/orchestration-modes
+      itemType: concept
+      text: Tryby aranżacji
+    - url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot
+      itemType: how-to-guide
+      text: Używanie wystąpień typu spot
+    footerLink:
+      url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/
+      text: Zobacz więcej
+tools:
+  title: narzędzia
+  summary: Narzędzia do pracy z maszynami wirtualnymi platformy Azure.
+  items:
+  - title: Interfejs wiersza polecenia platformy Azure
+    imageSrc: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
+    url: https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest
+  - title: Azure PowerShell
+    imageSrc: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg
+    url: https://docs.microsoft.com/powershell/module/az.compute#virtual_machines
+  - title: Interfejs API REST
+    imageSrc: https://docs.microsoft.com/azure/media/index/azure_dev-6.svg
+    url: https://docs.microsoft.com/rest/api/compute/virtualmachines
+additionalContent:
+  sections:
+  - title: Inne zasoby
+    summary: Dodatkowe zasoby do pracy z maszynami wirtualnymi platformy Azure.
     items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Rozpoczynanie pracy z usługą Virtual Machines w systemie Windows
-            href: /azure/virtual-machines/windows
-            image:
-              src: media/index/virtual-machines.svg
-              href: /azure/virtual-machines/windows
-          - title: Rozpoczynanie pracy z usługą Virtual Machines w systemie Linux
-            href: /azure/virtual-machines/linux
-            image:
-              src: media/index/get-started.svg
-              href: /azure/virtual-machines/linux
-  - title: 5-minutowe przewodniki Szybki start dla systemu Linux
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak wdrożyć serwer sieci Web usług NGINX na maszynie wirtualnej z systemem Ubuntu:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg'
-            text: Interfejs wiersza polecenia platformy Azure
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg'
-            text: Azure Portal
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
-  - title: 5-minutowe przewodniki Szybki start dla systemu Windows
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak wdrożyć serwer internetowy usług IIS na maszynie wirtualnej z systemem Windows Server 2016:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/windows/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=/azure/virtual-machines/windows/toc.json'
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/windows/media/index/portal.svg'
-            text: Azure Portal
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=/azure/virtual-machines/windows/toc.json'
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/windows/media/index/cli.svg'
-            text: Interfejs wiersza polecenia platformy Azure
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=/azure/virtual-machines/windows/toc.json'
-  - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Wprowadzenie do usługi Azure Compute
-            href: /learn/modules/intro-to-azure-compute/
-            image:
-              src: /learn/achievements/intro-to-azure-compute.svg
-              href: /learn/modules/intro-to-azure-compute/
-          - title: Wprowadzenie do usługi Azure Virtual Machines
-            href: /learn/modules/intro-to-azure-virtual-machines/
-            image:
-              src: /learn/achievements/intro-to-azure-virtual-machines.svg
-              href: /learn/modules/intro-to-azure-virtual-machines/
-          - title: Dodawanie i ustalanie rozmiarów dysków w usłudze Azure Virtual Machines
-            href: /learn/modules/add-and-size-disks-in-azure-virtual-machines/
-            image:
-              src: /learn/achievements/add-and-size-disks-in-azure-virtual-machines.svg
-              href: /learn/modules/add-and-size-disks-in-azure-virtual-machines/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-virtual-machines">Więcej interakcyjnych zasobów szkoleniowych...</a>
-  - title: Bezpłatne szkolenie wideo firmy PluralSight
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Administrator platformy Azure
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Wiersz polecenia
-            html: <p><a href="/cli/azure/vm">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
-          - title: Języki
-            html: '<p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/compute">Dokumentacja interfejsu API REST</a></p>
+    - title: Informacje
+      links:
+      - text: Przeglądaj moduły szkoleniowe
+        url: https://docs.microsoft.com/learn/browse/?products=azure-virtual-machines
+    - title: Galeria szablonów
+      links:
+      - text: Przeglądaj galerię szablonów szybkiego startu
+        url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular
+    - title: Rozwiązywanie problemów
+      links:
+      - text: Informacje dotyczące rozwiązywania problemów spowodowanych przez błędy
+        url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/

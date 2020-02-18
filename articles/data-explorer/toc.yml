@@ -32,6 +32,10 @@
         - name: Omówienie pozyskiwania danych
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+    - name: Język zapytań Kusto
+      items:
+        - name: Skrócony przewodnik informacyjny
+          href: kql-quick-reference.md
     - name: Omówienie wizualizacji danych
       href: viz-overview.md
     - name: Omówienie zabezpieczeń

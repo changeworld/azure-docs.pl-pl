@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/29/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 156684676758d777231d3b159ba7bc4749b8582a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a514dc07da3e4fd5928614099eb86ecef311bbb1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901765"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188532"
 ---
 # <a name="understand-cost-management-data"></a>Omówienie danych usługi Cost Management
 
@@ -85,8 +85,6 @@ Jeśli nie widzisz danych dla subskrypcji i chcesz określić, czy Twoja subskry
 
 W poniższych tabelach przedstawiono dane, które są lub nie są uwzględniane w usłudze Cost Management. Do momentu wygenerowania faktury wszystkie koszty są szacunkowe. Pokazane koszty nie obejmują środków bezpłatnych i przedpłaconych.
 
-**Dane kosztów i użycia**
-
 | **Uwzględniane** | **Nie uwzględniane** |
 | --- | --- |
 | Użycie usługi platformy Azure<sup>5</sup>        | Opłaty za pomoc techniczną — aby uzyskać więcej informacji, zobacz [Objaśnienie faktury](../understand/understand-invoice.md). |
@@ -101,13 +99,42 @@ _<sup>**6**</sup> Zakupy na platformie handlowej nie są w tej chwili dostępne 
 
 _<sup>**7**</sup> Zakupy rezerwacji są w tej chwili dostępne tylko dla kont z umową Enterprise Agreement (EA)._
 
-**Metadane**
+## <a name="how-tags-are-used-in-cost-and-usage-data"></a>Używanie tagów w danych dotyczących kosztów i użycia
 
-| **Uwzględniane** | **Nie uwzględniane** |
-| --- | --- |
-| Tagi zasobów<sup>8</sup> | Tagi grup zasobów |
+Usługa Azure Cost Management odbiera tagi w ramach każdego rekordu użycia przesłanego przez poszczególne usługi. Do tych tagów mają zastosowanie następujące ograniczenia:
 
-_<sup>**8**</sup> Tagi zasobów są stosowane, gdy użycie jest emitowane z każdej usługi, i nie są dostępne wstecz dla historycznego użycia._
+- Tagi muszą być stosowane bezpośrednio do zasobów i nie są niejawnie dziedziczone z nadrzędnej grupy zasobów.
+- Tagi są obsługiwane tylko w przypadku zasobów wdrożonych w grupach zasobów.
+- Niektóre wdrożone zasoby mogą nie obsługiwać tagów lub mogą nie mieć tagów w danych użycia — zobacz [Obsługa tagów dla zasobów platformy Azure](../../azure-resource-manager/tag-support.md).
+- Tagi zasobów są uwzględniane w danych użycia tylko wtedy, gdy tag jest zastosowany — tagi nie są stosowane do danych historycznych.
+- Tagi zasobów stają się dostępne w usłudze Cost Management wyłącznie po odświeżeniu danych — zobacz [Częstotliwość aktualizacji danych użycia jest różna](#usage-data-update-frequency-varies).
+- Tagi zasobów są dostępne w usłudze Cost Management tylko wtedy, gdy zasób jest aktywny/uruchomiony i tworzy rekordy użycia (np. nie wtedy, gdy cofnięto przydział maszyny wirtualnej).
+- Zarządzanie tagami wymaga dostępu do każdego zasobu na poziomie współautora.
+- Zarządzanie zasadami tagów wymaga dostępu na poziomie właściciela lub współautora zasad do grupy zarządzania, subskrypcji lub grupy zasobów.
+    
+Jeśli nie widzisz konkretnego tagu w usłudze Cost Management, weź pod uwagę następujące kwestie:
+
+- Czy tag został zastosowany bezpośrednio do zasobu?
+- Czy tag został zastosowany ponad 24 godziny temu? Zobacz [Częstotliwość aktualizacji danych użycia jest różna](#usage-data-update-frequency-varies)
+- Czy typ zasobu obsługuje tagi? Następujące typy zasobów nie obsługują tagów w danych użycia od 1 grudnia 2019 r. Zobacz [Obsługa tagów dla zasobów platformy Azure](../../azure-resource-manager/tag-support.md), aby uzyskać pełną listę obsługiwanych tagów.
+    - Katalogi usługi Azure Active Directory B2C
+    - Zapory usługi Azure Firewall
+    - Azure NetApp Files
+    - Fabryka danych
+    - Databricks
+    - Moduły równoważenia obciążenia
+    - Network Watcher
+    - Notification Hubs
+    - Service Bus
+    - Time Series Insights
+    - Brama sieci VPN
+    
+Oto kilka porad dotyczących pracy z tagami:
+
+- Z wyprzedzeniem zaplanuj i zdefiniuj strategię tagowania, która pozwala na podział kosztów według organizacji, aplikacji, środowiska itp.
+- Za pomocą usługi Azure Policy skopiuj tagi grupy zasobów do poszczególnych zasobów i wymuś strategię tagowania.
+- Użyj interfejsu API tagów w połączeniu z elementem Query lub UsageDetails, aby uzyskać wszystkie koszty na podstawie bieżących tagów.
+
 
 **Uaktualnienie bezpłatnej wersji próbnej do oferty z płatnością zgodnie z rzeczywistym użyciem**
 

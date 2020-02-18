@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 37253bb4c6001afe436e22597e75e2bc869fbbc8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 04b3802ae17440fe7cb96b424727600ab53aefce
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75990296"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168767"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Samouczek: Optymalizowanie kosztów na podstawie zaleceń
 
@@ -79,7 +79,7 @@ W szczegółach maszyny wirtualnej sprawdź jej wykorzystanie, aby potwierdzić,
 
 Zanotuj obecny rozmiar maszyny wirtualnej. Po upewnieniu się, że rozmiar maszyny wirtualnej powinien zostać zmieniony, zamknij szczegóły maszyny wirtualnej, aby wyświetlić listę maszyn wirtualnych.
 
-Na liście kandydatów do zamknięcia lub zmiany rozmiaru wybierz pozycję **Zmień rozmiar *&lt;ŹródłowaJednostkaSKUMaszynyWirtualnej&gt;* na *&lt;DocelowaJednostkaSKUMaszynyWirtualnej&gt;***.
+Na liście kandydatów do zamknięcia lub zmiany rozmiaru wybierz pozycję **Zmień rozmiar _&lt;ŹródłowaJednostkaSKUMaszynyWirtualnej&gt;_ na _&lt;DocelowaJednostkaSKUMaszynyWirtualnej&gt;_** .
 ![Przykładowe zalecenie z opcją zmiany rozmiaru maszyny wirtualnej](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 Następnie zostanie wyświetlona lista dostępnych opcji zmiany rozmiaru. Wybierz tę, która zapewni najlepszą wydajność i będzie najbardziej ekonomiczna w danym scenariuszu. Opcja w poniższym przykładzie spowoduje zmianę rozmiaru z **Standard_D8s_v3** na **Standard_D2s_v3**.

@@ -1,25 +1,28 @@
 ---
 title: Wprowadzenie do usługi Azure Cost Management dla partnerów
 description: W tym artykule wyjaśniono, w jaki sposób partnerzy używają funkcji usługi Azure Cost Management i jak umożliwiają dostęp do usługi Cost Management swoim klientom.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: fc0401ac200ac55de5d812ddc5162d970b8e6d2a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76842422"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117586"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Wprowadzenie do usługi Azure Cost Management dla partnerów
 
-Usługa Azure Cost Management jest natywnie dostępna dla partnerów, którzy dołączyli swoich klientów do Umowy z Klientem Microsoft i [zakupili plan platformy Azure](/partner-center/purchase-azure-plan). W tym artykule wyjaśniono, w jaki sposób partnerzy używają funkcji usługi [Azure Cost Management](../index.yml) do wyświetlania kosztów subskrypcji w planie platformy Azure. Opisano w nim również, jak partnerzy zapewniają swoim klientom dostęp do usługi Cost Management. Klienci mogą korzystać z funkcji usługi Cost Management, jeśli są one włączone przez ich partnera będącego dostawcą usług w chmurze.
+Usługa Azure Cost Management jest natywnie dostępna dla bezpośrednich partnerów, którzy dołączyli swoich klientów do umowy klienta firmy Microsoft i [zakupili plan platformy Azure](/partner-center/purchase-azure-plan). W tym artykule wyjaśniono, w jaki sposób partnerzy używają funkcji usługi [Azure Cost Management](../index.yml) do wyświetlania kosztów subskrypcji w planie platformy Azure. Opisano w nim również, jak partnerzy zapewniają swoim klientom dostęp do usługi Cost Management.
+
+W przypadku bezpośrednich partnerów i dostawców pośrednich administrator globalny oraz agenci administratora dostawcy pośredniego mogą uzyskiwać dostęp do usługi Cost Management w dzierżawie partnera. Odsprzedawcy i klienci mogą uzyskiwać dostęp do usługi Cost Management w dzierżawie klienta i wyświetlić koszty dla subskrypcji, które są obliczane i przedstawiane przy użyciu stawek detalicznych. Jednak muszą oni mieć dostęp RBAC do subskrypcji w dzierżawie klienta w celu wyświetlania kosztów. Zasady widoczności kosztów muszą zostać włączone przez dostawcę dla dzierżawy klienta.
+
+Klienci mogą korzystać z funkcji usługi Cost Management, jeśli są one włączone przez ich partnera będącego dostawcą usług w chmurze.
 
 Partnerzy będący dostawcami usług w chmurze używają usługi Cost Management do:
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 02/11/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: f053b30d344e5372617a5bf98c087056c4fe2911
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e77f6ca587a6dcd001b06fac22d974b22d6fee4e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76294154"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188647"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Szybki start: Eksplorowanie i analizowanie kosztów za pomocą analizy kosztów
 
@@ -61,6 +61,13 @@ Początkowy widok analizy kosztów zawiera poniższe obszary.
 **Wykresy przestawne (pierścieniowe)** : Są to dynamiczne elementy przestawne, które przedstawiają podział kosztów według typowego zestawu właściwości standardowych. Przedstawiają one koszty w bieżącym miesiącu, w kolejności od największych do najmniejszych. Wykresy przestawne można zmieniać w dowolnym momencie, wybierając inny element przestawny. Koszty są domyślnie dzielone na kategorie według usługi (kategorii miernika), lokalizacji (regionu) i zakresu podrzędnego. Na przykład konta rejestracji należą do kont rozliczeniowych, grupy zasobów należą do subskrypcji, a zasoby należą do grup zasobów.
 
 ![Początkowy widok analizy kosztów w witrynie Azure Portal](./media/quick-acm-cost-analysis/cost-analysis-01.png)
+
+### <a name="understand-forecast"></a>Informacje o prognozie
+
+Prognoza kosztów pokazuje szacowane koszty w wybranym okresie. Model jest oparty na modelu regresji szeregów czasowych. Do dokładnego przewidywania kosztów wymagane są dane dotyczące kosztów i użycia z co najmniej 10 ostatnich dni. W przypadku danego okresu model prognozy wymaga takiej samej ilości danych treningowych jak dla prognozowanego okresu. Na przykład prognoza na trzy miesiące wymaga danych użycia i kosztów z co najmniej trzech ostatnich miesięcy. 
+
+Model używa maksymalnie sześciu miesięcy danych treningowych w celu prognozowania kosztów na rok. Zmiana prognozy wymaga danych treningowych z co najmniej siedmiu dni. Prognoza jest oparta na znaczących zmianach, takich jak istotny wzrost lub spadek, we wzorcach kosztów i użycia. Prognoza nie generuje oddzielnych przewidywań dla każdego elementu we właściwościach **Grupuj według**. Zapewnia jedynie prognozę dla łącznych, skumulowanych kosztów. W przypadku korzystania z wielu walut model udostępnia prognozę kosztów tylko w USD. 
+
 
 ## <a name="customize-cost-views"></a>Dostosowywanie widoków kosztów
 
@@ -113,7 +120,7 @@ Domyślnie analiza kosztów pokazuje wszystkie koszty użycia i zakupów, które
 
 ![Zmiana kosztu rzeczywistego na zamortyzowany w celu wyświetlenia zakupów rezerwacji rozłożonych w całym okresie i przydzielonych do zasobów, które używały rezerwacji](./media/quick-acm-cost-analysis/metric-picker.png)
 
-Koszt zamortyzowany dzieli zakupy rezerwacji na dzienne fragmenty i rozkłada je w czasie trwania terminu rezerwacji. Na przykład zamiast zakupu na kwotę 365 USD w dniu 1 stycznia, każdego dnia w okresie od 1 stycznia do 31 grudnia będzie wyświetlany zakup w wysokości 1 USD. Oprócz podstawowej amortyzacji te koszty są również ponownie przydzielane i kojarzone przy użyciu określonych zasobów, które używały rezerwacji. Na przykład jeśli opłata dzienna w wysokości 1 USD została podzielona między dwie maszyny wirtualne, każdego dnia będą widoczne dwie opłaty w wysokości 0,50 USD. Jeśli część rezerwacji nie została wykorzystana danego dnia, zobaczysz jedną opłatę 0,50 USD skojarzoną z odpowiednią maszyną wirtualną i drugą opłatę 0,50 USD typu `UnusedReservation`. Pamiętaj, że koszty niewykorzystanych rezerwacji są widoczne tylko w przypadku wyświetlania kosztu zamortyzowanego.
+Koszt zamortyzowany dzieli zakupy rezerwacji na dzienne fragmenty i rozkłada je w czasie trwania terminu rezerwacji. Na przykład zamiast zakupu na kwotę 365 USD 1 stycznia, każdego dnia w okresie od 1 stycznia do 31 grudnia będzie wyświetlany zakup w wysokości 1,00 USD. Oprócz podstawowej amortyzacji te koszty są również ponownie przydzielane i kojarzone przy użyciu określonych zasobów, które używały rezerwacji. Jeśli na przykład opłata dzienna w wysokości 1,00 USD została podzielona między dwie maszyny wirtualne, każdego dnia będą widoczne dwie opłaty w wysokości 0,50 USD. Jeśli część rezerwacji nie została wykorzystana danego dnia, zobaczysz jedną opłatę 0,50 USD skojarzoną z odpowiednią maszyną wirtualną i drugą opłatę 0,50 USD typu `UnusedReservation`. Pamiętaj, że koszty niewykorzystanych rezerwacji są widoczne tylko w przypadku wyświetlania kosztu zamortyzowanego.
 
 W związku ze zmianą sposobu reprezentowania kosztów trzeba pamiętać, że w widokach kosztów rzeczywistych i zamortyzowanych będą wyświetlane różne sumy. Ogólnie rzecz biorąc, podczas przeglądania kosztów zamortyzowanych suma kosztów w miesiącach z zakupem rezerwacji będzie się zmniejszała, a w miesiącach po zakupie rezerwacji — zwiększała. Amortyzacja jest dostępna tylko w przypadku zakupów rezerwacji i w tej chwili nie dotyczy zakupów w witrynie Azure Marketplace.
 

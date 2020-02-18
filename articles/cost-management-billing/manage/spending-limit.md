@@ -2,21 +2,21 @@
 title: Azure — limit wydatków | Microsoft Docs
 description: W tym artykule pokazano, jak działa limit wydatków platformy Azure oraz jak go usunąć.
 author: bandersmsft
-manager: amberb
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: bde3c142fa0f4f69948a9ff1df61d77f06d2b430
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76314141"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188274"
 ---
 # <a name="azure-spending-limit"></a>Azure — limit wydatków
 
@@ -36,30 +36,48 @@ Jeśli masz bezpłatne konto platformy Azure i osiągniesz limit wydatków, moż
 
 ## <a name="remove-the-spending-limit-in-azure-portal"></a>Usuwanie limitu wydatków w witrynie Azure Portal
 
+Możesz usunąć limit wydatków w dowolnym momencie, o ile z subskrypcją platformy Azure została skojarzona prawidłowa forma płatności. W przypadku typów subskrypcji ze środkami na wiele miesięcy, takich jak Visual Studio Enterprise i Visual Studio Professional, możesz usunąć limit wydatków na czas nieokreślony lub tylko dla bieżącego okresu rozliczeniowego. W przypadku wybrania tylko bieżącego okresu rozliczeniowego limit wydatków zostanie automatycznie włączony na początku kolejnego okresu rozliczeniowego.
+
+Jeśli masz bezpłatne konto platformy Azure, zapoznaj się z artykułem [Podwyższanie poziomu planu subskrypcji platformy Azure](upgrade-azure-subscription.md), aby usunąć limit wydatków. W przeciwnym razie wykonaj następujące czynności, aby usunąć limit wydatków:
+
 <a id="remove"></a>
 
-Możesz usunąć limit wydatków w dowolnym momencie, o ile z subskrypcją platformy Azure została skojarzona prawidłowa forma płatności. W przypadku typów subskrypcji ze środkami na wiele miesięcy, takich jak Visual Studio Enterprise i Visual Studio Professional, możesz również włączyć limit wydatków na początku następnego okresu rozliczeniowego.
+1. Zaloguj się w [witrynie Azure Portal](https://portal.azure.com) jako administrator konta.
+1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 
-Aby usunąć limit wydatków, wykonaj następujące czynności:
+    ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeniami ](./media/spending-limit/search-bar.png)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Przejdź do obszaru **Subskrypcje**.
-1. Wybierz subskrypcję. Na przykład *Visual Studio Enterprise*.
-1. W górnej części strony wybierz pozycję **Zarządzaj**. Nastąpi przekierowanie do witryny https://account.azure.com/. W prawej części strony wybierz pozycję **Usuń limit wydatków**.  
-  ![Przykład pokazujący pozycję Usuń limit wydatków](./media/spending-limit/account-azure-com-spending-limit.png)
-1. Nastąpi powrót do witryny Azure Portal. Wybierz opcję, która jest odpowiednia dla Ciebie, a następnie wybierz formę płatności. Wybierz pozycję **Finish** (Zakończ).  
-  ![Wybieranie opcji usunięcia limitu wydatków](./media/spending-limit/remove-spending-limit.png)
+1. Na liście **Moje subskrypcje** wybierz subskrypcję. Na przykład *Visual Studio Enterprise*. 
 
-| Opcja | Efekt |
-| --- | --- |
-| Usuń trwale limit wydatków | Usuwa limit wydatków bez jego automatycznego ponownego włączenia na początku następnego okresu rozliczeniowego. |
-| Usuń limit wydatków w bieżącym okresie rozliczeniowym | Usuwa limit wydatków, który jest automatycznie włączany ponownie na początku następnego okresu rozliczeniowego. |
+   ![Zrzut ekranu przedstawiający przegląd siatki Moje subskrypcje](./media/spending-limit/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > Jeśli niektóre subskrypcje Visual Studio nie są tutaj widoczne, może to oznaczać, że w pewnym momencie zmieniono katalog subskrypcji. Dla tych subskrypcji należy przełączyć katalog na katalog oryginalny (katalog, w którym początkowo utworzono konto). Następnie powtórz krok 2.
+    
+1. W przeglądzie subskrypcji kliknij pomarańczowy baner, aby usunąć limit wydatków.
+    
+    ![Zrzut ekranu przedstawiający baner umożliwiający usunięcie limitu wydatków](./media/spending-limit/msdn-remove-spending-limit-banner-x.png)
+
+1. Wybierz, czy chcesz usunąć limit wydatków na czas nieokreślony, czy tylko w bieżącym okresie rozliczeniowym.
+    
+      ![Zrzut ekranu przedstawiający blok usuwania limitu wydatków](./media/spending-limit/remove-spending-limit-blade-x.png)
+    
+      | Opcja | Efekt |
+      | --- | --- |
+      | Usuń trwale limit wydatków | Limit wydatków nie zostanie automatycznie ponownie włączony na początku następnego okresu rozliczeniowego. W dowolnym momencie możesz go jednak ponownie włączyć samodzielnie. |
+      | Usuń limit wydatków w bieżącym okresie rozliczeniowym | Limit wydatków zostanie automatycznie ponownie włączony na początku następnego okresu rozliczeniowego. |
+
+
+1. Kliknij pozycję **Wybierz formę płatności**, aby wybrać formę płatności dla subskrypcji. Stanie się ona aktywną formą płatności dla danej subskrypcji.
+
+1. Kliknij przycisk **Zakończ**.
+
 
 ## <a name="why-you-might-want-to-remove-the-spending-limit"></a>Dlaczego warto usunąć limit wydatków
 
 Limit wydatków może uniemożliwić wdrażanie lub używanie niektórych usług innych firm i firmy Microsoft. Poniżej przedstawiono sytuacje, w których należy usunąć limit wydatków dla subskrypcji.
 
--  Planujesz wdrożyć obrazy firmy Microsoft, takie jak Oracle, lub usługi, takie jak Azure DevOps Services. Ta sytuacja powoduje niemal natychmiastowe osiągnięcie limitu wydatków i wyłączenie subskrypcji.
+-  Planujesz wdrożyć obrazy innych firm, np. Oracle, lub usługi, np. Azure DevOps Services. Ta sytuacja powoduje niemal natychmiastowe osiągnięcie limitu wydatków i wyłączenie subskrypcji.
 - Masz usługi, których działania nie chcesz zakłócać. Po osiągnięciu limitu wydatków wdrożone zasoby platformy Azure zostaną usunięte ze środowiska produkcyjnego, a maszyny wirtualne platformy Azure zostaną zatrzymane i zostanie cofnięty ich przydział. Jeśli masz usługi, których działania nie chcesz zakłócać, musisz usunąć limit wydatków.
 - Masz usługi i zasoby z ustawieniami, takimi jak wirtualne adresy IP, których nie chcesz utracić. Te ustawienia zostaną utracone, gdy osiągniesz limit wydatków, a przydział usługi i zasobów zostanie cofnięty.
 
@@ -67,9 +85,20 @@ Limit wydatków może uniemożliwić wdrażanie lub używanie niektórych usług
 
 Ta funkcja jest dostępna tylko wtedy, gdy limit wydatków dla typów subskrypcji obejmujących środki na wiele miesięcy został usunięty na czas nieokreślony. Za pomocą tej funkcji można automatycznie włączyć limit wydatków na początku kolejnego okresu rozliczeniowego.
 
-1. Zaloguj się do [Centrum konta](https://account.windowsazure.com/Subscriptions).
-1. Wybierz żółty baner, aby zmienić opcję limitu wydatków.
-1. Wybierz pozycję **Włącz limit wydatków w następnym okresie rozliczeniowym \<data rozpoczęcia okresu rozliczeniowego\>**
+
+1. Zaloguj się w [witrynie Azure Portal](https://portal.azure.com) jako administrator konta.
+1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
+
+    ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeniami ](./media/spending-limit/search-bar.png)
+
+1. Na liście **Moje subskrypcje** wybierz subskrypcję. Na przykład *Visual Studio Enterprise*. 
+
+   ![Zrzut ekranu przedstawiający przegląd siatki Moje subskrypcje](./media/spending-limit/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > Jeśli niektóre subskrypcje Visual Studio nie są tutaj widoczne, może to oznaczać, że w pewnym momencie zmieniono katalog subskrypcji. Dla tych subskrypcji należy przełączyć katalog na katalog oryginalny (katalog, w którym początkowo utworzono konto). Następnie powtórz krok 2.
+    
+1. W przeglądzie subskrypcji kliknij baner u góry strony, aby ponownie włączyć limit wydatków.
 
 ## <a name="custom-spending-limit"></a>Niestandardowy limit wydatków
 

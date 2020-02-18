@@ -1,18 +1,18 @@
 ---
 title: Pozyskiwanie obiektów blob platformy Azure do usługi Azure Data Explorer
 description: W tym artykule dowiesz się, jak wysyłać dane konta magazynu do usługi Azure Eksplorator danych przy użyciu subskrypcji Event Grid.
-author: radennis
-ms.author: radennis
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: da701dc91781ef72c29e6454e79523073810dbe4
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667480"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424987"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Pozyskiwanie obiektów BLOB na platformie Azure Eksplorator danych przez Subskrybowanie powiadomień Event Grid
 
@@ -44,14 +44,14 @@ W tym artykule dowiesz się, jak ustawić subskrypcję [Azure Event Grid](/azure
 
     **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
-    | Nazwa | *test-grid-connection* | Nazwa siatki zdarzeń, która ma zostać utworzona.|
+    | Name (Nazwa) | *test-grid-connection* | Nazwa siatki zdarzeń, która ma zostać utworzona.|
     | Schemat zdarzeń | *Schemat Event Grid* | Schemat, który ma być używany dla usługi Event Grid. |
     | Typ tematu | *Konto magazynu* | Typ tematu siatki zdarzeń. |
     | Zasób tematu | *gridteststorage* | Nazwa konta magazynu. |
     | Subskrybuj wszystkie typy zdarzeń | *Wyczyść* | Nie będziesz otrzymywać powiadomień o wszystkich zdarzeniach. |
     | Zdefiniowane typy zdarzeń | *Utworzono obiekt BLOB* | O jakich konkretnych zdarzeniach chcesz otrzymywać powiadomienia. |
     | Typ punktu końcowego | *Centra zdarzeń* | Typ punktu końcowego, do którego wysyłasz zdarzenia. |
-    | Punkt końcowy | *test-hub* | Utworzone przez Ciebie centrum zdarzeń. |
+    | Endpoint | *test-hub* | Utworzone przez Ciebie centrum zdarzeń. |
     | | |
 
 1. Wybierz kartę **filtry** , jeśli chcesz śledzić pliki z określonego kontenera. Filtry dla powiadomień ustaw w następujący sposób:
@@ -157,6 +157,11 @@ Zapisz dane w pliku i przekaż je za pomocą tego skryptu:
 
     echo "Done"
 ```
+
+> [!NOTE]
+> Usługa Azure Eksplorator danych nie usunie obiektów BLOB po pozyskaniu.
+> Przechowuj obiekty blob dla thrre na pięć dni.
+> Użyj [cyklu życia usługi Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) , aby zarządzać usuwaniem obiektów BLOB. 
 
 ## <a name="review-the-data-flow"></a>Przeglądanie przepływu danych
 

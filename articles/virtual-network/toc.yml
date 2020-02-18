@@ -39,6 +39,12 @@
       href: virtual-network-disaster-recovery-guidance.md
     - name: Łączność
       items:
+        - name: NAT
+          items:
+            - name: Omówienie
+              href: nat-overview.md
+            - name: Zasób
+              href: nat-gateway-resource.md
         - name: Współdziałanie łączności z zapleczem
           items:
             - name: Wstęp i konfiguracja testu
@@ -111,6 +117,20 @@
           href: virtual-network-nsg-manage-log.md
     - name: Łączność
       items:
+        - name: NAT
+          items:
+            - name: Tworzenie bramy translatora adresów sieciowych — portal
+              href: quickstart-create-nat-gateway-portal.md
+            - name: Tworzenie bramy translatora adresów sieciowych — PowerShell
+              href: quickstart-create-nat-gateway-powershell.md
+            - name: Tworzenie bramy translatora adresów sieciowych — interfejs wiersza polecenia
+              href: quickstart-create-nat-gateway-cli.md
+            - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — portal
+              href: tutorial-create-validate-nat-gateway-portal.md
+            - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — PowerShell
+              href: tutorial-create-validate-nat-gateway-powershell.md
+            - name: Tworzenie i weryfikowanie bramy translatora adresów sieciowych — interfejs wiersza polecenia
+              href: tutorial-create-validate-nat-gateway-cli.md
         - name: Zarządzanie kartami interfejsów sieciowych
           href: virtual-network-network-interface.md
         - name: Zarządzanie siecią wirtualną

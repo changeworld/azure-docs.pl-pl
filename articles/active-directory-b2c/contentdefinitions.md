@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: fd6a24c768056c949c05b9e2444bd49ef743c0ef
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157877"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425633"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -70,7 +70,7 @@ Element **ContentDefinition** zawiera następujące elementy:
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Ciąg, który zawiera adres URL strony HTML5 dla definicji zawartości. |
-| RecoveryUri | 0:1 | Ciąg, który zawiera adres URL strony HTML służącej do wyświetlania błędu związanego z definicją zawartości. |
+| RecoveryUri | 1:1 | Ciąg, który zawiera adres URL strony HTML służącej do wyświetlania błędu związanego z definicją zawartości. |
 | DataUri | 1:1 | Ciąg zawierający względny adres URL pliku HTML, który udostępnia środowisko użytkownika do wywołania dla kroku. |
 | Metadane | 0:1 | Kolekcja par klucz/wartość, które zawierają metadane wykorzystane w definicji zawartości. |
 | LocalizedResourcesReferences | 0:1 | Kolekcja zlokalizowanych zasobów. Użyj tego elementu, aby dostosować lokalizację interfejsu użytkownika i atrybutu oświadczeń. |
@@ -82,11 +82,11 @@ Element **DataUri** jest używany do określania identyfikatora strony. Azure AD
 | Identyfikator strony | Opis |
 | ----- | ----------- |
 | `globalexception` | Wyświetla stronę błędu w przypadku napotkania wyjątku lub błędu. |
-| `providerselection` | Wyświetla listę dostawców tożsamości, spośród których użytkownicy mogą wybierać podczas logowania. |
+| `providerselection`, `idpselection` | Wyświetla listę dostawców tożsamości, spośród których użytkownicy mogą wybierać podczas logowania.  |
 | `unifiedssp` | Wyświetla formularz służący do logowania się przy użyciu konta lokalnego, które jest oparte na adresie e-mail lub nazwie użytkownika. Ta wartość udostępnia również funkcję "Przechowuj mnie" i "nie pamiętasz hasła?". link. |
 | `unifiedssd` | Wyświetla formularz służący do logowania się przy użyciu konta lokalnego, które jest oparte na adresie e-mail lub nazwie użytkownika. |
 | `multifactor` | Weryfikuje numery telefonów przy użyciu tekstu lub głosu podczas rejestracji lub logowania. |
-| `selfasserted` | Wyświetla formularz, który umożliwia użytkownikom tworzenie lub aktualizowanie profilu. |
+| `selfasserted` | Wyświetla formularz służący do zbierania danych od użytkownika. Na przykład umożliwia użytkownikom tworzenie lub aktualizowanie profilu. |
 
 ### <a name="select-a-page-layout"></a>Wybierz układ strony
 

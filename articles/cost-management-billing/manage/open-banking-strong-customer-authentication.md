@@ -2,21 +2,21 @@
 title: Otwarta bankowość (PSD2) i silne uwierzytelnianie klienta (SCA) dla klientów platformy Azure
 description: W tym artykule wyjaśniono, dlaczego uwierzytelnianie wieloskładnikowe jest wymagane w przypadku niektórych zakupów na platformie Azure i jak ukończyć uwierzytelnianie.
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5f9c5f861e238bf38451863fb2d39cbb8af93225
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75996042"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133556"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Otwarta bankowość (PSD2) i silne uwierzytelnianie klienta (SCA) dla klientów platformy Azure
 
@@ -53,14 +53,13 @@ Jeśli Twój bank odrzuci opłaty, stan konta platformy Azure w witrynie Azure P
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>Rozliczanie zaległych opłat za zakupy w witrynie Marketplace i rezerwacje
 
-Zakupy w witrynie Marketplace i opłaty za rezerwacje są rozliczane niezależnie od opłat za usługi platformy Azure. Jeśli Twój bank odrzuci opłaty za zakupy w witrynie Marketplace lub za rezerwacje, stan faktury w witrynie Azure Portal będzie widoczny jako **Upłynął termin**. Aby sprawdzić stan faktur za zakupy w witrynie Marketplace i za rezerwacje, wykonaj następujące czynności:
+Zakupy w witrynie Marketplace i opłaty za rezerwacje są rozliczane niezależnie od opłat za usługi platformy Azure. Jeśli Twój bank odrzuci opłaty za zakupy w witrynie Marketplace lub za rezerwacje, faktura stanie się przeterminowana, a w witrynie Azure Portal będzie widoczna opcja **Zapłać teraz**. Aby opłacić przeterminowane faktury za zakupy w witrynie Marketplace i za rezerwacje, wykonaj następujące czynności:
 
 1. Zaloguj się w [witrynie Azure Portal](https://portal.azure.com/) jako administrator konta.
 2. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
 3. W obszarze Rozliczenia wybierz pozycję **Faktury**.
-4. Kliknij kartę **Azure Marketplace i rezerwacje** po prawej stronie.
-5. Wybierz odpowiednią subskrypcję.
-6. W siatce faktur przejrzyj kolumnę Stan. Jeśli faktura jest oznaczona jako **Termin** lub **Upłynął termin**, kliknij pozycję **Płatność natychmiastowa**. Zostanie wyświetlony monit o ukończenie uwierzytelniania wieloskładnikowego.
+5. Za pomocą filtru w postaci listy rozwijanej subskrypcji wybierz subskrypcję skojarzoną z zakupem w witrynie Marketplace lub rezerwacji.
+6. W siatce faktur przejrzyj kolumnę typu. Jeśli typ to **Azure Marketplace i rezerwacje**, a termin płatności faktury zbliża się lub upłynął, będzie widoczny link **Zapłać teraz**. Jeśli link **Zapłać teraz** nie jest widoczny, faktura została już opłacona. W procesie płatności zostanie wyświetlony monit o ukończenie uwierzytelniania wieloskładnikowego.
 
 ## <a name="next-steps"></a>Następne kroki
 - Jeśli chcesz uregulować opłaty za korzystanie z platformy Azure, zobacz [Rozwiązywanie problemu z zaległym saldem za subskrypcję platformy Azure](resolve-past-due-balance.md).
