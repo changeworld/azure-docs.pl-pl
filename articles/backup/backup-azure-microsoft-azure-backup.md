@@ -3,12 +3,12 @@ title: Użyj Azure Backup Server, aby utworzyć kopię zapasową obciążeń
 description: W tym artykule dowiesz się, jak przygotować środowisko do ochrony i tworzenia kopii zapasowych obciążeń przy użyciu Microsoft Azure Backup Server (serwera usługi MAB).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: ff5df19d3e2d42af9a45fbc1b71980cee1cdb8a0
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: efa54eac2e3e134fb285d38242ca1b59727c2c86
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111600"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425191"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie Azure Backup Server
 
@@ -163,14 +163,15 @@ Po zakończeniu procesu wyodrębniania zaznacz pole wyboru, aby uruchomić świe
 2. Na ekranie powitalnym kliknij przycisk **dalej** . Spowoduje to przejście do sekcji *Sprawdzanie wymagań wstępnych* . Na tym ekranie kliknij przycisk **Sprawdź** , aby określić, czy zostały spełnione wymagania wstępne dotyczące sprzętu i oprogramowania Azure Backup Server. Jeśli wszystkie wymagania wstępne zostaną spełnione, zostanie wyświetlony komunikat informujący o tym, że komputer spełnia wymagania. Kliknij przycisk **dalej** .
 
     ![Azure Backup Server-Witamy i sprawdzanie wymagań wstępnych](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Serwer Microsoft Azure Backup wymaga SQL Server Enterprise. Ponadto pakiet instalacyjny Azure Backup Server jest powiązany z odpowiednimi SQL Server plików binarnych, które są potrzebne, jeśli nie chcesz używać własnego języka SQL. Podczas rozpoczynania pracy z nową instalacją Azure Backup Server należy wybrać opcję **Zainstaluj nowe wystąpienie SQL Server z tą konfiguracją** , a następnie kliknąć przycisk **Sprawdź i zainstaluj** . Po pomyślnym zainstalowaniu wymagań wstępnych kliknij przycisk **dalej**.
+3. Pakiet instalacyjny Azure Backup Server jest powiązany z odpowiednimi SQL Server plikami binarnymi. Podczas uruchamiania nowej instalacji Azure Backup Server wybierz opcję **Zainstaluj nowe wystąpienie SQL Server z tą konfiguracją** , a następnie kliknij przycisk **Sprawdź i zainstaluj** . Po pomyślnym zainstalowaniu wymagań wstępnych kliknij przycisk **dalej**.
+
+    >[!NOTE]
+    >Jeśli chcesz użyć własnego programu SQL Server, obsługiwane wersje SQL Server są SQL Server 2014 SP1 lub nowsze, 2016 i 2017.  Wszystkie SQL Server wersje powinny mieć wersję Standard lub Enterprise 64-bit.
+    >Azure Backup Server nie będzie działał ze zdalnym wystąpieniem SQL Server. Wystąpienie używane przez Azure Backup Server musi być lokalne. Jeśli używasz istniejącego programu SQL Server dla programu serwera usługi MAB, Instalator serwera usługi MAB obsługuje tylko *nazwane wystąpienia* programu SQL Server.
 
     ![Sprawdzanie Azure Backup Server — SQL](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
     Jeśli wystąpi błąd z zaleceniem ponownego uruchomienia maszyny, zrób to, a następnie kliknij przycisk **Sprawdź ponownie**. Jeśli występują problemy z konfiguracją SQL, skonfiguruj ponownie program SQL zgodnie z wytycznymi SQL i ponów próbę instalacji/uaktualnienia serwera usługi MAB przy użyciu istniejącego wystąpienia programu SQL.
-
-   > [!NOTE]
-   > Azure Backup Server nie będzie działał ze zdalnym wystąpieniem SQL Server. Wystąpienie używane przez Azure Backup Server musi być lokalne. W przypadku korzystania z istniejącego programu SQL Server dla programu serwera usługi MAB Instalator usługi serwera usługi MAB obsługuje tylko *nazwane wystąpienia* programu SQL Server.
 
    **Konfiguracja ręczna**
 

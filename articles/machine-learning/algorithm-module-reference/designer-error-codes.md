@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/03/2019
-ms.openlocfilehash: cf343773695275bc5600ab59e1cd719374d65700
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: ea132578a08b9f0002084374838c615a01fa820f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152367"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425803"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Wyjątki i kody błędów dla projektanta (wersja zapoznawcza)
 
@@ -74,7 +74,7 @@ Istnieją dwa sposoby uzyskania pełnego tekstu komunikatu o błędzie w projekt
 |Komunikaty o wyjątkach|
 |------------------------|
 |Co najmniej jeden z wejść ma wartość null lub jest pusty.|
-|Wejście "{0}" ma wartość null lub jest puste.|
+|Wejście "{name}" ma wartość null lub jest puste.|
 
 
 ## <a name="error-0004"></a>Błąd 0,004  
@@ -87,8 +87,8 @@ Istnieją dwa sposoby uzyskania pełnego tekstu komunikatu o błędzie w projekt
 |Komunikaty o wyjątkach|
 |------------------------|
 |Parametr musi być większy niż wartość graniczna.|
-|Wartość parametru "{0}" powinna być większa niż {1}.|
-|Parametr "{0}" ma wartość "{1}", która powinna być większa niż {2}.|
+|Wartość parametru "{arg_name}" powinna być większa niż {lower_boundary}.|
+|Parametr "{arg_name}" ma wartość "{actual_value}", która powinna być większa niż {lower_boundary}.|
 
 
 ## <a name="error-0005"></a>Błąd 0,005  
@@ -101,8 +101,8 @@ Istnieją dwa sposoby uzyskania pełnego tekstu komunikatu o błędzie w projekt
 |Komunikaty o wyjątkach|
 |------------------------|
 |Wartość parametru powinna być większa lub równa wartości granicy.|
-|Wartość parametru "{arg_name}" powinna być większa lub równa {target_val}.|
-|Parametr "{arg_name}" ma wartość "{true_val}", która powinna być większa lub równa {target_val}.|
+|Wartość parametru "{arg_name}" powinna być większa lub równa {lower_boundary}.|
+|Parametr "{arg_name}" ma wartość "{value}", która powinna być większa lub równa {lower_boundary}.|
 
 
 ## <a name="error-0006"></a>0006 błędów  
@@ -115,8 +115,8 @@ Istnieją dwa sposoby uzyskania pełnego tekstu komunikatu o błędzie w projekt
 |Komunikaty o wyjątkach|
 |------------------------|
 |Niezgodność parametrów. Jeden z parametrów powinien być mniejszy niż inny.|
-|Wartość parametru "{0}" powinna być mniejsza niż wartość parametru "{1}".|
-|Parametr "{0}" ma wartość "{1}", która powinna być mniejsza niż {2}.|
+|Wartość parametru "{arg_name}" powinna być mniejsza niż wartość parametru "{upper_boundary_parameter_name}".|
+|Parametr "{arg_name}" ma wartość "{value}", która powinna być mniejsza niż {upper_boundary_parameter_name}.|
 
 
 ## <a name="error-0007"></a>0007 błędów  
@@ -137,8 +137,9 @@ Istnieją dwa sposoby uzyskania pełnego tekstu komunikatu o błędzie w projekt
 |Komunikaty o wyjątkach|
 |------------------------|
 |Niezgodność parametrów. Jeden z parametrów powinien być mniejszy lub równy innemu.|
-|Wartość parametru "{0}" powinna być mniejsza lub równa wartości parametru "{1}".|
-|Parametr "{0}" ma wartość "{1}", która powinna być mniejsza lub równa {2}.|
+|Wartość parametru "{arg_name}" powinna być mniejsza lub równa wartości parametru "{upper_boundary_parameter_name}".|
+|Parametr "{arg_name}" ma wartość "{actual_value}", która nie może być większa niż {upper_boundary}.|
+|Wartość {actual_value} parametru "{arg_name}" musi być mniejsza lub równa parametrowi "{upper_boundary_parameter_name}" o wartości {upper_boundary}.|
 
 
 ## <a name="error-0008"></a>0008 błędów  
@@ -154,7 +155,7 @@ Istnieją dwa sposoby uzyskania pełnego tekstu komunikatu o błędzie w projekt
 |------------------------|
 |Wartość parametru nie znajduje się w określonym zakresie.|
 |Wartość parametru "{arg_name}" nie należy do zakresu.|
-|Wartość parametru "{arg_name}" musi należeć do zakresu [{a}, {b}].|
+|Wartość parametru "{arg_name}" musi należeć do zakresu [{lower_boundary}, {upper_boundary}].|
 |Wartość parametru "{arg_name}" nie należy do zakresu. dotycząca|
 
 
@@ -187,7 +188,7 @@ Jeśli podano pełną ścieżkę do obiektu BLOB, należy sprawdzić, czy ście�
 |Komunikaty o wyjątkach|
 |------------------------|
 |Nazwa konta usługi Azure Storage lub nazwa kontenera jest niepoprawna.|
-|Nazwa konta usługi Azure Storage "{0}" lub nazwa kontenera "{1}" jest niepoprawna; Oczekiwano nazwy kontenera/obiektu BLOB.|
+|Nazwa konta usługi Azure Storage "{account_name}" lub nazwa kontenera "{container_name}" jest niepoprawna; Oczekiwano nazwy kontenera/obiektu BLOB.|
 
 
 ## <a name="error-0010"></a>Błąd 0,010  
@@ -200,7 +201,7 @@ Jeśli podano pełną ścieżkę do obiektu BLOB, należy sprawdzić, czy ście�
 |Komunikaty o wyjątkach|
 |------------------------|
 |Kolumny z odpowiednim indeksem wejściowych zestawów danych mają różne nazwy.|
-|Nazwy kolumn nie są takie same dla kolumn {0} (liczonych od zera) wejściowych zestawów danych (odpowiednio{1} i {2}).|
+|Nazwy kolumn nie są takie same dla kolumny {col_index} (od zera) wejściowych zestawów danych (odpowiednio {pozycję DataSet1} i {DataSet2}).|
 
 
 ## <a name="error-0011"></a>0011 błędów  
@@ -219,7 +220,7 @@ Jeśli podano pełną ścieżkę do obiektu BLOB, należy sprawdzić, czy ście�
 |Komunikaty o wyjątkach|
 |------------------------|
 |Określony zestaw kolumn nie ma zastosowania do żadnej z kolumn zestawu danych.|
-|Określony zestaw kolumn "{0}" nie ma zastosowania do żadnej kolumny z zestawem danych.|
+|Określony zestaw kolumn "{column_set}" nie ma zastosowania do żadnej z kolumn zestawu danych.|
 
 
 ## <a name="error-0012"></a>0012 błędów  
@@ -301,7 +302,7 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
 |Komunikaty o wyjątkach|
 |------------------------|
 |Wystąpił błąd podczas tworzenia połączenia z bazą danych.|
-|Wystąpił błąd podczas tworzenia połączenia z bazą danych: {0}.|
+|Wystąpił błąd podczas nawiązywania połączenia z bazą danych: {connection_str}.|
 
 
 ## <a name="error-0016"></a>0016 błędów  
@@ -384,8 +385,8 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
 |Komunikaty o wyjątkach|
 |------------------------|
 |Wartości w kolumnie nie są sortowane.|
-|Wartości w kolumnie "{0}" nie są sortowane.|
-|Wartości w kolumnie "{0}" zestawu danych "{1}" nie są sortowane.|
+|Wartości w kolumnie "{col_index}" nie są sortowane.|
+|Wartości w kolumnie "{col_index}" zestawu danych "{DataSet}" nie są sortowane.|
 
 
 ## <a name="error-0020"></a>0020 błędów  
@@ -398,6 +399,7 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
 |Komunikaty o wyjątkach|
 |------------------------|
 |Liczba kolumn w wejściowym zestawie danych jest mniejsza niż dozwolona wartość minimalna.|
+|Liczba kolumn w wejściowym zestawie danych "{arg_name}" jest mniejsza niż dozwolona wartość minimalna.|
 |Liczba kolumn w wejściowym zestawie danych jest mniejsza niż dozwolona minimalna liczba kolumn: {required_columns_count}.|
 |Liczba kolumn w wejściowym zestawie danych "{arg_name}" jest mniejsza niż dozwolona minimalna liczba kolumn: {required_columns_count}.|
 
@@ -450,9 +452,9 @@ W przypadku kolumn, które mają być używane do grupowania lub kategoryzacji, 
 |Komunikaty o wyjątkach|
 |------------------------|
 |Liczba wybranych kolumn w wejściowym zestawie danych nie jest równa oczekiwanej liczbie.|
-|Liczba wybranych kolumn w wejściowym zestawie danych nie jest równa {0}.|
-|Wzorzec wyboru kolumny "{0}" zawiera liczbę wybranych kolumn w wejściowym zestawie danych, które nie są równe {1}.|
-|Wzorzec wyboru kolumny "{0}" oczekuje na dostarczenie {1}ch kolumn wybranych w wejściowym zestawie danych, ale kolumny, w {2}|
+|Liczba wybranych kolumn w wejściowym zestawie danych nie jest równa {expected_col_count}.|
+|Wzorzec wyboru kolumny "{selection_pattern_friendly_name}" zawiera liczbę wybranych kolumn w wejściowym zestawie danych, które nie są równe {expected_col_count}.|
+|Wzorzec wyboru kolumny "{selection_pattern_friendly_name}" oczekuje, że podano kolumny {expected_col_count} wybrane w wejściowym zestawie danych, ale kolumny {selected_col_count} są w rzeczywistości udostępniane.|
 
 
 ## <a name="error-0023"></a>0023 błędów  
@@ -466,8 +468,8 @@ Ten błąd w Azure Machine Learning występuje, jeśli kolumna docelowa (wybrana
 |Komunikaty o wyjątkach|
 |------------------------|
 |Wejściowy zestaw danych zawiera nieobsługiwaną kolumnę docelową.|
-|Wejściowy zestaw danych zawiera nieobsługiwaną kolumnę docelową "{0}".|
-|Wejściowy zestaw danych zawiera nieobsługiwaną kolumnę docelową "{0}" dla dowiedzenia typu {1}.|
+|Wejściowy zestaw danych zawiera nieobsługiwaną kolumnę docelową "{column_index}".|
+|Wejściowy zestaw danych zawiera nieobsługiwaną kolumnę docelową "{column_index}" dla dowiedzenia typu {learner_type}.|
 
 
 ## <a name="error-0024"></a>0024 błędów  
@@ -500,8 +502,8 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
 |Komunikaty o wyjątkach|
 |------------------------|
 |Brak kolumny punktacji w elemencie dataset.|
-|Brak kolumny Score w "{0}".|
-|Brak kolumny Score w "{0}", która jest generowana przez "{1}". Poznanie zestawu danych przy użyciu poprawnego typu.|
+|Brak kolumny punktacji w "{dataset_name}".|
+|Brak kolumny Score w "{dataset_name}", która jest generowana przez "{learner_type}". Poznanie zestawu danych przy użyciu poprawnego typu.|
 
 
 ## <a name="error-0026"></a>0026 błędów  
@@ -514,7 +516,7 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
 |Komunikaty o wyjątkach|
 |------------------------|
 |W argumentach są określone równe nazwy kolumn. Nie można używać równych nazw kolumn w module.|
-|Takie same nazwy kolumn w argumentach "{0}" i "{1}" są niedozwolone. Podaj różne nazwy.|
+|Takie same nazwy kolumn w argumentach "{arg_name_1}" i "{arg_name_2}" są niedozwolone. Podaj różne nazwy.|
 
 
 ## <a name="error-0027"></a>0027 błędów  
@@ -533,7 +535,7 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
 |Komunikaty o wyjątkach|
 |------------------------|
 |Rozmiar zakończonych obiektów jest niespójny.|
-|Rozmiar "{0}" jest niespójny z rozmiarem "{1}".|
+|Rozmiar "{friendly_name1}" jest niespójny z rozmiarem "{friendly_name2}".|
 
 
 ## <a name="error-0028"></a>0028 błędów  
@@ -571,7 +573,7 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
 |Komunikaty o wyjątkach|
 |------------------------|
 |Przeszedł nieprawidłowy identyfikator URI.|
-|Identyfikator URI "{0}" jest nieprawidłowy.|
+|Identyfikator URI "{invalid_url}" jest nieprawidłowy.|
 
 
 ## <a name="error-0030"></a>0030 błędów  
@@ -584,7 +586,7 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
 |Komunikaty o wyjątkach|
 |------------------------|
 |Nie można pobrać pliku.|
-|Wystąpił błąd podczas pobierania pliku: {0}.|
+|Wystąpił błąd podczas pobierania pliku: {file_url}.|
 
 
 ## <a name="error-0031"></a>0031 błędów  
@@ -597,7 +599,8 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
 |Komunikaty o wyjątkach|
 |------------------------|
 |Liczba kolumn w zestawie kolumn jest mniejsza niż wymagana.|
-|Należy określić co najmniej {0} kolumn. Rzeczywista liczba określonych kolumn jest {1}.|
+|Dla argumentu wejściowego "{arg_name}" należy określić co najmniej następującą kolumnę: {required_columns_count}.|
+|Dla argumentu wejściowego "{arg_name}" należy określić co najmniej następującą kolumnę: {required_columns_count}. Rzeczywista liczba określonych kolumn to {input_columns_count}.|
 
 
 ## <a name="error-0032"></a>Błąd 0032  
@@ -610,7 +613,7 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
 |Komunikaty o wyjątkach|
 |------------------------|
 |Argument nie jest liczbą.|
-|"{0}" nie jest liczbą.|
+|"{arg_name}" nie jest liczbą.|
 
 
 ## <a name="error-0033"></a>Błąd 0033  
@@ -623,7 +626,7 @@ Może się również zdarzyć, że kolumna etykieta jest obecna w zestawie danyc
 |Komunikaty o wyjątkach|
 |------------------------|
 |Argument musi być skończona.|
-|"{0}" nie jest skończona.|
+|"{arg_name}" nie jest skończona.|
 
 
 ## <a name="error-0034"></a>Błąd 0034  
@@ -663,7 +666,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Komunikaty o wyjątkach|
 |------------------------|
 |Nie podano żadnych funkcji dla wymaganego użytkownika lub elementu.|
-|Funkcja dla {0} wymagana, ale nie została podana.|
+|Funkcja dla {required_feature_name} jest wymagana, ale nie została podana.|
 
 
 ## <a name="error-0036"></a>Błąd 0036  
@@ -676,7 +679,6 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Komunikaty o wyjątkach|
 |------------------------|
 |Zduplikowana definicja funkcji dla użytkownika lub elementu.|
-|Zduplikowana definicja funkcji dla {0}.|
 
 
 ## <a name="error-0037"></a>Błąd 0037  
@@ -742,9 +744,9 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|
 |------------------------|
 |Konwersja nie jest dozwolona.|
-|Nie można skonwertować kolumny typu {0} do kolumny typu {1}.|
-|Nie można skonwertować kolumny "{2}" typu {0} do kolumny typu {1}.|
-|Nie można skonwertować kolumny "{2}" typu {0} na kolumnę "{3}" typu {1}.|
+|Nie można skonwertować kolumny typu {type1} do kolumny typu {Type2}.|
+|Nie można skonwertować kolumny "{col_name1}" typu {type1} do kolumny typu {Type2}.|
+|Nie można skonwertować kolumny "{col_name1}" typu {type1} do kolumny "{col_name2}" typu {Type2}.|
 
 
 ## <a name="error-0044"></a>Błąd 0044  
@@ -757,8 +759,8 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|
 |------------------------|
 |Nie można utworzyć elementu pochodny dla kolumny.|
-|Nie można utworzyć pochodnej typu elementu dla kolumny "{0}" — wszystkie elementy są odwołaniami o wartości null.|
-|Nie można utworzyć pochodnej typu elementu dla kolumny "{0}" zestawu danych "{1}" — wszystkie elementy są odwołaniami o wartości null.|
+|Nie można utworzyć pochodnej typu elementu dla kolumny "{column_name}" — wszystkie elementy są odwołaniami o wartości null.|
+|Nie można utworzyć pochodnej typu elementu dla kolumny "{column_name}" zestawu danych "{dataset_name}" — wszystkie elementy są odwołaniami o wartości null.|
 
 
 ## <a name="error-0045"></a>Błąd 0045  
@@ -771,8 +773,8 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|
 |------------------------|
 |Nie można utworzyć kolumny z mieszanymi typami elementów.|
-|Nie można utworzyć kolumny o identyfikatorze "{column_id}" typów elementów mieszanych: \ n\tType danych [{row_1}, {column_id}] to "{type_1}". Typ danych [{row_2}, {column_id}] to "{type_2}".|
-|Nie można utworzyć kolumny o identyfikatorze "{column_id}" typów elementów mieszanych: \ n\tType w fragmencie {chunk_id_1} ma wartość "{type_1}". Typ w fragmencie {chunk_id_2} to "{type_2}" o rozmiarze fragmentu: {chunk_size}.|
+|Nie można utworzyć kolumny o identyfikatorze "{column_id}" typów elementów mieszanych:<br />Typ danych [{row_1}, {column_id}] to "{type_1}". <br />Typ danych [{row_2}, {column_id}] to "{type_2}".|
+|Nie można utworzyć kolumny o identyfikatorze "{column_id}" typów elementów mieszanych:<br />Typ w fragmencie {chunk_id_1} to "{type_1}". <br />Typ w fragmencie {chunk_id_2} to "{type_2}" o rozmiarze fragmentu: {chunk_size}.|
 
 
 ## <a name="error-0046"></a>Błąd 0046  
@@ -785,7 +787,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|
 |------------------------|
 |Określ prawidłowy katalog wyjściowy.|
-|Katalog: nie można utworzyć {0}. Określ prawidłową ścieżkę.|
+|Nie można utworzyć katalogu: {Path}. Określ prawidłową ścieżkę.|
 
 
 ## <a name="error-0047"></a>Błąd 0047  
@@ -824,8 +826,8 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|
 |------------------------|
 |Nie można otworzyć pliku.|
-|Wystąpił błąd podczas otwierania pliku: {0}.|
-|Wystąpił błąd podczas otwierania pliku: {0}. Komunikat wyjątku magazynu: {1}.|
+|Wystąpił błąd podczas otwierania pliku: {file_name}.|
+|Wystąpił błąd podczas otwierania pliku: {file_name}. Komunikat o wyjątku magazynu: {Exception}.|
 
 
 ## <a name="error-0049"></a>Błąd 0049  
@@ -910,7 +912,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|
 |------------------------|
 |Plik lub obiekt BLOB już istnieje.|
-|Plik lub obiekt BLOB "{0}" już istnieje.|
+|Plik lub obiekt BLOB "{file_path}" już istnieje.|
 
 
 ## <a name="error-0058"></a>Błąd 0058  
@@ -945,7 +947,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|
 |------------------------|
 |Nie można przeanalizować co najmniej jednego z określonych indeksów kolumn lub zakresów indeksów.|
-|Nie można przeanalizować indeksu kolumn lub zakresu "{0}".|
+|Nie można przeanalizować indeksu kolumn lub zakresu "{column_index_or_range}".|
 
 
 ## <a name="error-0060"></a>Błąd 0060  
@@ -958,7 +960,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|
 |------------------------|
 |Określono nieprawidłowy zakres indeksu kolumn lub poza zakresem.|
-|Zakres kolumn "{0}" jest nieprawidłowy lub poza zakresem.|
+|Zakres kolumn "{column_range}" jest nieprawidłowy lub poza zakresem.|
 
 
 ## <a name="error-0061"></a>Błąd 0061  
@@ -1035,7 +1037,7 @@ Kolejną przyczyną tego błędu może być próba użycia kolumny zawierającej
 |Komunikaty o wyjątkach|
 |------------------------|
 |Nie można przekazać zasobu do usługi Azure Storage.|
-|Nie można przekazać pliku "{0}" do usługi Azure Storage jako "{1}".|
+|Nie można przekazać pliku "{source_path}" do usługi Azure Storage jako "{dest_path}".|
 
 
 ## <a name="error-0067"></a>Błąd 0067  
@@ -1079,7 +1081,6 @@ Zapoznaj się z następującymi artykułami, aby uzyskać pomoc dotyczącą zapy
 |Komunikaty o wyjątkach|
 |------------------------|
 |Skrypt Hive jest nieprawidłowy.|
-|{0} skryptu Hive jest niepoprawny.|
 
 
 ## <a name="error-0069"></a>Błąd 0069  
@@ -1101,8 +1102,8 @@ Zapoznaj się z następującymi artykułami, aby uzyskać pomoc dotyczącą zapy
 |Komunikaty o wyjątkach|
 |------------------------|
 |Skrypt SQL jest nieprawidłowy.|
-|Zapytanie SQL "{0}" jest niepoprawne.|
-|Zapytanie SQL "{0}" jest niepoprawne:{1}.|
+|Zapytanie SQL "{sql_query}" jest niepoprawne.|
+|Zapytanie SQL "{sql_query}" jest niepoprawne. Komunikat o wyjątku: {Exception}.|
 
 
 ## <a name="error-0070"></a>Błąd 0070  
@@ -1115,7 +1116,7 @@ Zapoznaj się z następującymi artykułami, aby uzyskać pomoc dotyczącą zapy
 |Komunikaty o wyjątkach|
 |------------------------|
 |Tabela platformy Azure nie istnieje.|
-|Tabela platformy Azure "{0}" nie istnieje.|
+|Tabela platformy Azure "{table_name}" nie istnieje.|
 
 
 ## <a name="error-0072"></a>Błąd 0072  
@@ -1140,7 +1141,7 @@ Zapoznaj się z następującymi artykułami, aby uzyskać pomoc dotyczącą zapy
 |Komunikaty o wyjątkach|
 |------------------------|
 |Nie można skonwertować kolumny.|
-|Nie można skonwertować kolumny na {0}.|
+|Nie można przekonwertować kolumny na {target_type}.|
 
 
 ## <a name="error-0075"></a>Błąd 0075  
@@ -1169,7 +1170,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
 |Komunikaty o wyjątkach|
 |------------------------|
 |Nieobsługiwany tryb zapisu obiektu BLOB.|
-|Nieobsługiwany tryb zapisu obiektu BLOB: {0}.|
+|Nieobsługiwany tryb zapisu obiektu BLOB: {blob_write_mode}.|
 
 
 ## <a name="error-0078"></a>Błąd 0078  
@@ -1194,7 +1195,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
 |Komunikaty o wyjątkach|
 |------------------------|
 |Nazwa kontenera usługi Azure Storage jest niepoprawna.|
-|Nazwa kontenera usługi Azure Storage "{0}" jest niepoprawna; Oczekiwano nazwy kontenera/obiektu BLOB.|
+|Nazwa kontenera usługi Azure Storage "{container_name}" jest niepoprawna; Oczekiwano nazwy kontenera/obiektu BLOB.|
 
 
 ## <a name="error-0080"></a>Błąd 0080  
@@ -1207,7 +1208,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
 |Komunikaty o wyjątkach|
 |------------------------|
 |Kolumny zawierające wszystkie brakujące wartości są niedozwolone.|
-|Brak wszystkich wartości w kolumnie {0}.|
+|Brak wszystkich wartości w kolumnie {col_index_or_name}.|
 
 
 ## <a name="error-0081"></a>Błąd 0081  
@@ -1244,9 +1245,9 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
 |Komunikaty o wyjątkach|
 |------------------------|
 |Zestaw danych używany do szkolenia jest nieprawidłowy.|
-|{0} zawiera nieprawidłowe dane do szkoleń.|
-|{0} zawiera nieprawidłowe dane do szkoleń. Typ uczenia: {1}.|
-|{0} zawiera nieprawidłowe dane do szkoleń. Typ uczenia: {1}. Przyczyna: {2}.|
+|{data_name} zawiera nieprawidłowe dane na potrzeby szkolenia.|
+|{data_name} zawiera nieprawidłowe dane na potrzeby szkolenia. Typ Dowiedz się: {learner_type}.|
+|{data_name} zawiera nieprawidłowe dane na potrzeby szkolenia. Typ Dowiedz się: {learner_type}. Przyczyna: {powód}.|
 
 
 ## <a name="error-0084"></a>Błąd 0084  
@@ -1271,7 +1272,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
 |Komunikaty o wyjątkach|
 |------------------------|
 |Wystąpił błąd podczas obliczania skryptu.|
-|Wystąpił następujący błąd podczas obliczania skryptu. Aby uzyskać więcej informacji, zobacz Dziennik danych wyjściowych:----------rozpoczęcia komunikatu o błędzie z interpretera {script_language}----------{Message}----------koniec komunikatu o błędzie z {script_language}  interpreter----------|
+|Wystąpił następujący błąd podczas obliczania skryptu. więcej informacji można znaleźć w dzienniku danych wyjściowych:<br />----------Początek komunikatu o błędzie z interpretera {script_language}----------<br />pojawi<br />----------Koniec komunikatu o błędzie z interpretera {script_language}----------|
 
 
 ## <a name="error-0090"></a>Błąd 0090  
@@ -1284,8 +1285,8 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
 |Komunikaty o wyjątkach|
 |------------------------|
 |Nie można utworzyć tabeli programu Hive. Upewnij się, że nazwa konta usługi Azure Storage skojarzona z klastrem jest taka sama jak w przypadku przekazywania przez parametr module.|
-|Nie można utworzyć tabeli programu Hive "{0}". Upewnij się, że nazwa konta usługi Azure Storage skojarzona z klastrem jest taka sama jak w przypadku przekazywania przez parametr module.|
-|Nie można utworzyć tabeli programu Hive "{0}". Upewnij się, że nazwa konta usługi Azure Storage skojarzona z klastrem to "{1}".|
+|Nie można utworzyć tabeli programu Hive "{table_name}". Upewnij się, że nazwa konta usługi Azure Storage skojarzona z klastrem jest taka sama jak w przypadku przekazywania przez parametr module.|
+|Nie można utworzyć tabeli programu Hive "{table_name}". Upewnij się, że nazwa konta usługi Azure Storage skojarzona z klastrem to "{cluster_name}".|
 
 
 ## <a name="error-0102"></a>Błąd 0102  
@@ -1317,6 +1318,19 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
 |Określono nieobsługiwany typ parametru "{0}".|  
 
 
+## <a name="error-0107"></a>Błąd 0107  
+ Zgłaszany, gdy plik definicji modułu definiuje nieobsługiwany typ wyjściowy  
+  
+ Ten błąd w Azure Machine Learning jest tworzony, gdy typ portu wyjściowego w definicji XML modułu niestandardowego nie jest zgodny z obsługiwanym typem.  
+  
+**Rozwiązanie:** Upewnij się, że Właściwość Type elementu wyjściowego w pliku definicji XML modułu niestandardowego jest obsługiwana.  
+  
+|Komunikaty o wyjątkach|  
+|------------------------|  
+|Nieobsługiwany typ danych wyjściowych.|  
+|Określono nieobsługiwany typ wyjściowy "{output_type}".|  
+
+
 ## <a name="error-0125"></a>Błąd 0125  
  Zgłaszany, gdy schemat dla wielu zestawów danych nie jest zgodny.  
 
@@ -1342,7 +1356,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
 |Komunikaty o wyjątkach|
 |------------------------|
 |Rozmiar pikseli obrazu przekracza dozwolony limit.|
-|Rozmiar pikseli obrazu w pliku "{0}" przekracza dozwolony limit: "{1}".|
+|Rozmiar pikseli obrazu w pliku "{file_path}" przekracza dozwolony limit: "{size_limit}".|
 
 
 ## <a name="error-0128"></a>Błąd 0128  
@@ -1353,7 +1367,7 @@ Obsługa błędów dla tego zdarzenia została wprowadzona we wcześniejszej wer
 |Komunikaty o wyjątkach|
 |------------------------|
 |Liczba prawdopodobieństwa warunkowego dla kolumn kategorii przekracza limit.|
-|Liczba prawdopodobieństwa warunkowego dla kolumn kategorii przekracza limit. Kolumny "{0}" i "{1}" są problematyczną parą.|
+|Liczba prawdopodobieństwa warunkowego dla kolumn kategorii przekracza limit. Kolumny "{column_name_or_index_1}" i "{column_name_or_index_2}" są problematyczną parą.|
 
 
 ## <a name="error-0129"></a>Błąd 0129  
@@ -1376,7 +1390,7 @@ Ten błąd występuje, gdy moduł wymaga kolumny etykieta, ale nie dołączysz g
 
 Ten błąd może również wystąpić, gdy Poprzednia operacja zmienia zestaw danych, taki jak niewystarczająca liczba wierszy dla operacji podrzędnej. Załóżmy na przykład, że używasz wyrażenia z **partycji i przykładowego** modułu do dzielenia zestawu danych przez wartości. Jeśli nie znaleziono żadnych dopasowań dla wyrażenia, jeden z zestawów danych uzyskanych z partycji będzie pusty.
 
-Rozwiązanie: 
+{1&gt;Rozwiązanie&lt;1}: 
 
  Jeśli w zaznaczeniu kolumny zostanie uwzględniona kolumna etykieta, ale nie zostanie ona rozpoznana, użyj modułu [Edytuj metadane](edit-metadata.md) , aby oznaczyć ją jako kolumnę etykiety.
 
@@ -1424,7 +1438,7 @@ Rozwiązanie:
 |Komunikaty o wyjątkach|
 |------------------------|
 |Liczba wybranych kolumn liczbowych i unikatowych wartości w kolumnach kategorii i String jest za mała.|
-|Łączna liczba wybranych kolumn liczbowych i unikatowych wartości w kolumnach kategorii i String (obecnie {0}) powinna wynosić co najmniej {1}.|
+|Łączna liczba wybranych kolumn liczbowych i unikatowych wartości w kolumnach kategorii i String (obecnie {actual_num}) powinna wynosić co najmniej {lower_boundary}.|
 
 
 ## <a name="error-0154"></a>Błąd 0154  
@@ -1473,6 +1487,6 @@ Aby uzyskać dalszą pomoc, zalecamy opublikowanie szczegółowego komunikatu za
 |Komunikaty o wyjątkach|
 |------------------------|
 |Wyjątek biblioteki.|
-|Wyjątek biblioteki: {0}.|
-|Nieznany wyjątek biblioteki: {0}. {1}.|
+|Wyjątek biblioteki: {Exception}.|
+|Nieznany wyjątek biblioteki: {Exception}. {customer_support_guidance}.|
 

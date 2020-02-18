@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 1948151dfa07e565a929b4506273e3f88f5408c4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3e41f92f9e41f7a05102e8c0e1c2edb81fa50bf3
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907827"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426330"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Konfigurowanie Azure Monitor dzienników i zbieranie danych diagnostycznych dla Azure Logic Apps
 
@@ -111,7 +111,7 @@ Podczas przechowywania informacji o zdarzeniach i danych środowiska uruchomieni
 
    1. Po zakończeniu wybierz pozycję **Zapisz**.
 
-   Przykład:
+   Na przykład:
 
    ![Wybierz Log Analytics obszar roboczy i dane do rejestrowania](./media/monitor-logic-apps-log-analytics/send-diagnostics-data-log-analytics-workspace.png)
 
@@ -179,7 +179,7 @@ Wraz z Azure Monitorymi dziennikami możesz dołożyć, jak używać danych diag
 * [Archiwizuj dzienniki zasobów platformy Azure na koncie magazynu](../azure-monitor/platform/resource-logs-collect-storage.md)
 * [Przesyłanie strumieniowe dzienników platformy Azure do usługi Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
-Następnie można uzyskać monitorowanie w czasie rzeczywistym, korzystając z danych telemetrycznych i analiz z innych usług, takich jak [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) i [Power BI](../azure-monitor/platform/powerbi.md). Przykład:
+Następnie można uzyskać monitorowanie w czasie rzeczywistym, korzystając z danych telemetrycznych i analiz z innych usług, takich jak [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) i [Power BI](../azure-monitor/platform/powerbi.md). Na przykład:
 
 * [Przesyłanie strumieniowe danych z Event Hubs do Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analizowanie danych przesyłanych strumieniowo za pomocą Stream Analytics i tworzenie pulpitu nawigacyjnego analizy w czasie rzeczywistym w programie Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/17/2020
 ms.author: tagore
-ms.openlocfilehash: c4cbe2a99de97b2938d494e80d410a44c4143629
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 85fb87e23fa11781587572e836d1439dd813170e
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026837"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425038"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Rozwiązywanie problemów z aplikacjami, które nie obsługują protokołu TLS 1,2
 W tym artykule opisano sposób włączania starszych protokołów TLS (TLS 1,0 i 1,1) oraz stosowania starszych mechanizmów szyfrowania w celu obsługi dodatkowych protokołów w systemie Windows Server 2019 w sieci Web i roli procesu roboczego usługi w chmurze. 
@@ -27,7 +27,7 @@ W tym artykule opisano sposób włączania starszych protokołów TLS (TLS 1,0 i
 Firma Microsoft zdaje sobie sprawę, że podczas wykonywania kroków w celu wycofania protokołu TLS 1,0 i TLS 1,1 klienci mogą potrzebować obsługi starszych protokołów i mechanizmów szyfrowania do momentu, gdy będą mogli zaplanować ich wycofanie.  Mimo że nie zalecamy ponownego włączenia tych starszych wartości, udostępniamy wskazówki ułatwiające klientom. Zachęcamy klientów do ocenienia ryzyka związanego z regresją przed wdrożeniem zmian opisanych w tym artykule. 
 
 > [!NOTE]
-> W systemie operacyjnym gościa 6 wydania są wymuszane protokoły TLS 1,2 przez wyłączenie szyfrów 1.0/1.0. 
+> System operacyjny gościa 6 wydania wymusza protokół TLS 1,2 przez wyłączenie szyfrów 1.0/1.1. 
 
   
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>Porzucanie pomocy technicznej dla protokołów TLS 1,0, TLS 1,1 i starszych mechanizmów szyfrowania 

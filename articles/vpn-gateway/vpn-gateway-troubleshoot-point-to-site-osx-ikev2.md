@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: f76fd7bce539ebcf79216aabb5bf868b2d18107a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: f88053c93884e10e46a0f7d70106bda67b057562
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780185"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425729"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Rozwiązywanie problemów z połączeniami sieci VPN typu punkt-lokacja z klientów Mac OS X w sieci VPN
 
@@ -25,42 +25,42 @@ Ten artykuł pomaga rozwiązać problemy z połączeniem punkt-lokacja z systeme
 * Wersja systemu operacyjnego (10.11 lub nowszej)
 
 
-## <a name="VPNClient"></a> Rozwiązywanie problemów z uwierzytelniania opartego na certyfikatach
-1. Sprawdź ustawienia klienta sieci VPN. Przejdź do **ustawienia sieci** naciskając polecenie + klawisz Shift, a następnie wpisz "Sieć VPN" do sprawdzenia ustawień klienta sieci VPN. Z listy kliknij wpis sieci VPN, który musi zostać zbadana.
+## <a name="VPNClient"></a>Rozwiązywanie problemów z uwierzytelnianiem opartym na certyfikatach
+1. Sprawdź ustawienia klienta sieci VPN. Przejdź do **Ustawienia sieci** , naciskając klawisze Command + Shift, a następnie wpisz "VPN", aby sprawdzić ustawienia klienta sieci VPN. Z listy kliknij wpis sieci VPN, który musi zostać zbadana.
 
    ![Uwierzytelnianie oparte na certyfikatach protokołu IKEv2](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2cert1.jpg)
-2. Upewnij się, że **adres serwera** jest pełną nazwę FQDN i uwzględnia cloudapp.net.
-3. **Identyfikator zdalnego** powinna być taka sama jak adres serwera (nazwa FQDN bramy).
-4. **Lokalnego Identyfikatora** powinna być taka sama jak **podmiotu** certyfikatu klienta.
-5. Kliknij pozycję **ustawienia uwierzytelniania** o otwarcie strony ustawień uwierzytelniania.
+2. Sprawdź, czy **adres serwera** jest pełną nazwą FQDN i zawiera cloudapp.NET.
+3. **Identyfikator zdalny** powinien być taki sam jak adres serwera (FQDN bramy).
+4. **Lokalny identyfikator** powinien być taki sam jak **podmiot** certyfikatu klienta.
+5. Kliknij pozycję **Ustawienia uwierzytelniania** , aby otworzyć stronę Ustawienia uwierzytelniania.
 
    ![ustawienia uwierzytelniania](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
-6. Upewnij się, że **certyfikatu** wybrania z listy rozwijanej.
-7. Kliknij przycisk **wybierz** znajdujący się i sprawdź, czy wybrano prawidłowy certyfikat. Kliknij przycisk **OK** umożliwia zapisanie wszelkich zmian.
+6. Upewnij się, że wybrano **certyfikat** z listy rozwijanej.
+7. Kliknij przycisk **Wybierz** i sprawdź, czy wybrano prawidłowy certyfikat. Kliknij przycisk **OK** , aby zapisać zmiany.
 
-## <a name="ikev2"></a>Rozwiązywanie problemów z uwierzytelniania nazwy użytkownika i hasła
+## <a name="ikev2"></a>Rozwiązywanie problemów z uwierzytelnianiem nazwy użytkownika i hasła
 
-1. Sprawdź ustawienia klienta sieci VPN. Przejdź do **ustawienia sieci** naciskając polecenie + klawisz Shift, a następnie wpisz "Sieć VPN" do sprawdzenia ustawień klienta sieci VPN. Z listy kliknij wpis sieci VPN, który musi zostać zbadana.
+1. Sprawdź ustawienia klienta sieci VPN. Przejdź do **Ustawienia sieci** , naciskając klawisze Command + Shift, a następnie wpisz "VPN", aby sprawdzić ustawienia klienta sieci VPN. Z listy kliknij wpis sieci VPN, który musi zostać zbadana.
 
    ![Hasło nazwy użytkownika protokołu IKEv2](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2user3.jpg)
-2. Upewnij się, że **adres serwera** jest pełną nazwę FQDN i uwzględnia cloudapp.net.
-3. **Identyfikator zdalnego** powinna być taka sama jak adres serwera (nazwa FQDN bramy).
-4. **Lokalnego Identyfikatora** może być pusta.
-5. Kliknij przycisk **ustawienia uwierzytelniania** znajdujący się i sprawdź, czy wybrano "Nazwa_użytkownika", z listy rozwijanej.
+2. Sprawdź, czy **adres serwera** jest pełną nazwą FQDN i zawiera cloudapp.NET.
+3. **Identyfikator zdalny** powinien być taki sam jak adres serwera (FQDN bramy).
+4. **Identyfikator lokalny** może być pusty.
+5. Kliknij przycisk **Ustawienia uwierzytelniania** i sprawdź, czy wybrano pozycję "username" z listy rozwijanej.
 
-   ![ustawienia uwierzytelniania](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.jpg)
+   ![ustawienia uwierzytelniania](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
 6. Sprawdź, czy wprowadzono poprawne poświadczenia.
 
 ## <a name="additional"></a>Dodatkowe kroki
 
-Jeśli spróbujesz poprzednich kroków i wszystko jest poprawnie skonfigurowana, Pobierz [Wireshark](https://www.wireshark.org/#download) i wykonać przechwytywania pakietów.
+Jeśli spróbujesz wykonać poprzednie kroki i wszystko jest prawidłowo skonfigurowane, Pobierz program [Wireshark](https://www.wireshark.org/#download) i Przechwyć pakiet.
 
-1. Filtrowanie według *isakmp* i przyjrzyj się **IKE_SA** pakietów. Powinno być możliwe wyświetlić szczegóły propozycji skojarzeń zabezpieczeń, w obszarze **ładunek: oferty skojarzeń zabezpieczeń**. 
+1. Odfiltruj protokół *ISAKMP* i sprawdź, czy **IKE_SA** pakiety. Powinien być w stanie zapoznać się ze szczegółami oferty SKOJARZENIA zabezpieczeń w obszarze **ładunek: zabezpieczenia**. 
 2. Sprawdź, czy klient i serwer cechują się wspólnym zestawem.
 
    ![pakiet](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg) 
   
-3. Jeśli istnieje serwer nie odpowiedział na danych śledzenia sieci, sprawdź, czy włączono protokół IKEv2, na stronie konfiguracji bramy platformy Azure w witrynie Azure Portal.
+3. Jeśli w śladach sieci nie ma odpowiedzi serwera, sprawdź, czy na stronie Konfiguracja bramy platformy Azure w witrynie sieci Web Azure Portal włączono protokół IKEv2.
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać dodatkową pomoc, zobacz [Microsoft Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Aby uzyskać dodatkową pomoc, zobacz [Pomoc techniczna firmy Microsoft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

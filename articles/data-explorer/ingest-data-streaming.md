@@ -7,23 +7,23 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: cc152460be777c30d79f783b9acfa846a4c73a72
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 49129bede62e456cf2807cc879b7fc5e1793b65b
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188016"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424953"
 ---
 # <a name="streaming-ingestion-preview"></a>Pozyskiwanie strumieniowe (wersja zapoznawcza)
 
-Pozyskiwanie strumieniowe jest przeznaczone dla scenariuszy wymagających małych opóźnień i czasu pozyskiwania mniejszego niż 10 sekund w przypadku różnych danych woluminu. Służy do optymalizacji przetwarzania operacyjnego wielu tabel w co najmniej jednej bazie danych, w której strumień danych do każdej tabeli jest stosunkowo mały (liczba rekordów na sekundę), ale ogólny wolumin pozyskiwania danych jest wysoki (tysiące rekordów na sekundę).
+Pozyskiwanie strumieniowe jest przeznaczone dla scenariuszy wymagających małych opóźnień i czasu pozyskiwania mniejszego niż 10 sekund w przypadku różnych danych woluminu. Służy do optymalizowania przetwarzania operacyjnego wielu tabel w co najmniej jednej bazie danych, gdzie strumień danych do każdej tabeli jest stosunkowo mały (liczba rekordów na sekundę), ale ogólny wolumin pozyskiwania danych jest wysoki (tysiące rekordów na sekundę).
 
 Użyj operacji pozyskiwania klasycznego (zbiorczego) zamiast pozyskiwania strumieniowego, gdy ilość danych rośnie do ponad 1 MB na sekundę na tabelę. Zapoznaj się z omówieniem pozyskiwania [danych](/azure/data-explorer/ingest-data-overview) , aby dowiedzieć się więcej o różnych metodach pozyskiwania.
 
 > [!NOTE]
 > Pozyskiwanie strumieniowe nie obsługuje następujących funkcji:
 > * [Kursory bazy danych](/azure/kusto/management/databasecursor).
-> * [Mapowanie danych](/azure/kusto/management/mappings). Obsługiwane jest tylko [wstępnie utworzone](/azure/kusto/management/create-ingestion-mapping-command) mapowanie danych. 
+> * [Mapowanie danych](/azure/kusto/management/mappings). Obsługiwane jest tylko [wstępnie utworzone](/azure/kusto/management/tables#create-ingestion-mapping) mapowanie danych. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -64,7 +64,7 @@ Istnieją dwa obsługiwane typy pozyskiwania strumieniowego:
 > [!WARNING]
 > Wyłączenie pozyskiwania przesyłania strumieniowego może potrwać kilka godzin.
 
-1. Porzuć zasady pozyskiwania [strumieniowego](/azure/kusto/concepts/streamingingestionpolicy) ze wszystkich odpowiednich tabel i baz danych. Usunięcie zasad pozyskiwania strumieniowego spowoduje wyzwolenie przepływu danych pozyskiwania strumieniowego z magazynu początkowego do magazynu trwałego w magazynie kolumn (zakresy lub fragmentów). Przenoszenie danych może trwać od kilku sekund do kilku godzin, w zależności od ilości danych w magazynie początkowym oraz użycia procesora CPU i pamięci w klastrze.
+1. Porzuć zasady pozyskiwania [strumieniowego](/azure/kusto/concepts/streamingingestionpolicy) ze wszystkich odpowiednich tabel i baz danych. Usunięcie zasad pozyskiwania strumieniowego spowoduje wyzwolenie przepływu danych pozyskiwania strumieniowego z magazynu początkowego do magazynu trwałego w magazynie kolumn (zakresy lub fragmentów). Przenoszenie danych może trwać od kilku sekund do kilku godzin, w zależności od ilości danych w magazynie początkowym oraz sposobu użycia procesora i pamięci przez klaster.
 1. W Azure Portal przejdź do klastra usługi Azure Eksplorator danych. W obszarze **Ustawienia**wybierz pozycję **konfiguracje**. 
 1. W okienku **konfiguracje** wybierz pozycję **wyłączone** , aby wyłączyć pozyskiwanie **strumieniowe**.
 1. Wybierz pozycję **Zapisz**.
@@ -73,10 +73,11 @@ Istnieją dwa obsługiwane typy pozyskiwania strumieniowego:
 
 ## <a name="limitations"></a>Ograniczenia
 
-* Skalowanie wydajności i pojemności pozyskiwania strumieniowego przy użyciu zwiększonych rozmiarów maszyn wirtualnych i klastrów. Współbieżne pozyskiwania są ograniczone do 6 operacji pozyskiwania na rdzeń. Na przykład dla 16 podstawowych jednostek SKU, takich jak D14 i L16, Maksymalne obsługiwane obciążenie to 96 współbieżności. W przypadku 2 podstawowych jednostek SKU, takich jak D11, Maksymalne obsługiwane obciążenie to 12 współbieżnych operacji pozyskiwania.
+* Skalowanie wydajności i pojemności pozyskiwania strumieniowego przy użyciu zwiększonych rozmiarów maszyn wirtualnych i klastrów. Współbieżne pozyskiwania są ograniczone do sześciu pozyskań na rdzeń. Na przykład dla 16 podstawowych jednostek SKU, takich jak D14 i L16, Maksymalne obsługiwane obciążenie to 96 współbieżności. W przypadku dwóch podstawowych jednostek SKU, takich jak D11, Maksymalne obsługiwane obciążenie to 12 współbieżnych operacji pozyskiwania.
 * Limit rozmiaru danych na żądanie pozyskiwania wynosi 4 MB.
 * Aktualizacje schematu, takie jak tworzenie i modyfikowanie tabel i mapowania pozyskiwania, mogą potrwać do 5 minut w przypadku usługi pozyskiwania strumieniowego.
 * Włączenie pozyskiwania przesyłania strumieniowego w klastrze, nawet w przypadku, gdy dane nie są pozyskiwane za pośrednictwem przesyłania strumieniowego, program używa części lokalnego dysku SSD maszyn klastra do przesyłania strumieniowego danych pozyskiwania i zmniejsza ilość miejsca dostępnego na gorącą pamięć podręczną.
+* Nie można ustawić [tagów zakresu](/azure/kusto/management/extents-overview.md#extent-tagging) w danych pozyskiwania strumieniowego.
 
 ## <a name="next-steps"></a>Następne kroki
 

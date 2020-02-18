@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 60378632a55fe4578bb376a3a00de5efffc5d275
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 870064406c86e9cef6a45dfbe47c61cdaa9ecab0
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976951"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426313"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurowanie zapór Azure Key Vault i sieci wirtualnych
 
@@ -27,7 +27,7 @@ Ten artykuł zawiera instrukcje krok po kroku dotyczące konfigurowania zapór A
 Poniżej przedstawiono sposób konfigurowania zapór Key Vault i sieci wirtualnych przy użyciu Azure Portal:
 
 1. Przejdź do magazynu kluczy, który chcesz zabezpieczyć.
-2. Wybierz pozycję **zapory i sieci wirtualne**.
+2. Wybierz pozycję **Sieć**, a następnie wybierz kartę **zapory i sieci wirtualne** .
 3. W obszarze **Zezwalaj na dostęp z**, wybierz opcję **wybrane sieci**.
 4. Aby dodać istniejące sieci wirtualne do zapór i reguł sieci wirtualnej, wybierz pozycję **+ Dodaj istniejące sieci wirtualne**.
 5. W nowym bloku, który zostanie otwarty, wybierz subskrypcję, sieci wirtualne i podsieci, dla których chcesz zezwolić na dostęp do tego magazynu kluczy. Jeśli wybrane sieci wirtualne i podsieci nie mają włączonych punktów końcowych usługi, potwierdź, że chcesz włączyć punkty końcowe usługi, a następnie wybierz pozycję **Włącz**. Wprowadzenie zmian może potrwać do 15 minut.
@@ -63,7 +63,7 @@ Poniżej przedstawiono sposób konfigurowania zapór Key Vault i sieci wirtualny
    az keyvault network-rule add --resource-group "myresourcegroup" --name "mykeyvault" --ip-address "191.10.18.0/24"
    ```
 
-6. Jeśli ten magazyn kluczy powinien być dostępny dla wszystkich zaufanych usług, ustaw `bypass` opcję `AzureServices`na.
+6. Jeśli ten magazyn kluczy powinien być dostępny dla wszystkich zaufanych usług, ustaw `bypass` na `AzureServices`.
    ```azurecli
    az keyvault update --resource-group "myresourcegroup" --name "mykeyvault" --bypass AzureServices
    ```
@@ -102,7 +102,7 @@ Poniżej przedstawiono sposób konfigurowania zapór Key Vault i sieci wirtualny
    Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
    ```
 
-6. Jeśli ten magazyn kluczy powinien być dostępny dla wszystkich zaufanych usług, ustaw `bypass` opcję `AzureServices`na.
+6. Jeśli ten magazyn kluczy powinien być dostępny dla wszystkich zaufanych usług, ustaw `bypass` na `AzureServices`.
    ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
    ```
@@ -112,7 +112,7 @@ Poniżej przedstawiono sposób konfigurowania zapór Key Vault i sieci wirtualny
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```
 
-## <a name="references"></a>Odwołania
+## <a name="references"></a>Dokumentacja
 
 * Polecenie interfejsu wiersza polecenia platformy Azure: [AZ datamagazyn Network-Rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
 * Polecenia cmdlet Azure PowerShell: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)

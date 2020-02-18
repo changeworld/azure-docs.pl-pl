@@ -3,16 +3,16 @@ title: Tworzenie kopii zapasowych plików i folderów — często zadawane pytan
 description: Rozwiązuje często zadawane pytania dotyczące tworzenia kopii zapasowych plików i folderów za pomocą Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 45c01a08151060b60b0f3e3b27b2fcc16ec8e60b
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720365"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425072"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Często zadawane pytania dotyczące tworzenia kopii zapasowych plików i folderów
 
-W tym artykule znajdują się odpowiedzi na często zadawane pytania abound tworzenia kopii zapasowych plików i folderów za pomocą agenta Microsoft Azure Recovery Services (MARS) w usłudze [Azure Backup](backup-overview.md) .
+Ten artykuł zawiera odpowiedzi na często zadawane pytania abound tworzenia kopii zapasowych plików i folderów za pomocą agenta Microsoft Azure Recovery Services (MARS) w usłudze [Azure Backup](backup-overview.md) .
 
 ## <a name="configure-backups"></a>Skonfigurowanie funkcji tworzenia kopii zapasowych
 
@@ -90,7 +90,7 @@ To ostrzeżenie może wystąpić, mimo że skonfigurowano zasady tworzenia kopii
 Rozmiar folderu pamięci podręcznej określa ilość danych, które można umieścić w kopii zapasowej.
 
 * Woluminy folderu pamięci podręcznej powinny mieć wolne miejsce mające co najmniej 5-10% całkowitego rozmiaru danych kopii zapasowej.
-* Jeśli wolumin ma mniej niż 5% wolnego miejsca, Zwiększ rozmiar woluminu lub Przenieś folder pamięci podręcznej do woluminu z wystarczającą ilością miejsca.
+* Jeśli ilość wolnego miejsca na woluminie jest mniejsza niż 5%, Zwiększ rozmiar woluminu lub Przenieś folder pamięci podręcznej na wolumin z wystarczającą ilością miejsca, wykonując następujące [kroki](#how-do-i-change-the-cache-location-for-the-mars-agent).
 * W przypadku tworzenia kopii zapasowej stanu systemu Windows potrzeba dodatkowego 30-35 GB wolnego miejsca w woluminie zawierającym folder pamięci podręcznej.
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Jak sprawdzić, czy folder z katalogiem tymczasowym jest prawidłowy i dostępny?
@@ -98,35 +98,35 @@ Rozmiar folderu pamięci podręcznej określa ilość danych, które można umie
 1. Domyślnie folder tymczasowy znajduje się w lokalizacji `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. Upewnij się, że ścieżka lokalizacji folderu tymczasowego jest zgodna z wartościami wpisów kluczy rejestru wymienionych poniżej:
 
-  | Ścieżka rejestru | Klucz rejestru | Wartość |
-  | --- | --- | --- |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nowa lokalizacja folderu pamięci podręcznej* |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nowa lokalizacja folderu pamięci podręcznej* |
+    | Ścieżka rejestru | Klucz rejestru | Wartość |
+    | --- | --- | --- |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nowa lokalizacja folderu pamięci podręcznej* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nowa lokalizacja folderu pamięci podręcznej* |
 
 ### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Jak mogę zmienić lokalizacji pamięci podręcznej agenta MARS?
 
 1. Uruchom to polecenie w wierszu polecenia z podwyższonym poziomem uprawnień, aby zatrzymać aparat kopii zapasowych:
 
     ```Net stop obengine```
-
 2. Jeśli skonfigurowano kopię zapasową stanu systemu, Otwórz przystawkę Zarządzanie dyskami i Odinstaluj dyski z nazwami w formacie `"CBSSBVol_<ID>"`.
-3. Nie przenoś plików. Zamiast tego Skopiuj folder miejsce w pamięci podręcznej na inny dysk, na którym jest wystarczająca ilość miejsca.
-4. Zaktualizuj następujące wpisy rejestru przy użyciu ścieżki nowego folderu pamięci podręcznej.
+3. Domyślnie folder tymczasowy znajduje się w lokalizacji `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+4. Skopiuj cały folder `\Scratch` na inny dysk, na którym jest wystarczająca ilość miejsca. Upewnij się, że zawartość jest kopiowana, a nie przeniesiona.
+5. Zaktualizuj następujące wpisy rejestru ze ścieżką nowo przeniesionego folderu tymczasowego.
 
     | Ścieżka rejestru | Klucz rejestru | Wartość |
     | --- | --- | --- |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nowa lokalizacja folderu pamięci podręcznej* |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nowa lokalizacja folderu pamięci podręcznej* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nowa lokalizacja folderu tymczasowego* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nowa lokalizacja folderu tymczasowego* |
 
-5. Uruchom ponownie aparat kopii zapasowej w wierszu polecenia z podwyższonym poziomem uprawnień:
+6. Uruchom ponownie aparat kopii zapasowej w wierszu polecenia z podwyższonym poziomem uprawnień:
 
-  ```command
-  Net stop obengine
+    ```command
+    Net stop obengine
 
-  Net start obengine
-  ```
+    Net start obengine
+    ```
 
-6. Uruchom kopię zapasową na żądanie. Po pomyślnym zakończeniu tworzenia kopii zapasowej za pomocą nowej lokalizacji można usunąć oryginalny folder pamięci podręcznej.
+7. Uruchom kopię zapasową na żądanie. Po pomyślnym zakończeniu tworzenia kopii zapasowej za pomocą nowej lokalizacji można usunąć oryginalny folder pamięci podręcznej.
 
 ### <a name="where-should-the-cache-folder-be-located"></a>Gdzie ma znajdować się folder pamięci podręcznej?
 
@@ -139,7 +139,7 @@ Nie zaleca się stosowania następujących lokalizacji dla folderu pamięci podr
 
 Następujące atrybuty folderu pamięci podręcznej ani ich kombinacje nie są obsługiwane:
 
-* Szyfrowane
+* Zaszyfrowane
 * Deduplikowane
 * Skompresowane
 * Rozrzedzone
@@ -160,10 +160,10 @@ Agent Azure Backup wymaga hasła (podanego podczas rejestracji) do odszyfrowania
 
 | Oryginalna maszyna <br> *(maszyna źródłowa, w której zostały wykonane kopie zapasowe)* | Passphrase | Dostępne opcje |
 | --- | --- | --- |
-| Dostępna |Następuje |Jeśli oryginalny komputer (w którym zostały wykonane kopie zapasowe) jest dostępny i nadal zarejestrowany w tym samym magazynie Recovery Services, możesz ponownie wygenerować hasło, wykonując następujące [kroki](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase).  |
+| Dostępne |Następuje |Jeśli oryginalny komputer (w którym zostały wykonane kopie zapasowe) jest dostępny i nadal zarejestrowany w tym samym magazynie Recovery Services, możesz ponownie wygenerować hasło, wykonując następujące [kroki](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase).  |
 | Następuje |Następuje |Nie można odzyskać danych lub dane są niedostępne |
 
-Należy rozważyć następujące kwestie:
+Należy wziąć pod uwagę następujące warunki:
 
 * Po odinstalowaniu i ponownym zarejestrowaniu agenta na tym samym komputerze oryginalnym przy użyciu
   * To *samo hasło*, a następnie będzie można przywrócić dane kopii zapasowej.
@@ -179,7 +179,7 @@ Jeśli masz takie samo hasło (podane podczas rejestracji) oryginalnego komputer
 
 | Oryginalna maszyna | Passphrase | Dostępne opcje |
 | --- | --- | --- |
-| Następuje |Dostępna |Agenta MARS można zainstalować i zarejestrować na innym komputerze z hasłem podanym podczas rejestracji oryginalnej maszyny. Wybierz **opcję odzyskiwania** > **inną lokalizację** , aby przeprowadzić przywracanie. Więcej informacji znajduje się w [tym](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine) artykule.
+| Następuje |Dostępne |Agenta MARS można zainstalować i zarejestrować na innym komputerze z hasłem podanym podczas rejestracji oryginalnej maszyny. Wybierz **opcję odzyskiwania** > **inną lokalizację** , aby przeprowadzić przywracanie. Więcej informacji znajduje się w [tym](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine) artykule.
 | Następuje |Następuje |Nie można odzyskać danych lub dane są niedostępne |
 
 

@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: fbb30b0a290011a5edfb05c1de9b5d4717a5f733
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1cd13369f443f91782eef1024003e07435a44a45
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898711"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425225"
 ---
 # <a name="keys-and-values"></a>Klucze i wartości
 
@@ -25,7 +25,7 @@ Użycie danych konfiguracji w ramach struktur aplikacji może dyktować określo
 
 Klucze przechowywane w usłudze App Configuration są opartymi na standardzie Unicode ciągami uwzględniającymi wielkość liter. Klucze *APP1* i *APP1* są odrębne w magazynie konfiguracji aplikacji. Należy pamiętać o tym, gdy używasz ustawień konfiguracji w ramach aplikacji, ponieważ niektóre struktury obsługują bez uwzględniania wielkości liter w kluczach konfiguracji. Na przykład system konfiguracji platformy ASP.NET Core traktuje klucze jako ciągi bez uwzględniania wielkości liter. Aby uniknąć nieprzewidywalnych zachowań podczas wykonywania zapytania dotyczącego konfiguracji aplikacji w aplikacji ASP.NET Core, nie używaj kluczy, które różnią się tylko wielkością liter.
 
-W nazwach kluczy wprowadzonych w konfiguracji aplikacji można używać dowolnego znaku Unicode, z wyjątkiem `*`, `,`i `\`. Te znaki są zarezerwowane. Jeśli konieczne jest dołączenie zastrzeżonego znaku, należy go wypróbować za pomocą `\{Reserved Character}`. W parze klucz-wartość istnieje łączny limit rozmiaru wynoszący 10 000 znaków. Ten limit obejmuje wszystkie znaki w kluczu, jego wartość i wszystkie skojarzone opcjonalne atrybuty. W ramach tego limitu możesz mieć wiele poziomów hierarchii dla kluczy.
+W nazwach kluczy wprowadzonych w konfiguracji aplikacji można używać dowolnego znaku Unicode, z wyjątkiem `*`, `,`i `\`. Te znaki są zarezerwowane. Jeśli konieczne jest dołączenie zastrzeżonego znaku, należy go wypróbować za pomocą `\{Reserved Character}`. Dla pary klucz-wartość istnieje łączny limit rozmiaru równy 10 KB. Ten limit obejmuje wszystkie znaki w kluczu, jego wartość i wszystkie skojarzone opcjonalne atrybuty. W ramach tego limitu możesz mieć wiele poziomów hierarchii dla kluczy.
 
 ### <a name="design-key-namespaces"></a>Przestrzenie nazw kluczy projektu
 
@@ -51,7 +51,7 @@ Poniżej przedstawiono kilka przykładów, jak można ustrukturyzować nazwy klu
 
 ### <a name="label-keys"></a>Klucze etykiet
 
-Wartości kluczy w konfiguracji aplikacji mogą opcjonalnie mieć atrybut Label. Etykiety służą do odróżniania wartości klucza z tym samym kluczem. Key *APP1* *z etykietami a* i *B* tworzy dwa osobne klucze w magazynie konfiguracji aplikacji. Domyślnie etykieta wartości klucza jest pusta lub `null`.
+Wartości kluczy w konfiguracji aplikacji mogą opcjonalnie mieć atrybut Label. Etykiety służą do odróżniania wartości klucza z tym samym kluczem. Key *APP1* *z etykietami a* i *B* tworzy dwa osobne klucze w magazynie konfiguracji aplikacji. Domyślnie wartość klucza nie ma etykiety. Aby jawnie odwoływać się do wartości klucza bez etykiety, użyj `\0` (adres URL zakodowany jako `%00`).
 
 Etykieta zapewnia wygodny sposób tworzenia wariantów klucza. Typowym zastosowaniem etykiet jest określenie wielu środowisk dla tego samego klucza:
 
@@ -74,20 +74,16 @@ Każda wartość klucza jest unikatowo identyfikowana przez jego klucz oraz etyk
 | Element `key` jest pomijany lub `key=*` | Pasuje do wszystkich kluczy |
 | `key=abc` | Dopasowuje dokładnie nazwę klucza **ABC** |
 | `key=abc*` | Pasuje do nazw kluczy, które zaczynają się od ciągu **abc** |
-| `key=*abc` | Pasuje do nazw kluczy, które kończą się ciągiem **abc** |
-| `key=*abc*` | Pasuje do nazw kluczy, które zawierają ciąg **abc** |
 | `key=abc,xyz` | Dopasowuje nazwy kluczy **ABC** lub **XYZ**, ograniczone do pięciu CSV |
 
 Można też uwzględnić następujące wzorce etykiet:
 
-| Etykieta | |
+| Label | |
 |---|---|
 | Element `label` jest pomijany lub `label=*` | Dopasowuje dowolną etykietę, która zawiera `null` |
 | `label=%00` | Dopasowuje etykietę `null` |
 | `label=1.0.0` | Dokładnie pasuje do etykiety **1.0.0** |
 | `label=1.0.*` | Pasuje do etykiet zaczynających się od **1.0.** |
-| `label=*.0.0` | Pasuje do etykiet kończących się na **.0.0** |
-| `label=*.0.*` | Pasuje do etykiet zawierających **.0.** |
 | `label=%00,1.0.0` | Dopasowuje etykiety `null` lub **1.0.0**, ograniczone do pięciu CSV |
 
 ## <a name="values"></a>Wartości

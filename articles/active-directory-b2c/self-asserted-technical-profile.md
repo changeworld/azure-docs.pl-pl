@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/16/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 37d895e2514d01bdbe73f42e1ba5ea5e4c46bfa1
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 8f2a86f72f16a23b0133601cfe41b9e636d8866d
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372866"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425599"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj własny profil techniczny w Azure Active Directory B2C zasad niestandardowych
 
@@ -55,7 +55,7 @@ W profilu technicznym z własnym potwierdzeniem można użyć elementów **Input
 
 Funkcja wyświetlania oświadczeń jest obecnie w **wersji zapoznawczej**.
 
-Element **DisplayClaims** zawiera listę oświadczeń, które mają być wyświetlane na ekranie w celu zbierania danych od użytkownika. Aby wstępnie wypełnić wartości oświadczeń wyjściowych, należy użyć oświadczeń wejściowych, które zostały wcześniej opisane. Element może również zawierać wartość domyślną.
+Element **DisplayClaims** zawiera listę oświadczeń, które mają być wyświetlane na ekranie w celu zbierania danych od użytkownika. Aby wstępnie wypełnić wartości oświadczeń ekranu, użyj oświadczeń wejściowych, które zostały wcześniej opisane. Element może również zawierać wartość domyślną.
 
 Kolejność oświadczeń w **DisplayClaims** określa kolejność, w której Azure AD B2C renderuje oświadczenia na ekranie. Aby wymusić dostarczenie przez użytkownika wartości określonego żądania, należy ustawić **wymagany** atrybut elementu **DisplayClaim** , aby `true`.
 

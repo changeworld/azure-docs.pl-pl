@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 34f5de01df72b48d275448e028ab0f8cb71e51f8
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132064"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424936"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Rozwiązywanie problemów z kwerendą podczas korzystania z Azure Cosmos DB
 
@@ -75,7 +75,7 @@ Możesz odwoływać się do poniższej sekcji, aby poznać odpowiednie optymaliz
 
  Poniżej znajduje się przykładowe zapytanie skanowania, które nie było całkowicie obsługiwane przez indeks.
 
-Zapytanie:
+Kwerenda:
 
  ```sql
 SELECT VALUE c.description
@@ -119,7 +119,7 @@ Jeśli uruchamiamy proste zapytanie w zestawie danych [odżywiania](https://gith
 
 ### <a name="original"></a>Oryginał
 
-Zapytanie:
+Kwerenda:
 
 ```sql
 SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
@@ -195,7 +195,7 @@ Zapytania z filtrem i klauzulą `ORDER BY` zwykle wykorzystują indeks zakresu, 
 
 ### <a name="original"></a>Oryginał
 
-Zapytanie:
+Kwerenda:
 
 ```sql
 SELECT * FROM c WHERE c.foodGroup = "Soups, Sauces, and Gravies" ORDER BY c._ts ASC
@@ -302,7 +302,7 @@ Jeśli liczba pobranych dokumentów jest w przybliżeniu równa liczbie dokument
 
 Azure Cosmos DB używa [partycjonowania](partitioning-overview.md) do skalowania poszczególnych kontenerów jako jednostki żądania i magazynu danych. Każda partycja fizyczna ma oddzielny i niezależny indeks. Jeśli zapytanie ma filtr równości pasujący do klucza partycji kontenera, wystarczy sprawdzić indeks odpowiedniej partycji. Ta optymalizacja zmniejsza łączną liczbę wymaganych zapytań.
 
-Jeśli masz dużą liczbę zainicjowanych przez niego jednostek RU (ponad 30 000) lub dużą ilość przechowywanych danych (ponad ~ 100 GB), być może masz wystarczająco duży rozmiar kontenera, aby zobaczyć znaczną redukcję opłat za zapytania RU.
+Jeśli masz dużą liczbę zainicjowanych przez niego jednostek RU (ponad 30 000) lub dużą ilość przechowywanych danych (ponad 100 GB), być może masz wystarczająco duży rozmiar kontenera, aby zobaczyć znaczną redukcję opłat za zapytania RU.
 
 Na przykład jeśli utworzymy kontener z kluczem partycji żywności, następujące zapytania będą wymagały tylko sprawdzenia pojedynczej partycji fizycznej:
 
@@ -383,7 +383,7 @@ Zapytania uruchamiane z innego regionu niż konto Azure Cosmos DB będą miały 
 
 ## <a name="increase-provisioned-throughput"></a>Zwiększ przepływność aprowizacji
 
-W Azure Cosmos DB zainicjowana przepływność jest mierzona w jednostkach żądania (RU). Załóżmy, że masz zapytanie, które zużywa 5 jednostek przepływności. Na przykład jeśli zainicjujesz 1 000 RU, będzie można uruchamiać zapytanie 200 razy na sekundę. Jeśli podjęto próbę uruchomienia zapytania, gdy nie jest dostępna wystarczająca przepływność, Azure Cosmos DB zwróci błąd HTTP 429. Wszystkie bieżące zestawy SDK interfejsu API (SQL) na początku zostaną automatycznie ponowić próbę wykonania tego zapytania po upływie krótkiego okresu. Żądania ograniczone przez dłuższy czas mogą zwiększyć ilość czasu oczekiwania na zainicjowaną przepływność zapytań. Można obserwować [łączną liczbę żądań ograniczających](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) żądania w bloku metryk Azure Portal.
+W Azure Cosmos DB zainicjowana przepływność jest mierzona w jednostkach żądania (RU). Załóżmy, że masz zapytanie, które zużywa 5 jednostek przepływności. Na przykład jeśli zainicjujesz 1 000 RU, będzie można uruchamiać zapytanie 200 razy na sekundę. Jeśli podjęto próbę uruchomienia zapytania, gdy nie jest dostępna wystarczająca przepływność, Azure Cosmos DB zwróci błąd HTTP 429. Wszystkie bieżące zestawy SDK interfejsu API (SQL) na początku zostaną automatycznie ponowić próbę wykonania tego zapytania po upływie krótkiego okresu. Żądania ograniczone przez dłuższy czas mogą zwiększyć ilość czasu oczekiwania na zainicjowaną przepływność zapytań. Można obserwować [łączną liczbę żądań z ograniczeniami](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) w bloku metryk Azure Portal.
 
 ## <a name="increase-maxconcurrency"></a>Zwiększ MaxConcurrency
 

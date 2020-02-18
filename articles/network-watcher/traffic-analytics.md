@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: a2a65c6fcca4a037408c6b7e780708623aebed2b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212248"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426228"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -184,9 +184,6 @@ Wybierz poniższe opcje, jak pokazano na ilustracji:
 2. Wybierz *wersję 2* dla **wersji dzienników przepływów**. Wersja 2 zawiera statystykę przepływu/sesji (bajty i pakiety)
 3. Wybierz istniejące konto magazynu, w którym mają być przechowywane dzienniki przepływów. Jeśli chcesz przechowywać dane w nieskończoność, ustaw wartość na *0*. Opłaty za usługę Azure Storage są naliczane za konto magazynu. Upewnij się, że magazyn nie ma ustawionej wartości "Data Lake Storage Gen2 hierarchiczny obszar nazw".
 4. Ustaw wartość **przechowywanie** na liczbę dni, przez którą mają być przechowywane dane.
-> [!IMPORTANT]
-> Obecnie występuje problem polegający na tym, że [dzienniki przepływu sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń)](network-watcher-nsg-flow-logging-overview.md) dla Network Watcher nie są automatycznie usuwane z magazynu obiektów BLOB na podstawie ustawień zasad przechowywania. Jeśli masz istniejące zasady przechowywania inne niż zero, zalecamy okresowe usuwanie obiektów blob magazynu, które przekroczyły okres przechowywania, aby uniknąć naliczania opłat. Aby uzyskać więcej informacji o usuwaniu blogu magazynu dzienników sieciowej grupy zabezpieczeń Flow, zobacz [usuwanie obiektów blob magazynu dzienników usługi sieciowej grupy zabezpieczeń Flow](network-watcher-delete-nsg-flow-log-blobs.md).
-
 5. Wybierz pozycję *włączone* , aby uzyskać **stan Analiza ruchu**.
 6. Wybierz interwał przetwarzania. W zależności od wybranych dzienników przepływów będą zbierane z konta magazynu i przetwarzane przez Analiza ruchu. Można wybrać interwał przetwarzania co 1 godzinę lub co 10 minut. 
 7. Wybierz istniejący obszar roboczy usługi Log Analytics (OMS) lub wybierz pozycję **Utwórz nowy obszar roboczy** , aby utworzyć nowy. Obszar roboczy Log Analytics jest używany przez Analiza ruchu do przechowywania zagregowanych i indeksowanych danych, które są następnie używane do generowania analizy. Jeśli wybierzesz istniejący obszar roboczy, musi on znajdować się w jednym z [obsługiwanych regionów](#supported-regions-log-analytics-workspaces) i został uaktualniony do nowego języka zapytań. Jeśli nie chcesz uaktualnić istniejącego obszaru roboczego lub nie masz obszaru roboczego w obsługiwanym regionie, Utwórz nowy. Aby uzyskać więcej informacji na temat języków zapytań, zobacz [Azure log Analytics Upgrade to New Search log](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).

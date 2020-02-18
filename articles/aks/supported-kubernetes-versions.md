@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 625b44ae3f8a1d5d474d980693d92840b1317f09
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026119"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425769"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Obsługiwane wersje Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
-Społeczność platformy Kubernetes wydaje wersje pomocnicze średnio co trzy miesiące. Te wydania zawierają nowe funkcje i ulepszenia. Wydania poprawek odbywają się częściej (czasami co tydzień) i mają na celu naprawienie tylko krytycznych usterek w wersji pomocniczej. Te wersje poprawek obejmują poprawki dotyczące luk w zabezpieczeniach lub poważnych usterek, które mają wpływ na dużą liczbę klientów i produktów działających w środowisku produkcyjnym w oparciu o Kubernetes.
+Społeczność Kubernetes zwalnia drobne wersje co trzy miesiące. Te wersje obejmują nowe funkcje i ulepszenia. Wersje poprawek są częstsze (czasami cotygodniowo) i są przeznaczone tylko dla krytycznych poprawek błędów w wersji pomocniczej. Te wersje poprawek obejmują poprawki dotyczące luk w zabezpieczeniach lub poważnych usterek, które mają wpływ na dużą liczbę klientów i produktów działających w środowisku produkcyjnym w oparciu o Kubernetes.
 
 AKS mają na celu certyfikowanie i wydanie nowych wersji Kubernetes w ciągu 30 dni od wydania nadrzędnego, z zastrzeżeniem stabilności wersji.
 
@@ -45,7 +45,7 @@ Użytkownicy powinni korzystać z najnowszej wersji poprawki wersji pomocniczej,
 AKS obsługuje trzy drobne wersje Kubernetes:
 
 * Bieżąca wersja pomocnicza wydana w AKS (N)
-* Dwie wcześniejsze wersje pomocnicze. Każda obsługiwana wersja pomocnicza obsługuje także dwie stabilne poprawki.
+* Dwie wcześniejsze wersje pomocnicze. Każda obsługiwana wersja pomocnicza obsługuje również dwie stabilne poprawki.
 
 Jest to tzw. "N-2": (N (Najnowsza wersja) — 2 (wersje pomocnicze)).
 
@@ -91,7 +91,7 @@ New Supported Version List
 1.15.*3*, 1.15.*2*, 1.14.*6*, 1.14.*5*
 ```
 
-### <a name="communications"></a>Komunikacja
+### <a name="communications"></a>Komunikacyjny
 
 * Nowe wersje **pomocnicze** programu Kubernetes
   * Wszyscy użytkownicy są powiadamiani publicznie o nowej wersji i o wersji, która zostanie usunięta.
@@ -99,7 +99,7 @@ New Supported Version List
   * Klienci mają **30 dni** od publicznej daty powiadomienia, aby przeprowadzić uaktualnienie do obsługiwanej wersji pomocniczej.
 * Nowe wersje **poprawek** Kubernetes
   * Wszyscy użytkownicy otrzymają powiadomienie o wydaniu nowej wersji poprawki i przeprowadź uaktualnienie do najnowszej wersji poprawki.
-  * Użytkownicy mający **30 dni** na uaktualnienie do nowszej obsługiwanej wersji poprawki. Użytkownicy mają **30 dni** , aby przeprowadzić uaktualnienie do obsługiwanej wersji poprawki przed usunięciem najstarszego elementu.
+  * Użytkownicy mają **30 dni** , aby przeprowadzić uaktualnienie do nowszej obsługiwanej wersji poprawki przed usunięciem najstarszego.
 
 AKS definiuje "wydaną wersję" jako ogólnie dostępne wersje, włączone we wszystkich pomiarach SLO/Quality of Service i dostępne we wszystkich regionach. AKS mogą również obsługiwać wersje w wersji zapoznawczej, które są jawnie oznaczone etykietami i podlegają zapewnieniu warunków i postanowień.
 
@@ -139,10 +139,10 @@ az aks get-versions --location eastus --output table
 
 **Co się stanie, gdy klient uaktualnia klaster Kubernetes z nieobsługiwaną wersją pomocniczą?**
 
-Jeśli korzystasz z wersji *n-3* , jesteś poza pomocą techniczną i zostanie wyświetlony monit o uaktualnienie. Jeśli uaktualnienie z wersji n-3 do n-2 powiedzie się, jesteś teraz w naszych zasadach pomocy technicznej. Przykład:
+Jeśli korzystasz z wersji *n-3* , jesteś poza pomocą techniczną i zostanie wyświetlony monit o uaktualnienie. Jeśli uaktualnienie z wersji n-3 do n-2 powiedzie się, jesteś teraz w naszych zasadach pomocy technicznej. Na przykład:
 
 - Jeśli najstarsza obsługiwana wersja AKS to *1.13. a* i jesteś w wersji *1.12. b* lub starszej, jesteś poza pomocą techniczną.
-- Jeśli uaktualnienie z programu *1.12. b* do *1.13. a* lub nowsze, nastąpi powrót do usługi w ramach naszych zasad pomocy technicznej.
+- Jeśli uaktualnienie z programu *1.12. b* do *1.13. a* lub nowsze powiedzie się, nastąpi powrót do naszych zasad pomocy technicznej.
 
 Uaktualnienia do wersji starszych niż obsługiwane okno *N-2* nie są obsługiwane. W takich przypadkach zalecamy utworzenie nowych klastrów AKS i ponowne wdrożenie ich obciążeń z wersjami w obsługiwanym oknie.
 

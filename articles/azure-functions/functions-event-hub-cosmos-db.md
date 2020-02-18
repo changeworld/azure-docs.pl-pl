@@ -5,12 +5,12 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: cef1d09f3365350240cb2ed879e4d41edec74aef
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849840"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425327"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Samouczek: Tworzenie funkcji w języku Java przy użyciu wyzwalacza centrum zdarzeń i powiązania danych wyjściowych Azure Cosmos DB
 
@@ -37,6 +37,8 @@ Aby ukończyć ten samouczek, musisz mieć zainstalowane następujące elementy:
 > [!IMPORTANT]
 > Aby ukończyć ten samouczek, zmienna środowiskowa `JAVA_HOME` musi być ustawiona na lokalizację instalacji JDK.
 
+Jeśli wolisz użyć kodu dla tego samouczka bezpośrednio, zobacz repozytorium przykładu [Java-Functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) .
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-azure-resources"></a>Tworzenie zasobów platformy Azure
@@ -50,7 +52,7 @@ W tym samouczku potrzebne są następujące zasoby:
 
 W poniższych sekcjach przedstawiono sposób tworzenia tych zasobów przy użyciu interfejsu wiersza polecenia platformy Azure.
 
-### <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+### <a name="log-in-to-azure"></a>Logowanie się do platformy Azure
 
 Jeśli nie używasz Cloud Shell, musisz lokalnie użyć interfejsu wiersza polecenia platformy Azure, aby uzyskać dostęp do swojego konta. Użyj polecenia `az login` z wiersza bash, aby uruchomić środowisko logowania oparte na przeglądarce. Jeśli masz dostęp do więcej niż jednej subskrypcji platformy Azure, ustaw wartość domyślną na `az account set --subscription` a następnie Identyfikator subskrypcji.
 
@@ -201,7 +203,7 @@ Twoje zasoby platformy Azure zostały teraz utworzone i skonfigurowane do prawid
 
 ## <a name="create-and-test-your-functions"></a>Tworzenie i testowanie funkcji
 
-Następnie utworzysz projekt na komputerze lokalnym, dodajesz kod Java i przetestujesz go. Będziesz używać poleceń, które współpracują z wtyczką Maven dla Azure Functions i Azure Functions Core Tools. Funkcje zostaną uruchomione lokalnie, ale będą korzystać z utworzonych przez siebie zasobów opartych na chmurze. Po uzyskaniu funkcji działających lokalnie możesz użyć programu Maven, aby wdrożyć je w chmurze i obserwować gromadzenie danych i analiz.
+Następnie utworzysz projekt na komputerze lokalnym, dodajesz kod Java i przetestujesz go. Będziesz używać poleceń, które współpracują z wtyczką Azure Functions dla Maven i Azure Functions Core Tools. Funkcje zostaną uruchomione lokalnie, ale będą korzystać z utworzonych przez siebie zasobów opartych na chmurze. Po uzyskaniu funkcji działających lokalnie możesz użyć programu Maven, aby wdrożyć je w chmurze i obserwować gromadzenie danych i analiz.
 
 Jeśli do tworzenia zasobów użyto Cloud Shell, nie będziesz mieć lokalnego połączenia z platformą Azure. W takim przypadku użyj `az login` polecenia, aby uruchomić proces logowania opartego na przeglądarce. Następnie w razie potrzeby Ustaw domyślną subskrypcję z `az account set --subscription`, a następnie Identyfikator subskrypcji. Na koniec Uruchom następujące polecenia, aby ponownie utworzyć niektóre zmienne środowiskowe na komputerze lokalnym. Zastąp `<value>` symbole zastępcze tymi samymi wartościami, które były wcześniej używane.
 

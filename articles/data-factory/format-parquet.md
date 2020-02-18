@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 72b001ada98ecd768cd39fea012a20f2ada466d2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 340f91fc926c155f95449f7cc49c214f46d1ff35
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931270"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423661"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Format Parquet w Azure Data Factory
 
@@ -24,13 +24,13 @@ Format Parquet jest obsługiwany dla następujących łączników: [Amazon S3](c
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Parquet.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Parquet.
 
-| Właściwość         | Opis                                                  | Wymagane |
+| Właściwość         | Opis                                                  | Wymagany |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Właściwość Type zestawu danych musi być ustawiona na wartość **Parquet**. | Tak      |
-| location         | Ustawienia lokalizacji plików. Każdy Łącznik oparty na plikach ma własny typ lokalizacji i obsługiwane właściwości w obszarze `location`. **Zobacz szczegóły w sekcji łącznik — > Właściwości zestawu danych**. | Tak      |
-| compressionCodec | Koder-dekoder kompresji do użycia podczas zapisywania w plikach Parquet. Podczas odczytywania z plików Parquet Data Factory automatycznie określać koder-dekoder kompresji na podstawie metadanych pliku.<br>Obsługiwane typy to "**none**", "**gzip**", "**przyciąganie**" (domyślnie) i "**LZO**". Działanie, które jest obecnie kopiowane, nie obsługuje LZO. | Nie       |
+| type             | Właściwość Type zestawu danych musi być ustawiona na wartość **Parquet**. | Yes      |
+| location         | Ustawienia lokalizacji plików. Każdy Łącznik oparty na plikach ma własny typ lokalizacji i obsługiwane właściwości w obszarze `location`. **Zobacz szczegóły w sekcji łącznik — > Właściwości zestawu danych**. | Yes      |
+| compressionCodec | Koder-dekoder kompresji do użycia podczas zapisywania w plikach Parquet. Podczas odczytywania z plików Parquet Data Factory automatycznie określać koder-dekoder kompresji na podstawie metadanych pliku.<br>Obsługiwane typy to "**none**", "**gzip**", "**przyciąganie**" (domyślnie) i "**LZO**". Uwaga Ta sama czynność kopiowania nie obsługuje LZO w przypadku plików Parquet odczytu/zapisu. | Nie       |
 
 > [!NOTE]
 > Biały znak w nazwie kolumny nie jest obsługiwany w przypadku plików Parquet.
@@ -61,24 +61,24 @@ Poniżej znajduje się przykład zestawu danych Parquet na platformie Azure Blob
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło i ujścia Parquet.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło i ujścia Parquet.
 
 ### <a name="parquet-as-source"></a>Parquet jako źródło
 
 Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***\*źródło\**** .
 
-| Właściwość      | Opis                                                  | Wymagane |
+| Właściwość      | Opis                                                  | Wymagany |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **ParquetSource**. | Tak      |
+| type          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **ParquetSource**. | Yes      |
 | storeSettings | Grupa właściwości do odczytywania danych z magazynu danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia odczytu w obszarze `storeSettings`. **Zobacz szczegóły w artykule łącznik — > właściwości działania kopiowania**. | Nie       |
 
 ### <a name="parquet-as-sink"></a>Parquet jako ujścia
 
 Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***\*ujścia\**** .
 
-| Właściwość      | Opis                                                  | Wymagane |
+| Właściwość      | Opis                                                  | Wymagany |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **ParquetSink**. | Tak      |
+| type          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **ParquetSink**. | Yes      |
 | storeSettings | Grupa właściwości do zapisywania danych w magazynie danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia zapisu w obszarze `storeSettings`. **Zobacz szczegóły w artykule łącznik — > właściwości działania kopiowania**. | Nie       |
 
 ## <a name="mapping-data-flow-properties"></a>Mapowanie właściwości przepływu danych
@@ -108,7 +108,7 @@ Przykład: Ustaw zmienną `_JAVA_OPTIONS` przy użyciu `-Xms256m -Xmx16g`wartoś
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Omówienie działania kopiowania](copy-activity-overview.md)
+- [Przegląd działania kopiowania](copy-activity-overview.md)
 - [Mapowanie przepływu danych](concepts-data-flow-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 - [Działanie GetMetadata](control-flow-get-metadata-activity.md)

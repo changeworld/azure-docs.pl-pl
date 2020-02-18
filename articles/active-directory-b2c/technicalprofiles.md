@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/29/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad6b84323ac49713506bc61bd0051421e0234a94
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5dc9bc56ac717d355f0fb0ebcc482430662378ca
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982283"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425616"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -83,10 +83,10 @@ Element **profilu technicznym** zawiera następujący atrybut:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| Domain | 0:1 | Nazwa domeny profilu technicznego. Na przykład jeśli Twój profil techniczny określa dostawcę tożsamości w serwisie Facebook, nazwa domeny to Facebook.com. |
+| Domena | 0:1 | Nazwa domeny profilu technicznego. Na przykład jeśli Twój profil techniczny określa dostawcę tożsamości w serwisie Facebook, nazwa domeny to Facebook.com. |
 | DisplayName | 1:1 | Nazwa profilu technicznego, który może być wyświetlany użytkownikom. |
 | Opis | 0:1 | Opis profilu technicznego, który może być wyświetlany użytkownikom. |
-| Protocol (Protokół) | 0:1 | Protokół używany do komunikacji z drugą stroną. |
+| Protokół | 0:1 | Protokół używany do komunikacji z drugą stroną. |
 | Metadane | 0:1 | Kolekcja par klucz/wartość, które są wykorzystywane przez protokół do komunikacji z punktem końcowym w trakcie transakcji. |
 | InputTokenFormat | 0:1 | Format tokenu wejściowego. Możliwe wartości: `JSON`, `JWT`, `SAML11`lub `SAML2`. Wartość `JWT` reprezentuje token sieci Web JSON zgodnie ze specyfikacją IETF. Wartość `SAML11` reprezentuje token zabezpieczający protokołu SAML 1,1 zgodnie ze specyfikacją języka Oasis.  Wartość `SAML2` reprezentuje token zabezpieczający protokołu SAML 2,0 zgodnie ze specyfikacją języka Oasis. |
 | OutputTokenFormat | 0:1 | Format tokenu wyjściowego. Możliwe wartości: `JSON`, `JWT`, `SAML11`lub `SAML2`. |
@@ -105,13 +105,13 @@ Element **profilu technicznym** zawiera następujący atrybut:
 | UseTechnicalProfileForSessionManagement | 0:1 | Inny profil techniczny, który ma być używany na potrzeby zarządzania sesją. |
 |EnabledForUserJourneys| 0:1 |Kontroluje, czy profil techniczny jest wykonywany w podróży użytkownika.  |
 
-## <a name="protocol"></a>Protocol (Protokół)
+## <a name="protocol"></a>Protokół
 
 Element **Protocol** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Nazwa | Tak | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C, który jest używany jako część profilu technicznego. Możliwe wartości: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`, `session management`, `self-asserted`lub `None`. |
+| Name (Nazwa) | Tak | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C, który jest używany jako część profilu technicznego. Możliwe wartości: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`lub `None`. |
 | Jścia | Nie | Jeśli nazwa protokołu jest ustawiona na `Proprietary`, określ w pełni kwalifikowaną nazwę zestawu, który jest używany przez Azure AD B2C do określenia procedury obsługi protokołu. |
 
 ## <a name="metadata"></a>Metadane

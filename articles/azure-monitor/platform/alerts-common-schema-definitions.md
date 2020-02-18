@@ -4,15 +4,15 @@ description: Informacje o typowych definicjach schematu alertów dla Azure Monit
 ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
+author: ofirmanor
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: fb8c2c7e25f94c66c8cc8f7768071d508da8d3b5
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: efa6a8807b3db14649a2b4ad38c575cf98aba113
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765675"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425174"
 ---
 # <a name="common-alert-schema-definitions"></a>Definicje typowych schematów alertów
 
@@ -71,7 +71,7 @@ Każde wystąpienie alertu opisuje zaatakowany zasób i przyczynę alertu. Te wy
 }
 ```
 
-## <a name="essentials"></a>Essentials
+## <a name="essentials"></a>Podstawy
 
 | Pole | Opis|
 |:---|:---|
@@ -151,7 +151,7 @@ Każde wystąpienie alertu opisuje zaatakowany zasób i przyczynę alertu. Te wy
 ### <a name="log-alerts"></a>Alerty dotyczące dzienników
 
 > [!NOTE]
-> W przypadku alertów dziennika, które mają zdefiniowany niestandardowy element tematu wiadomości e-mail i/lub ładunek JSON, włączenie wspólnego schematu powoduje przywrócenie tematu i/lub schematu ładunku poczty e-mail do opisanego w poniższej kolejności. Alerty z włączonym wspólnym schematem mają górny limit rozmiaru wynoszący 256 KB na alert. Wyniki wyszukiwania nie są osadzane w ładunku alertów dziennika, jeśli powodują, że rozmiar alertu przekracza ten próg. Można to określić, sprawdzając flagę `IncludedSearchResults`. Gdy wyniki wyszukiwania nie zostaną uwzględnione, należy użyć zapytania wyszukiwania w połączeniu z [interfejsem API log Analytics](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
+> W przypadku alertów dziennika, które mają zdefiniowany niestandardowy element tematu wiadomości e-mail i/lub ładunek JSON, włączenie wspólnego schematu powoduje przywrócenie tematu i/lub schematu ładunku poczty e-mail do opisanego w poniższej kolejności. Alerty z włączonym wspólnym schematem mają górny limit rozmiaru wynoszący 256 KB na alert. Wyniki wyszukiwania nie są osadzane w ładunku alertów dziennika, jeśli powodują, że rozmiar alertu przekracza ten próg. Można to określić, sprawdzając flagę `IncludeSearchResults`. Gdy wyniki wyszukiwania nie zostaną uwzględnione, należy użyć zapytania wyszukiwania w połączeniu z [interfejsem API log Analytics](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -214,7 +214,7 @@ Każde wystąpienie alertu opisuje zaatakowany zasób i przyczynę alertu. Te wy
         }
       ]
     },
-    "IncludedSearchResults": "True",
+    "IncludeSearchResults": "True",
     "AlertType": "Number of results"
   }
 }
@@ -277,7 +277,7 @@ Każde wystąpienie alertu opisuje zaatakowany zasób i przyczynę alertu. Te wy
         }
       ]
     },
-    "IncludedSearchResults": "True",
+    "IncludeSearchResults": "True",
     "AlertType": "Number of results"
   }
 }

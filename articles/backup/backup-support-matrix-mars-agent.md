@@ -3,12 +3,12 @@ title: Macierz obsługi dla agenta MARS
 description: Ten artykuł zawiera podsumowanie Azure Backup pomocy technicznej podczas tworzenia kopii zapasowej maszyn, na których jest uruchomiony agent Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: a87d778bff5a52f4251d83e401028c9949713e33
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8f5ce33b5057b11caa33c0ae80cf72e1b13da5d0
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988077"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425021"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
 
@@ -41,7 +41,7 @@ Zainstaluj na serwerze kopii zapasowej | Po skonfigurowaniu programu DPM lub ser
 
 W celu utworzenia kopii zapasowej danych przy użyciu agenta MARS Agent tworzy migawkę danych i zapisuje ją w folderze lokalnego pamięci podręcznej, zanim wyśle dane do platformy Azure. Folder pamięci podręcznej (Scratch) ma kilka wymagań:
 
-**Pamięć podręczna** | **Szczegóły**
+**Chow** | **Szczegóły**
 --- | ---
 Rozmiar |  Ilość wolnego miejsca w folderze pamięci podręcznej powinna wynosić co najmniej 5 do 10 procent całkowitego rozmiaru danych kopii zapasowej.
 Lokalizacja | Folder pamięci podręcznej musi być przechowywany lokalnie na komputerze, na którym jest wykonywana kopia zapasowa, i musi być w trybie online. Folder pamięci podręcznej nie powinien znajdować się w udziale sieciowym na nośniku wymiennym ani w woluminie w trybie offline.
@@ -112,7 +112,7 @@ Windows Server 2012 lub nowszy |54 400 GB
 Windows Server 2008 R2 SP1 |1 700 GB
 Windows Server 2008 SP2| 1 700 GB
 Windows 8 lub nowszy| 54 400 GB
-Windows 7| 1 700 GB
+Windows 7| 1 700 GB
 
 ### <a name="other-limitations"></a>Inne ograniczenia
 
@@ -122,27 +122,28 @@ Windows 7| 1 700 GB
 
 **Typ** | **Pomoc techniczna**
 --- | ---
-Szyfrowane| Obsługiwane.
+Zaszyfrowane| Obsługiwane.
 Skompresowane | Obsługiwane.
 Rozrzedzone | Obsługiwane.
 Skompresowane i rozrzedzone |Obsługiwane.
-Twarde linki| Bez pomocy technicznej. Pominięto.
-Punkt ponownej analizy| Bez pomocy technicznej. Pominięto.
-Zaszyfrowane i rozrzedzone |Bez pomocy technicznej. Pominięto.
-Strumień skompresowany| Bez pomocy technicznej. Pominięto.
-Strumień rozrzedzony| Bez pomocy technicznej. Pominięto.
-OneDrive (synchronizowane pliki to strumienie rozrzedzone)| Bez pomocy technicznej.
+Twarde linki| Nieobsługiwane. Pominięto.
+Punkt ponownej analizy| Nieobsługiwane. Pominięto.
+Zaszyfrowane i rozrzedzone |Nieobsługiwane. Pominięto.
+Skompresowany strumień| Nieobsługiwane. Pominięto.
+Rozrzedzony strumień| Nieobsługiwane. Pominięto.
+OneDrive (synchronizowane pliki to strumienie rozrzedzone)| Nieobsługiwane.
+Foldery z włączonym Replikacja systemu plików DFS | Nieobsługiwane.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Obsługiwane dyski lub woluminy na potrzeby tworzenia kopii zapasowych
 
 **Dysk/wolumin** | **Pomoc techniczna** | **Szczegóły**
 --- | --- | ---
-Woluminy tylko do odczytu| Brak obsługi | Usługa kopiowania woluminów w tle (VSS) działa tylko wtedy, gdy wolumin jest zapisywalny.
-Woluminy offline| Brak obsługi |Usługa VSS działa tylko wtedy, gdy wolumin jest w trybie online.
-Udział sieciowy| Brak obsługi |Wolumin musi być lokalny na serwerze.
-Woluminy zablokowane przez funkcję BitLocker| Brak obsługi |Wolumin musi zostać odblokowany przed rozpoczęciem tworzenia kopii zapasowej.
-Identyfikacja systemu plików| Brak obsługi |Obsługiwany jest tylko system plików NTFS.
-Nośnik wymienny| Brak obsługi |Wszystkie źródła elementów kopii zapasowej muszą mieć *ustalony* stan.
+Woluminy tylko do odczytu| Nieobsługiwane | Usługa kopiowania woluminów w tle (VSS) działa tylko wtedy, gdy wolumin jest zapisywalny.
+Woluminy offline| Nieobsługiwane |Usługa VSS działa tylko wtedy, gdy wolumin jest w trybie online.
+Udział sieciowy| Nieobsługiwane |Wolumin musi być lokalny na serwerze.
+Woluminy zablokowane przez funkcję BitLocker| Nieobsługiwane |Wolumin musi zostać odblokowany przed rozpoczęciem tworzenia kopii zapasowej.
+Identyfikacja systemu plików| Nieobsługiwane |Obsługiwany jest tylko system plików NTFS.
+Nośnik wymienny| Nieobsługiwane |Wszystkie źródła elementów kopii zapasowej muszą mieć *ustalony* stan.
 Deduplikowane dyski | Obsługiwane | Azure Backup konwertuje deduplikowane dane na normalne dane. Optymalizuje, szyfruje, przechowuje i wysyła dane do magazynu.
 
 ## <a name="support-for-initial-offline-backup"></a>Obsługa początkowej kopii zapasowej offline

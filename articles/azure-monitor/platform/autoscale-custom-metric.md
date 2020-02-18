@@ -4,17 +4,18 @@ description: Dowiedz się, jak skalować zasób według metryki niestandardowej 
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: f8aaaf8890c3642884b72cc6c8fc2759fec357fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7758c440c75af5819099110dcbdaf5a86a1d2a04
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364547"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425123"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Wprowadzenie do automatycznego skalowania według metryki niestandardowej na platformie Azure
 W tym artykule opisano sposób skalowania zasobu według metryki niestandardowej w Azure Portal.
 
-Automatyczne skalowanie Azure Monitor ma zastosowanie tylko do [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)i [usług API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Automatyczne skalowanie Azure Monitor ma zastosowanie tylko do [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/), [klastra Eksplorator danych platformy Azure](https://azure.microsoft.com/services/data-explorer/) ,   
+Usługi środowisko usługi integracji i [API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 ## <a name="lets-get-started"></a>Umożliwia rozpoczęcie pracy
 W tym artykule przyjęto założenie, że masz aplikację sieci Web z skonfigurowanym usługą Application Insights. Jeśli jeszcze tego nie zrobiono, możesz [skonfigurować Application Insights dla witryny sieci web ASP.NET][1]

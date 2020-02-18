@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/15/2020
+ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 6edd8f89ed2db2927cce14ea86b589090bdc35ed
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 15d15ce2d4dfc55a51bf21ba005512606cc4997a
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371276"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424970"
 ---
 # <a name="get-started-with-custom-voice"></a>Wprowadzenie do usługi Custom Voice
 
@@ -65,7 +65,7 @@ Zawartość, taka jak dane, modele, testy i punkty końcowe, są zorganizowane w
 Aby utworzyć swój pierwszy projekt, wybierz kartę **Zamiana tekstu na mowę/niestandardową** , a następnie kliknij pozycję **Nowy projekt**. Postępuj zgodnie z instrukcjami wyświetlanymi przez kreatora, aby utworzyć projekt. Po utworzeniu projektu zobaczysz cztery karty: **dane**, **szkolenia**, **testowanie**i **wdrażanie**. Skorzystaj z linków w [sekcji Następne kroki](#next-steps) , aby dowiedzieć się, jak korzystać z każdej karty.
 
 > [!IMPORTANT]
-> [Niestandardowy Portal głosu](https://aka.ms/custom-voice) został niedawno zaktualizowany! Jeśli utworzono poprzednie projekty z danymi, modelami, testami i opublikowanymi punktami końcowymi w portalu CRI lub za pomocą interfejsów API, należy utworzyć nowy projekt w nowym portalu, aby połączyć się z tymi starymi jednostkami.
+> [Niestandardowy Portal głosu](https://aka.ms/custom-voice) został niedawno zaktualizowany! Jeśli utworzono poprzednie dane, modele, testy i opublikowane punkty końcowe w portalu CRIS.ai lub za pomocą interfejsów API, należy utworzyć nowy projekt w nowym portalu, aby połączyć się ze starymi jednostkami.
 
 ## <a name="next-steps"></a>Następne kroki
 

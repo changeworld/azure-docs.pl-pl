@@ -8,19 +8,22 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 5d6b8ce557cb794b3a56ecb3a938a2fe184156ab
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: a6f71cca2c63591d2d26a7d34ced232eabfbc6bb
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680753"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425155"
 ---
-# <a name="switch-api-preference-for-log-alerts"></a>Przełączanie preferencji interfejsu API dla alertów dzienników
+# <a name="switch-api-preference-for-log-alerts"></a>Przełącz preferencję interfejsu API dla alertów dziennika
 
 > [!NOTE]
 > Zawartość ma zastosowanie tylko do użytkowników chmury publicznej platformy Azure, a **nie** dla Azure Government lub chmury z Chinami platformy Azure.  
 
-Do niedawna regułami alertów zarządzało się w portalu Microsoft Operations Management Suite. Nowe środowisko alertów zostało zintegrowane z różnymi usługami w Microsoft Azure, w tym Log Analytics, a my poprosimy o rozproszenie [reguł alertów z portalu pakietu OMS na platformę Azure](alerts-extend.md). Jednak aby zapewnić klientom minimalne zakłócenia, proces nie zmienia interfejsu programistycznego dla [interfejsu API alertów log Analytics](api-alerts.md) użycia na podstawie zapisanego wyszukiwania.
+> [!NOTE]
+> Gdy użytkownik zdecyduje się na przełączenie preferencji do nowego [interfejsu API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , nie jest możliwe przywrócenie starszej [wersji interfejsu API alertów programu log Analytics](api-alerts.md).
+
+Do czasu ostatniego reguły alertów są zarządzane w portalu Microsoft Operations Management Suite. Nowe środowisko alertów zostało zintegrowane z różnymi usługami w Microsoft Azure, w tym Log Analytics, a my poprosimy o rozproszenie [reguł alertów z portalu pakietu OMS na platformę Azure](alerts-extend.md). Jednak aby zapewnić klientom minimalne zakłócenia, proces nie zmienia interfejsu programistycznego dla [interfejsu API alertów log Analytics](api-alerts.md) użycia na podstawie zapisanego wyszukiwania.
 
 Jednak teraz ogłaszamy, Log Analytics użytkownicy z alertami mają prawdziwą alternatywną platformę Azure, [Azure monitor-ScheduledQueryRules interfejs API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), który jest również odzwierciedleniem w [rozliczeniach na platformie Azure — na potrzeby alertów dzienników](alerts-unified-log.md#pricing-and-billing-of-log-alerts). Aby dowiedzieć się więcej na temat zarządzania alertami dzienników przy użyciu interfejsu API, zobacz [Zarządzanie alertami dzienników przy użyciu szablonu zasobów platformy Azure](alerts-log.md#managing-log-alerts-using-azure-resource-template) i [Zarządzanie alertami dzienników przy użyciu programu PowerShell](alerts-log.md#managing-log-alerts-using-powershell).
 
@@ -50,9 +53,6 @@ Proces przechodzenia reguł alertów ze [starszej wersji interfejsu API alertu l
 
 - Zmiana preferencji interfejsu API i dostęp do reguł za pośrednictwem nowego interfejsu API.
 - Zmieniony identyfikator URI zasobu reguły alertu zawierający identyfikatory używane w [starszym interfejsie API alertu log Analytics](api-alerts.md) zamiast nazwy reguły alertu w tej strukturze `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`. Nazwa wyświetlana reguły alertu pozostanie niezmieniona.
-
-> [!NOTE]
-> Gdy użytkownik zdecyduje się na przełączenie preferencji do nowego [interfejsu API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , nie jest możliwe przywrócenie starszej [wersji interfejsu API alertów programu log Analytics](api-alerts.md).
 
 Wszyscy klienci, którzy chcą przełączać się dobrowolnie do nowego [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) i blokować użycie ze [starszego interfejsu API alertów log Analytics](api-alerts.md). można to zrobić przez wykonanie wywołania PUT na poniższym interfejsie API w celu przełączenia wszystkich reguł alertów skojarzonych z określonym obszarem roboczym Log Analytics.
 

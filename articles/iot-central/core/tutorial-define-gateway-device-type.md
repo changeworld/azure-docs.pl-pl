@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 04f9a067e0b7df1f90d181d42bc4dd562aca56b0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8020abf3f8ab153d0143ff50d837ebcfbf5bdfba
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027692"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423741"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Definiowanie nowego typu urządzenia bramy IoT w aplikacji IoT Central platformy Azure
 
@@ -40,7 +40,7 @@ W tym samouczku do generowania symulowanych urządzeń podrzędnych są stosowan
 
 Aby utworzyć szablon urządzenia dla **czujnika S1** :
 
-1. W lewym okienku nawigacji wybierz pozycję **Szablony urządzeń**. Następnie wybierz **+** , aby rozpocząć Dodawanie szablonu.
+1. W okienku po lewej stronie wybierz pozycję **Szablony urządzeń**. Następnie wybierz **+** , aby rozpocząć Dodawanie szablonu.
 
 1. Przewiń w dół do momentu wyświetlenia kafelka urządzenia **czujnika S1** . Wybierz kafelek, a następnie wybierz przycisk **Dalej: Dostosuj**.
 
@@ -48,7 +48,7 @@ Aby utworzyć szablon urządzenia dla **czujnika S1** :
 
 Aby utworzyć szablon urządzenia dla urządzenia**czujnika RS40ego** :
 
-1. W lewym okienku nawigacji wybierz pozycję **Szablony urządzeń**. Następnie wybierz **+** , aby rozpocząć Dodawanie szablonu.
+1. W okienku po lewej stronie wybierz pozycję **Szablony urządzeń**. Następnie wybierz **+** , aby rozpocząć Dodawanie szablonu.
 
 1. Przewiń w dół do momentu, gdy zobaczysz kafelek dla urządzenia**czujnika RS40** . Wybierz kafelek, a następnie wybierz przycisk **Dalej: Dostosuj**.
 
@@ -65,7 +65,7 @@ W tym samouczku utworzysz szablon urządzenia dla urządzenia bramy od podstaw. 
 
 Aby dodać nowy szablon urządzenia bramy do aplikacji:
 
-1. W lewym okienku nawigacji wybierz pozycję **Szablony urządzeń**. Następnie wybierz **+** , aby rozpocząć Dodawanie szablonu.
+1. W okienku po lewej stronie wybierz pozycję **Szablony urządzeń**. Następnie wybierz **+** , aby rozpocząć Dodawanie szablonu.
 
 1. Na stronie **Wybieranie typu szablonu** wybierz kafelek **urządzenie IoT** , a następnie wybierz pozycję **Dalej: Dostosuj**.
 
@@ -105,8 +105,8 @@ Aby dodać właściwości chmury do szablonu **urządzenia do tworzenia intelige
 
     | Nazwa wyświetlana      | Typ semantyczny | Schemat |
     | ----------------- | ------------- | ------ |
-    | Data ostatniego serwisowania | Brak          | Data   |
-    | Nazwa klienta     | Brak          | Ciąg |
+    | Data ostatniego serwisowania | None          | Date   |
+    | Nazwa klienta     | None          | Ciąg |
 
 2. Wybierz pozycję **Zapisz**.
 

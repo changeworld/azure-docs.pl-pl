@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 0788ff84cd5b0d50e0798d0d72ee84b47cb5f0b1
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 4a2887ef8b264628128872730422fd38d6b0ac0f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368327"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425004"
 ---
 # <a name="what-is-custom-speech"></a>Co to jest Custom Speech?
 
@@ -62,7 +62,7 @@ Zawartość, taka jak dane, modele, testy i punkty końcowe, są zorganizowane w
 Aby utworzyć swój pierwszy projekt, wybierz **mowę zamiany mowy na tekst/niestandardową**, a następnie kliknij pozycję **Nowy projekt**. Postępuj zgodnie z instrukcjami wyświetlanymi przez kreatora, aby utworzyć projekt. Po utworzeniu projektu powinny zostać wyświetlone cztery karty: **dane**, **testowanie**, **szkolenia**i **wdrożenia**. Skorzystaj z linków w [sekcji Następne kroki](#next-steps) , aby dowiedzieć się, jak korzystać z każdej karty.
 
 > [!IMPORTANT]
-> [Portal Custom Speech](https://aka.ms/custom-speech) został niedawno zaktualizowany! Jeśli utworzono poprzednie projekty z danymi, modelami, testami i opublikowanymi punktami końcowymi w portalu CRI lub za pomocą interfejsów API, należy utworzyć nowy projekt w nowym portalu, aby połączyć się z tymi starymi jednostkami.
+> [Portal Custom Speech](https://aka.ms/custom-speech) został niedawno zaktualizowany! Jeśli utworzono poprzednie dane, modele, testy i opublikowane punkty końcowe w portalu CRIS.ai lub za pomocą interfejsów API, należy utworzyć nowy projekt w nowym portalu, aby połączyć się ze starymi jednostkami.
 
 ## <a name="next-steps"></a>Następne kroki
 

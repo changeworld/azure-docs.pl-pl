@@ -2,21 +2,22 @@
 title: Często zadawane pytania — odnajdywanie, Ocena i analiza zależności w programie Azure Migrate
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności w programie Azure Migrate.
 ms.topic: conceptual
-ms.date: 12/29/2019
-ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/17/2020
+ms.openlocfilehash: 2ae534e50cbee3ebd17d703f957aa7200460dbfe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77059491"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426296"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności
 
-W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności w programie Azure Migrate. Jeśli po przeczytaniu tego artykułu masz dalsze zapytania, Opublikuj je na [forum Azure Migrate](https://aka.ms/AzureMigrateForum). Jeśli masz inne pytania, zapoznaj się z następującymi artykułami:
+W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności w programie Azure Migrate. Jeśli masz inne pytania, zapoznaj się z następującymi artykułami:
 
 - [Ogólne pytania](resources-faq.md) dotyczące Azure Migrate.
 - [Pytania](common-questions-appliance.md) dotyczące urządzenia Azure Migrateowego.
 - [Pytania](common-questions-server-migration.md) dotyczące migracji serwera.
+- Publikuj pytania na [forum Azure Migrate](https://aka.ms/AzureMigrateForum)
 
 
 

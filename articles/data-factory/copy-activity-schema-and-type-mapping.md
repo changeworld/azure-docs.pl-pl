@@ -9,14 +9,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 2c637346aae72a238963607f6f5d23910684265c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921994"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423641"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapowanie schematu w działaniu kopiowania
 
@@ -87,18 +87,18 @@ Możesz określić kolumny, które mają być mapowane w działaniu kopiowania �
 
 Następujące właściwości są obsługiwane w `translator` -> `mappings` > obiektu z `source` i `sink`:
 
-| Właściwość | Opis                                                  | Wymagane |
+| Właściwość | Opis                                                  | Wymagany |
 | -------- | ------------------------------------------------------------ | -------- |
-| name     | Nazwa kolumny źródłowej lub ujścia.                           | Tak      |
+| name     | Nazwa kolumny źródłowej lub ujścia.                           | Yes      |
 | ordinal  | Indeks kolumn. Zacznij od 1. <br>Zastosuj i wymagane w przypadku używania tekstu rozdzielanego bez wiersza nagłówka. | Nie       |
-| Ścieżka     | Wyrażenie ścieżki JSON dla każdego pola do wyodrębnienia lub zamapowania. Zastosuj dla danych hierarchicznych, np. MongoDB/REST.<br>W przypadku pól pod obiektem głównym ścieżka JSON rozpoczyna się od elementu root $; w przypadku pól wewnątrz tablicy wybranej przez właściwość `collectionReference` ścieżka JSON zaczyna się od elementu Array. | Nie       |
+| ścieżka     | Wyrażenie ścieżki JSON dla każdego pola do wyodrębnienia lub zamapowania. Zastosuj dla danych hierarchicznych, np. MongoDB/REST.<br>W przypadku pól pod obiektem głównym ścieżka JSON rozpoczyna się od elementu root $; w przypadku pól wewnątrz tablicy wybranej przez właściwość `collectionReference` ścieżka JSON zaczyna się od elementu Array. | Nie       |
 | type     | Data Factory pośredni typ danych kolumny źródłowej lub ujścia. | Nie       |
 | culture  | Kultura kolumny źródłowej lub ujścia. <br>Zastosuj, gdy typ jest `Datetime` lub `Datetimeoffset`. Wartość domyślna to `en-us`. | Nie       |
 | format   | Ciąg formatu, który ma być używany, gdy typ jest `Datetime` lub `Datetimeoffset`. Zapoznaj się z [niestandardowymi ciągami formatu daty i godziny](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) na potrzeby formatowania daty i godziny. | Nie       |
 
 Następujące właściwości są obsługiwane w `translator` -> `mappings` oprócz obiektów z `source` i `sink`:
 
-| Właściwość            | Opis                                                  | Wymagane |
+| Właściwość            | Opis                                                  | Wymagany |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | Obsługiwane tylko wtedy, gdy dane hierarchiczne, np. MongoDB/REST, są źródłem.<br>Jeśli chcesz wykonać iterację i wyodrębnić dane z obiektów **wewnątrz pola tablicy** o tym samym wzorcu i przekonwertować na na wiersz dla każdego obiektu, określ ścieżkę JSON tej tablicy, która ma być stosowana krzyżowo. | Nie       |
 
@@ -200,10 +200,10 @@ Jeśli używasz składni `"columnMappings": "UserId: MyUserId, Group: MyGroup, N
 
 Możesz określić działanie kopiowania — > `translator` -> `schemaMapping`, aby mapować między danymi w formie hierarchicznej i danymi w kształcie tabelarycznym, np. Skopiuj z MongoDB/REST do pliku tekstowego i skopiuj z Oracle do Azure Cosmos DB interfejsu API MongoDB. W sekcji `translator` działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type translatora działania kopiowania musi być ustawiona na wartość: **TabularTranslator** | Tak |
-| schemaMapping | Kolekcja par klucz-wartość, która reprezentuje relację mapowania **ze strony źródłowej do ujścia**.<br/>- **Key:** reprezentuje źródło. Dla **źródła tabelarycznego**Określ nazwę kolumny, zgodnie z definicją w strukturze zestawu danych. dla **źródła hierarchicznego**Określ wyrażenie ścieżki JSON dla każdego pola, które ma zostać wyodrębnione i zamapowane.<br>- **Value:** reprezentuje ujścia. W przypadku **ujścia tabelarycznego**należy określić nazwę kolumny, zgodnie z definicją w strukturze zestawu danych. dla **obiektu ujścia hierarchiczne**Określ wyrażenie ścieżki JSON dla każdego pola do wyodrębnienia i mapowania. <br>W przypadku danych hierarchicznych dla pól w obszarze obiekt główny ścieżka JSON rozpoczyna się od elementu głównego $; w przypadku pól wewnątrz tablicy wybranej przez właściwość `collectionReference` ścieżka JSON zaczyna się od elementu Array.  | Tak |
+| type | Właściwość Type translatora działania kopiowania musi być ustawiona na wartość: **TabularTranslator** | Yes |
+| schemaMapping | Kolekcja par klucz-wartość, która reprezentuje relację mapowania **ze strony źródłowej do ujścia**.<br/>**klucz - :** reprezentuje źródło. Dla **źródła tabelarycznego**Określ nazwę kolumny, zgodnie z definicją w strukturze zestawu danych. dla **źródła hierarchicznego**Określ wyrażenie ścieżki JSON dla każdego pola, które ma zostać wyodrębnione i zamapowane.<br>**wartość - :** reprezentuje obiekt sink. W przypadku **ujścia tabelarycznego**należy określić nazwę kolumny, zgodnie z definicją w strukturze zestawu danych. dla **obiektu ujścia hierarchiczne**Określ wyrażenie ścieżki JSON dla każdego pola do wyodrębnienia i mapowania. <br>W przypadku danych hierarchicznych dla pól w obszarze obiekt główny ścieżka JSON rozpoczyna się od elementu głównego $; w przypadku pól wewnątrz tablicy wybranej przez właściwość `collectionReference` ścieżka JSON zaczyna się od elementu Array.  | Yes |
 | collectionReference | Jeśli chcesz wykonać iterację i wyodrębnić dane z obiektów **wewnątrz pola tablicy** o tym samym wzorcu i przekonwertować na na wiersz dla każdego obiektu, określ ścieżkę JSON tej tablicy, która ma być stosowana krzyżowo. Ta właściwość jest obsługiwana tylko wtedy, gdy dane hierarchiczne są źródłem. | Nie |
 
 **Przykład: Kopiuj z MongoDB do Oracle:**
@@ -259,11 +259,11 @@ Skonfiguruj regułę mapowania schematu jako przykład JSON działania kopiowani
         "translator": {
             "type": "TabularTranslator",
             "schemaMapping": {
-                "orderNumber": "$.number",
-                "orderDate": "$.date",
-                "order_pd": "prod",
-                "order_price": "price",
-                "city": " $.city[0].name"
+                "$.number": "orderNumber",
+                "$.date": "orderDate",
+                "prod": "order_pd",
+                "price": "order_price",
+                "$.city[0].name": "city"
             },
             "collectionReference":  "$.orders"
         }
@@ -286,19 +286,19 @@ Data Factory obsługuje następujące pośrednie typy danych: podczas konfigurow
 
 * Byte[]
 * Wartość logiczna
-* Datetime
+* Data/godzina
 * Datetimeoffset
-* Decimal
-* Double
-* Identyfikator GUID
+* Dziesiętna
+* Podwójne
+* Guid
 * Int16
 * Int32
 * Int64
-* Pojedyncze
+* Single
 * Ciąg
 * Zakres czasu
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz inne artykuły dotyczące działania kopiowania:
 
-- [Omówienie działania kopiowania](copy-activity-overview.md)
+- [Przegląd działania kopiowania](copy-activity-overview.md)

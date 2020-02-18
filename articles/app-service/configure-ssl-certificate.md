@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046414"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425311"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Dodawanie certyfikatu SSL w Azure App Service
 
@@ -39,7 +39,7 @@ Aby wykonać następujące czynności:
 ## <a name="private-certificate-requirements"></a>Wymagania dotyczące certyfikatu prywatnego
 
 > [!NOTE]
-> Usługa Azure Web Apps **nie obsługuje AES256** , a wszystkie pliki PFX powinny być szyfrowane za pomocą usługi TrippleDES.
+> Usługa Azure Web Apps **nie obsługuje AES256** , a wszystkie pliki PFX powinny być szyfrowane za pomocą usługi TripleDES.
 
 [Bezpłatny App Service certyfikat zarządzany](#create-a-free-certificate-preview) lub [certyfikat App Service](#import-an-app-service-certificate) już spełnia wymagania App Service. Jeśli zdecydujesz się przekazać lub zaimportować certyfikat prywatny do App Service, certyfikat musi spełniać następujące wymagania:
 
@@ -324,7 +324,7 @@ Po zakończeniu operacji odnawiania kliknij pozycję **Synchronizuj**. Operacja 
 > [!NOTE]
 > Jeśli nie klikniesz przycisku **Synchronizuj**, App Service automatycznie zsynchronizuje certyfikat w ciągu 48 godzin.
 
-### <a name="export-certificate"></a>Eksportowanie certyfikatu
+### <a name="export-certificate"></a>Eksportuj certyfikat
 
 Ponieważ Certyfikat usługi App Service jest [Key Vault tajny](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets), można wyeksportować kopię pliku PFX i użyć jej do innych usług platformy Azure lub poza platformą Azure.
 

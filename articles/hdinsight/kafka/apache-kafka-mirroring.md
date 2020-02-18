@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 0f444838c87e14fa88f2785030c29915df637cf8
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 45977f52226fac0a3e23455ce9457a721947a8cc
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552206"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425888"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Korzystanie z narzędzia MirrorMaker do replikowania tematów Apache Kafka z Kafka w usłudze HDInsight
 
@@ -73,7 +73,7 @@ Ta architektura zawiera dwa klastry w różnych grupach zasobów i sieci wirtual
 
 1. Utwórz dwa nowe klastry Kafka:
 
-    | Nazwa klastra | Grupa zasobów | Sieć wirtualna | Konto magazynu |
+    | Nazwa klastra | Grupa zasobów | Virtual Network | Konto magazynu |
     |---|---|---|---|
     | kafka-primary-cluster | Kafka — podstawowy — RG | kafka-primary-vnet | kafkaprimarystorage |
     | kafka-secondary-cluster | Kafka-pomocniczy — RG | kafka-secondary-vnet | kafkasecondarystorage |
@@ -305,7 +305,7 @@ Kroki przedstawione w tym dokumencie tworzą klastry w różnych grupach zasobó
 W tym dokumencie przedstawiono sposób użycia programu [Narzędzia MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) do utworzenia repliki klastra [Apache Kafka](https://kafka.apache.org/) . Skorzystaj z poniższych linków, aby poznać inne sposoby pracy z usługą Kafka:
 
 * [Apache Kafka Dokumentacja narzędzia MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) na cwiki.Apache.org.
+* [Najlepsze rozwiązania w zakresie tworzenia duplikatów Kafka](https://community.cloudera.com/t5/Community-Articles/Kafka-Mirror-Maker-Best-Practices/ta-p/249269)
 * [Wprowadzenie do Apache Kafka w usłudze HDInsight](apache-kafka-get-started.md)
 * [Używanie Apache Spark z Apache Kafka w usłudze HDInsight](../hdinsight-apache-spark-with-kafka.md)
-* [Używanie Apache Storm z Apache Kafka w usłudze HDInsight](../hdinsight-apache-storm-with-kafka.md)
 * [Nawiązywanie połączenia z usługą Apache Kafka za pomocą usługi Azure Virtual Network](apache-kafka-connect-vpn-gateway.md)

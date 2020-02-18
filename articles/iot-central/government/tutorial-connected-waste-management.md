@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016497"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426364"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Samouczek: Tworzenie połączonej aplikacji zarządzania odpadami w IoT Central
 
@@ -129,7 +129,7 @@ Aplikacja do **zarządzania odpadami** jest dostarczana z przykładowym szablone
 
 Aby wyświetlić szablon urządzenia:
 
-1. Kliknij pozycję **Szablony urządzeń** w lewym okienku nawigacji aplikacji w IoT Central. 
+1. Kliknij pozycję **Szablony urządzeń** w lewym okienku aplikacji w IoT Central. 
 
     ![Szablon urządzenia](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
@@ -177,7 +177,7 @@ Aplikacja do **zarządzania połączonymi odpadami** ma dwa symulowane urządzen
 
 ### <a name="to-view-the-devices"></a>Aby wyświetlić urządzenia:
 
-1. Przejdź do **urządzenia** z IoT Central okienku nawigacji po lewej stronie. 
+1. Przejdź do **urządzenia** z IoT Central lewym okienku. 
 
    ![Urządzenia](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
 
@@ -202,7 +202,7 @@ W usłudze Azure IoT Central można tworzyć reguły automatycznego monitorowani
 Aplikacja do **zarządzania połączonymi odpadami** ma cztery przykładowe reguły.
 
 ### <a name="to-view-rules"></a>Aby wyświetlić reguły:
-1. Przejdź do **reguły** , IoT Central okienku nawigacji po lewej stronie
+1. Przejdź do **reguły** z okienka IoT Central lewe okienko
 
    ![Reguły](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
 
@@ -231,13 +231,13 @@ Po spełnieniu skonfigurowanego **warunku** należy otrzymać wiadomość e-mail
 > Aplikacja wyśle wiadomość e-mail za każdym razem, gdy warunek zostanie spełniony. **Wyłączenie** reguły w celu zatrzymania otrzymywania wiadomości e-mail z reguły zautomatyzowanej. 
   
 Aby utworzyć nową regułę: 
-1. Wybierz pozycję **+ Nowy** w obszarze **reguły** w okienku nawigacji po lewej stronie.
+1. Wybierz pozycję **+ Nowy** w obszarze **zasady** w okienku po lewej stronie.
 
 ## <a name="configure-jobs"></a>Konfigurowanie zadań
 
 W IoT Central zadania umożliwiają wyzwalanie aktualizacji właściwości urządzenia lub chmury na wielu urządzeniach. Oprócz właściwości można także użyć zadań do wyzwalania poleceń urządzenia na wielu urządzeniach. IoT Central automatyzuje przepływ pracy. 
 
-1. Przejdź do obszaru **zadania** w okienku nawigacji po lewej stronie. 
+1. Przejdź do obszaru **zadania** w okienku po lewej stronie. 
 2. Kliknij pozycję **+ Nowy** i skonfiguruj co najmniej jedno zadanie. 
 
 

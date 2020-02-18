@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 1fa9c72f7ca305a03cdc90ea02cefe973932792b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 838d215cb49e526251aff9267dbeb0feb6d5f8df
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046316"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425260"
 ---
 # <a name="metrics-for-application-gateway"></a>Metryki dla Application Gateway
 
@@ -95,10 +95,20 @@ W przypadku Application Gateway dostępne są następujące metryki:
 - **Bieżące połączenia**
 
    Całkowita liczba jednoczesnych połączeń aktywnych od klientów do Application Gateway
+   
+- **Szacowane jednostki pojemności**
+
+  Liczba jednostek pojemności, za pomocą których jest szacowany rozliczanie. Jest to calcutaed jako większa wartość między *bieżącymi jednostkami wydajności* i *stałymi jednostkami zdolności do rozliczania*.  
 
 - **Nieudane żądania**
 
    Liczba żądań zakończonych niepowodzeniem, które zostały obsłużone przez Application Gateway. Liczbę żądań można w dalszej odfiltrować, aby pokazać liczbę dla każdej lub określonej puli zaplecza — kombinację ustawień http.
+   
+- **Stałe rozliczane jednostki wydajności** Minimalna liczba jednostek pojemności obsługiwana w ramach ustawienia *minimalne jednostki skalowania* w konfiguracji Application Gateway.
+   
+ - **Nowe połączenia na sekundę**
+
+   Średnia liczba nowych połączeń TCP na sekundę ustanowionych od klientów do Application Gateway oraz z Application Gateway do członków zaplecza.
 
 
 - **Stan odpowiedzi**

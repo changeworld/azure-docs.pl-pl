@@ -2,18 +2,18 @@
 title: Przygotuj maszyny do migracji za pomocą Azure Migrate
 description: Dowiedz się, jak przygotować maszyny lokalne do migracji za pomocą Azure Migrate.
 ms.topic: tutorial
-ms.date: 12/10/2019
+ms.date: 02/17/2020
 ms.custom: MVC
-ms.openlocfilehash: c3c10321e8d49ac6ecfe80024d23f24711298651
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: adbe9e4b30bf57e8a2038b970306c126035abbe1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028756"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426252"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Przygotowywanie maszyn lokalnych do migracji na platformę Azure
 
-W tym artykule opisano sposób przygotowania maszyn lokalnych przed rozpoczęciem migracji na platformę Azure przy użyciu [migracji Azure Migrate Server](migrate-services-overview.md#azure-migrate-server-migration-tool).
+W tym artykule opisano sposób przygotowania maszyn lokalnych przed rozpoczęciem migracji na platformę Azure przy użyciu [Azure Migrate: Migracja serwera](migrate-services-overview.md#azure-migrate-server-migration-tool).
 
 
 W tym artykule opisano następujące zagadnienia:
@@ -40,7 +40,7 @@ W tym artykule opisano następujące zagadnienia:
 
 ## <a name="check-whats-supported"></a>Sprawdź, co jest obsługiwane
 
-- W przypadku maszyn wirtualnych VMware Migracja serwera Azure Migrate obsługuje [migrację bezagentową lub opartą na agencie](server-migrate-overview.md). Sprawdź [wymagania i pomoc techniczną dotyczące migracji](migrate-support-matrix-vmware-migration.md)maszyn wirtualnych VMware.
+- W przypadku maszyn wirtualnych VMware Migracja serwera obsługuje funkcję [bezobsługowego agenta lub migrację opartą na agencie](server-migrate-overview.md). Sprawdź [wymagania i pomoc techniczną dotyczące migracji](migrate-support-matrix-vmware-migration.md)maszyn wirtualnych VMware.
 - Sprawdź [wymagania dotyczące migracji i obsługę](migrate-support-matrix-hyper-v-migration.md) funkcji Hyper-V.
 - Sprawdź [wymagania dotyczące migracji i obsługę](migrate-support-matrix-physical-migration.md) lokalnych maszyn fizycznych lub innych zwirtualizowanych serwerów. 
 

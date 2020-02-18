@@ -1,16 +1,16 @@
 ---
-title: Tworzenie projektów Azure Migrate i zarządzanie nimi
+title: Tworzenie projektów usługi Azure Migrate i zarządzanie nimi
 description: Znajdź, twórz, Zarządzaj i usuwaj projekty w Azure Migrate.
 ms.topic: how-to
-ms.date: 01/01/2020
-ms.openlocfilehash: 548e51cbd215dd9b5e69c68b9bd8fc81625240a2
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.date: 02/17/2020
+ms.openlocfilehash: a49595f0580e71048239d5c5d8f4d1a66e24fe6d
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725886"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425667"
 ---
-# <a name="create-and-manage-azure-migrate-projects"></a>Tworzenie projektów Azure Migrate i zarządzanie nimi
+# <a name="create-and-manage-azure-migrate-projects"></a>Tworzenie projektów usługi Azure Migrate i zarządzanie nimi
 
 W tym artykule opisano sposób tworzenia i usuwania [Azure Migrate](migrate-services-overview.md) projektów oraz zarządzania nimi.
 

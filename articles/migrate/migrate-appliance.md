@@ -2,13 +2,13 @@
 title: Urządzenie usługi Azure Migrate
 description: Zawiera omówienie urządzenia Azure Migrate używanego w ocenie i migracji serwera.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/17/2020
+ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031667"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425463"
 ---
 # <a name="azure-migrate-appliance"></a>Urządzenie usługi Azure Migrate
 
@@ -55,7 +55,7 @@ Maszyna fizyczna |  Azure Migrate: Ocena serwera |  Odnajdywanie serwerów fizyc
 **Wartość skrótu** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Host funkcji Hyper-V** | Uruchamianie systemu Windows Server 2012 R2 lub nowszego.
 **Projekt Azure Migrate** | Urządzenie może być skojarzone z pojedynczym projektem. <br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> 
-**Odnajdowa** | Urządzenie może wykryć do 5000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z maksymalnie 300 hostami funkcji Hyper-V.
+**Odnajdowa** | Urządzenie może wykryć do 5000 maszyn wirtualnych funkcji Hyper-V.<br/> Urządzenie może połączyć się z maksymalnie 300 hostami funkcji Hyper-V.
 **Składniki urządzenia** | Aplikacja zarządzania: aplikacja sieci Web w urządzeniu do wprowadzania danych przez użytkownika podczas wdrażania.<br/> Agent odnajdywania: zbiera dane konfiguracji maszyny.<br/> Agent oceny: Zbierz dane wydajności.<br/>  Usługa aktualizacji AutoUpdate: aktualizuje składniki (są uruchamiane co 24 godziny).
 
 
@@ -107,7 +107,7 @@ Oto dane wydajności maszyny wirtualnej VMware, które urządzenie zbiera i wysy
 
 **Dane** | **Przeciw** | **Wpływ oceny**
 --- | --- | ---
-Użycie procesora CPU | cpu.usage.average | Zalecany rozmiar maszyny wirtualnej/koszt
+Wykorzystanie procesora | cpu.usage.average | Zalecany rozmiar maszyny wirtualnej/koszt
 Użycie pamięci | mem.usage.average | Zalecany rozmiar maszyny wirtualnej/koszt
 Przepływność odczytu dysku (MB na sekundę) | virtualDisk.read.average | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
 Przepływność zapisu na dysku (MB na sekundę) | virtualDisk.write.average | Obliczanie rozmiaru dysku, kosztu magazynu, rozmiaru maszyny wirtualnej
@@ -139,7 +139,7 @@ Pamięć (MB) | maszyn. Config. Hardware. MemoryMB
 Liczba dysków | maszyn. Config. Hardware. Device. ToList — (). FindAll (x = > to VirtualDisk). Count
 Lista rozmiarów dysku | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk)
 Lista kart sieciowych | maszyn. Config. Hardware. Device. ToList — (). FindAll (x = > to VirtualEthernet). Count
-Użycie procesora CPU | cpu.usage.average
+Wykorzystanie procesora | cpu.usage.average
 Użycie pamięci |mem.usage.average
 **Szczegóły dysku** | 
 Wartość klucza dysku | 3,5. Głównych

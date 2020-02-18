@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 2d39afcea056c76b6c9672e1963d7529fbfce549
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 19613ab917d303863a8d90133bcce2e1353289c1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280938"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426211"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>Tworzenie prywatnego linku do Azure Database for MariaDB (wersja zapoznawcza) i zarządzanie nim za pomocą interfejsu wiersza polecenia
 
@@ -30,7 +30,7 @@ Aby krokowo poprowadzić ten przewodnik, musisz:
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azure i korzystać z niego lokalnie, ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Aby dowiedzieć się, jaka wersja jest zainstalowana, uruchom polecenie `az --version`. Aby uzyskać informacje na temat instalacji i uaktualnienia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Przed utworzeniem dowolnego zasobu należy utworzyć grupę zasobów, która będzie hostować Virtual Network. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Ten przykład tworzy grupę zasobów o nazwie Moja *zasobów* w lokalizacji *westeurope* :
 
@@ -38,7 +38,7 @@ Przed utworzeniem dowolnego zasobu należy utworzyć grupę zasobów, która bę
 az group create --name myResourceGroup --location westeurope
 ```
 
-## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
+## <a name="create-a-virtual-network"></a>Tworzenie Virtual Network
 Utwórz Virtual Network za pomocą [AZ Network VNET Create](/cli/azure/network/vnet). W tym przykładzie tworzony jest domyślny Virtual Network o nazwie *myVirtualNetwork* z jedną podsiecią o nazwie Moja *podsieć*:
 
 ```azurecli-interactive
@@ -58,7 +58,7 @@ az network vnet subnet update \
  --vnet-name myVirtualNetwork \
  --disable-private-endpoint-network-policies true
 ```
-## <a name="create-the-vm"></a>Tworzenie maszyny wirtualnej 
+## <a name="create-the-vm"></a>Utwórz maszynę wirtualną 
 Utwórz maszynę wirtualną za pomocą AZ VM Create. Po wyświetleniu monitu podaj hasło, które będzie używane jako poświadczenia logowania dla maszyny wirtualnej. Ten przykład tworzy maszynę wirtualną o nazwie *myVm*: 
 ```azurecli-interactive
 az vm create \
@@ -129,9 +129,9 @@ Połącz się z maszyną wirtualną *myVm* z Internetu w następujący sposób:
 
 1. Wybierz przycisk **Połącz**. Po wybraniu przycisku **Połącz** zostanie otwarta strona **Łączenie z maszyną wirtualną**.
 
-1. Wybierz opcję **Pobierz plik RDP**. Na platformie Azure zostanie utworzony plik Remote Desktop Protocol (*rdp*), który zostanie pobrany na komputer.
+1. Wybierz opcję **Pobierz plik RDP**. Plik Remote Desktop Protocol ( *.rdp*) zostanie utworzony na platformie Azure, a następnie pobrany na komputer.
 
-1. Otwórz pobrany plik RDP *.
+1. Otwórz *pobrany plik RDP* .
 
     1. Po wyświetleniu monitu wybierz pozycję **Połącz**.
 
@@ -159,27 +159,28 @@ Połącz się z maszyną wirtualną *myVm* z Internetu w następujący sposób:
     Non-authoritative answer:
     Name:    mydemoserver.privatelink.mariadb.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. Przetestuj połączenie prywatne linku dla serwera MariaDB przy użyciu dowolnego dostępnego klienta. W poniższym przykładzie użyto programu [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) do wykonania tej operacji.
 
-4. In **New connection**, enter or select this information:
+4. W obszarze **nowe połączenie**wprowadź lub wybierz następujące informacje:
 
-    | Setting | Value |
+    | Ustawienie | Wartość |
     | ------- | ----- |
-    | Connection Name| Select the connection name of your choice.|
-    | Hostname | Select *mydemoserver.privatelink.mariadb.database.azure.com* |
-    | Username | Enter username as *username@servername* which is provided during the MariaDB server creation. |
-    | Password | Enter a password provided during the MariaDB server creation. |
+    | Nazwa połączenia| Wybierz wybraną nazwę połączenia.|
+    | Nazwa hosta | Wybierz *mydemoserver.privatelink.MariaDB.Database.Azure.com* |
+    | Nazwa użytkownika | Wprowadź nazwę użytkownika jako *username@servername* , która jest dostępna podczas tworzenia serwera MariaDB. |
+    | Hasło | Wprowadź hasło podane podczas tworzenia serwera MariaDB. |
     ||
 
-5. Select **Test Connection** or **OK**.
+5. Wybierz pozycję **Testuj połączenie** lub **przycisk OK**.
 
-6. (Optionally) Browse databases from left menu and Create or query information from the MariaDB database
+6. Zdefiniować Przeglądaj bazy danych z menu po lewej stronie i twórz lub Badaj informacje z bazy danych MariaDB
 
-8. Close the remote desktop connection to myVm.
+8. Zamknij połączenie pulpitu zdalnego z myVm.
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
+Gdy nie jest już potrzebne, można użyć polecenie AZ Group Delete, aby usunąć grupę zasobów i wszystkie jej zasoby: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

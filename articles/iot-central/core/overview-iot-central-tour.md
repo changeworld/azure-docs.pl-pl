@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 4e699b0fdbc22594a181d83c9650d569b35c52f3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b905b1e86810b25c4c94072d6cd414b993e2a883
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024164"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426194"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Przewodnik po interfejsie użytkownika usługi Azure IoT Central
 
@@ -59,10 +59,10 @@ Możesz uruchomić aplikację IoT Central, przechodząc do adresu URL wybranego 
 
 ## <a name="navigate-your-application"></a>Nawigowanie po aplikacji
 
-Gdy jesteś w aplikacji IoT, użyj okienka po lewej stronie, aby uzyskać dostęp do różnych obszarów. Można rozwinąć lub zwinąć pasek nawigacyjny, wybierając ikonę z trzema znakami w górnej części paska nawigacyjnego:
+Gdy jesteś w aplikacji IoT, użyj okienka po lewej stronie, aby uzyskać dostęp do różnych obszarów. Okienko po lewej stronie można rozwinąć lub zwinąć, wybierając ikonę z trzema znakami w górnej części okienka:
 
 > [!NOTE]
-> Elementy widoczne na pasku nawigacyjnym będą zależeć od Twojej roli użytkownika. Dowiedz się więcej o [zarządzaniu użytkownikami i rolami](howto-manage-users-roles.md). 
+> Elementy wyświetlane w lewym okienku są zależne od roli użytkownika. Dowiedz się więcej o [zarządzaniu użytkownikami i rolami](howto-manage-users-roles.md). 
 
 :::row:::
   :::column span="":::
@@ -98,7 +98,7 @@ Gdy jesteś w aplikacji IoT, użyj okienka po lewej stronie, aby uzyskać dostę
 Górne menu jest wyświetlane na każdej stronie:
 
 > [!div class="mx-imgBorder"]
-> ![Pasek narzędzi](media/overview-iot-central-tour/toolbar-pnp.png)
+> ![pasek narzędzi](media/overview-iot-central-tour/toolbar-pnp.png)
 
 * Aby wyszukać szablony urządzeń i urządzenia, wprowadź wartość **wyszukiwania** .
 * Aby zmienić język lub motyw interfejsu użytkownika, wybierz ikonę **Ustawienia** . Dowiedz się więcej o [zarządzaniu preferencjami aplikacji](howto-manage-preferences.md)
@@ -182,7 +182,7 @@ Aby dowiedzieć się więcej, zobacz samouczek [Define a new device type in your
 
 Eksport danych umożliwia konfigurowanie strumieni danych, takich jak dane telemetryczne, z aplikacji do systemów zewnętrznych. Aby dowiedzieć się więcej, zobacz artykuł [Eksportowanie danych do usługi Azure IoT Central](./howto-export-data.md).
 
-### <a name="administration"></a>Administracja
+### <a name="administration"></a>{1&gt;Administracja&lt;1}
 > [!div class="mx-imgBorder"]
 > ](media/overview-iot-central-tour/administration-pnp.png) Strona administracyjna ![
 
