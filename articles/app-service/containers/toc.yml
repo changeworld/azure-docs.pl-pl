@@ -43,8 +43,6 @@
           href: tutorial-python-postgresql-app.md
         - name: Język Java z rozwiązaniem Spring Data
           href: tutorial-java-spring-cosmosdb.md
-        - name: Język Java Enterprise z bazą danych Postgres
-          href: tutorial-java-enterprise-postgresql-app.md
     - name: Aplikacja z wieloma kontenerami
       href: tutorial-multi-container-app.md
     - name: Uruchamianie kontenera za pomocą usługi ACR
