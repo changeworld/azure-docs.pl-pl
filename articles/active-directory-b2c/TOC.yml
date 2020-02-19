@@ -351,6 +351,12 @@
           href: view-usage-reports.md
         - name: Zarządzanie kontami
           href: manage-user-accounts-graph-api.md
+        - name: Wdrażanie za pomocą usługi Azure Pipelines
+          href: deploy-custom-policies-devops.md
+          displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
+        - name: Zarządzanie zasadami przy użyciu programu PowerShell
+          href: manage-custom-policies-powershell.md
+          displayName: 'scripting, scripts, psh, custom policy'
     - name: Dzienniki inspekcji
       href: view-audit-logs.md
     - name: Zarządzanie użytkownikami — Azure Portal

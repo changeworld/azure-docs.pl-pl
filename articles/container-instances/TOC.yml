@@ -81,7 +81,7 @@
           href: container-instances-managed-identity.md
         - name: Korzystanie z zasobów procesora GPU (wersja zapoznawcza)
           href: container-instances-gpu.md
-        - name: Włączanie punktu końcowego protokołu SSL
+        - name: Włączanie punktu końcowego protokołu SSL w przyczepce
           href: container-instances-container-group-ssl.md
     - name: Instalowanie woluminów danych
       items:

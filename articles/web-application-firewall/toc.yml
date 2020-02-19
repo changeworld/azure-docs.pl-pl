@@ -68,6 +68,8 @@
               href: ./ag/tutorial-restrict-web-traffic-powershell.md
             - name: Interfejs wiersza polecenia platformy Azure
               href: ./ag/tutorial-restrict-web-traffic-cli.md
+        - name: Zasady dotyczące poszczególnych lokacji
+          href: ./ag/per-site-policies.md
         - name: Migrowanie zasad zapory aplikacji internetowej
           href: ./ag/migrate-policy.md
         - name: Dostosowywanie reguł zapory aplikacji internetowych

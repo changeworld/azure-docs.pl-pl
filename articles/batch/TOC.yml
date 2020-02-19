@@ -29,7 +29,7 @@
       href: tutorial-r-doazureparallel.md
     - name: Funkcja OCR w usługach Batch i Functions
       href: tutorial-batch-functions.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       items:
@@ -45,7 +45,7 @@
       href: batch-api-basics.md
     - name: Interfejsy API i narzędzia
       href: batch-apis-tools.md
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       href: best-practices.md
     - name: Limity przydziału i ograniczenia
       href: batch-quota-limit.md
@@ -71,6 +71,8 @@
           href: batch-aad-auth.md
         - name: Usługa Azure AD z zarządzaniem usługą Batch
           href: batch-aad-auth-management.md
+        - name: Bezpieczny dostęp do usługi Key Vault za pomocą usługi Batch
+          href: credential-access-key-vault.md
     - name: Korzystanie z pakietów aplikacji
       href: batch-application-packages.md
     - name: Tworzenie pul i zarządzanie nimi

@@ -7,10 +7,14 @@
 - name: Samouczki
   expanded: true
   items:
-    - name: Zabezpieczanie sieci w chmurze — portal
+    - name: Zabezpieczanie wirtualnej sieci WAN — portal
       href: secure-cloud-network.md
+    - name: Zabezpieczanie sieci wirtualnej koncentratora — portal
+      href: secure-hybrid-network.md
 - name: Pojęcia
   items:
+    - name: Przegląd zasad
+      href: policy-overview.md
     - name: Co to jest bezpieczny koncentrator wirtualny?
       href: secured-virtual-hub.md
     - name: Ogólny proces wdrażania
@@ -19,11 +23,13 @@
       href: trusted-security-partners.md
     - name: Logika przetwarzająca reguły
       href: rule-processing.md
+    - name: Opcje architektury
+      href: vhubs-and-vnets.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Wdrażanie zaufanych partnerów w zakresie zabezpieczeń
       href: deploy-trusted-security-partner.md
-    - name: Migrowanie do zasad zapory
+    - name: Migrowanie do zasad zapory — PowerShell
       href: migrate-to-policy.md
 - name: Dokumentacja
   items:

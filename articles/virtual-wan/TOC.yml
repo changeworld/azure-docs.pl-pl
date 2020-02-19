@@ -34,7 +34,7 @@
       href: connect-virtual-network-gateway-vwan.md
     - name: Konfigurowanie globalnej komunikacji równorzędnych sieci wirtualnych
       href: global-peering-vnet.md
-    - name: Tworzenie połączenia sieci VPN za pośrednictwem usługi ExpressRoute
+    - name: Konfigurowanie szyfrowania w usłudze ExpressRoute
       href: vpn-over-expressroute.md
     - name: Podwyższanie poziomu jednostki SKU wirtualnej sieci WAN
       href: upgrade-virtual-wan.md
