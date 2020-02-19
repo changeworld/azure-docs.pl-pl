@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/17/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 305ad1da28de899f801b9b8af58628c6c067a5d7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: HT
+ms.openlocfilehash: f402effe40042740e74220d177c54963f6c45916
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425140"
+ms.locfileid: "77444013"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
 
@@ -1510,14 +1510,14 @@ az group deployment create \
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Szablon alertu dotyczącego metryki, który monitoruje wiele zasobów
 
-W poprzednich sekcjach opisano przykładowe szablony Azure Resource Manager do tworzenia alertów metryk, które monitorują pojedynczy zasób. Azure Monitor teraz obsługuje monitorowanie wielu zasobów przy użyciu jednej reguły alertu metryki. Ta funkcja jest obecnie obsługiwana tylko w chmurze publicznej platformy Azure i tylko dla maszyn wirtualnych, baz danych SQL, pul elastycznych SQL i urządzeń brzegowych DATAbox.
+W poprzednich sekcjach opisano przykładowe szablony Azure Resource Manager do tworzenia alertów metryk, które monitorują pojedynczy zasób. Azure Monitor teraz obsługuje monitorowanie wielu zasobów (tego samego typu) z pojedynczą regułą alertu metryki dla zasobów istniejących w tym samym regionie świadczenia usługi Azure. Ta funkcja jest obecnie obsługiwana tylko w chmurze publicznej platformy Azure i tylko dla maszyn wirtualnych, baz danych programu SQL Server, pul elastycznych programu SQL Server i urządzeń brzegowych DATAbox. Ponadto ta funkcja jest dostępna tylko dla metryk platformy i nie jest obsługiwana w przypadku metryk niestandardowych.
 
 Reguła alertów dotyczących progów dynamicznych może również pomóc w tworzeniu dostosowanych progów dla setek serii metrycznych (nawet różnych typów) w danym momencie, co skutkuje mniejszą regułą alertów do zarządzania.
 
 W tej sekcji opisano Azure Resource Manager szablonów dla trzech scenariuszy służących do monitorowania wielu zasobów przy użyciu jednej reguły.
 
 - Monitorowanie wszystkich maszyn wirtualnych (w jednym regionie świadczenia usługi Azure) w co najmniej jednej grupie zasobów.
-- Monitorowanie wszystkich maszyn wirtualnych (w jednym regionie świadczenia usługi Azure) w ramach subskrypcji
+- Monitorowanie wszystkich maszyn wirtualnych (w jednym regionie świadczenia usługi Azure) w ramach subskrypcji.
 - Monitorowanie listy maszyn wirtualnych (w jednym regionie świadczenia usługi Azure) w ramach subskrypcji.
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Alert dotyczący progu statycznego na wszystkich maszynach wirtualnych w co najmniej jednej grupie zasobów

@@ -323,10 +323,10 @@
       items:
         - name: Podstawy
           href: search-monitor-usage.md
-        - name: Monitorowanie aktywności zapytań
-          href: search-monitor-queries.md
         - name: Rejestrowanie diagnostyczne
           href: search-monitor-logs.md
+        - name: Monitorowanie aktywności zapytań
+          href: search-monitor-queries.md
         - name: Analiza ruchu wyszukiwania
           href: search-traffic-analytics.md
     - name: Rozwiązywanie problemów
