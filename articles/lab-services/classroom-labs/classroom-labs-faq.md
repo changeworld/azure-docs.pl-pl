@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: a0361203f4a8a2e57d179b39ba6da2fb62f68720
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252063"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443503"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Pracowni Labs w Azure Lab Services — często zadawane pytania
 Uzyskaj odpowiedzi na kilka typowych pytań dotyczących laboratoriów stacjonarnych w Azure Lab Services. 
@@ -27,6 +27,9 @@ Uzyskaj odpowiedzi na kilka typowych pytań dotyczących laboratoriów stacjonar
 
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>Czy przydziały na użytkownika, czy na tydzień czy na cały czas trwania laboratorium? 
 Przydział ustawiony dla laboratorium jest przeznaczony dla każdego ucznia na cały czas trwania laboratorium. [Zaplanowana godzina działania maszyn wirtualnych](how-to-create-schedules.md) nie jest uwzględniana w stosunku do przydziału przydzielonego dla użytkownika. Limit przydziału jest przeznaczony dla czasu poza godzinami harmonogramu, które student spędza na maszynach wirtualnych.  Aby uzyskać więcej informacji na temat przydziałów, zobacz [Ustawianie przydziałów dla użytkowników](how-to-configure-student-usage.md#set-quotas-for-users).
+
+### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Jeśli profesor włącza na maszynie wirtualnej ucznia, czy ma to wpływ na limit przydziału ucznia? 
+Nie. Nie. Gdy profesor włącza na maszynie wirtualnej ucznia, nie ma to wpływu na przydział przydzielony studentowi. 
 
 ## <a name="schedules"></a>Harmonogramy
 
@@ -42,7 +45,9 @@ Na przykład jeśli masz blok/19-10.0.0.0/19, ten zakres adresów uwzględnia 81
 
 ### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Jakie zakresy portów należy otworzyć w ustawieniach zapory organizacji, aby połączyć się z maszynami wirtualnymi laboratorium za pośrednictwem protokołu RDP/SSH?
 
-Porty to: 49152 – 65535. W laboratoriach stacjonarnych znajduje się za modułem równoważenia obciążenia, więc wszystkie maszyny wirtualne w laboratorium mają jeden adres IP, a każda maszyna wirtualna w laboratorium ma unikatowy port. Numery portów i publiczny adres IP mogą być zmieniane za każdym razem, gdy laboratorium jest ponownie publikowane.
+Porty to: 49152 – 65535. Laboratorium klasowe znajduje się za modułem równoważenia obciążenia. Każde laboratorium ma jeden publiczny adres IP, a każda maszyna wirtualna w laboratorium ma unikatowy port. 
+
+Możesz również zobaczyć prywatny adres IP każdej maszyny wirtualnej na karcie **Pula maszyn wirtualnych** na stronie głównej dla laboratorium w Azure Portal. W przypadku ponownego opublikowania laboratorium, publiczny adres IP laboratorium nie ulegnie zmianie, ale prywatny IP i numer portu każdej maszyny wirtualnej w laboratorium można zmienić. Więcej informacji można znaleźć w artykule: [Ustawienia zapory dla Azure Lab Services](how-to-configure-firewall-settings.md).
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Jaki zakres publicznych adresów IP należy otworzyć w ustawieniach zapory organizacji w celu połączenia z maszynami wirtualnymi laboratorium za pośrednictwem protokołu RDP/SSH?
 Zobacz [zakresy adresów IP i Tagi usług platformy Azure — chmura publiczna](https://www.microsoft.com/download/details.aspx?id=56519), która udostępnia publiczny zakres adresów IP dla centrów danych na platformie Azure. Możesz otworzyć adresy IP dla regionów, w których znajdują się konta w laboratorium.

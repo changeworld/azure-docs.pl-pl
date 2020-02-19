@@ -1,6 +1,6 @@
 ---
-title: Jak dodać użytkownika jako właściciela laboratorium w Azure Lab Services
-description: W tym artykule opisano, jak administrator może dodać użytkownika jako właściciela do laboratorium.
+title: Jak dodać kolejnych właścicieli do laboratorium w Azure Lab Services
+description: W tym artykule opisano, jak administrator może dodać użytkownika jako właściciela do laboratorium w Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,20 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 9e007ee6c95843b7e8ef9d7a701237034811489e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9302cadf0b900c9faac382bad86b51cea7d828fb
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480855"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443520"
 ---
-# <a name="how-to-add-a-user-as-an-owner-of-a-classroom-lab-in-azure-lab-services"></a>Jak dodać użytkownika jako właściciela laboratorium zajęć w Azure Lab Services
-W tym artykule pokazano, jak dodać użytkownika jako właściciela laboratorium w Azure Lab Services.
+# <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>Jak dodać dodatkowych właścicieli do istniejącego laboratorium w Azure Lab Services
+W tym artykule opisano, jak administrator może dodać dodatkowych właścicieli do istniejącego laboratorium.
 
 ## <a name="add-user-to-the-reader-role-for-the-lab-account"></a>Dodawanie użytkownika do roli czytelnik dla konta laboratorium
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+Aby dodać użytkownika jako dodatkowego właściciela do istniejącego laboratorium, musisz najpierw przyznać uprawnienia do **odczytu** użytkownikowi na koncie laboratorium.
+
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Wybierz pozycję **Wszystkie usługi** w menu po lewej stronie. Wyszukaj pozycję **usługi laboratoryjne**, a następnie wybierz ją.
 3. Wybierz z listy **konto laboratorium** . 
 2. Na **stronie konto laboratorium**wybierz pozycję **Access Control (IAM)** w menu po lewej stronie. 

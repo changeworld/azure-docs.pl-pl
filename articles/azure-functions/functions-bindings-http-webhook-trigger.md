@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 5d2ee6c530e2154373508be00edcf1bcdbb59861
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 8dbb4ff0c9f8df6609d8447e84dcfe878a954fff
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210894"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443962"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions wyzwalacza HTTP
 
@@ -29,7 +29,7 @@ Aby uzyskać więcej informacji na temat powiązań HTTP, zobacz [Omówienie](./
 
 ## <a name="example"></a>Przykład
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 W poniższym przykładzie pokazano [ C# funkcję](functions-dotnet-class-library.md) , która wyszukuje parametr `name` w ciągu zapytania lub w treści żądania HTTP. Zwróć uwagę, że wartość zwracana jest używana dla powiązania danych wyjściowych, ale atrybut wartości zwracanej nie jest wymagany.
 
@@ -53,7 +53,7 @@ public static async Task<IActionResult> Run(
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
 
 Poniższy przykład pokazuje powiązanie wyzwalacza w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania. Funkcja szuka parametru `name` w ciągu zapytania lub treści żądania HTTP.
 
@@ -129,7 +129,7 @@ public class Person {
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 W poniższym przykładzie pokazano powiązanie wyzwalacza w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja szuka parametru `name` w ciągu zapytania lub treści żądania HTTP.
 
@@ -178,7 +178,7 @@ module.exports = function(context, req) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Poniższy przykład pokazuje powiązanie wyzwalacza w pliku *Function. JSON* i [funkcji języka Python](functions-reference-python.md) , która używa powiązania. Funkcja szuka parametru `name` w ciągu zapytania lub treści żądania HTTP.
 
@@ -234,7 +234,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         )
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 * [Odczytaj parametr z ciągu zapytania](#read-parameter-from-the-query-string)
 * [Odczytaj treść z żądania POST](#read-body-from-a-post-request)
@@ -428,7 +428,7 @@ W [ C# bibliotekach klas](functions-dotnet-class-library.md) i Java, atrybut `Ht
 
 Można ustawić poziom autoryzacji i dozwolone metody HTTP w parametrach konstruktora atrybutów, typie elementu webhook i szablonie trasy. Aby uzyskać więcej informacji na temat tych ustawień, zobacz [Konfiguracja](#configuration).
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 W tym przykładzie pokazano, jak używać atrybutu [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) .
 
@@ -443,19 +443,19 @@ public static Task<IActionResult> Run(
 
 Aby uzyskać pełny przykład, zobacz [przykład wyzwalacza](#example).
 
-# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
 
 Atrybuty nie są obsługiwane przez C# skrypt.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atrybuty nie są obsługiwane przez język JavaScript.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Atrybuty nie są obsługiwane przez język Python.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 W tym przykładzie pokazano, jak używać atrybutu [HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) .
 
@@ -489,11 +489,11 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 | **Szlak** | **Szlak** | Definiuje szablon trasy, który kontroluje adresy URL żądań, które odpowiada funkcja. Wartość domyślna, jeśli nie jest określona, jest `<functionname>`. Aby uzyskać więcej informacji, zobacz [Dostosowywanie punktu końcowego http](#customize-the-http-endpoint). |
 | **Element webhooktype** | **Element webhooktype** | _Obsługiwane tylko dla środowiska uruchomieniowego w wersji 1. x._<br/><br/>Konfiguruje wyzwalacz HTTP do działania jako odbiornik [elementu webhook](https://en.wikipedia.org/wiki/Webhook) dla określonego dostawcy. Nie ustawiaj właściwości `methods`, jeśli ustawisz tę właściwość. Typ elementu webhook może być jedną z następujących wartości:<ul><li><code>genericJson</code>&mdash;punktu końcowego elementu webhook ogólnego przeznaczenia bez logiki dla określonego dostawcy. To ustawienie ogranicza żądania tylko do tych, które używają protokołu HTTP POST i z typem zawartości `application/json`.</li><li><code>github</code>&mdash;funkcja reaguje na elementy [webhook usługi GitHub](https://developer.github.com/webhooks/). Nie należy używać właściwości _authLevel_ z elementami webhook usługi GitHub. Aby uzyskać więcej informacji, zobacz sekcję elementy webhook w usłudze GitHub w dalszej części tego artykułu.</li><li><code>slack</code>&mdash;funkcja reaguje na elementy [webhook zapasowych](https://api.slack.com/outgoing-webhooks). Nie należy używać właściwości _authLevel_ z elementami webhook zapasowych. Aby uzyskać więcej informacji, zobacz sekcję elementy webhooks w dalszej części tego artykułu.</li></ul>|
 
-## <a name="usage"></a>Sposób użycia
+## <a name="payload"></a>ładunku
 
 Typ danych wejściowych wyzwalacza jest zadeklarowany jako `HttpRequest` lub typ niestandardowy. W przypadku wybrania `HttpRequest`zostanie uzyskany pełny dostęp do obiektu żądania. W przypadku typu niestandardowego środowisko uruchomieniowe próbuje przeanalizować treści żądania JSON w celu ustawienia właściwości obiektu.
 
-### <a name="customize-the-http-endpoint"></a>Dostosowywanie punktu końcowego HTTP
+## <a name="customize-the-http-endpoint"></a>Dostosowywanie punktu końcowego HTTP
 
 Domyślnie podczas tworzenia funkcji dla wyzwalacza HTTP funkcja jest adresowana z trasą w postaci:
 
@@ -528,7 +528,7 @@ http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 
 Ta konfiguracja umożliwia obsługę dwóch parametrów w adresie, _kategorii_ i _identyfikatorze_funkcji.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Możesz użyć dowolnego [ograniczenia trasy interfejsu API sieci Web](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) z parametrami. Poniższy C# kod funkcji wykorzystuje oba parametry.
 
@@ -544,7 +544,7 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
 
 Możesz użyć dowolnego [ograniczenia trasy interfejsu API sieci Web](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) z parametrami. Poniższy C# kod funkcji wykorzystuje oba parametry.
 
@@ -562,7 +562,7 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 W węźle środowisko uruchomieniowe Functions udostępnia treść żądania z obiektu `context`. Aby uzyskać więcej informacji, zobacz [przykład wyzwalacza JavaScript](#example).
 
@@ -583,7 +583,7 @@ module.exports = function (context, req) {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Kontekst wykonywania funkcji jest udostępniany przez parametr zadeklarowany jako `func.HttpRequest`. To wystąpienie umożliwia funkcji dostęp do parametrów trasy danych, wartości ciągu zapytania i metod, które umożliwiają zwracanie odpowiedzi HTTP.
 
@@ -603,7 +603,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(message)
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Kontekst wykonywania funkcji jest właściwościami zadeklarowanymi w atrybucie `HttpTrigger`. Ten atrybut umożliwia zdefiniowanie parametrów trasy, poziomów autoryzacji, czasowników HTTP i wystąpienia żądania przychodzącego.
 
@@ -644,7 +644,7 @@ Domyślnie wszystkie trasy funkcji są poprzedzone *interfejsem API*. Można ró
 }
 ```
 
-### <a name="using-route-parameters"></a>Korzystanie z parametrów trasy
+## <a name="using-route-parameters"></a>Korzystanie z parametrów trasy
 
 Parametry trasy, które zdefiniowano wzorzec `route` funkcji, są dostępne dla każdego powiązania. Na przykład jeśli masz trasę zdefiniowaną jako `"route": "products/{id}"`, powiązanie magazynu tabel może używać wartości parametru `{id}` w konfiguracji powiązania.
 
@@ -661,13 +661,13 @@ Poniższa konfiguracja przedstawia sposób przekazywania `{id}` parametru do `ro
 }
 ```
 
-### <a name="working-with-client-identities"></a>Praca z tożsamościami klientów
+## <a name="working-with-client-identities"></a>Praca z tożsamościami klientów
 
 Jeśli aplikacja funkcji używa [App Service uwierzytelniania/autoryzacji](../app-service/overview-authentication-authorization.md), można wyświetlić informacje o uwierzytelnionych klientach w kodzie. Te informacje są dostępne jako [nagłówki żądań wstrzykiwane przez platformę](../app-service/app-service-authentication-how-to.md#access-user-claims). 
 
 Te informacje można również odczytać z poziomu powiązań danych. Ta funkcja jest dostępna tylko dla środowiska uruchomieniowego Functions w wersji 2. x lub nowszej. Jest on również obecnie dostępny tylko dla języków .NET.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Informacje dotyczące uwierzytelnionych klientów są dostępne jako [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal). ClaimsPrincipal jest dostępny jako część kontekstu żądania, jak pokazano w następującym przykładzie:
 
@@ -699,7 +699,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
 
 Informacje dotyczące uwierzytelnionych klientów są dostępne jako [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal). ClaimsPrincipal jest dostępny jako część kontekstu żądania, jak pokazano w następującym przykładzie:
 
@@ -733,21 +733,21 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Uwierzytelniony użytkownik jest dostępny za pośrednictwem [nagłówków HTTP](../app-service/app-service-authentication-how-to.md#access-user-claims).
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Uwierzytelniony użytkownik jest dostępny za pośrednictwem [nagłówków HTTP](../app-service/app-service-authentication-how-to.md#access-user-claims).
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Uwierzytelniony użytkownik jest dostępny za pośrednictwem [nagłówków HTTP](../app-service/app-service-authentication-how-to.md#access-user-claims).
 
 ---
 
-### <a name="authorization-keys"></a>Klucze autoryzacji
+## <a name="authorization-keys"></a>Klucze autoryzacji
 
 Funkcje umożliwiają korzystanie z kluczy, aby utrudnić dostęp do punktów końcowych funkcji HTTP podczas opracowywania.  Standardowy wyzwalacz HTTP może wymagać takiego klucza interfejsu API w żądaniu. 
 
@@ -769,7 +769,7 @@ Każda aplikacja funkcji ma również specjalny **klucz główny**. Ten klucz je
 > [!CAUTION]  
 > Ze względu na podwyższony poziom uprawnień w aplikacji funkcji udzielanej przez klucz główny nie należy udostępniać tego klucza innym podmiotom lub rozpowszechniać go w natywnych aplikacjach klienckich. Należy zachować ostrożność podczas wybierania poziomu autoryzacji administratora.
 
-### <a name="obtaining-keys"></a>Uzyskiwanie kluczy
+## <a name="obtaining-keys"></a>Uzyskiwanie kluczy
 
 Klucze są przechowywane jako część aplikacji funkcji na platformie Azure i są szyfrowane w stanie spoczynku. Aby wyświetlić klucze, utworzyć nowe lub przerzucić klucze do nowych wartości, przejdź do jednej z funkcji wyzwalanych przez protokół HTTP w [Azure Portal](https://portal.azure.com) i wybierz pozycję **Zarządzaj**.
 
@@ -777,7 +777,7 @@ Klucze są przechowywane jako część aplikacji funkcji na platformie Azure i s
 
 Klucze funkcji można uzyskać programowo przy użyciu [interfejsów API zarządzania kluczami](https://github.com/Azure/azure-functions-host/wiki/Key-management-API).
 
-### <a name="api-key-authorization"></a>Autoryzacja klucza interfejsu API
+## <a name="api-key-authorization"></a>Autoryzacja klucza interfejsu API
 
 Większość szablonów wyzwalacza HTTP wymaga klucza interfejsu API w żądaniu. Dlatego żądanie HTTP zwykle wygląda następująco:
 
@@ -791,7 +791,7 @@ Można zezwolić na żądania anonimowe, które nie wymagają kluczy. Możesz r�
 > Podczas lokalnego uruchamiania funkcji Autoryzacja jest wyłączona niezależnie od określonego ustawienia poziomu autoryzacji. Po opublikowaniu na platformie Azure wymuszane jest ustawienie `authLevel` w wyzwalaczu. Klucze są nadal wymagane w przypadku uruchamiania [lokalnego w kontenerze](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally).
 
 
-### <a name="secure-an-http-endpoint-in-production"></a>Zabezpieczanie punktu końcowego HTTP w środowisku produkcyjnym
+## <a name="secure-an-http-endpoint-in-production"></a>Zabezpieczanie punktu końcowego HTTP w środowisku produkcyjnym
 
 Aby w pełni zabezpieczyć punkty końcowe funkcji w środowisku produkcyjnym, należy rozważyć implementację jednej z następujących opcji zabezpieczeń na poziomie aplikacji:
 
@@ -803,24 +803,24 @@ Aby w pełni zabezpieczyć punkty końcowe funkcji w środowisku produkcyjnym, n
 
 Korzystając z jednej z tych metod zabezpieczeń na poziomie aplikacji, należy ustawić poziom autoryzacji funkcji wyzwalanej przez protokół HTTP na `anonymous`.
 
-### <a name="webhooks"></a>Elementy webhook
+## <a name="webhooks"></a>Elementy webhook
 
 > [!NOTE]
 > Tryb elementu webhook jest dostępny tylko dla wersji 1. x środowiska uruchomieniowego funkcji. Ta zmiana została wprowadzona w celu zwiększenia wydajności wyzwalaczy HTTP w wersji 2. x lub nowszej.
 
 W wersji 1. x szablony elementów webhook zapewniają dodatkową weryfikację ładunków elementu webhook. W wersji 2. x i wyższych, podstawowy wyzwalacz HTTP nadal działa i jest zalecanym rozwiązaniem dla elementów webhook. 
 
-#### <a name="github-webhooks"></a>Elementy webhook usługi GitHub
+### <a name="github-webhooks"></a>Elementy webhook usługi GitHub
 
 Aby odpowiedzieć na elementy webhook usługi GitHub, najpierw Utwórz funkcję z wyzwalaczem HTTP i ustaw właściwość **Webhooktype** na `github`. Następnie skopiuj swój adres URL i klucz interfejsu API na stronę **Dodawanie elementu webhook** w repozytorium GitHub. 
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
 
-#### <a name="slack-webhooks"></a>Elementy webhook zapasu
+### <a name="slack-webhooks"></a>Elementy webhook zapasu
 
 Element webhook zapasu generuje token dla Ciebie, a nie pozwala na jego określenie, dlatego należy skonfigurować klucz specyficzny dla funkcji z tokenem ze zapasu czasu. Zobacz [klucze autoryzacji](#authorization-keys).
 
-### <a name="webhooks-and-keys"></a>Elementy webhook i klucze
+## <a name="webhooks-and-keys"></a>Elementy webhook i klucze
 
 Autoryzacja elementu webhook jest obsługiwana przez składnik odbiornika elementu webhook, część wyzwalacza HTTP, a mechanizm zmienia się w zależności od typu elementu webhook. Każdy mechanizm polega na kluczu. Domyślnie jest używany klucz funkcji o nazwie "default". Aby użyć innego klucza, należy skonfigurować dostawcę elementu webhook w celu wysłania nazwy klucza z żądaniem w jeden z następujących sposobów:
 

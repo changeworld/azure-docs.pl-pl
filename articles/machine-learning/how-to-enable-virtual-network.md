@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 6e5571604e6154408f2005ab4804b4270041e4cf
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169959"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444353"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpieczanie zadań eksperymentowania i wnioskowania usługi Azure ML w ramach Virtual Network platformy Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -134,13 +134,14 @@ Aby użyć wystąpienia obliczeniowego Azure Machine Learning lub klastra oblicz
 > * Jeśli chcesz umieścić wiele wystąpień obliczeniowych lub klastrów w jednej sieci wirtualnej, może być konieczne zażądanie zwiększenia limitu przydziału dla co najmniej jednego z zasobów.
 > * Jeśli konta usługi Azure Storage dla obszaru roboczego są również zabezpieczone w sieci wirtualnej, muszą znajdować się w tej samej sieci wirtualnej co Azure Machine Learning wystąpienie obliczeniowe lub klaster. 
 
-Wystąpienie obliczeniowe Machine Learning lub klaster automatycznie przydziela dodatkowe zasoby sieciowe do grupy zasobów zawierającej sieć wirtualną. Dla każdego wystąpienia obliczeniowego lub klastra usługa przydziela następujące zasoby:
-
-* Jedna sieciowa Grupa zabezpieczeń
-* Jeden publiczny adres IP
-* Jeden moduł równoważenia obciążenia
-
-Te zasoby są ograniczone przez [limity zasobów](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) subskrypcji.
+> [!TIP]
+> Wystąpienie obliczeniowe Machine Learning lub klaster automatycznie przydziela dodatkowe zasoby sieciowe do grupy zasobów zawierającej sieć wirtualną. Dla każdego wystąpienia obliczeniowego lub klastra usługa przydziela następujące zasoby:
+> 
+> * Jedna sieciowa Grupa zabezpieczeń
+> * Jeden publiczny adres IP
+> * Jeden moduł równoważenia obciążenia
+> 
+> Te zasoby są ograniczone przez [limity zasobów](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) subskrypcji.
 
 
 ### <a id="mlcports"></a>Wymagane porty
@@ -500,6 +501,10 @@ W przypadku korzystania z zapory platformy Azure należy skonfigurować regułę
 Podczas dodawania reguły należy ustawić wartość dowolny __Protokół__ i porty do `*`.
 
 Aby uzyskać więcej informacji na temat konfigurowania reguły sieci, zobacz [wdrażanie i Konfigurowanie zapory platformy Azure](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule).
+
+## <a name="use-azure-container-registry"></a>Korzystanie z usługi Azure Container Registry
+
+W przypadku korzystania z sieci wirtualnej z Azure Machine Learning __nie__ należy umieszczać Azure Container Registry obszaru roboczego w sieci wirtualnej. Ta konfiguracja nie jest obsługiwana.
 
 ## <a name="next-steps"></a>Następne kroki
 

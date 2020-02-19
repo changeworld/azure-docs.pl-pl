@@ -1,5 +1,5 @@
 ---
-title: Tworzenie i edytowanie zasad zabezpieczeń Azure Policy przy użyciu interfejsu API REST | Microsoft Docs
+title: Tworzenie i edytowanie zasad zabezpieczeń Azure Policy przy użyciu interfejsu API REST
 description: Więcej informacji na temat Azure Policy zarządzania zasadami za pośrednictwem interfejsu API REST.
 services: security-center
 author: memildin
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 56c5ca8c4e1d70e002a338c753f9ab1f0b1aa411
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522023"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430945"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Konfigurowanie zasad zabezpieczeń w Azure Policy przy użyciu interfejsu API REST
 
@@ -125,7 +125,7 @@ Ten przykład pokazuje, jak usunąć przypisanie:
 |Szyfrowanie w usłudze Storage |Inspekcja braku szyfrowania obiektów BLOB dla kont magazynu |storageEncryptionMonitoringEffect|
 |Dostęp do sieci JIT |Monitoruj możliwy dostęp do sieci just-in-Time (JIT) w Azure Security Center |jitNetworkAccessMonitoringEffect |
 |Funkcje adaptacyjnego sterowania aplikacjami |Monitoruj możliwe listy dozwolonych aplikacji w Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
-|Sieciowe grupy zabezpieczeń |Monitoruj dostęp do sieci w Azure Security Center |networkSecurityGroupsMonitoringEffect| 
+|Grupy zabezpieczeń sieci |Monitoruj dostęp do sieci w Azure Security Center |networkSecurityGroupsMonitoringEffect| 
 |Konfiguracje zabezpieczeń |Monitoruj luki w zabezpieczeniach systemu operacyjnego w Azure Security Center |systemConfigurationsMonitoringEffect| 
 |Ochrona punktów końcowych |Monitoruj brakujące Endpoint Protection w Azure Security Center |endpointProtectionMonitoringEffect |
 |Szyfrowanie dysków |Monitoruj nieszyfrowane dyski maszyn wirtualnych w Azure Security Center |diskEncryptionMonitoringEffect|

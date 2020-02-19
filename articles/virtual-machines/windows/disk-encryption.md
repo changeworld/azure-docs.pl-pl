@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 73a505ce68ed046eba011d3b36991616f441506e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bc15ee42fd7ef8e41b332104b28af808c336789f
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206309"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430412"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Szyfrowanie po stronie serwera dla usługi Azure Managed disks
 
@@ -58,10 +58,10 @@ Aby odwołać dostęp do kluczy zarządzanych przez klienta, zobacz [Azure Key V
 
 Obecnie obsługiwane są tylko następujące regiony:
 
-- Dostępna jako oferta w wersji załącznej w regionach Wschodnie stany USA, zachodnie stany USA 2 i Południowo-środkowe stany USA.
+- Usługa dostępna jako oferta w Stanach Zjednoczonych, zachodnie stany USA 2, Południowo-środkowe stany USA, Południowe Zjednoczone Królestwo regiony.
 - Dostępna jako publiczna wersja zapoznawcza w regionach zachodnie stany USA, Wschodnie stany USA 2, Kanada Środkowa i Europa Północna.
 
-### <a name="restrictions"></a>{1&gt;Ograniczenia&lt;1}
+### <a name="restrictions"></a>Ograniczenia
 
 Na razie klucze zarządzane przez klienta mają następujące ograniczenia:
 

@@ -5,22 +5,24 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0c9abb7333434e64fca32ce6d9c518e3f0137133
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a6d2e2d912f176a88dc993803d750e37cff1acb6
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116346"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443668"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Windows
 
-Za pomocą funkcji hybrydowego procesu roboczego elementu Runbook programu Azure Automation można uruchamiać elementy Runbook bezpośrednio na komputerze hostującym rolę i w odniesieniu do zasobów w środowisku, aby zarządzać tymi zasobami lokalnymi. Elementy Runbook są przechowywane i zarządzane w Azure Automation a następnie dostarczane do co najmniej jednego wyznaczenia komputerów. W tym artykule opisano sposób instalowania hybrydowego procesu roboczego elementu Runbook na komputerze z systemem Windows.
+Za pomocą funkcji hybrydowego procesu roboczego elementu Runbook programu Azure Automation można uruchamiać elementy Runbook bezpośrednio na komputerze hostującym rolę i w odniesieniu do zasobów w środowisku, aby zarządzać tymi zasobami lokalnymi. Elementy Runbook są przechowywane i zarządzane w Azure Automation a następnie dostarczane do co najmniej jednego wyznaczenia komputerów. W tym artykule opisano sposób wdrażania hybrydowego procesu roboczego elementu Runbook na komputerze z systemem Windows.
+
+Po pomyślnym wdrożeniu programu Runbook Worker przejrzyj temat [Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md) , aby dowiedzieć się, jak skonfigurować elementy Runbook do automatyzowania procesów w lokalnym centrum danych lub w innym środowisku chmury.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="installing-the-windows-hybrid-runbook-worker"></a>Instalowanie hybrydowego procesu roboczego elementu Runbook systemu Windows
+## <a name="windows-hybrid-runbook-worker-installation-and-configuration"></a>Instalacja i konfiguracja hybrydowego procesu roboczego elementu Runbook systemu Windows
 
-Aby zainstalować i skonfigurować hybrydowy proces roboczy elementu Runbook systemu Windows, można użyć jednej z trzech następujących metod:
+Aby zainstalować i skonfigurować hybrydowy proces roboczy elementu Runbook systemu Windows, można użyć jednej z następujących metod.
 
 * W przypadku maszyn wirtualnych platformy Azure należy zainstalować agenta Log Analytics dla systemu Windows przy użyciu [rozszerzenia maszyny wirtualnej dla systemu Windows](../virtual-machines/extensions/oms-windows.md). Rozszerzenie instaluje agenta Log Analytics na maszynach wirtualnych platformy Azure i rejestruje maszyny wirtualne w istniejącym obszarze roboczym Log Analytics przy użyciu szablonu Azure Resource Manager lub programu PowerShell. Po zainstalowaniu agenta można dodać maszynę wirtualną do grupy hybrydowych procesów roboczych elementu Runbook na Twoim koncie usługi Automation, wykonując **krok 4** w sekcji [wdrażanie ręczne](#manual-deployment) poniżej.
 
@@ -31,6 +33,8 @@ Aby zainstalować i skonfigurować hybrydowy proces roboczy elementu Runbook sys
 > [!NOTE]
 > Aby zarządzać konfiguracją serwerów obsługujących rolę hybrydowego procesu roboczego elementu Runbook z konfiguracją żądanego stanu (DSC), należy dodać je jako węzły DSC.
 
+### <a name="minimum-requirements-for-windows-hybrid-runbook-worker"></a>Minimalne wymagania dla hybrydowego procesu roboczego elementu Runbook systemu Windows
+
 Minimalne wymagania dla hybrydowego procesu roboczego elementu Runbook systemu Windows to:
 
 * Windows Server 2012 lub nowszy
@@ -40,20 +44,26 @@ Minimalne wymagania dla hybrydowego procesu roboczego elementu Runbook systemu W
 * 4 GB pamięci RAM
 * Port 443 (ruch wychodzący)
 
+### <a name="network-configuration"></a>Konfiguracja sieci
+
 Aby uzyskać więcej wymagań sieci dla hybrydowego procesu roboczego elementu Runbook, zobacz [Konfigurowanie sieci](automation-hybrid-runbook-worker.md#network-planning).
+
+### <a name="server-onboarding-for-management-with-automation-dsc"></a>Dołączanie serwera do zarządzania przy użyciu Automation DSC
 
 Aby uzyskać więcej informacji na temat dołączania serwerów do zarządzania za pomocą DSC, zobacz [dołączanie maszyn w celu zarządzania przez Azure Automation DSC](automation-dsc-onboarding.md).
 Po włączeniu [rozwiązania Update Management](../operations-management-suite/oms-solution-update-management.md)każdy komputer z systemem Windows połączony z obszarem roboczym log Analytics zostanie automatycznie skonfigurowany jako hybrydowy proces roboczy elementu Runbook w celu obsługi elementów Runbook zawartych w tym rozwiązaniu. Nie jest on jednak zarejestrowany dla żadnych grup hybrydowych procesów roboczych, które są już zdefiniowane w Twoim koncie usługi Automation. 
 
+### <a name="adding-the-computer-to-a-hybrid-runbook-worker-group"></a>Dodawanie komputera do grupy hybrydowych procesów roboczych elementu Runbook
+
 Komputer można dodać do grupy hybrydowych procesów roboczych elementu Runbook na koncie usługi Automation w celu obsługi elementów Runbook usługi Automation, o ile używasz tego samego konta zarówno dla tego rozwiązania, jak i dla członkostwa w grupie hybrydowych procesów roboczych elementu Runbook. Ta funkcjonalność została dodana do wersji 7.2.12024.0 hybrydowego procesu roboczego elementu Runbook.
 
-Po pomyślnym wdrożeniu programu Runbook Worker przejrzyj temat [Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md) , aby dowiedzieć się, jak skonfigurować elementy Runbook do automatyzowania procesów w lokalnym centrum danych lub w innym środowisku chmury.
+## <a name="automated-deployment"></a>Automatyczne wdrażanie
 
-### <a name="automated-deployment"></a>Automatyczne wdrażanie
+Na maszynie docelowej wykonaj następujące kroki, aby zautomatyzować instalację i konfigurację roli hybrydowego procesu roboczego systemu Windows.
 
-Wykonaj następujące kroki, aby zautomatyzować instalację i konfigurację roli hybrydowego procesu roboczego systemu Windows:
+### <a name="1-download-the-powershell-script"></a>1. Pobierz skrypt programu PowerShell
 
-1. Pobierz skrypt New-OnPremiseHybridWorker. ps1 z [Galeria programu PowerShell](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) bezpośrednio z komputera z uruchomioną rolą hybrydowego procesu roboczego elementu Runbook lub z innego komputera w środowisku. Skopiuj skrypt do procesu roboczego. Skrypt New-OnPremiseHybridWorker. ps1 wymaga następujących parametrów podczas wykonywania:
+Pobierz skrypt New-OnPremiseHybridWorker. ps1 z [Galeria programu PowerShell](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) bezpośrednio z komputera z uruchomioną rolą hybrydowego procesu roboczego elementu Runbook lub z innego komputera w środowisku. Skopiuj skrypt do procesu roboczego. Skrypt New-OnPremiseHybridWorker. ps1 wymaga następujących parametrów podczas wykonywania:
 
    * *AAResourceGroupName* (obowiązkowy): Nazwa grupy zasobów, która jest skojarzona z kontem usługi Automation.
    * *OMSResourceGroupName* (opcjonalnie): Nazwa grupy zasobów dla obszaru roboczego log Analytics. Jeśli ta grupa zasobów nie jest określona, używana jest *AAResourceGroupName* .
@@ -69,33 +79,39 @@ Wykonaj następujące kroki, aby zautomatyzować instalację i konfigurację rol
    >
    > Aby uzyskać listę obsługiwanych par mapowania, zobacz [Mapowanie regionów dla konta usługi Automation i obszaru roboczego log Analytics](how-to/region-mappings.md).
 
-2. Na komputerze otwórz program **Windows PowerShell** na ekranie **startowym** w trybie administratora.
-3. Z poziomu powłoki wiersza polecenia programu PowerShell przejdź do folderu zawierającego pobrany skrypt. Zmień wartości parametrów *-AutomationAccountName*, *-AAResourceGroupName*, *-OMSResourceGroupName*, *-HybridGroupName*, *-subskrypcji*i *-WorkspaceName*. Następnie uruchom skrypt.
+### <a name="2-open-windows-powershell-command-line-shell"></a>2. Otwórz powłokę wiersza polecenia programu Windows PowerShell
 
-     > [!NOTE]
-     > Po uruchomieniu skryptu zostanie wyświetlony monit o uwierzytelnienie przy użyciu platformy Azure. *Musisz* zalogować się przy użyciu konta, które jest członkiem roli Administratorzy subskrypcji i współadministratorem subskrypcji.
+Otwórz program **Windows PowerShell** na ekranie **startowym** w trybie administratora.
 
-   ```powershell-interactive
-   .\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <NameofAutomationAccount> -AAResourceGroupName <NameofResourceGroup>`
-   -OMSResourceGroupName <NameofOResourceGroup> -HybridGroupName <NameofHRWGroup> `
-   -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
-   ```
+### <a name="3-run-the-powershell-script"></a>3. Uruchom skrypt programu PowerShell
 
-4. Zostanie wyświetlony monit o zgodę na zainstalowanie narzędzia NuGet i wyświetlenie monitu o uwierzytelnienie przy użyciu poświadczeń platformy Azure.
+Z poziomu powłoki wiersza polecenia programu PowerShell przejdź do folderu zawierającego pobrany skrypt. Zmień wartości parametrów *-AutomationAccountName*, *-AAResourceGroupName*, *-OMSResourceGroupName*, *-HybridGroupName*, *-subskrypcji*i *-WorkspaceName*. Następnie uruchom skrypt.
 
-5. Po zakończeniu działania skryptu na stronie **grupy hybrydowych procesów roboczych** zostanie wyświetlona nowa grupa i liczba członków. Jeśli jest to istniejąca Grupa, liczba członków jest zwiększana. Możesz wybrać grupę z listy na stronie **grupy hybrydowych procesów roboczych** i wybrać kafelek **hybrydowe procesy** robocze. Na stronie **hybrydowe procesy robocze** zobaczysz każdego członka grupy na liście.
+Po uruchomieniu skryptu zostanie wyświetlony monit o uwierzytelnienie przy użyciu platformy Azure. Musisz zalogować się przy użyciu konta, które jest członkiem roli Administratorzy subskrypcji i współadministratorem subskrypcji.
 
-### <a name="manual-deployment"></a>Wdrażanie ręczne
+```powershell-interactive
+.\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <NameofAutomationAccount> -AAResourceGroupName <NameofResourceGroup>`
+-OMSResourceGroupName <NameofOResourceGroup> -HybridGroupName <NameofHRWGroup> `
+-SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
+```
 
-Wykonaj pierwsze dwa kroki w środowisku automatyzacji, a następnie powtórz pozostałe kroki dla każdego komputera podrzędnego.
+### <a name="4-install-nuget"></a>4. Zainstaluj pakiet NuGet
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+Zostanie wyświetlony monit o zgodę na zainstalowanie narzędzia NuGet i uwierzytelnienie przy użyciu poświadczeń platformy Azure. Jeśli nie masz najnowszej wersji pakietu NuGet, możesz uzyskać ją z [dostępnych wersji dystrybucji NuGet](https://www.nuget.org/downloads).
 
-#### <a name="1-create-a-log-analytics-workspace"></a>1. Utwórz obszar roboczy Log Analytics
+### <a name="5-verify-the-deployment"></a>5. Sprawdź wdrożenie
 
-Jeśli nie masz jeszcze obszaru roboczego Log Analytics, przed utworzeniem obszaru roboczego zapoznaj się z tematem [wskazówki dotyczące projektowania dziennika Azure monitor](../azure-monitor/platform/design-logs-deployment.md) . 
+Po zakończeniu działania skryptu na stronie **grupy hybrydowych procesów roboczych** zostanie wyświetlona nowa grupa i liczba członków. Jeśli jest to istniejąca Grupa, liczba członków jest zwiększana. Możesz wybrać grupę z listy na stronie **grupy hybrydowych procesów roboczych** i wybrać kafelek **hybrydowe procesy** robocze. Na stronie **hybrydowe procesy robocze** zobaczysz każdego członka grupy na liście.
 
-#### <a name="2-add-the-automation-solution-to-the-log-analytics-workspace"></a>2. Dodaj rozwiązanie automatyzacji do obszaru roboczego Log Analytics
+## <a name="manual-deployment"></a>Wdrażanie ręczne
+
+Na maszynie docelowej wykonaj dwa pierwsze kroki w środowisku automatyzacji. Następnie wykonaj pozostałe kroki dla każdego komputera podrzędnego.
+
+### <a name="1-create-a-log-analytics-workspace"></a>1. Utwórz obszar roboczy Log Analytics
+
+Jeśli nie masz jeszcze obszaru roboczego Log Analytics, przed utworzeniem obszaru roboczego zapoznaj się z tematem [wskazówki dotyczące projektowania dziennika Azure monitor](../azure-monitor/platform/design-logs-deployment.md) .
+
+### <a name="2-add-the-automation-solution-to-the-log-analytics-workspace"></a>2. Dodaj rozwiązanie automatyzacji do obszaru roboczego Log Analytics
 
 Rozwiązanie Automation dodaje funkcjonalność dla Azure Automation, w tym obsługę hybrydowego procesu roboczego elementu Runbook. Po dodaniu rozwiązania do obszaru roboczego Log Analytics automatycznie wypychanie składników procesu roboczego do komputera agenta, który zostanie zainstalowany w następnym kroku.
 
@@ -105,7 +121,7 @@ Aby dodać rozwiązanie **automatyzacji** do obszaru roboczego, uruchom następu
 Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <LogAnalyticsWorkspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true -DefaultProfile <IAzureContextContainer>
 ```
 
-#### <a name="3-install-the-log-analytics-agent-for-windows"></a>3. Zainstaluj agenta Log Analytics dla systemu Windows
+### <a name="3-install-the-log-analytics-agent-for-windows"></a>3. Zainstaluj agenta Log Analytics dla systemu Windows
 
 Agent Log Analytics dla systemu Windows łączy komputery z obszarem roboczym Azure Monitor Log Analytics. Po zainstalowaniu agenta na komputerze i nawiązaniu połączenia z obszarem roboczym program automatycznie pobiera składniki wymagane dla hybrydowego procesu roboczego elementu Runbook.
 
@@ -119,42 +135,42 @@ Heartbeat
 | where TimeGenerated > ago(30m)
 ```
 
-W zwróconych wynikach wyszukiwania powinny być widoczne rekordy pulsu dla komputera, który wskazuje, że jest on połączony i zgłaszany do usługi. Rekord pulsu jest domyślnie przekazywany z każdego agenta do przypisanego do niego obszaru roboczego. Można sprawdzić, czy Agent prawidłowo pobrał rozwiązanie automatyzacji, gdy ma folder o nazwie **AzureAutomationFiles** w folderze C:\Program Files\Microsoft monitoring Agent\Agent. Aby potwierdzić wersję hybrydowego procesu roboczego elementu Runbook, przejdź do katalogu C:\Program Files\Microsoft monitoring Agent\Agent\AzureAutomation\ i zanotuj podfolder \\*wersji* .
+W wynikach wyszukiwania powinny być widoczne rekordy pulsu dla komputera, wskazujące, że są one połączone i raportowane do usługi. Domyślnie każdy agent przekazuje rekord pulsu do przypisanego im obszaru roboczego. Można sprawdzić, czy Agent prawidłowo pobrał rozwiązanie automatyzacji, gdy ma folder o nazwie AzureAutomationFiles w folderze C:\Program Files\Microsoft monitoring Agent\Agent. Aby potwierdzić wersję hybrydowego procesu roboczego elementu Runbook, przejdź do katalogu C:\Program Files\Microsoft monitoring Agent\Agent\AzureAutomation\ i zanotuj podfolder \\*wersji* .
 
-#### <a name="4-install-the-runbook-environment-and-connect-to-azure-automation"></a>4. Zainstaluj środowisko Runbook i Połącz się z Azure Automation
+### <a name="4-install-the-runbook-environment-and-connect-to-azure-automation"></a>4. Zainstaluj środowisko Runbook i Połącz się z Azure Automation
 
-W przypadku skonfigurowania agenta w celu raportowania do obszaru roboczego Log Analytics rozwiązanie Automation wypchnij moduł **HybridRegistration** PowerShell, który zawiera polecenie cmdlet **Add-HybridRunbookWorker** . To polecenie cmdlet służy do instalowania środowiska Runbook na komputerze i rejestrowania go w Azure Automation.
+W przypadku skonfigurowania agenta w celu raportowania do obszaru roboczego Log Analytics rozwiązanie Automation wypchnij moduł HybridRegistration PowerShell, który zawiera polecenie cmdlet **Add-HybridRunbookWorker** . To polecenie cmdlet służy do instalowania środowiska Runbook na komputerze i rejestrowania go w Azure Automation.
 
-Otwórz sesję programu PowerShell w trybie administratora i uruchom następujące polecenia, aby zaimportować moduł:
+Otwórz sesję programu PowerShell w trybie administratora i uruchom następujące polecenia, aby zaimportować moduł.
 
 ```powershell-interactive
 cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\<version>\HybridRegistration"
 Import-Module .\HybridRegistration.psd1
 ```
 
-Następnie uruchom polecenie cmdlet **Add-HybridRunbookWorker** przy użyciu następującej składni:
+Następnie uruchom polecenie cmdlet **Add-HybridRunbookWorker** przy użyciu następującej składni.
 
 ```powershell-interactive
 Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
 ```
 
-Informacje wymagane dla tego polecenia cmdlet można uzyskać ze strony **Zarządzanie kluczami** w Azure Portal. Otwórz Tę stronę, wybierając opcję **klucze** na stronie **Ustawienia** na koncie usługi Automation.
+Informacje wymagane dla tego polecenia cmdlet można uzyskać z strony "Zarządzanie kluczami" w Azure Portal. Otwórz Tę stronę, wybierając opcję **klucze** na stronie **Ustawienia** na koncie usługi Automation.
 
 ![Strona "Zarządzanie kluczami"](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* **GroupName** to nazwa grupy hybrydowych procesów roboczych elementu Runbook. Jeśli ta grupa już istnieje na koncie usługi Automation, do niej zostanie dodany bieżący komputer. Jeśli ta grupa nie istnieje, jest dodawana.
-* **Punkt końcowy** to wpis **adresu URL** na stronie **Zarządzanie kluczami** .
-* **Token** to **podstawowy wpis klucza dostępu** na stronie **Zarządzanie kluczami** .
+* Dla parametru *GroupName* Użyj nazwy grupy hybrydowych procesów roboczych elementu Runbook. Jeśli ta grupa już istnieje na koncie usługi Automation, do niej zostanie dodany bieżący komputer. Jeśli ta grupa nie istnieje, jest dodawana.
+* Dla parametru *Endpoint* Użyj wpisu **adresu URL** na stronie Zarządzanie kluczami.
+* Dla parametru *token* Użyj **podstawowego wpisu klucza dostępu** na stronie Zarządzanie kluczami.
 
-Aby uzyskać szczegółowe informacje na temat instalacji, należy użyć przełącznika **-verbose** z poleceniem **Add-HybridRunbookWorker**.
+Aby uzyskać szczegółowe informacje na temat instalacji, należy użyć przełącznika *-verbose* z poleceniem **Add-HybridRunbookWorker**.
 
-#### <a name="5-install-powershell-modules"></a>5. Zainstaluj moduły programu PowerShell
+### <a name="5-install-powershell-modules"></a>5. Zainstaluj moduły programu PowerShell
 
-Elementy Runbook mogą korzystać z dowolnych działań i poleceń cmdlet zdefiniowanych w modułach zainstalowanych w środowisku Azure Automation. Te moduły nie są automatycznie wdrażane na komputerach lokalnych, dlatego należy je zainstalować ręcznie. Wyjątkiem jest moduł platformy Azure, który jest instalowany domyślnie i zapewnia dostęp do poleceń cmdlet dla wszystkich usług i działań platformy Azure dla Azure Automation.
+Elementy Runbook mogą korzystać z dowolnych działań i poleceń cmdlet zdefiniowanych w modułach zainstalowanych w środowisku Azure Automation. Te moduły nie są automatycznie wdrażane na komputerach lokalnych, dlatego należy je zainstalować ręcznie. Wyjątek jest modułem platformy Azure. Ten moduł jest instalowany domyślnie i zapewnia dostęp do poleceń cmdlet dla wszystkich usług i działań platformy Azure dla Azure Automation.
 
-Ponieważ głównym celem funkcji hybrydowego procesu roboczego elementu Runbook jest zarządzanie zasobami lokalnymi, najprawdopodobniej trzeba zainstalować moduły obsługujące te zasoby. Aby uzyskać informacje na temat instalowania modułów programu Windows PowerShell, zobacz [Instalowanie modułów](/powershell/scripting/developer/windows-powershell). 
+Ponieważ głównym celem funkcji hybrydowego procesu roboczego elementu Runbook jest zarządzanie zasobami lokalnymi, najprawdopodobniej trzeba zainstalować moduły obsługujące te zasoby, w szczególności moduł PowerShellGet. Aby uzyskać informacje na temat instalowania modułów programu Windows PowerShell, zobacz [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
 
-Zainstalowane moduły muszą znajdować się w lokalizacji, do której odwołuje się zmienna środowiskowa **PSModulePath** , dzięki czemu hybrydowy proces roboczy może je automatycznie zaimportować. Aby uzyskać więcej informacji, zobacz [Modyfikowanie ścieżki instalacji PSModulePath](/powershell/scripting/developer/windows-powershell).
+Zainstalowane moduły muszą znajdować się w lokalizacji, do której odwołuje się zmienna środowiskowa PSModulePath, dzięki czemu hybrydowy proces roboczy może je automatycznie zaimportować. Aby uzyskać więcej informacji, zobacz [Install modules in PSModulePath](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
 
 ## <a name="next-steps"></a>Następne kroki
 

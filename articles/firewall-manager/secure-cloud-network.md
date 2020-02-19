@@ -1,41 +1,38 @@
 ---
-title: 'Samouczek: korzystanie z wersji zapoznawczej Menedżera zapory platformy Azure w celu zabezpieczenia sieci w chmurze przy użyciu Azure Portal'
-description: W tym samouczku dowiesz się, jak zabezpieczyć sieć w chmurze za pomocą Menedżera zapory platformy Azure przy użyciu Azure Portal.
+title: 'Samouczek: Zabezpieczanie wirtualnej sieci WAN przy użyciu wersji zapoznawczej Menedżera zapory platformy Azure'
+description: W tym samouczku dowiesz się, jak zabezpieczyć wirtualną sieć WAN za pomocą Menedżera zapory platformy Azure przy użyciu Azure Portal.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: d2ebfd6003c0bc2b47636be1e38f47e554cc6988
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501911"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443061"
 ---
-# <a name="tutorial-secure-your-cloud-network-with-azure-firewall-manager-preview-using-the-azure-portal"></a>Samouczek: Zabezpieczanie sieci w chmurze za pomocą usługi Azure firewall Manager w wersji zapoznawczej przy użyciu Azure Portal
+# <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Samouczek: Zabezpieczanie wirtualnej sieci WAN przy użyciu wersji zapoznawczej Menedżera zapory platformy Azure 
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Korzystając z wersji zapoznawczej Menedżera zapory platformy Azure, można utworzyć zabezpieczone centra, aby zabezpieczyć ruch sieciowy w chmurze przeznaczony dla prywatnych adresów IP, platformy Azure PaaS i Internetu. Routing ruchu do zapory jest zautomatyzowany, dlatego nie ma potrzeby tworzenia tras zdefiniowanych przez użytkownika (UDR).
+Korzystając z wersji zapoznawczej Menedżera zapory platformy Azure, można utworzyć zabezpieczone centra wirtualne, aby zabezpieczyć ruch sieciowy w chmurze przeznaczony dla prywatnych adresów IP, platformy Azure PaaS i Internetu. Routing ruchu do zapory jest zautomatyzowany, dlatego nie ma potrzeby tworzenia tras zdefiniowanych przez użytkownika (UDR).
 
 ![Zabezpieczanie sieci w chmurze](media/secure-cloud-network/secure-cloud-network.png)
 
-## <a name="prerequisites"></a>Wymagania wstępne
+Menedżer zapory obsługuje również architekturę sieci wirtualnej centrum. Aby zapoznać się z porównaniem bezpiecznych typów architektury sieci wirtualnych i koncentratorów wirtualnych, zobacz [co to są opcje architektury usługi Azure firewall Manager?](vhubs-and-vnets.md)
 
-> [!IMPORTANT]
-> Wersja zapoznawcza Menedżera zapory platformy Azure musi być jawnie włączona przy użyciu polecenia `Register-AzProviderFeature` PowerShell.
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
-W wierszu polecenia programu PowerShell uruchom następujące polecenia:
-
-```azure-powershell
-connect-azaccount
-Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
-```
-Ukończenie rejestracji funkcji może potrwać do 30 minut. Uruchom następujące polecenie, aby sprawdzić status rejestracji:
-
-`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
+> [!div class="checklist"]
+> * Tworzenie sieci wirtualnej będącej szprychą
+> * Tworzenie bezpiecznego centrum wirtualnego
+> * Łączenie gwiazdy i sieci wirtualnych
+> * Tworzenie zasad zapory i zabezpieczanie centrum
+> * Kierowanie ruchu do centrum
+> * Testowanie zapory
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>Tworzenie architektury gwiazdy
 
@@ -151,7 +148,7 @@ Aby przetestować reguły zapory, należy wdrożyć kilka serwerów. W celu prze
    |Nazwa maszyny wirtualnej     |**Przejdź do SRV**|
    |Region     |**Prześlij Wschodnie stany USA)**|
    |Nazwa użytkownika administratora     |**azureuser**|
-   |Hasło     |**Azure123456!**|
+   |Hasło     |Wpisz hasło|
 
 4. W obszarze **reguły portów ruchu przychodzącego**dla **publicznych portów przychodzących**wybierz opcję **Zezwalaj na wybrane porty**.
 5. W obszarze **Wybierz porty wejściowe** wybierz pozycję **RDP (3389)** .

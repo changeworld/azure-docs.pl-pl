@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 02/18/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3df7e772ea88a7a58780f08ff20f44d50f01c336
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f15e92f5e98c047fc5ed481968674370cf222a16
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063887"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443622"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Często zadawane pytania dotyczące aplikacji Microsoft Authenticator
 
@@ -52,6 +52,7 @@ Aplikacja Microsoft Authenticator została zastąpiona aplikacją Azure Authenti
 | Dlaczego otrzymuję powiadomienia o aktywności mojego konta? | Aby pomóc Ci uzyskać więcej informacji na temat tego, co się dzieje z osobistym konto Microsoft, wysyłamy powiadomienia o działaniach do aplikacji Microsoft Authenticator. Te powiadomienia są wyświetlane natychmiast po wprowadzeniu zmian, co pomaga zapewnić bezpieczniejsze zabezpieczenia. Te powiadomienia zostały wcześniej wysłane za pośrednictwem poczty e-mail i wiadomości SMS i zostały już rozwinięte w celu uwzględnienia aplikacji. Aby uzyskać więcej informacji o tych powiadomieniach dotyczących działań, zobacz [co się stanie w przypadku nietypowego logowania do konta](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Aby zmienić miejsce otrzymywania powiadomień, zaloguj się do miejsca, w [którym można się skontaktować z alertami konta niekrytycznego](https://account.live.com/SecurityNotifications/Update) na koncie. |
 | Podczas logowania się do konta służbowego przy użyciu domyślnej aplikacji poczty dołączonej do systemu iOS otrzymuję monit o zaoferowanie przez aplikację Microsoft Authenticator informacji o weryfikacji zabezpieczeń. Po wprowadzeniu tych informacji i powrocie do aplikacji poczty zostanie wyświetlony komunikat o błędzie. Co mogę zrobić? | Najbardziej prawdopodobną przyczyną jest to, że logowanie i aplikacja poczty odbywają się w dwóch różnych aplikacjach, co powoduje, że proces logowania w tle nie działa i kończy się niepowodzeniem. Aby spróbować rozwiązać ten problem, zalecamy wybranie ikony **Safari** w prawym dolnym rogu ekranu podczas logowania się do aplikacji poczty e-mail. Przechodzenie do przeglądarki Safari powoduje, że cały proces logowania odbywa się w jednej aplikacji, co umożliwia pomyślne zalogowanie się do aplikacji. |
 | Moje kody haseł jednorazowych (OTP) nie działają. Co mam zrobić? | Upewnij się, że data i godzina na urządzeniu są poprawne i są automatycznie synchronizowane. Jeśli data i godzina są błędne lub nie są zsynchronizowane, kod nie będzie działał. |
+| System operacyjny Windows 10 Mobile był przestarzały z grudnia 2019. Czy Microsoft Authenticator w systemach operacyjnych Windows Mobile będzie również przestarzała? | Aplikacja Microsoft Authenticator we wszystkich systemach operacyjnych Windows Mobile nie będzie obsługiwana po 28 lutego 2020. Użytkownicy nie będą uprawnieni do otrzymywania nowych aktualizacji w celu opublikowania w tej dacie wymienionej daty. Po 28 lutego 2020 usługi firmy Microsoft, które aktualnie obsługują uwierzytelnianie przy użyciu Microsoft Authenticator we wszystkich systemach operacyjnych Windows Mobile, rozpoczną korzystanie z pomocy technicznej. Aby można było uwierzytelnić się w usługach firmy Microsoft, zdecydowanie zachęcamy wszystkich naszych użytkowników do przełączania się do alternatywnego mechanizmu uwierzytelniania przed tą datą. |
 
 ## <a name="next-steps"></a>Następne kroki
 

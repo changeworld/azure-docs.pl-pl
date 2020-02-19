@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 10/25/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: df87e652d2969d4ae12e97a2b455648cf39382c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502030"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443129"
 ---
 # <a name="azure-firewall-manager-preview-deployment-overview"></a>Omówienie wdrożenia programu Azure firewall Manager w wersji zapoznawczej
 
@@ -20,31 +20,40 @@ ms.locfileid: "73502030"
 
 Istnieje więcej niż jeden sposób wdrożenia wersji zapoznawczej Menedżera zapory platformy Azure, ale zalecany jest następujący proces ogólny.
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
-> [!IMPORTANT]
-> Wersja zapoznawcza Menedżera zapory platformy Azure musi być jawnie włączona przy użyciu polecenia `Register-AzProviderFeature` PowerShell.
->W wierszu polecenia programu PowerShell uruchom następujące polecenia:
->
->```azure-powershell
->connect-azaccount
->Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
->```
->Ukończenie rejestracji funkcji może potrwać do 30 minut. Uruchom następujące polecenie, aby sprawdzić stan rejestracji >:
->
->`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
-
-
-
 ## <a name="general-deployment-process"></a>Ogólny proces wdrażania
+
+### <a name="hub-virtual-networks"></a>Centra sieci wirtualnych
+
+1.  Tworzenie zasad zapory
+
+    - Tworzenie nowych zasad
+<br>*lub*<br>
+    - Tworzenie podstawowych zasad i dostosowywanie zasad lokalnych
+<br>*lub*<br>
+    - Importuj reguły z istniejącej zapory platformy Azure. Pamiętaj o usunięciu reguł translatora adresów sieciowych z zasad, które powinny być stosowane przez wiele zapór
+1. Tworzenie architektury gwiazdy i szprych
+   - Tworzenie centrum Virtual Network przy użyciu Menedżera zapory platformy Azure i sieci wirtualnych równorzędnych z siecią wirtualną za pomocą komunikacji równorzędnej sieci wirtualnych
+<br>*lub*<br>
+    - Tworzenie sieci wirtualnej i Dodawanie połączeń sieci wirtualnych i sieci wirtualnych równorzędnych usługi peer Network przy użyciu komunikacji równorzędnej sieci wirtualnej
+
+3. Wybierz pozycję dostawcy zabezpieczeń i skojarz zasady zapory. Obecnie obsługiwane są tylko zapory platformy Azure.
+
+   - Jest to wykonywane podczas tworzenia Virtual Network centrum
+<br>*lub*<br>
+    - Przekonwertuj istniejącą sieć wirtualną na Virtual Network centrum. Istnieje również możliwość konwersji wielu sieci wirtualnych.
+
+4. Skonfiguruj trasy definiowane przez użytkownika w celu kierowania ruchu do centrum Virtual Network zapory.
+
+
+### <a name="secured-virtual-hubs"></a>Zabezpieczone centra wirtualne
 
 1. Tworzenie architektury gwiazdy i szprych
 
-   - Utwórz zabezpieczone centrum wirtualne przy użyciu Menedżera zapory platformy Azure i Dodaj połączenia sieci wirtualnej.<br>*oraz*<br>
+   - Utwórz zabezpieczone centrum wirtualne przy użyciu Menedżera zapory platformy Azure i Dodaj połączenia sieci wirtualnej.<br>*lub*<br>
    - Tworzenie wirtualnego centrum sieci WAN i Dodawanie połączeń sieci wirtualnej.
 2. Wybierz dostawców zabezpieczeń
 
-   - Gotowe podczas tworzenia bezpiecznego koncentratora wirtualnego.<br>*oraz*<br>
+   - Gotowe podczas tworzenia bezpiecznego koncentratora wirtualnego.<br>*lub*<br>
    - Przekonwertuj istniejące wirtualne koncentrator sieci WAN na zabezpieczenie koncentratora wirtualnego.
 3. Tworzenie zasad zapory i kojarzenie ich z centrum
 

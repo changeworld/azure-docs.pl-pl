@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: victorh
-ms.openlocfilehash: 8b55f31f12ab1057ac2e0f625a0285b6518cc44a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 78269461bf01d61bffeed504b0168b4913c6e131
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845773"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442993"
 ---
 # <a name="azure-firewall-faq"></a>Często zadawane pytania dotyczące zapory platformy Azure
 
@@ -22,15 +22,15 @@ Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze,
 
 ## <a name="what-capabilities-are-supported-in-azure-firewall"></a>Jakie możliwości są obsługiwane w zaporze platformy Azure?
 
-* Zapora stanowa jako usługa
-* Wbudowana wysoka dostępność z nieograniczoną skalowalnością w chmurze
+* Bezstanowa Zapora jako usługa
+* Wbudowana wysoka dostępność z nieograniczoną skalowalnością chmury
 * Filtrowanie według nazw FQDN
-* Tagi w pełni kwalifikowanych nazw domen
+* Tagi FQDN
 * Reguły filtrowania ruchu sieciowego
 * Obsługa translacji adresów sieciowych źródła (SNAT) dla ruchu wychodzącego
 * Obsługa technologii DNAT dla ruchu przychodzącego
 * Centralne tworzenie, wymuszanie i rejestrowanie zasad łączności aplikacji i sieci w ramach subskrypcji platformy Azure i sieci wirtualnych
-* Pełna integracja z usługą Azure Monitor na potrzeby rejestrowania i analizy
+* W pełni zintegrowane z Azure Monitor na potrzeby rejestrowania i analizy
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Jaki jest typowy model wdrażania dla zapory platformy Azure?
 
@@ -88,7 +88,7 @@ Zobacz [Cennik usługi Azure firewall](https://azure.microsoft.com/pricing/detai
 
 Można użyć Azure PowerShell *alokacji* i *alokacji* metod.
 
-Przykład:
+Na przykład:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -125,7 +125,7 @@ Tak. Jednak skonfigurowanie UDR do przekierowywania ruchu między podsieciami w 
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Czy ruch wychodzący między sieciami prywatnymi jest zaporą platformy Azure?
 
-Zapora platformy Azure nie ma protokołu IPSec, gdy docelowy adres IP jest prywatnym zakresem adresów IP na [organizację IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Jeśli Twoja organizacja używa zakresu publicznego adresu IP dla sieci prywatnych, Zapora platformy Azure SNATs ruch do jednego z prywatnych adresów IP zapory w AzureFirewallSubnet.
+Zapora platformy Azure nie ma protokołu IPSec, gdy docelowy adres IP jest prywatnym zakresem adresów IP na [organizację IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Jeśli Twoja organizacja używa zakresu publicznego adresu IP dla sieci prywatnych, Zapora platformy Azure SNATs ruch do jednego z prywatnych adresów IP zapory w AzureFirewallSubnet. Zaporę platformy Azure można skonfigurować w taki sposób, aby **nie** było możliwe przechodzenie do publicznego zakresu adresów IP. Aby uzyskać więcej informacji, zobacz [zakresy prywatnych adresów IP zapory systemu Azure](snat-private-range.md).
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Czy jest wymuszane tunelowanie/łączenie do obsługiwanego sieciowego urządzenia wirtualnego?
 

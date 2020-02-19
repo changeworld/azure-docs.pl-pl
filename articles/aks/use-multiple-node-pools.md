@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: mlearned
-ms.openlocfilehash: 20cef402a81ef348d4492daf05e6b16a8d9f709f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e77710fe446810ec566ebc7088d802f0721806d2
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365180"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443928"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Tworzenie i zarządzanie wieloma pulami węzłów dla klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -483,7 +483,7 @@ az aks nodepool add \
 > [!NOTE]
 > Za pomocą polecenia [AZ AKS nodepool Update][az-aks-nodepool-update] można także użyć parametru `--tags`, jak również podczas tworzenia klastra. Podczas tworzenia klastra `--tags` parametr stosuje tag do początkowej puli węzłów utworzonej w klastrze. Wszystkie nazwy tagów muszą być zgodne z ograniczeniami w sposobie [używania tagów do organizowania zasobów platformy Azure][tag-limitation]. Aktualizacja puli węzłów za pomocą parametru `--tags` aktualizuje wszystkie istniejące wartości tagów i dołącza wszelkie nowe tagi. Na przykład jeśli Pula węzłów ma *Wydział = IT* i *costcenter = 9999* dla tagów i Zaktualizowano ją z *zespołem = dev* i *costcenter = 111* dla tagów, nodepool byłoby miały *Wydział = IT*, *costcenter = 111*i *zespół = dev* for Tags.
 
-Następujące przykładowe dane wyjściowe z polecenia [AZ AKS nodepool list][az-aks-nodepool-list] pokazują, że *taggednodepool* *tworzy* węzły z określonym *tagiem*:
+Następujące przykładowe dane wyjściowe z polecenia [AZ AKS nodepool list][az-aks-nodepool-list] pokazują, że *tagnodepool* *tworzy* węzły z określonym *tagiem*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster

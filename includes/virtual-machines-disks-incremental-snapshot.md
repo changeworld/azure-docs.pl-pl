@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c5b9c1d294cd984ca3cf062d3b657239995e5908
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3361f4723c5a9776cb156417e57d609175d11621
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751485"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445273"
 ---
 Migawki przyrostowe (wersja zapoznawcza) są kopiami zapasowymi w czasie dla dysków zarządzanych, które w razie potrzeby składają się tylko ze wszystkich zmian od ostatniej migawki. Podczas próby pobrania lub użycia migawki przyrostowej jest używany pełny dysk VHD. Ta nowa możliwość tworzenia migawek dysków zarządzanych może potencjalnie spowodować, że nie są już wymagane do przechowywania całego dysku przy każdej pojedynczej migawce, chyba że zostanie wybrana opcja. Podobnie jak regularne migawki, migawki przyrostowe mogą służyć do tworzenia pełnego dysku zarządzanego lub do regularnej migawki.
 
@@ -21,9 +21,9 @@ Istnieje kilka różnic między migawką przyrostową i regularną migawką. Mig
 
 Migawki przyrostowe oferują również funkcję różnicową, która jest unikatowo dostępna dla dysków zarządzanych. Umożliwiają one uzyskanie zmian między dwiema przyrostowymi migawkami tych samych dysków zarządzanych, w dół do poziomu bloku. Można użyć tej funkcji, aby zmniejszyć rozmiary danych podczas kopiowania migawek między regionami.
 
-## <a name="restrictions"></a>Ograniczenia
+## <a name="restrictions"></a>{1&gt;Ograniczenia&lt;1}
 
-- Migawki przyrostowe są obecnie dostępne tylko w regionach Wschodnie stany USA, Wschodnie stany USA 2, środkowe stany USA, zachodnio-środkowe stany USA, Kanada Wschodnia, Kanada Środkowa i Europa Północna.
+- Migawki przyrostowe są obecnie dostępne tylko w regionach Wschodnie stany USA, Wschodnie stany USA 2, środkowe stany USA, zachodnio-środkowe stany USA, Kanada Wschodnia, Kanada środkowa, Europa Północna, Południowe Azja Wschodnia.
 - Nie można obecnie utworzyć migawek przyrostowych po zmianie rozmiaru dysku.
 - Obecnie nie można przenosić migawek przyrostowych między subskrypcjami.
 - Obecnie można generować identyfikatory URI SAS maksymalnie pięć migawek określonej rodziny migawek w danym momencie.
@@ -31,7 +31,7 @@ Migawki przyrostowe oferują również funkcję różnicową, która jest unikat
 - Do siedmiu migawek przyrostowych na dysk można utworzyć co pięć minut.
 - Można utworzyć łączną liczbę migawek przyrostowych 200 dla jednego dysku.
 
-## <a name="powershell"></a>PowerShell
+## <a name="powershell"></a>Program PowerShell
 
 Za pomocą Azure PowerShell można utworzyć przyrostową migawkę. Potrzebna będzie Najnowsza wersja Azure PowerShell, następujące polecenie zainstaluje je lub zaktualizuje istniejącą instalację do najnowszej wersji:
 
@@ -74,7 +74,7 @@ foreach ($snapshot in $snapshots)
 $incrementalSnapshots
 ```
 
-## <a name="cli"></a>Interfejs CLI
+## <a name="cli"></a>Interfejs wiersza polecenia
 
 Można utworzyć przyrostową migawkę przy użyciu interfejsu wiersza polecenia platformy Azure, która będzie potrzebna w najnowszej wersji interfejsu wiersza polecenia platformy Azure. 
 

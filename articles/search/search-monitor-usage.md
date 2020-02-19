@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: c4a787362089dabf9c4eda9681358e7a70d8e78a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 5846e9516548032595c1ce072d1dae8dcce9d39e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210549"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443605"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Monitoruj operacje i działania Wyszukiwanie poznawcze platformy Azure
 
 W tym artykule wprowadzono monitorowanie na poziomie usługi (zasobów) na poziomie obciążenia (zapytania i indeksowanie) i sugeruje strukturę monitorowania dostępu użytkowników.
 
-W całym spektrum będziesz używać kombinacji wbudowanych usług, takich jak Azure Monitor, a także interfejsów API usługi, które zwracają statystyki, liczniki i stan. Zrozumienie zakresu możliwości ułatwia skonfigurowanie lub utworzenie efektywnego systemu komunikacyjnego na potrzeby proaktywnej reakcji na występujące problemy.
+W całym spektrum będziesz używać kombinacji wbudowanych usług, takich jak Azure Monitor, a także interfejsów API usługi, które zwracają statystyki, liczniki i stan. Zrozumienie zakresu możliwości może pomóc utworzyć pętlę do przesyłania opinii, aby można było rozwiązać problemy w miarę ich występowania.
 
 ## <a name="use-azure-monitor"></a>Korzystanie z usługi Azure Monitor
 
@@ -52,9 +52,9 @@ Strony z kartami wbudowane na stronie Przegląd raportują na temat użycia zaso
 
 Jeśli podejmujesz decyzje dotyczące warstwy, [która ma być używana na potrzeby obciążeń produkcyjnych](search-sku-tier.md), lub czy należy [dostosować liczbę aktywnych replik i partycji](search-capacity-planning.md), te metryki mogą pomóc w podejmowaniu tych decyzji, pokazując, jak szybko zużywane są zasoby i jak również Bieżąca konfiguracja obsługuje istniejące obciążenie.
 
-Alerty powiązane z magazynem nie są obecnie dostępne; Użycie magazynu nie jest agregowane lub nie zostało zarejestrowane w **AzureMetrics**. Należy utworzyć rozwiązanie niestandardowe, aby uzyskać powiadomienia związane z zasobami.
+Alerty powiązane z magazynem nie są obecnie dostępne; Użycie magazynu nie jest agregowane lub zarejestrowane w tabeli **AzureMetrics** w Azure monitor. Należy utworzyć rozwiązanie niestandardowe, które emituje powiadomienia związane z zasobami, gdzie kod sprawdza rozmiar magazynu i obsługuje odpowiedź. Aby uzyskać więcej informacji o metrykach magazynu, zobacz [Pobieranie statystyk usług](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
 
-W portalu karta **użycie** pokazuje dostępność zasobów względem bieżących [limitów](search-limits-quotas-capacity.md) narzuconych przez warstwę usług. 
+W przypadku monitorowania wizualnego w portalu karta **użycie** pokazuje dostępność zasobów względem bieżących [limitów](search-limits-quotas-capacity.md) narzuconych przez warstwę usług. 
 
 Poniższa ilustracja dotyczy bezpłatnej usługi, która jest ograniczona do 3 obiektów każdego typu i 50 MB miejsca w magazynie. Usługa podstawowa lub standardowa ma wyższe limity i w przypadku zwiększenia liczby partycji Maksymalna ilość miejsca w magazynie jest proporcjonalna.
 
@@ -63,7 +63,7 @@ Poniższa ilustracja dotyczy bezpłatnej usługi, która jest ograniczona do 3 o
 
 ## <a name="monitor-workloads"></a>Monitoruj obciążenia
 
-Zarejestrowane zdarzenia obejmują odnoszące się do indeksowania i zapytań. Tabela **Diagnostyka Azure** w log Analytics zbiera dane operacyjne powiązane z zapytaniami i indeksowanie.
+Zarejestrowane zdarzenia obejmują odnoszące się do indeksowania i zapytań. Tabela **AzureDiagnostics** w log Analytics zbiera dane operacyjne powiązane z zapytaniami i indeksowanie.
 
 Większość zarejestrowanych danych jest przeznaczonych dla operacji tylko do odczytu. W przypadku innych operacji Create-Update-Delete, które nie są przechwytywane w dzienniku, można wysłać zapytanie do usługi wyszukiwania w celu uzyskania informacji o systemie.
 
@@ -115,9 +115,9 @@ Zarówno interfejs API REST platformy Azure Wyszukiwanie poznawcze, jak i zestaw
 
 ## <a name="monitor-user-access"></a>Monitorowanie dostępu użytkowników
 
-Ponieważ indeksy wyszukiwania są składnikiem większej aplikacji klienckiej, nie ma żadnej wbudowanej metodologii dla poszczególnych użytkowników do kontrolowania dostępu do indeksu. Założono, że żądania pochodzą z aplikacji klienckiej dla żądań administratora lub zapytania. Operacje odczytu i zapisu administratora obejmują tworzenie, aktualizowanie i usuwanie obiektów w całej usłudze. Operacje tylko do odczytu są zapytania względem kolekcji dokumentów, w zakresie do pojedynczego indeksu. 
+Ponieważ indeksy wyszukiwania są składnikiem większej aplikacji klienckiej, nie ma żadnej wbudowanej metodologii do kontrolowania i monitorowania dostępu dla poszczególnych użytkowników do indeksu. Założono, że żądania pochodzą z aplikacji klienckiej dla żądań administratora lub zapytania. Operacje odczytu i zapisu administratora obejmują tworzenie, aktualizowanie i usuwanie obiektów w całej usłudze. Operacje tylko do odczytu są zapytania względem kolekcji dokumentów, w zakresie do pojedynczego indeksu. 
 
-W związku z tym informacje widoczne w dziennikach są odwołaniami do wywołań przy użyciu kluczy administratora lub kluczy zapytań. Odpowiedni klucz jest uwzględniany w żądaniach pochodzących z kodu klienta. Usługa nie jest wyposażona w obsługę tokenów tożsamości ani personifikacji.
+W związku z tym informacje widoczne w dziennikach aktywności są odwołaniami do wywołań przy użyciu kluczy administracyjnych lub kluczy zapytań. Odpowiedni klucz jest uwzględniany w żądaniach pochodzących z kodu klienta. Usługa nie jest wyposażona w obsługę tokenów tożsamości ani personifikacji.
 
 Jeśli istnieją wymagania biznesowe dotyczące autoryzacji dla poszczególnych użytkowników, zalecenie jest integrowane z Azure Active Directory. Możesz użyć $filter i tożsamości użytkowników, aby [przyciąć wyniki wyszukiwania](search-security-trimming-for-azure-search-with-aad.md) dokumentów, których użytkownik nie powinien zobaczyć. 
 

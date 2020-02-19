@@ -1,5 +1,5 @@
 ---
-title: Ochrona zasobów sieciowych w Azure Security Center | Microsoft Docs
+title: Ochrona zasobów sieciowych w Azure Security Center
 description: Ten dokument zawiera zalecenia dotyczące Azure Security Center, które pomagają chronić zasoby sieci platformy Azure i zachować zgodność z zasadami zabezpieczeń.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 98001ba01c5dd29375a9af3af43a06f760e4f55f
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552920"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431489"
 ---
 # <a name="protect-your-network-resources"></a>Ochrona zasobów sieciowych
 Azure Security Center stale analizuje stan zabezpieczeń zasobów platformy Azure pod kątem najlepszych rozwiązań z zakresu zabezpieczeń sieci. Gdy Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy zalecenia, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek do zabezpieczania i zabezpieczania zasobów.
@@ -141,4 +141,4 @@ Trzeci poziom przedstawia maszyny wirtualne, które są podobne do opisanych wcz
 Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:
 
 * [Ochrona maszyn i aplikacji w usłudze Azure Security Center](security-center-virtual-machine-protection.md)
-* [Ochrona usługi Azure SQL w usłudze Azure Security Center](security-center-sql-service-recommendations.md)
+* [Ochrona usługi Azure SQL w Azure Security Center](security-center-sql-service-recommendations.md)

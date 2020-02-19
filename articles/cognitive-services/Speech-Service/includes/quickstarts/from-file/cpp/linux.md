@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/14/2020
 ms.author: erhopf
-ms.openlocfilehash: ea219937fc765abd05e3ff438c0a48eb76a298b8
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: dcd34170668230b1e1a3224844d8779b8f51d1db
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156350"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446516"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -35,7 +35,7 @@ Przed rozpoczęciem upewnij się, że:
 
 1. W nowym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji usługi rozpoznawania mowy.
 
-1. Zastąp ciąg `YourServiceRegion` "parametrem zestawu Speech SDK" z [regionu](https://aka.ms/speech/sdkregion) skojarzonego z subskrypcją (na przykład `westus` subskrypcji bezpłatnej wersji próbnej).
+1. Zastąp ciąg `YourServiceRegion` **identyfikatorem regionu** z [regionu](https://aka.ms/speech/sdkregion) skojarzonego z subskrypcją (na przykład `westus` subskrypcji bezpłatnej wersji próbnej).
 
 1. Zastąp ciąg `whatstheweatherlike.wav` własnymi nazwami.
 

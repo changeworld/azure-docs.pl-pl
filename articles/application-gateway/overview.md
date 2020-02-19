@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: a72e98341ecafcda98cc2fde34cf1f9d4eaff94c
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 1e80fa23519104c3c62f6a0bf5d65cbbe0848ae2
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658274"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443826"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co to jest Azure Application Gateway?
 
@@ -61,7 +61,7 @@ Aby uzyskać więcej informacji, zobacz [co to jest Zapora aplikacji sieci Web p
 ## <a name="ingress-controller-for-aks"></a>Kontroler ruchu przychodzącego dla usługi AKS
 Application Gateway kontroler transferu danych przychodzących (AGIC) umożliwia korzystanie z Application Gateway jako ruchu przychodzącego dla klastra [usługi Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) . 
 
-Kontroler transferu danych przychodzących działa w ramach klastra AKS i zużywa zasoby związane z ruchem przychodzącym [Kubernetes](https://kubernetes.io/docs/concepts/services-networking/ingress/) i konwertuje je na konfigurację Application Gateway, dzięki czemu Brama może równoważyć obciążenie ruchu do zasobników Kubernetes. Kontroler transferu danych przychodzących obsługuje tylko Application Gateway jednostki SKU w wersji 2. 
+Kontroler transferu danych przychodzących działa w ramach klastra AKS i zużywa zasoby związane z ruchem przychodzącym [Kubernetes](https://kubernetes.io/docs/concepts/services-networking/ingress/) i konwertuje je na konfigurację Application Gateway, dzięki czemu Brama może równoważyć obciążenie ruchu do zasobników Kubernetes. Kontroler transferu danych przychodzących obsługuje tylko Application Gateway jednostki SKU Standard_v2 i WAF_v2. 
 
 Aby uzyskać więcej informacji, zobacz [Application Gatewayal Transferer Controller (AGIC)](ingress-controller-overview.md).
 
@@ -79,7 +79,7 @@ Hostowanie wielu witryn pozwala na skonfigurowanie więcej niż jednej witryny i
 
 Żądania dotyczące adresu `http://contoso.com` są kierowane do puli ContosoServerPool, a żądania dotyczące adresu `http://fabrikam.com` — do puli FabrikamServerPool.
 
-Podobnie dwie domeny podrzędne tej samej domeny nadrzędnej mogą być hostowane w ramach tego samego wdrożenia usługi Application Gateway. Przykłady użycia domen podrzędnych mogą obejmować domeny podrzędne `http://blog.contoso.com` i `http://app.contoso.com` hostowane w ramach jednego wdrożenia usługi Application Gateway.
+Podobnie dwie domeny podrzędne tej samej domeny nadrzędnej mogą być hostowane w ramach tego samego wdrożenia usługi Application Gateway. Przykłady użycia domen podrzędnych mogą obejmować domeny `http://blog.contoso.com` i `http://app.contoso.com` hostowane w jednym wdrożeniu bramy Application Gateway.
 
 Aby uzyskać więcej informacji, zobacz [hosting z wieloma lokacjami za pomocą Application Gateway](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview).
 
@@ -115,7 +115,7 @@ Opróżnianie połączeń umożliwia bezproblemowe usunięcie członków puli za
 
 Aby uzyskać więcej informacji, zobacz sekcję opróżnianie połączenia w temacie [Omówienie konfiguracji Application Gateway](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining).
 
-## <a name="custom-error-pages"></a>Niestandardowe strony błędów
+## <a name="custom-error-pages"></a>Strony błędów niestandardowych
 
 Usługa Application Gateway umożliwia tworzenie niestandardowych stron błędów wyświetlanych zamiast domyślnych strony błędów. W przypadku niestandardowych stron błędów możesz użyć własnych oznakowań i układu.
 
@@ -143,7 +143,7 @@ Pełna lista limitów usługi Application Gateway znajduje się na stronie [ogra
 
 W poniższej tabeli przedstawiono średnią przepływność wydajności dla każdego wystąpienia usługi Application Gateway V1 z włączonym odciążeniem SSL:
 
-| Średni rozmiar odpowiedzi strony zaplecza | Małe | Średnie | Duże |
+| Średni rozmiar odpowiedzi strony zaplecza | Small | Średnia | Large |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
 | 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |

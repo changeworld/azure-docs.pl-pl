@@ -1,6 +1,6 @@
 ---
-title: Tworzenie punktu końcowego Standard scim na potrzeby aprowizacji użytkowników w aplikacjach z usługi Azure AD
-description: Dowiedz się, jak utworzyć punkt końcowy Standard scim, zintegrować interfejs API Standard scim z usługą Azure Active Directory i rozpocząć automatyzację użytkowników i grup aprowizacji w aplikacjach w chmurze.
+title: Opracowywanie punktu końcowego Standard scim na potrzeby aprowizacji użytkowników w aplikacjach z usługi Azure AD
+description: System do zarządzania tożsamościami między domenami (standard scim) zapewnia standaryzację automatycznej aprowizacji użytkowników. Dowiedz się, jak opracowywać punkt końcowy Standard scim, zintegrować interfejs API Standard scim z usługą Azure Active Directory i rozpocząć automatyzację użytkowników i grup aprowizacji w aplikacjach w chmurze.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 02/18/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d891dfcc2a37489953724ce22e0e0422d512ff
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 30f8111e1d8c9bd76e7b55dd958256f8892b9058
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368224"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442024"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Tworzenie punktu końcowego Standard scim i Konfigurowanie aprowizacji użytkowników przy użyciu Azure Active Directory (Azure AD)
 
@@ -49,15 +49,53 @@ Automatyzacja aprowizacji do aplikacji wymaga skompilowania i integracji punktu 
 
 ## <a name="step-1-design-your-user-and-group-schema"></a>Krok 1. Projektowanie schematu użytkownika i grupy
 
-Każda aplikacja wymaga innych atrybutów do utworzenia użytkownika lub grupy. Rozpocznij integrację, identyfikując obiekty (użytkowników, grupy) i atrybuty (nazwę, Menedżera, stanowisko, itp.) wymagane przez aplikację. Następnie można użyć poniższej tabeli, aby zrozumieć, w jaki sposób atrybuty wymagane przez aplikację mogą być mapowane na atrybut w usłudze Azure AD i w Standard scim RFC. Należy pamiętać, że można [dostosować](customize-application-attributes.md) sposób mapowania atrybutów między usługą Azure AD a punktem końcowym Standard scim. 
+Każda aplikacja wymaga innych atrybutów do utworzenia użytkownika lub grupy. Rozpocznij integrację, identyfikując obiekty (użytkowników, grupy) i atrybuty (nazwę, Menedżera, stanowisko, itp.) wymagane przez aplikację. Standard Standard scim definiuje schemat do zarządzania użytkownikami i grupami. Podstawowy schemat użytkownika wymaga tylko trzech atrybutów: **ID** (identyfikator zdefiniowany przez dostawcę usługi), **externalid** (identyfikator zdefiniowany przez klienta) i **meta** (metadane tylko do odczytu utrzymywane przez dostawcę usługi). Wszystkie inne atrybuty są opcjonalne. Oprócz podstawowego schematu użytkownika Standard Standard scim definiuje rozszerzenie użytkownika przedsiębiorstwa oraz model rozszerzający schemat użytkownika w celu spełnienia wymagań aplikacji. Jeśli na przykład aplikacja wymaga Menedżera użytkownika, można użyć schematu użytkownika przedsiębiorstwa do zebrania Menedżera użytkownika i podstawowego schematu, aby zebrać wiadomości e-mail użytkownika. Aby zaprojektować schemat, wykonaj następujące czynności:
+  1. Lista atrybutów wymaganych przez aplikację. Pomocne może być podzielenie wymagań na atrybuty wymagane do uwierzytelniania (np. loginName i poczta e-mail), atrybuty potrzebne do zarządzania cyklem życia użytkownika (np. stan/aktywny) i inne atrybuty potrzebne do działania określonej aplikacji (np. Menedżer, tag).
+  2. Sprawdź, czy te atrybuty zostały już zdefiniowane w podstawowym schemacie użytkownika lub w schemacie użytkownika przedsiębiorstwa. Jeśli wszystkie atrybuty, które są potrzebne, nie są uwzględnione w schematach użytkownika Core lub Enterprise, należy zdefiniować rozszerzenie dla schematu użytkownika, które obejmuje potrzebne atrybuty. W poniższym przykładzie dodaliśmy rozszerzenie użytkownika, aby umożliwić obsługę "tagu" na użytkowniku. Najlepiej zacząć od tylko podstawowych i korporacyjnych schematów użytkownika i rozszerzać je do dodatkowych schematów niestandardowych później.  
+  3. Mapowanie atrybutów Standard scim do atrybutów użytkownika w usłudze Azure AD. Jeśli jeden z atrybutów zdefiniowanych w punkcie końcowym Standard scim nie ma wyraźnego odpowiednika w schemacie użytkownika usługi Azure AD, istnieje dobry szansa, że dane nie są przechowywane w obiekcie użytkownika we wszystkich dzierżawach. Należy rozważyć, czy ten atrybut może być opcjonalny w przypadku tworzenia użytkownika. Jeśli atrybut ma krytyczne znaczenie dla aplikacji, należy poprowadzić administratora dzierżawy, aby rozszerzał swój schemat lub użyć atrybutu rozszerzenia, jak pokazano poniżej dla właściwości "Tags".
 
-Zasoby użytkownika są identyfikowane przez identyfikator schematu, `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`, który jest zawarty w specyfikacji protokołu: https://tools.ietf.org/html/rfc7643.  Domyślne mapowanie atrybutów użytkowników w usłudze Azure AD do atrybutów zasobów użytkowników znajduje się w tabeli 1.  
+### <a name="table-1-outline-the-attributes-that-you-need"></a>Tabela 1: Tworzenie konspektu wymaganych atrybutów 
+| Krok 1. określanie atrybutów wymaganych przez aplikację| Krok 2. mapowanie wymagań aplikacji na Standard scim Standard| Krok 3. Mapowanie atrybutów Standard scim do atrybutów usługi Azure AD|
+|--|--|--|
+|loginName|userName|userPrincipalName|
+|firstName|name.givenName|givenName|
+|lastName|Nazwa. lastName|lastName|
+|workMail|Wiadomości e-mail [Type EQ "Work"]. Value|Poczta|
+|Menedżer|Menedżer|Menedżer|
+|seryjn|urn: IETF: params: Standard scim: schematy: rozszerzenie: 2.0: CustomExtension: tag|extensionAttribute1|
+|status|aktywne|isSoftDeleted (obliczona wartość nie jest przechowywana na użytkowniku)|
 
-Zasoby grupy są identyfikowane przez identyfikator schematu, `urn:ietf:params:scim:schemas:core:2.0:Group`. Tabela 2 zawiera domyślne mapowanie atrybutów grup w usłudze Azure AD do atrybutów zasobów grupy.
+Schemat zdefiniowany powyżej zostałby przedstawiony przy użyciu ładunku JSON poniżej. Należy pamiętać, że oprócz atrybutów wymaganych dla aplikacji, reprezentacja JSON zawiera wymagane atrybuty "ID", "externalId" i "meta".
 
-Należy pamiętać, że nie musisz obsługiwać użytkowników i grup ani wszystkich atrybutów przedstawionych poniżej. Są one odwołaniem do sposobu, w jaki atrybuty w usłudze Azure AD często są zamapowane na właściwości w protokole Standard scim.  
+```json
+{
+     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
+     "userName":"bjensen",
+     "externalId":"bjensen",
+     "name":{
+       "familyName":"Jensen",
+       "givenName":"Barbara"
+     },
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+     "Manager": "123456"
+   },
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "tag": "701984",
+   },
+   "meta": {
+     "resourceType": "User",
+     "created": "2010-01-23T04:56:22Z",
+     "lastModified": "2011-05-13T04:42:34Z",
+     "version": "W\/\"3694e05e9dff591\"",
+     "location":
+ "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
+   }
+ ```
 
-### <a name="table-1-default-user-attribute-mapping"></a>Tabela 1: Domyślne mapowanie atrybutu użytkownika
+### <a name="table-2-default-user-attribute-mapping"></a>Tabela 2: domyślne mapowanie atrybutów użytkownika
+Następnie można użyć poniższej tabeli, aby zrozumieć, w jaki sposób atrybuty wymagane przez aplikację mogą być mapowane na atrybut w usłudze Azure AD i w Standard scim RFC. Możesz [dostosować](customize-application-attributes.md) sposób, w jaki atrybuty są mapowane między usługą Azure AD a punktem końcowym Standard scim. Należy pamiętać, że nie musisz obsługiwać użytkowników i grup ani wszystkich atrybutów przedstawionych poniżej. Są one odwołaniem do sposobu, w jaki atrybuty w usłudze Azure AD często są zamapowane na właściwości w protokole Standard scim. 
 
 | Użytkownika usługi Azure Active Directory | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
@@ -81,16 +119,29 @@ Należy pamiętać, że nie musisz obsługiwać użytkowników i grup ani wszyst
 | user-PrincipalName |userName |
 
 
-### <a name="table-2-default-group-attribute-mapping"></a>Tabela 2: Domyślne mapowanie atrybutów grupy
+### <a name="table-3-default-group-attribute-mapping"></a>Tabela 3: Mapowanie atrybutów grupy domyślnej
 
 | Grupa usługi Azure Active Directory | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
 | displayName |displayName |
 | mail (poczta) |wiadomości e-mail [typ eq "Praca"] .value |
 | mailNickname |displayName |
-| elementy członkowskie |elementy członkowskie |
+| członkowie |członkowie |
 | Identyfikator obiektu |externalId |
 | proxyAddresses |wiadomości e-mail [Wpisz eq "other"]. Wartość |
+
+Istnieje kilka punktów końcowych zdefiniowanych w Standard scim RFC. Możesz rozpocząć pracę z punktem końcowym/User, a następnie rozwinąć je stamtąd. Punkt końcowy/schemas jest przydatny podczas korzystania z atrybutów niestandardowych lub jeśli schemat zmienia się często. Umożliwia klientowi automatyczne pobranie najbardziej aktualnego schematu. Punkt końcowy/Bulk jest szczególnie przydatny podczas obsługi grup. W poniższej tabeli opisano różne punkty końcowe zdefiniowane w standardzie Standard scim. Punkt końcowy/schemas jest przydatny podczas korzystania z atrybutów niestandardowych lub jeśli schemat zmienia się często. Umożliwia klientowi automatyczne pobieranie najbardziej aktualnych schematów. Punkt końcowy/Bulk jest szczególnie przydatny podczas obsługi grup. W poniższej tabeli opisano różne punkty końcowe zdefiniowane w standardzie Standard scim. 
+ 
+### <a name="table-4-determine-the-endpoints-that-you-would-like-to-develop"></a>Tabela 4: Określanie punktów końcowych, które chcesz opracować
+|PUNKTU końcowego|OPIS|
+|--|--|
+|/User|Wykonywanie operacji CRUD na obiekcie użytkownika.|
+|/Group|Wykonywanie operacji CRUD na obiekcie grupy.|
+|/ServiceProviderConfig|Zawiera szczegółowe informacje na temat funkcji obsługiwanego standardu Standard scim, na przykład obsługiwanych zasobów i metody uwierzytelniania.|
+|/ResourceTypes|Określa metadane dotyczące poszczególnych zasobów|
+|/Schemas|Zestaw atrybutów obsługiwanych przez każdego klienta i dostawcę usług może się różnić. Chociaż jeden dostawca usług może zawierać "name", "title" i "e-mail", podczas gdy inny dostawca usług używa "name", "title" i "numerówek". Punkt końcowy schematów umożliwia odnajdywanie obsługiwanych atrybutów.|
+|/Bulk|Operacje zbiorcze umożliwiają wykonywanie operacji na dużej kolekcji obiektów zasobów w ramach jednej operacji (np. aktualizacji członkostwa w dużej grupie).|
+
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>Krok 2. Omówienie implementacji usługi Azure AD Standard scim
 > [!IMPORTANT]
@@ -671,6 +722,34 @@ Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta u
 
 *HTTP/1.1 204 Brak zawartości*
 
+### <a name="security-requirements"></a>Wymagania dotyczące zabezpieczeń
+**Wersje protokołu TLS**
+
+Jedyne akceptowalne wersje protokołu TLS to TLS 1,2 i TLS 1,3. Żadna inna wersja protokołu TLS nie jest dozwolona. Nie jest dozwolona żadna wersja protokołu SSL. 
+- Klucze RSA muszą mieć co najmniej 2 048 bitów.
+- Klucze ECC muszą mieć co najmniej 256 bitów, generowane przy użyciu zatwierdzonej krzywej eliptycznej
+
+
+**Długości kluczy**
+
+Wszystkie usługi muszą używać certyfikatów X. 509 wygenerowanych przy użyciu kluczy kryptograficznych o wystarczającej długości, co oznacza:
+
+**Mechanizmy szyfrowania**
+
+Wszystkie usługi muszą być skonfigurowane tak, aby korzystały z następujących mechanizmów szyfrowania w kolejności określonej poniżej. Należy pamiętać, że jeśli masz tylko certyfikat RSA, instalacja mechanizmów szyfrowania ECDSA nie ma żadnego skutku. </br>
+
+Minimalny pasek mechanizmów szyfrowania TLS 1,2:
+
+- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
+
 ## <a name="step-3-build-a-scim-endpoint"></a>Krok 3. Tworzenie punktu końcowego Standard scim
 
 Tworząc usługę sieci Web Standard scim, która jest obsługiwana przy użyciu Azure Active Directory, można włączyć automatyczne Inicjowanie obsługi użytkowników dla praktycznie dowolnej aplikacji lub magazynu tożsamości.
@@ -885,7 +964,7 @@ Aby hostować usługę w Internet Information Services, programista utworzy zest
 
 ### <a name="handling-endpoint-authentication"></a>Obsługa punktu końcowego uwierzytelniania
 
-Żądania z usługi Azure Active Directory zawierać tokenu elementu nośnego OAuth 2.0. Każda usługa otrzymująca żądanie powinna uwierzytelniać wystawcę jako Azure Active Directory dla oczekiwanego Azure Active Directory dzierżawy, aby uzyskać dostęp do usługi interfejsu API Microsoft Graph. W tokenie wystawca jest identyfikowany przez zgłoszenie ISS, takie jak "ISS": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  W tym przykładzie adres podstawowy wartości "https://sts.windows.net" identyfikuje Azure Active Directory jako wystawcę, natomiast segment adresu względnego cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 jest unikatowym identyfikatorem dzierżawy Azure Active Directory, dla której token został wystawiony. Odbiorcy tokenu będą IDENTYFIKATORem szablonu aplikacji dla aplikacji w galerii. Identyfikator szablonu aplikacji dla wszystkich aplikacji niestandardowych to 8adf8e6e-67b2-4cf2-A259-e3dc5476c621. Identyfikator szablonu aplikacji dla każdej aplikacji w galerii jest różny. Skontaktuj się z firmą ProvisioningFeedback@microsoft.com, aby uzyskać pytania dotyczące identyfikatora szablonu aplikacji dla aplikacji galerii. Każda aplikacja zarejestrowana w jednej dzierżawie może otrzymać takie samo `iss`e żądanie z żądaniami Standard scim.
+Żądania z usługi Azure Active Directory zawierać tokenu elementu nośnego OAuth 2.0.   Każda usługa otrzymująca żądanie powinna uwierzytelniać wystawcę jako Azure Active Directory dla oczekiwanego Azure Active Directory dzierżawy, aby uzyskać dostęp do usługi interfejsu API Microsoft Graph.  W tokenie wystawca jest identyfikowany przez zgłoszenie ISS, takie jak "ISS": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/".  W tym przykładzie adres podstawowy wartości "https://sts.windows.net" identyfikuje Azure Active Directory jako wystawcę, natomiast segment adresu względnego cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 jest unikatowym identyfikatorem dzierżawy Azure Active Directory, dla której token został wystawiony. Odbiorcy tokenu będą IDENTYFIKATORem szablonu aplikacji dla aplikacji w galerii. Identyfikator szablonu aplikacji dla wszystkich aplikacji niestandardowych to 8adf8e6e-67b2-4cf2-A259-e3dc5476c621. Identyfikator szablonu aplikacji dla każdej aplikacji w galerii jest różny. Skontaktuj się z firmą ProvisioningFeedback@microsoft.com, aby uzyskać pytania dotyczące identyfikatora szablonu aplikacji dla aplikacji galerii. Każda aplikacja zarejestrowana w jednej dzierżawie może otrzymać takie samo `iss`e żądanie z żądaniami Standard scim.
 
 Deweloperzy korzystający z bibliotek interfejsu wiersza polecenia dostarczonych przez firmę Microsoft do tworzenia usługi Standard scim mogą uwierzytelniać żądania z Azure Active Directory przy użyciu pakietu Microsoft. Owin. Security. ActiveDirectory, wykonując następujące czynności: 
 
@@ -1370,11 +1449,20 @@ Jeśli tworzysz aplikację, która będzie używana przez więcej niż jedną dz
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Autoryzacja łączników aprowizacji w galerii aplikacji
 Specyfikacja Standard scim nie definiuje schematu specyficznego dla Standard scim na potrzeby uwierzytelniania i autoryzacji. Opiera się na korzystaniu z istniejących standardów branżowych. Klient aprowizacji usługi Azure AD obsługuje dwie metody autoryzacji dla aplikacji w galerii. 
 
+|Metoda autoryzacji|Specjaliści|Wady|Pomoc techniczna|
+|--|--|--|--|
+|Nazwa użytkownika i hasło (niezalecane lub obsługiwane przez usługę Azure AD)|Łatwa implementacja|Niezabezpieczone — [Twoje PA $ $Word nie ma znaczenia](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Obsługiwane w przypadku aplikacji galerii w przypadku wielkości liter. Nieobsługiwane w przypadku aplikacji innych niż Galeria.|
+|Token okaziciela o długim czasie trwania (obsługiwany przez usługę Azure AD)|Tokeny długotrwałe nie wymagają obecności użytkownika. Administratorzy mogą łatwo używać podczas konfigurowania aprowizacji.|Tokeny długotrwałe mogą być trudne do udostępnienia administratorowi bez użycia niezabezpieczonych metod, takich jak poczta e-mail. |Obsługiwane w przypadku aplikacji Galeria i innych niż Galeria. |
+|Przyznawanie kodu autoryzacji OAuth (obsługiwane przez usługę Azure AD)|Tokeny dostępu są znacznie krótsze niż hasła i mają mechanizm zautomatyzowanego odświeżania, który nie ma tokenów okaziciela o długim czasie trwania.  Rzeczywisty użytkownik musi być obecny podczas wstępnej autoryzacji, co umożliwia dodanie poziomu odpowiedzialności. |Wymaga, aby użytkownik był obecny. Jeśli użytkownik opuści organizację, token jest nieprawidłowy, a autoryzacja będzie musiała zostać ukończona ponownie.|Obsługiwane w przypadku aplikacji w galerii. Obsługa aplikacji innych niż Galeria jest w toku.|
+|Przyznawanie poświadczeń klienta OAuth (nieobsługiwane w naszym planie)|Tokeny dostępu są znacznie krótsze niż hasła i mają mechanizm zautomatyzowanego odświeżania, który nie ma tokenów okaziciela o długim czasie trwania. Zarówno kod autoryzacji przydzielenia, jak i poświadczenia klienta umożliwiają tworzenie tego samego typu tokenu dostępu, więc przechodzenie między tymi metodami jest niewidoczne dla interfejsu API.  Inicjowanie obsługi może być całkowicie zautomatyzowane i nowe tokeny mogą być wymagane w trybie dyskretnym bez interakcji z użytkownikiem. ||Nieobsługiwane w przypadku aplikacji Galeria i innych niż Galeria. Pomoc techniczna znajduje się w naszej zaległości.|
+
 **Przepływ przyznania kodu autoryzacji OAuth:** Usługa aprowizacji obsługuje [przyznawanie kodu autoryzacji](https://tools.ietf.org/html/rfc6749#page-24). Po przesłaniu żądania opublikowania aplikacji w galerii nasz zespół będzie mógł zebrać następujące informacje:
 *  Adres URL autoryzacji: adres URL klienta, aby uzyskać autoryzację od właściciela zasobu za pośrednictwem przekierowania agenta użytkownika. Użytkownik zostanie przekierowany do tego adresu URL, aby autoryzować dostęp. 
 *  Adres URL wymiany tokenów: adres URL klienta programu, który umożliwia wymianę autoryzacji dla tokenu dostępu, zazwyczaj z uwierzytelnianiem klienta.
 *  Identyfikator klienta: serwer autoryzacji wystawia zarejestrowany klientowi identyfikator klienta, który jest unikatowym ciągiem reprezentującym Informacje rejestracyjne dostarczone przez klienta.  Identyfikator klienta nie jest wpisem tajnym; jest on narażony na właściciela zasobu i **nie może** być używany do uwierzytelniania klientów.  
 *  Wpis tajny klienta: klucz tajny klienta jest kluczem tajnym wygenerowanym przez serwer autoryzacji. Powinna to być unikatowa wartość znana tylko serwerowi autoryzacji. 
+
+Należy zauważyć, że uwierzytelnianie OAuth V1 nie jest obsługiwane ze względu na narażenie klucza tajnego klienta. Uwierzytelnianie OAuth v2 jest obsługiwane.  
 
 Najlepsze rozwiązania (zalecane, ale nie wymagane):
 * Obsługa wielu adresów URL przekierowań. Administratorzy mogą skonfigurować obsługę administracyjną zarówno z "portal.azure.com", jak i "aad.portal.azure.com". Obsługa wielu adresów URL przekierowania gwarantuje, że użytkownicy będą mogli autoryzować dostęp z dowolnego portalu.

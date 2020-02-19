@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 32b3135f805cc6c68d8cd9d6fa2b6f957cd140ad
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312417"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444149"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Zabezpieczenia przedsiębiorstwa dla Azure Machine Learning
 
@@ -26,7 +26,7 @@ W przypadku korzystania z usługi w chmurze najlepszym rozwiązaniem jest ograni
 > [!NOTE]
 > Informacje przedstawione w tym artykule współdziałają z Azure Machine Learning Python SDK w wersji 1.0.83.1 lub nowszej.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Uwierzytelnianie
 
 Uwierzytelnianie wieloskładnikowe jest obsługiwane, jeśli Azure Active Directory (Azure AD) jest skonfigurowany do korzystania z niego. Oto proces uwierzytelniania:
 
@@ -71,7 +71,7 @@ W poniższej tabeli wymieniono niektóre główne operacje Azure Machine Learnin
 | Uruchamianie eksperymentu | ✓ | ✓ | |
 | Wyświetl przebiegi/metryki | ✓ | ✓ | ✓ |
 | Rejestrowanie modelu | ✓ | ✓ | |
-| Tworzenie obrazu | ✓ | ✓ | |
+| Utwórz obraz | ✓ | ✓ | |
 | Wdróż usługę sieci Web | ✓ | ✓ | |
 | Wyświetlanie modeli/obrazów | ✓ | ✓ | ✓ |
 | Wywoływanie usługi sieci Web | ✓ | ✓ | ✓ |
@@ -88,9 +88,9 @@ Aby uzyskać więcej informacji o tożsamościach zarządzanych, zobacz [zarząd
 
 | Zasób | Uprawnienia |
 | ----- | ----- |
-| Workspace | Współautor |
+| Obszar roboczy | Współautor |
 | Konto magazynu | Współautor danych obiektu blob magazynu |
-| Key Vault | Dostęp do wszystkich kluczy, wpisów tajnych, certyfikatów |
+| Magazyn kluczy | Dostęp do wszystkich kluczy, wpisów tajnych, certyfikatów |
 | Azure Container Registry | Współautor |
 | Grupa zasobów, która zawiera obszar roboczy | Współautor |
 | Grupa zasobów zawierająca Magazyn kluczy (jeśli jest inna niż ta, która zawiera obszar roboczy) | Współautor |
@@ -191,7 +191,7 @@ Każda maszyna wirtualna ma także lokalny dysk tymczasowy dla operacji systemu 
 
 Aby uzyskać więcej informacji na temat sposobu, w jaki szyfrowanie w spoczynku działa na platformie Azure, zobacz [szyfrowanie danych platformy Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
-### <a name="encryption-in-transit"></a>Szyfrowanie danych przesyłanych
+### <a name="encryption-in-transit"></a>Szyfrowanie podczas przesyłania
 
 Za pomocą protokołu SSL można zabezpieczyć wewnętrzną komunikację między Azure Machine Learning mikrousługami i zabezpieczyć wywołania zewnętrzne do punktu końcowego oceniania. Cały dostęp do usługi Azure Storage odbywa się również za pośrednictwem bezpiecznego kanału.
 
@@ -215,7 +215,7 @@ Każdy obszar roboczy ma skojarzoną w systemie tożsamość zarządzaną, któr
 
 Firma Microsoft może zbierać informacje o tożsamościach nienależących do użytkownika, takie jak nazwy zasobów (np. Nazwa zestawu danych lub nazwa eksperymentu usługi Machine Learning) lub zmienne środowiskowe zadań dla celów diagnostycznych. Wszystkie takie dane są przechowywane przy użyciu kluczy zarządzanych przez firmę Microsoft w magazynie hostowanym w subskrypcjach firmy Microsoft i zgodne ze [standardowymi zasadami ochrony prywatności firmy Microsoft i standardami obsługi danych](https://privacy.microsoft.com/privacystatement).
 
-Firma Microsoft zaleca również, aby nie przechowywać poufnych informacji (takich jak wpisy tajne klucza konta) w zmiennych środowiskowych. Zmienne środowiskowe są rejestrowane, szyfrowane i przechowywane przez nas.
+Firma Microsoft zaleca również, aby nie przechowywać poufnych informacji (takich jak wpisy tajne klucza konta) w zmiennych środowiskowych. Zmienne środowiskowe są rejestrowane, szyfrowane i przechowywane przez nas. Podobnie podczas nadawania nazwy [RunId](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)należy unikać uwzględniania poufnych informacji, takich jak nazwy użytkowników lub nazwy projektów tajnych. Te informacje mogą pojawić się w dziennikach telemetrii dostępnych dla pomoc techniczna firmy Microsoft inżynierów.
 
 Możesz zrezygnować z zbierania danych diagnostycznych, ustawiając parametr `hbi_workspace`, aby `TRUE` podczas aprowizacji obszaru roboczego. Ta funkcja jest obsługiwana w przypadku korzystania z zestawu SDK środowiska Azure Python, interfejsu wiersza polecenia, interfejsów API REST lub Azure Resource Manager szablonów.
 
@@ -252,7 +252,7 @@ Szczegóły żądania oceniania są przechowywane w Application Insights. Applic
 * Computetype
 * RequestUrl
 * StatusCode
-* RequestId
+* IdentyfikatorŻądania
 * Czas trwania
 
 > [!IMPORTANT]
@@ -289,7 +289,7 @@ Skojarzona z obszarem roboczym Azure Machine Learning to katalogi (eksperymenty)
 
 [przepływ pracy migawek kodu ![](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
 
-### <a name="training"></a>Szkolenie
+### <a name="training"></a>Szkolenia
 
 Na poniższym diagramie przedstawiono przepływ pracy szkoleniowej.
 
@@ -333,9 +333,9 @@ Oto szczegółowe informacje:
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL](how-to-secure-web-service.md)
+* [Zabezpieczanie Azure Machine Learning usług sieci Web przy użyciu protokołu SSL](how-to-secure-web-service.md)
 * [Korzystanie z modelu Machine Learning wdrożonego jako usługa sieci Web](how-to-consume-web-service.md)
-* [Jak uruchomić prognoz usługi batch](how-to-use-parallel-run-step.md)
+* [Jak uruchamiać przewidywania wsadowe](how-to-use-parallel-run-step.md)
 * [Monitoruj modele Azure Machine Learning przy użyciu Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md)
 * [Zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

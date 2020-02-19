@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: ea9df341fcc76a38364e590f8541e6a85d7ec466
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 52d5628698d1f945a7f672595ee7ce4739b6d13c
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211011"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444370"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Zezwól twórcy laboratorium na wybranie lokalizacji dla laboratorium w Azure Lab Services
 W Azure Lab Services właściciel konta laboratorium może zezwolić twórcom laboratorium (wykładowcom) na wybranie lokalizacji dla tworzonych przez siebie laboratorium. Ta lokalizacja może różnić się od lokalizacji konta laboratorium. Lokalizacja jest grupą regionów świadczenia usługi Azure. Na przykład lokalizacja Stany Zjednoczone jest grupą regionów, takich jak Wschodnie stany USA, zachodnie stany USA itd. 
@@ -73,6 +73,8 @@ Wcześniej cena była oparta na wybranym przez Ciebie rozmiarze maszyny wirtualn
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:
 
-- [As a lab owner, create and manage labs (Tworzenie laboratoriów i zarządzanie nimi jako właściciel laboratorium)](how-to-manage-classroom-labs.md)
-- [As a lab owner, set up and publish templates (Konfigurowanie i tworzenie szablonów jako właściciel laboratorium)](how-to-create-manage-template.md)
-- [As a lab owner, configure and control usage of a lab (Konfigurowanie i kontrolowanie użycia laboratorium jako właściciel laboratorium)](how-to-configure-student-usage.md)
+- [Łączenie sieci laboratorium z równorzędną siecią wirtualną](how-to-connect-peer-virtual-network.md)
+- [Dołączanie galerii obrazów udostępnionych do laboratorium](how-to-attach-detach-shared-image-gallery.md)
+- [Dodawanie użytkownika jako właściciela laboratorium](how-to-add-user-lab-owner.md)
+- [Wyświetlanie ustawień zapory dla laboratorium](how-to-configure-firewall-settings.md)
+- [Skonfiguruj inne ustawienia laboratorium](how-to-configure-lab-accounts.md)

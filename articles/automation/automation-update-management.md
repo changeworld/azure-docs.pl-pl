@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e03ba960ab6542198372d75de7e0d34bf8d9e1b
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aec46a1914fa2361ea15ba34dd1510cfe53a4dc0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513324"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443843"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management rozwiązanie na platformie Azure
 
@@ -36,7 +36,7 @@ Na poniższym diagramie przedstawiono sposób, w jaki rozwiązanie ocenia i stos
 
 ![Przepływ procesu Update Management](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Rozwiązanie Update Management pozwala natywnie dołączać maszyny z różnych subskrypcji do jednej dzierżawy.
+Update Management może służyć do natywnego dołączania maszyn w ramach wielu subskrypcji w ramach tej samej dzierżawy.
 
 Po wydaniu pakietu trwa od 2 do 3 godzin, aby poprawka była wyświetlana dla maszyn z systemem Linux na potrzeby oceny. W przypadku maszyn z systemem Windows trwa od 12 do 15 godzin, aby poprawka była wyświetlana na potrzeby oceny po jej udostępnieniu.
 
@@ -67,12 +67,12 @@ Posiadanie maszyny zarejestrowanej dla Update Management w więcej niż jednym L
 
 ### <a name="supported-client-types"></a>Typy obsługiwanych klientów
 
-W poniższej tabeli wymieniono systemy operacyjne obsługiwane w przypadku ocen aktualizacji. Stosowanie poprawek wymaga hybrydowego procesu roboczego elementu Runbook. Aby uzyskać informacje na temat wymagań hybrydowych procesów roboczych elementu Runbook, zobacz Przewodniki instalacji dotyczące instalowania [hybrydowego procesu roboczego elementu Runbook systemu Windows](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) i [hybrydowego procesu roboczego elementu Runbook](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)w systemie Linux
+W poniższej tabeli wymieniono systemy operacyjne obsługiwane w przypadku ocen aktualizacji. Stosowanie poprawek wymaga hybrydowego procesu roboczego elementu Runbook. Aby uzyskać informacje na temat wymagań hybrydowych procesów roboczych elementu Runbook, zobacz Przewodniki instalacji dotyczące instalowania [hybrydowego procesu roboczego elementu Runbook systemu Windows](automation-windows-hrw-install.md) i [hybrydowego procesu roboczego elementu Runbook](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)w systemie Linux
 
 |System operacyjny  |Uwagi  |
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2 (wersja RTM i SP1 standard)| Update Management obsługuje tylko wykonywanie ocen dla tego systemu operacyjnego, stosowanie poprawek nie jest obsługiwane, ponieważ [hybrydowy proces roboczy elementu Runbook](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) nie jest obsługiwany w przypadku systemu Windows Server 2008 R2. |
+|Windows Server 2008 R2 (wersja RTM i SP1 standard)| Update Management obsługuje tylko wykonywanie ocen dla tego systemu operacyjnego, stosowanie poprawek nie jest obsługiwane, ponieważ [hybrydowy proces roboczy elementu Runbook](automation-windows-hrw-install.md) nie jest obsługiwany w przypadku systemu Windows Server 2008 R2. |
 |CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji. Stosowanie poprawek opartych na klasyfikacji wymaga, aby `yum` zwracały dane zabezpieczeń, które nie są dostępne w jego wersjach RTM. Aby uzyskać więcej informacji na temat stosowania poprawek opartych na klasyfikacji na CentOS, zobacz [Aktualizacja klasyfikacji w systemie Linux](automation-view-update-assessments.md#linux-2).          |
 |Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
@@ -89,14 +89,14 @@ W poniższej tabeli wymieniono nieobsługiwane systemy operacyjne:
 |System operacyjny  |Uwagi  |
 |---------|---------|
 |Klient systemu Windows     | Systemy operacyjne klienta (takich jak Windows 7 i Windows 10) nie są obsługiwane.        |
-|Windows Server 2016 Nano Server     | Bez pomocy technicznej.       |
-|Węzły usługi Azure Kubernetes | Bez pomocy technicznej. Użyj procesu poprawek opisanego w temacie [stosowanie aktualizacji zabezpieczeń i jądra do węzłów systemu Linux w usłudze Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md)|
+|Windows Server 2016 Nano Server     | Nieobsługiwane.       |
+|Węzły usługi Azure Kubernetes | Nieobsługiwane. Użyj procesu poprawek opisanego w temacie [stosowanie aktualizacji zabezpieczeń i jądra do węzłów systemu Linux w usłudze Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md)|
 
-### <a name="client-requirements"></a>Wymagania dotyczące klientów
+### <a name="client-requirements"></a>Wymagania dotyczące klienta
 
 Poniższe informacje opisują wymagania klienta specyficzne dla systemu operacyjnego. Aby uzyskać dodatkowe wskazówki, zobacz [Planowanie sieci](#ports).
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>System Windows
 
 Agenci systemu Windows muszą być skonfigurowani do komunikowania się z serwerem WSUS lub muszą mieć dostęp do Microsoft Update.
 
@@ -135,7 +135,7 @@ Komputery z systemem Windows można dodać do grupy hybrydowych procesów robocz
 
 ### <a name="management-packs"></a>Pakiety administracyjne
 
-Jeśli grupa zarządzania programu System Center Operations Manager jest połączona z obszarem roboczym usługi Log Analytics, to w programie Operations Manager są instalowane następujące pakiety administracyjne. Te pakiety administracyjne są również instalowane na bezpośrednio połączonych komputerach z systemem Windows po dodaniu rozwiązania. Pakietów administracyjnych nie trzeba konfigurować ani zarządzać nimi.
+Jeśli grupa zarządzania System Center Operations Manager jest połączona z obszarem roboczym Log Analytics, następujące pakiety administracyjne są instalowane w Operations Manager. Te pakiety administracyjne są również instalowane na komputerach z systemem Windows bezpośrednio połączonym po dodaniu rozwiązania. Nie trzeba konfigurować tych pakietów administracyjnych ani nimi zarządzać.
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -157,9 +157,9 @@ W poniższej tabeli opisano połączone źródła obsługiwane przez to rozwiąz
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| Agenci dla systemu Windows |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów systemu Windows, a następnie inicjuje instalację wymaganych aktualizacji. |
-| Agenci dla systemu Linux |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów z systemem Linux, a następnie inicjuje instalację wymaganych aktualizacji w obsługiwanych dystrybucjach. |
-| Grupa zarządzania programu Operations Manager |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/><br/>Bezpośrednie połączenie z agentem Operations Manager do Azure Monitor dzienników nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
+| Agenci dla systemu Windows |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów systemu Windows, a następnie inicjuje instalację wymaganych aktualizacji. |
+| Agenci dla systemu Linux |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów z systemem Linux, a następnie inicjuje instalację wymaganych aktualizacji w obsługiwanych dystrybucjach. |
+| Grupa zarządzania programu Operations Manager |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/><br/>Bezpośrednie połączenie z agentem Operations Manager do Azure Monitor dzienników nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 
@@ -167,7 +167,7 @@ Skanowanie jest wykonywane dwa razy dziennie dla każdego zarządzanego komputer
 
 Skanowanie jest wykonywane co godzinę dla każdego zarządzanego komputera z systemem Linux.
 
-Wyświetlenie zaktualizowanych danych z zarządzanych komputerów na pulpicie nawigacyjnym może potrwać od 30 minut do 6 godzin.
+Wyświetlenie zaktualizowanych danych z zarządzanych komputerów przez pulpit nawigacyjny może potrwać od 30 minut do 6 godzin.
 
 Średnie użycie danych przez Azure Monitor dzienników dla maszyny używającej Update Management wynosi około 25 megabajtów (MB) miesięcznie. Ta wartość jest tylko przybliżeniem i może ulec zmianie, w zależności od środowiska. Zalecamy monitorowanie środowiska, aby śledzić dokładne użycie.
 
@@ -175,7 +175,7 @@ Wyświetlenie zaktualizowanych danych z zarządzanych komputerów na pulpicie na
 
 Poniższe adresy są wymagane dla Update Management. Komunikacja z tymi adresami odbywa się za pośrednictwem portu 443.
 
-|Azure Public  |Platforma Azure dla instytucji rządowych  |
+|Azure Public  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
@@ -212,7 +212,7 @@ Wybierz pozycję **brakujące aktualizacje** , aby wyświetlić listę aktualiza
 
 W poniższej tabeli wymieniono klasyfikacje aktualizacji w Update Management z definicją dla każdej klasyfikacji.
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>System Windows
 
 |Klasyfikacja  |Opis  |
 |---------|---------|
@@ -222,10 +222,10 @@ W poniższej tabeli wymieniono klasyfikacje aktualizacji w Update Management z d
 |Pakiety funkcji     | Nowe funkcje produktu dystrybuowane poza wydaniem produktu.        |
 |Dodatki Service Pack     | Zbiorczy zestaw poprawek, które są stosowane do aplikacji.        |
 |Aktualizacje definicji     | Aktualizacja dla wirusów lub innych plików definicji.        |
-|narzędzia     | Narzędzie lub funkcja, która pomaga wykonać jedno lub więcej zadań.        |
+|Narzędzia     | Narzędzie lub funkcja, która pomaga wykonać jedno lub więcej zadań.        |
 |Aktualizacje     | Aktualizacja aplikacji lub pliku, który jest aktualnie zainstalowany.        |
 
-### <a name="linux-2"></a>Linux
+### <a name="linux-2"></a>System
 
 |Klasyfikacja  |Opis  |
 |---------|---------|

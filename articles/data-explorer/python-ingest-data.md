@@ -7,26 +7,28 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: f109f2dd45fe90884d3947b244b3dafffd547725
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 91401031945d0ec3ac22fc8cbcea8ba73580ee50
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68355939"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442007"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>pozyskiwanie danych przy użyciu biblioteki języka Python w usłudze Azure Data Explorer
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer udostępnia dwie biblioteki klienckie dla języka Python: [bibliotekę pozyskiwania](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) i [bibliotekę danych](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Te biblioteki umożliwiają pozyskiwanie (ładowanie) danych do klastra i wykonywanie zapytań o dane z kodu. W tym artykule najpierw utworzysz Mapowanie tabeli i danych w klastrze. Następnie umieścisz pozyskiwanie w kolejce do klastra i sprawdzisz poprawność wyników.
+W tym artykule pozyskasz dane przy użyciu biblioteki języka Python platformy Azure Eksplorator danych. Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer udostępnia dwie biblioteki klienckie dla języka Python: [bibliotekę pozyskiwania](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) i [bibliotekę danych](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Te biblioteki umożliwiają pozyskiwanie i ładowanie danych do klastra oraz wykonywanie zapytań dotyczących danych z kodu.
+
+Najpierw utwórz tabelę i mapowanie danych w klastrze. Następnie umieścisz pozyskiwanie w kolejce do klastra i sprawdzisz poprawność wyników.
 
 Ten artykuł jest również dostępny jako [Notes platformy Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Klaster i baza danych](create-cluster-database-portal.md)
+* [Python 3.4 +](https://www.python.org/downloads/).
 
-* Język [Python](https://www.python.org/downloads/) zainstalowany na komputerze deweloperskim
+* [Klaster i baza danych](create-cluster-database-portal.md).
 
 ## <a name="install-the-data-and-ingest-libraries"></a>Instalowanie biblioteki danych i biblioteki pozyskiwania
 
@@ -103,7 +105,7 @@ BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + \
 
 ## <a name="create-a-table-on-your-cluster"></a>Tworzenie tabeli w klastrze
 
-Utwórz tabelę, która będzie zgodna ze schematem danych w pliku StormEvents.csv. Uruchomienie tego kodu powoduje zwrócenie komunikatu, jak pokazano poniżej: *Aby się zalogować, otwórz stronę https://microsoft.com/devicelogin w przeglądarce internetowej i wprowadź kod F3W4VWZDM, aby się uwierzytelnić*. Postępuj zgodnie z instrukcjami, aby się zalogować, a następnie wróć w celu uruchomienia kolejnego bloku kodu. Kolejne bloki kodu umożliwiające nawiązanie połączenia wymagają ponownego zalogowania.
+Utwórz tabelę, która będzie zgodna ze schematem danych w pliku StormEvents.csv. Uruchomiony kod zwraca komunikat podobny do następującego: *To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code F3W4VWZDM to authenticate* (Aby się zalogować, użyj przeglądarki internetowej, aby otworzyć stronę https://microsoft.com/devicelogin, i wprowadź kod F3W4VWZDM w celu uwierzytelnienia). Postępuj zgodnie z instrukcjami, aby się zalogować, a następnie wróć w celu uruchomienia kolejnego bloku kodu. Kolejne bloki kodu umożliwiające nawiązanie połączenia wymagają ponownego zalogowania.
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB_DATA)

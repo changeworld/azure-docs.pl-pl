@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 10/18/2019
+ms.date: 01/08/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 14e33bf77144e4cd5728ec85d3012dc0ba717ece
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: fb8bebb46903366c5e51497e3011a20b4a981e6d
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945653"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442653"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell
 
@@ -64,7 +64,7 @@ Zapoznaj się z sekcją [Tworzenie tras](#create-the-routes) w tym artykule, aby
 >[!NOTE]
 >Zapora platformy Azure musi mieć bezpośrednią łączność z Internetem. Jeśli AzureFirewallSubnet nauczy trasy domyślnej do sieci lokalnej za pośrednictwem protokołu BGP, należy przesłonić ten element przy użyciu wartości 0.0.0.0/0 UDR z wartością **NextHopType** ustawioną jako **Internet** w celu utrzymania bezpośredniej łączności z Internetem.
 >
->Zapora platformy Azure nie obsługuje obecnie wymuszonego tunelowania. Jeśli konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej i można określić docelowe prefiksy adresów IP dla miejsc docelowych Internetu, można skonfigurować te zakresy przy użyciu sieci lokalnej jako następnego skoku za pośrednictwem trasy zdefiniowanej przez użytkownika na stronie AzureFirewallSubnet. Lub można użyć protokołu BGP, aby zdefiniować te trasy.
+>Zaporę platformy Azure można skonfigurować do obsługi wymuszonego tunelowania. Aby uzyskać więcej informacji, zobacz [tunelowanie wymuszone przez zaporę platformy Azure](forced-tunneling.md).
 
 >[!NOTE]
 >Ruch między wirtualnymi sieciami równorzędnymi połączonymi bezpośrednio jest kierowany bezpośrednio nawet wtedy, gdy trasa zdefiniowana przez użytkownika wskazuje usługę Azure Firewall jako bramę domyślną. Aby w tym scenariuszu wysyłać ruch między podsieciami do zapory, trasa zdefiniowana przez użytkownika musi jawnie zawierać prefiks podsieci docelowej w obu podsieciach.

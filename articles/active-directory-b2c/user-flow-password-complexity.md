@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 59ac2f74d4753c1f647bedfa2c402e729e25ee62
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6e629f3c83d847cf20eccbe7a3fb0d3f444dac62
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847812"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430333"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurowanie wymagań dotyczących złożoności haseł w Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ Jeśli używasz zasad niestandardowych, możesz ([skonfigurować złożoność h
 
 ## <a name="configure-password-complexity"></a>Konfigurowanie złożoności hasła
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 3. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
 4. Wybierz pozycję **przepływy użytkownika (zasady)** .
@@ -46,11 +46,11 @@ Jeśli używasz zasad niestandardowych, możesz ([skonfigurować złożoność h
 
 ### <a name="comparison-chart"></a>Wykres porównawczy
 
-| Stopień | Opis |
+| Stopień złożoności | Opis |
 | --- | --- |
-| Prostota | Hasło, które ma co najmniej 8 do 64 znaków. |
-| Strong | Hasło, które ma co najmniej 8 do 64 znaków. Wymaga 3 z 4 z małych i wielkich liter, cyfr lub symboli. |
-| Niestandardowe | Ta opcja zapewnia największą kontrolę nad regułami złożoności haseł.  Umożliwia skonfigurowanie długości niestandardowej.  Umożliwia również akceptowanie haseł tylko do numerów (PIN). |
+| Proste | Hasło, które ma co najmniej 8 do 64 znaków. |
+| Silna | Hasło, które ma co najmniej 8 do 64 znaków. Wymaga 3 z 4 z małych i wielkich liter, cyfr lub symboli. |
+| Niestandardowy | Ta opcja zapewnia największą kontrolę nad regułami złożoności haseł.  Umożliwia skonfigurowanie długości niestandardowej.  Umożliwia również akceptowanie haseł tylko do numerów (PIN). |
 
 ## <a name="custom-options"></a>Opcje niestandardowe
 
@@ -73,7 +73,7 @@ Pozwala kontrolować wymagania dotyczące długości hasła.
 Umożliwia sterowanie różnymi typami znaków używanymi w haśle.
 
 - **2 z 4: mała litera, Wielka litera, cyfra (0-9), symbol zapewnia,** że hasło zawiera co najmniej dwa typy znaków. Na przykład liczba i małe litery.
-- **3 z 4: mała litera, Wielka litera, cyfra (0-9), symbol zapewnia,** że hasło zawiera co najmniej dwa typy znaków. Na przykład liczba, małe litery i wielkie litery.
+- **3 z 4: mała litera, Wielka litera, cyfra (0-9), symbol zapewnia,** że hasło zawiera co najmniej trzy typy znaków. Na przykład liczba, małe litery i wielkie litery.
 - **4 z 4: mała litera, Wielka litera, cyfra (0-9), symbol** zapewnia, że hasło zawiera wszystkie typy znaków.
 
     > [!NOTE]

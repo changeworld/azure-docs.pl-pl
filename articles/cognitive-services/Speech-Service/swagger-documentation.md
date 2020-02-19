@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: dd9ac9654f916653af974e816485630423466ae5
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: fcc43caf895dadfaf832a47c3254f9b828bcb71a
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815425"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430809"
 ---
 # <a name="swagger-documentation"></a>Dokumentacja platformy Swagger
 
@@ -30,7 +30,7 @@ Usługa mowy oferuje specyfikację struktury Swagger do współpracy z kilku int
 
 Musisz ustawić strukturę Swagger na ten sam region, w którym znajduje się subskrypcja usługi mowy. Możesz potwierdzić swój region w Azure Portal w ramach zasobu usługi mowy. Aby uzyskać pełną listę obsługiwanych regionów, zobacz [regiony](regions.md).
 
-1. Przejdź do usługi https://editor.swagger.io
+1. Przejdź do strony https://editor.swagger.io
 2. Kliknij pozycję **plik**, a następnie kliknij pozycję **Importuj** .
 3. Wprowadź adres URL programu Swagger, w tym region dla subskrypcji usługi mowy `https://<your-region>.cris.ai/docs/v2.0/swagger`
 4. Kliknij pozycję **Generuj klienta** i wybierz pozycję Python
@@ -38,7 +38,7 @@ Musisz ustawić strukturę Swagger na ten sam region, w którym znajduje się su
 
 Możesz użyć biblioteki języka Python wygenerowanej w [przykładach usługi mowy w witrynie GitHub](https://aka.ms/csspeech/samples).
 
-## <a name="reference-docs"></a>Dokumentacja
+## <a name="reference-docs"></a>Dokumentacja dokumentacji
 
 * [REST (Swagger): Transkrypcja i dostosowywanie partii](https://westus.cris.ai/swagger/ui/index)
 * [Interfejs API REST: zamiana mowy na tekst](rest-speech-to-text.md)

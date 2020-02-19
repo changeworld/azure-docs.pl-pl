@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 07a78dc81d121874db5e59ad267ea8eb08a69c91
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210144"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443739"
 ---
 # <a name="what-is-azure-maps"></a>Co to jest usługa Azure Maps?
 
@@ -45,19 +45,19 @@ W poniższym filmie wideo wyjaśniono dokładnie działanie usługi Azure Maps:
 
 Zestaw SDK sieci Web Azure Maps umożliwia dostosowywanie interaktywnych map przy użyciu własnej zawartości i obrazów. Tej mapy interaktywnej można używać zarówno dla aplikacji sieci Web, jak i mobilnych. Kontrolka mapy korzysta z WebGL, dzięki czemu można renderować duże zestawy danych o wysokiej wydajności. Programowanie za pomocą zestawu SDK przy użyciu języka JavaScript lub TypeScript.
 
-![Przykładowa Mapa zmiany populacji](media/about-azure-maps/Introduction_WebMapControl.png)
+![Przykładowa Mapa zmiany populacji](media/about-azure-maps/intro_web_map_control.png)
 
 ### <a name="android-sdk"></a>Zestaw SDK systemu Android
 
 Użyj Android SDK Azure Maps, aby utworzyć aplikacje do mapowania aplikacji mobilnych. 
 
-![Przykłady mapowania na urządzeniu przenośnym](media/about-azure-maps/AndroidSDK.png)
+![Przykłady mapowania na urządzeniu przenośnym](media/about-azure-maps/android_sdk.png)
 
 ## <a name="services-in-azure-maps"></a>Usługi Azure Maps
 
 Azure Maps składa się z następujących dziewięciu usług, które mogą zapewnić kontekst geograficzny aplikacji platformy Azure.
 
-### <a name="data-service"></a>Usługa Data Service
+### <a name="data-service"></a>Usługa danych
 
 Dane są konieczne dla map. Usługa danych umożliwia przekazywanie i przechowywanie danych geoprzestrzennych do użycia z operacjami przestrzennymi i kompozycjami obrazów.  Przełączenie danych klienta bliżej usługi Azure Maps spowoduje skrócenie opóźnienia, zwiększenie produktywności i utworzenie nowych scenariuszy w aplikacjach. Aby uzyskać szczegółowe informacje na temat tej usługi, zobacz [dokumentację interfejsu API usługi danych](https://docs.microsoft.com/rest/api/maps/data).
 
@@ -73,7 +73,7 @@ Aby dowiedzieć się więcej na temat usługi, zobacz [dokumentację interfejsu 
 
 Usługa renderowania ułatwia deweloperom tworzenie aplikacji sieci Web i mobilnych przy użyciu funkcji mapowania. Usługa używa rastrowych obrazów graficznych o wysokiej jakości — dostępnych z 19 poziomami powiększenia — lub w pełni konfigurowalnych obrazów map w formacie wektorowym.
 
-![Przykład mapy z usługi renderowania](media/about-azure-maps/Introduction_Map.png)
+![Przykład mapy z usługi renderowania](media/about-azure-maps/intro_map.png)
 
 Usługa Render Service oferuje teraz interfejsy API w wersji zapoznawczej umożliwiające deweloperom pracę z obrazami satelitarnymi. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją interfejsu API renderowania](https://docs.microsoft.com/rest/api/maps/render).
 
@@ -81,7 +81,7 @@ Usługa Render Service oferuje teraz interfejsy API w wersji zapoznawczej umożl
 
 Usługa Route Service zawiera niezawodne obliczenia geometryczne rzeczywistej infrastruktury oraz tras dla wielu środków transportu. Usługa umożliwia deweloperom Obliczanie kierunków w różnych trybach podróży, takich jak samochód, ciężarówka, rower lub przechodzenie. Usługa uwzględnia również dane wejściowe, takie jak warunki ruchu, ograniczenia wagi lub transport materiału niebezpiecznego.
 
-![Przykład mapy z usługi Route Service](media/about-azure-maps/Introduction_Route.png)
+![Przykład mapy z usługi Route Service](media/about-azure-maps/intro_route.png)
 
 Usługa Route Service oferuje wersję zapoznawczą zaawansowanych funkcji, takich jak: 
 
@@ -95,7 +95,7 @@ Aby uzyskać szczegółowe informacje o możliwościach routingu, zapoznaj się 
 
 Usługa Search ułatwia deweloperom wyszukiwanie adresów, miejsc, aukcji w biznesie według nazwy lub kategorii oraz innych informacji geograficznych. Usługa wyszukiwania może [odwrócić adresy geokodowe](https://en.wikipedia.org/wiki/Reverse_geocoding) i krzyżyki na podstawie Latitudes i długości geograficznej.
 
-![Przykład wyszukiwania na mapie](media/about-azure-maps/Introduction_Search.png)
+![Przykład wyszukiwania na mapie](media/about-azure-maps/intro_search.png)
 
 Usługa Search oferuje także zaawansowane funkcje, takie jak:
 
@@ -149,7 +149,7 @@ Usługa Traffic Service to zestaw usług sieci Web, których deweloperzy mogą u
 * Przepływ ruchu: zaobserwowane szybkości i czasy podróży dla wszystkich kluczowych dróg w sieci.
 * Zdarzenia dotyczące ruchu: aktualny widok zakleszczenia ruchu i zdarzeń w sieci drogowej.
 
-![Przykład mapy z informacjami o ruchu](media/about-azure-maps/Introduction_Traffic.png)
+![Przykład mapy z informacjami o ruchu](media/about-azure-maps/intro_traffic.png)
 
 Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API ruchu](https://docs.microsoft.com/rest/api/maps/traffic).
 

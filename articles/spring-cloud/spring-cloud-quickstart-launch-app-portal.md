@@ -4,14 +4,14 @@ description: W tym przewodniku szybki start Wdróż aplikację w chmurze ze spr�
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 02/03/2020
+ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: b65fbf7882c3ce7f6eb7e88c89eca83340ee2d05
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: a215fe2305b320fe27ef9d868d060f3e9cb14c1c
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251825"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431357"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Szybki Start: uruchamianie istniejącej aplikacji w chmurze platformy Azure przy użyciu Azure Portal
 
@@ -54,20 +54,42 @@ az extension add --name spring-cloud
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Inicjowanie obsługi administracyjnej wystąpienia usługi na Azure Portal
 
-1. W przeglądarce sieci Web Otwórz [ten link do chmury wiosennej platformy Azure w Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform).
+1. Na nowej karcie Otwórz [Azure Portal](https://ms.portal.azure.com/). 
 
-1. Wypełnij formularz na stronie **Tworzenie** chmury Azure wiosennej.  Należy wziąć pod uwagę następujące wytyczne:
-    - Nazwa usługi: Określ nazwę wystąpienia usługi.  Nazwa musi mieć długość od 4 do 32 znaków i może zawierać tylko małe litery, cyfry i łączniki.  Pierwszy znak nazwy usługi musi być literą, a ostatni znak musi być literą lub cyfrą.
-    - Subskrypcja: wybierz subskrypcję, dla której chcesz naliczać opłaty za ten zasób.  Upewnij się, że ta subskrypcja została dodana do naszej listy dozwolonych chmur Azure wiosennej.
-    - Grupa zasobów: najlepszym rozwiązaniem jest utworzenie nowych grup zasobów dla nowych zasobów.
-    - Lokalizacja: Wybierz lokalizację wystąpienia usługi. Obecnie obsługiwane lokalizacje to Wschodnie stany USA, zachodnie stany USA 2, Europa Zachodnia i Azja Południowo-Wschodnia.
+2. W górnym polu wyszukiwania Wyszukaj **chmurę Azure wiosenną**.
 
-1. Kliknij przycisk **Przeglądaj i Utwórz**.
+3. Z wyników wybierz **chmurę ze sprężyną Azure** .
 
-1. Sprawdź specyfikacje i kliknij przycisk **Utwórz**.
+ ![Ikona usługi ASC](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
->[!Note]
-> Jeśli sprawdzanie poprawności szablonu trwa dłużej niż 3 minuty, spróbuj wyłączyć śledzenie i ponów próbę.
+4. Na stronie chmura Wiosenna Azure kliknij pozycję **+ Dodaj**.
+
+ ![Ikona usługi ASC](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
+
+5. Wypełnij formularz na stronie **Tworzenie** chmury Azure wiosennej.  Należy wziąć pod uwagę następujące wytyczne:
+    - **Subskrypcja**: wybierz subskrypcję, dla której chcesz naliczać opłaty za ten zasób.  Upewnij się, że ta subskrypcja została dodana do naszej listy dozwolonych chmur Azure wiosennej.
+    - **Grupa zasobów**: najlepszym rozwiązaniem jest utworzenie nowych grup zasobów dla nowych zasobów.
+    - **Szczegóły/nazwa usługi**: Określ nazwę wystąpienia usługi.  Nazwa musi mieć długość od 4 do 32 znaków i może zawierać tylko małe litery, cyfry i łączniki.  Pierwszy znak nazwy usługi musi być literą, a ostatni znak musi być literą lub cyfrą.
+    - **Lokalizacja**: Wybierz lokalizację wystąpienia usługi. Obecnie obsługiwane lokalizacje to Wschodnie stany USA, zachodnie stany USA 2, Europa Zachodnia i Azja Południowo-Wschodnia.
+
+    ![Początek portalu ASC](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
+
+6. Kliknij kartę **Ustawienia diagnostyczne** , aby otworzyć następujące okno dialogowe.
+
+7. Możesz ustawić **opcję Włącz dzienniki** na *wartość tak* lub *nie* , zgodnie z wymaganiami.
+
+    ![Włączanie dzienników](media/spring-cloud-quickstart-launch-app-portal/diagnostic-setting.png)
+
+8. Kliknij kartę **śledzenie** .
+
+9. Możesz ustawić **opcję Włącz śledzenie** na *wartość tak* lub *nie* zgodnie z wymaganiami.  Jeśli ustawisz opcję **Włącz śledzenie** na wartość tak, zaznacz również pozycję istniejąca aplikacja usługi Application Insights lub Utwórz nową. Bez specyfikacji **Application Insights** wystąpi błąd walidacji.
+
+
+    ![Śledzenie](media/spring-cloud-quickstart-launch-app-portal/tracing.png)
+
+10. Kliknij pozycję **Przejrzyj i utwórz**.
+
+11. Sprawdź specyfikacje i kliknij przycisk **Utwórz**.
 
 Wdrożenie usługi wymaga około 5 minut.  Po jego wdrożeniu zostanie wyświetlona strona **przeglądu** wystąpienia usługi.
 
@@ -79,9 +101,9 @@ Wdrożenie usługi wymaga około 5 minut.  Po jego wdrożeniu zostanie wyświetl
 
 1. Przejdź do strony **Przegląd** usługi i wybierz pozycję **serwer konfiguracji**.
 
-1. W sekcji **repozytorium domyślne** Ustaw **Identyfikator URI** na "https://github.com/Azure-Samples/piggymetrics-config".
+2. W sekcji **repozytorium domyślne** Ustaw **Identyfikator URI** na "https://github.com/Azure-Samples/piggymetrics-config".
 
-1. Wybierz pozycję **Zastosuj** , aby zapisać zmiany.
+3. Wybierz pozycję **Zastosuj** , aby zapisać zmiany.
 
     ![Zrzut ekranu przedstawiający Portal ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
@@ -98,27 +120,27 @@ Wdrożenie usługi wymaga około 5 minut.  Po jego wdrożeniu zostanie wyświetl
     git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-1. Kompiluj sklonowany pakiet.
+2. Kompiluj sklonowany pakiet.
 
     ```azurecli
     cd piggymetrics
     mvn clean package -DskipTests
     ```
-1. Przypisywanie nazw do grupy zasobów i usługi. Pamiętaj, aby zastąpić symbole zastępcze poniżej nazwą grupy zasobów i nazwą usługi, która została zainicjowana wcześniej w tym samouczku.
+3. Przypisywanie nazw do grupy zasobów i usługi. Pamiętaj, aby zastąpić symbole zastępcze poniżej nazwą grupy zasobów i nazwą usługi, która została zainicjowana wcześniej w tym samouczku.
 
     ```azurecli
     az configure --defaults group=<resource group name>
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. Utwórz aplikację `gateway` i Wdróż plik JAR.
+4. Utwórz aplikację `gateway` i Wdróż plik JAR.
 
     ```azurecli
     az spring-cloud app create -n gateway
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-1. W tym samym wzorcu Utwórz `account-service` i `auth-service` aplikacje i Wdróż pliki JAR.
+5. W tym samym wzorcu Utwórz `account-service` i `auth-service` aplikacje i Wdróż pliki JAR.
 
     ```azurecli
     az spring-cloud app create -n account-service
@@ -127,7 +149,7 @@ Wdrożenie usługi wymaga około 5 minut.  Po jego wdrożeniu zostanie wyświetl
     az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-1. Wdrożenie aplikacji może zająć kilka minut. Aby upewnić się, że zostały wdrożone, przejdź do bloku **aplikacje** w Azure Portal. Powinna zostać wyświetlona linia każdej z trzech aplikacji.
+6. Wdrożenie aplikacji może zająć kilka minut. Aby upewnić się, że zostały wdrożone, przejdź do bloku **aplikacje** w Azure Portal. Powinna zostać wyświetlona linia każdej z trzech aplikacji.
 
 > [!div class="nextstepaction"]
 > [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)
@@ -136,13 +158,13 @@ Wdrożenie usługi wymaga około 5 minut.  Po jego wdrożeniu zostanie wyświetl
 
 1. Otwórz kartę **aplikacje** w menu po lewej stronie.
 
-1. Wybierz aplikację `gateway`, aby wyświetlić stronę **Przegląd** .
+2. Wybierz aplikację `gateway`, aby wyświetlić stronę **Przegląd** .
 
-1. Wybierz pozycję **Przypisz domenę** , aby przypisać publiczny punkt końcowy do bramy. Może to potrwać kilka minut.
+3. Wybierz pozycję **Przypisz punkt końcowy** , aby przypisać publiczny punkt końcowy do bramy. Może to potrwać kilka minut.
 
     ![Zrzut ekranu przedstawiający Portal ASC](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 
-1. Wprowadź przypisany publiczny punkt końcowy (oznaczony jako **adres URL**) do przeglądarki, aby wyświetlić uruchomioną aplikację.
+4. Wprowadź przypisany publiczny punkt końcowy (oznaczony jako **adres URL**) do przeglądarki, aby wyświetlić uruchomioną aplikację.
 
     ![Zrzut ekranu przedstawiający Portal ASC](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 

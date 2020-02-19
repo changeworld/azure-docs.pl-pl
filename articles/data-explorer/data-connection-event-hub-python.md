@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 81aded7639cc0bed86c3d3ab3be9e6ef7b355734
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: c08271286373ab8c3e621ee6fa59782ba2d16fb4
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964536"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444183"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>Tworzenie połączenia danych centrum zdarzeń dla usługi Azure Eksplorator danych przy użyciu języka Python
 
@@ -22,15 +22,21 @@ ms.locfileid: "76964536"
 > * [Python](data-connection-event-hub-python.md)
 > * [Szablon usługi Azure Resource Manager](data-connection-event-hub-resource-manager.md)
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Eksplorator danych oferuje pozyskiwanie (ładowanie danych) z Event Hubs, centrów IoT i obiektów blob, które są zapisywane do kontenerów obiektów BLOB. W tym artykule opisano tworzenie połączenia danych centrum zdarzeń dla usługi Azure Eksplorator danych przy użyciu języka Python.
+W tym artykule opisano tworzenie połączenia danych centrum zdarzeń dla usługi Azure Eksplorator danych przy użyciu języka Python. Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Eksplorator danych oferuje pozyskiwanie danych lub ładowanie ich z Event Hubs, centrów IoT i obiektów blob, które są zapisywane do kontenerów obiektów BLOB.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
-* Tworzenie [klastra i bazy danych](create-cluster-database-python.md)
-* Tworzenie [mapowania tabeli i kolumny](python-ingest-data.md#create-a-table-on-your-cluster)
-* Ustawianie [zasad bazy danych i tabeli](database-table-policies-python.md) (opcjonalnie)
-* Utwórz [centrum zdarzeń z danymi do](ingest-data-event-hub.md#create-an-event-hub)pozyskiwania. 
+* Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+* [Python 3.4 +](https://www.python.org/downloads/).
+
+* [Klaster i baza danych](create-cluster-database-python.md).
+
+* [Mapowanie tabeli i kolumny](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+
+* [Zasady bazy danych i tabeli](database-table-policies-python.md) (opcjonalnie).
+
+* [Centrum zdarzeń z danymi do](ingest-data-event-hub.md#create-an-event-hub)pozyskiwania.
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
 

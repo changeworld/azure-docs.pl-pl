@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0287a8011eb10120e273fb063c98ccd3c1a85782
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0096bccf76e81f2bca1a449cea2474cb5266fabc
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278024"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443588"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>Ulepszony bezpieczny wynik (wersja zapoznawcza) 
 
@@ -91,7 +91,7 @@ W poniższej tabeli wymieniono kontrolki zabezpieczeń w Azure Security Center. 
 > [!TIP]
 > Jeśli chcesz odfiltrować lub posortować tę listę inaczej, skopiuj ją i wklej do programu Excel.
 
-|Kontrola zabezpieczeń|Maksymalna liczba bezpiecznych punktów punktacji|Polecane elementy|
+|Kontrola zabezpieczeń|Maksymalna liczba bezpiecznych punktów punktacji|Zalecenia|
 |----------------|:-------------------:|---------------|
 |**Włączanie usługi MFA**|10|-Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami właściciela w ramach subskrypcji<br>-Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami do odczytu w ramach subskrypcji<br>-MFA należy włączyć konta z uprawnieniami do zapisu w Twojej subskrypcji|
 |**Bezpieczne porty zarządzania**|8|— Kontrola dostępu do sieci just in Time powinna być stosowana na maszynach wirtualnych<br>-Maszyny wirtualne powinny być skojarzone z sieciową grupą zabezpieczeń<br>-Należy zamknąć porty zarządzania na maszynach wirtualnych|
@@ -101,7 +101,7 @@ W poniższej tabeli wymieniono kontrolki zabezpieczeń w Azure Security Center. 
 |**Szyfruj dane podczas przesyłania**|4|— Aplikacja interfejsu API powinna być dostępna tylko za pośrednictwem protokołu HTTPS<br>-Aplikacja funkcji powinna być dostępna tylko za pośrednictwem protokołu HTTPS<br>-Należy włączyć tylko bezpieczne połączenia z Redis Cache<br>-Należy włączyć bezpieczny transfer do kont magazynu<br>-Aplikacja internetowa powinna być dostępna tylko za pośrednictwem protokołu HTTPS|
 |**Zarządzanie dostępem i uprawnieniami**|4|-Dla subskrypcji należy wyznaczyć maksymalnie 3 właścicieli<br>-Przestarzałe konta powinny zostać usunięte z subskrypcji (wersja zapoznawcza)<br>-Przestarzałe konta z uprawnieniami właściciela powinny zostać usunięte z subskrypcji (wersja zapoznawcza)<br>— Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji (wersja zapoznawcza)<br>-Konta zewnętrzne z uprawnieniami do odczytu powinny zostać usunięte z subskrypcji<br>— Konta zewnętrzne z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji (wersja zapoznawcza)<br>-Do subskrypcji powinien być przypisany co najmniej jeden właściciel<br>-Oparta na rolach Access Control (RBAC) powinna być używana w usługach Kubernetes Services (wersja zapoznawcza)<br>— Klastry Service Fabric powinny używać tylko Azure Active Directory do uwierzytelniania klientów|
 |**Korygowanie konfiguracji zabezpieczeń**|4|-Pod należy zdefiniować zasady zabezpieczeń w usługach Kubernetes Services (wersja zapoznawcza)<br>— Luki w zabezpieczeniach w konfiguracjach zabezpieczeń kontenerów należy skorygować<br>-Luki w zabezpieczeniach na maszynach należy skorygować<br>— Luki w zabezpieczeniach w konfiguracji zabezpieczeń w zestawach skalowania maszyn wirtualnych należy skorygować<br>-Agent monitorowania powinien być zainstalowany na maszynach wirtualnych<br>-Należy zainstalować agenta monitorowania na swoich maszynach<br>-Należy zainstalować agenta monitorowania w zestawach skalowania maszyn wirtualnych<br>-Monitorowanie problemów z kondycją agenta na maszynach|
-|**Ogranicz nieautoryzowany dostęp do sieci**|4|-Przekazywanie adresów IP na maszynie wirtualnej powinno być wyłączone<br>-Autoryzowane zakresy adresów IP powinny być zdefiniowane w usługach Kubernetes Services (wersja zapoznawcza)<br>-Dostęp do App Services powinien być ograniczony (wersja zapoznawcza)<br>-Reguły dla aplikacji sieci Web na IaaS sieciowych grup zabezpieczeń powinny być zaostrzone<br>-Maszyny wirtualne powinny być skojarzone z sieciową grupą zabezpieczeń<br>— Mechanizm CORS nie powinien zezwalać wszystkim zasobom na dostęp do aplikacji interfejsu API<br>— Mechanizm CORS nie powinien zezwalać wszystkim zasobom na dostęp do aplikacja funkcji<br>— Mechanizm CORS nie powinien zezwalać wszystkim zasobom na dostęp do aplikacji sieci Web<br>-Zdalne debugowanie powinno zostać wyłączone dla aplikacji interfejsu API<br>-Zdalne debugowanie powinno zostać wyłączone dla aplikacja funkcji<br>-Zdalne debugowanie powinno zostać wyłączone dla aplikacji sieci Web<br>-Dostęp powinien być ograniczony dla dozwolonych sieciowych grup zabezpieczeń z maszynami wirtualnymi z Internetu<br>-Reguły sieciowej grupy zabezpieczeń dla maszyn wirtualnych mających dostęp do Internetu powinny być zaostrzone|
+|**Ogranicz nieautoryzowany dostęp do sieci**|4|-Przekazywanie adresów IP na maszynie wirtualnej powinno być wyłączone<br>-Autoryzowane zakresy adresów IP powinny być zdefiniowane w usługach Kubernetes Services (wersja zapoznawcza)<br>-(PRZESTARZAŁy) dostęp do App Services powinien być ograniczony (wersja zapoznawcza)<br>— (PRZESTARZAŁe) reguły dla aplikacji sieci Web na IaaS sieciowych grup zabezpieczeń powinny mieć zabezpieczenia<br>-Maszyny wirtualne powinny być skojarzone z sieciową grupą zabezpieczeń<br>— Mechanizm CORS nie powinien zezwalać wszystkim zasobom na dostęp do aplikacji interfejsu API<br>— Mechanizm CORS nie powinien zezwalać wszystkim zasobom na dostęp do aplikacja funkcji<br>— Mechanizm CORS nie powinien zezwalać wszystkim zasobom na dostęp do aplikacji sieci Web<br>-Zdalne debugowanie powinno zostać wyłączone dla aplikacji interfejsu API<br>-Zdalne debugowanie powinno zostać wyłączone dla aplikacja funkcji<br>-Zdalne debugowanie powinno zostać wyłączone dla aplikacji sieci Web<br>-Dostęp powinien być ograniczony dla dozwolonych sieciowych grup zabezpieczeń z maszynami wirtualnymi z Internetu<br>-Reguły sieciowej grupy zabezpieczeń dla maszyn wirtualnych mających dostęp do Internetu powinny być zaostrzone|
 |**Zastosuj adaptacyjną kontrolę aplikacji**|3|-Adaptacyjne kontrolki aplikacji powinny być włączone na maszynach wirtualnych<br>-Agent monitorowania powinien być zainstalowany na maszynach wirtualnych<br>-Należy zainstalować agenta monitorowania na swoich maszynach<br>-Monitorowanie problemów z kondycją agenta na maszynach|
 |**Zastosuj klasyfikację danych**|2|Dane poufne w bazach danych SQL powinny zostać sklasyfikowane (wersja zapoznawcza)|
 |**Ochrona aplikacji przed atakami DDoS**|2|-DDoS Protection powinien być włączony Standard|

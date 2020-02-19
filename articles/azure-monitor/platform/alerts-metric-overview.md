@@ -7,12 +7,12 @@ ms.date: 12/5/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 8f84b5641b79514ffed493302f246ecc51a20a87
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: abcf7d100a1c195d4a49c3061bf22710285c2a9f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850061"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444166"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informacje o tym, jak alerty metryk działają w Azure Monitor
 
@@ -20,7 +20,7 @@ Alerty metryk w Azure Monitor działają na podstawie metryk wielowymiarowych. T
 
 ## <a name="how-do-metric-alerts-work"></a>Jak działają Alerty metryk?
 
-Można zdefiniować regułę alertu metryki, określając zasób docelowy do monitorowania, nazwę metryki, typ warunku (statyczny lub dynamiczny) oraz warunek (operator i próg/czułość) oraz grupę akcji, która ma zostać wyzwolona po wyzwoleniu reguły alertu. Typy warunków mają wpływ na sposób określania progów. [Dowiedz się więcej o opcjach typu i czułości wartości progów dynamicznych](alerts-dynamic-thresholds.md).
+Można zdefiniować regułę alertu metryki, określając zasób docelowy do monitorowania, nazwę metryki, typ warunku (statyczny lub dynamiczny) oraz warunek (operator i próg/czułość) oraz grupę akcji, która ma zostać wyzwolona po wyzwoleniu reguły alertu. Typy warunku mają wpływ na sposób określania wartości progowych. [Dowiedz się więcej o opcjach typu i czułości wartości progów dynamicznych](alerts-dynamic-thresholds.md).
 
 ### <a name="alert-rule-with-static-condition-type"></a>Reguła alertu z typem warunku statycznego
 
@@ -125,15 +125,15 @@ Rosnące okresy zawracania i liczby naruszeń mogą również umożliwić filtro
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitorowanie na dużą skalę przy użyciu alertów metryk w Azure Monitor
 
-Do tej pory dowiesz się, jak można użyć pojedynczego alertu metryki do monitorowania jednej lub wielu serii czasu metryk związanych z pojedynczym zasobem platformy Azure. Wiele razy można chcieć zastosować tę samą regułę alertu do wielu zasobów. Azure Monitor obsługuje również monitorowanie wielu zasobów przy użyciu jednej reguły alertu metryki. Ta funkcja jest obecnie obsługiwana tylko na maszynach wirtualnych, bazach danych programu SQL Server, elastycznych pulach programu SQL Server i urządzeniach brzegowych. Ponadto pojedynczy alert dotyczący metryki może monitorować zasoby w jednym regionie świadczenia usługi Azure.
+Do tej pory dowiesz się, jak można użyć pojedynczego alertu metryki do monitorowania jednej lub wielu serii czasu metryk związanych z pojedynczym zasobem platformy Azure. Wiele razy można chcieć zastosować tę samą regułę alertu do wielu zasobów. Azure Monitor obsługuje również monitorowanie wielu zasobów (tego samego typu) z jedną regułą alertu metryki dla zasobów, które istnieją w tym samym regionie świadczenia usługi Azure. Ta funkcja jest obecnie obsługiwana tylko w chmurze publicznej platformy Azure i tylko dla maszyn wirtualnych, baz danych programu SQL Server, pul elastycznych programu SQL Server i urządzeń brzegowych usługi Data Box. Ponadto ta funkcja jest dostępna tylko dla metryk platformy i nie jest obsługiwana w przypadku metryk niestandardowych.
 
-Zakres monitorowania można określić za pomocą pojedynczego alertu dotyczącego metryki na jeden z trzech sposobów:
+Zakres monitorowania można określić za pomocą jednej reguły alertu metryki na jeden z trzech sposobów:
 
 - jako lista maszyn wirtualnych w jednym regionie świadczenia usługi Azure w ramach subskrypcji
 - wszystkie maszyny wirtualne (w jednym regionie świadczenia usługi Azure) w jednej lub większej liczbie grup zasobów w subskrypcji
 - wszystkie maszyny wirtualne (w jednym regionie świadczenia usługi Azure) w jednej subskrypcji
 
-Tworzenie reguł alertów dotyczących metryk, które monitorują wiele zasobów, jest podobne do [tworzenia dowolnego innego alertu dotyczącego metryki](alerts-metric.md) monitorującego pojedynczy zasób. Tylko różnica polega na tym, że należy wybrać wszystkie zasoby, które mają być monitorowane. Te reguły można również utworzyć za poorednictwem [szablonów Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). Zostaną odebrane indywidualne powiadomienia dla każdej maszyny wirtualnej.
+Tworzenie reguł alertów dotyczących metryk, które monitorują wiele zasobów, jest podobne do [tworzenia dowolnego innego alertu dotyczącego metryki](alerts-metric.md) monitorującego pojedynczy zasób. Tylko różnica polega na tym, że należy wybrać wszystkie zasoby, które mają być monitorowane. Te reguły można również utworzyć za poorednictwem [szablonów Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). Zostaną odebrane indywidualne powiadomienia dla każdego monitorowanego zasobu.
 
 ## <a name="typical-latency"></a>Typowe opóźnienia
 

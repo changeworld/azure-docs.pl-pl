@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/18/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: b0847cda78c2e6d1df87eeaedc35850103840151
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: e9ca891d2d92b6760d37108b66afc54c81ac125c
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264733"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442585"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Samouczek: wdrażanie i Konfigurowanie zapory platformy Azure w sieci hybrydowej przy użyciu Azure Portal
 
@@ -29,7 +29,7 @@ W tym samouczku zostaną utworzone trzy sieci wirtualne:
 
 ![Zapora w sieci hybrydowej](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Deklarowanie zmiennych
@@ -62,7 +62,7 @@ Zapoznaj się z sekcją [Tworzenie tras](#create-the-routes) w tym samouczku, ab
 >[!NOTE]
 >Zapora platformy Azure musi mieć bezpośrednią łączność z Internetem. Jeśli AzureFirewallSubnet nauczy trasy domyślnej do sieci lokalnej za pośrednictwem protokołu BGP, należy przesłonić ten element przy użyciu wartości 0.0.0.0/0 UDR z wartością **NextHopType** ustawioną jako **Internet** w celu utrzymania bezpośredniej łączności z Internetem.
 >
->Zapora platformy Azure nie obsługuje obecnie wymuszonego tunelowania. Jeśli konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej i można określić docelowe prefiksy adresów IP dla miejsc docelowych Internetu, można skonfigurować te zakresy przy użyciu sieci lokalnej jako następnego skoku za pośrednictwem trasy zdefiniowanej przez użytkownika na stronie AzureFirewallSubnet. Lub można użyć protokołu BGP, aby zdefiniować te trasy.
+>Zaporę platformy Azure można skonfigurować do obsługi wymuszonego tunelowania. Aby uzyskać więcej informacji, zobacz [tunelowanie wymuszone przez zaporę platformy Azure](forced-tunneling.md).
 
 >[!NOTE]
 >Ruch między wirtualnymi sieciami równorzędnymi połączonymi bezpośrednio jest kierowany bezpośrednio nawet wtedy, gdy trasa zdefiniowana przez użytkownika wskazuje usługę Azure Firewall jako bramę domyślną. Aby w tym scenariuszu wysyłać ruch między podsieciami do zapory, trasa zdefiniowana przez użytkownika musi jawnie zawierać prefiks podsieci docelowej w obu podsieciach.
@@ -155,9 +155,9 @@ Teraz Wdróż zaporę w sieci wirtualnej centrum zapory.
    |---------|---------|
    |Subskrypcja     |\<Twoja subskrypcja\>|
    |Grupa zasobów     |**PD-test hybrydowy** |
-   |Nazwa     |**AzFW01**|
+   |Name (Nazwa)     |**AzFW01**|
    |Lokalizacja     |Wybierz tę samą lokalizację, której użyto poprzednio|
-   |Wybieranie sieci wirtualnej     |**Użyj istniejącej**:<br> **Sieć wirtualna — koncentrator**|
+   |Wybieranie sieci wirtualnej     |**Use Existing** (Użyj istniejącej):<br> **Sieć wirtualna — koncentrator**|
    |Publiczny adres IP     |Utwórz nowy: <br>**Nazwa** - **PD-PIP**. |
 
 5. Wybierz pozycję **Przegląd + utwórz**.
@@ -400,7 +400,7 @@ Jest to maszyna wirtualna, która jest używana do nawiązywania połączenia pr
 2. W obszarze **popularne**wybierz pozycję **Windows Server 2016 Datacenter**.
 3. Wprowadź poniższe wartości dla maszyny wirtualnej:
     - **Grupa zasobów** — wybierz pozycję istniejące, a następnie wybierz pozycję **PD-hybrydowy-test**.
-    - **Nazwa maszyny wirtualnej** *VM-lokalnego.*  - 
+    - **Nazwa maszyny wirtualnej** - *VM-lokalnego*.
     - **Region — w** tym samym regionie, który jest używany wcześniej.
     - **Nazwa użytkownika**: *azureuser*.
     - **Hasło**: *Azure123456!* .

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 226c9ae1c42c85db57dab3fd1911943e167a6288
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133680"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443554"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Konfigurowanie laboratorium do uczenia skryptów powłoki w systemie Linux
 W tym artykule opisano sposób konfigurowania laboratorium do uczenia skryptów powłoki w systemie Linux. Obsługa skryptów jest przydatną częścią administrowania systemem, która umożliwia administratorom uniknięcie powtarzających się zadań. W tym przykładowym scenariuszu Klasa obejmuje tradycyjne skrypty bash oraz ulepszone skrypty. Ulepszone skrypty to skrypty, które łączą bash polecenia i Ruby. Takie podejście umożliwia używanie języka Ruby do przekazywania danych wokół i bash poleceń w celu współdziałania z powłoką. 
@@ -32,7 +32,7 @@ Po utworzeniu konta laboratorium należy włączyć następujące ustawienia na 
 
 | Ustawienie konta laboratorium | Instrukcje |
 | ----------- | ------------ |  
-| Obrazy z witryny Marketplace | Włącz obraz [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) do użycia w ramach Twojego konta laboratorium. Aby uzyskać więcej informacji, zobacz [Określanie obrazów z portalu Marketplace dostępnych dla twórców laboratorium](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators) | 
+| Obrazy z witryny Marketplace | Włącz obraz [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) do użycia w ramach Twojego konta laboratorium. Aby uzyskać więcej informacji, zobacz temat [Określanie obrazów z witryny Marketplace dostępnych dla twórców laboratorium](specify-marketplace-images.md). | 
 
 Postępuj zgodnie z [tym samouczkiem](tutorial-setup-classroom-lab.md) , aby utworzyć nowe laboratorium i zastosować następujące ustawienia:
 

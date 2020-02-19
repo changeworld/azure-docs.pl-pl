@@ -1,5 +1,5 @@
 ---
-title: Skonfiguruj zaawansowaną ochronę przed zagrożeniami dla Azure Key Vault | Microsoft Docs
+title: Konfigurowanie zaawansowanej ochrony przed zagrożeniami dla usługi Azure Key Vault
 description: W tym artykule wyjaśniono, jak skonfigurować zaawansowaną ochronę przed zagrożeniami dla Azure Key Vault w programie Azure Security Center
 services: security-center
 author: memildin
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: f7f716734875d652de575991a4dc1b7bfe948ae3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 07924201d4208a502aa979dda476c57cf6edd749
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773533"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430554"
 ---
 # <a name="set-up-advanced-threat-protection-for-azure-key-vault-preview"></a>Skonfiguruj zaawansowaną ochronę przed zagrożeniami dla Azure Key Vault (wersja zapoznawcza)
 

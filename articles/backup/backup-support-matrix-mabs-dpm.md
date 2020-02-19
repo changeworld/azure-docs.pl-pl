@@ -3,12 +3,12 @@ title: Macierz obsługi programu serwera usługi MAB & System Center DPM
 description: Ten artykuł zawiera podsumowanie Azure Backup pomocy technicznej w przypadku używania serwera Microsoft Azure Backup (serwera usługi MAB) lub programu System Center DPM do tworzenia kopii zapasowych zasobów lokalnych i maszyn wirtualnych platformy Azure.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 211a7e39dc9cda9e4bd96e3a66924b2195524be7
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 9441f7ce9069cd85475877f37abe669f3c4fd516
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111467"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444030"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Macierz obsługi dla tworzenia kopii zapasowych za pomocą serwera Microsoft Azure Backup lub programu System Center DPM
 
@@ -70,9 +70,9 @@ Azure Backup może tworzyć kopie zapasowe wystąpień programu DPM/serwera usł
 
 **Scenariusz** | **DPM/SERWERA USŁUGI MAB**
 --- | ---
-**SERWERA usługi MAB na maszynie wirtualnej platformy Azure** | Windows Server 2012 R2.<br/><br/> Centrum danych systemu Windows 2016.<br/><br/> Windows 2019 Datacenter.<br/><br/> Zalecamy rozpoczęcie od obrazu z portalu Marketplace.<br/><br/> Minimalny standard a2 z dwoma rdzeniami i 3,5 GB pamięci RAM.
-**Program DPM na maszynie wirtualnej platformy Azure** | System Center 2012 R2 z aktualizacją Update 3 lub nowszą.<br/><br/> System operacyjny Windows [wymagany przez program System Center](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).<br/><br/> Zalecamy rozpoczęcie od obrazu z portalu Marketplace.<br/><br/> Minimalny standard a2 z dwoma rdzeniami i 3,5 GB pamięci RAM.
-**SERWERA usługi MAB lokalnie** | Obsługiwane 64-bitowe systemy operacyjne:<br/><br/> SERWERA usługi MAB v3 i nowsze: Windows Server 2019 (standard, Datacenter, Essentials). <br/><br/> SERWERA usługi MAB v2 i nowsze: Windows Server 2016 (standard, Datacenter, Essentials).<br/><br/> Wszystkie wersje serwera usługi MAB: Windows Server 2012 R2.<br/><br/>Wszystkie wersje serwera usługi MAB: Windows Storage Server 2012 R2.
+**SERWERA usługi MAB na maszynie wirtualnej platformy Azure** |  Centrum danych systemu Windows 2016.<br/><br/> Windows 2019 Datacenter.<br/><br/> Zalecamy rozpoczęcie od obrazu z portalu Marketplace.<br/><br/> Minimum Standard_A4_v2 z czterema rdzeniami i 8 GB pamięci RAM.
+**Program DPM na maszynie wirtualnej platformy Azure** | System Center 2012 R2 z aktualizacją Update 3 lub nowszą.<br/><br/> System operacyjny Windows [wymagany przez program System Center](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).<br/><br/> Zalecamy rozpoczęcie od obrazu z portalu Marketplace.<br/><br/> Minimum Standard_A4_v2 z czterema rdzeniami i 8 GB pamięci RAM.
+**SERWERA usługi MAB lokalnie** |  SERWERA usługi MAB v3 i nowsze: Windows Server 2016 lub Windows Server 2019
 **Lokalna DPM** | Serwer fizyczny/maszyna wirtualna funkcji Hyper-V: System Center 2012 z dodatkiem SP1 lub nowszy.<br/><br/> Maszyna wirtualna VMware: System Center 2012 R2 z aktualizacją Update 5 lub nowszą.
 
 >[!NOTE]

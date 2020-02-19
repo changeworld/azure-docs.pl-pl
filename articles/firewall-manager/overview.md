@@ -5,22 +5,33 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 12/06/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: cf8e6ca3a532dea29a413b1afdfc684ac8f08f17
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 0ba2ce30cee3ff7e3a9f71b4f1b0928fa84e775d
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869565"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443157"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Co to jest wersja zapoznawcza usługi Azure firewall Manager?
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Azure Firewall Manager (wersja zapoznawcza) to usługa do zarządzania zabezpieczeniami, która umożliwia centralne zarządzanie zasadami zabezpieczeń i trasami dla obwodów zabezpieczeń opartych na chmurze. Współpracuje z [Centrum sieci wirtualnej platformy Azure](../virtual-wan/virtual-wan-about.md#resources), zasobem zarządzanym przez firmę Microsoft, który umożliwia łatwe tworzenie architektur Hub i szprych. Gdy zasady zabezpieczeń i routingu są skojarzone z takim centrum, jest ono nazywane *[bezpiecznym koncentratorem wirtualnym](secured-virtual-hub.md)* . 
+Menedżer zapory Azure w wersji zapoznawczej to usługa zarządzania zabezpieczeniami, która zapewnia centralne zasady zabezpieczeń i Zarządzanie trasami dla obwodów zabezpieczeń opartych na chmurze. 
 
-![Zapora — Menedżer](media/overview/firewallmanagerv3.png)
+Menedżer zapory może zapewnić zarządzanie zabezpieczeniami dla dwóch typów architektury sieci:
+
+- **bezpieczny koncentrator wirtualny**
+
+   [Azure Virtual WAN Hub](../virtual-wan/virtual-wan-about.md#resources) to zasób zarządzany przez firmę Microsoft, który umożliwia łatwe tworzenie architektur Hub i szprych. Gdy zasady zabezpieczeń i routingu są skojarzone z takim centrum, jest ono nazywane *[bezpiecznym koncentratorem wirtualnym](secured-virtual-hub.md)* . 
+- **Sieć wirtualna centrum**
+
+   Jest to standardowa Sieć wirtualna platformy Azure, która jest tworzona i zarządzana. Gdy zasady zabezpieczeń są skojarzone z takim centrum, jest ono określane jako *centralny sieci wirtualnej*. W tej chwili obsługiwane są tylko zasady zapory platformy Azure. Można połączyć sieci wirtualne równorzędne, które zawierają serwery obciążeń i usługi. Można także zarządzać zaporami w autonomicznych sieciach wirtualnych, które nie są połączone z żadną szprychą.
+
+Aby zapoznać się ze szczegółowym porównaniem bezpiecznych architektur wirtualnych *centrów wirtualnych* i *koncentratorów* , zobacz [co to są opcje architektury usługi Azure firewall Manager?](vhubs-and-vnets.md).
+
+![Zapora — Menedżer](media/overview/firewallmanagerv5.png)
 
 ## <a name="azure-firewall-manager-preview-features"></a>Funkcje w wersji zapoznawczej Menedżera zapory platformy Azure
 
@@ -38,6 +49,8 @@ Za pomocą narzędzia Menedżer zapory Azure w wersji zapoznawczej można centra
 
 Oprócz zapory platformy Azure można zintegrować dostawców usługi Security AS (SECaaS) innych firm w celu zapewnienia dodatkowej ochrony sieci dla sieci wirtualnej i połączeń internetowych oddziałów.
 
+Ta funkcja jest dostępna tylko w przypadku bezpiecznych wdrożeń koncentratora wirtualnego.
+
 - Filtrowanie ruchu między sieciami wirtualnymi (V2I)
 
    - Filtrowanie ruchu wychodzącego z sieci wirtualnej za pomocą preferowanego dostawcy zabezpieczeń innej firmy.
@@ -51,18 +64,15 @@ Aby uzyskać więcej informacji na temat zaufanych dostawców zabezpieczeń, zob
 
 ### <a name="centralized-route-management"></a>Scentralizowane zarządzanie trasami
 
-Łatwo kieruj ruch do bezpiecznego centrum w celu filtrowania i rejestrowania bez konieczności ręcznego konfigurowania tras zdefiniowanych przez użytkownika (UDR) w sieciach wirtualnych szprych. Dostawców innych firm można używać do filtrowania ruchu z Internetu (B2I), obok siebie przy użyciu zapory platformy Azure dla gałęzi do sieci wirtualnej (B2V), sieci wirtualnej z siecią wirtualną (V2V) i Sieć wirtualna do Internetu (V2I). Dostawców innych firm można także używać do filtrowania ruchu V2I, o ile nie jest wymagana Zapora platformy Azure dla B2V lub V2V. 
+Łatwo kieruj ruch do bezpiecznego centrum w celu filtrowania i rejestrowania bez konieczności ręcznego konfigurowania tras zdefiniowanych przez użytkownika (UDR) w sieciach wirtualnych szprych. 
 
-## <a name="region-availability"></a>Dostępność w poszczególnych regionach
+Ta funkcja jest dostępna tylko w przypadku bezpiecznych wdrożeń koncentratora wirtualnego.
 
-W publicznej wersji zapoznawczej są obsługiwane następujące regiony:
+Dostawców innych firm można używać do filtrowania ruchu z Internetu (B2I), obok siebie przy użyciu zapory platformy Azure dla gałęzi do sieci wirtualnej (B2V), sieci wirtualnej z siecią wirtualną (V2V) i Sieć wirtualna do Internetu (V2I). Dostawców innych firm można także używać do filtrowania ruchu V2I, o ile nie jest wymagana Zapora platformy Azure dla B2V lub V2V. 
 
-- Europa Zachodnia, Europa Północna, Francja środkowa, Francja Południowa, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo
-- Australia Wschodnia, Australia Środkowa, Australia Środkowa 2, Australia Południowo-Wschodnia
-- Kanada Środkowa
-- Wschodnie stany USA, zachodnie stany USA, Wschodnie stany USA 2, Południowo-środkowe stany USA, zachodnie stany USA 2, środkowe stany USA, Północno-środkowe stany USA, zachodnie stany USA
+## <a name="region-availability"></a>Dostępność w danym regionie
 
-Zasady zapory platformy Azure można tworzyć tylko w tych regionach, ale mogą one być używane w różnych regionach. Można na przykład utworzyć zasady w regionie zachodnie stany USA i używać ich w regionach Wschodnie stany USA. 
+Zasady zapory platformy Azure mogą być używane w różnych regionach. Można na przykład utworzyć zasady w regionie zachodnie stany USA i używać ich w regionach Wschodnie stany USA. 
 
 ## <a name="known-issues"></a>Znane problemy
 
@@ -70,13 +80,13 @@ Wersja zapoznawcza Menedżera zapory platformy Azure obejmuje następujące znan
 
 |Problem  |Opis  |Środki zaradcze  |
 |---------|---------|---------|
-|Ręcznie utworzone sieci wirtualnych centralne nie są obsługiwane|Obecnie Menedżer zapory platformy Azure obsługuje sieci utworzone za pomocą koncentratorów wirtualnych. Używanie własnej ręcznie utworzonej sieci wirtualnej centrum nie jest jeszcze obsługiwane.|Na razie użyj Menedżera zapory platformy Azure z sieciami piasty i szprych utworzonych przy użyciu centrów wirtualnych.<br>Trwa rozwiązywanie.
 |Ograniczenia filtrowania innych firm|Filtrowanie ruchu V2I z dostawcami innych firm nie jest obsługiwane przez usługę Azure firewall B2V i V2V.|Obecnie trwa badanie.|
 |Dzielenie ruchu nie jest obecnie obsługiwane|Dzielenie pakietów Office 365 i Public PaaS nie jest obecnie obsługiwane. W związku z tym wybranie dostawcy innej firmy dla usługi V2I lub B2I spowoduje również wysłanie wszystkich usług Azure Public PaaS i Office 365 przez usługę partnera.|Obecnie badanie podziału ruchu w centrum.
-|Jeden koncentrator na region|Nie można mieć więcej niż jednego centrum na region|Utwórz wiele wirtualnych sieci WAN w regionie.|
+|Jeden bezpieczny koncentrator wirtualny na region|Nie można mieć więcej niż jednego zabezpieczonego koncentratora wirtualnego na region|Utwórz wiele wirtualnych sieci WAN w regionie.|
 |Zasady podstawowe muszą znajdować się w tym samym regionie co zasady lokalne|Utwórz wszystkie zasady lokalne w tym samym regionie co zasady podstawowe. Można nadal stosować zasady, które zostały utworzone w jednym regionie w zabezpieczonym centrum z innego regionu.|Obecnie trwa badanie.|
 |Komunikacja między centrami nie działa z bezpiecznym koncentratorem wirtualnym|Zabezpieczona wirtualna koncentrator do bezpiecznej komunikacji z koncentratorem wirtualnym nie jest jeszcze obsługiwana.|Obecnie trwa badanie.|
 |Wszystkie zabezpieczone centra wirtualne współużytkujące tę samą wirtualną sieć WAN muszą znajdować się w tej samej grupie zasobów.|To zachowanie jest wyrównane z koncentratorami wirtualnych sieci WAN już dziś.|Utwórz wiele wirtualnych sieci WAN, aby umożliwić tworzenie zabezpieczonych koncentratorów wirtualnych w różnych grupach zasobów.|
+|Grupy adresów IP nie są obsługiwane w zasadach zapory|Grupy IP znajdują się w publicznej wersji zapoznawczej i obecnie są obsługiwane tylko przy użyciu tradycyjnych reguł zapory|Trwa naprawianie
 
 ## <a name="next-steps"></a>Następne kroki
 

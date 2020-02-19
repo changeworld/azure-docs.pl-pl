@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c2dc98d683d822628dc9ea1b4ead02279ea10ea5
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: c590a27f61c1a555ae30828332e4140a6116f95f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251808"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443860"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service w systemie Linux — często zadawane pytania
 
@@ -33,7 +33,7 @@ Wszystkie pliki platformy Docker można znaleźć w witrynie [GitHub](https://gi
 | Stos           | Oczekiwana wartość                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
 | Java SE         | polecenie uruchamiania aplikacji JAR (na przykład `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
-| Tomcat, Wildfly | Lokalizacja skryptu do wykonania wszelkich niezbędnych konfiguracji (na przykład `/home/site/deployments/tools/startup_script.sh`)          |
+| Tomcat          | Lokalizacja skryptu do wykonania wszelkich niezbędnych konfiguracji (na przykład `/home/site/deployments/tools/startup_script.sh`)          |
 | Node.js         | plik konfiguracji PM2 lub plik skryptu                                |
 | .Net Core       | Nazwa skompilowanej biblioteki DLL jako `dotnet <myapp>.dll`                                 |
 | Ruby            | skrypt Ruby, z którym chcesz zainicjować aplikację                     |

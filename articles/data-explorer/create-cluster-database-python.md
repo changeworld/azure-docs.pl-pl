@@ -7,28 +7,32 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 8d43965e87ab57d9f0c79c6661a761b06ccb7073
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 50e050a05fd364a4b1f880e3501b04274ffd360c
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902105"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444234"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Tworzenie klastra Eksplorator danych i bazy danych platformy Azure przy użyciu języka Python
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
 > * [Interfejs wiersza polecenia](create-cluster-database-cli.md)
-> * [Program PowerShell](create-cluster-database-powershell.md)
+> * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [Szablon usługi ARM](create-cluster-database-resource-manager.md)
 
-Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Aby używać usługi Azure Data Explorer, najpierw utwórz klaster, a następnie utwórz w tym klastrze co najmniej jedną bazę danych. Następnie pozyskaj (załaduj) dane do bazy danych, aby uruchamiać w niej zapytania. W tym artykule opisano tworzenie klastra i bazy danych przy użyciu języka Python.
+W tym artykule opisano tworzenie klastra Eksplorator danych i bazy danych platformy Azure przy użyciu języka Python. Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Aby użyć usługi Azure Eksplorator danych, należy najpierw utworzyć klaster i utworzyć co najmniej jedną bazę danych w tym klastrze. Następnie pozyskiwanie i ładowanie danych do bazy danych, dzięki czemu można uruchamiać zapytania względem tego programu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* Konto platformy Azure z aktywną subskrypcją. [Utwórz je bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+* [Python 3.4 +](https://www.python.org/downloads/).
+
+* [Aplikacja usługi Azure AD i nazwa główna usługi, która może uzyskiwać dostęp do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Pobierz wartości dla `Directory (tenant) ID`, `Application ID`i `Client Secret`.
 
 ## <a name="install-python-package"></a>Zainstaluj pakiet języka Python
 
@@ -38,7 +42,7 @@ Aby zainstalować pakiet języka Python dla usługi Azure Eksplorator danych (Ku
 pip install azure-common
 pip install azure-mgmt-kusto
 ```
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Uwierzytelnianie
 Aby uruchomić przykłady z tego artykułu, potrzebujemy aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskać dostęp do zasobów. Zaznacz opcję [Utwórz aplikację usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , aby utworzyć bezpłatną aplikację usługi Azure AD, a następnie Dodaj przypisanie roli do zakresu subskrypcji. Przedstawiono w nim również, jak uzyskać `Directory (tenant) ID`, `Application ID`i `Client Secret`.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Tworzenie klastra usługi Azure Data Explorer
@@ -82,7 +86,7 @@ Aby uruchomić przykłady z tego artykułu, potrzebujemy aplikacji usługi Azure
    |---|---|---|
    | cluster_name | *mykustocluster* | Wybrana nazwa klastra.|
    | sku_name | *Standard_D13_v2* | Jednostka SKU, która będzie używana na potrzeby klastra. |
-   | tier | *Standardowa* | Warstwa SKU. |
+   | tier | *Standard* | Warstwa SKU. |
    | capacity | *Liczba* | Liczba wystąpień klastra. |
    | resource_group_name | *testrg* | Nazwa grupy zasobów, w której zostanie utworzony klaster. |
 
