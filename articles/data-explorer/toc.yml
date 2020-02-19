@@ -56,10 +56,6 @@
           href: create-cluster-database-resource-manager.md
     - name: Pozyskiwanie danych
       items:
-        - name: Pozyskiwanie jednym kliknięciem
-          href: ingest-data-one-click.md
-        - name: Pozyskiwanie danych za pośrednictwem przesyłania strumieniowego
-          href: ingest-data-streaming.md
         - name: Centrum zdarzeń
           items:
             - name: Azure Portal
@@ -90,6 +86,10 @@
               href: data-connection-iot-hub-python.md
             - name: Szablon usługi Azure Resource Manager
               href: data-connection-iot-hub-resource-manager.md
+        - name: Pozyskiwanie jednym kliknięciem
+          href: ingest-data-one-click.md
+        - name: Pozyskiwanie danych za pośrednictwem przesyłania strumieniowego
+          href: ingest-data-streaming.md
         - name: Używanie zestawów SDK
           items:
             - name: Python
