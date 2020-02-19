@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: cc349c2d5e43946648533d546398e95d4fa98382
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 5cb7cfc0b4d888406f8574ab620667f160bfa118
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156024"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445424"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -37,7 +37,7 @@ Przed rozpoczęciem:
 
 1. W tym samym pliku zastąp ciąg `YourSubscriptionKey` kluczem subskrypcji.
 
-1. Zastąp ciąg `YourServiceRegion` "parametrem zestawu Speech SDK" z [regionu](https://aka.ms/speech/sdkregion) skojarzonego z subskrypcją (na przykład `westus` subskrypcji bezpłatnej wersji próbnej).
+1. Zastąp ciąg `YourServiceRegion` **identyfikatorem regionu** z [regionu](https://aka.ms/speech/sdkregion) skojarzonego z subskrypcją (na przykład `westus` subskrypcji bezpłatnej wersji próbnej).
 
 1. Na pasku menu wybierz kolejno opcje **plik** > **Zapisz wszystko**.
 

@@ -8,7 +8,7 @@ ms.topic: tutorial
 ms.date: 02/06/2020
 ms.openlocfilehash: 93b8520c0f65f102c9adf64870b60506d890276d
 ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/18/2020
 ms.locfileid: "77431404"
