@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 0e612dbecb9f215a90f728afb0f06a65db09764b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 076708cdc32b0547fe34f714798b4a7a963296fe
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162926"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462636"
 ---
 # <a name="azure-storage-redundancy"></a>Nadmiarowość usługi Azure Storage
 
@@ -66,7 +66,7 @@ W poniższej tabeli przedstawiono typy kont magazynu obsługujące ZRS, w który
 |    FileStorage    | Europa Zachodnia<br /> Wschodnie stany USA    |    Tylko Azure Files    |
 
 <sup>1</sup> warstwa archiwum nie jest obecnie obsługiwana dla kont ZRS.<br />
-<sup>2</sup> dyski platformy Azure dla maszyn wirtualnych, w tym dyski zarządzane i niezarządzane, obsługują tylko LRS. Nie obsługują one ZRS ani GZRS. Aby uzyskać więcej informacji o dyskach zarządzanych, zobacz [Cennik usługi Azure Managed disks](/pricing/details/managed-disks/).
+<sup>2</sup> dyski platformy Azure dla maszyn wirtualnych, w tym dyski zarządzane i niezarządzane, obsługują tylko LRS. Nie obsługują one ZRS ani GZRS. Aby uzyskać więcej informacji o dyskach zarządzanych, zobacz [Cennik usługi Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Aby uzyskać informacje o tym, które regiony obsługują ZRS, zobacz temat **Obsługa usług według regionów** w obszarze [co to jest strefy dostępności platformy Azure?](../../availability-zones/az-overview.md).
 
@@ -131,7 +131,7 @@ Jeśli konto magazynu jest skonfigurowane pod kątem dostępu do odczytu do regi
 
 Po włączeniu dostępu do odczytu do elementu pomocniczego dane można odczytać z pomocniczego punktu końcowego, a także z podstawowego punktu końcowego dla konta magazynu. Pomocniczy punkt końcowy dołącza sufiks *— pomocniczy* do nazwy konta. Na przykład jeśli podstawowy punkt końcowy usługi BLOB Storage jest `myaccount.blob.core.windows.net`, pomocniczy punkt końcowy jest `myaccount-secondary.blob.core.windows.net`. Klucze dostępu do konta magazynu są takie same dla podstawowych i pomocniczych punktów końcowych.
 
-### <a name="check-the-last-sync-time-property"></a>Sprawdź Właściwość godzina ostatniej synchronizacji
+### <a name="check-the-last-sync-time-property"></a>Sprawdzanie właściwości czasu ostatniej synchronizacji
 
 Ponieważ dane są replikowane do regionu pomocniczego asynchronicznie, region pomocniczy jest często za regionem podstawowym. Jeśli wystąpi awaria w regionie podstawowym, prawdopodobnie wszystkie zapisy w podstawowym nie zostaną jeszcze zreplikowane do pomocniczej bazy danych.
 

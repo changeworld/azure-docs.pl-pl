@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5c6173971ac5272c2c2d769551fc9caf3dfa2573
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385800"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462245"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Typowe zadania uruchamiania usługi w chmurze
 W tym artykule przedstawiono kilka przykładów typowych zadań uruchamiania, które można wykonać w usłudze w chmurze. Zadania uruchamiania umożliwiają wykonywanie operacji przed rozpoczęciem roli. Operacje, które można wykonać, obejmują zainstalowanie składnika, zarejestrowanie składników modelu COM, ustawienie kluczy rejestru lub uruchomienie długotrwałego procesu. 
@@ -67,7 +67,7 @@ Zmienna ERRORLEVEL zwrócona przez *Appcmd. exe* jest wymieniona w pliku Winerro
 ### <a name="example-of-managing-the-error-level"></a>Przykład zarządzania poziomem błędu
 Ten przykład dodaje sekcję kompresji i wpis kompresji dla formatu JSON do pliku *Web. config* , z obsługą błędów i rejestrowaniem.
 
-W tym miejscu są wyświetlane odpowiednie sekcje pliku [ServiceDefinition.csdef] , które obejmują ustawienie atrybutu [kontekście wykonywania](/previous-versions/azure/reference/gg557552(v=azure.100)#task) na `elevated`, aby nadać programowi *Appcmd. exe* wystarczające uprawnienia do zmiany ustawień w pliku *Web. config* :
+W tym miejscu są wyświetlane odpowiednie sekcje pliku [ServiceDefinition. csdef] , które obejmują ustawienie atrybutu [kontekście wykonywania](/previous-versions/azure/reference/gg557552(v=azure.100)#task) na `elevated`, aby nadać programowi *Appcmd. exe* wystarczające uprawnienia do zmiany ustawień w pliku *Web. config* :
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -90,7 +90,7 @@ REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. Th
 REM   batch file were executed twice. This can occur and must be accounted for in an Azure startup
 REM   task. To handle this situation, set the ERRORLEVEL to zero by using the Verify command. The Verify
 REM   command will safely set the ERRORLEVEL to zero.
-IF %ERRORLEVEL% EQU 183 DO VERIFY > NUL
+IF %ERRORLEVEL% EQU 183 VERIFY > NUL
 
 REM   If the ERRORLEVEL is not zero at this point, some other error occurred.
 IF %ERRORLEVEL% NEQ 0 (
@@ -119,13 +119,13 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>Dodawanie reguł zapory
-Na platformie Azure istnieją efektywne dwie zapory. Pierwsza Zapora kontroluje połączenia między maszyną wirtualną a światem zewnętrznym. Ta zapora jest kontrolowana przez element [Punkty końcowe] w pliku [ServiceDefinition.csdef] .
+Na platformie Azure istnieją efektywne dwie zapory. Pierwsza Zapora kontroluje połączenia między maszyną wirtualną a światem zewnętrznym. Ta zapora jest kontrolowana przez element [Punktów końcowych] w pliku [ServiceDefinition. csdef] .
 
 Druga Zapora kontroluje połączenia między maszyną wirtualną a procesami w ramach tej maszyny wirtualnej. Tę zaporę można kontrolować za pomocą narzędzia wiersza polecenia `netsh advfirewall firewall`.
 
 Platforma Azure tworzy reguły zapory dla procesów uruchomionych w ramach ról. Na przykład po uruchomieniu usługi lub programu Platforma Azure automatycznie tworzy niezbędne reguły zapory, aby umożliwić tej usłudze komunikowanie się z Internetem. Jeśli jednak utworzysz usługę uruchomioną przez proces poza rolą (np. z usługą COM+ lub zaplanowanym zadaniem systemu Windows), musisz ręcznie utworzyć regułę zapory, aby zezwolić na dostęp do tej usługi. Te reguły zapory można utworzyć przy użyciu zadania uruchamiania.
 
-Zadanie uruchamiania, które tworzy regułę zapory, musi mieć zadanie [kontekście wykonywania][] o **podniesionych uprawnieniach**. Dodaj następujące zadanie uruchamiania do pliku [ServiceDefinition.csdef] .
+Zadanie uruchamiania, które tworzy regułę zapory, musi mieć zadanie [kontekście wykonywania][] o **podniesionych uprawnieniach**. Dodaj następujące zadanie uruchamiania do pliku [ServiceDefinition. csdef] .
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -155,7 +155,7 @@ Możesz ograniczyć dostęp roli sieci Web platformy Azure do zestawu określony
 
 Aby odblokować sekcję **ipSecurity** pliku **ApplicationHost. config** , Utwórz plik poleceń, który jest uruchamiany podczas uruchamiania roli. Utwórz folder na poziomie głównym roli sieci Web o nazwie **Startup** i, w tym folderze, Utwórz plik wsadowy o nazwie **Startup. cmd**. Dodaj ten plik do projektu programu Visual Studio i ustaw właściwości tak, aby **zawsze** były dostępne w pakiecie.
 
-Dodaj następujące zadanie uruchamiania do pliku [ServiceDefinition.csdef] .
+Dodaj następujące zadanie uruchamiania do pliku [ServiceDefinition. csdef] .
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -213,7 +213,7 @@ Ta Przykładowa konfiguracja **odmówi** wszystkim adresom IP uzyskiwania dostę
 ```
 
 ## <a name="create-a-powershell-startup-task"></a>Tworzenie zadania uruchamiania programu PowerShell
-Skryptów programu Windows PowerShell nie można wywołać bezpośrednio z pliku [ServiceDefinition.csdef] , ale mogą one być wywoływane z poziomu pliku wsadowego uruchamiania.
+Skryptów programu Windows PowerShell nie można wywołać bezpośrednio z pliku [ServiceDefinition. csdef] , ale mogą one być wywoływane z poziomu pliku wsadowego uruchamiania.
 
 Program PowerShell (domyślnie) nie uruchamia niepodpisanych skryptów. Jeśli skrypt nie zostanie podpisany, należy skonfigurować program PowerShell, aby uruchamiał niepodpisane skrypty. Aby uruchamiać niepodpisane skrypty, **ExecutionPolicy** musi być ustawiona na **nieograniczone**. Używane ustawienie **ExecutionPolicy** jest oparte na wersji programu Windows PowerShell.
 
@@ -244,7 +244,7 @@ EXIT /B %errorlevel%
 ## <a name="create-files-in-local-storage-from-a-startup-task"></a>Tworzenie plików w magazynie lokalnym z poziomu zadania uruchamiania
 Zasobów magazynu lokalnego można użyć do przechowywania plików utworzonych przez zadanie uruchamiania, które są dostępne później przez aplikację.
 
-Aby utworzyć zasób magazynu lokalnego, Dodaj sekcję [LocalResources] do pliku [ServiceDefinition.csdef] , a następnie Dodaj element podrzędny [LOCALSTORAGE] . Nadaj zasobowi lokalnego magazynu unikatową nazwę i odpowiedni rozmiar zadania uruchamiania.
+Aby utworzyć zasób magazynu lokalnego, Dodaj sekcję [LocalResources] do pliku [ServiceDefinition. csdef] , a następnie Dodaj element podrzędny [LOCALSTORAGE] . Nadaj zasobowi lokalnego magazynu unikatową nazwę i odpowiedni rozmiar zadania uruchamiania.
 
 Aby użyć zasobu magazynu lokalnego w ramach zadania uruchamiania, należy utworzyć zmienną środowiskową, aby odwołać się do lokalizacji zasobów magazynu lokalnego. Następnie zadanie uruchamiania i aplikacja mogą odczytywać i zapisywać pliki w lokalnym magazynie zasobów magazynu.
 
@@ -298,7 +298,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 ## <a name="run-in-the-emulator-or-cloud"></a>Uruchom w emulatorze lub w chmurze
 Zadanie uruchamiania może wykonywać różne kroki, gdy działa w chmurze w porównaniu z, gdy znajduje się w emulatorze obliczeniowym. Na przykład możesz chcieć użyć nowej kopii danych SQL tylko w przypadku uruchamiania w emulatorze. Można też wykonać pewne optymalizacje wydajności w chmurze, które nie muszą być wykonywane w przypadku uruchamiania w emulatorze.
 
-Możliwość wykonywania różnych akcji na emulatorze obliczeniowym i w chmurze można osiągnąć przez utworzenie zmiennej środowiskowej w pliku [ServiceDefinition.csdef] . Następnie należy przetestować tę zmienną środowiskową dla wartości w zadaniu startowym.
+Możliwość wykonywania różnych akcji na emulatorze obliczeniowym i w chmurze można osiągnąć przez utworzenie zmiennej środowiskowej w pliku [ServiceDefinition. csdef] . Następnie należy przetestować tę zmienną środowiskową dla wartości w zadaniu startowym.
 
 Aby utworzyć zmienną środowiskową, należy dodać [Zmiennej]/elementu [RoleInstanceValue] i utworzyć wartość XPath `/RoleEnvironment/Deployment/@emulated`. Wartość zmiennej środowiskowej **% ComputeEmulatorRunning%** jest `true` podczas uruchamiania w emulatorze obliczeń i `false` w przypadku uruchamiania w chmurze.
 
@@ -500,7 +500,7 @@ Dowiedz się więcej na temat działania [zadań](cloud-services-startup-tasks.m
 
 [Utwórz i Wdróż](cloud-services-how-to-create-deploy-portal.md) pakiet usługi w chmurze.
 
-[ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
+[ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
 [Zadanie podrzędne]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
@@ -508,7 +508,7 @@ Dowiedz się więcej na temat działania [zadań](cloud-services-startup-tasks.m
 [Zmiennej]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Punkty końcowe]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[Punktów końcowych]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue

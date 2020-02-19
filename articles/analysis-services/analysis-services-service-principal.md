@@ -4,21 +4,23 @@ description: Dowiedz się, jak utworzyć jednostkę usługi do automatyzowania A
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/18/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c599abbf274eb4014323ec217c6d54d3c397b159
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251672"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461678"
 ---
 # <a name="automation-with-service-principals"></a>Automatyzacja przy użyciu jednostek usługi
 
 Jednostki usług to zasoby aplikacji usługi Azure Active Directory tworzone w ramach dzierżawy w celu przeprowadzania nienadzorowanych operacji na poziomie zasobu lub usługi. Są one unikatowym typem *tożsamości użytkownika* przy użyciu identyfikatora aplikacji i hasła lub certyfikatu. Jednostka usługi ma tylko te uprawnienia, które są niezbędne do wykonywania zadań zdefiniowanych przez role i uprawnienia, do których jest przypisany. 
 
 W Analysis Services nazwy główne usług są używane z Azure Automation, nienadzorowanym trybem programu PowerShell, niestandardowymi aplikacjami klienckimi i aplikacjami sieci Web do automatyzowania typowych zadań. Na przykład inicjowanie obsługi serwerów, wdrażanie modeli, odświeżanie danych, skalowanie w górę/w dół, a wstrzymywanie/wznawianie może być zautomatyzowane przy użyciu jednostek usługi. Uprawnienia są przypisywane do jednostek usługi za pomocą przynależności do roli, podobnie jak zwykłe konta UPN usługi Azure AD.
+
+Analysis Services obsługuje również operacje wykonywane przez zarządzane tożsamości przy użyciu jednostek usługi. Aby dowiedzieć się więcej, zobacz temat [zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) i [usług platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services).  
 
 ## <a name="create-service-principals"></a>Tworzenie jednostek usługi
  

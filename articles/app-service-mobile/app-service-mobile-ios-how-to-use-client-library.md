@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 8f6307e37ff24d2a3f10bcf39ed989acdf3611f9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 1bf8f8e198f6c4a4a0af308262cd830685698a80
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157996"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458923"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Jak używać biblioteki klienckiej systemu iOS dla usługi Azure Mobile Apps
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-> [!NOTE]
-> Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
->
-> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="overview"></a>Omówienie
 W tym przewodniku nauczysz się wykonywać typowe scenariusze przy użyciu najnowszego [zestawu Azure Mobile Apps iOS SDK][1]. Jeśli dopiero zaczynasz pracę z platformą Azure Mobile Apps, najpierw Ukończ [Szybki start Mobile Apps platformy Azure] , aby utworzyć zaplecze, utworzyć tabelę i pobrać wstępnie utworzony projekt systemu iOS Xcode. W tym przewodniku koncentrujemy się na stronie klienta zestawu iOS SDK. Aby dowiedzieć się więcej o zestawie SDK po stronie serwera dla zaplecza, zapoznaj się z zestawem SDK serwera HOWTOs.

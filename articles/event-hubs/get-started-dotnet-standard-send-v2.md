@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 022af5ce0774ff106a29a2ef0bcf3fe11acfda15
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d7d697e3ea4b1b683275d53f6e407396f474b37b
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187213"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462024"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Wysyłanie zdarzeń do i odbieranie zdarzeń z usługi Azure Event Hubs — .NET Core (Azure. Messaging. EventHubs) 
 W tym przewodniku szybki start pokazano, jak wysyłać zdarzenia do i odbierać zdarzenia z centrum zdarzeń przy użyciu biblioteki podstawowej platformy .NET **Azure. Messaging. EventHubs** . 
@@ -132,7 +132,7 @@ W tym przewodniku szybki start użyjesz usługi Azure Storage jako magazynu punk
 
 1. W oknie Eksplorator rozwiązań kliknij prawym przyciskiem myszy rozwiązanie **EventHubQuickStart** , wskaż polecenie **Dodaj**, a następnie wybierz pozycję **Nowy projekt**. 
 1. Wybierz pozycję **aplikacja konsoli (.NET Core)** , a **następnie**wybierz pozycję Dalej. 
-1. **EventHubsReceiver** zdarzeń dla **nazwy projektu**i wybierz pozycję **Utwórz**. 
+1. Wprowadź **EventHubsReceiver** jako **nazwę projektu**, a następnie wybierz pozycję **Utwórz**. 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Dodawanie pakietu NuGet usługi Event Hubs
 

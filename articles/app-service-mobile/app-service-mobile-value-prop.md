@@ -5,19 +5,14 @@ ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
 ms.tgt_pltfrm: mobile-multiple
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.openlocfilehash: d85ac89a4226b545419cea3413a04f4013a073be
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 73fdf7f09ebb5073829f9787917946e8053f8e12
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668704"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461440"
 ---
-# <a name="getting-started"> </a>Informacje o funkcji Mobile Apps w usłudze Azure App Service
-
-> [!NOTE]
-> Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
->
-> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
+# <a name="getting-started"> </a>Informacje o Mobile Apps w Azure App Service
 
 Usługa Azure App Service to oferta w pełni zarządzanej [platformy jako usługi](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) dla profesjonalnych deweloperów. Usługa ta oferuje bogaty zestaw funkcji na potrzeby scenariuszy internetowych, mobilnych i dotyczących integracji. 
 

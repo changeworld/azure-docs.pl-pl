@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 33b3f9292a2fd185ea5487c0111dc294a6f163cf
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 11b8ade765a2b1c1ee25421073983b96c34e5d15
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030816"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462177"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji Azure Machine Learning
 
@@ -23,10 +23,53 @@ W tym artykule dowiesz się więcej na temat wydań Azure Machine Learning.  Aby
 
 Zapoznaj się z [listą znanych problemów](resource-known-issues.md) , aby dowiedzieć się więcej o znanych usterkach i obejść.
 
+## <a name="2020-02-18"></a>2020-02-18
+
+### <a name="azure-machine-learning-sdk-for-python-v111rc0"></a>Azure Machine Learning SDK dla języka Python v 1.1.1 RC0
+
++ **Poprawki i ulepszenia błędów**
+  + **Azure — interfejs wiersza polecenia**
+    + Profilowanie pojedynczego wystąpienia zostało naprawione w celu utworzenia rekomendacji i zostało udostępnione w podstawowym zestawie SDK.
+  + **Azure-automl-Core**
+    + Ulepszono rejestrowanie błędów.
+  + **Azure automl — środowisko uruchomieniowe**
+    + Rozwiązano problem związany z prognozą, gdy zestaw danych zawiera krótkie ziarna z długimi odstępami czasu.
+    + Rozwiązano problem, gdy jest włączona funkcja Automax, a kolumna Date zawiera daty w postaci ciągów. Dodaliśmy poprawną konwersję i rozsądny błąd, jeśli konwersja na datę nie jest możliwa
+    + Używanie natywnych NumPy i SciPy do serializacji i deserializacji danych pośrednich dla plik filecachestore (używany do lokalnego uruchamiania AutoML)
+    + Naprawiono usterkę, która może spowodować zablokowanie nieprawidłowych przebiegów podrzędnych.
+  + **Azure-Common — interfejs wiersza polecenia**
+    + Profilowanie pojedynczego wystąpienia zostało naprawione w celu utworzenia rekomendacji i zostało udostępnione w podstawowym zestawie SDK.
+  + **Azure — rdzeń**
+    + Dodano `--grant-workspace-msi-access` jako dodatkowy parametr interfejsu wiersza polecenia magazynu danych służącego do rejestrowania kontenera obiektów blob platformy Azure, który umożliwi rejestrację kontenera obiektów BLOB znajdującego się za siecią wirtualną
+    + Profilowanie pojedynczego wystąpienia zostało naprawione w celu utworzenia rekomendacji i zostało udostępnione w podstawowym zestawie SDK.
+    + Rozwiązano problem w aks.py _deploy
+    + Sprawdza integralność przekazywanych modeli, aby uniknąć cichych awarii magazynu.
+  + **Azure — interpretowanie**
+    + dodano wyjątki w stylu programu Azure do interpretacji Azure
+    + stała Serializacja DeepScoringExplainer dla modeli keras
+  + **Azure — potok — rdzeń**
+    + Notes oceniania partii potoków używa teraz ParallelRunStep
+  + **Azure — potok — kroki**
+    + Przeniesiono `AutoMLStep` w pakiecie `azureml-pipeline-steps`. Zaniechanie `AutoMLStep` w `azureml-train-automl-runtime`.
+  + **Azure-contrib-Pipeline-kroki**
+    + Dodano side_inputs parametru opcjonalnego do ParallelRunStep. Ten parametr może służyć do instalowania folderu w kontenerze. Obecnie obsługiwane typy to DataReference i PipelineData.
+  + **Azure — tensorboard**
+    + Zaktualizowano usługę Azure tensorboard w celu obsługi tensorflow 2,0
+  + **Azure-pociąg-automl-Client**
+    + Rozwiązano problem z zastępowaniem FeaturizationConfig, który filtruje niestandardową konfigurację cechowania.
+  + **Azure-uczenie-automl — środowisko uruchomieniowe**
+    + Przeniesiono `AutoMLStep` w pakiecie `azureml-pipeline-steps`. Zaniechanie `AutoMLStep` w `azureml-train-automl-runtime`.
+  + **Azure — uczenie rdzeniowe**
+    + Obsługa PyTorch w wersji 1,4 w PyTorch szacowania
+  
 ## <a name="2020-02-04"></a>2020-02-04
 
 ### <a name="azure-machine-learning-sdk-for-python-v110rc0"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.1.0 RC0
 
++ **Istotne zmiany**
+  + **2.0.0 wersji semantycznej**
+    + Począwszy od wersji 1,1 usługi Azure ML Python SDK przyjmuje 2.0.0 wersji semantycznej. [Przeczytaj więcej tutaj](https://semver.org/). Wszystkie kolejne wersje będą zgodne z nowym schematem numeracji i kontraktem wersji semantycznej. 
+  
 + **Poprawki i ulepszenia błędów**
   + **Azure automl — środowisko uruchomieniowe**
     + Zwiększona prędkość cechowania.
@@ -118,8 +161,7 @@ Zapoznaj się z [listą znanych problemów](resource-known-issues.md) , aby dowi
     + Dodano informacje CreatedBy do modelu i obiektów usługi. Dostęp do niego można uzyskać za poorednictwem <var>. created_by
     + Naprawiono ContainerImage. Run (), który nieprawidłowo konfiguruje port HTTP kontenera Docker.
     + Ustaw `azureml-dataprep` jako opcjonalne dla `az ml dataset register` polecenia CLI
-  + **Azure — dataprzygotowanie**
-    + Naprawiono usterkę polegającą na tym, że TabularDataset. to_pandas_dataframe niepoprawnie powraca do alternatywnego czytnika i drukuje ostrzeżenie.
+    + Naprawiono usterkę, w której `TabularDataset.to_pandas_dataframe` niepoprawnie wrócić do alternatywnego czytnika i wydrukować ostrzeżenie.
   + **Uczenie maszynowe — wyjaśnienie modelu**
     + Odłóż zależność kształtu do interpretowania przez społeczność od platformy Azure — Interpretuj
   + **Azure — potok — rdzeń**
@@ -885,7 +927,7 @@ W czasie tej wersji obsługiwane są następujące przeglądarki: Chrome, Firefo
     + Stałe przekształcenia — argument dla objaśniania WAPNa dla wagi nieprzetworzonej funkcji w usłudze Azure contrib-Wyjaśnij pakiet modelu
     + Dodano segmentacji do wyjaśnień obrazu w opisie obrazu dla pakietu Azure-contrib-Wyjaśnij-model
     + Dodaj obsługę rozrzedzenia scipy dla LimeExplainer
-    + Dodano `batch_size` do programu wyjaśniającego, gdy `include_local=False`do przesyłania strumieniowego globalnych wyjaśnień w partiach w celu poprawienia czasu wykonywania DecisionTreeExplainableModel
+    + dodano `batch_size` do programu wyjaśniającego, gdy `include_local=False`do przesyłania strumieniowego globalnych wyjaśnień w partiach w celu poprawienia czasu wykonywania DecisionTreeExplainableModel
   + **Azure-contrib-featureengineering**
     + Poprawka do wywoływania set_featurizer_timeseries_params (): DICT zmiana typu wartości i sprawdzanie wartości null — Dodawanie notesu dla `timeseries` featurized
     + Zaktualizuj zależność NimbusML do wersji 1.2.0 (aktualna Najnowsza wersja).

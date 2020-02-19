@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9c7e49fe522859f97f00f760822d5eef60db5f69
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b291d5babb0680f5f1a742efcf624a82c804de68
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228856"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460011"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co to jest Apache Storm w usłudze Azure HDInsight?
 
@@ -42,7 +42,7 @@ System Storm w usłudze HDInsight oferuje następujące funkcje:
 
     Przykładowe rozwiązanie, które integruje się z usługami platformy Azure, znajduje się w temacie [przetwarzanie zdarzeń z Event Hubs z Apache Storm w usłudze HDInsight](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub).
 
-Lista firm, które używają systemu Apache Storm w rozwiązaniach analitycznych działających w czasie rzeczywistym, jest dostępna na stronie [Companies Using Apache Storm](https://storm.apache.org/documentation/Powered-By.html) (Firmy korzystające z systemu Apache Storm).
+Lista firm, które używają systemu Apache Storm w rozwiązaniach analitycznych działających w czasie rzeczywistym, jest dostępna na stronie [Companies Using Apache Storm](https://storm.apache.org/Powered-By.html) (Firmy korzystające z systemu Apache Storm).
 
 Aby rozpocząć korzystanie z funkcji burzy, zobacz [Tworzenie i monitorowanie topologii Apache Storm w usłudze Azure HDInsight](apache-storm-quickstart.md).
 

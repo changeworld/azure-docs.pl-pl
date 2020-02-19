@@ -6,22 +6,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 741d286126bedb8b92828486927283fa9887658e
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 1c9fba3c13cc6e5476377d59130a95a2edaa324d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668466"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459195"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak używać zarządzanego klienta usługi Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-> [!NOTE]
-> Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
->
-> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
-
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym przewodniku pokazano, jak wykonywać typowe scenariusze przy użyciu zarządzanej biblioteki klienta Azure App Service Mobile Apps dla aplikacji dla systemu Windows i platformy Xamarin. Jeśli dopiero zaczynasz Mobile Apps, należy rozważyć pierwsze zakończenie samouczka [szybkiego startu platformy Azure Mobile Apps][1] . W tym przewodniku koncentrujemy się na zarządzanym przez klienta zestawie SDK. Aby dowiedzieć się więcej na temat zestawów SDK po stronie serwera dla Mobile Apps, zapoznaj się z dokumentacją [zestawu SDK programu .NET Server][2] lub [zestawu SDK serwera Node. js][3].
 
 ## <a name="reference-documentation"></a>Dokumentacja referencyjna
@@ -89,7 +84,7 @@ var client = new MobileServiceClient("MOBILE_APP_URL");
 W poprzednim kodzie Zastąp `MOBILE_APP_URL` adresem URL zaplecza aplikacji mobilnej, który znajduje się w bloku dla zaplecze aplikacji mobilnej w [Azure Portal]. Obiekt MobileServiceClient musi być klasą pojedynczą.
 
 ## <a name="work-with-tables"></a>Pracuj z tabelami
-W poniższej sekcji opisano sposób wyszukiwania i pobierania rekordów oraz modyfikowania danych w tabeli.  Omówiono następujące tematy:
+W poniższej sekcji opisano sposób wyszukiwania i pobierania rekordów oraz modyfikowania danych w tabeli.  Omówione są następujące tematy:
 
 * [Utwórz odwołanie do tabeli](#instantiating)
 * [Dane zapytania](#querying)

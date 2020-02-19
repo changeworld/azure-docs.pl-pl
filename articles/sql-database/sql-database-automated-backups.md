@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: f460bc3e4809b8a1cbabe1161c888255a7a484db
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 16ee8c1e271f0aa3e6565322f9a4a422dd90b8b8
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157520"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461780"
 ---
 # <a name="automated-backups"></a>Automatyczne kopie zapasowe
 
@@ -81,10 +81,14 @@ Kopie zapasowe, które są starsze niż okres przechowywania, są automatycznie 
 
 Azure SQL Database oblicza łączny magazyn kopii zapasowych w magazynie jako wartość zbiorczą. Co godzinę ta wartość jest raportowana w potoku rozliczania na platformie Azure, który jest odpowiedzialny za agregowanie tego użycia godzinowego w celu obliczenia zużycia na koniec każdego miesiąca. Po porzucenia bazy danych zużycie zmniejsza się w miarę starzenia się kopii zapasowych. Gdy kopie zapasowe staną się starsze niż okres przechowywania, rozliczenia zostaną zatrzymane. 
 
+   > [!IMPORTANT]
+   > Kopie zapasowe bazy danych są przechowywane przez określony okres przechowywania, nawet jeśli baza danych została porzucona. Chociaż porzucanie i ponowne tworzenie bazy danych często może zaoszczędzić na kosztach magazynu i obliczeń, może zwiększyć koszty magazynowania kopii zapasowej, ponieważ zachowujemy kopię zapasową dla określonego okresu przechowywania (co jest co najmniej 7 dni jako minimum) dla każdej porzuconej bazy danych, za każdym razem. 
 
-### <a name="monitoring-consumption"></a>Monitorowanie użycia
 
-Każdy typ kopii zapasowej (pełny, różnicowa i log) jest raportowany w bloku monitorowania bazy danych jako oddzielna Metryka. Na poniższym diagramie przedstawiono sposób monitorowania użycia magazynu kopii zapasowych.  
+
+### <a name="monitor-consumption"></a>Monitorowanie użycia
+
+Każdy typ kopii zapasowej (pełny, różnicowa i log) jest raportowany w bloku monitorowania bazy danych jako oddzielna Metryka. Na poniższym diagramie przedstawiono sposób monitorowania użycia magazynu kopii zapasowych dla pojedynczej bazy danych. Ta funkcja jest obecnie niedostępna dla wystąpień zarządzanych.
 
 ![Monitoruj użycie kopii zapasowej bazy danych w bloku monitorowanie bazy danych Azure Portal](media/sql-database-automated-backup/backup-metrics.png)
 
@@ -105,6 +109,7 @@ Nadmierne użycie magazynu kopii zapasowych będzie zależeć od obciążenia i 
 
 ## <a name="storage-costs"></a>Koszty magazynowania
 
+Cena magazynu zależy od modelu DTU lub modelu rdzeń wirtualny. 
 
 ### <a name="dtu-model"></a>Model DTU
 
@@ -120,11 +125,14 @@ Załóżmy, że baza danych ma 744 GB miejsca w magazynie kopii zapasowych, a ta
 
 Teraz bardziej skomplikowany przykład. Załóżmy, że czas przechowywania bazy danych wzrósł do 14 dni w środku miesiąca, a to (teoretycznie) skutkuje łącznym magazynem kopii zapasowych Podwajanie do 1488 GB. Baza danych SQL może zgłosić 1 GB użycia w godzinach 1-372, a następnie zgłosić użycie jako 2 GB dla godzin 373-744. Ta wartość zostanie zagregowana jako końcowy rachunek 1116 GB/miesiąc. 
 
-Możesz użyć analizy kosztów subskrypcji platformy Azure, aby określić bieżące wydatki na magazyn kopii zapasowych.
+### <a name="monitor-costs"></a>Monitorowanie kosztów
+
+Aby zrozumieć koszty magazynu kopii zapasowych, przejdź do pozycji **Cost Management + rozliczenia** na Azure Portal, wybierz pozycję **Cost Management**, a następnie wybierz pozycję **Analiza kosztów**. Wybierz żądaną subskrypcję jako **zakres**, a następnie odfiltruj odpowiedni czas i usługę. 
+
+Dodaj filtr dla **nazwy usługi**, a następnie z listy rozwijanej wybierz pozycję **baza danych SQL** . Użyj filtru **podkategorii mierników** , aby wybrać licznik rozliczeń dla usługi. W przypadku pojedynczej bazy danych lub puli elastycznej wybierz **jedną/elastyczną pulę kopie Backup Storage**. W przypadku wystąpienia zarządzanego wybierz pozycję **mi kopie Backup Storage**. Podkategorie **magazynu** i **obliczeń** mogą również być przydatne, chociaż nie są one skojarzone z kosztami magazynu kopii zapasowych. 
 
 ![Analiza kosztów magazynu kopii zapasowych](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
 
-Aby na przykład poznać koszty magazynu kopii zapasowych dla wystąpienia zarządzanego, przejdź do subskrypcji w Azure Portal i Otwórz blok analiza kosztów. Wybierz podkategorię miernika **kopie Backup Storage** , aby wyświetlić bieżące koszty tworzenia kopii zapasowych i prognozę opłat. Możesz również uwzględnić inne podkategorie mierników, takie jak **wystąpienia zarządzane ogólnego przeznaczenia — magazyn** lub **wystąpienie zarządzane — 5 rdzeń obliczeniowe** , aby porównać koszty magazynu kopii zapasowych z innymi kategoriami kosztów.
 
 ## <a name="backup-retention"></a>Przechowywanie kopii zapasowych
 
@@ -169,13 +177,13 @@ Domyślny okres przechowywania kopii zapasowej kopie można zmienić przy użyci
 
 Aby zmienić kopie okres przechowywania kopii zapasowej przy użyciu Azure Portal, przejdź do obiektu serwera, którego okres przechowywania chcesz zmienić w portalu, a następnie wybierz odpowiednią opcję na podstawie tego, który obiekt serwera jest modyfikowany.
 
-#### <a name="single-database--elastic-poolstabsingle-database"></a>[Jedna baza danych & pule elastyczne](#tab/single-database)
+#### <a name="single-database--elastic-pools"></a>[Jedna baza danych & pule elastyczne](#tab/single-database)
 
 Zmiana kopie przechowywania kopii zapasowych dla pojedynczych baz danych Azure SQL Database odbywa się na poziomie serwera. Zmiany wprowadzone na poziomie serwera dotyczą baz danych na tym serwerze. Aby zmienić kopie dla serwera Azure SQL Database z Azure Portal, przejdź do bloku przegląd serwera, kliknij pozycję Zarządzaj kopiami zapasowymi w menu nawigacji, a następnie kliknij pozycję Konfiguruj przechowywanie na pasku nawigacyjnym.
 
 ![Zmień Azure Portal kopie](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instancetabmanaged-instance"></a>[Wystąpienie zarządzane](#tab/managed-instance)
+#### <a name="managed-instance"></a>[Wystąpienie zarządzane](#tab/managed-instance)
 
 Zmiana przechowywania kopii zapasowych kopie dla wystąpienia zarządzanego SQL Database odbywa się na poziomie poszczególnych baz danych. Aby zmienić kopie przechowywanie kopii zapasowych dla bazy danych wystąpienia z Azure Portal, przejdź do bloku przegląd poszczególnych baz danych, a następnie kliknij pozycję Konfiguruj przechowywanie kopii zapasowych na pasku nawigacyjnym.
 

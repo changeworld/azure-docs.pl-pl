@@ -6,22 +6,17 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 8449b4f92636a7b73d07c34515f33dc9dc6816ab
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: c215105af5fe1ef8056b0d816cf2c2a6b96f2038
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668935"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461627"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Włączanie synchronizacji w trybie offline dla aplikacji mobilnej systemu Android
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-> [!NOTE]
-> Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
->
-> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
-
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym samouczku omówiono funkcję synchronizacji w trybie offline w usłudze Azure Mobile Apps dla systemu Android. Synchronizacja w trybie offline umożliwia użytkownikom końcowym współdziałanie z aplikacją mobilną&mdash;wyświetlanie, Dodawanie lub modyfikowanie danych&mdash;nawet w przypadku braku połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych. Gdy urządzenie przewróci do trybu online, te zmiany są synchronizowane ze zdalną zapleczem.
 
 Jeśli jest to pierwsze środowisko pracy z usługą Azure Mobile Apps, należy najpierw zakończyć pracę z samouczkiem [Tworzenie aplikacji dla systemu Android]. Jeśli nie używasz pobranego projektu szybkiego startu serwera, musisz dodać pakiety rozszerzenia dostępu do danych do projektu. Aby uzyskać więcej informacji o pakietach rozszerzeń serwera, zobacz [Work with the .NET zaplecz Server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
@@ -89,7 +84,7 @@ Po naciśnięciu tego przycisku zostanie uruchomione nowe zadanie w tle. Najpier
 4. Włącz sieć Wi-Fi na urządzeniu lub symulatorze. Następnie naciśnij przycisk **Odśwież** .
 5. Ponownie Wyświetl dane TodoItem w Azure Portal. Nowe i zmienione TodoItems powinny teraz pojawić się.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps]
 * [Pokrycie w chmurze: synchronizacja w trybie offline na platformie Azure Mobile Services] \(Uwaga: film wideo znajduje się na Mobile Services, ale synchronizacja offline działa podobnie jak w przypadku platformy Azure Mobile Apps\)
 

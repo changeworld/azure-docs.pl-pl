@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30f8111e1d8c9bd76e7b55dd958256f8892b9058
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: d7c8bdb7236ed0a3a12bae5050e564afe0b68cde
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442024"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461236"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Tworzenie punktu końcowego Standard scim i Konfigurowanie aprowizacji użytkowników przy użyciu Azure Active Directory (Azure AD)
 
@@ -1445,6 +1445,16 @@ Po rozpoczęciu pierwszego cyklu możesz wybrać opcję **dzienniki aprowizacji*
 
 Jeśli tworzysz aplikację, która będzie używana przez więcej niż jedną dzierżawę, możesz ją udostępnić w galerii aplikacji usługi Azure AD. Dzięki temu organizacje mogą łatwo odnaleźć aplikację i skonfigurować obsługę administracyjną. Publikowanie aplikacji w galerii usługi Azure AD i udostępnianie jej innym osobom jest proste. Zapoznaj się z opisanymi [tutaj](../develop/howto-app-gallery-listing.md)instrukcjami. Firma Microsoft będzie współpracować z klientem w celu zintegrowania aplikacji z naszą galerią, przetestowania punktu końcowego i udostępnienia [dokumentacji](../saas-apps/tutorial-list.md) do dołączania do klientów. 
 
+### <a name="gallery-onboarding-checklist"></a>Lista kontrolna dołączania galerii
+Postępuj zgodnie z poniższą listą kontrolną, aby upewnić się, że aplikacja została podłączona, a klienci mają płynne środowisko wdrażania. Informacje zostaną zebrane z użytkownika podczas dołączania do galerii. 
+> [!div class="checklist"]
+> * [Obsługa standard scim 2,0](https://tools.ietf.org/html/draft-wahl-scim-profile-00) (wymagane)
+> * Obsługa co najmniej 25 żądań na sekundę na dzierżawcę (wymagane)
+> * Obsługa odnajdywania schematu (zalecane)
+> * Obsługa przydzielenia kodu autoryzacji OAuth lub tokenu długotrwałego, zgodnie z poniższym opisem (wymagane)
+> * Ustanów inżynierów inżynieryjnych i pomocy technicznej w celu obsługi dołączania do galerii po opublikowaniu klienta (wymagane)
+> * Dokumentowanie punktu końcowego Standard scim publicznie (zalecane) 
+
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Autoryzacja łączników aprowizacji w galerii aplikacji
 Specyfikacja Standard scim nie definiuje schematu specyficznego dla Standard scim na potrzeby uwierzytelniania i autoryzacji. Opiera się na korzystaniu z istniejących standardów branżowych. Klient aprowizacji usługi Azure AD obsługuje dwie metody autoryzacji dla aplikacji w galerii. 
@@ -1471,6 +1481,17 @@ Najlepsze rozwiązania (zalecane, ale nie wymagane):
 **Tokeny okaziciela OAuth o długim czasie trwania:** Jeśli aplikacja nie obsługuje przepływu przydzielenia kodu autoryzacji OAuth, można również wygenerować token okaziciela OAuth o długim czasie trwania, który może być używany przez administratora do skonfigurowania integracji aprowizacji. Token powinien być tymczasowy lub w przeciwnym razie zadanie aprowizacji zostanie poddane [kwarantannie](application-provisioning-quarantine-status.md) po wygaśnięciu tokenu. Token musi być poniżej rozmiarze 1 KB w rozmiarze.  
 
 Aby uzyskać dodatkowe metody uwierzytelniania i autoryzacji, daj nam znać w witrynie [UserVoice](https://aka.ms/appprovisioningfeaturerequest).
+
+### <a name="gallery-go-to-market-launch-check-list"></a>Lista kontrolna uruchamiania z galerii przejdź do rynku
+Aby zwiększyć świadomość i zapotrzebowanie naszej integracji, Zalecamy zaktualizowanie istniejącej dokumentacji i wzmocnienie integracji w kanałach marketingowych.  Poniżej znajduje się zestaw działań list kontrolnych, zalecamy zakończenie obsługi uruchamiania
+
+* **Gotowość do obsługi sprzedaży i klienta.** Upewnij się, że zespoły sprzedaży i pomocy technicznej są świadome i mogą mówić do możliwości integracji. W skrócie zespół ds. sprzedaży i pomocy technicznej, Zapewnij im często zadawane pytania i Włącz integrację z materiałami sprzedaży. 
+* **Wpis w blogu i/lub naciśnięcie klawisza.** Umieść wpis w blogu lub wersję próbną opisującą integrację, zalety i sposób rozpoczynania pracy. [Przykład: Niewprowadzenie i Azure Active Directory Press](https://www.imprivata.com/company/press/imprivata-introduces-iam-cloud-platform-healthcare-supported-microsoft) 
+* **Media społecznościowe.** Skorzystaj z mediów społecznościowych, takich jak Twitter, Facebook lub LinkedIn, aby promować integrację z klientami. Upewnij się, że dołączasz @AzureAD, aby umożliwić nam retweet Twojego wpisu. [Przykład: Niemniej wpis w serwisie Twitter](https://twitter.com/azuread/status/1123964502909779968)
+* **Witryna sieci Web Marketing.** Utwórz lub zaktualizuj strony marketingowe (np. Strona integracji, Strona partnera, Cennik itp.), aby uwzględnić dostępność wspólnej integracji. [Przykład: Strona integracji Pingboard](https://pingboard.com/org-chart-for), [Strona integracji narzędzia Smartsheet](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad), [Strona z cennikiem Monday.com](https://monday.com/pricing/) 
+* **Dokumentacja techniczna.** Utwórz artykuł centrum pomocy lub dokumentację techniczną dotyczącą sposobu, w jaki klienci mogą rozpocząć pracę. [Przykład: wysłannika + Microsoft Azure Active Directory integrację.](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
+) 
+* **Komunikacja z klientem.** Powiadamiaj klientów o nowej integracji za pośrednictwem komunikacji z klientem (Biuletyny Miesięczne, kampanie e-mail i informacje o wersji produktu). 
 
 ### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>Zezwalaj na adresy IP używane przez usługę Azure AD Provisioning do podejmowania żądań Standard scim
 

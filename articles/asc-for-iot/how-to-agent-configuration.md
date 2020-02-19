@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2019
+ms.date: 02/18/2020
 ms.author: mlottner
-ms.openlocfilehash: 6adb918bbc6d4718be8518019394582a6a843fb8
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 70396cdcaf8b6e2ac66619290eea35a7b260cd9a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664852"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461253"
 ---
 # <a name="tutorial-configure-security-agents"></a>Samouczek: Konfigurowanie agentów zabezpieczeń
 
@@ -120,7 +120,7 @@ Poniższa tabela zawiera właściwości, które mają być kontrolowane Azure Se
 
 Wartości domyślne są dostępne w odpowiednim schemacie w serwisie [GitHub](https\://aka.ms/iot-security-module-default).
 
-| Nazwa| Stan | Prawidłowe wartości| Wartości domyślne| Opis |
+| Name (Nazwa)| Stan | Prawidłowe wartości| Wartości domyślne| Opis |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Wymagane: FAŁSZ |Prawidłowe wartości: czas trwania w formacie ISO 8601 |Wartość domyślna: PT7M |Maksymalny przedział czasu przed wysłaniem komunikatów o wysokim priorytecie.|
 |lowPriorityMessageFrequency |Wymagane: FAŁSZ|Prawidłowe wartości: czas trwania w formacie ISO 8601 |Wartość domyślna: PT5H |Maksymalny czas przed wysłaniem komunikatów o niskim priorytecie.| 
@@ -131,22 +131,21 @@ Wartości domyślne są dostępne w odpowiednim schemacie w serwisie [GitHub](ht
 
 ### <a name="supported-security-events"></a>Obsługiwane zdarzenia zabezpieczeń
 
-|Nazwa zdarzenia| Funkcja | Wartość domyślna| Zdarzenie migawki| Szczegóły stanu  |
+|Nazwa zdarzenia| PropertyName | Wartość domyślna| Zdarzenie migawki| Szczegóły stanu  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Zdarzenie diagnostyczne|eventPriorityDiagnostic| Wyłączone| Fałsz| Zdarzenia diagnostyczne powiązane z agentem. To zdarzenie służy do pełnego rejestrowania.| 
-|Błąd konfiguracji |eventPriorityConfigurationError |Niska |Fałsz |Agent nie może przeanalizować konfiguracji. Sprawdź konfigurację względem schematu.| 
-|Dane statystyczne dotyczące porzuconego zdarzenia |eventPriorityDroppedEventsStatistics |Niska |Prawda|Statystyki zdarzeń związanych z agentem. |
-|Statystyka komunikatów|eventPriorityMessageStatistics |Niska |Prawda |Statystyka komunikatów związanych z agentem. |
-|Podłączony sprzęt|eventPriorityConnectedHardware |Niska |Prawda |Migawka wszystkich urządzeń podłączonych do urządzenia.|
-|Nasłuchiwanie portów|eventPriorityListeningPorts |Wysoka |Prawda |Migawka wszystkich otwartych portów nasłuchiwania na urządzeniu.|
-|Tworzenie procesu |eventPriorityProcessCreate |Niska |Fałsz |Przeprowadza inspekcję tworzenia procesu na urządzeniu.|
-|Zakończenie procesu|eventPriorityProcessTerminate |Niska |Fałsz |Przeprowadza inspekcję zakończenia procesu na urządzeniu.| 
-|Informacje o systemie |eventPrioritySystemInformation |Niska |Prawda |Migawka informacji o systemie (na przykład: system operacyjny lub procesor CPU).| 
-|Użytkownicy lokalni| eventPriorityLocalUsers |Wysoka |Prawda|Migawka zarejestrowanych użytkowników lokalnych w systemie. |
-|Zaloguj się|  eventPriorityLogin |Wysoka|Fałsz|Przeprowadź inspekcję zdarzeń logowania na urządzeniu (logowanie lokalne i zdalne).|
-|Tworzenie połączenia |eventPriorityConnectionCreate|Niska|Fałsz|Przeprowadza inspekcję połączeń TCP utworzonych do i z urządzenia. |
-|Konfiguracja zapory| eventPriorityFirewallConfiguration|Niska|Prawda|Migawka konfiguracji zapory urządzenia (reguły zapory). |
-|Linia bazowa systemu operacyjnego| eventPriorityOSBaseline| Niska|Prawda|Migawka kontroli linii bazowej systemu operacyjnego urządzenia.|
+|Zdarzenie diagnostyczne|eventPriorityDiagnostic| Wyłączone| False| Zdarzenia diagnostyczne powiązane z agentem. To zdarzenie służy do pełnego rejestrowania.| 
+|Błąd konfiguracji |eventPriorityConfigurationError |Małe |False |Agent nie może przeanalizować konfiguracji. Sprawdź konfigurację względem schematu.| 
+|Dane statystyczne dotyczące porzuconego zdarzenia |eventPriorityDroppedEventsStatistics |Małe |True|Statystyki zdarzeń związanych z agentem. |
+|Podłączony sprzęt|eventPriorityConnectedHardware |Małe |True |Migawka wszystkich urządzeń podłączonych do urządzenia.|
+|Nasłuchiwanie portów|eventPriorityListeningPorts |Wysoka |True |Migawka wszystkich otwartych portów nasłuchiwania na urządzeniu.|
+|Tworzenie procesu |eventPriorityProcessCreate |Małe |False |Przeprowadza inspekcję tworzenia procesu na urządzeniu.|
+|Zakończenie procesu|eventPriorityProcessTerminate |Małe |False |Przeprowadza inspekcję zakończenia procesu na urządzeniu.| 
+|Informacje o systemie |eventPrioritySystemInformation |Małe |True |Migawka informacji o systemie (na przykład: system operacyjny lub procesor CPU).| 
+|Użytkownicy lokalni| eventPriorityLocalUsers |Wysoka |True|Migawka zarejestrowanych użytkowników lokalnych w systemie. |
+|Login|  eventPriorityLogin |Wysoka|False|Przeprowadź inspekcję zdarzeń logowania na urządzeniu (logowanie lokalne i zdalne).|
+|Tworzenie połączenia |eventPriorityConnectionCreate|Małe|False|Przeprowadza inspekcję połączeń TCP utworzonych do i z urządzenia. |
+|Konfiguracja zapory| eventPriorityFirewallConfiguration|Małe|True|Migawka konfiguracji zapory urządzenia (reguły zapory). |
+|Linia bazowa systemu operacyjnego| eventPriorityOSBaseline| Małe|True|Migawka kontroli linii bazowej systemu operacyjnego urządzenia.|
 |
  
 

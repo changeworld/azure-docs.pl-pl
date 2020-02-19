@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: f85c8e4f8eedccf3039038308f2262727fb18197
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 3714ce2a8098608851991115aa82afdc00d08a47
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668552"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459392"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Dodawanie uwierzytelniania do aplikacji Apache Cordova
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-
-> [!NOTE]
-> Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
->
-> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="summary"></a>Podsumowanie
 W tym samouczku dodasz uwierzytelnianie do projektu szybkiego startu todolist na Apache Cordova przy użyciu obsługiwanego dostawcy tożsamości. Ten samouczek jest oparty na samouczku [wprowadzenie do Mobile Apps] , który należy wykonać w pierwszej kolejności.
@@ -46,11 +41,11 @@ Następnie zaktualizuj aplikację, aby uwierzytelnić użytkowników przed zaż�
 
    | Dostawca | Nazwa dostawcy zestawu SDK | Host OAuth |
    |:--- |:--- |:--- |
-   | Usługa Active Directory systemu Azure | AAD | https://login.microsoftonline.com |
-   | Serwis Facebook | Serwis | https://www.facebook.com |
-   | Google | Usłudze | https://accounts.google.com |
+   | Azure Active Directory | AAD | https://login.microsoftonline.com |
+   | Facebook | facebook | https://www.facebook.com |
+   | Google | usłudze | https://accounts.google.com |
    | Microsoft | microsoftaccount | https://login.live.com |
-   | Serwis Twitter | ekran | https://api.twitter.com |
+   | Twitter | ekran | https://api.twitter.com |
 
     Przykładowa zawartość — zasady zabezpieczeń (zaimplementowane dla Azure Active Directory) są następujące:
 

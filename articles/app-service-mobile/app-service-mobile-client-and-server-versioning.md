@@ -6,18 +6,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 4d0b301dee363c2338cb13a9fc09ee17549467eb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: f24ae0a48b835785a2e000210f3609b82d42d0f6
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668843"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461559"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Przechowywanie wersji klienta i serwera w Mobile Apps i Mobile Services
-> [!NOTE]
-> Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
->
-> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 Najnowsza wersja platformy Azure Mobile Services jest funkcją **Mobile Apps** Azure App Service.
 
@@ -64,7 +60,7 @@ Sprawdzanie wersji jest zawarte w następujących wersjach zestawu SDK serwera:
 ### <a name="behavior-of-mobile-apps-backends"></a>Zachowanie Mobile Apps
 | ZUMO-API-VERSION | Wartość MS_SkipVersionCheck | Odpowiedź |
 | --- | --- | --- |
-| x. y. z lub null |Prawda |200 — OK |
+| x. y. z lub null |True |200 — OK |
 | Null |Nie określono wartości false/not |400 — Nieprawidłowe żądanie |
 | 1. x. y |Nie określono wartości false/not |400 — Nieprawidłowe żądanie |
 | 2.0.0-2. x. y |Nie określono wartości false/not |200 — OK |

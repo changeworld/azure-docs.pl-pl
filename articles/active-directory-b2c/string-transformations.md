@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69091fbcc2b6789abc7825632a56197427d34e4c
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 06323ba8f623bc80a355be69ed9571ee32dd69e6
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045371"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461219"
 ---
 # <a name="string-claims-transformations"></a>Przekształcenia oświadczeń ciągów
 
@@ -523,9 +523,9 @@ Wyczyść wartość danego żądania.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie outputclaim | claim_to_null | ciąg | Wartość tego żądania jest równa NULL. |
+| Oświadczenie outputclaim | claim_to_null | ciąg | Wartość tego żądania jest ustawiona na wartość NULL. |
 
-Ta transformacja oświadczenia służy do usuwania zbędnych danych z zbioru właściwości oświadczeń. W związku z tym plik cookie sesji będzie mniejszy. Poniższy przykład usuwa wartość `TermsOfService` typ zgłoszenia.
+Ta transformacja oświadczenia służy do usuwania zbędnych danych z zbioru właściwości oświadczeń, dlatego plik cookie sesji będzie mniejszy. Poniższy przykład usuwa wartość `TermsOfService` typ zgłoszenia.
 
 ```XML
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">
@@ -750,7 +750,7 @@ Wyodrębnia części typu "String", rozpoczynając od znaku w określonej pozycj
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie inputclaim | Oświadczenie inputclaim | ciąg | Typ zgłoszenia, który zawiera ciąg. |
 | InputParameter | startIndex | int | Początkowa pozycja znaku w podciągu w tym wystąpieniu (liczony od zera). |
-| InputParameter | {1&gt;length&lt;1} | int | Liczba znaków w podciągu. |
+| InputParameter | length | int | Liczba znaków w podciągu. |
 | Oświadczenie outputclaim | Oświadczenie outputclaim | wartość logiczna | Ciąg, który jest odpowiednikiem podciągu długości, który rozpoczyna się od elementu startIndex w tym wystąpieniu, lub pusty, jeśli wartość startIndex jest równa długości tego wystąpienia, a długość wynosi zero. |
 
 Na przykład Pobierz prefiks kraju numeru telefonu.  

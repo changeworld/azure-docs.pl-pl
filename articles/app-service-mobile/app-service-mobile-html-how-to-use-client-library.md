@@ -6,22 +6,17 @@ ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 0f70523b5b27a4f3db86bacf39469e233e43f807
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 029b01f3aacc928ebdae0e8fe90871437afccea5
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668826"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461525"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Jak używać biblioteki klienckiej języka JavaScript dla platformy Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-> [!NOTE]
-> Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
->
-> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
-
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym przewodniku nauczysz się wykonywać typowe scenariusze przy użyciu najnowszego [Zestaw JavaScript SDK dla platformy Azure Mobile Apps]. Jeśli dopiero zaczynasz pracę z platformą Azure Mobile Apps, najpierw Ukończ [Szybki start Mobile Apps platformy Azure] , aby utworzyć zaplecze i utworzyć tabelę. W tym przewodniku koncentrujemy się na korzystaniu z zaplecza mobilnego w aplikacjach sieci Web w języku HTML/JavaScript.
 
 ## <a name="supported-platforms"></a>Obsługiwane platformy

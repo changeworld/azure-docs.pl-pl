@@ -6,22 +6,17 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 85cb39de40d72d4fb4629d055d016e8a3dca23bd
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 57776073ef7e2760b308df22280faf1d65b8d104
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668276"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458855"
 ---
-# <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Włączanie synchronizacji w trybie offline dla aplikacji mobilnej platformy Xamarin.Forms
+# <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Włączanie synchronizacji w trybie offline dla aplikacji mobilnej platformy Xamarin. Forms
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-> [!NOTE]
-> Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
->
-> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
-
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym samouczku przedstawiono funkcję synchronizacji w trybie offline w usłudze Azure Mobile Apps dla platformy Xamarin. Forms. Synchronizacja w trybie offline umożliwia użytkownikom końcowym korzystanie z aplikacji mobilnej — wyświetlanie, Dodawanie lub modyfikowanie danych — nawet w przypadku braku połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych. Gdy urządzenie przewróci do trybu online, te zmiany są synchronizowane z usługą zdalną.
 
 Ten samouczek jest oparty na rozwiązaniu Xamarin. Forms szybkiego startu dla Mobile Apps tworzonego po zakończeniu samouczka [Tworzenie aplikacji platformy Xamarin dla systemu iOS]. Rozwiązanie szybkiego startu dla platformy Xamarin. Forms zawiera kod obsługujący synchronizację w trybie offline, który należy tylko włączyć. W tym samouczku należy zaktualizować rozwiązanie szybkiego startu, aby włączyć funkcje w trybie offline platformy Azure Mobile Apps. W aplikacji zostanie również wyróżniony kod specyficzny dla trybu offline. Jeśli nie korzystasz z pobranego rozwiązania szybkiego startu, musisz dodać pakiety rozszerzenia dostępu do danych do projektu. Aby uzyskać więcej informacji o pakietach rozszerzeń serwera, zobacz [Work with the .NET zaplecz Server SDK for Azure Mobile Apps][1].
@@ -147,7 +142,7 @@ W tej sekcji ponownie podłącz aplikację do zaplecza mobilnego, która symuluj
 
     Zwróć uwagę, że dane zostały zsynchronizowane między bazą danych programu i magazynem lokalnym i zawierają elementy dodane w czasie, gdy aplikacja została odłączona.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps][2]
 * [Azure Mobile Apps .NET SDK porady][8]
 

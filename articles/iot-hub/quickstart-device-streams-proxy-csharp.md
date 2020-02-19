@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: a1b6adc37d78e3fa73d7ae70237d678af6b9dc99
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1232177c8fd856d704c92694edb26ff8e12ad217
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769470"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461938"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Szybki Start: Włączanie protokołu SSH i RDP przez strumień urządzeń IoT Hub przy użyciu C# aplikacji serwera proxy (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ Microsoft Azure IoT Hub obecnie obsługuje strumienie urządzeń jako [funkcję 
 
 W tym artykule przedstawiono najpierw Instalatora protokołu SSH (przy użyciu portu 22), a następnie opisano sposób modyfikowania portu Instalatora dla protokołu RDP. Ponieważ strumienie urządzeń są typu Application-i Protocol-niezależny od, ten sam przykład można zmodyfikować, aby pomieścić inne typy ruchu aplikacji. Ta modyfikacja zwykle polega wyłącznie na zmianie portu komunikacyjnego na ten, który jest używany przez zamierzoną aplikację.
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
 Na poniższej ilustracji przedstawiono, w jaki sposób lokalne i lokalne aplikacje serwera proxy w tym przykładzie umożliwiają kompleksową łączność między procesami klienta SSH i demonów SSH. Załóżmy, że demon jest uruchomiony na tym samym urządzeniu co aplikacja lokalnego serwera proxy.
 
@@ -76,9 +76,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 * Prawidłowe konto użytkownika i poświadczenie na urządzeniu (Windows lub Linux) używane do uwierzytelniania użytkownika.
 
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Rejestrowanie urządzenia
 

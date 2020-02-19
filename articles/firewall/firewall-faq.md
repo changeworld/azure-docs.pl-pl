@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/29/2020
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: 78269461bf01d61bffeed504b0168b4913c6e131
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442993"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460471"
 ---
 # <a name="azure-firewall-faq"></a>Często zadawane pytania dotyczące zapory platformy Azure
 
@@ -129,7 +129,9 @@ Zapora platformy Azure nie ma protokołu IPSec, gdy docelowy adres IP jest prywa
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Czy jest wymuszane tunelowanie/łączenie do obsługiwanego sieciowego urządzenia wirtualnego?
 
-Wymuszone tunelowanie nie jest obecnie obsługiwane. Zapora platformy Azure musi mieć bezpośrednią łączność z Internetem. Jeśli AzureFirewallSubnet nauczy trasy domyślnej do sieci lokalnej za pośrednictwem protokołu BGP, należy przesłonić ten element przy użyciu wartości 0.0.0.0/0 UDR z wartością **NextHopType** ustawioną jako **Internet** w celu utrzymania bezpośredniej łączności z Internetem.
+Wymuszone tunelowanie jest obsługiwane. Aby uzyskać więcej informacji, zobacz [tunelowanie wymuszone dla zapory platformy Azure (wersja zapoznawcza)](forced-tunneling.md). 
+
+Zapora platformy Azure musi mieć bezpośrednią łączność z Internetem. Jeśli AzureFirewallSubnet nauczy trasy domyślnej do sieci lokalnej za pośrednictwem protokołu BGP, należy przesłonić ten element przy użyciu wartości 0.0.0.0/0 UDR z wartością **NextHopType** ustawioną jako **Internet** w celu utrzymania bezpośredniej łączności z Internetem.
 
 Jeśli konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej i można określić docelowe prefiksy adresów IP dla miejsc docelowych Internetu, można skonfigurować te zakresy przy użyciu sieci lokalnej jako następnego skoku za pośrednictwem trasy zdefiniowanej przez użytkownika na stronie AzureFirewallSubnet. Lub można użyć protokołu BGP, aby zdefiniować te trasy.
 
@@ -166,7 +168,7 @@ Nie. Zapora platformy Azure nie wymaga podsieci większej niż/26.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Jak zwiększyć przepływność zapory?
 
-Początkowa przepustowość zapory platformy Azure to 2,5 – 3 GB/s. Obecnie skalowanie w poziomie jest oparte tylko na wykorzystaniu procesora. W niektórych przypadkach Zapora z regułami sieci nie będzie skalowana w górę w celu zwiększenia przepływności, ponieważ reguły sieci nie wpływają znacząco na użycie procesora CPU. Jeśli potrzebujesz wyższej przepływności dla zapory, skontaktuj się z pomocą techniczną, aby zwiększyć początkową przepustowość swojej zapory.
+Początkowa przepustowość zapory platformy Azure to 2,5 – 3 GB/s. Obecnie skalowanie w poziomie jest zależne od użycia procesora CPU i przepływności. W niektórych przypadkach Zapora z regułami sieci nie będzie skalowana w górę w celu zwiększenia przepływności, ponieważ reguły sieci nie wpływają znacząco na użycie procesora CPU. Jeśli potrzebujesz wyższej przepływności dla zapory, skontaktuj się z pomocą techniczną, aby zwiększyć początkową przepustowość swojej zapory.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Jak długo trwa skalowanie w poziomie zapory platformy Azure?
 

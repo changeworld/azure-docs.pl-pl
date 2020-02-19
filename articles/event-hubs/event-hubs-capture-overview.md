@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 324425662622201bb50261d396d3eef1f531ba37
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 9b69feef7c6587f7356648e6a6828277ba500aea
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187312"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460079"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Przechwytywanie zdarzeń za pomocą usługi Azure Event Hubs w usłudze Azure Blob Storage lub magazynu usługi Azure Data Lake
 Usługa Azure Event Hubs umożliwia automatyczne przechwytywanie danych przesyłanych strumieniowo w Event Hubs w usłudze [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) lub w ramach wybranego konta [Azure Data Lake Storage generacji 1 lub generacji 2](https://azure.microsoft.com/services/data-lake-store/) , z dodatkową elastycznością określania interwału czasu lub rozmiaru. Konfigurowanie przechwytywania jest szybkie, nie ma kosztów administracyjnych do uruchomienia i jest automatycznie skalowane przy użyciu [jednostek przepływności](event-hubs-scalability.md#throughput-units)Event Hubs. Funkcja przechwytywania usługi Event Hubs jest najprostszym sposobem ładowania danych strumieniowych na platformę Azure i pozwala skoncentrować się na przetwarzaniu danych zamiast na przechwytywania danych.
@@ -157,7 +157,7 @@ Dowiedz się, jak włączyć tę funkcję przy użyciu szablonu Azure Portal i A
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
-[Avro Tools]: https://www.apache.org/dist/avro/stable/java/avro-tools-1.9.1.jar
+[Avro Tools]: https://www.apache.org/dist/avro/stable/java/avro-tools-1.9.2.jar
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md

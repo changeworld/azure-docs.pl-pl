@@ -7,7 +7,6 @@ documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
-ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
 ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
@@ -15,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 6a4fc842113218294b3e2ab449e27cfa94c5cfd3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1c85f0205f568f065a7959a9b33890b2117e45a0
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766523"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462228"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Wprowadzenie do usługi Azure Security Center dla IoT
 
 Ujednolicenie zarządzania zabezpieczeniami i umożliwienie kompleksowego wykrywania zagrożeń i analizy w ramach obciążeń chmury hybrydowej i rozwiązania Azure IoT. 
 
-## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>Zabezpiecz całe rozwiązanie IoT z urządzeń IoT w chmurze platformy Azure.
+## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>Zabezpiecz całe rozwiązanie IoT z urządzeń IoT w chmurze platformy Azure
 
 Wybieraj z naszego bezproblemowego rozwiązania bez wykorzystania agentów lub korzystaj z kompleksowych zabezpieczeń opartych na agentach, Azure Security Center dla usługi IoT zapewnia ochronę przed zagrożeniami i analizę dla każdego urządzenia, IoT Edge i IoT Hub w swoich zasobach IoT.
 
@@ -38,7 +37,7 @@ Azure Security Center dla IoT upraszcza ochronę hybrydową obciążenia, zapewn
 
 ### <a name="unified-visibility-and-control"></a>Ujednolicona widoczność i kontrola
 
-Uzyskaj ujednolicony widok zabezpieczeń we wszystkich obciążeniach lokalnych i w chmurze, co obejmuje również Twoje rozwiązanie Azure IoT. Dołączaj nowe urządzenia i stosuj zasady zabezpieczeń w ramach obciążeń (urządzeń typu liść, urządzeń Microsoft Edge, IoT Hub), aby zapewnić zgodność ze standardami zabezpieczeń i zwiększyć bezpieczeństwo stan. 
+Uzyskaj ujednolicony widok zabezpieczeń we wszystkich obciążeniach lokalnych i w chmurze, w tym w rozwiązaniu Azure IoT. Dołączaj nowe urządzenia i stosuj zasady zabezpieczeń w ramach obciążeń (urządzeń typu liść, urządzeń Microsoft Edge, IoT Hub), aby zapewnić zgodność ze standardami zabezpieczeń i zwiększyć bezpieczeństwo stan. 
 
 ### <a name="adaptive-threat-prevention"></a>Adaptacyjne zapobieganie zagrożeniom
 
@@ -46,7 +45,7 @@ Użyj Azure Security Center dla IoT, aby stale monitorować zabezpieczenia maszy
 
 ### <a name="intelligent-threat-detection-and-response"></a>Inteligentne wykrywanie zagrożeń i reagowanie na nie
 
-Użyj zaawansowanej analizy i Microsoft Intelligent Security Graph, aby uzyskać krawędzie przed rozwijającym się atakami cybernetycznymi. Wbudowana analiza behawioralna i uczenie maszynowe identyfikują ataki i luki w zabezpieczeniach. Monitoruj własne rozwiązanie IoT pod kątem nadchodzących ataków i działań po naruszeniu zabezpieczeń. Usprawnij badanie i korygowanie urządzeń za pomocą interaktywnych narzędzi i kontekstowej analizy zagrożeń.
+Użyj zaawansowanej analizy i Microsoft Intelligent Security Graph, aby uzyskać krawędzie przed rozwijającym się atakami cybernetycznymi. Wbudowana analiza behawioralna i uczenie maszynowe identyfikują ataki i luki w zabezpieczeniach. Monitoruj rozwiązanie IoT pod kątem ataków przychodzących i działań po naruszeniu naruszeń. Usprawnij badanie i korygowanie urządzeń za pomocą interaktywnych narzędzi i kontekstowej analizy zagrożeń.
 
 ## <a name="next-steps"></a>Następne kroki
 

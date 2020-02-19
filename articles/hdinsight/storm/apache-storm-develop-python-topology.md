@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/16/2019
-ms.openlocfilehash: ba632a98c21926ec28606def128cc068abf47f53
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 20e4827b1a86bff338646ef71f0dd732255c09c9
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646629"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460028"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Opracowywanie topologii Apache Storm przy użyciu języka Python w usłudze HDInsight
 
@@ -26,7 +26,7 @@ Dowiedz się, jak utworzyć topologię [Apache Storm](https://storm.apache.org/)
 
 * Klaster Apache Storm w usłudze HDInsight. Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) i wybierz pozycję **burza** dla **typu klastra**.
 
-* Lokalne środowisko programistyczne (opcjonalnie). Lokalne środowisko burzowe jest wymagane tylko wtedy, gdy chcesz uruchomić topologię lokalnie. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska deweloperskiego](http://storm.apache.org/releases/current/Setting-up-development-environment.html).
+* Lokalne środowisko programistyczne (opcjonalnie). Lokalne środowisko burzowe jest wymagane tylko wtedy, gdy chcesz uruchomić topologię lokalnie. Aby uzyskać więcej informacji, zobacz [Konfigurowanie środowiska deweloperskiego](https://storm.apache.org/releases/current/Setting-up-development-environment.html).
 
 * [Python 2,7 lub nowszy](https://www.python.org/downloads/).
 
@@ -38,7 +38,7 @@ Dowiedz się, jak utworzyć topologię [Apache Storm](https://storm.apache.org/)
 
 Apache Storm został zaprojektowany z myślą o pracy ze składnikami napisane przy użyciu dowolnego języka programowania. Składniki muszą zrozumieć sposób pracy z definicją Thrift dla burzy. W przypadku języka Python moduł jest dostarczany jako część projektu Apache Storm, który umożliwia łatwe interfejsowanie z burzą. Ten moduł można znaleźć pod adresem [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
-Burza jest procesem języka Java, który działa na wirtualna maszyna Java (JVM). Składniki w innych językach są wykonywane jako podprocesy. Burza komunikuje się z tymi podprocesami przy użyciu komunikatów JSON wysyłanych za pośrednictwem stdin/stdout. Więcej informacji na temat komunikacji między składnikami można znaleźć w dokumentacji [protokołu z wieloma językami](https://storm.apache.org/documentation/Multilang-protocol.html) .
+Burza jest procesem języka Java, który działa na wirtualna maszyna Java (JVM). Składniki w innych językach są wykonywane jako podprocesy. Burza komunikuje się z tymi podprocesami przy użyciu komunikatów JSON wysyłanych za pośrednictwem stdin/stdout. Więcej informacji na temat komunikacji między składnikami można znaleźć w dokumentacji [protokołu z wieloma językami](https://storm.apache.org/releases/current/Multilang-protocol.html) .
 
 ## <a name="python-with-the-flux-framework"></a>Python z platformą strumień
 

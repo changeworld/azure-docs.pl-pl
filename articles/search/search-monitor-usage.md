@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: 5846e9516548032595c1ce072d1dae8dcce9d39e
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: 353e00f902a7314e5e5b7c8ee03e8b925a510b26
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443605"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462330"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Monitoruj operacje i działania Wyszukiwanie poznawcze platformy Azure
 
@@ -52,7 +52,7 @@ Strony z kartami wbudowane na stronie Przegląd raportują na temat użycia zaso
 
 Jeśli podejmujesz decyzje dotyczące warstwy, [która ma być używana na potrzeby obciążeń produkcyjnych](search-sku-tier.md), lub czy należy [dostosować liczbę aktywnych replik i partycji](search-capacity-planning.md), te metryki mogą pomóc w podejmowaniu tych decyzji, pokazując, jak szybko zużywane są zasoby i jak również Bieżąca konfiguracja obsługuje istniejące obciążenie.
 
-Alerty powiązane z magazynem nie są obecnie dostępne; Użycie magazynu nie jest agregowane lub zarejestrowane w tabeli **AzureMetrics** w Azure monitor. Należy utworzyć rozwiązanie niestandardowe, które emituje powiadomienia związane z zasobami, gdzie kod sprawdza rozmiar magazynu i obsługuje odpowiedź. Aby uzyskać więcej informacji o metrykach magazynu, zobacz [Pobieranie statystyk usług](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
+Alerty powiązane z magazynem nie są obecnie dostępne; Użycie magazynu nie jest agregowane lub zarejestrowane w tabeli **AzureMetrics** w Azure monitor. Należy [utworzyć rozwiązanie niestandardowe](https://docs.microsoft.com/azure/azure-monitor/insights/solutions-creating) , które emituje powiadomienia związane z zasobami, gdzie kod sprawdza rozmiar magazynu i obsługuje odpowiedź. Aby uzyskać więcej informacji o metrykach magazynu, zobacz [Pobieranie statystyk usług](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
 
 W przypadku monitorowania wizualnego w portalu karta **użycie** pokazuje dostępność zasobów względem bieżących [limitów](search-limits-quotas-capacity.md) narzuconych przez warstwę usług. 
 
@@ -63,7 +63,7 @@ Poniższa ilustracja dotyczy bezpłatnej usługi, która jest ograniczona do 3 o
 
 ## <a name="monitor-workloads"></a>Monitoruj obciążenia
 
-Zarejestrowane zdarzenia obejmują odnoszące się do indeksowania i zapytań. Tabela **AzureDiagnostics** w log Analytics zbiera dane operacyjne powiązane z zapytaniami i indeksowanie.
+Zarejestrowane zdarzenia obejmują te powiązane z indeksowaniem i zapytaniami. Tabela **AzureDiagnostics** w log Analytics zbiera dane operacyjne powiązane z zapytaniami i indeksowanie.
 
 Większość zarejestrowanych danych jest przeznaczonych dla operacji tylko do odczytu. W przypadku innych operacji Create-Update-Delete, które nie są przechwytywane w dzienniku, można wysłać zapytanie do usługi wyszukiwania w celu uzyskania informacji o systemie.
 

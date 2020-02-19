@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
-ms.openlocfilehash: ed67a21107f6a7d90341ae40feeb817671785778
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: daca108cfc8bb2e5b2a068170a4a0244c72c9592
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823811"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462602"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Skalowanie zasobów puli elastycznej w Azure SQL Database
 
@@ -57,12 +57,12 @@ Szacowane opóźnienie zmiany warstwy usług lub ponowne skalowanie wielkości o
 > - W przypadku przeniesienia bazy danych do/z puli elastycznej tylko miejsce używane przez bazę danych wpływa na opóźnienie, a nie miejsce używane przez pulę elastyczną.
 >
 > [!TIP]
-> Aby monitorować operacje w toku, zobacz: [Zarządzanie operacjami przy użyciu interfejsu API REST usługi SQL](https://docs.microsoft.com/rest/api/sql/operations/list), [Zarządzanie operacjami przy użyciu wiersza polecenia](/cli/azure/sql/db/op), [monitorowanie operacji przy użyciu języka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) i tych dwóch poleceń programu PowerShell: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) i [ Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Aby monitorować operacje w toku, zobacz: [Zarządzanie operacjami przy użyciu interfejsu API REST usługi SQL](https://docs.microsoft.com/rest/api/sql/operations/list), [Zarządzanie operacjami przy użyciu wiersza polecenia](/cli/azure/sql/db/op), [monitorowanie operacji przy użyciu języka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) i tych dwóch poleceń programu PowerShell: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) i [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Dodatkowe zagadnienia dotyczące zmiany warstwy usług lub skalowanie zmian rozmiaru
 
 - Gdy downsizing rdzeni wirtualnych lub jednostek eDTU dla puli elastycznej, zajęte miejsce w puli musi być mniejsze niż maksymalny dozwolony rozmiar docelowej warstwy usług i puli jednostek eDTU.
-- Podczas ponownego skalowania rdzeni wirtualnych lub jednostek eDTU dla puli elastycznej jest stosowany dodatkowy koszt magazynu, jeśli (1) maksymalny rozmiar magazynu puli jest obsługiwany przez pulę docelową, a (2) maksymalny rozmiar magazynu przekracza dołączoną ilość miejsca w puli docelowej. Jeśli na przykład liczba 100 jednostek eDTU w warstwie Standardowa o maksymalnym rozmiarze 100 GB jest downsized do 50 puli jednostek eDTU w warstwie Standardowa, wówczas obowiązuje dodatkowy koszt magazynu, ponieważ docelowa Pula obsługuje maksymalny rozmiar wynoszący 100 GB, a uwzględniona ilość miejsca w magazynie wynosi tylko 50 GB. W związku z tym dodatkowa kwota magazynu wynosi 100 GB – 50 GB = 50 GB. Aby uzyskać cennik dodatkowego magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Jeśli rzeczywista ilość użytego miejsca jest mniejsza niż uwzględniona ilość miejsca w magazynie, można uniknąć tego dodatkowego kosztu, zmniejszając maksymalną wielkość bazy danych do uwzględnionej kwoty.
+- Podczas ponownego skalowania jednostek eDTU dla puli elastycznej obowiązuje dodatkowy koszt magazynu, jeśli (1) maksymalny rozmiar magazynu puli jest obsługiwany przez pulę docelową, a (2) maksymalny rozmiar magazynu przekracza dołączoną ilość miejsca w puli docelowej. Jeśli na przykład liczba 100 jednostek eDTU w warstwie Standardowa o maksymalnym rozmiarze 100 GB jest downsized do 50 puli jednostek eDTU w warstwie Standardowa, wówczas obowiązuje dodatkowy koszt magazynu, ponieważ docelowa Pula obsługuje maksymalny rozmiar wynoszący 100 GB, a uwzględniona ilość miejsca w magazynie wynosi tylko 50 GB. W związku z tym dodatkowa kwota magazynu wynosi 100 GB – 50 GB = 50 GB. Aby uzyskać cennik dodatkowego magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Jeśli rzeczywista ilość użytego miejsca jest mniejsza niż uwzględniona ilość miejsca w magazynie, można uniknąć tego dodatkowego kosztu, zmniejszając maksymalną wielkość bazy danych do uwzględnionej kwoty.
 
 ### <a name="billing-during-rescaling"></a>Rozliczanie podczas ponownego skalowania
 
@@ -71,7 +71,7 @@ Opłaty są naliczane za każdą godzinę, gdy baza danych istnieje przy użyciu
 ## <a name="change-elastic-pool-storage-size"></a>Zmień rozmiar magazynu elastycznej puli
 
 > [!IMPORTANT]
-> W pewnych okolicznościach może być konieczne zmniejszenie bazy danych w celu Odbierz nieużywanej przestrzeni. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).
+> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).
 
 ### <a name="vcore-based-purchasing-model"></a>Model zakupów oparty na rdzeniach wirtualnych
 
@@ -83,7 +83,7 @@ Opłaty są naliczane za każdą godzinę, gdy baza danych istnieje przy użyciu
 - Cena magazynu dla puli elastycznej to wielkość magazynu pomnożona przez cenę jednostkową magazynu warstwy usług. Aby uzyskać szczegółowe informacje na temat ceny dodatkowego magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> W pewnych okolicznościach może być konieczne zmniejszenie bazy danych w celu Odbierz nieużywanej przestrzeni. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).
+> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>Model zakupu oparty na jednostkach DTU
 
@@ -92,7 +92,7 @@ Opłaty są naliczane za każdą godzinę, gdy baza danych istnieje przy użyciu
 - Cena dodatkowego magazynu dla puli elastycznej to dodatkowa kwota magazynu pomnożona przez dodatkową cenę jednostkową magazynu warstwy usług. Aby uzyskać szczegółowe informacje na temat ceny dodatkowego magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> W pewnych okolicznościach może być konieczne zmniejszenie bazy danych w celu Odbierz nieużywanej przestrzeni. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).
+> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

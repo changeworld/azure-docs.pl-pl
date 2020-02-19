@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d250cc3c74f27079d633fa24c49eb11b94135ead
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200048"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460215"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Przydziały usługi Azure Cosmos DB
 
@@ -77,7 +77,8 @@ Cosmos DB automatycznie pobiera kopie zapasowe danych w regularnych odstępach c
 | Zasób | Limit domyślny |
 | --- | --- |
 | Maksymalna liczba baz danych | Nieograniczona liczba |
-| Maksymalna liczba kontenerów, które mogą być udostępniane w bazie danych z udostępnioną przepływność |25 |
+| Maksymalna liczba kontenerów na bazę danych o udostępnionej przepływności |25 |
+| Maksymalna liczba kontenerów na bazę danych lub konto z dedykowaną przepływność  |bez ograniczeń |
 | Maksymalna liczba regionów | Brak limitu (wszystkie regiony platformy Azure) |
 
 ## <a name="per-container-limits"></a>Limity dla kontenerów
@@ -103,7 +104,7 @@ W zależności od używanego interfejsu API element platformy Azure Cosmos może
 | --- | --- |
 | Maksymalny rozmiar elementu | 2 MB (długość UTF-8 w reprezentacji JSON) |
 | Maksymalna długość wartości klucza partycji | 2048 bajtów |
-| Maksymalna długość wartości identyfikatora | 1024 bajtów |
+| Maksymalna długość wartości identyfikatora | 1023 bajtów |
 | Maksymalna liczba właściwości na element | Brak praktycznego limitu |
 | Maksymalna głębokość zagnieżdżenia | Brak praktycznego limitu |
 | Maksymalna długość nazwy właściwości | Brak praktycznego limitu |

@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f6f334ed6b84d4688849b6dfd8cb1f79f8db57bf
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: e5beb60107b3632da336a20f167e1c2f5b53140a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443898"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461270"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji Java systemu Windows dla Azure App Service
 
@@ -29,6 +29,7 @@ Do wdrożenia plików War można użyć [wtyczki aplikacji sieci Web platformy A
 W przeciwnym razie metoda wdrażania będzie zależeć od typu archiwum:
 
 - Aby wdrożyć pliki War do Tomcat, użyj punktu końcowego `/api/wardeploy/`, aby OPUBLIKOWAĆ plik archiwum. Aby uzyskać więcej informacji na temat tego interfejsu API, zobacz [tę dokumentację](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
+- Aby wdrożyć pliki jar w środowisku Java SE, użyj punktu końcowego `/api/zipdeploy/` witryny kudu. Aby uzyskać więcej informacji na temat tego interfejsu API, zobacz [tę dokumentację](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
 
 Nie należy wdrażać. War przy użyciu protokołu FTP. Narzędzie FTP służy do przekazywania skryptów uruchamiania, zależności lub innych plików czasu wykonywania. Nie jest to optymalna opcja wdrażania aplikacji sieci Web.
 
@@ -287,6 +288,10 @@ Aby edytować Tomcat `server.xml` lub inne pliki konfiguracyjne, najpierw Zanotu
 
 Na koniec uruchom ponownie usługę App Service. Wdrożenia powinny przejść do `D:\home\site\wwwroot\webapps` tak jak wcześniej.
 
+## <a name="configure-java-se"></a>Konfigurowanie środowiska Java SE
+
+Podczas uruchamiania programu. Aplikacja JAR w języku Java SE w systemie Windows, `server.port` jest przenoszona jako opcja wiersza polecenia podczas uruchamiania aplikacji. Można ręcznie rozwiązać port HTTP ze zmiennej środowiskowej, `HTTP_PLATFORM_PORT`. Wartością tej zmiennej środowiskowej będzie port HTTP, na którym aplikacja powinna nasłuchiwać. 
+
 ## <a name="java-runtime-statement-of-support"></a>Instrukcja obsługi środowiska uruchomieniowego Java
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK wersje i konserwacja
@@ -300,6 +305,8 @@ Obsługiwane zestawy JDK są automatycznie poprawiane co kwartał w styczniu, kw
 ### <a name="security-updates"></a>Aktualizacje zabezpieczeń
 
 Poprawki i poprawki dla głównych luk w zabezpieczeniach zostaną wydane, gdy tylko staną się dostępne w systemach Azul. Usterka "główna" jest definiowana przez podstawowy wynik 9,0 lub wyższy w [systemie oceny typowych luk w zabezpieczeniach NIST, wersja 2](https://nvd.nist.gov/cvss.cfm).
+
+Tomcat 8,0 osiągnął [koniec cyklu życia (EOL) od 30 września 2018](https://tomcat.apache.org/tomcat-80-eol.html). Chociaż środowisko uruchomieniowe nadal jest avialable na Azure App Service, platforma Azure nie będzie stosować aktualizacji zabezpieczeń do tomcat 8,0. Jeśli to możliwe, dokonaj migracji aplikacji do tomcat 8,5 lub 9,0. W Azure App Service są dostępne zarówno Tomcat 8,5, jak i 9,0. Aby uzyskać więcej informacji, zobacz [oficjalną witrynę Tomcat](https://tomcat.apache.org/whichversion.html) . 
 
 ### <a name="deprecation-and-retirement"></a>Wycofanie i wycofanie
 

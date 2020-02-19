@@ -3,12 +3,12 @@ title: Szczegóły struktury definicji zasad
 description: Opisuje, w jaki sposób definicje zasad są używane do ustanawiania Konwencji dla zasobów platformy Azure w organizacji.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: b98702161753a996cd8a6751670308a78dc36b7c
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169773"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462006"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -111,6 +111,12 @@ Parametr ma następujące właściwości, które są używane w definicji zasad:
 - `metadata`: definiuje podwłaściwości używane głównie przez Azure Portal do wyświetlania informacji przyjaznych dla użytkownika:
   - `description`: wyjaśnienie, w jaki sposób jest używany parametr. Może służyć do podania przykładów akceptowalnych wartości.
   - `displayName`: przyjazna nazwa wyświetlana w portalu dla parametru.
+  - `version`: (opcjonalnie) śledzi szczegółowe informacje o wersji zawartości definicji zasad.
+
+    > [!NOTE]
+    > Usługa Azure Policy używa właściwości `version`, `preview`i `deprecated`, aby przekazywać poziom zmian do wbudowanej definicji lub inicjatywy i stanu. Format `version` to: `{Major}.{Minor}.{Patch}`. Określone Stany, takie jak _przestarzałe_ lub w _wersji zapoznawczej_, są dołączane do właściwości `version` lub w innej właściwości jako **wartość logiczna**.
+
+  - `category`: (opcjonalnie) określa, w której kategorii Azure Portal zostanie wyświetlona definicja zasad.
   - `strongType`: (opcjonalnie) używany podczas przypisywania definicji zasad za pomocą portalu. Zawiera listę kontekstową. Aby uzyskać więcej informacji, zobacz [strongtype](#strongtype).
   - `assignPermissions`: (opcjonalnie) ustawiono _wartość true_ , aby mieć Azure Portal tworzenia przypisań ról podczas przypisywania zasad. Ta właściwość jest przydatna w przypadku, gdy chcesz przypisać uprawnienia poza zakresem przypisania. Istnieje jedno przypisanie roli w ramach zasad (lub definicji roli we wszystkich zasadach z inicjatywy). Wartość parametru musi być prawidłowym zasobem lub zakresem.
 - `defaultValue`: (opcjonalnie) ustawia wartość parametru w przypisaniu, jeśli nie podano wartości.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fac6c29d5371c536c20eca58d90ee5d54d7e90d1
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991035"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462670"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw zasobów w sieciach wirtualnych platformy Azure
 
@@ -34,7 +34,7 @@ Używany typ rozpoznawania nazw zależy od tego, w jaki sposób zasoby muszą ko
 > W zależności od danego scenariusza warto używać Azure DNS stref prywatnych. Aby uzyskać więcej informacji, zobacz [Using Azure DNS for private domains (Korzystanie z usługi Azure DNS na potrzeby domen prywatnych)](../dns/private-dns-overview.md).
 >
 
-| **Scenariusz** | **Rozwiązanie** | **Suffix** |
+| **Scenariusz** | **Rozwiązanie** | **Przedrostk** |
 | --- | --- | --- |
 | Rozpoznawanie nazw między maszynami wirtualnymi znajdującymi się w tej samej sieci wirtualnej lub wystąpieniami roli Cloud Services platformy Azure w tej samej usłudze w chmurze. | [Azure DNS stref prywatnych](../dns/private-dns-overview.md) lub [rozpoznawania nazw udostępnianych przez platformę Azure](#azure-provided-name-resolution) |Nazwa hosta lub nazwa FQDN |
 | Rozpoznawanie nazw między maszynami wirtualnymi w różnych sieciach wirtualnych lub wystąpieniach ról w różnych usługach w chmurze. |[Azure DNS strefy prywatne](../dns/private-dns-overview.md) lub serwery DNS zarządzane przez klienta przekazujące zapytania między sieciami wirtualnymi w celu rozpoznania ich przez platformę Azure (DNS proxy). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
@@ -105,8 +105,7 @@ Dostępnych jest wiele różnych pakietów buforowania DNS (takich jak dnsmasq).
 
 > [!NOTE]
 > Pakiet dnsmasq jest tylko jedną z wielu pamięci podręcznych DNS dostępnych dla systemu Linux. Przed użyciem sprawdź jego przydatność do określonych potrzeb i sprawdź, czy nie zainstalowano żadnej innej pamięci podręcznej.
->
->
+
     
 ### <a name="client-side-retries"></a>Ponowne próby po stronie klienta
 
@@ -169,11 +168,10 @@ Jeśli przekazywanie zapytań do platformy Azure nie odpowiada Twoim potrzebom, 
 * Zabezpieczanie przed dostępem z Internetu w celu ograniczenia zagrożeń powodowanych przez agentów zewnętrznych.
 
 > [!NOTE]
-> Aby uzyskać najlepszą wydajność, podczas korzystania z maszyn wirtualnych platformy Azure jako serwerów DNS należy wyłączyć protokół IPv6. [Publiczny adres IP](virtual-network-public-ip-address.md) powinien być przypisany do każdej maszyny wirtualnej serwera DNS. Aby uzyskać dodatkową analizę wydajności i optymalizacje w przypadku korzystania z systemu Windows Server jako serwera DNS, zobacz temat [wydajność rozpoznawania nazw rekursywnego serwera DNS systemu windows 2012 R2](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
-> 
+> Aby uzyskać najlepszą wydajność, podczas korzystania z maszyn wirtualnych platformy Azure jako serwerów DNS należy wyłączyć protokół IPv6. [Publiczny adres IP](virtual-network-public-ip-address.md) powinien być przypisany do każdej maszyny wirtualnej serwera DNS. 
 > 
 
-### <a name="web-apps"></a>Aplikacje sieci Web
+### <a name="web-apps"></a>Aplikacje internetowe
 Załóżmy, że konieczne jest przeprowadzenie rozpoznawania nazw z aplikacji sieci Web utworzonej przy użyciu App Service połączonej z siecią wirtualną z maszynami wirtualnymi w tej samej sieci wirtualnej. Oprócz konfigurowania niestandardowego serwera DNS, który ma usługę przesyłania dalej DNS, która przekazuje zapytania do platformy Azure (Virtual IP 168.63.129.16), wykonaj następujące czynności:
 1. Włącz integrację sieci wirtualnej dla aplikacji sieci Web, jeśli nie została jeszcze wykonana, zgodnie z opisem w temacie [Integrowanie aplikacji z siecią wirtualną](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. W Azure Portal, w przypadku planu App Service hostujący aplikację sieci Web, wybierz pozycję **Synchronizuj sieć** w obszarze **Sieć**, **Virtual Network integrację**.

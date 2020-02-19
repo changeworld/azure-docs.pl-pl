@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 03b0269b1a4500fd8ae26cd5e56f48427c5506aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f47c2c30f71d6510ee66bb19bdd936e0780e242c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429179"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461870"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Szybki Start: Włączanie protokołu SSH i RDP przez strumień urządzenia IoT Hub przy użyciu aplikacji serwera proxy języka C (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ Usługa Azure IoT Hub obecnie obsługuje strumienie urządzeń jako [funkcję w 
 
 W tym przewodniku szybki start opisano konfigurowanie protokołu tunelowania Secure Shell (SSH) (przy użyciu portu 22) za pośrednictwem strumieni urządzeń. Konfiguracja dla ruchu Remote Desktop Protocol (RDP) jest podobna i wymaga prostej zmiany konfiguracji. Ponieważ strumienie urządzeń są typu Application-and Protocol-niezależny od, można zmodyfikować ten przewodnik Szybki Start, aby pomieścić inne typy ruchu aplikacji.
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
 Na poniższej ilustracji przedstawiono sposób, w jaki programy lokalnego serwera proxy dla urządzeń i usług umożliwiają kompleksową łączność między procesami klienta SSH i SSH. W publicznej wersji zapoznawczej zestaw SDK języka C obsługuje strumienie urządzeń tylko po stronie urządzenia. W efekcie w tym przewodniku szybki start przedstawiono instrukcje dotyczące uruchamiania tylko aplikacji lokalnego serwera proxy na urządzeniu. Aby skompilować i uruchomić towarzyszącą aplikację po stronie usług, postępuj zgodnie z instrukcjami w jednym z następujących przewodników szybki start:
 
@@ -118,9 +118,9 @@ W tym przewodniku szybki start użyjesz [zestawu SDK urządzeń Azure IoT dla j�
       cmake --build . -- /m /p:Configuration=Release
       ```
 
-## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT
+## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Rejestrowanie urządzenia
 

@@ -6,19 +6,14 @@ ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
 ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
-ms.openlocfilehash: 9238ebd06a4aa532d20a2a98499963a75780f025
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 0cc4309fa57a29997bdd2f650634efd0723e6965
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668412"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458753"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps
-
-> [!NOTE]
-> Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
->
-> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 ## <a name="what-is-offline-data-sync"></a>Co to jest synchronizacja danych w trybie offline?
 Synchronizacja danych w trybie offline to funkcja zestawu SDK klienta i serwera systemu Azure Mobile Apps, która ułatwia deweloperom tworzenie aplikacji, które są funkcjonalne bez połączenia sieciowego.

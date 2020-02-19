@@ -5,25 +5,24 @@ description: Dowiedz się, jak ustawiać okresy istnienia tokenów wystawionych 
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
-ms.custom: aaddev, annaba, identityplatformtop40
-ms.reviewer: hirsin
-ms.openlocfilehash: 55c7ee6711c6001745053b850c1b4e1859af5dbe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev, identityplatformtop40
+ms.reviewer: hirsin, jlu, annaba
+ms.openlocfilehash: 0b2b9dbe52a5696f21b287402fc4cbaa32b29c73
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699023"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461202"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurowalne okresy istnienia tokenu w Azure Active Directory (wersja zapoznawcza)
 
-Możliwe jest określenie okresu istnienia tokenu wystawionego przez usługę Azure Active Directory (Azure AD). Okresy istnienia tokenów można ustawić dla wszystkich aplikacji w organizacji, dla aplikacji wielodostępnych (dla wielu organizacji) lub dla określonej jednostki usługi w organizacji.
+Możesz określić okres istnienia tokenu wystawionego przez Azure Active Directory (Azure AD). Okresy istnienia tokenów można ustawić dla wszystkich aplikacji w organizacji, dla aplikacji wielodostępnej (z wieloma organizacjami) lub dla określonej jednostki usługi w organizacji.
 
 > [!IMPORTANT]
 > Po przesłuchaniu od klientów w wersji zapoznawczej wdrożono [funkcje zarządzania sesjami uwierzytelniania](https://go.microsoft.com/fwlink/?linkid=2083106) w usłudze Azure AD dostęp warunkowy. Ta nowa funkcja służy do konfigurowania okresów istnienia tokenu odświeżania przez ustawienie częstotliwości logowania. Po 1 maja 2020 nie będzie można używać konfigurowalnych zasad istnienia tokenu w celu konfigurowania tokenów sesji i odświeżania. Nadal można skonfigurować okresy istnienia tokenu dostępu po zakończeniu działania.
@@ -33,9 +32,8 @@ W usłudze Azure AD obiekt zasad reprezentuje zestaw reguł, które są wymuszan
 Zasady można wyznaczyć jako zasady domyślne dla swojej organizacji. Zasady są stosowane do wszystkich aplikacji w organizacji, o ile nie zostały zastąpione przez zasady o wyższym priorytecie. Można również przypisać zasady do określonych aplikacji. Kolejność priorytetów różni się w zależności od typu zasad.
 
 > [!NOTE]
-> Konfigurowalne zasady okresu istnienia tokenu nie są obsługiwane w usłudze SharePoint Online.  Mimo że masz możliwość tworzenia tych zasad za pośrednictwem programu PowerShell, usługi SharePoint Online nie będą potwierdzać tych zasad. Zapoznaj się z [blogiem usługi SharePoint Online](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) , aby dowiedzieć się więcej o konfigurowaniu limitów czasu bezczynności sesji.
->* Domyślny okres istnienia tokenu dostępu usługi SharePoint Online wynosi 1 godzinę. 
->* Domyślny maksymalny czas nieaktywności tokenu odświeżania usługi SharePoint Online to 90 dni.
+> Zasady okresowego istnienia tokenu dotyczą tylko klientów mobilnych i komputerów stacjonarnych, które uzyskują dostęp do usług SharePoint Online i OneDrive dla firm i nie mają zastosowania do sesji przeglądarki sieci Web.
+> Aby zarządzać okresem istnienia sesji przeglądarki sieci Web dla usług SharePoint Online i OneDrive dla firm, użyj funkcji [okres istnienia sesji dostępu warunkowego](../conditional-access/howto-conditional-access-session-lifetime.md) . Zapoznaj się z [blogiem usługi SharePoint Online](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) , aby dowiedzieć się więcej o konfigurowaniu limitów czasu bezczynności sesji.
 
 ## <a name="token-types"></a>Typy tokenów
 
@@ -89,10 +87,10 @@ Zasada okresu istnienia tokenu jest typem obiektu zasad, który zawiera reguły 
 | --- | --- | --- | --- | --- | --- |
 | Okres istnienia tokenu dostępu |AccessTokenLifetime<sup>2</sup> |Tokeny dostępu, tokeny identyfikatorów, tokeny SAML2 |1 godzina |10 minut |1 dzień |
 | Maksymalny czas nieaktywności tokenu odświeżania |MaxInactiveTime |Odśwież tokeny |90 dni |10 minut |90 dni |
-| Maksymalny wiek tokenu odświeżania pojedynczego czynnika |MaxAgeSingleFactor |Odśwież tokeny (dla wszystkich użytkowników) |Do odwołania |10 minut |Until-revoked<sup>1</sup> |
-| Maksymalny wiek tokenu wieloskładnikowego odświeżania |MaxAgeMultiFactor |Odśwież tokeny (dla wszystkich użytkowników) |Do odwołania |10 minut |Until-revoked<sup>1</sup> |
-| Maksymalny wiek tokenu sesji pojedynczego czynnika |MaxAgeSessionSingleFactor |Tokeny sesji (trwałe i nietrwałe) |Do odwołania |10 minut |Until-revoked<sup>1</sup> |
-| Maksymalny wiek tokenu sesji wieloskładnikowe |MaxAgeSessionMultiFactor |Tokeny sesji (trwałe i nietrwałe) |Do odwołania |10 minut |Until-revoked<sup>1</sup> |
+| Maksymalny wiek tokenu odświeżania pojedynczego czynnika |MaxAgeSingleFactor |Odśwież tokeny (dla wszystkich użytkowników) |Do odwołania |10 minut |Do odwołania<sup>1</sup> |
+| Maksymalny wiek tokenu wieloskładnikowego odświeżania |MaxAgeMultiFactor |Odśwież tokeny (dla wszystkich użytkowników) |Do odwołania |10 minut |Do odwołania<sup>1</sup> |
+| Maksymalny wiek tokenu sesji pojedynczego czynnika |MaxAgeSessionSingleFactor |Tokeny sesji (trwałe i nietrwałe) |Do odwołania |10 minut |Do odwołania<sup>1</sup> |
+| Maksymalny wiek tokenu sesji wieloskładnikowe |MaxAgeSessionMultiFactor |Tokeny sesji (trwałe i nietrwałe) |Do odwołania |10 minut |Do odwołania<sup>1</sup> |
 
 * <sup>1</sup>365 dni to maksymalna jawna długość, którą można ustawić dla tych atrybutów.
 * <sup>2</sup> Aby zapewnić działanie klienta sieci Web Microsoft Teams, zaleca się pozostawienie AccessTokenLifetime do ponad 15 minut dla Microsoft Teams.

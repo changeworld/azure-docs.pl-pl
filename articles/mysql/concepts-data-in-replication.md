@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 58882f7569e26ebcba237158db2eb23e76bcd015
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 18c53a53a57b3ddca1168fc1075ae09bcd86f000
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765090"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462500"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikowanie danych do Azure Database for MySQL
 
@@ -28,7 +28,7 @@ W przypadku scenariuszy migracji Użyj [Azure Database Migration Service](https:
 ## <a name="limitations-and-considerations"></a>Ograniczenia i zagadnienia
 
 ### <a name="data-not-replicated"></a>Dane nie zostały zreplikowane
-[*Baza danych systemu MySQL*](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) na serwerze głównym nie jest replikowana. Zmiany kont i uprawnień na serwerze głównym nie są replikowane. Jeśli utworzysz konto na serwerze głównym, a to konto musi uzyskać dostęp do serwera repliki, ręcznie Utwórz to samo konto na stronie serwera repliki. Aby zrozumieć, jakie tabele są zawarte w systemowej bazie danych, zobacz [Podręcznik programu MySQL](https://dev.mysql.com/doc/refman/5.7/en/system-database.html).
+[*Baza danych systemu MySQL*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) na serwerze głównym nie jest replikowana. Zmiany kont i uprawnień na serwerze głównym nie są replikowane. Jeśli utworzysz konto na serwerze głównym, a to konto musi uzyskać dostęp do serwera repliki, ręcznie Utwórz to samo konto na stronie serwera repliki. Aby zrozumieć, jakie tabele są zawarte w systemowej bazie danych, zobacz [Podręcznik programu MySQL](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html).
 
 ### <a name="requirements"></a>Wymagania
 - Wersja serwera głównego musi być nowsza niż wersja 5,6. 

@@ -7,39 +7,39 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.openlocfilehash: 346a44f02667976d95125b72371b6e33715ee4b1
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/18/2020
+ms.openlocfilehash: a3a313ef9cd74ba901f5a6a2d82a18e3c21145dc
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211154"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462529"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Monitorowanie żądań zapytań w usłudze Azure Wyszukiwanie poznawcze
 
-W tym artykule wyjaśniono, jak zmierzyć wydajność zapytań i wolumin przy użyciu metryk. Wyjaśniono również, jak zbierać terminy wejściowe używane w zapytaniach — informacje niezbędne do oceny narzędzia i skuteczności korpus wyszukiwania.
+W tym artykule wyjaśniono, jak zmierzyć wydajność zapytań i wolumin przy użyciu metryk i rejestrowania diagnostycznego. Wyjaśniono również, jak zbierać terminy wejściowe używane w zapytaniach — informacje niezbędne do oceny narzędzia i skuteczności korpus wyszukiwania.
 
-Dane historyczne, które są strumieniowo przechowywane przez 30 dni. Aby zapewnić dłuższe przechowywanie lub raportować dane operacyjne i ciągi zapytań, należy włączyć [ustawienie diagnostyczne](search-monitor-logs.md) określające opcję magazynu.
+Dane historyczne, które są strumieniowo przechowywane przez 30 dni. Aby zapewnić dłuższe przechowywanie lub raportować dane operacyjne i ciągi zapytań, należy włączyć [ustawienie diagnostyczne](search-monitor-logs.md) określające opcję magazynu dla utrwalania zarejestrowanych zdarzeń i metryk.
 
 Warunki maksymalizowające integralność pomiarów danych obejmują:
 
 + Użyj usługi do rozliczenia (usługi utworzonej w warstwie Podstawowa lub standardowa). Bezpłatna usługa jest udostępniana przez wielu subskrybentów, co wprowadza pewną ilość lotności jako ładującą zmiany.
 
-+ Użyj pojedynczej repliki, jeśli jest to możliwe, aby obliczenia były ograniczone do jednego komputera. W przypadku korzystania z wielu replik metryki zapytań są uśredniane w wielu węzłach, a niektóre z nich mogą być szybsze. W przypadku dostrajania wydajności zapytań pojedynczy węzeł zapewnia bardziej stabilne środowisko na potrzeby testowania.
++ Użyj pojedynczej repliki i partycji, jeśli to możliwe, do utworzenia środowiska zawartego i izolowanego. W przypadku korzystania z wielu replik metryki zapytań są uśredniane w wielu węzłach, co może obniżyć precyzję wyników. Podobnie, wiele partycji oznacza, że dane są podzielone, z możliwością, że niektóre partycje mogą mieć różne dane, jeśli również trwa indeksowanie. W przypadku dostrajania wydajności zapytań pojedynczy węzeł i partycja zapewnia bardziej stabilne środowisko do testowania.
 
 > [!Tip]
 > Dzięki dodatkowemu kodowi po stronie klienta i Application Insights można również przechwycić dane przeglądowe, aby uzyskać dokładniejszy wgląd w to, co jest przydatne dla użytkowników aplikacji. Aby uzyskać więcej informacji, zobacz [Analiza ruchu wyszukiwania](search-traffic-analytics.md).
 
 ## <a name="query-volume-qps"></a>Wolumin zapytania (zapytań)
 
-Wolumin jest mierzony jako liczba **zapytań wyszukiwania na sekundę** (zapytań), wbudowana Metryka, która może być raportowana jako średnia, liczba, minimum lub maksymalna wartość zapytań wykonywanych w oknie o pojedynczej minucie. Interwał jednej minuty (TimeGrain = "PT1M") dla metryk jest ustalony w systemie.
+Wolumin jest mierzony jako **zapytania wyszukiwania na sekundę** (zapytań), wbudowana Metryka, która może być raportowana jako średnia, liczba, minimum lub maksymalna liczba zapytań wykonywanych w oknie jednominutowym. Interwały jednej minuty (TimeGrain = "PT1M") dla metryk są stałe w systemie.
 
 Często zapytania są wykonywane w milisekundach, dlatego w metrykach są wyświetlane tylko zapytania, które mierzą jako sekundy.
 
 | Typ agregacji | Opis |
 |------------------|-------------|
 | Średnia | Średnia liczba sekund w ciągu minuty, w trakcie której wystąpiło wykonywanie zapytania.|
-| Licznik | Liczba metryk emitowanych do dziennika w interwale jednominutowym. |
+| Licznik | Liczba metryk emitowanych do dziennika w ramach interwału jednej minuty. |
 | Maksimum | Najwyższa liczba zapytań wyszukiwania na sekundę zarejestrowanych w ciągu minuty. |
 | Minimalne | Najmniejsza liczba zapytań wyszukiwania na sekundę zarejestrowanych w ciągu minuty.  |
 | Suma | Suma wszystkich zapytań wykonanych w ciągu minuty.  |
@@ -57,7 +57,7 @@ Wydajność zapytań w całej usłudze jest mierzona jako opóźnienie wyszukiwa
 | Typ agregacji | Opóźnienie | 
 |------------------|---------|
 | Średnia | Średni czas trwania zapytania w milisekundach. | 
-| Licznik | Liczba metryk emitowanych do dziennika w interwale jednominutowym. |
+| Licznik | Liczba metryk emitowanych do dziennika w ramach interwału jednej minuty. |
 | Maksimum | Najdłuższy uruchomiony zapytanie w przykładzie. | 
 | Minimalne | Najkrótsze uruchomione zapytanie w przykładzie.  | 
 | Łącznie | Łączny czas wykonywania wszystkich zapytań w przykładzie, wykonywanych w interwale (jedna minuta).  |
@@ -85,7 +85,7 @@ Aby potwierdzić ograniczone zapytania, użyj metryki **zapytań wyszukiwania z 
 | Typ agregacji | Ograniczanie przepływności |
 |------------------|-----------|
 | Średnia | Procent zapytań porzuconych w interwale. |
-| Licznik | Liczba metryk emitowanych do dziennika w interwale jednominutowym. |
+| Licznik | Liczba metryk emitowanych do dziennika w ramach interwału jednej minuty. |
 | Maksimum | Procent zapytań porzuconych w interwale.|
 | Minimalne | Procent zapytań porzuconych w interwale. |
 | Łącznie | Procent zapytań porzuconych w interwale. |
@@ -116,6 +116,45 @@ W celu uzyskania bardziej szczegółowej eksploracji Otwórz Eksploratora metryk
 
 1. Powiększ obszar na wykresie liniowym. Umieść wskaźnik myszy na początku obszaru, kliknij i przytrzymaj lewy przycisk myszy, przeciągnij do drugiej strony obszaru i zwolnij przycisk. Wykres powiększy się dla tego zakresu czasu.
 
+## <a name="identify-strings-used-in-queries"></a>Identyfikowanie ciągów używanych w zapytaniach
+
+Po włączeniu rejestrowania diagnostycznego system przechwytuje żądania zapytań w tabeli **AzureDiagnostics** . Jako wymaganie wstępne należy włączyć [rejestrowanie diagnostyczne](search-monitor-logs.md), określić obszar roboczy usługi log Analytics lub inną opcję magazynu.
+
+1. W sekcji monitorowanie wybierz pozycję **dzienniki** , aby otworzyć puste okno zapytania w log Analytics.
+
+1. Uruchom następujące wyrażenie, aby przeszukać zapytanie. Wyszukaj operacje, zwracając zestaw wyników tabelarycznych składający się z nazwy operacji, ciągu zapytania, indeksu kwerendy oraz liczby znalezionych dokumentów. Ostatnie dwie instrukcje wykluczają ciągi zapytania składające się z pustego lub nieokreślonego wyszukiwania, nad przykładowym indeksem, co spowoduje zmniejszenie szumu w wynikach.
+
+   ```
+   AzureDiagnostics
+   | project OperationName, Query_s, IndexName_s, Documents_d
+   | where OperationName == "Query.Search"
+   | where Query_s != "?api-version=2019-05-06&search=*"
+   | where IndexName_s != "realestate-us-sample-index"
+   ```
+
+1. Opcjonalnie Ustaw filtr kolumn na *Query_s* , aby przeszukać określoną składnię lub ciąg. Na przykład można filtrować od *jest równe* `?api-version=2019-05-06&search=*&%24filter=HotelName`).
+
+   ![Zarejestrowane ciągi zapytań](./media/search-monitor-usage/log-query-strings.png "Zarejestrowane ciągi zapytań")
+
+Chociaż ta technika działa w przypadku badania ad hoc, Tworzenie raportu umożliwia konsolidowanie i prezentowanie ciągów zapytań w układzie bardziej sprzyjających analizie.
+
+## <a name="identify-long-running-queries"></a>Zidentyfikuj długotrwałe zapytania
+
+Dodaj kolumnę czas trwania, aby uzyskać numery dla wszystkich zapytań, a nie tylko te, które są pobierane jako metryki. Sortowanie tych danych pokazuje, które zapytania trwają najdłużej.
+
+1. W sekcji monitorowanie wybierz pozycję **dzienniki** , aby wykonać zapytanie o informacje dziennika.
+
+1. Uruchom następujące zapytanie, aby zwrócić zapytania, posortowane według czasu trwania w milisekundach. Najdłuższe uruchomione zapytania znajdują się u góry.
+
+   ```
+   AzureDiagnostics
+   | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
+   | where OperationName == "Query.Search"
+   | sort by DurationMs
+   ```
+
+   ![Sortuj zapytania według czasu trwania](./media/search-monitor-usage/azurediagnostics-table-sortby-duration.png "Sortuj zapytania według czasu trwania")
+
 ## <a name="create-a-metric-alert"></a>Tworzenie alertu metryki
 
 Alert dotyczący metryki ustala próg, w którym otrzymasz powiadomienie lub wyzwolisz akcję naprawczą, która została zdefiniowana z góry. 
@@ -144,31 +183,9 @@ Podczas wypychania limitów określonej konfiguracji partycji repliki można tak
 
 Jeśli podano powiadomienie e-mail, otrzymasz wiadomość e-mail od "Microsoft Azure" z wierszem tematu "Azure: aktywowana ważność: 3 `<your rule name>`".
 
-## <a name="query-strings-used-in-queries"></a>Ciągi zapytania używane w zapytaniach
+<!-- ## Report query data
 
-Po włączeniu rejestrowania diagnostycznego system przechwytuje żądania zapytań w tabeli **AzureDiagnostics** . Jako wymaganie wstępne należy włączyć [rejestrowanie diagnostyczne](search-monitor-logs.md), określić obszar roboczy usługi log Analytics lub inną opcję magazynu.
-
-1. W sekcji monitorowanie wybierz pozycję **dzienniki** , aby otworzyć puste okno zapytania w log Analytics.
-
-1. Uruchom następujące wyrażenie, aby przeszukać zapytanie. operacje wyszukiwania, zwracają zestaw wyników tabelarycznych składający się z nazwy operacji, ciągu zapytania, indeksu kwerendy oraz liczby znalezionych dokumentów. Ostatnie dwie instrukcje nie wykluczają ciągów zapytania składających się z pustego lub nieokreślonego wyszukiwania, nad przykładowym indeksem, który wycina szum w wynikach.
-
-   ```
-    AzureDiagnostics 
-     | project OperationName, Query_s, IndexName_s, Documents_d 
-     | where OperationName == "Query.Search"
-     | where Query_s != "?api-version=2019-05-06&search=*"
-     | where IndexName_s != "realestate-us-sample-index"
-   ```
-
-1. Opcjonalnie Ustaw filtr kolumn na *Query_s* , aby przeszukać określoną składnię lub ciąg. Na przykład można filtrować od *jest równe* `?api-version=2019-05-06&search=*&%24filter=HotelName`).
-
-   ![Zarejestrowane ciągi zapytań](./media/search-monitor-usage/log-query-strings.png "Zarejestrowane ciągi zapytań")
-
-Chociaż ta technika działa w przypadku badania ad hoc, Tworzenie raportu umożliwia konsolidowanie i prezentowanie ciągów zapytań w układzie bardziej sprzyjających analizie.
-
-## <a name="report-query-data"></a>Zgłoś dane zapytania
-
-Power BI to narzędzie do raportowania analitycznego, którego można użyć w odniesieniu do danych dziennika przechowywanych w usłudze BLOB Storage lub Log Analytics obszarze roboczym.
+Power BI is an analytical reporting tool useful for visualizing data, including log information. If you are collecting data in Blob storage, a Power BI template makes it easy to spot anomalies or trends. Use this link to download the template. -->
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: cbd452fcf4056c1bcf4d5b8d6debb9d8f4a6f11c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 33fddcf22793e50287fb590dee3547d5e7be4d2b
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976100"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462551"
 ---
 # <a name="connect-data-sources"></a>Łączenie ze źródłami danych
 
@@ -51,14 +51,14 @@ Następujące metody łączenia danych są obsługiwane przez wskaźnik na platf
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
     - [Azure Security Center](connect-azure-security-center.md)
     - [Azure Information Protection](connect-azure-information-protection.md)
-    - [Azure Advanced Threat Protection](connect-azure-atp.md)
+    - [Zaawansowana ochrona przed zagrożeniami na platformie Azure](connect-azure-atp.md)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Zdarzenia zabezpieczeń systemu Windows](connect-windows-security-events.md) 
     - [Zapora systemu Windows](connect-windows-firewall.md)
 
 - **Rozwiązania zewnętrzne za pośrednictwem interfejsu API**: Niektóre źródła danych są połączone przy użyciu interfejsów API, które są udostępniane przez połączone źródło danych. Zazwyczaj większość technologii zabezpieczeń zapewnia zestaw interfejsów API, za pomocą których można pobrać dzienniki zdarzeń. Interfejsy API nawiązują połączenie z platformą Azure, a następnie zbierają określone typy danych i wysyłają je do Log Analytics platformy Azure. Urządzenia połączone za pośrednictwem interfejsu API obejmują:
     - [Barracuda](connect-barracuda.md)
-    - [Symantec](connect-symantec.md)
+    - [Ekran](connect-symantec.md)
     - [Analiza Citrix (zabezpieczenia)](connect-citrix-analytics.md)
 
 - **Rozwiązania zewnętrzne przez agenta**: wskaźnik na platformie Azure może być połączony ze wszystkimi innymi źródłami danych, które mogą wykonywać przesyłanie strumieniowe w czasie rzeczywistym przy użyciu protokołu dziennika systemowego za pośrednictwem agenta. <br>Większość urządzeń używa protokołu dziennika systemowego do wysyłania komunikatów zdarzeń, które obejmują sam dziennik i dane dotyczące dziennika. Format dzienników jest różny, ale większość urządzeń obsługuje formatowanie oparte na formacie Common Event format (CEF) dla danych dzienników. <br>Agent wskaźnikowy platformy Azure, który jest oparty na agencie Log Analytics, konwertuje CEF sformatowane dzienniki do formatu, który może zostać pozyskany przez Log Analytics. W zależności od typu urządzenia Agent jest instalowany bezpośrednio na urządzeniu lub na dedykowanym serwerze z systemem Linux. Agent dla systemu Linux odbiera zdarzenia z demona dziennika systemu za pośrednictwem protokołu UDP, ale jeśli oczekuje się, że maszyna z systemem Linux będzie zbierać duże ilości zdarzeń dziennika systemowego, są one wysyłane za pośrednictwem protokołu TCP z demona dziennika systemowego do agenta i z tego miejsca do Log Analytics.
@@ -96,15 +96,15 @@ Alternatywnie można wdrożyć agenta ręcznie na istniejącej maszynie wirtualn
 
 | **Typ danych** | **Jak nawiązać połączenie** | **Łącznik danych?** | **Komentarze** |
 |------|---------|-------------|------|
-| AWSCloudTrail | [Łączenie usługi AWS](connect-aws.md) | V | |
+| AWSCloudTrail | [Połącz AWS](connect-aws.md) | V | |
 | AzureActivity | [Omówienie funkcji i dzienników aktywności](../azure-monitor/platform/platform-logs-overview.md) [platformy Azure](connect-azure-activity.md)| V | |
-| Dzienniki inspekcji | [Łączenie z usługą Azure AD](connect-azure-active-directory.md)  | V | |
-| Dzienniki logowania | [Łączenie z usługą Azure AD](connect-azure-active-directory.md)  | V | |
+| AuditLogs | [Łączenie z usługą Azure AD](connect-azure-active-directory.md)  | V | |
+| SigninLogs | [Łączenie z usługą Azure AD](connect-azure-active-directory.md)  | V | |
 | AzureFirewall |[Diagnostyka Azure](../firewall/tutorial-diagnostics.md) | V | |
 | InformationProtectionLogs_CL  | [Raporty Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Połącz Azure Information Protection](connect-azure-information-protection.md)  | V | Zwykle używa funkcji **InformationProtectionEvents** oprócz typu danych. Aby uzyskać więcej informacji, zobacz [jak modyfikować raporty i tworzyć zapytania niestandardowe](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries)|
 | AzureNetworkAnalytics_CL  | [Analiza ruchu](../network-watcher/traffic-analytics.md) [schematu analitycznego ruchu](../network-watcher/traffic-analytics.md)  | | |
 | CommonSecurityLog  | [Połącz CEF](connect-common-event-format.md)  | V | |
-| OfficeActivity | [Łączenie usługi Office 365](connect-office-365.md) | V | |
+| Pakiet Office | [Połącz pakiet Office 365](connect-office-365.md) | V | |
 | SecurityEvents | [Łączenie zdarzeń zabezpieczeń systemu Windows](connect-windows-security-events.md)  | V | W przypadku skoroszytów z niezabezpieczonymi protokołami zobacz [Ustawienia skoroszytu niezabezpieczonych protokołów](/azure/sentinel/quickstart-get-visibility#use-built-in-workbooks)  |
 | Dziennik systemu | [Połącz dziennik systemowy](connect-syslog.md) | V | |
 | Zapora aplikacji sieci Web firmy Microsoft (WAF) — (AzureDiagnostics) |[Połącz zaporę aplikacji sieci Web firmy Microsoft](connect-microsoft-waf.md) | V | |
@@ -123,7 +123,7 @@ Alternatywnie można wdrożyć agenta ręcznie na istniejącej maszynie wirtualn
 | Sysmon (zdarzenie) | [Połącz Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Połącz zdarzenia systemu Windows](../azure-monitor/platform/data-sources-windows-events.md) <br> [Pobierz Analizator Sysmon](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/SysmonParser.txt)| X | Kolekcja Sysmon nie jest instalowana domyślnie na maszynach wirtualnych. Aby uzyskać więcej informacji na temat sposobu instalowania agenta Sysmon, zobacz [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |
 | ConfigurationData  | [Automatyzowanie spisu maszyn wirtualnych](../automation/automation-vm-inventory.md)| X | |
 | Zmianakonfiguracji  | [Automatyzowanie śledzenia maszyn wirtualnych](../automation/change-tracking.md) | X | |
-| F5 BIG-IP | [Połącz F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel.md)  | X | |
+| F5 BIG-IP | [Połącz F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | X | |
 | McasShadowItReporting  |  | X | |
 | Barracuda_CL | [Połącz Barracuda](connect-barracuda.md) | V | |
 

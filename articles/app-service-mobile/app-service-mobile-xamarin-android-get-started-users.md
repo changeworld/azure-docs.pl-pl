@@ -6,22 +6,17 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 60c46c32c8650bf72c0032cf0ec03895905bae1c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: fa70b7419e1877ab2daba49ad154cdfd5a8d2cba
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668370"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458957"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>Dodawanie uwierzytelniania do aplikacji platformy Xamarin. Android
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-> [!NOTE]
-> Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
->
-> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
-
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym temacie pokazano, jak uwierzytelniać użytkowników aplikacji mobilnej z poziomu aplikacji klienckiej. W tym samouczku dodasz uwierzytelnianie do projektu szybkiego startu przy użyciu dostawcy tożsamości obsługiwanego przez usługę Azure Mobile Apps. Po pomyślnym uwierzytelnieniu i autoryzacji w aplikacji mobilnej zostanie wyświetlona wartość identyfikatora użytkownika.
 
 Ten samouczek jest oparty na przewodniku szybki start aplikacji mobilnej. Należy również najpierw ukończyć samouczek [Tworzenie aplikacji platformy Xamarin. Android]. Jeśli nie używasz pobranego projektu szybkiego startu serwera, musisz dodać pakiet rozszerzenia uwierzytelniania do projektu. Aby uzyskać więcej informacji o pakietach rozszerzeń serwera, zobacz [Work with the .NET zaplecz Server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).

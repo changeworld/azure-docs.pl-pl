@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: bd70cfb58c9d89f1d454537721e22f36b1fd3d3e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: HT
+ms.openlocfilehash: 2f5269587d222be9a1628b72c1f3f0dc1b105f3c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429295"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461747"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>Importuj klucze chronione przez moduł HSM do Key Vault (wersja zapoznawcza)
 
@@ -52,13 +52,13 @@ Zapoznaj się z poniższą tabelą, aby uzyskać listę wymagań wstępnych doty
 | Subskrypcja platformy Azure |Aby utworzyć Azure Key Vault, musisz mieć subskrypcję platformy Azure: [zarejestruj się, aby skorzystać z bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/) |
 | Magazyn kluczy (SKU Premium) do importowania kluczy chronionych przez moduł HSM |Więcej informacji o warstwach i możliwościach usługi dla Azure Key Vault można znaleźć w witrynie internetowej [cennika Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) . |
 | Moduł HSM z obsługiwanej listy sprzętowych modułów zabezpieczeń wraz z narzędziem BYOK i instrukcjami dostarczonymi przez dostawcę modułu HSM | Musisz mieć dostęp do sprzętowego modułu zabezpieczeń i podstawowej wiedzy operacyjnej sprzętowych modułów zabezpieczeń. Zobacz [obsługiwane sprzętowych modułów zabezpieczeń](#supported-hsms). |
-| Interfejs wiersza polecenia platformy Azure w wersji 2.0.82 lub nowszej | Aby uzyskać więcej informacji [, zobacz Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) .|
+| Interfejs wiersza polecenia platformy Azure w wersji 2.1.0 lub nowszej | Aby uzyskać więcej informacji [, zobacz Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) .|
 
 ## <a name="supported-hsms"></a>Obsługiwane sprzętowych modułów zabezpieczeń
 
 |Nazwa dostawcy modułu HSM|Obsługiwane modele HSM|Dodatkowe szczegóły|
 |---|---|---|
-|Firmy Thales|Rodzina SafeNet Luna modułu HSM 7 z oprogramowaniem układowym w wersji 7,3 lub nowszej| [SafeNet Luna BYOK — narzędzie i dokumentacja](https://safenet.gemalto.com/blah-blah)|
+|Firmy Thales|Rodzina SafeNet Luna modułu HSM 7 z oprogramowaniem układowym w wersji 7,3 lub nowszej| [SafeNet Luna BYOK — narzędzie i dokumentacja](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
 
 
 > [!NOTE]

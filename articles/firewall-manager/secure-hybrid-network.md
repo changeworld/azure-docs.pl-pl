@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: tutorial
 ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: fa3c83f82e1942ab76ffe039847d642448434d87
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: cdd416bdb833e4784334a6847d724a7375e2ef8d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444986"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459957"
 ---
 # <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager-preview"></a>Samouczek: Zabezpieczanie sieci wirtualnej centrum przy użyciu wersji zapoznawczej Menedżera zapory platformy Azure 
 
@@ -62,9 +62,7 @@ Zapoznaj się z sekcją [Tworzenie tras](#create-the-routes) w tym samouczku, ab
 >[!NOTE]
 >Zapora platformy Azure musi mieć bezpośrednią łączność z Internetem. Jeśli AzureFirewallSubnet nauczy trasy domyślnej do sieci lokalnej za pośrednictwem protokołu BGP, należy przesłonić ten element przy użyciu wartości 0.0.0.0/0 UDR z wartością **NextHopType** ustawioną jako **Internet** w celu utrzymania bezpośredniej łączności z Internetem.
 >
->Zaporę platformy Azure można skonfigurować do obsługi wymuszonego tunelowania.
-
-<!---For more information, see [Azure Firewall forced tunneling](../firewall/forced-tunneling.md)--->
+>Zaporę platformy Azure można skonfigurować do obsługi wymuszonego tunelowania. Aby uzyskać więcej informacji, zobacz [tunelowanie wymuszone przez zaporę platformy Azure](../firewall/forced-tunneling.md).
 
 >[!NOTE]
 >Ruch między wirtualnymi sieciami równorzędnymi połączonymi bezpośrednio jest kierowany bezpośrednio nawet wtedy, gdy trasa zdefiniowana przez użytkownika wskazuje usługę Azure Firewall jako bramę domyślną. Aby w tym scenariuszu wysyłać ruch między podsieciami do zapory, trasa zdefiniowana przez użytkownika musi jawnie zawierać prefiks podsieci docelowej w obu podsieciach.

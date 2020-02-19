@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.openlocfilehash: ebf0728184a5fc104e3e1e7d8a199fec328dbdc0
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 29b5e9c7673b4a730a41bf7cf2b1c4a2a86209ed
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210178"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462109"
 ---
 # <a name="azure-functions-http-triggers-and-bindings-overview"></a>Omówienie wyzwalaczy i powiązań HTTP Azure Functions
 
@@ -27,7 +27,7 @@ Kod w tym artykule jest domyślnie używany w przypadku składni .NET Core używ
 
 ### <a name="functions-2x-and-higher"></a>Funkcje 2. x i nowsze
 
-Praca z wyzwalaczem i powiązaniami wymaga odwołania do odpowiedniego pakietu. Pakiet NuGet jest używany dla bibliotek klas platformy .NET, podczas gdy rozszerzenie rozszerza wszystkie inne typy aplikacji.
+Praca z wyzwalaczem i powiązaniami wymaga odwołania do odpowiedniego pakietu. Pakiet NuGet jest używany dla bibliotek klas .NET, podczas gdy pakiet rozszerzeń jest używany dla wszystkich innych typów aplikacji.
 
 | Język                                        | Dodaj przez...                                   | Uwagi 
 |-------------------------------------------------|---------------------------------------------|-------------|

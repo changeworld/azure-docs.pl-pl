@@ -6,22 +6,17 @@ ms.tgt_pltfrm: mobile-cordova-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: aae78285b5ed13031275b4969befa2e1d67bf5b7
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 5a2d5ec8da5c1a317039e656f6df884a10efe7c3
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668543"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459422"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Włączanie synchronizacji w trybie offline dla aplikacji mobilnej Cordova
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-> [!NOTE]
-> Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
->
-> Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
-
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym samouczku przedstawiono funkcję synchronizacji w trybie offline w usłudze Azure Mobile Apps dla oprogramowania Cordova. Synchronizacja w trybie offline umożliwia użytkownikom końcowym współdziałanie z aplikacją mobilną&mdash;wyświetlanie, Dodawanie lub modyfikowanie danych&mdash;nawet w przypadku braku połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych.  Gdy urządzenie przewróci do trybu online, te zmiany są synchronizowane z usługą zdalną.
 
 Ten samouczek jest oparty na rozwiązaniu Cordova szybkiego startu dla Mobile Apps tworzonego po zakończeniu samouczka [Apache Cordova Szybki Start]. W tym samouczku należy zaktualizować rozwiązanie szybkiego startu, aby dodać funkcje w trybie offline Mobile Apps platformy Azure.  W aplikacji zostanie również wyróżniony kod specyficzny dla trybu offline.
@@ -36,7 +31,7 @@ Kod synchronizacji w trybie offline należy dodać do aplikacji. Synchronizacja 
         var client,            // Connection to the Azure Mobile App backend
            todoItemTable;      // Reference to a table endpoint on backend
 
-    z tym kodem:
+    przy użyciu tego kodu:
 
         var client,            // Connection to the Azure Mobile App backend
            todoItemTable,      // Reference to a table endpoint on backend
@@ -46,7 +41,7 @@ Kod synchronizacji w trybie offline należy dodać do aplikacji. Synchronizacja 
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net');
 
-    z tym kodem:
+    przy użyciu tego kodu:
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net');
         var store = new WindowsAzure.MobileServiceSqliteStore('store.db');
@@ -74,7 +69,7 @@ Kod synchronizacji w trybie offline należy dodać do aplikacji. Synchronizacja 
 
         todoItemTable = client.getTable('todoitem'); // todoitem is the table name
 
-    z tym kodem:
+    przy użyciu tego kodu:
 
         // Initialize the sync context with the store
         syncContext.initialize(store).then(function () {
@@ -184,7 +179,7 @@ W tej sekcji należy ponownie połączyć aplikację z zapleczem mobilnym, co sy
 
     Zwróć uwagę, że dane zostały zsynchronizowane między bazą danych programu i magazynem lokalnym i zawierają elementy dodane w czasie, gdy aplikacja została odłączona.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Synchronizowanie danych w trybie offline w usłudze Azure Mobile Apps]
 * [Visual Studio Tools for Apache Cordova]
 

@@ -3,12 +3,12 @@ title: Skonfiguruj Azure Monitor dla kontenerów dane dynamiczne (wersja zapozna
 description: W tym artykule opisano sposób konfigurowania widoku w czasie rzeczywistym dzienników kontenerów (stdout/stderr) i zdarzeń bez używania polecenia kubectl z Azure Monitor dla kontenerów.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 91f035b98a57fd9a37203cc48b3cc5d685967a13
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: f19071ca642cd229cbd7d49b4eab90c970672eee
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251791"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459926"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Jak skonfigurować funkcję Live Data (wersja zapoznawcza)
 
@@ -48,7 +48,7 @@ Azure Portal poprosi o zweryfikowanie poświadczeń logowania do klastra Azure A
 
 ## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>Korzystanie z clusterMonitoringUser z klastrami obsługującymi funkcję RBAC
 
-Aby wyeliminować konieczność stosowania dodatkowych zmian w konfiguracji, zezwól Kubernetes reguły użytkownika **clusterUser** dostęp do funkcji dane dynamiczne (wersja zapoznawcza) po [włączeniu autoryzacji RBAC](#configure-kubernetes-rbac-authorization) , AKS dodał nowe powiązanie roli klastra Kubernetes o nazwie **clusterMonitoringUser**. To powiązanie roli klastra ma wszystkie niezbędne uprawnienia dostępne w celu uzyskania dostępu do interfejsu API Kubernetes oraz punktów końcowych służących do używania funkcji Live Data (wersja zapoznawcza). 
+Aby wyeliminować konieczność stosowania dodatkowych zmian w konfiguracji, aby umożliwić roli użytkownika Kubernetes wiązanie **clusterUser** dostępu do funkcji dane dynamiczne (wersja zapoznawcza) po [włączeniu autoryzacji RBAC](#configure-kubernetes-rbac-authorization) , AKS dodał nowe powiązanie roli klastra Kubernetes o nazwie **clusterMonitoringUser**. To powiązanie roli klastra ma wszystkie niezbędne uprawnienia dostępne w celu uzyskania dostępu do interfejsu API Kubernetes oraz punktów końcowych służących do używania funkcji Live Data (wersja zapoznawcza).
 
 Aby móc korzystać z funkcji danych na żywo (wersja zapoznawcza) z nowym użytkownikiem, musisz być członkiem roli [współautor](../../role-based-access-control/built-in-roles.md#contributor) w zasobie klastra AKS. Azure Monitor dla kontenerów, gdy jest włączone, jest skonfigurowany do uwierzytelniania przy użyciu tego użytkownika domyślnie. Jeśli w klastrze nie ma powiązania roli clusterMonitoringUser, w zamian jest używana wartość **clusterUser** w ramach uwierzytelniania.
 

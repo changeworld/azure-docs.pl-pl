@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 02/06/2020
-ms.openlocfilehash: 93b8520c0f65f102c9adf64870b60506d890276d
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
-ms.translationtype: HT
+ms.openlocfilehash: 1449b34a9bbeb5692d25a5f84c4ee38e6c4e0a33
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431404"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460539"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Samouczki wideo dotyczące przepływów mapowania danych
 
@@ -138,3 +138,5 @@ Gdy aktualizacje są stale wprowadzane do produktu, niektóre funkcje zostały d
 ## <a name="data-flow-expressions"></a>Wyrażenia przepływu danych
 
 [Wyrażenia daty/godziny](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)
+
+[Dzielenie tablic i instrukcji case](https://www.youtube.com/watch?v=DHNH8ZO7YjI)

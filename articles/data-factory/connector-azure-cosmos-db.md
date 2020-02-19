@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: 6e9e1d54599ab88092638762ccd7974e44c82cbf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7096b429145a54b5a09fe38eb8099c4ff24ac452
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025813"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460965"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopiowanie i Przekształcanie danych w Azure Cosmos DB (interfejs API SQL) za pomocą Azure Data Factory
 
@@ -24,7 +24,7 @@ ms.locfileid: "77025813"
 > * [Wersja 1](v1/data-factory-azure-documentdb-connector.md)
 > * [Bieżąca wersja](connector-azure-cosmos-db.md)
 
-W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z i do bazy danych Azure Cosmos DB (interfejs API SQL) oraz używania przepływu danych do przekształcania danych w bazie danych Azure Cosmos DB (interfejs API SQL). Aby dowiedzieć się więcej na temat usługi Azure Data Factory, przeczytaj [artykuł wprowadzający](introduction.md).
+W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z i do bazy danych Azure Cosmos DB (interfejs API SQL) oraz używania przepływu danych do przekształcania danych w bazie danych Azure Cosmos DB (interfejs API SQL). Aby dowiedzieć się więcej na temat Azure Data Factory, Przeczytaj [artykuł wprowadzający](introduction.md).
 
 >[!NOTE]
 >Ten łącznik obsługuje tylko Cosmos DB interfejsu API SQL. W przypadku interfejsu API MongoDB zapoznaj się z [łącznikiem dla interfejsu api Azure Cosmos DB MongoDB](connector-azure-cosmos-db-mongodb-api.md). Inne typy interfejsów API nie są obecnie obsługiwane.
@@ -39,16 +39,16 @@ Ten łącznik Azure Cosmos DB (SQL API) jest obsługiwany dla następujących dz
 
 W przypadku działania kopiowania ten łącznik Azure Cosmos DB (interfejs SQL API) obsługuje:
 
-- Kopiowanie danych z i do usługi Azure Cosmos DB [interfejsu API SQL](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
-- Zapis do usługi Azure Cosmos DB jako **Wstaw** lub **upsert**.
+- Skopiuj dane z i do Azure Cosmos DB [interfejsu API SQL](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
+- Zapisz do Azure Cosmos DB jako **INSERT** lub **upsert**.
 - Importowanie i eksportowanie dokumentów JSON jako — jest lub kopiowania danych z lub do tabelarycznego zestawu danych. Przykłady obejmują bazy danych SQL i w pliku CSV. Aby skopiować dokumenty jako-is do lub z plików JSON lub z innej kolekcji Azure Cosmos DB, zobacz [Importowanie i eksportowanie dokumentów JSON](#import-and-export-json-documents).
 
-Data Factory integruje się z [biblioteki wykonawca zbiorcze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) aby zapewnić najlepszą wydajność podczas zapisu do usługi Azure Cosmos DB.
+Data Factory integruje się z [Azure Cosmos DB zbiorczą biblioteką wykonawców](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) , aby zapewnić najlepszą wydajność podczas zapisywania do Azure Cosmos DB.
 
 > [!TIP]
-> [Migracji danych wideo](https://youtu.be/5-SRNiC_qOU) przeprowadzi Cię przez kroki kopiowania danych z usługi Azure Blob storage do usługi Azure Cosmos DB. Film wideo zawiera także dostrajanie wydajności uwagi, służy do wprowadzania danych do usługi Azure Cosmos DB w zasadzie.
+> Film dotyczący [migracji danych](https://youtu.be/5-SRNiC_qOU) przeprowadzi Cię przez kroki kopiowania danych z usługi Azure Blob storage do Azure Cosmos DB. Film wideo zawiera także dostrajanie wydajności uwagi, służy do wprowadzania danych do usługi Azure Cosmos DB w zasadzie.
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczynanie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -58,11 +58,11 @@ Poniższe sekcje zawierają szczegółowe informacje o właściwościach, który
 
 Dla połączonej usługi Azure Cosmos DB (interfejsu API SQL) są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | **Typu** właściwość musi być równa **CosmosDb**. | Tak |
-| connectionString |Określ informacje, które są wymagane do połączenia z bazą danych Azure Cosmos DB.<br />**Uwaga**: należy określić informacje o bazie danych w parametrach połączenia, jak pokazano w przykładach. <br/> Możesz również umieścić klucz konta w Azure Key Vault i ściągnąć konfigurację `accountKey` z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. |Tak |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub własnego środowiska integration runtime. Jeśli ta właściwość nie jest określona, używana jest domyślna Azure Integration Runtime. |Nie |
+| type | Właściwość **Type** musi być ustawiona na wartość **CosmosDb**. | Yes |
+| connectionString |Określ informacje, które są wymagane do połączenia z bazą danych Azure Cosmos DB.<br />**Uwaga**: należy określić informacje o bazie danych w parametrach połączenia, jak pokazano w poniższym przykładzie. <br/> Możesz również umieścić klucz konta w Azure Key Vault i ściągnąć konfigurację `accountKey` z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. |Yes |
+| connectVia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub własnego środowiska integration runtime. Jeśli ta właściwość nie jest określona, używana jest domyślna Azure Integration Runtime. |Nie |
 
 **Przykład**
 
@@ -110,14 +110,14 @@ Dla połączonej usługi Azure Cosmos DB (interfejsu API SQL) są obsługiwane n
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [zestawy danych i połączone usługi](concepts-datasets-linked-services.md).
+Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania zestawów danych, zobacz [zestawy danych i połączone usługi](concepts-datasets-linked-services.md).
 
 Następujące właściwości są obsługiwane dla zestawu danych Azure Cosmos DB (SQL API): 
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **CosmosDbSqlApiCollection**. |Tak |
-| collectionName |Nazwa kolekcji dokumentów usługi Azure Cosmos DB. |Tak |
+| type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **CosmosDbSqlApiCollection**. |Yes |
+| collectionName |Nazwa kolekcji dokumentów usługi Azure Cosmos DB. |Yes |
 
 Jeśli używasz zestawu danych typu "DocumentDbCollection", nadal jest on obsługiwany w przypadku zgodności z poprzednimi wersjami dla działania kopiowania i wyszukiwania, nie jest to obsługiwane w przypadku przepływu danych. Zamierzasz użyć nowego modelu do przodu.
 
@@ -142,18 +142,18 @@ Jeśli używasz zestawu danych typu "DocumentDbCollection", nadal jest on obsłu
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Ta sekcja zawiera listę właściwości, które są obsługiwane przez Azure Cosmos DB (interfejs API SQL) i obiekty sink. Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania działań, zobacz [potoki](concepts-pipelines-activities.md).
+Ta sekcja zawiera listę właściwości, które są obsługiwane przez Azure Cosmos DB (interfejs API SQL) i obiekty sink. Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania działań, zobacz [potoki](concepts-pipelines-activities.md).
 
 ### <a name="azure-cosmos-db-sql-api-as-source"></a>Azure Cosmos DB (interfejs API SQL) jako źródło
 
 Aby skopiować dane z Azure Cosmos DB (interfejs API SQL), ustaw typ **źródła** w działaniu Kopiuj na **DocumentDbCollectionSource**. 
 
-Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **CosmosDbSqlApiSource**. |Tak |
-| query |Określ zapytanie usługi Azure Cosmos DB można odczytać danych.<br/><br/>Przykład:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nie <br/><br/>Jeśli nie zostanie określony, to instrukcja SQL jest wykonywana: `select <columns defined in structure> from mycollection` |
+| type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **CosmosDbSqlApiSource**. |Yes |
+| query |Określ zapytanie usługi Azure Cosmos DB można odczytać danych.<br/><br/>Przykład:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nie <br/><br/>Jeśli nie zostanie określony, ta instrukcja SQL jest wykonywana: `select <columns defined in structure> from mycollection` |
 | preferredRegions | Preferowana lista regionów do połączenia podczas pobierania danych z Cosmos DB. | Nie |
 | pageSize | Liczba dokumentów na stronie wyniku zapytania. Wartość domyślna to "-1", co oznacza użycie dynamicznego rozmiaru strony po stronie usługi do 1000. | Nie |
 
@@ -200,20 +200,20 @@ Przy kopiowaniu danych z Cosmos DB, chyba że chcesz [eksportować dokumenty JSO
 
 Aby skopiować dane do Azure Cosmos DB (interfejs API SQL), ustaw typ **ujścia** w działaniu Copy na **DocumentDbCollectionSink**. 
 
-Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+W sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** ujścia działania Copy musi być ustawiona na wartość **CosmosDbSqlApiSink**. |Tak |
-| writeBehavior |Opisuje sposób zapisywania danych do usługi Azure Cosmos DB. Dozwolone wartości: **Wstaw** i **upsert**.<br/><br/>Zachowanie **upsert** zastąpi dokumentu, jeśli dokument o tym samym identyfikatorze już istnieje; w przeciwnym razie Wstaw dokumentu.<br /><br />**Uwaga**: Data Factory automatycznie generuje identyfikator dla dokumentu, jeśli identyfikator nie został określony w oryginalnym dokumencie lub mapowania kolumn. Oznacza to, że użytkownik musi zapewnić, że dla **upsert** działała zgodnie z oczekiwaniami, dokument ma identyfikator. |Nie<br />(wartość domyślna to **Wstaw**) |
-| writeBatchSize | Fabryka danych używa [biblioteki wykonawca zbiorcze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) można zapisać danych do usługi Azure Cosmos DB. Właściwość **writeBatchSize** kontroluje rozmiar dokumentów dostarczanych przez ADF do biblioteki. Można spróbować zwiększyć wartość **writeBatchSize** Aby zwiększyć wydajność i zmniejszenie wartości, jeśli dokument jest duży rozmiar — zobacz poniższe porady. |Nie<br />(wartość domyślna to **10 000**) |
+| type | Właściwość **Type** ujścia działania Copy musi być ustawiona na wartość **CosmosDbSqlApiSink**. |Yes |
+| writeBehavior |Opisuje sposób zapisywania danych do usługi Azure Cosmos DB. Dozwolone wartości: **INSERT** i **upsert**.<br/><br/>Zachowanie **upsert** polega na zastępowaniu dokumentu, jeśli dokument o takim samym identyfikatorze już istnieje; w przeciwnym razie Wstaw dokument.<br /><br />**Uwaga**: Data Factory automatycznie generuje identyfikator dla dokumentu, jeśli nie określono identyfikatora w oryginalnym dokumencie lub w mapowaniu kolumn. Oznacza to, że aby program **upsert** działał zgodnie z oczekiwaniami, dokument ma identyfikator. |Nie<br />(wartość domyślna to **INSERT**) |
+| writeBatchSize | Data Factory używa [Azure Cosmos DB zbiorczej biblioteki](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) do zapisywania danych w Azure Cosmos DB. Właściwość **writeBatchSize** kontroluje rozmiar dokumentów dostarczanych przez ADF do biblioteki. Możesz spróbować zwiększyć wartość **writeBatchSize** , aby zwiększyć wydajność i zmniejszyć wartość w przypadku dużego rozmiaru dokumentu — Zobacz poniżej porady. |Nie<br />(wartość domyślna to **10 000**) |
 | disableMetricsCollection | Data Factory zbiera metryki, takie jak Cosmos DB jednostek ru na potrzeby optymalizacji wydajności kopiowania i zaleceń. Jeśli chodzi o to zachowanie, określ `true`, aby je wyłączyć. | Nie (wartość domyślna to `false`) |
 
 >[!TIP]
 >Aby zaimportować dokumenty JSON, należy zapoznać się z sekcją [Importowanie lub eksportowanie dokumentów JSON](#import-and-export-json-documents) . Aby skopiować dane w formie tabelarycznej, zapoznaj się z tematem [Migrowanie z relacyjnej bazy danych do Cosmos DB](#migrate-from-relational-database-to-cosmos-db).
 
 >[!TIP]
->Usługa cosmos DB ogranicza rozmiar pojedynczego żądania do 2MB. Formuła jest rozmiar żądania = rozmiar pojedynczego dokumentu * zapisu rozmiar partii. Jeśli napotkasz błąd powiedzenie **"Żądania" rozmiar jest za duży.** , **zmniejszyć `writeBatchSize` wartość** w konfiguracji obiektu sink kopiowania.
+>Usługa cosmos DB ogranicza rozmiar pojedynczego żądania do 2MB. Formuła jest rozmiar żądania = rozmiar pojedynczego dokumentu * zapisu rozmiar partii. Jeśli wystąpi błąd mówiący, **"rozmiar żądania jest zbyt duży"** , **Zmniejsz wartość `writeBatchSize`** w konfiguracji ujścia kopiowania.
 
 Jeśli używasz źródła typu "DocumentDbCollectionSink", jest ono nadal obsługiwane w przypadku zgodności z poprzednimi wersjami. Zalecane jest użycie nowego modelu do przesyłania dalej, który zapewnia bogatsze możliwości kopiowania danych z Cosmos DB.
 
@@ -313,13 +313,13 @@ Za pomocą tego łącznika Azure Cosmos DB (interfejsu SQL API) można łatwo:
 
 Aby osiągnąć kopiowania niezależny od schematów:
 
-* Korzystając z narzędzia do kopiowania danych wybierz **wyeksportować jako — pliki w formacie JSON lub kolekcję usługi Cosmos DB** opcji.
+* Korzystając z narzędzia Kopiowanie danych, wybierz opcję **Eksportuj jako plik JSON lub Cosmos DB kolekcji** .
 * W przypadku korzystania z funkcji tworzenia działań wybierz format JSON z odpowiednim magazynem plików dla źródła lub ujścia.
 
 ## <a name="migrate-from-relational-database-to-cosmos-db"></a>Migrowanie z relacyjnej bazy danych do Cosmos DB
 
-W przypadku migrowania z relacyjnej bazy danych, np. SQL Server do Azure Cosmos DB, działanie kopiowania może łatwo mapować dane tabelaryczne ze źródła na spłaszczone dokumenty JSON w Cosmos DB. W niektórych przypadkach możesz chcieć ponownie zaprojektować model danych, aby zoptymalizować go do NoSQL przypadków użycia zgodnie z [modelem danych w Azure Cosmos DB](../cosmos-db/modeling-data.md), na przykład w celu denormalizacji danych, osadzając wszystkie powiązane elementy podrzędne w ramach jednego dokumentu JSON. W takim przypadku zapoznaj się z [tym wpisem w blogu](https://medium.com/@ArsenVlad/denormalizing-via-embedding-when-copying-data-from-sql-to-cosmos-db-649a649ae0fb) , aby zapoznać się z przewodnikiem dotyczącym korzystania z Azure Data Factory kopiowania.
+W przypadku migrowania z relacyjnej bazy danych, np. SQL Server do Azure Cosmos DB, działanie kopiowania może łatwo mapować dane tabelaryczne ze źródła na spłaszczone dokumenty JSON w Cosmos DB. W niektórych przypadkach możesz chcieć ponownie zaprojektować model danych, aby zoptymalizować go do NoSQL przypadków użycia zgodnie z [modelem danych w Azure Cosmos DB](../cosmos-db/modeling-data.md), na przykład w celu denormalizacji danych, osadzając wszystkie powiązane elementy podrzędne w ramach jednego dokumentu JSON. W takim przypadku należy zapoznać się z [tym artykułem](../cosmos-db/migrate-relational-to-cosmos-db-sql-api.md) , korzystając z informacji o tym, jak to osiągnąć za pomocą działania kopiowania Azure Data Factory.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać listę magazynów danych, które działania kopiowania obsługuje jako źródła i sink w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i ujścia w Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

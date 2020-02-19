@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 4ae2cc33275702a0d549f4e994a597614191b3e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 70545020899b69508a4cedb0fd7cf5495c847104
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444879"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462449"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Przetwarzanie baz danych bezserwerowe przy użyciu Azure Cosmos DB i Azure Functions
 
@@ -19,7 +19,7 @@ Operacje obliczeniowe bez użycia serwera to wszystko, co umożliwia skoncentrow
 
 Za pomocą natywnej integracji między [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) i Azure Functions można tworzyć wyzwalacze bazy danych, powiązania wejściowe i powiązania wyjściowe bezpośrednio z konta Azure Cosmos DB. Korzystając z Azure Functions i Azure Cosmos DB, można tworzyć i wdrażać aplikacje bezserwerowe oparte na zdarzeniach z dostępem o małym opóźnieniu do danych bogatych dla globalnej bazy użytkowników.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Azure Cosmos DB i Azure Functions umożliwiają integrację baz danych i aplikacji bezserwerowych w następujący sposób:
 
@@ -134,7 +134,7 @@ Jeśli chcesz przeprowadzić integrację z usługą Azure Functions, aby przecho
 
 Zalety Azure Functions: 
 
-* **Event-driven**. Azure Functions są sterowane zdarzeniami i mogą nasłuchiwać źródła zmian z Azure Cosmos DB. Oznacza to, że nie musisz tworzyć logiki nasłuchiwania, po prostu Zadbaj o zmiany, które nasłuchuje. 
+* **Sterowane zdarzeniami**. Azure Functions są sterowane zdarzeniami i mogą nasłuchiwać źródła zmian z Azure Cosmos DB. Oznacza to, że nie musisz tworzyć logiki nasłuchiwania, po prostu Zadbaj o zmiany, które nasłuchuje. 
 
 * **Brak limitów**. Funkcje są wykonywane równolegle, a usługa jest uruchamiana na tyle, ile potrzebujesz. Parametry są ustawiane.
 
@@ -148,10 +148,4 @@ Teraz przyjrzyjmy się Azure Cosmos DB i Azure Functions dla rzeczywistych:
 
 * [Utwórz wyzwalacz Azure Functions dla Cosmos DB w Azure Portal](https://aka.ms/cosmosdbtriggerportalfunc)
 * [Tworzenie wyzwalacza HTTP Azure Functions z powiązaniem wejściowym Azure Cosmos DB](https://aka.ms/cosmosdbinputbind)
-* [Azure Cosmos DB powiązania i wyzwalacze](../azure-functions/functions-bindings-cosmosdb.md)
-
-
- 
-
-
-
+* [Azure Cosmos DB powiązania i wyzwalacze](../azure-functions/functions-bindings-cosmosdb-v2.md)

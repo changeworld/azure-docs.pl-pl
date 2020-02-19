@@ -1,0 +1,255 @@
+---
+title: Wdrażanie zasad niestandardowych przy użyciu Azure Pipelines
+titleSuffix: Azure AD B2C
+description: Informacje na temat wdrażania zasad niestandardowych Azure AD B2C w potoku ciągłej integracji/ciągłego dostarczania przy użyciu Azure Pipelines w Azure DevOps Services.
+services: active-directory-b2c
+author: mmacy
+manager: celestedg
+ms.service: active-directory
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 02/14/2020
+ms.author: marsma
+ms.subservice: B2C
+ms.openlocfilehash: 21fde69f404ee535bfe0019a91843297b1752a92
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77463143"
+---
+# <a name="deploy-custom-policies-with-azure-pipelines"></a>Wdrażanie zasad niestandardowych przy użyciu Azure Pipelines
+
+Za pomocą potoku ciągłej integracji i dostarczania (CI/CD), który został skonfigurowany w [Azure Pipelines][devops-pipelines], można uwzględnić zasady niestandardowe Azure AD B2C do dostarczania oprogramowania i automatyzacji kontroli kodu. Podczas wdrażania do różnych środowisk Azure AD B2C, na przykład dev, test i Production, zalecamy usunięcie ręcznych procesów i przeprowadzenie testowania automatycznego przy użyciu Azure Pipelines.
+
+Aby umożliwić Azure Pipelines Zarządzanie zasadami niestandardowymi w ramach usługi Azure AD B2C, należy wykonać trzy podstawowe czynności:
+
+1. Tworzenie rejestracji aplikacji sieci Web w dzierżawie Azure AD B2C
+1. Konfigurowanie repozytorium platformy Azure
+1. Konfigurowanie potoku platformy Azure
+
+> [!IMPORTANT]
+> Zarządzanie zasadami niestandardowymi Azure AD B2C przy użyciu potoku platformy Azure obecnie używa operacji **podglądu** dostępnych w punkcie końcowym Microsoft Graph API `/beta`. Te interfejsy API nie są obsługiwane w zastosowaniach produkcyjnych. Aby uzyskać więcej informacji, zobacz [Informacje o punkcie końcowym interfejsu API REST](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta)w usłudze Microsoft Graph.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+* [Azure AD B2C dzierżawy](tutorial-create-tenant.md)i poświadczenia dla użytkownika w katalogu z rolą [administratora zasad B2C IEF](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)
+* [Zasady niestandardowe](custom-policy-get-started.md) przekazane do dzierżawy
+* [Potok platformy Azure](https://azure.microsoft.com/services/devops/pipelines/)i dostęp do [projektu Azure DevOps Services][devops-create-project]
+
+## <a name="client-credentials-grant-flow"></a>Przepływ przyznania poświadczeń klienta
+
+W tym scenariuszu opisano sposób korzystania z wywołań między usługami Azure Pipelines i Azure AD B2C za pomocą [przepływu przydzielenia poświadczeń klienta](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md)OAuth 2,0. Ten przepływ grantu zezwala usłudze sieci Web, takiej jak Azure Pipelines (klient poufny) na używanie własnych poświadczeń zamiast personifikowania użytkownika w celu uwierzytelnienia podczas wywoływania innej usługi sieci Web (w tym przypadku interfejsu API Microsoft Graph). Azure Pipelines uzyskuje token nieinteraktywnie, a następnie wysyła żądania do interfejsu API Microsoft Graph.
+
+## <a name="register-an-application-for-management-tasks"></a>Rejestrowanie aplikacji na potrzeby zadań zarządzania
+
+Zacznij od utworzenia rejestracji aplikacji, która będzie używana przez Azure Pipelines skryptów programu PowerShell do komunikowania się z Azure AD B2C. Jeśli masz już rejestrację aplikacji używaną na potrzeby zadań automatyzacji, możesz przejść do sekcji [Udziel uprawnień](#grant-permissions) .
+
+### <a name="register-application"></a>Zarejestruj aplikację
+
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+
+### <a name="grant-permissions"></a>Udzielenie uprawnień
+
+Następnie Udziel uprawnienia aplikacji do korzystania z interfejsu API Microsoft Graph do odczytywania i zapisywania zasad niestandardowych w dzierżawie Azure AD B2C.
+
+#### <a name="applications"></a>[Aplikacje](#tab/applications/)
+
+1. Na stronie Przegląd **zarejestrowanej aplikacji** wybierz pozycję **Ustawienia**.
+1. W obszarze **dostęp do interfejsu API**wybierz pozycję **wymagane uprawnienia**.
+1. Wybierz pozycję **Dodaj**, a następnie **Wybierz interfejs API**.
+1. Wybierz pozycję **Microsoft Graph**, a następnie **Wybierz pozycję**.
+1. W obszarze **uprawnienia aplikacji**wybierz pozycję **Odczytaj i Zapisz zasady struktury zaufania organizacji**.
+1. Wybierz pozycję **Wybierz**, a następnie pozycję **gotowe**.
+1. Wybierz pozycję **Udziel uprawnień**, a następnie wybierz pozycję **tak**. Pełne propagowanie uprawnień może potrwać kilka minut.
+
+#### <a name="app-registrations-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
+
+1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz aplikację sieci Web, która powinna mieć dostęp do interfejsu API Microsoft Graph. Na przykład *managementapp1*.
+1. W obszarze **Zarządzaj**wybierz pozycję **uprawnienia interfejsu API**.
+1. W obszarze **skonfigurowane uprawnienia**wybierz pozycję **Dodaj uprawnienie**.
+1. Wybierz kartę **interfejsy API firmy Microsoft** , a następnie wybierz pozycję **Microsoft Graph**.
+1. Wybierz pozycję **Uprawnienia aplikacji**.
+1. Rozwiń węzeł **zasady** i wybierz pozycję **Policy. ReadWrite. TrustFramework**.
+1. Wybierz pozycję **Dodaj uprawnienia**. Poczekaj kilka minut, zanim przejdziesz do kolejnego kroku.
+1. Wybierz pozycję **Udziel zgody administratora (nazwa dzierżawy)** .
+1. Wybierz obecnie zalogowane konto administratora lub Zaloguj się przy użyciu konta w dzierżawie Azure AD B2C, do którego przypisano co najmniej rolę *administratora aplikacji w chmurze* .
+1. Wybierz pozycję **Zaakceptuj**.
+1. Wybierz pozycję **Odśwież**, a następnie sprawdź, czy "udzielono dla..." pojawia się w obszarze **stan**. Propagowanie uprawnień może potrwać kilka minut.
+
+* * *
+
+### <a name="create-client-secret"></a>Utwórz klucz tajny klienta
+
+Aby można było uwierzytelnić się za pomocą Azure AD B2C, skrypt programu PowerShell musi określić klucz tajny klienta, który został utworzony dla aplikacji.
+
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+
+## <a name="configure-an-azure-repo"></a>Konfigurowanie repozytorium platformy Azure
+
+Po zarejestrowaniu aplikacji zarządzania można skonfigurować repozytorium dla plików zasad.
+
+1. Zaloguj się do swojej organizacji Azure DevOps Services.
+1. [Utwórz nowy projekt][devops-create-project] lub wybierz istniejący projekt.
+1. W projekcie przejdź do **repozytoriów** i wybierz stronę **pliki** . Wybierz istniejące repozytorium lub utwórz je dla tego ćwiczenia.
+1. Utwórz folder o nazwie *B2CAssets*. Nazwij wymagany plik zastępczy *README.MD* i **Zatwierdź** plik. Możesz usunąć ten plik później, jeśli chcesz.
+1. Dodaj pliki zasad Azure AD B2C do folderu *B2CAssets* . Obejmuje to *TrustFrameworkBase. XML*, *TrustFrameWorkExtensions. XML*, *SignUpOrSignin. XML*, *ProfileEdit. XML*, *PasswordReset. XML*i wszystkie inne utworzone zasady. Zapisz nazwę pliku Azure AD B2C zasad do użycia w późniejszym kroku (są one używane jako argumenty skryptu programu PowerShell).
+1. Utwórz folder o nazwie *scripts* w katalogu głównym repozytorium, Nazwij plik zastępczy *DeployToB2c. ps1*. Nie zatwierdzaj pliku w tym momencie, należy to zrobić w późniejszym kroku.
+1. Wklej następujący skrypt programu PowerShell do pliku *DeployToB2c. ps1*, a następnie **Zatwierdź** plik. Skrypt uzyskuje token z usługi Azure AD i wywołuje interfejs API Microsoft Graph, aby przekazać zasady w folderze *B2CAssets* do dzierżawy usługi Azure AD B2C.
+
+    ```PowerShell
+    [Cmdletbinding()]
+    Param(
+        [Parameter(Mandatory = $true)][string]$ClientID,
+        [Parameter(Mandatory = $true)][string]$ClientSecret,
+        [Parameter(Mandatory = $true)][string]$TenantId,
+        [Parameter(Mandatory = $true)][string]$PolicyId,
+        [Parameter(Mandatory = $true)][string]$PathToFile
+    )
+
+    try {
+        $body = @{grant_type = "client_credentials"; scope = "https://graph.microsoft.com/.default"; client_id = $ClientID; client_secret = $ClientSecret }
+
+        $response = Invoke-RestMethod -Uri https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token -Method Post -Body $body
+        $token = $response.access_token
+
+        $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+        $headers.Add("Content-Type", 'application/xml')
+        $headers.Add("Authorization", 'Bearer ' + $token)
+
+        $graphuri = 'https://graph.microsoft.com/beta/trustframework/policies/' + $PolicyId + '/$value'
+        $policycontent = Get-Content $PathToFile
+        $response = Invoke-RestMethod -Uri $graphuri -Method Put -Body $policycontent -Headers $headers
+
+        Write-Host "Policy" $PolicyId "uploaded successfully."
+    }
+    catch {
+        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__
+
+        $_
+
+        $streamReader = [System.IO.StreamReader]::new($_.Exception.Response.GetResponseStream())
+        $streamReader.BaseStream.Position = 0
+        $streamReader.DiscardBufferedData()
+        $errResp = $streamReader.ReadToEnd()
+        $streamReader.Close()
+
+        $ErrResp
+
+        exit 1
+    }
+
+    exit 0
+    ```
+
+## <a name="configure-your-azure-pipeline"></a>Konfigurowanie potoku platformy Azure
+
+Gdy Twoje repozytorium zostało zainicjowane i uzupełnione o niestandardowe pliki zasad, możesz rozpocząć konfigurowanie potoku wydania.
+
+### <a name="create-pipeline"></a>Tworzenie potoku
+
+1. Zaloguj się do organizacji Azure DevOps Services i przejdź do projektu.
+1. W projekcie wybierz pozycję **potoki** > **wersje** > **nowym potoku**.
+1. W obszarze **Wybierz szablon**wybierz pozycję **puste zadanie**.
+1. Wprowadź **nazwę etapu**, na przykład *DeployCustomPolicies*, a następnie zamknij okienko.
+1. Wybierz pozycję **Dodaj artefakt**i w obszarze **Typ źródła**wybierz pozycję **Azure Repository**.
+    1. Wybierz repozytorium źródłowe zawierające folder *skryptów* , który został wypełniony skryptem programu PowerShell.
+    1. Wybierz **gałąź domyślną**. Jeśli utworzono nowe repozytorium w poprzedniej sekcji, gałąź domyślna to *Master*.
+    1. Pozostaw **domyślne ustawienie wersji** *najnowsze z gałęzi domyślnej*.
+    1. Wprowadź **alias źródła** dla repozytorium. Na przykład *policyRepo*. Nazwa aliasu nie zawiera żadnych spacji.
+1. Wybierz pozycję **Dodaj**.
+1. Zmień nazwę potoku, aby odzwierciedlić jego zamiar. Na przykład *Wdróż potok zasad niestandardowych*.
+1. Wybierz pozycję **Zapisz** , aby zapisać konfigurację potoku.
+
+### <a name="configure-pipeline-variables"></a>Konfiguruj zmienne potoku
+
+1. Wybierz kartę **zmienne** .
+1. Dodaj następujące zmienne w obszarze **zmienne potokowe** i ustaw ich wartości w określony sposób:
+
+    | Name (Nazwa) | Wartość |
+    | ---- | ----- |
+    | `clientId` | **Identyfikator aplikacji (klienta)** , która została zarejestrowana wcześniej. |
+    | `clientSecret` | Wartość **wpisu tajnego klienta** , który został utworzony wcześniej. <br /> Zmień typ zmiennej na **wpis tajny** (wybierz ikonę kłódki). |
+    | `tenantId` | `your-b2c-tenant.onmicrosoft.com`, gdzie *B2C-dzierżawca* to nazwa dzierżawy Azure AD B2Cowej. |
+
+1. Wybierz pozycję **Zapisz** , aby zapisać zmienne.
+
+### <a name="add-pipeline-tasks"></a>Dodawanie zadań potoku
+
+Następnie Dodaj zadanie, aby wdrożyć plik zasad.
+
+1. Wybierz kartę **zadania** .
+1. Wybierz pozycję **zadanie agenta**, a następnie wybierz znak plus ( **+** ), aby dodać zadanie do zadania agenta.
+1. Wyszukaj i wybierz pozycję **PowerShell**. Nie wybieraj opcji "Azure PowerShell," programu PowerShell na komputerach docelowych, "lub innego wpisu programu PowerShell.
+1. Wybierz nowo dodane zadanie **skryptu programu PowerShell** .
+1. Wprowadź następujące wartości dla zadania skryptu programu PowerShell:
+    * **Wersja zadania**: 2. *
+    * **Nazwa wyświetlana**: Nazwa zasad, które mają zostać przekazane przez to zadanie. Na przykład *B2C_1A_TrustFrameworkBase*.
+    * **Typ**: ścieżka pliku
+    * **Ścieżka skryptu**: wybierz wielokropek (***...***), przejdź do folderu *scripts* , a następnie wybierz plik *DeployToB2C. ps1* .
+    * **Argumentu**
+
+        Wprowadź następujące wartości dla **argumentów**. Zastąp `{alias-name}` aliasem określonym w poprzedniej sekcji.
+
+        ```PowerShell
+        # Before
+        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/{alias-name}/B2CAssets/TrustFrameworkBase.xml
+        ```
+
+        Na przykład, jeśli określony alias to *policyRepo*, wiersz argumentu powinien mieć wartość:
+
+        ```PowerShell
+        # After
+        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/contosob2cpolicies/B2CAssets/TrustFrameworkBase.xml
+        ```
+
+1. Wybierz pozycję **Zapisz** , aby zapisać zadanie agenta.
+
+Właśnie dodane zadanie przekazuje *jeden* plik zasad do Azure AD B2C. Przed kontynuowaniem ręcznie Wyzwól zadanie (**Utwórz wydanie**), aby upewnić się, że zostało pomyślnie zakończone przed utworzeniem dodatkowych zadań.
+
+Jeśli zadanie zostało ukończone pomyślnie, Dodaj zadania wdrażania, wykonując powyższe kroki dla każdego z niestandardowych plików zasad. Zmodyfikuj wartości argumentów `-PolicyId` i `-PathToFile` dla każdej zasady.
+
+`PolicyId` jest wartością znalezioną na początku pliku zasad XML w węźle TrustFrameworkPolicy. Na przykład `PolicyId` w poniższym kodzie XML zasad jest *B2C_1A_TrustFrameworkBase*:
+
+```XML
+<TrustFrameworkPolicy
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+PolicySchemaVersion="0.3.0.0"
+TenantId="contoso.onmicrosoft.com"
+PolicyId= "B2C_1A_TrustFrameworkBase"
+PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
+```
+
+Podczas uruchamiania agentów i przekazywania plików zasad upewnij się, że są one przekazywane w następującej kolejności:
+
+1. *TrustFrameworkBase. XML*
+1. *TrustFrameworkExtensions. XML*
+1. *SignUpOrSignin. XML*
+1. *ProfileEdit. XML*
+1. *PasswordReset. XML*
+
+Platforma obsługi tożsamości wymusza tę kolejność, ponieważ struktura pliku jest oparta na hierarchicznym łańcuchu.
+
+## <a name="test-your-pipeline"></a>Testowanie potoku
+
+Aby przetestować potok wydania:
+
+1. Wybierz **potoki** , a następnie **wersje**.
+1. Wybierz utworzony wcześniej potok, na przykład *DeployCustomPolicies*.
+1. Wybierz pozycję **Utwórz wydanie**, a następnie wybierz pozycję **Utwórz** , aby kolejkować wydanie.
+
+Powinien zostać wyświetlony baner powiadomienia informujący o tym, że wersja została umieszczona w kolejce. Aby wyświetlić stan, wybierz link na banerze powiadomienia lub wybierz go z listy na karcie **wydania** .
+
+## <a name="next-steps"></a>Następne kroki
+
+Dowiedz się więcej o usługach:
+
+* [Wywołania między usługami przy użyciu poświadczeń klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+* [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/?view=azure-devops)
+
+<!-- LINKS - External -->
+[devops]: https://docs.microsoft.com/azure/devops/?view=azure-devops
+[devops-create-project]:  https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops
+[devops-pipelines]: https://docs.microsoft.com/azure/devops/pipelines

@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: fe5ced96a74bfbfbacf3ce1874d64711f6db7449
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 566b6db829c9694a7e5e83cc25695e71ada0bc8d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668760"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461457"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak używać zestawu SDK Mobile Apps Node. js
 
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
-
-> [!NOTE]
-> Usługa Visual Studio App Center obsługuje kompleksowe i zintegrowane usługi mające kluczowe znaczenie podczas tworzenia aplikacji mobilnych. Deweloperzy mogą używać usług do **tworzenia**, **testowania** i **dystrybuowania** w celu konfigurowania potoku ciągłej integracji i ciągłego wdrażania. Po wdrożeniu aplikacji deweloperzy mogą monitorować stan i użycie aplikacji za pomocą usług do **analizy** i **diagnostyki**, a także współpracować z użytkownikami za pomocą usługi do **wypychania**. Deweloperzy mogą również korzystać z usługi **uwierzytelniania** do uwierzytelniania użytkowników oraz usługi **danych** do utrwalania i synchronizowania danych aplikacji w chmurze.
->
->  Jeśli chcesz zintegrować usługi w chmurze w aplikacji mobilnej, zarejestruj się w usłudze [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) już dziś.
 
 Ten artykuł zawiera szczegółowe informacje i przykłady pokazujące, jak korzystać z zaplecza Node. js w funkcji Mobile Apps Azure App Service.
 
@@ -285,7 +280,7 @@ Zestaw SDK Mobile Apps Node. js używa [Pakiet MSSQL Node. js] do nawiązywania 
 
    b. Wybierz **Protokoły dla programu SQLExpress**.
 
-   d. Kliknij prawym przyciskiem myszy pozycję **TCP/IP** , a następnie wybierz pozycję **Włącz**. W podręcznym oknie dialogowym wybierz pozycję **OK** .
+   c. Kliknij prawym przyciskiem myszy pozycję **TCP/IP** , a następnie wybierz pozycję **Włącz**. W podręcznym oknie dialogowym wybierz pozycję **OK** .
 
    d. Kliknij prawym przyciskiem myszy pozycję **TCP/IP** , a następnie wybierz polecenie **Właściwości**.
 
@@ -369,17 +364,17 @@ Większość ustawień w pliku azureMobile. js ma odpowiednie ustawienie aplikac
 
 | Ustawienie aplikacji | ustawienie azureMobile. js | Opis | Prawidłowe wartości |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |name |Nazwa aplikacji |string |
-| **MS_MobileLoggingLevel** |Rejestrowanie. poziom |Minimalny poziom rejestrowania komunikatów do zarejestrowania |błąd, ostrzeżenie, informacje, pełne, debugowanie, parapet |
-| **MS_DebugMode** |rozpocząć |Włącza lub wyłącza tryb debugowania |prawda, FAŁSZ |
-| **MS_TableSchema** |dane. schemat |Domyślna nazwa schematu dla tabel SQL |ciąg (domyślnie: dbo) |
-| **MS_DynamicSchema** |Data. dynamicSchema |Włącza lub wyłącza tryb debugowania |prawda, FAŁSZ |
-| **MS_DisableVersionHeader** |wersja (ustawiona na wartość undefined) |Wyłącza nagłówek X-ZUMO-Server-version |prawda, FAŁSZ |
-| **MS_SkipVersionCheck** |skipversioncheck |Wyłącza sprawdzanie wersji interfejsu API klienta |prawda, FAŁSZ |
+| **MS_MobileAppName** |name |Nazwa aplikacji |ciąg |
+| **MS_MobileLoggingLevel** |logging.level |Minimalny poziom rejestrowania komunikatów do zarejestrowania |błąd, ostrzeżenie, informacje, pełne, debugowanie, parapet |
+| **MS_DebugMode** |debugowanie |Włącza lub wyłącza tryb debugowania |wartość true, false |
+| **MS_TableSchema** |data.schema |Domyślna nazwa schematu dla tabel SQL |ciąg (domyślnie: dbo) |
+| **MS_DynamicSchema** |data.dynamicSchema |Włącza lub wyłącza tryb debugowania |wartość true, false |
+| **MS_DisableVersionHeader** |wersja (ustawiona na wartość undefined) |Wyłącza nagłówek X-ZUMO-Server-version |wartość true, false |
+| **MS_SkipVersionCheck** |skipversioncheck |Wyłącza sprawdzanie wersji interfejsu API klienta |wartość true, false |
 
 Aby ustawić ustawienie aplikacji:
 
-1. Zaloguj się do [Azure Portal].
+1. Zaloguj się do [Azure portal].
 1. Wybierz pozycję **wszystkie zasoby** lub **App Services**a następnie wybierz nazwę aplikacji mobilnej.
 1. Domyślnie zostanie otwarte okienko **ustawień** . Jeśli nie, wybierz pozycję **Ustawienia**.
 1. W menu **Ogólne** wybierz pozycję **Ustawienia aplikacji**.
@@ -396,7 +391,7 @@ Zmiana większości ustawień aplikacji wymaga ponownego uruchomienia usługi.
 
 Używanie Azure SQL Database jako magazynu danych jest identyczne we wszystkich typach aplikacji Azure App Service. Jeśli jeszcze tego nie zrobiono, wykonaj następujące kroki, aby utworzyć Mobile Apps zaplecza:
 
-1. Zaloguj się do [Azure Portal].
+1. Zaloguj się do [Azure portal].
 1. W lewym górnym rogu okna wybierz przycisk **+ nowy** > **Sieć Web + aplikacje mobilne** > **aplikacji mobilnej**, a następnie podaj nazwę Mobile Apps zaplecza.
 1. W polu **Grupa zasobów** Wprowadź taką samą nazwę jak aplikacja.
 1. Wybrano domyślny plan App Service. Jeśli chcesz zmienić plan App Service:
@@ -405,7 +400,7 @@ Używanie Azure SQL Database jako magazynu danych jest identyczne we wszystkich 
 
    b. Podaj nazwę nowego planu App Service i wybierz odpowiednią lokalizację.
 
-   d. Wybierz odpowiednią warstwę cenową dla usługi. Wybierz pozycję **Wyświetl wszystko** , aby wyświetlić więcej opcji cenowych, takich jak **bezpłatne** i **udostępnione**.
+   c. Wybierz odpowiednią warstwę cenową dla usługi. Wybierz pozycję **Wyświetl wszystko** , aby wyświetlić więcej opcji cenowych, takich jak **bezpłatne** i **udostępnione**.
 
    d. Kliknij przycisk **Wybierz** .
 

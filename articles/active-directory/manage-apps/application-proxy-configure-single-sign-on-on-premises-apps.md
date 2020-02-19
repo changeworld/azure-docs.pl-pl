@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59e4e527f25a32c8a5274db5eab5d33a7843bc3c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1046c11e064e69ed0ddb18c77bf5935ba60fb5aa
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275583"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461287"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Logowanie jednokrotne SAML dla aplikacji lokalnych przy użyciu serwera proxy aplikacji
 
@@ -41,17 +41,15 @@ Poniższe diagramy protokołów opisują sekwencję logowania jednokrotnego dla 
 
 1. W Azure Portal wybierz pozycję **Azure Active Directory > aplikacje dla przedsiębiorstw** i wybierz pozycję **Nowa aplikacja**.
 
-2. W sekcji **aplikacje lokalne** wybierz pozycję **Dodaj aplikację lokalną**.
+2. Wprowadź nazwę wyświetlaną nowej aplikacji, wybierz opcję **Zintegruj każdą inną aplikację, której nie ma w galerii**, a następnie wybierz pozycję **Utwórz**.
 
-3. Wprowadź nazwę wyświetlaną nowej aplikacji, a następnie wybierz pozycję **Dodaj**.
+3. Na stronie **Przegląd** aplikacji wybierz pozycję **Logowanie jednokrotne**.
 
-4. Na stronie **Przegląd** aplikacji wybierz pozycję **Logowanie jednokrotne**.
+4. Wybierz pozycję **SAML** jako metodę logowania jednokrotnego.
 
-5. Wybierz pozycję **SAML** jako metodę logowania jednokrotnego.
+5. Najpierw skonfiguruj Logowanie jednokrotne SAML do pracy w sieci firmowej. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** przejdź do nagłówka **Podstawowa konfiguracja SAML** i wybierz jego ikonę **edycji** (ołówek). Postępuj zgodnie z instrukcjami w [wprowadź podstawową konfigurację SAML](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) , aby skonfigurować uwierzytelnianie oparte na protokole SAML dla aplikacji.
 
-6. Najpierw skonfiguruj Logowanie jednokrotne SAML do pracy w sieci firmowej. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** przejdź do nagłówka **Podstawowa konfiguracja SAML** i wybierz jego ikonę **edycji** (ołówek). Postępuj zgodnie z instrukcjami w [wprowadź podstawową konfigurację SAML](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) , aby skonfigurować uwierzytelnianie oparte na protokole SAML dla aplikacji.
-
-7. Dodaj co najmniej jednego użytkownika do aplikacji i upewnij się, że konto testowe ma dostęp do aplikacji. Po nawiązaniu połączenia z siecią firmową Użyj konta testowego, aby sprawdzić, czy użytkownik ma Logowanie jednokrotne do aplikacji. 
+6. Dodaj co najmniej jednego użytkownika do aplikacji i upewnij się, że konto testowe ma dostęp do aplikacji. Po nawiązaniu połączenia z siecią firmową Użyj konta testowego, aby sprawdzić, czy użytkownik ma Logowanie jednokrotne do aplikacji. 
 
    > [!NOTE]
    > Po skonfigurowaniu serwera proxy aplikacji powrócisz i zaktualizujesz **adres URL odpowiedzi**SAML.
@@ -74,7 +72,7 @@ Aby można było zapewnić Logowanie jednokrotne dla aplikacji lokalnych, należ
 
 1. Gdy aplikacja jest nadal otwarta w Azure Portal, wybierz pozycję **Logowanie jednokrotne**. 
 
-2. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** przejdź do nagłówka **Podstawowa konfiguracja SAML** i wybierz jego ikonę **edycji** (ołówek). **Zewnętrzny adres URL** skonfigurowany w serwerze proxy aplikacji automatycznie wypełnia pola **Identyfikator**, **adres URL odpowiedzi**oraz **adres URL wylogowywania** . Nie edytuj tych adresów URL, ponieważ są one wymagane do poprawnego działania serwera proxy aplikacji.
+2. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** przejdź do nagłówka **Podstawowa konfiguracja SAML** i wybierz jego ikonę **edycji** (ołówek). Upewnij się, że **zewnętrzny adres URL** skonfigurowany w serwerze proxy aplikacji jest wypełniony w polach **Identyfikator**, **adres URL odpowiedzi**i **wylogowywanie adresu URL** . Te adresy URL są wymagane do poprawnego działania serwera proxy aplikacji. 
 
 3. Edytuj **adres URL odpowiedzi** skonfigurowany wcześniej, tak aby jego domena była osiągalna przez serwer proxy aplikacji. Na przykład jeśli **zewnętrzny adres URL** jest `https://contosotravel-f128.msappproxy.net` i oryginalny **adres url odpowiedzi** był `https://contosotravel.com/acs`, musisz zaktualizować oryginalny **adres URL odpowiedzi** , aby `https://contosotravel-f128.msappproxy.net/acs`. 
 
