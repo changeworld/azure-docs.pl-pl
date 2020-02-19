@@ -55,10 +55,10 @@ Wykonaj następujące przykładowe wyrażenia długości:
 
 |Przykładowe wypowiedzi|
 |--|
-|Jak uzyskać komputer?|
-|Gdzie mogę uzyskać komputer?|
-|Chcę uzyskać komputer, jak go zrobić?|
-|Kiedy mogę mieć komputer?| 
+|how do I get a computer?|
+|Where do I get a computer?|
+|I want to get a computer, how do I go about it?|
+|When can I have a computer?| 
 
 W tym miejscu termin "Computer" nie jest zróżnicowany. Używaj rozwiązań alternatywnych, takich jak komputer stacjonarny, laptop, stacja robocza, lub nawet dla komputera. LUIS może inteligentnie wywnioskować synonimy z kontekstu, ale w przypadku tworzenia wyrażenia długości do szkolenia są one zawsze lepsze od siebie.
 
@@ -144,8 +144,8 @@ Następujący wyrażenia długości, słowo `fair` to homograph. Została wpisan
 
 |Wypowiedź|
 |--|
-|Jakiego rodzaju targach hrabstwa występują na terenie Seattle tego lata?|
-|Jest bieżąca ocena do przeglądu Seattle uczciwe?|
+|What kind of county fairs are happening in the Seattle area this summer?|
+|Is the current rating for the Seattle review fair?|
 
 Jeśli chcesz, aby jednostka zdarzenia znalazła wszystkie dane zdarzeń, Oznacz słowo `fair` w pierwszej wypowiedź, ale nie w drugim.
 
