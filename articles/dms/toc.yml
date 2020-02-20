@@ -26,15 +26,17 @@
       href: tutorial-mysql-azure-mysql-online.md
     - name: Migrowanie bazy danych MySQL usługi RDS do usługi Azure DB dla MySQL w trybie online
       href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
-    - name: Migrowanie bazy danych PostgreSQL do usługi Azure DB for PostgreSQL w trybie online — jeden serwer
+    - name: Migrowanie bazy danych PostgreSQL do usługi Azure DB for PostgreSQL w trybie online za pośrednictwem portalu
+      href: tutorial-postgresql-azure-postgresql-online-portal.md
+    - name: Migrowanie bazy danych PostgreSQL do usługi Azure DB for PostgreSQL w trybie online za pośrednictwem interfejsu wiersza polecenia
       href: tutorial-postgresql-azure-postgresql-online.md
-    - name: Migrowanie bazy danych PostgreSQL usługi RDS do usługi Azure DB for PostgreSQL w trybie online — jeden serwer
+    - name: Migrowanie bazy danych PostgreSQL usługi RDS do usługi Azure DB dla PostgreSQL w trybie online
       href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
     - name: Migrowanie bazy danych MongoDB do interfejsu API Mongo usługi Azure Cosmos DB w trybie offline
       href: tutorial-mongodb-cosmos-db.md
     - name: Migrowanie bazy danych MongoDB do interfejsu API Mongo usługi Azure Cosmos DB w trybie online
       href: tutorial-mongodb-cosmos-db-online.md
-    - name: Migrowanie bazy danych Oracle do usługi Azure Database for PostgreSQL w trybie online — jeden serwer
+    - name: Migrowanie bazy danych Oracle do usługi Azure DB for PostgreSQL w trybie online — jeden serwer
       href: tutorial-oracle-azure-postgresql-online.md
 - name: Przewodniki z instrukcjami
   items:
@@ -44,9 +46,9 @@
       href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: Monitorowanie działań migracji
       href: how-to-monitor-migration-activity.md
-    - name: Ponowne wdrażanie pakietów usług SSIS w jednej bazie danych Azure SQL Database
+    - name: Ponowne wdrażanie pakietów usług SSIS w pojedynczej bazie danych usługi Azure SQL DB
       href: how-to-migrate-ssis-packages.md
-    - name: Ponowne wdrażanie pakietów usług SSIS do wystąpienia zarządzanego usługi Azure SQL Database
+    - name: Ponowne wdrażanie pakietów usług SSIS w wystąpieniu zarządzanym usługi Azure SQL DB
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: Zasoby
   expanded: true
@@ -85,13 +87,13 @@
           href: 'https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/'
         - name: Wymagania wstępne dotyczące adresów i tworzenie wystąpienia usługi DMS
           href: 'https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/'
-        - name: Migracja programu SQL Server 2008 do wystąpienia zarządzanego usługi Azure SQL Database
+        - name: Migrowanie programu SQL Server 2008 do wystąpienia zarządzanego usługi Azure SQL DB
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/'
-        - name: Migracja bazy danych PostgreSQL do usługi Azure Database for PostgreSQL
+        - name: Migrowanie bazy danych PostgreSQL do usługi Azure DB for PostgreSQL
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/'
         - name: Monitorowanie migracji online i przeprowadzanie uruchomienia produkcyjnego
           href: 'https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/'
-        - name: Migrowanie bazy danych Oracle do usługi Azure SQL Database
+        - name: Migrowanie bazy danych Oracle do usługi Azure SQL DB
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/'
         - name: Migrowanie bazy danych MongoDB do usługi Azure Cosmos DB
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/'

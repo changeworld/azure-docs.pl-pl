@@ -11,8 +11,8 @@
       href: tutorial-enable-sspr.md
     - name: Włączanie usługi Azure Multi-Factor Authentication
       href: tutorial-enable-azure-mfa.md
-    - name: Włączanie integracji samoobsługowego resetowania hasła ze środowiskiem lokalnym
-      href: tutorial-enable-writeback.md
+    - name: Włączanie funkcji zapisywania zwrotnego haseł w środowisku lokalnym
+      href: tutorial-enable-sspr-writeback.md
     - name: Integracja z usługą Azure Identity Protection
       href: tutorial-risk-based-sspr-mfa.md
 - name: Pojęcia
@@ -68,8 +68,6 @@
           href: howto-sspr-deployment.md
         - name: Wstępne rejestrowanie danych uwierzytelniania
           href: howto-sspr-authenticationdata.md
-        - name: Włączanie zapisywania zwrotnego haseł
-          href: howto-sspr-writeback.md
         - name: Samoobsługowe resetowanie hasła dla klientów systemu Windows
           href: howto-sspr-windows.md
     - name: Uwierzytelnianie wieloskładnikowe oparte na chmurze

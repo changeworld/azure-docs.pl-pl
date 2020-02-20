@@ -1,4 +1,4 @@
-- name: Dokumentacja usługi Azure App Configuration (wersja zapoznawcza)
+- name: Dokumentacja usługi Azure App Configuration
   href: index.yml
 - name: Omówienie
   items:
@@ -59,6 +59,8 @@
   items:
     - name: Magazyn wartości klucza
       href: concept-key-value.md
+    - name: Szyfrowanie przy użyciu kluczy zarządzanych przez klienta
+      href: concept-customer-managed-keys.md
     - name: Migawka punktu w czasie
       href: concept-point-time-snapshot.md
     - name: Zarządzanie funkcjami
@@ -67,14 +69,18 @@
       href: concept-github-action.md
     - name: Obsługa zdarzeń
       href: concept-app-configuration-event.md
+    - name: Authentication
+      items:
+        - name: Integracja z tożsamością zarządzaną platformy Azure
+          href: howto-integrate-azure-managed-service-identity.md
+        - name: Włączanie dostępu za pomocą usługi Azure Active Directory
+          href: concept-enable-rbac.md
     - name: Wysoka dostępność
       items:
         - name: Odporność i odzyskiwanie po awarii
           href: concept-disaster-recovery.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Integracja z tożsamością zarządzaną platformy Azure
-      href: howto-integrate-azure-managed-service-identity.md
     - name: Importowanie lub eksportowanie danych konfiguracji
       href: howto-import-export-data.md
     - name: Kierowanie zdarzeń do niestandardowego punktu końcowego
@@ -86,7 +92,7 @@
     - name: Konfigurowanie
       items:
         - name: Interfejs wiersza polecenia platformy Azure
-          href: 'https://docs.microsoft.com/cli/azure/ext/appconfig/appconfig?view=azure-cli-latest'
+          href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
         - name: Dostawca platformy .NET Core
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: Konstruktor platformy .NET Framework

@@ -79,7 +79,7 @@
           href: dns-alias-appservice.md
         - name: Zarządzanie strefami DNS
           items:
-            - name: Portal Azure
+            - name: Azure Portal
               href: dns-operations-dnszones-portal.md
             - name: Azure PowerShell
               href: dns-operations-dnszones.md
@@ -87,7 +87,7 @@
               href: dns-operations-dnszones-cli.md
         - name: Zarządzanie rekordami DNS
           items:
-            - name: Portal Azure
+            - name: Azure Portal
               href: dns-operations-recordsets-portal.md
             - name: Azure PowerShell
               href: dns-operations-recordsets.md
@@ -113,6 +113,10 @@
           href: dns-sdk.md
         - name: Domeny niestandardowe dla zasobów platformy Azure
           href: dns-custom-domain.md
+    - name: Prywatna strefa DNS
+      items:
+        - name: Ochrona prywatnych stref i rekordów DNS
+          href: dns-protect-private-zones-recordsets.md
     - name: Rozwiązywanie problemów
       items:
         - name: Przewodnik rozwiązywania problemów

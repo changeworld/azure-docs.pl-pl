@@ -154,3 +154,5 @@
       href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'
     - name: Harmonogram działania dla platformy Microsoft 365
       href: 'https://aka.ms/wvdroadmap'
+    - name: Szablony usługi Azure Resource Manager
+      href: 'https://github.com/Azure/RDS-Templates/tree/master/wvd-templates'
