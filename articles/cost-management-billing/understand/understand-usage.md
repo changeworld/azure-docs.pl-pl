@@ -2,21 +2,18 @@
 title: Interpretacja szczegółów użycia i opłat | Microsoft Docs
 description: Dowiedz się, jak odczytywać i interpretować szczegółowe informacje dotyczące użycia i opłat
 author: bandersmsft
-manager: micflan
+ms.reviewer: micflan
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/24/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: a68393b2852f8ddc758e2a47b9e1b5d94befb7b4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e45ef26f3d0a4b968b601e70658c5f3680492682
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76290142"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199028"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Interpretacja terminów w pliku Użycie i opłaty platformy Azure
 

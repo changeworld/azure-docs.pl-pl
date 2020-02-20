@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mlearned
-ms.openlocfilehash: a8b561780e2e81499d211252648aeef86561cb9b
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 1bb928f8e7a1f56c4b6b437f260d875662bff60f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658512"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469838"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Limity przydziału, ograniczenia rozmiaru maszyny wirtualnej i dostępność regionów w usłudze Azure Kubernetes Service (AKS)
 
@@ -33,7 +33,7 @@ Do infrastruktury aprowizowanej mają zastosowanie wszystkie inne ograniczenia d
 
 ## <a name="restricted-vm-sizes"></a>Ograniczone rozmiary maszyn wirtualnych
 
-Każdy węzeł w klastrze AKS zawiera stałą ilość zasobów obliczeniowych, takich jak vCPU i pamięć. Jeśli węzeł AKS zawiera niewystarczające zasoby obliczeniowe, może to oznaczać, że awarie nie będą działać prawidłowo. Aby upewnić się, że wymagane jest niezawodne planowanie *polecenia* i aplikacji, nie używaj następujących jednostek SKU maszyny wirtualnej w AKS:
+Każdy węzeł w klastrze AKS zawiera stałą ilość zasobów obliczeniowych, takich jak vCPU i pamięć. Jeśli węzeł AKS zawiera niewystarczające zasoby obliczeniowe, może to oznaczać, że awarie nie będą działać prawidłowo. Aby upewnić się, że wymagane jest niezawodne planowanie *polecenia* i aplikacji, **nie używaj następujących jednostek SKU maszyny wirtualnej w AKS**:
 
 - Standardowa_A0
 - Standardowa_A1
@@ -45,7 +45,7 @@ Każdy węzeł w klastrze AKS zawiera stałą ilość zasobów obliczeniowych, t
 
 Aby uzyskać więcej informacji na temat typów maszyn wirtualnych i ich zasobów obliczeniowych, zobacz Sizes [for Virtual Machines na platformie Azure][vm-skus].
 
-## <a name="region-availability"></a>Dostępność w poszczególnych regionach
+## <a name="region-availability"></a>Dostępność w danym regionie
 
 Aby uzyskać najnowszą listę, w której można wdrażać i uruchamiać klastry, zobacz [dostępność regionu AKS][region-availability].
 

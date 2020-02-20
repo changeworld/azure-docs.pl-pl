@@ -1,24 +1,17 @@
 ---
 title: Przeglądanie użycia zasobów usług platformy Azure przy użyciu interfejsu API REST | Microsoft Docs
 description: Dowiedz się, jak używać interfejsów API REST platformy Azure do przeglądania użycia zasobów usług platformy Azure.
-services: billing
-documentationcenter: na
 author: lleonard-msft
-manager: ''
-editor: ''
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: eb444f090c1b2047e3d71c1b2ec52699a61bd880
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f421ddc7cd509527053b099c7e4e538ab84b814e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989308"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200575"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Przeglądanie użycia zasobów platformy Azure przy użyciu interfejsu API REST
 
@@ -41,7 +34,7 @@ Authorization: Bearer
 
 Parametr `{subscriptionGuid}` jest wymagany i powinien zawierać identyfikator subskrypcji, który można odczytać przy użyciu poświadczeń podanych w tokenie interfejsu API. `{reportName}`
 
-Wymagane są następujące nagłówki: 
+Wymagane są następujące nagłówki:
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
@@ -93,7 +86,7 @@ Dla zasobu
 
 ## <a name="filtering-reports"></a>Filtrowanie raportów
 
-Sekcja `filter` i `dimensions` treści żądania podczas tworzenia raportu umożliwia skoncentrowanie się na kosztach dla określonych typów zasobów. W treści poprzedniego żądania pokazano, jak filtrować według wszystkich zasobów w regionie. 
+Sekcja `filter` i `dimensions` treści żądania podczas tworzenia raportu umożliwia skoncentrowanie się na kosztach dla określonych typów zasobów. W treści poprzedniego żądania pokazano, jak filtrować według wszystkich zasobów w regionie.
 
 ### <a name="get-all-compute-usage"></a>Pobieranie całego użycia obliczeniowego
 
@@ -105,9 +98,9 @@ Użyj wymiaru `ResourceType` do raportowania kosztów maszyn wirtualnych platfor
         "name": "ResourceType",
         "operator": "In",
         "values": [
-                "Microsoft.ClassicCompute/virtualMachines", 
+                "Microsoft.ClassicCompute/virtualMachines",
                 "Microsoft.Compute/virtualMachines"
-        ] 
+        ]
     }
 }
 ```
@@ -123,7 +116,7 @@ Użyj wymiaru `ResourceType` do raportowania kosztów maszyn wirtualnych bazy da
         "operator": "In",
         "values": [
                 "Microsoft.Sql/servers"
-        ] 
+        ]
     }
 }
 ```

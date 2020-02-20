@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
-ms.openlocfilehash: d5a4e5ce40726ea36734a0dcf751b79225d5e153
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e49a0935a70a2470267e5458fa1f55e3059e965
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75361117"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469769"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Włączanie Diagnostyka Azure na platformie Azure Cloud Services
 Zobacz [Diagnostyka Azure przegląd](../azure-diagnostics.md) dla tła na Diagnostyka Azure.
@@ -193,7 +193,7 @@ Plik konfiguracji diagnostyki definiuje wartości, które są używane do inicjo
 Jeśli masz problemy, zobacz [Rozwiązywanie problemów Diagnostyka Azure](../azure-diagnostics-troubleshooting.md) , aby uzyskać pomoc dotyczącą typowych problemów.
 
 ## <a name="next-steps"></a>Następne kroki
-Zapoznaj się z [listą artykułów diagnostycznych dotyczących maszyn wirtualnych platformy Azure](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics) , aby zmienić zbierane dane, rozwiązywać problemy lub dowiedzieć się więcej na temat diagnostyki.
+Zapoznaj się z [listą artykułów diagnostycznych dotyczących maszyn wirtualnych platformy Azure](../azure-monitor/platform/diagnostics-extension-overview.md) , aby zmienić zbierane dane, rozwiązywać problemy lub dowiedzieć się więcej na temat diagnostyki.
 
 [EventSource Class]: https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

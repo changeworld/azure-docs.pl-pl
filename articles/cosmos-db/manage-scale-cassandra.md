@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 668e9ddadf151a86be0d8c09fc91b4c70db12f3a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e2967a6d12fba2d81dad9de31e7476a027a39d1c
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210790"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468834"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastyczne skalowanie Azure Cosmos DB interfejs API Cassandra konta
 
@@ -23,7 +23,7 @@ Istnieje wiele opcji umożliwiających Eksplorowanie elastycznego charakteru int
 
 W przypadku, gdy klienci zużywają więcej zasobów (RU/s) niż ilość, która została zainicjowana, Azure Cosmos DB będą zwracać błędy o szybkości ograniczonej (429). Interfejs API Cassandra w Azure Cosmos DB tłumaczy te wyjątki na przeciążone błędy w protokole natywnym Cassandra. 
 
-Jeśli system nie jest wrażliwy na opóźnienia, może być wystarczające do obsłużenia ograniczenia przepływności przy użyciu ponownych prób. Zobacz [przykład kodu Java](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) , aby dowiedzieć się, jak obsługiwać ograniczanie szybkości w sposób niewidoczny przy użyciu [rozszerzenia Azure Cosmos DB](https://github.com/Azure/azure-cosmos-cassandra-extensions) dla [zasad ponawiania Cassandra](https://docs.datastax.com/drivers/java/2.0/com/datastax/driver/core/policies/RetryPolicy.html) w języku Java. Można również użyć [rozszerzenia Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) , aby obsłużyć ograniczenie szybkości.
+Jeśli system nie jest wrażliwy na opóźnienia, może być wystarczające do obsłużenia ograniczenia przepływności przy użyciu ponownych prób. Zobacz [przykład kodu Java](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) , aby dowiedzieć się, jak obsługiwać ograniczanie szybkości w sposób niewidoczny przy użyciu [rozszerzenia Azure Cosmos DB](https://github.com/Azure/azure-cosmos-cassandra-extensions) dla [zasad ponawiania Cassandra](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/) w języku Java. Można również użyć [rozszerzenia Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) , aby obsłużyć ograniczenie szybkości.
 
 ## <a name="manage-scaling"></a>Zarządzanie skalowaniem
 

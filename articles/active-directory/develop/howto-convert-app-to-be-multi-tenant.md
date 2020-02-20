@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
-ms.reviewer: jmprieur, lenalepa, sureshja
+ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 197379b5edd3f59c83c557590445fc5dac8fc43a
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: b3338edf644aee8409cfca05d4ac801594cbf66b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212232"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467763"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Instrukcje: Logowanie dowolnego Azure Active Directory użytkownika przy użyciu wzorca aplikacji wielodostępnych
 
@@ -37,7 +37,7 @@ Istnieją cztery proste kroki umożliwiające przekonwertowanie aplikacji do apl
 3. [Zaktualizuj swój kod, aby obsługiwał wiele wartości wystawcy](#update-your-code-to-handle-multiple-issuer-values)
 4. [Zrozumienie zgody użytkownika i administratora oraz wprowadzenie odpowiednich zmian w kodzie](#understand-user-and-admin-consent)
 
-Przyjrzyjmy się szczegółowym krokom. Możesz też przejść bezpośrednio do [tej listy przykładów z wieloma dzierżawcami](https://docs.microsoft.com/samples/browse/?products=azure-active-directory).
+Przyjrzyjmy się szczegółowym krokom. Możesz również przejść bezpośrednio do przykładowej kompilacji wielodostępnej [aplikacji sieci Web SaaS, która wywołuje Microsoft Graph przy użyciu usługi Azure AD i OpenID Connect Connect](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md).
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Aktualizowanie rejestracji w ramach wielu dzierżawców
 

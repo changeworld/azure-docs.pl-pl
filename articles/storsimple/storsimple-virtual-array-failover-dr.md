@@ -1,5 +1,5 @@
 ---
-title: Odzyskiwanie po awarii macierzy wirtualnej StorSimple i przełączanie do trybu failover urządzenia | Microsoft Docs
+title: Tryb failover i odzyskiwanie po awarii dla macierzy wirtualnej StorSimple
 description: Dowiedz się więcej na temat przełączania do trybu failover macierzy wirtualnej StorSimple.
 services: storsimple
 documentationcenter: NA
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19a676f4187af2d358934539e4ca29dbc5c25897
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 464fa05f658dd6e6e25d79f8840ceeb939383149
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190635"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467219"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Odzyskiwanie po awarii i tryb failover urządzenia dla macierzy wirtualnej StorSimple za pośrednictwem Azure Portal
 

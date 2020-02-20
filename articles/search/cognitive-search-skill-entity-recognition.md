@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 559d8cb25624c1d8bebb2969fbeeb80bdcc020e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6393c1eeaaa72d653704fcc52442bfb326dc2cdd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479753"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472336"
 ---
 #   <a name="entity-recognition-cognitive-skill"></a>Umiejętność rozpoznawania jednostek
 
@@ -26,7 +26,7 @@ Umiejętność **rozpoznawania jednostek** wyodrębnia jednostki różnych typó
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. umiejętności. Text. EntityRecognitionSkill
+Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="data-limits"></a>Limity danych
 Maksymalny rozmiar rekordu powinien składać się z 50 000 znaków mierzonych przez [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Jeśli konieczne jest rozbicie danych przed wysłaniem ich do wyodrębniania kluczowych fraz, rozważ użycie [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md).
@@ -38,7 +38,7 @@ W parametrach jest rozróżniana wielkość liter i są one opcjonalne.
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
 | categories    | Tablica kategorii, które mają zostać wyodrębnione.  Możliwe typy kategorii: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Jeśli nie podano żadnej kategorii, zwracane są wszystkie typy.|
-|defaultLanguageCode |  Kod języka tekstu wejściowego. Obsługiwane są następujące języki: `de, en, es, fr, it`|
+|defaultLanguageCode |  Kod języka tekstu wejściowego. Obsługiwane są następujące języki: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`. Nie wszystkie kategorie jednostek są obsługiwane we wszystkich językach; Zobacz uwagę poniżej.|
 |minimumPrecision | Wartość z zakresu od 0 do 1. Jeśli wynik pewności (w danych wyjściowych `namedEntities`) jest mniejszy niż ta wartość, jednostka nie jest zwracana. Wartość domyślna to 0. |
 |includeTypelessEntities | Ustaw wartość `true`, jeśli chcesz rozpoznawać dobrze znane jednostki, które nie pasują do bieżących kategorii. Rozpoznane jednostki są zwracane w polu `entities` złożone dane wyjściowe. Na przykład "system Windows 10" jest dobrze znaną jednostką (produkt), ale ponieważ "produkty" nie jest obsługiwaną kategorią, ta jednostka zostanie uwzględniona w polu dane wyjściowe jednostek. Wartość domyślna to `false` |
 
@@ -53,7 +53,7 @@ W parametrach jest rozróżniana wielkość liter i są one opcjonalne.
 ## <a name="skill-outputs"></a>Wyniki umiejętności
 
 > [!NOTE]
-> Nie wszystkie kategorie jednostek są obsługiwane we wszystkich językach. Tylko _pl_, _es_ obsługuje wyodrębnianie `"Quantity"`, `"Datetime"`, `"URL"``"Email"` typów.
+> Nie wszystkie kategorie jednostek są obsługiwane we wszystkich językach. Typy kategorii jednostek `"Person"`, `"Location"`i `"Organization"` są obsługiwane w przypadku pełnej listy języków powyżej. Tylko _de_, _EN_, _es_, _fr_i _zh-Hans_ obsługuje wyodrębnianie `"Quantity"`, `"Datetime"`, `"URL"`i typów `"Email"`. Aby uzyskać więcej informacji, zobacz [Obsługa języka i regionu dla interfejs API analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
 
 | Nazwa wyjściowa     | Opis                   |
 |---------------|-------------------------------|
@@ -63,9 +63,9 @@ W parametrach jest rozróżniana wielkość liter i są one opcjonalne.
 | stawion  | Tablica ciągów, w których każdy ciąg reprezentuje liczbę. |
 | Elementy DateTime  | Tablica ciągów, w których każdy ciąg reprezentuje datę i godzinę (jak pojawia się w tekście). |
 | adresy | Tablica ciągów, w których każdy ciąg reprezentuje adres URL |
-| Zamów | Tablica ciągów, w których każdy ciąg reprezentuje wiadomość e-mail |
+| emails | Tablica ciągów, w których każdy ciąg reprezentuje wiadomość e-mail |
 | namedEntities | Tablica typów złożonych, które zawierają następujące pola: <ul><li>category</li> <li>wartość (rzeczywista nazwa jednostki)</li><li>Przesunięcie (lokalizacja, w której została znaleziona).</li><li>zaufanie (wyższa wartość oznacza, że jest to prawdziwa jednostka)</li></ul> |
-| obiekty | Tablica typów złożonych, która zawiera bogate informacje o jednostkach wyodrębnionych z tekstu, z następującymi polami <ul><li> Nazwa (rzeczywista nazwa jednostki). Reprezentuje to "znormalizowany" formularz</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (łącze do strony Wikipedia dla jednostki)</li><li>bingId</li><li>Typ (kategoria rozpoznanej jednostki)</li><li>Podtyp (dostępny tylko dla niektórych kategorii, zapewnia bardziej szczegółowy widok typu jednostki)</li><li> dopasowania (złożona Kolekcja zawierająca)<ul><li>tekst (nieprzetworzony tekst dla jednostki)</li><li>Przesunięcie (lokalizacja, w której została znaleziona)</li><li>Długość (długość nieprzetworzonego tekstu jednostki)</li></ul></li></ul> |
+| jednostki | Tablica typów złożonych, która zawiera bogate informacje o jednostkach wyodrębnionych z tekstu, z następującymi polami <ul><li> Nazwa (rzeczywista nazwa jednostki). Reprezentuje to "znormalizowany" formularz</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (łącze do strony Wikipedia dla jednostki)</li><li>bingId</li><li>Typ (kategoria rozpoznanej jednostki)</li><li>Podtyp (dostępny tylko dla niektórych kategorii, zapewnia bardziej szczegółowy widok typu jednostki)</li><li> dopasowania (złożona Kolekcja zawierająca)<ul><li>tekst (nieprzetworzony tekst dla jednostki)</li><li>Przesunięcie (lokalizacja, w której została znaleziona)</li><li>Długość (długość nieprzetworzonego tekstu jednostki)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Definicja Przykładowa
 

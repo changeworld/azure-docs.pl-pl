@@ -2,24 +2,21 @@
 title: Organizowanie faktury zgodnie z własnymi potrzebami — Azure
 description: Dowiedz się, jak zorganizować koszty na fakturze.
 author: amberbhargava
-manager: amberb
-editor: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 7f3a5232f8c5bfbf3f2e81ba52607406f8a038b4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76843892"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200748"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Organizowanie kosztów przez dostosowanie konta rozliczeniowego
 
-Konto rozliczeniowe dla Umowy z Klientem Microsoft zapewnia elastyczność organizowania kosztów w zależności od potrzeb: według działu, projektu lub środowiska programistycznego. 
+Konto rozliczeniowe dla Umowy z Klientem Microsoft zapewnia elastyczność organizowania kosztów w zależności od potrzeb: według działu, projektu lub środowiska programistycznego.
 
 W tym artykule opisano, jak można zorganizować koszty za pomocą witryny Azure Portal. Ten artykuł dotyczy konta rozliczeniowego dla Umowy z Klientem Microsoft. [Sprawdź, czy masz dostęp do umowy klienta firmy Microsoft](#check-access-to-a-microsoft-customer-agreement).
 
@@ -33,7 +30,7 @@ Na koncie rozliczeniowym dla Umowy z Klientem Microsoft do organizowania kosztó
 
 Profil rozliczeniowy reprezentuje fakturę i powiązane informacje rozliczeniowe, takie jak formy płatności i adres rozliczeniowy. Dla każdego profilu rozliczeniowego na koncie na początku miesiąca jest generowana faktura miesięczna. Faktura zawiera opłaty za użycie platformy Azure i inne zakupy w poprzednim miesiącu.
 
-Profil rozliczeniowy jest tworzony automatycznie wraz z kontem rozliczeniowym podczas tworzenia konta na platformie Azure. Aby zorganizować koszty w postaci wielu faktur miesięcznych, można utworzyć dodatkowe profile rozliczeniowe. 
+Profil rozliczeniowy jest tworzony automatycznie wraz z kontem rozliczeniowym podczas tworzenia konta na platformie Azure. Aby zorganizować koszty w postaci wielu faktur miesięcznych, można utworzyć dodatkowe profile rozliczeniowe.
 
 > [!IMPORTANT]
 >
@@ -41,9 +38,9 @@ Profil rozliczeniowy jest tworzony automatycznie wraz z kontem rozliczeniowym po
 
 ### <a name="invoice-section"></a>Sekcja faktury
 
-Sekcja faktury reprezentuje grupę kosztów na fakturze. Sekcja faktury jest automatycznie tworzona dla każdego profilu rozliczeniowego na Twoim koncie. Aby zorganizować koszty stosownie do własnych potrzeb, możesz utworzyć dodatkowe sekcje. Każda sekcja faktury widoczna na fakturze zawiera opłaty za dany miesiąc. 
+Sekcja faktury reprezentuje grupę kosztów na fakturze. Sekcja faktury jest automatycznie tworzona dla każdego profilu rozliczeniowego na Twoim koncie. Aby zorganizować koszty stosownie do własnych potrzeb, możesz utworzyć dodatkowe sekcje. Każda sekcja faktury widoczna na fakturze zawiera opłaty za dany miesiąc.
 
-Na poniższej ilustracji przedstawiono fakturę z dwiema sekcjami faktury — dotyczącymi inżynierii i marketingu. Na fakturze widoczne jest podsumowanie i szczegółowe opłaty dla każdej sekcji. Ceny pokazane na ilustracji są tylko przykładowe i nie stanowią rzeczywistych cen usług platformy Azure. 
+Na poniższej ilustracji przedstawiono fakturę z dwiema sekcjami faktury — dotyczącymi inżynierii i marketingu. Na fakturze widoczne jest podsumowanie i szczegółowe opłaty dla każdej sekcji. Ceny pokazane na ilustracji są tylko przykładowe i nie stanowią rzeczywistych cen usług platformy Azure.
 
 ![Obraz przedstawiający fakturę z sekcjami](./media/mca-section-invoice/mca-invoice-with-sections.png)
 
@@ -79,7 +76,7 @@ Aby utworzyć sekcję faktury, musisz być **właścicielem profilu rozliczeniow
 
    ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeń w portalu](./media/mca-section-invoice/search-cmb.png)
 
-3. W okienku po lewej stronie wybierz pozycję **Profile rozliczeniowe**. Wybierz z listy profil rozliczeniowy. Nowa sekcja zostanie pokazana na fakturze wybranego profilu rozliczeniowego. 
+3. W okienku po lewej stronie wybierz pozycję **Profile rozliczeniowe**. Wybierz z listy profil rozliczeniowy. Nowa sekcja zostanie pokazana na fakturze wybranego profilu rozliczeniowego.
 
    [![Zrzut ekranu przedstawiający listę profilów rozliczeniowych](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
@@ -87,7 +84,7 @@ Aby utworzyć sekcję faktury, musisz być **właścicielem profilu rozliczeniow
 
    [![Zrzut ekranu przedstawiający dodawanie sekcji faktury](./media/mca-section-invoice/mca-list-invoice-sections.png)](./media/mca-section-invoice/mca-list-invoice-sections-zoomed-in.png#lightbox)
 
-5. Wprowadź nazwę sekcji faktury. 
+5. Wprowadź nazwę sekcji faktury.
 
    [![Zrzut ekranu przedstawiający stronę tworzenia sekcji faktury](./media/mca-section-invoice/mca-create-invoice-section.png)](./media/mca-section-invoice/mca-create-invoice-section-zoomed-in.png#lightbox)
 
@@ -152,13 +149,13 @@ Po dostosowaniu konta rozliczeniowego do własnych potrzeb możesz połączyć s
 
 6. Wybierz sekcję faktury, aby połączyć opłaty za subskrypcję. Opłaty będą pokazywane w tej sekcji na fakturze w ramach profilu rozliczeniowego.
 
-7. Wybierz plan platformy Azure, a następnie wprowadź przyjazną nazwę subskrypcji. 
+7. Wybierz plan platformy Azure, a następnie wprowadź przyjazną nazwę subskrypcji.
 
 9. Kliknij pozycję **Utwórz**.  
 
 ### <a name="link-existing-subscriptions-and-products"></a>Łączenie istniejących subskrypcji i produktów
 
-Jeśli masz istniejące subskrypcje platformy Azure lub inne produkty, takie jak zasoby z usług Azure Marketplace i AppSource, możesz je przenieść z istniejącej sekcji faktury do innej sekcji faktury, aby przeorganizować koszty. 
+Jeśli masz istniejące subskrypcje platformy Azure lub inne produkty, takie jak zasoby z usług Azure Marketplace i AppSource, możesz je przenieść z istniejącej sekcji faktury do innej sekcji faktury, aby przeorganizować koszty.
 
 > [!IMPORTANT]
 >
@@ -212,7 +209,7 @@ Załóżmy, że masz utworzony inny profil rozliczeniowy i użyto 50 GB danych z
 |---------|---------|---------|
 |1,84 za TB za pierwsze 50 TB/miesiąc    | 50 TB        | 92,0  |
 |1,77 za TB za następne 450 TB/miesiąc    |  0 TB         | 0.0  |
-|Łącznie     |     50 TB  | 92,0 
+|Łącznie     |     50 TB  | 92,0
 
 `Charges for the second billing profile`
 
@@ -220,17 +217,17 @@ Załóżmy, że masz utworzony inny profil rozliczeniowy i użyto 50 GB danych z
 |---------|---------|---------|
 |1,84 za TB za pierwsze 50 TB/miesiąc    | 50 TB        | 92,0  |
 |1,77 za TB za następne 450 TB/miesiąc    |  0 TB         | 0.0  |
-|Łącznie     |     50 TB  | 92,0 
+|Łącznie     |     50 TB  | 92,0
 
 Łączne opłaty za użycie 100 TB danych w tym scenariuszu to **184,0** (92,0 * 2).
 
 ### <a name="azure-reservation-benefits-might-not-apply-to-all-subscriptions"></a>Korzyści z rezerwacji platformy Azure mogą nie dotyczyć wszystkich subskrypcji
 
-Rezerwacje platformy Azure z zakresem współużytkowanym są stosowane do subskrypcji w pojedynczym profilu rozliczeniowym (nie są współużytkowane przez różne profile rozliczeniowe). 
+Rezerwacje platformy Azure z zakresem współużytkowanym są stosowane do subskrypcji w pojedynczym profilu rozliczeniowym (nie są współużytkowane przez różne profile rozliczeniowe).
 
 ![Grafika informacyjna dotycząca aplikacji rezerwacji dla innej struktury konta rozliczeniowego](./media/mca-section-invoice/mca-reservations-benefits-by-bg.png)
 
-Na ilustracji powyżej firma Contoso ma dwie subskrypcje. Korzyść z rezerwacji platformy Azure jest stosowana inaczej zależnie od struktury konta rozliczeniowego. W scenariuszu po lewej stronie korzyść z rezerwacji jest stosowana do obu subskrypcji, które są rozliczane w ramach profilu rozliczeniowego działu inżynierii. W scenariuszu po prawej stronie korzyść z rezerwacji zostanie zastosowana tylko do subskrypcji 1, ponieważ jest to jedyna subskrypcja rozliczana w ramach profilu rozliczeniowego działu inżynierii. 
+Na ilustracji powyżej firma Contoso ma dwie subskrypcje. Korzyść z rezerwacji platformy Azure jest stosowana inaczej zależnie od struktury konta rozliczeniowego. W scenariuszu po lewej stronie korzyść z rezerwacji jest stosowana do obu subskrypcji, które są rozliczane w ramach profilu rozliczeniowego działu inżynierii. W scenariuszu po prawej stronie korzyść z rezerwacji zostanie zastosowana tylko do subskrypcji 1, ponieważ jest to jedyna subskrypcja rozliczana w ramach profilu rozliczeniowego działu inżynierii.
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Sprawdzanie dostępu do umowy klienta firmy Microsoft
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

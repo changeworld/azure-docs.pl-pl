@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 17558b44c91425ce1a06625f8fd5c1806a762ba2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 28724f85ada989cbe3ce754418fb781bb0468de4
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021159"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466049"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Limity sieci — Azure Resource Manager następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych za pomocą **Azure Resource Manager** na region na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -23,7 +23,7 @@ ms.locfileid: "76021159"
 | Zasób | Domyślny/maksymalny limit | 
 | --- | --- |
 | Sieci wirtualne |1000 |
-| Podsieci na sieć wirtualną |3,000 |
+| Podsieci na sieć wirtualną |3000 |
 | Wirtualne sieci równorzędne dla sieci wirtualnej |500 |
 | [Bramy sieci wirtualnej (bramy sieci VPN) na sieć wirtualną](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |1 |
 | [Bramy sieci wirtualnej (ExpressRoute Gateway) na sieć wirtualną](../articles/expressroute/expressroute-about-virtual-network-gateways.md#gwsku) |1 |
@@ -33,12 +33,12 @@ ms.locfileid: "76021159"
 | Prywatne adresy IP na maszynę wirtualną |256 |
 | Publiczne adresy IP na interfejs sieciowy |256 |
 | Publiczne adresy IP na maszynę wirtualną |256 |
-| [Współbieżne przepływy TCP lub UDP na kartę sieciową maszyny wirtualnej lub wystąpienia roli](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500,000 |
+| [Współbieżne przepływy TCP lub UDP na kartę sieciową maszyny wirtualnej lub wystąpienia roli](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500 000 |
 | Karty interfejsu sieciowego |65 536 |
-| Sieciowe grupy zabezpieczeń |5000 |
+| Grupy zabezpieczeń sieci |5000 |
 | Reguły sieciowej grupy zabezpieczeń na sieciową grupę zabezpieczeń |1000 |
 | Adresy IP i zakresy określone dla źródła lub miejsca docelowego w grupie zabezpieczeń |4,000 |
-| Grupy zabezpieczeń aplikacji |3,000 |
+| Grupy zabezpieczeń aplikacji |3000 |
 | Grupy zabezpieczeń aplikacji na konfigurację IP, na kartę sieciową |20 |
 | Konfiguracje protokołu IP na grupę zabezpieczeń aplikacji |4,000 |
 | Grupy zabezpieczeń aplikacji, które można określić w ramach wszystkich reguł zabezpieczeń sieciowej grupy zabezpieczeń |100 |
@@ -51,10 +51,13 @@ ms.locfileid: "76021159"
 #### <a name="publicip-address"></a>Limity publicznych adresów IP
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
-| Publiczne adresy IP — dynamiczny | 1 000 dla warstwy Podstawowa. |Skontaktuj się z pomocą techniczną. |
-| Publiczne adresy IP — statyczne | 1 000 dla warstwy Podstawowa. |Skontaktuj się z pomocą techniczną. |
-| Publiczne adresy IP — statyczne | 1 000 dla warstwy Standardowa.|Skontaktuj się z pomocą techniczną. |
+| Publiczne adresy IP<sup>1</sup> | 10 dla warstwy Podstawowa. | Skontaktuj się z pomocą techniczną. |
+| Statyczne publiczne adresy IP<sup>1</sup> | 10 dla warstwy Podstawowa. | Skontaktuj się z pomocą techniczną. |
+| Standardowe publiczne adresy IP<sup>1</sup> | 10 | Skontaktuj się z pomocą techniczną. |
+| Prefiksy publicznego adresu IP | ograniczone przez liczbę standardowych publicznych adresów IP w ramach subskrypcji | Skontaktuj się z pomocą techniczną. |
 | Długość prefiksu publicznego adresu IP | /28 | Skontaktuj się z pomocą techniczną. |
+
+<sup>1</sup> Domyślne limity dla publicznych adresów IP różnią się w zależności od typu kategorii oferty, takiego jak bezpłatna wersja próbna, płatność zgodnie z rzeczywistym użyciem, dostawca usług kryptograficznych. Na przykład domyślna wartość dla subskrypcji Umowa Enterprise to 1000.
 
 #### <a name="load-balancer"></a>Limity usługi równoważenia obciążenia
 Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu usługi Azure Resource Manager, które przypadają na region na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).

@@ -1,21 +1,21 @@
 ---
 title: Wdróż obraz kontenera z Azure Container Registry
-description: Dowiedz się, jak wdrażać kontenery w Azure Container Instances przy użyciu obrazów kontenerów w usłudze Azure Container Registry.
+description: Dowiedz się, jak wdrażać kontenery w Azure Container Instances przez ściąganie obrazów kontenerów z usługi Azure Container Registry.
 services: container-instances
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0d39c83646357cf9426239d28e445c4791ddceb0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcb1b02b8a2605a42acbe7f33973bef315ca6f54
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981684"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468919"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Wdróż do Azure Container Instances z Azure Container Registry
 
-[Azure Container Registry](../container-registry/container-registry-intro.md) to oparta na platformie Azure, zarządzana usługa rejestru kontenerów służąca do przechowywania prywatnych obrazów kontenerów platformy Docker. W tym artykule opisano sposób wdrażania obrazów kontenerów przechowywanych w rejestrze kontenerów platformy Azure w celu Azure Container Instances.
+[Azure Container Registry](../container-registry/container-registry-intro.md) to oparta na platformie Azure, zarządzana usługa rejestru kontenerów służąca do przechowywania prywatnych obrazów kontenerów platformy Docker. W tym artykule opisano sposób ściągania obrazów kontenerów przechowywanych w usłudze Azure Container Registry podczas wdrażania programu w celu Azure Container Instances. Zalecaną metodą skonfigurowania dostępu do rejestru jest utworzenie nazwy głównej usługi Azure Active Directory i hasła oraz zapisanie poświadczeń logowania w magazynie kluczy platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -28,6 +28,9 @@ ms.locfileid: "75981684"
 W scenariuszu produkcyjnym, w którym zapewniasz dostęp do "bezobsługowego" usług i aplikacji, zaleca się skonfigurowanie dostępu do rejestru przy użyciu [nazwy głównej usługi](../container-registry/container-registry-auth-service-principal.md). Jednostka usługi umożliwia zapewnienie [kontroli dostępu opartej na rolach](../container-registry/container-registry-roles.md) dla obrazów kontenerów. Na przykład można skonfigurować jednostkę usługi z dostępem tylko do ściągania do rejestru.
 
 Azure Container Registry zapewnia dodatkowe [Opcje uwierzytelniania](../container-registry/container-registry-authentication.md).
+
+> [!NOTE]
+> Nie można uwierzytelnić się w celu Azure Container Registry ściągania obrazów podczas wdrażania grupy kontenerów przy użyciu [tożsamości zarządzanej](container-instances-managed-identity.md) skonfigurowanej w tej samej grupie kontenerów.
 
 W poniższej sekcji utworzysz Magazyn kluczy Azure i nazwę główną usługi, a następnie przechowujesz poświadczenia jednostki usługi w magazynie. 
 
@@ -78,7 +81,7 @@ az keyvault secret set \
     --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
 ```
 
-Utworzono magazyn kluczy platformy Azure, w którym zapisano dwa wpisy tajne:
+Utworzono Magazyn kluczy platformy Azure i Zapisano w nim dwa wpisy tajne:
 
 * `$ACR_NAME-pull-usr`: identyfikator jednostki usługi do użycia jako **nazwa użytkownika** rejestru kontenerów.
 * `$ACR_NAME-pull-pwd`: hasło jednostki usługi do użycia jako **hasło** rejestru kontenerów.

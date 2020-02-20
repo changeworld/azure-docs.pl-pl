@@ -3,12 +3,12 @@ title: Samouczek — Tworzenie Application Gatewayowego kontrolera w usłudze Az
 description: Samouczek pokazujący sposób tworzenia klastra Kubernetes za pomocą usługi Azure Kubernetes Service z usługą Application Gateway jako kontrolerem ruchu przychodzącego
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b16b0a40d14ecde87b2637976299d05d37d706f3
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772870"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472268"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Samouczek: Tworzenie kontrolera Application Gateway transferu danych przychodzących w usłudze Azure Kubernetes Service
 
@@ -29,7 +29,7 @@ W tym samouczku dowiesz się, jak wykonywać następujące zadania:
 
 - **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Skonfiguruj narzędzie Terraform**: postępuj zgodnie ze wskazówkami w artykule [Terraform and configure access to Azure](/azure/virtual-machines/linux/terraform-install-configure) (Terraform i konfigurowanie dostępu do platformy Azure).
+- **Skonfiguruj narzędzie Terraform**: postępuj zgodnie ze wskazówkami w artykule [Terraform and configure access to Azure](terraform-install-configure.md) (Terraform i konfigurowanie dostępu do platformy Azure).
 
 - **Grupa zasobów platformy Azure**: Jeśli nie masz grupy zasobów platformy Azure do użycia na potrzeby pokazu, [Utwórz grupę zasobów platformy Azure](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups). Zanotuj nazwę i lokalizację grupy zasobów, ponieważ te wartości są używane w demonstracji.
 

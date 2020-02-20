@@ -2,21 +2,18 @@
 title: Zmiana karty kredytowej dla platformy Azure
 description: Opisuje sposób zmiany karty kredytowej używanej do płacenia za subskrypcję platformy Azure.
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 10d475b9c0c33dfd17c3d87beed00154511e1ab6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 0cf0911193cd379da60edb3064d3c6f195cf0190
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188451"
+ms.locfileid: "77199861"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Dodawanie, aktualizowanie lub usuwanie karty kredytowej dla platformy Azure
 
@@ -118,7 +115,7 @@ Jeśli karta kredytowa jest aktywną formą płatności dla którejkolwiek z sub
 
 Poniższe sekcje dotyczą klientów, którzy mają Umowę z Klientem Microsoft i zarejestrowali się w usłudze Azure w trybie online przy użyciu karty kredytowej. [Dowiedz się, jak sprawdzić, czy masz dostęp do Umowy z Klientem Microsoft](#check-the-type-of-your-account).
 
-### <a name="change-default-credit-card"></a>Zmienianie domyślnej karty kredytowej 
+### <a name="change-default-credit-card"></a>Zmienianie domyślnej karty kredytowej
 Jeśli masz Umowę z Klientem Microsoft, Twoja karta kredytowa jest skojarzona z profilem rozliczeniowym. Aby zmienić formę płatności dla profilu rozliczeniowego, musisz być osobą, która zarejestrowała się na platformie Azure i utworzyła konto rozliczeniowe.
 
 Jeśli chcesz zmienić domyślną formę płatności profilu rozliczeniowego na czek/przelew, zobacz [Płacenie za subskrypcje platformy Azure za pomocą faktury](pay-by-invoice.md).

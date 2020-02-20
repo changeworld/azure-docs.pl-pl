@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e99a0e8e42bcfb5c7967a9cb1c91631bacbea53a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f4109359adaaeae0a1ba027ac04439ff60b5a939
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980074"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467185"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archiwizuj dzienniki zasobów platformy Azure na koncie magazynu
 [Dzienniki platformy](platform-logs-overview.md) na platformie Azure, w tym dziennik aktywności platformy Azure i dzienniki zasobów, zapewniają szczegółowe informacje diagnostyczne i inspekcji dla zasobów platformy Azure oraz platformy platformy Azure, od których zależą.  W tym artykule opisano zbieranie dzienników platformy na koncie usługi Azure Storage w celu zachowania danych do archiwizacji.
@@ -33,7 +33,7 @@ Wyślij dzienniki platformy do magazynu i innych miejsc docelowych, tworząc ust
 
 
 ## <a name="collect-data-from-compute-resources"></a>Zbieranie danych z zasobów obliczeniowych
-Ustawienia diagnostyczne będą zbierać dzienniki zasobów dla zasobów obliczeniowych platformy Azure, takich jak każdy inny zasób, ale nie system operacyjny gościa ani ich obciążenia. Aby zebrać te dane, zainstaluj [agenta Diagnostyka Azure systemu Windows](diagnostics-extension-overview.md). Aby uzyskać szczegółowe informacje, zobacz artykuł [przechowywanie i wyświetlanie danych diagnostycznych w usłudze Azure Storage](diagnostics-extension-to-storage.md) .
+Ustawienia diagnostyczne będą zbierać dzienniki zasobów dla zasobów obliczeniowych platformy Azure, takich jak każdy inny zasób, ale nie system operacyjny gościa ani ich obciążenia. Aby zebrać te dane, zainstaluj [agenta Diagnostyka Azure systemu Windows](diagnostics-extension-overview.md). 
 
 
 ## <a name="schema-of-platform-logs-in-storage-account"></a>Schemat dzienników platformy na koncie magazynu

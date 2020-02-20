@@ -1,19 +1,18 @@
 ---
 title: Przenoszenie subskrypcji platformy Azure między subskrybentami i dostawcami usług w chmurze
 description: Dowiedz się, jak przenosić subskrypcje platformy Azure między subskrybentami i dostawcami usług w chmurze.
-services: billing
 author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: banders
-ms.openlocfilehash: 08aeac9a8cd21e6f13bab0ee10ba4d212d96c5b0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 4e7e9ea61d74eb38f3c225d66a39906bc18fe6d2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76775418"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200524"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Przenoszenie subskrypcji platformy Azure między subskrybentami i dostawcami usług w chmurze
 
@@ -33,7 +32,7 @@ Aby przenieść wszelkie inne subskrypcje platformy Azure do partnera będącego
 1. Upewnij się, że źródłowa i docelowa subskrypcja dostawcy usług w chmurze znajdują się w tej samej dzierżawie usługi Azure Active Directory (Azure AD).  
     Nie możesz zmienić dzierżawy usługi Azure AD dla subskrypcji dostawcy usług w chmurze platformy Azure. Zamiast tego musisz dodać lub skojarzyć subskrypcję źródłową z dzierżawą usługi Azure AD dostawcy usług w chmurze. Aby uzyskać więcej informacji, zobacz [Kojarzenie subskrypcji platformy Azure z dzierżawą usługi Azure Active Directory lub jej dodawanie do niej](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
     > [!IMPORTANT]
-    > - Po skojarzeniu subskrypcji z innym katalogiem usługi Azure AD użytkownicy, którzy mają przypisane role za pomocą [kontroli dostępu opartej na rolach](../../role-based-access-control/role-assignments-portal.md), utracą dostęp. Klasyczni administratorzy subskrypcji, w tym administrator usługi i współadministratorzy, również utracą dostęp. 
+    > - Po skojarzeniu subskrypcji z innym katalogiem usługi Azure AD użytkownicy, którzy mają przypisane role za pomocą [kontroli dostępu opartej na rolach](../../role-based-access-control/role-assignments-portal.md), utracą dostęp. Klasyczni administratorzy subskrypcji, w tym administrator usługi i współadministratorzy, również utracą dostęp.
     > - Przypisania zasad są również usuwane z subskrypcji, gdy subskrypcja jest kojarzona z innym katalogiem.
 1. Konto użytkownika używane do przenoszenia musi mieć dostęp właściciela [RBAC](add-change-subscription-administrator.md) do obu subskrypcji.
 1. Przed rozpoczęciem [zweryfikuj](/rest/api/resources/resources/validatemoveresources), czy wszystkie zasoby platformy Azure mogą zostać przeniesione z subskrypcji źródłowej do subskrypcji docelowej.  

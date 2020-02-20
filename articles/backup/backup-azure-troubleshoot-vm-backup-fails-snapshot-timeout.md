@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 0a4d7f152e555ed89bd0a6aee0a7bc83b9815492
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513851"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469140"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z błędem Azure Backup: problemy z agentem lub rozszerzeniem
 
@@ -64,6 +64,7 @@ Ten błąd występuje, gdy jeden z błędów rozszerzenia przełączy maszynę w
 
 - Ten problem może wystąpić, jeśli w grupie zasobów punktu odzyskiwania istnieje blokada uniemożliwiająca automatyczne czyszczenie punktów odzyskiwania.
 - Ten problem może również wystąpić w przypadku wyzwolenia wielu kopii zapasowych dziennie. Obecnie zalecamy tylko jedną kopię zapasową dziennie, ponieważ natychmiastowe punkty przywracania są zachowywane przez 1-5 dni na skonfigurowane przechowywanie migawek i tylko 18 RPS pliku można skojarzyć z maszyną wirtualną w danym momencie. <br>
+- Liczba punktów przywracania między kolekcjami punktów przywracania i grupami zasobów dla maszyny wirtualnej nie może przekraczać 18. Aby utworzyć nowy punkt przywracania, Usuń istniejące punkty przywracania.
 
 Zalecana akcja:<br>
 Aby rozwiązać ten problem, Usuń blokadę z grupy zasobów maszyny wirtualnej, a następnie ponów operację, aby wyzwolić czyszczenie.
@@ -217,10 +218,10 @@ Odinstaluj rozszerzenie, aby wymusić ponowne załadowanie rozszerzenia VMSnapsh
 Aby odinstalować rozszerzenie:
 
 1. W [Azure Portal](https://portal.azure.com/)przejdź do maszyny wirtualnej, na której występuje błąd kopii zapasowej.
-2. Wybierz **ustawienia**.
+2. Wybierz pozycję **Ustawienia**.
 3. Wybierz pozycję **Rozszerzenia**.
 4. Wybierz pozycję **rozszerzenie migawki**.
-5. Wybierz opcję **Odinstaluj**.
+5. Wybierz pozycję **Odinstaluj**.
 
 W przypadku maszyny wirtualnej z systemem Linux, jeśli rozszerzenie VMSnapshot nie jest wyświetlane w Azure Portal, [zaktualizuj agenta systemu Azure Linux](../virtual-machines/linux/update-agent.md), a następnie uruchom kopię zapasową.
 
@@ -228,7 +229,7 @@ Wykonanie tych kroków powoduje ponowne zainstalowanie rozszerzenia podczas kole
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Usuń blokadę z grupy zasobów punktu odzyskiwania
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. Przejdź do **opcji wszystkie zasoby**, wybierz grupę zasobów kolekcji punktów przywracania w następującym formacie AzureBackupRG_`<Geo>`_`<number>`.
 3. W sekcji **Ustawienia** wybierz pozycję **blokady** , aby wyświetlić blokady.
 4. Aby usunąć blokadę, wybierz wielokropek, a następnie kliknij przycisk **Usuń**.
@@ -257,7 +258,7 @@ Po usunięciu blokady wykonaj kopię zapasową na żądanie. Dzięki temu punkty
 
 Aby ręcznie wyczyścić kolekcję punktów przywracania, która nie została wyczyszczona ze względu na blokadę grupy zasobów, spróbuj wykonać następujące czynności:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. W menu **centrum** kliknij pozycję **wszystkie zasoby**, wybierz grupę zasobów o następującym formacie AzureBackupRG_`<Geo>`_`<number>` lokalizację maszyny wirtualnej.
 
     ![Usuń blokadę](./media/backup-azure-arm-vms-prepare/resource-group.png)

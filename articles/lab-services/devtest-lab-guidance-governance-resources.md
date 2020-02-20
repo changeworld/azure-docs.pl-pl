@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: dc65d368eb4c1beb57099cb6c16fb33bbe5c1f79
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8bb00c770c61a0a5462a01ae552bd7e40a7cdb36
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981504"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470653"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Zarządzanie infrastrukturą Azure DevTest Labs — zasoby
 Ten artykuł dotyczy wyrównania i zarządzania zasobami dla DevTest Labs w organizacji. 
@@ -38,7 +38,7 @@ Zanim organizacja zacznie używać platformy Azure do ogólnego opracowywania ap
 
 **Pierwszym zalecanym** celem jest przejrzenie taksonomii platformy Azure w organizacji, w której znajdują się podziały między subskrypcjami produkcyjnymi i programistycznymi. Na poniższym diagramie Sugerowana Taksonomia umożliwia logiczne rozdzielenie środowiska deweloperskiego/testowego i produkcyjnego. W ramach tego podejścia organizacja może wprowadzić kody rozliczeń, aby śledzić koszty związane z każdym środowiskiem osobno. Aby uzyskać więcej informacji, zobacz [zalecenia dotyczące zarządzania subskrypcjami](/azure/architecture/cloud-adoption/appendix/azure-scaffold). Ponadto można używać [tagów platformy Azure](../azure-resource-manager/management/tag-resources.md) do organizowania zasobów na potrzeby śledzenia i rozliczania.
 
-**Drugim zalecanym sposobem** jest włączenie subskrypcji DevTest w portalu Azure Enterprise. Dzięki temu organizacja może uruchamiać systemy operacyjne klienta, które nie są zwykle dostępne w ramach subskrypcji platformy Azure Enterprise. Następnie użyj oprogramowania w przedsiębiorstwie, w przypadku którego płacisz wyłącznie za obliczenia, i nie obawiaj się o Licencjonowanie. Gwarantuje to, że opłaty za wyznaczone usługi, w tym obrazy z galerii w IaaS, takie jak Microsoft SQL Server, opierają się wyłącznie na zużyciu. Szczegółowe informacje o subskrypcji usługi Azure DevTest można znaleźć [tutaj](https://azure.microsoft.com/offers/ms-azr-0148p/) dla klientów z Umowa Enterprise (EA) i w [tym miejscu](https://azure.microsoft.com/offers/ms-azr-0023p/) dla klientów z opcją płatność zgodnie z rzeczywistym użyciem.
+**Drugim zalecanym sposobem** jest włączenie subskrypcji DevTest w portalu Azure Enterprise. Dzięki temu organizacja może uruchamiać systemy operacyjne klienta, które nie są zwykle dostępne w ramach subskrypcji platformy Azure Enterprise. Następnie korzystaj z oprogramowania korporacyjnego, w którym płacisz wyłącznie za obliczenia i nie obawiaj się o Licencjonowanie. Gwarantuje to, że opłaty za wyznaczone usługi, w tym obrazy z galerii w IaaS, takie jak Microsoft SQL Server, opierają się wyłącznie na zużyciu. Szczegółowe informacje o subskrypcji usługi Azure DevTest można znaleźć [tutaj](https://azure.microsoft.com/offers/ms-azr-0148p/) dla klientów z Umowa Enterprise (EA) i w [tym miejscu](https://azure.microsoft.com/offers/ms-azr-0023p/) dla klientów z opcją płatność zgodnie z rzeczywistym użyciem.
 
 ![Wyrównanie zasobów przy użyciu subskrypcji](./media/devtest-lab-guidance-governance/resource-alignment-with-subscriptions.png)
 

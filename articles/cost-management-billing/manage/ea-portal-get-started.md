@@ -1,19 +1,18 @@
 ---
 title: Wprowadzenie do witryny Azure Enterprise Portal
 description: W tym artykule omówiono sposób korzystania z witryny Azure Enterprise Portal przez klientów mających umowę Enterprise Agreement platformy Azure (Azure EA).
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/04/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: boalcsva
-ms.openlocfilehash: 516b3704daee885541cec49b0ee374e050dd4b22
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.reviewer: boalcsva
+ms.openlocfilehash: e1c6eac81968ef6ecbc12ec52415c2aa9680f3e1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023348"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200833"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Wprowadzenie do witryny Azure Enterprise Portal
 
@@ -235,7 +234,7 @@ Przenosząc własność do konta, należy pamiętać o następujących kwestiach
   - Z konta służbowego na inne konto służbowe.
   - Z konta Microsoft na konto służbowe.
   - Z konta Microsoft na inne konto Microsoft.
-  
+
     Konto docelowe musi być prawidłowym kontem komercyjnym platformy Azure, aby być prawidłowym miejscem docelowym umożliwiającym przenoszenie. W przypadku nowych kont przed zalogowaniem do witryny Azure Enterprise Portal zostanie wyświetlony monit o utworzenie konta komercyjnego platformy Azure. W przypadku istniejących kont, aby konto było uprawnione, należy najpierw utworzyć nową subskrypcję platformy Azure.
 
 - Nie można przenieść subskrypcji z konta służbowego na konto Microsoft.
@@ -285,7 +284,7 @@ Właściciele kont mogą wyświetlać subskrypcje i zarządzać nimi. Za pomocą
 
 Utworzenie różnych subskrypcji dla każdego środowiska aplikacji pomaga zabezpieczyć każde środowisko.
 
-- Do każdej subskrypcji można także przypisać inne konto administratora usługi. 
+- Do każdej subskrypcji można także przypisać inne konto administratora usługi.
 - Subskrypcje można kojarzyć z dowolną liczbą usług.
 - Właściciel konta tworzy subskrypcje i przypisuje konto administratora usługi do każdej subskrypcji na swoim koncie.
 
@@ -309,7 +308,7 @@ Aby dodać subskrypcję:
 1. Wybierz pozycję **Subskrypcje**, a następnie wybierz utworzoną subskrypcję.
 1. Wybierz pozycję **Edytuj szczegóły subskrypcji**.
 1. Zaktualizuj pola **Nazwa subskrypcji** i **Administrator usługi**, a następnie wybierz znacznik wyboru.
-  
+
    Wprowadzona nazwa subskrypcji będzie wyświetlana w raportach. Jest to nazwa projektu skojarzonego z subskrypcją w portalu deweloperskim.
 
 Nowe subskrypcje mogą pojawić się na liście subskrypcji po upływie do 24 godzin. Po utworzeniu subskrypcji można wykonywać następujące czynności:
@@ -509,14 +508,14 @@ Witryna Azure Enterprise Portal oferuje dwa typy subskrypcji dla klientów korpo
 - Microsoft Azure Enterprise — idealne pod kątem:
   - wszelkich zastosowań produkcyjnych
   - najlepszych cen na podstawie wydatków na infrastrukturę
-  
+
   Aby uzyskać więcej informacji, [skontaktuj się z działem sprzedaży platformy Azure](https://azure.microsoft.com/pricing/enterprise-agreement/).
 
 - Enterprise — tworzenie i testowanie. Idealne pod kątem:
   - wszelkich zespołowych obciążeń tworzenia/testowania
   - średnich i dużych indywidualnych obciążeń tworzenia/testowania
   - dostępu do specjalnych obrazów MSDN i preferencyjnych stawek za usługi
-  
+
   Aby uzyskać więcej informacji, zapoznaj się z ofertą [Enterprise — tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
 ### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Czy można przenieść własność subskrypcji na inne konto?

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: ef87d8d02e6d7800435cab207a88197ef7c94b7c
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: c18751d315af6da1a4b2f06aaca28c84746b7be5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430996"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470772"
 ---
 # <a name="container-security-in-security-center"></a>Zabezpieczenia kontenera w Security Center
 
@@ -41,7 +41,7 @@ Po znalezieniu problemów — według Qualys lub Security Center — otrzymasz p
 ## <a name="environment-hardening"></a>Ograniczanie funkcjonalności środowiska
 
 ### <a name="continuous-monitoring-of-your-docker-configuration"></a>Ciągłe monitorowanie konfiguracji platformy Docker
-Azure Security Center identyfikuje niezarządzane kontenery hostowane na maszynach wirtualnych z systemem Linux IaaS lub na innych maszynach systemu Linux z uruchomionymi kontenerami Docker Security Center stale ocenia konfiguracje tych kontenerów. Następnie porównuje je z [centrum danych testowych platformy Docker dla usługi Internet Security (CIS)](https://www.cisecurity.org/benchmark/docker/).
+Azure Security Center identyfikuje niezarządzane kontenery hostowane na maszynach wirtualnych z systemem Linux IaaS lub na innych maszynach systemu Linux z uruchomionymi kontenerami Docker Security Center stale ocenia konfiguracje tych kontenerów. Następnie porównuje je ze [wzorcem usługi Docker dla usługi Internet Security (CIS)](https://www.cisecurity.org/benchmark/docker/).
 
 Security Center obejmuje cały zestaw reguł testu wydajnościowego usługi CIS Docker i generuje alert, jeśli kontenery nie spełniają żadnej z tych kontrolek. Po znalezieniu niepożądanych konfiguracji Security Center generuje zalecenia dotyczące zabezpieczeń. Na **stronie zalecenia** można przeglądać zalecenia i rozwiązywać problemy. Zobaczysz również zalecenia na karcie **kontenery** , w których są wyświetlane wszystkie maszyny wirtualne wdrożone przy użyciu platformy Docker. 
 
@@ -71,9 +71,9 @@ Wykrywamy zagrożenia na poziomie klastra hosta i AKS. Aby uzyskać szczegółow
 ## <a name="container-security-faq"></a>Zabezpieczenia kontenerów — często zadawane pytania
 
 ### <a name="what-types-of-images-can-azure-security-center-scan"></a>Jakie typy obrazów mogą Azure Security Center skanowanie?
-Security Center skanuje obrazy systemu operacyjnego Linux. 
+Security Center skanuje obrazy oparte na systemie operacyjnym Linux, które zapewniają dostęp do powłoki. 
 
-Skaner Qualys nie obsługuje obrazów "distroless", które zawierają tylko aplikację i jej zależności środowiska uruchomieniowego.
+Skaner Qualys nie obsługuje obrazów minimalistyczny, takich jak obrazy wyłuskane [platformy Docker](https://hub.docker.com/_/scratch/) lub obrazy typu "Distroless", które zawierają tylko aplikację i jej zależności środowiska uruchomieniowego (bez Menedżera pakietów, powłoki lub systemu operacyjnego).
 
 ### <a name="how-does-we-scan-azure-security-center-scan-an-image"></a>Jak skanuje Azure Security Center skanowanie obrazu?
 Obraz jest wyodrębniany z rejestru. Następnie uruchamia się w izolowanej piaskownicy za pomocą skanera Qualys, który wyodrębnia listę znanych luk w zabezpieczeniach.

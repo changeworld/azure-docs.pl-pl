@@ -1,25 +1,18 @@
 ---
 title: Wyświetlanie kont rozliczeniowych w witrynie Azure Portal | Microsoft Docs
 description: Dowiedz się, jak wyświetlać konta rozliczeniowe w witrynie Azure Portal.
-services: ''
-documentationcenter: ''
 author: amberbhargava
-manager: amberb
-editor: ''
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/20/2020
 ms.author: banders
-ms.openlocfilehash: 2768d6e146a37e86bb36353f661179ebd7b5033d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 0117496642c17db97535eca74aad334f1517a665
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75994131"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199470"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Konta i zakresy rozliczeniowe w witrynie Azure Portal
 

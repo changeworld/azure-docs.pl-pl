@@ -1,19 +1,18 @@
 ---
 title: Kupowanie rezerwacji platformy Azure przy użyciu przedpłat lub płatności miesięcznych
 description: Dowiedz się, jak można kupować rezerwacje platformy Azure przy użyciu przedpłat lub płatności miesięcznych.
-services: billing
 author: bandersmsft
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/01/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 89ae15bb82db1e9e06ac2cb52146137161dac47d
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 2689bdeb003cec0050141374165142a62f9ea337
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031343"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200405"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Kupowanie rezerwacji platformy Azure przy użyciu płatności miesięcznych
 

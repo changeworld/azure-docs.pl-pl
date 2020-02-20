@@ -2,21 +2,18 @@
 title: Azure — limit wydatków | Microsoft Docs
 description: W tym artykule pokazano, jak działa limit wydatków platformy Azure oraz jak go usunąć.
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: bde3c142fa0f4f69948a9ff1df61d77f06d2b430
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: ef1ed399f2ed3401612543b3dcaf94dfbafb6715
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188274"
+ms.locfileid: "77200558"
 ---
 # <a name="azure-spending-limit"></a>Azure — limit wydatków
 
@@ -47,21 +44,21 @@ Jeśli masz bezpłatne konto platformy Azure, zapoznaj się z artykułem [Podwy�
 
     ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeniami ](./media/spending-limit/search-bar.png)
 
-1. Na liście **Moje subskrypcje** wybierz subskrypcję. Na przykład *Visual Studio Enterprise*. 
+1. Na liście **Moje subskrypcje** wybierz subskrypcję. Na przykład *Visual Studio Enterprise*.
 
    ![Zrzut ekranu przedstawiający przegląd siatki Moje subskrypcje](./media/spending-limit/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Jeśli niektóre subskrypcje Visual Studio nie są tutaj widoczne, może to oznaczać, że w pewnym momencie zmieniono katalog subskrypcji. Dla tych subskrypcji należy przełączyć katalog na katalog oryginalny (katalog, w którym początkowo utworzono konto). Następnie powtórz krok 2.
-    
+
 1. W przeglądzie subskrypcji kliknij pomarańczowy baner, aby usunąć limit wydatków.
-    
+
     ![Zrzut ekranu przedstawiający baner umożliwiający usunięcie limitu wydatków](./media/spending-limit/msdn-remove-spending-limit-banner-x.png)
 
 1. Wybierz, czy chcesz usunąć limit wydatków na czas nieokreślony, czy tylko w bieżącym okresie rozliczeniowym.
-    
+
       ![Zrzut ekranu przedstawiający blok usuwania limitu wydatków](./media/spending-limit/remove-spending-limit-blade-x.png)
-    
+
       | Opcja | Efekt |
       | --- | --- |
       | Usuń trwale limit wydatków | Limit wydatków nie zostanie automatycznie ponownie włączony na początku następnego okresu rozliczeniowego. W dowolnym momencie możesz go jednak ponownie włączyć samodzielnie. |
@@ -91,13 +88,13 @@ Ta funkcja jest dostępna tylko wtedy, gdy limit wydatków dla typów subskrypcj
 
     ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeniami ](./media/spending-limit/search-bar.png)
 
-1. Na liście **Moje subskrypcje** wybierz subskrypcję. Na przykład *Visual Studio Enterprise*. 
+1. Na liście **Moje subskrypcje** wybierz subskrypcję. Na przykład *Visual Studio Enterprise*.
 
    ![Zrzut ekranu przedstawiający przegląd siatki Moje subskrypcje](./media/spending-limit/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Jeśli niektóre subskrypcje Visual Studio nie są tutaj widoczne, może to oznaczać, że w pewnym momencie zmieniono katalog subskrypcji. Dla tych subskrypcji należy przełączyć katalog na katalog oryginalny (katalog, w którym początkowo utworzono konto). Następnie powtórz krok 2.
-    
+
 1. W przeglądzie subskrypcji kliknij baner u góry strony, aby ponownie włączyć limit wydatków.
 
 ## <a name="custom-spending-limit"></a>Niestandardowy limit wydatków

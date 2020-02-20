@@ -2,21 +2,18 @@
 title: Zadania administratora konta w witrynie Azure Portal
 description: Opisuje sposób wykonywania operacji płatności w witrynie Azure Portal
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 2f858fa7715145d55cf1c978b9c368e1f6586dce
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 5d48f6e02719bbf647cdbf800550d73ce83a018f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132132"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201003"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Zadania administratora konta w witrynie Azure Portal
 
@@ -25,35 +22,35 @@ W tym artykule opisano sposób wykonywania następujących zadań w witrynie Azu
 - Usuwanie limitu wydatków z subskrypcji
 - Dodawanie środków do subskrypcji platformy Azure w ramach programu licencjonowania Open
 
-Aby wykonać dowolne z tych zadań, musisz być administratorem konta. 
+Aby wykonać dowolne z tych zadań, musisz być administratorem konta.
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>Przechodzenie do form płatności dla subskrypcji
 
-1. Zaloguj się w [witrynie Azure Portal](https://portal.azure.com) jako administrator konta. 
+1. Zaloguj się w [witrynie Azure Portal](https://portal.azure.com) jako administrator konta.
 
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
-    
+
     ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeniami ](./media/account-admin-tasks/search-bar.png)
 
-1. Na liście **Moje subskrypcje** wybierz subskrypcję, do której chcesz dodać kartę kredytową. 
-   
+1. Na liście **Moje subskrypcje** wybierz subskrypcję, do której chcesz dodać kartę kredytową.
+
    ![Zrzut ekranu przedstawiający przegląd siatki Moje subskrypcje](./media/account-admin-tasks/cost-management-billing-overview-x.png)
-   
+
    > [!NOTE]
-   > Jeśli niektóre subskrypcje nie są tutaj widoczne, może to oznaczać, że w pewnym momencie zmieniono katalog subskrypcji. Dla tych subskrypcji należy przełączyć katalog na katalog oryginalny (katalog, w którym początkowo utworzono konto). Następnie powtórz krok 2. 
+   > Jeśli niektóre subskrypcje nie są tutaj widoczne, może to oznaczać, że w pewnym momencie zmieniono katalog subskrypcji. Dla tych subskrypcji należy przełączyć katalog na katalog oryginalny (katalog, w którym początkowo utworzono konto). Następnie powtórz krok 2.
 
 1. Wybierz pozycję **Formy płatności**.
 
     ![Zrzut ekranu przedstawiający wybrany blok Formy płatności.](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
-W tym miejscu możesz dodać nową kartę kredytową, zmienić aktywną formę płatności, edytować szczegóły karty kredytowej i usunąć karty kredytowe. 
+W tym miejscu możesz dodać nową kartę kredytową, zmienić aktywną formę płatności, edytować szczegóły karty kredytowej i usunąć karty kredytowe.
 
 ### <a name="change-active-payment-method"></a>Zmiana aktywnej formy płatności
 
 Aktywną formę płatności możesz zmienić, dodając nową kartę kredytową lub wybierając kartę, która została już zapisana. Aby zmienić aktywną formę płatności na nową kartę kredytową:
 
 1. W lewym górnym rogu wybierz pozycję „+”, aby dodać kartę kredytową.
-    
+
     ![Zrzut ekranu przedstawiający symbol plusa](./media/account-admin-tasks/subscription-payment-methods-plus.png)
 
 1. Wprowadź szczegóły karty kredytowej w formularzu po prawej stronie.
@@ -111,7 +108,7 @@ Jeśli chcesz uzyskać zgodę na płatności za pomocą faktury, zobacz artykuł
 
 ### <a name="edit-invoice-payment-address"></a>Edytowanie adresu płatności za pomocą faktury
 
-Aby edytować adres formy płatności za pomocą faktury, kliknij pozycję **Faktura** na liście form płatności dla subskrypcji. Formularz adresu zostanie otwarty po prawej stronie. 
+Aby edytować adres formy płatności za pomocą faktury, kliknij pozycję **Faktura** na liście form płatności dla subskrypcji. Formularz adresu zostanie otwarty po prawej stronie.
 
 ## <a name="remove-spending-limit"></a>Usuwanie limitu wydatków
 
@@ -124,15 +121,15 @@ Limit wydatków nie jest dostępny dla subskrypcji z planami zobowiązań lub z 
 
     ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeniami ](./media/account-admin-tasks/search-bar.png)
 
-1. Na liście **Moje subskrypcje** wybierz subskrypcję Visual Studio Enterprise. 
+1. Na liście **Moje subskrypcje** wybierz subskrypcję Visual Studio Enterprise.
 
    ![Zrzut ekranu przedstawiający przegląd siatki Moje subskrypcje](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Jeśli niektóre subskrypcje Visual Studio nie są tutaj widoczne, może to oznaczać, że w pewnym momencie zmieniono katalog subskrypcji. Dla tych subskrypcji należy przełączyć katalog na katalog oryginalny (katalog, w którym początkowo utworzono konto). Następnie powtórz krok 2.
-    
+
 1. W przeglądzie subskrypcji kliknij pomarańczowy baner, aby usunąć limit wydatków.
-    
+
     ![Zrzut ekranu przedstawiający baner umożliwiający usunięcie limitu wydatków](./media/account-admin-tasks/msdn-remove-spending-limit-banner-x.png)
 
 1. Wybierz, czy chcesz usunąć limit wydatków na czas nieokreślony, czy tylko w bieżącym okresie rozliczeniowym.
@@ -152,15 +149,15 @@ Jeśli masz subskrypcję platformy Azure w ramach programu licencjonowania Open,
 
     ![Zrzut ekranu przedstawiający wyszukiwanie zarządzania kosztami i rozliczeniami ](./media/account-admin-tasks/search-bar.png)
 
-1. Na liście **Moje subskrypcje** wybierz subskrypcję platformy Azure w ramach programu licencjonowania Open. 
+1. Na liście **Moje subskrypcje** wybierz subskrypcję platformy Azure w ramach programu licencjonowania Open.
 
     ![Zrzut ekranu przedstawiający przegląd siatki Moje subskrypcje](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > Jeśli Twoja subskrypcja nie jest tutaj widoczna, może to oznaczać, że w pewnym momencie zmieniono jej katalog. Należy przełączyć katalog subskrypcji na katalog oryginalny (katalog, w którym początkowo utworzono konto). Następnie powtórz krok 2.
-    
+
 1. Wybierz pozycję **Historia środków**.
-    
+
     ![Zrzut ekranu przedstawiający historię środków](./media/account-admin-tasks/aio-credit-history-blade.png)
 
 1. W lewym górnym rogu wybierz pozycję „+”, aby dodać więcej środków.
@@ -168,7 +165,7 @@ Jeśli masz subskrypcję platformy Azure w ramach programu licencjonowania Open,
     ![Zrzut ekranu przedstawiający przycisk Dodaj środki](./media/account-admin-tasks/aio-credit-history-plus.png)
 
 1. Wybierz typ formy płatności z listy rozwijanej. Możesz dodać klucz produktu lub zakupić środki przy użyciu karty kredytowej.
-    
+
     ![Zrzut ekranu przedstawiający listę rozwijaną formy płatności w bloku dodawania środków](./media/account-admin-tasks/add-credits-select-payment-method.png)
 
 1. W przypadku użycia klucza produktu:

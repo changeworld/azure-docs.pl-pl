@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9c2da82034a3742f789c736d8c0410f005f20edb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 774a0354c6262598c7d5e1f51e2e475fd17fe2d7
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422296"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468284"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Obróć certyfikaty w usłudze Azure Kubernetes Service (AKS)
 
@@ -42,7 +42,7 @@ AKS generuje i używa następujących certyfikatów, urzędów certyfikacji i ko
 > 
 > Ponadto możesz sprawdzić datę wygaśnięcia certyfikatu klastra. Na przykład następujące polecenie wyświetla szczegóły certyfikatu dla klastra *myAKSCluster* .
 > ```console
-> kubectl config view --raw -o jsonpath='{.clusters[?(@.name == "myAKSCluster")].cluster.certificate-authority-data}' | base64 -d > my-cert.crt
+> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
 > openssl x509 -in my-cert.crt -text
 > ```
 
@@ -66,7 +66,7 @@ az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 > [!IMPORTANT]
 > Ukończenie `az aks rotate-certs` może potrwać do 30 minut. Jeśli polecenie zakończy się niepowodzeniem przed ukończeniem, użyj `az aks show`, aby sprawdzić, czy stan klastra to *rotacja certyfikatów*. Jeśli klaster jest w stanie niepowodzenia, uruchom ponownie `az aks rotate-certs`, aby ponownie obrócić certyfikaty.
 
-Sprawdź, czy stare certyfikaty nie są już prawidłowe, uruchamiając polecenie `kubectl`. Ponieważ certyfikaty używane przez `kubectl`nie zostały zaktualizowane, zostanie wyświetlony komunikat o błędzie.  Przykład:
+Sprawdź, czy stare certyfikaty nie są już prawidłowe, uruchamiając polecenie `kubectl`. Ponieważ certyfikaty używane przez `kubectl`nie zostały zaktualizowane, zostanie wyświetlony komunikat o błędzie.  Na przykład:
 
 ```console
 $ kubectl get no
@@ -79,7 +79,7 @@ Zaktualizuj certyfikat używany przez `kubectl`, uruchamiając `az aks get-crede
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-Sprawdź, czy certyfikaty zostały zaktualizowane, uruchamiając polecenie `kubectl`, które zakończy się pomyślnie. Przykład:
+Sprawdź, czy certyfikaty zostały zaktualizowane, uruchamiając polecenie `kubectl`, które zakończy się pomyślnie. Na przykład:
 
 ```console
 kubectl get no

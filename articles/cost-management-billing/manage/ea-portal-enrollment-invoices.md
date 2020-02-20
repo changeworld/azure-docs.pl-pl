@@ -1,19 +1,18 @@
 ---
 title: Faktury za rejestracje w usłudze Azure Enterprise
 description: W tym artykule wyjaśniono, jak zarządzać fakturami za usługę Azure Enterprise i wykonywać związane z nimi działania.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/04/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: boalcsva
-ms.openlocfilehash: 2a75972d00733d23df7f4a59b2d5010404df8dc3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.reviewer: boalcsva
+ms.openlocfilehash: 37af492ae156aa880c55034550d4165ec046e74f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023399"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199759"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za rejestracje w usłudze Azure Enterprise
 
@@ -71,11 +70,11 @@ Data otrzymania faktury nadwyżkowej zależy od daty rozpoczęcia rejestracji i 
   - Opłaty, które nie są objęte zobowiązaniem pieniężnym, są należne jako płatności nadwyżkowe.  
 
 - **Rejestracje pośrednie z datą początkową przed 1 maja 2018 r.** :
-  
+
   Klienci z pośrednią umową Enterprise Azure (EA) z datą rozpoczęcia wcześniejszą niż 1 maja 2018 r. mają skonfigurowany kwartalny okres rozliczeniowy. Otrzymują oni faktury bezpośrednio od współpracujących z nimi partnerów handlowych (CP, channel partner).  
 
 - **Rejestracje pośrednie z datą początkową po 1 maja 2018 r.** :
-  
+
   Korzystasz z miesięcznego okresu rozliczeniowego.  
 
 ### <a name="increase-your-monetary-commitment"></a>Zwiększanie zobowiązania pieniężnego
@@ -617,7 +616,7 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 - **Exclusions**:
   - Users already participating in the Extended Power BI Pro trial will continue to qualify under the pre-existing offer and can't enter into the Azure EA Power BI Pro trial offer.
   - Users participating in the Offer can only use Power BI Pro with the Microsoft Azure Enterprise content pack. Any other use of Power BI Pro is prohibited.
-  - Term: The Offer began on June 1, 2017 and ended on May 31, 2018.  Acceptance can occur at any time during the 12-month period, though the offer will terminate on May 31, 2018 for all users regardless of when they accepted the Offer. 
+  - Term: The Offer began on June 1, 2017 and ended on May 31, 2018.  Acceptance can occur at any time during the 12-month period, though the offer will terminate on May 31, 2018 for all users regardless of when they accepted the Offer.
   -->
 
 ### <a name="to-access-microsoft-azure-consumption-insights"></a>Aby uzyskać dostęp do składnika Microsoft Azure Consumption Insights:
@@ -630,7 +629,7 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 1. Po jego zakończeniu w okienku nawigacji pojawią się nowy pulpit nawigacyjny, raport i model. Wybierz pulpit nawigacyjny, aby wyświetlić zaimportowane dane.
 
 > [!TIP]
-> 
+>
 > - Aby dowiedzieć się, jak wygenerować klucz interfejsu API dla rejestracji, zobacz plik pomocy dotyczący raportów interfejsu API w witrynie [Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26).
 > - Aby uzyskać więcej informacji na temat łączenia usługi Power BI ze użyciem platformy Azure, zobacz [Microsoft Azure Consumption Insights](/power-bi/desktop-connect-azure-cost-management).
 

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: b0a4f390a3a897d14adc2944195b0c51148de495
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209277"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468766"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
@@ -66,7 +66,7 @@ Listę formatów plików, których można używać z Video Indexer, zawiera arty
 1. Zaloguj się w witrynie internetowej usługi [Video Indexer](https://www.videoindexer.ai/).
 2. Aby przekazać plik wideo, naciśnij przycisk lub link **Upload** (Przekaż).
 
-    ![Przekaż](./media/video-indexer-get-started/video-indexer-upload.png)
+    ![Upload](./media/video-indexer-get-started/video-indexer-upload.png)
 
     Po przekazaniu pliku wideo usługa Video Indexer rozpocznie jego indeksowanie i analizowanie.
 
@@ -95,7 +95,7 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
     
         |Name (Nazwa)|Opis|
         |---|---|
-        |{1&gt;identyfikator&lt;1}|Identyfikator wideo|
+        |id|Identyfikator wideo|
         |state|Stan wideo|  
     - Przykład: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - Osoba rozpoznana na filmie wideo:
@@ -103,7 +103,7 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
     
       |Name (Nazwa)|Opis|
       |---|---|
-      |{1&gt;identyfikator&lt;1}| Identyfikator wideo|
+      |id| Identyfikator wideo|
       |faceId|Identyfikator Face ID w indeksie wideo|
       |knownPersonId|Identyfikator osoby, unikatowy w ramach danego modelu twarzy|
       |personName|Imię i nazwisko osoby|
@@ -123,6 +123,10 @@ Tego parametru należy użyć, jeśli nagrania nieprzetworzone lub zewnętrzne z
 - `VideoOnly` — Indeksuj i Wyodrębnij szczegółowe dane za pomocą tylko wideo (ignorowanie audio)
 - `Default` — indeksowanie i wyodrębnianie szczegółowych informacji przy użyciu części zarówno audio, jak i wideo
 - `DefaultWithNoiseReduction` — indeksowanie i wyodrębnianie szczegółowych informacji przy użyciu zarówno audio, jak i wideo przy zastosowaniu algorytmów redukcji szumów w strumieniu audio
+
+> [!NOTE]
+> Video Indexer obejmuje dwie ścieżki audio. Jeśli plik zawiera więcej ścieżek audio, będą one traktowane jako jedna ścieżka.<br/>
+Aby zindeksować ścieżki oddzielnie, należy wyodrębnić odpowiedni plik audio i indeksować go jako `AudioOnly`.
 
 Cena zależy od wybranej opcji indeksowania.  
 

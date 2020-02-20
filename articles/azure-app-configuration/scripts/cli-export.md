@@ -15,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 0cdefaa60c9e7a1aab418042c037ef76b63e7804
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c4fc8f1cd1159f296d37fd67634d1c3171f7d7a9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898672"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468272"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>Eksportowanie z magazynu usługi Azure App Configuration
 
@@ -31,10 +31,6 @@ Ten przykładowy skrypt eksportuje pary klucz-wartość z magazynu usługi Azure
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
-
-Należy najpierw zainstalować rozszerzenie interfejsu wiersza polecenia usługi Azure App Configuration, wykonując następujące polecenie:
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
@@ -53,7 +49,7 @@ Ten skrypt używa następujących poleceń do eksportowania z magazynu konfigura
 
 | Polecenie | Uwagi |
 |---|---|
-| [AZ AppConfig KV Export](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-export) | Eksportuje z zasobu magazynu konfiguracji aplikacji. |
+| [AZ AppConfig KV Export](/cli/azure/appconfig/kv#az-appconfig-kv-export) | Eksportuje z zasobu magazynu konfiguracji aplikacji. |
 
 ## <a name="next-steps"></a>Następne kroki
 

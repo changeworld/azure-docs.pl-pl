@@ -1,6 +1,6 @@
 ---
-title: Usługa StorSimple przejścia w tryb failover odzyskiwania po awarii na urządzeniu fizycznym StorSimple 8000 series | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak urządzenie fizyczne StorSimple 8000 series na inne urządzenie fizyczne w trybie Failover.
+title: Tryb failover, odzyskiwanie po awarii na inne urządzenie z StorSimple 8000
+description: Dowiedz się, jak przełączyć urządzenie fizyczne z serii StorSimple 8000 na inne urządzenie fizyczne.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,76 +14,76 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 5fcf95a1a3033a5150945dbd841f12d50ebb023b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9e4e890ab5491e46ffe5ea0e1c168d168f9cc729
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60577245"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468613"
 ---
-# <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Pracy awaryjnej na urządzeniu fizycznym StorSimple 8000 series
+# <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Przechodzenie w tryb failover na urządzenie fizyczne z serii StorSimple 8000
 
 ## <a name="overview"></a>Omówienie
 
-W tym samouczku opisano kroki wymagane do pracy awaryjnej urządzeniem fizycznym StorSimple 8000 series do innego urządzenia fizycznego StorSimple w przypadku awarii. Usługa StorSimple używa funkcji trybu failover urządzenia do migracji danych z urządzenia fizycznego źródła w centrum danych do innego urządzenia fizycznego. Wskazówki zawarte w tym samouczku ma zastosowanie do serii StorSimple 8000 fizycznych urządzeń z systemem oprogramowania wersji Update 3 i nowszych.
+W tym samouczku opisano kroki wymagane do przejścia w tryb failover urządzenia fizycznego z serii StorSimple 8000 na inne urządzenie fizyczne StorSimple, jeśli wystąpi awaria. StorSimple używa funkcji przełączania do trybu failover urządzenia do migrowania danych z źródłowego urządzenia fizycznego w centrum danych do innego urządzenia fizycznego. Wskazówki zawarte w tym samouczku odnoszą się do urządzeń fizycznych z serii StorSimple 8000 z wersjami oprogramowania Update 3 i nowszymi.
 
-Aby dowiedzieć się więcej na temat trybu failover urządzenia i sposobie ich użycia do odzyskania po awarii, przejdź do [trybu Failover i odzyskiwanie po awarii dla urządzeń z serii StorSimple 8000](storsimple-8000-device-failover-disaster-recovery.md).
+Aby dowiedzieć się więcej o przełączaniu do trybu failover urządzeń i sposobie ich użycia w celu odzyskania po awarii, przejdź do [trybu failover i odzyskiwania po awarii dla urządzeń z serii StorSimple 8000](storsimple-8000-device-failover-disaster-recovery.md).
 
-Do trybu failover urządzenia fizycznego StorSimple do urządzenia StorSimple w chmurze, przejdź do [Failover urządzenia StorSimple w chmurze](storsimple-8000-device-failover-cloud-appliance.md). Do trybu failover urządzenia fizycznego do samego siebie, przejdź do [awaryjnej w tym samym urządzeniem fizycznym StorSimple](storsimple-8000-device-failover-same-device.md).
+Aby przełączyć urządzenie fizyczne StorSimple do trybu failover w urządzeniu w chmurze StorSimple, przejdź do obszaru przełączenia w tryb [failover na urządzenie w chmurze StorSimple](storsimple-8000-device-failover-cloud-appliance.md). Aby przełączyć urządzenie fizyczne w tryb failover, przejdź do trybu [failover na tym samym urządzeniu fizycznym StorSimple](storsimple-8000-device-failover-same-device.md).
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Upewnij się, przejrzeniu uwagi do trybu failover urządzenia. Aby uzyskać więcej informacji, przejdź do [typowe kwestie dotyczące pracy w trybie Failover urządzenia](storsimple-8000-device-failover-disaster-recovery.md).
+- Upewnij się, że zawarto przegląd zagadnień związanych z trybem failover urządzenia. Aby uzyskać więcej informacji, przejdź do [typowych zagadnień dotyczących trybu failover urządzeń](storsimple-8000-device-failover-disaster-recovery.md).
 
-- Konieczne jest posiadanie StorSimple 8000 series urządzenie fizyczne, wdrożonych w centrum danych. Na urządzeniu musi działać z aktualizacją Update 3 lub nowszej wersji oprogramowania. Aby uzyskać więcej informacji, przejdź do [wdrażanie urządzenia StorSimple w środowisku lokalnym](storsimple-8000-deployment-walkthrough-u2.md).
+- W centrum danych musi być wdrożone urządzenie fizyczne z serii StorSimple 8000. Na urządzeniu musi być uruchomiona wersja Update 3 lub nowsza. Aby uzyskać więcej informacji, przejdź do obszaru [wdrażanie lokalnego urządzenia StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
 
 
-## <a name="steps-to-fail-over-to-a-physical-device"></a>Kroki do trybu failover na urządzeniu fizycznym
+## <a name="steps-to-fail-over-to-a-physical-device"></a>Kroki umożliwiające przełączenie w tryb failover na urządzenie fizyczne
 
-Wykonaj poniższe kroki, aby przywrócić urządzenie fizyczne urządzenie docelowe.
+Wykonaj następujące kroki, aby przywrócić urządzenie do docelowego urządzenia fizycznego.
 
-1. Upewnij się, że kontener woluminów, które w trybie Failover ma skojarzone migawki w chmurze. Aby uzyskać więcej informacji, przejdź do [usługi Menedżer urządzeń StorSimple użycia do tworzenia kopii zapasowych](storsimple-8000-manage-backup-policies-u2.md).
-2. Przejdź do Menedżera urządzeń StorSimple, a następnie kliknij przycisk **urządzeń**. W **urządzeń** bloku, przejdź do listy urządzeń połączonych z Twoją usługą.
-    ![Wybierz urządzenie](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
-3. Wybierz i kliknij swoje urządzenie źródłowe. Urządzenie źródłowe zawiera kontenery woluminów, które mają być w trybie Failover. Przejdź do **Ustawienia > kontenery woluminów**.
-4. Wybierz kontener woluminów, które chcieliby do pracy awaryjnej na innym urządzeniu. Kliknij kontener woluminów, aby wyświetlić listę woluminów należących do tego kontenera. Wybierz wolumin, kliknij prawym przyciskiem myszy i kliknij **Przełącz do trybu Offline** do przełączenia woluminu w tryb offline. Powtórz ten proces, wszystkie woluminy w kontenerze woluminów.
-5. Powtórz poprzedni krok dla wszystkich kontenerów woluminów, które Twoim zdaniem do pracy awaryjnej na innym urządzeniu.
-6. Wróć do **urządzeń** bloku. Na pasku poleceń kliknij **w trybie Failover**.
-    ![Kliknij opcję niepowodzenie](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev2.png)
+1. Sprawdź, czy kontener woluminów do przełączenia w tryb failover ma skojarzone migawki w chmurze. Aby uzyskać więcej informacji, przejdź do obszaru [Tworzenie kopii zapasowych za pomocą usługi StorSimple Menedżer urządzeń](storsimple-8000-manage-backup-policies-u2.md).
+2. Przejdź do StorSimple Menedżer urządzeń a następnie kliknij pozycję **urządzenia**. W bloku **urządzenia** przejdź do listy urządzeń połączonych z usługą.
+    ![wybierz](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png) urządzeń
+3. Wybierz i kliknij urządzenie źródłowe. Urządzenie źródłowe ma kontenery woluminów do przełączenia w tryb failover. Przejdź do pozycji **ustawienia > kontenery woluminów**.
+4. Wybierz kontener woluminów, który chcesz przełączyć do trybu failover na innym urządzeniu. Kliknij kontener woluminów, aby wyświetlić listę woluminów w tym kontenerze. Wybierz wolumin, kliknij prawym przyciskiem myszy, a następnie kliknij polecenie **Przełącz do trybu offline** , aby przełączyć wolumin w tryb offline. Powtórz ten proces dla wszystkich woluminów w kontenerze woluminów.
+5. Powtórz poprzedni krok dla wszystkich kontenerów woluminów, które chcesz przełączyć do trybu failover na innym urządzeniu.
+6. Wróć do bloku **urządzenia** . Na pasku poleceń kliknij pozycję **tryb failover**.
+    ![kliknij pozycję Tryb failover](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev2.png)
     
-7. W **w trybie Failover** blok, wykonaj następujące czynności:
+7. W bloku **tryb failover** wykonaj następujące czynności:
    
-   1. Kliknij przycisk **źródła**. Kontenery woluminów z woluminów skojarzonych z migawkami w chmurze są wyświetlane. Kontenery, wyświetlane kwalifikują się do trybu failover. Na liście kontenerów woluminów wybrać kontenery woluminów, które Twoim zdaniem do trybu failover. **Wyświetlane są tylko kontenery woluminów z migawkami w chmurze skojarzone i woluminy w trybie offline.**
+   1. Kliknij pozycję **Źródło**. Zostaną wyświetlone kontenery woluminów z woluminami skojarzonymi z migawkami w chmurze. Tylko wyświetlane kontenery kwalifikują się do przejścia w tryb failover. Na liście kontenerów woluminów wybierz kontenery woluminów, które chcesz przełączyć do trybu failover. **Wyświetlane są tylko kontenery woluminów ze skojarzonymi migawkami w chmurze i woluminami w trybie offline.**
 
        ![Wybierz źródło](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev5.png)
-   2. Kliknij przycisk **docelowej**. Dla kontenerów woluminów wybrane w poprzednim kroku wybierz urządzenie docelowe z listy rozwijanej dostępnych urządzeń. Tylko urządzenia, które ma wystarczającej wydajności, aby pomieścić kontenery woluminów źródłowych są wyświetlane na liście.
+   2. Kliknij pozycję **cel**. W przypadku kontenerów woluminów wybranych w poprzednim kroku wybierz urządzenie docelowe z listy rozwijanej dostępne urządzenia. Na liście są wyświetlane tylko urządzenia, które mają wystarczającą pojemność do obsługi kontenerów woluminów źródłowych.
 
         ![Wybieranie obiektu docelowego](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev6.png)
 
-   3. Na koniec sprawdź wszystkie ustawienia trybu failover w ramach **Podsumowanie**. Po przejrzeniu ustawienia, zaznacz pole wyboru wskazujący, że woluminy w wybranych kontenerach woluminów są dostępne w trybie offline. Kliknij przycisk **OK**.
+   3. Na koniec Przejrzyj wszystkie ustawienia trybu failover w obszarze **Podsumowanie**. Po przejrzeniu ustawień zaznacz pole wyboru wskazujące, że woluminy w wybranych kontenerach woluminów są w trybie offline. Kliknij przycisk **OK**.
 
-       ![Przejrzyj ustawienia trybu failover](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev8.png)
+       ![Przegląd ustawień trybu failover](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev8.png)
   
-8. Usługa StorSimple tworzy zadanie trybu failover. Kliknij powiadomienie zadania, aby monitorować zadanie trybu failover za pomocą **zadań** bloku.
+8. StorSimple tworzy zadanie trybu failover. Kliknij powiadomienie o zadaniu, aby monitorować zadanie trybu failover w bloku **zadania** .
 
-    Jeśli kontener woluminów, która przeszła w tryb failover ma woluminy lokalne, zobaczysz zadania indywidulane przywracanie dla każdego woluminu lokalnego (a nie dla woluminów warstwowych) w kontenerze. Przywracanie, te zadania może potrwać jakiś czas, aby zakończyć. Istnieje prawdopodobieństwo, że zadanie trybu failover może zakończyć się wcześniej. Te woluminy mają lokalnych gwarancji, tylko po wykonaniu zadania przywracania.
+    Jeśli kontener woluminów w trybie failover zawiera woluminy lokalne, w kontenerze zostaną wyświetlone pojedyncze zadania przywracania dla każdego woluminu lokalnego (nie dla woluminów warstwowych). Ukończenie tych zadań przywracania może zająć dużo czasu. Prawdopodobnie zadanie trybu failover może zostać wykonane wcześniej. Te woluminy będą mieć lokalne gwarancje tylko po zakończeniu zadań przywracania.
 
     ![Monitorowanie zadania trybu failover](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev13.png)
 
-9. Po zakończeniu pracy w trybie failover, przejdź do **urządzeń** bloku.
+9. Po zakończeniu pracy w trybie failover przejdź do bloku **urządzenia** .
    
-   1. Wybierz urządzenie, używanym jako urządzenie docelowe dla procesu pracy awaryjnej.
+   1. Wybierz urządzenie, które było używane jako urządzenie docelowe dla procesu przełączania do trybu failover.
 
        ![Wybierz urządzenie](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
-   2. Przejdź do **kontenery woluminów** bloku. Powinny zostać wyświetlone wszystkie kontenery woluminów, wraz z woluminami ze starym urządzeniem.
+   2. Przejdź do bloku **kontenery woluminów** . Wszystkie kontenery woluminów oraz woluminy ze starego urządzenia powinny być wymienione na liście.
 
-       ![Kontenery woluminów docelowego widoku](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev16.png)
+       ![Wyświetl kontenery woluminów docelowych](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev16.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Po wykonaniu przejścia w tryb failover, konieczne może być [dezaktywacji lub usunięcia urządzenia StorSimple](storsimple-8000-deactivate-and-delete-device.md).
-* Aby uzyskać informacje o sposobie używania usługi Menedżer urządzeń StorSimple, przejdź do [korzystać z usługi Menedżer urządzeń StorSimple do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
+* Po przejściu w tryb failover może być konieczne [Dezaktywowanie lub usunięcie urządzenia StorSimple](storsimple-8000-deactivate-and-delete-device.md).
+* Aby uzyskać informacje o sposobach korzystania z usługi StorSimple Menedżer urządzeń, przejdź do pozycji [Korzystanie z usługi StorSimple Menedżer urządzeń w celu administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
 
