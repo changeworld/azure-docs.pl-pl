@@ -1,26 +1,20 @@
 ---
 title: Rejestracja w usłudze Office 365 przy użyciu konta platformy Azure | Microsoft Docs
 description: Dowiedz się, jak utworzyć subskrypcję usługi Office 365 przy użyciu konta platformy Azure
-services: ''
-documentationcenter: ''
 author: JiangChen79
-manager: adpick
-editor: ''
+ms.reviewer: adwise
 tags: billing,top-support-issue
-ms.assetid: ''
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 02/21/2020
 ms.author: banders
-ms.openlocfilehash: 034df0de027a50c61e5a7cab3d1e829446002c86
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b38800a990056d7de0b6978573ddc19c80503a1d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75993598"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199929"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Rejestracja przy użyciu konta platformy Azure w celu uzyskania subskrypcji usługi Office 365
 Jeśli jesteś subskrybentem platformy Azure, możesz użyć swojego konta platformy Azure do zarejestrowania subskrypcji usługi Office 365. Jeśli reprezentujesz organizację, która ma subskrypcję platformy Azure, możesz utworzyć subskrypcje usługi Office 365 dla użytkowników w istniejącej usłudze Azure Active Directory (Azure AD). Zarejestruj się w usłudze Office 365 przy użyciu konta z uprawnieniami administratora globalnego lub administratora rozliczeń w dzierżawie usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [Sprawdzanie uprawnień konta w usłudze Azure AD](#RoleInAzureAD) i [Przypisywanie ról administratorów w usłudze Azure Active Directory](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).

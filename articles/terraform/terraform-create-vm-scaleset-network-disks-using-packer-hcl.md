@@ -3,12 +3,12 @@ title: Samouczek — Tworzenie zestawu skalowania maszyn wirtualnych platformy A
 description: Za pomocą narzędzia Terraform można konfigurować i wersjonować zestaw skalowania maszyn wirtualnych platformy Azure z niestandardowego obrazu wygenerowanego przez narzędzie Packer (wraz z siecią wirtualną i zarządzanymi dołączonymi dyskami).
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 9d149a28f82100715035f435de56ff134ca685f5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92a8221d625f8b6b73343f74b85fdfcf5e578b23
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159289"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472212"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>Samouczek: Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure na podstawie niestandardowego obrazu programu Packer przy użyciu Terraform
 
@@ -28,7 +28,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Terraform**: [Zainstaluj Terraform i Skonfiguruj dostęp do platformy Azure](/azure/virtual-machines/linux/terraform-install-configure).
+- **Terraform**: [Zainstaluj Terraform i Skonfiguruj dostęp do platformy Azure](terraform-install-configure.md).
 - **Para kluczy SSH**: [Utwórz parę kluczy SSH](/azure/virtual-machines/linux/mac-create-ssh-keys).
 - **Pakujący**: [Zainstaluj program Packer](https://www.packer.io/docs/install/index.html).
 

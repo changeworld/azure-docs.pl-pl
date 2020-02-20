@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 32865b84de2dc1c1f8a3fd6beca80a2659f1e3d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74c8c7dfc2beda2d242bc21e12293dc6f3c1cffe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370769"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470840"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure
 
@@ -41,7 +41,7 @@ Jeśli nie chcesz inwestować w jedną dodatkową maszynę wirtualną, możesz r
 ![Program pacemaker w systemie SLES — omówienie](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Przy planowaniu i wdrażaniu program Pacemaker w systemie Linux w klastrze węzłów i interwencja urządzeń jest niezbędne dla ogólną niezawodność kompletna Konfiguracja klastra zaangażowane routingu między maszynami wirtualnymi i maszyn wirtualnych, obsługi urządzeń interwencja nie przechodzi przez inne urządzenia, takie jak [urządzeń WUS](https://azure.microsoft.com/solutions/network-appliances/). W przeciwnym razie problemy i obsługi zdarzeń za pomocą urządzenia NVA może mieć negatywny wpływ na stabilności i niezawodności ogólnej konfiguracji klastra. Aby uniknąć takich przeszkód, nie należy definiować reguł routingu urządzeń WUS lub [reguł routingu zdefiniowanych przez użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) , które kierują ruch między węzłami klastrowanymi i urządzeniami SBD za poorednictwem urządzeń WUS i podobnych urządzeń podczas planowania i wdrażania węzłów klastra Pacemaker systemu Linux i urządzeń SBD. 
+> Podczas planowania i wdrażania klastrowanych węzłów Pacemaker i urządzeń SBD z systemem Linux należy koniecznie ogólnej niezawodności kompletnej konfiguracji klastra, którą Routing między maszynami wirtualnymi i maszyn wirtualnych obsługujących urządzenia SBD nie są przekazywane przez żadne inne urządzenia, takie jak [urządzeń WUS](https://azure.microsoft.com/solutions/network-appliances/). W przeciwnym razie problemy i obsługi zdarzeń za pomocą urządzenia NVA może mieć negatywny wpływ na stabilności i niezawodności ogólnej konfiguracji klastra. Aby uniknąć takich przeszkód, nie należy definiować reguł routingu urządzeń WUS lub [reguł routingu zdefiniowanych przez użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) , które kierują ruch między węzłami klastrowanymi i urządzeniami SBD za poorednictwem urządzeń WUS i podobnych urządzeń podczas planowania i wdrażania węzłów klastra Pacemaker systemu Linux i urządzeń SBD. 
 >
 
 ## <a name="sbd-fencing"></a>Preferowane interwencja
@@ -54,12 +54,15 @@ Najpierw należy utworzyć iSCSI docelowych maszyn wirtualnych. serwery obiektó
 
 1. Wdrażanie nowego systemu SLES 12 z dodatkiem SP1 lub nowszej maszyn wirtualnych i połączyć się z nimi za pośrednictwem protokołu ssh. Maszyny nie muszą być duże. Rozmiar maszyny wirtualnej, takie jak Standard_E2s_v3 lub Standard_D2s_v3 jest wystarczająca. Upewnij się, że używasz usługi Premium storage dysku systemu operacyjnego.
 
-Uruchom następujące polecenia na wszystkich **iSCSI docelowych maszyn wirtualnych**.
+Uruchom następujące polecenia na wszystkich **docelowych maszynach wirtualnych iSCSI**.
 
 1. Aktualizacja w systemie SLES
 
    <pre><code>sudo zypper update
    </code></pre>
+
+   > [!NOTE]
+   > Po uaktualnieniu lub zaktualizowaniu systemu operacyjnego może być konieczne ponowne uruchomienie systemu operacyjnego. 
 
 1. Usuwanie pakietów
 
@@ -81,7 +84,7 @@ Uruchom następujące polecenia na wszystkich **iSCSI docelowych maszyn wirtualn
 
 ### <a name="create-iscsi-device-on-iscsi-target-server"></a>Utwórz urządzenie iSCSI na serwerze docelowym iSCSI
 
-Uruchom następujące polecenia na wszystkich **iSCSI docelowych maszyn wirtualnych** do tworzenia dysków iSCSI w przypadku klastrów używane przez systemy SAP. W poniższym przykładzie są tworzone interwencja urządzeń dla wielu klastrów. Przedstawia on sposób użyje jednego serwera obiektów docelowych iSCSI dla wielu klastrów. Urządzenia interwencja są umieszczane na dysku systemu operacyjnego. Upewnij się, że masz wystarczająco dużo miejsca.
+Uruchom następujące polecenia na wszystkich **docelowych maszynach wirtualnych iSCSI** , aby utworzyć dyski iSCSI dla klastrów używanych przez systemy SAP. W poniższym przykładzie są tworzone interwencja urządzeń dla wielu klastrów. Przedstawia on sposób użyje jednego serwera obiektów docelowych iSCSI dla wielu klastrów. Urządzenia interwencja są umieszczane na dysku systemu operacyjnego. Upewnij się, że masz wystarczająco dużo miejsca.
 
 **`nfs`** służy do identyfikowania klastra NFS, **ascsnw1** służy do identyfikowania klastra ASCS **NW1**, **dbnw1** służy do identyfikowania klastra bazy danych **NW1**, **NFS-0** i **NFS-1** są nazwami hostów węzłów klastra NFS, **NW1-xscs-0** i **NW1-xscs-1** są nazwami hostów **NW1** ASCS węzłów klastra, a **NW1-DB-0** i **NW1-dB-1** są nazwami hostów węzłów klastra bazy danych. Zamień na ich nazw hostów węzły klastra i identyfikatora SID systemu SAP.
 
@@ -175,9 +178,9 @@ o- / ...........................................................................
 
 Łączenie z urządzeniem iSCSI, który został utworzony w poprzednim kroku z klastra.
 Uruchom następujące polecenia na węzłach nowego klastra, który chcesz utworzyć.
-Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
+Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
 
-1. **[A]**  Nawiązywanie połączenia z urządzeniami iSCSI
+1. **[A]** łączenie z urządzeniami iSCSI
 
    Najpierw należy włączyć iSCSI i interwencja usług.
 
@@ -186,7 +189,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo systemctl enable sbd
    </code></pre>
 
-1. **[1]**  Zmienić nazwę inicjatora w pierwszym węźle
+1. **[1]** Zmień nazwę inicjatora w pierwszym węźle
 
    <pre><code>sudo vi /etc/iscsi/initiatorname.iscsi
    </code></pre>
@@ -196,7 +199,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    <pre><code>InitiatorName=<b>iqn.2006-04.nfs-0.local:nfs-0</b>
    </code></pre>
 
-1. **[2]**  Zmienić nazwę inicjatora drugiego węzła
+1. **[2]** Zmień nazwę inicjatora w drugim węźle
 
    <pre><code>sudo vi /etc/iscsi/initiatorname.iscsi
    </code></pre>
@@ -206,7 +209,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    <pre><code>InitiatorName=<b>iqn.2006-04.nfs-1.local:nfs-1</b>
    </code></pre>
 
-1. **[A]**  Ponowne uruchomienie usługi iSCSI
+1. **[A]** Uruchom ponownie usługę iSCSI
 
    Teraz ponownie uruchomić usługę iSCSI, aby zastosować zmiany
 
@@ -214,7 +217,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo systemctl restart iscsi
    </code></pre>
 
-   Podłącz urządzenia iSCSI. W poniższym przykładzie 10.0.0.17 jest adres IP serwera docelowego iSCSI i 3260 jest domyślnym portem. <b>IQN.2006 04.nfs.local:nfs</b> jest jedną z nazw docelowych, które znajduje się po uruchomieniu pierwszego polecenia poniżej (iscsiadm -m discovery).
+   Podłącz urządzenia iSCSI. W poniższym przykładzie 10.0.0.17 jest adres IP serwera docelowego iSCSI i 3260 jest domyślnym portem. <b>IQN. 2006-04. NFS. local: system plików NFS</b> jest jedną z nazw docelowych, która jest wyświetlana podczas uruchamiania pierwszego polecenia poniżej (Odnajdywanie iscsiadm-m).
 
    <pre><code>sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.17:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.17:3260</b>
@@ -267,11 +270,11 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
    Polecenie listę trzy identyfikatory urządzeń dla każdego urządzenia interwencja. Zalecane jest używanie Identyfikatora, który rozpoczyna się od scsi-3 w przykładzie powyżej to jest
 
-   * **/dev/Disk/by-ID/SCSI-36001405afb0ba8d3a3c413b8cc2cca03**
+   * **/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03**
    * **/dev/disk/by-id/scsi-360014053fe4da371a5a4bb69a419a4df**
-   * **/dev/Disk/by-ID/SCSI-36001405f88f30e7c9684678bc87fe7bf**
+   * **/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf**
 
-1. **[1]**  Utwórz urządzenie interwencja
+1. **[1]** Utwórz urządzenie SBD
 
    Identyfikator urządzenia urządzeń iSCSI umożliwia utworzenie nowych urządzeń interwencja w pierwszym węźle klastra.
 
@@ -282,7 +285,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo sbd -d <b>/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf</b> -1 60 -4 120 create
    </code></pre>
 
-1. **[A]**  Dostosowanie konfiguracji interwencja
+1. **[A]** dostosowanie konfiguracji SBD
 
    Otwórz plik konfiguracji interwencja
 
@@ -313,9 +316,9 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 ## <a name="cluster-installation"></a>Instalacja klastra
 
-Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
+Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
 
-1. **[A]**  Aktualizacji w systemie SLES
+1. **[A]** aktualizacja SLES
 
    <pre><code>sudo zypper update
    </code></pre>
@@ -343,7 +346,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo systemctl --no-pager show | grep DefaultTasksMax
    </code></pre>
 
-   Zmniejsz rozmiar zmieniony pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [niska wydajność zapisu w systemie SLES 11/12 serwery z dużą ilość pamięci RAM](https://www.suse.com/support/kb/doc/?id=7010287).
+   Zmniejsz rozmiar zmieniony pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [niska wydajność zapisu na serwerach z systemem SLES 11/12 i dużą ilością pamięci RAM](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>sudo vi /etc/sysctl.conf
 
@@ -364,7 +367,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    CLOUD_NETCONFIG_MANAGE="no"
    </code></pre>
 
-1. **[1]**  Dostęp ssh
+1. **[1]** Włącz dostęp SSH
 
    <pre><code>sudo ssh-keygen
    
@@ -376,7 +379,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo cat /root/.ssh/id_rsa.pub
    </code></pre>
 
-1. **[2]**  Dostęp ssh
+1. **[2]** Włącz dostęp SSH
 
    <pre><code>
    sudo ssh-keygen
@@ -392,13 +395,13 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo cat /root/.ssh/id_rsa.pub
    </code></pre>
 
-1. **[1]**  Dostęp ssh
+1. **[1]** Włącz dostęp SSH
 
    <pre><code># insert the public key you copied in the last step into the authorized keys file on the first server
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. **[A]**  Horyzont instalacji agentów
+1. **[A]** zainstaluj agentów ogrodzenia
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
@@ -425,7 +428,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
     sudo zypper in python3-azure-sdk
     </code></pre>
 
-1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
+1. **[A]** rozpoznawanie nazw hostów
 
    Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
    Zastąp adres IP i nazwy hosta w poniższych poleceniach. Zaletą używania/etc/hosts będzie niezależnie od systemu DNS, co może być zbyt pojedynczy punkt awarii klastra.
@@ -441,7 +444,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    <b>10.0.0.7 prod-cl1-1</b>
    </code></pre>
 
-1. **[1]**  Zainstaluj klaster
+1. **[1]** Zainstaluj klaster
 
    <pre><code>sudo ha-cluster-init -u
    
@@ -454,7 +457,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
-1. **[2]**  Dodaj węzeł do klastra
+1. **[2]** Dodaj węzeł do klastra
 
    <pre><code>sudo ha-cluster-join
    
@@ -464,7 +467,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
    </code></pre>
 
-1. **[A]**  Zmień hacluster hasło do tego samego hasła
+1. **[A]** Zmień hasło hacluster na to samo hasło
 
    <pre><code>sudo passwd hacluster
    </code></pre>
@@ -517,9 +520,9 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
 
 Urządzenie pomocą metody STONITH używa nazwy głównej usługi, do autoryzacji dla Microsoft Azure. Wykonaj następujące kroki, aby utworzyć jednostkę usługi.
 
-1. Przejdź do usługi <https://portal.azure.com>
+1. Przejdź do strony <https://portal.azure.com>
 1. Otwórz blok usługi Azure Active Directory  
-   Przejdź do właściwości i zanotuj nazwę katalogu. Jest to **identyfikator dzierżawy**.
+   Przejdź do właściwości i zanotuj nazwę katalogu. To jest **Identyfikator dzierżawy**.
 1. Kliknij przycisk rejestracje aplikacji
 1. Kliknij pozycję Nowa rejestracja
 1. Wprowadź nazwę, wybierz pozycję "konta tylko w tym katalogu organizacji". 
@@ -527,12 +530,12 @@ Urządzenie pomocą metody STONITH używa nazwy głównej usługi, do autoryzacj
    Adres URL logowania nie jest używany i może być dowolny prawidłowy adres URL
 1. Wybierz pozycję Certyfikaty i wpisy tajne, a następnie kliknij pozycję Nowy wpis tajny klienta.
 1. Wprowadź opis nowego klucza, wybierz pozycję "nigdy nie wygasa" i kliknij przycisk Dodaj.
-1. Zanotuj wartość. Jest ona używana jako **hasło** jednostki usługi
-1. Wybierz pozycję przegląd. Zanotuj identyfikator aplikacji. Jest ona używana jako nazwa użytkownika (**Identyfikatora logowania** w poniższych krokach) jednostki usługi
+1. Zanotuj wartość. Służy jako **hasło** dla nazwy głównej usługi
+1. Wybierz pozycję przegląd. Zanotuj identyfikator aplikacji. Jest ona używana jako nazwa użytkownika (**Identyfikator logowania** w poniższych krokach) nazwy głównej usługi
 
-### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]**  Utworzyć rolę niestandardową dla agenta odgradzania
+### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** Utwórz rolę niestandardową dla agenta ogranicznika
 
-Nazwa główna usługi nie ma uprawnień dostępu do zasobów platformy Azure domyślnie. Musisz nadać uprawnień jednostki usługi, uruchamianie i zatrzymywanie (Cofnij ich przydział) wszystkich maszyn wirtualnych klastra. Jeśli nie utworzono jeszcze niestandardowej roli, można utworzyć za pomocą [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli)
+Nazwa główna usługi nie ma uprawnień dostępu do zasobów platformy Azure domyślnie. Musisz nadać uprawnień jednostki usługi, uruchamianie i zatrzymywanie (Cofnij ich przydział) wszystkich maszyn wirtualnych klastra. Jeśli rola niestandardowa nie została jeszcze utworzona, możesz ją utworzyć przy użyciu [programu PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli)
 
 Użyj zawartości dla pliku wejściowego. Należy dostosować zawartość dla Twojej subskrypcji, Zastąp c276fc76-9cd4-44c9-99a7-4fd71546436e i e91d47c4-76f3-4271-a796-21b4ecfe3624 identyfikatory subskrypcji. Jeśli masz tylko jedną subskrypcję, należy usunąć drugi wpis w AssignableScopes.
 
@@ -568,11 +571,11 @@ Przypisz rolę niestandardową "Linux horyzont agenta rolę" utworzonego w rozdz
 1. Kliknij przycisk Dodaj przypisanie roli
 1. Wybierz rolę "Rolę agenta Odgradzania Linux"
 1. Wprowadź nazwę aplikacji, które zostały utworzone powyżej
-1. Kliknij pozycję Zapisz
+1. Klikanie pozycji Zapisz.
 
 Powtórz powyższe kroki dla drugiego węzła klastra.
 
-### <a name="1-create-the-stonith-devices"></a>**[1]**  Tworzenie urządzeń pomocą metody STONITH
+### <a name="1-create-the-stonith-devices"></a>**[1]** tworzenie urządzeń STONITH
 
 Po edycji uprawnień dla maszyn wirtualnych można skonfigurować urządzenia pomocą metody STONITH w klastrze.
 
@@ -586,7 +589,7 @@ sudo crm configure property stonith-enabled=true
 
 ## <a name="default-pacemaker-configuration-for-sbd"></a>Domyślna konfiguracja program Pacemaker interwencja
 
-1. **[1]**  Korzystanie z urządzenia pomocą metody STONITH i ustawić opóźnienie ogrodzenia
+1. **[1]** Włącz korzystanie z urządzenia STONITH i ustaw opóźnienie ogranicznika
 
 <pre><code>sudo crm configure property stonith-timeout=144
 sudo crm configure property stonith-enabled=true

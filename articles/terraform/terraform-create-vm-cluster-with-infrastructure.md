@@ -3,12 +3,12 @@ title: Samouczek — Tworzenie klastra maszyn wirtualnych platformy Azure z Terr
 description: Tworzenie klastra maszyn wirtualnych z systemem Linux przy użyciu modułu równoważenia obciążenia na platformie Azure przy użyciu Terraform i HCL
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 39e9857ad0119c08e949bbe5f6accb07432f3469
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665371"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470874"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Samouczek: Tworzenie klastra maszyn wirtualnych platformy Azure z Terraform i HCL
 
@@ -28,11 +28,11 @@ Dowiesz się, jak wykonywać następujące zadania:
 ## <a name="1-set-up-azure-authentication"></a>1. Skonfiguruj uwierzytelnianie na platformie Azure
 
 > [!NOTE]
-> Jeśli [używasz zmiennych środowiskowych programu Terraform](/azure/virtual-machines/linux/terraform-install-configure) lub uruchamiasz ten samouczek w usłudze [Azure Cloud Shell](terraform-cloud-shell.md), pomiń tę sekcję.
+> Jeśli [używasz zmiennych środowiskowych programu Terraform](terraform-install-configure.md) lub uruchamiasz ten samouczek w usłudze [Azure Cloud Shell](terraform-cloud-shell.md), pomiń tę sekcję.
 
 W tej sekcji wygenerujesz jednostkę usługi platformy Azure i dwa pliki konfiguracji programu Terraform zawierające poświadczenia z jednostki usługi.
 
-1. [Skonfigurowanie jednostki usługi Azure AD](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure) umożliwia programowi Terraform aprowizowanie zasobów na platformie Azure. Podczas tworzenia jednostki zanotuj wartości identyfikatora subskrypcji, dzierżawy, identyfikatora aplikacji i hasła.
+1. [Skonfigurowanie jednostki usługi Azure AD](terraform-install-configure.md#set-up-terraform-access-to-azure) umożliwia programowi Terraform aprowizowanie zasobów na platformie Azure. Podczas tworzenia jednostki zanotuj wartości identyfikatora subskrypcji, dzierżawy, identyfikatora aplikacji i hasła.
 
 2. Otwórz wiersz polecenia.
 

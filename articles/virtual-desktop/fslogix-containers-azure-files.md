@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: d45fa08383d9f61776a739093d78fc033ad54a6b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 7b67569ee821fee837f4fa63a1d71e622a0370a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212396"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472472"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontenery profili FSLogix i pliki platformy Azure
 
@@ -46,13 +46,13 @@ Istniejące i starsze rozwiązania firmy Microsoft dla profilów użytkowników 
 
 W poniższej tabeli przedstawiono zalety i ograniczenia dotyczące wcześniejszych technologii profilu użytkownika.
 
-| Technologia | Ustawienia nowoczesne | Ustawienia Win32 | Ustawienia systemu operacyjnego | Dane użytkownika | Obsługiwane w jednostce SKU serwera | Magazyn zaplecza na platformie Azure | Magazyn zaplecza lokalnego | Obsługa wersji | Kolejny czas logowania |Uwagi|
+| Technologia | Ustawienia nowoczesne | Ustawienia Win32 | Ustawienia systemu operacyjnego | Dane użytkowników | Obsługiwane w jednostce SKU serwera | Magazyn zaplecza na platformie Azure | Magazyn zaplecza lokalnego | Obsługa wersji | Kolejny czas logowania |Uwagi|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Dyski profilu użytkownika (UPD)** | Tak | Tak | Tak | Tak | Tak | Nie | Tak | Win 7 + | Tak | |
-| **Profil użytkownika mobilnego (RUP), tryb konserwacji** | Nie | Tak | Tak | Tak | Tak| Nie | Tak | Win 7 + | Nie | |
-| **Enterprise State Roaming (ESR)** | Tak | Nie | Tak | Nie | Zobacz uwagi | Tak | Nie | Win 10 | Nie | Funkcje w jednostce SKU serwera, ale bez interfejsu użytkownika pomocniczego |
-| **Wirtualizacja środowiska użytkownika (UE-V)** | Tak | Tak | Tak | Nie | Tak | Nie | Tak | Win 7 + | Nie |  |
-| **Pliki w chmurze w usłudze OneDrive** | Nie | Nie | Nie | Tak | Zobacz uwagi | Zobacz uwagi  | Zobacz uwagi | Win 10 RS3 | Nie | Nie przetestowano w jednostce SKU serwera. Magazyn zaplecza na platformie Azure zależy od klienta synchronizacji. Magazyn zaplecza Premium wymaga klienta synchronizacji. |
+| **Dyski profilu użytkownika (UPD)** | Yes | Yes | Yes | Yes | Yes | Nie | Yes | Win 7 + | Yes | |
+| **Profil użytkownika mobilnego (RUP), tryb konserwacji** | Nie | Yes | Yes | Yes | Yes| Nie | Yes | Win 7 + | Nie | |
+| **Enterprise State Roaming (ESR)** | Yes | Nie | Yes | Nie | Zobacz uwagi | Yes | Nie | Win 10 | Nie | Funkcje w jednostce SKU serwera, ale bez interfejsu użytkownika pomocniczego |
+| **Wirtualizacja środowiska użytkownika (UE-V)** | Yes | Yes | Yes | Nie | Yes | Nie | Yes | Win 7 + | Nie |  |
+| **Pliki w chmurze w usłudze OneDrive** | Nie | Nie | Nie | Yes | Zobacz uwagi | Zobacz uwagi  | Zobacz uwagi | Win 10 RS3 | Nie | Nie przetestowano w jednostce SKU serwera. Magazyn zaplecza na platformie Azure zależy od klienta synchronizacji. Magazyn zaplecza Premium wymaga klienta synchronizacji. |
 
 #### <a name="performance"></a>Wydajność
 
@@ -87,7 +87,7 @@ Pulpit wirtualny systemu Windows oferuje pełną kontrolę nad rozmiarem, typem 
 Aby zapewnić, że środowisko pulpitu wirtualnego systemu Windows jest zgodne z najlepszymi rozwiązaniami:
 
 - Konto magazynu Azure Files musi znajdować się w tym samym regionie co maszyny wirtualne hosta sesji.
-- Uprawnienia Azure Files powinny być zgodne z uprawnieniami opisanymi w [kontenerach wymagań — profile](/fslogix/overview#requirements/).
+- Uprawnienia Azure Files powinny być zgodne z uprawnieniami opisanymi w [kontenerach wymagań — profile](/fslogix/overview#requirements).
 - Każda pula hostów musi być zbudowana z tego samego typu i rozmiaru maszyny wirtualnej na podstawie tego samego obrazu wzorcowego.
 - Każda maszyna wirtualna puli hostów musi znajdować się w tej samej grupie zasobów, aby ułatwić zarządzanie, skalowanie i aktualizowanie.
 - W celu uzyskania optymalnej wydajności rozwiązanie magazynu i kontener profilu FSLogix powinny znajdować się w tej samej lokalizacji centrum danych.

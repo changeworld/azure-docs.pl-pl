@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 2b5bcd0d3bba914b81e305c88a512645c1a1c258
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 57803ec9889cb6a19dae6d6d1070d8381577aff0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108510"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468392"
 ---
 # <a name="import-an-openapi-specification"></a>Importowanie specyfikacji interfejsu OpenAPI
 
 W tym artykule pokazano, jak zaimportować interfejs API zaplecza „Specyfikacja interfejsu OpenAPI” znajdujący się pod adresem https://conferenceapi.azurewebsites.net?format=json. Ten interfejs API zaplecza jest zapewniany przez firmę Microsoft i hostowany na platformie Azure. Artykuł przedstawia również sposób testowania interfejsu API usługi APIM.
 
 > [!IMPORTANT]
-> Zobacz ten [dokument](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/), aby uzyskać ważne informacje i wskazówki związane z importowaniem interfejsu OpenAPI.
+> Zobacz ten [dokument](https://azure.microsoft.com/blog/announcing-the-preview-of-openapi-specification-v3-support-in-azure-api-management/), aby uzyskać ważne informacje i wskazówki związane z importowaniem interfejsu OpenAPI.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 

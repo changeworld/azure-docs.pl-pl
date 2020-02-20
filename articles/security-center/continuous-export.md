@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: e12fc5d92cfc850e1d049bc11286c0c863e718b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bad3be86bd85f7e5cebcf9445d14d836c73a87ef
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459190"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470800"
 ---
 # <a name="export-security-alerts-and-recommendations-preview"></a>Eksportowanie alertów zabezpieczeń i zaleceń (wersja zapoznawcza)
 
@@ -41,7 +41,7 @@ Za pomocą tych narzędzi możesz:
 
 1. W obszarze "Eksportuj element docelowy" Wybierz miejsce, w którym chcesz zapisać dane. Dane można zapisywać w miejscu docelowym w innej subskrypcji (na przykład w centralnym wystąpieniu centrum zdarzeń lub w centralnym obszarze roboczym Log Analytics).
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 ## <a name="continuous-export-through-azure-event-hubs"></a>Eksport ciągły za pomocą usługi Azure Event Hubs  
 
@@ -105,7 +105,7 @@ Zobaczysz teraz nowe alerty i zalecenia dotyczące Azure Security Center (w zale
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>Ręczne eksportowanie alertów zabezpieczeń jednorazowe
 
-Aby pobrać raport CSV dotyczący alertów lub zaleceń, Otwórz stronę **alerty zabezpieczeń** lub **zalecenia** , a następnie kliknij przycisk **Pobierz raport w formacie CSV (wersja zapoznawcza)** .
+Aby pobrać raport CSV dotyczący alertów lub zaleceń, Otwórz stronę **alerty zabezpieczeń** lub **zalecenia** , a następnie kliknij przycisk **Pobierz raport CSV** .
 
 [![pobierać dane alertów jako plik CSV](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 

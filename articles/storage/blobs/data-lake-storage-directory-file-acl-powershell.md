@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: a5ad4cbd11d6468413a43576e2156ee807067aa8
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: a2f3dbf58363331cf6b1b05e759d246e68e7e7a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153353"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471214"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Używanie programu PowerShell do zarządzania katalogami, plikami i listami ACL w Azure Data Lake Storage Gen2 (wersja zapoznawcza)
 
@@ -28,7 +28,7 @@ W tym artykule przedstawiono sposób użycia programu PowerShell do tworzenia ka
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!div class="checklist"]
-> * Subskrypcja platformy Azure. Zobacz [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+> * Subskrypcja platformy Azure. Zobacz artykuł [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 > * Konto magazynu z włączoną hierarchiczną przestrzenią nazw (SNS). Postępuj zgodnie z [tymi](data-lake-storage-quickstart-create-account.md) instrukcjami, aby je utworzyć.
 > * .NET Framework jest 4.7.2 lub większa. Zobacz [pobieranie .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
 > * Program PowerShell w wersji `5.1` lub nowszej.
@@ -339,7 +339,7 @@ W tym przykładzie użytkownik będący właścicielem i grupa będąca właści
 
 Użyj polecenia cmdlet `Get-AzDataLakeGen2Item`, aby pobrać listę kontroli dostępu do katalogu lub pliku. Następnie użyj polecenia cmdlet `New-AzDataLakeGen2ItemAclObject`, aby utworzyć nowy wpis listy ACL. Użyj polecenia cmdlet `Update-AzDataLakeGen2Item`, aby zastosować nową listę ACL.
 
-Ten przykład daje użytkownikowi uprawnienia do zapisu i wykonywania w katalogu.
+Ten przykład daje grupie uprawnienie Zapis i wykonywanie w katalogu.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -370,7 +370,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 ```
 
-Ten przykład daje użytkownikowi uprawnienia do zapisu i wykonania na pliku.
+Ten przykład daje grupie uprawnienie do zapisu i wykonywania w pliku.
 
 ```powershell
 $filesystemName = "my-file-system"

@@ -7,19 +7,31 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/04/2019
-ms.openlocfilehash: d4263b8b338f057893c9dfcda1541fc338c2577f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 02/17/2020
+ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894274"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471184"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analizowanie dzienników dla Apache Kafka w usłudze HDInsight
 
 Dowiedz się, jak za pomocą dzienników Azure Monitor analizować dzienniki wygenerowane przez Apache Kafka w usłudze HDInsight.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="logs-location"></a>Lokalizacja dzienników
+
+Dzienniki Apache Kafka w klastrze znajdują się w `/var/log/kafka`. Dzienniki Kafka nie są zapisywane ani utrwalane w ramach cyklu życia klastra, niezależnie od tego, czy są używane dyski zarządzane. W poniższej tabeli przedstawiono dostępne dzienniki.
+
+|Log |Opis |
+|---|---|
+|Kafka. out|stdout i stderr procesu Kafka. W tym pliku znajdziesz dzienniki uruchamiania i zamykania Kafka.|
+|serwer. log|Dziennik głównego serwera Kafka. Wszystkie dzienniki brokera Kafka kończą się w tym miejscu.|
+|kontroler. log|Dzienniki kontrolerów, jeśli Broker działa jako kontroler.|
+|StateChange. log|Wszystkie zdarzenia zmiany stanu do brokerów są rejestrowane w tym pliku.|
+|Kafka-GC. log|Statystyka wyrzucania elementów bezużytecznych Kafka.|
 
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Włącz Azure Monitor dzienniki dla Apache Kafka
 
@@ -84,7 +96,7 @@ Kroki umożliwiające włączenie dzienników Azure Monitor dla usługi HDInsigh
 
     | Typ dziennika | Opis |
     | ---- | ---- |
-    | log\_kafkaserver\_CL | Kafka brokera serwera. log |
+    | Rejestruj\_kafkaserver\_CL | Kafka brokera serwera. log |
     | Rejestruj\_kafkacontroller\_CL | Kafka brokera. log |
     | metryki\_Kafka\_CL | Metryki Kafka JMX |
 

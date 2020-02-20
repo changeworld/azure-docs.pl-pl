@@ -1,5 +1,6 @@
 ---
-title: Samouczek, aby skopiować dane do urządzenia Azure Data Box za pomocą usługi kopiowania danych | Dokumentacja firmy Microsoft
+title: 'Samouczek: kopiowanie do urządzenia za pomocą usługi kopiowania danych'
+titleSuffix: Azure Data Box
 description: Z tego samouczka dowiesz się, jak skopiować dane na urządzenie Azure Data Box przy użyciu usługi kopiowania danych
 services: databox
 author: alkohli
@@ -8,21 +9,21 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a8a8b9d872860425be721515a7087085acf12065
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 579c1984ee1906519980bbed154921a20ed40b79
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206058"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466981"
 ---
-# <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Samouczek: Korzystanie z usługi kopiowania danych w celu skopiowania danych na urządzenie Azure Data Box (wersja zapoznawcza)
+# <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Samouczek: używanie usługi kopiowania danych do kopiowania danych do Azure Data Box (wersja zapoznawcza)
 
 W tym samouczku opisano sposób pozyskiwania danych przy użyciu usługi kopiowania danych bez hosta pośredniego. Usługa kopiowania danych działa lokalnie na urządzeniu Microsoft Azure Data Box, łączy się z urządzeniem magazynującym dołączonym do sieci (NAS) za pośrednictwem protokołu SMB i kopiuje dane na urządzenie Data Box.
 
 Z usługi kopiowania danych można korzystać w następujących scenariuszach:
 
 - W środowiskach NAS, gdzie hosty pośrednie mogą być niedostępne.
-- W przypadku korzystania z małych plików, dla których pozyskanie i przekazanie danych trwałoby tygodniami. Usługa kopiowania danych znacznie skraca czas pozyskiwania i przekazywania danych w przypadku małych plików.
+- W przypadku korzystania z małych plików, dla których pozyskanie i przekazanie danych trwałoby tygodniami. Usługa kopiowania danych znacznie skraca czas pozyskiwania i przekazywania danych dla małych plików.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -33,7 +34,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Przed rozpoczęciem upewnij się, że:
 
-1. Ukończono następujący samouczek: [Konfigurowanie usługi Azure Data Box](data-box-deploy-set-up.md).
+1. Ten samouczek został ukończony: [konfiguracja Azure Data Box](data-box-deploy-set-up.md).
 2. Urządzenie Data Box zostało do Ciebie dostarczone, a stan zamówienia w portalu to **Dostarczono**.
 3. Masz poświadczenia źródłowego urządzenia NAS, z którym połączysz się na potrzeby kopiowania danych.
 4. Dysponujesz szybkim połączeniem sieciowym. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 Gigabit Ethernet (GbE). Jeśli połączenie 10 GbE nie jest dostępne, możesz użyć połączenia danych 1 GbE, jednak będzie to miało wpływ na szybkość kopiowania.
@@ -59,13 +60,13 @@ Aby skopiować dane za pomocą usługi kopiowania danych, należy utworzyć zada
     |-------------------------------|---------|
     |**Nazwa zadania**                       |Unikatową nazwę zadania składającą się z mniej niż 230 znaków. W nazwach zadań nie wolno używać następujących znaków: \<, \>, \|, \?, \*, \\, \:, \/ i \\\.         |
     |**Lokalizacja źródłowa**                |Podaj ścieżkę SMB do źródła danych w formacie: `\\<ServerIPAddress>\<ShareName>` lub `\\<ServerName>\<ShareName>`.        |
-    |**Nazwa użytkownika**                       |Nazwa użytkownika w formacie `\\<DomainName><UserName>` używana do uzyskiwania dostępu do źródła danych. Jeśli połączenie jest kontem lokalnego administratora, potrzebują uprawnień zabezpieczeń jawne. Kliknij prawym przyciskiem myszy folder, wybierz **właściwości** , a następnie wybierz **zabezpieczeń**. Należy to dodawać administratora lokalnego w **zabezpieczeń** kartę.       |
+    |**Nazwa użytkownika**                       |Nazwa użytkownika w formacie `\\<DomainName><UserName>` używana do uzyskiwania dostępu do źródła danych. Jeśli administrator lokalny nawiązuje połączenie, będą musieli mieć jawne uprawnienia zabezpieczeń. Kliknij prawym przyciskiem myszy folder, wybierz pozycję **Właściwości** , a następnie wybierz pozycję **zabezpieczenia**. Powinno to spowodować dodanie administratora lokalnego na karcie **zabezpieczenia** .       |
     |**Hasło**                       |Hasło używane do uzyskiwania dostępu do źródła danych.           |
     |**Docelowe konto magazynu**    |Z listy wybierz docelowe konto magazynu, do którego będą przekazywane dane.         |
-    |**Typ docelowy**       |Z listy wybierz typ magazynu docelowego: **Blokowy obiekt blob**, **Stronicowy obiekt blob** lub usługa **Azure Files**.        |
+    |**Typ docelowy**       |Wybierz docelowy typ magazynu z listy: **blokowy obiekt BLOB**, **stronicowy obiekt BLOB**lub **Azure Files**.        |
     |**Docelowy kontener/udział**    |Wprowadź nazwę kontenera lub udziału, do którego chcesz przekazać dane w ramach docelowego konta magazynu. Może to być nazwa udziału lub kontenera. Użyj na przykład nazwy `myshare` lub `mycontainer`. Nazwę możesz również wprowadzić w formacie `sharename\directory_name` lub `containername\virtual_directory_name`.        |
-    |**Skopiuj pliki pasujące do wzorca**    | Nazwę pliku pasującą do wzorca możesz wprowadzić na następujące dwa sposoby:<ul><li>**Użycie wyrażeń wieloznacznych:** W wyrażeniach wieloznacznych są obsługiwane tylko znaki `*` i `?`. Na przykład do wyrażenia `*.vhd` będą pasowały wszystkie pliki z rozszerzeniem `.vhd`. Podobnie do wyrażenia `*.dl?` będą pasowały wszystkie pliki z rozszerzeniem `.dl` i zaczynające się od `.dl`, na przykład `.dll`. Wyrażenie `*foo` będzie pasowało do wszystkich plików, których nazwy kończą się na `foo`.<br>Wyrażenie wieloznaczne można wprowadzić bezpośrednio w polu. Domyślnie wartość wprowadzona w polu jest traktowana jako wyrażenie wieloznaczne.</li><li>**Użycie wyrażeń regularnych:** Obsługiwane są wyrażenia regularne oparte na modelu POSIX. Na przykład wyrażenie regularne `.*\.vhd` będzie zgodne ze wszystkimi plikami z rozszerzeniem `.vhd`. Dla wyrażeń regularnych podaj `<pattern>` bezpośrednio jako `regex(<pattern>)`. Aby uzyskać więcej informacji na temat wyrażeń regularnych, przejdź do tematu [Język wyrażeń regularnych — krótki przewodnik](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
-    |**Optymalizacja pliku**              |Kiedy ta funkcja jest włączona, pliki mniejsze niż 1 MB są pakowane podczas pozyskiwania. Przyspiesza to kopiowanie danych w przypadku małych plików. Pozwala to także zaoszczędzić czas, gdy liczba plików znacznie przekracza liczbę katalogów.        |
+    |**Skopiuj pliki pasujące do wzorca**    | Nazwę pliku pasującą do wzorca możesz wprowadzić na następujące dwa sposoby:<ul><li>**Używaj wyrażeń wieloznacznych:** Tylko `*` i `?` są obsługiwane w wyrażeniach wieloznacznych. Na przykład do wyrażenia `*.vhd` będą pasowały wszystkie pliki z rozszerzeniem `.vhd`. Podobnie do wyrażenia `*.dl?` będą pasowały wszystkie pliki z rozszerzeniem `.dl` i zaczynające się od `.dl`, na przykład `.dll`. Wyrażenie `*foo` będzie pasowało do wszystkich plików, których nazwy kończą się na `foo`.<br>Wyrażenie wieloznaczne można wprowadzić bezpośrednio w polu. Domyślnie wartość wprowadzona w polu jest traktowana jako wyrażenie wieloznaczne.</li><li>**Używaj wyrażeń regularnych:** Obsługiwane są wyrażenia regularne oparte na standardzie POSIX. Na przykład wyrażenie regularne `.*\.vhd` będzie zgodne ze wszystkimi plikami z rozszerzeniem `.vhd`. Dla wyrażeń regularnych podaj `<pattern>` bezpośrednio jako `regex(<pattern>)`. Aby uzyskać więcej informacji na temat wyrażeń regularnych, przejdź do tematu [Język wyrażeń regularnych — krótki przewodnik](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
+    |**Optymalizacja pliku**              |Kiedy ta funkcja jest włączona, pliki mniejsze niż 1 MB są pakowane podczas pozyskiwania. Przyspiesza to kopiowania danych w przypadku małych plików. Pozwala to także zaoszczędzić czas, gdy liczba plików znacznie przekracza liczbę katalogów.        |
  
 4. Wybierz pozycję **Uruchom**. Dane wejściowe są weryfikowane i jeśli ten proces zakończy się pomyślnie, zadanie jest uruchamiane. Uruchomienie zadania może potrwać kilka minut.
 
@@ -138,7 +139,7 @@ Po zakończeniu zadania kopiowania możesz wybrać pozycję **Przygotuj do wysł
 >[!NOTE]
 > Opcja **Przygotuj do wysłania** nie działa, jeśli zadania kopiowania są w toku.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Przejdź do następnego samouczka, aby dowiedzieć się, jak odesłać urządzenie Data Box do firmy Microsoft.
 

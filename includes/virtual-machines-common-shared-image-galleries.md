@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: ef0eed330dd7a5b338cdbf36a159d1f046d3939d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a028a0b5d79b2c79f1da336f033d3e8cac21a2e2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021171"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474177"
 ---
 Udostępniona Galeria obrazów to usługa, która ułatwia tworzenie struktury i organizacji na całym zarządzanym obrazie. Udostępnione Galerie obrazów zapewniają następujące:
 
 - Zarządza replikacją globalną obrazów.
 - Przechowywanie wersji i grupowanie obrazów w celu łatwiejszego zarządzania.
-- Obrazy o wysokiej dostępności z kontami magazynu Strefowo nadmiarowego (ZRS) w regionach, które obsługują Strefy dostępności. Magazyn strefowo nadmiarowy oferuje lepszą odporność na awarie dotyczące jednej strefy.
+- Obrazy o wysokiej dostępności z kontami magazynu Strefowo nadmiarowego (ZRS) w regionach, które obsługują Strefy dostępności. ZRS zapewnia lepszą odporność na awarie stref.
 - Udostępnianie między subskrypcjami, a nawet między dzierżawami Active Directory (AD) przy użyciu RBAC.
 - Skalowanie wdrożeń przy użyciu replik obrazów w każdym regionie.
 
@@ -34,7 +34,7 @@ Funkcja galerii obrazów udostępnionych ma wiele typów zasobów:
 | Zasób | Opis|
 |----------|------------|
 | **Obraz zarządzany** | Podstawowy obraz, który może być używany samodzielnie lub do tworzenia **wersji obrazu** w galerii obrazów. Obrazy zarządzane są tworzone na podstawie [uogólnionych](#generalized-and-specialized-images) maszyn wirtualnych. Obraz zarządzany jest specjalnym typem dysku VHD, który może służyć do tworzenia wielu maszyn wirtualnych i może być teraz używany do utworzenia wersji obrazu udostępnionego. |
-| **Migawka** | Kopia dysku VHD, której można użyć do udostępnienia **wersji obrazu**. Migawki mogą być pobierane z [wyspecjalizowanej](#generalized-and-specialized-images) maszyny wirtualnej (która nie została uogólniona), a następnie używana samodzielnie lub z migawkami dysków danych, aby utworzyć wyspecjalizowaną wersję obrazu.
+| **Zdjęcie** | Kopia dysku VHD, której można użyć do udostępnienia **wersji obrazu**. Migawki mogą być pobierane z [wyspecjalizowanej](#generalized-and-specialized-images) maszyny wirtualnej (która nie została uogólniona), a następnie używana samodzielnie lub z migawkami dysków danych, aby utworzyć wyspecjalizowaną wersję obrazu.
 | **Galeria obrazów** | Podobnie jak w przypadku portalu Azure Marketplace, **Galeria obrazów** jest repozytorium do zarządzania i udostępniania obrazów, ale ty kontrolujesz, kto ma dostęp. |
 | **Definicja obrazu** | Obrazy są zdefiniowane w galerii i zawierają informacje o obrazie i wymaganiach dotyczących używania go w organizacji. Można dołączyć informacje takie jak uogólnione lub wyspecjalizowane obrazy, system operacyjny, minimalne i maksymalne wymagania dotyczące pamięci oraz informacje o wersji. Jest to definicja typu obrazu. |
 | **Wersja obrazu** | **Wersja obrazu** jest używana do tworzenia maszyny wirtualnej w przypadku korzystania z galerii. Dla danego środowiska można mieć wiele wersji obrazu. Podobnie jak w przypadku obrazu zarządzanego, w przypadku tworzenia maszyny wirtualnej przy użyciu **wersji obrazu** wersja obrazu jest używana do tworzenia nowych dysków dla maszyny wirtualnej. Wersje obrazów można wielokrotnie używać. |
@@ -49,11 +49,11 @@ Definicje obrazów są logiczną grupą dla wersji obrazu. Definicja obrazu zawi
 
 Istnieją trzy parametry dla każdej definicji obrazu, które są używane w połączeniu **wydawcy**, **oferty** i **jednostki SKU**. Są one używane do znajdowania konkretnej definicji obrazu. Możesz mieć wersje obrazów, które współdzielą jeden lub dwa, ale nie wszystkie trzy wartości.  Na przykład poniżej przedstawiono trzy definicje obrazów i ich wartości:
 
-|Definicja obrazu|Publisher|Oferta|Jednostka SKU|
+|Definicja obrazu|Wydawca|Oferta|SKU|
 |---|---|---|---|
-|myImage1|Contoso|Finanse|Zaplecze|
-|myImage2|Contoso|Finanse|Fronton|
-|myImage3|Testowanie|Finanse|Fronton|
+|myImage1|Contoso|Finanse|Danych|
+|myImage2|Contoso|Finanse|Frontonu|
+|myImage3|Testowanie|Finanse|Frontonu|
 
 Wszystkie trzy z nich mają unikatowe zestawy wartości. Ten format jest podobny do tego, jak obecnie można określić wydawcy, oferty i jednostki SKU dla [obrazów portalu Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) w Azure PowerShell, aby uzyskać najnowszą wersję obrazu portalu Marketplace. Każda definicja obrazu musi mieć unikatowy zestaw tych wartości.
 
@@ -158,8 +158,8 @@ Zalecamy udostępnianie na poziomie galerii w celu uzyskania najlepszego środow
 Obrazy mogą być również udostępniane na dużą skalę, nawet między dzierżawcami przy użyciu rejestracji aplikacji wielodostępnej. Aby uzyskać więcej informacji o udostępnianiu obrazów między dzierżawcami, zobacz [udostępnianie obrazów maszyn wirtualnych z galerii w ramach dzierżawców platformy Azure](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
 ## <a name="billing"></a>Rozliczenia
-korzystanie z usługi galerii obrazów udostępnionych nie wiąże się z żadnymi dodatkowymi opłatami. Zostanie naliczona opłata za następujące zasoby:
-- Koszty magazynowania przechowywania wersji obrazu udostępnionego. Koszt zależy od liczby replik wersji obrazu oraz liczby regionów, do których jest replikowana wersja. Na przykład jeśli masz 2 obrazy i obie są replikowane do 3 regionów, zostanie zmieniony dla 6 dysków zarządzanych na podstawie ich rozmiaru. Aby uzyskać więcej informacji, zobacz [Cennik usługi Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
+Za korzystanie z usługi udostępnionej galerii obrazów nie są naliczane żadne dodatkowe opłaty. Zostanie naliczona opłata za następujące zasoby:
+- Koszty magazynowania przechowywania wersji obrazu udostępnionego. Koszt zależy od liczby replik wersji obrazu oraz liczby regionów, do których jest replikowana wersja. Na przykład jeśli masz 2 obrazy i obie są replikowane do 3 regionów, zostanie naliczona opłata za 6 dysków zarządzanych na podstawie ich rozmiaru. Aby uzyskać więcej informacji, zobacz [Cennik usługi Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
 - Opłaty za ruch wychodzący z sieci są naliczane za replikację pierwszej wersji obrazu z regionu źródłowego do replikowanych regionów. Kolejne repliki są obsługiwane w regionie, więc nie są naliczane żadne dodatkowe opłaty. 
 
 ## <a name="updating-resources"></a>Aktualizowanie zasobów
@@ -222,7 +222,7 @@ Możesz utworzyć zasób udostępnionej galerii obrazów przy użyciu szablonów
 
 Aby wyświetlić listę wszystkich udostępnionych zasobów galerii obrazów między subskrypcjami, do których masz dostęp na Azure Portal, wykonaj następujące czynności:
 
-1. Otwórz [Portalu Azure](https://portal.azure.com).
+1. Otwórz [portal Azure](https://portal.azure.com).
 1. Przejdź do pozycji **wszystkie zasoby**.
 1. Wybierz wszystkie subskrypcje, w ramach których chcesz wyświetlić listę wszystkich zasobów.
 1. Wyszukaj zasoby typu **Galeria prywatna**.

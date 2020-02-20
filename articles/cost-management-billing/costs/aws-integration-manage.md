@@ -1,21 +1,19 @@
 ---
 title: Zarządzanie kosztami i użyciem platformy AWS w usłudze Azure Cost Management
 description: Z tego artykułu dowiesz się, jak korzystać z analizy kosztów i budżetów w usłudze Cost Management w celu zarządzania kosztami i użyciem platformy AWS.
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: ormaoz
+ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: a7520d7b3bd46aa9151c68598574f9cbec84d6fc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: fd4d4a16642e764276d49dd732a785be48197d01
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988619"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200031"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Zarządzanie kosztami i użyciem platformy AWS na platformie Azure
 

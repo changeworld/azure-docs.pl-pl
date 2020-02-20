@@ -8,12 +8,12 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 02/04/2020
-ms.openlocfilehash: 901868da8ed859a846a507557d383db760f297c9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: e2e1ddd031041f49107545cd0b3d3de4eaebcd6d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029524"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472132"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Rozwiązywanie problemów z przepływami danych w Azure Data Factory
 
@@ -29,8 +29,8 @@ W tym artykule przedstawiono typowe metody rozwiązywania problemów z przepływ
 ### <a name="error-code-df-executor-systemimplicitcartesian"></a>Kod błędu: DF-wykonawca-SystemImplicitCartesian
 
 - **Komunikat**: niejawny produkt kartezjańskiego dla sprzężenia wewnętrznego nie jest obsługiwany, należy zamiast tego użyć SPRZĘŻENIa krzyżowego. Kolumny używane w sprzężeniu powinny tworzyć unikatowe klucze dla wierszy.
-- **Przyczyny**: niejawny produkt kartezjańskiego dla sprzężenia wewnętrznego między planami logicznymi nie jest obsługiwany. Jeśli kolumny używane w sprzężeniu tworzą unikatowy klucz
-- **Zalecenie**: w przypadku sprzężeń opartych na nierówności należy wybrać opcję SPRZĘŻENIa krzyżowego.
+- **Przyczyny**: niejawny produkt kartezjańskiego dla sprzężenia wewnętrznego między planami logicznymi nie jest obsługiwany. Jeśli kolumny używane w sprzężeniu tworzą unikatowy klucz, wymagana jest co najmniej jedna kolumna z obu stron relacji.
+- **Zalecenie**: w przypadku sprzężeń opartych na nierówności należy wybrać opcję niestandardowego SPRZĘŻENIa krzyżowego.
 
 ### <a name="error-code-df-executor-systeminvalidjson"></a>Kod błędu: DF-wykonawca-SystemInvalidJson
 

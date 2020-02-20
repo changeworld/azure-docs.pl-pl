@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 4259868ff3b3c9ca9f9818532acd7e865e0300d7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 525eba8a5a4e891526eb32a24287ea3887ee6743
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77205754"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474140"
 ---
 Aby utworzyć i zarządzać maszyn wirtualnych (VM) w sposób ciągły na dużą skalę, zwykle jest pożądane jakąś formę automatyzacji. Istnieje wiele narzędzi i rozwiązań, które umożliwiają automatyzację wdrażania całej infrastruktury platformy Azure i zarządzanie cyklem życia. W tym artykule przedstawiono niektóre z narzędzi automatyzacji infrastruktury, które można użyć na platformie Azure. Te narzędzia często mieści się w jednej z następujących metod:
 
@@ -48,7 +48,7 @@ Instrukcje:
 
 Instrukcje:
 
-- [Wdróż Puppet z witryny Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview).
+- [Wdróż Puppet z witryny Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Puppet.puppet-agent-windows-asm?tab=Overview).
 
 
 ## <a name="cloud-init"></a>Cloud-init
@@ -99,8 +99,8 @@ Instrukcje:
 
 Instrukcje:
 
-- [Zainstaluj i skonfiguruj Terraform z platformą Azure](../articles/virtual-machines/linux/terraform-install-configure.md).
-- [Utwórz infrastrukturę platformy Azure z usługą Terraform](../articles/virtual-machines/linux/terraform-create-complete-vm.md).
+- [Zainstaluj i skonfiguruj Terraform z platformą Azure](../articles/terraform/terraform-install-configure.md).
+- [Utwórz infrastrukturę platformy Azure z usługą Terraform](../articles/terraform/terraform-create-complete-vm.md).
 
 
 ## <a name="azure-automation"></a>Azure Automation
@@ -118,7 +118,7 @@ Instrukcje:
 ## <a name="azure-devops-services"></a>Usługa Azure DevOps Services
 [Azure DevOps Services](https://www.visualstudio.com/team-services/) to pakiet narzędzi, które ułatwiają udostępnianie i śledzenie kodu, korzystanie z zautomatyzowanych kompilacji oraz tworzenie kompletnego potoku ciągłej integracji i tworzenia oprogramowania (Ci/CD). Usługi Azure DevOps integruje się z programu Visual Studio i innych edytorów, aby uprościć użycia. Usługom DevOps platformy Azure można również utworzyć i skonfigurować maszyny wirtualne platformy Azure i następnie wdrażania kodu do nich.
 
-Dowiedz się więcej o usługach:
+Dowiedz się więcej na następujące tematy:
 
 - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
 

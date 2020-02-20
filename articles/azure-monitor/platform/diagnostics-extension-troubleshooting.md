@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 1f3dd1fa4b70fcdbec7e62c84bbfc1df14d3502e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e2b3ceba7a3673caa38e09f6b4dfa296fd063cfe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425089"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467917"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Rozwiązywanie problemów Diagnostyka Azure
 W tym artykule opisano Rozwiązywanie problemów związanych z używaniem Diagnostyka Azure. Aby uzyskać więcej informacji na temat diagnostyki platformy Azure, zobacz [omówienie Diagnostyka Azure](diagnostics-extension-overview.md).
@@ -206,7 +206,7 @@ Oto przykład:
 ```
 Ten kod generuje cztery tabele:
 
-| Zdarzenie | Nazwa tabeli |
+| Wydarzenie | Nazwa tabeli |
 | --- | --- |
 | Provider = "prov1" &lt;identyfikator zdarzenia = "1"/&gt; |WADEvent + MD5 ("prov1") + "1" |
 | Provider = "prov1" &lt;identyfikator zdarzenia = "2" eventDestination = "dest1"/&gt; |WADdest1 |
@@ -297,5 +297,5 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 
 - Czy dane w magazynie mają nazwy liczników w języku angielskim. Jeśli nazwy liczników nie są w języku angielskim, wykres metryki portalu nie będzie mógł go rozpoznać. Środki **zaradcze**: Zmień język maszyny na angielski w przypadku kont systemowych. W tym celu wybierz pozycję **Panel sterowania** > **Region** > **administracyjne** > **Ustawienia kopiowania**. Następnie usuń zaznaczenie opcji **ekran powitalny i konta systemowe** , aby język niestandardowy nie został zastosowany do konta System.
 
-- Jeśli używasz symboli wieloznacznych (\*) w nazwach liczników wydajności, portal nie będzie w stanie skorelować skonfigurowanych i zebranych liczników, gdy liczniki wydajności są wysyłane do ujścia usługi Azure Storage. Środki **zaradcze**: aby upewnić się, że można użyć symboli wieloznacznych i że portal rozwinie (\*), Roześlij liczniki wydajności do [ujścia "Azure Monitor"](diagnostics-extension-schema.md#diagnostics-extension-111).
+- Jeśli używasz symboli wieloznacznych (\*) w nazwach liczników wydajności, portal nie będzie w stanie skorelować skonfigurowanych i zebranych liczników, gdy liczniki wydajności są wysyłane do ujścia usługi Azure Storage. Środki **zaradcze**: aby upewnić się, że można użyć symboli wieloznacznych i że portal rozwinie (\*), Roześlij liczniki wydajności do ujścia Azure monitor.
 

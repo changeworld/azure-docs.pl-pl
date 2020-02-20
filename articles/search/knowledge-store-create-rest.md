@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 12/30/2019
-ms.openlocfilehash: 7dd1f07d44bd3b71bb83becee5405cf5c100460c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 478a7e03b432006b429c96e03307fd8e494c88ff
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754088"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472319"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Tworzenie sklepu z bazami danych przy użyciu REST i programu Poster
 
@@ -35,7 +35,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Ten przewodnik Szybki Start używa platformy Azure Wyszukiwanie poznawcze, usługi Azure Blob Storage i [usługi azure Cognitive Services dla systemu](https://azure.microsoft.com/services/cognitive-services/) AI. 
 
-Ze względu na to, że obciążenie jest małe, Cognitive Services jest wybierana w tle, aby zapewnić bezpłatne przetwarzanie do 20 transakcji codziennie w przypadku wywołania z usługi Azure Wyszukiwanie poznawcze. Jeśli używasz przykładowych danych, które udostępniamy, możesz pominąć tworzenie i dołączanie zasobów Cognitive Services.
+Ponieważ obciążenie jest tak małe, Cognitive Services jest wybierane w tle, aby zapewnić bezpłatne przetwarzanie do 20 transakcji codziennie. Ze względu na to, że zestaw danych jest mały, możesz pominąć tworzenie i dołączanie zasobów Cognitive Services.
 
 1. [Pobierz plik HotelReviews_Free. csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D). Te dane to dane z przeglądu hotelu zapisane w pliku CSV (pochodzące z Kaggle.com) i zawierają 19 opinii klientów na temat pojedynczego hotelu. 
 
@@ -78,7 +78,7 @@ Aby uzyskać wartość `admin-key`, przejdź do usługi Azure Wyszukiwanie pozna
 ![Karta zmiennych aplikacji po wprowadzeniu](media/knowledge-store-create-rest/postman-variables-window.png "Okno zmiennych autora")
 
 
-| Zmienna    | Jak uzyskać narzędzie |
+| Zmienna    | Skąd uzyskać |
 |-------------|-----------------|
 | `admin-key` | Na stronie **klucze** usługi Azure wyszukiwanie poznawcze.  |
 | `api-version` | Pozostaw jako **2019-05-06 — wersja zapoznawcza**. |
@@ -108,7 +108,7 @@ Podczas tworzenia sklepu z bazami danych należy wydać cztery żądania HTTP:
 > Należy ustawić nagłówki `api-key` i `Content-type` we wszystkich żądaniach. Jeśli program Poster rozpoznaje zmienną, zmienna pojawia się w kolorze pomarańczowym, tak jak w przypadku `{{admin-key}}` na poprzednim zrzucie ekranu. Jeśli zmienna jest błędna, pojawia się na czerwono.
 >
 
-## <a name="create-an-azure-cognitive-search-index"></a>Tworzenie indeksu usługi Azure Cognitive Search
+## <a name="create-an-azure-cognitive-search-index"></a>Tworzenie indeksu usługi Azure Wyszukiwanie poznawcze
 
 Utwórz indeks Wyszukiwanie poznawcze platformy Azure, aby reprezentować dane, które interesują się wyszukiwaniem, filtrowaniem i stosowaniem ulepszeń. Utwórz indeks, wydając żądanie PUT do `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}`. Program pocztowy zastępuje symbole, które są ujęte w podwójne nawiasy klamrowe (takie jak `{{search-service-name}}`, `{{index-name}}`i `{{api-version}}`) z wartościami ustawionymi w [konfiguracji programu Poster](#configure-postman). Jeśli używasz innego narzędzia do wystawiania poleceń REST, musisz samodzielnie zastąpić te zmienne.
 

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/07/2019
+ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: e9d5a137247c072516c0b25d7f6147ef48fec248
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1cf4cc9cf4d98dfca59e01cc264549af3a4d5cb4
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839791"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471792"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Korzystanie z harmonogramów konserwacji do zarządzania aktualizacjami i konserwacją usług
 
@@ -49,13 +49,13 @@ Nawet jeśli planowanie konserwacji nie jest dostępne w wybranym regionie, moż
 
 ## <a name="view-a-maintenance-schedule"></a>Wyświetlanie harmonogramu konserwacji 
 
-### <a name="portal"></a>Portal
+### <a name="portal"></a>wielodostępowy
 
 Domyślnie podczas wdrażania wszystkich nowo utworzonych wystąpień usługi Azure SQL Data Warehouse są stosowane ośmiogodzinne podstawowe i dodatkowe okna obsługi. Jak wspomniano powyżej, można zmienić system Windows po zakończeniu wdrażania. Żadne czynności konserwacyjne nie będą przeprowadzane poza oknami obsługi bez wcześniejszego powiadomienia.
 
 Aby wyświetlić harmonogram konserwacji zastosowany do magazynu danych, wykonaj następujące czynności:
 
-1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1.  Zaloguj się do [Azure portal](https://portal.azure.com/).
 2.  Wybierz magazyn danych, który chcesz wyświetlić. 
 3.  Wybrany magazyn danych zostanie otwarty w bloku przegląd. Harmonogram konserwacji, który jest stosowany do magazynu danych, zostanie wyświetlony poniżej **harmonogramu konserwacji**.
 
@@ -63,7 +63,7 @@ Aby wyświetlić harmonogram konserwacji zastosowany do magazynu danych, wykonaj
 
 ## <a name="change-a-maintenance-schedule"></a>Zmiana harmonogramu konserwacji 
 
-### <a name="portal"></a>Portal
+### <a name="portal"></a>wielodostępowy
 Harmonogram konserwacji można aktualizować lub zmieniać w dowolnym momencie. Jeśli wybrane wystąpienie przechodzi przez aktywny cykl konserwacji, ustawienia zostaną zapisane. Staną się one aktywne w następnym określonym okresie konserwacji. [Dowiedz się więcej](https://docs.microsoft.com/azure/service-health/resource-health-overview) o monitorowaniu magazynu danych podczas aktywnego zdarzenia konserwacji. 
 
 ### <a name="identifying-the-primary-and-secondary-windows"></a>Identyfikowanie podstawowych i pomocniczych okien
@@ -71,9 +71,9 @@ Harmonogram konserwacji można aktualizować lub zmieniać w dowolnym momencie. 
 Podstawowe i pomocnicze okna muszą mieć oddzielne zakresy dni. Przykładem jest główne okno wtorek – czwartek i dodatkowe okno soboty — niedziela.
 
 Aby zmienić harmonogram konserwacji dla magazynu danych, wykonaj następujące czynności:
-1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1.  Zaloguj się do [Azure portal](https://portal.azure.com/).
 2.  Wybierz magazyn danych, który chcesz zaktualizować. Strona zostanie otwarta w bloku przegląd. 
-3.  Otwórz stronę ustawienia harmonogramu konserwacji, wybierając łącze **Podsumowanie harmonogramu konserwacji (wersja zapoznawcza)** w bloku przegląd. Lub wybierz opcję **harmonogram konserwacji** w menu zasobów po lewej stronie.  
+3.  Otwórz stronę ustawienia harmonogramu konserwacji, wybierając łącze **Podsumowanie harmonogramu konserwacji** w bloku przegląd. Lub wybierz opcję **harmonogram konserwacji** w menu zasobów po lewej stronie.  
 
     ![Opcje bloku przegląd](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
 

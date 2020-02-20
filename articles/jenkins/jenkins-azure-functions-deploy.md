@@ -4,12 +4,12 @@ description: Dowiedz się, jak wdrażać Azure Functions przy użyciu wtyczki Az
 keywords: jenkins, azure, metodyki devops, java, usługę azure functions
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: af3e8dfd6e2bfc676e659a03d92658af66b5bcde
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158776"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470670"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Wdrażanie do Azure Functions przy użyciu wtyczki Azure Functions Jenkins
 
@@ -127,11 +127,11 @@ W tej sekcji utworzysz [potok serwera Jenkins](https://jenkins.io/doc/book/pipel
     }
     ```
 
-## <a name="build-and-deploy"></a>Tworzenie i wdrażanie
+## <a name="build-and-deploy"></a>Kompilowanie i rozmieszczanie
 
 Czas na uruchomienie zadania serwera Jenkins.
 
-1. Najpierw należy uzyskać klucz autoryzacji za pomocą instrukcji zawartych w artykule [Azure Functions HTTP triggers and bindings (Wyzwalacze i powiązania protokołu HTTP w usłudze Azure Functions)](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys).
+1. Najpierw należy uzyskać klucz autoryzacji za pomocą instrukcji zawartych w artykule [Azure Functions HTTP triggers and bindings (Wyzwalacze i powiązania protokołu HTTP w usłudze Azure Functions)](/azure/azure-functions/functions-bindings-http-webhook-trigger#authorization-keys).
 
 1. W przeglądarce wprowadź adres URL aplikacji. Zastąp symbole zastępcze odpowiednimi wartościami i określ wartość liczbową parametru **&lt;input_number>** jako dane wejściowe dla funkcji w języku Java.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb0764b9c2c43faf88db165a11ae963c4f170f01
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 5a16d28f31887c8bedcc95424382e674e037450e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512593"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468409"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Instrukcje: wymaganie zarządzanych urządzeń dla dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego
 
@@ -31,6 +31,10 @@ Wymaganie, aby zarządzane urządzenia dla dostępu do aplikacji w chmurze były
 - **[Dostęp warunkowy w Azure Active Directory](../active-directory-conditional-access-azure-portal.md)** — ten artykuł zawiera omówienie pojęć dotyczących dostępu warunkowego i powiązanej terminologii.
 - **[Wprowadzenie do zarządzania urządzeniami w Azure Active Directory](../devices/overview.md)** — ten artykuł zawiera omówienie różnych opcji, które należy wykonać, aby uzyskać dostęp do urządzeń objętych kontrolą organizacyjną. 
 
+>[!IMPORTANT] 
+> Zalecamy korzystanie z zasad dostępu warunkowego opartego na urządzeniach z usługą Azure AD w celu uzyskania najlepszego wymuszenia po początkowym uwierzytelnianiu urządzenia. Obejmuje to zamykanie sesji, jeśli urządzenie przestanie być zgodne i przepływ kodu urządzenia.
+
+
 ## <a name="scenario-description"></a>Opis scenariusza
 
 Głównym kompromisem jest równowaga między bezpieczeństwem a produktywnością. Rozprzestrzenianie się obsługiwanych urządzeń w celu uzyskania dostępu do zasobów w chmurze ułatwia zwiększenie produktywności użytkowników. Na stronie odwracania prawdopodobnie nie chcesz, aby niektóre zasoby w danym środowisku były dostępne na urządzeniach z nieznanym poziomem ochrony. W przypadku zasobów, których to dotyczy, należy wymagać, aby użytkownicy mieli do nich dostęp tylko przy użyciu urządzenia zarządzanego. 
@@ -41,7 +45,7 @@ Za pomocą dostępu warunkowego usługi Azure AD można rozwiązać ten wymóg p
 - Dla wybranych użytkowników i grup
 - Wymaganie urządzenia zarządzanego
 
-## <a name="managed-devices"></a>Urządzenia zarządzane  
+## <a name="managed-devices"></a>Zarządzane urządzenia  
 
 W przypadku prostych warunków zarządzanymi urządzeniami są urządzenia, które podlegają *pewnemu sortowaniu* kontroli organizacyjnej. W usłudze Azure AD wymaganie wstępne dla zarządzanego urządzenia polega na tym, że zostało ono zarejestrowane w usłudze Azure AD. Zarejestrowanie urządzenia tworzy tożsamość urządzenia w postaci obiektu urządzenia. Ten obiekt jest używany przez platformę Azure do śledzenia informacji o stanie urządzenia. Jako administrator usługi Azure AD można już używać tego obiektu do przełączania (włączania/wyłączania) stanu urządzenia.
   
@@ -79,7 +83,7 @@ Opcja wymagania, aby *urządzenie było oznaczone jako zgodne* , jest najmocniej
 
 Ta opcja wymaga, aby urządzenie było zarejestrowane w usłudze Azure AD, a także oznaczone jako zgodne przez:
          
-- Intune
+- Usługa Intune
 - System zarządzania urządzeniami przenośnymi (MDM, Mobile Device Management) służący jako urządzenie z systemem Windows 10 w ramach integracji z usługą Azure AD. Systemy zarządzania urządzeniami przenośnymi innych firm dla typów systemów operacyjnych innych niż Windows 10 nie są obsługiwane.
  
 ![Warunki oparte na urządzeniach](./media/require-managed-devices/46.png)

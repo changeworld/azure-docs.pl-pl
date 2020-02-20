@@ -1,7 +1,7 @@
 ---
-title: 'Samouczek: Migrowanie PostgreSQL online do Azure Database for PostgreSQL'
+title: 'Samouczek: Migrowanie PostgreSQL do Azure Database for PostgreSQL online za pośrednictwem interfejsu wiersza polecenia platformy Azure'
 titleSuffix: Azure Database Migration Service
-description: Dowiedz się, jak przeprowadzić migrację online z PostgreSQL lokalnego do Azure Database for PostgreSQL przy użyciu Azure Database Migration Service.
+description: Dowiedz się, jak przeprowadzić migrację online z PostgreSQL lokalnego do Azure Database for PostgreSQL przy użyciu Azure Database Migration Service za pośrednictwem interfejsu wiersza polecenia.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -11,19 +11,19 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: ee5863497ce067d2ff056c3fc1c64b00d3004cd8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/17/2020
+ms.openlocfilehash: c9cea6041c7f4d91295072121c62ba028e5ad937
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903919"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470942"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Samouczek: migrowanie bazy danych PostgreSQL do usługi Azure Database for PostgreSQL w trybie online przy użyciu usługi DMS
+# <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Samouczek: Migrowanie PostgreSQL do usługi Azure DB for PostgreSQL online za pomocą usługi DMS za pośrednictwem interfejsu wiersza polecenia platformy Azure
 
 Za pomocą Azure Database Migration Service można migrować bazy danych z lokalnego wystąpienia PostgreSQL, aby [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) z minimalnym przestojem. Innymi słowy, migracja może zostać osiągnięta przy minimalnym przestoju aplikacji. W tym samouczku przeprowadzisz migrację przykładowej bazy danych **najmu dysku DVD** z lokalnego wystąpienia PostgreSQL 9,6 do Azure Database for PostgreSQL przy użyciu działania migracji w trybie online w programie Azure Database Migration Service.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 >
 > * Migruj Przykładowy schemat przy użyciu narzędzia pg_dump.
@@ -46,7 +46,7 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
     Ponadto lokalna wersja programu PostgreSQL musi być zgodna z wersją usługi Azure Database for PostgreSQL. Na przykład program PostgreSQL 9.5.11.5 może być migrowany tylko do usługi Azure Database for PostgreSQL 9.5.11, a nie do wersji 9.6.7.
 
-* [Utwórz wystąpienie usługi Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).  
+* [Utwórz wystąpienie w Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) lub [Utwórz serwer Azure Database for PostgreSQL-Citus](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal).
 * Utwórz Microsoft Azure Virtual Network dla Azure Database Migration Service przy użyciu modelu wdrażania Azure Resource Manager, który zapewnia łączność między lokacjami z lokalnymi serwerami źródłowymi przy użyciu usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnej, zapoznaj się z [dokumentacją Virtual Network](https://docs.microsoft.com/azure/virtual-network/), a w szczególności artykuły szybkiego startu z szczegółowymi szczegółami.
 
     > [!NOTE]
@@ -100,7 +100,7 @@ Aby utworzyć wszystkie obiekty bazy danych, takie jak schematy tabel, indeksy o
 
 2. Utwórz pustą bazę danych w swoim środowisku docelowym, czyli w usłudze Azure Database for PostgreSQL.
 
-    Zapoznaj się z artykułem [Tworzenie serwera usługi Azure Database for PostgreSQL w witrynie Azure Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal), aby poznać szczegółowe informacje na temat sposobu nawiązywania połączenia z bazą danych i jej tworzenia.
+    Aby uzyskać szczegółowe informacje na temat nawiązywania połączenia i tworzenia bazy danych, zobacz artykuł [Tworzenie serwera Azure Database for PostgreSQL w Azure Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) lub [Tworzenie serwera Azure Database for PostgreSQL-Citus w Azure Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal).
 
 3. Zaimportuj schemat do docelowej bazy danych utworzonej przez przywrócenie pliku zrzutu schematu.
 
@@ -108,7 +108,7 @@ Aby utworzyć wszystkie obiekty bazy danych, takie jak schematy tabel, indeksy o
     psql -h hostname -U db_username -d db_name < your_schema.sql 
     ```
 
-    Przykład:
+    Na przykład:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
@@ -190,6 +190,9 @@ Aby utworzyć wszystkie obiekty bazy danych, takie jak schematy tabel, indeksy o
        whl              dms
        ```
 
+      > [!IMPORTANT]
+      > Upewnij się, że wersja rozszerzenia jest większa niż 0.11.0.
+
    * W dowolnym momencie wyświetl wszystkie polecenia obsługiwane w usłudze DMS, uruchamiając polecenie:
 
        ```
@@ -227,7 +230,7 @@ Aby utworzyć wszystkie obiekty bazy danych, takie jak schematy tabel, indeksy o
     az network nic list -g <ResourceGroupName>--query '[].ipConfigurations | [].privateIpAddress'
     ```
 
-    Przykład:
+    Na przykład:
 
     ```
     az network nic list -g PostgresDemo --query '[].ipConfigurations | [].privateIpAddress'
@@ -374,7 +377,7 @@ Aby utworzyć wszystkie obiekty bazy danych, takie jak schematy tabel, indeksy o
 
 W pliku wyjściowym istnieje kilka parametrów, które wskazują postęp migracji. Na przykład zobacz plik wyjściowy poniżej:
 
-    ```
+  ```
     "output": [                                 Database Level
           {
             "appliedChanges": 0,        //Total incremental sync applied after full load
@@ -449,7 +452,7 @@ W pliku wyjściowym istnieje kilka parametrów, które wskazują postęp migracj
       },
       "resourceGroup": "PostgresDemo",
       "type": "Microsoft.DataMigration/services/projects/tasks"
-    ```
+  ```
 
 ## <a name="cutover-migration-task"></a>Zadanie migracji uruchomienia produkcyjnego
 
@@ -473,7 +476,7 @@ Aby upewnić się, że wszystkie dane zostały przechwycone, przeprowadź weryfi
     az dms project task cutover -h
     ```
 
-    Przykład:
+    Na przykład:
 
     ```
     az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --object-name Inventory

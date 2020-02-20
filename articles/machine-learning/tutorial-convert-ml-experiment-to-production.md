@@ -7,12 +7,12 @@ ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 1be97f9754733561111cedcf95fe237b7788583e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: b929dd8979ecf587872092af2fa44e5ae03626d1
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122574"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472489"
 ---
 # <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Samouczek: konwertowanie eksperymentalnego kodu ML na kod produkcyjny
 
@@ -409,4 +409,4 @@ Teraz, po zrozumieniu sposobu konwersji z eksperymentu na kod produkcyjny, Skorz
 
 > [!div class="nextstepaction"]
 > [Monitoruj przebiegi eksperymentów w usłudze Azure ml i metryki](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
-> [Monitoruj i Zbieraj dane z punktów końcowych usługi sieci Web ml](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insight)
+> [Monitoruj i Zbieraj dane z punktów końcowych usługi sieci Web ml](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)

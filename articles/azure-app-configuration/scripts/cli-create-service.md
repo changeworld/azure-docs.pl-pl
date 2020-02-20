@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7cc8454ca8dc8d6313e1cf353292adb47b15ef47
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 11f3aec10aed0dc8bc0c9831d563dca2b0c1a6fb
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898714"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468364"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Tworzenie magazynu usługi Azure App Configuration
 
@@ -24,10 +24,6 @@ Ten przykładowy skrypt tworzy nowe wystąpienie usługi Azure App Configuration
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
-
-Należy najpierw zainstalować rozszerzenie interfejsu wiersza polecenia usługi Azure App Configuration, wykonując następujące polecenie:
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
@@ -71,8 +67,8 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia nowej grupy z
 | Polecenie | Uwagi |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az appconfig create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | Tworzy zasób magazynu konfiguracji aplikacji. |
-| [AZ AppConfig list Credential](/cli/azure/ext/appconfig/appconfig/credential?view=azure-cli-latest) | Wyświetl listę kluczy dostępu dla magazynu konfiguracji aplikacji. |
+| [az appconfig create](/cli/azure/appconfig#az-appconfig-create) | Tworzy zasób magazynu konfiguracji aplikacji. |
+| [AZ AppConfig list Credential](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Wyświetl listę kluczy dostępu dla magazynu konfiguracji aplikacji. |
 
 ## <a name="next-steps"></a>Następne kroki
 

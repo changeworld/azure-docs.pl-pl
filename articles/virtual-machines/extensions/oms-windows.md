@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Windows
+title: Log Analytics rozszerzenie maszyny wirtualnej dla systemu Windows
 description: Wdróż agenta Log Analytics na maszynie wirtualnej z systemem Windows przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,18 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/30/2020
 ms.author: akjosh
-ms.openlocfilehash: 604be42ec74f75e3aa9c790092ed83aee4ad25e1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 85b97f31e77736603bd0dc7003d4dbfb91a694dc
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907011"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470704"
 ---
-# <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Azure Monitor rozszerzenie maszyny wirtualnej dla systemu Windows
+# <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics rozszerzenie maszyny wirtualnej dla systemu Windows
 
-Dzienniki Azure Monitor udostępniają możliwości monitorowania między zasobami w chmurze i lokalnymi. Rozszerzenie maszyny wirtualnej Log Analytics agenta dla systemu Windows jest publikowane i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta usługi Log Analytics na maszynach wirtualnych platformy Azure i rejestruje maszyn wirtualnych do istniejącego obszaru roboczego usługi Log Analytics. Ten dokument zawiera szczegółowe informacje o obsługiwanych platformach, konfiguracjach i opcjach wdrażania dla rozszerzenia maszyny wirtualnej Azure Monitor dla systemu Windows.
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+Dzienniki Azure Monitor udostępniają możliwości monitorowania między zasobami w chmurze i lokalnymi. Rozszerzenie maszyny wirtualnej Log Analytics agenta dla systemu Windows jest publikowane i obsługiwane przez firmę Microsoft. Rozszerzenie instaluje agenta usługi Log Analytics na maszynach wirtualnych platformy Azure i rejestruje maszyn wirtualnych do istniejącego obszaru roboczego usługi Log Analytics. Ten dokument zawiera szczegółowe informacje o obsługiwanych platformach, konfiguracjach i opcjach wdrażania dla rozszerzenia maszyny wirtualnej Log Analytics dla systemu Windows.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,17 +32,17 @@ Dzienniki Azure Monitor udostępniają możliwości monitorowania między zasoba
 Szczegółowe informacje o obsługiwanych systemach operacyjnych Windows można znaleźć w artykule [Omówienie agenta log Analytics](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) .
 
 ### <a name="agent-and-vm-extension-version"></a>Wersja agenta i rozszerzenia maszyny Wirtualnej
-Poniższa tabela zawiera mapowanie wersji rozszerzenia maszyny wirtualnej z systemem Windows Azure Monitor i pakietu agenta Log Analytics dla każdej wersji. 
+Poniższa tabela zawiera mapowanie wersji rozszerzenia maszyny wirtualnej z systemem Windows Log Analytics i pakietu agenta Log Analytics dla każdej wersji. 
 
-| Wersja pakietu Log Analytics Windows Agent | Azure Monitor wersja rozszerzenia maszyny wirtualnej z systemem Windows | Data wydania | Informacje o wersji |
+| Wersja pakietu Log Analytics Windows Agent | Log Analytics wersja rozszerzenia maszyny wirtualnej z systemem Windows | Data wydania | Informacje o wersji |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18018 | 1.0.18018 | Październik 2019 r. | <ul><li> Drobne poprawki błędów i ulepszenia stabilizacji </li></ul> |
 | 10.20.18011 | 1.0.18011 | Lipiec 2019 r. | <ul><li> Drobne poprawki błędów i ulepszenia stabilizacji </li><li> Zwiększono MaxExpressionDepth do 10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | Czerwiec 2019 r. | <ul><li> Drobne poprawki błędów i ulepszenia stabilizacji </li><li> Dodano możliwość wyłączania poświadczeń domyślnych podczas nawiązywania połączenia z serwerem proxy (obsługa WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
 | 10.19.13515 | 1.0.13515 | Marzec 2019 r. | <ul><li>Niewielkie poprawki stabilizacji </li></ul> |
-| 10.19.10006 | nd. | Dec 2018 | <ul><li> Niewielkie poprawki stabilizacji </li></ul> | 
-| 8.0.11136 | nd. | Września 2018 |  <ul><li> Dodano obsługę wykrywania zmiany identyfikatora zasobu podczas przenoszenia maszyny wirtualnej </li><li> Dodano obsługę identyfikatora zasobu raportowania podczas korzystania z instalacji niezwiązanej z rozszerzeniem </li></ul>| 
-| 8.0.11103 | nd. |  Kwiecień 2018 r. | |
+| 10.19.10006 | Nie dotyczy | Dec 2018 | <ul><li> Niewielkie poprawki stabilizacji </li></ul> | 
+| 8.0.11136 | Nie dotyczy | Września 2018 |  <ul><li> Dodano obsługę wykrywania zmiany identyfikatora zasobu podczas przenoszenia maszyny wirtualnej </li><li> Dodano obsługę identyfikatora zasobu raportowania podczas korzystania z instalacji niezwiązanej z rozszerzeniem </li></ul>| 
+| 8.0.11103 | Nie dotyczy |  Kwiecień 2018 r. | |
 | 8.0.11081 | 1.0.11081 | Lis 2017 | | 
 | 8.0.11072 | 1.0.11072 | Września 2017 | |
 | 8.0.11049 | 1.0.11049 | 2017 lutego | |
@@ -58,7 +56,7 @@ Rozszerzenie agenta Log Analytics dla systemu Windows wymaga, aby docelowa maszy
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
-Poniższy kod JSON przedstawia schemat rozszerzenia agenta Log Analytics. Rozszerzenie wymaga identyfikatora obszaru roboczego i klucza obszaru roboczego z docelowego obszaru roboczego Log Analytics. Można je znaleźć w ustawieniach obszaru roboczego w Azure Portal. Ponieważ klucz obszaru roboczego, powinny być traktowane jako poufne dane, powinny być przechowywane w chronionym ustawienia konfiguracji. Dane platformy Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest zaszyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że **workspaceId** i **klucz workspaceKey** jest rozróżniana wielkość liter.
+Poniższy kod JSON przedstawia schemat rozszerzenia agenta Log Analytics. Rozszerzenie wymaga identyfikatora obszaru roboczego i klucza obszaru roboczego z docelowego obszaru roboczego Log Analytics. Można je znaleźć w ustawieniach obszaru roboczego w Azure Portal. Ponieważ klucz obszaru roboczego, powinny być traktowane jako poufne dane, powinny być przechowywane w chronionym ustawienia konfiguracji. Dane platformy Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest zaszyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że w **Identyfikator obszaru roboczego** i **workspaceKey** jest rozróżniana wielkość liter.
 
 ```json
 {
@@ -85,7 +83,7 @@ Poniższy kod JSON przedstawia schemat rozszerzenia agenta Log Analytics. Rozsze
 ```
 ### <a name="property-values"></a>Wartości właściwości
 
-| Nazwa | Wartość / przykład |
+| Name (Nazwa) | Wartość / przykład |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
@@ -96,7 +94,8 @@ Poniższy kod JSON przedstawia schemat rozszerzenia agenta Log Analytics. Rozsze
 
 \* identyfikator obszaru roboczego jest nazywany consumerId w interfejsie API Log Analytics.
 
-> [Uwaga!] Aby uzyskać dodatkowe właściwości, zobacz Azure [Connect Windows Computes to Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
+> [!NOTE]
+> Aby uzyskać dodatkowe właściwości, zobacz Azure [Connect komputery z systemem Windows do Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
@@ -105,9 +104,9 @@ Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu sz
 >[!NOTE]
 >Szablon nie obsługuje określania więcej niż jednego identyfikatora obszaru roboczego i klucza obszaru roboczego, jeśli chcesz skonfigurować agenta do raportowania do wielu obszarów roboczych. Aby skonfigurować agenta do raportowania do wielu obszarów roboczych, zobacz [Dodawanie lub usuwanie obszaru roboczego](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace).  
 
-KOD JSON rozszerzenia maszyny wirtualnej może być zagnieżdżony w obrębie zasobu maszyny wirtualnej lub umieszczony na głównym lub najwyższym poziomie szablonu JSON Menedżer zasobów. Położenie pliku JSON wpływa na wartość nazwy zasobu i typu. Aby uzyskać więcej informacji, zobacz [Ustaw nazwę i typ zasobów podrzędnych](../../azure-resource-manager/templates/child-resource-name-type.md). 
+KOD JSON rozszerzenia maszyny wirtualnej może być zagnieżdżony w obrębie zasobu maszyny wirtualnej lub umieszczony na głównym lub najwyższym poziomie szablonu JSON Menedżer zasobów. Położenie pliku JSON wpływa na wartość nazwy zasobu i typu. Aby uzyskać więcej informacji, zobacz [Ustawianie nazwy i typu dla zasobów podrzędnych](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
-W poniższym przykładzie założono, że rozszerzenie Azure Monitor jest zagnieżdżone w ramach zasobu maszyny wirtualnej. Zagnieżdżanie rozszerzenia zasobu, za pomocą pliku JSON jest umieszczany w `"resources": []` obiektu maszyny wirtualnej.
+W poniższym przykładzie założono, że rozszerzenie Log Analytics jest zagnieżdżone w ramach zasobu maszyny wirtualnej. Podczas zagnieżdżania zasobu rozszerzenia kod JSON jest umieszczany w obiekcie `"resources": []` maszyny wirtualnej.
 
 
 ```json
@@ -197,4 +196,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonit
 
 ### <a name="support"></a>Pomoc techniczna
 
-Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj temat [Microsoft Azure support — często zadawane pytania](https://azure.microsoft.com/support/faq/).

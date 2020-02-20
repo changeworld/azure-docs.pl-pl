@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/08/2019
+ms.date: 02/19/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da2d598c7bb6d7b06e57dd497d1e2aebf1b63694
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: cd37374ab6341356d84f205e92c9612d8481818f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898893"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468851"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raportów działań związanych z logowaniem 
 
@@ -38,7 +38,7 @@ Gdy logowanie nie powiedzie się, zostanie wyświetlony kod błędu odpowiadają
 
 W menu [Azure Portal](https://portal.azure.com) wybierz pozycję **Azure Active Directory**lub wyszukaj i wybierz pozycję **Azure Active Directory** z dowolnej strony.
 
-![Wybierz Azure Active Directory](./media/reference-sign-ins-error-codes/select-azure-active-directory.png "Usługa Active Directory systemu Azure")
+![Wybierz Azure Active Directory](./media/reference-sign-ins-error-codes/select-azure-active-directory.png "Azure Active Directory")
 
 W obszarze **monitorowanie**wybierz pozycję **logowania** , aby otworzyć [raport logowania](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns).
 
@@ -112,7 +112,7 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |50128|Nieprawidłowa nazwa domeny — nie znaleziono informacji identyfikacyjnych dzierżawy w żądaniu lub IMPLIKOWANYCH przez żadne podane poświadczenia.|
 |50129|Urządzenie nie jest dołączone do miejsca pracy — do zarejestrowania urządzenia wymagane jest **dołączenie do miejsca pracy** .|
 |50130|Nie można zinterpretować wartości Claim jako znanej metody uwierzytelniania.|
-|50131|Używane w różnych błędach dostępu warunkowego. Przykład: Zły stan urządzenia z systemem Windows albo żądanie zablokowane z powodu podejrzanych decyzji związanych z działaniami, zasadami dostępu i zasadami zabezpieczeń.|
+|50131|Używane w różnych błędach dostępu warunkowego. Na przykład Zły stan urządzenia z systemem Windows albo żądanie zablokowane z powodu podejrzanych decyzji związanych z działaniami, zasadami dostępu i zasadami zabezpieczeń.|
 |50132|Poświadczenia zostały odwołane z następujących powodów:<ul><li>Artefakt logowania jednokrotnego jest nieprawidłowy lub wygasł</li><li>Sesja nie jest wystarczająco świeża dla aplikacji</li><li>Wysłano żądanie logowania dyskretnego, ale sesja użytkownika z usługą Azure AD jest nieprawidłowy lub wygasła.</li></ul>|
 |50133|Sesja jest nieprawidłowa z powodu wygaśnięcia lub niedawnej zmiany hasła.|
 |50135|Zmiana hasła jest wymagana ze względu na ryzyko związane z kontem.|
@@ -133,6 +133,7 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |50178|Kontrolka sesji nie jest obsługiwana w przypadku użytkowników przekazujących.|
 |50180|Wymagane jest zintegrowane uwierzytelnianie systemu Windows. Włącz dzierżawę dla bezproblemowego logowania jednokrotnego.|
 |50181|Błąd związany z uwierzytelnianiem OTP podczas logowania. |
+|50194|Aplikacja "{appId}" ({nazwa_aplikacji}) nie została skonfigurowana jako aplikacja wielodostępna. Użycie punktu końcowego/typowe nie jest obsługiwane dla takich aplikacji utworzonych po "{Time}". Użyj punktu końcowego określonego dla dzierżawy lub skonfiguruj aplikację jako wielodostępną.|
 |50201|Ten komunikat przerwania monitu zostanie wyświetlony użytkownikowi podczas logowania, jeśli do użytkownika mają zostać dostarczone dodatkowe informacje.|
 |51001|Nie ma wskazówki domeny z lokalnym identyfikatorem zabezpieczeń lokalnej nazwy użytkownika.|
 |51004|Konto użytkownika nie istnieje w katalogu.|
@@ -185,16 +186,22 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |90010|Żądanie nie jest obsługiwane z różnych powodów. Na przykład żądanie jest wykonywane za pomocą nieobsługiwanej metody żądania (obsługiwana jest tylko Metoda POST) lub algorytm podpisywania tokenu, którego zażądano, nie jest obsługiwany. Skontaktuj się z deweloperem aplikacji.|
 |90014| Brak wymaganego pola dla komunikatu protokołu, skontaktuj się z właścicielem aplikacji. Jeśli jesteś właścicielem aplikacji, upewnij się, że masz wszystkie wymagane parametry dla żądania logowania. |
 |90051| Nieprawidłowy token delegowania. Określono nieprawidłowy identyfikator chmury krajowej ({cloudId}).|
-|90072| Konto musi zostać najpierw dodane jako użytkownik zewnętrzny w dzierżawie. Wyloguj się i zaloguj ponownie przy użyciu innego konta usługi Azure AD.|
+|90072| Konto musi najpierw zostać dodane jako użytkownik zewnętrzny w dzierżawie. Wyloguj się i zaloguj ponownie przy użyciu innego konta usługi Azure AD.|
 |90094| Aplikacja zażądała uprawnień, do których użytkownik zalogowany nie może wyrazić zgody, a użytkownik został zablokowany. |
 |90095| Aplikacja zażądała uprawnień, do których użytkownik zalogowany nie może wyrazić zgody, a użytkownik wykazał formularz [żądania zgody administratora](../manage-apps/configure-admin-consent-workflow.md) . |
+|130500|Logowanie przy użyciu telefonu zostało zablokowane z powodu zasad poświadczeń użytkownika.|
 |500011| Nie znaleziono podmiotu zabezpieczeń o nazwie <site address> w dzierżawie o nazwie <tenant ID>. Taka sytuacja może wystąpić, jeśli aplikacja nie została zainstalowana przez administratora dzierżawy lub nie została wysłana przez żadnego użytkownika w dzierżawie. Żądanie uwierzytelniania mogło zostać wysłane do nieprawidłowej dzierżawy.|
+|500014|Zasób "{identifier}" jest wyłączony.|
 |500021| Dzierżawca jest ograniczony przez firmowy serwer proxy. Odmawianie dostępu do zasobów.|
 |500121| Uwierzytelnianie w trakcie silnego żądania uwierzytelniania nie powiodło się.|
 |500133| Potwierdzenie nie znajduje się w prawidłowym zakresie czasu. Upewnij się, że token dostępu nie wygasł przed użyciem go do potwierdzenia przez użytkownika lub zażądaj nowego tokenu.|
+|500172|Certyfikat "{name}" wystawiony przez element "{Issuer}" jest nieprawidłowy. Bieżący czas: "{curTime}". NotBefore certyfikatu: "{startTime}". NotAfter certyfikatu: "{endTime}".|
+|501291|Aplikacja kliencka jest aplikacją mam, urządzenie nie jest zarejestrowane i żądanie jest wysyłane przy użyciu brokera. Aby zarejestrować urządzenie przed uzyskaniem dostępu do aplikacji, należy wykonać dołączenie do miejsca pracy.|
+|530003|Urządzenie musi być zarządzane, aby można było uzyskać dostęp do tego zasobu.|
 |530021|Aplikacja nie spełnia wymagań dotyczących zatwierdzonej aplikacji dostępu warunkowego.|
 |530032|Zablokowane przez zasady zabezpieczeń.| 
 |700016|Nie znaleziono aplikacji o identyfikatorze "{appIdentifier}" w katalogu "{dzierżawcname}". Taka sytuacja może wystąpić, jeśli aplikacja nie została zainstalowana przez administratora dzierżawy lub nie została wysłana przez żadnego użytkownika w dzierżawie. Być może wysłano żądanie uwierzytelnienia do niewłaściwej dzierżawy.|
+|700051|Response_type token nie jest włączony dla aplikacji. Aplikacja zażądała nieobsługiwanego typu odpowiedzi z następujących powodów: response_type token nie jest włączony dla aplikacji. Właściciel aplikacji powinien przejść do Azure Portal lub wywołać program MS Graph, aby umożliwić niejawne przyznanie tokenu dostępu.|
 |900432|Klient poufny nie jest obsługiwany w żądaniu między chmurą.|
 |5000811|Nie można zweryfikować podpisu tokenu SAML. Identyfikator klucza podpisywania nie jest zgodny z żadnym prawidłowymi zarejestrowanymi kluczami.|
 |7000215|Podano nieprawidłowy klucz tajny klienta.|

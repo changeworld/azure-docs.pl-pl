@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: b90fc6f1f50ec2ea75619188cca36f78061f28df
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326787"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469939"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Klauzula SELECT w Azure Cosmos DB
 
@@ -36,19 +36,19 @@ SELECT <select_specification>
   
 - `<select_specification>`  
 
-  Właściwości lub wartości, które mają zostać wybrane dla zestawu wyników.  
+  Właściwości lub wartość należy wybrać zestaw wyników.  
   
 - `'*'`  
 
-  Określa, że wartość powinna być pobierana bez wprowadzania żadnych zmian. W przypadku, gdy przetworzona wartość jest obiektem, zostaną pobrane wszystkie właściwości.  
+  Określa, że wartość należy pobrać bez wprowadzania żadnych zmian. W szczególności, jeśli przetworzonych wartość jest obiektem, wszystkie właściwości będą pobierane.  
   
 - `<object_property_list>`  
   
-  Określa listę właściwości, które mają zostać pobrane. Każda zwrócona wartość będzie obiektem ze wskazanymi właściwościami.  
+  Określa listę właściwości, które mają zostać pobrane. Każdy zwrócona wartość będzie obiektu przy użyciu właściwości określonych.  
   
 - `VALUE`  
 
-  Określa, że wartość JSON ma być pobierana zamiast pełnego obiektu JSON. W przeciwieństwie do `<property_list>` nie otacza przewidywanej wartości w obiekcie.  
+  Określa, że wartość JSON mają zostać pobrane zamiast kompletnego obiektu JSON. W przeciwieństwie do `<property_list>` nie otacza przewidywanej wartości w obiekcie.  
  
 - `DISTINCT`
   
@@ -56,13 +56,13 @@ SELECT <select_specification>
 
 - `<scalar_expression>`  
 
-  Wyrażenie reprezentujące wartość, która ma zostać obliczona. Szczegóły można znaleźć w sekcji [wyrażenia skalarne](sql-query-scalar-expressions.md) .  
+  Wyrażenie reprezentujące wartość ma zostać obliczony. Szczegóły można znaleźć w sekcji [wyrażenia skalarne](sql-query-scalar-expressions.md) .  
 
 ## <a name="remarks"></a>Uwagi
 
-Składnia `SELECT *` jest prawidłowa tylko wtedy, gdy klauzula FROM deklaruje dokładnie jeden alias. `SELECT *` zawiera projekcję tożsamości, która może być przydatna, jeśli nie jest wymagana projekcja. SELECT * jest prawidłowy tylko wtedy, gdy klauzula FROM jest określona i wprowadza tylko pojedyncze źródło danych wejściowych.  
+Składnia `SELECT *` jest prawidłowa tylko wtedy, gdy klauzula FROM deklaruje dokładnie jeden alias. `SELECT *` dostarcza projekcję tożsamości, która może być przydatna, jeśli nie jest wymagana projekcja. Wybierz * jest prawidłowa, jeśli klauzula FROM określono tylko i wyłącznie jedno źródło danych wejściowych.  
   
-Zarówno `SELECT <select_list>`, jak i `SELECT *` są "sacharoza" i mogą być alternatywnie wyrażone przy użyciu prostych instrukcji SELECT, jak pokazano poniżej.  
+Zarówno `SELECT <select_list>`, jak i `SELECT *` są "sacharozy" i mogą być również wyrażone przy użyciu prostych instrukcji SELECT, jak pokazano poniżej.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
@@ -78,7 +78,7 @@ Zarówno `SELECT <select_list>`, jak i `SELECT *` są "sacharoza" i mogą być a
   
 ## <a name="examples"></a>Przykłady
 
-Poniższy przykład zapytania SELECT zwraca `address` z `Families`, którego `id` dopasowuje `AndersenFamily`:
+Poniższy przykład zapytania SELECT zwraca `address` z `Families`, którego `id` pasuje `AndersenFamily`:
 
 ```sql
     SELECT f.address
@@ -168,6 +168,50 @@ Wyniki są następujące:
         "name": "AndersenFamily"
       }
     }]
+```
+## <a name="reserved-keywords-and-special-characters"></a>Zastrzeżone słowa kluczowe i znaki specjalne
+
+Jeśli dane zawierają właściwości o takich samych nazwach jak zastrzeżone słowa kluczowe, takie jak "Order" lub "Group", kwerendy dotyczące tych dokumentów będą powodowały błędy składniowe. Należy jawnie uwzględnić właściwość w `[]` znaku, aby pomyślnie uruchomić zapytanie.
+
+Na przykład poniżej przedstawiono dokument z właściwością o nazwie `order` i `price($)` właściwości, która zawiera znaki specjalne:
+
+```json
+{
+  "id": "AndersenFamily",
+  "order": [
+     {
+         "orderId": "12345",
+         "productId": "A17849",
+         "price($)": 59.33
+     }
+  ],
+  "creationDate": 1431620472,
+  "isRegistered": true
+}
+```
+
+W przypadku uruchomienia zapytania zawierającego właściwość `order` lub właściwość `price($)` zostanie wyświetlony błąd składniowy.
+
+```sql
+SELECT * FROM c where c.order.orderid = "12345"
+```
+```sql
+SELECT * FROM c where c.order.price($) > 50
+```
+Wynik:
+
+`
+Syntax error, incorrect syntax near 'order'
+`
+
+Należy ponownie napisać te same zapytania jak poniżej:
+
+```sql
+SELECT * FROM c WHERE c["order"].orderId = "12345"
+```
+
+```sql
+SELECT * FROM c WHERE c["order"]["price($)"] > 50
 ```
 
 ## <a name="next-steps"></a>Następne kroki

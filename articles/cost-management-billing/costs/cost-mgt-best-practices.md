@@ -1,21 +1,20 @@
 ---
 title: Optymalizowanie inwestycji w chmurę za pomocą usługi Azure Cost Management | Microsoft Docs
 description: Ten artykuł pomaga zmaksymalizować korzyści z inwestycji w chmurę, ograniczyć koszty i ocenić, na co wydawane są pieniądze.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 47a53136a8f299e5c8654d122d8e319be4ae29db
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988385"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201071"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak zoptymalizować inwestycję w chmurę za pomocą usługi Azure Cost Management
 
@@ -85,20 +84,20 @@ Pierwszym krokiem w celu zmaksymalizowania doświadczenia w ramach usługi Cost 
 
 Aby dowiedzieć się więcej o różnych opcjach, odwiedź stronę [Kupowanie platformy Azure](https://azure.microsoft.com/pricing/purchase-options/). Poniżej przedstawiono kilka najczęstszych modeli rozliczeń.
 
-#### <a name="freehttpsazuremicrosoftcomfree"></a>[Bezpłatna](https://azure.microsoft.com/free/)
+#### <a name="free"></a>[Bezpłatna](https://azure.microsoft.com/free/)
 
 - 12 miesięcy popularnych bezpłatnych usług
 - 200 USD środków na zapoznawanie się z usługami przez 30 dni
 - Ponad 25 usług, które są zawsze bezpłatne
 
-#### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[Płatność zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p)
+#### <a name="pay-as-you-go"></a>[Płatność zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p)
 
 - Brak kwot minimalnych oraz zobowiązań
 - Konkurencyjne ceny
 - Płatność wyłącznie za rzeczywiste użycie
 - Możliwość anulowania w dowolnym momencie
 
-#### <a name="enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement"></a>[Umowa Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)
+#### <a name="enterprise-agreement"></a>[Umowa Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
 - Możliwości w zakresie zobowiązań pieniężnych z góry
 - Dostęp do niższych cen platformy Azure

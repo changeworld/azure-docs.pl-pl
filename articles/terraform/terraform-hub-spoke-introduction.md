@@ -3,12 +3,12 @@ title: Samouczek — Tworzenie topologii sieci hybrydowej Hub i satelity na plat
 description: Samouczek przedstawiający sposób tworzenia całej architektury referencyjnej sieci hybrydowej na platformie Azure przy użyciu Terraform
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 90a60fc4fe98397c903e3e8a460806d6a2edb908
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6f156dd90b83ceaf5749c8c2acebae35bcb54a92
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159020"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472183"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Samouczek: tworzenie topologii sieci hybrydowej Hub i satelity na platformie Azure przy użyciu Terraform
 
@@ -30,7 +30,7 @@ Ten samouczek obejmuje następujące zadania:
 
 - **Subskrypcja platformy Azure**: Jeśli nie masz jeszcze subskrypcji platformy Azure, przed rozpoczęciem Utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) .
 
-- **Zainstaluj i skonfiguruj Terraform**: Aby udostępnić maszyny wirtualne i inne infrastruktury na platformie Azure, [Zainstaluj i skonfiguruj Terraform](/azure/virtual-machines/linux/terraform-install-configure)
+- **Zainstaluj i skonfiguruj Terraform**: Aby udostępnić maszyny wirtualne i inne infrastruktury na platformie Azure, [Zainstaluj i skonfiguruj Terraform](terraform-install-configure.md)
 
 ## <a name="hub-and-spoke-topology-architecture"></a>Architektura topologii gwiazdy i szprych
 

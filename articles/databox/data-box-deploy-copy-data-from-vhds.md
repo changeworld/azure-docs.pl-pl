@@ -1,5 +1,6 @@
 ---
-title: Samouczek kopiowania danych z dysków VHD do usługi Managed disks przy użyciu Azure Data Box | Microsoft Docs
+title: 'Samouczek: kopiowanie z dysków VHD do dysków zarządzanych'
+titleSuffix: Azure Data Box
 description: Informacje o kopiowaniu danych z dysków VHD z lokalnych obciążeń maszyn wirtualnych do Azure Data Box
 services: databox
 author: alkohli
@@ -8,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4b7182d1fa70a146da1c01273ffe1032f2982546
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 8f076deaafd938dc93800cf351bf471cead5f009
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240460"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471231"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Samouczek: Używanie urządzenie Data Box do importowania danych jako dysków zarządzanych na platformie Azure
 
@@ -31,7 +32,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Przed rozpoczęciem upewnij się, że:
 
-1. Ukończono [Samouczek: konfigurowanie usługi Azure Data Box](data-box-deploy-set-up.md).
+1. Ukończono [Samouczek: konfigurowanie Azure Data Box](data-box-deploy-set-up.md).
 2. Urządzenie Data Box zostało do Ciebie dostarczone, a stan zamówienia w portalu to **Dostarczono**.
 3. Dysponujesz szybkim połączeniem sieciowym. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10-GbE nie jest dostępne, Użyj linku danych 1 GbE, ale ma to zastosowanie do szybkości kopiowania.
 4. Sprawdzono:
@@ -41,7 +42,7 @@ Przed rozpoczęciem upewnij się, że:
 
 ## <a name="connect-to-data-box"></a>Nawiązywanie połączenia z urządzeniem Data Box
 
-Na podstawie określonych grup zasobów urządzenie Data Box tworzy jeden udział dla każdej skojarzonej grupy zasobów. Na przykład, jeśli `mydbmdrg1` i `mydbmdrg2` zostały utworzone podczas umieszczania zamówienia, tworzone są następujące udziały:
+Na podstawie określonych grup zasobów urządzenie Data Box tworzy jeden udział dla każdej skojarzonej grupy zasobów. Na przykład jeśli `mydbmdrg1` i `mydbmdrg2` zostały utworzone podczas umieszczania zamówienia, tworzone są następujące udziały:
 
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
@@ -79,7 +80,7 @@ Jeśli używasz komputera-hosta z systemem Windows Server, wykonaj następujące
     
     ![Pobieranie poświadczeń udziału 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
-3. Aby uzyskać dostęp do udziałów skojarzonych z zasobem (*mydbmdrg1* w poniższym przykładzie) z komputera hosta, Otwórz okno wiersza polecenia. W wierszu polecenia wpisz polecenie:
+3. Aby uzyskać dostęp do udziałów skojarzonych z zasobem (*mydbmdrg1* w poniższym przykładzie) z komputera hosta, Otwórz okno wiersza polecenia. W wierszu polecenia wpisz:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -135,9 +136,9 @@ Po nawiązaniu połączenia z serwerem danych następnym krokiem jest skopiowani
 
 Przed rozpoczęciem kopiowania danych zapoznaj się z następującymi kwestiami:
 
-- Zawsze Kopiuj wirtualne dyski twarde do jednego z utworzonych folderów. W przypadku kopiowania dysków VHD poza te foldery lub w utworzonym folderze wirtualne dyski twarde zostaną przekazane do konta usługi Azure Storage jako stronicowe obiekty blob i dyski niezarządzane.
-- Do tworzenia dysków zarządzanych można przekazać tylko stałe wirtualne dyski twarde. Pliki VHDX lub dynamiczne i różnicowe dyski VHD nie są obsługiwane.
-- Można mieć tylko jeden dysk zarządzany o danej nazwie w grupie zasobów we wszystkich pretworzonych folderach. Oznacza to, że wirtualne dyski twarde przekazane do folderów pretworzonych powinny mieć unikatowe nazwy. Upewnij się, że dana nazwa nie jest zgodna z już istniejącym dyskiem zarządzanym w grupie zasobów.
+- Zawsze kopiuj wirtualne dyski twarde do jednego ze wstępnie utworzonych folderów. W przypadku kopiowania dysków VHD poza te foldery lub w utworzonym folderze wirtualne dyski twarde zostaną przekazane do konta usługi Azure Storage jako stronicowe obiekty blob i dyski niezarządzane.
+- Na potrzeby tworzenia dysków zarządzanych można przekazywać tylko stałe wirtualne dyski twarde. Pliki VHDX lub dynamiczne i różnicowe dyski VHD nie są obsługiwane.
+- Można mieć tylko jeden dysk zarządzany o danej nazwie w grupie zasobów we wszystkich pretworzonych folderach. Oznacza to, że wirtualne dyski twarde przekazane do wstępnie utworzonych folderów powinny mieć unikatowe nazwy. Upewnij się, że dana nazwa nie jest zgodna z nazwą już istniejącego dysku zarządzanego w grupie zasobów.
 - Zapoznaj się z limitami dysku zarządzanego w obszarze [limity rozmiaru obiektów platformy Azure](data-box-limits.md#azure-object-size-limits).
 
 W zależności od tego, czy łączysz się za pośrednictwem protokołu SMB czy NFS, możesz użyć:

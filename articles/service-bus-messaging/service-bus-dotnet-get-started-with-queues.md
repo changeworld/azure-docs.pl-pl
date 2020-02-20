@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 60428e3c5be4ac994f83f44c4492ebd80ee65da7
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 5718106aee0e60d111398efdb839945c2c7a8a06
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760985"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471741"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Wprowadzenie do kolejek usługi Service Bus
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -27,9 +27,9 @@ W tym samouczku utworzysz aplikacje konsolowe platformy .NET Core umożliwiając
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Visual Studio 2019](https://www.visualstudio.com/vs).
+- [Program Visual Studio 2019](https://www.visualstudio.com/vs).
 - [Zestaw NET Core SDK](https://www.microsoft.com/net/download/windows), wersja 2.0 lub nowsza.
-- Subskrypcja platformy Azure. Do wykonania kroków tego samouczka potrzebne jest konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Jeśli nie masz kolejki do współpracy z programem, postępuj zgodnie z instrukcjami w temacie [Use Azure Portal, aby utworzyć](service-bus-quickstart-portal.md) kolejkę Service Bus w celu utworzenia kolejki.
 
   - Zapoznaj się z krótkim omówieniem kolejek Service Bus.
@@ -204,6 +204,7 @@ Aby odebrać wysłane komunikaty, Utwórz kolejną aplikację **konsoli (.NET Co
 1. W *program.cs*Dodaj następujące instrukcje `using` w górnej części definicji przestrzeni nazw przed deklaracją klasy:
 
     ```csharp
+    using System;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
@@ -220,18 +221,23 @@ Aby odebrać wysłane komunikaty, Utwórz kolejną aplikację **konsoli (.NET Co
 
     Wprowadź parametry połączenia dla przestrzeni nazw jako zmienną `ServiceBusConnectionString`. Wprowadź nazwę kolejki.
 
-1. Zastąp domyślną zawartość elementu `Main()` następującym wierszem kodu:
+1. Zastąp metodę `Main()` poniższym kodem:
 
     ```csharp
-    public static async Task Main(string[] args)
-    {    
+    static void Main(string[] args)
+    {
+        MainAsync().GetAwaiter().GetResult();
+    }
+
+    static async Task MainAsync()
+    {
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
         Console.WriteLine("======================================================");
         Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
         Console.WriteLine("======================================================");
 
-        // Register the queue message handler and receive messages in a loop
+        // Register QueueClient's MessageHandler and receive messages in a loop
         RegisterOnMessageHandlerAndReceiveMessages();
 
         Console.ReadKey();

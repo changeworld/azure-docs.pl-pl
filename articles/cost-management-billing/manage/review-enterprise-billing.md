@@ -1,31 +1,23 @@
 ---
 title: Przeglądanie danych rozliczeń rejestracji dla przedsiębiorstw na platformie Azure za pomocą interfejsu API REST | Microsoft Docs
 description: Dowiedz się, jak za pomocą interfejsów API REST platformy Azure przeglądać informacje rozliczeniowe rejestracji dla przedsiębiorstw.
-services: billing
-documentationcenter: na
 author: lleonard-msft
-manager: ''
-editor: ''
-ms.assetid: 82D50B98-40F2-44B1-A445-4391EA9EBBAA
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 222b0358f027e0a6687ca0710e3cf5b80f292c4e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 24c4d9b74d68a05a253f05521ee62a0881a90988
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75993468"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199572"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Przeglądanie rozliczeń rejestracji dla przedsiębiorstw przy użyciu interfejsów API REST
 
 Interfejsy API usługi Azure Reporting ułatwiają przeglądanie kosztów korzystania z platformy Azure i zarządzanie nimi.
 
-Ten artykuł zawiera informacje dotyczące pobierania informacji rozliczeniowych skojarzonych z kontami rozliczeniowymi, działem lub kontami rejestracji umowy Enterprise Agreement (EA) przy użyciu interfejsów API REST platformy Azure. 
+Ten artykuł zawiera informacje dotyczące pobierania informacji rozliczeniowych skojarzonych z kontami rozliczeniowymi, działem lub kontami rejestracji umowy Enterprise Agreement (EA) przy użyciu interfejsów API REST platformy Azure.
 
 ## <a name="individual-account-billing"></a>Rozliczanie indywidualnego konta
 
@@ -39,7 +31,7 @@ Authorization: Bearer
 
 Parametr `{billingAccountId}` jest wymagany i powinien zawierać identyfikator konta.
 
-Wymagane są następujące nagłówki: 
+Wymagane są następujące nagłówki:
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
@@ -80,9 +72,9 @@ Kod stanu 200 (OK) jest zwracany dla pomyślnej odpowiedzi, która zawiera list�
 
 Ten przykład jest skrócony. Aby uzyskać pełny opis każdego pola odpowiedzi i obsługi błędów, zobacz [Pobieranie szczegółów użycia dla konta rozliczeniowego](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist-legacy).
 
-## <a name="department-billing"></a>Rozliczenia działu 
+## <a name="department-billing"></a>Rozliczenia działu
 
-Można uzyskać zagregowane szczegóły użycia dla wszystkich kont w dziale. 
+Można uzyskać zagregowane szczegóły użycia dla wszystkich kont w dziale.
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
@@ -92,7 +84,7 @@ Authorization: Bearer
 
 Parametr `{departmentId}` jest wymagany i powinien zawierać identyfikator działu na koncie rejestracji.
 
-Wymagane są następujące nagłówki: 
+Wymagane są następujące nagłówki:
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
@@ -148,7 +140,7 @@ Authorization: Bearer
 
 Parametr `{enrollmentAccountId}` jest wymagany i powinien zawierać identyfikator konta rejestracji.
 
-Wymagane są następujące nagłówki: 
+Wymagane są następujące nagłówki:
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
@@ -185,11 +177,11 @@ Poniższy przykład przedstawia dane wyjściowe interfejsu API REST dla rejestra
     }
   ]
 }
-``` 
+```
 
 Ten przykład jest skrócony. Aby uzyskać pełny opis każdego pola odpowiedzi i obsługi błędów, zobacz [Pobieranie szczegółów użycia dla konta rejestracji](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy).
 
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Następne kroki
 - Przejrzyj temat [Przegląd raportowania korporacyjnego](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
 - Zapoznaj się z tematem [Interfejs API REST rozliczania korporacyjnego](https://docs.microsoft.com/rest/api/billing/)   
 - [Rozpoczynanie pracy z interfejsem API REST platformy Azure](https://docs.microsoft.com/rest/api/azure/)   

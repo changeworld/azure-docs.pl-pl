@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 8573a915c572885b53437843b114aa987be4c66b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 629de079f7cc7d95d10f8ff951a47b8b8fc62dad
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198460"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474191"
 ---
 Błędy wywoływane w Azure Functions mogą pochodzić z jednego z następujących źródeł:
 
@@ -37,6 +37,6 @@ Następujące wyzwalacze obsługują wbudowaną ponowną próbę:
 * [Usługa Azure queue storage](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (Kolejka/temat)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-Domyślnie te wyzwalacze ponawiają żądania do pięciu razy. Po piątej ponowieniu próby zarówno usługa Azure queue storage, jak i Azure Service Bus wyzwalają zapisanie komunikatu w [kolejce trującej](..\articles\azure-functions\functions-bindings-storage-queue.md#trigger---poison-messages).
+Domyślnie te wyzwalacze ponawiają żądania do pięciu razy. Po piątej ponowieniu próby zarówno usługa Azure queue storage, jak i Azure Service Bus wyzwalają zapisanie komunikatu w [kolejce trującej](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages).
 
 Należy ręcznie zaimplementować zasady ponawiania dla innych typów wyzwalaczy lub powiązań. Implementacje ręczne mogą obejmować zapisywanie informacji o błędach w [kolejce trujących komunikatów](..\articles\azure-functions\functions-bindings-storage-blob-trigger.md#poison-blobs). Pisząc do kolejki trującej, można ponowić próbę wykonania operacji w późniejszym czasie. To podejście jest takie samo, jak używane przez wyzwalacz magazynu obiektów BLOB.

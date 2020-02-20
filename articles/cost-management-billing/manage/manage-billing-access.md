@@ -1,27 +1,20 @@
 ---
 title: Zarządzanie dostępem do rozliczeń platformy Azure | Microsoft Docs
 description: Dowiedz się, jak zapewnić członkom zespołu dostęp do informacji rozliczeniowych platformy Azure.
-services: ''
-documentationcenter: ''
 author: vikramdesai01
-manager: amberb
-editor: ''
+ms.reviewer: amberb
 tags: billing
-ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2018
+ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 9f78675878bd7a36e27ec1bdce0f3e38540d6039
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5a4d725d88ee38bb68ea3da4f3e2a6a9bfc7e201
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75991440"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200697"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Zarządzanie dostępem do informacji rozliczeniowych dla platformy Azure
 

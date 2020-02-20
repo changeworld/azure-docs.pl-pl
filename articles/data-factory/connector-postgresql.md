@@ -9,21 +9,21 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: fa5835b287a2fd39671ea5ac0c3bc849378645c5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 38cab21fb38fe171992ec8ce6c48b07f2ea94e9a
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891928"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471146"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopiowanie danych z PostgreSQL za pomocą Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-onprem-postgresql-connector.md)
 > * [Bieżąca wersja](connector-postgresql.md)
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych PostgreSQL. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych PostgreSQL. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
@@ -32,7 +32,7 @@ Ten łącznik PostgreSQL jest obsługiwany dla następujących działań:
 - [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
 
-Dane z bazy danych PostgreSQL można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane z bazy danych PostgreSQL można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
 
 Ten łącznik PostgreSQL obsługuje PostgreSQL w **wersji 7,4 lub nowszej**.
 
@@ -40,7 +40,7 @@ Ten łącznik PostgreSQL obsługuje PostgreSQL w **wersji 7,4 lub nowszej**.
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-W przypadku samodzielnej wersji środowiska IR starszej niż 3,7 należy zainstalować [dostawcę danych Ngpsql dla PostgreSQL](https://go.microsoft.com/fwlink/?linkid=282716) z wersją między 2.0.12 i 3.1.9 na maszynie Integration Runtime.
+Integration Runtime udostępnia wbudowany sterownik PostgreSQL, począwszy od wersji 3,7, dlatego nie trzeba ręcznie instalować żadnego sterownika.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -54,16 +54,16 @@ Dla połączonej usługi PostgreSQL są obsługiwane następujące właściwośc
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć wartość: **PostgreSQL** | Tak |
+| typ | Właściwość Type musi mieć wartość: **PostgreSQL** | Tak |
 | connectionString | Ciąg połączenia ODBC, nawiązać połączenia z usługi Azure Database for PostgreSQL. <br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `password` z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. | Tak |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| connectVia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
-Typowe parametry połączenia jest `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Więcej właściwości, które można ustawić dla tej sprawy:
+Typowe parametry połączenia to `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Więcej właściwości, które można ustawić dla tej sprawy:
 
 | Właściwość | Opis | Opcje | Wymagane |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| Metoda sterownik używa do szyfrowania danych przesyłanych między sterownik i serwera bazy danych. Np., `EncryptionMethod=<0/1/6>;`| 0 (bez szyfrowania) **(opcja domyślna)** / 1 (SSL) / 6 (RequestSSL) | Nie |
-| ValidateServerCertificate (VSC) | Określa, czy sterownik sprawdza poprawność certyfikatu, który jest wysyłany przez serwer bazy danych, po włączeniu szyfrowania SSL (metoda szyfrowania = 1). Np., `ValidateServerCertificate=<0/1>;`| 0 (wyłączone) **(opcja domyślna)** / 1 (włączony) | Nie |
+| EncryptionMethod (EM)| Metoda sterownik używa do szyfrowania danych przesyłanych między sterownik i serwera bazy danych. Np., `EncryptionMethod=<0/1/6>;`| 0 (bez szyfrowania) **(wartość domyślna)** /1 (SSL)/6 (RequestSSL) | Nie |
+| ValidateServerCertificate (VSC) | Określa, czy sterownik sprawdza poprawność certyfikatu, który jest wysyłany przez serwer bazy danych, po włączeniu szyfrowania SSL (metoda szyfrowania = 1). Np., `ValidateServerCertificate=<0/1>;`| 0 (wyłączone) **(wartość domyślna)** /1 (włączone) | Nie |
 
 **Przykład:**
 
@@ -137,15 +137,15 @@ Jeśli używasz połączonej usługi PostgreSQL z następującym ładunkiem, nad
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych PostgreSQL.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych PostgreSQL.
 
 Aby skopiować dane z PostgreSQL, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **PostgreSqlTable** | Tak |
-| schema | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
-| table | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| typ | Właściwość Type zestawu danych musi być ustawiona na wartość: **PostgreSqlTable** | Tak |
+| schemat | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| tabela | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
 | tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i `table` dla nowego obciążenia. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
@@ -170,7 +170,7 @@ Jeśli używasz zestawu danych `RelationalTable` z określonym typem, nadal jest
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło PostgreSQL.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło PostgreSQL.
 
 ### <a name="postgresql-as-source"></a>PostgreSQL jako źródło
 
@@ -178,8 +178,8 @@ Aby skopiować dane z PostgreSQL, w sekcji **Źródło** działania kopiowania s
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **PostgreSqlSource** | Tak |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| typ | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **PostgreSqlSource** | Tak |
+| zapytanie | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 > [!NOTE]
 > W nazwach schematu i tabeli jest rozróżniana wielkość liter. Ujmij je w `""` (podwójne cudzysłowy) w zapytaniu.
@@ -224,4 +224,4 @@ Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (w
 
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -1,6 +1,6 @@
 ---
-title: Zarządzaj kontenerami woluminów StorSimple na urządzeniu StorSimple 8000 series | Dokumentacja firmy Microsoft
-description: Wyjaśnia, jak można użyć strony kontenery woluminów usługi Menedżer urządzeń StorSimple można dodać, zmodyfikować lub usunąć kontenera woluminów.
+title: Zarządzanie kontenerami woluminów dla urządzeń z serii StorSimple 8000
+description: Wyjaśnia, jak można użyć strony kontenery woluminów usługi StorSimple Menedżer urządzeń do dodawania, modyfikowania lub usuwania kontenera woluminów.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,49 +14,49 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 7e1a5ac2c2b734c77fc3dbe788206f8c75044953
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cbdad3c68848ce552811ee658bb29df74a6fad19
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60724741"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467032"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>Zarządzanie kontenerami woluminów StorSimple przy użyciu usługi Menedżer urządzeń StorSimple
+# <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>Zarządzanie kontenerami woluminów StorSimple przy użyciu usługi StorSimple Menedżer urządzeń
 
 ## <a name="overview"></a>Omówienie
-W tym samouczku wyjaśniono, jak za pomocą usługi Menedżer urządzeń StorSimple tworzenie i Zarządzanie kontenerami woluminów StorSimple.
+W tym samouczku wyjaśniono, jak używać usługi StorSimple Menedżer urządzeń do tworzenia kontenerów woluminów StorSimple i zarządzania nimi.
 
-Kontener woluminów na urządzeniu StorSimple systemu Azure firmy Microsoft zawiera jeden lub więcej woluminów, które współużytkują konta magazynu, szyfrowania i ustawienia zużycie przepustowości. Urządzenie może mieć wiele kontenerów woluminów dla jego woluminów. 
+Kontener woluminów na urządzeniu Microsoft Azure StorSimple zawiera jeden lub więcej woluminów, które współużytkują ustawienia kont magazynu, szyfrowania i zużycia przepustowości. Urządzenie może mieć wiele kontenerów woluminów dla wszystkich woluminów. 
 
 Kontener woluminów ma następujące atrybuty:
 
-* **Woluminy** — warstwowe lub lokalnie przypięte woluminy StorSimple, które są zawarte w kontenerze woluminów. 
-* **Szyfrowanie** — kluczem szyfrowania, które mogą być definiowane dla każdego kontenera woluminów. Ten klucz jest używany do szyfrowania danych, które są wysyłane z urządzenia StorSimple w chmurze. Z klasy korporacyjnej military AES-256-bitowym kluczem jest używany z kluczem wprowadzonych przez użytkownika. Aby zabezpieczyć swoje dane, zalecamy zawsze włączone szyfrowanie magazynu w chmurze.
-* **Konto magazynu** — konto magazynu platformy Azure, który służy do przechowywania danych. Wszystkie woluminy znajdujące się w kontenerze woluminów udostępnić to konto magazynu. Wybierz konto magazynu z istniejącej listy lub Utwórz nowe konto, podczas tworzenia kontenera woluminów, a następnie określ poświadczenia dostępu dla tego konta.
-* **Przepustowość w chmurze** — przepustowość, używane przez urządzenie, gdy dane z urządzenia są wysyłane do chmury. Za wymuszania kontroli przepustowości, określając wartość z zakresu od 1 do 1000 MB/s, podczas tworzenia tego kontenera. Jeśli chcesz, aby urządzenie korzystało z wszystkie dostępne przepustowości, Ustaw to pole **nieograniczone**. Można również tworzyć i Zastosuj szablon przepustowości, aby przydzielić przepustowość zgodnie z harmonogramem.
+* **Woluminy** — woluminy w warstwach lub lokalnie przypięte StorSimple, które znajdują się w kontenerze woluminów. 
+* **Szyfrowanie** — klucz szyfrowania, który można zdefiniować dla każdego kontenera woluminów. Ten klucz służy do szyfrowania danych wysyłanych z urządzenia StorSimple do chmury. Klucz bitowy w klasie wojskowej AES-256 jest używany z kluczem wprowadzonym przez użytkownika. Aby zabezpieczyć dane, zalecamy włączenie szyfrowania magazynu w chmurze.
+* **Konto magazynu** — konto usługi Azure Storage, które jest używane do przechowywania danych. Wszystkie woluminy znajdujące się w kontenerze woluminów współużytkują to konto magazynu. Można wybrać konto magazynu z istniejącej listy lub utworzyć nowe konto podczas tworzenia kontenera woluminów, a następnie określić poświadczenia dostępu dla tego konta.
+* **Przepustowość chmury** — przepustowość wykorzystywana przez urządzenie, gdy dane z urządzenia są wysyłane do chmury. Można wymusić kontrolę przepustowości, określając wartość z przedziału od 1 MB/s do 1 000 MB/s podczas tworzenia tego kontenera. Jeśli chcesz, aby urządzenie korzystało z całej dostępnej przepustowości, ustaw to pole na **nieograniczoną**. Możesz również utworzyć i zastosować szablon przepustowości, aby przydzielić przepustowość na podstawie harmonogramu.
 
-W poniższych procedurach opisano sposób użycia usługi StorSimple **kontenery woluminów** bloku, aby wykonać następujące typowe operacje:
+W poniższych procedurach opisano, jak użyć bloku **kontenery woluminów** StorSimple, aby wykonać następujące typowe operacje:
 
 * Dodawanie kontenera woluminów
-* Modyfikuj kontener woluminu
+* Modyfikowanie kontenera woluminów
 * Usuwanie kontenera woluminów
 
 ## <a name="add-a-volume-container"></a>Dodawanie kontenera woluminów
-Wykonaj poniższe kroki, aby dodać kontener woluminów.
+Wykonaj następujące kroki, aby dodać kontener woluminów.
 
 [!INCLUDE [storsimple-8000-add-volume-container](../../includes/storsimple-8000-create-volume-container.md)]
 
-## <a name="modify-a-volume-container"></a>Modyfikuj kontener woluminu
-Wykonaj poniższe kroki, aby zmodyfikować kontener woluminów.
+## <a name="modify-a-volume-container"></a>Modyfikowanie kontenera woluminów
+Wykonaj następujące kroki, aby zmodyfikować kontener woluminów.
 
 [!INCLUDE [storsimple-8000-modify-volume-container](../../includes/storsimple-8000-modify-volume-container.md)]
 
 ## <a name="delete-a-volume-container"></a>Usuwanie kontenera woluminów
-Kontener woluminów obejmuje woluminy znajdujące się w nim. Można usunąć tylko wtedy, gdy wszystkie woluminy, które są zawarte w nim najpierw są usuwane. Wykonaj następujące czynności, można usunąć kontenera woluminów.
+Kontener woluminów zawiera woluminy. Można ją usunąć tylko wtedy, gdy wszystkie woluminy zawarte w niej zostały najpierw usunięte. Wykonaj następujące kroki, aby usunąć kontener woluminów.
 
 [!INCLUDE [storsimple-8000-delete-volume-container](../../includes/storsimple-8000-delete-volume-container.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [Zarządzanie woluminów StorSimple](storsimple-8000-manage-volumes-u2.md). 
-* Dowiedz się więcej o [przy użyciu usługi Menedżer urządzeń StorSimple do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się więcej o [zarządzaniu woluminami StorSimple](storsimple-8000-manage-volumes-u2.md). 
+* Dowiedz się więcej o [korzystaniu z usługi StorSimple Menedżer urządzeń w celu administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
 

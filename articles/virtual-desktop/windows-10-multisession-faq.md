@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 543514683ff96449bfe0e5a21c525834f61f3027
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e2fa30772082f4d2f7c02add61412432233e3f04
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367136"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470576"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Wiele sesji systemu Windows 10 Enterprise — często zadawane pytania
 
@@ -28,7 +28,7 @@ Liczba interaktywnych sesji, które mogą być aktywne w tym samym czasie, zale�
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>Dlaczego moja aplikacja raportuje wiele sesji systemu Windows 10 Enterprise jako system operacyjny serwera?
 
-Wiele sesji systemu Windows 10 Enterprise to wersja wirtualna systemu Windows 10 Enterprise. Jedna z różnic polega na tym, że ten system operacyjny (OS) raportuje element [ProductType](/windows/desktop/cimwin32prov/win32-operatingsystem/) jako wartość 3 o takiej samej wartości jak system Windows Server. Ta właściwość utrzymuje system operacyjny zgodny z istniejącymi narzędziami do zarządzania hostami usług pulpitu zdalnego, aplikacjami obsługującymi wiele sesji hosta usług pulpitu zdalnego i większością optymalizacji wydajności systemu niskiego poziomu dla środowisk hosta usług pulpitu zdalnego. Niektóre Instalatory aplikacji mogą blokować instalację w wielu sesjach systemu Windows 10, w zależności od tego, czy wykrywane są ustawienia ProductType dla klienta. Jeśli Twoja aplikacja nie zostanie zainstalowana, skontaktuj się z dostawcą aplikacji w celu uzyskania zaktualizowanej wersji. 
+Wiele sesji systemu Windows 10 Enterprise to wersja wirtualna systemu Windows 10 Enterprise. Jedna z różnic polega na tym, że ten system operacyjny (OS) raportuje element [ProductType](/windows/win32/cimwin32prov/win32-operatingsystem) jako wartość 3 o takiej samej wartości jak system Windows Server. Ta właściwość utrzymuje system operacyjny zgodny z istniejącymi narzędziami do zarządzania hostami usług pulpitu zdalnego, aplikacjami obsługującymi wiele sesji hosta usług pulpitu zdalnego i większością optymalizacji wydajności systemu niskiego poziomu dla środowisk hosta usług pulpitu zdalnego. Niektóre Instalatory aplikacji mogą blokować instalację w wielu sesjach systemu Windows 10, w zależności od tego, czy wykrywane są ustawienia ProductType dla klienta. Jeśli Twoja aplikacja nie zostanie zainstalowana, skontaktuj się z dostawcą aplikacji w celu uzyskania zaktualizowanej wersji. 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Czy można uruchomić wiele sesji systemu Windows 10 Enterprise w środowisku lokalnym?
 

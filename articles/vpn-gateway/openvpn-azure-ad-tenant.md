@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: alzam
-ms.openlocfilehash: 6b0b6707f6851ef674d0045c7cf1686af13ea856
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: b9627862002a70dc84b0e268128c53a97df0ebe8
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137840"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472302"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Tworzenie dzierżawy Azure Active Directory dla połączeń protokołu OpenVPN P2S
 
@@ -102,6 +102,9 @@ Wykonaj kroki opisane w [tym artykule](../active-directory/fundamentals/add-user
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientRootCertificates @()
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24 -VpnClientProtocol OpenVPN
     ```
+
+   > [!NOTE]
+   > Upewnij się, że na końcu wartości `AadIssuerUri` zostanie uwzględniony końcowy ukośnik. W przeciwnym razie polecenie zakończy się niepowodzeniem.
 
 10. Utwórz i Pobierz profil, uruchamiając następujące polecenia. Zmień wartości parametrów-ResourceGroupName i-Name, aby były zgodne z własnymi.
 

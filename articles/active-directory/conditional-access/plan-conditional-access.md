@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185901"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468441"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Instrukcje: Planowanie wdrożenia dostępu warunkowego w Azure Active Directory
 
@@ -31,6 +31,9 @@ Jeśli wymagane są dodatkowe funkcje, może być również konieczne uzyskanie 
 Istnieją dwa typy zasad dostępu warunkowego: Baseline i Standard. [Zasady linii bazowej](baseline-protection.md) są wstępnie zdefiniowanymi zasadami dostępu warunkowego. Celem tych zasad jest upewnienie się, że masz co najmniej włączony poziom zabezpieczeń. Zasady linii bazowej. Zasady linii bazowej są dostępne we wszystkich wersjach usługi Azure AD i udostępniają tylko ograniczone opcje dostosowywania. Jeśli scenariusz wymaga większej elastyczności, wyłącz zasady linii bazowej i zaimplementuj wymagania w niestandardowych zasadach standardowych.
 
 W przypadku standardowych zasad dostępu warunkowego można dostosować wszystkie ustawienia w celu dostosowania zasad do wymagań firmy. Zasady standardowe wymagają licencji na Azure AD — wersja Premium P1.
+
+>[!NOTE]
+> Zalecamy korzystanie z zasad dostępu warunkowego opartego na urządzeniach z usługą Azure AD w celu uzyskania najlepszego wymuszenia po początkowym uwierzytelnianiu urządzenia. Obejmuje to zamykanie sesji, jeśli urządzenie przestanie być zgodne i przepływ kodu urządzenia.
 
 ## <a name="draft-policies"></a>Zasady wersji roboczej
 

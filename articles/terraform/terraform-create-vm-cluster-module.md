@@ -3,16 +3,16 @@ title: Samouczek — Tworzenie klastra maszyn wirtualnych platformy Azure z usł
 description: Dowiedz się, jak za pomocą modułów Terraform utworzyć klaster maszyn wirtualnych systemu Windows na platformie Azure
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 3ddc80e8f5a81e89e4574ff6524055f12a4a618a
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d17a0d7c26cc1a16ab73350fe6e8c28ba4af6ff2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185559"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472211"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Samouczek: Tworzenie klastra maszyn wirtualnych platformy Azure z usługą Terraform przy użyciu rejestru modułu
 
-W tym artykule opisano proces tworzenia małego klastra maszyn wirtualnych za pomocą modułu Terraform [Azure Compute](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Ten samouczek zawiera informacje na temat wykonywania następujących czynności: 
+W tym artykule opisano proces tworzenia małego klastra maszyn wirtualnych za pomocą modułu Terraform [Azure Compute](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności: 
 
 > [!div class="checklist"]
 > * Konfigurowanie uwierzytelniania na platformie Azure
@@ -25,9 +25,9 @@ Aby uzyskać więcej informacji na temat narzędzia Terraform, zobacz [dokumenta
 ## <a name="set-up-authentication-with-azure"></a>Konfigurowanie uwierzytelniania na platformie Azure
 
 > [!TIP]
-> Jeśli [używasz zmiennych środowiskowych narzędzia Terraform](/azure/virtual-machines/linux/terraform-install-configure) lub uruchamiasz ten samouczek w usłudze [Azure Cloud Shell](/azure/cloud-shell/overview), pomiń ten krok.
+> Jeśli [używasz zmiennych środowiskowych narzędzia Terraform](terraform-install-configure.md) lub uruchamiasz ten samouczek w usłudze [Azure Cloud Shell](/azure/cloud-shell/overview), pomiń ten krok.
 
- Zapoznaj się z artykułem [Install Terraform and configure access to Azure](/azure/virtual-machines/linux/terraform-install-configure) (Instalowanie narzędzia Terraform i konfigurowanie dostępu do platformy Azure), aby utworzyć jednostkę usługi platformy Azure. Użyj tej jednostki usługi, aby wypełnić nowy plik `azureProviderAndCreds.tf` w pustym katalogu następującym kodem:
+ Zapoznaj się z artykułem [Install Terraform and configure access to Azure](terraform-install-configure.md) (Instalowanie narzędzia Terraform i konfigurowanie dostępu do platformy Azure), aby utworzyć jednostkę usługi platformy Azure. Użyj tej jednostki usługi, aby wypełnić nowy plik `azureProviderAndCreds.tf` w pustym katalogu następującym kodem:
 
 ```hcl
 variable subscription_id {}

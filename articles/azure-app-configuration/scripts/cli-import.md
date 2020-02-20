@@ -15,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: bb661e6d4497a85cf2ef445fc39774e93a04cc99
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b0704c6262451cef615355e871ce7f26005b3132
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899423"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467678"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Importowanie do magazynu usługi Azure App Configuration
 
@@ -31,10 +31,6 @@ Ten przykładowy skrypt importuje ustawienia klucz-wartość do magazynu konfigu
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azure i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2,0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Aby zainstalować lub uaktualnić, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
-
-Należy najpierw zainstalować rozszerzenie interfejsu wiersza polecenia usługi Azure App Configuration, wykonując następujące polecenie:
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
@@ -53,7 +49,7 @@ Ten skrypt używa następujących poleceń do zaimportowania do magazynu konfigu
 
 | Polecenie | Uwagi |
 |---|---|
-| [zaimportu AZ AppConfig KV](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | Importuje do zasobu magazynu konfiguracji aplikacji. |
+| [zaimportu AZ AppConfig KV](/cli/azure/appconfig/kv#az-appconfig-kv-import) | Importuje do zasobu magazynu konfiguracji aplikacji. |
 
 ## <a name="next-steps"></a>Następne kroki
 

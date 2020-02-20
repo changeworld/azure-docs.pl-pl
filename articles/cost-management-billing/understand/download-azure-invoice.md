@@ -3,21 +3,18 @@ title: Wyświetlanie i pobieranie faktury platformy Microsoft Azure
 description: Opis sposobu wyświetlania i pobierania faktury za korzystanie z platformy Microsoft Azure.
 keywords: faktura rozliczeniowa, pobieranie faktury, faktura platformy azure, dane użycia platformy azure
 author: bandersmsft
-manager: jureid
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 0f413d38565202d379c81570b5cb169c2ed8effe
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 691d27acebf238e84265870e8c01976bfc2412b2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75987826"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200269"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Wyświetlanie i pobieranie faktury platformy Microsoft Azure
 
@@ -87,7 +84,7 @@ Aby zrezygnować z otrzymywania faktur za pośrednictwem poczty e-mail, wykonaj 
 <!-- Does following section apply to MPA too? -->
 ## <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>Otrzymywanie faktur dla umowy klienta firmy Microsoft w wiadomości e-mail
 
-Jeśli masz konto rozliczeniowe dla Umowy z Klientem Microsoft, możesz wyrazić zgodę na otrzymywanie faktur w wiadomości e-mail. Wszyscy użytkownicy z rolą właściciela, współautora, czytelnika lub menedżera faktur w profilu rozliczeniowym otrzymują fakturę w wiadomości e-mail. 
+Jeśli masz konto rozliczeniowe dla Umowy z Klientem Microsoft, możesz wyrazić zgodę na otrzymywanie faktur w wiadomości e-mail. Wszyscy użytkownicy z rolą właściciela, współautora, czytelnika lub menedżera faktur w profilu rozliczeniowym otrzymują fakturę w wiadomości e-mail.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
@@ -109,11 +106,11 @@ Jeśli masz konto rozliczeniowe dla Umowy z Klientem Microsoft, możesz wyrazić
 
 ## <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Rezygnacja z otrzymywania faktur dla umowy klienta firmy Microsoft w wiadomości e-mail
 
-Aby zrezygnować z otrzymywania faktur za pośrednictwem poczty e-mail, wykonaj powyższe kroki, a następnie kliknij pozycję **Zrezygnuj**. Rezygnacja z otrzymywania faktur w wiadomości e-mail obejmuje wszystkich użytkowników z rolą właściciela, współautora, czytelnika lub menedżera faktur. 
+Aby zrezygnować z otrzymywania faktur za pośrednictwem poczty e-mail, wykonaj powyższe kroki, a następnie kliknij pozycję **Zrezygnuj**. Rezygnacja z otrzymywania faktur w wiadomości e-mail obejmuje wszystkich użytkowników z rolą właściciela, współautora, czytelnika lub menedżera faktur.
 
 ## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>Przyznawanie innym osobom dostępu do faktur dla Umowy z Klientem Microsoft
 
-Możesz dać innym osobom dostęp do wyświetlania, pobierania i opłacania faktur, przypisując im rolę menedżera faktury dla profilu rozliczeniowego. Jeśli wybrano opcję otrzymywania faktury w wiadomości e-mail, użytkownicy ci również otrzymują faktury w wiadomości e-mail. 
+Możesz dać innym osobom dostęp do wyświetlania, pobierania i opłacania faktur, przypisując im rolę menedżera faktury dla profilu rozliczeniowego. Jeśli wybrano opcję otrzymywania faktury w wiadomości e-mail, użytkownicy ci również otrzymują faktury w wiadomości e-mail.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 

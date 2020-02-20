@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 3fcdcd4565ed0512b3efcf9b23ca349a3bbf3a6c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d4ba3e8bbdad72f10c630a056f988ec83e9b1a68
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033475"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471622"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Diagnostyka Azure rozszerzenie dla maszyn wirtualnych z systemem Windows
 
@@ -37,7 +37,7 @@ Rozszerzenie Diagnostyka Azure wymaga, aby docelowa maszyna wirtualna była poł
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
-[W tym dokumencie opisano Diagnostyka Azure schematu i wartości właściwości rozszerzenia.](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
+[W tym dokumencie opisano Diagnostyka Azure schematu i wartości właściwości rozszerzenia.](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
@@ -88,8 +88,8 @@ Zapoznaj się z [tym artykułem](../../azure-monitor/platform/diagnostics-extens
 
 ### <a name="support"></a>Pomoc techniczna
 
-Jeśli potrzebujesz dodatkowej pomocy w dowolnym momencie, w tym artykule, możesz skontaktować się ze ekspertów platformy Azure na [forów platformy Azure z subskrypcją MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj temat [Microsoft Azure support — często zadawane pytania](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Następne kroki
 * [Dowiedz się więcej o rozszerzeniu Diagnostyka Azure](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [Przejrzyj schemat i wersje rozszerzeń](../../azure-monitor/platform/diagnostics-extension-schema.md)
+* [Przejrzyj schemat i wersje rozszerzeń](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)

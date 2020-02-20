@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: e26ae4d384b1718b1cdb12abbda82aad22afde4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c18c39ced40505a87af8907a65aa16aae978838
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462577"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471877"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Samouczek: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
@@ -77,7 +77,7 @@ W tej sekcji utworzysz usługę Azure Databricks przy użyciu witryny Azure Port
     |**Subskrypcja**     | Z listy rozwijanej wybierz subskrypcję platformy Azure.        |
     |**Grupa zasobów**     | Określ, czy chcesz utworzyć nową grupę zasobów, czy użyć istniejącej grupy. Grupa zasobów to kontener, który zawiera powiązane zasoby dla rozwiązania platformy Azure. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/management/overview.md). |
     |**Lokalizacja**     | Wybierz pozycję **Zachodnie stany USA 2**. Inne dostępne regiony podano na stronie [dostępności usług platformy Azure według regionów](https://azure.microsoft.com/regions/services/).       |
-    |**Warstwa cenowa**     |  Wybierz pozycję **Standardowy**.     |
+    |**Warstwa cenowa**     |  Wybierz opcję **Standardowa**.     |
 
     ![Tworzenie obszaru roboczego Azure Databricks](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Tworzenie usługi Azure Databricks")
 
@@ -105,7 +105,7 @@ W tej sekcji utworzysz usługę Azure Databricks przy użyciu witryny Azure Port
 
 4. Wybierz pozycję **Utwórz klaster**. Po uruchomieniu klastra możesz dołączać do niego notesy i uruchamiać zadania Spark.
 
-## <a name="ingest-data"></a>Pobieranie danych
+## <a name="ingest-data"></a>Pozyskiwanie danych
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Kopiowanie danych źródłowych na konto magazynu
 
@@ -129,7 +129,7 @@ Korzystanie z narzędzia AzCopy do kopiowania danych z pliku *csv* na konto usł
 
    * Zastąp wartość symbolu zastępczego `<storage-account-name>` nazwą konta magazynu.
 
-   * Zastąp `<container-name>` symbol zastępczy dowolną nazwą, która ma zostać przydana do kontenera.
+   * Zastąp symbol zastępczy `<container-name>` nazwą kontenera na koncie magazynu.
 
 ## <a name="create-a-container-and-mount-it"></a>Utwórz kontener i zainstaluj go
 
@@ -161,20 +161,7 @@ W tej sekcji utworzysz kontener i folder na koncie magazynu.
     extra_configs = configs)
     ```
 
-18. W tym bloku kodu zamień symbole zastępcze `appId`, `password`, `tenant` i `storage-account-name` na wartości zebrane podczas wykonywania kroków wymagań wstępnych. Zastąp wartość symbolu zastępczego `container-name` nazwą przedaną do kontenera w poprzednim kroku.
-
-Użyj tych wartości, aby zastąpić wymienione symbole zastępcze.
-
-   * Parametry `appId` i `password` pochodzą z aplikacji zarejestrowanej w usłudze Active Directory podczas tworzenia jednostki usługi.
-
-   * Parametr `tenant-id` pochodzi z subskrypcji.
-
-   * Parametr `storage-account-name` to nazwa konta magazynu usługi Azure Data Lake Storage Gen2.
-
-   * Zastąp `container-name` symbol zastępczy dowolną nazwą, która ma zostać przydana do kontenera.
-
-   > [!NOTE]
-   > W ustawieniach produkcyjnych Rozważ przechowywanie hasła w Azure Databricks. Następnie Dodaj klucz wyszukiwania do bloku kodu zamiast hasła. Po zakończeniu tego samouczka Szybki start zobacz artykuł na temat usługi [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) w witrynie internetowej usługi Azure Databricks, aby zapoznać się z przykładami tego podejścia.
+18. W tym bloku kodu zamień symbole zastępcze `appId`, `password`, `tenant` i `storage-account-name` na wartości zebrane podczas wykonywania kroków wymagań wstępnych. Zastąp wartość symbolu zastępczego `container-name` nazwą kontenera.
 
 19. Naciśnij klawisze **SHIFT+ENTER**, aby uruchomić kod w tym bloku.
 

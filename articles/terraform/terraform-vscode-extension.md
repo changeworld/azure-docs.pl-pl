@@ -3,12 +3,12 @@ title: Samouczek — Konfigurowanie rozszerzenia Visual Studio Code Azure Terraf
 description: Dowiedz się, jak zainstalować rozszerzenie Azure Terraform w programie Visual Studio Code i korzystać z niego.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 7f2f15c3a45480b8922f34e191fb965d5e83d9fa
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcb47024fd26f061ca4475b01d00f1ae13303b61
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159232"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472285"
 ---
 # <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>Samouczek: Konfigurowanie rozszerzenia Visual Studio Code Azure Terraform
 
@@ -23,7 +23,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 ## <a name="prerequisites"></a>Wymagania wstępne
 - **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Terraform**: [zainstaluj i skonfiguruj narzędzie Terraform](/azure/virtual-machines/linux/terraform-install-configure).
+- **Terraform**: [zainstaluj i skonfiguruj narzędzie Terraform](terraform-install-configure.md).
 
 - **Visual Studio Code**: zainstaluj program [Visual Studio Code](https://code.visualstudio.com/download) w wersji odpowiedniej dla Twojego środowiska.
 

@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 8d286cbab33a1fb6a2d2a2cb70caed11b21af735
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 4bcd8f042563fa381832fd629061a822f71e844a
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904090"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467593"
 ---
 # <a name="azure-app-configuration-faq"></a>Konfiguracja aplikacji platformy Azure — często zadawane pytania
 
 W tym artykule opisano często zadawane pytania dotyczące konfiguracji aplikacji platformy Azure.
 
-## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Czym różni się usługa App Configuration od usługi Azure Key Vault?
+## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Czym różni się konfiguracja aplikacji od Azure Key Vault?
 
 Konfiguracja aplikacji została zaprojektowana dla różnych przypadków użycia: ułatwia deweloperom zarządzanie ustawieniami aplikacji i dostępnością funkcji kontroli. Celem jest uproszczenie wielu zadań związanych z pracą ze złożonymi danymi konfiguracyjnymi.
 
@@ -46,23 +46,23 @@ Można utworzyć wartości konfiguracji aplikacji, które odwołują się do wpi
 
 ## <a name="does-app-configuration-encrypt-my-data"></a>Czy konfiguracja aplikacji szyfruje moje dane?
 
-Tak. Konfiguracja aplikacji szyfruje wszystkie przechowywane wartości klucza i szyfruje komunikację sieciową. Nazwy kluczy są używane jako indeksy do pobierania danych konfiguracji i nie są szyfrowane.
+Tak. Konfiguracja aplikacji szyfruje wszystkie przechowywane wartości klucza i szyfruje komunikację sieciową. Nazwy kluczy i etykiety są używane jako indeksy do pobierania danych konfiguracji i nie są szyfrowane.
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Czym różni się konfiguracja aplikacji od ustawień Azure App Service?
 
-Azure App Service umożliwia zdefiniowanie ustawień aplikacji dla każdego wystąpienia App Service. Te ustawienia są przesyłane jako zmienne środowiskowe do kodu aplikacji. W razie potrzeby można skojarzyć ustawienie z określonym miejscem wdrożenia. Aby uzyskać więcej informacji, zobacz [Konfigurowanie ustawień aplikacji](/azure/app-service/configure-common#configure-app-settings).
+Azure App Service umożliwia zdefiniowanie ustawień aplikacji dla każdego wystąpienia App Service. Te ustawienia są przesyłane jako zmienne środowiskowe do kodu aplikacji. Jeśli chcesz, możesz skojarzyć ustawienie z określonym miejscem wdrożenia. Aby uzyskać więcej informacji, zobacz [Konfigurowanie ustawień aplikacji](/azure/app-service/configure-common#configure-app-settings).
 
-W przeciwieństwie do konfiguracji aplikacji platformy Azure można definiować ustawienia, które mogą być współużytkowane przez wiele aplikacji, w tym aplikacje działające w App Service. Te ustawienia są dostępne w kodzie aplikacji za pośrednictwem dostawców konfiguracji dla platform .NET i Java za pomocą zestawu Azure SDK lub bezpośrednio za pośrednictwem interfejsów API REST.
+W przeciwieństwie do konfiguracji aplikacji platformy Azure można definiować ustawienia, które mogą być współużytkowane przez wiele aplikacji. Obejmuje to aplikacje działające w App Service, a także inne platformy. Kod aplikacji uzyskuje dostęp do tych ustawień za pośrednictwem dostawców konfiguracji dla platform .NET i Java, za pomocą zestawu Azure SDK lub bezpośrednio za pośrednictwem interfejsów API REST.
 
-Można również importować i eksportować ustawienia między App Service i konfiguracji aplikacji. Dzięki temu można szybko skonfigurować nowy magazyn konfiguracji aplikacji na podstawie istniejących ustawień App Service lub łatwo udostępnić konfigurację istniejącej aplikacji, która opiera się na App Service ustawieniach.
+Można również importować i eksportować ustawienia między App Service i konfiguracji aplikacji. Ta funkcja umożliwia szybkie skonfigurowanie nowego magazynu konfiguracji aplikacji na podstawie istniejących ustawień App Service. Możesz również udostępnić konfigurację z istniejącą aplikacją, która opiera się na App Service ustawieniach.
 
 ## <a name="are-there-any-size-limitations-on-keys-and-values-stored-in-app-configuration"></a>Czy istnieją jakieś ograniczenia rozmiaru kluczy i wartości przechowywanych w konfiguracji aplikacji?
 
-Istnieje limit 10 KB dla pojedynczego elementu klucz-wartość.
+Dla pojedynczego elementu klucz-wartość istnieje limit 10 KB.
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Jak należy przechowywać konfiguracje dla wielu środowisk (testów, przemieszczania, produkcji itp.)?
 
-Obecnie można kontrolować, kto ma dostęp do konfiguracji aplikacji na poziomie magazynu. Użyj oddzielnego magazynu dla każdego środowiska, które wymaga innych uprawnień. Takie podejście zapewnia najlepszą izolację zabezpieczeń.
+Obecnie kontrolujesz, kto może uzyskać dostęp do konfiguracji aplikacji na poziomie magazynu. Użyj oddzielnego magazynu dla każdego środowiska, które wymaga innych uprawnień. Takie podejście zapewnia najlepszą izolację zabezpieczeń.
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Jakie są zalecane metody korzystania z konfiguracji aplikacji?
 
@@ -70,7 +70,32 @@ Zobacz [najlepsze rozwiązania](./howto-best-practices.md).
 
 ## <a name="how-much-does-app-configuration-cost"></a>Ile jest koszt konfiguracji aplikacji?
 
-Usługa jest bezpłatna do użycia w publicznej wersji zapoznawczej.
+Istnieją dwie warstwy cenowe: 1) warstwa Bezpłatna i 2) warstwa standardowa.
+
+Jeśli sklep został utworzony przed wprowadzeniem warstwy Standardowa, jest on automatycznie przenoszony do warstwy Bezpłatna po ogólnej dostępności. Możesz wybrać opcję uaktualnienia do warstwy Standardowa lub pozostać w warstwie Bezpłatna, jeśli spełnia Twoje potrzeby.
+
+## <a name="which-app-configuration-tier-should-i-use"></a>Której warstwy konfiguracji aplikacji należy użyć?
+
+Obie warstwy konfiguracji aplikacji oferują podstawowe funkcje, w tym ustawienia konfiguracji, flagi funkcji, odwołania Key Vault, podstawowe operacje zarządzania, metryki i dzienniki.
+
+Poniżej przedstawiono zagadnienia dotyczące wybierania warstwy.
+
+- **Zasoby na subskrypcję**: zasób składa się z pojedynczego magazynu konfiguracji. Każda subskrypcja jest ograniczona do jednego magazynu konfiguracji w warstwie Bezpłatna. Subskrypcje mogą mieć nieograniczoną liczbę magazynów konfiguracji w warstwie Standardowa.
+- **Magazyn na zasób**: w warstwie Bezpłatna każdy magazyn konfiguracji jest ograniczony do 10 MB pamięci masowej. W warstwie Standardowa każdy magazyn konfiguracji może korzystać z maksymalnie 1 GB miejsca w magazynie.
+- **Historia klucza**: Konfiguracja aplikacji przechowuje historię wszystkich zmian wprowadzonych do kluczy. W warstwie Bezpłatna ta historia jest przechowywana przez siedem dni. W warstwie Standardowa ta historia jest przechowywana przez 30 dni.
+- **Liczba żądań**dziennie: magazyny w warstwie Bezpłatna są ograniczone do 1 000 żądań dziennie. Gdy sklep osiągnie 1 000 żądań, będzie zwracał kod stanu HTTP 429 dla wszystkich żądań do północy czasu UTC.
+
+    W przypadku magazynów w warstwie Standardowa pierwsze 200 000 żądań każdego dnia są uwzględniane w dziennej opłacie. Dodatkowe żądania są rozliczane jako nadwyżkowe.
+
+- **Umowa dotycząca poziomu usług**: warstwa standardowa ma umowę SLA na 99,9% czasu dostępności. Warstwa Bezpłatna nie ma umowy SLA.
+- **Funkcje zabezpieczeń**: w obu warstwach są dostępne podstawowe funkcje zabezpieczeń, w tym szyfrowanie za pomocą kluczy zarządzanych przez firmę Microsoft, uwierzytelnianie za pośrednictwem algorytmu HMAC lub Azure Active Directory, obsługa RBAC i tożsamość zarządzana. Warstwa standardowa oferuje bardziej zaawansowane funkcje zabezpieczeń, w tym obsługę linków prywatnych i szyfrowanie za pomocą kluczy zarządzanych przez klienta.
+- **Koszt**: magazyny w warstwie Standardowa mają dzienną opłatą za użycie. Jest również opłata za nadwyżkowe żądania w porównaniu do codziennej alokacji. Nie ma kosztu korzystania z magazynu warstwy Bezpłatna.
+
+## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Czy mogę uaktualnić sklep z warstwy Bezpłatna do warstwy Standardowa? Czy mogę obniżyć poziom sklepu z warstwy Standardowa do warstwy Bezpłatna?
+
+W dowolnym momencie możesz przeprowadzić uaktualnienie z warstwy Bezpłatna do warstwy Standardowa.
+
+Nie można obniżyć poziomu sklepu z warstwy Standardowa do warstwy Bezpłatna. W warstwie Bezpłatna można utworzyć nowy magazyn, a następnie [zaimportować dane konfiguracji do tego magazynu](howto-import-export-data.md).
 
 ## <a name="how-can-i-receive-announcements-on-new-releases-and-other-information-related-to-app-configuration"></a>Jak mogę otrzymywać anonse dotyczące nowych wersji i innych informacji związanych z konfiguracją aplikacji?
 
