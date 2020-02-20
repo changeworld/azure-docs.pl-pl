@@ -3,12 +3,12 @@ title: Samouczek — Tworzenie podstawowego szablonu Terraform na platformie Azu
 description: Dowiedz się, jak utworzyć szablon podstawowy Terraform na platformie Azure przy użyciu narzędzia Yeoman.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: ba81d0ee797fd879fdadc3a6b25ca8f310383f61
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 82c3f5e640789547abb716b55959e1821a61e6d0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159167"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472149"
 ---
 # <a name="tutorial-create-a-terraform-base-template-in-azure-using-yeoman"></a>Samouczek: Tworzenie podstawowego szablonu Terraform na platformie Azure przy użyciu narzędzia Yeoman
 
@@ -25,7 +25,7 @@ W tym artykule dowiesz się, jak wykonywać następujące zadania:
 
 - **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 - **Visual Studio Code**: [Pobierz Visual Studio Code](https://code.visualstudio.com/download) dla Twojej platformy.
-- **Terraform**: [Zainstaluj Terraform](/azure/virtual-machines/linux/terraform-install-configure ) , aby uruchomić moduł utworzony przez narzędzia Yeoman.
+- **Terraform**: [Zainstaluj Terraform](terraform-install-configure.md) , aby uruchomić moduł utworzony przez narzędzia Yeoman.
 - **Docker**: [Zainstaluj platformę Docker](https://www.docker.com/get-started) , aby uruchomić moduł utworzony przez generator narzędzia Yeoman.
 - **Język programowania języka go**: [Zainstaluj go](https://golang.org/) jako narzędzia Yeoman — generowane przypadki testowe to kod przy użyciu języka go.
 
