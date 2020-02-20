@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: e6ee75f4a7e00e8c21079e1336756db20221750f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6d75e48443fd8622ca2ae7ff05fe81184c4b2b16
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838007"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472438"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Wprowadzenie do AI na platformie Azure Wyszukiwanie poznawcze
 
@@ -110,14 +110,14 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola, atr
 | Wyodrębnianie danych | Obejmuje szeroką gamę przetwarzania, ale odnoszące się do wzbogacenia AI, umiejętność rozpoznawania jednostki jest najczęściej używana do wyodrębniania danych (jednostki) ze źródła, które nie zapewnia natywnej informacji. | Zobacz umiejętności [rozpoznawania obiektów](cognitive-search-skill-entity-recognition.md) i [umiejętność wyodrębniania dokumentów (wersja zapoznawcza)](cognitive-search-skill-document-extraction.md)| 
 | Przetwarzanie obrazów | Wnioskuje tekst z obrazu, taki jak możliwość rozpoznawania punktu orientacyjnego, lub wyodrębniania tekstu z obrazu. Typowe przykłady obejmują OCR do podnoszenia znaków z pliku zeskanowanego dokumentu (JPEG) lub rozpoznania nazwy ulicy w fotografii zawierającej znak ulicy. | Zobacz [umiejętność analizy obrazów](cognitive-search-skill-image-analysis.md) lub [umiejętność OCR](cognitive-search-skill-ocr.md)
 | Przetwarzanie języka naturalnego | Przetwarzanie tekstu na potrzeby wglądu i informacji na temat danych wejściowych tekstu. Wykrywanie języka, analiza tonacji i wyodrębnianie kluczowych fraz są umiejętnościami, które są objęte przetwarzaniem w języku naturalnym.  | Zobacz [wyodrębnianie kluczowych fraz umiejętności](cognitive-search-skill-keyphrases.md), [wykrywanie języka umiejętności](cognitive-search-skill-language-detection.md), [umiejętność tłumaczenia tekstu](cognitive-search-skill-text-translation.md), umiejętność [Analiza tonacji](cognitive-search-skill-sentiment.md), umiejętność wykrywania przez dane [osobowe (wersja zapoznawcza)](cognitive-search-skill-pii-detection.md) |
-| łamanie dokumentów | Proces wyodrębniania lub tworzenia zawartości tekstowej ze źródeł nietekstowych podczas indeksowania. Optyczne rozpoznawanie znaków (OCR) to przykład, ale ogólnie odnosi się do podstawowej funkcjonalności indeksatora, ponieważ indeksator wyodrębnia zawartość z plików aplikacji. Źródło danych dostarczające lokalizację pliku źródłowego oraz definicję indeksatora dostarczającego mapowania pól są kluczowymi czynnikami w przypadku łamania dokumentów. | Zobacz [Omówienie indeksatorów](search-indexer-overview.md) |
+| Łamanie dokumentów | Proces wyodrębniania lub tworzenia zawartości tekstowej ze źródeł nietekstowych podczas indeksowania. Optyczne rozpoznawanie znaków (OCR) to przykład, ale ogólnie odnosi się do podstawowej funkcjonalności indeksatora, ponieważ indeksator wyodrębnia zawartość z plików aplikacji. Źródło danych dostarczające lokalizację pliku źródłowego oraz definicję indeksatora dostarczającego mapowania pól są kluczowymi czynnikami w przypadku łamania dokumentów. | Zobacz [Omówienie indeksatorów](search-indexer-overview.md) |
 | Kształtowania | Konsolidowanie fragmentów tekstu do większej struktury lub odwrotne rozdzielenie większych fragmentów tekstu do rozmiaru do zarządzania w celu przeprowadzenia dalszej obróbki podrzędnej. | Zobacz [umiejętność kształtu](cognitive-search-skill-shaper.md), [umiejętność łączenia tekstu](cognitive-search-skill-textmerger.md), [umiejętność dzielenia tekstu](cognitive-search-skill-textsplit.md) |
 | Wzbogacone dokumenty | Przejściowa Struktura wewnętrzna, wygenerowana podczas przetwarzania, z końcowym wyjściem odzwierciedlonym w indeksie wyszukiwania. Zestawu umiejętności określa, które wzbogacania są wykonywane. Mapowania pól określają, które elementy danych są dodawane do indeksu. Opcjonalnie możesz utworzyć magazyn wiedzy, aby utrwalać i eksplorować wzbogacone dokumenty przy użyciu narzędzi takich jak Eksplorator usługi Storage, Power BI lub dowolne inne narzędzie, które nawiązuje połączenie z usługą Azure Blob Storage. | Zobacz artykuł [Magazyn wiedzy (wersja zapoznawcza)](knowledge-store-concept-intro.md) |
-| Indeksator |  Przeszukiwarka, która wyodrębnia dane z możliwością wyszukiwania i metadane z zewnętrznego źródła danych i wypełnia indeks na podstawie mapowań pól między indeksem i źródłem danych na potrzeby łamania dokumentów. W przypadku wzbogacania AI indeksator wywołuje zestawu umiejętności i zawiera mapowania pól, które kojarzą dane wyjściowe wzbogacania z polami docelowymi w indeksie. Definicja indeksatora zawiera wszystkie instrukcje i odwołania do operacji potoku, a potok jest wywoływany po uruchomieniu indeksatora. Za pomocą dodatkowej konfiguracji można używać istniejącej przetworzonej zawartości i wykonywać tylko te czynności i umiejętności, które zostały zmienione. | Zobacz [indeksatory](search-indexer-overview.md) i [przyrostowe wzbogacanie (wersja zapoznawcza)](cognitive-search-incremental-indexing-conceptual.md). |
+| Indeksatora |  Przeszukiwarka, która wyodrębnia dane z możliwością wyszukiwania i metadane z zewnętrznego źródła danych i wypełnia indeks na podstawie mapowań pól między indeksem i źródłem danych na potrzeby łamania dokumentów. W przypadku wzbogacania AI indeksator wywołuje zestawu umiejętności i zawiera mapowania pól, które kojarzą dane wyjściowe wzbogacania z polami docelowymi w indeksie. Definicja indeksatora zawiera wszystkie instrukcje i odwołania do operacji potoku, a potok jest wywoływany po uruchomieniu indeksatora. Za pomocą dodatkowej konfiguracji można używać istniejącej przetworzonej zawartości i wykonywać tylko te czynności i umiejętności, które zostały zmienione. | Zobacz [indeksatory](search-indexer-overview.md) i [przyrostowe wzbogacanie (wersja zapoznawcza)](cognitive-search-incremental-indexing-conceptual.md). |
 | Źródło danych  | Obiekt używany przez indeksator do nawiązywania połączenia z zewnętrznym źródłem danych obsługiwanych typów na platformie Azure. | Zobacz [Omówienie indeksatorów](search-indexer-overview.md) |
 | Indeks | Utrwalony indeks wyszukiwania na platformie Azure Wyszukiwanie poznawcze utworzony na podstawie schematu indeksu, który definiuje strukturę pól i użycie. | Zobacz [Tworzenie indeksu podstawowego](search-what-is-an-index.md) | 
 | Magazyn wiedzy | Konto magazynu, w którym wzbogacone dokumenty mogą być widoczne i rzutowane poza indeks wyszukiwania | Zobacz [wprowadzenie do sklepu merytorycznego](knowledge-store-concept-intro.md) | 
-| Cache | Konto magazynu zawierające buforowane dane wyjściowe utworzone przez potok wzbogacania. Włączenie pamięci podręcznej zachowuje istniejące dane wyjściowe, które nie mają wpływ na zmiany w zestawu umiejętności lub innych składnikach potoku wzbogacania. | Zobacz [wzbogacanie przyrostowe](cognitive-search-incremental-indexing-conceptual.md) | 
+| Pamięć podręczna | Konto magazynu zawierające buforowane dane wyjściowe utworzone przez potok wzbogacania. Włączenie pamięci podręcznej zachowuje istniejące dane wyjściowe, które nie mają wpływ na zmiany w zestawu umiejętności lub innych składnikach potoku wzbogacania. | Zobacz [wzbogacanie przyrostowe](cognitive-search-incremental-indexing-conceptual.md) | 
 
 <a name="where-do-i-start"></a>
 
@@ -131,7 +131,7 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola, atr
 + [Samouczek (żądania HTTP)](cognitive-search-tutorial-blob.md)
 + [Przykład: Tworzenie niestandardowej umiejętności dla wzbogacania AI (C#)](cognitive-search-create-custom-skill-example.md)
 
-Zalecamy korzystanie z bezpłatnej usługi na potrzeby uczenia się, ale liczba bezpłatnych transakcji jest ograniczona do 20 dokumentów dziennie. Aby uruchomić przewodnik Szybki Start i samouczek w ciągu jednego dnia, użyj mniejszego zestawu plików (10 dokumentów), aby można było dopasować oba ćwiczenia lub usunąć indeksator użyty w przewodniku szybki start lub samouczek, aby ustawić wartość zero.
+Zalecamy korzystanie z bezpłatnej usługi na potrzeby uczenia się, ale liczba bezpłatnych transakcji jest ograniczona do 20 dokumentów dziennie. Aby uruchamiać lekcje wiele razy, Usuń i Utwórz ponownie indeksator, aby zresetować licznik do wartości zero.
 
 **Krok 3. Przegląd interfejsu API**
 

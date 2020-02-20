@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0cd2bb54bb436beaa933195b88bc6f13a1b23e6f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846520"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470449"
 ---
 # <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>Szybki Start: Tworzenie Load Balancer przy użyciu Azure PowerShell
 
@@ -33,7 +33,7 @@ W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Load Bala
 
 Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten artykuł wymaga modułu Azure PowerShell w wersji 5.4.1 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Zanim będzie można utworzyć moduł równoważenia obciążenia, musisz utworzyć grupę zasobów za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroupSLB* w lokalizacji *Wschodnie* :
 
@@ -68,7 +68,10 @@ $publicIp = New-AzPublicIpAddress `
  -zone 1
 ```
 
-Użyj ```-SKU Basic```, aby utworzyć podstawowy publiczny adres IP. Firma Microsoft zaleca używanie standardu dla obciążeń produkcyjnych.
+Użyj ```-SKU Basic```, aby utworzyć podstawowy publiczny adres IP. Podstawowe publiczne adresy IP nie są zgodne z usługą równoważenia obciążenia w **warstwie Standardowa** . Firma Microsoft zaleca używanie **standardu** dla obciążeń produkcyjnych.
+
+> [!IMPORTANT]
+> W pozostałej części tego przewodnika Szybki Start przyjęto założenie, że w ramach procesu wyboru jednostki SKU zostanie wybrana **standardowa** jednostka SKU.
 
 ## <a name="create-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
@@ -161,6 +164,9 @@ $lb = New-AzLoadBalancer `
 ```
 
 Użyj ```-SKU Basic```, aby utworzyć Load Balancer podstawowy. Firma Microsoft zaleca używanie standardu dla obciążeń produkcyjnych.
+
+> [!IMPORTANT]
+> W pozostałej części tego przewodnika Szybki Start przyjęto założenie, że w ramach procesu wyboru jednostki SKU zostanie wybrana **standardowa** jednostka SKU.
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
 Zanim będzie możliwe wdrożenie maszyn wirtualnych i przetestowanie modułu równoważenia obciążenia, musisz utworzyć pomocnicze zasoby sieci wirtualnej — sieć wirtualną i wirtualnej karty sieciowe. 

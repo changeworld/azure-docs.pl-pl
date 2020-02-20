@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4a5775be66f95fb69db761c2356a61f80068bc75
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eab8298362bfb3ad790d13fcbf47e0fe624ed3fd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843875"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470194"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Szybki Start: Tworzenie Load Balancer równoważenia obciążenia maszyn wirtualnych przy użyciu Azure Portal
 
@@ -28,11 +28,11 @@ Równoważenie obciążenia zapewnia większą dostępność i możliwości skal
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-load-balancer"></a>Utwórz moduł równoważenia obciążenia
+## <a name="create-a-load-balancer"></a>Tworzenie Load Balancer
 
 W tej sekcji utworzysz Load Balancer, która pomaga zrównoważyć obciążenie maszyn wirtualnych. Można utworzyć publiczną Load Balancer lub Load Balancer wewnętrzny. Podczas tworzenia Load Balancer publicznego i należy również utworzyć nowy publiczny adres IP, który jest skonfigurowany jako fronton (domyślnie *LoadBalancerFrontend* Load Balancer).
 
@@ -43,13 +43,17 @@ W tej sekcji utworzysz Load Balancer, która pomaga zrównoważyć obciążenie 
     | ---                     | ---                                                |
     | Subskrypcja               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz pozycję **Utwórz nowy** i wpisz *myResourceGroupSLB* w polu tekstowym.|
-    | Nazwa                   | *myLoadBalancer*                                   |
+    | Name (Nazwa)                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
     | Typ          | Wybierz pozycję **Publiczna**.                                        |
-    | JSZ           | Wybierz opcję **standardowa** lub **podstawowa**. Firma Microsoft zaleca standardy dotyczące obciążeń produkcyjnych.  |
+    | SKU           | Wybierz opcję **standardowa** lub **podstawowa**. Firma Microsoft zaleca standardy dotyczące obciążeń produkcyjnych. |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. Jeśli masz istniejący publiczny adres IP, którego chcesz użyć, wybierz pozycję **Użyj istniejącej** |
-    | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
+    | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   Użyj ```-SKU Basic```, aby utworzyć podstawowy publiczny adres IP. Podstawowe publiczne adresy IP nie są zgodne z usługą równoważenia obciążenia w **warstwie Standardowa** . Firma Microsoft zaleca używanie **standardu** dla obciążeń produkcyjnych.|
     | Strefa dostępności | Wpisz *strefowo nadmiarowe* , aby utworzyć odporną Load Balancer. Aby utworzyć strefę Load Balancer, wybierz określoną strefę z 1, 2 lub 3 |
+
+> [!IMPORTANT]
+> W pozostałej części tego przewodnika Szybki Start przyjęto założenie, że w ramach procesu wyboru jednostki SKU zostanie wybrana **standardowa** jednostka SKU.
+
 
 3. Na karcie **Recenzja i tworzenie** wybierz pozycję **Utwórz**.   
 
@@ -76,8 +80,8 @@ Aby umożliwić Load Balancer monitorowania stanu aplikacji, należy użyć sond
     
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Nazwa | Wprowadź *myHealthProbe*. |
-    | Protocol (Protokół) | Wybierz pozycję **http**. |
+    | Name (Nazwa) | Wprowadź *myHealthProbe*. |
+    | Protokół | Wybierz pozycję **http**. |
     | Port | Wprowadź *80*.|
     | Interval | Wprowadź *15* dla liczby **interwałów** (w sekundach) między kolejnymi próbami sondowania. |
     | Próg złej kondycji | Wybierz **2** dla liczby **progów złej kondycji** lub kolejnych niepowodzeń sondy, które muszą wystąpić, zanim maszyna wirtualna zostanie uznana za złą.|
@@ -93,8 +97,8 @@ Reguła modułu równoważenia obciążenia służy do definiowania sposobu dyst
     
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Nazwa | Wprowadź *myHTTPRule*. |
-    | Protocol (Protokół) | Wybierz pozycję **TCP**. |
+    | Name (Nazwa) | Wprowadź *myHTTPRule*. |
+    | Protokół | wybierz pozycję **TCP**. |
     | Port | Wprowadź *80*.|
     | Port zaplecza | Wprowadź *80*. |
     | Pula zaplecza | Wybierz pozycję *myBackendPool*.|
@@ -113,7 +117,7 @@ W tej sekcji utworzysz sieć wirtualną, utworzono trzy maszyny wirtualne dla pu
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Nazwa | Wprowadź nazwę *myVNet*. |
+    | Name (Nazwa) | Wprowadź nazwę *myVNet*. |
     | Przestrzeń adresowa | Wprowadź adres *10.1.0.0/16*. |
     | Subskrypcja | Wybierz subskrypcję.|
     | Grupa zasobów | Wybierz pozycję istniejący zasób — *myResourceGroupSLB*. |
@@ -155,7 +159,7 @@ Jednostki SKU publicznego adresu IP i jednostki SKU Load Balancer muszą być zg
 
     | Ustawienie | VM 2| MASZYNA WIRTUALNA 3|
     | ------- | ----- |---|
-    | Nazwa |  *myVM2* |*myVM3*|
+    | Name (Nazwa) |  *myVM2* |*myVM3*|
     | Strefa dostępności | 2 |3|
     |Publiczny adres IP| **Standard** Magazyn|**Standard** Magazyn|
     | Strefa publicznej dostępności adresu IP| **Strefa nadmiarowa** |**Strefa nadmiarowa**|

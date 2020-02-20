@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 12/20/2019
-ms.openlocfilehash: a994a72ae57b39dba8025e7636e0f822f483bc8c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e2e17ba6af60fa495a03e7d46a07cfe6b66f4e68
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720677"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472421"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Szybki Start: Tworzenie usługi Azure Wyszukiwanie poznawcze poznawcze zestawu umiejętności w Azure Portal
 
@@ -27,7 +27,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Ten przewodnik Szybki Start używa platformy Azure Wyszukiwanie poznawcze, [usługi Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/)i [usługi Azure COGNITIVE Services dla systemu](https://azure.microsoft.com/services/cognitive-services/) AI. 
 
-Ze względu na to, że obciążenie jest małe, Cognitive Services jest wybierane w tle, aby zapewnić bezpłatne przetwarzanie przez maksymalnie 20 transakcji na indeksator w przypadku wywołania z usługi Azure Wyszukiwanie poznawcze. Jeśli używasz przykładowych danych, które udostępniamy, możesz pominąć tworzenie i dołączanie zasobów Cognitive Services.
+Ponieważ obciążenie jest tak małe, Cognitive Services jest wybierane w tle, aby zapewnić bezpłatne przetwarzanie dla maksymalnie 20 transakcji. W przypadku takiego małego zestawu danych możesz pominąć tworzenie i dołączanie zasobów Cognitive Services.
 
 1. [Pobierz przykładowe dane](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) składające się z małego zestawu plików różnych typów. Rozpakuj pliki.
 
@@ -111,7 +111,7 @@ Indeksator jest procesem wysokiego poziomu sterującym procesem indeksowania. Ok
 
    ![Definicja indeksatora](media/cognitive-search-quickstart-blob/indexer-def.png)
 
-1. Kliknij przycisk **Prześlij**, aby utworzyć i jednocześnie uruchomić indeksator.
+1. Kliknij przycisk **Prześlij**, aby utworzyć i od razu uruchomić indeksator.
 
 ## <a name="monitor-status"></a>Monitorowanie stanu
 
@@ -170,12 +170,12 @@ Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku **wszystki
 
 Jeśli używasz bezpłatnej usługi, pamiętaj, że masz ograniczone do trzech indeksów, indeksatorów i źródeł danych. Możesz usunąć poszczególne elementy w portalu, aby zachować limit. 
 
-> [!Tip]
-> Jeśli chcesz powtórzyć to ćwiczenie lub wypróbuj inny Przewodnik wzbogacania, Usuń indeksator w portalu. Usunięcie indeksatora resetuje bezpłatny dzienny licznik transakcji do zera na potrzeby przetwarzania Cognitive Services.
-
 ## <a name="next-steps"></a>Następne kroki
 
 Umiejętności można utworzyć przy użyciu portalu, zestawu SDK platformy .NET lub interfejsu API REST. Aby dowiedzieć się więcej, wypróbuj interfejs API REST przy użyciu programu Poster i więcej przykładowych danych.
 
 > [!div class="nextstepaction"]
 > [Samouczek: Wyodrębnianie tekstu i struktury z obiektów BLOB JSON przy użyciu interfejsów API REST](cognitive-search-tutorial-blob.md)
+
+> [!Tip]
+> Jeśli chcesz powtórzyć to ćwiczenie lub wypróbuj inny Przewodnik wzbogacania, Usuń indeksator w portalu. Usunięcie indeksatora resetuje bezpłatny dzienny licznik transakcji do zera na potrzeby przetwarzania Cognitive Services.

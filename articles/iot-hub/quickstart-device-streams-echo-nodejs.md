@@ -9,49 +9,28 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: a25bcc38c86d54b11ac1de0b3fbdfcdce1d1ac33
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 3bc5dc754509260591acf7c5d5809d5e85794d9b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461953"
+ms.locfileid: "77471928"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Szybki Start: komunikacja z aplikacją urządzenia w języku Node. js za pośrednictwem IoT Hub strumieni urządzenia (wersja zapoznawcza)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-Microsoft Azure IoT Hub obecnie obsługuje strumienie urządzeń jako [funkcję w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-[Strumienie urządzeń usługi IoT Hub](./iot-hub-device-streams-overview.md) umożliwiają aplikacjom usług i urządzeń bezpieczną komunikację w sposób przyjazny dla zapory. W publicznej wersji zapoznawczej zestaw Node.js SDK obsługuje tylko strumienie urządzeń po stronie usługi. Dlatego ten przewodnik Szybki start zawiera tylko instrukcje uruchamiania aplikacji po stronie usługi. Należy uruchomić towarzyszącą aplikację po stronie urządzenia z jednego z następujących przewodników szybki start:
-
-* [Komunikacja z aplikacjami urządzeń w języku C za pośrednictwem IoT Hub strumieni urządzeń](./quickstart-device-streams-echo-c.md)
-
-* [Komunikacja z aplikacjami urządzeń w C# programie za pośrednictwem IoT Hub strumieni urządzeń](./quickstart-device-streams-echo-csharp.md).
-
-Aplikacja Node.js po stronie usługi w tym przewodniku Szybki start zawiera następujące funkcje:
-
-* Tworzenie strumienia urządzenia do urządzenia IoT.
-
-* Odczytywanie danych wejściowych z wiersza polecenia i wysyłanie ich do aplikacji urządzenia, która wyśle z powrotem echo.
-
-Kod będzie demonstrować proces inicjowania strumienia urządzenia, a także sposób korzystania z niego do wysyłania i odbierania danych.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+W tym przewodniku szybki start uruchomisz aplikację po stronie usługi i skonfigurujesz komunikację między urządzeniem i usługą przy użyciu strumieni urządzeń. Strumienie urządzeń z systemem Azure IoT Hub umożliwiają aplikacjom usługi i urządzeniu komunikowanie się w sposób bezpieczny i przyjazny dla zapory. W publicznej wersji zapoznawczej zestaw SDK środowiska Node. js obsługuje tylko strumienie urządzeń po stronie usługi. Dlatego ten przewodnik Szybki start zawiera tylko instrukcje uruchamiania aplikacji po stronie usługi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Podgląd strumieni urządzeń jest obecnie obsługiwany tylko dla centrów IoT utworzonych w następujących regionach:
+* Zakończenie [komunikacji z aplikacjami urządzeń w języku C za pośrednictwem IoT Hub strumieni urządzeń](./quickstart-device-streams-echo-c.md) lub [komunikacji z aplikacjami C# urządzeń w programie za pośrednictwem IoT Hub strumieni urządzeń](./quickstart-device-streams-echo-csharp.md).
 
-  * Środkowe stany USA
-  * Środkowe stany USA — EUAP
-  * Europa Północna
-  * Azja Południowo-Wschodnia
+* Konto platformy Azure z aktywną subskrypcją. [Utwórz je bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-Aby uruchomić aplikację po stronie usługi w tym przewodniku Szybki Start, musisz mieć Node. js v10. x. x lub nowszy na komputerze deweloperskim.
+* [Node. js 10 +](https://nodejs.org).
 
-W programie Node. js można pobrać wiele platform z [NodeJS.org](https://nodejs.org).
+* [Przykładowy projekt node. js](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip).
 
 Możesz sprawdzić bieżącą wersję środowiska Node.js na komputerze deweloperskim przy użyciu następującego polecenia:
 
@@ -59,13 +38,25 @@ Możesz sprawdzić bieżącą wersję środowiska Node.js na komputerze dewelope
 node --version
 ```
 
-Uruchom następujące polecenie, aby dodać rozszerzenie IoT Microsoft Azure dla interfejsu wiersza polecenia platformy Azure do wystąpienia Cloud Shell. Rozszerzenie IOT dodaje do interfejsu wiersza polecenia platformy Azure IoT Hub, IoT Edge i usługi IoT Device Provisioning Service (DPS).
+Microsoft Azure IoT Hub obecnie obsługuje strumienie urządzeń jako [funkcję w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+> [!IMPORTANT]
+> Podgląd strumieni urządzeń jest obecnie obsługiwany tylko dla centrów IoT utworzonych w następujących regionach:
+>
+> * Środkowe stany USA
+> * Środkowe stany USA — EUAP
+> * Europa Północna
+> * Azja Południowo-Wschodnia
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="add-azure-iot-extension"></a>Dodawanie rozszerzenia usługi Azure IoT
+
+Uruchom następujące polecenie, aby dodać rozszerzenie IoT Microsoft Azure dla interfejsu wiersza polecenia platformy Azure do wystąpienia Cloud Shell. Rozszerzenie IoT dodaje do interfejsu wiersza polecenia platformy Azure IoT Hub, IoT Edge i usługi IoT Device Provisioning Service (DPS).
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
 ```
-
-Jeśli nie zostało to jeszcze zrobione, pobierz przykładowy projekt Node.js z https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip i wyodrębnij archiwum ZIP.
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
@@ -109,13 +100,20 @@ W tej sekcji uruchomisz aplikację po stronie urządzenia i aplikację po stroni
 
 Jak wspomniano wcześniej, zestaw Node.js SDK usługi IoT Hub obsługuje tylko strumienie urządzeń po stronie usługi. W przypadku aplikacji po stronie urządzenia Użyj jednego z towarzyszących programów urządzenia dostępnych w tych przewodnikach szybki start:
 
-   * [Komunikacja z aplikacjami urządzeń w języku C za pośrednictwem IoT Hub strumieni urządzeń](./quickstart-device-streams-echo-c.md)
+* [Komunikacja z aplikacjami urządzeń w języku C za pośrednictwem IoT Hub strumieni urządzeń](./quickstart-device-streams-echo-c.md)
 
-   * [Komunikacja z aplikacjami urządzeń w C# programie za pośrednictwem IoT Hub strumieni urządzeń](./quickstart-device-streams-echo-csharp.md)
+* [Komunikacja z aplikacjami urządzeń w C# programie za pośrednictwem IoT Hub strumieni urządzeń](./quickstart-device-streams-echo-csharp.md)
 
 Przed przejściem do następnego kroku upewnij się, że aplikacja po stronie urządzenia jest uruchomiona.
 
 ### <a name="run-the-service-side-application"></a>Uruchamianie aplikacji po stronie usługi
+
+Aplikacja Node.js po stronie usługi w tym przewodniku Szybki start zawiera następujące funkcje:
+
+* Tworzenie strumienia urządzenia do urządzenia IoT.
+* Odczytywanie danych wejściowych z wiersza polecenia i wysyłanie ich do aplikacji urządzenia, która wyśle z powrotem echo.
+
+Kod będzie demonstrować proces inicjowania strumienia urządzenia, a także sposób korzystania z niego do wysyłania i odbierania danych.
 
 Przy założeniu, że aplikacja po stronie urządzenia jest uruchomiona, wykonaj poniższe kroki w lokalnym oknie terminala, aby uruchomić aplikację po stronie usługi w programie Node. js:
 
