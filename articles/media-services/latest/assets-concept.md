@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ab4eebf56abd2d328ccf86929a043d4354ca157c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3860823787b860f2504d6fb13b9479d1feec9d28
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186310"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505817"
 ---
 # <a name="assets-in-azure-media-services"></a>Zasoby w Azure Media Services
 
@@ -28,7 +28,13 @@ Zasób jest mapowany do kontenera obiektów BLOB na [koncie usługi Azure Storag
 
 Warstwa magazynu **archiwum** jest zalecana tylko dla bardzo dużych plików źródłowych, które zostały już zakodowane i dane wyjściowe zadania kodowania zostały umieszczone w wyjściowym kontenerze obiektów BLOB. Obiekty blob w kontenerze danych wyjściowych, które mają zostać skojarzone z elementem zawartości i używają do przesyłania strumieniowego lub analizowania zawartości, muszą znajdować się w warstwie magazynowania **gorąca** lub **chłodna** .
 
-### <a name="naming-blobs"></a>Nazywanie obiektów BLOB
+### <a name="naming"></a>Nadawanie nazw 
+
+#### <a name="assets"></a>Elementy zawartości
+
+Nazwy zasobów muszą być unikatowe. Nazwy zasobów Media Services v3 (na przykład zasoby, zadania, przekształcenia) podlegają ograniczeniom nazw Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [konwencje nazewnictwa](media-services-apis-overview.md#naming-conventions).
+
+#### <a name="blobs"></a>Obiekty blob
 
 Nazwy plików/obiektów BLOB w obrębie elementu zawartości muszą spełniać zarówno [wymagania dotyczące nazw obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) , jak i [wymagania dotyczące nazw NTFS](https://docs.microsoft.com/windows/win32/fileio/naming-a-file). Przyczyną tych wymagań jest możliwość skopiowania plików z magazynu obiektów BLOB do lokalnego dysku NTFS w celu przetworzenia.
 

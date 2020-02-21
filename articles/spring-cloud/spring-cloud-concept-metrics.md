@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
-ms.openlocfilehash: e6517f1a7374b3960c3b749e63a90fe9eb21e7b0
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: bb23afff2b4b449897d8e420934d038938d20205
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277939"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500328"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Informacje o metrykach dla chmury wiosennej platformy Azure
 
@@ -52,16 +52,18 @@ Najpierw wybierz metryki do wyświetlenia:
 
 ![Wybierz widok metryki](media/metrics/metrics-4.png)
 
+Szczegóły wszystkich opcji metryk można znaleźć w [sekcji](#user-metrics-options) poniżej.
+
 Następnie wybierz typ agregacji dla każdej metryki:
 
 ![Agregacja metryk](media/metrics/metrics-5.png)
 
-Typ agregacji wskazuje sposób agregowania czasu. Jeden punkt metryki jest co minutę.
-* Łącznie: Sumuj wszystkie metryki jako docelowe dane wyjściowe.
+Typ agregacji wskazuje sposób agregowania punktów metryk na wykresie według czasu. Istnieje jeden nieprzetworzony punkt metryki co minutę, a typ przed agregacją w minutach jest wstępnie zdefiniowany przez typ metryki.
+* Sum: Sumuj wszystkie wartości jako docelowe dane wyjściowe.
 * Średnia: Użyj średniej wartości w okresie jako docelowy wynik.
 * Max/min: Użyj wartości max/min w okresie jako docelowego wyjścia.
 
-Można również zmodyfikować zakres czasu do pokazania.  Zakres czasu można wybrać z ostatnich 30 minut do ostatnich 30 dni lub z niestandardowym zakresem czasu.
+Można również zmodyfikować zakres czasu do pokazania. Zakres czasu można wybrać z ostatnich 30 minut do ostatnich 30 dni lub z niestandardowym zakresem czasu.
 
 ![Modyfikacja metryki](media/metrics/metrics-6.png)
 
@@ -80,36 +82,53 @@ Można również użyć opcji **Zastosuj dzielenie** , która spowoduje narysowa
 >[!TIP]
 > Możesz tworzyć własne wykresy na stronie metryk i przypinać je do **pulpitu nawigacyjnego**. Zacznij od zmiany nazwy wykresu.  Następnie wybierz pozycję **Przypnij do pulpitu nawigacyjnego w prawym górnym rogu**. Teraz możesz sprawdzić swoją aplikację na **pulpicie nawigacyjnym**portalu.
 
-## <a name="user-portal-metrics-options"></a>Opcje metryk portalu użytkowników
+## <a name="user-metrics-options"></a>Opcje metryk użytkownika
 
-W poniższej tabeli przedstawiono dostępne metryki i szczegóły.
->[!div class="mx-tdBreakAll"]
->| Nazwa | Nazwa wyświetlana | Nazwa metryki siłownika | Jednostka | Szczegóły |
->|----|----|----|----|------------|
->| SystemCpuUsagePercentage | Procent użycia procesora systemu | System. CPU. Usage | Procent | Ostatnie użycie procesora CPU całego systemu. Ta wartość jest podwójnym interwałem [0.0, 1.0]. Wartość 0,0 oznacza, że wszystkie procesory były bezczynne w trakcie ostatniego zaobserwowanego okresu, a wartość 1,0 oznacza, że wszystkie procesory aktywnie działały 100% czasu w trakcie ostatniego zaobserwowanego okresu. Wszystkie wartości z zakresu od 0,0 do 1,0 są możliwe w zależności od działań przechodzących w systemie. Jeśli ostatnie użycie procesora CPU w systemie jest niedostępne, metoda zwraca wartość ujemną. |
->| AppCpuUsagePercentage | Procent użycia procesora aplikacji | Procent użycia procesora aplikacji | Procent | Ostatnie użycie procesora CPU przez proces wirtualna maszyna Java. Ta wartość jest podwójnym interwałem [0.0, 1.0]. Wartość 0,0 oznacza, że żaden z procesorów CPU nie był uruchomiony z procesu JVM w trakcie ostatniego zaobserwowanego okresu, a wartość 1,0 oznacza, że wszystkie procesory aktywnie działały wątki z JVM 100% czasu podczas ostatniego zaobserwowanego okresu. Wątki z JVM obejmują wątki aplikacji oraz wewnętrzne wątki JVM. Wszystkie wartości z zakresu od 0,0 do 1,0 są możliwe w zależności od działań wykonywanych w procesie JVM i całego systemu. Jeśli wirtualna maszyna Java ostatnie użycie procesora CPU jest niedostępne, metoda zwraca wartość ujemną. |
->| AppMemoryCommitted | Przypisana pamięć aplikacji | JVM. Memory. Committed | Bajty | Reprezentuje ilość pamięci (w bajtach), która ma być dostępna do użycia przez maszynę wirtualną Java. Ilość zatwierdzonej pamięci może ulec zmianie z upływem czasu (zwiększenie lub zmniejszenie). Maszyna wirtualna Java może zwolnić pamięć do systemu, a zatwierdzenie może być mniejsze niż init. wartość zatwierdzone będzie zawsze większa lub równa używanej. |
->| AppMemoryUsed | Użyta pamięć aplikacji | JVM. Memory. użyty | Bajty | Reprezentuje ilość pamięci aktualnie używaną w bajtach. |
->| AppMemoryMax | Maksymalna ilość pamięci aplikacji | JVM. Memory. Max | Bajty | Reprezentuje maksymalną ilość pamięci (w bajtach), która może być używana do zarządzania pamięcią. Jego wartość może być niezdefiniowana. Maksymalna ilość pamięci może ulec zmianie w czasie, jeśli została zdefiniowana. Ilość użytych i przekazanych pamięci będzie zawsze mniejsza lub równa Max, jeśli zdefiniowano wartość Max. Alokacja pamięci może zakończyć się niepowodzeniem, jeśli próbuje zwiększyć użytą pamięć, taką jak > zatwierdzone, nawet jeśli użyto < = Max (na przykład gdy w systemie brakuje pamięci wirtualnej). |
->| MaxOldGenMemoryPoolBytes | Maksymalna dostępna wartość starego rozmiaru danych generacji | JVM. GC. max. Data. size | Bajty | Szczytowe użycie pamięci przez starszą pulę pamięci generacji od momentu uruchomienia maszyny wirtualnej Java. |
->| OldGenMemoryPoolBytes | Stary rozmiar danych generacji | JVM. GC. Live. Data. size | Bajty | Rozmiar starej puli pamięci generacji po pełnej operacji GC. |
->| OldGenPromotedBytes | Podwyższ poziom do starego rozmiaru danych generacji | JVM. GC. Memory. awansowana | Bajty | Liczba pozytywnych wzrostów rozmiaru starej puli pamięci generacji przed GC do po GC. |
->| YoungGenPromotedBytes | Podwyższ poziom do rozmiaru danych dla małych generacji | JVM. GC. Memory. przydzielono | Bajty | Zwiększa się w celu zwiększenia rozmiaru puli pamięci młodej generacji po jednej operacji GC do wcześniejszej. |
->| GCPauseTotalCount | Liczba wstrzymań GC | JVM. GC. Pause (łącznie-Count) | Liczba | Łączna liczba GC po rozpoczęciu tego JMV, w tym w przypadku młodych i starych wykazów GC. |
->| GCPauseTotalTime | Całkowity czas wstrzymania odzyskiwania pamięci | JVM. GC. Pause (całkowity czas) | MS | Łączny czas, zużyty przez GC po rozpoczęciu tego JMV, w tym dla młodych i starych WYKAZów. |
->| TomcatSentBytes | Całkowita liczba wysłanych bajtów Tomcat | Tomcat. Global. sent | Bajty | Ilość danych wysłanych przez serwer sieci Web Tomcat w bajtach |
->| TomcatReceivedBytes | Całkowita liczba odebranych bajtów Tomcat | Tomcat. Global. Receives | Bajty | Liczba odebranych serwerów sieci Web Tomcat danych (w bajtach) |
->| TomcatRequestTotalTime | Łączny czas żądania Tomcat | Tomcat. Global. Request (łącznie-Time) | MS | Całkowity czas przetwarzania żądań przez serwer sieci Web tomcat. |
->| TomcatRequestTotalCount | Łączna liczba żądań Tomcat | Tomcat. Global. Request (Total-Count) | Liczba | Łączna liczba żądań przetworzonych przez serwer sieci Web Tomcat |
->| TomcatRequestMaxTime | Maksymalny czas żądania Tomcat | Tomcat. Global. Request. Max | MS | Maksymalny czas przetwarzania żądania przez serwer sieci Web Tomcat |
->| TomcatErrorCount | Błąd globalny Tomcat | Tomcat. Global. Error | Liczba | Liczba błędów przetworzonych żądań |
->| TomcatSessionActiveMaxCount | Maksymalna liczba aktywnych sesji Tomcat | Tomcat. Sessions. Active. Max | Liczba | Maksymalna liczba sesji, które były aktywne w tym samym czasie |
->| TomcatSessionAliveMaxTime | Maksymalny czas aktywności sesji Tomcat | Tomcat. Sessions. Alive. Max | MS | Najdłuższy czas (w sekundach) aktywności wygasłej sesji |
->| TomcatSessionCreatedCount | Liczba utworzonych sesji Tomcat | Tomcat. Sessions. Created | Liczba | Liczba utworzonych sesji |
->| TomcatSessionExpiredCount | Liczba wygasłych sesji Tomcat | Tomcat. Sessions. wygasła | Liczba | Liczba wygasłych sesji |
->| TomcatSessionRejectedCount | Liczba odrzuconych sesji Tomcat | Tomcat. Sessions. rejected | Liczba | Liczba sesji, które nie zostały utworzone, ponieważ osiągnięto maksymalną liczbę aktywnych sesji. |
+W poniższych tabelach przedstawiono dostępne metryki i szczegóły.
 
-## <a name="see-also"></a>Zobacz także
+### <a name="error"></a>Błąd
+>[!div class="mx-tdCol2BreakAll"]
+>| Name (Nazwa) | Nazwa metryki siłownika | Jednostka | Szczegóły |
+>|----|----|----|------------|
+>| Błąd globalny Tomcat | Tomcat. Global. Error | Licznik | Liczba błędów przetworzonych żądań |
+
+### <a name="performance"></a>Wydajność
+>[!div class="mx-tdCol2BreakAll"]
+>| Name (Nazwa) | Nazwa metryki siłownika | Jednostka | Szczegóły |
+>|----|----|----|------------|
+>|Procent użycia procesora systemu | System. CPU. Usage | Procent | Ostatnie użycie procesora CPU całego systemu. Ta wartość jest podwójnym interwałem [0.0, 1.0]. Wartość 0,0 oznacza, że wszystkie procesory były bezczynne w trakcie ostatniego zaobserwowanego okresu, a wartość 1,0 oznacza, że wszystkie procesory aktywnie działały 100% czasu w trakcie ostatniego zaobserwowanego okresu.|
+>| Procent użycia procesora aplikacji | Procent użycia procesora aplikacji | Procent | Ostatnie użycie procesora CPU przez proces wirtualna maszyna Java. Ta wartość jest podwójnym interwałem [0.0, 1.0]. Wartość 0,0 oznacza, że żaden z procesorów CPU nie był uruchomiony z procesu JVM w trakcie ostatniego zaobserwowanego okresu, a wartość 1,0 oznacza, że wszystkie procesory aktywnie działały wątki z JVM 100% czasu podczas ostatniego zaobserwowanego okresu. Wątki z JVM obejmują wątki aplikacji oraz wewnętrzne wątki JVM.|
+>| Przypisana pamięć aplikacji | JVM. Memory. Committed | Bajty | Reprezentuje ilość pamięci, która ma być dostępna do użycia przez JVM. JVM może zwolnić pamięć do systemu, a zatwierdzenie może być mniejsze niż init. wartość zatwierdzone będzie zawsze większa lub równa używanej. |
+>| Użyta pamięć aplikacji | JVM. Memory. użyty | Bajty | Reprezentuje ilość pamięci aktualnie używaną w bajtach. |
+>| Maksymalna ilość pamięci aplikacji | JVM. Memory. Max | Bajty | Reprezentuje maksymalną ilość pamięci, która może być używana do zarządzania pamięcią. Ilość użytych i przekazanych pamięci będzie zawsze mniejsza lub równa Max, jeśli zdefiniowano wartość Max. Alokacja pamięci może zakończyć się niepowodzeniem, jeśli próbuje zwiększyć użytą pamięć, taką jak > zatwierdzone, nawet jeśli użyto < = Max (na przykład gdy w systemie brakuje pamięci wirtualnej). |
+>| Maksymalna dostępna wartość starego rozmiaru danych generacji | JVM. GC. max. Data. size | Bajty | Szczytowe użycie pamięci przez starszą pulę pamięci generacji od momentu uruchomienia maszyny wirtualnej Java. |
+>| Stary rozmiar danych generacji | JVM. GC. Live. Data. size | Bajty | Rozmiar starej puli pamięci generacji po pełnej operacji GC. |
+>| Podwyższ poziom do starego rozmiaru danych generacji | JVM. GC. Memory. awansowana | Bajty | Liczba pozytywnych wzrostów rozmiaru starej puli pamięci generacji przed GC do po GC. |
+>| Podwyższ poziom do rozmiaru danych dla małych generacji | JVM. GC. Memory. przydzielono | Bajty | Zwiększa się w celu zwiększenia rozmiaru puli pamięci młodej generacji po jednej operacji GC do wcześniejszej. |
+>| Liczba wstrzymań GC | JVM. GC. Pause (łącznie-Count) | Licznik | Łączna liczba GC po rozpoczęciu tego JMV, w tym w przypadku młodych i starych wykazów GC. |
+>| Całkowity czas wstrzymania odzyskiwania pamięci | JVM. GC. Pause (całkowity czas) | Milisekundy | Łączny czas, zużyty przez GC po rozpoczęciu tego JMV, w tym dla młodych i starych WYKAZów. |
+
+### <a name="request"></a>Żądanie
+>[!div class="mx-tdCol2BreakAll"]
+>| Name (Nazwa) | Nazwa metryki siłownika | Jednostka | Szczegóły |
+>|----|----|----|------------|
+>| Całkowita liczba wysłanych bajtów Tomcat | Tomcat. Global. sent | Bajty | Liczba wysłanych serwerów sieci Web Tomcat danych |
+>| Całkowita liczba odebranych bajtów Tomcat | Tomcat. Global. Receives | Bajty | Liczba odebranych danych Tomcat serwera sieci Web |
+>| Łączny czas żądania Tomcat | Tomcat. Global. Request (łącznie-Time) | Milisekundy | Łączny czas przetwarzania żądań przez serwer sieci Web Tomcat |
+>| Łączna liczba żądań Tomcat | Tomcat. Global. Request (Total-Count) | Licznik | Łączna liczba żądań przetworzonych przez serwer sieci Web Tomcat |
+>| Maksymalny czas żądania Tomcat | Tomcat. Global. Request. Max | Milisekundy | Maksymalny czas przetwarzania żądania przez serwer sieci Web Tomcat |
+
+### <a name="session"></a>Sesja
+>[!div class="mx-tdCol2BreakAll"]
+>| Name (Nazwa) | Nazwa metryki siłownika | Jednostka | Szczegóły |
+>|----|----|----|------------|
+>| Maksymalna liczba aktywnych sesji Tomcat | Tomcat. Sessions. Active. Max | Licznik | Maksymalna liczba sesji, które były aktywne w tym samym czasie |
+>| Maksymalny czas aktywności sesji Tomcat | Tomcat. Sessions. Alive. Max | Milisekundy | Najdłuższy czas (w sekundach) aktywności wygasłej sesji |
+>| Liczba utworzonych sesji Tomcat | Tomcat. Sessions. Created | Licznik | Liczba utworzonych sesji |
+>| Liczba wygasłych sesji Tomcat | Tomcat. Sessions. wygasła | Licznik | Liczba wygasłych sesji |
+>| Liczba odrzuconych sesji Tomcat | Tomcat. Sessions. rejected | Licznik | Liczba sesji, które nie zostały utworzone, ponieważ osiągnięto maksymalną liczbę aktywnych sesji. |
+
+## <a name="see-also"></a>Zobacz też
 * [Wprowadzenie do Eksploratora metryk platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
 
 * [Analizowanie dzienników i metryk przy użyciu ustawień diagnostycznych](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)

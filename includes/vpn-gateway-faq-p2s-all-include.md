@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9b106ea43e6a11d616ed2212636975bbbbf65631
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: be858e9200191de7e0bda0ae227519666d80fb7a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75751902"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500585"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Ile punktów końcowych klienta sieci VPN może obejmować konfiguracja punkt-lokacja?
 
@@ -78,7 +78,7 @@ Aby przygotowywać system Windows 10 lub Server 2016 pod kątem protokołu IKEv2
 
 1. Zainstaluj aktualizację.
 
-   | Wersja systemu operacyjnego | Data | Numer/link |
+   | Wersja systemu operacyjnego | Date | Numer/link |
    |---|---|---|
    | Windows Server 2016<br>Windows 10 w wersji 1607 | 17 stycznia 2018 r. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 w wersji 1703 | 17 stycznia 2018 r. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
@@ -98,3 +98,21 @@ Dla sieci VPN P2S platforma Azure obsługuje systemy Windows, Mac i Linux.
 ### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Mam już wdrożoną usługę Azure VPN Gateway. Czy mogę w niej włączyć sieć VPN z protokołem RADIUS i/lub IKEv2?
 
 Tak, te nowe funkcje możesz włączyć w już wdrożonych bramach, używając do tego programu PowerShell lub witryny Azure Portal. Warunkiem jest, aby używane przez Ciebie jednostki SKU bramy obsługiwały protokół RADIUS i/lub protokół IKEv2. Na przykład podstawowa jednostka SKU bramy sieci VPN nie obsługuje protokołu RADIUS ani protokołu IKEv2.
+
+### <a name="removeconfig"></a>Jak mogę usunąć konfiguracji połączenia P2S?
+
+Konfigurację P2S można usunąć za pomocą interfejsu wiersza polecenia platformy Azure i programu PowerShell przy użyciu następujących poleceń:
+
+#### <a name="azure-powershell"></a>Azure PowerShell
+
+```azurepowershell-interactive
+$gw=Get-AzVirtualNetworkGateway -name <gateway-name>`  
+$gw.VPNClientConfiguration = $null`  
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw`
+```
+
+#### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+
+```azurecli-interactive
+az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"
+```

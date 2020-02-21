@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: d2313bfc47026ed9655d0ca25f0a0fdf3f86d8a5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5db86c09cd104b2a68431ccbe24128a24ebd2ad4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191082"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500424"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co to jest usługa Azure Private Link Service?
 
@@ -98,7 +98,7 @@ Akcję zatwierdzania połączeń można zautomatyzować za pomocą właściwośc
 
 ## <a name="getting-connection-information-using-tcp-proxy-v2"></a>Uzyskiwanie informacji o połączeniu przy użyciu serwera proxy TCP v2
 
-W przypadku korzystania z usługi link prywatny źródłowy adres IP pakietów pochodzących z prywatnego punktu końcowego jest tłumaczony przez adres sieciowy (NAT) po stronie dostawcy usługi przy użyciu adresu IP NAT przydzielony z sieci wirtualnej dostawcy. W związku z tym aplikacje otrzymują przypisany adres IP translatora adresów sieciowych zamiast rzeczywistego źródłowego adresu IP konsumentów usługi. Jeśli aplikacja wymaga rzeczywistego źródłowego adresu IP po stronie klienta, możesz włączyć protokół proxy w usłudze i pobrać informacje z nagłówka protokołu proxy. Oprócz źródłowego adresu IP nagłówek protokołu proxy również zawiera LinkID prywatnego punktu końcowego. Kombinacja źródłowych adresów IP i LinkID może pomóc dostawcom usług w unikatowym identyfikowaniu swoich klientów. Więcej informacji o protokole proxy można znaleźć tutaj. 
+W przypadku korzystania z usługi link prywatny źródłowy adres IP pakietów pochodzących z prywatnego punktu końcowego jest tłumaczony przez adres sieciowy (NAT) po stronie dostawcy usługi przy użyciu adresu IP NAT przydzielony z sieci wirtualnej dostawcy. W związku z tym aplikacje otrzymują przypisany adres IP translatora adresów sieciowych zamiast rzeczywistego źródłowego adresu IP konsumentów usługi. Jeśli aplikacja wymaga rzeczywistego źródłowego adresu IP po stronie klienta, możesz włączyć protokół proxy w usłudze i pobrać informacje z nagłówka protokołu proxy. Oprócz źródłowego adresu IP nagłówek protokołu proxy również zawiera LinkID prywatnego punktu końcowego. Kombinacja źródłowych adresów IP i LinkID może pomóc dostawcom usług w unikatowym identyfikowaniu swoich klientów. Więcej informacji o protokole proxy można znaleźć [tutaj](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt). 
 
 Te informacje są kodowane przy użyciu niestandardowego wektora długości typu (TLV) w następujący sposób:
 

@@ -4,15 +4,15 @@ description: Dowiedz się, jak kupić Azure Cosmos DB zarezerwowaną pojemność
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 8e29683b994d66e769a24bb2d386a2120cf8eab9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 16e8f770445218e10ab7e7645a81325d11be55da
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367716"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505972"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optymalizacja kosztów z zarezerwowaną pojemnością w Azure Cosmos DB
 
@@ -30,7 +30,9 @@ Możesz kupić Azure Cosmos DB zarezerwowaną pojemność z [Azure Portal](https
 
 ## <a name="determine-the-required-throughput-before-purchase"></a>Określ wymaganą przepływność przed zakupem
 
-Rozmiar rezerwacji powinien opierać się na całkowitej ilości przepływności, która będzie używana przez istniejące lub wkrótce wdrożone zasoby Azure Cosmos DB. Zalecane rozmiary rezerwacji można wyświetlić w Azure Portal, wykonując następujące czynności:
+Rozmiar zakupu zarezerwowanej pojemności powinien opierać się na łącznej ilości przepływności, z której istniejące lub wkrótce wdrożone zasoby Azure Cosmos DB będą używane w godzinach. Na przykład: zakup 30 000 RU/s zarezerwowany, jeśli jest to spójny wzorzec użycia godzinowego. W tym przykładzie każda zainicjowana przepływność powyżej 30 000 RU/s będzie rozliczana według stawki płatności zgodnie z rzeczywistym użyciem. Jeśli przewidziana przepływność jest mniejsza niż 30 000 RU/s w ciągu godziny, zostanie zużyta dodatkowa pojemność zarezerwowana dla tej godziny.
+
+Obliczamy zalecenia dotyczące zakupu w oparciu o wzorzec użycia godzinowego. Jest analizowane użycie w ciągu ostatnich 7, 30 i 60 dni, a zakup zarezerwowanej pojemności, która maksymalizuje oszczędności, jest zalecany. Zalecane rozmiary rezerwacji można wyświetlić w Azure Portal, wykonując następujące czynności:
 
 1. Zaloguj się do [Azure portal](https://portal.azure.com).  
 
@@ -46,7 +48,7 @@ Zalecenia można filtrować według następujących atrybutów:
 - **Częstotliwość rozliczeń** (co miesiąc lub z góry)
 - **Typ przepływności** (ru z wieloma wzorcami ru)
 
-Ponadto możesz ograniczyć zakres zaleceń w ramach jednej grupy zasobów, pojedynczej subskrypcji lub całej rejestracji na platformie Azure. Zalecenia można wyświetlić w oparciu o użycie w ciągu ostatnich 7 dni, 30 dni lub 60 dni.
+Ponadto możesz ograniczyć zakres zaleceń w ramach jednej grupy zasobów, pojedynczej subskrypcji lub całej rejestracji na platformie Azure. 
 
 Oto przykładowe zalecenie:
 

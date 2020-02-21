@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: dc473c814cdd69204cddd976bc77f19b5db567b1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6d5ec5f798617d03072ec5931b0d1d3623df3d42
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200082"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500014"
 ---
 # <a name="how-to-use-batch-transcription"></a>Jak korzystać z transkrypcji partii
 
@@ -87,14 +87,55 @@ Parametry konfiguracji są podane jako dane JSON:
 
 Użyj tych opcjonalnych właściwości, aby skonfigurować transkrypcję:
 
-| Parametr | Opis |
-|-----------|-------------|
-| `ProfanityFilterMode` | Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości to `None`, które uniemożliwiają filtrowanie z powodu niedostępności, `Masked` które zastępują niewulgarne gwiazdkami, `Removed`, które usuwają z wyniku wszystkie niezbyt wulgarne dane, lub `Tags`, które dodaje Tagi "wulgarności". Ustawieniem domyślnym jest `Masked`. |
-| `PunctuationMode` | Określa sposób obsługi znaków interpunkcyjnych w wyniki rozpoznawania. Akceptowane wartości to `None`, które wyłączają interpunkcję, `Dictated`, która oznacza jawną interpunkcję, `Automatic`, która umożliwia dekoderowi odliczanie z interpunkcją, lub `DictatedAndAutomatic`, które oznacza podyktowane znaczniki interpunkcyjne lub automatyczne. |
-| `AddWordLevelTimestamps` | Określa, czy sygnatury czasowe poziomu słowa mają być dodawane do danych wyjściowych. Akceptowane wartości to `true`, które umożliwiają wyłączanie sygnatur czasowych na poziomie programu Word i `false` (wartość domyślna). |
-| `AddSentiment` | Należy dodać tonacji do wypowiedź. Akceptowane wartości to `true`, które umożliwiają wyłączenie opcji tonacji na wypowiedź i `false` (wartość domyślna). |
-| `AddDiarization` | Określa, że analiza diarization powinna zostać przeprowadzona na wejściu, który powinien być kanałem mono zawierającym dwa głosy. Akceptowane wartości to `true`, które umożliwiają wyłączenie programu diarization i `false` (wartość domyślna). Wymaga również, aby `AddWordLevelTimestamps` mieć wartość true.|
-|`TranscriptionResultsContainerUrl`|Opcjonalny adres URL z [sygnaturą dostępu współdzielonego usługi](../../storage/common/storage-sas-overview.md) do zapisywalnego kontenera na platformie Azure. Wynik zostanie zapisany w tym kontenerze.
+:::row:::
+   :::column span="1":::
+      **Konstruktora**
+   :::column-end:::
+   :::column span="2":::
+      **Opis**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ProfanityFilterMode`
+   :::column-end:::
+   :::column span="2":::
+      Określa sposób obsługi wulgaryzmów w wyniki rozpoznawania. Akceptowane wartości są `None`, aby wyłączyć filtrowanie nierówności, `Masked`, aby zamienić nierówność z gwiazdkami, `Removed` usunąć z wyniku wszystkie niezbyt wulgarne dane lub `Tags` dodać tagi "wulgarne". Ustawieniem domyślnym jest `Masked`.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `PunctuationMode`
+   :::column-end:::
+   :::column span="2":::
+      Określa sposób obsługi znaków interpunkcyjnych w wyniki rozpoznawania. Akceptowane wartości są `None` w celu wyłączenia interpunkcji, `Dictated` do oznaczania znaków jawnych (mówionych), `Automatic`, aby pozwolić dekoderowi na korzystanie z interpunkcji, lub `DictatedAndAutomatic`, aby użyć podyktowanych i automatycznych interpunkcji. Ustawieniem domyślnym jest `DictatedAndAutomatic`.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddWordLevelTimestamps`
+   :::column-end:::
+   :::column span="2":::
+      Określa, czy sygnatury czasowe poziomu słowa mają być dodawane do danych wyjściowych. Akceptowane wartości są `true`, aby włączyć znaczniki czasu poziomu programu Word i `false` (wartość domyślna), aby je wyłączyć.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddSentiment`
+   :::column-end:::
+   :::column span="2":::
+      Należy dodać tonacji do wypowiedź. Akceptowane wartości są `true`, aby włączyć funkcję tonacji na wypowiedź i `false` (wartość domyślna), aby ją wyłączyć.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddDiarization`
+   :::column-end:::
+   :::column span="2":::
+      Określa, że analiza diarization powinna zostać przeprowadzona na wejściu, który powinien być kanałem mono zawierającym dwa głosy. Akceptowane wartości są `true` włączenie opcji diarization i `false` (wartość domyślna), aby ją wyłączyć. Wymaga również, aby `AddWordLevelTimestamps` mieć wartość true.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `TranscriptionResultsContainerUrl`
+   :::column-end:::
+   :::column span="2":::
+      Opcjonalny adres URL z [sygnaturą dostępu współdzielonego usługi](../../storage/common/storage-sas-overview.md) do zapisywalnego kontenera na platformie Azure. Wynik zostanie zapisany w tym kontenerze.
+:::row-end:::
 
 ### <a name="storage"></a>Storage
 

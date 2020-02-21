@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a409d71ff3eae3bc62527a0669a74696246a50cd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 77132ae9a10eda7170ac56f2b7c65a3ebcde8d6d
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048085"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498978"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurowanie ustawień roli usługi Azure AD w Privileged Identity Management
 
@@ -32,11 +32,11 @@ Od listopada 2019 część Privileged Identity Management ról usługi Azure AD 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu użytkownika, który znajduje się w roli [administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 1. Otwórz **Azure AD Privileged Identity Management**. Jeśli masz baner w górnej części strony przegląd, postępuj zgodnie z instrukcjami wyświetlanymi na karcie **Nowa wersja** tego artykułu. W przeciwnym razie postępuj zgodnie z instrukcjami podanymi w **poprzedniej wersji** karty.
 
-    ![Nowa wersja ról usługi Azure AD](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Wykonaj kroki opisane w tym artykule, aby zatwierdzić lub odrzucić żądania dla ról usługi Azure AD.
 
-# <a name="new-versiontabnew"></a>[Nowa wersja](#tab/new)
+# <a name="new-version"></a>[Nowa wersja](#tab/new)
 
 ## <a name="open-role-settings"></a>Otwórz ustawienia roli
 
@@ -46,15 +46,15 @@ Wykonaj następujące kroki, aby otworzyć ustawienia roli usługi Azure AD.
 gt
 1. Otwórz **Azure AD Privileged Identity Management** &gt; **role usługi Azure AD** &gt; **ustawień roli**.
 
-    ![Strona ustawień roli z listą ról zasobów platformy Azure](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Strona ustawień roli lista ról usługi Azure AD](./media/pim-how-to-change-default-settings/role-settings.png)
 
 1. Wybierz rolę, której ustawienia chcesz skonfigurować.
 
-    ![Strona szczegółów ustawienia roli wyświetlanie kilku ustawień przypisywania i aktywacji](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![Strona szczegółów ustawienia roli wyświetlanie kilku ustawień przypisywania i aktywacji](./media/pim-how-to-change-default-settings/role-settings-page.png)
 
 1. Wybierz pozycję **Edytuj** , aby otworzyć stronę Ustawienia roli.
 
-    ![Strona edytowania ustawień roli z opcjami aktualizowania ustawień przypisywania i aktywacji](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Strona edytowania ustawień roli z opcjami aktualizowania ustawień przypisywania i aktywacji](./media/pim-how-to-change-default-settings/role-settings-edit.png)
 
     W okienku Ustawienia roli dla każdej roli istnieje kilka ustawień, które można skonfigurować.
 
@@ -66,18 +66,18 @@ Można wybrać jedną **z następujących opcji** czasu trwania przypisania:
 
 | | |
 | --- | --- |
-| **Zezwalaj na trwałe przypisanie** | Administratorzy zasobów mogą przypisywać trwałe, kwalifikujące się przypisanie. |
-| **Unieważnij przypisanie kwalifikujące się po** | Administratorzy zasobów mogą wymagać, aby wszystkie kwalifikujące się przypisania mieli określoną datę początkową i końcową. |
+| **Zezwalaj na trwałe przypisanie** | Administratorzy globalni i Administratorzy ról uprzywilejowanych mogą przypisywać trwałe, kwalifikujące się przypisanie. |
+| **Unieważnij przypisanie kwalifikujące się po** | Administratorzy globalni i Administratorzy ról uprzywilejowanych mogą wymagać, aby wszystkie kwalifikujące się przypisania miały określoną datę początkową i końcową. |
 
 Można też wybrać jedną z następujących opcji **aktywnego** przydziału czasu trwania:
 
 | | |
 | --- | --- |
-| **Zezwalaj na trwałe aktywne przypisanie** | Administratorzy zasobów mogą przypisywać trwałe aktywne przydziały. |
-| **Wygasa aktywne przypisanie po** | Administratorzy zasobów mogą wymagać, aby wszystkie aktywne przypisania miały określoną datę początkową i końcową. |
+| **Zezwalaj na trwałe aktywne przypisanie** | Administratorzy globalni i Administratorzy ról uprzywilejowanych mogą przypisywać trwałe aktywne przydziały. |
+| **Wygasa aktywne przypisanie po** | Administratorzy globalni i Administratorzy ról uprzywilejowanych mogą wymagać, aby wszystkie aktywne przypisania miały określoną datę początkową i końcową. |
 
 > [!NOTE]
-> Wszystkie przypisania o określonej dacie końcowej mogą zostać odnowione przez administratorów zasobów. Ponadto użytkownicy mogą inicjować żądania samoobsługi w celu [przedłużenia lub odnowienia przypisań ról](pim-resource-roles-renew-extend.md).
+> Wszystkie przypisania o określonej dacie końcowej mogą zostać odnowione przez administratorów globalnych i administratorów ról uprzywilejowanych. Ponadto użytkownicy mogą inicjować żądania samoobsługi w celu [przedłużenia lub odnowienia przypisań ról](pim-resource-roles-renew-extend.md).
 
 ## <a name="require-multi-factor-authentication"></a>Wymagaj uwierzytelniania wieloskładnikowego
 
@@ -87,13 +87,13 @@ Privileged Identity Management zapewnia opcjonalne wymuszanie Multi-Factor Authe
 
 W niektórych przypadkach można chcieć przypisać użytkownika do roli przez krótki czas trwania (na przykład jeden dzień). W takim przypadku przypisani użytkownicy nie muszą zażądać aktywacji. W tym scenariuszu Privileged Identity Management nie może wymusić uwierzytelniania wieloskładnikowego, gdy użytkownik korzysta z przypisania roli, ponieważ jest już aktywne w roli od momentu, w którym jest przypisany.
 
-Aby upewnić się, że administrator zasobów spełniający przypisanie, należy wymusić uwierzytelnianie wieloskładnikowe przy aktywnym przypisaniu, zaznaczając pole **wymagaj Multi-Factor Authentication w aktywnym przypisaniu** .
+Aby upewnić się, że administrator spełniający przypisanie, można wymusić uwierzytelnianie wieloskładnikowe przy aktywnym przypisaniu, zaznaczając pole **wymagaj Multi-Factor Authentication w aktywnym przypisaniu** .
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>Wymagaj Multi-Factor Authentication podczas aktywacji
 
 Możesz wymagać od użytkowników, którzy kwalifikują się do roli, aby udowodnić, którzy korzystają z usługi Azure Multi-Factor Authentication, zanim będą mogli ją aktywować. Uwierzytelnianie wieloskładnikowe gwarantuje, że użytkownik jest odpowiedzialny za to, że są one z rozsądną pewnością. Wymuszanie tej opcji chroni zasoby o znaczeniu krytycznym w sytuacjach, gdy naruszone konto użytkownika mogło ulec naruszeniu.
 
-Aby wymagać uwierzytelniania wieloskładnikowego przed aktywacją, zaznacz pole **wymagaj Multi-Factor Authentication przy aktywacji** .
+Aby wymagać uwierzytelniania wieloskładnikowego przed aktywacją, zaznacz pole **wymagaj Multi-Factor Authentication przy aktywacji** na karcie przypisanie **Ustawienia Edytuj rolę**.
 
 Aby uzyskać więcej informacji, zobacz temat [uwierzytelnianie wieloskładnikowe i Privileged Identity Management](pim-how-to-require-mfa.md).
 
@@ -121,7 +121,7 @@ Jeśli chcesz wymagać zatwierdzenia w celu aktywowania roli, wykonaj następuj�
 
 1. Po określeniu wszystkich ustawień roli wybierz pozycję **Aktualizuj** , aby zapisać zmiany.
 
-# <a name="previous-versiontabprevious"></a>[Poprzednia wersja](#tab/previous)
+# <a name="previous-version"></a>[Poprzednia wersja](#tab/previous)
 
 ## <a name="open-role-settings"></a>Otwórz ustawienia roli
 

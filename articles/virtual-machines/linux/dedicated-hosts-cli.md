@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: b301012425e0a2590fa5ac22985abe9c96fbd419
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: ab9d7128748e99b75b7e1a7187a7958e18300759
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834925"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483486"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Wdrażanie maszyn wirtualnych na dedykowanych hostach przy użyciu interfejsu wiersza polecenia platformy Azure
  
@@ -27,7 +27,7 @@ Upewnij się, że zainstalowano interfejs wiersza polecenia platformy Azure w we
 ## <a name="limitations"></a>Ograniczenia
 
 - Zestawy skalowania maszyn wirtualnych nie są obecnie obsługiwane na dedykowanych hostach.
-- Początkowa wersja obsługuje następujące serie maszyn wirtualnych: DSv3 i ESv3. 
+- Początkowa wersja obsługuje następujące serie maszyn wirtualnych: DSv3, ESv3, FSv2, LSv2 i MSv2. 
  
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów 

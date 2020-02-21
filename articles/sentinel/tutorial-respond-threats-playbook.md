@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/12/2019
+ms.date: 02/18/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7e26e901fdee8cac79cfb55aa0999487e87b8a78
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2a416fa4f9e02372e570b77b0e6fb1af2cad81fb
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113912"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500695"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Samouczek: Konfigurowanie zautomatyzowanych odpowiedzi na zagrożenia na platformie Azure — wskaźnik
 
@@ -64,7 +64,7 @@ Wykonaj następujące kroki, aby utworzyć nowy element PlayBook zabezpieczeń n
 
    ![Aplikacja logiki](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
-3. Na stronie **Azure — elementy PlayBook (wersja zapoznawcza)** kliknij przycisk **Dodaj** .
+3. Na stronie **wskaźnik na platformie Azure — elementy PlayBook** kliknij przycisk **Dodaj** .
 
    ![Tworzenie aplikacji logiki](./media/tutorial-respond-threats-playbook/create-playbook.png) 
 

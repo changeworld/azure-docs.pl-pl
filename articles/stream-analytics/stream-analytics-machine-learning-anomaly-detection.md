@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e29ac6671d71ea02b432c9843541796984737c8b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459607"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525536"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w Azure Stream Analytics
 
@@ -21,6 +21,12 @@ Dostępne zarówno w chmurze, jak i w Azure IoT Edge, Azure Stream Analytics ofe
 Modele uczenia maszynowego zakładają jednolite próbkowanie szeregów czasowych. Jeśli serie czasowe nie są jednolite, można wstawić krok agregacji z oknem wirowania przed wywołaniem wykrywania anomalii.
 
 Operacje uczenia maszynowego nie obsługują w tym momencie trendów sezonowości ani korelacji z variate.
+
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Wykrywanie anomalii przy użyciu uczenia maszynowego w Azure Stream Analytics
+
+Poniższy film wideo demonstruje sposób wykrywania anomalii w czasie rzeczywistym za pomocą funkcji uczenia maszynowego w Azure Stream Analytics. 
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Real-Time-ML-Based-Anomaly-Detection-In-Azure-Stream-Analytics/player]
 
 ## <a name="model-behavior"></a>Zachowanie modelu
 
@@ -125,16 +131,16 @@ Poniższa tabela zawiera obserwacje przepływności dla pojedynczego węzła (6 
 
 | Rozmiar historii (zdarzenia) | Czas trwania okna (MS) | Całkowita liczba zdarzeń wejściowych na sekundę |
 | --------------------- | -------------------- | -------------------------- |
-| 60 | 55 | 2200 |
+| 60 | 55 | 2 200 |
 | 600 | 728 | 1 650 |
-| 6,000 | 10 910 | 1100 |
+| 6,000 | 10 910 | 1 100 |
 
 Poniższa tabela zawiera obserwacje przepływności dla pojedynczego węzła (6 SU) dla podzielonego przypadku partycjonowania:
 
 | Rozmiar historii (zdarzenia) | Czas trwania okna (MS) | Całkowita liczba zdarzeń wejściowych na sekundę | Liczba urządzeń |
 | --------------------- | -------------------- | -------------------------- | ------------ |
-| 60 | 1 091 | 1100 | 10 |
-| 600 | 10 910 | 1100 | 10 |
+| 60 | 1 091 | 1 100 | 10 |
+| 600 | 10 910 | 1 100 | 10 |
 | 6,000 | 218 182 | < 550 | 10 |
 | 60 | 21 819 | 550 | 100 |
 | 600 | 218 182 | 550 | 100 |
@@ -148,15 +154,9 @@ Przykładowy kod do uruchamiania powyższej konfiguracji, która nie jest partyc
 ### <a name="identifying-bottlenecks"></a>Identyfikowanie wąskich gardeł
 Użyj okienka metryki w zadaniu Azure Stream Analytics, aby identyfikować wąskie gardła w potoku. Przejrzyj **zdarzenia wejściowe/wyjściowe** dla przepływności i ["opóźnienie znaku wodnego"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) lub **zaległe zdarzenia** , aby sprawdzić, czy zadanie jest zgodne z szybkością danych wejściowych. W przypadku metryk centrum zdarzeń należy poszukać **żądań z ograniczeniami** i odpowiednio dostosować jednostki progowe. W przypadku metryk Cosmos DB Sprawdź **maksymalną liczbę użytych jednostek ru/s na klucz partycji** w obszarze przepływność, aby upewnić się, że zakresy kluczy partycji są jednolicie używane. W przypadku usługi Azure SQL DB Monitoruj **operacje we/wy dziennika** i **procesora CPU**.
 
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Wykrywanie anomalii przy użyciu uczenia maszynowego w Azure Stream Analytics
-
-Poniższy film wideo demonstruje sposób wykrywania anomalii w czasie rzeczywistym za pomocą funkcji uczenia maszynowego w Azure Stream Analytics. 
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
-
 ## <a name="next-steps"></a>Następne kroki
 
-* [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)
+* [Wprowadzenie do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics (Rozpoczynanie pracy z usługą Azure Stream Analytics)](stream-analytics-real-time-fraud-detection.md)
 * [Scale Azure Stream Analytics jobs (Skalowanie zadań usługi Azure Stream Analytics)](stream-analytics-scale-jobs.md)
 * [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

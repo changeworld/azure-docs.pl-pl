@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 33fddcf22793e50287fb590dee3547d5e7be4d2b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 97b65c9f891d925e702c858753aa5e5feb9c9ac1
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462551"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500708"
 ---
 # <a name="connect-data-sources"></a>Łączenie ze źródłami danych
 
@@ -45,35 +45,46 @@ Następujące metody łączenia danych są obsługiwane przez wskaźnik na platf
 
 - **Integracja między usługą a usługą**:<br> Niektóre usługi są połączone natywnie, takie jak AWS i usługi firmy Microsoft, te usługi wykorzystują platformę Azure Foundation do zintegrowanej integracji, ale następujące rozwiązania mogą być połączone za pomocą kilku kliknięć:
     - [Amazon Web Services — CloudTrail](connect-aws.md)
-    - [Office 365](connect-office-365.md)
-    - [Dzienniki inspekcji usługi Azure AD i logowania](connect-azure-active-directory.md)
     - [Aktywność platformy Azure](connect-azure-activity.md)
+    - [Dzienniki inspekcji usługi Azure AD i logowania](connect-azure-active-directory.md)
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Azure Security Center](connect-azure-security-center.md)
-    - [Azure Information Protection](connect-azure-information-protection.md)
     - [Zaawansowana ochrona przed zagrożeniami na platformie Azure](connect-azure-atp.md)
+    - [Azure Information Protection](connect-azure-information-protection.md)
+    - [Azure Security Center](connect-azure-security-center.md)
     - [Cloud App Security](connect-cloud-app-security.md)
+    - [Serwer nazw domen](connect-dns.md)
+    - [Office 365](connect-office-365.md)
+    - [Usługa Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Zapora aplikacji sieci Web firmy Microsoft](connect-microsoft-waf.md)
     - [Zdarzenia zabezpieczeń systemu Windows](connect-windows-security-events.md) 
     - [Zapora systemu Windows](connect-windows-firewall.md)
+    - [Zdarzenia zabezpieczeń systemu Windows](connect-windows-security-events.md)
 
 - **Rozwiązania zewnętrzne za pośrednictwem interfejsu API**: Niektóre źródła danych są połączone przy użyciu interfejsów API, które są udostępniane przez połączone źródło danych. Zazwyczaj większość technologii zabezpieczeń zapewnia zestaw interfejsów API, za pomocą których można pobrać dzienniki zdarzeń. Interfejsy API nawiązują połączenie z platformą Azure, a następnie zbierają określone typy danych i wysyłają je do Log Analytics platformy Azure. Urządzenia połączone za pośrednictwem interfejsu API obejmują:
     - [Barracuda](connect-barracuda.md)
-    - [Ekran](connect-symantec.md)
+    - [Zapora CloudGen Barracuda](connect-barracuda-cloudgen-firewall.md)
     - [Analiza Citrix (zabezpieczenia)](connect-citrix-analytics.md)
+    - [F5 BIG-IP](connect-f5-big-ip.md)
+    - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Technologie Squadra secRMM](connect-squadra-secrmm.md)
+    - [Symantec ICDX](connect-symantec.md)
+    - [Zimperium](connect-zimperium-mtd.md)
+
 
 - **Rozwiązania zewnętrzne przez agenta**: wskaźnik na platformie Azure może być połączony ze wszystkimi innymi źródłami danych, które mogą wykonywać przesyłanie strumieniowe w czasie rzeczywistym przy użyciu protokołu dziennika systemowego za pośrednictwem agenta. <br>Większość urządzeń używa protokołu dziennika systemowego do wysyłania komunikatów zdarzeń, które obejmują sam dziennik i dane dotyczące dziennika. Format dzienników jest różny, ale większość urządzeń obsługuje formatowanie oparte na formacie Common Event format (CEF) dla danych dzienników. <br>Agent wskaźnikowy platformy Azure, który jest oparty na agencie Log Analytics, konwertuje CEF sformatowane dzienniki do formatu, który może zostać pozyskany przez Log Analytics. W zależności od typu urządzenia Agent jest instalowany bezpośrednio na urządzeniu lub na dedykowanym serwerze z systemem Linux. Agent dla systemu Linux odbiera zdarzenia z demona dziennika systemu za pośrednictwem protokołu UDP, ale jeśli oczekuje się, że maszyna z systemem Linux będzie zbierać duże ilości zdarzeń dziennika systemowego, są one wysyłane za pośrednictwem protokołu TCP z demona dziennika systemowego do agenta i z tego miejsca do Log Analytics.
     - Zapory, proxy i punkty końcowe:
-        - [F5](connect-f5.md)
         - [Punkt kontrolny](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
+        - [ExtraHop (x)](connect-extrahop.md)
+        - [F5](connect-f5.md)
+        - [Forcepoint produkty](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto](connect-paloalto.md)
+        - [Palo Alto Networks](connect-paloalto.md)
+        - [Ochrona jednej tożsamości](connect-one-identity.md)
         - [Inne urządzenia CEF](connect-common-event-format.md)
         - [Inne urządzenia dziennika systemu](connect-syslog.md)
-        - [Zapora CloudGen Barracuda](connect-barracuda-cloudgen-firewall.md)
-        - [ExtraHop (x)](connect-extrahop.md)
-        - [Ochrona jednej tożsamości](connect-one-identity.md)
         - [Trend Micro — zabezpieczenia](connect-trend-micro.md)
+        - [Rozwiązania Zscaler](connect-zscaler.md)
     - Rozwiązania DLP
     - [Dostawcy analizy zagrożeń](connect-threat-intelligence.md)
     - [Maszyny DNS](connect-dns.md) — Agent zainstalowany bezpośrednio na komputerze DNS

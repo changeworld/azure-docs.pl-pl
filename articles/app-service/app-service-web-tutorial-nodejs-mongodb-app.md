@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.custom: seodec18
-ms.openlocfilehash: 7d0a1d89b0547b1cd982b2717ac7548bec848a77
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2ab67743a349c33000d4b6f8b8566ff48e5e1d24
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671312"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500018"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Samouczek: Tworzenie aplikacji node. js i MongoDB na platformie Azure
 
@@ -455,7 +455,7 @@ git commit -am "added article comment"
 git push azure master
 ```
 
-Po zakończeniu operacji `git push` przejdź do aplikacji platformy Azure i wypróbuj nowe funkcje.
+Po ukończeniu operacji `git push` przejdź do aplikacji platformy Azure i wypróbuj nowe funkcje.
 
 ![Zmiany w modelu i bazie danych opublikowane na platformie Azure](media/app-service-web-tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 

@@ -8,15 +8,18 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 452202555734a208a9f32d6f8899e1f679df4a68
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 6f683ae79a2b68391e4bda2b81bcbab3eccc5b2e
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443996"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500721"
 ---
 # <a name="what-is-azure-private-link"></a>Co to jest łącze prywatne platformy Azure? 
 Link prywatny platformy Azure umożliwia dostęp do usług Azure PaaS Services (na przykład Azure Storage, Azure Cosmos DB i SQL Database) oraz hostowanych usług klienta i partnerskich platformy Azure za pośrednictwem [prywatnego punktu końcowego](private-endpoint-overview.md) w sieci wirtualnej. Ruch między siecią wirtualną a usługą odbywa się za pośrednictwem sieci szkieletowej firmy Microsoft, eliminując ekspozycję z publicznego Internetu. Możesz również utworzyć własną [prywatną usługę linku](private-link-service-overview.md) w sieci wirtualnej (VNET) i dostarczyć ją prywatnie do klientów. Środowisko instalacji i użycia korzystające z prywatnego linku platformy Azure jest spójne w przypadku usługi Azure PaaS, należącej do klienta i udostępnionych usług partnerskich.
+
+> [!IMPORTANT]
+> Usługa Azure Private link jest teraz ogólnie dostępna. Ogólnie dostępne są zarówno prywatne, jak i prywatne usługi linkowe (usługa za usługę w warstwie Standardowa). Różne harmonogramy zostaną dołączone do prywatnego linku platformy Azure PaaS. Sprawdź poniższą sekcję [dostępności](https://docs.microsoft.com/azure/private-link/private-link-overview#availability) , aby uzyskać dokładny stan usługi Azure PaaS on Private. Aby uzyskać znane ograniczenia, zobacz [prywatny punkt końcowy](private-endpoint-overview.md#limitations) i [Usługa łącza prywatnego](private-link-service-overview.md#limitations). 
 
 ![Omówienie prywatnego punktu końcowego](media/private-link-overview/private-endpoint.png)
 
@@ -37,7 +40,7 @@ Połączenie prywatne platformy Azure zapewnia następujące korzyści:
 
 |Scenariusz  |Obsługiwane usługi  |Dostępne regiony | Stan  |
 |:---------|:-------------------|:-----------------|:--------|
-|Prywatne łącze dla usług należących do klienta|Usługi linków prywatnych w tle usługa Load Balancer w warstwie Standardowa | Wszystkie regiony publiczne  | Wersja zapoznawcza  |
+|Prywatne łącze dla usług należących do klienta|Usługi linków prywatnych w tle usługa Load Balancer w warstwie Standardowa | Wszystkie regiony publiczne  | Ogólna dostępność  |
 |Link prywatny dla usług Azure PaaS Services   | Azure Storage        |  Wszystkie regiony publiczne      | Wersja zapoznawcza <br/> [Dowiedz się więcej](/azure/storage/common/storage-private-endpoints).  |
 |  | Usługa Azure Data Lake Storage 2. generacji        |  Wszystkie regiony publiczne      | Wersja zapoznawcza <br/> [Dowiedz się więcej](/azure/storage/common/storage-private-endpoints).  |
 |  |  Azure SQL Database         | Wszystkie regiony publiczne      |   Wersja zapoznawcza      |
@@ -67,6 +70,9 @@ Często zadawane pytania można znaleźć w sekcji [często zadawane pytania dot
  
 ## <a name="limits"></a>Limity  
 Aby uzyskać limity, zobacz [limity linków prywatnych platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits).
+
+## <a name="service-level-agreement"></a>Umowa dotycząca poziomu usług
+W przypadku umowy SLA Zobacz temat [Umowa SLA dla prywatnego linku platformy Azure](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/).
 
 ## <a name="next-steps"></a>Następne kroki
 - [Tworzenie prywatnego punktu końcowego dla serwera SQL Database przy użyciu portalu](create-private-endpoint-portal.md)

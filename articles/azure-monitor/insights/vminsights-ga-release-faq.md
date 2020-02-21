@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047846"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482888"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor dla maszyn wirtualnych ogólnie dostępna (GA) często zadawanych pytań
 
@@ -24,7 +24,9 @@ Udostępnimy nową wersję Azure Monitor dla maszyn wirtualnych. Klienci, którz
 
 W przypadku tego uaktualnienia Azure Monitor dla maszyn wirtualnych dane wydajności są przechowywane w tej samej tabeli *InsightsMetrics* co [Azure monitor dla kontenerów](container-insights-overview.md), co ułatwia wykonywanie zapytań dotyczących dwóch zestawów danych. Ponadto można przechowywać bardziej zróżnicowane zestawy danych, które nie mogły być przechowywane w tabeli, która została wcześniej użyta. 
 
-W następnym tygodniu lub dwóch widokach wydajności również zostaną zaktualizowane w celu korzystania z tej nowej tabeli.
+Nasze widoki wydajności używają teraz danych przechowywanych w tabeli *InsightsMetrics* .  Jeśli jeszcze nie uaktualniono do korzystania z najnowszego rozwiązania VMInsights w obszarze roboczym, na wykresach nie będą już wyświetlane informacje.  Możesz przeprowadzić uaktualnienie **z naszej strony wprowadzenie,** zgodnie z poniższym opisem.
+
+W przypadku tego uaktualnienia Azure Monitor dla maszyn wirtualnych dane dotyczące wydajności są przechowywane w tej samej tabeli *InsightsMetrics* co [Azure monitor dla kontenerów](container-insights-overview.md) , co ułatwia wykonywanie zapytań dotyczących dwóch zestawów danych. Można również przechowywać bardziej zróżnicowane zestawy danych, które nie mogły być przechowywane w tabeli, która została wcześniej użyta. 
 
 Zdajemy sobie sprawę, że zaproszenie istniejących klientów o uaktualnienie powoduje zakłócenia w przepływie pracy, co oznacza, że wybrano tę czynność teraz w publicznej wersji zapoznawczej, a nie później.
 
@@ -34,6 +36,8 @@ Zdajemy sobie sprawę, że zaproszenie istniejących klientów o uaktualnienie p
 Opublikowano nowe rozwiązanie o nazwie VMInsights, które zawiera dodatkowe możliwości zbierania danych oraz nową lokalizację do przechowywania tych danych w obszarze roboczym Log Analytics. 
 
 W przeszłości włączono rozwiązanie ServiceMap w obszarze roboczym i skonfigurujesz liczniki wydajności w obszarze roboczym Log Analytics, aby wysłać dane do tabeli *wydajności* . To nowe rozwiązanie wysyła dane do tabeli o nazwie *InsightsMetrics* , która jest również używana przez Azure monitor dla kontenerów. Ten schemat tabeli umożliwia przechowywanie dodatkowych metryk i zestawów danych usług, które nie są zgodne z formatem tabeli *wydajności* .
+
+Zaktualizowaliśmy wykresy wydajnościowe, aby użyć przechowywanych danych w tabeli *InsightsMetrics* . Możesz przeprowadzić uaktualnienie, aby użyć tabeli *InsightsMetrics* **na naszej stronie wprowadzenie,** zgodnie z poniższym opisem.
 
 
 ## <a name="how-do-i-upgrade"></a>Jak mogę uaktualnić?

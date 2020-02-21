@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/12/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3261e30d024cedba5885019a62cba1e296c1c00d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0b39336591e9939d0e5200304cbeced2d9831979
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025558"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498772"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Zatwierdzanie lub odrzucanie żądań dla ról usługi Azure AD w Privileged Identity Management
 
@@ -29,28 +29,28 @@ Za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Managem
 
 ## <a name="determine-your-version-of-pim"></a>Określanie używanej wersji programu PIM
 
-Od listopada 2019 część Privileged Identity Management ról usługi Azure AD jest aktualizowana do nowej wersji, która jest zgodna z środowiskami dla ról zasobów platformy Azure. Spowoduje to utworzenie dodatkowych funkcji, a także [zmian w istniejącym interfejsie API](azure-ad-roles-features.md#api-changes). Gdy nowa wersja jest wdrażana, procedury, które należy wykonać w tym artykule, zależą od aktualnie posiadanej wersji Privileged Identity Management. Wykonaj kroki opisane w tej sekcji, aby określić, która wersja Privileged Identity Management masz. Po uzyskaniu informacji o wersji Privileged Identity Management możesz wybrać procedury w tym artykule, które pasują do tej wersji.
+Od listopada 2019 część Privileged Identity Management ról usługi Azure AD jest aktualizowana do nowej wersji, która pasuje do środowiska dla ról platformy Azure. Spowoduje to utworzenie dodatkowych funkcji, a także [zmian w istniejącym interfejsie API](azure-ad-roles-features.md#api-changes). Gdy nowa wersja jest wdrażana, procedury, które należy wykonać w tym artykule, zależą od aktualnie posiadanej wersji Privileged Identity Management. Wykonaj kroki opisane w tej sekcji, aby określić, która wersja Privileged Identity Management masz. Po uzyskaniu informacji o wersji Privileged Identity Management możesz wybrać procedury w tym artykule, które pasują do tej wersji.
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu użytkownika, który znajduje się w roli [administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 1. Otwórz **Azure AD Privileged Identity Management**. Jeśli masz baner w górnej części strony przegląd, postępuj zgodnie z instrukcjami wyświetlanymi na karcie **Nowa wersja** tego artykułu. W przeciwnym razie postępuj zgodnie z instrukcjami podanymi w **poprzedniej wersji** karty.
 
-    ![Nowa wersja ról usługi Azure AD](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Wykonaj kroki opisane w tym artykule, aby zatwierdzić lub odrzucić żądania dla ról usługi Azure AD.
 
-# <a name="new-versiontabnew"></a>[Nowa wersja](#tab/new)
+# <a name="new-version"></a>[Nowa wersja](#tab/new)
 
 ## <a name="view-pending-requests"></a>Wyświetl oczekujące żądania
 
-W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, gdy żądanie roli zasobu platformy Azure oczekuje na zatwierdzenie. Te oczekujące żądania można wyświetlić w Privileged Identity Management.
+W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, gdy żądanie roli usługi Azure AD oczekuje na zatwierdzenie. Te oczekujące żądania można wyświetlić w Privileged Identity Management.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 1. Otwórz **Azure AD Privileged Identity Management**.
 
 1. Wybierz pozycję **Zatwierdź żądania**.
 
-    ![Zatwierdź żądania — na stronie zasobów platformy Azure zostanie wyświetlona prośba o przejrzenie](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+    ![Zatwierdzanie żądań — strona przedstawiająca żądanie przejrzenia ról usługi Azure AD](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
     W sekcji **żądania aktywacji roli** zobaczysz listę żądań oczekujących na zatwierdzenie.
 
@@ -64,7 +64,7 @@ W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, g
 
 1. Wybierz pozycję **Zatwierdź**. Otrzymasz powiadomienie o zatwierdzeniu na platformie Azure.
 
-    ![Zatwierdź powiadomienie z zatwierdzeniem żądania](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+    ![Zatwierdź powiadomienie z zatwierdzeniem żądania](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png))
 
 ## <a name="deny-requests"></a>Odmów żądań
 
@@ -83,18 +83,18 @@ Oto kilka informacji o powiadomieniach dotyczących przepływu pracy:
 - Osoby zatwierdzające są powiadamiane za pośrednictwem poczty e-mail, gdy żądanie dotyczące roli oczekuje na przegląd. Powiadomienia e-mail zawierają bezpośredni link do żądania, gdzie osoba zatwierdzająca może zatwierdzić lub odmówić.
 - Żądania są rozwiązywane przez pierwszej osoby zatwierdzającej, która zatwierdza lub odmówi.
 - Gdy osoba zatwierdzająca odpowie na żądanie, wszyscy osoby zatwierdzające są powiadamiani o akcji.
-- Administratorzy zasobów są powiadamiani, gdy zatwierdzony użytkownik zostanie uaktywniony w roli.
+- Administratorzy globalni i Administratorzy ról uprzywilejowanych są powiadamiani, gdy zatwierdzony użytkownik zostanie uaktywniony w roli.
 
 >[!NOTE]
->Administrator zasobów, który uważa, że zatwierdzona osoba nie powinna być aktywna, może usunąć przypisanie aktywnej roli w Privileged Identity Management. Mimo że administratorzy zasobów nie są powiadamiani o oczekujących żądaniach, chyba że są osobami zatwierdzającymi, mogą wyświetlać i anulować oczekujące żądania dla wszystkich użytkowników, wyświetlając oczekujące żądania w Privileged Identity Management.
+>Administratorzy globalni lub administrator ról uprzywilejowanych, który uważa, że zatwierdzona osoba nie powinna być aktywna, może usunąć przypisanie aktywnej roli w Privileged Identity Management. Mimo że administratorzy nie są powiadamiani o oczekujących żądaniach, chyba że są osobami zatwierdzającymi, mogą wyświetlać i anulować wszystkie oczekujące żądania dla wszystkich użytkowników, wyświetlając oczekujące żądania w Privileged Identity Management.
 
-# <a name="previous-versiontabprevious"></a>[Poprzednia wersja](#tab/previous)
+# <a name="previous-version"></a>[Poprzednia wersja](#tab/previous)
 
 ## <a name="view-pending-requests"></a>Wyświetl oczekujące żądania
 
 W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, gdy żądanie roli usługi Azure AD oczekuje na zatwierdzenie. Te oczekujące żądania można wyświetlić w Privileged Identity Management.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 1. Otwórz **Azure AD Privileged Identity Management**.
 
@@ -132,7 +132,7 @@ W przypadku delegowanej osoby zatwierdzającej otrzymasz powiadomienie e-mail, g
 
     ![Odmowa okienka wybrane żądania z powodu odrzucenia](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
-1. Kliknij przycisk **Odmów**.
+1. Wybierz pozycję **Odmów**.
 
     Symbol stanu zostanie zaktualizowany z odmową.
 

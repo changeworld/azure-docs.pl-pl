@@ -3,12 +3,12 @@ title: Tabela obsługi usługi Azure Backup
 description: Zawiera podsumowanie ustawień obsługi i ograniczeń dotyczących usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 37347e6febdfc3500c218238606fc96463da631c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 15c2fdfbe63dd73e665a4bac01dd2cd1b1144949
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936252"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505870"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Macierz obsługi dla Azure Backup
 
@@ -76,10 +76,11 @@ W tym miejscu nowości są obsługiwane, jeśli chcesz utworzyć kopię zapasow�
 
 **Typ kopii zapasowej** | **Linux (zatwierdzony przez Azure)**
 --- | ---
-**Bezpośrednie tworzenie kopii zapasowej maszyny lokalnej z systemem Linux** | Bez pomocy technicznej. Agenta MARS można zainstalować tylko na komputerach z systemem Windows.
+**Bezpośrednie tworzenie kopii zapasowej maszyny lokalnej z systemem Linux** | Nieobsługiwane. Agenta MARS można zainstalować tylko na komputerach z systemem Windows.
 **Używanie rozszerzenia agenta do tworzenia kopii zapasowej maszyny wirtualnej platformy Azure z systemem Linux** | Tworzenie kopii zapasowej spójnej na poziomie aplikacji przy użyciu [skryptów niestandardowych](backup-azure-linux-app-consistent.md).<br/><br/> Odzyskiwanie na poziomie plików.<br/><br/> Przywracanie przez utworzenie maszyny wirtualnej z punktu odzyskiwania lub dysku.
-**Używanie programu DPM do tworzenia kopii zapasowej lokalnej lub maszyny wirtualnej platformy Azure z systemem Linux** | Spójna z plikami kopia zapasowa maszyn wirtualnych gościa systemu Linux w funkcji Hyper-V i oprogramowaniu VMWare.<br/><br/> Przywracanie maszyny wirtualnej z maszynami wirtualnymi funkcji Hyper-V i VMWare Linux.<br/><br/> Kopia zapasowa spójna na poziomie plików nie jest dostępna dla maszyny wirtualnej platformy Azure.
-**Tworzenie kopii zapasowej maszyny lokalnej lub maszyny wirtualnej platformy Azure z systemem Linux przy użyciu programu serwera usługi MAB** | Spójna z plikami kopia zapasowa maszyn wirtualnych gościa systemu Linux w funkcji Hyper-V i oprogramowaniu VMWare.<br/><br/> Przywracanie maszyny wirtualnej z maszynami wirtualnymi funkcji Hyper-V i VMWare Linux.<br/><br/> Spójna na poziomie plików kopia zapasowa niedostępna dla maszyn wirtualnych platformy Azure.
+**Używanie programu DPM do tworzenia kopii zapasowych maszyn lokalnych z systemem Linux** | Spójna z plikami kopia zapasowa maszyn wirtualnych gościa systemu Linux w funkcji Hyper-V i oprogramowaniu VMWare.<br/><br/> Przywracanie maszyny wirtualnej z maszynami wirtualnymi funkcji Hyper-V i VMWare Linux.
+**Tworzenie kopii zapasowych maszyn lokalnych z systemem Linux przy użyciu programu serwera usługi MAB** | Spójna z plikami kopia zapasowa maszyn wirtualnych gościa systemu Linux w funkcji Hyper-V i oprogramowaniu VMWare.<br/><br/> Przywracanie maszyny wirtualnej z maszynami wirtualnymi funkcji Hyper-V i VMWare Linux.
+**Używanie programu serwera usługi MAB lub programu DPM do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure z systemem Linux** | Nieobsługiwane.
 
 ## <a name="daylight-saving-time-support"></a>Obsługa czasu letniego
 
@@ -114,10 +115,10 @@ Azure Backup obsługuje szyfrowanie danych w trakcie przesyłania i w czasie spo
 
 **Maszyna** | **Przesyłanie** | **Magazynowanie**
 --- | --- | ---
-**Lokalne maszyny z systemem Windows bez programu DPM/serwera usługi MAB** | ![Tak][green] | ![Tak][green]
-**Maszyny wirtualne platformy Azure** | ![Tak][green] | ![Tak][green]
-**Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z programem DPM** | ![Tak][green] | ![Tak][green]
-**Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z usługą serwera usługi MAB** | ![Tak][green] | ![Tak][green]
+**Lokalne maszyny z systemem Windows bez programu DPM/serwera usługi MAB** | ![Yes][green] | ![Yes][green]
+**Maszyny wirtualne platformy Azure** | ![Yes][green] | ![Yes][green]
+**Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z programem DPM** | ![Yes][green] | ![Yes][green]
+**Lokalne komputery z systemem Windows lub maszyny wirtualne platformy Azure z usługą serwera usługi MAB** | ![Yes][green] | ![Yes][green]
 
 ## <a name="compression-support"></a>Obsługa kompresji
 
@@ -128,9 +129,9 @@ Funkcja Backup obsługuje kompresję ruchu kopii zapasowej, jak przedstawiono w 
 
 **Maszyna** | **Kompresja do usługi MABS/programu DPM (TCP)** | **Kompresuj do magazynu (HTTPS)**
 --- | --- | ---
-**Bezpośrednia kopia zapasowa lokalnych maszyn z systemem Windows** | Nie dotyczy | ![Tak][green]
+**Bezpośrednia kopia zapasowa lokalnych maszyn z systemem Windows** | Nie dotyczy | ![Yes][green]
 **Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu rozszerzenia maszyny wirtualnej** | Nie dotyczy | Nie dotyczy
-**Tworzenie kopii zapasowych na maszynach lokalnych/na platformie Azure przy użyciu serwera usługi MAB/DPM** | ![Tak][green] | ![Tak][green]
+**Tworzenie kopii zapasowych na maszynach lokalnych/na platformie Azure przy użyciu serwera usługi MAB/DPM** | ![Yes][green] | ![Yes][green]
 
 ## <a name="retention-limits"></a>Limity przechowywania
 
@@ -150,10 +151,10 @@ Azure Backup dodano funkcję przywracania między regionami w celu wzmocnienia d
 
 | Typ zarządzania kopiami zapasowymi | Obsługiwane                                                    | Obsługiwane regiony |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Maszyna wirtualna platformy Azure               | Tak. Publiczna ograniczona wersja zapoznawcza obsługiwana dla szyfrowanych maszyn wirtualnych i maszyn wirtualnych o pojemności mniejszej niż 4 TB | Zachodnio-środkowe stany USA   |
-| Agent MARS/lokalnie | Nie                                                           | ND               |
-| SQL/SAP HANA          | Nie                                                           | ND               |
-| AFS                    | Nie                                                           | ND               |
+| Maszyna wirtualna platformy Azure               | Tak. Publiczna ograniczona wersja zapoznawcza obsługiwana dla szyfrowanych maszyn wirtualnych i maszyn wirtualnych o pojemności mniejszej niż 4 TB | Środkowo-zachodnie stany USA   |
+| Agent MARS/lokalnie | Nie                                                           | Brak               |
+| SQL/SAP HANA          | Nie                                                           | Brak               |
+| AFS                    | Nie                                                           | Brak               |
 
 
 

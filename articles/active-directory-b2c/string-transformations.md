@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 06323ba8f623bc80a355be69ed9571ee32dd69e6
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: df0bd87fffba8ed70c60da358b38079d3d017c76
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461219"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505647"
 ---
 # <a name="string-claims-transformations"></a>Przekształcenia oświadczeń ciągów
 
@@ -34,7 +34,8 @@ Porównaj dwa oświadczenia i Zgłoś wyjątek, jeśli nie są one równe zgodni
 | Oświadczenie inputclaim | inputClaim2 | ciąg | Typ drugiego zgłoszenia, który ma zostać porównany. |
 | InputParameter | stringComparison | ciąg | porównanie ciągów, jedna z wartości: numer porządkowy, OrdinalIgnoreCase. |
 
-Przekształcenie oświadczeń **AssertStringClaimsAreEqual** jest zawsze wykonywane z poziomu [weryfikacji profilu technicznego](validation-technical-profile.md) , który jest wywoływany przez [własny profil techniczny](self-asserted-technical-profile.md). Metadane profilu technicznego **UserMessageIfClaimsTransformationStringsAreNotEqual** z własnym potwierdzeń są kontrolowane przez komunikat o błędzie wyświetlany użytkownikowi.
+Przekształcenie oświadczeń **AssertStringClaimsAreEqual** jest zawsze wykonywane z poziomu [profilu technicznego weryfikacji](validation-technical-profile.md) , który jest wywoływany przez [profil techniczny z własnym potwierdzeniem](self-asserted-technical-profile.md)lub [DisplayConrtol](display-controls.md). Metadane `UserMessageIfClaimsTransformationStringsAreNotEqual` z własnym profilem technicznym są kontrolowane przez komunikat o błędzie wyświetlany użytkownikowi.
+
 
 ![AssertStringClaimsAreEqual wykonywanie](./media/string-transformations/assert-execution.png)
 
@@ -122,7 +123,7 @@ Ta transformacja oświadczenia umożliwia zmianę dowolnego typu oświadczenia c
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
-Tworzy w zasadach ciąg z podanego parametru wejściowego.
+Tworzy na podstawie podanego parametru wejściowego wyrażenie typu String.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 |----- | ----------------------- | --------- | ----- |
@@ -517,6 +518,42 @@ Poniższy przykład wyszukuje nazwę domeny w jednej z kolekcji inputParameters.
 - Oświadczenia wyjściowe:
     - **oświadczenie outputclaim**: c7026f88-4299-4CDB-965d-3f166464b8a9
 
+Gdy `errorOnFailedLookup` parametr wejściowy jest ustawiony na `true`, transformacja oświadczeń **LookupValue** jest zawsze wykonywana z poziomu [profilu technicznego weryfikacji](validation-technical-profile.md) , który jest wywoływany przez [własny profil techniczny](self-asserted-technical-profile.md)lub [DisplayConrtol](display-controls.md). Metadane `LookupNotFound` z własnym profilem technicznym są kontrolowane przez komunikat o błędzie wyświetlany użytkownikowi.
+
+![AssertStringClaimsAreEqual wykonywanie](./media/string-transformations/assert-execution.png)
+
+Poniższy przykład wyszukuje nazwę domeny w jednej z kolekcji inputParameters. Transformacja oświadczeń wyszukuje nazwę domeny w identyfikatorze i zwraca jej wartość (Identyfikator aplikacji) lub zgłasza komunikat o błędzie.
+
+```XML
+ <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="contoso.com" DataType="string" Value="13c15f79-8fb1-4e29-a6c9-be0d36ff19f1" />
+    <InputParameter Id="microsoft.com" DataType="string" Value="0213308f-17cb-4398-b97e-01da7bd4804e" />
+    <InputParameter Id="test.com" DataType="string" Value="c7026f88-4299-4cdb-965d-3f166464b8a9" />
+    <InputParameter Id="errorOnFailedLookup" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="domainAppId" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Przykład
+
+- Oświadczenia wejściowe:
+    - **inputParameterId**: Live.com
+- Parametry wejściowe:
+    - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **Microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com**: c7026f88-4299-4CDB-965d-3f166464b8a9
+    - **errorOnFailedLookup**: true
+- Błąd:
+    - Nie znaleziono dopasowania dla wartości wejściowego żądania na liście identyfikatorów parametrów wejściowych i errorOnFailedLookup ma wartość true.
+
+
 ## <a name="nullclaim"></a>NullClaim
 
 Wyczyść wartość danego żądania.
@@ -750,7 +787,7 @@ Wyodrębnia części typu "String", rozpoczynając od znaku w określonej pozycj
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie inputclaim | Oświadczenie inputclaim | ciąg | Typ zgłoszenia, który zawiera ciąg. |
 | InputParameter | startIndex | int | Początkowa pozycja znaku w podciągu w tym wystąpieniu (liczony od zera). |
-| InputParameter | length | int | Liczba znaków w podciągu. |
+| InputParameter | {1&gt;length&lt;1} | int | Liczba znaków w podciągu. |
 | Oświadczenie outputclaim | Oświadczenie outputclaim | wartość logiczna | Ciąg, który jest odpowiednikiem podciągu długości, który rozpoczyna się od elementu startIndex w tym wystąpieniu, lub pusty, jeśli wartość startIndex jest równa długości tego wystąpienia, a długość wynosi zero. |
 
 Na przykład Pobierz prefiks kraju numeru telefonu.  

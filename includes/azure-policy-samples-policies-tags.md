@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ms.author: dacoulte
-ms.openlocfilehash: 1f949a5c13393758d69223fa49e9e84d91e27310
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 21f4e4234025ab4b9bb14a1e1338aa4b748ef1a6
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77371199"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77495559"
 ---
 |Name (Nazwa) |Opis |Efekt (s) |Wersja |Element źródłowy |
 |---|---|---|---|
@@ -22,6 +22,8 @@ ms.locfileid: "77371199"
 |[Dołącz tag i jego wartość z grupy zasobów](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9ea02ca2-71db-412d-8b00-7c7ca9fcd32d) |Dołącza określony tag do jego wartości z grupy zasobów, gdy zostanie utworzony lub zaktualizowany dowolny zasób, w którym brakuje tego tagu. Program nie modyfikuje tagów zasobów utworzonych przed zastosowaniem tych zasad do momentu zmiany tych zasobów. Dostępne są nowe zasady "Modyfikowanie", które obsługują korygowanie tagów w istniejących zasobach (zobacz https://aka.ms/modifydoc). |łączono |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Append.json)
 |[Dziedzicz tag z grupy zasobów](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcd3aa116-8754-49c9-a813-ad46512ece54) |Dodaje lub zastępuje określony tag i wartość z nadrzędnej grupy zasobów po utworzeniu lub zaktualizowaniu dowolnego zasobu. Istniejące zasoby można skorygować, wyzwalając zadanie korygowania. |Zmodyfikować |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_AddOrReplace_Modify.json)
 |[Dziedzicz tag z grupy zasobów, jeśli brakuje](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea3f2387-9b95-492a-a190-fcdc54f7b070) |Dodaje określony tag wraz z jego wartością z nadrzędnej grupy zasobów, gdy żaden zasób nie ma tego tagu jest tworzony lub aktualizowany. Istniejące zasoby można skorygować, wyzwalając zadanie korygowania. Jeśli tag istnieje z inną wartością, nie zostanie on zmieniony. |Zmodyfikować |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Add_Modify.json)
+|[Dziedzicz tag z subskrypcji](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb27a0cbd-a167-4dfa-ae64-4337be671140) |Dodaje lub zastępuje określony tag oraz wartość z zawierającej subskrypcji po utworzeniu lub zaktualizowaniu dowolnego zasobu. Istniejące zasoby można skorygować, wyzwalając zadanie korygowania. |Zmodyfikować |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_AddOrReplace_FromSubscription.json)
+|[Dziedzicz tag z subskrypcji, jeśli brakuje](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F40df99da-1232-49b1-a39a-6da8d878f469) |Dodaje określony tag wraz z jego wartością z subskrypcji zawierającej, gdy dowolny zasób nie ma tego tagu jest tworzony lub aktualizowany. Istniejące zasoby można skorygować, wyzwalając zadanie korygowania. Jeśli tag istnieje z inną wartością, nie zostanie on zmieniony. |Zmodyfikować |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Add_FromSubscription.json)
 |[Wymagaj określonego tagu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F871b6d14-10aa-478d-b590-94f262ecfa99) |Wymusza istnienie tagu. Nie dotyczy grup zasobów. |pozbawić |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/RequireTag_Deny.json)
 |[Wymagaj określonego tagu w grupach zasobów](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F96670d01-0a4d-4649-9c89-2d3abc0a5025) |Wymusza istnienie tagu w grupach zasobów. |pozbawić |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ResourceGroupRequireTag_Deny.json)
 |[Wymagaj tagu i jego wartości](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1e30110a-5ceb-460c-a204-c1c3969c6d62) |Wymusza wymagany tag i jego wartość. Nie dotyczy grup zasobów. |pozbawić |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/RequireTagAndValue_Deny.json)

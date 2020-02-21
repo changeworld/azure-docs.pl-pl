@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: e3661797ea408f219a67a1862901fee7c27a1d58
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7847e76c8f0354e3a17c7df5f3ce9227dcf0e6ce
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123905"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526420"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Limity pojemności usługi Azure Synapse Analytics (dawniej SQL DW)
 
@@ -35,8 +35,8 @@ Maksymalne wartości dozwolone dla różnych składników usługi Azure Synapse.
 ## <a name="database-objects"></a>Obiekty bazy danych
 | Kategoria | Opis | Maksimum |
 |:--- |:--- |:--- |
-| Database (Baza danych) |Maksymalny rozmiar | Gen1:240 TB skompresowane na dysku. Ta przestrzeń jest niezależna od bazy danych tempdb lub miejsca w dzienniku, dlatego to miejsce jest przeznaczone do trwałych tabel.  Szacuje się, że kompresja magazynu kolumn jest w pięciokrotną.  Ta kompresja pozwala na zwiększenie rozmiaru bazy danych do około 1 PB, gdy wszystkie tabele są klastrowane z magazynu kolumn (domyślny typ tabeli). <br/><br/> Gen2:240TB dla magazynu wierszy i nieograniczony magazyn dla tabel magazynu kolumn |
-| Tabela |Maksymalny rozmiar |60 TB skompresowane na dysku |
+| Baza danych |Maksymalny rozmiar | Gen1:240 TB skompresowane na dysku. Ta przestrzeń jest niezależna od bazy danych tempdb lub miejsca w dzienniku, dlatego to miejsce jest przeznaczone do trwałych tabel.  Szacuje się, że kompresja magazynu kolumn jest w pięciokrotną.  Ta kompresja pozwala na zwiększenie rozmiaru bazy danych do około 1 PB, gdy wszystkie tabele są klastrowane z magazynu kolumn (domyślny typ tabeli). <br/><br/> Gen2:240TB dla magazynu wierszy i nieograniczony magazyn dla tabel magazynu kolumn |
+| Tabela |Maksymalny rozmiar | W przypadku tabel magazynu kolumn nie ma limitu uppper. <br/><br/>W przypadku tabel magazynu wierszy 60 TB skompresowane na dysku |
 | Tabela |Tabele na bazę danych | 100 000 |
 | Tabela |Kolumny na tabelę |1024 kolumn |
 | Tabela |Bajtów na kolumnę |Zależne od [typu danych](sql-data-warehouse-tables-data-types.md)kolumny. Limit wynosi 8000 dla typów danych char, 4000 dla nvarchar lub 2 GB w przypadku MAKSYMALNYch typów danych. |

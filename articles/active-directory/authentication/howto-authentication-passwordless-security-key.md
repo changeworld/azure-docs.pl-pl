@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 826b8e923575db3d6c6aee7ead230f87f1efb50e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8d5ff722d4a035113af8528ed8adb396b01c81eb
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848446"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77504946"
 ---
-# <a name="enable-passwordless-security-key-sign-in-preview"></a>Włącz logowanie za hasłem klucza zabezpieczeń (wersja zapoznawcza)
+# <a name="enable-passwordless-security-key-sign-in-preview"></a>Włącz logowanie przy użyciu klucza zabezpieczeń bezhasło (wersja zapoznawcza)
 
 W przypadku przedsiębiorstw korzystających dzisiaj z haseł i mających udostępnione środowisko komputera klucze zabezpieczeń umożliwiają bezproblemowe uwierzytelnianie procesów roboczych bez wprowadzania nazwy użytkownika lub hasła. Klucze zabezpieczeń zapewniają lepszą produktywność dla pracowników i mają lepsze zabezpieczenia.
 
@@ -31,7 +31,7 @@ Ten dokument koncentruje się na włączaniu uwierzytelniania bezhaseł opartego
 
 ## <a name="requirements"></a>Wymagania
 
-- [Usługa Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [Multi-Factor Authentication platformy Azure](howto-mfa-getstarted.md)
 - [Wersja zapoznawcza rejestracji informacji o zabezpieczeniach](concept-registration-mfa-sspr-combined.md)
 - Zgodne [FIDO2 klucze zabezpieczeń](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN wymaga systemu Windows 10 w wersji 1809 lub nowszej * *
@@ -40,7 +40,9 @@ Aby używać kluczy zabezpieczeń do logowania się do usługi Web Apps i usług
 
 ## <a name="prepare-devices-for-preview"></a>Przygotuj urządzenia do wersji zapoznawczej
 
-Urządzenia, na których będziesz się pilotażować, muszą mieć uruchomiony system Windows 10 w wersji 1809 lub nowszej. Najlepszym rozwiązaniem jest system Windows 10 w wersji 1903 lub nowszej.
+Urządzenia przyłączone do usługi Azure AD, które są pilotażowe, muszą korzystać z systemu Windows 10 w wersji 1809 lub nowszej. Najlepszym rozwiązaniem jest system Windows 10 w wersji 1903 lub nowszej.
+
+Hybrydowe urządzenia dołączone do usługi Azure AD muszą uruchamiać kompilację niejawnego programu testów systemu Windows 10 18945 lub nowszą.
 
 ## <a name="enable-passwordless-authentication-method"></a>Włącz metodę uwierzytelniania bezhasła
 
@@ -50,7 +52,7 @@ Funkcje rejestracji dla metod uwierzytelniania bezhaseł polegają na połączon
 
 ### <a name="enable-fido2-security-key-method"></a>Włącz metodę klucza zabezpieczeń FIDO2
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Przejdź do **Azure Active Directory** > **zabezpieczenia** > **metody uwierzytelniania** > **zasad metod uwierzytelniania (wersja zapoznawcza)** .
 1. W obszarze **klucz zabezpieczeń metody FIDO2**wybierz następujące opcje:
    1. **Włącz** — tak lub nie
@@ -79,13 +81,13 @@ W przykładzie poniżej Użytkownik zainicjowano już swój klucz zabezpieczeń 
 
 ## <a name="troubleshooting-and-feedback"></a>Rozwiązywanie problemów i opinie
 
-Jeśli chcesz udostępnić opinię lub napotkać problemy podczas korzystania z tej funkcji, Udostępnij aplikację centrum opinii o systemie Windows.
+Jeśli chcesz udostępnić opinię lub napotkać problemy podczas wyświetlania podglądu tej funkcji, Udostępnij za pośrednictwem aplikacji centrum opinii o systemie Windows, wykonując następujące czynności:
 
 1. Uruchom **centrum opinii** i upewnij się, że użytkownik jest zalogowany.
 1. Prześlij opinię poniżej następującej kategoryzacji:
-   1. Kategoria: zabezpieczenia i prywatność
-   1. Podkategoria: FIDO
-1. Aby przechwytywać dzienniki, użyj opcji: **Utwórz ponownie mój problem**
+   - Kategoria: zabezpieczenia i prywatność
+   - Podkategoria: FIDO
+1. Aby przechwytywać dzienniki, użyj opcji, aby **ponownie utworzyć mój problem**
 
 ## <a name="known-issues"></a>Znane problemy
 
@@ -95,7 +97,7 @@ W publicznej wersji zapoznawczej nie jest dostępna obsługa administracyjna i d
 
 ### <a name="upn-changes"></a>Zmiany nazw UPN
 
-W przypadku zmiany nazwy UPN użytkownika nie można już modyfikować kluczy zabezpieczeń FIDO2, aby uwzględnić zmianę. Rozwiązanie to zresetowanie urządzenia i użytkownik musi ponownie zarejestrować klucze zabezpieczeń FIDO2.
+Pracujemy nad obsługą funkcji, która umożliwia zmianę nazwy UPN na przyłączonych do mnie hybrydowych urządzeniach usługi Azure AD i przyłączonych do usługi Azure AD. W przypadku zmiany nazwy UPN użytkownika nie można już modyfikować kluczy zabezpieczeń FIDO2, aby uwzględnić zmianę. Rozwiązanie polega na zresetowaniu urządzenia i ponownym zarejestrowaniu użytkownika.
 
 ## <a name="next-steps"></a>Następne kroki
 

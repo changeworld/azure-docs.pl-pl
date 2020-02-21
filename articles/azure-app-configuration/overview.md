@@ -5,13 +5,13 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
-ms.date: 02/24/2019
-ms.openlocfilehash: 67a76d3b347ef750b639225a009cc6968cb84c6f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 02/19/2020
+ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467559"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523479"
 ---
 # <a name="what-is-azure-app-configuration"></a>Co to jest usługa Azure App Configuration?
 
@@ -19,9 +19,9 @@ Konfiguracja aplikacji platformy Azure umożliwia centralne zarządzanie ustawie
 
 ## <a name="why-use-app-configuration"></a>Dlaczego warto używać konfiguracji aplikacji?
 
-Aplikacje oparte na chmurze są często uruchamiane na wielu maszynach wirtualnych lub kontenerach w wielu regionach i korzystają z wielu usług zewnętrznych. Tworzenie aplikacji rozproszonej, która jest niezawodna i skalowalna, jest wyzwaniem.
+Aplikacje oparte na chmurze są często uruchamiane na wielu maszynach wirtualnych lub kontenerach w wielu regionach i korzystają z wielu usług zewnętrznych. Tworzenie niezawodnej i skalowalnej aplikacji w środowisku rozproszonym daje znaczący problem.
 
-Różne metody programowania pomagają deweloperom w coraz większym stopniu złożoności tworzenia aplikacji. Na przykład [aplikacja 12-czynnikowa](https://12factor.net/) opisuje wiele dobrze przetestowanych wzorców architektonicznych i najlepszych rozwiązań do użycia z aplikacjami w chmurze. Jednym z kluczowych zaleceń z tego przewodnika jest oddzielenia konfiguracji od kodu. W takim przypadku ustawienia konfiguracji aplikacji powinny być przechowywane zewnętrznie do jego pliku wykonywalnego i odczytywane ze środowiska uruchomieniowego lub zewnętrznego źródła.
+Różne metody programowania pomagają deweloperom w coraz większym stopniu złożoności tworzenia aplikacji. Na przykład [aplikacja 12-czynnikowa](https://12factor.net/) opisuje wiele dobrze przetestowanych wzorców architektonicznych i najlepszych rozwiązań do użycia z aplikacjami w chmurze. Jednym z kluczowych zaleceń z tego przewodnika jest oddzielenia konfiguracji od kodu. Ustawienia konfiguracji aplikacji powinny być przechowywane poza plikiem wykonywalnym i odczytywane ze środowiska uruchomieniowego lub zewnętrznego źródła.
 
 Podczas gdy dowolna aplikacja może korzystać z konfiguracji aplikacji, następujące przykłady są typami aplikacji, które korzystają z jej użycia:
 
@@ -38,7 +38,7 @@ Usługa App Configuration zapewnia następujące korzyści:
 * Dedykowany interfejs użytkownika do zarządzania flagami funkcji
 * Porównanie dwóch zestawów konfiguracji w wymiarach zdefiniowanych przez użytkownika
 * Ulepszone zabezpieczenia za pomocą tożsamości zarządzanych przez platformę Azure
-* Ukończ szyfrowanie danych w czasie spoczynku lub w tranzycie
+* Szyfrowanie poufnych informacji w czasie spoczynku i w tranzycie
 * Natywna integracja z popularnymi strukturami
 
 Konfiguracja aplikacji uzupełnia [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), które są używane do przechowywania wpisów tajnych aplikacji. Konfiguracja aplikacji ułatwia implementowanie następujących scenariuszy:
@@ -49,7 +49,7 @@ Konfiguracja aplikacji uzupełnia [Azure Key Vault](https://azure.microsoft.com/
 
 ## <a name="use-app-configuration"></a>Korzystanie z konfiguracji aplikacji
 
-Najprostszym sposobem dodawania magazynu konfiguracji aplikacji do aplikacji jest użycie biblioteki klienckiej udostępnianej przez firmę Microsoft. Na podstawie języka programowania i struktury są dostępne następujące najlepsze metody.
+Najprostszym sposobem dodawania magazynu konfiguracji aplikacji do aplikacji jest użycie biblioteki klienckiej udostępnionej przez firmę Microsoft. Następujące metody są dostępne do łączenia się z aplikacją, w zależności od wybranego języka i struktury
 
 | Język programowania i platforma | Jak nawiązać połączenie |
 |---|---|

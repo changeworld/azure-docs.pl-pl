@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: ef136345c7c41c720efd3c79923b6ce646de41e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75642169"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498627"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Jak indeksować Cosmos DB danych przy użyciu indeksatora na platformie Azure Wyszukiwanie poznawcze 
 
@@ -29,13 +29,13 @@ W tym artykule opisano sposób konfigurowania [indeksatora](search-indexer-overv
 
 Ze względu na to, że terminologia może być myląca, warto zauważyć, że [Azure Cosmos DB indeksowania](https://docs.microsoft.com/azure/cosmos-db/index-overview) i [indeksowanie wyszukiwanie poznawcze platformy Azure](search-what-is-an-index.md) to różne operacje, unikatowe dla każdej usługi. Przed rozpoczęciem indeksowania usługi Azure Wyszukiwanie poznawcze baza danych Azure Cosmos DB musi już istnieć i zawierać dane.
 
-Indeksator Cosmos DB w usłudze Azure Wyszukiwanie poznawcze umożliwia przeszukiwanie [Azure Cosmos DB elementów](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) dostępnych za pomocą różnych protokołów.
+Indeksator Cosmos DB w usłudze Azure Wyszukiwanie poznawcze umożliwia przeszukiwanie [Azure Cosmos DB elementów](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) dostępnych za pomocą różnych protokołów. 
 
-+ W przypadku [interfejsu SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference), który jest ogólnie dostępny, można użyć [portalu](#cosmos-indexer-portal), [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)lub [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet).
++ W przypadku [interfejsu SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference), który jest ogólnie dostępny, można użyć [portalu](#cosmos-indexer-portal), [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)lub [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) do utworzenia źródła danych i indeksatora.
 
-+ W [przypadku interfejsu API MongoDB (wersja zapoznawcza)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) i [interfejsu API Gremlin (wersja zapoznawcza)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)można użyć [portalu](#cosmos-indexer-portal) lub [interfejsu API REST w wersji 2019-05-06-Preview](search-api-preview.md) w wywołaniu [tworzenia indeksatora (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) w celu utworzenia indeksatora.
++ W przypadku [interfejsu API MongoDB (wersja zapoznawcza)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)można użyć [portalu](#cosmos-indexer-portal) lub [interfejsu API REST w wersji 2019-05-06-Preview](search-api-preview.md) , aby utworzyć źródło danych i indeksator.
 
-+ W przypadku [interfejs API Cassandra (wersja zapoznawcza)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)można używać tylko [interfejsu API REST w wersji 2019-05-06-Preview](search-api-preview.md) w wywołaniu [tworzenia indeksatora (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) .
++ W przypadku [interfejs API Cassandra (wersja zapoznawcza)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) i [interfejsu API Gremlin (](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)wersja zapoznawcza) można używać tylko [interfejsu API REST w wersji 2019-05-06-Preview](search-api-preview.md) w celu utworzenia źródła danych i indeksatora.
 
 
 > [!Note]
@@ -175,12 +175,12 @@ Treść żądania zawiera definicję źródła danych, która powinna zawierać 
 
 | Pole   | Opis |
 |---------|-------------|
-| **Nazwa** | Wymagany. Wybierz dowolną nazwę reprezentującą obiekt źródła danych. |
+| **Nazwij** | Wymagany. Wybierz dowolną nazwę reprezentującą obiekt źródła danych. |
 |**type**| Wymagany. Musi być `cosmosdb`. |
 |**uwierzytelniające** | Wymagany. Musi być Cosmos DB parametrami połączenia.<br/>W przypadku kolekcji SQL parametry połączenia mają następujący format: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>W przypadku kolekcji MongoDB Dodaj **rodzaju interfejsu API = MongoDB** do parametrów połączenia:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>[Aby uzyskać](https://aka.ms/azure-cognitive-search/indexer-preview) dostęp do wersji zapoznawczej i zapoznać się z informacjami na temat sposobu formatowania poświadczeń, w przypadku wykresów Gremlin i tabel Cassandra.<br/><br/>Należy unikać numerów portów w adresie URL punktu końcowego. Jeśli dołączysz numer portu, usługa Azure Wyszukiwanie poznawcze nie będzie w stanie indeksować bazy danych Azure Cosmos DB.|
 | **wbudowane** | Zawiera następujące elementy: <br/>**Nazwa**: wymagane. Określ identyfikator kolekcji baz danych do indeksowania.<br/>**zapytanie**: opcjonalne. Możesz określić zapytanie, aby spłaszczyć dowolny dokument JSON do prostego schematu, który usługa Azure Wyszukiwanie poznawcze może indeksować.<br/>W przypadku interfejsu API MongoDB, interfejsu API Gremlin i interfejs API Cassandra zapytania nie są obsługiwane. |
 | **dataChangeDetectionPolicy** | Rekomendowane. Zobacz sekcję [indeksowanie zmienionych dokumentów](#DataChangeDetectionPolicy) .|
-|**dataDeletionDetectionPolicy** | Element opcjonalny. Zobacz sekcję [indeksowanie usuniętych dokumentów](#DataDeletionDetectionPolicy) .|
+|**dataDeletionDetectionPolicy** | Opcjonalny. Zobacz sekcję [indeksowanie usuniętych dokumentów](#DataDeletionDetectionPolicy) .|
 
 ### <a name="using-queries-to-shape-indexed-data"></a>Używanie zapytań w celu kształtowania indeksowanych danych
 Możesz określić zapytanie SQL do spłaszczania zagnieżdżonych właściwości lub tablic, właściwości JSON projektu i przefiltrować dane, które mają być indeksowane. 
@@ -261,7 +261,7 @@ Upewnij się, że schemat indeksu docelowego jest zgodny ze schematem źródłow
 | Tablice typów pierwotnych, na przykład ["a", "b", "c"] |Collection(Edm.String) |
 | Ciągi, które wyglądają jak daty |Edm.DateTimeOffset, Edm.String |
 | Obiekty GEOJSON, na przykład {"Type": "Point", "współrzędne": [Long, lat]} |Edm.GeographyPoint |
-| Inne obiekty JSON |ND |
+| Inne obiekty JSON |Nie dotyczy |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 — Konfigurowanie i uruchamianie indeksatora
 
@@ -288,10 +288,10 @@ Aby uzyskać więcej informacji o definiowaniu harmonogramów indeksatora, zobac
 
 Ogólnie dostępny zestaw .NET SDK ma pełną zgodność z ogólnie dostępnym interfejsem API REST. Zalecamy zapoznanie się z poprzednią sekcją interfejsu API REST, aby poznać koncepcje, przepływ pracy i wymagania. Następnie można zapoznać się z następującą dokumentacją interfejsu API platformy .NET, aby zaimplementować indeksator JSON w kodzie zarządzanym.
 
-+ [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [Microsoft. Azure. Search. models. DataSource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [Microsoft. Azure. Search. models. DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [Microsoft. Azure. Search. models. index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [Microsoft. Azure. Search. models. indeksator](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="DataChangeDetectionPolicy"></a>
 

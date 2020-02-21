@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 5c25f591d1011d2efd66851cafd67ceef8b56637
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766828"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505896"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway — Omówienie monitorowania kondycji
 
@@ -49,7 +49,7 @@ Poniżej przedstawiono kryteria dopasowywania:
 
 Kryteria dopasowywania można określić za pomocą polecenia cmdlet `New-AzApplicationGatewayProbeHealthResponseMatch`.
 
-Przykład:
+Na przykład:
 
 ```azurepowershell
 $match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
@@ -87,8 +87,8 @@ Poniższa tabela zawiera definicje właściwości niestandardowej sondy kondycji
 
 | Właściwość sondy | Opis |
 | --- | --- |
-| Nazwa |Nazwa sondy. Ta nazwa służy do odwoływania się do sondy w ustawieniach protokołu HTTP zaplecza. |
-| Protocol (Protokół) |Protokół używany do wysyłania sondy. Sonda używa protokołu zdefiniowanego w ustawieniach protokołu HTTP zaplecza |
+| Name (Nazwa) |Nazwa sondy. Ta nazwa służy do odwoływania się do sondy w ustawieniach protokołu HTTP zaplecza. |
+| Protokół |Protokół używany do wysyłania sondy. Sonda używa protokołu zdefiniowanego w ustawieniach protokołu HTTP zaplecza |
 | Host |Nazwa hosta do wysłania sondy. Dotyczy tylko sytuacji, gdy wiele witryn jest skonfigurowanych na Application Gateway, w przeciwnym razie użyj "127.0.0.1". Ta wartość różni się od nazwy hosta maszyny wirtualnej. |
 | Ścieżka |Ścieżka względna sondy. Prawidłowa ścieżka zaczyna się od znaku "/". |
 | Interval |Interwał sondy (w sekundach). Ta wartość jest przedziałem czasu między dwoma kolejnymi sondami. |
@@ -101,9 +101,11 @@ Poniższa tabela zawiera definicje właściwości niestandardowej sondy kondycji
 
 ## <a name="nsg-considerations"></a>Zagadnienia dotyczące sieciowej grupy zabezpieczeń
 
-Jeśli w podsieci bramy aplikacji istnieje sieciowa Grupa zabezpieczeń (sieciowej grupy zabezpieczeń), w podsieci bramy aplikacji należy otworzyć zakresy portów 65503-65534 dla ruchu przychodzącego. Te porty są wymagane do działania interfejsu API kondycji wewnętrznej bazy danych.
+Należy zezwolić na przychodzący ruch internetowy na portach TCP 65503-65534 dla jednostki SKU Application Gateway V1 i portów TCP 65200-65535 dla jednostki SKU v2 z podsiecią docelową jako **dowolny** i źródłowy jako tag usługi **gatewaymanager** . Ten zakres portów jest wymagany w przypadku komunikacji infrastruktury platformy Azure.
 
-Ponadto nie można zablokować wychodzącej łączności z Internetem, a ruch przychodzący pochodzący ze znacznika AzureLoadBalancer musi być dozwolony.
+Ponadto nie można zablokować wychodzącej łączności z Internetem, a ruch przychodzący pochodzący ze znacznika **AzureLoadBalancer** musi być dozwolony.
+
+Aby uzyskać więcej informacji, zobacz [Omówienie konfiguracji Application Gateway](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet).
 
 ## <a name="next-steps"></a>Następne kroki
 Po rozpoczęciu uczenia się Application Gateway monitorowania kondycji można skonfigurować [niestandardową sondę kondycji](application-gateway-create-probe-portal.md) w Azure Portal lub [niestandardowej sondy kondycji](application-gateway-create-probe-ps.md) przy użyciu programu PowerShell i modelu wdrażania Azure Resource Manager.

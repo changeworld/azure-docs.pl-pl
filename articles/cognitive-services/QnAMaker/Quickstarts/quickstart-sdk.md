@@ -4,12 +4,12 @@ description: Ten przewodnik Szybki Start przedstawia sposób tworzenia bazy wied
 ms.topic: quickstart
 ms.date: 01/13/2020
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 730c58dbbe44fe56c0d5bc8f377a2c547b691351
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 33725eb54e8a78547f4bf82d6a8f6fae58fdb5cb
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75946355"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524422"
 ---
 # <a name="quickstart-create-and-manage-knowledge-base"></a>Szybki Start: Tworzenie bazy wiedzy i zarządzanie nią
 
@@ -19,12 +19,12 @@ Rozpocznij pracę z biblioteką klienta QnA Maker. Wykonaj następujące kroki, 
 [!INCLUDE [Get intent with C# and REST](../includes/quickstart-sdk-csharp.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-python"
-[!INCLUDE [Get intent with Python and REST](../includes/quickstart-sdk-python.md)]
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [Get intent with Node.js and REST](../includes/quickstart-sdk-nodejs.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-nodejs"
-[!INCLUDE [Get intent with Node.js and REST](../includes/quickstart-sdk-nodejs.md)]
+::: zone pivot="programming-language-python"
+[!INCLUDE [Get intent with Python and REST](../includes/quickstart-sdk-python.md)]
 ::: zone-end
 
 ## <a name="next-steps"></a>Następne kroki
@@ -33,5 +33,5 @@ Rozpocznij pracę z biblioteką klienta QnA Maker. Wykonaj następujące kroki, 
 >[Samouczek: Tworzenie i odpowiadanie na KB](../tutorials/create-publish-query-in-portal.md)
 
 * [Co to jest interfejs API usługi QnA Maker?](../Overview/overview.md)
-* [Edytowanie wiedzy](../how-to/edit-knowledge-base.md)
+* [Edytowanie bazy wiedzy](../how-to/edit-knowledge-base.md)
 * [Pobierz analizę użycia](../how-to/get-analytics-knowledge-base.md)

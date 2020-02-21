@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: abb73f93116fae217f527e0a9faaf61e2b42ba6c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ace953fcb278604cb64eef463753f0f2622d3d24
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433377"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523343"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Rozwiązywanie problemów z usługą Azure cache pod kątem problemów po stronie klienta Redis
 
@@ -51,7 +51,7 @@ W powyższym wyjątku występuje kilka interesujących problemów:
 - Zwróć uwagę, że w sekcji `IOCP` i w sekcji `WORKER` masz `Busy` wartość większą niż wartość `Min`. Różnica polega na tym, że ustawienia `ThreadPool` wymagają dostosowania.
 - Możesz również zobaczyć `in: 64221`. Ta wartość wskazuje, że 64 211 bajtów została odebrana w warstwie gniazda jądra klienta, ale nie została odczytana przez aplikację. Ta różnica zwykle oznacza, że aplikacja (na przykład StackExchange. Redis) nie odczytuje danych z sieci tak szybko, jak serwer wysyła go do Ciebie.
 
-Możesz [skonfigurować ustawienia `ThreadPool`](https://gist.github.com/JonCole/e65411214030f0d823cb) , aby upewnić się, że Pula wątków szybko skaluje się w ramach scenariuszy z serii.
+Możesz [skonfigurować ustawienia `ThreadPool`](cache-faq.md#important-details-about-threadpool-growth) , aby upewnić się, że Pula wątków szybko skaluje się w ramach scenariuszy z serii.
 
 ## <a name="high-client-cpu-usage"></a>Duże użycie procesora CPU przez klienta
 

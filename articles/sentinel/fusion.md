@@ -10,16 +10,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 02/18/2020
 ms.author: rkarlin
-ms.openlocfilehash: ada2ad67bc3634d8e6a31d3c8a69fc0c8b08a93a
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 5ab5d3c0fc1c37feaac2cc6b4b6837627c5a82df
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77369694"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500640"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Zaawansowane wykrywanie ataków potokach wieloetapowych na platformie Azure — wskaźnik
+
+
+> [!IMPORTANT]
+> Niektóre funkcje Fusion na platformie Azure wskaźnikowej są obecnie dostępne w publicznej wersji zapoznawczej.
+> Te funkcje są udostępniane bez umowy dotyczącej poziomu usług i nie są zalecane w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
 
 Korzystając z technologii Fusion, która jest oparta na uczeniu maszynowym, wskaźnik platformy Azure może automatycznie wykrywać ataki potokach wieloetapowych przez połączenie anomalii zachowań i podejrzanych działań, które są obserwowane na różnych etapach łańcucha kasowania. Na platformie Azure wskaźnik wygeneruje zdarzenia, które w przeciwnym razie byłyby trudne do przechwycenia. Zdarzenia te obejmowaćą co najmniej dwa alerty lub działania. Zgodnie z projektem te zdarzenia to małe ilości, wysoka wierność i wysoka ważność.
 
@@ -41,13 +48,32 @@ To wykrywanie jest domyślnie włączone w wskaźniku na platformie Azure. Aby s
 
 Szablony reguł nie mają zastosowania w przypadku zaawansowanego wykrywania ataków potokach wieloetapowych.
 
+> [!NOTE]
+> Dane historyczne platformy Azure są obecnie wykorzystywane do uczenia systemów uczenia maszynowego w ciągu 30 dni od danych historycznych. Te dane są zawsze szyfrowane przy użyciu kluczy firmy Microsoft, które są przekazywane przez potok uczenia maszynowego. Jednak dane szkoleniowe nie są szyfrowane przy użyciu [kluczy zarządzanych przez klienta (CMK)](customer-managed-keys.md) , jeśli włączono CMK w obszarze roboczym wskaźnikowego platformy Azure. Aby zrezygnować z łączenia, przejdź do strony **Azure wskaźnikowej** \> **Configuration** \> **Analytics \> aktywnymi regułami \> zaawansowane wykrywanie ataków potokach wieloetapowych** i w kolumnie **stan** wybierz pozycję **Wyłącz.**
+
 ## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Łączenie przy użyciu sieci Palo Alto i usługi Microsoft Defender ATP
 
-- Żądanie sieciowe do usługi TOR zachowywanie anonimowości, po którym następuje nietypowy ruch oflagowany przez zaporę Palo Alto Networks
+Te scenariusze łączą dwa podstawowe dzienniki używane przez analityków zabezpieczeń: Dzienniki zapory z sieci Palo Alto i dzienników wykrywania punktów końcowych z usługi Microsoft Defender ATP. We wszystkich scenariuszach wymienionych poniżej zostanie wykryte podejrzane działanie w punkcie końcowym, które obejmuje zewnętrzny adres IP, po którym następuje nietypowy ruch z zewnętrznego adresu IP z powrotem do zapory. W Palo Alto dzienników wskaźnik platformy Azure koncentruje się na [dziennikach zagrożeń](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs), a ruch jest uznawany za podejrzany, gdy zagrożenia są dozwolone (podejrzane dane, pliki, zalewania, pakiety, skanowania, programy szpiegujące, adresy URL, wirusy, luki, pożarem-wirusy, Wildfires).
 
-- Program PowerShell wykonał podejrzane połączenie sieciowe, po którym następuje nietypowy ruch oflagowany przez zaporę Palo Alto Networks
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Żądanie sieciowe do sieci TOR zachowywanie anonimowości, po którym następuje anomalia ruch oflagowany przez zaporę Palo Alto Networks.
 
-- Połączenie wychodzące z adresem IP z historią prób nieautoryzowanego dostępu, po których następuje nietypowy ruch oflagowany przez zaporę Palo Alto Networks
+W tym scenariuszu wskaźnik na platformie Azure najpierw wykrywa alert informujący o tym, że usługa Microsoft Defender Advanced Threat Protection wykryła żądanie sieciowe do usługi TOR zachowywanie anonimowości, która prowadzi do nietypowej aktywności. Ta Inicjalizacja została zainicjowana w ramach konta {account name} z IDENTYFIKATORem SID {SID} o godzinie {Time}. Wychodzący adres IP do połączenia: {IndividualIp}.
+Następnie nietypowe działanie zostało wykryte przez zaporę Palo Alto Networks pod adresem {TimeGenerated}. Wskazuje to na złośliwy ruch wprowadzony w sieci, docelowy adres IP dla ruchu sieciowego to {DestinationIP}.
+
+Ten scenariusz jest obecnie w publicznej wersji zapoznawczej.
+
+
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Program PowerShell wykonał podejrzane połączenie sieciowe, a następnie nietypowy ruch oflagowany przez zaporę Palo Alto Networks.
+
+W tym scenariuszu wskaźnik na platformie Azure najpierw wykrywa alert informujący o tym, że usługa Microsoft Defender Advanced Threat Protection wykryła podejrzane połączenie sieciowe prowadzące do nietypowego działania wykrytego przez zaporę sieci Palo Alto. Ta nazwa została zainicjowana przez konto {Account Name} z IDENTYFIKATORem SID {SID} o godzinie {Time}. Wychodzący adres IP do połączenia: {IndividualIp}. Następnie nietypowe działanie zostało wykryte przez zaporę Palo Alto Networks pod adresem {TimeGenerated}. Oznacza to, że złośliwy ruch został wprowadzony w sieci. Docelowy adres IP dla ruchu sieciowego to {DestinationIP}.
+
+Ten scenariusz jest obecnie w publicznej wersji zapoznawczej.
+
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>Połączenie wychodzące z adresem IP z historią prób nieautoryzowanego dostępu, po których następuje nietypowy ruch oflagowany przez zaporę Palo Alto Networks
+
+W tym scenariuszu badanie wskaźnikowe platformy Azure wykrywa alert informujący o tym, że usługa Microsoft Defender Advanced Threat Protection wykryła połączenie wychodzące z adresem IP ze historięm nieautoryzowanych prób dostępu, które prowadzą do wykrycia nietypowego działania przez Palo Alto Zapora sieci. Ta nazwa została zainicjowana przez konto {Account Name} z IDENTYFIKATORem SID {SID} o godzinie {Time}. Wychodzący adres IP do połączenia: {IndividualIp}. Po wykonaniu tej czynności nietypowe działanie zostało wykryte przez zaporę Palo Alto Networks pod adresem {TimeGenerated}. Oznacza to, że złośliwy ruch został wprowadzony w sieci. Docelowy adres IP dla ruchu sieciowego to {DestinationIP}.
+
+Ten scenariusz jest obecnie w publicznej wersji zapoznawczej.
 
 
 

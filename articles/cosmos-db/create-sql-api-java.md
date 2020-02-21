@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bd7801c84860ddba3c3991bce9352c595adb123f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 3cdd558a8b14498e981c9c60a077a7286188e02e
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469048"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500086"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Szybki Start: Tworzenie aplikacji Java do zarządzania Azure Cosmos DB danych interfejsu API SQL
 
@@ -35,6 +35,18 @@ W tym przewodniku szybki start utworzysz konto Azure Cosmos DB interfejsu API SQ
 - [Zestaw Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Wskaż zmiennej środowiskowej `JAVA_HOME` do folderu, w którym zainstalowano JDK.
 - [Archiwum binarne Maven](https://maven.apache.org/download.cgi). W systemie Ubuntu Uruchom `apt-get install maven`, aby zainstalować Maven.
 - [Git](https://www.git-scm.com/downloads). W systemie Ubuntu Uruchom `sudo apt-get install git`, aby zainstalować usługę git.
+
+## <a name="introductory-notes"></a>Uwagi wprowadzające
+
+*Struktura konta Cosmos DB.* Niezależnie od interfejsu API lub języka programowania, *konto* Cosmos DB zawiera zero lub więcej *baz danych*, *baza danych* (DB) zawiera zero lub więcej *kontenerów*, a *kontener* zawiera zero lub więcej elementów, jak pokazano na poniższym diagramie:
+
+![Jednostki konta usługi Azure Cosmos](./media/databases-containers-items/cosmos-entities.png)
+
+Więcej informacji na temat baz danych, kontenerów i elementów można znaleźć [tutaj.](databases-containers-items.md) Niektóre ważne właściwości są definiowane na poziomie kontenera, między nimi *przepływność* i *klucz partycji*. 
+
+Zainicjowana przepływność jest mierzona w jednostkach żądania (*jednostek ru*), które mają cenę pieniężną i są istotnym czynnikiem w kosztu eksploatacyjnym konta. Zainicjowaną przepływność można wybrać w poziomie szczegółowości poszczególnych kontenerów lub stopnia szczegółowości poszczególnych baz danych, jednak Specyfikacja przepływności na poziomie kontenera jest zazwyczaj preferowana. Więcej informacji o aprowizacji przepływności można znaleźć [tutaj.](set-throughput.md)
+
+Gdy elementy są wstawiane do kontenera Cosmos DB, baza danych rozszerza się w poziomie, dodając więcej magazynu i obliczeń do obsługi żądań. Pojemność magazynu i mocy obliczeniowej są dodawane w odrębnych jednostkach nazywanych *partycjami*, a użytkownik musi wybrać jedno pole w dokumentach, aby być kluczem partycji, który mapuje każdy dokument na partycję. Zarządzanie takimi partycjami polega na tym, że każda partycja ma przypisany surowy wycink z zakresu wartości klucza partycji; w związku z tym zaleca się wybranie klucza partycji, który jest relatywnie losowy lub równomiernie dystrybuowany. W przeciwnym razie niektóre partycje będą widzieć znacznie więcej żądań (*gorąca partycja*), a inne partycje zobaczą znacznie mniejszą liczbę żądań (*zimna partycja*) i należy to uniknąć. Więcej informacji na temat partycjonowania można znaleźć [tutaj](partitioning-overview.md).
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: b28d228dd950796265c5412be30e5d7777cf94c6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460471"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526516"
 ---
 # <a name="azure-firewall-faq"></a>Często zadawane pytania dotyczące zapory platformy Azure
 
@@ -137,7 +137,7 @@ Jeśli konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej i można ok
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Czy istnieją jakieś ograniczenia grupy zasobów zapory?
 
-Tak. Wszystkie zapory, podsieci, sieci wirtualnej i publiczny adres IP muszą znajdować się w tej samej grupie zasobów.
+Tak. Wszystkie zapory, Sieć wirtualna i publiczny adres IP muszą znajdować się w tej samej grupie zasobów.
 
 ## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Czy podczas konfigurowania DNAT na potrzeby przychodzącego ruchu sieciowego należy również skonfigurować odpowiednią regułę sieci, aby zezwolić na ten ruch?
 
@@ -168,11 +168,11 @@ Nie. Zapora platformy Azure nie wymaga podsieci większej niż/26.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Jak zwiększyć przepływność zapory?
 
-Początkowa przepustowość zapory platformy Azure to 2,5 – 3 GB/s. Obecnie skalowanie w poziomie jest zależne od użycia procesora CPU i przepływności. W niektórych przypadkach Zapora z regułami sieci nie będzie skalowana w górę w celu zwiększenia przepływności, ponieważ reguły sieci nie wpływają znacząco na użycie procesora CPU. Jeśli potrzebujesz wyższej przepływności dla zapory, skontaktuj się z pomocą techniczną, aby zwiększyć początkową przepustowość swojej zapory.
+Początkowa przepustowość zapory platformy Azure to 2,5 – 3 GB/s i jest skalowana do 30 GB/s. Jest on skalowany w oparciu o użycie procesora CPU i przepływność. Skontaktuj się z pomocą techniczną, aby zwiększyć przepustowość zapory w przypadku, gdy Zapora nie przeskaluje się w celu spełnienia potrzeb i potrzebujesz wyższej przepływności.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Jak długo trwa skalowanie w poziomie zapory platformy Azure?
 
-Trwa to obecnie od pięciu do siedmiu minut na skalowanie w poziomie zapory platformy Azure. Jeśli masz szeregi, które wymagają szybszego skalowania, skontaktuj się z pomocą techniczną, aby zwiększyć początkową przepustowość swojej zapory.
+Skalowanie w poziomie za pomocą usługi Azure firewall trwa od 5 do siedmiu minut. Skontaktuj się z pomocą techniczną, aby zwiększyć początkową przepustowość swojej zapory, jeśli masz szeregi, które wymagają szybszego skalowania automatycznego.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Czy Zapora platformy Azure domyślnie zezwala na dostęp do Active Directory?
 

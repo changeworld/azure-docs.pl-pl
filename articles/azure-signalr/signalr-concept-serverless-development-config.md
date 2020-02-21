@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786779"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523174"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions opracowywanie i Konfigurowanie za pomocą usługi Azure Signal Service
 
@@ -27,12 +27,12 @@ W Azure Portal odszukaj stronę *Ustawienia* zasobu usługi sygnalizującego. Us
 
 ![Tryb usługi sygnalizującej](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
-## <a name="azure-functions-development"></a>Opracowywanie Azure Functions
+## <a name="azure-functions-development"></a>Opracowywanie usługi Azure Functions
 
-Aplikacja bezserwerowa w czasie rzeczywistym skompilowana przy użyciu Azure Functions i usługi Azure Signal Service zwykle wymaga dwóch Azure Functions:
+Aplikacja bezserwerowa działająca w czasie rzeczywistym utworzona przy użyciu usług Azure Functions i Azure SignalR Service zwykle wymaga dwóch funkcji Azure Functions:
 
-* Funkcja "Negotiate" wywoływana przez klienta w celu uzyskania prawidłowego tokenu dostępu do usługi sygnałów i adresu URL punktu końcowego usługi
-* Co najmniej jedna funkcja, która wysyła komunikaty lub Zarządzaj członkostwem w grupie
+* Funkcja „negotiate” (negocjacja) wywoływana przez klienta w celu uzyskania prawidłowego tokenu dostępu do usługi SignalR i adresu URL punktu końcowego usługi
+* Co najmniej jedna funkcja, która wysyła komunikaty lub zarządza członkostwem w grupie
 
 ### <a name="negotiate-function"></a>Funkcja Negotiate
 
@@ -40,7 +40,7 @@ Aplikacja kliencka wymaga ważnego tokenu dostępu, aby połączyć się z usłu
 
 Użyj wyzwalanej przez protokół HTTP funkcji platformy Azure i powiązania danych wejściowych *SignalRConnectionInfo* w celu wygenerowania obiektu informacji o połączeniu. Funkcja musi mieć trasę HTTP kończącą się na `/negotiate`.
 
-Aby uzyskać więcej informacji na temat tworzenia funkcji Negotiate, zobacz odwołanie do [powiązania danych wejściowych *SignalRConnectionInfo* ](../azure-functions/functions-bindings-signalr-service.md#input).
+Aby uzyskać więcej informacji na temat tworzenia funkcji Negotiate, zobacz odwołanie do [powiązania danych wejściowych *SignalRConnectionInfo* ](../azure-functions/functions-bindings-signalr-service-input.md).
 
 Aby dowiedzieć się więcej o sposobie tworzenia uwierzytelnionego tokenu, zapoznaj się z tematem [Korzystanie z uwierzytelniania App Service](#using-app-service-authentication).
 
@@ -50,7 +50,7 @@ Użyj powiązania danych wyjściowych *sygnalizującego* , aby wysyłać komunik
 
 Użytkowników można dodawać do co najmniej jednej grupy. Można również użyć powiązania danych wyjściowych *sygnalizującego* , aby dodać lub usunąć użytkowników do/z grup.
 
-Aby uzyskać więcej informacji, zobacz [Informacje o powiązaniach wyjściowych *sygnalizującego* ](../azure-functions/functions-bindings-signalr-service.md#output).
+Aby uzyskać więcej informacji, zobacz [Informacje o powiązaniach wyjściowych *sygnalizującego* ](../azure-functions/functions-bindings-signalr-service-output.md).
 
 ### <a name="signalr-hubs"></a>Centra sygnałów
 

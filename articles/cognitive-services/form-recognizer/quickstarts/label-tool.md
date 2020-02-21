@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 11/14/2019
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 8ab673c1a268f5ab663e8f423dd9b60cdfde14ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118377"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485356"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Uczenie modelu aparatu rozpoznawania formularzy z etykietami przy użyciu narzędzia do etykietowania przykładowego
 
@@ -28,10 +28,14 @@ Aby ukończyć ten przewodnik Szybki Start, musisz dysponować:
 
 - Zestaw składający się z co najmniej sześciu formularzy tego samego typu. Te dane będą używane do uczenia modelu i testowania formularza. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start. Przekaż pliki szkoleniowe do katalogu głównego kontenera magazynu obiektów BLOB na koncie usługi Azure Storage.
 
+## <a name="create-a-form-recognizer-resource"></a>Tworzenie zasobu aparatu rozpoznawania formularza
+
+[!INCLUDE [create resource](../includes/create-resource.md)]
+
 ## <a name="set-up-the-sample-labeling-tool"></a>Konfigurowanie przykładowego narzędzia do etykietowania
 
 Użyjesz aparatu platformy Docker, aby uruchomić przykładowe narzędzie do etykietowania. Wykonaj następujące kroki, aby skonfigurować kontener platformy Docker. Podstawowe informacje dotyczące platformy Docker i kontenera można znaleźć w temacie [Omówienie platformy Docker](https://docs.docker.com/engine/docker-overview/).
-1. Najpierw zainstaluj platformę Docker na komputerze-hoście. Komputer hosta może być komputerem lokalnym ([Windows](https://docs.docker.com/docker-for-windows/), [MacOS](https://docs.docker.com/docker-for-mac/)lub [Linux](https://docs.docker.com/install/)). Można też użyć usługi hostingu platformy Docker na platformie Azure, takiej jak [usługa Azure Kubernetes](https://docs.microsoft.com/azure/aks/index), [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index)lub klaster Kubernetes [wdrożony w Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910). Komputer hosta musi spełniać następujące wymagania sprzętowe:
+1. Najpierw zainstaluj platformę Docker na komputerze-hoście. Komputer hosta może być komputerem lokalnym ([Windows](https://docs.docker.com/docker-for-windows/), [macOS](https://docs.docker.com/docker-for-mac/)lub [Linux](https://docs.docker.com/install/)). Można też użyć usługi hostingu platformy Docker na platformie Azure, takiej jak [usługa Azure Kubernetes](https://docs.microsoft.com/azure/aks/index), [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index)lub klaster Kubernetes [wdrożony w Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910). Komputer hosta musi spełniać następujące wymagania sprzętowe:
 
     | Kontener | Minimalne | Zalecane|
     |:--|:--|:--|
@@ -70,7 +74,7 @@ Włącz funkcję CORS na koncie magazynu. Wybierz konto magazynu w Azure Portal 
 
 ## <a name="connect-to-the-sample-labeling-tool"></a>Połącz z przykładowym narzędziem do etykietowania
 
-Przykładowe narzędzie do etykietowania łączy się ze źródłem (gdzie oryginalne formularze są) i obiektem docelowym (lokalizacja, w której eksportuje utworzone etykiety i dane wyjściowe).
+Przykładowe narzędzie do etykietowania łączy się ze źródłem (gdzie oryginalne formularze są) i obiektem docelowym (gdzie eksportuje utworzone etykiety i dane wyjściowe).
 
 Połączenia można skonfigurować i udostępnić między projektami. Korzystają one z rozszerzalnego modelu dostawcy, dzięki czemu można łatwo dodawać nowych dostawców źródła/obiektu docelowego.
 
@@ -89,7 +93,7 @@ Wypełnij pola następującymi wartościami:
 W przykładowym narzędziu do etykietowania projekty przechowują konfiguracje i ustawienia. Utwórz nowy projekt i wypełnij pola następującymi wartościami:
 
 * **Nazwa wyświetlana** — nazwa wyświetlana projektu
-* **Token zabezpieczający** — niektóre ustawienia projektu mogą zawierać wartości poufne, takie jak klucze interfejsu API lub inne wspólne klucze tajne. Każdy projekt generuje token zabezpieczający, który może służyć do szyfrowania/odszyfrowywania poufnych ustawień projektu. Tokeny zabezpieczające można znaleźć w ustawieniach aplikacji, klikając ikonę koła zębatego w dolnym rogu lewego paska nawigacyjnego.
+* **Token zabezpieczający** — niektóre ustawienia projektu mogą zawierać wartości poufne, takie jak klucze interfejsu API lub inne wspólne klucze tajne. Każdy projekt generuje token zabezpieczający, który może służyć do szyfrowania/odszyfrowywania poufnych ustawień projektu. Tokeny zabezpieczające w ustawieniach aplikacji można znaleźć, klikając ikonę koła zębatego w dolnym rogu lewego paska nawigacyjnego.
 * **Połączenie źródłowe** — połączenie z usługą Azure Blob Storage utworzone w poprzednim kroku, którego chcesz użyć dla tego projektu.
 * **Ścieżka folderu** — opcjonalne — Jeśli Twoje formularze źródłowe znajdują się w folderze kontenera obiektów blob, określ tutaj nazwę folderu
 * **Identyfikator URI usługi rozpoznawania formularza** — adres URL punktu końcowego aparatu rozpoznawania formularza.
@@ -146,7 +150,7 @@ Po zakończeniu szkolenia Przejrzyj wartość **średnia dokładność** . Jeśl
 
 ## <a name="analyze-a-form"></a>Analizowanie formularza
 
-Kliknij ikonę przewidywania (prostokąty) po lewej stronie, aby przetestować model. Przekaż dokument formularza, którego nie użyto w procesie szkoleniowym. Następnie kliknij przycisk **predykcyjny** po prawej stronie, aby uzyskać prognozy klucza/wartości dla formularza. Narzędzie zastosuje znaczniki w obwiedniach i zgłosi zaufanie każdego tagu.
+Kliknij ikonę przewidywania (prostokąty) po lewej stronie, aby przetestować model. Przekaż dokument formularza, który nie był używany w procesie szkoleniowym. Następnie kliknij przycisk **predykcyjny** po prawej stronie, aby uzyskać prognozy klucza/wartości dla formularza. Narzędzie zastosuje znaczniki w obwiedniach i zgłosi zaufanie każdego tagu.
 
 > [!TIP]
 > Można również uruchomić analizowanie interfejsu API z wywołaniem REST. Aby dowiedzieć się, jak to zrobić, zobacz [uczenie się z etykietami przy użyciu języka Python](./python-labeled-data.md).
@@ -165,7 +169,7 @@ Aby wznowić projekt w innym czasie lub w innej przeglądarce, musisz zapisać t
 Przejdź do strony ustawień projektu (ikona suwaka) i zanotuj nazwę tokenu zabezpieczającego. Następnie przejdź do ustawień aplikacji (ikony koła zębatego), które pokazują wszystkie tokeny zabezpieczające w bieżącym wystąpieniu przeglądarki. Znajdź token zabezpieczający projektu i skopiuj jego nazwę i wartość klucza do bezpiecznej lokalizacji.
 
 ### <a name="restore-project-credentials"></a>Przywróć poświadczenia projektu
-Gdy chcesz wznowić projekt, musisz najpierw utworzyć połączenie z tym samym kontenerem usługi BLOB Storage. Wykonaj powyższe kroki, aby to zrobić. Następnie przejdź do strony ustawień aplikacji (ikony koła zębatego) i sprawdź, czy jest tam używany token zabezpieczający projektu. Jeśli tak nie jest, Dodaj nowy token zabezpieczający i skopiuj go przy użyciu nazwy i klucza tokenu z poprzedniego kroku. Następnie kliknij przycisk Zapisz ustawienia. 
+Gdy chcesz wznowić projekt, musisz najpierw utworzyć połączenie z tym samym kontenerem usługi BLOB Storage. Powtórz powyższe kroki, aby to zrobić. Następnie przejdź do strony ustawień aplikacji (ikony koła zębatego) i sprawdź, czy jest tam używany token zabezpieczający projektu. Jeśli tak nie jest, Dodaj nowy token zabezpieczający i skopiuj go przy użyciu nazwy i klucza tokenu z poprzedniego kroku. Następnie kliknij przycisk Zapisz ustawienia. 
 
 ### <a name="resume-a-project"></a>Wznów projekt
 Na koniec przejdź do strony głównej (ikona domu), a następnie kliknij pozycję Otwórz projekt w chmurze. Następnie wybierz połączenie usługi BLOB Storage i wybierz plik *. vott* projektu. Aplikacja będzie ładować wszystkie ustawienia projektu, ponieważ ma token zabezpieczający.

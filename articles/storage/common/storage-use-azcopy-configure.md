@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905262"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526499"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy
 
@@ -61,7 +61,7 @@ Użyj poniższego polecenia, aby uruchomić test porównawczy wydajności.
 
 |    |     |
 |--------|-----------|
-| **Składnia** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Obowiązuje** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Przykład** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
@@ -121,6 +121,8 @@ AzCopy tworzy dziennik i planowanie plików dla każdego zadania. Możesz użyć
 Dzienniki będą zawierać stan niepowodzeń (`UPLOADFAILED`, `COPYFAILED`i `DOWNLOADFAILED`), pełną ścieżkę i przyczynę niepowodzenia.
 
 Domyślnie pliki dzienników i planów znajdują się w katalogu `%USERPROFILE%\.azcopy` w katalogu systemu Windows lub `$HOME$\.azcopy` na komputerach Mac i Linux, ale można je zmienić w razie potrzeby.
+
+Odpowiedni błąd nie musi być pierwszym błędem, który pojawia się w pliku. W przypadku błędów, takich jak błędy sieci, limity czasu i błędy zajętości serwera, AzCopy będzie ponawiać próbę do 20 razy, a zazwyczaj proces ponawiania prób zostanie zakończony pomyślnie.  Pierwszy błąd, który widzisz, może być niegroźny, który został pomyślnie ponowiony.  Zamiast wyszukać pierwszego błędu w pliku, poszukaj błędów znajdujących się blisko `UPLOADFAILED`, `COPYFAILED`lub `DOWNLOADFAILED`. 
 
 > [!IMPORTANT]
 > Podczas przesyłania żądania do pomoc techniczna firmy Microsoft (lub rozwiązywania problemu związanego z jakąkolwiek osobą trzecią) należy udostępnić redagowane wersję polecenia, które chcesz wykonać. Gwarantuje to, że SYGNATURa dostępu współdzielonego nie zostanie przypadkowo udostępniona z każdy. Wersję redagowane można znaleźć na początku pliku dziennika.

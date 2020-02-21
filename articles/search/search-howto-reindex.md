@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 8cebe02ebc638ba62fceec80dff2c6724ccf92c8
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212294"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498374"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Jak ponownie skompilować indeks na platformie Azure Wyszukiwanie poznawcze
 
@@ -33,7 +33,7 @@ Porzuć i Utwórz ponownie indeks, jeśli którykolwiek z następujących warunk
 | Przypisz Analizator do pola | [Analizatory](search-analyzers.md) są zdefiniowane w indeksie, a następnie przypisywane do pól. W dowolnym momencie możesz dodać nową definicję analizatora do indeksu, ale można *przypisać* Analizator tylko po utworzeniu pola. Dotyczy to zarówno **analizatora** , jak i właściwości **indexAnalyzer** . Właściwość **searchAnalyzer** jest wyjątkiem (można przypisać tę właściwość do istniejącego pola). |
 | Aktualizowanie lub usuwanie definicji analizatora w indeksie | Nie można usunąć ani zmienić istniejącej konfiguracji analizatora (analizator, tokenizatora, filtr tokenu lub filtr znaków) w indeksie, chyba że cały indeks zostanie odbudowany. |
 | Dodawanie pola do sugestii | Jeśli pole już istnieje i chcesz dodać je do konstrukcji [sugerującej](index-add-suggesters.md) , należy ponownie skompilować indeks. |
-| Usuń pole | Aby fizycznie usunąć wszystkie ślady pola, należy ponownie skompilować indeks. Gdy bezpośrednie ponowne kompilowanie nie jest praktyczne, można zmodyfikować kod aplikacji, aby wyłączyć dostęp do pola "usunięte". Fizycznie definicja pola i zawartość pozostają w indeksie do momentu kolejnej ponownej kompilacji, gdy zastosuje schemat, który pomija pole w danym momencie. |
+| Usuń pole | Aby fizycznie usunąć wszystkie ślady pola, należy ponownie skompilować indeks. Gdy bezpośrednie ponowne kompilowanie nie jest praktyczne, można zmodyfikować kod aplikacji, aby wyłączyć dostęp do pola "usunięte" lub użyć [$SELECT parametru zapytania](search-query-odata-select.md) , aby wybrać, które pola są reprezentowane w zestawie wyników. Fizycznie definicja pola i zawartość pozostają w indeksie do momentu kolejnej ponownej kompilacji, gdy zastosuje schemat, który pomija pole w danym momencie. |
 | Przełącz warstwy | Jeśli potrzebujesz większej pojemności, w Azure Portal nie ma żadnego uaktualnienia w miejscu. Należy utworzyć nową usługę, a indeksy muszą być kompilowane od podstaw w nowej usłudze. Aby ułatwić automatyzację tego procesu, możesz użyć przykładowego kodu **index-Backup-Restore** w ramach tego [przykładowego repozytorium platformy Azure wyszukiwanie poznawcze .NET](https://github.com/Azure-Samples/azure-search-dotnet-samples). Ta aplikacja utworzy kopię zapasową indeksu w serii plików JSON, a następnie ponownie utworzy indeks w określonej usłudze wyszukiwania.|
 
 ## <a name="update-conditions"></a>Warunki aktualizacji
@@ -52,9 +52,11 @@ Po dodaniu nowego pola, istniejące indeksowane dokumenty otrzymują wartość n
 
 ## <a name="how-to-rebuild-an-index"></a>Jak ponownie skompilować indeks
 
-Podczas tworzenia schematu indeksu często zmienia się. Można to zaplanować przez utworzenie indeksów, które można szybko usunąć, odtworzyć i ponownie załadować przy użyciu małego reprezentatywnego zestawu danych. 
+Podczas tworzenia schematu indeksu często zmienia się. Można to zaplanować przez utworzenie indeksów, które można szybko usunąć, odtworzyć i ponownie załadować przy użyciu małego reprezentatywnego zestawu danych.
 
 W przypadku aplikacji znajdujących się już w środowisku produkcyjnym zalecamy utworzenie nowego indeksu, który jest uruchamiany obok istniejącego indeksu, aby uniknąć przestojów zapytań. Kod aplikacji zapewnia przekierowanie do nowego indeksu.
+
+Indeksowanie nie działa w tle, a usługa będzie zrównoważyć dodatkowe indeksowanie dla bieżących zapytań. Podczas indeksowania można [monitorować żądania zapytań](search-monitor-queries.md) w portalu, aby upewnić się, że zapytania kończą się w odpowiednim czasie.
 
 1. Ustal, czy ponowna kompilacja jest wymagana. W przypadku dodawania pól lub zmieniania części indeksu, który nie jest powiązany z polami, można po prostu [zaktualizować definicję](https://docs.microsoft.com/rest/api/searchservice/update-index) bez usuwania, ponownego tworzenia i całkowitego ładowania.
 
@@ -78,6 +80,10 @@ Po załadowaniu indeksu, odwrócony indeks każdego pola jest wypełniany wszyst
 ## <a name="check-for-updates"></a>Sprawdź dostępność aktualizacji
 
 Możesz rozpocząć wykonywanie zapytań względem indeksu zaraz po załadowaniu pierwszego dokumentu. Jeśli znasz identyfikator dokumentu, [interfejs API REST dokumentu wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/lookup-document) zwraca określony dokument. W celu szerszego testowania należy zaczekać, aż indeks zostanie całkowicie załadowany, a następnie użyć zapytań w celu sprawdzenia kontekstu, który powinien być widoczny.
+
+Aby sprawdzić zaktualizowaną zawartość, można użyć [Eksploratora wyszukiwania](search-explorer.md) lub narzędzia do testowania sieci Web, takiego jak program [ogłaszający](search-get-started-postman.md) .
+
+Jeśli dodano lub zmieniono nazwę pola, użyj [$SELECT](search-query-odata-select.md) , aby zwrócić to pole: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
 ## <a name="see-also"></a>Zobacz też
 

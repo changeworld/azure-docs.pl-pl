@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d46036efa04b4e0225cad6e8a70cd31ad3c10bd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a4a2eccc02d13bf5a2dfc8bf3ceb7887e4962489
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024181"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498502"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Wyświetlanie historii inspekcji dla ról usługi Azure AD w usłudze PIM
 
@@ -32,9 +32,9 @@ Od listopada 2019 część Privileged Identity Management ról usługi Azure AD 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu użytkownika, który znajduje się w roli [administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 1. Otwórz **Azure AD Privileged Identity Management**. Jeśli masz baner w górnej części strony przegląd, postępuj zgodnie z instrukcjami wyświetlanymi na karcie **Nowa wersja** tego artykułu. W przeciwnym razie postępuj zgodnie z instrukcjami podanymi w **poprzedniej wersji** karty.
 
-    ![Nowa wersja ról usługi Azure AD](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-# <a name="new-versiontabnew"></a>[Nowa wersja](#tab/new)
+# <a name="new-version"></a>[Nowa wersja](#tab/new)
 
 Wykonaj następujące kroki, aby wyświetlić historię inspekcji dla ról usługi Azure AD.
 
@@ -50,7 +50,7 @@ Inspekcja zasobów umożliwia wyświetlenie wszystkich działań skojarzonych z 
 
 1. Przefiltruj historię przy użyciu wstępnie zdefiniowanej daty lub niestandardowego zakresu.
 
-    ![Lista inspekcji zasobów z filtrami](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![Lista inspekcji zasobów z filtrami](media/pim-how-to-use-audit-log/resource-audit.png)
 
 ## <a name="view-my-audit"></a>Wyświetl moją inspekcję
 
@@ -66,9 +66,9 @@ Moja Inspekcja umożliwia wyświetlenie własnej aktywności roli użytkownika.
 
 1. Przefiltruj historię przy użyciu wstępnie zdefiniowanej daty lub niestandardowego zakresu.
 
-    ![Lista inspekcji dla bieżącego użytkownika](media/azure-pim-resource-rbac/my-audit-time.png)
+    ![Lista inspekcji dla bieżącego użytkownika](media/pim-how-to-use-audit-log/audit-time-span.png)
 
-# <a name="previous-versiontabprevious"></a>[Poprzednia wersja](#tab/previous)
+# <a name="previous-version"></a>[Poprzednia wersja](#tab/previous)
 
 ## <a name="view-audit-history"></a>Wyświetlanie historii inspekcji
 
@@ -90,12 +90,12 @@ Wykonaj następujące kroki, aby wyświetlić historię inspekcji dla ról usłu
 
     | Kolumna | Opis |
     | --- | --- |
-    | Czas | Gdy wystąpiła akcja. |
+    | Time | Gdy wystąpiła akcja. |
     | Obiektu żądającego | Użytkownik, który zażądał aktywacji lub zmiany roli. Jeśli wartość to **Azure system**, sprawdź historię inspekcji platformy Azure, aby uzyskać więcej informacji. |
-    | Działanie | Akcje podejmowane przez zleceniodawcę. Akcje mogą obejmować Przypisywanie, cofanie przypisania, aktywowanie, dezaktywowanie lub AddedOutsidePIM. |
-    | Członek | Użytkownik, który jest uaktywniany lub przypisany do roli. |
+    | Akcja | Akcje podejmowane przez zleceniodawcę. Akcje mogą obejmować Przypisywanie, cofanie przypisania, aktywowanie, dezaktywowanie lub AddedOutsidePIM. |
+    | Element członkowski | Użytkownik, który jest uaktywniany lub przypisany do roli. |
     | Rola | Rola przypisana lub aktywowana przez użytkownika. |
-    | Analizowanie | Tekst wprowadzony w polu przyczyna podczas aktywacji. |
+    | Rozsądkiem | Tekst wprowadzony w polu przyczyna podczas aktywacji. |
     | Datę | Po wygaśnięciu aktywowanej roli. Dotyczy tylko kwalifikujących się przypisań ról. |
 
 1. Aby posortować historię inspekcji, kliknij przycisk **godziny**, **akcję**i **rola** .

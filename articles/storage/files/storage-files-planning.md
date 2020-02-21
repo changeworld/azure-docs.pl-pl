@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9b71c4a5c0f245d9da97dc8f096d15c5386bf919
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 98965a50037558f512401e09915021234790840d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368613"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526482"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -168,7 +168,7 @@ Azure Files udziały w warstwie Premium obsługują zarówno LRS, jak i ZRS, ZRS
 
 Ta sekcja ma zastosowanie tylko do standardowych udziałów plików. Wszystkie udziały plików w warstwie Premium są dostępne z wydajnością 100 TiB.
 
-### <a name="restrictions"></a>Ograniczenia
+### <a name="restrictions"></a>{1&gt;Ograniczenia&lt;1}
 
 - Konwersja konta LRS/ZRS na GRS/GZRS nie będzie możliwa dla żadnego konta magazynu z włączonymi dużymi udziałami plików.
 
@@ -176,7 +176,7 @@ Ta sekcja ma zastosowanie tylko do standardowych udziałów plików. Wszystkie u
 
 Standardowe udziały plików z 100 TiB limit pojemności są dostępne globalnie we wszystkich regionach platformy Azure —
 
-- LRS: wszystkie regiony, z wyjątkiem Północna Republika Południowej Afryki i Zachodnia Republika Południowej Afryki.
+- LRS: wszystkie regiony, z wyjątkiem Północna Republika Południowej Afryki, Zachodnia Republika Południowej Afryki, Niemcy Środkowo-Zachodnie i Niemcy Północne.
 - ZRS: wszystkie regiony, z wyjątkiem regionu Japonia Wschodnia, Europa Północna, Północna Republika Południowej Afryki.
 - GRS/GZRS: nieobsługiwane.
 

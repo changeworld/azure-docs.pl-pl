@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3361f4723c5a9776cb156417e57d609175d11621
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 083051fd621194d39d0092046e187e0809fd62d9
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445273"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77520632"
 ---
 Migawki przyrostowe (wersja zapoznawcza) są kopiami zapasowymi w czasie dla dysków zarządzanych, które w razie potrzeby składają się tylko ze wszystkich zmian od ostatniej migawki. Podczas próby pobrania lub użycia migawki przyrostowej jest używany pełny dysk VHD. Ta nowa możliwość tworzenia migawek dysków zarządzanych może potencjalnie spowodować, że nie są już wymagane do przechowywania całego dysku przy każdej pojedynczej migawce, chyba że zostanie wybrana opcja. Podobnie jak regularne migawki, migawki przyrostowe mogą służyć do tworzenia pełnego dysku zarządzanego lub do regularnej migawki.
 
@@ -21,10 +21,15 @@ Istnieje kilka różnic między migawką przyrostową i regularną migawką. Mig
 
 Migawki przyrostowe oferują również funkcję różnicową, która jest unikatowo dostępna dla dysków zarządzanych. Umożliwiają one uzyskanie zmian między dwiema przyrostowymi migawkami tych samych dysków zarządzanych, w dół do poziomu bloku. Można użyć tej funkcji, aby zmniejszyć rozmiary danych podczas kopiowania migawek między regionami.
 
-## <a name="restrictions"></a>{1&gt;Ograniczenia&lt;1}
+### <a name="supported-regions"></a>Obsługiwane regiony
 
-- Migawki przyrostowe są obecnie dostępne tylko w regionach Wschodnie stany USA, Wschodnie stany USA 2, środkowe stany USA, zachodnio-środkowe stany USA, Kanada Wschodnia, Kanada środkowa, Europa Północna, Południowe Azja Wschodnia.
-- Nie można obecnie utworzyć migawek przyrostowych po zmianie rozmiaru dysku.
+Obecnie obsługiwane są tylko następujące regiony:
+
+- Dostępna jako nasza oferta w regionach zachodnio-środkowe stany USA, Kanada Wschodnia, Kanada środkowa.
+- Dostępna jako publiczna wersja zapoznawcza w regionach Wschodnie stany USA, Wschodnie stany USA 2, środkowe stany USA, Europa Północna, regiony Południowe Azja Wschodnia.
+
+## <a name="restrictions"></a>{1&gt;Ograniczenia&lt;1}
+- Nie można obecnie utworzyć migawek przyrostowych po zmianie rozmiaru dysku (tylko w wersji zapoznawczej).
 - Obecnie nie można przenosić migawek przyrostowych między subskrypcjami.
 - Obecnie można generować identyfikatory URI SAS maksymalnie pięć migawek określonej rodziny migawek w danym momencie.
 - Nie można utworzyć migawki przyrostowej dla określonego dysku poza subskrypcją tego dysku.

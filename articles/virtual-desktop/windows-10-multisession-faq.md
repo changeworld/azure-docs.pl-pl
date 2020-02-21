@@ -5,22 +5,22 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 02/19/2020
 ms.author: helohr
-ms.openlocfilehash: e2fa30772082f4d2f7c02add61412432233e3f04
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 426ca10893e6858722b58422400582e4940287e2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470576"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484608"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Wiele sesji systemu Windows 10 Enterprise — często zadawane pytania
 
-W tym artykule zawarto odpowiedzi na często zadawane pytania i opisano najlepsze rozwiązania dotyczące wielu sesji dla systemu Windows 10 Enterprise.
+W tym artykule przedstawiono odpowiedzi na często zadawane pytania i opisano najlepsze rozwiązania dotyczące wielu sesji systemu Windows 10 Enterprise.
  
-## <a name="what-is-windows-10-enterprise-multi-session"></a>Co to jest wiele sesji systemu Windows 10 Enterprise? 
+## <a name="what-is-windows-10-enterprise-multi-session"></a>Co to jest wiele sesji systemu Windows 10 Enterprise?
 
-Wielosesyjna obsługa systemu Windows 10 Enterprise, znana wcześniej jako Windows 10 Enterprise dla pulpitów wirtualnych (EVD), to nowy Host sesji Pulpit zdalny, który umożliwia wykonywanie wielu współbieżnych sesji interakcyjnych, które wcześniej obsługiwały tylko system Windows Server. Ta funkcja zapewnia użytkownikom znane środowisko systemu Windows 10, a jednocześnie może korzystać z zalet kosztów wielu sesji i korzystać z istniejącej licencjonowania systemu Windows w przypadku użytkowników zamiast licencji dostępu klienta usług pulpitu zdalnego. Aby uzyskać więcej informacji o licencjach i cenach, zobacz [Cennik pulpitu wirtualnego systemu Windows](https://azure.microsoft.com/pricing/details/virtual-desktop/). 
+Wiele sesji systemu Windows 10 Enterprise, wcześniej znanych jako Windows 10 Enterprise dla pulpitów wirtualnych (EVD), jest nowym hostem sesji Pulpit zdalny, który umożliwia wielu współbieżnych sesji interakcyjnych. Wcześniej tylko system Windows Server może to zrobić. Ta funkcja zapewnia użytkownikom znane środowisko systemu Windows 10, a jednocześnie może korzystać z zalet kosztów wielu sesji i korzystać z istniejącej licencjonowania systemu Windows w przypadku użytkowników zamiast licencji dostępu klienta usług pulpitu zdalnego. Aby uzyskać więcej informacji o licencjach i cenach, zobacz [Cennik pulpitu wirtualnego systemu Windows](https://azure.microsoft.com/pricing/details/virtual-desktop/). 
  
 ## <a name="how-many-users-can-simultaneously-have-an-interactive-session-on-windows-10-enterprise-multi-session"></a>Ilu użytkowników może jednocześnie korzystać z interaktywnej sesji w wielu sesjach systemu Windows 10 Enterprise?
 
@@ -71,6 +71,31 @@ Aby uzyskać więcej informacji o konfigurowaniu kontenera profilu FSLogix, zoba
 ## <a name="which-license-do-i-need-to-access-windows-10-enterprise-multi-session"></a>Jakiej licencji muszę uzyskać dostęp do wielu sesji systemu Windows 10 Enterprise?
 
 Aby uzyskać pełną listę odpowiednich licencji, zobacz [Cennik pulpitu wirtualnego systemu Windows](https://azure.microsoft.com/pricing/details/virtual-desktop/).
+
+## <a name="why-do-my-apps-disappear-after-i-sign-out"></a>Dlaczego moje aplikacje znikają po wylogowaniu?
+
+Dzieje się tak, ponieważ korzystasz z wielu sesji systemu Windows 10 Enterprise z rozwiązaniem do zarządzania profilami, takim jak FSLogix. Rozwiązanie administratora lub profilu skonfigurowała system do usuwania profilów użytkowników podczas wylogowywania użytkowników. Ta konfiguracja oznacza, że gdy system usunie Twój profil użytkownika po wylogowaniu, spowoduje również usunięcie wszystkich aplikacji zainstalowanych podczas sesji. Jeśli chcesz zachować zainstalowane aplikacje, musisz polecić administratorowi obsługę tych aplikacji dla wszystkich użytkowników w środowisku pulpitu wirtualnego systemu Windows.
+
+## <a name="how-do-i-make-sure-apps-dont-disappear-when-users-sign-out"></a>Jak mogę upewnij się, że aplikacje nie znikną po wylogowaniu się użytkowników?
+
+Większość zwirtualizowanych środowisk jest domyślnie konfigurowana, aby uniemożliwić użytkownikom instalowanie dodatkowych aplikacji w swoich profilach. Jeśli chcesz mieć pewność, że aplikacja nie znika, gdy użytkownik wyloguje się z pulpitu wirtualnego systemu Windows, musisz zainicjować obsługę administracyjną tej aplikacji dla wszystkich profilów użytkowników w danym środowisku. Aby uzyskać więcej informacji na temat aprowizacji aplikacji, zapoznaj się z następującymi zasobami:
+
+- [Publikowanie wbudowanych aplikacji w systemie Windows Virtual Desktop](publish-apps.md)
+- [Opcje wiersza polecenia obsługi pakietu aplikacji DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+- [Add-AppxProvisionedPackage](https://docs.microsoft.com/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+
+## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>Jak mogę upewnić się, że użytkownicy nie będą pobierać i instalować aplikacji z Microsoft Store?
+
+Możesz wyłączyć aplikację Microsoft Store, aby upewnić się, że użytkownicy nie pobierają dodatkowych aplikacji poza aplikacje, dla których już Zainicjowano obsługę administracyjną.
+
+Aby wyłączyć aplikację ze sklepu:
+
+1. Utwórz nowy zasady grupy.
+2. Wybierz pozycję **Konfiguracja komputera** > **Szablony administracyjne** > **składniki systemu Windows**.
+3. Wybierz pozycję **sklep**.
+4. Wybierz pozycję **aplikacja ze sklepu**.
+5. Wybierz pozycję **wyłączone**, a następnie wybierz przycisk **OK**.
+6. Wybierz przycisk **Zastosuj**.
  
 ## <a name="next-steps"></a>Następne kroki
 

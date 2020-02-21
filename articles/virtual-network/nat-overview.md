@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/20/2020
 ms.author: allensu
-ms.openlocfilehash: 98d77f43c990dd00dd5e5d616b2fdee44fb8a2f6
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 6c8a341a089ef95d99669f592dbea81922d67682
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431421"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526318"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Co to jest Virtual Network translator adresów sieciowych (publiczna wersja zapoznawcza)?
 
@@ -168,7 +168,7 @@ Subskrypcje muszą być zarejestrowane, aby zezwolić na uczestnictwo w publiczn
 2. Aktywuj rejestrację
 
     ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network
+      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
     ```
 
 ## <a name="pricing"></a>Ceny
@@ -197,9 +197,7 @@ Chcemy wiedzieć, jak możemy ulepszyć usługę. Udostępnij nam swoją [opini�
 
 - Translator adresów sieciowych jest zgodny z publicznym adresem IP jednostki SKU, publicznym prefiksem adresu IP i zasobami modułu równoważenia obciążenia.   Zasoby podstawowe (na przykład podstawowa usługa równoważenia obciążenia) i wszelkie produkty pochodzące z nich nie są zgodne z translatorem adresów sieciowych.  Zasoby podstawowe muszą być umieszczone w podsieci, która nie jest skonfigurowana przy użyciu translatora adresów sieciowych.
 - Rodzina adresów IPv4 jest obsługiwana.  Translator adresów sieciowych nie współdziała z rodziną adresów IPv6.
-- SIECIOWEJ grupy zabezpieczeń w podsieci lub karcie sieciowej nie jest uznawany za przepływy wychodzące do publicznych punktów końcowych przy użyciu translatora adresów sieciowych
 - Rejestrowanie przepływu sieciowej grupy zabezpieczeń nie jest obsługiwane w przypadku korzystania z translatora adresów sieciowych.
-- Gdy sieć wirtualna ma wiele podsieci, Każda podsieć może mieć skonfigurowany inny translator adresów sieciowych.
 - Translator adresów sieciowych nie może obejmować wielu sieci wirtualnych.
 
 ## <a name="next-steps"></a>Następne kroki

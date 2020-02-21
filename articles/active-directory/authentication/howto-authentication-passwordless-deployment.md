@@ -1,28 +1,26 @@
 ---
 title: Wykonywanie wdrożenia uwierzytelniania bez hasła przy użyciu usługi Azure AD
-description: Wykonaj Azure Active Directory wdrożenie uwierzytelniania bezhasło
+description: Informacje o planowaniu i wdrażaniu Azure Active Directory implementacji uwierzytelniania bezhaseł
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 01/30/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8323333f378f95f0a640313524f198bdd00dc340
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 4566c8ec58677589c044d79560bffa7616294d70
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512576"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505609"
 ---
-# <a name="complete-a-passwordless-authentication-deployment"></a>Ukończ wdrażanie uwierzytelniania przy użyciu hasła
+# <a name="complete-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Ukończ wdrażanie uwierzytelniania za pomocą hasła w Azure Active Directory
 
-Większość cyberattacks rozpoczyna się od nazwy użytkownika i hasła skradzionego od kogoś w organizacji. 
-
-Organizacje próbują wyeliminować zagrożenie, wymagając od użytkowników użycia:
+Większość cyberattacks rozpoczyna się od nazwy użytkownika i hasła skradzionego od kogoś w organizacji. Organizacje próbują wyeliminować zagrożenie, wymagając od użytkowników zastosowania jednego z następujących metod:
 
 - Długie hasła
 - Złożone hasła
@@ -34,20 +32,20 @@ Badania firmy Microsoft [pokazują](https://aka.ms/passwordguidance) , że te wy
 Wdrażanie uwierzytelniania bezhaseł zapewnia następujące korzyści:
 
 - Zwiększone zabezpieczenia. Zmniejszenie ryzyka związanego z phishingiem i atakami polegającymi na wyłudzaniu hasła przez usunięcie haseł jako obszaru ataku.
-- Lepsze środowisko użytkownika. Zapewnij użytkownikom wygodny sposób uzyskiwania dostępu do danych z dowolnego miejsca i zapewnij łatwy dostęp do programu Outlook, usługi OneDrive, pakietu Office i nie tylko w przypadku urządzeń przenośnych.
+- Lepsze środowisko użytkownika. Zapewnij użytkownikom wygodny sposób uzyskiwania dostępu do danych z dowolnego miejsca i zapewnij łatwy dostęp do aplikacji i usług, takich jak Outlook, OneDrive lub Office, a także na urządzeniach przenośnych.
 - Niezawodne wgląd w szczegółowe dane. Uzyskaj wgląd w działanie bez hasła użytkowników z niezawodnym rejestrowaniem i inspekcją.
 
-Hasło jest zamieniane na coś, co Ci się podoba. Na przykład w usłudze Windows Hello dla firm gest biometryczny, taki jak znak lub odcisk palca, lub numer PIN specyficzny dla urządzenia, który nie jest przesyłany przez sieć.
+Hasło bez hasła jest zamieniane na coś, co Ci się podoba. Na przykład w usłudze Windows Hello dla firm, gestu biometrycznego, takiego jak znak lub odcisk palca, lub numeru PIN specyficznego dla urządzenia, który nie jest przesyłany przez sieć.
 
-Firma Microsoft oferuje trzy opcje uwierzytelniania bezhasło, które obejmują wiele scenariuszy. Metody te mogą być używane wspólnie. 
+Firma Microsoft oferuje trzy opcje uwierzytelniania bezhasło, które obejmują wiele scenariuszy. Metody te mogą być używane wspólnie:
 
 - Funkcja [Windows Hello dla firm](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) jest Najlepsza dla użytkowników na ich dedykowanych komputerach z systemem Windows.
-- Klucz zabezpieczeń Logowanie przy użyciu [kluczy zabezpieczeń FIDO2](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) jest szczególnie przydatny w przypadku użytkowników logujących się na maszynach udostępnionych, takich jak kioski, sytuacje, w których korzystanie z telefonów jest ograniczone, oraz dla tożsamości o wysokim poziomie uprawnień.
-- Logowanie za pomocą telefonu przy użyciu [aplikacji Microsoft Authenticator](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) jest przydatne w przypadku udostępniania użytkownikom urządzeń przenośnych opcji bez hasła. Powoduje to włączenie dowolnego telefonu z systemem iOS lub Android w celu uzyskania silnych poświadczeń bez hasła przez umożliwienie użytkownikom zalogowania się do dowolnej platformy lub przeglądarki. Użytkownicy logują się, uzyskując powiadomienie na telefonie, dopasowując liczbę wyświetlaną na ekranie na telefonie, a następnie używając danych biometrycznych lub numerów PIN do potwierdzenia.
+- Klucz zabezpieczeń Logowanie przy użyciu [kluczy zabezpieczeń FIDO2](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) jest szczególnie przydatny w przypadku użytkowników logujących się na maszynach udostępnionych, takich jak kioski, w sytuacjach, gdy korzystanie z telefonów jest ograniczone, a dla tożsamości o wysokim poziomie uprawnień.
+- Logowanie za pomocą telefonu przy użyciu [aplikacji Microsoft Authenticator](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) jest przydatne w przypadku udostępniania użytkownikom urządzeń przenośnych opcji bez hasła. Aplikacja Authenticator włącza wszystkie urządzenia z systemem iOS lub Android do silnego poświadczenia bez hasła, umożliwiając użytkownikom zalogowanie się do dowolnej platformy lub przeglądarki. Użytkownicy logują się, uzyskując powiadomienie na telefonie, dopasowując liczbę wyświetlaną na ekranie na telefonie, a następnie za pomocą danych biometrycznych lub numerów PIN do potwierdzenia.
 
 ## <a name="compare-passwordless-authentication-methods"></a>Porównanie metod uwierzytelniania bezhaseł
 
-Metody uwierzytelniania bezhaseł firmy Microsoft umożliwiają korzystanie z różnych scenariuszy. Aby wybrać strategię uwierzytelniania bezhasło, należy wziąć pod uwagę potrzeby organizacyjne, wymagania wstępne i możliwości poszczególnych metod uwierzytelniania. Zalecamy, aby każda organizacja korzystająca z urządzeń z systemem Windows 10 korzystała z usługi Windows Hello dla firm. Następnie Dodaj do dodatkowych scenariuszy opcję logowania za pomocą telefonu (z aplikacją Microsoft Authenticator) lub kluczami zabezpieczeń.
+Metody uwierzytelniania bezhaseł firmy Microsoft umożliwiają korzystanie z różnych scenariuszy. Aby wybrać strategię uwierzytelniania bezhasło, należy wziąć pod uwagę potrzeby organizacyjne, wymagania wstępne i możliwości poszczególnych metod uwierzytelniania. Zalecamy, aby każda organizacja korzystająca z urządzeń z systemem Windows 10 korzystała z usługi Windows Hello dla firm. Następnie Dodaj do dodatkowych scenariuszy opcję logowanie za pomocą telefonu (z aplikacją Microsoft Authenticator) lub kluczami zabezpieczeń.
 
 ### <a name="passwordless-authentication-scenarios"></a>Scenariusze uwierzytelniania bezhasło
 
@@ -55,23 +53,23 @@ Metody uwierzytelniania bezhaseł firmy Microsoft umożliwiają korzystanie z r�
 | --- | --- | --- | --- |
 | **Logowanie do komputera**: <br> Z przypisanego urządzenia z systemem Windows 10 | **Nie** | **Tak** <br> Przy użyciu biometrycznych, PIN | **Tak**<br>z rozpoznawaniem biometrycznym i lub numerem PIN |
 | **Logowanie do komputera**: <br> Z udostępnionego urządzenia z systemem Windows 10 | **Nie** | **Tak** <br> Przy użyciu biometrycznych, PIN  | **Nie** |
-| **Logowanie do aplikacji sieci Web**: <br>z komputera dedykowanego przez użytkownika | **Tak** | **Tak** <br> Udostępnione Logowanie jednokrotne do aplikacji jest włączane przez logowanie komputera | **Tak**<br> Udostępnione Logowanie jednokrotne do aplikacji jest włączane przez logowanie komputera |
+| **Logowanie do aplikacji sieci Web**: <br>z komputera dedykowanego przez użytkownika | **Tak** | **Tak** <br> Udostępniane Logowanie jednokrotne do aplikacji jest włączane po zalogowaniu się komputera | **Tak**<br> Udostępniane Logowanie jednokrotne do aplikacji jest włączane po zalogowaniu się komputera |
 | **Logowanie do aplikacji sieci Web**: <br> z urządzenia przenośnego lub z systemem innym niż Windows | **Tak** | **Nie** | **Nie** |
 | **Logowanie do komputera**: <br> Komputer z systemem innym niż Windows | **Nie** | **Nie** | **Nie** |
 
 ### <a name="technical-considerations-for-the-microsoft-authenticator-app"></a>Zagadnienia techniczne dotyczące aplikacji Microsoft Authenticator
 
-**Integracja AD FS** — gdy użytkownik włączy Microsoft Authenticator poświadczenia bezhasła, uwierzytelnianie dla tego użytkownika jest domyślnie wysyłane powiadomienie o zatwierdzeniu. Użytkownicy w dzierżawie hybrydowej nie mogą być kierowani do usług AD FS w celu zalogowania się, chyba że wybierze opcję "Użyj hasła zamiast". Ten proces pomija również wszystkie lokalne zasady dostępu warunkowego i przepływy uwierzytelniania przekazywane. Jeśli jednak określono login_hint, użytkownik zostanie przekierowany do usług AD FS i pominięto opcję użycia poświadczeń bezhasła.
+**Integracja AD FS** — gdy użytkownik włączy Microsoft Authenticator poświadczenia bezhasła, uwierzytelnianie dla tego użytkownika jest domyślnie wysyłane powiadomienie o zatwierdzeniu. Użytkownicy w dzierżawie hybrydowej nie mogą być kierowani do usług AD FS w celu zalogowania się, chyba że wybierze opcję "Użyj hasła zamiast". Ten proces pomija również wszystkie lokalne zasady dostępu warunkowego i przepływy uwierzytelniania przekazywane. Jeśli jednak określono *login_hint* , użytkownik jest przesyłany dalej do usług AD FS i pomija opcję, aby użyć poświadczeń bezhasłem.
 
-**Serwer usługi Azure MFA** — użytkownicy końcowi korzystający z lokalnego serwera usługi Azure MFA w organizacji mogą nadal tworzyć i używać jednego poświadczenia logowania jednokrotnego bez hasła. Jeśli użytkownik próbuje uaktualnić wiele instalacji (5 +) Microsoft Authenticator przy użyciu poświadczenia, ta zmiana może spowodować wystąpienie błędu.
+**Serwer usługi Azure MFA** — użytkownicy końcowi korzystający z lokalnego serwera usługi Azure MFA w organizacji mogą tworzyć i używać jednego poświadczenia logowania jednokrotnego bez hasła. Jeśli użytkownik próbuje uaktualnić wiele instalacji (5 lub więcej) Microsoft Authenticator przy użyciu poświadczenia, ta zmiana może spowodować wystąpienie błędu.
 
 **Rejestracja urządzenia** — aby użyć aplikacji Authenticator do uwierzytelniania bezserwerowego, urządzenie musi być zarejestrowane w dzierżawie usługi Azure AD i nie może być urządzeniem udostępnionym. Urządzenie można zarejestrować tylko w jednej dzierżawie. Ten limit oznacza, że tylko jedno konto służbowe jest obsługiwane w przypadku logowania za pomocą telefonu przy użyciu aplikacji uwierzytelniania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem wdrażania bezhaseł, organizacje muszą spełniać następujące wymagania wstępne.
+Przed rozpoczęciem wdrażania bezhaseł organizacje muszą spełniać następujące wymagania wstępne:
 
-| Warunek wstępny | Aplikacja Authenticator | FIDO2 klucze zabezpieczeń |
+| Wymagania wstępne | Aplikacja Authenticator | FIDO2 klucze zabezpieczeń |
 | --- | --- | --- |
 | [Połączona Rejestracja w ramach usługi Azure MFA i samoobsługowego resetowania hasła (SSPR)](howto-registration-mfa-sspr-combined.md) jest włączona (funkcja w wersji zapoznawczej) | √ | √ |
 | [Użytkownicy mogą korzystać z usługi Azure MFA](howto-mfa-getstarted.md) | √ | √ |
@@ -84,7 +82,7 @@ Przed rozpoczęciem wdrażania bezhaseł, organizacje muszą spełniać następu
 
 Wymagania wstępne dotyczące usługi Windows Hello są wysoce zależne od tego, czy są wdrażane w konfiguracji lokalnej, hybrydowej czy w chmurze. Aby uzyskać więcej informacji, zobacz [pełną listę wymagań wstępnych dotyczących usługi Windows Hello dla firm](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
-### <a name="azure-multi-factor-authentication"></a>Usługa Azure Multi-Factor Authentication
+### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
 Użytkownicy rejestrują metodę bezhaseł w ramach przepływu rejestracji usługi Azure MFA. Uwierzytelnianie wieloskładnikowe przy użyciu nazwy użytkownika i hasła wraz z inną zarejestrowanej metody może być używane jako rezerwa w przypadku, gdy nie mogą korzystać z swojego telefonu ani klucza zabezpieczeń w niektórych scenariuszach.
 
@@ -92,7 +90,7 @@ Użytkownicy rejestrują metodę bezhaseł w ramach przepływu rejestracji usłu
 
 Klucze zabezpieczeń umożliwiają dostęp do zasobów i należy zaplanować zarządzanie tymi urządzeniami fizycznymi.
 
-1. Dystrybucja kluczy: Zaplanuj, w jaki sposób będziesz udostępniać klucze w organizacji. Może istnieć scentralizowany proces aprowizacji lub umożliwienie użytkownikom końcowym zakupu kluczy zgodnych z systemem FIDO 2,0.
+1. Dystrybucja kluczy: Zaplanuj sposób aprowizacji kluczy w organizacji. Może istnieć scentralizowany proces aprowizacji lub umożliwienie użytkownikom końcowym zakupu kluczy zgodnych z systemem FIDO 2,0.
 1. Aktywacja klucza: użytkownicy końcowi muszą samoczynnie aktywować klucz zabezpieczeń. Użytkownicy końcowi rejestrują swoje klucze zabezpieczeń w [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) i włączają drugi współczynnik (PIN lub biometryczne) przy pierwszym użyciu.
 1. Wyłączanie klucza: podczas gdy funkcje klucza zabezpieczeń są dostępne na etapie wersji zapoznawczej, nie ma możliwości, aby administrator usunął klucz z konta użytkownika. Użytkownik musi je usunąć. Jeśli klucz zostanie zgubiony lub skradziony:
    1. Usuń użytkownika z dowolnej grupy z włączoną obsługą uwierzytelniania bez hasła.
@@ -102,7 +100,7 @@ Klucze zabezpieczeń umożliwiają dostęp do zasobów i należy zaplanować zar
 
 ### <a name="enable-windows-10-support"></a>Włącz obsługę systemu Windows 10
 
-Włączenie logowania systemu Windows 10 przy użyciu kluczy zabezpieczeń FIDO2 wymaga włączenia funkcji dostawcy poświadczeń w systemie Windows 10. Włącz ją na jeden z dwóch sposobów:
+Włączenie logowania systemu Windows 10 przy użyciu kluczy zabezpieczeń FIDO2 wymaga włączenia funkcji dostawcy poświadczeń w systemie Windows 10 w jeden z następujących sposobów:
 
 - [Włączanie dostawcy poświadczeń przy użyciu usługi Intune](howto-authentication-passwordless-security-key-windows.md#enable-with-intune)
    - Zalecanym rozwiązaniem jest wdrożenie usługi Intune.
@@ -110,6 +108,15 @@ Włączenie logowania systemu Windows 10 przy użyciu kluczy zabezpieczeń FIDO2
    - Jeśli wdrożenie usługi Intune nie jest możliwe, Administratorzy muszą wdrożyć pakiet na każdej maszynie, aby włączyć funkcję dostawcy poświadczeń. Instalację pakietu można przeprowadzić za pomocą jednej z następujących opcji:
       - zasady grupy lub Configuration Manager
       - Instalacja lokalna na komputerze z systemem Windows 10
+- [Włącz dostawcę poświadczeń przy użyciu zasady grupy](howto-authentication-passwordless-security-key-windows.md#enable-with-group-policy)
+   - Obsługiwane tylko w przypadku urządzeń przyłączonych do hybrydowej usługi Azure AD.
+
+#### <a name="enable-on-premises-integration"></a>Włącz integrację lokalną
+
+Aby włączyć dostęp do zasobów lokalnych, wykonaj kroki, aby [włączyć klucz zabezpieczeń bezhasłem Zaloguj się do zasobów lokalnych (wersja zapoznawcza)](howto-authentication-passwordless-security-key-on-premises.md).
+
+> [!IMPORTANT]
+> Te kroki należy również wykonać dla wszystkich urządzeń z dołączoną hybrydą usługą Azure AD, aby użyć kluczy zabezpieczeń FIDO2 dla logowania do systemu Windows 10.
 
 ### <a name="register-security-keys"></a>Rejestrowanie kluczy zabezpieczeń
 
@@ -133,11 +140,11 @@ W poniższej tabeli przedstawiono przypadki użycia do wdrożenia w ramach tego 
 | --- | --- |
 | **Dostęp** | Logowanie bez hasła jest dostępne z urządzenia firmowego lub osobistego w sieci firmowej lub poza nią. |
 | **Inspekcja** | Dane użycia są dostępne dla administratorów w celu przeprowadzania inspekcji niemal w czasie rzeczywistym. <br> Dane użycia są pobierane do systemów firmowych co najmniej co 29 dni lub używane jest narzędzie SIEM. |
-| **Zarządzanie** | Cykl życia przypisań użytkowników do odpowiedniej metody uwierzytelniania i skojarzonych grup jest zdefiniowany i monitorowany. |
+| **Dobrego** | Cykl życia przypisań użytkowników do odpowiedniej metody uwierzytelniania i skojarzonych grup jest zdefiniowany i monitorowany. |
 | **Bezpieczeństwo** | Dostęp do odpowiedniej metody uwierzytelniania jest kontrolowany za pośrednictwem przypisań użytkowników i grup. <br> Tylko autoryzowani użytkownicy mogą korzystać z logowania bezhasłem. |
 | **Wydajność** | Osie czasu propagacji przydziału dostępu są udokumentowane i monitorowane. <br> Czasy logowania są mierzone w celu ułatwienia użycia. |
-| **Środowisko użytkownika** | Użytkownicy są świadomi zgodności urządzeń przenośnych. <br> Użytkownicy mogą konfigurować logowanie bezhasłem aplikacji uwierzytelniania. |
-| **Pomoc techniczna** | Użytkownicy wiedzą, jak znaleźć pomoc techniczną w przypadku problemów z logowaniem bezhasłem. |
+| **Środowisko użytkownika** | Użytkownicy są świadomi zgodności urządzeń przenośnych. <br> Użytkownicy mogą konfigurować logowanie za pomocą hasła aplikacji uwierzytelniania. |
+| **Pomoc techniczna** | Użytkownicy wiedzą, jak znaleźć pomoc techniczną dla problemów związanych z logowaniem. |
 
 ### <a name="engage-the-right-stakeholders"></a>Zaangażuj odpowiednich uczestników projektu
 
@@ -147,36 +154,36 @@ W przypadku niepowodzenia projektów technologicznych zazwyczaj wynika to z niez
 
 Komunikacja jest niezwykle ważna dla sukcesu każdej nowej usługi. Aktywnie Komunikuj się, w jaki sposób środowisko użytkownika zostanie zmienione, gdy zostanie zmienione, i jak uzyskać pomoc techniczną, jeśli wystąpią problemy.
 
-Komunikacja z użytkownikami końcowymi będzie musiała obejmować:
+Komunikacja z użytkownikami końcowymi powinna obejmować następujące informacje:
 
 - [Włączanie korzystania ze połączonej rejestracji zabezpieczeń](howto-authentication-passwordless-phone.md)
 - [Pobieranie aplikacji Microsoft Authenticator](../user-help/user-help-auth-app-download-install.md)
 - [Rejestrowanie w aplikacji Microsoft Authenticator](howto-authentication-passwordless-phone.md)
 - [Logowanie za pomocą telefonu](../user-help/user-help-auth-app-sign-in.md)
 
-Firma Microsoft udostępnia [Szablony komunikacji](https://aka.ms/mfatemplates)MFA, [Szablony komunikacji](https://www.microsoft.com/download/details.aspx?id=56768)samoobsługowego resetowania haseł (SSPR) oraz [dokumentację użytkowników końcowych](../user-help/security-info-setup-signin.md) , która ułatwia przygotowanie komunikacji. Możesz wysyłać użytkowników, aby [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) rejestrować się bezpośrednio, wybierając linki do informacji zabezpieczających na tej stronie.
+Firma Microsoft udostępnia [Szablony komunikacji](https://aka.ms/mfatemplates)MFA, [Szablony komunikacji](https://www.microsoft.com/download/details.aspx?id=56768)samoobsługowego resetowania haseł (SSPR) oraz [dokumentację użytkowników końcowych](../user-help/security-info-setup-signin.md) , która ułatwia przygotowanie komunikacji. Możesz wysyłać użytkowników, aby [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) rejestrować się bezpośrednio, wybierając linki do **informacji zabezpieczających** na tej stronie.
 
 ### <a name="testing-passwordless"></a>Testowanie bezhasła
 
-Na każdym etapie wdrożenia upewnij się, że testy zostały przeprowadzone zgodnie z oczekiwaniami.
+Na każdym etapie wdrożenia podczas testowania scenariuszy i wdrażania upewnij się, że wyniki są zgodnie z oczekiwaniami.
 
 #### <a name="testing-the-microsoft-authenticator-app"></a>Testowanie aplikacji Microsoft Authenticator
 
-Poniżej przedstawiono przykładowe przypadki testowe dotyczące uwierzytelniania bezhasła przy użyciu aplikacji Microsoft Authenticator
+Poniżej przedstawiono przykładowe przypadki testowe dotyczące uwierzytelniania bezhasła przy użyciu aplikacji Microsoft Authenticator:
 
 | Scenariusz | Oczekiwane wyniki |
 | --- | --- |
 | Użytkownik może zarejestrować aplikację Microsoft Authenticator | Użytkownik może zarejestrować aplikację z aka.ms/mysecurityinfo |
-| Użytkownik może włączyć logowanie za telefonem | Logowanie do konta służbowego zostało skonfigurowane |
-| Użytkownik może uzyskać dostęp do aplikacji przy użyciu logowania za pomocą telefonu | Użytkownik przechodzi przez konto służbowe w usłudze Flow i osiągnie wydaną aplikację. |
-| Testowanie wycofywania logowania za pomocą telefonu przez wyłączenie Microsoft Authenticator logowania bezterminowego na ekranie metod uwierzytelniania w portalu Azure Active Directory | Wcześniej włączeni użytkownicy nie mogą korzystać z logowania bezhasłem z Microsoft Authenticator. |
+| Użytkownik może włączyć logowanie przy użyciu telefonu | Logowanie do konta służbowego zostało skonfigurowane |
+| Użytkownik może uzyskać dostęp do aplikacji przy użyciu logowania za pomocą telefonu | Użytkownik przechodzi przez przepływ logowania przy użyciu telefonu i osiągnie wydaną aplikację. |
+| Przetestuj rejestrację logowania za pomocą telefonu, wyłączając Microsoft Authenticator logowanie bezhasło na ekranie metody uwierzytelniania w portalu Azure Active Directory | Wcześniej włączeni użytkownicy nie mogą korzystać z logowania bezMicrosoft Authenticatorowego przy użyciu hasła. |
 | Usuwanie logowania za pomocą telefonu z aplikacji Microsoft Authenticator | Konto służbowe nie jest już dostępne na Microsoft Authenticator |
 
 #### <a name="testing-security-keys"></a>Testowanie kluczy zabezpieczeń
 
 Poniżej przedstawiono przykładowe przypadki testowe dotyczące uwierzytelniania bez hasła z kluczami zabezpieczeń.
 
-**Logowanie do FIDO urządzeń Azure Active Directory z systemem Windows 10 z dołączonymi hasłami**
+**Logowanie za FIDO bezhasło do urządzeń z systemem Windows 10 dołączonych do Azure Active Directory**
 
 | Scenariusz | Oczekiwane wyniki |
 | --- | --- |
@@ -187,7 +194,7 @@ Poniżej przedstawiono przykładowe przypadki testowe dotyczące uwierzytelniani
 | Użytkownik może zresetować urządzenie FIDO2 (1903) | Użytkownik może zresetować urządzenie FIDO2 w ustawieniach > kont > Opcje logowania > klucz zabezpieczeń |
 | Użytkownik może zalogować się przy użyciu urządzenia FIDO2 (1903) | Użytkownik może wybrać klucz zabezpieczeń z okna logowania i pomyślnie się zalogować. |
 
-**Logowanie w usłudze Azure AD Web Apps bezFIDOowego hasła**
+**Logowanie w usłudze Azure AD Web Apps bezhasłem FIDO**
 
 | Scenariusz | Oczekiwane wyniki |
 | --- | --- |
@@ -201,16 +208,16 @@ Poniżej przedstawiono przykładowe przypadki testowe dotyczące uwierzytelniani
 
 Usługa Azure AD zawiera raporty, które udostępniają szczegółowe informacje techniczne i biznesowe. Czy właściciele aplikacji firmowych i technicznych zakładają własność i wykorzystują te raporty zgodnie z wymaganiami organizacji.
 
-Sekcja metody uwierzytelniania w portalu Azure Active Directory jest miejscem, w którym Administratorzy mogą włączać i zarządzać ustawieniami poświadczeń bezterminowych.
+Sekcja metody **uwierzytelniania** w portalu Azure Active Directory jest miejscem, w którym Administratorzy mogą włączać i zarządzać ustawieniami poświadczeń bezterminowych.
 
 Usługa Azure AD dodaje wpisy do dzienników inspekcji, gdy:
 
 - Administrator wprowadza zmiany w sekcji metody uwierzytelniania.
 - Użytkownik dokonuje dowolnego rodzaju zmiany poświadczeń w Azure Active Directory.
 
-W poniższej tabeli przedstawiono kilka przykładów typowych scenariuszy raportowania.
+W poniższej tabeli przedstawiono kilka przykładów typowych scenariuszy raportowania:
 
-|   | Zarządzanie ryzykiem | Zwiększenie produktywności | Zarządzanie i zgodność |
+|   | Zarządzanie ryzykiem | Zwiększ produktywność | Zarządzanie i zgodność |
 | --- | --- | --- | --- |
 | **Typy raportów** | Metody uwierzytelniania — Użytkownicy zarejestrowani do rejestracji zabezpieczeń połączonych | Metody uwierzytelniania — Użytkownicy zarejestrowani do powiadomień aplikacji | Logowania: Sprawdzanie, kto uzyskuje dostęp do dzierżawy i jak |
 | **Potencjalni akcje** | Użytkownicy docelowi nie są jeszcze zarejestrowani | Wdrażanie stacji Microsoft Authenticator aplikacji lub kluczy zabezpieczeń | Odwoływanie dostępu lub wymuszanie dodatkowych zasad zabezpieczeń dla administratorów |
@@ -219,15 +226,15 @@ W poniższej tabeli przedstawiono kilka przykładów typowych scenariuszy raport
 
 Użytkownicy mogą rejestrować swoje poświadczenia i zarządzać nimi, przechodząc do [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). Ten link kieruje użytkowników do środowiska zarządzania poświadczeniami użytkowników końcowych, które zostały włączone za pośrednictwem połączonego środowiska rejestracji SSPR/MFA. Każda rejestracja urządzeń zabezpieczeń FIDO2 lub zmian metod uwierzytelniania przez użytkownika zostanie zarejestrowana w dziennikach inspekcji Azure Active Directory.
 
-Gdy użytkownicy włączają lub wyłączają konto w kluczu zabezpieczeń lub zresetują drugi współczynnik dla klucza zabezpieczeń na komputerach z systemem Windows 10, do dziennika zabezpieczeń zostaje dodany wpis o następujących identyfikatorach zdarzeń: 4670, 5382.
+Gdy użytkownicy włączają lub wyłączają konto w kluczu zabezpieczeń lub zresetują drugi współczynnik dla klucza zabezpieczeń na komputerach z systemem Windows 10, do dziennika zabezpieczeń zostaje dodany wpis o następujących identyfikatorach zdarzeń: *4670* i *5382*.
 
 ### <a name="plan-for-rollback"></a>Planowanie wycofywania
 
 Chociaż uwierzytelnianie bezhasła jest lekkim elementem z minimalnym wpływem na użytkowników końcowych, może być konieczne wycofanie.
 
-Wycofanie wymaga, aby administrator zalogować się do portalu Azure Active Directory, wybrać odpowiednie metody silnego uwierzytelniania i zmienić opcję Włącz na wartość "nie". Ten proces spowoduje wyłączenie funkcji bezhasło dla wszystkich użytkowników.
+Wycofanie wymaga, aby administrator zalogować się do portalu Azure Active Directory, wybrać odpowiednie metody silnego uwierzytelniania i zmienić opcję Włącz na wartość **nie**. Ten proces powoduje wyłączenie funkcji bezhasło dla wszystkich użytkowników.
 
-Użytkownicy, którzy już zarejestrowali urządzenia zabezpieczeń FIDO2, otrzymają monit o użycie urządzenia zabezpieczeń podczas następnego logowania, a następnie zobaczy następujący błąd:
+Użytkownicy, którzy już zarejestrowali urządzenia zabezpieczeń FIDO2, otrzymają monit o użycie urządzenia zabezpieczeń podczas kolejnego logowania, a następnie zobacz następujący błąd:
 
 ![Wybierz inny sposób logowania](./media/howto-authentication-passwordless-deployment/passwordless-choose-sign-in.png)
 
@@ -247,14 +254,14 @@ Wykonaj kroki wyrównane do wybranej metody poniżej.
 
 | Rola usługi Azure AD | Opis |
 | --- | --- |
-| Administrator uwierzytelniania | Najmniejsza rola uprzywilejowana może implementować metody uwierzytelniania i zarządzać nimi |
+| Administrator uwierzytelniania | Najmniejsza rola uprzywilejowana może implementować metody uwierzytelniania i zarządzać nimi. |
 | Użytkownik | Najmniej uprzywilejowana rola w celu skonfigurowania aplikacji uwierzytelniania na urządzeniu lub zarejestrowania urządzenia z kluczem zabezpieczeń na potrzeby logowania do sieci Web lub systemu Windows 10. |
 
 ### <a name="deploy-phone-sign-in-with-the-microsoft-authenticator-app"></a>Wdróż logowanie za pomocą telefonu przy użyciu aplikacji Microsoft Authenticator
 
 Wykonaj kroki opisane w artykule, [Włącz logowanie bez hasła przy użyciu aplikacji Microsoft Authenticator](howto-authentication-passwordless-phone.md) , aby włączyć aplikację Microsoft Authenticator jako metodę uwierzytelniania bez hasła w organizacji.
 
-### <a name="deploy-fido2-security-key-sign-in"></a>Wdróż klucz zabezpieczeń FIDO2
+### <a name="deploy-fido2-security-key-sign-in"></a>Wdróż Logowanie przy użyciu klucza zabezpieczeń FIDO2
 
 Wykonaj kroki opisane w artykule, aby [włączyć klucz zabezpieczeń bezhasło dla usługi Azure AD](howto-authentication-passwordless-security-key.md) , aby włączyć klucze zabezpieczeń FIDO2 jako metody uwierzytelniania bezhasło w organizacji.
 
@@ -262,21 +269,21 @@ Wykonaj kroki opisane w artykule, aby [włączyć klucz zabezpieczeń bezhasło 
 
 | Scenariusz | Rozwiązanie |
 | --- | --- |
-| Użytkownik nie może wykonać rejestracji połączonej | Upewnij się, że [rejestracja łączona](concept-registration-mfa-sspr-combined.md) jest włączona. |
-| Użytkownik nie może włączyć aplikacji uwierzytelniania przy użyciu telefonu | Upewnij się, że użytkownik znajduje się w zakresie wdrożenia |
+| Użytkownik nie może wykonać rejestracji połączonej. | Upewnij się, że [rejestracja łączona](concept-registration-mfa-sspr-combined.md) jest włączona. |
+| Użytkownik nie może włączyć aplikacji uwierzytelniania przy użyciu telefonu. | Upewnij się, że użytkownik znajduje się w zakresie wdrożenia. |
 | Użytkownik nie należy do zakresu uwierzytelniania bez hasła, ale jest przedstawiany przy użyciu opcji logowania bez hasła, która nie może zostać ukończona. | Ten scenariusz występuje, gdy użytkownik włączył logowanie za pomocą telefonu n aplikacji przed utworzeniem zasad. <br> Aby włączyć logowanie: należy dodać użytkownika do zakresu użytkowników z włączonym logowaniem bezhasłem. <br> Aby zablokować Logowanie: użytkownik powinien usunąć swój formularz poświadczeń z tej aplikacji. |
 
-### <a name="troubleshoot-security-key-sign-in"></a>Rozwiązywanie problemów z logowaniem klucza zabezpieczeń
+### <a name="troubleshoot-security-key-sign-in"></a>Rozwiązywanie problemów z logowaniem przy użyciu klucza zabezpieczeń
 
 | Scenariusz | Rozwiązanie |
 | --- | --- |
-| Użytkownik nie może wykonać rejestracji połączonej | Upewnij się, że [rejestracja łączona](concept-registration-mfa-sspr-combined.md) jest włączona. |
-| Użytkownik nie może dodać klucza zabezpieczeń w [ustawieniach zabezpieczeń](https://aka.ms/mysecurityinfo) | Upewnij się, że [klucze zabezpieczeń](howto-authentication-passwordless-security-key.md) są włączone. |
-| Użytkownik nie może dodać klucza zabezpieczeń w opcjach logowania systemu Windows 10 | [Upewnij się, że klucze zabezpieczeń logowania systemu Windows](howto-authentication-passwordless-enable.md) |
+| Użytkownik nie może wykonać rejestracji połączonej. | Upewnij się, że [rejestracja łączona](concept-registration-mfa-sspr-combined.md) jest włączona. |
+| Użytkownik nie może dodać klucza zabezpieczeń w [ustawieniach zabezpieczeń](https://aka.ms/mysecurityinfo). | Upewnij się, że [klucze zabezpieczeń](howto-authentication-passwordless-security-key.md) są włączone. |
+| Użytkownik nie może dodać klucza zabezpieczeń w opcjach logowania systemu Windows 10. | [Upewnij się, że klucze zabezpieczeń logowania systemu Windows](howto-authentication-passwordless-enable.md) |
 | **Komunikat o błędzie**: wykryto, że ta przeglądarka lub system operacyjny nie obsługuje kluczy zabezpieczeń FIDO2. | Urządzenia zabezpieczeń FIDO2 bezhasło mogą być rejestrowane tylko w obsługiwanych przeglądarkach (Microsoft Edge, Firefox w wersji 67) w systemie Windows 10 w wersji 1809 lub nowszej. |
 | **Komunikat o błędzie**: zasady firmy wymagają, aby można było zalogować się przy użyciu innej metody. | Brak pewności, że klucze zabezpieczeń są włączone w dzierżawie. |
 | Użytkownik nie może zarządzać moim kluczem zabezpieczeń w systemie Windows 10 w wersji 1809 | Wersja 1809 wymaga użycia oprogramowania do zarządzania kluczami zabezpieczeń dostarczonym przez dostawcę klucza FIDO2. Skontaktuj się z dostawcą, aby uzyskać pomoc techniczną. |
-| Myślę, że klucz zabezpieczeń FIDO2 może być wadliwy — jak można go przetestować | Przejdź do [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/), wprowadź poświadczenia dla konta testowego, podłącz podejrzany klucz zabezpieczeń, kliknij przycisk "+" w prawym górnym rogu ekranu, kliknij polecenie Utwórz i przejdź przez proces tworzenia. Jeśli ten scenariusz nie powiedzie się, urządzenie może być uszkodzone. |
+| Myślę, że klucz zabezpieczeń FIDO2 może być wadliwy — jak można go przetestować. | Przejdź do [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/), wprowadź poświadczenia dla konta testowego, podłącz podejrzany klucz zabezpieczeń, wybierz przycisk **+** w prawym górnym rogu ekranu, kliknij przycisk Utwórz i przejdź przez proces tworzenia. Jeśli ten scenariusz nie powiedzie się, urządzenie może być uszkodzone. |
 
 ## <a name="next-steps"></a>Następne kroki
 
