@@ -273,7 +273,7 @@ Mapy nie mają jednak tego samego poziomu informacji i dokładności dla wszystk
 | Liechtenstein             | ✓ | ✓ |
 | Litwa                 | ✓ | ✓ |
 | Luksemburg                | ✓ | ✓ |
-| Północna Macedonia           | ✓ | ✓ |
+| Macedonia Północna           | ✓ | ✓ |
 | M alta                     | ✓ | ✓ |
 | Mołdawia                   | ✓ | ✓ |
 | Monaco                    | ✓ | ✓ |

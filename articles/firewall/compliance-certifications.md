@@ -36,11 +36,11 @@ Następujące certyfikaty zapory platformy Azure dotyczą globalnej platformy Az
 - Certyfikacja STAR CSA
 - Automatyczna Ocena w witrynie CSA STAR
 - Kanadyjskie prawa do ochrony prywatności
-- DPP (WIELKA BRYTANIA)
+- DPP (ZJEDNOCZONE KRÓLESTWO)
 - IAF ENISA UE
 - Klauzule modelowe UE
 - Europejski Urząd banku
-- FCA i PRA (Wielka Brytania)
+- FCA i PRA (Zjednoczone Królestwo)
 - USTAWA FERPA (US)
 - FFIEC (US)
 - FINMA (Szwajcaria)

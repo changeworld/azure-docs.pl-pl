@@ -190,7 +190,7 @@ Poniższa tabela zawiera informacje o pokryciu dotyczące Azure Maps routingu.
 | Liechtenstein                  |        ✓       |         ✓            |             |
 | Litwa                      |        ✓       |         ✓            |     ✓      | 
 | Luksemburg                     |        ✓       |         ✓            |     ✓      | 
-| Północna Macedonia                |        ✓       |                      |             |
+| Macedonia Północna                |        ✓       |                      |             |
 | Malta                          |        ✓       |         ✓            |             |
 | Mołdawia                        |        ✓       |                      |             |
 | Monako                         |        ✓       |         ✓            |             |

@@ -48,7 +48,7 @@ Podczas przygotowywania pliku tekstowego upewnij się, że:
   * W przypadku zwykłego tekstu każdy akapit jest oddzielony przez naciśnięcie **klawisza ENTER/Return** -View — [przykład wprowadzania tekstu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)
   * W przypadku tekstu SSML każdy element SSML jest traktowany jako akapit. Elementy SSML są oddzielane różnymi akapitami — [przykładem wyświetlania tekstu SSML](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)
 > [!NOTE]
-> W języku chińskim (kontynent), chińskim (Hongkong), chińskim (Tajwan), japońskim i koreańskim, jeden wyraz będzie liczony jako dwa znaki. 
+> W języku chińskim (kontynent), chińskim (SRA Hongkong), chińskim (Tajwan), japońskim i koreańskim, jeden wyraz będzie liczony jako dwa znaki. 
 
 ## <a name="submit-synthesis-requests"></a>Prześlij żądania syntezy
 

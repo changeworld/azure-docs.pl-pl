@@ -236,7 +236,7 @@ Jeśli kontakt obejmuje więcej niż jeden kraj/region, wprowadź każdy z dwóc
 | Sudan Południowy                         | SS        |
 | Hiszpania                               | ES        |
 | Sri Lanka                           | LK        |
-| Święta Helena, Wyspa Wniebowstąpienia, Tristan da Cunha | SH     |
+| Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha | SH     |
 | Sudan                               | SD        |
 | Surinam                            | SR        |
 | Svalbard                            | SJ        |

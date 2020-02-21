@@ -98,7 +98,7 @@ Oferty Azure Marketplace i AppSource można zakupić w 141 lokalizacje geografic
 | Litwa                           | LT        | EUR          |
 | Luksemburg                          | LU        | EUR          |
 | SRA Makau                           | MO        | USD          |
-| Północna Macedonia                     | MK        | USD          |
+| Macedonia Północna                     | MK        | USD          |
 | Malezja                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
 | Mauritius                           | MU        | USD          |

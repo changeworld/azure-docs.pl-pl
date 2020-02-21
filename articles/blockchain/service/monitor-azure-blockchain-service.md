@@ -89,7 +89,7 @@ W poniższej tabeli wymieniono właściwości dzienników serwera proxy usługi 
 | NodeLocation  | Region świadczenia usługi Azure, w którym jest wdrażany element członkowski łańcucha bloków.  |
 | BlockchainNodeName  | Nazwa węzła elementu członkowskiego usługi Azure łańcucha bloków, w którym jest wykonywana operacja.   |
 | EthMethod  | Metoda, która jest wywoływana przez podstawowy protokół łańcucha bloków w kworum, może być eth_sendTransactions, eth_getBlockByNumber itd.  |
-| Agent  | Agent użytkownika działający w imieniu użytkownika, taki jak przeglądarka sieci Web Mozilla, Edge itd. Przykłady wartości to: "Mozilla/5.0 (linux x64) Node. js/8.16.0 V8/6.2.414.77"  |
+| Agent  | Agent użytkownika działający w imieniu użytkownika, taki jak przeglądarka sieci Web Mozilla, Microsoft Edge itd. Przykłady wartości to: "Mozilla/5.0 (linux x64) Node. js/8.16.0 V8/6.2.414.77"  |
 | Kod   | Kody błędów HTTP. Zazwyczaj 4XX i 5XX są warunkami błędów.  |
 | NodeHost  | Nazwa DNS węzła.   |
 | RequestMethodName | Wywoływana metoda HTTP, możliwe wartości w tym miejscu są UMIESZCZAne w celu utworzenia elementu członkowskiego, pobieranie do pobrania szczegółów istniejącego elementu członkowskiego, usuwanie elementu członkowskiego usuwania, poprawka do aktualizacji elementu członkowskiego.   |

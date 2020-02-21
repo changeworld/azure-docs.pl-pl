@@ -39,7 +39,7 @@ Pakiety układów stron są okresowo aktualizowane w celu uwzględnienia poprawe
   - Pole adresu e-mail jest teraz `type=email` a klawiatury przenośne zapewniają poprawne sugestie
   - Obsługa funkcji tłumaczenia dla programu Chrome
 - Ujednolicone i samodzielne strony
-  - Pola username/email i Password używają teraz elementu `form` HTML, aby umożliwić programowi Edge i Internet Explorer (IE) prawidłowe Zapisywanie tych informacji.
+  - Pola username/email i Password używają teraz elementu `form` HTML, aby umożliwić programowi Microsoft Edge i Internet Explorer (IE) prawidłowe Zapisywanie tych informacji.
 
 ## <a name="110"></a>1.1.0
 

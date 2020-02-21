@@ -150,7 +150,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Katar                       | ✓               |                              |        ✓| 
 | Reunion                     | ✓               |                              |        ✓| 
 | Rwanda                      | ✓               |                              |        ✓| 
-| Święta Helena, Wyspa Wniebowstąpienia, Tristan da Cunha        | ✓               |                              |        ✓| 
+| Wyspa Świętej Heleny, Wyspa Wniebowstąpienia i Tristan da Cunha        | ✓               |                              |        ✓| 
 | Wyspy Świętego Tomasza i Książęca       | ✓               |                              |        ✓| 
 | Arabia Saudyjska                | ✓               |                              |        ✓| 
 | Senegal                     | ✓               |                              |        ✓| 
@@ -276,7 +276,7 @@ Poniższa tabela zawiera informacje o rodzaju informacji o pogodzie, które moż
 | Liechtenstein          | ✓ | ✓ |  ✓| 
 | Litwa              | ✓ |   |  ✓| 
 | Luksemburg             | ✓ | ✓ |  ✓| 
-| Północna Macedonia        | ✓ |   |  ✓| 
+| Macedonia Północna        | ✓ |   |  ✓| 
 | M alta                  | ✓ |   |  ✓| 
 | Mołdawia                | ✓ | ✓ |  ✓| 
 | Monaco                 | ✓ | ✓ |  ✓| 
