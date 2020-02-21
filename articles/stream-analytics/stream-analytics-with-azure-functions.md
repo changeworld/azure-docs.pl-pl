@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
-ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 233edabed345cd9586647e5f430e6d3dc6a87192
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772887"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505711"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Samouczek: uruchamianie Azure Functions z Azure Stream Analytics zadań 
 
@@ -20,7 +20,7 @@ Usługę Azure Functions można uruchomić z usługi Azure Stream Analytics, kon
 
 Usługa Stream Analytics wywołuje usługę Functions za pomocą wyzwalaczy protokołu HTTP. Adapter wyjścia usługi Functions umożliwia użytkownikom połączenie usługi Functions z usługą Stream Analytics, tak aby można było wyzwalać zdarzenia na podstawie zapytań usługi Stream Analytics. 
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie i uruchamianie zadania Stream Analytics
@@ -195,7 +195,9 @@ Jeśli wystąpi błąd podczas wysyłania zdarzeń do Azure Functions, Stream An
 
 Przy próbie resetowania wartości Maksymalny rozmiar partii/Maksymalna liczba partii na wartość pustą (domyślną) w witrynie Azure Portal wartość zostanie zmieniona z powrotem na wartość podaną wcześniej przy zapisywaniu. W takim przypadku ręcznie podaj wartości domyślne dla tych pól.
 
-W tej chwili korzystanie z [routingu protokołu Http](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) w usłudze Azure Functions nie jest obsługiwane przez platformę Stream Analytics.
+Korzystanie z [routingu http](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) na Azure Functions nie jest obecnie obsługiwane przez Stream Analytics.
+
+Obsługa połączenia z Azure Functions hostowanego w sieci wirtualnej nie jest włączona.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

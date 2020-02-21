@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aa71e1e6b58906953dfa22d08405c05c10c83242
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 44de5878dcc39e09adf24f69b883a29370f00b48
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966681"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505729"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Rozwiązywanie problemów dotyczących uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami
 
@@ -62,7 +62,7 @@ Wdrożenia mogą zakończyć się niepowodzeniem z jednego z następujących pow
 4. Obszar roboczy Log Analytics ma blokadę.
 5. Masz nieaktualną wersję modułów AzureRM lub rozwiązanie uruchamiania/zatrzymywania.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Zapoznaj się z poniższą listą, aby zapoznać się z potencjalnymi rozwiązaniami problemu lub miejscami, aby
 
@@ -92,7 +92,7 @@ Ten błąd może być spowodowany jedną z następujących przyczyn:
 3. W elemencie Runbook mogły wystąpić błędy
 4. Maszyny wirtualne mogły zostać wykluczone
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Zapoznaj się z poniższą listą, aby zapoznać się z potencjalnymi rozwiązaniami problemu lub miejscami, aby
 
@@ -133,7 +133,7 @@ Ten błąd może być spowodowany jedną z następujących przyczyn:
 3. Konto Uruchom jako może nie mieć wystarczających uprawnień do maszyny wirtualnej
 4. Maszyna wirtualna może znajdować się w stanie zatrzymania lub zatrzymywania
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Zapoznaj się z poniższą listą, aby zapoznać się z potencjalnymi rozwiązaniami problemu lub miejscami, aby
 
@@ -151,7 +151,7 @@ Zapoznaj się z poniższą listą, aby zapoznać się z potencjalnymi rozwiązan
 
 * Aby można było uruchamiać i zatrzymywać maszyny wirtualne, konto Uruchom jako dla konta usługi Automation musi mieć odpowiednie uprawnienia do maszyny wirtualnej. Aby dowiedzieć się, jak sprawdzić uprawnienia do zasobu, zobacz [Szybki Start: Wyświetlanie ról przypisanych do użytkownika przy użyciu Azure Portal](../../role-based-access-control/check-access.md). Należy podać identyfikator aplikacji dla jednostki usługi używanej przez konto Uruchom jako. Możesz pobrać tę wartość, przechodząc do konta usługi Automation w Azure Portal, wybierając pozycję **konta Uruchom jako** w obszarze **Ustawienia konta** i klikając odpowiednie konto Uruchom jako.
 
-* Jeśli maszyna wirtualna ma problem z uruchamianiem lub cofaniem przydziału, to zachowanie może być spowodowane przez problem związany z maszyną wirtualną. Niektóre przykłady lub potencjalne problemy polegają na tym, że aktualizacja jest stosowana podczas próby zamknięcia usługi, a usługa zawiesza się i nie tylko. Przejdź do zasobu maszyny wirtualnej i sprawdź **dzienniki aktywności** , aby sprawdzić, czy w dziennikach znajdują się błędy. Możesz także próbować zalogować się do maszyny wirtualnej, aby sprawdzić, czy w dziennikach zdarzeń występują błędy. Aby dowiedzieć się więcej o rozwiązywaniu problemów dotyczących maszyny wirtualnej, zobacz [Rozwiązywanie problemów z maszynami wirtualnymi](../../virtual-machines/troubleshooting/index.md)
+* Jeśli maszyna wirtualna ma problem z uruchamianiem lub cofaniem przydziału, to zachowanie może być spowodowane przez problem związany z maszyną wirtualną. Niektóre przykłady lub potencjalne problemy polegają na tym, że aktualizacja jest stosowana podczas próby zamknięcia usługi, a usługa zawiesza się i nie tylko. Przejdź do zasobu maszyny wirtualnej i sprawdź **dzienniki aktywności** , aby sprawdzić, czy w dziennikach znajdują się błędy. Możesz także próbować zalogować się do maszyny wirtualnej, aby sprawdzić, czy w dziennikach zdarzeń występują błędy. Aby dowiedzieć się więcej o rozwiązywaniu problemów dotyczących maszyny wirtualnej, zobacz [Rozwiązywanie problemów z maszynami wirtualnymi](../../virtual-machines/troubleshooting/index.yml)
 
 * Sprawdź [strumienie zadań](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) , aby wyszukać błędy. W portalu przejdź do konta usługi Automation i wybierz pozycję **zadania** w obszarze **Automatyzacja procesów**.
 
@@ -165,7 +165,7 @@ Utworzono niestandardowy element Runbook lub został on pobrany z Galeria progra
 
 Przyczyną niepowodzenia może być jedna z wielu rzeczy. Przejdź do konta usługi Automation w Azure Portal i wybierz pozycję **zadania** w obszarze **Automatyzacja procesów**. Na stronie **zadania** Znajdź zadania z elementu Runbook, aby wyświetlić wszystkie błędy zadań.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Zaleca się, aby do uruchamiania i zatrzymywania maszyn wirtualnych w Azure Automation używać [rozwiązania do uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami](../automation-solution-vm-management.md) . To rozwiązanie jest tworzone przez firmę Microsoft. Niestandardowe elementy Runbook nie są obsługiwane przez firmę Microsoft. Rozwiązanie dla niestandardowego elementu Runbook można znaleźć, odwiedzając artykuł dotyczący [rozwiązywania problemów](runbooks.md) z elementem Runbook. Ten artykuł zawiera ogólne wskazówki i rozwiązywanie problemów dotyczących elementów Runbook wszystkich typów. Sprawdź [strumienie zadań](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) , aby wyszukać błędy. W portalu przejdź do konta usługi Automation i wybierz pozycję **zadania** w obszarze **Automatyzacja procesów**.
 
@@ -179,7 +179,7 @@ Maszyny wirtualne, które zostały skonfigurowane w rozwiązaniu, nie zaczynają
 
 Jest to spowodowane przez nieprawidłowe znakowanie na maszynach wirtualnych.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Wykonaj następujące kroki, aby upewnić się, że rozwiązanie jest prawidłowo skonfigurowane.
 
@@ -199,7 +199,7 @@ Możesz znaleźć zadania, których nie powiodło się z powodu błędu `403 for
 
 Przyczyną tego problemu może być nieprawidłowo skonfigurowane lub wygasłe konto Uruchom jako. Może to być również spowodowane niewystarczającymi uprawnieniami do zasobów maszyny wirtualnej przy użyciu konta Uruchom jako konta usługi Automation.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Aby sprawdzić, czy konto Uruchom jako jest prawidłowo skonfigurowane, przejdź do konta usługi Automation w Azure Portal i wybierz pozycję **konta Uruchom jako** w obszarze **Ustawienia konta**. W tym miejscu zobaczysz stan kont Uruchom jako, jeśli konto Uruchom jako jest nieprawidłowo skonfigurowane lub wygasło jego stan.
 
@@ -222,7 +222,7 @@ Wiele błędów może być spowodowanych przez użycie starej i nieaktualnej wer
 > [!NOTE]
 > Rozwiązanie Start/Stop VMs during off-hours zostało przetestowane z modułami platformy Azure, które zostały zaimportowane do konta usługi Automation podczas wdrażania rozwiązania. Rozwiązanie nie działa obecnie z nowszymi wersjami modułu platformy Azure. Ma to wpływ tylko na konto usługi Automation używane do uruchamiania rozwiązania Start/Stop VMs during off-hours. Nadal można używać nowszych wersji modułu platformy Azure na innych kontach usługi Automation, zgodnie z opisem w artykule [jak zaktualizować moduły Azure PowerShell w Azure Automation](../automation-update-azure-modules.md)
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Aby rozwiązać wiele błędów, zaleca się usunięcie i zaktualizowanie rozwiązania. Aby dowiedzieć się, jak zaktualizować rozwiązanie, zobacz temat [Aktualizowanie uruchamiania/zatrzymywania maszyn wirtualnych poza godzinami](../automation-solution-vm-management.md#update-the-solution). Dodatkowo można sprawdzić [strumienie zadań](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) , aby wyszukać błędy. W portalu przejdź do konta usługi Automation i wybierz pozycję **zadania** w obszarze **Automatyzacja procesów**.
 

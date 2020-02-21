@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: ca2ac62892d1c8d438cc37bffcbfede14058bc23
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: af588db37970ee890b8640e45a98f8a1782c332b
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027720"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500518"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Samouczek: Używanie modelu możliwości urządzenia do tworzenia urządzenia Plug and Play IoT (wersja zapoznawcza) i nawiązywania połączenia z aplikacją IoT Central
 
 _Model możliwości urządzenia_ (DCM) zawiera opis możliwości urządzenia [Plug and Play IoT (wersja zapoznawcza)](../../iot-pnp/overview-iot-plug-and-play.md) . IoT Central może użyć DCM, aby utworzyć szablon urządzenia i wizualizacje dla urządzenia podczas łączenia się urządzenia po raz pierwszy.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Użyj Visual Studio Code, aby utworzyć urządzenie IoT Plug and Play (wersja zapoznawcza) przy użyciu DCM.
@@ -80,7 +80,7 @@ W tym samouczku za pomocą Menedżera bibliotek [Vcpkg](https://github.com/micro
 
 Aby podłączyć urządzenie do aplikacji IoT Central, wymagany jest klucz urządzenia. Aby wygenerować klucz urządzenia:
 
-1. Zaloguj się do aplikacji IoT Central utworzonej przy użyciu szablonu **aplikacja Niestandardowa > aplikacji w wersji zapoznawczej** w temacie [tworzenie aplikacji Azure IoT Central](./quick-deploy-iot-central.md) — Szybki Start.
+1. Zaloguj się do aplikacji IoT Central utworzonej przy użyciu szablonu **aplikacji niestandardowej** w temacie [tworzenie aplikacji Azure IoT Central](./quick-deploy-iot-central.md) — Szybki Start.
 
 1. Przejdź do strony **Administracja** i wybierz pozycję **połączenie z urządzeniem**.
 

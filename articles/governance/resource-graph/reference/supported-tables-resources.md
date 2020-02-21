@@ -1,0 +1,461 @@
+---
+title: Obsługiwane Menedżer zasobów typy zasobów
+description: Podaj listę typów zasobów Menedżer zasobów obsługiwanych przez usługę Azure Resource Graph i historię zmian.
+ms.date: 02/20/2020
+ms.topic: reference
+ms.openlocfilehash: 130b11f0060f7f27091a21652aa481f0340b288f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77530226"
+---
+# <a name="azure-resource-graph-table-and-resource-type-reference"></a>Informacje o tabeli i typie zasobów usługi Azure Resource Graph
+
+Wykres zasobów platformy Azure obsługuje następujące **typy zasobów** [Azure Resource Manager](../../../azure-resource-manager/management/overview.md). Każdy **Typ zasobu** jest częścią **tabeli** w grafie zasobów.
+
+## <a name="advisorresources"></a>advisorresources
+
+- Microsoft. Advisor/konfiguracje
+- Microsoft. Advisor/zalecenia
+- Microsoft. Advisor/tłumienie
+
+## <a name="alertsmanagementresources"></a>alertsmanagementresources
+
+- Microsoft. alertsmanagement/alerty
+
+## <a name="maintenanceresources"></a>maintenanceresources
+
+- Microsoft. Maintenance/configurationassignments
+- Microsoft. Konserwacja/aktualizacje
+
+## <a name="resourcecontainers"></a>resourcecontainers
+
+- Microsoft. resources/subscriptions
+- Microsoft. resources/subscriptions/ResourceGroups
+
+## <a name="resources"></a>zasoby
+
+- 84codes. CloudAMQP/serwery
+- Citrix. Services/xenappessentials
+- Citrix. Services/xendesktopessentials
+- conexlink. mycloudit/konta
+- crypteron. datasecurity/Apps
+- GridPro. evops/konta
+- GridPro. evops/accounts/eventrules
+- GridPro. evops/accounts/requesttemplates
+- GridPro. evops/accounts/views
+- Hive. Streaming/Services
+- incapsula. WAF/konta
+- livearena. Broadcast/Services
+- mailjet. email/Services
+- Microsoft. AAD/DomainServices
+- Microsoft. aadiam/dzierżawcy
+- Microsoft. alertsmanagement/actionrules
+- Microsoft. alertsmanagement/smartdetectoralertrules
+- Microsoft. AnalysisServices/serwery
+- Microsoft. apimanagement/Service
+- Microsoft. appconfiguration/configurationstores
+- Microsoft. appplatform/Sprężyna
+- Microsoft. archiwalne/Kolekcje
+- Microsoft. Automation/automationaccounts
+- Microsoft. Automation/automationaccounts/konfiguracje
+- Microsoft. Automation/automationaccounts/elementy Runbook
+- Microsoft. azconfig/configurationstores
+- Microsoft. usługi azureactivedirectory/b2cdirectories
+- Microsoft. azuredata/hybriddatamanagers
+- Microsoft. azuredata/postgresinstances
+- Microsoft. azuredata/sqlbigdataclusters
+- Microsoft. azuredata/sqlinstances
+- Microsoft. azuredata/SqlServerRegistrations
+- Microsoft. azurestack/rejestracje
+- Microsoft. baremetal/consoleconnections
+- Microsoft. baremetal/crayservers
+- Microsoft. baremetal/monitoringservers
+- Microsoft. Batch/batchaccounts
+- Microsoft. batchai Job/klastry
+- Microsoft. batchai Job/fileservers
+- Microsoft. batchai Job/zadania
+- Microsoft. batchai Job/obszary robocze
+- Microsoft. BingMaps/mapapis
+- Microsoft. biztalkservices/BizTalk
+- Microsoft. łańcucha bloków/blockchainmembers
+- Microsoft. łańcucha bloków/cordamembers
+- Microsoft. łańcucha bloków/obserwatorzy
+- Microsoft. botservice/botservices
+- Microsoft. cache/Redis
+- Microsoft. CDN/cdnwebapplicationfirewallpolicies
+- Microsoft. CDN/profile
+- Microsoft. CDN/profile/punkty końcowe
+- Microsoft. certificateregistration/certificateorders
+- Microsoft. classiccompute/DomainNames
+- Microsoft. classiccompute/virtualmachines
+- Microsoft. classicnetwork/networksecuritygroups
+- Microsoft. classicnetwork/reservedips
+- Microsoft. classicnetwork/virtualnetworks
+- Microsoft. classicstorage/storageaccounts
+- Microsoft. Clouds/accounts
+- Microsoft. cloudsearch/indeksy
+- Microsoft. Cognition/syntheticsaccounts
+- Microsoft. cognitiveservices/konta
+- Microsoft. COMPUTE/availabilitysets
+- Microsoft. COMPUTE/diskencryptionsets
+- Microsoft. COMPUTE/disks
+- Microsoft. COMPUTE/galerie
+- Microsoft. COMPUTE/Galerie/aplikacje
+- Microsoft. COMPUTE/Galerie/aplikacje/wersje
+- Microsoft. COMPUTE/Galerie/obrazy
+- Microsoft. COMPUTE/Galerie/obrazy/wersje
+- Microsoft. COMPUTE/hostgroups
+- Microsoft. COMPUTE/hostgroups/hosty
+- Microsoft. COMPUTE/images
+- Microsoft. COMPUTE/proximityplacementgroups
+- Microsoft. COMPUTE/restorepointcollections
+- Microsoft. COMPUTE/sharedvmextensions
+- Microsoft. COMPUTE/sharedvmextensions/wersje
+- Microsoft. COMPUTE/sharedvmimages
+- Microsoft. COMPUTE/sharedvmimages/wersje
+- Microsoft. COMPUTE/snapshots
+- Microsoft. COMPUTE/virtualmachines
+- Microsoft. COMPUTE/virtualmachines/rozszerzenia
+- Microsoft. COMPUTE/virtualmachinescalesets
+- Microsoft. containerinstance/containergroups
+- Microsoft. containerregistry/rejestry
+- Microsoft. containerregistry/rejestry/BuildTasks
+- Microsoft. containerregistry/rejestry/replikacje
+- Microsoft. containerregistry/rejestry/taskruns
+- Microsoft. containerregistry/rejestry/zadania
+- Microsoft. containerregistry/rejestry/elementy webhook
+- Microsoft. containerservice/containerservices
+- Microsoft. containerservice/managedclusters
+- Microsoft. containerservice/openshiftmanagedclusters
+- Microsoft. contoso/pracownicy
+- Microsoft. costmanagement/łączniki
+- Microsoft. customproviders/resourceproviders
+- Microsoft. DATAbox/zadania
+- Microsoft. databoxedge/databoxedgedevices
+- Microsoft. datacegły/obszary robocze
+- Microsoft. datacatalog/wykazy
+- Microsoft. datacatalog/wykazy
+- Microsoft. DataFactory/datafactors
+- Microsoft. DataFactory/fabryki
+- Microsoft. datalakeanalytics/konta
+- Microsoft. kontach datalakestore/konta
+- Microsoft. datamigration/Services
+- Microsoft. datamigration/Services/Projects
+- Microsoft. datamigration/Slots
+- Microsoft. dataprotection/backupvaults
+- Microsoft. dataudział/konta
+- Microsoft. dbformariadb/serwery
+- Microsoft. dbformysql/serwery
+- Microsoft. dbforpostgresql/ServerGroups
+- Microsoft. dbforpostgresql/serwery
+- Microsoft. dbforpostgresql/serversv2
+- Microsoft. deploymentmanager/artifactsources
+- Microsoft. deploymentmanager/wdrożenia
+- Microsoft. deploymentmanager/servicetopologie
+- Microsoft. deploymentmanager/servicetopologie/usługi
+- Microsoft. deploymentmanager/servicetopologie/usługi/serviceunits
+- Microsoft. deploymentmanager/kroki
+- Microsoft. desktopvirtualization/applicationgroups
+- Microsoft. desktopvirtualization/hostpools
+- Microsoft. desktopvirtualization/obszary robocze
+- Microsoft. detonationservice/detonationinstances
+- Microsoft. Devices/elasticpools
+- Microsoft. Devices/elasticpools/iothubtenants
+- Microsoft. Devices/iothubs
+- Microsoft. Devices/provisioningservices
+- Microsoft. DevOps/potoki
+- Microsoft. devspaces/kontrolery
+- Microsoft. wspólny/labcenters
+- Microsoft. wspólny/laboratoria
+- Microsoft. wspólny/Labs/servicerunners
+- Microsoft. wspólny/Labs/virtualmachines
+- Microsoft. wspólny/harmonogramy
+- Microsoft. digitaltwins/digitaltwinsinstances
+- Microsoft. DocumentDB/databaseaccounts
+- Microsoft. domainregistration/domeny
+- Microsoft. enterpriseknowledgegraph/usługi
+- Microsoft. eventgrid/domeny
+- Microsoft. eventgrid/partnernamespaces
+- Microsoft. eventgrid/partnerregistrations
+- Microsoft. eventgrid/partnertopics
+- Microsoft. eventgrid/systemtopics
+- Microsoft. eventgrid/tematy
+- Microsoft. eventhub/klastry
+- Microsoft. eventhub/przestrzenie nazw
+- Microsoft. eksperymentowanie/experimentworkspaces
+- Microsoft. gry/tytuły
+- Microsoft. genomika/konta
+- Microsoft. guestconfiguration/automanagedaccounts
+- Microsoft. hanaonazure/hanainstances
+- Microsoft. hanaonazure/sapmonitors
+- Microsoft. hardwaresecuritymodules/modułów dedicatedhsms
+- Microsoft. HDInsight/Klastry
+- Microsoft. healthcareapis/usługi
+- Microsoft. hybridcompute/maszyny
+- Microsoft. hybridcompute/Machines/Extensions
+- Microsoft. hybriddata/datamanagers
+- Microsoft. Hydra/składniki
+- Microsoft. Hydra/networkscopes
+- Microsoft. importexport/zadania
+- Microsoft. Insights/actiongroups
+- Microsoft. Insights/activitylogalerts
+- Microsoft. Insights/alertrules
+- Microsoft. Insights/autoscalesettings
+- Microsoft. Insights/składniki
+- Microsoft. Insights/datacollectionrules
+- Microsoft. Insights/guestdiagnosticsettings
+- Microsoft. Insights/metricalerts
+- Microsoft. Insights/notificationgroups
+- Microsoft. Insights/notificationrules
+- Microsoft. Insights/scheduledqueryrules
+- Microsoft. Insights/webtests
+- Microsoft. Insights/skoroszyty
+- Microsoft. Insights/workbooktemplates
+- Microsoft. iotcentral/iotapps
+- Microsoft. iotspaces/Graph
+- Microsoft./Magazyn kluczy/hsmpools
+- Microsoft./magazyny kluczy
+- Microsoft. Kubernetes/connectedclusters
+- Microsoft. Kusto/klastry
+- Microsoft. Kusto/klastry/bazy danych
+- Microsoft. labservices/labaccounts
+- Microsoft. Logic/integrationaccounts
+- Microsoft. Logic/integrationserviceenvironments
+- Microsoft. Logic/integrationserviceenvironments/managedapis
+- Microsoft. Logic/przepływy pracy
+- Microsoft. machinelearning/commitmentplans
+- Microsoft. machinelearning/WebServices
+- Microsoft. machinelearning/obszary robocze
+- Microsoft. machinelearningcompute/operationalizationclusters
+- Microsoft. machinelearningservices/obszary robocze
+- Microsoft. Maintenance/maintenanceconfigurations
+- Microsoft. Maintenance/maintenancepolicies
+- Microsoft. managedidentity/grupy
+- Microsoft. managedidentity/resourceidentity
+- Microsoft. managednetwork/managednetworkgroups
+- Microsoft. managednetwork/managednetworkpeeringpolicies
+- Microsoft. managednetwork/managednetworks
+- Microsoft. managednetwork/managednetworks/managednetworkgroups
+- Microsoft. managednetwork/managednetworks/managednetworkpeeringpolicies
+- Microsoft. Maps/konta
+- Microsoft. marketplaceapps/classicdevservices
+- Microsoft. Media/MediaServices
+- Microsoft. Media/MediaServices/liveevents
+- Microsoft. Media/MediaServices/streamingendpoints
+- Microsoft. Media/MediaServices/transformacje
+- Microsoft. microservices4spring/appclusters
+- Microsoft. migrowana/assessmentprojects
+- Microsoft. migrowana/migrateprojects
+- Microsoft. migrowana/movecollections
+- Microsoft. Migracja/projekty
+- Microsoft. mixedreality/holographicsbroadcastaccounts
+- Microsoft. mixedreality/objectunderstandingaccounts
+- Microsoft. mixedreality/remoterenderingaccounts
+- Microsoft. mixedreality/spatialanchorsaccounts
+- Microsoft. mixedreality/surfacereconstructionaccounts
+- Microsoft. NetApp/netappaccounts
+- Microsoft. NetApp/netappaccounts/backuppolicies
+- Microsoft. NetApp/netappaccounts/capacitypools
+- Microsoft. NetApp/netappaccounts/capacitypools/woluminy
+- Microsoft. NetApp/netappaccounts/capacitypools/woluminy/mounttargets
+- Microsoft. NetApp/netappaccounts/capacitypools/woluminy/migawki
+- Microsoft. Network/applicationgateways
+- Microsoft. Network/applicationgatewaywebapplicationfirewallpolicies
+- Microsoft. Network/applicationsecuritygroups
+- Microsoft. Network/azurefirewalls
+- Microsoft. Network/bastionhosts
+- Microsoft. Network/Connections
+- Microsoft. Network/ddoscustompolicies
+- Microsoft. Network/ddosprotectionplans
+- Microsoft. Network/dnszones
+- Microsoft. Network/expressroutecircuits
+- Microsoft. Network/expressroutecrossconnections
+- Microsoft. Network/expressroutegateways
+- Microsoft. Network/expressrouteports
+- Microsoft. Network/firewallpolicies
+- Microsoft. Network/usługi frontdoor
+- Microsoft. Network/frontdoorwebapplicationfirewallpolicies
+- Microsoft. Network/ipgroups
+- Microsoft. Network/loadbalancers
+- Microsoft. Network/localnetworkgateways
+- Microsoft. Network/natgateways
+- Microsoft. Network/networkexperimentprofiles
+- Microsoft. Network/networkintentpolicies
+- Microsoft. Network/NetworkInterfaces
+- Microsoft. Network/networkprofiles
+- Microsoft. Network/networksecuritygroups
+- Microsoft. Network/networkwatchers
+- Microsoft. Network/networkwatchers/connectionmonitors
+- Microsoft. Network/networkwatchers/flowlogs
+- Microsoft. Network/networkwatchers/soczewki
+- Microsoft. Network/networkwatchers/pingmeshes
+- Microsoft. Network/p2svpngateways
+- Microsoft. Network/privatednszones
+- Microsoft. Network/privatednszones/virtualnetworklinks
+- Microsoft. Network/privateendpointredirectmaps
+- Microsoft. Network/privateendpoints
+- Microsoft. Network/privatelinkservices
+- Microsoft. Network/adresów publicipaddress
+- Microsoft. Network/publicipprefixes
+- Microsoft. Network/routefilters
+- Microsoft. Network/routetables
+- Microsoft. Network/sampleresources
+- Microsoft. Network/serviceendpointpolicies
+- Microsoft. Network/trafficmanagerprofiles
+- Microsoft. Network/virtualhubs
+- Microsoft. Network/virtualnetworkgateways
+- Microsoft. Network/virtualnetworks
+- Microsoft. Network/virtualnetworktaps
+- Microsoft. Network/virtualrouters
+- Microsoft. Network/virtualwans
+- microsoft.network/vpngateways
+- Microsoft. Network/vpnserverconfigurations
+- Microsoft. Network/vpnsites
+- Microsoft. notificationhubs/przestrzenie nazw
+- Microsoft. notificationhubs/przestrzenie nazw/notificationhubs
+- Microsoft. ObjectStore/osnamespaces
+- Microsoft. offazure/hypervsites
+- Microsoft. offazure/importsites
+- Microsoft. offazure/serversites
+- Microsoft. offazure/vmwaresites
+- Microsoft. operationalinsights/klastry
+- Microsoft. operationalinsights/obszary robocze
+- Microsoft. operationsmanagement/rozwiązania
+- Microsoft. operationsmanagement/widoki
+- Microsoft. Komunikacja równorzędna/Komunikacja równorzędna
+- Microsoft. Komunikacja równorzędna/peeringservices
+- Microsoft. Portal/pulpity nawigacyjne
+- Microsoft. portalsdk/rootresources
+- Microsoft. PowerBI/workspacecollections
+- Microsoft. powerbidedicated/pojemności
+- Microsoft. projectarcadia/obszary robocze
+- Microsoft. projectarcadia/Workspaces/sparkcomputes
+- Microsoft. projectarcadia/Workspaces/xmlcomputes
+- Microsoft. projectbabylon/konta
+- Microsoft. recoveryservices/magazyny
+- Microsoft. redhatopenshift/openshiftclusters
+- Microsoft. Relay/przestrzenie nazw
+- Microsoft. RemoteApp/kolekcje
+- Microsoft. resourcegraph/zapytania
+- Microsoft. resources/deploymentscripts
+- Microsoft. SaaS/aplikacje
+- Microsoft. Scheduler/jobcollections
+- Microsoft. Search/searchservices
+- Microsoft. Security/automations
+- Microsoft. Security/iotsecuritysolutions
+- Microsoft. ServiceBus/przestrzenie nazw
+- Microsoft. servicefabric/klastry
+- Microsoft. servicefabric/containergroupsets
+- Microsoft. servicefabric/managedclusters
+- Microsoft. servicefabricmesh/aplikacje
+- Microsoft. servicefabricmesh/bramy
+- Microsoft. servicefabricmesh/sieci
+- Microsoft. servicefabricmesh/Secret
+- Microsoft. servicefabricmesh/woluminy
+- Microsoft. signalrservice/sygnalizujący
+- Microsoft. Solutions/appliancedefinitions
+- Microsoft. Solutions/urządzenia
+- Microsoft. Solutions/applicationdefinitions
+- Microsoft. Solutions/aplikacje
+- Microsoft. Solutions/jitrequests
+- Microsoft. spoolservice/bufory
+- Microsoft. SQL/instancepools
+- Microsoft. SQL/ManagedInstances
+- Microsoft. SQL/ManagedInstances/bazy danych
+- Microsoft. SQL/serwery
+- Microsoft. SQL/serwery/bazy danych
+- Microsoft. SQL/serwery/elasticpools
+- Microsoft. SQL/serwery/jobaccounts
+- Microsoft. SQL/serwery/jobagents
+- Microsoft. SQL/virtualclusters
+- Microsoft. sqlvirtualmachine/sqlvirtualmachinegroups
+- Microsoft. sqlvirtualmachine/sqlvirtualmachines
+- Microsoft. sqlvm/dwvm
+- Microsoft. Storage/storageaccounts
+- Microsoft. storagecache/pamięci podręczne
+- Microsoft. storagesync/storagesyncservices
+- Microsoft. storagesyncdev/storagesyncservices
+- Microsoft. storagesyncint/storagesyncservices
+- Microsoft. StorSimple/menedżerowie
+- Microsoft. streamanalytics/streamingjobs
+- Microsoft. Support/supporttickets
+- Microsoft. Synapse/obszary robocze
+- Microsoft. Synapse/Workspaces/bigdatapools
+- Microsoft. Synapse/obszary robocze/xmlpools
+- Microsoft. terraformoss/providerregistrations
+- Microsoft. timeseriesinsights/środowiska
+- Microsoft. timeseriesinsights/Environments/eventsources
+- Microsoft. timeseriesinsights/Environments/referencedatasets
+- Microsoft. token/sklepy
+- Microsoft. tokenvault/magazyny
+- Microsoft. virtualmachineimages/imagetemplates
+- Microsoft. VisualStudio/konto
+- Microsoft. VisualStudio/Account/Extension
+- Microsoft. VisualStudio/Account/Project
+- Microsoft. vmwarecloudsimple/dedicatedcloudnodes
+- Microsoft. vmwarecloudsimple/dedicatedcloudservices
+- Microsoft. vmwarecloudsimple/virtualmachines
+- Microsoft. vmwareonazure/privateclouds
+- Microsoft. vmwarevirtustream/privateclouds
+- Microsoft. vnfmanager/urządzenia
+- Microsoft. vnfmanager/vnfs
+- Microsoft. VSOnline/konta
+- Microsoft. VSOnline/plany
+- Microsoft. Web/apimanagementaccounts/interfejsy API
+- Microsoft. Web/certyfikaty
+- Microsoft. Web/connectiongateways
+- Microsoft. Web/Connections
+- Microsoft. Web/customapis
+- Microsoft. Web/hostingenvironments
+- Microsoft. Web/dopuszczalna
+- Microsoft. Web/witryny
+- Microsoft. Web/Sites/premieraddons
+- Microsoft. Web/Sites/miejsca
+- Microsoft. Web/staticsites
+- Microsoft. windowsesu/multipleactivationkeys
+- Microsoft. windowsiot/deviceservices
+- MyGet. packagemanagement/Services
+- paraleap. cloudmonix/Services
+- pokitdok. platform/usług
+- dostawcy. test/statefulibizaengines
+- dostawcy. test/statefulresources
+- dostawcy. test/statefulresources/nestedresources
+- dostawcy. test/statelessresources
+- RavenHQ. DB/bazy danych
+- Rozwiązanie Raygun. crashreporting/Apps
+- SendGrid. email/accounts
+- sparkpost. podstawowe/usługi
+- rozwiązania Stackify. retrace/Services
+- Test. Shoebox/testresources
+- Test. Shoebox/testresources2
+- trendmicro. deepsecurity/konta
+- u2uconsult. theidentityhub/Services
+- wandisco. Fusion/fusiongroups
+- wandisco. Fusion/fusiongroups/azurezones
+- wandisco. Fusion/fusiongroups/onpremzones
+- wandisco. Fusion/fusiongroups/replicationrules
+
+## <a name="securityresources"></a>securityresources
+
+- assessmentmetadata
+- Microsoft. Security/Assessments
+- Microsoft. zabezpieczenia/oceny/podoceny
+- Microsoft. Security/cenniki
+- Microsoft. Security/regulatorycompliancestandards
+- Microsoft. Security/regulatorycompliancestandards/regulatorycompliancecontrols
+- Microsoft. Security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments
+- Microsoft. Security/securitystatuses
+- Microsoft. Security/securitystatuses/containerhosts
+- Microsoft. Security/securitystatuses/onpremisemachines
+- Microsoft. Security/securitystatuses/serwery
+- Microsoft. Security/securitystatuses/podsieci
+- Microsoft. Security/securitystatuses/virtualmachines
+- Microsoft. Security/securitystatusessummaries
+
+## <a name="next-steps"></a>Następne kroki
+
+- Dowiedz się więcej o [języku zapytań](../concepts/query-language.md).
+- Dowiedz się więcej o sposobach [eksplorowania zasobów](../concepts/explore-resources.md).
+- Zobacz przykłady [początkowych zapytań](../samples/starter.md).

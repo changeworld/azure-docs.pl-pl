@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 01/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 5048cefaae10cd55091dd72f0b73a3cf9d731a35
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047104"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498851"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Przypisywanie ról usługi Azure AD w Privileged Identity Management
 
@@ -33,9 +33,9 @@ Od listopada 2019 część Privileged Identity Management ról usługi Azure AD 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu użytkownika, który znajduje się w roli [administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 1. Otwórz **Azure AD Privileged Identity Management**. Jeśli masz baner w górnej części strony przegląd, postępuj zgodnie z instrukcjami wyświetlanymi na karcie **Nowa wersja** tego artykułu. W przeciwnym razie postępuj zgodnie z instrukcjami podanymi w **poprzedniej wersji** karty.
 
-    ![Nowa wersja ról usługi Azure AD](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-# <a name="new-versiontabnew"></a>[Nowa wersja](#tab/new)
+# <a name="new-version"></a>[Nowa wersja](#tab/new)
 
 ## <a name="assign-a-role"></a>Przypisywanie roli
 
@@ -75,11 +75,11 @@ Wykonaj następujące kroki, aby użytkownik mógł kwalifikować się do roli a
 
 1. Aby określić określony czas trwania przypisania, usuń zaznaczenie pola wyboru i zmodyfikuj datę i godzinę rozpoczęcia i/lub zakończenia. Po zakończeniu wybierz pozycję **gotowe**.
 
-    ![Ustawienia członkostw — Data i godzina](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+    ![Ustawienia członkostw — Data i godzina](./media/pim-how-to-add-role-to-user/start-and-end-dates.png)
 
 1. Aby utworzyć nowe przypisanie roli, wybierz pozycję **Dodaj**. Zostanie wyświetlone powiadomienie o stanie.
 
-    ![Nowe przypisanie — powiadomienie](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+    ![Nowe przypisanie — powiadomienie](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Aktualizowanie lub usuwanie istniejącego przypisania roli
 
@@ -87,23 +87,19 @@ Wykonaj następujące kroki, aby zaktualizować lub usunąć istniejące przypis
 
 1. Otwórz **Azure AD Privileged Identity Management**.
 
-1. Wybierz pozycję **zasoby platformy Azure**.
+1. Wybierz pozycję **role usługi Azure AD**.
 
-1. Wybierz zasób, którym chcesz zarządzać, na przykład subskrypcję lub grupę zarządzania.
-
-1. W obszarze Zarządzanie wybierz pozycję **role** , aby wyświetlić listę ról dla zasobów platformy Azure.
+1. Wybierz pozycję **role** , aby wyświetlić listę ról usługi Azure AD.
 
 1. Wybierz rolę, którą chcesz zaktualizować lub usunąć.
 
 1. Znajdź przypisanie roli na kartach **kwalifikujące się role** lub **role aktywne** .
 
-    ![Aktualizowanie lub usuwanie przypisania roli](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+    ![Aktualizowanie lub usuwanie przypisania roli](./media/pim-how-to-add-role-to-user/remove-update-assignments.png)
 
 1. Wybierz pozycję **Aktualizuj** lub **Usuń** , aby zaktualizować lub usunąć przypisanie roli.
 
-    Informacje o rozszerzaniu przypisania roli znajdują się [w temacie rozszerzanie lub odnawianie ról zasobów platformy Azure w Privileged Identity Management](pim-resource-roles-renew-extend.md).
-
-# <a name="previous-versiontabprevious"></a>[Poprzednia wersja](#tab/previous)
+# <a name="previous-version"></a>[Poprzednia wersja](#tab/previous)
 
 ## <a name="make-a-user-eligible-for-a-role"></a>Przyznaj użytkownikowi uprawnienia do roli
 

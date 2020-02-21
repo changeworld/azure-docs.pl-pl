@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 04cc45956fc5aedc4c14dfb138be5db02ddec500
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2361192a612cfd92003b1e3c36e85dbbd9090bb
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847058"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482772"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Użyj atrybutów niestandardowych w niestandardowych zasadach edytowania profilu
 
@@ -34,7 +34,7 @@ Katalog Azure AD B2C zawiera wbudowany zestaw atrybutów. Przykłady to **imię*
 * Dostawca tożsamości ma unikatowy identyfikator użytkownika, taki jak **uniqueUserGUID** , który musi zostać zapisany.
 * Niestandardowa podróż użytkownika wymaga utrzymania stanu użytkownika, takiego jak **migrationStatus**.
 
-Azure AD B2C rozszerza zestaw atrybutów przechowywanych na poszczególnych kontach użytkowników. Można również odczytywać i zapisywać te atrybuty przy użyciu [interfejs API programu Graph usługi Azure AD](manage-user-accounts-graph-api.md).
+Azure AD B2C rozszerza zestaw atrybutów przechowywanych na poszczególnych kontach użytkowników. Można również odczytywać i zapisywać te atrybuty przy użyciu [interfejsu API Microsoft Graph](manage-user-accounts-graph-api.md).
 
 Właściwości rozszerzenia rozszerzają schemat obiektów użytkownika w katalogu. *Właściwość rozszerzenia*terminów, *atrybut niestandardowy*i *niestandardowa* , odwołują się do tego samego elementu w kontekście tego artykułu. Nazwa różni się w zależności od kontekstu, takiego jak aplikacja, obiekt lub zasady.
 
@@ -271,7 +271,7 @@ Token identyfikatora wysłany z powrotem do aplikacji zawiera nową właściwoś
 
    a. W dzierżawie B2C w portal.azure.com przejdź do **Azure Active Directory** i wybierz pozycję **rejestracje aplikacji**.
    b. Znajdź **aplikację B2C-Extensions-App** i wybierz ją.
-   d. W obszarze **Essentials**wprowadź **Identyfikator aplikacji** i **Identyfikator obiektu**.
+   c. W obszarze **Essentials**wprowadź **Identyfikator aplikacji** i **Identyfikator obiektu**.
    d. Uwzględnij je w metadanych usługi **AAD-Common** profilu technicznym:
 
    ```xml
@@ -295,9 +295,9 @@ Token identyfikatora wysłany z powrotem do aplikacji zawiera nową właściwoś
    extension_<app-guid>_ActivationStatus via Graph API.
    ```
 
-## <a name="reference"></a>Informacje ogólne
+## <a name="reference"></a>Dokumentacja
 
-Aby uzyskać więcej informacji na temat właściwości rozszerzenia, zobacz artykuł [rozszerzenia schematu katalogu | Pojęcia interfejs API programu Graph](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
+Aby uzyskać więcej informacji na temat właściwości rozszerzenia, zobacz artykuł [Dodawanie niestandardowych danych do zasobów przy użyciu rozszerzeń](https://docs.microsoft.com/graph/extensibility-overview).
 
 > [!NOTE]
 > * **Profilu technicznym** to typ elementu lub funkcja, która definiuje nazwę, metadane i protokół punktu końcowego. **Profilu technicznym** szczegóły wymiany oświadczeń wykonywanych przez strukturę środowiska tożsamości. Gdy ta funkcja jest wywoływana w kroku aranżacji lub z innego **profilu technicznym**, **InputClaims** i **OutputClaims** są udostępniane jako parametry przez obiekt wywołujący.

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 21fde69f404ee535bfe0019a91843297b1752a92
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 8649537a2992ba11a2b664a9b36207e06c8b1274
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463143"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498550"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Wdrażanie zasad niestandardowych przy użyciu Azure Pipelines
 
@@ -35,6 +35,7 @@ Aby umożliwić Azure Pipelines Zarządzanie zasadami niestandardowymi w ramach 
 
 * [Azure AD B2C dzierżawy](tutorial-create-tenant.md)i poświadczenia dla użytkownika w katalogu z rolą [administratora zasad B2C IEF](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)
 * [Zasady niestandardowe](custom-policy-get-started.md) przekazane do dzierżawy
+* [Aplikacja zarządzania](microsoft-graph-get-started.md) zarejestrowana w dzierżawie przy użyciu zasad uprawnień interfejsu API Microsoft Graph *. ReadWrite. TrustFramework*
 * [Potok platformy Azure](https://azure.microsoft.com/services/devops/pipelines/)i dostęp do [projektu Azure DevOps Services][devops-create-project]
 
 ## <a name="client-credentials-grant-flow"></a>Przepływ przyznania poświadczeń klienta
@@ -43,47 +44,11 @@ W tym scenariuszu opisano sposób korzystania z wywołań między usługami Azur
 
 ## <a name="register-an-application-for-management-tasks"></a>Rejestrowanie aplikacji na potrzeby zadań zarządzania
 
-Zacznij od utworzenia rejestracji aplikacji, która będzie używana przez Azure Pipelines skryptów programu PowerShell do komunikowania się z Azure AD B2C. Jeśli masz już rejestrację aplikacji używaną na potrzeby zadań automatyzacji, możesz przejść do sekcji [Udziel uprawnień](#grant-permissions) .
+Jak wspomniano w [wymaganiach wstępnych](#prerequisites), potrzebna jest rejestracja aplikacji, którą skrypty programu PowerShell — wykonywane przez Azure Pipelines — mogą używać do uzyskiwania dostępu do zasobów w dzierżawie.
 
-### <a name="register-application"></a>Zarejestruj aplikację
+Jeśli masz już rejestrację aplikacji używaną dla zadań automatyzacji, upewnij się, że udzielono uprawnienia **Microsoft Graph** **zasad >  > Policy** **. ReadWrite. TrustFramework** w ramach **uprawnień interfejsu API** rejestracji aplikacji.
 
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
-
-### <a name="grant-permissions"></a>Udzielenie uprawnień
-
-Następnie Udziel uprawnienia aplikacji do korzystania z interfejsu API Microsoft Graph do odczytywania i zapisywania zasad niestandardowych w dzierżawie Azure AD B2C.
-
-#### <a name="applications"></a>[Aplikacje](#tab/applications/)
-
-1. Na stronie Przegląd **zarejestrowanej aplikacji** wybierz pozycję **Ustawienia**.
-1. W obszarze **dostęp do interfejsu API**wybierz pozycję **wymagane uprawnienia**.
-1. Wybierz pozycję **Dodaj**, a następnie **Wybierz interfejs API**.
-1. Wybierz pozycję **Microsoft Graph**, a następnie **Wybierz pozycję**.
-1. W obszarze **uprawnienia aplikacji**wybierz pozycję **Odczytaj i Zapisz zasady struktury zaufania organizacji**.
-1. Wybierz pozycję **Wybierz**, a następnie pozycję **gotowe**.
-1. Wybierz pozycję **Udziel uprawnień**, a następnie wybierz pozycję **tak**. Pełne propagowanie uprawnień może potrwać kilka minut.
-
-#### <a name="app-registrations-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
-
-1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz aplikację sieci Web, która powinna mieć dostęp do interfejsu API Microsoft Graph. Na przykład *managementapp1*.
-1. W obszarze **Zarządzaj**wybierz pozycję **uprawnienia interfejsu API**.
-1. W obszarze **skonfigurowane uprawnienia**wybierz pozycję **Dodaj uprawnienie**.
-1. Wybierz kartę **interfejsy API firmy Microsoft** , a następnie wybierz pozycję **Microsoft Graph**.
-1. Wybierz pozycję **Uprawnienia aplikacji**.
-1. Rozwiń węzeł **zasady** i wybierz pozycję **Policy. ReadWrite. TrustFramework**.
-1. Wybierz pozycję **Dodaj uprawnienia**. Poczekaj kilka minut, zanim przejdziesz do kolejnego kroku.
-1. Wybierz pozycję **Udziel zgody administratora (nazwa dzierżawy)** .
-1. Wybierz obecnie zalogowane konto administratora lub Zaloguj się przy użyciu konta w dzierżawie Azure AD B2C, do którego przypisano co najmniej rolę *administratora aplikacji w chmurze* .
-1. Wybierz pozycję **Zaakceptuj**.
-1. Wybierz pozycję **Odśwież**, a następnie sprawdź, czy "udzielono dla..." pojawia się w obszarze **stan**. Propagowanie uprawnień może potrwać kilka minut.
-
-* * *
-
-### <a name="create-client-secret"></a>Utwórz klucz tajny klienta
-
-Aby można było uwierzytelnić się za pomocą Azure AD B2C, skrypt programu PowerShell musi określić klucz tajny klienta, który został utworzony dla aplikacji.
-
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+Instrukcje dotyczące rejestrowania aplikacji zarządzania programu znajdują się w temacie [zarządzanie Azure AD B2C przy użyciu Microsoft Graph](microsoft-graph-get-started.md).
 
 ## <a name="configure-an-azure-repo"></a>Konfigurowanie repozytorium platformy Azure
 
@@ -166,7 +131,7 @@ Gdy Twoje repozytorium zostało zainicjowane i uzupełnione o niestandardowe pli
 1. Wybierz kartę **zmienne** .
 1. Dodaj następujące zmienne w obszarze **zmienne potokowe** i ustaw ich wartości w określony sposób:
 
-    | Name (Nazwa) | Wartość |
+    | Name (Nazwa) | Value |
     | ---- | ----- |
     | `clientId` | **Identyfikator aplikacji (klienta)** , która została zarejestrowana wcześniej. |
     | `clientSecret` | Wartość **wpisu tajnego klienta** , który został utworzony wcześniej. <br /> Zmień typ zmiennej na **wpis tajny** (wybierz ikonę kłódki). |
@@ -200,7 +165,7 @@ Następnie Dodaj zadanie, aby wdrożyć plik zasad.
 
         ```PowerShell
         # After
-        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/contosob2cpolicies/B2CAssets/TrustFrameworkBase.xml
+        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/TrustFrameworkBase.xml
         ```
 
 1. Wybierz pozycję **Zapisz** , aby zapisać zadanie agenta.

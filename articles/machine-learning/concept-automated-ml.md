@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 2869384d4f4072e1e71ab0a69af81edc68e7a5b7
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 2ef3cbc83cd67647709a53fee2c32b444c5d86f4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366248"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526131"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
@@ -139,11 +139,11 @@ Krzyżowe sprawdzanie poprawności (CV) to proces tworzenia wielu podzbiorów da
 
 Należy wziąć pod uwagę następujące przeszkolone modele i ich odpowiadające im uczenia i testy.
 
-| Modelowanie | Dokładność szkolenia | Dokładność testu |
+| Model | Dokładność szkolenia | Dokładność testu |
 |-------|----------------|---------------|
 | A | 99,9% | 95% |
 | B | 87% | 87% |
-| C | 99,9% | 45% |
+| K | 99,9% | 45% |
 
 Biorąc pod uwagę model **A**, istnieje powszechna koncepcja, że jeśli dokładność testu dla niewidocznych danych jest mniejsza niż dokładność szkolenia, model jest nadmiernie dopasowany. Jednak dokładność testu powinna być zawsze mniejsza od dokładności szkolenia, a rozróżnienie dla nadmiernego dopasowania a odpowiednio dopasowane, przydaje się do *znacznie* mniejszej dokładności. 
 
@@ -215,7 +215,7 @@ Za pomocą Azure Machine Learning można użyć zautomatyzowanej ML do skompilow
 
 Azure Machine Learning oferuje dwa środowiska do pracy z automatycznymi ML
 
-* W przypadku kodów doświadczonych klientów [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) 
+* W przypadku kodów doświadczonych klientów [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
 
 * W przypadku klientów z ograniczoną ilością kodu, Azure Machine Learning Studio w [https://ml.azure.com](https://ml.azure.com/)  
 

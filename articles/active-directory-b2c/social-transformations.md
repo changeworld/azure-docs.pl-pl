@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9df00eea79b5dedc3211de02b17fe8f396d7b8a5
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: acf358b530c61dcbac38faf92e2ba672a7d4abef
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951075"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484387"
 ---
 # <a name="social-accounts-claims-transformations"></a>Przekształceń oświadczeń dotyczących kont społecznościowych
 
@@ -39,13 +39,13 @@ Ten artykuł zawiera przykłady dotyczące korzystania z przekształceń oświad
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-Tworzy reprezentację JSON właściwości alternativeSecurityId użytkownika, która może być używana w wywołaniach do Azure Active Directory. Aby uzyskać więcej informacji, zobacz [schemat AlternativeSecurityId](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#alternativesecurityid-type).
+Tworzy reprezentację JSON właściwości alternativeSecurityId użytkownika, która może być używana w wywołaniach do Azure Active Directory. Aby uzyskać więcej informacji, zobacz Schemat [AlternativeSecurityId](https://docs.microsoft.com/graph/api/resources/alternativesecurityid) .
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | key | string | Wartość oświadczenia, która określa unikatowy identyfikator użytkownika używany przez dostawcę tożsamości społecznościowej. |
-| Oświadczenie inputclaim | identityProvider | string | Wartość oświadczenia, która określa nazwę dostawcy tożsamości konta społecznościowego, na przykład facebook.com. |
-| Oświadczenie outputclaim | alternativeSecurityId | string | Wartość oświadczenia jest generowana po wywołaniu ClaimsTransformation. Zawiera informacje o tożsamości użytkownika konta społecznościowego. **Wystawcy** jest wartością `identityProvider`go żądania. **IssuerUserId** jest wartością żądania `key` w formacie base64. |
+| Oświadczenie inputclaim | key | ciąg | Wartość oświadczenia, która określa unikatowy identyfikator użytkownika używany przez dostawcę tożsamości społecznościowej. |
+| Oświadczenie inputclaim | identityProvider | ciąg | Wartość oświadczenia, która określa nazwę dostawcy tożsamości konta społecznościowego, na przykład facebook.com. |
+| Oświadczenie outputclaim | alternativeSecurityId | ciąg | Wartość oświadczenia jest generowana po wywołaniu ClaimsTransformation. Zawiera informacje o tożsamości użytkownika konta społecznościowego. **Wystawcy** jest wartością `identityProvider`go żądania. **IssuerUserId** jest wartością żądania `key` w formacie base64. |
 
 Użyj tej transformacji oświadczeń do wygenerowania elementu ClaimType `alternativeSecurityId`. Jest on używany przez wszystkie profile techniczne dostawcy tożsamości społecznościowej, takie jak `Facebook-OAUTH`. Następująca transformacja oświadczeń odbiera identyfikator konta społecznościowego użytkownika i nazwę dostawcy tożsamości. Dane wyjściowe tego profilu technicznego to format ciągu JSON, który może być używany w usługach katalogowych Azure AD.
 
@@ -75,7 +75,7 @@ Dodaje `AlternativeSecurityId` do żądania `alternativeSecurityIdCollection`.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | element | string | Wartość oświadczenia, która ma zostać dodana do oświadczenia wyjściowego. |
+| Oświadczenie inputclaim | elementów | ciąg | Wartość oświadczenia, która ma zostać dodana do oświadczenia wyjściowego. |
 | Oświadczenie inputclaim | Kolekcja | alternativeSecurityIdCollection | Oświadczenia, które są używane przez transformację oświadczeń, jeśli są dostępne w zasadach. Jeśli ta wartość jest określona, transformacja oświadczeń dodaje `item` na końcu kolekcji. |
 | Oświadczenie outputclaim | Kolekcja | alternativeSecurityIdCollection | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation. Nowa kolekcja zawierająca elementy `collection` danych wejściowych i `item`. |
 
@@ -139,7 +139,7 @@ Usuwa element **AlternativeSecurityId** z **alternativeSecurityIdCollectionego**
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | identityProvider | string | Wartość oświadczenia, która zawiera nazwę dostawcy tożsamości, który ma zostać usunięty z kolekcji. |
+| Oświadczenie inputclaim | identityProvider | ciąg | Wartość oświadczenia, która zawiera nazwę dostawcy tożsamości, który ma zostać usunięty z kolekcji. |
 | Oświadczenie inputclaim | Kolekcja | alternativeSecurityIdCollection | Oświadczenia, które są używane przez transformację oświadczeń. Transformacja oświadczeń usuwa identityProvider z kolekcji. |
 | Oświadczenie outputclaim | Kolekcja | alternativeSecurityIdCollection | Oświadczenia są tworzone po wywołaniu tego ClaimsTransformation. Nowa kolekcja po usunięciu identityProvider z kolekcji. |
 

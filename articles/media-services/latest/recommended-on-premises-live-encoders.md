@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: c8cf8883c80dad7988793a898dcaf01dd8f860c3
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: aa9cd3f642e3d8047e8b64afb023fffb7bd2c4f6
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152639"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484914"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Zalecane kodery przesyłania strumieniowego na żywo
 
@@ -53,6 +53,7 @@ Podczas przesyłania strumieniowego za pośrednictwem protokołu RTMPS sprawdź 
 - OBS Studio
 - Switcher Studio (iOS)
 - Wirecast Telestream (wersja 13.0.2 lub nowsza ze względu na wymaganie TLS 1,2)
+- Wirecast telestrumienia S (obsługiwane są tylko RTMP)
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4

@@ -1,31 +1,26 @@
 ---
-title: Konfiguracja aplikacji platformy Azure — często zadawane pytania | Microsoft Docs
+title: Konfiguracja aplikacji platformy Azure — często zadawane pytania
 description: Często zadawane pytania dotyczące konfiguracji aplikacji platformy Azure
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 4bcd8f042563fa381832fd629061a822f71e844a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 60ba0a7723861d6e642a23418dda6a1daa57f14e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467593"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523496"
 ---
 # <a name="azure-app-configuration-faq"></a>Konfiguracja aplikacji platformy Azure — często zadawane pytania
 
-W tym artykule opisano często zadawane pytania dotyczące konfiguracji aplikacji platformy Azure.
+W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące konfiguracji aplikacji platformy Azure.
 
 ## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Czym różni się konfiguracja aplikacji od Azure Key Vault?
 
-Konfiguracja aplikacji została zaprojektowana dla różnych przypadków użycia: ułatwia deweloperom zarządzanie ustawieniami aplikacji i dostępnością funkcji kontroli. Celem jest uproszczenie wielu zadań związanych z pracą ze złożonymi danymi konfiguracyjnymi.
+Konfiguracja aplikacji ułatwia deweloperom zarządzanie ustawieniami aplikacji i dostępnością funkcji kontroli. Celem jest uproszczenie wielu zadań związanych z pracą ze złożonymi danymi konfiguracyjnymi.
 
 Konfiguracja aplikacji obsługuje:
 
@@ -36,11 +31,11 @@ Konfiguracja aplikacji obsługuje:
 - Wyspecjalizowane operacje zarządzania
 - Interfejs użytkownika zarządzania funkcjami
 
-Konfiguracja aplikacji jest uzupełniana do Key Vault, a dwa z nich powinny być używane obok większości wdrożeń aplikacji.
+Konfiguracja aplikacji uzupełnia Key Vault, a dwa powinny być używane obok siebie w większości wdrożeń aplikacji.
 
 ## <a name="should-i-store-secrets-in-app-configuration"></a>Czy należy przechowywać wpisy tajne w konfiguracji aplikacji?
 
-Mimo że konfiguracja aplikacji zapewnia zabezpieczenia z ograniczeniami, Key Vault jest nadal najlepszym miejscem do przechowywania wpisów tajnych aplikacji. Key Vault zapewnia szyfrowanie na poziomie sprzętu, szczegółowe zasady dostępu i operacje zarządzania, takie jak rotacja certyfikatów.
+Mimo że konfiguracja aplikacji zapewnia zabezpieczenia z ograniczeniami, Key Vault jest nadal najlepszym miejscem do przechowywania wpisów tajnych aplikacji. Key Vault zapewnia szyfrowanie na poziomie sprzętu, szczegółowe zasady dostępu oraz operacje zarządzania, takie jak rotacja certyfikatów.
 
 Można utworzyć wartości konfiguracji aplikacji, które odwołują się do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać więcej informacji, zobacz [Korzystanie z odwołań Key Vault w aplikacji ASP.NET Core](./use-key-vault-references-dotnet-core.md).
 
@@ -62,7 +57,7 @@ Dla pojedynczego elementu klucz-wartość istnieje limit 10 KB.
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Jak należy przechowywać konfiguracje dla wielu środowisk (testów, przemieszczania, produkcji itp.)?
 
-Obecnie kontrolujesz, kto może uzyskać dostęp do konfiguracji aplikacji na poziomie magazynu. Użyj oddzielnego magazynu dla każdego środowiska, które wymaga innych uprawnień. Takie podejście zapewnia najlepszą izolację zabezpieczeń.
+Użytkownik kontroluje, kto może uzyskać dostęp do konfiguracji aplikacji na poziomie magazynu. Użyj oddzielnego magazynu dla każdego środowiska, które wymaga innych uprawnień. Takie podejście zapewnia najlepszą izolację zabezpieczeń.
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Jakie są zalecane metody korzystania z konfiguracji aplikacji?
 
@@ -70,9 +65,14 @@ Zobacz [najlepsze rozwiązania](./howto-best-practices.md).
 
 ## <a name="how-much-does-app-configuration-cost"></a>Ile jest koszt konfiguracji aplikacji?
 
-Istnieją dwie warstwy cenowe: 1) warstwa Bezpłatna i 2) warstwa standardowa.
+Istnieją dwie warstwy cenowe: 
 
-Jeśli sklep został utworzony przed wprowadzeniem warstwy Standardowa, jest on automatycznie przenoszony do warstwy Bezpłatna po ogólnej dostępności. Możesz wybrać opcję uaktualnienia do warstwy Standardowa lub pozostać w warstwie Bezpłatna, jeśli spełnia Twoje potrzeby.
+- Warstwa Bezpłatna
+- Warstwa standardowa.
+
+Jeśli sklep został utworzony przed wprowadzeniem warstwy Standardowa, jest on automatycznie przenoszony do warstwy Bezpłatna po ogólnej dostępności. Możesz wybrać opcję uaktualnienia do warstwy Standardowa lub pozostać w warstwie Bezpłatna.
+
+Nie można obniżyć poziomu sklepu z warstwy Standardowa do warstwy Bezpłatna. W warstwie Bezpłatna można utworzyć nowy magazyn, a następnie zaimportować dane konfiguracji do tego magazynu.
 
 ## <a name="which-app-configuration-tier-should-i-use"></a>Której warstwy konfiguracji aplikacji należy użyć?
 

@@ -1,22 +1,22 @@
 ---
-title: Reagowanie na zdarzenia klucza konfiguracji aplikacji platformy Azure | Microsoft Docs
+title: Reagowanie na zdarzenia klucza konfiguracji aplikacji platformy Azure
 description: Użyj Azure Event Grid, aby subskrybować zdarzenia konfiguracji aplikacji.
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
-ms.date: 05/30/2019
+ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: 5da64155f2823712eee7a60427b1c1e80abec068
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185297"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523802"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reagowanie na zdarzenia konfiguracji aplikacji platformy Azure
 
-Zdarzenia konfiguracji aplikacji platformy Azure umożliwiają aplikacjom reagowanie na zmiany w kluczowych wartościach. Jest to wykonywane bez konieczności stosowania skomplikowanego kodu lub kosztownych i nieefektywnych usług sondowania. Zamiast tego zdarzenia są wypychane za pośrednictwem [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do subskrybentów, takich jak [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)lub nawet do własnego niestandardowego odbiornika HTTP i płacisz tylko za to, czego używasz.
+Zdarzenia konfiguracji aplikacji platformy Azure umożliwiają aplikacjom reagowanie na zmiany w kluczowych wartościach. Jest to wykonywane bez konieczności stosowania skomplikowanego kodu lub kosztownych i nieefektywnych usług sondowania. Zamiast tego zdarzenia są wypychane za pośrednictwem [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do subskrybentów, takich jak [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)lub nawet do własnego niestandardowego odbiornika http. W sposób krytyczny płacisz tylko za to, czego używasz.
 
 Zdarzenia konfiguracji aplikacji platformy Azure są wysyłane do Azure Event Grid, które zapewniają niezawodne usługi dostarczania dla aplikacji dzięki rozbudowanym zasadom ponowień i dostarczaniu wiadomości utraconych. Aby dowiedzieć się więcej, zobacz [Event Grid dostarczania komunikatów i ponów próbę](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
 
@@ -29,7 +29,7 @@ Zapoznaj się z tematem [kierowanie zdarzeń konfiguracji aplikacji platformy Az
 ## <a name="available-azure-app-configuration-events"></a>Dostępne zdarzenia konfiguracji aplikacji platformy Azure
 Funkcja Event Grid używa [subskrypcji zdarzeń](../event-grid/concepts.md#event-subscriptions) do kierowania komunikatów o zdarzeniach do subskrybentów. Subskrypcje zdarzeń konfiguracji aplikacji platformy Azure mogą zawierać dwa typy zdarzeń:  
 
-> |Nazwa zdarzenia|Opis|
+> |Nazwa wydarzenia|Opis|
 > |----------|-----------|
 > |`Microsoft.AppConfiguration.KeyValueModified`|Uruchamiany, gdy wartość klucza jest tworzona lub zastępowana|
 > |`Microsoft.AppConfiguration.KeyValueDeleted`|Uruchamiany po usunięciu wartości klucza|
@@ -73,11 +73,12 @@ Oto przykład zdarzenia KeyValueModified:
 Aby uzyskać więcej informacji, zobacz [schemat zdarzeń konfiguracji aplikacji platformy Azure](../event-grid/event-schema-app-configuration.md).
 
 ## <a name="practices-for-consuming-events"></a>Praktyki związane z zużywaniem zdarzeń
-Aplikacje, które obsługują zdarzenia konfiguracji aplikacji, powinny spełniać kilka zalecanych praktyk:
+W aplikacjach, które obsługują zdarzenia konfiguracji aplikacji, powinny być stosowane następujące zalecenia:
 > [!div class="checklist"]
-> * Można skonfigurować wiele subskrypcji do kierowania zdarzeń do tego samego programu obsługi zdarzeń, dlatego ważne jest, aby nie przyjąć zdarzeń z określonego źródła, ale w celu upewnienia się, że pochodzi on z konfiguracji aplikacji, której oczekujesz.
-> * Podobnie Sprawdź, czy typ zdarzenia jest przygotowana do przetworzenia i nie zakładaj, że wszystkie zdarzenia, które otrzymujesz, są oczekiwanymi typami.
-> * Ponieważ komunikaty mogą się pojawiać poza kolejnością i po pewnym opóźnieniu, należy użyć pól ETag, aby zrozumieć, czy informacje o obiektach są nadal aktualne.  Ponadto należy użyć pól programu Sequencer do zrozumienia kolejności zdarzeń dla każdego określonego obiektu.
+> * Można skonfigurować wiele subskrypcji, aby kierować zdarzenia do tego samego programu obsługi zdarzeń, dlatego nie zakłada się, że zdarzenia pochodzą z konkretnego źródła. Zamiast tego Sprawdź temat wiadomości, aby upewnić się, że wystąpienie konfiguracji aplikacji wysyła zdarzenie.
+> * Sprawdź typ zdarzenia i nie zakładaj, że wszystkie zdarzenia, które otrzymujesz, będą to typy, których oczekujesz.
+> * Użyj pól ETag, aby zrozumieć, czy informacje o obiektach są nadal aktualne.  
+> * Użyj pól programu Sequencer do zrozumienia kolejności zdarzeń dla każdego określonego obiektu.
 > * Użyj pola podmiot, aby uzyskać dostęp do zmodyfikowanej wartości klucz-wartość.
 
 

@@ -7,19 +7,19 @@ documentationcenter: na
 manager: jodadzie
 ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: d193fdd5336ab32b10038ee170aee22a7cea88fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 54b4eaf483fd6817fe73c87962d5f26533a2b507
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066059"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77521935"
 ---
 # <a name="workday-attribute-reference"></a>Dokumentacja atrybutów rozwiązania Workday
 
@@ -58,7 +58,7 @@ W poniższej tabeli przechwycono listę atrybutów produktu Workday i odpowiedni
 | 29 | LocationIdentifier                    | WD: Worker/WD: proces roboczy\_dane/WD: zatrudnienie\_dane/WD: pozycja\_dane/WD: biznes\_lokacja\_podsumowanie\_dane/WD: Location\_Reference/WD: ID\[@wd:type= "Location\_ID"\]/Text\(\)                                                                                                                                                                                                                                            |
 | 30 | ManagerReference                      | WD: Worker/WD: proces roboczy\_dane/WD:\_zarządzania łańcucha\_Data/WD: proces roboczy\_nadzorczy\_\_\_zarządzania\[\(\)danych\]z\_em:\_= 1\[/WD:/WDE\(do ostatniego \)\(\)\]\_\[@wd:type\]\(\)                                                                                                                                                                            |
 | 31 | MiddleName                            | WD: Worker/WD: proces roboczy\_dane/WD: dane osobowe\_danych/WD: Name\_Data/WD: legal\_nazwa\_dane/WD: Nazwa\_szczegóły\_dane/WD: Średni\_Nazwa/tekst\(\)                                                                                                                                                                                                                                                                                |
-| 32 | Komórkowy                                | WD: Worker/WD: proces roboczy\_dane/WD: dane osobowe\_danych/WD: contact\_Data/WD: Phone\_Data\[tłumaczenie\(ciąg\(WD: Phone\_Device\_Type\_Reference/@wd:Descriptor\), "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"\)= "MOBILE" i tłumaczenie\(ciąg\(WD: Usage\_Data/WD: typ\_Data/WD: typ\_, "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"\)= "WORK"\]/@wd:Formatted\_PhoneReference/@wd:Descriptor\)    |
+| 32 | Telefon komórkowy                                | WD: Worker/WD: proces roboczy\_dane/WD: dane osobowe\_danych/WD: contact\_Data/WD: Phone\_Data\[tłumaczenie\(ciąg\(WD: Phone\_Device\_Type\_Reference/@wd:Descriptor\), "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"\)= "MOBILE" i tłumaczenie\(ciąg\(WD: Usage\_Data/WD: typ\_Data/WD: typ\_, "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"\)= "WORK"\]/@wd:Formatted\_PhoneReference/@wd:Descriptor\)    |
 | 33 | Gmina                          | WD: Worker/WD: proces roboczy\_dane/WD: zatrudnienie\_dane/WD: pozycja\_dane/WD: biznes\_lokacja\_podsumowanie\_dane/WD: Address\_Data/WD: Gmina/tekst\(\)                                                                                                                                                                                                                                                                   |
 | 34 | PositionID                            | WD: Worker/WD: proces roboczy\_dane/WD: zatrudnienie\_dane/WD: pozycja\_dane/WD: Position\_identyfikator/tekst\(\)                                                                                                                                                                                                                                                                                                                     |
 | 35 | PositionTitle                         | WD: Worker/WD: proces roboczy\_dane/WD: zatrudnienie\_dane/WD: pozycja\_dane/WD: położenie\_tytuł/tekst\(\)                                                                                                                                                                                                                                                                                                                  |

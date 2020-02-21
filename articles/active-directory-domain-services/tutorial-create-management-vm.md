@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 7f7aeeaf7cbb957a276347b04633763033a62b4e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931579"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523011"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Samouczek: Tworzenie maszyny wirtualnej zarządzania w celu skonfigurowania i administrowania Azure Active Directory Domain Services domeną zarządzaną
 
@@ -44,6 +44,8 @@ Do ukończenia tego samouczka potrzebne są następujące zasoby i uprawnienia:
 * Maszyna wirtualna z systemem Windows Server dołączona do domeny zarządzanej AD DS platformy Azure.
     * W razie potrzeby zapoznaj się z poprzednim samouczkiem, aby [utworzyć maszynę wirtualną z systemem Windows Server i dołączyć ją do domeny zarządzanej][create-join-windows-vm].
 * Konto użytkownika, które jest członkiem grupy *administratorów DC usługi Azure AD* w dzierżawie usługi Azure AD.
+* Host usługi Azure bastionu wdrożony w sieci wirtualnej platformy Azure AD DS.
+    * W razie konieczności [Utwórz hosta usługi Azure bastionu][azure-bastion].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -84,16 +86,15 @@ W poprzednim samouczku maszyna wirtualna z systemem Windows Server została utwo
 Aby rozpocząć, Połącz się z maszyną wirtualną z systemem Windows Server w następujący sposób:
 
 1. W Azure Portal wybierz pozycję **grupy zasobów** po lewej stronie. Wybierz grupę zasobów, w której utworzono maszynę wirtualną, taką jak moja *zasobów*, a następnie wybierz maszynę wirtualną, taką jak *myVM*.
-1. W oknach **przeglądowych** maszyny wirtualnej wybierz pozycję **Połącz**.
+1. W okienku **Przegląd** dla maszyny wirtualnej wybierz pozycję **Połącz**, a następnie **bastionu**.
 
-    ![Połącz się z maszyną wirtualną z systemem Windows w Azure Portal](./media/tutorial-create-management-vm/connect-vm.png)
+    ![Nawiązywanie połączenia z maszyną wirtualną z systemem Windows przy użyciu programu bastionu w Azure Portal](./media/join-windows-vm/connect-to-vm.png)
 
-    Możesz również [utworzyć i użyć hosta usługi Azure bastionu (obecnie w wersji zapoznawczej)][azure-bastion] , aby zezwolić na dostęp tylko za Azure Portal pośrednictwem protokołu SSL.
+1. Wprowadź poświadczenia dla maszyny wirtualnej, a następnie wybierz pozycję **Połącz**.
 
-1. Wybierz opcję *pobrania pliku RDP*. Zapisz ten plik RDP w przeglądarce sieci Web.
-1. Aby połączyć się z maszyną wirtualną, otwórz pobrany plik RDP. Po wyświetleniu monitu wybierz pozycję **Połącz**.
-1. Wprowadź poświadczenia użytkownika, który jest częścią grupy *administratorów DC usługi Azure AD* , np. *contoso\dee*
-1. Jeśli podczas procesu logowania zobaczysz ostrzeżenie o certyfikacie, wybierz pozycję **tak** lub **Kontynuuj** , aby nawiązać połączenie.
+   ![Połącz się za pomocą hosta bastionu w Azure Portal](./media/join-windows-vm/connect-to-bastion.png)
+
+W razie potrzeby Zezwól przeglądarce sieci Web na otwieranie wyskakujących okienek w celu wyświetlenia połączenia bastionu. Nawiązywanie połączenia z maszyną wirtualną trwa kilka sekund.
 
 ## <a name="install-active-directory-administrative-tools"></a>Instalowanie Active Directory narzędzi administracyjnych
 
