@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd3ebb40ff101f4d2e3fecd05afed834a9ddc688
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
-ms.translationtype: HT
+ms.openlocfilehash: 327f53fb39e58f7b70040eb41b6cd80aca18e510
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505691"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522037"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Włącz logowanie za pomocą klucza zabezpieczeń bez hasła na urządzeniach z systemem Windows 10 z Azure Active Directory (wersja zapoznawcza)
 
@@ -107,7 +107,7 @@ Aby włączyć dostawcę poświadczeń dla określonych grup urządzeń, użyj n
 
 ### <a name="enable-with-a-provisioning-package"></a>Włącz z pakietem aprowizacji
 
-W przypadku urządzeń, które nie są zarządzane przez usługę Intune, można zainstalować pakiet aprowizacji, aby włączyć tę funkcję. Aplikację Windows Configuration Designer można zainstalować z poziomu [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22). Wykonaj następujące kroki, aby utworzyć pakiet aprowizacji:
+W przypadku urządzeń, które nie są zarządzane przez usługę Intune, można zainstalować pakiet aprowizacji, aby włączyć tę funkcję. Aplikację Windows Configuration Designer można zainstalować z poziomu [Microsoft Store](https://www.microsoft.com/p/windows-configuration-designer/9nblggh4tx22). Wykonaj następujące kroki, aby utworzyć pakiet aprowizacji:
 
 1. Uruchom projektanta konfiguracji systemu Windows.
 1. Wybierz pozycję **plik** > **Nowy projekt**.

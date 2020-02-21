@@ -1,0 +1,11 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: Usługa Active Directory
+      tocHref: /azure/active-directory/
+      topicHref: /azure/active-directory/index
+      items:
+        - name: Dostęp warunkowy
+          tocHref: /azure/active-directory/conditional-access/
+          topicHref: /azure/active-directory/authentication/index

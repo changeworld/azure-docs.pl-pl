@@ -10,17 +10,57 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 02/07/2020
+ms.date: 02/20/2020
 ms.author: raiye
-ms.openlocfilehash: cca79946c0537b75335eb2e64ae1fa429f2c8d18
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5411e47494668341a952a97268affe4157e85a9a
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087230"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506031"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Response Center (MSRC) zastosowane do systemu operacyjnego gościa platformy Azure. Przeszukaj ten artykuł, aby ustalić, czy dana aktualizacja dotyczy systemu operacyjnego gościa, którego używasz. Aktualizacje są zawsze przenoszone dla określonej [rodziny][family-explain] , w której zostały wprowadzone.
+
+## <a name="february-2020-guest-os"></a>System operacyjny gościa z lutego 2020
+
+>[!NOTE]
+>System operacyjny gościa w lutym jest obecnie wdrażany na maszynach wirtualnych usługi w chmurze skonfigurowanych do aktualizacji automatycznych. Po zakończeniu wprowadzania ta wersja zostanie udostępniona do ręcznego aktualizowania za pomocą plików Azure Portal i konfiguracji. W systemie operacyjnym gościa w lutym uwzględniono następujące poprawki. Ta lista może ulec zmianie.
+
+| Kategoria produktu | Nadrzędny artykuł bazy wiedzy | Opis luki w zabezpieczeniach | System operacyjny gościa | Data wprowadzenia po raz pierwszy |
+| --- | --- | --- | --- | --- |
+|  Rel 20-02 |  [4537767]  |  Internet Explorer | 2,85, 3,82, 4,75 | 11 lutego 2020 |
+|  Rel 20-02 |  [4537813]  |  Zabezpieczenia systemu Windows | 2,85 | 11 lutego 2020 |
+|  Rel 20-02 |  [4537794]  |  Zabezpieczenia systemu Windows | 3,82 | 11 lutego 2020 |
+|  Rel 20-02 |  [4537803]  |  Zabezpieczenia systemu Windows | 4,75 | 11 lutego 2020 |
+|  Rel 20-02 |  [4537764]  |  Najnowsza aktualizacja zbiorcza (LCU) | 5.4 | 11 lutego 2020 |
+|  Rel 20-02 |  [4532691]  |  Najnowsza aktualizacja zbiorcza (LCU) | 6,16 | 11 lutego 2020 |
+|  Rel 20-02 |  [4534310]  |  Zestawienie miesięczne | 2,85 | 14 stycznia 2020 |
+|  Rel 20-02 |  [4536952]  |  Obsługa aktualizacji stosu (SSU) | 2,85 | 14 stycznia 2020 |
+|  Rel 20-02 |  [4537829]  |  Obsługa aktualizacji stosu (SSU) | 2,85 | 11 lutego 2020 |
+|  Rel 20-02 |  [4538483]  |  Rozszerzone aktualizacje zabezpieczeń (EJW) | 2,85 | 11 lutego 2020 |
+|  Rel 20-02 |  [4537820]  |  Zestawienie miesięczne | 2,85 | 11 lutego 2020 |
+|  Rel 20-02 |  [4537759]  |  Aktualizacja zabezpieczeń (Flash) | 3,82, 4,75 | 11 lutego 2020 |
+|  Rel 20-02 |  [4534283]  |  Zestawienie miesięczne | 3,82 | 14 stycznia 2020 |
+|  Rel 20-02 |  [4532920]  |  Obsługa aktualizacji stosu (SSU) | 3,82 | 10 grudnia 2020 |
+|  Rel 20-02 |  [4534297]  |  Niezwiązane z zabezpieczeniami | 4,75 | 14 stycznia 2020 |
+
+[4537767]: https://support.microsoft.com/kb/4537767
+[4537813]: https://support.microsoft.com/kb/4537813
+[4537794]: https://support.microsoft.com/kb/4537794
+[4537803]: https://support.microsoft.com/kb/4537803
+[4537764]: https://support.microsoft.com/kb/4537764
+[4532691]: https://support.microsoft.com/kb/4532691
+[4534310]: https://support.microsoft.com/kb/4534310
+[4536952]: https://support.microsoft.com/kb/4536952
+[4537829]: https://support.microsoft.com/kb/4537829
+[4538483]: https://support.microsoft.com/kb/4538483
+[4537820]: https://support.microsoft.com/kb/4537820
+[4537759]: https://support.microsoft.com/kb/4537759
+[4534283]: https://support.microsoft.com/kb/4534283
+[4532920]: https://support.microsoft.com/kb/4532920
+[4534297]: https://support.microsoft.com/kb/4534297
+
 
 ## <a name="january-2020-guest-os"></a>System operacyjny gościa w styczniu 2020
 
@@ -218,10 +258,10 @@ W poniższych tabelach przedstawiono aktualizacje firmy Microsoft Security Respo
 |  Rel 19-09   |  [4514366]  |  .NET Framework 3,5 i 4.7.2   |  [6,11]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4516044]  |  Najnowsza aktualizacja zbiorcza   |  [5,35]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4516064]  |  Zabezpieczenia systemu Windows   |  [4,70]  |  Września 10, 2019  |
-|  Rel 19-09   |  [4514350]  |  Program .NET Framework 3,5   |  [4,70]  |  Września 10, 2019  |
+|  Rel 19-09   |  [4514350]  |  .NET Framework 3.5   |  [4,70]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  [4,70]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4516062]  |  Zabezpieczenia systemu Windows   |  [3,77]  |  Września 10, 2019  |
-|  Rel 19-09   |  [4514349]  |  Program .NET Framework 3,5   |  [3,77]  |  Września 10, 2019  |
+|  Rel 19-09   |  [4514349]  |  .NET Framework 3.5   |  [3,77]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  [3,77]  |  Września 10, 2019  |
 |  Rel 19-09   |  [4516033]  |  Zabezpieczenia systemu Windows   |  [2,90]  |  Września 12, 2019  |
 |  Rel 19-09   |  [4512488]  |  Niezwiązane z zabezpieczeniami   |  [4,70]  |  13 sierpnia 2019  |
