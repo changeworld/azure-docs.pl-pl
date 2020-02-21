@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 270b3f0fe7c654d2bf059784e872b7dbe97a6068
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
-ms.translationtype: MT
+ms.openlocfilehash: c93460797fc1cf953d467e2739d71c5a2a9b74ed
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190491"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486172"
 ---
 # <a name="virtual-network-service-tags"></a>Tagi usługi sieci wirtualnej 
 <a name="network-service-tags"></a>
@@ -44,52 +44,52 @@ Domyślnie Tagi usług odzwierciedlają zakresy dla całej chmury. Niektóre Tag
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ApiManagement** | Ruch związany z zarządzaniem dla wdrożeń dedykowanych API Management platformy Azure. <br/><br/>*Uwaga:* Ten tag reprezentuje punkt końcowy usługi Azure API Management dla płaszczyzny kontroli na region. Dzięki temu klienci mogą wykonywać operacje związane z zarządzaniem w ramach interfejsów API, operacji, zasad, NamedValues skonfigurowanych w usłudze API Management.  | Przychodzący | Yes | Yes |
 | **ApplicationInsightsAvailability** | Dostępność Application Insights. | Przychodzący | Nie | Nie |
-| **AppService**    | Usługa Azure App Service. Ten tag jest zalecany w przypadku wychodzących reguł zabezpieczeń do frontonów aplikacji sieci Web. | Wychodzący | Yes | Yes |
-| **AppServiceManagement** | Ruch związany z zarządzaniem dla wdrożeń przeznaczonych dla App Service Environment. | Obie | Nie | Yes |
-| **Usługi azureactivedirectory** | Azure Active Directory. | Wychodzący | Nie | Yes |
-| **AzureActiveDirectoryDomainServices** | Ruch związany z zarządzaniem dla wdrożeń przeznaczonych dla Azure Active Directory Domain Services. | Obie | Nie | Yes |
-| **AzureAdvancedThreatProtection** | Zaawansowana ochrona przed zagrożeniami na platformie Azure. | Wychodzący | Nie | Nie |
-| **AzureBackup** |Azure Backup.<br/><br/>*Uwaga:* Ten tag ma zależność od tagów **Storage** i **usługi azureactivedirectory** . | Wychodzący | Nie | Yes |
-| **AzureBotService** | Azure Bot Service. | Wychodzący | Nie | Nie |
-| **AzureCloud** | Wszystkie [publiczne adresy IP centrum](https://www.microsoft.com/download/details.aspx?id=56519)danych. | Wychodzący | Yes | Yes |
-| **AzureCognitiveSearch** | Wyszukiwanie poznawcze platformy Azure (Jeśli używasz indeksatorów z zestawu umiejętności). | Obie | Nie | Nie |
+| **AppService**    | Usługa Azure App Service. Ten tag jest zalecany w przypadku wychodzących reguł zabezpieczeń do frontonów aplikacji sieci Web. | Wychodzące | Yes | Yes |
+| **AppServiceManagement** | Ruch związany z zarządzaniem dla wdrożeń przeznaczonych dla App Service Environment. | Oba | Nie | Yes |
+| **Usługi azureactivedirectory** | Azure Active Directory. | Wychodzące | Nie | Yes |
+| **AzureActiveDirectoryDomainServices** | Ruch związany z zarządzaniem dla wdrożeń przeznaczonych dla Azure Active Directory Domain Services. | Oba | Nie | Yes |
+| **AzureAdvancedThreatProtection** | Zaawansowana ochrona przed zagrożeniami na platformie Azure. | Wychodzące | Nie | Nie |
+| **AzureBackup** |Azure Backup.<br/><br/>*Uwaga:* Ten tag ma zależność od tagów **Storage** i **usługi azureactivedirectory** . | Wychodzące | Nie | Yes |
+| **AzureBotService** | Azure Bot Service. | Wychodzące | Nie | Nie |
+| **AzureCloud** | Wszystkie [publiczne adresy IP centrum](https://www.microsoft.com/download/details.aspx?id=56519)danych. | Wychodzące | Yes | Yes |
+| **AzureCognitiveSearch** | Wyszukiwanie poznawcze platformy Azure. <br/><br/>Ten tag lub adresy IP objęte tym tagiem mogą służyć do przyznawania indeksatorów bezpiecznego dostępu do źródeł danych. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją dotyczącą połączenia indeksatora](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors) . | Przychodzący | Nie | Nie |
 | **AzureConnectors** | Azure Logic Apps łączniki dla połączeń sondy/zaplecza. | Przychodzący | Yes | Yes |
-| **AzureContainerRegistry** | Azure Container Registry. | Wychodzący | Yes | Yes |
-| **AzureCosmosDB** | Azure Cosmos DB. | Wychodzący | Yes | Yes |
-| **AzureDatabricks** | Azure Databricks. | Obie | Nie | Nie |
+| **AzureContainerRegistry** | Azure Container Registry. | Wychodzące | Yes | Yes |
+| **AzureCosmosDB** | Azure Cosmos DB. | Wychodzące | Yes | Yes |
+| **AzureDatabricks** | Azure Databricks. | Oba | Nie | Nie |
 | **AzureDataExplorerManagement** | Zarządzanie Eksplorator danych platformy Azure. | Przychodzący | Nie | Nie |
-| **AzureDataLake** | Azure Data Lake. | Wychodzący | Nie | Yes |
-| **AzureEventGrid** | Azure Event Grid. <br/><br/>*Uwaga:* Ten tag obejmuje Azure Event Grid punkty końcowe w regionach Południowo-środkowe stany USA, Wschodnie stany USA 2, zachodnie stany USA 2 i stany USA. | Obie | Nie | Nie |
-| **AzureFrontDoor** | Moje drzwi platformy Azure. | Obie | Nie | Nie |
-| **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Uwaga:* Ten tag ma zależność od tagów **usługi azureactivedirectory** i **AzureFrontDoor. frontonu** . Dozwolonych również następujące adresy IP (ta zależność zostanie usunięta wkrótce): 13.107.6.181 & 13.107.9.181. | Wychodzący | Nie | Nie |
-| **AzureIoTHub** | IoT Hub platformy Azure. | Wychodzący | Nie | Nie |
-| **AzureKeyVault** | Azure Key Vault.<br/><br/>*Uwaga:* Ten tag ma zależność od znacznika **usługi azureactivedirectory** . | Wychodzący | Yes | Yes |
-| **AzureLoadBalancer** | Moduł równoważenia obciążenia infrastruktury platformy Azure. Tag tłumaczy na [wirtualny adres IP hosta](security-overview.md#azure-platform-considerations) (168.63.129.16), z którego pochodzą sondy kondycji platformy Azure. Nie obejmuje to ruchu do zasobu Azure Load Balancer. Jeśli nie używasz Azure Load Balancer, możesz zastąpić tę regułę. | Obie | Nie | Nie |
-| **AzureMachineLearning** | Azure Machine Learning. | Obie | Nie | Yes |
-| **AzureMonitor** | Log Analytics, Application Insights, AzMon i metryki niestandardowe (punkty końcowe rdzeniowym procesorem).<br/><br/>*Uwaga:* W przypadku Log Analytics ten tag ma zależność od tagu **magazynu** . | Wychodzący | Nie | Yes |
-| **AzurePlatformDNS** | Podstawowa infrastruktura (domyślna) usługi DNS.<br/><br>Za pomocą tego tagu można wyłączyć domyślny system DNS. Należy zachować ostrożność w przypadku użycia tego tagu. Zalecamy zapoznanie się z [zagadnieniami dotyczącymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Zalecamy również przeprowadzenie testów przed użyciem tego tagu. | Wychodzący | Nie | Nie |
-| **AzurePlatformIMDS** | Azure Instance Metadata Service (IMDS), czyli podstawowa usługa infrastruktury.<br/><br/>Ten tag służy do wyłączania domyślnego IMDS. Należy zachować ostrożność w przypadku użycia tego tagu. Zalecamy zapoznanie się z [zagadnieniami dotyczącymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Zalecamy również przeprowadzenie testów przed użyciem tego tagu. | Wychodzący | Nie | Nie |
-| **AzurePlatformLKM** | Licencjonowanie systemu Windows lub usługa zarządzania kluczami.<br/><br/>Ten tag służy do wyłączania ustawień domyślnych dla licencjonowania. Należy zachować ostrożność w przypadku użycia tego tagu. Zalecamy zapoznanie się z [zagadnieniami dotyczącymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations).  Zalecamy również przeprowadzenie testów przed użyciem tego tagu. | Wychodzący | Nie | Nie |
-| **AzureResourceManager** | Azure Resource Manager. | Wychodzący | Nie | Nie |
-| **AzureSiteRecovery** | Azure Site Recovery.<br/><br/>*Uwaga:* Ten tag ma zależność od tagów **Storage**, **usługi azureactivedirectory**i **EventHub** . | Wychodzący | Nie | Nie |
+| **AzureDataLake** | Azure Data Lake. | Wychodzące | Nie | Yes |
+| **AzureEventGrid** | Azure Event Grid. <br/><br/>*Uwaga:* Ten tag obejmuje Azure Event Grid punkty końcowe w regionach Południowo-środkowe stany USA, Wschodnie stany USA 2, zachodnie stany USA 2 i stany USA. | Oba | Nie | Nie |
+| **AzureFrontDoor** | Moje drzwi platformy Azure. | Oba | Nie | Nie |
+| **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Uwaga:* Ten tag ma zależność od tagów **usługi azureactivedirectory** i **AzureFrontDoor. frontonu** . Dozwolonych również następujące adresy IP (ta zależność zostanie usunięta wkrótce): 13.107.6.181 & 13.107.9.181. | Wychodzące | Nie | Nie |
+| **AzureIoTHub** | IoT Hub platformy Azure. | Wychodzące | Nie | Nie |
+| **AzureKeyVault** | Azure Key Vault.<br/><br/>*Uwaga:* Ten tag ma zależność od znacznika **usługi azureactivedirectory** . | Wychodzące | Yes | Yes |
+| **AzureLoadBalancer** | Moduł równoważenia obciążenia infrastruktury platformy Azure. Tag tłumaczy na [wirtualny adres IP hosta](security-overview.md#azure-platform-considerations) (168.63.129.16), z którego pochodzą sondy kondycji platformy Azure. Nie obejmuje to ruchu do zasobu Azure Load Balancer. Jeśli nie używasz Azure Load Balancer, możesz zastąpić tę regułę. | Oba | Nie | Nie |
+| **AzureMachineLearning** | Azure Machine Learning. | Oba | Nie | Yes |
+| **AzureMonitor** | Log Analytics, Application Insights, AzMon i metryki niestandardowe (punkty końcowe rdzeniowym procesorem).<br/><br/>*Uwaga:* W przypadku Log Analytics ten tag ma zależność od tagu **magazynu** . | Wychodzące | Nie | Yes |
+| **AzurePlatformDNS** | Podstawowa infrastruktura (domyślna) usługi DNS.<br/><br>Za pomocą tego tagu można wyłączyć domyślny system DNS. Należy zachować ostrożność w przypadku użycia tego tagu. Zalecamy zapoznanie się z [zagadnieniami dotyczącymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Zalecamy również przeprowadzenie testów przed użyciem tego tagu. | Wychodzące | Nie | Nie |
+| **AzurePlatformIMDS** | Azure Instance Metadata Service (IMDS), czyli podstawowa usługa infrastruktury.<br/><br/>Ten tag służy do wyłączania domyślnego IMDS. Należy zachować ostrożność w przypadku użycia tego tagu. Zalecamy zapoznanie się z [zagadnieniami dotyczącymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Zalecamy również przeprowadzenie testów przed użyciem tego tagu. | Wychodzące | Nie | Nie |
+| **AzurePlatformLKM** | Licencjonowanie systemu Windows lub usługa zarządzania kluczami.<br/><br/>Ten tag służy do wyłączania ustawień domyślnych dla licencjonowania. Należy zachować ostrożność w przypadku użycia tego tagu. Zalecamy zapoznanie się z [zagadnieniami dotyczącymi platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations).  Zalecamy również przeprowadzenie testów przed użyciem tego tagu. | Wychodzące | Nie | Nie |
+| **AzureResourceManager** | Azure Resource Manager. | Wychodzące | Nie | Nie |
+| **AzureSiteRecovery** | Azure Site Recovery.<br/><br/>*Uwaga:* Ten tag ma zależność od tagów **Storage**, **usługi azureactivedirectory**i **EventHub** . | Wychodzące | Nie | Nie |
 | **AzureTrafficManager** | Adresy IP badania Traffic Manager platformy Azure.<br/><br/>Aby uzyskać więcej informacji na temat Traffic Manager adresów IP sondowania, zobacz [często zadawane pytania dotyczące usługi Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). | Przychodzący | Nie | Yes |  
-| **BatchNodeManagement** | Ruch związany z zarządzaniem dla wdrożeń przeznaczonych dla Azure Batch. | Obie | Nie | Yes |
-| **CognitiveServicesManagement** | Zakresy adresów dla ruchu dla Cognitive Services platformy Azure. | Wychodzący | Nie | Nie |
-| **Dynamics365ForMarketingEmail** | Zakresy adresów dla usługi marketingowej poczty programu Dynamics 365. | Wychodzący | Yes | Nie |
-| **ElasticAFD** | Elastyczne drzwi platformy Azure. | Obie | Nie | Nie |
-| **EventHub** | Event Hubs platformy Azure. | Wychodzący | Yes | Yes |
+| **BatchNodeManagement** | Ruch związany z zarządzaniem dla wdrożeń przeznaczonych dla Azure Batch. | Oba | Nie | Yes |
+| **CognitiveServicesManagement** | Zakresy adresów dla ruchu dla Cognitive Services platformy Azure. | Wychodzące | Nie | Nie |
+| **Dynamics365ForMarketingEmail** | Zakresy adresów dla usługi marketingowej poczty programu Dynamics 365. | Wychodzące | Yes | Nie |
+| **ElasticAFD** | Elastyczne drzwi platformy Azure. | Oba | Nie | Nie |
+| **EventHub** | Event Hubs platformy Azure. | Wychodzące | Yes | Yes |
 | **Bramamanager** | Ruch związany z zarządzaniem dla wdrożeń przeznaczonych dla usługi Azure VPN Gateway i Application Gateway. | Przychodzący | Nie | Nie |
-| **GuestAndHybridManagement** | Azure Automation i konfiguracja gościa. | Wychodzący | Nie | Yes |
+| **GuestAndHybridManagement** | Azure Automation i konfiguracja gościa. | Wychodzące | Nie | Yes |
 | **HDInsight** | Usługa Azure HDInsight. | Przychodzący | Yes | Nie |
-| **Internet** | Przestrzeń adresów IP, która znajduje się poza siecią wirtualną i jest dostępna przez publiczny Internet.<br/><br/>Zakres adresów obejmuje [publiczną przestrzeń adresów IP należącą do platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Obie | Nie | Nie |
-| **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Wychodzący | Nie | Nie |
-| **MicrosoftContainerRegistry** | Rejestr kontenerów dla obrazów kontenerów firmy Microsoft. <br/><br/>*Uwaga:* Dozwolonych również następujący adres IP (ta zależność zostanie usunięta wkrótce): 204.79.197.219. | Wychodzący | Yes | Yes |
-| **ServiceBus** | Azure Service Bus ruch korzystający z warstwy usługi Premium. | Wychodzący | Yes | Yes |
-| **ServiceFabric** | Service Fabric platformy Azure.<br/><br/>*Uwaga:* Ten tag reprezentuje punkt końcowy usługi Service Fabric dla płaszczyzny kontroli na region. Dzięki temu klienci mogą wykonywać operacje związane z zarządzaniem Service Fabric klastrami z sieci wirtualnej (np. https://westus.servicefabric.azure.com) | Obie | Nie | Nie |
-| **Sql** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL i Azure SQL Data Warehouse.<br/><br/>*Uwaga:* Ten tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure SQL Database, ale nie konkretną bazę danych lub serwer SQL. | Wychodzący | Yes | Yes |
-| **Xmlmanagement** | Ruch związany z zarządzaniem dla wdrożeń dedykowanych przez program SQL Server. | Obie | Nie | Yes |
-| **Storage** | Azure Storage. <br/><br/>*Uwaga:* Ten tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure Storage, ale nie konkretne konto usługi Azure Storage. | Wychodzący | Yes | Yes |
-| **VirtualNetwork** | Przestrzeń adresowa sieci wirtualnej (wszystkie zakresy adresów IP zdefiniowane dla sieci wirtualnej), wszystkie połączone lokalne przestrzenie adresowe, [równorzędne](virtual-network-peering-overview.md) sieci wirtualne, sieci wirtualne połączone z [bramą sieci wirtualnej](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), [wirtualny adres IP hosta](security-overview.md#azure-platform-considerations)i prefiksy adresów używane na [trasach zdefiniowanych przez użytkownika](virtual-networks-udr-overview.md). Ten tag może również zawierać trasy domyślne. | Obie | Nie | Nie |
+| **Internet** | Przestrzeń adresów IP, która znajduje się poza siecią wirtualną i jest dostępna przez publiczny Internet.<br/><br/>Zakres adresów obejmuje [publiczną przestrzeń adresów IP należącą do platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Oba | Nie | Nie |
+| **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Wychodzące | Nie | Nie |
+| **MicrosoftContainerRegistry** | Rejestr kontenerów dla obrazów kontenerów firmy Microsoft. <br/><br/>*Uwaga:* Dozwolonych również następujący adres IP (ta zależność zostanie usunięta wkrótce): 204.79.197.219. | Wychodzące | Yes | Yes |
+| **ServiceBus** | Azure Service Bus ruch korzystający z warstwy usługi Premium. | Wychodzące | Yes | Yes |
+| **ServiceFabric** | Service Fabric platformy Azure.<br/><br/>*Uwaga:* Ten tag reprezentuje punkt końcowy usługi Service Fabric dla płaszczyzny kontroli na region. Dzięki temu klienci mogą wykonywać operacje związane z zarządzaniem Service Fabric klastrami z sieci wirtualnej (np. https://westus.servicefabric.azure.com) | Oba | Nie | Nie |
+| **Sql** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL i Azure SQL Data Warehouse.<br/><br/>*Uwaga:* Ten tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure SQL Database, ale nie konkretną bazę danych lub serwer SQL. | Wychodzące | Yes | Yes |
+| **Xmlmanagement** | Ruch związany z zarządzaniem dla wdrożeń dedykowanych przez program SQL Server. | Oba | Nie | Yes |
+| **Storage** | Azure Storage. <br/><br/>*Uwaga:* Ten tag reprezentuje usługę, ale nie konkretne wystąpienia usługi. Na przykład tag reprezentuje usługę Azure Storage, ale nie konkretne konto usługi Azure Storage. | Wychodzące | Yes | Yes |
+| **VirtualNetwork** | Przestrzeń adresowa sieci wirtualnej (wszystkie zakresy adresów IP zdefiniowane dla sieci wirtualnej), wszystkie połączone lokalne przestrzenie adresowe, [równorzędne](virtual-network-peering-overview.md) sieci wirtualne, sieci wirtualne połączone z [bramą sieci wirtualnej](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), [wirtualny adres IP hosta](security-overview.md#azure-platform-considerations)i prefiksy adresów używane na [trasach zdefiniowanych przez użytkownika](virtual-networks-udr-overview.md). Ten tag może również zawierać trasy domyślne. | Oba | Nie | Nie |
 
 >[!NOTE]
 >W klasycznym modelu wdrażania (przed Azure Resource Manager) jest obsługiwany podzestaw tagów wymienionych w poprzedniej tabeli. Te Tagi są napisane inaczej:

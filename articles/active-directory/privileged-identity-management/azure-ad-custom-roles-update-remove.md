@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33bd8554abc7566496cacaa943f0b1fdc15d8507
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: ad5747be47e250cf9c623cc40d21d12c91ee16f5
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048098"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499104"
 ---
 # <a name="update-or-remove-an-assigned-azure-ad-custom-role-in-privileged-identity-management"></a>Aktualizowanie lub usuwanie przypisanej roli niestandardowej usługi Azure AD w Privileged Identity Management
 
@@ -31,7 +31,9 @@ W tym artykule przedstawiono sposób używania Privileged Identity Management (P
 - Jeśli jeszcze nie korzystasz Privileged Identity Management, uzyskaj więcej informacji na temat [rozpoczynania pracy przy użyciu Privileged Identity Management](pim-getting-started.md).
 
 > [!NOTE]
-> Role niestandardowe usługi Azure AD nie są zintegrowane z wbudowanymi rolami katalogu w wersji zapoznawczej. Gdy funkcja jest ogólnie dostępna, zarządzanie rolami zarządzania rolami będzie odbywać się w wbudowanym środowisku ról.
+> Role niestandardowe usługi Azure AD nie są zintegrowane z wbudowanymi rolami katalogu w wersji zapoznawczej. Gdy funkcja jest ogólnie dostępna, zarządzanie rolami będzie odbywać się w interfejsie wbudowanym. Jeśli zobaczysz poniższy transparent, te role powinny być zarządzane [przy użyciu wbudowanej roli środowisko](pim-how-to-add-role-to-user.md) i ten artykuł nie ma zastosowania:
+>
+> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="update-or-remove-an-assignment"></a>Aktualizowanie lub usuwanie przypisania
 

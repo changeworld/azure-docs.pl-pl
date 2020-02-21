@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0096bccf76e81f2bca1a449cea2474cb5266fabc
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: f4f6cf01502070ea63eaf0083aba33ff213534a4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443588"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500242"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>Ulepszony bezpieczny wynik (wersja zapoznawcza) 
 
@@ -65,15 +65,15 @@ Na przykład kontrola zabezpieczeń o nazwie "Zastosuj aktualizacje systemu" ma 
 
 Możliwość kontroli zabezpieczeń "Zastosuj aktualizacje systemu" na powyższym zrzucie ekranu pokazuje "2% (1 punkt)". Oznacza to, że w przypadku skorygowania wszystkich zaleceń w tym formancie wynik zostanie zwiększony o 2% (w tym przypadku jeden punkt). Dla uproszczenia wartości kolumny "potencjalne zwiększenie" listy rekomendacji są zaokrąglane do liczb całkowitych. Etykietki narzędzi pokazują dokładne wartości:
 
+* **Maksymalny wynik** — Maksymalna liczba punktów, które można uzyskać, wykonując wszystkie zalecenia w formancie. Maksymalna ocena dla kontrolki wskazuje względne znaczenie tego formantu. Użyj wartości maksymalnego wyniku, aby klasyfikacja, które problemy mają być wykonywane w pierwszej kolejności. 
 * **Potencjalny wzrost** — pozostałe punkty dostępne dla Ciebie w obrębie formantu. Aby dodać te punkty do bezpiecznego wyniku, skoryguj wszystkie zalecenia dotyczące kontroli. W powyższym przykładzie, jeden punkt pokazywany dla kontrolki jest faktycznie 0,96 punktów.
 * **Bieżący wynik** — bieżący wynik dla tego formantu. Każda kontrolka przyczynia się do osiągnięcia łącznego wyniku. W tym przykładzie Kontrola ma wpływ na 5,04 punktów na sumę. 
-* **Wartość maksymalna** — suma poprzednich dwóch wartości.
 
 ### <a name="calculations---understanding-your-score"></a>Obliczenia — zrozumienie oceny
 
 |Metryka|Formuła i przykład|
 |-|-|
-|**Bieżący wynik kontroli zabezpieczeń**|<br>![równanie obliczania bieżącego wyniku kontroli zabezpieczeń](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Każda indywidualna kontrola zabezpieczeń przyczynia się do osiągnięcia oceny zabezpieczeń. Każdy zasób, na który ma wpływ zalecenie w ramach kontroli, przyczynia się do bieżącego wyniku kontrolki. Bieżący wynik dla każdej kontrolki jest miarą stanu zasobów *w* kontrolce.<br>Etykietki narzędzi ![pokazujące wartości używane podczas obliczania bieżącego wyniku kontroli zabezpieczeń](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>W tym przykładzie maksymalny wynik 6 zostałby podzielony przez 78, ponieważ to jest suma zasobów w dobrej kondycji i w nieprawidłowych Stanach.<br>6/78 = 0,0769<br>Pomnożenie tego przez liczbę zdrowych zasobów (74) skutkuje bieżącą oceną:<br>0,0769 * 74 = **5,69**<br><br>|
+|**Bieżący wynik kontroli zabezpieczeń**|<br>![równanie obliczania bieżącego wyniku kontroli zabezpieczeń](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Każda indywidualna kontrola zabezpieczeń przyczynia się do osiągnięcia oceny zabezpieczeń. Każdy zasób, na który ma wpływ zalecenie w ramach kontroli, przyczynia się do bieżącego wyniku kontrolki. Bieżący wynik dla każdej kontrolki jest miarą stanu zasobów *w* kontrolce.<br>Etykietki narzędzi ![pokazujące wartości używane podczas obliczania bieżącego wyniku kontroli zabezpieczeń](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>W tym przykładzie maksymalny wynik 6 zostałby podzielony przez 78, ponieważ to jest suma zasobów w dobrej kondycji i w nieprawidłowych Stanach.<br>6/78 = 0,0769<br>Mnożenie tego przez liczbę zasobów w dobrej kondycji (4) skutkuje bieżącym wynikiem:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Wskaźnik bezpieczeństwa**<br>Subskrypcja pojedyncza|<br>![Równanie do obliczania bieżącego wyniku bezpiecznego](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Jeden bezpieczny wynik subskrypcji z włączonymi wszystkimi kontrolkami](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>W tym przykładzie istnieje jedna subskrypcja z wszystkimi dostępnymi wszystkimi kontrolami zabezpieczeń (potencjalną maksymalną wartością wyniku 60 punktów). Wynik pokazuje 28 punktów z możliwego 60, a pozostałe 32 punkty są odzwierciedlone w postaci "potencjalne zwiększenie wyniku" w zakresie kontroli zabezpieczeń.<br>![Lista kontrolek i zwiększenie potencjalnego wyniku](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
 |**Wskaźnik bezpieczeństwa**<br>Wiele subskrypcji|<br>Bieżący wynik dla wszystkich zasobów we wszystkich subskrypcjach zostanie dodany, a obliczenia są takie same jak w przypadku pojedynczej subskrypcji<br><br>Podczas przeglądania wielu subskrypcji, funkcja Secure Score szacuje wszystkie zasoby we wszystkich włączonych zasadach i grupuje ich łączny wpływ na maksymalny wynik kontroli zabezpieczeń.<br>![zabezpieczonych wyników dla wielu subskrypcji z włączonymi wszystkimi kontrolkami](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Połączony wynik **nie** jest średni; jest to raczej oceniane stan stanu wszystkich zasobów we wszystkich subskrypcjach.<br>Tutaj, jeśli przejdziesz do strony rekomendacje i dodasz dostępne punkty, zobaczysz, że jest to różnica między bieżącym wynikiem (24) i maksymalnym dostępnym wynikiem (60).|
 ||||

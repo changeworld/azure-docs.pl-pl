@@ -1,36 +1,34 @@
 ---
 title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — współpraca z kluczowymi wartościami w magazynie konfiguracji aplikacji
 titleSuffix: Azure App Configuration
-description: Zawiera informacje na temat pracy z parami klucz-wartość w magazynie usługi Azure App Configuration
+description: Używanie skryptu interfejsu wiersza polecenia platformy Azure do tworzenia, wyświetlania, aktualizowania i usuwania wartości klucza z magazynu konfiguracji aplikacji
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 11/08/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 931c2f738556404e2d58381f7152acb0613a057b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 1a4edabe666a554ccd01d110f0f71226221dfc67
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468188"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523655"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Praca z parami klucz-wartość w magazynie usługi Azure App Configuration
 
-Ten przykładowy skrypt tworzy nową parę klucz-wartość w magazynie usługi Azure App Configuration, pokazuje listę wszystkich par klucz-wartość, aktualizuje wartość nowo utworzonego klucza i na końcu usuwa go.
+Ten przykładowy skrypt pokazuje, jak:
+* Utwórz nową parę klucz-wartość
+* Wyświetl wszystkie istniejące pary klucz-wartość
+* Zaktualizuj wartość nowo utworzonego klucza
+* Usuń nową parę klucz-wartość
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2,0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
@@ -81,13 +79,13 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-Ten skrypt używa następujących poleceń do obsługi wartości kluczy w magazynie konfiguracji aplikacji. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
+Ta tabela zawiera listę poleceń używanych w naszym przykładowym skrypcie. 
 
 | Polecenie | Uwagi |
 |---|---|
-| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Tworzy lub aktualizuje parę klucz-wartość. |
-| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Wyświetla listę wartości kluczy w magazynie konfiguracji aplikacji. |
-| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Usuwa parę klucz-wartość. |
+| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Utwórz lub zaktualizuj parę klucz-wartość. |
+| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Wyświetl listę par klucz-wartość w magazynie konfiguracji aplikacji. |
+| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Usuń parę klucz-wartość. |
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,5 +1,6 @@
 ---
 title: Co to jest Data Science Virtual Machine platformy Azure
+titleSuffix: Azure Data Science Virtual Machine
 description: Kluczowe składniki i scenariusze analizy dla maszyn wirtualnych do nauki o danych z systemami Windows i Linux.
 keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
@@ -9,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 12/31/2019
-ms.openlocfilehash: a63087620d50336c67472348da3b7f37fb380635
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: ea53ee3f3c1d39652982b6343b1e634dac1fbc75
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611972"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525927"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Co to jest Data Science Virtual Machine platformy Azure dla systemów Linux i Windows?
 
@@ -42,7 +43,7 @@ Poniżej przedstawiono niektóre typowe przypadki użycia dla klientów DSVM.
 
 DSVM zawiera konfigurację linii bazowej dla zespołów nauki danych, które chcą zamienić swoje komputery lokalne na zarządzane pulpity w chmurze, dzięki czemu wszyscy analitykowie danych w zespole mają spójną konfigurację, z którą można weryfikować eksperymenty i wspierać współpracę. Obniża ona również koszty, zmniejszając obciążenie administratora systemu. Zmniejszenie obciążenia pozwala zaoszczędzić czas wymagany do oszacowania, zainstalowania i konserwacji pakietów oprogramowania na potrzeby zaawansowanej analizy.
 
-### <a name="data-science-training-and-education"></a>Szkolenia i edukacja w zakresie analizy danych
+### <a name="data-science-training-and-education"></a>Szkolenia i edukacja w zakresie nauki o danych
 Instruktorzy i nauczyciele, którzy uczą klasy nauki o danych, zwykle udostępniają obraz maszyny wirtualnej. Obraz ten gwarantuje, że uczniowie mają spójną konfigurację oraz że próbki przewidywalnie działają. 
 
 DSVM tworzy środowisko na żądanie z spójną konfiguracją, która ułatwia problemy z obsługą i niezgodnością. To rozwiązanie oferuje znaczące korzyści w sytuacjach, w których jest konieczne częste tworzenie takich środowisk (zwłaszcza w przypadku krótszych szkoleń).

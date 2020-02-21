@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 9bb228725d5ad8e3583c73be09c582478f74a1e8
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471894"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484404"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Rozwiązywanie problemów z błędami alokacji podczas tworzenia, ponownego uruchamiania lub zmiany rozmiaru maszyn wirtualnych na platformie Azure
 
@@ -87,9 +87,9 @@ Gdy rozszerzamy infrastrukturę platformy Azure, wdrażamy sprzęt nowszej gener
 
 |Starsza wersja maszyn wirtualnych — seria/rozmiar|Zalecana nowsza seria maszyn wirtualnych/rozmiar|Więcej informacji|
 |----------------------|----------------------------|--------------------|
-|Seria Av1|[Seria Av2](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Seria Dv1 lub DSv1 (D1 – do + +)|[Dv3 lub DSv3 — seria](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 lub DSv1 — seria (D11 do D14)|[EV3 lub ESv3 — seria](../windows/sizes-memory.md#ev3-series)|
+|Seria Av1|[Seria Av2](../av2-series.md)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
+|Seria Dv1 lub DSv1 (D1 – do + +)|[Dv3 lub DSv3 — seria](../dv3-dsv3-series.md)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 lub DSv1 — seria (D11 do D14)|[EV3 lub ESv3 — seria](../ev3-esv3-series.md)|
 |D15v2 lub DS15v2|Jeśli używasz modelu wdrażania programu theResource Manager, aby móc korzystać z większych rozmiarów maszyn wirtualnych, rozważ przechodzenie do D16v3/DS16v3 lub D32v3/DS32v3. Są one przeznaczone do uruchamiania na najnowszym sprzęcie generacji. Jeśli używasz modelu wdrażania Menedżer zasobów, aby upewnić się, że wystąpienie maszyny wirtualnej jest izolowane do sprzętu dedykowanego pojedynczemu klientowi, rozważ przejście do nowych, odizolowanych rozmiarów maszyn wirtualnych, E64i_v3 lub E64is_v3, które są przeznaczone do uruchamiania na najnowszym sprzęcie generacji. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Błędy alokacji dużych wdrożeń (ponad 500 rdzeni)

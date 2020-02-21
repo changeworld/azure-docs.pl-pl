@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 11/27/2019
-ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/18/2020
+ms.openlocfilehash: 6e6d4ea6c96949a60677bcf3bf40a53ec3a251c7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201734"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526862"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Przegląd Azure SQL Database limitów zasobów wystąpienia zarządzanego
 
@@ -96,7 +96,7 @@ Wystąpienie zarządzane ma dwie warstwy usług: [ogólnego przeznaczenia](sql-d
 
 W Ogólnego przeznaczenia warstwy usług każdy plik bazy danych uzyskuje dedykowane operacje we/wy i przepływność, które są zależne od rozmiaru pliku. Większe pliki zwiększają liczbę IOPS i przepływność. Właściwości we/wy plików bazy danych przedstawiono w poniższej tabeli:
 
-| Rozmiar pliku           | 0-128 GiB | 128 – 256 GiB | 256 – 512 GiB | 0,5-1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
+| Rozmiar pliku | > = 0 i < = 128 GiB | > 128 i < = 256 GiB | > 256 i < = 512 GiB | > 0,5 i < = 1 TiB    | > 1 i < = 2 TiB    | > 2 i < = 4 TiB | > 4 i < = 8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | Liczba operacji we/wy na plik       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500   |
 | Przepływność na plik | 100 MiB/s | 125 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | 480 MiB/s | 
@@ -113,7 +113,7 @@ Wystąpienia zarządzane można tworzyć tylko w [obsługiwanych regionach](http
 
 Wystąpienie zarządzane obecnie obsługuje tylko wdrożenie następujących typów subskrypcji:
 
-- [Umowa Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
+- [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 - [Płatność zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [Dostawca usług w chmurze (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
 - [Enterprise — tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0148p/)

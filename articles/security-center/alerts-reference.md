@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: f7d8d28299b662774a8cc0a7d4a28b052a551eab
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5453793c7e1bb1ef766939d2e7fdf32a1ac1ec72
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906324"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499940"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Alerty zabezpieczeń — Podręcznik referencyjny
 
@@ -35,7 +35,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 [Dalsze szczegóły i uwagi](security-center-alerts-iaas.md#windows-)
 
-|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
 |**Wykryto logowanie ze złośliwego adresu IP**|Wystąpiło pomyślne uwierzytelnienie zdalne dla konta "Tristan. schleining" i procesu "Advapi", jednak adres IP logowania [adres IP] był wcześniej raportowany jako złośliwy lub wysoce nietypowy. Prawdopodobnie wystąpił skuteczny atak.|-|
 |**Wykryto logowanie ze złośliwego adresu IP. [widoczne wiele razy]**|Wystąpiło pomyślne uwierzytelnienie zdalne dla konta "IUSR_10001" i procesu "Advapi", jednak adres IP logowania [adres IP] był wcześniej raportowany jako złośliwy lub wysoce nietypowy. Prawdopodobnie wystąpił skuteczny atak. Pliki z rozszerzeniami SCR są plikami wygaszaczy ekranu i są zwykle przechowywane i uruchamiane z katalogu systemu Windows.|-|
@@ -126,7 +126,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 [Dalsze szczegóły i uwagi](security-center-alerts-iaas.md#linux-)
 
-|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
 |**Proces uzyskiwania dostępu do pliku kluczy autoryzowanych SSH w nietypowy sposób**|Dostęp do pliku kluczy autoryzowanych przez protokół SSH został uzyskany w metodzie podobnej do znanych kampanii złośliwego oprogramowania. Ten dostęp może wskazywać, że osoba atakująca próbuje uzyskać trwały dostęp do komputera.|-|
 |**Wykryto próbę trwałości**|Analiza danych hosta wykryła, że zainstalowano skrypt uruchamiania dla trybu pojedynczego użytkownika.<br>Ze względu na to, że każdy legalny proces będzie wymagany do uruchomienia w tym trybie, może to wskazywać, że osoba atakująca dodała złośliwy proces do każdego poziomu uruchomienia w celu zagwarantowania trwałości. |Trwałość|
@@ -215,23 +215,24 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 [Dalsze szczegóły i uwagi](security-center-alerts-compute.md#azure-app-service-)
 
-|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
-|**Wykryto podejrzane wywołanie w ramach platformy WordPress**|App Service dziennik aktywności wskazuje możliwe działanie iniekcji kodu w zasobie App Service.<br>To podejrzane działanie przypomina aktywność, która manipuluje kompozycją WordPress w celu obsługi wykonywania kodu po stronie serwera, a następnie bezpośredniego żądania sieci Web w celu wywołania pliku motywu, który został przekierowany. Ten typ działania może być częścią kampanii ataków za pośrednictwem platformy WordPress.|-|
-|**Wykryto odciskiem palca sieci Web**<br>(NMAP/niewidomy słoni)|App Service dziennik aktywności wskazuje możliwe działanie odciskiem palca sieci Web w zasobie App Service.<br>To podejrzane działanie jest skojarzone z narzędziem o nazwie Blind słoni. Na serwerach sieci Web odciski palców narzędzia i próby wykrycia zainstalowanych aplikacji i ich wersji. Osoby atakujące często używają tego narzędzia do sondowania aplikacji sieci Web w celu znalezienia luk w zabezpieczeniach. |-|
-|**Wykryto podejrzany dostęp do potencjalnie narażonej strony sieci Web**|Dziennik aktywności App Service wskazuje, że dostęp do strony sieci Web, która jest niezależna.<br>To podejrzane działanie pochodzi z adresu źródłowego, którego wzorzec dostępu jest podobny do skanera sieci Web. Ten rodzaj działania jest często związany z próbą skanowania sieci przez osobę atakującą w celu uzyskania dostępu do poufnych lub narażonych stron sieci Web. |-|
-|**W analizie zagrożeń znaleziono adres IP połączony z interfejsem FTP Azure App Service.**|App Service Analiza dzienników FTP wykryła połączenie z adresu źródłowego, który został znaleziony w kanale informacyjnym analizy zagrożeń. Podczas tego połączenia użytkownik uzyskał dostęp do wyświetlanych stron.|-|
 |**Próba uruchomienia poleceń systemu Linux w systemie Windows App Service**|Analiza procesów App Service wykryła próbę uruchomienia polecenia systemu Linux na App Service Windows. Ta akcja była uruchomiona przez aplikację sieci Web. Takie zachowanie jest często widoczne podczas kampanii wykorzystujących luki w zabezpieczeniach w typowej aplikacji sieci Web.|-|
-|**Wykryto podejrzane wykonanie w języku PHP**|Dzienniki maszyn wskazują, że jest uruchomiony podejrzany proces PHP. Akcja obejmowała próbę uruchomienia poleceń systemu operacyjnego lub kodu PHP z wiersza polecenia przy użyciu procesu PHP. Chociaż to zachowanie może być wiarygodne, w aplikacjach sieci Web takie zachowanie może wskazywać na złośliwe działania, takie jak próby zainfekowania witryn sieci Web za pomocą powłok internetowych.|Wykonanie|
-|**Wykryto próbę uruchomienia polecenia o wysokim poziomie uprawnień**|Analiza procesów App Service wykryła próbę uruchomienia polecenia wymagającego wysokiego poziomu uprawnień. Polecenie zostało uruchomione w kontekście aplikacji sieci Web. Chociaż to zachowanie może być prawdziwe, w aplikacjach sieci Web takie zachowanie może wskazywać na złośliwe działania.|-|
-|**Wykryto zapisywanie danych wyjściowych zadanego z dysku**|Analiza procesów App Service wykryła uruchomienie polecenia zwinięcie, w którym dane wyjściowe zostały zapisane na dysku. Chociaż to zachowanie może być wiarygodne, w aplikacjach sieci Web takie zachowanie jest również zaobserwowane w złośliwych działaniach, takich jak próby zainfekowania witryn internetowych za pomocą powłoki sieci Web.|-|
-|**Wykryto pobranie nieprzetworzonych danych**|Analiza procesów App Service wykryła próbę pobrania kodu z witryn sieci Web nieprzetworzonych danych, takich jak Pastebin. Ta akcja została uruchomiona przez proces PHP. To zachowanie jest skojarzone z próbami pobrania powłoki sieci Web lub innych złośliwych składników do App Service.|-|
-|**Wykryto skaner luk w zabezpieczeniach**<br>(Joomla/WordPress/CMS)|Dziennik aktywności Azure App Service wskazuje, że w zasobie App Service został użyty skaner możliwych luk w zabezpieczeniach. Wykryte podejrzane działania przypominają narzędzia Joomla aplikacje/aplikacje WordPress/system zarządzania zawartością (CMS).|-|
-|**Wykryto odwołującego się do folderu spamu**|Azure App Service dziennik aktywności wskazuje aktywność sieci Web, która została zidentyfikowana jako pochodząca z witryny sieci Web skojarzonej z działaniem SPAMu. Taka sytuacja może wystąpić, jeśli witryna sieci Web zostanie naruszona i użyta do działania spamu.|-|
-|**Wykryto połączenie ze stroną internetową z nietypowego adresu IP**|Azure App Service dziennik aktywności wskazuje połączenie z poufną stroną sieci Web ze źródłowego adresu IP (% {Source IP}), które nigdy nie łączą się z nim. Może to wskazywać, że ktoś próbuje przeprowadzić atak na strony administrowania aplikacjami sieci Web. Może być również wynikiem nowego adresu IP używanego przez uprawnionego użytkownika.|-|
-|**Wykryto podejrzanego agenta użytkownika**|Azure App Service dziennik aktywności wskazuje żądania z podejrzanym agentem użytkownika. Takie zachowanie może wskazywać na próby wykorzystania luki w zabezpieczeniach aplikacji App Service.|-|
-|**Plik PHP w folderze przekazywania**|Dziennik aktywności Azure App Service wskazuje dostęp do podejrzanej strony PHP znajdującej się w folderze przekazywania. Ten typ folderu zwykle nie zawiera plików PHP. Istnienie tego typu pliku może wskazywać na wykorzystanie zalet dowolnych luk w zabezpieczeniach przekazywania plików.|-|
+|**W analizie zagrożeń znaleziono adres IP połączony z interfejsem FTP Azure App Service.**|App Service Analiza dzienników FTP wykryła połączenie z adresu źródłowego, który został znaleziony w kanale informacyjnym analizy zagrożeń. Podczas tego połączenia użytkownik uzyskał dostęp do wyświetlanych stron.|-|
 |**Wykryto wzorzec żądań anomalii**|Dziennik aktywności Azure App Service wskazuje nietypowe działanie HTTP dla App Service z% {source IP}. To działanie jest podobne do wzorca operacji rozmytego wymuszania.|-|
+|**Wykryto próbę uruchomienia polecenia o wysokim poziomie uprawnień**|Analiza procesów App Service wykryła próbę uruchomienia polecenia wymagającego wysokiego poziomu uprawnień. Polecenie zostało uruchomione w kontekście aplikacji sieci Web. Chociaż to zachowanie może być prawdziwe, w aplikacjach sieci Web takie zachowanie może wskazywać na złośliwe działania.|-|
+|**Wykryto połączenie ze stroną internetową z nietypowego adresu IP**|Azure App Service dziennik aktywności wskazuje połączenie z poufną stroną sieci Web ze źródłowego adresu IP (% {Source IP}), które nigdy nie było z nim połączone. Może to wskazywać, że ktoś próbuje przeprowadzić atak na strony administrowania aplikacjami sieci Web. Może być również wynikiem nowego adresu IP używanego przez uprawnionego użytkownika.|-|
+|**Wykryto pobranie nieprzetworzonych danych**|Analiza procesów App Service wykryła próbę pobrania kodu z witryn sieci Web nieprzetworzonych danych, takich jak Pastebin. Ta akcja została uruchomiona przez proces PHP. To zachowanie jest skojarzone z próbami pobrania powłoki sieci Web lub innych złośliwych składników do App Service.|-|
+|**Zawartość wyłudzająca informacje hostowana w usłudze Azure webapps**|Adres URL służący do ataku wyłudzania informacji znajduje się w witrynie sieci Web usługi Azure usługi aplikacji. Ten adres URL był częścią ataku wyłudzające informacje wysyłanego do klientów usługi O365. Zawartość zazwyczaj łączy odwiedzających osoby odwiedzające o wprowadzenie poświadczeń firmowych lub informacji finansowych w legalnie przeglądanej witrynie sieci Web.|Collection|
+|**Plik PHP w folderze przekazywania**|Dziennik aktywności Azure App Service wskazuje dostęp do podejrzanej strony PHP znajdującej się w folderze przekazywania. Ten typ folderu zwykle nie zawiera plików PHP. Istnienie tego typu pliku może wskazywać na wykorzystanie zalet dowolnych luk w zabezpieczeniach przekazywania plików.|-|
+|**Wykryto zapisywanie danych wyjściowych zadanego z dysku**|Analiza procesów App Service wykryła uruchomienie polecenia zwinięcie, w którym dane wyjściowe zostały zapisane na dysku. Chociaż to zachowanie może być wiarygodne, w aplikacjach sieci Web takie zachowanie jest również zaobserwowane w złośliwych działaniach, takich jak próby zainfekowania witryn internetowych za pomocą powłoki sieci Web.|-|
+|**Wykryto odwołującego się do folderu spamu**|Azure App Service dziennik aktywności wskazuje aktywność sieci Web, która została zidentyfikowana jako pochodząca z witryny sieci Web skojarzonej z działaniem SPAMu. Taka sytuacja może wystąpić, jeśli witryna sieci Web zostanie naruszona i użyta do działania spamu.|-|
+|**Wykryto podejrzany dostęp do potencjalnie narażonej strony sieci Web**|Dziennik aktywności App Service wskazuje, że dostęp do strony sieci Web, która jest niezależna.<br>To podejrzane działanie pochodzi z adresu źródłowego, którego wzorzec dostępu jest podobny do skanera sieci Web. Ten rodzaj działania jest często związany z próbą skanowania sieci przez osobę atakującą w celu uzyskania dostępu do poufnych lub narażonych stron sieci Web. |-|
+|**Wykryto podejrzane wykonanie w języku PHP**|Dzienniki maszyn wskazują, że jest uruchomiony podejrzany proces PHP. Akcja obejmowała próbę uruchomienia poleceń systemu operacyjnego lub kodu PHP z wiersza polecenia przy użyciu procesu PHP. Chociaż to zachowanie może być wiarygodne, w aplikacjach sieci Web takie zachowanie może wskazywać na złośliwe działania, takie jak próby zainfekowania witryn sieci Web za pomocą powłok internetowych.|Wykonanie|
+|**Wykryto podejrzanego agenta użytkownika**|Azure App Service dziennik aktywności wskazuje żądania z podejrzanym agentem użytkownika. Takie zachowanie może wskazywać na próby wykorzystania luki w zabezpieczeniach aplikacji App Service.|-|
+|**Wykryto podejrzane wywołanie w ramach platformy WordPress**|App Service dziennik aktywności wskazuje możliwe działanie iniekcji kodu w zasobie App Service.<br>To podejrzane działanie przypomina aktywność, która manipuluje kompozycją WordPress w celu obsługi wykonywania kodu po stronie serwera, a następnie bezpośredniego żądania sieci Web w celu wywołania pliku motywu, który został przekierowany. Ten typ działania może być częścią kampanii ataków za pośrednictwem platformy WordPress.|-|
+|**Wykryto skaner luk w zabezpieczeniach**<br>(Joomla/WordPress/CMS)|Dziennik aktywności Azure App Service wskazuje, że w zasobie App Service został użyty skaner możliwych luk w zabezpieczeniach. Wykryte podejrzane działania przypominają narzędzia Joomla aplikacje/aplikacje WordPress/system zarządzania zawartością (CMS).|-|
+|**Wykryto odciskiem palca sieci Web**<br>(NMAP/niewidomy słoni)|App Service dziennik aktywności wskazuje możliwe działanie odciskiem palca sieci Web w zasobie App Service.<br>To podejrzane działanie jest skojarzone z narzędziem o nazwie Blind słoni. Na serwerach sieci Web odciski palców narzędzia i próby wykrycia zainstalowanych aplikacji i ich wersji. Osoby atakujące często używają tego narzędzia do sondowania aplikacji sieci Web w celu znalezienia luk w zabezpieczeniach. |-|
 ||||
 
 
@@ -239,7 +240,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 [Dalsze szczegóły i uwagi](security-center-alerts-compute.md#azure-containers-)
 
-|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
 |**WERSJA zapoznawcza — wykryto powiązanie roli z rolą administratora klastra**|Analiza dzienników inspekcji Kubernetes wykryła nowe powiązanie z rolą administratora klastra, które wynikają z uprawnień administratora. Niepotrzebnie zapewnianie uprawnień administratora może spowodować problemy z eskalacją uprawnień w klastrze.|Trwałość|
 |**Wykryto narażony pulpit nawigacyjny Kubernetes**|Analiza dzienników inspekcji Kubernetes wykryła narażenie pulpitu nawigacyjnego Kubernetes przez usługę równoważenia obciążenia. Uwidocznione pulpity nawigacyjne umożliwiają nieuwierzytelnionego dostępu do zarządzania klastrem i stanowią zagrożenie bezpieczeństwa.|Trwałość|
@@ -254,7 +255,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 [Dalsze szczegóły i uwagi](security-center-alerts-compute.md#azure-containers-)
 
-|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
 |**Wykryto uprzywilejowany kontener**|Dzienniki maszyn wskazują, że jest uruchomiony uprzywilejowany kontener platformy Docker. Kontener uprzywilejowany ma pełny dostęp do zasobów hosta. W przypadku naruszenia zabezpieczeń, osoba atakująca może korzystać z kontenera uprzywilejowanego w celu uzyskania dostępu do komputera hosta.|PrivilegeEscalation/wykonywanie|
 |**Uruchomione uprzywilejowane polecenie w kontenerze**|Dzienniki maszyn wskazują, że polecenie uprzywilejowane zostało uruchomione w kontenerze platformy Docker. Uprzywilejowane polecenie ma rozszerzone uprawnienia na komputerze-hoście.|PrivilegeEscalation|
@@ -270,7 +271,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 [Dalsze szczegóły i uwagi](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
 
-|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
 |**Możliwa Luka w zabezpieczeniach iniekcji SQL**|Aplikacja wygenerowała błędną instrukcję SQL w bazie danych. Może to wskazywać na ewentualną lukę w zabezpieczeniach ataków iniekcji SQL. Istnieją dwie możliwe przyczyny błędnej instrukcji. Usterka w kodzie aplikacji mogła skonstruować błędną instrukcję języka SQL. Lub kod aplikacji lub procedury składowane nie oczyszczają danych wejściowych użytkownika podczas konstruowania nieprawidłowej instrukcji SQL, która może zostać wykorzystana do iniekcji SQL.|-|
 |**Próba logowania przez potencjalnie szkodliwą aplikację**|Do uzyskiwania dostępu do bazy danych jest używana potencjalnie szkodliwa aplikacja. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak wykorzystujący typowe narzędzia.|Sondowania|
@@ -288,7 +289,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 [Dalsze szczegóły i uwagi](security-center-alerts-data-services.md#azure-storage-)
 
-|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
 |**WERSJA zapoznawcza — potencjalne złośliwe oprogramowanie przekazane do konta magazynu**|Wskazuje, że obiekt BLOB zawierający potencjalne złośliwe oprogramowanie zostało przekazane do konta magazynu. Potencjalne przyczyny mogą obejmować zamierzone złośliwe oprogramowanie przez osobę atakującą lub niezamierzone przekazywanie, potencjalnie złośliwego obiektu BLOB przez uprawnionego użytkownika.|LateralMovement|
 |**Dostęp z węzła wyjścia tor do konta magazynu**|Wskazuje, że do tego konta uzyskano dostęp pomyślnie z adresu IP, który jest znany jako aktywny węzeł zakończenia tor (anonymizing serwer proxy). Ważność tego alertu uwzględnia używany typ uwierzytelniania (jeśli istnieje), a także to, czy jest to pierwszy przypadek takiego dostępu. Potencjalnymi przyczynami może być osoba atakująca, która uzyskała dostęp do konta magazynu przy użyciu sieci Tor lub uprawnionych użytkowników, którzy uzyskali dostęp do konta magazynu przy użyciu sieci Tor.|Badanie/wykorzystywanie|
@@ -309,7 +310,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 [Dalsze szczegóły i uwagi](security-center-alerts-data-services.md#azure-cosmos-db)
 
-|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
 |**Dostęp z nietypowej lokalizacji do konta Cosmos DB**|Wskazuje, że w wzorcu dostępu wprowadzono zmianę dla konta Azure Cosmos DB. Ktoś uzyskał dostęp do tego konta z nieznanego adresu IP w porównaniu z ostatnio używanymi działaniami. Osoba atakująca uzyskała dostęp do konta lub uzyskała dostęp do niego z nowej i nietypowej lokalizacji geograficznej. Przykładem tej ostatniej usługi jest zdalna konserwacja z nowej aplikacji lub dewelopera.|Wykorzystywanie|
 |**Nietypowa ilość danych wyodrębnionych z konta Cosmos DB**|Wskazuje, że wystąpił zmiana wzorca wyodrębniania danych z konta Azure Cosmos DB. Ktoś wyodrębnił nietypową ilość danych w porównaniu do ostatnich działań. Osoba atakująca mogła wyodrębnić znaczną ilość danych z bazy danych Azure Cosmos DB (na przykład eksfiltracji danych lub wyciek lub nieautoryzowany transfer danych). Lub uprawniony użytkownik lub aplikacja wykryła nietypową ilość danych z kontenera (na przykład dla działania tworzenia kopii zapasowej konserwacji).|Eksfiltracji|
@@ -320,7 +321,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 [Dalsze szczegóły i uwagi](security-center-alerts-service-layer.md#azure-network-layer)
 
-|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
 |**Wykryto komunikację sieciową ze złośliwą maszyną**|Analiza ruchu sieciowego wskazuje, że komputer (IP% {poszkodowany adres IP}) komunikuje się z tym, co jest prawdopodobnie centrum poleceń i kontroli. Gdy naruszony zasób jest modułem równoważenia obciążenia lub bramą aplikacji, podejrzane działanie może wskazywać, że co najmniej jeden zasób w puli zaplecza (modułu równoważenia obciążenia lub bramy aplikacji) komunikuje się z tym, co może być poleceniem i Centrum sterowania.|-|
 |**Wykryto możliwy naruszony komputer**|Analiza zagrożeń wskazuje, że komputer (pod adresem IP% {Machine IP}) mógł zostać naruszony przez złośliwe oprogramowanie typu Conficker. Robakiem Conficker był komputer, który jest przeznaczony dla systemu operacyjnego Microsoft Windows i został najpierw wykryty w listopadzie 2008. Robak Worm zainfekowany przez komputery, w tym komputery rządowe, firmowe i domowe w ponad 200 krajach, sprawia, że jest to największe zainfekowane robaki komputera, od Welchia robaka 2003.|-|
@@ -345,15 +346,16 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 [Dalsze szczegóły i uwagi](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
 
-|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
 |**WERSJA zapoznawcza — wykryto uruchomienie zestawu narzędzi azurite**|W Twoim środowisku wykryto znane uruchomienie zestawu narzędzi Cloud-Environment rekonesans. Narzędzie [azurite](https://github.com/mwrlabs/Azurite) może być używane przez osobę atakującą (lub przeprowadzającą testy) do mapowania zasobów subskrypcji i identyfikowania niezabezpieczonych konfiguracji.|-|
-|**WERSJA zapoznawcza — wykryto uruchomienie funkcji "Get-AzureDomainInfo" zestawu narzędzi mikroserii**|W Twoim środowisku wykryto znane uruchomienie zestawu narzędzi Cloud-Environment rekonesans. Narzędzie "mikroseria" (zobacz https://github.com/NetSPI/MicroBurst) może być używane przez osobę atakującą (lub przeprowadzającą testy) do mapowania zasobów subskrypcji, identyfikowania niezabezpieczonych konfiguracji i przecieku poufnych informacji.|-||**WERSJA zapoznawcza — wykryto podejrzaną sesję zarządzania przy użyciu nieaktywnego konta**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Podmiot zabezpieczeń, który nie jest używany przez długi czas, wykonuje teraz akcje, które mogą zapewnić ochronę trwałości dla osoby atakującej.|Trwałość|
+|**WERSJA zapoznawcza — wykryto uruchomienie funkcji "Get-AzureDomainInfo" zestawu narzędzi mikroserii**|W Twoim środowisku wykryto znane uruchomienie zestawu narzędzi Cloud-Environment rekonesans. Narzędzie "mikroseria" (zobacz https://github.com/NetSPI/MicroBurst) może być używane przez osobę atakującą (lub przeprowadzającą testy) do mapowania zasobów subskrypcji, identyfikowania niezabezpieczonych konfiguracji i przecieku poufnych informacji.|-|
+|**WERSJA zapoznawcza — wykryto podejrzaną sesję zarządzania przy użyciu nieaktywnego konta**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Podmiot zabezpieczeń, który nie jest używany przez długi czas, wykonuje teraz akcje, które mogą zapewnić ochronę trwałości dla osoby atakującej.|Trwałość|
 |**WERSJA zapoznawcza — wykryto uruchomienie funkcji "Get-AzurePasswords" zestawu narzędzi mikroserii**|W Twoim środowisku wykryto znane uruchomienie zestawu narzędzi Cloud-Environment rekonesans. Narzędzie "mikroseria" (zobacz https://github.com/NetSPI/MicroBurst) może być używane przez osobę atakującą (lub przeprowadzającą testy) do mapowania zasobów subskrypcji, identyfikowania niezabezpieczonych konfiguracji i przecieku poufnych informacji.|-|
 |**WERSJA zapoznawcza — podejrzana sesja zarządzania przy użyciu Azure Portal wykryte**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Podmiot zabezpieczeń, który regularnie nie używa Azure Portal (Ibiza) do zarządzania środowiskiem subskrypcji (nie użyto Azure Portal do zarządzania przez ostatnie 45 dni lub subskrypcji, którą aktywnie zarządza), używa teraz Azure Portal i wykonywania akcji, które może zabezpieczyć trwałość dla osoby atakującej.|-|
 |**Wykryto podejrzaną sesję zarządzania przy użyciu programu PowerShell**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Podmiot zabezpieczeń, który regularnie nie używa programu PowerShell do zarządzania środowiskiem subskrypcji, korzysta obecnie z programu PowerShell i wykonuje akcje, które mogą zapewnić ochronę trwałości dla osoby atakującej.|Trwałość|
 |**Aktywność z anonimowych adresów IP**|Wykryto aktywność użytkowników z adresu IP, który został zidentyfikowany jako anonimowy adres IP serwera proxy.<br>Te serwery proxy są używane przez osoby, które chcą ukryć adres IP urządzenia i mogą być używane do złośliwego celu. Ta funkcja wykrywania używa algorytmu uczenia maszynowego, który zmniejsza liczbę fałszywych dodatnich, takich jak źle otagowane adresy IP, które są szeroko używane przez użytkowników w organizacji.|-|
-|**Aktywność z rzadko występującego kraju**|Wystąpiło działanie z lokalizacji, która nie była ostatnio lub kiedykolwiek odwiedzana przez dowolnego użytkownika w organizacji.<br>Wykrywanie uwzględnia ostatnie lokalizacje działań do określenia lokalizacji nowych i rzadkie. Aparatu wykrywania anomalii są przechowywane informacje o powyższych lokalizacjach, które posługują się użytkownicy w organizacji.|-|
+|**Działanie z nieczęstego kraju**|Wystąpiło działanie z lokalizacji, która nie była ostatnio lub kiedykolwiek odwiedzana przez dowolnego użytkownika w organizacji.<br>Wykrywanie uwzględnia ostatnie lokalizacje działań do określenia lokalizacji nowych i rzadkie. Aparatu wykrywania anomalii są przechowywane informacje o powyższych lokalizacjach, które posługują się użytkownicy w organizacji.|-|
 |**Niemożliwa podróż**|Wystąpiły dwa działania użytkownika (w jednej lub wielu sesjach) pochodzące z lokalizacji geograficznie odległej. Dzieje się tak w przedziale czasowym krótszym niż czas, przez który użytkownik mógł podróżować z pierwszej lokalizacji do drugiej. Oznacza to, że inny użytkownik korzysta z tych samych poświadczeń.<br>Ta funkcja wykrywania używa algorytmu uczenia maszynowego, który ignoruje oczywistych fałszywych zwracanych wyników, takich jak sieci VPN i lokalizacje regularnie używane przez innych użytkowników w organizacji. Wykrycie ma początkowy okres uczenia wynoszący siedem dni, podczas którego nauczy się wzorca aktywności nowego użytkownika. |-|
 |**Korzystanie z zaawansowanych technik trwałości platformy Azure**|Analiza dzienników aktywności subskrypcji wykryła podejrzane zachowanie. Role niestandardowe otrzymały jednostki tożsamości legitimized. Może to spowodować, że osoba atakująca uzyska utrwalenie w środowisku klienta platformy Azure.|-|
 ||||
@@ -363,7 +365,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 [Dalsze szczegóły i uwagi](security-center-alerts-service-layer.md#azure-keyvault)
 
-|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
 |**Dostęp z węzła wyjścia TOR do Key Vault**|Dostęp do Key Vault został uzyskany przez kogoś przy użyciu systemu zachowywanie anonimowości IP sieci w celu ukrycia ich lokalizacji. Złośliwe osoby często próbują ukryć swoje lokalizacje podczas próby uzyskania nieautoryzowanego dostępu do zasobów połączonych z Internetem.|-|
 |**Duża liczba operacji w Key Vault**|W porównaniu z danymi historycznymi przeprowadzono większą liczbę operacji Key Vault. Działania Key Vault są zwykle takie same w czasie. Może to być legalna zmiana w działaniu. Alternatywnie można naruszyć bezpieczeństwo infrastruktury i zapewnić dalsze badania.|-|
@@ -381,7 +383,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 [Dalsze szczegóły i uwagi](security-center-alerts-integration.md#azure-ddos)
 
-|Alert|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
+|Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
 |**Wykryto atak DDoS dla publicznego adresu IP**|Wykryto atak DDoS dla publicznego adresu IP (adres IP) i jest on zmniejszany.|Sondowania|
 |**Atak DDoS został skorygowany dla publicznego adresu IP**|Atak DDoS został skorygowany dla publicznego adresu IP (adres IP).|Sondowania|
@@ -403,9 +405,9 @@ Obsługiwane przez Security Center zamiary kasowania łańcucha są oparte na [M
 |**PrivilegeEscalation**|Eskalacja uprawnień jest wynikiem akcji, które umożliwiają atakującej uzyskanie wyższego poziomu uprawnień w systemie lub sieci. Niektóre narzędzia i akcje wymagają wyższego poziomu uprawnień do pracy i są potrzebne w wielu punktach w trakcie operacji. Konta użytkowników z uprawnieniami dostępu do określonych systemów lub wykonywania określonych funkcji niezbędnych do osiągnięcia ich celu przez źródłami ataków, mogą być uznawane za eskalację uprawnień.|
 |**DefenseEvasion**|Zauchylanie obrony polega na technikach, których atakującej może używać do uchylania wykrywania lub uniknięcia innych zabezpieczeń. Czasami te działania są takie same jak w przypadku technik (lub wariantów) w innych kategoriach, które mają dodatkową korzyść w odróżnieniu od konkretnej obrony lub środków zaradczych.|
 |**CredentialAccess**|Dostęp do poświadczeń reprezentuje techniki powodujące dostęp do poświadczeń systemu, domeny lub usługi, które są używane w środowisku przedsiębiorstwa. Źródłami ataków będzie prawdopodobnie próbować uzyskać wiarygodne poświadczenia od użytkowników lub kont administratorów (administrator systemu lokalnego lub Użytkownicy domeny z dostępem administratora) do użycia w sieci. Mając wystarczający dostęp w ramach sieci, atakującej może tworzyć konta do późniejszego użycia w środowisku.|
-|**Discovery** (Odnajdywanie)|Funkcja odnajdywania składa się z technik, które umożliwiają atakującejom uzyskanie informacji o systemie i sieci wewnętrznej. Gdy źródłami ataków uzyskują dostęp do nowego systemu, muszą one być zorientowane na to, co już teraz kontroluje i jakie korzyści z tego systemu mają na celu ich bieżące lub ogólne cele podczas włamania. System operacyjny zawiera wiele narzędzi macierzystych, które ułatwiają przeprowadzenie tej fazy zbierania informacji o naruszeniu naruszeń.|
+|**Odnajdowa**|Funkcja odnajdywania składa się z technik, które umożliwiają atakującejom uzyskanie informacji o systemie i sieci wewnętrznej. Gdy źródłami ataków uzyskują dostęp do nowego systemu, muszą one być zorientowane na to, co już teraz kontroluje i jakie korzyści z tego systemu mają na celu ich bieżące lub ogólne cele podczas włamania. System operacyjny zawiera wiele narzędzi macierzystych, które ułatwiają przeprowadzenie tej fazy zbierania informacji o naruszeniu naruszeń.|
 |**LateralMovement**|Ruchy poprzeczne składają się z technik, które umożliwiają atakującej dostęp do zdalnych systemów w sieci i sterowanie tymi systemami oraz mogą, ale nie musi, obejmować wykonywanie narzędzi w systemach zdalnych. Techniki ruchów poprzecznych mogą umożliwić atakującej zebranie informacji z systemu bez konieczności stosowania dodatkowych narzędzi, takich jak narzędzie dostępu zdalnego. Atakującej może korzystać z ruchu bocznego w wielu celach, w tym do zdalnego wykonywania narzędzi, przestawiania na dodatkowe systemy, uzyskiwania dostępu do określonych informacji lub plików, uzyskiwania dostępu do dodatkowych poświadczeń lub w celu uzyskania efektu.|
-|**Wykonanie**|Taktyką wykonywania reprezentuje techniki, które powodują wykonanie kodu kontrolowanego przez atakującej w systemie lokalnym lub zdalnym. Ten taktyką jest często używany w połączeniu z ruchem bocznym w celu zwiększenia dostępu do systemów zdalnych w sieci.|
+|**Działania**|Taktyką wykonywania reprezentuje techniki, które powodują wykonanie kodu kontrolowanego przez atakującej w systemie lokalnym lub zdalnym. Ten taktyką jest często używany w połączeniu z ruchem bocznym w celu zwiększenia dostępu do systemów zdalnych w sieci.|
 |**Kolekcja**|Kolekcja zawiera techniki służące do identyfikowania i zbierania informacji, takich jak pliki poufne, z sieci docelowej przed eksfiltracji. Ta kategoria obejmuje również lokalizacje w systemie lub sieci, w których atakującej może szukać informacji do wyprowadzać.|
 |**Eksfiltracji**|Eksfiltracji odnosi się do technik i atrybutów, które powodują lub ułatwiają atakującej usuwanie plików i informacji z sieci docelowej. Ta kategoria obejmuje również lokalizacje w systemie lub sieci, w których atakującej może szukać informacji do wyprowadzać.|
 |**CommandAndControl**|Taktyką polecenia i kontroli przedstawia sposób, w jaki źródłami ataków komunikują się z systemami w ramach kontroli w sieci docelowej.|
@@ -417,5 +419,5 @@ Obsługiwane przez Security Center zamiary kasowania łańcucha są oparte na [M
 Aby dowiedzieć się więcej o alertach, zobacz następujące tematy:
 
 * [Alerty zabezpieczeń w usłudze Azure Security Center](security-center-alerts-overview.md)
-* [Zarządzanie alertami zabezpieczeń i reagowanie na nie w Azure Security Center](security-center-managing-and-responding-alerts.md)
+* [Zarządzanie alertami zabezpieczeń i reagowanie na nie w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Eksportowanie alertów zabezpieczeń i zaleceń (wersja zapoznawcza)](continuous-export.md)

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5695968973c7446220d8d77b84dfebb4a23ae8c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 62a969519ebefaab919505d9c8faae830f55f4c6
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847760"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505626"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Uzyskiwanie dostępu do dzienników inspekcji Azure AD B2C
 
@@ -38,7 +38,7 @@ Kategoria **B2C** w dziennikach inspekcji zawiera następujące typy działań:
 |Katalog |Działania związane z atrybutami katalogu pobrane, gdy administrator zaloguje się przy użyciu Azure Portal. |
 |Aplikacja | Tworzenie, odczytywanie, aktualizowanie i usuwanie (CRUD) operacji na aplikacjach B2C. |
 |Klucz |Operacje CRUD na kluczach przechowywanych w kontenerze kluczy B2C. |
-|Zasób |CRUD operacji na zasobach B2C. Na przykład zasady i dostawcy tożsamości.
+|Resource |CRUD operacji na zasobach B2C. Na przykład zasady i dostawcy tożsamości.
 |Authentication |Weryfikowanie poświadczeń użytkownika i wystawianie tokenów.|
 
 W przypadku działań CRUD obiektów użytkownika zapoznaj się z kategorią **katalogu podstawowego** .
@@ -53,11 +53,11 @@ Panel szczegóły działania zawiera następujące informacje:
 
 |Sekcja|Pole|Opis|
 |-------|-----|-----------|
-| Działanie | Nazwa | Jakie działanie miało miejsce. Na przykład *Wystawić id_token aplikacji*, która zawiera rzeczywiste Logowanie użytkownika. |
+| Działanie | Name (Nazwa) | Jakie działanie miało miejsce. Na przykład *Wystawić id_token aplikacji*, która zawiera rzeczywiste Logowanie użytkownika. |
 | Zainicjowane przez (aktor) | ObjectId | **Identyfikator obiektu** aplikacji B2C, w której loguje się użytkownik. Ten identyfikator nie jest widoczny w Azure Portal, ale jest dostępny za pośrednictwem interfejsu API Microsoft Graph. |
 | Zainicjowane przez (aktor) | SPN | **Identyfikator aplikacji** B2C, w której loguje się użytkownik. |
 | Elementy docelowe | ObjectId | **Identyfikator obiektu** użytkownika, który loguje się. |
-| Dodatkowe szczegóły | tenantId | **Identyfikator dzierżawy** dzierżawy Azure AD B2C. |
+| Dodatkowe szczegóły | TenantId | **Identyfikator dzierżawy** dzierżawy Azure AD B2C. |
 | Dodatkowe szczegóły | `PolicyId` | **Identyfikator zasad** przepływu użytkownika (zasady) używany do podpisywania użytkownika w programie. |
 | Dodatkowe szczegóły | ApplicationId | **Identyfikator aplikacji** B2C, w której loguje się użytkownik. |
 
@@ -88,51 +88,15 @@ Dzienniki inspekcji są publikowane w tym samym potoku co inne działania dotycz
 
 ### <a name="enable-reporting-api-access"></a>Włącz dostęp do interfejsu API raportowania
 
-Aby zezwolić na dostęp skryptowy lub oparty na aplikacji do interfejsu API raportowania usługi Azure AD, potrzebujesz aplikacji Azure Active Directory zarejestrowanej w dzierżawie Azure AD B2C z następującymi uprawnieniami interfejsu API:
+Aby zezwolić na dostęp skryptowy lub oparty na aplikacji do interfejsu API raportowania usługi Azure AD, potrzebna jest aplikacja zarejestrowana w dzierżawie Azure AD B2C przy użyciu następujących uprawnień interfejsu API. Można włączyć te uprawnienia do istniejącej rejestracji aplikacji w ramach dzierżawy usługi B2C lub utworzyć nowy, przeznaczony do użycia z automatyzacją dzienników inspekcji.
 
-* Microsoft Graph > uprawnienia aplikacji > AuditLog. Read. All
+* Microsoft Graph > uprawnienia aplikacji > AuditLog > AuditLog. Read. All
 
-Możesz włączyć te uprawnienia dla istniejącej Azure Active Directory rejestracji aplikacji w ramach dzierżawy usługi B2C lub utworzyć nowy, przeznaczony do użycia z automatyzacją dzienników inspekcji.
+Wykonaj kroki opisane w następującym artykule, aby zarejestrować aplikację z wymaganymi uprawnieniami:
 
-Wykonaj następujące kroki, aby zarejestrować aplikację, udziel jej wymagane Microsoft Graph uprawnienia interfejsu API, a następnie Utwórz klucz tajny klienta.
+[Zarządzanie Azure AD B2C przy użyciu Microsoft Graph](microsoft-graph-get-started.md)
 
-### <a name="register-application-in-azure-active-directory"></a>Zarejestruj aplikację w Azure Active Directory
-
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
-
-### <a name="assign-api-access-permissions"></a>Przypisywanie uprawnień dostępu do interfejsu API
-
-#### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
-
-1. Na stronie Przegląd **zarejestrowanej aplikacji** wybierz pozycję **Ustawienia**.
-1. W obszarze **dostęp do interfejsu API**wybierz pozycję **wymagane uprawnienia**.
-1. Wybierz pozycję **Dodaj**, a następnie **Wybierz interfejs API**.
-1. Wybierz pozycję **Microsoft Graph**, a następnie **Wybierz pozycję**.
-1. W obszarze **uprawnienia aplikacji**wybierz opcję **Czytaj wszystkie dane dziennika inspekcji**.
-1. Wybierz przycisk **Wybierz** , a następnie wybierz pozycję **gotowe**.
-1. Wybierz **udzielić uprawnień**, a następnie wybierz pozycję **tak**.
-
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
-
-1. W obszarze **Zarządzaj**wybierz pozycję **uprawnienia interfejsu API**.
-1. W obszarze **skonfigurowane uprawnienia**wybierz pozycję **Dodaj uprawnienie**.
-1. Wybierz kartę **interfejsy API firmy Microsoft** .
-1. Wybierz **Microsoft Graph**.
-1. Wybierz pozycję **Uprawnienia aplikacji**.
-1. Rozwiń węzeł **auditlog** , a następnie zaznacz pole wyboru **auditlog. Read. All** .
-1. Wybierz pozycję **Dodaj uprawnienia**. Poczekaj kilka minut, zanim przejdziesz do kolejnego kroku.
-1. Wybierz pozycję **Udziel zgody administratora (nazwa dzierżawy)** .
-1. Wybierz aktualnie zalogowane konto, jeśli przypisano mu rolę *administratora globalnego* lub Zaloguj się przy użyciu konta w dzierżawie Azure AD B2C, do którego przypisano rolę *administratora globalnego* .
-1. Wybierz pozycję **Zaakceptuj**.
-1. Wybierz pozycję **Odśwież**, a następnie sprawdź, czy "udzielono dla..." pojawia się w obszarze **stan** dla uprawnienia *AuditLog. Read. All* . Propagowanie uprawnień może potrwać kilka minut.
-
-* * *
-
-### <a name="create-client-secret"></a>Utwórz klucz tajny klienta
-
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
-
-Masz teraz aplikację z wymaganym dostępem do interfejsu API, IDENTYFIKATORem aplikacji i kluczem, którego można użyć w skryptach automatyzacji. Zapoznaj się z sekcją skryptu programu PowerShell w dalszej części tego artykułu, aby zapoznać się z przykładem, jak można pobrać zdarzenia dotyczące aktywności ze skryptem.
+Po zarejestrowaniu aplikacji z odpowiednimi uprawnieniami zapoznaj się z sekcją skryptu programu PowerShell w dalszej części tego artykułu, aby zapoznać się z przykładem, jak można uzyskać zdarzenia dotyczące aktywności za pomocą skryptu.
 
 ### <a name="access-the-api"></a>Dostęp do interfejsu API
 
@@ -149,13 +113,14 @@ Poniższy skrypt programu PowerShell przedstawia przykład sposobu wykonywania z
 Możesz wypróbować ten skrypt w [Azure Cloud Shell](overview.md). Pamiętaj, aby zaktualizować go przy użyciu identyfikatora aplikacji, klucza tajnego klienta oraz nazwy dzierżawy Azure AD B2C.
 
 ```powershell
-# This script requires the registration of a Web Application in Azure Active Directory:
-# https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api
+# This script requires an application registration that's granted Microsoft Graph API permission
+# https://docs.microsoft.com/azure/active-directory-b2c/microsoft-graph-get-started
 
 # Constants
-$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID (registered by Global Admin)
+$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID
 $ClientSecret   = "your-client-application-secret-here"   # Insert your application's client secret
-$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant; for example, contoso.onmicrosoft.com
+$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant domain name
+
 $loginURL       = "https://login.microsoftonline.com"
 $resource       = "https://graph.microsoft.com"           # Microsoft Graph API resource URI
 $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
@@ -258,4 +223,4 @@ Oto reprezentacja danych JSON przykładowego zdarzenia działania wyświetlonego
 
 ## <a name="next-steps"></a>Następne kroki
 
-Można zautomatyzować inne zadania administracyjne, na przykład [zarządzać użytkownikami przy użyciu platformy .NET](manage-user-accounts-graph-api.md).
+Można zautomatyzować inne zadania administracyjne, na przykład [zarządzać kontami użytkowników Azure AD B2C przy użyciu Microsoft Graph](manage-user-accounts-graph-api.md).

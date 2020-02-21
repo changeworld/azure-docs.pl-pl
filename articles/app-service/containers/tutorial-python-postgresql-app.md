@@ -8,12 +8,13 @@ ms.custom:
 - mvc
 - seodec18
 - seo-python-october2019
-ms.openlocfilehash: 3aa5b5085a6120ca513f0aeba344e7f541f0fd72
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+- cli-validate
+ms.openlocfilehash: 13431b62e64774a4c31cf95200def3ba77f973d7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713414"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523938"
 ---
 # <a name="tutorial-run-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Samouczek: uruchamianie aplikacji sieci Web języka Python (Django) za pomocą PostgreSQL w Azure App Service
 
@@ -26,7 +27,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > [!div class="checklist"]
 > * Tworzenie bazy danych Azure Database for PostgreSQL i łączenie z nią aplikacji sieci Web
 > * Wdróż aplikację sieci Web w usłudze Azure App Service
-> * Wyświetlanie dzienników diagnostycznych
+> * Wyświetlanie dzienników diagnostyki
 > * Zarządzanie aplikacją internetową w Azure Portal
 
 Kroki opisane w tym artykule można wykonać w systemie macOS, Linux lub Windows. Kroki są podobne w większości przypadków, chociaż różnice nie są szczegółowo opisane w tym samouczku. W większości przykładów poniżej użyto okna terminalu `bash` w systemie Linux. 

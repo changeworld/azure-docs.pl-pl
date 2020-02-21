@@ -4,12 +4,12 @@ description: Dowiedz się, jak opracowywać i testować Azure Functions przy uż
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7aceae256c4fc4d18615e181bbcb7425e659955d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: b3d683153a1e70f4c65dcc5e401f4ee702af8b49
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547374"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484710"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Opracowywanie Azure Functions przy użyciu programu Visual Studio  
 
@@ -42,7 +42,7 @@ Inne zasoby, które są potrzebne, takie jak konto usługi Azure Storage, są tw
 
 ### <a name="check-your-tools-version"></a>Sprawdź wersję narzędzi w programie Visual Studio 2017
 
-1. Z **narzędzia** menu, wybierz **rozszerzenia i aktualizacje**. Rozwiń węzeł **zainstalowane** > **Narzędzia** i wybierz pozycję **Narzędzia do Azure Functions i zadania w sieci Web**.
+1. W menu **Narzędzia** wybierz pozycję **rozszerzenia i aktualizacje**. Rozwiń węzeł **zainstalowane** > **Narzędzia** i wybierz pozycję **Narzędzia do Azure Functions i zadania w sieci Web**.
 
     ![Weryfikowanie wersji narzędzi funkcji](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -136,7 +136,7 @@ W C# funkcjach biblioteki klas powiązania używane przez funkcję są definiowa
     }
     ```
 
-    Atrybut specyficzny dla powiązania jest stosowany do każdego parametru powiązania dostarczonego do metody punktu wejścia. Ten atrybut przyjmuje informacje o powiązaniu jako parametry. W poprzednim przykładzie pierwszy parametr ma zastosowany atrybut **QueueTrigger** , wskazujący funkcję wyzwalaną przez kolejkę. Nazwa kolejki i ustawienia parametrów połączenia są przenoszone jako parametry do atrybutu **QueueTrigger** . Aby uzyskać więcej informacji, zobacz [powiązania usługi Azure queue storage dla Azure Functions](functions-bindings-storage-queue.md#trigger).
+    Atrybut specyficzny dla powiązania jest stosowany do każdego parametru powiązania dostarczonego do metody punktu wejścia. Ten atrybut przyjmuje informacje o powiązaniu jako parametry. W poprzednim przykładzie pierwszy parametr ma zastosowany atrybut **QueueTrigger** , wskazujący funkcję wyzwalaną przez kolejkę. Nazwa kolejki i ustawienia parametrów połączenia są przenoszone jako parametry do atrybutu **QueueTrigger** . Aby uzyskać więcej informacji, zobacz [powiązania usługi Azure queue storage dla Azure Functions](functions-bindings-storage-queue-trigger.md).
 
 Korzystając z powyższej procedury, można dodać więcej funkcji do projektu aplikacji funkcji. Każda funkcja w projekcie może mieć inny wyzwalacz, ale funkcja musi mieć dokładnie jeden wyzwalacz. Aby uzyskać więcej informacji, zobacz temat [Azure Functions wyzwalacze i koncepcje powiązań](functions-triggers-bindings.md).
 

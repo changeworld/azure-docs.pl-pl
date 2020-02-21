@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: c0b28bd7a854d1b4a8b387e40fb045d47160768d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: f1012f8c00de4b19bbf6206408ec1a806e09e54f
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672285"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482347"
 ---
 # <a name="azure-app-service-plan-overview"></a>Przegląd planu Azure App Service
 
@@ -37,7 +37,7 @@ Każda warstwa udostępnia również określony podzbiór funkcji App Service. T
 <a name="new-pricing-tier-premiumv2"></a>
 
 > [!NOTE]
-> Nowa warstwa cenowa **PremiumV2** udostępnia [maszyny wirtualne z serii Dv2](../virtual-machines/windows/sizes-general.md#dv2-series) z szybszymi procesorami, magazynem dysków SSD i podwójną proporcją pamięci na rdzeń w porównaniu z warstwą **Standard** . Usługa **PremiumV2** obsługuje również wyższą skalę dzięki większej liczbie wystąpień, jednocześnie zapewniając jednocześnie wszystkie zaawansowane możliwości dostępne w planie standardowym. Wszystkie funkcje dostępne w istniejącej warstwie **Premium** są zawarte w **PremiumV2**.
+> Nowa warstwa cenowa **PremiumV2** udostępnia [maszyny wirtualne z serii Dv2](../virtual-machines/dv2-dsv2-series.md) z szybszymi procesorami, magazynem dysków SSD i podwójną proporcją pamięci na rdzeń w porównaniu z warstwą **Standard** . Usługa **PremiumV2** obsługuje również wyższą skalę dzięki większej liczbie wystąpień, jednocześnie zapewniając jednocześnie wszystkie zaawansowane możliwości dostępne w planie standardowym. Wszystkie funkcje dostępne w istniejącej warstwie **Premium** są zawarte w **PremiumV2**.
 >
 > Podobnie jak w przypadku innych dedykowanych warstw, dla tej warstwy są dostępne trzy rozmiary maszyn wirtualnych:
 >

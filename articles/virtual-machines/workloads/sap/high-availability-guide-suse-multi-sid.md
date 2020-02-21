@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/16/2020
+ms.date: 02/20/2020
 ms.author: radeltch
-ms.openlocfilehash: 7471fc6d7f10c849ba79fedf88961d6c3c99913f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e48cb1baa515e6a1549bf913a3c3e4cf50e1fff6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314202"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525485"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server for SAP — Przewodnik dotyczący wiele identyfikatorów SID
 
@@ -83,13 +83,13 @@ Przed rozpoczęciem zapoznaj się z poniższymi informacjami i dokumentami SAP:
 * [Wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP w systemie Linux][dbms-guide]
 * [Przewodniki dla systemu SUSE SAP ha Best Practices][suse-ha-guide] Przewodniki zawierają wszystkie informacje wymagane do skonfigurowania NetWeaver HA i replikacji systemu SAP HANA w środowisku lokalnym. Użyj tych przewodników jako ogólnego planu bazowego. Zapewniają one wiele bardziej szczegółowych informacji.
 * [Informacje o wersji w programie SUSE High Availability Extension 12 SP3][suse-ha-12sp3-relnotes]
-* [Obsługa systemu SUSE dla klastra z obsługą wiele identyfikatorów SID](https://www.suse.com/c/sap-workloads-going-green/)
+* [Przewodnik po klastrze z obsługą wiele identyfikatorów SID dla SLES 12 i SLES 15](https://documentation.suse.com/sbp/all/html/SBP-SAP-MULTI-SID/index.html)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Maszyny wirtualne, które uczestniczą w klastrze, muszą mieć rozmiar, aby można było uruchamiać wszystkie zasoby w przypadku przełączenia w tryb failover. Każdy identyfikator SID SAP może być przełączany w tryb failover niezależny od siebie w klastrze wysokiej dostępności z obsługą usługi wiele identyfikatorów SID.  W przypadku używania SBD ogrodzenia urządzenia SBD mogą być współużytkowane przez wiele klastrów.  
 
-Aby zapewnić wysoką dostępność, rozwiązanie SAP NetWeaver wymaga wysoce dostępnych udziałów NFS. W tym przykładzie przyjęto, że udziały SAP NFS są hostowane na [serwerze plików NFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)o wysokiej dostępności, który może być używany przez wiele systemów SAP. Lub udziały są wdrażane na [woluminach NFS usługi Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).  
+Aby zapewnić wysoką dostępność, rozwiązanie SAP NetWeaver wymaga wysoce dostępnych udziałów NFS. W tym przykładzie przyjęto założenie, że udziały SAP NFS są hostowane na [serwerze plików NFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)o wysokiej dostępności, który może być używany przez wiele systemów SAP. Lub udziały są wdrażane na [woluminach NFS usługi Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).  
 
 ![Omówienie wysokiej dostępności SAP NetWeaver](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
@@ -173,7 +173,7 @@ Dokumenty wymienione powyżej przeprowadzą Cię przez kroki umożliwiające prz
 
 W tym przykładzie przyjęto założenie, że system **NW1** został już wdrożony w klastrze. Pokażemy sposób wdrażania w klastrach systemów SAP **NW2** i **NW3**. 
 
-Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
+Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
 
 ### <a name="prerequisites"></a>Wymagania wstępne 
 

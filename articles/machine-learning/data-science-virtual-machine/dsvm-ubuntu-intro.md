@@ -1,5 +1,6 @@
 ---
-title: 'Szybki Start: Tworzenie Ubuntu DSVM'
+title: 'Szybki Start: Tworzenie Ubuntu Data Science Virtual Machine'
+titleSuffix: Azure Data Science Virtual Machine
 description: Skonfiguruj i Utwórz Data Science Virtual Machine dla systemu Linux (Ubuntu), aby przeprowadzić analizę i uczenie maszynowe.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 263c12b344e8634c639167aa3e455032f0817e2f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 5d139cbd59b1b3e63786ae22bbd3b934de37cd49
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612091"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526114"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Szybki Start: Konfigurowanie Data Science Virtual Machine dla systemu Linux (Ubuntu)
 
@@ -36,7 +37,7 @@ Poniżej przedstawiono procedurę tworzenia wystąpienia Data Science Virtual Ma
    
 1. Wprowadź następujące informacje, aby skonfigurować każdy krok kreatora:
 
-    1. **Podstawy**:
+    1. **Podstawowe informacje**:
     
        * **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz tę, w której zostanie utworzona i rozliczona. Musisz mieć uprawnienia do tworzenia zasobów dla tej subskrypcji.
        * **Grupa zasobów**: Utwórz nową grupę lub Użyj istniejącej.
@@ -73,9 +74,9 @@ Możesz uzyskać dostęp do Ubuntu DSVM na jeden z trzech sposobów:
 
 Możesz również dołączyć Data Science Virtual Machine do Azure Notebooks do uruchamiania notesów Jupyter na maszynie wirtualnej i pomijania ograniczeń warstwy bezpłatnej usługi. Aby uzyskać więcej informacji, zobacz [Zarządzanie i Konfigurowanie projektów Azure Notebooks](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
 
-### <a name="ssh"></a>SSH
+### <a name="ssh"></a>Protokół SSH
 
-Po utworzeniu maszyny wirtualnej, jeśli została ona skonfigurowana przy użyciu dostępu SSH, możesz zalogować się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta, które zostały utworzone w **podstawy** sekcji Krok 3 dla interfejsu powłoki tekstu. W systemie Windows można pobrać narzędzie klienta SSH [, takie jak](https://www.putty.org)wyglądająco. Jeśli wolisz korzystać z graficznego pulpitu (X systemu Windows), możesz użyć funkcji przekazywania dalej X11.
+Po utworzeniu maszyny wirtualnej, jeśli została ona skonfigurowana przy użyciu dostępu SSH, możesz zalogować się do niej przy użyciu protokołu SSH. Użyj poświadczeń konta utworzonych w sekcji **podstawy** kroku 3 dla interfejsu powłoki tekstu. W systemie Windows można pobrać narzędzie klienta SSH [, takie jak](https://www.putty.org)wyglądająco. Jeśli wolisz korzystać z graficznego pulpitu (X systemu Windows), możesz użyć funkcji przekazywania dalej X11.
 
 > [!NOTE]
 > Klient X2Go spisywała się lepiej niż X11 przekazywania do testowania. Zaleca się przy użyciu klienta X2Go dla interfejsu graficznego pulpitu.
@@ -84,7 +85,7 @@ Po utworzeniu maszyny wirtualnej, jeśli została ona skonfigurowana przy użyci
 
 Maszyna wirtualna z systemem Linux została już zainicjowana z serwerem X2Go i gotowa do akceptowania połączeń klienckich. Aby połączyć pulpit graficzny maszyny Wirtualnej systemu Linux, należy wykonać poniższą procedurę na komputerze klienckim:
 
-1. Pobieranie i instalowanie klienta X2Go dla danej platformy klienta [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
+1. Pobierz i zainstaluj klienta programu X2Go dla platformy klienckiej z programu [x2go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
 1. Zanotuj publiczny adres IP maszyny wirtualnej, który można znaleźć w Azure Portal, otwierając właśnie utworzoną maszynę wirtualną.
 
    ![Ubuntu adres IP maszyny](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
@@ -95,10 +96,10 @@ Maszyna wirtualna z systemem Linux została już zainicjowana z serwerem X2Go i 
    * **Karta sesji**:
      * **Host**: wprowadź adres IP maszyny wirtualnej, która została zanotowana wcześniej.
      * **Logowanie**: Wprowadź nazwę użytkownika na maszynie wirtualnej z systemem Linux.
-     * **SSH Port**: pozostaw 22, wartością domyślną.
-     * **Typ sesji**: Zmień wartość na **XFCE**. Obecnie maszyna wirtualna z systemem Linux obsługuje tylko pulpit pulpit Xfce.
-   * **Karta Media**: można wyłączyć dźwięk pomocy technicznej i klienta, drukowanie, jeśli nie potrzebujesz umożliwić ich używanie.
-   * **Foldery udostępnione**: katalogi z maszyn klienta zainstalowanego na maszynie Wirtualnej systemu Linux, dodać katalogi maszyny klienta, które chcesz się podzielić z maszyną Wirtualną na tej karcie.
+     * **Port SSH**: pozostaw wartość domyślną równą 22.
+     * **Typ sesji**: Zmień wartość na **pulpit Xfce**. Obecnie maszyna wirtualna z systemem Linux obsługuje tylko pulpit pulpit Xfce.
+   * **Karta multimedia**: można wyłączyć obsługę dźwięku i drukowanie klientów, jeśli nie trzeba ich używać.
+   * **Foldery udostępnione**: Jeśli chcesz, aby katalogi z komputerów klienckich były zainstalowane na maszynie wirtualnej z systemem Linux, Dodaj katalogi na komputerze klienckim, które chcesz udostępnić z maszyną wirtualną na tej karcie.
 
    ![Konfiguracja X2go](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. Kliknij przycisk **OK**.
@@ -137,6 +138,6 @@ Poniżej przedstawiono, jak można kontynuować Twoją naukę oraz eksploracji:
 
 * Analiza [danych w Data Science Virtual Machine dla systemu Linux](linux-dsvm-walkthrough.md) zawiera informacje na temat wykonywania kilku typowych zadań związanych z nauką o danych przy użyciu DSVM systemu Linux. 
 * Zapoznaj się z różnymi narzędziami do nauki o danych w DSVM, korzystając z narzędzi opisanych w tym artykule. Aby uzyskać więcej informacji na temat narzędzi zainstalowanych na maszynie wirtualnej, można również uruchomić `dsvm-more-info` w ramach powłoki w ramach maszyny wirtualnej.  
-* Dowiedz się, jak tworzyć rozwiązania analityczne end-to-end systematycznie przy użyciu [zespołu danych dla celów naukowych](https://aka.ms/tdsp).
-* Odwiedź stronę [galerii Azure AI](https://gallery.azure.ai/) maszyny nauki i dane analizy przykładów, które korzystają z usług Azure AI.
+* Dowiedz się, jak kompleksowo kompilować kompleksowe rozwiązania analityczne przy użyciu [zespołowego procesu nauki o danych](https://aka.ms/tdsp).
+* Odwiedź [Azure AI Gallery](https://gallery.azure.ai/) , aby zapoznać się z przykładami dotyczącymi usługi Machine Learning i analizy danych, które korzystają z usług Azure AI.
 * Zapoznaj się z odpowiednią [dokumentacją](./reference-ubuntu-vm.md) dla tej maszyny wirtualnej.

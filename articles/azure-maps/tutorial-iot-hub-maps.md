@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 48d148256fe69bbdfd188f1d8472c2de80b0fa64
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: f0367a195ca0aa5f26ff0819b00c50fabae1d271
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208373"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505850"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Samouczek: implementowanie analizy przestrzennej IoT przy użyciu Azure Maps
 
@@ -116,9 +116,9 @@ Aby zaimplementować logikę biznesową na podstawie Azure Maps analiz przestrze
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Aby rejestrować dane zdarzeń, utworzymy konto **v2storage** ogólnego przeznaczenia w grupie zasobów "ContosoRental" w celu przechowywania danych jako obiektów BLOB. Aby utworzyć konto magazynu, postępuj zgodnie z instrukcjami w temacie [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal). Następnie będziemy musieli utworzyć kontener do przechowywania obiektów BLOB. Wykonaj poniższe czynności, aby to zrobić:
+Aby rejestrować dane zdarzeń, utworzymy **v2storage** ogólnego przeznaczenia, który zapewnia dostęp do wszystkich usług Azure Storage: obiektów blob, plików, kolejek, tabel i dysków.  Musimy umieścić to konto magazynu w grupie zasobów "ContosoRental", aby przechowywać dane jako obiekty blob. Aby utworzyć konto magazynu, postępuj zgodnie z instrukcjami w temacie [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal). Następnie będziemy musieli utworzyć kontener do przechowywania obiektów BLOB. Wykonaj poniższe czynności, aby to zrobić:
 
-1. Na koncie magazynu przejdź do kontenerów.
+1. W obszarze "konto magazynu — obiekt BLOB, plik, tabela, kolejka" przejdź do kontenerów.
 
     ![Liczba](./media/tutorial-iot-hub-maps/blobs.png)
 
@@ -155,6 +155,9 @@ Aby można było nawiązać połączenie z IoT Hub, urządzenie musi być zareje
     
     ![Rejestr-urządzenie](./media/tutorial-iot-hub-maps/register-device.png)
 
+3. Zapisz **podstawowe parametry połączenia** urządzenia, aby użyć ich w późniejszym kroku, w którym należy zmienić symbol zastępczy za pomocą tych parametrów połączenia.
+
+    ![Dodaj urządzenie](./media/tutorial-iot-hub-maps/connection-string.png)
 
 ## <a name="upload-geofence"></a>Przekaż geoogrodzenie
 
@@ -188,7 +191,7 @@ Otwórz aplikację Poster i postępuj zgodnie z poniższymi instrukcjami, aby pr
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Skopiuj identyfikator URI stanu i Dołącz do niego parametr `subscription-key`, podając jego wartość klucza subskrypcji konta usługi Azure Maps. Format identyfikatora URI stanu powinien wyglądać podobnie do przedstawionego poniżej:
+6. Skopiuj identyfikator URI stanu i Dołącz do niego parametr `subscription-key`. Przypisz wartość klucza subskrypcji konta Azure Maps do parametru `subscription-key`. Format identyfikatora URI stanu powinien wyglądać podobnie do poniższego, a `{Subscription-key}` zastępowany kluczem subskrypcji.
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
@@ -218,7 +221,7 @@ Wszystkie odpowiednie informacje o zdarzeniu są przechowywane w magazynie obiek
 
     ![Utwórz zasób](./media/tutorial-iot-hub-maps/create-resource.png)
 
-2. Na stronie Tworzenie **aplikacja funkcji** Nadaj nazwę aplikacji funkcji. W obszarze **Grupa zasobów**wybierz pozycję **Użyj istniejącej**, a następnie wybierz pozycję "ContosoRental" z listy rozwijanej. Wybierz pozycję ".NET Core" jako stos środowiska uruchomieniowego. W obszarze **Magazyn**wybierz pozycję **Użyj istniejącej**, wybierz pozycję "contosorentaldata" z listy rozwijanej, a następnie wybierz pozycję **Przegląd + Utwórz**.
+2. Na stronie Tworzenie **aplikacja funkcji** Nadaj nazwę aplikacji funkcji. W obszarze **Grupa zasobów**wybierz pozycję **Użyj istniejącej**, a następnie wybierz pozycję "ContosoRental" z listy rozwijanej. Wybierz pozycję ".NET Core" jako stos środowiska uruchomieniowego. W obszarze **hosting**dla **konta magazynu**wybierz nazwę konta magazynu z poprzedniego kroku. W poprzednim kroku nazywamy konto magazynu **v2storage**.  Następnie wybierz pozycję **Przegląd + Utwórz**.
     
     ![Tworzenie aplikacji](./media/tutorial-iot-hub-maps/rental-app.png)
 
@@ -233,10 +236,12 @@ Wszystkie odpowiednie informacje o zdarzeniu są przechowywane w magazynie obiek
 5. Wybierz szablon z **wyzwalaczem Azure Event Grid**. Zainstaluj rozszerzenia, jeśli zostanie wyświetlony monit, nazwij funkcję i wybierz pozycję **Utwórz**.
 
     ![Funkcja — szablon](./media/tutorial-iot-hub-maps/eventgrid-funct.png)
+    
+    **Wyzwalacz usługi Azure Event Hub** i **wyzwalacz Azure Event Grid** mają podobne ikony. Upewnij się, że wybrano **wyzwalacz Azure Event Grid**.
 
-6. Skopiuj [kod c#](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) do funkcji, a następnie kliknij przycisk **Zapisz**.
+6. Skopiuj [ C# kod](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) do funkcji.
  
-7. W skrypcie języka c# Zastąp następujące parametry:
+7. W C# skrypcie Zastąp poniższe parametry. Kliknij przycisk **Save** (Zapisz). Nie klikaj jeszcze przycisku **Uruchom**
     * Zastąp **SUBSCRIPTION_KEY** podstawowym kluczem subskrypcji konta usługi Azure Maps.
     * Zastąp **UDID** z UDIDem przekazana geoogrodzenia, 
     * Funkcja **CreateBlobAsync** w skrypcie tworzy obiekt BLOB dla zdarzenia na koncie magazynu danych. Zastąp **ACCESS_KEY**, **ACCOUNT_NAME**i **STORAGE_CONTAINER_NAME** kluczem dostępu do konta magazynu, nazwą konta i kontenerem magazynu danych.
@@ -245,7 +250,7 @@ Wszystkie odpowiednie informacje o zdarzeniu są przechowywane w magazynie obiek
     
     ![Dodaj zdarzenie do siatki](./media/tutorial-iot-hub-maps/add-egs.png)
 
-11. Wypełnij szczegóły subskrypcji w obszarze **szczegóły subskrypcji zdarzeń** Twoja subskrypcja i schemat zdarzeń wybierz pozycję "Event Grid schemat". W obszarze **Szczegóły tematu** wybierz pozycję "konta usługi Azure IoT Hub" jako typ tematu. Wybierz tę samą subskrypcję, która została użyta do utworzenia grupy zasobów, wybierz pozycję "ContosoRental" jako "grupę zasobów". Wybierz IoT Hub utworzony jako "zasób". Wybierz dane **telemetryczne urządzenia** jako typ zdarzenia. Po wybraniu tych opcji w polu "typ tematu" zostanie wyświetlona automatyczna zmiana "IoT Hub".
+11. Wypełnij szczegóły subskrypcji, w obszarze **szczegóły subskrypcji zdarzeń** nazwa subskrypcji zdarzenia. W obszarze schemat zdarzeń wybierz pozycję "Event Grid schemat". W obszarze **Szczegóły tematu** wybierz pozycję "konta usługi Azure IoT Hub" jako typ tematu. Wybierz tę samą subskrypcję, która została użyta do utworzenia grupy zasobów, wybierz pozycję "ContosoRental" jako "grupę zasobów". Wybierz IoT Hub utworzony jako "zasób". Wybierz dane **telemetryczne urządzenia** jako typ zdarzenia. Po wybraniu tych opcji w polu "typ tematu" zostanie wyświetlona automatyczna zmiana "IoT Hub".
 
     ![zdarzenie — siatka — subskrypcja](./media/tutorial-iot-hub-maps/af-egs.png)
  
@@ -263,9 +268,9 @@ W naszym przykładowym scenariuszu chcemy odfiltrować wszystkie komunikaty, w p
 
 ## <a name="send-telemetry-data-to-iot-hub"></a>Wyślij dane telemetryczne do IoT Hub
 
-Gdy nasza funkcja platformy Azure zostanie uruchomiona, możemy teraz wysyłać dane telemetryczne do IoT Hub, co spowoduje skierowanie go do Event Grid. Użyjmy aplikacji języka c# w celu symulowania danych lokalizacji na urządzeniu w ramach samochodu w kabinie wynajmu. Aby uruchomić aplikację, musisz mieć zestaw .NET Core SDK 2.1.0 na komputerze deweloperskim lub nowszym. Wykonaj poniższe kroki, aby wysłać symulowane dane telemetryczne do IoT Hub.
+Gdy nasza funkcja platformy Azure zostanie uruchomiona, możemy teraz wysyłać dane telemetryczne do IoT Hub, co spowoduje skierowanie go do Event Grid. Użyjmy C# aplikacji, aby symulować dane lokalizacji na urządzeniu w pojeździe samochodu wynajmu. Aby uruchomić aplikację, musisz mieć zestaw .NET Core SDK 2.1.0 na komputerze deweloperskim lub nowszym. Wykonaj poniższe kroki, aby wysłać symulowane dane telemetryczne do IoT Hub.
 
-1. Pobierz projekt języka c# [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) . 
+1. Pobierz projekt [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) C# . 
 
 2. Otwórz plik simulatedCar.cs w wybranym edytorze tekstów i Zastąp wartość `connectionString` wartością zapisaną podczas rejestrowania urządzenia i Zapisz zmiany w pliku.
  

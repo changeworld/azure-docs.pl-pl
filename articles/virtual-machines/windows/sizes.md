@@ -12,37 +12,32 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/06/2019
+ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 857b60a36cdf3b6ed892199db8be77d16805f69e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 990cb2eef7e0f575de3e510abc38bcc2e3172477
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645960"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485390"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Rozmiary maszyn wirtualnych z systemem Windows na platformie Azure
 
-W tym artykule opisano dostępne rozmiary i opcje dla maszyn wirtualnych platformy Azure, za pomocą których można uruchamiać aplikacje i obciążenia systemu Windows. Zawiera również zagadnienia dotyczące wdrażania, które należy wziąć pod uwagę w przypadku planowania użycia tych zasobów.  Ten artykuł jest również dostępny dla [maszyn wirtualnych z systemem Linux](../linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+W tym artykule opisano dostępne rozmiary i opcje dla maszyn wirtualnych platformy Azure, za pomocą których można uruchamiać aplikacje i obciążenia systemu Windows. Zawiera również zagadnienia dotyczące wdrażania, które należy wziąć pod uwagę w przypadku planowania użycia tych zasobów.  Ten artykuł jest również dostępny dla [maszyn wirtualnych z systemem Linux](/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
+| Typ | Rozmiary | Opis |
+|------|-------|-------------|
+| [Zastosowania ogólne](../sizes-general.md) | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, Av2, DC | Zrównoważony współczynnik procesora CPU do pamięci. Idealny do testowania i opracowywania, małych i średnich baz danych oraz do serwerów sieci Web o niskiej i średnim ruchu. |
+| [Optymalizacja pod kątem obliczeń](../sizes-compute.md) | Fsv2 | Wysoki współczynnik procesora CPU do pamięci. Dobre dla serwerów sieci Web o średnim ruchu, urządzeń sieciowych, procesów wsadowych i serwerów aplikacji. |
+| [Optymalizacja pod kątem pamięci](../sizes-memory.md) | Esv3, EV3, Easv4, Eav4, Mv2, M, DSv2, Dv2 | Duże proporcje pamięci i procesora CPU. Doskonałe rozwiązanie dla serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizy w pamięci. |
+| [Optymalizacja pod kątem magazynu](../sizes-storage.md)  | Lsv2 | Wysoka przepływność dysku i doskonałe operacje we/wy dla danych Big Data, baz danych SQL, NoSQL, magazynowania danych i dużych transakcyjnych baz danych.  |
+| [Procesor GPU](../sizes-gpu.md) | NC, NCv2, Seria NCV3, ND, NDv2 (wersja zapoznawcza), NV, NVv3, NVv4 | Wyspecjalizowane maszyny wirtualne przeznaczone do intensywnego renderowania grafiki i edytowania wideo, a także szkolenia modelowe i inferencing (ND) z głębokie uczenie. Dostępne z pojedynczym lub wieloma procesorami GPU. |
+| [Obliczenia o wysokiej wydajności](../sizes-hpc.md) | HB, HC, H | Nasze najszybsze i najbardziej wydajne maszyny wirtualne procesora z opcjonalnymi interfejsami sieciowymi o wysokiej przepływności (RDMA). |
 
-| Typ                     | Rozmiary           |    Opis       |
-|--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Zastosowania ogólne](sizes-general.md)          | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, Av2, DC  | Zrównoważona moc procesora CPU w stosunku do pamięci. Idealne na potrzeby testowania i programowania, małych i średnich baz danych oraz serwerów sieci Web o niewielkim i średnim ruchu. |
-| [Optymalizacja pod kątem obliczeń](sizes-compute.md)        | Fsv2           | Duża moc procesora CPU w stosunku do pamięci. Dobrze sprawdzają się w przypadku serwerów sieci Web o średnim ruchu, urządzeń sieciowych, procesów wsadowych i serwerów aplikacji.        |
-| [Optymalizacja pod kątem pamięci](sizes-memory.md)         | Esv3, EV3, Easv4, Eav4, Mv2, M, DSv2, Dv2  | Duże proporcje pamięci i procesora CPU. Świetnie sprawdzają się w przypadku serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci.                 |
-| [Optymalizacja pod kątem magazynu](sizes-storage.md)        | Lsv2                | Wysoka przepływność dysku i doskonałe operacje we/wy dla danych Big Data, baz danych SQL, NoSQL, magazynowania danych i dużych transakcyjnych baz danych.  |
-| [Procesor GPU](sizes-gpu.md)            | NC, NCv2, Seria NCV3, ND, NDv2 (wersja zapoznawcza), NV, NVv3, NVv4 (wersja zapoznawcza)| Wyspecjalizowane maszyny wirtualne przeznaczone do intensywnego renderowania grafiki i edytowania wideo, a także szkolenia modelowe i inferencing (ND) z głębokie uczenie. Dostępne z pojedynczym lub wieloma procesorami GPU.       |
-| [Obliczenia o wysokiej wydajności](sizes-hpc.md) | HB, HC, H | Maszyny wirtualne z najszybszymi i najbardziej wydajnymi procesorami CPU oraz, opcjonalnie, interfejsami sieciowymi zapewniającymi wysoką przepływność (RDMA). |
-
-
-<br> 
-
-- Aby uzyskać informacje o cenach różnych rozmiarów, zobacz [Virtual Machines Cennik](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). 
-- Aby wyświetlić ogólne limity dotyczące maszyn wirtualnych platformy Azure, zobacz [limity subskrypcji i usług platformy Azure, limity przydziału i ograniczenia](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+- Aby uzyskać informacje o cenach różnych rozmiarów, zobacz [Virtual Machines Cennik](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows).
+- Aby wyświetlić ogólne limity dotyczące maszyn wirtualnych platformy Azure, zobacz [limity subskrypcji i usług platformy Azure, limity przydziału i ograniczenia](../../azure-subscription-service-limits.md).
 - Koszty magazynowania są obliczane osobno na podstawie wykorzystanych stron na koncie magazynu. Aby uzyskać szczegółowe informacje, [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
-- Dowiedz się więcej o tym, jak [usługa Azure COMPUTE units (ACU)](acu.md) może pomóc w porównaniu wydajności obliczeniowej w ramach jednostek SKU platformy Azure.
-
+- Dowiedz się więcej o tym, jak [usługa Azure COMPUTE units (ACU)](../acu.md) może pomóc w porównaniu wydajności obliczeniowej w ramach jednostek SKU platformy Azure.
 
 ## <a name="rest-api"></a>Interfejs API REST
 
@@ -54,7 +49,7 @@ Aby uzyskać informacje na temat używania interfejsu API REST do wysyłania zap
 
 ## <a name="acu"></a>ACU
 
-Dowiedz się więcej o tym, jak [usługa Azure COMPUTE units (ACU)](acu.md) może pomóc w porównaniu wydajności obliczeniowej w ramach jednostek SKU platformy Azure.
+Dowiedz się więcej o tym, jak [usługa Azure COMPUTE units (ACU)](../acu.md) może pomóc w porównaniu wydajności obliczeniowej w ramach jednostek SKU platformy Azure.
 
 ## <a name="benchmark-scores"></a>Wyniki testów porównawczych
 
@@ -63,14 +58,11 @@ Dowiedz się więcej na temat wydajności obliczeń dla maszyn wirtualnych z sys
 ## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o różnych dostępnych rozmiarach maszyn wirtualnych:
-- [Zastosowania ogólne](sizes-general.md)
-- [Optymalizacja pod kątem obliczeń](sizes-compute.md)
-- [Optymalizacja pod kątem pamięci](../virtual-machines-windows-sizes-memory.md)
-- [Optymalizacja pod kątem magazynu](../virtual-machines-windows-sizes-storage.md)
-- [Optymalizacja pod kątem procesora GPU](sizes-gpu.md)
-- [Obliczenia o wysokiej wydajności](sizes-hpc.md)
-- Sprawdź [poprzednią generację](sizes-previous-gen.md) strony, aby zapoznać się ze standardem, Dv1 (D1-4 i D11-14 v1) oraz seriami A8-A11
 
-
-
-
+- [Zastosowania ogólne](../sizes-general.md)
+- [Optymalizacja pod kątem obliczeń](../sizes-compute.md)
+- [Optymalizacja pod kątem pamięci](../sizes-memory.md)
+- [Optymalizacja pod kątem magazynu](../sizes-storage.md)
+- [Optymalizacja pod kątem procesora GPU](../sizes-gpu.md)
+- [Obliczenia o wysokiej wydajności](../sizes-hpc.md)
+- Sprawdź [poprzednią generację](../sizes-previous-gen.md) strony, aby zapoznać się ze standardem, Dv1 (D1-4 i D11-14 v1) oraz seriami A8-A11

@@ -17,12 +17,12 @@ ms.date: 01/31/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8a847afa2253223ebe9450d350cd18f5f659e0e3
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 686a9681394a2d23dafbc03cb533d80ca0f8723b
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159781"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484472"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Przepływ kodu autoryzacji Microsoft Identity platform i OAuth 2,0
 
@@ -142,7 +142,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=authorization_code
-&client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps
+&client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps. This secret needs to be URL-Encoded.
 ```
 
 > [!TIP]
@@ -156,7 +156,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`      | wymagane   | Rozdzielana spacjami lista zakresów. Zakresy żądane w tym etapie muszą być równoważne lub podzbiorem zakresów żądanych w pierwszym etapie. Wszystkie zakresy muszą pochodzić z pojedynczego zasobu, a także zakresy OIDC (`profile`, `openid`, `email`). Aby uzyskać bardziej szczegółowy opis zakresów, zapoznaj się z [uprawnieniami, zgodą i zakresami](v2-permissions-and-consent.md). |
 | `code`          | wymagane  | Authorization_code, które zostały nabyte w pierwszym etapie przepływu. |
 | `redirect_uri`  | wymagane  | Ta sama redirect_uri wartość, która została użyta w celu uzyskania authorization_code. |
-| `client_secret` | wymagane dla aplikacji sieci Web | Wpis tajny aplikacji utworzony w portalu rejestracji aplikacji dla aplikacji. Nie należy używać wpisu tajnego aplikacji w aplikacji natywnej, ponieważ client_secrets nie może być niezawodnie przechowywana na urządzeniach. Jest to wymagane w przypadku aplikacji sieci Web i interfejsów API sieci Web, które umożliwiają bezpieczne przechowywanie client_secret po stronie serwera.  Wpis tajny klienta musi być zakodowany przy użyciu adresu URL przed wysłaniem.  |
+| `client_secret` | wymagane dla aplikacji sieci Web | Wpis tajny aplikacji utworzony w portalu rejestracji aplikacji dla aplikacji. Nie należy używać wpisu tajnego aplikacji w aplikacji natywnej, ponieważ client_secrets nie może być niezawodnie przechowywana na urządzeniach. Jest to wymagane w przypadku aplikacji sieci Web i interfejsów API sieci Web, które umożliwiają bezpieczne przechowywanie client_secret po stronie serwera.  Wpis tajny klienta musi być zakodowany przy użyciu adresu URL przed wysłaniem. Aby uzyskać więcej informacji, kliknij [tutaj](https://tools.ietf.org/html/rfc3986#page-12). |
 | `code_verifier` | obowiązkowe  | Ten sam code_verifier, który został użyty w celu uzyskania authorization_code. Wymagane, jeśli w żądaniu udzielenia uprawnienia do kodu autoryzacji użyto PKCE. Aby uzyskać więcej informacji, zobacz [dokument RFC PKCE](https://tools.ietf.org/html/rfc7636). |
 
 ### <a name="successful-response"></a>Pomyślna odpowiedź
@@ -254,7 +254,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &refresh_token=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq...
 &grant_type=refresh_token
-&client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps
+&client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps. This secret needs to be URL-Encoded
 ```
 
 > [!TIP]
@@ -268,7 +268,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type`    | wymagane    | Musi być `refresh_token` dla tego odcinka przepływu kodu autoryzacji. |
 | `scope`         | wymagane    | Rozdzielana spacjami lista zakresów. Zakresy żądane w tym etapie muszą być równoważne lub podzbiorem zakresów żądanych w pierwotnym etapie żądania authorization_code. Jeśli zakresy określone w tym żądaniu obejmują wiele serwerów zasobów, punkt końcowy platformy tożsamości firmy Microsoft zwróci token dla zasobu określonego w pierwszym zakresie. Aby uzyskać bardziej szczegółowy opis zakresów, zapoznaj się z [uprawnieniami, zgodą i zakresami](v2-permissions-and-consent.md). |
 | `refresh_token` | wymagane    | Refresh_token, które zostały nabyte w drugim etapie przepływu. |
-| `client_secret` | wymagane dla aplikacji sieci Web | Wpis tajny aplikacji utworzony w portalu rejestracji aplikacji dla aplikacji. Nie powinna być używana w aplikacji natywnej, ponieważ client_secrets nie może być niezawodnie przechowywana na urządzeniach. Jest to wymagane w przypadku aplikacji sieci Web i interfejsów API sieci Web, które umożliwiają bezpieczne przechowywanie client_secret po stronie serwera. |
+| `client_secret` | wymagane dla aplikacji sieci Web | Wpis tajny aplikacji utworzony w portalu rejestracji aplikacji dla aplikacji. Nie powinna być używana w aplikacji natywnej, ponieważ client_secrets nie może być niezawodnie przechowywana na urządzeniach. Jest to wymagane w przypadku aplikacji sieci Web i interfejsów API sieci Web, które umożliwiają bezpieczne przechowywanie client_secret po stronie serwera. Ten klucz tajny musi być zakodowany w adresie URL. Aby uzyskać więcej informacji, kliknij [tutaj](https://tools.ietf.org/html/rfc3986#page-12). |
 
 #### <a name="successful-response"></a>Pomyślna odpowiedź
 

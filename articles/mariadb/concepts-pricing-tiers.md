@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 36563e11d7a5fb7cfd5878294c3b83977f6bb619
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 084c1b4163ac7f0f595fadba93a7905ea7f96dd0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772401"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485458"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB warstw cenowych
 
@@ -21,18 +21,17 @@ Serwer Azure Database for MariaDB można utworzyć w jednej z trzech różnych w
 |:---|:----------|:--------------------|:---------------------|
 | Generowanie obliczeń | 5\. generacja |5\. generacja | 5\. generacja |
 | Rdzeni wirtualnych | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
-| Pamięć na rdzeń wirtualny | 2 GB | 5 GB | 10 GB |
+| Pamięć na rdzeń wirtualny | 2 GB | 5 GB | 10 GB |
 | Rozmiar magazynu | od 5 GB do 1 TB | od 5 GB do 4 TB | od 5 GB do 4 TB |
-| Typ usługi Storage | Magazyn w warstwie Standardowa Azure | Azure Premium Storage | Azure Premium Storage |
 | Okres przechowywania kopii zapasowej bazy danych | od 7 do 35 dni | od 7 do 35 dni | od 7 do 35 dni |
 
 Aby wybrać warstwę cenową, należy użyć poniższej tabeli jako punktu wyjścia.
 
 | Warstwa cenowa | Docelowe obciążenia |
 |:-------------|:-----------------|
-| Basic | Obciążenia, które wymagają lekkich obliczeń i wydajności operacji we/wy. Przykłady obejmują serwery używane do programowania lub testowania oraz nierzadko używane aplikacje. |
+| Podstawowa | Obciążenia, które wymagają lekkich obliczeń i wydajności operacji we/wy. Przykłady obejmują serwery używane do programowania lub testowania oraz nierzadko używane aplikacje. |
 | Ogólne zastosowanie | Większość obciążeń firmowych, które wymagają zrównoważonych obliczeń i pamięci dzięki skalowalnej przepływności we/wy. Przykłady obejmują serwery do hostowania aplikacji internetowych i mobilnych oraz inne aplikacje dla przedsiębiorstw.|
-| Zoptymalizowane pod kątem pamięci | Obciążenia baz danych o wysokiej wydajności, które wymagają wydajności w pamięci w celu przyspieszenia przetwarzania transakcji i wyższego współbieżności. Przykładami mogą być serwery do przetwarzania danych w czasie rzeczywistym oraz aplikacji transakcyjnych lub analitycznych o wysokiej wydajności.|
+| Pamięć | Obciążenia baz danych o wysokiej wydajności, które wymagają wydajności w pamięci w celu przyspieszenia przetwarzania transakcji i wyższego współbieżności. Przykładami mogą być serwery do przetwarzania danych w czasie rzeczywistym oraz aplikacji transakcyjnych lub analitycznych o wysokiej wydajności.|
 
 Po utworzeniu serwera można zmienić liczbę rdzeni wirtualnych i warstwę cenową (oprócz i z podstawowa) w ciągu kilku sekund. Można także niezależnie dostosować ilość miejsca do magazynowania i okres przechowywania kopii zapasowych w górę lub w dół bez przestojów aplikacji. Po utworzeniu serwera nie można zmienić typu magazynu kopii zapasowej. Aby uzyskać więcej informacji, zobacz sekcję [skalowanie zasobów](#scale-resources) .
 
@@ -40,16 +39,16 @@ Po utworzeniu serwera można zmienić liczbę rdzeni wirtualnych i warstwę ceno
 
 Zasoby obliczeniowe są udostępniane jako rdzeni wirtualnych, które reprezentują logicznego procesora bazowego sprzętu. Logiczne procesory CPU w generacji 5 są oparte na procesorach Intel E5-2673 v4 (Broadwell) 2,3 GHz.
 
-## <a name="storage"></a>Usługa Storage
+## <a name="storage"></a>Magazyn
 
 Zapewniana ilość miejsca w magazynie to pojemność magazynu dostępna dla serwera Azure Database for MariaDB. Magazyn jest używany dla plików bazy danych, plików tymczasowych, dzienników transakcji i dzienników serwera MariaDB. Całkowita ilość dostępnego miejsca w magazynie określa również wydajność we/wy dostępną dla serwera.
 
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
-| Typ usługi Storage | Magazyn w warstwie Standardowa Azure | Azure Premium Storage | Azure Premium Storage |
+| Typ magazynu | Magazyn podstawowy | Magazyn Ogólnego przeznaczenia | Magazyn Ogólnego przeznaczenia |
 | Rozmiar magazynu | od 5 GB do 1 TB | od 5 GB do 4 TB | od 5 GB do 4 TB |
 | Rozmiar przyrostu pamięci masowej | 1 GB | 1 GB | 1 GB |
-| Operacje wejścia/wyjścia | Zmienna |3 IOPS/GB<br/>Minimalna liczba operacji we/wy 100<br/>Maksymalna liczba operacji we/wy 6000 | 3 IOPS/GB<br/>Minimalna liczba operacji we/wy 100<br/>Maksymalna liczba operacji we/wy 6000 |
+| Liczba operacji we/wy na sekundę | Zmienna |3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba operacji we/wy 6000 | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba operacji we/wy 6000 |
 
 Można dodać dodatkową pojemność magazynu podczas i po utworzeniu serwera oraz pozwolić systemowi na automatyczne zwiększanie ilości miejsca w oparciu o użycie magazynu w ramach obciążenia.
 

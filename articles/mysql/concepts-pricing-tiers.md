@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: fc538b55e31a4c133da1bc2f7ecc32b5fada6399
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 10eacb9cc1ca4641396212ec9564308d7ef74c3a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210401"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484676"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL warstw cenowych
 
@@ -23,7 +23,6 @@ Serwer Azure Database for MySQL można utworzyć w jednej z trzech różnych war
 | Rdzeni wirtualnych | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Pamięć na rdzeń wirtualny | 2 GB | 5 GB | 10 GB |
 | Rozmiar magazynu | od 5 GB do 1 TB | od 5 GB do 16 TB | od 5 GB do 16 TB |
-| Typ magazynu | Magazyn w warstwie Standardowa Azure | Premium Storage platformy Azure | Premium Storage platformy Azure |
 | Okres przechowywania kopii zapasowej bazy danych | od 7 do 35 dni | od 7 do 35 dni | od 7 do 35 dni |
 
 Aby wybrać warstwę cenową, należy użyć poniższej tabeli jako punktu wyjścia.
@@ -46,7 +45,7 @@ Zapewniana ilość miejsca w magazynie to pojemność magazynu dostępna dla ser
 
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
-| Typ magazynu | Magazyn w warstwie Standardowa Azure | Premium Storage platformy Azure | Premium Storage platformy Azure |
+| Typ magazynu | Magazyn podstawowy | Magazyn Ogólnego przeznaczenia | Magazyn Ogólnego przeznaczenia |
 | Rozmiar magazynu | od 5 GB do 1 TB | od 5 GB do 16 TB | od 5 GB do 16 TB |
 | Rozmiar przyrostu pamięci masowej | 1 GB | 1 GB | 1 GB |
 | Liczba operacji we/wy na sekundę | Zmienna |3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba operacji we/wy 20 000 | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba operacji we/wy 20 000 |

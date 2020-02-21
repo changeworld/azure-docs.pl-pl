@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 4dea0feb5d5a1cb42640b1fc05bb185e970ae8af
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c9eb8b3d909313470ee9febdc5b1c37eea834b08
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084501"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484047"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Szybki Start: Logowanie użytkowników i wywoływanie interfejsu API Microsoft Graph z aplikacji dla systemu iOS lub macOS
 
@@ -91,6 +91,14 @@ W oknie terminalu przejdź do folderu z pobranym przykładem kodu i uruchom `pod
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
+> 1. Edytuj **plik viewcontroller. Swift** i Zastąp wiersz zaczynający się od "Let kAuthority" następującym fragmentem kodu:
+>    ```swift
+>    let kAuthority = "Enter_the_Authority_Endpoint_Host_HereEnter_the_Tenant_Info_Here"
+>    ```
+> 1. Edytuj **plik viewcontroller. Swift** i Zastąp wiersz zaczynający się od "Let kGraphEndpoint" następującym fragmentem kodu:
+>    ```swift
+>    let kGraphEndpoint = "Enter_the_MS_Graph_Endpoint_Host_Here"
+>    ```
 > 1. Otwórz ustawienia projektu. W sekcji **tożsamość** wprowadź **Identyfikator pakietu** wprowadzony w portalu.
 > 1. Tylko dla systemu iOS kliknij prawym przyciskiem myszy pozycję **info. plist** i wybierz polecenie **Otwórz jako** > **kod źródłowy**.
 > 1. Tylko dla systemu iOS w węźle głównym DICT Zastąp `CFBundleURLSchemes` ***identyfikatorem pakietu*** wprowadzonym w portalu.
@@ -117,6 +125,16 @@ W oknie terminalu przejdź do folderu z pobranym przykładem kodu i uruchom `pod
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
+> 1. Jeśli tworzysz aplikację dla [chmur narodowych usługi Azure AD](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints), Zastąp wiersz zaczynający się od "Let kGraphEndpoint" i "Let kAuthority" z prawidłowymi punktami końcowymi. W przypadku dostępu globalnego należy użyć wartości domyślnych:
+>     ```objective-c
+>     let kGraphEndpoint = "https://graph.microsoft.com/"
+>     let kAuthority = "https://login.microsoftonline.com/common"
+>     ```
+> 1. Inne punkty końcowe są udokumentowane [tutaj](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints). Na przykład w celu uruchomienia przewodnika Szybki Start z usługą Azure AD (Niemcy) Użyj następujących sposobów:
+>     ```objective-c
+>     let kGraphEndpoint = "https://graph.microsoft.de/"
+>     let kAuthority = "https://login.microsoftonline.de/common"
+>     ```
 > 1. Otwórz ustawienia projektu. W sekcji **tożsamość** wprowadź **Identyfikator pakietu** wprowadzony w portalu.
 > 1. Tylko dla systemu iOS kliknij prawym przyciskiem myszy pozycję **info. plist** i wybierz polecenie **Otwórz jako** > **kod źródłowy**.
 > 1. Tylko dla systemu iOS w węźle głównym DICT Zastąp `Enter_the_bundle_Id_Here` ***identyfikatorem pakietu*** użytym w portalu.

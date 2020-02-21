@@ -17,12 +17,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: fbef4d84e86c3d35e35a8bbeb04a399ad87a1b89
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 084c15c7ac3ec782dc48a55e65bf4d7aa43b58a1
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164086"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484183"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Wywołania między usługami, które korzystają z delegowanej tożsamości użytkownika w ramach przepływu w imieniu
 
@@ -267,7 +267,7 @@ Odpowiedź zawiera token języka SAML zakodowany w formacie UTF8 i Base64url.
 - **Danych SubjectConfirmationData dla potwierdzenia SAML pochodzącego z wywołania OBO**: Jeśli aplikacja docelowa wymaga wartości odbiorcy w **danych SubjectConfirmationData**, wartość musi być adresem URL odpowiedzi innego niż symbol wieloznaczny w konfiguracji aplikacji zasobów.
 - **Węzeł danych SubjectConfirmationData**: węzeł nie może zawierać atrybutu **InResponseTo** , ponieważ nie jest częścią odpowiedzi SAML. Aplikacja, która otrzymała token SAML, musi być w stanie zaakceptować potwierdzenie SAML bez atrybutu **InResponseTo** .
 
-- **Wyrażanie zgody**: należy przyznać zgodę na otrzymywanie tokenu SAML zawierającego dane użytkownika w przepływie protokołu OAuth. Aby uzyskać informacje na temat uprawnień i uzyskiwania zgody administratora, zobacz [uprawnienia i zgoda w punkcie końcowym Azure Active Directory v 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent).
+- **Wyrażanie zgody**: należy przyznać zgodę na otrzymywanie tokenu SAML zawierającego dane użytkownika w przepływie protokołu OAuth. Aby uzyskać informacje na temat uprawnień i uzyskiwania zgody administratora, zobacz [uprawnienia i zgoda w punkcie końcowym Azure Active Directory v 1.0](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent).
 
 ### <a name="response-with-saml-assertion"></a>Odpowiedź z potwierdzeniem SAML
 

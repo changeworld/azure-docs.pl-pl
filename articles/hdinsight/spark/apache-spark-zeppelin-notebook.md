@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: 75811382867b93c778641ece42971018eff39949
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: hdinsightactive
+ms.date: 02/18/2020
+ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664611"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484812"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Korzystanie z notesów Apache Zeppelin z klastrem Apache Spark w usłudze Azure HDInsight
 
@@ -21,9 +21,8 @@ Klastry usługi HDInsight Spark obejmują notesy [Apache Zeppelin](https://zeppe
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Klaster Apache Spark w usłudze HDInsight. Aby uzyskać instrukcje, zobacz [Tworzenie klastra platformy Apache Spark w usłudze Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Schemat identyfikatora URI magazynu podstawowego klastrów. Będzie to `wasb://` dla Blob Storage platformy Azure, `abfs://` dla Azure Data Lake Storage Gen2 lub `adl://` dla Azure Data Lake Storage Gen1. W przypadku włączenia bezpiecznego transferu dla Blob Storage można `wasbs://`identyfikator URI.  Aby uzyskać więcej informacji, zobacz również temat [Wymagaj bezpiecznego transferu w usłudze Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
+* Schemat identyfikatora URI magazynu podstawowego klastrów. Będzie to `wasb://` dla Blob Storage platformy Azure, `abfs://` dla Azure Data Lake Storage Gen2 lub `adl://` dla Azure Data Lake Storage Gen1. W przypadku włączenia bezpiecznego transferu dla Blob Storage można `wasbs://`identyfikator URI.  Aby uzyskać więcej informacji, zobacz [Wymagaj bezpiecznego transferu w usłudze Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Uruchamianie notesu Apache Zeppelin
 
@@ -140,7 +139,7 @@ W tym artykule przedstawiono sposób korzystania z pakietu [Spark-CSV](https://s
 
     ![Korzystanie z zewnętrznych pakietów z notesem Jupyter](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Korzystanie z zewnętrznych pakietów z notesem Jupyter")
 
-    d. Połącz trzy wartości rozdzielone dwukropkiem ( **:** ).
+    c. Połącz trzy wartości rozdzielone dwukropkiem ( **:** ).
 
         com.databricks:spark-csv_2.10:1.4.0
 
@@ -154,7 +153,7 @@ Spowoduje to zapisanie notesu jako pliku JSON w lokalizacji pobierania.
 
 ## <a name="livy-session-management"></a>Zarządzanie sesją usługi Livy
 
-Po uruchomieniu pierwszego akapitu kodu w notesie Zeppelin zostanie utworzona nowa sesja usługi Livy w klastrze usługi HDInsight Spark. Ta sesja jest udostępniana dla wszystkich utworzonych przez siebie notesów Zeppelin. Jeśli z jakiegoś powodu sesja usługi Livy zostanie przerwana (ponowne uruchomienie klastra itp.), nie będzie można uruchamiać zadań z notesu Zeppelin.
+Po uruchomieniu pierwszego akapitu kodu w notesie Zeppelin zostanie utworzona nowa sesja usługi Livy w klastrze usługi HDInsight Spark. Ta sesja jest udostępniana dla wszystkich utworzonych przez siebie notesów Zeppelin. Jeśli z jakiegoś powodu sesja usługi Livy zostanie przerwana (ponowne uruchomienie klastra itd.), nie będzie można uruchamiać zadań z notesu Zeppelin.
 
 W takim przypadku przed rozpoczęciem uruchamiania zadań z notesu Zeppelin należy wykonać następujące czynności.  
 
@@ -168,9 +167,44 @@ W takim przypadku przed rozpoczęciem uruchamiania zadań z notesu Zeppelin nale
 
 3. Uruchom komórkę kodu z istniejącego notesu Zeppelin. Spowoduje to utworzenie nowej sesji usługi Livy w klastrze usługi HDInsight.
 
-## <a name="seealso"></a>Zobacz też
+## <a name="general-information"></a>Informacje ogólne
 
-* [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
+### <a name="validate-service"></a>Sprawdź poprawność usługi
+
+Aby sprawdzić poprawność usługi z Ambari, przejdź do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` gdzie CLUSTERname jest nazwą klastra.
+
+Aby sprawdzić poprawność usługi z wiersza polecenia, Użyj protokołu SSH do węzła głównego. Przełącz użytkownika na Zeppelin za pomocą polecenia `sudo su zeppelin`. Polecenia stanu:
+
+|Polecenie |Opis |
+|---|---|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|Stan usługi.|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|Wersja usługi.|
+|`ps -aux | grep zeppelin`|Identyfikowanie identyfikatora PID.|
+
+### <a name="log-locations"></a>Lokalizacje dzienników
+
+|Usługa |Ścieżka |
+|---|---|
+|Zeppelin — serwer|/usr/hdp/current/zeppelin-server/|
+|Dzienniki serwera|/var/log/zeppelin|
+|Interpreter konfiguracji, Shiro, site. XML, Log4J|/usr/HDP/Current/Zeppelin-Server/conf lub/etc/Zeppelin/conf|
+|Katalog PID|/var/run/zeppelin|
+
+### <a name="enable-debug-logging"></a>Włączenie rejestrowania debugowania
+
+1. Przejdź do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary` gdzie CLUSTERname jest nazwą klastra.
+
+1. Przejdź do **pliku configs** > **Advanced Zeppelin-log4j-Properties** > **log4j_properties_content**.
+
+1. Zmodyfikuj `log4j.appender.dailyfile.Threshold = INFO`, aby `log4j.appender.dailyfile.Threshold = DEBUG`.
+
+1. Dodaj `log4j.logger.org.apache.zeppelin.realm=DEBUG`.
+
+1. Zapisz zmiany i ponownie uruchom usługę.
+
+## <a name="next-steps"></a>Następne kroki
+
+[Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenariusze
 

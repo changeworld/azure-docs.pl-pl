@@ -8,12 +8,12 @@ ms.date: 1/23/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a36427616691b0a0d400dadb4e35c2f7fbf23b22
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 572441fe13dfeff550e2e541c3d775bd4c3d433e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722298"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482908"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Samouczek: Konfigurowanie środowiska do uczenia maszynowego na IoT Edge
 
@@ -26,7 +26,7 @@ Ten artykuł ułatwia przygotowanie środowiska do projektowania i wdrażania. N
 
 Ten krok jest zwykle wykonywany przez dewelopera chmury. Niektóre oprogramowanie może być również przydatne w przypadku Analityka danych.
 
-Utworzyliśmy skrypt programu PowerShell, który tworzy maszynę wirtualną platformy Azure z wieloma wcześniej skonfigurowanymi wymaganiami wstępnymi. Utworzona przez nas maszyna wirtualna musi być w stanie obsłużyć [wirtualizację zagnieżdżoną](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization), co oznacza, że wybrano rozmiar maszyny [Standard_D8s_v3](../virtual-machines/windows/sizes-general.md#dsv3-series-1) .
+Utworzyliśmy skrypt programu PowerShell, który tworzy maszynę wirtualną platformy Azure z wieloma wcześniej skonfigurowanymi wymaganiami wstępnymi. Utworzona przez nas maszyna wirtualna musi być w stanie obsłużyć [wirtualizację zagnieżdżoną](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization), co oznacza, że wybrano rozmiar maszyny [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) .
 
 Maszyna wirtualna programu Development zostanie skonfigurowana przy użyciu:
 
@@ -35,7 +35,7 @@ Maszyna wirtualna programu Development zostanie skonfigurowana przy użyciu:
 * [Pulpit Docker dla systemu Windows](https://www.docker.com/products/docker-desktop)
 * [Git dla systemu Windows](https://gitforwindows.org/)
 * [Menedżer poświadczeń git dla systemu Windows](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
-* [Zestaw .Net Core SDK](https://dotnet.microsoft.com/)
+* [Zestaw SDK dla platformy .NET Core](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0)

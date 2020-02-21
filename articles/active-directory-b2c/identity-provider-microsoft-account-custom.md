@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 02/19/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b1489ce6bee2ce25ffb268ef20cc8fa587664619
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f4265659df786cf0a972b6dcf4f122bfc68535c1
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848930"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483282"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania za pomocą konto Microsoft przy użyciu zasad niestandardowych w programie Azure Active Directory B2C
 
@@ -29,11 +29,11 @@ W tym artykule opisano sposób włączania logowania dla użytkowników z konto 
 - Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Azure Active Directory B2C](custom-policy-get-started.md).
 - Jeśli nie masz jeszcze konto Microsoft, utwórz ją na [https://www.live.com/](https://www.live.com/).
 
-## <a name="add-an-application"></a>Dodawanie aplikacji
+## <a name="register-an-application"></a>Rejestrowanie aplikacji
 
 Aby włączyć logowanie dla użytkowników z konto Microsoft, musisz zarejestrować aplikację w dzierżawie usługi Azure AD. Dzierżawa usługi Azure AD nie jest taka sama jak dzierżawa Azure AD B2C.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Upewnij się, że używasz katalogu, który zawiera dzierżawę usługi Azure AD, wybierając filtr **katalog + subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawę usługi Azure AD.
 1. Wybierz pozycję **wszystkie usługi** w lewym górnym rogu Azure Portal, a następnie wyszukaj i wybierz pozycję **rejestracje aplikacji**.
 1. Wybierz pozycję **Nowa rejestracja**.
@@ -47,11 +47,24 @@ Aby włączyć logowanie dla użytkowników z konto Microsoft, musisz zarejestro
 1. Wprowadź **Opis** wpisu tajnego, na przykład *wpis tajny klienta aplikacji MSA*, a następnie kliknij przycisk **Dodaj**.
 1. Zapisz hasło aplikacji wyświetlane w kolumnie **wartość** . Ta wartość jest używana w następnej sekcji.
 
+## <a name="configuring-optional-claims"></a>Konfigurowanie oświadczeń opcjonalnych
+
+Jeśli chcesz uzyskać `family_name` i `given_name` oświadczenia z usługi Azure AD, możesz skonfigurować opcjonalne oświadczenia dla aplikacji w Azure Portal interfejsie użytkownika lub manifeście aplikacji. Aby uzyskać więcej informacji, zobacz [jak dostarczyć opcjonalne oświadczenia do aplikacji usługi Azure AD](../active-directory/develop/active-directory-optional-claims.md).
+
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Wyszukaj i wybierz **Azure Active Directory**.
+1. W sekcji **Zarządzanie** wybierz pozycję **rejestracje aplikacji**.
+1. Wybierz aplikację, dla której chcesz skonfigurować oświadczenia opcjonalne.
+1. W sekcji **Zarządzanie** wybierz pozycję **Konfiguracja tokenu (wersja zapoznawcza)** .
+1. Wybierz pozycję **Dodaj opcjonalne**pole.
+1. Wybierz typ tokenu, który chcesz skonfigurować.
+1. Wybierz opcjonalne oświadczenia do dodania.
+1. Kliknij pozycję **Add** (Dodaj).
+
 ## <a name="create-a-policy-key"></a>Tworzenie klucza zasad
 
 Teraz, po utworzeniu aplikacji w dzierżawie usługi Azure AD, musisz przechowywać klucz tajny klienta tej aplikacji w dzierżawie Azure AD B2C.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 1. Upewnij się, że używasz katalogu zawierającego dzierżawcę Azure AD B2C. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog, w którym znajduje się Twoja dzierżawa.
 1. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 1. Na stronie Przegląd wybierz pozycję **Struktura środowiska tożsamości**.
@@ -60,7 +73,7 @@ Teraz, po utworzeniu aplikacji w dzierżawie usługi Azure AD, musisz przechowyw
 1. Wprowadź **nazwę** klucza zasad. Na przykład `MSASecret`. Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.
 1. W **kluczu tajnym**wprowadź klucz tajny klienta zapisany w poprzedniej sekcji.
 1. W obszarze **użycie klucza**wybierz pozycję `Signature`.
-1. Kliknij pozycję **Utwórz**.
+1. Kliknij przycisk **Utwórz**.
 
 ## <a name="add-a-claims-provider"></a>Dodawanie dostawcy oświadczeń
 
@@ -94,10 +107,12 @@ Usługę Azure AD można zdefiniować jako dostawcę oświadczeń przez dodanie 
             <Key Id="client_secret" StorageReferenceId="B2C_1A_MSASecret" />
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="oid" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
             <OutputClaim ClaimTypeReferenceId="email" />
           </OutputClaims>
           <OutputClaimsTransformations>

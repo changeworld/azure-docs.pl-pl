@@ -6,12 +6,13 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: 531dc62cacc044187c7800dd8abcdad282c4e633
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.custom: cli-validate
+ms.openlocfilehash: 92a9368bf6aa4f2cf043b3aabd443b37cdcde390
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759947"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523955"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Samouczek: tworzenie aplikacji wielokontenerowej (w wersji zapoznawczej) przy użyciu funkcji Web App for Containers
 
@@ -20,7 +21,7 @@ ms.locfileid: "76759947"
 
 Funkcja [Web App for Containers](app-service-linux-intro.md) oferuje elastyczny sposób korzystania z obrazów platformy Docker. Z tego samouczka dowiesz się, jak utworzyć aplikację wielokontenerową przy użyciu rozwiązań WordPress i MySQL. Użyjesz tego samouczka w usłudze Cloud Shell, ale możesz również uruchomić te polecenia lokalnie za pomocą narzędzia wiersza polecenia [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) (w wersji 2.0.32 lub nowszej).
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Konwertowanie konfiguracji narzędzia Docker Compose do użycia z funkcją Web App for Containers
@@ -58,7 +59,7 @@ git clone https://github.com/Azure-Samples/multicontainerwordpress
 cd multicontainerwordpress
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
@@ -70,7 +71,7 @@ az group create --name myResourceGroup --location "South Central US"
 
 Zasadniczo grupy zasobów i zasoby są tworzone w pobliskim regionie.
 
-Po zakończeniu działania polecenia zostaną wyświetlone dane wyjściowe JSON z właściwościami grupy zasobów.
+Po zakończeniu działania polecenia zostanę wyświetlone dane wyjściowe JSON z właściwościami grupy zasobów.
 
 ## <a name="create-an-azure-app-service-plan"></a>Tworzenie planu usługi Azure App Service
 
@@ -202,7 +203,7 @@ Po utworzeniu bazy danych w usłudze Cloud Shell zostaną wyświetlone informacj
 
 ### <a name="configure-database-variables-in-wordpress"></a>Konfigurowanie zmiennych bazy danych w rozwiązaniu WordPress
 
-Aby połączyć aplikację WordPress z nowym serwerem MySQL, należy skonfigurować kilka zmiennych środowiskowych właściwych dla rozwiązania WordPress, w tym ścieżkę urzędu certyfikacji SSL, definiowaną przez zmienną `MYSQL_SSL_CA`. Poniższy [obraz niestandardowy](https://docs.microsoft.com/azure/app-service/containers/tutorial-multi-container-app#use-a-custom-image-for-mysql-ssl-and-other-configurations) zawiera urząd [Baltimore CyberTrust Root](https://www.digicert.com/digicert-root-certificates.htm) firmy [DigiCert](https://www.digicert.com/).
+Aby połączyć aplikację WordPress z nowym serwerem MySQL, należy skonfigurować kilka zmiennych środowiskowych właściwych dla rozwiązania WordPress, w tym ścieżkę urzędu certyfikacji SSL, definiowaną przez zmienną `MYSQL_SSL_CA`. Poniższy [obraz niestandardowy](https://www.digicert.com/digicert-root-certificates.htm) zawiera urząd [Baltimore CyberTrust Root](https://www.digicert.com/) firmy [DigiCert](https://docs.microsoft.com/azure/app-service/containers/tutorial-multi-container-app#use-a-custom-image-for-mysql-ssl-and-other-configurations).
 
 Aby wprowadzić te zmiany, uruchom polecenie [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) w usłudze Cloud Shell. Ustawienia aplikacji są rozdzielane spacjami i rozróżniana jest w nich wielkość liter.
 
@@ -473,7 +474,7 @@ Na stronie Plugins (Wtyczki) znajdź wtyczkę **Redis Object Cache** i kliknij p
 
 ![Aktywowanie usługi Redis][3]
 
-Kliknij pozycję **Settings** (Ustawienia).
+Kliknij pozycję **Ustawienia**.
 
 ![Klikanie pozycji Settings (Ustawienia)][4]
 
@@ -520,7 +521,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Nawiązywanie połączenia z usługą Azure Database for MySQL
 > * Rozwiązywanie problemów
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zamapować niestandardową nazwę DNS na aplikację.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację.
 
 > [!div class="nextstepaction"]
 > [Samouczek: mapowanie niestandardowej nazwy DNS na aplikację](../app-service-web-tutorial-custom-domain.md)

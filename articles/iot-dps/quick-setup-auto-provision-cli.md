@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f5737dccca6baa2dc2c1d98233b80d871cf86007
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ea1cae1f5a30d4cd76df39fec43f3818178fc213
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974720"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484200"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Szybki Start: Konfigurowanie IoT Hub Device Provisioning Service przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -64,7 +64,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 ```
 
 > [!TIP]
-> Ten przykład tworzy usługę aprowizowania w lokalizacji Zachodnie stany USA. Można wyświetlić listę dostępnych lokalizacji, uruchamiając polecenie `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` lub przechodząc do strony [Stan platformy Azure](https://azure.microsoft.com/status/) i wyszukując usługę „Device Provisioning”. W poleceniach lokalizacje można określić w jednym formacie Word lub wielowyrazowym; na przykład: Zachodnie, zachodnie stany USA, ZACHODNIe stany USA itd. W wartości nie jest rozróżniana wielkość liter. Jeśli do określenia lokalizacji używasz formatu wielu słów, ujmij wartość w cudzysłowy, na przykład `-- location "West US"`.
+> Ten przykład tworzy usługę aprowizowania w lokalizacji Zachodnie stany USA. Można wyświetlić listę dostępnych lokalizacji, uruchamiając polecenie `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` lub przechodząc do strony [Stan platformy Azure](https://azure.microsoft.com/status/) i wyszukując usługę „Device Provisioning”. W poleceniach lokalizacje można określić w jednym formacie Word lub wielowyrazowym; na przykład: Zachodnie, zachodnie stany USA, ZACHODNIe stany USA itd. W wartości nie jest rozróżniana wielkość liter. Jeśli do określenia lokalizacji używasz formatu wielu słów, ujmij wartość w cudzysłowy, na przykład `--location "West US"`.
 >
 
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>Pobieranie parametrów połączenia dla centrum IoT

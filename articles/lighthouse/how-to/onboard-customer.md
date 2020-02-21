@@ -3,12 +3,12 @@ title: Dołączanie klienta do zarządzania zasobami delegowanymi na platformie 
 description: Dowiedz się, jak dołączyć klienta do zarządzania zasobami delegowanymi przez platformę Azure, umożliwiając dostęp do zasobów i zarządzanie nimi za pomocą własnej dzierżawy.
 ms.date: 01/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3868987fa76d4ce0d4c34e81b46301ea106203d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 34c6173211a9125cace59d77ea942d301919aa26
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543413"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526216"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Dołączanie klienta do zarządzania zasobami delegowanymi na platformie Azure
 
@@ -39,11 +39,11 @@ Aby dołączyć dzierżawcę klienta, musi on mieć aktywną subskrypcję platfo
 
 Jeśli nie masz już tych wartości identyfikatorów, możesz je pobrać w jeden z następujących sposobów. Upewnij się, że te dokładne wartości są używane w danym wdrożeniu.
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Portalu Azure
 
 Identyfikator dzierżawy może być widoczny przez umieszczenie kursora nad nazwą konta w prawym górnym rogu Azure Portal lub przez wybranie pozycji **Przełącz katalog**. Aby wybrać i skopiować identyfikator dzierżawy, wyszukaj frazę "Azure Active Directory" w portalu, a następnie wybierz pozycję **Właściwości** i skopiuj wartość podaną w polu **Identyfikator katalogu** . Aby znaleźć identyfikator subskrypcji w dzierżawie klienta, wyszukaj frazę "subskrypcje", a następnie wybierz odpowiedni identyfikator subskrypcji.
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -71,7 +71,7 @@ Aby ułatwić zarządzanie, zalecamy korzystanie z grup użytkowników usługi A
 
 Aby zdefiniować autoryzacje, musisz znać wartości identyfikatora dla każdego użytkownika, grupy użytkowników lub nazwy głównej usługi w dzierżawie dostawcy usług, do której chcesz udzielić dostępu. Wymagany jest również identyfikator definicji roli dla każdej wbudowanej roli, która ma zostać przypisana. Jeśli ich nie masz, możesz je pobrać, uruchamiając poniższe polecenia z poziomu dzierżawy dostawcy usług.
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -120,19 +120,16 @@ Aby dołączyć klienta, musisz utworzyć szablon [Azure Resource Manager](../..
 |**managedByTenantId**     |Identyfikator dzierżawy.          |
 |**autoryzacji**     |Wartości **principalId** dla użytkowników/grup/nazw SPN z dzierżawy, z których każda jest **principalIdDisplayName** , aby pomóc klientowi zrozumieć cel autoryzacji i zamapować na wbudowaną wartość **zduplikowanych** w celu określenia poziomu dostępu.      |
 
-> [!TIP]
-> Upewnij się, że wpisy **managedByTenantID**, **principalIdDisplayName**i **zduplikowanych** są identyczne z wartościami używanymi przez platformę Azure. W tych wartościach nie należy używać wielkich liter.
-
-Proces dołączania wymaga szablonu Azure Resource Manager (dostarczonego w naszym [repozytorium przykładów](https://github.com/Azure/Azure-Lighthouse-samples/) i odpowiedniego pliku parametrów, który można zmodyfikować w taki sposób, aby był zgodny z konfiguracją i definiować autoryzacje.
+Proces dołączania wymaga szablonu Azure Resource Manager (dostępnego w naszym [repozytorium przykładów](https://github.com/Azure/Azure-Lighthouse-samples/)) i odpowiedniego pliku parametrów modyfikowanego w celu dopasowania do konfiguracji i zdefiniowania autoryzacji.
 
 Wybrany szablon będzie zależeć od tego, czy dołączysz całą subskrypcję, grupę zasobów lub wiele grup zasobów w ramach subskrypcji. Udostępniamy również szablon, który może być używany dla klientów, którzy kupili ofertę usługi zarządzanej opublikowaną w portalu Azure Marketplace, jeśli wolisz dołączyć swoje subskrypcje w ten sposób.
 
 |Aby dołączyć to  |Użyj tego szablonu Azure Resource Manager  |I zmodyfikuj ten plik parametrów |
 |---------|---------|---------|
-|Subskrypcja   |[delegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
-|Grupa zasobów   |[rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
-|Wiele grup zasobów w ramach subskrypcji   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
-|Subskrypcja (w przypadku korzystania z oferty opublikowanej w portalu Azure Marketplace)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
+|Subskrypcja   |[delegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
+|Grupa zasobów   |[rgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
+|Wiele grup zasobów w ramach subskrypcji   |[multipleRgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
+|Subskrypcja (w przypadku korzystania z oferty opublikowanej w portalu Azure Marketplace)   |[marketplaceDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
 > Opisany tutaj proces wymaga oddzielnego wdrożenia na poziomie subskrypcji dla każdej subskrypcji, która jest dołączana, nawet w przypadku dołączania subskrypcji w tej samej dzierżawie klienta. W przypadku dołączania wielu grup zasobów w ramach różnych subskrypcji w tej samej dzierżawie klienta wymagane są również oddzielne wdrożenia. Można jednak utworzyć wiele grup zasobów w ramach jednej subskrypcji w ramach jednego wdrożenia na poziomie subskrypcji.
@@ -203,7 +200,7 @@ Ponieważ jest to wdrożenie na poziomie subskrypcji, nie można go zainicjować
 > [!IMPORTANT]
 > Wdrożenie na poziomie subskrypcji musi być realizowane przez konto niebędące Gośćmi w dzierżawie klienta, które ma [wbudowaną rolę właściciela](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) subskrypcji (lub zawierającą grupy zasobów, które są dołączane). Aby wyświetlić wszystkich użytkowników, którzy mogą delegować subskrypcję, użytkownik w dzierżawie może wybrać subskrypcję w Azure Portal, otworzyć funkcję **Kontrola dostępu (IAM)** i [wyświetlić wszystkich użytkowników z rolą właściciela](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -247,7 +244,7 @@ az deployment create --name <deploymentName> \
 
 Po pomyślnym dodaniu subskrypcji klienta do zarządzania zasobami delegowanymi przez platformę Azure użytkownicy w dzierżawie dostawcy usług będą mogli zobaczyć subskrypcję i jej zasoby (Jeśli udzielono im dostępu za pomocą powyższego procesu, indywidualnie lub jako członek grupy usługi Azure AD z odpowiednimi uprawnieniami. Aby to potwierdzić, upewnij się, że subskrypcja jest wyświetlana w jeden z następujących sposobów.  
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Portalu Azure
 
 W dzierżawie dostawcy usług:
 
@@ -267,7 +264,7 @@ W dzierżawie klienta:
 > [!NOTE]
 > Po zakończeniu wdrożenia może upłynąć kilka minut, zanim aktualizacje zostaną odzwierciedlone w Azure Portal.
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -303,13 +300,13 @@ W poniższym przykładzie przedstawiono przypisanie przyznanie **roli usuwania p
 
 Użytkownik mający to uprawnienie może usunąć delegowanie w jeden z następujących sposobów.
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Portalu Azure
 
 1. Przejdź do [strony moi klienci](view-manage-customers.md).
 2. Wybierz pozycję **delegacje**.
 3. Znajdź delegowanie, które chcesz usunąć, a następnie wybierz ikonę kosza, która pojawia się w jego wierszu.
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell

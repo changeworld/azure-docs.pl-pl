@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 838d215cb49e526251aff9267dbeb0feb6d5f8df
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 2d1e6e484fd704669951bd37b17356fd3689cc91
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425260"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485186"
 ---
 # <a name="metrics-for-application-gateway"></a>Metryki dla Application Gateway
 
@@ -66,7 +66,7 @@ Na przykład, jeśli występuje wzrost trendu *czasu odpowiedzi na pierwszy bajt
 
 Jeśli zauważysz wzrost w *czasie odpowiedzi ostatniego bajtu* , ale *czas odpowiedzi pierwszego bajtu zaplecze* jest stabilny, można ustalić, że skok jest spowodowany większym żądanym plikiem.
 
-Analogicznie, jeśli *łączny czas w usłudze Application Gateway* ma wartość skok, ale *czas odpowiedzi ostatniego bajtu* w zasobie jest stabilny, może to być znak wąskiego gardła wydajności w Application Gateway lub wąskie gardło w sieci między klientem i Application Gateway. Ponadto, jeśli czas *RTT klienta* ma również odpowiedni skok, oznacza to, że spadek wydajności jest spowodowany przez sieć między klientem a Application Gateway.
+Analogicznie, jeśli *łączny czas w usłudze Application Gateway* ma wartość skok, ale *czas odpowiedzi ostatniego bajtu* w zasobie jest stabilny, może to być znak wąskiego gardła wydajności w Application Gateway lub wąskie gardło w sieci między klientem i Application Gateway. Ponadto, jeśli plik *RTT klienta* ma również odpowiedni skok, oznacza to, że spadek wydajności jest spowodowany przez sieć między klientem a Application Gateway.
 
 ### <a name="application-gateway-metrics"></a>Metryki Application Gateway
 
@@ -86,7 +86,7 @@ W przypadku Application Gateway dostępne są następujące metryki:
 
 - **Bieżące jednostki wydajności**
 
-   Liczba zużytych jednostek pojemności. Jednostki wydajności mierzą koszt oparty na zużyciu, który jest naliczany wraz ze stałym kosztem. Istnieją trzy uwarunkowania jednostek wydajności — jednostka obliczeniowa, trwałe połączenia i przepływność. Każda jednostka pojemności składa się z maksymalnie: 1 jednostki obliczeniowej lub 2500 połączeń trwałych lub przepływności 2,22 MB/s.
+   Liczba jednostek pojemności używanych do równoważenia obciążenia ruchu. Istnieją trzy uwarunkowania jednostek wydajności — jednostka obliczeniowa, trwałe połączenia i przepływność. Każda jednostka pojemności składa się z maksymalnie: 1 jednostki obliczeniowej lub 2500 połączeń trwałych lub przepływności 2,22 MB/s.
 
 - **Bieżące jednostki obliczeniowe**
 
@@ -98,13 +98,15 @@ W przypadku Application Gateway dostępne są następujące metryki:
    
 - **Szacowane jednostki pojemności**
 
-  Liczba jednostek pojemności, za pomocą których jest szacowany rozliczanie. Jest to calcutaed jako większa wartość między *bieżącymi jednostkami wydajności* i *stałymi jednostkami zdolności do rozliczania*.  
+  W przypadku jednostki SKU w wersji 2 model cenowy jest oparty na zużyciu. Jednostki wydajności mierzą koszt oparty na zużyciu, który jest naliczany wraz ze stałym kosztem. *Szacowana liczba jednostek wydajności* wskazuje liczbę jednostek wydajności, przy użyciu których szacuje się rozliczanie. Jest ona obliczana jako większa wartość między *bieżącymi jednostkami wydajności* (jednostkami pojemności wymaganymi do równoważenia obciążenia) i *stałymi jednostkami zdolności do rozliczania* (alokacja minimalna jest obsługiwana).
 
 - **Nieudane żądania**
 
-   Liczba żądań zakończonych niepowodzeniem, które zostały obsłużone przez Application Gateway. Liczbę żądań można w dalszej odfiltrować, aby pokazać liczbę dla każdej lub określonej puli zaplecza — kombinację ustawień http.
+  Liczba żądań zakończonych niepowodzeniem, które zostały obsłużone przez Application Gateway. Liczbę żądań można w dalszej odfiltrować, aby pokazać liczbę dla każdej lub określonej puli zaplecza — kombinację ustawień http.
    
-- **Stałe rozliczane jednostki wydajności** Minimalna liczba jednostek pojemności obsługiwana w ramach ustawienia *minimalne jednostki skalowania* w konfiguracji Application Gateway.
+- **Stałe rozliczane jednostki wydajności**
+
+  Minimalna liczba jednostek pojemności obsługiwana w ramach ustawienia *minimalne jednostki skalowania* (jedno wystąpienie jest tłumaczone na 10 jednostek pojemności) w konfiguracji Application Gateway.
    
  - **Nowe połączenia na sekundę**
 
@@ -143,7 +145,9 @@ W przypadku Application Gateway dostępne są następujące metryki:
 
   Liczba punktów końcowych, które są określone w złej kondycji przez sondę kondycji. Można filtrować według jednej puli zaplecza, aby wyświetlić liczbę hostów w złej kondycji w określonej puli zaplecza.
   
-- **Liczba żądań na minutę na hosta w dobrej kondycji** Średnia liczba żądań odebranych przez każdy element członkowski dobrej kondycji w puli zaplecza w ciągu minuty. Należy określić pulę zaplecza przy użyciu wymiaru *ustawień httpsettings elementu backendpool* .  
+- **Liczba żądań na minutę na hosta w dobrej kondycji**
+
+  Średnia liczba żądań odebranych przez każdy element członkowski dobrej kondycji w puli zaplecza w ciągu minuty. Należy określić pulę zaplecza przy użyciu wymiaru *ustawień httpsettings elementu backendpool* .  
   
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Metryki obsługiwane przez jednostkę SKU Application Gateway v1

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/23/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 87cf5f226a8b2d1efcc0ee967d84f6e0002cb03d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 79dd6160b65469d6a44167913adb7e319f0f583a
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987919"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525349"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Szybki Start: korzystanie z biblioteki klienta analiza tekstu
 
@@ -24,7 +24,7 @@ Rozpocznij pracę z biblioteką klienta analiza tekstu. Wykonaj następujące kr
 
 Użyj biblioteki klienta analiza tekstu do wykonania:
 
-* Analiza opinii
+* Analiza tonacji
 * Wykrywanie języka
 * Rozpoznawanie jednostek
 * Wyodrębnianie kluczowych fraz
@@ -37,17 +37,6 @@ Użyj biblioteki klienta analiza tekstu do wykonania:
 > * Kod w tym artykule używa metod synchronicznych i niezabezpieczonych magazynów poświadczeń z przyczyn uproszczenia. W przypadku scenariuszy produkcyjnych zaleca się użycie wsadowych metod asynchronicznych w celu zapewnienia wydajności i skalowalności. Zapoznaj się z dokumentacją referencyjną poniżej.
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-> [!IMPORTANT]
-> * Najnowsza wersja zapoznawcza interfejs API analizy tekstu jest `3.0-preview`, która obejmuje publiczną wersję zapoznawczą dla ulepszonej [Analiza tonacji](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) i [nazwanego rozpoznawania jednostek (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Najnowsza stabilna wersja jest `2.1`.
->    * Pamiętaj, aby postępować zgodnie z instrukcjami dotyczącymi używanej wersji.
-> * Kod w tym artykule używa metod synchronicznych i niezabezpieczonych magazynów poświadczeń z przyczyn uproszczenia. W przypadku scenariuszy produkcyjnych zaleca się użycie wsadowych metod asynchronicznych w celu zapewnienia wydajności i skalowalności. Zapoznaj się z dokumentacją referencyjną poniżej. 
-
-[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
@@ -73,6 +62,17 @@ Użyj biblioteki klienta analiza tekstu do wykonania:
 
 ::: zone-end
 
+::: zone pivot="programming-language-python"
+
+> [!IMPORTANT]
+> * Najnowsza wersja zapoznawcza interfejs API analizy tekstu jest `3.0-preview`, która obejmuje publiczną wersję zapoznawczą dla ulepszonej [Analiza tonacji](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) i [nazwanego rozpoznawania jednostek (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Najnowsza stabilna wersja jest `2.1`.
+>    * Pamiętaj, aby postępować zgodnie z instrukcjami dotyczącymi używanej wersji.
+> * Kod w tym artykule używa metod synchronicznych i niezabezpieczonych magazynów poświadczeń z przyczyn uproszczenia. W przypadku scenariuszy produkcyjnych zaleca się użycie wsadowych metod asynchronicznych w celu zapewnienia wydajności i skalowalności. Zapoznaj się z dokumentacją referencyjną poniżej. 
+
+[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
+
+::: zone-end
+
 ::: zone pivot="programming-language-other"
 
 ## <a name="additional-language-support"></a>Obsługa dodatkowych języków
@@ -81,8 +81,8 @@ Jeśli kliknięto tę kartę, prawdopodobnie nie widzisz przewodnika Szybki Star
 
 | Język | Dostępna wersja | 
 |----------|------------------------|
-| Ruby     | [Wersja 2,1](ruby-sdk.md)          | 
-| Go       | [Wersja 2,1](go-sdk.md)          | 
+| Ruby     | [Wersja 2,1](ruby-sdk.md) | 
+| Przejdź       | [Wersja 2,1](go-sdk.md) | 
 
 ::: zone-end
 

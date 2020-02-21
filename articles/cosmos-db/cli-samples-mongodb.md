@@ -7,16 +7,19 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 9/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8a8b36f61b967af2109e8c897d632b192d208017
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: f7807a4c2024e16f563adbcb46a5c60e5c542dda
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71275451"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524567"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-mongodb-api"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla Azure Cosmos DB API MongoDB
 
 Poniższa tabela zawiera linki do przykładowych skryptów interfejsu wiersza polecenia platformy Azure służących do Azure Cosmos DB interfejsu API MongoDB. Strony referencyjne dla wszystkich poleceń dostępnych w interfejsie wiersza polecenia usługi Azure Cosmos DB są dostępne w [dokumentacji dotyczącej interfejsu wiersza polecenia platformy Azure](/cli/azure/cosmosdb). Wszystkie przykłady skryptów interfejsu wiersza polecenia Azure Cosmos DB można znaleźć w [repozytorium GitHub Azure Cosmos DB interfejsu wiersza polecenia](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
+
+> [!NOTE]
+> Obecnie można utworzyć tylko 3,2 wersję (czyli konta korzystające z punktu końcowego w formacie `*.documents.azure.com`) interfejsu API Azure Cosmos DB dla kont MongoDB przy użyciu szablonów programu PowerShell, interfejsu wiersza polecenia i Menedżer zasobów. Aby utworzyć 3,6 wersji kont, należy zamiast tego użyć Azure Portal.
 
 | |  |
 |---|---|

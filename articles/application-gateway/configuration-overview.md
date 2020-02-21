@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714860"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485084"
 ---
 # <a name="application-gateway-configuration-overview"></a>Przegląd konfiguracji Application Gateway
 
@@ -210,7 +210,7 @@ Dla reguły opartej na ścieżce Dodaj wiele ustawień protokołu HTTP zaplecza,
 
 W przypadku skonfigurowania przekierowania dla podstawowej reguły wszystkie żądania na skojarzonym odbiorniku są przekierowywane do obiektu docelowego. To jest przekierowanie *globalne* . Jeśli przekierowanie jest skonfigurowane dla reguły opartej na ścieżce, przekierowywane są tylko żądania w określonym obszarze witryny. Przykładem jest obszar koszyka zakupów, który jest określany przez */cart/\** . Jest to przekierowanie *oparte na ścieżce* .
 
-Aby uzyskać więcej informacji na temat przekierowań, zobacz [Omówienie przekierowania Application Gateway](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
+Aby uzyskać więcej informacji na temat przekierowań, zobacz [Omówienie przekierowania Application Gateway](redirect-overview.md).
 
 #### <a name="redirection-type"></a>Typ przekierowania
 
@@ -227,24 +227,24 @@ Wybierz odbiornik jako miejsce docelowe przekierowania, aby przekierować ruch z
 ![Składnik Application Gateway — okno dialogowe](./media/configuration-overview/configure-redirection.png)
 
 Aby uzyskać więcej informacji na temat przekierowania protokołu HTTP-HTTPS, zobacz:
-- [Przekierowanie z protokołu HTTP do HTTPS przy użyciu Azure Portal](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [Przekierowanie z protokołu HTTP do HTTPS przy użyciu programu PowerShell](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [Przekierowanie z protokołu HTTP do HTTPS przy użyciu interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+- [Przekierowanie z protokołu HTTP do HTTPS przy użyciu Azure Portal](redirect-http-to-https-portal.md)
+- [Przekierowanie z protokołu HTTP do HTTPS przy użyciu programu PowerShell](redirect-http-to-https-powershell.md)
+- [Przekierowanie z protokołu HTTP do HTTPS przy użyciu interfejsu wiersza polecenia platformy Azure](redirect-http-to-https-cli.md)
 
 ##### <a name="external-site"></a>Lokacja zewnętrzna
 
 Wybierz opcję lokacja zewnętrzna, jeśli chcesz przekierować ruch do odbiornika skojarzonego z tą regułą do zewnętrznej lokacji. Możesz dołączyć ciąg zapytania z oryginalnego żądania w żądaniu, które jest przekazywane do docelowego przekierowania. Nie można przesłać dalej ścieżki do zewnętrznej witryny, która była w oryginalnym żądaniu.
 
 Aby uzyskać więcej informacji na temat przekierowania, zobacz:
-- [Przekierowywanie ruchu do lokacji zewnętrznej przy użyciu programu PowerShell](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-powershell)
-- [Przekierowywanie ruchu do lokacji zewnętrznej przy użyciu interfejsu wiersza polecenia](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-cli)
+- [Przekierowywanie ruchu do lokacji zewnętrznej przy użyciu programu PowerShell](redirect-external-site-powershell.md)
+- [Przekierowywanie ruchu do lokacji zewnętrznej przy użyciu interfejsu wiersza polecenia](redirect-external-site-cli.md)
 
 #### <a name="rewrite-the-http-header-setting"></a>Ponowne zapisywanie ustawienia nagłówka HTTP
 
 To ustawienie powoduje dodanie, usunięcie lub aktualizację nagłówków żądań i odpowiedzi HTTP, podczas gdy pakiety żądań i odpowiedzi przechodzą między klientami a pulami zaplecza. Aby uzyskać więcej informacji, zobacz:
 
- - [Przegląd ponownego zapisywania nagłówków HTTP](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [Konfigurowanie ponownego zapisywania nagłówka HTTP](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+ - [Przegląd ponownego zapisywania nagłówków HTTP](rewrite-http-headers.md)
+ - [Konfigurowanie ponownego zapisywania nagłówka HTTP](rewrite-http-headers-portal.md)
 
 ## <a name="http-settings"></a>Ustawienia protokołu HTTP
 
@@ -252,7 +252,18 @@ Brama aplikacji kieruje ruch do serwerów zaplecza przy użyciu konfiguracji okr
 
 ### <a name="cookie-based-affinity"></a>Koligacja na podstawie pliku cookie
 
-Ta funkcja jest przydatna, gdy chcesz zachować sesję użytkownika na tym samym serwerze. Pliki cookie zarządzane przez bramę umożliwiają usłudze Application Gateway bezpośredni ruch z sesji użytkownika do tego samego serwera w celu przetworzenia. Jest to ważne, gdy stan sesji jest zapisywany lokalnie na serwerze na potrzeby sesji użytkownika. Jeśli aplikacja nie może obsłużyć koligacji opartej na plikach cookie, nie można użyć tej funkcji. Aby go użyć, należy się upewnić, że klienci obsługują pliki cookie.
+Usługa Azure Application Gateway używa plików cookie zarządzanych przez bramę do obsługi sesji użytkowników. Gdy użytkownik wysyła pierwsze żądanie do Application Gateway, ustawia plik cookie koligacji w odpowiedzi z wartością skrótu, która zawiera szczegóły sesji, dzięki czemu kolejne żądania przenoszące plik cookie koligacji będą kierowane do tego samego serwera wewnętrznej bazy danych dla Obsługa lepkość. 
+
+Ta funkcja jest przydatna, gdy chcesz zachować sesję użytkownika na tym samym serwerze, a stan sesji jest zapisywany lokalnie na serwerze na potrzeby sesji użytkownika. Jeśli aplikacja nie może obsłużyć koligacji opartej na plikach cookie, nie można użyć tej funkcji. Aby go użyć, należy się upewnić, że klienci obsługują pliki cookie.
+
+Począwszy od **17 lutego 2020**, [Aktualizacja V80](https://chromiumdash.appspot.com/schedule) [chromu](https://www.chromium.org/Home) pozwala na to, gdzie pliki cookie HTTP bez atrybutu SameSite mają być traktowane jako SameSite = swobodny. W przypadku żądań CORS (współużytkowanie zasobów między źródłami), jeśli plik cookie musi zostać wysłany w kontekście innej firmy, musi użyć "SameSite = none; Secure "atrybuty i powinny być wysyłane tylko za pośrednictwem protokołu HTTPS. W przeciwnym razie w scenariuszu tylko HTTP przeglądarka nie wyśle plików cookie w kontekście innej firmy. Celem tej aktualizacji z programu Chrome jest podwyższenie poziomu zabezpieczeń oraz uniknięcie ataków na wiele witryn (CSRF). 
+
+Aby obsłużyć tę zmianę, Application Gateway (wszystkie typy jednostek SKU) będą wprowadzać inny identyczny plik cookie o nazwie **ApplicationGatewayAffinityCORS** , a także istniejący plik cookie **ApplicationGatewayAffinity** , który jest podobny, ale ten plik cookie będzie miał teraz dwa dodatkowe atrybuty **"SameSite = none; "** Dodano do niej", aby można było utrzymywać sesję programu Sticky Notes nawet w przypadku żądań między źródłami danych.
+
+Należy pamiętać, że domyślna nazwa pliku cookie koligacji to **ApplicationGatewayAffinity** , co może zostać zmienione przez użytkowników. Jeśli używasz niestandardowej nazwy pliku cookie koligacji, dodatkowy plik cookie zostanie dodany za pomocą mechanizmu CORS jako sufiks, na przykład **CustomCookieNameCORS**.
+
+> [!NOTE]
+> Jeśli atrybut **SameSite = none** ma ustawioną wartość, plik cookie powinien również zawierać flagę **Secure** i powinien być wysyłany przy użyciu **protokołu HTTPS**. Dlatego jeśli koligacja sesji jest wymagana za pośrednictwem mechanizmu CORS, należy przeprowadzić migrację obciążenia do protokołu HTTPS. Zapoznaj się z dokumentacją dotyczącą odciążania protokołu SSL i kompleksowej dokumentacji protokołu SSL dla Application Gateway tym miejscu — [Omówienie](ssl-overview.md), [jak skonfigurować odciążanie protokołu SSL](create-ssl-portal.md), [jak skonfigurować kompleksowy protokół SSL](end-to-end-ssl-portal.md).
 
 ### <a name="connection-draining"></a>Opróżnianie połączeń
 
@@ -262,7 +273,7 @@ Opróżnianie połączeń pomaga bezpiecznie usunąć członków puli zaplecza p
 
 Application Gateway obsługuje zarówno protokół HTTP, jak i HTTPS w przypadku żądań routingu do serwerów zaplecza. W przypadku wybrania protokołu HTTP ruch do serwerów zaplecza jest niezaszyfrowany. Jeśli nieszyfrowana komunikacja nie jest akceptowalna, wybierz pozycję HTTPS.
 
-To ustawienie połączone z protokołem HTTPS w odbiorniku obsługuje [kompleksowy protokół SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Dzięki temu można bezpiecznie przesyłać poufne dane zaszyfrowane do zaplecza. Każdy serwer zaplecza w puli zaplecza z włączonym kompleksowym protokołem SSL musi być skonfigurowany przy użyciu certyfikatu w celu umożliwienia bezpiecznej komunikacji.
+To ustawienie połączone z protokołem HTTPS w odbiorniku obsługuje [kompleksowy protokół SSL](ssl-overview.md). Dzięki temu można bezpiecznie przesyłać poufne dane zaszyfrowane do zaplecza. Każdy serwer zaplecza w puli zaplecza z włączonym kompleksowym protokołem SSL musi być skonfigurowany przy użyciu certyfikatu w celu umożliwienia bezpiecznej komunikacji.
 
 ### <a name="port"></a>Port
 
@@ -301,7 +312,7 @@ Jest to skrót tylko do interfejsu użytkownika, który wybiera dwa wymagane ust
 
 ### <a name="use-custom-probe"></a>Użyj sondy niestandardowej
 
-To ustawienie kojarzy [niestandardową sondę](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe) z USTAWIENIEM protokołu HTTP. Można skojarzyć tylko jedną sondę niestandardową z ustawieniem protokołu HTTP. Jeśli nie utworzysz jawnie niestandardowej sondy, do monitorowania kondycji zaplecza służy [sonda domyślna](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings) . Zalecamy utworzenie niestandardowej sondy do większej kontroli nad monitorowaniem kondycji zaplecza.
+To ustawienie kojarzy [niestandardową sondę](application-gateway-probe-overview.md#custom-health-probe) z USTAWIENIEM protokołu HTTP. Można skojarzyć tylko jedną sondę niestandardową z ustawieniem protokołu HTTP. Jeśli nie utworzysz jawnie niestandardowej sondy, do monitorowania kondycji zaplecza służy [sonda domyślna](application-gateway-probe-overview.md#default-health-probe-settings) . Zalecamy utworzenie niestandardowej sondy do większej kontroli nad monitorowaniem kondycji zaplecza.
 
 > [!NOTE]
 > Niestandardowa Sonda nie monitoruje kondycji puli zaplecza, chyba że odpowiednie ustawienie protokołu HTTP jest jawnie skojarzone z odbiornikiem.
@@ -335,7 +346,7 @@ Po utworzeniu puli zaplecza należy ją skojarzyć z co najmniej jedną regułą
 
 ## <a name="health-probes"></a>Sondy kondycji
 
-Brama aplikacji domyślnie monitoruje kondycję wszystkich zasobów w zapleczu. Jednak zdecydowanie zalecamy utworzenie niestandardowej sondy dla każdego ustawienia HTTP zaplecza, aby uzyskać większą kontrolę nad monitorowaniem kondycji. Aby dowiedzieć się, jak skonfigurować sondę niestandardową, zobacz [niestandardowe ustawienia sondy kondycji](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings).
+Brama aplikacji domyślnie monitoruje kondycję wszystkich zasobów w zapleczu. Jednak zdecydowanie zalecamy utworzenie niestandardowej sondy dla każdego ustawienia HTTP zaplecza, aby uzyskać większą kontrolę nad monitorowaniem kondycji. Aby dowiedzieć się, jak skonfigurować sondę niestandardową, zobacz [niestandardowe ustawienia sondy kondycji](application-gateway-probe-overview.md#custom-health-probe-settings).
 
 > [!NOTE]
 > Po utworzeniu niestandardowej sondy kondycji należy ją skojarzyć z ustawieniem HTTP zaplecza. Niestandardowa Sonda nie będzie monitorować kondycji puli zaplecza, chyba że odpowiednie ustawienie protokołu HTTP jest jawnie skojarzone z odbiornikiem przy użyciu reguły.

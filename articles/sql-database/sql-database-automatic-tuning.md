@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 34f102b43de669b5ea03324db47ac4dfcb554133
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: eefaaa59a3dc0f0900666bc697f64e4f405a0d74
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190761"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498725"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Dostrajanie automatyczne w Azure SQL Database
 
@@ -82,8 +82,8 @@ Opcje dostrajania automatycznego mogą być niezależnie włączane lub wyłącz
 > [!IMPORTANT]
 > Od marca 2020 zmiany ustawień domyślnych platformy Azure na potrzeby automatycznego dostrajania zaczną obowiązywać w następujący sposób:
 > - Nowe wartości domyślne platformy Azure będą FORCE_LAST_GOOD_PLAN = włączone, CREATE_INDEX = wyłączone i DROP_INDEX = wyłączone.
-> - Istniejące serwery bez skonfigurowanych preferencji automatycznego dostrajania zostaną automatycznie skonfigurowane przy użyciu nowych ustawień domyślnych platformy Azure. Dotyczy to wszystkich klientów, którzy obecnie mają automatyczne dostrajanie w niezdefiniowanym stanie.
-> - Nowo utworzone serwery zostaną automatycznie skonfigurowane przy użyciu nowych ustawień domyślnych platformy Azure (w przeciwieństwie do wcześniejszego stanu konfiguracji dostrajania automatycznego podczas tworzenia nowego serwera).
+> - Istniejące serwery bez skonfigurowanych preferencji automatycznego dostrajania zostaną automatycznie skonfigurowane w taki sposób, aby DZIEDZICZYŁY nowe ustawienia domyślne platformy Azure. Dotyczy to wszystkich klientów, którzy obecnie mają ustawienia serwera na potrzeby dostrajania automatycznego w niezdefiniowanym stanie.
+> - Nowo utworzone serwery zostaną automatycznie skonfigurowane w taki sposób, aby DZIEDZICZYŁY nowe ustawienia domyślne platformy Azure (w przeciwieństwie do wcześniejszego stanu konfiguracji dostrajania automatycznego podczas tworzenia nowego serwera).
 >
 
 Skonfigurowanie opcji dostrajania automatycznego na serwerze i dziedziczenie ustawień dla baz danych należących do serwera nadrzędnego jest zalecaną metodą konfigurowania dostrajania automatycznego, ponieważ upraszcza to Zarządzanie opcjami dostrajania automatycznego dla dużej liczby baz danych.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 408f29322af2199259f59be1f2c7e891a80a6b35
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 65838c36cadba580c578677185683e27b57b1e27
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980576"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525502"
 ---
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>Zarządzanie zasobami interfejsu API usługi Azure Cosmos DB MongoDB przy użyciu szablonów Azure Resource Manager
 
@@ -24,6 +24,8 @@ Tworzenie Azure Cosmos DB zasobów przy użyciu szablonu Azure Resource Manager.
 > [!NOTE]
 > Nazwy kont muszą zawierać małe litery i 44 lub mniej znaków.
 > Aby zaktualizować RU/s, ponownie prześlij szablon ze zaktualizowanymi wartościami właściwości przepływności.
+>
+> Obecnie można utworzyć tylko 3,2 wersję (czyli konta korzystające z punktu końcowego w formacie `*.documents.azure.com`) interfejsu API Azure Cosmos DB dla kont MongoDB przy użyciu szablonów programu PowerShell, interfejsu wiersza polecenia i Menedżer zasobów. Aby utworzyć 3,6 wersji kont, należy zamiast tego użyć Azure Portal.
 
 [!code-json[create-cosmos-mongo](~/quickstart-templates/101-cosmosdb-mongodb/azuredeploy.json)]
 

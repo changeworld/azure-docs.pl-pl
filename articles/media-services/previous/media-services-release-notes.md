@@ -13,19 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 310b3778a43c74db30940368d35c39c99f64a28c
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: cfe5ea47ad2cbed7bd2779ee535d7bef447475e5
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049990"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500343"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji Azure Media Services
 
 Te informacje o wersji Azure Media Services podsumowują zmiany z poprzednich wersji i znanych problemów.
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services V2 nie są dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
 Chcemy poznać naszych klientów, aby móc skupić się na rozwiązywaniu problemów, które mają wpływ na Ciebie. Aby zgłosić problem lub zadawać pytania, Prześlij wpis na [forum MSDN Azure Media Services]. 
 
@@ -561,7 +561,7 @@ W wersji z listopada zestawu SDK wprowadzono następujące funkcje:
 
 * Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
 
-## <a name="provide-feedback"></a>Przekaż opinię
+## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->

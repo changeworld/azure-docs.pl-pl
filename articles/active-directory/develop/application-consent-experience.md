@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: 82d64895f4bf2ef6eb1fdb248f470f981d1cb426
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c9b449b65a8f8def9dc28a668cd9ee3671124cb0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698173"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484506"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Opis środowisk zgody dla aplikacji usługi Azure AD
 
@@ -29,7 +29,7 @@ Dowiedz się więcej na temat sposobu korzystania z aplikacji Azure Active Direc
 
 Zgoda polega na tym, że użytkownik udzielający autoryzacji aplikacji dostępu do chronionych zasobów w ich imieniu. Administrator lub użytkownik może zostać poproszony o zgodę, aby zezwolić na dostęp do swojej organizacji/poszczególnych danych.
 
-Rzeczywiste środowisko użytkownika udzielania zgody będzie różnić się w zależności od zasad ustawionych w dzierżawie użytkownika, zakresu uwierzytelniania użytkownika (lub roli) oraz typu [uprawnień](https://docs.microsoft.com/azure/active-directory/develop/active-directory-permissions) wymaganych przez aplikację kliencką. Oznacza to, że deweloperzy aplikacji i Administratorzy dzierżawy mają pewną kontrolę nad doświadczeniem w zakresie wyrażania zgody. Administratorzy mają elastyczność ustawiania i wyłączania zasad w dzierżawie lub aplikacji w celu kontrolowania sposobu wyrażania zgody w dzierżawie. Deweloperzy aplikacji mogą określać, jakie typy uprawnień są wymagane i czy chcą przeprowadzić użytkowników przez przepływ zgody użytkownika lub przepływ zgody administratora.
+Rzeczywiste środowisko użytkownika udzielania zgody będzie różnić się w zależności od zasad ustawionych w dzierżawie użytkownika, zakresu uwierzytelniania użytkownika (lub roli) oraz typu [uprawnień](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent) wymaganych przez aplikację kliencką. Oznacza to, że deweloperzy aplikacji i Administratorzy dzierżawy mają pewną kontrolę nad doświadczeniem w zakresie wyrażania zgody. Administratorzy mają elastyczność ustawiania i wyłączania zasad w dzierżawie lub aplikacji w celu kontrolowania sposobu wyrażania zgody w dzierżawie. Deweloperzy aplikacji mogą określać, jakie typy uprawnień są wymagane i czy chcą przeprowadzić użytkowników przez przepływ zgody użytkownika lub przepływ zgody administratora.
 
 - **Przepływ zgody użytkownika** polega na tym, że deweloper aplikacji kieruje użytkowników do punktu końcowego autoryzacji z zamiarem zarejestrowania zgody wyłącznie dla bieżącego użytkownika.
 - **Przepływ zgody administratora** polega na tym, że deweloper aplikacji kieruje użytkowników do punktu końcowego zgody na administratora z zamiarem zarejestrowania zgody dla całej dzierżawy. Aby zapewnić prawidłowe działanie przepływu zgody administratora, deweloperzy aplikacji muszą wyświetlić wszystkie uprawnienia we właściwości `RequiredResourceAccess` w manifeście aplikacji. Aby uzyskać więcej informacji, zobacz [manifest aplikacji](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
@@ -45,7 +45,7 @@ Poniższy diagram i tabela zawierają informacje dotyczące bloków konstrukcyjn
 | # | Składnik | Przeznaczenie |
 | ----- | ----- | ----- |
 | 1 | Identyfikator użytkownika | Ten identyfikator reprezentuje użytkownika, którego aplikacja kliencka żąda dostępu do chronionych zasobów w imieniu. |
-| 2 | Tytuł | Tytuł zmienia się w zależności od tego, czy użytkownicy przechodzą przez przepływ zgody użytkownika lub administratora. W przepływie zgody użytkownika tytuł będzie "żądanymi uprawnieniami" w przepływie zgody administratora, a tytuł będzie miał dodatkowy wiersz "Akceptuj dla organizacji". |
+| 2 | Stanowisko | Tytuł zmienia się w zależności od tego, czy użytkownicy przechodzą przez przepływ zgody użytkownika lub administratora. W przepływie zgody użytkownika tytuł będzie "żądanymi uprawnieniami" w przepływie zgody administratora, a tytuł będzie miał dodatkowy wiersz "Akceptuj dla organizacji". |
 | 3 | Logo aplikacji | Ten obraz powinien ułatwić użytkownikom wizualne określenie, czy ta aplikacja jest aplikacją, do której mają dostęp. Ten obraz jest dostarczany przez deweloperów aplikacji, a własność tego obrazu nie jest zweryfikowana. |
 | 4 | Nazwa aplikacji | Ta wartość powinna informować użytkowników, którzy aplikacje żądają dostępu do swoich danych. Należy pamiętać, że ta nazwa jest dostarczana przez deweloperów, a własność tej nazwy aplikacji nie jest zweryfikowana. |
 | 5 | Domena wydawcy | Ta wartość powinna zapewnić użytkownikom domenę, że może ona być w stanie oszacować pod kątem wiarygodności. Ta domena jest świadczona przez deweloperów i sprawdzana jest własność tej domeny wydawcy. |

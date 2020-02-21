@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/19/2020
 ms.author: allensu
-ms.openlocfilehash: 0cbebf4ab2d865d49a85da2e809bdf24e7258a5f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: MT
+ms.openlocfilehash: a118d560541595e26c80547dd641968c518aa353
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444387"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485016"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Projektowanie sieci wirtualnych z użyciem zasobów bramy translatora adresów sieciowych (publiczna wersja zapoznawcza)
 
@@ -57,7 +57,7 @@ Trasy zdefiniowane przez użytkownika nie są wymagane.
 
 Zasób został zaprojektowany tak, aby można było go zobaczyć w następującym Azure Resource Manager przykładzie w formacie przypominającym szablon.  Ten format podobny do szablonu jest przedstawiony tutaj, aby zilustrować koncepcje i strukturę.  Zmodyfikuj przykład swoich potrzeb.  Ten dokument nie jest przeznaczony dla samouczka.
 
-Na poniższym diagramie przedstawiono zapisywalne odwołania między różnymi zasobami Azure Resource Manager.  Strzałka wskazuje kierunek odniesienia pochodzący z lokalizacji, w której jest zapisywalny. Recenzja 
+Na poniższym diagramie przedstawiono zapisywalne odwołania między różnymi zasobami Azure Resource Manager.  Strzałka wskazuje kierunek odniesienia pochodzący z lokalizacji, w której jest zapisywalny. Przegląd 
 
 <p align="center">
   <img src="media/nat-overview/flow-map.svg" width="256" title="Model obiektów Virtual Network NAT">
@@ -341,14 +341,13 @@ Port dla tego elementu jest dostępny do ponownego użycia w tym samym docelowym
 - Rodzina adresów IPv4 jest obsługiwana.  Translator adresów sieciowych nie współdziała z rodziną adresów IPv6.
 - SIECIOWEJ grupy zabezpieczeń w podsieci lub karcie sieciowej nie jest uznawany za przepływy wychodzące do publicznych punktów końcowych przy użyciu translatora adresów sieciowych
 - Rejestrowanie przepływu sieciowej grupy zabezpieczeń nie jest obsługiwane w przypadku korzystania z translatora adresów sieciowych.
-- Gdy sieć wirtualna ma wiele podsieci, Każda podsieć może mieć skonfigurowany inny translator adresów sieciowych.
 - Translator adresów sieciowych nie może obejmować wielu sieci wirtualnych.
 
 ## <a name="preview-participation"></a>Podgląd udziału
 
 Postępuj zgodnie [z instrukcjami, aby włączyć subskrypcję](nat-overview.md#public-preview-participation).
 
-## <a name="feedback"></a>Opinie
+## <a name="feedback"></a>Opinia
 
 Chcemy wiedzieć, jak możemy ulepszyć usługę. Udostępnij nam swoją [opinię na temat publicznej wersji zapoznawczej](https://aka.ms/natfeedback) .  Możesz zaproponować i zagłosować, co będziemy kompilować dalej w usłudze [UserVoice dla translatora adresów sieciowych](https://aka.ms/natuservoice).
 

@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: pabutler
-ms.openlocfilehash: ae5a55c6d640852cbd873bc6b36e502b5fe17165
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d050b32b212f66623a24bcf87d40111fc5973a5
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817950"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77481378"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>Konfigurowanie usługi WinRM po utworzeniu maszyny wirtualnej
 
@@ -25,7 +25,7 @@ W tym artykule opisano sposób konfigurowania istniejącej maszyny wirtualnej ho
 
 ## <a name="enabling-port-traffic"></a>Włączanie ruchu portu
 
-Protokół WinRM przez HTTPS używa portu 5896, który nie jest domyślnie włączony w przypadku wstępnie skonfigurowanych maszyn wirtualnych z systemem Windows oferowanych w witrynie Azure Marketplace. Aby włączyć ten protokół, wykonaj następujące kroki, aby dodać nową regułę do sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) z [Azure Portal](https://portal.azure.com).  Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview).
+Protokół WinRM przez HTTPS używa portu 5986, który nie jest domyślnie włączony w przypadku wstępnie skonfigurowanych maszyn wirtualnych z systemem Windows oferowanych w witrynie Azure Marketplace. Aby włączyć ten protokół, wykonaj następujące kroki, aby dodać nową regułę do sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) z [Azure Portal](https://portal.azure.com).  Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview).
 
 1.  Przejdź do kart **Virtual machines >**   <*vm-Name*>   **> Settings/Networking**.
 2.  Kliknij nazwę sieciowej grupy zabezpieczeń (w tym przykładzie **testvm11002**), aby wyświetlić jej właściwości:

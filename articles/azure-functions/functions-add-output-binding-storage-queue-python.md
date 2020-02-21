@@ -3,12 +3,12 @@ title: Dodawanie powiązania kolejki usługi Azure Storage do funkcji języka Py
 description: Integrowanie kolejki usługi Azure Storage z funkcją języka Python za pomocą powiązania danych wyjściowych.
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6cea44dca666bbf002de6e2b7dd283f49ac7bd5a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198483"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485169"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Dodawanie powiązania kolejki usługi Azure Storage do funkcji języka Python
 
@@ -100,7 +100,7 @@ Aby zapisać do kolejki usługi Azure Storage przy użyciu tej funkcji, należy 
 
 W tym przypadku `msg` jest przyznany do funkcji jako argument wyjściowy. W przypadku typu `queue` należy również określić nazwę kolejki w `queueName` i podać *nazwę* połączenia usługi Azure Storage (z pliku *Local. Settings. json*) w `connection`.
 
-Aby uzyskać więcej informacji na temat szczegółów powiązań, zobacz [Azure Functions wyzwalacze i koncepcje powiązań](functions-triggers-bindings.md) oraz [konfigurację wyjściową kolejki](functions-bindings-storage-queue.md#output---configuration).
+Aby uzyskać więcej informacji na temat szczegółów powiązań, zobacz [Azure Functions wyzwalacze i koncepcje powiązań](functions-triggers-bindings.md) oraz [konfigurację wyjściową kolejki](functions-bindings-storage-queue-output.md#configuration).
 
 ## <a name="add-code-to-use-the-output-binding"></a>Dodaj kod, aby użyć powiązania danych wyjściowych
 
@@ -176,19 +176,19 @@ Gdy funkcja generuje odpowiedź HTTP dla przeglądarki sieci Web, wywoła równi
 
 1. Otwórz plik *Local. JSON* projektu funkcji i skopiuj wartość parametrów połączenia. W terminalu lub w oknie polecenia Uruchom następujące polecenie, aby utworzyć zmienną środowiskową o nazwie `AZURE_STORAGE_CONNECTION_STRING`, wklejając określone parametry połączenia zamiast `<connection_string>`. (Ta zmienna środowiskowa oznacza, że nie trzeba podawać parametrów połączenia dla każdego kolejnego polecenia przy użyciu argumentu `--connection-string`).
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -198,19 +198,19 @@ Gdy funkcja generuje odpowiedź HTTP dla przeglądarki sieci Web, wywoła równi
     
 1. Obowiązkowe Użyj [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) polecenia, aby wyświetlić kolejki magazynu na Twoim koncie. Dane wyjściowe tego polecenia powinny zawierać kolejkę o nazwie `outqueue`, która została utworzona, gdy funkcja zapisała swój pierwszy komunikat do tej kolejki.
     
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     az storage queue list --output tsv
@@ -219,21 +219,21 @@ Gdy funkcja generuje odpowiedź HTTP dla przeglądarki sieci Web, wywoła równi
     ---
 
 
-1. Użyj [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) polecenia, aby wyświetlić komunikaty w tej kolejce, która powinna być pierwszą nazwą użytą podczas testowania funkcji wcześniej. Polecenie pobiera pierwszy komunikat w kolejce w [kodowaniu Base64](functions-bindings-storage-queue.md#encoding), więc należy również zdekodować komunikat, aby był wyświetlany jako tekst.
+1. Użyj [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) polecenia, aby wyświetlić komunikaty w tej kolejce, która powinna być pierwszą nazwą użytą podczas testowania funkcji wcześniej. Polecenie pobiera pierwszy komunikat w kolejce w [kodowaniu Base64](functions-bindings-storage-queue-trigger.md#encoding), więc należy również zdekodować komunikat, aby był wyświetlany jako tekst.
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     Ponieważ musisz usunąć odwołanie do kolekcji komunikatów i zdekodować ją z formatu Base64, uruchom program PowerShell i użyj polecenia programu PowerShell.
 
@@ -251,13 +251,13 @@ Teraz, gdy funkcja została przetestowana lokalnie i została zweryfikowana, że
     
 1. Tak jak w poprzednim przewodniku Szybki Start, użyj przeglądarki lub zapełnienia, aby przetestować ponownie wdrożoną funkcję.
 
-    # <a name="browsertabbrowser"></a>[Przeglądarka](#tab/browser)
+    # <a name="browser"></a>[Przeglądarka](#tab/browser)
     
     Skopiuj pełny **adres URL Wywołaj** pokazany w danych wyjściowych polecenia Publikuj na pasku adresu przeglądarki, dołączając parametr zapytania `&name=Azure`. Przeglądarka powinna wyświetlać podobne dane wyjściowe, jak w przypadku lokalnego uruchomienia funkcji.
 
     ![Dane wyjściowe funkcji uruchamianej na platformie Azure w przeglądarce](./media/functions-create-first-function-python/function-test-cloud-browser.png)
 
-    # <a name="curltabcurl"></a>[odsłon](#tab/curl)
+    # <a name="curl"></a>[odsłon](#tab/curl)
     
     Uruchom [zwinięcie](https://curl.haxx.se/) z **adresem URL Invoke**, dołączając parametr `&name=Azure`. Danymi wyjściowymi polecenia powinien być tekst "Hello Azure".
     

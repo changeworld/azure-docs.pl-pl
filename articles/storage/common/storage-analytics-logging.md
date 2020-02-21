@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 3b61e8680ef2484b1ad42837711adef171fdde25
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 25c047dc9b2ce08ca39e69c6f106e41c5d9bd0dc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882635"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484897"
 ---
 # <a name="azure-storage-analytics-logging"></a>Rejestrowanie analizy usługi Azure Storage
 
-Analityka magazynu rejestruje szczegółowe informacje o żądaniach zakończonych powodzeniem i zakończonych niepowodzeniem do usługi magazynu. Te informacje mogą służyć do monitorowania indywidualnych żądań i diagnozowania problemów z usługą magazynu. Żądania są rejestrowane na podstawie najlepszego wysiłku.
+Usługa Storage Analytics rejestruje szczegółowe informacje dotyczące żądań do usługi magazynu zakończonych powodzeniem i niepowodzeniem. Tych informacji można używać na potrzeby monitorowania poszczególnych żądań i diagnozowania problemów z usługą magazynu. Żądania są rejestrowane na podstawie najlepszego wysiłku.
 
- Rejestrowanie analityka magazynu nie jest domyślnie włączone dla konta magazynu. Można ją włączyć w [Azure Portal](https://portal.azure.com/); Aby uzyskać szczegółowe informacje, zobacz [Monitorowanie konta magazynu w Azure Portal](/azure/storage/storage-monitor-storage-account). Możesz również włączyć analityka magazynu programowo za pośrednictwem interfejsu API REST lub biblioteki klienta. Aby włączyć analityka magazynu dla każdej usługi, użyj [właściwości get BLOB Service](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API), [Pobierz właściwości usługi kolejkowania](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)i [Pobierz właściwości usługi Table](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties) Service.
+ Rejestrowanie w usłudze Storage Analytics nie jest domyślnie włączone dla Twojego konta magazynu. Można ją włączyć w [Azure Portal](https://portal.azure.com/); Aby uzyskać szczegółowe informacje, zobacz [Monitorowanie konta magazynu w Azure Portal](/azure/storage/storage-monitor-storage-account). Możesz również włączyć analityka magazynu programowo za pośrednictwem interfejsu API REST lub biblioteki klienta. Aby włączyć analityka magazynu dla każdej usługi, użyj [właściwości get BLOB Service](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API), [Pobierz właściwości usługi kolejkowania](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)i [Pobierz właściwości usługi Table](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties) Service.
 
  Wpisy dziennika są tworzone tylko wtedy, gdy istnieją żądania skierowane do punktu końcowego usługi. Na przykład jeśli konto magazynu ma aktywność w swoim punkcie końcowym obiektu BLOB, ale nie znajduje się w jego punktach końcowych tabeli lub kolejki, zostaną utworzone tylko dzienniki dotyczące Blob service.
 
 > [!NOTE]
->  Rejestrowanie analityka magazynu jest obecnie dostępne tylko dla usług obiektów blob, kolejek i tabel. Konto magazynu w warstwie Premium nie jest jednak obsługiwane.
+>  Rejestrowanie w usłudze Storage Analytics jest aktualnie dostępne tylko dla usług Blob Storage, Queue Storage i Table Storage. Jednak konto magazynu w warstwie Premium nie jest obsługiwane.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -138,7 +138,7 @@ Możesz określić usługi magazynu, które mają być rejestrowane, oraz okres 
 
 ### <a name="enable-storage-logging-using-powershell"></a>Włączanie rejestrowania magazynu przy użyciu programu PowerShell  
 
- Aby skonfigurować rejestrowanie magazynu na koncie magazynu przy Azure PowerShell użyciu polecenia cmdlet **Get-AzureStorageServiceLoggingProperty** w programie PowerShell, można użyć narzędzia do pobrania bieżących ustawień, a polecenie **cmdlet Set-AzureStorageServiceLoggingProperty** , aby zmienić bieżące ustawienia.  
+ Aby skonfigurować rejestrowanie magazynu na koncie magazynu przy Azure PowerShell użyciu polecenia cmdlet **Get-AzureStorageServiceLoggingProperty** w programie PowerShell, można użyć narzędzia do pobrania bieżących ustawień oraz polecenia cmdlet **Set-AzureStorageServiceLoggingProperty** w celu zmiany bieżących ustawień.  
 
  Polecenia cmdlet kontrolujące Rejestrowanie magazynu używają **LoggingOperations** parametru, który jest ciągiem zawierającym rozdzielaną przecinkami listę typów żądań do rejestrowania. Trzy możliwe typy żądań to **Odczyt**, **zapis**i **usuwanie**. Aby wyłączyć rejestrowanie, użyj wartości **none** dla parametru **LoggingOperations** .  
 
@@ -160,7 +160,7 @@ Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations non
 
  Oprócz używania Azure Portal lub Azure PowerShell poleceń cmdlet do kontrolowania rejestrowania magazynu, można również użyć jednego z interfejsów API usługi Azure Storage. Jeśli na przykład używasz języka .NET, możesz użyć biblioteki klienta usługi Storage.  
 
- Klasy **CloudBlobClient**, **CloudQueueClient**i **CloudTableClient** mają takie metody jak **SetServiceProperties** i **SetServicePropertiesAsync** , które przyjmują obiekt **serviceproperties** jako konstruktora. Aby skonfigurować rejestrowanie magazynu, można użyć obiektu **serviceproperties** . Na przykład poniższy C# fragment kodu przedstawia sposób zmiany rejestrowania i okresu przechowywania dla rejestrowania kolejki:  
+ Klasy **CloudBlobClient**, **CloudQueueClient**i **CloudTableClient** mają takie metody jak **SetServiceProperties** i **SetServicePropertiesAsync** , które przyjmują obiekt **serviceproperties** jako parametr. Aby skonfigurować rejestrowanie magazynu, można użyć obiektu **serviceproperties** . Na przykład poniższy C# fragment kodu przedstawia sposób zmiany rejestrowania i okresu przechowywania dla rejestrowania kolejki:  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -180,6 +180,9 @@ queueClient.SetServiceProperties(serviceProperties);
 ## <a name="download-storage-logging-log-data"></a>Pobieranie danych dziennika rejestrowania magazynu
 
  Aby wyświetlić i przeanalizować dane dziennika, należy pobrać obiekty blob zawierające dane dzienników, które interesują się na komputerze lokalnym. Wiele narzędzi do przeglądania magazynu umożliwia pobieranie obiektów blob z konta magazynu; do pobrania danych dzienników można również użyć zespołu usługi Azure Storage dostępnego w wierszu polecenia usługi Azure copy [AzCopy](storage-use-azcopy-v10.md) .  
+ 
+>[!NOTE]
+> Kontener `$logs` nie jest zintegrowany z Event Grid, więc nie będziesz otrzymywać powiadomień o zapisie plików dziennika. 
 
  Aby upewnić się, że pobierasz dane dziennika, które Cię interesują, i unikaj pobierania tych samych danych dziennika więcej niż raz:  
 

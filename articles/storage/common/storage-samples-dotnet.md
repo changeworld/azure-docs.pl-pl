@@ -3,104 +3,337 @@ title: Przykłady usługi Azure Storage korzystające z platformy .NET | Microso
 description: Wyświetlanie, pobieranie i uruchamianie przykładowego kodu i aplikacji dla usługi Azure Storage. Odkryj przykłady wprowadzenia dla obiektów blob, kolejek, tabel i plików przy użyciu bibliotek klienckich usługi .NET Storage.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/06/2019
+ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 50c5067c3db2f07da225b72d9ba0a8f0bdc44368
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a4c9188c8f1315a3af452cd0c1fb5cf45ab82081
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748144"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486121"
 ---
-# <a name="azure-storage-samples-using-net"></a>Przykłady usługi Azure Storage korzystające z platformy .NET
+# <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Przykłady usługi Azure Storage korzystające z bibliotek klienckich V12 .NET
 
 Poniższa tabela zawiera omówienie naszego repozytorium przykładów oraz scenariusze omówione w poszczególnych przykładach. Kliknij linki, aby wyświetlić odpowiedni przykładowy kod w usłudze GitHub.
 
 > [!NOTE]
-> Te przykłady używają biblioteki v11 .NET usługi Azure Storage. Aby uzyskać kod V12, zobacz [przykłady](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples) w repozytorium GitHub.
+> W tych przykładach użyto najnowszej biblioteki .NET V12 w usłudze Azure Storage. Aby uzyskać starszy kod V11, zobacz [przykłady BLOB Storage platformy Azure dla platformy .NET](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started) w repozytorium GitHub.
 
-## <a name="blob-samples-v11"></a>Przykłady obiektów BLOB (v11)
+## <a name="blob-samples"></a>Przykłady obiektów BLOB
 
-| **Scenariusz** | **Przykładowy kod** |
-|--------------|-----------------|
-| Dołącz obiekt BLOB | [Wprowadzenie z obiektami BLOB](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144) |
-| Blokowy obiekt blob | [Aplikacja internetowa Galeria zdjęć w usłudze Azure Blob Storage](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
-| Szyfrowania po stronie klienta | [Przykłady szyfrowania obiektów BLOB](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/BlobGettingStarted/Program.cs) |
-| Copy Blob | [Wprowadzenie z obiektami BLOB](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
-| Tworzenie kontenera | [Aplikacja internetowa Galeria zdjęć w usłudze Azure Blob Storage](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
-| Usuwanie obiektu Blob | [Aplikacja internetowa Galeria zdjęć w usłudze Azure Blob Storage](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
-| Usuwanie kontenera | [Wprowadzenie z obiektami BLOB](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
-| Metadane/właściwości/statystyki obiektu BLOB | [Wprowadzenie z obiektami BLOB](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
-| Lista ACL kontenerów/metadane/właściwości | [Aplikacja internetowa Galeria zdjęć w usłudze Azure Blob Storage](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
-| Pobierz zakresy stron | [Wprowadzenie z obiektami BLOB](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
-| Obiekt BLOB dzierżawy/kontener | [Wprowadzenie z obiektami BLOB](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
-| Lista obiektów BLOB/kontener | [Wprowadzenie z obiektami BLOB](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs) |
-| Obiekt BLOB strony | [Wprowadzenie z obiektami BLOB](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs) |
-| SAS | [Wprowadzenie z obiektami BLOB](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
-| Właściwości usługi | [Wprowadzenie z obiektami BLOB](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
-| Obiekt BLOB migawek | [Tworzenie kopii zapasowych dysków maszyny wirtualnej platformy Azure przy użyciu migawek przyrostowych](https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots/blob/master/Program.cs) |
+### <a name="authentication"></a>Uwierzytelnianie
 
-## <a name="file-samples-v11"></a>Przykłady plików (v11)
+:::row:::
+   :::column span="":::
+      [Uwierzytelnianie przy użyciu parametrów połączenia](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L27)
+   :::column-end:::
+   :::column span="":::
+      [Uwierzytelnianie przy użyciu poświadczeń klucza współużytkowanego](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L91)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Uwierzytelnianie za pomocą tożsamości platformy Azure](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01a_HelloWorld.cs#L210)
+   :::column-end:::
+   :::column span="":::
+      [Uwierzytelnianie przy użyciu tokenu Active Directory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L177)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [Anonimowy dostęp do publicznego obiektu BLOB](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample02_Auth.cs#L55)
+   :::column-end:::
+:::row-end:::
 
-| **Scenariusz** | **Przykładowy kod** |
-|--------------|-----------------|
-| Tworzenie udziałów/katalogów/plików | [Przykład File Storage .NET usługi Azure Storage](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs) |
-| Usuwanie udziałów/katalogów/plików | [Wprowadzenie z usługą plików platformy Azure w środowisku .NET](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/master/FileStorage/GettingStarted.cs) |
-| Właściwości katalogu/metadane | [Przykład File Storage .NET usługi Azure Storage](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
-| Pobierz pliki | [Przykład File Storage .NET usługi Azure Storage](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs) |
-| Właściwości pliku/metadane/metryki | [Przykład File Storage .NET usługi Azure Storage](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
-| Właściwości usługi plików | [Przykład File Storage .NET usługi Azure Storage](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
-| Wyświetlanie listy katalogów i plików | [Przykład File Storage .NET usługi Azure Storage](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs) |
-| Wyświetl listę udziałów | [Przykład File Storage .NET usługi Azure Storage](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
-| Udostępnianie właściwości/metadanych/statystyk | [Przykład File Storage .NET usługi Azure Storage](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
+### <a name="batching"></a>Przetwarzanie wsadowe
 
-## <a name="queue-samples-v11"></a>Przykłady kolejki (v11)
+:::row:::
+   :::column span="":::
+      [Usuń kilka obiektów BLOB w jednym żądaniu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L22)
+   :::column-end:::
+   :::column span="":::
+      [Ustaw kilka warstw dostępu do obiektów BLOB w jednym żądaniu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L56)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Szczegółowy formant w żądaniu wsadowym](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L90)
+   :::column-end:::
+   :::column span="":::
+      [Błędy przechwytywania z niezakończonej operacji podrzędnej](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L136)
+   :::column-end:::
+:::row-end:::
 
-| **Scenariusz** | **Przykładowy kod** |
-|--------------|-----------------|
-| Dodaj komunikat | [Wprowadzenie z usługą kolejki platformy Azure na platformie .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
-| Szyfrowania po stronie klienta | [Szyfrowanie po stronie klienta kolejki .NET usługi Azure Storage](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/QueueGettingStarted/Program.cs) |
-| Tworzenie kolejek | [Wprowadzenie z usługą kolejki platformy Azure na platformie .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
-| Usuń komunikat/kolejkę | [Wprowadzenie z usługą kolejki platformy Azure na platformie .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
-| Wgląd do wiadomości | [Wprowadzenie z usługą kolejki platformy Azure na platformie .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
-| Lista ACL/metadane/Statystyka kolejki | [Wprowadzenie z usługą kolejki platformy Azure na platformie .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs) |
-| Właściwości usługi kolejki | [Wprowadzenie z usługą kolejki platformy Azure na platformie .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs) |
-| Aktualizuj komunikat | [Wprowadzenie z usługą kolejki platformy Azure na platformie .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
+### <a name="blob"></a>Obiekt blob
+
+:::row:::
+   :::column span="":::
+      [Przekazywanie pliku do obiektu BLOB](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L21)
+   :::column-end:::
+   :::column span="":::
+      [Pobieranie obiektu BLOB do pliku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L66)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Pobierz obraz](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L109)
+   :::column-end:::
+   :::column span="":::
+      [Wyświetlanie listy wszystkich obiektów BLOB w kontenerze](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L128)
+   :::column-end:::
+:::row-end:::
+
+### <a name="troubleshooting"></a>Rozwiązywanie problemów
+:::row:::
+   :::column span="2":::
+      [Wyzwól odwracalny błąd przy użyciu klienta kontenera](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L166)
+   :::column-end:::
+:::row-end:::
+
+## <a name="data-lake-storage-gen2-samples"></a>Przykłady Data Lake Storage Gen2
+
+### <a name="authentication"></a>Uwierzytelnianie
+
+:::row:::
+   :::column span="":::
+      [Anonimowy dostęp do pliku publicznego](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L28)
+   :::column-end:::
+   :::column span="":::
+      [Uwierzytelnianie przy użyciu poświadczeń klucza współużytkowanego](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L79)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Uwierzytelnianie przy użyciu sygnatury dostępu współdzielonego (SAS)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L114)
+   :::column-end:::
+   :::column span="":::
+      [Uwierzytelnianie przy użyciu tokenu Active Directory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample02_Auth.cs#L164)
+   :::column-end:::
+:::row-end:::
+
+### <a name="file-system"></a>System plików
+:::row:::
+   :::column span="":::
+      [Tworzenie pliku przy użyciu klienta systemu plików](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L22)
+   :::column-end:::
+   :::column span="":::
+      [Pobieranie właściwości pliku i katalogu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L560)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [Zmiana nazwy pliku i katalogu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L511)
+   :::column-end:::
+:::row-end:::
+
+### <a name="directory"></a>Katalog
+
+:::row:::
+   :::column span="":::
+      [Tworzenie katalogu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L93)
+   :::column-end:::
+   :::column span="":::
+      [Tworzenie pliku przy użyciu klienta katalogu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L55)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Wyświetlanie listy katalogów](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L275)
+   :::column-end:::
+   :::column span="":::
+      [Przechodzenie plików i katalogów](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L318)
+   :::column-end:::
+:::row-end:::
+
+### <a name="file"></a>Plik
+:::row:::
+   :::column span="":::
+      [Przekazywanie pliku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L126)
+   :::column-end:::
+   :::column span="":::
+      [Przekaż, dołączając do pliku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L169)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Pobierz plik](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L224)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Ustawianie i pobieranie listy kontroli dostępu do plików](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L468)
+   :::column-end:::
+   :::column span="":::
+      [Ustawianie i pobieranie uprawnień do pliku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L426)
+   :::column-end:::
+:::row-end:::
+
+### <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+:::row:::
+   :::column span="2":::
+      [Wyzwól odwracalny błąd](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L389)
+   :::column-end:::
+:::row-end:::
+
+## <a name="azure-files-samples"></a>Przykłady Azure Files
+
+### <a name="authentication"></a>Uwierzytelnianie
+
+:::row:::
+   :::column span="":::
+      [Uwierzytelnianie przy użyciu parametrów połączenia](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L24)
+   :::column-end:::
+   :::column span="":::
+      [Uwierzytelnianie przy użyciu poświadczeń klucza współużytkowanego](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L52)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [Uwierzytelnianie przy użyciu sygnatury dostępu współdzielonego (SAS))](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample02_Auth.cs#L86)
+   :::column-end:::
+:::row-end:::
+
+### <a name="file-shares"></a>Udziały plików
+
+:::row:::
+   :::column span="":::
+      [Tworzenie udziału i przekazywanie pliku](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample01b_HelloWorldAsync.cs#L21)
+   :::column-end:::
+   :::column span="":::
+      [Pobierz plik](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample01b_HelloWorldAsync.cs#L68)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [Przechodzenie plików i katalogów](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample01b_HelloWorldAsync.cs#L107)
+   :::column-end:::
+:::row-end:::
+
+### <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+:::row:::
+   :::column span="2":::
+      [Wyzwól odwracalny błąd przy użyciu klienta udziału](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples/Sample01b_HelloWorldAsync.cs#L141)
+   :::column-end:::
+:::row-end:::
+
+## <a name="queue-samples"></a>Przykładowe kolejki
+
+### <a name="authentication"></a>Uwierzytelnianie
+
+:::row:::
+   :::column span="":::
+      [Uwierzytelnianie przy użyciu Azure Active Directory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L167)
+   :::column-end:::
+   :::column span="":::
+      [Uwierzytelnianie przy użyciu parametrów połączenia](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L24)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Uwierzytelnianie przy użyciu poświadczeń klucza współużytkowanego](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L52)
+   :::column-end:::
+   :::column span="":::
+      [Uwierzytelnianie przy użyciu sygnatury dostępu współdzielonego (SAS))](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L86)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [Uwierzytelnianie przy użyciu tokenu Active Directory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample02_Auth.cs#L140)
+   :::column-end:::
+:::row-end:::
+
+### <a name="queue"></a>Kolejka
+
+:::row:::
+   :::column span="2":::
+      [Tworzenie kolejki i Dodawanie komunikatu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L24)
+   :::column-end:::
+:::row-end:::
+
+### <a name="message"></a>Komunikat
+
+:::row:::
+   :::column span="":::
+      [Odbieranie i przetwarzanie komunikatów](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L61)
+   :::column-end:::
+   :::column span="":::
+      [Wgląd w wiadomości](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L90)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [Odbieraj komunikaty i Aktualizuj limit czasu widoczności](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L115)
+   :::column-end:::
+:::row-end:::
+
+### <a name="troubleshooting"></a>Rozwiązywanie problemów 
+:::row:::
+   :::column span="2":::
+      [Wyzwól odwracalny błąd przy użyciu klienta kolejki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L188)
+   :::column-end:::
+:::row-end:::
 
 ## <a name="table-samples-v11"></a>Przykłady tabeli (v11)
 
-| **Scenariusz** | **Przykładowy kod** |
-|--------------|-----------------|
-| Create Table | [Zarządzanie współbieżnością przy użyciu usługi Azure Storage — Przykładowa aplikacja](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
-| Usuń jednostkę/tabelę | [Rozpoczynanie pracy z usługą Azure Table Storage na platformie .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) |
-| Wstaw/Scal/Zamień jednostkę | [Zarządzanie współbieżnością przy użyciu usługi Azure Storage — Przykładowa aplikacja](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
-| Jednostki zapytań | [Rozpoczynanie pracy z usługą Azure Table Storage na platformie .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) |
-| Tabele zapytań | [Rozpoczynanie pracy z usługą Azure Table Storage na platformie .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) |
-| Lista ACL/właściwości tabeli | [Rozpoczynanie pracy z usługą Azure Table Storage na platformie .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs) |
-| Aktualizuj jednostkę | [Zarządzanie współbieżnością przy użyciu usługi Azure Storage — Przykładowa aplikacja](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
+:::row:::
+   :::column span="":::
+      [Utwórz tabelę](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/Common.cs#L40)
+   :::column-end:::
+   :::column span="":::
+      [Usuń jednostkę/tabelę](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Wstaw/Scal/Zamień jednostkę](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/SamplesUtils.cs#L41)
+   :::column-end:::
+   :::column span="":::
+      [Jednostki zapytań](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs#L672)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Tabele zapytań](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs)
+   :::column-end:::
+   :::column span="":::
+      [Lista ACL/właściwości tabeli](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs#L224)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="2":::
+      [Aktualizuj jednostkę](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs#L51)
+   :::column-end:::
+:::row-end:::
 
-## <a name="azure-code-samples-library"></a>Biblioteka przykładów kodu platformy Azure
+## <a name="azure-code-sample-libraries"></a>Biblioteki przykładów kodu platformy Azure
 
-Aby wyświetlić kompletną bibliotekę przykładową, przejdź do biblioteki [przykładów kodu platformy Azure](https://azure.microsoft.com/resources/samples/?service=storage) , która zawiera przykłady dla usługi Azure Storage, które można pobrać i uruchomić lokalnie. Biblioteka Przykładowa kodu zawiera przykładowy kod w formacie ZIP. Alternatywnie można przeglądać i klonować repozytorium GitHub dla każdego przykładu.
+Aby wyświetlić kompletne biblioteki przykładowe programu .NET, przejdź do:
 
-[!INCLUDE [storage-dotnet-samples-include](../../../includes/storage-dotnet-samples-include.md)]
+* [Przykłady kodu obiektów blob platformy Azure](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
+* [Przykłady kodu Azure Data Lake](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples)
+* [Przykłady kodu Azure Files](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples)
+* [Przykłady kodu w kolejce platformy Azure](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
+
+Repozytorium GitHub można przeglądać i klonować dla każdej biblioteki.
 
 ## <a name="getting-started-guides"></a>Przewodniki wprowadzające
 
 Zapoznaj się z następującymi przewodnikami, jeśli szukasz instrukcji dotyczących sposobu instalacji i rozpoczęcia korzystania z bibliotek klienckich usługi Azure Storage.
 
-* [Wprowadzenie z usługą Azure Blob Service na platformie .NET](../blobs/storage-dotnet-how-to-use-blobs.md)
-* [Wprowadzenie z usługą kolejki platformy Azure na platformie .NET](../storage-dotnet-how-to-use-queues.md)
-* [Wprowadzenie z usługą Azure Table Service na platformie .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md)
-* [Wprowadzenie z usługą plików platformy Azure w środowisku .NET](../storage-dotnet-how-to-use-files.md)
+* [Wprowadzenie z usługą Azure Blob Service na platformie .NET](../blobs/storage-quickstart-blobs-dotnet.md)
+* [Wprowadzenie z usługą kolejki platformy Azure na platformie .NET](../queues/storage-quickstart-queues-dotnet.md)
+* [Wprowadzenie z usługą Azure Table Service na platformie .NET](../../cosmos-db/tutorial-develop-table-dotnet.md)
+* [Wprowadzenie z usługą plików platformy Azure w środowisku .NET](../files/storage-dotnet-how-to-use-files.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać informacje na temat przykładów dla innych języków:
 
 * Java: [przykłady usługi Azure Storage korzystające z języka Java](storage-samples-java.md)
-* JavaScript/Node. js: [przykłady usługi Azure Storage przy użyciu języka JavaScript](storage-samples-javascript.md)
 * Python: [przykłady usługi Azure Storage przy użyciu języka Python](storage-samples-python.md)
-* Wszystkie inne języki: [przykłady usługi Azure Storage](../storage-samples.md)
+* JavaScript/Node. js: [przykłady usługi Azure Storage przy użyciu języka JavaScript](storage-samples-javascript.md)
+* Wszystkie inne języki: [przykłady usługi Azure Storage](storage-samples.md)

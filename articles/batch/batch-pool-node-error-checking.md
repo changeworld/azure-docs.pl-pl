@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: dea45cec29101c3b085ab8098c3b05906e1049cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 88382a5b6e0364145d8504b5e25ef1a9bfd0111a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449786"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484132"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Sprawdź, czy występują błędy puli i węzłów
 
@@ -104,7 +104,7 @@ Dodatkowe przykłady przyczyn **nieużytecznych** węzłów obejmują:
 
 - Maszyna wirtualna została przeniesiona z powodu awarii infrastruktury lub uaktualnienia niskiego poziomu. Partia odzyskuje węzeł.
 
-- Obraz maszyny wirtualnej został wdrożony na sprzęcie, który go nie obsługuje. Na przykład próba uruchomienia obrazu CentOS HPC na maszynie wirtualnej [Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series) .
+- Obraz maszyny wirtualnej został wdrożony na sprzęcie, który go nie obsługuje. Na przykład próba uruchomienia obrazu CentOS HPC na maszynie wirtualnej [Standard_D1_v2](../virtual-machines/dv2-dsv2-series.md) .
 
 - Maszyny wirtualne znajdują się w [sieci wirtualnej platformy Azure](batch-virtual-network.md), a ruch został zablokowany do kluczowych portów.
 

@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 006ea071ce1ab0354ecf191cdde2e031255ef4ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cc7d58f0557e620c273043af8ffb2e8ec4d8ec87
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407701"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485152"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Klasyfikacja aplikacje rozproszone
 
@@ -53,7 +53,7 @@ Wybierz pozycję **Zbadaj błędy** , aby uruchomić okienko błędy.
 
 ![Zrzut ekranu przedstawiający środowisko błędów](media/app-map/failures.png)
 
-### <a name="investigate-performance"></a>Zbadaj wydajność
+### <a name="investigate-performance"></a>Badanie wydajności
 
 Aby rozwiązać problemy z wydajnością, wybierz pozycję **Zbadaj wydajność**.
 
@@ -276,6 +276,6 @@ Aby przekazać opinię, użyj opcji opinia.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się więcej na temat działania korelacji w Application Insights zapoznaj się z [artykułem korelacji telemetrii](https://docs.microsoft.com/azure/application-insights/application-insights-correlation).
+* Aby dowiedzieć się więcej na temat działania korelacji w Application Insights zapoznaj się z [artykułem korelacji telemetrii](correlation.md).
 * [Kompleksowa obsługa diagnostyki transakcji umożliwia](transaction-diagnostics.md) korelację danych telemetrycznych po stronie serwera między wszystkimi Application Insights monitorowanymi składnikami w jednym widoku.
 * Aby uzyskać zaawansowane scenariusze korelacji w ASP.NET Core i ASP.NET, zapoznaj się z artykułem [śledzenie niestandardowych operacji](custom-operations-tracking.md) .

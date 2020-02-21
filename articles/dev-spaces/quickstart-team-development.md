@@ -6,16 +6,16 @@ ms.topic: quickstart
 description: Ten przewodnik Szybki Start przedstawia sposób tworzenia zespołu Kubernetes z użyciem kontenerów i mikrousług za pomocą Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: d2b31cce6604cef31de6f034566ebd46a4e92750
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1b36cf30574c0c9892a0383bee7e2f914bc9feac
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721595"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482398"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Szybki Start: Programowanie zespołowe w usłudze Kubernetes — Azure Dev Spaces
 
-Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
 - Skonfiguruj Azure Dev Spaces w zarządzanym klastrze Kubernetes na platformie Azure.
 - Wdróż dużą aplikację z wieloma mikrousługami w miejscu dev.
@@ -86,7 +86,7 @@ Użyj `helm install` polecenia, aby skonfigurować i zainstalować przykładową
 
 ```cmd
 cd charts/
-helm install bikesharing . --dependency-update --namespace dev --atomic
+helm install bikesharingsampleappsampleapp . --dependency-update --namespace dev --atomic
 ```
 
 Wykonanie polecenia `helm install` może potrwać kilka minut. Po zainstalowaniu przykładowej aplikacji w klastrze, ponieważ w klastrze są włączone spacje, użyj polecenia `azds list-uris`, aby wyświetlić adresy URL dla przykładowej aplikacji w *deweloperskim* , który jest obecnie wybrany.

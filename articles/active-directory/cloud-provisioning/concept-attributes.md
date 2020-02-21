@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd013b44454cc0283ef84d6a978b15400eca8786
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0d6d621646aaa5c8c44a20cf327cd10fa31990b0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022498"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484540"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Informacje o schemacie usługi Azure AD
 Obiekt w Azure Active Directory (Azure AD), podobnie jak każdy katalog, to programowa konstrukcja danych wysokiego poziomu, która reprezentuje takie elementy jak użytkownicy, grupy i kontakty. Gdy tworzysz nowego użytkownika lub kontakt w usłudze Azure AD, tworzysz nowe wystąpienie tego obiektu. Te wystąpienia można rozróżnić w zależności od ich właściwości.
@@ -67,12 +67,15 @@ W poniższej tabeli wymieniono typowe atrybuty i sposób ich synchronizacji z us
 |ProxyAdress|Direct|ProxyAddress|
 
 ## <a name="view-the-schema"></a>Wyświetl schemat
+> [!WARNING]
+> Konfiguracja aprowizacji w chmurze tworzy jednostkę usługi. Nazwa główna usługi jest widoczna w Azure Portal. Nie należy modyfikować mapowań atrybutów przy użyciu funkcji głównej jednostki usługi w Azure Portal.  Nie jest to obsługiwane.
+
 Aby wyświetlić schemat i sprawdzić go, wykonaj następujące kroki.
 
 1.  Przejdź do [Eksploratora grafów](https://developer.microsoft.com/graph/graph-explorer).
 1.  Zaloguj się przy użyciu konta administratora globalnego.
 1.  Po lewej stronie wybierz pozycję **Modyfikuj uprawnienia** i upewnij się, że jest *wyrażana zgoda*na **katalog. ReadWrite. All** .
-1.  Uruchom zapytanie https://graph.microsoft.com/beta/serviceprincipals/? $filter = StartsWith (DisplayName, "Active"). To zapytanie zwraca przefiltrowaną listę jednostek usługi.
+1.  Uruchom zapytanie https://graph.microsoft.com/beta/serviceprincipals/?$filter = StartsWith (DisplayName, "Active"). To zapytanie zwraca przefiltrowaną listę jednostek usługi.
 1.  Znajdź `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` i zanotuj wartość `"id"`.
     ```
     "value": [

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 846819c3a05baf4ef1174d4e086f09893e834b2a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fdc7d9fce3ebce4603369262f164ba72b1e39499
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847799"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484319"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Przepływy użytkownika w Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ Przepływ użytkownika umożliwia kontrolowanie zachowań w aplikacjach przez sk
 
 - Typy kont używane do logowania, takie jak konta społecznościowe, takie jak konta w serwisie Facebook lub konto lokalne
 - Atrybuty, które mają być zbierane od konsumenta, takie jak imię i nazwisko, kod pocztowy i rozmiar butów
-- Usługa Azure Multi-Factor Authentication
+- Azure Multi-Factor Authentication
 - Dostosowanie interfejsu użytkownika
 - Informacje odbierane przez aplikację jako oświadczenia w tokenie
 
@@ -81,10 +81,8 @@ W ramach przepływu użytkownika może być wymagany adres e-mail. Jeśli użytk
 
 W żadnym z tych przypadków nie gwarantuje się zweryfikowania adresu e-mail. Administrator dzierżawy może wyłączyć weryfikację wiadomości e-mail w podstawowych zasadach dla kont lokalnych. Nawet jeśli Weryfikacja adresu e-mail jest włączona, adresy nie są weryfikowane, jeśli pochodzą od dostawcy tożsamości społecznościowej i nie zostały zmienione.
 
-Tylko właściwości **otherMails** i **signInNames** są udostępniane za pomocą interfejs API programu Graph Active Directory. Adres e-mail we właściwości szczegółu silnego uwierzytelniania jest niedostępny.
+Tylko właściwości **otherMails** i **signInNames** są udostępniane za pomocą interfejsu API Microsoft Graph. Adres e-mail we właściwości szczegółu silnego uwierzytelniania jest niedostępny.
 
 ## <a name="next-steps"></a>Następne kroki
 
 Aby utworzyć zalecane przepływy użytkowników, postępuj zgodnie z instrukcjami podanymi w [samouczku: tworzenie przepływu użytkownika](tutorial-create-user-flows.md).
-
-

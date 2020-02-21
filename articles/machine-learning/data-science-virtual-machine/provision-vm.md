@@ -1,5 +1,6 @@
 ---
-title: 'Szybki Start: Tworzenie DSVM systemu Windows'
+title: 'Szybki Start: Tworzenie Data Science Virtual Machine systemu Windows'
+titleSuffix: Azure Data Science Virtual Machine
 description: Konfigurowanie i tworzenie maszyny wirtualnej do nauki o danych na platformie Azure, analizy i uczenia maszynowego.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,18 +8,18 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: f498c2cd6906d1966ab5dfd1f7547686163fe2ce
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 1fdf8eae5d19a2d43499d1984f4dea834d8a61d8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611921"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525876"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Szybki Start: Konfigurowanie Data Science Virtual Machine dla systemu Windows
 
 Zapoznaj się z systemem Windows Server 2019 Data Science Virtual Machine.
 
-## <a name="prerequisite"></a>Warunek wstępny
+## <a name="prerequisite"></a>Wymagania wstępne
 
 Aby utworzyć Data Science Virtual Machine systemu Windows, musisz mieć subskrypcję platformy Azure. [Wypróbuj bezpłatnie platformę Azure](https://azure.com/free).
 Zanotuj bezpłatne konta platformy Azure nie obsługują jednostek SKU maszyn wirtualnych obsługujących procesor GPU.
@@ -69,5 +70,5 @@ Możesz również dołączyć DSVM do Azure Notebooks uruchamiania notesów Jupy
 * Zapoznaj się z narzędziami w DSVM, otwierając menu **Start** .
 * Dowiedz się więcej na temat Azure Machine Learning, odczytując informacje o tym, [co jest Azure Machine Learning?](../overview-what-is-azure-ml.md) i wypróbować [samouczki](../index.yml).
 * Zapoznaj się z artykułem [dziesięć rzeczy, które można wykonać na Data Science Virtual Machine](https://aka.ms/dsvmtenthings).
-* Odwiedź stronę [galerii Azure AI](https://gallery.cortanaintelligence.com) nauki i dane analizy przykładowych maszyny korzystające z usługi Azure Machine Learning i powiązane dane usług na platformie Azure. Podano również ikonę dla tej galerii w menu **Start** i na pulpicie maszyny wirtualnej.
+* Odwiedź [Azure AI Gallery](https://gallery.cortanaintelligence.com) , aby poznać przykłady dla przykładów usługi Machine Learning i analizy danych, które używają Azure Machine Learning i powiązanych usług danych na platformie Azure. Podano również ikonę dla tej galerii w menu **Start** i na pulpicie maszyny wirtualnej.
 

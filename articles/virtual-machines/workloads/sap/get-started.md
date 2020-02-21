@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
+ms.date: 02/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83144738124b223e305b6c0d3ad1065f5dae408e
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: f49240c29b4ec0a5fa1cb38861da3d4060db2f82
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212611"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525448"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariuszy obciążeń SAP
 
@@ -121,6 +121,7 @@ Aby uzyskać informacje na temat integracji usług platformy Azure z składnikam
 
 ## <a name="change-log"></a>Dziennik zmiany
 
+- 02/20/2020: zmiana [wysokiej dostępności dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure w przewodniku dotyczącym usługi SLES z obsługą wiele identyfikatorów SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid) w celu dodania linku do podręcznika klastra z obsługą wiele identyfikatorów SID
 - 02/13/2020: zmiana na [maszynach wirtualnych platformy Azure o wysokiej dostępności dla oprogramowania SAP NetWeaver na RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel) i [maszynach wirtualnych platformy Azure o wysokiej dostępności dla oprogramowania SAP NetWeaver na RHEL przy użyciu Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) , aby wyrównać limity czasu zasobów klastra do zaleceń dotyczących limitu czasu Red Hat
 - 02/11/2020: wydanie [SAP HANA w ramach migracji dużych wystąpień platformy Azure do platformy azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration)
 - 02/07/2020: zmiana [łączności publicznej punktu końcowego dla maszyn wirtualnych przy użyciu usługi Azure Standard ILB w scenariuszach dotyczących oprogramowania SAP ha](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) do aktualizowania przykładowego ZRZUTu sieciowej grupy zabezpieczeń

@@ -16,18 +16,19 @@ ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c633dd3e28047d542e16a58211f997669188f0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3f7bc881cee362103fc611cbf8a094e07ad50699
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896425"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499042"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Możliwości zarządzania dla ról usługi Azure AD w Privileged Identity Management
 
 Środowisko zarządzania dla ról usługi Azure AD w Privileged Identity Management zostało zaktualizowane w celu ujednolicenia sposobu zarządzania rolami usługi Azure AD i rolami zasobów platformy Azure. Wcześniej Privileged Identity Management dla ról zasobów platformy Azure miały kilka najważniejszych funkcji, które nie były dostępne dla ról usługi Azure AD.
 
 Gdy aktualizacja jest obecnie wdrażana, scalamy te dwa usługi w jednym środowisku zarządzania, a w tym samym działaniu ról usługi Azure AD jako ról zasobów platformy Azure. Ten artykuł informuje o zaktualizowanych funkcjach i wymaganiach.
+
 
 ## <a name="time-bound-assignments"></a>Przypisania powiązane z czasem
 

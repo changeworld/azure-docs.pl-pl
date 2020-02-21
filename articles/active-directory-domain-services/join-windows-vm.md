@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 02/19/2020
 ms.author: iainfou
-ms.openlocfilehash: 4753cc9a98cd59c0c5d446b3d92280aabfb72c12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c40a3b1352c383b8b70a0b14f59265188b77a86d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474691"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523689"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Samouczek: dołączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej
 
@@ -24,7 +24,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 > [!div class="checklist"]
 > * Tworzenie maszyny wirtualnej z systemem Windows Server
-> * Nawiązywanie połączenia z MASZYNą wirtualną z systemem Windows Server w sieci wirtualnej platformy Azure
+> * Połącz MASZYNę wirtualną z systemem Windows Server z siecią wirtualną platformy Azure
 > * Dołącz maszynę wirtualną do domeny zarządzanej AD DS platformy Azure
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [Utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
@@ -41,6 +41,8 @@ Aby ukończyć ten samouczek, potrzebne są następujące zasoby:
     * W razie konieczności [Utwórz i skonfiguruj wystąpienie Azure Active Directory Domain Services][create-azure-ad-ds-instance].
 * Konto użytkownika, które jest członkiem grupy *administratorów DC usługi Azure AD* w dzierżawie usługi Azure AD.
     * Upewnij się, że Azure AD Connect synchronizacji skrótów haseł lub samoobsługowego resetowania hasła, aby konto mogło zalogować się do domeny zarządzanej AD DS platformy Azure.
+* Host usługi Azure bastionu wdrożony w sieci wirtualnej platformy Azure AD DS.
+    * W razie konieczności [Utwórz hosta usługi Azure bastionu][azure-bastion].
 
 Jeśli masz już maszynę wirtualną do przyłączenia do domeny, przejdź do sekcji, aby [dołączyć maszynę wirtualną do domeny zarządzanej AD DS platformy Azure](#join-the-vm-to-the-azure-ad-ds-managed-domain).
 
@@ -70,13 +72,13 @@ Jeśli masz już maszynę wirtualną do przyłączenia do domeny, przejdź do se
     | Nazwa użytkownika             | Wprowadź nazwę użytkownika dla konta administratora lokalnego, które ma zostać utworzone na maszynie wirtualnej, na przykład *azureuser* |
     | Hasło             | Wprowadź wartość, a następnie potwierdź hasło do konta administratora lokalnego na maszynie wirtualnej. Nie określaj poświadczeń konta użytkownika domeny. |
 
-1. Domyślnie maszyny wirtualne utworzone na platformie Azure nie są dostępne z Internetu. Ta konfiguracja pozwala ulepszyć zabezpieczenia maszyny wirtualnej i zmniejsza obszar pod kątem potencjalnego ataku. W następnym kroku tego samouczka musisz nawiązać połączenie z maszyną wirtualną za pomocą protokołu RDP (Remote Desktop Protocol), a następnie przyłączyć serwer systemu Windows do domeny zarządzanej AD DS platformy Azure.
+1. Domyślnie maszyny wirtualne utworzone na platformie Azure są dostępne z Internetu przy użyciu protokołu RDP. Po włączeniu protokołu RDP mogą wystąpić automatyczne ataki, które mogą wyłączyć konta z nazwami wspólnymi, takimi jak *administrator* czy *administrator* , z powodu wielokrotnych nieudanych prób logowania.
 
-    Po włączeniu protokołu RDP mogą wystąpić automatyczne ataki, które mogą wyłączyć konta z nazwami wspólnymi, takimi jak *administrator* czy *administrator* , z powodu wielokrotnych nieudanych prób logowania. Protokół RDP powinien być włączony tylko w razie potrzeby i ograniczony do zestawu autoryzowanych zakresów adresów IP. [Dostęp do maszyny wirtualnej "just in Time"][jit-access] w ramach usługi Azure Security Center może umożliwić te krótkoterminowe, ograniczone sesje protokołu RDP. Możesz również [utworzyć i użyć hosta usługi Azure bastionu (obecnie w wersji zapoznawczej)][azure-bastion] , aby zezwolić na dostęp tylko za Azure Portal pośrednictwem protokołu SSL.
+    Protokół RDP powinien być włączony tylko w razie potrzeby i ograniczony do zestawu autoryzowanych zakresów adresów IP. Ta konfiguracja pozwala ulepszyć zabezpieczenia maszyny wirtualnej i zmniejsza obszar pod kątem potencjalnego ataku. Możesz również utworzyć hosta usługi Azure bastionu i użyć Azure Portal go, który umożliwia dostęp tylko za pośrednictwem protokołu SSL. W następnym kroku tego samouczka użyjesz hosta usługi Azure bastionu, aby bezpiecznie połączyć się z maszyną wirtualną.
 
-    Na potrzeby tego samouczka ręcznie Włącz połączenia RDP z maszyną wirtualną.
+    Na razie Wyłącz bezpośrednie połączenia RDP z maszyną wirtualną.
 
-    W obszarze **publiczne porty przychodzące**wybierz opcję **zezwalającą na wybrane porty**. Z menu rozwijanego **Wybierz pozycję porty przychodzące**, wybierz pozycję *RDP (3389)* .
+    W obszarze **publiczne porty przychodzące**zaznacz opcję *Brak*.
 
 1. Gdy skończysz, wybierz pozycję **Dalej: dyski**.
 1. Z menu rozwijanego **typ dysku systemu operacyjnego**wybierz *SSD w warstwie Standardowa*, a następnie wybierz **Dalej: sieć**.
@@ -120,20 +122,23 @@ Utworzenie maszyny wirtualnej może potrwać kilka minut. Azure Portal pokazuje 
 
 ## <a name="connect-to-the-windows-server-vm"></a>Nawiązywanie połączenia z maszyną wirtualną z systemem Windows Server
 
-Teraz Połączmy się z nowo utworzoną maszyną wirtualną z systemem Windows Server przy użyciu protokołu RDP i Dołącz do domeny zarządzanej AD DS platformy Azure. Użyj poświadczeń administratora lokalnego, które zostały określone podczas tworzenia maszyny wirtualnej w poprzednim kroku, a nie wszystkich istniejących poświadczeń domeny.
+Aby bezpiecznie połączyć się z maszynami wirtualnymi, użyj hosta usługi Azure bastionu. W przypadku usługi Azure bastionu Host zarządzany jest wdrażany w sieci wirtualnej i zapewnia połączenia protokołu RDP lub SSH opartego na sieci Web z maszynami wirtualnymi. Dla maszyn wirtualnych nie są wymagane żadne publiczne adresy IP i nie trzeba otwierać reguł sieciowej grupy zabezpieczeń dla zewnętrznego ruchu zdalnego. Możesz połączyć się z maszynami wirtualnymi przy użyciu Azure Portal z przeglądarki sieci Web.
 
-1. W okienku **Przegląd** wybierz pozycję **Połącz**.
+Aby użyć hosta bastionu do nawiązania połączenia z maszyną wirtualną, wykonaj następujące czynności:
 
-    ![Połącz się z maszyną wirtualną z systemem Windows w Azure Portal](./media/join-windows-vm/connect-to-vm.png)
+1. W okienku **Przegląd** dla maszyny wirtualnej wybierz pozycję **Połącz**, a następnie **bastionu**.
 
-1. Wybierz opcję *pobrania pliku RDP*. Zapisz ten plik RDP w przeglądarce sieci Web.
-1. Aby połączyć się z maszyną wirtualną, otwórz pobrany plik RDP. Po wyświetleniu monitu wybierz pozycję **Połącz**.
-1. Wprowadź poświadczenia administratora lokalnego wprowadzone w poprzednim kroku, aby utworzyć maszynę wirtualną, taką jak *localhost\azureuser*
-1. Jeśli podczas procesu logowania zobaczysz ostrzeżenie o certyfikacie, wybierz pozycję **tak** lub **Kontynuuj** , aby nawiązać połączenie.
+    ![Nawiązywanie połączenia z maszyną wirtualną z systemem Windows przy użyciu programu bastionu w Azure Portal](./media/join-windows-vm/connect-to-vm.png)
+
+1. Wprowadź poświadczenia dla maszyny wirtualnej, która została określona w poprzedniej sekcji, a następnie wybierz pozycję **Połącz**.
+
+   ![Połącz się za pomocą hosta bastionu w Azure Portal](./media/join-windows-vm/connect-to-bastion.png)
+
+W razie potrzeby Zezwól przeglądarce sieci Web na otwieranie wyskakujących okienek w celu wyświetlenia połączenia bastionu. Nawiązywanie połączenia z maszyną wirtualną trwa kilka sekund.
 
 ## <a name="join-the-vm-to-the-azure-ad-ds-managed-domain"></a>Dołącz maszynę wirtualną do domeny zarządzanej AD DS platformy Azure
 
-Po utworzeniu maszyny wirtualnej i nawiązaniu połączenia RDP przystąpi teraz do domeny zarządzanej platformy Azure AD DS. Ten proces jest taki sam jak komputer łączący się z zwykłą lokalną domeną Active Directory Domain Services.
+Po utworzeniu maszyny wirtualnej i połączeniu RDP opartym na sieci Web za pomocą usługi Azure bastionu Przyjrzyjmy maszynę wirtualną z systemem Windows Server do domeny zarządzanej AD DS platformy Azure. Ten proces jest taki sam jak komputer łączący się z zwykłą lokalną domeną Active Directory Domain Services.
 
 1. Jeśli **Menedżer serwera** nie zostanie otwarta domyślnie po zalogowaniu się do maszyny wirtualnej, wybierz menu **Start** , a następnie wybierz pozycję **Menedżer serwera**.
 1. W lewym okienku okna **Menedżer serwera** wybierz pozycję **serwer lokalny**. W obszarze **Właściwości** w okienku po prawej stronie wybierz pozycję **Grupa robocza**.
@@ -174,22 +179,13 @@ Po ponownym uruchomieniu maszyny wirtualnej z systemem Windows Server wszystkie 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W następnym samouczku użyjesz tej maszyny wirtualnej z systemem Windows Server, aby zainstalować narzędzia do zarządzania, które umożliwiają administrowanie domeną zarządzaną platformy Azure AD DS. Jeśli nie chcesz kontynuować tej serii samouczków, zapoznaj się z poniższymi krokami czyszczenia, aby [wyłączyć protokół RDP](#disable-rdp) lub [usunąć maszynę wirtualną](#delete-the-vm). W przeciwnym razie [Przejdź do następnego samouczka](#next-steps).
+W następnym samouczku użyjesz tej maszyny wirtualnej z systemem Windows Server, aby zainstalować narzędzia do zarządzania, które umożliwiają administrowanie domeną zarządzaną platformy Azure AD DS. Jeśli nie chcesz kontynuować korzystania z tej serii samouczków, przejrzyj następujące kroki czyszczenia, aby [usunąć maszynę wirtualną](#delete-the-vm). W przeciwnym razie [Przejdź do następnego samouczka](#next-steps).
 
 ### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>Odłączanie maszyny wirtualnej od domeny zarządzanej AD DS platformy Azure
 
 Aby usunąć maszynę wirtualną z domeny zarządzanej AD DS platformy Azure, wykonaj kroki ponownie, aby [dołączyć maszynę wirtualną do domeny](#join-the-vm-to-the-azure-ad-ds-managed-domain). Zamiast przyłączać się do domeny zarządzanej AD DS platformy Azure, wybierz opcję dołączenia do grupy roboczej, takiej jak domyślna *Grupa robocza*. Po ponownym uruchomieniu maszyny wirtualnej obiekt komputera zostanie usunięty z domeny zarządzanej AD DS platformy Azure.
 
 Jeśli [usuniesz maszynę wirtualną](#delete-the-vm) bez rozłączenia z domeną, obiekt oddzielony komputer zostanie pozostawiony na platformie Azure AD DS.
-
-### <a name="disable-rdp"></a>Wyłącz protokół RDP
-
-W przypadku kontynuowania korzystania z maszyny wirtualnej systemu Windows Server utworzonej w ramach tego samouczka do uruchamiania własnych aplikacji lub obciążeń należy odwołać ten protokół RDP otwarty przez Internet. Aby zwiększyć bezpieczeństwo i zmniejszyć ryzyko ataku, należy wyłączyć protokół RDP przez Internet. Aby wyłączyć protokół RDP na maszynie wirtualnej z systemem Windows Server za pośrednictwem Internetu, wykonaj następujące czynności:
-
-1. Z menu po lewej stronie wybierz pozycję **grupy zasobów** .
-1. Wybierz grupę zasobów, *na przykład grupa zasobów.*
-1. Wybierz maszynę wirtualną, na przykład *myVM*, a następnie wybierz pozycję *Sieć*.
-1. W obszarze **reguły zabezpieczeń ruchu przychodzącego** dla sieciowej grupy zabezpieczeń wybierz regułę zezwalającą na protokół RDP, a następnie wybierz pozycję **Usuń**. Usunięcie reguły zabezpieczeń dla ruchu przychodzącego może potrwać kilka sekund.
 
 ### <a name="delete-the-vm"></a>Usuwanie maszyny wirtualnej
 
@@ -249,6 +245,5 @@ Aby administrować domeną zarządzaną platformy Azure AD DS, skonfiguruj maszy
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [password-sync]: active-directory-ds-getting-started-password-sync.md
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
-[jit-access]: ../security-center/security-center-just-in-time.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

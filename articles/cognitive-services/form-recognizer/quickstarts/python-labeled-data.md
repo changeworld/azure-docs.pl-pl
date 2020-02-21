@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 94fafd8b0411c1c7a4032769eec0eb5818844648
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118148"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482307"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Uczenie modelu aparatu rozpoznawania formularzy z etykietami przy użyciu interfejsu API REST i języka Python
 
@@ -28,9 +28,13 @@ Aby ukończyć ten przewodnik Szybki Start, musisz dysponować:
 - Zainstalowana w języku [Python](https://www.python.org/downloads/) (Jeśli chcesz uruchomić przykład lokalnie).
 - Zestaw składający się z co najmniej sześciu formularzy tego samego typu. Te dane będą używane do uczenia modelu i testowania formularza. Możesz użyć [przykładowego zestawu danych](https://go.microsoft.com/fwlink/?linkid=2090451) dla tego przewodnika Szybki Start. Przekaż pliki szkoleniowe do katalogu głównego kontenera magazynu obiektów BLOB na koncie usługi Azure Storage.
 
+## <a name="create-a-form-recognizer-resource"></a>Tworzenie zasobu aparatu rozpoznawania formularza
+
+[!INCLUDE [create resource](../includes/create-resource.md)]
+
 ## <a name="set-up-training-data"></a>Skonfiguruj dane szkoleniowe
 
-Najpierw musisz skonfigurować wymagane dane wejściowe. Funkcja dane z etykietą ma specjalne wymagania wejściowe poza tymi, które są wymagane do uczenia modelu niestandardowego. 
+Następnie musisz skonfigurować wymagane dane wejściowe. Funkcja dane z etykietą ma specjalne wymagania wejściowe poza tymi, które są wymagane do uczenia modelu niestandardowego. 
 
 Upewnij się, że wszystkie dokumenty szkoleniowe mają ten sam format. Jeśli masz formularze w wielu formatach, zorganizuj je w podfolderach w oparciu o wspólny format. Podczas uczenia należy skierować interfejs API do podfolderu.
 

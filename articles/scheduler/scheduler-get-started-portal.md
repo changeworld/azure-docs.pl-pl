@@ -1,36 +1,35 @@
 ---
-title: Tworzenie zaplanowanych zadań przy użyciu usługi Azure Scheduler — Azure Portal | Microsoft Docs
-description: Dowiedz się, jak tworzyć, planować i uruchamiać swoje pierwsze zautomatyzowane zadanie przy użyciu usługi Azure Scheduler w witrynie Azure Portal
+title: Tworzenie zaplanowanych zadań — Azure Portal
+description: Tworzenie, planowanie i uruchamianie pierwszego zadania automatycznego w Azure Portal przy użyciu usługi Azure Scheduler
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
-ms.author: deli
-ms.reviewer: klam
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
+ms.author: estfan
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/17/2018
-ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 02/29/2020
+ms.openlocfilehash: a9f7169f4b54dfc08612b1d53bfde48154ee2d1d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300990"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524805"
 ---
-# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Tworzenie i planowanie swojego pierwszego zadania przy użyciu usługi Azure Scheduler — Azure Portal
+# <a name="create-and-schedule-your-first-job-by-using-azure-scheduler---azure-portal"></a>Utwórz i Zaplanuj pierwsze zadanie przy użyciu usługi Azure Scheduler — Azure Portal
 
 > [!IMPORTANT]
 > [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługę Azure Scheduler, która jest [wycofywana](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Aby kontynuować pracę z zadaniami skonfigurowanymi w usłudze Scheduler, [Przeprowadź migrację do Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) najszybciej, jak to możliwe.
 
-Ten samouczek pokazuje, jak łatwo można utworzyć i zaplanować zadanie, a następnie monitorować je i zarządzać nim. 
+Ten samouczek pokazuje, jak łatwo można utworzyć i zaplanować zadanie, a następnie monitorować je i zarządzać nim.
 
-Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
+Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-## <a name="create-job"></a>Utwórz zadanie
+## <a name="create-job"></a>Tworzenie zadania
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).  
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 
-1. Z głównego menu platformy Azure wybierz pozycję **Utwórz zasób**. W polu wyszukiwania wprowadź „scheduler”. Wybierz z listy wyników **Scheduler**, a następnie wybierz **Utwórz**.
+1. W polu wyszukiwania Azure wprowadź `scheduler` jako filtr. Z listy wyników wybierz pozycję **kolekcje zadań planisty**, a następnie wybierz pozycję **Utwórz**.
 
    ![Tworzenie zasobu usługi Scheduler](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
@@ -93,7 +92,7 @@ Aby uzyskać więcej informacji na temat tych obszarów wybierz obszar:
 
 <a name="properties"></a>
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Właściwości
 
 Aby wyświetlić właściwości tylko do odczytu, które opisują metadane dotyczące zarządzania zadaniem, wybierz pozycję **Właściwości**.
 

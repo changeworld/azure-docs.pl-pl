@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 8032a9b206be4a5eb70a1f40fd33667a1dbdfaa7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3c461e543e3b01501ec47589a9eab3d74820491a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714716"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500232"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Samouczek: używanie konfiguracji dynamicznej w aplikacji ASP.NET Core
 
@@ -53,12 +53,12 @@ Przed kontynuowaniem najpierw Zakończ [Tworzenie aplikacji ASP.NET Coreej z kon
 1. Dodaj odwołanie do pakietu NuGet `Microsoft.Azure.AppConfiguration.AspNetCore`, uruchamiając następujące polecenie:
 
     ```CLI
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-011100002-1192
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
 1. Otwórz *program.cs*i zaktualizuj metodę `CreateWebHostBuilder`, aby dodać metodę `config.AddAzureAppConfiguration()`.
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -81,7 +81,7 @@ Przed kontynuowaniem najpierw Zakończ [Tworzenie aplikacji ASP.NET Coreej z kon
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -124,7 +124,7 @@ Przed kontynuowaniem najpierw Zakończ [Tworzenie aplikacji ASP.NET Coreej z kon
 
 3. Otwórz *Startup.cs*i użyj `IServiceCollection.Configure<T>` w metodzie `ConfigureServices`, aby powiązać dane konfiguracji z klasą `Settings`.
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -134,7 +134,7 @@ Przed kontynuowaniem najpierw Zakończ [Tworzenie aplikacji ASP.NET Coreej z kon
     }
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -148,7 +148,7 @@ Przed kontynuowaniem najpierw Zakończ [Tworzenie aplikacji ASP.NET Coreej z kon
 4. Zaktualizuj metodę `Configure`, dodając oprogramowanie pośredniczące `UseAzureAppConfiguration`, aby umożliwić zaktualizowanie ustawień konfiguracji zarejestrowanych na potrzeby odświeżania, gdy aplikacja sieci Web ASP.NET Core nadal odbiera żądania.
 
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -165,7 +165,7 @@ Przed kontynuowaniem najpierw Zakończ [Tworzenie aplikacji ASP.NET Coreej z kon
     }
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -217,7 +217,7 @@ Przed kontynuowaniem najpierw Zakończ [Tworzenie aplikacji ASP.NET Coreej z kon
 
 2. Zaktualizuj klasę `HomeController`, aby otrzymywać `Settings` za pomocą iniekcji zależności, i użyj jej wartości.
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public class HomeController : Controller
@@ -240,7 +240,7 @@ Przed kontynuowaniem najpierw Zakończ [Tworzenie aplikacji ASP.NET Coreej z kon
     }
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public class HomeController : Controller

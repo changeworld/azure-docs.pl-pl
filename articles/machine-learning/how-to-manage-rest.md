@@ -9,18 +9,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: 6d6e7d564722d1c2ad4713dd1d39e7cba5ed0605
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: e1e19f985c9aa02759c6fff3c634c216c7ef42ef
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964958"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525553"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Tworzenie, uruchamianie i usuwanie zasobów usługi Azure ML przy użyciu interfejsu REST
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Istnieje kilka sposobów zarządzania zasobami usługi Azure ML. Możesz użyć [portalu](https://portal.azure.com/), [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)lub [zestawu SDK języka Python](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py). Można też wybrać interfejs API REST. Interfejs API REST używa zleceń HTTP w standardowym sposobie tworzenia, pobierania, aktualizowania i usuwania zasobów. Interfejs API REST działa z dowolnym językiem lub narzędziem, które może wykonywać żądania HTTP. Prosta struktura usługi REST często sprawia, że jest dobrym wyborem w środowiskach skryptów i automatyzacji MLOps. 
+Istnieje kilka sposobów zarządzania zasobami usługi Azure ML. Możesz użyć [portalu](https://portal.azure.com/), [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)lub [zestawu SDK języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Można też wybrać interfejs API REST. Interfejs API REST używa zleceń HTTP w standardowym sposobie tworzenia, pobierania, aktualizowania i usuwania zasobów. Interfejs API REST działa z dowolnym językiem lub narzędziem, które może wykonywać żądania HTTP. Prosta struktura usługi REST często sprawia, że jest dobrym wyborem w środowiskach skryptów i automatyzacji MLOps. 
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -54,7 +54,7 @@ Aby pobrać token:
 1. Otwórz okno terminalu
 1. Wprowadź następujący kod w wierszu polecenia
 1. Zastąp własne wartości `{your-tenant-id}`, `{your-client-id}`i `{your-client-secret}`. W tym artykule ciągi ujęte w nawiasy klamrowe są zmiennymi, które należy zamienić na własne odpowiednie wartości.
-1. Uruchamianie polecenia
+1. Uruchom polecenie
 
 ```bash
 curl -X POST https://login.microsoftonline.com/{your-tenant-id}/oauth2/token \
@@ -201,9 +201,9 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 Zwróć uwagę, że w celu wyświetlenia listy eksperymentów ścieżka rozpoczyna się od `history/v1.0` podczas wyświetlania listy modeli, ścieżka rozpoczyna się od `modelmanagement/v1.0`. Interfejs API REST jest podzielony na kilka grup operacyjnych, z których każda ma odrębną ścieżkę. Dokumenty referencyjne interfejsu API na poniższych linkach zawierają listę operacji, parametrów i kodów odpowiedzi dla różnych operacji.
 
-|Obszar|Ścieżka|Informacje ogólne|
+|Obszar|Ścieżka|Dokumentacja|
 |-|-|-|
-|Artifacts|artefakt/v 2.0/|[Dokumentacja interfejsu API REST](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|Artefakty|artefakt/v 2.0/|[Dokumentacja interfejsu API REST](https://docs.microsoft.com/rest/api/azureml/artifacts)|
 |Magazyny danych|Magazyn danych/v 1.0/|[Dokumentacja interfejsu API REST](https://docs.microsoft.com/rest/api/azureml/datastores)|
 |Dostrajanie parametrów|dysk/v 1.0/|[Dokumentacja interfejsu API REST](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
 |Modele|Modelmanagement/v 1.0/|[Dokumentacja interfejsu API REST](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|

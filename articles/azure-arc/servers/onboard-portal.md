@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 12fc29cf12fba6325af3197e727d94b3073ef2ff
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3f4954b3a33cdd73c1e004ad1e643f9e24abf1e4
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192313"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485237"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Łączenie maszyn hybrydowych z platformą Azure z poziomu Azure Portal
 
@@ -183,7 +183,7 @@ Aby rozłączyć maszynę z usługi Azure ARC dla serwerów (wersja zapoznawcza)
 1. Aby odinstalować agenta systemu Linux, uruchom następujące polecenie:
 
       ```bash
-      sudo apt purge hybridagent
+      sudo apt purge azcmagent
       ```
 
 ## <a name="next-steps"></a>Następne kroki

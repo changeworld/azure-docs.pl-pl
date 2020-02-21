@@ -3,12 +3,12 @@ title: Wdróż wystąpienie kontenera z obsługą procesora GPU
 description: Dowiedz się, jak wdrożyć usługę Azure Container Instances, aby uruchamiać aplikacje kontenera intensywnie korzystające z obliczeń przy użyciu zasobów procesora GPU.
 ms.topic: article
 ms.date: 04/17/2019
-ms.openlocfilehash: ea3b0ccba2d84487356f4bbd404cec3af1d0979a
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: MT
+ms.openlocfilehash: c3b202d1f35194d59090c3cc310226d6cfc4dfea
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484180"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482959"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Wdrażanie wystąpień kontenerów korzystających z zasobów procesora GPU
 
@@ -42,9 +42,9 @@ Aby użyć procesorów GPU w wystąpieniu kontenera, określ *zasób procesora G
 
   | SKU | Rodzina maszyn wirtualnych |
   | --- | --- |
-  | K80 | [SIECIOWEGO](../virtual-machines/linux/sizes-gpu.md#nc-series) |
-  | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
-  | V100 | [Seria NCV3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
+  | K80 | [SIECIOWEGO](../virtual-machines/nc-series.md) |
+  | P100 | [NCv2](../virtual-machines/ncv2-series.md) |
+  | V100 | [Seria NCV3](../virtual-machines/ncv3-series.md) |
 
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
@@ -56,7 +56,7 @@ Podczas wdrażania zasobów procesora GPU należy ustawić zasoby procesora i pa
 
 * **Cennik** — podobnie jak w przypadku grup kontenerów bez zasobów procesora GPU, weksle dla zasobów używanych w *czasie trwania* grupy kontenerów z zasobami procesora GPU. Czas trwania jest obliczany od momentu pociągnięcia pierwszego obrazu kontenera do momentu zakończenia działania grupy kontenerów. Nie obejmuje czasu wdrożenia grupy kontenerów.
 
-  Zobacz [szczegółowe informacje o cenach](https://azure.microsoft.com/pricing/details/container-instances/).
+  Zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/container-instances/).
 
 * **Sterowniki cuda** — wystąpienia kontenerów z zasobami procesora GPU są wstępnie udostępniane za pomocą sterowników NVIDIA CUDA i środowisk uruchomieniowych kontenera, dzięki czemu można używać obrazów kontenerów opracowanych dla obciążeń cuda.
 

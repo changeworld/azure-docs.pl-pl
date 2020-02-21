@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff7cda6a593b1517ad711a56f73d29a14345baf
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d4d5c91966f8c490e056a84c89073e4da7cfdfd6
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368021"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484489"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Co nowego w Azure Active Directory?
 
@@ -1126,9 +1126,9 @@ Następujące pola są zmieniane w schemacie logowania:
 
 |Nazwa pola|Co zostało zmienione|Stare wartości|Nowe wartości|
 |----------|------------|----------|----------|
-|appliedConditionalAccessPolicies|To było pole **conditionalaccessPolicies** . To teraz pole **appliedConditionalAccessPolicies** .|Bez zmian|Bez zmian|
-|conditionalAccessStatus|Zapewnia wynik stanu zasad dostępu warunkowego podczas logowania. Wcześniej było to wyliczone, ale teraz pokazywane są rzeczywiste wartości.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Powodzenie</li><li>Niepowodzenie</li><li>Nie zastosowano</li><li>Disabled (Wyłączony)</li></ul>|
-|appliedConditionalAccessPolicies: wynik|Zapewnia wynik poszczególnych stanów zasad dostępu warunkowego podczas logowania. Wcześniej było to wyliczone, ale teraz pokazywane są rzeczywiste wartości.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Powodzenie</li><li>Niepowodzenie</li><li>Nie zastosowano</li><li>Disabled (Wyłączony)</li></ul>|
+|appliedConditionalAccessPolicies|To było pole **conditionalaccessPolicies** . To teraz pole **appliedConditionalAccessPolicies** .|Nie wprowadzono zmian|Nie wprowadzono zmian|
+|conditionalAccessStatus|Zapewnia wynik stanu zasad dostępu warunkowego podczas logowania. Wcześniej było to wyliczone, ale teraz pokazywane są rzeczywiste wartości.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Powodzenie</li><li>Niepowodzenie</li><li>Nie zastosowano</li><li>Wyłączone</li></ul>|
+|appliedConditionalAccessPolicies: wynik|Zapewnia wynik poszczególnych stanów zasad dostępu warunkowego podczas logowania. Wcześniej było to wyliczone, ale teraz pokazywane są rzeczywiste wartości.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Powodzenie</li><li>Niepowodzenie</li><li>Nie zastosowano</li><li>Wyłączone</li></ul>|
 
 Aby uzyskać więcej informacji na temat schematu, zobacz [interpretowanie schematu dzienników inspekcji usługi Azure AD w Azure monitor (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema)
 
@@ -1365,7 +1365,7 @@ Zdajemy sobie sprawę, że ustawienia zapasowej pojedynczego logowania jednokrot
 
 - Komponent ArcGis Online
 
-- Jamf Pro
+- Narzędzie Jamf Pro
 
 Aby rozpocząć korzystanie z tego samego kliknięcia, przejdź do strony **Konfiguracja logowania jednokrotnego** w **Azure Portal** > dla aplikacji. Aby uzyskać więcej informacji, zobacz [SaaS Application Integration with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
 
@@ -1426,7 +1426,7 @@ Aby uzyskać więcej informacji o używaniu niestandardowych właściwości rozs
 **Kategoria usługi:** Dostęp warunkowy  
 **Możliwość produktu:** Bezpieczeństwo i Ochrona tożsamości
 
-Następujące aplikacje znajdują się na liście [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement):
+Następujące aplikacje znajdują się na liście [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview):
 
 - Microsoft To-Do
 
@@ -1651,7 +1651,7 @@ Usługa Azure Active Directory (Azure AD) wiadomości e-mail teraz funkcji zaktu
 - Przeglądy dostępu w usłudze Azure AD
 - Azure AD Connect Health 
 - Usługa Azure AD Identity Protection 
-- Azure AD Privileged Identity Management
+- Usługa Azure AD Privileged Identity Management
 - Powiadomienia certyfikat wygasa aplikacji przedsiębiorstwa
 - Powiadomienia usługi inicjowania obsługi administracyjnej aplikacji przedsiębiorstwa
  
@@ -2347,7 +2347,7 @@ Aby uzyskać więcej informacji, zobacz [Resetowanie hasła usługi Azure AD na 
 
 ---
 
-## <a name="march-2018"></a>Marzec 2018 r.
+## <a name="march-2018"></a>Marca 2018 r.
  
 ### <a name="certificate-expire-notification"></a>Certyfikat wygasa powiadomień
 
@@ -2554,7 +2554,7 @@ Aby uzyskać więcej informacji, zobacz [Omówienie łączników usługi Azure s
  
 ---
 
-## <a name="february-2018"></a>Luty 2018 r.
+## <a name="february-2018"></a>Lutego 2018 r.
  
 ### <a name="improved-navigation-for-managing-users-and-groups"></a>Ulepszona nawigacja do zarządzania użytkownikami i grupami
 
@@ -2753,7 +2753,7 @@ Następujące aplikacje zostaną dodane do końca lutego:
 
 Aby uzyskać więcej informacji, zobacz:
 
-- [Wymagania dotyczące zatwierdzonej aplikacji klienckiej](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Wymagania dotyczące zatwierdzonej aplikacji klienckiej](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Dostęp warunkowy oparty na aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
@@ -2768,7 +2768,7 @@ Kiedy są wyświetlane warunki użytkowania, możesz teraz kliknąć problemy z 
 
 ---
  
-## <a name="january-2018"></a>Styczeń 2018 r.
+## <a name="january-2018"></a>Stycznia 2018 r.
  
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD 
 
@@ -3044,14 +3044,14 @@ Aby uzyskać więcej informacji, zobacz [dostęp warunkowy w usłudze Azure AD](
 **Kategoria usługi:** Dostęp warunkowy  
 **Możliwość produktu:** Bezpieczeństwo i Ochrona tożsamości
 
-Następujące aplikacje znajdują się na liście [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
+Następujące aplikacje znajdują się na liście [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview):
 
 - [Usługi kaizala firmy Microsoft](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
 Aby uzyskać więcej informacji, zobacz:
 
-- [Wymagania dotyczące zatwierdzonej aplikacji klienckiej](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Wymagania dotyczące zatwierdzonej aplikacji klienckiej](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Dostęp warunkowy oparty na aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
@@ -3089,7 +3089,7 @@ Aby uzyskać więcej informacji, zobacz [integracja lokalna](https://docs.micros
 **Kategoria usługi:** Usługa Azure AD  
 **Możliwość produktu:** Bezpieczeństwo i Ochrona tożsamości
 
-Teraz możesz ograniczyć dostęp do pakietu Office 365 i innych aplikacji w chmurze połączonych z usługą Azure AD do [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) , które obsługują zasady ochrony aplikacji usługi Intune przy użyciu [dostępu warunkowego opartego na aplikacji w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Zasady ochrony aplikacji usługi Intune służą do konfigurowania i ochrony danych firmy na tych aplikacji klienckich.
+Teraz możesz ograniczyć dostęp do pakietu Office 365 i innych aplikacji w chmurze połączonych z usługą Azure AD do [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview) , które obsługują zasady ochrony aplikacji usługi Intune przy użyciu [dostępu warunkowego opartego na aplikacji w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Zasady ochrony aplikacji usługi Intune służą do konfigurowania i ochrony danych firmy na tych aplikacji klienckich.
 
 Łącząc [aplikacje oparte](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) na urządzeniach z zasadami dostępu warunkowego [opartymi na urządzeniu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) , można zapewnić ochronę danych na urządzeniach osobistych i firmowych.
 
@@ -3189,14 +3189,14 @@ W Centrum administracyjnym usługi Azure AD możesz teraz:
 **Kategoria usługi:** Dostęp warunkowy  
 **Możliwość produktu:** Bezpieczeństwo i Ochrona tożsamości
 
-Następujące aplikacje zostały dodane do listy [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement):
+Następujące aplikacje zostały dodane do listy [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview):
 
 - Microsoft Planner
 - Azure Information Protection 
 
 Aby uzyskać więcej informacji, zobacz:
 
-- [Wymagania dotyczące zatwierdzonej aplikacji klienckiej](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Wymagania dotyczące zatwierdzonej aplikacji klienckiej](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Dostęp warunkowy oparty na aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---

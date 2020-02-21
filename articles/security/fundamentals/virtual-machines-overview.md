@@ -1,5 +1,6 @@
 ---
-title: Funkcje zabezpieczeń używane z maszynami wirtualnymi platformy Azure — zabezpieczenia platformy Azure | Microsoft Docs
+title: Funkcje zabezpieczeń używane z maszynami wirtualnymi platformy Azure
+titleSuffix: Azure security
 description: Ten artykuł zawiera omówienie podstawowych funkcji zabezpieczeń platformy Azure, które mogą być używane z usługą Azure Virtual Machines.
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 6c01df071f263f7080f6c89b539d9a40aeff282f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3cbe7788ca7486022513fabdca682cbb78615281
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792621"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500378"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Omówienie zabezpieczeń usługi Azure Virtual Machines
 Ten artykuł zawiera omówienie podstawowych funkcji zabezpieczeń platformy Azure, które mogą być używane z maszynami wirtualnymi.
@@ -37,7 +38,7 @@ Na platformie Azure można tworzyć rozwiązania zgodne z ulepszonymi zabezpiecz
 * Identyfikowanie i wykrywanie zagrożeń.
 * Spełnianie wymagań dotyczących zgodności.  
 
-## <a name="antimalware"></a>Oprogramowanie chroniące przed złośliwym kodem
+## <a name="antimalware"></a>Ochrona przed złośliwym kodem
 
 Na platformie Azure możesz używać oprogramowania chroniącego przed złośliwym kodem od dostawców zabezpieczeń, takich jak Microsoft, Symantec, Trend Micro i Kaspersky pomogą. To oprogramowanie pomaga chronić maszyny wirtualne przed złośliwymi plikami, programami reklamujące i innymi zagrożeniami.
 
@@ -65,7 +66,7 @@ W celu zapewnienia jeszcze bardziej zaawansowanej ochrony należy rozważyć uż
 * [Zarządzanie i interfejsy API](/windows/security/threat-protection/windows-defender-atp/management-apis)
 * [Ochrona przed zagrożeniami firmy Microsoft](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Wprowadzenie do WDATP](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)  
 * [Przegląd możliwości WDATP](/windows/security/threat-protection/windows-defender-atp/overview)  
@@ -74,9 +75,9 @@ Dowiedz się więcej:
 
 Zwiększenie bezpieczeństwa klucza może zwiększyć ochronę szyfrowania i uwierzytelniania. Można uprościć zarządzanie i zabezpieczanie kluczowych kluczy tajnych i kluczy, przechowując je w Azure Key Vault.
 
-Usługa Key Vault oferuje możliwość przechowywania kluczy w sprzętowych modułach zabezpieczeń z certyfikatami poświadczającymi zgodność ze standardami FIPS 140-2 (poziom 2). Klucze szyfrowania SQL Server na potrzeby tworzenia kopii zapasowej lub [przezroczystego szyfrowania danych](https://msdn.microsoft.com/library/bb934049.aspx) mogą być przechowywane w Key Vault z użyciem dowolnych kluczy lub wpisów tajnych aplikacji. Uprawnienia i dostęp do tych chronionych elementów są zarządzane za poorednictwem [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
+Key Vault udostępnia opcję przechowywania kluczy w sprzętowych modułach zabezpieczeń (sprzętowych modułów zabezpieczeń) certyfikowanych do standardów standardu FIPS 140-2 Level 2. Klucze szyfrowania SQL Server na potrzeby tworzenia kopii zapasowej lub [przezroczystego szyfrowania danych](https://msdn.microsoft.com/library/bb934049.aspx) mogą być przechowywane w Key Vault z użyciem dowolnych kluczy lub wpisów tajnych aplikacji. Uprawnienia i dostęp do tych chronionych elementów są zarządzane za poorednictwem [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Co to jest Azure Key Vault?](/azure/key-vault/key-vault-overview)
 * [Blog Azure Key Vault](https://blogs.technet.microsoft.com/kv/)
@@ -87,16 +88,16 @@ Azure Disk Encryption to nowa funkcja szyfrowania dysków maszyn wirtualnych z s
 
 Rozwiązanie jest zintegrowane z Azure Key Vault, które ułatwiają sterowanie kluczami szyfrowania dysków i wpisami tajnymi w ramach subskrypcji magazynu kluczy oraz zarządzanie nimi. Gwarantuje to, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane w usłudze Azure Storage.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Azure Disk Encryption maszyn wirtualnych IaaS](/azure/security/azure-security-disk-encryption-overview)
 * [Szybki Start: szyfrowanie maszyny wirtualnej z systemem Windows IaaS za pomocą Azure PowerShell](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
 ## <a name="virtual-machine-backup"></a>Kopia zapasowa maszyny wirtualnej
 
-Azure Backup to skalowalne rozwiązanie, które pomaga chronić dane aplikacji bez konieczności inwestowania kapitału i minimalnych kosztów operacyjnych. Błędy aplikacji mogą powodować uszkodzenia danych, a błędy użytkowników — usterki aplikacji. W przypadku Azure Backup maszyny wirtualne z systemem Windows i Linux są chronione.
+Azure Backup to skalowalne rozwiązanie, które pomaga chronić dane aplikacji bez konieczności inwestowania kapitału i minimalnych kosztów operacyjnych. Błędy aplikacji mogą uszkodzić dane, a błędy ludzkie mogą wprowadzać usterki do aplikacji. W przypadku Azure Backup maszyny wirtualne z systemem Windows i Linux są chronione.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Co to jest Azure Backup?](/azure/backup/backup-introduction-to-azure-backup)
 * [Często zadawane pytania dotyczące usługi Azure Backup](/azure/backup/backup-azure-backup-faq)
@@ -113,7 +114,7 @@ Site Recovery:
 * **Eliminuje dodatkowe centra**danych: można przeprowadzić replikację do dodatkowej lokacji lokalnej lub do platformy Azure. Korzystanie z platformy Azure jako miejsca docelowego do odzyskiwania po awarii eliminuje koszt i złożoność utrzymywania lokacji dodatkowej. Zreplikowane dane są przechowywane w usłudze Azure Storage.
 * **Integruje się z istniejącymi technologiami BCDR**: Partnerzy Site Recovery z funkcjami BCDR innych aplikacji. Na przykład można użyć Site Recovery, aby pomóc w ochronie SQL Server zaplecza obciążeń firmowych. Obejmuje to natywną obsługę usługi SQL Server, która jest zawsze włączona, aby zarządzać trybem failover grup dostępności.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Co to jest Azure Site Recovery?](/azure/site-recovery/site-recovery-overview)
 * [Jak działa Azure Site Recovery?](/azure/site-recovery/site-recovery-components)
@@ -125,7 +126,7 @@ Maszyny wirtualne muszą mieć łączność sieciową. Aby zapewnić obsługę t
 
 Usługa Azure Virtual Network to konstrukcja logiczna oparta na fizycznej sieci szkieletowej platformy Azure. Każda logiczna Sieć wirtualna platformy Azure jest odizolowana od wszystkich innych sieci wirtualnych platformy Azure. Ta izolacja pomaga upewnić się, że ruch sieciowy we wdrożeniach nie jest dostępny dla innych klientów Microsoft Azure.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Omówienie zabezpieczeń sieci platformy Azure](network-overview.md)
 * [Omówienie usługi Virtual Network](/azure/virtual-network/virtual-networks-overview)
@@ -140,7 +141,7 @@ Security Center pomaga zoptymalizować i monitorować zabezpieczenia maszyn wirt
 * Zapewnianie [zaleceń dotyczących zabezpieczeń](/azure/security-center/security-center-recommendations) dla maszyn wirtualnych. Przykładowe zalecenia: Zastosuj aktualizacje systemu, skonfiguruj punkty końcowe list kontroli dostępu, Włącz ochronę przed złośliwym kodem, Włącz grupy zabezpieczeń sieci i Zastosuj szyfrowanie dysków.
 * Monitorowanie stanu maszyn wirtualnych.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Wprowadzenie do usługi Azure Security Center](/azure/security-center/security-center-intro)
 * [Azure Security Center często zadawane pytania](/azure/security-center/security-center-faq)
@@ -150,7 +151,7 @@ Dowiedz się więcej:
 
 Usługa Azure Virtual Machines ma certyfikat dla FISMA, FedRAMP, HIPAA, PCI DSS poziomu 1 i innych programów do oceny zgodności. Ten certyfikat ułatwia korzystanie z własnych aplikacji platformy Azure w celu spełnienia wymagań dotyczących zgodności oraz dla Twojej firmy.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Centrum zaufania firmy Microsoft: zgodność](https://www.microsoft.com/en-us/trustcenter/compliance)
 * [Zaufana chmura: Microsoft Azure zabezpieczenia, prywatność i zgodność](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
@@ -163,7 +164,7 @@ Ochrona danych poufnych gwarantuje, że w przypadku, gdy dane są "w czyszczeniu
 
 TEEs upewnij się, że nie ma sposobu wyświetlania danych lub wykonywania operacji wewnątrz poza programem, nawet z debugerem. Nawet zapewniają, że dostęp do danych jest dozwolony tylko w autoryzowanym kodzie. Jeśli kod zostanie zmieniony lub naruszony, operacje są odrzucane i środowisko wyłączone. TEE wymusza te zabezpieczenia w czasie wykonywania kodu.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Wprowadzenie do rozwiązania do przetwarzania poufnego platformy Azure](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Dane poufne platformy Azure](https://azure.microsoft.com/blog/azure-confidential-computing/)  

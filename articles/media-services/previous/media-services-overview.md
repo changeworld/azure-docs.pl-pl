@@ -1,6 +1,6 @@
 ---
 title: Omówienie usługi Azure Media Services | Microsoft Docs
-description: Usługa Microsoft Azure Media Services to rozszerzalna platforma oparta na chmurze, która umożliwia deweloperom tworzenie skalowalnych aplikacji do zarządzania multimediami i dostarczania ich. Ten artykuł zawiera omówienie Azure Media Services.
+description: Microsoft Azure Media Services to oparta na chmurze rozszerzona platforma, która umożliwia deweloperom tworzenie skalowalnych aplikacji do dostarczania multimediów i zarządzania nimi. Ten artykuł zawiera omówienie Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: d339fd16b1eef8df367bdcb375a1cb3dc71ddde2
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8cc6211f9ddecf21301765266b17e88e4e734eed
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895875"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499955"
 ---
 # <a name="azure-media-services-overview"></a>Omówienie usługi Azure Media Services 
 
@@ -27,7 +27,7 @@ ms.locfileid: "74895875"
 > * [Wersja 2](media-services-overview.md)
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
+> Do Media Services V2 nie są dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure Media Services (AMS) to oparta na chmurze rozszerzalna platforma, która umożliwia deweloperom tworzenie skalowalnych aplikacji do dostarczania multimediów i zarządzania nimi. Usługi Media Services są oparte na interfejsach API REST, które umożliwiają bezpieczne przekazywanie, przechowywanie, kodowanie i tworzenie pakietów zawartości wideo lub audio na potrzeby transmisji strumieniowej na żądanie i na żywo do różnych klientów (np. odbiorników TV, komputerów i urządzeń przenośnych).
 
@@ -37,7 +37,7 @@ Korzystając wyłącznie z usługi Media Services, można tworzyć kompleksowe p
 
 Do rozpoczęcia korzystania z usługi Azure Media Services potrzebne są:
 
-* Konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz artykuł [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com).
+* Konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz temat [Bezpłatna wersja próbna systemu Azure](https://azure.microsoft.com).
 * Konto usługi Azure Media Services. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](media-services-portal-create-account.md).
 * (Opcjonalnie) Konfigurowanie środowiska deweloperskiego. Wybierz platformę .NET lub interfejs API REST dla środowiska deweloperskiego. Aby uzyskać więcej informacji, zobacz temat [Konfigurowanie środowiska](media-services-dotnet-how-to-use.md).
 
@@ -87,6 +87,6 @@ Aby uzyskać informacje na temat dostępności w centrach danych, zobacz sekcję
 
 [Pomoc techniczna platformy Azure](https://azure.microsoft.com/support/options/) zapewnia opcje wsparcia technicznego dla platformy Azure, w tym dla usługi Media Services.
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

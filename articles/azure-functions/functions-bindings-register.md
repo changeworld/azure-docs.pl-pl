@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 35df4c6c20345053bcc39a267a90a7bb1b227241
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766230"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484727"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Rejestrowanie rozszerzeń powiązań Azure Functions
 
@@ -26,10 +26,10 @@ Poniższa tabela zawiera informacje o tym, kiedy i w jaki sposób rejestrujesz p
 
 | Środowisko deweloperskie |Rejestracja<br/> w funkcjach 1. x  |Rejestracja<br/> w funkcjach 2. x  |
 |-------------------------|------------------------------------|------------------------------------|
-|Portal Azure|Automatyczny|Automatyczny|
-|Programowanie w języku Non-.NET lub lokalne podstawowe narzędzia platformy Azure|Automatyczny|[Użyj Azure Functions Core Tools i pakietów rozszerzeń](#extension-bundles)|
+|Azure Portal|Automatyczne|Automatyczne|
+|Programowanie w języku Non-.NET lub lokalne podstawowe narzędzia platformy Azure|Automatyczne|[Użyj Azure Functions Core Tools i pakietów rozszerzeń](#extension-bundles)|
 |C#Biblioteka klas przy użyciu programu Visual Studio|[Korzystanie z narzędzi NuGet](#vs)|[Korzystanie z narzędzi NuGet](#vs)|
-|C#Biblioteka klas przy użyciu Visual Studio Code|ND|[Użyj interfejs wiersza polecenia platformy .NET Core](#vs-code)|
+|C#Biblioteka klas przy użyciu Visual Studio Code|Brak|[Użyj interfejs wiersza polecenia platformy .NET Core](#vs-code)|
 
 ## <a name="extension-bundles"></a>Zestawy rozszerzeń do lokalnego tworzenia
 
@@ -55,7 +55,7 @@ W programie **Visual Studio**można zainstalować pakiety z konsoli Menedżera p
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
 ```
 
-Nazwa pakietu używana dla danego powiązania znajduje się w artykule referencyjnym dla tego powiązania. Aby zapoznać się z przykładem, zobacz [sekcję Packages artykułu dotyczącego powiązania Service Bus](functions-bindings-service-bus.md#packages---functions-1x).
+Nazwa pakietu używana dla danego powiązania znajduje się w artykule referencyjnym dla tego powiązania. Aby zapoznać się z przykładem, zobacz [sekcję Packages artykułu dotyczącego powiązania Service Bus](functions-bindings-service-bus.md#functions-1x).
 
 Zastąp `<TARGET_VERSION>` w przykładzie z określoną wersją pakietu, np. `3.0.0-beta5`. Prawidłowe wersje są wymienione na stronach poszczególnych pakietów w witrynie [NuGet.org](https://nuget.org). Wersje główne, które odnoszą się do środowiska uruchomieniowego Functions 1. x lub 2. x, są określone w artykule referencyjnym dla powiązania.
 

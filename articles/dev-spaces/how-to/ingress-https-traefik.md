@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Dowiedz się, jak skonfigurować Azure Dev Spaces, aby użyć niestandardowego kontrolera traefikal i skonfigurować protokół HTTPS za pomocą tego kontrolera
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
-ms.openlocfilehash: 2ac43f00e2fa7ecf792469c2140bbbfee4bb57cf
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 4fc9dfbb4c437210de3ab9a88aafca2680dd363c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471401"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486189"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Korzystanie z niestandardowego kontrolera traefik Ingres i Konfigurowanie protokołu HTTPS
 
@@ -127,7 +127,7 @@ azds space select -n dev -y
 Wdróż przykładową aplikację przy użyciu `helm install`.
 
 ```console
-helm install bikesharing . --dependency-update --namespace dev --atomic
+helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 ```
 
 Powyższy przykład służy do wdrażania przykładowej aplikacji w przestrzeni nazw *dev* .

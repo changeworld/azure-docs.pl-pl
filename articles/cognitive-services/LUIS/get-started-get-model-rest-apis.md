@@ -12,43 +12,33 @@ ms.topic: quickstart
 ms.date: 02/14/2020
 ms.author: diberry
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: a3f8013804a2c3f4864719861eea1510c9d849d3
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 58f164f1522975faa2e7a7e7d7ed08145a6c5889
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368444"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524652"
 ---
 # <a name="quickstart-change-model-with-rest-apis"></a>Szybki Start: zmiana modelu przy użyciu interfejsów API REST
 
 W tym przewodniku Szybki start dodasz przykładowe wypowiedzi do aplikacji Travel Agent i przeprowadzisz szkolenie aplikacji. Przykładowe wypowiedzi to tekst z rozmowami użytkownika mapowany na intencje. Poprzez zapewnienie przykładowych wypowiedzi dla intencji możesz nauczyć aplikację LUIS, jakim intencjom odpowiada rodzaj tekstu podanego przez użytkownika.
 
 ::: zone pivot="programming-language-csharp"
-
 [!INCLUDE [Get intent with C# and REST](./includes/get-started-get-model-rest-csharp.md)]
-
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-
 [!INCLUDE [Get intent with Java and REST](./includes/get-started-get-model-rest-java.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-[!INCLUDE [Get intent with Python and REST](./includes/get-started-get-model-rest-python.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-nodejs"
-
-[!INCLUDE [Get intent with Node.js and REST](./includes/get-started-get-model-rest-nodejs.md)]
-
 ::: zone-end
 
 ::: zone pivot="programming-language-go"
-
 [!INCLUDE [Get intent with Go and REST](./includes/get-started-get-model-rest-go.md)]
+::: zone-end
 
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [Get intent with Node.js and REST](./includes/get-started-get-model-rest-nodejs.md)]
+::: zone-end
+
+::: zone pivot="programming-language-python"
+[!INCLUDE [Get intent with Python and REST](./includes/get-started-get-model-rest-python.md)]
 ::: zone-end

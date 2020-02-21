@@ -1,0 +1,755 @@
+---
+title: Powiązanie danych wyjściowych usługi sygnałów Azure Functions
+description: Dowiedz się, jak wysyłać komunikaty usługi sygnalizujące z Azure Functions.
+author: craigshoemaker
+ms.topic: reference
+ms.date: 02/20/2020
+ms.author: cshoe
+ms.openlocfilehash: d3ba9183cdea752c3e69a41770b6a5319a4a601d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77530252"
+---
+# <a name="signalr-service-output-binding-for-azure-functions"></a>Powiązanie danych wyjściowych usługi sygnalizującego dla Azure Functions
+
+Użyj powiązania danych wyjściowych *sygnalizującego* , aby wysłać co najmniej jeden komunikat przy użyciu usługi Azure Signal Service. Można emitować komunikat do:
+
+- Wszyscy połączeni klienci
+- Połączeni klienci uwierzytelnieni do określonego użytkownika
+
+Powiązanie danych wyjściowych umożliwia również zarządzanie grupami.
+
+Aby uzyskać informacje na temat konfiguracji i szczegółów konfiguracji, zobacz [Omówienie](functions-bindings-signalr-service.md).
+
+## <a name="broadcast-to-all-clients"></a>Emituj do wszystkich klientów
+
+Poniższy przykład pokazuje funkcję, która wysyła komunikat przy użyciu powiązania danych wyjściowych do wszystkich połączonych klientów. *Obiekt docelowy* jest nazwą metody, która ma być wywoływana na każdym kliencie. Właściwość *arguments* jest tablicą zero lub więcej obiektów do przesłania do metody klienta.
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+```cs
+[FunctionName("SendMessage")]
+public static Task SendMessage(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]object message, 
+    [SignalR(HubName = "chat")]IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
+
+Tutaj podano dane powiązań w pliku *Function. JSON* :
+
+Przykład Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Oto kod C# skryptu:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Tutaj podano dane powiązań w pliku *Function. JSON* :
+
+Przykład Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Poniżej przedstawiono kod JavaScript:
+
+```javascript
+module.exports = async function (context, req) {
+    context.bindings.signalRMessages = [{
+        "target": "newMessage",
+        "arguments": [ req.body ]
+    }];
+};
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Tutaj podano dane powiązań w pliku *Function. JSON* :
+
+Przykład Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Oto kod języka Python:
+
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+@FunctionName("sendMessage")
+@SignalROutput(name = "$return", hubName = "chat")
+public SignalRMessage sendMessage(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+
+    SignalRMessage message = new SignalRMessage();
+    message.target = "newMessage";
+    message.arguments.add(req.getBody());
+    return message;
+}
+```
+
+---
+
+## <a name="send-to-a-user"></a>Wyślij do użytkownika
+
+Komunikat można wysłać tylko do połączeń, które zostały uwierzytelnione do użytkownika przez ustawienie *identyfikatora użytkownika* w komunikacie sygnalizującym.
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+```cs
+[FunctionName("SendMessage")]
+public static Task SendMessage(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]object message, 
+    [SignalR(HubName = "chat")]IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            // the message will only be sent to this user ID
+            UserId = "userId1",
+            Target = "newMessage",
+            Arguments = new [] { message }
+        });
+}
+```
+
+# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
+
+Przykład Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Oto kod C# skryptu:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            // the message will only be sent to this user ID
+            UserId = "userId1",
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Przykład Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Poniżej przedstawiono kod JavaScript:
+
+```javascript
+module.exports = async function (context, req) {
+    context.bindings.signalRMessages = [{
+        // message will only be sent to this user ID
+        "userId": "userId1",
+        "target": "newMessage",
+        "arguments": [ req.body ]
+    }];
+};
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Tutaj podano dane powiązań w pliku *Function. JSON* :
+
+Przykład Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Oto kod języka Python:
+
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        #message will only be sent to this user ID
+        'userId': 'userId1',
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+@FunctionName("sendMessage")
+@SignalROutput(name = "$return", hubName = "chat")
+public SignalRMessage sendMessage(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+
+    SignalRMessage message = new SignalRMessage();
+    message.userId = "userId1";
+    message.target = "newMessage";
+    message.arguments.add(req.getBody());
+    return message;
+}
+```
+
+---
+
+## <a name="send-to-a-group"></a>Wyślij do grupy
+
+Komunikat można wysłać tylko do połączeń, które zostały dodane do grupy przez ustawienie *nazwy grupy* w komunikacie sygnalizującym.
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+```cs
+[FunctionName("SendMessage")]
+public static Task SendMessage(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]object message,
+    [SignalR(HubName = "chat")]IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage
+        {
+            // the message will be sent to the group with this name
+            GroupName = "myGroup",
+            Target = "newMessage",
+            Arguments = new [] { message }
+        });
+}
+```
+
+# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
+
+Przykład Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Oto kod C# skryptu:
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    object message,
+    IAsyncCollector<SignalRMessage> signalRMessages)
+{
+    return signalRMessages.AddAsync(
+        new SignalRMessage 
+        {
+            // the message will be sent to the group with this name
+            GroupName = "myGroup",
+            Target = "newMessage", 
+            Arguments = new [] { message } 
+        });
+}
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Przykład Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "signalRMessages",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Poniżej przedstawiono kod JavaScript:
+
+```javascript
+module.exports = async function (context, req) {
+    context.bindings.signalRMessages = [{
+        // message will only be sent to this group
+        "groupName": "myGroup",
+        "target": "newMessage",
+        "arguments": [ req.body ]
+    }];
+};
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Tutaj podano dane powiązań w pliku *Function. JSON* :
+
+Przykład Function. JSON:
+
+```json
+{
+  "type": "signalR",
+  "name": "out_message",
+  "hubName": "<hub_name>",
+  "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+  "direction": "out"
+}
+```
+
+Oto kod języka Python:
+
+```python
+def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+    message = req.get_json()
+    out_message.set(json.dumps({
+        #message will only be sent to this group
+        'groupName': 'myGroup',
+        'target': 'newMessage',
+        'arguments': [ message ]
+    }))
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+@FunctionName("sendMessage")
+@SignalROutput(name = "$return", hubName = "chat")
+public SignalRMessage sendMessage(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req) {
+
+    SignalRMessage message = new SignalRMessage();
+    message.groupName = "myGroup";
+    message.target = "newMessage";
+    message.arguments.add(req.getBody());
+    return message;
+}
+```
+
+---
+
+## <a name="group-management"></a>Zarządzanie grupami
+
+Usługa sygnalizująca pozwala dodawać użytkowników do grup. Komunikaty można następnie wysyłać do grupy. Możesz użyć powiązania danych wyjściowych `SignalR` do zarządzania członkostwem w grupie użytkownika.
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="add-user-to-a-group"></a>Dodawanie użytkownika do grupy
+
+Poniższy przykład dodaje użytkownika do grupy.
+
+```csharp
+[FunctionName("addToGroup")]
+public static Task AddToGroup(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]HttpRequest req,
+    ClaimsPrincipal claimsPrincipal,
+    [SignalR(HubName = "chat")]
+        IAsyncCollector<SignalRGroupAction> signalRGroupActions)
+{
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+    return signalRGroupActions.AddAsync(
+        new SignalRGroupAction
+        {
+            UserId = userIdClaim.Value,
+            GroupName = "myGroup",
+            Action = GroupAction.Add
+        });
+}
+```
+
+### <a name="remove-user-from-a-group"></a>Usuwanie użytkownika z grupy
+
+Poniższy przykład usuwa użytkownika z grupy.
+
+```csharp
+[FunctionName("removeFromGroup")]
+public static Task RemoveFromGroup(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "post")]HttpRequest req,
+    ClaimsPrincipal claimsPrincipal,
+    [SignalR(HubName = "chat")]
+        IAsyncCollector<SignalRGroupAction> signalRGroupActions)
+{
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+    return signalRGroupActions.AddAsync(
+        new SignalRGroupAction
+        {
+            UserId = userIdClaim.Value,
+            GroupName = "myGroup",
+            Action = GroupAction.Remove
+        });
+}
+```
+
+> [!NOTE]
+> Aby można było prawidłowo uzyskać `ClaimsPrincipal`, musisz skonfigurować ustawienia uwierzytelniania w Azure Functions.
+
+# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
+
+### <a name="add-user-to-a-group"></a>Dodawanie użytkownika do grupy
+
+Poniższy przykład dodaje użytkownika do grupy.
+
+Przykład *Function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*Uruchom. CSX*
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    HttpRequest req,
+    ClaimsPrincipal claimsPrincipal,
+    IAsyncCollector<SignalRGroupAction> signalRGroupActions)
+{
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+    return signalRGroupActions.AddAsync(
+        new SignalRGroupAction
+        {
+            UserId = userIdClaim.Value,
+            GroupName = "myGroup",
+            Action = GroupAction.Add
+        });
+}
+```
+
+### <a name="remove-user-from-a-group"></a>Usuwanie użytkownika z grupy
+
+Poniższy przykład usuwa użytkownika z grupy.
+
+Przykład *Function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*Uruchom. CSX*
+
+```cs
+#r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
+using Microsoft.Azure.WebJobs.Extensions.SignalRService;
+
+public static Task Run(
+    HttpRequest req,
+    ClaimsPrincipal claimsPrincipal,
+    IAsyncCollector<SignalRGroupAction> signalRGroupActions)
+{
+    var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
+    return signalRGroupActions.AddAsync(
+        new SignalRGroupAction
+        {
+            UserId = userIdClaim.Value,
+            GroupName = "myGroup",
+            Action = GroupAction.Remove
+        });
+}
+```
+
+> [!NOTE]
+> Aby można było prawidłowo uzyskać `ClaimsPrincipal`, musisz skonfigurować ustawienia uwierzytelniania w Azure Functions.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+### <a name="add-user-to-a-group"></a>Dodawanie użytkownika do grupy
+
+Poniższy przykład dodaje użytkownika do grupy.
+
+Przykład *Function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*index. js*
+
+```javascript
+module.exports = async function (context, req) {
+  context.bindings.signalRGroupActions = [{
+    "userId": req.query.userId,
+    "groupName": "myGroup",
+    "action": "add"
+  }];
+};
+```
+
+### <a name="remove-user-from-a-group"></a>Usuwanie użytkownika z grupy
+
+Poniższy przykład usuwa użytkownika z grupy.
+
+Przykład *Function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "signalRGroupActions",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*index. js*
+
+```javascript
+module.exports = async function (context, req) {
+  context.bindings.signalRGroupActions = [{
+    "userId": req.query.userId,
+    "groupName": "myGroup",
+    "action": "remove"
+  }];
+};
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+### <a name="add-user-to-a-group"></a>Dodawanie użytkownika do grupy
+
+Poniższy przykład dodaje użytkownika do grupy.
+
+Przykład *Function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "action",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*\_\_init. py__*
+
+```python
+def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
+    action.set(json.dumps({
+        'userId': 'userId1',
+        'groupName': 'myGroup',
+        'action': 'add'
+    }))
+```
+
+### <a name="remove-user-from-a-group"></a>Usuwanie użytkownika z grupy
+
+Poniższy przykład usuwa użytkownika z grupy.
+
+Przykład *Function. JSON*
+
+```json
+{
+    "type": "signalR",
+    "name": "action",
+    "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
+    "hubName": "chat",
+    "direction": "out"
+}
+```
+
+*\_\_init. py__*
+
+```python
+def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
+    action.set(json.dumps({
+        'userId': 'userId1',
+        'groupName': 'myGroup',
+        'action': 'remove'
+    }))
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+### <a name="add-user-to-a-group"></a>Dodawanie użytkownika do grupy
+
+Poniższy przykład dodaje użytkownika do grupy.
+
+```java
+@FunctionName("addToGroup")
+@SignalROutput(name = "$return", hubName = "chat")
+public SignalRGroupAction addToGroup(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req,
+        @BindingName("userId") String userId) {
+
+    SignalRGroupAction groupAction = new SignalRGroupAction();
+    groupAction.action = "add";
+    groupAction.userId = userId;
+    groupAction.groupName = "myGroup";
+    return action;
+}
+```
+
+### <a name="remove-user-from-a-group"></a>Usuwanie użytkownika z grupy
+
+Poniższy przykład usuwa użytkownika z grupy.
+
+```java
+@FunctionName("removeFromGroup")
+@SignalROutput(name = "$return", hubName = "chat")
+public SignalRGroupAction removeFromGroup(
+        @HttpTrigger(
+            name = "req",
+            methods = { HttpMethod.POST },
+            authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Object> req,
+        @BindingName("userId") String userId) {
+
+    SignalRGroupAction groupAction = new SignalRGroupAction();
+    groupAction.action = "remove";
+    groupAction.userId = userId;
+    groupAction.groupName = "myGroup";
+    return action;
+}
+```
+
+---
+
+## <a name="configuration"></a>Konfiguracja
+
+### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
+
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `SignalRConnectionInfo` atrybutu.
+
+|Właściwość Function.JSON | Właściwość atrybutu |Opis|
+|---------|---------|----------------------|
+|**type**| Nie dotyczy | musi być ustawiony na `signalRConnectionInfo`.|
+|**direction**| Nie dotyczy | musi być ustawiony na `in`.|
+|**Nazwij**| Nie dotyczy | Nazwa zmiennej używana w kodzie funkcji dla obiektu informacji o połączeniu. |
+|**hubName**|**HubName**| Ta wartość musi być ustawiona na nazwę centrum sygnałów, dla którego są generowane informacje o połączeniu.|
+|**Nazwa**|**Nazwa**| Opcjonalnie: wartość żądania identyfikatora użytkownika do ustawienia w tokenie klucza dostępu. |
+|**connectionStringSetting**|**ConnectionStringSetting**| Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi sygnalizującego (wartość domyślna to "AzureSignalRConnectionString"). |
+
+### <a name="signalr"></a>SignalR
+
+W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `SignalR` atrybutu.
+
+|Właściwość Function.JSON | Właściwość atrybutu |Opis|
+|---------|---------|----------------------|
+|**type**| Nie dotyczy | musi być ustawiony na `signalR`.|
+|**direction**| Nie dotyczy | musi być ustawiony na `out`.|
+|**Nazwij**| Nie dotyczy | Nazwa zmiennej używana w kodzie funkcji dla obiektu informacji o połączeniu. |
+|**hubName**|**HubName**| Ta wartość musi być ustawiona na nazwę centrum sygnałów, dla którego są generowane informacje o połączeniu.|
+|**connectionStringSetting**|**ConnectionStringSetting**| Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi sygnalizującego (wartość domyślna to "AzureSignalRConnectionString"). |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+## <a name="next-steps"></a>Następne kroki
+
+- [Zwróć adres URL punktu końcowego usługi i token dostępu (powiązanie wejściowe)](./functions-bindings-signalr-service-input.md)

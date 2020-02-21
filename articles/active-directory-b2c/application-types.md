@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f8c98149d9e9ff65b7b18762f0f17d19053f2f49
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ec97f986c4472f793c2d38ded2a1c6873b1ee08d
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846759"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482789"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikacji, które mogą być używane w Active Directory B2C
 
@@ -125,7 +125,7 @@ Aby skonfigurować przepływ poświadczeń klienta, zobacz [Azure Active Directo
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Łańcuchy interfejsu API sieci Web (przepływ „w imieniu”)
 
-Wiele architektur obejmuje interfejs API sieci Web, który musi wywołać inny podrzędny interfejs API sieci Web, przy czym oba interfejsy są zabezpieczane przez usługę Azure AD B2C. Ten scenariusz jest typowy w natywnych klientach z zapleczem interfejsu API sieci Web i wywołuje usługę online firmy Microsoft, taką jak interfejs API Microsoft Graph lub interfejs API programu Graph usługi Azure AD.
+Wiele architektur obejmuje interfejs API sieci Web, który musi wywołać inny podrzędny interfejs API sieci Web, przy czym oba interfejsy są zabezpieczane przez usługę Azure AD B2C. Ten scenariusz jest typowy w natywnych klientach z zapleczem interfejsu API sieci Web i wywołuje usługi online firmy Microsoft, takiej jak Microsoft Graph API.
 
 Ten scenariusz obejmujący łańcuch interfejsów API sieci Web może być obsługiwany przy użyciu przyznania poświadczeń elementu nośnego OAuth 2.0 JWT, określanego również jako przepływ „w imieniu”.  Jednak przepływ „w imieniu” nie jest obecnie wdrażany w usłudze Azure AD B2C.
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 25b61b7e21e70c1cd4d27f88a0f5ce965c01c5a5
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: ab4569860d24a397816aa2e6c92f2e90f9a14ed1
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964655"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526545"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa metadanych wystąpienia platformy Azure
 
@@ -32,23 +32,25 @@ Punkt końcowy jest dostępny w dobrze znanym adresie IP bez obsługi routingu (
 > [!IMPORTANT]
 > Ta usługa jest **ogólnie dostępna** we wszystkich regionach świadczenia usługi Azure.  Regularnie otrzymuje aktualizacje, aby uwidocznić nowe informacje o wystąpieniach maszyn wirtualnych. Ta strona przedstawia aktualne dostępne [interfejsy API metadanych](#metadata-apis) .
 
-## <a name="service-availability"></a>Dostępność usług
+## <a name="service-availability"></a>Dostępność usługi
 
 Usługa jest dostępna w ogólnie dostępnych regionach platformy Azure. Nie wszystkie wersje interfejsu API mogą być dostępne we wszystkich regionach świadczenia usługi Azure.
 
 Regiony                                        | Opóźnienie?                                 | Obsługiwane wersje
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Wszystkie ogólnie dostępne globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure — Chiny](https://www.azure.cn/)                                            | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Wszystkie ogólnie dostępne globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępna | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Ogólnie dostępna | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure — Chiny](https://www.azure.cn/)                                            | Ogólnie dostępna | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | Ogólnie dostępna | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+
+Wersja 2019-11-01 jest obecnie wdrażana i może nie być dostępna we wszystkich regionach.
 
 Ta tabela jest aktualizowana, gdy istnieją aktualizacje usługi i/lub dostępne są nowe obsługiwane wersje.
 
 Aby wypróbować Instance Metadata Service, Utwórz maszynę wirtualną z poziomu [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) lub [Azure Portal](https://portal.azure.com) w powyższych regionach i postępuj zgodnie z poniższymi przykładami.
 Więcej przykładów dotyczących zapytań IMDS można znaleźć w przykładach [metadanych wystąpienia platformy Azure](https://github.com/microsoft/azureimds)
 
-## <a name="usage"></a>Użycie
+## <a name="usage"></a>Sposób użycia
 
 ### <a name="versioning"></a>Obsługa wersji
 
@@ -102,13 +104,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 Domyślnie Instance Metadata Service zwraca dane w formacie JSON (`Content-Type: application/json`). Jednak inne interfejsy API zwracają dane w różnych formatach, jeśli jest to wymagane.
 Poniższa tabela zawiera odwołania do innych formatów danych, które mogą być obsługiwane przez interfejsy API.
 
-API | Domyślny format danych | Inne formaty
+Interfejs API | Domyślny format danych | Inne formaty
 --------|---------------------|--------------
 /instance | kodu | tekst
 /scheduledevents | kodu | brak
 /attested | kodu | brak
 
-Aby uzyskać dostęp do formatu niedomyślnej odpowiedzi, należy określić żądany format jako parametr ciągu zapytania w żądaniu. Przykład:
+Aby uzyskać dostęp do formatu niedomyślnej odpowiedzi, należy określić żądany format jako parametr ciągu zapytania w żądaniu. Na przykład:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -124,13 +126,13 @@ Punkt końcowy Instance Metadata Service jest dostępny tylko w ramach uruchomio
 
 ### <a name="error"></a>Błąd
 
-Jeśli nie odnaleziono elementu danych lub nieprawidłowo sformułowane żądanie, Instance Metadata Service zwraca standardowe błędy HTTP. Przykład:
+Jeśli nie odnaleziono elementu danych lub nieprawidłowo sformułowane żądanie, Instance Metadata Service zwraca standardowe błędy HTTP. Na przykład:
 
 Kod stanu HTTP | Przyczyna
 ----------------|-------
 200 OK |
 400 Nieprawidłowe żądanie | Brak nagłówka `Metadata: true` lub nie ma go w czasie wykonywania zapytania dotyczącego węzła liścia
-404 — Nie odnaleziono | Żądany element nie istnieje
+nie znaleziono 404 | Żądany element nie istnieje
 Metoda 405 nie jest dozwolona | Obsługiwane są tylko żądania `GET`
 429 zbyt wiele żądań | Interfejs API obsługuje obecnie maksymalnie 5 zapytań na sekundę.
 Błąd usługi 500     | Ponów próbę za jakiś czas
@@ -452,7 +454,7 @@ Dane | Opis | Wprowadzona wersja
 -----|-------------|-----------------------
 zaświadczenia | Zobacz [zaświadczone dane](#attested-data) | 2018-10-01
 tożsamość | Zarządzane tożsamości dla zasobów platformy Azure. Zobacz [pozyskiwanie tokenu dostępu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
-instance | Zobacz [interfejs API wystąpienia](#instance-api) | 2017-04-02
+wystąpienie | Zobacz [interfejs API wystąpienia](#instance-api) | 2017-04-02
 scheduledevents | Zobacz [Scheduled Events](scheduled-events.md) | 2017-08-01
 
 #### <a name="instance-api"></a>Interfejs API wystąpienia
@@ -466,8 +468,8 @@ Dane | Opis | Wprowadzona wersja
 -----|-------------|-----------------------
 azEnvironment | Środowisko platformy Azure, w którym jest uruchomiona maszyna wirtualna | 2018-10-01
 customData | Ta funkcja jest obecnie wyłączona i będziemy aktualizować tę dokumentację, gdy staną się dostępne | 2019-02-01
-location | Region platformy Azure, w którym działa maszyna wirtualna | 2017-04-02
-name | Nazwa maszyny wirtualnej | 2017-04-02
+lokalizacja | Region platformy Azure, w którym działa maszyna wirtualna | 2017-04-02
+{1&gt;nazwa&lt;1} | Nazwa maszyny wirtualnej | 2017-04-02
 offer | Informacje o ofercie dla obrazu maszyny wirtualnej i dostępne tylko dla obrazów wdrożonych z galerii obrazów platformy Azure | 2017-04-02
 osType | System Linux lub Windows | 2017-04-02
 placementGroupId | [Grupa umieszczania](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) zestawu skalowania maszyn wirtualnych | 2017-08-01
@@ -482,9 +484,9 @@ resourceId | W [pełni kwalifikowany](https://docs.microsoft.com/rest/api/resour
 sku | Określona jednostka SKU dla obrazu maszyny wirtualnej | 2017-04-02
 Obszarze storageprofile | Zobacz [profil magazynu](#storage-profile) | 2019-06-01
 subscriptionId | Subskrypcja platformy Azure dla maszyny wirtualnej | 2017-08-01
-tags | [Tagi](../../azure-resource-manager/management/tag-resources.md) dla maszyny wirtualnej  | 2017-08-01
+tagów | [Tagi](../../azure-resource-manager/management/tag-resources.md) dla maszyny wirtualnej  | 2017-08-01
 tagsList | Tagi sformatowane jako tablica JSON dla łatwiejszego analizowania programistycznego  | 2019-06-04
-version | Wersja obrazu maszyny wirtualnej | 2017-04-02
+wersja | Wersja obrazu maszyny wirtualnej | 2017-04-02
 vmId | [Unikatowy identyfikator](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) dla maszyny wirtualnej | 2017-04-02
 vmScaleSetName | [Nazwa zestawu skalowania maszyn wirtualnych](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) w zestawie skalowania maszyn wirtualnych | 2017-12-01
 vmSize | [Rozmiar maszyny wirtualnej](sizes.md) | 2017-04-02
@@ -913,24 +915,24 @@ Obiekt odwołanie do obrazu zawiera następujące informacje o obrazie systemu o
 
 Dane    | Opis
 --------|-----------------
-id      | Identyfikator zasobu
+{1&gt;identyfikator&lt;1}      | Identyfikator zasobu
 offer   | Oferta platformy lub obrazu z witryny Marketplace
 publisher | Wydawca obrazu
 sku     | Jednostka SKU obrazu
-version | Wersja platformy lub obrazu witryny Marketplace
+wersja | Wersja platformy lub obrazu witryny Marketplace
 
 Obiekt dysku systemu operacyjnego zawiera następujące informacje na temat dysku systemu operacyjnego używanego przez maszynę wirtualną:
 
 Dane    | Opis
 --------|-----------------
-pamięć | Wymagania dotyczące buforowania
+buforowanie | Wymagania dotyczące buforowania
 Opcja | Informacje na temat sposobu tworzenia maszyny wirtualnej
 diffDiskSettings | Ustawienia dysku tymczasowych
 diskSizeGB | Rozmiar dysku w GB
 image   | Wirtualny dysk twardy obrazu użytkownika źródłowego
 tworzona     | Numer jednostki logicznej dysku
 managedDisk | Parametry dysku zarządzanego
-name    | Nazwa dysku
+{1&gt;nazwa&lt;1}    | Nazwa dysku
 VHD     | Wirtualny dysk twardy
 writeAcceleratorEnabled | Czy writeAccelerator jest włączona na dysku
 
@@ -938,14 +940,14 @@ Tablica dyski danych zawiera listę dysków danych podłączonych do maszyny wir
 
 Dane    | Opis
 --------|-----------------
-pamięć | Wymagania dotyczące buforowania
+buforowanie | Wymagania dotyczące buforowania
 Opcja | Informacje na temat sposobu tworzenia maszyny wirtualnej
 diffDiskSettings | Ustawienia dysku tymczasowych
 diskSizeGB | Rozmiar dysku w GB
 encryptionSettings | Ustawienia szyfrowania dysku
 image   | Wirtualny dysk twardy obrazu użytkownika źródłowego
 managedDisk | Parametry dysku zarządzanego
-name    | Nazwa dysku
+{1&gt;nazwa&lt;1}    | Nazwa dysku
 osType  | Typ systemu operacyjnego znajdującego się na dysku
 VHD     | Wirtualny dysk twardy
 writeAcceleratorEnabled | Czy writeAccelerator jest włączona na dysku
@@ -1024,12 +1026,12 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageP
 Język | Przykład
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+Przejdź  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
 JavaScript | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
-PowerShell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
+Program PowerShell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
 Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 Perl       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl
 Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java

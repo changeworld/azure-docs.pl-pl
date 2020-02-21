@@ -3,33 +3,39 @@ author: mmacy
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 10/16/2019
+ms.date: 02/12/2020
 ms.author: marsma
-ms.openlocfilehash: 43bcd1f11eb228bd1454b2ad0f2addb851029f2f
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e5201dfee83ec5360e55533e923e2b55c24c09d9
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73800010"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77492931"
 ---
-#### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
+#### <a name="applications"></a>[Aplikacje](#tab/applications/)
 
 1. Na stronie Przegląd **zarejestrowanej aplikacji** wybierz pozycję **Ustawienia**.
 1. W obszarze **dostęp do interfejsu API**wybierz pozycję **wymagane uprawnienia**.
-1. Wybierz pozycję **Windows Azure Active Directory**.
-1. W obszarze **uprawnienia aplikacji**wybierz pozycję **Odczytuj i Zapisz dane katalogu**.
+1. Wybierz **Microsoft Graph**.
+1. W obszarze **uprawnienia aplikacji**zaznacz pole wyboru uprawnienia do udzielenia aplikacji zarządzania. Na przykład:
+    * **Przeczytaj wszystkie dane dziennika inspekcji**: wybierz to uprawnienie do odczytywania dzienników inspekcji katalogu.
+    * **Odczytuj i zapisuj dane katalogu**: wybierz to uprawnienie do migracji użytkowników lub scenariuszy zarządzania użytkownikami.
+    * **Odczytuj i zapisuj zasady struktury zaufania organizacji**: wybierz to uprawnienie do scenariuszy ciągłej integracji/ciągłego dostarczania (Ci/CD). Na przykład niestandardowe wdrożenie zasad z Azure Pipelines.
 1. Wybierz pozycję **Zapisz**.
 1. Wybierz pozycję **Udziel uprawnień**, a następnie wybierz pozycję **tak**. Pełne propagowanie uprawnień może potrwać kilka minut.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
 
 1. W obszarze **Zarządzaj**wybierz pozycję **uprawnienia interfejsu API**.
 1. W obszarze **skonfigurowane uprawnienia**wybierz pozycję **Dodaj uprawnienie**.
-1. Wybierz **Azure Active Directory Graf**.
+1. Wybierz kartę **interfejsy API firmy Microsoft** , a następnie wybierz pozycję **Microsoft Graph**.
 1. Wybierz pozycję **Uprawnienia aplikacji**.
-1. Rozwiń węzeł **katalog** , a następnie zaznacz pole wyboru **katalog. ReadWrite. All** .
+1. Rozwiń odpowiednią grupę uprawnień i zaznacz pole wyboru uprawnienia do udzielenia aplikacji zarządzania. Na przykład:
+    * **Auditlog** > **auditlog. Read. All**: na potrzeby odczytywania dzienników inspekcji katalogu.
+    * **Katalog** > **katalog. wszystkie**: na potrzeby migracji użytkowników lub scenariuszy zarządzania użytkownikami.
+    * **Zasady** > **Policy. ReadWrite. TrustFramework**: w scenariuszach ciągłej integracji/ciągłego dostarczania (Ci/CD). Na przykład niestandardowe wdrożenie zasad z Azure Pipelines.
 1. Wybierz pozycję **Dodaj uprawnienia**. Poczekaj kilka minut, zanim przejdziesz do kolejnego kroku.
 1. Wybierz pozycję **Udziel zgody administratora (nazwa dzierżawy)** .
-1. Wybierz konto administratora dzierżawy.
+1. Wybierz obecnie zalogowane konto administratora lub Zaloguj się przy użyciu konta w dzierżawie Azure AD B2C, do którego przypisano co najmniej rolę *administratora aplikacji w chmurze* .
 1. Wybierz pozycję **Zaakceptuj**.
 1. Wybierz pozycję **Odśwież**, a następnie sprawdź, czy "udzielono dla..." pojawia się w obszarze **stan**. Propagowanie uprawnień może potrwać kilka minut.

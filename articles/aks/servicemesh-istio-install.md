@@ -4,15 +4,15 @@ description: Dowiedz się, jak zainstalować i używać Istio do tworzenia siatk
 author: paulbouwer
 ms.service: container-service
 ms.topic: article
-ms.date: 11/15/2019
+ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: d886205e88db780a7a09554391bd975f57eebfe7
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 15b73380269c568977b524a63ca709e352485433
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251740"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485220"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Instalowanie i używanie Istio w usłudze Azure Kubernetes Service (AKS)
 
@@ -98,10 +98,7 @@ Podejście instalacji [Helm][helm] dla Istio będzie przestarzałe w przyszłoś
 > Istio obecnie muszą być zaplanowane do uruchomienia w węzłach systemu Linux. Jeśli w klastrze znajdują się węzły systemu Windows Server, musisz upewnić się, że Istio są zaplanowane do uruchomienia tylko w węzłach z systemem Linux. Użyjemy [selektorów węzłów][kubernetes-node-selectors] , aby upewnić się, że zasobniki są zaplanowane do poprawnego węzła.
 
 > [!CAUTION]
-> Funkcje [usługi biodiscovery (poufnego odnajdowania)][istio-feature-sds] i [Istio CNI][istio-feature-cni] Istio są obecnie w [technologii alfa][istio-feature-stages], dlatego należy je zapewnić przed ich włączeniem. 
->
-> Należy pamiętać, że funkcja Kubernetes [projekcji woluminu tokenów konta usługi][kubernetes-feature-sa-projected-volume] jest teraz **włączona** dla wszystkich Kubernetes 1,13 i nowszych wersji na AKS.
-
+> Funkcje [usługi biodiscovery (poufnego odnajdowania)][istio-feature-sds] i [Istio CNI][istio-feature-cni] Istio są obecnie w [technologii alfa][istio-feature-stages], dlatego należy je zapewnić przed ich włączeniem. Ponadto funkcja Kubernetes [projekcji woluminu tokenów konta usługi][kubernetes-feature-sa-projected-volume] nie jest włączona w bieżących wersjach AKS.
 Utwórz plik o nazwie `istio.aks.yaml` z następującą zawartością. Ten plik zawiera szczegółowe informacje dotyczące [Istio kontroli płaszczyzny][istio-control-plane] dla konfigurowania Istio.
 
 ```yaml

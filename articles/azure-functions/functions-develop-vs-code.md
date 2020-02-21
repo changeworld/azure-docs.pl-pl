@@ -3,12 +3,12 @@ title: Opracowywanie Azure Functions przy użyciu Visual Studio Code
 description: Dowiedz się, jak opracowywać i testować Azure Functions przy użyciu rozszerzenia Azure Functions dla Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 41a1a64be4823769f6bf23b251fec94fd68eb0f0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210246"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484779"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Opracowywanie Azure Functions przy użyciu Visual Studio Code
 
@@ -92,11 +92,11 @@ Szablon projektu tworzy projekt w wybranym języku i instaluje wymagane zależno
 
 W zależności od języka tworzone są te inne pliki:
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 * [Plik biblioteki klas HttpExample.cs](functions-dotnet-class-library.md#functions-class-library-project) , który implementuje funkcję.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 * Plik Package. JSON w folderze głównym.
 
@@ -122,7 +122,7 @@ Możesz również [dodać nową funkcję do projektu](#add-a-function-to-your-pr
 
 Z wyjątkiem wyzwalaczy HTTP i Timer, powiązania są implementowane w pakietach rozszerzeń. Należy zainstalować pakiety rozszerzeń dla wyzwalaczy i powiązań, które ich potrzebują. Proces instalacji rozszerzeń powiązań zależy od języka projektu.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Uruchom polecenie [dotnet Add Package](/dotnet/core/tools/dotnet-add-package) w oknie terminalu, aby zainstalować pakiety rozszerzeń, które są potrzebne w projekcie. Następujące polecenie instaluje rozszerzenie usługi Azure Storage, które implementuje powiązania dla obiektów blob, Queue i Table Storage.
 
@@ -130,7 +130,7 @@ Uruchom polecenie [dotnet Add Package](/dotnet/core/tools/dotnet-add-package) w 
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -142,11 +142,11 @@ Nową funkcję można dodać do istniejącego projektu przy użyciu jednego ze w
 
 Wyniki tej akcji zależą od języka projektu:
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Do projektu C# zostanie dodany nowy plik biblioteki klas (. cs).
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 W projekcie zostanie utworzony nowy folder. Folder zawiera nowy plik Function. JSON i nowy plik kodu JavaScript.
 
@@ -158,7 +158,7 @@ Funkcję można rozszerzyć przez dodanie powiązań wejściowych i wyjściowych
 
 Poniższe przykłady nawiązują połączenie z kolejką magazynu o nazwie `outqueue`, gdzie parametry połączenia dla konta magazynu są ustawiane w ustawieniach aplikacji `MyStorageConnection` w pliku Local. Settings. JSON.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Zaktualizuj metodę funkcji, aby dodać następujący parametr do definicji metody `Run`:
 
@@ -174,9 +174,9 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 `msg` parametr jest typu `ICollector<T>`, który reprezentuje kolekcję komunikatów, które są zapisywane do powiązania danych wyjściowych po zakończeniu działania funkcji. Do kolekcji dodasz co najmniej jeden komunikat. Te komunikaty są wysyłane do kolejki po zakończeniu działania funkcji.
 
-Aby dowiedzieć się więcej, zobacz dokumentację [powiązania danych wyjściowych kolejki magazynu](functions-bindings-storage-queue.md#output) .
+Aby dowiedzieć się więcej, zobacz dokumentację [powiązania danych wyjściowych kolejki magazynu](functions-bindings-storage-queue-output.md) .
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 Visual Studio Code pozwala dodawać powiązania do pliku Function. JSON, wykonując odpowiedni zestaw postanowień. Aby utworzyć powiązanie, kliknij prawym przyciskiem myszy (Ctrl + kliknięcie macOS) plik **Function. JSON** w folderze funkcji i wybierz polecenie **Dodaj powiązanie**:
 
@@ -184,7 +184,7 @@ Visual Studio Code pozwala dodawać powiązania do pliku Function. JSON, wykonuj
 
 Poniżej przedstawiono przykładowe monity o zdefiniowanie nowego powiązania danych wyjściowych magazynu:
 
-| Monit | Wartość | Opis |
+| Monit | Value | Opis |
 | -------- | ----- | ----------- |
 | **Wybierz kierunek powiązania** | `out` | Powiązanie jest powiązaniem wyjściowym. |
 | **Wybieranie powiązania z kierunkiem** | `Azure Queue Storage` | Powiązanie to powiązanie kolejki usługi Azure Storage. |
@@ -212,7 +212,7 @@ W kodzie funkcji można uzyskać dostęp do powiązania `msg` z `context`, jak w
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-Aby dowiedzieć się więcej, zobacz informacje o [powiązaniach wyjściowych magazynu kolejki](functions-bindings-storage-queue.md#output) .
+Aby dowiedzieć się więcej, zobacz informacje o [powiązaniach wyjściowych magazynu kolejki](functions-bindings-storage-queue-output.md) .
 
 ---
 
@@ -248,7 +248,7 @@ Poniższe kroki umożliwiają opublikowanie projektu w nowej aplikacji funkcji u
 
 1. Postępując zgodnie z instrukcjami, podaj następujące informacje:
 
-    | Monit | Wartość | Opis |
+    | Monit | Value | Opis |
     | ------ | ----- | ----------- |
     | Wybieranie aplikacji funkcji na platformie Azure | Utwórz nowe aplikacja funkcji na platformie Azure | W następnym monicie wpisz globalnie unikatową nazwę, która identyfikuje nową aplikację funkcji, a następnie wybierz klawisz ENTER. Prawidłowe znaki dla nazwy aplikacji funkcji to `a-z`, `0-9` i `-`. |
     | Wybierz system operacyjny | Windows | Aplikacja funkcji jest uruchamiana w systemie Windows. |

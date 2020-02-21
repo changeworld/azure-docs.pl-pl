@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7c8bdb7236ed0a3a12bae5050e564afe0b68cde
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
-ms.translationtype: MT
+ms.openlocfilehash: 9a44cf9aa5b3287a01617be6439cd04b9a5caa73
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461236"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484234"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Tworzenie punktu końcowego Standard scim i Konfigurowanie aprowizacji użytkowników przy użyciu Azure Active Directory (Azure AD)
 
@@ -100,13 +100,13 @@ Następnie można użyć poniższej tabeli, aby zrozumieć, w jaki sposób atryb
 | Użytkownika usługi Azure Active Directory | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
 | IsSoftDeleted |aktywne |
-|department|urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: Department|
+|Dział|urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: Department|
 | displayName |displayName |
 |employeeId|urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: employeeNumber|
 | Facsimile-TelephoneNumber |wartość phoneNumbers [typ eq "faksu"] |
 | givenName |name.givenName |
-| Stanowisko |title |
-| mail (poczta) |wiadomości e-mail [typ eq "Praca"] .value |
+| Stanowisko |Tytuł |
+| poczta |wiadomości e-mail [typ eq "Praca"] .value |
 | mailNickname |externalId |
 | Menedżer |urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: Manager |
 | Telefon komórkowy |wartość phoneNumbers [eq wpisz "wyraz mobile"] |
@@ -114,7 +114,7 @@ Następnie można użyć poniższej tabeli, aby zrozumieć, w jaki sposób atryb
 | proxy-Addresses |wiadomości e-mail [Wpisz eq "other"]. Wartość |
 | physical-Delivery-OfficeName |adresy [Wpisz eq "other"]. Sformatowany |
 | Adres |.streetAddress adresy [typ eq "Praca"] |
-| surname |name.familyName |
+| nazwisko |name.familyName |
 | Numer telefonu |wartość phoneNumbers [typ eq "Praca"] |
 | user-PrincipalName |userName |
 
@@ -124,7 +124,7 @@ Następnie można użyć poniższej tabeli, aby zrozumieć, w jaki sposób atryb
 | Grupa usługi Azure Active Directory | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
 | displayName |displayName |
-| mail (poczta) |wiadomości e-mail [typ eq "Praca"] .value |
+| poczta |wiadomości e-mail [typ eq "Praca"] .value |
 | mailNickname |displayName |
 | członkowie |członkowie |
 | Identyfikator obiektu |externalId |
@@ -145,7 +145,7 @@ Istnieje kilka punktów końcowych zdefiniowanych w Standard scim RFC. Możesz r
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>Krok 2. Omówienie implementacji usługi Azure AD Standard scim
 > [!IMPORTANT]
-> Ostatnio Zaktualizowano zachowanie implementacji usługi Azure AD Standard scim w dniu 18 grudnia 2018. Aby uzyskać informacje na temat zmian, zobacz [zgodność protokołów standard scim 2,0 usługi Azure AD User Provisioning](../manage-apps/application-provisioning-config-problem-scim-compatibility.md).
+> Ostatnio Zaktualizowano zachowanie implementacji usługi Azure AD Standard scim w dniu 18 grudnia 2018. Aby uzyskać informacje na temat zmian, zobacz [zgodność protokołów standard scim 2,0 usługi Azure AD User Provisioning](application-provisioning-config-problem-scim-compatibility.md).
 
 Jeśli tworzysz aplikację, która obsługuje interfejs API zarządzania użytkownikami w systemie Standard scim 2,0, w tej sekcji szczegółowo opisano sposób implementacji klienta usługi Azure AD Standard scim. Przedstawiono w nim również sposób modelowania obsługi żądań i odpowiedzi protokołu Standard scim. Po wdrożeniu punktu końcowego Standard scim można go przetestować, wykonując procedurę opisaną w poprzedniej sekcji.
 
@@ -560,7 +560,7 @@ Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta u
 * Aktualizacja żądania poprawek grupy powinna spowodować, że w odpowiedzi *nie ma żadnej zawartości HTTP 204* . Zwracanie treści z listą wszystkich elementów członkowskich nie jest zalecane.
 * Nie trzeba obsługiwać zwracania wszystkich elementów członkowskich grupy.
 
-#### <a name="create-group"></a>Tworzenie grupy
+#### <a name="create-group"></a>Utwórz grupę
 
 ##### <a name="request-7"></a>Żądając
 
@@ -1488,7 +1488,7 @@ Aby zwiększyć świadomość i zapotrzebowanie naszej integracji, Zalecamy zakt
 * **Gotowość do obsługi sprzedaży i klienta.** Upewnij się, że zespoły sprzedaży i pomocy technicznej są świadome i mogą mówić do możliwości integracji. W skrócie zespół ds. sprzedaży i pomocy technicznej, Zapewnij im często zadawane pytania i Włącz integrację z materiałami sprzedaży. 
 * **Wpis w blogu i/lub naciśnięcie klawisza.** Umieść wpis w blogu lub wersję próbną opisującą integrację, zalety i sposób rozpoczynania pracy. [Przykład: Niewprowadzenie i Azure Active Directory Press](https://www.imprivata.com/company/press/imprivata-introduces-iam-cloud-platform-healthcare-supported-microsoft) 
 * **Media społecznościowe.** Skorzystaj z mediów społecznościowych, takich jak Twitter, Facebook lub LinkedIn, aby promować integrację z klientami. Upewnij się, że dołączasz @AzureAD, aby umożliwić nam retweet Twojego wpisu. [Przykład: Niemniej wpis w serwisie Twitter](https://twitter.com/azuread/status/1123964502909779968)
-* **Witryna sieci Web Marketing.** Utwórz lub zaktualizuj strony marketingowe (np. Strona integracji, Strona partnera, Cennik itp.), aby uwzględnić dostępność wspólnej integracji. [Przykład: Strona integracji Pingboard](https://pingboard.com/org-chart-for), [Strona integracji narzędzia Smartsheet](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad), [Strona z cennikiem Monday.com](https://monday.com/pricing/) 
+* **Witryna sieci Web Marketing.** Utwórz lub zaktualizuj strony marketingowe (np. Strona integracji, Strona partnera, Cennik itp.) w celu uwzględnienia dostępności wspólnej integracji. [Przykład: Strona integracji Pingboard](https://pingboard.com/org-chart-for), [Strona integracji narzędzia Smartsheet](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad), [Strona z cennikiem Monday.com](https://monday.com/pricing/) 
 * **Dokumentacja techniczna.** Utwórz artykuł centrum pomocy lub dokumentację techniczną dotyczącą sposobu, w jaki klienci mogą rozpocząć pracę. [Przykład: wysłannika + Microsoft Azure Active Directory integrację.](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
 ) 
 * **Komunikacja z klientem.** Powiadamiaj klientów o nowej integracji za pośrednictwem komunikacji z klientem (Biuletyny Miesięczne, kampanie e-mail i informacje o wersji produktu). 
@@ -1497,7 +1497,7 @@ Aby zwiększyć świadomość i zapotrzebowanie naszej integracji, Zalecamy zakt
 
 Niektóre aplikacje zezwalają na ruch przychodzący do swojej aplikacji. Aby usługa Azure AD Provisioning działała zgodnie z oczekiwaniami, używane adresy IP muszą być dozwolone. Aby uzyskać listę adresów IP dla każdego tagu usługi/regionu, zobacz plik JSON — [zakresy adresów IP platformy Azure i Tagi usług — chmura publiczna](https://www.microsoft.com/download/details.aspx?id=56519). W razie konieczności można pobrać i obsłużyć te adresy IP w zaporze. Zakresy zarezerwowanych adresów IP dla aprowizacji usługi Azure AD można znaleźć w obszarze "AzureActiveDirectoryDomainServices".
 
-## <a name="related-articles"></a>Pokrewne artykuły
+## <a name="related-articles"></a>Pokrewne artykuły:
 
 * [Automatyzowanie aprowizacji użytkowników i anulowanie obsługi aplikacji SaaS](user-provisioning.md)
 * [Dostosuj mapowania atrybutów na potrzeby aprowizacji użytkowników](customize-application-attributes.md)

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 2fa43cb9ec526cfab2367431712e09406556a529
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 63174e1d4950b9f18fd3693511c507ed2dd018b3
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191819"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500366"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Nawiązywanie połączenia z sieciami wirtualnymi platformy Azure z Azure Logic Apps przy użyciu środowiska usługi integracji (ISE)
 
@@ -41,7 +41,7 @@ W tym artykule przedstawiono sposób wykonywania następujących zadań:
 
 * [Sieć wirtualna platformy Azure](../virtual-network/virtual-networks-overview.md). Jeśli nie masz sieci wirtualnej, Dowiedz się, jak [utworzyć sieć wirtualną platformy Azure](../virtual-network/quick-create-portal.md).
 
-  * Sieć wirtualna musi mieć cztery *puste* podsieci do tworzenia i wdrażania zasobów w ISE. Każda podsieć obsługuje inny składnik Logic Apps dla ISE. Można utworzyć te podsieci z wyprzedzeniem lub poczekać, aż utworzysz ISE, w którym można tworzyć podsieci w tym samym czasie. Dowiedz się więcej o [wymaganiach podsieci](#create-subnet).
+  * Sieć wirtualna musi mieć cztery *puste* podsieci do tworzenia i wdrażania zasobów w ISE. Każda podsieć obsługuje inny składnik Logic Apps używany w ISE. Można utworzyć te podsieci z wyprzedzeniem lub poczekać, aż utworzysz ISE, w którym można tworzyć podsieci w tym samym czasie. Dowiedz się więcej o [wymaganiach podsieci](#create-subnet).
 
   * Nazwy podsieci muszą zaczynać się znakiem alfabetycznym lub podkreśleniem i nie mogą używać następujących znaków: `<`, `>`, `%`, `&`, `\\`, `?`, `/`. 
   
@@ -91,27 +91,25 @@ W tej tabeli opisano porty w sieci wirtualnej platformy Azure używane przez ISE
 
 | Przeznaczenie | Kierunek | Porty docelowe | Tag usługi źródłowej | Docelowy tag usługi | Uwagi |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
-| Komunikacja Intrasubnet | Przychodzące & wychodzące | * | Przestrzeń adresowa dla sieci wirtualnej z podsieciami ISE | Przestrzeń adresowa dla sieci wirtualnej z podsieciami ISE | Wymagane, aby ruch może przepływać w poszczególnych podsieciach. <p><p>**Ważne**: w przypadku komunikacji między składnikami w podsieciach upewnij się, że otwarto wszystkie porty w tych podsieciach. |
-| Komunikacja między sieciami | Przychodzące & wychodzące | 80, 443 | VirtualNetwork | VirtualNetwork | Do komunikacji między podsieciami |
-| Komunikacja z Azure Logic Apps | Wychodzący | 80, 443 | VirtualNetwork | Internet | Port zależy od usługi zewnętrznej, z którą komunikuje się usługa Logic Apps |
-| Azure Active Directory | Wychodzący | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
-| Zależność usługi Azure Storage | Wychodzący | 80, 443, 445 | VirtualNetwork | Storage | |
-| Komunikacja do Azure Logic Apps | Przychodzący | 443 | ISE wewnętrzny: <br>VirtualNetwork <p><p>ISE zewnętrzne: <br>Internet | VirtualNetwork | Adres IP komputera lub usługi, który wywołuje wszystkie wyzwalacze żądań lub elementy webhook w aplikacji logiki. Zamknięcie lub zablokowanie tego portu uniemożliwia wywołania HTTP aplikacjom logiki z wyzwalaczami żądań. |
-| Historia uruchamiania aplikacji logiki | Przychodzący | 443 | ISE wewnętrzny: <br>VirtualNetwork <p><p>ISE zewnętrzne: <br>Internet | VirtualNetwork | Adres IP komputera, z którego ma zostać wyświetlona historia uruchamiania aplikacji logiki. Mimo że zamknięcie lub zablokowanie tego portu nie uniemożliwia wyświetlenia historii uruchamiania, nie można wyświetlić danych wejściowych i wyjściowych dla każdego kroku w tej historii uruchamiania. |
-| Zarządzanie połączeniami | Wychodzący | 443 | VirtualNetwork  | AppService | |
-| Publikowanie dzienników diagnostycznych & metryki | Wychodzący | 443 | VirtualNetwork  | AzureMonitor | |
-| Komunikacja z Traffic Manager platformy Azure | Przychodzący | ISE wewnętrzny: 454 <p><p>ISE zewnętrzne: 443 | AzureTrafficManager | VirtualNetwork | |
+| Komunikacja między podsieciami w ramach sieci wirtualnej | Przychodzące & wychodzące | * | Przestrzeń adresowa sieci wirtualnej, która ma podsieci ISE | Przestrzeń adresowa sieci wirtualnej, która ma podsieci ISE | Wymagany do przepływu ruchu *między* podsieciami w sieci wirtualnej. <p><p>**Ważne**: w przypadku ruchu między *składnikami* w poszczególnych podsieciach upewnij się, że otwarto wszystkie porty w każdej podsieci. |
+| Komunikacja z aplikacją logiki | Przychodzący | 443 | ISE wewnętrzny: <br>VirtualNetwork <p><p>ISE zewnętrzne: <br>Internet | VirtualNetwork | Źródłowy adres IP komputera lub usługi, który wywołuje wszystkie wyzwalacze żądań lub elementy webhook w aplikacji logiki. <p><p>**Ważne**: zamknięcie lub zablokowanie tego portu zapobiega WYWOŁYWANiu http przez aplikacje logiki, które mają wyzwalacze żądań. |
+| Historia uruchamiania aplikacji logiki | Przychodzący | 443 | ISE wewnętrzny: <br>VirtualNetwork <p><p>ISE zewnętrzne: <br>Internet | VirtualNetwork | Źródłowy adres IP komputera lub usługi, z którego ma zostać wyświetlona historia uruchamiania aplikacji logiki. <p><p>**Ważne**: Chociaż zamknięcie lub blokowanie tego portu nie uniemożliwia wyświetlenia historii uruchamiania, nie można wyświetlić danych wejściowych i wyjściowych dla każdego kroku w tej historii uruchamiania. |
 | Logic Apps Designer — właściwości dynamiczne | Przychodzący | 454 | Zobacz kolumna **uwagi** dla adresów IP, aby zezwolić | VirtualNetwork | Żądania pochodzą z Logic Apps adresów IP [ruchu przychodzącego](../logic-apps/logic-apps-limits-and-config.md#inbound) punktu końcowego dostępu dla danego regionu. |
+| Wdrożenie łącznika | Przychodzący | 454 | AzureConnectors | VirtualNetwork | Wymagane do wdrażania i aktualizowania łączników. Zamknięcie lub zablokowanie tego portu powoduje, że wdrożenia ISE kończą się niepowodzeniem i uniemożliwiają aktualizacje lub poprawki łącznika. |
 | Sprawdzenie kondycji sieci | Przychodzący | 454 | Zobacz kolumna **uwagi** dla adresów IP, aby zezwolić | VirtualNetwork | Żądania pochodzą z punktu końcowego dostępu Logic Apps dla adresów IP zarówno dla [ruchu przychodzącego](../logic-apps/logic-apps-limits-and-config.md#inbound) , jak i [wychodzącego](../logic-apps/logic-apps-limits-and-config.md#outbound) . |
 | Zależność zarządzania App Service | Przychodzący | 454, 455 | AppServiceManagement | VirtualNetwork | |
-| Wdrożenie łącznika | Przychodzący | 454 | AzureConnectors | VirtualNetwork | Niezbędne do wdrażania i aktualizowania łączników. Zamknięcie lub zablokowanie tego portu powoduje, że wdrożenia ISE kończą się niepowodzeniem i uniemożliwiają aktualizacje lub poprawki łącznika. |
-| Wdrożenie zasad łącznika | Przychodzący | 3443 | APIManagement | VirtualNetwork | Niezbędne do wdrażania i aktualizowania łączników. Zamknięcie lub zablokowanie tego portu powoduje, że wdrożenia ISE kończą się niepowodzeniem i uniemożliwiają aktualizacje lub poprawki łącznika. |
-| Zależność SQL platformy Azure | Wychodzący | 1433 | VirtualNetwork | SQL | |
-| Azure Resource Health | Wychodzący | 1886 | VirtualNetwork | AzureMonitor | Aby opublikować stan kondycji Resource Health |
+| Komunikacja z Traffic Manager platformy Azure | Przychodzący | ISE wewnętrzny: 454 <p><p>ISE zewnętrzne: 443 | AzureTrafficManager | VirtualNetwork | |
 | Punkt końcowy zarządzania API Management | Przychodzący | 3443 | APIManagement | VirtualNetwork | |
-| Zależność od dziennika do zasad usługi Event Hub i agenta monitorowania | Wychodzący | 5672 | VirtualNetwork | EventHub | |
-| Dostęp do pamięci podręcznej platformy Azure dla wystąpień Redis między wystąpieniami roli | Przychodzący <br>Wychodzący | 6379-6383 | VirtualNetwork | VirtualNetwork | Ponadto, aby ISE współpracował z usługą Azure cache for Redis, należy otworzyć te [porty wychodzące i przychodzące opisane w pamięci podręcznej platformy Azure dla Redis często zadawane pytania](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
-| Azure Load Balancer | Przychodzący | * | AzureLoadBalancer | VirtualNetwork | |
+| Wdrożenie zasad łącznika | Przychodzący | 3443 | APIManagement | VirtualNetwork | Wymagane do wdrażania i aktualizowania łączników. Zamknięcie lub zablokowanie tego portu powoduje, że wdrożenia ISE kończą się niepowodzeniem i uniemożliwiają aktualizacje lub poprawki łącznika. |
+| Komunikacja z aplikacji logiki | Wychodzące | 80, 443 | VirtualNetwork | Różni się w zależności od miejsca docelowego | Punkty końcowe usługi zewnętrznej, z którą aplikacja logiki musi się komunikować. |
+| Usługa Azure Active Directory | Wychodzące | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
+| Zarządzanie połączeniami | Wychodzące | 443 | VirtualNetwork  | AppService | |
+| Publikowanie dzienników diagnostycznych & metryki | Wychodzące | 443 | VirtualNetwork  | AzureMonitor | |
+| Zależność usługi Azure Storage | Wychodzące | 80, 443, 445 | VirtualNetwork | Magazyn | |
+| Zależność SQL platformy Azure | Wychodzące | 1433 | VirtualNetwork | SQL | |
+| Azure Resource Health | Wychodzące | 1886 | VirtualNetwork | AzureMonitor | Wymagane do publikowania stanu kondycji w Resource Health |
+| Zależność od dziennika do zasad usługi Event Hub i agenta monitorowania | Wychodzące | 5672 | VirtualNetwork | EventHub | |
+| Dostęp do pamięci podręcznej platformy Azure dla wystąpień Redis między wystąpieniami roli | Przychodzący <br>Wychodzące | 6379 – 6383 | VirtualNetwork | VirtualNetwork | Ponadto, aby ISE współpracował z usługą Azure cache for Redis, należy otworzyć te [porty wychodzące i przychodzące opisane w pamięci podręcznej platformy Azure dla Redis często zadawane pytania](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
 ||||||
 
 <a name="create-environment"></a>
@@ -130,7 +128,7 @@ W tej tabeli opisano porty w sieci wirtualnej platformy Azure używane przez ISE
 
    ![Podaj szczegóły środowiska](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | Właściwość | Wymagany | Wartość | Opis |
+   | Właściwość | Wymagane | Value | Opis |
    |----------|----------|-------|-------------|
    | **Subskrypcja** | Yes | <*Azure-subscription-name*> | Subskrypcja platformy Azure do użycia w danym środowisku |
    | **Grupa zasobów** | Yes | <*Azure-Resource-Group-name*> | Nowa lub istniejąca Grupa zasobów platformy Azure, w której chcesz utworzyć środowisko |
@@ -147,23 +145,19 @@ W tej tabeli opisano porty w sieci wirtualnej platformy Azure używane przez ISE
 
    **Utwórz podsieć**
 
-   Aby tworzyć i wdrażać zasoby w danym środowisku, ISE muszą mieć cztery *puste* podsieci, które nie są delegowane do żadnej usługi. *Nie* można zmienić tych adresów podsieci po utworzeniu środowiska.
+   Aby tworzyć i wdrażać zasoby w danym środowisku, ISE muszą mieć cztery *puste* podsieci, które nie są delegowane do żadnej usługi. Każda podsieć obsługuje inny składnik Logic Apps używany w ISE. *Nie* można zmienić tych adresów podsieci po utworzeniu środowiska. Każda podsieć musi spełniać następujące wymagania:
 
-   > [!IMPORTANT]
-   > 
-   > Nazwy podsieci muszą zaczynać się od litery lub znaku podkreślenia (bez cyfr) i nie mogą używać następujących znaków: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
-
-   Ponadto każda podsieć musi spełniać następujące wymagania:
+   * Ma nazwę zaczynającą się od litery lub znaku podkreślenia (bez cyfr) i nie używa następujących znaków: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
 
    * Używa [formatu routingu bezklasowego (cidr)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) i przestrzeni adresowej klasy B.
 
-   * Używa co najmniej `/27` w przestrzeni adresowej, ponieważ każda podsieć wymaga *co najmniej* 32 *adresów.* Na przykład:
+   * Używa co najmniej `/27` w przestrzeni adresowej, ponieważ każda podsieć wymaga *co najmniej 32 adresów.* Na przykład:
+
+     * `10.0.0.0/28` ma tylko 16 adresów i jest za mały, ponieważ 2<sup>(32-28)</sup> wynosi 2<sup>4</sup> lub 16.
 
      * `10.0.0.0/27` ma 32 adresów, ponieważ 2<sup>(32-27)</sup> jest 2<sup>5</sup> lub 32.
 
-     * `10.0.0.0/24` ma 256 adresów, ponieważ 2<sup>(32-24)</sup> to 2<sup>8</sup> lub 256.
-
-     * `10.0.0.0/28` ma tylko 16 adresów i jest za mały, ponieważ 2<sup>(32-28)</sup> wynosi 2<sup>4</sup> lub 16.
+     * `10.0.0.0/24` ma 256 adresów, ponieważ 2<sup>(32-24)</sup> to 2<sup>8</sup> lub 256. Jednak więcej adresów nie zapewnia żadnych dodatkowych korzyści.
 
      Aby dowiedzieć się więcej o obliczaniu adresów, zobacz [bloki protokołu IPv4 w protokole CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 

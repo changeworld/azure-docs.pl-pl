@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 15302eb4f89c854210d4fc1aba292c57d4757278
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ee35f26f9433f6ab342c7dce105638122b9d7717
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231342"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486264"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Wydajność i skalowanie w Durable Functions (Azure Functions)
 
@@ -251,7 +251,7 @@ Planując użycie Durable Functions dla aplikacji produkcyjnej, ważne jest, aby
 > [!TIP]
 > W przeciwieństwie do wentylatorów, operacje wentylatorów są ograniczone do pojedynczej maszyny wirtualnej. Jeśli aplikacja korzysta z wentylatorów, wentylator-in i ma na celu wydajność wentylatorów, rozważ poddzielenie wentylatorów funkcji działania między wiele [podkategorii](durable-functions-sub-orchestrations.md).
 
-W poniższej tabeli przedstawiono oczekiwane *maksymalne* numery przepływności dla poprzednio opisanych scenariuszy. "Wystąpienie" odnosi się do pojedynczego wystąpienia funkcji programu Orchestrator działającej na pojedynczej niewielkiej maszynie wirtualnej ([a1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) w Azure App Service. We wszystkich przypadkach zakłada się, że [rozszerzone sesje](#orchestrator-function-replay) są włączone. Rzeczywiste wyniki mogą się różnić w zależności od procesora lub pracy we/wy wykonanej przez kod funkcji.
+W poniższej tabeli przedstawiono oczekiwane *maksymalne* numery przepływności dla poprzednio opisanych scenariuszy. "Wystąpienie" odnosi się do pojedynczego wystąpienia funkcji programu Orchestrator działającej na pojedynczej niewielkiej maszynie wirtualnej ([a1](../../virtual-machines/sizes-previous-gen.md)) w Azure App Service. We wszystkich przypadkach zakłada się, że [rozszerzone sesje](#orchestrator-function-replay) są włączone. Rzeczywiste wyniki mogą się różnić w zależności od procesora lub pracy we/wy wykonanej przez kod funkcji.
 
 | Scenariusz | Maksymalna przepływność |
 |-|-|

@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210195"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482364"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Tworzenie funkcji w systemie Linux przy użyciu kontenera niestandardowego
 
@@ -370,7 +370,7 @@ W przypadku obrazu wdrożonego w aplikacji funkcji na platformie Azure można te
 
 1. Pobierz adres URL funkcji z kluczem dostępu (funkcji) za pomocą Azure Portal lub przy użyciu interfejsu wiersza polecenia platformy Azure z poleceniem `az rest`.)
 
-    # <a name="portaltabportal"></a>[Portal](#tab/portal)
+    # <a name="portal"></a>[Portal](#tab/portal)
 
     1. Zaloguj się do Azure Portal, a następnie Znajdź swoją aplikację funkcji, wprowadzając nazwę aplikacji funkcji w polu **wyszukiwania** w górnej części strony. W wynikach wybierz zasób **App Service** .
 
@@ -387,7 +387,7 @@ W przypadku obrazu wdrożonego w aplikacji funkcji na platformie Azure można te
     > [!NOTE]  
     > Ponieważ aplikacja funkcji jest wdrażana jako kontener, nie można wprowadzać zmian w kodzie funkcji w portalu. Zamiast tego należy zaktualizować projekt w lokalnym obrazie, ponownie wypchnąć obraz do rejestru, a następnie wdrożyć go na platformie Azure. Wdrożenie ciągłe można skonfigurować w dalszej części artykułu.
     
-    # <a name="azure-clitabazurecli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azurecli)
+    # <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azurecli)
 
     1. Utwórz ciąg adresu URL w następującym formacie: zastępowanie `<subscription_id>`, `<resource_group>`i `<app_name>` z IDENTYFIKATORem subskrypcji platformy Azure, grupą zasobów aplikacji funkcji i nazwą aplikacji funkcji, odpowiednio
 
@@ -877,19 +877,19 @@ Kolejkę można wyświetlić w [Azure Portal](../storage/queues/storage-quicksta
 
 1. Otwórz plik *Local. JSON* projektu funkcji i skopiuj wartość parametrów połączenia. W terminalu lub w oknie polecenia Uruchom następujące polecenie, aby utworzyć zmienną środowiskową o nazwie `AZURE_STORAGE_CONNECTION_STRING`, wklejając określone parametry połączenia zamiast `<connection_string>`. (Ta zmienna środowiskowa oznacza, że nie trzeba podawać parametrów połączenia dla każdego kolejnego polecenia przy użyciu argumentu `--connection-string`).
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -899,19 +899,19 @@ Kolejkę można wyświetlić w [Azure Portal](../storage/queues/storage-quicksta
     
 1. Obowiązkowe Użyj [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) polecenia, aby wyświetlić kolejki magazynu na Twoim koncie. Dane wyjściowe tego polecenia powinny zawierać kolejkę o nazwie `outqueue`, która została utworzona, gdy funkcja zapisała swój pierwszy komunikat do tej kolejki.
     
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```azurecli
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```azurecli
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```azurecli
     az storage queue list --output tsv
@@ -919,21 +919,21 @@ Kolejkę można wyświetlić w [Azure Portal](../storage/queues/storage-quicksta
     
     ---
 
-1. Użyj [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) polecenia, aby wyświetlić komunikaty w tej kolejce, która powinna być pierwszą nazwą użytą podczas testowania funkcji wcześniej. Polecenie pobiera pierwszy komunikat w kolejce w [kodowaniu Base64](functions-bindings-storage-queue.md#encoding), więc należy również zdekodować komunikat, aby był wyświetlany jako tekst.
+1. Użyj [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) polecenia, aby wyświetlić komunikaty w tej kolejce, która powinna być pierwszą nazwą użytą podczas testowania funkcji wcześniej. Polecenie pobiera pierwszy komunikat w kolejce w [kodowaniu Base64](functions-bindings-storage-queue-trigger.md#encoding), więc należy również zdekodować komunikat, aby był wyświetlany jako tekst.
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     Ponieważ musisz usunąć odwołanie do kolekcji komunikatów i zdekodować ją z formatu Base64, uruchom program PowerShell i użyj polecenia programu PowerShell.
 

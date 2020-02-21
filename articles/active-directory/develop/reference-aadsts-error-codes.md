@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/18/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7798cb86606c206f027a1014802770a74aba909a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: ba5af060a02e8525320f005b5d1c80534c5ca4ea
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160381"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483928"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kody błędów autoryzacji i uwierzytelniania usługi Azure AD
 
@@ -133,7 +133,7 @@ Wyszukaj w liczbowej części zwróconego kodu błędu.  Na przykład jeśli wys
 | AADSTS50180 | Wymagana jest WindowsIntegratedAuthMissing zintegrowane uwierzytelnianie systemu Windows. Włącz dzierżawę dla bezproblemowego logowania jednokrotnego. |
 | AADSTS50187 | DeviceInformationNotProvided — usługa nie może wykonać uwierzytelniania urządzenia. |
 | AADSTS50196 | LoopDetected — wykryto pętlę klienta. Sprawdź logikę aplikacji, aby upewnić się, że buforowanie tokenów jest zaimplementowane i że warunki błędów są obsługiwane poprawnie.  Aplikacja spowodowała zbyt wiele tego samego żądania w zbyt krótkim czasie, co oznacza, że jest w stanie wadliwym lub jest abusively żądającym tokenów. |
-| AADSTS50199 | CmsiInterrupt — wymagana jest interakcja z użytkownikiem dla tego uwierzytelniania.  Ponieważ jest to błąd "interaction_required", klient powinien wykonać uwierzytelnianie interaktywne.  Dzieje się tak, ponieważ System WebView został użyty do zażądania tokenu dla aplikacji natywnej — użytkownik musi zostać poproszony o podanie monitu o zalogowanie się w aplikacji, w której zarejestrowano.|
+| AADSTS50199 | CmsiInterrupt — ze względów bezpieczeństwa wymagane jest potwierdzenie użytkownika dla tego żądania.  Ponieważ jest to błąd "interaction_required", klient powinien wykonać uwierzytelnianie interaktywne.  Dzieje się tak, ponieważ System WebView został użyty do zażądania tokenu dla aplikacji natywnej — użytkownik musi zostać poproszony o podanie monitu o zalogowanie się w aplikacji, w której zarejestrowano.|
 | AADSTS51000 | RequiredFeatureNotEnabled — funkcja jest wyłączona. |
 | AADSTS51001 | DomainHintMustbePresent — Wskazówka domeny musi być obecna przy użyciu lokalnego identyfikatora zabezpieczeń lub lokalnej nazwy UPN. |
 | AADSTS51004 | UserAccountNotInDirectory — konto użytkownika nie istnieje w katalogu. |

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: 1b0d3dec3925518922c5f668560889edd6f5de0b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 62fc95ed7179dc4188c0c40e4c15aa9940bf2eb5
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867166"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524243"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Jednostki usługi w usłudze Azure Kubernetes Service (AKS)
 
@@ -70,6 +70,9 @@ az aks create \
     --client-secret <password>
 ```
 
+> [!NOTE]
+> Jeśli używasz istniejącej jednostki usługi z dostosowanym kluczem tajnym, upewnij się, że wpis tajny nie jest dłuższy niż 190 bajtów.
+
 W przypadku wdrażania klastra usługi AKS przy użyciu witryny Azure Portal na stronie *Uwierzytelnianie* okna dialogowego **Tworzenie klastra Kubernetes**, wybierz opcję **Konfigurowanie jednostki usługi**. Wybierz pozycję **Użyj istniejącej**, a następnie określ następujące wartości:
 
 - **Identyfikator klienta jednostki usługi** to Twój *appId*
@@ -95,20 +98,20 @@ W poniższych sekcjach opisano typowe delegacje, które należy wykonać.
 
 Jeśli używasz Azure Container Registry (ACR) jako magazynu obrazów kontenerów, musisz udzielić uprawnień do jednostki usługi dla klastra AKS w celu odczytywania i ściągania obrazów. Obecnie zalecaną konfiguracją jest użycie polecenia [AZ AKS Create][az-aks-create] lub [AZ AKS Update][az-aks-update] do integracji z rejestrem i przypisanie odpowiedniej roli dla jednostki usługi. Aby uzyskać szczegółowe instrukcje, zobacz [uwierzytelnianie za pomocą Azure Container Registry z usługi Azure Kubernetes][aks-to-acr].
 
-### <a name="networking"></a>Networking
+### <a name="networking"></a>Sieć
 
 Możesz użyć zaawansowanych funkcji sieciowych, w przypadku których sieć wirtualna i podsieć lub publiczne adresy IP znajdują się w innej grupie zasobów. Przypisz jeden z następujących zestawów uprawnień ról:
 
 - Utwórz [rolę niestandardową][rbac-custom-role] i Zdefiniuj następujące uprawnienia roli:
   - *Microsoft.Network/virtualNetworks/subnets/join/action*
   - *Microsoft.Network/virtualNetworks/subnets/read*
-  - *Microsoft.Network/virtualNetworks/subnets/write*
+  - *Microsoft. Network/virtualNetworks/podsieci/zapis*
   - *Microsoft.Network/publicIPAddresses/join/action*
   - *Microsoft.Network/publicIPAddresses/read*
   - *Microsoft.Network/publicIPAddresses/write*
 - Lub Przypisz wbudowaną rolę [współautor sieci][rbac-network-contributor] w podsieci w sieci wirtualnej
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 
 Konieczne może być uzyskanie dostępu do istniejących zasobów dysku w innej grupie zasobów. Przypisz jeden z następujących zestawów uprawnień ról:
 
@@ -121,7 +124,7 @@ Konieczne może być uzyskanie dostępu do istniejących zasobów dysku w innej 
 
 Jeśli do integracji z usługą AKS używasz rozwiązania Virtual Kubelet i decydujesz się na uruchamianie usługi Azure Container Instances (ACI) w grupie zasobów niezależnie od klastra AKS, jednostka usługi AKS musi otrzymać uprawnienia *Współautor* w grupie zasobów usługi ACI.
 
-## <a name="additional-considerations"></a>Dodatkowe zagadnienia
+## <a name="additional-considerations"></a>Dodatkowe kwestie do uwzględnienia
 
 Podczas korzystania z jednostek usług AKS i Azure AD należy pamiętać o następujących kwestiach.
 

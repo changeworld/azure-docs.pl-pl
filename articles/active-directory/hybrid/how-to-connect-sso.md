@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef8f1ef381c86b6eec62c96ff6dcf87522de040
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367964"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483758"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblemowe logowanie jednokrotne
 
@@ -36,7 +36,7 @@ Bezproblemowe logowanie jednokrotne może być łączone z [synchronizacją skr�
 ![Bezproblemowe logowanie jednokrotne](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->Bezproblemowe logowanie jednokrotne wymaga, aby urządzenie użytkownika zostało przyłączone do **domeny** , ale nie jest używane w [przyłączonym do usługi Azure AD](../active-directory-azureadjoin-overview.md) lub [dołączono do hybrydowej usługi Azure AD] (... /active-directory-azureadjoin-overview.md). Usługa Azure AD z logowaniem jednokrotnym (SSO) i dołączona do hybrydowej usługi Azure AD działa w oparciu o [podstawowy token odświeżania] (.. /active-directory/devices/concept-primary-refresh-token.md)
+>Bezproblemowe logowanie jednokrotne wymaga, aby urządzenie użytkownika zostało przyłączone do **domeny** , ale nie jest używane w [przyłączonych do usługi Azure AD](../devices/concept-azure-ad-join.md) lub w [hybrydowych urządzeniach usługi Azure AD](../devices/concept-azure-ad-join-hybrid.md) . Usługa logowania jednokrotnego w usłudze Azure AD jest dołączona i hybrydowa usługa Azure AD jest oparta na [podstawowym tokenie odświeżania](../devices/concept-primary-refresh-token.md).
 
 ## <a name="key-benefits"></a>Najważniejsze korzyści
 
@@ -63,12 +63,12 @@ Bezproblemowe logowanie jednokrotne może być łączone z [synchronizacją skr�
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Tak\*|Yes|Yes|Tak\*\*\*|Nie dotyczy
-|Windows 8.1|Tak\*|Nie dotyczy|Yes|Tak\*\*\*|Nie dotyczy
-|Windows 8|Tak\*|Nie dotyczy|Yes|Tak\*\*\*|Nie dotyczy
-|Windows 7|Tak\*|Nie dotyczy|Yes|Tak\*\*\*|Nie dotyczy
-|System Windows Server 2012 R2 lub nowszy|Tak\*\*|Nie dotyczy|Yes|Tak\*\*\*|Nie dotyczy
-|Mac OS X|Nie dotyczy|Nie dotyczy|Tak\*\*\*|Tak\*\*\*|Tak\*\*\*
+|Windows 10|Tak\*|Yes|Yes|Tak\*\*\*|Brak
+|Windows 8.1|Tak\*|Brak|Yes|Tak\*\*\*|Brak
+|Windows 8|Tak\*|Brak|Yes|Tak\*\*\*|Brak
+|Windows 7|Tak\*|Brak|Yes|Tak\*\*\*|Brak
+|System Windows Server 2012 R2 lub nowszy|Tak\*\*|Brak|Yes|Tak\*\*\*|Brak
+|Mac OS X|Brak|Brak|Tak\*\*\*|Tak\*\*\*|Tak\*\*\*
 
 
 \*wymaga programu Internet Explorer w wersji 10 lub nowszej
@@ -78,7 +78,7 @@ Bezproblemowe logowanie jednokrotne może być łączone z [synchronizacją skr�
 \*\*\*wymaga [dodatkowej konfiguracji](how-to-connect-sso-quick-start.md#browser-considerations)
 
 >[!NOTE]
->W przypadku systemu Windows 10 zaleceniem jest użycie funkcji [Dołącz do usługi Azure AD](../active-directory-azureadjoin-overview.md) w celu zapewnienia optymalnego logowania jednokrotnego w usłudze Azure AD.
+>W przypadku systemu Windows 10 zaleceniem jest użycie funkcji [Dołącz do usługi Azure AD](../devices/concept-azure-ad-join.md) w celu zapewnienia optymalnego logowania jednokrotnego w usłudze Azure AD.
 
 ## <a name="next-steps"></a>Następne kroki
 

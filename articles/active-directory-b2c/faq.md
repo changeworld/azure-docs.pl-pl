@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d8bdae5a860eb19741aa321606feb3f0825740a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6451c5d32fffc0290592a2489c9cdc99be1b7b7c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847305"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483299"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: często zadawane pytania
 
@@ -59,7 +59,7 @@ Nie. Domyślne zakresy używane dla naszego obsługiwanego zestawu dostawców to
 
 ### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Czy moja aplikacja musi być uruchamiana na platformie Azure dla pracy z Azure AD B2C?
 
-Nie, możesz hostować aplikację w dowolnym miejscu (w chmurze lub lokalnie). Aby mogła ona wchodzić w interakcje z usługą Azure AD B2C, musi ona mieć tylko możliwość wysyłania i odbierania żądań HTTP za pośrednictwem publicznie dostępnych punktów końcowych.
+Nie, możesz hostować aplikację w dowolnym miejscu (w chmurze lub lokalnie). Wszystkie potrzebne do współdziałania z Azure AD B2C to możliwość wysyłania i otrzymywania żądań HTTP w publicznie dostępnych punktach końcowych.
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Mam wiele dzierżawców Azure AD B2C. Jak mogę zarządzać nimi na Azure Portal?
 
@@ -78,7 +78,7 @@ Podpis e-mail zawiera nazwę dzierżawy Azure AD B2C podaną podczas pierwszego 
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako Administrator globalny.
 1. Otwórz blok **Azure Active Directory** .
-1. Kliknij przycisk **właściwości** kartę.
+1. Kliknij kartę **Właściwości** .
 1. Zmień wartość pola **Nazwa** .
 1. Kliknij przycisk **Zapisz** w górnej części strony.
 
@@ -86,15 +86,17 @@ Obecnie nie ma możliwości zmiany pola "from:" w wiadomości e-mail.
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Jak można migrować istniejące nazwy użytkowników, hasła i profile z mojej bazy danych do Azure AD B2C?
 
-Aby napisać narzędzie do migracji, można użyć interfejs API programu Graph usługi Azure AD. Szczegółowe informacje znajdują się w [przewodniku po migracji użytkowników](user-migration.md) .
+Za pomocą interfejsu API Microsoft Graph można napisać narzędzie do migracji. Szczegółowe informacje znajdują się w [przewodniku po migracji użytkowników](user-migration.md) .
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Jakiego przepływu użytkownika hasła używa się do kont lokalnych w Azure AD B2C?
 
-Przepływ użytkownika Azure AD B2C hasło dla kont lokalnych jest oparty na zasadach usługi Azure AD. Usługa Azure AD B2C's do rejestracji, rejestrowania lub logowania oraz resetowania haseł — przepływy użytkownika używają silnych haseł i nie tracą hasła. Zapoznaj się z [zasadami haseł usługi Azure AD](/previous-versions/azure/jj943764(v=azure.100)) , aby uzyskać więcej szczegółów. Informacje o blokadach kont i hasłach znajdują się [w temacie Zarządzanie zagrożeniami do zasobów i danych w programie Azure Active Directory B2C](threat-management.md).
+Przepływ użytkownika Azure AD B2C hasło dla kont lokalnych jest oparty na zasadach usługi Azure AD. Usługa Azure AD B2C's do rejestracji, rejestrowania lub logowania oraz resetowania haseł — przepływy użytkownika używają silnych haseł i nie tracą hasła. Aby uzyskać więcej informacji, zobacz [zasady haseł i ograniczenia w Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy).
+
+Informacje o blokadach kont i hasłach znajdują się [w temacie Zarządzanie zagrożeniami do zasobów i danych w programie Azure Active Directory B2C](threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Czy można używać Azure AD Connect do migrowania tożsamości użytkowników, które są przechowywane na lokalnym Active Directory do Azure AD B2C?
 
-Nie, Azure AD Connect nie jest zaprojektowana do pracy z Azure AD B2C. Rozważ użycie [interfejs API programu Graph usługi Azure AD](manage-user-accounts-graph-api.md) do migracji użytkowników. Szczegółowe informacje znajdują się w [przewodniku po migracji użytkowników](user-migration.md) .
+Nie, Azure AD Connect nie jest zaprojektowana do pracy z Azure AD B2C. Rozważ użycie [interfejsu API Microsoft Graph](manage-user-accounts-graph-api.md) do migracji użytkowników. Szczegółowe informacje znajdują się w [przewodniku po migracji użytkowników](user-migration.md) .
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Czy moja aplikacja może otworzyć Azure AD B2C strony w elemencie iFrame?
 
@@ -134,7 +136,7 @@ Wykonaj następujące kroki, aby usunąć dzierżawę Azure AD B2C.
 
 Możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego systemu ujednoliconego **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat nowego środowiska](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
+#### <a name="applications"></a>[Aplikacje](#tab/applications/)
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako *administrator subskrypcji*. Użyj tego samego konta służbowego lub tego samego konto Microsoft, które zostało użyte do zarejestrowania się na platformie Azure.
 1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
@@ -155,7 +157,7 @@ Możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego systemu 
 1. Wybierz pozycję **Azure Active Directory** w menu po lewej stronie.
 1. Na stronie **Przegląd** wybierz pozycję **Usuń katalog**. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby ukończyć proces.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako *administrator subskrypcji*. Użyj tego samego konta służbowego lub tego samego konto Microsoft, które zostało użyte do zarejestrowania się na platformie Azure.
 1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.

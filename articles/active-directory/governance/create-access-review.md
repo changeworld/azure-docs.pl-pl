@@ -15,12 +15,12 @@ ms.date: 02/06/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb2198ea3f01e923022c205e478167240a01894
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 3e769df186597a88247601f4fc70c48263edc88b
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084450"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483911"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Tworzenie przeglądu dostępu do grup i aplikacji w przeglądach dostępu usługi Azure AD
 
@@ -53,7 +53,7 @@ Aby uzyskać więcej informacji, zobacz [wymagania dotyczące licencji](access-r
 
     ![Tworzenie przeglądu dostępu — daty rozpoczęcia i zakończenia](./media/create-access-review/start-end-dates.png)
 
-1. Aby umożliwić cykliczne przeglądy dostępu, Zmień ustawienie **częstotliwości** z **jednego czasu** na **co tydzień**, **co miesiąc**, co **kwartał** lub co **rok**. Za pomocą suwaka **czas trwania** lub pola tekstowego Zdefiniuj, ile dni każdy przegląd cyklicznej serii będzie otwarty do wprowadzania danych od recenzentów. Na przykład maksymalny czas, który można ustawić dla comiesięcznego przeglądu wynosi 27 dni, aby uniknąć nakładających się przeglądów.
+1. Aby umożliwić cykliczne przeglądy dostępu, Zmień **ustawienie częstotliwości** z **jednego czasu** na **co tydzień**, **co miesiąc**, co **kwartał**, co **pół roku**lub **co rok**. Za pomocą suwaka **czas trwania** lub pola tekstowego Zdefiniuj, ile dni każdy przegląd cyklicznej serii będzie otwarty do wprowadzania danych od recenzentów. Na przykład maksymalny czas, który można ustawić dla comiesięcznego przeglądu wynosi 27 dni, aby uniknąć nakładających się przeglądów.
 
 1. Użyj ustawienia **End** , aby określić, jak zakończyć cykliczne serie przeglądu dostępu. Seria może kończyć się na trzy sposoby: działa stale, aby rozpocząć przeglądy w nieskończoność, aż do określonej daty lub po zakończeniu zdefiniowanej liczby wystąpień. Po utworzeniu seria może zostać zatrzymana przez innego administratora lub innego administratora globalnego, zmieniając datę w **ustawieniach**, aby zakończyć działanie.
 
@@ -134,7 +134,7 @@ Jeśli przypisano Gości jako recenzentów, którzy nie zaakceptowali zaproszeni
 |--------|------------|
 |NotStarted | Przegląd został utworzony, odnajdywanie użytkowników oczekuje na uruchomienie. |
 |Inicjacj   | Odnajdywanie użytkowników jest w toku, aby zidentyfikować wszystkich użytkowników, którzy są częścią przeglądu. |
-|Uruchamianie | Przegląd rozpoczyna się. Jeśli powiadomienia e-mail są włączone, wiadomości e-mail są wysyłane do recenzentów. |
+|Rozpoczęcie | Przegląd rozpoczyna się. Jeśli powiadomienia e-mail są włączone, wiadomości e-mail są wysyłane do recenzentów. |
 |W toku | Przegląd został rozpoczęty. Powiadomienia e-mail, które zostały włączone, są wysyłane do recenzentów. Recenzenci mogą przesyłać decyzje do daty ukończenia. |
 |Podając | Przegląd jest wykonywany i wiadomości e-mail są wysyłane do właściciela przeglądu. |
 |Autoprzegląd | Przegląd znajduje się na etapie recenzowania systemu. System rejestruje decyzje dla użytkowników, którzy nie zostali zrecenzowani w oparciu o zalecenia lub wstępnie skonfigurowane decyzje. |

@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 12/26/2019
+ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: bebc7dde30dad57157d0abee7f2294d9da58fd5c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861816"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526822"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Samouczek: Konfigurowanie środowiska Azure Time Series Insights w wersji zapoznawczej
 
 Ten samouczek przeprowadzi Cię przez proces tworzenia środowiska Azure Time Series Insights w wersji zapoznawczej *płatność zgodnie z rzeczywistym* użyciem.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 >
@@ -85,7 +85,7 @@ W tej sekcji opisano sposób tworzenia środowiska Azure Time Series Insights w 
 
 1. W okienku **Tworzenie środowiska Time Series Insights** na karcie **podstawowe** ustaw następujące parametry:
 
-    | Parametr | Działanie |
+    | Parametr | Akcja |
     | --- | ---|
     | **Nazwa środowiska** | Wprowadź unikatową nazwę środowiska Azure Time Series Insights w wersji zapoznawczej. |
     | **Subskrypcja** | Wprowadź subskrypcję, w której chcesz utworzyć środowisko Azure Time Series Insights w wersji zapoznawczej. Najlepszym rozwiązaniem jest użycie tej samej subskrypcji jako reszty zasobów IoT, które są tworzone przez symulatora urządzeń. |
@@ -105,7 +105,7 @@ W tej sekcji opisano sposób tworzenia środowiska Azure Time Series Insights w 
 
 1. Na karcie **Źródło zdarzenia** ustaw następujące parametry:
 
-   | Parametr | Działanie |
+   | Parametr | Akcja |
    | --- | --- |
    | **Utworzyć źródło zdarzeń?** | Wybierz pozycję **Tak**.|
    | **Nazwa** | Wprowadź unikatową wartość dla nazwy źródła zdarzenia. |
@@ -157,7 +157,7 @@ Teraz, gdy wdrożono środowisko Time Series Insights, Rozpocznij przesyłanie s
 
 1. Wybierz pozycję **+ Nowa symulacja**. Po załadowaniu strony **konfiguracji symulacji** wprowadź wymagane parametry.
 
-    | Parametr | Działanie |
+    | Parametr | Akcja |
     | --- | --- |
     | **Nazwa** | Wprowadź unikatową nazwę symulatora. |
     | **Opis** | Wprowadź definicję. |
@@ -173,7 +173,7 @@ Teraz, gdy wdrożono środowisko Time Series Insights, Rozpocznij przesyłanie s
 
     [![pulpitu nawigacyjnego symulacji usługi Azure IoT.](media/v2-update-provision/tsi-see-active-devices-and-messages.png)](media/v2-update-provision/tsi-see-active-devices-and-messages.png#lightbox)
 
-## <a name="analyze-data"></a>Analizuj dane
+## <a name="analyze-data"></a>Analizowanie danych
 
 W tej sekcji przeprowadzimy podstawową analizę danych szeregów czasowych przy użyciu [eksploratora wersji zapoznawczej usługi Azure Time Series Insights](./time-series-insights-update-explorer.md).
 
@@ -215,7 +215,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
 1. Wprowadź następujące parametry:
 
-    | Parametr | Działanie |
+    | Parametr | Akcja |
     | --- | ---|
     | **Nazwa** | Wprowadź **windę** |
     | **Opis** | Wprowadź **tę definicję typu dla wind** |
@@ -224,7 +224,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
    Wybierz pozycję **+ Dodaj zmienną** i wypełnij następujące wartości dla pierwszej zmiennej typu Wind. W sumie są tworzone trzy zmienne.
 
-    | Parametr | Działanie |
+    | Parametr | Akcja |
     | --- | --- |
     | **Nazwa** | Wpisz **Avg Temperature** (Temperatura średnia). |
     | **Natur** | Wybierz wartość **numeryczną** |
@@ -233,7 +233,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
     Wybierz przycisk **Zastosuj**. Następnie ponownie **Dodaj zmienną** i ustaw następujące wartości:
 
-    | Parametr | Działanie |
+    | Parametr | Akcja |
     | --- | --- |
     | **Nazwa** | Wprowadź **średnie wibracje**. |
     | **Natur** | Wybierz wartość **numeryczną** |
@@ -242,7 +242,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
     Wybierz przycisk **Zastosuj**. Następnie ponownie **Dodaj zmienną** i ustaw następujące wartości dla zmiennej trzeciej i końcowej:
 
-    | Parametr | Działanie |
+    | Parametr | Akcja |
     | --- | --- |
     | **Nazwa** | Wprowadź **piętro**. |
     | **Natur** | Wybierz **kategorii** |
@@ -262,7 +262,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
    
    W okienku **Edytuj hierarchię** ustaw następujące parametry:
 
-   | Parametr | Działanie |
+   | Parametr | Akcja |
    | --- | ---|
    | **Nazwa** | Wpisz **Location Hierarchy** (Hierarchia lokalizacji). |
    |**Poziomy**| Wprowadź **kraj** jako nazwę pierwszego poziomu <br> Wybierz pozycję **+ Dodaj poziom** <br> Wprowadź **miasto** dla drugiego poziomu, a następnie wybierz pozycję **+ Dodaj poziom** <br> Wprowadź wartość **konstrukcyjną** jako nazwę trzeciego i końcowego poziomu |
@@ -273,7 +273,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
 1. Przejdź do **wystąpień**. W obszarze **Akcje** po prawej stronie i wybierz ikonę ołówka, aby zmodyfikować pierwsze wystąpienie o następujące wartości:
 
-    | Parametr | Działanie |
+    | Parametr | Akcja |
     | --- | --- |
     | **Typ** | Wybierz pozycję **windy**. |
     | **Nazwa** | Wprowadź **windę 1**|
@@ -281,7 +281,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
     Przejdź do **pól wystąpień** i wprowadź następujące wartości:
 
-    | Parametr | Działanie |
+    | Parametr | Akcja |
     | --- | --- |
     | **Hierarchies** | Wybierz **hierarchię lokalizacji** |
     | **Country** | Wprowadź **Stan USA** |
@@ -294,7 +294,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
     **Dla wind 2:**
 
-    | Parametr | Działanie |
+    | Parametr | Akcja |
     | --- | --- |
     | **Typ** | Wybierz pozycję **windy**. |
     | **Nazwa** | Wprowadź **windę 2**|
@@ -306,7 +306,7 @@ W tej sekcji zastosujesz model, aby ustrukturyzować dane. Do utworzenia modelu 
 
     **Dla windy 3:**
 
-    | Parametr | Działanie |
+    | Parametr | Akcja |
     | --- | --- |
     | **Typ** | Wybierz pozycję **windy**. |
     | **Nazwa** | Wprowadź **windę 3**|

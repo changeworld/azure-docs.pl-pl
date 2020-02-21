@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6c7112b6b5944042036fd3e7af6ec6f6dfbde0c0
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896383"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526148"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Model cen dla Azure Logic Apps
 
@@ -40,13 +40,15 @@ Dowiedz się więcej o tym, jak rozliczenia działają dla [wyzwalaczy](#trigger
 
 ## <a name="fixed-pricing-model"></a>Stały model cen
 
-[ *Środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zapewnia prywatną, izolowaną i dedykowaną metodę tworzenia i uruchamiania aplikacji logiki, które mogą uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure. W przypadku nowych aplikacji logiki, które są uruchamiane w ramach usługi ISE, płacisz [stałą cenę miesięczną](https://azure.microsoft.com/pricing/details/logic-apps) za następujące możliwości:
+[ *Środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zapewnia izolowaną metodę tworzenia i uruchamiania aplikacji logiki, które mogą uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure. W przypadku nowych aplikacji logiki, które są uruchamiane w ramach usługi ISE, płacisz [stałą cenę miesięczną](https://azure.microsoft.com/pricing/details/logic-apps) za następujące możliwości:
 
-* [Wbudowane wyzwalacze i akcje](../connectors/apis-list.md#built-in)
+* [Wbudowane](../connectors/apis-list.md#built-in) wyzwalacze i akcje
 
-* [Łączniki standardowe](../connectors/apis-list.md#managed-connectors)
+  W ramach ISE wbudowane wyzwalacze i akcje wyświetlają **podstawową** etykietę i działają w tym samym ISE, co Aplikacje logiki.
 
-* [Łączniki przedsiębiorstwa](../connectors/apis-list.md#enterprise-connectors) z dowolną liczbą połączeń
+* Łączniki [standardowe](../connectors/apis-list.md#managed-connectors) i łączniki [Enterprise](../connectors/apis-list.md#enterprise-connectors) (tak wiele połączeń w przedsiębiorstwie, ile potrzebujesz)
+
+   Łączniki standardowe i Enterprise, które wyświetlają etykietę **ISE** , działają w tym samym ISE, jak aplikacje logiki. Łączniki, które nie wyświetlają etykiety ISE w globalnej usłudze Logic Apps. Stałe ceny miesięczne dotyczą również łączników, które są uruchamiane w usłudze globalnej, gdy są używane z aplikacjami logiki, które działają w ISE.
 
 * Użycie [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) bez dodatkowych kosztów na podstawie [jednostki SKU ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):
 
@@ -60,18 +62,15 @@ Dowiedz się więcej o tym, jak rozliczenia działają dla [wyzwalaczy](#trigger
 
   * **Jednostka SKU dla deweloperów**: maksymalnie 4 więcej kont standardowych lub maksymalnie 5 standardowych kont Standard. Brak kont podstawowych.
 
-Aby uzyskać więcej informacji na temat limitów kont integracji, zobacz [Logic Apps limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Więcej informacji na temat [warstw kont integracji i ich modelu cen](#integration-accounts) można znaleźć w dalszej części tego tematu.
+  Aby uzyskać więcej informacji na temat limitów kont integracji, zobacz [Logic Apps limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Więcej informacji na temat [warstw kont integracji i ich modelu cen](#integration-accounts) można znaleźć w dalszej części tego tematu.
 
-W przypadku jednostki SKU ISE Premium jednostka podstawowa ma stałą pojemność, więc jeśli potrzebujesz większej przepływności, możesz [dodać więcej jednostek skalowania](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)podczas tworzenia lub później. Jednostka SKU ISE dewelopera nie ma możliwości dodawania większej liczby jednostek skalowania. Aplikacje logiki, które działają w ISE, nie wiążą się z kosztami przechowywania danych.
-
-> [!NOTE]
-> W ramach ISE wbudowane wyzwalacze i akcje wyświetlają **podstawową** etykietę i działają w tym samym ISE, co Aplikacje logiki. Łączniki standardowe i Enterprise, które wyświetlają etykietę **ISE** , działają w tym samym ISE, jak aplikacje logiki. Łączniki, które nie wyświetlają etykiety ISE w globalnej usłudze Logic Apps.
+W przypadku wybrania jednostki SKU Premium ISE jednostka podstawowa ma stałą pojemność. Jeśli potrzebujesz większej przepływności, możesz [dodać więcej jednostek skalowania](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)podczas tworzenia lub później. Jednostka SKU ISE dewelopera nie ma możliwości dodawania większej liczby jednostek skalowania. Aplikacje logiki, które działają w ISE, nie wiążą się z kosztami przechowywania danych.
 
 Stawki cenowe znajdują się w temacie [Logic Apps cenniku](https://azure.microsoft.com/pricing/details/logic-apps).
 
 <a name="connectors"></a>
 
-## <a name="connectors"></a>Konektory
+## <a name="connectors"></a>Łączniki
 
 Łączniki Azure Logic Apps pomagają aplikacji logiki uzyskiwać dostęp do aplikacji, usług i systemów w chmurze lub lokalnie, dostarczając [wyzwalacze](#triggers), [Akcje](#actions)lub obie te funkcje. Łączniki są klasyfikowane jako standardowe lub Enterprise. Aby zapoznać się z omówieniem tych łączników, zobacz [Łączniki dla Azure Logic Apps](../connectors/apis-list.md). Jeśli nie są dostępne wstępnie skompilowane łączniki dla interfejsów API REST, które mają być używane w aplikacjach logiki, można utworzyć [Łączniki niestandardowe](https://docs.microsoft.com/connectors/custom-connectors), które są tylko otokami otaczającymi te interfejsy API REST. Łączniki niestandardowe są rozliczane jako łączniki standardowe. Poniższe sekcje zawierają więcej informacji na temat sposobu działania rozliczeń dla wyzwalaczy i akcji.
 

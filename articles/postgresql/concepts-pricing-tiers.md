@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 2b5d5bfff3ff97efb351497c48a404beada2036a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b5a2d8a812c5b3b0021ad4f74fc705049807cb1b
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209345"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485067"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Warstwy cenowe w Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -23,7 +23,6 @@ Serwer Azure Database for PostgreSQL można utworzyć w jednej z trzech różnyc
 | Rdzeni wirtualnych | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Pamięć na rdzeń wirtualny | 2 GB | 5 GB | 10 GB |
 | Rozmiar magazynu | od 5 GB do 1 TB | od 5 GB do 16 TB | od 5 GB do 16 TB |
-| Typ magazynu | Magazyn w warstwie Standardowa Azure | Premium Storage platformy Azure | Premium Storage platformy Azure |
 | Okres przechowywania kopii zapasowej bazy danych | od 7 do 35 dni | od 7 do 35 dni | od 7 do 35 dni |
 
 Aby wybrać warstwę cenową, należy użyć poniższej tabeli jako punktu wyjścia.
@@ -31,7 +30,7 @@ Aby wybrać warstwę cenową, należy użyć poniższej tabeli jako punktu wyjś
 | Warstwa cenowa | Docelowe obciążenia |
 |:-------------|:-----------------|
 | Podstawowa | Obciążenia, które wymagają lekkich obliczeń i wydajności operacji we/wy. Przykłady obejmują serwery używane do programowania lub testowania oraz nierzadko używane aplikacje. |
-| Ogólnego przeznaczenia | Większość obciążeń firmowych, które wymagają zrównoważonych obliczeń i pamięci dzięki skalowalnej przepływności we/wy. Przykłady obejmują serwery do hostowania aplikacji internetowych i mobilnych oraz inne aplikacje dla przedsiębiorstw.|
+| Ogólne zastosowanie | Większość obciążeń firmowych, które wymagają zrównoważonych obliczeń i pamięci dzięki skalowalnej przepływności we/wy. Przykłady obejmują serwery do hostowania aplikacji internetowych i mobilnych oraz inne aplikacje dla przedsiębiorstw.|
 | Pamięć | Obciążenia baz danych o wysokiej wydajności, które wymagają wydajności w pamięci w celu przyspieszenia przetwarzania transakcji i wyższego współbieżności. Przykładami mogą być serwery do przetwarzania danych w czasie rzeczywistym oraz aplikacji transakcyjnych lub analitycznych o wysokiej wydajności.|
 
 Po utworzeniu serwera można zmienić liczbę rdzeni wirtualnych, generowanie sprzętu i warstwę cenową (oprócz i z Basic) w ciągu kilku sekund. Można także niezależnie dostosować ilość miejsca do magazynowania i okres przechowywania kopii zapasowych w górę lub w dół bez przestojów aplikacji. Po utworzeniu serwera nie można zmienić typu magazynu kopii zapasowej. Aby uzyskać więcej informacji, zobacz sekcję [skalowanie zasobów](#scale-resources) .
@@ -40,13 +39,13 @@ Po utworzeniu serwera można zmienić liczbę rdzeni wirtualnych, generowanie sp
 
 Zasoby obliczeniowe są udostępniane jako rdzeni wirtualnych, które reprezentują logicznego procesora bazowego sprzętu. Chiny Wschodnie 1, Chiny Północne 1, US DoD (region środkowy) i US DoD (region wschodni) używają logicznych procesorów CPU, które są oparte na procesorach Intel E5-2673 v3 (Haswell) 2,4 GHz. Wszystkie pozostałe regiony wykorzystują jednostki logiczne procesorów generacji 5, które są oparte na procesorach Intel E5-2673 v4 (Broadwell) 2,3 GHz.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Magazyn
 
 Zapewniana ilość miejsca w magazynie to pojemność magazynu dostępna dla serwera Azure Database for PostgreSQL. Magazyn jest używany dla plików bazy danych, plików tymczasowych, dzienników transakcji i dzienników serwera PostgreSQL. Całkowita ilość dostępnego miejsca w magazynie określa również wydajność we/wy dostępną dla serwera.
 
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
-| Typ magazynu | Magazyn w warstwie Standardowa Azure | Premium Storage platformy Azure | Premium Storage platformy Azure |
+| Typ magazynu | Magazyn podstawowy | Magazyn Ogólnego przeznaczenia | Magazyn Ogólnego przeznaczenia |
 | Rozmiar magazynu | od 5 GB do 1 TB | od 5 GB do 16 TB | od 5 GB do 16 TB |
 | Rozmiar przyrostu pamięci masowej | 1 GB | 1 GB | 1 GB |
 | Liczba operacji we/wy na sekundę | Zmienna |3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba operacji we/wy 20 000 | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksymalna liczba operacji we/wy 20 000 |
@@ -101,7 +100,7 @@ W przypadku zmiany liczby rdzeni wirtualnych, wygenerowania sprzętu lub warstwy
 
 Skalowanie magazynu i zmiana okresu przechowywania kopii zapasowych to prawdziwe operacje online. Brak przestoju i nie ma to znaczenia dla Twojej aplikacji. Jako że liczba operacji we/wy na sekundę jest skalowana wraz z rozmiarem magazynu, można zwiększyć liczbę operacji we/wy dla serwera, skalowanie w górę magazynu.
 
-## <a name="pricing"></a>Ceny
+## <a name="pricing"></a>Cennik
 
 Najbardziej aktualne informacje o cenach można znaleźć na [stronie cennika](https://azure.microsoft.com/pricing/details/PostgreSQL/)usługi. Aby wyświetlić koszt dla wybranej konfiguracji, [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) przedstawia miesięczny koszt na karcie **warstwa cenowa** na podstawie wybranych opcji. Jeśli nie masz subskrypcji platformy Azure, możesz skorzystać z kalkulatora cen platformy Azure, aby uzyskać szacowaną cenę. W witrynie sieci Web [kalkulatora cen platformy Azure](https://azure.microsoft.com/pricing/calculator/) wybierz pozycję **Dodaj elementy**, rozwiń kategorię **bazy danych** i wybierz **Azure Database for PostgreSQL** , aby dostosować opcje.
 

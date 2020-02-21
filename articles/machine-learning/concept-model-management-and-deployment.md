@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: f6819ddce777a5740ef1f5f9ab887a0646c4e464
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122342"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486380"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Zarządzanie modelami, wdrażanie i monitorowanie za pomocą Azure Machine Learning
 
@@ -48,7 +48,7 @@ Rejestracja modelu umożliwia przechowywanie i przechowywanie modeli w chmurze p
 > [!TIP]
 > Zarejestrowany model to logiczny kontener dla co najmniej jednego pliku, który składa się z modelu. Na przykład jeśli masz model, który jest przechowywany w wielu plikach, możesz zarejestrować je jako jeden model w obszarze roboczym Azure Machine Learning. Po zarejestrowaniu można pobrać lub wdrożyć zarejestrowany model i odebrać wszystkie zarejestrowane pliki.
 
-Zarejestrowane modele są identyfikowane za pomocą nazwy i wersji. Za każdym razem, gdy rejestrujesz model o takiej samej nazwie, jaką ma już istniejący model, rejestr zwiększa wersję. Dodatkowe tagi metadanych można podać podczas rejestracji. Te Tagi są następnie używane podczas wyszukiwania modelu. Azure Machine Learning obsługuje dowolny model, który można załadować przy użyciu języka Python w wersji 3.5.2 lub nowszej.
+Zarejestrowane modele są identyfikowane za pomocą nazwy i wersji. Zawsze należy zarejestrować model o takiej samej nazwie jak innego istniejącego rejestru zwiększa numer wersji. Dodatkowe tagi metadanych można podać podczas rejestracji. Te Tagi są następnie używane podczas wyszukiwania modelu. Azure Machine Learning obsługuje dowolny model, który można załadować przy użyciu języka Python w wersji 3.5.2 lub nowszej.
 
 > [!TIP]
 > Możesz również rejestrować modele przeszkolone poza Azure Machine Learning.
@@ -74,7 +74,7 @@ Przekonwertowanie modelu na [otwarty program neuronowych Network Exchange](https
 
 Aby uzyskać więcej informacji na temat ONNX z Azure Machine Learning, zobacz artykuł [Tworzenie i przyspieszenie modeli ml](concept-onnx.md) .
 
-### <a name="use-models"></a>Używanie modeli
+### <a name="use-models"></a>Używaj modeli
 
 Przeszkolone modele uczenia maszynowego są wdrażane jako usługi sieci Web w chmurze lub lokalnie. Możesz również wdrażać modele na Azure IoT Edge urządzeniach. Wdrożenia używają macierzy procesora CPU, procesora GPU lub programowalnych pól (FPGA) dla inferencing. Można również używać modeli z Power BI.
 
@@ -120,7 +120,7 @@ Firma Microsoft Power BI obsługuje używanie modeli uczenia maszynowego na potr
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Przechwyć dane ładu wymagane do przechwycenia kompleksowego cyklu życia ML
 
-Usługa Azure ML oferuje możliwość śledzenia kompleksowego dziennika inspekcji wszystkich zasobów w sieci. W szczególności:
+Usługa Azure ML oferuje możliwość śledzenia kompleksowego dziennika inspekcji wszystkich zasobów w sieci. Są to:
 
 - Platforma Azure ML [integruje się z usługą git](how-to-set-up-training-targets.md#gitintegration) , aby śledzić informacje o repozytorium/rozgałęzieniu/Zatwierdź swój kod.
 - [Zestawy danych usługi Azure ml](how-to-create-register-datasets.md) ułatwiają śledzenie, profilowanie i przechowywanie wersji. 
@@ -138,6 +138,19 @@ Monitorowanie pozwala zrozumieć, jakie dane są wysyłane do modelu, oraz przew
 Te informacje ułatwiają zrozumienie sposobu korzystania z modelu. Zebrane dane wejściowe mogą być również przydatne w przypadku szkoleń w przyszłych wersjach modelu.
 
 Aby uzyskać więcej informacji, zobacz [jak włączyć zbieranie danych modelu](how-to-enable-data-collection.md).
+
+## <a name="retrain-your-model-on-new-data"></a>Ponowne uczenie modelu na nowych danych
+
+Często należy zaktualizować model, a nawet ponownie wyszkolić go od podstaw, jak otrzymujesz nowe informacje. Czasami otrzymywanie nowych danych jest oczekiwaną częścią domeny. W innych przypadkach, jak opisano w sekcji [wykrywanie dryfowania danych (wersja zapoznawcza) w zestawach DataSet](how-to-monitor-datasets.md), wydajność modelu może być niezauważalna w zależności od tego, jak zmiany w określonej czujniku, dane naturalne zmieniają się, takie jak skutki sezonowe, lub funkcje przesuwania w ich relacji z innymi funkcjami. 
+
+Nie ma uniwersalnej odpowiedzi na "Jak mogę wiedzieć, czy należy przeprowadzić ponowne uczenie?" wcześniej omówione narzędzia do obsługi zdarzeń i monitorowania usługi Azure ML są dobrym punktem wyjścia do automatyzacji. Po podjęciu decyzji o ponownym wyuczeniu należy: 
+
+- Wstępne przetwarzanie danych przy użyciu powtarzalnego, zautomatyzowanego procesu
+- Uczenie nowego modelu
+- Porównaj dane wyjściowe nowego modelu z poprzednimi modelami
+- Użyj wstępnie zdefiniowanych kryteriów, aby określić, czy chcesz zastąpić stary model 
+
+Motyw powyższych kroków polega na tym, że przeszkolenie powinno być zautomatyzowane, a nie ad hoc. [Potoki Azure Machine Learning](concept-ml-pipelines.md) są dobrą odpowiedzią na tworzenie przepływów pracy związanych z przygotowywaniem, uczeniem, sprawdzaniem i wdrażaniem danych. Odczytuj [modele ponownego uczenia przy użyciu programu Azure Machine Learning Designer (wersja zapoznawcza)](how-to-retrain-designer.md) , aby zobaczyć, jak potoki i Projektant Azure Machine Learning mieszczą się w scenariuszu ponownego szkolenia. 
 
 ## <a name="automate-the-ml-lifecycle"></a>Automatyzowanie cyklu życia ML 
 

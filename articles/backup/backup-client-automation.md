@@ -3,12 +3,12 @@ title: Używanie programu PowerShell do tworzenia kopii zapasowych systemu Windo
 description: W tym artykule dowiesz się, jak używać programu PowerShell do konfigurowania Azure Backup w systemie Windows Server lub kliencie systemu Windows oraz zarządzania kopiami zapasowymi i odzyskiwaniem.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: ef5571e6a059eedeba169765785bb0f840c8f256
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 25ea84ba00648e2f515f96885cfdb5bb662c8575
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710864"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483146"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Wdrażanie kopii zapasowych systemu Windows Server/Windows Client na platformie Azure i zarządzanie nimi przy użyciu programu PowerShell
 
@@ -111,7 +111,7 @@ MARSAgentInstaller.exe /?
 
 Dostępne opcje to:
 
-| Opcja | Szczegóły | Domyślne |
+| Opcja | Szczegóły | Domyślny |
 | --- | --- | --- |
 | /q |Instalacja cicha |- |
 | /p: "Location" |Ścieżka do folderu instalacji agenta Azure Backup. |C:\Program Files\Microsoft Azure Recovery Services Agent |
@@ -135,14 +135,16 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault1 
 
 ### <a name="registering-using-the-ps-az-module"></a>Rejestrowanie przy użyciu narzędzia PS AZ module
 
+> [!NOTE]
+> Usterka z generowaniem certyfikatu magazynu została rozwiązana w AZ 3.5.0 Release. Użyj AZ 3.5.0 Release w wersji lub nowszej, aby pobrać certyfikat magazynu.
+
 W najnowszym module AZ modułu programu PowerShell ze względu na ograniczenia dotyczące platformy, pobranie poświadczeń magazynu wymaga certyfikatu z podpisem własnym. Poniższy przykład pokazuje, jak podać certyfikat z podpisem własnym i pobrać poświadczenia magazynu.
 
 ```powershell
-$Vault = Get-AzRecoveryServicesVault -ResourceGroupName $rgName -Name $VaultName
-$cert = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname xxxxxxxxxxxxx
-$certificate =[System.Convert]::ToBase64String($cert.RawData)
-$CredsPath = "C:\downloads"
-$CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Certificate $certificate -Vault $vault -Backup -Path $CredsPath
+$dt = $(Get-Date).ToString("M-d-yyyy")
+$cert = New-SelfSignedCertificate -CertStoreLocation Cert:\CurrentUser\My -FriendlyName 'test-vaultcredentials' -subject "Windows Azure Tools" -KeyExportPolicy Exportable -NotAfter $(Get-Date).AddHours(48) -NotBefore $(Get-Date).AddHours(-24) -KeyProtection None -KeyUsage None -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2") -Provider "Microsoft Enhanced Cryptographic Provider v1.0"
+$certficate = [convert]::ToBase64String($cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx))
+$CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -Path $CredsPath -Certificate $certficate
 ```
 
 Na komputerze klienckim z systemem Windows Server lub Windows uruchom polecenie cmdlet [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) , aby zarejestrować maszynę w magazynie.

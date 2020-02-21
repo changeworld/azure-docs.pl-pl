@@ -1,36 +1,36 @@
 ---
-title: Schemat zdarzeń w usłudze Azure Event Grid usługi Azure Maps
-description: Opisuje właściwości i schematu podany dla zdarzeń usługi Azure Maps za pomocą usługi Azure Event Grid
+title: Schemat zdarzenia Azure Maps Azure Event Grid
+description: Opisuje właściwości i schemat udostępnione dla zdarzeń Azure Maps z Azure Event Grid
 services: event-grid
-author: walsehgal
+author: femila
 ms.service: event-grid
 ms.topic: reference
 ms.date: 02/08/2019
-ms.author: v-musehg
-ms.openlocfilehash: 74a3674e632f8dc3f0755bc2ad48376708c7966f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: femila
+ms.openlocfilehash: 9acef524521e8fac6ce6f8f61e5ff3fbbb81d18d
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861858"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486363"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Schemat zdarzeń Azure Event Grid dla usługi Azure Maps
+# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Schemat zdarzeń Azure Event Grid dla Azure Maps
 
-Ten artykuł zawiera właściwości i schematu dla zdarzeń usługi Azure Maps. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema).
+Ten artykuł zawiera właściwości i schemat zdarzeń Azure Maps. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [Azure Event Grid schemacie zdarzeń](https://docs.microsoft.com/azure/event-grid/event-schema).
 
-## <a name="available-event-types"></a>Zdarzenie dostępne typy
+## <a name="available-event-types"></a>Dostępne typy zdarzeń
 
-Konto usługi Azure Maps emituje następujące typy zdarzeń:
+Konto Azure Maps emituje następujące typy zdarzeń:
 
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
-| Microsoft.Maps.GeofenceEntered | Wywoływane, gdy współrzędne Odebrano zostały przeniesione z poza danego wirtualnego ogrodzenia można w ciągu |
-| Microsoft.Maps.GeofenceExited | Wywoływane, gdy współrzędne Odebrano zostały przeniesione z w ramach danego wirtualnego ogrodzenia na zewnątrz |
-| Microsoft.Maps.GeofenceResult | Wywoływane za każdym razem, gdy zapytanie geofencing zwraca wynik, bez względu na stan |
+| Microsoft.Maps.GeofenceEntered | Wywoływane, gdy otrzymane współrzędne zostały przeniesione z zewnątrz danego elementu geołożonego do wewnątrz |
+| Microsoft.Maps.GeofenceExited | Wywoływane, gdy odebrane współrzędne przeniesiono z wewnątrz danego elementu geołożonego do zewnątrz |
+| Microsoft.Maps.GeofenceResult | Wywoływane za każdym razem, gdy zapytanie geofencingu zwraca wynik, niezależnie od stanu |
 
 ## <a name="event-examples"></a>Przykłady zdarzeń
 
-W poniższym przykładzie przedstawiono schematu **GeofenceEntered** zdarzeń
+Poniższy przykład przedstawia schemat zdarzenia **GeofenceEntered**
 
 ```JSON
 {   
@@ -60,7 +60,7 @@ W poniższym przykładzie przedstawiono schematu **GeofenceEntered** zdarzeń
 }
 ```
 
-Poniższy przykład Pokaż schemat **GeofenceResult** 
+Poniższy przykład przedstawia schemat dla **GeofenceResult** 
 
 ```JSON
 {   
@@ -100,70 +100,70 @@ Poniższy przykład Pokaż schemat **GeofenceResult**
 
 ## <a name="event-properties"></a>Właściwości zdarzenia
 
-Zdarzenie zawiera następujące dane najwyższego poziomu:
+Zdarzenie ma następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| topic | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| subject | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
-| eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| id | string | Unikatowy identyfikator zdarzenia. |
-| data | object | Dane zdarzenia wirtualnego Grodzenia. |
-| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
-| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
+| temat | ciąg | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
+| subject | ciąg | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
+| eventType | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
+| id | ciąg | Unikatowy identyfikator zdarzenia. |
+| data | obiekt | Dane zdarzenia geofencingu. |
+| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| apiCategory | string | Interfejs API kategorii zdarzenia. |
-| apiName | string | Nazwa interfejsu API zdarzenia. |
-| issues | object | Wyświetla listę problemów napotkanych podczas przetwarzania. Jeśli zwracane są wszystkie problemy, będą nie geometrii zwrócony z odpowiedzią. |
+| apiCategory | ciąg | Kategoria interfejsu API zdarzenia. |
+| apiName | ciąg | Nazwa interfejsu API zdarzenia. |
+| problemy | obiekt | Wyświetla listę problemów napotkanych podczas przetwarzania. W przypadku zwrócenia jakichkolwiek problemów nie będzie żadnych geometrie zwracanych z odpowiedzią. |
 | responseCode | numer | Kod odpowiedzi HTTP |
-| geometries | object | Wyświetla geometrii ogrodzenia, które zawierają współrzędnych pozycji lub nakładania się searchBuffer wokół pozycji. |
+| geometrie | obiekt | Wyświetla listę ograniczników geometrie, które zawierają położenie współrzędnych lub nakładają się na searchBuffer wokół pozycji. |
 
-Obiekt błąd jest zwracany, gdy wystąpi błąd w interfejsie API map. Obiekt błędu ma następujące właściwości:
-
-| Właściwość | Typ | Opis |
-| -------- | ---- | ----------- |
-| error | ErrorDetails |Ten obiekt jest zwracany, gdy wystąpi błąd w interfejsie API map  |
-
-Obiekt ErrorDetails jest zwracany, gdy wystąpi błąd w interfejsie API map. Szczegóły błędu lub obiekt ma następujące właściwości:
+Obiekt Error jest zwracany, gdy w interfejsie API Maps wystąpi błąd. Obiekt Error ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| code | string | Kod stanu HTTP. |
-| message | string | Jeśli to możliwe, ludzi, czytelny opis błędu. |
-| innererror | InnerError | Jeśli to możliwe, obiekt zawierający informacje specyficzne dla usługi o błędzie. |
+| error | ErrorDetails |Ten obiekt jest zwracany w przypadku wystąpienia błędu w interfejsie API Maps  |
 
-InnerError to obiekt zawierający informacje specyficzne dla usługi o błędzie. Obiekt InnerError ma następujące właściwości: 
+Obiekt ErrorDetails jest zwracany, gdy w interfejsie API Maps wystąpi błąd. ErrorDetails lub obiekt ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| code | string | Komunikat o błędzie. |
+| code | ciąg | Kod stanu HTTP. |
+| message | ciąg | Jeśli jest dostępny, czytelny dla człowieka opis błędu. |
+| innererror | InnerError | Jeśli jest dostępny, obiekt zawierający informacje specyficzne dla usługi o błędzie. |
 
-Obiekt geometrii wymieniono geometrii identyfikatory wirtualne ogrodzenia, wygasłych względem czasu użytkownika w żądaniu. Obiekt geometrii ma geometrii elementy z następującymi właściwościami: 
+InnerError jest obiektem zawierającym informacje specyficzne dla usługi o błędzie. Obiekt InnerError ma następujące właściwości: 
+
+| Właściwość | Typ | Opis |
+| -------- | ---- | ----------- |
+| code | ciąg | Komunikat o błędzie. |
+
+Obiekt geometrie wyświetla listę identyfikatorów geometrii, które wygasły względem czasu użytkownika w żądaniu. Obiekt geometrie ma elementy geometrii o następujących właściwościach: 
 
 | Właściwość | Typ | Opis |
 |:-------- |:---- |:----------- |
-| deviceid | string | Identyfikator urządzenia. |
-| distance | string | <p>Odległość od współrzędnych do najbliższej granicy wirtualnym ogrodzeniu. Wynik dodatni oznacza, że współrzędnych znajduje się poza wirtualnym ogrodzeniu. Jeśli współrzędnych znajduje się poza wirtualnego ogrodzenia, ale większa niż wartość searchBuffer daleko od najbliższej granicy wirtualnego ogrodzenia, wartość jest 999. Ujemna oznacza, że współrzędnych jest w wirtualnym ogrodzeniu. Jeśli współrzędnych znajduje się wewnątrz wielokąta, ale większa niż wartość searchBuffer daleko od najbliższej granicy geofencing, wartość jest-999 = sprawdzanie. Wartość 999 oznacza, że istnieje pewnie współrzędnych znajduje się również poza wirtualnym ogrodzeniu. Wartość oznacza-999 = sprawdzanie, czy jest pewnie współrzędnych jest również w wirtualnym ogrodzeniu.<p> |
-| geometryid |string | Unikatowy identyfikator identyfikuje geometrii wirtualnym ogrodzeniu. |
-| nearestlat | numer | Szerokość najbliższy punkt geometrii. |
+| deviceid | ciąg | Identyfikator urządzenia. |
+| odległość | ciąg | <p>Odległość od współrzędnej do najbliższej krawędzi geoogrodzenia. Pozytywna oznacza, że Współrzędna znajduje się poza ogrodzeniem. Jeśli Współrzędna znajduje się poza ogrodzeniem, ale więcej niż wartość searchBuffer z najbliższej granicy geoogrodzenia, wartość to 999. Wartość ujemna oznacza, że Współrzędna jest wewnątrz ogrodzenia. Jeśli Współrzędna znajduje się wewnątrz wielokąta, ale więcej niż wartość searchBuffer z najbliższego obramowania geoogrodzenia, wartość to-999. Wartość 999 oznacza, że istnieje doskonały stopień pewności, że Współrzędna jest poza ogrodzeniem geograficznym. Wartość-999 oznacza, że istnieje doskonały stopień pewności, że Współrzędna jest również w obrębie geofencingu.<p> |
+| geometryid |ciąg | Unikatowy identyfikator identyfikuje geometrię geoogrodzenia. |
+| nearestlat | numer | Szerokość geograficzna najbliższego punktu geometrii. |
 | nearestlon | numer | Długość geograficzna najbliższego punktu geometrii. |
-| udId | string | Unikatowy identyfikator, zwrócone z usługi przekazywania użytkownika podczas przekazywania wirtualnego ogrodzenia. Nie będą uwzględniane w interfejsie API wpis wirtualnego grodzenia. |
+| udId | ciąg | Unikatowy identyfikator zwrócony przez usługę przekazywania przez użytkownika podczas przekazywania geoogrodzenia. Nie zostanie uwzględniony w interfejsie API po geoogrodzeniu. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| expiredGeofenceGeometryId | ciąg] | Wyświetla identyfikator geometrii wirtualnego ogrodzenia, który wygasł względem czasu użytkownika w żądaniu. |
-| geometries | [] geometrii |Wyświetla geometrii ogrodzenia, które zawierają współrzędnych pozycji lub nakładania się searchBuffer wokół pozycji. |
-| invalidPeriodGeofenceGeometryId | ciąg]  | Wyświetla identyfikator geometrii wirtualnego ogrodzenia, który jest nieprawidłowy okres względem czasu użytkownika w żądaniu. |
-| isEventPublished | wartość logiczna | Wartość true, jeśli co najmniej jednego zdarzenia są publikowane w subskrybent zdarzenia usługi Azure Maps, false, jeśli żadne zdarzenie jest publikowany subskrybent zdarzenia usługi Azure Maps. |
+| expiredGeofenceGeometryId | string[] | Listy o IDENTYFIKATORze geometrii geofencingu, które wygasły względem czasu użytkownika w żądaniu. |
+| geometrie | geometrie [] |Wyświetla listę ograniczników geometrie, które zawierają położenie współrzędnych lub nakładają się na searchBuffer wokół pozycji. |
+| invalidPeriodGeofenceGeometryId | string[]  | Listy identyfikatorów geometrycznych geoogrodzenia, które znajdują się w nieprawidłowym okresie względem czasu użytkownika w żądaniu. |
+| isEventPublished | wartość logiczna | Wartość true, jeśli co najmniej jedno zdarzenie jest publikowane na subskrybencie zdarzenia Azure Maps, wartość false, jeśli żadne zdarzenie nie jest publikowane na subskrybencie zdarzenia Azure Maps. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Wprowadzenie do usługi Azure Event Grid, zobacz [co to jest usługa Event Grid?](overview.md)
-* Aby uzyskać więcej informacji na temat tworzenia subskrypcji usługi Azure Event Grid, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).
+* Aby zapoznać się z wprowadzeniem do Azure Event Grid, zobacz [co to jest Event Grid?](overview.md)
+* Aby uzyskać więcej informacji na temat tworzenia subskrypcji Azure Event Grid, zobacz [Event Grid schematu subskrypcji](subscription-creation-schema.md).

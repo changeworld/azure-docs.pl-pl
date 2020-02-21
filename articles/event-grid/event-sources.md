@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid źródła zdarzeń
-description: W tym artykule opisano obsługiwane źródła zdarzeń dla Azure Event Grid. Źródło zdarzenia to miejsce, w którym występuje zdarzenie.
+description: Subskrypcje platformy Azure, Container Registry, tematy niestandardowe, Event Hubs, IoT Hub, Key Vault, Media Services, grupy zasobów, Service Bus, magazyn, mapy, konfiguracja aplikacji, sygnał R, Machine Learning.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 3a52d906d958fdfd1d7e09c6229b12af3204bc52
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 31923e1cb69eb6681367ed6ea71c10564ae6d489
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846387"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526386"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Źródła zdarzeń w Azure Event Grid
 
@@ -61,7 +61,7 @@ Subskrybowanie tematów niestandardowych w celu reagowania na zdarzenia aplikacj
 | [Szablon Menedżer zasobów: temat niestandardowy i Event Hubs punkt końcowy](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Szablon Menedżer zasobów, który tworzy subskrypcję tematu niestandardowego. Wysyła zdarzenia do Event Hubs platformy Azure. |
 | [Schemat zdarzenia](event-schema.md) | Pokazuje pola w zdarzeniach niestandardowych. |
 
-## <a name="event-hubs"></a>Centra zdarzeń
+## <a name="event-hubs"></a>Event Hubs
 
 Zasubskrybuj zdarzenia Event Hubs, aby odpowiedzieć na zdarzenia plików przechwytywania. Event Hubs może działać jako źródło zdarzenia lub procedura obsługi zdarzeń. W poniższych artykułach pokazano, jak używać Event Hubs jako źródła.
 
@@ -72,7 +72,7 @@ Zasubskrybuj zdarzenia Event Hubs, aby odpowiedzieć na zdarzenia plików przech
 
 Przykłady Event Hubs jako programu obsługi znajdują się w temacie [obsługa Event Hubs](event-handlers.md#event-hubs).
 
-## <a name="iot-hub"></a>IoT Hub
+## <a name="iot-hub"></a>Centrum IoT
 
 Zasubskrybuj zdarzenia IoT Hub, aby odpowiedzieć na zdarzenia utworzone, usunięte, połączone, rozłączone i telemetrii.
 
@@ -129,7 +129,7 @@ Subskrybuj zdarzenia Service Bus, aby odpowiedzieć na komunikaty bez aktywnego 
 | [Przegląd: Azure Service Bus do integracji Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Omówienie integrowania Service Bus z Event Grid. |
 | [Schemat zdarzenia](event-schema-service-bus.md) | Wyświetla pola w zdarzeniach Service Bus. |
 
-## <a name="storage"></a>Usługa Storage
+## <a name="storage"></a>Storage
 
 Zasubskrybuj zdarzenia Blob Storage, aby odpowiedzieć na zdarzenia utworzone i usunięte przez obiekt BLOB.
 
@@ -147,7 +147,7 @@ Zasubskrybuj zdarzenia Blob Storage, aby odpowiedzieć na zdarzenia utworzone i 
 | [Przegląd: reagowanie na zdarzenia usługi BLOB Storage](../storage/blobs/storage-blob-event-overview.md) | Omówienie integrowania usługi BLOB Storage z Event Grid. |
 | [Schemat zdarzenia](event-schema-blob-storage.md) | Wyświetla pola w zdarzeniach Blob Storage. |
 
-## <a name="maps"></a>Mapy
+## <a name="maps"></a>Maps
 Zasubskrybuj zdarzenia Azure Maps, aby odpowiedzieć na zdarzenia geofencingu. Aplikacja może na przykład dostarczyć powiadomienie e-mail za każdym razem, gdy urządzenie przejdzie lub wyjdzie z geoogrodzenia.
 
 |Tytuł  |Opis  |
@@ -186,4 +186,4 @@ Zasubskrybuj Azure Machine Learning zdarzenia obszaru roboczego, aby odpowiedzie
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).
-* Aby szybko rozpocząć pracę, przy użyciu usługi Event Grid, zobacz [Utwórz i wyznaczać trasy zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md).
+* Aby szybko rozpocząć korzystanie z Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych z Azure Event Grid](custom-event-quickstart.md).

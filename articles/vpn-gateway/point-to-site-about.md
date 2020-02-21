@@ -1,18 +1,18 @@
 ---
-title: Informacje o połączeniach sieci VPN typu punkt-lokacja na platformie Azure | Microsoft Docs
+title: Informacje o połączeniach sieci VPN typu punkt-lokacja na platformie Azure | VPN Gateway
 description: Ten artykuł ułatwia zrozumienie połączeń punkt-lokacja i pomaga określić, który typ uwierzytelniania bramy sieci VPN P2S ma być używany.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3db5cf0ddfec231a313df58e551061cbd5f9bef5
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110448"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500596"
 ---
 # <a name="about-point-to-site-vpn"></a>Informacje o sieci VPN typu punkt-lokacja
 
@@ -53,14 +53,14 @@ Na wysokim poziomie należy wykonać następujące kroki, aby skonfigurować uwi
 
 1. [Konfigurowanie dzierżawy usługi Azure AD](openvpn-azure-ad-tenant.md)
 
-2. [Włączanie uwierzytelniania usługi Azure AD na bramie](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [Włączanie uwierzytelniania usługi Azure AD na bramie](openvpn-azure-ad-tenant.md#enable-authentication)
 
 3. [Pobieranie i Konfigurowanie klienta sieci VPN platformy Azure](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Uwierzytelnianie przy użyciu serwera domeny Active Directory (AD)
 
-Uwierzytelnianie domeny usługi AD umożliwia użytkownikom nawiązywanie połączeń z platformą Azure przy użyciu poświadczeń domeny organizacji. Wymaga serwera RADIUS, który integruje się z serwerem usługi AD. Organizacje mogą również korzystać z istniejącego wdrożenia usługi RADIUS.   
+Uwierzytelnianie domeny usługi AD umożliwia użytkownikom nawiązywanie połączeń z platformą Azure przy użyciu poświadczeń domeny organizacji. Wymaga serwera RADIUS, który integruje się z serwerem usługi AD. Organizacje mogą również korzystać z istniejącego wdrożenia usługi RADIUS.
   
 Serwer RADIUS można wdrożyć lokalnie lub w sieci wirtualnej platformy Azure. Podczas uwierzytelniania VPN Gateway Azure pełni rolę przekazywania i przesyłania dalej komunikatów uwierzytelniania między serwerem RADIUS a urządzeniem łączącym. W związku z tym ważne jest, aby brama była osiągalna do serwera RADIUS. Jeśli serwer RADIUS jest obecny w środowisku lokalnym, w celu uzyskania dostępu do lokacji lokalnej wymagane jest połączenie S2S sieci VPN z platformy Azure.  
   
@@ -156,9 +156,6 @@ Plik zip zawiera również wartości niektórych ważnych ustawień po stronie p
 |TLS_RSA_WITH_AES_128_CBC_SHA256 |
 |TLS_RSA_WITH_AES_256_CBC_SHA256 |
 
-
-
-
 ## <a name="configure"></a>Jak mogę skonfigurować połączenie P2S?
 
 Konfiguracja P2S wymaga wykonania kilku konkretnych kroków. Poniższe artykuły zawierają instrukcje dotyczące konfiguracji P2S oraz linki do konfigurowania urządzeń klienckich sieci VPN:
@@ -169,11 +166,9 @@ Konfiguracja P2S wymaga wykonania kilku konkretnych kroków. Poniższe artykuły
 
 * [Konfigurowanie OpenVPN](vpn-gateway-howto-openvpn.md)
 
-## <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a>Jak mogę usunąć konfiguracji połączenia P2S?
+### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>Aby usunąć konfigurację połączenia usługi P2S
 
-Konfigurację P2S można usunąć za pomocą polecenia AZ CLI i poniższe polecenie: 
-
-`az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"`
+Aby uzyskać instrukcje, zobacz [często zadawane pytania](#removeconfig)poniżej.
  
 ## <a name="faqcert"></a>Często zadawane pytania dotyczące natywnego uwierzytelniania certyfikatu platformy Azure
 

@@ -1,24 +1,19 @@
 ---
-title: Samouczek dotyczący używania dynamicznej konfiguracji usługi Azure App Configuration w aplikacji .NET Framework | Microsoft Docs
-description: W tym samouczku dowiesz się, jak dynamicznie aktualizować dane konfiguracji dla aplikacji .NET Framework
+title: 'Samouczek .NET Framework: Konfiguracja dynamiczna w konfiguracji aplikacji platformy Azure'
+description: W ramach tego samouczka nauczysz się dynamicznie aktualizować dane konfiguracyjne .NET Framework aplikacji przy użyciu usługi Azure App Configuration.
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7cb76d5836055ce352373fa13449e27d81e84022
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7ba3eae4ea5557b4bb1b1be4e2c79eab8f6e7988
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185248"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484880"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Samouczek: używanie konfiguracji dynamicznej w aplikacji .NET Framework
 
@@ -57,7 +52,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 1. W obszarze **Utwórz nowy projekt**odfiltruj typ projektu **konsoli** i kliknij pozycję **Aplikacja konsolowa (.NET Framework)** . Kliknij przycisk **Dalej**.
 
-1. W obszarze **Konfigurowanie nowego projektu**wprowadź nazwę projektu. W obszarze **Struktura**wybierz pozycję **.NET Framework 4.7.1** lub wyższy. Kliknij pozycję **Utwórz**.
+1. W obszarze **Konfigurowanie nowego projektu**wprowadź nazwę projektu. W obszarze **Struktura**wybierz pozycję **.NET Framework 4.7.1** lub wyższy. Kliknij przycisk **Utwórz**.
 
 ## <a name="reload-data-from-app-configuration"></a>Ponowne ładowanie danych z usługi App Configuration
 1. Kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Zarządzaj pakietami NuGet**. Na karcie **Przeglądaj** Wyszukaj i Dodaj pakiet NuGet *Microsoft. Extensions. Configuration. AzureAppConfiguration* do projektu. Jeśli nie możesz go znaleźć, zaznacz pole wyboru **Uwzględnij wersję wstępną** .
@@ -134,7 +129,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
     ![Lokalne uruchamianie aplikacji](./media/dotnet-app-run.png)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). Wybierz pozycję **wszystkie zasoby**, a następnie wybierz wystąpienie magazynu konfiguracji aplikacji utworzone w ramach przewodnika Szybki Start.
+1. Zaloguj się do [Azure portal](https://portal.azure.com). Wybierz pozycję **wszystkie zasoby**, a następnie wybierz wystąpienie magazynu konfiguracji aplikacji utworzone w ramach przewodnika Szybki Start.
 
 1. Wybierz pozycję **Eksplorator konfiguracji**i zaktualizuj wartości następujących kluczy:
 

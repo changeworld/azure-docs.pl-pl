@@ -4,13 +4,13 @@ description: Dowiedz się, jak zwiększyć bezpieczeństwo łączności z bazą 
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.custom: mvc
-ms.openlocfilehash: 53dc6291d699ce08e08d3504bfcd63a525eb9196
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
-ms.translationtype: MT
+ms.custom: mvc, , cli-validate
+ms.openlocfilehash: c757167a3c68c4e9ef55bef057479466833a6287
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671193"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500127"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Samouczek: zabezpieczanie połączenia usługi Azure SQL Database z usługi App Service za pomocą tożsamości zarządzanej
 

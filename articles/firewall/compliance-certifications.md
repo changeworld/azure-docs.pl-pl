@@ -1,22 +1,22 @@
 ---
-title: Certyfikaty zgodności zapory platformy Azure
-description: Lista certyfikatów zgodności zapory platformy Azure dla magistrali PCI, SOC i ISO
+title: Certyfikaty zapory platformy Azure
+description: Lista certyfikatów zapory platformy Azure dla usług PCI, SOC, ISO i ICSA Labs
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/17/2020
+ms.date: 02/19/2020
 ms.author: victorh
-ms.openlocfilehash: f7e235a4212cf14f851c0c58eb087970c8f8d137
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158184"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482188"
 ---
-# <a name="azure-firewall-compliance-certifications"></a>Certyfikaty zgodności zapory platformy Azure
+# <a name="azure-firewall-certifications"></a>Certyfikaty zapory platformy Azure
 
-Zapora platformy Azure to branżowa karta płatnicza (PCI), kontrolki organizacji usług (SOC), Międzynarodowa Organizacja Normalizacyjna (ISO) i zgodność HITRUST.
+Zapora platformy Azure to branżowa karta płatnicza (PCI), kontrolki organizacji usług (SOC), Międzynarodowa Organizacja Normalizacyjna (ISO), ICSA Labs i HITRUST.
 
 Poniższe certyfikaty dotyczą globalnych platform Azure i Azure Government.
 
@@ -29,23 +29,23 @@ Następujące certyfikaty zapory platformy Azure dotyczą globalnej platformy Az
 - AMF i ACPR (Francja)
 - APRA (Australia)
 - PDPA Argentyna
-- Australia — program IRAP
+- Australia IRAP
 - CDSA
 - CFTC 1,31
-- CSA STAR Attestation
-- Certyfikacja CSA STAR
-- Samoocena CSA STAR
+- CSA STAR zaświadczania
+- Certyfikacja STAR CSA
+- Automatyczna Ocena w witrynie CSA STAR
 - Kanadyjskie prawa do ochrony prywatności
 - DPP (WIELKA BRYTANIA)
 - IAF ENISA UE
 - Klauzule modelowe UE
 - Europejski Urząd banku
 - FCA i PRA (Wielka Brytania)
-- FERPA (Stany Zjednoczone)
+- USTAWA FERPA (US)
 - FFIEC (US)
 - FINMA (Szwajcaria)
 - FSA (Dania)
-- GLBA (Stany Zjednoczone)
+- GLBA (US)
 - Niemcy C5
 - GxP (FDA 21 CFR część 11)
 - HITRUST
@@ -65,17 +65,17 @@ Następujące certyfikaty zapory platformy Azure dotyczą globalnej platformy Az
 - Zestaw narzędzi NHS IG (UK)
 - Holandia BIR 2012
 - OSFI (Kanada)
-- 1\. poziom PCI DSS
+- Poziom PCI DSS 1
 - Oprócz i IRDAI (Indie)
 - SOC 1, typ 2
 - SOC 2 typu 2
 - SOC 3
-- SOX (Stany Zjednoczone)
+- SOX (US)
 - DPA (Hiszpania)
 - TISAX
 - TruSight
 - UK G-Cloud
-- WCAG 2.0
+- WCAG 2,0
 
 
 ## <a name="azure-government-certifications"></a>Certyfikaty Azure Government
@@ -84,25 +84,33 @@ Następujące certyfikaty zapory platformy Azure są przeznaczone dla Azure Gove
 
 - CJIS
 - CNSSI 1253
-- CSA STAR Attestation
+- CSA STAR zaświadczania
 - DFARS
 - DoD DISA SRG Level 2
 - Nowak 10 CFR część 810
-- EAR
+- USZACH
 - FIPS 140-2
 - FedRAMP High
 - HITRUST
 - IRS 1075
 - ITAR
-- MARS-E (Stany Zjednoczone)
+- MARS — E (US)
 - NERC
 - Struktura cyberbezpieczeństwa NIST
 - NIST SP 800-171
 - SOC 1, typ 2
 - SOC 2 typu 2
 - SOC 3
-- SOX (Stany Zjednoczone)
-- Sekcja 508 — dokumenty VPAT
+- SOX (US)
+- Sekcja 508 dokumenty VPAT
+
+## <a name="icsa-labs-corporate-firewall-certification"></a>Certyfikacja zapory firmy ICSA Labs
+
+![Certyfikat ICSA](media/overview/icsa-cert-firewall-small.png)
+
+ICSA Labs to wiodący dostawca w zakresie testowania i certyfikacji innych firm, a także urządzeń podłączonych do sieci. Mierzą one zgodność produktu, niezawodność i wydajność w przypadku większości najlepszych dostawców technologii.
+
+Zapora systemu Azure to pierwsza usługa zapory w chmurze, która umożliwia uzyskanie certyfikacji zapory ICSA Labs firmy. Raport dotyczący certyfikacji zapory platformy Azure znajduje się w raporcie dotyczącym [testowania i inspekcji certyfikacji ICSA Labs](https://aka.ms/ICSALabsCertification). Aby uzyskać więcej informacji, zobacz stronę [programu certyfikacji zapory ICSA Labs](https://www.icsalabs.com/technology-program/firewalls) .
 
 
 ## <a name="next-steps"></a>Następne kroki

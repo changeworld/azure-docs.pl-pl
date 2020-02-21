@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 11/13/2019
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 476763e1cb354edb8cdc4cbbae0d3aa7017faa16
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 342ae7e42c85ad661c04ba4ebb6629673f4af4dc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118748"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482280"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Szybki Start: wyodrębnianie informacji o tekście i układzie przy użyciu interfejsu API REST aparatu rozpoznawania formularzy w języku Python
 
@@ -85,7 +85,7 @@ https://cognitiveservice/formrecognizer/v2.0-preview/layout/operations/54f0b076-
 
 ## <a name="get-the-layout-results"></a>Pobierz wyniki układu
 
-Po wywołaniu interfejsu API **Analizowanie układu** należy wywołać interfejs API **[wyników Get Analizuj](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** w celu uzyskania stanu operacji i wyodrębnionych danych. Dodaj następujący kod w dolnej części skryptu języka Python. Spowoduje to użycie wartości identyfikatora operacji w nowym wywołaniu interfejsu API. Ten skrypt wywołuje interfejs API w regularnych odstępach czasu, dopóki wyniki nie będą dostępne. Zalecamy interwał co najmniej jednej sekundy.
+Po wywołaniu interfejsu API **Analizowanie układu** należy wywołać interfejs API **[wyników Get Analizuj](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** w celu uzyskania stanu operacji i wyodrębnionych danych. Dodaj następujący kod w dolnej części skryptu języka Python. Ten kod używa wartości identyfikatora operacji w nowym wywołaniu interfejsu API. Ten skrypt wywołuje interfejs API w regularnych odstępach czasu, dopóki wyniki nie będą dostępne. Zalecamy interwał co najmniej jednej sekundy.
 
 ```python
 n_tries = 10

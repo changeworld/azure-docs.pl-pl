@@ -16,12 +16,12 @@ ms.date: 01/22/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c1b6f5ebffa39d3b735e85df794e37329e3aa2e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1ecf3a8819518c674a3d8bd7af55d1a3c6393c42
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548904"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483860"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Dodawanie połączonej organizacji w zarządzaniu prawami usługi Azure AD
 
@@ -77,7 +77,7 @@ Wykonaj następujące kroki, aby dodać zewnętrzny katalog lub domenę usługi 
 1. Kliknij przycisk **Dodaj** , aby dodać katalog lub domenę usługi Azure AD. Obecnie można dodać tylko jeden katalog lub domenę usługi Azure AD na podłączoną organizację.
 
     > [!NOTE]
-    > Wszyscy użytkownicy z katalogu lub domeny usługi Azure AD będą mogli zażądać tego pakietu dostępu. Obejmuje to użytkowników w usłudze Azure AD ze wszystkich poddomen skojarzonych z katalogiem, chyba że te domeny są blokowane przez listę dozwolonych i zablokowanych warunków B2B platformy Azure. Aby uzyskać więcej informacji, zobacz [dozwolonych lub zablokowanych zaproszeń do użytkowników B2B z określonym organizacjom](../b2b/allow-deny-list.md).
+    > Wszyscy użytkownicy z katalogu lub domeny usługi Azure AD będą mogli zażądać tego pakietu dostępu. Obejmuje to użytkowników w usłudze Azure AD ze wszystkich poddomen skojarzonych z katalogiem, chyba że te domeny są blokowane przez listę dozwolonych i zablokowanych warunków B2B platformy Azure. Aby uzyskać więcej informacji, zobacz [Zezwalanie lub blokowanie zaproszeń użytkownikom B2B z określonych organizacji](../b2b/allow-deny-list.md).
 
 1. Po dodaniu katalogu lub domeny usługi Azure AD kliknij przycisk **Wybierz**.
 
@@ -96,6 +96,23 @@ Wykonaj następujące kroki, aby dodać zewnętrzny katalog lub domenę usługi 
 1. Na karcie **Recenzja + tworzenie** Sprawdź ustawienia organizacji, a następnie kliknij przycisk **Utwórz**.
 
     ![Dostęp do pakietu-zasady-Dodawanie połączonej organizacji — Recenzja + tworzenie](./media/entitlement-management-organization/organization-review-create.png)
+
+## <a name="update-a-connected-organization"></a>Aktualizowanie połączonej organizacji 
+
+Jeśli połączona organizacja zmienia się w innej domenie, jeśli masz nową nazwę tej organizacji lub chcesz zmienić sponsorów, możesz zaktualizować połączoną organizację.
+
+**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika lub zapraszający Gości
+
+1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
+
+1. W menu po lewej stronie kliknij pozycję **połączone organizacje** , a następnie kliknij, aby otworzyć połączoną organizację.
+
+1. Na stronie Przegląd kliknij przycisk **Edytuj** , aby zmienić nazwę lub opis organizacji.  
+
+1. Na stronie katalog + domena kliknij pozycję **Aktualizuj katalog i domenę** , aby przejść do innego katalogu lub domeny.
+
+1. Na stronie sponsorzy kliknij pozycję **Dodaj wewnętrznych sponsorów** lub **Dodaj zewnętrznych sponsorów** , aby dodać użytkownika jako sponsora.  Aby usunąć sponsora, kliknij przycisk sponsor i w menu po prawej stronie kliknij pozycję **Usuń**.
+
 
 ## <a name="delete-a-connected-organization"></a>Usuwanie połączonej organizacji
 

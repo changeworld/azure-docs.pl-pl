@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 715415929afaad36e4854e75a2b7b5360d22a6bf
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549091"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486346"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu SDK Azure WebJobs na potrzeby przetwarzania w tle opartego na zdarzeniach
 
@@ -277,9 +277,9 @@ Aby użyć wyzwalacza czasomierza lub powiązania plików, które są częścią
 
 Te wyzwalacze i typy powiązań są zawarte w wersji 2. *x* pakietu `Microsoft.Azure.WebJobs`:
 
-* Magazyn obiektów Blob
+* Blob Storage
 * Queue Storage
-* Table Storage
+* Magazyn tabel
 
 Aby użyć innych typów wyzwalacza i powiązania, zainstaluj pakiet NuGet, który go zawiera, i Wywołaj metodę `Use<binding>` na obiekcie `JobHostConfiguration`. Na przykład jeśli chcesz użyć wyzwalacza czasomierza, zainstaluj `Microsoft.Azure.WebJobs.Extensions` i Wywołaj `UseTimers` w metodzie `Main`, jak pokazano poniżej:
 
@@ -453,7 +453,7 @@ static async Task Main()
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz artykuł dotyczący [powiązania usługi queue storage](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings) .
+Aby uzyskać więcej informacji, zobacz artykuł dotyczący [powiązania usługi queue storage](../azure-functions/functions-bindings-storage-queue-trigger.md#hostjson-properties) .
 
 #### <a name="version-2x"></a>Wersja 2. *x*
 
@@ -524,7 +524,7 @@ static async Task Main()
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz artykuł dotyczący [powiązań Service Bus](../azure-functions/functions-bindings-service-bus.md#hostjson-settings) .
+Aby uzyskać więcej informacji, zobacz artykuł dotyczący [powiązań Service Bus](../azure-functions/functions-bindings-service-bus-output.md#hostjson-settings) .
 
 ### <a name="configuration-for-other-bindings"></a>Konfiguracja innych powiązań
 
@@ -565,7 +565,7 @@ static void Main()
 }
 ```
 
-## <a name="binding-expressions"></a>Wyrażenia powiązania
+## <a name="binding-expressions"></a>Wyrażenia powiązań
 
 W parametrach konstruktora atrybutów można używać wyrażeń, które są rozpoznawane jako wartości z różnych źródeł. Na przykład, w poniższym kodzie, ścieżka `BlobTrigger` atrybutu tworzy wyrażenie o nazwie `filename`. Gdy jest używany dla powiązania danych wyjściowych, `filename` jest rozpoznawana jako nazwa wyzwalającego obiektu BLOB.
 
@@ -680,11 +680,11 @@ Aby uzyskać więcej informacji, zobacz temat [Powiązywanie w środowisku uruch
 
 Dokumentacja Azure Functions zawiera informacje referencyjne dotyczące każdego typu powiązania. Poniższe informacje znajdują się w każdym artykule referencyjnym powiązania. (Ten przykład jest oparty na kolejce magazynu).
 
-* [Pakiety](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). Pakiet, który należy zainstalować w celu uwzględnienia obsługi powiązania w projekcie zestawu SDK zadań WebJob.
-* [Przykłady](../azure-functions/functions-bindings-storage-queue.md#trigger). Przykłady kodu. Przykład C# biblioteki klas dotyczy zestawu SDK zadań WebJob. Po prostu Pomiń atrybut `FunctionName`.
-* [Atrybuty](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations). Atrybuty, które mają być używane dla typu powiązania.
-* [Konfiguracja](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Wyjaśnienia właściwości atrybutów i parametrów konstruktorów.
-* [Użycie](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Typy, do których można powiązać i informacje o sposobie działania powiązania. Na przykład: algorytm sondowania, przetwarzanie w kolejce trującej.
+* [Pakiety](../azure-functions/functions-bindings-storage-queue.md). Pakiet, który należy zainstalować w celu uwzględnienia obsługi powiązania w projekcie zestawu SDK zadań WebJob.
+* [Przykłady](../azure-functions/functions-bindings-storage-queue-trigger.md). Przykłady kodu. Przykład C# biblioteki klas dotyczy zestawu SDK zadań WebJob. Po prostu Pomiń atrybut `FunctionName`.
+* [Atrybuty](../azure-functions/functions-bindings-storage-queue-trigger.md#attributes-and-annotations). Atrybuty, które mają być używane dla typu powiązania.
+* [Konfiguracja](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration). Wyjaśnienia właściwości atrybutów i parametrów konstruktorów.
+* [Użycie](../azure-functions/functions-bindings-storage-queue-trigger.md#usage). Typy, do których można powiązać i informacje o sposobie działania powiązania. Na przykład: algorytm sondowania, przetwarzanie w kolejce trującej.
   
 Aby uzyskać listę artykułów referencyjnych dotyczących powiązań, zobacz "obsługiwane powiązania" w artykule [wyzwalacze i powiązania](../azure-functions/functions-triggers-bindings.md#supported-bindings) Azure Functions. Na tej liście powiązania HTTP, webhook i Event Grid są obsługiwane tylko przez Azure Functions, a nie przez zestaw SDK WebJobs.
 
@@ -821,15 +821,15 @@ Zalecamy platformę rejestrowania opracowaną dla ASP.NET. W artykule [wprowadze
 
 Każdy dziennik utworzony przez wystąpienie `ILogger` ma skojarzoną `Category` i `Level`. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) jest wyliczeniem, a kod liczby całkowitej wskazuje na ważność względną:
 
-|PoziomRejestrowania    |Code|
+|LogLevel    |Kod|
 |------------|---|
 |Ślad       | 0 |
 |Debugowanie       | 1 |
 |Informacje | 2 |
 |Ostrzeżenie     | 3 |
 |Błąd       | 4 |
-|Krytyczna    | 5 |
-|Brak        | 6 |
+|Krytyczny    | 5 |
+|None        | 6 |
 
 Można niezależnie filtrować każdą kategorię do określonego [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel). Na przykład możesz chcieć zobaczyć wszystkie dzienniki przetwarzania wyzwalacza obiektów blob, ale tylko `Error` i nowsze dla wszystkiego innego.
 
@@ -998,8 +998,8 @@ config.LoggerFactory = new LoggerFactory()
 W tym artykule przedstawiono fragmenty kodu, które pokazują, jak obsługiwać typowe scenariusze pracy z zestawem SDK usługi WebJobs. Aby zapoznać się z kompletnymi przykładami, zobacz artykuł [Azure-WebJobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 
 [Kontekście wykonywania]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
-[`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient
-[`ConfigureServices`]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
-[`ITelemetryInitializer`]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
-[`TelemetryConfiguration`]: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
-[`JobHostConfiguration`]: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs
+[TelemetryClient]: /dotnet/api/microsoft.applicationinsights.telemetryclient
+[ConfigureServices]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
+['ITelemetryInitializer']: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
+['TelemetryConfiguration']: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
+['JobHostConfiguration']: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs

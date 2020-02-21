@@ -4,12 +4,12 @@ description: Dowiedz się, jak opracowywać funkcje przy użyciu programu PowerS
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 2fa510e447d4d9b054a37f7665d010382a5db819
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974244"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485135"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Przewodnik dewelopera programu Azure Functions PowerShell
 
@@ -75,11 +75,11 @@ $TriggerMetadata.sys
 
 | Właściwość   | Opis                                     | Typ     |
 |------------|-------------------------------------------------|----------|
-| UtcNow     | Kiedy, w UTC, funkcja została wyzwolona        | Data i godzina |
-| MethodName | Nazwa funkcji, która została wyzwolona     | string   |
-| RandGuid   | unikatowy identyfikator GUID dla tego wykonania funkcji | string   |
+| utcNow     | Kiedy, w UTC, funkcja została wyzwolona        | DateTime |
+| MethodName | Nazwa funkcji, która została wyzwolona     | ciąg   |
+| RandGuid   | unikatowy identyfikator GUID dla tego wykonania funkcji | ciąg   |
 
-Każdy typ wyzwalacza ma inny zestaw metadanych. Na przykład `$TriggerMetadata` dla `QueueTrigger` zawiera `InsertionTime`, `Id`, `DequeueCount`, między innymi. Aby uzyskać więcej informacji na temat metadanych wyzwalacza kolejki, przejdź do [oficjalnej dokumentacji wyzwalaczy kolejek](functions-bindings-storage-queue.md#trigger---message-metadata). Zapoznaj się z dokumentacją dotyczącą [wyzwalaczy](functions-triggers-bindings.md) , z którymi pracujesz, aby zobaczyć, co znajduje się w metadanych wyzwalacza.
+Każdy typ wyzwalacza ma inny zestaw metadanych. Na przykład `$TriggerMetadata` dla `QueueTrigger` zawiera `InsertionTime`, `Id`, `DequeueCount`, między innymi. Aby uzyskać więcej informacji na temat metadanych wyzwalacza kolejki, przejdź do [oficjalnej dokumentacji wyzwalaczy kolejek](functions-bindings-storage-queue-trigger.md#message-metadata). Zapoznaj się z dokumentacją dotyczącą [wyzwalaczy](functions-triggers-bindings.md) , z którymi pracujesz, aby zobaczyć, co znajduje się w metadanych wyzwalacza.
 
 ## <a name="bindings"></a>Powiązania
 
@@ -125,9 +125,9 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Poniżej podano prawidłowe parametry wywołania `Push-OutputBinding`:
 
-| Nazwa | Typ | Pozycja | Opis |
+| Name (Nazwa) | Typ | Pozycja | Opis |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | Ciąg | 1 | Nazwa powiązania danych wyjściowych, które chcesz ustawić. |
+| **`-Name`** | String | 1 | Nazwa powiązania danych wyjściowych, które chcesz ustawić. |
 | **`-Value`** | Obiekt | 2 | Wartość powiązania danych wyjściowych, które ma zostać ustawione, które jest akceptowane z potoku ByValue. |
 | **`-Clobber`** | SwitchParameter | Nazywany | Obowiązkowe Gdy jest określony, wymusza wartość ustawioną dla określonego powiązania danych wyjściowych. | 
 
@@ -175,7 +175,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 
 #### <a name="push-outputbinding-example-queue-output-binding"></a>Przykład push-OutputBinding: powiązanie danych wyjściowych kolejki
 
-`Push-OutputBinding` służy do wysyłania danych do powiązań wyjściowych, takich jak [powiązanie danych wyjściowych usługi Azure queue storage](functions-bindings-storage-queue.md#output). W poniższym przykładzie komunikat zapisany w kolejce ma wartość "Output #1":
+`Push-OutputBinding` służy do wysyłania danych do powiązań wyjściowych, takich jak [powiązanie danych wyjściowych usługi Azure queue storage](functions-bindings-storage-queue-output.md). W poniższym przykładzie komunikat zapisany w kolejce ma wartość "Output #1":
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
@@ -234,7 +234,7 @@ Logowanie w funkcjach programu PowerShell działa jak regularne rejestrowanie pr
 | ------------- | -------------- |
 | Błąd | **`Write-Error`** |
 | Ostrzeżenie | **`Write-Warning`**  | 
-| Informacje | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informacje | Zapisuje dane w dzienniku na poziomie _informacji_ . |
+| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | Zapisuje dane w dzienniku na poziomie _informacji_ . |
 | Debugowanie | **`Write-Debug`** |
 | Ślad | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
@@ -275,7 +275,7 @@ Istnieje wiele wyzwalaczy i powiązań dostępnych do użycia z aplikacją funkc
 Wszystkie wyzwalacze i powiązania są reprezentowane w kodzie jako kilka rzeczywistych typów danych:
 
 * Elemencie
-* string
+* ciąg
 * byte[]
 * int
 * double
@@ -296,12 +296,12 @@ Obiekt żądania, który jest przesyłany do skryptu, jest typu `HttpRequestCont
 
 | Właściwość  | Opis                                                    | Typ                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Obiekt, który zawiera treść żądania. `Body` jest serializowany do najlepszego typu na podstawie danych. Na przykład, jeśli dane są w formacie JSON, są one przenoszone jako tablica skrótów. Jeśli dane są ciągami, są one przenoszone jako ciąg. | obiekt |
+| **`Body`**    | Obiekt, który zawiera treść żądania. `Body` jest serializowany do najlepszego typu na podstawie danych. Na przykład, jeśli dane są w formacie JSON, są one przenoszone jako tablica skrótów. Jeśli dane są ciągami, są one przenoszone jako ciąg. | object |
 | **`Headers`** | Słownik zawierający nagłówki żądania.                | < Słownika, ciąg ><sup>*</sup> |
-| **`Method`** | Metoda HTTP żądania.                                | string                    |
+| **`Method`** | Metoda HTTP żądania.                                | ciąg                    |
 | **`Params`**  | Obiekt, który zawiera parametry routingu żądania. | < Słownika, ciąg ><sup>*</sup> |
 | **`Query`** | Obiekt, który zawiera parametry zapytania.                  | < Słownika, ciąg ><sup>*</sup> |
-| **`Url`** | Adres URL żądania.                                        | string                    |
+| **`Url`** | Adres URL żądania.                                        | ciąg                    |
 
 <sup>*</sup> W przypadku wszystkich kluczy `Dictionary<string,string>` nie jest rozróżniana wielkość liter.
 
@@ -311,8 +311,8 @@ Obiekt odpowiedzi, który ma zostać wysłany z tyłu, ma typ `HttpResponseConte
 
 | Właściwość      | Opis                                                 | Typ                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Obiekt, który zawiera treść odpowiedzi.           | obiekt                    |
-| **`ContentType`** | Krótkie ustawienie typu zawartości odpowiedzi. | string                    |
+| **`Body`**  | Obiekt, który zawiera treść odpowiedzi.           | object                    |
+| **`ContentType`** | Krótkie ustawienie typu zawartości odpowiedzi. | ciąg                    |
 | **`Headers`** | Obiekt, który zawiera nagłówki odpowiedzi.               | Słownik lub Hashtable   |
 | **`StatusCode`**  | Kod stanu HTTP odpowiedzi.                       | ciąg lub int             |
 
@@ -601,7 +601,7 @@ Skrypt jest uruchamiany na każdym wywołaniu. Unikaj używania `Install-Module`
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji zawierają następujące zasoby:
+Aby uzyskać więcej informacji, zobacz następujące zasoby:
 
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 * [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)

@@ -4,15 +4,15 @@ description: Ten artykuł zawiera informacje na temat limitów rozmiaru żądań
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/17/2019
+ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: cfde1355ef5e5a2f9033456ac4089ce3ca3f9d72
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839970"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526794"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Limity rozmiaru żądań zapory aplikacji sieci Web i listy wykluczeń
 
@@ -91,7 +91,13 @@ W związku z tym jeśli adres URL `http://www.contoso.com/?user%281%29=fdafdasfd
 Zapora aplikacji sieci Web umożliwia skonfigurowanie limitów rozmiaru żądań w dolnej i górnej granicy. Dostępne są następujące dwa konfiguracje limitów rozmiaru:
 
 - Pole Maksymalny rozmiar treści żądania jest określone w kilobajtach i kontroluje ogólny limit rozmiaru żądania, wykluczając wszystkie operacje przekazywania plików. To pole może mieć wartość z zakresu od 1 do KB do 128 KB. Wartość domyślna dla rozmiaru treści żądania to 128 KB.
-- Pole limit przekazywania plików jest określone w MB i kontroluje maksymalny dozwolony rozmiar przekazywania plików. To pole może mieć minimalną wartość 1 MB i maksymalnie 500 MB dla dużych wystąpień jednostki SKU, podczas gdy średnia jednostka SKU ma maksymalnie 100 MB. Wartość domyślna dla limitu przekazywania plików to 100 MB.
+- Pole limit przekazywania plików jest określone w MB i kontroluje maksymalny dozwolony rozmiar przekazywania plików. To pole może mieć minimalną wartość 1 MB i następujące wartości maksymalne:
+
+   - 100 MB w przypadku bram WAF o średniej wersji 1
+   - 500 MB w przypadku dużych bram WAF w wersji 1
+   - 750 MB dla bram WAF w wersji 2 
+
+ Wartość domyślna dla limitu przekazywania plików to 100 MB.
 
 WAF oferuje również konfigurowalne pokrętło, aby włączyć lub wyłączyć inspekcję treści żądania. Domyślnie Inspekcja treści żądania jest włączona. Jeśli inspekcja treści żądania jest wyłączona, WAF nie oceni zawartości treści wiadomości HTTP. W takich przypadkach WAF nadal wymusza reguły WAF dla nagłówków, plików cookie i identyfikatora URI. Jeśli inspekcja treści żądania jest wyłączona, pole Maksymalny rozmiar treści żądania nie ma zastosowania i nie można go ustawić. Wyłączenie inspekcji treści żądania umożliwia wysłanie komunikatów o rozmiarze większym niż 128 KB do WAF, ale treść komunikatu nie jest sprawdzana pod kątem luk w zabezpieczeniach.
 
