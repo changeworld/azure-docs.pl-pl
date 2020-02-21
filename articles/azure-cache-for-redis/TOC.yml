@@ -53,6 +53,8 @@
           href: cache-how-to-premium-vnet.md
         - name: Konfigurowanie replikacji geograficznej
           href: cache-how-to-geo-replication.md
+        - name: Zapisywanie z użyciem pojemności zarezerwowanej
+          href: cache-reserved-pricing.md
         - name: Migrowanie z usługi Managed Cache Service
           href: cache-migrate-to-redis.md
     - name: Automatyzacja

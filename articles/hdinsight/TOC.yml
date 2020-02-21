@@ -431,53 +431,9 @@
           items:
             - name: Korzystanie z piaskownicy usługi Apache Hadoop
               href: ./hadoop/apache-hadoop-emulator-get-started.md
+            - name: Korzystanie z platformy Apache Pig
+              href: use-pig.md
         - name: Programowanie
-          items:
-            - name: Korzystanie z technologii MapReduce z usługą Apache Hadoop
-              items:
-                - name: MapReduce — omówienie
-                  href: ./hadoop/hdinsight-use-mapreduce.md
-                - name: Korzystanie z protokołu SSH
-                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
-                - name: Korzystanie z programu cURL
-                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
-                - name: Korzystanie z programu Azure PowerShell
-                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
-                - name: "Korzystanie z\_zestawu SDK środowiska .NET"
-                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
-                - name: Uruchamianie przykładów technologii MapReduce
-                  href: ./hadoop/apache-hadoop-run-samples-linux.md
-                - name: Uruchamianie niestandardowych programów MapReduce na platformie Apache Hadoop
-                  href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: 'Tworzenie programów MapReduce przesyłania strumieniowego w języku C#'
-                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
-                - name: Opracowywanie programów MapReduce w języku Java
-                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
-            - name: 'Używanie programu Apache Hive jako narzędzia do wyodrębniania, przekształcania i ładowania (ETL)'
-              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-            - name: 'Wyodrębnianie, przekształcanie i ładowanie na dużą skalę'
-              href: ./hadoop/apache-hadoop-etl-at-scale.md
-            - name: Tworzenie aplikacji usługi HDInsight platformy .NET z uwierzytelnianiem nieinterakcyjnym
-              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
-            - name: Analizowanie danych big data
-              items:
-                - name: Analizowanie przy użyciu dodatku Power Query
-                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
-                - name: Łączenie usługi Power BI z zapytaniem interaktywnym
-                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
-                - name: Łączenie usługi Power BI z usługą Apache Hadoop
-                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
-                - name: Łączenie programu Excel z usługą Apache Hadoop
-                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
-                - name: Nawiązywanie połączenia przy użyciu sterownika JDBC technologii Apache Hive
-                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
-                - name: Analizowanie przechowywanych tweetów
-                  href: ./hdinsight-analyze-twitter-data-linux.md
-                - name: Generowanie rekomendacji za pomocą biblioteki Apache Mahout
-                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
-                - name: Zaawansowana analiza dla usługi HDInsight
-                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
-        - name: Zarządzanie
           items:
             - name: Używanie pustych węzłów brzegowych
               href: ./hdinsight-apps-use-edge-node.md

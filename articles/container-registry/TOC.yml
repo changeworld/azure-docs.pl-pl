@@ -56,6 +56,8 @@
               href: container-registry-get-started-docker-cli.md
             - name: Wypychanie i ściąganie artefaktu OCI
               href: container-registry-oci-artifacts.md
+            - name: Wypychanie i ściąganie pakietu Helm
+              href: container-registry-helm-repos.md
             - name: Wyświetlanie repozytoriów
               href: container-registry-repositories.md
             - name: Importowanie obrazów kontenerów
@@ -72,8 +74,6 @@
                   href: container-registry-auto-purge.md
             - name: Używanie elementów webhook rekordów ACR
               href: container-registry-webhook.md
-            - name: Repozytoria formularzy Helm (wersja zapoznawcza)
-              href: container-registry-helm-repos.md
         - name: Zabezpieczenia i uwierzytelnianie
           items:
             - name: Ograniczanie dostępu przy użyciu sieci wirtualnej (wersja zapoznawcza)

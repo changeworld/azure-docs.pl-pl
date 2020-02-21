@@ -77,6 +77,8 @@
       href: application-provisioning-configure-api.md
 - name: Dokumentacja
   items:
+    - name: Zgodność z protokołem SCIM 2.0
+      href: application-provisioning-config-problem-scim-compatibility.md
     - name: Wybór metody aprowizacji
       href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: Aprowizacja w usłudze Cloud HR

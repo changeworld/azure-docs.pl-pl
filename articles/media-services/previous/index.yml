@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure Media Services w wersji 2 (starsza wersja)
+summary: Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. Zapoznaj się z najnowszą wersją, 3, usługi Media Services.
+metadata:
+  title: Dokumentacja usługi Azure Media Services w wersji 2
+  description: Dowiedz się, jak za pomocą usługi Media Services w wersji 2 zapewnić bezpieczne przesyłanie strumieniowe materiałów wideo w jakości odpowiedniej do emisji na żywo lub na żądanie.
+  services: media-services
+  ms.service: media-services
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: Juliako
+  ms.author: juliako
+  ms.date: 02/18/2020
+  ms.openlocfilehash: c222a7c0603e9b57518993216711076659b51e4c
+  ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77500777"
+landingContent:
+- title: Informacje o usłudze Azure Media Services w wersji 2
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Omówienie usługi Azure Media Services w wersji 2
+      url: media-services-overview.md
+    - text: Migrowanie do usługi Media Services w wersji 3
+      url: https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3
+  - linkListType: whats-new
+    links:
+    - text: Co nowego w usłudze Media Services w wersji 2?
+      url: media-services-release-notes.md
+  - linkListType: concept
+    links:
+    - text: Starsze składniki
+      url: legacy-components.md
+- title: Przesyłanie strumieniowe na żywo
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Omówienie
+      url: media-services-manage-channels-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie konta usługi Media Services za pomocą portalu
+      url: media-services-portal-create-account.md
+    - text: Połączenie programowe
+      url: media-services-use-aad-auth-to-access-ams-api.md
+    - text: Przesyłanie strumieniowe na żywo za pomocą witryny Azure Portal
+      url: media-services-portal-live-passthrough-get-started.md
+    - text: Przesyłanie strumieniowe na żywo za pomocą platformy .NET
+      url: media-services-dotnet-live-encode-with-onpremises-encoders.md
+- title: Dostarczanie wideo na żądanie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Korzystanie z witryny Azure Portal
+      url: media-services-portal-vod-get-started.md
+    - text: Korzystanie z platformy .NET
+      url: media-services-dotnet-get-started.md
+    - text: Używanie interfejsu REST
+      url: media-services-rest-get-started.md

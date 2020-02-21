@@ -11,36 +11,36 @@ metadata:
   author: gvashishtha
   ms.author: gopalv
   ms.date: 09/13/2019
-  ms.openlocfilehash: db6cebf4b4114a97fd86a173208cc639a5e1f7ed
-  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.openlocfilehash: 3996c34b4ac1acfa040c38712f7b96fa546c8eb9
+  ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73500139"
+  ms.lasthandoff: 02/21/2020
+  ms.locfileid: "77526046"
 landingContent:
-- title: Rozpocznij pracę z maszyną DSVM
+- title: Rozpoczynanie pracy w środowisku Data Science Virtual Machine
   linkLists:
   - linkListType: overview
     links:
-    - text: Co to jest maszyna DSVM?
+    - text: Co to jest środowisko Data Science Virtual Machine?
       url: overview.md
-    - text: Co to jest maszyna DSVM ze sztuczną inteligencją w zakresie danych geograficznych?
+    - text: Co to jest Geo AI Data Science Virtual Machine?
       url: geo-ai-dsvm-overview.md
-    - text: Narzędzia dostępne w środowisku DSVM
+    - text: Narzędzia dołączone do maszyny Data Science Virtual Machine
       url: tools-included.md
     - text: Informacje o wersji
       url: release-notes.md
   - linkListType: get-started
     links:
-    - text: Tworzenie maszyny DSVM z systemem Windows
+    - text: Tworzenie maszyny Data Science Virtual Machine z systemem Windows
       url: provision-vm.md
-    - text: Tworzenie maszyny DSVM z systemem Ubuntu
+    - text: Tworzenie maszyny Data Science Virtual Machine z systemem Ubuntu
       url: dsvm-ubuntu-intro.md
-    - text: Tworzenie maszyny DSVM z systemem CentOS
+    - text: Tworzenie maszyny Data Science Virtual Machine z systemem CentOS
       url: linux-dsvm-intro.md
-    - text: Tworzenie maszyny DSVM ze sztuczną inteligencją w zakresie danych geograficznych
+    - text: Tworzenie maszyny Geo AI Data Science Virtual Machine
       url: provision-geo-ai-dsvm.md
-- title: Zarządzanie maszyną DSVM
+- title: Zarządzanie maszyną Data Science Virtual Machine
   linkLists:
   - linkListType: architecture
     links:
@@ -48,7 +48,7 @@ landingContent:
       url: dsvm-enterprise-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Tworzenie automatycznie skalowanych pul maszyn DSVM
+    - text: Tworzenie skalowanych automatycznie pul maszyn Data Science Virtual Machine
       url: dsvm-pools.md
     - text: Integrację z usługą Active Directory
       url: dsvm-common-identity.md

@@ -305,46 +305,50 @@
       items:
         - name: Co to jest asystent głosowy?
           href: voice-assistants.md
-    - name: Tworzenie własnego asystenta
+    - name: Polecenia niestandardowe (wersja zapoznawcza)
       items:
-        - name: Polecenia niestandardowe (wersja zapoznawcza)
+        - name: Co to są polecenia niestandardowe?
           href: custom-commands.md
-        - name: Mowa Direct Line
+        - name: Przewodniki Szybki start
+          items:
+            - name: Tworzenie polecenia niestandardowego (wersja zapoznawcza)
+              href: quickstart-custom-speech-commands-create-new.md
+            - name: Tworzenie polecenia niestandardowego z parametrami (wersja zapoznawcza)
+              href: quickstart-custom-speech-commands-create-parameters.md
+            - name: Używanie poleceń niestandardowych z głosem niestandardowym (wersja zapoznawcza)
+              href: quickstart-custom-speech-commands-select-custom-voice.md
+            - name: Używanie poleceń niestandardowych z zestawem SDK usługi Mowa (wersja zapoznawcza)
+              href: quickstart-custom-speech-commands-speech-sdk.md
+        - name: Przewodniki z instrukcjami
+          items:
+            - name: Wykonywanie poleceń niestandardowych przy użyciu zestawu SDK usługi Mowa
+              href: how-to-custom-speech-commands-fulfill-sdk.md
+            - name: Dodawanie weryfikacji parametrów do poleceń niestandardowych
+              href: how-to-custom-speech-commands-validations.md
+            - name: Dodawanie potwierdzenia do polecenia niestandardowego
+              href: how-to-custom-speech-commands-confirmations.md
+            - name: Dodawanie korekty jednoetapowej do polecenia niestandardowego
+              href: how-to-custom-speech-commands-one-step-correction.md
+    - name: Mowa Direct Line
+      items:
+        - name: Co to jest mowa Direct Line?
           href: direct-line-speech.md
-    - name: Przewodniki Szybki start
-      items:
-        - name: 'C# (UWP)'
-          href: quickstart-voice-assistant-csharp-uwp.md
-        - name: 'Java (Windows, macOS, Linux)'
-          href: quickstart-voice-assistant-java-jre.md
-        - name: Java (Android)
-          href: quickstart-voice-assistant-java-android.md
-        - name: Tworzenie polecenia niestandardowego (wersja zapoznawcza)
-          href: quickstart-custom-speech-commands-create-new.md
-        - name: Tworzenie polecenia niestandardowego z parametrami (wersja zapoznawcza)
-          href: quickstart-custom-speech-commands-create-parameters.md
-        - name: Używanie poleceń niestandardowych z głosem niestandardowym (wersja zapoznawcza)
-          href: quickstart-custom-speech-commands-select-custom-voice.md
-        - name: Używanie poleceń niestandardowych z zestawem SDK usługi Mowa (wersja zapoznawcza)
-          href: quickstart-custom-speech-commands-speech-sdk.md
-    - name: Przewodniki z instrukcjami
-      items:
-        - name: Wykonywanie poleceń niestandardowych przy użyciu zestawu SDK usługi Mowa
-          href: how-to-custom-speech-commands-fulfill-sdk.md
-        - name: Dodawanie weryfikacji parametrów do poleceń niestandardowych
-          href: how-to-custom-speech-commands-validations.md
-        - name: Dodawanie potwierdzenia do polecenia niestandardowego
-          href: how-to-custom-speech-commands-confirmations.md
-        - name: Dodawanie korekty jednoetapowej do polecenia niestandardowego
-          href: how-to-custom-speech-commands-one-step-correction.md
-    - name: Samouczki
-      items:
-        - name: Dodawanie obsługi głosu do bota przy użyciu zestawu SDK usługi Mowa
-          href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: Zasoby
-      items:
-        - name: Często zadawane pytania dotyczące asystentów głosowych
-          href: faq-voice-assistants.md
+        - name: Przewodniki Szybki start
+          items:
+            - name: 'C# (UWP)'
+              href: quickstart-voice-assistant-csharp-uwp.md
+            - name: 'Java (Windows, macOS, Linux)'
+              href: quickstart-voice-assistant-java-jre.md
+            - name: Java (Android)
+              href: quickstart-voice-assistant-java-android.md
+        - name: Samouczki
+          items:
+            - name: Dodawanie obsługi głosu do bota przy użyciu zestawu SDK usługi Mowa
+              href: tutorial-voice-enable-your-bot-speech-sdk.md
+        - name: Zasoby
+          items:
+            - name: Często zadawane pytania dotyczące asystentów głosowych
+              href: faq-voice-assistants.md
 - name: Dostosowywanie
   expanded: false
   items:

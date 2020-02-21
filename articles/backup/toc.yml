@@ -281,23 +281,23 @@
         - name: Konfigurowanie raportów usługi Azure Backup
           items:
             - name: Konfigurowanie raportów usługi Azure Backup
-              href: backup-azure-configure-reports.md
-            - name: Model danych dla raportów usługi Azure Backup
-              href: backup-azure-reports-data-model.md
-            - name: Model danych usługi Log Analytics na potrzeby usługi Azure Backup
-              href: backup-azure-log-analytics-data-model.md
+              href: configure-reports.md
         - name: Konfigurowanie zdarzeń diagnostyki dla magazynów usługi Recovery Services
           items:
             - name: Używanie ustawień diagnostyki dla magazynów usługi Recovery Services
               href: backup-azure-diagnostic-events.md
             - name: Model danych usługi Log Analytics dla zdarzeń diagnostycznych specyficznych dla zasobów
-              href: backup-azure-log-analytics-new-data-model.md
+              href: backup-azure-reports-data-model.md
+            - name: Model danych usługi Log Analytics na potrzeby usługi Azure Backup (tryb Diagnostyka Azure)
+              href: backup-azure-diagnostics-mode-data-model.md
     - name: Automatyzacja
       items:
         - name: Wbudowana usługa Azure Policy dla usługi Azure Backup
           items:
             - name: Automatyczne włączanie kopii zapasowych podczas tworzenia maszyny wirtualnej za pomocą usługi Azure Policy
               href: backup-azure-auto-enable-backup.md
+            - name: Konfigurowanie ustawień diagnostyki magazynu na dużą skalę
+              href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
             - name: Maszyny wirtualne platformy Azure w witrynie Azure Portal

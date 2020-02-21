@@ -130,10 +130,14 @@
       items:
         - name: Wdrażanie bez haseł
           href: howto-authentication-passwordless-deployment.md
-        - name: Klucze zabezpieczeń bez hasła
-          href: howto-authentication-passwordless-security-key.md
-        - name: Windows 10 bez hasła
-          href: howto-authentication-passwordless-security-key-windows.md
+        - name: Klucze zabezpieczeń FIDO2 bez hasła
+          items:
+            - name: Włączanie kluczy zabezpieczeń FIDO2 dla dzierżawy
+              href: howto-authentication-passwordless-security-key.md
+            - name: Logowanie do urządzeń z systemem Windows 10
+              href: howto-authentication-passwordless-security-key-windows.md
+            - name: Logowanie jednokrotne do zasobów lokalnych
+              href: howto-authentication-passwordless-security-key-on-premises.md
         - name: Logowanie za pomocą telefonu bez hasła
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello dla firm
