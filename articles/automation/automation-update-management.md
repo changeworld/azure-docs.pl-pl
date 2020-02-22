@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: aec46a1914fa2361ea15ba34dd1510cfe53a4dc0
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e7a86f3a709566bcf18241ce3c329c0355be2743
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443843"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539556"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management rozwiązanie na platformie Azure
 
@@ -115,7 +115,7 @@ W przypadku systemu Linux komputer musi mieć dostęp do repozytorium aktualizac
 
 Aby uzyskać informacje na temat sposobu instalowania agenta Log Analytics dla systemu Linux i pobierania najnowszej wersji, zobacz [log Analytics Agent dla systemu Linux](https://github.com/microsoft/oms-agent-for-linux). Aby uzyskać informacje na temat sposobu instalowania agenta Log Analytics dla systemu Windows, zobacz [łączenie komputerów z systemem Windows w Azure monitor](../log-analytics/log-analytics-windows-agent.md).
 
-Maszyny wirtualne, które zostały utworzone na podstawie obrazów na żądanie Red Hat Enterprise Linux (RHEL), które są dostępne w portalu Azure Marketplace, są zarejestrowane w celu uzyskania dostępu do [infrastruktury aktualizacji firmy Red Hat (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) wdrożonej na platformie Azure. Wszystkie inne dystrybucje systemu Linux muszą zostać zaktualizowane z repozytorium plików online dystrybucji przy użyciu obsługiwanych metod dystrybucji.
+Maszyny wirtualne, które zostały utworzone na podstawie obrazów na żądanie Red Hat Enterprise Linux (RHEL), które są dostępne w portalu Azure Marketplace, są zarejestrowane w celu uzyskania dostępu do [infrastruktury aktualizacji firmy Red Hat (RHUI)](../virtual-machines/workloads/redhat/redhat-rhui.md) wdrożonej na platformie Azure. Wszystkie inne dystrybucje systemu Linux muszą zostać zaktualizowane z repozytorium plików online dystrybucji przy użyciu obsługiwanych metod dystrybucji.
 
 ## <a name="permissions"></a>Uprawnienia
 
@@ -184,7 +184,7 @@ Poniższe adresy są wymagane dla Update Management. Komunikacja z tymi adresami
 
 W przypadku maszyn z systemem Windows należy również zezwolić na ruch do wszystkich punktów końcowych wymaganych przez Windows Update. Zaktualizowaną listę wymaganych punktów końcowych można znaleźć w przypadku [problemów związanych z protokołem HTTP/proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Jeśli masz lokalny [serwer Windows Update](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), musisz również zezwolić na ruch do serwera określonego w [kluczu WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry).
 
-W przypadku maszyn z systemem Red Hat Linux zapoznaj [się z tematem adresy IP dla serwerów RHUI Content Delivery](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers) for Required Endpoints. W przypadku innych dystrybucji systemu Linux zapoznaj się z dokumentacją dostawcy.
+W przypadku maszyn z systemem Red Hat Linux zapoznaj [się z tematem adresy IP dla serwerów RHUI Content Delivery](../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers) for Required Endpoints. W przypadku innych dystrybucji systemu Linux zapoznaj się z dokumentacją dostawcy.
 
 Aby uzyskać więcej informacji na temat portów wymaganych przez hybrydowy proces roboczy elementu Runbook, zobacz [porty ról hybrydowych procesów roboczych](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 

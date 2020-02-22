@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 1/24/2020
+ms.date: 2/21/2020
 ms.author: mlearned
-ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 08929d5ec05fbeb80eddebfd667fe1e0fde9bff7
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932592"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544236"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Tworzenie prywatnego klastra usługi Azure Kubernetes Service (wersja zapoznawcza)
 
@@ -31,13 +31,33 @@ Płaszczyzna kontroli lub serwer interfejsu API znajduje się w subskrypcji plat
 * Interfejs wiersza polecenia platformy Azure w wersji 2.0.77 lub nowszej oraz interfejs wiersza polecenia platformy Azure w wersji zapoznawczej 0.4.18
 
 ## <a name="currently-supported-regions"></a>Aktualnie obsługiwane regiony
+
+* Australia Wschodnia
+* Australia Południowo-Wschodnia
+* Brazylia Południowa
+* Kanada Środkowa
+* Kanada Wschodnia
+* Cenral nam
+* Azja Wschodnia
+* Wschodnie stany USA
+* Wschodnie stany USA 2
+* Wschodnie stany USA 2 — EUAP
+* Francja Środkowa
+* Niemcy Północne
+* Japonia Wschodnia
+* Japonia Zachodnia
+* Korea Środkowa
+* Korea Południowa
+* Północno-środkowe stany USA
+* Europa Północna
+* Europa Północna
+* Południowo-środkowe stany USA
+* Południowe Zjednoczone Królestwo
+* Europa Zachodnia
 * Zachodnie stany USA
 * Zachodnie stany USA 2
 * Wschodnie stany USA 2
-* Kanada Środkowa
-* Europa Północna
-* Europa Zachodnia
-* Australia Wschodnia
+
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>Zainstaluj najnowsze rozszerzenie AKS w wersji zapoznawczej interfejsu wiersza polecenia platformy Azure
 
@@ -114,7 +134,7 @@ Punkt końcowy serwera interfejsu API nie ma publicznego adresu IP. W związku z
     
      a. Przejdź do grupy zasobów MC_ * w Azure Portal.  
      b. Wybierz prywatną strefę DNS.   
-     d. W lewym okienku wybierz łącze **Sieć wirtualna** .  
+     c. W lewym okienku wybierz łącze **Sieć wirtualna** .  
      d. Utwórz nowy link, aby dodać sieć wirtualną maszyny wirtualnej do prywatnej strefy DNS. Udostępnienie linku strefy DNS może potrwać kilka minut.  
      e. Wróć do grupy zasobów MC_ * w Azure Portal.  
      f. W prawym okienku wybierz sieć wirtualną. Nazwa sieci wirtualnej ma postać *AKS-VNET-\** .  

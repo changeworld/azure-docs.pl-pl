@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 249cf7414143f59540d198bb460d8b215f6a7664
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 5e32c461902c1e340c6cece22669a59847e660cd
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756355"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538400"
 ---
 # <a name="message-deferral"></a>Odraczanie komunikatów
 
@@ -36,7 +36,7 @@ Interfejs API to [BrokeredMessage. Ustąp](/dotnet/api/microsoft.servicebus.mess
 
 Komunikaty odroczone pozostają w kolejce głównej wraz ze wszystkimi innymi aktywnymi komunikatami (w przeciwieństwie do wiadomości utraconych w kolejce), ale nie mogą być już odbierane przy użyciu zwykłych funkcji Receive/ReceiveAsync. Komunikaty odroczone mogą zostać odnalezione za pośrednictwem [przeglądania komunikatów](message-browsing.md) , jeśli aplikacja utraci ich śledzenie.
 
-Aby pobrać odroczony komunikat, jego właściciel jest odpowiedzialny za zapamiętanie [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) . Każdy odbiornik, który zna numer sekwencyjny komunikatu, może później odebrać komunikat jawnie za pomocą `Receive(sequenceNumber)`. W przypadku kolejek możesz użyć [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient), subskrypcji tematu Użyj [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient).
+Aby pobrać odroczony komunikat, jego właściciel jest odpowiedzialny za zapamiętanie [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) . Każdy odbiornik, który zna numer sekwencyjny komunikatu, może później odebrać komunikat jawnie za pomocą `Receive(sequenceNumber)`.
 
 Jeśli nie można przetworzyć komunikatu, ponieważ określony zasób obsługujący ten komunikat jest tymczasowo niedostępny, ale przetwarzanie komunikatów nie powinno być podsumowujące w sposób skrócony, sposób umieszczania tego komunikatu po stronie przez kilka minut to zapamiętanie **SequenceNumber** w [zaplanowanym komunikacie](message-sequencing.md) do opublikowania w ciągu kilku minut i ponowne pobranie odroczonego komunikatu po nadejściu zaplanowanego komunikatu. Jeśli program obsługi komunikatów zależy od bazy danych dla wszystkich operacji, a ta baza danych jest tymczasowo niedostępna, nie powinna używać odroczenia, ale raczej wstrzymuje wysyłanie komunikatów do momentu, gdy baza danych będzie ponownie dostępna.
 

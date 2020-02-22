@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169221"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539241"
 ---
 # <a name="add-and-manage-lab-users"></a>Dodawanie użytkowników laboratorium i zarządzanie nimi
 W tym artykule opisano sposób dodawania użytkowników do laboratorium, uzyskiwania ich zarejestrowanych w laboratorium, kontrolowania liczby godzin, w których mogą korzystać z maszyny wirtualnej, i nie tylko. 
@@ -35,7 +35,7 @@ W tym artykule opisano sposób dodawania użytkowników do laboratorium, uzyskiw
     ![Dodawanie adresów e-mail użytkowników](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. Wybierz pozycję **Zapisz**. Na liście zostaną wyświetlone adresy e-mail użytkowników oraz ich stan rejestracji. 
 
-    ![Lista użytkowników](../media/how-to-configure-student-usage/users-list-new.png)
+    ![Lista użytkowników](../media/how-to-configure-student-usage/list-of-added-users.png)
 
     > [!NOTE]
     > Nazwy użytkowników na liście zostaną wyświetlone po ich zarejestrowaniu do laboratorium. Nazwa wyświetlana na liście jest zbudowana przy użyciu imion i nazwiska użytkownika w Azure Active Directory. 
@@ -101,11 +101,14 @@ Możesz również uzyskać link rejestracji z portalu i wysłać go przy użyciu
 2. W oknie dialogowym **Rejestracja użytkownika** wybierz pozycję **gotowe**. 
 4. Wyślij **link rejestracji** do ucznia, aby student mógł zarejestrować się dla klasy. 
 
-## <a name="view-users-registered-with-the-lab"></a>Wyświetlenie użytkowników zarejestrowanych w laboratorium
+## <a name="view-registered-users"></a>Wyświetl zarejestrowanych użytkowników
 
-Wybierz pozycję **Użytkownicy** w menu po lewej stronie, aby wyświetlić listę użytkowników zarejestrowanych w laboratorium. 
+1. Przejdź do [witryny internetowej usługi Azure Lab Services](https://labs.azure.com). 
+2. Wybierz pozycję **Zaloguj się** i wprowadź swoje poświadczenia. Usługa Azure Lab Services obsługuje konta organizacji i konta Microsoft.
+3. Na stronie **My labs** (Moje laboratoria) wybierz laboratorium, którego użycie chcesz śledzić. 
+4. Wybierz kafelek **Users** (Użytkownicy) lub pozycję **Users** (Użytkownicy) w menu po lewej stronie. Zostanie wyświetlona lista uczniów, którzy zarejestrowali się w Twoim laboratorium.  
 
-![Lista użytkowników zarejestrowanych w laboratorium](../media/how-to-configure-student-usage/students-registered.png)
+    ![Zarejestrowani użytkownicy](../media/tutorial-track-usage/registered-users.png)
 
 ## <a name="set-quotas-for-users"></a>Ustawianie przydziałów dla użytkowników
 Można ustawić przydziały dla poszczególnych użytkowników, wykonując następujące czynności: 
@@ -115,7 +118,7 @@ Można ustawić przydziały dla poszczególnych użytkowników, wykonując nast�
 3. Na stronie **przydziały na użytkownika** Określ liczbę godzin, które chcesz nadać każdemu użytkownikowi (studentowi) poza zaplanowanym czasem klasy, a następnie wybierz pozycję **Zapisz**.
 
     ![Przydział na użytkownika](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. Na pasku narzędzi są teraz widoczne zmienione wartości: **limit przydziału na użytkownika: \<liczba godzin >** . 
+5. Na pasku narzędzi zostaną wyświetlone zmienione wartości: **limit przydziału na użytkownika: \<liczba godzin >** a także na liście Użytkownicy.
 
     ![Przydział na użytkownika — po](../media/how-to-configure-student-usage/quot-per-user-after.png)
 

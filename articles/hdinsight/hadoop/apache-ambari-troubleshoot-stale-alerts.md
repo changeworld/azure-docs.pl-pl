@@ -1,18 +1,18 @@
 ---
 title: Nieodświeżone alerty Apache Ambari w usłudze Azure HDInsight
-description: Dyskusja i analiza możliwych przyczyn i rozwiązań dotyczących starych alertów Apache Ambari w usłudze HDInsight.
+description: Dyskusja i analiza możliwych przyczyn i rozwiązań dotyczących nieodświeżonych alertów Apache Ambari w usłudze HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f19d499b5e50fbb5030a0f396296eed46fc6eee3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722813"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539114"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Scenariusz: usługa Apache Ambari nieodświeżone alerty w usłudze Azure HDInsight
 
@@ -20,64 +20,70 @@ W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązani
 
 ## <a name="issue"></a>Problem
 
-W interfejsie użytkownika Apache Ambari może zostać wyświetlony alert podobny do następującego:
+W interfejsie użytkownika Apache Ambari może zostać wyświetlony następujący alert:
 
 ![Przykład nieodświeżonego alertu Apache Ambari](./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png)
 
 ## <a name="cause"></a>Przyczyna
 
-Agenci Ambari stale wykonują kontrole kondycji, aby monitorować kondycję wielu zasobów. Każdy alert jest skonfigurowany do uruchamiania w wstępnie zdefiniowanych okresach. Po wykonaniu każdego alertu agenci Ambari zgłaszają stan do serwera Ambari. W tym momencie, jeśli serwer Ambari wykryje, że którykolwiek z alertów nie był uruchomiony w odpowiednim czasie, wyzwala "alerty serwera Ambari". Istnieją różne przyczyny, dla których Sprawdzenie kondycji może nie być wykonywane w zdefiniowanym interwale:
+Agenci Ambari stale monitorują kondycję wielu zasobów. *Alerty* można skonfigurować w taki sposób, aby powiadamiać użytkownika o tym, czy określone właściwości klastra znajdują się w ramach wstępnie określonych progów. Po każdym uruchomieniu kontroli zasobów, jeśli spełniony jest warunek alertu, agenci Ambari zgłaszają stan z powrotem do serwera Ambari i wyzwalają alert. Jeśli alert nie jest sprawdzany zgodnie z interwałem w jego profilu alertu, serwer wyzwala alert dotyczący *starych alertów serwera Ambari* .
 
-* Gdy hosty mają duże wykorzystanie (duże użycie procesora CPU), istnieje możliwość, że Agent Ambari nie mógł uzyskać wystarczającej ilości zasobów systemowych do wykonywania alertów w odpowiednim czasie.
+Istnieją różne przyczyny, dla których Sprawdzenie kondycji może nie być uruchamiane w określonym interwale:
 
-* Klaster jest zajęty wykonywaniem wielu zadań/usług podczas dużego obciążenia.
+* Hosty są mocno używane (wysokie użycie procesora), dzięki czemu Agent Ambari nie może uzyskać wystarczającej ilości zasobów systemowych do uruchamiania alertów na czas.
 
-* Niektóre hosty w klastrze mogą obsługiwać wiele składników i dlatego będą wymagane do uruchamiania wielu alertów. Jeśli liczba składników jest duża, istnieje możliwość, że zadania alertów mogą pominąć zaplanowane interwały
+* Klaster jest zajęty wykonywaniem wielu zadań lub usług w okresie dużego obciążenia.
+
+* Niewielka liczba hostów w klastrze obsługuje wiele składników i dlatego jest wymagana do uruchamiania wielu alertów. Jeśli liczba składników jest duża, zadania alertów mogą pominąć zaplanowane interwały.
 
 ## <a name="resolution"></a>Rozwiązanie
 
-### <a name="increase-alert-interval-time"></a>Zwiększ czas interwału alertu
+Wypróbuj następujące metody, aby rozwiązać problemy z nieodświeżonymi alertami Ambari.
 
-Możesz wybrać opcję zwiększenia wartości poszczególnych interwałów alertów na podstawie czasu odpowiedzi klastra i jego obciążenia.
+### <a name="increase-the-alert-interval-time"></a>Zwiększ czas trwania okresu alertu
+
+Można zwiększyć wartość pojedynczego interwału alertu na podstawie czasu odpowiedzi i obciążenia klastra:
 
 1. W interfejsie użytkownika Apache Ambari wybierz kartę **alerty** .
 1. Wybierz żądaną nazwę definicji alertu.
 1. Z definicji wybierz pozycję **Edytuj**.
-1. Zmodyfikuj wartość **interwału sprawdzania** zgodnie z potrzebami, a następnie wybierz pozycję **Zapisz**.
+1. Zwiększ wartość **interwału sprawdzania** , a następnie wybierz pozycję **Zapisz**.
 
-### <a name="increase-alert-interval-time-for-ambari-server-alerts"></a>Zwiększ czas interwału alertów dla alertów serwera Ambari
+### <a name="increase-the-alert-interval-time-for-ambari-server-alerts"></a>Zwiększ czas interwału alertów dla alertów serwera Ambari
 
 1. W interfejsie użytkownika Apache Ambari wybierz kartę **alerty** .
 1. Z listy rozwijanej **grupy** wybierz pozycję **AMBARI default (domyślne**).
-1. Wybierz pozycję **alerty alertów serwera Ambari**.
+1. Wybierz alert dotyczący **alertów serwera Ambari** .
 1. Z definicji wybierz pozycję **Edytuj**.
-1. Zmodyfikuj wartość **interwału sprawdzania** zgodnie z potrzebami.
-1. Zmodyfikuj wartość **mnożnik interwału** zgodnie z potrzebami, a następnie wybierz pozycję **Zapisz**.
+1. Zwiększ wartość **interwału sprawdzania** .
+1. Zwiększ wartość **mnożnik interwału** , a następnie wybierz pozycję **Zapisz**.
 
-### <a name="disable-and-enable-the-alert"></a>Wyłączanie i włączanie alertu
+### <a name="disable-and-reenable-the-alert"></a>Wyłącz i ponownie włącz alert
 
-Można wyłączyć i ponownie włączyć alert, aby odrzucić wszystkie nieodświeżone alerty.
+Aby odrzucić nieodświeżony alert, Wyłącz, a następnie włącz go ponownie:
 
 1. W interfejsie użytkownika Apache Ambari wybierz kartę **alerty** .
 1. Wybierz żądaną nazwę definicji alertu.
-1. Z definicji wybierz pozycję **włączone** znajdującą się po prawej stronie.
+1. Z definicji wybierz pozycję **włączone** w prawej części interfejsu użytkownika.
 1. W oknie podręcznym **potwierdzenia** wybierz pozycję **Potwierdź wyłączenie**.
-1. Odczekaj kilka sekund, aby wszystkie alerty "wystąpienia" widoczne na stronie zostały wyczyszczone.
-1. Z definicji wybierz pozycję **wyłączone** znajdujące się po prawej stronie.
+1. Poczekaj kilka sekund, aż wszystkie wystąpienia alertu na stronie zostały wyczyszczone.
+1. Z definicji wybierz pozycję **wyłączone** w prawej części interfejsu użytkownika.
 1. W oknie podręcznym **potwierdzenia** wybierz pozycję **Potwierdź włączenie**.
 
-### <a name="increase-alert-grace-time"></a>Zwiększ czas prolongaty alertu
+### <a name="increase-the-alert-grace-period"></a>Zwiększ okres prolongaty alertu
 
-Zanim agent Ambari zgłosi, że skonfigurowany alert został pominięty, zostanie zastosowany czas prolongaty. Nawet jeśli alert minął zaplanowaną godzinę, ale został wyzwolony w czasie prolongaty alertu, nieodświeżony alert nie jest uruchamiany.
+Istnieje okres prolongaty, po upływie którego Agent Ambari raportuje, że skonfigurowany alert został pominięty. Jeśli alert minął zaplanowaną godzinę, ale upłynął w okresie prolongaty, nieaktualny alert nie jest generowany.
 
-Wartość domyślna `alert_grace_period` wynosi 5 sekund. To ustawienie `alert_grace_period` można skonfigurować w `/etc/ambari-agent/conf/ambari-agent.ini`. Dla tych hostów, na których są uruchamiane nieodświeżone alerty w regularnych odstępach czasu, spróbuj zwiększyć wartość 10. Następnie ponownie uruchom agenta Ambari
+Wartość domyślna `alert_grace_period` wynosi 5 sekund. To ustawienie można skonfigurować w/etc/Ambari-Agent/conf/Ambari-Agent.ini. W przypadku hostów, na których występują nieodświeżone alerty w regularnych odstępach czasu, spróbuj zwiększyć wartość do 10. Następnie ponownie uruchom agenta Ambari.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
+Jeśli Twój problem nie został określony w tym miejscu lub nie możesz go rozwiązać, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
 
-* Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
+* Uzyskaj odpowiedzi od ekspertów platformy Azure w ramach [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
 
-* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalnego Microsoft Azure konta, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
+* Połącz się z usługą [@AzureSupport](https://twitter.com/azuresupport) w serwisie Twitter. Jest to oficjalne konto Microsoft Azure na potrzeby ulepszania środowiska klienta. Łączy społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 
-* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, Prześlij żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Aby to zrobić, wybierz pozycję Pomoc ( **?** ) w menu portalu lub Otwórz okienko **Pomoc i obsługa techniczna** . Aby uzyskać więcej informacji, zobacz [jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). 
+
+  Obsługa zarządzania subskrypcjami i rozliczeń jest dołączana do subskrypcji Microsoft Azure. Pomoc techniczna jest dostępna w ramach [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).

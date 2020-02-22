@@ -11,23 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 08fbe9565356dc1b7db952fdd265770fef600ca8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fcf31fcc266358911612c25e0b73a0a9de696b1d
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989046"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539034"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Tworzenie szablonu klasy i zarządzanie nim w Azure Lab Services
 Szablon w laboratorium to podstawowy obraz maszyny wirtualnej, który służy do tworzenia maszyn wirtualnych wszystkich użytkowników. Możesz skonfigurować maszynę wirtualną szablonu dokładnie tak jak chcesz dla użytkowników laboratorium. Możesz podać nazwę i opis szablonu, które będą widoczne dla użytkowników laboratorium. Następnie należy opublikować szablon w celu udostępnienia dla użytkowników laboratorium wystąpień z szablonową maszyną wirtualną. Gdy opublikujesz szablon, usługa Azure Lab Services utworzy maszyny wirtualne w laboratorium przy użyciu tego szablonu. Liczba maszyn wirtualnych utworzonych w ramach tego procesu jest taka sama jak maksymalna liczba użytkowników, którzy mogą korzystać z laboratorium. Tę liczbę można ustawić w zasadach użytkowania laboratorium. Wszystkie maszyny wirtualne mają taką samą konfigurację jak szablon.
 
 W tym artykule opisano sposób tworzenia maszyny wirtualnej szablonu i zarządzania nią w laboratorium z klasą Azure Lab Services. 
 
-## <a name="publish-a-template-while-creating-a-classroom-lab"></a>Publikowanie szablonu podczas tworzenia laboratorium zajęć
-Aby dowiedzieć się, jak opublikować szablon podczas tworzenia laboratorium zajęć, zobacz [Tworzenie laboratorium zajęć](how-to-manage-classroom-labs.md#create-a-classroom-lab)
- 
 ## <a name="set-or-update-template-title-and-description"></a>Ustawianie lub aktualizowanie tytułu i opisu szablonu
 Wykonaj następujące kroki, aby ustawić tytuł i opis po raz pierwszy, i zaktualizuj je później. 
 
@@ -50,23 +47,24 @@ Aby zaktualizować maszynę wirtualną szablonu, wykonaj następujące czynnośc
 1. Wykonaj kroki opisane w następnej sekcji, aby **opublikować** zaktualizowany szablon maszyny wirtualnej. 
 
 ## <a name="publish-the-template-vm"></a>Publikowanie maszyny wirtualnej szablonu  
-Jeśli szablon nie zostanie opublikowany podczas tworzenia laboratorium, można opublikować go później. Przed opublikowaniem warto nawiązać połączenie z szablonową maszyną wirtualną i zaktualizować je za pomocą dowolnego oprogramowania. Gdy opublikujesz szablon, usługa Azure Lab Services utworzy maszyny wirtualne w laboratorium przy użyciu tego szablonu. Liczba maszyn wirtualnych utworzonych w tym procesie to liczba maszyn wirtualnych, które zostały określone podczas ich pierwszego publikowania lub co zostało określone na stronie Pula maszyn wirtualnych. Wszystkie maszyny wirtualne mają taką samą konfigurację jak szablon. 
+Ten krok polega na opublikowaniu szablonu maszyny wirtualnej. Podczas publikowania szablonu maszyny wirtualnej Azure Lab Services tworzy maszyny wirtualne w laboratorium przy użyciu szablonu. Wszystkie maszyny wirtualne mają taką samą konfigurację jak szablon.
+
 
 1. Na stronie **szablon** wybierz pozycję **Publikuj** na pasku narzędzi. 
-1. W polu **Opublikuj komunikat szablonu** Przejrzyj komunikat, a następnie wybierz pozycję **Publikuj**. Ten proces może zająć trochę czasu w zależności od liczby tworzonych maszyn wirtualnych.
 
-    ![Przycisk Opublikuj](../media/how-to-create-manage-template/publish-button.png)
+    ![Przycisk Publikuj szablon](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
-    > [!IMPORTANT]
-    > Po opublikowaniu szablonu nie można cofnąć publikowania. Szablon można ponownie opublikować. 
-1. Stan procesu publikowania można zobaczyć na stronie szablon. Poczekaj na zmianę stanu szablonu na **opublikowany**. 
+    > [!WARNING]
+    > Nie można cofnąć publikowania szablonu. 
+2. Na stronie **szablon publikacji** wprowadź liczbę maszyn wirtualnych, które chcesz utworzyć w laboratorium, a następnie wybierz pozycję **Publikuj**. 
 
-    ![Stan publikowania](../media/how-to-create-manage-template/publish-status.png)
-1. Przejdź do strony **Maszyny wirtualne** i sprawdź, czy są widoczne maszyny wirtualne o stanie **Nie przypisano**. Te maszyny wirtualne nie zostały jeszcze przypisane do uczniów. Poczekaj, aż maszyny wirtualne zostaną utworzone. Powinny mieć stan **Zatrzymano**. Z poziomu tej strony możesz uruchomić maszynę wirtualną ucznia, połączyć się z maszyną wirtualną, zatrzymać maszynę wirtualną i usunąć maszynę wirtualną. Możesz je uruchomić na tej stronie lub pozwolić uczniom na uruchamianie maszyn wirtualnych. 
+    ![Szablon publikacji — liczba maszyn wirtualnych](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
+3. Zobaczysz **stan publikowania** szablonu na stronie. Ten proces może potrwać do godziny. 
+
+    ![Publikowanie szablonu — postęp](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
+4. Zaczekaj na zakończenie publikowania, a następnie przejdź do strony **puli maszyn wirtualnych** , wybierając pozycję **maszyny** wirtualne w menu po lewej stronie lub wybierając pozycję kafelek **maszyny wirtualne** . Sprawdź, czy są widoczne maszyny wirtualne o stanie **Nie przypisano**. Te maszyny wirtualne nie zostały jeszcze przypisane do uczniów. Powinny mieć stan **Zatrzymano**. Z poziomu tej strony możesz uruchomić maszynę wirtualną ucznia, połączyć się z maszyną wirtualną, zatrzymać maszynę wirtualną i usunąć maszynę wirtualną. Maszyny wirtualne możesz uruchomić na tej stronie lub pozwolić, aby zrobili to uczniowie. 
 
     ![Maszyny wirtualne w stanie Zatrzymano](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
-
-
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:
 

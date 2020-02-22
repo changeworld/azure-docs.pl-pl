@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cb1a57c5b18f1da25e3843b55e86705d05f43c5
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d9ebeb0db14a42f090a629e379d88e00867bda65
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522343"
+ms.locfileid: "77538179"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Tworzenie punktu końcowego Standard scim i Konfigurowanie aprowizacji użytkowników przy użyciu Azure Active Directory (Azure AD)
 
@@ -63,7 +63,7 @@ Każda aplikacja wymaga innych atrybutów do utworzenia użytkownika lub grupy. 
 |workMail|Wiadomości e-mail [Type EQ "Work"]. Value|Poczta|
 |Menedżer|Menedżer|Menedżer|
 |seryjn|urn: IETF: params: Standard scim: schematy: rozszerzenie: 2.0: CustomExtension: tag|extensionAttribute1|
-|stan|aktywne|isSoftDeleted (obliczona wartość nie jest przechowywana na użytkowniku)|
+|status|aktywne|isSoftDeleted (obliczona wartość nie jest przechowywana na użytkowniku)|
 
 Schemat zdefiniowany powyżej zostałby przedstawiony przy użyciu ładunku JSON poniżej. Należy pamiętać, że oprócz atrybutów wymaganych dla aplikacji, reprezentacja JSON zawiera wymagane atrybuty "ID", "externalId" i "meta".
 
@@ -106,7 +106,7 @@ Następnie można użyć poniższej tabeli, aby zrozumieć, w jaki sposób atryb
 | Facsimile-TelephoneNumber |wartość phoneNumbers [typ eq "faksu"] |
 | givenName |name.givenName |
 | Stanowisko |title |
-| poczta |wiadomości e-mail [typ eq "Praca"] .value |
+| mail (poczta) |wiadomości e-mail [typ eq "Praca"] .value |
 | mailNickname |externalId |
 | Menedżer |urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: Manager |
 | Telefon komórkowy |wartość phoneNumbers [eq wpisz "wyraz mobile"] |
@@ -124,7 +124,7 @@ Następnie można użyć poniższej tabeli, aby zrozumieć, w jaki sposób atryb
 | Grupa usługi Azure Active Directory | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
 | displayName |displayName |
-| poczta |wiadomości e-mail [typ eq "Praca"] .value |
+| mail (poczta) |wiadomości e-mail [typ eq "Praca"] .value |
 | mailNickname |displayName |
 | elementy członkowskie |elementy członkowskie |
 | Identyfikator obiektu |externalId |
@@ -560,7 +560,7 @@ Ta sekcja zawiera przykładowe żądania Standard scim emitowane przez klienta u
 * Aktualizacja żądania poprawek grupy powinna spowodować, że w odpowiedzi *nie ma żadnej zawartości HTTP 204* . Zwracanie treści z listą wszystkich elementów członkowskich nie jest zalecane.
 * Nie trzeba obsługiwać zwracania wszystkich elementów członkowskich grupy.
 
-#### <a name="create-group"></a>{1&gt;Twórz grupę&lt;1}
+#### <a name="create-group"></a>Tworzenie grupy
 
 ##### <a name="request-7"></a>Żądając
 
@@ -1448,12 +1448,13 @@ Jeśli tworzysz aplikację, która będzie używana przez więcej niż jedną dz
 ### <a name="gallery-onboarding-checklist"></a>Lista kontrolna dołączania galerii
 Postępuj zgodnie z poniższą listą kontrolną, aby upewnić się, że aplikacja została podłączona, a klienci mają płynne środowisko wdrażania. Informacje zostaną zebrane z użytkownika podczas dołączania do galerii. 
 > [!div class="checklist"]
-> * [Obsługa standard scim 2,0](https://tools.ietf.org/html/draft-wahl-scim-profile-00) (wymagane)
+> * Obsługa punktu końcowego użytkownika i grupy [standard scim 2,0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) (tylko jeden jest wymagany, ale oba są zalecane)
 > * Obsługa co najmniej 25 żądań na sekundę na dzierżawcę (wymagane)
-> * Obsługa odnajdywania schematu (zalecane)
 > * Obsługa przydzielenia kodu autoryzacji OAuth lub tokenu długotrwałego, zgodnie z poniższym opisem (wymagane)
-> * Ustanów inżynierów inżynieryjnych i pomocy technicznej w celu obsługi dołączania do galerii po opublikowaniu klienta (wymagane)
+> * Ustanów inżynierów inżynieryjnych i pomocy technicznej w celu obsługi klientów po dołączeniu do galerii (wymagane)
+> * Obsługa aktualizowania wielu członkostw w grupie za pomocą pojedynczej poprawki (zalecane) 
 > * Dokumentowanie punktu końcowego Standard scim publicznie (zalecane) 
+> * [Obsługa odnajdywania schematu](https://tools.ietf.org/html/rfc7643#section-6) (zalecane)
 
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Autoryzacja łączników aprowizacji w galerii aplikacji

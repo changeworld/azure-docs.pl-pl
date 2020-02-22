@@ -3,12 +3,12 @@ title: Przegląd wersji środowiska uruchomieniowego Azure Functions
 description: Azure Functions obsługuje wiele wersji środowiska uruchomieniowego. Poznaj różnice między nimi i wybierz odpowiedni dla siebie.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290380"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539505"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Przegląd wersji środowiska uruchomieniowego Azure Functions
 
@@ -38,7 +38,7 @@ Więcej informacji, zobacz [Obsługiwane języki](supported-languages.md).
 
 ## <a name="creating-1x-apps"></a>Uruchom w określonej wersji
 
-Domyślnie aplikacje funkcji utworzone w Azure Portal i przez interfejs wiersza polecenia platformy Azure są ustawione na wersję 2. x. Tę wersję można zmienić w razie konieczności. Można zmienić wersję środowiska uruchomieniowego na 1. x po utworzeniu aplikacji funkcji, ale przed dodaniem jakichkolwiek funkcji.  Przechodzenie między 2. x i 3. x jest dozwolone nawet w przypadku aplikacji, które mają funkcje, ale nadal zalecamy najpierw przetestować w nowej aplikacji.
+Domyślnie aplikacje funkcji utworzone w Azure Portal i przez interfejs wiersza polecenia platformy Azure są ustawione na wersję 3. x. Tę wersję można zmienić w razie konieczności. Można zmienić wersję środowiska uruchomieniowego na 1. x po utworzeniu aplikacji funkcji, ale przed dodaniem jakichkolwiek funkcji.  Przechodzenie między 2. x i 3. x jest dozwolone nawet w przypadku aplikacji, które mają funkcje, ale nadal zalecamy najpierw przetestować w nowej aplikacji.
 
 ## <a name="migrating-from-1x-to-later-versions"></a>Migrowanie z 1. x do nowszych wersji
 

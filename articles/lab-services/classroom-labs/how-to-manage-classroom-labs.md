@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: ad7fd664f0dce08e4482b4fb2cba2831208396fc
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: ac990141ccc694ed7460763e84126d9fefdbb609
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264835"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539454"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Zarządzanie pracownią w Azure Lab Services 
 W tym artykule opisano sposób tworzenia i usuwania laboratorium zajęć. Przedstawiono w nim również sposób wyświetlania wszystkich laboratoriów zajęć na koncie laboratorium. 
@@ -41,6 +41,9 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
     6. Wybierz pozycję **Zapisz**.
 
         ![Nowe okno laboratorium](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+
+        > [!NOTE]
+        > Zostanie wyświetlona opcja wyboru lokalizacji laboratorium, jeśli konto laboratorium zostało skonfigurowane tak, aby [umożliwić twórcę laboratorium wybranie opcji lokalizacji laboratorium](allow-lab-creator-pick-lab-location.md) . 
 4. Na stronie **poświadczenia maszyny wirtualnej** Określ domyślne poświadczenia dla wszystkich maszyn wirtualnych w laboratorium.
     1. Określ **nazwę użytkownika** dla wszystkich maszyn wirtualnych w laboratorium.
     2. Podaj **hasło** użytkownika. 
@@ -52,12 +55,14 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
         Nauczyciel może wybrać użycie tego samego hasła dla wszystkich maszyn wirtualnych w laboratorium lub zezwolić uczniom na ustawianie haseł dla swoich maszyn wirtualnych. Domyślnie to ustawienie jest włączone dla wszystkich obrazów systemów Windows i Linux z wyjątkiem Ubuntu. W przypadku wybrania maszyny wirtualnej **Ubuntu** to ustawienie jest wyłączone, więc uczniowie będą monitowani o ustawienie hasła podczas pierwszego logowania.  
 
         ![Nowe okno laboratorium](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
-        > [!IMPORTANT]
-        > Zanotuj nazwę użytkownika i hasło. Nie zostaną one ponownie wyświetlone.    
     4. Następnie wybierz przycisk **dalej** na stronie **poświadczenia maszyny wirtualnej** . 
-5. Na stronie **zasady laboratorium** wprowadź liczbę godzin wyznaczonych dla każdego użytkownika (**limit przydziału dla każdego użytkownika**) poza zaplanowanym terminem dla laboratorium, a następnie wybierz pozycję **Zakończ**. 
+5. Na stronie **zasady laboratorium** wykonaj następujące czynności:
+    1. Wprowadź liczbę godzin przypisanych dla każdego użytkownika (**limit przydziału dla każdego użytkownika**) poza zaplanowanym terminem dla laboratorium. 
+    2. Dla opcji **automatycznego zamykania maszyn wirtualnych** Określ, czy maszyna wirtualna ma być automatycznie zamykana po rozłączeniu użytkownika. Możesz również określić, jak długo maszyna wirtualna ma czekać, aż użytkownik ponownie nawiąże połączenie przed automatycznym zamknięciem.. Aby uzyskać więcej informacji, zobacz [Włączanie automatycznego zamykania maszyn wirtualnych przy rozłączaniu](how-to-enable-shutdown-disconnect.md).
+    3. Następnie wybierz pozycję **Zakończ**. 
 
-    ![Przydział dla każdego użytkownika](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+        ![Przydział dla każdego użytkownika](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+    
 5. Powinien zostać wyświetlony następujący ekran pokazujący stan tworzenia szablonu maszyny wirtualnej. Tworzenie szablonu w laboratorium trwa maksymalnie 20 minut. 
 
     ![Stan tworzenia szablonu maszyny wirtualnej](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
@@ -94,10 +99,10 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
 
 | Rozmiar | Rdzenie | Pamięć RAM | Opis | 
 | ---- | ----- | --- | ----------- | 
-| Małe | 2 | 3,5 GB | Ten rozmiar najlepiej nadaje się w przypadku wiersza polecenia, otwierania przeglądarki sieci Web, serwerów sieci Web o małym ruchu, małych i średnich baz danych. |
-| Średnie | 4 | 7 GB | Ten rozmiar jest najlepiej dostosowany do relacyjnych baz danych, buforowania w pamięci i analiz | 
+| Small | 2 | 3,5 GB | Ten rozmiar najlepiej nadaje się w przypadku wiersza polecenia, otwierania przeglądarki sieci Web, serwerów sieci Web o małym ruchu, małych i średnich baz danych. |
+| Medium | 4 | 7 GB | Ten rozmiar jest najlepiej dostosowany do relacyjnych baz danych, buforowania w pamięci i analiz | 
 | Średni (Wirtualizacja zagnieżdżona) | 4 | 16 GB | Ten rozmiar jest najlepiej dostosowany do relacyjnych baz danych, buforowania w pamięci i analizy. Ten rozmiar obsługuje również wirtualizację zagnieżdżoną. <p>Tego rozmiaru można używać w scenariuszach, w których każdy student potrzebuje wielu maszyn wirtualnych. Nauczyciele mogą używać wirtualizacji zagnieżdżonej, aby skonfigurować kilka małych zagnieżdżonych maszyn wirtualnych w ramach maszyny wirtualnej. </p> |
-| Duże | 8 | 32 GB | Ten rozmiar najlepiej nadaje się w przypadku aplikacji wymagających szybszych procesorów CPU, lepszej wydajności dysków lokalnych, dużych baz danych i dużych pamięci podręcznych pamięci. Ten rozmiar obsługuje również wirtualizację zagnieżdżoną |  
+| Large | 8 | 32 GB | Ten rozmiar najlepiej nadaje się w przypadku aplikacji wymagających szybszych procesorów CPU, lepszej wydajności dysków lokalnych, dużych baz danych i dużych pamięci podręcznych pamięci. Ten rozmiar obsługuje również wirtualizację zagnieżdżoną |  
 | Mały procesor GPU (wizualizacja) | 6 | 56 GB | Ten rozmiar najlepiej nadaje się do zdalnej wizualizacji, przesyłania strumieniowego, gier, kodowania przy użyciu struktur, takich jak OpenGL i DirectX. | 
 | Mały procesor GPU (obliczenia) | 6 | 56 GB | Ten rozmiar najlepiej nadaje się w przypadku aplikacji intensywnie korzystających z mocy obliczeniowej i intensywnie korzystających z sieci, takich jak sztuczne inteligencje i aplikacje | 
 | Średni procesor GPU (wizualizacja) | 12 | 112 GB | Ten rozmiar najlepiej nadaje się do zdalnej wizualizacji, przesyłania strumieniowego, gier, kodowania przy użyciu struktur, takich jak OpenGL i DirectX. | 
@@ -107,7 +112,7 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
 
 ## <a name="view-all-classroom-labs"></a>Wyświetl wszystkie pracownice klasy
 1. Przejdź do [portalu Azure Lab Services](https://labs.azure.com).
-2. Wybierz pozycję **Zaloguj**. Wybierz lub wprowadź **Identyfikator użytkownika** , który jest członkiem roli **twórca laboratorium** na koncie laboratorium, a następnie wprowadź hasło. Usługa Azure Lab Services obsługuje konta organizacji i konta Microsoft. 
+2. Wybierz pozycję **Zaloguj się**. Wybierz lub wprowadź **Identyfikator użytkownika** , który jest członkiem roli **twórca laboratorium** na koncie laboratorium, a następnie wprowadź hasło. Usługa Azure Lab Services obsługuje konta organizacji i konta Microsoft. 
 3. Upewnij się, że wszystkie laboratoria zostały wyświetlone na wybranym koncie laboratorium. Na kafelku laboratorium zobaczysz liczbę maszyn wirtualnych w laboratorium i limit przydziału dla każdego użytkownika (poza zaplanowanym czasem).
 
     ![Wszystkie laboratoria](../media/how-to-manage-classroom-labs/all-labs.png)

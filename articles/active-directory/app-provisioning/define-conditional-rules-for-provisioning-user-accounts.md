@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e48388d4e15923c1f3e66321132197670b30c6b9
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 12ba93a7e3de3c290d5952227b67843c0a9846d3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522564"
+ms.locfileid: "77544270"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Inicjowanie obsługi aplikacji opartej na atrybutach przy użyciu filtrów zakresu
 Celem tego artykułu jest wyjaśnienie, jak używać filtrów zakresu do definiowania reguł opartych na atrybutach, które określają, którzy użytkownicy są obsługiwani do aplikacji.
@@ -98,10 +98,12 @@ Filtry zakresu są konfigurowane jako część mapowań atrybutów dla każdego 
    i. **Greater_Than.** Klauzula zwraca wartość "true", jeśli obliczony atrybut jest większy niż wartość. Wartość określona w filtrze zakresu musi być liczbą całkowitą, a atrybut na użytkowniku musi być liczbą całkowitą [0, 1, 2,...]. 
    
    j. **Greater_Than_OR_EQUALS.** Klauzula zwraca wartość "true", jeśli obliczony atrybut jest większy lub równy wartości. Wartość określona w filtrze zakresu musi być liczbą całkowitą, a atrybut na użytkowniku musi być liczbą całkowitą [0, 1, 2,...]. 
+   
+   k. **Łącznie.** Klauzula zwraca wartość "true", jeśli oceniony atrybut zawiera wartości ciągu (z uwzględnieniem wielkości liter), zgodnie z opisem w [tym miejscu](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8). 
 
 
 >[!IMPORTANT] 
-> Filtry include i IsMemberOf nie są obsługiwane. Wkrótce zostaną usunięte z interfejsu użytkownika.
+> Filtr IsMemberOf nie jest obecnie obsługiwany.
 
 9. Opcjonalnie powtórz kroki 7-8, aby dodać więcej klauzul określania zakresu.
 

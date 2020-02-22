@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 303f24ef6d934c0382bd8917833e3ec545f2a540
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776484"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538468"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Ciągłej integracji/ciągłego wdrażania w chmurze platformy Azure za pomocą akcji GitHub
 
@@ -79,6 +79,7 @@ Utwórz plik `.github/workflow/main.yml` w repozytorium:
 
 ```
 name: AzureSpringCloud
+on: push
 
 env:
   GROUP: <resource group name>
@@ -125,6 +126,7 @@ Polecenie AZ `run` będzie używać najnowszej wersji interfejsu wiersza polecen
 Utwórz plik GitHub/Workflow/Main. yml w repozytorium:
 ```
 name: AzureSpringCloud
+on: push
 
 jobs:
   build-and-deploy:
@@ -165,6 +167,7 @@ Innym rozwiązaniem jest użycie [wtyczki Maven](https://docs.microsoft.com/azur
 
 ```
 name: AzureSpringCloud
+on: push
 
 jobs:
   build-and-deploy:

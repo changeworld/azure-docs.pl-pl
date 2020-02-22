@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 97679ec48ee9120005118b6cacaf37e45657db08
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 69acb9152d1dc30d986276939e29e8c183095b18
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906633"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539607"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -21,7 +21,7 @@ ms.locfileid: "76906633"
 
 W tym samouczku dowiesz się, jak skompilować i wdrożyć statyczną witrynę sieci Web w usłudze Azure Storage. Po zakończeniu będzie gotowa statyczna witryna internetowa, do której użytkownicy będą mieli publiczny dostęp. 
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Konfigurowanie hostowania statycznej witryny internetowej
@@ -32,7 +32,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 > [!NOTE] 
-> Upewnij się, że utworzono konto magazynu ogólnego przeznaczenia w wersji 2. Statyczne witryny sieci Web nie są dostępne na żadnym innym typie konta magazynu.
+> Upewnij się, że utworzono standardowe konto magazynu ogólnego przeznaczenia w wersji 2. Statyczne witryny sieci Web nie są dostępne na żadnym innym typie konta magazynu.
 
 W tym samouczku wykorzystany zostanie program [Visual Studio Code](https://code.visualstudio.com/download), czyli bezpłatne narzędzie dla programistów umożliwiające utworzenie statycznej witryny internetowej i wdrożenie jej na koncie usługi Azure Storage.
 
@@ -57,7 +57,7 @@ Pierwszym krokiem jest skonfigurowanie konta magazynu na potrzeby hostowania sta
 1. Wybierz pozycję **Włączone**, aby umożliwić hostowanie statycznej witryny internetowej na koncie magazynu.
 1. W polu **Nazwa dokumentu indeksu** określ domyślną stronę indeksu *index.html*. Gdy użytkownik przejdzie do głównego elementu statycznej witryny internetowej, wyświetlona zostanie domyślna strona indeksu.  
 1. W polu **Ścieżka dokumentu błędu** określ domyślną stronę błędu *404. html*. Gdy użytkownik spróbuje przejść do strony, która nie istnieje w statycznej witrynie internetowej, wyświetlona zostanie domyślna strona błędu.
-1. Kliknij pozycję **Zapisz**. W witrynie Azure Portal jest teraz wyświetlany punkt końcowy statycznej witryny internetowej. 
+1. Kliknij przycisk **Save** (Zapisz). W witrynie Azure Portal jest teraz wyświetlany punkt końcowy statycznej witryny internetowej. 
 
     ![Włączanie hostowania statycznej witryny internetowej na koncie magazynu](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 

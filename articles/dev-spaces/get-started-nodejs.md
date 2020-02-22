@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: W tym samouczku pokazano, jak używać Azure Dev Spaces i Visual Studio Code do debugowania i szybkiej iteracji aplikacji node. js w usłudze Azure Kubernetes Service
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
-ms.openlocfilehash: de60a45126539cdd39b951eeb503fc349004797a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: cc59d5693740d1d2d6550af3aa61fa9b66420a39
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121350"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539420"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Utwórz przestrzeń Kubernetes dev: Visual Studio Code i Node. js z Azure Dev Spaces
 
@@ -98,7 +98,7 @@ W tej chwili masz podstawową aplikację internetową, która działa lokalnie. 
 1. Uruchom następujące polecenie (upewnij się, że bieżący folder to **webfrontend**):
 
     ```cmd
-    azds prep --public
+    azds prep --enable-ingress
     ```
 
 Polecenie `azds prep` interfejsu wiersza polecenia platformy Azure generuje zasoby platformy Docker i Kubernetes z ustawieniami domyślnymi:

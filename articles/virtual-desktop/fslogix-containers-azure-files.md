@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7b67569ee821fee837f4fa63a1d71e622a0370a5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 49a63be8e8ac3752006d531f4541cb3c2904c3e3
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472472"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539624"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontenery profili FSLogix i pliki platformy Azure
 
@@ -87,7 +87,7 @@ Pulpit wirtualny systemu Windows oferuje pełną kontrolę nad rozmiarem, typem 
 Aby zapewnić, że środowisko pulpitu wirtualnego systemu Windows jest zgodne z najlepszymi rozwiązaniami:
 
 - Konto magazynu Azure Files musi znajdować się w tym samym regionie co maszyny wirtualne hosta sesji.
-- Uprawnienia Azure Files powinny być zgodne z uprawnieniami opisanymi w [kontenerach wymagań — profile](/fslogix/overview#requirements).
+- Uprawnienia Azure Files powinny być zgodne z uprawnieniami opisanymi w [kontenerach wymagań — profile](/fslogix/fslogix-storage-config-ht).
 - Każda pula hostów musi być zbudowana z tego samego typu i rozmiaru maszyny wirtualnej na podstawie tego samego obrazu wzorcowego.
 - Każda maszyna wirtualna puli hostów musi znajdować się w tej samej grupie zasobów, aby ułatwić zarządzanie, skalowanie i aktualizowanie.
 - W celu uzyskania optymalnej wydajności rozwiązanie magazynu i kontener profilu FSLogix powinny znajdować się w tej samej lokalizacji centrum danych.

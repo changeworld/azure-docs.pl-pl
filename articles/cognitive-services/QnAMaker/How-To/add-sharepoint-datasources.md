@@ -1,29 +1,26 @@
 ---
 title: Pliki programu SharePoint — QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Dodaj zabezpieczone źródła danych programu SharePoint do bazy wiedzy, aby wzbogacić bazę wiedzy z pytaniami i odpowiedziami, które mogą być zabezpieczone za pomocą Active Directory.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.author: diberry
-ms.openlocfilehash: e28f144c33cbdf253603cb38ca56a4d304afd474
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/20/2020
+ms.openlocfilehash: ec77d3ac217991ff191d80249bc86805e7c8ba35
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843296"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544168"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Dodawanie bezpiecznego źródła danych programu SharePoint do bazy wiedzy
 
-Dodaj zabezpieczone źródła danych programu SharePoint do bazy wiedzy, aby wzbogacić bazę wiedzy z pytaniami i odpowiedziami, które mogą być zabezpieczone za pomocą Active Directory.
+Dodaj zabezpieczone źródła danych programu SharePoint oparte na chmurze do bazy wiedzy, aby wzbogacić bazę wiedzy z pytaniami i odpowiedziami, które mogą być zabezpieczone za pomocą Active Directory.
 
 Po dodaniu bezpiecznego dokumentu programu SharePoint do bazy wiedzy jako Menedżera QnA Maker należy zażądać uprawnień Active Directory do QnA Maker. Po otrzymaniu tego uprawnienia z Menedżera Active Directory, aby QnA Maker dostęp do programu SharePoint, nie trzeba go ponownie pomieścić. Każdy kolejny dokument dodany do bazy wiedzy nie będzie wymagał autoryzacji, jeśli znajduje się w tym samym zasobie programu SharePoint.
 
 Jeśli Menedżer bazy wiedzy QnA Maker nie jest menedżerem Active Directory, należy skontaktować się z menedżerem Active Directory, aby zakończyć ten proces.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+QnA Maker używa Microsoft Graph w celu uzyskania uprawnień. Jeśli program SharePoint działa lokalnie, nie będzie można wyodrębnić z programu SharePoint, ponieważ Microsoft Graph nie będzie można określić uprawnień.
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Dodaj obsługiwane typy plików do bazy wiedzy
 

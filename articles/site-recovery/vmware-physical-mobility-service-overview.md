@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: b2c59fd6ee925d531a5a5ff3bb26fdebea025b83
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c5acc9637fe5afe8f7dd32d23fbdbb80373b4f61
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513562"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539386"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informacje o usłudze mobilności dla maszyn wirtualnych VMware i serwerów fizycznych
 
@@ -21,6 +21,9 @@ Po skonfigurowaniu odzyskiwania po awarii dla maszyn wirtualnych VMware i serwer
 - [Instalacja wypychana](#push-installation): Site Recovery instaluje agenta mobilności na serwerze, gdy ochrona jest włączona za pośrednictwem Azure Portal.
 - Zainstaluj ręcznie: usługę mobilności można zainstalować ręcznie na każdym komputerze za pomocą [interfejsu użytkownika](#install-mobility-agent-through-ui) lub [wiersza polecenia](#install-mobility-agent-through-command-prompt).
 - [Automatyczne wdrażanie](vmware-azure-mobility-install-configuration-mgr.md): można zautomatyzować instalację za pomocą narzędzi do wdrażania oprogramowania, takich jak Configuration Manager.
+
+> [!NOTE]
+> Agent mobilności używa około 6%-10% pamięci na maszynach źródłowych do maszyn wirtualnych VMware lub maszyn fizycznych.
 
 ## <a name="anti-virus-on-replicated-machines"></a>Oprogramowanie antywirusowe na replikowanych maszynach
 
@@ -35,7 +38,7 @@ Instalacja wypychana jest integralną częścią zadania "[Włącz replikację](
 
 Szczegóły przepływu pracy instalacji wypychanej zostały opisane w poniższych sekcjach.
 
-### <a name="from-923-versionhttpssupportmicrosoftcomen-inhelp4494485update-rollup-35-for-azure-site-recovery-onwards"></a>Od [9,23 wersji](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery) do wewnątrz
+### <a name="from-923-version-onwards"></a>Od [9,23 wersji](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery) do wewnątrz
 
 Podczas instalacji wypychanej agenta mobilności wykonywane są następujące czynności:
 
@@ -55,7 +58,7 @@ Podczas instalacji wypychanej agenta mobilności wykonywane są następujące cz
 
 ## <a name="install-mobility-agent-through-ui"></a>Instalowanie agenta mobilności przy użyciu interfejsu użytkownika
 
-### <a name="prerequisite"></a>Warunek wstępny
+### <a name="prerequisite"></a>Wymagania wstępne
 
 - Upewnij się, że wszystkie konfiguracje serwerów znajdują się w obszarze [macierzy obsługi programu VMware na platformie Azure](vmware-physical-azure-support-matrix.md).
 - [Zlokalizuj Instalatora](#locate-installer-files) na podstawie systemu operacyjnego serwera.
@@ -73,7 +76,7 @@ Podczas instalacji wypychanej agenta mobilności wykonywane są następujące cz
 
     ![Strona rejestracji usługi mobilności](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
 
-5. W obszarze **Szczegóły serwera konfiguracji**Określ adres IP i hasło, które zostały skonfigurowane.  
+5. W obszarze **Szczegóły serwera konfiguracji**Określ adres IP i hasło, które zostały skonfigurowane.
 
     ![Strona rejestracji usługi mobilności](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
 
@@ -83,7 +86,7 @@ Podczas instalacji wypychanej agenta mobilności wykonywane są następujące cz
 
 ## <a name="install-mobility-agent-through-command-prompt"></a>Instalowanie agenta mobilności przy użyciu wiersza polecenia
 
-### <a name="prerequisite"></a>Warunek wstępny
+### <a name="prerequisite"></a>Wymagania wstępne
 
 - Upewnij się, że wszystkie konfiguracje serwerów znajdują się w obszarze [macierzy obsługi programu VMware na platformie Azure](vmware-physical-azure-support-matrix.md).
 - [Zlokalizuj Instalatora](#locate-installer-files) na podstawie systemu operacyjnego serwera.
@@ -115,17 +118,17 @@ Podczas instalacji wypychanej agenta mobilności wykonywane są następujące cz
 #### <a name="installation-settings"></a>Ustawienia instalacji
 **Ustawienie** | **Szczegóły**
 --- | ---
-Użycie | UnifiedAgent. exe/role \<MS/MT >/InstallLocation \<lokalizacji instalacji >/platform "VmWare"/Silent
+Sposób użycia | UnifiedAgent. exe/role \<MS/MT >/InstallLocation \<lokalizacji instalacji >/platform "VmWare"/Silent
 Dzienniki instalacji | W obszarze%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 /Role | Obowiązkowy parametr instalacji. Określa, czy należy zainstalować usługę mobilności (MS), czy główny cel (MT).
-/InstallLocation| Parametr opcjonalny. Określa lokalizację instalacji usługi mobilności (dowolny folder).
+/InstallLocation| Opcjonalny parametr. Określa lokalizację instalacji usługi mobilności (dowolny folder).
 /Platform | Obowiązkowy. Określa platformę, na której zainstalowano usługę mobilności. **Oprogramowanie VMware** dla maszyn wirtualnych VMware/serwerów fizycznych; **Platforma Azure** dla maszyn wirtualnych platformy Azure.<br/><br/> W przypadku traktowania maszyn wirtualnych platformy Azure jako maszyn fizycznych należy określić program **VMware**.
-/Silent| Element opcjonalny. Określa, czy Instalator ma być uruchamiany w trybie dyskretnym.
+/Silent| Opcjonalny. Określa, czy Instalator ma być uruchamiany w trybie dyskretnym.
 
 #### <a name="registration-settings"></a>Ustawienia rejestracji
 **Ustawienie** | **Szczegóły**
 --- | ---
-Użycie | UnifiedAgentConfigurator. exe/CSEndPoint \<CSIP >/PassphraseFilePath \<PassphraseFilePath >
+Sposób użycia | UnifiedAgentConfigurator. exe/CSEndPoint \<CSIP >/PassphraseFilePath \<PassphraseFilePath >
 Dzienniki konfiguracji agenta | W obszarze%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
 /CSEndPoint | Obowiązkowy parametr. Określa adres IP serwera konfiguracji. Użyj dowolnych prawidłowych adresów IP.
 /PassphraseFilePath |  Obowiązkowy. Lokalizacja hasła. Użyj dowolnej prawidłowej ścieżki UNC lub pliku lokalnego.
@@ -154,16 +157,16 @@ Dzienniki konfiguracji agenta | W obszarze%ProgramData%\ASRSetupLogs\ASRUnifiedA
 #### <a name="installation-settings"></a>Ustawienia instalacji
 **Ustawienie** | **Szczegóły**
 --- | ---
-Użycie | ./Install-d \<lokalizacja instalacji >-r \<MS/MT >-v VmWare-q
+Sposób użycia | ./Install-d \<lokalizacja instalacji >-r \<MS/MT >-v VmWare-q
 -r | Obowiązkowy parametr instalacji. Określa, czy należy zainstalować usługę mobilności (MS), czy główny cel (MT).
--d | Parametr opcjonalny. Określa lokalizację instalacji usługi mobilności:/usr/local/ASR.
+-d | Opcjonalny parametr. Określa lokalizację instalacji usługi mobilności:/usr/local/ASR.
 -v | Obowiązkowy. Określa platformę, na której zainstalowano usługę mobilności. **Oprogramowanie VMware** dla maszyn wirtualnych VMware/serwerów fizycznych; **Platforma Azure** dla maszyn wirtualnych platformy Azure.
--q | Element opcjonalny. Określa, czy Instalator ma być uruchamiany w trybie dyskretnym.
+-q | Opcjonalny. Określa, czy Instalator ma być uruchamiany w trybie dyskretnym.
 
 #### <a name="registration-settings"></a>Ustawienia rejestracji
 **Ustawienie** | **Szczegóły**
 --- | ---
-Użycie | /usr/local/ASR/Vx/bin CD<br/><br/> UnifiedAgentConfigurator.sh-i \<CSIP >-P \<PassphraseFilePath >
+Sposób użycia | /usr/local/ASR/Vx/bin CD<br/><br/> UnifiedAgentConfigurator.sh-i \<CSIP >-P \<PassphraseFilePath >
 -i | Obowiązkowy parametr. Określa adres IP serwera konfiguracji. Użyj dowolnych prawidłowych adresów IP.
 -P |  Obowiązkowy. Pełna ścieżka pliku, w którym zapisano hasło. Użyj dowolnego prawidłowego folderu.
 
@@ -178,17 +181,17 @@ Przejdź do folderu%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository na
 
 **Plik Instalatora** | **System operacyjny (tylko 64-bitowy)**
 --- | ---
-Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2016; Windows Server 2012 R2; Windows Server 2012; Windows Server 2008 R2 SP1
+Microsoft-ASR\_UA\*Windows\*Release. exe | Windows Server 2016; Windows Server 2012 R2; Windows Server 2012; Windows Server 2008 R2 SP1
 Microsoft-ASR\_UA\*RHEL6-64\*Release. tar. gz | Red Hat Enterprise Linux (RHEL) 6.* </br> CentOS 6.*
-Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7. * </br> CentOS 7.*
-Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, SP3
-Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3
-Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4
-Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6,4, 6,5
-Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14,04
-Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16,04 LTS Server
-Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7
-Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
+Microsoft-ASR\_UA\*RHEL7-64\*Release. tar. gz | Red Hat Enterprise Linux (RHEL) 7. * </br> CentOS 7.*
+Microsoft-ASR\_UA\*SLES12-64\*Release. tar. gz | SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, SP3
+Microsoft-ASR\_UA\*SLES11-SP3-64\*Release. tar. gz| SUSE Linux Enterprise Server 11 SP3
+Microsoft-ASR\_UA\*SLES11-SP4-64\*Release. tar. gz| SUSE Linux Enterprise Server 11 SP4
+Microsoft-ASR\_UA\*OL6-64\*Release. tar. gz | Oracle Enterprise Linux 6,4, 6,5
+Microsoft-ASR\_UA\*UBUNTU-14.04-64\*Release. tar. gz | Ubuntu Linux 14,04
+Microsoft-ASR\_UA\*UBUNTU-16.04-64\*Release. tar. gz | Ubuntu Linux 16,04 LTS Server
+Microsoft ASR_UA\*DEBIAN7-64\*Release. tar. gz | Debian 7
+Microsoft ASR_UA\*DEBIAN8-64\*Release. tar. gz | Debian 8
 
 ## <a name="next-steps"></a>Następne kroki
 

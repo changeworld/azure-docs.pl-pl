@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: e50d0772eaf706772aa89418a1ad25bf406945b5
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 0f61a0968922d009b8ba60d80dde132fedaece29
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134316"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539087"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Samouczek: konfigurowanie laboratorium na potrzeby zajęć 
 W tym samouczku skonfigurujesz laboratorium na potrzeby zajęć z maszynami wirtualnymi używanymi przez uczniów podczas zajęć.  
@@ -72,7 +72,7 @@ W tym kroku utworzysz laboratorium dla swojej klasy na platformie Azure.
     4. **Zatrzymaj** maszynę wirtualną szablonu.  
 
 ## <a name="publish-the-template-vm"></a>Publikowanie maszyny wirtualnej szablonu
-Ten krok polega na opublikowaniu szablonu maszyny wirtualnej. Proces publikowania tworzy maszyny wirtualne laboratorium, które są zasadniczo kopiami szablonu maszyny wirtualnej. 
+Ten krok polega na opublikowaniu szablonu maszyny wirtualnej. Podczas publikowania szablonu maszyny wirtualnej Azure Lab Services tworzy maszyny wirtualne w laboratorium przy użyciu szablonu. Wszystkie maszyny wirtualne mają taką samą konfigurację jak szablon.
 
 1. Na stronie **szablon** wybierz pozycję **Publikuj** na pasku narzędzi. 
 

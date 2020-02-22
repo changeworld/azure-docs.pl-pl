@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934305"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544321"
 ---
 # <a name="encrypt-deployment-data"></a>Szyfrowanie danych wdrożenia
 
@@ -27,7 +27,7 @@ Możesz polegać na kluczach zarządzanych przez firmę Microsoft do szyfrowania
 |    |    Klucze zarządzane przez firmę Microsoft     |     Klucze zarządzane przez klienta     |
 |----|----|----|
 |    Operacje szyfrowania/odszyfrowywania    |    Azure    |    Azure    |
-|    Magazyn kluczy    |    Magazyn kluczy firmy Microsoft    |    Azure Key Vault    |
+|    Magazyn kluczy    |    Magazyn kluczy firmy Microsoft    |    W usłudze Azure Key Vault    |
 |    Odpowiedzialność za kluczowe rotacje    |    Microsoft    |    Klient    |
 |    Dostęp do klucza    |    Tylko firma Microsoft    |    Firma Microsoft, klient    |
 
@@ -89,7 +89,7 @@ Zasady dostępu powinny teraz pojawiać się w zasadach dostępu magazynu kluczy
 > Szyfrowanie danych wdrożenia za pomocą klucza zarządzanego przez klienta jest dostępne w najnowszej wersji interfejsu API (2019-12-01), która jest obecnie wdrażana. Określ tę wersję interfejsu API w szablonie wdrożenia. Jeśli masz jakieś problemy z tym, skontaktuj się z pomocą techniczną platformy Azure.
 
 Po skonfigurowaniu klucza i zasad dostępu w magazynie kluczy Dodaj następujące właściwości do szablonu wdrożenia ACI. Dowiedz się więcej o wdrażaniu zasobów ACI za pomocą szablonu w [samouczku: Wdróż grupę z wieloma kontenerami przy użyciu szablonu Menedżer zasobów](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
-* W obszarze `resources`Ustaw `apiVersion` na `2012-12-01`.
+* W obszarze `resources`Ustaw `apiVersion` na `2019-12-01`.
 * W sekcji Właściwości grupy kontenerów szablonu wdrożenia Dodaj `encryptionProperties`, który zawiera następujące wartości:
   * `vaultBaseUrl`: nazwa DNS magazynu kluczy znajduje się w bloku przegląd zasobu magazynu kluczy w portalu
   * `keyName`: Nazwa wygenerowanego wcześniej klucza

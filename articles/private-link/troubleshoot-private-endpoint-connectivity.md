@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z łącznością prywatnego punktu końcowego platformy Azure
+title: Rozwiązywanie problemów z łącznością z prywatnym punktem końcowym platformy Azure
 description: Wskazówki krok po kroku umożliwiające zdiagnozowanie łączności z prywatnym punktem końcowym
 services: private-endpoint
 documentationcenter: na
@@ -13,99 +13,99 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: df4ec6ddbba029eb29d2440717697968f8c79302
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fcc482e6231bbd925fd500a37989052765dede58
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191069"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538538"
 ---
-# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>Rozwiązywanie problemów z łącznością z prywatnym punktem końcowym
+# <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Rozwiązywanie problemów z łącznością z prywatnym punktem końcowym platformy Azure
 
-Ten przewodnik zawiera wskazówki krok po kroku dotyczące sprawdzania poprawności i zdiagnozowania konfiguracji prywatnego połączenia z punktem końcowym. 
+Ten artykuł zawiera wskazówki krok po kroku dotyczące sprawdzania poprawności i zdiagnozowania konfiguracji połączenia prywatnego punktu końcowego platformy Azure.
 
-Prywatny punkt końcowy platformy Azure to interfejs sieciowy, który nawiązuje połączenie prywatnie i bezpiecznie z usługą linku prywatnego. To rozwiązanie pomaga w zabezpieczeniu obciążeń na platformie Azure, zapewniając prywatną łączność z zasobami usługi platformy Azure z sieci wirtualnej. Dzięki temu te usługi są efektywnie umieszczane w sieci wirtualnej. 
+Prywatny punkt końcowy platformy Azure to interfejs sieciowy, który nawiązuje połączenie prywatnie i bezpiecznie z usługą linku prywatnego. To rozwiązanie pomaga w zabezpieczeniu obciążeń na platformie Azure, zapewniając prywatną łączność z zasobami usługi platformy Azure z sieci wirtualnej. To rozwiązanie efektywnie przenosi te usługi do sieci wirtualnej.
 
-Oto scenariusze łączności, które są dostępne z prywatnymi punktami końcowymi 
-- Sieć wirtualna z tego samego regionu 
+Oto scenariusze łączności, które są dostępne dla prywatnego punktu końcowego:
+
+- Sieć wirtualna z tego samego regionu
 - regionalne sieci wirtualne równorzędne
 - globalnie równorzędne sieci wirtualne
-- Klient lokalny dla sieci VPN lub obwodów usługi Express Route
+- Klient lokalny przez sieć VPN lub obwody usługi Azure ExpressRoute
 
-## <a name="diagnosing-connectivity-problems"></a>Diagnozowanie problemów z łącznością 
-Wykonaj kroki opisane poniżej, aby upewnić się, że wszystkie typowe konfiguracje są rozpoznawane zgodnie z oczekiwaniami, aby rozwiązać problemy z łącznością z konfiguracją prywatnego punktu końcowego.
+## <a name="diagnose-connectivity-problems"></a>Diagnozuj problemy z łącznością 
 
-1. Przejrzyj konfigurację prywatnego punktu końcowego, przeglądając zasób 
+Zapoznaj się z tymi krokami, aby upewnić się, że wszystkie typowe konfiguracje są wymagane do rozwiązania problemów z łącznością z konfiguracją prywatnego punktu końcowego.
 
-    a) przejdź do **prywatnego centrum linków**
+1. Przejrzyj konfigurację prywatnego punktu końcowego, przeglądając zasób.
+
+    a. Przejdź do **prywatnego centrum linków**.
 
       ![Prywatne centrum linków](./media/private-endpoint-tsg/private-link-center.png)
 
-    b) wybierz prywatne punkty końcowe z okienka nawigacji po lewej stronie
+    b. W okienku po lewej stronie wybierz pozycję **prywatne punkty końcowe**.
     
       ![Prywatne punkty końcowe](./media/private-endpoint-tsg/private-endpoints.png)
 
-    c) filtrowanie i wybieranie prywatnego punktu końcowego, który ma zostać zdiagnozowany
+    c. Odfiltruj i wybierz prywatny punkt końcowy, który chcesz zdiagnozować.
 
-    d) Przejrzyj informacje dotyczące sieci wirtualnej i usługi DNS
+    d. Przejrzyj informacje dotyczące sieci wirtualnej i usługi DNS.
+     - Sprawdź, czy stan połączenia został **zatwierdzony**.
+     - Upewnij się, że maszyna wirtualna ma łączność z siecią wirtualną, która obsługuje prywatne punkty końcowe.
+     - Sprawdź, czy są przypisane informacje o nazwie FQDN (kopia) i prywatny adres IP.
     
-     - Zweryfikowano stan połączenia
-     - Upewnij się, że maszyna wirtualna ma łączność z siecią wirtualną obsługującą prywatne punkty końcowe
-     - Informacje o nazwie FQDN (kopiowanie) i przypisany prywatny adres IP
+       ![Konfiguracja sieci wirtualnej i systemu DNS](./media/private-endpoint-tsg/vnet-dns-configuration.png)
     
-       ![Konfiguracja sieci wirtualnej i systemu DNS](./media/private-endpoint-tsg/vnet-dns-configuration.png)    
-    
-2. Użyj [**Azure monitor**](https://docs.microsoft.com/azure/azure-monitor/overview) , aby sprawdzić, czy dane przepływają
+1. Użyj [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) , aby sprawdzić, czy dane przepływają.
 
-    a) dla zasobu prywatnego punktu końcowego wybierz pozycję **Monitoruj**
-     - Wybierz pozycję dane lub dane i sprawdź, czy dane przepływają podczas próby nawiązania połączenia z prywatnym punktem końcowym. Oczekiwano opóźnienia około 10 minut.
+    a. W polu zasób prywatnego punktu końcowego wybierz pozycję **Monitoruj**.
+     - Wybierz **dane z lub z** **danych**. 
+     - Sprawdź, czy podczas próby nawiązania połączenia z prywatnym punktem końcowym są przesyłane dane. Oczekiwano opóźnienia około 10 minut.
     
        ![Weryfikowanie telemetrii prywatnego punktu końcowego](./media/private-endpoint-tsg/private-endpoint-monitor.png)
 
-3. Użyj rozwiązywania problemów z połączeniem maszyny wirtualnej z **Network Watcher**
+1.  Użyj **rozwiązywania problemów z połączeniem maszyny wirtualnej** z poziomu usługi Azure Network Watcher.
 
-    a) wybierz maszynę wirtualną klienta
+    a. Wybierz maszynę wirtualną klienta.
 
-    b) wybierz sekcję **Rozwiązywanie problemów z połączeniami** , karta **połączenie wychodzące**
+    b. Wybierz pozycję **Rozwiązywanie problemów z połączeniami**, a następnie wybierz kartę **połączenia wychodzące** .
     
       ![Network Watcher — Testowanie połączeń wychodzących](./media/private-endpoint-tsg/network-watcher-outbound-connection.png)
     
-    c) wybierz pozycję **użyj Network Watcher, aby uzyskać szczegółowe śledzenie połączeń**
+    c. Wybierz pozycję **użyj Network Watcher, aby uzyskać szczegółowe śledzenie połączeń**.
     
       ![Network Watcher — Rozwiązywanie problemów z połączeniem](./media/private-endpoint-tsg/network-watcher-connection-troubleshoot.png)
 
-    d) wybierz pozycję **Testuj według nazwy FQDN**
-     - Wklej nazwę FQDN z prywatnego zasobu punktu końcowego
-     - Podaj port (*zwykle 443 dla usługi Azure Storage lub Cosmos, 1336 dla SQL...* )
+    d. Wybierz pozycję **Testuj według nazwy FQDN**.
+     - Wklej nazwę FQDN z prywatnego zasobu punktu końcowego.
+     - Podaj port. Zazwyczaj należy używać 443 dla usługi Azure Storage lub Azure Cosmos DB i 1336 dla SQL.
 
-    e) kliknij pozycję **Testuj** i sprawdź poprawność wyników testu.
+    e. Wybierz pozycję **Testuj**i sprawdź poprawność wyników testu.
     
       ![Network Watcher — wyniki testu](./media/private-endpoint-tsg/network-watcher-test-results.png)
     
         
-4. Rozpoznawanie nazw DNS z wyników testów musi mieć ten sam prywatny adres IP przypisany do prywatnego punktu końcowego
+1. Rozpoznawanie nazw DNS z wyników testów musi mieć ten sam prywatny adres IP przypisany do prywatnego punktu końcowego.
 
-    a) Jeśli ustawienia DNS są nieprawidłowe, wykonaj następujące czynności:
-     - Przy użyciu strefy prywatnej: 
-       - Upewnij się, że sieć wirtualna sieci wirtualnej klienta jest skojarzona z strefą prywatną
-       - Sprawdź, Prywatna strefa DNS rekord strefy istnieje, Utwórz, jeśli nie jest istniejący
-    
-     - Używanie niestandardowej usługi DNS:
-       - Sprawdź ustawienia DNS klienta i sprawdź poprawność konfiguracji DNS.
-       Aby uzyskać wskazówki, zobacz [Omówienie prywatnego punktu końcowego — konfiguracja systemu DNS](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration) .
+    a. Jeśli ustawienia DNS są nieprawidłowe, wykonaj następujące kroki:
+     - Jeśli używasz strefy prywatnej: 
+       - Upewnij się, że sieć wirtualna klienta jest skojarzona z strefą prywatną.
+       - Sprawdź, czy istnieje rekord prywatnej strefy DNS. Jeśli nie istnieje, utwórz ją.
+     - Jeśli używasz niestandardowej usługi DNS:
+       - Przejrzyj niestandardowe ustawienia DNS i sprawdź, czy konfiguracja DNS jest poprawna.
+       Aby uzyskać wskazówki, zobacz [Omówienie prywatnego punktu końcowego: Konfiguracja DNS](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration).
 
-    b) Jeśli łączność kończy się niepowodzeniem z powodu sieciowej grupy zabezpieczeń/UDR
-     - Przejrzyj reguły ruchu wychodzącego sieciowej grupy zabezpieczeń i Utwórz odpowiednie reguły ruchu wychodzącego, aby zezwolić na ruch
+    b. Jeśli łączność kończy się niepowodzeniem ze względu na sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) lub trasy zdefiniowane przez użytkownika:
+     - Przejrzyj reguły ruchu wychodzącego sieciowej grupy zabezpieczeń i Utwórz odpowiednie reguły ruchu wychodzącego, aby zezwolić na ruch.
     
        ![Reguły ruchu wychodzącego sieciowej grupy zabezpieczeń](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
-5. Jeśli połączenie ma zweryfikowane wyniki, problem z łącznością może być związany z innymi aspektami, takimi jak wpisy tajne, tokeny i hasła w warstwie aplikacji.
-   - W takim przypadku Przejrzyj konfigurację zasobu linku prywatnego skojarzonego z prywatnym punktem końcowym. Zapoznaj się z [przewodnikiem rozwiązywania problemów z prywatnym linkiem](troubleshoot-private-link-connectivity.md). 
+1. Jeśli połączenie ma zweryfikowane wyniki, problem z łącznością może być związany z innymi aspektami, takimi jak wpisy tajne, tokeny i hasła w warstwie aplikacji.
+   - W takim przypadku należy przejrzeć konfigurację zasobu link prywatny skojarzonego z prywatnym punktem końcowym. Aby uzyskać więcej informacji, zobacz [Przewodnik rozwiązywania problemów z prywatnym linkiem na platformie Azure](troubleshoot-private-link-connectivity.md).
 
-6. Skontaktuj się z zespołem [pomocy technicznej platformy Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , jeśli problem nadal nie został rozwiązany i nadal istnieje problem z połączeniem. 
+1. Skontaktuj się z zespołem [pomocy technicznej systemu Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , jeśli problem nadal nie zostanie rozwiązany i nadal istnieje problem z łącznością.
 
 ## <a name="next-steps"></a>Następne kroki
 
  * [Utwórz prywatny punkt końcowy w zaktualizowanej podsieci (Azure Portal)](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
-
- * [Przewodnik rozwiązywania problemów z linkiem prywatnym](troubleshoot-private-link-connectivity.md)
+ * [Przewodnik rozwiązywania problemów z prywatnym linkiem na platformie Azure](troubleshoot-private-link-connectivity.md)

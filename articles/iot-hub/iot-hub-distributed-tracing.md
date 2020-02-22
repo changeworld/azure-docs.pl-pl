@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: c3291746558dbec2147ebea24eadd0febd317033
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212481"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539539"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Śledzenie komunikatów z urządzenia do chmury w usłudze Azure IoT z rozproszonym śledzeniem (wersja zapoznawcza)
 
@@ -244,10 +244,10 @@ Aby zaktualizować konfigurację próbkowania śledzenia rozproszonego dla wielu
 }
 ```
 
-| Nazwa elementu | Wymagane | Typ | Opis |
+| Nazwa elementu | Wymagany | Typ | Opis |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Tak | Liczba całkowita | Dwie wartości trybu są obecnie obsługiwane do włączania i wyłączania próbkowania. `1` jest włączona i `2` jest wyłączona. |
-| `sampling_rate` | Tak | Liczba całkowita | Ta wartość jest wartością procentową. Dozwolone są tylko wartości z `0` do `100` (włącznie).  |
+| `sampling_mode` | Yes | Liczba całkowita | Dwie wartości trybu są obecnie obsługiwane do włączania i wyłączania próbkowania. `1` jest włączona i `2` jest wyłączona. |
+| `sampling_rate` | Yes | Liczba całkowita | Ta wartość jest wartością procentową. Dozwolone są tylko wartości z `0` do `100` (włącznie).  |
 
 ## <a name="query-and-visualize"></a>Zapytanie i wizualizacja
 
@@ -269,9 +269,9 @@ Przykładowe dzienniki, jak pokazano w Log Analytics:
 
 | TimeGenerated | OperationName | Kategoria | Poziom | CorrelationId | Milisekundach) | Właściwości |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018 R-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Informacyjny | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
-| 2018 R-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Informacyjny | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "parentSpanId": "0144d2590aacd909"} |
-| 2018 R-02-22T03:28:48.633 Z | DiagnosticIoTHubEgress | DistributedTracing | Informacyjny | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
+| 2018 R-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Informacyjne | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
+| 2018 R-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Informacyjne | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "parentSpanId": "0144d2590aacd909"} |
+| 2018 R-02-22T03:28:48.633 Z | DiagnosticIoTHubEgress | DistributedTracing | Informacyjne | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType":"EventHub","endpointName":"myEventHub", "parentSpanId":"0144d2590aacd909"} |
 
 Aby poznać różne typy dzienników, zapoznaj się z [dziennikami diagnostycznymi usługi Azure IoT Hub](iot-hub-monitor-resource-health.md#distributed-tracing-preview).
 
@@ -308,8 +308,8 @@ Po włączeniu obsługa śledzenia rozproszonego dla IoT Hub będzie zgodna z ty
 1. Urządzenie IoT wysyła komunikat do IoT Hub.
 1. Wiadomość dotarła do bramy IoT Hub.
 1. IoT Hub szuka `tracestate` we właściwościach aplikacji wiadomości i sprawdza, czy jest w poprawnym formacie.
-1. Jeśli tak, IoT Hub generuje i rejestruje `trace-id` i `span-id` do Azure Monitor dzienników diagnostycznych w kategorii `DiagnosticIoTHubD2C`.
-1. Po zakończeniu przetwarzania wiadomości IoT Hub generuje kolejną `span-id` i rejestruje ją wraz z istniejącym `trace-id` w kategorii `DiagnosticIoTHubIngress`.
+1. Jeśli tak, IoT Hub generuje globalnie unikatowy `trace-id` komunikatu, `span-id` dla "przeskoku" i rejestruje je do Azure Monitor dzienników diagnostycznych w ramach operacji `DiagnosticIoTHubD2C`.
+1. Po zakończeniu przetwarzania wiadomości IoT Hub generuje kolejną `span-id` i rejestruje ją wraz z istniejącym `trace-id` w ramach operacji `DiagnosticIoTHubIngress`.
 1. Jeśli dla wiadomości włączono opcję Routing, IoT Hub zapisuje ją w niestandardowym punkcie końcowym i rejestruje inne `span-id` z tą samą `trace-id` w kategorii `DiagnosticIoTHubEgress`.
 1. Powyższe kroki są powtórzone dla każdego wygenerowanego komunikatu.
 

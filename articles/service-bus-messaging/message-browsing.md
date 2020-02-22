@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 7ad10ad2d4393c1d25a835d0ff8cd0b98ed25879
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756400"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539369"
 ---
 # <a name="message-browsing"></a>Przeglądanie komunikatów
 
@@ -34,7 +34,7 @@ Funkcja wgląd zwraca również komunikaty, które zostały zablokowane i są ak
 
 ## <a name="peek-apis"></a>Wgląd do interfejsów API
 
-Metody [Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) i [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) istnieją we wszystkich bibliotekach klienckich .NET i Java oraz we wszystkich obiektach odbiornika: **MessageReceiver**, **MessageSession**, **QueueClient**i **SubscriptionClient**. Wgląd w wszystkie kolejki i subskrypcje oraz ich odpowiednie kolejki utraconych wiadomości.
+Metody [Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) i [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) istnieją we wszystkich bibliotekach klienckich .NET i Java oraz we wszystkich obiektach odbiornika: **MessageReceiver**, **MessageSession**. Wgląd w wszystkie kolejki i subskrypcje oraz ich odpowiednie kolejki utraconych wiadomości.
 
 Gdy jest wywoływana wielokrotnie, Metoda wglądu wylicza wszystkie komunikaty znajdujące się w kolejce lub dzienniku subskrypcji w kolejności numerów sekwencyjnych od najniższego dostępnego numeru sekwencji do najwyższej. Jest to kolejność, w której wiadomości zostały dodane do kolejki i nie jest kolejnością, w której komunikaty mogą być ostatecznie pobrane.
 

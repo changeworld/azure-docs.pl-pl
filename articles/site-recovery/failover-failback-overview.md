@@ -3,12 +3,12 @@ title: Informacje o trybie failover i powrotu po awarii w Azure Site Recovery
 description: Więcej informacji na temat trybu failover i niepowodzenia w Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/24/2019
-ms.openlocfilehash: 3c461d2de4f9ef8e8159c7b9c86f23a846421c5e
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75498282"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539522"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Informacje o lokalnym przejściu w tryb failover i powrotu po awarii
 
@@ -37,8 +37,8 @@ Tryb failover to działanie dwufazowe:
 - **Zatwierdzenie**: po przejściu do trybu failover Zweryfikuj maszynę wirtualną na platformie Azure:
     - Następnie możesz zatwierdzić przejście w tryb failover do wybranego punktu odzyskiwania lub wybrać inny punkt dla zatwierdzenia.
     - Po zatwierdzeniu trybu failover nie można zmienić punktu odzyskiwania.
-    
-    
+
+
 ## <a name="connect-to-azure-after-failover"></a>Połącz z platformą Azure po przejściu w tryb failover
 
 Aby nawiązać połączenie z maszynami wirtualnymi platformy Azure utworzonymi po przejściu do trybu failover przy użyciu protokołu RDP/SSH, istnieje kilka wymagań.
@@ -59,7 +59,7 @@ Site Recovery udostępnia różne opcje trybu failover.
 **Testowanie pracy w trybie failover** | Służy do przeprowadzania przechodzenia do szczegółów, który weryfikuje strategię BCDR bez utraty danych ani przestojów.| Tworzy kopię maszyny wirtualnej na platformie Azure bez wpływu na bieżącą replikację ani w środowisku produkcyjnym. | 1. Uruchom test pracy w trybie failover na jednej maszynie wirtualnej lub na wielu maszynach wirtualnych w planie odzyskiwania.<br/><br/> 2. Wybierz punkt odzyskiwania do użycia w testowaniu pracy w trybie failover.<br/><br/> 3. Wybierz sieć platformy Azure, w której zostanie umieszczona maszyna wirtualna platformy Azure po jej utworzeniu po przejściu do trybu failover. Sieć jest używana tylko na potrzeby testu pracy w trybie failover.<br/><br/> 4. Sprawdź, czy przechodzenie do szczegółów zadziałało zgodnie z oczekiwaniami. Site Recovery automatycznie czyści maszyny wirtualne utworzone na platformie Azure podczas przechodzenia do szczegółów.
 **Planowana praca w trybie failover — funkcja Hyper-V**  | Zwykle używany do planowanych przestojów.<br/><br/> Źródłowe maszyny wirtualne są zamykane. Najnowsze dane są synchronizowane przed zainicjowaniem trybu failover. | Zero utraty danych dla planowanego przepływu pracy. | 1. Zaplanuj okno obsługi przestoju i Powiadom użytkowników.<br/><br/> 2. Korzystaj z aplikacji dla użytkowników w trybie offline.<br/><br/> 3. zainicjuj planowaną pracę w trybie failover przy użyciu najnowszego punktu odzyskiwania. Tryb failover nie jest uruchamiany, jeśli maszyna nie jest wyłączana lub występują błędy.<br/><br/> 4. po przejściu do trybu failover Sprawdź, czy replika maszyny wirtualnej platformy Azure jest aktywna na platformie Azure.<br/><br/> 5. Zatwierdź pracę w trybie failover, aby zakończyć. Akcja Zatwierdź usuwa wszystkie punkty odzyskiwania.
 **Tryb failover funkcji Hyper-V** | Zwykle uruchamiany, jeśli wystąpi nieplanowana awaria lub lokacja główna jest niedostępna.<br/><br/> Opcjonalnie Zamknij maszynę wirtualną i zsynchronizuj zmiany końcowe przed zainicjowaniem trybu failover.  | Minimalna utrata danych dla aplikacji. | 1. zainicjuj plan BCDR. <br/><br/> 2. zainicjuj pracę w trybie failover. Określ, czy Site Recovery powinien zamknąć maszynę wirtualną, a następnie zsynchronizuj/Replikuj najnowsze zmiany przed wyzwoleniem trybu failover.<br/><br/> 3. możesz przejść w tryb failover do kilku opcji punktów odzyskiwania, które zostały podsumowane w poniższej tabeli.<br/><br/> Jeśli nie włączysz opcji zamykania maszyny wirtualnej lub jeśli Site Recovery nie można jej zamknąć, zostanie użyty najnowszy punkt odzyskiwania.<br/>Tryb failover działa nawet wtedy, gdy nie można wyłączyć maszyny.<br/><br/> 4. po przejściu do trybu failover Sprawdź, czy replika maszyny wirtualnej platformy Azure jest aktywna na platformie Azure.<br/> W razie potrzeby możesz wybrać inny punkt odzyskiwania z okna przechowywania w ciągu 24 godzin.<br/><br/> 5. Zatwierdź pracę w trybie failover, aby zakończyć. Akcja Zatwierdź usuwa wszystkie dostępne punkty odzyskiwania.
-**Tryb failover — VMware** | Zwykle uruchamiany, jeśli wystąpi nieplanowana awaria lub lokacja główna jest niedostępna.<br/><br/> Opcjonalnie można określić, że Site Recovery powinna próbować wyzwolić zamknięcie maszyny wirtualnej, a następnie zsynchronizować i replikować końcowe zmiany przed zainicjowaniem trybu failover.  | Minimalna utrata danych dla aplikacji. | 1. zainicjuj plan BCDR. <br/><br/> 2. zainicjuj pracę w trybie failover z poziomu Site Recovery. Określ, czy Site Recovery powinien próbować wyzwolić zamknięcie maszyny wirtualnej i zsynchronizować ją przed uruchomieniem trybu failover.<br/> Tryb failover działa nawet wtedy, gdy nie można wyłączyć maszyn.<br/><br/> 3. po zakończeniu pracy w trybie failover Sprawdź, czy replika maszyny wirtualnej platformy Azure jest aktywna na platformie Azure. <br/>W razie potrzeby możesz wybrać inny punkt odzyskiwania z okna przechowywania 72 godzin.<br/><br/> 5. Zatwierdź pracę w trybie failover, aby zakończyć. Akcja Zatwierdź usuwa wszystkie punkty odzyskiwania.<br/> W przypadku maszyn wirtualnych z systemem Windows Site Recovery wyłącza narzędzia VMware podczas pracy w trybie failover. 
+**Tryb failover — VMware** | Zwykle uruchamiany, jeśli wystąpi nieplanowana awaria lub lokacja główna jest niedostępna.<br/><br/> Opcjonalnie można określić, że Site Recovery powinna próbować wyzwolić zamknięcie maszyny wirtualnej, a następnie zsynchronizować i replikować końcowe zmiany przed zainicjowaniem trybu failover.  | Minimalna utrata danych dla aplikacji. | 1. zainicjuj plan BCDR. <br/><br/> 2. zainicjuj pracę w trybie failover z poziomu Site Recovery. Określ, czy Site Recovery powinien próbować wyzwolić zamknięcie maszyny wirtualnej i zsynchronizować ją przed uruchomieniem trybu failover.<br/> Tryb failover działa nawet wtedy, gdy nie można wyłączyć maszyn.<br/><br/> 3. po zakończeniu pracy w trybie failover Sprawdź, czy replika maszyny wirtualnej platformy Azure jest aktywna na platformie Azure. <br/>W razie potrzeby możesz wybrać inny punkt odzyskiwania z okna przechowywania 72 godzin.<br/><br/> 5. Zatwierdź pracę w trybie failover, aby zakończyć. Akcja Zatwierdź usuwa wszystkie punkty odzyskiwania.<br/> W przypadku maszyn wirtualnych z systemem Windows Site Recovery wyłącza narzędzia VMware podczas pracy w trybie failover.
 
 ## <a name="failover-processing"></a>Przetwarzanie w trybie failover
 
@@ -85,6 +85,8 @@ Podczas pracy w trybie failover można wybrać kilka opcji punktów odzyskiwania
 **Najnowsza aplikacja obsługująca wiele maszyn wirtualnych — spójna** |  Ta opcja jest dostępna w przypadku planów odzyskiwania z co najmniej jedną maszyną wirtualną, na której włączono spójność wielu maszyn wirtualnych. Maszyny wirtualne, które są częścią grupy replikacji, są przełączane w tryb failover do najnowszego wspólnego punktu odzyskiwania spójnego z aplikacjami wielomaszynowo. Inne maszyny wirtualne są przełączane w tryb failover do najnowszego punktu odzyskiwania spójnego z aplikacją.
 **Niestandardowa** | Użyj tej opcji, aby przełączyć konkretną maszynę wirtualną w tryb failover do określonego punktu odzyskiwania w czasie. Ta opcja jest niedostępna w przypadku planów odzyskiwania.
 
+> [!NOTE]
+> Nie można migrować punktów odzyskiwania do innego magazynu Recovery Services.
 
 ## <a name="reprotectionfailback"></a>Ochrona/powrót po awarii
 
@@ -136,17 +138,17 @@ Aby ponownie chronić maszyny wirtualne funkcji Hyper-V z platformy Azure i przy
 - Planowane powrotu po awarii z platformy Azure do lokacji lokalnej.
 - Nie trzeba konfigurować określonych składników na potrzeby powrotu po awarii maszyny wirtualnej funkcji Hyper-V.
 - Podczas planowanej pracy w trybie failover można wybrać opcje synchronizacji danych przed powrotem po awarii:
-    - **Synchronizuj dane przed**przełączeniem w tryb failover: Ta opcja minimalizuje przestoje maszyn wirtualnych podczas synchronizowania maszyn bez wyłączania ich. 
+    - **Synchronizuj dane przed**przełączeniem w tryb failover: Ta opcja minimalizuje przestoje maszyn wirtualnych podczas synchronizowania maszyn bez wyłączania ich.
         - Faza 1: tworzy migawkę maszyny wirtualnej platformy Azure i kopiuje ją do lokalnego hosta funkcji Hyper-V. Maszyna kontynuuje działanie na platformie Azure.
         - Faza 2: zamyka maszynę wirtualną platformy Azure, aby nie pojawiły się żadne nowe zmiany. Końcowy zestaw zmian różnicowych jest transferowany na serwer lokalny, a lokalna maszyna wirtualna jest uruchamiana.
-    - **Synchronizuj dane tylko podczas pracy w trybie failover**: Ta opcja jest szybsza, ponieważ oczekuje się, że większość dysku uległa zmianie i w związku z tym nie wykonuje obliczeń sum kontrolnych. Pobiera dysk. Zalecamy użycie tej opcji, jeśli maszyna wirtualna była uruchomiona na platformie Azure przez pewien czas (co miesiąc lub więcej) lub jeśli lokalna maszyna wirtualna została usunięta.  
+    - **Synchronizuj dane tylko podczas pracy w trybie failover**: Ta opcja jest szybsza, ponieważ oczekuje się, że większość dysku uległa zmianie i w związku z tym nie wykonuje obliczeń sum kontrolnych. Pobiera dysk. Zalecamy użycie tej opcji, jeśli maszyna wirtualna była uruchomiona na platformie Azure przez pewien czas (co miesiąc lub więcej) lub jeśli lokalna maszyna wirtualna została usunięta.
 
 [Dowiedz się więcej](hyper-v-azure-failback.md) na temat ponownej ochrony funkcji Hyper-V i powrotu po awarii.
 
 Po ponownym włączeniu ochrony maszyn wirtualnych platformy Azure w środowisku lokalnym można określić, że chcesz powrócić po awarii do oryginalnej lokalizacji lub do innej lokalizacji.
 
 - **Odzyskiwanie do lokalizacji oryginalnej**: to samo kończy się z powrotem z platformy Azure do tej samej źródłowej maszyny lokalnej, jeśli istnieje. W tym scenariuszu należy wybrać jedną z opcji synchronizacji opisanych w poprzedniej procedurze.
-- **Odzyskiwanie lokalizacji alternatywnej**: Jeśli maszyna lokalna nie istnieje, możesz wrócić z platformy Azure do innej lokalizacji. W przypadku ponownej ochrony maszyny wirtualnej platformy Azure w środowisku lokalnym tworzony jest komputer lokalny. W przypadku tej opcji zaleca się wybranie opcji synchronizowania danych przed przełączeniem w tryb failover 
+- **Odzyskiwanie lokalizacji alternatywnej**: Jeśli maszyna lokalna nie istnieje, możesz wrócić z platformy Azure do innej lokalizacji. W przypadku ponownej ochrony maszyny wirtualnej platformy Azure w środowisku lokalnym tworzony jest komputer lokalny. W przypadku tej opcji zaleca się wybranie opcji synchronizowania danych przed przełączeniem w tryb failover
 - [Zapoznaj](hyper-v-azure-failback.md) się z wymaganiami i ograniczeniami dotyczącymi powrotu po awarii.
 
 
@@ -156,7 +158,7 @@ Po powrocie po awarii do lokacji lokalnej należy włączyć **replikację odwro
 
 
 ## <a name="next-steps"></a>Następne kroki
-- Przełączenie w tryb failover [określonych maszyn wirtualnych programu VMware](vmware-azure-tutorial-failover-failback.md) 
+- Przełączenie w tryb failover [określonych maszyn wirtualnych programu VMware](vmware-azure-tutorial-failover-failback.md)
 - Przełączenie w tryb failover [określonych maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-failover-failback-tutorial.md).
 - [Utwórz](site-recovery-create-recovery-plans.md) plan odzyskiwania.
 - Praca awaryjna [maszyn wirtualnych w planie odzyskiwania](site-recovery-failover.md).
