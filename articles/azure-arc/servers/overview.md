@@ -7,14 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Azure Automation, DSC, PowerShell, Konfiguracja żądanego stanu, zarządzanie aktualizacjami, śledzenie zmian, spis, elementy Runbook, Python, graficzne, hybrydowe
-ms.date: 02/12/2020
+ms.date: 02/20/2020
 ms.topic: overview
-ms.openlocfilehash: 33681d5c9e296d7c292dabbd64560e3d95c45af2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a2551791426c246df278e09cea9cec64a6bc019f
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190323"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539301"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co to jest usługa Azure ARC dla serwerów (wersja zapoznawcza)
 
@@ -49,7 +49,7 @@ W większości przypadków lokalizacja wybrana podczas tworzenia skryptu instala
 
 Następujące wersje systemu operacyjnego Windows i Linux są oficjalnie obsługiwane dla agenta połączonego z platformą Azure: 
 
-- System Windows Server 2012 R2 lub nowszy
+- Windows Server 2012 R2 lub nowszy (w tym Windows Server Core)
 - Ubuntu 16,04 i 18,04
 
 >[!NOTE]
@@ -65,6 +65,15 @@ Następujące wersje systemu operacyjnego Windows i Linux są oficjalnie obsług
 ### <a name="azure-subscription-and-service-limits"></a>Limity subskrypcji i usług platformy Azure
 
 Przed skonfigurowaniem maszyn przy użyciu usługi Azure ARC dla serwerów (wersja zapoznawcza) należy przejrzeć limity [subskrypcji](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) Azure Resource Manager i [limity grup zasobów](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) , aby zaplanować liczbę maszyn, które mają być połączone.
+
+## <a name="tls-12-protocol"></a>Protokół TLS 1.2
+
+Aby zapewnić bezpieczeństwo danych przesyłanych do platformy Azure, zdecydowanie zalecamy skonfigurowanie komputera do korzystania z Transport Layer Security (TLS) 1,2. Starsze wersje protokołu TLS/SSL (SSL) są zagrożone i chociaż nadal działają tak, aby umożliwić zgodność z poprzednimi wersjami, nie są **zalecane**. 
+
+|Języka/platformy | Pomoc techniczna | Więcej informacji |
+| --- | --- | --- |
+|Linux | Dystrybucje systemu Linux zależą od [OpenSSL](https://www.openssl.org) obsługi TLS 1,2. | Sprawdź [Dziennik zmian OpenSSL](https://www.openssl.org/news/changelog.html) , aby potwierdzić, że wersja OpenSSL jest obsługiwana.|
+| System Windows Server 2012 R2 lub nowszy | Obsługiwane i domyślnie włączona. | , Aby upewnić się, że nadal używasz [ustawień domyślnych](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).|
 
 ### <a name="networking-configuration"></a>Konfiguracja sieci
 
@@ -130,6 +139,12 @@ Pakiet agenta połączonej maszyny platformy Azure dla systemów Windows i Linux
 >[!NOTE]
 >W tej wersji zapoznawczej wydano tylko jeden pakiet, który jest odpowiedni dla Ubuntu 16,04 lub 18,04.
 
+Agenta połączonego z platformą Azure dla systemów Windows i Linux można uaktualnić do najnowszej wersji ręcznie lub automatycznie, w zależności od wymagań. W przypadku systemu Windows aktualizacja agenta może być automatycznie realizowana przy użyciu Windows Update i Ubuntu przy użyciu narzędzia wiersza polecenia [apt](https://help.ubuntu.com/lts/serverguide/apt.html) .
+
+### <a name="agent-status"></a>Stan agenta
+
+Agent połączonej maszyny wysyła do usługi zwykły komunikat pulsu co 5 minut. Jeśli jeden z nich nie zostanie odebrany przez 15 minut, komputer jest uznawany za w trybie offline, a stan zostanie automatycznie zmieniony na **rozłączony** w portalu. Po odebraniu kolejnego komunikatu pulsu z agenta połączonej maszyny jego stan zostanie automatycznie zmieniony na **połączone**.
+
 ## <a name="install-and-configure-agent"></a>Instalowanie i Konfigurowanie agenta
 
 Łączenie maszyn w środowisku hybrydowym bezpośrednio z platformą Azure można wykonać przy użyciu różnych metod, w zależności od wymagań. W poniższej tabeli przedstawiono każdą metodę, aby określić, która działa najlepiej dla Twojej organizacji.
@@ -138,7 +153,6 @@ Pakiet agenta połączonej maszyny platformy Azure dla systemów Windows i Linux
 |--------|-------------|
 | Interaktywnie | Ręcznie Zainstaluj agenta na jednej lub małej liczbie maszyn, wykonując kroki opisane w temacie [Connect Machines from Azure Portal](onboard-portal.md).<br> Z Azure Portal można wygenerować skrypt i wykonać go na maszynie w celu zautomatyzowania kroków instalacji i konfiguracji agenta.|
 | Na dużą skalę | Zainstaluj i Skonfiguruj agenta dla wielu maszyn po [przyłączeniu maszyn przy użyciu nazwy głównej usługi](onboard-service-principal.md).<br> Ta metoda tworzy jednostkę usługi do łączenia maszyn nieinteraktywnie.|
-
 
 ## <a name="next-steps"></a>Następne kroki
 

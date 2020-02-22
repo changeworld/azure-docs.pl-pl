@@ -8,12 +8,12 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: 25c1cf00a418767209467c973b7a4755f62eb16f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: dd3c7a55d1b3d39f8a16b1730d861edf0de84690
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368381"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539573"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Szybki Start: przesyłanie strumieniowe danych z Event Hubs przy użyciu protokołu Kafka
 W tym przewodniku Szybki start przedstawiono sposób przesyłania strumieniowego usługi Event Hubs z obsługą platformy Kafka bez konieczności zmiany klientów protokołu lub uruchamiania własnych klastrów. Dowiesz się, jak producenci i użytkownicy mogą komunikować się z usługą Event Hubs z obsługą platformy Kafka tylko dzięki zmianie konfiguracji aplikacji. Usługa Azure Event Hubs obsługuje [platformę Apache Kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html)
@@ -30,10 +30,10 @@ Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz nastę
 * [Zestaw Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
 * [Pobierz](https://maven.apache.org/download.cgi) i [zainstaluj](https://maven.apache.org/install.html) archiwum binarne Maven.
 * [Usługa Git](https://www.git-scm.com/)
-* [Przestrzeń nazw centrów Event Hubs z obsługą platformy Kafka](event-hubs-create.md)
+
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs z obsługą platformy Kafka
-Podczas tworzenia warstwy Standardowa Event Hubs przestrzeń nazw, punkt końcowy Kafka dla przestrzeni nazw jest automatycznie włączany. Zdarzenia z aplikacji korzystających z protokołu Kafka można przesyłać strumieniowo do warstwy Standardowa Event Hubs. Ta funkcja nie jest włączona dla obszaru nazw Event Hubs warstwy Podstawowa. 
+Podczas tworzenia warstwy Standardowa Event Hubs przestrzeń nazw, punkt końcowy Kafka dla przestrzeni nazw jest automatycznie włączany. Zdarzenia z aplikacji korzystających z protokołu Kafka można przesyłać strumieniowo do warstwy Standardowa Event Hubs. Ta funkcja nie jest włączona dla obszaru nazw Event Hubs warstwy Podstawowa. Postępuj zgodnie z instrukcjami krok po kroku w temacie [Tworzenie centrum zdarzeń przy użyciu Azure Portal](event-hubs-create.md) , aby utworzyć Event Hubs przestrzeni nazw w warstwie **standardowa** . 
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>Wysyłanie i odbieranie komunikatów przy użyciu platformy Kafka w usłudze Event Hubs
 
