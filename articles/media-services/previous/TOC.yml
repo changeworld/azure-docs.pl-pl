@@ -397,8 +397,6 @@
       items:
         - name: Odtwarzanie multimediów za pomocą istniejących odtwarzaczy
           href: media-services-playback-content-with-existing-players.md
-        - name: Odtwarzanie multimediów za pomocą odtwarzacza Media Player
-          href: media-services-develop-video-players.md
         - name: Inne opcje odtwarzania
           items:
             - name: Przesyłanie aplikacji do Sklepu Windows przy użyciu funkcji Smooth Streaming
