@@ -2,20 +2,16 @@
 title: Samoobsługowe wymiany i zwroty kosztów rezerwacji platformy Azure
 description: Dowiedz się, w jaki sposób można wymienić lub uzyskać zwrot kosztów rezerwacji platformy Azure.
 author: yashesvi
-manager: yashesvi
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5f0c0c50ffd639109fdbb90c76e4ec036a8bc975
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 393db5d2e14e047ade04e0b688582e272c6ca44f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773876"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200439"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobsługowe wymiany i zwroty kosztów dotyczące rezerwacji na platformie Azure
 
@@ -72,12 +68,10 @@ Platforma Azure ma następujące zasady dotyczące anulowania, wymiany i zwrotó
 - Nie ma kar ani rocznych limitów wymian.
 
 **Zasady dotyczące zwrotów**
-- Jeśli anulujesz rezerwację, może zostać naliczona opłata w wysokości 12% za wcześniejsze zakończenie.
-- Otrzymany zwrot za anulowanie to pozostałe, obliczone proporcjonalnie saldo pomniejszone o opłatę 12% za wcześniejsze zakończenie. Aby anulować, przejdź do rezerwacji w witrynie Azure Portal i wybierz pozycję **Zwrot**.
+- W przyszłości w przypadku anulowania może być naliczana opłata w wysokości 12% za wcześniejsze zakończenie. Obecnie ta kara nie jest naliczana.
 - Łączna kwota zwrotu nie może przekroczyć 50 000 USD w 12-miesięcznym kroczącym przedziale czasu.
 - Zwroty są obliczane na podstawie najniższej z dwóch kwoty: ceny zakupu i bieżącej ceny rezerwacji.
-- Tylko właściciele rezerwacji mogą przetwarzać zwrot. [Dowiedz się, jak dodawać lub zmieniać użytkowników, którzy mogą zarządzać rezerwacją](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- Firma Microsoft zastrzega sobie prawo do naliczenia 12% kary za wszelkie zwroty. Kara nie jest obecnie naliczana, ale będzie naliczana w przyszłości.
+- Tylko właściciele zamówienia rezerwacji mogą przetwarzać zwrot. [Dowiedz się, jak dodawać lub zmieniać użytkowników, którzy mogą zarządzać rezerwacją](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Wymiana magazynu spoza warstwy Premium na magazyn w warstwie Premium
 

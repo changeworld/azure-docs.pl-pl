@@ -6,14 +6,14 @@ author: bandersmsft
 ms.reviewer: yashesvi
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: 82bf250a7902cfe4b905991809fd4bbe5dea102a
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 8ee683501346f0ee99b513ad966db1cc06b2737a
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188520"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470981"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Zarządzanie rezerwacjami zasobów platformy Azure
 
@@ -121,8 +121,10 @@ Aby zaktualizować ustawienie optymalizacji dla rezerwacji:
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz pozycję **Wszystkie usługi** > **Rezerwacje**.
 3. Wybierz rezerwację.
-4. Wybierz pozycję **Ustawienia** > **Konfiguracja**.
-5. Zmień ustawienie **Optymalizuj dla**.
+4. Wybierz pozycję **Ustawienia** > **Konfiguracja**.  
+  ![Przykład pokazujący element Konfiguracja](./media/manage-reserved-vm-instance/add-product03.png)
+5. Zmień ustawienie **Optymalizuj dla**.  
+  ![Przykład pokazujący ustawienie Optymalizuj dla](./media/manage-reserved-vm-instance/instance-size-flexibility-option.png)
 
 ## <a name="optimize-reservation-use"></a>Optymalizowanie użycia rezerwacji
 

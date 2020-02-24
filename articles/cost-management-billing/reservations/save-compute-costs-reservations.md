@@ -2,17 +2,17 @@
 title: Co to jest Azure Reservations?
 description: Dowiedz się więcej o rezerwacjach platformy Azure i cenach, które umożliwiają oszczędzanie za kosztach maszyn wirtualnych, baz danych SQL, usługi Azure Cosmos DB i innych zasobów.
 author: yashesvi
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: 10cf5b5a0ec4edda3d3c868cda34352e827604b0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c6a8547235c302f52aacd0e6ae4a8fbf08b538b8
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76841884"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443639"
 ---
 # <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 
@@ -32,16 +32,24 @@ Plany usługi:
 
 - **Wystąpienie zarezerwowane maszyny wirtualnej** — rezerwacja obejmuje tylko koszty obliczeń na maszynie wirtualnej. Nie dotyczy dodatkowych opłat za oprogramowanie, sieć ani magazyn.
 - **Pojemność zarezerwowana usługi Azure Storage** — rezerwacja obejmuje pojemność magazynu dla kont magazynu w warstwie Standardowa dla magazynu obiektów blob lub magazynu usługi Azure Data Lake Gen2. Rezerwacja nie obejmuje stawek za przepustowość lub transakcje.
-- **Rezerwacje usługi Azure Disk Storage** — rezerwacja obejmuje tylko dyski SSD w warstwie Premium o rozmiarze P30 lub większym. Nie obejmują żadnych innych typów dysków ani rozmiarów mniejszych niż P30.
+- **Rezerwacje usługi Azure Disk Storage** — rezerwacja obejmuje tylko dyski SSD w warstwie Premium o rozmiarze P30 lub większym. Nie obejmuje żadnych innych typów dysków ani rozmiarów mniejszych niż P30.
 - **Pojemność zarezerwowana usługi Azure Cosmos DB** — rezerwacja obejmuje przepływność przydzieloną dla zasobów. Nie dotyczy opłat za magazyn i sieć.
 - **Zarezerwowany rdzeń wirtualny w usłudze SQL Database** — w rezerwacji są uwzględniane tylko koszty obliczeń. Opłata za licencję jest naliczana oddzielnie.
 - **SQL Data Warehouse** — rezerwacja obejmuje użycie jednostek cDWU. Nie pokrywa kosztów magazynu i sieci wynikających z użycia usługi SQL Data Warehouse.
 - **Podatek od czynności cywilnoprawnych za korzystanie z usługi App Service** — rezerwacja obejmuje użycie sygnatury. Nie dotyczy to procesów roboczych, dlatego opłaty za inne zasoby związane z sygnaturą są naliczane oddzielnie.
-- Azure Database for MySQL
-- Azure Database for PostgreSQL
-- Azure Database for MariaDB
-- Azure Data Explorer
+- **Azure Databricks** — rezerwacja obejmuje tylko użycie jednostek DBU. Pozostałe opłaty, na przykład za obliczenia, magazyn i sieć, są naliczane oddzielnie.
+- **Azure Database for MySQL** — w rezerwacji są uwzględniane tylko koszty obliczeń. Rezerwacja nie obejmuje opłat za oprogramowanie, sieć ani magazyn związane z serwerem bazy danych MySQL.
+- **Azure Database for PostgreSQL** — w rezerwacji są uwzględniane tylko koszty obliczeń. Rezerwacja nie obejmuje opłat za oprogramowanie, sieć ani magazyn związane z serwerami bazy danych PostgreSQL.
+- **Azure Database for MariaDB** — w rezerwacji są uwzględniane tylko koszty obliczeń. Rezerwacja nie obejmuje opłat za oprogramowanie, sieć ani magazyn związane z serwerem bazy danych MariaDB.
+- **Azure Data Explorer** — rezerwacja obejmuje opłaty za znaczniki. Rezerwacja nie obejmuje opłat za obliczenia, sieć ani magazyn związane z klastrami.
+- **Dyski zarządzane SSD w warstwie Premium** — rezerwacja jest wykonywana dla określonej jednostki SKU dysku. 
 
+Plany oprogramowania:
+
+- **SUSE Linux** — rezerwacja obejmuje koszty planu oprogramowania. Rabaty mają zastosowanie tylko do mierników SUSE, a nie do użycia maszyn wirtualnych.
+- **Plany oprogramowania Red Hat** — rezerwacja obejmuje koszty planu oprogramowania. Rabaty mają zastosowanie tylko do mierników RedHat, a nie do użycia maszyn wirtualnych.
+- **Azure VMware Solution by CloudSimple** — rezerwacja obejmuje węzły rozwiązania VMWare CloudSimple. Nadal obowiązują dodatkowe opłaty za oprogramowanie.
+- **Azure Red Hat OpenShift** — rezerwacja ma zastosowanie do kosztów oprogramowania OpenShift, a nie do kosztów infrastruktury platformy Azure.
 
 W przypadku maszyn wirtualnych z systemem Windows i usługi SQL Database koszty licencji można pokryć za pomocą opcji [Korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 

@@ -2,43 +2,44 @@
 title: Wiadomość e-mail z platformy Azure dotycząca zaległego salda
 description: Opis sposobu dokonywania płatności w przypadku, gdy Twoja subskrypcja platformy Azure ma zaległe saldo
 author: genlin
-manager: dcscontentpm
+ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 7216af00413b1f8022957ac134f67a5c27b6cc78
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: cbfd5f7bf47cdaf43df00c710bd6680373d67b09
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75987904"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200609"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Rozwiązywanie problemu z zaległym saldem za subskrypcję platformy Azure
 
-Ten artykuł dotyczy klientów z kontami usługi online firmy Microsoft.
+Ten artykuł dotyczy klientów, którzy zarejestrowali się w usłudze Azure Online przy użyciu karty kredytowej i mają konto rozliczeniowe programu Microsoft Online Services. Dowiedz się, jak [sprawdzić typ konta rozliczeniowego](#check-the-type-of-your-account). Jeśli masz konto rozliczeniowe dla umowy klienta firmy Microsoft, zapoznaj się z tematem [Opłacanie rachunku za korzystanie z platformy Microsoft Azure](../understand/pay-bill.md).
 
-Jeśli nie otrzymamy Twojej płatności lub jeśli nie będziemy mogli jej przetworzyć, możesz otrzymać wiadomość e-mail lub zobaczyć alert w witrynie Azure Portal bądź w Centrum konta.
-Jeśli jesteś [administratorem konta](billing-subscription-transfer.md#whoisaa), możesz rozliczyć zaległe opłaty w witrynie [Azure Portal](https://portal.azure.com). Jeśli Twoja płatność jest rozliczana na podstawie faktury, wyślij płatność do lokalizacji wskazanej na dole faktury.
+Jeśli nie otrzymamy Twojej płatności lub jeśli nie będziemy mogli jej przetworzyć, otrzymasz wiadomość e-mail i zobaczysz alert w witrynie Azure Portal z informacją o tym, że Twoja subskrypcja ma zaległe opłaty. Jeśli domyślną formą płatności jest karta kredytowa, [administrator konta](billing-subscription-transfer.md#whoisaa) może uregulować zaległe opłaty w witrynie Azure Portal. W przypadku płatności na podstawie faktury (czekiem lub przelewem) wyślij płatność do lokalizacji wskazanej na dole faktury.
 
 > [!IMPORTANT]
 > * Jeśli masz wiele subskrypcji korzystających z tej samej karty kredytowej i za wszystkie z nich masz zaległe płatności, musisz jednorazowo uregulować całe należne saldo.
-> * Instrument płatniczy, za pomocą którego rozliczysz zaległe opłaty, stanie się nową aktywną formą płatności dla wszystkich subskrypcji, które korzystały z formy płatności zakończonej niepowodzeniem.
+> * Karta kredytowa, za pomocą której uregulujesz zaległe opłaty, stanie się nową domyślną formą płatności dla wszystkich subskrypcji, które korzystały z formy płatności zakończonej niepowodzeniem.
 
 ## <a name="resolve-past-due-balance-in-the-azure-portal"></a>Rozwiązywanie problemów dotyczących zaległego salda w witrynie Azure Portal
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator konta.
 1. Wyszukaj pozycję **Zarządzanie kosztami i rozliczenia**.
-1. Na stronie Przegląd zostanie wyświetlona lista subskrypcji. Jeśli stan subskrypcji wskazuje, że minął termin płatności, kliknij link **Ureguluj saldo**.
-    ![Zrzut ekranu przedstawiający link do rozliczania salda](./media/resolve-past-due-balance/settle-balance-entry-point.png)
-1. Łączne należne saldo odzwierciedla zaległe opłaty za wszystkie usługi firmy Microsoft korzystające z formy płatności zakończonej niepowodzeniem.
-1. Wybierz formę płatności, aby uregulować saldo. Ta forma płatności stanie się aktywną formą płatności dla wszystkich subskrypcji, które aktualnie korzystają z formy płatności zakończonej niepowodzeniem.
+1. Wybierz subskrypcję, dla której minął termin płatności, na stronie **Przegląd**.
+1. Na stronie **Przegląd subskrypcji** kliknij czerwony baner zaległości, aby rozliczyć saldo.
+    > [!NOTE]
+    > Jeśli nie jesteś administratorem konta, nie będziesz w stanie uregulować salda.
+1. Na nowej stronie **Ureguluj saldo** kliknij pozycję **Wybierz formę płatności**.
     ![Zrzut ekranu pokazujący link umożliwiający wybór formy płatności](./media/resolve-past-due-balance/settle-balance-screen.png)
-1. Jeśli wybrana forma płatności ma także zaległe opłaty za usługi firmy Microsoft, zostanie to odzwierciedlone w łącznym należnym saldzie. Te zaległe opłaty muszą zostać również uregulowane.
+
+1. W nowym bloku po prawej stronie wybierz kartę kredytową z listy rozwijanej lub dodaj nową, klikając niebieski link **Dodaj nową formę płatności**. Ta karta kredytowa stanie się aktywną formą płatności dla wszystkich subskrypcji, które aktualnie korzystają z formy płatności zakończonej niepowodzeniem.
+     > [!NOTE]
+     > * Łączne należne saldo odzwierciedla zaległe opłaty za wszystkie usługi firmy Microsoft korzystające z formy płatności zakończonej niepowodzeniem.
+     > * Jeśli wybrana forma płatności ma także zaległe opłaty za usługi firmy Microsoft, zostanie to odzwierciedlone w łącznym należnym saldzie. Te zaległe opłaty muszą zostać również uregulowane.
 1. Kliknij pozycję **Zapłać**.
 
 ## <a name="troubleshoot-declined-credit-card"></a>Rozwiązywanie problemów z odrzuconą kartą kredytową
@@ -58,6 +59,8 @@ Usługa zostanie anulowana, a Twoje zasoby nie będą już dostępne. Twoje dane
 
 Jeśli wiesz, że Twoja płatność została przetworzona, ale Twoja subskrypcja jest nadal wyłączona, skontaktuj się z [pomocą techniczną platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
+## <a name="check-the-type-of-your-account"></a>Sprawdzanie typu konta
+[!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 

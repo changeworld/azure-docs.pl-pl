@@ -1,22 +1,19 @@
 ---
-title: Przeglądanie faktury dla umowy partnerskiej firmy Microsoft na platformie Azure
+title: Przeglądanie faktury dla umowy Microsoft Partner Agreement — Azure
 description: Dowiedz się, jak przejrzeć informacje o rozliczeniach i użyciu zasobów oraz sprawdzić opłaty za fakturę dotyczącą umowy partnerskiej firmy Microsoft.
-author: jureid
-manager: jureid
+author: bandersmsft
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/22/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: e3823a9eb2e0713f7f42e4e02808ef957efc5944
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: dd0d53fb89df5372d3974b85cdb659f6cfbbedd8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75990842"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199096"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Samouczek: Przeglądanie faktury dla umowy partnerskiej firmy Microsoft
 
