@@ -99,6 +99,8 @@
         - name: Punkty końcowe przesyłania strumieniowego
           displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
+        - name: Skalowanie przesyłania strumieniowego przy użyciu sieci CDN
+          href: scale-streaming-cdn.md
         - name: Lokalizatory przesyłania strumieniowego
           displayName: URLs
           href: streaming-locators-concept.md
@@ -228,6 +230,8 @@
           href: cli-create-transform.md
         - name: Tworzenie zadań — interfejs wiersza polecenia
           href: cli-create-jobs.md
+        - name: Zadania z wieloma danymi wyjściowymi przekształceń
+          href: job-multiple-transform-outputs.md
     - name: Kodowanie zawartości
       items:
         - name: Adres HTTPS jako dane wejściowe zadania — .NET

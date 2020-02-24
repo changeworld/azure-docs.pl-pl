@@ -1,26 +1,30 @@
 - name: Dokumentacja usługi Mowa
-  href: index.md
+  href: index.yml
 - name: Omówienie
   expanded: true
   items:
     - name: Czym jest usługa rozpoznawania mowy?
       href: overview.md
+    - name: Bezpłatne testowanie usługi Mowa
+      href: get-started.md
     - name: Obsługa języków i regionów
       href: language-support.md
       displayName: 'languages,locales,region,voice,gender,language code,locale,locale code,neural voice,standard voice'
 - name: Zamiana mowy na tekst
   expanded: false
   items:
+    - name: Dokumentacja zamiany mowy na tekst
+      href: index-speech-to-text.yml
     - name: Omówienie
       items:
         - name: Co to jest zamiana mowy na tekst?
           href: speech-to-text.md
-    - name: Przewodniki Szybki start
+    - name: Szybki start
       items:
-        - name: Rozpoznawanie mowy z pliku dźwiękowego
-          href: quickstarts/speech-to-text-from-file.md
         - name: Rozpoznawanie mowy z danych wejściowych mikrofonu
           href: quickstarts/speech-to-text-from-microphone.md
+        - name: Rozpoznawanie mowy z pliku dźwiękowego
+          href: quickstarts/speech-to-text-from-file.md
         - name: Rozpoznawanie mowy przechowywanej w usłudze Blob Storage
           href: quickstarts/from-blob.md
     - name: Przewodniki z instrukcjami
@@ -45,8 +49,20 @@
           href: how-to-use-codec-compressed-audio-input-streams-ios.md
         - name: Używanie skompresowanych formatów dźwiękowych danych wejściowych (Android)
           href: how-to-use-codec-compressed-audio-input-streams-android.md
-        - name: Używanie rozpoznawania mowy w kontenerach platformy Docker
-          href: speech-container-howto.md?tabs=stt
+    - name: Dostosowywanie
+      items:
+        - name: Przygotowywanie danych
+          href: how-to-custom-speech-test-data.md
+        - name: Inspekcja danych
+          href: how-to-custom-speech-inspect-data.md
+        - name: Ocena dokładności
+          href: how-to-custom-speech-evaluate-data.md
+        - name: Trenowanie modelu niestandardowego
+          href: how-to-custom-speech-train-model.md
+        - name: Wdrażanie modelu niestandardowego
+          href: how-to-custom-speech-deploy-model.md
+        - name: Tworzenie transkrypcji oznaczonych etykietą przez użytkownika
+          href: how-to-custom-speech-human-labeled-transcriptions.md
     - name: Dokumentacja
       items:
         - name: Interfejsy API zestawu SDK usługi Mowa
@@ -86,33 +102,68 @@
 - name: Zamiana tekstu na mowę
   expanded: false
   items:
+    - name: Dokumentacja zamiany tekstu na mowę
+      href: index-text-to-speech.yml
     - name: Omówienie
       items:
         - name: Co to jest zamiana tekstu na mowę?
           href: text-to-speech.md
-    - name: Przewodniki Szybki start
+    - name: Szybki start
       items:
-        - name: Syntetyzowanie mowy do pliku dźwiękowego
-          href: quickstarts/text-to-speech-audio-file.md
         - name: Syntetyzowanie mowy przy użyciu głośnika
           href: quickstarts/text-to-speech.md
-        - name: Synteza asynchroniczna dla długich form audio
+        - name: Syntetyzowanie mowy do pliku dźwiękowego
+          href: quickstarts/text-to-speech-audio-file.md
+        - name: Syntetyzowanie mowy przy użyciu długich plików dźwiękowych
           href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
     - name: Przewodniki z instrukcjami
       items:
-        - name: Ulepszanie danych wyjściowych za pomocą języka SSML
+        - name: Ulepszanie syntezy za pomocą języka SSML
           href: speech-synthesis-markup.md
-        - name: Ulepszanie danych wyjściowych za pomocą głosów niestandardowych
+        - name: Ulepszanie syntezy za pomocą głosu niestandardowego
           href: how-to-custom-voice.md
           displayName: custom voice
         - name: Syntetyzowanie mowy przy użyciu interfejsu API długich form audio
           href: long-audio-api.md
-        - name: Używanie syntezy mowy w kontenerach platformy Docker
-          href: speech-container-howto.md?tabs=tts
         - name: Pobieranie listy głosów za pomocą technologii REST (Python)
           href: quickstart-python-get-text-to-speech-voices.md
         - name: Konwertowanie tekstu na mowę za pomocą technologii REST (Python)
           href: quickstart-python-text-to-speech.md
+    - name: Dostosowywanie
+      items:
+        - name: Odpowiedzialne wdrażanie
+          items:
+            - name: Kontrola głosu niestandardowego
+              href: concepts-gating-overview.md
+            - name: Wdrażanie technologii syntetycznej
+              href: concepts-guidelines-responsible-deployment-synthetic.md
+            - name: Ujawnianie dotyczące aktorów głosowych
+              href: 'https://aka.ms/disclosure-voice-talent'
+            - name: Wytyczne dotyczące projektowania ujawniania
+              href: concepts-disclosure-guidelines.md
+            - name: Wzorce projektowania ujawniania
+              href: concepts-disclosure-patterns.md
+            - name: Kodeks postępowania
+              href: 'https://aka.ms/custom-neural-code-of-conduct'
+        - name: Portal głosu niestandardowego
+          items:
+            - name: Wprowadzenie do usługi Custom Voice
+              href: how-to-custom-voice.md
+              displayName: 'custom voice, neural voice'
+            - name: Przygotowywanie danych
+              href: how-to-custom-voice-prepare-data.md
+            - name: Tworzenie i używanie modeli usługi Custom Voice
+              href: how-to-custom-voice-create-voice.md
+            - name: Nagrywanie próbek głosu
+              href: record-custom-voice-samples.md
+            - name: Wskazówki dotyczące nazewnictwa niestandardowych słów kluczowych
+              href: speech-devices-sdk-kws-guidelines.md
+            - name: Wykrywanie niestandardowych słów kluczowych
+              href: speech-devices-sdk-create-kws.md
+        - name: Tworzenie zawartości audio
+          items:
+            - name: Tworzenie zawartości audio
+              href: how-to-audio-content-creation.md
     - name: Dokumentacja
       items:
         - name: Zestaw SDK rozpoznawania mowy
@@ -147,55 +198,16 @@
         - name: Często zadawane pytania dotyczące zamiany tekstu na mowę
           href: faq-text-to-speech.md
           displayName: 'FAQ,TTS FAQ,SS FAQ,frequently asked questions'
-- name: Rozpoznawanie intencji
-  expanded: false
-  items:
-    - name: Przewodniki Szybki start
-      items:
-        - name: 'Rozpoznawanie mowy, intencji i jednostek'
-          href: quickstarts/intent-recognition.md
-          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
-    - name: Przewodniki z instrukcjami
-      items:
-        - name: 'Rozpoznawanie intencji mowy przy użyciu usługi LUIS i środowiska C#'
-          href: how-to-recognize-intents-from-speech-csharp.md
-    - name: Dokumentacja
-      items:
-        - name: Zestaw SDK rozpoznawania mowy
-          items:
-            - name: C++
-              href: 'https://aka.ms/csspeech/cppref'
-              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-            - name: 'C#'
-              href: 'https://aka.ms/csspeech/csharpref'
-              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-            - name: Java
-              href: 'https://aka.ms/csspeech/javaref'
-              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-            - name: JavaScript
-              href: 'https://aka.ms/csspeech/javascriptref'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-            - name: Obiektowy C
-              href: 'https://aka.ms/csspeech/objectivecref'
-              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-            - name: Python
-              href: 'https://aka.ms/csspeech/pythonref'
-              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-            - name: Informacje o wersji
-              href: releasenotes.md
-              displayName: 'release notes,updates,what''s new,what is new,changes'
-        - name: Usługa LUIS
-          items:
-            - name: Zasoby dla deweloperów korzystających z usługi LUIS
-              href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: Tłumaczenie mowy
   expanded: false
   items:
+    - name: Dokumentacja tłumaczenia mowy
+      href: index-speech-translation.yml
     - name: Omówienie
       items:
         - name: Co to jest tłumaczenie mowy?
           href: speech-translation.md
-    - name: Przewodniki Szybki start
+    - name: Szybki start
       items:
         - name: Tłumaczenie mowy na tekst
           href: quickstarts/translate-speech-to-text.md
@@ -236,17 +248,65 @@
       items:
         - name: Często zadawane pytania dotyczące tłumaczenia mowy
           href: 'https://www.microsoft.com/translator/faq.aspx'
+- name: Rozpoznawanie intencji
+  expanded: false
+  items:
+    - name: Dokumentacja rozpoznawania intencji
+      href: index-intent-recognition.yml
+    - name: Szybki start
+      items:
+        - name: 'Rozpoznawanie mowy, intencji i jednostek'
+          href: quickstarts/intent-recognition.md
+          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
+    - name: Przewodniki z instrukcjami
+      items:
+        - name: 'Rozpoznawanie intencji mowy przy użyciu usługi LUIS i środowiska C#'
+          href: how-to-recognize-intents-from-speech-csharp.md
+    - name: Dokumentacja
+      items:
+        - name: Zestaw SDK rozpoznawania mowy
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+            - name: 'C#'
+              href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+            - name: Obiektowy C
+              href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+            - name: Informacje o wersji
+              href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
+        - name: Usługa LUIS
+          items:
+            - name: Zasoby dla deweloperów korzystających z usługi LUIS
+              href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: Scenariusze konwersacji
   expanded: false
   items:
+    - name: Dokumentacja scenariuszy konwersacji
+      href: index-conversation-scenarios.yml
     - name: Transkrypcja konwersacji
       items:
         - name: Omówienie
           items:
-            - name: Co to jest transkrypcja konwersacji?
+            - name: Informacje o transkrypcji konwersacji
               href: conversation-transcription.md
         - name: Przewodniki z instrukcjami
           items:
+            - name: Obsługa scenariuszy biura obsługi
+              href: call-center-transcription.md
+              displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
             - name: Transkrypcja konwersacji w czasie rzeczywistym
               href: how-to-use-conversation-transcription.md
             - name: Asynchroniczna transkrypcja konwersacji
@@ -284,9 +344,9 @@
       items:
         - name: Omówienie
           items:
-            - name: Co to jest konwersacja między wieloma urządzeniami?
+            - name: Informacje o konwersacji między wieloma urządzeniami
               href: multi-device-conversation.md
-        - name: Przewodniki Szybki start
+        - name: Szybki start
           items:
             - name: Rozpoczynanie konwersacji i dołączanie do niej
               href: quickstarts/multi-device-conversation.md
@@ -301,6 +361,8 @@
 - name: Asystenci głosowi
   expanded: false
   items:
+    - name: Dokumentacja asystentów głosowych
+      href: index-voice-assistants.yml
     - name: Omówienie
       items:
         - name: Co to jest asystent głosowy?
@@ -349,115 +411,25 @@
           items:
             - name: Często zadawane pytania dotyczące asystentów głosowych
               href: faq-voice-assistants.md
-- name: Dostosowywanie
+- name: Hosting
   expanded: false
   items:
-    - name: Zamiana mowy na tekst
-      items:
-        - name: Portal mowy niestandardowej
-          items:
-            - name: Wprowadzenie do mowy niestandardowej
-              href: how-to-custom-speech.md
-            - name: Przygotowywanie danych
-              href: how-to-custom-speech-test-data.md
-            - name: Inspekcja danych
-              href: how-to-custom-speech-inspect-data.md
-            - name: Ocena dokładności
-              href: how-to-custom-speech-evaluate-data.md
-            - name: Trenowanie modelu niestandardowego
-              href: how-to-custom-speech-train-model.md
-            - name: Wdrażanie modelu niestandardowego
-              href: how-to-custom-speech-deploy-model.md
-            - name: Tworzenie transkrypcji oznaczonych etykietą przez użytkownika
-              href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: Modele dzierżaw
-          items:
-            - name: 'Tworzenie, publikowanie i używanie modelu'
-              href: tutorial-tenant-model.md
-    - name: Zamiana tekstu na mowę
-      items:
-        - name: Odpowiedzialne wdrażanie
-          items:
-            - name: Kontrola głosu niestandardowego
-              href: concepts-gating-overview.md
-            - name: Wdrażanie technologii syntetycznej
-              href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: Ujawnianie dotyczące aktorów głosowych
-              href: 'https://aka.ms/disclosure-voice-talent'
-            - name: Wytyczne dotyczące projektowania ujawniania
-              href: concepts-disclosure-guidelines.md
-            - name: Wzorce projektowania ujawniania
-              href: concepts-disclosure-patterns.md
-            - name: Kodeks postępowania
-              href: 'https://aka.ms/custom-neural-code-of-conduct'
-        - name: Portal głosu niestandardowego
-          items:
-            - name: Wprowadzenie do usługi Custom Voice
-              href: how-to-custom-voice.md
-              displayName: 'custom voice, neural voice'
-            - name: Przygotowywanie danych
-              href: how-to-custom-voice-prepare-data.md
-            - name: Tworzenie i używanie modeli usługi Custom Voice
-              href: how-to-custom-voice-create-voice.md
-            - name: Nagrywanie próbek głosu
-              href: record-custom-voice-samples.md
-        - name: Tworzenie zawartości audio
-          items:
-            - name: Tworzenie zawartości audio
-              href: how-to-audio-content-creation.md
-    - name: Wskazówki dotyczące nazewnictwa niestandardowych słów kluczowych
-      href: speech-devices-sdk-kws-guidelines.md
-    - name: Wykrywanie niestandardowych słów kluczowych
-      href: speech-devices-sdk-create-kws.md
-- name: Usługa rozpoznawania mowy
-  expanded: false
-  items:
-    - name: Scenariusze
-      items:
-        - name: Centra obsługi telefonicznej
-          href: call-center-transcription.md
-          displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
+    - name: Dokumentacja hostingu
+      href: index-hosting.yml
     - name: Przewodniki z instrukcjami
       items:
-        - name: Bezpłatne testowanie usługi Mowa
-          href: get-started.md
-        - name: Tworzenie zasobu usługi Mowa
-          href: 'get-started.md#create-a-speech-resource-in-azure'
-        - name: Containers
-          expanded: false
-          items:
-            - name: Instalowanie i uruchamianie kontenerów
-              href: speech-container-howto.md
-              displayName: 'containers,install container,run container'
-            - name: Konfigurowanie kontenerów
-              href: speech-container-configuration.md
-              displayName: 'containers,configure containers,container config,configuration'
-            - name: Usługa Kubernetes i rozwiązanie Helm
-              href: speech-container-howto-on-premises.md
-              displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
-            - name: Wystąpienia kontenera platformy Azure
-              href: deploy-speech-on-container-instances.md
-              displayName: 'ACI,azure container instances,container instances,containers'
-    - name: Samples
-      items:
-        - name: Zamiana tekstu na mowę — przykłady interfejsu REST
-          href: 'https://github.com/Azure-Samples/Cognitive-Speech-TTS'
-        - name: Transkrypcja wsadowa — przykłady interfejsu REST
-          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch'
-    - name: Dokumentacja
-      items:
-        - name: Interfejsy API REST
-          items:
-            - name: Interfejs API REST dostosowywania i transkrypcji wsadowej
-              href: 'https://westus.cris.ai/swagger/ui/index'
-            - name: Interfejs API REST transkrypcji konwersacji
-              href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
-            - name: Interfejs API REST zamiany mowy na tekst
-              href: rest-speech-to-text.md
-            - name: Interfejs API REST zamiany tekstu na mowę
-              href: rest-text-to-speech.md
-        - name: Dokumentacja platformy Swagger
-          href: swagger-documentation.md
+        - name: Instalowanie i uruchamianie kontenerów
+          href: speech-container-howto.md
+          displayName: 'containers,install container,run container'
+        - name: Konfigurowanie kontenerów
+          href: speech-container-configuration.md
+          displayName: 'containers,configure containers,container config,configuration'
+        - name: Usługa Kubernetes i rozwiązanie Helm
+          href: speech-container-howto-on-premises.md
+          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
+        - name: Wystąpienia kontenera platformy Azure
+          href: deploy-speech-on-container-instances.md
+          displayName: 'ACI,azure container instances,container instances,containers'
 - name: Zestaw SDK rozpoznawania mowy
   expanded: false
   items:
@@ -469,7 +441,7 @@
           href: scenario-availability.md
         - name: Dostarczanie aplikacji
           href: ship-application.md
-    - name: Przewodniki Szybki start
+    - name: Szybki start
       items:
         - name: Tworzenie projektu
           href: quickstarts/create-project.md
@@ -510,6 +482,8 @@
 - name: Urządzenia
   expanded: false
   items:
+    - name: Dokumentacja urządzeń usługi Mowa
+      href: index-devices.yml
     - name: Omówienie
       items:
         - name: Informacje o zestawie Speech Devices SDK
@@ -522,14 +496,10 @@
           href: speech-devices-sdk-microphone.md
         - name: 'Zestaw Roobo, wersja 1'
           href: speech-devices-sdk-roobo-v1.md
-    - name: Przewodniki Szybki start
+    - name: Szybki start
       items:
-        - name: Windows
-          href: speech-devices-sdk-windows-quickstart.md
-        - name: Linux
-          href: speech-devices-sdk-linux-quickstart.md
-        - name: Android
-          href: speech-devices-sdk-android-quickstart.md
+        - name: Używanie zestawu Speech Devices SDK
+          href: speech-devices-sdk-quickstart.md
     - name: Zasoby
       items:
         - name: Rozwiązywanie problemów z zestawem Speech Devices SDK
@@ -555,6 +525,8 @@
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
     - name: Regiony
       href: regions.md
+    - name: Dokumentacja platformy Swagger
+      href: swagger-documentation.md
     - name: Suwerenne chmury
       href: sovereign-clouds.md
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'

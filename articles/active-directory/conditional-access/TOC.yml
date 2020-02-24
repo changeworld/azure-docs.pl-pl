@@ -6,12 +6,14 @@
       href: overview.md
 - name: Przewodniki Szybki start
   items:
-    - name: Wymaganie uwierzytelniania MFA dla określonych aplikacji
-      href: app-based-mfa.md
     - name: Wymaganie akceptacji warunków użytkowania
       href: require-tou.md
     - name: Blokowanie dostępu po wykryciu ryzykownej sesji
       href: app-sign-in-risk.md
+- name: Samouczki
+  items:
+    - name: Wymaganie usługi Azure Multi-Factor Authentication
+      href: /authentication/tutorial-enable-azure-mfa.md?toc=/azure/conditional-access/toc.json&bc=/azure/conditional-access/breadcrumb/toc.json
 - name: Pojęcia
   expanded: false
   items:

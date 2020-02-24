@@ -64,6 +64,8 @@
   items:
     - name: Uaktualnianie publicznego moduł równoważenia obciążenia w warstwie Podstawowa do publicznego modułu równoważenia obciążenia w warstwie Standardowa
       href: upgrade-basic-standard.md
+    - name: Podwyższanie poziomu planu wewnętrznego modułu równoważenia obciążenia w warstwie Podstawowa do wewnętrznego modułu równoważenia obciążenia w warstwie Standardowa
+      href: upgrade-basicInternal-standard.md
     - name: Konfigurowanie reguł dla ruchu wychodzącego
       items:
         - name: Interfejs wiersza polecenia platformy Azure

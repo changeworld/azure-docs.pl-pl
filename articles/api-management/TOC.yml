@@ -123,6 +123,8 @@
       items:
         - name: Ochrona interfejsu API za pomocą usługi Azure AD
           href: api-management-howto-protect-backend-with-aad.md
+        - name: Ochrona interfejsu API zaplecza aplikacji SPA przy użyciu usługi Azure AD B2C
+          href: howto-protect-backend-frontend-azure-ad-b2c.md
         - name: Łączenie z siecią wirtualną
           href: api-management-using-with-vnet.md
         - name: Łączenie z wewnętrzną siecią wirtualną
