@@ -1,5 +1,5 @@
 ---
-title: Samouczek służący do kopiowania danych do Azure Data Box Heavy Storage BLOB za pośrednictwem interfejsów API REST | Microsoft Docs
+title: 'Samouczek: kopiowanie danych do Azure Data Box magazynu obiektów BLOB za pośrednictwem interfejsów API REST'
 description: Dowiedz się, jak kopiować dane do Azure Data Box Heavy magazynu obiektów BLOB za pośrednictwem interfejsów API REST
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: adc48acbadaef56958587dc79be377b76a21fdc0
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 43f6404a483cad8377e70591f5454180f0dd07a6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606295"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560341"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Samouczek: kopiowanie danych do Azure Data Box magazynu obiektów BLOB za pośrednictwem interfejsów API REST  
 
@@ -124,7 +124,7 @@ Wykonaj następujące kroki, aby zaimportować plik `.cer` do magazynu główneg
 
     ![Importowanie certyfikatu przy użyciu programu PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
-4.  Kliknij przycisk **Zakończ**. Pojawi się komunikat informujący, że importowanie zakończyło się pomyślnie.
+4.  Kliknij przycisk **Finish** (Zakończ). Pojawi się komunikat informujący, że importowanie zakończyło się pomyślnie.
 
     ![Importowanie certyfikatu przy użyciu programu PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
@@ -203,7 +203,7 @@ Użyj narzędzia AzCopy, aby przekazać wszystkie pliki w folderze do magazynu o
         --dest-key <key> \
         --recursive
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>System Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
 
@@ -228,7 +228,7 @@ Jeśli chcesz skopiować tylko zasoby źródłowe, które nie istnieją w miejsc
     --recursive \
     --exclude-older
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>System Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
 

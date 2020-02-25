@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 31923e1cb69eb6681367ed6ea71c10564ae6d489
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d4a426ea1432d0266b7ae9344afefe8ddac1d030
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526386"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561769"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Źródła zdarzeń w Azure Event Grid
 
@@ -72,7 +72,7 @@ Zasubskrybuj zdarzenia Event Hubs, aby odpowiedzieć na zdarzenia plików przech
 
 Przykłady Event Hubs jako programu obsługi znajdują się w temacie [obsługa Event Hubs](event-handlers.md#event-hubs).
 
-## <a name="iot-hub"></a>Centrum IoT
+## <a name="iot-hub"></a>Usługa IoT Hub
 
 Zasubskrybuj zdarzenia IoT Hub, aby odpowiedzieć na zdarzenia utworzone, usunięte, połączone, rozłączone i telemetrii.
 
@@ -134,7 +134,7 @@ Subskrybuj zdarzenia Service Bus, aby odpowiedzieć na komunikaty bez aktywnego 
 Zasubskrybuj zdarzenia Blob Storage, aby odpowiedzieć na zdarzenia utworzone i usunięte przez obiekt BLOB.
 
 >[!NOTE]
-> Tylko konta magazynu typu **StorageV2 (ogólnego przeznaczenia w wersji 2)** i **BlobStorage** obsługują integrację zdarzeń. **Magazyn (genral cel v1)** nie *obsługuje integracji* z programem Event Grid.
+> Tylko konta magazynu typu **StorageV2 (ogólnego przeznaczenia w wersji 2)** i **BlobStorage** obsługują integrację zdarzeń. **Magazyn (ogólnego przeznaczenia w wersji 1)** *nie obsługuje integracji* z programem Event Grid.
 
 |Tytuł  |Opis  |
 |---------|---------|

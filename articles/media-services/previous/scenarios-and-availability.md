@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4766f22cd84b2aab00f6dcc4064dbeea8018f694
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843943"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564981"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenariusze i dostępność funkcji usługi Media Services w centrach danych
 
@@ -31,13 +31,13 @@ Usługa AMS działa w wielu centrach danych na całym świecie. Te centra danych
 
 W tym temacie przedstawiono typowe scenariusze dostarczania zawartości [na żywo](#live_scenarios) lub na żądanie. Temat zawiera także szczegółowe informacje o dostępności funkcji i usług multimedialnych w centrach danych.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 Do rozpoczęcia korzystania z usługi Azure Media Services potrzebne są:
 
-* Konto platformy Azure. Jeśli nie masz konta, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com).
+* Konto platformy Azure. Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz temat [Bezpłatna wersja próbna systemu Azure](https://azure.microsoft.com).
 * Konto usługi Azure Media Services. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](media-services-portal-create-account.md).
 * Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**.
 
@@ -137,7 +137,7 @@ Aby uzyskać informacje na temat dostępności w centrach danych, zobacz sekcję
 
 ## <a name="consuming-content"></a>Korzystanie z zawartości
 
-Usługa Azure Media Services udostępnia narzędzia potrzebne do tworzenia zaawansowanych, dynamicznych aplikacji klienckich odtwarzacza dla większości platform, takich jak: urządzenia z systemem iOS, urządzenia z systemem Android, urządzenia z systemem Windows, telefony z systemem Windows Phone, konsole Xbox i dekodery. Poniższy temat zawiera linki do zestawów SDK oraz struktur odtwarzaczy, których można użyć do opracowywania własnych aplikacji klienckich korzystających z multimediów strumieniowych dostarczanych przez usługę Media Services. Aby uzyskać więcej informacji, zobacz temat [Projektowanie aplikacji płatnika wideo](media-services-develop-video-players.md)
+Usługa Azure Media Services udostępnia narzędzia potrzebne do tworzenia zaawansowanych, dynamicznych aplikacji klienckich odtwarzacza dla większości platform, takich jak: urządzenia z systemem iOS, urządzenia z systemem Android, urządzenia z systemem Windows, telefony z systemem Windows Phone, konsole Xbox i dekodery. 
 
 ## <a name="enabling-azure-cdn"></a>Włączanie usługi Azure CDN
 
@@ -177,10 +177,10 @@ Klienci usługi Media Services mogą wybrać **Standardowy** punkt końcowy prze
 
 #### <a name="availability"></a>Dostępność
 
-|Nazwa|Stan|Centra danych
+|Name (Nazwa)|Stan|Centra danych
 |---|---|---|
-|Standardowa|Ogólna dostępność|Wszystko|
-|Premium|Ogólna dostępność|Wszystko|
+|Standard|Ogólna dostępność|Wszyscy|
+|Premium|Ogólna dostępność|Wszyscy|
 
 ### <a name="live-encoding"></a>Kodowanie na żywo
 
@@ -196,7 +196,7 @@ Usługa AMS oferuje dwa kodery na żądanie: **Media Encoder Standard** i **Medi
 
 |Nazwa procesora multimediów|Stan|Centra danych
 |---|---|---|
-|Usługa Media Encoder Standard|Ogólna dostępność|Wszystko|
+|Usługa Media Encoder Standard|Ogólna dostępność|Wszyscy|
 |Przepływ pracy usługi Media Encoder w warstwie Premium|Ogólna dostępność|Wszystkie z wyjątkiem Chin|
 
 ### <a name="analytics-media-processors"></a>Procesory multimediów usługi analizy
@@ -207,12 +207,12 @@ Analiza multimediów to kolekcja składników mowy i obrazu, które ułatwiają 
 
 |Nazwa procesora multimediów|Stan|Centra danych
 |---|---|---|
-|Azure Media Face Detector|Wersja zapoznawcza|Wszystko|
-|Azure Media Indexer|Ogólna dostępność|Wszystko|
-|Azure Media Motion Detector|Wersja zapoznawcza|Wszystko|
-|Azure Media OCR|Wersja zapoznawcza|Wszystko|
-|Azure Media Redactor|Ogólna dostępność|Wszystko|
-|Azure Media Video Thumbnails|Wersja zapoznawcza|Wszystko|
+|Azure Media Face Detector|Wersja zapoznawcza|Wszyscy|
+|Azure Media Indexer|Ogólna dostępność|Wszyscy|
+|Azure Media Motion Detector|Wersja zapoznawcza|Wszyscy|
+|Azure Media OCR|Wersja zapoznawcza|Wszyscy|
+|Azure Media Redactor|Ogólna dostępność|Wszyscy|
+|Azure Media Video Thumbnails|Wersja zapoznawcza|Wszyscy|
 
 ### <a name="protection"></a>Ochrona
 
@@ -222,10 +222,10 @@ Usługi Microsoft Azure Media Services umożliwiają zabezpieczenie multimediów
 
 |Szyfrowanie|Stan|Centra danych|
 |---|---|---| 
-|Usługa Storage|Ogólna dostępność|Wszystko|
-|Klucze AES-128|Ogólna dostępność|Wszystko|
-|FairPlay|Ogólna dostępność|Wszystko|
-|PlayReady|Ogólna dostępność|Wszystko|
+|Storage|Ogólna dostępność|Wszyscy|
+|Klucze AES-128|Ogólna dostępność|Wszyscy|
+|FairPlay|Ogólna dostępność|Wszyscy|
+|PlayReady|Ogólna dostępność|Wszyscy|
 |Widevine|Ogólna dostępność|Wszystkie regiony z wyjątkiem Niemiec, Rządu Federalnego i Chin.
 
 ### <a name="reserved-units-rus"></a>Jednostki zarezerwowane (RU)
@@ -248,7 +248,7 @@ Aby uzyskać więcej informacji, zobacz sekcję opisującą [skalowanie](#scalin
 
 |Nazwa typu jednostki zarezerwowanej|Stan|Centra danych
 |---|---|---|
-|S1|Ogólna dostępność|Wszystko|
+|S1|Ogólna dostępność|Wszyscy|
 |S2|Ogólna dostępność|Wszystkie regiony z wyjątkiem Brazylii Południowej i Indii Zachodnich|
 |S3|Ogólna dostępność|Wszystkie regiony z wyjątkiem Indii Zachodnich|
 
@@ -262,6 +262,6 @@ Przejrzyj ścieżki szkoleniowe dotyczące usługi Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

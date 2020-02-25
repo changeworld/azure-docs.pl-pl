@@ -1,5 +1,5 @@
 ---
-title: Wdróż system SAP HANA skalowalny w poziomie z aktywnym węzłem na maszynach wirtualnych platformy Azure przy użyciu Azure NetApp Files na SUSE Linux Enterprise Server | Microsoft Docs
+title: SAP HANA skalowanie w poziomie przy użyciu funkcji wstrzymywania i Azure NetApp Files na SLES | Microsoft Docs
 description: Przewodnik wysokiej dostępności dla oprogramowania SAP NetWeaver na SUSE Linux Enterprise Server z Azure NetApp Files dla aplikacji SAP
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 243bbd431b7332d06a4e14581aa5c02bae2b7cba
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c594ef3a62d45fb68002ec2b21fb89115f7a30af
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896289"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565812"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Wdróż system SAP HANA skalowalny w poziomie z aktywnym węzłem na maszynach wirtualnych platformy Azure przy użyciu Azure NetApp Files na SUSE Linux Enterprise Server 
 
@@ -86,7 +86,7 @@ Przed rozpoczęciem zapoznaj się z następującymi informacjami i dokumentami S
 * [SAP HANA w systemach NetApp z systemem plików NFS](https://www.netapp.com/us/media/tr-4435.pdf): Przewodnik konfiguracji, który zawiera informacje o sposobach konfigurowania SAP HANA przy użyciu Azure NFS by NetApp
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Jedną z metod osiągania wysokiej dostępności platformy HANA jest skonfigurowanie trybu failover dla hosta. Aby skonfigurować funkcję autoprzełączania do trybu failover hosta, należy dodać co najmniej jedną maszynę wirtualną do systemu HANA i skonfigurować je jako węzły w stanie wstrzymania. Gdy aktywny węzeł ulegnie awarii, węzeł w stanie wstrzymania zostanie automatycznie przełączone. W prezentowanej konfiguracji z maszynami wirtualnymi platformy Azure można uzyskać funkcję automatycznej pracy awaryjnej przy użyciu [systemu plików NFS na Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).  
 
@@ -231,7 +231,7 @@ W następnych instrukcjach przyjęto założenie, że utworzono już grupę zaso
 
    b. Wybierz zestaw dostępności utworzony wcześniej dla SAP HANA.  
 
-   d. Wybierz podsieć sieci wirtualnej platformy Azure. Wybierz opcję [przyspieszone sieci](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli).  
+   c. Wybierz podsieć sieci wirtualnej platformy Azure. Wybierz opcję [przyspieszone sieci](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli).  
 
    Podczas wdrażania maszyn wirtualnych nazwa interfejsu sieciowego jest generowana automatycznie. W tych instrukcjach dla uproszczenia będziemy odnosić się do automatycznie generowanych interfejsów sieciowych dołączonych do podsieci sieci wirtualnej klienta platformy Azure, jako **hanadb1-Client**, **hanadb2-Client**i **hanadb3-Client**. 
 
@@ -245,7 +245,7 @@ W następnych instrukcjach przyjęto założenie, że utworzono już grupę zaso
 
     b. W lewym okienku wybierz pozycję **Virtual Machines**. Odfiltruj nazwę maszyny wirtualnej (na przykład **hanadb1**), a następnie wybierz maszynę wirtualną.  
 
-    d. W okienku **Przegląd** wybierz pozycję **Zatrzymaj** , aby cofnąć przydział maszyny wirtualnej.  
+    c. W okienku **Przegląd** wybierz pozycję **Zatrzymaj** , aby cofnąć przydział maszyny wirtualnej.  
 
     d. Wybierz pozycję **Sieć**, a następnie Dołącz interfejs sieciowy. Z listy rozwijanej **Dołącz interfejs sieciowy** wybierz już utworzone interfejsy sieciowe dla `storage` i `hana` podsieci.  
     
@@ -683,7 +683,7 @@ W tym przykładzie w celu wdrożenia SAP HANA w konfiguracji skalowania w poziom
     echo b > /proc/sysrq-trigger
    </code></pre>
 
-   d. Monitoruj system do ukończenia pracy w trybie failover. Po zakończeniu pracy w trybie failover Przechwyć stan, który powinien wyglądać następująco:  
+   c. Monitoruj system do ukończenia pracy w trybie failover. Po zakończeniu pracy w trybie failover Przechwyć stan, który powinien wyglądać następująco:  
 
     <pre><code>
     # Check the instance status
@@ -760,7 +760,7 @@ W tym przykładzie w celu wdrożenia SAP HANA w konfiguracji skalowania w poziom
         | hanadb3 | yes    | info   |          |        |         0 |         1 | default  | default  | master 3   | master     | standby     | master      | standby | worker  | default | default |
     </code></pre>
 
-   d. Uruchom ponownie wystąpienie platformy HANA w systemie **hanadb1** (czyli na tej samej maszynie wirtualnej, na której serwer nazw został zamknięty). Węzeł **hanadb1** ponownie przywróci środowisko i zachowa jego rolę w stanie wstrzymania.  
+   c. Uruchom ponownie wystąpienie platformy HANA w systemie **hanadb1** (czyli na tej samej maszynie wirtualnej, na której serwer nazw został zamknięty). Węzeł **hanadb1** ponownie przywróci środowisko i zachowa jego rolę w stanie wstrzymania.  
 
    <pre><code>
     hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB start

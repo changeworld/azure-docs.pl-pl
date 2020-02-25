@@ -1,5 +1,5 @@
 ---
-title: Tworzenie klastra Eksplorator danych i bazy danych platformy Azure przy użyciu programu PowerShell
+title: Tworzenie klastra usługi Azure Eksplorator danych & bazy danych przy użyciu programu PowerShell
 description: Dowiedz się, jak utworzyć klaster Eksplorator danych i bazę danych platformy Azure przy użyciu programu PowerShell
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
@@ -7,19 +7,19 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: d4561d49c37298a2b1a7f6c6542d78c3e19a145c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 690c3e281e65f54f240c70f7a6e5038f54102c99
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978336"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560596"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Tworzenie klastra Eksplorator danych i bazy danych platformy Azure przy użyciu programu PowerShell
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
 > * [Interfejs wiersza polecenia](create-cluster-database-cli.md)
-> * [Program PowerShell](create-cluster-database-powershell.md)
+> * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [Szablon usługi ARM](create-cluster-database-resource-manager.md)  
@@ -67,8 +67,8 @@ Poniższe kroki nie są wymagane, jeśli uruchamiasz polecenia w usłudze Azure 
 
    |**Ustawienie** | **Sugerowana wartość** | **Opis pola**|
    |---|---|---|
-   | Nazwa | *mykustocluster* | Wybrana nazwa klastra.|
-   | Jednostka SKU | *D13_v2* | Jednostka SKU, która będzie używana na potrzeby klastra. |
+   | Name (Nazwa) | *mykustocluster* | Wybrana nazwa klastra.|
+   | SKU | *D13_v2* | Jednostka SKU, która będzie używana na potrzeby klastra. |
    | ResourceGroupName | *testrg* | Nazwa grupy zasobów, w której zostanie utworzony klaster. |
 
     Istnieją dodatkowe parametry opcjonalne, których można używać, takie jak pojemność klastra.
@@ -92,7 +92,7 @@ Jeśli wynik zawiera element `provisioningState` o wartości `Succeeded`, klaste
    |**Ustawienie** | **Sugerowana wartość** | **Opis pola**|
    |---|---|---|
    | NazwaKlastra | *mykustocluster* | Nazwa klastra, w którym zostanie utworzona baza danych.|
-   | Nazwa | *mykustodatabase* | Nazwa bazy danych.|
+   | Name (Nazwa) | *mykustodatabase* | Nazwa bazy danych.|
    | ResourceGroupName | *testrg* | Nazwa grupy zasobów, w której zostanie utworzony klaster. |
    | softDeletePeriod | *3650:00:00:00* | Okres przechowywania danych na potrzeby zapytań. |
    | hotCachePeriod | *3650:00:00:00* | Okres przechowywania danych w pamięci podręcznej. |

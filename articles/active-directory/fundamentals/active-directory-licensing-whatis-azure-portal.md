@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a455f0e1959ad496a04f531cc0c3ece240c757ad
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9eec896e6cccaf58c83820161c54c4f10cfadadd
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987145"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561565"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Co to jest oparte na grupach Licencjonowanie w usłudze Azure Active Directory?
 
@@ -34,7 +34,7 @@ Aby korzystać z licencjonowania opartego na grupach, musisz mieć jedną z nast
 
 - Płatna lub próbna subskrypcja dla Azure AD — wersja Premium P1 i nowszych
 
-- Płatna lub w wersji próbnej pakietu Office 365 Enterprise E3 lub pakietu Office 365 a3 lub Office 365 i nowszego
+- Płatna lub w wersji próbnej pakietu Office 365 Enterprise E3 lub pakietu Office 365 a3 lub Office 365 z pakietem lub Office 365 E3 dla GCCH lub Office 365 E3 dla DOD i nowszych
 
 ### <a name="required-number-of-licenses"></a>Wymagana liczba licencji
 W przypadku wszystkich grup przypisanych do licencji trzeba również mieć licencję dla każdego unikatowego elementu członkowskiego. Chociaż nie musisz przypisywać poszczególnych członków grupy licencji, musisz mieć co najmniej wystarczającą liczbę licencji, aby uwzględnić wszystkie elementy członkowskie. Na przykład jeśli masz 1 000 unikatowych członków, którzy są częścią licencjonowanych grup w Twojej dzierżawie, musisz mieć co najmniej 1 000 licencji, aby spełnić warunki umowy licencyjnej.
@@ -68,6 +68,6 @@ Aby dowiedzieć się więcej na temat innych scenariuszy zarządzania licencjami
 * [Przypisywanie licencji do grupy w usłudze Azure Active Directory](../users-groups-roles/licensing-groups-assign.md)
 * [Identyfikowanie i rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory](../users-groups-roles/licensing-groups-resolve-problems.md)
 * [Jak migrować użytkowników z licencjami indywidualnymi do licencji opartych na grupach w usłudze Azure Active Directory](../users-groups-roles/licensing-groups-migrate-users.md)
-* [Jak przeprowadzić migrację użytkowników między licencjami produktów za pomocą licencjonowania opartego na grupy w usłudze Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Jak migrować użytkowników między licencjami produktu przy użyciu licencjonowania opartego na grupach w programie Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
 * [Dodatkowe scenariusze licencjonowania opartego na grupach w usłudze Azure Active Directory](../users-groups-roles/licensing-group-advanced.md)
-* [Przykłady programu PowerShell dla licencjonowania opartego na grupy w usłudze Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)
+* [Przykłady programu PowerShell dla licencjonowania opartego na grupach w Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

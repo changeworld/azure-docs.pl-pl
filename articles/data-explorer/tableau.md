@@ -1,5 +1,5 @@
 ---
-title: Użyj połączenia Open Database Connectivity (ODBC) z usługą Azure Eksplorator danych, aby wizualizować dane za pomocą Tableau
+title: Używanie łącznika usługi Azure Eksplorator danych ODBC do wizualizacji danych Tableau
 description: W tym artykule dowiesz się, jak używać połączenia Open Database Connectivity (ODBC) z usługą Azure Eksplorator danych Connection do wizualizacji danych za pomocą Tableau.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 4dd8fbd761a3442536919e17bae5465adf6b945f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 903daf450800a7f060899d736c2b31920c1b51f6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023858"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562449"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>Wizualizuj dane z usługi Azure Eksplorator danych w Tableau
 

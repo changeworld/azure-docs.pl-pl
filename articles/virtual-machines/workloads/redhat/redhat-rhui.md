@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d989553dc2248e7e0c830bb8cf169a80354dbab2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368907"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562551"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure maszyn wirtualnych systemu Linux Enterprise na żądanie w systemie Red Hat na platformie Azure
  Usługa [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umożliwia dostawcom usług w chmurze, takim jak Azure, duplikowanie zawartości repozytorium w systemie Red Hat, tworzenie niestandardowych repozytoriów z zawartością specyficzną dla platformy Azure i udostępnianie ich dla maszyn wirtualnych użytkownika końcowego.
@@ -28,7 +28,7 @@ Dodatkowe informacje na temat obrazów RHEL na platformie Azure, w tym zasady pu
 Informacje o zasadach obsługi systemu Red Hat dla wszystkich wersji programu RHEL można znaleźć na stronie [cykl życia Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .
 
 > [!IMPORTANT]
-> RHUI jest przeznaczona tylko dla obrazów z opcją płatność zgodnie z rzeczywistym użyciem (PAYGO). W przypadku obrazów niestandardowych i odnoszących się znanych również jako "Przenieś własną subskrypcję" (BYOS) system musi być dołączony do RHSM lub satelity w celu uzyskania aktualizacji. Zobacz [artykuł Red Hat](https://access.redhat.com/solutions/253273) , aby uzyskać więcej szczegółów.
+> RHUI jest przeznaczona tylko dla obrazów z opcją płatność zgodnie z rzeczywistym użyciem. W przypadku obrazów niestandardowych i odnoszących się znanych również jako "Przenieś własną subskrypcję" (BYOS) system musi być dołączony do RHSM lub satelity w celu uzyskania aktualizacji. Zobacz [artykuł Red Hat](https://access.redhat.com/solutions/253273) , aby uzyskać więcej szczegółów.
 
 
 ## <a name="important-information-about-azure-rhui"></a>Ważne informacje na temat usługi RHUI platformy Azure
@@ -105,7 +105,7 @@ Skorzystaj z poniższych instrukcji, aby zablokować maszynę wirtualną RHEL do
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
-1. Zablokuj zmienną releasever (Uruchom jako root):
+1. Zablokuj zmienną `releasever` (Uruchom jako root):
     ```bash
     echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
     ```
@@ -120,7 +120,7 @@ Skorzystaj z poniższych instrukcji, aby zablokować maszynę wirtualną RHEL do
 
 ### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>Przełącz maszynę wirtualną RHEL z powrotem do innej niż EUS (Usuń blokadę wersji)
 Uruchom następujący element jako główny:
-1. Usuń plik releasever:
+1. Usuń plik `releasever`:
     ```bash
     rm /etc/yum/vars/releasever
      ```

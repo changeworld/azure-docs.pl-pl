@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: Dokumentacja dotycząca zamiany mowy na tekst
+summary: Zamiana mowy na tekst z usługi mowy, znanej również jako rozpoznawanie mowy, umożliwia zapisanie strumieni audio w czasie rzeczywistym do tekstu.
+metadata:
+  title: Dokumentacja dotycząca zamiany mowy na tekst — samouczki, dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 2dd9fa8c9af53c69a1790dd890b48a7092f5a5da
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562934"
+landingContent:
+- title: Rozpoczynanie pracy
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest zamiana mowy na tekst?
+      url: speech-to-text.md
+  - linkListType: quickstart
+    links:
+    - text: Rozpoznawanie mowy z danych wejściowych mikrofonu
+      url: quickstarts/speech-to-text-from-microphone.md
+    - text: Rozpoznawanie mowy z pliku dźwiękowego
+      url: quickstarts/speech-to-text-from-file.md
+    - text: Rozpoznawanie mowy przechowywanej w usłudze Blob Storage
+      url: quickstarts/from-blob.md
+- title: Przewodniki krok po kroku
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Zmiana języka źródłowego rozpoznawania mowy
+      url: how-to-specify-source-language.md
+    - text: Wybór trybu rozpoznawania mowy
+      url: how-to-choose-recognition-mode.md
+    - text: Zwiększanie dokładności za pomocą list fraz
+      url: how-to-phrase-lists.md
+    - text: Zwiększanie dokładności za pomocą modeli dzierżaw
+      url: tutorial-tenant-model.md
+    - text: Zwiększanie dokładności za pomocą mowy niestandardowej
+      url: how-to-custom-speech.md
+    - text: Wybieranie określonego urządzenia wejściowego mikrofonu
+      url: how-to-select-audio-input-devices.md
+    - text: Używanie automatycznego wykrywania języka źródłowego
+      url: how-to-automatic-language-detection.md
+    - text: Używanie skompresowanych formatów dźwiękowych danych wejściowych
+      url: how-to-use-codec-compressed-audio-input-streams.md
+    - text: Używanie skompresowanych formatów dźwiękowych danych wejściowych (iOS)
+      url: how-to-use-codec-compressed-audio-input-streams-ios.md
+    - text: Używanie skompresowanych formatów dźwiękowych danych wejściowych (Android)
+      url: how-to-use-codec-compressed-audio-input-streams-android.md
+  - linkListType: concept
+    links:
+    - text: Przygotowywanie danych Custom Speech
+      url: how-to-custom-speech-test-data.md
+    - text: Inspekcja danych Custom Speech
+      url: how-to-custom-speech-inspect-data.md
+    - text: Oceń Custom Speech dokładność
+      url: how-to-custom-speech-evaluate-data.md
+    - text: Trenowanie modelu niestandardowego
+      url: how-to-custom-speech-train-model.md
+    - text: Wdrażanie modelu niestandardowego
+      url: how-to-custom-speech-deploy-model.md
+    - text: Tworzenie transkrypcji oznaczonych etykietą przez użytkownika
+      url: how-to-custom-speech-human-labeled-transcriptions.md
+- title: Dokumentacja
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Obsługa języków
+      url: language-support.md#speech-to-text
+    - text: Ceny
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: Często zadawane pytania dotyczące zamiany mowy na tekst
+      url: faq-stt.md

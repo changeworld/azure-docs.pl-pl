@@ -16,12 +16,12 @@ ms.author: arjay
 ms.reviewer: arjay
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f500f662db11aaa63548f7d19ace00553d5159af
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: f2a01b74212e51dd7b5c31ffb59707068211c6d4
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547561"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562228"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Nazwy produktów i identyfikatory planów usług na potrzeby licencjonowania
 
@@ -29,14 +29,14 @@ Podczas zarządzania licencjami w [Azure Portal](https://portal.azure.com/#blade
 
 - **Nazwa produktu**: używana w portalach zarządzania
 - **Identyfikator ciągu**: używany przez polecenia cmdlet programu PowerShell w wersji 1.0 podczas wykonywania operacji na licencjach
-- **Identyfikator**GUID: identyfikator GUID używany przez program Azure AD Graph i Microsoft Graph
+- **Identyfikator GUID**: identyfikator GUID używany przez interfejs API Microsoft Graph
 - **Uwzględnione plany usług**: lista planów usług w produkcie, które ODPOWIADAją identyfikatorowi ciągu i IDENTYFIKATORowi GUID
 - **Uwzględnione plany usług (przyjazne nazwy)** : lista planów usług (przyjaznych nazw) w produkcie, który odpowiada identyfikatorowi ciągu i GUID
 
 >[!NOTE]
 >Te informacje są dokładne od 20 grudnia 2019.
 
-| Nazwa produktu | Identyfikator ciągu | GUID | Uwzględnione plany usług | Uwzględnione plany usług (przyjazne nazwy) |
+| Nazwa produktu | Identyfikator ciągu | Identyfikator GUID | Uwzględnione plany usług | Uwzględnione plany usług (przyjazne nazwy) |
 | --- | --- | --- |--- | --- |
 | KONFERENCJE AUDIO | MCOMEETADV | 0c266dff-15dd-4b49-8397-2bb16070ed52 |MCOMEETADV (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) | KONFERENCJe AUDIO (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) |
 | AZURE ACTIVE DIRECTORY — PODSTAWOWE  | AAD_BASIC | 2b9c8e7c-319c-43a2-a2a0-48c5c6161de7  | AAD_BASIC (c4da7f8a-5ee2-4c99-a7e1-87d2df57f6fe) | MICROSOFT AZURE ACTIVE DIRECTORY BASIC(c4da7f8a-5ee2-4c99-a7e1-87d2df57f6fe) |
@@ -79,7 +79,7 @@ Podczas zarządzania licencjami w [Azure Portal](https://portal.azure.com/#blade
 | MICROSOFT DYNAMICS CRM ONLINE — PODSTAWOWE   | CRMPLAN2  | 906af65a-2970-46d5-9b58-4e9aa50f0657  | CRMPLAN2 (bf36ca64-95c6-4918-9275-eb9f4ce2c04f)<br/>FLOW_DYN_APPS (7e6d7d78-73de-46ba-83b1-6d25117334ba)<br/>POWERAPPS_DYN_APPS (874fc546-6efe-4d22-90b8-5c4e7aa59f4b) | MICROSOFT DYNAMICS CRM ONLINE BASIC (bf36ca64-95c6-4918-9275-eb9f4ce2c04f)<br/>PRZEPŁYW dla systemu DYNAMICS 365 (7e6d7d78-73de-46ba-83b1-6d25117334ba)<br/>Usługa POWERAPPS dla systemu DYNAMICS 365 (874fc546-6efe-4d22-90b8-5c4e7aa59f4b) |
 | MICROSOFT DYNAMICS CRM ONLINE | CRMSTANDARD   | d17b27af-3f49-4822-99f9-56a661538792  | CRMSTANDARD (f9646fb2-e3b2-4309-95de-dc4833737456)<br/>FLOW_DYN_APPS (7e6d7d78-73de-46ba-83b1-6d25117334ba)<br/>MDM_SALES_COLLABORATION (3413916e-ee66-4071-be30-6f94d4adfeda)<br/>NBPROFESSIONALFORCRM (3e58e97c-9abe-ebab-cd5f-d543d1529634)<br/>POWERAPPS_DYN_APPS (874fc546-6efe-4d22-90b8-5c4e7aa59f4b) | MICROSOFT DYNAMICS CRM ONLINE PROFESSIONAL (f9646fb2-e3b2-4309-95de-dc4833737456)<br/>PRZEPŁYW dla systemu DYNAMICS 365 (7e6d7d78-73de-46ba-83b1-6d25117334ba)<br/>Współpraca w zakresie współpracy z firmą MICROSOFT DYNAMICS MARKETING — kryteria KWALIFIKOWANIa (3413916e-ee66-4071-be30-6f94d4adfeda)<br/>MICROSOFT SOCIAL ENGAGEMENT PROFESSIONAL — kryteria KWALIFIKACYJNe mają zastosowanie (3e58e97c-9abe-ebab-cd5f-d543d1529634)<br/>Usługa POWERAPPS dla systemu DYNAMICS 365 (874fc546-6efe-4d22-90b8-5c4e7aa59f4b) |
 | MS WYOBRAŹ ACADEMY    | IT_ACADEMY_AD | ba9a34de-4489-469d-879c-0f0f145321cd  | IT_ACADEMY_AD (d736def0-1fde-43f0-a5be-e3f8b2de6e41) | MS Wyobraź ACADEMY (d736def0-1fde-43f0-a5be-e3f8b2de6e41) |
-| Office 365 Advanced Compliance | EQUIVIO_ANALYTICS | 1b1b1f7a-8355-43b6-829f-336cfccb744c | LOCKBOX_ENTERPRISE (9f431833-0334-42DE-a7dc-70aa40db46db)<br/>INFORMATION_BARRIERS (c4801e8a-cb58-4c35-aca6-f2dcc106f287)<br/>MIP_S_CLP2 (efb0351d-3b08-4503-993d-383af8de41e3)<br/>EQUIVIO_ANALYTICS (4de31727-a228-4ec3-a5bf-8e45b5ca48cc)<br/>PAM_ENTERPRISE (b1188c4c-1b36-4018-b48b-ee07604f6feb)<br/>PREMIUM_ENCRYPTION (617b097b-4b93-4ede-83de-5f075bb5fb2f) | Skrytka klienta (9f431833-0334-42DE-a7dc-70aa40db46db)<br/>Bariery informacyjne (c4801e8a-cb58-4c35-aca6-f2dcc106f287)<br/>Information Protection Office 365 — Premium (efb0351d-3b08-4503-993d-383af8de41e3)<br/>Zaawansowane zbieranie elektronicznych materiałów dowodowych dla pakietu Office 365 (4de31727-a228-4ec3-a5bf-8e45b5ca48cc)<br/>Privileged Access Management pakietu Office 365 (b1188c4c-1b36-4018-b48b-ee07604f6feb)<br/>Szyfrowanie w warstwie Premium w pakiecie Office 365 (617b097b-4b93-4ede-83de-5f075bb5fb2f) |
+| Zgodność z pakietem Office 365 Advanced | EQUIVIO_ANALYTICS | 1b1b1f7a-8355-43b6-829f-336cfccb744c | LOCKBOX_ENTERPRISE (9f431833-0334-42DE-a7dc-70aa40db46db)<br/>INFORMATION_BARRIERS (c4801e8a-cb58-4c35-aca6-f2dcc106f287)<br/>MIP_S_CLP2 (efb0351d-3b08-4503-993d-383af8de41e3)<br/>EQUIVIO_ANALYTICS (4de31727-a228-4ec3-a5bf-8e45b5ca48cc)<br/>PAM_ENTERPRISE (b1188c4c-1b36-4018-b48b-ee07604f6feb)<br/>PREMIUM_ENCRYPTION (617b097b-4b93-4ede-83de-5f075bb5fb2f) | Skrytka klienta (9f431833-0334-42DE-a7dc-70aa40db46db)<br/>Bariery informacyjne (c4801e8a-cb58-4c35-aca6-f2dcc106f287)<br/>Information Protection Office 365 — Premium (efb0351d-3b08-4503-993d-383af8de41e3)<br/>Zaawansowane zbieranie elektronicznych materiałów dowodowych dla pakietu Office 365 (4de31727-a228-4ec3-a5bf-8e45b5ca48cc)<br/>Privileged Access Management pakietu Office 365 (b1188c4c-1b36-4018-b48b-ee07604f6feb)<br/>Szyfrowanie w warstwie Premium w pakiecie Office 365 (617b097b-4b93-4ede-83de-5f075bb5fb2f) |
 | Office 365 Advanced Threat Protection (plan 1) | ATP_ENTERPRISE | 4ef96642-f096-40de-a3e9-d83fb2f90211 | ATP_ENTERPRISE (f20fedf3-f3c3-43c3-8267-2bfdd51c0939) | Office 365 Advanced Threat Protection (plan 1) (f20fedf3-f3c3-43c3-8267-2bfdd51c0939) |
 | PAKIET OFFICE 365 BUSINESS   | O365_BUSINESS | cdd28e44-67e3-425e-be4c-737fab2899d3  | FORMS_PLAN_E1 (159f4cd6-e380-449f-a816-af1a9ef76344)<br/>OFFICE_BUSINESS (094e7854-93fc-4d55-b2c0-3ab5369ebdc1)<br/>ONEDRIVESTANDARD (13696edf-5a08-49f6-8134-03083ed8ba30)<br/>SHAREPOINTWAC (e95bec33-7c88-4a70-8e19-b10bd9d0c014)<br/>SWAY (a23b959c-7ce8-4e57-9140-b90eb88a9e97) | MICROSOFT FORMS (PLAN E1) (159f4cd6-e380-449f-a816-af1a9ef76344)<br/>OFFICE 365 BUSINESS (094e7854-93fc-4d55-b2c0-3ab5369ebdc1)<br/>ONEDRIVESTANDARD (13696edf-5a08-49f6-8134-03083ed8ba30)<br/>OFFICE ONLINE (e95bec33-7c88-4a70-8e19-b10bd9d0c014)<br/>SWAY (a23b959c-7ce8-4e57-9140-b90eb88a9e97) |
 | PAKIET OFFICE 365 BUSINESS   | SMB_BUSINESS  | b214fe43-f5a3-4703-beeb-fa97188220fc  | FORMS_PLAN_E1 (159f4cd6-e380-449f-a816-af1a9ef76344)<br/>OFFICE_BUSINESS (094e7854-93fc-4d55-b2c0-3ab5369ebdc1)<br/>ONEDRIVESTANDARD (13696edf-5a08-49f6-8134-03083ed8ba30)<br/>SHAREPOINTWAC (e95bec33-7c88-4a70-8e19-b10bd9d0c014)<br/>SWAY (a23b959c-7ce8-4e57-9140-b90eb88a9e97) | MICROSOFT FORMS (PLAN E1) (159f4cd6-e380-449f-a816-af1a9ef76344)<br/>OFFICE 365 BUSINESS (094e7854-93fc-4d55-b2c0-3ab5369ebdc1)<br/>ONEDRIVESTANDARD (13696edf-5a08-49f6-8134-03083ed8ba30)<br/>OFFICE ONLINE (e95bec33-7c88-4a70-8e19-b10bd9d0c014)<br/>SWAY (a23b959c-7ce8-4e57-9140-b90eb88a9e97) |
@@ -145,7 +145,7 @@ Ta sekcja zawiera listę najbardziej typowych planów usług, które wzajemnie s
 
 Następujące plany usług nie mogą być przypisane razem:
 
-| Nazwa planu usługi | GUID |
+| Nazwa planu usługi | Identyfikator GUID |
 | --- | --- |
 | CRMPLAN1  | 119cf168-b6cf-41fb-b82e-7fee7bae5814 |
 | CRMPLAN2  | bf36ca64-95c6-4918-9275-eb9f4ce2c04f |
@@ -161,7 +161,7 @@ Następujące plany usług nie mogą być przypisane razem:
 
 Następujące plany usług nie mogą być przypisane razem:
 
-| Nazwa planu usługi | GUID |
+| Nazwa planu usługi | Identyfikator GUID |
 | --- | --- |
 | EXCHANGE_B_STANDARD   | 90927877-dcff-4af6-b346-2332c0b15bb7 |
 | EXCHANGE_L_STANDARD   | d42bdbd6-c335-4231-ab3d-c8f348d5aff5 |
@@ -176,7 +176,7 @@ Następujące plany usług nie mogą być przypisane razem:
 
 Następujące plany usług nie mogą być przypisane razem:
 
-| Nazwa planu usługi | GUID |
+| Nazwa planu usługi | Identyfikator GUID |
 | --- | --- |
 | INTUNE_A  | c1ec4a95-1f05-45b3-a911-aa3fa01094f5 |
 | INTUNE_A_VL   | 3e170737-c728-4eae-bbb9-3f3360f7184c |
@@ -186,7 +186,7 @@ Następujące plany usług nie mogą być przypisane razem:
 
 Następujące plany usług nie mogą być przypisane razem:
 
-| Nazwa planu usługi | GUID |
+| Nazwa planu usługi | Identyfikator GUID |
 | --- | --- |
 | ONEDRIVEENTERPRISE    | afcafa6a-d966-4462-918c-ec0b4e0fe642 |
 | SHAREPOINT_S_DEVELOPER    | a361d6e2-509e-4e25-a8ad-950060064ef4 |
@@ -203,7 +203,7 @@ Następujące plany usług nie mogą być przypisane razem:
 
 Następujące plany usług nie mogą być przypisane razem:
 
-| Nazwa planu usługi | GUID |
+| Nazwa planu usługi | Identyfikator GUID |
 | --- | --- |
 | MCOIMP    | afc06cb0-b4f4-4473-8286-d644f70d8faf |
 | MCOSTANDARD_MIDMARKET | b2669e95-76ef-4e7e-a367-002f60a39f3e |
@@ -212,7 +212,7 @@ Następujące plany usług nie mogą być przypisane razem:
 
 Następujące plany usług nie mogą być przypisane razem:
 
-| Nazwa planu usługi | GUID |
+| Nazwa planu usługi | Identyfikator GUID |
 | --- | --- |
 | MCOPSTN1  | 4ed3ff63-69d7-4fb7-b984-5aec7f605ca8 |
 | MCOPSTN2  | 5a10155d-f5c1-411a-a8ec-e99aae125390 |
@@ -222,7 +222,7 @@ Następujące plany usług nie mogą być przypisane razem:
 
 Następujące plany usług nie mogą być przypisane razem:
 
-| Nazwa planu usługi | GUID |
+| Nazwa planu usługi | Identyfikator GUID |
 | --- | --- |
 | YAMMER_ENTERPRISE | 7547a3fe-08ee-4ccb-b430-5077c5041653 |
 | YAMMER_EDU    | 2078e8df-cff6-4290-98cb-5408261a760a |
@@ -236,6 +236,6 @@ Aby dowiedzieć się więcej na temat zestawu funkcji do zarządzania licencjami
 * [Przypisywanie licencji do grupy w usłudze Azure Active Directory](licensing-groups-assign.md)
 * [Identyfikowanie i rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory](licensing-groups-resolve-problems.md)
 * [Jak migrować użytkowników z licencjami indywidualnymi do licencji opartych na grupach w usłudze Azure Active Directory](licensing-groups-migrate-users.md)
-* [Jak przeprowadzić migrację użytkowników między licencjami produktów za pomocą licencjonowania opartego na grupy w usłudze Azure Active Directory](licensing-groups-change-licenses.md)
+* [Jak migrować użytkowników między licencjami produktu przy użyciu licencjonowania opartego na grupach w programie Azure Active Directory](licensing-groups-change-licenses.md)
 * [Dodatkowe scenariusze licencjonowania opartego na grupach w usłudze Azure Active Directory](licensing-group-advanced.md)
 * [Przykłady programu PowerShell dla licencjonowania opartego na grupach w usłudze Azure AD](licensing-ps-examples.md)

@@ -1,23 +1,23 @@
 ---
-title: Co to jest konwersacja na wiele urządzeń (wersja zapoznawcza) — usługa mowy
+title: Informacje o komunikacji z obsługą kilku urządzeń (wersja zapoznawcza) — usługa mowy
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
-author: ralphe
-manager: cpoulain
+author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 1/15/2020
-ms.author: ralphe
-ms.openlocfilehash: 8d73c896f784507c2336a79130ff5f35aa61d30f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: d94b3392d6bd5ab539d49c8a4cfdd568fbbb1cd0
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268076"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560817"
 ---
-# <a name="what-is-multi-device-conversation-preview"></a>Co to jest konwersacja na wiele urządzeń (wersja zapoznawcza)?
+# <a name="about-multi-device-conversation-preview"></a>Informacje o konwersacji z obsługą kilku urządzeń (wersja zapoznawcza)
 
 **Konwersacja z wieloma urządzeniami** ułatwia tworzenie konwersacji mowy lub tekstu między wieloma klientami i koordynowanie komunikatów wysyłanych między nimi.
 
@@ -55,14 +55,14 @@ Ze względu na to, że użytkownicy przyłączają się za pośrednictwem kodu k
 
 Transkrypcja i tłumaczenie w czasie rzeczywistym mogą pomóc w udostępnieniu konwersacji osobom, które mówią różne języki i/lub są niesłyszące lub słabo słyszące. Każda osoba może również aktywnie uczestniczyć w konwersacji, mówiąc swój preferowany język lub wysyłając wiadomości błyskawiczne.
 
-### <a name="presentations"></a>Prezentacje
+### <a name="presentations"></a>Produktu
 
 Możesz również udostępnić napisy dla prezentacji i wykładów zarówno na ekranie, jak i na urządzeniach należących do odbiorców. Po dołączeniu do kodu konwersacji odbiorcy mogą zobaczyć transkrypcję w preferowanym języku na swoim własnym urządzeniu.
 
 > [!NOTE]
 > Aby zapoznać się z przykładem, zapoznaj się z tematem [tłumaczenie prezentacji](https://www.microsoft.com/translator/apps/presentation-translator/)— dodatek programu PowerPoint, który używa usługi konwersacji obejmującej wiele urządzeń. Można go pobrać [tutaj](https://www.microsoft.com/download/details.aspx?id=55024).
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
 Wszyscy klienci będą używać zestawu Speech SDK do tworzenia lub przyłączania do konwersacji. Zestaw Speech SDK współdziała z usługą konwersacji obejmującej wiele urządzeń, która zarządza okresem istnienia konwersacji, w tym listy uczestników, wybranych języków i wiadomości.  
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 11/22/2019
+ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 7bac2546ac35f5f188a6490c4d9ecb2b86d7bb2d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 91a63e87e937eab4c02d2b86026aa09472cb15ef
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843060"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561101"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Co to jest usługa QnA Maker?
 
@@ -36,7 +36,7 @@ Po opublikowaniu QnA Maker bazy wiedzy aplikacja kliencka wysyła pytanie do pun
 
 ![Poproś bot pytania i uzyskaj odpowiedzi z zawartości bazy wiedzy](../media/qnamaker-overview-learnabout/bot-chat-with-qnamaker.png)
 
-|Czynność|Działanie|
+|Krok|Akcja|
 |:--|:--|
 |1|Aplikacja kliencka wysyła _pytanie_ użytkownika (tekst we własnych słowach), "Jak mogę programowo zaktualizować moją bazę wiedzy?". do punktu końcowego bazy wiedzy.|
 |2|QnA Maker korzysta z przeszkolonej bazy wiedzy, aby zapewnić poprawną odpowiedź i wszelkie monity monitujące, których można użyć do uściślenia wyszukiwania najlepszej odpowiedzi. QnA Maker zwraca odpowiedź sformatowaną w formacie JSON.|
@@ -78,7 +78,11 @@ Po otrzymaniu przez bazę wiedzy pytań od użytkowników w opublikowanym punkci
 
 QnA Maker zapewnia tworzenie, uczenie i publikowanie wraz z uprawnieniami do współpracy w celu zintegrowania z pełnym cyklem życia.
 
-## <a name="how-do-i-start"></a>Od czego zacząć?
+> [!div class="mx-imgBorder"]
+> ![obrazu koncepcyjnego cyklu projektowania](../media/qnamaker-overview-learnabout/development-cycle.png)
+
+
+## <a name="how-do-i-start"></a>Jak mogę rozpocząć?
 
 **Krok 1**. utworzenie zasobu QnA Maker w [Azure Portal](https://portal.azure.com).
 

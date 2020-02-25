@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5454d2f80d1febccb0c57ecf2e80d930bb5cb761
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 21725e64bb359b2f11086baceb186605f010b796
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988808"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561463"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Samouczek: Tworzenie certyfikatu z podpisem własnym (wersja zapoznawcza) za pomocą skryptów wdrażania
 
@@ -266,13 +266,13 @@ Skrypt wdrażania dodaje certyfikat do magazynu kluczy. Skonfiguruj zasady dost�
     * **limit czasu**: Określ maksymalny dozwolony czas wykonywania skryptu określony w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Wartość domyślna to **P1D**.
     * **argumenty**: Określ wartości parametrów. Wartości są rozdzielone spacjami.
     * **scriptContent**: Określ zawartość skryptu. Aby uruchomić zewnętrzny skrypt, zamiast tego należy użyć **primaryScriptURI** . Aby uzyskać więcej informacji, zobacz [Korzystanie z zewnętrznego skryptu](./deployment-script-template.md#use-external-scripts).
-        Deklarowanie **$DeploymentScriptOutputs** jest wymagane tylko podczas testowania skryptu na komputerze lokalnym. Deklarowanie zmiennej pozwala na uruchomienie skryptu na maszynie lokalnej i w zasobie deploymentScript bez konieczności wprowadzania zmian. Wartość przypisana do $DeploymentScriptOutputs jest dostępna jako dane wyjściowe we wdrożeniach. Aby uzyskać więcej informacji, zobacz artykuł [Pracuj z wynikami ze skryptów wdrażania](./deployment-script-template.md#work-with-outputs-from-deployment-scripts).
+        Deklarowanie **$DeploymentScriptOutputs** jest wymagane tylko podczas testowania skryptu na komputerze lokalnym. Deklarowanie zmiennej pozwala na uruchomienie skryptu na maszynie lokalnej i w zasobie deploymentScript bez konieczności wprowadzania zmian. Wartość przypisana do $DeploymentScriptOutputs jest dostępna jako dane wyjściowe we wdrożeniach. Aby uzyskać więcej informacji, zobacz artykuł [Pracuj z wynikami ze skryptów wdrażania programu PowerShell](./deployment-script-template.md#work-with-outputs-from-powershell-script) lub [Pracuj z wynikami ze skryptów wdrażania interfejsu wiersza polecenia](./deployment-script-template.md#work-with-outputs-from-cli-script).
     * **cleanupPreference**: Określ preferencję po usunięciu zasobów skryptu wdrażania.  Wartość domyślna to **zawsze**, co oznacza, że zasoby skryptu wdrożenia są usuwane pomimo stanu terminalu (powodzenie, zakończone niepowodzeniem, anulowane). W tym samouczku zostanie użyta wartość **onSuccess** , aby uzyskać szansę na wyświetlenie wyników wykonywania skryptu.
     * **retentionInterval**: Określ interwał, dla którego usługa zachowuje zasoby skryptu po osiągnięciu stanu terminalu. Zasoby zostaną usunięte po upływie tego czasu trwania. Czas trwania jest oparty na wzorcu ISO 8601. W tym samouczku jest używany P1D, co oznacza jeden dzień.  Ta właściwość jest używana, gdy **cleanupPreference** jest ustawiony na **onwygaśnięcia**. Ta właściwość nie jest obecnie włączona.
 
     Skrypt wdrożenia przyjmuje trzy parametry: nazwę magazynu kluczy, nazwę certyfikatu i nazwę podmiotu.  Tworzy certyfikat, a następnie dodaje certyfikat do magazynu kluczy.
 
-    **$DeploymentScriptOutputs** jest używany do przechowywania wartości wyjściowej.  Aby dowiedzieć się więcej, zobacz artykuł [Pracuj z wynikami ze skryptów wdrażania](./deployment-script-template.md#work-with-outputs-from-deployment-scripts).
+    **$DeploymentScriptOutputs** jest używany do przechowywania wartości wyjściowej.  Aby dowiedzieć się więcej, zobacz artykuł [Pracuj z wynikami ze skryptów wdrażania programu PowerShell](./deployment-script-template.md#work-with-outputs-from-powershell-script) lub [Pracuj z wynikami ze skryptów wdrażania interfejsu wiersza polecenia](./deployment-script-template.md#work-with-outputs-from-cli-script).
 
     Ukończony szablon można znaleźć [tutaj](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json).
 
@@ -320,7 +320,7 @@ Wynik wykonania skryptu wdrożenia jest przechowywany w zasobach skryptu wdroże
 
 ## <a name="debug-the-failed-script"></a>Debuguj uszkodzony skrypt
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Otwórz grupę zasobów. Jest to nazwa projektu z dołączoną **RG** . W grupie zasobów będą widoczne dwa dodatkowe zasoby. Te zasoby są określane jako *Zasoby skryptu wdrażania*.
 
     ![Zasoby skryptu wdrażania Menedżer zasobów szablonu](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)

@@ -1,5 +1,5 @@
 ---
-title: Wykonywanie zapytań dotyczących danych w Azure Monitor przy użyciu usługi Azure Eksplorator danych (wersja zapoznawcza)
+title: Wykonywanie zapytań dotyczących danych w Azure Monitor za pomocą usługi Azure Eksplorator danych (wersja zapoznawcza)
 description: W tym temacie przedstawiono zapytania dotyczące danych w Azure Monitor przez utworzenie serwera proxy usługi Azure Eksplorator danych dla zapytań między produktami za pomocą Application Insights i Log Analytics
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: d39ffa05448600fe3bd09baf6080aa1565ae19ba
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c7e98c31c0db1db3051ad66df6526dcbddb265c5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843591"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560426"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Wykonywanie zapytań dotyczących danych w Azure Monitor przy użyciu usługi Azure Eksplorator danych (wersja zapoznawcza)
 
@@ -34,7 +34,7 @@ Przepływ serwera proxy usługi Azure Eksplorator danych:
 
     ![ADX natywny klaster](media/adx-proxy/web-ui-help-cluster.png)
 
-1. W interfejsie użytkownika usługi Azure Eksplorator danych (https://dataexplorer.azure.com/clusters) wybierz pozycję **Dodaj klaster**.
+1. W interfejsie użytkownika usługi Azure Eksplorator danych (https://dataexplorer.azure.com/clusters)wybierz pozycję **Dodaj klaster**.
 
 1. W oknie **Dodawanie klastra** Dodaj adres URL do klastra La lub AI. 
     

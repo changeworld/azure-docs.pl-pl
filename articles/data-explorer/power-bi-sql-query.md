@@ -1,5 +1,5 @@
 ---
-title: Wizualizuj dane z usługi Azure Eksplorator danych przy użyciu zapytania SQL w Power BI
+title: Wizualizowanie danych z usługi Azure Eksplorator danych przy użyciu zapytania SQL Power BI
 description: 'W tym artykule dowiesz się, jak użyć jednej z trzech opcji wizualizacji danych w Power BI: zapytania SQL względem klastra Eksplorator danych platformy Azure.'
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e4e7858a54f3002a511269a2519135d5ac24ed68
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d402d4c1ee77d0f97d2a5c3bdf43d0cc62aac096
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024079"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560477"
 ---
 # <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Wizualizuj dane z usługi Azure Eksplorator danych przy użyciu zapytania SQL w Power BI
 
@@ -51,7 +51,7 @@ Zazwyczaj w usłudze Azure Data Explorer używasz natywnego języka zapytań, al
     **Ustawienie** | **Wartość** | **Opis pola**
     |---|---|---|
     | Serwer | *help.kusto.windows.net* | Adres URL klastra pomocy (bez *https://* ). W przypadku innych klastrów adres URL ma postać *\<Nazwa_klastra\>.\<Region\>.kusto.windows.net*. |
-    | Database (Baza danych) | *Przykłady* | Przykładowa baza danych hostowana w klastrze, z którą nawiązujesz połączenie. |
+    | Baza danych | *Przykłady* | Przykładowa baza danych hostowana w klastrze, z którą nawiązujesz połączenie. |
     | Tryb łączności danych | *Importowanie* | Określa, czy usługa Power BI importuje dane, czy łączy się bezpośrednio ze źródłem danych. Korzystając z tego łącznika, możesz wybrać dowolną z tych opcji. |
     | Limit czasu polecenia | Pozostaw puste | Czas działania zapytania, po jakim zgłaszany jest błąd przekroczenia limitu czasu. |
     | Instrukcja SQL | Skopiuj zapytanie znajdujące się pod tą tabelą | Instrukcja SQL, którą usługa Azure Data Explorer tłumaczy na zapytanie natywne. |

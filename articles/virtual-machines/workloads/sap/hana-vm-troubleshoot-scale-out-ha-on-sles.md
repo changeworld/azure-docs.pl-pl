@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie SAP HANA problemów z konfiguracją HSR w poziomie 2,0 Pacemaker z programem SLES 12 SP3 na maszynach wirtualnych platformy Azure | Microsoft Docs
+title: SAP HANA skalowanie w poziomie HSR-Pacemaker z SLES na maszynach wirtualnych platformy Azure — Rozwiązywanie problemów | Microsoft Docs
 description: Przewodnik po sprawdzaniu i rozwiązywaniu problemów ze złożoną konfiguracją wysokiej dostępności SAP HANA skalowania w poziomie na podstawie replikacji systemu SAP HANA (HSR) i Pacemaker na SLES 12 SP3 uruchomionych na maszynach wirtualnych platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 299fba8a082f19f17ab581a6ac2bfac9fd3f8cf1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fb90bfff72f41d8d7ccc34d3ad6dd0e9206bb88e
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099660"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566237"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Weryfikowanie i rozwiązywanie problemów SAP HANA skalowalnej w poziomie konfiguracji wysokiej dostępności w SLES 12 SP3 
 
@@ -255,7 +255,7 @@ nodelist {
 }
 </code></pre>
 
-W ostatniej sekcji **kworum**należy prawidłowo ustawić wartość **expected_votes** . Musi to być liczba węzłów, w tym węzeł producent większości. A wartość parametru **two_node** musi być równa **0**. Nie usuwaj wpisu. Ustaw wartość na **0**.
+W ostatniej sekcji **kworum**należy prawidłowo ustawić wartość **expected_votes** . Musi to być liczba węzłów, w tym węzeł producent większości. A wartość **two_node** musi być **równa 0**. Nie usuwaj wpisu. Ustaw wartość na **0**.
 
 <pre><code>
 quorum {
@@ -376,7 +376,7 @@ Z dowolnego węzła można sprawdzić, czy wszystkie węzły są **jasne**. Upew
 sbd -d /dev/sdm list
 </code></pre>
 
-Dane wyjściowe powinny być wyczyszczone dla każdego węzła w klastrze:
+Dane wyjściowe powinny być **wyczyszczone** dla każdego węzła w klastrze:
 
 <pre><code>
 0       hso-hana-vm-s1-0        clear
@@ -457,7 +457,7 @@ Podczas testowania i weryfikacji po ponownym uruchomieniu maszyny wirtualnej urz
 5. Przed nazwą inicjatora upewnij się, że wartość **początkowa usługi** jest ustawiona na **podczas uruchamiania**.
 6. Jeśli tak nie jest, ustaw ją na **podczas uruchamiania** , a nie **ręcznie**.
 7. Następnie Przełącz górną kartę do **połączonych obiektów docelowych**.
-8. Na ekranie **połączone obiekty docelowe** powinna zostać wyświetlona pozycja urządzenia SBD, tak jak w przypadku tego przykładu: **10.0.0.19:3260 IQN. 2006 — 04. dbhso. local: dbhso**.
+8. Na ekranie **połączone obiekty docelowe** powinna zostać wyświetlona pozycja urządzenia SBD, na przykład: **10.0.0.19:3260 IQN. 2006-04. dbhso. local: dbhso**.
 9. Sprawdź, czy wartość **uruchamiania** jest ustawiona na **rozruch**.
 10. Jeśli nie, wybierz **Edytuj** i Zmień.
 11. Zapisz zmiany i Zamknij YaST2.
@@ -656,7 +656,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>Tryb failover lub przejmowanie
 
-Jak opisano w [ważnych uwagach](#important-notes), nie należy używać standardowego bezpiecznego zamykania do testowania pracy w trybie failover klastra ani SAP HANA przejmowania HSR. Zamiast tego zaleca się wyzwolenie awaryjnego jądra, wymuszenie migracji zasobów lub prawdopodobnie zamknięcie wszystkich sieci na poziomie systemu operacyjnego maszyny wirtualnej. Inną metodą jest polecenie **przestanów węzła \<\> programu CRM** . Zapoznaj się z [dokumentem SUSE][sles-12-ha-paper]. 
+Jak opisano w [ważnych uwagach](#important-notes), nie należy używać standardowego bezpiecznego zamykania do testowania pracy w trybie failover klastra ani SAP HANA przejmowania HSR. Zamiast tego zaleca się wyzwolenie awaryjnego jądra, wymuszenie migracji zasobów lub prawdopodobnie zamknięcie wszystkich sieci na poziomie systemu operacyjnego maszyny wirtualnej. Inną metodą jest **\<węzłem crm\>** poleceniem Standby. Zapoznaj się z [dokumentem SUSE][sles-12-ha-paper]. 
 
 Następujące trzy przykładowe polecenia mogą wymusić przełączenie klastra w tryb failover:
 
@@ -682,7 +682,7 @@ Pomaga również sprawdzić stan SAP HANA krajobrazu pochodzący ze skryptu SAP 
 
 Istnieje kilka ponownych prób, aby uniknąć niepotrzebnych przełączeń w tryb failover. Klaster reaguje tylko wtedy, gdy stan zmieni się z **OK**, wartość zwracana **4**, na **błąd**, zwraca wartość **1**. Jest to poprawne, jeśli dane wyjściowe z **SAPHanaSR-showAttr** pokazują maszynę wirtualną z stanem **offline**. Nie ma jeszcze działania, aby przełączać podstawowe i pomocnicze. Żadna aktywność klastra nie zostanie wyzwolona, dopóki SAP HANA nie zwróci błędu.
 
-Można monitorować stan SAP HANA poziom kondycji jako użytkownik  **\<\>Hana SID adm** , wywołując skrypt SAP Python w następujący sposób. Może być konieczne dostosowanie ścieżki:
+Można monitorować stan SAP HANA poziom kondycji jako użytkownik **\<Hana SID\>adm** , WYWOŁUJĄC skrypt SAP Python w następujący sposób. Może być konieczne dostosowanie ścieżki:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -725,7 +725,7 @@ Transition Summary:
 ## <a name="planned-maintenance"></a>Planowana konserwacja 
 
 Istnieją różne przypadki użycia związane z planowaną konserwacją. Jednym z pytań jest to, czy jest to tylko konserwacja infrastruktury, taka jak zmiana na poziomie systemu operacyjnego i Konfiguracja dysku lub uaktualnienie platformy HANA.
-Dodatkowe informacje można znaleźć w dokumentach z usługi SUSE, [][sles-zero-downtime-paper] takich jak w przypadku nieprzerwanego przestoju lub [scenariusza optymalizacji wydajności SAP HANA SR][sles-12-for-sap]. Te dokumenty zawierają również przykłady pokazujące sposób ręcznej migracji elementu podstawowego.
+Dodatkowe informacje można znaleźć w dokumentach z usługi SUSE, takich jak w przypadku nieprzerwanego [przestoju][sles-zero-downtime-paper] lub [scenariusza optymalizacji wydajności SAP HANA SR][sles-12-for-sap]. Te dokumenty zawierają również przykłady pokazujące sposób ręcznej migracji elementu podstawowego.
 
 Wykonano intensywne testowanie wewnętrzne, aby zweryfikować przypadek użycia konserwacji infrastruktury. Aby uniknąć problemów związanych z migracją podstawowego, należy zawsze migrować podstawową przed przełączeniem klastra w tryb konserwacji. W ten sposób nie jest konieczne, aby klaster zapominał o poprzedniej sytuacji: która była stroną podstawową i która była pomocnicza.
 
@@ -762,13 +762,13 @@ INFO: Move constraint created for msl_SAPHanaCon_HSO_HDB00
 </code></pre>
 
 
-Sprawdź proces trybu failover za pomocą polecenia **SAPHanaSR-showAttr**. Aby monitorować stan klastra, Otwórz dedykowane okno powłoki i uruchom polecenie z zegarkiem:
+Sprawdź proces trybu failover za pomocą polecenia **SAPHanaSR-showAttr**. Aby monitorować stan klastra, Otwórz dedykowane okno powłoki i uruchom polecenie z **zegarkiem**:
 
 <pre><code>
 watch SAPHanaSR-showAttr
 </code></pre>
 
-Dane wyjściowe powinny zawierać ręczną pracę awaryjną. Dawny pomocniczy węzeł głównyzostał podwyższony, w tym przykładzie **HSO-Hana-VM-S2-0**. Dawna lokacja główna została zatrzymana, **LSS** wartość **1** dla dawnego głównego węzła głównego **HSO-Hana-VM-S1-0**: 
+Dane wyjściowe powinny zawierać ręczną pracę awaryjną. Dawny pomocniczy węzeł główny został **podwyższony**, w tym przykładzie **HSO-Hana-VM-S2-0**. Dawna lokacja główna została zatrzymana, **LSS** wartość **1** dla dawnego głównego węzła głównego **HSO-Hana-VM-S1-0**: 
 
 <pre><code>
 Global cib-time                 prim  sec srHook sync_state
@@ -807,7 +807,7 @@ W ramach konfiguracji klastra znajdziesz nowe ograniczenie lokalizacji spowodowa
 location cli-ban-msl_SAPHanaCon_HSO_HDB00-on-hso-hana-vm-s1-0 msl_SAPHanaCon_HSO_HDB00 role=Started -inf: hso-hana-vm-s1-0
 </code></pre>
 
-Niestety takie ograniczenia mogą mieć wpływ na ogólne zachowanie klastra. Dlatego należy je usunąć ponownie przed przełączeniem całego systemu. Za pomocą polecenia odmigrowania można wyczyścić ograniczenia lokalizacji, które zostały utworzone wcześniej. Nazewnictwo może być nieco trudne. Nie próbuje on migrować zasobu z powrotem do oryginalnej maszyny wirtualnej, z której została zmigrowana. Po prostu usuwa ograniczenia lokalizacji, a także zwraca odpowiednie informacje podczas uruchamiania polecenia:
+Niestety takie ograniczenia mogą mieć wpływ na ogólne zachowanie klastra. Dlatego należy je usunąć ponownie przed przełączeniem całego systemu. Za pomocą polecenia **odmigrowania** można wyczyścić ograniczenia lokalizacji, które zostały utworzone wcześniej. Nazewnictwo może być nieco trudne. Nie próbuje on migrować zasobu z powrotem do oryginalnej maszyny wirtualnej, z której została zmigrowana. Po prostu usuwa ograniczenia lokalizacji, a także zwraca odpowiednie informacje podczas uruchamiania polecenia:
 
 
 <pre><code>
@@ -820,7 +820,7 @@ Po zakończeniu konserwacji należy zatrzymać tryb konserwacji klastra, jak pok
 
 
 
-## <a name="hb_report-to-collect-log-files"></a>hb_report do zbierania plików dziennika
+## <a name="hb_report-to-collect-log-files"></a>hb_report zbierać pliki dziennika
 
 Aby analizować problemy z klastrem Pacemaker, jest to przydatne i wymagane przez pomoc techniczną SUSE do uruchomienia narzędzia **hb_report** . Gromadzi wszystkie ważne pliki dziennika, które należy analizować, co się stało. To wywołanie przykładowe używa czasu rozpoczęcia i zakończenia w przypadku wystąpienia konkretnego zdarzenia. Zobacz też [Ważne uwagi](#important-notes):
 
@@ -945,7 +945,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Hawk
 
 Rozwiązanie klastrowe udostępnia interfejs przeglądarki, który oferuje graficznego interfejsu użytkownika dla użytkowników, którzy preferują menu i grafikę, aby wszystkie polecenia były dostępne na poziomie powłoki.
-Aby użyć interfejsu przeglądarki, Zastąp  **\<węzeł\> węzłem** o rzeczywistej SAP HANA w następującym adresie URL. Następnie wprowadź poświadczenia klastra ( **klaster**użytkownika):
+Aby użyć interfejsu przeglądarki, Zastąp **\<węzeł\>** z rzeczywistym węzłem SAP HANA w poniższym adresie URL. Następnie wprowadź poświadczenia klastra ( **klaster**użytkownika):
 
 <pre><code>
 https://&ltnode&gt:7630
@@ -963,13 +963,13 @@ Ten przykład pokazuje ograniczenia lokalizacji spowodowane przez migrację zaso
 ![Ograniczenia listy Hawk](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-Możesz również przekazać dane wyjściowe **hb_report** w Hawk w ramach **historii**, jak pokazano poniżej. Zobacz hb_report, aby zbierać pliki dziennika: 
+Możesz również przekazać dane wyjściowe **hb_report** w Hawk w obszarze **historia**, jak pokazano poniżej. Zobacz hb_report, aby zbierać pliki dziennika: 
 
-![Hawk Przekaż dane wyjściowe hb_report](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
+![Hawk hb_report przekazywanie danych wyjściowych](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 
-Za pomocą **Eksploratora historii**można następnie przejść przez wszystkie przejścia klastra zawarte w danych wyjściowych **hb_report** :
+Za pomocą **Eksploratora historii**można następnie przejść przez wszystkie przejścia klastra zawarte w **hb_report** danych wyjściowych:
 
-![Hawk przejścia w danych wyjściowych hb_report](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
+![Hawk przejścia hb_report w danych wyjściowych](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
 
 Ten końcowy zrzut ekranu przedstawia sekcję **szczegółów** pojedynczego przejścia. Klaster zareaguje na awarię podstawowego węzła głównego, węzeł **HSO-Hana-VM-S1-0**. Teraz można promować węzeł pomocniczy jako nowy wzorzec **HSO-Hana-VM-S2-0**:
 

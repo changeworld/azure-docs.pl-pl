@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa25a1b1d24c034a92a94ac9378bc4bff3947348
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 19afaf743cc594ab17776b990687a442c339ed92
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639925"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559015"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role administratorów według zadania administratora w Azure Active Directory
 
@@ -59,7 +59,7 @@ Odczytaj dzienniki inspekcji B2C | Czytnik globalny ([Zobacz dokumentację](http
 > [!NOTE]
 > Azure AD B2C czytelnicy globalni nie mają tych samych uprawnień co Administratorzy globalni usługi Azure AD. Jeśli masz Azure AD B2C uprawnienia administratora globalnego, upewnij się, że jesteś w katalogu Azure AD B2C, a nie w katalogu usługi Azure AD.
 
-## <a name="company-branding"></a>Oznaczenie marką firmy
+## <a name="company-branding"></a>Znakowanie firmowe
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -72,7 +72,7 @@ Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Konfigurowanie właściwości firmy | Administrator globalny | 
 
-## <a name="connect"></a>Łączenie
+## <a name="connect"></a>Połączenie
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -104,7 +104,7 @@ Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 Zarządzanie domenami | Administrator globalny | 
 Odczytaj całą konfigurację | Czytelnicy katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 
-## <a name="domain-services"></a>Usługi domenowe
+## <a name="domain-services"></a>Domain Services
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -126,12 +126,12 @@ Odczytaj klucze funkcji BitLocker | Czytelnik zabezpieczeń | Administrator hase
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Wyrażanie zgody na uprawnienia delegowane | Administrator aplikacji w chmurze | Administrator aplikacji
-Wyrażanie zgody na uprawnienia aplikacji, które nie obejmują Microsoft Graph lub grafu usługi Azure AD | Administrator aplikacji w chmurze | Administrator aplikacji
-Wyrażanie zgody na uprawnienia aplikacji do Microsoft Graph lub grafu usługi Azure AD | Administrator globalny | 
+Wyrażanie zgody na uprawnienia aplikacji, w tym Microsoft Graph | Administrator aplikacji w chmurze | Administrator aplikacji
+Wyrażanie zgody na uprawnienia aplikacji do Microsoft Graph | Administrator globalny | 
 Wyrażanie zgody na aplikacje uzyskujące dostęp do danych | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Tworzenie aplikacji dla przedsiębiorstw | Administrator aplikacji w chmurze | Administrator aplikacji
 Zarządzanie serwerem proxy aplikacji | Administrator aplikacji | 
-Zarządzaj ustawieniami użytkownika | Administrator globalny | 
+Zarządzanie ustawieniami użytkownika | Administrator globalny | 
 Przegląd dostępu do odczytu grupy lub aplikacji | Czytelnik zabezpieczeń | Administrator zabezpieczeń, administrator użytkowników
 Odczytaj całą konfigurację | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Aktualizowanie przypisań aplikacji dla przedsiębiorstw | Właściciel aplikacji przedsiębiorstwa ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
@@ -153,7 +153,7 @@ Dodawanie witryn usługi SharePoint Online do wykazu | Administrator globalny
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Przypisywanie licencji | Administrator użytkowników | 
-Tworzenie grupy: | Administrator użytkowników | 
+Utwórz grupę | Administrator użytkowników | 
 Tworzenie, aktualizowanie i usuwanie przeglądu dostępu do grupy lub aplikacji | Administrator użytkowników | 
 Zarządzanie wygaśnięciem grupy | Administrator użytkowników | 
 Zarządzenie ustawieniami grup | Administrator globalny | 
@@ -165,7 +165,7 @@ Aktualizowanie członkostwa w grupie | Właściciel grupy ([Zobacz dokumentację
 Aktualizowanie właścicieli grup | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
 Aktualizuj właściwości grupy | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
 
-## <a name="identity-protection"></a>Ochrona tożsamości
+## <a name="identity-protection"></a>Identity Protection
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -211,13 +211,13 @@ Wyłącz usługę MFA | Administrator globalny |
 Włączanie usługi MFA | Administrator globalny | 
 Zarządzanie ustawieniami usługi MFA | Administrator globalny | 
 Wymagaj od wybranych użytkowników ponownego podania metod kontaktu | Administrator uwierzytelniania | 
-Przywróć uwierzytelnianie wieloskładnikowe na wszystkich zapamiętanych urządzeniach  | Administrator uwierzytelniania | 
+Przywracanie uwierzytelniania wieloskładnikowego na wszystkich zapamiętanych urządzeniach  | Administrator uwierzytelniania | 
 
 ## <a name="mfa-server"></a>Serwer MFA
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Zablokuj/odblokuj użytkowników | Administrator globalny | 
+Blokuj/Odblokuj użytkowników | Administrator globalny | 
 Konfigurowanie blokady konta | Administrator globalny | 
 Konfigurowanie reguł buforowania | Administrator globalny | 
 Konfigurowanie alertu oszustwa | Administrator globalny
@@ -230,7 +230,7 @@ Odczytaj raport działania | Czytnik globalny |
 Odczytaj całą konfigurację | Czytnik globalny | 
 Odczytaj stan serwera | Czytnik globalny |  
 
-## <a name="organizational-relationships"></a>Relacje w organizacji
+## <a name="organizational-relationships"></a>Relacje organizacyjne
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -251,7 +251,7 @@ Konfigurowanie właściwości resetowania hasła | Administrator użytkowników 
 Konfigurowanie rejestracji | Administrator globalny |
 Odczytaj całą konfigurację | Administrator zabezpieczeń | Administrator użytkowników |
 
-## <a name="privileged-identity-management"></a>Privileged Identity Management
+## <a name="privileged-identity-management"></a>Zarządzanie tożsamościami uprzywilejowanymi
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -260,7 +260,7 @@ Konfigurowanie ustawień roli | Administrator ról uprzywilejowanych |
 Wyświetl działanie inspekcji | Czytelnik zabezpieczeń | 
 Wyświetlanie członkostw ról | Czytelnik zabezpieczeń | 
 
-## <a name="roles-and-administrators"></a>Role i administratorzy
+## <a name="roles-and-administrators"></a>Role i Administratorzy
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------

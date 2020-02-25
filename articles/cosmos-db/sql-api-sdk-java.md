@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 03/13/2019
+ms.date: 02/21/2020
 ms.author: sngun
-ms.openlocfilehash: 3a7eaabedd6736c107625204f982a530f2bab73d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718177"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558932"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Usługa Azure Cosmos DB Java SDK dla interfejsu API SQL: informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -42,6 +42,10 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 |**Minimalne obsługiwane środowisko uruchomieniowe**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Informacje o wersji
+
+### <a name="a-name247247"></a><a name="2.4.7"/>2.4.7
+* Rozwiązuje problem z limitem czasu puli połączeń.
+* Naprawia odświeżanie tokenu uwierzytelniania podczas wewnętrznych ponownych prób.
 
 ### <a name="a-name246246"></a><a name="2.4.6"/>2.4.6
 * Zaktualizowano prawidłowy tag zasad repliki po stronie klienta na databaseAccount i databaseAccounte odczyty konfiguracji z pamięci podręcznej.
@@ -259,8 +263,19 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
-| [2.1.3](#2.1.3) |Mar 13, 2018 |--- |
-| [2.1.2](#2.1.2) |Mar 09, 2018 |--- |
+| [2.4.7](#2.4.7) |20 lutego 2020 |--- |
+| [2.4.6](#2.4.6) |24 stycznia 2020 |--- |
+| [2.4.5](#2.4.5) |Lis 10, 2019 |--- |
+| [2.4.4](#2.4.4) |24 października 2019 |--- |
+| [2.4.2](#2.4.2) |26 SEP, 2019 |--- |
+| [2.4.1](#2.4.1) |18 lipca 2019 |--- |
+| [2.4.0](#2.4.0) |04, 2019 |--- |
+| [2.3.0](#2.3.0) |24 kwietnia 2019 |--- |
+| [Regulamin](#2.2.3) |16 kwietnia 2019 |--- |
+| [ppkt](#2.2.2) |Kwi 05, 2019 |--- |
+| [2.2.0](#2.2.0) |Mar 27, 2019 |--- |
+| [2.1.3](#2.1.3) |Mar 13, 2019 |--- |
+| [2.1.2](#2.1.2) |Mar 09, 2019 |--- |
 | [pkt](#2.1.1) |13 grudnia 2018 |--- |
 | [2.1.0](#2.1.0) |20 listopada 2018 |--- |
 | [2.0.0](#2.0.0) |21 września 2018 r. |--- |

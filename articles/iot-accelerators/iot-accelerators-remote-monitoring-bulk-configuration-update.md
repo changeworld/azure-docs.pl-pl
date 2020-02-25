@@ -1,19 +1,19 @@
 ---
 title: Zarządzanie urządzeniami podłączonymi do rozwiązania do zdalnego monitorowania w trybie zbiorczym — Azure | Microsoft Docs
 description: W tym samouczku dowiesz się, jak zarządzać urządzeniami podłączonymi do rozwiązania do monitorowania zdalnego w trybie zbiorczym.
-author: aditidugar
+author: Philmea
 manager: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: adugar
-ms.openlocfilehash: 8ba2d4eca3287efc746c0d4902b6bcc4bd0c796e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.author: philmea
+ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980544"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565582"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Samouczek: zarządzanie połączonymi urządzeniami w trybie zbiorczym
 
@@ -21,7 +21,7 @@ W tym samouczku użyjesz akceleratora rozwiązania do monitorowania zdalnego, ab
 
 Jako operator w firmie Contoso musisz skonfigurować grupę urządzeń przy użyciu nowej wersji oprogramowania układowego. Wolisz uniknąć konieczności aktualizowania oprogramowania układowego na każdym urządzeniu osobno. Aby zaktualizować oprogramowanie układowe w grupie urządzeń, możesz skorzystać z grup urządzeń i funkcji automatycznego zarządzania urządzeniami w akceleratorze rozwiązania do monitorowania zdalnego. Każde urządzenia dodawane do grupy urządzeń otrzyma najnowsze oprogramowanie układowe, gdy tylko będzie online.
 
-W tym samouczku zostały wykonane następujące czynności:
+W tym samouczku zostaną wykonane następujące czynności:
 
 >[!div class="checklist"]
 > * Tworzenie grupy urządzeń
@@ -228,7 +228,7 @@ W tej sekcji utworzysz i wykonasz wdrożenie, które zastosuje konfigurację urz
 
     |Opcja|Wartość|
     |---|---|
-    |Nazwa|Wdrażanie aktualizacji oprogramowania układowego|
+    |Name (Nazwa)|Wdrażanie aktualizacji oprogramowania układowego|
     |Typ pakietu|Konfiguracja urządzenia|
     |Typ konfiguracji|Oprogramowanie układowe|
     |Pakiet|firmware-update.json|

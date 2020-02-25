@@ -8,25 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: ba9484bd5b04e5a79da53a0bb78877153be42a43
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 75a456c4a297b0465c34b8e0af2e87056ad565b3
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805913"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560902"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrowanie z interfejs API tłumaczenia mowy w usłudze Translator do usługi mowy
 
-Ten artykuł służy do migrowania aplikacji z interfejs API tłumaczenia mowy w usłudze Translator firmy Microsoft do [usługi Speech](index.md). Ten przewodnik przedstawia różnice między usługami interfejs API tłumaczenia mowy w usłudze Translator i Speech, a także sugeruje strategie migracji aplikacji.
+Ten artykuł służy do migrowania aplikacji z interfejs API tłumaczenia mowy w usłudze Translator firmy Microsoft do [usługi Speech](index.yml). Ten przewodnik przedstawia różnice między usługami interfejs API tłumaczenia mowy w usłudze Translator i Speech, a także sugeruje strategie migracji aplikacji.
 
 > [!NOTE]
 > Klucz subskrypcji interfejs API tłumaczenia mowy w usłudze Translator nie zostanie zaakceptowany przez usługę mowy. Musisz utworzyć nową subskrypcję usługi mowy.
 
 ## <a name="comparison-of-features"></a>Porównanie funkcji
 
-| Funkcja                                           | Interfejs API mowy usługi Translator                                  | Usługa mowy | Szczegóły                                                                                                                                                                                                                                                                            |
+| Cecha                                           | Interfejs API tłumaczenia mowy w usłudze Translator                                  | Usługa rozpoznawania mowy | Szczegóły                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Tłumaczenie na tekst                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Tłumaczenie na mowę                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -35,7 +35,7 @@ Ten artykuł służy do migrowania aplikacji z interfejs API tłumaczenia mowy w
 | Limit czasu połączenia                             | 90 minut                                               | Bez ograniczeń z zestawem SDK. 10 minut z połączeniem z usługą WebSockets.                                                                                                                                                                                                                                                                                   |
 | Klucz uwierzytelniania w nagłówku                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Wiele języków przetłumaczonych w pojedynczym żądaniu | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Dostępne zestawy SDK                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Zobacz [dokumentację usługi Speech](index.md) dla dostępnych zestawów SDK.                                                                                                                                                    |
+| Dostępne zestawy SDK                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Zobacz [dokumentację usługi Speech](index.yml) dla dostępnych zestawów SDK.                                                                                                                                                    |
 | Połączenia obiektów WebSockets                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Interfejs API języków                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Usługa mowy obsługuje te same Języki, które opisano w artykule [Skorowidz języka interfejsu API usługi Translator](../translator-speech/languages-reference.md) . |
 | Filtr i znacznik niewulgarności                       | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -49,7 +49,7 @@ Ten artykuł służy do migrowania aplikacji z interfejs API tłumaczenia mowy w
 
 ## <a name="migration-strategies"></a>Strategie migracji
 
-Jeśli ty lub Twoja organizacja ma aplikacje w programowaniu lub środowisku produkcyjnym, które używają interfejs API tłumaczenia mowy w usłudze Translator, należy je zaktualizować do korzystania z usługi Speech. Zobacz dokumentację [usługi Speech](index.md) dla dostępnych zestawów SDK, przykłady kodu i samouczki. Podczas migrowania należy wziąć pod uwagę następujące kwestie:
+Jeśli ty lub Twoja organizacja ma aplikacje w programowaniu lub środowisku produkcyjnym, które używają interfejs API tłumaczenia mowy w usłudze Translator, należy je zaktualizować do korzystania z usługi Speech. Zobacz dokumentację [usługi Speech](index.yml) dla dostępnych zestawów SDK, przykłady kodu i samouczki. Podczas migrowania należy wziąć pod uwagę następujące kwestie:
 
 * Usługa mowy nie oferuje globalnego punktu końcowego. Ustal, czy aplikacja działa wydajniej, gdy używa jednego regionu punktu końcowego dla całego ruchu. W przeciwnym razie użyj geolokalizacji, aby określić najbardziej wydajny punkt końcowy.
 
@@ -64,7 +64,7 @@ Jeśli ty lub Twoja organizacja ma aplikacje w programowaniu lub środowisku pro
 * [Wypróbuj bezpłatnie usługę mowy](get-started.md)
 * [Szybki Start: Rozpoznawanie mowy w aplikacji platformy UWP przy użyciu zestawu Speech SDK](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Co to jest usługa mowy](overview.md)
 * [Dokumentacja usługi mowy i zestawu Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)

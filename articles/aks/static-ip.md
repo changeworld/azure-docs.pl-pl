@@ -1,5 +1,5 @@
 ---
-title: Używanie statycznego adresu IP w usłudze Azure Kubernetes Service (AKS)
+title: Używanie statycznego adresu IP i etykiety DNS w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak utworzyć statyczny adres IP i używać go w usłudze równoważenia obciążenia usługi Azure Kubernetes Service (AKS).
 services: container-service
 author: mlearned
@@ -7,14 +7,14 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 8457f1c0c5b6107c4b44f6f00236a33f7c67452a
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 5e1f88e82d994c7f912b21781271448d35b5d726
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325440"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558909"
 ---
-# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Używanie statycznego publicznego adresu IP z usługą równoważenia obciążenia usługi Azure Kubernetes Service (AKS)
+# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Używanie statycznego publicznego adresu IP i etykiety DNS w usłudze Azure Kubernetes Service (AKS)
 
 Domyślnie publiczny adres IP przypisany do zasobu modułu równoważenia obciążenia utworzonego przez klaster AKS jest prawidłowy tylko dla cykl życia tego zasobu. Usunięcie usługi Kubernetes spowoduje również usunięcie powiązanego modułu równoważenia obciążenia i adresu IP. Jeśli chcesz przypisać określony adres IP lub zachować adres IP dla ponownie wdrożonych usług Kubernetes, możesz utworzyć statyczny publiczny adres IP i używać go.
 
@@ -98,6 +98,30 @@ Utwórz usługę i wdrożenie za pomocą polecenia `kubectl apply`.
 kubectl apply -f load-balancer-service.yaml
 ```
 
+## <a name="apply-a-dns-label-to-the-service"></a>Stosowanie etykiety DNS do usługi
+
+Jeśli w usłudze jest używany dynamiczny lub statyczny publiczny adres IP, można użyć `service.beta.kubernetes.io/azure-dns-label-name` adnotacji usługi, aby ustawić publiczną etykietę DNS. Spowoduje to opublikowanie w pełni kwalifikowanej nazwy domeny dla usługi przy użyciu publicznych serwerów DNS i domen najwyższego poziomu platformy Azure. Wartość adnotacji musi być unikatowa w obrębie lokalizacji platformy Azure, więc zaleca się użycie wystarczająco kwalifikowanej etykiety.   
+
+Na platformie Azure zostanie automatycznie dołączona domyślna podsieć, taka jak `<location>.cloudapp.azure.com` (gdzie lokalizacja jest wybranym regionem), do podania nazwy, aby utworzyć w pełni kwalifikowaną nazwę DNS. Na przykład:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: myserviceuniquelabel
+  name: azure-load-balancer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-load-balancer
+```
+
+> [!NOTE] 
+> Aby opublikować usługę we własnej domenie, zobacz [Azure DNS][azure-dns-zone] i projekt [zewnętrzny DNS][external-dns] .
+
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
 Jeśli statyczny adres IP zdefiniowany we właściwości *loadBalancerIP* manifestu usługi Kubernetes nie istnieje lub nie został utworzony w grupie zasobów węzła i nie skonfigurowano żadnych dodatkowych delegowania, tworzenie usługi równoważenia obciążenia zakończy się niepowodzeniem. Aby rozwiązać problem, Przejrzyj zdarzenia tworzenia usługi za pomocą polecenia [polecenia kubectl opisywanie][kubectl-describe] . Podaj nazwę usługi określoną w manifeście YAML, jak pokazano w następującym przykładzie:
@@ -136,6 +160,8 @@ W celu zapewnienia dodatkowej kontroli nad ruchem sieciowym w aplikacjach można
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[azure-dns-zone]: https://azure.microsoft.com/services/dns/
+[external-dns]: https://github.com/kubernetes-sigs/external-dns
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

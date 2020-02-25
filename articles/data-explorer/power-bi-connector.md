@@ -1,5 +1,5 @@
 ---
-title: Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla Power BI
+title: Wizualizuj dane za pomocą łącznika usługi Azure Eksplorator danych dla Power BI
 description: 'W tym artykule dowiesz się, jak użyć jednej z trzech opcji wizualizacji danych w Power BI: Łącznik Power BI dla platformy Azure Eksplorator danych.'
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a95d45481bed17e46429e3a22dff4b8cc62354a9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024210"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560494"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla Power BI
 
@@ -45,7 +45,7 @@ Najpierw nawiąż połączenie z klastrem pomocy usługi Azure Data Explorer, a 
     **Ustawienie** | **Wartość** | **Opis pola**
     |---|---|---|
     | Klaster | *https://help.kusto.windows.net* | Adres URL klastra pomocy. W przypadku innych klastrów adres URL ma postać *https://\<Nazwa_klastra\>.\<Region\>.kusto.windows.net*. |
-    | Database (Baza danych) | Pozostaw puste | Baza danych hostowana w klastrze, z którą nawiązujesz połączenie. Wybierzemy ją w późniejszym kroku. |
+    | Baza danych | Pozostaw puste | Baza danych hostowana w klastrze, z którą nawiązujesz połączenie. Wybierzemy ją w późniejszym kroku. |
     | Nazwa tabeli | Pozostaw puste | Jedna z tabel w bazie danych lub zapytanie, takie jak <code>StormEvents \| take 1000</code>. Wybierzemy ją w późniejszym kroku. |
     | Opcje zaawansowane | Pozostaw puste | Opcje zapytań, na przykład rozmiar zestawu wyników. |
     | Tryb łączności danych | Tryb *DirectQuery* | Określa, czy usługa Power BI importuje dane, czy łączy się bezpośrednio ze źródłem danych. Korzystając z tego łącznika, możesz wybrać dowolną z tych opcji. |

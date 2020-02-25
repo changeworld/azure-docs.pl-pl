@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 9858f7ac25f2063e62dce0322f1859a0a7fcf83b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 63b1adc7b25b732cda147c5c1d11cc37e7b39248
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198670"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562024"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role dla zasobów platformy Azure
 
@@ -115,6 +115,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | [Log Analytics czytelnik](#log-analytics-reader) | Log Analytics Reader może wyświetlać i przeszukiwać wszystkie dane monitorowania, a także wyświetlać ustawienia monitorowania, w tym Wyświetlanie konfiguracji diagnostyki platformy Azure na wszystkich zasobach platformy Azure. | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | [Współautor aplikacji logiki](#logic-app-contributor) | Umożliwia zarządzanie aplikacjami logiki, ale nie umożliwia zmiany dostępu do nich. | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | [Operator aplikacji logiki](#logic-app-operator) | Umożliwia odczytywanie, Włączanie i wyłączanie aplikacji logiki, ale nie ich edytowanie ani aktualizowanie. | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
+> | [Rola współautora aplikacji zarządzanej](#managed-application-contributor-role) | Umożliwia tworzenie zasobów aplikacji zarządzanej. | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [Rola operatora aplikacji zarządzanej](#managed-application-operator-role) | Umożliwia odczytywanie i wykonywanie akcji dotyczących zasobów aplikacji zarządzanej | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [Czytnik aplikacji zarządzanych](#managed-applications-reader) | Umożliwia odczytanie zasobów w zarządzanej aplikacji i zażądanie dostępu JIT. | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
 > | [Współautor tożsamości zarządzanej](#managed-identity-contributor) | Tworzenie, odczytywanie, aktualizowanie i usuwanie tożsamości przypisanej przez użytkownika | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
@@ -133,9 +134,10 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | [Współautor zasad zasobów](#resource-policy-contributor) | Użytkownicy z prawami do tworzenia/modyfikowania zasad dotyczących zasobów, tworzenia biletów pomocy technicznej i odczytywania zasobów/hierarchii. | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [Współautor kolekcji zadań usługi Scheduler](#scheduler-job-collections-contributor) | Umożliwia zarządzanie kolekcjami zadań harmonogramu, ale nie umożliwia uzyskiwania do nich dostępu. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | [Współautor Search Service](#search-service-contributor) | Umożliwia zarządzanie usługami wyszukiwania, ale nie umożliwia uzyskiwania do nich dostępu. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
-> | [Administrator zabezpieczeń](#security-admin) | Tylko w Security Center: mogą wyświetlać zasady zabezpieczeń, wyświetlać Stany zabezpieczeń, edytować zasady zabezpieczeń, wyświetlać alerty i zalecenia, odrzucać alerty i zalecenia | fb1c8493-542b-48eb-b624-b4c8fea62acd |
-> | [Security Manager (starsza wersja)](#security-manager-legacy) | Jest to Starsza rola. Zamiast tego użyj administratora zabezpieczeń | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [Czytelnik zabezpieczeń](#security-reader) | Tylko w Security Center: mogą wyświetlać rekomendacje i alerty, wyświetlać zasady zabezpieczeń, wyświetlać Stany zabezpieczeń, ale nie mogą wprowadzać zmian | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [Administrator zabezpieczeń](#security-admin) | Może wyświetlać zasady zabezpieczeń, wyświetlać Stany zabezpieczeń, edytować zasady zabezpieczeń, wyświetlać alerty i zalecenia, odrzucać alerty i zalecenia. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [Współautor oceny zabezpieczeń](#security-assessment-contributor) | Umożliwia wypychanie ocen do Security Center | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
+> | [Security Manager (starsza wersja)](#security-manager-legacy) | Jest to Starsza rola. Zamiast tego należy użyć administratora zabezpieczeń. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
+> | [Czytelnik zabezpieczeń](#security-reader) | Można wyświetlać zalecenia i alerty, wyświetlać zasady zabezpieczeń, wyświetlać Stany zabezpieczeń, ale nie mogą wprowadzać zmian. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | [Współautor Site Recovery](#site-recovery-contributor) | Umożliwia zarządzanie usługą Site Recovery z wyjątkiem tworzenia magazynu i przypisywania ról | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
 > | [Operator Site Recovery](#site-recovery-operator) | Umożliwia przełączenie w tryb failover i powrót po awarii, ale nie wykonywanie innych operacji zarządzania Site Recovery | 494ae006-db33-4328-bf46-533a6560a3ca |
 > | [Site Recovery czytelnik](#site-recovery-reader) | Umożliwia wyświetlanie stanu Site Recovery, ale nie wykonywanie innych operacji zarządzania | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
@@ -167,6 +169,8 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | [Logowanie użytkownika maszyny wirtualnej](#virtual-machine-user-login) | Wyświetl Virtual Machines w portalu i zaloguj się jako zwykły użytkownik. | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | [Współautor planu sieci Web](#web-plan-contributor) | Umożliwia zarządzanie planami sieci Web dla witryn internetowych, ale nie umożliwia uzyskiwania do nich dostępu. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Współautor witryny sieci Web](#website-contributor) | Umożliwia zarządzanie witrynami sieci Web (nie planami internetowymi), ale nie umożliwia uzyskiwania do nich dostępu. | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | [Współautor skoroszytu](#workbook-contributor) | Może zapisywać udostępnione skoroszyty. | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | [Czytelnik skoroszytu](#workbook-reader) | Może odczytywać skoroszyty. | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 
 
 ## <a name="owner"></a>Właściciel
@@ -346,7 +350,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft.ApiManagement/service/restore/action | Przywracanie usługi API Management z określonego kontenera na koncie magazynu podanego przez użytkownika |
 > | Microsoft.ApiManagement/service/updatecertificate/action | Przekaż certyfikat SSL dla usługi API Management |
 > | Microsoft.ApiManagement/service/updatehostname/action | Instalowanie, aktualizowanie lub usuwanie niestandardowych nazw domen dla usługi API Management |
-> | Microsoft.ApiManagement/service/write | Utwórz nowe wystąpienie usługi API Management Service |
+> | Microsoft.ApiManagement/service/write | Utwórz lub zaktualizuj wystąpienie usługi API Management |
 > | Microsoft.Authorization/*/read | Autoryzacja odczytu |
 > | Microsoft.Insights/alertRules/* | Tworzenie reguł alertów i zarządzanie nimi |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stan dostępności dla wszystkich zasobów w określonym zakresie |
@@ -609,7 +613,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **Identyfikator** | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
 > | **Akcje** |  |
 > | Microsoft. HybridCompute/Machines/Read | Odczytaj wszystkie maszyny usługi Azure Arc |
-> | Microsoft. HybridCompute/Machines/Write | Napisz maszyny usługi Azure Arc |
+> | Microsoft. HybridCompute/Machines/Write | Zapisuje maszyny usługi Azure Arc |
 > | Microsoft.GuestConfiguration/guestConfigurationAssignments/read | Pobierz przypisanie konfiguracji gościa. |
 > | **Nonaruszone** |  |
 > | *dawaj* |  |
@@ -626,9 +630,9 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **Identyfikator** | cd570a14-e51a-42ad-bac8-bafd67325302 |
 > | **Akcje** |  |
 > | Microsoft. HybridCompute/Machines/Read | Odczytaj wszystkie maszyny usługi Azure Arc |
-> | Microsoft. HybridCompute/Machines/Write | Napisz maszyny usługi Azure Arc |
-> | Microsoft. HybridCompute/Machines/Delete | Usuwanie maszyn usługi Azure Arc |
-> | Microsoft. HybridCompute/Machines/reconnect/Action | Połącz ponownie maszyny usługi Azure Arc |
+> | Microsoft. HybridCompute/Machines/Write | Zapisuje maszyny usługi Azure Arc |
+> | Microsoft. HybridCompute/Machines/Delete | Usuwa maszyny usługi Azure Arc |
+> | Microsoft. HybridCompute/Machines/reconnect/Action | Ponownie nawiązuje połączenie z maszynami usługi Azure Arc |
 > | Microsoft. HybridCompute/*/Read |  |
 > | **Nonaruszone** |  |
 > | *dawaj* |  |
@@ -690,6 +694,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **Identyfikator** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **Akcje** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Wyświetlanie clusterAdmin poświadczenia zarządzanego klastra |
+> | Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action | Uzyskiwanie zarządzanego profilu dostępu do klastra według nazwy roli przy użyciu poświadczeń listy |
 > | **Nonaruszone** |  |
 > | *dawaj* |  |
 > | **Akcje dataactions** |  |
@@ -1540,6 +1545,8 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft. DATAbox/Jobs/listsecrets/akcja |  |
 > | Microsoft.Databox/jobs/listcredentials/action | Wyświetla listę nieszyfrowanych poświadczeń związanych z kolejnością. |
 > | Microsoft. DATAbox/Locations/availableSkus/Action | Ta metoda zwraca listę dostępnych jednostek SKU. |
+> | Microsoft. DATAbox/Locations/validateInputs/Action | Ta metoda wykonuje wszystkie typy walidacji. |
+> | Microsoft. DATAbox/Locations/regionConfiguration/Action | Ta metoda zwraca konfiguracje dla regionu. |
 > | Microsoft.Databox/locations/validateAddress/action | Sprawdza poprawność adresu wysyłkowego i udostępnia alternatywne adresy, jeśli istnieją. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stan dostępności dla wszystkich zasobów w określonym zakresie |
 > | Microsoft.Support/* | Tworzenie biletów pomocy technicznej i zarządzanie nimi |
@@ -1565,6 +1572,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft. resources/Deployments/* | Tworzenie wdrożeń grup zasobów i zarządzanie nimi |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera lub wyświetla listę grup zasobów. |
 > | Microsoft.Support/* | Tworzenie biletów pomocy technicznej i zarządzanie nimi |
+> | Microsoft.EventGrid/eventSubscriptions/write | Utwórz lub zaktualizuj eventSubscription |
 > | **Nonaruszone** |  |
 > | *dawaj* |  |
 > | **Akcje dataactions** |  |
@@ -1851,6 +1859,8 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft.LabServices/labAccounts/createLab/action | Utwórz laboratorium na koncie laboratorium. |
 > | Microsoft. LabServices/labAccounts/Sizes/getRegionalAvailability/Action |  |
 > | Microsoft. LabServices/labAccounts/getRegionalAvailability/akcja | Uzyskaj informacje o dostępności regionalnej dla każdej kategorii rozmiaru skonfigurowanej w ramach konta laboratorium |
+> | Microsoft. LabServices/labAccounts/getPricingAndAvailability/akcja | Skorzystaj z cen i dostępności kombinacji rozmiarów, lokalizacje geograficzne i systemów operacyjnych dla konta laboratorium. |
+> | Microsoft. LabServices/labAccounts/getRestrictionsAndUsage/akcja | Pobierz podstawowe ograniczenia i użycie dla tej subskrypcji |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera lub wyświetla listę grup zasobów. |
 > | Microsoft.Support/* | Tworzenie biletów pomocy technicznej i zarządzanie nimi |
 > | **Nonaruszone** |  |
@@ -1964,6 +1974,25 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft.Web/connections/*/read | Odczyt połączeń. |
 > | Microsoft.Web/customApis/*/read | Odczytaj niestandardowy interfejs API. |
 > | Microsoft.Web/serverFarms/read | Pobierz właściwości planu App Service |
+> | **Nonaruszone** |  |
+> | *dawaj* |  |
+> | **Akcje dataactions** |  |
+> | *dawaj* |  |
+> | **NotDataActions** |  |
+> | *dawaj* |  |
+
+## <a name="managed-application-contributor-role"></a>Rola współautora aplikacji zarządzanej
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia tworzenie zasobów aplikacji zarządzanej. |
+> | **Identyfikator** | 641177b8-a67a-45b9-a033-47bc880bb21e |
+> | **Akcje** |  |
+> | */read | Odczytuj zasoby wszystkich typów, z wyjątkiem kluczy tajnych. |
+> | Microsoft. Solutions/Applications/* |  |
+> | Microsoft. Solutions/Register/Action | Zarejestruj się w rozwiązaniach. |
+> | Microsoft. resources/subscriptions/resourceGroups/* |  |
+> | Microsoft. resources/Deployments/* | Tworzenie wdrożeń grup zasobów i zarządzanie nimi |
 > | **Nonaruszone** |  |
 > | *dawaj* |  |
 > | **Akcje dataactions** |  |
@@ -2337,7 +2366,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Tylko w Security Center: mogą wyświetlać zasady zabezpieczeń, wyświetlać Stany zabezpieczeń, edytować zasady zabezpieczeń, wyświetlać alerty i zalecenia, odrzucać alerty i zalecenia |
+> | **Opis** | Może wyświetlać zasady zabezpieczeń, wyświetlać Stany zabezpieczeń, edytować zasady zabezpieczeń, wyświetlać alerty i zalecenia, odrzucać alerty i zalecenia. |
 > | **Identyfikator** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Odczytuj role i przypisania ról |
@@ -2358,11 +2387,26 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **NotDataActions** |  |
 > | *dawaj* |  |
 
+## <a name="security-assessment-contributor"></a>Współautor oceny zabezpieczeń
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia wypychanie ocen do Security Center |
+> | **Identyfikator** | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
+> | **Akcje** |  |
+> | Microsoft. Security/Assessments/Write | Utwórz lub zaktualizuj oceny zabezpieczeń w ramach subskrypcji |
+> | **Nonaruszone** |  |
+> | *dawaj* |  |
+> | **Akcje dataactions** |  |
+> | *dawaj* |  |
+> | **NotDataActions** |  |
+> | *dawaj* |  |
+
 ## <a name="security-manager-legacy"></a>Security Manager (starsza wersja)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Jest to Starsza rola. Zamiast tego użyj administratora zabezpieczeń |
+> | **Opis** | Jest to Starsza rola. Zamiast tego należy użyć administratora zabezpieczeń. |
 > | **Identyfikator** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Odczytuj role i przypisania ról |
@@ -2386,7 +2430,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Tylko w Security Center: mogą wyświetlać rekomendacje i alerty, wyświetlać zasady zabezpieczeń, wyświetlać Stany zabezpieczeń, ale nie mogą wprowadzać zmian |
+> | **Opis** | Można wyświetlać zalecenia i alerty, wyświetlać zasady zabezpieczeń, wyświetlać Stany zabezpieczeń, ale nie mogą wprowadzać zmian. |
 > | **Identyfikator** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Odczytuj role i przypisania ról |
@@ -3114,6 +3158,9 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft.Compute/locations/* | Tworzenie lokalizacji obliczeniowych i zarządzanie nimi |
 > | Microsoft.Compute/virtualMachines/* | Tworzenie maszyn wirtualnych i zarządzanie nimi |
 > | Microsoft.Compute/virtualMachineScaleSets/* | Tworzenie zestawów skalowania maszyn wirtualnych i zarządzanie nimi |
+> | Microsoft.Compute/disks/write | Tworzy nowy dysk lub aktualizuje istniejący |
+> | Microsoft.Compute/disks/read | Pobieranie właściwości dysku |
+> | Microsoft. COMPUTE/disks/Delete | Usuwa dysk |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Tworzenie reguł alertów usługi Insights i zarządzanie nimi |
 > | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Sprzęga pulę adresów zaplecza bramy aplikacji. Brak alertów. |
@@ -3214,6 +3261,38 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | Pobierz właściwości planu App Service |
 > | Microsoft.Web/sites/* | Tworzenie witryn sieci Web i zarządzanie nimi (Tworzenie witryn wymaga również uprawnień do zapisu w skojarzonym planie App Service) |
+> | **Nonaruszone** |  |
+> | *dawaj* |  |
+> | **Akcje dataactions** |  |
+> | *dawaj* |  |
+> | **NotDataActions** |  |
+> | *dawaj* |  |
+
+## <a name="workbook-contributor"></a>Współautor skoroszytu
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Może zapisywać udostępnione skoroszyty. |
+> | **Identyfikator** | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | **Akcje** |  |
+> | Microsoft. Insights/skoroszyty/zapis | Utwórz lub zaktualizuj skoroszyt |
+> | Microsoft. Insights/skoroszyty/usuwanie | Usuwanie skoroszytu |
+> | Microsoft. Insights/skoroszyty/przeczytane | Odczytaj skoroszyt |
+> | **Nonaruszone** |  |
+> | *dawaj* |  |
+> | **Akcje dataactions** |  |
+> | *dawaj* |  |
+> | **NotDataActions** |  |
+> | *dawaj* |  |
+
+## <a name="workbook-reader"></a>Czytelnik skoroszytu
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Może odczytywać skoroszyty. |
+> | **Identyfikator** | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
+> | **Akcje** |  |
+> | Microsoft. Insights/skoroszyty/przeczytane | Odczytaj skoroszyt |
 > | **Nonaruszone** |  |
 > | *dawaj* |  |
 > | **Akcje dataactions** |  |

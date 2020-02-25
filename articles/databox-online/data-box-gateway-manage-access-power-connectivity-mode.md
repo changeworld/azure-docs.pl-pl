@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box Gateway dostępu do urządzenia, możliwości i trybu łączności | Microsoft Docs
+title: Azure Data Box Gateway dostęp do urządzenia, Włączanie i tryb łączności
 description: Zawiera opis sposobu zarządzania dostępem, możliwością i trybem łączności dla urządzenia Azure Data Box Gateway, które ułatwia transfer danych do platformy Azure
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 38662fc8dda935d5f000aee6609fd9b2e42de17f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: e2e82c551117f2ae96e026b39c08ccf56e7ce8e2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253176"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561820"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Zarządzanie dostępem, możliwością i trybem łączności dla Azure Data Box Gateway
 
@@ -65,7 +65,7 @@ Podczas generowania klucza aktywacji dla urządzenia Data Box Edge lub wykonywan
 -  Tworzenie udziału ze skojarzonym kontem magazynu.
 -  Tworzenie użytkownika, który może uzyskiwać dostęp do udziałów na urządzeniu.
 
-Musisz mieć `User` dostęp do Active Directory dzierżawy, ponieważ musisz mieć `Read all directory objects`możliwość. Nie możesz być użytkownikiem-gościem, ponieważ nie ma uprawnień `Read all directory objects`do programu. Jeśli jesteś gościem, niektóre operacje, takie jak generowanie klucza aktywacji, tworzenie udziału na urządzeniu Data Box Edge i tworzenie użytkownika, zakończą się niepowodzeniem.
+Musisz mieć `User` dostęp do dzierżawy Active Directory, ponieważ musisz mieć możliwość `Read all directory objects`. Nie możesz być użytkownikiem-gościem, ponieważ nie ma uprawnień do `Read all directory objects`. Jeśli jesteś gościem, niektóre operacje, takie jak generowanie klucza aktywacji, tworzenie udziału na urządzeniu Data Box Edge i tworzenie użytkownika, zakończą się niepowodzeniem.
 
 Aby uzyskać więcej informacji na temat zapewniania dostępu użytkownikom w celu Azure Active Directory interfejs API programu Graph, zobacz [domyślny dostęp dla administratorów, użytkowników i użytkowników-Gości](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 
@@ -79,7 +79,7 @@ Nie musisz przyznawać uprawnień dostępu dla poziomu subskrypcji, aby użytkow
 
 Przed podjęciem próby utworzenia dowolnego zasobu upewnij się, że dostawca zasobów został zarejestrowany w ramach subskrypcji. Jeśli dostawca zasobów nie jest zarejestrowany, należy się upewnić, że użytkownik tworzący nowy zasób ma wystarczającą ilość uprawnień do zarejestrowania wymaganego dostawcy zasobów na poziomie subskrypcji. Jeśli nie zostało to jeszcze zrobione, zobaczysz następujący komunikat o błędzie:
 
-*Nazwa subskrypcji \<subskrypcji > nie ma uprawnień do rejestrowania dostawców zasobów: Microsoft.DataBoxEdge.*
+*Nazwa subskrypcji \<subskrypcji > nie ma uprawnień do rejestrowania dostawców zasobów: Microsoft. DataBoxEdge.*
 
 
 Aby uzyskać listę zarejestrowanych dostawców zasobów w bieżącej subskrypcji, uruchom następujące polecenie:
@@ -88,7 +88,7 @@ Aby uzyskać listę zarejestrowanych dostawców zasobów w bieżącej subskrypcj
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-W przypadku urządzenia `Microsoft.DataBoxEdge` Data Box Edge należy zarejestrować. Aby zarejestrować `Microsoft.DataBoxEdge`się, administrator subskrypcji powinien uruchomić następujące polecenie:
+W przypadku urządzenia Data Box Edge `Microsoft.DataBoxEdge` powinny być zarejestrowane. Aby zarejestrować `Microsoft.DataBoxEdge`, administrator subskrypcji powinien uruchomić następujące polecenie:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

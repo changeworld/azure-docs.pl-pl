@@ -3,19 +3,19 @@ title: 'Samouczek: głosy umożliwiają bot przy użyciu zestawu mowy SDK-Speech
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku utworzysz bot echo przy użyciu programu Microsoft bot-Framework, wdróżesz go na platformie Azure i zarejestrujesz za pomocą kanału mowy z obsługą instrukcji bot-Framework Direct line. Następnie skonfigurujesz przykładową aplikację kliencką dla systemu Windows, która pozwala mówić do bot i słyszy, że reagują na Ciebie.
 services: cognitive-services
-author: dargilco
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.author: dcohen
-ms.openlocfilehash: 0c26f94d0a51b7912d3f964e3cc96ec392fec69b
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/21/2020
+ms.author: dapine
+ms.openlocfilehash: 6b037ced7acb94340214ce401ffee9d940312de8
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495180"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562643"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Samouczek: Voice — Włączanie bot przy użyciu zestawu Speech SDK
 
@@ -61,17 +61,16 @@ Oto co należy zrobić, aby ukończyć ten samouczek:
 - Konto usługi [GitHub](https://github.com/)
 - [Git dla systemu Windows](https://git-scm.com/download/win)
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Aplikacja kliencka utworzona w tym samouczku korzysta z kilku usług platformy Azure. Aby skrócić czas błądzenia odpowiedzi z bot, upewnij się, że te usługi znajdują się w tym samym regionie świadczenia usługi Azure. W tej sekcji utworzysz grupę zasobów w regionie **zachodnie stany USA** . Ta grupa zasobów zostanie użyta podczas tworzenia poszczególnych zasobów dla bot-Framework, bezpośredniego kanału mowy i usługi mowy.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
-1. W obszarze nawigacji po lewej stronie wybierz pozycję **grupy zasobów**. Następnie kliknij przycisk **Dodaj** , aby dodać nową grupę zasobów.
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Tworzenie grupy zasobów<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 1. Zostanie wyświetlony monit o podanie pewnych informacji:
    * Ustaw **subskrypcję** na **bezpłatną wersję próbną** (możesz także użyć istniejącej subskrypcji).
    * Wprowadź nazwę **grupy zasobów**. Zalecamy **SpeechEchoBotTutorial-zasobów**.
    * Z listy rozwijanej **region** wybierz pozycję **zachodnie stany USA**.
-1. Kliknij przycisk **Przeglądaj i Utwórz**. Powinien pojawić się transparent informujący o pomyślnym **sprawdzeniu poprawności**odczytu.
+1. Kliknij pozycję **Przejrzyj i utwórz**. Powinien pojawić się transparent informujący o pomyślnym **sprawdzeniu poprawności**odczytu.
 1. Kliknij przycisk **Utwórz**. Utworzenie grupy zasobów może potrwać kilka minut.
 1. Podobnie jak w przypadku zasobów utworzonych w dalszej części tego samouczka, dobrym pomysłem jest Przypinanie tej grupy zasobów do pulpitu nawigacyjnego w celu ułatwienia dostępu. Jeśli chcesz przypiąć tę grupę zasobów, kliknij ikonę pinezki w prawym górnym rogu pulpitu nawigacyjnego.
 
@@ -87,15 +86,13 @@ Aby uzyskać więcej informacji na temat regionów, zobacz temat [lokalizacje pl
 
 ## <a name="create-resources"></a>Tworzenie zasobów
 
-Teraz, gdy masz grupę zasobów w regionie **zachodnie stany USA** , następnym krokiem jest utworzenie poszczególnych zasobów dla każdej usługi, która będzie używana w tym samouczku.
+Teraz, gdy masz grupę zasobów w obsługiwanym regionie, następnym krokiem jest utworzenie poszczególnych zasobów dla każdej usługi, która będzie używana w tym samouczku.
 
 ### <a name="create-a-speech-service-resource"></a>Tworzenie zasobu usługi mowy
 
 Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć zasób mowy:
 
-1. Przejdź do [Azure Portal](https://portal.azure.com) i wybierz pozycję **Utwórz zasób** z lewego obszaru nawigacji.
-2. Na pasku wyszukiwania wpisz **Speech**.
-3. Wybierz pozycję **Speech**, a następnie kliknij pozycję **Utwórz**.
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Tworzenie zasobu usługi mowy<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. Zostanie wyświetlony monit o podanie pewnych informacji:
    * Nadaj **nazwę**zasobowi. Zalecamy **SpeechEchoBotTutorial-mowę**
    * W przypadku **subskrypcji**upewnij się, że wybrano **bezpłatną wersję próbną** .
@@ -107,17 +104,15 @@ Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć zasób mowy:
 
 W tym momencie Sprawdź, czy grupa zasobów (**SpeechEchoBotTutorial-Resource**Group) zawiera zasób mowy:
 
-| NAME | TYP  | LOKALIZACJA |
+| Name (Nazwa) | Typ  | Lokalizacja |
 |------|-------|----------|
-| SpeechEchoBotTutorial — Speech | Usługi Cognitive Services | Zachodnie stany USA |
+| SpeechEchoBotTutorial — Speech | Cognitive Services | Zachodnie stany USA |
 
 ### <a name="create-an-azure-app-service-plan"></a>Tworzenie planu usługi Azure App Service
 
 Następnym krokiem jest utworzenie planu App Service. Plan usługi App Service definiuje zestaw zasobów obliczeniowych dla aplikacji internetowej używanych podczas jej uruchamiania.
 
-1. Przejdź do [Azure Portal](https://portal.azure.com) i wybierz pozycję **Utwórz zasób** z lewego obszaru nawigacji.
-2. Na pasku wyszukiwania wpisz **App Service plan**. Następnie Znajdź i wybierz kartę **App Service plan** z wyników wyszukiwania.
-3. Kliknij przycisk **Utwórz**.
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Utwórz plan Azure App Service<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. Zostanie wyświetlony monit o podanie pewnych informacji:
    * Ustaw **subskrypcję** na **bezpłatną wersję próbną** (możesz także użyć istniejącej subskrypcji).
    * W obszarze **Grupa zasobów**wybierz pozycję **SpeechEchoBotTutorial-Resources**.
@@ -125,15 +120,15 @@ Następnym krokiem jest utworzenie planu App Service. Plan usługi App Service d
    * W obszarze **system operacyjny**wybierz pozycję **Windows**.
    * W **obszarze region**wybierz pozycję **zachodnie stany USA**.
    * W przypadku **warstwy cenowej**upewnij się, że wybrano opcję **standardowa S1** . Powinna to być wartość domyślna. Jeśli nie, upewnij się, że **system operacyjny** jest ustawiony na **system Windows** zgodnie z powyższym opisem.
-5. Kliknij przycisk **Przeglądaj i Utwórz**. Powinien pojawić się transparent informujący o pomyślnym **sprawdzeniu poprawności**odczytu.
+5. Kliknij pozycję **Przejrzyj i utwórz**. Powinien pojawić się transparent informujący o pomyślnym **sprawdzeniu poprawności**odczytu.
 6. Kliknij przycisk **Utwórz**. Utworzenie grupy zasobów może potrwać kilka minut.
 
 Na tym etapie należy sprawdzić, czy grupa zasobów (**SpeechEchoBotTutorial-Resource**Group) ma dwa zasoby:
 
-| NAME | TYP  | LOKALIZACJA |
+| Name (Nazwa) | Typ  | Lokalizacja |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | Plan usługi App Service | Zachodnie stany USA |
-| SpeechEchoBotTutorial — Speech | Usługi Cognitive Services | Zachodnie stany USA |
+| SpeechEchoBotTutorial — Speech | Cognitive Services | Zachodnie stany USA |
 
 ## <a name="build-an-echo-bot"></a>Tworzenie bot ECHA
 
@@ -157,22 +152,26 @@ Teraz, po utworzeniu niektórych zasobów, przyjrzyjmy się bot. Zaczniemy od pr
    samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
    ```
 
-4. Po załadowaniu projektu naciśnij `F5`, aby skompilować i uruchomić projekt.
+4. Po załadowaniu projektu naciśnij klawisz <kbd>F5</kbd> , aby skompilować i uruchomić projekt.
+5. Przeglądarka powinna zostać uruchomiona i zobaczysz ekran podobny do tego.
+    > [!div class="mx-imgBorder"]
+    > ![echobot — uruchamianie na hoście lokalnym](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "EchoBot uruchomione na hoście lokalnym")
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>Testowanie przykładu bot za pomocą emulatora platformy bot Framework
 
-[Emulator bot Framework](https://github.com/microsoft/botframework-emulator) to aplikacja klasyczna, która umożliwia deweloperom bot testowanie i debugowanie botów lokalnie lub zdalnie za pomocą tunelu. Emulator obsługuje wpisywany tekst jako dane wejściowe (nie głosowo). Bot będzie reagować z tekstem. Wykonaj następujące kroki, aby użyć emulatora bot Framework do testowania ECHA bot uruchomionego lokalnie z danymi wejściowymi i wyjściowymi tekstu. Po wdrożeniu platformy Azure botmy ją testować za pomocą danych wejściowych głosowych i głosowych.
+[Emulator bot Framework](https://github.com/microsoft/botframework-emulator) to aplikacja klasyczna, która umożliwia deweloperom bot testowanie i debugowanie botów lokalnie lub zdalnie za pomocą tunelu. Emulator obsługuje wpisywany tekst jako dane wejściowe (nie głosowo). Bot będzie reagować z tekstem. Wykonaj następujące kroki, aby użyć emulatora bot Framework do testowania ECHA bot uruchomionego lokalnie z danymi wejściowymi i wyjściowymi tekstu. Po wdrożeniu Bot na platformie Azure przetestujemy go za pomocą danych wejściowych głosowych i głosowych.
 
 1. Zainstaluj [emulator bot Framework](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) w wersji 4.3.0 lub nowszej
 2. Uruchom emulator bot Framework i Otwórz bot:
    * **Plik** -> **Otwórz bot**.
-3. Wprowadź adres URL bot. Przykład:
+3. Wprowadź adres URL bot. Na przykład:
 
    ```
    http://localhost:3978/api/messages
    ```
    i naciśnij przycisk "Połącz".
-4. Bot powinien natychmiast powitać użytkownika "Witaj i Witaj!" . Wpisz dowolną wiadomość tekstową i Potwierdź, że otrzymasz odpowiedź od bot.
+4. Bot powinien natychmiast powitać użytkownika "Witaj i Witaj!" Komunikat. Wpisz dowolną wiadomość tekstową i Potwierdź, że otrzymasz odpowiedź od bot.
+5. Jest to sposób, w jaki wymiana komunikacji z wystąpieniem ECHA bot może wyglądać następująco: ![bot-Framework-emulator](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Emulator struktury bot Framework")
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>Wdróż swój bot w Azure App Service
 
@@ -189,7 +188,7 @@ Następnym krokiem jest wdrożenie ECHA Bot na platformie Azure. Istnieje kilka 
 
 1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy projekt **EchoBot** i wybierz pozycję **Publikuj...**
 1. Nowe okno zatytułowane **Wybieranie elementu docelowego publikowania** zostanie otwarte.
-1. Wybierz pozycję **App Service** na lewym pasku nawigacyjnym, wybierz pozycję **Utwórz nową**, a następnie kliknij pozycję **Publikuj**.
+1. Wybierz pozycję **App Service** w obszarze Nawigacja **usług platformy Azure** , wybierz pozycję **Utwórz nową**, a następnie kliknij pozycję **Publikuj**.
 1. Po wyświetleniu okna **utwórz App Service** :
    * Kliknij pozycję **Dodaj konto**i zaloguj się przy użyciu poświadczeń konta platformy Azure. Jeśli użytkownik jest już zalogowany, wybierz żądane konto z listy rozwijanej.
    * W przypadku **nazwy aplikacji**należy wprowadzić globalnie unikatową nazwę dla bot. Ta nazwa służy do tworzenia unikatowego adresu URL bot. Zostanie wypełniona wartość domyślna, w tym datę i godzinę (na przykład: "EchoBot20190805125647"). Możesz użyć domyślnej nazwy dla tego samouczka.
@@ -207,21 +206,21 @@ Następnym krokiem jest wdrożenie ECHA Bot na platformie Azure. Istnieje kilka 
 1. Twoja domyślna przeglądarka powinna zostać otwarta i zostanie wyświetlona strona, która odczytuje: "Twoje bot jest gotowe!".
 1. W tym momencie Sprawdź grupę zasobów **SpeechEchoBotTutorial-Resource** w Azure Portal i Potwierdź, że istnieją trzy zasoby:
 
-| NAME | TYP  | LOKALIZACJA |
+| Name (Nazwa) | Typ  | Lokalizacja |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | Zachodnie stany USA |
 | SpeechEchoBotTutorial-AppServicePlan | Plan usługi App Service | Zachodnie stany USA |
-| SpeechEchoBotTutorial — Speech | Usługi Cognitive Services | Zachodnie stany USA |
+| SpeechEchoBotTutorial — Speech | Cognitive Services | Zachodnie stany USA |
 
 ## <a name="enable-web-sockets"></a>Włącz gniazda sieci Web
 
 Musisz wprowadzić małą zmianę konfiguracji, aby bot mógł komunikować się z kanałem mowy linii Direct przy użyciu gniazd sieci Web. Wykonaj następujące kroki, aby włączyć gniazda sieci Web:
 
 1. Przejdź do [Azure Portal](https://portal.azure.com)i Znajdź App Service. Zasób powinien mieć nazwę podobną do **EchoBot20190805125647** (unikatową nazwę aplikacji).
-2. W lewym okienku nawigacji w obszarze **Ustawienia**kliknij pozycję **Konfiguracja**.
+2. W obszarze Nawigacja **usług platformy Azure** w obszarze **Ustawienia**kliknij pozycję **Konfiguracja**.
 3. Wybierz kartę **Ustawienia ogólne** .
 4. Znajdź przełącznik dla **gniazd sieci Web** i ustaw go na wartość **włączone**.
-5. Kliknij pozycję **Zapisz**.
+5. Kliknij przycisk **Save** (Zapisz).
 
 > [!TIP]
 > Możesz użyć kontrolek w górnej części strony Azure App Service, aby zatrzymać lub ponownie uruchomić usługę. Może się to okazać przydatne podczas rozwiązywania problemów.
@@ -233,7 +232,9 @@ Teraz, po utworzeniu Azure App Service do hostowania bot, następnym krokiem jes
 > [!NOTE]
 > Jeśli chcesz dowiedzieć się więcej o tym, jak botów korzystać z kanałów, zobacz [Connect a bot to Channels](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0).
 
-1. Pierwszym krokiem jest utworzenie nowego zasobu do rejestracji. W witrynie [Azure Portal](https://portal.azure.com) kliknij pozycję **Utwórz zasób**.
+<!-- https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage -->
+
+1. Pierwszym krokiem jest utworzenie nowego zasobu do rejestracji. W [Azure Portal](https://portal.azure.com)kliknij pozycję **Utwórz zasób**.
 2. Na pasku wyszukiwania wpisz **bot**, po wyświetleniu wyników wybierz pozycję **rejestracja kanałów bot**.
 3. Kliknij przycisk **Utwórz**.
 4. Zostanie wyświetlony monit o podanie pewnych informacji:
@@ -249,12 +250,12 @@ Teraz, po utworzeniu Azure App Service do hostowania bot, następnym krokiem jes
 
 W tym momencie Sprawdź grupę zasobów **SpeechEchoBotTutorial-Resource** w Azure Portal. Powinny teraz być widoczne cztery zasoby:
 
-| NAME | TYP  | LOKALIZACJA |
+| Name (Nazwa) | Typ  | Lokalizacja |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | Zachodnie stany USA |
 | SpeechEchoBotTutorial-AppServicePlan | Plan usługi App Service | Zachodnie stany USA |
-| SpeechEchoBotTutorial-BotRegistration | Rejestracja kanałów botów | Cały świat |
-| SpeechEchoBotTutorial — Speech | Usługi Cognitive Services | Zachodnie stany USA |
+| SpeechEchoBotTutorial-BotRegistration | Rejestracja kanałów bot | Globalny |
+| SpeechEchoBotTutorial — Speech | Cognitive Services | Zachodnie stany USA |
 
 > [!IMPORTANT]
 > Zasób rejestracji kanałów bot będzie wyświetlany w regionie globalnym, mimo że wybrano zachodnie stany USA. Jest to oczekiwane.
@@ -264,15 +265,15 @@ W tym momencie Sprawdź grupę zasobów **SpeechEchoBotTutorial-Resource** w Azu
 Teraz czas na zarejestrowanie bot za pomocą kanału bezpośredniej linii mowy. Ten kanał jest używany do tworzenia połączenia między bot ECHA a aplikacją kliencką skompilowaną przy użyciu zestawu Speech SDK.
 
 1. Zlokalizuj i Otwórz zasób **SpeechEchoBotTutorial-BotRegistration** w [Azure Portal](https://portal.azure.com).
-1. W obszarze nawigacji po lewej stronie wybierz pozycję **kanały**.
+1. W obszarze Nawigacja **usług platformy Azure** wybierz pozycję **kanały**.
    * Wyszukaj **więcej kanałów**, Znajdź i kliknij pozycję **Direct line Speech**.
    * Przejrzyj tekst na stronie zatytułowanej **Konfigurowanie Direct line Speech**, a następnie rozwiń menu rozwijane zatytułowane "konto usługi poznawczej".
    * Wybierz utworzony wcześniej zasób mowy (np. **SpeechEchoBotTutorial-Speech**) z menu, aby skojarzyć bot z kluczem subskrypcji mowy.
-   * Kliknij pozycję **Zapisz**.
+   * Kliknij przycisk **Save** (Zapisz).
 
-1. W lewym okienku nawigacji kliknij pozycję **Ustawienia**.
+1. W obszarze Nawigacja **usług platformy Azure** kliknij pozycję **Ustawienia**.
    * Zaznacz pole wyboru z etykietą **Włącz punkt końcowy przesyłania strumieniowego**. Jest to konieczne do włączenia protokołu komunikacyjnego opartego na gniazdach sieci Web między bot i kanałem mowy liniowej.
-   * Kliknij pozycję **Zapisz**.
+   * Kliknij przycisk **Save** (Zapisz).
 
 > [!TIP]
 > Jeśli chcesz dowiedzieć się więcej, zobacz [łączenie bot z bezpośrednim wierszem mowy](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0). Ta strona zawiera dodatkowe informacje i znane problemy.
@@ -295,7 +296,7 @@ Przed przejściem upewnij się, że mikrofon i głośniki są włączone i dzia�
 
 Jeśli w oknie głównym aplikacji zostanie wyświetlony komunikat o błędzie, Skorzystaj z tej tabeli, aby zidentyfikować i rozwiązać problem:
 
-| Błąd | Co musisz zrobić? |
+| Błąd | Co należy zrobić? |
 |-------|----------------------|
 |Błąd AuthenticationFailure: uaktualnienie protokołu WebSocket nie powiodło się z powodu błędu uwierzytelniania (401). Sprawdź poprawność klucza subskrypcji (lub tokenu autoryzacji) i nazwy regionu| Na stronie Ustawienia aplikacji upewnij się, że wprowadzono prawidłowy klucz subskrypcji mowy i jego region.<br>Upewnij się, że klucz mowy i klucz regionu zostały wprowadzone poprawnie. |
 |Błąd ConnectionFailure: połączenie zostało zamknięte przez hosta zdalnego. Kod błędu: 1011. Szczegóły błędu: nie można nawiązać połączenia z usługą bot przed wysłaniem komunikatu | Upewnij się, że pole wyboru ["Włącz punkt końcowy przesyłania strumieniowego"](#register-the-direct-line-speech-channel) i/lub przełączono [ **gniazda sieci Web** ](#enable-web-sockets) na wartość włączone.<br>Upewnij się, że Azure App Service jest uruchomiony. Jeśli tak, spróbuj uruchomić ponownie App Service.|
@@ -432,7 +433,7 @@ Po wykonaniu niezbędnych zmian w bot następnym krokiem jest ponowne opublikowa
 
 Jeśli nie chcesz nadal korzystać z funkcji echo-bot wdrożonej w tym samouczku, możesz usunąć ją i wszystkie skojarzone z nią zasoby platformy Azure, usuwając po prostu grupę zasobów platformy Azure **SpeechEchoBotTutorial-resourceName**.
 
-1. W [Azure Portal](https://portal.azure.com)kliknij pozycję **grupy zasobów** na lewym pasku nawigacyjnym.
+1. W [Azure Portal](https://portal.azure.com)kliknij pozycję **grupy zasobów** w obszarze Nawigacja **usług platformy Azure** .
 2. Znajdź grupę zasobów o nazwie: **SpeechEchoBotTutorial-Resource**Group. Kliknij trzy kropki (...).
 3. Wybierz pozycję **Usuń grupę zasobów**.
 
@@ -441,7 +442,7 @@ Jeśli nie chcesz nadal korzystać z funkcji echo-bot wdrożonej w tym samouczku
 > [!div class="nextstepaction"]
 > [Tworzenie własnej aplikacji klienckiej przy użyciu zestawu Speech SDK](quickstart-voice-assistant-csharp-uwp.md)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * Wdrażanie w [regionie świadczenia usługi Azure w sąsiedztwie,](https://azure.microsoft.com/global-infrastructure/locations/) aby zobaczyć bot poprawy czasu odpowiedzi
 * Wdrażanie w [regionie świadczenia usługi Azure, który obsługuje neuronowychy TTS o wysokiej jakości](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)

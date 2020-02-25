@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4db758ce0710f5b8b122feaadaa8b97a90dcb7cb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3cdf44c2fc4c16bba283b6f884078dd947b1f34
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846863"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564777"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Model rozliczeń dla Azure Active Directory B2C
 
@@ -58,7 +58,7 @@ Oto jak włączyć MAU rozliczeń dla istniejącego zasobu Azure AD B2C:
 
 Pomiar oparty na MAU jest włączony zaraz po wykonaniu tej subskrypcji/właściciela zasobu, potwierdzić zmianę. Rachunek miesięczny będzie uwzględniać jednostki uwierzytelniania, które są rozliczane do momentu zmiany, oraz nowe jednostki MAU rozpoczynające się od zmiany.
 
-Użytkownicy nie są podwójnie zliczane w miesiącu przejścia. Unikatowi aktywni użytkownicy, którzy uwierzytelniają się przed zmianą, są obciążani stawką za uwierzytelnianie w miesiącu kalendarzowym. Ci użytkownicy nie są uwzględnieni w obliczeniach MAU dla pozostałej części cyklu rozliczeniowego subskrypcji. Przykład:
+Użytkownicy nie są podwójnie zliczane w miesiącu przejścia. Unikatowi aktywni użytkownicy, którzy uwierzytelniają się przed zmianą, są obciążani stawką za uwierzytelnianie w miesiącu kalendarzowym. Ci użytkownicy nie są uwzględnieni w obliczeniach MAU dla pozostałej części cyklu rozliczeniowego subskrypcji. Na przykład:
 
 * Dzierżawa contoso B2C ma 1 000 użytkowników. 250 użytkowników jest aktywnych w danym miesiącu. Administrator subskrypcji zmieni się z uwierzytelniania na comiesięcznych użytkowników aktywnych (MAU) w dziesiątym miesiącu.
 * Naliczanie opłat za 1 dziesiątki jest rozliczane przy użyciu modelu na uwierzytelnianie.
@@ -91,7 +91,7 @@ Subskrypcja połączona z dzierżawą Azure AD B2C może być używana do rozlic
 
 ### <a name="create-the-link"></a>Utwórz łącze
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający subskrypcję platformy Azure, której chcesz użyć (*nie* katalog zawierający dzierżawę Azure AD B2C).
 1. Wybierz pozycję **Utwórz zasób**, wprowadź `Active Directory B2C` w polu **Wyszukaj w witrynie Marketplace** , a następnie wybierz pozycję **Azure Active Directory B2C**.
 1. Wybierz pozycję **Utwórz**
@@ -140,4 +140,4 @@ Przed rozpoczęciem przenoszenia należy przeczytać cały artykuł, aby w pełn
 
 ## <a name="next-steps"></a>Następne kroki
 
-Oprócz przeglądania szczegółów użycia i rozliczeń w ramach wybranej subskrypcji platformy Azure można przejrzeć szczegółowe raporty dotyczące codziennych raportów użycia przy użyciu [interfejsu API raportowania użycia](view-usage-reports.md).
+Aby uzyskać najnowsze informacje o cenach, zobacz [Cennik usługi Azure Active Directory B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/).

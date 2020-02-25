@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 750b49e149907f204b8b15f0b5728ab25f917743
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 2395aa5984de2a9fe41e4778d16aba69bfef5192
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844513"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559237"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Zarządzanie niestandardowymi nazwami domen w Azure Active Directory
 
@@ -67,7 +67,7 @@ Aby można było usunąć niestandardową nazwę domeny, należy zmienić lub us
 
 ### <a name="forcedelete-option"></a>ForceDelete — opcja
 
-Można **ForceDelete** nazwę domeny w [centrum administracyjnym usługi Azure AD](https://aad.portal.azure.com) lub przy użyciu [interfejsu API Microsoft Graph](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Te opcje używają operacji asynchronicznej i aktualizują wszystkie odwołania z niestandardowej nazwy domeny, takiejuser@contoso.comjak "", do początkowej domyślnej nazwy domeny,user@contoso.onmicrosoft.comtakiej jak "." 
+Można **ForceDelete** nazwę domeny w [centrum administracyjnym usługi Azure AD](https://aad.portal.azure.com) lub przy użyciu [interfejsu API Microsoft Graph](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Te opcje używają operacji asynchronicznej i aktualizują wszystkie odwołania z niestandardowej nazwy domeny, takiej jak "user@contoso.com", do początkowej domyślnej nazwy domeny, takiej jak "user@contoso.onmicrosoft.com". 
 
 Aby wywołać **ForceDelete** w Azure Portal, należy się upewnić, że istnieje mniej niż 1000 odwołań do nazwy domeny i wszystkie odwołania, w których program Exchange jest usługą aprowizacji, należy zaktualizować lub usunąć w [centrum administracyjnym programu Exchange](https://outlook.office365.com/ecp/). Obejmuje to grupy zabezpieczeń z włączoną obsługą poczty programu Exchange i listy rozproszone; Aby uzyskać więcej informacji, zobacz [usuwanie grup zabezpieczeń z włączoną obsługą poczty](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Ponadto operacja **ForceDelete** nie powiedzie się, jeśli jest spełniony jeden z następujących warunków:
 
@@ -87,14 +87,14 @@ Błąd jest zwracany w przypadku:
 
 ### <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-**Pyt.: Dlaczego Usuwanie domeny kończy się niepowodzeniem z powodu błędu informującego, że w tej nazwie domeny są używane grupy programu Exchange Masters?** <br>
-**Odp.:** Obecnie niektóre grupy, takie jak grupy zabezpieczeń z włączoną obsługą poczty i listy rozproszone, są obsługiwane przez program Exchange i muszą zostać ręcznie oczyszczone w [centrum administracyjnym programu Exchange (SKK)](https://outlook.office365.com/ecp/). Może istnieć ProxyAddresses, które są zależne od niestandardowej nazwy domeny i należy je ręcznie zaktualizować do innej nazwy domeny. 
+**P: Dlaczego Usuwanie domeny kończy się niepowodzeniem z powodu błędu informującego, że w tej nazwie domeny są dostępne grupy programu Exchange Master?** <br>
+Odp **.:** Obecnie niektóre grupy, takie jak grupy zabezpieczeń z włączoną obsługą poczty i listy rozproszone, są obsługiwane przez program Exchange i muszą zostać ręcznie oczyszczone w [centrum administracyjnym programu Exchange (SKK)](https://outlook.office365.com/ecp/). Może istnieć ProxyAddresses, które są zależne od niestandardowej nazwy domeny i należy je ręcznie zaktualizować do innej nazwy domeny. 
 
-**Pyt.: Zaloguję się jako administrator\@contoso.com, ale nie mogę usunąć nazwy domeny "contoso.com"?**<br>
-**Odp.:** Nie można odwołać się do niestandardowej nazwy domeny, którą próbujesz usunąć, w nazwie konta użytkownika. Upewnij się, że konto administratora globalnego używa początkowej domyślnej nazwy domeny (. onmicrosoft.com), takiej jak admin@contoso.onmicrosoft.com. Zaloguj się przy użyciu innego konta administratora globalnego, takiego jak admin@contoso.onmicrosoft.com lub innej niestandardowej nazwy domeny, takiej jak "fabrikam.com", w admin@fabrikam.comktórej znajduje się konto.
+**Pytanie: jestem zalogowany jako administrator\@contoso.com, ale nie mogę usunąć nazwy domeny "contoso.com"?**<br>
+Odp **.:** Nie można odwołać się do niestandardowej nazwy domeny, którą próbujesz usunąć, w nazwie konta użytkownika. Upewnij się, że konto administratora globalnego używa początkowej domyślnej nazwy domeny (. onmicrosoft.com), takiej jak admin@contoso.onmicrosoft.com. Zaloguj się przy użyciu innego konta administratora globalnego, takiego jak admin@contoso.onmicrosoft.com lub inną niestandardową nazwę domeny, taką jak "fabrikam.com", gdzie konto jest admin@fabrikam.com.
 
-**Pyt.: Po kliknięciu przycisku Usuń domenę i wyświetleniu `In Progress` stanu operacji usuwania. Jak długo trwa? Co się stanie w przypadku niepowodzenia?**<br>
-**Odp.:** Operacja Usuń domenę to asynchroniczne zadanie w tle, które zmienia nazwy wszystkich odwołań do nazwy domeny. Powinno to zakończyć się w ciągu minuty lub dwóch. Jeśli usunięcie domeny nie powiedzie się, upewnij się, że nie masz:
+**P: po kliknięciu przycisku Usuń domenę i zobacz stan `In Progress` dla operacji usuwania. Jak długo trwa? Co się stanie w przypadku niepowodzenia?**<br>
+Odp **.:** Operacja Usuń domenę to asynchroniczne zadanie w tle, które zmienia nazwy wszystkich odwołań do nazwy domeny. Powinno to zakończyć się w ciągu minuty lub dwóch. Jeśli usunięcie domeny nie powiedzie się, upewnij się, że nie masz:
 
 * Aplikacje skonfigurowane dla nazwy domeny z appIdentifierURI
 * Dowolna Grupa z włączoną obsługą poczty odwołująca się do niestandardowej nazwy domeny
@@ -102,12 +102,12 @@ Błąd jest zwracany w przypadku:
 
 Jeśli okaże się, że którykolwiek z warunków nie został spełniony, ręcznie Wyczyść odwołania i spróbuj ponownie usunąć domenę.
 
-## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>Zarządzanie nazwami domen przy użyciu programu PowerShell lub interfejs API programu Graph
+## <a name="use-powershell-or-the-microsoft-graph-api-to-manage-domain-names"></a>Zarządzanie nazwami domen przy użyciu programu PowerShell lub interfejsu API Microsoft Graph
 
-Większość zadań zarządzania dla nazw domen w Azure Active Directory można również ukończyć przy użyciu programu Microsoft PowerShell lub programowo przy użyciu interfejs API programu Graph usługi Azure AD.
+Większość zadań zarządzania dla nazw domen w Azure Active Directory można również ukończyć przy użyciu programu Microsoft PowerShell lub programowo przy użyciu interfejsu API Microsoft Graph.
 
 * [Zarządzanie nazwami domen w usłudze Azure AD przy użyciu programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
-* [Zarządzanie nazwami domen w usłudze Azure AD przy użyciu interfejs API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
+* [Typ zasobu domeny](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0)
 
 ## <a name="next-steps"></a>Następne kroki
 

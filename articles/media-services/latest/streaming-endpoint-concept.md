@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206110"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562364"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Punkty końcowe przesyłania strumieniowego (Źródło) w Azure Media Services
 
@@ -59,21 +59,21 @@ Aby uzyskać informacje o umowie SLA, zobacz [Cennik i Umowa SLA](https://azure.
 
 ## <a name="comparing-streaming-types"></a>Porównywanie typów przesyłania strumieniowego
 
-Cecha|Standardowy|Premium
+Cecha|Standard|Premium
 ---|---|---
 Przepływność |Do 600 MB/s i może zapewnić znacznie wyższą skuteczną przepływność w przypadku użycia sieci CDN.|200 MB/s na jednostkę przesyłania strumieniowego (SU). W przypadku korzystania z sieci CDN można zapewnić znacznie wyższą skuteczną przepływność.
 CDN|Azure CDN, Sieć CDN innej firmy lub brak sieci CDN.|Azure CDN, Sieć CDN innej firmy lub brak sieci CDN.
-Opłaty są naliczane proporcjonalnie| Codziennie|Codziennie
-Szyfrowanie dynamiczne|Tak|Tak
-Dynamiczne tworzenie pakietów|Tak|Tak
-Skala|Automatycznie Skaluj do dostosowanej przepływności.|Dodatkowe usługi SUs
-Filtrowanie/G20 IP/Host niestandardowy <sup>1</sup>|Tak|Tak
-Pobieranie progresywne|Tak|Tak
+Opłaty są naliczane proporcjonalnie| Dzienna|Dzienna
+Szyfrowanie dynamiczne|Yes|Yes
+Dynamiczne tworzenie pakietów|Yes|Yes
+Skalowanie|Automatycznie Skaluj do dostosowanej przepływności.|Dodatkowe usługi SUs
+Filtrowanie/G20 IP/Host niestandardowy <sup>1</sup>|Yes|Yes
+Pobieranie progresywne|Yes|Yes
 Zalecane użycie |Zalecane w przypadku większości scenariuszy przesyłania strumieniowego.|Profesjonalne użycie.
 
 <sup>1</sup> używany bezpośrednio w punkcie końcowym przesyłania strumieniowego, gdy sieć CDN nie jest włączona w punkcie końcowym.<br/>
 
-## <a name="properties"></a>Właściwości
+## <a name="streaming-endpoint-properties"></a>Właściwości punktu końcowego przesyłania strumieniowego
 
 Ta sekcja zawiera szczegółowe informacje dotyczące niektórych właściwości punktu końcowego przesyłania strumieniowego. Przykłady tworzenia nowego punktu końcowego przesyłania strumieniowego i opisy wszystkich właściwości można znaleźć w temacie [punkt końcowy przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingendpoints/create).
 
@@ -130,50 +130,36 @@ Ta sekcja zawiera szczegółowe informacje dotyczące niektórych właściwości
 
 - `scaleUnits`: zapewniają dedykowaną pojemność wyjściową, którą można zakupić w przyrostach wynoszących 200 MB/s. Jeśli musisz przejść do typu **Premium** , Dostosuj `scaleUnits`.
 
-## <a name="working-with-cdn"></a>Praca z usługą CDN
+## <a name="why-use-multiple-streaming-endpoints"></a>Dlaczego warto używać wielu punktów końcowych przesyłania strumieniowego?
 
-W większości przypadków usługa CDN powinna być włączona. Jeśli jednak przewidujesz maksymalną współbieżność mniejszą niż 500 osób przeglądających, zaleca się wyłączenie usługi CDN, ponieważ usługa CDN jest optymalna dla współbieżności.
+Pojedynczy punkt końcowy przesyłania strumieniowego może przesyłać strumieniowo zarówno wideo na żywo, jak i na żądanie, a większość klientów używa tylko jednego punktu końcowego przesyłania strumieniowego. W tej sekcji przedstawiono kilka przykładów użycia wielu punktów końcowych przesyłania strumieniowego.
 
-### <a name="considerations"></a>Zagadnienia do rozważenia
+* Każda jednostka zastrzeżona zezwala na 200 MB/s przepustowości. Jeśli potrzebujesz więcej niż 2 000 MB/s (2 GB/s) przepustowości, możesz użyć drugiego punktu końcowego przesyłania strumieniowego i zrównoważenia obciążenia, aby zapewnić dodatkową przepustowość.
 
-* Punkt końcowy przesyłania strumieniowego `hostname` i adres URL przesyłania strumieniowego pozostają takie same niezależnie od tego, czy jest włączona sieć CDN.
-* Jeśli potrzebujesz możliwości testowania zawartości z użyciem usługi CDN lub bez niej, Utwórz inny punkt końcowy przesyłania strumieniowego, który nie jest włączony w sieci CDN.
+    Sieć CDN jest jednak najlepszym sposobem osiągnięcia skalowania w poziomie na potrzeby przesyłania strumieniowego zawartości, ale jeśli dostarczasz tyle zawartości, którą sieć CDN pobiera ponad 2 GB/s, możesz dodać dodatkowe punkty końcowe przesyłania strumieniowego. W takim przypadku konieczne będzie przekazanie adresów URL zawartości, które są zrównoważone w dwóch punktach końcowych przesyłania strumieniowego. Takie podejście umożliwia lepsze buforowanie niż próba wysłania żądań do każdego źródła losowo (na przykład za pośrednictwem usługi Traffic Manager). 
+    
+    > [!TIP]
+    > Zwykle Jeśli sieć CDN trwa ściąganie ponad 2 GB/s, coś może być błędnie skonfigurowane (na przykład bez osłony pochodzenia).
+    
+* Równoważenie obciążenia różnymi dostawcami sieci CDN. Na przykład można skonfigurować domyślny punkt końcowy przesyłania strumieniowego do korzystania z usługi Verizon CDN i utworzyć drugi, aby użyć Akamai. Następnie Dodaj Równoważenie obciążenia między tymi dwoma, aby osiągnąć równoważenie z różnymi usługami CDN. 
 
-### <a name="detailed-explanation-of-how-caching-works"></a>Szczegółowe wyjaśnienie działania buforowania
+    Jednak klienci często korzystają z równoważenia obciążenia dla wielu dostawców sieci CDN przy użyciu jednego źródła.
+* Przesyłaj strumieniowo zawartość mieszaną: żywo i wideo na żądanie. 
 
-Podczas dodawania sieci CDN nie ma określonej wartości przepustowości, ponieważ przepustowość wymagana przez punkt końcowy przesyłania strumieniowego z obsługą sieci CDN jest różna. Partia zależy od typu zawartości, jego popularności, szybkości transmisji bitów i protokołów. Usługa CDN umożliwia buforowanie tylko tego, co jest wymagane. Oznacza to, że popularna zawartość będzie obsługiwana bezpośrednio z sieci CDN — tak długo, jak fragment wideo jest buforowany. Zawartość na żywo jest prawdopodobnie w pamięci podręcznej, ponieważ zazwyczaj masz wiele osób oglądających dokładnie te same rzeczy. Zawartość na żądanie może być trickier bitowym, ponieważ istnieje pewna zawartość, która jest najbardziej popularna, a niektóre z nich nie są. Jeśli masz miliony zasobów wideo, które nie są popularne (tylko jeden lub dwa osoby przeglądające w tygodniu), ale masz tysiące osób oglądających wszystkie różne wideo, Sieć CDN jest znacznie mniej skuteczna. W przypadku tych chybień w pamięci podręcznej można zwiększyć obciążenie punktu końcowego przesyłania strumieniowego.
+    Wzorce dostępu do zawartości na żywo i na żądanie są bardzo różne. Zawartość na żywo pozwala uzyskać wiele popytu na całą zawartość jednocześnie. Zawartość wideo na żądanie (zawartość archiwum long tail for Instance) ma niskie użycie w tej samej zawartości. W ten sposób buforowanie działa bardzo dobrze w przypadku zawartości na żywo, ale nie na długiej zawartości.
 
-Należy również wziąć pod uwagę sposób działania adaptacyjnego przesyłania strumieniowego. Każdy pojedynczy fragment wideo jest buforowany jako jego obiekt własny. Na przykład załóżmy, że po raz pierwszy oglądasz film wideo. Jeśli przeglądarka pominie około zaledwie kilku sekund, a tylko fragmenty wideo skojarzone z tym, co ktoś ogląda w pamięci podręcznej w sieci CDN. Dzięki adaptacyjnemu przesyłaniu strumieniowym zazwyczaj masz od 5 do 7 różnych szybkości transmisji wideo. Jeśli jedna osoba ogląda jedną szybkość transmisji bitów, a inna osoba ogląda inną szybkość transmisji bitów, to każda z nich jest buforowana osobno w sieci CDN. Nawet jeśli dwie osoby oglądają tę samą szybkość transmisji bitów, mogą one być przesyłane strumieniowo za pośrednictwem różnych protokołów. Każdy protokół (HLS, MPEG-KRESKa, Smooth Streaming) jest buforowany osobno. Dlatego każda szybkość transmisji bitów i protokół są buforowane oddzielnie, a tylko te fragmenty wideo, które zostały żądane, są buforowane.
+    Rozważmy scenariusz, w którym klienci głównie oglądają zawartość na żywo, ale mogą jedynie czasami oglądać zawartość na żądanie i są obsługiwane z tego samego punktu końcowego przesyłania strumieniowego. Niskie użycie zawartości na żądanie zajmie miejsce w pamięci podręcznej, które będzie lepiej zapisane dla zawartości na żywo. W tym scenariuszu zalecamy obsługę zawartości na żywo z jednego punktu końcowego przesyłania strumieniowego i długiej zawartości z innego punktu końcowego przesyłania strumieniowego. Poprawi to wydajność zawartości zdarzenia na żywo.
+    
+## <a name="scaling-streaming-with-cdn"></a>Skalowanie przesyłania strumieniowego przy użyciu usługi CDN
 
-### <a name="enable-azure-cdn-integration"></a>Włącz integrację Azure CDN
+Zobacz następujące artykuły:
 
-> [!IMPORTANT]
-> Nie można włączyć usługi CDN dla kont platformy Azure z wersji próbnej lub ucznia.
->
-> Integracja z usługą CDN jest włączona we wszystkich centrach danych platformy Azure z wyjątkiem regionów federalnych i w Chinach.
-
-Po udostępnieniu punktu końcowego przesyłania strumieniowego z włączoną usługą CDN jest zdefiniowany czas oczekiwania na Media Services przed aktualizacją usługi DNS w celu zamapowania punktu końcowego przesyłania strumieniowego na punkt końcowy usługi CDN.
-
-Jeśli zechcesz później wyłączyć/włączyć usługę CDN, punkt końcowy przesyłania strumieniowego musi znajdować się w stanie **zatrzymanym** . Włączenie integracji Azure CDN może potrwać do dwóch godzin, a zmiany zostaną uaktywnione we wszystkich punktach pop usługi CDN. Można jednak uruchomić punkt końcowy przesyłania strumieniowego i strumień bez przerw w punkcie końcowym przesyłania strumieniowego, a po zakończeniu integracji zostanie dostarczony strumień z sieci CDN. W trakcie okresu aprowizacji punkt końcowy przesyłania strumieniowego będzie w stanie **uruchomienia** i może wystąpić spadek wydajności.
-
-Po utworzeniu standardowego punktu końcowego przesyłania strumieniowego jest on konfigurowany domyślnie przy użyciu standardowego Verizon. Korzystając z interfejsów API REST, można skonfigurować Verizon Premium lub standardowego dostawcy Akamai.
-
-Integracja Azure Media Services z Azure CDN jest zaimplementowana w **Azure CDN z Verizon** dla standardowych punktów końcowych przesyłania strumieniowego. Punkty końcowe przesyłania strumieniowego w warstwie Premium można skonfigurować przy użyciu wszystkich **Azure CDN warstw cenowych i dostawców**. 
-
-> [!NOTE]
-> Aby uzyskać szczegółowe informacje na temat Azure CDN, zobacz [Omówienie usługi CDN](../../cdn/cdn-overview.md).
-
-### <a name="determine-if-dns-change-was-made"></a>Ustal, czy wprowadzono zmianę w systemie DNS
-
-Można określić, czy zmiana DNS została wprowadzona w punkcie końcowym przesyłania strumieniowego (ruch jest kierowany do Azure CDN) przy użyciu https://www.digwebinterface.com. Jeśli wyniki zawierają nazwy domen azureedge.net w wynikach, ruch jest teraz wskazywany do sieci CDN.
+- [Omówienie usługi CDN](../../cdn/cdn-overview.md)
+- [Skalowanie przesyłania strumieniowego przy użyciu usługi CDN](scale-streaming-cdn.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Przekaż opinię, uzyskaj aktualizacje
 
 Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
-
-## <a name="see-also"></a>Zobacz też
-
-[Omówienie usługi CDN](../../cdn/cdn-overview.md)
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 01/18/2020
+ms.date: 02/21/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: e9ca891d2d92b6760d37108b66afc54c81ac125c
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 15901186194853aebf3b8222f271203161770380
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442585"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561446"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Samouczek: wdrażanie i Konfigurowanie zapory platformy Azure w sieci hybrydowej przy użyciu Azure Portal
 
@@ -179,9 +179,10 @@ Najpierw Dodaj regułę sieciową, aby zezwolić na ruch w sieci Web.
 6. W polu **Akcja** wybierz opcję **Zezwalaj**.
 6. W obszarze **reguły**, w polu **Nazwa**wpisz **AllowWeb**.
 7. W polu **Protokół** wybierz **TCP**.
-8. W przypadku **adresów źródłowych**wpisz **192.168.1.0/24**.
-9. W obszarze adres docelowy wpisz **10.6.0.0/16**
-10. W przypadku **portów docelowych**wpisz **80**.
+8. W obszarze **Typ źródła**wybierz pozycję **adres IP**.
+9. W obszarze **Źródło**wpisz **192.168.1.0/24**.
+10. W obszarze **adres docelowy**wpisz **10.6.0.0/16**
+11. W przypadku **portów docelowych**wpisz **80**.
 
 Teraz Dodaj regułę zezwalającą na ruch RDP.
 
@@ -189,10 +190,11 @@ W drugim wierszu reguły wpisz następujące informacje:
 
 1. Wpisz **AllowRDP**.
 2. W polu **Protokół** wybierz **TCP**.
-3. W przypadku **adresów źródłowych**wpisz **192.168.1.0/24**.
-4. W obszarze adres docelowy wpisz **10.6.0.0/16**
-5. W przypadku **portów docelowych**wpisz **3389**.
-6. Wybierz pozycję **Dodaj**.
+3. W obszarze **Typ źródła**wybierz pozycję **adres IP**.
+4. W obszarze **Źródło**wpisz **192.168.1.0/24**.
+5. W obszarze **adres docelowy**wpisz **10.6.0.0/16**
+6. W przypadku **portów docelowych**wpisz **3389**.
+7. Wybierz pozycję **Dodaj**.
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>Tworzenie i łączenie bram sieci VPN
 

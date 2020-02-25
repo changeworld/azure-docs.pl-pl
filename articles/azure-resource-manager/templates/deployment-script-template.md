@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 02/20/2020
 ms.author: jgao
-ms.openlocfilehash: a67f360aa08f306d6462342d96f59e06a4d3b501
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: d8212fb55b20f051c6479071010ef4f828792baa
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251859"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561157"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Używanie skryptów wdrażania w szablonach (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ Dowiedz się, jak używać skryptów wdrażania w szablonach zasobów platformy 
 Zalety skryptu wdrażania:
 
 - Łatwe do kodu, używania i debugowania. Skrypty wdrażania można opracowywać w ulubionych środowiskach deweloperskich. Skrypty mogą być osadzone w szablonach lub w zewnętrznych plikach skryptów.
-- Możesz określić język skryptu i platformę. Obecnie obsługiwane są tylko Azure PowerShell skrypty wdrażania w środowisku systemu Linux.
+- Możesz określić język skryptu i platformę. Obecnie obsługiwane są Azure PowerShell i skrypty wdrażania interfejsu wiersza polecenia platformy Azure w środowisku systemu Linux.
 - Zezwalaj na Określanie tożsamości, które są używane do wykonywania skryptów. Obecnie obsługiwana jest tylko [tożsamość zarządzana przypisana przez użytkownika platformy Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) .
 - Zezwalaj na przekazywanie do skryptu argumentów wiersza polecenia.
 - Można określić dane wyjściowe skryptu i przekazać je z powrotem do wdrożenia.
@@ -48,16 +48,29 @@ Zalety skryptu wdrażania:
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  Użyj poniższego skryptu programu PowerShell, aby uzyskać identyfikator, podając nazwę grupy zasobów i nazwę tożsamości.
+  Użyj poniższego skryptu interfejsu wiersza polecenia lub programu PowerShell, aby uzyskać identyfikator, podając nazwę grupy zasobów i nazwę tożsamości.
+
+  # <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
+
+  ```azurecli-interactive
+  echo "Enter the Resource Group name:" &&
+  read resourceGroupName &&
+  echo "Enter the managed identity name:" &&
+  read idName &&
+  az identity show -g jgaoidentity1008rg -n jgaouami --query id
+  ```
+
+  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
   $idName = Read-Host -Prompt "Enter the name of the managed identity"
 
-  $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
+  (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name $idName).Id
   ```
+  ---
 
-- **Azure PowerShell w wersji 2.7.0, 2.8.0 lub 3.0.0**. Te wersje nie są potrzebne do wdrażania szablonów. Jednak te wersje są zbędne do lokalnego testowania skryptów wdrażania. Zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Można użyć wstępnie skonfigurowanego obrazu platformy Docker.  Zobacz [Konfigurowanie środowiska deweloperskiego](#configure-development-environment).
+- **Azure PowerShell wersja 3.0.0, 2.8.0 lub 2.7.0** lub **interfejs wiersza polecenia platformy Azure w wersji 2.0.80, 2.0.79, 2.0.78 lub 2.0.77**. Te wersje nie są potrzebne do wdrażania szablonów. Jednak te wersje są zbędne do lokalnego testowania skryptów wdrażania. Zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Można użyć wstępnie skonfigurowanego obrazu platformy Docker.  Zobacz [Konfigurowanie środowiska deweloperskiego](#configure-development-environment).
 
 ## <a name="sample-template"></a>Przykładowy szablon
 
@@ -67,9 +80,9 @@ Poniższy kod JSON jest przykładem.  Najnowszy schemat szablonu można znaleź�
 {
   "type": "Microsoft.Resources/deploymentScripts",
   "apiVersion": "2019-10-01-preview",
-  "name": "myDeploymentScript",
+  "name": "runPowerShellInline",
   "location": "[resourceGroup().location]",
-  "kind": "AzurePowerShell",
+  "kind": "AzurePowerShell", // or "AzureCLI"
   "identity": {
     "type": "userAssigned",
     "userAssignedIdentities": {
@@ -78,7 +91,7 @@ Poniższy kod JSON jest przykładem.  Najnowszy schemat szablonu można znaleź�
   },
   "properties": {
     "forceUpdateTag": 1,
-    "azPowerShellVersion": "3.0",
+    "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
     "scriptContent": "
       param([string] $name)
@@ -102,13 +115,13 @@ Poniższy kod JSON jest przykładem.  Najnowszy schemat szablonu można znaleź�
 Szczegóły wartości właściwości:
 
 - **Tożsamość**: usługa skryptu wdrażania używa zarządzanej tożsamości przypisanej przez użytkownika do wykonywania skryptów. Obecnie obsługiwana jest tylko tożsamość zarządzana przypisana przez użytkownika.
-- **rodzaj**: Określ typ skryptu. Obecnie obsługiwane są tylko skrypty Azure PowerShell. Wartość to **AzurePowerShell**.
+- **rodzaj**: Określ typ skryptu. Obecnie obsługiwane są Azure PowerShell i skrypty interfejsu wiersza polecenia platformy Azure. Wartości to **AzurePowerShell** i **AzureCLI**.
 - **forceUpdateTag**: zmiana tej wartości między wdrożeniami szablonów Wymusza ponowne wykonanie skryptu wdrażania. Użyj funkcji newGuid () lub utcNow (), która musi być ustawiona jako wartość domyślna parametru. Aby dowiedzieć się więcej, zobacz [Uruchamianie skryptu więcej niż raz](#run-script-more-than-once).
-- **azPowerShellVersion**: Określ wersję modułu Azure PowerShell, która ma zostać użyta. Skrypt wdrażania obsługuje obecnie wersje 2.7.0, 2.8.0 i 3.0.0.
+- **azPowerShellVersion**/**azCliVersion**: Określ wersję modułu, która ma zostać użyta. Skrypt wdrażania obsługuje obecnie Azure PowerShell wersji 2.7.0, 2.8.0, 3.0.0 i interfejsu wiersza polecenia platformy Azure w wersji 2.0.80, 2.0.79, 2.0.78, 2.0.77.
 - **argumenty**: Określ wartości parametrów. Wartości są rozdzielone spacjami.
 - **scriptContent**: Określ zawartość skryptu. Aby uruchomić zewnętrzny skrypt, należy zamiast tego użyć `primaryScriptUri`. Aby zapoznać się z przykładami, zobacz [używanie skryptu wbudowanego](#use-inline-scripts) i [używanie skryptu zewnętrznego](#use-external-scripts).
-- **primaryScriptUri**: Określ publicznie dostępny adres URL dla podstawowego skryptu programu PowerShell z obsługiwanym rozszerzeniem pliku programu PowerShell.
-- **supportingScriptUris**: Określ tablicę dostępnych publicznie adresów URL do obsługi plików programu PowerShell, które będą wywoływane w `ScriptContent` lub `PrimaryScriptUri`.
+- **primaryScriptUri**: Określ publicznie dostępny adres URL dla podstawowego skryptu wdrażania z obsługiwanymi rozszerzeniami plików.
+- **supportingScriptUris**: Określ tablicę dostępnych publicznie adresów URL do obsługi plików, które są wywoływane w `ScriptContent` lub `PrimaryScriptUri`.
 - **limit czasu**: Określ maksymalny dozwolony czas wykonywania skryptu określony w [formacie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Wartość domyślna to **P1D**.
 - **cleanupPreference**. Określ preferencję oczyszczania zasobów wdrożenia, gdy wykonywanie skryptu jest odbierane w stanie terminalu. Ustawieniem domyślnym jest **zawsze**, co oznacza usunięcie zasobów pomimo stanu terminalu (zakończone powodzeniem, zakończone niepowodzeniem, anulowane). Aby dowiedzieć się więcej, zobacz [Oczyszczanie zasobów skryptu wdrażania](#clean-up-deployment-script-resources).
 - **retentionInterval**: Określ interwał, dla którego usługa zachowuje zasoby skryptu wdrożenia po osiągnięciu przez wykonanie skryptu wdrożenia stanu terminalu. Zasoby skryptu wdrażania zostaną usunięte po upływie tego czasu trwania. Czas trwania zależy od [wzorca ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Wartość domyślna to **P1D**, co oznacza siedem dni. Ta właściwość jest używana, gdy cleanupPreference jest ustawiony na *onwygaśnięcia*. Właściwość *onwygaśnięcia* nie jest obecnie włączona. Aby dowiedzieć się więcej, zobacz [Oczyszczanie zasobów skryptu wdrażania](#clean-up-deployment-script-resources).
@@ -124,7 +137,7 @@ Następujący szablon ma zdefiniowany jeden zasób z typem `Microsoft.Resources/
 
 Skrypt przyjmuje jeden parametr i wyprowadza wartość parametru. **DeploymentScriptOutputs** jest używany do przechowywania danych wyjściowych.  W sekcji dane wyjściowe wiersz **wartości** pokazuje, jak uzyskać dostęp do przechowywanych wartości. `Write-Output` jest używany do celów debugowania. Aby dowiedzieć się, jak uzyskać dostęp do pliku wyjściowego, zobacz [debugowanie skryptów wdrażania](#debug-deployment-scripts).  Aby zapoznać się z opisami właściwości, zobacz [przykładowy szablon](#sample-template).
 
-Aby uruchomić skrypt, wybierz opcję **Wypróbuj** , aby otworzyć usługę Cloud Shell, a następnie wklej następujący kod do okienka powłoki.
+Aby uruchomić skrypt, wybierz opcję **Wypróbuj** , aby otworzyć Azure Cloud Shell, a następnie wklej poniższy kod do okienka powłoki.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
@@ -144,7 +157,7 @@ Dane wyjściowe wyglądają następująco:
 
 ## <a name="use-external-scripts"></a>Korzystanie ze skryptów zewnętrznych
 
-Oprócz skryptów wbudowanych można również używać zewnętrznych plików skryptów. Obecnie obsługiwane są tylko skrypty programu PowerShell z rozszerzeniem pliku **ps1** . Aby użyć zewnętrznych plików skryptów, Zastąp `scriptContent` z `primaryScriptUri`. Na przykład:
+Oprócz skryptów wbudowanych można również używać zewnętrznych plików skryptów. Obsługiwane są tylko podstawowe skrypty programu PowerShell z rozszerzeniem pliku **ps1** . W przypadku skryptów interfejsu wiersza polecenia skrypty podstawowe mogą mieć dowolne rozszerzenia (lub bez rozszerzenia), o ile skrypty są prawidłowymi skryptami bash. Aby użyć zewnętrznych plików skryptów, Zastąp `scriptContent` z `primaryScriptUri`. Na przykład:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -170,11 +183,11 @@ Skomplikowane logiki można rozdzielić na jeden lub więcej plików skryptów p
 ],
 ```
 
-Pliki skryptów pomocniczych mogą być wywoływane zarówno ze skryptów wbudowanych, jak i podstawowych plików skryptów.
+Pliki skryptów pomocniczych mogą być wywoływane zarówno ze skryptów wbudowanych, jak i podstawowych plików skryptów. Pliki skryptów pomocniczych nie mają żadnych ograniczeń dotyczących rozszerzenia pliku.
 
 Pliki pomocnicze są kopiowane do azscripts/azscriptinput w czasie wykonywania. Użyj ścieżki względnej, aby odwoływać się do plików pomocniczych ze skryptów wbudowanych i podstawowych plików skryptów.
 
-## <a name="work-with-outputs-from-deployment-scripts"></a>Pracuj z wynikami ze skryptów wdrażania
+## <a name="work-with-outputs-from-powershell-script"></a>Pracuj z wynikami z poziomu skryptu programu PowerShell
 
 Poniższy szablon pokazuje, jak przekazać wartości między dwoma zasobami deploymentScripts:
 
@@ -185,6 +198,16 @@ W pierwszym zasobie należy zdefiniować zmienną o nazwie **$DeploymentScriptOu
 ```json
 reference('<ResourceName>').output.text
 ```
+
+## <a name="work-with-outputs-from-cli-script"></a>Pracuj z wynikami z poziomu skryptu interfejsu wiersza polecenia
+
+Inaczej niż w przypadku skryptu wdrażania programu PowerShell obsługa interfejsu wiersza polecenia/bash nie uwidacznia wspólnej zmiennej do przechowywania danych wyjściowych skryptu, a zamiast tego występuje zmienna środowiskowa o nazwie **AZ_SCRIPTS_OUTPUT_PATH** , która przechowuje lokalizację, w której znajduje się plik danych wyjściowych skryptu. Jeśli skrypt wdrożenia jest uruchamiany z szablonu Menedżer zasobów, ta zmienna środowiskowa jest ustawiana automatycznie przez powłokę bash.
+
+Dane wyjściowe skryptu wdrożenia muszą być zapisane w lokalizacji AZ_SCRIPTS_OUTPUT_PATH, a wyjście musi być prawidłowym obiektem ciągu JSON. Zawartość pliku musi być zapisana jako para klucz-wartość. Na przykład tablica ciągów jest przechowywana jako {"result": ["foo", "bar"]}.  Przechowywanie tylko wyników tablicowych, na przykład ["foo", "bar"], jest nieprawidłowe.
+
+[!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json?range=1-44)]
+
+[JQ](https://stedolan.github.io/jq/) jest używany w poprzednim przykładzie. Zawiera obrazy kontenerów. Zobacz [Konfigurowanie środowiska deweloperskiego](#configure-development-environment).
 
 ## <a name="debug-deployment-scripts"></a>Debuguj skrypty wdrażania
 
@@ -264,7 +287,7 @@ Wykonanie skryptu wdrożenia jest operacją idempotentne. Jeśli żadna z właś
 
 ## <a name="configure-development-environment"></a>Konfigurowanie środowiska programowania
 
-Obecnie skrypt wdrażania obsługuje Azure PowerShell w wersji 2.7.0, 2.8.0 i 3.0.0.  Jeśli masz komputer z systemem Windows, możesz zainstalować jedną z obsługiwanych wersji Azure PowerShell i rozpocząć tworzenie i testowanie skryptów wdrażania.  Jeśli nie masz komputera z systemem Windows lub nie masz zainstalowanej żadnej z tych wersji Azure PowerShell, możesz użyć wstępnie skonfigurowanego obrazu kontenera Docker. Poniższa procedura przedstawia sposób konfigurowania obrazu platformy Docker w systemie Windows. W przypadku systemów Linux i Mac można znaleźć informacje z Internetu.
+Możesz użyć wstępnie skonfigurowanego obrazu kontenera Docker jako środowiska programistycznego skryptu wdrożenia. Poniższa procedura przedstawia sposób konfigurowania obrazu platformy Docker w systemie Windows. W przypadku systemów Linux i Mac można znaleźć informacje z Internetu.
 
 1. Zainstaluj program [Docker Desktop](https://www.docker.com/products/docker-desktop) na komputerze deweloperskim.
 1. Otwórz pulpit Docker.
@@ -281,7 +304,15 @@ Obecnie skrypt wdrażania obsługuje Azure PowerShell w wersji 2.7.0, 2.8.0 i 3.
     docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
     ```
 
-    W przykładzie zastosowano wersję 2.7.0.
+    W przykładzie używane jest 2.7.0 wersji programu PowerShell.
+
+    Aby ściągnąć obraz interfejsu wiersza polecenia z Container Registry firmy Microsoft (MCR):
+
+    ```command
+    docker pull mcr.microsoft.com/azure-cli:2.0.80
+    ```
+
+    W tym przykładzie zastosowano interfejs wiersza polecenia w wersji 2.0.80. Skrypt wdrażania używa domyślnych obrazów kontenerów interfejsu wiersza polecenia znalezionych w [tym miejscu](https://hub.docker.com/_/microsoft-azure-cli).
 
 1. Uruchom lokalnie obraz platformy Docker.
 
@@ -297,12 +328,18 @@ Obecnie skrypt wdrażania obsługuje Azure PowerShell w wersji 2.7.0, 2.8.0 i 3.
 
     **-oznacza to** utrzymywanie obrazu kontenera.
 
+    Przykład interfejsu wiersza polecenia:
+
+    ```command
+    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
+    ```
+
 1. Po wyświetleniu monitu wybierz pozycję **Udostępnij** .
-1. Uruchom skrypt programu PowerShell, jak pokazano na poniższym zrzucie ekranu (w którym znajduje się plik HelloWorld. ps1 w folderze d:\docker).
+1. Poniższy zrzut ekranu przedstawia sposób uruchomienia skryptu programu PowerShell z uwzględnieniem pliku HelloWorld. ps1 w folderze d:\docker.
 
     ![Skrypt wdrażania szablonu Menedżer zasobów — polecenie Docker](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
-Po pomyślnym przetestowaniu skryptu programu PowerShell można go użyć jako skryptu wdrażania.
+Po pomyślnym przetestowaniu skryptu można go użyć jako skryptu wdrażania.
 
 ## <a name="next-steps"></a>Następne kroki
 

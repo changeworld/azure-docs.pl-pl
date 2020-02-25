@@ -1,6 +1,6 @@
 ---
 title: Wprowadzenie do platformy Apache Kafka w usłudze HDInsight — Azure
-description: 'W tym artykule przedstawiono informacje dotyczące platformy Apache Kafka w usłudze HDInsight: Artykuł zawiera opis platformy, opis jej działania oraz informacje o tym, gdzie można znaleźć przykłady i informacje ułatwiające rozpoczęcie pracy.'
+description: 'Uzyskaj informacje o platformie Apache Kafka w usłudze HDInsight: artykuł zawiera opis platformy, jej działania oraz informacje o tym, gdzie można znaleźć przykłady i informacje ułatwiające rozpoczęcie pracy.'
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/13/2019
-ms.openlocfilehash: 7cf83af52d5bedee5b4d57ee1b4dda2fb34d1b3f
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 543a18ad48384e3502231f85516a092468db2387
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960082"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560103"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Co to jest Apache Kafka w usłudze Azure HDInsight
 
@@ -81,7 +81,7 @@ Poniżej przedstawiono typowe zadania i wzorce, które mogą być wykonywane prz
 
 ## <a name="use-cases"></a>Przypadki zastosowań
 
-* **Obsługa komunikatów**: platforma Kafka obsługuje wzorzec przesyłania komunikatów dotyczących publikowania i subskrybowania, dlatego jest często używana jako broker komunikatów.
+* **Komunikaty**: platforma Kafka obsługuje wzorzec przesyłania komunikatów dotyczących publikowania i subskrybowania, dlatego jest często używana jako broker komunikatów.
 
 * **Śledzenie działań**: platforma Kafka rejestruje rekordy w określonej kolejności, dlatego może służyć do śledzenia i ponownego tworzenia działań. Mogą to być na przykład działania użytkownika w witrynie sieci Web lub aplikacji.
 
@@ -93,7 +93,9 @@ Poniżej przedstawiono typowe zadania i wzorce, które mogą być wykonywane prz
 
 Aby dowiedzieć się, jak korzystać z platformy Apache Kafka w usłudze HDInsight, użyj następujących linków:
 
-* [Szybki start: tworzenie platformy Apache Kafka w usłudze HDInsight](apache-kafka-get-started.md)
+* [Szybki Start: tworzenie platformy Apache Kafka w usłudze HDInsight](apache-kafka-get-started.md)
+
+* [Korzystanie z Kafka z serwerem proxy REST](rest-proxy.md)
 
 * [Samouczek: korzystanie z systemu Apache Spark z platformą Apache Kafka w usłudze HDInsight](../hdinsight-apache-spark-with-kafka.md)
 

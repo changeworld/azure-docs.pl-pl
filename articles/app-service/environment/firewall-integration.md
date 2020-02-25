@@ -4,15 +4,15 @@ description: Dowiedz się, jak zintegrować z zaporą platformy Azure, aby zabez
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6b9633e8a37e665577f1e69e8008a64b7e139c1c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f24a984a4b3e13039f1f9dcf0be459425c048c41
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513352"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565727"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Blokowanie App Service Environment
 
@@ -41,9 +41,11 @@ Ruch do i ze środowiska ASE musi przestrzegać następujących konwencji
 
 ## <a name="locking-down-inbound-management-traffic"></a>Zablokuj ruch związany z zarządzaniem przychodzącym
 
-Jeśli podsieć ASE nie ma jeszcze przypisanej sieciowej grupy zabezpieczeń, utwórz ją. W sieciowej grupy zabezpieczeń ustaw pierwszą regułę zezwalającą na ruch z tagu usługi o nazwie AppServiceManagement na portach 454, 455. To wszystko, co jest wymagane od publicznych adresów IP do zarządzania środowiskiem ASE. Adresy znajdujące się za tym tagiem usługi są używane tylko do administrowania Azure App Service. Ruch związany z zarządzaniem, który przechodzi przez te połączenia, jest szyfrowany i zabezpieczony przy użyciu certyfikatów uwierzytelniania. Typowy ruch w tym kanale obejmuje takie działania, jak polecenia zainicjowane przez klienta i sondy kondycji. 
+Jeśli podsieć ASE nie ma jeszcze przypisanej sieciowej grupy zabezpieczeń, utwórz ją. W ramach sieciowej grupy zabezpieczeń ustaw pierwszą regułę zezwalającą na ruch z tagu usługi o nazwie AppServiceManagement na portach 454, 455. Reguła zezwalająca na dostęp ze znacznika AppServiceManagement jest jedyną czynnością wymaganą od publicznych adresów IP do zarządzania środowiskiem ASE. Adresy znajdujące się za tym tagiem usługi są używane tylko do administrowania Azure App Service. Ruch związany z zarządzaniem, który przechodzi przez te połączenia, jest szyfrowany i zabezpieczony przy użyciu certyfikatów uwierzytelniania. Typowy ruch w tym kanale obejmuje takie działania, jak polecenia zainicjowane przez klienta i sondy kondycji. 
 
 Środowisk ASE, które są tworzone za pomocą portalu z nową podsiecią, są tworzone z sieciowej grupy zabezpieczeń, który zawiera regułę zezwalania dla tagu AppServiceManagement.  
+
+Środowisko ASE musi również zezwalać na żądania przychodzące ze znacznika Load Balancer na porcie 16001. Żądania z Load Balancer na porcie 16001 są w stanie sprawdzać aktywność między Load Balancer i frontonów środowiska ASE. Jeśli port 16001 jest zablokowany, środowisko ASE przejdzie w stan złej kondycji.
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurowanie zapory platformy Azure przy użyciu środowiska ASE 
 
@@ -110,18 +112,18 @@ Poniższe informacje są wymagane tylko wtedy, gdy chcesz skonfigurować urządz
 
 #### <a name="service-endpoint-capable-dependencies"></a>Zależności obsługujące punkt końcowy usługi 
 
-| Punkt końcowy |
+| Endpoint |
 |----------|
 | Azure SQL |
 | Azure Storage |
-| Azure Event Hub |
+| Centrum zdarzeń Azure |
 
 #### <a name="ip-address-dependencies"></a>Zależności adresów IP
 
-| Punkt końcowy | Szczegóły |
+| Endpoint | Szczegóły |
 |----------| ----- |
-| \*:123 | Sprawdzanie zegara NTP. Ruch jest sprawdzany w wielu punktach końcowych na porcie 123 |
-| \*:12000 | Ten port jest używany w przypadku niektórych monitorowania systemu. W przypadku zablokowania niektóre problemy będą trudniejsze do klasyfikacja, ale środowisko ASE będzie nadal działać |
+| \*: 123 | Sprawdzanie zegara NTP. Ruch jest sprawdzany w wielu punktach końcowych na porcie 123 |
+| \*: 12000 | Ten port jest używany w przypadku niektórych monitorowania systemu. W przypadku zablokowania niektóre problemy będą trudniejsze do klasyfikacja, ale środowisko ASE będzie nadal działać |
 | 40.77.24.27:80 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
 | 40.77.24.27:443 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
 | 13.90.249.229:80 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
@@ -135,7 +137,7 @@ Za pomocą zapory platformy Azure automatycznie otrzymujesz wszystko skonfigurow
 
 #### <a name="fqdn-httphttps-dependencies"></a>Zależności HTTP/HTTPS w nazwie FQDN 
 
-| Punkt końcowy |
+| Endpoint |
 |----------|
 |graph.windows.net:443 |
 |login.live.com:443 |
@@ -216,17 +218,17 @@ Za pomocą zapory platformy Azure automatycznie otrzymujesz wszystko skonfigurow
 
 #### <a name="wildcard-httphttps-dependencies"></a>Wieloznaczne zależności HTTP/HTTPS 
 
-| Punkt końcowy |
+| Endpoint |
 |----------|
-|gr-Prod-\*.cloudapp.net:443 |
-| \*.management.azure.com:443 |
-| \*.update.microsoft.com:443 |
-| \*.windowsupdate.microsoft.com:443 |
+|gr-prod-\*. cloudapp.net:443 |
+| \*. management.azure.com:443 |
+| \*. update.microsoft.com:443 |
+| \*. windowsupdate.microsoft.com:443 |
 | \*. identity.azure.net:443 |
 
 #### <a name="linux-dependencies"></a>Zależności systemu Linux 
 
-| Punkt końcowy |
+| Endpoint |
 |----------|
 |wawsinfraprodbay063.blob.core.windows.net:443 |
 |registry-1.docker.io:443 |
@@ -268,15 +270,30 @@ System Linux nie jest dostępny w regionach US Gov i nie jest wymieniony jako op
 
 #### <a name="service-endpoint-capable-dependencies"></a>Zależności obsługujące punkt końcowy usługi ####
 
-| Punkt końcowy |
+| Endpoint |
 |----------|
 | Azure SQL |
 | Azure Storage |
-| Azure Event Hub |
+| Centrum zdarzeń Azure |
+
+#### <a name="ip-address-dependencies"></a>Zależności adresów IP
+
+| Endpoint | Szczegóły |
+|----------| ----- |
+| \*: 123 | Sprawdzanie zegara NTP. Ruch jest sprawdzany w wielu punktach końcowych na porcie 123 |
+| \*: 12000 | Ten port jest używany w przypadku niektórych monitorowania systemu. W przypadku zablokowania niektóre problemy będą trudniejsze do klasyfikacja, ale środowisko ASE będzie nadal działać |
+| 40.77.24.27:80 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
+| 40.77.24.27:443 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
+| 13.90.249.229:80 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
+| 13.90.249.229:443 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
+| 104.45.230.69:80 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
+| 104.45.230.69:443 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
+| 13.82.184.151:80 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
+| 13.82.184.151:443 | Jest to konieczne do monitorowania i generowania alertów dotyczących problemów z ASE |
 
 #### <a name="dependencies"></a>Zależności ####
 
-| Punkt końcowy |
+| Endpoint |
 |----------|
 | \*. ctldl.windowsupdate.com:80 |
 | \*. management.usgovcloudapi.net:80 |
@@ -338,7 +355,7 @@ System Linux nie jest dostępny w regionach US Gov i nie jest wymieniony jako op
 |www.thawte.com:80 |
 |\*ctldl.windowsupdate.com:443 |
 |\*. management.usgovcloudapi.net:443 |
-|\*.update.microsoft.com:443 |
+|\*. update.microsoft.com:443 |
 |admin.core.usgovcloudapi.net:443 |
 |azperfmerges.blob.core.windows.net:443 |
 |azperfmerges.blob.core.windows.net:443 |

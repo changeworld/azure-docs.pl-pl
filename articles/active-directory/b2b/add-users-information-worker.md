@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37dc4a618f01022f4963a14aba921edcce9f4b60
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: abb5c6939d8c88db35a776aa8f2c075a4bdcc609
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74268852"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565421"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Jak użytkownicy w organizacji mogą zapraszać użytkowników-Gości do aplikacji
 
@@ -105,7 +105,7 @@ Samoobsługowe zarządzanie aplikacjami wymaga wprowadzenia wstępnej konfigurac
 2. W okienku nawigacji wybierz pozycję **Azure Active Directory**.
 3. W obszarze **Zarządzaj**wybierz pozycję **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 4. Znajdź aplikację i otwórz ją na liście aplikacji.
-5. W obszarze **Zarządzaj**wybierz pozycję **Logowanie jednokrotne**i skonfiguruj aplikację do logowania jednokrotnego. (Aby uzyskać szczegółowe informacje, zobacz [jak zarządzać logowaniem jednokrotnym dla aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)).
+5. W obszarze **Zarządzaj**wybierz pozycję **Logowanie jednokrotne**i skonfiguruj aplikację do logowania jednokrotnego. (Aby uzyskać szczegółowe informacje, zobacz [jak zarządzać logowaniem jednokrotnym dla aplikacji przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications)).
 6. W obszarze **Zarządzanie**wybierz pozycję **samoobsługa**i Skonfiguruj dostęp do aplikacji samoobsługowej. (Aby uzyskać szczegółowe informacje, zobacz jak używać samoobsługowego [dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to)). 
 
     > [!NOTE]

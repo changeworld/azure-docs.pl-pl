@@ -1,6 +1,6 @@
 ---
 title: Jak generować i przesyłać klucze chronione przez moduł HSM dla Azure Key Vault-Azure Key Vault | Microsoft Docs
-description: Ten artykuł ułatwia planowanie, generowanie i transferowanie własnych kluczy chronionych przez moduł HSM w celu korzystania z Azure Key Vault. Znany również jako BYOK lub własny klucz.
+description: Ten artykuł ułatwia planowanie, generowanie i transferowanie własnych kluczy chronionych przez moduł HSM w celu korzystania z Azure Key Vault. Znana także jako "Przenieś własny klucz" (BYOK).
 services: key-vault
 author: amitbapat
 manager: devtiw
@@ -9,117 +9,127 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 2f5269587d222be9a1628b72c1f3f0dc1b105f3c
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 9b8f1065660ea8331853f8804e709134fe682ba7
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461747"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566118"
 ---
-# <a name="import-hsm-protected-keys-to-key-vault-preview"></a>Importuj klucze chronione przez moduł HSM do Key Vault (wersja zapoznawcza)
+# <a name="import-hsm-protected-keys-to-key-vault-preview"></a>Importowanie kluczy chronionych przez moduł HSM do usługi Key Vault (wersja zapoznawcza)
 
 > [!NOTE]
-> Ta funkcja jest w wersji zapoznawczej i dostępna tylko w regionach **Wschodnie stany USA 2 — euap** i **środkowe stany USA — euap** . 
+> Ta funkcja jest w wersji zapoznawczej i dostępna tylko w regionach platformy Azure *Wschodnie stany USA 2 — euap* i *środkowe stany USA — euap*. 
 
-Aby zwiększyć gwarancję w przypadku korzystania z Azure Key Vault, można importować lub generować klucze w sprzętowych modułach zabezpieczeń (sprzętowych modułów zabezpieczeń), które nigdy nie opuszczają granicy modułu HSM. Ten scenariusz jest często nazywany *własnym kluczem*lub BYOK. W celu ochrony kluczy Azure Key Vault używa rodziny oprogramowanie wspomagające nCipher sprzętowego nshield sprzętowych modułów zabezpieczeń (zweryfikowany poziom 2 trybu FIPS 140-2).
+Aby uzyskać gwarancję w przypadku korzystania z Azure Key Vault, można zaimportować lub wygenerować klucz w sprzętowym module zabezpieczeń (HSM). klucz nigdy nie pozostawia granicy modułu HSM. Ten scenariusz często jest nazywany *własnym kluczem* (BYOK). W celu ochrony kluczy Key Vault używa rodziny oprogramowanie wspomagające nCipher sprzętowego nshield sprzętowych modułów zabezpieczeń (zweryfikowany poziom 2 trybu FIPS 140-2).
 
-Informacje przedstawione w tym temacie ułatwiają planowanie, generowanie i transferowanie własnych kluczy chronionych przez moduł HSM w celu korzystania z Azure Key Vault.
+Informacje przedstawione w tym artykule ułatwiają planowanie, generowanie i transferowanie własnych kluczy chronionych przez moduł HSM w celu korzystania z Azure Key Vault.
 
 > [!NOTE]
 > Ta funkcja jest niedostępna dla platformy Azure w Chinach. 
 > 
 > Ta metoda importowania jest dostępna tylko dla [obsługiwanych sprzętowych modułów zabezpieczeń](#supported-hsms). 
 
-Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](key-vault-overview.md)  Aby zapoznać się z samouczkiem wprowadzającym, które obejmuje tworzenie magazynu kluczy dla kluczy chronionych przez moduł HSM, zobacz [co to jest Azure Key Vault?](key-vault-overview.md).
+Aby uzyskać więcej informacji, a także zapoznać się z samouczkiem, aby rozpocząć korzystanie z Key Vault (w tym o sposobie tworzenia magazynu kluczy dla kluczy chronionych przez moduł HSM), zobacz [co to jest Azure Key Vault?](key-vault-overview.md).
 
 ## <a name="overview"></a>Omówienie
 
-* Wygeneruj klucz (nazywany kluczem wymiany klucza lub KEK) w magazynie kluczy. Musi to być klucz modułu HSM RSA z elementem "Import" jako jedyną operacją klucza. Tylko Magazyn kluczy Premium SKU obsługuje klucze HSM.
-* Pobierz klucz publiczny z KEK jako plik PEM
-* Transfer klucza publicznego KEK do stacji roboczej w trybie offline połączonej z lokalnym modułem HSM.
-* Z poziomu stacji roboczej offline Użyj narzędzia BYOK dostarczonego przez dostawcę modułu HSM, aby utworzyć plik BYOK. 
-* Klucz docelowy jest szyfrowany przy użyciu KEK, który pozostaje zaszyfrowany do momentu przeniesienia do Azure Key Vault sprzętowych modułów zabezpieczeń. Tylko zaszyfrowana wersja klucza spowoduje pozostawienie lokalnego modułu HSM.
-* KEK, który jest generowany w Azure Key Vault sprzętowych modułów zabezpieczeń i nie jest eksportowalny. Sprzętowych modułów zabezpieczeń wymusza, że nie może być wyczyszczona wersja KEK poza Key Vault sprzętowych modułów zabezpieczeń.
-* KEK musi znajdować się w tym samym magazynie kluczy, w którym ma zostać zaimportowany klucz docelowy.
-* Gdy plik BYOK jest przekazywany do Key Vault, Key Vault sprzętowych modułów zabezpieczeń użyć klucza prywatnego KEK w celu odszyfrowania materiału klucza docelowego i zaimportowania go jako klucza HSM. Ta operacja występuje całkowicie w Key Vault sprzętowych modułów zabezpieczeń, a klucz docelowy zawsze pozostaje w granicy ochrony modułu HSM.
+Poniżej przedstawiono omówienie procesu. Konkretne kroki do ukończenia zostały opisane w dalszej części artykułu.
+
+* W Key Vault Wygeneruj klucz (nazywany *kluczem wymiany klucza* (KEK)). KEK musi być kluczem HSM RSA, który ma tylko `import` operacji klucza. Tylko Key Vault SKU Premium obsługuje klucze modułu HSM RSA.
+* Pobierz klucz publiczny KEK jako plik PEM.
+* Prześlij klucz publiczny KEK do komputera w trybie offline, który jest połączony z lokalnym modułem HSM.
+* Na komputerze w trybie offline Użyj narzędzia BYOK dostarczonego przez dostawcę modułu HSM, aby utworzyć plik BYOK. 
+* Klucz docelowy jest szyfrowany przy użyciu KEK, który pozostaje zaszyfrowany do momentu przeniesienia do modułu HSM Key Vault. Tylko zaszyfrowana wersja klucza spowoduje pozostawienie lokalnego modułu HSM.
+* KEK, który jest generowany wewnątrz modułu HSM Key Vault, nie jest eksportowalny. Sprzętowych modułów zabezpieczeń wymusić regułę, która nie istnieje na zewnątrz modułu HSM Key Vault.
+* KEK musi znajdować się w tym samym magazynie kluczy, w którym zostanie zaimportowany klucz docelowy.
+* Gdy plik BYOK jest przekazywany do Key Vault, moduł HSM Key Vault używa klucza prywatnego KEK w celu odszyfrowania materiału klucza docelowego i zaimportowania go jako klucza HSM. Ta operacja występuje całkowicie wewnątrz modułu HSM Key Vault. Klucz docelowy zawsze pozostaje w granicy ochrony modułu HSM.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Zapoznaj się z poniższą tabelą, aby uzyskać listę wymagań wstępnych dotyczących przenoszenia własnych kluczy (BYOK) dla Azure Key Vault.
+Poniższa tabela zawiera listę wymagań wstępnych dotyczących używania programu BYOK w Azure Key Vault:
 
 | Wymaganie | Więcej informacji |
 | --- | --- |
-| Subskrypcja platformy Azure |Aby utworzyć Azure Key Vault, musisz mieć subskrypcję platformy Azure: [zarejestruj się, aby skorzystać z bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/) |
-| Magazyn kluczy (SKU Premium) do importowania kluczy chronionych przez moduł HSM |Więcej informacji o warstwach i możliwościach usługi dla Azure Key Vault można znaleźć w witrynie internetowej [cennika Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) . |
-| Moduł HSM z obsługiwanej listy sprzętowych modułów zabezpieczeń wraz z narzędziem BYOK i instrukcjami dostarczonymi przez dostawcę modułu HSM | Musisz mieć dostęp do sprzętowego modułu zabezpieczeń i podstawowej wiedzy operacyjnej sprzętowych modułów zabezpieczeń. Zobacz [obsługiwane sprzętowych modułów zabezpieczeń](#supported-hsms). |
-| Interfejs wiersza polecenia platformy Azure w wersji 2.1.0 lub nowszej | Aby uzyskać więcej informacji [, zobacz Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) .|
+| Subskrypcja platformy Azure |Do utworzenia magazynu kluczy w Azure Key Vault potrzebna jest subskrypcja platformy Azure. [Zarejestruj się, aby skorzystać z bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/). |
+| Jednostka SKU Key Vault Premium do importowania kluczy chronionych przez moduł HSM |Aby uzyskać więcej informacji na temat warstw i możliwości usług w Azure Key Vault, zobacz [cennik Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). |
+| Moduł HSM z listy obsługiwanych sprzętowych modułów zabezpieczeń oraz narzędzie BYOK i instrukcje dostarczone przez dostawcę modułu HSM | Musisz mieć uprawnienia do modułu HSM oraz podstawową wiedzę na temat sposobu korzystania z modułu HSM. Zobacz [obsługiwane sprzętowych modułów zabezpieczeń](#supported-hsms). |
+| Interfejs wiersza polecenia platformy Azure w wersji 2.1.0 lub nowszej | Zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).|
 
 ## <a name="supported-hsms"></a>Obsługiwane sprzętowych modułów zabezpieczeń
 
-|Nazwa dostawcy modułu HSM|Obsługiwane modele HSM|Dodatkowe szczegóły|
+|Nazwa dostawcy modułu HSM|Obsługiwane modele HSM|Więcej informacji|
 |---|---|---|
 |Firmy Thales|Rodzina SafeNet Luna modułu HSM 7 z oprogramowaniem układowym w wersji 7,3 lub nowszej| [SafeNet Luna BYOK — narzędzie i dokumentacja](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
 
-
 > [!NOTE]
-> Aby zaimportować klucze chronione przez moduł HSM z rodziny oprogramowanie wspomagające nCipher sprzętowego nshield sprzętowych modułów zabezpieczeń, [Użyj starszej procedury BYOK](hsm-protected-keys-legacy.md)
+> Aby zaimportować klucze chronione przez moduł HSM z rodziny oprogramowanie wspomagające nCipher sprzętowego nshield sprzętowych modułów zabezpieczeń, użyj [starszej procedury BYOK](hsm-protected-keys-legacy.md).
 
+## <a name="supported-key-types"></a>Obsługiwane typy kluczy
 
-## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generowanie i transferowanie klucza do Azure Key Vault modułu HSM
+|Nazwa klucza|Typ klucza|Rozmiar klucza|Origin|Opis|
+|---|---|---|---|---|
+|Klucz wymiany klucza (KEK)|RSA| 2 048 — bit<br />3 072 — bit<br />4 096 — bit|Moduł HSM Azure Key Vault|Para kluczy RSA z kopią zapasową modułu HSM wygenerowaną w Azure Key Vault|
+|Klucz docelowy|RSA|2 048 — bit<br />3 072 — bit<br />4 096 — bit|Moduł HSM dostawcy|Klucz, który ma zostać przesłany do modułu HSM Azure Key Vault|
 
-Aby wygenerować i przesłać klucz do modułu HSM Azure Key Vault, należy wykonać następujące czynności:
+## <a name="generate-and-transfer-your-key-to-the-key-vault-hsm"></a>Generowanie i przenoszenie klucza do modułu HSM Key Vault
+
+Aby wygenerować i przesłać klucz do Key Vault modułu HSM:
 
 * [Krok 1. Generowanie elementu KEK](#step-1-generate-a-kek)
-* [Krok 2. Pobieranie klucza publicznego KEK](#step-2-download-kek-public-key)
+* [Krok 2. Pobieranie klucza publicznego KEK](#step-2-download-the-kek-public-key)
 * [Krok 3. Generowanie i przygotowywanie klucza do przeniesienia](#step-3-generate-and-prepare-your-key-for-transfer)
 * [Krok 4. przeniesienie klucza do Azure Key Vault](#step-4-transfer-your-key-to-azure-key-vault)
 
 ### <a name="step-1-generate-a-kek"></a>Krok 1. Generowanie elementu KEK
 
-KEK (klucz wymiany klucza) to klucz RSA wygenerowany w module HSM Key Vault. Ten klucz służy do szyfrowania klucza do zaimportowania (klucz docelowy).
+KEK jest kluczem RSA, który jest generowany w Key Vault module HSM. KEK jest używany do szyfrowania klucza do zaimportowania (klucz *docelowy* ).
 
 KEK musi być:
-1. klucz modułu **HSM RSA** (2048-bitowy lub 3072-bitowy lub 4096-bitowy)
-2. generowane w tym samym magazynie kluczy, w którym zamierzasz zaimportować klucz docelowy
-3. utworzono z dozwolonymi operacjami Key ustawionymi na **Import**
+- Klucz modułu HSM RSA (2 048-bitowy; 3 072-bitowy; lub 4 096-bitowy)
+- generowane w tym samym magazynie kluczy, w którym zamierzasz zaimportować klucz docelowy
+- Utworzono z dozwolonymi operacjami Key ustawionymi na `import`
 
-Za pomocą polecenia [AZ Key magazynu klucz Create Utwórz](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) KEK z zestawem operacji Key, które mają zostać zaimportowane. Zanotuj identyfikator klucza "dziecko" zwrócony przez poniższe polecenie. Będzie ona potrzebna w [kroku 3](#step-3-generate-and-prepare-your-key-for-transfer).
-
+Za pomocą polecenia [AZ Key magazynu Utwórz](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) polecenie, aby utworzyć element KEK, który ma kluczowe operacje ustawione na `import`. Zapisz identyfikator klucza (`kid`), który jest zwracany przez następujące polecenie. (Wartość `kid` zostanie użyta w [kroku 3](#step-3-generate-and-prepare-your-key-for-transfer)).
 
 ```azurecli
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --vault-name ContosoKeyVaultHSM
 ```
 
-### <a name="step-2-download-kek-public-key"></a>Krok 2. Pobieranie klucza publicznego KEK
+### <a name="step-2-download-the-kek-public-key"></a>Krok 2. Pobieranie klucza publicznego KEK
 
-Aby pobrać klucz publiczny KEK do pliku PEM, użyj okna [AZ Key magazynu Download](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download) . Importowany klucz docelowy jest szyfrowany przy użyciu klucza publicznego KEK.
+Użyj [AZ Key magazynu klucza Download](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download) , aby pobrać klucz publiczny KEK do pliku PEM. Zaimportowany klucz docelowy jest szyfrowany przy użyciu klucza publicznego KEK.
 
 ```azurecli
 az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
 ```
 
-Prześlij plik KEKforBYOK. PublicKey. pem do stacji roboczej w trybie offline. Ten plik będzie potrzebny w następnym kroku.
+Prześlij plik KEKforBYOK. PublicKey. pem do komputera w trybie offline. Ten plik będzie potrzebny w następnym kroku.
 
 ### <a name="step-3-generate-and-prepare-your-key-for-transfer"></a>Krok 3. Generowanie i przygotowywanie klucza do przeniesienia
 
-Zapoznaj się z dokumentacją dostawcy modułu HSM, aby pobrać i zainstalować narzędzie BYOK. Wykonaj instrukcje od dostawcy modułu HSM, aby wygenerować klucz docelowy, a następnie Utwórz pakiet transferu klucza (plik BYOK). Narzędzie BYOK użyje identyfikatora klucza z [kroku 1](#step-1-generate-a-kek) i KEKforBYOK. PublicKey. pem pobranego w [kroku 2](#step-2-download-kek-public-key) , aby wygenerować zaszyfrowany klucz docelowy w pliku BYOK.
+Zapoznaj się z dokumentacją dostawcy modułu HSM, aby pobrać i zainstalować narzędzie BYOK. Postępuj zgodnie z instrukcjami dostawcy modułu HSM, aby wygenerować klucz docelowy, a następnie Utwórz pakiet transferu kluczy (plik BYOK). Narzędzie BYOK użyje `kid` z [kroku 1](#step-1-generate-a-kek) i pliku KEKforBYOK. PublicKey. pem pobranego w [kroku 2](#step-2-download-the-kek-public-key) , aby wygenerować zaszyfrowany klucz docelowy w pliku BYOK.
 
-Prześlij plik BYOK do podłączonej stacji roboczej.
+Prześlij plik BYOK na podłączonym komputerze.
 
 > [!NOTE] 
-> Klucz docelowy musi być kluczem RSA o rozmiarze 2048-bitowym lub 3072-bitowym lub 4096-bitowym. Importowanie kluczy krzywej eliptyczna nie jest teraz obsługiwane.
-> <br/><strong>Znany problem:</strong> Importowanie klucza docelowego RSA 4K z SafeNet Luna sprzętowych modułów zabezpieczeń nie powiodło się. Po rozwiązaniu problemu ten dokument zostanie zaktualizowany.
+> Importowanie kluczy RSA 1 024-bitowe nie jest obsługiwane. Obecnie Importowanie klucza krzywej eliptyczna (EC) nie jest obsługiwane.
+> 
+> **Znany problem**: Importowanie klucza docelowego RSA 4K z SafeNet Luna sprzętowych modułów zabezpieczeń nie powiodło się. Po rozwiązaniu problemu ten artykuł zostanie zaktualizowany.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>Krok 4. przeniesienie klucza do Azure Key Vault
 
-W tym ostatnim kroku Przenieś pakiet transferu kluczy (plik BYOK) z rozłączonej stacji roboczej do stacji roboczej podłączonej do Internetu, a następnie za pomocą polecenia [AZ Key magazynu klucza import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) Przekaż Azure Key Vault plik BYOK, aby ukończyć Importowanie klucza.
+Aby ukończyć Importowanie klucza, Przenieś pakiet transferu kluczy (plik BYOK) z odłączonego komputera na komputer połączony z Internetem. Aby przekazać plik BYOK do modułu HSM Key Vault, użyj polecenia [AZ Key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) .
 
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok
 ```
 
-Jeśli przekazywanie zakończy się pomyślnie, zobaczysz wyświetlone właściwości klucza, który został właśnie zaimportowany.
+Jeśli przekazywanie zakończy się pomyślnie, interfejs wiersza polecenia platformy Azure wyświetli właściwości zaimportowanego klucza.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz można używać tego klucza chronionego przez moduł HSM w magazynie kluczy. Aby uzyskać więcej informacji, zobacz to [porównanie](https://azure.microsoft.com/pricing/details/key-vault/)cen i funkcji.
+Teraz można używać tego klucza chronionego przez moduł HSM w magazynie kluczy. Aby uzyskać więcej informacji, zobacz [to porównanie cen i funkcji](https://azure.microsoft.com/pricing/details/key-vault/).
+
+
+

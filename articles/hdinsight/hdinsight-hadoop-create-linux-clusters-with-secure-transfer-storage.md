@@ -7,52 +7,40 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/22/2020
-ms.openlocfilehash: a8176cc07296b7de7b6aba5356485280ef5ebde1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/18/2020
+ms.openlocfilehash: c1e5ca8b0bb828e5e8ce896bba6a5278266b118e
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548819"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560086"
 ---
-# <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Tworzenie klastra Apache Hadoop z kontami magazynu Secure transfer w usłudze Azure HDInsight
+# <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Apache Hadoop klastrów z kontami magazynu Secure transfer w usłudze Azure HDInsight
 
 Funkcja [Wymagany bezpieczny transfer](../storage/common/storage-require-secure-transfer.md) poprawia bezpieczeństwo konta usługi Azure Storage poprzez wymuszanie kierowania wszystkich zapytań do konta przez zabezpieczone połączenie. Funkcja ta oraz schemat wasbs są obsługiwane tylko w klastrze usługi HDInsight w wersji 3.6 lub nowszym.
 
-**Włączenie bezpiecznego transferu magazynu po utworzeniu klastra może spowodować błędy przy użyciu konta magazynu i nie jest to zalecane. Lepszym rozwiązaniem jest utworzenie nowego klastra z włączoną właściwością.**
+> [!IMPORTANT]
+> Włączenie bezpiecznego transferu magazynu po utworzeniu klastra może spowodować błędy przy użyciu konta magazynu i nie jest to zalecane. Lepszym rozwiązaniem jest utworzenie nowego klastra przy użyciu konta magazynu z już włączonym bezpiecznym transferem.
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="storage-accounts"></a>Konta magazynu
 
-Przed rozpoczęciem tego artykułu musisz dysponować:
+### <a name="azure-portal"></a>Portalu Azure
 
-* Subskrypcja platformy Azure: Aby utworzyć bezpłatne konto próbne miesięczne, przejdź do [Azure.Microsoft.com/Free](https://azure.microsoft.com/free).
-* Konto usługi Azure Storage z włączonym bezpiecznym transferem. Aby uzyskać instrukcje, zobacz [Tworzenie konta magazynu](../storage/common/storage-account-create.md) oraz [Wymaganie bezpiecznego transferu](../storage/common/storage-require-secure-transfer.md). 
-* Kontener obiektów BLOB na koncie magazynu.
+Domyślnie właściwość Required Secure transfer jest włączona podczas tworzenia konta magazynu w programie Azure Portal.
 
-## <a name="create-cluster"></a>Tworzenie klastra
+Aby zaktualizować istniejące konto magazynu za pomocą Azure Portal, zobacz [Wymagaj bezpiecznego transferu z Azure Portal](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-for-an-existing-storage-account).
 
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+### <a name="powershell"></a>Program PowerShell
 
-W tej sekcji tworzysz klaster Hadoop w usłudze HDInsight przy użyciu [szablonu usługi Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md). Szablon znajduje się w serwisie [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/). Środowisko szablonu Menedżer zasobów nie jest wymagane w przypadku tego artykułu. Aby poznać inne metody tworzenia klastrów i zrozumieć właściwości używane w tym artykule, zobacz [Tworzenie klastrów usługi HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+Dla polecenia cmdlet programu PowerShell [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)upewnij się, że parametr `-EnableHttpsTrafficOnly` jest ustawiony na `1`.
 
-1. Kliknij poniższy obraz, aby zalogować się do platformy Azure i otworzyć szablon usługi Resource Manager w witrynie Azure Portal.
+Aby zaktualizować istniejące konto magazynu za pomocą programu PowerShell, zobacz [Wymagaj bezpiecznego transferu przy użyciu programu PowerShell](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell).
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-existing-default-storage-account%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-2. Postępuj zgodnie z instrukcjami, aby utworzyć klaster o następujących specyfikacjach:
+W przypadku polecenia platformy Azure z INTERFEJSem poleceń [AZ Storage account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)upewnij się, że parametr `--https-only` jest ustawiony na `true`.
 
-    * Określ wersję usługi HDInsight na 3.6. Wymagana jest wersja 3.6 lub nowsza.
-    * Określ konto magazynu z włączonym bezpiecznym transferem.
-    * Użyj krótkiej nazwy konta magazynu.
-    * Konto magazynu i kontener obiektów blob należy utworzyć wcześniej.
-
-      Aby uzyskać instrukcje, zobacz [Tworzenie klastra](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
-
-Jeśli użyjesz akcji skryptu do udostępnienia własnych plików konfiguracyjnych, musisz użyć rozwiązania wasbs w następujących ustawieniach:
-
-* fs.defaultFS (lokacja podstawowa)
-* spark.eventLog.dir
-* spark.history.fs.logDirectory
+Aby zaktualizować istniejące konto magazynu za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [Wymagaj bezpiecznego transferu przy użyciu interfejsu wiersza polecenia platformy Azure](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli).
 
 ## <a name="add-additional-storage-accounts"></a>Dodawanie kolejnych kont magazynu
 
@@ -64,25 +52,6 @@ Dostępnych jest kilka opcji dodawania kolejnych kont magazynu z bezpiecznym tra
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób tworzenia klastra usługi HDInsight i włączania bezpiecznego transferu do kont magazynu.
-
-Aby dowiedzieć się więcej na temat analizowania danych za pomocą usługi HDInsight, zobacz następujące artykuły:
-
-* Aby dowiedzieć się więcej o korzystaniu z [Apache Hive](https://hive.apache.org/) z usługą HDInsight, w tym o tym, jak wykonywać zapytania Hive z programu Visual Studio, zobacz [Korzystanie z Apache Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md).
-* Aby dowiedzieć się więcej o [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), sposób pisania programów przetwarzających dane w usłudze Hadoop, zobacz [Używanie Apache Hadoop MapReduce z usługą HDInsight](hadoop/hdinsight-use-mapreduce.md).
-* Aby dowiedzieć się więcej o korzystaniu z narzędzi HDInsight Tools for Visual Studio do analizowania danych w usłudze HDInsight, zobacz [Rozpoczynanie pracy z narzędziami Apache Hadoop programu Visual Studio dla usługi HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
-
-Aby dowiedzieć się więcej o sposobie przechowywania danych przez usługę HDInsight lub sposobie przesyłania danych do usługi HDInsight, zobacz następujące artykuły:
-
+* Korzystanie z usługi Azure Storage (WASB) zamiast [Apache HADOOP HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) jako domyślnego magazynu danych
 * Aby uzyskać informacje o sposobie używania usługi Azure Storage przez usługę HDInsight, zobacz [Używanie usługi Azure Storage z usługą HDInsight](hdinsight-hadoop-use-blob-storage.md).
 * Aby uzyskać informacje na temat przekazywania danych do usługi HDInsight, zobacz [Przekazywanie danych do usługi HDInsight](hdinsight-upload-data.md).
-
-Aby dowiedzieć się więcej o tworzeniu klastra usługi HDInsight i zarządzaniu nim, zobacz następujące artykuły:
-
-* Aby uzyskać więcej informacji na temat zarządzania opartym na systemie Linux klastrem usługi HDInsight, zobacz artykuł [Zarządzanie klastrami usługi HDInsight za pomocą narzędzia Apache Ambari](hdinsight-hadoop-manage-ambari.md).
-* Aby dowiedzieć się więcej na temat opcji, które można wybrać podczas tworzenia klastra usługi HDInsight, zobacz [Tworzenie klastra usługi HDInsight w systemie Linux przy użyciu niestandardowych opcji](hdinsight-hadoop-provision-linux-clusters.md).
-* Jeśli znasz system Linux i Apache Hadoop, ale chcesz poznać szczegóły dotyczące platformy Hadoop w usłudze HDInsight, zobacz [Praca z usługą HDInsight w systemie Linux](hdinsight-hadoop-linux-information.md). Artykuł zawiera następujące informacje:
-
-  * Adresy URL usług hostowanych w klastrze, takie jak [Apache Ambari](https://ambari.apache.org/) i [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat)
-  * Lokalizacja [Apache Hadoop](https://hadoop.apache.org/) plików i przykładów w lokalnym systemie plików
-  * Korzystanie z usługi Azure Storage (WASB) zamiast [Apache HADOOP HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) jako domyślnego magazynu danych

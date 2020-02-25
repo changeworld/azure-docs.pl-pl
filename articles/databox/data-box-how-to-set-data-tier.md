@@ -1,6 +1,6 @@
 ---
-title: Użyj usługi Azure Data Box, Azure Data Box mocno do wysyłania danych na gorącą zimne, archiwum warstwy obiektu blob | Microsoft Docs danych
-description: Opisuje sposób używania urządzenia Azure Data Box lub Azure Data Box mocno do wysyłania danych do odpowiedniego bloku warstwy magazynowania obiektu blob np. gorąca, zimnego lub archiwum
+title: Wysyłaj dane do gorącej, zimnej, zarchiwizowanej warstwy obiektów BLOB za pośrednictwem Azure Data Box/Azure Data Box Heavy
+description: Opisuje sposób użycia Azure Data Box lub Azure Data Box Heavy do wysyłania danych do odpowiedniej warstwy magazynu blokowych obiektów blob, takiej jak gorąca, zimna lub archiwalna
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,61 +8,61 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: ea208c395e2ef69ce8f28052351643e963cceb05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31178284313ad7dafb094b109a75d4550cabd39c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427880"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560375"
 ---
-# <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Wysyłanie danych do odpowiedniej warstwy obiektu blob usługi Azure Storage za pomocą usługi Azure Data Box lub Azure Data Box duże
+# <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Używanie Azure Data Box lub Azure Data Box Heavy do wysyłania danych do odpowiedniej warstwy obiektów BLOB usługi Azure Storage
 
-Urządzenie Azure Data Box przeniesieniem urządzenia magazynującego własności przenosi duże ilości danych na platformie Azure. Wypełnij w górę urządzenia przy użyciu danych i przywrócić go. Dane z urządzenia Data Box jest przekazywany do domyślnej warstwy skojarzone z kontem magazynu. Dane można następnie przenieść do innej warstwy magazynu.
+Azure Data Box przenosi duże ilości danych na platformę Azure, wysyłając własne urządzenie magazynujące. Wypełnianie urządzenia danymi i zwracanie go. Dane z urządzenie Data Box są przekazywane do warstwy domyślnej skojarzonej z kontem magazynu. Następnie można przenieść dane do innej warstwy magazynowania.
 
-W tym artykule opisano, jak dane, które zostanie przekazany przez urządzenie Data Box można przenieść na gorąca, zimnego lub archiwalna warstwy obiektu blob. Ten artykuł dotyczy zarówno usługi Azure Data Box, jak i duże pole danych platformy Azure.
+W tym artykule opisano, jak dane przekazywane przez urządzenie Data Box można przenieść do warstwy obiektów BLOB gorąca, zimna lub archiwalna. Ten artykuł dotyczy zarówno Azure Data Box, jak i Azure Data Box Heavy.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="choose-the-correct-storage-tier-for-your-data"></a>Wybierz warstwę magazynu poprawną danych
+## <a name="choose-the-correct-storage-tier-for-your-data"></a>Wybieranie odpowiedniej warstwy magazynowania dla danych
 
-Usługa Azure storage umożliwia trzy różne warstwy do przechowywania danych w sposób najbardziej efektywny — gorąca, zimnego lub archiwum. Warstwa magazynu gorącego jest zoptymalizowana pod kątem magazynowania danych, z których korzysta się często. Magazynu gorącego ma wyższe koszty magazynowania, niż w warstwach chłodna i archiwum magazynu, ale najniższe koszty dostępu.
+Usługa Azure Storage umożliwia korzystanie z trzech różnych warstw do przechowywania danych w najbardziej opłacalny sposób — gorąca, chłodna lub archiwalna. Gorąca warstwa magazynowania jest zoptymalizowana pod kątem przechowywania danych, które są często dostępne. Magazyn gorąca ma wyższe koszty magazynowania niż chłodna i archiwum magazynu, ale najniższy koszt dostępu.
 
-Warstwa magazynu chłodnego jest dla rzadko używanych danych, które muszą być przechowywane za okres co najmniej 30 dni. Koszt magazynu na potrzeby zimnych warstwa jest niższa niż w przypadku warstwy magazynu gorącego, ale opłaty za dostęp do danych jest wysokie, w porównaniu do warstwy gorąca i używanie.
+Warstwa magazynowania chłodna jest dla rzadko używanych danych, które muszą być przechowywane przez co najmniej 30 dni. Koszt magazynu dla warstwy zimnej jest niższy niż warstwa magazynowania gorąca, ale opłaty za dostęp do danych są wysokie w porównaniu z warstwą gorącą.
 
-Warstwę archiwum platformy Azure jest w trybie offline i oferuje najniższe koszty magazynowania, ale także najwyższe koszty dostępu. Ta warstwa jest przeznaczona dla danych, która pozostaje w magazynie archiwizacji za okres co najmniej 180 dni. Aby uzyskać szczegółowe informacje o każdej z tych warstw i model cenowy, przejdź do [Porównanie warstw magazynowania](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
+Warstwa usługi Azure Archive jest w trybie offline i oferuje najniższe koszty magazynowania, ale również najwyższe koszty dostępu. Ta warstwa jest przeznaczona dla danych, które pozostają w magazynie archiwalnym przez co najmniej 180 dni. Aby uzyskać szczegółowe informacje o każdej z tych warstw i modelu cen, przejdź do [porównania warstw magazynowania](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
 
-Duże pole danych lub danych z urządzenia Data Box jest przekazywany do warstwy magazynowania, który jest skojarzony z kontem magazynu. Podczas tworzenia konta magazynu, można określić warstwy dostępu jako gorąca lub zimnego. W zależności od wzorca dostępu kosztów i obciążeń, można przenieść dane z domyślnej warstwy do innej warstwy magazynu.
+Dane z urządzenie Data Box lub Data Box Heavy są przekazywane do warstwy magazynowania skojarzonej z kontem magazynu. Podczas tworzenia konta magazynu można określić warstwę dostępu jako gorąca lub zimna. W zależności od wzorca dostępu do obciążenia i kosztu można przenieść te dane z warstwy domyślnej do innej warstwy magazynowania.
 
-Może być tylko warstwy dane magazynu obiektów Blob storage lub ogólnego przeznaczenia w wersji 2 (GPv2) konta. Konta ogólnego przeznaczenia w wersji 1 (GPv1) nie obsługują warstw. Aby wybrać warstwę magazynowania poprawne dla Twoich danych, zapoznaj się z uwagami szczegółowo opisane w [usługi Azure Blob storage: — Wersja Premium, warstwy magazynowania gorąca, chłodna i archiwalna](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
+Możesz tylko warstwy magazynu obiektów w usłudze BLOB Storage lub Ogólnego przeznaczenia v2 (GPv2). Konta ogólnego przeznaczenia w wersji 1 (GPv1) nie obsługują warstw. Aby wybrać poprawną warstwę magazynowania danych, zapoznaj się z zagadnieniami opisanymi w temacie [Azure Blob Storage: warstwy Premium, gorąca, chłodna i archiwalna](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
 
-## <a name="set-a-default-blob-tier"></a>Ustaw domyślną warstwę obiektu blob
+## <a name="set-a-default-blob-tier"></a>Ustawianie domyślnej warstwy obiektów BLOB
 
-Domyślną warstwę obiektu blob jest określona, po utworzeniu konta magazynu w witrynie Azure portal. Po wybraniu typu magazynu jako konta GPv2 lub Blob storage można można określić atrybutu warstwy dostępu. Warstwy gorąca i używanie jest zaznaczone domyślnie.
+Domyślna warstwa obiektów BLOB jest określana podczas tworzenia konta magazynu w Azure Portal. Po wybraniu typu magazynu jako GPv2 lub magazynu obiektów blob, można określić atrybut Warstwa dostępu. Domyślnie jest wybierana warstwa gorąca.
 
-Warstw nie może być określona, jeśli chcesz utworzyć nowe konto w przypadku porządkowania pola danych lub duże pole danych. Po utworzeniu konta można zmodyfikować konto w portalu, aby ustawić domyślną warstwę dostępu.
+Nie można określić warstw, jeśli próbujesz utworzyć nowe konto podczas porządkowania urządzenie Data Box lub Data Box Heavy. Po utworzeniu konta można zmodyfikować konto w portalu, aby ustawić domyślną warstwę dostępu.
 
-Alternatywnie utworzyć konta magazynu najpierw za pomocą atrybutu warstwy dostępu określony. Podczas tworzenia zamówienie urządzenia Data Box lub duże pole danych, wybierz istniejące konto magazynu. Aby uzyskać więcej informacji na temat sposobu ustawiania domyślnej warstwy obiektu blob podczas tworzenia konta magazynu, przejdź do [Tworzenie konta magazynu w witrynie Azure portal](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal).
+Alternatywnie utworzysz konto magazynu z określonym atrybutem warstwy dostępu. Podczas tworzenia urządzenie Data Box lub zamówienia Data Box Heavy Wybierz istniejące konto magazynu. Aby uzyskać więcej informacji na temat sposobu ustawiania domyślnej warstwy obiektów BLOB podczas tworzenia konta magazynu, przejdź do obszaru [Tworzenie konta magazynu w Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal).
 
-## <a name="move-data-to-a-non-default-tier"></a>Przenoszenie danych do warstwy innych niż domyślne
+## <a name="move-data-to-a-non-default-tier"></a>Przenoszenie danych do warstwy innej niż domyślna
 
-Po przekazaniu danych z urządzenia Data Box do warstwy domyślne można przenieść dane do warstwy innych niż domyślne. Istnieją dwa sposoby, w celu przeniesienia tych danych do warstwy innych niż domyślne.
+Po przekazaniu danych z urządzenia urządzenie Data Box do warstwy domyślnej można przenieść dane do warstwy innej niż domyślna. Istnieją dwa sposoby przenoszenia tych danych do warstwy innej niż domyślna.
 
-- **Zarządzanie cyklem życia magazynu w usłudze Azure Blob** — podejście oparte na zasadach można użyć do automatycznego warstwy danych lub wygaśnie z końcem jej cyklu projektowania. Aby uzyskać więcej informacji, przejdź do [zarządzania cyklem życia magazynu obiektów Blob platformy Azure](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts).
-- **Obsługa skryptów** — podejście inicjowanych przez skrypty za pomocą programu Azure PowerShell można użyć w celu włączenia obsługi warstw na poziomie obiektu blob. Możesz wywołać `SetBlobTier` operację, aby ustawić warstwę w obiekcie blob.
+- **Zarządzanie cyklem życia usługi Azure Blob Storage** — możesz użyć podejścia opartego na zasadach, aby automatycznie warstwy lub wygasnąć po zakończeniu cyklu życia. Aby uzyskać więcej informacji, przejdź do [obszaru Zarządzanie cyklem życia usługi Azure Blob Storage](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts).
+- **Obsługa skryptów** — można użyć podejścia skryptowego za pośrednictwem Azure PowerShell, aby włączyć obsługę warstw na poziomie obiektów BLOB. Można wywołać operację `SetBlobTier`, aby ustawić warstwę na obiekcie blob.
 
-## <a name="use-azure-powershell-to-set-the-blob-tier"></a>Ustawianie warstwy obiektu blob przy użyciu programu Azure PowerShell
+## <a name="use-azure-powershell-to-set-the-blob-tier"></a>Użyj Azure PowerShell, aby ustawić warstwę obiektów BLOB
 
-Poniższe kroki opisują, jak można ustawić warstwy obiektu blob archiwum przy użyciu skryptu programu Azure PowerShell.
+W poniższych krokach opisano, jak można ustawić warstwę obiektów BLOB do archiwizacji przy użyciu skryptu Azure PowerShell.
 
-1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień. Upewnij się, że uruchomione PowerShell 5.0 lub nowszy. Wpisz:
+1. Otwórz sesję programu Windows PowerShell z podwyższonym poziomem uprawnień. Upewnij się, że używany jest program PowerShell w wersji 5,0 lub nowszej. Wpisz:
 
    `$PSVersionTable.PSVersion`     
 
-2. Zaloguj się do programu Azure PowerShell. 
+2. Zaloguj się do Azure PowerShell. 
 
    `Login-AzAccount`  
 
-3. Zdefiniuj zmienne do konta magazynu, klucz dostępu, kontenerów i kontekst magazynu.
+3. Zdefiniuj zmienne dla konta magazynu, klucza dostępu, kontenera i kontekstu magazynu.
 
     ```powershell
     $StorageAccountName = "<enter account name>"
@@ -71,11 +71,11 @@ Poniższe kroki opisują, jak można ustawić warstwy obiektu blob archiwum przy
     $ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
     ```
 
-4. Pobierz wszystkie obiekty BLOB w kontenerze.
+4. Pobierz wszystkie obiekty blob w kontenerze.
 
     `$blobs = Get-AzStorageBlob -Container "<enter container name>" -Context $ctx`
  
-5. Ustawić warstwę wszystkich obiektów blob w kontenerze do archiwum.
+5. Ustaw warstwę wszystkich obiektów BLOB w kontenerze do archiwizacji.
 
     ```powershell
     Foreach ($blob in $blobs) {
@@ -112,9 +112,9 @@ Poniższe kroki opisują, jak można ustawić warstwy obiektu blob archiwum przy
     PS C:\WINDOWS\system32>
     ```
    > [!TIP]
-   > Jeśli chcesz, aby dane można zarchiwizować na pozyskiwania, należy ustawić domyślną warstwę konta gorąca. Jeśli domyślna warstwa chłodna, to ma 30-dniowej wczesne usunięcie karę Jeśli dane są przenoszone do archiwum natychmiast.
+   > Jeśli chcesz, aby dane były archiwizowane po pozyskaniu, Ustaw domyślną warstwę konta na gorąca. Jeśli warstwa domyślna to chłodna, nastąpi 30-dniowe wczesne usunięcie, jeśli dane są natychmiastowo przenoszone do archiwum.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
--  Dowiedz się, jak adres [typowych scenariuszy warstw danych z regułami zasad cyklu życia](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts#examples)
+-  Dowiedz się, jak rozwiązywać [typowe scenariusze dotyczące warstw danych przy użyciu reguł zasad cyklu życia](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts#examples)
 

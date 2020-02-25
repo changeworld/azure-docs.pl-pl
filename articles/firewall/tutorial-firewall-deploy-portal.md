@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 38ee180fa59fec6619010a3ded1f6837a5ca5239
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371339"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558880"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -26,7 +26,7 @@ Jednym ze sposobów kontrolowania dostępu do sieciowego ruchu wychodzącego z p
 
 Ruch sieciowy podlega skonfigurowanym regułom zapory podczas kierowania ruchu sieciowego do zapory jako bramy domyślnej podsieci.
 
-W tym samouczku utworzysz uproszczoną pojedynczą sieć wirtualną z trzema podsieciami w celu łatwego wdrażania. W przypadku wdrożeń produkcyjnych zaleca się [model Hub i szprych](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) , gdzie Zapora znajduje się w własnej sieci wirtualnej. Serwery obciążenia znajdują się w sieci wirtualnych komunikacji równorzędnej w tym samym regionie co co najmniej jedna podsieć.
+W tym samouczku utworzysz uproszczoną pojedynczą sieć wirtualną z trzema podsieciami w celu łatwego wdrażania. W przypadku wdrożeń produkcyjnych zaleca się [model Hub i szprych](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) . Zapora znajduje się w własnej sieci wirtualnej. Serwery obciążenia znajdują się w sieci wirtualnych komunikacji równorzędnej w tym samym regionie co co najmniej jedna podsieć.
 
 * **AzureFirewallSubnet** — w tej podsieci znajduje się zapora.
 * **Workload-SN** — w tej podsieci znajduje się serwer obciążeń. Ruch sieciowy tej podsieci przechodzi przez zaporę.
@@ -60,7 +60,7 @@ Grupa zasobów zawiera wszystkie zasoby wymagane w tym samouczku.
 2. W menu Azure Portal wybierz pozycję **grupy zasobów** lub Wyszukaj, a następnie wybierz pozycję *grupy zasobów* z dowolnej strony. Następnie wybierz pozycję **Dodaj**.
 3. W obszarze **Nazwa grupy zasobów**wprowadź polecenie *test-PD-RG*.
 4. W polu **Subskrypcja** wybierz subskrypcję.
-5. W polu **Lokalizacja grupy zasobów** wybierz lokalizację. Wszystkie kolejne zasoby, które utworzysz, muszą znajdować się w tej samej lokalizacji.
+5. W polu **Lokalizacja grupy zasobów** wybierz lokalizację. Wszystkie inne zasoby, które tworzysz, muszą znajdować się w tej samej lokalizacji.
 6. Wybierz pozycję **Utwórz**.
 
 ### <a name="create-a-vnet"></a>Tworzenie sieci wirtualnej
@@ -193,10 +193,11 @@ Jest to reguła aplikacji zezwalająca na dostęp wychodzący do www.google.com.
 6. W polu **Priorytet** wpisz wartość **200**.
 7. W polu **Akcja** wybierz opcję **Zezwalaj**.
 8. W obszarze **reguły**, **docelowe nazwy FQDN**, w polu **Nazwa**wpisz **Zezwól-Google**.
-9. W polu **Adresy źródłowe** wpisz wartość **10.0.2.0/24**.
-10. W polu **Protocol:port** wpisz wartość **http, https**.
-11. W przypadku **docelowych nazw FQDN**wpisz **www.Google.com**
-12. Wybierz pozycję **Dodaj**.
+9. W obszarze **Typ źródła**wybierz pozycję **adres IP**.
+10. W obszarze **Źródło**wpisz **10.0.2.0/24**.
+11. W polu **Protocol:port** wpisz wartość **http, https**.
+12. W przypadku **docelowych nazw FQDN**wpisz **www.Google.com**
+13. Wybierz pozycję **Dodaj**.
 
 Usługa Azure Firewall zawiera wbudowaną kolekcję reguł dla nazw FQDN infrastruktury, które domyślnie są dozwolone. Te nazwy FQDN są specyficzne dla platformy i nie można ich używać do innych celów. Aby uzyskać więcej informacji, zobacz [Infrastrukturalne nazwy FQDN](infrastructure-fqdns.md).
 
@@ -209,10 +210,11 @@ Jest to reguła sieci, która umożliwia ruchowi wychodzącemu dostęp do dwóch
 3. W polu **Nazwa** wpisz wartość **Net-Coll01**.
 4. W polu **Priorytet** wpisz wartość **200**.
 5. W polu **Akcja** wybierz opcję **Zezwalaj**.
-6. W obszarze **reguły**, w polu **Nazwa**wpisz **Allow-DNS**.
+6. W obszarze **reguły**, **adresy IP**, w polu **Nazwa**, wpisz **Allow-DNS**.
 7. W polu **Protokół** wybierz **UDP**.
-8. W polu **Adresy źródłowe** wpisz wartość **10.0.2.0/24**.
-9. W polu Adres docelowy wpisz wartość **209.244.0.3,209.244.0.4**
+9. W obszarze **Typ źródła**wybierz pozycję **adres IP**.
+1. W obszarze **Źródło**wpisz **10.0.2.0/24**.
+2. W obszarze **adres docelowy**wpisz **209.244.0.3, 209.244.0.4**
 
    Są to publiczne serwery DNS obsługiwane przez usługę CenturyLink.
 1. W polu **Porty docelowe** wpisz wartość **53**.

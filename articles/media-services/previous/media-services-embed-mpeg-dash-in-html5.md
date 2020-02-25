@@ -1,6 +1,6 @@
 ---
-title: Osadzanie wideo adaptacyjnego przesyłania strumieniowego MPEG-DASH w aplikacji HTML5 z implementacją DASH.js | Dokumentacja firmy Microsoft
-description: W tym temacie przedstawiono sposób osadzania MPEG-DASH adaptacyjnego przesyłania strumieniowego wideo w aplikacji HTML5 z implementacją DASH.js.
+title: Osadzanie wideo do adaptacyjnego przesyłania strumieniowego MPEG w aplikacji HTML5 przy użyciu ŁĄCZNIKa. js | Microsoft Docs
+description: W tym temacie przedstawiono sposób osadzania wideo adaptacyjnego przesyłania strumieniowego MPEG w aplikacji HTML5 przy użyciu ŁĄCZNIKa. js.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f521fd11a2053cf8cf1ea0f9f91667fe475f0eee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c1df14ba5a9f233f42750d4e6dea68a7d6ddc0e
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61464202"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564860"
 ---
-# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Osadzanie MPEG-DASH adaptacyjne przesyłanie strumieniowe filmów wideo w aplikacji HTML5 z implementacją DASH.js  
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Osadzanie wideo do adaptacyjnego przesyłania strumieniowego MPEG w aplikacji HTML5 przy użyciu ŁĄCZNIKa. js  
 
 ## <a name="overview"></a>Omówienie
-MPEG-DASH jest standardem ISO do adaptacyjnego przesyłania strumieniowego zawartości wideo, która oferuje istotne korzyści dla deweloperów, które chcą dostarczanie wideo wysokiej jakości, adaptacyjne przesyłanie strumieniowe danych wyjściowych. Przy użyciu standardu MPEG-DASH strumienia wideo dopasowuje automatycznie niższych definicji podczas staje się przeciążenia sieci. Zmniejsza to prawdopodobieństwo podglądu oglądanie wideo "wstrzymane", gdy gracz pliki do pobrania następnej kilka sekund, aby odtworzyć (zwane również buforowania). Jak zmniejsza przeciążenie sieci, odtwarzacza wideo z kolei powróci do strumienia wyższej jakości. Ta możliwość dostosowania przepustowość wymaganą również powoduje szybsze uruchamianie filmu wideo. Oznacza to, że pierwsze kilka sekund, mogą być odtwarzane w segmencie niższa jakość fast do pobierania, a następnie została buforowana krok do wyższej jakości zawartości po wystarczające.
+MPEG-KRESKa to standard ISO do adaptacyjnego przesyłania strumieniowego zawartości wideo, który oferuje znaczące korzyści dla deweloperów, którzy chcą dostarczać wysokiej jakości dane wyjściowe przesyłania strumieniowego wideo. W przypadku używania standardu MPEG strumień wideo dostosowuje się automatycznie do niższej definicji, gdy sieć zostanie przeciążona. Pozwala to zmniejszyć prawdopodobieństwo wyświetlenia "wstrzymanego" filmu wideo, gdy gracz pobierze kolejne kilka sekund do odtworzenia (oznacza to, że zmniejsza prawdopodobieństwo buforowania). W miarę zmniejszania przeciążenia sieci odtwarzacz wideo powraca do strumienia o wyższej jakości. Możliwość dostosowania wymaganej przepustowości powoduje skrócenie czasu rozpoczęcia wideo. Oznacza to, że pierwsze kilka sekund można odtworzyć w szybkim, dynamicznym segmencie o niższej jakości, a następnie przejść do wyższej jakości, gdy wystarczająca zawartość jest buforowana.
 
-Implementacją Dash.js jest typu open-source MPEG-DASH odtwarzacza wideo napisanych w języku JavaScript. Jego celem jest zapewnienie odtwarzacz niezawodne, dla wielu platform, który mogą być swobodnie ponownie użyte w aplikacjach, które wymagają odtwarzania wideo. Zapewnia odtwarzanie MPEG-DASH w dowolnej przeglądarce, który obsługuje obecnie W3C nośnika źródłowego rozszerzenia (MSE) dla programu Chrome, Microsoft Edge i IE11 (innych przeglądarek ma wskazuje zamiar obsługuje MSE). Aby uzyskać więcej informacji na temat implementacją DASH.js js, zobacz repozytorium implementacją dash.js w witrynie GitHub.
+Kreskowany. js to odtwarzacz wideo "open source", który został zapisany w języku JavaScript. Celem jest zapewnienie niezawodnego, międzyplatformowego odtwarzacza, który można swobodnie ponownie wykorzystać w aplikacjach, które wymagają odtwarzania wideo. Zapewnia to odtwarzanie w formacie MPEG-PAUZy w dowolnej przeglądarce, która obsługuje rozszerzenia źródła nośników W3C (MSE), dzisiaj, które są Chrome, Microsoft Edge i IE11 (inne przeglądarki wskazują, że zamiar obsługi programu MSE). Aby uzyskać więcej informacji na temat ŁĄCZNIKa. js, js zapoznaj się z repozytorium usługi GitHub. js.
 
-## <a name="creating-a-browser-based-streaming-video-player"></a>Tworzenie oparte na przeglądarce przesyłania strumieniowego odtwarzacza wideo
-Aby utworzyć prostą stronę sieci web wyświetla odtwarzacza wideo za pomocą oczekiwanej kontroluje takich play, Wstrzymaj, przewiń itp., należy:
+## <a name="creating-a-browser-based-streaming-video-player"></a>Tworzenie odtwarzacza wideo przesyłania strumieniowego opartego na przeglądarce
+Aby utworzyć prostą stronę sieci Web, która wyświetla odtwarzacz wideo z oczekiwanymi kontrolami, takimi jak odtwarzanie, wstrzymywanie, przewijanie do tyłu itp., należy wykonać następujące działania:
 
-1. Utwórz stronę HTML
+1. Tworzenie strony HTML
 2. Dodaj tag wideo
-3. Dodaj player implementacją dash.js
+3. Dodawanie odtwarzacza łącznika. js
 4. Inicjowanie odtwarzacza
-5. Dodaj niektóre style CSS
-6. Wyświetlanie wyników w przeglądarce, który implementuje MSE
+5. Dodawanie niektórych stylów CSS
+6. Wyświetlanie wyników w przeglądarce, która implementuje MSE
 
-Inicjowanie odtwarzacz trwa tylko kilka wierszy kodu JavaScript. Korzystając z implementacją dash.js, naprawdę jest proste do osadzania filmu wideo MPEG-DASH w swoich aplikacjach opartych na przeglądarce.
+Inicjowanie odtwarzacza można wykonać tylko w kilku wierszy kodu JavaScript. W przypadku używania narzędzia pauz. js jest to proste osadzanie wideo w formacie MPEG-KRESKowego w aplikacjach opartych na przeglądarce.
 
 ## <a name="creating-the-html-page"></a>Tworzenie strony HTML
-Pierwszym krokiem jest utworzenie, standard zawierający HTML strony **wideo** elementu, Zapisz ten plik jako basicPlayer.html w poniższym przykładzie pokazano:
+Pierwszym krokiem jest utworzenie standardowej strony HTML zawierającej element **wideo** . Zapisz ten plik jako basicPlayer. html, jak pokazano na poniższym przykładzie:
 
 ```html
     <!DOCTYPE html>
@@ -54,17 +54,17 @@ Pierwszym krokiem jest utworzenie, standard zawierający HTML strony **wideo** e
     </html>
 ```
 
-## <a name="adding-the-dashjs-player"></a>Dodawanie Player implementacją DASH.js
-Aby dodać implementację referencyjną implementacją dash.js do aplikacji, należy do pobrania pliku dash.all.js z najnowszej wersji z implementacją dash.js projektu. To powinien zostać zapisany w folderze JavaScript w aplikacji. Ten plik jest plikiem wygody, który zbiera cały kod z implementacją dash.js niezbędne do pojedynczego pliku. Jeśli masz się wokół repozytorium implementacją dash.js możesz wyszukiwania poszczególnych plików, testowanie kodu i wiele innych, ale jeśli wszystko, czego chcemy jest implementacją dash.js, plik dash.all.js jest to, czego potrzebujesz.
+## <a name="adding-the-dashjs-player"></a>Dodawanie odtwarzacza ŁĄCZNIKa. js
+Aby dodać do aplikacji implementację referencyjną łącznika. js, należy pobrać plik pauzy ALL. js z najnowszej wersji projektu kreskowany. js. Powinno to być zapisane w folderze JavaScript aplikacji. Ten plik jest wygodnym plikiem, który ściąga wszystkie niezbędny kod kreskowany. js do pojedynczego pliku. Jeśli masz zajrzeć do repozytorium kreskowany. js, znajdziesz poszczególne pliki, kod testowy i wiele innych, ale jeśli wszystko, co chcesz zrobić, jest używane przez myślnik. js, to to, czego potrzebujesz.
 
-Aby dodać player implementacją dash.js do aplikacji, należy dodać tag skryptu do sekcji head basicPlayer.html:
+Aby dodać odtwarzacz kreskowany. js do aplikacji, Dodaj tag skryptu do sekcji nagłówka basicPlayer. html:
 
 ```html
     <!-- DASH-AVC/265 reference implementation -->
     < script src="js/dash.all.js"></script>
 ```
 
-Następnie należy utworzyć funkcję, aby zainicjować odtwarzacza, jeśli strona ładuje się. Dodaj następujący skrypt po wierszu, w którym obciążenia dash.all.js:
+Następnie Utwórz funkcję, aby zainicjować odtwarzacz podczas ładowania strony. Dodaj następujący skrypt po wierszu, w którym załadowano łącznik. ALL. js:
 
 ```html
     <script>
@@ -80,19 +80,19 @@ Następnie należy utworzyć funkcję, aby zainicjować odtwarzacza, jeśli stro
     </script>
 ```
 
-Ta funkcja najpierw tworzy DashContext. Służy do konfigurowania aplikacji dla określonego środowiska. Z technicznego punktu widzenia definiuje klasy, które framework iniekcji zależności należy użyć podczas tworzenia aplikacji. W większości przypadków należy używać Dash.di.DashContext.
+Ta funkcja najpierw tworzy DashContext. Służy do konfigurowania aplikacji dla określonego środowiska uruchomieniowego. Z punktu widzenia technicznego definiuje klasy, które mają być używane przez platformę iniekcji zależności podczas konstruowania aplikacji. W większości przypadków używasz łącznika. di. DashContext.
 
-Następnie można utworzyć wystąpienia klasy podstawowej framework implementacją dash.js MediaPlayer. Ta klasa zawiera podstawowe metody takie jak Odtwórz wstrzymać, zarządza relacji z elementem wideo i zarządza także interpretacji pliku opisu prezentacji nośnika (MPD), który opisuje wideo do odtwarzania.
+Następnie Utwórz wystąpienie klasy podstawowej struktury MediaPlayer. js. Ta klasa zawiera podstawowe metody, takie jak Play i Pause, zarządza relacją z elementem wideo, a także zarządza interpretacją pliku opisu prezentacji multimediów (MPD), który opisuje wideo do odtworzenia.
 
-Funkcja startup() MediaPlayer — klasa jest wywoływana, aby upewnić się, że gracz jest gotowy do odtwarzania wideo. Między innymi funkcja gwarantuje, że wszystkie niezbędne klasy (zgodnie z definicją kontekście) zostały załadowane. Gdy gracz jest gotowy, możesz dołączyć do niego przy użyciu funkcji attachView() elementu wideo. Funkcja startowa umożliwia MediaPlayer wstawić strumienia wideo do elementu, a także sterować odtwarzaniem zgodnie z potrzebami.
+Funkcja uruchamiania () klasy MediaPlayer jest wywoływana, aby upewnić się, że odtwarzacz jest gotowy do odtwarzania wideo. Funkcja ta zapewnia między innymi, że wszystkie niezbędne klasy (zgodnie z definicją kontekstu) zostały załadowane. Gdy gracz będzie gotowy, możesz dołączyć do niego element wideo przy użyciu funkcji attachView (). Funkcja uruchamiania umożliwia MediaPlayer, aby wstrzyknąć strumień wideo do elementu, a także kontrolować odtwarzanie w razie potrzeby.
 
-Przekazać adres URL pliku MPD do MediaPlayer, tak aby wie o wideo, że oczekuje się, aby odtworzyć. Funkcja setupVideo() właśnie utworzony należy do wykonania po stronie pełni został załadowany. W tym za pomocą zdarzeń onload elementu body. Zmień swoje `<body>` elementu:
+Przekaż adres URL pliku MPD do MediaPlayer, tak aby wie o wideo, które ma być odtwarzane. Właśnie utworzona funkcja setupVideo () będzie musiała zostać wykonana po całkowitym załadowaniu strony. W tym celu należy użyć zdarzenia OnLoad elementu body. Zmień element `<body>` na:
 
 ```html
     <body onload="setupVideo()">
 ```
 
-Na koniec Ustaw rozmiar elementu wideo przy użyciu CSS. W adaptacyjne środowisko przesyłania strumieniowego jest to szczególnie ważne, ponieważ rozmiar odtwarzania filmu wideo może zmienić się odtwarzania dostosowuje do zmieniających się warunków sieciowych. W tym prosty pokaz po prostu wymusić elementu wideo do 80% okna przeglądarki dostępne, dodając następujące arkusze CSS do głównych części:
+Na koniec Ustaw rozmiar elementu wideo przy użyciu CSS. W środowisku adaptacyjnego przesyłania strumieniowego jest to szczególnie ważne, ponieważ rozmiar odtwarzanego wideo może ulec zmianie w miarę odtwarzania dostosowuje się do zmieniających się warunków sieciowych. W tej prostej wersji demonstracyjnej wystarczy wymusić, aby element wideo miał wartość 80% dostępnego okna przeglądarki, dodając następujący kod CSS do sekcji nagłówka strony:
 
 ```html
     <style>
@@ -103,17 +103,16 @@ Na koniec Ustaw rozmiar elementu wideo przy użyciu CSS. W adaptacyjne środowis
     </style>
 ```
 
-## <a name="playing-a-video"></a>Odtwarzanie filmu wideo
-Aby odtworzyć film wideo, wskazać w przeglądarce w pliku basicPlayback.html, a następnie kliknij przycisk play na odtwarzacz wideo, wyświetlane.
+## <a name="playing-a-video"></a>Odtwarzanie wideo
+Aby odtworzyć wideo, wskaż przeglądarkę w pliku basicPlayback. html, a następnie kliknij przycisk Odtwórz w wyświetlonym odtwarzaczu wideo.
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zobacz też
-[Opracowywanie aplikacji odtwarzacza wideo](media-services-develop-video-players.md)
 
-[Repozytorium w witrynie GitHub implementacją dash.js](https://github.com/Dash-Industry-Forum/dash.js) 
+[Repozytorium usługi GitHub. js](https://github.com/Dash-Industry-Forum/dash.js) 
 

@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie skalowaniem w poziomie klastra (skalowanie w dół) w usłudze Azure Eksplorator danych w celu uwzględnienia zmiany zapotrzebowania
+title: Zarządzanie skalowaniem w poziomie klastra (skalowanie w górę) w celu dopasowania do popytu na platformie Azure Eksplorator danych
 description: W tym artykule opisano kroki umożliwiające skalowanie w poziomie i skalowanie w klastrze usługi Azure Eksplorator danych w oparciu o zmieniające się zapotrzebowanie.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 8ab192957ead806b4bb3ae8e7395589f3b1ecbbe
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d0c9fe9ebd040ee59ae8717e95fd1911eaef61be
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833298"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560460"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Zarządzanie skalowaniem w poziomie klastra (skalowanie w dół) w usłudze Azure Eksplorator danych w celu uwzględnienia zmiany zapotrzebowania
 
@@ -100,7 +100,7 @@ Za pomocą niestandardowego skalowania automatycznego można skalować klaster d
     | **Agregacja czasu** | Wybierz kryteria agregacji, takie jak **średnia**. |
     | **Nazwa metryki** | Wybierz metrykę, na której ma być oparta Operacja skalowania, na przykład **użycie pamięci podręcznej**. |
     | **Statystyka ziarna czasu** | Wybierz między **orednimi**, **minimum**, **maksimum**i **sum**. |
-    | **Operator** | Wybierz odpowiednią opcję, **na przykład większą lub równą**. |
+    | **Zakład** | Wybierz odpowiednią opcję, **na przykład większą lub równą**. |
     | **Próg** | Wybierz odpowiednią wartość. Na przykład w przypadku użycia pamięci podręcznej 80 procent jest dobrym punktem początkowym. |
     | **Czas trwania (w minutach)** | Wybierz odpowiedni czas na wyszukanie systemu podczas obliczania metryk. Rozpocznij od wartości domyślnej 10 minut. |
     |  |  |
@@ -120,7 +120,7 @@ Za pomocą niestandardowego skalowania automatycznego można skalować klaster d
 
     | Ustawienie | Opis i wartość |
     | --- | --- |
-    | **Minimum** | Liczba wystąpień, które nie będą skalowane przez klaster, niezależnie od użycia. |
+    | **Minimalny** | Liczba wystąpień, które nie będą skalowane przez klaster, niezależnie od użycia. |
     | **Długość** | Liczba wystąpień, które nie będą skalowane przez klaster, niezależnie od użycia. |
     | **Domyślne** | Domyślna liczba wystąpień. To ustawienie jest używane w przypadku problemów z odczytem metryk zasobów. |
     |  |  |

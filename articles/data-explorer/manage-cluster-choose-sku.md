@@ -1,5 +1,5 @@
 ---
-title: Wybierz poprawną jednostkę SKU maszyny wirtualnej dla klastra usługi Azure Eksplorator danych
+title: Wybieranie prawidłowej jednostki SKU maszyny wirtualnej dla klastra usługi Azure Eksplorator danych
 description: W tym artykule opisano, jak wybrać optymalny rozmiar jednostki SKU dla klastra usługi Azure Eksplorator danych.
 author: avneraa
 ms.author: avnera
@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 8293fd2d84189cc1f1df3564abbfdcbf86e3543e
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 2d078f9715a0cfa171f0c88776a4ab78c15215a8
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186749"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561854"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Wybierz poprawną jednostkę SKU maszyny wirtualnej dla klastra usługi Azure Eksplorator danych 
 
@@ -20,10 +20,10 @@ Podczas tworzenia nowego klastra lub optymalizowania klastra w celu zmiany obci�
 
 Rozmiar i jednostka SKU maszyny wirtualnej klastra zarządzania danymi są w pełni zarządzane przez usługę Eksplorator danych platformy Azure. Są one określane według takich czynników, jak rozmiar maszyny wirtualnej aparatu i obciążenie pozyskiwania. 
 
-Możesz w dowolnym momencie zmienić jednostkę SKU maszyny wirtualnej dla klastra aparatu, przeskalując [w górę klaster](manage-cluster-vertical-scaling.md). Najlepiej zacząć od najmniejszego rozmiaru jednostki SKU, który pasuje do scenariusza początkowego. Należy pamiętać, że skalowanie w górę klastra powoduje przestoje nawet do 30 minut, podczas gdy klaster jest odtwarzany przy użyciu nowej jednostki SKU maszyny wirtualnej.
+Możesz w dowolnym momencie zmienić jednostkę SKU maszyny wirtualnej dla klastra aparatu, [przeskalując w górę klaster](manage-cluster-vertical-scaling.md). Najlepiej zacząć od najmniejszego rozmiaru jednostki SKU, który pasuje do scenariusza początkowego. Należy pamiętać, że skalowanie w górę klastra powoduje przestoje nawet do 30 minut, podczas gdy klaster jest odtwarzany przy użyciu nowej jednostki SKU maszyny wirtualnej.
 
 > [!TIP]
-> Zarezerwowane wystąpienia obliczeniowe [(ri)](https://docs.microsoft.com/azure/virtual-machines/windows/prepay-reserved-vm-instances) mają zastosowanie do klastra usługi Azure Eksplorator danych.  
+> [Zarezerwowane wystąpienia obliczeniowe (ri)](https://docs.microsoft.com/azure/virtual-machines/windows/prepay-reserved-vm-instances) mają zastosowanie do klastra usługi Azure Eksplorator danych.  
 
 W tym artykule opisano różne opcje jednostki SKU maszyny wirtualnej i przedstawiono szczegółowe informacje techniczne, które mogą pomóc w wyborze najlepszego wyboru.
 
@@ -31,19 +31,19 @@ W tym artykule opisano różne opcje jednostki SKU maszyny wirtualnej i przedsta
 
 Usługa Azure Eksplorator danych oferuje dwa typy klastrów:
 
-* **Produkcji**: Klastry produkcyjne zawierają dwa węzły klastrów i zarządzania danymi, które są obsługiwane w ramach [umowy SLA](https://azure.microsoft.com/support/legal/sla/data-explorer/v1_0/)Eksplorator danych platformy Azure.
+* **Produkcja**: klastry produkcyjne zawierają dwa węzły dla klastrów usługi aparat i zarządzania danymi i są obsługiwane w ramach [umowy SLA](https://azure.microsoft.com/support/legal/sla/data-explorer/v1_0/)Eksplorator danych platformy Azure.
 
-* Tworzenie **i testowanie (bez umowy SLA)** : Klastry deweloperskie/testowe mają jeden węzeł D11 v2 dla klastra aparatów i jeden węzeł D1 dla klastra zarządzania danymi. Ten typ klastra to najniższa konfiguracja kosztu ze względu na jego niską liczbę wystąpień i brak opłaty za znakowanie silnika. Nie ma umowy SLA dla tej konfiguracji klastra, ponieważ nie ma ona nadmiarowości.
+* Tworzenie **i testowanie (bez umowy SLA)** : klastry deweloperskie i testowe mają jeden węzeł D11 v2 dla klastra aparatów i jeden węzeł D1 dla klastra zarządzania danymi. Ten typ klastra to najniższa konfiguracja kosztu ze względu na jego niską liczbę wystąpień i brak opłaty za znakowanie silnika. Nie ma umowy SLA dla tej konfiguracji klastra, ponieważ nie ma ona nadmiarowości.
 
 ## <a name="sku-types"></a>Typy jednostek SKU
 
-Podczas tworzenia klastra usługi Azure Eksplorator danych wybierz optymalną jednostkę SKU maszyny wirtualnej dla planowanego obciążenia. Można wybrać jedną z następujących dwóch rodzin jednostek SKU Eksplorator danych platformy Azure:
+Podczas tworzenia klastra usługi Azure Eksplorator danych wybierz *optymalną* jednostkę SKU maszyny wirtualnej dla planowanego obciążenia. Można wybrać jedną z następujących dwóch rodzin jednostek SKU Eksplorator danych platformy Azure:
 
-* **D v2**: Jednostka SKU D jest zoptymalizowana pod kątem obliczeń i występuje w dwóch wersjach:
+* **D v2**: jednostka SKU d jest zoptymalizowana pod kątem obliczeń i występuje w dwóch wersjach:
     * Sama maszyna wirtualna
     * Maszyna wirtualna z dyskami magazynu Premium Storage
 
-* **LS**: Jednostka SKU L jest zoptymalizowana pod kątem magazynu. Ma znacznie większy rozmiar SSD niż w przypadku jednostki SKU o podobnej cenie D.
+* **Ls**: jednostka SKU L jest zoptymalizowana pod kątem magazynu. Ma znacznie większy rozmiar SSD niż w przypadku jednostki SKU o podobnej cenie D.
 
 Kluczowe różnice między dostępnymi typami jednostek SKU zostały opisane w poniższej tabeli:
  
@@ -51,30 +51,30 @@ Kluczowe różnice między dostępnymi typami jednostek SKU zostały opisane w p
 |---|---|---
 |**Małe jednostki SKU**|Minimalny rozmiar jest D11 z dwoma rdzeniami|Minimalny rozmiar to P4 z czterema rdzeniami |
 |**Dostępność**|Dostępne we wszystkich regionach (wersja DS + PS ma więcej ograniczonej dostępności)|Dostępne w kilku regionach |
-|**Koszt pamięci&nbsp; podręcznej wGBnardzeń**|Wysoka z jednostkami SKU D, niska w wersji DS + PS|Najniższy z opcją płatność zgodnie z rzeczywistym użyciem |
-|**Cennik wystąpień zarezerwowanych (RI)**|Wysoki rabat (ponad 55&nbsp;% dla zobowiązania z trzech lat)|Niższy rabat (20&nbsp;procent dla zobowiązania z trzech lat) |  
+|**Koszt na&nbsp;GB pamięci podręcznej na rdzeń**|Wysoka z jednostkami SKU D, niska w wersji DS + PS|Najniższy z opcją płatność zgodnie z rzeczywistym użyciem |
+|**Cennik wystąpień zarezerwowanych (RI)**|Wysoki rabat (ponad 55&nbsp;procent dla zobowiązania z trzech lat)|Dolny rabat (20&nbsp;procent dla zobowiązania z trzech lat) |  
 
 ## <a name="select-your-cluster-vm"></a>Wybierz maszynę wirtualną klastra 
 
-Aby wybrać maszynę wirtualną klastra, [Skonfiguruj skalowanie](manage-cluster-vertical-scaling.md#configure-vertical-scaling)w pionie. 
+Aby wybrać maszynę wirtualną klastra, [Skonfiguruj skalowanie w pionie](manage-cluster-vertical-scaling.md#configure-vertical-scaling). 
 
 Korzystając z różnych opcji jednostki SKU maszyny wirtualnej do wyboru, można zoptymalizować koszty dotyczące wymagań dotyczących wydajności i pamięci podręcznej w danym scenariuszu. 
 * Jeśli potrzebujesz optymalnej wydajności dla dużej ilości zapytań, idealna jednostka SKU powinna być zoptymalizowana pod kątem obliczeń. 
 * Jeśli trzeba wykonać zapytanie o duże ilości danych przy stosunkowo niższym obciążeniu zapytania, jednostka SKU zoptymalizowana pod kątem magazynu może pomóc w obniżeniu kosztów i nadal zapewniać doskonałą wydajność.
 
-Ponieważ liczba wystąpień na klaster dla małych jednostek SKU jest ograniczona, preferowane jest użycie większych maszyn wirtualnych z większą ilością pamięci RAM. Wymagana jest większa ilość pamięci RAM dla niektórych typów zapytań, które zwiększają zapotrzebowanie na zasób pamięci RAM, takie jak `joins`zapytania, które używają. W związku z tym podczas rozważania opcji skalowania zalecamy skalowanie w górę do większej jednostki SKU, a nie skalowanie przez dodanie większej liczby wystąpień.
+Ponieważ liczba wystąpień na klaster dla małych jednostek SKU jest ograniczona, preferowane jest użycie większych maszyn wirtualnych z większą ilością pamięci RAM. Dla niektórych typów zapytań, które zwiększają zapotrzebowanie na zasób pamięci RAM, jest wymagana większa ilość pamięci RAM, taka jak zapytania, które używają `joins`. W związku z tym podczas rozważania opcji skalowania zalecamy skalowanie w górę do większej jednostki SKU, a nie skalowanie przez dodanie większej liczby wystąpień.
 
 ## <a name="vm-options"></a>Opcje maszyny wirtualnej
 
 Specyfikacje techniczne dotyczące maszyn wirtualnych klastra usługi Azure Eksplorator danych są opisane w poniższej tabeli:
 
-|**Nazwa**| **Kategoria** | **Rozmiar SSD** | **Rdzeni** | **RAM** | **Dyski magazynu Premium Storage (&nbsp;1 TB)**| **Minimalna liczba wystąpień na klaster** | **Maksymalna liczba wystąpień na klaster**
+|**Nazwa**| **Kategoria** | **Rozmiar SSD** | **Rdzeni** | **NIEGO** | **Dyski magazynu Premium Storage (1&nbsp;TB)**| **Minimalna liczba wystąpień na klaster** | **Maksymalna liczba wystąpień na klaster**
 |---|---|---|---|---|---|---|---
 |D11 v2| zoptymalizowane pod kątem obliczeń | 75&nbsp;GB    | 2 | 14&nbsp;GB | 0 | 1 | 8 (z wyjątkiem jednostki SKU Dev/Test, która jest 1)
 |D12 v2| zoptymalizowane pod kątem obliczeń | 150&nbsp;GB   | 4 | 28&nbsp;GB | 0 | 2 | 16
 |D13 v2| zoptymalizowane pod kątem obliczeń | 307&nbsp;GB   | 8 | 56&nbsp;GB | 0 | 2 | 1000
 |D14 v2| zoptymalizowane pod kątem obliczeń | 614&nbsp;GB   | 16| 112&nbsp;GB | 0 | 2 | 1000
-|DS13 v2 + 1&nbsp;TB&nbsp;PS| zoptymalizowane pod kątem magazynu | 1&nbsp;TB | 8 | 56&nbsp;GB | 1 | 2 | 1000
+|DS13 v2 i 1&nbsp;TB&nbsp;PS| zoptymalizowane pod kątem magazynu | 1&nbsp;TB | 8 | 56&nbsp;GB | 1 | 2 | 1000
 |DS13 V2 + 2&nbsp;TB&nbsp;PS| zoptymalizowane pod kątem magazynu | 2&nbsp;TB | 8 | 56&nbsp;GB | 2 | 2 | 1000
 |DS14 v2 + 3&nbsp;TB&nbsp;PS| zoptymalizowane pod kątem magazynu | 3&nbsp;TB | 16 | 112&nbsp;GB | 2 | 2 | 1000
 |DS14 v2 + 4&nbsp;TB&nbsp;PS| zoptymalizowane pod kątem magazynu | 4&nbsp;TB | 16 | 112&nbsp;GB | 4 | 2 | 1000

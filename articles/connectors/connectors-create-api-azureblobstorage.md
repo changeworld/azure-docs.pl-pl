@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 86e8415cf2076819e23226e5e7878a2c96343f69
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2e2fea90f125cae6de44afbc82dd749a421ff3e2
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789923"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566016"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Tworzenie obiektów blob i zarządzanie nimi w usłudze Azure Blob Storage przy użyciu Azure Logic Apps
 
@@ -23,7 +23,7 @@ Załóżmy, że masz narzędzie, które jest aktualizowane w witrynie sieci Web 
 Jeśli dopiero zaczynasz tworzyć aplikacje logiki, zapoznaj [się z tematem Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informacje techniczne dotyczące konkretnego łącznika można znaleźć w [dokumentacji łącznika usługi Azure Blob Storage](https://docs.microsoft.com/connectors/azureblobconnector/).
 
 > [!IMPORTANT]
-> Aby włączyć dostęp z Azure Logic Apps do kont magazynu za zaporą, zobacz sekcję [dostęp do kont magazynu związanych z zaporami](#storage-firewalls) w dalszej części tego tematu.
+> Aplikacje logiki nie mogą bezpośrednio uzyskiwać dostępu do kont magazynu, które znajdują się za zaporami, jeśli znajdują się one w tym samym regionie. Jako obejście tego problemu możesz mieć Aplikacje logiki i konto magazynu w różnych regionach. Więcej informacji na temat włączania dostępu Azure Logic Apps do kont magazynu związanych z zaporami znajduje się w sekcji [dostęp do kont magazynu związanych z zaporami](#storage-firewalls) w dalszej części tego tematu.
 
 <a name="blob-storage-limits"></a>
 
@@ -121,15 +121,15 @@ W tym przykładzie pobierana jest tylko zawartość obiektu BLOB. Aby wyświetli
 
 1. Po wyświetleniu monitu o utworzenie połączenia podaj następujące informacje:
 
-   | Właściwość | Wymagane | Wartość | Opis |
+   | Właściwość | Wymagany | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | **Nazwa połączenia** | Tak | <*nazwę połączenia*> | Nazwa do utworzenia dla połączenia |
-   | **Konto magazynu** | Tak | <*konto magazynu*> | Wybierz konto magazynu z listy. |
+   | **Nazwa połączenia** | Yes | <*nazwę połączenia*> | Nazwa do utworzenia dla połączenia |
+   | **Konto magazynu** | Yes | <*konto magazynu*> | Wybierz konto magazynu z listy. |
    ||||
 
    Na przykład:
 
-   ![Tworzenie połączenia z kontem usługi Azure Blob Storage](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png)  
+   ![Tworzenie połączenia z kontem usługi Azure Blob Storage](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
 1. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz** .
 
@@ -159,9 +159,12 @@ Poniżej przedstawiono różne opcje uzyskiwania dostępu do kont magazynu za za
 
 <a name="access-other-regions"></a>
 
-### <a name="access-to-storage-accounts-in-other-regions"></a>Dostęp do kont magazynu w innych regionach
+### <a name="problems-accessing-storage-accounts-in-the-same-region"></a>Problemy z uzyskiwaniem dostępu do kont magazynu w tym samym regionie
 
-Aplikacje logiki nie mogą bezpośrednio uzyskiwać dostępu do kont magazynu, które mają reguły zapory i znajdują się w tym samym regionie. Jeśli jednak zezwolisz na dostęp do [wychodzących adresów IP dla łączników zarządzanych w Twoim regionie](../logic-apps/logic-apps-limits-and-config.md#outbound), Twoje aplikacje logiki będą mogły uzyskać dostęp do kont magazynu w innym regionie, z wyjątkiem sytuacji, gdy używasz łącznika usługi Azure Table Storage lub łącznika usługi Azure queue storage. Aby uzyskać dostęp do Table Storage lub Queue Storage, można nadal użyć wbudowanego wyzwalacza HTTP i akcji.
+Aplikacje logiki nie mogą bezpośrednio uzyskiwać dostępu do kont magazynu za zaporami, gdy znajdują się one w tym samym regionie. Aby obejść ten element, należy umieścić Aplikacje logiki w regionie, który różni się od konta magazynu, i zapewnić dostęp do [wychodzących adresów IP dla łączników zarządzanych w Twoim regionie](../logic-apps/logic-apps-limits-and-config.md#outbound).
+
+> [!NOTE]
+> To rozwiązanie nie dotyczy łącznika usługi Azure Table Storage i łącznika usługi Azure Queue Storage. Zamiast tego, aby uzyskać dostęp do Table Storage lub Queue Storage, użyj wbudowanego wyzwalacza HTTP i akcji.
 
 <a name="access-trusted-virtual-network"></a>
 

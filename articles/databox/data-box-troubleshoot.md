@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów dotyczących Azure Data Box, Azure Data Box Heavy | Microsoft Docs
+title: Rozwiązywanie problemów dotyczących Azure Data Box, Azure Data Box Heavy
 description: Opisuje sposób rozwiązywania problemów występujących w Azure Data Box i Azure Data Box Heavy podczas kopiowania danych na te urządzenia.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 83f6f7c7f8cd5155669f12fd6e426f86ef1c7baa
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 51935516e26f263e44a926bf9b7d7ec24a5eeb9e
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848508"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560069"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Rozwiązywanie problemów związanych z Azure Data Box i Azure Data Box Heavy
 
@@ -31,7 +31,7 @@ Błędy w urządzenie Data Box i Data Box Heavy zostały podsumowane w następuj
 | Typ danych lub plików | Format danych lub typ pliku nie są obsługiwane. |Pobierz listy błędów. <br> W przypadku stronicowych obiektów blob lub dysków zarządzanych upewnij się, że dane są 512-bajtowe wyrównane i skopiowane do wstępnie utworzonych folderów. [Dowiedz się więcej](#data-or-file-type-errors). |
 | Niekrytyczne obiekty blob lub błędy plików  | Nazwy obiektów blob lub plików nie są zgodne z regułami nazewnictwa platformy Azure lub typ pliku nie jest obsługiwany. | Te obiekty blob lub pliki nie mogą być kopiowane lub można zmienić nazwy. [Dowiedz się, jak naprawić te błędy](#non-critical-blob-or-file-errors). |
 
-\*Pierwsze cztery kategorie błędów są błędami krytycznymi i muszą zostać naprawione przed rozpoczęciem przygotowywania do wysłania.
+\* pierwsze cztery kategorie błędów są błędami krytycznymi i muszą zostać naprawione, aby można było rozpocząć przygotowywanie do wysłania.
 
 
 ## <a name="container-or-share-name-errors"></a>Błędy nazwy kontenera lub udziału
@@ -40,7 +40,7 @@ Są to błędy związane z nazwami kontenerów i udziałów.
 
 ### <a name="error_container_or_share_name_length"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
-**Opis błędu:** Nazwa kontenera lub udziału musi mieć długość od 3 do 63 znaków. 
+**Opis błędu:** Nazwa kontenera lub udziału musi zawierać od 3 do 63 znaków. 
 
 **Sugerowane rozwiązanie:** Folder w ramach udziału urządzenie Data Box lub Data Box Heavy (SMB/NFS), do którego skopiowane dane, jest kontenerem platformy Azure na koncie magazynu. 
 
@@ -51,15 +51,15 @@ Są to błędy związane z nazwami kontenerów i udziałów.
     - Nazwy mogą zawierać tylko litery, cyfry i łączniki.
     - Nazwy nie mogą rozpoczynać się ani kończyć znakiem łączników.
     - Nazwy nie mogą mieć kolejnych łączników.
-    - Przykłady prawidłowych nazw: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Przykłady nieprawidłowych nazw `my-folder_1`:, `my`, `--myfolder` `myfolder--`,,`myfolder!`
+    - Przykłady prawidłowych nazw: `my-folder-1`, `my-really-extra-long-folder-111`
+    - Przykłady nieprawidłowych nazw: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
 
     Aby uzyskać więcej informacji, zobacz Konwencje nazewnictwa platformy Azure dla [nazw kontenerów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) i [nazw udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
 
 ### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
 
-**Opis błędu:** Nazwa kontenera lub udziału musi zawierać wyłącznie litery, cyfry lub łączniki.
+**Opis błędu:** Nazwa kontenera lub udziału musi zawierać tylko litery, cyfry lub łączniki.
 
 **Sugerowane rozwiązanie:** Folder w ramach udziału urządzenie Data Box lub Data Box Heavy (SMB/NFS), do którego skopiowane dane, jest kontenerem platformy Azure na koncie magazynu. 
 
@@ -70,8 +70,8 @@ Są to błędy związane z nazwami kontenerów i udziałów.
     - Nazwy mogą zawierać tylko litery, cyfry i łączniki.
     - Nazwy nie mogą rozpoczynać się ani kończyć znakiem łączników.
     - Nazwy nie mogą mieć kolejnych łączników.
-    - Przykłady prawidłowych nazw: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Przykłady nieprawidłowych nazw `my-folder_1`:, `my`, `--myfolder` `myfolder--`,,`myfolder!`
+    - Przykłady prawidłowych nazw: `my-folder-1`, `my-really-extra-long-folder-111`
+    - Przykłady nieprawidłowych nazw: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
 
     Aby uzyskać więcej informacji, zobacz Konwencje nazewnictwa platformy Azure dla [nazw kontenerów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) i [nazw udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
@@ -88,8 +88,8 @@ Są to błędy związane z nazwami kontenerów i udziałów.
     - Nazwy mogą zawierać tylko litery, cyfry i łączniki.
     - Nazwy nie mogą rozpoczynać się ani kończyć znakiem łączników.
     - Nazwy nie mogą mieć kolejnych łączników.
-    - Przykłady prawidłowych nazw: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Przykłady nieprawidłowych nazw `my-folder_1`:, `my`, `--myfolder` `myfolder--`,,`myfolder!`
+    - Przykłady prawidłowych nazw: `my-folder-1`, `my-really-extra-long-folder-111`
+    - Przykłady nieprawidłowych nazw: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
 
     Aby uzyskać więcej informacji, zobacz Konwencje nazewnictwa platformy Azure dla [nazw kontenerów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) i [nazw udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
@@ -125,7 +125,7 @@ Są to błędy związane z nieobsługiwanym typem pliku lub typem danych znalezi
 
 ### <a name="error_blob_or_file_size_alignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
 
-**Opis błędu:** Obiekt blob lub plik jest nieprawidłowo wyrównany.
+**Opis błędu:** Obiekt BLOB lub plik jest niepoprawnie wyrównany.
 
 **Sugerowane rozwiązanie:** Udział obiektu BLOB strony na urządzenie Data Box lub Data Box Heavy obsługuje tylko pliki o 512 bajtach (na przykład VHD/VHDX). Wszystkie dane skopiowane do udziału obiektu BLOB stronicowania są przekazywane do platformy Azure jako stronicowe obiekty blob.
 
@@ -210,7 +210,7 @@ Aby uzyskać więcej informacji, zobacz Konwencje nazewnictwa platformy Azure dl
 
 ### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
-**Opis błędu:** Nazwa obiektu blob lub pliku jest za długa.
+**Opis błędu:** Obiekt BLOB lub nazwa pliku jest za długa.
 
 **Sugerowane rozwiązanie:** Rozmiar obiektu BLOB lub nazwy pliku przekracza maksymalną długość.
 
@@ -222,7 +222,7 @@ Aby uzyskać więcej informacji, zobacz Konwencje nazewnictwa platformy Azure dl
 
 ### <a name="error_blob_or_file_name_component_length"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
 
-**Opis błędu:** Jeden z segmentów w nazwie obiektu blob lub pliku jest zbyt długi.
+**Opis błędu:** Jeden z segmentów obiektu BLOB lub nazwy pliku jest zbyt długi.
 
 **Sugerowane rozwiązanie:** Jeden z segmentów ścieżki w obiekcie blob lub nazwie pliku przekracza maksymalną liczbę znaków. Segment ścieżki jest ciągiem między kolejnymi znakami ograniczającymi, na przykład ukośnikiem/.
 

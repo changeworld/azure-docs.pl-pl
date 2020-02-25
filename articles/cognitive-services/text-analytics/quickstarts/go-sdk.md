@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/29/2020
 ms.author: aahi
-ms.openlocfilehash: bde8d418792e3d481c9e9a74ee98998492754aae
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5623be028cfe10c0ea6786b24bf75ae2bf9c5255
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992408"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560790"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Szybki Start: korzystanie z biblioteki klienta analiza tekstu dla języka go
 
@@ -93,7 +93,7 @@ Obiekt Response jest listą zawierającą informacje o analizie dla każdego dok
 Te fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą biblioteki klienta analiza tekstu dla języka Python:
 
 * [Uwierzytelnianie klienta](#authenticate-the-client)
-* [Analiza tonacji](#sentiment-analysis)
+* [analiza tonacji](#sentiment-analysis)
 * [Wykrywanie języka](#language-detection)
 * [Rozpoznawanie jednostek](#entity-recognition)
 * [Wyodrębnianie kluczowych fraz](#key-phrase-extraction)
@@ -119,7 +119,7 @@ func GetTextAnalyticsClient() textanalytics.BaseClient {
 }
 ```
 
-## <a name="sentiment-analysis"></a>Analiza opinii
+## <a name="sentiment-analysis"></a>Analiza tonacji
 
 Utwórz nową funkcję o nazwie `SentimentAnalysis()` i Utwórz klienta przy użyciu metody `GetTextAnalyticsClient()` utworzonej wcześniej. Utwórz listę obiektów [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) zawierających dokumenty, które chcesz przeanalizować. Każdy obiekt będzie zawierać `id`, `Language` i `text` atrybut. Atrybut `text` przechowuje tekst do przeanalizowania, `language` jest językiem dokumentu, a `id` może być dowolną wartością. 
 

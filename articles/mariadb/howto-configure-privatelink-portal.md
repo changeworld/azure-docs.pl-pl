@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 67b045ff0661e8d0f8e20656a012e85d01e83d7b
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: a9b3ae1ed28fc22d91760a4af3832a604a419a30
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425922"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561735"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-portal"></a>Tworzenie prywatnego linku do Azure Database for MariaDB (wersja zapoznawcza) i zarządzanie nim przy użyciu portalu
 
@@ -62,7 +62,7 @@ W tej sekcji utworzysz Virtual Network i podsieć, która będzie hostować masz
     | Nazwa maszyny wirtualnej | Wprowadź *myVm*. |
     | Region | Wybierz pozycję **Europa Zachodnia**. |
     | Opcje dostępności | Pozostaw wartość domyślną **Brak wymaganej nadmiarowości infrastruktury**. |
-    | Obraz | Wybierz pozycję **Windows Server 2019 Datacenter**. |
+    | Image (Obraz) | Wybierz pozycję **Windows Server 2019 Datacenter**. |
     | Rozmiar | Pozostaw wartość domyślną **Standardowy DS1, wersja 2**. |
     | **KONTO ADMINISTRATORA** |  |
     | Nazwa użytkownika | Wprowadź wybraną nazwę użytkownika. |
@@ -171,6 +171,9 @@ W tej sekcji utworzysz prywatny punkt końcowy do serwera MariaDB.
 
     ![Utworzono link prywatny](media/concepts-data-access-and-security-private-link/show-mariadb-private-link.png)
 
+    > [!NOTE] 
+    > Nazwa FQDN w ustawieniu DNS klienta nie jest rozpoznawana jako prywatny adres IP skonfigurowany. Konieczne będzie skonfigurowanie strefy DNS dla skonfigurowanej nazwy FQDN, jak pokazano [poniżej](../dns/dns-operations-recordsets-portal.md).
+
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Nawiązywanie połączenia z maszyną wirtualną przy użyciu Pulpit zdalny (RDP)
 
 
@@ -223,7 +226,7 @@ Po utworzeniu **myVm**Połącz się z nim za pośrednictwem Internetu w następu
     | Nazwa serwera| Wybierz *mydemoserver.privatelink.MariaDB.Database.Azure.com* |
     | Nazwa użytkownika | Wprowadź nazwę użytkownika jako username@servername, która jest dostępna podczas tworzenia serwera MariaDB. |
     |Hasło |Wprowadź hasło podane podczas tworzenia serwera MariaDB. |
-    |protokół SSL|Wybierz pozycję **wymagane**.|
+    |Protokół SSL|Wybierz pozycję **wymagane**.|
     ||
 
 5. Wybierz pozycję **Testuj połączenie** lub **przycisk OK**.

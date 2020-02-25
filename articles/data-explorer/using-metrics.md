@@ -1,5 +1,5 @@
 ---
-title: Monitoruj wydajność, kondycję i użycie usługi Azure Eksplorator danych przy użyciu metryk
+title: Monitorowanie wydajności Eksplorator danych platformy Azure, kondycja & użycie przy użyciu metryk
 description: Dowiedz się, jak używać metryk Eksplorator danych platformy Azure do monitorowania wydajności, kondycji i użycia klastra.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: f8078d8bae00ac4789a679be4d7a1944c749cce6
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1319b8cd6ac8a0eb83381c24bcde9996458e47a7
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423848"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560308"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Monitoruj wydajność, kondycję i użycie usługi Azure Eksplorator danych przy użyciu metryk
 
@@ -88,7 +88,7 @@ Zapytanie metryk wydajności zapytania Śledź czas trwania zapytania i łączn�
 
 **Metryka** | **Jednostka** | **Agregacja** | **Opis metryki** | **Wymiary** |
 |---|---|---|---|---|
-| Czas trwania zapytania | Milisekundy | Średnia, minimalna, maksymalna, suma | Łączny czas do odebrania wyników zapytania (nie obejmuje opóźnienia sieci). | QueryStatus |
+| Czas trwania zapytania | MS | Średnia, minimalna, maksymalna, suma | Łączny czas do odebrania wyników zapytania (nie obejmuje opóźnienia sieci). | QueryStatus |
 | Łączna liczba współbieżnych zapytań | Licznik | AVG, Max, min, sum | Liczba zapytań wykonywanych równolegle w klastrze. Ta Metryka jest dobrym sposobem oszacowania obciążenia w klastrze. | None |
 | Łączna liczba zapytań z ograniczeniami | Licznik | AVG, Max, min, sum | Liczba zapytań z ograniczeniami (odrzuconych) w klastrze. Maksymalna dozwolona liczba współbieżnych (równoległych) zapytań jest definiowana w zasadzie współbieżnych zapytań. | None |
 | | | | |
@@ -100,7 +100,7 @@ Metryki pozyskiwania przesyłania strumieniowego śledzą dane pozyskiwania prze
 **Metryka** | **Jednostka** | **Agregacja** | **Opis metryki** | **Wymiary** |
 |---|---|---|---|---|
 Szybkość danych pozyskiwania przesyłania strumieniowego |    Licznik   | RateRequestsPerSecond | Całkowita ilość danych pozyskanych w klastrze. | None |
-Czas trwania pozyskiwania strumieniowego   | Milisekundy  | Średnia, maks., minimum | Łączny czas trwania wszystkich żądań pozyskiwania przesyłania strumieniowego. | None |
+Czas trwania pozyskiwania strumieniowego   | MS  | Średnia, maks., minimum | Łączny czas trwania wszystkich żądań pozyskiwania przesyłania strumieniowego. | None |
 Szybkość żądania pozyskiwania strumieniowego   | Licznik | Liczba, średnia, Max, min, suma | Całkowita liczba żądań pozyskiwania przesyłania strumieniowego. | None |
 Wynik pozyskiwania strumieniowego | Licznik | Śr   | Całkowita liczba żądań pozyskiwania strumieniowego według typu wyniku. | Wynik |
 | | | | |

@@ -1,30 +1,30 @@
 ---
-title: 'Wizualizuj dane z Eksploratora danych platformy Azure z kwerendą importowanych w usłudze Power BI '
-description: 'W tym artykule dowiesz się, jak używać jednej z trzech opcji do wizualizacji danych w usłudze Power BI: importowanie zapytania z Eksploratora danych usługi Azure.'
+title: Wizualizuj dane z usługi Azure Eksplorator danych przy użyciu zaimportowanego zapytania Power BI
+description: 'W tym artykule dowiesz się, jak użyć jednej z trzech opcji wizualizacji danych w Power BI: Importowanie zapytania z usługi Azure Eksplorator danych.'
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 6c2c8457cee004bf1288656ec9746b703d41aee1
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: ff156ab3fe74115bce8f7d6bdd3ba47b514f5ff5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806402"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562483"
 ---
-# <a name="visualize-data-using-a-query-imported-into-power-bi"></a>Wizualizuj dane przy użyciu zapytań, importowany do usługi Power BI
+# <a name="visualize-data-using-a-query-imported-into-power-bi"></a>Wizualizuj dane przy użyciu zapytania zaimportowanego do Power BI
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Power BI to rozwiązanie do analizy biznesowej, które pozwala wizualizować dane i udostępniać wyniki w organizacji.
 
-Usługa Azure Data Explorer oferuje trzy opcje łączenia się z danymi w usłudze Power BI: za pomocą wbudowanego łącznika, przez zaimportowanie zapytania z usługi Azure Data Explorer lub za pomocą zapytania SQL. W tym artykule pokazano, jak zaimportować zapytanie tak, aby uzyskać dane i wizualizacji w raporcie usługi Power BI.
+Usługa Azure Data Explorer oferuje trzy opcje łączenia się z danymi w usłudze Power BI: za pomocą wbudowanego łącznika, przez zaimportowanie zapytania z usługi Azure Data Explorer lub za pomocą zapytania SQL. W tym artykule opisano sposób importowania zapytania, aby można było pobrać dane i wizualizować je w raporcie Power BI.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Potrzebne są następujące polecenie, aby zakończyć w tym artykule:
+Aby ukończyć ten artykuł, potrzebne są następujące elementy:
 
 * Konto e-mail organizacji należące do usługi Azure Active Directory, aby możliwe było łączenie się z [klastrem pomocy usługi Azure Data Explorer](https://dataexplorer.azure.com/clusters/help/databases/samples).
 
@@ -78,8 +78,8 @@ Najpierw utwórz zapytanie w aplikacji klasycznej Azure Data Explorer i wyekspor
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz już raportu, który został utworzony w tym artykule, usuń plik programu Power BI Desktop (pbix).
+Jeśli raport utworzony w tym artykule nie jest już potrzebny, usuń plik Power BI Desktop (pbix).
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla usługi Power BI](power-bi-connector.md)
+[Wizualizuj dane przy użyciu łącznika Eksplorator danych platformy Azure dla Power BI](power-bi-connector.md)

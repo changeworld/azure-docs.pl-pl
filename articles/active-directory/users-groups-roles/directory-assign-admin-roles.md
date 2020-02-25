@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7595ef1b8742c2ba18a262d5afc5eea1b4d7a15c
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: b813c1caa02ce3ffd3ab0579849dff47252e7d63
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251621"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559168"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -47,7 +47,7 @@ Aby dowiedzieć się, jak przypisać role administracyjne do użytkownika w Azur
 
 Dostępne są następujące role administratorów:
 
-### <a name="application-administratorapplication-administrator-permissions"></a>[Administrator aplikacji](#application-administrator-permissions)
+### <a name="application-administrator"></a>[Administrator aplikacji](#application-administrator-permissions)
 
 Użytkownicy w tej roli mogą tworzyć wszystkie aspekty aplikacji przedsiębiorstwa, rejestracji aplikacji i ustawień serwera proxy aplikacji oraz zarządzać nimi. Należy pamiętać, że użytkownicy przypisani do tej roli nie są dodawani jako właściciele podczas tworzenia nowych rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
 
@@ -59,16 +59,16 @@ Administratorzy aplikacji mogą zarządzać poświadczeniami aplikacji, które u
 
 Jeśli aplikacja jest przypisana do innych ról, które nie zostały wymienione powyżej, administrator aplikacji nie może zarządzać poświadczeniami tej aplikacji. 
  
-Ta rola zapewnia również możliwość _wyrażania zgody_ na delegowane uprawnienia i uprawnienia aplikacji, z wyjątkiem uprawnień do Microsoft Graph i wykresu usługi Azure AD.
+Ta rola zapewnia również możliwość _wyrażania zgody_ na delegowane uprawnienia i uprawnienia aplikacji, z wyjątkiem uprawnień do interfejsu API Microsoft Graph.
 
 > [!IMPORTANT]
 > Ten wyjątek oznacza, że nadal można wyrazić zgodę na uprawnienia do _innych_ aplikacji (np. aplikacji innych firm lub aplikacji, które zostały zarejestrowane), ale nie do uprawnień do samej usługi Azure AD. Nadal możesz _poprosić_ o te uprawnienia w ramach rejestracji aplikacji, ale _udzielając_ (tj. zgodę na) te uprawnienia wymagają administratora usługi Azure AD. Oznacza to, że złośliwy użytkownik nie może łatwo podnieść poziomu uprawnień, na przykład przez utworzenie i zgodę na dostęp do aplikacji, która może zapisywać w całym katalogu i za pośrednictwem uprawnień tej aplikacji Podnieś poziom do administratora globalnego.
 
-### <a name="application-developerapplication-developer-permissions"></a>[Deweloper aplikacji](#application-developer-permissions)
+### <a name="application-developer"></a>[Deweloper aplikacji](#application-developer-permissions)
 
 Użytkownicy w tej roli mogą tworzyć rejestracje aplikacji, gdy ustawienie "użytkownicy mogą rejestrować aplikacje" ma wartość nie. Ta rola przyznaje także uprawnienia do wyrażania zgody w imieniu użytkownika, gdy ustawienie "użytkownicy mogą wyrazić zgodę na dostęp do danych firmowych w ich imieniu" jest ustawione na wartość nie. Użytkownicy przypisani do tej roli są dodawani jako właściciele podczas tworzenia nowych rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
 
-### <a name="authentication-administratorauthentication-administrator-permissions"></a>[Administrator uwierzytelniania](#authentication-administrator-permissions)
+### <a name="authentication-administrator"></a>[Administrator uwierzytelniania](#authentication-administrator-permissions)
 
 Rola Administrator uwierzytelniania jest obecnie w publicznej wersji zapoznawczej. Użytkownicy z tą rolą mogą ustawiać lub resetować poświadczenia bez hasła oraz aktualizować hasła dla wszystkich użytkowników. Administratorzy uwierzytelniania mogą wymagać od użytkowników ponownego zarejestrowania istniejących poświadczeń niezwiązanych z hasłem (na przykład MFA lub FIDO) i odwołać się do usługi **MFA na urządzeniu**, która monituje o uwierzytelnianie wieloskładnikowe przy następnym logowaniu użytkowników, którzy nie są administratorami lub przypisani tylko do następujących ról:
 
@@ -87,45 +87,45 @@ Rola Administrator uwierzytelniania jest obecnie w publicznej wersji zapoznawcze
 >- Administratorzy w innych usługach poza usługą Azure AD, np. Exchange Online, Centrum zabezpieczeń i zgodności pakietu Office oraz systemy kadr.
 >- Użytkownicy niebędący administratorami, w tym członkowie kierownictwa, prawnik prawny i pracownicy działu kadr, którzy mogą mieć dostęp do poufnych lub prywatnych informacji.
 
-### <a name="azure-devops-administratorazure-devops-administrator-permissions"></a>[Administrator usługi Azure DevOps](#azure-devops-administrator-permissions)
+### <a name="azure-devops-administrator"></a>[Administrator usługi Azure DevOps](#azure-devops-administrator-permissions)
 
 Użytkownicy z tą rolą mogą zarządzać zasadami usługi Azure DevOps, aby ograniczyć Tworzenie nowej organizacji usługi Azure DevOps do zestawu konfigurowalnych użytkowników lub grup. Użytkownicy w tej roli mogą zarządzać tymi zasadami za pomocą dowolnej organizacji usługi Azure DevOps, która jest objęta organizacją organizacji usługi Azure AD firmy.
 
 Wszystkie zasady usługi Azure DevOps dla przedsiębiorstw mogą być zarządzane przez użytkowników w tej roli.
 
-### <a name="azure-information-protection-administratorazure-information-protection-administrator-permissions"></a>[Azure Information Protection administrator](#azure-information-protection-administrator-permissions)
+### <a name="azure-information-protection-administrator"></a>[Azure Information Protection administrator](#azure-information-protection-administrator-permissions)
 
 Użytkownicy z tą rolą mają wszystkie uprawnienia w usłudze Azure Information Protection. Ta rola umożliwia konfigurowanie etykiet dla zasad Azure Information Protection, zarządzanie szablonami ochrony i aktywowanie ochrony. Ta rola nie udziela żadnych uprawnień w centrum ochrony tożsamości, Privileged Identity Management, Monitoruj pakiet Office 365 Service Health lub Centrum zabezpieczeń i zgodności pakietu Office 365.
 
-### <a name="b2c-user-flow-administratorb2c-user-flow-administrator-permissions"></a>[Administrator przepływu użytkownika B2C](#b2c-user-flow-administrator-permissions)
+### <a name="b2c-user-flow-administrator"></a>[Administrator przepływu użytkownika B2C](#b2c-user-flow-administrator-permissions)
 
 Użytkownicy z tą rolą mogą tworzyć i zarządzać Przepływy użytkownika B2C (nazywane również zasadami "wbudowanymi") w Azure Portal. Tworząc lub edytując przepływy użytkownika, Ci użytkownicy mogą zmieniać zawartość HTML/CSS/JavaScript środowiska użytkownika, zmieniać wymagania usługi MFA dla przepływu użytkownika, zmieniać oświadczenia w tokenie i dostosowywać ustawienia sesji dla wszystkich zasad w dzierżawie. Z drugiej strony ta rola nie obejmuje możliwości przeglądania danych użytkownika ani wprowadzania zmian w atrybutach zawartych w schemacie dzierżawców. Zmiany w strukturze środowiska tożsamości (znane również jako niestandardowe) również są poza zakresem tej roli.
 
-### <a name="b2c-user-flow-attribute-administratorb2c-user-flow-attribute-administrator-permissions"></a>[B2C atrybutu przepływu użytkownika](#b2c-user-flow-attribute-administrator-permissions)
+### <a name="b2c-user-flow-attribute-administrator"></a>[B2C atrybutu przepływu użytkownika](#b2c-user-flow-attribute-administrator-permissions)
 
 Użytkownicy z tą rolą dodają lub usuwają atrybuty niestandardowe dostępne dla wszystkich przepływów użytkowników w dzierżawie. W związku z tym użytkownicy z tą rolą mogą zmieniać lub dodawać nowe elementy do schematu użytkownika końcowego i wpływać na zachowanie wszystkich przepływów użytkownika, a także pośrednio wprowadzić zmiany w jakie dane mogą być zadawane przez użytkowników końcowych i ostatecznie wysyłane jako oświadczenia do aplikacji. Ta rola nie może edytować przepływów użytkowników.
 
-### <a name="b2c-ief-keyset-administratorb2c-ief-keyset-administrator-permissions"></a>[Administrator zestawu kluczy B2C IEF](#b2c-ief-keyset-administrator-permissions)
+### <a name="b2c-ief-keyset-administrator"></a>[Administrator zestawu kluczy B2C IEF](#b2c-ief-keyset-administrator-permissions)
 
 Użytkownik może tworzyć klucze zasad i wpisy tajne oraz zarządzać nimi na potrzeby szyfrowania tokenów, podpisów tokenów oraz szyfrowania i odszyfrowywania roszczeń. Przez dodanie nowych kluczy do istniejących kontenerów kluczy, ten ograniczony administrator może przerzucać wpisy tajne w razie potrzeby bez wpływu na istniejące aplikacje. Ten użytkownik może zobaczyć pełną zawartość tych kluczy tajnych i ich daty wygaśnięcia nawet po ich utworzeniu.
 
 > [!IMPORTANT]
 > Jest to poufna rola. Rolę administratora zestawu kluczy należy uważnie poddać inspekcji i przypisać ją do środowiska produkcyjnego.
 
-### <a name="b2c-ief-policy-administratorb2c-ief-policy-administrator-permissions"></a>[Administrator zasad B2C IEF](#b2c-ief-policy-administrator-permissions)
+### <a name="b2c-ief-policy-administrator"></a>[Administrator zasad B2C IEF](#b2c-ief-policy-administrator-permissions)
 
 Użytkownicy w tej roli mogą tworzyć, odczytywać, aktualizować i usuwać wszystkie niestandardowe zasady w Azure AD B2C i dlatego mieć pełną kontrolę nad strukturą środowiska tożsamości w odpowiedniej dzierżawie Azure AD B2C. Edytując zasady, ten użytkownik może ustanowić bezpośrednią Federacji z zewnętrznymi dostawcami tożsamości, zmienić schemat katalogu, zmienić całą zawartość dodaną przez użytkownika (HTML, CSS, JavaScript), zmienić wymagania dotyczące kończenia uwierzytelniania, utworzyć nowych użytkowników, wysłać dane użytkowników z systemami zewnętrznymi, w tym pełną migracją, i edytują wszystkie informacje o użytkowniku, w tym poufne pola, takie jak hasła i numery telefonów. Z drugiej strony ta rola nie może zmienić kluczy szyfrowania ani edytować wpisów tajnych używanych dla Federacji w dzierżawie.
 
 > [!IMPORTANT]
 > IEF zasad jest wysoce poufną rolą, która powinna być przypisana na bardzo ograniczonym poziomie dla dzierżawców w środowisku produkcyjnym. Działania tych użytkowników powinny być ściśle poddawane inspekcji, szczególnie w przypadku dzierżawców w środowisku produkcyjnym.
 
-### <a name="billing-administratorbilling-administrator-permissions"></a>[Administrator rozliczeń](#billing-administrator-permissions)
+### <a name="billing-administrator"></a>[Administrator rozliczeń](#billing-administrator-permissions)
 
 Dokonuje zakupów, zarządza subskrypcjami, zarządza biletami pomocy technicznej i monitoruje kondycję usługi.
 
-### <a name="cloud-application-administratorcloud-application-administrator-permissions"></a>[Administrator aplikacji w chmurze](#cloud-application-administrator-permissions)
+### <a name="cloud-application-administrator"></a>[Administrator aplikacji w chmurze](#cloud-application-administrator-permissions)
 
-Użytkownicy w tej roli mają takie same uprawnienia jak rola administratora aplikacji, z wyłączeniem możliwości zarządzania serwerem proxy aplikacji. Ta rola umożliwia tworzenie wszystkich aspektów aplikacji dla przedsiębiorstw i rejestracji aplikacji oraz zarządzanie nimi. Ta rola umożliwia również zgodę na uprawnienia delegowane i uprawnienia aplikacji z wyłączeniem Microsoft Graph i Azure AD Graph. Użytkownicy przypisani do tej roli nie są dodawani jako właściciele podczas tworzenia nowych rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
+Użytkownicy w tej roli mają takie same uprawnienia jak rola administratora aplikacji, z wyłączeniem możliwości zarządzania serwerem proxy aplikacji. Ta rola umożliwia tworzenie wszystkich aspektów aplikacji dla przedsiębiorstw i rejestracji aplikacji oraz zarządzanie nimi. Ta rola umożliwia również zgodę na uprawnienia delegowane i uprawnienia aplikacji z wyłączeniem interfejsu API Microsoft Graph. Użytkownicy przypisani do tej roli nie są dodawani jako właściciele podczas tworzenia nowych rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
 
 Administratorzy aplikacji w chmurze mogą zarządzać poświadczeniami aplikacji, które umożliwiają im personifikowanie aplikacji. W związku z tym użytkownicy przypisani do tej roli mogą zarządzać poświadczeniami aplikacji tylko te aplikacje, które nie są przypisane do żadnych ról usługi Azure AD lub te przypisane tylko do następujących ról administratora:
 * Deweloper aplikacji
@@ -134,11 +134,11 @@ Administratorzy aplikacji w chmurze mogą zarządzać poświadczeniami aplikacji
 
 Jeśli aplikacja jest przypisana do innych ról, które nie zostały wymienione powyżej, administrator aplikacji w chmurze nie może zarządzać poświadczeniami tej aplikacji.
 
-### <a name="cloud-device-administratorcloud-device-administrator-permissions"></a>[Administrator urządzenia w chmurze](#cloud-device-administrator-permissions)
+### <a name="cloud-device-administrator"></a>[Administrator urządzenia w chmurze](#cloud-device-administrator-permissions)
 
 Użytkownicy w tej roli mogą włączać, wyłączać i usuwać urządzenia w usłudze Azure AD oraz odczytywać klucze funkcji BitLocker systemu Windows 10 (jeśli istnieją) w Azure Portal. Rola nie udziela uprawnień do zarządzania wszystkimi innymi właściwościami na urządzeniu.
 
-### <a name="compliance-administratorcompliance-administrator-permissions"></a>[Administrator zgodności](#compliance-administrator-permissions)
+### <a name="compliance-administrator"></a>[Administrator zgodności](#compliance-administrator-permissions)
 
 Użytkownicy z tą rolą mają uprawnienia do zarządzania funkcjami zgodności w centrum Microsoft 365 zgodności, Microsoft 365 centrum administracyjnego, platformy Azure i Centrum zabezpieczeń i zgodności pakietu Office 365. Osoby przydzielone mogą również zarządzać wszystkimi funkcjami w centrum administracyjnym programu Exchange i zespołami & centrami administracyjnymi Skype dla firm i tworzyć bilety pomocy technicznej dla platformy Azure i Microsoft 365. Więcej informacji można znaleźć w [tematach role administratorów pakietu Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -150,7 +150,7 @@ W | Można wykonać
 [Usługa](https://docs.microsoft.com/intune/role-based-access-control) | Wyświetl wszystkie dane inspekcji usługi Intune
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Ma uprawnienia tylko do odczytu i może zarządzać alertami<br>Może tworzyć i modyfikować zasady dotyczące plików i zezwalać na akcje ładu plików<br>Może wyświetlać wszystkie wbudowane raporty w obszarze Zarządzanie danymi
 
-### <a name="compliance-data-administratorcompliance-data-administrator-permissions"></a>[Administrator danych zgodności](#compliance-data-administrator-permissions)
+### <a name="compliance-data-administrator"></a>[Administrator danych zgodności](#compliance-data-administrator-permissions)
 
 Użytkownicy z tą rolą mają uprawnienia do śledzenia danych w centrum Microsoft 365 zgodności, Microsoft 365 centrum administracyjnego i na platformie Azure. Użytkownicy mogą również śledzić dane zgodności w centrum administracyjnym programu Exchange, w Menedżerze zgodności i zespołach & centrum administracyjnym usługi Skype dla firm i tworzyć bilety pomocy technicznej dla platformy Azure i Microsoft 365.
 
@@ -162,71 +162,71 @@ W | Można wykonać
 [Usługa](https://docs.microsoft.com/intune/role-based-access-control) | Wyświetl wszystkie dane inspekcji usługi Intune
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Ma uprawnienia tylko do odczytu i może zarządzać alertami<br>Może tworzyć i modyfikować zasady dotyczące plików i zezwalać na akcje ładu plików<br>Może wyświetlać wszystkie wbudowane raporty w obszarze Zarządzanie danymi
 
-### <a name="conditional-access-administratorconditional-access-administrator-permissions"></a>[Administrator dostępu warunkowego](#conditional-access-administrator-permissions)
+### <a name="conditional-access-administrator"></a>[Administrator dostępu warunkowego](#conditional-access-administrator-permissions)
 
 Użytkownicy z tą rolą mają możliwość zarządzania ustawieniami dostępu warunkowego Azure Active Directory.
 > [!NOTE]
 > Aby wdrożyć zasady dostępu warunkowego programu Exchange ActiveSync na platformie Azure, użytkownik musi być również administratorem globalnym.
 
-### <a name="customer-lockbox-access-approvercustomer-lockbox-access-approver-permissions"></a>[Osoba zatwierdzająca Skrytka klienta dostępu](#customer-lockbox-access-approver-permissions)
+### <a name="customer-lockbox-access-approver"></a>[Osoba zatwierdzająca Skrytka klienta dostępu](#customer-lockbox-access-approver-permissions)
 
 Zarządza [żądaniami skrytka klienta](https://docs.microsoft.com/office365/admin/manage/customer-lockbox-requests) w organizacji. Odbierają one powiadomienia e-mail dla żądań Skrytka klienta i mogą zatwierdzać i odrzucać żądania z centrum administracyjnego Microsoft 365. Mogą również włączać lub wyłączać funkcję Skrytka klienta. Tylko Administratorzy globalni mogą resetować hasła osób przypisanych do tej roli.
 
-### <a name="desktop-analytics-administratordesktop-analytics-administrator-permissions"></a>[Administrator usługi Desktop Analytics](#desktop-analytics-administrator-permissions)
+### <a name="desktop-analytics-administrator"></a>[Administrator usługi Desktop Analytics](#desktop-analytics-administrator-permissions)
 
 
 Użytkownicy w tej roli mogą zarządzać narzędziami do analizy pulpitu i dostosowywania pakietu Office &ymi usługami zasad. W przypadku usługi Desktop Analytics obejmuje to możliwość wyświetlania spisu zasobów, tworzenia planów wdrażania, wyświetlania stanu wdrożenia i kondycji. Ta rola umożliwia użytkownikom zarządzanie zasadami pakietu Office w przypadku dostosowywania pakietu Office & Policy Service.
 
-### <a name="device-administratordevice-administrators-permissions"></a>[Administrator urządzenia](#device-administrators-permissions)
+### <a name="device-administrator"></a>[Administrator urządzenia](#device-administrators-permissions)
 
 Ta rola jest dostępna do przypisania tylko jako dodatkowy administrator lokalny w [ustawieniach urządzenia](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Użytkownicy z tą rolą stają się administratorami maszyn lokalnych na wszystkich urządzeniach z systemem Windows 10, które są przyłączone do Azure Active Directory. Nie mają możliwości zarządzania obiektami obiektów w Azure Active Directory.
 
-### <a name="directory-readersdirectory-readers-permissions"></a>[Czytelnicy katalogów](#directory-readers-permissions)
+### <a name="directory-readers"></a>[Czytelnicy katalogów](#directory-readers-permissions)
 
 Użytkownicy w tej roli mogą odczytywać podstawowe informacje o katalogu. Ta rola powinna być używana na potrzeby:
 * Przyznanie określonego zestawu Gościom dostępu do odczytu zamiast udzielania go wszystkim użytkownikom-Gościom.
 * Przyznanie konkretnego zestawu użytkownikom niebędącym administratorami dostępu do Azure Portal w przypadku wybrania opcji "Ogranicz dostęp do portalu usługi Azure AD tylko do administratorów" ma wartość "tak".
 * Przyznanie podmiotom usługi dostępu do katalogu, w którym znajduje się katalog. Read. All nie jest opcją.
 
-### <a name="directory-synchronization-accountsdirectory-synchronization-accounts-permissions"></a>[Konta synchronizacji katalogów](#directory-synchronization-accounts-permissions)
+### <a name="directory-synchronization-accounts"></a>[Konta synchronizacji katalogów](#directory-synchronization-accounts-permissions)
 
 Nie używaj. Ta rola jest automatycznie przypisana do usługi Azure AD Connect i nie jest przeznaczona do użycia ani nie jest obsługiwana w żadnym innym przypadku.
 
-### <a name="directory-writersdirectory-writers-permissions"></a>[Autorzy katalogów](#directory-writers-permissions)
+### <a name="directory-writers"></a>[Autorzy katalogów](#directory-writers-permissions)
 
 Jest to Starsza rola, która ma zostać przypisana do aplikacji, które nie obsługują [struktury wyrażania zgody](../develop/quickstart-register-app.md). Nie powinien być przypisany do żadnych użytkowników.
 
-### <a name="dynamics-365-administrator--crm-administratorcrm-service-administrator-permissions"></a>[Administrator programu Dynamics 365/programu CRM](#crm-service-administrator-permissions)
+### <a name="dynamics-365-administrator--crm-administrator"></a>[Administrator programu Dynamics 365/programu CRM](#crm-service-administrator-permissions)
 
 Użytkownicy z tą rolą mają uprawnienia globalne w systemie Microsoft Dynamics 365 online, gdy usługa jest obecna, a także możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji na temat [używania roli administratora usługi do zarządzania dzierżawcą](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant).
 
 > [!NOTE]
-> W Microsoft Graph interfejsie API usługi Azure AD interfejs API programu Graph i Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi Dynamics 365." Jest to "administrator systemu Dynamics 365" w [Azure Portal](https://portal.azure.com).
+> W interfejsie API Microsoft Graph i programie Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi Dynamics 365." Jest to "administrator systemu Dynamics 365" w [Azure Portal](https://portal.azure.com).
 
-### <a name="exchange-administratorexchange-service-administrator-permissions"></a>[Administrator programu Exchange](#exchange-service-administrator-permissions)
+### <a name="exchange-administrator"></a>[Administrator programu Exchange](#exchange-service-administrator-permissions)
 
 Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Exchange Online, gdy usługa jest obecna. Program ma także możliwość tworzenia wszystkich grup pakietu Office 365 i zarządzania nimi, zarządzania biletami pomocy technicznej oraz monitorowania kondycji usługi. Więcej informacji na [temat ról administracyjnych pakietu Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 > [!NOTE]
-> W Microsoft Graph interfejsie API usługi Azure AD interfejs API programu Graph i Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi Exchange". Jest to "Administrator programu Exchange" w [Azure Portal](https://portal.azure.com). Jest to "administrator usługi Exchange Online" w [centrum administracyjnym programu Exchange](https://go.microsoft.com/fwlink/p/?LinkID=529144).
+> W interfejsie API Microsoft Graph i programie Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi Exchange". Jest to "Administrator programu Exchange" w [Azure Portal](https://portal.azure.com). Jest to "administrator usługi Exchange Online" w [centrum administracyjnym programu Exchange](https://go.microsoft.com/fwlink/p/?LinkID=529144).
 
-### <a name="external-identity-provider-administratorexternal-identity-provider-administrator-permissions"></a>[Administrator zewnętrznego dostawcy tożsamości](#external-identity-provider-administrator-permissions)
+### <a name="external-identity-provider-administrator"></a>[Administrator zewnętrznego dostawcy tożsamości](#external-identity-provider-administrator-permissions)
 
 Ten administrator zarządza Federacją między dzierżawami Azure Active Directory i zewnętrznymi dostawcami tożsamości. Za pomocą tej roli użytkownicy mogą dodawać nowych dostawców tożsamości i konfigurować wszystkie dostępne ustawienia (np. ścieżkę uwierzytelniania, identyfikator usługi, przypisane kontenery kluczy). Ten użytkownik może umożliwić dzierżawcom ufanie uwierzytelnieniom od zewnętrznych dostawców tożsamości. Wynikowy wpływ na środowisko użytkownika końcowego zależy od typu dzierżawy:
 
 * Azure Active Directory dzierżawców dla pracowników i partnerów: dodanie Federacji (np. z użyciem usługi Gmail) natychmiast wpłynie na wszystkie zaproszenia gościa, które nie zostały jeszcze zrealizowane. Zobacz [Dodawanie usługi Google jako dostawcy tożsamości dla użytkowników-Gości B2B](https://docs.microsoft.com/azure/active-directory/b2b/google-federation).
 * Azure Active Directory B2C dzierżawców: dodanie Federacji (na przykład w usłudze Facebook lub innej organizacji usługi Azure AD) nie wpłynie natychmiast na przepływy użytkowników końcowych, dopóki dostawca tożsamości nie zostanie dodany jako opcja w przepływie użytkownika (nazywany również wbudowanym zasady). Zapoznaj się z przykładem dotyczącym [konfigurowania konto Microsoft jako dostawcy tożsamości](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app) . Aby zmienić przepływy użytkowników, wymagana jest ograniczona rola "Administrator przepływu użytkownika B2C".
 
-### <a name="global-administrator--company-administratorcompany-administrator-permissions"></a>[Administrator globalny/administrator firmy](#company-administrator-permissions)
+### <a name="global-administrator--company-administrator"></a>[Administrator globalny/administrator firmy](#company-administrator-permissions)
 
 Użytkownicy z tą rolą mają dostęp do wszystkich funkcji administracyjnych w programie Azure Active Directory, a także usług korzystających z tożsamości Azure Active Directory, takich jak Microsoft 365 Security Center, Microsoft 365 Centrum zgodności, Exchange Online, SharePoint Online i Skype dla firm Online. Osoba, która zarejestruje się dla dzierżawy Azure Active Directory, zostaje administratorem globalnym. W Twojej firmie może istnieć więcej niż jeden administrator globalny. Administratorzy globalni mogą zresetować hasło dla dowolnego użytkownika i wszystkich innych administratorów.
 
 > [!NOTE]
-> W Microsoft Graph interfejsie API usługi Azure AD interfejs API programu Graph i Azure AD PowerShell ta rola jest identyfikowana jako "administrator firmy". Jest to "Administrator globalny" w [Azure Portal](https://portal.azure.com).
+> W interfejsie API Microsoft Graph i programie Azure AD PowerShell ta rola jest identyfikowana jako "administrator firmy". Jest to "Administrator globalny" w [Azure Portal](https://portal.azure.com).
 >
 >
 
-### <a name="global-readerglobal-reader-permissions"></a>[Czytnik globalny](#global-reader-permissions)
+### <a name="global-reader"></a>[Czytnik globalny](#global-reader-permissions)
 
 Użytkownicy w tej roli mogą odczytywać ustawienia i informacje administracyjne w ramach usług Microsoft 365, ale nie mogą podejmować działań związanych z zarządzaniem. Global Reader to odpowiedni dla administratora globalnego tylko do odczytu. Przypisywanie globalnego czytnika zamiast administratora globalnego do planowania, inspekcji lub badań. Używaj globalnego czytnika w połączeniu z innymi ograniczonymi rolami administratora, takimi jak administrator programu Exchange, aby ułatwić wykonywanie zadań bez przypisywania roli administratora globalnego. Global Reader współpracuje z centrum administracyjnym Microsoft 365, centrum administracyjnym programu Exchange, centrum administracyjnym zespołów, Centrum zabezpieczeń, centrum zgodności, centrum administracyjnym usługi Azure AD i centrum administracyjnym zarządzania urządzeniami.
 
@@ -246,15 +246,15 @@ Użytkownicy w tej roli mogą odczytywać ustawienia i informacje administracyjn
 > Te funkcje są obecnie opracowywane.
 >
 
-### <a name="groups-administratorgroups-administrator-permissions"></a>[Administrator grup](#groups-administrator-permissions)
+### <a name="groups-administrator"></a>[Administrator grup](#groups-administrator-permissions)
 
 Użytkownicy w tej roli mogą tworzyć grupy i ich ustawienia, takie jak zasady nazewnictwa i wygasania, oraz zarządzać nimi. Ważne jest, aby zrozumieć, że przypisanie użytkownika do tej roli daje im możliwość zarządzania wszystkimi grupami w dzierżawie w różnych obciążeniach, takimi jak zespoły, SharePoint, Yammer w dodatku do programu Outlook. Ponadto użytkownik będzie mógł zarządzać różnymi ustawieniami grup w różnych portalach administracyjnych, takich jak centrum administracyjne firmy Microsoft, Azure Portal, a także obciążenie specyficzne dla zespołów i centrów administracyjnych programu SharePoint.
 
-### <a name="guest-inviterguest-inviter-permissions"></a>[Zapraszający gościa](#guest-inviter-permissions)
+### <a name="guest-inviter"></a>[Zapraszający gościa](#guest-inviter-permissions)
 
 Użytkownicy w tej roli mogą zarządzać Azure Active Directory zaproszeniami użytkowników typu B2B, gdy **Członkowie mogą zapraszać** ustawienie użytkownika na wartość nie. Więcej informacji na temat współpracy B2B na [temat współpracy B2B w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Nie zawiera żadnych innych uprawnień.
 
-### <a name="helpdesk-administratorhelpdesk-administrator-permissions"></a>[Administrator pomocy technicznej](#helpdesk-administrator-permissions)
+### <a name="helpdesk-administrator"></a>[Administrator pomocy technicznej](#helpdesk-administrator-permissions)
 
 Użytkownicy z tą rolą mogą zmieniać hasła, unieważniać tokeny odświeżania, zarządzać żądaniami obsługi oraz monitorować kondycję usługi. Unieważnienie tokenu odświeżania Wymusza ponowne zalogowanie użytkownika. Administratorzy pomocy technicznej mogą resetować hasła i unieważniać tokeny odświeżania innych użytkowników, którzy nie są administratorami lub przypisani tylko do następujących ról:
 
@@ -275,46 +275,46 @@ Użytkownicy z tą rolą mogą zmieniać hasła, unieważniać tokeny odświeża
 
 Delegowanie uprawnień administracyjnych przez podzbiory użytkowników i stosowanie zasad do podzbioru użytkowników jest możliwe z [jednostkami administracyjnymi (teraz w publicznej wersji zapoznawczej)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units).
 
-Ta rola była wcześniej nazywana "administratorem haseł" w [Azure Portal](https://portal.azure.com/). Nazwa "Administrator pomocy technicznej" w usłudze Azure AD jest teraz zgodna z nazwą w programie Azure AD PowerShell, usłudze Azure AD interfejs API programu Graph i Microsoft Graph interfejsie API.
+Ta rola była wcześniej nazywana "administratorem haseł" w [Azure Portal](https://portal.azure.com/). Nazwa "Administrator pomocy technicznej" w usłudze Azure AD jest teraz zgodna z nazwą w programie Azure AD PowerShell i interfejsem API Microsoft Graph.
 
-### <a name="intune-administratorintune-service-administrator-permissions"></a>[Administrator usługi Intune](#intune-service-administrator-permissions)
+### <a name="intune-administrator"></a>[Administrator usługi Intune](#intune-service-administrator-permissions)
 
 Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Intune online, gdy usługa jest obecna. Ponadto ta rola obejmuje możliwość zarządzania użytkownikami i urządzeniami w celu kojarzenia zasad, a także tworzenia grup i zarządzania nimi. Więcej informacji na temat [kontroli administracji opartej na rolach (RBAC) z Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control).
 
 Ta rola może tworzyć wszystkie grupy zabezpieczeń i zarządzać nimi. Jednak administrator usługi Intune nie ma uprawnień administratora w grupach pakietu Office. Oznacza to, że administrator nie może zaktualizować właścicieli ani członkostw wszystkich grup pakietu Office w dzierżawie. Może jednak zarządzać utworzoną przez siebie grupą pakietu Office, która jest częścią swoich uprawnień użytkownika końcowego. W związku z tym wszystkie grupy pakietu Office (nie grupy zabezpieczeń), które tworzy, powinny być wliczane do limitu przydziału 250.
 
 > [!NOTE]
-> W Microsoft Graph interfejsie API usługi Azure AD interfejs API programu Graph i Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi Intune". Jest to "administrator usługi Intune" w [Azure Portal](https://portal.azure.com).
+> W interfejsie API Microsoft Graph i programie Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi Intune". Jest to "administrator usługi Intune" w [Azure Portal](https://portal.azure.com).
 
-### <a name="kaizala-administratorkaizala-administrator-permissions"></a>[Usługi kaizala administrator](#kaizala-administrator-permissions)
+### <a name="kaizala-administrator"></a>[Usługi kaizala administrator](#kaizala-administrator-permissions)
 
 Użytkownicy z tą rolą mają uprawnienia globalne do zarządzania ustawieniami w programie Microsoft usługi kaizala, gdy usługa jest obecna, a także możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Ponadto użytkownik może uzyskiwać dostęp do raportów związanych z wdrażaniem & użyciu usługi kaizala przez członków organizacji i raportów biznesowych wygenerowanych za pomocą akcji usługi kaizala.
 
-### <a name="license-administratorlicense-administrator-permissions"></a>[Administrator licencji](#license-administrator-permissions)
+### <a name="license-administrator"></a>[Administrator licencji](#license-administrator-permissions)
 
 Użytkownicy w tej roli mogą dodawać, usuwać i aktualizować przypisania licencji dla użytkowników, grup (przy użyciu licencjonowania opartego na grupach) i zarządzać lokalizacją użycia na użytkownikach. Rola nie pozwala na kupowanie subskrypcji ani zarządzanie nimi, tworzenie grup ani zarządzanie nimi, a także tworzenie użytkowników poza lokalizacją użycia ani zarządzanie nimi. Ta rola nie ma dostępu do wyświetlania biletów pomocy technicznej, tworzenia ich ani zarządzania nimi.
 
-### <a name="message-center-privacy-readermessage-center-privacy-reader-permissions"></a>[Czytnik prywatności centrum wiadomości](#message-center-privacy-reader-permissions)
+### <a name="message-center-privacy-reader"></a>[Czytnik prywatności centrum wiadomości](#message-center-privacy-reader-permissions)
 
 Użytkownicy w tej roli mogą monitorować wszystkie powiadomienia w centrum wiadomości, w tym komunikaty o ochronie prywatności danych. Czytelnicy ochrony prywatności centrum wiadomości otrzymują powiadomienia e-mail, w tym dotyczące prywatności danych i mogą anulować subskrypcję przy użyciu preferencji centrum wiadomości. Tylko administrator globalny i czytnik zasad ochrony prywatności centrum wiadomości mogą odczytywać wiadomości dotyczące prywatności danych. Ponadto ta rola zawiera możliwość wyświetlania grup, domen i subskrypcji. Ta rola nie ma uprawnień do wyświetlania, tworzenia ani zarządzania żądaniami obsługi.
 
-### <a name="message-center-readermessage-center-reader-permissions"></a>[Czytelnik centrum wiadomości](#message-center-reader-permissions)
+### <a name="message-center-reader"></a>[Czytelnik centrum wiadomości](#message-center-reader-permissions)
 
 Użytkownicy w tej roli mogą monitorować powiadomienia i aktualizacje kondycji doradców w [centrum komunikatów pakietu Office 365](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) dla swojej organizacji na skonfigurowanych usługach, takich jak Exchange, Intune i Microsoft Teams. Czytelnicy centrum wiadomości otrzymują cotygodniowe podsumowanie wiadomości e-mail z ogłoszeń, aktualizacji i mogą udostępniać wpisy centrum wiadomości w pakiecie Office 365. W usłudze Azure AD Użytkownicy przypisani do tej roli będą mieli dostęp tylko do odczytu w ramach usług Azure AD, takich jak użytkownicy i grupy. Ta rola nie ma dostępu do wyświetlania biletów pomocy technicznej, tworzenia ich ani zarządzania nimi.
 
-### <a name="office-apps-administratoroffice-apps-administrator-permissions"></a>[Administrator aplikacji pakietu Office](#office-apps-administrator-permissions)
+### <a name="office-apps-administrator"></a>[Administrator aplikacji pakietu Office](#office-apps-administrator-permissions)
 
 Użytkownicy w tej roli mogą zarządzać ustawieniami chmury aplikacji pakietu Office 365. Obejmuje to zarządzanie zasadami chmury, samoobsługowym zarządzaniem pobieraniem i możliwością wyświetlania raportu związanego z aplikacjami pakietu Office. Ta rola dodatkowo umożliwia zarządzanie biletami pomocy technicznej i monitorowanie kondycji usługi w głównym centrum administracyjnym. Użytkownicy przypisani do tej roli mogą również zarządzać komunikacją o nowych funkcjach w aplikacjach pakietu Office. 
 
-### <a name="partner-tier1-supportpartner-tier1-support-permissions"></a>[Obsługa pomoc partnera](#partner-tier1-support-permissions)
+### <a name="partner-tier1-support"></a>[Obsługa pomoc partnera](#partner-tier1-support-permissions)
 
 Nie używaj. Ta rola jest przestarzała i zostanie usunięta z usługi Azure AD w przyszłości. Ta rola jest przeznaczona do użytku przez małą liczbę partnerów odsprzedaży firmy Microsoft i nie jest przeznaczona do użytku ogólnego.
 
-### <a name="partner-tier2-supportpartner-tier2-support-permissions"></a>[Obsługa SVR partnera](#partner-tier2-support-permissions)
+### <a name="partner-tier2-support"></a>[Obsługa SVR partnera](#partner-tier2-support-permissions)
 
 Nie używaj. Ta rola jest przestarzała i zostanie usunięta z usługi Azure AD w przyszłości. Ta rola jest przeznaczona do użytku przez małą liczbę partnerów odsprzedaży firmy Microsoft i nie jest przeznaczona do użytku ogólnego.
 
-### <a name="password-administratorpassword-administrator-permissions"></a>[Administrator haseł](#password-administrator-permissions)
+### <a name="password-administrator"></a>[Administrator haseł](#password-administrator-permissions)
 
 Użytkownicy z tą rolą mają ograniczoną możliwość zarządzania hasłami. Ta rola nie przyznaje możliwości zarządzania żądaniami obsługi ani monitorowania kondycji usługi. Administratorzy haseł mogą resetować hasła innych użytkowników, którzy nie są administratorami lub tylko członkami następujących ról:
 
@@ -322,41 +322,41 @@ Użytkownicy z tą rolą mają ograniczoną możliwość zarządzania hasłami. 
 * Zapraszający gościa
 * Administrator haseł
 
-### <a name="power-bi-administratorpower-bi-service-administrator-permissions"></a>[Power BI administrator](#power-bi-service-administrator-permissions)
+### <a name="power-bi-administrator"></a>[Power BI administrator](#power-bi-service-administrator-permissions)
 
 Użytkownicy z tą rolą mają uprawnienia globalne w programie Microsoft Power BI, gdy usługa jest obecna, a także możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji na [temat Power BI roli administratora](https://docs.microsoft.com/power-bi/service-admin-role).
 
 > [!NOTE]
-> W Microsoft Graph interfejsie API usługi Azure AD interfejs API programu Graph i Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi Power BI. W [Azure Portal](https://portal.azure.com)jest "Power BI administrator".
+> W interfejsie API Microsoft Graph i programie Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi Power BI". W [Azure Portal](https://portal.azure.com)jest "Power BI administrator".
 
-### <a name="power-platform-administratorpower-platform-administrator-permissions"></a>[Administrator platformy w elektrowni](#power-platform-administrator-permissions)
+### <a name="power-platform-administrator"></a>[Administrator platformy w elektrowni](#power-platform-administrator-permissions)
 
 Użytkownicy w tej roli mogą tworzyć wszystkie aspekty środowisk, usługi PowerApps, przepływów, zasady ochrony przed utratą danych i zarządzać nimi. Ponadto użytkownicy z tą rolą mają możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi.
 
-### <a name="privileged-authentication-administratorprivileged-authentication-administrator-permissions"></a>[Administrator uprzywilejowanego uwierzytelniania](#privileged-authentication-administrator-permissions)
+### <a name="privileged-authentication-administrator"></a>[Administrator uprzywilejowanego uwierzytelniania](#privileged-authentication-administrator-permissions)
 
 Użytkownicy z tą rolą mogą ustawiać lub resetować poświadczenia bez hasła dla wszystkich użytkowników, w tym administratorów globalnych, a także aktualizować hasła dla wszystkich użytkowników. Administratorzy uprzywilejowanego uwierzytelniania mogą zmusić użytkowników do ponownego zarejestrowania istniejących poświadczeń niezwiązanych z hasłem (np. MFA, FIDO) i odwołać "Zapamiętaj usługę MFA na urządzeniu", monitując o usługę MFA przy następnym logowaniu wszystkich użytkowników.
 
-### <a name="privileged-role-administratorprivileged-role-administrator-permissions"></a>[Administrator ról uprzywilejowanych](#privileged-role-administrator-permissions)
+### <a name="privileged-role-administrator"></a>[Administrator ról uprzywilejowanych](#privileged-role-administrator-permissions)
 
 Użytkownicy z tą rolą mogą zarządzać przypisaniami ról w Azure Active Directory, a także w Azure AD Privileged Identity Management. Ponadto ta rola umożliwia zarządzanie wszystkimi aspektami Privileged Identity Management i jednostek administracyjnych.
 
 > [!IMPORTANT]
 > Ta rola umożliwia zarządzanie przypisaniami wszystkich ról usługi Azure AD, w tym roli administratora globalnego. Ta rola nie obejmuje żadnych innych uprzywilejowanych możliwości w usłudze Azure AD, takich jak tworzenie i aktualizowanie użytkowników. Jednak użytkownicy przypisani do tej roli mogą udzielić sobie lub innym dodatkowym uprawnieniem, przypisując dodatkowe role.
 
-### <a name="reports-readerreports-reader-permissions"></a>[Czytelnik raportów](#reports-reader-permissions)
+### <a name="reports-reader"></a>[Czytelnik raportów](#reports-reader-permissions)
 
 Użytkownicy z tą rolą mogą wyświetlać dane raportowania użycia i pulpit nawigacyjny raportów w centrum administracyjnym programu Microsoft 365 i pakietem kontekstu wdrażania w programie Power BI. Ponadto rola zapewnia dostęp do raportów i działań związanych z logowaniem w usłudze Azure AD oraz danymi zwracanymi przez interfejs API raportowania Microsoft Graph. Użytkownik przypisany do roli czytelnik raportów może uzyskać dostęp tylko do odpowiednich metryk użycia i wdrażania. Nie mają uprawnień administratora do konfigurowania ustawień lub uzyskiwania dostępu do centrów administracyjnych specyficznych dla produktu, takich jak program Exchange. Ta rola nie ma dostępu do wyświetlania biletów pomocy technicznej, tworzenia ich ani zarządzania nimi.
 
-### <a name="search-administratorsearch-administrator-permissions"></a>[Administrator wyszukiwania](#search-administrator-permissions)
+### <a name="search-administrator"></a>[Administrator wyszukiwania](#search-administrator-permissions)
 
 Użytkownicy w tej roli mają pełny dostęp do wszystkich funkcji zarządzania wyszukiwaniem firmy Microsoft w centrum administracyjnym Microsoft 365. Administratorzy wyszukiwania mogą delegować role administratorów wyszukiwania i edytora wyszukiwania do użytkowników, a także tworzyć zawartość, jak zakładki, pytania Q & jako i lokalizacje. Ponadto Ci użytkownicy mogą wyświetlać centrum wiadomości, monitorować kondycję usługi i tworzyć żądania obsługi.
 
-### <a name="search-editorsearch-editor-permissions"></a>[Edytor wyszukiwania](#search-editor-permissions)
+### <a name="search-editor"></a>[Edytor wyszukiwania](#search-editor-permissions)
 
 Użytkownicy w tej roli mogą tworzyć i usuwać zawartość usługi Microsoft Search w centrum administracyjnym Microsoft 365, w tym zakładki, pytania Q & jako lokalizacje oraz zarządzać nimi.
 
-### <a name="security-administratorsecurity-administrator-permissions"></a>[Administrator zabezpieczeń](#security-administrator-permissions)
+### <a name="security-administrator"></a>[Administrator zabezpieczeń](#security-administrator-permissions)
 
 Użytkownicy z tą rolą mają uprawnienia do zarządzania funkcjami związanymi z zabezpieczeniami w programie Microsoft 365 Security Center, Azure Active Directory Identity Protection, Azure Information Protection i Centrum zabezpieczeń i zgodności pakietu Office 365. Więcej informacji o uprawnieniach pakietu Office 365 jest dostępnych w [uprawnieniach w centrum zabezpieczeń i zgodności pakietu office 365](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
@@ -373,7 +373,7 @@ Windows Defender ATP i EDR | Przypisywanie ról<br>Zarządzanie grupami maszyn<b
 [Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | Może wyświetlać zasady zabezpieczeń, wyświetlać Stany zabezpieczeń, edytować zasady zabezpieczeń, wyświetlać alerty i zalecenia, odrzucać alerty i zalecenia
 [Kondycja usługi Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health) | Wyświetlanie kondycji usług Office 365
 
-### <a name="security-operatorsecurity-operator-permissions"></a>[Operator zabezpieczeń](#security-operator-permissions)
+### <a name="security-operator"></a>[Operator zabezpieczeń](#security-operator-permissions)
 
 Użytkownicy z tą rolą mogą zarządzać alertami i mieć globalny dostęp tylko do odczytu do funkcji związanych z zabezpieczeniami, w tym wszystkich informacji w Microsoft 365 Security Center, Azure Active Directory, Identity Protection, Privileged Identity Management i Office 365 Centrum zabezpieczeń i zgodności. Więcej informacji o uprawnieniach pakietu Office 365 jest dostępnych w [uprawnieniach w centrum zabezpieczeń i zgodności pakietu office 365](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center).
 
@@ -388,7 +388,7 @@ Windows Defender ATP i EDR | Wszystkie uprawnienia roli czytelnik zabezpieczeń<
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Wszystkie uprawnienia roli czytelnik zabezpieczeń
 [Kondycja usługi Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health) | Wyświetlanie kondycji usług Office 365
 
-### <a name="security-readersecurity-reader-permissions"></a>[Czytelnik zabezpieczeń](#security-reader-permissions)
+### <a name="security-reader"></a>[Czytelnik zabezpieczeń](#security-reader-permissions)
 
 Użytkownicy z tą rolą mają globalny dostęp tylko do odczytu w funkcji związanych z zabezpieczeniami, w tym wszystkie informacje w Microsoft 365 Centrum zabezpieczeń, Azure Active Directory, Ochrona tożsamości, Privileged Identity Management, a także możliwość odczytywania usługi Azure Active Raporty logowania do katalogu i dzienniki inspekcji oraz w pakiecie Office 365 Centrum zabezpieczeń i zgodności. Więcej informacji o uprawnieniach pakietu Office 365 jest dostępnych w [uprawnieniach w centrum zabezpieczeń i zgodności pakietu office 365](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
@@ -404,44 +404,44 @@ Windows Defender ATP i EDR | Wyświetlanie i badanie alertów. Po włączeniu ko
 [Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | Może wyświetlać zalecenia i alerty, wyświetlać zasady zabezpieczeń, wyświetlać Stany zabezpieczeń, ale nie mogą wprowadzać zmian
 [Kondycja usługi Office 365](https://docs.microsoft.com/office365/enterprise/view-service-health) | Wyświetlanie kondycji usług Office 365
 
-### <a name="service-support-administratorservice-support-administrator-permissions"></a>[Administrator pomocy technicznej usługi](#service-support-administrator-permissions)
+### <a name="service-support-administrator"></a>[Administrator pomocy technicznej usługi](#service-support-administrator-permissions)
 
 Użytkownicy z tą rolą mogą otwierać żądania pomocy technicznej w ramach usług firmy Microsoft dla platformy Azure i pakietu Office 365 i przegląda pulpit nawigacyjny usługi i centrum wiadomości w [Azure Portal](https://portal.azure.com) i [Microsoft 365 centrum administracyjnego](https://admin.microsoft.com). Więcej informacji na [temat ról administratorów](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 > [!NOTE]
-> W Microsoft Graph interfejsie API usługi Azure AD interfejs API programu Graph i Azure AD PowerShell ta rola jest identyfikowana jako "Administrator pomocy technicznej usługi". Jest to "administrator usługi" w [Azure Portal](https://portal.azure.com), [centrum administracyjnym Microsoft 365](https://admin.microsoft.com)i portalu usługi Intune.
+> W interfejsie API Microsoft Graph i programie Azure AD PowerShell ta rola jest identyfikowana jako "Administrator pomocy technicznej usługi". Jest to "administrator usługi" w [Azure Portal](https://portal.azure.com), [centrum administracyjnym Microsoft 365](https://admin.microsoft.com)i portalu usługi Intune.
 
-### <a name="sharepoint-administratorsharepoint-service-administrator-permissions"></a>[Administrator programu SharePoint](#sharepoint-service-administrator-permissions)
+### <a name="sharepoint-administrator"></a>[Administrator programu SharePoint](#sharepoint-service-administrator-permissions)
 
 Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft SharePoint Online, gdy usługa jest obecna, a także możliwość tworzenia wszystkich grup pakietu Office 365 i zarządzania nimi, zarządzania biletami pomocy technicznej oraz monitorowania kondycji usługi. Więcej informacji na [temat ról administratorów](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 > [!NOTE]
-> W Microsoft Graph interfejsie API usługi Azure AD interfejs API programu Graph i Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi SharePoint". Jest to "Administrator programu SharePoint" w [Azure Portal](https://portal.azure.com).
+> W interfejsie API Microsoft Graph i programie Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi SharePoint". Jest to "Administrator programu SharePoint" w [Azure Portal](https://portal.azure.com).
 
-### <a name="skype-for-business--lync-administratorlync-service-administrator-permissions"></a>[Administrator programu Skype dla firm/Lync](#lync-service-administrator-permissions)
+### <a name="skype-for-business--lync-administrator"></a>[Administrator programu Skype dla firm/Lync](#lync-service-administrator-permissions)
 
 Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Skype dla firm, gdy usługa jest obecna, a także do zarządzania atrybutami użytkownika specyficznymi dla programu Skype w Azure Active Directory. Ponadto ta rola zapewnia możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi oraz uzyskiwania dostępu do zespołów i centrum administracyjnego programu Skype dla firm. Konto musi być również licencjonowane dla zespołów lub nie może uruchamiać poleceń cmdlet programu PowerShell dla zespołów. Więcej informacji na [temat roli administratora programu Skype dla firm](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) i zespołów informacje o licencjonowaniu w usłudze [Skype dla firm i licencjonowaniu dodatku Microsoft Teams](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
 > [!NOTE]
-> W Microsoft Graph interfejsie API usługi Azure AD interfejs API programu Graph i Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi Lync". Jest to "Administrator programu Skype dla firm" w [Azure Portal](https://portal.azure.com/).
+> W interfejsie API Microsoft Graph i programie Azure AD PowerShell ta rola jest identyfikowana jako "administrator usługi Lync". Jest to "Administrator programu Skype dla firm" w [Azure Portal](https://portal.azure.com/).
 
-### <a name="teams-communications-administratorteams-communications-administrator-permissions"></a>[Administratorzy zespołu ds. komunikacji](#teams-communications-administrator-permissions)
+### <a name="teams-communications-administrator"></a>[Administratorzy zespołu ds. komunikacji](#teams-communications-administrator-permissions)
 
 Użytkownicy w tej roli mogą zarządzać aspektami obciążeń programu Microsoft Teams związanymi z usługą telefon & Voice. Obejmuje to narzędzia do zarządzania do przypisywania numerów telefonów, zasad dotyczących głosu i spotkania oraz pełny dostęp do zestawu narzędzi do analizy wywołań.
 
-### <a name="teams-communications-support-engineerteams-communications-support-engineer-permissions"></a>[Inżynierowie pomocy technicznej dla zespołów](#teams-communications-support-engineer-permissions)
+### <a name="teams-communications-support-engineer"></a>[Inżynierowie pomocy technicznej dla zespołów](#teams-communications-support-engineer-permissions)
 
 Użytkownicy w tej roli mogą rozwiązywać problemy z komunikacją w usłudze Microsoft Teams & Skype dla firm przy użyciu narzędzi do rozwiązywania problemów z wywołaniem użytkownika w centrum administracyjnym usługi Microsoft Teams & Skype dla firm. Użytkownicy w tej roli mogą wyświetlać pełne informacje o rekordzie wywołania dla wszystkich uczestników. Ta rola nie ma dostępu do wyświetlania biletów pomocy technicznej, tworzenia ich ani zarządzania nimi.
 
-### <a name="teams-communications-support-specialistteams-communications-support-specialist-permissions"></a>[Zespoły ds. pomocy technicznej](#teams-communications-support-specialist-permissions)
+### <a name="teams-communications-support-specialist"></a>[Zespoły ds. pomocy technicznej](#teams-communications-support-specialist-permissions)
 
 Użytkownicy w tej roli mogą rozwiązywać problemy z komunikacją w usłudze Microsoft Teams & Skype dla firm przy użyciu narzędzi do rozwiązywania problemów z wywołaniem użytkownika w centrum administracyjnym usługi Microsoft Teams & Skype dla firm. Użytkownicy w tej roli mogą tylko wyświetlać szczegóły użytkownika w wywołaniu dla określonego użytkownika, który wyszukał. Ta rola nie ma dostępu do wyświetlania biletów pomocy technicznej, tworzenia ich ani zarządzania nimi.
 
-### <a name="teams-service-administratorteams-service-administrator-permissions"></a>[Administrator usługi Teams](#teams-service-administrator-permissions)
+### <a name="teams-service-administrator"></a>[Administrator usługi Teams](#teams-service-administrator-permissions)
 
 Użytkownicy w tej roli mogą zarządzać wszystkimi aspektami obciążeń programu Microsoft Teams za pośrednictwem Centrum administracyjnego Microsoft Teams & Skype dla firm i odpowiednich modułów programu PowerShell. Obejmuje to między innymi wszystkie narzędzia do zarządzania dotyczące telefonii, wiadomości, spotkań i samych zespołów. Ta rola dodatkowo umożliwia tworzenie wszystkich grup pakietu Office 365 i zarządzanie nimi, zarządzanie biletami pomocy technicznej i monitorowanie kondycji usługi.
 
-### <a name="user-administratoruser-administrator-permissions"></a>[Administrator użytkowników](#user-administrator-permissions)
+### <a name="user-administrator"></a>[Administrator użytkowników](#user-administrator-permissions)
 
 Użytkownicy z tą rolą mogą tworzyć użytkowników i zarządzać wszystkimi aspektami użytkowników z pewnymi ograniczeniami (zobacz poniżej) i mogą aktualizować zasady wygasania haseł. Ponadto użytkownicy z tą rolą mogą tworzyć wszystkie grupy i zarządzać nimi. Ta rola obejmuje również możliwość tworzenia widoków użytkowników i zarządzania nimi, zarządzania biletami pomocy technicznej oraz monitorowania kondycji usługi. Administratorzy użytkowników nie mają uprawnień do zarządzania niektórymi właściwościami użytkowników w większości ról administratorów. Użytkownik mający tę rolę nie ma udzielanych do zarządzania usługą MFA. Role, które są wyjątkami do tego ograniczenia, są wymienione w poniższej tabeli.
 
@@ -449,7 +449,7 @@ Użytkownicy z tą rolą mogą tworzyć użytkowników i zarządzać wszystkimi 
 | --- | --- |
 |Uprawnienia ogólne|<p>Tworzenie użytkowników i grup</p><p>Tworzenie widoków użytkowników i zarządzanie nimi</p><p>Zarządzanie biletami pomocy technicznej pakietu Office<p>Aktualizowanie zasad wygasania haseł|
 |<p>Dla wszystkich użytkowników, w tym wszystkich administratorów</p>|<p>Zarządzanie licencjami</p><p>Zarządzanie wszystkimi właściwościami użytkowników z wyjątkiem głównej nazwy użytkownika</p>
-|Tylko dla użytkowników, którzy nie są administratorami ani w ramach jednej z następujących ograniczonych ról administratora:<ul><li>Czytelnicy katalogów<li>Zapraszający gościa<li>Administrator pomocy technicznej<li>Czytelnik centrum wiadomości<li>Czytelnik raportów<li>Administrator użytkowników|<p>Usuń i Przywróć</p><p>Wyłącz i Włącz</p><p>Unieważnianie tokenów odświeżania</p><p>Zarządzanie wszystkimi właściwościami użytkowników, w tym główną nazwą użytkownika</p><p>Zresetuj hasło</p><p>Aktualizuj klucze urządzeń (FIDO)</p>|
+|Tylko dla użytkowników, którzy nie są administratorami ani w ramach jednej z następujących ograniczonych ról administratora:<ul><li>Czytelnicy katalogów<li>Zapraszający gościa<li>Administrator pomocy technicznej<li>Czytelnik centrum wiadomości<li>Czytelnik raportów<li>Administrator użytkowników|<p>Usuń i Przywróć</p><p>Wyłącz i Włącz</p><p>Unieważnianie tokenów odświeżania</p><p>Zarządzanie wszystkimi właściwościami użytkowników, w tym główną nazwą użytkownika</p><p>Resetowanie hasła</p><p>Aktualizuj klucze urządzeń (FIDO)</p>|
 
 > [!IMPORTANT]
 > Użytkownicy z tą rolą mogą zmieniać hasła dla osób, które mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej wewnątrz i na zewnątrz Azure Active Directory. Zmiana hasła użytkownika może oznaczać, że założono, że tożsamość i uprawnienia tego użytkownika. Na przykład:
@@ -1685,7 +1685,7 @@ Może zarządzać wszystkimi aspektami użytkowników i grup, w tym resetowania 
 
 ## <a name="role-template-ids"></a>Identyfikatory szablonu roli
 
-Identyfikatory szablonów ról są używane głównie przez użytkowników interfejs API programu Graph lub PowerShell.
+Identyfikatory szablonów ról są używane głównie przez interfejs API Microsoft Graph lub użytkowników programu PowerShell.
 
 Nazwa wyświetlana wykresu | Nazwa wyświetlana Azure Portal | directoryRoleTemplateId
 ----------------- | ------------------------- | -------------------------
@@ -1741,7 +1741,7 @@ Edytor wyszukiwania | Edytor wyszukiwania | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
 Administrator zabezpieczeń | Administrator zabezpieczeń | 194ae4cb-b126-40b2-bd5b-6091b380977d
 Operator zabezpieczeń | Operator zabezpieczeń | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 Czytelnik zabezpieczeń | Czytelnik zabezpieczeń | 5d6b6bb7-de71-4623-b4af-96380a352509
-Administrator pomocy technicznej usługi | A dministrator usługi | f023fd81-a637-4b56-95fd-791ac0226033
+Administrator pomocy technicznej usługi | Administrator usługi | f023fd81-a637-4b56-95fd-791ac0226033
 Administrator usługi SharePoint | Administrator programu SharePoint | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Administratorzy zespołu ds. komunikacji | Administratorzy zespołu ds. komunikacji | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Inżynierowie pomocy technicznej dla zespołów | Inżynierowie pomocy technicznej dla zespołów | f70938a0-fc10-4177-9e90-2178f8765737

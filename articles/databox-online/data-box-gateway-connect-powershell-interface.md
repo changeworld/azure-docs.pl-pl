@@ -1,5 +1,5 @@
 ---
-title: Nawiązywanie połączenia z urządzeniem Data Box Gateway Microsoft Azure i zarządzanie nim za pomocą interfejsu programu Windows PowerShell | Microsoft Docs
+title: Łączenie się z urządzeniem Azure Data Box Gateway i zarządzanie nim za pomocą programu Windows PowerShell
 description: Opisuje sposób nawiązywania połączenia z Data Box Gateway i zarządzania nim za pomocą interfejsu programu Windows PowerShell.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 650777d849e172686e8b46502a84db8c519174e7
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 6c9f3455a07001a8d1b9b8a1e84f2af3392b5690
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775199"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561871"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>Zarządzanie urządzeniem Azure Data Box Gateway za pomocą programu Windows PowerShell
 
@@ -25,7 +25,7 @@ Ten artykuł zawiera następujące procedury:
 
 - Nawiązywanie połączenia z interfejsem programu PowerShell
 - Tworzenie pakietu dla pomocy technicznej
-- Przekaż certyfikat
+- Przekazywanie certyfikatu
 - Rozruch w środowisku innym niż DHCP
 - Wyświetl informacje o urządzeniu
 
@@ -37,7 +37,7 @@ Ten artykuł zawiera następujące procedury:
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-## <a name="upload-certificate"></a>Przekaż certyfikat
+## <a name="upload-certificate"></a>Przekazywanie certyfikatu
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 

@@ -3,21 +3,21 @@ title: Tworzenie zawartości audio — usługa mowy
 titleSuffix: Azure Cognitive Services
 description: Tworzenie zawartości audio to narzędzie online, które pozwala dostosowywać i dostrajać dane wyjściowe zamiany tekstu na mowę firmy Microsoft dla aplikacji i produktów.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: b65a39489f0823a411a9dddf79ec3abd1e5ee20d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: aed9c0a72af063c84c0744757772e11c689ac14c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806209"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561038"
 ---
-# <a name="audio-content-creation"></a>Tworzenie zawartości audio
+# <a name="improve-synthesis-with-audio-content-creation"></a>Poprawa syntezy przy użyciu tworzenia zawartości audio
 
 [Tworzenie zawartości audio](https://aka.ms/audiocontentcreation) to narzędzie online, które pozwala dostosowywać i dostrajać dane wyjściowe zamiany tekstu na mowę firmy Microsoft dla aplikacji i produktów. Za pomocą tego narzędzia można dostrajać publiczne i niestandardowe głosy na potrzeby dokładniejszych wyrażeń naturalnych i zarządzać danymi wyjściowymi w chmurze.
 
@@ -52,13 +52,13 @@ Wykonaj następujące kroki, aby utworzyć zasób mowy i połączyć go z usług
 
 Istnieją dwa sposoby na uzyskanie zawartości do narzędzia tworzenia zawartości audio.
 
-**Opcja 1.**
+**Opcja 1:**
 
 1. Po zalogowaniu się do [tworzenia zawartości audio](https://aka.ms/audiocontentcreation)kliknij pozycję **dostrajanie audio** , aby utworzyć nowy plik strojenia audio.
 2. Po wyświetleniu okna edycji można wprowadzić do 10 000 znaków.
 3. Nie zapomnij zapisać.
 
-**Opcja 2.**
+**Opcja 2:**
 
 1. Po zalogowaniu się do [tworzenia zawartości audio](https://aka.ms/audiocontentcreation)kliknij przycisk **Przekaż** , aby zaimportować jeden lub więcej plików tekstowych. Obsługiwane są zarówno zwykły tekst, jak i SSML.
 2. Po przekazaniu plików tekstowych upewnij się, że zawartość spełnia te wymagania.
@@ -104,7 +104,7 @@ Po przejrzeniu danych wyjściowych audio i spełnieniu ich dostrajania można wy
 | pliki | RIFF-16khz-16bit-mono-PCM | RIFF-24khz-16bit-mono-PCM |
 | formatu | audio-16khz-128kbitrate-mono-MP3 | audio-24khz-160kbitrate-mono-MP3 |
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Długi interfejs API audio](https://aka.ms/long-audio-api)
 

@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Dokumentacja dotycząca zamiany tekstu na mowę
+summary: Funkcja zamiany tekstu na mowę z usługi mowy umożliwia aplikacjom, narzędziom i urządzeniom Konwertowanie tekstu na wymowę, przypominającą człowieka.
+metadata:
+  title: Dokumentacja dotycząca zamiany tekstu na mowę — samouczki, dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 64d8c636aa4b0f8b75ba3a6f92d7792c91a9271d
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562901"
+landingContent:
+- title: Rozpoczynanie pracy
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest zamiana tekstu na mowę?
+      url: text-to-speech.md
+  - linkListType: quickstart
+    links:
+    - text: Syntetyzowanie mowy przy użyciu głośnika
+      url: quickstarts/text-to-speech.md
+    - text: Syntetyzowanie mowy do pliku dźwiękowego
+      url: quickstarts/text-to-speech-audio-file.md
+    - text: Funkcja syntezy mowy za pomocą długiego dźwięku
+      url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+- title: Przewodniki krok po kroku
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Ulepszanie syntezy za pomocą języka SSML
+      url: speech-synthesis-markup.md
+    - text: Ulepszanie syntezy za pomocą głosu niestandardowego
+      url: how-to-custom-voice.md
+    - text: Syntetyzowanie mowy przy użyciu interfejsu API długich form audio
+      url: long-audio-api.md
+    - text: Pobieranie listy głosów za pomocą technologii REST (Python)
+      url: quickstart-python-get-text-to-speech-voices.md
+    - text: Konwertowanie tekstu na mowę za pomocą technologii REST (Python)
+      url: quickstart-python-text-to-speech.md
+    - text: Poprawa syntezy przy użyciu tworzenia zawartości audio
+      url: how-to-audio-content-creation.md
+  - linkListType: concept
+    links:
+    - text: Wprowadzenie do usługi Custom Voice
+      url: how-to-custom-voice.md
+    - text: Przygotowywanie niestandardowych danych głosowych
+      url: how-to-custom-voice-prepare-data.md
+    - text: Tworzenie i używanie modeli usługi Custom Voice
+      url: how-to-custom-voice-create-voice.md
+    - text: Nagrywanie próbek głosu
+      url: record-custom-voice-samples.md
+    - text: Wskazówki dotyczące nazewnictwa niestandardowych słów kluczowych
+      url: speech-devices-sdk-kws-guidelines.md
+    - text: Wykrywanie niestandardowych słów kluczowych
+      url: speech-devices-sdk-create-kws.md
+    - text: Kontrola głosu niestandardowego
+      url: concepts-gating-overview.md
+    - text: Wdrażanie technologii syntetycznej
+      url: concepts-guidelines-responsible-deployment-synthetic.md
+    - text: Wytyczne dotyczące projektowania ujawniania
+      url: concepts-disclosure-guidelines.md
+    - text: Wzorce projektowania ujawniania
+      url: concepts-disclosure-patterns.md
+- title: Dokumentacja
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Obsługa języków
+      url: language-support.md#text-to-speech
+    - text: Ceny
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: Kodeks postępowania
+      url: https://aka.ms/custom-neural-code-of-conduct
+    - text: Ujawnianie dotyczące aktorów głosowych
+      url: https://aka.ms/disclosure-voice-talent

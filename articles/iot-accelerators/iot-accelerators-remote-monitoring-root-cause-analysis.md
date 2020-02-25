@@ -1,21 +1,21 @@
 ---
 title: Przeprowadzanie analizy głównej przyczyny po wystąpieniu alertu — Azure | Microsoft Docs
 description: Z tego samouczka dowiesz się, jak przeprowadzać analizę głównej przyczyny po wystąpieniu alertu przy użyciu usługi Azure Time Series Insights.
-author: aditidugar
-ms.author: adugar
+author: Philmea
+ms.author: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 70d29359d4a4bcf9f5badbbf0c553d7bed88a02b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3cb940583677d813873c07fbfa679fdcc1dff59
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61444762"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565472"
 ---
-# <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Samouczek: Przeprowadzanie analizy głównej przyczyny po wystąpieniu alertu
+# <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Samouczek: przeprowadzanie analizy głównej przyczyny po wystąpieniu alertu
 
 W tym samouczku pokazano, jak diagnozować główną przyczynę alertu za pomocą akceleratora rozwiązania do monitorowania zdalnego. Na pulpicie nawigacyjnym rozwiązania do monitorowania zdalnego zobaczysz, że został wyzwolony alert, a następnie zbadasz główną przyczynę za pomocą eksploratora usługi Azure Time Series Insights.
 
@@ -96,7 +96,7 @@ Aby dowiedzieć się, jak tworzyć i edytować reguły, zapoznaj się z poprzedn
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku pokazano, jak diagnozować główną przyczynę alertu za pomocą eksploratora usługi Time Series Insights i akceleratora rozwiązania do monitorowania zdalnego. Aby dowiedzieć się, w jaki sposób korzystać z akceleratora rozwiązań w celu identyfikowania i rozwiązywania problemów z urządzeniami połączonymi, przejdź do kolejnego samouczka.
 

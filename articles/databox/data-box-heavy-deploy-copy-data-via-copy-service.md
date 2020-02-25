@@ -1,6 +1,6 @@
 ---
-title: Samouczek, aby skopiować dane do urządzenia Azure Data Box mocno za pomocą usługi kopiowania danych | Dokumentacja firmy Microsoft
-description: W tym samouczku dowiesz się, jak skopiować dane do Twojego urządzenia Azure Data Box mocno za pomocą usługi kopiowania danych
+title: 'Samouczek: kopiowanie danych do Azure Data Box Heavy za pośrednictwem usługi kopiowania danych'
+description: W ramach tego samouczka nauczysz się kopiować dane do urządzenia Azure Data Box Heavy za pośrednictwem usługi kopiowania danych
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,47 +8,47 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: adc28ea5f74ad16d4387d246ef73618a53ea26e1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595756"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560224"
 ---
-# <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Samouczek: Kopiowanie danych do usługi Azure Data Box duże (wersja zapoznawcza) za pomocą usługi kopiowania danych
+# <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Samouczek: używanie usługi kopiowania danych do kopiowania danych do Azure Data Box Heavy (wersja zapoznawcza)
 
-W tym samouczku opisano sposób pozyskiwania danych przy użyciu usługi kopiowania danych bez hosta pośredniego. Usługa kopiowania danych działa lokalnie na Azure Data Box duże, łączy się urządzenie magazynu dołączone do sieci (NAS) za pośrednictwem protokołu SMB i kopiuje dane do duże pole danych.
+W tym samouczku opisano sposób pozyskiwania danych przy użyciu usługi kopiowania danych bez hosta pośredniego. Usługa kopiowania danych działa lokalnie na Azure Data Box Heavy, nawiązuje połączenie z urządzeniem magazynu podłączonym do sieci (NAS) za pośrednictwem protokołu SMB i kopiuje dane do Data Box Heavy.
 
 Z usługi kopiowania danych można korzystać w następujących scenariuszach:
 
 - W środowiskach NAS, gdzie hosty pośrednie mogą być niedostępne.
-- W przypadku korzystania z małych plików, dla których pozyskanie i przekazanie danych trwałoby tygodniami. Usługa kopiowania danych znacznie skraca czas pozyskiwania i przekazywania danych w przypadku małych plików.
+- W przypadku korzystania z małych plików, dla których pozyskanie i przekazanie danych trwałoby tygodniami. Usługa kopiowania danych znacznie skraca czas pozyskiwania i przekazywania danych dla małych plików.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Kopiowanie danych do duże pole danych
+> * Kopiowanie danych na urządzenie Data Box Heavy
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem upewnij się, że:
 
-1. Ukończono następujący samouczek: [Konfigurowanie Azure Data Box mocno](data-box-heavy-deploy-set-up.md).
-2. Otrzymał swoje duże pole danych, a stan zamówienia w portalu jest **dostarczone**.
+1. Ten samouczek został ukończony: [konfiguracja Azure Data Box Heavy](data-box-heavy-deploy-set-up.md).
+2. Urządzenie Data Box Heavy zostało do Ciebie dostarczone, a stan zamówienia w portalu to **Dostarczono**.
 3. Masz poświadczenia źródłowego urządzenia NAS, z którym połączysz się na potrzeby kopiowania danych.
-4. Dysponujesz szybkim połączeniem sieciowym. Najszybszy szybkości kopiowania dwa połączenia 40 GbE (po jednej na węzeł) możesz wykorzystać równolegle. Jeśli nie ma dostępnego połączenia 40 GbE, zaleca się, że masz co najmniej dwa połączenia 10 GbE (po jednej na węzeł). 
+4. Dysponujesz szybkim połączeniem sieciowym. Aby uzyskać największe szybkości kopiowania, można użyć dwóch równoległych połączeń 40-GbE (po jednym na węzeł). Jeśli nie masz dostępnego połączenia 40-GbE, zalecamy skorzystanie z co najmniej dwóch połączeń 10-GbE (po jednym na węzeł). 
 
-## <a name="copy-data-to-data-box-heavy"></a>Kopiowanie danych do duże pole danych
+## <a name="copy-data-to-data-box-heavy"></a>Kopiowanie danych na urządzenie Data Box Heavy
 
 Po nawiązaniu połączenia z urządzeniem NAS następnym krokiem jest skopiowanie danych. Przed rozpoczęciem kopiowania danych należy uwzględnić następujące kwestie:
 
-- Podczas kopiowania danych, upewnij się, że rozmiar danych jest zgodny ze limity rozmiaru opisaną w artykule [usługi Azure storage i dane pole duże limity](data-box-heavy-limits.md).
-- Jeśli dane przekazane przez duże pole danych jednocześnie jest przekazywany przez inne aplikacje poza duże pole danych, może spowodować błędy przekazywania zadania i uszkodzenie danych.
+- Podczas kopiowania danych upewnij się, że rozmiar danych jest zgodny z limitami rozmiaru opisanymi w artykule [Magazyn platformy Azure i limity Data Box Heavy](data-box-heavy-limits.md).
+- Jeśli dane przekazywane przez Data Box Heavy są przesyłane współbieżnie przez inne aplikacje poza Data Box Heavy, mogą wystąpić błędy przekazywania-zadania i uszkodzenie danych.
 - Jeśli dane są modyfikowane podczas ich odczytywania przez usługę kopiowania danych, mogą wystąpić niepowodzenia lub uszkodzenie danych.
 
 Aby skopiować dane za pomocą usługi kopiowania danych, należy utworzyć zadanie:
 
-1. W przypadku lokalnego Interfejsu w przeglądarce urządzenia duże pole danych, przejdź do **Zarządzaj** > **kopiowanie danych**.
+1. W lokalnym interfejsie użytkownika sieci Web urządzenia Data Box Heavy przejdź do pozycji **zarządzaj** > **Kopiuj dane**.
 2. Na stronie **Kopiowanie danych** wybierz pozycję **Utwórz**.
 
     ![Wybierz pozycję Utwórz na stronie „Kopiowanie danych”](media/data-box-deploy-copy-data-via-copy-service/click-create.png)
@@ -59,13 +59,13 @@ Aby skopiować dane za pomocą usługi kopiowania danych, należy utworzyć zada
     |-------------------------------|---------|
     |**Nazwa zadania**                       |Unikatową nazwę zadania składającą się z mniej niż 230 znaków. W nazwach zadań nie wolno używać następujących znaków: \<, \>, \|, \?, \*, \\, \:, \/ i \\\.         |
     |**Lokalizacja źródłowa**                |Podaj ścieżkę SMB do źródła danych w formacie: `\\<ServerIPAddress>\<ShareName>` lub `\\<ServerName>\<ShareName>`.        |
-    |**Nazwa użytkownika**                       |Nazwa użytkownika w formacie `\\<DomainName><UserName>` używana do uzyskiwania dostępu do źródła danych. Jeśli połączenie jest kontem lokalnego administratora, potrzebują uprawnień zabezpieczeń jawne. Kliknij prawym przyciskiem myszy folder, wybierz **właściwości** , a następnie wybierz **zabezpieczeń**. Należy to dodawać administratora lokalnego w **zabezpieczeń** kartę.       |
+    |**Nazwa użytkownika**                       |Nazwa użytkownika w formacie `\\<DomainName><UserName>` używana do uzyskiwania dostępu do źródła danych. Jeśli administrator lokalny nawiązuje połączenie, będą musieli mieć jawne uprawnienia zabezpieczeń. Kliknij prawym przyciskiem myszy folder, wybierz pozycję **Właściwości** , a następnie wybierz pozycję **zabezpieczenia**. Powinno to spowodować dodanie administratora lokalnego na karcie **zabezpieczenia** .       |
     |**Hasło**                       |Hasło używane do uzyskiwania dostępu do źródła danych.           |
     |**Docelowe konto magazynu**    |Z listy wybierz docelowe konto magazynu, do którego będą przekazywane dane.         |
-    |**Typ docelowy**       |Z listy wybierz typ magazynu docelowego: **Blokowy obiekt blob**, **Stronicowy obiekt blob** lub usługa **Azure Files**.        |
+    |**Typ docelowy**       |Wybierz docelowy typ magazynu z listy: **blokowy obiekt BLOB**, **stronicowy obiekt BLOB**lub **Azure Files**.        |
     |**Docelowy kontener/udział**    |Wprowadź nazwę kontenera lub udziału, do którego chcesz przekazać dane w ramach docelowego konta magazynu. Może to być nazwa udziału lub kontenera. Użyj na przykład nazwy `myshare` lub `mycontainer`. Nazwę możesz również wprowadzić w formacie `sharename\directory_name` lub `containername\virtual_directory_name`.        |
-    |**Skopiuj pliki pasujące do wzorca**    | Nazwę pliku pasującą do wzorca możesz wprowadzić na następujące dwa sposoby:<ul><li>**Użycie wyrażeń wieloznacznych:** W wyrażeniach wieloznacznych są obsługiwane tylko znaki `*` i `?`. Na przykład do wyrażenia `*.vhd` będą pasowały wszystkie pliki z rozszerzeniem `.vhd`. Podobnie do wyrażenia `*.dl?` będą pasowały wszystkie pliki z rozszerzeniem `.dl` i zaczynające się od `.dl`, na przykład `.dll`. Wyrażenie `*foo` będzie pasowało do wszystkich plików, których nazwy kończą się na `foo`.<br>Wyrażenie wieloznaczne można wprowadzić bezpośrednio w polu. Domyślnie wartość wprowadzona w polu jest traktowana jako wyrażenie wieloznaczne.</li><li>**Użycie wyrażeń regularnych:** Obsługiwane są wyrażenia regularne oparte na modelu POSIX. Na przykład wyrażenie regularne `.*\.vhd` będzie zgodne ze wszystkimi plikami z rozszerzeniem `.vhd`. Dla wyrażeń regularnych podaj `<pattern>` bezpośrednio jako `regex(<pattern>)`. Aby uzyskać więcej informacji na temat wyrażeń regularnych, przejdź do tematu [Język wyrażeń regularnych — krótki przewodnik](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
-    |**Optymalizacja pliku**              |Kiedy ta funkcja jest włączona, pliki mniejsze niż 1 MB są pakowane podczas pozyskiwania. Przyspiesza to kopiowanie danych w przypadku małych plików. Pozwala to także zaoszczędzić czas, gdy liczba plików znacznie przekracza liczbę katalogów.        |
+    |**Skopiuj pliki pasujące do wzorca**    | Nazwę pliku pasującą do wzorca możesz wprowadzić na następujące dwa sposoby:<ul><li>**Używaj wyrażeń wieloznacznych:** Tylko `*` i `?` są obsługiwane w wyrażeniach wieloznacznych. Na przykład do wyrażenia `*.vhd` będą pasowały wszystkie pliki z rozszerzeniem `.vhd`. Podobnie do wyrażenia `*.dl?` będą pasowały wszystkie pliki z rozszerzeniem `.dl` i zaczynające się od `.dl`, na przykład `.dll`. Wyrażenie `*foo` będzie pasowało do wszystkich plików, których nazwy kończą się na `foo`.<br>Wyrażenie wieloznaczne można wprowadzić bezpośrednio w polu. Domyślnie wartość wprowadzona w polu jest traktowana jako wyrażenie wieloznaczne.</li><li>**Używaj wyrażeń regularnych:** Obsługiwane są wyrażenia regularne oparte na standardzie POSIX. Na przykład wyrażenie regularne `.*\.vhd` będzie zgodne ze wszystkimi plikami z rozszerzeniem `.vhd`. Dla wyrażeń regularnych podaj `<pattern>` bezpośrednio jako `regex(<pattern>)`. Aby uzyskać więcej informacji na temat wyrażeń regularnych, przejdź do tematu [Język wyrażeń regularnych — krótki przewodnik](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
+    |**Optymalizacja pliku**              |Kiedy ta funkcja jest włączona, pliki mniejsze niż 1 MB są pakowane podczas pozyskiwania. Przyspiesza to kopiowania danych w przypadku małych plików. Pozwala to także zaoszczędzić czas, gdy liczba plików znacznie przekracza liczbę katalogów.        |
  
 4. Wybierz pozycję **Uruchom**. Dane wejściowe są weryfikowane i jeśli ten proces zakończy się pomyślnie, zadanie jest uruchamiane. Uruchomienie zadania może potrwać kilka minut.
 
@@ -134,17 +134,17 @@ W celu zapewnienia integralności danych podczas kopiowania obliczana jest suma 
 ![Sprawdzanie wolnego i używanego miejsca na pulpicie nawigacyjnym](media/data-box-deploy-copy-data-via-copy-service/verify-used-space-dashboard.png)
 
 > [!IMPORTANT]
-> Powtórz tych samych instrukcji, aby skopiować dane do drugiego węzła na duże pole danych.
+> Powtórz te same instrukcje, aby skopiować dane do drugiego węzła na Data Box Heavy.
 
 Po zakończeniu zadania kopiowania możesz wybrać pozycję **Przygotuj do wysłania**.
 
 >[!NOTE]
 > Opcja **Przygotuj do wysłania** nie działa, jeśli zadania kopiowania są w toku.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak dostarczanie duże pole danych urządzenia do firmy Microsoft.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak dostarczyć urządzenie Data Box Heavy z powrotem do firmy Microsoft.
 
 > [!div class="nextstepaction"]
-> [Wysłania urządzenia Azure Data Box mocno do firmy Microsoft](./data-box-heavy-deploy-picked-up.md)
+> [Wyślij urządzenie Azure Data Box Heavy do firmy Microsoft](./data-box-heavy-deploy-picked-up.md)
 

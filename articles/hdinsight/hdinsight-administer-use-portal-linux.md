@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/12/2020
-ms.openlocfilehash: d030e44f59d41c32c9a76c0b89c0bce1c8c54a69
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186853"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561786"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Apache Hadoop w usłudze HDInsight przy użyciu Azure Portal
 
@@ -46,7 +46,7 @@ Wybierz nazwę klastra na stronie [**Klastry usługi HDInsight**](#showClusters)
 | Element| Opis |
 |---|---|
 |Move|Przenosi klaster do innej grupy zasobów lub innej subskrypcji.|
-|Usuwanie|Usuwa klaster. |
+|Usuń|Usuwa klaster. |
 |Odświeżanie|Odświeża widok.|
 
 **Menu po lewej:**  
@@ -229,18 +229,6 @@ Hasło zostanie zmienione we wszystkich węzłach w klastrze.
    | Utrwalaj tę akcję skryptu... |Nie zaznaczaj tego pola. |
 
 6. Wybierz pozycję **Utwórz** , aby zastosować skrypt. Po zakończeniu działania skryptu można nawiązać połączenie z klastrem przy użyciu protokołu SSH z nowym hasłem.
-
-## <a name="grantrevoke-access"></a>Udzielanie/odwoływanie dostępu
-
-Klastry HDInsight mają następujące usługi sieci Web HTTP (wszystkie te usługi mają RESTful punkty końcowe):
-
-- ODBC
-- JDBC
-- Ambari
-- Oozie
-- Templeton
-
-Domyślnie te usługi są przyznawane na potrzeby dostępu. Możesz odwołać/udzielić dostępu przy użyciu [Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access).
 
 ## <a name="find-the-subscription-id"></a>Znajdowanie identyfikatora subskrypcji
 

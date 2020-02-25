@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 5db86c09cd104b2a68431ccbe24128a24ebd2ad4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1ac1feb5e3b179ded5fd8dae47e1859f082ad827
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500424"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565790"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co to jest usługa Azure Private Link Service?
 
@@ -111,6 +111,8 @@ Szczegóły niestandardowego TLV:
 |Wartość  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
 |  |4        |UINT32 (4 bajty) reprezentujący LINKID prywatnego punktu końcowego. Zakodowane w formacie little endian.|
 
+ > [!NOTE]
+ > Dostawca usług jest odpowiedzialny za upewnienie się, że usługa znajdująca się za standardowym modułem równoważenia obciążenia jest skonfigurowana do analizowania nagłówka protokołu proxy zgodnie ze [specyfikacją](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) , gdy protokół proxy jest włączony w usłudze linku prywatnego. Żądanie zakończy się niepowodzeniem, jeśli ustawienie protokołu proxy jest włączone w usłudze linku prywatnego i usługa nie jest skonfigurowana do analizowania nagłówka. Podobnie żądanie zakończy się niepowodzeniem, jeśli usługa oczekuje nagłówka protokołu proxy, gdy to ustawienie nie zostanie włączone w usłudze link prywatny. Po włączeniu ustawienia protokołu proxy nagłówek protokołu proxy również będzie uwzględniał sondy kondycji protokołu HTTP/TCP z hosta do maszyn wirtualnych zaplecza, nawet jeśli w nagłówku nie będzie żadnych informacji o kliencie. 
 
 ## <a name="limitations"></a>Ograniczenia
 

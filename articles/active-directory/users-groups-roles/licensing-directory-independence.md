@@ -14,12 +14,12 @@ ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ce791ee3536b9ab07605787209e59b7e5d60126
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f4eb09ab7fa31af5edf14b113a6a88e08df2d115
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74026288"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562262"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Zrozumienie, jak wiele dzierżawców Azure Active Directory
 
@@ -46,7 +46,7 @@ Każdą dzierżawę usługi Azure AD można skonfigurować niezależnie, aby pob
 Aby dodać dzierżawę usługi Azure AD do Azure Portal, zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym usługi Azure AD, a następnie po lewej stronie wybierz pozycję **Nowy**.
 
 > [!NOTE]
-> W przeciwieństwie do innych zasobów platformy Azure, dzierżawcy nie są zasobami podrzędnymi subskrypcji platformy Azure. Jeśli subskrypcja platformy Azure została anulowana lub wygasła, nadal możesz uzyskać dostęp do danych dzierżawy za pomocą Azure PowerShell, interfejs API programu Graph platformy Azure lub centrum administracyjnego Microsoft 365. Możesz również [skojarzyć kolejną subskrypcję z dzierżawcą](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> W przeciwieństwie do innych zasobów platformy Azure, dzierżawcy nie są zasobami podrzędnymi subskrypcji platformy Azure. Jeśli subskrypcja platformy Azure została anulowana lub wygasła, nadal możesz uzyskać dostęp do danych dzierżawy za pomocą Azure PowerShell, interfejsu API Microsoft Graph lub centrum administracyjnego Microsoft 365. Możesz również [skojarzyć kolejną subskrypcję z dzierżawcą](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 >
 
 ## <a name="next-steps"></a>Następne kroki
