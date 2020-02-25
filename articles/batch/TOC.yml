@@ -41,6 +41,10 @@
       href: cli-samples.md
 - name: Pojęcia
   items:
+    - name: Zabezpieczenia
+      items:
+        - name: Punkt odniesienia zabezpieczeń
+          href: security-baseline.md
     - name: Funkcje dla deweloperów
       href: batch-api-basics.md
     - name: Interfejsy API i narzędzia

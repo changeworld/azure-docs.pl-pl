@@ -72,12 +72,12 @@
       items:
         - name: Omówienie zabezpieczeń
           href: overview-security.md
+        - name: Punkt odniesienia zabezpieczeń
+          href: security-baseline.md
         - name: Środowiska zabezpieczeń
           href: key-vault-ovw-security-worlds.md
         - name: Zabezpieczanie własnego magazynu kluczy
           href: key-vault-secure-your-key-vault.md
-        - name: Wbudowane mechanizmy zabezpieczeń
-          href: key-vault-security-controls.md
     - name: Usuwanie nietrwałe
       href: key-vault-ovw-soft-delete.md
     - name: Monitorowanie zdarzeń usługi Key Vault

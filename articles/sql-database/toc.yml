@@ -150,6 +150,8 @@
               href: sql-database-managed-instance-public-endpoint-securely.md
             - name: Inspekcja wystąpienia zarządzanego
               href: sql-database-managed-instance-auditing.md
+        - name: Punkt odniesienia zabezpieczeń
+          href: security-baseline.md
     - name: Nawiązywanie połączeń i wykonywanie zapytań
       href: sql-database-connect-query.md
       items:
