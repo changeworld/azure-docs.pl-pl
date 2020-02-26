@@ -12,7 +12,7 @@
     - name: Ciągła integracja/ciągłe wdrażanie za pomocą struktury Docker Swarm i usługi Azure DevOps
       href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
     - name: Ciągła integracja/ciągłe dostarczanie za pomocą usług Docker i Jenkins oraz systemu Linux
-      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+      href: /azure/jenkins/tutorial-jenkins-github-docker-cicd
 - name: Przewodniki z instrukcjami
   items:
     - name: Rozszerzenie maszyny wirtualnej Docker

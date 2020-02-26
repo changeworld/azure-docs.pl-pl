@@ -10,12 +10,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 33f18722c26decb117a476a9d3adb562a7a726ed
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 4f4849139f0e5c5a8672b9364f7acc03cff6c948
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610454"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605567"
 ---
 <div class="content">
    <h1>Rozwiązanie Docker na platformie Azure</h1>   
@@ -33,7 +33,7 @@ Docker to popularna platforma do zarządzania kontenerami i tworzenia ich obraz�
 <ol>
   <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">Tworzenie kodu w języku Python i PostgreSQL za pomocą platformy Docker</a></li>
   <li><a href="/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine">Ciągła integracja/ciągłe wdrażanie za pomocą struktury Docker Swarm i usługi Azure DevOps Services</a></li>
-  <li><a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Integrowanie rozwiązań Docker, Jenkins i maszyn wirtualnych z systemem Linux</a></li>
+  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">Integrowanie rozwiązań Docker, Jenkins i maszyn wirtualnych z systemem Linux</a></li>
 </ol>
 <h2>Zasoby</h2>
 <p>Aby uzyskać dodatkowe materiały referencyjne i narzędzia do pracy z platformą Docker na platformie Azure, zobacz poniższe linki.</p>
