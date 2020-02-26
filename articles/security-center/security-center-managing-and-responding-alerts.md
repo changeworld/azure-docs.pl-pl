@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 46ed2af51f34a25c1cdc1abb6152169feedd989e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 203e3718cedca693dc029a4ba20a86ca50ab3e32
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666299"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603862"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Zarządzanie alertami zabezpieczeń i reagowanie na nie w Azure Security Center
 
@@ -65,7 +65,7 @@ Usługa Security Center automatycznie gromadzi, analizuje i integruje dane dzien
     > [!NOTE]
     >W niektórych przypadkach źródłowy adres IP nie jest dostępny, a niektóre dzienniki zdarzeń zabezpieczeń systemu Windows nie zawierają adresu IP.
 
-1. Czynności naprawcze sugerowane w usłudze Security Center różnią się w zależności od alertu zabezpieczeń. Obserwuj je dla każdego alertu. W niektórych przypadkach w celu ograniczenia alertu dotyczącego wykrywania zagrożeń może być konieczne użycie innych kontrolek lub usług platformy Azure w celu zaimplementowania zalecanej korekty. 
+1. Kroki korygowania sugerowane przez Security Center różnią się w zależności od alertu zabezpieczeń. Obserwuj je dla każdego alertu. W niektórych przypadkach w celu ograniczenia alertu dotyczącego wykrywania zagrożeń może być konieczne użycie innych kontrolek lub usług platformy Azure w celu zaimplementowania zalecanej korekty. 
 
     Poniższe tematy przeprowadzą Cię przez różne alerty, zgodnie z typami zasobów:
     
@@ -78,12 +78,10 @@ Usługa Security Center automatycznie gromadzi, analizuje i integruje dane dzien
     * [Alerty warstwy usług](security-center-alerts-service-layer.md)
     * [Wykrywanie zagrożeń dla usług Azure WAF i Azure DDoS Protection](security-center-alerts-integration.md)
     
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 W tym dokumencie przedstawiono sposób konfigurowania zasad zabezpieczeń w Centrum zabezpieczeń. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Alerty zabezpieczeń w Azure Security Center](security-center-alerts-overview.md).
 * [Obsługa zdarzeń związanych z zabezpieczeniami](security-center-incident.md)
 * [Przewodnik planowania i obsługi usługi Azure Security Center](security-center-planning-and-operations-guide.md)
-* [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.

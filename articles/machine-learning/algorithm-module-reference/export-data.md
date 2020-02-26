@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 11f5bd7f01e142273509ae59ddc19a2557464bde
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 40d8e298237b6110fee04aefbb7b79c5f3bac6f0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152316"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598616"
 ---
 # <a name="export-data-module"></a>Eksportuj moduł danych
 
 W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
-Ten moduł służy do zapisywania wyników, danych pośrednich i danych roboczych z potoków do miejsc docelowych magazynu w chmurze spoza Azure Machine Learning. 
+Ten moduł służy do zapisywania wyników, danych pośrednich i danych roboczych z potoków do miejsc docelowych magazynu w chmurze. 
 
 Ten moduł obsługuje eksportowanie danych do następujących usług danych w chmurze:
 
@@ -29,7 +29,7 @@ Ten moduł obsługuje eksportowanie danych do następujących usług danych w ch
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-Przed wyeksportowaniem danych najpierw należy najpierw zarejestrować magazyn danych w obszarze roboczym Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [dostęp do danych w usługach Azure Storage](../how-to-access-data.md).
+Przed wyeksportowaniem danych musisz najpierw zarejestrować magazyn danych w obszarze roboczym Azure Machine Learning. Aby uzyskać więcej informacji, zobacz [dostęp do danych w usługach Azure Storage](../how-to-access-data.md).
 
 ## <a name="how-to-configure-export-data"></a>Jak skonfigurować dane eksportu
 
@@ -41,7 +41,13 @@ Przed wyeksportowaniem danych najpierw należy najpierw zarejestrować magazyn d
 
 1. W obszarze **Magazyn**danych wybierz istniejący magazyn danych z listy rozwijanej. Możesz również utworzyć nowy magazyn danych. Sprawdź, jak odwiedzać [dane dostępu w usługach Azure Storage](../how-to-access-data.md).
 
-1. Zdefiniuj ścieżkę w magazynie danych, w której mają zostać zapisane dane. 
+1. Pole wyboru, **Wygeneruj ponownie dane wyjściowe**, decyduje o tym, czy uruchomić moduł w celu ponownego wygenerowania danych wyjściowych w czasie wykonywania. 
+
+    Jest to domyślnie niezaznaczone, co oznacza, że moduł został wykonany z tymi samymi parametrami, system użyje danych wyjściowych z ostatniego uruchomienia, aby skrócić czas wykonywania. 
+
+    W przypadku wybrania tej operacji system ponownie uruchomi moduł w celu ponownego wygenerowania danych wyjściowych.
+
+1. Zdefiniuj ścieżkę w magazynie danych, w której są dane. Ścieżka jest ścieżką względną. Puste ścieżki lub ścieżki URL są niedozwolone.
 
 
 1. W polu **Format pliku**wybierz format, w którym mają być przechowywane dane.

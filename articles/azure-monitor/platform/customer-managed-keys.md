@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 02/05/2020
-ms.openlocfilehash: eff751465c7b64429968b0305e6ad483943c374b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/24/2020
+ms.openlocfilehash: 0cb33f55acacfd3635d19719265a46b566765a64
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048185"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592106"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor konfigurację klucza zarządzanego przez klienta 
 
@@ -86,8 +86,8 @@ Aby uzyskać Application Insights konfigurację CMK, postępuj zgodnie z zawarto
 1. Listy dozwolonych subskrypcji — jest to wymagane w przypadku tej funkcji wczesnego dostępu
 2. Tworzenie Azure Key Vault i przechowywanie klucza
 3. Tworzenie zasobu *klastra*
-4. Udziel uprawnień do Key Vault
-5. Inicjowanie obsługi Azure Monitor magazynu danych (klastra ADX)
+4. Inicjowanie obsługi Azure Monitor magazynu danych (klastra ADX)
+5. Udziel uprawnień do Key Vault
 6. Skojarzenie obszarów roboczych Log Analytics
 
 Procedura nie jest obecnie obsługiwana w interfejsie użytkownika, a proces aprowizacji jest wykonywany za pośrednictwem interfejsu API REST.
@@ -135,7 +135,7 @@ Te ustawienia są dostępne za pośrednictwem interfejsu wiersza polecenia i pro
 
 ### <a name="create-cluster-resource"></a>Utwórz zasób *klastra*
 
-Ten zasób jest używany jako połączenie tożsamości pośredniej między Key Vault i obszarami roboczymi. Po otrzymaniu potwierdzenia, że subskrypcje zostały listy dozwolonyche, utwórz zasób *klastra* log Analytics w regionie, w którym znajdują się obszary robocze. Application Insights i Log Analytics wymagają oddzielnych zasobów klastra. Typ zasobu klastra jest definiowany w czasie tworzenia przez ustawienie właściwości "clustertype" na wartość "LogAnalytics" lub "ApplicationInsights". Nie można zmienić typu zasobu klastra.
+Ten zasób jest używany jako połączenie tożsamości pośredniej między Key Vault i obszarami roboczymi. Po otrzymaniu potwierdzenia, że subskrypcje zostały listy dozwolonyche, utwórz zasób *klastra* log Analytics w regionie, w którym znajdują się obszary robocze. Application Insights i Log Analytics wymagają oddzielnych zasobów klastra. Typ zasobu *klastra* jest definiowany w czasie tworzenia przez ustawienie właściwości "clustertype" na wartość "LogAnalytics" lub "ApplicationInsights". Nie można zmienić typu zasobu klastra.
 
 Aby uzyskać Application Insights konfigurację CMK, postępuj zgodnie z zawartością dodatku dla tego kroku.
 
@@ -156,61 +156,73 @@ Content-type: application/json
    }
 }
 ```
+Tożsamość jest przypisywana do zasobu *klastra* podczas tworzenia.
 wartość "clustertype" to "ApplicationInsights" dla Application Insights CMK.
 
 **Odpowiedź**
 
-Tożsamość jest przypisana do zasobu *klastra* podczas jego tworzenia.
+202 zostało zaakceptowane. Jest to standardowa Menedżer zasobówa odpowiedź dla operacji asynchronicznych.
 
-```json
-{
-  "identity": {
-    "type": "SystemAssigned",
-    "tenantId": "tenant-id",
-    "principalId": "principle-id"
-  },
-  "properties": {
-    "provisioningState": "Succeeded",
-    "clusterType": "LogAnalytics", 
-    "clusterId": "cluster-id"
-  },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",    //The cluster resource Id
-  "name": "cluster-name",
-  "type": "Microsoft.OperationalInsights/clusters",
-  "location": "region-name"
-}
-
-```
-"principalId" to identyfikator GUID generowany przez zarządzaną usługę tożsamości dla zasobu *klastra* .
-
-> [!IMPORTANT]
-> Skopiuj i Zachowaj wartość "Cluster-ID", ponieważ będzie ona potrzebna w następnych krokach.
-
-Jeśli chcesz usunąć zasób *klastra* z dowolnego powodu — na przykład utwórz go przy użyciu innej nazwy lub typu klastra, użyj tego wywołania interfejsu API:
+Jeśli chcesz usunąć zasób *klastra* z dowolnego powodu — na przykład utwórz go przy użyciu innej nazwy lub typu klastra, użyj tego interfejsu API REST:
 
 ```rst
 DELETE
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 ```
 
+### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Inicjowanie obsługi Azure Monitor magazynu danych (klastra ADX)
+
+W okresie wczesnego dostępu do funkcji klaster ADX jest inicjowany ręcznie przez zespół produktu po zakończeniu poprzednich kroków. Użyj kanału z firmą Microsoft, aby podać szczegóły zasobu *klastra* . Odpowiedź JSON można pobrać przy użyciu interfejsu API usługi GET REST:
+
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+Authorization: Bearer <token>
+```
+
+**Odpowiedź**
+```json
+{
+  "identity": {
+    "type": "SystemAssigned",
+    "tenantId": "tenant-id",
+    "principalId": "principal-Id"
+    },
+  "properties": {
+    "provisioningState": "Succeeded",
+    "clusterType": "LogAnalytics", 
+    "clusterId": "cluster-id"
+    },
+  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
+  "name": "cluster-name",
+  "type": "Microsoft.OperationalInsights/clusters",
+  "location": "region-name"
+  }
+```
+
+"principalId" to identyfikator GUID generowany przez zarządzaną usługę tożsamości dla zasobu *klastra* .
+
+> [!IMPORTANT]
+> Skopiuj i Zachowaj wartość "Cluster-ID", ponieważ będzie ona potrzebna w następnych krokach.
+
+
 ### <a name="grant-key-vault-permissions"></a>Przyznawanie uprawnień Key Vault
 
-Zaktualizuj Key Vault i Dodaj zasady dostępu dla zasobu klastra. Uprawnienia do Key Vault są następnie propagowane do Azure Monitor magazynu, który będzie używany do szyfrowania danych.
+> [!IMPORTANT]
+> Ten krok należy wykonać po otrzymaniu potwierdzenia od grupy produktów za pośrednictwem kanału firmy Microsoft, że zainicjowano Inicjowanie obsługi administracyjnej magazynu danych Azure Monitor (ADX). Aktualizacja zasad dostępu Key Vault przed tą obsługą może zakończyć się niepowodzeniem.
+
+Zaktualizuj Key Vault przy użyciu nowych zasad dostępu, które przyznają uprawnienia do zasobu *klastra* . Te uprawnienia są używane przez podnieśenie Azure Monitor magazynu na potrzeby szyfrowania danych.
 Otwórz Key Vault w Azure Portal, a następnie kliknij pozycję "zasady dostępu" i "+ Dodaj zasady dostępu", aby utworzyć nowe zasady z następującymi ustawieniami:
 
 - Uprawnienia klucza: Wybierz uprawnienia "Pobierz", "Zawijanie klucza" i "Cofnij Zawijanie klucza".
-
-- Wybierz podmiot zabezpieczeń: Wprowadź identyfikator klastra, który jest wartością "clusterId" w odpowiedzi poprzedniego kroku.
+- Wybierz podmiot zabezpieczeń: wprowadź wartość w polu Nazwa klastra, która została zwrócona w odpowiedzi w poprzednim kroku.
 
 ![Przyznawanie uprawnień Key Vault](media/customer-managed-keys/grant-key-vault-permissions.png)
 
 Uprawnienie *Get* jest wymagane do sprawdzenia, czy Key Vault jest skonfigurowany jako możliwy do odzyskania w celu ochrony klucza i dostępu do danych Azure monitor.
 
-Potrwa kilka minut, dopóki zasób *klastra* nie zostanie rozpropagowany w Azure Resource Manager. Podczas konfigurowania tych zasad dostępu natychmiast po utworzeniu zasobu *klastra* może wystąpić błąd przejściowy. W takim przypadku spróbuj ponownie za kilka minut.
-
 ### <a name="update-cluster-resource-with-key-identifier-details"></a>Aktualizowanie zasobu klastra przy użyciu szczegółów identyfikatora klucza
 
-Ten krok ma zastosowanie do aktualizacji w przyszłości w przyszłych wersjach kluczowych w Key Vault. Zaktualizuj zasób *klastra* za pomocą Key Vault szczegóły *identyfikatora klucza* , aby umożliwić usłudze Azure monitor Storage używanie nowej wersji klucza. Wybierz bieżącą wersję klucza w Azure Key Vault, aby uzyskać szczegółowe informacje o identyfikatorze klucza.
+Ten krok ma zastosowanie w przypadku aktualizacji z kolejnej wersji klucza w Key Vault. Zaktualizuj zasób *klastra* za pomocą Key Vault szczegóły *identyfikatora klucza* , aby umożliwić usłudze Azure monitor Storage używanie nowej wersji klucza. Wybierz bieżącą wersję klucza w Azure Key Vault, aby uzyskać szczegółowe informacje o identyfikatorze klucza.
 
 ![Przyznawanie uprawnień Key Vault](media/customer-managed-keys/key-identifier-8bit.png)
 
@@ -225,16 +237,16 @@ Content-type: application/json
 
 {
    "properties": {
-       "KeyVaultProperties": {
-            KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
-            KeyName: "<key-name>",
-            KeyVersion: "<current-version>"
-            },
+     "KeyVaultProperties": {
+       KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
+       KeyName: "<key-name>",
+       KeyVersion: "<current-version>"
+       },
    },
    "location":"<region-name>",
    "identity": { 
-        "type": "systemAssigned" 
-        }
+     "type": "systemAssigned" 
+     }
 }
 ```
 "KeyVaultProperties" zawiera szczegóły identyfikatora klucza Key Vault.
@@ -264,44 +276,6 @@ Content-type: application/json
   "location": "region-name"
 }
 ```
-
-### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Inicjowanie obsługi Azure Monitor magazynu danych (klastra ADX)
-
-W okresie wczesnego dostępu do funkcji klaster ADX jest inicjowany ręcznie przez zespół produktu po zakończeniu poprzednich kroków. Skorzystaj z kanału firmy Microsoft, aby podać następujące informacje:
-
-- Potwierdź, że kroki opisane powyżej zostały wykonane pomyślnie.
-
-- Odpowiedź JSON z poprzedniego kroku. Można ją pobrać w dowolnym momencie przy użyciu wywołania interfejsu API Get:
-
-   ```rst
-   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
-   Authorization: Bearer <token>
-   ```
-
-   **Odpowiedź**
-   ```json
-   {
-     "identity": {
-       "type": "SystemAssigned",
-       "tenantId": "tenant-id",
-       "principalId": "principal-Id"
-     },
-     "properties": {
-          "KeyVaultProperties": {
-               KeyVaultUri: "https://key-vault-name.vault.azure.net",
-               KeyName: "key-name",
-               KeyVersion: "current-version"
-               },
-       "provisioningState": "Succeeded",
-       "clusterType": "LogAnalytics", 
-       "clusterId": "cluster-id"
-     },
-     "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
-     "name": "cluster-name",
-     "type": "Microsoft.OperationalInsights/clusters",
-     "location": "region-name"
-   }
-   ```
 
 ### <a name="workspace-association-to-cluster-resource"></a>Skojarzenie obszaru roboczego z zasobem *klastra*
 
@@ -560,7 +534,7 @@ Tożsamość jest przypisana do zasobu *klastra* podczas jego tworzenia.
 > [!IMPORTANT]
 > Skopiuj i Zachowaj wartość "Cluster-ID", ponieważ będzie ona potrzebna w następnych krokach.
 
-### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-updatehttpsdocsmicrosoftcomrestapiapplication-insightscomponentscreateorupdate-api"></a>Kojarzenie składnika z zasobem *klastra* przy użyciu [składników — Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) interfejsu API
+### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Kojarzenie składnika z zasobem *klastra* przy użyciu [składników — Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) interfejsu API
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01

@@ -1,10 +1,10 @@
 ---
-title: Wysoka dostępność systemu plików NFS na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server | Microsoft Docs
+title: Wysoka dostępność dla systemu plików NFS na maszynach wirtualnych platformy Azure w systemie SLES | Microsoft Docs
 description: Wysoka dostępność systemu plików NFS na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
-ms.author: sedusch
-ms.openlocfilehash: c20fc2142718d3cc49d4b80c6a5e22e26a350335
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: radeltch
+ms.openlocfilehash: efba617f9aeefa2e9374f5a7551338e003e70f56
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824863"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598735"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność systemu plików NFS na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server
 
@@ -78,7 +78,7 @@ Najpierw przeczytaj następujące informacje i dokumenty SAP
 * [SUSE Linux Enterprise Server for SAP Applications 12 SP3 — wskazówki dotyczące najlepszych rozwiązań][sles-for-sap-bp]
 * [Informacje o wersji w programie SUSE High Availability Extension 12 SP3][suse-ha-12sp3-relnotes]
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Aby zapewnić wysoką dostępność, rozwiązanie SAP NetWeaver wymaga serwera NFS. Serwer NFS jest skonfigurowany w osobnym klastrze i może być używany przez wiele systemów SAP.
 
@@ -120,7 +120,7 @@ Możesz użyć jednego z szablonów szybkiego startu w usłudze GitHub, aby wdro
    4. Nazwa użytkownika administratora i hasło administratora  
       Zostanie utworzony nowy użytkownik, którego można użyć do zalogowania się na komputerze.
    5. Identyfikator podsieci  
-      Jeśli chcesz wdrożyć maszynę wirtualną w istniejącej sieci wirtualnej, w której zdefiniowano podsieć, należy przypisać do niej identyfikator tej konkretnej podsieci. Identyfikator ma zwykle postać/subscriptions/ **&lt;Identyfikator subskrypcji&gt;** /resourceGroups/ **&lt;nazwa grupy zasobów&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;nazwa sieci wirtualnej&gt;** /subnets/ **&lt;nazwę podsieci&gt;**
+      Jeśli chcesz wdrożyć maszynę wirtualną w istniejącej sieci wirtualnej, w której zdefiniowano podsieć, należy przypisać do niej identyfikator tej konkretnej podsieci. Identyfikator ma zwykle postać/subscriptions/ **&lt;Identyfikator subskrypcji&gt;** /resourceGroups/ **&lt;nazwa grupy zasobów&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;nazwa sieci wirtualnej&gt;** /Subnets/ **&lt;nazwa podsieci&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ręczne wdrażanie systemu Linux za pośrednictwem Azure Portal
 
@@ -143,7 +143,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
             1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
             1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **NW1-fronton**)
             1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.0.0.4**)
-            1. Kliknij przycisk OK.
+            1. Kliknij przycisk OK
          1. Adres IP 10.0.0.5 dla NW2
             * Powtórz powyższe kroki dla NW2
       1. Tworzenie pul zaplecza
@@ -153,7 +153,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
             1. Wybierz Virtual Network
             1. Kliknij pozycję Dodaj maszynę wirtualną
             1. Wybierz Maszyny wirtualne klastra NFS i ich adresy IP.
-            1. Kliknij pozycję Add (Dodaj).
+            1. Kliknij przycisk Dodaj.
          1. Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra NFS dla NW2
             * Powtórz powyższe kroki, aby utworzyć pulę zaplecza dla NW2
       1. Tworzenie sond kondycji
@@ -161,7 +161,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
             1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
             1. Wprowadź nazwę nowej sondy kondycji (na przykład **NW1-HP**)
             1. Wybierz pozycję TCP jako protokół, port 610**00**, Zachowaj interwał 5 i próg złej kondycji 2
-            1. Kliknij przycisk OK.
+            1. Kliknij przycisk OK
          1. Port 61001 dla NW2
             * Powtórz powyższe kroki, aby utworzyć sondę kondycji dla NW2
       1. Reguły równoważenia obciążenia
@@ -171,7 +171,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
          1. Wybierz pozycję **porty ha**.
          1. Zwiększ limit czasu bezczynności do 30 minut
          1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
          * Powtórz powyższe kroki, aby utworzyć regułę równoważenia obciążenia dla NW2
    1. Alternatywnie, jeśli scenariusz wymaga podstawowego modułu równoważenia obciążenia, wykonaj następujące instrukcje:
       1. Utwórz adresy IP frontonu
@@ -179,7 +179,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
             1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
             1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **NW1-fronton**)
             1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.0.0.4**)
-            1. Kliknij przycisk OK.
+            1. Kliknij przycisk OK
          1. Adres IP 10.0.0.5 dla NW2
             * Powtórz powyższe kroki dla NW2
       1. Tworzenie pul zaplecza
@@ -189,7 +189,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
             1. Kliknij pozycję Dodaj maszynę wirtualną
             1. Wybierz utworzony wcześniej zestaw dostępności
             1. Wybierz Maszyny wirtualne klastra NFS
-            1. Kliknij przycisk OK.
+            1. Kliknij przycisk OK
          1. Połączono z podstawowymi interfejsami sieciowymi wszystkich maszyn wirtualnych, które powinny być częścią klastra NFS dla NW2
             * Powtórz powyższe kroki, aby utworzyć pulę zaplecza dla NW2
       1. Tworzenie sond kondycji
@@ -197,7 +197,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
             1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
             1. Wprowadź nazwę nowej sondy kondycji (na przykład **NW1-HP**)
             1. Wybierz pozycję TCP jako protokół, port 610**00**, Zachowaj interwał 5 i próg złej kondycji 2
-            1. Kliknij przycisk OK.
+            1. Kliknij przycisk OK
          1. Port 61001 dla NW2
             * Powtórz powyższe kroki, aby utworzyć sondę kondycji dla NW2
       1. Reguły równoważenia obciążenia
@@ -208,7 +208,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
             1. Utrzymywanie protokołu **TCP**, wprowadź port **2049**
             1. Zwiększ limit czasu bezczynności do 30 minut
             1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
-            1. Kliknij przycisk OK.
+            1. Kliknij przycisk OK
          1. 2049 UDP dla NW1
             * Powtórz powyższe kroki dla portów 2049 i UDP dla NW1
          1. 2049 TCP dla NW2
@@ -228,9 +228,9 @@ Wykonaj kroki opisane w temacie [Konfigurowanie Pacemaker SUSE Linux Enterprise 
 
 ### <a name="configure-nfs-server"></a>Konfigurowanie serwera NFS
 
-Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
+Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
 
-1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
+1. **[A]** rozpoznawanie nazw hostów
 
    Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach

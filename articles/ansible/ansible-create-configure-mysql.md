@@ -4,12 +4,12 @@ description: Dowiedz się, jak można użyć rozwiązania Ansible do utworzenia 
 keywords: ansible, azure, devops, bash, element playbook, mysql, baza danych
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d8c8fd361f37a9cb961012807fe40b905c10c047
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f068b3022c94466a20b524240dc293392b1f42ff
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156533"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603114"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Samouczek: Konfigurowanie baz danych w Azure Database for MySQL przy użyciu rozwiązania ansible
 
@@ -23,7 +23,7 @@ ms.locfileid: "74156533"
 >
 > * Tworzenie serwera MySql
 > * Tworzenie bazy danych MySql
-> * Konfigurowanie reguły filewall tak, aby aplikacja zewnętrzna mogła łączyć się z serwerem
+> * Konfigurowanie reguły zapory tak, aby aplikacja zewnętrzna mogła połączyć się z serwerem
 > * Nawiązywanie połączenia z serwerem MySql za pomocą usługi Azure Cloud Shell
 > * Zbadaj dostępne serwery MySQL
 > * Wyświetl listę wszystkich baz danych w podłączonych serwerach

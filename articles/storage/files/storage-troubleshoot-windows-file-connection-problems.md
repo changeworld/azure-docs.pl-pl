@@ -7,19 +7,16 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 0321d253eb1db414dff2acbb704d3d36726010d9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 207a3a6c59012154d547bbd224782b90e1046c6a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544977"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597970"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z Azure Files w systemie Windows
 
 W tym artykule wymieniono typowe problemy związane z Microsoft Azure plikami w przypadku łączenia się z klientami systemu Windows. Zapewnia również możliwe przyczyny i rozwiązania tych problemów. Oprócz kroków opisanych w tym artykule, można również użyć [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) , aby upewnić się, że środowisko klienta systemu Windows ma odpowiednie wymagania wstępne. AzFileDiagnostics automatyzuje wykrywanie większości objawów wymienionych w tym artykule i ułatwia skonfigurowanie środowiska w celu uzyskania optymalnej wydajności. Te informacje można również znaleźć w obszarze [Rozwiązywanie problemów z udziałami Azure Files](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , które udostępniają kroki ułatwiające rozwiązywanie problemów z połączeniem/mapowaniem/instalowaniem udziałów Azure Files.
-
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Błąd 5 podczas instalowania udziału plików platformy Azure
@@ -53,7 +50,7 @@ Sprawdź, czy reguły sieci wirtualnej i zapory są skonfigurowane poprawnie na 
 Podczas próby zainstalowania udziału plików z lokalnego lub innego centrum danych mogą pojawić się następujące błędy:
 
 - Wystąpił błąd systemowy 53. Nie można znaleźć ścieżki sieciowej.
-- Wystąpił błąd systemowy 67. Nie można znaleźć nazwy sieciowej.
+- Wystąpił błąd systemowy 67. Nie można odnaleźć nazwy sieci.
 - Wystąpił błąd systemowy 87. Parametr jest nieprawidłowy.
 
 ### <a name="cause-1-port-445-is-blocked"></a>Przyczyna 1: Port 445 jest zablokowany
@@ -250,7 +247,7 @@ Użyj jednego z następujących rozwiązań:
 
 -   Zainstaluj dysk z tego samego konta użytkownika, które zawiera aplikację. Możesz użyć narzędzia, takiego jak PsExec.
 - Przekaż nazwę i klucz konta magazynu w parametrach nazwa użytkownika i hasło polecenia net use.
-- Użyj polecenia cmdkey, aby dodać poświadczenia do Menedżera poświadczeń. Wykonaj to z wiersza polecenia w kontekście konta usługi, korzystając z interakcyjnego logowania lub za pomocą polecenia runas.
+- Użyj polecenia cmdkey, aby dodać poświadczenia do Menedżera poświadczeń. Wykonaj to z wiersza polecenia w kontekście konta usługi za pośrednictwem interakcyjnego logowania lub przy użyciu `runas`.
   
   `cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>`
 - Mapuj udział bezpośrednio bez użycia zmapowanej litery dysku. Niektóre aplikacje mogą nie ponownie połączyć się z literą dysku, więc użycie pełnej ścieżki UNC może być bardziej niezawodne. 
@@ -300,7 +297,7 @@ Na przykład można ustawić 0x100000 i sprawdzić, czy wydajność staje się l
 
 ### <a name="cause"></a>Przyczyna
 
-AadDsTenantNotFound Wystąpił błąd podczas próby [włączenia uwierzytelniania Azure Active Directory Domain Service (AAD DS) dla Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) na koncie magazynu, w którym [Usługa domen AAD (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nie została utworzona w dzierżawie usługi AAD skojarzonej subskrypcji.  
+AadDsTenantNotFound Wystąpił błąd podczas próby [włączenia uwierzytelniania Azure Active Directory Domain Services (Azure AD DS) na Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md) na koncie magazynu, w którym [Usługa domeny usługi AAD (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nie zostanie utworzona w dzierżawie w usłudze AAD skojarzonej subskrypcji.  
 
 ### <a name="solution"></a>Rozwiązanie
 

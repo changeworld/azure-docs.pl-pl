@@ -4,12 +4,12 @@ description: Objaśnienie krok po kroku dotyczące przywracania stanu systemu Wi
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 8e256fbac0651b4c237c540151b3377927989d36
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172822"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602471"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Przywróć stan systemu do systemu Windows Server
 
@@ -89,7 +89,7 @@ Terminologia użyta w tych krokach obejmuje:
 6. W okienku wybierz serwer kopii zapasowej wybierz *maszynę źródłową* z listy wyświetlanych maszyn.
 7. W okienku wybierz tryb odzyskiwania wybierz pozycję **stan systemu** i kliknij przycisk **dalej**.
 
-    ![Wyszukiwanie](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Wyszukaj](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. W kalendarzu w okienku **Wybierz wolumin i datę** wybierz punkt odzyskiwania. Można przywrócić z dowolnego punktu odzyskiwania w czasie. **Pogrubione** daty wskazują dostępność co najmniej jednego punktu odzyskiwania. Po wybraniu daty, jeśli dostępne są wiele punktów odzyskiwania, wybierz konkretny punkt odzyskiwania z menu rozwijanego **czas** .
 
@@ -159,7 +159,7 @@ Po odzyskaniu stanu systemu jako plików przy użyciu usługi Azure Recovery Ser
 Kopia zapasowa stanu systemu zawiera Active Directory danych. Wykonaj następujące kroki, aby przywrócić poprzedni stan usługi domena usługi Active Directory (AD DS) z jej bieżącego stanu.
 
 1. Uruchom ponownie kontroler domeny w trybie przywracania usług katalogowych (DSRM).
-2. Wykonaj kroki opisane [tutaj](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx) , aby użyć poleceń cmdlet kopia zapasowa systemu Windows Server do odzyskania AD DS.
+2. Wykonaj kroki opisane [tutaj](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) , aby użyć poleceń cmdlet kopia zapasowa systemu Windows Server do odzyskania AD DS.
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Rozwiązywanie problemów z przywróceniem stanu systemu zakończone niepowodzeniem
 

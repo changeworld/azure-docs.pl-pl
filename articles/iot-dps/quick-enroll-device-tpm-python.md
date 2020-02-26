@@ -9,24 +9,29 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 6266ef3479e74103d0989b8eb0286626da5eb28f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 60ce27ddc533b6c4066cea771f7a24570ff3c04c
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976796"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604895"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Szybki Start: rejestrowanie urządzenia TPM w celu IoT Hub Device Provisioning Service przy użyciu zestawu SDK usługi aprowizacji języka Python
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-W tych krokach pokazano, jak programowo utworzyć rejestrację indywidualną dla urządzenia TPM w usłudze Azure IoT Hub Device Provisioning Service przy użyciu [zestawu SDK usługi aprowizacji języka Python w wersji 1](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) z pomocą przykładowej aplikacji w języku Python. Mimo że zestaw SDK usługi języka Python działa zarówno na komputerach z systemami Windows, jak i Linux, w tym artykule w celu zaprezentowania procesu rejestracji użyto maszyny deweloperskiej z systemem Windows.
+W tym przewodniku szybki start utworzysz rejestrację indywidualną dla urządzenia TPM w usłudze Azure IoT Hub Device Provisioning Service przy użyciu zestawu SDK usługi aprowizacji języka Python z pomocą przykładowej aplikacji w języku Python.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+- Zakończenie [konfigurowania IoT Hub Device Provisioning Service przy użyciu Azure Portal](./quick-setup-auto-provision.md).
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz je bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Python 2. x lub 3. x](https://www.python.org/downloads/). Ten przewodnik Szybki Start instaluje [zestaw SDK usługi aprowizacji języka Python](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) poniżej.
+- [PIP](https://pip.pypa.io/en/stable/installing/), jeśli nie jest dołączony do dystrybucji języka Python.
+- Klucz poręczenia. Wykonaj kroki opisane w temacie [Tworzenie i udostępnianie symulowanego urządzenia](quick-create-simulated-device.md) lub użyj klucza poręczenia dostarczonego z zestawem SDK, opisanego poniżej.
 
 > [!IMPORTANT]
 > Ten artykuł dotyczy tylko przestarzałego zestawu SDK języka Python w wersji 1. Klienci urządzeń i usług dla usługi IoT Hub Device Provisioning nie są jeszcze dostępni w wersji 2. Zespół jest obecnie trudny w pracy, aby przywrócić dostęp do wersji 2.
-
-Pamiętaj, aby wcześniej [skonfigurować usługę IoT Hub Device Provisioning za pomocą witryny Azure Portal](./quick-setup-auto-provision.md).
-
 
 <a id="prepareenvironment"></a>
 
@@ -34,7 +39,7 @@ Pamiętaj, aby wcześniej [skonfigurować usługę IoT Hub Device Provisioning z
 
 1. Pobierz i zainstaluj środowisko [Python 2.x lub 3.x](https://www.python.org/downloads/). Upewnij się, że używasz 32-bitowej lub 64-bitowej instalacji zgodnie z wymaganiami konfiguracji. Po wyświetleniu monitu podczas instalacji upewnij się, że język Python został dodany do zmiennych środowiskowych specyficznych dla platformy. 
 
-1. Wybierz jedną z następujących opcji:
+1. W przypadku [zestawu SDK usługi aprowizacji języka Python](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client)wybierz jedną z następujących opcji:
 
     - Utwórz i skompiluj **zestaw SDK języka Python usługi Azure IoT**. Postępuj zgodnie z [tymi instrukcjami](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md), aby skompilować pakiety języka Python. Jeśli używasz systemu operacyjnego Windows, zainstaluj także [Pakiet redystrybucyjny języka Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) umożliwiający korzystanie z natywnych bibliotek DLL języka Python.
 

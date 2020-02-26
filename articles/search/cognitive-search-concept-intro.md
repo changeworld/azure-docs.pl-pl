@@ -6,14 +6,14 @@ manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6d75e48443fd8622ca2ae7ff05fe81184c4b2b16
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 14c120af69a94331586f9264a12f5d2333a5d87d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472438"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586754"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Wprowadzenie do AI na platformie Azure Wyszukiwanie poznawcze
 
@@ -69,7 +69,7 @@ Potok wzbogacania jest oparty na [*indeksatorach*](search-indexer-overview.md) ,
 
 Na początku potoku znajduje się tekst bez struktury lub zawartość nietekstowa (na przykład obrazy i zeskanowane pliki JPEG). Dane muszą istnieć w usłudze Azure Data Storage, do której można uzyskać dostęp za pomocą indeksatora. Indeksatory mogą "pęknięcia" dokumenty źródłowe w celu wyodrębnienia tekstu z danych źródłowych.
 
-![Faza łamania dokumentu](./media/cognitive-search-intro/document-cracking-phase-blowup.png "łamanie dokumentów")
+![Faza łamania dokumentu](./media/cognitive-search-intro/document-cracking-phase-blowup.png "Łamanie dokumentów")
 
  Obsługiwane źródła obejmują usługę Azure Blob Storage, usługę Azure Table Storage, Azure SQL Database i Azure Cosmos DB. Zawartość oparta na tekście można wyodrębnić z następujących typów plików: PDF, Word, PowerPoint i CSV. Aby zapoznać się z pełną listą, zobacz [obsługiwane formaty](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
 

@@ -8,26 +8,26 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: b5c5aa59c520560ad8424994d78e3c68bb0dc57a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 93e68246d1c978bdb1517922f0284524395c218a
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976642"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605475"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Szybki Start: Tworzenie i Inicjowanie obsługi symulowanego urządzenia TPM za pomocą zestawu SDK urządzenia środowiska Node. js dla IoT Hub Device Provisioning Service
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-Te kroki pokazują, jak utworzyć symulowane urządzenie na maszynie deweloperskiej z systemem operacyjnym Windows OS, uruchomić symulator modułu Windows TPM jako [sprzętowy moduł zabezpieczeń (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) urządzenia i użyć przykładowego kodu do połączenia tego symulowanego urządzenia z usługą Device Provisioning Service i Twoim centrum IoT. 
+W tym przewodniku szybki start utworzysz symulowane urządzenie IoT na komputerze z systemem Windows. Symulowane urządzenie obejmuje symulator modułu TPM jako sprzętowy moduł zabezpieczeń (HSM). Do połączenia tego symulowanego urządzenia z usługą IoT Hub przy użyciu indywidualnej rejestracji w usłudze Device Provisioning Service (DPS) można używać przykładowego kodu w języku Node. js.
 
-Jeśli nie znasz procesu automatycznego aprowizowania, zapoznaj się również z tematem [Auto-provisioning concepts (Pojęcia związane z automatycznym aprowizowaniem)](concepts-auto-provisioning.md). Pamiętaj również, aby wcześniej wykonać kroki przedstawione w części [Konfigurowanie usługi IoT Hub Device Provisioning za pomocą witryny Azure Portal](./quick-setup-auto-provision.md). 
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Usługa Azure IoT Device Provisioning obsługuje dwa typy rejestracji:
-- [Grupy rejestracji](concepts-service.md#enrollment-group): służą do rejestrowania wielu pokrewnych urządzeń.
-- [Rejestracje indywidualne](concepts-service.md#individual-enrollment): służą do rejestrowania pojedynczych urządzeń.
-
-W tym artykule przedstawiono rejestracje indywidualne.
+- Przegląd pojęć związanych z obsługą [administracyjną](concepts-auto-provisioning.md).
+- Zakończenie [konfigurowania IoT Hub Device Provisioning Service przy użyciu Azure Portal](./quick-setup-auto-provision.md).
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz je bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Node. js v 4.0 +](https://nodejs.org).
+- [Git](https://git-scm.com/download/).
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -46,7 +46,7 @@ W tym artykule przedstawiono rejestracje indywidualne.
     git clone https://github.com/Azure/azure-utpm-c.git --recursive
     ```
 
-1. Przejdź do folderu głównego usługi GitHub i uruchom symulator modułu [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview). Nasłuchuje on przez gniazdo na portach 2321 i 2322. Nie zamykaj tego okna polecenia; należy zachować ten symulator do momentu zakończenia tego przewodnika Szybki Start: 
+1. Przejdź do folderu głównego usługi GitHub i uruchom symulator [modułu TPM jako moduł](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) [HSM](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) dla symulowanego urządzenia. Nasłuchuje on przez gniazdo na portach 2321 i 2322. Nie zamykaj tego okna polecenia; należy zachować ten symulator do momentu zakończenia tego przewodnika Szybki Start: 
 
     ```cmd/sh
     .\azure-utpm-c\tools\tpm_simulator\Simulator.exe
@@ -134,6 +134,13 @@ W tym artykule przedstawiono rejestracje indywidualne.
 
 
 ## <a name="create-a-device-entry"></a>Tworzenie wpisu urządzenia
+
+Usługa Azure IoT Device Provisioning obsługuje dwa typy rejestracji:
+
+- [Grupy rejestracji](concepts-service.md#enrollment-group): służą do rejestrowania wielu pokrewnych urządzeń.
+- [Rejestracje indywidualne](concepts-service.md#individual-enrollment): służy do rejestrowania jednego urządzenia.
+
+W tym artykule przedstawiono rejestracje indywidualne.
 
 1. Zaloguj się do Azure Portal, wybierz przycisk **wszystkie zasoby** w menu po lewej stronie i Otwórz swoją usługę Device Provisioning.
 

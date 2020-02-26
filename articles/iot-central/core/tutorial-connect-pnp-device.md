@@ -8,16 +8,21 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: af588db37970ee890b8640e45a98f8a1782c332b
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 84db3996b49a95d1ef6a9f1e80299605cc31d669
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500518"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602597"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Samouczek: Używanie modelu możliwości urządzenia do tworzenia urządzenia Plug and Play IoT (wersja zapoznawcza) i nawiązywania połączenia z aplikacją IoT Central
 
 _Model możliwości urządzenia_ (DCM) zawiera opis możliwości urządzenia [Plug and Play IoT (wersja zapoznawcza)](../../iot-pnp/overview-iot-plug-and-play.md) . IoT Central może użyć DCM, aby utworzyć szablon urządzenia i wizualizacje dla urządzenia podczas łączenia się urządzenia po raz pierwszy.
+
+Obsługa [Plug and Play IoT](../../iot-pnp/overview-iot-plug-and-play.md) jest dostępna w wersji zapoznawczej i jest obsługiwana tylko w wybranych regionach.
+
+> [!NOTE]
+> Skontaktuj się z pomocą techniczną, aby uzyskać dostęp do tworzenia aplikacji w wersji zapoznawczej z obsługą urządzeń Plug and Play IoT.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: memildin
-ms.openlocfilehash: 70b7f511c32013a5dbc9369a2dfba2b8cd5f9145
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: e1ed403babe66b465fb1800dc8c5a90c7a8f1a08
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558608"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604115"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Zarządzanie problemami z programem Endpoint Protection przy użyciu Azure Security Center
 Azure Security Center monitoruje stan ochrony przed złośliwym kodem i raportuje ją na stronie problemów z programem Endpoint Protection. Security Center wyróżnia problemy, takie jak wykryte zagrożenia i niewystarczająca ochrona, które mogą sprawić, że maszyny wirtualne i komputery są narażone na ataki chroniące przed złośliwym kodem. Korzystając z informacji w obszarze **problemy z programem Endpoint Protection**, można zidentyfikować plan pozwalający rozwiązać wszelkie zidentyfikowane problemy.
@@ -108,8 +108,6 @@ Aby dowiedzieć się więcej na temat Security Center, zobacz następujące doku
 * [Monitorowanie kondycji zabezpieczeń w Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Monitorowanie rozwiązań partnerskich w Centrum zabezpieczeń Azure](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
-* [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Blog dotyczący zabezpieczeń platformy Azure](https://blogs.msdn.com/b/azuresecurity/) — zawiera wpisy w blogu dotyczące zabezpieczeń i zgodności platformy Azure.
 
 <!--Image references-->
 [1]:./media/security-center-install-endpoint-protection/compute.png

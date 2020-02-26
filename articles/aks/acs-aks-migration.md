@@ -2,18 +2,15 @@
 title: Migrowanie do usługi Azure Kubernetes Service (AKS)
 description: Migruj do usługi Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 11/07/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: c4ed78dc9fd277fc61a923364519e338a9f720c2
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: bc96d3e8e5a595c80822065801873a44642be078
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290397"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596848"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrowanie do usługi Azure Kubernetes Service (AKS)
 
@@ -124,7 +121,7 @@ W przypadku korzystania z usługi Azure Managed Disks można zainstalować tylko
 Jeśli żadna z tych metod nie będzie działała, można użyć opcji tworzenia kopii zapasowej i przywracania:
 * [Velero na platformie Azure](https://github.com/heptio/velero/blob/master/site/docs/master/azure-config.md)
 
-#### <a name="azure-files"></a>Usługa Pliki systemu Azure
+#### <a name="azure-files"></a>Azure Files
 
 W przeciwieństwie do dysków Azure Files można instalować na wielu hostach współbieżnie. W klastrze AKS platforma Azure i usługa Kubernetes nie uniemożliwiają tworzenia usługi na tym, że nadal używa klastra ACS. Aby zapobiec utracie danych i nieoczekiwanym zachowaniu, należy się upewnić, że klastry nie zapisują jednocześnie do tych samych plików.
 

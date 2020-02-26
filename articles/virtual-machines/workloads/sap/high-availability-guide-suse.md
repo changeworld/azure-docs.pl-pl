@@ -1,5 +1,5 @@
 ---
-title: Platforma Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver na SUSE Linux Enterprise Server dla aplikacji SAP | Microsoft Docs
+title: Wysoka dostępność maszyn wirtualnych platformy Azure dla oprogramowania SAP NetWeaver na SLES | Microsoft Docs
 description: Przewodnik wysokiej dostępności dla oprogramowania SAP NetWeaver na SUSE Linux Enterprise Server dla aplikacji SAP
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: 77a26d229ddc4ce5f35fde3db010e3b7c146a563
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4dbce04df4a2542884f1f24b3207fe45fd4b26ae
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985521"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598242"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server dla aplikacji SAP
 
@@ -185,7 +185,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **NW1-ASCS-fronton**)
          1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.0.0.7**)
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. 10.0.0.8 adresu IP dla ASCS wykres WYWOŁUJĄCYCH
          * Powtórz powyższe kroki, aby utworzyć adres IP dla wykres WYWOŁUJĄCYCH (na przykład **10.0.0.8** i **NW1-AERS-zaplecza**)
    1. Tworzenie pul zaplecza
@@ -203,7 +203,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej sondy kondycji (na przykład **NW1-ASCS-HP**)
          1. Wybierz pozycję TCP jako protokół, port 620**00**, Zachowaj interwał 5 i próg złej kondycji 2
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. Port 621**02** dla ASCS wykres wywołujących
          * Powtórz powyższe kroki, aby utworzyć sondę kondycji dla wykres WYWOŁUJĄCYCH (na przykład 621**02** i **NW1-AERS-HP**)
    1. Reguły równoważenia obciążenia
@@ -214,7 +214,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
          1. Wybieranie **portów ha**
          1. Zwiększ limit czasu bezczynności do 30 minut
          1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
          * Powtórz powyższe kroki, aby utworzyć reguły równoważenia obciążenia dla wykres WYWOŁUJĄCYCH (na przykład **NW1-lb-wykres wywołujących**)
 1. Alternatywnie, jeśli scenariusz wymaga podstawowego modułu równoważenia obciążenia (wewnętrznego), wykonaj następujące czynności:  
    1. Utwórz adresy IP frontonu
@@ -222,7 +222,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **NW1-ASCS-fronton**)
          1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.0.0.7**)
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. 10.0.0.8 adresu IP dla ASCS wykres WYWOŁUJĄCYCH
          * Powtórz powyższe kroki, aby utworzyć adres IP dla wykres WYWOŁUJĄCYCH (na przykład **10.0.0.8** i **NW1-AERS-zaplecza**)
    1. Tworzenie pul zaplecza
@@ -232,7 +232,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
          1. Kliknij pozycję Dodaj maszynę wirtualną.
          1. Wybierz utworzony wcześniej zestaw dostępności
          1. Wybierz Maszyny wirtualne klastra SCS
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. Tworzenie puli zaplecza dla ASCS wykres WYWOŁUJĄCYCH
          * Powtórz powyższe kroki, aby utworzyć pulę zaplecza dla wykres WYWOŁUJĄCYCH (na przykład **NW1-AERS-zaplecza**)
    1. Tworzenie sond kondycji
@@ -240,7 +240,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej sondy kondycji (na przykład **NW1-ASCS-HP**)
          1. Wybierz pozycję TCP jako protokół, port 620**00**, Zachowaj interwał 5 i próg złej kondycji 2
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. Port 621**02** dla ASCS wykres wywołujących
          * Powtórz powyższe kroki, aby utworzyć sondę kondycji dla wykres WYWOŁUJĄCYCH (na przykład 621**02** i **NW1-AERS-HP**)
    1. Reguły równoważenia obciążenia
@@ -251,7 +251,7 @@ Najpierw należy utworzyć maszyny wirtualne dla tego klastra systemu plików NF
          1. Utrzymywanie protokołu **TCP**, wprowadź port **3200**
          1. Zwiększ limit czasu bezczynności do 30 minut
          1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. Dodatkowe porty dla ASCS
          * Powtórz powyższe kroki dla portów 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 i TCP dla ASCS
       1. Dodatkowe porty dla ASCS wykres WYWOŁUJĄCYCH
@@ -269,7 +269,7 @@ Wykonaj kroki opisane w temacie [Konfigurowanie Pacemaker SUSE Linux Enterprise 
 
 ### <a name="installation"></a>Instalacja
 
-Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
+Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
 
 1. **[A]** Zainstaluj łącznik SUSE
 
@@ -319,7 +319,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo zypper in -t patch SUSE-SLE-HA-12-SP2-2017-886=1
    </code></pre>
 
-1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
+1. **[A]** rozpoznawanie nazw hostów
 
    Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach
@@ -669,7 +669,7 @@ W poniższych krokach założono, że serwer aplikacji jest instalowany na serwe
 
 1. Konfigurowanie systemu operacyjnego
 
-   Zmniejsz rozmiar zmieniony pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [niska wydajność zapisu w systemie SLES 11/12 serwery z dużą ilość pamięci RAM](https://www.suse.com/support/kb/doc/?id=7010287).
+   Zmniejsz rozmiar zmieniony pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [niska wydajność zapisu na serwerach z systemem SLES 11/12 i dużą ilością pamięci RAM](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>sudo vi /etc/sysctl.conf
 

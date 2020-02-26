@@ -2,17 +2,16 @@
 title: Inteligentne wersje routingu i oprogramowania Kanaryjskie z Istio w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak korzystać z usługi Istio w celu zapewnienia inteligentnego routingu i wdrażania wydań oprogramowania Kanaryjskie w klastrze usługi Azure Kubernetes Service (AKS)
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 48daf2be4a05922982479a86e6574f3aa85d2130
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4c29658473aaa50168175c76234dfca34fcdad83
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530292"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594160"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Używanie inteligentnych wersji routingu i oprogramowania Kanaryjskie z Istio w usłudze Azure Kubernetes Service (AKS)
 
@@ -351,15 +350,15 @@ voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS     
 
 ## <a name="roll-out-a-canary-release-of-the-application"></a>Wdrażanie aplikacji w wersji kanaryjskiej
 
-Teraz wdróżmy nową wersję `2.0` składników `voting-app`, `voting-analytics` i `voting-storage`. Nowy składnik `voting-storage` używa programu MySQL zamiast Redis, a składniki `voting-app` i `voting-analytics` zostały zaktualizowane, aby umożliwić im korzystanie z tego nowego składnika `voting-storage`.
+Teraz wdróżmy nową wersję `2.0` składników `voting-app`, `voting-analytics`i `voting-storage`. Nowy składnik `voting-storage` używa programu MySQL zamiast Redis, a składniki `voting-app` i `voting-analytics` zostały zaktualizowane, aby umożliwić im korzystanie z tego nowego składnika `voting-storage`.
 
 Składnik `voting-app` obsługuje teraz funkcję flagi funkcji. Ta flaga funkcji umożliwia przetestowanie możliwości wersji programu Kanaryjskie Istio dla podzbioru użytkowników.
 
 Na poniższym diagramie przedstawiono działanie, które zostanie uruchomione na końcu tej sekcji.
 
-* @No__t_0 wersji składnika `voting-app`, wersja `1.1` składnika `voting-analytics` i wersja `1.0` składnika `voting-storage` są w stanie komunikować się ze sobą.
-* @No__t_0 wersji składnika `voting-app`, wersja `2.0` składnika `voting-analytics` i wersja `2.0` składnika `voting-storage` są w stanie komunikować się ze sobą.
-* @No__t_0 wersji składnika `voting-app` są dostępne tylko dla użytkowników, którzy mają określoną flagę funkcji. Ta zmiana jest zarządzana przy użyciu flagi funkcji za pośrednictwem pliku cookie.
+* `1.0` wersji składnika `voting-app`, wersja `1.1` składnika `voting-analytics` i wersja `1.0` składnika `voting-storage` są w stanie komunikować się ze sobą.
+* `2.0` wersji składnika `voting-app`, wersja `2.0` składnika `voting-analytics` i wersja `2.0` składnika `voting-storage` są w stanie komunikować się ze sobą.
+* `2.0` wersji składnika `voting-app` są dostępne tylko dla użytkowników, którzy mają określoną flagę funkcji. Ta zmiana jest zarządzana przy użyciu flagi funkcji za pośrednictwem pliku cookie.
 
 ![Składniki aplikacji do głosowania i routingu AKS.](media/servicemesh/istio/scenario-routing-components-03.png)
 

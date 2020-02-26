@@ -3,12 +3,12 @@ title: Tabela obsługi dla maszyn wirtualnych platformy Azure
 description: Zawiera podsumowanie ustawień i ograniczeń pomocy technicznej podczas tworzenia kopii zapasowych maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 5d83d3426a80acc12c2a53051dcfd7b889f47f02
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: d4d5168ee7f2f8c71b3a63fea64873a8dd71658b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469004"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602200"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Tabela obsługi dla maszyn wirtualnych platformy Azure
 
@@ -105,12 +105,12 @@ Punkty odzyskiwania na dysku programu DPM/usługi MABS | 64 dla serwerów plikó
 
 ## <a name="supported-restore-methods"></a>Obsługiwane metody przywracania
 
-**Restore — Metoda** | **Szczegóły**
+**Opcja przywracania** | **Szczegóły**
 --- | ---
-Utworzenie nowej maszyny wirtualnej. | Podczas procesu przywracania można utworzyć maszynę wirtualną. <br/><br/> Ta opcja pobiera podstawową maszynę wirtualną w górę i w działaniu. Możesz określić nazwę maszyny wirtualnej, grupę zasobów, sieć wirtualną, podsieć i magazyn.  
-Przywracanie dysku | Można przywrócić dysk i użyć go do utworzenia maszyny wirtualnej.<br/><br/> Po wybraniu tej opcji Azure Backup kopiuje dane z magazynu na wybrane konto magazynu. Zadanie przywracania generuje szablon. Możesz pobrać ten szablon, użyć go do określenia niestandardowych ustawień maszyny wirtualnej i utworzyć maszynę wirtualną.<br/><br/> Ta opcja pozwala określić więcej ustawień, które poprzednią opcję tworzenia maszyny wirtualnej.<br/><br/>
-Zastępowanie istniejącego dysku | Można przywrócić dysk, a następnie użyć przywróconego dysku, aby zastąpić dysk, który znajduje się obecnie na maszynie wirtualnej.
-Przywróć pliki | Można odzyskać pliki z wybranego punktu odzyskiwania. Pobierz skrypt, aby zainstalować dysk maszyny wirtualnej z punktu odzyskiwania. Następnie przejrzyj woluminy dysków, aby znaleźć pliki/foldery, które chcesz odzyskać, i Odinstaluj dysk po zakończeniu.
+**Utwórz nową maszynę wirtualną** | Szybko tworzy i pobiera podstawową maszynę wirtualną i uruchamia ją z punktu przywracania.<br/><br/> Możesz określić nazwę dla maszyny wirtualnej, wybrać grupę zasobów i sieć wirtualną (VNet), w której zostanie umieszczona, a następnie określić konto magazynu dla przywróconej maszyny wirtualnej. Nową maszynę wirtualną należy utworzyć w tym samym regionie co źródłowa maszyna wirtualna.
+**Przywróć dysk** | Przywraca dysk maszyny wirtualnej, za pomocą którego można utworzyć nową maszynę wirtualną.<br/><br/> Azure Backup udostępnia szablon, który pomoże Ci dostosować i utworzyć maszynę wirtualną. <br/><br> Zadanie przywracania generuje szablon, który można pobrać i użyć, aby określić niestandardowe ustawienia maszyny wirtualnej i utworzyć maszynę wirtualną.<br/><br/> Dyski są kopiowane do określonej grupy zasobów.<br/><br/> Alternatywnie możesz dołączyć dysk do istniejącej maszyny wirtualnej lub utworzyć nową maszynę wirtualną przy użyciu programu PowerShell.<br/><br/> Ta opcja jest przydatna, jeśli chcesz dostosować maszynę wirtualną, dodać ustawienia konfiguracji, które nie zostały w chwili tworzenia kopii zapasowej, lub dodać ustawienia, które należy skonfigurować za pomocą szablonu lub programu PowerShell.
+**Zastąp istniejące** | Można przywrócić dysk i użyć go do zamienienia dysku na istniejącej maszynie wirtualnej.<br/><br/> Bieżąca maszyna wirtualna musi istnieć. Jeśli została usunięta, nie można użyć tej opcji.<br/><br/> Azure Backup tworzy migawkę istniejącej maszyny wirtualnej przed zastąpieniem dysku i zapisuje ją w określonej lokalizacji przemieszczania. Istniejące dyski połączone z maszyną wirtualną są zastępowane wybranym punktem przywracania.<br/><br/> Migawka jest kopiowana do magazynu i zachowywana zgodnie z zasadami przechowywania. <br/><br/> Po zakończeniu operacji Zamień dysk oryginalny dysk jest zachowywany w grupie zasobów. Możesz wybrać opcję ręcznego usuwania dysków oryginalnych, jeśli nie są one potrzebne. <br/><br/>Zastąp istniejące jest obsługiwane dla nieszyfrowanych zarządzanych maszyn wirtualnych. Nie jest obsługiwana w przypadku dysków niezarządzanych, [uogólnionych maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)ani maszyn wirtualnych [utworzonych przy użyciu obrazów niestandardowych](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/).<br/><br/> Jeśli punkt przywracania ma więcej lub mniej dysków niż bieżąca maszyna wirtualna, liczba dysków w punkcie przywracania będzie uwzględniać tylko konfigurację maszyny wirtualnej.<br><br> Instrukcja Replace exist nie jest obsługiwana w przypadku maszyn wirtualnych z połączonymi zasobami (takich jak [zarządzane tożsamości przypisane przez użytkownika](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) lub [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)), ponieważ aplikacja klient kopii zapasowej nie ma uprawnień do tych zasobów podczas przywracania.
+**Między regionami (region pomocniczy)** | W celu przywrócenia maszyn wirtualnych platformy Azure w regionie pomocniczym, które jest [sparowanym regionem platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions), można użyć funkcji przywracania między regionami.<br><br> Jeśli kopia zapasowa jest wykonywana w regionie pomocniczym, można przywrócić wszystkie maszyny wirtualne platformy Azure dla wybranego punktu odzyskiwania.<br><br> Ta funkcja jest dostępna dla poniższych opcji:<br> * [utworzyć maszynę wirtualną](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm) <br> * [przywracanie dysków](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) <br><br> Nie obsługujemy obecnie opcji [Zamień istniejące dyski](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#replace-existing-disks) .<br><br> Uprawnienia<br> Operacja przywracania w regionie pomocniczym może być wykonywana przez administratorów kopii zapasowych i administratorów aplikacji.
 
 ## <a name="support-for-file-level-restore"></a>Obsługa przywracania na poziomie plików
 
@@ -213,10 +213,10 @@ Bezpieczeństwo danych:
 
 **Maszyna** | **Przesyłanie** | **Magazynowanie**
 --- | --- | ---
-Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | ![Yes][green] | ![Yes][green]
-Maszyny wirtualne platformy Azure | ![Yes][green] | ![Yes][green]
-Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z programem DPM | ![Yes][green] | ![Yes][green]
-Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![Yes][green] | ![Yes][green]
+Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | ![Tak][green] | ![Tak][green]
+Maszyny wirtualne platformy Azure | ![Tak][green] | ![Tak][green]
+Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z programem DPM | ![Tak][green] | ![Tak][green]
+Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![Tak][green] | ![Tak][green]
 
 ## <a name="vm-compression-support"></a>Obsługa kompresji maszyny wirtualnej
 
@@ -227,10 +227,10 @@ Funkcja Backup obsługuje kompresję ruchu kopii zapasowej, jak przedstawiono w 
 
 **Maszyna** | **Kompresja do usługi MABS/programu DPM (TCP)** | **Kompresuj do magazynu (HTTPS)**
 --- | --- | ---
-Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | Nie dotyczy | ![Yes][green]
+Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | Nie dotyczy | ![Tak][green]
 Maszyny wirtualne platformy Azure | Nie dotyczy | Nie dotyczy
-Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z programem DPM | ![Yes][green] | ![Yes][green]
-Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![Yes][green] | ![Yes][green]
+Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z programem DPM | ![Tak][green] | ![Tak][green]
+Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![Tak][green] | ![Tak][green]
 
 ## <a name="next-steps"></a>Następne kroki
 

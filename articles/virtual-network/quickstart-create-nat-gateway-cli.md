@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 816dc9c4460792b56a7dbf0c5d77f92afd257e73
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: df1e363f31aa8c88be54454c9dc060f4ed6b7ca1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429719"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588896"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>Szybki Start: Tworzenie bramy NAT przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -33,10 +33,8 @@ Ten przewodnik Szybki Start przedstawia sposób korzystania z usługi Azure Virt
 Ten samouczek można wykonać przy użyciu Azure Cloud Shell lub uruchomić odpowiednie polecenia lokalnie.  Jeśli nie korzystasz z Azure Cloud Shell, [Zaloguj się teraz](https://shell.azure.com) , aby przejść przez początkową konfigurację.
 Jeśli zdecydujesz się uruchomić te polecenia lokalnie, musisz zainstalować interfejs wiersza polecenia.  Ten samouczek wymaga korzystania z wersji interfejsu wiersza polecenia platformy Azure w wersji 2.0.71 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-> [!IMPORTANT]
-> Po [włączeniu](./nat-overview.md#enable-preview) Virtual Network translatora adresów sieciowych w ramach subskrypcji Użyj https://aka.ms/natportal, aby uzyskać dostęp do portalu.
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 

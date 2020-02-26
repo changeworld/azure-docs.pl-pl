@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69d08af9fd34728860343db3578f7283802f1611
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 4eb212cb6122803f78b13e6c17a55bac5bc48286
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544756"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587876"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozszerzenia i funkcje maszyny wirtualnej dla systemu Windows
 
-Rozszerzenia maszyny wirtualnej platformy Azure to małe aplikacje, które zapewniają konfigurację po wdrożeniu i zadania automatyzacji na maszynach wirtualnych platformy Azure. Na przykład jeśli maszyna wirtualna wymaga instalacji oprogramowania, ochrony antywirusowej lub uruchomienia skryptu w swoim środowisku, można użyć rozszerzenia maszyny wirtualnej. Rozszerzenia maszyn wirtualnych platformy Azure można uruchamiać przy użyciu interfejsu wiersza polecenia platformy Azure, programu PowerShell, szablonów usługi Azure Resource Manager i witryny Azure Portal. Rozszerzenia można połączyć w pakiecie z nowym wdrożeniem nowej maszyny wirtualnej lub uruchamiać w dowolnym istniejącym systemie.
+Rozszerzenia maszyny wirtualnej platformy Azure to małe aplikacje, które zapewniają konfigurację po wdrożeniu i zadania automatyzacji na maszynach wirtualnych platformy Azure. Na przykład jeśli maszyna wirtualna wymaga instalacji oprogramowania, ochrony antywirusowej lub uruchomienia skryptu w tym środowisku, można użyć rozszerzenia maszyny wirtualnej. Rozszerzenia maszyny wirtualnej platformy Azure można uruchamiać przy użyciu interfejsu wiersza polecenia platformy Azure, programu PowerShell, szablonów Azure Resource Manager i Azure Portal. Rozszerzenia można powiązać z nowym wdrożeniem maszyny wirtualnej lub korzystać z dowolnego istniejącego systemu.
 
 Ten artykuł zawiera Omówienie rozszerzeń maszyn wirtualnych, wymagania wstępne dotyczące korzystania z rozszerzeń maszyn wirtualnych platformy Azure oraz wskazówki dotyczące wykrywania i usuwania rozszerzeń maszyn wirtualnych oraz zarządzania nimi. Ten artykuł zawiera uogólnione informacje, ponieważ wiele rozszerzeń maszyn wirtualnych jest dostępnych, z których każdy może mieć unikatową konfigurację. Szczegóły dotyczące rozszerzenia można znaleźć w każdym dokumencie specyficznym dla danego rozszerzenia.
 
@@ -36,7 +36,7 @@ Dostępne są różne rozszerzenia maszyn wirtualnych platformy Azure z konkretn
 
 - Zastosuj konfiguracje żądanego stanu programu PowerShell do maszyny wirtualnej z rozszerzeniem DSC dla systemu Windows. Aby uzyskać więcej informacji, zobacz [rozszerzenie konfiguracji żądanego stanu platformy Azure](dsc-overview.md).
 - Skonfiguruj monitorowanie maszyny wirtualnej przy użyciu rozszerzenia maszyny wirtualnej agenta Log Analytics. Aby uzyskać więcej informacji, zobacz [łączenie maszyn wirtualnych platformy Azure z dziennikami Azure monitor](../../log-analytics/log-analytics-azure-vm-extension.md).
-- Skonfiguruj maszynę wirtualną platformy Azure przy użyciu Chef. Aby uzyskać więcej informacji, zobacz [Automatyzowanie wdrożenia maszyny wirtualnej platformy Azure za pomocą Chef](../windows/chef-automation.md).
+- Skonfiguruj maszynę wirtualną platformy Azure przy użyciu Chef. Aby uzyskać więcej informacji, zobacz [Automatyzowanie wdrożenia maszyny wirtualnej platformy Azure za pomocą Chef](../../chef/chef-automation.md).
 - Skonfiguruj monitorowanie infrastruktury platformy Azure przy użyciu rozszerzenia usługi Datadog. Aby uzyskać więcej informacji, zobacz [blog usługi Datadog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 
@@ -140,7 +140,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 Polecenie `Set-AzVMExtension` może służyć do uruchamiania dowolnego rozszerzenia maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz temat [Set-AzVMExtension Reference](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Rozszerzenia maszyn wirtualnych można stosować do istniejącej maszyny wirtualnej za pomocą Azure Portal. Wybierz maszynę wirtualną w portalu, wybierz pozycję **rozszerzenia**, a następnie wybierz pozycję **Dodaj**. Wybierz odpowiednie rozszerzenie z listy dostępnych rozszerzeń i postępuj zgodnie z instrukcjami wyświetlanymi w kreatorze.
 
@@ -423,7 +423,7 @@ Możesz również usunąć rozszerzenie w Azure Portal w następujący sposób:
 ## <a name="common-vm-extensions-reference"></a>Informacje o typowych rozszerzeniach maszyn wirtualnych
 | Nazwa rozszerzenia | Opis | Więcej informacji |
 | --- | --- | --- |
-| Niestandardowe rozszerzenie skryptu dla systemu Windows |Uruchamianie skryptów na maszynie wirtualnej platformy Azure |[Rozszerzenie niestandardowego skryptu dla systemu Windows](custom-script-windows.md) |
+| Rozszerzenie niestandardowego skryptu dla systemu Windows |Uruchamianie skryptów na maszynie wirtualnej platformy Azure |[Niestandardowe rozszerzenie skryptu dla systemu Windows](custom-script-windows.md) |
 | Rozszerzenie DSC dla systemu Windows |Rozszerzenie DSC programu PowerShell (Konfiguracja żądanego stanu) |[Rozszerzenie DSC dla systemu Windows](dsc-overview.md) |
 | Rozszerzenie Diagnostyki Azure |Zarządzaj Diagnostyka Azure |[Rozszerzenie diagnostyki platformy Azure](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Rozszerzenie dostępu do maszyny wirtualnej platformy Azure |Zarządzanie użytkownikami i poświadczeniami |[Rozszerzenie dostępu do maszyny wirtualnej dla systemu Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |

@@ -2,17 +2,14 @@
 title: Wyświetlanie dzienników kontrolera usługi Azure Kubernetes Service (AKS)
 description: Informacje na temat włączania i wyświetlania dzienników dla węzła głównego Kubernetes w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: mlearned
-ms.openlocfilehash: dc72a8d448a189918def35da0250d83c81da7fa0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f759f15cf98546cb95ba0adb5890885f85ca6aa1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812818"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592792"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Włączanie i przeglądanie dzienników węzła głównego Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -33,7 +30,7 @@ Dzienniki Azure Monitor są włączone i zarządzane w Azure Portal. Aby włącz
 1. Wybierz klaster AKS, taki jak *myAKSCluster*, a następnie wybierz opcję **dodania ustawienia diagnostycznego**.
 1. Wprowadź nazwę, na przykład *myAKSClusterLogs*, a następnie wybierz opcję **wysyłania do log Analytics**.
 1. Wybierz istniejący obszar roboczy lub Utwórz nowy. W przypadku tworzenia obszaru roboczego Podaj nazwę obszaru roboczego, grupę zasobów i lokalizację.
-1. Na liście dostępnych dzienników wybierz dzienniki, które chcesz włączyć. Typowe dzienniki obejmują *polecenia-apiserver*, *polecenia-Controller-Manager*i *polecenia-Scheduler*. Możesz włączyć dodatkowe dzienniki, takie jak *polecenia-Audit* i *cluster-* autoscaleer. Można zwrócić i zmienić zebrane dzienniki po włączeniu Log Analytics obszarów roboczych.
+1. Na liście dostępnych dzienników wybierz dzienniki, które chcesz włączyć. Typowe dzienniki obejmują *polecenia-apiserver*, *polecenia-Controller-Manager*i *polecenia-Scheduler*. Możesz włączyć dodatkowe dzienniki, takie jak *polecenia-Audit* i *cluster-autoscaleer*. Można zwrócić i zmienić zebrane dzienniki po włączeniu Log Analytics obszarów roboczych.
 1. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz** , aby włączyć zbieranie wybranych dzienników.
 
 Poniższy przykładowy zrzut ekranu portalu pokazuje okno *Ustawienia diagnostyki* :
@@ -109,18 +106,18 @@ Aby ułatwić analizowanie danych dziennika, w poniższej tabeli przedstawiono s
 
 | Nazwa pola               | Opis |
 |--------------------------|-------------|
-| *resourceId*             | Zasób platformy Azure, który wygenerował dziennik |
-| *czas*                   | Sygnatura czasowa przekazywania dziennika |
-| *category*               | Nazwa kontenera/składnika generującego dziennik |
-| *OperationName*          | Zawsze *Microsoft. ContainerService/managedClusters/diagnosticLogs/Read* |
-| *properties.log*         | Pełny tekst dziennika ze składnika |
-| *properties.stream*      | *stderr* lub *stdout* |
+| *Identyfikator*             | Zasób platformy Azure, który wygenerował dziennik |
+| *pierwszym*                   | Sygnatura czasowa przekazywania dziennika |
+| *kategorii*               | Nazwa kontenera/składnika generującego dziennik |
+| *operationName*          | Zawsze *Microsoft. ContainerService/managedClusters/diagnosticLogs/Read* |
+| *Właściwości. log*         | Pełny tekst dziennika ze składnika |
+| *Właściwości. Stream*      | *stderr* lub *stdout* |
 | *Właściwości. pod*         | Pod nazwą, z której pochodzi dziennik |
 | *Properties. containerID* | Identyfikator kontenera platformy Docker, z którego pochodzi ten dziennik |
 
 ## <a name="log-roles"></a>Role dziennika
 
-| Role                     | Opis |
+| Rola                     | Opis |
 |--------------------------|-------------|
 | *aksService*             | Nazwa wyświetlana w dzienniku inspekcji dla operacji płaszczyzny kontroli (z hcpService) |
 | *masterclient*           | Nazwa wyświetlana w dzienniku inspekcji dla MasterClientCertificate, certyfikat uzyskany z AZ AKS Get-Credentials |

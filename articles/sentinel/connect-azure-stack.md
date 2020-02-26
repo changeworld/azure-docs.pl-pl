@@ -3,7 +3,7 @@ title: Dołączanie maszyn wirtualnych Azure Stack do usługi Azure wskaźnikowe
 description: W tym artykule opisano sposób aprowizacji rozszerzenia maszyny wirtualnej Azure Monitor, aktualizacji i zarządzania konfiguracją na Azure Stack maszynach wirtualnych i uruchamiania monitorowania ich za pomocą programu wskaźnikowego.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: fb306ec3f8abe2eedb97f83d01836745779db914
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.author: yelevin
+ms.openlocfilehash: a8213bd57936f95870324950204dbd6c1473739a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240772"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588522"
 ---
 # <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>Łączenie Azure Stack maszyn wirtualnych z platformą Azure — wskaźnikiem
 

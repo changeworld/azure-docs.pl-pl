@@ -14,12 +14,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7d096f721869e43e9a860733d0f6893f224a6776
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: bd9622d3e34198402bc45e5d855d05b0c8e35eb8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772574"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605461"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Zmiana w miejscu SQL Server edycji na maszynie wirtualnej platformy Azure
 
@@ -33,9 +33,9 @@ Gdy wersja SQL Server została zmieniona wewnętrznie na maszynę wirtualną SQL
 
 Aby przeprowadzić zmianę w miejscu wersji SQL Server, potrzebne są następujące elementy: 
 
-- [Subskrypcji platformy Azure](https://azure.microsoft.com/free/).
+- [Subskrypcja platformy Azure](https://azure.microsoft.com/free/).
 - [SQL Server maszynę wirtualną w systemie Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) zarejestrowana przy użyciu [dostawcy zasobów maszyny wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md).
-- Skonfiguruj nośnik z **odpowiednią wersją** SQL Server. Klienci posiadający [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) mogą uzyskać nośnik instalacyjny z [centrum licencjonowania zbiorowego](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klienci, którzy nie mają programu Software Assurance, mogą korzystać z nośnika instalacyjnego z witryny Azure Marketplace SQL Server obrazu maszyny wirtualnej, który ma odpowiednie wydanie (zazwyczaj znajduje się w `c:\SQLInstalls`). 
+- Skonfiguruj nośnik z **odpowiednią wersją** SQL Server. Klienci posiadający [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) mogą uzyskać nośnik instalacyjny z [centrum licencjonowania zbiorowego](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klienci, którzy nie mają programu Software Assurance, mogą korzystać z nośnika instalacyjnego z witryny Azure Marketplace SQL Server obrazu maszyny wirtualnej, który ma odpowiednie wydanie (zazwyczaj znajduje się w `C:\SQLServerFull`). 
 
 
 ## <a name="upgrade-an-edition"></a>Uaktualnianie wersji
@@ -77,7 +77,7 @@ Po obniżeniu wersji SQL Server należy zmodyfikować właściwość wersja SQL 
 
 Po zmianie wersji SQL Server przy użyciu nośnika instalacyjnego i zarejestrowaniu maszyny wirtualnej SQL Server z [dostawcą zasobów maszyny wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md)można użyć Azure Portal do zmodyfikowania właściwości wersji maszyny wirtualnej SQL Server na potrzeby rozliczania. Aby to zrobić, wykonaj następujące kroki: 
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). 
+1. Zaloguj się do [Azure portal](https://portal.azure.com). 
 1. Przejdź do zasobu maszyny wirtualnej SQL Server. 
 1. W obszarze **Ustawienia**wybierz pozycję **Konfiguruj**. Następnie wybierz żądaną wersję SQL Server z listy rozwijanej w obszarze **Edycja**. 
 

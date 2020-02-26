@@ -3,12 +3,12 @@ title: Urządzenie usługi Azure Migrate
 description: Zawiera omówienie urządzenia Azure Migrate używanego w ocenie i migracji serwera.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1b1e35c3b7a9d98e57ec4261f6f913c370bbb365
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425463"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597545"
 ---
 # <a name="azure-migrate-appliance"></a>Urządzenie usługi Azure Migrate
 
@@ -34,7 +34,7 @@ Maszyna fizyczna |  Azure Migrate: Ocena serwera |  Odnajdywanie serwerów fizyc
 **Licencjonowan** | Pobrany szablon urządzenia zawiera licencję ewaluacyjną systemu Windows Server 2016, która jest ważna przez 180 dni. Jeśli okres próbny zbliża się do wygaśnięcia, zalecamy pobranie i wdrożenie nowego urządzenia albo Aktywowanie licencji na maszynę wirtualną urządzenia.
 **Wdrożenie** | Urządzenie jest wdrażane jako maszyna wirtualna VMware. Musisz mieć wystarczającą ilość zasobów na vCenter Server, aby przydzielić maszynę wirtualną z 32 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca na dysku i zewnętrznym przełączniku wirtualnym.<br/> Urządzenie wymaga dostępu do Internetu, bezpośrednio lub za pomocą serwera proxy.<br/> Urządzenie może połączyć się z pojedynczym vCenter Server.
 **Sprzęt** | Zasoby w programie vCenter do przydzielenia maszyny wirtualnej z 32 GB pamięci RAM 8 procesorów wirtualnych vCPU, około 80 GB miejsca na dysku i zewnętrznym przełączniku wirtualnym. 
-**Wartość skrótu** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256:4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+**Wartość skrótu** | Sprawdź [tutaj](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security)
 **serwer vCenter/Host** | Maszynę wirtualną urządzenia należy wdrożyć na hoście ESXi z systemem w wersji 5,5 lub nowszej.<br/><br/> vCenter Server uruchomione 5,5, 6,0, 6,5 lub 6,7.
 **Projekt Azure Migrate** | Urządzenie może być skojarzone z pojedynczym projektem. <br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> 
 **Odnajdowa** | Urządzenie może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z pojedynczym vCenter Server.
@@ -52,7 +52,7 @@ Maszyna fizyczna |  Azure Migrate: Ocena serwera |  Odnajdywanie serwerów fizyc
 **Licencjonowan** | Pobrany szablon urządzenia zawiera licencję ewaluacyjną systemu Windows Server 2016, która jest ważna przez 180 dni. Jeśli okres próbny zbliża się do wygaśnięcia, zalecamy pobranie i wdrożenie nowego urządzenia albo Aktywowanie licencji na maszynę wirtualną urządzenia.
 **Wdrażanie urządzenia**   |  Urządzenie jest wdrażane jako maszyna wirtualna funkcji Hyper-V.<br/> Maszyna wirtualna z urządzeniem Azure Migrate jest maszyną wirtualną funkcji Hyper-V w wersji 5,0.<br/> Na hoście funkcji Hyper-V musi być uruchomiony system Windows Server 2012 R2 lub nowszy.<br/> Host wymaga wystarczającej ilości miejsca, aby przydzielić 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca do magazynowania oraz przełącznik zewnętrzny dla maszyny wirtualnej urządzenia.<br/> Urządzenie musi mieć statyczny lub dynamiczny adres IP oraz dostęp do Internetu.
 **Sprzęt** | Zasoby na hoście funkcji Hyper-V przydzielają 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca do magazynowania oraz przełącznik zewnętrzny dla maszyny wirtualnej urządzenia.
-**Wartość skrótu** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+**Wartość skrótu** | Sprawdź [tutaj](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security)
 **Host funkcji Hyper-V** | Uruchamianie systemu Windows Server 2012 R2 lub nowszego.
 **Projekt Azure Migrate** | Urządzenie może być skojarzone z pojedynczym projektem. <br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> 
 **Odnajdowa** | Urządzenie może wykryć do 5000 maszyn wirtualnych funkcji Hyper-V.<br/> Urządzenie może połączyć się z maksymalnie 300 hostami funkcji Hyper-V.
@@ -67,7 +67,7 @@ Maszyna fizyczna |  Azure Migrate: Ocena serwera |  Odnajdywanie serwerów fizyc
 **Link pobierania** | [Link pobierania](https://go.microsoft.com/fwlink/?linkid=2105112)
 **Rozmiar pobieranych plików** | 59,7 MB
 **Sprzęt** | Dedykowany komputer fizyczny lub Użyj maszyny wirtualnej. Urządzenie z systemem wymaga 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca do magazynowania oraz przełącznik zewnętrzny.<br/> Urządzenie musi mieć statyczny lub dynamiczny adres IP oraz dostęp do Internetu.
-**Wartość skrótu** | MD5:1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256: a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+**Wartość skrótu** | Sprawdź [tutaj](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security)
 **System operacyjny** | Na komputerze powinien działać system Windows Server 2016. 
 **Wdrażanie urządzenia**   |  Skrypt Instalatora urządzenia jest pobierany z portalu (w folderze spakowanym). <br/> Rozpakujesz folder i uruchomisz skrypt programu PowerShell (AzureMigrateInstaller. ps1).
 **Odnajdowa** | Urządzenie może wykryć do 250 serwerów fizycznych.

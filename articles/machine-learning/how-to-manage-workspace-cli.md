@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 11/05/2019
-ms.openlocfilehash: 715ea6239e070fe5ebb78c2e2766aabf1f491fcc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 06b890a9186ec38ce3f851c9f36b778ec7549f76
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988162"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580552"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Tworzenie obszaru roboczego dla Azure Machine Learning przy użyciu interfejsu wiersza polecenia platformy Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,7 +23,7 @@ W tym artykule dowiesz się, jak utworzyć obszar roboczy Azure Machine Learning
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Subskrypcji platformy Azure**. Jeśli go nie masz, wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
+* **Subskrypcja platformy Azure**. Jeśli go nie masz, wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Aby korzystać z poleceń interfejsu wiersza polecenia w tym dokumencie ze **środowiska lokalnego**, wymagany jest [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -52,14 +52,14 @@ Aby zainstalować rozszerzenie Uczenie maszynowe, użyj następującego poleceni
 az extension add -n azure-cli-ml
 ```
 
-## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
+## <a name="create-a-workspace"></a>Utwórz obszar roboczy
 
 Obszar roboczy Azure Machine Learning opiera się na następujących usługach lub jednostkach platformy Azure:
 
 > [!IMPORTANT]
 > Jeśli nie określisz istniejącej usługi platformy Azure, zostanie ona utworzona automatycznie podczas tworzenia obszaru roboczego. Zawsze należy określić grupę zasobów.
 
-| Usługa | Parametr określający istniejące wystąpienie |
+| NDES | Parametr określający istniejące wystąpienie |
 | ---- | ---- |
 | **Grupa zasobów platformy Azure** | `-g <resource-group-name>`
 | **Konto usługi Azure Storage** | `--storage-account <service-id>` |
@@ -349,6 +349,17 @@ Więcej informacji można znaleźć w dokumentacji [AZ ml Workspace Delete](http
 ### <a name="resource-provider-errors"></a>Błędy dostawcy zasobów
 
 [!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
+
+### <a name="moving-the-workspace"></a>Przeniesienie obszaru roboczego
+
+> [!WARNING]
+> Przeniesienie obszaru roboczego Azure Machine Learning do innej subskrypcji lub przeniesienie subskrypcji będącej właścicielem do nowej dzierżawy nie jest obsługiwane. Wykonanie tej operacji może spowodować błędy.
+
+### <a name="deleting-the-azure-container-registry"></a>Usuwanie Azure Container Registry
+
+W przypadku niektórych operacji Azure Machine Learning obszar roboczy używa Azure Container Registry (ACR). Zostanie automatycznie utworzone wystąpienie ACR, gdy jest ono najpierw wymagane.
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,5 +1,5 @@
 ---
-title: Platforma Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver w systemie Windows z Azure NetApp Files (SMB) | Microsoft Docs
+title: Azure Virtual Machines HA for SAP NW w systemie Windows z Azure NetApp Files (SMB) | Microsoft Docs
 description: Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie Windows z Azure NetApp Files (SMB) dla aplikacji SAP
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: radeltch
-ms.openlocfilehash: d7c2bfbe3f277bbaf652191977434ea5fe4dbffd
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b41db629c5308348f632b3dc51c75822ba361c60
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555293"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591357"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie Windows z Azure NetApp Files (SMB) dla aplikacji SAP
 

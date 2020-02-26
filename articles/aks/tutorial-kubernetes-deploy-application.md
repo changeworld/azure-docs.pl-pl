@@ -2,18 +2,15 @@
 title: Samouczek dotyczący usługi Kubernetes na platformie Azure — wdrażanie aplikacji
 description: W tym samouczku dotyczącym usługi Azure Kubernetes Service (AKS) wdrożysz aplikację z wieloma kontenerami w klastrze przy użyciu obrazu niestandardowego przechowywanego w usłudze Azure Container Registry.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: cc01b12e493f3e0d3cd63786c27819d4704f97f4
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 3b614fcb6692f35884af2fc4e19210267ab8ab04
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263879"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593278"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Samouczek: uruchamianie aplikacji w usłudze Azure Kubernetes Service (AKS)
 

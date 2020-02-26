@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: aa4e8f165320327788255605470bda789047c347
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d0f96fe758966a435f8fb8e448e75cbb18b85122
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592492"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604512"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Zastosuj szyfrowanie dysków w Azure Security Center
 Azure Security Center zaleca zastosowanie szyfrowania dysków, jeśli masz dyski maszyn wirtualnych z systemem Windows lub Linux, które nie są zaszyfrowane przy użyciu Azure Disk Encryption. Szyfrowanie dysków umożliwia szyfrowanie dysków maszyn wirtualnych z systemami Windows i Linux IaaS.  Szyfrowanie jest zalecane zarówno w przypadku woluminów z systemem operacyjnym, jak i z danymi maszyny wirtualnej.
@@ -47,7 +47,7 @@ Aby zaszyfrować Virtual Machines platformy Azure, które zostały zidentyfikowa
 
 Istnieje wiele metod, których można użyć w przypadku usługi Azure Virtual Machines. Jeśli użytkownik ma dużą wiedzę na temat programu Azure PowerShell lub interfejsu wiersza polecenia Azure, może wybrać inne rozwiązania. Aby dowiedzieć się więcej na temat tych innych metod, zobacz [Azure Disk Encryption](../security/fundamentals/encryption-overview.md).
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 W tym dokumencie przedstawiono sposób implementacji zalecenia Security Center "Zastosuj szyfrowanie dysków". Aby dowiedzieć się więcej na temat szyfrowania dysków, zobacz następujące tematy:
 
 * [Szyfrowanie i zarządzanie kluczami za pomocą Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (wideo, 36 min 39 s) — Dowiedz się, jak używać funkcji zarządzania szyfrowaniem dysków dla maszyn wirtualnych IaaS i Azure Key Vault do ochrony danych.
@@ -59,7 +59,6 @@ Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następując
 * [Monitorowanie kondycji zabezpieczeń w Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](security-center-recommendations.md) — Dowiedz się, jak zalecenia ułatwiają ochronę zasobów platformy Azure.
-* [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
 * [Blog dotyczący zabezpieczeń platformy Azure](https://blogs.msdn.com/b/azuresecurity/) — zawiera wpisy w blogu dotyczące zabezpieczeń i zgodności platformy Azure.
 
 <!--Image references-->

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: memildin
-ms.openlocfilehash: 32cc4b01d68ee7a15ae7cfa2259d234cbcd143c4
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ef1684f11349696c22a290c90469a8d94f922e58
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202050"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603996"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Badanie zdarzeń i alertów w Azure Security Center (wycofane)
 Ten dokument ułatwia korzystanie z funkcji badania (wersja zapoznawcza) w Azure Security Center w celu zbadania zdarzeń zabezpieczeń i alertów.
@@ -64,15 +64,15 @@ Na karcie **Jednostki** są wyświetlane wszystkie powiązane jednostki pogrupow
 
 ![Jednostki](./media/security-center-investigation/security-center-investigation-fig4.png)
 
-### <a name="search"></a>Wyszukiwanie
+### <a name="search"></a>Wyszukaj
 
 Karta **Wyszukiwanie** przedstawia wszystkie typy dzienników dostępne dla danej jednostki. W przypadku każdego typu dziennika można wyświetlić liczbę dostępnych rekordów. Kliknięcie każdego typu dziennika powoduje przejście do ekranu wyszukiwania. Na ekranie wyszukiwania można uściślić wyszukiwanie i skorzystać z różnych funkcji wyszukiwania, takich jak alerty ustawień. W bieżącej wersji karta Wyszukiwanie jest dostępna tylko w przypadku jednostek użytkownicy i komputery.
 
-![Wyszukiwanie](./media/security-center-investigation/security-center-investigation-fig5.png)
+![Wyszukaj](./media/security-center-investigation/security-center-investigation-fig5.png)
 
 ### <a name="exploration"></a>Eksploracja
 
-Karta **Eksploracja** umożliwia analitykowi ocenę danych dotyczących różnych problemów, które są związane z jednostką. Na przykład w przypadku badania komputera na karcie Eksploracja jest wyświetlana lista wykonanych na nim procesów. W niektórych przypadkach na karcie Eksploracja są wyświetlane dane, które mogą wskazywać na podejrzany problem. Analityk może ocenić dane na karcie lub otworzyć je na ekranie wyszukiwania, aby przejrzeć duże zestawy danych i skorzystać z opcji wyszukiwania zaawansowanego, takich jak filtrowanie i eksportowanie do programu Excel.
+Karta **Eksploracja** umożliwia analitykowi ocenę danych dotyczących różnych problemów, które są związane z jednostką. Na przykład po zbadaniu komputera na karcie Eksploracja zostanie wyświetlona lista procesów wykonywanych na nim. W niektórych przypadkach karta Eksploracja przedstawia dane, które mogą wskazywać na podejrzany problem. Analityk może ocenić dane na karcie lub otworzyć je na ekranie wyszukiwania, aby przejrzeć duże zestawy danych i skorzystać z opcji wyszukiwania zaawansowanego, takich jak filtrowanie i eksportowanie do programu Excel.
 
 ![Eksploracja](./media/security-center-investigation/security-center-investigation-fig6.png)
 
@@ -104,7 +104,7 @@ Badanie można rozpocząć z poziomu zdarzenia zabezpieczeń lub alertu. Wybrana
 2.  Kliknij pozycję **Alerty zabezpieczeń** i wybierz zdarzenie, które chcesz zbadać.
 3.  Na stronie zdarzenia kliknij przycisk **Rozpocznij badanie**. Zostanie wyświetlony pulpit nawigacyjny funkcji **Badanie**.
 
-    ![Alerty](./media/security-center-investigation/security-center-investigation-fig8.png)
+    ![Alert](./media/security-center-investigation/security-center-investigation-fig8.png)
 
 4. Z tego pulpitu nawigacyjnego można wybrać jednostkę na mapie. Po prawej stronie ekranu pojawią się odpowiednie informacje na temat tej jednostki.
 
@@ -112,12 +112,9 @@ Badanie można rozpocząć z poziomu zdarzenia zabezpieczeń lub alertu. Wybrana
 
 W tym miejscu można zbadać jednostki, które brały udział w tym zdarzeniu, i uzyskać więcej szczegółowych informacji na temat każdej z nich.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 W tym dokumencie przedstawiono sposób użycia funkcji badania w usłudze Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Dowiedz się, jak zarządzać alertami i reagować na zdarzenia związane z bezpieczeństwem w usłudze Security Center.
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md). Informacje na temat sposobu monitorowania kondycji zasobów platformy Azure.
 * [Informacje o alertach zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Poznaj różne typy alertów zabezpieczeń.
-* [Przewodnik rozwiązywania problemów z usługą Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Dowiedz się, jak rozwiązywać typowe problemy z usługą Security Center.
-* [Azure Security Center — często zadawane pytania](security-center-faq.md). Odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/). Wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: 96efe5271b91f87e30ba26aabe69a0de76e1a791
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202399"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604267"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Omówienie zaleceń dotyczących kontenera Azure Security Center
 
@@ -44,7 +44,7 @@ Poniższe tabele zawierają informacje ułatwiające zrozumienie dostępnych kon
 
 | Zalecenie | Opis | Korygowanie |
 | --- | --- | --- |
-|Koryguj luki w zabezpieczeniach w konfiguracjach zabezpieczeń kontenerów |Koryguj luki w zabezpieczeniach w konfiguracjach zabezpieczeń kontenerów na podstawie najlepszych rozwiązań konfiguracyjnych.| Aby skorygować luki w zabezpieczeniach konfiguracji kontenerów:<br>1. Przejrzyj listę reguł zakończonych niepowodzeniem.<br>2. Popraw każdą regułę zgodnie z określonymi instrukcjami.|
+|Koryguj luki w zabezpieczeniach w konfiguracjach zabezpieczeń kontenerów |Koryguj luki w zabezpieczeniach w konfiguracjach zabezpieczeń kontenerów na podstawie najlepszych rozwiązań konfiguracyjnych.| Aby skorygować luki w zabezpieczeniach konfiguracji kontenerów:<br>1. Przejrzyj listę reguł zakończonych niepowodzeniem.<br>2. napraw każdą regułę zgodnie z określonymi instrukcjami.|
 
 
 ## <a name="next-steps"></a>Następne kroki
@@ -52,12 +52,10 @@ Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do in
 
 * [Monitorowanie tożsamości i dostępu w usłudze Azure Security Center](security-center-identity-access.md)
 * [Ochrona sieci w usłudze Azure Security Center](security-center-network-recommendations.md)
-* [Ochrona usługi Azure SQL w usłudze Azure Security Center](security-center-sql-service-recommendations.md)
+* [Ochrona usługi Azure SQL w Azure Security Center](security-center-sql-service-recommendations.md)
 
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Ochrona maszyn i aplikacji w usłudze Azure Security Center](security-center-virtual-machine-protection.md)
 * [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
-* [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-

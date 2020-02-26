@@ -14,16 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: a54e1c9cbc9a80139d71a89f86ac51ecf5ce9902
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a53a27a92b393c38d1f49efbd50d91fa1a2e9657
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190496"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597698"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux Przenieś własne obrazy z subskrypcji na platformę Azure
 
 Obrazy Red Hat Enterprise Linux (RHEL) są dostępne na platformie Azure za pośrednictwem modelu "płatność zgodnie z rzeczywistym użyciem" (PAYG) lub "Przenieś własną subskrypcję" (Red Hat Gold Image). Ten dokument zawiera omówienie obrazów Red Hat Gold na platformie Azure.
+
+>[!NOTE]
+> RHEL BYOS Gold są dostępne na platformie Azure publicznie (komercyjnej) i w chmurach Azure Government. Nie są one dostępne w ramach platformy Azure w Chinach ani chmur usługi Azure Blackforest.
 
 ## <a name="important-points-to-consider"></a>Ważne kwestie, które należy wziąć pod uwagę
 

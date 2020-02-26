@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/21/2020
+ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56b78f4296709206cefb762c87d4d1471bff2df7
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 2c3c52fc85e6c915587db27a3f5ce247fd05ea51
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291519"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598327"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Obciążenia SAP na platformie Azure: Lista kontrolna planowania i wdrażania
 
@@ -48,10 +48,13 @@ W tej fazie planujesz migrację obciążenia SAP na platformę Azure. Co najmnie
     - Ciągłość działania i architektura odzyskiwania po awarii.
     - Szczegółowe informacje na temat wersji systemów operacyjnych, baz danych, jądra i pakietu SAP support. Nie musi to być prawdą, że każda wersja systemu operacyjnego obsługiwana przez oprogramowanie SAP NetWeaver lub S/4HANA jest obsługiwana na maszynach wirtualnych platformy Azure. Ta sama wartość dotyczy wersji systemu DBMS. Zapoznaj się z następującymi źródłami, aby wyrównać i w razie potrzeby uaktualnić wydania SAP, wersje DBMS i wersje systemu operacyjnego w celu zapewnienia wsparcia SAP i platformy Azure. Aby uzyskać pełną pomoc techniczną od oprogramowania SAP i Microsoft, musisz mieć kombinacje wydań obsługiwane przez oprogramowanie SAP i platformę Azure. W razie potrzeby należy zaplanować uaktualnienie niektórych składników oprogramowania. Więcej informacji o obsługiwanych oprogramowaniu SAP, OS i DBMS opisano tutaj:
         - [Uwaga dotycząca pomocy technicznej SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533). Ta Uwaga definiuje minimalne wersje systemu operacyjnego obsługiwane na maszynach wirtualnych platformy Azure. Definiuje również minimalne wersje bazy danych wymagane dla większości baz danych innych niż HANA. Na koniec oferuje Określanie rozmiarów SAP dla typów maszyn wirtualnych platformy Azure obsługiwanych przez oprogramowanie SAP.
+        - [Uwaga dotycząca pomocy technicznej SAP #2015553](https://launchpad.support.sap.com/#/notes/2015553). Ta Uwaga definiuje zasady pomocy technicznej dotyczące usługi Azure Storage i obsługi relacji wymaganych z firmą Microsoft.
         - [Uwaga dotycząca pomocy technicznej SAP #2039619](https://launchpad.support.sap.com/#/notes/2039619). Ta Uwaga definiuje Macierz obsługi Oracle dla platformy Azure. Platforma Oracle obsługuje tylko system Windows i Oracle Linux jako systemy operacyjne gościa na platformie Azure dla obciążeń SAP. Ta instrukcja obsługi dotyczy również warstwy aplikacji SAP, w której działają wystąpienia SAP. Jednak platforma Oracle nie obsługuje wysokiej dostępności usług SAP Central w Oracle Linux za pomocą Pacemaker. Jeśli potrzebujesz wysokiej dostępności dla ASCS na Oracle Linux, musisz użyć pakietu ochrony oprogramowanie SIOS dla systemu Linux. Aby uzyskać szczegółowe dane dotyczące certyfikacji oprogramowania SAP, zobacz uwagi dotyczące pomocy technicznej SAP [#1662610 — szczegóły pomocy technicznej dla programu oprogramowanie SIOS Protection Suite dla systemu Linux](https://launchpad.support.sap.com/#/notes/1662610). W przypadku systemu Windows rozwiązanie Windows Server Failover Clustering dla systemu SAP dla usług SAP Central jest obsługiwane w połączeniu z bazą danych Oracle jako warstwą DBMS.
         - [Uwaga dotycząca pomocy technicznej SAP #2235581](https://launchpad.support.sap.com/#/notes/2235581). Ta Uwaga zawiera macierz pomocy technicznej dla SAP HANA w różnych wersjach systemu operacyjnego.
         - Obsługiwane przez SAP HANA maszyny wirtualne platformy Azure i [duże wystąpienia Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) są wymienione w [witrynie sieci Web SAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure).
         - [Macierz dostępności produktu SAP](https://support.sap.com/en/).
+        - [Uwaga dotycząca pomocy technicznej SAP #2555629-SAP HANA 2,0 dynamiczne warstwy — Obsługa funkcji hypervisor i chmury](https://launchpad.support.sap.com/#/notes/2555629)
+        - [Uwaga dotycząca pomocy technicznej SAP #1662610 — szczegóły pomocy technicznej dla programu oprogramowanie SIOS Protection Suite dla systemu Linux](https://launchpad.support.sap.com/#/notes/1662610)
         - Uwagi dotyczące oprogramowania SAP dla innych produktów specyficznych dla oprogramowania SAP.     
     - Zalecamy stosowanie rygorystycznych trzech warstw dla systemów produkcyjnych SAP. Nie zaleca się łączenia serwerów ASCS i/lub DBMS i/lub aplikacji na jednej maszynie wirtualnej. Korzystanie z konfiguracji klastra z obsługą identyfikatorów SID dla usług SAP Central jest obsługiwane w systemach operacyjnych gościa systemu Windows na platformie Azure. Ta konfiguracja nie jest obsługiwana w przypadku usług SAP Central w systemach operacyjnych Linux na platformie Azure. Dokumentację scenariusza systemu operacyjnego gościa w systemie Windows można znaleźć w następujących artykułach:
         - [Rozwiązanie SAP ASCS/SCS o wysokiej dostępności z użyciem usługi Windows Server Failover Clustering i dysku udostępnionego na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
@@ -102,7 +105,7 @@ Zalecamy skonfigurowanie i zweryfikowanie pełnego projektu rozwiązania HADR Cl
         - Oceń i przetestuj rozmiary maszyn wirtualnych platformy Azure w odniesieniu do maksymalnej przepustowości magazynu i przepływności sieci dla typów maszyn wirtualnych wybranych podczas fazy planowania. Dane można znaleźć tutaj:
            -  [Rozmiary maszyn wirtualnych z systemem Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Ważne jest, aby uwzględnić *maksymalną przepływność dysku niebuforowanego* dla rozmiaru.
            -  [Rozmiary maszyn wirtualnych z systemem Linux na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Ważne jest, aby uwzględnić *maksymalną przepływność dysku niebuforowanego* dla rozmiaru.
-   2. Magazyn.
+   2. Chowan.
         - Za pomocą [usługi Azure SSD w warstwie Standardowa Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) można korzystać w przypadku maszyn wirtualnych, które reprezentują warstwy aplikacji SAP, oraz wdrażania systemów DBMS, które nie są wrażliwe na wydajność.
         - Ogólnie rzecz biorąc nie zalecamy używania [dysków HDD w warstwie Standardowa platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd).
         - Użyj [Premium Storage platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) dla wszystkich maszyn wirtualnych z systemem DBMS, które są zdalnie wrażliwe na wydajność.
@@ -122,7 +125,7 @@ Zalecamy skonfigurowanie i zweryfikowanie pełnego projektu rozwiązania HADR Cl
             -  Umieszczenie warstwy aplikacji SAP i SAP DBMS w różnych sieciach wirtualnych platformy Azure, które nie są połączone za pomocą komunikacji równorzędnej, nie jest obsługiwane.
             -  Aby zdefiniować trasy między warstwą aplikacji SAP i warstwą SAP DBMS, można użyć [grup zabezpieczeń aplikacji i zasad grupy zabezpieczeń sieci](https://docs.microsoft.com/azure/virtual-network/security-overview) .
         - Upewnij się, że [usługa Azure przyspieszone sieci](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) jest włączona na maszynach wirtualnych używanych w warstwie aplikacji SAP i w warstwie systemu SAP DBMS. Należy pamiętać, że różne poziomy systemu operacyjnego są konieczne do obsługi przyspieszonej sieci na platformie Azure:
-            - Windows Server 2012 R2 lub nowszy.
+            - System Windows Server 2012 R2 lub nowszy.
             - SUSE Linux 12 z dodatkiem SP3 lub nowszym.
             - RHEL 7,4 lub nowszy.
             - Oracle Linux 7,5. Jeśli używasz jądra RHCKL, wymagana jest wersja 3.10.0-862.13.1. el7. Jeśli używasz jądra Oracle UEK, wymagana jest wersja 5.
@@ -148,6 +151,21 @@ Zalecamy skonfigurowanie i zweryfikowanie pełnego projektu rozwiązania HADR Cl
             - SameSubNetDelay = 2000
             - SameSubNetThreshold = 15
             - RoutingHistorylength = 30
+    6. Ustawienia lub poprawki systemu operacyjnego
+        - W przypadku uruchamiania platformy HANA w oprogramowaniu SAP Przeczytaj następujące informacje i dokumenty:
+            -   [Uwaga dotycząca pomocy technicznej SAP #2814271 — SAP HANA kopia zapasowa na platformie Azure kończy się niepowodzeniem](https://launchpad.support.sap.com/#/notes/2814271)
+            -   [Uwaga dotycząca pomocy technicznej SAP #2753418 potencjalne obniżenie wydajności z powodu powrotu czasomierza](https://launchpad.support.sap.com/#/notes/2753418)
+            -   [Uwaga dotycząca pomocy technicznej SAP #2791572-spadek wydajności z powodu braku obsługi VDSO dla funkcji Hyper-V na platformie Azure](https://launchpad.support.sap.com/#/notes/2791572)
+            -   [Uwaga dotycząca pomocy technicznej SAP #2382421 — Optymalizacja konfiguracji sieci na poziomie platformy HANA i systemu operacyjnego](https://launchpad.support.sap.com/#/notes/2382421)
+            -   [Uwaga dotycząca pomocy technicznej SAP #2694118-Red Hat Enterprise Linux dodatku HA na platformie Azure](https://launchpad.support.sap.com/#/notes/2694118)
+            -   [Uwaga dotycząca pomocy technicznej SAP #1984787 — SUSE LINUX Enterprise Server 12: uwagi dotyczące instalacji](https://launchpad.support.sap.com/#/notes/1984787)
+            -   [Uwaga dotycząca pomocy technicznej SAP #2002167-Red Hat Enterprise Linux 7. x: Instalacja i uaktualnienie](https://launchpad.support.sap.com/#/notes/0002002167)
+            -   [Uwaga dotycząca pomocy technicznej SAP #2292690-SAP HANA DB: zalecane ustawienia systemu operacyjnego dla RHEL 7](https://launchpad.support.sap.com/#/notes/0002292690)
+            -   [Uwaga dotycząca pomocy technicznej SAP #2772999-Red Hat Enterprise Linux 8. x: Instalacja i konfiguracja](https://launchpad.support.sap.com/#/notes/2772999)
+            -   [Uwaga dotycząca pomocy technicznej SAP #2777782-SAP HANA DB: zalecane ustawienia systemu operacyjnego dla RHEL 8](https://launchpad.support.sap.com/#/notes/2777782)
+            -   [Uwaga dotycząca pomocy technicznej SAP #2578899-SUSE Linux Enterprise Server 15: Uwaga dotycząca instalacji](https://launchpad.support.sap.com/#/notes/2578899)
+            -   [Uwaga dotycząca pomocy technicznej SAP # https://launchpad.support.sap.com/#/notes/0002455582)(https://launchpad.support.sap.com/#/notes/0002455582)
+            -    [Uwaga dotycząca pomocy technicznej SAP #2729475-HWCCT nie powiodła się z powodu błędu "funkcja hypervisor nie jest obsługiwana" na maszynach wirtualnych platformy Azure certyfikowanych dla SAP HANA](https://launchpad.support.sap.com/#/notes/2729475)
 1. Przetestuj procedury wysokiej dostępności i odzyskiwania po awarii.
    1. Symuluj sytuacje trybu failover, zamykając maszyny wirtualne (systemy operacyjne Windows gościa) lub umieszczając systemy operacyjne w trybie awaryjnego (systemy operacyjne gościa Linux). Ten krok pomoże Ci ustalić, czy konfiguracje trybu failover działają zgodnie z założeniami.
    1. Zmierz, jak długo trwa wykonywanie trybu failover. Jeśli czasy są zbyt długie, Rozważ następujące kwestie:
@@ -188,7 +206,7 @@ W tej fazie zwykle wdrażane są systemy deweloperskie, systemy testowania jedno
 10. Po wdrożeniu infrastruktury Przetestuj i Oceń opóźnienia sieci między maszynami wirtualnymi z warstwy aplikacji SAP i maszynami wirtualnymi DBMS, zgodnie z uwagami dotyczącymi pomocy technicznej SAP [#500235](https://launchpad.support.sap.com/#/notes/500235) i [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Oceń wyniki na wskazówki dotyczące opóźnień sieci w programie [SAP support uwagi #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Opóźnienie sieci powinno być w zakresie umiarkowanym lub dobrym. Wyjątki dotyczą ruchu między maszynami wirtualnymi i jednostkami dużych wystąpień platformy HANA, zgodnie z opisem w [tym artykule](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance). Upewnij się, że żadne ograniczenia wymienione w temacie [uwagi dotyczące wdrażania systemu azure Virtual Machines DBMS dla obciążeń SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#azure-network-considerations) i [SAP HANA konfiguracje infrastruktury i operacje na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) mają zastosowanie do wdrożenia.
 11. Upewnij się, że maszyny wirtualne są wdrożone w poprawnej [grupie umieszczania usługi Azure zbliżeniowe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location), zgodnie z opisem w [grupach umieszczania usługi Azure zbliżeniowe w celu uzyskania optymalnego opóźnienia sieci przy użyciu aplikacji SAP](sap-proximity-placement-scenarios.md)
 11. Przed zastosowaniem obciążenia należy wykonać wszystkie pozostałe kontrole wymienione na etapie fazy koncepcji.
-12. W miarę jak obowiązuje obciążenie, należy zarejestrować użycie zasobów przez systemy na platformie Azure. Porównaj to użycie z rekordami ze starej platformy. Dostosuj rozmiary maszyn wirtualnych w przyszłych wdrożeniach, Jeśli zobaczysz, że masz duże różnice. Należy pamiętać, że podczas downsizenia przepustowość magazynu i sieci maszyn wirtualnych również zostanie zmniejszona.
+12. W miarę jak obowiązuje obciążenie, należy zarejestrować użycie zasobów przez systemy na platformie Azure. Porównaj to użycie z rekordami ze starej platformy. Dostosuj rozmiary maszyn wirtualnych w przyszłych wdrożeniach, Jeśli zobaczysz, że masz duże różnice. Należy pamiętać, że w przypadku, gdy Downsize, magazyn i przepustowość sieci maszyn wirtualnych zostaną również zredukowane.
     - [Rozmiary maszyn wirtualnych z systemem Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)
     - [Rozmiary maszyn wirtualnych z systemem Linux na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 13. Eksperymentowanie z funkcją i procesami kopiowania systemu. Celem jest ułatwienie kopiowania systemu deweloperskiego lub systemu testowego, dzięki czemu zespoły projektu mogą szybko uzyskiwać nowe systemy. Rozważ użycie [oprogramowania SAP Lama](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) do wykonywania tych zadań.
@@ -209,7 +227,7 @@ W tej fazie należy zebrać informacje o doświadczeniu i Poznaniu w ramach wdro
     - Użyj procesu [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) , jeśli chcesz połączyć migrację z uaktualnieniem SAP Release. Należy pamiętać, że nie wszystkie kombinacje źródłowego systemu DBMS i docelowego systemu DBMS są obsługiwane. Więcej informacji można znaleźć w temacie uwagi dotyczące pomocy technicznej dla oprogramowania SAP dla różnych wersji programu DMO. Na przykład [opcja migracji bazy danych (DMO) z sumy 2,0 SP04](https://launchpad.support.sap.com/#/notes/2644872).
     - Należy sprawdzić, czy przepływność transferu danych jest lepsza przez Internet czy za pomocą ExpressRoute, na wypadek konieczności przeniesienia kopii zapasowych lub plików eksportu SAP. Jeśli przenosisz dane za pomocą Internetu, może być konieczna zmiana niektórych reguł grupy zabezpieczeń sieci/aplikacji, które należy wprowadzić w przyszłych systemach produkcyjnych.
 1.  Przed przeniesieniem systemów ze starej platformy na platformę Azure Zbierz dane dotyczące użycia zasobów. Przydatne dane obejmują użycie procesora CPU, przepływność magazynu i dane IOPS. Szczególnie Zbieraj te dane z jednostek warstwy DBMS, ale również Zbieraj je z jednostek warstwy aplikacji. Należy również mierzyć opóźnienia sieci i magazynu.
-1.  Sprawdź ponownie uwagi dotyczące pomocy technicznej SAP, katalog SAP HANA sprzętu i moduł PAM SAP. Upewnij się, że nie wprowadzono żadnych zmian w obsługiwanych maszynach wirtualnych dla platformy Azure, obsługiwanych wersjach systemu operacyjnego w tych maszynach wirtualnych oraz obsługiwanych wersjach oprogramowania SAP i DBMS.
+1.  Sprawdź ponownie informacje o pomocy technicznej SAP i wymagane ustawienia systemu operacyjnego, katalog SAP HANA sprzętu i moduł PAM SAP. Upewnij się, że nie wprowadzono żadnych zmian w obsługiwanych maszynach wirtualnych dla platformy Azure, obsługiwanych wersjach systemu operacyjnego w tych maszynach wirtualnych oraz obsługiwanych wersjach oprogramowania SAP i DBMS.
 1.  Zaktualizuj skrypty wdrażania, aby wziąć pod uwagę najnowsze decyzje dotyczące typów maszyn wirtualnych i funkcji platformy Azure.
 1.  Po wdrożeniu infrastruktury i aplikacji Sprawdź, czy:
     - Wdrożono poprawne typy maszyn wirtualnych z prawidłowymi atrybutami i rozmiarami magazynu.
@@ -219,7 +237,7 @@ W tej fazie należy zebrać informacje o doświadczeniu i Poznaniu w ramach wdro
     - Maszyny wirtualne zostały wdrożone w zestawach dostępności platformy Azure zgodnie z harmonogramem.
     - Usługa Azure Premium Storage jest używana w przypadku dysków z uwzględnieniem opóźnień lub gdy wymagana jest [Umowa SLA dla jednej maszyny wirtualnej o 99,9%](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) .
     - Usługa Azure akcelerator zapisu została wdrożona prawidłowo.
-        - Upewnij się, że w ramach maszyn wirtualnych, funkcji miejsca do magazynowania lub zestawy rozłożonych zostały prawidłowo skompilowane na dyskach, które wymagają akcelerator zapisu.
+        - Upewnij się, że w ramach maszyn wirtualnych, miejsc do magazynowania lub zestawów rozłożonych zostały prawidłowo skompilowane na dyskach, które wymagają akcelerator zapisu.
         - Sprawdź [konfigurację RAID oprogramowania w systemie Linux](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid).
         - Sprawdź [konfigurację LVM na maszynach wirtualnych z systemem Linux na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm).
     - [Usługi Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) są używane wyłącznie.
@@ -244,7 +262,7 @@ W fazie go-Live Pamiętaj, aby postępować zgodnie z elementy PlayBook opracowa
         - Średni czas procesora CPU, każdy procesor (128 procesorów na maszynach wirtualnych M128)
         - Czas jądra procesora CPU, każdy pojedynczy procesor
         - Czas użytkownika procesora CPU, każdy pojedynczy procesor
-    - Memory (pamięć).
+    - Rozmiar.
         - Wolna pamięć
         - Strona pamięci na sekundę
         - Stronicowana pamięć/sekundę
@@ -255,7 +273,7 @@ W fazie go-Live Pamiętaj, aby postępować zgodnie z elementy PlayBook opracowa
         - Zapis na dysku w KB/s, na poszczególnych dyskach
         - Zapis na dysku/sekundę, na poszczególnych dyskach
         - Zapis na dysku w mikrosekundach/odczyt na poszczególnych dyskach
-    - Sieć —
+    - NFS.
         - Pakiety sieciowe w/s
         - Wychodzące pakiety sieciowe/s
         - Sieć KB na sekundę

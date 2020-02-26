@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638259"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587247"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>Limity zasobów SQL Database i zarządzanie zasobami
 
@@ -27,7 +27,7 @@ Ten artykuł zawiera omówienie limitów zasobów SQL Database dla serwera SQL D
 
 ## <a name="maximum-resource-limits"></a>Maksymalne limity zasobów
 
-| Zasób | Limit |
+| Resource | Limit |
 | :--- | :--- |
 | Bazy danych na serwer | 5000 |
 | Domyślna liczba serwerów na subskrypcję w dowolnym regionie | 20 |
@@ -37,14 +37,14 @@ Ten artykuł zawiera omówienie limitów zasobów SQL Database dla serwera SQL D
 | Maksymalna liczba pul na serwer | Ograniczone przez liczbę DTU lub rdzeni wirtualnych. Na przykład jeśli każda pula ma 1000 DTU, serwer może obsługiwać pule 54.|
 |||
 
-> [!NOTE]
-> Aby uzyskać więcej przydziału jednostek DTU/eDTU, limitu przydziału rdzeń wirtualny lub większej liczby serwerów niż domyślna, można przesłać nowe żądanie obsługi w Azure Portal dla subskrypcji z typem problemu "przydział". Limity przydziału jednostek DTU/eDTU i bazy danych na serwer ograniczają liczbę pul elastycznych na serwer.
-
 > [!IMPORTANT]
 > Ponieważ liczba baz danych zbliża się do limitu na serwer SQL Database, mogą wystąpić następujące elementy:
 >
 > - Zwiększanie opóźnień w uruchamianiu zapytań względem bazy danych Master.  Obejmuje to widoki statystyk wykorzystania zasobów, takich jak sys. resource_stats.
 > - Zwiększenie opóźnienia w operacjach zarządzania i portalu renderowania, który obejmuje wyliczanie baz danych na serwerze.
+
+> [!NOTE]
+> Aby uzyskać więcej wartości przydziału jednostek DTU/eDTU, przydziału rdzeń wirtualny lub większej liczby serwerów niż domyślna, Prześlij nowe żądanie obsługi w Azure Portal. Aby uzyskać więcej informacji, zobacz [zwiększenie przydziału żądań dla Azure SQL Database](quota-increase-request.md).
 
 ### <a name="storage-size"></a>Rozmiar magazynu
 
@@ -60,7 +60,7 @@ W przypadku wystąpienia dużej mocy obliczeniowej opcje ograniczenia obejmują:
 - Zwiększenie rozmiaru obliczeniowego bazy danych lub puli elastycznej w celu zapewnienia bazy danych większej ilości zasobów obliczeniowych. Zobacz [skalowanie zasobów pojedynczych baz danych](sql-database-single-database-scale.md) i [skalowanie zasobów puli elastycznej](sql-database-elastic-pool-scale.md).
 - Optymalizowanie zapytań w celu zmniejszenia wykorzystania zasobów dla każdego zapytania. Aby uzyskać więcej informacji, zobacz [dostrajanie/podpowiedzi zapytań](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Magazyn
 
 Gdy używane miejsce na bazę danych osiągnie limit rozmiaru, wstawia i aktualizuje bazę danych, która zwiększa niepowodzenie rozmiaru danych, a klienci odbierają [komunikat o błędzie](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md). Instrukcje SELECT i DELETE kontynuują się pomyślnie.
 

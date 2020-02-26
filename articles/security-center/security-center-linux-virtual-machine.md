@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 0c7ca6236adc5a476fbcf2bfbd54f4cc283bd607
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 7d382ace16305d38b9a65b3a857fd27dfa9e3a2b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201971"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603868"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Usługi Azure Security Center i Azure Virtual Machines z systemem Linux
 Usługa [Azure Security Center](https://azure.microsoft.com/services/security-center/) pomaga w zapobieganiu zagrożeniom, wykrywaniu ich i reagowaniu na nie. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań z zakresu zabezpieczeń.
@@ -46,7 +46,7 @@ Aby rozpocząć pracę z usługą Azure Security Center, należy uwzględnić na
 
 * Potrzebna jest subskrypcja platformy Microsoft Azure. Aby uzyskać więcej informacji o warstwach Bezpłatna i Standardowa usługi Security Center, zobacz [Cennik usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 * Zaplanuj wdrożenie usługi Security Center. Aby uzyskać więcej informacji o zagadnieniach związanych z planowaniem i obsługą, zobacz [Przewodnik planowania i obsługi usługi Azure Security Center](security-center-planning-and-operations-guide.md).
-* Aby uzyskać informacje dotyczące możliwości obsługi systemu operacyjnego, zobacz [Azure Security Center — często zadawane pytania](security-center-faq.md). 
+* Aby uzyskać informacje dotyczące możliwości obsługi systemu operacyjnego, zobacz [Azure Security Center — często zadawane pytania](faq-vms.md). 
 
 ## <a name="set-security-policy"></a>Ustawianie zasad zabezpieczeń
 Aby usługa Azure Security Center mogła zbierać informacje niezbędne do udostępniania zaleceń i alertów generowanych na podstawie skonfigurowanych zasad zabezpieczeń, trzeba włączyć zbieranie danych. Na poniższej ilustracji przedstawiono zrzut ekranu, na którym **Zbieranie danych** jest **Włączone**.
@@ -100,10 +100,10 @@ Po kliknięciu tego zalecenia zobaczysz więcej szczegółów na temat określon
 ![Kondycja zabezpieczeń 2](./media/security-center-linux-virtual-machine/security-center-linux-virtual-machine-fig5.png)
 
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
-* [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
+* [Często zadawane pytania — Virtual Machines](faq-vms.md) — wyszukiwanie często zadawanych pytań dotyczących korzystania z usługi.
 

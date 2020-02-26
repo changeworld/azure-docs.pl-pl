@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: victorh
-ms.openlocfilehash: 4093f91e55272a32ce7df4a78e2ee8b3ebed5fde
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e51f6de370a5340082f64a0ca15c61583f75962b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444474"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597284"
 ---
 # <a name="azure-firewall-forced-tunneling-preview"></a>Wymuszone tunelowanie zapory platformy Azure (wersja zapoznawcza)
 
@@ -27,11 +27,15 @@ Domyślnie Wymuszone tunelowanie nie jest dozwolone w zaporze platformy Azure, a
 
 ## <a name="forced-tunneling-configuration"></a>Konfiguracja wymuszonego tunelowania
 
-Aby zapewnić obsługę tunelowania wymuszonego, ruch związany z zarządzaniem usługami jest oddzielony od ruchu klienta. Dodatkowa podsieć dedykowana o nazwie *AzureFirewallManagementSubnet* jest wymagana ze skojarzonym z nim publicznym adresem IP. Jedyną trasą dozwoloną w tej podsieci jest trasa domyślna do Internetu, a Propagacja trasy BGP musi być wyłączona.
+Aby zapewnić obsługę tunelowania wymuszonego, ruch związany z zarządzaniem usługami jest oddzielony od ruchu klienta. Dodatkowa podsieć dedykowana o nazwie *AzureFirewallManagementSubnet* (minimalny rozmiar podsieci/26) jest wymagana ze skojarzonym publicznym adresem IP. Jedyną trasą dozwoloną w tej podsieci jest trasa domyślna do Internetu, a Propagacja trasy BGP musi być wyłączona.
 
-Jeśli trasa domyślna jest anonsowana za pośrednictwem protokołu BGP, aby wymusić ruch w środowisku lokalnym, należy utworzyć *AzureFirewallSubnet* i *AzureFirewallManagementSubnet* przed wdrożeniem zapory i mieć UDR z domyślną trasą do Internetu, a Propagacja trasy bramy sieci wirtualnej jest wyłączona.
+Jeśli trasa domyślna jest anonsowana za pośrednictwem protokołu BGP, aby wymusić ruch w środowisku lokalnym, należy utworzyć *AzureFirewallSubnet* i *AzureFirewallManagementSubnet* przed wdrożeniem zapory i mieć UDR z domyślną trasą do Internetu, a **Propagacja trasy bramy sieci wirtualnej** jest wyłączona.
 
-W ramach tej konfiguracji *AzureFirewallSubnet* może teraz zawierać trasy do wszelkich lokalnych ZAPÓR lub urządzenie WUS, aby przetwarzać ruch przed przekazaniem go do Internetu. Możesz również opublikować te trasy za pośrednictwem protokołu BGP do *AzureFirewallSubnet* , jeśli w tej podsieci jest włączona propagacja trasy bramy sieci wirtualnej.
+W ramach tej konfiguracji *AzureFirewallSubnet* może teraz zawierać trasy do wszelkich lokalnych ZAPÓR lub urządzenie WUS, aby przetwarzać ruch przed przekazaniem go do Internetu. Możesz również opublikować te trasy za pośrednictwem protokołu BGP do *AzureFirewallSubnet* , jeśli w tej podsieci jest włączona **Propagacja trasy bramy sieci wirtualnej** .
+
+Na przykład możesz utworzyć trasę domyślną na *AzureFirewallSubnet* z bramą sieci VPN w ramach następnego przeskoku, aby przejść do urządzenia lokalnego. Można też włączyć **propagację tras bramy sieci wirtualnej** w celu uzyskania odpowiednich tras do sieci lokalnej.
+
+![Propagacja trasy bramy sieci wirtualnej](media/forced-tunneling/route-propagation.png)
 
 Po skonfigurowaniu zapory platformy Azure do obsługi wymuszonego tunelowania nie można cofnąć konfiguracji. Jeśli usuniesz wszystkie inne konfiguracje protokołu IP w zaporze, Konfiguracja protokołu IP zarządzania zostanie również usunięta, a Zapora zostanie cofnięta. Nie można usunąć publicznego adresu IP przypisanego do konfiguracji adresu IP zarządzania, ale można przypisać inny publiczny adres IP.
 

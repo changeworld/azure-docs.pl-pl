@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 00187051eec27ee7b6b2d4927510a2ab9dee442e
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708261"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598089"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Rozwiązywanie problemów z wydajnością Azure Files
 
@@ -22,11 +22,11 @@ W tym artykule wymieniono niektóre typowe problemy związane z udziałami plik�
 
 ### <a name="cause-1-share-experiencing-throttling"></a>Przyczyna 1: udostępnianie z ograniczeniami
 
-Domyślny limit przydziału dla udziału w warstwie Premium to 100 GiB, który 100 zapewnia liczbę operacji wejścia/wyjścia na sekundę (z możliwością przekroczenia do 300 przez godzinę). Aby uzyskać więcej informacji o aprowizacji i jej relacji z wieloma operacjami we/wy, zobacz sekcję udostępniane [udziały](storage-files-planning.md#provisioned-shares) w przewodniku planowania.
+Domyślny limit przydziału dla udziału w warstwie Premium to 100 GiB, który 100 zapewnia liczbę operacji wejścia/wyjścia na sekundę (z możliwością przekroczenia do 300 przez godzinę). Aby uzyskać więcej informacji o aprowizacji i jej relacji z wieloma operacjami we/wy, zobacz sekcję udostępniane [udziały](storage-files-planning.md#understanding-provisioning-for-premium-file-shares) w przewodniku planowania.
 
 Aby potwierdzić, że Twój udział jest ograniczany, możesz skorzystać z metryk platformy Azure w portalu.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 1. Wybierz pozycję **wszystkie usługi** , a następnie wyszukaj **metryki**.
 
@@ -102,7 +102,7 @@ Jest to znany problem z implementacją klienta SMB w systemie Linux.
 
 - Rozłożenie obciążenia na wiele maszyn wirtualnych.
 - Na tej samej maszynie wirtualnej Użyj wielu punktów instalacji z opcją **nosharesock** i rozłożyć obciążenie na te punkty instalacji.
-- W systemie Linux spróbuj zainstalować przy użyciu opcji **nostrictsync** , aby uniknąć wymuszania opróżniania SMB dla każdego wywołania fsync. W przypadku Azure Files ta opcja nie zakłóca działania consistentcy danych, ale może spowodować zamienienie starych metadanych plików na listę katalogów (polecenie**ls-l** ). Bezpośrednie zapytanie o metadane pliku (**stat** polecenie) zwróci najbardziej aktualne metadane pliku.
+- W systemie Linux spróbuj zainstalować przy użyciu opcji **nostrictsync** , aby uniknąć wymuszania opróżniania SMB dla każdego wywołania **fsync** . W przypadku Azure Files ta opcja nie zakłóca spójności danych, ale może spowodować powstanie starych metadanych plików na liście katalogów (polecenie**ls-l** ). Bezpośrednie zapytanie o metadane pliku (**stat** polecenie) zwróci najbardziej aktualne metadane pliku.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Duże opóźnienia w przypadku dużych obciążeń metadanych obejmujących liczne operacje otwierania/zamykania.
 
@@ -194,7 +194,7 @@ Większe niż oczekiwane opóźnienie dostępu Azure Files do obciążeń intens
   > [!NOTE]
   > Jeśli udział plików jest standardowym udziałem plików, listy rozwijane wartości wymiarów będą puste, ponieważ metryki dla udziałów nie są dostępne w przypadku plików w warstwie Standardowa. Alerty dotyczące ograniczania przepustowości dla standardowych udziałów plików będą wyzwalane, jeśli jakikolwiek udział plików w ramach konta magazynu zostanie ograniczony, a alert nie określi, który udział plików został ograniczony. Ponieważ metryki dla poszczególnych udziałów nie są dostępne dla standardowych udziałów plików, zalecenie ma mieć jeden udział plików na konto magazynu. 
 
-8. Zdefiniuj **Parametry alertu** (próg, operator, stopień szczegółowości agregacja i częstotliwość), które są używane do obliczania reguły alertu metryki, a następnie kliknij przycisk **gotowe**.
+8. Zdefiniuj **Parametry alertu** (próg, operator, stopień szczegółowości i częstotliwość agregacji), które są używane do obliczania reguły alertu metryki, a następnie kliknij przycisk **gotowe**.
 
   > [!TIP]
   > Jeśli jest używany próg statyczny, wykres metryk może pomóc w ustaleniu rozsądnego progu, jeśli udział plików jest obecnie ograniczany. Jeśli używasz progu dynamicznego, wykres metryki wyświetli obliczone progi na podstawie ostatnich danych.

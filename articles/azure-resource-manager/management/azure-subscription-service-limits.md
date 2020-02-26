@@ -3,13 +3,13 @@ title: Ograniczenia i limity subskrypcji platformy Azure
 description: Zawiera listę typowych limitów subskrypcji i usług platformy Azure, przydziałów i ograniczeń. Ten artykuł zawiera informacje o sposobach zwiększania limitów oraz wartości maksymalnych.
 tags: billing
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 4b36fcf8d3630ffd9008ad9deee8d0945f901f9b
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/24/2020
+ms.openlocfilehash: 1987d444c49bb5e53950c26c43c1607c8a87be6d
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153897"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592433"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usług platformy Azure, przydziały i ograniczenia
 
@@ -294,10 +294,6 @@ W poniższej tabeli przedstawiono jednostki SKU V1, v2, standard i WAF, chyba ż
 ## <a name="role-based-access-control-limits"></a>Limity kontroli dostępu opartej na rolach
 
 [!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control-limits.md)]
-
-## <a name="scheduler-limits"></a>Limity harmonogramu
-
-[!INCLUDE [scheduler-limits-table](../../../includes/scheduler-limits-table.md)]
 
 ## <a name="service-bus-limits"></a>Limity Service Bus
 

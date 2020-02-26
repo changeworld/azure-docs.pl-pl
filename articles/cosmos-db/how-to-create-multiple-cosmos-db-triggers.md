@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: efb0a9229d6061d4df8d67ba8455801d9d2a2964
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548887"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604942"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Utwórz wiele wyzwalaczy Azure Functions dla Cosmos DB
 
@@ -38,7 +38,7 @@ Celem tego artykułu jest przeprowadzenie drugiej opcji.
 
 ## <a name="configuring-a-shared-leases-container"></a>Konfigurowanie kontenera udostępnione dzierżawy
 
-Aby skonfigurować kontener udostępnione dzierżawy, jedyną dodatkową konfiguracją, którą należy wykonać w wyzwalaczach, jest dodanie [atrybutu](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---attributes-and-annotations) `LeaseCollectionPrefix`, jeśli używasz języka JavaScript C# lub [atrybut](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) `leaseCollectionPrefix`. Wartość atrybutu powinna być logicznym deskryptorem tego konkretnego wyzwalacza.
+Aby skonfigurować kontener udostępnione dzierżawy, jedyną dodatkową konfiguracją, którą należy wykonać w wyzwalaczach, jest dodanie [atrybutu](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) `LeaseCollectionPrefix`, jeśli używasz języka JavaScript C# lub [atrybut](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) `leaseCollectionPrefix`. Wartość atrybutu powinna być logicznym deskryptorem tego konkretnego wyzwalacza.
 
 Na przykład jeśli masz trzy wyzwalacze: jeden, który wysyła wiadomości e-mail, które wykonuje agregację, aby utworzyć widok z materiałami, a drugi, który wysyła zmiany do innego magazynu, na potrzeby późniejszej analizy można przypisać `LeaseCollectionPrefix` "wiadomości e-mail" do pierwszej, "z materiałem" do drugiego, a "Analytics" na trzecią.
 
@@ -108,6 +108,6 @@ W przypadku języka JavaScript można zastosować konfigurację w pliku `functio
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj się z pełną konfiguracją [wyzwalacza Azure Functions dla Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)
-* Zapoznaj się z rozszerzoną [listą próbek](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) dla wszystkich języków.
+* Zapoznaj się z pełną konfiguracją [wyzwalacza Azure Functions dla Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)
+* Zapoznaj się z rozszerzoną [listą próbek](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) dla wszystkich języków.
 * Aby uzyskać więcej przykładów, odwiedź te przepisy bezserwerowe, korzystając z Azure Cosmos DB i Azure Functions [repozytorium GitHub](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios) .

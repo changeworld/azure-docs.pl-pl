@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowej farmy programu SharePoint na platformie Azure z
 description: Użyj Azure Backup Server, aby utworzyć kopię zapasową i przywrócić dane programu SharePoint. Ten artykuł zawiera informacje dotyczące konfigurowania farmy programu SharePoint w taki sposób, aby wymagane dane mogły być przechowywane na platformie Azure. Chronione dane programu SharePoint można przywrócić z dysku lub z platformy Azure.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: a48afd84f6c4e1ec80015696dc4b14beea8ebfa4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ba9d79270da839cf99574322d68ccdba27fe2d93
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173206"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584255"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Tworzenie kopii zapasowej farmy programu SharePoint na platformie Azure za pomocą usługi serwera usługi MAB
 
@@ -20,7 +20,7 @@ Azure Backup programu DPM obsługuje następujące scenariusze:
 
 | Obciążenie | Wersja | Wdrożenie programu SharePoint | Ochrona i odzyskiwanie |
 | --- | --- | --- | --- |
-| Sharepoint |SharePoint 2016, SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |Program SharePoint wdrożony jako serwer fizyczny lub maszyna wirtualna z funkcją Hyper-V/VMware <br> -------------- <br> SQL AlwaysOn | Ochrona farmy programu SharePoint opcje odzyskiwania: Farma odzyskiwania, baza danych i plik lub element listy z punktów odzyskiwania dysku.  Odzyskiwanie farmy i bazy danych z punktów odzyskiwania platformy Azure. |
+| Program SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |Program SharePoint wdrożony jako serwer fizyczny lub maszyna wirtualna z funkcją Hyper-V/VMware <br> -------------- <br> SQL AlwaysOn | Ochrona farmy programu SharePoint opcje odzyskiwania: Farma odzyskiwania, baza danych i plik lub element listy z punktów odzyskiwania dysku.  Odzyskiwanie farmy i bazy danych z punktów odzyskiwania platformy Azure. |
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -32,19 +32,19 @@ Przed kontynuowaniem upewnij się, że [zainstalowano i przygotowano Azure Backu
 
 ### <a name="protection-agent"></a>Agent ochrony
 
-Agent Azure Backup musi być zainstalowany na serwerze, na którym działa program SharePoint, serwery z systemem SQL Server i wszystkie inne serwery, które są częścią farmy programu SharePoint. Więcej informacji o sposobie konfigurowania agenta ochrony znajduje się w temacie [Setup Protection Agent](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Jedynym wyjątkiem jest zainstalowanie agenta tylko na jednym serwerze frontonu sieci Web (WFE). Azure Backup Server potrzebuje agenta na jednym serwerze WFE tylko jako punktu wejścia do ochrony.
+Agent Azure Backup musi być zainstalowany na serwerze, na którym działa program SharePoint, serwery z systemem SQL Server i wszystkie inne serwery, które są częścią farmy programu SharePoint. Więcej informacji o sposobie konfigurowania agenta ochrony znajduje się w temacie [Setup Protection Agent](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).  Jedynym wyjątkiem jest zainstalowanie agenta tylko na jednym serwerze frontonu sieci Web (WFE). Azure Backup Server potrzebuje agenta na jednym serwerze WFE tylko jako punktu wejścia do ochrony.
 
 ### <a name="sharepoint-farm"></a>Farma programu SharePoint
 
 Dla każdego 10 000 000 elementów w farmie musi znajdować się co najmniej 2 GB miejsca na woluminie, na którym znajduje się folder serwera usługi MAB. To miejsce jest wymagane do generacji katalogu. Aby program serwera usługi MAB odzyskał określone elementy (zbiory witryn, witryny, listy, biblioteki dokumentów, foldery, pojedyncze dokumenty i elementy listy), generacja wykazu tworzy listę adresów URL zawartych w poszczególnych bazach danych zawartości. Listę adresów URL można wyświetlić w okienku element możliwy do odzyskania w obszarze zadania **odzyskiwania** serwera usługi MAB Konsola administratora.
 
-### <a name="sql-server"></a>Oprogramowanie SQL Server
+### <a name="sql-server"></a>SQL Server
 
 Azure Backup Server jest uruchamiany jako konto LocalSystem. Aby utworzyć kopię zapasową baz danych SQL Server, serwera usługi MAB musi mieć uprawnienia sysadmin na tym koncie dla serwera, na którym działa program SQL Server. Przed utworzeniem kopii zapasowej należy ustawić NT *NT\SYSTEM na serwerze, na którym* działa SQL Server.
 
 Jeśli farma programu SharePoint ma SQL Server baz danych, które są skonfigurowane przy użyciu aliasów SQL Server, Zainstaluj składniki klienta SQL Server na serwerze frontonu sieci Web, który będzie chroniony przez serwera usługi MAB.
 
-### <a name="sharepoint-server"></a>Oprogramowanie SharePoint Server
+### <a name="sharepoint-server"></a>Serwer programu SharePoint
 
 Chociaż wydajność jest zależna od wielu czynników, takich jak rozmiar farmy programu SharePoint, ponieważ ogólne wskazówki serwera usługi MAB mogą chronić witrynę programu SharePoint z 25 TB.
 
@@ -57,7 +57,7 @@ Chociaż wydajność jest zależna od wielu czynników, takich jak rozmiar farmy
 
 Przed użyciem serwera usługi MAB do ochrony programu SharePoint należy skonfigurować usługę składnika zapisywania usługi VSS programu SharePoint (usługę składnika zapisywania usługi WSS) przy użyciu programu **ConfigureSharePoint. exe**.
 
-**ConfigureSharePoint. exe** można znaleźć w folderze [serwera usługi MAB Installation path] \Bin na serwerze frontonu sieci Web. To narzędzie udostępnia agentowi ochrony poświadczenia farmy programu SharePoint. Jest on uruchamiany na jednym serwerze WFE. Jeśli masz wiele serwerów WFE, wybierz opcję tylko jeden podczas konfigurowania grupy ochrony.
+**ConfigureSharePoint. exe** można znaleźć w folderze [serwera usługi MAB Installation path] \Bin na serwerze frontonu sieci Web. To narzędzie udostępnia agentowi ochrony poświadczenia farmy programu SharePoint. Można uruchomić je na jednym serwerze WFE. Jeśli masz wiele serwerów WFE, wybierz opcję tylko jeden podczas konfigurowania grupy ochrony.
 
 ### <a name="to-configure-the-sharepoint-vss-writer-service"></a>Aby skonfigurować usługę składnika zapisywania usługi VSS programu SharePoint
 
@@ -101,7 +101,7 @@ Po skonfigurowaniu serwera usługi MAB i farmy programu SharePoint jako wyjaśni
    >
 5. Na stronie **Określ cele krótkoterminowe** wybierz swój preferowany **Zakres przechowywania** i określ, kiedy mają być wykonywane kopie zapasowe.
 
-    ![Określ cele krótkoterminowe](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
+    ![Określanie celów krótkoterminowych](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
 
    > [!NOTE]
    > Ponieważ odzyskiwanie jest najczęściej wymagane w przypadku danych, które są starsze niż pięć dni, w tym przykładzie wybrano zakres przechowywania równy pięć dni i upewnił się, że kopia zapasowa występuje w godzinach nieprodukcyjnych.

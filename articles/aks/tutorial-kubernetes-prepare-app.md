@@ -2,20 +2,17 @@
 title: Samouczek dotyczący usługi Kubernetes na platformie Azure — przygotowywanie aplikacji
 description: Z tego samouczka dotyczącego usługi Azure Kubernetes Service (AKS) dowiesz się, jak przygotować i skompilować aplikację z wieloma kontenerami przy użyciu narzędzia Docker Compose, którą można następnie wdrożyć w usłudze AKS.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 3ff93d006b7599eaa3f97c33efb047ce480c301c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71264471"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593164"
 ---
-# <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Samouczek: Przygotowywanie aplikacji na potrzeby usługi Azure Kubernetes Service (AKS)
+# <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Samouczek: przygotowywanie aplikacji na potrzeby usługi Azure Kubernetes Service (AKS)
 
 Ten samouczek, część 1 z 7, obejmuje przygotowanie aplikacji z wieloma kontenerami do użycia w usłudze Kubernetes. Istniejące narzędzia programistyczne, takie jak narzędzia Docker Compose, są używane do lokalnego kompilowania i testowania aplikacji. Omawiane kwestie:
 

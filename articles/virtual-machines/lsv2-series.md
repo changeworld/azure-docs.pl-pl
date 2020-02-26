@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 226611bde6024f98ce6d3660fe18e66dba9a420c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b10433190ccc7703938bed2a75a5d816f073295e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493698"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587264"
 ---
 # <a name="lsv2-series"></a>Seria Lsv2
 
@@ -23,7 +23,7 @@ Funkcja serii Lsv2 ma wysoką przepływność, małe opóźnienia, bezpośrednio
 >
 > Wysoka przepływność i operacje we/wy na dysku lokalnym sprawia, że maszyny wirtualne z serii Lsv2 są idealne dla magazynów NoSQL, takich jak Apache Cassandra i MongoDB, które replikują dane między wieloma maszynami wirtualnymi w celu osiągnięcia trwałości w przypadku awarii pojedynczej maszyny wirtualnej.
 >
-> Aby dowiedzieć się więcej, zobacz [Optymalizacja wydajności na maszynach wirtualnych z serii Lsv2](/linux/storage-performance.md).  
+> Aby dowiedzieć się więcej, zobacz Optymalizacja wydajności na maszynach wirtualnych z serii Lsv2 dla [systemu Windows](../virtual-machines/windows/storage-performance.md) lub [Linux](../virtual-machines/linux/storage-performance.md).  
 
 ACU: 150-175
 

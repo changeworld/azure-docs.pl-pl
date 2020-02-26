@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8aa17f473c550c99d91862754e6a746575aca202
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355641"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604387"
 ---
 # <a name="alert-confidence-score-preview"></a>Wynik pewności alertu (wersja zapoznawcza)
 
@@ -47,14 +47,6 @@ Aby wyświetlić dane, które przyczyniają się do Security Center zaufania w a
   ![Wynik podejrzanej pewności][2]
 
 Użyj Security Centerego wyniku pewności, aby określić priorytety klasyfikacjai alertów w danym środowisku. Wynik zaufania umożliwia zaoszczędzenie czasu i wysiłku przez automatyczne badanie alertów, stosowanie najlepszych rozwiązań branżowych i inteligentnych algorytmów, a także działanie jako analityków wirtualnych w celu ustalenia, które zagrożenia są prawdziwe i w jakich sytuacjach należy skoncentrować uwagę.
-
-
-## <a name="next-steps"></a>Następne kroki
-W tym artykule wyjaśniono, jak użyć wyniku pewności, aby określić priorytety badania alertów. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
-
-* [Centrum zabezpieczeń Azure — często zadawane pytania](security-center-faq.md) — odpowiedzi na najczęstsze pytania dotyczące korzystania z usługi.
-* [Monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
-
 
 
 <!--Image references-->

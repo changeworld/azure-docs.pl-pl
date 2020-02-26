@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f3af350c96d1dd9eaf4773db503acb10d8a08a8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f382406d164aa7378631753c2cfc85bc69003a4f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441115"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605077"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnozowanie i rozwiązywanie problemów podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
 
@@ -66,7 +66,7 @@ Ten scenariusz może mieć wiele przyczyn i należy sprawdzić wszystkie z nich:
 
 1. Czy funkcja platformy Azure została wdrożona w tym samym regionie co konto usługi Azure Cosmos? W celu uzyskania optymalnego opóźnienia sieci zarówno funkcja platformy Azure, jak i konto usługi Azure Cosmos powinny znajdować się w tym samym regionie świadczenia usługi Azure.
 2. Czy zmiany pojawiają się w kontenerze usługi Azure Cosmos w sposób ciągły czy sporadyczny?
-Jeśli w ten drugi sposób, może wystąpić pewne opóźnienie między zapisywaniem zmian a ich pobieraniem przez funkcję platformy Azure. Wynika to z faktu, że wewnętrznie, gdy wyzwalacz sprawdza istnienie zmian w kontenerze usługi Azure Cosmos i nie znajduje żadnych oczekujących na odczytanie, będzie w stanie uśpienia przez konfigurowalny czas (domyślnie 5 sekund) przed sprawdzeniem istnienia nowych zmian (w celu uniknięcia wysokiego użycia jednostek żądań). Ten czas uśpienia można skonfigurować za pomocą ustawienia `FeedPollDelay/feedPollDelay` w [konfiguracji](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) wyzwalacza (oczekiwana jest wartość w milisekundach).
+Jeśli w ten drugi sposób, może wystąpić pewne opóźnienie między zapisywaniem zmian a ich pobieraniem przez funkcję platformy Azure. Wynika to z faktu, że wewnętrznie, gdy wyzwalacz sprawdza istnienie zmian w kontenerze usługi Azure Cosmos i nie znajduje żadnych oczekujących na odczytanie, będzie w stanie uśpienia przez konfigurowalny czas (domyślnie 5 sekund) przed sprawdzeniem istnienia nowych zmian (w celu uniknięcia wysokiego użycia jednostek żądań). Ten czas uśpienia można skonfigurować za pomocą ustawienia `FeedPollDelay/feedPollDelay` w [konfiguracji](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) wyzwalacza (oczekiwana jest wartość w milisekundach).
 3. Kontener usługi Azure Cosmos może być [oceniany proporcjonalnie](./request-units.md).
 4. W wyzwalaczu można użyć atrybutu `PreferredLocations`, aby określić rozdzieloną przecinkami listę regionów świadczenia usługi Azure, aby zdefiniować niestandardową kolejność połączeń.
 
@@ -93,10 +93,10 @@ Aby obejść ten problem, należy zastosować `LeaseCollectionPrefix/leaseCollec
 Aby ponownie przetworzyć wszystkie elementy w kontenerze od początku:
 1. Zatrzymaj funkcję platformy Azure, jeśli jest aktualnie uruchomiona. 
 1. Usuń dokumenty z kolekcji dzierżaw (lub Usuń i ponownie Utwórz kolekcję dzierżawy, aby była pusta)
-1. Ustaw atrybut [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) CosmosDBTrigger w funkcji na wartość true. 
+1. Ustaw atrybut [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) CosmosDBTrigger w funkcji na wartość true. 
 1. Uruchom ponownie funkcję platformy Azure. Teraz odczytywane i przetwarzane są wszystkie zmiany od początku. 
 
-Ustawienie [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) na wartość true spowoduje, że funkcja platformy Azure rozpocznie odczytywanie zmian od początku historii kolekcji zamiast bieżącego czasu. Działa to tylko wtedy, gdy nie zostały już utworzone dzierżawy (tj. dokumenty w kolekcji dzierżawy). Ustawienie tej właściwości na wartość true, jeśli już utworzono dzierżawy nie ma żadnego wpływu; w tym scenariuszu, gdy funkcja zostanie zatrzymana i uruchomiona ponownie, rozpocznie odczytywanie z ostatniego punktu kontrolnego zgodnie z definicją w kolekcji dzierżawy. Aby ponownie przetworzyć dane od początku, wykonaj powyższe kroki 1-4.  
+Ustawienie [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) na wartość true spowoduje, że funkcja platformy Azure rozpocznie odczytywanie zmian od początku historii kolekcji zamiast bieżącego czasu. Działa to tylko wtedy, gdy nie zostały już utworzone dzierżawy (tj. dokumenty w kolekcji dzierżawy). Ustawienie tej właściwości na wartość true, jeśli już utworzono dzierżawy nie ma żadnego wpływu; w tym scenariuszu, gdy funkcja zostanie zatrzymana i uruchomiona ponownie, rozpocznie odczytywanie z ostatniego punktu kontrolnego zgodnie z definicją w kolekcji dzierżawy. Aby ponownie przetworzyć dane od początku, wykonaj powyższe kroki 1-4.  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Powiązanie można wykonać tylko przy użyciu\<IReadOnlyList dokumentu > lub JArray
 
@@ -106,7 +106,7 @@ Aby obejść tę sytuację, Usuń ręczne odwołanie do narzędzia NuGet, które
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Zmienianie interwału sondowania funkcji platformy Azure na potrzeby wykrywania zmian
 
-Zgodnie z wcześniejszym opisem w przypadku, gdy zmiany nie zostaną [odebrane](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received), funkcja platformy Azure będzie w stanie uśpienia przez konfigurowalny czas (domyślnie 5 sekund) przed sprawdzeniem nowych zmian (aby uniknąć używania wysokiego poziomu ru). Ten czas uśpienia można skonfigurować za pomocą ustawienia `FeedPollDelay/feedPollDelay` w [konfiguracji](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) wyzwalacza (oczekiwana jest wartość w milisekundach).
+Zgodnie z wcześniejszym opisem w przypadku, gdy zmiany nie zostaną [odebrane](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received), funkcja platformy Azure będzie w stanie uśpienia przez konfigurowalny czas (domyślnie 5 sekund) przed sprawdzeniem nowych zmian (aby uniknąć używania wysokiego poziomu ru). Ten czas uśpienia można skonfigurować za pomocą ustawienia `FeedPollDelay/feedPollDelay` w [konfiguracji](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) wyzwalacza (oczekiwana jest wartość w milisekundach).
 
 ## <a name="next-steps"></a>Następne kroki
 

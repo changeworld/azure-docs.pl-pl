@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 021941339bbbf72112628c54f5b05d5fd305bd0f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198585"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592530"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Skonfiguruj aplikację App Service w Azure Portal
 
@@ -168,6 +168,8 @@ Tutaj można skonfigurować niektóre typowe ustawienia dla aplikacji. Niektóre
     - Liczba **bitów**: 32-bitowe lub 64-bitowe.
     - **Protokół WebSocket**: na przykład dla [ASP.NET sygnalizujący] lub [Socket.IO](https://socket.io/).
     - **Zawsze włączone**: Zachowaj załadowanie aplikacji nawet wtedy, gdy nie ma ruchu. Jest to wymagane w przypadku ciągłych zadań WebJob lub zadań WebJob, które są wyzwalane przy użyciu wyrażenia firmy cronus.
+      > [!NOTE]
+      > Dzięki funkcji Always On nie można kontrolować punktu końcowego. Zawsze wysyła żądanie do katalogu głównego aplikacji.
     - **Wersja potoku zarządzanego**: [tryb potokowy]usług IIS. Ustaw ją na **klasyczny** , jeśli masz starszą aplikację, która wymaga starszej wersji usług IIS.
     - **Wersja protokołu HTTP**: ustaw na **2,0** , aby włączyć obsługę protokołu [https/2](https://wikipedia.org/wiki/HTTP/2) .
     > [!NOTE]
@@ -225,7 +227,7 @@ Możesz [dodać niestandardowy magazyn dla aplikacji w kontenerze](containers/ho
 - **Klucz dostępu**: Aby skonfigurować konfigurację zaawansowaną, klucz dostępu.
 - **Ścieżka instalacji**: ścieżka bezwzględna w kontenerze, w której ma zostać zainstalowany magazyn niestandardowy.
 
-Aby uzyskać więcej informacji, zobacz temat [obsługiwanie zawartości z usługi Azure Storage w App Service w systemie Linux](containers/how-to-serve-content-from-azure-storage.md).
+Aby uzyskać więcej informacji, zobacz [Obsługa zawartości z usługi Azure Storage w usłudze App Service w systemie Linux](containers/how-to-serve-content-from-azure-storage.md).
 
 ## <a name="configure-language-stack-settings"></a>Konfigurowanie ustawień stosu języka
 

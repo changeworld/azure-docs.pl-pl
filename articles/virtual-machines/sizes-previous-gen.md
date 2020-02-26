@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: cd45d38759bcf41307ba42d68d504266719579d2
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 2d54c39577a359499cf6dc3aca84cebc4fa6e206
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493425"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598021"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Poprzednie generacji rozmiarów maszyn wirtualnych
 
@@ -101,7 +101,7 @@ Buforowanie Premium Storage: nieobsługiwane
 
 Rozmiary warstwy Podstawowa są przeznaczone głównie dla obciążeń związanych z tworzeniem aplikacji i innych aplikacji, które nie wymagają równoważenia obciążenia, automatycznego skalowania ani maszyn wirtualnych korzystających z dużej ilości pamięci.
 
-| Rozmiar — rozmiar\nazwa | Procesor wirtualny | Memory (Pamięć)|Karty sieciowe (maks.)| Maksymalny rozmiar dysku tymczasowego | Maksymalnie z dyski z danymi (1023 GB każdego)| Maksymalnie z liczba operacji we/wy na sekundę (300 na dysk) |
+| Rozmiar — rozmiar\nazwa | Procesor wirtualny | Pamięć|Karty sieciowe (maks.)| Maksymalny rozmiar dysku tymczasowego | Maksymalnie z dyski z danymi (1023 GB każdego)| Maksymalnie z liczba operacji we/wy na sekundę (300 na dysk) |
 |---|---|---|---|---|---|---|
 | A0\Podstawowa_A0 | 1 | 768 MB  | 2 | 20 GB  | 1  | 1x300  |
 | A1\Podstawowa_A1 | 1 | 1,75 GB | 2 | 40 GB  | 2  | 2x300  |
@@ -210,6 +210,24 @@ Buforowanie Premium Storage: nieobsługiwane
 <sup>1</sup> rodzina maszyn wirtualnych może działać na jednym z następujących procesorów: 2,2 GHz intel Xeon® E5-2660 v2, 2,4 GHz intel Xeon® E5-2673 v3 (Haswell) lub 2,3 GHz intel Xeon® E5-2673 v4 (Broadwell)  
 
 <br>
+
+## <a name="preview-dc-series"></a>Wersja zapoznawcza: Seria DC
+
+Premium Storage: obsługiwane
+
+Buforowanie Premium Storage: obsługiwane
+
+Seria DC używa najnowszej generacji procesora Intel XEON E-2176G z technologią SGX, dzięki czemu technologia zwiększania wydajności Intel Turbo może mieć wartość do 4,7 GHz. 
+
+| Rozmiar          | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+|---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
+| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                          | 3200/48                                  | 2 / 1500                                     |
+| Standard_DC4s | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                          | 6400/96                                  | 2 / 3000                                     |
+
+> [!IMPORTANT]
+>
+> Maszyny wirtualne z serii DC są [maszynami wirtualnymi 2 generacji](./linux/generation-2.md#creating-a-generation-2-vm) i obsługują tylko obrazy `Gen2`.
+
 
 ### <a name="ds-series"></a>Seria DS  
 

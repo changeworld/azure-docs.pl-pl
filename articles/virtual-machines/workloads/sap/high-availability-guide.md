@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9fb093312365ce965c6baf3c9f50d74359cec0a7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 7eb064762824c23f33f5df2a80320651de6d5af2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647700"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598769"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure
 
@@ -449,7 +449,7 @@ W tym artykule opisano kroki, które należy wykonać w celu wdrożenia systemó
 
 Aby uprościć wdrażanie i konfigurację, w tym artykule używamy szablonów Menedżer zasobów o wysokiej dostępności w oprogramowaniu SAP. Szablony automatyzują wdrażanie całej infrastruktury niezbędnej dla systemu SAP o wysokiej dostępności. Infrastruktura obsługuje również ustalanie rozmiarów systemu SAP przez oprogramowanie SAP Application Performance Standard (soki).
 
-## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> Wymagania wstępne
+## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Wymagany
 Przed rozpoczęciem upewnij się, że spełniasz wymagania wstępne opisane w poniższych sekcjach. Upewnij się również, że wszystkie zasoby wymienione w sekcji [resources][sap-ha-guide-2] są zaznaczone.
 
 W tym artykule używamy szablonów Azure Resource Manager dla [trzech warstw SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/). Aby zapoznać się z przydatnym omówieniem szablonów, zobacz [szablony Azure Resource Manager SAP](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
@@ -677,7 +677,7 @@ Szablony trzech warstw w Azure Resource Manager obsługują również scenariusz
 
 Oto, gdzie można uzyskać Azure Resource Manager szablonów dla przykładowego scenariusza opisywanego w tym artykule:
 
-* [Azure Marketplace image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
+* [Obraz witryny Azure Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
 * [Obraz niestandardowy](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
 
 Aby przygotować infrastrukturę dla szablonu architektury 1:
@@ -698,7 +698,7 @@ _**Rysunek 11.** Ustaw Azure Resource Manager parametry wysokiej dostępności S
 
   * **Karty sieciowe dla wszystkich maszyn wirtualnych ze skojarzonymi adresami IP**:
     * <*SAPSystemSID*>-nic-<*numer*>
-    * <*SAPSystemSID*>-nic-ascs-<*Number*>
+    * <*SAPSystemSID*>-nic-ascs-<*numer*>
     * <*SAPSystemSID*>-nic-<*numer*>
 
   * **Konta usługi Azure Storage**
@@ -721,7 +721,7 @@ _**Rysunek 11.** Ustaw Azure Resource Manager parametry wysokiej dostępności S
 >
 
 ### <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Wdrażanie maszyn wirtualnych z łącznością sieci firmowej (między różnymi lokalizacjami) do użycia w środowisku produkcyjnym
-W przypadku produkcyjnych systemów SAP Wdróż maszyny wirtualne platformy Azure z [łącznością sieci firmowej (wiele lokalizacji)][planning-guide-2.2] za pomocą sieci VPN typu lokacja-lokacja lub Azure ExpressRoute.
+W przypadku produkcyjnych systemów SAP należy wdrożyć maszyny wirtualne platformy Azure z łącznością sieci firmowej przy użyciu sieci VPN typu lokacja-lokacja lub usługi Azure ExpressRoute.
 
 > [!NOTE]
 > Możesz użyć wystąpienia usługi Azure Virtual Network. Sieć wirtualna i podsieć została już utworzona i przygotowana.
@@ -768,7 +768,7 @@ Za pomocą tego szablonu Azure Resource Manager dla oprogramowania SAP można up
 
 Oto, gdzie można uzyskać Azure Resource Manager szablonów dla tego scenariusza wdrażania:
 
-* [Azure Marketplace image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
+* [Obraz witryny Azure Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
 * [Obraz niestandardowy](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
 
 
@@ -864,8 +864,8 @@ W naszym przykładzie przestrzeń adresowa sieci wirtualnej platformy Azure to 1
 Aby ustawić wymagane adresy IP DNS, wykonaj następujące czynności.
 
 1. W Azure Portal w bloku **serwery DNS** upewnij się, że opcja **serwery DNS** sieci wirtualnej jest ustawiona na wartość **niestandardowy DNS**.
-2. Wybierz swoje ustawienia w zależności od typu sieci. Więcej informacji zawierają następujące zasoby:
-   * [Łączność sieci firmowej (wiele lokalizacji)][planning-guide-2.2]: Dodaj adresy IP lokalnych serwerów DNS.  
+2. Wybierz swoje ustawienia w zależności od typu sieci. Więcej informacji można znaleźć w następujących zasobach:
+   * Dodaj adresy IP lokalnych serwerów DNS.  
    Lokalne serwery DNS można rozłożyć na maszyny wirtualne, które są uruchomione na platformie Azure. W tym scenariuszu można dodać adresy IP maszyn wirtualnych platformy Azure, na których jest uruchomiona usługa DNS.
    * W przypadku wdrożeń izolowanych na platformie Azure: Wdróż dodatkową maszynę wirtualną w tym samym wystąpieniu Virtual Network, które służy jako serwer DNS. Dodaj adresy IP maszyn wirtualnych platformy Azure, które zostały skonfigurowane do uruchamiania usługi DNS.
 
@@ -1016,7 +1016,7 @@ Jeśli chcesz użyć różnych numerów dla wystąpień SAP ASCS lub SCS, należ
 1. W Azure Portal wybierz pozycję **<*SID*>-lb-ascs równoważenia obciążenia** > **reguł równoważenia obciążenia**.
 2. Dla wszystkich reguł równoważenia obciążenia należących do wystąpienia SAP ASCS lub SCS Zmień następujące wartości:
 
-   * Nazwa
+   * Name (Nazwa)
    * Port
    * Port zaplecza
 
@@ -1046,7 +1046,7 @@ Aby dodać wpisy rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS, na
 | --- | --- |
 | Nazwa zmiennej |`KeepAliveTime` |
 | Typ zmiennej |REG_DWORD (liczba dziesiętna) |
-| Wartość |120000 |
+| Value |120000 |
 | Link do dokumentacji |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 _**Tabela 3:** Zmiana pierwszego parametru TCP/IP_
@@ -1057,7 +1057,7 @@ Następnie Dodaj te wpisy rejestru systemu Windows na obu węzłach klastra syst
 | --- | --- |
 | Nazwa zmiennej |`KeepAliveInterval` |
 | Typ zmiennej |REG_DWORD (liczba dziesiętna) |
-| Wartość |120000 |
+| Value |120000 |
 | Link do dokumentacji |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 _**Tabela 4:** Zmień drugi parametr TCP/IP_
@@ -1487,7 +1487,7 @@ Aby dodać port sondy:
 
    Numer portu jest zdefiniowany w szablonach Azure Resource Manager SAP. Numer portu można przypisać w programie PowerShell.
 
-   Aby ustawić nową wartość ProbePort dla **identyfikatora *SID*< protokołu SAP >** zasobu klastra IP, uruchom następujący skrypt programu PowerShell. Zaktualizuj zmienne programu PowerShell dla danego środowiska. Po uruchomieniu skryptu zostanie wyświetlony monit o ponowne uruchomienie grupy klastra SAP w celu aktywowania zmian.
+   Aby ustawić nową wartość ProbePort dla ***identyfikatora SID*< protokołu SAP >** zasobu klastra IP, uruchom następujący skrypt programu PowerShell. Zaktualizuj zmienne programu PowerShell dla danego środowiska. Po uruchomieniu skryptu zostanie wyświetlony monit o ponowne uruchomienie grupy klastra SAP w celu aktywowania zmian.
 
    ```PowerShell
    $SAPSID = "PR1"      # SAP <SID>
@@ -1545,7 +1545,7 @@ Aby dodać port sondy:
    }
    ```
 
-   Po przekazaniu **SAP <*SID*>** klastra roli w tryb online, upewnij się, że **ProbePort** ustawiono nową wartość.
+   Po przełączeniu ***identyfikatora SID* < SAP>** roli klastra w tryb online Sprawdź, czy **ProbePort** jest ustawiona na nową wartość.
 
    ```PowerShell
    $SAPSID = "PR1"     # SAP <SID>

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 02/25/2020
 ms.author: b-juche
-ms.openlocfilehash: 6fcea0aaecb860e07c2066877494c05b51f43ca4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7637d18017f5bdc76c8a271198a88f21a59a6aac
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976251"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604979"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Limity zasobów dla usługi Azure NetApp Files
 
@@ -29,14 +29,14 @@ Zrozumienie limitów zasobów Azure NetApp Files ułatwia zarządzanie woluminam
 
 W poniższej tabeli opisano limity zasobów dla Azure NetApp Files:
 
-|  Zasób  |  Limit domyślny  |  Regulowane przez żądanie pomocy technicznej  |
+|  Resource  |  Limit domyślny  |  Regulowane przez żądanie pomocy technicznej  |
 |----------------|---------------------|--------------------------------------|
 |  Liczba kont NetApp na region platformy Azure   |  10    |  Tak   |
 |  Liczba pul pojemności na konto NetApp   |    25     |   Tak   |
 |  Liczba woluminów na pulę pojemności     |    500   |    Tak     |
 |  Liczba migawek na wolumin       |    255     |    Nie        |
 |  Liczba podsieci delegowanych do Azure NetApp Files (Microsoft. NetApp/Volumes) na platformie Azure Virtual Network    |   1   |    Nie    |
-|  Liczba adresów IP w sieci wirtualnej (w tym sieci wirtualnych komunikacji równorzędnej), które mogą uzyskiwać dostęp Azure NetApp Files   |    1000   |    Tak   |
+|  Liczba używanych adresów IP w sieci wirtualnej (w tym natychmiastowo sieci wirtualnych komunikacji równorzędnej) z Azure NetApp Files   |    1000   |    Tak   |
 |  Minimalny rozmiar puli o pojedynczej pojemności   |  4 TiB     |    Nie  |
 |  Maksymalny rozmiar puli o pojedynczej pojemności    |  500 TiB   |   Nie   |
 |  Minimalny rozmiar pojedynczego woluminu    |    100 GiB    |    Nie    |
@@ -76,7 +76,7 @@ Ze płaszczyzny nawigacyjnej Azure Portal:
 4. Na karcie Szczegóły:
     1. W polu Opis podaj następujące informacje dotyczące odpowiedniego typu zasobu:
 
-        |  Zasób  |    Zasoby nadrzędne      |    Żądane nowe limity     |    Przyczyna zwiększenia limitu przydziału       |
+        |  Resource  |    Zasoby nadrzędne      |    Żądane nowe limity     |    Przyczyna zwiększenia limitu przydziału       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Konto |  *Subscription ID (Identyfikator subskrypcji)*   |  *Żądany nowy maksymalny numer **konta***    |  *Jakiego scenariusza lub przypadku użycia monituje o żądanie?*  |
         |  Pula    |  *Identyfikator subskrypcji, identyfikator URI konta*  |  *Żądany nowy numer **puli***   |  *Jakiego scenariusza lub przypadku użycia monituje o żądanie?*  |

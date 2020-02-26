@@ -1,17 +1,14 @@
 ---
 title: Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 description: Znajdź odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS).
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.author: mlearned
-ms.openlocfilehash: c2103952503a0a184fb970cd8d2326cc2764a223
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 8586ff1ae22bf188af3705434ed90e064ff33c0f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086508"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595675"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -120,7 +117,7 @@ Ważne jest, aby rozpoznać rozróżnienie między dostępnością usługi AKS, 
 
 W AKS można ustawić wartość `maxPods` podczas tworzenia klastra przy użyciu interfejsu wiersza polecenia platformy Azure i szablonów Azure Resource Manager. Jednak zarówno korzystającą wtyczki kubenet, jak i Azure CNI wymagają *wartości minimalnej* (zweryfikowany podczas tworzenia):
 
-| Sieć | Minimalne | Maksimum |
+| Networking | Minimalne | Maksimum |
 | -- | :--: | :--: |
 | Azure CNI | 30 | 250 |
 | Korzystającą wtyczki kubenet | 30 | 110 |

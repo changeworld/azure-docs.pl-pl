@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7d8a7881c00427023e5f174461b3d8b24d83444
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 22576be8dec021f0f18a6e2dda16891ce70d4f13
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121449"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603212"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie miejsca pracy przez serwis Facebook w celu automatycznego aprowizacji użytkowników
 
@@ -51,7 +51,7 @@ Sekcja poświadczeń administratora została zablokowana dla istniejących klien
 
  
 #### <a name="when-will-these-changes-happen"></a>Kiedy te zmiany zostaną wykonane?
-Wszystkie nowe wystąpienia miejsca pracy będą już używać nowej metody integracji/autoryzacji. Istniejące integracje zostaną stopniowo migrowane w lutym. Migracja zostanie zakończona dla wszystkich dzierżawców na koniec miesiąca. 
+Wszystkie nowe wystąpienia miejsca pracy będą już używać nowej metody integracji/autoryzacji. Istniejące integracje będą migrowane stopniowo przez program. Zespół w miejscu pracy podał rozszerzenie w nieprzekraczalnym terminie od lutego – 28 do 1 maja. 
 
 ## <a name="capabilities-supported"></a>Obsługiwane możliwości
 > [!div class="checklist"]
@@ -69,11 +69,11 @@ Scenariusz opisany w tym samouczku założono, że masz już następujące wymag
 * Miejsce pracy w ramach subskrypcji z włączoną obsługą logowania jednokrotnego w serwisie Facebook
 
 > [!NOTE]
-> Nie zalecamy używania środowiska produkcyjnego do testowania czynności opisanych w tym samouczku.
+> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Planowanie wdrożenia aprowizacji
@@ -135,28 +135,28 @@ Usługa Azure AD Provisioning umożliwia określenie zakresu użytkowników, kt�
 
    |Atrybut|Typ|
    |---|---|
-   |userName|Ciąg|
-   |displayName|Ciąg|
-   |aktywne|Wartość logiczna|
-   |title|Wartość logiczna|
-   |wiadomości e-mail [typ eq "Praca"] .value|Ciąg|
-   |name.givenName|Ciąg|
-   |name.familyName|Ciąg|
-   |Nazwa. sformatowana|Ciąg|
-   |adresy [typ EQ "Work"]. sformatowane|Ciąg|
-   |.streetAddress adresy [typ eq "Praca"]|Ciąg|
-   |adresy [typ EQ "Work"]. locale|Ciąg|
-   |addresss [Type EQ "Work"]. region|Ciąg|
-   |addresss [Type EQ "Work"]. Country|Ciąg|
-   |.postalCode adresy [typ eq "Praca"]|Ciąg|
-   |adresy [Type EQ "Other"]. sformatowane|Ciąg|
-   |wartość phoneNumbers [typ eq "Praca"]|Ciąg|
-   |wartość phoneNumbers [eq wpisz "wyraz mobile"]|Ciąg|
-   |wartość phoneNumbers [typ eq "faksu"]|Ciąg|
-   |externalId|Ciąg|
-   |preferredLanguage|Ciąg|
-   |urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: Manager|Ciąg|
-   |urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: Department|Ciąg|
+   |userName|String|
+   |displayName|String|
+   |aktywne|Boolean|
+   |title|Boolean|
+   |wiadomości e-mail [typ eq "Praca"] .value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |Nazwa. sformatowana|String|
+   |adresy [typ EQ "Work"]. sformatowane|String|
+   |.streetAddress adresy [typ eq "Praca"]|String|
+   |adresy [typ EQ "Work"]. locale|String|
+   |addresss [Type EQ "Work"]. region|String|
+   |addresss [Type EQ "Work"]. Country|String|
+   |.postalCode adresy [typ eq "Praca"]|String|
+   |adresy [Type EQ "Other"]. sformatowane|String|
+   |wartość phoneNumbers [typ eq "Praca"]|String|
+   |wartość phoneNumbers [eq wpisz "wyraz mobile"]|String|
+   |wartość phoneNumbers [typ eq "faksu"]|String|
+   |externalId|String|
+   |preferredLanguage|String|
+   |urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: Manager|String|
+   |urn: IETF: params: Standard scim: schematy: rozszerzenie: Enterprise: 2.0: User: Department|String|
 
 10. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 

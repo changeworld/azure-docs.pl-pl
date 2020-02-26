@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 582646b6e1c50c8e6835fafaa8a27c7386b4695c
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429656"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587009"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Samouczek: Tworzenie bramy NAT przy użyciu Azure Portal i testowanie usługi translatora adresów sieciowych
 
@@ -30,10 +30,7 @@ W tym samouczku utworzysz bramę translatora adresów sieciowych, aby zapewnić 
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-> [!IMPORTANT]
-> Po [włączeniu](./nat-overview.md#enable-preview) Virtual Network translatora adresów sieciowych w ramach subskrypcji Użyj https://aka.ms/natportal, aby uzyskać dostęp do portalu.
-
-Zaloguj się do [Azure portal](https://aka.ms/natportal).
+Zaloguj się do [Azure portal](https://portal.azure.com).
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>Przygotuj Źródło dla ruchu wychodzącego
 
@@ -47,13 +44,13 @@ Przed wdrożeniem maszyny wirtualnej i użyciem bramy NAT należy utworzyć grup
 
 2. W obszarze **Utwórz sieć wirtualną** wprowadź lub wybierz następujące informacje:
 
-    | Ustawienie | Wartość |
+    | Ustawienie | Value |
     | ------- | ----- |
     | Name (Nazwa) | Wprowadź **myVNetsource**. |
     | Przestrzeń adresowa | wprowadź wartość **192.168.0.0/16**. |
     | Subskrypcja | Wybierz subskrypcję.|
     | Grupa zasobów | Wybierz pozycję Create New- **myResourceGroupNAT**. |
-    | Lokalizacja | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
+    | Location | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
     | Podsieć — nazwa | Wprowadź **mySubnetsource**. |
     | Zakres adresów podsieci: 10.41.0.0/24 | Wprowadź **192.168.0.0/24**. |
 
@@ -107,14 +104,14 @@ W tej sekcji szczegółowo opisano, jak utworzyć i skonfigurować następujące
 
 2. W obszarze **Utwórz publiczny adres IP**wprowadź lub wybierz następujące informacje:
 
-    | Ustawienie | Wartość |
+    | Ustawienie | Value |
     | ------- | ----- |
     | Wersja protokołu IP | Wybierz pozycję **IPv4**.
     | SKU | Wybierz opcję **Standardowa**.
     | Name (Nazwa) | Wprowadź **myPublicIPsource**. |
     | Subskrypcja | Wybierz subskrypcję.|
     | Grupa zasobów | Wybierz pozycję **myResourceGroupNAT**. |
-    | Lokalizacja | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
+    | Location | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
 
 3. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **Utwórz**.
 
@@ -172,13 +169,13 @@ Przed wdrożeniem maszyny wirtualnej dla miejsca docelowego należy utworzyć si
 
 2. W obszarze **Utwórz sieć wirtualną** wprowadź lub wybierz następujące informacje:
 
-    | Ustawienie | Wartość |
+    | Ustawienie | Value |
     | ------- | ----- |
     | Name (Nazwa) | Wprowadź **myVNetdestination**. |
     | Przestrzeń adresowa | wprowadź wartość **192.168.0.0/16**. |
     | Subskrypcja | Wybierz subskrypcję.|
     | Grupa zasobów | Wybierz pozycję Create New- **myResourceGroupNAT**. |
-    | Lokalizacja | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
+    | Location | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
     | Podsieć — nazwa | Wprowadź **mySubnetdestination**. |
     | Zakres adresów podsieci: 10.41.0.0/24 | Wprowadź **192.168.0.0/24**. |
 

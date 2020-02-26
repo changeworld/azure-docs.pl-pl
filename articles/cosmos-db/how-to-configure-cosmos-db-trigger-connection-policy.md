@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 6e4c50e5dcc35450463d02bbed040754ea778e70
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 953121a9a15d4fef56d381e3aab85329fadacce2
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093617"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604968"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>Jak skonfigurować zasady połączenia używane przez wyzwalacz Azure Functions dla Cosmos DB
 
@@ -23,7 +23,7 @@ Istnieją dwa tryby połączeń — tryb bezpośredni i tryb bramy. Aby dowiedzi
 
 ## <a name="changing-the-connection-mode-and-protocol"></a>Zmiana trybu połączenia i protokołu
 
-Dostępne są dwa ustawienia konfiguracji kluczy umożliwiające skonfigurowanie zasad połączenia klienta — **tryb połączenia** i **Protokół połączenia**. Można zmienić domyślny tryb połączenia i protokół używany przez wyzwalacz Azure Functions dla Cosmos DB i wszystkich [powiązań Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#output)). Aby zmienić ustawienia domyślne, należy zlokalizować `host.json` plik w projekcie Azure Functions lub w aplikacji Azure Functions i dodać następujące [dodatkowe ustawienie](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings):
+Dostępne są dwa ustawienia konfiguracji kluczy umożliwiające skonfigurowanie zasad połączenia klienta — **tryb połączenia** i **Protokół połączenia**. Można zmienić domyślny tryb połączenia i protokół używany przez wyzwalacz Azure Functions dla Cosmos DB i wszystkich [powiązań Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2-output.md)). Aby zmienić ustawienia domyślne, należy zlokalizować plik `host.json` w Azure Functions projektu lub aplikacji Azure Functions i dodać następujące [dodatkowe ustawienia](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings):
 
 ```js
 {
@@ -36,7 +36,7 @@ Dostępne są dwa ustawienia konfiguracji kluczy umożliwiające skonfigurowanie
 
 Gdzie `connectionMode` musi mieć żądany tryb połączenia (Direct lub Gateway) i `protocol` wymagany protokół połączeń (TCP lub https). 
 
-Jeśli projekt Azure Functions działa w środowisku uruchomieniowym Azure Functions V1, konfiguracja ma niewielką różnicę nazw, należy użyć `documentDB` `cosmosDB`zamiast:
+Jeśli projekt Azure Functions działa w środowisku uruchomieniowym Azure Functions V1, konfiguracja ma niewielką różnicę nazw, należy użyć `documentDB` zamiast `cosmosDB`:
 
 ```js
 {

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: cfa767a42800ceaf78fe007a8468fe9113a2d412
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 4d65ca8d97e1cca81886259d4f15cc880e45be9c
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558782"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604277"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Monitorowanie integralności plików w Azure Security Center
 Dowiedz się, jak skonfigurować monitorowanie integralności plików (FIM) w Azure Security Center przy użyciu tego przewodnika.
@@ -206,7 +206,6 @@ W tym artykule przedstawiono sposób korzystania z monitorowania integralności 
 * [Monitorowanie kondycji zabezpieczeń](security-center-monitoring.md)— informacje na temat monitorowania kondycji zasobów platformy Azure.
 * [Zarządzanie alertami zabezpieczeń i reagowanie na](security-center-managing-and-responding-alerts.md)nie — Dowiedz się, jak zarządzać alertami zabezpieczeń i odpowiadać na nie.
 * [Monitorowanie rozwiązań partnerskich](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
-* [Security Center często zadawane](security-center-faq.md)pytania — wyszukiwanie często zadawanych pytań dotyczących korzystania z usługi.
 * [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) — najnowsze informacje na temat zabezpieczeń platformy Azure.
 
 <!--Image references-->

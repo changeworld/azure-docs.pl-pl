@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/04/2019
+ms.date: 02/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 256aaf94175394fd737e53c6281f2d8b45e8af41
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d25201c8195fa6c4c36e159904b5b71a20a45ea
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099648"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598497"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Architektura magazynu SAP HANA (duże wystąpienia)
 
@@ -36,6 +36,8 @@ Zapoznaj się z poniższą tabelą dotyczącą alokacji magazynu. W tabeli wymie
 | S192 | 4,608 GB | 1 024 GB | 1 536 GB | 1 024 GB |
 | S192m | 11 520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
 | S192xm |  11 520 GB |  1 536 GB |  1,792 GB |  1 536 GB |
+| S224 |  4 224 GB |  512 GB |  1 024 GB |  512 GB |
+| S224m |  8 448 GB |  512 GB |  1 024 GB |  512 GB |
 | S384 | 11 520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
 | S384m | 12 000 GB | 2 050 GB | 2 050 GB | 2 040 GB |
 | S384xm | 16 000 GB | 2 050 GB | 2 050 GB | 2 040 GB |
@@ -72,9 +74,9 @@ Zapoznaj się z artykułem [Supported obsługiwane scenariusze](hana-supported-s
 
 Istnieje możliwość hostowania więcej niż jednego wystąpienia aktywnego SAP HANA w jednostkach dużych wystąpień usługi HANA. Aby zapewnić możliwości migawek magazynu i odzyskiwania po awarii, taka konfiguracja wymaga zestawu woluminów na wystąpienie. Obecnie jednostki dużego wystąpienia HANA mogą zostać podzielone w następujący sposób:
 
-- **S72, S72m, S96, S144, S192**: Z przyrostem 256 GB, z 256 GB najmniejszą jednostką początkową. Różne przyrosty, takie jak 256 GB i 512 GB, można łączyć z maksymalną ilością pamięci w jednostce.
-- **S144m i S192m**: Z przyrostem 256 GB, z 512 GB najmniejszą jednostką. Różne przyrosty, takie jak 512 GB i 768 GB, można łączyć z maksymalną ilością pamięci w jednostce.
-- **Klasa typu II**: Z przyrostem 512 GB, z najmniejszą jednostką początkową wynoszącą 2 TB. Różne przyrosty, takie jak 512 GB, 1 TB i 1,5 TB, można łączyć z maksymalną ilością pamięci w jednostce.
+- **S72, S72m, s96, S144, S192**: w przyrostach 256 GB, z 256 GB najmniejszej jednostki początkowej. Różne przyrosty, takie jak 256 GB i 512 GB, można łączyć z maksymalną ilością pamięci w jednostce.
+- **S144m i S192m**: z przyrostem 256 GB, z 512 GB najmniejszą jednostką. Różne przyrosty, takie jak 512 GB i 768 GB, można łączyć z maksymalną ilością pamięci w jednostce.
+- **Typ II Klasa**: w przyrostach wynoszących 512 GB, z najmniejszą jednostką początkową wynoszącą 2 TB. Różne przyrosty, takie jak 512 GB, 1 TB i 1,5 TB, można łączyć z maksymalną ilością pamięci w jednostce.
 
 Kilka przykładów uruchamiania wielu wystąpień SAP HANA może wyglądać następująco.
 
@@ -88,7 +90,7 @@ Kilka przykładów uruchamiania wielu wystąpień SAP HANA może wyglądać nast
 
 Istnieją również inne różnice. 
 
-## <a name="encryption-of-data-at-rest"></a>Szyfrowanie nieużywanych danych
+## <a name="encryption-of-data-at-rest"></a>Szyfrowanie danych magazynowanych
 Magazyn używany na potrzeby dużego wystąpienia HANA używa przezroczystego szyfrowania danych przechowywanych na dyskach od końca roku 2018. We wcześniejszych wdrożeniach można było pobrać zaszyfrowane woluminy. Jeśli postanowiono korzystać z tej opcji, możesz poprosić o zaszyfrowanie woluminów w trybie online. Przeniesienie z nieszyfrowanych na woluminy szyfrowane jest przezroczyste i nie wymaga przestojów. 
 
 W przypadku typu I klasy jednostek SKU wolumin, na którym jest przechowywana jednostka LUN, jest szyfrowany. W programie Revisions 3 HANA duże wystąpienia sygnatur przy użyciu klasy typu II jednostek SKU dużego wystąpienia HANA należy zaszyfrować rozruchową jednostkę LUN przy użyciu metod systemu operacyjnego. W obszarze wydanie poprawki 4 HANA duże wystąpienia, przy użyciu jednostek typu II, wolumin rozruchowy LUN jest przechowywany i domyślnie jest szyfrowany. 

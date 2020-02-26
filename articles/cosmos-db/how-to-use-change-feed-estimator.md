@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8bd024fae7496db6c9cb6410df26975fde1984f7
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092948"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585292"
 ---
 # <a name="use-the-change-feed-estimator"></a>Korzystanie ze źródła zmian szacowania
 
@@ -33,19 +33,19 @@ Podobnie jak w przypadku [procesora kanału informacyjnego zmiany](./change-feed
 
 Przykładowo, jeśli procesor źródła zmian został zdefiniowany w następujący sposób:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartProcessorEstimator":::
 
-Prawidłowy sposób zainicjowania szacowania do mierzenia tego procesora mógłby być używany `GetChangeFeedEstimatorBuilder` w następujący sposób:
+Poprawna Metoda inicjowania szacowania do mierzenia tego procesora będzie używana `GetChangeFeedEstimatorBuilder`, takich jak:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartEstimator":::
 
-Miejsce, w którym zarówno procesor, jak i szacowania `leaseContainer` mają tę samą nazwę.
+Gdzie zarówno procesor, jak i szacowania mają takie same `leaseContainer` i tę samą nazwę.
 
-Pozostałe dwa parametry są delegatem, który będzie zawierać numer, który reprezentuje liczbę **oczekujących zmian** , które mają zostać odczytane przez procesor, oraz przedział czasu, w którym ma zostać wykonana ta miara.
+Pozostałe dwa parametry są delegatem, który będzie zawierać numer, który reprezentuje liczbę **oczekujących zmian, które mają zostać odczytane** przez procesor, oraz przedział czasu, w którym ma zostać wykonana ta miara.
 
 Przykładem delegata, który otrzymuje oszacowanie, jest:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=EstimationDelegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="EstimationDelegate":::
 
 Można wysłać to oszacowanie do rozwiązania monitorowania i użyć go do zrozumienia, jak postęp zachowuje się wraz z upływem czasu.
 

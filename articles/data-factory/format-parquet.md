@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 340f91fc926c155f95449f7cc49c214f46d1ff35
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 81bbd476cea0472647ca183fb188fc13725d1469
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423661"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597630"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Format Parquet w Azure Data Factory
 
@@ -26,11 +26,11 @@ Format Parquet jest obsługiwany dla następujących łączników: [Amazon S3](c
 
 Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Parquet.
 
-| Właściwość         | Opis                                                  | Wymagany |
+| Właściwość         | Opis                                                  | Wymagane |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Właściwość Type zestawu danych musi być ustawiona na wartość **Parquet**. | Yes      |
-| location         | Ustawienia lokalizacji plików. Każdy Łącznik oparty na plikach ma własny typ lokalizacji i obsługiwane właściwości w obszarze `location`. **Zobacz szczegóły w sekcji łącznik — > Właściwości zestawu danych**. | Yes      |
-| compressionCodec | Koder-dekoder kompresji do użycia podczas zapisywania w plikach Parquet. Podczas odczytywania z plików Parquet Data Factory automatycznie określać koder-dekoder kompresji na podstawie metadanych pliku.<br>Obsługiwane typy to "**none**", "**gzip**", "**przyciąganie**" (domyślnie) i "**LZO**". Uwaga Ta sama czynność kopiowania nie obsługuje LZO w przypadku plików Parquet odczytu/zapisu. | Nie       |
+| typ             | Właściwość Type zestawu danych musi być ustawiona na wartość **Parquet**. | Tak      |
+| lokalizacja         | Ustawienia lokalizacji plików. Każdy Łącznik oparty na plikach ma własny typ lokalizacji i obsługiwane właściwości w obszarze `location`. **Zobacz szczegóły w sekcji łącznik — > Właściwości zestawu danych**. | Tak      |
+| compressionCodec | Koder-dekoder kompresji do użycia podczas zapisywania w plikach Parquet. Podczas odczytywania z plików Parquet fabryki danych automatycznie określają koder-dekoder kompresji na podstawie metadanych pliku.<br>Obsługiwane typy to "**none**", "**gzip**", "**przyciąganie**" (domyślnie) i "**LZO**". Uwaga Ta sama czynność kopiowania nie obsługuje LZO w przypadku plików Parquet odczytu/zapisu. | Nie       |
 
 > [!NOTE]
 > Biały znak w nazwie kolumny nie jest obsługiwany w przypadku plików Parquet.
@@ -67,18 +67,18 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***\*źródło\**** .
 
-| Właściwość      | Opis                                                  | Wymagany |
+| Właściwość      | Opis                                                  | Wymagane |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **ParquetSource**. | Yes      |
+| typ          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **ParquetSource**. | Tak      |
 | storeSettings | Grupa właściwości do odczytywania danych z magazynu danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia odczytu w obszarze `storeSettings`. **Zobacz szczegóły w artykule łącznik — > właściwości działania kopiowania**. | Nie       |
 
 ### <a name="parquet-as-sink"></a>Parquet jako ujścia
 
 Następujące właściwości są obsługiwane w sekcji działanie kopiowania ***\*ujścia\**** .
 
-| Właściwość      | Opis                                                  | Wymagany |
+| Właściwość      | Opis                                                  | Wymagane |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **ParquetSink**. | Yes      |
+| typ          | Właściwość Type źródła działania Copy musi być ustawiona na wartość **ParquetSink**. | Tak      |
 | storeSettings | Grupa właściwości do zapisywania danych w magazynie danych. Każdy Łącznik oparty na plikach ma własne obsługiwane ustawienia zapisu w obszarze `storeSettings`. **Zobacz szczegóły w artykule łącznik — > właściwości działania kopiowania**. | Nie       |
 
 ## <a name="mapping-data-flow-properties"></a>Mapowanie właściwości przepływu danych
@@ -92,19 +92,20 @@ Parquet złożone typy danych nie są obecnie obsługiwane (na przykład mapy, l
 ## <a name="using-self-hosted-integration-runtime"></a>Korzystanie z Integration Runtime samoobsługowego
 
 > [!IMPORTANT]
-> W przypadku kopii obsługiwanej przez samodzielne Integration Runtime, np. między lokalnym i magazynem danych w chmurze, jeśli nie kopiujesz plików Parquet w taki **sposób**, musisz zainstalować **64-bitową JRE, Java Runtime Environment lub OPENJDK** na maszynie IR. Więcej informacji można znaleźć w poniższym akapicie.
+> W przypadku kopii obsługiwanej przez samodzielne Integration Runtime, np. między lokalnym i magazynem danych w chmurze, jeśli nie kopiujesz plików **Parquet, należy**zainstalować pakiet redystrybucyjny **64-bitowego środowiska JRE 8 (Java Runtime Environment) lub OpenJDK** i **Microsoft Visual C++ 2010** na maszynie podczerwieni. Aby uzyskać więcej informacji, zapoznaj się z poniższym akapitem.
 
 W przypadku kopiowania uruchomionego na samoobsługowym środowisku IR przy użyciu serializacji/deserializacji pliku Parquet można zlokalizować środowisko uruchomieniowe języka Java, sprawdzając najpierw *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* rejestru dla środowiska JRE, jeśli nie zostanie on znaleziony, a następnie podczas drugiej kontroli zmiennej systemowej *`JAVA_HOME`* dla OpenJDK.
 
 - **Aby użyć środowiska JRE**: 64-bitowy IR wymaga 64-bitowego środowiska JRE. Można je znaleźć w [tym miejscu](https://go.microsoft.com/fwlink/?LinkId=808605).
 - **Aby użyć OpenJDK**: jest obsługiwana od czasu IR w wersji 3,13. Spakuj plik JVM. dll ze wszystkimi innymi wymaganymi zestawami OpenJDK do samodzielnej maszyny IR, a następnie ustaw dla zmiennej środowiskowej systemowe JAVA_HOME odpowiednio.
+- **Aby zainstalować pakiet C++ redystrybucyjny Visual 2010**: C++ pakiet redystrybucyjny Visual 2010 nie jest instalowany z własnymi obsługiwanymi instalacjami podczerwieni. Można je znaleźć w [tym miejscu](https://www.microsoft.com/download/details.aspx?id=14632).
 
 > [!TIP]
 > Jeśli skopiujesz dane do/z formatu Parquet przy użyciu samodzielnego Integration Runtime i błędu trafień mówiąc "Wystąpił błąd podczas wywoływania języka Java, komunikat: **Java. lang. OutOfMemoryError: przestrzeń sterty Java**", można dodać zmienną środowiskową `_JAVA_OPTIONS` na maszynie, która hostuje własne środowisko IR, aby dostosować rozmiar sterty minimalny/maksymalny dla JVM, a następnie ponownie uruchomić potok.
 
 ![Ustawianie rozmiaru sterty JVM na samoobsługowym środowisku IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Przykład: Ustaw zmienną `_JAVA_OPTIONS` przy użyciu `-Xms256m -Xmx16g`wartości. Flaga `Xms` określa początkową pulę alokacji pamięci dla wirtualna maszyna Java (JVM), podczas gdy `Xmx` określa maksymalną pulę alokacji pamięci. Oznacza to, że JVM zostanie uruchomione z `Xms` ilości pamięci i będzie można użyć maksymalnie `Xmx` ilości pamięci. Domyślnie funkcja ADF korzysta z minimalnej 64 MB i maksymalnej wartości 1G.
+Przykład: Ustaw zmienną `_JAVA_OPTIONS` przy użyciu `-Xms256m -Xmx16g`wartości. Flaga `Xms` określa początkową pulę alokacji pamięci dla wirtualna maszyna Java (JVM), podczas gdy `Xmx` określa maksymalną pulę alokacji pamięci. Oznacza to, że JVM zostanie uruchomione z `Xms` ilości pamięci i będzie można użyć maksymalnie `Xmx` ilości pamięci. Domyślnie funkcja ADF używa minimalnej 64 MB i maksymalnej wartości 1G.
 
 ## <a name="next-steps"></a>Następne kroki
 

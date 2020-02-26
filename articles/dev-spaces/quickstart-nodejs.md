@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: W tym przewodniku szybki start pokazano, jak używać Azure Dev Spaces i Visual Studio Code do debugowania i szybkiej iteracji aplikacji node. js w usłudze Azure Kubernetes Service
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: cd784ed616b2938f4c57bad47045f0d44ad25a69
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: edece2d2100ce24d244cfd70936d850e1cf2f66e
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022532"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602668"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Szybki Start: debugowanie i iteracja na Kubernetes z Visual Studio Code i Node. js-Azure Dev Spaces
 
@@ -32,7 +32,7 @@ Należy utworzyć klaster AKS w [obsługiwanym regionie][supported-regions]. Nas
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Włączanie Azure Dev Spaces w klastrze AKS
@@ -106,7 +106,7 @@ Wybierz kolejno opcje **Debuguj** i **Zatrzymaj debugowanie** , aby zatrzymać d
 
 ## <a name="update-code"></a>Aktualizowanie kodu
 
-Aby wdrożyć zaktualizowaną wersję usługi, możesz zaktualizować dowolny plik w projekcie i ponownie uruchomić **serwer uruchamiania**. Przykład:
+Aby wdrożyć zaktualizowaną wersję usługi, możesz zaktualizować dowolny plik w projekcie i ponownie uruchomić **serwer uruchamiania**. Na przykład:
 
 1. Jeśli aplikacja nadal działa, wybierz pozycję **Debuguj** , a następnie **Zatrzymaj debugowanie** , aby je zatrzymać.
 1. Aktualizuj [wiersz 13 w `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) do:
@@ -144,7 +144,7 @@ To polecenie kompiluje i uruchamia usługę w Azure Dev Spaces. Uruchamia równi
 
 Po uruchomieniu usługi przejdź do niej przy użyciu przeglądarki i skontaktuj się z nią.
 
-Gdy usługa jest uruchomiona, Wróć do VS Code i zaktualizuj wiersz 13 w programie *Server. js*. Przykład:
+Gdy usługa jest uruchomiona, Wróć do VS Code i zaktualizuj wiersz 13 w programie *Server. js*. Na przykład:
 ```javascript
     res.send('Hello from webfrontend in Azure while debugging!');
 ```

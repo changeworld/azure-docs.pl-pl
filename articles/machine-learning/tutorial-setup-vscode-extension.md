@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Konfigurowanie rozszerzenia Visual Studio Code Azure Machine Learning'
+title: 'Samouczek: Konfigurowanie rozszerzenia Visual Studio Code'
 titleSuffix: Azure Machine Learning
 description: Dowiedz się, jak skonfigurować rozszerzenie Azure Machine Learning Visual Studio Code.
 services: machine-learning
@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/16/2019
-ms.openlocfilehash: 4000fcc80d507d3b1e871d7f3288fc3b77693c76
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/24/2020
+ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157612"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604873"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Konfigurowanie rozszerzenia Visual Studio Code Azure Machine Learning
 
@@ -30,7 +30,8 @@ W tym samouczku nauczysz się wykonywać następujące zadania:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure. Jeśli nie masz takiego konta, zarejestruj się, aby wypróbować [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
-- Zainstaluj [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview), lekki Edytor kodu dla wielu platform. 
+- Program Visual Studio Code. Jeśli go nie masz, [Zainstaluj go](https://code.visualstudio.com/docs/setup/setup-overview).
+- [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-the-extension"></a>Instalowanie rozszerzenia
 
@@ -38,6 +39,9 @@ W tym samouczku nauczysz się wykonywać następujące zadania:
 1. Wybierz ikonę **rozszerzenia** na **pasku działania** , aby otworzyć widok rozszerzenia.
 1. W widoku rozszerzeń Wyszukaj ciąg "Azure Machine Learning".
 1. Wybierz pozycję **Zainstaluj**.
+
+    > [!div class="mx-imgBorder"]
+    > ![zainstalować rozszerzenia VS Code Azure Machine Learning](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
 
 > [!NOTE]
 > Alternatywnie możesz zainstalować rozszerzenie Azure Machine Learning za pośrednictwem Visual Studio Marketplace, [pobierając Instalatora bezpośrednio](https://aka.ms/vscodetoolsforai). 
@@ -49,9 +53,9 @@ Pozostała część kroków tego samouczka została przetestowana z **wersją 0.
 Aby udostępnić zasoby i uruchamiać obciążenia na platformie Azure, musisz zalogować się przy użyciu poświadczeń konta platformy Azure. Aby ułatwić zarządzanie kontami, Azure Machine Learning automatycznie instaluje rozszerzenie konta platformy Azure. Odwiedź następującą witrynę, aby [dowiedzieć się więcej o rozszerzeniu konta platformy Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account).
 
 1. Otwórz paletę poleceń, wybierając pozycję **wyświetl > paleta poleceń** na pasku menu. 
-1. Wprowadź polecenie "Azure: Zaloguj się" w polu tekstowym, aby rozpocząć proces logowania.
+1. Wprowadź polecenie "Azure: Sign in" w palecie poleceń, aby uruchomić proces logowania.
 
-## <a name="run-a-script-in-azure"></a>Uruchamianie skryptu na platformie Azure
+## <a name="run-a-machine-learning-model-training-script-in-azure"></a>Uruchamianie skryptu szkoleniowego modelu uczenia maszynowego na platformie Azure
 
 Po zalogowaniu się do platformy Azure przy użyciu poświadczeń konta wykonaj kroki opisane w tej sekcji, aby dowiedzieć się, jak używać rozszerzenia do uczenia modelu uczenia maszynowego.
 
@@ -79,16 +83,16 @@ Po zalogowaniu się do platformy Azure przy użyciu poświadczeń konta wykonaj 
 
     ```json
     {
-        "workspace": "WS12191742",
-        "resourceGroup": "WS12191742-rg2",
+        "workspace": "WS01311608",
+        "resourceGroup": "WS01311608-rg1",
         "location": "South Central US",
-        "experiment": "WS12191742-exp2",
+        "experiment": "WS01311608-exp1",
         "compute": {
-            "name": "WS12191742-com2",
+            "name": "WS01311608-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS12191742-com2-rc1",
+            "filename": "WS01311608-com1-rc1",
             "condaDependencies": [
                 "python=3.6.2",
                 "tensorflow=1.15.0"
@@ -100,8 +104,38 @@ Po zalogowaniu się do platformy Azure przy użyciu poświadczeń konta wykonaj 
     }
     ```
 
-1. Wybierz pozycję **Prześlij eksperyment** , aby uruchomić eksperyment na platformie Azure. Spowoduje to wysłanie `train.py` i pliku konfiguracji do obszaru roboczego Azure Machine Learning. Zadanie szkolenia jest następnie uruchamiane w zasobie obliczeniowym na platformie Azure.
-1. Po kilku minutach katalog o nazwie `output` jest tworzony lokalnie zawierający szkolony model TensorFlow.
+1. Gdy Twoja konfiguracja zostanie zazadowalająca, Prześlij eksperyment, otwierając paletę poleceń i wprowadzając następujące polecenie:
+
+    ```text
+    Azure ML: Submit Experiment
+    ```
+
+    Spowoduje to wysłanie `train.py` i pliku konfiguracji do obszaru roboczego Azure Machine Learning. Zadanie szkolenia jest następnie uruchamiane w zasobie obliczeniowym na platformie Azure.
+
+### <a name="track-the-progress-of-the-training-script"></a>Śledź postęp skryptu szkoleniowego
+
+Uruchamianie skryptu może potrwać kilka minut. Aby śledzić postęp:
+
+1. Na pasku działania wybierz ikonę **platformy Azure** .
+1. Rozwiń węzeł subskrypcji.
+1. Rozwiń węzeł aktualnie działającego eksperymentu. Ta lokalizacja znajduje się w węźle `{workspace}/Experiments/{experiment}`, w którym wartości obszaru roboczego i eksperymentu są takie same jak właściwości zdefiniowane w pliku konfiguracji.
+1. Wszystkie uruchomienia eksperymentu są wymienione na liście, a także ich stan. Aby uzyskać najnowszy stan, kliknij ikonę odświeżania w górnej części widoku Azure Machine Learning.
+
+    > [!div class="mx-imgBorder"]
+    > ![śledzenie postępu eksperymentu](./media/tutorial-setup-vscode-extension/track-experiment-progress.PNG)
+
+### <a name="download-the-trained-model"></a>Pobierz przeszkolony model
+
+Po zakończeniu eksperymentu dane wyjściowe są modelem szkolonym. Aby pobrać dane wyjściowe lokalnie:
+
+1. Kliknij prawym przyciskiem myszy najnowszy przebieg i wybierz pozycję **Pobierz dane wyjściowe**.
+
+    > [!div class="mx-imgBorder"]
+    > ![pobrać przeszkolony model](./media/tutorial-setup-vscode-extension/download-trained-model.PNG)
+
+1. Wybierz lokalizację, w której mają zostać zapisane dane wyjściowe.
+1. Folder o nazwie przebiegu jest pobierany lokalnie. Przejdź do tej strony.
+1. Pliki modelu znajdują się w katalogu `outputs/outputs/model`.
 
 ## <a name="next-steps"></a>Następne kroki
 

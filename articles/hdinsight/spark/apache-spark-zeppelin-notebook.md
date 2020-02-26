@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484812"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598276"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Korzystanie z notesów Apache Zeppelin z klastrem Apache Spark w usłudze Azure HDInsight
 
@@ -151,6 +151,25 @@ Notesy Zeppelin są zapisywane w klastrze węzłów głównych. W związku z tym
 
 Spowoduje to zapisanie notesu jako pliku JSON w lokalizacji pobierania.
 
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Użyj Shiro, aby skonfigurować dostęp do interpreterów Zeppelin w klastrach pakiet Enterprise Security (ESP)
+Jak wspomniano powyżej, interpreter `%sh` nie jest obsługiwany przez usługi HDInsight 4,0. Ponadto, ponieważ interpreter `%sh` wprowadza potencjalne problemy z zabezpieczeniami, takie jak dostęp do kart kluczowych przy użyciu poleceń powłoki, został również usunięty z klastrów HDInsight 3,6 ESP. Oznacza to, że interpreter `%sh` nie jest dostępny podczas klikania opcji **Utwórz nową notatkę** lub w interfejsie użytkownika interpretera domyślnie. 
+
+Użytkownicy domeny uprzywilejowanych mogą korzystać z pliku `Shiro.ini` w celu kontrolowania dostępu do interfejsu użytkownika interpretera. W ten sposób tylko Ci użytkownicy mogą tworzyć nowe interpretery `%sh` i ustawiać uprawnienia dla każdego nowego interpretera `%sh`. Aby kontrolować dostęp przy użyciu pliku `shiro.ini`, wykonaj następujące czynności:
+
+1. Zdefiniuj nową rolę przy użyciu istniejącej nazwy grupy domen. W poniższym przykładzie `adminGroupName` jest grupą uprzywilejowanych użytkowników w usłudze AAD. Nie używaj znaków specjalnych ani białych spacji w nazwie grupy. Znaki po `=` przyznają uprawnienia dla tej roli. `*` oznacza, że grupa ma pełne uprawnienia.
+
+    ```
+    [roles]
+    adminGroupName = *
+    ```
+
+2. Dodaj nową rolę, aby uzyskać dostęp do interpreterów Zeppelin. W poniższym przykładzie wszyscy użytkownicy w `adminGroupName` uzyskują dostęp do interpreterów Zeppelin i mogą tworzyć nowe interpretery. Można umieścić wiele ról między nawiasami w `roles[]`, rozdzielając je przecinkami. Następnie użytkownicy, którzy mają niezbędne uprawnienia, mogą uzyskiwać dostęp do interpreterów Zeppelin.
+
+    ```
+    [urls]
+    /api/interpreter/** = authc, roles[adminGroupName]
+    ```
+
 ## <a name="livy-session-management"></a>Zarządzanie sesją usługi Livy
 
 Po uruchomieniu pierwszego akapitu kodu w notesie Zeppelin zostanie utworzona nowa sesja usługi Livy w klastrze usługi HDInsight Spark. Ta sesja jest udostępniana dla wszystkich utworzonych przez siebie notesów Zeppelin. Jeśli z jakiegoś powodu sesja usługi Livy zostanie przerwana (ponowne uruchomienie klastra itd.), nie będzie można uruchamiać zadań z notesu Zeppelin.
@@ -183,7 +202,7 @@ Aby sprawdzić poprawność usługi z wiersza polecenia, Użyj protokołu SSH do
 
 ### <a name="log-locations"></a>Lokalizacje dzienników
 
-|Usługa |Ścieżka |
+|NDES |Ścieżka |
 |---|---|
 |Zeppelin — serwer|/usr/hdp/current/zeppelin-server/|
 |Dzienniki serwera|/var/log/zeppelin|

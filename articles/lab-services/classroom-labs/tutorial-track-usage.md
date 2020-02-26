@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 55c7e2f30324fe7878e38f1129c63c6e0c51a75f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a1a3e62646fedd468a02eac7b1a48d0b2d00fd74
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134796"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591986"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Samouczek: śledzenie użycia laboratorium w usłudze Azure Lab Service
 W tym samouczku zostanie pokazane, w jaki sposób twórca/właściciel laboratorium może śledzić użycie laboratorium.
@@ -53,9 +53,12 @@ W tym samouczku wykonasz następujące czynności:
 ## <a name="manage-student-vms"></a>Zarządzanie maszynami wirtualnymi uczniów 
 Na tej stronie można uruchamiać, zatrzymywać lub resetować maszyny wirtualne uczniów przy użyciu kontrolek w kolumnie **stan** lub na pasku narzędzi.
 
-![Funkcje sterowania maszyny wirtualnej](../media/tutorial-track-usage/vm-controls.png)
+![Akcje maszyny wirtualnej](../media/tutorial-track-usage/vm-controls.png)
 
 Aby uzyskać więcej informacji o zarządzaniu pulą maszyn wirtualnych dla laboratorium, zobacz [Konfigurowanie puli maszyn wirtualnych i zarządzanie nią](how-to-set-virtual-machine-passwords.md).
+
+> [!NOTE]
+> Gdy nauczycieli włącza maszynę wirtualną ucznia, nie ma to żadnego limitu przydziału dla ucznia. Przydział dla użytkownika określa liczbę godzin laboratorium dostępnych dla użytkownika poza zaplanowanym czasem klasy. Aby uzyskać więcej informacji na temat przydziałów, zobacz [Ustawianie przydziałów dla użytkowników](how-to-configure-student-usage.md?#set-quotas-for-users).
 
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat laboratoriów na potrzeby zajęć, zobacz artykuły w sekcji [Przewodniki z instrukcjami](how-to-manage-lab-accounts.md).

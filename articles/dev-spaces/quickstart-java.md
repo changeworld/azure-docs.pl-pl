@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: W tym przewodniku szybki start pokazano, jak używać Azure Dev Spaces i Visual Studio Code do debugowania i szybkiej iteracji aplikacji Java w usłudze Azure Kubernetes Service
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Java, Helm, Service siatk, routing sieci usługi, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8ceb48bf60438442b63fab698091fdb5064793af
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c0062d7cda79cbe91dc7485baa33b60d318a8af0
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025201"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605320"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>Szybki Start: debugowanie i iteracja na Kubernetes z Visual Studio Code i Java — Azure Dev Spaces
 
@@ -33,7 +33,7 @@ Należy utworzyć klaster AKS w [obsługiwanym regionie][supported-regions]. Nas
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Włączanie Azure Dev Spaces w klastrze AKS
@@ -112,7 +112,7 @@ Wybierz kolejno opcje **Debuguj** i **Zatrzymaj debugowanie** , aby zatrzymać d
 
 ## <a name="update-code"></a>Aktualizowanie kodu
 
-Aby wdrożyć zaktualizowaną wersję usługi, możesz zaktualizować dowolny plik w projekcie i ponownie uruchomić **program Java (AZDS)** . Przykład:
+Aby wdrożyć zaktualizowaną wersję usługi, możesz zaktualizować dowolny plik w projekcie i ponownie uruchomić **program Java (AZDS)** . Na przykład:
 
 1. Jeśli aplikacja nadal działa, wybierz pozycję **Debuguj** , a następnie **Zatrzymaj debugowanie** , aby je zatrzymać.
 1. Zaktualizuj [wiersz 19 w `src/main/java/com/ms/sample/webfrontend/Application.java`](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) do:
@@ -140,7 +140,7 @@ Usuń punkt przerwania, umieszczając kursor w wierszu 19 w *src/Main/Java/com/M
 
 ## <a name="update-code-from-visual-studio-code"></a>Aktualizuj kod z Visual Studio Code
 
-Gdy usługa jest uruchomiona w trybie debugowania, zaktualizuj wiersz 19 w *src/Main/Java/com/MS/Sample/webfronton/Application. Java*. Przykład:
+Gdy usługa jest uruchomiona w trybie debugowania, zaktualizuj wiersz 19 w *src/Main/Java/com/MS/Sample/webfronton/Application. Java*. Na przykład:
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: f76b5443d6c1e3fd2cebf87cba39ba0a6bbdeaee
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: cfa39799e44cee0a2d36efccd454ccf8ca15157f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521789"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603230"
 ---
 # <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard-preview"></a>Aktualizowanie dynamicznych pakietów zgodności na pulpicie nawigacyjnym zgodności z przepisami (wersja zapoznawcza)
 
@@ -77,4 +77,3 @@ Inne powiązane materiały można znaleźć w następujących artykułach:
 - [Pulpit nawigacyjny zgodności z przepisami Centrum zabezpieczeń](security-center-compliance-dashboard.md)
 - [Praca z zasadami zabezpieczeń](tutorial-security-policy.md)
 - [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](security-center-recommendations.md) — Dowiedz się, jak używać zaleceń w programie Azure Security Center, aby pomóc w ochronie zasobów platformy Azure.
-- [Azure Security Center FAQ](security-center-faq.md) — Uzyskaj odpowiedzi na często zadawane pytania dotyczące korzystania z Security Center.

@@ -2,17 +2,14 @@
 title: Zabezpieczanie z użyciem zasad sieciowych w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak zabezpieczyć ruch przepływający do i z zasobników przy użyciu zasad sieciowych Kubernetes w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 350e553563aa152c61c922727fb87937bedd14b5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 92e726529f2c81b169dc5ad485148ad8118bbc81
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928496"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592870"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpieczanie ruchu między różnymi sieciami przy użyciu zasad sieciowych w usłudze Azure Kubernetes Service (AKS)
 
@@ -83,7 +80,7 @@ Następujący przykładowy skrypt:
 * Tworzy jednostkę usługi Azure Active Directory (Azure AD) do użycia z klastrem AKS.
 * Przypisuje uprawnienia *współautora* dla jednostki usługi klastra AKS w sieci wirtualnej.
 * Tworzy klaster AKS w zdefiniowanej sieci wirtualnej i włącza zasady sieciowe.
-    * Opcja zasad sieciowych *platformy Azure* jest używana. Aby zamiast tego użyć Calico jako opcji zasad sieciowych, należy użyć parametru `--network-policy calico`. Uwaga: Calico można użyć z wartością `--network-plugin azure` lub `--network-plugin kubenet`.
+    * Opcja zasad sieciowych *platformy Azure* jest używana. Aby zamiast tego użyć Calico jako opcji zasad sieciowych, użyj parametru `--network-policy calico`. Uwaga: Calico może być używany z albo `--network-plugin azure` lub `--network-plugin kubenet`.
 
 Podaj własne bezpieczne *SP_PASSWORD*. Można zastąpić zmienne *RESOURCE_GROUP_NAME* i *CLUSTER_NAME* :
 

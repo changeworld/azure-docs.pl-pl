@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dcb0ffef0cf48a7bcbfbdb0107999f7e90333559
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77151993"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598575"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Usługa Azure cele skalowalności i wydajności plików
 
@@ -51,8 +51,8 @@ Zapoznaj się z sekcją [cele skalowania konta usługi Azure Storage](#azure-sto
 ### <a name="file-share-and-file-scale-targets"></a>Elementy docelowe udziału plików i skalowania plików
 
 > [!NOTE]
-> Standardowe udziały plików większe niż 5 TiB mają pewne ograniczenia.
-> Listę ograniczeń, informacje regionalne i instrukcje dotyczące włączania większych rozmiarów udziałów plików można znaleźć w sekcji Dołączanie [do większych udziałów plików](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) w przewodniku planowania.
+> Standardowe udziały plików większe niż 5 TiB mają pewne ograniczenia i ograniczenia regionalne.
+> Listę ograniczeń, informacje regionalne i instrukcje dotyczące włączania większych rozmiarów udziałów plików można znaleźć w sekcji Dołączanie [do większych udziałów plików](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) w przewodniku planowania.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -78,7 +78,7 @@ Aby ułatwić planowanie wdrożenia dla każdego z etapów, poniżej wyniki prze
 | Konfiguracja systemu |  |
 |-|-|
 | Procesor CPU | 64 rdzeni wirtualnych za pomocą 64 pamięci podręcznej MiB L3 |
-| Memory (Pamięć) | 128 GiB |
+| Pamięć | 128 GiB |
 | Dysk | Dyski SAS z macierzy RAID 10 z baterii kopii pamięci podręcznej |
 | Sieć | Sieć 1 GB/s |
 | Obciążenie | Serwer plików ogólnego przeznaczenia|

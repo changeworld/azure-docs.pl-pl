@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 7174003485d51cf582c798c4b18404b1b72de0fb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530956"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603814"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integracja rozwiązań zabezpieczeń w usłudze Azure Security Center
 Ten dokument ułatwia zarządzanie rozwiązaniami zabezpieczeń już połączonymi z usługą Azure Security Center i dodawanie nowych.
@@ -27,7 +27,7 @@ Ten dokument ułatwia zarządzanie rozwiązaniami zabezpieczeń już połączony
 > Podzestaw rozwiązań zabezpieczeń został wycofany 31 lipca 2019. Aby uzyskać więcej informacji i alternatywnych usług, zobacz wycofywanie [funkcji Security Center (lipiec 2019)](security-center-features-retirement-july2019.md#menu_solutions).
 
 ## <a name="integrated-azure-security-solutions"></a>Zintegrowane rozwiązania zabezpieczeń platformy Azure
-Usługa Security Center ułatwia włączanie zintegrowanych rozwiązań zabezpieczeń na platformie Azure. Korzyści:
+Usługa Security Center ułatwia włączanie zintegrowanych rozwiązań zabezpieczeń na platformie Azure. Korzyści to:
 
 - **Uproszczone wdrażanie**: usługa Security Center oferuje udoskonaloną aprowizację zintegrowanych rozwiązań partnerskich. W przypadku rozwiązań takich jak oprogramowanie chroniące przed złośliwym kodem i Ocena luk w zabezpieczeniach Security Center można zainicjować obsługę agenta na maszynach wirtualnych. W przypadku urządzeń zapory Security Center może wymagać większości wymaganych konfiguracji sieci.
 - **Zintegrowane funkcje wykrywania**: zdarzenia zabezpieczeń z rozwiązań partnerskich są automatycznie zbierane, agregowane i wyświetlane w ramach zdarzeń i alertów usługi Security Center. Te zdarzenia są także połączone z funkcjami wykrywania z innych źródeł, aby zapewnić zaawansowane możliwości w zakresie wykrywania zagrożeń.
@@ -47,7 +47,7 @@ Rozwiązania zabezpieczeń platformy Azure, które zostały wdrożone z usługi 
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Zarządzanie zintegrowanymi rozwiązaniami zabezpieczeń platformy Azure i innymi źródłami danych
 
-1. Zaloguj się do [portalu Azure](https://azure.microsoft.com/features/azure-portal/).
+1. Zaloguj się do [Azure portal](https://azure.microsoft.com/features/azure-portal/).
 
 2. W **menu platformy Microsoft Azure** wybierz pozycję **Security Center**. Zostanie otwarte okno **Security Center — Przegląd**.
 
@@ -129,13 +129,13 @@ Przed rozpoczęciem [utwórz Event Hubs przestrzeń nazw](../event-hubs/event-hu
 
 #### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Prześlij strumieniowo dziennik aktywności platformy Azure do Event Hubs
 
-Zapoznaj się z następującym artykułem [Dziennik aktywności w usłudze Stream, aby Event Hubs](../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+Aby Event Hubs, zobacz następujący artykuł [dotyczący dziennika aktywności strumienia](../azure-monitor/platform/activity-logs-stream-event-hubs.md).
 
 #### <a name="install-a-partner-siem-connector"></a>Instalowanie łącznika SIEM partnera 
 
 Kierowanie danych monitorowania do centrum zdarzeń za pomocą Azure Monitor pozwala na łatwą integrację z SIEM partnerskim i narzędziami do monitorowania.
 
-Zobacz następujący artykuł, aby zapoznać się z listą [obsługiwanych rozwiązań Siem](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-platform-logs-sent-to-an-event-hub)
+Listę [obsługiwanych rozwiązań Siem](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)można znaleźć w następującym artykule.
 
 ### <a name="example-for-querying-data"></a>Przykład na potrzeby wykonywania zapytań dotyczących danych 
 
@@ -150,8 +150,6 @@ Poniżej przedstawiono niektóre zapytania Splunk, których można użyć do śc
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób zintegrowania rozwiązania partnerskiego w usłudze Security Center. Aby dowiedzieć się więcej na temat usługi Security Center, zobacz następujące artykuły:
+W tym artykule przedstawiono sposób zintegrowania rozwiązania partnerskiego w usłudze Security Center. Aby dowiedzieć się więcej na temat Security Center, zobacz następujący artykuł:
 
 * [Monitorowanie kondycji zabezpieczeń w usłudze Security Center](security-center-monitoring.md). Informacje na temat sposobu monitorowania kondycji zasobów platformy Azure.
-* [Azure Security Center — często zadawane pytania](security-center-faq.md). Odpowiedzi na często zadawane pytania dotyczące korzystania z usługi Security Center.
-* [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/). Wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.

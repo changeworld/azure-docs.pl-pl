@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 74d34705a6541b396fa2c2bf5028254f5f2e8d21
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f951daf08590feb6fa1aaad831f8a735db141984
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466312"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586771"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Szybki Start: Tworzenie aplikacji do zrobienia za pomocą platformy Xamarin przy użyciu Azure Cosmos DB konta interfejsu API SQL
 
@@ -38,7 +38,7 @@ Ten przewodnik Szybki Start przedstawia sposób tworzenia Azure Cosmos DB konta 
 
 Jeśli tworzysz system w systemie Windows i nie masz jeszcze zainstalowanego programu Visual Studio 2019, możesz pobrać i użyć **bezpłatnej** [wersji programu Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że włączono pakiety robocze **Programowanie na platformie Azure** i **Opracowywanie aplikacji mobilnych za pomocą środowiska .NET**.
 
-Jeśli używasz komputera Mac, możesz pobrać **bezpłatny** program [Visual Studio dla komputerów Mac](https://www.visualstudio.com/vs/mac/).
+Jeśli używasz komputera Mac, możesz pobrać **bezpłatny** [Visual Studio dla komputerów Mac](https://www.visualstudio.com/vs/mac/).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
@@ -69,7 +69,7 @@ Teraz sklonujemy aplikację interfejsu Xamarin SQL API z repozytorium GitHub, pr
     md "C:\git-samples"
     ```
 
-2. Otwórz okno terminala usługi Git, np. git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
+2. Otwórz okno terminalu usługi Git, na przykład git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
 
     ```bash
     cd "C:\git-samples"
@@ -128,7 +128,7 @@ Teraz dokonamy szybkiego przeglądu sposobu komunikowania się aplikacji z usłu
 
 * Podczas wykonywania zapytania dotyczącego kontenera dla dokumentów jest używana metoda `DocumentClient.CreateDocumentQuery<T>`, jak pokazano tutaj w funkcji `CosmosDBService.GetToDoItems`:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=GetToDoItems)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="GetToDoItems"::: 
 
     `CreateDocumentQuery<T>` przyjmuje identyfikator URI wskazujący kontener utworzony w poprzedniej sekcji. Można również określić operatory LINQ, na przykład klauzulę `Where`. W tym przypadku zwracane są tylko te zadania, które nie zostały jeszcze wykonane.
 
@@ -141,13 +141,13 @@ Teraz dokonamy szybkiego przeglądu sposobu komunikowania się aplikacji z usłu
 
 * Funkcja `ComsmosDBService.InsertToDoItem` ilustruje sposób wstawiania nowego dokumentu:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=InsertToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="InsertToDoItem"::: 
 
     Określono identyfikator URI elementu, a także element, który ma zostać wstawiony.
 
 * Funkcja `CosmosDBService.UpdateToDoItem` ilustruje sposób zastępowania istniejącego dokumentu nowym:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=UpdateToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="UpdateToDoItem"::: 
 
     W tym miejscu jest wymagany nowy identyfikator URI w celu jednoznacznego zidentyfikowania dokumentu, który ma zostać zamieniony i uzyskany przy użyciu `UriFactory.CreateDocumentUri` i przekazanie go do bazy danych i nazw kontenerów oraz identyfikatora dokumentu.
 
@@ -155,7 +155,7 @@ Teraz dokonamy szybkiego przeglądu sposobu komunikowania się aplikacji z usłu
 
 * Usuwanie elementu jest demonstrowane za pomocą funkcji `CosmosDBService.DeleteToDoItem`:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=DeleteToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="DeleteToDoItem"::: 
 
     Ponownie zanotuj utworzony i przekazany do funkcji `DocumentClient.DeleteDocumentAsync` unikatowy identyfikator URI dokumentu.
 

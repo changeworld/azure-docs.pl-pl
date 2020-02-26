@@ -1,5 +1,5 @@
 ---
-title: Platforma Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver na SUSE Linux Enterprise Server z Azure NetApp Files | Microsoft Docs
+title: Wysoka dostępność maszyn wirtualnych platformy Azure dla oprogramowania SAP NW na SLES z Azure NetApp Files | Microsoft Docs
 description: Przewodnik wysokiej dostępności dla oprogramowania SAP NetWeaver na SUSE Linux Enterprise Server z Azure NetApp Files dla aplikacji SAP
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: 1a413ce55604ef8b5c3219e8de466fcc23d41bac
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 18aecfc5ea40c8368fbf4d4a07f86e71047265f7
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990945"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598650"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server z Azure NetApp Files dla aplikacji SAP
 
@@ -253,7 +253,7 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **frontonu). QAS. ASCS**)
          1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.1.1.20**)
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. 10.1.1.21 adresu IP dla ASCS wykres WYWOŁUJĄCYCH
          * Powtórz powyższe kroki w obszarze "a", aby utworzyć adres IP dla wykres WYWOŁUJĄCYCH (na przykład **10.1.1.21** i **fronton. QAS. Wykres WYWOŁUJĄCYCH**)
    1. Tworzenie pul zaplecza
@@ -269,7 +269,7 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej sondy kondycji (na przykład **kondycja. QAS. ASCS**)
          1. Wybierz pozycję TCP jako protokół, port 620**00**, Zachowaj interwał 5 i próg złej kondycji 2
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. Port 621**01** dla ASCS wykres wywołujących
             * Powtórz powyższe kroki w sekcji "c", aby utworzyć sondę kondycji dla wykres WYWOŁUJĄCYCH (na przykład 621**01** i **kondycja). QAS. Wykres WYWOŁUJĄCYCH**)
    1. Reguły równoważenia obciążenia
@@ -280,7 +280,7 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
          1. Wybieranie **portów ha**
          1. Zwiększ limit czasu bezczynności do 30 minut
          1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
          * Powtórz powyższe kroki, aby utworzyć reguły równoważenia obciążenia dla wykres WYWOŁUJĄCYCH (na przykład **LB. QAS. Wykres WYWOŁUJĄCYCH**)
 1. Alternatywnie, jeśli scenariusz wymaga podstawowego modułu równoważenia obciążenia (wewnętrznego), wykonaj następujące czynności:  
    1. Utwórz adresy IP frontonu
@@ -288,7 +288,7 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję Pula adresów IP frontonu, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **frontonu). QAS. ASCS**)
          1. Ustaw przypisanie na static i wprowadź adres IP (na przykład **10.1.1.20**)
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. 10.1.1.21 adresu IP dla ASCS wykres WYWOŁUJĄCYCH
          * Powtórz powyższe kroki w obszarze "a", aby utworzyć adres IP dla wykres WYWOŁUJĄCYCH (na przykład **10.1.1.21** i **fronton. QAS. Wykres WYWOŁUJĄCYCH**)
    1. Tworzenie pul zaplecza
@@ -298,13 +298,13 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
          1. Kliknij pozycję Dodaj maszynę wirtualną.
          1. Wybierz zestaw dostępności utworzony wcześniej dla ASCS 
          1. Wybierz Maszyny wirtualne klastra SCS
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
    1. Tworzenie sond kondycji
       1. Port 620**00** dla ASCS
          1. Otwórz moduł równoważenia obciążenia, wybierz pozycję sondy kondycji, a następnie kliknij przycisk Dodaj.
          1. Wprowadź nazwę nowej sondy kondycji (na przykład **kondycja. QAS. ASCS**)
          1. Wybierz pozycję TCP jako protokół, port 620**00**, Zachowaj interwał 5 i próg złej kondycji 2
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. Port 621**01** dla ASCS wykres wywołujących
             * Powtórz powyższe kroki w sekcji "c", aby utworzyć sondę kondycji dla wykres WYWOŁUJĄCYCH (na przykład 621**01** i **kondycja). QAS. Wykres WYWOŁUJĄCYCH**)
    1. Reguły równoważenia obciążenia
@@ -315,7 +315,7 @@ Najpierw należy utworzyć woluminy Azure NetApp Files. Wdróż maszyny wirtualn
          1. Utrzymywanie protokołu **TCP**, wprowadź port **3200**
          1. Zwiększ limit czasu bezczynności do 30 minut
          1. **Upewnij się, że włączono zmiennoprzecinkowy adres IP**
-         1. Kliknij przycisk OK.
+         1. Kliknij przycisk OK
       1. Dodatkowe porty dla ASCS
          * Powtórz powyższe kroki w obszarze "d" dla portów 36**00**, 39**00**, 81**00**, 5**00**, 5**00**14, 5**00**16 i TCP dla ASCS
       1. Dodatkowe porty dla ASCS wykres WYWOŁUJĄCYCH
@@ -333,7 +333,7 @@ Wykonaj kroki opisane w temacie [Konfigurowanie Pacemaker SUSE Linux Enterprise 
 
 ### <a name="installation"></a>Instalacja
 
-Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do wszystkich węzłów, **[1]** — dotyczy to tylko węzeł 1 lub **[2]** — dotyczy to tylko węzeł 2.
+Następujące elementy są poprzedzone **[A]** -dotyczy wszystkie węzły, **[1]** — dotyczy tylko węzła 1 lub **[2]** — dotyczy tylko węzła 2.
 
 1. **[A]** Zainstaluj łącznik SUSE
 
@@ -382,7 +382,7 @@ Następujące elementy mają prefiks albo **[A]** — mające zastosowanie do ws
    sudo zypper in -t patch SUSE-SLE-HA-12-SP2-2017-886=1
    </code></pre>
 
-3. **[A]**  Konfigurowanie rozpoznawania nazw hostów
+3. **[A]** rozpoznawanie nazw hostów
 
    Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach
@@ -761,9 +761,9 @@ W poniższych krokach założono, że serwer aplikacji jest instalowany na serwe
 Następujące elementy są poprzedzone znakiem **[A]** — dotyczy zarówno platformy pas, jak i AAS, **[P]** — dotyczy tylko platformy pas lub **[S]** — dotyczy tylko AAS.
 
 
-1. **[A]**  Konfiguruj system operacyjny
+1. **[A]** Skonfiguruj system operacyjny
 
-   Zmniejsz rozmiar zmieniony pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [niska wydajność zapisu w systemie SLES 11/12 serwery z dużą ilość pamięci RAM](https://www.suse.com/support/kb/doc/?id=7010287).
+   Zmniejsz rozmiar zmieniony pamięci podręcznej. Aby uzyskać więcej informacji, zobacz [niska wydajność zapisu na serwerach z systemem SLES 11/12 i dużą ilością pamięci RAM](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>
    sudo vi /etc/sysctl.conf
@@ -772,7 +772,7 @@ Następujące elementy są poprzedzone znakiem **[A]** — dotyczy zarówno plat
    vm.dirty_background_bytes = 314572800
    </code></pre>
 
-1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
+1. **[A]** rozpoznawanie nazw hostów
 
    Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach

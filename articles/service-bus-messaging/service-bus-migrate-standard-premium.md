@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 610c3aa486b48b2d29df48d98e93b37cfec4854c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 548163f4c86f4df4d858b31afd95e0e4615f1696
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790377"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587502"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrowanie istniejących Azure Service Bus standardowych przestrzeni nazw do warstwy Premium
 Wcześniej Azure Service Bus oferowane przestrzenie nazw tylko w warstwie Standardowa. Przestrzenie nazw to konfiguracje wielodostępne, które są zoptymalizowane pod kątem małych przepływności i środowisk deweloperskich. Warstwa Premium oferuje dedykowane zasoby na przestrzeń nazw na potrzeby przewidywalnego opóźnienia i zwiększonej przepływności przy stałej cenie. Warstwa Premium jest zoptymalizowana pod kątem wysokiej przepływności i środowisk produkcyjnych, które wymagają dodatkowych funkcji w przedsiębiorstwie.
@@ -32,7 +32,7 @@ Niektóre punkty do zanotowania:
 - Przestrzeń nazw **Premium** nie powinna mieć **żadnych jednostek** , aby migracja zakończyła się pomyślnie. 
 - Wszystkie **jednostki** w standardowej przestrzeni nazw są **kopiowane** do przestrzeni nazw Premium podczas procesu migracji. 
 - Migracja obsługuje jednostki **1 000 na jednostkę obsługi komunikatów** w warstwie Premium. Aby określić liczbę potrzebnych jednostek obsługi komunikatów, Zacznij od liczby jednostek, które znajdują się w bieżącej przestrzeni nazw w warstwie Standardowa. 
-- Nie można bezpośrednio migrować z **warstwy Podstawowa** do **warstwy**Premium, ale możesz to zrobić pośrednio przez migrację z wersji Basic do wersji Standard, a następnie z wersji standardowa do wersji Standard w następnym kroku.
+- Nie można bezpośrednio migrować z **warstwy Podstawowa** do **warstwy Premium**, ale możesz to zrobić pośrednio, przechodząc od wersji podstawowej do standardowej, a następnie ze standardu do Premium w następnym kroku.
 
 ## <a name="migration-steps"></a>Kroki migracji
 Niektóre warunki są skojarzone z procesem migracji. Zapoznaj się z poniższymi krokami, aby zmniejszyć prawdopodobieństwo wystąpienia błędów. W tych krokach opisano proces migracji, a szczegóły krok po kroku znajdują się w poniższych sekcjach.

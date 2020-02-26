@@ -3,16 +3,15 @@ title: Deweloper najlepsze rozwiązania — zasobnika zabezpieczeń w usłudze A
 description: Poznaj najlepsze rozwiązania dla deweloperów dotyczące sposobu bezpiecznego zasobników w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 17f281aeb2ef3f1f32f3e13fe66fe8b74b1d9116
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: eaeb81d7f93124f1f3dedf9676314b1b786d8571
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547680"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595845"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zabezpieczeń zasobnik w usłudze Azure Kubernetes Service (AKS)
 
@@ -29,22 +28,22 @@ Można także zapoznać się z najlepszymi rozwiązaniami dotyczącymi [zabezpie
 
 ## <a name="secure-pod-access-to-resources"></a>Zasobnik bezpiecznego dostępu do zasobów
 
-**Najważniejsze wskazówki** — Aby uruchomić jako różny dostęp użytkownika lub grupy i limit do podstawowych procesów węzła i usług, zdefiniuj ustawienia kontekstu zabezpieczeń pod. Przypisz najmniejszej liczby wymaganych uprawnień.
+**Wskazówki dotyczące najlepszych** rozwiązań — do uruchamiania jako inny użytkownik lub Grupa i ograniczania dostępu do podstawowych procesów i usług węzła, definiowania ustawień kontekstu zabezpieczeń. Przypisz najmniejszej liczby wymaganych uprawnień.
 
-Dla aplikacji do poprawnego działania zasobników powinny być uruchamiane jako zdefiniowanych użytkownika lub grupy, a nie jako *głównego*. `securityContext` Dla pod lub kontenerów pozwala zdefiniować ustawienia, takie jak *nazwa_użytkownika* lub *fsGroup* założenie odpowiednie uprawnienia. Tylko przypisz wymagane uprawnienia użytkownika lub grupy, a nie należy używać kontekstu zabezpieczeń jako środek do przyjęcia dodatkowych uprawnień. Ustawienia *runAsUser*, eskalacji uprawnień i inne funkcje systemu Linux są dostępne tylko w węzłach i w systemach Linux.
+Aby aplikacje działały prawidłowo, należy uruchomić jako zdefiniowany użytkownika lub grupę, a nie jako *element główny*. `securityContext` dla elementu lub kontenera umożliwia zdefiniowanie ustawień, takich jak *runAsUser* lub *fsGroup* , aby założyć odpowiednie uprawnienia. Tylko przypisz wymagane uprawnienia użytkownika lub grupy, a nie należy używać kontekstu zabezpieczeń jako środek do przyjęcia dodatkowych uprawnień. Ustawienia *runAsUser*, eskalacji uprawnień i inne funkcje systemu Linux są dostępne tylko w węzłach i w systemach Linux.
 
 Po uruchomieniu jako użytkownik inny niż główny kontenerów nie można powiązać z uprzywilejowanym portów 1024 w obszarze. W tym scenariuszu usługi Kubernetes może służyć do zamaskowania fakt, że aplikacja jest uruchomiona na określonym porcie.
 
 Kontekst zabezpieczeń zasobnika można również zdefiniować dodatkowe możliwości lub uprawnienia do uzyskiwania dostępu do procesów i usług. Można ustawić następujące typowe definicje kontekstu zabezpieczeń:
 
-* **allowPrivilegeEscalation** Określa, czy można założyć zasobnik *głównego* uprawnień. Projektowanie aplikacji tak, to ustawienie jest zawsze równa *false*.
-* **Możliwości Linux** umożliwiają zasobnika dostęp do podstawowych procesów węzła. Należy zadbać o przypisanie tych możliwości. Przypisz najmniejszej liczby potrzebnych uprawnień. Aby uzyskać więcej informacji, zobacz [możliwości systemu Linux][linux-capabilities].
-* **Etykiety SELinux** jest modułu zabezpieczeń jądra systemu Linux, które umożliwiają definiowanie zasad dostępu dla dostępu do usług, procesów i system plików. Ponownie przypisać najmniejszej liczby potrzebnych uprawnień. Aby uzyskać więcej informacji, zobacz [Opcje SELinux w Kubernetes][selinux-labels]
+* **allowPrivilegeEscalation** określa, czy pod warunkiem, że może przyjmować uprawnienia *root* . Zaprojektuj swoje aplikacje, aby to ustawienie było zawsze ustawione na *wartość false*.
+* **Możliwości systemu Linux** pozwalają na dostęp do węzła podstawowego węzłów. Należy zadbać o przypisanie tych możliwości. Przypisz najmniejszej liczby potrzebnych uprawnień. Aby uzyskać więcej informacji, zobacz [możliwości systemu Linux][linux-capabilities].
+* **Etykiety SELinux** to moduł zabezpieczeń jądra systemu Linux, który umożliwia definiowanie zasad dostępu dla usług, procesów i dostępu do systemu plików. Ponownie przypisać najmniejszej liczby potrzebnych uprawnień. Aby uzyskać więcej informacji, zobacz [Opcje SELinux w Kubernetes][selinux-labels]
 
 Następujące manifest YAML zasobnika przykład ustawia zabezpieczeń ustawienia kontekstu do definiowania:
 
-* Zasobnik jest uruchamiana jako identyfikator użytkownika *1000* , identyfikator grupy jest częścią *2000*
-* Nie można eskalować uprawnienia do użycia `root`
+* Pod uruchomieniem jako identyfikator użytkownika *1000* i częścią grupy o identyfikatorze *2000*
+* Nie można eskalować uprawnień do używania `root`
 * Zezwala na możliwości systemu Linux, aby uzyskiwać dostęp do interfejsów sieciowych i hosta w czasie rzeczywistym (sprzęt) zegara
 
 ```yaml
@@ -68,7 +67,7 @@ Praca z operatora sieci klastra, aby określić, jakie ustawienia kontekstu zabe
 
 ## <a name="limit-credential-exposure"></a>Limit widoczności poświadczeń
 
-**Najważniejsze wskazówki** — nie definiują poświadczenia w kodzie aplikacji. Używaj zarządzanych tożsamości dla zasobów platformy Azure, aby umożliwić dostęp pod żądania do innych zasobów. Magazyn cyfrowych, takich jak usługi Azure Key Vault, należy również do przechowywania i pobierania kluczy cyfrowych i poświadczenia. Tożsamości zarządzane pod są przeznaczone wyłącznie dla systemów Linux i obrazów kontenerów.
+**Wskazówki dotyczące najlepszych** rozwiązań — nie Definiuj poświadczeń w kodzie aplikacji. Używaj zarządzanych tożsamości dla zasobów platformy Azure, aby umożliwić dostęp pod żądania do innych zasobów. Magazyn cyfrowych, takich jak usługi Azure Key Vault, należy również do przechowywania i pobierania kluczy cyfrowych i poświadczenia. Tożsamości zarządzane pod są przeznaczone wyłącznie dla systemów Linux i obrazów kontenerów.
 
 Aby ograniczyć ryzyko związane z poświadczeniami ujawniania w kodzie aplikacji, należy unikać stosowania stałej lub udostępnionych poświadczeń. Poświadczeń ani kluczy nie powinny być uwzględniane bezpośrednio w kodzie. Jeśli te poświadczenia są udostępniane, aplikacja musi zostać zaktualizowany i ponownego wdrażania. Lepszym rozwiązaniem jest zapewnienie zasobników własnej tożsamości i sposób uwierzytelnić lub automatycznie pobrać poświadczeń z magazynu cyfrowych.
 

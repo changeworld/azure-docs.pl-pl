@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 1688e85c6e6ed57892ccdffdf0813c8628127cc5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3f27753b0775f44cbdf9d4c478a19e423b8e1f19
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202505"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604554"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Zastosuj aktualizacje systemu w Azure Security Center
 Azure Security Center monitoruje codzienne maszyny wirtualne z systemami Windows i Linux oraz komputery z brakującymi aktualizacjami systemu operacyjnego. Security Center pobiera listę dostępnych aktualizacji zabezpieczeń i krytycznych z Windows Update lub Windows Server Update Services (WSUS), w zależności od tego, która usługa została skonfigurowana na komputerze z systemem Windows. Security Center również sprawdza najnowsze aktualizacje w systemach Linux. Jeśli na maszynie wirtualnej lub komputerze brakuje aktualizacji systemu, Security Center będzie zalecać stosowanie aktualizacji systemu.
@@ -44,19 +44,19 @@ W tym przykładzie będziemy używać **obliczeń**.
 
    Na dole pulpitu nawigacyjnego są wyświetlane wszystkie brakujące aktualizacje na maszynach wirtualnych i komputerach oraz ważność brakującej aktualizacji.  Lista zawiera:
 
-    - NAZWIJ Nazwa brakującej aktualizacji.
-    - ZNALEZIONO. Maszyn wirtualnych & komputerów: Łączna liczba maszyn wirtualnych i komputerów, na których brakuje tej aktualizacji.
-    - PAŃSTWU Bieżący stan zalecenia:
+    - Nazwa: Nazwa brakującej aktualizacji.
+    - Znaleziono. Maszyn wirtualnych & komputerów: Łączna liczba maszyn wirtualnych i komputerów, na których brakuje tej aktualizacji.
+    - STAN: bieżący stan zalecenia:
 
-      - Otwórz Zalecenie nie zostało jeszcze uwzględnione.
-      - W toku: Zalecenie jest obecnie stosowane do tych zasobów i nie jest wymagane wykonanie jakiejkolwiek akcji przez użytkownika.
-      - Klienta Zalecenie zostało już zakończone. (Gdy problem został rozwiązany, wpis jest wyszarzony).
+      - Otwarte: zalecenie nie zostało jeszcze uwzględnione.
+      - W toku: zalecenie jest aktualnie stosowane do tych zasobów i nie jest wymagane wykonanie jakiejkolwiek akcji przez użytkownika.
+      - Rozwiązano: zalecenie zostało już zakończone. (Gdy problem został rozwiązany, wpis jest wyszarzony).
 
-    - OBRAŻEŃ Opisuje ważność danego zalecenia:
+    - WAŻNOŚĆ: opisuje ważność danego zalecenia:
 
-      - Wysokowydajn Istnieje luka w zabezpieczeniach z istotnym zasobem (aplikacją, maszyną wirtualną lub sieciową grupą zabezpieczeń) i wymaga uwagi.
-      - Średniookresow Niekrytyczne lub dodatkowe kroki są wymagane do ukończenia procesu lub wyeliminowania luki w zabezpieczeniach.
-      - Małą Należy rozwiązać usterkę, ale nie wymaga natychmiastowej uwagi. (Domyślnie zalecenia o niskiej ważności nie są prezentowane, ale możesz ustawić filtr umożliwiający wyświetlanie zaleceń o niskiej ważności, jeśli chcesz je przeglądać).
+      - Wysoka: istnieje luka w zabezpieczeniach z istotnym zasobem (aplikacją, maszyną wirtualną lub sieciową grupą zabezpieczeń) i wymaga uwagi.
+      - Średni: niekrytyczne lub dodatkowe kroki są wymagane do ukończenia procesu lub wyeliminowania luki w zabezpieczeniach.
+      - Niska: należy rozwiązać usterkę, ale nie wymaga ona natychmiastowej uwagi. (Domyślnie zalecenia o niskiej ważności nie są prezentowane, ale możesz ustawić filtr umożliwiający wyświetlanie zaleceń o niskiej ważności, jeśli chcesz je przeglądać).
 
 3. Wybierz brakującą aktualizację na liście, aby wyświetlić szczegóły.
 
@@ -78,7 +78,6 @@ Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następując
 * [Monitorowanie kondycji zabezpieczeń w Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Monitorowanie rozwiązań partnerskich w Centrum zabezpieczeń Azure](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
-* [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
 * [Blog dotyczący zabezpieczeń platformy Azure](https://blogs.msdn.com/b/azuresecurity/) — zawiera wpisy w blogu dotyczące zabezpieczeń i zgodności platformy Azure.
 
 <!--Image references-->

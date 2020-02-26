@@ -1,10 +1,10 @@
 ---
-title: Rozwiązanie SAP ASCS/SCS o wysokiej dostępności z użyciem usługi Windows Server Failover Clustering i dysku udostępnionego na platformie Azure | Microsoft Docs
+title: Oprogramowanie SAP ASCS/SCS z obsługą protokołu MFA o wysokiej SID z usługą WSFC & udostępniony dysk na platformie Azure | Microsoft Docs
 description: Wysoka dostępność w przypadku wystąpienia SAP ASCS/SCS z obsługą klastrów trybu failover systemu Windows Server i dysku udostępnionego na platformie Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f7e9551e6a48350b8f23e9d6ce1d47a1a903c63
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 446091263596a1fd5503f38c6a60316f9b0b6843
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75643257"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598514"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -254,7 +254,7 @@ Pełna krajobraz z dwoma systemami SAP wysokiej dostępności będzie wyglądać
 
 Aby przygotować infrastrukturę, można zainstalować dodatkowe wystąpienie SAP ASCS/SCS z następującymi parametrami:
 
-| Nazwa parametru | Wartość |
+| Nazwa parametru | Value |
 | --- | --- |
 | SAP ASCS/SCS SID |PR1-lb-ASCS |
 | Wewnętrzny moduł równoważenia obciążenia SAP DBMS | PR5 |

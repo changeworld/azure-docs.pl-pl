@@ -4,12 +4,12 @@ description: Dowiedz się, jak utworzyć kopię zapasową serwera programu Excha
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: b2231fcadc3e0cb591302ba47572627ae3a17e58
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 813a13739020bed839cc389897704395c77a322d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173278"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586499"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Tworzenie kopii zapasowych serwera programu Exchange do usługi Azure Backup przy użyciu programu System Center 2012 R2 DPM
 
@@ -38,8 +38,8 @@ Przed kontynuowaniem upewnij się, że spełniono wszystkie [wymagania wstępne]
 
 Aby zainstalować agenta ochrony programu DPM na serwerze Exchange, wykonaj następujące kroki:
 
-1. Upewnij się, że zapory są prawidłowo skonfigurowane. Zobacz [Configure firewall Exceptions for the Agent](https://technet.microsoft.com/library/Hh758204.aspx).
-2. Zainstaluj agenta na serwerze programu Exchange, klikając pozycję **zarządzanie > agenci > Zainstaluj** w Konsola administratora programu DPM. Szczegółowe instrukcje znajdują się w temacie [Install the DPM Protection Agent](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) .
+1. Upewnij się, że zapory są prawidłowo skonfigurowane. Zobacz [Configure firewall Exceptions for the Agent](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758204(v=sc.12)).
+2. Zainstaluj agenta na serwerze programu Exchange, klikając pozycję **zarządzanie > agenci > Zainstaluj** w Konsola administratora programu DPM. Szczegółowe instrukcje znajdują się w temacie [Install the DPM Protection Agent](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12)) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Tworzenie grupy ochrony dla serwera programu Exchange
 
@@ -49,7 +49,7 @@ Aby zainstalować agenta ochrony programu DPM na serwerze Exchange, wykonaj nast
 4. Wybierz bazę danych programu Exchange Server, którą chcesz chronić, a następnie kliknij przycisk **dalej**.
 
    > [!NOTE]
-   > W przypadku ochrony programu Exchange 2013 Sprawdź [wymagania wstępne programu exchange 2013](https://technet.microsoft.com/library/dn751029.aspx).
+   > W przypadku ochrony programu Exchange 2013 Sprawdź [wymagania wstępne programu exchange 2013](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12)).
    >
    >
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8b1e4c60e6054141e71d2509fe34c7ca9baf9ca6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163198"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598463"
 ---
 # <a name="import-data-module"></a>Importuj moduł danych
 
@@ -48,9 +48,7 @@ Jeśli dane źródłowe zmienią się, można odświeżyć zestaw danych i doda�
 
 1. Dodaj moduł **Import danych** do potoku. Ten moduł można znaleźć w kategorii dane **wejściowe i wyjściowe** w projektancie.
 
-1. Kliknij przycisk **Uruchom Kreatora importu danych** , aby skonfigurować źródło danych za pomocą kreatora.
-
-    Kreator pobiera nazwę i poświadczenia konta oraz ułatwia konfigurowanie innych opcji. Jeśli edytujesz istniejącą konfigurację, najpierw ładuje bieżące wartości.
+1. Wybierz moduł, aby otworzyć okienko po prawej stronie.
 
 1. Wybierz pozycję **Źródło danych**i wybierz typ źródła danych. Może to być HTTP lub magazyn danych.
 
@@ -60,6 +58,11 @@ Jeśli dane źródłowe zmienią się, można odświeżyć zestaw danych i doda�
 
     ![Importowanie danych — wersja zapoznawcza](media/module/import-data.png)
 
+1. Pole wyboru, **Wygeneruj ponownie dane wyjściowe**, decyduje o tym, czy uruchomić moduł w celu ponownego wygenerowania danych wyjściowych w czasie wykonywania. 
+
+    Jest to domyślnie niezaznaczone, co oznacza, że moduł został wykonany z tymi samymi parametrami, system użyje danych wyjściowych z ostatniego uruchomienia, aby skrócić czas wykonywania. 
+
+    W przypadku wybrania tej operacji system ponownie uruchomi moduł w celu ponownego wygenerowania danych wyjściowych. Wybierz tę opcję, jeśli dane podstawowe w magazynie zostaną zaktualizowane, może to pomóc w uzyskaniu najnowszych danych.
 
 
 1. Uruchamianie potoku.

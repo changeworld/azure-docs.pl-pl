@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b05eefb2a0e516772390f898c22e723b08973338
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 3f07105c14d4dafeb689eaaf7d679f93e5f235fe
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484455"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605330"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chroniony internetowy interfejs API: Konfiguracja kodu
 
@@ -109,7 +109,7 @@ Oprogramowanie pośredniczące jest dodawane do internetowego interfejsu API prz
 
 ```csharp
  services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
-         .AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
+         .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
  Obecnie szablony ASP.NET Core tworzą interfejsy API sieci Web Azure Active Directory (Azure AD), które logują użytkowników w organizacji lub dowolnej organizacji. Użytkownicy nie logują się przy użyciu kont osobistych. Można jednak zmienić szablony tak, aby korzystały z punktu końcowego platformy tożsamości firmy Microsoft przez dodanie tego kodu do Startup.cs:

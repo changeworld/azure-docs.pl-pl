@@ -2,25 +2,22 @@
 title: Tworzenie kontrolera transferu danych przychodzących dla sieci wewnętrznej w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak zainstalować i skonfigurować międzyNGINXowy kontroler dla wewnętrznej, prywatnej sieci w klastrze usługi Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: mlearned
-ms.openlocfilehash: 935b96bd553c9ae73b55086483baa0ea7c4aeaa4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8c3eeaf2f9a92f1be9c691091d8e33d09a60b22d
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615466"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595658"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Tworzenie kontrolera transferu danych przychodzących w wewnętrznej sieci wirtualnej w usłudze Azure Kubernetes Service (AKS)
 
 Kontroler ruchu przychodzącego to element oprogramowania dostarczający odwrotny serwer proxy, konfigurowalne trasowanie ruchu oraz zakończenie protokołu TLS dla usług Kubernetes. Zasoby ruchu przychodzącego usług Kubernetes są używane do skonfigurowania zasad ruchu przychodzącego oraz tras dla poszczególnych usług Kubernetes. Dzięki korzystaniu z kontrolera ruchu przychodzącego oraz zasad ruchu przychodzącego można użyć jednego adresu IP do trasowania ruchu w wielu usługach w klastrze Kubernetes.
 
-W tym artykule pokazano, jak wdrożyć [kontroler Nginx][nginx-ingress] Ingress w klastrze usługi Azure Kubernetes Service (AKS). Kontroler transferu danych przychodzących jest konfigurowany w wewnętrznej, prywatnej sieci wirtualnej i adresie IP. Nie jest dozwolony dostęp zewnętrzny. W klastrze AKS są uruchamiane dwie aplikacje, z których każdy jest dostępny za pośrednictwem pojedynczego adresu IP.
+W tym artykule pokazano, jak wdrożyć [kontroler Nginx Ingress][nginx-ingress] w klastrze usługi Azure Kubernetes Service (AKS). Kontroler transferu danych przychodzących jest konfigurowany w wewnętrznej, prywatnej sieci wirtualnej i adresie IP. Nie jest dozwolony dostęp zewnętrzny. W klastrze AKS są uruchamiane dwie aplikacje, z których każdy jest dostępny za pośrednictwem pojedynczego adresu IP.
 
-Możesz również wykonać następujące czynności:
+Możesz także:
 
 - [Tworzenie podstawowego kontrolera danych wejściowych z łącznością sieci zewnętrznej][aks-ingress-basic]
 - [Włącz dodatek routingu aplikacji protokołu HTTP][aks-http-app-routing]
@@ -47,12 +44,12 @@ controller:
       service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 ```
 
-Teraz Wdróż wykres *Nginx-* transferal z Helm. Aby użyć pliku manifestu utworzonego w poprzednim kroku, Dodaj `-f internal-ingress.yaml` parametr. W celu dodania nadmiarowości dwie repliki kontrolerów Nginx transferów przychodzących są wdrażane przy użyciu `--set controller.replicaCount` parametru. Aby w pełni korzystać z uruchamiania replik kontrolera transferu danych przychodzących, upewnij się, że w klastrze AKS znajduje się więcej niż jeden węzeł.
+Teraz Wdróż wykres *Nginx-* transferal z Helm. Aby użyć pliku manifestu utworzonego w poprzednim kroku, należy dodać parametr `-f internal-ingress.yaml`. W celu dodania nadmiarowości dwie repliki kontrolerów NGINX Ingress są wdrażane z parametrem `--set controller.replicaCount`. Aby w pełni korzystać z uruchamiania replik kontrolera transferu danych przychodzących, upewnij się, że w klastrze AKS znajduje się więcej niż jeden węzeł.
 
-Kontroler transferu danych przychodzących należy również zaplanować w węźle systemu Linux. W węzłach systemu Windows Server (obecnie w wersji zapoznawczej w AKS) nie należy uruchamiać kontrolera transferu danych przychodzących. Selektor węzła jest określany za pomocą `--set nodeSelector` parametru, aby poinformować usługę Kubernetes Scheduler o uruchomieniu kontrolera usługi Nginx w węźle opartym na systemie Linux.
+Kontroler transferu danych przychodzących należy również zaplanować w węźle systemu Linux. W węzłach systemu Windows Server (obecnie w wersji zapoznawczej w AKS) nie należy uruchamiać kontrolera transferu danych przychodzących. Selektor węzła jest określany za pomocą parametru `--set nodeSelector`, aby poinformować usługę Kubernetes Scheduler o uruchomieniu kontrolera usługi NGINX w węźle opartym na systemie Linux.
 
 > [!TIP]
-> Poniższy przykład tworzy przestrzeń nazw Kubernetes dla zasobów przychodzących o nazwie transfery *-Basic*. W razie potrzeby określ przestrzeń nazw dla własnego środowiska. Jeśli klaster AKS nie jest włączony RBAC, Dodaj `--set rbac.create=false` do poleceń Helm.
+> Poniższy przykład tworzy przestrzeń nazw Kubernetes dla zasobów przychodzących o nazwie transfery *-Basic*. W razie potrzeby określ przestrzeń nazw dla własnego środowiska. Jeśli w klastrze AKS nie włączono kontroli RBAC, Dodaj `--set rbac.create=false` do poleceń Helm.
 
 > [!TIP]
 > Jeśli chcesz włączyć [zachowywanie źródłowych adresów IP klienta][client-source-ip] dla żądań do kontenerów w klastrze, Dodaj `--set controller.service.externalTrafficPolicy=Local` do polecenia instalacji Helm. Adres IP źródła klienta jest przechowywany w nagłówku żądania w obszarze *X-forwardd-for*. W przypadku korzystania z kontrolera transferu danych przychodzących z włączonym zachowywaniem źródłowych adresów IP klienta przekazywanie protokołu SSL nie będzie działało.
@@ -111,9 +108,9 @@ helm install azure-samples/aks-helloworld \
 
 Obie aplikacje działają teraz w klastrze Kubernetes. Aby skierować ruch do poszczególnych aplikacji, utwórz zasób Kubernetes. Zasób danych przychodzących konfiguruje reguły, które kierują ruch do jednej z dwóch aplikacji.
 
-W poniższym przykładzie ruch do adresu `http://10.240.0.42/` jest kierowany do usługi o nazwie. `aks-helloworld` Ruch do adresu `http://10.240.0.42/hello-world-two` jest kierowany `ingress-demo` do usługi.
+W poniższym przykładzie ruch do `http://10.240.0.42/` adresu jest kierowany do usługi o nazwie `aks-helloworld`. Ruch do `http://10.240.0.42/hello-world-two` adresu jest kierowany do usługi `ingress-demo`.
 
-Utwórz plik o nazwie `hello-world-ingress.yaml` i skopiuj w poniższym przykładzie YAML.
+Utwórz plik o nazwie `hello-world-ingress.yaml` i skopiuj go w poniższym przykładzie YAML.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -139,7 +136,7 @@ spec:
         path: /hello-world-two(/|$)(.*)
 ```
 
-Utwórz zasób transferu danych przychodzących przy użyciu `kubectl apply -f hello-world-ingress.yaml` polecenia.
+Utwórz zasób transferu danych przychodzących przy użyciu polecenia `kubectl apply -f hello-world-ingress.yaml`.
 
 ```
 $ kubectl apply -f hello-world-ingress.yaml
@@ -155,19 +152,19 @@ Aby przetestować trasy dla kontrolera transferu danych przychodzących, przejd�
 kubectl run -it --rm aks-ingress-test --image=debian --namespace ingress-basic
 ```
 
-Zainstaluj `curl` w temacie using `apt-get`:
+Zainstaluj `curl` w obszarze `apt-get`przy użyciu:
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-Uzyskaj teraz dostęp do adresu kontrolera usługi Kubernetes Ingress przy `curl`użyciu, takiego *http://10.240.0.42* jak. Podaj własny wewnętrzny adres IP określony podczas wdrażania kontrolera transferu danych przychodzących w pierwszym kroku tego artykułu.
+Teraz Uzyskuj dostęp do adresu kontrolera Kubernetes Ingress za pomocą `curl`, takich jak *http://10.240.0.42* . Podaj własny wewnętrzny adres IP określony podczas wdrażania kontrolera transferu danych przychodzących w pierwszym kroku tego artykułu.
 
 ```console
 curl -L http://10.240.0.42
 ```
 
-Nie dostarczono żadnej dodatkowej ścieżki z adresem, dlatego kontroler transferu danych przychodzących jest domyślnie */* kierowany do trasy. Zostanie zwrócona pierwsza aplikacja demonstracyjna, jak pokazano w następujących wąskich przykładowych danych wyjściowych:
+Nie dostarczono żadnej dodatkowej ścieżki z adresem, dlatego kontroler transferu danych przychodzących jest domyślnie kierowany do */* . Zostanie zwrócona pierwsza aplikacja demonstracyjna, jak pokazano w następujących wąskich przykładowych danych wyjściowych:
 
 ```
 $ curl -L 10.240.0.42
@@ -180,7 +177,7 @@ $ curl -L 10.240.0.42
 [...]
 ```
 
-Teraz dodaj ścieżkę */Hello-World-Two* do adresu, *http://10.240.0.42/hello-world-two* na przykład. Zostanie zwrócona druga aplikacja demonstracyjna z tytułem niestandardowym, jak pokazano w następujących wąskich przykładowych danych wyjściowych:
+Teraz dodaj ścieżkę */Hello-World-Two* do adresu, na przykład *http://10.240.0.42/hello-world-two* . Zostanie zwrócona druga aplikacja demonstracyjna z tytułem niestandardowym, jak pokazano w następujących wąskich przykładowych danych wyjściowych:
 
 ```
 $ curl -L -k http://10.240.0.42/hello-world-two
@@ -199,7 +196,7 @@ W tym artykule użyto Helm do zainstalowania składników przychodzących i przy
 
 ### <a name="delete-the-sample-namespace-and-all-resources"></a>Usuń przykładową przestrzeń nazw i wszystkie zasoby
 
-Aby usunąć całą przykładową przestrzeń nazw, użyj `kubectl delete` polecenia i określ nazwę przestrzeni nazw. Wszystkie zasoby w przestrzeni nazw są usuwane.
+Aby usunąć całą przykładową przestrzeń nazw, użyj polecenia `kubectl delete` i określ nazwę przestrzeni nazw. Wszystkie zasoby w przestrzeni nazw są usuwane.
 
 ```console
 kubectl delete namespace ingress-basic
@@ -213,7 +210,7 @@ helm repo remove azure-samples
 
 ### <a name="delete-resources-individually"></a>Usuń zasoby pojedynczo
 
-Alternatywnie, bardziej szczegółowe podejście polega na usunięciu utworzonych poszczególnych zasobów. Utwórz listę wersji Helm za pomocą `helm list` polecenia. Poszukaj wykresów o nazwie *Nginx-* Ingress i *AKS-HelloWorld*, jak pokazano w następujących przykładowych danych wyjściowych:
+Alternatywnie, bardziej szczegółowe podejście polega na usunięciu utworzonych poszczególnych zasobów. Utwórz listę wydań Helm za pomocą polecenia `helm list`. Poszukaj wykresów o nazwie *Nginx-Ingress* i *AKS-HelloWorld*, jak pokazano w następujących przykładowych danych wyjściowych:
 
 ```
 $ helm list
@@ -224,7 +221,7 @@ intended-lemur      1           Tue Oct 16 17:20:59 2018    DEPLOYED    aks-hell
 pioneering-wombat   1           Tue Oct 16 17:21:05 2018    DEPLOYED    aks-helloworld-0.1.0                default
 ```
 
-Usuń wydania za pomocą `helm delete` polecenia. Poniższy przykład usuwa wdrożenie NGINX, a dwa przykładowe aplikacje AKS Hello World.
+Usuń wydania za pomocą polecenia `helm delete`. Poniższy przykład usuwa wdrożenie NGINX, a dwa przykładowe aplikacje AKS Hello World.
 
 ```
 $ helm delete kissing-ferret intended-lemur pioneering-wombat
@@ -246,7 +243,7 @@ Usuń trasę transferu danych przychodzących, która kieruje ruch do aplikacji 
 kubectl delete -f hello-world-ingress.yaml
 ```
 
-Na koniec można usunąć samą przestrzeń nazw. `kubectl delete` Użyj polecenia i określ nazwę przestrzeni nazw:
+Na koniec można usunąć samą przestrzeń nazw. Użyj `kubectl delete` polecenia i określ nazwę przestrzeni nazw:
 
 ```console
 kubectl delete namespace ingress-basic
@@ -259,7 +256,7 @@ W tym artykule uwzględniono niektóre składniki zewnętrzne do AKS. Aby dowied
 - [Interfejs wiersza polecenia Helm][helm-cli]
 - [Kontroler transferu danych przychodzących NGINX][nginx-ingress]
 
-Możesz również wykonać następujące czynności:
+Możesz także:
 
 - [Tworzenie podstawowego kontrolera danych wejściowych z łącznością sieci zewnętrznej][aks-ingress-basic]
 - [Włącz dodatek routingu aplikacji protokołu HTTP][aks-http-app-routing]

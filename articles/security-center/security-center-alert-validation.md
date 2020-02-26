@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 709ac3a9f5e7cf0bd13a6e387f0b80caf2608fe0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 10ea15168d61d5e73aff976ef641e07b6327dbca
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748461"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604571"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Walidacja alertu (plik testowy EICAR) w Azure Security Center
 Ten dokument zawiera informacje dotyczące sposobu weryfikacji systemu pod kątem prawidłowej konfiguracji alertów usługi Azure Security Center.
@@ -49,7 +49,7 @@ Po zainstalowaniu agenta Security Center na komputerze wykonaj następujące kro
 ## Weryfikowanie alertów na maszynach wirtualnych z systemem Linux<a name="validate-linux"></a>
 
 Po zainstalowaniu agenta Security Center na komputerze wykonaj następujące kroki na komputerze, na którym ma zostać zaatakowany zasób alertu:
-1. Skopiuj plik wykonywalny do wygodnej lokalizacji i zmień jego nazwę na **/asc_alerttest_662jfi039n**, na przykład:
+1. Skopiuj plik wykonywalny do wygodnej lokalizacji i zmień jego nazwę na **./asc_alerttest_662jfi039n**, na przykład:
 
     ```cp /bin/echo ./asc_alerttest_662jfi039n```
 
@@ -79,5 +79,4 @@ Ten artykuł zawiera wprowadzenie do procesu walidacji alertów. Teraz, kiedy zn
 * [Monitorowanie kondycji zabezpieczeń w Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
 * [Opis alertów zabezpieczeń w Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) — informacje o różnych typach alertów zabezpieczeń.
 * [Przewodnik rozwiązywania problemów Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide) — informacje dotyczące rozwiązywania typowych problemów w programie Security Center.
-* [Azure Security Center często zadawane](security-center-faq.md) pytania — Znajdź często zadawane pytania dotyczące korzystania z usługi.
 * [Blog dotyczący zabezpieczeń platformy Azure](https://blogs.msdn.com/b/azuresecurity/) — wpisy w blogu dotyczące zabezpieczeń i zgodności platformy Azure.

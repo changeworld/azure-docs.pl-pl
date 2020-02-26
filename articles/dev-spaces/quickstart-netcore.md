@@ -6,16 +6,16 @@ ms.topic: quickstart
 description: W tym przewodniku szybki start pokazano, jak używać Azure Dev Spaces i Visual Studio Code do debugowania i szybkiej iteracji aplikacji platformy .NET Core w usłudze Azure Kubernetes Service
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: fe2bb61ccfc7285dc5f4a5c21f3c62abfecca343
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c2d84e823d028f542c5ab852be2ea68a5abafe93
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290601"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605290"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Szybki Start: debugowanie i iteracja na Kubernetes: Visual Studio Code i .NET Core — Azure Dev Spaces
 
-Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
 - Konfigurowanie usługi Azure Dev Spaces za pomocą zarządzanego klastra Kubernetes na platformie Azure.
 - Iteracyjnie opracowuj kod w kontenerach przy użyciu Visual Studio Code.
@@ -39,7 +39,7 @@ Należy utworzyć klaster AKS w [obsługiwanym regionie][supported-regions]. Pon
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Włączanie Azure Dev Spaces w klastrze AKS
@@ -113,7 +113,7 @@ Kliknij pozycję *Debuguj* , a następnie *Zatrzymaj debugowanie* , aby zatrzyma
 
 ## <a name="update-code"></a>Aktualizowanie kodu
 
-Aby wdrożyć zaktualizowaną wersję usługi, możesz zaktualizować każdy plik w projekcie i ponownie uruchomić program *.NET Core (AZDS)* . Przykład:
+Aby wdrożyć zaktualizowaną wersję usługi, możesz zaktualizować każdy plik w projekcie i ponownie uruchomić program *.NET Core (AZDS)* . Na przykład:
 
 1. Jeśli aplikacja jest nadal uruchomiona, kliknij pozycję *Debuguj* , a następnie *Zatrzymaj debugowanie* , aby ją zatrzymać.
 1. Aktualizuj [wiersz 22 w `Controllers/HomeController.cs`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) do:
@@ -142,7 +142,7 @@ Usuń punkt przerwania, umieszczając kursor w wierszu 22 w `Controllers/HomeCon
 
 ## <a name="update-code-from-visual-studio-code"></a>Aktualizuj kod z Visual Studio Code
 
-Gdy usługa jest uruchomiona w trybie debugowania, zaktualizuj wiersz 22 w `Controllers/HomeController.cs`. Przykład:
+Gdy usługa jest uruchomiona w trybie debugowania, zaktualizuj wiersz 22 w `Controllers/HomeController.cs`. Na przykład:
 
 ```csharp
 ViewData["Message"] = "Your application description page in Azure while debugging!";

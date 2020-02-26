@@ -3,16 +3,15 @@ title: Wdrażanie kontenerów za pomocą Helm w programie Kubernetes na platform
 description: Dowiedz się, jak wdrażać kontenery w klastrze usługi Azure Kubernetes Service (AKS) za pomocą narzędzia do pakowania Helm
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: zarhoads
-ms.openlocfilehash: 849f4e182d4bd9255ca8e60b69b6ad6c8a8e0fc7
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 4a9ccaff0e3425c365a64ecb4fbadf3c7aa8dcfb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869378"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595182"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalowanie aplikacji przy użyciu usługi Helm w usłudze Azure Kubernetes Service (AKS)
 

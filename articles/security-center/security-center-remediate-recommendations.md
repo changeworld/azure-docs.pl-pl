@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 325c68e5e4531e5519596bea00c370c26460a8ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6863f4bbfc6aabc4e7bf4314ad26dd4590d31362
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981907"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603503"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Koryguj zalecenia w Azure Security Center
 
@@ -80,7 +80,7 @@ Operacja korygowania używa wdrożenia szablonu lub wywołania interfejsu API po
 |Zaawansowana ochrona danych powinna być włączona na serwerach SQL|Ta akcja spowoduje włączenie zaawansowanych zabezpieczeń danych (ADS) na tych wybranych serwerach i ich bazach danych. <br>**Uwaga**:<ul><li>Dla każdego regionu i grupy zasobów wybranych serwerów SQL konto magazynu do przechowywania wyników skanowania zostanie utworzone i udostępnione przez wszystkie serwery w tym regionie. <</li><li>Usługa ADS jest naliczana zgodnie z $15 na program SQL Server.</li></ul>||
 |Ocena luk w zabezpieczeniach powinna być włączona na serwerach SQL|Ta akcja spowoduje włączenie oceny luk w zabezpieczeniach programu SQL dla wybranych serwerów i ich baz danych. <br>**Uwaga**:<ul><li>Ocena luk w zabezpieczeniach SQL jest częścią pakietu SQL Advanced Data Security (AD). Jeśli usługa ADS nie jest już włączona, zostanie ona automatycznie włączona na serwerze SQL.</li><li>Dla każdego regionu i grupy zasobów wybranych serwerów SQL konto magazynu do przechowywania wyników skanowania zostanie utworzone i udostępnione przez wszystkie wystąpienia w tym regionie.</li><li>Usługa ADS jest naliczana zgodnie z $15 na program SQL Server.</li></ul>||
 |Należy włączyć funkcję przezroczystego szyfrowania danych w bazach danych SQL.|Ta akcja włącza SQL Database Transparent Data Encryption (TDE) dla wybranych baz danych. <br>**Uwaga**: Domyślnie zostaną użyte klucze TDE zarządzane przez usługę.
-|Należy włączyć bezpieczny transfer na konta magazynu|Ta akcja aktualizuje zabezpieczenia konta magazynu tak, aby zezwalać na żądania przez bezpieczne połączenia. (HTTPS). <br>**Uwaga**:<ul><li>Wszystkie żądania przy użyciu protokołu HTTP zostaną odrzucone.</li><li>Gdy korzystasz z usługi Azure Files, połączenie bez szyfrowania zakończy się niepowodzeniem, w tym scenariusze korzystające z protokołu SMB 2,1, protokołu SMB 3,0 bez szyfrowania i niektórych typów klienta SMB systemu Linux. Dowiedz się więcej.</li></ul>|
+|Należy włączyć bezpieczny transfer do kont magazynu|Ta akcja aktualizuje zabezpieczenia konta magazynu tak, aby zezwalać na żądania przez bezpieczne połączenia. (HTTPS). <br>**Uwaga**:<ul><li>Wszystkie żądania przy użyciu protokołu HTTP zostaną odrzucone.</li><li>Gdy korzystasz z usługi Azure Files, połączenie bez szyfrowania zakończy się niepowodzeniem, w tym scenariusze korzystające z protokołu SMB 2,1, protokołu SMB 3,0 bez szyfrowania i niektórych typów klienta SMB systemu Linux. Dowiedz się więcej.</li></ul>|
 |Aplikacja sieci Web powinna być dostępna tylko za pośrednictwem protokołu HTTPS|Ta akcja spowoduje przekierowanie całego ruchu z protokołu HTTP do HTTPS na wybranych zasobach. <br>**Uwaga**:<ul><li>Punkt końcowy HTTPS, który nie ma certyfikatu SSL, będzie wyświetlany w przeglądarce z powodu błędu "Prywatność". Użytkownicy, którzy posiadają domenę niestandardową, muszą sprawdzić, czy skonfigurowali certyfikat SSL.</li><li>Upewnij się, że pakiet i zapory aplikacji sieci Web chronią usługę App Service, Zezwalaj na przekazywanie sesji HTTPS.</li></ul>|
 |Funkcja aplikacji powinny być dostępne tylko za pośrednictwem protokołu HTTPS|Ta akcja spowoduje przekierowanie całego ruchu z protokołu HTTP do HTTPS na wybranych zasobach. <br>**Uwaga**:<ul><li>Punkt końcowy HTTPS, który nie ma certyfikatu SSL, będzie wyświetlany w przeglądarce z powodu błędu "Prywatność". Użytkownicy, którzy posiadają domenę niestandardową, muszą sprawdzić, czy skonfigurowali certyfikat SSL.</li><li>Upewnij się, że pakiet i zapory aplikacji sieci Web chronią usługę App Service, Zezwalaj na przekazywanie sesji HTTPS.</li></ul>|
 |Aplikacja interfejsu API powinna być dostępna tylko za pośrednictwem protokołu HTTPS|Ta akcja spowoduje przekierowanie całego ruchu z protokołu HTTP do HTTPS na wybranych zasobach. <br>**Uwaga**:<ul><li>Punkt końcowy HTTPS, który nie ma certyfikatu SSL, będzie wyświetlany w przeglądarce z powodu błędu "Prywatność". Użytkownicy, którzy posiadają domenę niestandardową, muszą sprawdzić, czy skonfigurowali certyfikat SSL.</li><li>Upewnij się, że pakiet i zapory aplikacji sieci Web chronią usługę App Service, Zezwalaj na przekazywanie sesji HTTPS.</li></ul>|

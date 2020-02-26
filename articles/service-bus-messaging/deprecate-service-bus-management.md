@@ -1,0 +1,85 @@
+---
+title: Usługi Azure Messaging Services — Service Manager do Menedżer zasobów
+description: Ten artykuł zawiera mapowanie przestarzałych poleceń cmdlet programu PowerShell usługi Azure Service Manager API REST & Menedżer zasobów interfejsu API REST & poleceń cmdlet programu PowerShell.
+services: service-bus-messaging, event-hubs, event-grid
+documentationcenter: na
+author: spelluru
+editor: ''
+ms.service: service-bus-messaging
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 01/22/2020
+ms.author: spelluru
+ms.openlocfilehash: d263381667319b98a28ee6168e2de75c4041b58a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589911"
+---
+# <a name="deprecation-of-azure-service-manager-support-for-azure-service-bus-relay-and-event-hubs"></a>Wycofanie pomocy technicznej Service Manager platformy Azure dla Azure Service Bus, przekazywania i Event Hubs
+
+W ramach naszego stosu infrastruktury chmurowej następnej generacji w pełni zastępują "klasyczny" model zarządzania usługami platformy Azure (klasyczny model wdrażania). Menedżer zasobów W efekcie interfejsy API REST klasycznego modelu wdrażania i obsługa Service Bus, Relay i Event Hubs zostaną wycofane 1 listopada 2021. To wycofanie zostało po raz pierwszy ogłoszone w [ogłoszeniu społeczności technicznej firmy Microsoft](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Deprecating-Service-Management-support-for-Azure-Service-Bus/ba-p/370909), ale niedawno podjęto decyzję o przekroczeniu okresu wycofania przez dwa lata od momentu oryginalnego powiadomienia. Aby ułatwić identyfikację, te interfejsy API mają `management.core.windows.net` w swoich identyfikatorach URI. Zapoznaj się z poniższą tabelą, aby zapoznać się z listą przestarzałych interfejsów API i ich wersji interfejsu API Azure Resource Manager, która powinna zostać użyta.
+
+Aby nadal korzystać z Service Bus, przekazywania i Event Hubs, przejdź do Menedżer zasobów do 31 października 2021. Zachęcamy wszystkich klientów, którzy nadal korzystają ze starych interfejsów API, aby wkrótce korzystać z zalet dodatkowych zalet Menedżer zasobów, takich jak grupowanie zasobów, Tagi, usprawnione wdrożenie i proces zarządzania oraz szczegółowy dostęp Kontrola przy użyciu kontroli dostępu opartej na rolach (RBAC).
+
+Aby uzyskać więcej informacji na temat Azure Resource Manager Service Manager platformy Azure, zobacz [blog TechNet](https://blogs.technet.microsoft.com/meamcs/2016/12/22/difference-between-azure-service-manager-and-azure-resource-manager/).
+
+Aby uzyskać więcej informacji na temat Service Manager i Menedżer zasobów interfejsów API na potrzeby Azure Service Bus, przekazywania i Event Hubs, zobacz dokumentację interfejsu API REST:
+
+- [Azure Service Bus](/rest/api/servicebus/)
+- [Azure Event Hubs](/rest/api/eventhub/)
+- [Azure Relay](/rest/api/relay/)
+
+## <a name="service-manager-rest-api---resource-manager-rest-api"></a>Interfejs API REST usługi Service Manager — Menedżer zasobów interfejs API REST
+
+| Interfejsy API Service Manager (przestarzałe) | Interfejs API Service Bus Menedżer zasobów | Menedżer zasobów — interfejs API centrum zdarzeń | Interfejs API przekazywania Menedżer zasobów |
+| --------------- | ----------------- | ----------------- | ----------------- | 
+| **Przestrzenie nazw — GetNamespaceAsync** <br/>[Service Bus uzyskać przestrzeni nazw](/rest/api/servicebus/get-namespace)<br/>[Pobieranie przestrzeni nazw centrum zdarzeń](/rest/api/eventhub/get-event-hub)<br/>[Pobieranie przestrzeni nazw przekaźnika](/rest/api/servicebus/get-relays)<br/> ```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}``` | [Pobierz](/rest/api/servicebus/namespaces/get) | [Pobierz](/rest/api/eventhub/namespaces/get) | [Pobierz](/rest/api/relay/namespaces/get) |
+| **ConnectionDetails — GetConnectionDetails**<br/>Service Bus/centrum zdarzeń/przekaźnik GetConnectionDetals<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/ConnectionDetails``` | [listkeys](/rest/api/servicebus/namespaces/listkeys) | [listkeys](/rest/api/eventhub/namespaces/listkeys) | [listkeys](/rest/api/relay/namespaces/listkeys) |
+| **Tematy — GetTopicsAsync**<br/>Service Bus<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/topics? $skip={skip}&$top={top}``` | [list](/rest/api/servicebus/topics/listbynamespace) | &nbsp; | &nbsp; | 
+| **Kolejki — GetQueueAsync** <br/>Service Bus<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/queues/{queueName}``` | [Pobierz](/rest/api/servicebus/queues/get) | &nbsp; | &nbsp; | 
+| **Przekaźniki — GetRelaysAsync**<br/>[Pobierz Przekaźniki](/rest/api/servicebus/get-relays)<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/relays? $skip={skip}&$top={top}```| &nbsp; | &nbsp; | [list](/rest/api/relay/wcfrelays/listbynamespace) | 
+| **NamespaceAuthorizationRules-GetNamespaceAuthorizationRuleAsync**<br/>Service Bus/centrum zdarzeń/przekaźnik GetNamespaceAuthRule<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/authorizationrules?``` | [getauthorizationrule](/rest/api/servicebus/namespaces/getauthorizationrule) |[getauthorizationrule](/rest/api/eventhub/namespaces/getauthorizationrule) | [getauthorizationrule](/rest/api/relay/namespaces/getauthorizationrule) |
+| **Przestrzenie nazw — DeleteNamespaceAsync**<br/>[Service Bus usunąć przestrzeni nazw](/rest/api/servicebus/delete-namespace)<br/>[Event Hubs usunąć przestrzeni nazw](/rest/api/eventhub/delete-event-hub)<br/>[Przekaźniki Usuń przestrzeń nazw](/rest/api/servicebus/delete-namespace)<br/> ```DELETE  https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}``` | [usuwanie](/rest/api/servicebus/namespaces/delete) | [usuwanie](/rest/api/eventhub/namespaces/delete) | [usuwanie](/rest/api/relay/namespaces/delete) | 
+| **Element messagingskuplan — GetPlanAsync**<br/>Service Bus/centrum zdarzeń/przestrzeń nazw pobierania<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/MessagingPlan``` | [Pobierz](/rest/api/servicebus/namespaces/get) | [Pobierz](/rest/api/eventhub/namespaces/get) | [Pobierz](/rest/api/relay/namespaces/get) |
+| **Element messagingskuplan — UpdatePlanAsync**<br/>Service Bus/centrum zdarzeń/przestrzeń nazw pobierania<br/>```PUT https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/MessagingPlan``` | [metodę createorupdate](/rest/api/servicebus/namespaces/createorupdate) | [metodę createorupdate](/rest/api/eventhub/namespaces/createorupdate) | [metodę createorupdate](/rest/api/relay/namespaces/createorupdate) |
+| **NamespaceAuthorizationRules-UpdateNamespaceAuthorizationRuleAsync**<br/>Service Bus/centrum zdarzeń/przestrzeń nazw pobierania<br/>```PUT https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/AuthorizationRules/{rule name}``` | [metodę createorupdate](/rest/api/servicebus/namespaces/createorupdate) | [createorupdateauthorizationrule](/rest/api/eventhub/namespaces/createorupdateauthorizationrule) | [createorupdateauthorizationrule](/rest/api/relay/namespaces/createorupdateauthorizationrule) | 
+| **NamespaceAuthorizationRules-CreateNamespaceAuthorizationRuleAsync**<br/> 
+Service Bus/centrum zdarzeń/przekaźnik<br/>```PUT https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/AuthorizationRules/{rule name}``` |[metodę createorupdate](/rest/api/servicebus/namespaces/createorupdate) | [createorupdateauthorizationrule](/rest/api/eventhub/namespaces/createorupdateauthorizationrule) | [createorupdateauthorizationrule](/rest/api/relay/namespaces/createorupdateauthorizationrule) |
+| **NamespaceProperties-GetNamespacePropertiesAsync**<br/>[Service Bus uzyskać przestrzeni nazw](/rest/api/servicebus/get-namespace)<br/>[Event Hubs uzyskać przestrzeni nazw](/rest/api/eventhub/get-event-hub)<br/>[Pobieranie przestrzeni nazw przekaźnika](/rest/api/servicebus/get-relays)<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}``` | [Pobierz](/rest/api/servicebus/namespaces/get) | [Pobierz](/rest/api/eventhub/namespaces/get) | [Pobierz](/rest/api/relay/namespaces/get) |
+| **RegionCodes-GetRegionCodesAsync**<br/>Service Bus/EventHub/pobieranie przestrzeni nazw<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}``` | [listbysku](/rest/api/servicebus/regions/listbysku) | [listbysku](/rest/api/eventhub/regions/listbysku) | &nbsp; | 
+| **NamespaceProperties-UpdateNamespacePropertyAsync**<br/>Service Bus/EventHub/przekaźnik<br/>```GET    https://management.core.windows.net/{subscription ID}/services/ServiceBus/Regions/``` | [metodę createorupdate](/rest/api/servicebus/namespaces/createorupdate) | [metodę createorupdate](/rest/api/eventhub/namespaces/createorupdate) | [metodę createorupdate](/rest/api/relay/namespaces/createorupdate) |
+| **EventHubsCrud-ListEventHubsAsync**<br/>[Event Hubs listy](/rest/api/eventhub/list-event-hubs)<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/eventhubs?$skip={skip}&$top={top}``` | &nbsp; | [list](/rest/api/eventhub/eventhubs/listbynamespace) | &nbsp; | 
+| **EventHubsCrud-GetEventHubAsync**<br/>[Pobierz Event Hubs](/rest/api/eventhub/get-event-hub)<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/eventhubs/{eventHubPath}``` | &nbsp; | [Pobierz](/rest/api/eventhub/eventhubs/get) | &nbsp; | 
+| **NamespaceAuthorizationRules-DeleteNamespaceAuthorizationRuleAsync**<br/>Service Bus/centrum zdarzeń/przekaźnik<br/>```DELETE https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/AuthorizationRules/{rule name}``` | [deleteauthorizationrule](/rest/api/servicebus/namespaces/deleteauthorizationrule) | [deleteauthorizationrule](/rest/api/eventhub/namespaces/deleteauthorizationrule) | [deleteauthorizationrule](/rest/api/relay/namespaces/deleteauthorizationrule) |
+| **NamespaceAuthorizationRules-GetNamespaceAuthorizationRulesAsync**<br/>Service Bus/EventHub/przekaźnik<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/AuthorizationRules``` | [listauthorizationrules](/rest/api/servicebus/namespaces/listauthorizationrules) | [listauthorizationrules](/rest/api/eventhub/namespaces/listauthorizationrules) | [listauthorizationrules](/rest/api/relay/namespaces/listauthorizationrules) |
+| **NamespaceAvailability-IsNamespaceAvailable**<br/>[Dostępność Service Bus przestrzeni nazw](/rest/api/servicebus/check-namespace-availability)<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/CheckNamespaceAvailability/?namespace=<namespaceValue>``` | [checknameavailability](/rest/api/servicebus/namespaces/checknameavailability) | [checknameavailability](/rest/api/eventhub/namespaces/checknameavailability) | [checknameavailability](/rest/api/relay/namespaces/checknameavailability) |
+| **Przestrzenie nazw — CreateOrUpdateNamespaceAsync**<br/>Service Bus/centrum zdarzeń/przekaźnik<br/>```PUT https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}``` | [metodę createorupdate](/rest/api/servicebus/namespaces/createorupdate) | [metodę createorupdate](/rest/api/eventhub/namespaces/createorupdate) | [metodę createorupdate](/rest/api/relay/namespaces/createorupdate) | 
+| **Tematy — GetTopicAsync**<br/>```GET https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/topics/{topicPath}``` | [Pobierz](/rest/api/servicebus/topics/get) | &nbsp; | &nbsp; |
+
+## <a name="service-manager-powershell---resource-manager-powershell"></a>Service Manager PowerShell — Menedżer zasobów PowerShell
+| Service Manager polecenie programu PowerShell (przestarzałe) | Nowe polecenia Menedżer zasobów | Nowsze Menedżer zasobów polecenie |
+| ----- | ----- | ----- | 
+| [Get-AzureSBAuthorizationRule](/powershell/module/servicemanagement/azure/get-azuresbauthorizationrule?view=azuresmps-4.0.0) | [Get-AzureRmServiceBusAuthorizationRule](/powershell/module/azurerm.servicebus/get-azurermservicebusauthorizationrule?view=azurermps-6.13.0) | [Get-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/get-azservicebusauthorizationrule?view=azps-1.6.0) |
+| [Get-AzureSBLocation](/powershell/module/servicemanagement/azure/get-azuresblocation?view=azuresmps-4.0.0) | [Get-AzureRmServiceBusGeoDRConfiguration](/powershell/module/azurerm.servicebus/get-azurermservicebusgeodrconfiguration?view=azurermps-6.13.0) | [Get-AzServiceBusGeoDRConfiguration](/powershell/module/az.servicebus/get-azservicebusgeodrconfiguration?view=azps-1.6.0) |
+| [Get-AzureSBNamespace](/powershell/module/servicemanagement/azure/get-azuresbnamespace?view=azuresmps-4.0.0) | [Get-AzureRmServiceBusNamespace](/powershell/module/azurerm.servicebus/get-azurermservicebusnamespace?view=azurermps-6.13.0) | [Get-AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace?view=azps-1.6.0) |
+| [New-AzureSBAuthorizationRule](/powershell/module/servicemanagement/azure/new-azuresbauthorizationrule?view=azuresmps-4.0.0) | [New-AzureRmServiceBusAuthorizationRule](/powershell/module/azurerm.servicebus/new-azurermservicebusauthorizationrule?view=azurermps-6.13.0) | [New-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/new-azservicebusauthorizationrule?view=azps-1.6.0) |
+| [New-AzureSBNamespace](/powershell/module/servicemanagement/azure/new-azuresbnamespace?view=azuresmps-4.0.0) | [New-AzureRmServiceBusNamespace](/powershell/module/azurerm.servicebus/new-azurermservicebusnamespace?view=azurermps-6.13.0) | [New-AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace?view=azps-1.6.0) |
+| [Remove-AzureRmRelayAuthorizationRule](/powershell/module/azurerm.relay/remove-azurermrelayauthorizationrule?view=azurermps-6.13.0) | [Remove-AzureRmEventHubAuthorizationRule](/powershell/module/azurerm.eventhub/remove-azurermeventhubauthorizationrule?view=azurermps-6.13.0) | [Remove-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/remove-azservicebusauthorizationrule?view=azps-1.6.0) |
+| [Remove-AzureSBNamespace](/powershell/module/servicemanagement/azure/remove-azuresbnamespace?view=azuresmps-4.0.0) | [Remove-AzureRmServiceBusNamespace](/powershell/module/azurerm.servicebus/remove-azurermservicebusnamespace?view=azurermps-6.13.0) | [Remove-AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace?view=azps-1.6.0) |
+| [Set-AzureSBAuthorizationRule](/powershell/module/servicemanagement/azure/set-azuresbauthorizationrule?view=azuresmps-4.0.0) | [Set-AzureRmServiceBusAuthorizationRule](/powershell/module/azurerm.servicebus/set-azurermservicebusauthorizationrule?view=azurermps-6.13.0) | [Set-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/set-azservicebusauthorizationrule?view=azps-1.6.0) |
+
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z następującymi dokumentami: 
+
+- Najnowsza dokumentacja interfejsu API REST
+    - [Azure Service Bus](/rest/api/servicebus/)
+    - [Azure Event Hubs](/rest/api/eventhub/)
+    - [Azure Relay](/rest/api/relay/)
+- Najnowsza Dokumentacja programu PowerShell
+    - [Azure Service Bus](/powershell/module/azurerm.servicebus/?view=azurermps-6.13.0#service_bus)
+    - [Azure Event Hubs](/powershell/module/azurerm.eventhub/?view=azurermps-6.13.0#event_hub)
+    - [Azure Event Grid](/powershell/module/azurerm.eventgrid/?view=azurermps-6.13.0#event_grid)

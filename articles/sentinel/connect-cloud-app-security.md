@@ -3,7 +3,7 @@ title: Łączenie Cloud App Security danych z platformą Azure — wskaźnikiem 
 description: Dowiedz się, jak połączyć Cloud App Security dane z platformą Azure — wskaźnikiem.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 32e7e79465b68caca9a636019f65b9f08284fc72
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.author: yelevin
+ms.openlocfilehash: 348576fbbdd1037f9e2e792218b96bbbecf36668
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928215"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588369"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Łączenie danych z Microsoft Cloud App Security 
 
@@ -47,7 +47,7 @@ Jeśli Cloud App Security zostanie wdrożona i pozyskuje dane, dane alertów mo�
 
 1. Wybierz dzienniki, które chcesz przesłać do usługi Azure — wskaźnik produkcji, możesz wybrać **alerty** i **dzienniki Cloud Discovery** (wersja zapoznawcza). 
 
-1. Kliknij przycisk **Połącz**.
+1. Kliknij przycisk **Connect** (Połącz).
 
 1. Aby użyć odpowiedniego schematu w Log Analytics dla alertów Cloud App Security, Wyszukaj pozycję **SecurityAlert**.
 

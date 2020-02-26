@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 759cc3f22d8b57036bad48326ffec1d6fca42696
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 884f5ab6fa57b201e1a9105729bf96e10931dca1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939436"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604072"
 ---
-# <a name="what-is-azure-security-center"></a>Co to jest Azure Security Center?
+# <a name="what-is-azure-security-center"></a>Co to jest Centrum zabezpieczeń Azure?
 
 Usługa Azure Security Center to ujednolicony system zarządzania bezpieczeństwem infrastruktury. Ma on za zadanie zwiększenie poziomu bezpieczeństwa centrów danych i zapewnienie zaawansowanej ochrony przed zagrożeniami w przypadku obciążeń hybrydowych w chmurze (zarówno na platformie Azure, jak i poza nią) oraz w środowisku lokalnym.
 
@@ -81,9 +81,9 @@ Jednym z najbardziej zaawansowanych narzędzi Security Center zapewnia stałe mo
 
 ![Mapa sieci w usłudze Security Center](media/security-center-intro/sc-net-map.png)
 
-Security Center upraszczają alerty zabezpieczeń w jednym kroku, przez dodanie **bezpiecznego wyniku**. Wskaźniki bezpieczeństwa są teraz skojarzone z każdym zaleceniem, co pozwala lepiej zrozumieć ważność danego zalecenia dla ogólnego poziomu bezpieczeństwa. Jest to kluczowe znaczenie w umożliwieniu **określania priorytetów pracy w zabezpieczeniach**.
+Security Center upraszczają alerty zabezpieczeń w jednym kroku, przez dodanie **bezpiecznego wyniku**. Ważne oceny są teraz skojarzone z każdym zaleceń, które otrzymujesz, aby pomóc zrozumieć, w jaki sposób ważna jest ogólna stan zabezpieczeń. Jest to kluczowe znaczenie w umożliwieniu **określania priorytetów pracy w zabezpieczeniach**.
 
-![Wskaźnik bezpieczeństwa w usłudze Security Center](media/security-center-intro/sc-secure-score.png)
+![Security Center zabezpieczonych wyników](media/security-center-intro/sc-secure-score.png)
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>Optymalizacja i zwiększanie bezpieczeństwa dzięki konfigurowaniu zalecanych środków kontroli
 

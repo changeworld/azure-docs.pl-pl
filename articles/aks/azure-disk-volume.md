@@ -2,17 +2,14 @@
 title: Tworzenie woluminu statycznego dla zasobników w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak ręcznie utworzyć wolumin z dyskami platformy Azure do użycia w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: 9017c8cf721fbb9c493dc18da769b9d6e83ddf05
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: b84f62dd02aa29a4c1aa64e3235c0a1e7cc66522
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67616136"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596746"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Ręczne tworzenie woluminu i używanie go z dyskami platformy Azure w usłudze Azure Kubernetes Service (AKS)
 
@@ -31,9 +28,9 @@ Konieczne jest również zainstalowanie i skonfigurowanie interfejsu wiersza pol
 
 ## <a name="create-an-azure-disk"></a>Tworzenie dysku platformy Azure
 
-Podczas tworzenia dysku platformy Azure do użycia z programem AKS można utworzyć zasób dysku w grupie zasobów **węzła** . Takie podejście umożliwia klastrowi AKS dostęp do zasobu dysku i zarządzanie nim. Jeśli zamiast tego utworzysz dysk w oddzielnej grupie zasobów, musisz przyznać jednostce usługi Azure Kubernetes Service (AKS) dla klastra `Contributor` rolę do grupy zasobów tego dysku.
+Podczas tworzenia dysku platformy Azure do użycia z programem AKS można utworzyć zasób dysku w grupie zasobów **węzła** . Takie podejście umożliwia klastrowi AKS dostęp do zasobu dysku i zarządzanie nim. Jeśli zamiast tego utworzysz dysk w oddzielnej grupie zasobów, musisz przyznać jednostki usługi Azure Kubernetes Service (AKS) dla klastra jako rolę `Contributor` do grupy zasobów tego dysku.
 
-W tym artykule Utwórz dysk w grupie zasobów węzła. Najpierw Pobierz nazwę grupy zasobów za pomocą polecenia [AZ AKS show][az-aks-show] i Dodaj `--query nodeResourceGroup` parametr zapytania. Poniższy przykład pobiera grupę zasobów węzła dla nazwy klastra AKS *myAKSCluster* w grupie zasobów nazwa *zasobu:*
+W tym artykule Utwórz dysk w grupie zasobów węzła. Najpierw Pobierz nazwę grupy zasobów za pomocą polecenia [AZ AKS show][az-aks-show] i Dodaj parametr zapytania `--query nodeResourceGroup`. Poniższy przykład pobiera grupę zasobów węzła *dla nazwy klastra*AKS *myAKSCluster* w grupie zasobów nazwa zasobu:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -41,7 +38,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Teraz Utwórz dysk za pomocą polecenia [AZ Disk Create][az-disk-create] . Określ nazwę grupy zasobów węzła uzyskaną w poprzednim poleceniu, a następnie nazwę zasobu dyskowego, na przykład *myAKSDisk*. Poniższy przykład powoduje utworzenie dysku o *20*GIB i wyprowadzanie identyfikatora dysku po utworzeniu. Jeśli konieczne jest utworzenie dysku do użycia z kontenerami systemu Windows Server (obecnie w wersji zapoznawczej w AKS) `--os-type windows` , należy dodać parametr w celu poprawnego sformatowania dysku.
+Teraz Utwórz dysk za pomocą polecenia [AZ Disk Create][az-disk-create] . Określ nazwę grupy zasobów węzła uzyskaną w poprzednim poleceniu, a następnie nazwę zasobu dyskowego, na przykład *myAKSDisk*. Poniższy przykład powoduje utworzenie dysku o *20*GIB i wyprowadzanie identyfikatora dysku po utworzeniu. Jeśli musisz utworzyć dysk do użycia z kontenerami systemu Windows Server (obecnie w wersji zapoznawczej w AKS), Dodaj parametr `--os-type windows`, aby prawidłowo sformatować dysk.
 
 ```azurecli-interactive
 az disk create \
@@ -62,7 +59,7 @@ Identyfikator zasobu dysku jest wyświetlany po pomyślnym zakończeniu poleceni
 
 ## <a name="mount-disk-as-volume"></a>Zainstaluj dysk jako wolumin
 
-Aby zainstalować dysk platformy Azure w obszarze usługi, skonfiguruj wolumin w specyfikacji kontenera. Utwórz nowy plik o nazwie `azure-disk-pod.yaml` z następującą zawartością. Zaktualizuj `diskName` przy użyciu nazwy dysku utworzonego w poprzednim kroku oraz `diskURI` z identyfikatorem dysku przedstawionym w danych wyjściowych polecenia Utwórz dysk. W razie potrzeby zaktualizuj `mountPath`ścieżkę, która jest ścieżką, w której jest zainstalowany dysk platformy Azure w obszarze. W przypadku kontenerów systemu Windows Server (obecnie w wersji zapoznawczej w AKS) Określ *mountPath* przy użyciu konwencji ścieżki systemu Windows, takiej jak *'d: '* .
+Aby zainstalować dysk platformy Azure w obszarze usługi, skonfiguruj wolumin w specyfikacji kontenera. Utwórz nowy plik o nazwie `azure-disk-pod.yaml` z następującą zawartością. Zaktualizuj `diskName` przy użyciu nazwy dysku utworzonego w poprzednim kroku, a `diskURI` z IDENTYFIKATORem dysku przedstawionym w danych wyjściowych polecenia Utwórz dysk. W razie potrzeby zaktualizuj `mountPath`, czyli ścieżkę, w której jest zainstalowany dysk platformy Azure w obszarze. W przypadku kontenerów systemu Windows Server (obecnie w wersji zapoznawczej w AKS) Określ *mountPath* przy użyciu konwencji ścieżki systemu Windows, takiej jak *'d: '* .
 
 ```yaml
 apiVersion: v1
@@ -91,13 +88,13 @@ spec:
           diskURI: /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
 ```
 
-`kubectl` Użyj polecenia, aby utworzyć pod.
+Użyj `kubectl` polecenie, aby utworzyć pod.
 
 ```console
 kubectl apply -f azure-disk-pod.yaml
 ```
 
-Masz teraz uruchomione miejsce na dysku platformy Azure zainstalowanym pod adresem `/mnt/azure`. Można użyć `kubectl describe pod mypod` , aby sprawdzić, czy dysk jest prawidłowo zainstalowany. Następujące wąskie przykładowe dane wyjściowe pokazują wolumin zainstalowany w kontenerze:
+Masz teraz uruchomione miejsce na dysku platformy Azure, który został zainstalowany w `/mnt/azure`. Można użyć `kubectl describe pod mypod`, aby sprawdzić, czy dysk jest prawidłowo zainstalowany. Następujące wąskie przykładowe dane wyjściowe pokazują wolumin zainstalowany w kontenerze:
 
 ```
 [...]

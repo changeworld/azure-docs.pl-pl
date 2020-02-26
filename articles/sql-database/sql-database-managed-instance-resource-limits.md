@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 02/18/2020
-ms.openlocfilehash: 6e6d4ea6c96949a60677bcf3bf40a53ec3a251c7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 02/25/2020
+ms.openlocfilehash: 12d457d8d5e57dc4db16d9a191c7795a5f013574
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526862"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605014"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Przegląd Azure SQL Database limitów zasobów wystąpienia zarządzanego
 
@@ -49,7 +49,7 @@ Ilość miejsca OLTP w pamięci w [krytyczne dla działania firmy](sql-database-
 | --- | --- | --- |
 | 4 rdzeni wirtualnych  | 3,14 GB | |   
 | 8 rdzeni wirtualnych  | 6,28 GB | 8 GB |
-| 16 rdzeni wirtualnych | 15,77 GB | 20 GB |
+| 16 rdzeni wirtualnych | 15,77 GB | 20 GB |
 | 24 rdzeni wirtualnych | 25,25 GB | 36 GB |
 | 32 rdzeni wirtualnych | 37,94 GB | |
 | 40 rdzeni wirtualnych | 52,23 GB | |
@@ -74,7 +74,7 @@ Wystąpienie zarządzane ma dwie warstwy usług: [ogólnego przeznaczenia](sql-d
 | Maksymalna liczba plików bazy danych na wystąpienie | Do 280, o ile nie osiągnięto rozmiaru magazynu wystąpienia lub limitu [przestrzeni dyskowej usługi Azure Premium](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) . | 32 767 plików na bazę danych, o ile nie osiągnięto limitu rozmiaru magazynu wystąpień. |
 | Maksymalny rozmiar pliku danych | Ograniczone do aktualnie dostępnego rozmiaru magazynu wystąpień (maksymalnie 2 TB-8 TB) i [miejsca alokacji dysku Azure Premium Storage](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Ograniczone do aktualnie dostępnego rozmiaru magazynu wystąpień (do 1 TB – 4 TB). |
 | Maksymalny rozmiar pliku dziennika | Ograniczone do 2 TB i aktualnie dostępnego rozmiaru magazynu wystąpień. | Ograniczone do 2 TB i aktualnie dostępnego rozmiaru magazynu wystąpień. |
-| Operacje we/wy danych/dziennika (przybliżone) | Do 30-40 K operacji we/wy na wystąpienie *, 500-7500 na plik<br/>\*[zwiększyć rozmiar pliku, aby uzyskać więcej operacji we/wy na sekundę](#file-io-characteristics-in-general-purpose-tier)| 5,5 k – 110 K (1375 IOPS/rdzeń wirtualny)<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać lepszą wydajność operacji we/wy. |
+| Operacje we/wy danych/dziennika (przybliżone) | Do 30-40 K operacji we/wy na wystąpienie *, 500-7500 na plik<br/>\*[zwiększyć rozmiar pliku, aby uzyskać więcej operacji we/wy na sekundę](#file-io-characteristics-in-general-purpose-tier)| 10 k-200 K (2500 IOPS/rdzeń wirtualny)<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać lepszą wydajność operacji we/wy. |
 | Limit przepływności zapisu dziennika (na wystąpienie) | 3 MB/s na rdzeń wirtualny<br/>Maks. 22 MB/s | 4 MB/s na rdzeń wirtualny<br/>Maks 48 MB/s |
 | Przepływność danych (przybliżona) | 100 – 250 MB/s na plik<br/>\*[zwiększyć rozmiar pliku, aby uzyskać lepszą wydajność operacji we/wy](#file-io-characteristics-in-general-purpose-tier) | Nieograniczone. |
 | Opóźnienie operacji we/wy magazynu (w przybliżeniu) | 5-10 ms | 1-2 MS |
@@ -107,7 +107,7 @@ Istnieją również limity na poziomie wystąpienia, takie jak maksymalna przep�
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Wystąpienia zarządzane można tworzyć tylko w [obsługiwanych regionach](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Aby utworzyć wystąpienie zarządzane w regionie, który nie jest obecnie obsługiwany, można [wysłać żądanie pomocy technicznej za pośrednictwem Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance).
+Wystąpienia zarządzane można tworzyć tylko w [obsługiwanych regionach](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Aby utworzyć wystąpienie zarządzane w regionie, który nie jest obecnie obsługiwany, można [wysłać żądanie pomocy technicznej za pośrednictwem Azure Portal](quota-increase-request.md).
 
 ## <a name="supported-subscription-types"></a>Obsługiwane typy subskrypcji
 
@@ -122,13 +122,13 @@ Wystąpienie zarządzane obecnie obsługuje tylko wdrożenie następujących typ
 
 ## <a name="regional-resource-limitations"></a>Ograniczenia zasobów regionalnych
 
-Obsługiwane typy subskrypcji mogą zawierać ograniczoną liczbę zasobów na region. Wystąpienie zarządzane ma dwa domyślne limity dla regionu platformy Azure (które można zwiększyć na żądanie, tworząc specjalne [żądanie pomocy technicznej w Azure Portal), w](#obtaining-a-larger-quota-for-sql-managed-instance)zależności od typu subskrypcji:
+Obsługiwane typy subskrypcji mogą zawierać ograniczoną liczbę zasobów na region. Wystąpienie zarządzane ma dwa domyślne limity dla regionu platformy Azure (które można zwiększyć na żądanie, tworząc specjalne [żądanie pomocy technicznej w Azure Portal w](quota-increase-request.md) zależności od typu subskrypcji:
 
 - **Limit podsieci**: Maksymalna liczba podsieci, w których wystąpienia zarządzane są wdrażane w jednym regionie.
 - **limit jednostek rdzeń wirtualny**: Maksymalna liczba jednostek rdzeń wirtualny, które mogą zostać wdrożone we wszystkich wystąpieniach w jednym regionie. Jedna z zasad GP rdzeń wirtualny korzysta z jednej jednostki rdzeń wirtualny, a jedna z nich ma rdzeń wirtualny rdzeń wirtualny jednostek. Łączna liczba wystąpień nie jest ograniczona, o ile mieści się w limicie jednostek rdzeń wirtualny.
 
 > [!Note]
-> Te limity to ustawienia domyślne, a nie ograniczenia techniczne. Limity można zwiększyć na żądanie, tworząc specjalne [żądanie pomocy technicznej w Azure Portal,](#obtaining-a-larger-quota-for-sql-managed-instance) Jeśli potrzebujesz więcej wystąpień zarządzanych w bieżącym regionie. Alternatywnie można tworzyć nowe wystąpienia zarządzane w innym regionie świadczenia usługi Azure bez wysyłania żądań pomocy technicznej.
+> Te limity to ustawienia domyślne, a nie ograniczenia techniczne. Limity można zwiększyć na żądanie, tworząc specjalne [żądanie pomocy technicznej w Azure Portal,](quota-increase-request.md) Jeśli potrzebujesz więcej wystąpień zarządzanych w bieżącym regionie. Alternatywnie można tworzyć nowe wystąpienia zarządzane w innym regionie świadczenia usługi Azure bez wysyłania żądań pomocy technicznej.
 
 W poniższej tabeli przedstawiono **domyślne limity** dla obsługiwanych typów subskrypcji (domyślne limity można rozszerzyć przy użyciu żądania pomocy technicznej opisanego poniżej):
 
@@ -146,39 +146,9 @@ W poniższej tabeli przedstawiono **domyślne limity** dla obsługiwanych typów
 
 \*\* większe limity podsieci i rdzeń wirtualny są dostępne w następujących regionach: Australia Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia Południowe Zjednoczone Królestwo, Europa Zachodnia, zachodnie stany USA 2.
 
-## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Uzyskiwanie większego przydziału dla wystąpienia zarządzanego SQL
+## <a name="request-a-quota-increase-for-sql-managed-instance"></a>Zażądaj zwiększenia limitu przydziału dla wystąpienia zarządzanego SQL
 
-Jeśli potrzebujesz więcej wystąpień zarządzanych w Twoich bieżących regionach, Wyślij żądanie obsługi, aby zwiększyć przydział przy użyciu Azure Portal.
-Aby zainicjować proces uzyskiwania większego przydziału:
-
-1. Otwórz **Pomoc i pomoc techniczną**, a następnie kliknij pozycję **nowe żądanie obsługi**.
-
-   ![Pomoc i wsparcie techniczne](media/sql-database-managed-instance-resource-limits/help-and-support.png)
-2. Na karcie podstawowe informacje o nowym żądaniu obsługi:
-   - W obszarze **typ problemu**wybierz pozycję **usługi i limity subskrypcji (przydziały)** .
-   - W polu **Subskrypcja** wybierz subskrypcję.
-   - W obszarze **Typ limitu przydziału**wybierz pozycję **SQL Database wystąpienie zarządzane**.
-   - W przypadku **planu pomocy technicznej**wybierz plan pomocy technicznej.
-
-     ![Przydział typu problemu](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
-
-3. Kliknij przycisk **Dalej**.
-4. Na **karcie problem** dla nowego żądania obsługi:
-   - W polu **ważność**wybierz poziom ważności problemu.
-   - Aby **uzyskać więcej informacji**, podaj dodatkowe informacje o problemie, w tym komunikaty o błędach.
-   - W przypadku **przekazywania plików**Dołącz plik z więcej informacji (do 4 MB).
-
-     ![Szczegóły problemu](media/sql-database-managed-instance-resource-limits/problem-details.png)
-
-     > [!IMPORTANT]
-     > Prawidłowe żądanie powinno obejmować:
-     > - Region, w którym należy zwiększyć limit subskrypcji.
-     > - Wymagana liczba rdzeni wirtualnych na warstwę usług w istniejących podsieciach po zwiększeniu limitu przydziału (Jeśli jakakolwiek z istniejących podsieci musi być rozwinięta).
-     > - Wymagana liczba nowych podsieci i łączna liczba rdzeni wirtualnych na warstwę usług w ramach nowych podsieci (jeśli trzeba wdrożyć wystąpienia zarządzane w nowych podsieciach).
-
-5. Kliknij przycisk **Dalej**.
-6. Na karcie Informacje kontaktowe dla nowego żądania obsługi wprowadź preferowaną metodę kontaktu (adres e-mail lub telefon) i szczegóły kontaktu.
-7. Kliknij przycisk **Utwórz**.
+Jeśli potrzebujesz więcej wystąpień zarządzanych w Twoich bieżących regionach, Wyślij żądanie obsługi, aby zwiększyć przydział przy użyciu Azure Portal. Aby uzyskać więcej informacji, zobacz [zwiększenie przydziału żądań dla Azure SQL Database](quota-increase-request.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

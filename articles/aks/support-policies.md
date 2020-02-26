@@ -3,16 +3,15 @@ title: Zasady pomocy technicznej dla usługi Azure Kubernetes Service (AKS)
 description: Dowiedz się więcej na temat zasad pomocy technicznej usługi Azure Kubernetes Service (AKS), współdzielonej odpowiedzialności oraz funkcji dostępnych w wersji zapoznawczej (lub Alpha lub beta).
 services: container-service
 author: jnoller
-ms.service: container-service
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: 9a68a0d0a288a27d67a9615385391c06be2b662d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a5d90106a85a61cbf499c4c08130392b922a45f0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767378"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593584"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zasady pomocy technicznej dla usługi Azure Kubernetes Service
 
@@ -45,7 +44,7 @@ Usługi są *zarządzane* w sensie, że firma Microsoft i zespół AKS wdrażaj�
 
 Wygenerowanie nieobsługiwanych operacji zgodnie z definicją powyżej, takich jak cofnięcie przydziału poza pasmem dla wszystkich węzłów agenta, renderowanie klastra jest nieobsługiwane. AKS zastrzega sobie prawo do archiwizowania płaszczyzn kontroli, które zostały skonfigurowane z poziomu wytycznych dla rozszerzonych okresów równych i dłuższych niż 30 dni. AKS przechowuje kopie zapasowe metadanych etcd klastra i może łatwo ponownie przydzielić klaster. Tę ponowną alokację można zainicjować za pomocą dowolnej operacji PUT przełączenia klastra do pomocy technicznej, takiego jak uaktualnienie lub skalowanie do węzłów aktywnego agenta.
 
-## <a name="shared-responsibility"></a>Wspólna odpowiedzialność
+## <a name="shared-responsibility"></a>Współdzielona odpowiedzialność
 
 Po utworzeniu klastra Klient definiuje Kubernetes węzły procesu roboczego, które tworzy AKS. Obciążenia klientów są wykonywane w tych węzłach. Klienci i mogą wyświetlać lub modyfikować węzły procesu roboczego.
 

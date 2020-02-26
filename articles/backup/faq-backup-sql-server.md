@@ -4,12 +4,12 @@ description: Znajdź odpowiedzi na często zadawane pytania dotyczące tworzenia
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 73224164286e35f8c9447dd24cd81d7242fbb7b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172015"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597086"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Często zadawane pytania dotyczące SQL Server baz danych uruchomionych w ramach kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -37,13 +37,15 @@ Funkcja Autokorekty jest domyślnie włączona dla wszystkich użytkowników; Je
 - Zapisz zmiany i zamknij plik.
 - Na wystąpieniu SQL Server Otwórz **zadanie Zarządzaj** , a następnie uruchom ponownie usługę **AzureWLBackupCoordinatorSvc** .
 
-## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>Czy mogę kontrolować, jak wiele współbieżnych kopii zapasowych jest uruchomionych na serwerze SQL?
+## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Czy mogę kontrolować liczbę współbieżnych kopii zapasowych uruchomionych na serwerze SQL?
 
 Tak. Można ograniczyć szybkość uruchamiania zasad tworzenia kopii zapasowych, aby zminimalizować wpływ na wystąpienie SQL Server. Aby zmienić ustawienie:
 
 1. W wystąpieniu SQL Server, w folderze *C:\Program Files\Azure obciążenia Backup\bin* Utwórz plik *ExtensionSettingsOverrides. JSON* .
 2. W pliku *ExtensionSettingsOverrides. JSON* Zmień ustawienie **DefaultBackupTasksThreshold** na niższą wartość (na przykład 5). <br>
   `{"DefaultBackupTasksThreshold": 5}`
+<br>
+Wartość domyślna DefaultBackupTasksThreshold wynosi **20**.
 
 3. Zapisz zmiany i zamknij plik.
 4. W wystąpieniu programu SQL Server otwórz **Menedżera zadań**. Uruchom ponownie usługę **AzureWLBackupCoordinatorSvc**.<br/> <br/>

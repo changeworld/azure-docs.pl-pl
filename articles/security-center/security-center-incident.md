@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: b2ab769fc2595af9fd1ea41f1ef492944cb5e7fa
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: a600b17ce25a467b788671e12e3c2425ad20b809
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665772"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604076"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Zarządzanie zdarzeniami zabezpieczeń w Azure Security Center
 
@@ -57,11 +57,10 @@ W poniższych tematach opisano, jak Security Center używa różnych danych tele
 * [Alerty warstwy usług](security-center-alerts-service-layer.md)
 * [Wykrywanie zagrożeń dla usług Azure WAF i Azure DDoS Protection](security-center-alerts-integration.md)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 W tym dokumencie przedstawiono sposób użycia funkcji zdarzeń naruszenia zabezpieczeń w usłudze Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Alerty zabezpieczeń w Azure Security Center](security-center-alerts-overview.md).
 * [Zarządzanie alertami zabezpieczeń](security-center-managing-and-responding-alerts.md)
 * [Przewodnik planowania i obsługi usługi Azure Security Center](security-center-planning-and-operations-guide.md)
-* [Centrum zabezpieczeń Azure — często zadawane pytania](security-center-faq.md) — odpowiedzi na najczęstsze pytania dotyczące korzystania z usługi.
 * [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.

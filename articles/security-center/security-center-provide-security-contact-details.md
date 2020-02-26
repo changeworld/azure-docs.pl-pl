@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2019
 ms.author: memildin
-ms.openlocfilehash: 1a66ea200082f60a3a763c6a4e2bdea62ec473d8
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 15029c3e0bd3959000786af484a42691f00bb704
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920999"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603565"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Podaj szczegóły kontaktu zabezpieczeń w Azure Security Center
-W Azure Security Center zalecamy podanie szczegółowych informacji o kontakcie zabezpieczeń dla subskrypcji platformy Azure, jeśli jeszcze tego nie zrobiono. Te informacje będą używane przez firmę Microsoft do kontaktowania się z Tobą, gdy centrum Microsoft Security Response Center (MSRC) wykryje, że osoby nieupoważnione lub działające niezgodnie z prawem uzyskały dostęp do Twoich danych klienta. Centrum zabezpieczeń firmy Microsoft wybiera monitorowanie sieci i infrastruktury platformy Azure, a następnie odbiera dane analizy zagrożeń i skargi dotyczące zagrożeń od podmiotów zewnętrznych.
+W Azure Security Center zalecamy podanie szczegółowych informacji o kontakcie zabezpieczeń dla subskrypcji platformy Azure, jeśli jeszcze tego nie zrobiono. Te informacje będą używane przez firmę Microsoft do kontaktowania się z Tobą, gdy centrum Microsoft Security Response Center (MSRC) wykryje, że osoby nieupoważnione lub działające niezgodnie z prawem uzyskały dostęp do Twoich danych klienta. Usługa MSRC wybiera pozycję monitorowanie zabezpieczeń sieci i infrastruktury platformy Azure, a następnie odbiera analizę zagrożeń i nieodpowiednie skargi od stron trzecich.
 
 Powiadomienie e-mail jest wysyłane po pierwszym wystąpieniu alertu w ciągu dnia i tylko w przypadku alertów o wysokiej ważności. Preferencje poczty e-mail można konfigurować tylko dla zasad subskrypcji. Grupy zasobów w ramach subskrypcji będą dziedziczyć te ustawienia. Alerty są dostępne tylko w warstwie Standardowa Azure Security Center.
 
@@ -40,7 +40,7 @@ Jeśli na przykład została już wysłana wiadomość e-mail z powiadomieniem o
 
 1. W portalu wybierz pozycję **Cennik ustawienia &** .
 1. Kliknij subskrypcję.
-1. Kliknij pozycję **Powiadomienia e-mail**.
+1. Kliknij pozycję **powiadomienia e-mail**.
 
 > [!NOTE]
 > Jeśli wdrażasz zalecenie, w obszarze **rekomendacje**wybierz pozycję **Podaj szczegóły kontaktu zabezpieczeń**, wybierz subskrypcję platformy Azure, w której mają zostać wprowadzone informacje kontaktowe. Spowoduje to otwarcie **powiadomień e-mail**.
@@ -53,7 +53,7 @@ Jeśli na przykład została już wysłana wiadomość e-mail z powiadomieniem o
    * Możesz wysyłać powiadomienia e-mail do właścicieli subskrypcji (klasyczny administrator usługi i współadministratorzy oraz rolę właściciela RBAC w zakresie subskrypcji).
    * Wybierz pozycję **Zapisz** , aby zastosować informacje o kontakcie zabezpieczeń do subskrypcji.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
 * [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
@@ -61,8 +61,6 @@ Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następując
 * [Monitorowanie kondycji zabezpieczeń w Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
 * [Monitorowanie rozwiązań partnerskich w Centrum zabezpieczeń Azure](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
-* [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
-* [Blog dotyczący zabezpieczeń platformy Azure](https://blogs.msdn.com/b/azuresecurity/) — Uzyskaj najnowsze informacje o zabezpieczeniach platformy Azure.
 
 <!--Image references-->
 [1]: ./media/security-center-provide-security-contacts/provide-contacts.png

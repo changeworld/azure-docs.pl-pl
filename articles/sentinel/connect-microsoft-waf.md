@@ -1,20 +1,20 @@
 ---
 title: Łączenie danych zapory aplikacji sieci Web z platformą Azure — wskaźnikiem
 description: Dowiedz się, jak połączyć dane zapory aplikacji sieci Web firmy Microsoft z platformą Azure.
-author: rkarlin
+author: yelevin
 manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 5461f2289a6c60d70efcbb3f7d4d9e7a4d6ee87a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.author: yelevin
+ms.openlocfilehash: a5cef16694fa2cfae036152d22cfa4473956fc72
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563653"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588182"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>Łączenie danych z zapory aplikacji sieci Web firmy Microsoft
 

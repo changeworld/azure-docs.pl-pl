@@ -7,19 +7,17 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9bbeda33f25aec15124bacb605513a3c52c3f07e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2656716560b981481273c3032fc0c7b1a06be8a2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699268"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597647"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Zarządzanie zarejestrowanymi serwerami za pomocą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Robi to poprzez transformowanie serwerów z systemem Windows do szybkiej pamięci podręcznej udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
 
 W poniższym artykule przedstawiono sposób rejestrowania serwera i zarządzania nim za pomocą usługi synchronizacji magazynu. Zapoznaj się z artykułem [jak wdrożyć Azure File Sync](storage-sync-files-deployment-guide.md) , aby uzyskać informacje na temat sposobu wdrażania Azure File Sync na końcu.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>Rejestrowanie/Wyrejestrowywanie serwera z usługą synchronizacji magazynu
 Zarejestrowanie serwera z Azure File Sync ustanawia relację zaufania między systemem Windows Server i platformą Azure. Ta relacja może następnie służyć do tworzenia *punktów końcowych serwera* na serwerze, które reprezentują konkretne foldery, które powinny być synchronizowane z udziałem plików platformy Azure (znanym także jako *punkt końcowy w chmurze*). 
@@ -27,7 +25,7 @@ Zarejestrowanie serwera z Azure File Sync ustanawia relację zaufania między sy
 ### <a name="prerequisites"></a>Wymagania wstępne
 Aby zarejestrować serwer z usługą synchronizacji magazynu, należy najpierw przygotować serwer z wymaganiami wstępnymi:
 
-* Na serwerze musi być uruchomiona obsługiwana wersja systemu Windows Server. Aby uzyskać więcej informacji, zobacz [Azure File Sync wymagania systemowe i](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability)współdziałanie.
+* Na serwerze musi być uruchomiona obsługiwana wersja systemu Windows Server. Aby uzyskać więcej informacji, zobacz [Azure File Sync wymagania systemowe i współdziałanie](storage-sync-files-planning.md#windows-file-server-considerations).
 * Upewnij się, że została wdrożona usługa synchronizacji magazynu. Aby uzyskać więcej informacji na temat wdrażania usługi synchronizacji magazynu, zobacz [wdrażanie Azure File Sync](storage-sync-files-deployment-guide.md).
 * Upewnij się, że serwer jest połączony z Internetem i że platforma Azure jest dostępna.
 * Wyłącz konfigurację zwiększonych zabezpieczeń programu IE dla administratorów za pomocą interfejsu użytkownika Menedżer serwera.
@@ -37,7 +35,7 @@ Aby zarejestrować serwer z usługą synchronizacji magazynu, należy najpierw p
 * Upewnij się, że moduł Azure PowerShell jest zainstalowany na serwerze. Jeśli serwer należy do klastra trybu failover, każdy węzeł w klastrze będzie wymagał elementu AZ module. Więcej informacji na temat sposobu instalowania tego modułu można znaleźć na stronie [Instalowanie i konfigurowanie Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
     > [!Note]  
-    > Zalecamy używanie najnowszej wersji modułu AZ PowerShell module do rejestrowania/wyrejestrowywania serwera. Jeśli pakiet AZ został wcześniej zainstalowany na tym serwerze (a wersja programu PowerShell na tym serwerze to 5. * lub nowsza), możesz użyć `Update-Module` polecenia cmdlet, aby zaktualizować ten pakiet. 
+    > Zalecamy używanie najnowszej wersji modułu AZ PowerShell module do rejestrowania/wyrejestrowywania serwera. Jeśli pakiet AZ Package został wcześniej zainstalowany na tym serwerze (a wersja programu PowerShell na tym serwerze to 5. * lub nowsza), można zaktualizować ten pakiet za pomocą polecenia cmdlet `Update-Module`. 
 * W przypadku korzystania z serwera proxy sieci w środowisku Skonfiguruj ustawienia serwera proxy na serwerze, aby Agent synchronizacji mógł go używać.
     1. Określ adres IP i numer portu serwera proxy
     2. Edytuj te dwa pliki:
@@ -81,7 +79,7 @@ Aby można było używać serwera jako *punktu końcowego serwera* w *grupie syn
 > [!Important]  
 > Subskrypcje dostawcy rozwiązań w chmurze (CSP) nie mogą korzystać z interfejsu użytkownika rejestracji serwera. Zamiast tego należy użyć programu PowerShell (poniżej tej sekcji).
 
-1. Jeśli interfejs użytkownika rejestracji serwera nie został uruchomiony bezpośrednio po zakończeniu instalacji agenta Azure File Sync, można go uruchomić ręcznie, wykonując `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe`polecenie.
+1. Jeśli interfejs użytkownika rejestracji serwera nie został uruchomiony bezpośrednio po zakończeniu instalacji agenta Azure File Sync, można go uruchomić ręcznie, wykonując polecenie `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe`.
 2. Kliknij pozycję *Zaloguj* się, aby uzyskać dostęp do subskrypcji platformy Azure. 
 
     ![Otwieranie okna dialogowego interfejsu użytkownika rejestracji serwera](media/storage-sync-files-server-registration/server-registration-ui-1.png)
@@ -119,7 +117,7 @@ Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
 
 > [!Warning]  
-> Jeśli wolumin lokalny obsługujący punkt końcowy serwera nie ma wystarczającej ilości wolnego miejsca, aby odwołać wszystkie dane warstwowe `Invoke-StorageSyncFileRecall` , polecenie cmdlet zakończy się niepowodzeniem.  
+> Jeśli wolumin lokalny obsługujący punkt końcowy serwera nie ma wystarczającej ilości wolnego miejsca, aby odwołać wszystkie dane warstwowe, polecenie cmdlet `Invoke-StorageSyncFileRecall` zakończy się niepowodzeniem.  
 
 #### <a name="remove-the-server-from-all-sync-groups"></a>Usuń serwer ze wszystkich grup synchronizacji
 Przed wyrejestrowaniem serwera w usłudze synchronizacji magazynu należy usunąć wszystkie punkty końcowe serwera na tym serwerze. Można to zrobić za pośrednictwem Azure Portal:
@@ -160,7 +158,7 @@ Ponieważ Azure File Sync rzadko będzie jedyną usługą działającą w centru
 > Ustawienie zbyt niskich limitów będzie miało wpływ na wydajność synchronizacji i odwoływania Azure File Sync.
 
 ### <a name="set-azure-file-sync-network-limits"></a>Ustaw Azure File Sync limity sieci
-Możesz ograniczyć użycie sieci przez Azure File Sync za pomocą `StorageSyncNetworkLimit` poleceń cmdlet.
+Możesz ograniczyć użycie sieci przez Azure File Sync przy użyciu `StorageSyncNetworkLimit` poleceń cmdlet.
 
 > [!Note]  
 > Limity sieci nie są stosowane podczas uzyskiwania dostępu do pliku warstwowego lub jest używane polecenie cmdlet Invoke-StorageSyncFileRecall.
@@ -187,8 +185,8 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ### <a name="use-windows-server-storage-qos"></a>Korzystanie z funkcji QoS magazynu systemu Windows Server 
 Gdy Azure File Sync jest hostowana na maszynie wirtualnej uruchomionej na hoście wirtualizacji systemu Windows Server, można użyć funkcji QoS magazynu (jakość usługi magazynu), aby regulować użycie operacji we/wy magazynu. Dla zasad QoS magazynu można ustawić wartość maksymalną (lub limit, na przykład sposób wymuszony limit StorageSyncNetwork) lub minimalną (lub rezerwację). Ustawienie wartości minimalnej zamiast maksymalnej umożliwia Azure File Sync na rozerwanie korzystanie z dostępnej przepustowości magazynu, jeśli inne obciążenia nie będą używane. Aby uzyskać więcej informacji, zobacz [magazyn Quality of Service](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview).
 
-## <a name="see-also"></a>Zobacz także
-- [Planowanie wdrożenia usługi Azure File Sync](storage-sync-files-planning.md)
+## <a name="see-also"></a>Zobacz też
+- [Planowanie wdrażania usługi Azure File Sync](storage-sync-files-planning.md)
 - [Wdrażanie usługi Azure File Sync](storage-sync-files-deployment-guide.md)
 - [Monitorowanie usługi Azure File Sync](storage-sync-files-monitoring.md)
 - [Rozwiązywanie problemów z usługą Azure File Sync](storage-sync-files-troubleshoot.md)

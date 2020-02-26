@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
-ms.date: 07/26/2019
-ms.openlocfilehash: ea4abada259c929f387b1477c127824ac6269319
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 01/31/2020
+ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939165"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591374"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Korzystanie z emulatora usługi Azure Cosmos na potrzeby lokalnego tworzenia i testowania
 
@@ -109,7 +109,7 @@ Aby włączyć dostęp do sieci po raz pierwszy, użytkownik powinien zamknąć 
 
 ## <a name="developing-with-the-emulator"></a>Programowanie za pomocą emulatora
 
-### <a name="sql-api"></a>Interfejs SQL API
+### <a name="sql-api"></a>Interfejs API SQL
 
 Po uruchomieniu emulatora usługi Azure Cosmos na pulpicie możesz użyć dowolnego obsługiwanego [zestawu SDK Azure Cosmos DB](sql-api-sdk-dotnet.md) lub [interfejsu API REST Azure Cosmos DB](/rest/api/cosmos-db/) , aby móc korzystać z emulatora. Emulator usługi Azure Cosmos obejmuje również wbudowaną Eksplorator danych, która umożliwia tworzenie kontenerów dla interfejsu API SQL lub Cosmos DB dla interfejsu API usługi Mongo DB, a także wyświetlanie i edytowanie elementów bez konieczności pisania kodu.
 
@@ -312,7 +312,7 @@ Poniżej przedstawiono podsumowanie poleceń umożliwiających sterowanie emulat
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Składnia**
+**Obowiązuje**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -322,7 +322,7 @@ Zwraca jedną z następujących wartości ServiceControllerStatus: ServiceContro
 
 ### `Start-CosmosDbEmulator`
 
-**Składnia**
+**Obowiązuje**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -332,7 +332,7 @@ Uruchamia emulator. Domyślnie to polecenie czeka, aż emulator zgłosi gotowoś
 
 ### `Stop-CosmosDbEmulator`
 
-**Składnia**
+**Obowiązuje**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -342,7 +342,7 @@ Zatrzymuje emulator. Domyślnie to polecenie czeka, aż emulator zostanie w peł
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Składnia**
+**Obowiązuje**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 

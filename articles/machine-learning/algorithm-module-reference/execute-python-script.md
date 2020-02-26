@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 1d82261d4b5c1a66498c33610670d7a38acbb197
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 91480b3ba0a2bbd3e8c31adb931f5baabe1b07ce
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152333"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605599"
 ---
 # <a name="execute-python-script-module"></a>Wykonaj moduł skryptu języka Python
 
@@ -91,7 +91,7 @@ Moduł **wykonywania skryptu języka Python** zawiera przykładowy kod w języku
 
     ![Wykonaj mapę wejściową języka Python](media/module/python-module.png)
 
-4. Aby uwzględnić nowe pakiety lub kod w języku Python, Dodaj plik spakowane zawierający te zasoby niestandardowe w **pakiecie skryptu**. Dane wejściowe do **pakietu skryptu** muszą być plikiem skompresowanym już przekazanym do obszaru roboczego. 
+4. Aby uwzględnić nowe pakiety lub kod w języku Python, Dodaj plik spakowane zawierający te zasoby niestandardowe w **pakiecie skryptu**. Dane wejściowe do **pakietu skryptu** muszą być plikiem skompresowanym przekazanym do obszaru roboczego jako zestaw danych typu plików. 
 
     Podczas wykonywania potoku można użyć dowolnego pliku zawartego w przekazanym skompresowanym archiwum. Jeśli archiwum zawiera strukturę katalogów, struktura jest zachowywana, ale należy dołączać katalog o nazwie **src** do ścieżki.
 

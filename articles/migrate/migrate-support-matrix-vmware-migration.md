@@ -3,12 +3,12 @@ title: Obsługa migracji oprogramowania VMware w Azure Migrate
 description: Dowiedz się więcej o obsłudze migracji maszyn wirtualnych VMware w Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e5a2f40611f6b358a8b5ff1dfb99cadebae4fab6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: eea2ef1f84e5c31dd18ea4ef65ccf2796231352b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77013998"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597987"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Macierz obsługi migracji VMware
 
@@ -35,7 +35,7 @@ Zapoznaj się z [tym artykułem](server-migrate-overview.md) , aby ustalić, kt�
 --- | ---
 **VMware vCenter Server** | Wersja 5,5, 6,0, 6,5 lub 6,7.
 **VMware vSphere hosta ESXI** | Wersja 5,5, 6,0, 6,5 lub 6,7.
-**uprawnienia vCenter Server** | Migracja bez agentów używa [urządzenia migracji](migrate-appliance.md). Urządzenie musi mieć następujące uprawnienia:<br/><br/> - **datastore. Browse**: Zezwalaj na przeglądanie plików dzienników maszyn wirtualnych w celu rozwiązywania problemów z tworzeniem i usuwaniem migawki.<br/><br/> **Datastore. LowLevelFileOperations**: Zezwalaj na operacje odczytu/zapisu/usuwania/zmiany nazwy w przeglądarce magazynu danych, aby rozwiązywać problemy z tworzeniem i usuwaniem migawki.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: Zezwalaj na włączanie lub wyłączanie śledzenia zmian dysków maszyn wirtualnych w celu ściągania zmienionych bloków danych między migawkami.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: Zezwalaj na operacje dzierżawy dysku dla maszyny wirtualnej w celu odczytania dysku przy użyciu zestawu VMware vSphere Virtual Disk Development Kit (VDDK).<br/><br/> - **VirtualMachine. Provisioning. AllowReadOnlyDiskAccess**: Zezwól na otwieranie dysku na maszynie wirtualnej w celu odczytania dysku przy użyciu VDDK.<br/><br/> - **VirtualMachine. Provisioning. AllowVirtualMachineDownload**: zezwala na operacje odczytu plików SKOJARZONYCH z maszyną wirtualną, pobieranie dzienników i rozwiązywanie problemów w przypadku wystąpienia błędu.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: umożliwia tworzenie migawek maszyn wirtualnych i zarządzanie nimi na potrzeby replikacji.<br/><br/> - **maszynę wirtualną. Interaction. off**: Zezwalaj na wyłączenie maszyny wirtualnej podczas migracji na platformę Azure.
+**uprawnienia vCenter Server** | Migracja bez agentów używa [urządzenia migracji](migrate-appliance.md). Urządzenie musi mieć następujące uprawnienia:<br/><br/> - **datastore. Browse**: Zezwalaj na przeglądanie plików dzienników maszyn wirtualnych w celu rozwiązywania problemów z tworzeniem i usuwaniem migawki.<br/><br/> - **datastore. LowLevelFileOperations**: Zezwalaj na operacje odczytu/zapisu/usuwania/zmiany nazwy w przeglądarce magazynu danych, aby rozwiązywać problemy z tworzeniem i usuwaniem migawki.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: Zezwalaj na włączanie lub wyłączanie śledzenia zmian dysków maszyn wirtualnych w celu ściągania zmienionych bloków danych między migawkami.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: Zezwalaj na operacje dzierżawy dysku dla maszyny wirtualnej w celu odczytania dysku przy użyciu zestawu VMware vSphere Virtual Disk Development Kit (VDDK).<br/><br/> - **VirtualMachine. Provisioning. AllowDiskAccess**: (w odniesieniu do vSphere 6,0 i nowsze) Zezwalaj na otwieranie dysku na maszynie wirtualnej w celu uzyskania losowego dostępu do odczytu na dysku przy użyciu VDDK.<br/><br/> - **VirtualMachine. Provisioning. AllowReadOnlyDiskAccess**: Zezwól na otwieranie dysku na maszynie wirtualnej w celu odczytania dysku przy użyciu VDDK.<br/><br/>- **VirtualMachine. Provisioning. AllowVirtualMachineDownload**: zezwala na operacje odczytu plików SKOJARZONYCH z maszyną wirtualną, pobieranie dzienników i rozwiązywanie problemów w przypadku wystąpienia błędu.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: umożliwia tworzenie migawek maszyn wirtualnych i zarządzanie nimi na potrzeby replikacji.<br/><br/> - **maszynę wirtualną. Interaction. off**: Zezwalaj na wyłączenie maszyny wirtualnej podczas migracji na platformę Azure.
 
 
 
@@ -50,15 +50,15 @@ Zapoznaj się z [tym artykułem](server-migrate-overview.md) , aby ustalić, kt�
 **Rozmiar dysku** | dysk systemu operacyjnego: 2 TB; 4 TB dla dysków z danymi.
 **Limity dysku** |  Do 60 dysków na maszynę wirtualną.
 **Zaszyfrowane dyski/woluminy** | Maszyny wirtualne z szyfrowanymi dyskami/woluminami nie są obsługiwane na potrzeby migracji.
-**Udostępniony klaster dysków** | Bez pomocy technicznej.
-**Dyski niezależne** | Bez pomocy technicznej.
+**Udostępniony klaster dysków** | Nieobsługiwane.
+**Dyski niezależne** | Nieobsługiwane.
 **RDM/przekazywanie dysków** | Jeśli maszyny wirtualne mają dyski RDM lub przekazujących, te dyski nie będą replikowane do platformy Azure.
 **NFS** | Woluminy NFS zainstalowane jako woluminy na maszynach wirtualnych nie zostaną zreplikowane.
 **obiekty docelowe iSCSI** | Maszyny wirtualne z obiektami docelowymi iSCSI nie są obsługiwane w przypadku migracji bez wykorzystania agentów.
-**Wielościeżkowe we/wy** | Bez pomocy technicznej.
-**VMotion magazynu** | Bez pomocy technicznej. Replikacja nie będzie działała, jeśli maszyna wirtualna korzysta z vMotion magazynu.
-**Zespoły kart sieciowych** | Bez pomocy technicznej.
-**If** | Bez pomocy technicznej.
+**Wielościeżkowe we/wy** | Nieobsługiwane.
+**VMotion magazynu** | Nieobsługiwane. Replikacja nie będzie działała, jeśli maszyna wirtualna korzysta z vMotion magazynu.
+**Zespoły kart sieciowych** | Nieobsługiwane.
+**If** | Nieobsługiwane.
 **Dysk docelowy** | Maszyny wirtualne można migrować tylko do dysków zarządzanych (dysk twardy w warstwie Standardowa) na platformie Azure.
 **Równoczesna replikacja** | 100 maszyn wirtualnych na vCenter Server. Jeśli masz więcej, Migruj je w partiach 100.
 
@@ -71,7 +71,7 @@ Migracja bez agentów używa urządzenia Azure Migrate wdrożonego na maszynie w
 
 ## <a name="agentless-ports"></a>Porty bez agentów
 
-**urządzenia** | **Połączenie**
+**Pliku** | **Połączenie**
 --- | ---
 Wprowadzony | Połączenia wychodzące na porcie 443 do przekazywania replikowanych danych na platformę Azure oraz do komunikowania się z usługami Azure Migrate organizowanie replikacji i migracji.
 Serwer vCenter | Połączenia przychodzące na porcie 443, aby umożliwić organizowanie replikacji — tworzenie migawek, kopiowanie danych i migawki wersji
@@ -104,15 +104,15 @@ Ta tabela zawiera podsumowanie obsługi maszyn wirtualnych VMware na potrzeby mi
 **Rozmiar dysku** | dysk systemu operacyjnego: 2 TB; 8 TB dla dysków z danymi.
 **Limity dysku** |  Do 63 dysków na maszynę wirtualną.
 **Zaszyfrowane dyski/woluminy** | Maszyny wirtualne z szyfrowanymi dyskami/woluminami nie są obsługiwane na potrzeby migracji.
-**Udostępniony klaster dysków** | Bez pomocy technicznej.
+**Udostępniony klaster dysków** | Nieobsługiwane.
 **Dyski niezależne** | Obsługiwane.
 **Przekazywanie dysków** | Obsługiwane.
 **NFS** | Woluminy NFS zainstalowane jako woluminy na maszynach wirtualnych nie zostaną zreplikowane.
 **obiekty docelowe iSCSI** | Maszyny wirtualne z obiektami docelowymi iSCSI nie są obsługiwane w przypadku migracji bez wykorzystania agentów.
-**Wielościeżkowe we/wy** | Bez pomocy technicznej.
+**Wielościeżkowe we/wy** | Nieobsługiwane.
 **VMotion magazynu** | Obsługiwane
-**Zespoły kart sieciowych** | Bez pomocy technicznej.
-**If** | Bez pomocy technicznej.
+**Zespoły kart sieciowych** | Nieobsługiwane.
+**If** | Nieobsługiwane.
 
 
 
@@ -127,7 +127,7 @@ Po skonfigurowaniu urządzenia do replikacji przy użyciu szablonu komórki jajo
 
 ## <a name="agent-based-ports"></a>Porty oparte na agentach
 
-**urządzenia** | **Połączenie**
+**Pliku** | **Połączenie**
 --- | ---
 Maszyny wirtualne | Usługa mobilności działająca na maszynach wirtualnych komunikuje się z lokalnym urządzeniem replikacji (serwer konfiguracji) na porcie HTTPS 443 przychodzącego na potrzeby zarządzania replikacją.<br/><br/> Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (uruchomionego na komputerze serwera konfiguracji) na porcie HTTPS 9443 w ruchu przychodzącym. Ten port może być modyfikowany.
 Urządzenie replikacji | Urządzenie replikacji organizuje replikację za pomocą platformy Azure przez port HTTPS 443.
@@ -146,9 +146,9 @@ Liczba dysków systemu operacyjnego | 1 | Sprawdzanie kończy się niepowodzenie
 Liczba dysków danych | 64 lub mniej. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
 Rozmiar dysku danych | Do 4 095 GB | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
 Karty sieciowe | Obsługiwane są wiele kart. |
-Udostępniony wirtualny dysk twardy | Bez pomocy technicznej. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-Dysk FC | Bez pomocy technicznej. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
-BitLocker | Bez pomocy technicznej. | Aby włączyć replikację dla maszyny, należy wyłączyć funkcję BitLocker.
+Udostępniony wirtualny dysk twardy | Nieobsługiwane. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
+Dysk FC | Nieobsługiwane. | Sprawdzanie kończy się niepowodzeniem, jeśli nie jest obsługiwane.
+BitLocker | Nieobsługiwane. | Aby włączyć replikację dla maszyny, należy wyłączyć funkcję BitLocker.
 Nazwa maszyny wirtualnej | Od 1 do 63 znaków.<br/> Ograniczone do liter, cyfr i łączników.<br/><br/> Nazwa maszyny musi rozpoczynać się i kończyć literą lub cyfrą. |  Zaktualizuj wartość we właściwościach komputera w Site Recovery.
 Połącz po migracji — Windows | Aby nawiązać połączenie z maszynami wirtualnymi platformy Azure z systemem Windows po migracji:<br/> -Przed migracją włącza protokół RDP na lokalnej maszynie wirtualnej. Upewnij się, że reguły TCP i UDP zostały dodane do profilu **publicznego** oraz że w pozycji **Zapora systemu Windows** > **Dozwolone aplikacje** zezwolono na użycie protokołu RDP we wszystkich profilach.<br/> W przypadku dostępu do sieci VPN typu lokacja-lokacja Włącz protokół RDP i Zezwalaj na używanie protokołu RDP w **zaporze systemu Windows** -> **dozwolonych aplikacji i funkcji** dla sieci **,** w których są dozwolone. Ponadto sprawdź, czy zasady sieci SAN systemu operacyjnego są ustawione na **OnlineAll**. [Dowiedz się więcej](prepare-for-migration.md). |
 Połącz po migracji — system Linux | Aby nawiązać połączenie z maszynami wirtualnymi platformy Azure po migracji przy użyciu protokołu SSH:<br/> Przed migracją na maszynie lokalnej Sprawdź, czy usługa Secure Shell jest ustawiona do uruchamiania, oraz czy reguły zapory zezwalają na połączenie SSH.<br/> Po przejściu w tryb failover na maszynie wirtualnej platformy Azure Zezwól na połączenia przychodzące do portu SSH dla reguł sieciowej grupy zabezpieczeń na maszynie wirtualnej w trybie failover oraz dla podsieci platformy Azure, do której jest podłączona. Dodatkowo Dodaj publiczny adres IP dla maszyny wirtualnej. |  

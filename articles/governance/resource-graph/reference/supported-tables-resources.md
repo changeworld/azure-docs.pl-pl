@@ -1,14 +1,14 @@
 ---
 title: Obsługiwane Menedżer zasobów typy zasobów
 description: Podaj listę typów zasobów Menedżer zasobów obsługiwanych przez usługę Azure Resource Graph i historię zmian.
-ms.date: 02/20/2020
+ms.date: 02/25/2020
 ms.topic: reference
-ms.openlocfilehash: 130b11f0060f7f27091a21652aa481f0340b288f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: dc08c4a33ec9e0c20b865ffa4d7c6ff9d5248e90
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77530226"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602561"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Informacje o tabeli i typie zasobów usługi Azure Resource Graph
 
@@ -116,6 +116,7 @@ Wykres zasobów platformy Azure obsługuje następujące **typy zasobów** [Azur
 - Microsoft. COMPUTE/sharedvmimages
 - Microsoft. COMPUTE/sharedvmimages/wersje
 - Microsoft. COMPUTE/snapshots
+- Microsoft. COMPUTE/sshpublickeys
 - Microsoft. COMPUTE/virtualmachines
 - Microsoft. COMPUTE/virtualmachines/rozszerzenia
 - Microsoft. COMPUTE/virtualmachinescalesets
@@ -277,6 +278,7 @@ Wykres zasobów platformy Azure obsługuje następujące **typy zasobów** [Azur
 - Microsoft. Network/firewallpolicies
 - Microsoft. Network/usługi frontdoor
 - Microsoft. Network/frontdoorwebapplicationfirewallpolicies
+- Microsoft. Network/ipallocations
 - Microsoft. Network/ipgroups
 - Microsoft. Network/loadbalancers
 - Microsoft. Network/localnetworkgateways

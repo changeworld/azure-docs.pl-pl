@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/10/2019
+ms.date: 02/25/2020
 ms.author: juergent
-ms.openlocfilehash: e7de3e8026b15342c06eff9718242c08d33a53a4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a4b3378909d40fe2b770f70f83054a97f2646bd3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72783779"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602360"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -86,7 +86,7 @@ Przed rozpoczęciem instalacji zapoznaj się z następującymi informacjami i do
 | [IBM DB2 HADR Cluster 11,1][db2-hadr-11.1] |
 | [IBM DB2 HADR Cluster R 10,5][db2-hadr-10.5] |
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Aby zapewnić wysoką dostępność, program IBM DB2 LUW z HADR Cluster jest instalowany na co najmniej dwóch maszynach wirtualnych platformy Azure, które są wdrażane w [zestawie dostępności platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) lub w różnych [strefy dostępności platformy Azureach](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones). 
 
 Poniższa Grafika przedstawia konfigurację dwóch maszyn wirtualnych platformy Azure na serwerze bazy danych. Zarówno maszyny wirtualne platformy Azure z serwerem bazy danych mają podłączony własny magazyn, jak i są uruchomione. W HADR Cluster, jedno wystąpienie bazy danych na jednej z maszyn wirtualnych platformy Azure ma rolę wystąpienia podstawowego. Wszyscy klienci są połączeni z tym wystąpieniem podstawowym. Wszystkie zmiany transakcji bazy danych są utrwalane lokalnie w dzienniku transakcji programu DB2. Ponieważ rekordy dziennika transakcji są utrwalane lokalnie, rekordy są transferowane za pośrednictwem protokołu TCP/IP do wystąpienia bazy danych na drugim serwerze bazy danych, serwerze rezerwy lub wystąpieniu gotowości. Wystąpienie gotowości aktualizuje lokalną bazę danych, przechodząc do przodu przesłanych rekordów dziennika transakcji. W ten sposób serwer rezerwy jest zsynchronizowany z serwerem podstawowym.
@@ -422,15 +422,18 @@ sudo crm configure property maintenance-mode=false</pre></code>
 ### <a name="configure-azure-load-balancer"></a>Konfigurowanie modułu Azure Load Balancer
 Aby skonfigurować Azure Load Balancer, zalecamy użycie [jednostki SKU usługa Load Balancer w warstwie Standardowa platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) , a następnie wykonanie następujących czynności:
 
+> [!NOTE]
+> Jednostka SKU usługa Load Balancer w warstwie Standardowa ma ograniczenia dostępu do publicznych adresów IP z węzłów znajdujących się pod Load Balancer. [Publiczna łączność z punktem końcowym firmy Virtual Machines przy użyciu usługi Azure usługa Load Balancer w warstwie Standardowa w scenariuszach wysokiej dostępności SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) zawiera opis sposobów włączania tych węzłów w celu uzyskania dostępu do publicznych adresów IP
+
 1. Utwórz pulę adresów IP frontonu:
 
    a. W Azure Portal Otwórz Azure Load Balancer, wybierz pozycję **Pula adresów IP frontonu**, a następnie wybierz pozycję **Dodaj**.
 
    b. Wprowadź nazwę nowej puli adresów IP frontonu (na przykład **DB2-Connection**).
 
-   d. Ustaw **przypisanie** na **static**, a następnie wprowadź adres IP **Virtual-IP** zdefiniowany na początku.
+   c. Ustaw **przypisanie** na **static**, a następnie wprowadź adres IP **Virtual-IP** zdefiniowany na początku.
 
-   d. Wybierz **OK**.
+   d. Kliknij przycisk **OK**.
 
    e. Po utworzeniu nowej puli adresów IP frontonu Zanotuj adres IP puli.
 
@@ -440,13 +443,13 @@ Aby skonfigurować Azure Load Balancer, zalecamy użycie [jednostki SKU usługa 
 
    b. Wprowadź nazwę nowej puli zaplecza (na przykład **DB2-zaplecze**).
 
-   d. Wybierz pozycję **Dodaj maszynę wirtualną**.
+   c. Wybierz pozycję **Dodaj maszynę wirtualną**.
 
    d. Wybierz zestaw dostępności lub maszyny wirtualne hostujący bazę danych IBM DB2 utworzoną w poprzednim kroku.
 
    e. Wybierz Maszyny wirtualne w klastrze programu IBM DB2.
 
-   f. Wybierz **OK**.
+   f. Kliknij przycisk **OK**.
 
 1. Utwórz sondę kondycji:
 
@@ -454,9 +457,9 @@ Aby skonfigurować Azure Load Balancer, zalecamy użycie [jednostki SKU usługa 
 
    b. Wprowadź nazwę nowej sondy kondycji (na przykład **DB2-HP**).
 
-   d. Wybierz pozycję **TCP** jako protokół i port **62500**. Pozostaw wartość **interwału** ustawioną na **5**i pozostaw wartość **progową złej kondycji** ustawioną na **2**.
+   c. Wybierz pozycję **TCP** jako protokół i port **62500**. Pozostaw wartość **interwału** ustawioną na **5**i pozostaw wartość **progową złej kondycji** ustawioną na **2**.
 
-   d. Wybierz **OK**.
+   d. Kliknij przycisk **OK**.
 
 1. Utwórz reguły równoważenia obciążenia:
 
@@ -464,7 +467,7 @@ Aby skonfigurować Azure Load Balancer, zalecamy użycie [jednostki SKU usługa 
 
    b. Wprowadź nazwę nowej reguły Load Balancer (na przykład **DB2-SID**).
 
-   d. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **DB2-fronton**).
+   c. Wybierz adres IP frontonu, pulę zaplecza i sondę kondycji utworzoną wcześniej (na przykład **DB2-fronton**).
 
    d. Pozostaw **Protokół** ustawiony na **TCP**i wprowadź port *komunikacyjny bazy danych*portu.
 
@@ -472,7 +475,7 @@ Aby skonfigurować Azure Load Balancer, zalecamy użycie [jednostki SKU usługa 
 
    f. Upewnij się, że **włączono zmiennoprzecinkowy adres IP**.
 
-   g. Wybierz **OK**.
+   g. Kliknij przycisk **OK**.
 
 
 ### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>Wprowadzanie zmian w profilach SAP do używania wirtualnego adresu IP na potrzeby połączenia
@@ -483,7 +486,7 @@ Aby nawiązać połączenie z podstawowym wystąpieniem konfiguracji HADR Cluste
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/\<SID>/global/db6/db2cli.ini
+/sapmnt/\<identyfikator SID >/Global/DB6/db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 

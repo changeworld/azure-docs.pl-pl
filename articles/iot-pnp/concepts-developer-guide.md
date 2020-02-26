@@ -7,12 +7,12 @@ ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 55f3e42687c90936c33208684b58792b3e2b9f85
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905794"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605223"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>Przewodnik dla deweloperów modelu IoT Plug and Play w wersji zapoznawczej
 
@@ -63,7 +63,7 @@ Każdy wpis na liście interfejsów w sekcji Implements ma:
 
 Istnieją dodatkowe pola opcjonalne, za pomocą których można dodać więcej szczegółów do modelu możliwości, takich jak wyświetlana nazwa i opis. Interfejsy, które są zadeklarowane w ramach modelu możliwości, można traktować jako składniki urządzenia. W publicznej wersji zapoznawczej lista interfejsów może zawierać tylko jeden wpis na schemat.
 
-## <a name="interface"></a>Interface
+## <a name="interface"></a>Interfejs
 
 Dzięki DTDL można opisać możliwości urządzenia przy użyciu interfejsów. Interfejsy opisują _Właściwości_, dane _telemetryczne_i _polecenia_ , które są implementowane przez część urządzenia:
 
@@ -182,26 +182,26 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 Plug and Play IoT umożliwia korzystanie z urządzeń zarejestrowanych w usłudze IoT Hub. Można na przykład uzyskać dostęp do właściwości i poleceń urządzenia bezpośrednio.
 
-Aby użyć urządzenia Plug and Play IoT, które jest połączone z Centrum IoT, użyj interfejsu API REST IoT Hub lub jednego z zestawów SDK języka IoT. W poniższych przykładach użyto interfejsu API REST IoT Hub.
+Aby użyć urządzenia Plug and Play IoT, które jest połączone z Centrum IoT, użyj interfejsu API REST IoT Hub lub jednego z zestawów SDK języka IoT. W poniższych przykładach użyto interfejsu API REST IoT Hub. Bieżąca wersja interfejsu API jest `2019-07-01-preview`. Dołącz `?api-version=2019-07-01-preview` do wywołań PI REST.
 
 Aby uzyskać wartość właściwości urządzenia, taką jak wersja oprogramowania układowego (`fwVersion`) w interfejsie `DeviceInformation` w ramach termostatu, należy użyć interfejsu API REST Digital bliźniaczych reprezentacji.
 
-Jeśli urządzenie termostatu jest nazywane `t-123`, uzyskasz wszystkie właściwości zaimplementowane przez urządzenie przy użyciu interfejsu API REST GET:
+Jeśli urządzenie termostatu jest nazywane `t-123`, uzyskasz wszystkie właściwości wszystkich interfejsów zaimplementowanych przez urządzenie przy użyciu interfejsu API REST GET:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Ogólnie rzecz biorąc, wszystkie właściwości są dostępne przy użyciu tego szablonu interfejsu API REST, gdzie `{device-id}` jest identyfikatorem urządzenia:
+Ogólnie rzecz biorąc, wszystkie właściwości wszystkich interfejsów są dostępne przy użyciu tego szablonu interfejsu API REST, gdzie `{device-id}` jest identyfikatorem urządzenia:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-Jeśli znasz nazwę interfejsu i chcesz uzyskać właściwości tego określonego interfejsu, przenosząc żądanie do określonego interfejsu według nazwy:
+Jeśli znasz nazwę interfejsu, taką jak `deviceInformation`, i chcesz uzyskać właściwości dla tego konkretnego interfejsu, przenosząc żądanie do określonego interfejsu według nazwy:
 
 ```REST
-GET /digitalTwins/t-123/interfaces/info
+GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
 Bardziej ogólnie rzecz biorąc, można uzyskać dostęp do właściwości określonego interfejsu za pomocą tego szablonu interfejsu API REST, gdzie `device-id` jest identyfikatorem urządzenia, a `{interface-name}` jest nazwą interfejsu:
@@ -231,5 +231,5 @@ Bardziej ogólnie rzecz biorąc, polecenia można wywołać za poorednictwem sza
 Teraz, gdy wiesz już, jak modelowanie urządzeń, Oto kilka dodatkowych zasobów:
 
 - [Język definicji Digital bliźniaczy (DTDL)](https://aka.ms/DTDL)
-- [Zestaw SDK urządzenia dla języka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
+- [Zestaw SDK urządzeń dla języka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [Interfejs API REST usługi IoT](https://docs.microsoft.com/rest/api/iothub/device)

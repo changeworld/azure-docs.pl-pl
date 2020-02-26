@@ -6,19 +6,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/21/2020
 ms.author: rogarana
-ms.openlocfilehash: 3a9a2a903bd9979cd0f9a09b7589edc6d4fd8962
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 673bf3be59d72b2cc62b9f92af353fee235c5ddc
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565092"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598820"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-support-for-smb-access"></a>Omówienie usługi Azure Files uwierzytelniania opartego na tożsamościach na potrzeby dostępu do protokołu SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Aby dowiedzieć się, jak włączyć uwierzytelnianie usługi AD dla udziałów plików platformy Azure, zobacz [Włączanie uwierzytelniania Active Directory za pośrednictwem protokołu SMB dla udziałów plików platformy Azure](storage-files-active-directory-domain-services-enable.md).
+Aby dowiedzieć się, jak włączyć uwierzytelnianie usługi AD dla udziałów plików platformy Azure, zobacz [Włączanie uwierzytelniania Active Directory za pośrednictwem protokołu SMB dla udziałów plików platformy Azure](storage-files-identity-auth-active-directory-enable.md).
 
-Aby dowiedzieć się, jak włączyć uwierzytelnianie AD DS platformy Azure dla udziałów plików platformy Azure, zobacz [włączanie Azure Active Directory uwierzytelniania usługi domeny za pośrednictwem protokołu SMB dla Azure Files](storage-files-active-directory-enable.md).
+Aby dowiedzieć się, jak włączyć uwierzytelnianie AD DS Azure dla udziałów plików platformy Azure, zobacz [Włączanie uwierzytelniania Azure Active Directory Domain Services na Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md).
 
 ## <a name="glossary"></a>Słownik 
 Warto zrozumieć niektóre kluczowe terminy związane z uwierzytelnianiem w usłudze Azure AD Domain Service za pośrednictwem protokołu SMB dla udziałów plików platformy Azure:
@@ -98,7 +98,7 @@ Gdy tożsamość skojarzona z aplikacją działającą na maszynie wirtualnej pr
 
 ### <a name="enable-identity-based-authentication"></a>Włączanie uwierzytelniania opartego na tożsamościach
 
-Możesz włączyć uwierzytelnianie oparte na tożsamościach w przypadku udziałów plików platformy Azure w ramach nowych i istniejących kont magazynu za pomocą usługi Azure AD DS (GA) lub AD (wersja zapoznawcza). Tylko jedna usługa domeny może być używana do uwierzytelniania dostępu do plików na koncie magazynu, które ma zastosowanie do wszystkich udziałów plików na koncie. Szczegółowe instrukcje krok po kroku dotyczące konfigurowania udziałów plików do uwierzytelniania za pomocą usługi Azure AD DS (GA) w naszym artykule [umożliwiają włączenie uwierzytelniania Azure Active Directory Domain Services za pośrednictwem protokołu SMB na potrzeby Azure Files](storage-files-active-directory-enable.md) i wskazówki dotyczące usługi AD (wersja zapoznawcza) w naszym innym artykule, co [umożliwia Active Directory za pośrednictwem protokołu SMB dla udziałów plików platformy Azure](storage-files-active-directory-domain-services-enable.md).
+Możesz włączyć uwierzytelnianie oparte na tożsamościach w przypadku udziałów plików platformy Azure w ramach nowych i istniejących kont magazynu za pomocą usługi Azure AD DS (GA) lub AD (wersja zapoznawcza). Tylko jedna usługa domeny może być używana do uwierzytelniania dostępu do plików na koncie magazynu, które ma zastosowanie do wszystkich udziałów plików na koncie. Szczegółowe instrukcje krok po kroku dotyczące konfigurowania udziałów plików do uwierzytelniania za pomocą usługi Azure AD DS (GA) w naszym artykule [umożliwiają włączenie uwierzytelniania Azure Active Directory Domain Services na Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md) i wskazówki dotyczące usługi AD (wersja zapoznawcza) w naszym innym artykule, a następnie [Active Directory włączenie uwierzytelniania przy użyciu protokołu SMB dla udziałów plików platformy Azure](storage-files-identity-auth-active-directory-enable.md).
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Skonfiguruj uprawnienia na poziomie udziału dla Azure Files
 
@@ -119,13 +119,13 @@ Użytkownik posiadający klucz konta magazynu może uzyskać dostęp do udział�
 
 Azure Files obsługuje zachowanie list ACL na poziomie katalogu lub pliku podczas kopiowania danych do udziałów plików platformy Azure. Listy ACL z katalogu lub pliku można kopiować do udziałów plików platformy Azure przy użyciu Azure File Sync lub wspólnych zestawów narzędzi przenoszenia plików. Na przykład można użyć [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) z flagą `/copy:s`, aby skopiować dane, a także listy ACL do udziału plików platformy Azure. Listy ACL są domyślnie zachowywane, nie jest wymagane włączenie uwierzytelniania opartego na tożsamościach na koncie magazynu w celu zachowania list ACL.
 
-## <a name="pricing"></a>Ceny
+## <a name="pricing"></a>Cennik
 Nie ma dodatkowej opłaty za usługę w celu włączenia uwierzytelniania opartego na tożsamościach za pośrednictwem protokołu SMB na koncie magazynu. Aby uzyskać więcej informacji na temat cen, zobacz [Azure Files ceny](https://azure.microsoft.com/pricing/details/storage/files/) i [Azure AD Domain Services cennika](https://azure.microsoft.com/pricing/details/active-directory-ds/) , jeśli szukasz informacji usługi AAD ds.
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat Azure Files i uwierzytelniania opartego na tożsamościach za pośrednictwem protokołu SMB, zobacz następujące zasoby:
 
 - [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
-- [Włącz uwierzytelnianie Active Directory za pośrednictwem protokołu SMB dla udziałów plików platformy Azure](storage-files-active-directory-domain-services-enable.md)
-- [Włącz uwierzytelnianie Azure Active Directory Domain Services na Azure Files](storage-files-active-directory-enable.md)
+- [Włącz uwierzytelnianie Active Directory za pośrednictwem protokołu SMB dla udziałów plików platformy Azure](storage-files-identity-auth-active-directory-enable.md)
+- [Włącz uwierzytelnianie Azure Active Directory Domain Services na Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [Często zadawane pytania](storage-files-faq.md)

@@ -2,17 +2,14 @@
 title: Protokół RDP w klastrze usługi Azure Kubernetes Service (AKS) — węzły systemu Windows Server
 description: Dowiedz się, jak utworzyć połączenie RDP z węzłami systemu Windows Server klastra usługi Azure Kubernetes Service (AKS) na potrzeby zadań związanych z rozwiązywaniem problemów i konserwacją.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.author: mlearned
-ms.openlocfilehash: e3a4ea2e81e6c428b51d164336282f8f929d414b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 897504aa9902d0feaf4245c719d3a4a3c6fd2241
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639809"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594485"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Nawiązywanie połączenia z usługą Azure Kubernetes Service (AKS) klastrami węzłów systemu Windows Server w celu przeprowadzenia konserwacji lub rozwiązywania problemów
 
@@ -32,7 +29,7 @@ Konieczne jest również zainstalowanie i skonfigurowanie interfejsu wiersza pol
 
 Węzły systemu Windows Server w klastrze AKS nie mają adresów IP dostępnych na zewnątrz. Aby nawiązać połączenie RDP, można wdrożyć maszynę wirtualną z publicznie dostępnym adresem IP w tej samej podsieci, w której znajduje się węzły systemu Windows Server.
 
-Poniższy przykład tworzy maszynę wirtualną o nazwie *myVM* w grupie zasobów WebResource.
+Poniższy przykład tworzy maszynę wirtualną o nazwie *myVM* w grupie zasobów *WebResource* .
 
 Najpierw należy uzyskać podsieć używaną przez pulę węzłów systemu Windows Server. Aby uzyskać identyfikator podsieci, potrzebna jest nazwa podsieci. Aby uzyskać nazwę podsieci, potrzebna jest nazwa sieci wirtualnej. Pobierz nazwę sieci wirtualnej, wykonując zapytania dotyczące klastra w celu wyświetlenia jego listy. Aby można było wysyłać zapytania do klastra, potrzebna jest jego nazwa. Wszystkie te możliwości można uzyskać, uruchamiając następujące czynności w Azure Cloud Shell:
 
@@ -43,7 +40,7 @@ SUBNET_NAME=$(az network vnet subnet list -g $CLUSTER_RG --vnet-name $VNET_NAME 
 SUBNET_ID=$(az network vnet subnet show -g $CLUSTER_RG --vnet-name $VNET_NAME --name $SUBNET_NAME --query id -o tsv)
 ```
 
-Teraz, gdy masz już SUBNET_ID, uruchom następujące polecenie w tym samym oknie Azure Cloud Shell, aby utworzyć maszynę wirtualną:
+Teraz, gdy masz SUBNET_ID, uruchom następujące polecenie w tym samym oknie Azure Cloud Shell, aby utworzyć maszynę wirtualną:
 
 ```azurecli-interactive
 az vm create \
@@ -93,7 +90,7 @@ Aby zarządzać klastrem Kubernetes, należy użyć [polecenia kubectl][kubectl]
 az aks install-cli
 ```
 
-Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][az-aks-get-credentials]. To polecenie powoduje pobranie poświadczeń i zastosowanie ich w konfiguracji interfejsu wiersza polecenia Kubernetes.
+Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][az-aks-get-credentials]. To polecenie powoduje pobranie poświadczeń i skonfigurowanie interfejsu wiersza polecenia Kubernetes do ich użycia.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

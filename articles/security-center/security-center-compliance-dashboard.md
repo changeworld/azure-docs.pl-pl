@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: 01c0f1199ab8c376fe5bb5e864f81a2730879ed1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112318"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604457"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Samouczek: ulepszanie zgodności z przepisami
 ---
@@ -49,7 +49,7 @@ Widok pulpitu nawigacyjnego Zgodność z przepisami ułatwia skoncentrowanie uwa
 >
 > Funkcja [dynamiczne pakiety zgodności (wersja zapoznawcza)](update-regulatory-compliance-packages.md) pozwala uaktualnić standardy widoczne na pulpicie nawigacyjnym zgodności z przepisami do nowych pakietów *dynamicznych* . Możesz także użyć tej samej funkcji w wersji zapoznawczej, aby dodać nowe pakiety zgodności i monitorować swoją zgodność przy użyciu dodatkowych standardów. 
 
-1.  W menu głównym Security Center w obszarze **zasady & zgodność** wybierz pozycję **zgodność z przepisami**. <br>
+1.  W menu głównym Security Center w obszarze **zasady &AMP; zgodność** wybierz pozycję **zgodność z przepisami**. <br>
 W górnej części ekranu zostanie wyświetlony pulpit nawigacyjny zawierający przegląd stanu zgodności z zestawem obsługiwanych przepisów dotyczących zgodności. Widoczna jest ogólna ocena zgodności oraz liczba ocen zakończonych powodzeniem i niepowodzeniem skojarzonych z każdym standardem.
 
     ![Opis komputera — godny zaufania](./media/security-center-compliance-dashboard/compliance-dashboard.png)
@@ -62,7 +62,7 @@ W górnej części ekranu zostanie wyświetlony pulpit nawigacyjny zawierający 
 
     Raport zawiera podsumowanie stanu zgodności dla wybranego standardu w oparciu o Security Center oceny danych i jest zorganizowany zgodnie z kontrolkami tego konkretnego standardu. Raport może być współużytkowany z odpowiednimi uczestnikami projektu i może służyć do zapewnienia dowodu dla wewnętrznych i zewnętrznych audytorów.
 
-    ![przesłać](./media/security-center-compliance-dashboard/download-report.png)
+    ![Pobieranie](./media/security-center-compliance-dashboard/download-report.png)
 
 ## <a name="improve-your-compliance-posture"></a>Zwiększanie poziomu zgodności
 
@@ -76,7 +76,7 @@ Dzięki informacjom wyświetlanym na pulpicie nawigacyjnym Zgodność z przepisa
 
 1. Klikanie informacji dotyczących rekomendacji i wybieranie zasobów w złej kondycji prowadzi bezpośrednio do środowiska włączania **bezpiecznego transferu magazynu** w witrynie Azure Portal.
 
-    Aby uzyskać więcej informacji na temat stosowania zaleceń, zobacz [wdrażanie zaleceń dotyczących zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
+    Więcej informacji dotyczących stosowania rekomendacji można znaleźć w temacie [Wdrażanie zaleceń dotyczących zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
 
     ![Rekomendacje dotyczące zgodności](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
@@ -104,5 +104,3 @@ Aby dowiedzieć się więcej, zobacz:
 -   [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](security-center-recommendations.md) — Dowiedz się, jak używać zaleceń w programie Azure Security Center, aby pomóc w ochronie zasobów platformy Azure.
 
 -   [Popraw swój Bezpieczny wynik w Azure Security Center](security-center-secure-score.md) — Dowiedz się, jak określać priorytety luk w zabezpieczeniach i zalecenia dotyczące zabezpieczeń, aby zwiększyć bezpieczeństwo stan.
-
--   [Azure Security Center często zadawane](security-center-faq.md) pytania — Znajdź często zadawane pytania dotyczące korzystania z usługi.

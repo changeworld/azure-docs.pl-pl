@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 6ec818ff77664fcc038412f79fffc1e3e05b82f0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 089fcc89f330e47a09187b5338176bf23fd801bb
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294256"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603752"
 ---
 # <a name="supported-platforms"></a>Obsługiwane platformy 
 
@@ -41,7 +41,7 @@ W poniższych sekcjach wymieniono obsługiwane systemy operacyjne serwera, na kt
 
 ### Systemy operacyjne Windows Server<a name="os-windows"></a>
 
-|System operacyjny|Obsługiwane przez Azure Security Center|Obsługa integracji z usługą Microsoft Defender ATP|
+|OS|Obsługiwane przez Azure Security Center|Obsługa integracji z usługą Microsoft Defender ATP|
 |:---|:-:|:-:|
 |Windows Server 2019|✔|X|
 |Windows Server 2016|✔|✔|
@@ -56,7 +56,7 @@ Azure Security Center integruje się z usługami platformy Azure w celu monitoro
 
 ### Systemy operacyjne Linux<a name="os-linux"></a>
 
-64-bitowa
+64-bitowy
 
 * CentOS 6 i 7
 * Amazon Linux 2017,09
@@ -66,7 +66,7 @@ Azure Security Center integruje się z usługami platformy Azure w celu monitoro
 * Ubuntu Linux 14,04 LTS, 16,04 LTS i 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-32-bitowa
+32 — bit
 * CentOS 6
 * Oracle Linux 6
 * Red Hat Enterprise Linux Server 6
@@ -99,14 +99,14 @@ Następujące zasoby usługi Azure PaaS są obsługiwane przez Azure Security Ce
 * Funkcja
 * Usługa w chmurze
 * VNet
-* Podsieć
+* Subnet
 * Karta sieciowa
 * Sieciowa grupa zabezpieczeń
 * Konto usługi Batch
 * Konto usługi Service Fabric
 * Konto usługi Automation
 * Moduł równoważenia obciążenia
-* Search
+* Wyszukaj
 * Przestrzeń nazw magistrala usług
 * Stream Analytics
 * Przestrzeń nazw centrum zdarzeń
@@ -114,7 +114,7 @@ Następujące zasoby usługi Azure PaaS są obsługiwane przez Azure Security Ce
 * Redis
 * Data Lake Analytics
 * Data Lake Store
-* Key Vault
+* Magazyn kluczy
 
 Aby dowiedzieć się więcej na temat obsługiwanych funkcji dla powyższej listy zasobów PaaS, zobacz [obsługiwane funkcje usług PaaS Services](security-center-services.md#paas-services).
 
@@ -127,5 +127,3 @@ Obsługiwane jest również ochrona Virtual Machines znajdujących się w Azure 
 - Dowiedz się, jak [planować i zrozumieć zagadnienia dotyczące projektowania, aby przyjąć Azure Security Center](security-center-planning-and-operations-guide.md).
 - Dowiedz się więcej o [funkcjach dostępnych dla różnych środowisk chmury](security-center-services.md).
 - Dowiedz się więcej [na temat wykrywania zagrożeń dla maszyn wirtualnych & serwerów w Azure Security Center](security-center-alerts-iaas.md).
-- Znajdowanie [często zadawanych pytań dotyczących korzystania z Azure Security Center](security-center-faq.md).
-- Znajdź [wpisy w blogu dotyczące zabezpieczeń i zgodności platformy Azure](https://blogs.msdn.com/b/azuresecurity/).

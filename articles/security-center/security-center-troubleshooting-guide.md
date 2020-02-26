@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 68d37bfbc629062a788ba32793b95c6f1653ff42
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 55a4aa066739203f8697fb4c9083869f5a05ef4f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749655"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603379"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z usługą Azure Security Center
 
@@ -21,7 +21,7 @@ Ten przewodnik jest przeznaczony dla specjalistów IT, analityków zabezpieczeń
 
 Security Center używa Microsoft Monitoring Agent do zbierania i przechowywania danych. Aby dowiedzieć się więcej, zobacz [Migracja platformy usługi Azure Security Center](security-center-platform-migration.md). Informacje przedstawione w tym artykule reprezentują funkcję Security Center po przejściu do programu Microsoft Monitoring Agent.
 
-## <a name="troubleshooting-guide"></a>Podręcznik rozwiązywania problemów
+## <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
 W tym przewodniku wyjaśniano, jak rozwiązywać problemy związane z usługą Security Center.
 
@@ -93,7 +93,7 @@ Istnieją dwa scenariusze instalacji, które mogą wygenerować różne wyniki p
 | Instalacja nie powiodła się. Agent lokalny jest już zainstalowany | Instalacja programu Microsoft Monitoring Agent zakończyła się niepowodzeniem. Security Center zidentyfikowany Agent lokalny (Log Analytics lub System Center Operations Manager) już zainstalowany na maszynie wirtualnej. Aby uniknąć konfiguracji wielokrotnej, w której maszyna wirtualna wysyła raporty do dwóch oddzielnych obszarów roboczych, instalacja programu Microsoft Monitoring Agent została zatrzymana. | Istnieją dwa sposoby rozwiązania problemu: [ręczna instalacja rozszerzenia](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) oraz połączenie go z żądanym obszarem roboczym. Lub też ustawienie żądanego obszaru roboczego jako domyślnego obszaru roboczego oraz włączenie automatycznej aprowizacji agenta.  Zobacz [włączanie automatycznej aprowizacji](security-center-enable-data-collection.md). |
 | Agent nie może nawiązać połączenia z obszarem roboczym | Program Microsoft Monitoring Agent został zainstalowany, ale jego działanie zakończyło się niepowodzeniem ze względu na łączność sieciową.  Sprawdź, czy masz dostęp do Internetu oraz czy skonfigurowano prawidłowy serwer proxy HTTP dla agenta. | Zobacz wymagania dotyczące sieci agenta monitorowania. |
 | Agent podłączony do brakującego lub nieznanego obszaru roboczego | Usługa Security Center zidentyfikowała, że program Microsoft Monitoring Agent zainstalowany na maszynie wirtualnej został połączony z obszarem roboczym, do którego nie ma dostępu. | Może do tego dojść w dwóch przypadkach. Obszar roboczy został usunięty i już nie istnieje. Zainstaluj agenta ponownie z prawidłowym obszarem roboczym lub odinstaluj agenta i pozwól usłudze Security Center zakończyć instalację z automatyczną aprowizacją. W drugim przypadku obszar roboczy jest częścią subskrypcji, do której usługa Security Center nie ma uprawnień. Usługa Security Center wymaga od subskrypcji zezwalania dostawcy zasobów usługi Microsoft Security na dostęp. Aby włączyć usługę, zarejestruj subskrypcję u dostawcy zasobów usługi Microsoft Security. Możesz to zrobić przy użyciu interfejsu API, programu PowerShell, portalu lub poprzez odfiltrowanie subskrypcji w pulpicie nawigacyjnym **Przegląd** usługi Security Center. Aby uzyskać więcej informacji, zobacz [Dostawcy zasobów i ich typy](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
-| Brak identyfikatora agenta lub agent nie odpowiada | Usługa Security Center nie może pobrać danych zabezpieczeń zeskanowanych z maszyny wirtualnej, chociaż agent jest zainstalowany. | Agent nie zgłasza żadnych danych, w tym pulsu. Agent może być uszkodzony lub coś blokuje ruch. Ewentualnie agent zgłasza dane, ale nie ma identyfikatora zasobu platformy Azure, więc nie można powiązać danych z maszyną wirtualną platformy Azure. Aby rozwiązać problemy w systemie Linux, zobacz [Troubleshooting Guide for Log Analytics Agent dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Aby rozwiązać problemy w systemie Windows, zobacz [Troubleshooting Windows Virtual Machines (Rozwiązywanie problemów z maszynami wirtualnymi z systemem Windows)](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
+| Brak identyfikatora agenta lub agent nie odpowiada | Usługa Security Center nie może pobrać danych zabezpieczeń zeskanowanych z maszyny wirtualnej, chociaż agent jest zainstalowany. | Agent nie zgłasza żadnych danych, w tym pulsu. Agent może być uszkodzony lub coś blokuje ruch. Ewentualnie agent zgłasza dane, ale nie ma identyfikatora zasobu platformy Azure, więc nie można powiązać danych z maszyną wirtualną platformy Azure. Aby rozwiązać problem z systemem Linux, zobacz [Przewodnik rozwiązywania problemów dla programu log Analytics Agent dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal). Aby rozwiązać problemy w systemie Windows, zobacz [Troubleshooting Windows Virtual Machines (Rozwiązywanie problemów z maszynami wirtualnymi z systemem Windows)](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
 | Agent nie jest zainstalowany | Zbieranie danych jest wyłączone. | Włącz zbieranie danych w zasadach zabezpieczeń lub ręcznie zainstaluj program Microsoft Monitoring Agent. |
 
 ## Rozwiązywanie problemów z wymaganiami dotyczącymi sieci agenta monitorowania <a name="mon-network-req"></a>
@@ -136,9 +136,9 @@ Jeśli masz problemy z ładowaniem pulpitu nawigacyjnego usługi Security Center
 
 Niektóre problemy można zidentyfikować za pomocą wskazówek znajdujących się w tym artykule. Inne problemy można znaleźć udokumentowane na publicznym [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter) usługi Security Center. Jeśli jednak potrzebna jest dalsza pomoc w rozwiązywaniu problemów, możesz otworzyć nowe żądanie obsługi, używając witryny **Azure Portal** w sposób pokazany poniżej:
 
-![Pomoc techniczna firmy Microsoft](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
+![Pomoc techniczna Microsoft](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 W tym dokumencie przedstawiono konfigurowanie zasad zabezpieczeń w Centrum zabezpieczeń Azure. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń Azure, zobacz następujące artykuły:
 
@@ -154,5 +154,5 @@ W tym dokumencie przedstawiono konfigurowanie zasad zabezpieczeń w Centrum zabe
 * [Badanie zdarzeń i alertów w usłudze Azure Security Center](security-center-investigation.md)
 * [Funkcje wykrywania usługi Azure Security Center](security-center-detection-capabilities.md)
 * [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
-* [Azure Security Center — często zadawane pytania](security-center-faq.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi
+* [Azure Security Center — często zadawane pytania](faq-general.md) — odpowiedzi na często zadawane pytania dotyczące korzystania z usługi
 * [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure

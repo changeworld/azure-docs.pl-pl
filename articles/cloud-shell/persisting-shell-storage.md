@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 0b3b0b2cc97c86fefe37055e0744b747d4f31687
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385560"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598752"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Utrwalanie plików w Azure Cloud Shell
 Cloud Shell korzysta z usługi Azure File Storage, aby utrwalać pliki między sesjami. Na początku, Cloud Shell prosi o skojarzenie nowego lub istniejącego udziału plików w celu utrwalenia plików między sesjami.
@@ -62,7 +62,7 @@ Cloud Shell używa udziału plików platformy Azure na koncie magazynu w ramach 
 Użytkownicy powinni zablokować dostęp do swoich plików, ustawiając uprawnienia na koncie magazynu lub na poziomie subskrypcji.
 
 ## <a name="supported-storage-regions"></a>Obsługiwane regiony magazynu
-Skojarzone konta usługi Azure Storage muszą znajdować się w tym samym regionie co maszyna Cloud Shell, do której są one instalowane. Aby znaleźć bieżący region, możesz uruchomić `env` w bash i zlokalizować `ACC_LOCATION`zmiennej. Udziały plików otrzymują obraz 5 GB utworzony, aby zachować katalog `$Home`.
+Aby znaleźć bieżący region, możesz uruchomić `env` w bash i zlokalizować zmienną `ACC_LOCATION`lub z `$env:ACC_LOCATION`uruchamiania programu PowerShell. Udziały plików otrzymują obraz 5 GB utworzony, aby zachować katalog `$Home`.
 
 Maszyny Cloud Shell istnieją w następujących regionach:
 
@@ -71,6 +71,16 @@ Maszyny Cloud Shell istnieją w następujących regionach:
 |Ameryki|Wschodnie stany USA, Południowo-środkowe stany USA, zachodnie stany USA|
 |Europa|Europa Północna, Europa Zachodnia|
 |Azja i Pacyfik|Indie Środkowe, Azja Południowo-Wschodnia|
+
+Klienci powinni wybrać region podstawowy, chyba że mają wymóg, aby ich dane były przechowywane w określonym regionie. Jeśli mają takie wymagania, należy użyć pomocniczego regionu magazynu.
+
+### <a name="secondary-storage-regions"></a>Pomocnicze regiony magazynu
+Jeśli jest używany pomocniczy region magazynu, skojarzone konto usługi Azure Storage znajduje się w innym regionie niż maszyna Cloud Shell, do której są one instalowane. Na przykład Jan może ustawić swoje konto magazynu, które ma znajdować się w Kanadzie wschód, region pomocniczy, ale maszyna, do której jest zainstalowana, nadal znajduje się w regionie podstawowym. Dane przechowywane w stanie spoczynku znajdują się w Kanadzie, ale są przetwarzane w Stany Zjednoczone.
+
+> [!NOTE]
+> W przypadku korzystania z regionu pomocniczego dostęp do plików i czas uruchamiania Cloud Shell mogą być wolniejsze.
+
+Użytkownik może uruchomić `(Get-CloudDrive | Get-AzStorageAccount).Location` w programie PowerShell, aby zobaczyć lokalizację ich udziału plików.
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Ograniczanie tworzenia zasobów przy użyciu zasad zasobów platformy Azure
 Konta magazynu tworzone w Cloud Shell są oznaczone `ms-resource-usage:azure-cloud-shell`. Jeśli chcesz uniemożliwić użytkownikom tworzenie kont magazynu w Cloud Shell, Utwórz [zasady zasobów platformy Azure dla tagów](../azure-policy/json-samples.md) , które są wyzwalane przez ten konkretny tag.
@@ -139,18 +149,18 @@ Udział plików będzie nadal istnieć, chyba że zostanie usunięty ręcznie. C
 ![Uruchamianie CloudDrive unmount'command](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> Chociaż uruchomienie tego polecenia nie spowoduje usunięcia żadnych zasobów, ręczne usunięcie grupy zasobów, konta magazynu lub udziału plików, który jest mapowany do Cloud Shell wymazuje obraz dysku katalogu `$Home` i wszystkie pliki w udziale plików. Nie będzie można tego cofnąć.
+> Chociaż uruchomienie tego polecenia nie spowoduje usunięcia żadnych zasobów, ręczne usunięcie grupy zasobów, konta magazynu lub udziału plików, który jest mapowany do Cloud Shell wymazuje obraz dysku katalogu `$Home` i wszystkie pliki w udziale plików. Tej akcji nie można cofnąć.
 ## <a name="powershell-specific-commands"></a>Polecenia specyficzne dla programu PowerShell
 
 ### <a name="list-clouddrive-azure-file-shares"></a>Lista `clouddrive` udziałów plików platformy Azure
 `Get-CloudDrive` polecenie cmdlet pobiera informacje o udziale plików platformy Azure aktualnie zainstalowane przez `clouddrive` w Cloud Shell. <br>
-![Running Get-CloudDrive](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
+![uruchomienie Get-CloudDrive](media/persisting-shell-storage-powershell/Get-Clouddrive.png)
 
 ### <a name="unmount-clouddrive"></a>Odinstalowanie `clouddrive`
 Można odinstalować udział plików platformy Azure, który jest instalowany w Cloud Shell w dowolnym momencie. Jeśli udział plików platformy Azure został usunięty, zostanie wyświetlony monit o utworzenie i zainstalowanie nowego udziału plików platformy Azure podczas kolejnej sesji.
 
 Polecenie cmdlet `Dismount-CloudDrive` Odinstalowuje udział plików platformy Azure z bieżącego konta magazynu. Odinstalowanie `clouddrive` kończy bieżącą sesję. Użytkownik zostanie poproszony o utworzenie i zainstalowanie nowego udziału plików platformy Azure podczas kolejnej sesji.
-![Running Dismount-CloudDrive](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
+![uruchamiania programu Dismount-CloudDrive](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 

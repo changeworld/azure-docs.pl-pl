@@ -3,7 +3,7 @@ title: Konfigurowanie kluczy zarządzanych przez klienta w usłudze Azure wskaź
 description: Dowiedz się, jak skonfigurować klucze zarządzane przez klienta (CMK) na platformie Azure.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 4858e2099baa82226766ecfce32b39471c3b96cd
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.author: yelevin
+ms.openlocfilehash: bc2fa02925e7f5c671085eb87ca0431d3fca7691
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845305"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587961"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Konfigurowanie klucza zarządzanego przez klienta na platformie Azure
 
@@ -52,7 +52,7 @@ Aby udostępnić CMK, wykonaj następujące kroki: 
 
 5.  Włącz CMK na platformie Azure — wskaźnik.
 
-6.  Włączanie usługi Azure Sentinel
+6.  Włącz platformę Azure.
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>Krok 1. Tworzenie Azure Key Vault i przechowywanie klucza
 
