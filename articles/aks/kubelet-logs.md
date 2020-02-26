@@ -2,23 +2,20 @@
 title: Wyświetlanie dzienników kubelet w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak wyświetlać informacje dotyczące rozwiązywania problemów w dziennikach kubelet z węzłów usługi Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.author: mlearned
-ms.openlocfilehash: 65b16b3ddc209ef5d2f6287a04cfe402c3b205c6
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615181"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595386"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Pobieranie dzienników kubelet z węzłów klastra usługi Azure Kubernetes Service (AKS)
 
-W ramach działania klastra AKS może być konieczne przejrzenie dzienników w celu rozwiązania problemu. Wbudowana w Azure Portal jest możliwość wyświetlania dzienników dla [głównych składników][aks-master-logs] lub kontenerów AKS [w klastrze AKS][azure-container-logs]. Czasami może być konieczne uzyskanie dzienników *kubelet* z węzła AKS w celu rozwiązywania problemów.
+W ramach działania klastra AKS może być konieczne przejrzenie dzienników w celu rozwiązania problemu. Wbudowana w Azure Portal jest możliwość wyświetlania dzienników dla [głównych składników][aks-master-logs] lub [kontenerów AKS w klastrze AKS][azure-container-logs]. Czasami może być konieczne uzyskanie dzienników *kubelet* z węzła AKS w celu rozwiązywania problemów.
 
-W tym artykule pokazano, jak można użyć `journalctl` programu do wyświetlania dzienników *kubelet* w węźle AKS.
+W tym artykule pokazano, jak można użyć `journalctl` do wyświetlania dzienników *kubelet* w węźle AKS.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

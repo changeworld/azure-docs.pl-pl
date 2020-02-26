@@ -3,17 +3,16 @@ title: Wysoka dostępność i odzyskiwanie po awarii w usłudze Azure Kubernetes
 description: Zapoznaj się z najlepszymi rozwiązaniami operatora klastra, aby osiągnąć maksymalny czas pracy aplikacji, zapewniając wysoką dostępność i przygotowanie do odzyskiwania po awarii w usłudze Azure Kubernetes Service (AKS).
 services: container-service
 author: lastcoolnameleft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 855d40f9c20f966f6fa2b89949e47c943704bf2b
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 894ec4e543f0c68cc652141d2c1578cda61d7f42
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549159"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594754"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania związane z ciągłością biznesową i odzyskiwaniem po awarii w usłudze Azure Kubernetes Service (AKS)
 

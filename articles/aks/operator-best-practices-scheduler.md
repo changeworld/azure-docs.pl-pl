@@ -2,17 +2,14 @@
 title: Najlepsze praktyki dla operatorów — podstawowe funkcje harmonogramu w usłudze Azure Kubernetes Services (AKS)
 description: Zapoznaj się z najlepszymi rozwiązaniami operatora klastra dotyczącymi korzystania z podstawowych funkcji usługi Scheduler, takich jak przydziały zasobów i budżety na przerwy w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: mlearned
-ms.openlocfilehash: 3661f435b5c2dd88aa8e17ca396f9af43aea5224
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: cccc476a944b28d24c53a947e434d465c94f94ee
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293610"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594655"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące podstawowych funkcji harmonogramu w usłudze Azure Kubernetes Service (AKS)
 

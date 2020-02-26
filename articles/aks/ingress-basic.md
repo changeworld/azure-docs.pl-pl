@@ -2,17 +2,14 @@
 title: Tworzenie podstawowego kontrolera usług w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak zainstalować i skonfigurować podstawowy kontroler transferu NGINX w klastrze usługi Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 12/20/2019
-ms.author: mlearned
-ms.openlocfilehash: 4299846f48524799084efa5456c169d18af4185d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: e37f7aa677be129aa9fe568880c53cc860947e30
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75728875"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595641"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Tworzenie kontrolera transferu danych przychodzących w usłudze Azure Kubernetes Service (AKS)
 
@@ -20,7 +17,7 @@ Kontroler ruchu przychodzącego to element oprogramowania dostarczający odwrotn
 
 W tym artykule pokazano, jak wdrożyć [kontroler Nginx Ingress][nginx-ingress] w klastrze usługi Azure Kubernetes Service (AKS). W klastrze AKS są uruchamiane dwie aplikacje, z których każdy jest dostępny za pośrednictwem pojedynczego adresu IP.
 
-Możesz również wykonać następujące czynności:
+Możesz także:
 
 - [Włącz dodatek routingu aplikacji protokołu HTTP][aks-http-app-routing]
 - [Utwórz kontroler transferu danych przychodzących, który używa wewnętrznej, prywatnej sieci i adresu IP][aks-ingress-internal]
@@ -232,7 +229,7 @@ W tym artykule uwzględniono niektóre składniki zewnętrzne do AKS. Aby dowied
 - [Interfejs wiersza polecenia Helm][helm-cli]
 - [Kontroler transferu danych przychodzących NGINX][nginx-ingress]
 
-Możesz również wykonać następujące czynności:
+Możesz także:
 
 - [Włącz dodatek routingu aplikacji protokołu HTTP][aks-http-app-routing]
 - [Utwórz kontroler transferu danych przychodzących, który używa wewnętrznej, prywatnej sieci i adresu IP][aks-ingress-internal]

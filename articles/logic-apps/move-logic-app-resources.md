@@ -1,27 +1,29 @@
 ---
-title: Przenoszenie aplikacji logiki między subskrypcjami, grupami zasobów lub regionami
+title: Migrowanie aplikacji logiki między subskrypcjami, grupami zasobów lub regionami
 description: Migrowanie aplikacji logiki lub kont integracji do innych subskrypcji platformy Azure, grup zasobów lub lokalizacji (regionów)
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: d6250238edd15126e7a56bd821fbd1c736ebda07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f5944accb185f1311c811cf65a8ea8348fd569db
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965886"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605612"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Przenoszenie zasobów aplikacji logiki do innych subskrypcji platformy Azure, grup zasobów lub regionów
 
-Aby przenieść aplikację logiki lub powiązane zasoby na inną subskrypcję platformy Azure, grupę zasobów lub region, masz różne sposoby wykonywania tych zadań, takie jak Azure Portal, Azure PowerShell, interfejs wiersza polecenia platformy Azure i interfejsy API REST. Przed przeniesieniem zasobów zapoznaj się z następującymi kwestiami: 
+Aby przeprowadzić migrację aplikacji logiki lub powiązanych zasobów do innej subskrypcji platformy Azure, grupy zasobów lub regionu, możesz wykonać te zadania, takie jak Azure Portal, Azure PowerShell, interfejs wiersza polecenia platformy Azure i API REST. Przed przeniesieniem zasobów zapoznaj się z następującymi kwestiami: 
 
 * Można przenosić tylko [określone typy zasobów aplikacji logiki](../azure-resource-manager/management/move-support-resources.md#microsoftlogic) między grupami zasobów platformy Azure lub subskrypcjami.
 
 * Sprawdź [limity](../logic-apps/logic-apps-limits-and-config.md) liczby zasobów aplikacji logiki, które mogą znajdować się w ramach subskrypcji platformy Azure i w każdym regionie świadczenia usługi Azure. Te limity mają wpływ na to, czy można przenosić określone typy zasobów, gdy region pozostaje taki sam w obrębie subskrypcji lub grup zasobów. Na przykład dla każdego regionu platformy Azure w każdej subskrypcji platformy Azure można mieć tylko jedno konto integracji warstwy Bezpłatna.
 
-* Podczas przenoszenia zasobów platforma Azure tworzy nowe identyfikatory zasobów. Upewnij się, że zamiast tego należy użyć nowych identyfikatorów i zaktualizować wszelkie skrypty lub narzędzia skojarzone z przeniesionymi zasobami. Po przeniesieniu aplikacji logiki między subskrypcjami, grupami zasobów lub regionami należy ponownie utworzyć lub zatwierdzić wszystkie połączenia protokołu OAuth.
+* Po przeprowadzeniu migracji aplikacji logiki między subskrypcjami, grupami zasobów lub regionami należy ponownie utworzyć lub autoryzować wszystkie połączenia wymagające uwierzytelniania Open (OAuth).
+
+* Za każdym razem, gdy przenosisz zasoby, platforma Azure tworzy nowe identyfikatory zasobów. Upewnij się, że zamiast tego należy użyć nowych identyfikatorów i zaktualizować wszelkie skrypty lub narzędzia skojarzone z przeniesionymi zasobami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -84,7 +86,7 @@ Aby uzyskać więcej informacji na temat szablonów wdrażania dla usługi Logic
 * [Tworzenie Azure Resource Manager szablonów dla Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
 * [Wdróż szablony Azure Resource Manager dla Azure Logic Apps](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 
-### <a name="related-resources"></a>Zasoby powiązane
+### <a name="related-resources"></a>Powiązane zasoby
 
 Niektóre zasoby platformy Azure, takie jak zasoby lokalnej bramy danych na platformie Azure, mogą znajdować się w regionie, który różni się od aplikacji logiki, które używają tych zasobów. Jednak inne zasoby platformy Azure, takie jak połączone konta integracji, muszą znajdować się w tym samym regionie, w którym znajdują się Aplikacje logiki. Na podstawie Twojego scenariusza upewnij się, że aplikacje logiki mogą uzyskać dostęp do zasobów, których aplikacje oczekują w tym samym regionie.
 

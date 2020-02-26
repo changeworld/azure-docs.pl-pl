@@ -2,17 +2,14 @@
 title: Najlepsze rozwiązania dla operatorów — zaawansowane funkcje harmonogramu w usłudze Azure Kubernetes Services (AKS)
 description: Zapoznaj się z najlepszymi rozwiązaniami operatora klastra dotyczącymi korzystania z zaawansowanych funkcji harmonogramu, takich jak przyrządy i tolerowanie, selektory węzłów i koligacja lub koligacja między innymi i ochrona w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: mlearned
-ms.openlocfilehash: 2ac66e46d449100fcdd004627820252473f6e2f3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 546c1d6ae25a33c6df93469ccf8c230b4b1c474b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293661"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594995"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zaawansowanych funkcji harmonogramu w usłudze Azure Kubernetes Service (AKS)
 

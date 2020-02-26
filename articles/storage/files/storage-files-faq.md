@@ -3,16 +3,16 @@ title: Często zadawane pytania dotyczące Azure Files | Microsoft Docs
 description: Znajdź odpowiedzi na często zadawane pytania dotyczące Azure Files.
 author: roygara
 ms.service: storage
-ms.date: 02/19/2020
+ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: c6503f2782832b7155c0c081aab9769296e08a8e
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565064"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598191"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania dotyczące Azure Files
 [Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można instalować jednocześnie w chmurze lub lokalnych wdrożeniach systemów Windows, Linux i macOS. Możesz również buforować udziały plików platformy Azure na maszynach z systemem Windows Server, używając Azure File Sync, aby szybko uzyskać dostęp do miejsca, w którym są używane dane.
@@ -85,7 +85,7 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 
 * <a id="afs-region-availability"></a>
   **jakie regiony są obsługiwane dla Azure File Sync?**  
-    Listę dostępnych regionów można znaleźć w sekcji [dostępność regionu](storage-sync-files-planning.md#region-availability) w podręczniku planowania Azure File Sync. Ciągle będziemy dodawać obsługę dodatkowych regionów, w tym regionów niepublicznych.
+    Listę dostępnych regionów można znaleźć w sekcji [dostępność regionu](storage-sync-files-planning.md#azure-file-sync-region-availability) w podręczniku planowania Azure File Sync. Ciągle będziemy dodawać obsługę dodatkowych regionów, w tym regionów niepublicznych.
 
 * <a id="cross-domain-sync"></a>
   **można mieć przyłączone do domeny serwery i przyłączone do domeny w tej samej grupie synchronizacji?**  
@@ -155,13 +155,13 @@ W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące 
 
     Jeśli włączono Azure Backup w udziałach plików zarządzanych przez funkcję synchronizacji plików, listy ACL plików można nadal przywracać w ramach przepływu pracy przywracania kopii zapasowych. Działa to zarówno w przypadku całego udziału, jak i poszczególnych plików lub katalogów.
 
-    W przypadku korzystania z migawek w ramach rozwiązania do samodzielnego zarządzania kopiami zapasowymi dla udziałów plików zarządzanych przez funkcję synchronizacji plików listy ACL mogą nie zostać przywrócone prawidłowo do list ACL systemu plików NTFS, jeśli migawki zostały wykonane przed 24 lutego 2020. W takim przypadku warto skontaktować się z pomocą techniczną platformy Azure.
+    W przypadku korzystania z migawek w ramach rozwiązania do samodzielnego zarządzania kopiami zapasowymi dla udziałów plików zarządzanych przez funkcję synchronizacji plików listy ACL mogą nie zostać przywrócone prawidłowo do list ACL systemu plików NTFS, jeśli migawki zostały wykonane przed 24 lutego, 2020. W takim przypadku warto skontaktować się z pomocą techniczną platformy Azure.
     
 ## <a name="security-authentication-and-access-control"></a>Zabezpieczenia, uwierzytelnianie i kontrola dostępu
 * <a id="ad-support"></a>
 **jest uwierzytelnianie oparte na tożsamościach i kontrola dostępu obsługiwane przez Azure Files?**  
     
-    Tak, Azure Files obsługuje uwierzytelnianie oparte na tożsamościach i kontrola dostępu. Można wybrać jeden z dwóch sposobów korzystania z kontroli dostępu opartej na tożsamościach: Azure Active Directory Domain Services (Azure AD DS) (GA) lub Active Directory (AD) (wersja zapoznawcza). Usługa Azure AD DS Authentication za pośrednictwem protokołu SMB dla Azure Files umożliwia maszynom wirtualnym z systemem Windows przyłączonych do domeny usługi Azure AD DS dostęp do udziałów, katalogów i plików przy użyciu poświadczeń usługi Azure AD. Usługa AD obsługuje uwierzytelnianie przy użyciu maszyn przyłączonych do domeny usługi Active Directory, lokalnie lub na platformie Azure, aby uzyskiwać dostęp do udziałów plików platformy Azure za pośrednictwem protokołu SMB. Aby uzyskać więcej informacji, zobacz [omówienie Azure Files obsługi uwierzytelniania opartego na tożsamościach na potrzeby dostępu do protokołu SMB](storage-files-active-directory-overview.md). 
+    Tak, Azure Files obsługuje uwierzytelnianie oparte na tożsamościach i kontrola dostępu. Aby skorzystać z kontroli dostępu opartej na tożsamościach, można wybrać jeden z dwóch sposobów: Active Directory (AD) (wersja zapoznawcza) lub Azure Active Directory Domain Services (Azure AD DS) (GA). Usługa AD obsługuje uwierzytelnianie przy użyciu maszyn przyłączonych do domeny usługi Active Directory, lokalnie lub na platformie Azure, aby uzyskiwać dostęp do udziałów plików platformy Azure za pośrednictwem protokołu SMB. Usługa Azure AD DS Authentication za pośrednictwem protokołu SMB dla Azure Files umożliwia maszynom wirtualnym z systemem Windows przyłączonych do domeny usługi Azure AD DS dostęp do udziałów, katalogów i plików przy użyciu poświadczeń usługi Azure AD. Aby uzyskać więcej informacji, zobacz [omówienie Azure Files obsługi uwierzytelniania opartego na tożsamościach na potrzeby dostępu do protokołu SMB](storage-files-active-directory-overview.md). 
 
     Azure Files oferuje dwa dodatkowe sposoby zarządzania kontrolą dostępu:
 
@@ -199,14 +199,12 @@ istnieją **interfejsy API REST obsługujące pobieranie/Ustawianie/kopiowanie k
 * <a id="ad-multiple-forest"></a>
 **Azure Files uwierzytelniania usługi AD obsługują integrację ze środowiskiem usługi AD przy użyciu wielu lasów?**    
 
-    Azure Files uwierzytelnianie usługi AD integruje się tylko z lasem usługi domeny usługi AD, w której zarejestrowano konto magazynu. Aby można było obsługiwać uwierzytelnianie z innego lasu usługi AD, środowisko musi mieć prawidłowo skonfigurowane zaufanie lasu. Azure Files Rejestracja w usłudze domeny usługi AD jest taka sama jak zwykły serwer plików, gdzie tworzy konto w usłudze AD na potrzeby uwierzytelniania. Jedyną różnicą jest to, że zarejestrowana nazwa SPN konta magazynu jest zakończona ciągiem "file.core.windows.net", który jest niezgodny z sufiksem domeny.
-
-    Skontaktuj się z administratorem domeny, aby sprawdzić, czy dowolna aktualizacja zasad routingu DNS jest wymagana, aby umożliwić uwierzytelnianie wielu lasów.
+    Azure Files uwierzytelnianie usługi AD integruje się tylko z lasem usługi domeny usługi AD, w której zarejestrowano konto magazynu. Aby można było obsługiwać uwierzytelnianie z innego lasu usługi AD, środowisko musi mieć prawidłowo skonfigurowane zaufanie lasu. Sposób, w jaki Azure Files rejestrować się w usłudze domeny usługi AD, jest głównie taki sam jak zwykły serwer plików, w którym tworzy tożsamość (konto logowania komputera lub usługi) w usłudze AD na potrzeby uwierzytelniania. Jedyną różnicą jest to, że zarejestrowana nazwa SPN konta magazynu jest zakończona ciągiem "file.core.windows.net", który jest niezgodny z sufiksem domeny. Skontaktuj się z administratorem domeny, aby sprawdzić, czy dowolna aktualizacja zasad routingu DNS jest wymagana w celu umożliwienia uwierzytelniania wielu lasów ze względu na inny sufiks domeny.
 
 * <a id=""></a>
 **jakie regiony są dostępne do Azure Files uwierzytelniania usługi AD (wersja zapoznawcza)?**
 
-    Aby uzyskać szczegółowe informacje, zapoznaj się z [regionalną dostępnością usługi AD](storage-files-active-directory-domain-services-enable.md#regional-availability) .
+    Aby uzyskać szczegółowe informacje, zapoznaj się z [regionalną dostępnością usługi AD](storage-files-identity-auth-active-directory-enable.md#regional-availability) .
 
 * <a id="ad-aad-smb-afs"></a>
 **można wykorzystać Azure Files uwierzytelniania AD DS platformy Azure lub usługi Active Directory (w wersji zapoznawczej) w udziałach plików zarządzanych przez Azure File Sync?**
@@ -347,7 +345,7 @@ mogę **usunąć mój udział, ale nie usunąć moich migawek udostępniania?**
 
 * <a id="need-larger-share"></a>
 **jakie rozmiary są dostępne dla udziałów plików platformy Azure?**  
-    Rozmiary udziałów plików platformy Azure (Premium i standard) można skalować w górę do 100 TiB. Zapoznaj się z sekcją dołączanie [do większej liczby udziałów plików (warstwa standardowa)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) przewodnika planowania dla instrukcji dołączania do większych udziałów plików dla warstwy Standardowa.
+    Rozmiary udziałów plików platformy Azure (Premium i standard) można skalować w górę do 100 TiB. Zapoznaj się z sekcją dołączanie [do większej liczby udziałów plików (warstwa standardowa)](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) przewodnika planowania dla instrukcji dołączania do większych udziałów plików dla warstwy Standardowa.
 
 * <a id="lfs-performance-impact"></a>
 **rozszerza limit przydziału udziału plików na moje obciążenia lub Azure File Sync?**

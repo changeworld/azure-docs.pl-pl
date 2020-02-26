@@ -2,16 +2,15 @@
 title: Informacje o siatkach usług
 description: Uzyskaj przegląd siatek usług, ich architektury i możliwości oraz kryteriów, które należy wziąć pod uwagę podczas wybierania jednego do wdrożenia.
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 226a4e5cf97be2e23ef13a95b80be07b7fbf5d7a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530708"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594315"
 ---
 # <a name="about-service-meshes"></a>Informacje o siatkach usług
 
@@ -88,7 +87,7 @@ Należy wziąć pod uwagę następujące obszary i, które z nich są najbardzie
 
 - **Business** — komercyjne wsparcie, fundament (CNCF), licencja OSS, zarządzanie
 
-- **Operacyjna** — instalacja/uaktualnienia, wymagania dotyczące zasobów, wymagania dotyczące wydajności, integracje (metryki, dane telemetryczne, pulpity nawigacyjne, narzędzia, SMI), obciążenia mieszane (pule węzłów systemu Linux i Windows), obliczenia (Kubernetes, maszyny wirtualne), wiele klastrów
+- **Operacyjna** — instalacja/uaktualnienia, wymagania dotyczące zasobów, wymagania dotyczące wydajności, integracje (metryki, dane telemetryczne, pulpity nawigacyjne, narzędzia, SMI), obciążenia mieszane (pule węzłów systemu Linux i Windows), obliczeniowe (Kubernetes, maszyny wirtualne), wiele klastrów
 
 - **Zabezpieczenia** — uwierzytelnianie, tożsamość, zarządzanie certyfikatami i rotacja, podłączany zewnętrzny urząd certyfikacji
 

@@ -2,17 +2,14 @@
 title: Tworzenie protokołu HTTPS przychodzącego za pomocą klastra usługi Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak zainstalować i skonfigurować kontroler protokołu przychodzącego NGINX, który używa szyfrowania do automatycznej generacji certyfikatów TLS w klastrze usługi Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.author: mlearned
-ms.openlocfilehash: 661ed72265b81f47cbe8e9cf26595632360ec352
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6b465aeb08f14e48249be9587e5fdee1f4b08ba4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898807"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595539"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Tworzenie kontrolera protokołu HTTPS w usłudze Azure Kubernetes Service (AKS)
 
@@ -20,7 +17,7 @@ Kontroler ruchu przychodzącego to element oprogramowania dostarczający odwrotn
 
 W tym artykule pokazano, jak wdrożyć [kontroler Nginx Ingress][nginx-ingress] w klastrze usługi Azure Kubernetes Service (AKS). Projekt [Menedżera certyfikatów][cert-manager] służy do automatycznego generowania i konfigurowania certyfikatów [szyfrowania][lets-encrypt] . Na koniec dwie aplikacje są uruchamiane w klastrze AKS, z których każdy jest dostępny za pośrednictwem jednego adresu IP.
 
-Możesz również wykonać następujące czynności:
+Możesz także:
 
 - [Tworzenie podstawowego kontrolera danych wejściowych z łącznością sieci zewnętrznej][aks-ingress-basic]
 - [Włącz dodatek routingu aplikacji protokołu HTTP][aks-http-app-routing]
@@ -346,7 +343,7 @@ W tym artykule uwzględniono niektóre składniki zewnętrzne do AKS. Aby dowied
 - [Kontroler transferu danych przychodzących NGINX][nginx-ingress]
 - [Menedżer certyfikatów][cert-manager]
 
-Możesz również wykonać następujące czynności:
+Możesz także:
 
 - [Tworzenie podstawowego kontrolera danych wejściowych z łącznością sieci zewnętrznej][aks-ingress-basic]
 - [Włącz dodatek routingu aplikacji protokołu HTTP][aks-http-app-routing]

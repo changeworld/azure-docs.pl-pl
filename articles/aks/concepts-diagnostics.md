@@ -3,16 +3,15 @@ title: Omówienie diagnostyki usługi Azure Kubernetes Service (AKS)
 description: Dowiedz się więcej na temat klastrów samodiagnostyki w usłudze Azure Kubernetes.
 services: container-service
 author: yunjchoi
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 2148c6c8c9d78355847b3240b54349f1e7789921
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 11b469425a80d588462e0332c973260cc3b56992
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291383"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596185"
 ---
 # <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Omówienie diagnostyki usługi Azure Kubernetes Service (AKS)
 
@@ -26,7 +25,7 @@ Aby uzyskać dostęp do diagnostyki AKS:
 - Kliknij przycisk **diagnozowanie i rozwiązywanie problemów** w lewym okienku nawigacji, co spowoduje otwarcie diagnostyki AKS.
 - Wybierz kategorię, która najlepiej opisuje problem z klastrem przy użyciu słów kluczowych na kafelku strony głównej, lub wpisz słowo kluczowe, które najlepiej opisuje Twój problem na pasku wyszukiwania, na przykład _problemy z węzłem klastra_.
 
-![Strona główna](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
+![Głównej](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
 
 ## <a name="view-a-diagnostic-report"></a>Wyświetl raport diagnostyczny
 

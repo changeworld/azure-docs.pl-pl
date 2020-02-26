@@ -3,16 +3,15 @@ title: Utwórz serwer Ubuntu NFS (sieciowy system plików) do użycia przez usł
 description: Dowiedz się, jak ręcznie utworzyć wolumin serwera Ubuntu Linux NFS do użycia z identyfikatorami platformy Azure Kubernetes Service (AKS)
 services: container-service
 author: ozboms
-ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e5676710bc47557318f3e2adcf36ec0ed13d47de
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063819"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596627"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Ręczne tworzenie i używanie woluminu systemu plików NFS (sieciowy system plików) z systemem Linux za pomocą usługi Azure Kubernetes Service (AKS)
 Udostępnianie danych między kontenerami jest często niezbędnym składnikiem usług i aplikacji opartych na kontenerach. Zwykle istnieją różne zasobniki, które wymagają dostępu do tych samych informacji na zewnętrznym woluminie trwałym.    

@@ -1,35 +1,34 @@
 ---
-title: Sprawdzanie wdrożenia rozwiązania Kubernetes na platformie Azure dla implementacji najlepszych rozwiązań
-description: Dowiedz się, jak sprawdzić, czy stosowania najlepszych rozwiązań dotyczących wdrożenia w usłudze Azure Kubernetes Service przy użyciu klastra kubernetes w usłudze advisor
+title: Zapoznaj się z wdrożeniami Kubernetes na platformie Azure w celu wdrożenia najlepszych rozwiązań
+description: Dowiedz się, jak sprawdzić implementację najlepszych rozwiązań w Twoich wdrożeniach w usłudze Azure Kubernetes za pomocą usługi polecenia-Advisor
 services: container-service
 author: seanmck
-ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 03c5eb2e32a0a8ec51844511276d9efba5651068
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 29ea7dba1df8bc7c68e3d17563a51b784ce4a561
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "65073773"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595437"
 ---
-# <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Sprawdzanie, czy są najlepsze rozwiązania Kubernetes w klastrze
+# <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Sprawdzanie najlepszych rozwiązań Kubernetes w klastrze
 
-Istnieje kilka najlepszych rozwiązań, które należy wykonać na swoich wdrożeń Kubernetes, aby zapewnić najlepszą wydajność i odporność aplikacji. Narzędzie klastra kubernetes w usłudze advisor do wyszukania wdrożenia, które nie są następujące tych propozycji.
+Istnieje kilka najlepszych rozwiązań, które należy wykonać w ramach wdrożeń usługi Kubernetes w celu zapewnienia najlepszej wydajności i odporności aplikacji. Aby wyszukać wdrożenia, które nie są następujące, można użyć narzędzia polecenia-Advisor.
 
-## <a name="about-kube-advisor"></a>Informacji o usłudze advisor rozwiązania kubernetes
+## <a name="about-kube-advisor"></a>Informacje o polecenia-Advisor
 
-[Klastra kubernetes w usłudze advisor narzędzie] [ kube-advisor-github] jest jeden kontener przeznaczony do uruchamiania w klastrze. On wysyła do serwera interfejsu API rozwiązania Kubernetes, uzyskać informacji na temat wdrożeń i zwraca zestaw elementów sugerowane ulepszenia.
+[Narzędzie polecenia-Advisor][kube-advisor-github] to pojedynczy kontener przeznaczony do uruchamiania w klastrze. Wysyła zapytanie do serwera interfejsu API Kubernetes o informacje o wdrożeniach i zwraca zestaw sugerowanych ulepszeń.
 
-Narzędzia klastra kubernetes w usłudze advisor mogą być przedstawione na żądanie zasobów i limity Brak w aplikacji PodSpecs dla Windows, a także aplikacje dla systemu Linux, ale samo narzędzie klastra kubernetes w usłudze klasyfikatora musi być zaplanowane na zasobnik systemu Linux. Można zaplanować zasobnika do uruchamiania na pulę węzłów przy użyciu określonego systemu operacyjnego [selektor węzła] [ k8s-node-selector] w zasobniku konfiguracji.
+Narzędzie polecenia-Advisor może raportować żądania zasobów i limitów braku w PodSpecs dla aplikacji systemu Windows, a także aplikacji z systemem Linux, ale narzędzie Advisor polecenia musi zostać zaplanowane w systemie Linux pod. Można zaplanować uruchomienie w puli węzłów z określonym systemem operacyjnym przy użyciu [selektora węzłów][k8s-node-selector] w konfiguracji pod.
 
 > [!NOTE]
-> Narzędzia klastra kubernetes w usłudze advisor jest obsługiwana przez firmę Microsoft na zasadzie największej staranności. Problemy i sugestie powinny być zgłaszane w witrynie GitHub.
+> Narzędzie polecenia-Advisor jest obsługiwane przez firmę Microsoft na podstawie najlepszego wysiłku. Problemy i sugestie należy zgłosić w serwisie GitHub.
 
-## <a name="running-kube-advisor"></a>Uruchamianie klastra kubernetes w usłudze advisor
+## <a name="running-kube-advisor"></a>Uruchamianie polecenia-Advisor
 
-Aby uruchomić narzędzie w klastrze, który jest skonfigurowany dla [kontroli dostępu opartej na rolach (RBAC)](azure-ad-integration.md), używając następujących poleceń. Pierwsze polecenie tworzy konto usługi Kubernetes. Drugie polecenie uruchamia narzędzie w zasobniku przy użyciu tego konta usługi i konfiguruje zasobnika do usunięcia, po jej zakończenia. 
+Aby uruchomić narzędzie w klastrze skonfigurowanym na potrzeby [kontroli dostępu opartej na rolach (RBAC)](azure-ad-integration.md), użyj następujących poleceń. Pierwsze polecenie tworzy konto usługi Kubernetes. Drugie polecenie uruchamia narzędzie w składniku pod przy użyciu tego konta usługi i konfiguruje go pod kątem usuwania po zakończeniu. 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
@@ -37,37 +36,37 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }"
 ```
 
-Jeśli nie używasz funkcji RBAC, można w następujący sposób Uruchom polecenie:
+Jeśli nie korzystasz z funkcji RBAC, możesz uruchomić polecenie w następujący sposób:
 
 ```bash
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never
 ```
 
-W ciągu kilku sekund powinna być widoczna tabelę opisującą potencjalne ulepszenia do wdrożenia.
+W ciągu kilku sekund powinna zostać wyświetlona tabela opisująca potencjalne ulepszenia wdrożeń.
 
-![Dane wyjściowe klastra kubernetes w usłudze advisor](media/kube-advisor-tool/kube-advisor-output.png)
+![Polecenia — dane wyjściowe usługi Advisor](media/kube-advisor-tool/kube-advisor-output.png)
 
-## <a name="checks-performed"></a>Sprawdza, czy wykonano
+## <a name="checks-performed"></a>Testy wykonane
 
-Narzędzie sprawdza poprawność kilka Kubernetes najlepszych rozwiązań, każdy z własnych sugerowane rozwiązanie problemu.
+Narzędzie sprawdza poprawność kilku najlepszych rozwiązań Kubernetes, z których każdy ma swoje proponowane korygowanie.
 
 ### <a name="resource-requests-and-limits"></a>Żądania zasobów i limity
 
-Rozwiązanie Kubernetes obsługuje definiowanie [zasobów żądania i ogranicza na specyfikacji zasobnika][kube-cpumem]. Żądanie definiuje minimalny Procesora i pamięci wymaganej do uruchamiania kontenera. Limit definiuje maksymalną Procesora i pamięci, które mają być dozwolone.
+Kubernetes obsługuje definiowanie [żądań zasobów i limitów na temat specyfikacji pod][kube-cpumem]. Żądanie definiuje minimalny procesor i pamięć wymaganą do uruchomienia kontenera. Limit określa maksymalną liczbę procesorów i pamięci, które powinny być dozwolone.
 
-Domyślnie nie żądania lub granice są ustawione na specyfikacje zasobników. Może to prowadzić do węzłów, które są overscheduled i kontenery są przetrzymywany. Narzędzia klastra kubernetes w usłudze advisor wyróżnia zasobników bez żądania i ogranicza zestaw.
+Domyślnie żadne żądania ani limity nie są ustawione dla specyfikacji pod. Może to prowadzić do zaplanowanych węzłów i Starved kontenerów. Narzędzie polecenia-Advisor podświetla informacje o zbiorach bez żądań i limitów.
 
 ## <a name="cleaning-up"></a>Czyszczenie
 
-Jeśli klaster ma włączone RBAC, można oczyścić `ClusterRoleBinding` po uruchomieniu narzędzia, za pomocą następującego polecenia:
+Jeśli w klastrze włączono funkcję RBAC, możesz wyczyścić `ClusterRoleBinding` po uruchomieniu narzędzia przy użyciu następującego polecenia:
 
 ```bash
 kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 ```
 
-Jeśli używasz narzędzia względem klastra, który nie jest włączone RBAC, żadne oczyszczanie jest wymagana.
+Jeśli uruchamiasz narzędzie w klastrze, który nie obsługuje kontroli RBAC, nie jest wymagane żadne czyszczenie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Rozwiązywanie problemów z usługą Azure Kubernetes Service](troubleshooting.md)
 

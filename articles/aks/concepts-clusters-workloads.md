@@ -2,17 +2,14 @@
 title: Koncepcje — podstawy Kubernetes dla usług Azure Kubernetes Services (AKS)
 description: Informacje o podstawowym klastrze i składnikach obciążenia Kubernetes oraz o tym, jak odnoszą się do funkcji w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: mlearned
-ms.openlocfilehash: 9efd053bde11a29c37e3ff6afb7c6fc4492338db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967556"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596236"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Podstawowe pojęcia Kubernetes dla usługi Azure Kubernetes Service (AKS)
 
@@ -106,7 +103,7 @@ Aby zachować wydajność i funkcjonalność węzła, zasoby są zastrzeżone dl
     - 6% następnego 112 GB pamięci (do 128 GB)
     - 2% każdej pamięci powyżej 128 GB
 
-Powyższe zasady dotyczące pamięci i alokacji procesora są używane w celu zachowania poprawnych węzłów agenta, ponieważ niektóre systemy hostingu mają krytyczne znaczenie dla kondycji klastra. Te reguły alokacji powodują również, że węzeł zgłasza mniejszą alokację pamięci i procesora CPU niż w przypadku, gdy nie był częścią klastra Kubernetes. Nie można zmienić powyższych rezerwacji zasobów.
+Powyższe zasady dotyczące pamięci i alokacji procesora są używane w celu zachowania poprawnego działania węzłów agenta, w tym pewnych systemów hostingu, które mają kluczowe znaczenie dla kondycji klastra. Te reguły alokacji powodują również, że węzeł zgłasza mniejszą alokację pamięci i procesora CPU niż w przypadku, gdy nie był częścią klastra Kubernetes. Nie można zmienić powyższych rezerwacji zasobów.
 
 Na przykład, jeśli węzeł zawiera 7 GB, zgłasza 34% pamięci nie można przydzielić na podstawie progu wykluczeń twardych 750Mi.
 
@@ -148,7 +145,7 @@ spec:
 
 Aby uzyskać więcej informacji na temat sposobu kontrolowania, gdzie są planowane planowanie, zobacz [najlepsze rozwiązania dotyczące zaawansowanych funkcji usługi Scheduler w AKS][operator-best-practices-advanced-scheduler].
 
-## <a name="pods"></a>Zasobniki
+## <a name="pods"></a>Zasobników
 
 Kubernetes używa *zasobników* do uruchomienia wystąpienia aplikacji. Element pod reprezentuje pojedyncze wystąpienie aplikacji. Zasobniki zwykle mają 1:1 mapowania z kontenerem, chociaż istnieją zaawansowane scenariusze, w których część może zawierać wiele kontenerów. Te wielokontenerowe działy są planowane razem w tym samym węźle i umożliwiają kontenerom udostępnianie powiązanych zasobów.
 
@@ -224,7 +221,7 @@ Istnieją dwa zasoby Kubernetes, które umożliwiają zarządzanie tymi typami a
 
 ### <a name="statefulsets"></a>StatefulSets
 
-Nowoczesne opracowywanie aplikacji jest często stosowane w przypadku aplikacji bezstanowych, ale *StatefulSets* można używać w przypadku aplikacji stanowych, takich jak aplikacje, które zawierają składniki bazy danych. StatefulSet jest podobny do wdrożenia w przypadku tworzenia co najmniej jednego identycznego zasobnika i zarządzania nim. Repliki w StatefulSet wykonują bezpieczne, sekwencyjne podejście do wdrożenia, skalowania, uaktualnienia i zakończenia. W przypadku StatefulSet, konwencji nazewnictwa, nazw sieci i magazynu utrwalają się, gdy replika jest zaplanowana.
+Nowoczesne opracowywanie aplikacji jest często stosowane w przypadku aplikacji bezstanowych, ale *StatefulSets* można używać w przypadku aplikacji stanowych, takich jak aplikacje, które zawierają składniki bazy danych. StatefulSet jest podobny do wdrożenia w przypadku tworzenia co najmniej jednego identycznego zasobnika i zarządzania nim. Repliki w StatefulSet wykonują bezpieczne, sekwencyjne podejście do wdrożenia, skalowania, uaktualnienia i zakończenia. W przypadku StatefulSet (jako repliky są ponownie zaplanowane) Konwencja nazewnictwa, nazwy sieciowe i magazyn pozostają.
 
 Aplikację można zdefiniować w formacie YAML przy użyciu `kind: StatefulSet`, a kontroler StatefulSet będzie obsługiwał wdrażanie wymaganych replik i zarządzanie nimi. Dane są zapisywane w magazynie trwałym, udostępnianym przez usługę Azure Managed Disks lub Azure Files. W przypadku programu StatefulSets podstawowy magazyn trwały pozostaje nawet wtedy, gdy StatefulSet zostanie usunięta.
 
@@ -245,7 +242,7 @@ Aby uzyskać więcej informacji, zobacz [Kubernetes DaemonSets][kubernetes-daemo
 > [!NOTE]
 > W przypadku używania [dodatku węzłów wirtualnych](virtual-nodes-cli.md#enable-virtual-nodes-addon)DaemonSets nie utworzy zasobnika w węźle wirtualnym.
 
-## <a name="namespaces"></a>Przestrzenie nazw
+## <a name="namespaces"></a>{1&gt;Przestrzenie nazw&lt;1}
 
 Zasoby Kubernetes, takie jak grupy miar i wdrożenia, są logicznie pogrupowane w *przestrzeni nazw*. Dzięki tym grupom można logicznie podzielić klaster AKS i ograniczyć dostęp do tworzenia, wyświetlania i zarządzania zasobami. Można na przykład utworzyć przestrzenie nazw w celu oddzielenia grup firmy. Użytkownicy mogą korzystać tylko z zasobami w ramach przypisanych przestrzeni nazw.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157276"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597172"
 ---
 # <a name="storage-account-overview"></a>Omówienie kont magazynu
 
@@ -72,7 +72,7 @@ Konta BlockBlobStorage nie obsługują obecnie warstw dostępu do warstwy gorąc
 
 Konto FileStorage to wyspecjalizowane konto magazynu używane do przechowywania i tworzenia udziałów plików w warstwie Premium. Ten rodzaj konta magazynu obsługuje pliki, ale nie blokuje obiektów blob, dołączanie obiektów blob, stronicowych obiektów blob, tabel lub kolejek.
 
-Konta FileStorage oferują unikatowe charakterystyki wydajności, takie jak rozerwanie operacji we/wy. Więcej informacji o tych właściwościach znajduje się w sekcji [warstwy wydajności udziału plików](../files/storage-files-planning.md#file-share-performance-tiers) w przewodniku planowania plików.
+Konta FileStorage oferują unikatowe cechy charakterystyczne dla wydajności, takie jak rozerwanie operacji we/wy. Aby uzyskać więcej informacji na temat tych cech, zobacz sekcję [warstwy magazynowania udziałów plików](../files/storage-files-planning.md#storage-tiers) w przewodniku planowania plików.
 
 ## <a name="naming-storage-accounts"></a>Nazewnictwo kont magazynu
 

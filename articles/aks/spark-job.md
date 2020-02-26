@@ -2,17 +2,16 @@
 title: Uruchamianie zadania Apache Spark za pomocą usługi Azure Kubernetes Service (AKS)
 description: Użyj usługi Azure Kubernetes Service (AKS) do uruchomienia zadania Apache Spark
 author: lenadroid
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 72e87acf418d5085a76f18c595bf31d43b0d64ac
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 7465f8eb4357fcb6faa1d0fee0173837b6cb019b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274663"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593653"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Uruchamianie Apache Spark zadań w AKS
 
@@ -259,7 +258,7 @@ kubectl port-forward spark-pi-2232778d0f663768ab27edc35cb73040-driver 4040:4040
 
 Aby uzyskać dostęp do interfejsu użytkownika platformy Spark, Otwórz `127.0.0.1:4040` adresu w przeglądarce.
 
-![Interfejs użytkownika platformy Spark](media/aks-spark-job/spark-ui.png)
+![Interfejs użytkownika Spark](media/aks-spark-job/spark-ui.png)
 
 ## <a name="get-job-results-and-logs"></a>Pobierz wyniki zadania i dzienniki
 

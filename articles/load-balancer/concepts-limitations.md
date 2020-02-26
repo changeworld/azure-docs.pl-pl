@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: 341bfddb86885df225874100400a854cf12120db
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: aab6a4de7be57df1f691861533a4528a0bcae571
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757803"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605640"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer składników i ograniczeń
 Azure Load Balancer zawiera kilka kluczowych składników dla operacji.  Te składniki można skonfigurować w ramach subskrypcji za pośrednictwem Azure Portal, interfejsu wiersza polecenia platformy Azure lub Azure PowerShell.  
@@ -73,7 +73,9 @@ Aby uzyskać więcej informacji, zobacz [Konfigurowanie trybu dystrybucji dla Az
 
 Na poniższej ilustracji przedstawiono dystrybucję opartą na skrótach:
 
-  ![Dystrybucja oparta na skrótach](./media/load-balancer-overview/load-balancer-distribution.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-distribution.svg" width="512" title="Dystrybucja oparta na skrótach">
+</p>
 
   *Rysunek: dystrybucja oparta na skrótach*
 
@@ -132,9 +134,11 @@ Load Balancer publiczny mapuje publiczny adres IP i port ruchu przychodzącego n
 
 Na poniższej ilustracji przedstawiono punkt końcowy ze zrównoważonym obciążeniem dla ruchu internetowego, który jest współużytkowany przez trzy maszyny wirtualne dla portu publicznego i TCP 80. Te trzy maszyny wirtualne znajdują się w zestawie z równoważeniem obciążenia.
 
-![Przykład publicznego modułu równoważenia obciążenia](./media/load-balancer-overview/IC727496.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-http.svg" width="256" title="Publiczny moduł równoważenia obciążenia">
+</p>
 
-*Ilustracja: Równoważenie ruchu internetowego przy użyciu Load Balancer publicznego*
+*Ilustracja: Równoważenie ruchu internetowego za pomocą publicznego modułu równoważenia obciążenia*
 
 Klienci internetowi wysyłają żądania strony sieci Web na publiczny adres IP aplikacji sieci Web na porcie TCP 80. Azure Load Balancer dystrybuuje żądania między trzema maszynami wirtualnymi w zestawie o zrównoważonym obciążeniu. Aby uzyskać więcej informacji na temat algorytmów Load Balancer, zobacz temat [Load Balancer koncepcje](concepts-limitations.md#load-balancer-concepts).
 
@@ -151,7 +155,10 @@ Wewnętrzny moduł równoważenia obciążenia pozwala na następujące typy ró
 * **W przypadku aplikacji wielowarstwowych**: Równoważenie obciążenia dla aplikacji wielowarstwowych dostępnych z Internetu, w których warstwy zaplecza nie są dostępne w Internecie. Warstwy zaplecza wymagają równoważenia obciążenia sieciowego z warstwy połączonej z Internetem. Zobacz następną ilustrację.
 * **Dla aplikacji biznesowych**: równoważenie obciążenia na potrzeby aplikacji biznesowych, które są hostowane na platformie Azure bez użycia dodatkowego sprzętu lub oprogramowania służącego do równoważenia obciążenia. Ten scenariusz obejmuje serwery lokalne, które znajdują się w zestawie komputerów, których ruch jest zrównoważony.
 
-![Przykład wewnętrznego modułu równoważenie obciążenia](./media/load-balancer-overview/IC744147.png)
+
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer.svg" width="256" title="Publiczny moduł równoważenia obciążenia">
+</p>
 
 *Ilustracja: Równoważenie aplikacji wielowarstwowych przy użyciu Load Balancer publicznego i wewnętrznego*
 
@@ -202,7 +209,7 @@ Aby uzyskać więcej informacji, zobacz [limity usługi równoważenia obciąże
 - Dowiedz się więcej o korzystaniu z [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](load-balancer-standard-availability-zones.md).
 - Dowiedz się więcej o [sondach kondycji](load-balancer-custom-probe-overview.md).
 - Dowiedz się więcej na temat [diagnostyki usługa Load Balancer w warstwie Standardowa](load-balancer-standard-diagnostics.md).
-- Dowiedz się więcej o korzystaniu z [modułu równoważenia obciążenia dla połączeń wychodzących](load-balancer-outbound-connections.md).
+- Dowiedz się więcej na temat korzystania z [Load Balancer dla połączeń wychodzących](load-balancer-outbound-connections.md).
 - Poznaj [reguły ruchu wychodzącego](load-balancer-outbound-rules-overview.md).
 - Więcej informacji [na temat resetowania protokołu TCP w trybie bezczynności](load-balancer-tcp-reset.md).
 - Dowiedz się więcej o [Usługa Load Balancer w warstwie Standardowa z regułami równoważenia obciążenia dla portów ha](load-balancer-ha-ports-overview.md).

@@ -6,19 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 99ccd00dbcea7f8eaed2e8e51a64b89c1e0b42a2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b60a30e5e30ee81cbaca7d5e4691ccedac2462b6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028834"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598174"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Konfigurowanie urządzenia dla serwerów fizycznych
 
 W tym artykule opisano sposób konfigurowania urządzenia Azure Migrate w przypadku oceniania serwerów fizycznych za pomocą narzędzia do oceny serwera Azure Migrate:.
-
-> [!NOTE]
-> Jeśli w tym miejscu wymieniono funkcje, które nie są jeszcze widoczne w portalu Azure Migrate, zaczekaj na. Pojawią się one w ciągu następnego tygodnia lub.
 
 Urządzenie Azure Migrate jest lekkim urządzeniem używanym do oceny Azure Migrate Server, aby wykonać następujące czynności:
 
@@ -44,7 +41,7 @@ Pobierz spakowany plik dla urządzenia.
 2. W obszarze **odnajdywanie maszyn** > **są zwirtualizowane maszyny?** kliknij pozycję **niezwirtualizowane/inne**.
 3. Kliknij pozycję **Pobierz** , aby pobrać plik zip.
 
-    ![Pobierz maszynę wirtualną](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
+    ![Pobierz maszynę wirtualną](./media/tutorial-assess-physical/download-appliance.png)
 
 
 ### <a name="verify-security"></a>Weryfikuj zabezpieczenia
@@ -55,17 +52,12 @@ Przed wdrożeniem należy sprawdzić, czy spakowany plik jest bezpieczny.
 2. Uruchom następujące polecenie, aby wygenerować skrót dla wirtualnego dysku twardego
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Przykład użycia: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  W przypadku najnowszej wersji urządzenia wygenerowany skrót powinien być zgodny z tymi ustawieniami.
-
-  **Algorytm** | **Wartość skrótu**
-  --- | ---
-  MD5 | 96fd99581072c400aa605ab036a0a7c0
-  SHA256 | f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
+3.  W przypadku najnowszej wersji urządzenia wygenerowany skrót powinien być zgodny z tymi [ustawieniami](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security).
 
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Uruchom skrypt Instalatora Azure Migrate
-= Skrypt Instalatora wykonuje następujące czynności:
+Skrypt Instalatora wykonuje następujące czynności:
 
 - Instaluje agentów i aplikację sieci Web na potrzeby odnajdywania i oceny serwera fizycznego.
 - Zainstaluj role systemu Windows, w tym usługi aktywacji systemu Windows, usług IIS i programu PowerShell ISE.
@@ -80,13 +72,16 @@ Uruchom skrypt w następujący sposób:
 1. Wyodrębnij spakowany plik do folderu na serwerze, który będzie hostować urządzenie.
 2. Uruchom program PowerShell na powyższym serwerze z uprawnieniami administracyjnymi (z podwyższonym poziomem uprawnień).
 3. Zmień katalog programu PowerShell do folderu, w którym zawartość została wyodrębniona z pobranego pliku spakowanego.
-4. Uruchom skrypt, uruchamiając następujące polecenie:
+4. Uruchom skrypt o nazwie **AzureMigrateInstaller. ps1** , uruchamiając następujące polecenie:
     ```
-    AzureMigrateInstaller.ps1
+    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
 Po pomyślnym zakończeniu działania skryptu zostanie uruchomiona aplikacja sieci Web urządzenia.
 
+W razie jakichkolwiek problemów możesz uzyskać dostęp do dzienników skryptów w witrynie C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log w celu rozwiązywania problemów.
 
+> [!NOTE]
+> Nie wykonuj skryptu Instalatora Azure Migrate na istniejącym urządzeniu Azure Migrate.
 
 ### <a name="verify-appliance-access-to-azure"></a>Weryfikowanie dostępu urządzenia do platformy Azure
 
@@ -128,7 +123,7 @@ Nawiąż połączenie z urządzeniem z serwerami fizycznymi, a następnie Urucho
 2. Określ **system operacyjny**, przyjazną nazwę dla poświadczeń, **nazwę użytkownika** i **hasło** , a następnie kliknij przycisk **Dodaj**.
 Można dodać jeden zestaw poświadczeń dla serwerów z systemami Windows i Linux.
 4. Kliknij przycisk **Dodaj serwer**i określ szczegóły serwera — nazwa FQDN/adres IP i przyjazna nazwa poświadczenia (jeden wpis na wiersz), aby połączyć się z serwerem.
-3. Kliknij przycisk **Weryfikuj**. Po sprawdzeniu poprawności zostanie wyświetlona lista serwerów, które mogą zostać odnalezione.
+3. Kliknij pozycję **Validate** (Waliduj). Po sprawdzeniu poprawności zostanie wyświetlona lista serwerów, które mogą zostać odnalezione.
     - Jeśli walidacja nie powiedzie się dla serwera, przejrzyj błąd, umieszczając kursor nad ikoną w kolumnie **stan** . Usuń problemy i ponownie sprawdź poprawność.
     - Aby usunąć serwer, wybierz pozycję > **Usuń**.
 4. Po sprawdzeniu poprawności kliknij przycisk **Zapisz i Rozpocznij odnajdywanie** , aby rozpocząć proces odnajdywania.

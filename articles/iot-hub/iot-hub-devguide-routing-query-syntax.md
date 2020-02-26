@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: e95a0b4b9f071a0fd3949d50eeee17b811dfb8ea
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e01be0442f6d968613ffd800f076705d33e3e16e
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064822"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598208"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Składnia zapytania dotyczącego routingu komunikatów IoT Hub
 
@@ -88,7 +88,7 @@ $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 
 Pełna lista obsługiwanych operatorów i funkcji jest wyświetlana w [wyrażeniach i warunkach](iot-hub-devguide-query-language.md#expressions-and-conditions).
 
-## <a name="message-routing-query-based-on-message-body"></a>Zapytanie routingu komunikatów na podstawie treści wiadomości 
+## <a name="message-routing-query-based-on-message-body"></a>Zapytanie routingu komunikatów na podstawie treści wiadomości
 
 Aby włączyć zapytania dotyczące treści wiadomości, komunikat powinien znajdować się w formacie JSON zakodowanym w formacie UTF-8, UTF-16 lub UTF-32. `contentType` musi być ustawiona na `application/JSON` i `contentEncoding` do jednego z obsługiwanych kodowań UTF we właściwości System. Jeśli te właściwości nie są określone, IoT Hub nie będzie szacować wyrażenia zapytania w treści komunikatu. 
 
@@ -140,6 +140,10 @@ deviceClient.sendEvent(message, (err, res) => {
     if (res) console.log('status: ' + res.constructor.name);
 });
 ```
+
+> [!NOTE] 
+> Pokazuje, jak obsłużyć kodowanie treści w języku JavaScript. Jeśli chcesz zobaczyć przykład w C#, Pobierz [przykłady usługi Azure IoT C# ](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Rozpakuj plik Master. zip. Plik Program.cs rozwiązania Visual Studio *SimulatedDevice*przedstawia sposób kodowania i przesyłania komunikatów do IoT Hub. Jest to ten sam przykład używany do testowania routingu wiadomości, zgodnie z opisem w [samouczku dotyczącym routingu wiadomości](tutorial-routing.md). W dolnej części Program.cs ma także metodę odczytywania w jednym z zakodowanych plików, dekodowanie go i zapisanie go jako ASCII, aby można było go odczytać. 
+
 
 ### <a name="query-expressions"></a>Wyrażenia zapytań
 

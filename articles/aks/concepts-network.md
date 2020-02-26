@@ -1,18 +1,15 @@
 ---
 title: Pojęcia — obsługa sieci w usłudze Azure Kubernetes Services (AKS)
 description: Dowiedz się więcej na temat sieci w usłudze Azure Kubernetes Service (AKS), w tym korzystającą wtyczki kubenet i Azure CNI Networking, kontrolerów przychodzących, modułów równoważenia obciążenia i statycznych adresów IP.
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.custom: fasttrack-edit
-ms.author: mlearned
-ms.openlocfilehash: 06825f184365cfc439167be15580eb19bf5ecb38
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5800254ab44b5b0f1048ce2200f90c06a8d1666a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084281"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596168"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -97,7 +94,7 @@ Zarówno korzystającą wtyczki kubenet, jak i Azure CNI zapewniają łącznoś�
 
 Między korzystającą wtyczki kubenet i Azure CNI istnieją następujące różnice dotyczące zachowań:
 
-| Możliwości                                                                                   | Korzystającą wtyczki kubenet   | Azure CNI |
+| Możliwość                                                                                   | Korzystającą wtyczki kubenet   | Azure CNI |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
 | Wdróż klaster w istniejącej lub nowej sieci wirtualnej                                            | Obsługiwane — UDR ręcznie | Obsługiwane |
 | Łączność pod kątem                                                                         | Obsługiwane | Obsługiwane |

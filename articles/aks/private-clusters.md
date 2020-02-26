@@ -2,17 +2,14 @@
 title: Tworzenie prywatnego klastra usługi Azure Kubernetes Service
 description: Dowiedz się, jak utworzyć prywatny klaster usługi Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.author: mlearned
-ms.openlocfilehash: 08929d5ec05fbeb80eddebfd667fe1e0fde9bff7
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: e59dccbcc7514f12e148bfb2f771593a53e85dc5
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544236"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594570"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Tworzenie prywatnego klastra usługi Azure Kubernetes Service (wersja zapoznawcza)
 
@@ -48,10 +45,10 @@ Płaszczyzna kontroli lub serwer interfejsu API znajduje się w subskrypcji plat
 * Japonia Zachodnia
 * Korea Środkowa
 * Korea Południowa
-* Północno-środkowe stany USA
+* Środkowo-północne stany USA
 * Europa Północna
 * Europa Północna
-* Południowo-środkowe stany USA
+* Środkowo-południowe stany USA
 * Południowe Zjednoczone Królestwo
 * Europa Zachodnia
 * Zachodnie stany USA

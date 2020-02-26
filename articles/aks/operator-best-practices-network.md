@@ -2,17 +2,14 @@
 title: Najlepsze praktyki operatora — łączność sieciowa w usłudze Azure Kubernetes Services (AKS)
 description: Informacje o najlepszych rozwiązaniach dotyczących operatorów klastrów dotyczących zasobów i łączności sieci wirtualnej w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.author: mlearned
-ms.openlocfilehash: 5b138849538cb9bbd6af6cbcf3e7a11b0cf66395
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 93659a0891b09c83db9f63fe0756fcf4d7e87f6a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549125"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594689"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące łączności sieciowej i zabezpieczeń w usłudze Azure Kubernetes Service (AKS)
 
@@ -168,7 +165,7 @@ Ten artykuł koncentruje się na łączności sieciowej i zabezpieczeniach. Aby 
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 [app-gateway-ingress]: https://github.com/Azure/application-gateway-kubernetes-ingress
-[nginx]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
+[Nginx]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
 [contour]: https://github.com/heptio/contour
 [haproxy]: https://www.haproxy.org
 [traefik]: https://github.com/containous/traefik
