@@ -10,12 +10,12 @@ metadata:
   author: TomArcherMsft
   ms.author: tarcher
   ms.date: 02/24/2020
-  ms.openlocfilehash: af0418ae45d84fd79348e181b9bad52e9b340564
-  ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+  ms.openlocfilehash: bca7a6699b565536bf1d552ad0aee6a89f58c704
+  ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
   ms.translationtype: HT
   ms.contentlocale: pl-PL
   ms.lasthandoff: 02/26/2020
-  ms.locfileid: "77616683"
+  ms.locfileid: "77623887"
 landingContent:
 - title: Informacje o usłudze Jenkins na platformie Azure
   linkLists:
@@ -60,7 +60,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Wdrażanie z repozytorium GitHub do usługi AKS
-      url: /azure/aks/jenkins-continuous-deployment?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+      url: jenkins-continuous-deployment.md
     - text: Wdrażanie w usłudze AKS za pomocą wzorca niebieski/zielony
       url: jenkins-aks-blue-green-deployment.md
     - text: Wdrażanie przy użyciu wtyczki Azure Dev Spaces
@@ -88,7 +88,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Używanie usługi Azure Storage z rozwiązaniem ciągłej integracji w usłudze Jenkins
-      url: /azure/storage/storage-java-jenkins-continuous-integration-solution?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+      url: storage-java-jenkins-continuous-integration-solution.md
 - title: Ciągła integracja/ciągłe dostarczanie do maszyn wirtualnych z systemem Linux
   linkLists:
   - linkListType: tutorial

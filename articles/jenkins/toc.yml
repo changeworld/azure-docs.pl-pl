@@ -31,7 +31,7 @@
         - name: AKS
           items:
             - name: Ciągła integracja/ciągłe dostarczanie na platformę Kubernetes
-              href: /azure/aks/jenkins-continuous-deployment
+              href: jenkins-continuous-deployment.md
               maintainContext: true
             - name: Wdrażanie w usłudze AKS za pomocą wzorca niebieski/zielony
               href: jenkins-aks-blue-green-deployment.md
@@ -49,7 +49,7 @@
         - name: Wdrażanie w usłudze Azure Functions
           href: jenkins-azure-functions-deploy.md
         - name: Publikowanie w usłudze Azure Storage
-          href: /azure/storage/storage-java-jenkins-continuous-integration-solution
+          href: storage-java-jenkins-continuous-integration-solution.md
           maintainContext: true
         - name: Ciągła integracja/ciągłe dostarczanie do maszyn wirtualnych z systemem Linux
           href: tutorial-jenkins-github-docker-cicd.md

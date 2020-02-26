@@ -142,6 +142,9 @@
             - name: Zmienne
               displayName: 'iteration,copy'
               href: copy-variables.md
+            - name: Dane wyjściowe
+              displayName: 'iteration,copy'
+              href: copy-outputs.md
         - name: Zasoby na poziomie subskrypcji
           href: deploy-to-subscription.md
         - name: Zasoby na poziomie grupy zarządzania
