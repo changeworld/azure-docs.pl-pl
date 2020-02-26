@@ -4,12 +4,12 @@ description: Dowiedz się, jak utworzyć kopię zapasową serwera programu Excha
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 73dcc190446a71498dee3f12a5225a56c9f4ddc7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 051e33e9340a5ee788011254bb2cf88029ba1505
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173124"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583847"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Tworzenie kopii zapasowej serwera programu Exchange na platformie Azure za pomocą Azure Backup Server
 
@@ -23,8 +23,8 @@ Przed kontynuowaniem upewnij się, że Azure Backup Server jest [zainstalowana i
 
 Aby zainstalować agenta ochrony serwera usługi MAB na serwerze Exchange, wykonaj następujące kroki:
 
-1. Upewnij się, że zapory są prawidłowo skonfigurowane. Zobacz [Configure firewall Exceptions for the Agent](https://technet.microsoft.com/library/Hh758204.aspx).
-2. Zainstaluj agenta na serwerze Exchange, klikając pozycję **zarządzanie > agenci > Zainstaluj** w serwera usługi MAB Konsola administratora. Szczegółowe instrukcje można znaleźć w temacie [Install the serwera usługi MAB Protection Agent](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) .
+1. Upewnij się, że zapory są prawidłowo skonfigurowane. Zobacz [Configure firewall Exceptions for the Agent](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758204(v=sc.12)).
+2. Zainstaluj agenta na serwerze Exchange, klikając pozycję **zarządzanie > agenci > Zainstaluj** w serwera usługi MAB Konsola administratora. Szczegółowe instrukcje można znaleźć w temacie [Install the serwera usługi MAB Protection Agent](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12)) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Tworzenie grupy ochrony dla serwera programu Exchange
 
@@ -34,7 +34,7 @@ Aby zainstalować agenta ochrony serwera usługi MAB na serwerze Exchange, wykon
 4. Wybierz bazę danych programu Exchange Server, którą chcesz chronić, a następnie kliknij przycisk **dalej**.
 
    > [!NOTE]
-   > W przypadku ochrony programu Exchange 2013 Sprawdź [wymagania wstępne programu exchange 2013](https://technet.microsoft.com/library/dn751029.aspx).
+   > W przypadku ochrony programu Exchange 2013 Sprawdź [wymagania wstępne programu exchange 2013](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12)).
    >
    >
 

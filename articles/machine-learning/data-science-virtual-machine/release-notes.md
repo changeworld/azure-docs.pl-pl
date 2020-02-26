@@ -2,24 +2,28 @@
 title: Co nowego w Data Science Virtual Machine
 titleSuffix: Azure Data Science Virtual Machine
 description: Informacje o wersji dla Data Science Virtual Machine platformy Azure
-author: gvashishtha
+author: lobrien
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.author: gopalv
-ms.date: 10/10/2019
+ms.author: laobri
+ms.date: 02/24/2020
 ms.topic: reference
-ms.openlocfilehash: 5abf1f4a232dd1100f7906d28bbc7abfe89da9e2
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d607e2a45c3a13cdb1b6e107158b04f9f10ae83a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525774"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582606"
 ---
 # <a name="azure-data-science-virtual-machine-release-notes"></a>Informacje o wersji Data Science Virtual Machine platformy Azure
 
 W tym artykule dowiesz się więcej o wersjach Data Science Virtual Machine platformy Azure. Aby zapoznać się z pełną listą dostępnych narzędzi wraz z numerami wersji, zapoznaj się z [tą stroną](./tools-included.md).
 
 Zapoznaj się z [listą znanych problemów](reference-known-issues.md) , aby dowiedzieć się więcej o znanych usterkach i obejść.
+
+## <a name="2020-02-24"></a>2020-02-24
+
+Obrazy Data Science Virtual Machine dla obrazów [Ubuntu 18,04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview) i [Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview) są teraz dostępne.
 
 ## <a name="2019-10-08"></a>2019-10-08
 

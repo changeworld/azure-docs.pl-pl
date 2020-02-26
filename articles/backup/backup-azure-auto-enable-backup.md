@@ -3,12 +3,12 @@ title: Automatyczne włączanie kopii zapasowych podczas tworzenia maszyny wirtu
 description: Artykuł opisujący sposób użycia Azure Policy do samodzielnego włączania kopii zapasowych dla wszystkich maszyn wirtualnych utworzonych w danym zakresie
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450134"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584272"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatyczne włączanie kopii zapasowych podczas tworzenia maszyny wirtualnej za pomocą usługi Azure Policy
 
@@ -16,9 +16,9 @@ Jednym z kluczowych obowiązków administratora kopii zapasowej i zgodności w o
 
 Obecnie Azure Backup udostępnia wbudowane zasady (przy użyciu Azure Policy), które można przypisać do **wszystkich maszyn wirtualnych platformy Azure w określonej lokalizacji w ramach subskrypcji lub grupy zasobów**. Gdy te zasady są przypisane do danego zakresu, wszystkie nowe maszyny wirtualne utworzone w tym zakresie są automatycznie konfigurowane na potrzeby tworzenia kopii zapasowych **w istniejącym magazynie w tej samej lokalizacji i subskrypcji**. Użytkownik może określić magazyn i zasady przechowywania, do których mają być skojarzone kopie zapasowe maszyn wirtualnych.
 
-## <a name="supported-scenarios"></a>Scenariusze obsługiwane 
+## <a name="supported-scenarios"></a>Scenariusze obsługiwane
 
-* Wbudowane zasady są obecnie obsługiwane tylko dla maszyn wirtualnych platformy Azure. Użytkownicy muszą mieć ostrożność, aby upewnić się, że zasady przechowywania określone podczas przypisywania są zasadami przechowywania maszyn wirtualnych. Zapoznaj się z [tym](https://aka.ms/PolicySupportedSKUs) dokumentem, aby wyświetlić wszystkie jednostki SKU maszyny wirtualnej obsługiwane przez te zasady.
+* Wbudowane zasady są obecnie obsługiwane tylko dla maszyn wirtualnych platformy Azure. Użytkownicy muszą mieć ostrożność, aby upewnić się, że zasady przechowywania określone podczas przypisywania są zasadami przechowywania maszyn wirtualnych. Zapoznaj się z [tym](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus) dokumentem, aby wyświetlić wszystkie jednostki SKU maszyny wirtualnej obsługiwane przez te zasady.
 
 * Zasady można przypisywać jednocześnie do jednej lokalizacji i subskrypcji. Aby włączyć tworzenie kopii zapasowych maszyn wirtualnych w różnych lokalizacjach i subskrypcjach, należy utworzyć wiele wystąpień przypisywania zasad, po jednym dla każdej kombinacji lokalizacji i subskrypcji.
 

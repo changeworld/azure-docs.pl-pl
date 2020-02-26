@@ -2,18 +2,19 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 08/19/2019
+ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: b4338560d515289d3e9aedfa716ec7c3ace51131
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c1a52e1bc2dde74289cb270fcae832be24de5a06
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392282"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592435"
 ---
-| Zasób | Limit domyślny | Limit maksymalny |
+| Resource | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
-| Zasoby na [grupę zasobów](../articles/azure-resource-manager/management/overview.md#resource-groups)dla każdego typu zasobu |800 |Niektóre typy zasobów mogą przekraczać limit 800. Zobacz [zasoby nieograniczone do 800 wystąpień na grupę zasobów](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md). |
+| Zasoby na [grupę zasobów](../articles/azure-resource-manager/management/overview.md#resource-groups) | N/D | Zasoby nie są ograniczone przez grupę zasobów. Zamiast tego są one ograniczone przez typ zasobów w grupie zasobów. Zobacz następny wiersz. | 
+| Zasoby na grupę zasobów dla każdego typu zasobu |800 |Niektóre typy zasobów mogą przekraczać limit 800. Zobacz [zasoby nieograniczone do 800 wystąpień na grupę zasobów](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md). |
 | Wdrożenia według grupy zasobów w historii wdrożenia |800<sup>1</sup> |800 |
 | Zasoby na wdrożenie |800 |800 |
 | Blokady zarządzania na unikatowy zakres |20 |20 |
@@ -25,12 +26,12 @@ ms.locfileid: "75392282"
 
 #### <a name="template-limits"></a>Limity szablonów
 
-| Wartość | Limit domyślny | Limit maksymalny |
+| Value | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Parametry |256 |256 |
 | Zmienne |256 |256 |
 | Zasoby (w tym liczba kopii) |800 |800 |
-| Dane wyjściowe |64 |64 |
+| Wyjścia |64 |64 |
 | Wyrażenie szablonu |24 576 znaków |24 576 znaków |
 | Zasoby w wyeksportowanych szablonach |200 |200 | 
 | Rozmiar szablonu |4 MB |4 MB |

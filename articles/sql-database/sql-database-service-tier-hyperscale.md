@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 226ed1fcc72eada399c0a9a9eb4225d79cd83dd7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845893"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587281"
 ---
 # <a name="hyperscale-service-tier"></a>Warstwa usługi Hiperskala
 
 Azure SQL Database jest oparta na architekturze SQL Server Database Engine, która jest dostosowywana do środowiska chmury w celu zapewnienia dostępności 99,99% nawet w przypadku awarii infrastruktury. Istnieją trzy modele architektury, które są używane w Azure SQL Database:
 - Ogólnego przeznaczenia/Standard 
--  Hiperskalowanie
+-  Hiperskala
 -  Krytyczne dla działania firmy/Premium
 
 Warstwa usługi do skalowania w Azure SQL Database to najnowsza warstwa usługi w modelu zakupu opartego na rdzeń wirtualny. Ta warstwa usług jest wysoce skalowalną warstwą wydajności magazynu i obliczeń, która wykorzystuje architekturę platformy Azure do skalowania w poziomie magazynu i zasobów obliczeniowych dla Azure SQL Database znacznie przekraczające limity dostępne dla Ogólnego przeznaczenia i firmy Krytyczne warstwy usług.
@@ -72,7 +72,7 @@ Warstwa usługi do skalowania jest dostępna tylko w [modelu rdzeń wirtualny](s
 
 - **Magazyn**:
 
-  Nie trzeba określać maksymalnego rozmiaru danych podczas konfigurowania bazy danych w ramach skalowania. W warstwie Hiperskalowanie opłaty za magazyn w przypadku bazy danych są oparte na rzeczywistej alokacji. Magazyn jest automatycznie przypisywany do zakresu od 40 GB do 100 TB, w 10 GB zwiększa się o 10 GB. W razie konieczności można zwiększyć wiele plików danych w tym samym czasie. Baza danych wieloskalowego jest tworzona z rozmiarem rozpoczynającym 10 GB i rośnie o 10 GB co 10 minut, aż osiągnie rozmiar 40 GB.
+  Nie trzeba określać maksymalnego rozmiaru danych podczas konfigurowania bazy danych w ramach skalowania. W warstwie skalowania jest naliczana opłata za magazyn bazy danych na podstawie rzeczywistej alokacji. Magazyn jest automatycznie przypisywany do zakresu od 40 GB do 100 TB, w 10 GB zwiększa się o 10 GB. W razie konieczności można zwiększyć wiele plików danych w tym samym czasie. Baza danych wieloskalowego jest tworzona z rozmiarem rozpoczynającym 10 GB i rośnie o 10 GB co 10 minut, aż osiągnie rozmiar 40 GB.
 
 Aby uzyskać więcej informacji na temat cen ze skalowaniem, zobacz [Cennik usługi Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/)
 
@@ -102,7 +102,7 @@ Usługa log przyjmuje rekordy dziennika z podstawowej repliki obliczeniowej, utr
 
 Usługa Azure Storage zawiera wszystkie pliki danych w bazie danych. Serwery stron zachowują aktualne pliki danych w usłudze Azure Storage. Ten magazyn jest używany na potrzeby tworzenia kopii zapasowych, a także do replikacji między regionami platformy Azure. Kopie zapasowe są implementowane przy użyciu migawek magazynu plików danych. Operacje przywracania przy użyciu migawek są szybkie, niezależnie od rozmiaru danych. Dane można przywrócić do dowolnego punktu w czasie w ramach okresu przechowywania kopii zapasowej bazy danych.
 
-## <a name="backup-and-restore"></a>Tworzenie i przywracanie kopii zapasowych
+## <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
 Kopie zapasowe są tworzone na podstawie migawek plików, a tym samym prawie chwilowo. Rozdzielenie magazynu i obliczeń umożliwia wypychanie operacji tworzenia kopii zapasowej/przywracania do warstwy magazynowania w celu zmniejszenia obciążenia związanego z przetwarzaniem w podstawowej replice obliczeniowej. W związku z tym kopia zapasowa bazy danych nie ma wpływu na wydajność podstawowego węzła obliczeniowego; Analogicznie, przywracanie odbywa się przez przywrócenie migawek plików, co nie jest rozmiarem operacji danych. Przywracanie jest operacją o stałym czasie, a nawet kilka baz danych można przywrócić w ciągu kilku minut, a nie godzin lub dni. Tworzenie nowych baz danych przez przywrócenie istniejącej kopii zapasowej obejmuje również korzystanie z tej funkcji: Tworzenie kopii bazy danych do celów deweloperskich i testowych, nawet w przypadku baz danych o rozmiarze terabajtów, jest doable w ciągu kilku minut.
 
@@ -181,10 +181,10 @@ Warstwa skalowania Azure SQL Database jest obecnie dostępna w następujących r
 - Japonia Zachodnia
 - Korea Środkowa
 - Korea Południowa
-- Północno-środkowe stany USA
+- Środkowo-północne stany USA
 - Europa Północna
 - Północna Republika Południowej Afryki
-- Południowo-środkowe stany USA
+- Środkowo-południowe stany USA
 - Azja Południowo-Wschodnia
 - Południowe Zjednoczone Królestwo
 - Zachodnie Zjednoczone Królestwo
@@ -192,48 +192,14 @@ Warstwa skalowania Azure SQL Database jest obecnie dostępna w następujących r
 - Zachodnie stany USA
 - Zachodnie stany USA 2
 
-Jeśli chcesz utworzyć bazę danych w formie wieloskali w regionie, który nie jest wymieniony jako obsługiwany, możesz wysłać żądanie dołączania za pośrednictwem Azure Portal. Pracujemy nad rozwinięciem listy obsługiwanych regionów, aby ponownie sprawdzić listę najnowszych regionów.
+Jeśli chcesz utworzyć bazę danych w formie wieloskali w regionie, który nie jest wymieniony jako obsługiwany, możesz wysłać żądanie dołączania za pośrednictwem Azure Portal. Aby uzyskać instrukcje, zobacz temat [żądanie zwiększania limitu przydziału dla Azure SQL Database](quota-increase-request.md) , aby uzyskać instrukcje. Podczas przesyłania żądania należy przestrzegać następujących wytycznych:
 
-Aby poprosić o możliwość tworzenia baz danych w regionach, których nie ma na liście:
-
-1. Przejdź do [bloku pomoc i obsługa techniczna platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-
-2. Kliknij [ **nowe żądanie obsługi**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
-
-    ![Blok pomocy i obsługi technicznej platformy Azure](media/sql-database-service-tier-hyperscale/request-screen-1.png)
-
-3. W obszarze **typ problemu**wybierz pozycję **usługi i limity subskrypcji (przydziały)**
-
-4. Wybierz subskrypcję, której chcesz użyć do utworzenia baz danych
-
-5. W obszarze **Typ limitu przydziału**wybierz pozycję **baza danych SQL**
-
-6. Kliknij przycisk **Dalej: rozwiązania**
-
-1. Kliknij pozycję **Podaj szczegóły**
-
-    ![Szczegóły problemu](media/sql-database-service-tier-hyperscale/request-screen-2.png)
-
-8. Wybierz **SQL Database typ przydziału**: **inne żądanie limitu przydziału**
-
-9. Wypełnij następujący szablon:
-
-    ![Szczegóły przydziału](media/sql-database-service-tier-hyperscale/request-screen-3.png)
-
-    Podaj następujące informacje w szablonie
-
-    > Żądanie utworzenia SQL Database w nowym regionie platformy Azure<br/> Region: [Wypełnij żądany region]  <br/>
-    > Jednostka SKU obliczeń/łączna liczba rdzeni łącznie z replikami do odczytu <br/>
-    > Szacowana liczba TB 
-    >
-
-10. Wybierz **ważność C**.
-
-11. Wybierz odpowiednią metodę kontaktu i wypełnij szczegóły.
-
-12. Kliknij przycisk **Zapisz** i **Kontynuuj** .
+- Użyj limitu przydziału bazy danych SQL [żądania limitu przydziału](quota-increase-request.md#other) .
+- W polu Szczegóły tekstu Dodaj jednostki SKU obliczeń/całkowite rdzenie, w tym odczytane repliki.
+- Określ także szacowaną wartość TB.
 
 ## <a name="known-limitations"></a>Znane ograniczenia
+
 Są to bieżące ograniczenia dotyczące warstwy usług w ramach skalowania na poziomie.  Aktywnie pracujemy nad usunięciem możliwie największej liczby ograniczeń.
 
 | Problem | Opis |

@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/27/2019
-ms.openlocfilehash: 86ade45cd00e82e8787a117c23003d2a74750cf0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 02/24/2020
+ms.openlocfilehash: e9cdfd40a9672d19ef32dede0baadcdd56266bab
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552172"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589100"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak używać interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management
 
@@ -37,7 +37,7 @@ Na poniższej liście przedstawiono składniki interfejsów API Digital bliźnia
 
 * [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys): można użyć tych interfejsów API do tworzenia niestandardowych właściwości dla Twoich *miejsc*, *urządzeń*, *użytkowników*i *czujników*. Te właściwości są tworzone jako pary klucz/wartość. Można zdefiniować typ danych dla tych właściwości, ustawiając ich *PrimitiveDataType*. Na przykład można zdefiniować właściwość o nazwie *BasicTemperatureDeltaProcessingRefreshTime* typu *uint* dla czujników, a następnie przypisać wartość tej właściwości dla każdej z czujników. Możesz również dodać ograniczenia dla tych wartości podczas tworzenia właściwości, takiej jak *minimalna* i *Maksymalna liczba* zakresów, a także dozwolonych wartości jako *ValidationData*.
 
-* [/matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): te interfejsy API umożliwiają określenie warunków, które chcesz oszacować z danych urządzenia przychodzącego. Więcej informacji zawiera [ten artykuł](concepts-user-defined-functions.md#matchers). 
+* [/matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): te interfejsy API umożliwiają określenie warunków, które chcesz oszacować z danych urządzenia przychodzącego. Aby uzyskać więcej informacji, zobacz [ten artykuł](concepts-user-defined-functions.md#matchers) . 
 
 * [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions): te interfejsy API umożliwiają tworzenie, usuwanie i aktualizowanie funkcji niestandardowej, która będzie wykonywana, gdy wystąpią warunki zdefiniowane przez *dopasowania* , aby przetwarzać dane pochodzące z Instalatora. Zobacz [ten artykuł](concepts-user-defined-functions.md#user-defined-functions) , aby uzyskać więcej informacji o tych funkcjach niestandardowych, nazywanych również *funkcjami zdefiniowanymi przez użytkownika*. 
 

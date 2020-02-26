@@ -3,12 +3,12 @@ title: Szczegóły struktury definicji zasad
 description: Opisuje, w jaki sposób definicje zasad są używane do ustanawiania Konwencji dla zasobów platformy Azure w organizacji.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 1e90009a0c34bf166a18659a19988ea5a0c9ab07
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462006"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587128"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -22,9 +22,9 @@ Schemat definicji zasad znajduje się tutaj: [https://schema.management.azure.co
 Użyjesz JSON do tworzenia definicji zasad. Definicja zasad zawiera elementy dla:
 
 - mode
-- parameters
+- parametry
 - Nazwa wyświetlana
-- description
+- Opis elementu
 - Reguła zasad
   - Ocena logiczne
   - Efekt
@@ -322,13 +322,13 @@ W poniższym przykładzie `concat` jest używany do tworzenia wyszukiwania pól 
 }
 ```
 
-### <a name="value"></a>Wartość
+### <a name="value"></a>Value
 
 Warunki mogą być również tworzone przy użyciu **wartości**. **wartość** sprawdza warunki względem [parametrów](#parameters), [obsługiwanych funkcji szablonów](#policy-functions)lub literałów.
 **wartość** jest sparowana z dowolnym obsługiwanym [warunkiem](#conditions).
 
 > [!WARNING]
-> Jeśli wynik _funkcji szablonu_ jest błąd, Ocena zasad kończy się niepowodzeniem. Niepowodzenie oceny to niejawne **odmowa**. Aby uzyskać więcej informacji, zobacz [unikanie niepowodzeń związanych z szablonami](#avoiding-template-failures).
+> Jeśli wynik _funkcji szablonu_ jest błąd, Ocena zasad kończy się niepowodzeniem. Niepowodzenie oceny to niejawne **odmowa**. Aby uzyskać więcej informacji, zobacz [unikanie niepowodzeń związanych z szablonami](#avoiding-template-failures). Użyj [wymuszania](./assignment-structure.md#enforcement-mode) elementu **DoNotEnforce** , aby zapobiec wpływowi oceny zakończonej niepowodzeniem na nowe lub zaktualizowane zasoby podczas testowania i sprawdzania poprawności nowej definicji zasad.
 
 #### <a name="value-examples"></a>Przykłady wartości
 
@@ -580,13 +580,22 @@ Wszystkie [funkcje szablonu Menedżer zasobów](../../../azure-resource-manager/
 
 Następujące funkcje są dostępne do użycia w regule zasad, ale różnią się od użycia w szablonie Azure Resource Manager:
 
-- AddDays (dateTime, numberOfDaysToAdd)
+- `addDays(dateTime, numberOfDaysToAdd)`
   - **DateTime**: [Required] ciąg ciągu w formacie daty/godziny uniwersalnego ISO 8601 "RRRR-MM-DDTgg: mm: SS. fffffffZ"
   - **numberOfDaysToAdd**: [Required] liczba dni do dodania
-- utcNow () — w przeciwieństwie do szablonu Menedżer zasobów, można go użyć poza elementem DefaultValue.
+- `utcNow()`, w przeciwieństwie do szablonu Menedżer zasobów, można go użyć poza elementem DefaultValue.
   - Zwraca ciąg, który jest ustawiony na bieżącą datę i godzinę w formacie uniwersalnego ISO 8601 DateTime-MM-DDTgg: mm: SS. fffffffZ
 
-Ponadto funkcja `field` jest dostępna dla reguł zasad. `field` jest używany głównie z **AuditIfNotExists** i **DeployIfNotExists** do pól referencyjnych na analizowanym zasobie. Przykład tego zastosowania można zobaczyć w [przykładzie DeployIfNotExists](effects.md#deployifnotexists-example).
+Następujące funkcje są dostępne tylko w regułach zasad:
+
+- `field(fieldName)`
+  - **FieldName**: [Required] — nazwa [pola](#fields) do pobrania
+  - Zwraca wartość tego pola z zasobu, który jest obliczany przez warunek if
+  - `field` jest używany głównie z **AuditIfNotExists** i **DeployIfNotExists** do pól referencyjnych na analizowanym zasobie. Przykład tego zastosowania można zobaczyć w [przykładzie DeployIfNotExists](effects.md#deployifnotexists-example).
+- `requestContext().apiVersion`
+  - Zwraca wersję interfejsu API żądania, które spowodowało wyzwolenie oceny zasad (przykład: `2019-09-01`). Będzie to wersja interfejsu API, która została użyta w żądaniu PUT/PATCH do oceny przy tworzeniu/aktualizowaniu zasobów. Najnowsza wersja interfejsu API jest zawsze używana podczas oceny zgodności dla istniejących zasobów.
+  
+
 
 #### <a name="policy-function-example"></a>Przykład funkcji zasad
 
@@ -703,7 +712,7 @@ Ta przykładowa reguła sprawdza, czy istnieją dopasowania **ipRules\[\*\]. Val
 
 Aby uzyskać więcej informacji, zobacz [ocenianie aliasu [\*]](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
-## <a name="initiatives"></a>Inicjatyw
+## <a name="initiatives"></a>Inicjatywy
 
 Inicjatywy pozwalają grupować kilka definicji zasad powiązane w celu uproszczenia przypisań i zarządzania, ponieważ współdziała z grupą jako pojedynczy element. Na przykład można grupować powiązane definicje zasad tagowania w jednym inicjatywy. Zamiast przypisywać każdej z zasad indywidualnie, mają zastosowanie tej inicjatywy.
 

@@ -3,16 +3,15 @@ title: Integracja Azure NetApp Files z usługą Azure Kubernetes Service
 description: Dowiedz się, jak zintegrować Azure NetApp Files z usługą Azure Kubernetes Service
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
-ms.openlocfilehash: 84192a831e3b1f24e20eb07a6c8695516c28970f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 42985e57d63c01553532928b2ba04ed5ee3dd8fb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329333"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596644"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Integracja Azure NetApp Files z usługą Azure Kubernetes Service
 
@@ -33,7 +32,8 @@ W przypadku korzystania z Azure NetApp Files są stosowane następujące ogranic
 * Azure NetApp Files jest dostępna tylko [w wybranych regionach świadczenia usługi Azure][anf-regions].
 * Przed użyciem Azure NetApp Files należy uzyskać dostęp do usługi Azure NetApp Files. Aby uzyskać dostęp do programu, można użyć [formularza Azure NetApp Files waitlist][anf-waitlist]. Nie możesz uzyskać dostępu do usługi Azure NetApp Files, dopóki nie otrzymasz oficjalnej wiadomości e-mail z zespołu Azure NetApp Files.
 * Usługa Azure NetApp Files musi zostać utworzona w tej samej sieci wirtualnej co klaster AKS.
-* Tylko statyczne Inicjowanie obsługi dla Azure NetApp Files jest obsługiwane w AKS.
+* Po początkowym wdrożeniu klastra AKS obsługiwane jest tylko statyczne Inicjowanie obsługi Azure NetApp Files.
+* Aby użyć dynamicznej obsługi administracyjnej z Azure NetApp Files, zainstaluj i skonfiguruj program [NetApp Trident](https://netapp-trident.readthedocs.io/) w wersji 19,07 lub nowszej.
 
 ## <a name="configure-azure-netapp-files"></a>Konfigurowanie Azure NetApp Files
 
@@ -143,7 +143,7 @@ $ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $AN
 }
 ```
 
-Utwórz `pv-nfs.yaml` Definiowanie PersistentVolume. Zastąp `path` z *creationToken* i `server` z *adresem IP* z poprzedniego polecenia. Na przykład:
+Utwórz `pv-nfs.yaml` definiujący PersistentVolume. Zastąp `path` *creationToken* i `server` z *adresem IP* z poprzedniego polecenia. Na przykład:
 
 ```yaml
 ---
@@ -175,7 +175,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>Tworzenie PersistentVolumeClaim
 
-Utwórz `pvc-nfs.yaml` Definiowanie PersistentVolume. Na przykład:
+Utwórz `pvc-nfs.yaml` definiujący PersistentVolume. Na przykład:
 
 ```yaml
 apiVersion: v1
@@ -241,7 +241,7 @@ Sprawdź, czy pod poleceniem jest *uruchomiony* program, używając polecenia [p
 kubectl describe pod nginx-nfs
 ```
 
-Sprawdź, czy wolumin został zainstalowany w obszarze pod za pomocą [polecenia kubectl exec][kubectl-exec] , aby nawiązać połączenie z usługą, a następnie `df -h`, aby sprawdzić, czy wolumin jest zainstalowany.
+Sprawdź, czy wolumin został zainstalowany w obszarze pod przy użyciu programu [polecenia kubectl exec][kubectl-exec] , aby połączyć się z usługą, a następnie `df -h`, aby sprawdzić, czy wolumin jest zainstalowany.
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash

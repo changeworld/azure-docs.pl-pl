@@ -3,7 +3,7 @@ title: Tworzenie zdarzeń na podstawie alertów na platformie Azure — Wskaźni
 description: Dowiedz się, jak tworzyć zdarzenia z alertów na platformie Azure — wskaźnik.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 722feb29a08cd5e1113eae197fbcae9769ed5550
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: yelevin
+ms.openlocfilehash: b29b337d7487087bec268528ff26617f7a995235
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029766"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587978"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Automatycznie twórz zdarzenia z alertów zabezpieczeń firmy Microsoft
 
@@ -47,7 +47,7 @@ Skorzystaj z wbudowanych reguł dostępnych na platformie Azure — wskaźnik wy
 
 1. Możesz zmodyfikować szczegóły reguły i wybrać filtrowanie alertów, które spowodują utworzenie incydentów według ważności alertu lub tekstu zawartego w nazwie alertu.  
       
-    Na przykład w przypadku wybrania **Azure Security Center** w polu **Usługa zabezpieczeń firmy Microsoft** i wybraniu opcji **wysoki** w polu **Filtruj według ważności** tylko alerty Azure Security Center o wysokiej ważności będą automatycznie tworzyć zdarzenia na platformie Azure — wskaźnik.  
+    Na przykład w przypadku wybrania **Azure Security Center** w polu **Usługa zabezpieczeń firmy Microsoft** i wybraniu opcji **wysoki** w polu **Filtruj według ważności** tylko alerty Azure Security Center o wysokiej ważności będą automatycznie tworzyć zdarzenia na platformie Azure.  
 
     ![Kreator tworzenia reguły](media/incidents-from-alerts/create-rule-wizard.png)
 

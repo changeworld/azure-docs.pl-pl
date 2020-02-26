@@ -9,27 +9,36 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 11/22/2019
+ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 11a6a668b1028ba1640ef076606d4aeb4c3aae6e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486380"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589372"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Zarządzanie modelami, wdrażanie i monitorowanie za pomocą Azure Machine Learning
 
 W tym artykule dowiesz się, jak za pomocą Azure Machine Learning zarządzać cyklem życia modeli. Azure Machine Learning używa podejścia Machine Learning Operations (MLOps). MLOps poprawia jakość i spójność rozwiązań do uczenia maszynowego. 
 
+## <a name="what-is-mlops"></a>Co to jest MLOps?
+
+Machine Learning Operations (MLOps) bazują na zasadach [DevOps](https://azure.microsoft.com/overview/what-is-devops/) i praktykach, które zwiększają wydajność przepływów pracy. Na przykład ciągła integracja, dostarczanie i wdrażanie. MLOps stosuje te podmioty zabezpieczeń do procesu uczenia maszynowego w celu:
+
+* Szybsze eksperymentowanie i opracowywanie modeli
+* Szybsze wdrażanie modeli w środowisku produkcyjnym
+* Gwarancja jakości
+
 Azure Machine Learning zapewnia następujące możliwości MLOps:
 
-- **Tworzenie powtarzalnych potoków ml**. Potoki umożliwiają zdefiniowanie kroków powtarzalnych i wielokrotnego użytku dla procesów przygotowywania, uczenia i oceniania danych.
-- **Rejestrowanie, pakowanie i wdrażanie modeli z dowolnego miejsca** i śledzenie skojarzonych metadanych wymaganych do korzystania z modelu.
-- **Przechwyć dane ładu wymagane do przechwycenia kompleksowego cyklu życia ml**, w tym kto publikuje modele, dlaczego są wprowadzane zmiany i kiedy modele zostały wdrożone lub użyte w środowisku produkcyjnym.
-- **Powiadamiaj i Ostrzegaj o zdarzeniach w cyklu życia w ml** , takich jak uzupełnianie eksperymentów, rejestracja modelu, Wdrażanie modelu i wykrywanie dryfowania danych.
+- **Tworzenie powtarzalnych potoków ml**. Potoki Machine Learning umożliwiają zdefiniowanie kroków powtarzalnych i wielokrotnego użytku dla procesów przygotowywania, uczenia i oceniania danych.
+- **Twórz środowiska oprogramowania do wielokrotnego użytku** na potrzeby szkoleń i wdrażania modeli.
+- **Rejestrowanie, pakowanie i wdrażanie modeli z dowolnego miejsca**. Możesz również śledzić skojarzone metadane wymagane do korzystania z modelu.
+- **Przechwyć dane ładu w celu uzyskania kompleksowego cyklu życia ml**. Zarejestrowane informacje mogą obejmować osoby, które publikują modele, Dlaczego wprowadzono zmiany i kiedy modele zostały wdrożone lub użyte w środowisku produkcyjnym.
+- **Powiadamiaj i Ostrzegaj o zdarzeniach w cyklu życia w ml**. Na przykład zakończenie eksperymentu, rejestracja modelu, wdrożenie modelu i wykrywanie dryfowania danych.
 - **Monitoruj aplikacje ml pod kątem problemów operacyjnych i związanych z ml**. Porównaj dane wejściowe modelu między szkoleniem i wnioskami, Eksploruj metryki specyficzne dla modelu i udostępniaj funkcje monitorowania i alertów infrastruktury dotyczącej sieci.
-- **Automatyzuj kompleksowe cykle życia ml z użyciem Azure Machine Learning i platformy Azure DevOps** , aby często aktualizować modele, testować nowe modele i ciągle przebiegać nowe modele ml wraz z innymi aplikacjami i usługami.
+- **Automatyzuj kompleksowe cykle życia ml z użyciem Azure Machine Learning i Azure Pipelines**. Przy użyciu potoków można często aktualizować modele, testować nowe modele i ciągle przebiegać nowe modele ML wraz z innymi aplikacjami i usługami.
 
 ## <a name="create-reproducible-ml-pipelines"></a>Tworzenie powtarzalnych potoków ML
 
@@ -38,6 +47,12 @@ Użyj potoków ML z Azure Machine Learning, aby połączyć wszystkie kroki zwi�
 Potok ML może zawierać kroki od przygotowania danych do wyodrębniania funkcji do dostrajania parametrów do oceny modelu. Aby uzyskać więcej informacji, zobacz temat [potoki ml](concept-ml-pipelines.md).
 
 Jeśli używasz [projektanta](concept-designer.md) do tworzenia potoków ml, możesz w dowolnym momencie kliknąć **"..."** w prawym górnym rogu strony projektanta, a następnie wybrać **klon**. Klonowanie potoku umożliwia iteracyjne projektowanie potoku bez utraty starych wersji.  
+
+## <a name="create-reusable-software-environments"></a>Tworzenie środowisk oprogramowania wielokrotnego użytku
+
+Środowiska Azure Machine Learning umożliwiają śledzenie i odtwarzanie zależności oprogramowania projektów podczas ich rozwoju. Środowiska pozwalają upewnić się, że kompilacje są odtwarzalne bez ręcznej konfiguracji oprogramowania.
+
+Środowiska opisują zależności PIP i Conda dla projektów i mogą być używane do szkolenia i wdrażania modeli. Aby uzyskać więcej informacji, zobacz [co to są środowiska Azure Machine Learning](concept-environments.md).
 
 ## <a name="register-package-and-deploy-models-from-anywhere"></a>Rejestrowanie, pakowanie i wdrażanie modeli z dowolnego miejsca
 
@@ -48,7 +63,7 @@ Rejestracja modelu umożliwia przechowywanie i przechowywanie modeli w chmurze p
 > [!TIP]
 > Zarejestrowany model to logiczny kontener dla co najmniej jednego pliku, który składa się z modelu. Na przykład jeśli masz model, który jest przechowywany w wielu plikach, możesz zarejestrować je jako jeden model w obszarze roboczym Azure Machine Learning. Po zarejestrowaniu można pobrać lub wdrożyć zarejestrowany model i odebrać wszystkie zarejestrowane pliki.
 
-Zarejestrowane modele są identyfikowane za pomocą nazwy i wersji. Zawsze należy zarejestrować model o takiej samej nazwie jak innego istniejącego rejestru zwiększa numer wersji. Dodatkowe tagi metadanych można podać podczas rejestracji. Te Tagi są następnie używane podczas wyszukiwania modelu. Azure Machine Learning obsługuje dowolny model, który można załadować przy użyciu języka Python w wersji 3.5.2 lub nowszej.
+Zarejestrowane modele są identyfikowane za pomocą nazwy i wersji. Za każdym razem, gdy rejestrujesz model o takiej samej nazwie, jaką ma już istniejący model, rejestr zwiększa wersję. Dodatkowe tagi metadanych można podać podczas rejestracji. Te Tagi są następnie używane podczas wyszukiwania modelu. Azure Machine Learning obsługuje dowolny model, który można załadować przy użyciu języka Python w wersji 3.5.2 lub nowszej.
 
 > [!TIP]
 > Możesz również rejestrować modele przeszkolone poza Azure Machine Learning.
@@ -82,7 +97,7 @@ W przypadku korzystania z modelu jako usługi sieci Web lub IoT Edge urządzenia
 
 * Modele, które są używane do oceny danych przesyłanych do usługi/urządzenia.
 * Skrypt wejściowy. Ten skrypt akceptuje żądania, używa modeli do oceny danych i zwracają odpowiedź.
-* Plik środowiska Conda, który opisuje zależności wymagane przez model (y) i skrypt wejścia.
+* Środowisko Azure Machine Learning, które opisuje zależności PIP i Conda wymagane przez modele i skrypt wejścia.
 * Wszelkie dodatkowe zasoby, takie jak tekst, dane itp., które są wymagane przez model (y) i skrypt wejścia.
 
 Należy również podać konfigurację docelowej platformy wdrożenia. Na przykład typ rodziny maszyn wirtualnych, dostępna pamięć i liczba rdzeni podczas wdrażania w usłudze Azure Kubernetes Service.
@@ -162,6 +177,8 @@ Korzystając z usługi GitHub i Azure Pipelines, można utworzyć proces ciągł
 * Umożliwia wyzwalanie potoków wydania przez nauczone modele utworzone w potoku szkoleniowym.
 
 Aby uzyskać więcej informacji na temat korzystania z Azure Pipelines z Azure Machine Learning, zobacz [ciągła integracja i wdrażanie modeli ml z Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning) artykułem i [Azure Machine Learning repozytorium MLOps](https://aka.ms/mlops) .
+
+Możesz również użyć Azure Data Factory do utworzenia potoku pozyskiwania danych, który przygotowuje dane do użycia z uczeniem. Aby uzyskać więcej informacji, zobacz [potoku](how-to-cicd-data-ingestion.md)pozyskiwania danych.
 
 ## <a name="next-steps"></a>Następne kroki
 

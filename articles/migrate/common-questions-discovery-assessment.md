@@ -3,12 +3,12 @@ title: Często zadawane pytania — odnajdywanie, Ocena i analiza zależności w
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności w programie Azure Migrate.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 2ae534e50cbee3ebd17d703f957aa7200460dbfe
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 179be4f5b39806c717e94789c9fe52842d2a07d8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426296"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589236"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności
 
@@ -92,7 +92,7 @@ Te agenci nie są potrzebne, chyba że używasz wizualizacji zależności.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Czy mogę użyć istniejącego obszaru roboczego?
 
-Tak, możesz dołączyć istniejący obszar roboczy do projektu migracji i użyć go do wizualizacji zależności. [Dowiedz się więcej](concepts-dependency-visualization.md#how-does-it-work).
+Tak, możesz dołączyć istniejący obszar roboczy do projektu migracji i użyć go do wizualizacji zależności. 
 
 ## <a name="can-i-export-the-dependency-visualization-report"></a>Czy mogę wyeksportować raport wizualizacji zależności?
 

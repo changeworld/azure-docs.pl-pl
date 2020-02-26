@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 715415929afaad36e4854e75a2b7b5360d22a6bf
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: c606f6e60b1c906a0d5c29992287d126aaa37b7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486346"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602944"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu SDK Azure WebJobs na potrzeby przetwarzania w tle opartego na zdarzeniach
 
@@ -395,7 +395,7 @@ static async Task Main()
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz artykuł dotyczący [powiązań usługi Azure CosmosDB](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings) .
+Aby uzyskać więcej informacji, zobacz artykuł dotyczący [powiązań usługi Azure CosmosDB](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings) .
 
 ### <a name="event-hubs-trigger-configuration-version-3x"></a>Konfiguracja wyzwalacza Event Hubs (wersja 3. *x*)
 
@@ -423,7 +423,7 @@ static async Task Main()
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz artykuł dotyczący [powiązań Event Hubs](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings) .
+Aby uzyskać więcej informacji, zobacz artykuł dotyczący [powiązań Event Hubs](../azure-functions/functions-bindings-event-hubs-output.md#hostjson-settings) .
 
 ### <a name="queue-storage-trigger-configuration"></a>Konfiguracja wyzwalacza magazynu kolejki
 
@@ -825,11 +825,11 @@ Każdy dziennik utworzony przez wystąpienie `ILogger` ma skojarzoną `Category`
 |------------|---|
 |Ślad       | 0 |
 |Debugowanie       | 1 |
-|Informacje | 2 |
+|Information | 2 |
 |Ostrzeżenie     | 3 |
 |Błąd       | 4 |
 |Krytyczny    | 5 |
-|None        | 6 |
+|Brak        | 6 |
 
 Można niezależnie filtrować każdą kategorię do określonego [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel). Na przykład możesz chcieć zobaczyć wszystkie dzienniki przetwarzania wyzwalacza obiektów blob, ale tylko `Error` i nowsze dla wszystkiego innego.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 5b496523f6205532ea7a4278671e3be6986935a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355278"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603282"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Użyj zaleceń Azure Security Center, aby zwiększyć bezpieczeństwo
 Aby zmniejszyć prawdopodobieństwo wystąpienia poważnych zdarzeń zabezpieczeń, można skonfigurować zasady zabezpieczeń, a następnie zaimplementować zalecenia udostępniane przez Azure Security Center. W tym artykule pokazano, jak używać zasad zabezpieczeń i zaleceń w Security Center, aby pomóc w ograniczeniu ataku zabezpieczeń. 
@@ -35,7 +35,7 @@ W tym scenariuszu przedstawiono sposób użycia Security Center, aby zmniejszyć
 
 Firma Contoso niedawno przeprowadzono migrację niektórych zasobów lokalnych na platformę Azure. Firma Contoso chce chronić swoje zasoby i ograniczyć liczbę luk w zabezpieczeniach w chmurze.
 
-## <a name="use-azure-security-center"></a>Użyj usługi Azure Security Center
+## <a name="use-azure-security-center"></a>Użyj Azure Security Center
 David, od zabezpieczeń IT firmy Contoso, został już wybrany do dołączenia Security Center w subskrypcjach firmy Contoso w celu Azure Security Center zapobiegania i wykrywania luk w zabezpieczeniach. 
 
 Security Center automatycznie analizuje stan zabezpieczeń zasobów platformy Azure firmy Contoso i stosuje domyślne zasady zabezpieczeń. Gdy Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy **zalecenia** na podstawie kontrolek ustawionych w zasadach zabezpieczeń. 

@@ -2,17 +2,17 @@
 title: Co to jest usługa Azure Private Link Service?
 description: Dowiedz się więcej o usłudze Azure Private Link Service.
 services: private-link
-author: malopMSFT
+author: sumeetmittal
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: allensu
-ms.openlocfilehash: 1ac1feb5e3b179ded5fd8dae47e1859f082ad827
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.author: sumi
+ms.openlocfilehash: 97515b308323452e88cf6fd8a517c1f169c9ba6f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565790"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587417"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co to jest usługa Azure Private Link Service?
 
@@ -108,7 +108,7 @@ Szczegóły niestandardowego TLV:
 |---------|---------|----------|
 |Typ  |1        |PP2_TYPE_AZURE (0xEE)|
 |Długość  |2      |Długość wartości|
-|Wartość  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
+|Value  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
 |  |4        |UINT32 (4 bajty) reprezentujący LINKID prywatnego punktu końcowego. Zakodowane w formacie little endian.|
 
  > [!NOTE]

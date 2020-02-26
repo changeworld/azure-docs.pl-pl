@@ -3,12 +3,12 @@ title: Zarządzanie magazynami i serwerami usługi Azure Recovery Services
 description: W tym artykule dowiesz się, jak monitorować magazyny Recovery Services i zarządzać nimi za pomocą pulpitu nawigacyjnego Omówienie magazynu Recovery Services.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: f043d50a2b0e4efbda957a9c4ccb8f1d472dce15
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173044"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586448"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorowanie magazynów usługi Recovery Services i zarządzanie nimi
 
@@ -81,7 +81,7 @@ Na liście alerty kopii zapasowej są wyświetlane wybrane informacje dotyczące
 | ----------- | ----------- |
 | Krytyczny | Alerty krytyczne są wyświetlane, gdy: zadania tworzenia kopii zapasowej kończą się niepowodzeniem, zadania odzyskiwania kończą się niepowodzeniem i po zatrzymaniu ochrony na serwerze, zachowując dane.|
 | Ostrzeżenie | Alerty ostrzegawcze są odbierane, gdy: zadania tworzenia kopii zapasowej zostały zakończone z ostrzeżeniami, na przykład gdy nie jest tworzona kopia zapasowa mniej niż 100 plików z powodu problemów z uszkodzeniem lub po pomyślnym wykonaniu kopii zapasowej więcej niż 1 000 000 plików). |
-| Informacyjne | Obecnie żadne alerty informacyjne nie są używane. |
+| Informacyjny | Obecnie żadne alerty informacyjne nie są używane. |
 
 ### <a name="viewing-alert-details"></a>Wyświetlanie szczegółów alertu
 
@@ -95,7 +95,7 @@ Domyślnie wszystkie szczegóły, z wyjątkiem **ostatniego wystąpienia czasu**
 * Element kopii zapasowej
 * Serwer chroniony
 * Ważność
-* Czas trwania
+* Duration
 * Godzina utworzenia
 * Stan
 * Ostatni czas wystąpienia
@@ -215,7 +215,7 @@ Typ elementu to typ zarządzania kopiami zapasowymi chronionego wystąpienia. Is
 Można wyświetlić jedną operację lub wszystkie operacje. Nie można wybrać dwóch lub trzech operacji. Dostępne są następujące operacje:
 
 * Wszystkie operacje
-* Zarejestruj subskrypcję
+* Rejestracja
 * Konfigurowanie kopii zapasowych
 * Backup
 * Przywracanie
@@ -272,4 +272,4 @@ Kafelek magazyn kopii zapasowych na pulpicie nawigacyjnym pokazuje Magazyn używ
 
 * [Przywracanie systemu Windows Server lub klienta systemu Windows z platformy Azure](backup-azure-restore-windows-server.md)
 * Aby dowiedzieć się więcej na temat Azure Backup, zobacz [omówienie Azure Backup](backup-introduction-to-azure-backup.md)
-* Odwiedź [Forum Azure Backup](https://go.microsoft.com/fwlink/p/?LinkId=290933)
+

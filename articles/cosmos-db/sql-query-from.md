@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 4f6d7580ea7ff0e8968c0c3ce4b3ca6111c86ac8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873373"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587689"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Klauzula FROM w Azure Cosmos DB
 
@@ -49,19 +49,19 @@ FROM <from_specification>
   
 - `<from_source>`  
   
-  Określa źródło danych, z lub bez aliasu. Jeśli nie określono aliasu, zostanie wywnioskowany z `<container_expression>` za pomocą następujących reguł:  
+  Określa źródło danych, z lub bez aliasu. Jeśli alias nie zostanie określony, zostanie wywnioskowany na podstawie `<container_expression>` przy użyciu następujących reguł:  
   
   -  Jeśli wyrażenie ma container_name, container_name będzie używany jako alias.  
   
-  -  Jeśli wyrażenie ma `<container_expression>`, property_name, a następnie property_name zostanie użyta jako alias. Jeśli wyrażenie ma container_name, container_name będzie używany jako alias.  
+  -  Jeśli wyrażenie jest `<container_expression>`, a następnie property_name, property_name będzie używane jako alias. Jeśli wyrażenie ma container_name, container_name będzie używany jako alias.  
   
-- AS `input_alias`  
+- JAKO `input_alias`  
   
-  Określa, że `input_alias` to zbiór wartości zwróconych z podstawowego wyrażenia kontenera.  
+  Określa, że `input_alias` jest zbiorem wartości zwracanych przez bazowe wyrażenie kontenera.  
  
-- `input_alias` INDIE  
+- `input_alias` w  
   
-  Określa, że `input_alias` powinny reprezentować zbiór wartości uzyskane przez Iterowanie wszystkie elementy tablicy każdej macierzy zwracanym przez wyrażenie bazowego kontenera. Każda wartość zwracana przez bazowego wyrażenie kontenera, który nie jest tablicą jest ignorowany.  
+  Określa, że `input_alias` powinien reprezentować zestaw wartości uzyskanych przez iterację wszystkich elementów tablicy każdej tablicy zwracanej przez bazowe wyrażenie kontenera. Każda wartość zwracana przez bazowego wyrażenie kontenera, który nie jest tablicą jest ignorowany.  
   
 - `<container_expression>`  
   
@@ -79,17 +79,17 @@ FROM <from_specification>
   
   Określa, że w tym dokumencie mają zostać pobrane ze źródła, zdefiniowane przez podany alias.  
   
-- `<container_expression> '.' property_`  
+- `<container_expression> '.' property_name`  
   
-  Określa dokumentu powinny zostać pobrane, uzyskując dostęp do `property_name` właściwości lub indeks_tablicy elementu tablicy, dla wszystkich dokumentów, pobierane przez określone wyrażenie kontenera.  
+  Określa, że dokument ma być pobierany przez uzyskanie dostępu do właściwości `property_name`.  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
-  Określa dokumentu powinny zostać pobrane, uzyskując dostęp do `property_name` właściwości lub indeks_tablicy elementu tablicy, dla wszystkich dokumentów, pobierane przez określone wyrażenie kontenera.  
+  Określa, że dokument ma być pobierany przez uzyskanie dostępu do właściwości `property_name` lub array_index elementu tablicy dla wszystkich dokumentów pobranych przez określone wyrażenie kontenera.  
   
 ## <a name="remarks"></a>Uwagi
   
-Wszystkie aliasy podany lub wnioskowany w `<from_source>(`s) musi być unikatowa. Składnia `<container_expression>.`property_name jest taka sama jak `<container_expression>' ['"property_name"']'`. Jednak te ostatnie składni można użyć, jeśli nazwa właściwości zawiera znak — identyfikator.  
+Wszystkie aliasy dostarczone lub wywnioskowane w `<from_source>(`s) muszą być unikatowe. Składnia `<container_expression>.`property_name jest taka sama jak `<container_expression>' ['"property_name"']'`. Jednak te ostatnie składni można użyć, jeśli nazwa właściwości zawiera znak — identyfikator.  
   
 ### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Obsługa brakujących elementów tablicy i wartości niezdefiniowanego nie ma właściwości
   
@@ -99,9 +99,9 @@ Wyrażenie kontenerów uzyskuje dostęp do właściwości lub elementów tablicy
   
 Wyrażenie kontener może być należące do kontenera lub zakresu w dokumencie:  
   
--   Wyrażenie jest kontenerów należące do zakresu, jeśli bazowe źródło wyrażenia kontenera jest albo głównego lub `container_name`. Takie wyrażenie reprezentuje zestaw dokumenty pobierane z kontenera bezpośrednio, a nie jest zależna od przetwarzania innych wyrażeń kontenera.  
+-   Wyrażenie jest w zakresie kontenera, jeśli bazowe Źródło wyrażenia kontenera jest elementem głównym lub `container_name`. Takie wyrażenie reprezentuje zestaw dokumenty pobierane z kontenera bezpośrednio, a nie jest zależna od przetwarzania innych wyrażeń kontenera.  
   
--   Wyrażenie jest dokument należące do zakresu, jeśli bazowe źródło wyrażenia kontenera jest `input_alias` wprowadzone wcześniej w zapytaniu. Takie wyrażenie reprezentuje zestaw dokumentów uzyskanych przez obliczenie wyrażenia kontenera w zakresie każdego dokumentu należących do zestawu skojarzonych z danym kontenerem aliasem.  Wynikowy zestaw będzie Unii zestawów uzyskany w wyniku obliczenia wyrażenia kontenera dla poszczególnych dokumentów w podstawowym zestawie. 
+-   Wyrażenie jest w zakresie dokumentu, jeśli bazowe Źródło wyrażenia kontenera jest `input_alias` wprowadzane wcześniej w zapytaniu. Takie wyrażenie reprezentuje zestaw dokumentów uzyskanych przez obliczenie wyrażenia kontenera w zakresie każdego dokumentu należących do zestawu skojarzonych z danym kontenerem aliasem.  Wynikowy zestaw będzie Unii zestawów uzyskany w wyniku obliczenia wyrażenia kontenera dla poszczególnych dokumentów w podstawowym zestawie. 
 
 ## <a name="examples"></a>Przykłady
 
@@ -166,5 +166,5 @@ Wyniki są następujące:
 ## <a name="next-steps"></a>Następne kroki
 
 - [Rozpoczęcie pracy](sql-query-getting-started.md)
-- [Klauzula SELECT](sql-query-select.md)
+- [SELECT — klauzula](sql-query-select.md)
 - [Klauzula WHERE](sql-query-where.md)

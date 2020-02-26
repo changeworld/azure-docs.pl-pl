@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: a273b89d864d97d9bc71acff476371f77cfff066
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5204c7cf80a5b52b0c30b3165d522aa2648cd95c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754834"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587434"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Samouczek: Tworzenie aplikacji konsolowej środowiska Node. js za pomocą zestawu JavaScript SDK do zarządzania Azure Cosmos DB danych interfejsu API SQL
 
@@ -27,7 +27,7 @@ ms.locfileid: "72754834"
 
 Jako deweloper być może masz aplikacje, które używają danych dokumentów NoSQL. Konto interfejsu API SQL w usłudze Azure Cosmos DB umożliwia przechowywanie tych danych dokumentów i uzyskiwanie do nich dostępu. W tym samouczku pokazano, jak utworzyć aplikację konsolową Node.js na potrzeby tworzenia zasobów usługi Azure Cosmos DB i wykonywania zapytań względem nich.
 
-W tym samouczku zostaną wykonane następujące czynności:
+W tym samouczku wykonasz następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie konta usługi Azure Cosmos DB i łączenie się z nim
@@ -95,7 +95,7 @@ Gdy aplikacja już istnieje, musisz się upewnić, że może ona komunikować si
 
 1. Skopiuj i wklej dane ```database```, ```container``` i ```items``` do obiektu ```config``` poniżej miejsca, w którym zostały ustawione właściwości ```config.endpoint``` i ```config.key```. Jeśli masz już dane, które chcesz przechowywać w bazie danych, możesz użyć narzędzia migracji danych w usłudze Azure Cosmos DB, zamiast definiować tutaj dane. Plik config. js powinien mieć następujący kod:
 
-   [!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/config.js)]
+   :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
    Zestaw SDK dla języka JavaScript używa terminów *kontener* i *element* w znaczeniu ogólnym. Kontener może być kolekcją, wykresem lub tabelą. Element może być dokumentem, krawędzią/wierzchołkiem lub wierszem i stanowi zawartość znajdująca się w kontenerze. 
    
@@ -602,7 +602,7 @@ Usunięcie utworzonej bazy danych spowoduje usunięcie bazy danych i wszystkich 
 
 Cały kod powinien wyglądać następująco:
 
-[!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/app.js)]
+:::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js":::
 
 W terminalu znajdź swój plik ```app.js```, a następnie uruchom polecenie: 
 

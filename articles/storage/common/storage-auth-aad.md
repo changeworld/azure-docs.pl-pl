@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 2/23/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 820e7187332b02993d3d8bcba9c01958cfbdd61d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8a42723a9b56665160e660c0ea1451253c3d185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965816"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588981"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Autoryzuj dostęp do obiektów blob i kolejek przy użyciu Azure Active Directory
 
@@ -27,7 +27,7 @@ Autoryzacja za pomocą usługi Azure AD jest dostępna dla wszystkich kont ogól
 
 Usługa BLOB Storage obsługuje dodatkowo tworzenie sygnatur dostępu współdzielonego (SAS), które są podpisane przy użyciu poświadczeń usługi Azure AD. Aby uzyskać więcej informacji, zobacz [udzielanie ograniczonego dostępu do danych za pomocą sygnatur dostępu współdzielonego](storage-sas-overview.md).
 
-Azure Files obsługuje autoryzację w usłudze Azure AD za pośrednictwem protokołu SMB tylko dla maszyn wirtualnych przyłączonych do domeny. Aby dowiedzieć się więcej o korzystaniu z usługi Azure AD za pośrednictwem protokołu SMB dla Azure Files, zobacz [omówienie Azure Active Directory autoryzacji za pośrednictwem protokołu SMB dla Azure Files](../files/storage-files-active-directory-overview.md).
+Azure Files obsługuje autoryzację za pomocą usługi AD (wersja zapoznawcza) lub Azure AD DS (GA) za pośrednictwem protokołu SMB dla maszyn wirtualnych przyłączonych do domeny. Aby dowiedzieć się więcej o korzystaniu z usług AD (wersja zapoznawcza) lub Azure AD DS (GA) za pośrednictwem protokołu SMB dla Azure Files, zobacz [Azure Files Omówienie obsługi uwierzytelniania opartego na tożsamościach w usłudze SMB](../files/storage-files-active-directory-overview.md).
 
 Autoryzacja za pomocą usługi Azure AD nie jest obsługiwana w przypadku usługi Azure Table Storage. Użyj klucza współużytkowanego, aby autoryzować żądania do magazynu tabel.
 

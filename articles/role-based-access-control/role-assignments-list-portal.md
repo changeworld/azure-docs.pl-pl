@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 099cf74dd27f39a4289397d5178511125d9ebf6f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 63aef8d2036e442659145e031d384e9677c779a1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720730"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598072"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Wyświetlanie listy przypisań ról przy użyciu funkcji RBAC platformy Azure i Azure Portal
 
@@ -116,7 +116,7 @@ Aby wyświetlić listę dostępu dla użytkownika, grupy, nazwy głównej usług
 
 ## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Wyświetl listę przypisań ról dla tożsamości zarządzanej przypisanej przez użytkownika
 
-1. W Azure Portal Otwórz przypisaną przez system tożsamość zarządzaną.
+1. W Azure Portal Otwórz tożsamość zarządzaną przypisaną przez użytkownika.
 
 1. Kliknij pozycję **zasoby platformy Azure**.
 

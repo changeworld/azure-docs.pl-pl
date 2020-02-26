@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: c01106bf7288e777e601c06558b1408960f4e49b
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539437"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591527"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Konfigurowanie puli maszyn wirtualnych i zarządzanie nią 
 W tym artykule przedstawiono sposób wykonywania następujących zadań:
@@ -58,6 +58,9 @@ Drugi sposób polega na wybraniu co najmniej jednej maszyny wirtualnej na liści
 ![Uruchom wybrane maszyny wirtualne](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
 
 Podobnie można zatrzymać co najmniej jedną maszynę wirtualną, przełączając przycisk w kolumnie **stan** lub wybierając pozycję **Zatrzymaj** na pasku narzędzi. 
+
+> [!NOTE]
+> Gdy nauczycieli włącza maszynę wirtualną ucznia, nie ma to żadnego limitu przydziału dla ucznia. Przydział dla użytkownika określa liczbę godzin laboratorium dostępnych dla użytkownika poza zaplanowanym czasem klasy. Aby uzyskać więcej informacji na temat przydziałów, zobacz [Ustawianie przydziałów dla użytkowników](how-to-configure-student-usage.md?#set-quotas-for-users).
 
 ## <a name="reset-vms"></a>Resetowanie maszyn wirtualnych
 Aby zresetować co najmniej jedną maszynę wirtualną, wybierz ją z listy, a następnie na pasku narzędzi wybierz pozycję **Zresetuj** . 

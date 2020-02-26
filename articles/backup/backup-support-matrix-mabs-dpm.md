@@ -3,12 +3,12 @@ title: Macierz obsługi programu serwera usługi MAB & System Center DPM
 description: Ten artykuł zawiera podsumowanie Azure Backup pomocy technicznej w przypadku używania serwera Microsoft Azure Backup (serwera usługi MAB) lub programu System Center DPM do tworzenia kopii zapasowych zasobów lokalnych i maszyn wirtualnych platformy Azure.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9441f7ce9069cd85475877f37abe669f3c4fd516
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 6664f7b226b75b364fd1c83f2abc56b5a275eff9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444030"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582657"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Macierz obsługi dla tworzenia kopii zapasowych za pomocą serwera Microsoft Azure Backup lub programu System Center DPM
 
@@ -43,7 +43,7 @@ Tworzenie kopii zapasowej przy użyciu programu DPM/serwera usługi MAB i Azure 
 1. Agent Microsoft Azure Recovery Services (MARS) jest zainstalowany na serwerze DPM/serwera usługi MAB.
 1. Agent MARS tworzy kopię zapasową dysków DPM/serwera usługi MAB w magazynie kopii zapasowych Recovery Services na platformie Azure przy użyciu Azure Backup.
 
-Więcej informacji:
+Informacje dodatkowe:
 
 - [Dowiedz się więcej](backup-architecture.md#architecture-back-up-to-dpmmabs) o architekturze serwera usługi MAB.
 - [Sprawdź, co jest obsługiwane](backup-support-matrix-mars-agent.md) przez agenta Mars.
@@ -113,11 +113,34 @@ Można wdrożyć serwera usługi MAB na maszynie wirtualnej Azure Stack, aby mo�
 
 Serwer DPM/serwera usługi MAB potrzebuje dostępu do tych adresów URL:
 
-- http://www.msftncsi.com/ncsi.txt
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.microsoftonline.com
 - *.windows.net
+
+### <a name="azure-expressroute-support"></a>Pomoc techniczna platformy Azure ExpressRoute
+
+Możesz tworzyć kopie zapasowe danych za pośrednictwem usługi Azure ExpressRoute za pomocą publicznej komunikacji równorzędnej (dostępne dla starych obwodów) i komunikacji równorzędnej firmy Microsoft. Tworzenie kopii zapasowej za pośrednictwem prywatnej komunikacji równorzędnej nie jest obsługiwane.
+
+Przy użyciu publicznej komunikacji równorzędnej: Upewnij się, że dostęp do następujących domen/adresów:
+
+* `http://www.msftncsi.com/ncsi.txt`
+* `microsoft.com`
+* `.WindowsAzure.com`
+* `.microsoftonline.com`
+* `.windows.net`
+
+W przypadku komunikacji równorzędnej firmy Microsoft wybierz następujące usługi/regiony i odpowiednie wartości społeczności:
+
+* Azure Active Directory (12076:5060)
+* Region Microsoft Azure (zgodnie z lokalizacją magazynu Recovery Services)
+* Azure Storage (zgodnie z lokalizacją magazynu Recovery Services)
+
+Aby uzyskać więcej informacji, zobacz [wymagania dotyczące routingu ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+
+>[!NOTE]
+>Publiczna Komunikacja równorzędna jest przestarzała dla nowych obwodów.
 
 ### <a name="dpmmabs-connectivity-to-azure-backup"></a>Połączenie programu DPM/serwera usługi MAB z usługą Azure Backup
 
@@ -125,8 +148,8 @@ Aby kopie zapasowe działały prawidłowo, wymagana jest łączność z usługą
 
 **SERWERA usługi MAB na platformę Azure** | **Subskrypcja** | **Tworzenie kopii zapasowej/przywracanie**
 --- | --- | ---
-Połączone | Aktywne | Utwórz kopię zapasową na dysku programu DPM/serwera usługi MAB.<br/><br/> Utwórz kopię zapasową na platformie Azure.<br/><br/> Przywróć z dysku.<br/><br/> Przywróć z platformy Azure.
-Połączone | Wygasłe lub anulowano obsługę administracyjną | Brak kopii zapasowej na dysku lub na platformie Azure.<br/><br/> Jeśli subskrypcja wygasła, możesz przywrócić ją z dysku lub platformy Azure.<br/><br/> Jeśli subskrypcja została zlikwidowana, nie można jej przywrócić z dysku lub platformy Azure. Punkty odzyskiwania platformy Azure są usuwane.
+Połączono | Aktywne | Utwórz kopię zapasową na dysku programu DPM/serwera usługi MAB.<br/><br/> Utwórz kopię zapasową na platformie Azure.<br/><br/> Przywróć z dysku.<br/><br/> Przywróć z platformy Azure.
+Połączono | Wygasłe lub anulowano obsługę administracyjną | Brak kopii zapasowej na dysku lub na platformie Azure.<br/><br/> Jeśli subskrypcja wygasła, możesz przywrócić ją z dysku lub platformy Azure.<br/><br/> Jeśli subskrypcja została zlikwidowana, nie można jej przywrócić z dysku lub platformy Azure. Punkty odzyskiwania platformy Azure są usuwane.
 Brak łączności przez ponad 15 dni | Aktywne | Brak kopii zapasowej na dysku lub na platformie Azure.<br/><br/> Można przywrócić z dysku lub platformy Azure.
 Brak łączności przez ponad 15 dni | Wygasłe lub anulowano obsługę administracyjną | Brak kopii zapasowej na dysku lub na platformie Azure.<br/><br/> Jeśli subskrypcja wygasła, możesz przywrócić ją z dysku lub platformy Azure.<br/><br/> Jeśli subskrypcja została zlikwidowana, nie można jej przywrócić z dysku lub platformy Azure. Punkty odzyskiwania platformy Azure są usuwane.
 

@@ -3,12 +3,12 @@ title: Usuwanie magazynu Microsoft Azure Recovery Services
 description: W tym artykule dowiesz się, jak usunąć zależności, a następnie usunąć magazyn Microsoft Azure Backup Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 23e0d2874229616037c44800639411f66bc4d1b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 172c632ae27c789f96e2e5cc1bdef492ef09f667
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173171"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586465"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Usuwanie magazynu Recovery Services Azure Backup
 
@@ -28,7 +28,7 @@ Nie można usunąć magazynu Recovery Services z zależnościami, takimi jak ser
 
   ![Usuń błąd serwera chronionego.](./media/backup-azure-delete-vault/error-message.jpg)
 
-- Jeśli pojawi się komunikat ostrzegawczy, elementy kopii zapasowej znajdują się w stanie nietrwałego usunięcia, a użytkownik będzie musiał czekać na ich trwałe usunięcie. Więcej informacji znajduje się w [tym](https://aka.ms/SoftDeleteCloudWorkloads) artykule.
+- Jeśli pojawi się komunikat ostrzegawczy, elementy kopii zapasowej znajdują się w stanie nietrwałego usunięcia, a użytkownik będzie musiał czekać na ich trwałe usunięcie. Więcej informacji znajduje się w [tym](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud) artykule.
 
    ![Usuń błąd magazynu.](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
@@ -134,7 +134,7 @@ Istnieją dwie metody, których można użyć do usunięcia elementów kopii zap
 Aby zatrzymać ochronę i usunąć dane kopii zapasowej, wykonaj następujące czynności:
 
 1. Otwórz Konsola administratora programu DPM a następnie na pasku nawigacyjnym wybierz pozycję **Ochrona** .
-2. W okienku wyświetlania wybierz członka grupy ochrony, który chcesz usunąć. Kliknij prawym przyciskiem myszy, aby wybrać opcję **Zatrzymaj ochronę grup członków** .
+2. W okienku wyświetlania wybierz członka grupy ochrony, który ma zostać usunięty. Kliknij prawym przyciskiem myszy, aby wybrać opcję **Zatrzymaj ochronę grup członków** .
 3. W oknie dialogowym **Zatrzymywanie ochrony** wybierz pozycję **Usuń chronione dane**, a następnie zaznacz pole wyboru **Usuń magazyn online** . Następnie wybierz pozycję **Zatrzymaj ochronę**.
 
     ![Wybierz pozycję Usuń chronione dane z okienka zatrzymywanie ochrony.](./media/backup-azure-delete-vault/delete-storage-online.png)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 023a52f373844e026de0e588e9cd46323abdcf34
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 73de446513915bbc5cba9d8b9cf23d08d18cc362
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149834"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585989"
 ---
 # <a name="what-are-security-defaults"></a>Co to są wartości domyślne zabezpieczeń?
 
@@ -83,7 +83,7 @@ Po włączeniu wartości domyślnych zabezpieczeń w dzierżawie zostaną zablok
 
 Organizacje korzystają z różnych usług platformy Azure zarządzanych za pomocą interfejsu API Azure Resource Manager, w tym:
 
-- Portalu Azure 
+- Azure Portal 
 - Azure PowerShell 
 - Interfejs wiersza polecenia platformy Azure
 
@@ -95,7 +95,8 @@ Po włączeniu wartości domyślnych zabezpieczeń w dzierżawie każdy użytkow
 
 Jeśli użytkownik nie jest zarejestrowany do Multi-Factor Authentication, użytkownik będzie musiał zarejestrować się przy użyciu aplikacji Microsoft Authenticator, aby można było wykonać tę operację. Nie zostanie podany 14-dniowy okres rejestracji Multi-Factor Authentication.
 
-Dzierżawy usługi Exchange Online w wersji pre-2017 są domyślnie wyłączone. Aby uniknąć możliwości pętli logowania podczas uwierzytelniania za pomocą tych dzierżawców, należy [włączyć nowoczesne uwierzytelnianie](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+> [!NOTE]
+> Dzierżawy usługi Exchange Online w wersji pre-2017 są domyślnie wyłączone. Aby uniknąć możliwości pętli logowania podczas uwierzytelniania za pomocą tych dzierżawców, należy [włączyć nowoczesne uwierzytelnianie](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
 
 > [!NOTE]
 > Konto synchronizacji Azure AD Connect jest wykluczone z domyślnych ustawień zabezpieczeń i nie zostanie wyświetlony monit o zarejestrowanie się w usłudze lub przeprowadzenie uwierzytelniania wieloskładnikowego. Organizacje nie powinny używać tego konta do innych celów.

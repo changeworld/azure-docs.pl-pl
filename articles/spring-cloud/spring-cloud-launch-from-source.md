@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: brendm
-ms.openlocfilehash: 8edadbf946a28239ae4d28d56b3dccd77b451a71
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b506fdcdec1ae3e98c1a4afe9c5124e284ed4d99
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277154"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589015"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Szybki Start: uruchamianie aplikacji w chmurze wiosny z poziomu kodu źródłowego
 
@@ -62,10 +62,16 @@ az account list -o table
 az account set --subscription
 ```
 
-Otwórz okno interfejsu wiersza polecenia platformy Azure i uruchom następujące polecenia, aby zainicjować obsługę chmury wiosennej platformy Azure. Zwróć uwagę na to, że firma Microsoft informuje również chmurę Azure o konieczności przypisania domeny publicznej.
+Utwórz grupę zasobów, która będzie zawierać swoją usługę w chmurze platformy Azure. Możesz dowiedzieć się więcej na temat [grup zasobów platformy Azure](../azure-resource-manager/management/overview.md).
 
 ```azurecli
-    az spring-cloud create -n <resource name> -g <resource group name> --is-public true
+az group create --location eastus --name <resource group name>
+```
+
+Uruchom następujące polecenia, aby zainicjować obsługę chmury z platformą Azure wiosną. Przygotuj nazwę usługi w chmurze Azure wiosennej. Nazwa musi mieć długość od 4 do 32 znaków i może zawierać tylko małe litery, cyfry i łączniki. Pierwszy znak nazwy usługi musi być literą, a ostatni znak musi być literą lub cyfrą.
+
+```azurecli
+az spring-cloud create -n <resource name> -g <resource group name>
 ```
 
 Wdrożenie wystąpienia usługi zajmie około pięciu minut.

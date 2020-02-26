@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3e7f5e46068844da538864fdfaa03ca7023e4372
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f8ae85ffc16bd953f04f1c3d7790231939c1f2cf
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445578"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588911"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Zmień procesor kanału informacyjnego w Azure Cosmos DB 
 
@@ -41,13 +41,13 @@ Aby dowiedzieć się więcej o tym, jak te cztery elementy procesora źródła z
 
 Punkt wejścia jest zawsze monitorowanym kontenerem z wystąpienia `Container`, które jest wywoływane `GetChangeFeedProcessorBuilder`:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="DefineProcessor":::
 
 Gdzie pierwszy parametr jest odrębną nazwą opisującą cel tego procesora, a druga nazwa jest implementacją delegata, która będzie obsługiwać zmiany. 
 
 Przykładem delegata będzie:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="Delegate":::
 
 Na koniec zdefiniujesz nazwę tego wystąpienia procesora z `WithInstanceName`, który jest kontenerem do obsługi stanu dzierżawy z `WithLeaseContainer`.
 
@@ -84,7 +84,7 @@ Ponadto procesor kanału informacyjnego zmiany można dynamicznie dopasować do 
 
 Opłata jest naliczana za zużyte jednostek ru, ponieważ przenoszenie danych do i z kontenerów Cosmos zawsze zużywa jednostek ru. Opłata jest naliczana za jednostek ru zużyty przez kontener dzierżawy.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zestaw SDK Azure Cosmos DB](sql-api-sdk-dotnet.md)
 * [Przykłady użycia w witrynie GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)

@@ -3,12 +3,12 @@ title: Bezpieczne nawiązywanie połączenia z klastrem usługi Azure Service Fa
 description: Zawiera opis sposobu uwierzytelniania dostępu klienta do klastra Service Fabric i zabezpieczania komunikacji między klientami a klastrem.
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 89d9f67ba1a202b3830df7a5b960c6ef01091bf2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458274"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587060"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Nawiązywanie połączenia z zabezpieczonym klastrem
 
@@ -24,15 +24,15 @@ Możesz połączyć się z klastrem za pomocą polecenia `sfctl cluster select`.
 
 Certyfikaty klienta można określić w dwóch różnych sposobów, jako certyfikat i parę kluczy lub jako pojedynczy plik PFX. W przypadku plików PEM chronionych hasłem zostanie wyświetlony monit o wprowadzenie hasła. Jeśli certyfikat klienta został uzyskany jako plik PFX, najpierw przekonwertuj plik PFX na plik PEM przy użyciu poniższego polecenia. 
 
-```bash
+```shell
 openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
 ```
 
 Jeśli plik PFX nie jest chroniony hasłem, użyj parametru Pass-Pass: dla ostatniego parametru.
 
-Aby określić certyfikat klienta jako plik PEM, określ ścieżkę pliku w argumencie `--pem`. Przykład:
+Aby określić certyfikat klienta jako plik PEM, określ ścieżkę pliku w argumencie `--pem`. Na przykład:
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
@@ -40,22 +40,22 @@ W przypadku plików PEM chronionych hasłem przed uruchomieniem dowolnego polece
 
 Aby określić certyfikat, para kluczy Użyj argumentów `--cert` i `--key`, aby określić ścieżki do każdego odpowiedniego pliku.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Czasami certyfikaty używane do zabezpieczania klastrów testowych lub deweloperów nie przechodzą pomyślnie weryfikacji certyfikatu. Aby pominąć weryfikację certyfikatu, określ opcję `--no-verify`. Przykład:
+Czasami certyfikaty używane do zabezpieczania klastrów testowych lub deweloperów nie przechodzą pomyślnie weryfikacji certyfikatu. Aby pominąć weryfikację certyfikatu, określ opcję `--no-verify`. Na przykład:
 
 > [!WARNING]
 > Nie należy używać opcji `no-verify` podczas nawiązywania połączenia z klastrami Service Fabric produkcyjnych.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Ponadto można określić ścieżki do katalogów zaufanych certyfikatów urzędów certyfikacji lub pojedynczych certyfikatów. Aby określić te ścieżki, użyj argumentu `--ca`. Przykład:
+Ponadto można określić ścieżki do katalogów zaufanych certyfikatów urzędów certyfikacji lub pojedynczych certyfikatów. Aby określić te ścieżki, użyj argumentu `--ca`. Na przykład:
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
 ```
 

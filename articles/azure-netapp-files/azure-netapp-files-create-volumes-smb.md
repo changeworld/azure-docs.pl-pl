@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 7affd408ce2471f34a8362ba32101b639aafc514
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049884"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586613"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Tworzenie woluminu SMB dla usługi Azure NetApp Files
 
@@ -40,12 +40,12 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 * Odpowiednie porty muszą być otwarte na odpowiednim serwerze Windows Active Directory (AD).  
     Wymagane porty są następujące: 
 
-    |     Usługa           |     Port     |     Protokół     |
+    |     NDES           |     Port     |     Protocol     |
     |-----------------------|--------------|------------------|
     |    Usługi sieci Web AD    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    Nie dotyczy       |    Odpowiedź echa    |
+    |    ICMPv4             |    N/D       |    Odpowiedź echa    |
     |    Udziałem           |    464       |    TCP           |
     |    Udziałem           |    464       |    UDP           |
     |    Udziałem           |    88        |    TCP           |
@@ -70,7 +70,7 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 
 * Delegowana podsieć Azure NetApp Files musi mieć dostęp do wszystkich Active Directory Domain Services (dodaje) kontrolerów domeny w domenie, łącznie z lokalnymi i zdalnymi kontrolerami domeny. W przeciwnym razie może wystąpić przerwa w działaniu usługi.  
 
-    Jeśli masz kontrolery domeny, które są nieosiągalne za pośrednictwem delegowanej podsieci Azure NetApp Files, możesz przesłać żądanie pomocy technicznej platformy Azure w celu zmiany zakresu z **globalnego** (domyślnego) na **lokację**.  Azure NetApp Files musi komunikować się tylko z kontrolerami domeny w lokacji, w której znajduje się Azure NetApp Files przestrzeń adresowa delegowanej podsieci.
+    Jeśli masz kontrolery domeny, które są nieosiągalne za pośrednictwem delegowanej podsieci Azure NetApp Files, możesz określić lokację Active Directory podczas tworzenia połączenia Active Directory.  Azure NetApp Files musi komunikować się tylko z kontrolerami domeny w lokacji, w której znajduje się Azure NetApp Files przestrzeń adresowa delegowanej podsieci.
 
     Zobacz [projektowanie topologii lokacji](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) dotyczącej witryn i usług AD. 
     
@@ -88,8 +88,10 @@ Zobacz Azure NetApp Files usługi [SMB — często zadawane pytania](https://doc
         Jest to serwer DNS, który jest wymagany do przyłączania do domeny Active Directory i operacji uwierzytelniania SMB. 
     * **Pomocniczy  DNS**  
         Jest to pomocniczy serwer DNS służący do zapewniania nadmiarowych usług nazw. 
-    * **Domeny**  
+    * **Nazwa domeny DNS usługi AD**  
         To jest nazwa domeny Active Directory Domain Services, do której chcesz dołączyć.
+    * **Nazwa witryny usługi AD**  
+        Jest to nazwa lokacji, do której zostanie ograniczona funkcja odnajdowania kontrolera domeny.
     * **Prefiks serwera SMB (konto komputera)**  
         Jest to prefiks nazwy dla konta komputera w Active Directory, które Azure NetApp Files będzie używane do tworzenia nowych kont.
 

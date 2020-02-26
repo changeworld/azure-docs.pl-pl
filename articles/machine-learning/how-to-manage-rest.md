@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: e1e19f985c9aa02759c6fff3c634c216c7ef42ef
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525553"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580632"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Tworzenie, uruchamianie i usuwanie zasobów usługi Azure ML przy użyciu interfejsu REST
 
@@ -201,7 +201,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 Zwróć uwagę, że w celu wyświetlenia listy eksperymentów ścieżka rozpoczyna się od `history/v1.0` podczas wyświetlania listy modeli, ścieżka rozpoczyna się od `modelmanagement/v1.0`. Interfejs API REST jest podzielony na kilka grup operacyjnych, z których każda ma odrębną ścieżkę. Dokumenty referencyjne interfejsu API na poniższych linkach zawierają listę operacji, parametrów i kodów odpowiedzi dla różnych operacji.
 
-|Obszar|Ścieżka|Dokumentacja|
+|Obszar|Ścieżka|Informacje ogólne|
 |-|-|-|
 |Artefakty|artefakt/v 2.0/|[Dokumentacja interfejsu API REST](https://docs.microsoft.com/rest/api/azureml/artifacts)|
 |Magazyny danych|Magazyn danych/v 1.0/|[Dokumentacja interfejsu API REST](https://docs.microsoft.com/rest/api/azureml/datastores)|
@@ -401,6 +401,23 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 ```
 
 Należy odebrać odpowiedź `202 Accepted` i, w zwróconych nagłówkach, `Location` URI. Możesz uzyskać ten identyfikator URI, aby uzyskać informacje dotyczące wdrożenia, w tym przydatne informacje debugowania, jeśli wystąpi problem z jednym z zasobów zależnych (na przykład jeśli nie chcesz włączyć dostępu administratora w rejestrze kontenerów). 
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+### <a name="resource-provider-errors"></a>Błędy dostawcy zasobów
+
+[!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
+
+### <a name="moving-the-workspace"></a>Przeniesienie obszaru roboczego
+
+> [!WARNING]
+> Przeniesienie obszaru roboczego Azure Machine Learning do innej subskrypcji lub przeniesienie subskrypcji będącej właścicielem do nowej dzierżawy nie jest obsługiwane. Wykonanie tej operacji może spowodować błędy.
+
+### <a name="deleting-the-azure-container-registry"></a>Usuwanie Azure Container Registry
+
+W przypadku niektórych operacji Azure Machine Learning obszar roboczy używa Azure Container Registry (ACR). Zostanie automatycznie utworzone wystąpienie ACR, gdy jest ono najpierw wymagane.
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

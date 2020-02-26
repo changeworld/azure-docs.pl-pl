@@ -1,10 +1,10 @@
 ---
-title: GlusterFS na maszynach wirtualnych platformy Azure na Red Hat Enterprise Linux dla oprogramowania SAP NetWeaver | Microsoft Docs
+title: GlusterFS na maszynach wirtualnych platformy Azure w usłudze RHEL for SAP NetWeaver | Microsoft Docs
 description: System GlusterFS na maszynach wirtualnych platformy Azure z systemem Red Hat Enterprise Linux dla oprogramowania SAP NetWeaver
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: timlt
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
-ms.author: sedusch
-ms.openlocfilehash: 2ae9a1419232cca051f7cab4e9bd8c70f885df73
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.author: radeltch
+ms.openlocfilehash: 388a2db2c888be541d89c5f4274bd38b37e4ca28
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749034"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591918"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>System GlusterFS na maszynach wirtualnych platformy Azure z systemem Red Hat Enterprise Linux dla oprogramowania SAP NetWeaver
 
@@ -73,7 +73,7 @@ Najpierw przeczytaj następujące informacje i dokumenty SAP
   * [Zasady obsługi klastrów RHEL o wysokiej dostępności — Microsoft Azure Virtual Machines jako elementy członkowskie klastra](https://access.redhat.com/articles/3131341)
   * [Instalowanie i Konfigurowanie Red Hat Enterprise Linux 7,4 (i nowszych) klastra o wysokiej dostępności na Microsoft Azure](https://access.redhat.com/articles/3252491)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Aby zapewnić wysoką dostępność, rozwiązanie SAP NetWeaver wymaga magazynu udostępnionego. GlusterFS jest skonfigurowany w oddzielnym klastrze i może być używany przez wiele systemów SAP.
 
@@ -98,7 +98,7 @@ Możesz użyć jednego z szablonów szybkiego startu w usłudze GitHub, aby wdro
    4. Nazwa użytkownika administratora, hasło administratora lub klucz SSH  
       Zostanie utworzony nowy użytkownik, którego można użyć do zalogowania się na komputerze.
    5. Identyfikator podsieci  
-      Jeśli chcesz wdrożyć maszynę wirtualną w istniejącej sieci wirtualnej, w której zdefiniowano podsieć, należy przypisać do niej identyfikator tej konkretnej podsieci. Identyfikator ma zwykle postać/subscriptions/ **&lt;Identyfikator subskrypcji&gt;** /resourceGroups/ **&lt;nazwa grupy zasobów&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;nazwa sieci wirtualnej&gt;** /subnets/ **&lt;nazwę podsieci&gt;**
+      Jeśli chcesz wdrożyć maszynę wirtualną w istniejącej sieci wirtualnej, w której zdefiniowano podsieć, należy przypisać do niej identyfikator tej konkretnej podsieci. Identyfikator ma zwykle postać/subscriptions/ **&lt;Identyfikator subskrypcji&gt;** /resourceGroups/ **&lt;nazwa grupy zasobów&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;nazwa sieci wirtualnej&gt;** /Subnets/ **&lt;nazwa podsieci&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ręczne wdrażanie systemu Linux za pośrednictwem Azure Portal
 
@@ -120,7 +120,7 @@ Najpierw musisz utworzyć maszyny wirtualne dla tego klastra. Następnie należy
 
 Następujące elementy są poprzedzone znakiem **[A]** -odpowiednim dla wszystkich węzłów, **[1]** — dotyczy tylko węzła 1, **[2]** — dotyczy tylko węzła 2, **[3]** — dotyczy tylko węzła 3.
 
-1. **[A]**  Konfigurowanie rozpoznawania nazw hostów
+1. **[A]** rozpoznawanie nazw hostów
 
    Można użyć serwera DNS lub zmodyfikować/etc/hosts na wszystkich węzłach. W tym przykładzie pokazano, jak przy użyciu pliku/etc/hosts.
    Zastąp adres IP i nazwę hosta w następujących poleceniach

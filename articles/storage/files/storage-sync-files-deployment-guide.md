@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4f9a2842f99c7f8b0bb9f820584fb2cd4e41a2b2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f2c4e762ebf10a5ca2120c13a52750a7781d60b9
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927892"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598429"
 ---
 # <a name="deploy-azure-file-sync"></a>Wdrażanie usługi Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -21,9 +21,9 @@ Zdecydowanie zalecamy zapoznanie się z [planowaniem wdrożenia Azure Files](sto
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Udział plików platformy Azure w tym samym regionie, w którym chcesz wdrożyć Azure File Sync. Aby uzyskać więcej informacji, zobacz:
-    - [Dostępność regionu](storage-sync-files-planning.md#region-availability) dla Azure File Sync.
+    - [Dostępność regionu](storage-sync-files-planning.md#azure-file-sync-region-availability) dla Azure File Sync.
     - [Utwórz udział plików](storage-how-to-create-file-share.md) , aby uzyskać szczegółowy opis sposobu tworzenia udziału plików.
-* Co najmniej jedno obsługiwane wystąpienie klastra systemu Windows Server lub systemu Windows Server do synchronizacji z Azure File Sync. Aby uzyskać więcej informacji o obsługiwanych wersjach systemu Windows Server, zobacz [współdziałanie z systemem Windows Server](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability).
+* Co najmniej jedno obsługiwane wystąpienie klastra systemu Windows Server lub systemu Windows Server do synchronizacji z Azure File Sync. Aby uzyskać więcej informacji o obsługiwanych wersjach systemu Windows Server, zobacz [współdziałanie z systemem Windows Server](storage-sync-files-planning.md#windows-file-server-considerations).
 * Moduł AZ PowerShell może być używany z programem PowerShell 5,1 lub PowerShell 6 +. Możesz użyć polecenia AZ PowerShell module dla Azure File Sync w dowolnym obsługiwanym systemie, w tym w systemach innych niż Windows, jednak polecenie cmdlet rejestracji serwera musi być zawsze uruchamiane w zarejestrowanym wystąpieniu systemu Windows Server (można to zrobić bezpośrednio lub za pomocą programu PowerShell. Komunikacja zdalna). W systemie Windows Server 2012 R2 można sprawdzić, czy jest uruchomiony program PowerShell 5,1 lub nowszy.\*, przeglądając wartość właściwości **PSVersion** obiektu **$PSVersionTable** :
 
     ```powershell
@@ -53,11 +53,11 @@ Zdecydowanie zalecamy zapoznanie się z [planowaniem wdrożenia Azure Files](sto
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Przygotowywanie systemu Windows Server do używania z usługą Azure File Sync
 Dla każdego serwera, który ma być używany z Azure File Sync, włącznie z każdym węzłem serwera w klastrze trybu failover, wyłącz **konfigurację zwiększonych zabezpieczeń programu Internet Explorer**. Jest to wymagane tylko w przypadku początkowej rejestracji serwera. Tę pozycję można włączyć ponownie po zarejestrowaniu serwera.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 > [!Note]  
 > Ten krok można pominąć, Jeśli wdrażasz Azure File Sync w systemie Windows Server Core.
 
-1. Otwórz Menedżera serwera.
+1. Otwórz Menedżer serwera.
 2. Kliknij pozycję **serwer lokalny**:  
     !["serwer lokalny" po lewej stronie interfejsu użytkownika Menedżer serwera](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
 3. W okienku podrzędnym **Właściwości** wybierz link do funkcji **Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer**.  
@@ -65,7 +65,7 @@ Dla każdego serwera, który ma być używany z Azure File Sync, włącznie z ka
 4. W oknie dialogowym **Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer** wybierz pozycję **wyłączone** dla **administratorów** i **użytkowników**:  
     ![okna podręcznego Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer z wybraną opcją "wyłączone"](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Aby wyłączyć konfigurację zwiększonych zabezpieczeń programu Internet Explorer, wykonaj następujące czynności z poziomu sesji programu PowerShell z podwyższonym poziomem uprawnień:
 
 ```powershell
@@ -96,7 +96,7 @@ Wdrożenie Azure File Sync rozpoczyna się od umieszczenia zasobu **usługi sync
 > [!Note]
 > Usługa synchronizacji magazynu dziedziczy uprawnienia dostępu od subskrypcji i grupy zasobów, w której została wdrożona. Zalecamy dokładne sprawdzenie, kto ma do niego dostęp. Jednostki z dostępem do zapisu mogą rozpocząć Synchronizowanie nowych zestawów plików z serwerów zarejestrowanych w tej usłudze synchronizacji magazynu i spowodować, że dane będą przepływać do usługi Azure Storage, która jest dla nich dostępna.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Aby wdrożyć usługę synchronizacji magazynu, przejdź do [Azure Portal](https://portal.azure.com/), kliknij pozycję *Utwórz zasób* , a następnie wyszukaj Azure File Sync. W wynikach wyszukiwania wybierz pozycję **Azure File Sync**, a następnie wybierz pozycję **Utwórz** , aby otworzyć kartę **Wdróż magazyn synchronizacji** .
 
 W otwartym okienku wprowadź następujące informacje:
@@ -108,8 +108,8 @@ W otwartym okienku wprowadź następujące informacje:
 
 Po zakończeniu wybierz pozycję **Utwórz** , aby wdrożyć usługę synchronizacji magazynu.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
-Zastąp **< Az_Region >** , **< RG_Name >** i **<** my_storage_sync_service > z własnymi wartościami, a następnie użyj następującego cmds, aby utworzyć i wdrożyć usługę synchronizacji magazynu:
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Zastąp `<Az_Region>`, `<RG_Name>`i `<my_storage_sync_service>` własnymi wartościami, a następnie użyj następujących poleceń, aby utworzyć i wdrożyć usługę synchronizacji magazynu:
 
 ```powershell
 $hostType = (Get-Host).Name
@@ -160,7 +160,7 @@ $storageSync = New-AzStorageSyncService -ResourceGroupName $resourceGroup -Name 
 ## <a name="install-the-azure-file-sync-agent"></a>Pobieranie agenta usługi Azure File Sync
 Agent usługi Azure File Sync to możliwy do pobrania pakiet, który umożliwia synchronizowanie systemu Windows Server z udziałem plików platformy Azure. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Agenta można pobrać z [Centrum pobierania Microsoft](https://go.microsoft.com/fwlink/?linkid=858257). Po zakończeniu pobierania kliknij dwukrotnie pakiet MSI, aby uruchomić instalację agenta Azure File Sync.
 
 > [!Important]  
@@ -172,7 +172,7 @@ Zalecamy wykonanie następujących czynności:
 
 Po zakończeniu instalacji agenta Azure File Sync zostanie automatycznie otwarty interfejs użytkownika rejestracji serwera. Musisz mieć usługę synchronizacji magazynu przed rejestracją; Zobacz następną sekcję, jak utworzyć usługę synchronizacji magazynu.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Wykonaj następujący kod programu PowerShell, aby pobrać odpowiednią wersję agenta Azure File Sync dla systemu operacyjnego i zainstalować ją w systemie.
 
 > [!Important]  
@@ -216,7 +216,7 @@ Zarejestrowanie systemu Windows Server za pomocą usługi synchronizacji magazyn
 > [!Note]
 > Rejestracja serwera korzysta z poświadczeń platformy Azure, aby utworzyć relację zaufania między usługą synchronizacji magazynu i systemem Windows Server, jednak następnie serwer tworzy i używa własnej tożsamości, która jest ważna, dopóki serwer pozostaje zarejestrowany i bieżący token sygnatury dostępu współdzielonego (SAS Storage) jest prawidłowy. Nie można wystawić nowego tokenu sygnatury dostępu współdzielonego na serwerze po wyrejestrowaniu serwera, co eliminuje możliwość uzyskiwania dostępu do udziałów plików platformy Azure w celu zatrzymywania synchronizacji.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Interfejs użytkownika rejestracji serwera powinien zostać otwarty automatycznie po zainstalowaniu agenta Azure File Sync. W przeciwnym razie można otworzyć go ręcznie w lokalizacji jego pliku: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe. Gdy zostanie otwarty interfejs użytkownika rejestracji serwera, wybierz pozycję **Zaloguj** się, aby rozpocząć.
 
 Po zalogowaniu zostanie wyświetlony monit o podanie następujących informacji:
@@ -229,7 +229,7 @@ Po zalogowaniu zostanie wyświetlony monit o podanie następujących informacji:
 
 Po wybraniu odpowiednich informacji wybierz pozycję **zarejestruj** , aby zakończyć rejestrację serwera. W ramach procesu rejestracji zostanie wyświetlony monit o dodatkowe logowanie.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ```
@@ -244,7 +244,7 @@ Punkt końcowy w chmurze jest wskaźnikiem do udziału plików platformy Azure. 
 > [!Important]  
 > Można wprowadzać zmiany w dowolnym punkcie końcowym chmury lub w punkcie końcowym serwera w grupie synchronizacji i zsynchronizować pliki z innymi punktami końcowymi w grupie synchronizacji. Jeśli zmienisz bezpośrednio punkt końcowy w chmurze (udział plików platformy Azure), najpierw muszą zostać odnalezione zmiany za pomocą zadania wykrywania zmian Azure File Sync. Zadanie wykrywania zmian jest inicjowane dla punktu końcowego w chmurze tylko raz na 24 godziny. Aby uzyskać więcej informacji, zobacz [Azure Files często zadawanych pytań](storage-files-faq.md#afs-change-detection).
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Aby utworzyć grupę synchronizacji, w [Azure Portal](https://portal.azure.com/)przejdź do usługi synchronizacji magazynu, a następnie wybierz pozycję **+ Grupa synchronizacji**:
 
 ![Tworzenie nowej grupy synchronizacji w witrynie Azure Portal](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
@@ -256,7 +256,7 @@ W otwartym okienku wprowadź następujące informacje, aby utworzyć grupę sync
 - **Konto magazynu**: w przypadku wybrania **opcji wybierz konto magazynu**zostanie wyświetlone inne okienko, w którym można wybrać konto magazynu, które ma udział plików platformy Azure, z którym chcesz przeprowadzić synchronizację.
 - **Udział plików platformy Azure**: nazwa udziału plików platformy Azure, z którym chcesz przeprowadzić synchronizację.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Aby utworzyć grupę synchronizacji, wykonaj następujące polecenie programu PowerShell. Pamiętaj, aby zamienić `<my-sync-group>` na żądaną nazwę grupy synchronizacji.
 
 ```powershell
@@ -306,7 +306,7 @@ New-AzStorageSyncCloudEndpoint `
 ## <a name="create-a-server-endpoint"></a>Tworzenie punktu końcowego serwera
 Punkt końcowy serwera reprezentuje określoną lokalizację na zarejestrowanym serwerze, taką jak folder na woluminie serwera. Punkt końcowy serwera musi być ścieżką na zarejestrowanym serwerze (a nie zainstalowanym udziałem) i korzystać z warstw w chmurze, ponieważ ścieżka musi znajdować się na woluminie niesystemowym. Magazyn dołączony do sieci (NAS) nie jest obsługiwany.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Aby dodać punkt końcowy serwera, przejdź do nowo utworzonej grupy synchronizacji, a następnie wybierz pozycję **Dodaj punkt końcowy serwera**.
 
 ![Dodawanie nowego punktu końcowego serwera w okienku grupy synchronizacji](media/storage-sync-files-deployment-guide/create-sync-group-2.png)
@@ -320,7 +320,7 @@ W okienku **Dodawanie punktu końcowego serwera** wprowadź następujące inform
 
 Aby dodać punkt końcowy serwera, wybierz pozycję **Utwórz**. Twoje pliki są teraz zsynchronizowane w ramach udziału plików platformy Azure i systemu Windows Server. 
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Wykonaj następujące polecenia programu PowerShell, aby utworzyć punkt końcowy serwera, i pamiętaj, aby zastąpić `<your-server-endpoint-path>` i `<your-volume-free-space>` odpowiednimi wartościami.
 
 ```powershell
@@ -358,7 +358,7 @@ if ($cloudTieringDesired) {
 
 ## <a name="configure-firewall-and-virtual-network-settings"></a>Konfigurowanie ustawień zapory i sieci wirtualnej
 
-### <a name="portal"></a>Portal
+### <a name="portal"></a>wielodostępowy
 Jeśli chcesz skonfigurować usługę Azure File Sync do pracy z ustawieniami zapory i sieci wirtualnej, wykonaj następujące czynności:
 
 1. W Azure Portal przejdź do konta magazynu, które chcesz zabezpieczyć.

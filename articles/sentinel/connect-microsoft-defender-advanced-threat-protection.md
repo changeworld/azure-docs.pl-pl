@@ -3,7 +3,7 @@ title: Łączenie danych usługi Microsoft Defender ATP z platformą Azure — w
 description: Dowiedz się, jak połączyć dane z zaawansowanej ochrony przed zagrożeniami w usłudze Microsoft Defender do platformy Azure.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
-ms.author: rkarlin
-ms.openlocfilehash: 19d496ebb61a3ceb47f69f661e30ab529dc64f3d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.author: yelevin
+ms.openlocfilehash: ee2c917d02a442ebabc0e1b40bc245982af794f8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256749"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588216"
 ---
 # <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>Łączenie alertów z poziomu zaawansowanej ochrony przed zagrożeniami w usłudze Microsoft Defender 
 
@@ -44,7 +44,7 @@ Jeśli Zaawansowana ochrona przed zagrożeniami w usłudze Microsoft Defender zo
 
 
 1. W obszarze wskaźnik platformy Azure wybierz pozycję **Łączniki danych**, kliknij kafelek **Microsoft Defender Advanced Threat Protection** , a następnie wybierz **stronę Otwórz łącznik**.
-1. Kliknij przycisk **Połącz**. 
+1. Kliknij przycisk **Connect** (Połącz). 
 1. Aby użyć odpowiedniego schematu w Log Analytics dla alertów usługi Defender ATP, wyszukaj ciąg **SecurityAlert** , a **Nazwa dostawcy** to **MDATP**.
 
 

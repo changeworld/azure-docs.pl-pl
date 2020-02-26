@@ -3,7 +3,7 @@ title: Łączenie danych DNS na platformie Azure — wskaźnikowa | Microsoft Do
 description: Dowiedz się, jak połączyć dane DNS na platformie Azure — wskaźnik.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 77af84f9-47bc-418e-8ce2-4414d7b58c0c
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
-ms.author: rkarlin
-ms.openlocfilehash: 96515d81668bf172325f88e3e5bac8d8cccfa999
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.author: yelevin
+ms.openlocfilehash: 6d43b82ecd13ac5e082d270ee44ce61fef763d2c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190860"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588318"
 ---
 # <a name="connect-your-domain-name-server"></a>Łączenie serwera nazw domen
 
@@ -43,9 +43,9 @@ W poniższej tabeli opisano połączone źródła, które są obsługiwane przez
 
 | **Połączone źródło** | **Pomoc techniczna** | **Opis** |
 | --- | --- | --- |
-| [Agenci dla systemu Windows](../azure-monitor/platform/agent-windows.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów dla Windows. |
+| [Agenci dla systemu Windows](../azure-monitor/platform/agent-windows.md) | Tak | Rozwiązanie zbiera informacje DNS z agentów dla Windows. |
 | [Agenci dla systemu Linux](../azure-monitor/learn/quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje DNS z bezpośrednich agentów systemu Linux. |
-| [System Center Operations Manager grupy zarządzania](../azure-monitor/platform/om-agents.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów w połączonej grupie zarządzania programu Operations Manager. Bezpośrednie połączenie z agenta Operations Manager do Azure Monitor nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
+| [System Center Operations Manager grupy zarządzania](../azure-monitor/platform/om-agents.md) | Tak | Rozwiązanie zbiera informacje DNS z agentów w połączonej grupie zarządzania programu Operations Manager. Bezpośrednie połączenie z agenta Operations Manager do Azure Monitor nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
 | [Konto usługi Azure Storage](../azure-monitor/platform/collect-azure-metrics-logs.md) | Nie | Usługa Azure storage nie jest używana przez to rozwiązanie. |
 
 ### <a name="data-collection-details"></a>Szczegóły dotyczące zbierania danych

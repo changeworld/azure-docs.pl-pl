@@ -3,7 +3,7 @@ title: Łączenie jednej tożsamości z ochroną na platformie Azure Microsoft D
 description: Dowiedz się, jak połączyć jedną ochronę tożsamości z wskaźnikiem kontroli platformy Azure.
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: cabailey
-ms.openlocfilehash: 7e33580c253c98279644e10305557a7e60701c90
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 849087cbbe91be799c51929353b9f020859c85b8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610509"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588148"
 ---
 # <a name="connect-one-identity-safeguard"></a>Łączenie jednej ochrony tożsamości
 Łącznik ochrony danych jednego z tych tożsamości rozszerza standardowy łącznik Common Event format (CEF) z zabezpieczeniami dla pulpitów nawigacyjnych specyficznych dla sesji. Za pomocą tego łącznika możesz łatwo zacząć korzystać z zdarzeń generowanych przez urządzenie w celu wizualizacji, alertów, dochodzeń i nie tylko.

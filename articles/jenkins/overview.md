@@ -4,12 +4,12 @@ description: Hostuj serwer automatyzacji kompilacji i wdrażania Jenkins na plat
 keywords: jenkins, azure, devops, omówienie
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 84d9a62c432208893ac5ff960a5f7aec743680d1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5991505dac0cf6f7ff2cac5dfabd06f4c90dc20f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479347"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605695"
 ---
 # <a name="azure-and-jenkins"></a>Platforma Azure i serwer Jenkins
 
@@ -22,7 +22,7 @@ Ten artykuł stanowi wprowadzenie do zagadnień dotyczących używania platformy
 Hostowanie serwera Jenkins na platformie Azure pozwala na centralizowanie automatyzacji kompilacji i skalowanie wdrożenia w miarę wzrostu potrzeb projektów dotyczących oprogramowania. Narzędzie Jenkins można wdrożyć na platformie Azure za pomocą:
  
 - [Szablonu rozwiązania Jenkins](install-jenkins-solution-template.md) dostępnego w witrynie Azure Marketplace.
-- [Maszyn wirtualnych platformy Azure](/azure/virtual-machines/linux/overview). Zobacz nasz [samouczek](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd), aby utworzyć wystąpienie serwera Jenkins na maszynie wirtualnej.
+- [Maszyn wirtualnych platformy Azure](/azure/virtual-machines/linux/overview). Zobacz nasz [samouczek](tutorial-jenkins-github-docker-cicd.md), aby utworzyć wystąpienie serwera Jenkins na maszynie wirtualnej.
 - Aby uzyskać informacje na temat klastra Kubernetes działającego w usłudze [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough), zobacz nasze [instrukcje](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
 Monitoruj wdrożenie usługi Azure Jenkins i zarządzaj nimi za pomocą [dzienników Azure monitor](/azure/log-analytics/log-analytics-overview) i [interfejsu wiersza polecenia platformy Azure](/cli/azure).

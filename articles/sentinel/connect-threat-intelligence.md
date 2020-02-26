@@ -2,7 +2,7 @@
 title: Łączenie danych analizy zagrożeń z platformą Azure — wskaźnikiem Microsoft Docs
 description: Dowiedz się, jak połączyć dane analizy zagrożeń z wskaźnikiem kontrolnym platformy Azure.
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: security-center
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
-ms.author: cabailey
-ms.openlocfilehash: 33edeb04e88a01efafaf69b850ed87120671ed11
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.author: yelevin
+ms.openlocfilehash: 5c79642d287224cd15531701d7cc87ebfd72eb69
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384137"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588046"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Łączenie danych od dostawców analizy zagrożeń
 
@@ -74,7 +74,7 @@ Za pomocą jednego z produktów zintegrowanej platformy do analizy zagrożeń (T
     
     b. Dla produktu docelowego określ platformę Azure.
     
-    d. Dla akcji Określ alert.
+    c. Dla akcji Określ alert.
 
 5. W Azure Portal przejdź do **łącznika danych** **Azure wskaźnikowego** > , a następnie wybierz łącznik **platformy analizy zagrożeń (wersja zapoznawcza)** .
 

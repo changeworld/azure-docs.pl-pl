@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: af5399a6e1a76a6020448b2e91d76a1d2e1f0ed8
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186951"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598055"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik wprowadzenie dla deweloperów platformy Azure
 
@@ -33,7 +33,7 @@ Ten przewodnik zawiera wprowadzenie do platformy Azure dla deweloperów aplikacj
 
 ## <a name="where-do-i-start"></a>Od czego zacząć?
 
-Dzięki wszystkim usługom oferowanym przez platformę Azure może być zastraszanie zadanie pozwalające ustalić, które usługi są potrzebne do obsługi architektury rozwiązania. W tej sekcji przedstawiono usługi platformy Azure powszechnie używane przez deweloperów. Aby zapoznać się z listą wszystkich usług platformy Azure, zobacz [dokumentację platformy Azure](../../index.md).
+Dzięki wszystkim usługom oferowanym przez platformę Azure może być zastraszanie zadanie pozwalające ustalić, które usługi są potrzebne do obsługi architektury rozwiązania. W tej sekcji przedstawiono usługi platformy Azure powszechnie używane przez deweloperów. Aby zapoznać się z listą wszystkich usług platformy Azure, zobacz [dokumentację platformy Azure](../../index.yml).
 
 Najpierw należy zdecydować, jak hostować aplikację na platformie Azure. Czy musisz zarządzać całą infrastrukturą jako maszyną wirtualną. Czy można korzystać z funkcji zarządzania platformą udostępnianych przez platformę Azure? Być może potrzebujesz platformy bezserwerowej tylko do hostowania wykonywania kodu?
 
@@ -50,7 +50,7 @@ Platforma Azure oferuje usługi obsługujące potrzeby projektowania aplikacji i
 ![Opcje hostingu aplikacji platformy Azure](./media/azure-developer-guide/azure-developer-hosting-options.png)
 
 
-#### <a name="azure-app-service"></a>Azure App Service
+#### <a name="azure-app-service"></a>Usługa Azure App Service
 
 Aby uzyskać najszybszą ścieżkę publikowania projektów opartych na sieci Web, należy rozważyć Azure App Service. App Service ułatwia rozbudowanie aplikacji sieci Web w celu obsługi klientów mobilnych i publikowanie łatwo używanych interfejsów API REST. Ta platforma zapewnia uwierzytelnianie przy użyciu dostawców społecznościowych, automatycznego skalowania opartego na ruchu, testowania w środowisku produkcyjnym oraz wdrożeń ciągłych i opartych na kontenerach.
 
@@ -68,7 +68,7 @@ Istniejące aplikacje można migrować do App Service za pomocą [Narzędzia mig
 >
 > **Wypróbuj teraz**: App Service umożliwia obsługę krótkoterminowej aplikacji do wypróbowania platformy bez konieczności rejestrowania się w celu uzyskania konta platformy Azure. Wypróbuj platformę i [Utwórz aplikację Azure App Service](https://tryappservice.azure.com/).
 
-#### <a name="azure-virtual-machines"></a>Azure Virtual Machines
+#### <a name="azure-virtual-machines"></a>Usługa Azure Virtual Machines
 
 Jako dostawca infrastruktury jako usługi (IaaS), platforma Azure umożliwia wdrażanie aplikacji lub Migrowanie jej na maszyny wirtualne z systemem Windows lub Linux. Wraz z usługą Azure Virtual Network platforma Azure Virtual Machines obsługuje wdrażanie maszyn wirtualnych z systemem Windows lub Linux na platformie Azure. W przypadku maszyn wirtualnych masz całkowitą kontrolę nad konfiguracją maszyny. W przypadku korzystania z maszyn wirtualnych użytkownik jest odpowiedzialny za wszystkie instalacje oprogramowania serwera, konfigurację, konserwację i poprawki systemu operacyjnego.
 
@@ -92,7 +92,7 @@ Zamiast martwić się o tworzenie całej aplikacji lub infrastruktury do urucham
 
 Azure Service Fabric to platforma systemów rozproszonych. Ta platforma ułatwia tworzenie, pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi. Zapewnia również kompleksowe funkcje zarządzania aplikacjami, takie jak:
 
-* Inicjowanie obsługi
+* Aprowizacja
 * Wdrażanie
 * Monitorowanie
 * Uaktualnianie/stosowanie poprawek
@@ -238,7 +238,7 @@ Platforma Azure oferuje dwa sposoby zarządzania aplikacjami i usługami z pozio
 
 -   [Azure PowerShell](../../powershell-install-configure.md): zawiera zestaw modułów z poleceniami cmdlet, które umożliwiają zarządzanie zasobami platformy Azure przy użyciu programu Windows PowerShell.
 
-### <a name="azure-portal"></a>Portalu Azure
+### <a name="azure-portal"></a>Azure Portal
 
 [Azure Portal](https://portal.azure.com) jest aplikacją opartą na sieci Web. Za pomocą Azure Portal można tworzyć i usuwać zasoby i usługi platformy Azure oraz zarządzać nimi. Obejmuje:
 

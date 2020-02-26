@@ -3,7 +3,7 @@ title: Łączenie danych ATP platformy Azure z usługą Azure wskaźnikowego | M
 description: Dowiedz się, jak połączyć dane ATP platformy Azure z platformą Azure — wskaźnikiem.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 6f099a0eb6501b6576c4560e0b397d3105bb15f0
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 387d04cbbb125006efcc4efc53a02015fe3f5919
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610713"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588590"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Łączenie danych z usługi Azure Advanced Threat Protection (ATP)
 
@@ -46,7 +46,7 @@ W przypadku wdrożenia usługi Azure ATP i pozyskiwania danych podejrzane alerty
 
 1. Możesz wybrać, czy alerty z usługi Azure ATP mają automatycznie generować zdarzenia na platformie Azure. W obszarze **Tworzenie zdarzeń** wybierz pozycję **Włącz** , aby włączyć domyślną regułę analityczną, która automatycznie tworzy zdarzenia z alertów generowanych w połączonej usłudze zabezpieczeń. Następnie można edytować tę regułę w obszarze **Analiza** , a następnie **aktywne reguły**.
 
-1. Kliknij przycisk **Połącz**.
+1. Kliknij przycisk **Connect** (Połącz).
 
 1. Aby użyć odpowiedniego schematu w Log Analytics dla alertów usługi Azure ATP, wyszukaj ciąg " **SecurityAlert**".
 

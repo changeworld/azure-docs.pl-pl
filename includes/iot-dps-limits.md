@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: a306a05899a644f2ee8ea738789b84ee98221531
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2b8d60da507aa1eb312d1a8505f756ff337085ff
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392447"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592434"
 ---
 W poniższej tabeli wymieniono limity dotyczące zasobów usługi Azure IoT Hub Device Provisioning Service.
 
@@ -26,10 +26,13 @@ W poniższej tabeli wymieniono limity dotyczące zasobów usługi Azure IoT Hub 
 > [!NOTE]
 > Aby zwiększyć liczbę rejestracji i rejestracji w usłudze aprowizacji, skontaktuj się z firmą [Pomoc techniczna firmy Microsoft](https://azure.microsoft.com/support/options/).
 
+> [!NOTE]
+> Zwiększenie maksymalnej liczby urzędów certyfikacji nie jest obsługiwane.
+
 Usługa Device Provisioning ogranicza żądania w przypadku przekroczenia następujących przydziałów.
 
 | Ograniczenie | Wartość na jednostkę |
 | --- | --- |
-| Operations | 200/min/usługa |
+| Operacje | 200/min/usługa |
 | Rejestracje urządzeń | 200/min/usługa |
 | Operacja sondowania urządzenia | 5/10 sek/urządzenie |

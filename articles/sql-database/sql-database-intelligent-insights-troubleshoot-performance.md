@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 386c44cbf7a86e1a1dc92b918d87d0d8c1e60dd2
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c4923e43613653bf3dfe8055754039ab0cf57fca
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744702"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587383"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Rozwiązywanie problemów z wydajnością Azure SQL Database przy użyciu Intelligent Insights
 
-Ta strona zawiera informacje dotyczące Azure SQL Database i problemów z wydajnością wystąpienia zarządzanego wykrytych w dzienniku diagnostyki wydajności bazy danych [Intelligent Insights](sql-database-intelligent-insights.md) Database. Dane telemetryczne dzienników diagnostycznych mogą być przesyłane strumieniowo do [Azure monitor dzienników](../azure-monitor/insights/azure-sql.md), [platformy Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)lub rozwiązania innej firmy w celu uzyskania niestandardowych funkcji alertów DevOps i raportowania.
+Ta strona zawiera informacje dotyczące Azure SQL Database i problemów z wydajnością wystąpienia zarządzanego wykrytych w dzienniku diagnostyki wydajności bazy danych [Intelligent Insights](sql-database-intelligent-insights.md) Database. Dane telemetryczne dzienników diagnostycznych mogą być przesyłane strumieniowo do [Azure monitor dzienników](../azure-monitor/insights/azure-sql.md), [platformy Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)lub rozwiązania innej firmy w celu uzyskania niestandardowych funkcji alertów DevOps i raportowania.
 
 > [!NOTE]
 > Aby uzyskać szybki SQL Database Przewodnik rozwiązywania problemów z wydajnością przy użyciu Intelligent Insights, zapoznaj się ze schematem blokowym [przepływu rozwiązywania problemów](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) w tym dokumencie.
@@ -34,8 +34,8 @@ Intelligent Insights automatycznie wykrywa problemy z wydajnością z bazami dan
 | :------------------- | ------------------- | ------------------- |
 | [Osiąganie limitów zasobów](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Limity wykorzystania dostępnych zasobów (DTU), wątków roboczych bazy danych lub sesji logowania do bazy danych dostępnych w monitorowanej subskrypcji osiągnęły limit. Ma to wpływ na wydajność SQL Database. | Użycie zasobów procesora CPU zbliża się do limitów wystąpienia zarządzanego. Ma to wpływ na wydajność bazy danych. |
 | [Wzrost obciążenia](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Wykryto wzrost obciążenia lub ciągłe gromadzenie obciążeń w bazie danych. Ma to wpływ na wydajność SQL Database. | Wykryto wzrost obciążenia. Ma to wpływ na wydajność bazy danych. |
-| [Wykorzystanie pamięci](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Pracownicy, którzy zażądali przydzielenia pamięci, muszą oczekiwać na alokacje pamięci przez statystycznie znaczący czas. Lub zwiększono akumulację pracowników, którzy zażądali przyznanych pamięci. Ma to wpływ na wydajność SQL Database. | Pracownicy, którzy zażądali przydzielenia pamięci, oczekują na alokacje pamięci przez statystycznie znaczący czas. Ma to wpływ na wydajność bazy danych. |
-| [Blokowanie](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Wykryto nadmierne blokowanie bazy danych wpływające na wydajność SQL Database. | Wykryto nadmierne blokowanie bazy danych wpływające na wydajność bazy danych. |
+| [Wykorzystanie pamięci](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Pracownicy, którzy zażądali przydzielenia pamięci, muszą oczekiwać na alokacje pamięci przez statystycznie znaczny czas lub zwiększony akumulację pracowników, którzy zażądali przyznanych pamięci. Ma to wpływ na wydajność SQL Database. | Pracownicy, którzy zażądali przydzielenia pamięci, oczekują na alokacje pamięci przez statystycznie znaczący czas. Ma to wpływ na wydajność bazy danych. |
+| [Blokowan](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Wykryto nadmierne blokowanie bazy danych wpływające na wydajność SQL Database. | Wykryto nadmierne blokowanie bazy danych wpływające na wydajność bazy danych. |
 | [Zwiększono MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Wartość opcji maksymalny stopień równoległości (MAXDOP) została zmieniona na wydajność wykonywania zapytania. Ma to wpływ na wydajność SQL Database. | Wartość opcji maksymalny stopień równoległości (MAXDOP) została zmieniona na wydajność wykonywania zapytania. Ma to wpływ na wydajność bazy danych. |
 | [Rywalizacja o PAGELATCH](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Wiele wątków jednocześnie próbuje uzyskać dostęp do tych samych stron buforu danych znajdujących się w pamięci, co spowodowało zwiększenie czasu oczekiwania i spowodowanie rywalizacji o PAGELATCH. Ma to wpływ na wydajność bazy danych SQL. | Wiele wątków jednocześnie próbuje uzyskać dostęp do tych samych stron buforu danych znajdujących się w pamięci, co spowodowało zwiększenie czasu oczekiwania i spowodowanie rywalizacji o PAGELATCH. Ma to wpływ na wydajność bazy danych. |
 | [Brakujący indeks](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Wykryto brakujący indeks mający wpływ na wydajność bazy danych SQL. | Wykryto brakujący indeks mający wpływ na wydajność bazy danych. |
@@ -110,7 +110,7 @@ Możesz również zmniejszyć obciążenie, optymalizując lub rozpowszechniają
 
 Aby uzyskać dodatkowe sugestie dotyczące rozwiązywania problemów, zobacz część [Grants Meditation: The tajemniczymi SQL Server Memory Consumer z wieloma nazwami](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
-## <a name="locking"></a>Blokowanie
+## <a name="locking"></a>Blokowan
 
 ### <a name="what-is-happening"></a>Co się dzieje
 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552784"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587400"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Co to są pule wystąpień SQL Database (wersja zapoznawcza)?
 
@@ -108,7 +108,7 @@ Każde wystąpienie zarządzane wdrożone w puli ma oddzielne wystąpienie progr
 
 Opcjonalne funkcje lub funkcje, które wymagają wybrania określonych wartości (takich jak sortowanie na poziomie wystąpienia, strefa czasowa, publiczny punkt końcowy dla ruchu danych, grupy trybu failover), są konfigurowane na poziomie wystąpienia i mogą być różne dla każdego wystąpienia w puli.
 
-## <a name="performance-considerations"></a>Zagadnienia związane z wydajnością
+## <a name="performance-considerations"></a>Zagadnienia dotyczące wydajności
 
 Chociaż wystąpienia zarządzane w ramach pul mają dedykowany rdzeń wirtualny i pamięć RAM, współużytkują dysk lokalny (na potrzeby użycia bazy danych tempdb) i zasoby sieciowe. Prawdopodobnie nie jest to możliwe, ale można napotkać efekt *sąsiedniego szumu* , jeśli wiele wystąpień w puli ma duże zużycie zasobów w tym samym czasie. W przypadku zaobserwowania tego zachowania należy rozważyć wdrożenie tych wystąpień do większej puli lub jako pojedyncze wystąpienia.
 
@@ -126,7 +126,7 @@ Jeśli występują problemy związane z wdrożeniem puli wystąpień (Tworzenie 
 
 Jeśli występują problemy związane z pojedynczymi wystąpieniami lub bazami danych w ramach puli, należy utworzyć zwykły bilet pomocy technicznej dla Azure SQL Database wystąpieniami zarządzanymi.
 
-Aby utworzyć większe wdrożenia wystąpienia zarządzanego (z pulami wystąpień lub bez nich), może być konieczne uzyskanie większego limitu przydziału regionalnego. Użyj [standardowej procedury wystąpienia zarządzanego do żądania większego przydziału](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance), ale pamiętaj, że jeśli używasz pul wystąpień, logika wdrażania porównuje całkowite użycie rdzeń wirtualny *na poziomie puli* z limitem przydziału, aby określić, czy można tworzyć nowe zasoby bez zwiększania limitu przydziału.
+Aby utworzyć większe wdrożenia wystąpienia zarządzanego (z pulami wystąpień lub bez nich), może być konieczne uzyskanie większego limitu przydziału regionalnego. Aby uzyskać więcej informacji, zobacz [zwiększenie przydziału żądań dla Azure SQL Database](quota-increase-request.md). Należy pamiętać, że jeśli używasz pul wystąpień, logika wdrażania porównuje całkowite użycie rdzeń wirtualny *na poziomie puli* z limitem przydziału, aby określić, czy można tworzyć nowe zasoby bez zwiększania limitu przydziału.
 
 ## <a name="instance-pool-billing"></a>Rozliczenia puli wystąpień
 

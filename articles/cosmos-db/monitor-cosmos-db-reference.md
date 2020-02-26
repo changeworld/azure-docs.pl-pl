@@ -9,15 +9,15 @@ ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
 ms.subservice: logs
-ms.openlocfilehash: d131523e3031f55a818bb1919f39119bf073cb75
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d243224192b5761af45d387690f5fb41b84481e6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456527"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588726"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Informacje o danych monitorowania Azure Cosmos DB
-Ten artykuł zawiera informacje dotyczące danych dzienników i metryk zbieranych w celu przeanalizowania wydajności i dostępności Azure Cosmos DB. Aby uzyskać szczegółowe informacje na temat zbierania i analizowania danych monitorowania dla Azure Cosmos DB, zobacz [Cosmos DB monitorowania](monitor-cosmos-db.md) .
+W tym artykule zawarto dokumentację dotyczącą danych dziennika i metryk zebranych w celu analizy wydajności i dostępności usługi Azure Cosmos DB. Aby uzyskać szczegółowe informacje na temat zbierania i analizowania danych monitorowania dla Azure Cosmos DB, zobacz [Cosmos DB monitorowania](monitor-cosmos-db.md) .
 
 
 ## <a name="resource-logs"></a>Dzienniki zasobów
@@ -52,7 +52,7 @@ Aby uzyskać listę wszystkich Azure Monitor metryki pomocy technicznej (w tym C
 
 #### <a name="request-metrics"></a>Metryki żądania
             
-|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji) |Opis|Wymiary| Stopień szczegółowości czasu| Mapowanie starszej metryki | Sposób użycia |
+|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji) |Opis|Wymiary| Stopień szczegółowości czasu| Mapowanie starszej metryki | Użycie |
 |---|---|---|---| ---| ---| ---|
 | TotalRequests (całkowita liczba żądań) | Liczba (liczba) | Liczba wykonanych żądań| DatabaseName, CollectionName, region, StatusCode| Wszystkie | TotalRequests, http 2xx, http 3xx, http 400, HTTP 401, wewnętrzny błąd serwera, Usługa niedostępna, żądania ograniczone, średnia liczba żądań na sekundę | Służy do monitorowania żądań według kodu stanu, kontenera z dokładnością do minuty. Aby uzyskać średnią liczbę żądań na sekundę, użyj agregacji Count na minutę i Podziel ją na 60. |
 | MetadataRequests (żądania metadanych) |Liczba (liczba) | Liczba żądań metadanych. Azure Cosmos DB utrzymuje kontener metadanych systemu dla każdego konta, który umożliwia Wyliczenie kolekcji, baz danych itp., a ich konfiguracje, bez opłat. | DatabaseName, CollectionName, region, StatusCode| Wszystkie| |Służy do monitorowania ograniczania przepustowości ze względu na żądania metadanych.|
@@ -60,7 +60,7 @@ Aby uzyskać listę wszystkich Azure Monitor metryki pomocy technicznej (w tym C
 
 #### <a name="request-unit-metrics"></a>Metryki jednostki żądania
 
-|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopień szczegółowości czasu| Mapowanie starszej metryki | Sposób użycia |
+|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopień szczegółowości czasu| Mapowanie starszej metryki | Użycie |
 |---|---|---|---| ---| ---| ---|
 | MongoRequestCharge (Mongo żądania) | Liczba (łącznie) |Wykorzystane jednostki żądania Mongo| DatabaseName, CollectionName, region, CommandName, ErrorCode| Wszystkie |Mongo naliczanie żądań zapytań, opłata za żądanie aktualizacji Mongo, opłata za żądanie usunięcia żądania, Mongo, opłata za żądanie| Służy do monitorowania Mongo zasobów jednostek RU w ciągu minuty.|
 | TotalRequestUnits (łączna liczba jednostek żądań)| Liczba (łącznie) | Wykorzystane jednostki żądania| DatabaseName, CollectionName, region, StatusCode |Wszystkie| TotalRequestUnits| Służy do monitorowania całkowitego użycia RU z dokładnością do minuty. Aby obliczyć średnią liczbę zużytych jednostek RU na sekundę, użyj łącznej agregacji na minutę i Podziel ją na 60.|
@@ -68,7 +68,7 @@ Aby uzyskać listę wszystkich Azure Monitor metryki pomocy technicznej (w tym C
 
 #### <a name="storage-metrics"></a>Metryki magazynu
 
-|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopień szczegółowości czasu| Mapowanie starszej metryki | Sposób użycia |
+|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopień szczegółowości czasu| Mapowanie starszej metryki | Użycie |
 |---|---|---|---| ---| ---| ---|
 | AvailableStorage (dostępny magazyn) |Bajty (łącznie) | Łączna ilość dostępnego magazynu zgłoszona z dokładnością do 5 minut na region| DatabaseName, CollectionName, region| 5 M| Dostępny magazyn| Służy do monitorowania dostępnej pojemności magazynu (dotyczy tylko stałych kolekcji magazynów) minimalny stopień szczegółowości powinien wynosić 5 minut.| 
 | Datausage (użycie danych) |Bajty (łącznie) |Całkowite użycie danych zgłoszone z dokładnością do 5 minut na region| DatabaseName, CollectionName, region| 5 M |Rozmiar danych | Służy do monitorowania łącznego użycia danych w kontenerze i regionie, minimalny stopień szczegółowości powinien wynosić 5 minut.|
@@ -78,21 +78,23 @@ Aby uzyskać listę wszystkich Azure Monitor metryki pomocy technicznej (w tym C
 
 #### <a name="latency-metrics"></a>Metryki opóźnienia
 
-|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopień szczegółowości czasu| Sposób użycia |
+|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopień szczegółowości czasu| Użycie |
 |---|---|---|---| ---| ---|
 | ReplicationLatency (opóźnienie replikacji)| Milisekundy (minimum, maksimum, średnia) | Opóźnienie replikacji poziomie P99 w regionach źródłowym i docelowym dla konta z obsługą geograficzną| SourceRegion, TargetRegion| Wszystkie | Służy do monitorowania opóźnienia replikacji poziomie P99 między dowolnymi dwoma regionami dla konta z replikacją geograficzną. |
+| Opóźnienie po stronie serwera| Milisekundy (średnia) | Czas przetwarzania żądania przez serwer. | CollectionName, Connectionmode, DatabaseName, OperationType, PublicAPIType, region | Wszystkie | Służy do monitorowania opóźnienia żądania na serwerze Azure Cosmos DB. |
+
 
 
 #### <a name="availability-metrics"></a>Metryki dostępności
 
-|Metryka (nazwa wyświetlana metryki) |Jednostka (typ agregacji)|Opis| Stopień szczegółowości czasu| Mapowanie starszej metryki | Sposób użycia |
+|Metryka (nazwa wyświetlana metryki) |Jednostka (typ agregacji)|Opis| Stopień szczegółowości czasu| Mapowanie starszej metryki | Użycie |
 |---|---|---|---| ---| ---|
 | Serviceavailability (dostępność usługi)| Procent (minimum, maksimum) | Dostępność żądań konta z dokładnością do 1 godziny| 1H | Dostępność usługi | Reprezentuje procent całkowitej liczby żądań zakończonych niepowodzenie. Żądanie jest uznawane za niepowodzenie z powodu błędu systemu, jeśli kod stanu to 410, 500 lub 503 używany do monitorowania dostępności konta na poziomie szczegółowości godzin. |
 
 
 #### <a name="cassandra-api-metrics"></a>Metryki interfejs API Cassandra
 
-|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopień szczegółowości czasu| Sposób użycia |
+|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopień szczegółowości czasu| Użycie |
 |---|---|---|---| ---| ---|
 | CassandraRequests (żądania Cassandra) | Liczba (liczba) | Liczba wykonanych żądań interfejs API Cassandra| DatabaseName, CollectionName, ErrorCode, region, OperationType, ResourceType| Wszystkie| Służy do monitorowania żądań Cassandra z dokładnością do minuty. Aby uzyskać średnią liczbę żądań na sekundę, użyj agregacji Count na minutę i Podziel ją na 60.|
 | CassandraRequestCharges (Cassandra żądania) | Count (sum, min, Max, AVG) | Jednostki żądań używane przez żądania interfejs API Cassandra| DatabaseName, CollectionName, region, OperationType, ResourceType| Wszystkie| Służy do monitorowania jednostek ru używanych na minutę przez konto interfejs API Cassandra.|

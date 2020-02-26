@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6fc4b40e9b65f17b0af61b601826279e99410ed1
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 826cc155bae037121ddc303a6e1bf300e2d50a27
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920755"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589304"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Alerty zabezpieczeń w Centrum zabezpieczeń Azure
 
@@ -35,7 +35,7 @@ Ponadto osoby atakujące rozwinęły swoje metody w celu podwyższenia liczby za
 
 ## <a name="what-are-security-alerts"></a>Czym są alerty zabezpieczeń?
 
-Alerty to powiadomienia generowane przez usługę Security Center w razie wykrycia zagrożeń dotyczących zasobów. Security Center priorytetów i wyświetla listę alertów wraz z informacjami wymaganymi do szybkiego zbadania problemu. Usługa Security Center udostępnia również zalecenia dotyczące sposobu korygowania ataku.
+Alerty są powiadomieniami generowanymi przez Security Center w przypadku wykrycia zagrożeń dotyczących zasobów. Security Center priorytetów i wyświetla listę alertów wraz z informacjami wymaganymi do szybkiego zbadania problemu. Security Center również zawiera zalecenia dotyczące sposobu korygowania ataku.
 
 ## Jak Security Center wykrywać zagrożenia? <a name="detect-threats"> </a>
 
@@ -72,15 +72,15 @@ Usługa Azure Security Center używa również wykrywania anomalii do identyfiko
 Security Center przypisuje ważność do alertów, ułatwiając określanie priorytetów kolejności, w której uczestniczy każdy alert, dzięki czemu w przypadku naruszenia zabezpieczeń zasobów można od razu przejść do niego. Ważność jest oparta na tym, jak dobrze Security Center znajduje się w wyszukiwaniu lub analitycznym używanym do wystawiania alertu, a także poziom pewności, że istniało złośliwy wpływ na działanie, które prowadziło do alertu.
 
 > [!NOTE]
-> Ważność alertu jest wyświetlana w różny sposób w portalu i interfejsie API REST. różnice są wymienione na poniższej liście.
+> Ważność alertu jest wyświetlana w różny sposób w portalu i wersjach interfejsu API REST, który jest przedstawiony jako 01-01-2019. Jeśli używasz starszej wersji interfejsu API, Uaktualnij środowisko pod kątem spójnego środowiska opisanego poniżej.
 
-* **Wysoka:** Istnieje duże prawdopodobieństwo naruszenia bezpieczeństwa zasobu. Należy od razu przyjrzeć się do niego. Security Center ma wysoki poziom zaufania zarówno w złośliwym zamiarach, jak i w ustaleniach używanych do wystawiania alertu. Na przykład alert, który wykrywa wykonywanie znanego złośliwego narzędzia, takiego jak program mimikatz, typowego narzędzia używanego do kradzieży poświadczeń.
-* **Średni (niski w interfejsie API REST)** : prawdopodobnie podejrzane działanie może wskazywać na naruszenie bezpieczeństwa zasobu.
+- **Wysoka:** Istnieje duże prawdopodobieństwo naruszenia bezpieczeństwa zasobu. Należy od razu przyjrzeć się do niego. Security Center ma wysoki poziom zaufania zarówno w złośliwym zamiarach, jak i w ustaleniach używanych do wystawiania alertu. Na przykład alert, który wykrywa wykonywanie znanego złośliwego narzędzia, takiego jak program mimikatz, typowego narzędzia używanego do kradzieży poświadczeń.
+- **Średni:** Prawdopodobnie podejrzane działanie może wskazywać na naruszenie bezpieczeństwa zasobu.
 Stopień zaufania Security Center w analitycznym lub wyszukiwaniu jest średni, a wiarygodność złośliwego celu jest wysoka. Zazwyczaj mogą to być Uczenie maszynowe lub wykryte anomalie. Na przykład próba logowania z nietypowej lokalizacji.
-* **Niski (informacje w interfejsie API REST)** : może to być niegroźne, pozytywne lub zablokowane.
+- **Niska:** Może to być niegroźne pozytywne lub zablokowany atak.
    * Security Center nie ma wystarczającej pewności, że zamiar jest złośliwy, a działanie może być nieszkodliwe. Na przykład dziennik czyszczenie jest akcją, która może wystąpić, gdy osoba atakująca próbuje ukryć swoje ścieżki, ale w wielu przypadkach jest to procedura wykonywana przez administratorów.
    * Security Center zazwyczaj nie informuje użytkownika o zablokowaniu ataków, chyba że jest to interesujący przypadek, który sugerujemy. 
-* **Informacyjny (dyskretny w interfejsie API REST)** : podczas przechodzenia do szczegółów zdarzenia związanego z bezpieczeństwem będą wyświetlane tylko alerty informacyjne lub w przypadku korzystania z interfejsu API REST z określonym identyfikatorem alertu. Zdarzenie zwykle składa się z wielu alertów, które mogą być wyświetlane na własne potrzeby tylko w celu uzyskania informacji, ale w kontekście innych alertów może być zaufanego bliższego wyglądu. 
+- **Informacje:** Podczas przechodzenia do szczegółów zdarzenia związanego z bezpieczeństwem będą wyświetlane tylko alerty informacyjne lub użycie interfejsu API REST z określonym IDENTYFIKATORem alertu. Zdarzenie zwykle składa się z wielu alertów, które mogą być wyświetlane na własne potrzeby tylko w celu uzyskania informacji, ale w kontekście innych alertów może być zaufanego bliższego wyglądu. 
  
 
 ## <a name="continuous-monitoring-and-assessments"></a>Ciągłe monitorowanie i oceny

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 60832f9438a602945c63910a436d7638f15a201d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 20ac4fabdc5f0e70191d6886d43a5376bcf4cad5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969438"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586295"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkcje & narzędzia dla Azure Cloud Shell
 
@@ -69,26 +69,26 @@ Cloud Shell obejmuje wstępnie skonfigurowane uwierzytelnianie dla narzędzi typ
 
 ## <a name="tools"></a>Narzędzia
 
-|Kategoria   |Nazwa   |
+|Kategoria   |Name (Nazwa)   |
 |---|---|
 |Narzędzia systemu Linux            |bash<br> zsh<br> pok<br> tmux<br> Dig<br>               |
 |Narzędzia platformy Azure            |[Interfejs wiersza polecenia platformy Azure](https://github.com/Azure/azure-cli) i [klasyczny interfejs wiersza polecenia platformy Azure](https://github.com/Azure/azure-xplat-cli)<br> [Narzędzie AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Interfejs wiersza polecenia Azure Functions](https://github.com/Azure/azure-functions-core-tools)<br> [Interfejs wiersza polecenia usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Usługa Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
-|Edytory tekstu           |kod (Edytor Cloud Shell)<br> vim<br> nano<br> emacs    |
+|Edytory tekstu           |kod (Edytor Cloud Shell)<br> vim<br> Nano<br> Emacs:    |
 |Kontrola źródła         |git                    |
-|Narzędzia kompilacji            |make<br> maven<br> npm<br> graczy         |
-|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [INTERFEJS WIERSZA POLECENIA DC/OS](https://github.com/dcos/dcos-cli)         |
-|Bazy danych              |Klient MySQL<br> Klient PostgreSql<br> [sqlcmd Utility](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Inne                  |Klient iPython<br> [Interfejs wiersza polecenia Cloud Foundry](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Rozwiązania ansible](https://www.ansible.com/microsoft-azure)<br> [Program chef InSpec](https://www.chef.io/inspec/)<br> [Puppet](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)|
+|Narzędzia kompilacji            |SprawdY<br> Maven<br> npm<br> graczy         |
+|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Polecenia kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [INTERFEJS WIERSZA POLECENIA DC/OS](https://github.com/dcos/dcos-cli)         |
+|Bazy danych              |Klient MySQL<br> Klient PostgreSql<br> [Narzędzie sqlcmd](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [MSSQL-Scripter](https://github.com/Microsoft/sql-xplat-cli) |
+|Inne                  |Klient iPython<br> [Interfejs wiersza polecenia Cloud Foundry](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Rozwiązania ansible](https://www.ansible.com/microsoft-azure)<br> [Chef — Specyfikacja](https://www.chef.io/inspec/)<br> [Puppet](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)|
 
 ## <a name="language-support"></a>Obsługa języków
 
 |Język   |Wersja   |
 |---|---|
 |.NET Core  |2.2.402       |
-|Go         |1.9        |
+|Przejdź         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
-|PowerShell |[6.2.3](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[7.0.0 — RC. 2](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2,7 i 3,5 (wartość domyślna)|
 
 ## <a name="next-steps"></a>Następne kroki

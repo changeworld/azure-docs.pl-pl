@@ -3,7 +3,7 @@ title: Łączenie danych Symantec ICDx z platformą Azure — wskaźnikiem Micro
 description: Dowiedz się, jak nawiązać połączenie z danymi firmy Symantec ICDx z platformą Azure.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: d068223f-395e-46d6-bb94-7ca1afd3503c
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 111bc7cd0439eee2026a6a980e9e126b63ac58c6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: cac63aee5f9ebf3859b138e6444e40b1e2dd30f7
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610492"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588097"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Łączenie urządzenia z firmą Symantec ICDx 
 

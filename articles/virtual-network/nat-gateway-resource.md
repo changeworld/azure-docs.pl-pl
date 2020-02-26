@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 3ae1e3e595e9be9709e8a3d4808100d7f0e48eb8
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 9d9033689472fbc462eefd3d31c2b36a19add81a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526369"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589474"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Projektowanie sieci wirtualnych z użyciem zasobów bramy translatora adresów sieciowych (publiczna wersja zapoznawcza)
 
@@ -35,9 +35,6 @@ Zasoby bramy translatora adresów sieciowych są częścią [Virtual Network NAT
 
 >[!NOTE] 
 >Virtual Network translator adresów sieciowych jest w tej chwili dostępny jako publiczna wersja zapoznawcza. Jest ono obecnie dostępne tylko w ograniczonym zestawie [regionów](nat-overview.md#region-availability). Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.comsupport/legal/preview-supplemental-terms).
-
-> [!IMPORTANT]
-> Po [włączeniu](./nat-overview.md#enable-preview) Virtual Network translatora adresów sieciowych w ramach subskrypcji Użyj https://aka.ms/natportal, aby uzyskać dostęp do portalu.
 
 ## <a name="how-to-deploy-nat"></a>Jak wdrożyć translator adresów sieciowych
 
@@ -57,7 +54,7 @@ Trasy zdefiniowane przez użytkownika nie są wymagane.
 
 Zasób został zaprojektowany tak, aby można było go zobaczyć w następującym Azure Resource Manager przykładzie w formacie przypominającym szablon.  Ten format podobny do szablonu jest przedstawiony tutaj, aby zilustrować koncepcje i strukturę.  Zmodyfikuj przykład swoich potrzeb.  Ten dokument nie jest przeznaczony dla samouczka.
 
-Na poniższym diagramie przedstawiono zapisywalne odwołania między różnymi zasobami Azure Resource Manager.  Strzałka wskazuje kierunek odniesienia pochodzący z lokalizacji, w której jest zapisywalny. Recenzja 
+Na poniższym diagramie przedstawiono zapisywalne odwołania między różnymi zasobami Azure Resource Manager.  Strzałka wskazuje kierunek odniesienia pochodzący z lokalizacji, w której jest zapisywalny. Przegląd 
 
 <p align="center">
   <img src="media/nat-overview/flow-map.svg" width="256" title="Model obiektów Virtual Network NAT">
@@ -346,7 +343,7 @@ Port dla tego elementu jest dostępny do ponownego użycia w tym samym docelowym
 
 Postępuj zgodnie [z instrukcjami, aby włączyć subskrypcję](nat-overview.md#public-preview-participation).
 
-## <a name="feedback"></a>Opinie
+## <a name="feedback"></a>Opinia
 
 Chcemy wiedzieć, jak możemy ulepszyć usługę. Udostępnij nam swoją [opinię na temat publicznej wersji zapoznawczej](https://aka.ms/natfeedback) .  Możesz zaproponować i zagłosować, co będziemy kompilować dalej w usłudze [UserVoice dla translatora adresów sieciowych](https://aka.ms/natuservoice).
 

@@ -3,12 +3,12 @@ title: Magazyn centralnych wpisów tajnych usługi Azure Service Fabric
 description: W tym artykule opisano sposób korzystania z magazynu centralnych wpisów tajnych w usłudze Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: bc6ea6260bf50d5b4f8e294e0a3827426f90bee3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 11fb94a9fba40e6f2474ad64f5eb0c454be28ca0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980937"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589168"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Magazyn centralnych wpisów tajnych na platformie Azure Service Fabric 
 W tym artykule opisano sposób korzystania z magazynu centralnych wpisów tajnych (CSS) w usłudze Azure Service Fabric do tworzenia wpisów tajnych w aplikacjach Service Fabric. CSS to lokalna pamięć podręczna magazynu lokalnego wpisu tajnego, która przechowuje dane poufne, takie jak hasło, tokeny i klucze, szyfrowane w pamięci.
@@ -76,7 +76,8 @@ Użyj następującego szablonu, aby użyć Menedżer zasobów do utworzenia tajn
 Aby utworzyć `supersecret` zasób tajny przy użyciu interfejsu API REST, wprowadź żądanie PUT do `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`. Do utworzenia tajnego zasobu potrzebny jest certyfikat klastra lub certyfikat klienta administratora.
 
 ```powershell
-Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint>
+$json = '{"properties": {"kind": "inlinedValue", "contentType": "text/plain", "description": "supersecret"}}'
+Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint> -Body $json
 ```
 
 ## <a name="set-the-secret-value"></a>Ustaw wartość klucza tajnego
@@ -125,8 +126,12 @@ Użyj następującego szablonu Menedżer zasobów, aby utworzyć i ustawić wart
 
 Użyj poniższego skryptu, aby użyć interfejsu API REST w celu ustawienia wartości klucza tajnego.
 ```powershell
-$Params = @{"properties": {"value": "mysecretpassword"}}
+$Params = '{"properties": {"value": "mysecretpassword"}}'
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
+```
+### <a name="examine-the-secret-value"></a>Badanie wartości klucza tajnego
+```powershell
+Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -Uri "https:<clusterfqdn>/Resources/Secrets/supersecret/values/ver1/list_value?api-version=6.4-preview"
 ```
 ## <a name="use-the-secret-in-your-application"></a>Używanie wpisu tajnego w aplikacji
 

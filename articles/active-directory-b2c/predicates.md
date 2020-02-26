@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/28/2019
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a09478bd2e32a1ab484b85fec33ae03878ebb10c
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8e38f422189ce001063276ddc7c7f82b2acb5929
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951024"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585768"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predykaty i PredicateValidations
 
@@ -44,14 +44,15 @@ Element **predykatu** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Tak | Identyfikator, który jest używany dla predykatu. Inne elementy mogą używać tego identyfikatora w zasadach. |
+| Id | Tak | Identyfikator, który jest używany dla predykatu. Inne elementy mogą używać tego identyfikatora w zasadach. |
 | Metoda | Tak | Typ metody do użycia na potrzeby walidacji. Możliwe wartości: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**lub **IsDateRange**. Wartość **IsLengthRange** sprawdza, czy długość wartości żądania ciągu mieści się w zakresie określonych parametrów minimum i maksimum. Wartość **MatchesRegex** sprawdza, czy wartość żądania ciągu pasuje do wyrażenia regularnego. Wartość **IncludesCharacters** sprawdza, czy wartość żądania ciągu zawiera zestaw znaków. Wartość **IsDateRange** sprawdza, czy wartość żądania daty należy do zakresu od określonych parametrów minimum i maksimum. |
+| HelpText | Nie | Komunikat o błędzie dla użytkowników, jeśli sprawdzenie zakończy się niepowodzeniem. Ten ciąg może być lokalizowany przy użyciu [dostosowania języka](localization.md) |
 
 Element **predykatu** zawiera następujące elementy:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 | Komunikat o błędzie dla użytkowników, jeśli sprawdzenie zakończy się niepowodzeniem. Ten ciąg może być lokalizowany przy użyciu [dostosowania języka](localization.md) |
+| UserHelpText | 0:1 | Przestarzałe Komunikat o błędzie dla użytkowników, jeśli sprawdzenie zakończy się niepowodzeniem. |
 | Parametry | 1:1 | Parametry typu metody weryfikacji ciągu. |
 
 Element **Parameters** zawiera następujące elementy:
@@ -64,16 +65,15 @@ Element **Parameter** zawiera następujące atrybuty:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| Identyfikator | 1:1 | Identyfikator parametru. |
+| Id | 1:1 | Identyfikator parametru. |
 
 Poniższy przykład przedstawia metodę `IsLengthRange` z parametrami `Minimum` i `Maximum` określającymi zakres długości ciągu:
 
 ```XML
-<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
-  <UserHelpText>The password must be between 8 and 64 characters.</UserHelpText>
-    <Parameters>
-      <Parameter Id="Minimum">8</Parameter>
-      <Parameter Id="Maximum">64</Parameter>
+<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
+  <Parameters>
+    <Parameter Id="Minimum">8</Parameter>
+    <Parameter Id="Maximum">64</Parameter>
   </Parameters>
 </Predicate>
 ```
@@ -81,8 +81,7 @@ Poniższy przykład przedstawia metodę `IsLengthRange` z parametrami `Minimum` 
 Poniższy przykład przedstawia metodę `MatchesRegex` z parametrem `RegularExpression`, który określa wyrażenie regularne:
 
 ```XML
-<Predicate Id="PIN" Method="MatchesRegex">
-  <UserHelpText>The password must be numbers only.</UserHelpText>
+<Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
   <Parameters>
     <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
   </Parameters>
@@ -92,8 +91,7 @@ Poniższy przykład przedstawia metodę `MatchesRegex` z parametrem `RegularExpr
 Poniższy przykład przedstawia metodę `IncludesCharacters` z parametrem `CharacterSet`, który określa zestaw znaków:
 
 ```XML
-<Predicate Id="Lowercase" Method="IncludesCharacters">
-  <UserHelpText>a lowercase letter</UserHelpText>
+<Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
   <Parameters>
     <Parameter Id="CharacterSet">a-z</Parameter>
   </Parameters>
@@ -145,7 +143,7 @@ Element **PredicateValidation** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Tak | Identyfikator, który jest używany na potrzeby walidacji predykatu. Element **ClaimType** może używać tego identyfikatora w zasadach. |
+| Id | Tak | Identyfikator, który jest używany na potrzeby walidacji predykatu. Element **ClaimType** może używać tego identyfikatora w zasadach. |
 
 Element **PredicateValidation** zawiera następujący element:
 
@@ -163,20 +161,20 @@ Element grupy **predykatów** zawiera następujący atrybut:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Tak | Identyfikator, który jest używany dla grupy predykatu.  |
+| Id | Tak | Identyfikator, który jest używany dla grupy predykatu.  |
 
 Element grupy **predykatów** zawiera następujące elementy:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 |  Opis predykatu, który może być przydatny dla użytkowników, aby wiedzieć, jaka wartość powinna być typu. |
+| UserHelpText | 0:1 |  Opis predykatu, który może być przydatny dla użytkowników, aby wiedzieć, jaka wartość powinna być typu. |
 | PredicateReferences | 1: n | Lista odwołań predykatu. |
 
 Element **PredicateReferences** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| MatchAtLeast | Nie | Określa, że wartość musi być zgodna co najmniej z wieloma definicjami predykatów dla danych wejściowych, które mają zostać zaakceptowane. |
+| MatchAtLeast | Nie | Określa, że wartość musi być zgodna co najmniej z wieloma definicjami predykatów dla danych wejściowych, które mają zostać zaakceptowane. Jeśli nie zostanie określony, wartość musi być zgodna ze wszystkimi definicjami predykatu. |
 
 Element **PredicateReferences** zawiera następujące elementy:
 
@@ -188,7 +186,7 @@ Element **PredicateReference** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Tak | Identyfikator, który jest używany na potrzeby walidacji predykatu.  |
+| Id | Tak | Identyfikator, który jest używany na potrzeby walidacji predykatu.  |
 
 
 ## <a name="configure-password-complexity"></a>Konfigurowanie złożoności hasła
@@ -206,58 +204,50 @@ Przy użyciu **predykatów** i **PredicateValidationsInput** można kontrolować
 
 ```XML
 <Predicates>
-  <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
-    <UserHelpText>The password must be between 8 and 64 characters.</UserHelpText>
+  <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
     <Parameters>
       <Parameter Id="Minimum">8</Parameter>
       <Parameter Id="Maximum">64</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Lowercase" Method="IncludesCharacters">
-    <UserHelpText>a lowercase letter</UserHelpText>
+  <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
     <Parameters>
       <Parameter Id="CharacterSet">a-z</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Uppercase" Method="IncludesCharacters">
-    <UserHelpText>an uppercase letter</UserHelpText>
+  <Predicate Id="Uppercase" Method="IncludesCharacters" HelpText="an uppercase letter">
     <Parameters>
       <Parameter Id="CharacterSet">A-Z</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Number" Method="IncludesCharacters">
-    <UserHelpText>a digit</UserHelpText>
+  <Predicate Id="Number" Method="IncludesCharacters" HelpText="a digit">
     <Parameters>
       <Parameter Id="CharacterSet">0-9</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Symbol" Method="IncludesCharacters">
-    <UserHelpText>a symbol</UserHelpText>
+  <Predicate Id="Symbol" Method="IncludesCharacters" HelpText="a symbol">
     <Parameters>
       <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="PIN" Method="MatchesRegex">
-    <UserHelpText>The password must be numbers only.</UserHelpText>
+  <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
     <Parameters>
       <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="AllowedAADCharacters" Method="MatchesRegex">
-    <UserHelpText>An invalid character was provided.</UserHelpText>
+  <Predicate Id="AllowedAADCharacters" Method="MatchesRegex" HelpText="An invalid character was provided.">
     <Parameters>
       <Parameter Id="RegularExpression">(^([0-9A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~"();! ]|(\.(?!@)))+$)|(^$)</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="DisallowedWhitespace" Method="MatchesRegex">
-    <UserHelpText>The password must not begin or end with a whitespace character.</UserHelpText>
+  <Predicate Id="DisallowedWhitespace" Method="MatchesRegex" HelpText="The password must not begin or end with a whitespace character.">
     <Parameters>
       <Parameter Id="RegularExpression">(^\S.*\S$)|(^\S+$)|(^$)</Parameter>
     </Parameters>
@@ -361,8 +351,7 @@ Za pomocą **predykatów** i elementów **PredicateValidations** można kontrolo
 
 ```XML
 <Predicates>
-  <Predicate Id="DateRange" Method="IsDateRange">
-    <UserHelpText>The date must be between 01-01-1980 and today.</UserHelpText>
+  <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 01-01-1980 and today.">
     <Parameters>
       <Parameter Id="Minimum">1980-01-01</Parameter>
       <Parameter Id="Maximum">Today</Parameter>

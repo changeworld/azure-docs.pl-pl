@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6898bed0645146af9c0131307459e31bad661329
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036292"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587213"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Usuwanie obiektów blob magazynu dzienników sieciowej grupy zabezpieczeń w Network Watcher
 
@@ -125,9 +125,9 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
 ```
 
 1. W razie konieczności wprowadź następujące parametry skryptu:
-   - Identyfikator **subskrypcji** [Obowiązkowe]: Identyfikator subskrypcji, z której chcesz usunąć obiekty blob dziennika przepływu sieciowej grupy zabezpieczeń.
-   - **Lokalizacja** [Obowiązkowe]: _Ciąg lokalizacji_ regionu sieciowych grup zabezpieczeń, dla którego chcesz usunąć obiekty blob dziennika przepływu sieciowej grupy zabezpieczeń. Te informacje można wyświetlić na Azure Portal lub w witrynie [GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23).
-   - **Potwierdź** [Opcjonalne]: Przekaż flagę Potwierdź, jeśli chcesz ręcznie potwierdzić usunięcie każdego magazynu obiektów BLOB.
+   - **Subskrypcji** [obowiązkowe]: Identyfikator subskrypcji, z której chcesz usunąć obiekty blob dziennika przepływu sieciowej grupy zabezpieczeń.
+   - **Lokalizacja** [obowiązkowe]: _ciąg lokalizacji_ regionu sieciowych grup zabezpieczeń, dla którego chcesz usunąć obiekty blob dziennika przepływu sieciowej grupy zabezpieczeń. Te informacje można wyświetlić na Azure Portal lub w witrynie [GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23).
+   - **Potwierdź** , że [opcjonalne]: Przekaż flagę Confirm, jeśli chcesz ręcznie potwierdzić usunięcie każdego magazynu obiektów BLOB.
 
 1. Uruchom zapisany skrypt, jak pokazano w poniższym przykładzie, gdzie plik skryptu został zapisany jako **delete-NsgFlowLogsBlobs. ps1**:
    ```
@@ -135,6 +135,6 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    ```
     
 ## <a name="next-steps"></a>Następne kroki
-- Klienci mogą zautomatyzować uruchamianie skryptu przy użyciu [usługi Azure Scheduler](https://azure.microsoft.com/services/scheduler/) lub [Azure Automation](https://azure.microsoft.com/services/automation/)
+- Klienci mogą zautomatyzować uruchamianie skryptu przy użyciu [Azure Logic Apps](../logic-apps/logic-apps-overview.md) lub [Azure Automation](https://azure.microsoft.com/services/automation/)
 - Aby dowiedzieć się więcej o rejestrowaniu sieciowej grupy zabezpieczeń, zobacz [dzienniki Azure monitor dla sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 

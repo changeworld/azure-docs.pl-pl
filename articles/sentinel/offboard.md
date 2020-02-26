@@ -3,7 +3,7 @@ title: Usuń wskaźnik na platformie Azure | Microsoft Docs
 description: Jak usunąć wystąpienie usługi Azure.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
-ms.author: rkarlin
-ms.openlocfilehash: d71a9fc21cca75312696a1bc17c4896c2e5bce2d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 4042f7b9d0f6fdf293f338c89d5783fe266c4edf
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610367"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581688"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>Usuń wskaźnik platformy Azure z obszaru roboczego
 
@@ -44,7 +44,7 @@ Po usunięciu rozwiązania wskaźnik platformy Azure zajmie do 48 godzin, aby za
 Po zidentyfikowaniu rozłączenia rozpocznie się proces odłączania.
 
 **Konfiguracja tych łączników została usunięta:**
--   Office 365
+-   Usługa Office 365
 
 -   AWS
 

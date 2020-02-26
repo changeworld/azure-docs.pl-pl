@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964774"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587298"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Wybierz między rdzeń wirtualny i modelami zakupów jednostek DTU
 
@@ -55,7 +55,7 @@ Koszt magazynu kopii zapasowych jest taki sam dla warstwy usług Krytyczne dla d
 
 Aby uzyskać opis sposobu definiowania pojemności obliczeniowej i obliczania kosztów dla warstwy obliczeń bezserwerowych, zobacz [SQL Database bezserwerowe](sql-database-serverless.md).
 
-## <a name="storage-costs"></a>Koszty magazynu
+## <a name="storage-costs"></a>Koszty magazynowania
 
 Różne typy magazynów są rozliczane inaczej. W przypadku magazynu danych jest naliczana opłata za magazyn z zainicjowaną obsługą opartą na wybranej maksymalnej wielkości bazy danych lub puli. Koszt nie zmienia się, o ile nie zostanie zredukowany ani zwiększony maksymalny limit. Magazyn kopii zapasowych jest skojarzony z automatycznymi kopiami zapasowymi wystąpienia i jest przydzielany dynamicznie. Zwiększenie okresu przechowywania kopii zapasowych zwiększa magazyn kopii zapasowych zużywany przez wystąpienie.
 
@@ -77,7 +77,7 @@ Model zakupu oparty na rdzeń wirtualny umożliwia niezależne wybieranie zasob�
 
 > [!IMPORTANT]
 > Opłaty za zasoby obliczeniowe, we/wy i magazyn danych i dzienników są naliczone za bazę danych lub pulę elastyczną. Dla każdej bazy danych jest naliczana opłata za magazyn kopii zapasowych. Aby uzyskać więcej informacji na temat opłat za wystąpienia zarządzane, zobacz [wystąpienia zarządzane](sql-database-managed-instance.md).
-> **Ograniczenia regionu:** Bieżącą listę obsługiwanych regionów można znaleźć w temacie [produkty dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Aby utworzyć wystąpienie zarządzane w regionie, który obecnie nie jest obsługiwany, [Wyślij żądanie pomocy technicznej za pośrednictwem Azure Portal](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
+> **Ograniczenia regionu:** Bieżącą listę obsługiwanych regionów można znaleźć w temacie [produkty dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Aby utworzyć wystąpienie zarządzane w regionie, który obecnie nie jest obsługiwany, [Wyślij żądanie pomocy technicznej za pośrednictwem Azure Portal](quota-increase-request.md).
 
 Jeśli jedna baza danych lub Pula elastyczna zużywa ponad 300 DTU, przekonwertowanie na model zakupu oparty na rdzeń wirtualny może obniżyć koszty. Możesz dokonać konwersji przy użyciu dowolnie wybranego interfejsu API lub korzystając z Azure Portal bez przestojów. Jednak konwersja nie jest wymagana i nie jest wykonywana automatycznie. Jeśli model zakupu oparty na jednostkach DTU spełnia Twoje wymagania dotyczące wydajności i działalności biznesowej, należy go nadal używać.
 
@@ -102,7 +102,7 @@ Zasoby używane przez obciążenie nie wpływają na zasoby dostępne dla innych
 
 ![pole ograniczenia](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-DTU są najbardziej przydatne do poznania zasobów względnych, które są przyłączone do baz danych Azure SQL w różnych rozmiarach obliczeniowych i warstwach usług. Przykład:
+DTU są najbardziej przydatne do poznania zasobów względnych, które są przyłączone do baz danych Azure SQL w różnych rozmiarach obliczeniowych i warstwach usług. Na przykład:
 
 - Podwajanie DTU przez zwiększenie rozmiaru obliczeń bazy danych jest równe Podwajanie zestawu zasobów dostępnych dla tej bazy danych.
 - Baza danych P11 usługi w warstwie Premium z 1750 DTU zapewnia większą moc obliczeniową jednostek DTU niż podstawowa baza danych warstwy usług z 5 DTU.  

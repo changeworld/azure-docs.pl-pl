@@ -3,7 +3,7 @@ title: Połącz dane CEF z podglądem platformy Azure — Wersja zapoznawcza | M
 description: Dowiedz się, jak połączyć dane CEF z platformą Azure — wskaźnikiem.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
-ms.author: rkarlin
-ms.openlocfilehash: 640d1ff9e2ee1471706b7900e7e22dbc44920527
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 8314614616c6b8969832d52fc684d47ba1bf0fe3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610645"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588352"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Łączenie rozwiązania zewnętrznego przy użyciu typowego formatu zdarzeń
 
@@ -52,7 +52,7 @@ Aby można było korzystać z komunikacji TLS między rozwiązaniem zabezpiecze�
 ## <a name="prerequisites"></a>Wymagania wstępne
 Upewnij się, że maszyna z systemem Linux używaną jako serwer proxy ma jeden z następujących systemów operacyjnych:
 
-- 64-bitowa
+- 64-bitowy
   - CentOS 6 i 7
   - Amazon Linux 2017,09
   - Oracle Linux 6 i 7
@@ -60,7 +60,7 @@ Upewnij się, że maszyna z systemem Linux używaną jako serwer proxy ma jeden 
   - Debian GNU/Linux 8 i 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS i 18,04 LTS
   - SUSE Linux Enterprise Server 12
-- 32-bitowa
+- 32 — bit
    - CentOS 6
    - Oracle Linux 6
    - Red Hat Enterprise Linux Server 6

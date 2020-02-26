@@ -4,12 +4,12 @@ description: W tym artykule dowiesz się, jak rozwiązywać problemy z tworzenie
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: fde5fd9f2464c2aff9a7a34ffa440ab9a6a1ca51
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: f311de435d813cb0e6f8a2c3d932e05d695603f3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665042"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583303"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rozwiązywanie problemów z kopią zapasową stanu systemu
 
@@ -20,11 +20,11 @@ W tym artykule opisano rozwiązania problemów, które mogą występować podcza
 Przed rozpoczęciem rozwiązywania problemów z kopiami zapasowymi stanu systemu zalecamy wykonanie poniższej weryfikacji:
 
 - [Upewnij się, że agent Microsoft Azure Recovery Services (MARS) jest aktualny](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [Upewnij się, że istnieje połączenie sieciowe między agentem MARS i platformą Azure](https://aka.ms/AB-A4dp50)
+- [Upewnij się, że istnieje połączenie sieciowe między agentem MARS i platformą Azure](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Upewnij się, że usługa Microsoft Azure Recovery Services jest uruchomiona (w konsoli usługi). W razie potrzeby uruchom ponownie, a następnie spróbuj ponownie wykonać operację.
-- [Upewnij się, że 5–10% wolnego miejsca na woluminie jest dostępne na potrzeby lokalizacji folderu plików tymczasowych](https://aka.ms/AB-AA4dwtt)
-- [Sprawdź, czy inny proces lub oprogramowanie antywirusowe nie zakłóca działania usługi Azure Backup](https://aka.ms/AB-AA4dwtk)
-- [Zaplanowane tworzenie kopii zapasowej kończy się niepowodzeniem, ale ręczne tworzenie kopii zapasowej działa](https://aka.ms/ScheduledBackupFailManualWorks)
+- [Upewnij się, że 5–10% wolnego miejsca na woluminie jest dostępne na potrzeby lokalizacji folderu plików tymczasowych](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Sprawdź, czy inny proces lub oprogramowanie antywirusowe nie zakłóca działania usługi Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
+- [Zaplanowane tworzenie kopii zapasowej kończy się niepowodzeniem, ale ręczne tworzenie kopii zapasowej działa](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)
 - Upewnij się, że w systemie operacyjnym zainstalowano najnowsze aktualizacje
 - [Upewnij się, że nieobsługiwane dyski i pliki z nieobsługiwanymi atrybutami są wyłączone z kopii zapasowej](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
 - Upewnij się, że **zegar systemowy** chronionego systemu ma skonfigurowaną prawidłową strefę czasową <br>
@@ -33,9 +33,9 @@ Przed rozpoczęciem rozwiązywania problemów z kopiami zapasowymi stanu systemu
   - Upewnij się, że agent zostanie odinstalowany na serwerze i usunięty z portalu <br>
   - Użyj tego samego hasła, które zostało początkowo użyte podczas rejestrowania serwera <br>
 - Jeśli jest to kopia zapasowa offline, przed rozpoczęciem operacji tworzenia kopii zapasowej w trybie offline upewnij się, że Azure PowerShell wersja 3.7.0 jest zainstalowana na komputerze źródłowym i skopiuj
-- [Uwzględnianie, gdy Agent kopii zapasowej jest uruchomiony na maszynie wirtualnej platformy Azure](https://aka.ms/AB-AA4dwtr)
+- [Uwzględnianie, gdy Agent kopii zapasowej jest uruchomiony na maszynie wirtualnej platformy Azure](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)
 
-### <a name="limitation"></a>Ograniczenia
+### <a name="limitation"></a>Ograniczenie
 
 - Odzyskiwanie na inny komputer przy użyciu funkcji odzyskiwania stanu systemu nie jest zalecane przez firmę Microsoft.
 - Kopia zapasowa stanu systemu obsługuje obecnie serwery z systemem Windows "lokalne". Ta funkcja jest niedostępna dla maszyn wirtualnych platformy Azure.
@@ -77,7 +77,7 @@ Aby zainstalować Kopia zapasowa systemu Windows Server przy użyciu Menedżer s
 3. Wybierz serwer z puli serwerów, a następnie kliknij przycisk **dalej**. W roli serwera pozostaw wybór domyślny i kliknij przycisk **dalej**.
 4. Wybierz pozycję **kopia zapasowa systemu Windows Server** na karcie **funkcje** i kliknij przycisk **dalej**.
 
-    ![danych](./media/backup-azure-system-state-troubleshoot/features.png)
+    ![funkcje](./media/backup-azure-system-state-troubleshoot/features.png)
 
 5. Na karcie **potwierdzenie** kliknij przycisk **Zainstaluj** , aby rozpocząć proces instalacji.
 6. Na karcie **wyniki** zostanie wyświetlona funkcja kopia zapasowa systemu Windows Server pomyślnie zainstalowana na serwerze z systemem Windows.
@@ -97,8 +97,8 @@ Upewnij się, że poniższe usługi są w stanie uruchomienia:
 Zdalne wywołanie procedury (RPC) | Automatyczny
 System zdarzeń modelu COM+ (EventSystem) | Automatyczny
 Usługa powiadamiania o zdarzeniach systemowych (SENS) | Automatyczny
-Kopiowanie woluminów w tle (VSS) | Ręczna
-Dostawca kopiowania oprogramowania w tle firmy Microsoft (SWPRV) | Ręczna
+Kopiowanie woluminów w tle (VSS) | Ręczny
+Dostawca kopiowania oprogramowania w tle firmy Microsoft (SWPRV) | Ręczny
 
 ### <a name="validate-windows-server-backup-status"></a>Weryfikuj stan Kopia zapasowa systemu Windows Server
 
@@ -129,19 +129,19 @@ Jeśli zadanie nie powiedzie się, wskazuje to na problem z WSB, który spowoduj
 
 ### <a name="vss-writer-timeout-error"></a>Błąd limitu czasu składnika zapisywania usługi VSS
 
-| Objaw | Przyczyna | Rozdzielczość
+| Objaw | Przyczyna | Rozwiązanie
 | -- | -- | --
 | -Agent MARS kończy się niepowodzeniem z komunikatem o błędzie: "zadanie WSB nie powiodło się z błędami usługi VSS. Sprawdź dzienniki zdarzeń usługi VSS, aby rozwiązać ten problem.<br/><br/> — Następujący dziennik błędów znajduje się w dziennikach zdarzeń aplikacji usługi VSS: "składnik zapisywania usługi VSS odrzucił zdarzenie z błędem 0x800423f2, upłynął limit czasu modułu zawieszania i odblokowywania."| Nie można wykonać składnika zapisywania usługi VSS w czasie z powodu braku zasobów procesora i pamięci na maszynie <br/><br/> Inne oprogramowanie do tworzenia kopii zapasowych korzysta już z składnika zapisywania usługi VSS, ponieważ nie można ukończyć operacji migawki wyniku dla tej kopii zapasowej | Poczekaj na zwolnienie procesora CPU/pamięci w systemie lub Przerwij procesy, które zajmują zbyt dużo pamięci/procesora, i spróbuj wykonać operację ponownie. <br/><br/>  Poczekaj na zakończenie trwającej kopii zapasowej i spróbuj wykonać operację w późniejszym czasie, gdy na maszynie nie są uruchomione żadne kopie zapasowe.
 
 ### <a name="insufficient-disk-space-to-grow-shadow-copies"></a>Za mało miejsca na dysku, aby zwiększyć ilość kopii w tle
 
-| Objaw | Rozdzielczość
+| Objaw | Rozwiązanie
 | -- | --
 | -Agent MARS kończy się niepowodzeniem z komunikatem o błędzie: wykonywanie kopii zapasowej nie powiodło się, ponieważ nie można było zwiększyć woluminu kopii w tle z powodu niewystarczającej ilości miejsca na woluminach <br/><br/> — Następujący dziennik błędów/ostrzeżeń jest obecny w dzienniku zdarzeń systemu Volsnap: "za mało miejsca na dysku w woluminie C:, aby zwiększyć magazyn kopii w tle dla kopii w tle C: z powodu tego błędu wszystkie kopie w tle woluminu C: są zagrożone. | -Zwolnij miejsce na wyróżnionym woluminie w dzienniku zdarzeń, tak że jest wystarczająca ilość miejsca na zwiększenie rozmiaru kopii w tle, gdy trwa wykonywanie kopii zapasowej <br/><br/> — Podczas konfigurowania obszaru kopiowania w tle możemy ograniczyć ilość miejsca używanego do kopiowania w tle. Aby uzyskać więcej informacji, zobacz ten [artykuł](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax)
 
 ### <a name="efi-partition-locked"></a>Zablokowana partycja EFI
 
-| Objaw | Rozdzielczość
+| Objaw | Rozwiązanie
 | -- | --
 | Agent MARS kończy się niepowodzeniem z komunikatem o błędzie: "kopia zapasowa stanu systemu nie powiodła się, ponieważ partycja systemowa EFI jest Może to być spowodowane dostępem do partycji systemowej przez zabezpieczenia innej firmy lub oprogramowanie do tworzenia kopii zapasowych. | — Jeśli problem jest spowodowany przez oprogramowanie zabezpieczeń innej firmy, należy skontaktować się z dostawcą oprogramowania antywirusowego, aby umożliwić mu agenta MARS <br/><br/> — Jeśli działa oprogramowanie do tworzenia kopii zapasowych innej firmy, zaczekaj na jego zakończenie, a następnie ponów próbę wykonania kopii zapasowej
 

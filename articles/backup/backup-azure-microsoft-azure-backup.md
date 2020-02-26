@@ -3,12 +3,12 @@ title: Użyj Azure Backup Server, aby utworzyć kopię zapasową obciążeń
 description: W tym artykule dowiesz się, jak przygotować środowisko do ochrony i tworzenia kopii zapasowych obciążeń przy użyciu Microsoft Azure Backup Server (serwera usługi MAB).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: efa54eac2e3e134fb285d38242ca1b59727c2c86
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e601328a09ece54eb1c678310f76c7999c69f24c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425191"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586431"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie Azure Backup Server
 
@@ -45,7 +45,7 @@ Pierwszym krokiem w celu uzyskania Azure Backup Server pracy jest skonfigurowani
 
 W przypadku wybrania serwera do uruchamiania Azure Backup Server zaleca się rozpoczęcie od obrazu galerii systemu Windows Server 2016 Datacenter lub Windows Server 2019 centrum danych. W tym artykule opisano [Tworzenie pierwszej maszyny wirtualnej z systemem Windows w Azure Portal, w](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)której znajduje się samouczek dotyczący rozpoczynania pracy z zalecaną maszyną wirtualną na platformie Azure, nawet jeśli wcześniej nie korzystano z platformy Azure. Zalecane minimalne wymagania dotyczące maszyny wirtualnej serwera: Standard_A4_v2 z czterema rdzeniami i 8 GB pamięci RAM.
 
-Ochrona obciążeń za pomocą Azure Backup Server ma wiele wszystkie szczegóły. W tym artykule [Zainstaluj program DPM jako maszynę wirtualną platformy Azure, a także](https://technet.microsoft.com/library/jj852163.aspx)Wyjaśnij te wszystkie szczegóły. Przed wdrożeniem maszyny zapoznaj się z tym artykułem całkowicie.
+Ochrona obciążeń za pomocą Azure Backup Server ma wiele wszystkie szczegóły. W tym artykule [Zainstaluj program DPM jako maszynę wirtualną platformy Azure, a także](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12))Wyjaśnij te wszystkie szczegóły. Przed wdrożeniem maszyny zapoznaj się z tym artykułem całkowicie.
 
 ### <a name="using-an-on-premises-server"></a>Korzystanie z serwera lokalnego
 
@@ -56,7 +56,7 @@ Jeśli nie chcesz uruchamiać serwera podstawowego na platformie Azure, możesz 
 | Windows Server 2019 |64-bitowa |Standard, Datacenter, Essentials |
 | Windows Server 2016 i najnowsze dodatki Service Pack |64-bitowa |Standard, Datacenter, Essentials  |
 
-Magazyn programu DPM można deduplikowany przy użyciu funkcji deduplikacji systemu Windows Server. Dowiedz się więcej na temat tego [, jak program DPM i Deduplikacja](https://technet.microsoft.com/library/dn891438.aspx) współpracują ze sobą w przypadku wdrożenia na maszynach wirtualnych funkcji Hyper
+Magazyn programu DPM można deduplikowany przy użyciu funkcji deduplikacji systemu Windows Server. Dowiedz się więcej na temat tego [, jak program DPM i Deduplikacja](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn891438(v=sc.12)) współpracują ze sobą w przypadku wdrożenia na maszynach wirtualnych funkcji Hyper
 
 > [!NOTE]
 > Azure Backup Server jest przeznaczony do działania na dedykowanym, wyznaczonym do tego celu serwerze. Nie można zainstalować Azure Backup Server na:
@@ -196,7 +196,7 @@ Po zakończeniu procesu wyodrębniania zaznacz pole wyboru, aby uruchomić świe
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    Lokalizacja tymczasowa jest wymagana do utworzenia kopii zapasowej na platformie Azure. Upewnij się, że lokalizacja tymczasowa to co najmniej 5% danych, których kopię zapasową zaplanowano do chmury. W przypadku ochrony dysków należy skonfigurować oddzielne dyski po zakończeniu instalacji. Aby uzyskać więcej informacji na temat pul magazynów, zobacz [Konfigurowanie pul magazynów i magazynu dyskowego](https://technet.microsoft.com/library/hh758075.aspx).
+    Lokalizacja tymczasowa jest wymagana do utworzenia kopii zapasowej na platformie Azure. Upewnij się, że lokalizacja tymczasowa to co najmniej 5% danych, których kopię zapasową zaplanowano do chmury. W przypadku ochrony dysków należy skonfigurować oddzielne dyski po zakończeniu instalacji. Aby uzyskać więcej informacji na temat pul magazynów, zobacz [Konfigurowanie pul magazynów i magazynu dyskowego](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)).
 5. Podaj silne hasło dla kont użytkowników lokalnych z ograniczeniami, a następnie kliknij przycisk **dalej**.
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
@@ -288,12 +288,12 @@ Po uzyskaniu informacji o stanie łączności z platformą Azure i subskrypcji p
 
 | Stan łączności | Subskrypcja platformy Azure | Tworzenie kopii zapasowej na platformie Azure | Utwórz kopię zapasową na dysku | Przywróć z platformy Azure | Przywracanie z dysku |
 | --- | --- | --- | --- | --- | --- |
-| Połączone |Aktywne |Występować |Występować |Występować |Występować |
-| Połączone |Wygasłe |Zatrzymano |Zatrzymano |Występować |Występować |
-| Połączone |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymano |
-| Utracono łączność > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Występować |Występować |
-| Utracono łączność > 15 dni |Wygasłe |Zatrzymano |Zatrzymano |Występować |Występować |
-| Utracono łączność > 15 dni |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymano |
+| Połączono |Aktywne |Występować |Występować |Występować |Występować |
+| Połączono |Wygaśnięcie |Zatrzymany |Zatrzymany |Występować |Występować |
+| Połączono |Anulowanie aprowizacji |Zatrzymany |Zatrzymany |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymany |
+| Utracono łączność > 15 dni |Aktywne |Zatrzymany |Zatrzymany |Występować |Występować |
+| Utracono łączność > 15 dni |Wygaśnięcie |Zatrzymany |Zatrzymany |Występować |Występować |
+| Utracono łączność > 15 dni |Anulowanie aprowizacji |Zatrzymany |Zatrzymany |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymany |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Odzyskiwanie po utracie łączności
 
@@ -304,6 +304,14 @@ Jeśli masz zaporę lub serwer proxy, który uniemożliwia dostęp do platformy 
 * \*.WindowsAzure.com
 * \*.microsoftonline.com
 * \*.windows.net
+
+Jeśli używasz komunikacji równorzędnej firmy Microsoft ExpressRoute, wybierz następujące usługi/regiony:
+
+* Azure Active Directory (12076:5060)
+* Region Microsoft Azure (zgodnie z lokalizacją Recovery Services magazynu)
+* Azure Storage (zgodnie z lokalizacją magazynu Recovery Services)
+
+Aby uzyskać więcej informacji, odwiedź stronę [wymagania dotyczące routingu ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
 
 Po przywróceniu łączności z platformą Azure do maszyny Azure Backup Server operacje, które można wykonać, są określane przez stan subskrypcji platformy Azure. Powyższa tabela zawiera szczegółowe informacje o operacjach dozwolonych, gdy maszyna jest "połączona".
 
@@ -351,7 +359,7 @@ Możesz również odwoływać się do [Azure Backup powiązanych często zadawan
 
 ## <a name="next-steps"></a>Następne kroki
 
-Możesz uzyskać szczegółowe informacje na temat [przygotowywania środowiska programu DPM](https://technet.microsoft.com/library/hh758176.aspx) w witrynie Microsoft TechNet. Zawiera również informacje o obsługiwanych konfiguracjach, w których Azure Backup Server można wdrożyć i użyć. Do wykonywania różnych operacji można użyć szeregu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) .
+W tym miejscu możesz uzyskać szczegółowe informacje [na temat przygotowywania środowiska programu DPM](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758176(v=sc.12)). Zawiera również informacje o obsługiwanych konfiguracjach, w których Azure Backup Server można wdrożyć i użyć. Do wykonywania różnych operacji można użyć szeregu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) .
 
 Te artykuły umożliwiają dokładniejsze zrozumienie ochrony obciążeń przy użyciu serwera Microsoft Azure Backup.
 

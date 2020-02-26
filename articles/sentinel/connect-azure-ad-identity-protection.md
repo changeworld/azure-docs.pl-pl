@@ -1,20 +1,20 @@
 ---
 title: Łączenie Azure AD Identity Protection danych z platformą Azure — wskaźnikiem
 description: Dowiedz się, jak połączyć Azure AD Identity Protection dane z platformą Azure — wskaźnikiem.
-author: rkarlin
+author: yelevin
 manager: rkarlin
 ms.assetid: 91c870e5-2669-437f-9896-ee6c7fe1d51d
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 11/17/2019
-ms.author: rkarlin
-ms.openlocfilehash: 8d916606913b19a9eb15cb280defbeb0440565e4
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.author: yelevin
+ms.openlocfilehash: 7d42ff28ddd2d883feb25139096d781efe64d50f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563721"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588573"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Łączenie danych z Azure AD Identity Protection
 

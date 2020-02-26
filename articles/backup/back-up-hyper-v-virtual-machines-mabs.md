@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą 
 description: Ten artykuł zawiera procedury tworzenia kopii zapasowych i odzyskiwania maszyn wirtualnych przy użyciu programu Microsoft Azure Backup Server (serwera usługi MAB).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 69e415b5aef179c2b64bb04e933593010c8b47d3
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444064"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586516"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą Azure Backup Server
 
@@ -145,7 +145,7 @@ Aby skonfigurować ochronę migracji na żywo:
 
 3. Przypisz konto MABSMachineName $ jako konto administratora z uprawnieniami tylko do odczytu na serwerze zarządzania programu VMM.
 
-4. Podłącz wszystkie serwery hosta funkcji Hyper-V do wszystkich serwerów serwera usługi MAB za pomocą polecenia cmdlet programu `Set-DPMGlobalProperty` PowerShell. Polecenie cmdlet akceptuje wiele nazw serwerów serwera usługi MAB. Użyj formatu: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Aby uzyskać więcej informacji, zobacz [Set-DPMGlobalProperty](https://technet.microsoft.com/library/hh881752.aspx).
+4. Podłącz wszystkie serwery hosta funkcji Hyper-V do wszystkich serwerów serwera usługi MAB za pomocą polecenia cmdlet programu `Set-DPMGlobalProperty` PowerShell. Polecenie cmdlet akceptuje wiele nazw serwerów serwera usługi MAB. Użyj formatu: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Aby uzyskać więcej informacji, zobacz [Set-DPMGlobalProperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019).
 
 5. Po odnalezieniu w programie VMM wszystkich maszyn wirtualnych uruchomionych na hostach funkcji Hyper-V w chmurach programu VMM Skonfiguruj grupę ochrony i Dodaj maszyny wirtualne, które mają być chronione. Należy włączyć automatyczne sprawdzanie spójności na poziomie grupy ochrony w celu ochrony w ramach scenariuszy mobilności maszyny wirtualnej.
 

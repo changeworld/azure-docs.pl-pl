@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 2861b882d9b4c00a1c4db87b2dd49d49dfeb53a6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372978"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581110"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,9 +42,9 @@ Element **ClaimsSchema** definiuje typy roszczeń, do których można odwoływa�
 
 Element **ClaimType** zawiera następujący atrybut:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Yes | Identyfikator, który jest używany dla typu zgłoszenia. Inne elementy mogą używać tego identyfikatora w zasadach. |
+| Id | Tak | Identyfikator, który jest używany dla typu zgłoszenia. Inne elementy mogą używać tego identyfikatora w zasadach. |
 
 Element **ClaimType** zawiera następujące elementy:
 
@@ -65,7 +65,7 @@ Element **DataType** obsługuje następujące wartości:
 
 | Typ | Opis |
 | ------- | ----------- | 
-|wartość logiczna|Reprezentuje wartość logiczną (`true` lub `false`).|
+|boolean|Reprezentuje wartość logiczną (`true` lub `false`).|
 |date| Reprezentuje chwilę w czasie, zazwyczaj wyrażoną jako dzień. Wartość daty jest zgodna z Konwencją ISO 8601.|
 |Data i godzina|Reprezentuje chwilę w czasie, zwykle wyrażoną jako datę i godzinę dnia. Wartość daty jest zgodna z Konwencją ISO 8601.|
 |duration|Reprezentuje przedział czasu w latach, miesiącach, dniach, godzinach, minutach i sekundach. Format jest `PnYnMnDTnHnMnS`, gdzie `P` wskazuje wartość dodatnią lub `N` dla wartości ujemnej. `nY` to liczba lat, po której następuje literał `Y`. `nMo` to liczba miesięcy, po których następuje `Mo`literału. `nD` to liczba dni, po której następuje literał `D`. Przykłady: `P21Y` reprezentuje 21 lat. `P1Y2Mo` reprezentuje rok i dwa miesiące. `P1Y2Mo5D` reprezentuje jeden rok, dwa miesiące i pięć dni.  `P1Y2M5DT8H5M620S` reprezentuje jeden rok, dwa miesiące, pięć dni, osiem godzin, pięć minut i dwadzieścia sekund.  |
@@ -83,14 +83,14 @@ Element **DataType** obsługuje następujące wartości:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| Protokół | 1: n | Lista protokołów z domyślną nazwą typu zgłoszenia partnera. |
+| Protocol | 1: n | Lista protokołów z domyślną nazwą typu zgłoszenia partnera. |
 
 Element **Protocol** zawiera następujące atrybuty:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Name (Nazwa) | Yes | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C. Możliwe wartości to: OAuth1, OAuth2, SAML2, OpenIdConnect. |
-| PartnerClaimType | Yes | Nazwa typu zgłoszenia do użycia. |
+| Name (Nazwa) | Tak | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C. Możliwe wartości to: OAuth1, OAuth2, SAML2, OpenIdConnect. |
+| PartnerClaimType | Tak | Nazwa typu zgłoszenia do użycia. |
 
 W poniższym przykładzie, gdy platforma obsługi tożsamości współdziała z dostawcą tożsamości SAML2 lub aplikacją jednostki uzależnionej, wniosek o **nazwisko** jest mapowany do `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, z OpenIdConnect i OAuth2, to wniosek jest mapowany do `family_name`.
 
@@ -122,9 +122,9 @@ W związku z tym token JWT wystawiony przez Azure AD B2C emituje `family_name` *
 
 Element **Mask** zawiera następujące atrybuty:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| `Type` | Yes | Typ maski żądania. Możliwe wartości: `Simple` lub `Regex`. Wartość `Simple` wskazuje, że prosta maska tekstu jest stosowana do wiodącej części żądania ciągu. Wartość `Regex` wskazuje, że wyrażenie regularne jest stosowane do żądania ciągu jako całości.  Jeśli `Regex` wartość jest określona, opcjonalny atrybut musi również być zdefiniowany za pomocą wyrażenia regularnego do użycia. |
+| `Type` | Tak | Typ maski żądania. Możliwe wartości: `Simple` lub `Regex`. Wartość `Simple` wskazuje, że prosta maska tekstu jest stosowana do wiodącej części żądania ciągu. Wartość `Regex` wskazuje, że wyrażenie regularne jest stosowane do żądania ciągu jako całości.  Jeśli `Regex` wartość jest określona, opcjonalny atrybut musi również być zdefiniowany za pomocą wyrażenia regularnego do użycia. |
 | `Regex` | Nie | Jeśli **`Type`** jest ustawiona na `Regex`, Określ wyrażenie regularne, które ma być używane.
 
 Poniższy przykład konfiguruje zgłoszenie do numerów **telefonu** przy użyciu maski `Simple`:
@@ -162,7 +162,7 @@ Struktura środowiska tożsamości renderuje tylko pierwszą literę adresu e-ma
 
 Element **ograniczenia** może zawierać następujący atrybut:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nie | Metoda służąca do scalania wartości wyliczenia z obiektem ClaimType w zasadach nadrzędnych z tym samym identyfikatorem. Użyj tego atrybutu podczas zastępowania żądania określonego w zasadach podstawowych. Możliwe wartości: `Append`, `Prepend`lub `ReplaceAll`. Wartość `Append` jest kolekcją danych, które powinny być dołączane na końcu kolekcji określonej w zasadach nadrzędnych. Wartość `Prepend` jest kolekcją danych, które powinny zostać dodane przed kolekcją określoną w zasadach nadrzędnych. Wartość `ReplaceAll` jest kolekcją danych określonych w zasadach nadrzędnych, które powinny być ignorowane. |
 
@@ -175,12 +175,14 @@ Element **ograniczenia** zawiera następujące elementy:
 
 #### <a name="enumeration"></a>Wyliczenie
 
+Element **Enumeration** definiuje dostępne opcje dla użytkownika, które można wybrać dla roszczeń w interfejsie użytkownika, takie jak wartość w `CheckboxMultiSelect`, `DropdownSingleSelect`lub `RadioSingleSelect`. Alternatywnie można zdefiniować i zlokalizować dostępne opcje z elementem [LocalizedCollections](localization.md#localizedcollections) . Aby wyszukać element z kolekcji **wyliczania** oświadczeń, należy użyć przekształcenia oświadczeń [GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) .
+
 Element **Enumeration** zawiera następujące atrybuty:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Tekst | Yes | Ciąg wyświetlany, który jest wyświetlany użytkownikowi w interfejsie użytkownika dla tej opcji. |
-|Wartość | Yes | Wartość żądania skojarzona z wybraniem tej opcji. |
+| Tekst | Tak | Ciąg wyświetlany, który jest wyświetlany użytkownikowi w interfejsie użytkownika dla tej opcji. |
+|Value | Tak | Wartość żądania skojarzona z wybraniem tej opcji. |
 | SelectByDefault | Nie | Wskazuje, czy ta opcja powinna być wybrana domyślnie w interfejsie użytkownika. Możliwe wartości: true lub false. |
 
 W poniższym przykładzie zostanie skonfigurowane pole listy rozwijanej **miasto** z wartością domyślną `New York`:
@@ -206,10 +208,10 @@ Lista miast listy rozwijanej z wartością domyślną ustawioną na Nowy Jork:
 
 Element **Pattern** może zawierać następujące atrybuty:
 
-| Atrybut | Wymagany | Opis |
+| Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| RegularExpression | Yes | Wyrażenie regularne, które musi być zgodne z typem oświadczeń, aby było prawidłowe. |
-| HelpText | Nie | Wzorzec lub wyrażenie regularne dla tego żądania. |
+| RegularExpression | Tak | Wyrażenie regularne, które musi być zgodne z typem oświadczeń, aby było prawidłowe. |
+| HelpText | Nie | Komunikat o błędzie dla użytkowników, jeśli sprawdzenie wyrażenia regularnego nie powiedzie się. |
 
 Poniższy przykład służy do konfigurowania zgłoszenia **wiadomości e-mail** przy użyciu walidacji danych wejściowych i tekstu pomocy:
 
@@ -407,5 +409,3 @@ Typ danych wejściowych użytkownika **akapitu** służy do podania pola, które
   </Restriction>
 </ClaimType>
 ```
-
-Aby wyświetlić jedną z wartości **wyliczenia** w ramach oświadczenia **responseMsg** , użyj `GetMappedValueFromLocalizedCollection` lub `CreateStringClaim` transformacji oświadczeń. Aby uzyskać więcej informacji, zobacz [przekształcenia oświadczeń ciągów](string-transformations.md)

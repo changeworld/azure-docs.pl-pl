@@ -1,10 +1,10 @@
 ---
-title: Przygotowanie infrastruktury platformy Azure pod kątem wysokiej dostępności SAP przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień SAP ASCS/SCS | Microsoft Docs
+title: Infrastruktura platformy Azure dla oprogramowania SAP ASCS/SCS HA z udziałem plików & usługi WSFC | Microsoft Docs
 description: Przygotowanie infrastruktury platformy Azure pod kątem wysokiej dostępności SAP przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cc2295f6151b3cde81c27c8ed1116013e1a3f9a9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 4abae94ded92aca075fcb41a7cd42491e92d41d6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647547"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591544"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Przygotowanie infrastruktury platformy Azure pod kątem wysokiej dostępności SAP przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS
 
@@ -209,7 +209,7 @@ ms.locfileid: "75647547"
 
 W tym artykule opisano kroki przygotowania infrastruktury platformy Azure, które są niezbędne do zainstalowania i skonfigurowania systemów SAP o wysokiej dostępności w klastrze usługi Windows Server Failover Clustering (WSFC), korzystając z udziału plików skalowalnego w poziomie jako opcji klastrowania wystąpień SAP ASCS/SCS.
 
-## <a name="prerequisite"></a>Warunek wstępny
+## <a name="prerequisite"></a>Wymagania wstępne
 
 Przed rozpoczęciem instalacji zapoznaj się z następującym artykułem:
 
@@ -222,13 +222,13 @@ Przed rozpoczęciem instalacji zapoznaj się z następującym artykułem:
 | --- | --- | --- | --- |
 | Pierwszy węzeł klastra ASCS/SCS klaster | ascs-1 | 10.0.6.4 | ASCS — as |
 | Drugi węzeł klastra ASCS/SCS klaster | ASCS-2 | 10.0.6.5 | ASCS — as |
-| Nazwa sieci klastra |ASCS — CL | 10.0.6.6 | nd. |
-| Nazwa sieci klastra SAP PR1 ASCS |PR1 — ASCS | 10.0.6.7 | nd. |
+| Nazwa sieci klastra |ASCS — CL | 10.0.6.6 | Nie dotyczy |
+| Nazwa sieci klastra SAP PR1 ASCS |PR1 — ASCS | 10.0.6.7 | Nie dotyczy |
 
 
 **Tabela 1**: klaster ASCS/SCS
 
-| SAP \<SID> | Numer wystąpienia SAP ASCS/SCS |
+| > Identyfikatora SID \<SAP | Numer wystąpienia SAP ASCS/SCS |
 | --- | --- |
 | PR1 | 00 |
 
@@ -240,8 +240,8 @@ Przed rozpoczęciem instalacji zapoznaj się z następującym artykułem:
 | Pierwszy węzeł klastra | SOFS-1 | 10.0.6.10 | SOFS — as |
 | Drugi węzeł klastra | SOFS-2 | 10.0.6.11 | SOFS — as |
 | Trzeci węzeł klastra | SOFS-3 | 10.0.6.12 | SOFS — as |
-| Nazwa sieci klastra | SOFS — CL | 10.0.6.13 | nd. |
-| Nazwa hosta globalnego SAP | sapglobal | Używaj adresów IP wszystkich węzłów klastra | nd. |
+| Nazwa sieci klastra | SOFS — CL | 10.0.6.13 | Nie dotyczy |
+| Nazwa hosta globalnego SAP | sapglobal | Używaj adresów IP wszystkich węzłów klastra | Nie dotyczy |
 
 **Tabela 3**: klaster serwer plików skalowalny w poziomie
 
@@ -316,7 +316,7 @@ Wdrożenie Serwer plików skalowalny w poziomie można także zautomatyzować, u
 > W interfejsie użytkownika Serwer plików skalowalny w poziomie szablonu Menedżer zasobów należy określić liczbę maszyn wirtualnych.
 >
 
-### <a name="use-managed-disks"></a>Użyj dysków zarządzanych
+### <a name="use-managed-disks"></a>Korzystanie z dysków zarządzanych
 
 Szablon Azure Resource Manager wdrażania Serwer plików skalowalny w poziomie za pomocą Bezpośrednie miejsca do magazynowania i platformy Azure Managed Disks jest dostępny w witrynie [GitHub][arm-sofs-s2d-managed-disks].
 
@@ -332,7 +332,7 @@ W szablonie wykonaj następujące czynności:
 3. W polu **Nazwa SOFS** wprowadź nazwę sieci globalnej hosta SAP, **sapglobalhost**.
 4. W polu **Nazwa udziału** wpisz nazwę udziału plików, **sapmnt**.
 
-### <a name="use-unmanaged-disks"></a>Użyj dysków niezarządzanych
+### <a name="use-unmanaged-disks"></a>Korzystanie z dysków niezarządzanych
 
 Szablon Azure Resource Manager wdrażania Serwer plików skalowalny w poziomie za pomocą Bezpośrednie miejsca do magazynowania i dysków niezarządzanych platformy Azure jest dostępny w witrynie [GitHub][arm-sofs-s2d-non-managed-disks].
 

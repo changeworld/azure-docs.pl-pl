@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7ccc5fe314d49ea65aaa8750937170ab79a8c04f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836664"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581467"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Rejestrowanie aplikacji SAML w Azure AD B2C
 
@@ -38,7 +38,7 @@ Azure AD B2C realizuje współdziałanie SAML w jeden z dwóch sposobów:
 
 Podsumowanie dwóch wyłącznych scenariuszy podstawowych przy użyciu protokołu SAML:
 
-| Scenariusz | Rola Azure AD B2C | Porady |
+| Scenariusz | Rola Azure AD B2C | Instrukcje |
 | -------- | ----------------- | ------- |
 | Moja aplikacja oczekuje potwierdzenia SAML do ukończenia uwierzytelniania. | **Azure AD B2C działa jako dostawca tożsamości (dostawcy tożsamości)**<br />Azure AD B2C działa jako dostawcy tożsamości SAML dla aplikacji. | Ten artykuł. |
 | Moi użytkownicy potrzebują logowania jednokrotnego za pomocą dostawcy tożsamości zgodnego z protokołem SAML, takiego jak ADFS, Salesforce lub Shibboleth.  | **Azure AD B2C działa jako dostawca usług (SP)**<br />Azure AD B2C działa jako dostawca usługi podczas nawiązywania połączenia z dostawcą tożsamości SAML. Jest to federacyjny serwer proxy między aplikacją i dostawcą tożsamości SAML.  | <ul><li>[Konfigurowanie logowania za pomocą usług AD FS jako dostawcy tożsamości języka SAML przy użyciu zasad niestandardowych](identity-provider-adfs2016-custom.md)</li><li>[Konfigurowanie logowania za pomocą dostawcy protokołu SAML usługi Salesforce przy użyciu zasad niestandardowych](identity-provider-salesforce-custom.md)</li></ul> |
@@ -259,7 +259,7 @@ Końcowy plik zasad jednostki uzależnionej powinien wyglądać następująco:
 
 Zapisz zmiany i przekaż nowy plik zasad. Po przekazaniu obu zasad (rozszerzenia i plików jednostek uzależnionych) Otwórz przeglądarkę internetową i przejdź do metadanych zasad.
 
-Metadane zasad Azure AD B2C są dostępne pod następującym adresem URL. Zastąp `tenant-name` nazwą dzierżawy Azure AD B2C i `policy-name` z nazwą (IDENTYFIKATORem) zasad:
+Metadane dostawcy tożsamości zasad Azure AD B2C są informacje używane w protokole SAML do ujawnienia konfiguracji dostawcy tożsamości SAML. Metadane określają lokalizację usług, takich jak logowanie i wylogowywanie, certyfikaty, metoda logowania itd. Metadane zasad Azure AD B2C są dostępne pod następującym adresem URL. Zastąp `tenant-name` nazwą dzierżawy Azure AD B2C i `policy-name` z nazwą (IDENTYFIKATORem) zasad:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -269,7 +269,7 @@ Twoje zasady niestandardowe i dzierżawa Azure AD B2C są teraz gotowe. Następn
 
 ### <a name="41-register-your-application-in-azure-active-directory"></a>4,1 Zarejestruj swoją aplikację w Azure Active Directory
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz pozycję **Nowa rejestracja**.

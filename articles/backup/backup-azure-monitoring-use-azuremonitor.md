@@ -4,12 +4,12 @@ description: Monitoruj Azure Backup obciążenia i twórz niestandardowe alerty 
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: acdd7ae870334fe3a77a37505fac5e02b3af360d
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 0673291ac6bd1692c6ebe07540e05077e3025d55
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500668"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583876"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorowanie na dużą skalę przy użyciu Azure Monitor
 
@@ -29,11 +29,11 @@ W Azure Monitor można tworzyć własne alerty w obszarze roboczym Log Analytics
 > [!IMPORTANT]
 > Aby uzyskać informacje na temat kosztów tworzenia tego zapytania, zobacz [Azure monitor Cennik](https://azure.microsoft.com/pricing/details/monitor/).
 
-Wybierz dowolne wykresy, aby otworzyć sekcję **dzienniki** obszaru roboczego log Analytics. W sekcji **dzienniki** Edytuj zapytania i Utwórz z nich alerty.
+Otwórz sekcję **Logs** w obszarze roboczym log Analytics i napisz zapytanie do własnych dzienników. Po wybraniu **nowej reguły alertu**zostanie otwarta strona tworzenie alertu Azure monitor, jak pokazano na poniższej ilustracji.
 
-![Tworzenie alertu w obszarze roboczym Log Analytics](media/backup-azure-monitoring-laworkspace/la-azurebackup-customalerts.png)
+![Tworzenie alertu w obszarze roboczym Log Analytics](media/backup-azure-monitoring-laworkspace/custom-alert.png)
 
-Po wybraniu **nowej reguły alertu**zostanie otwarta strona tworzenie alertu Azure monitor, jak pokazano na poniższej ilustracji. W tym miejscu zasób został już oznaczony jako obszar roboczy Log Analytics, a podano integrację z grupą akcji.
+W tym miejscu zasób został już oznaczony jako obszar roboczy Log Analytics, a podano integrację z grupą akcji.
 
 ![Strona tworzenia alertu Log Analytics](media/backup-azure-monitoring-laworkspace/inkedla-azurebackup-createalert.jpg)
 
@@ -122,6 +122,26 @@ Wykresy domyślne dają Kusto zapytania dotyczące podstawowych scenariuszy, w k
     )
     on BackupItemUniqueId
     ````
+
+- Magazyn kopii zapasowych zużyty na element kopii zapasowej
+
+    ````Kusto
+    CoreAzureBackup
+    //Get all Backup Items
+    | where OperationName == "BackupItem"
+    //Get distinct Backup Items
+    | distinct BackupItemUniqueId, BackupItemFriendlyName
+    | join kind=leftouter
+    (AddonAzureBackupStorage
+    | where OperationName == "StorageAssociation"
+    //Get latest record for each Backup Item
+    | summarize arg_max(TimeGenerated, *) by BackupItemUniqueId 
+    | project BackupItemUniqueId , StorageConsumedInMBs)
+    on BackupItemUniqueId
+    | project BackupItemUniqueId , BackupItemFriendlyName , StorageConsumedInMBs 
+    | sort by StorageConsumedInMBs desc
+    ````
+
 
 ### <a name="diagnostic-data-update-frequency"></a>Częstotliwość aktualizacji danych diagnostycznych
 

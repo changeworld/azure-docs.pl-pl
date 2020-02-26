@@ -12,12 +12,12 @@ ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 0d3e1e10120dce404f0fdfe781661c4c169ae00a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697221"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591578"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: korzystanie z portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów
 
@@ -40,9 +40,9 @@ Przejdźmy bezpośrednio do tworzenia tożsamości. Jeśli napotkasz problem, sp
 
 Utworzono aplikację usługi Azure AD i nazwę główną usługi.
 
-## <a name="assign-the-application-to-a-role"></a>Przypisywanie aplikacji do roli
+## <a name="assign-a-role-to-the-application"></a>Przypisywanie roli do aplikacji
 
-Aby uzyskać dostęp do zasobów w ramach subskrypcji, musisz przypisać aplikację do roli. Zdecyduj, która rola oferuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Built in Roles](../../role-based-access-control/built-in-roles.md).
+Aby uzyskać dostęp do zasobów w ramach subskrypcji, musisz przypisać rolę do aplikacji. Zdecyduj, która rola oferuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Wbudowane role](../../role-based-access-control/built-in-roles.md).
 
 Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone na niższych poziomach zakresu. Na przykład dodanie aplikacji do roli czytelnik dla grupy zasobów oznacza, że może ona odczytać grupę zasobów i wszystkie zawarte w niej zasoby.
 
@@ -57,12 +57,12 @@ Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Upraw
    Jeśli nie widzisz subskrypcji, której szukasz, wybierz pozycję **Filtr subskrypcje globalne**. Upewnij się, że wybrano subskrypcję dla portalu.
 
 1. Wybierz pozycję **Kontrola dostępu (IAM)** .
-1. Wybierz **Dodaj przypisanie roli**.
+1. Wybierz pozycję **Dodaj przypisanie roli**.
 1. Wybierz rolę, którą chcesz przypisać do aplikacji. Na przykład, aby zezwolić aplikacji na wykonywanie akcji takich jak **ponowny rozruch**, **Uruchamianie** i **Zatrzymywanie** wystąpień, wybierz rolę **współautor** .  Przeczytaj więcej na temat [dostępnych ról](../../role-based-access-control/built-in-roles.md) domyślnie aplikacje usługi Azure AD nie są wyświetlane w dostępnych opcjach. Aby znaleźć aplikację, wyszukaj ją i wybierz ją.
 
    ![Wybierz rolę, która ma zostać przypisana do aplikacji](./media/howto-create-service-principal-portal/select-role.png)
 
-1. Wybierz **Zapisz** zakończenie przypisanie roli. Aplikacja zostanie wyświetlona na liście użytkowników przypisanych do roli dla tego zakresu.
+1. Wybierz pozycję **Zapisz** , aby zakończyć Przypisywanie roli. Aplikacja zostanie wyświetlona na liście użytkowników z rolą dla tego zakresu.
 
 Nazwa główna usługi została skonfigurowana. Możesz rozpocząć korzystanie z niego do uruchamiania skryptów lub aplikacji. W następnej sekcji pokazano, jak uzyskać wartości, które są konieczne podczas logowania programowo.
 
@@ -112,7 +112,7 @@ Jeśli zdecydujesz się nie używać certyfikatu, możesz utworzyć nowy klucz t
 1. Wybierz pozycję wpisy **tajne klienta — > nowego klucza tajnego klienta**.
 1. Podaj opis klucza tajnego i czas trwania. Po zakończeniu wybierz pozycję **Dodaj**.
 
-   Po zapisaniu klucza tajnego klienta zostanie wyświetlona wartość wpisu tajnego klienta. Skopiuj tę wartość, ponieważ nie można pobrać klucza później. Podaj wartość klucza z IDENTYFIKATORem aplikacji, aby zalogować się jako aplikacja. Zapisz wartość klucza w miejscu, z którego aplikacja będzie mogła ją pobrać.
+   Po zapisaniu klucza tajnego klienta zostanie wyświetlona wartość wpisu tajnego klienta. Skopiuj tę wartość, ponieważ nie będzie można pobrać klucza później. W celu zalogowania się jako aplikacja podaj wartość klucza z IDENTYFIKATORem aplikacji. Zapisz wartość klucza w miejscu, z którego aplikacja będzie mogła ją pobrać.
 
    ![Skopiuj wartość klucza tajnego, ponieważ nie można pobrać jej później](./media/howto-create-service-principal-portal/copy-secret.png)
 
@@ -126,7 +126,7 @@ Należy pamiętać, że konieczne może być skonfigurowanie uprawnień do dodaw
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 
-Musisz mieć wystarczające uprawnienia do zarejestrowania aplikacji w dzierżawie usługi Azure AD i przypisania aplikacji do roli w ramach subskrypcji platformy Azure.
+Musisz mieć wystarczające uprawnienia, aby zarejestrować aplikację w dzierżawie usługi Azure AD i przypisać ją do aplikacji w ramach subskrypcji platformy Azure.
 
 ### <a name="check-azure-ad-permissions"></a>Sprawdź uprawnienia usługi Azure AD
 
@@ -138,11 +138,11 @@ Musisz mieć wystarczające uprawnienia do zarejestrowania aplikacji w dzierżaw
 1. W okienku po lewej stronie wybierz pozycję **Ustawienia użytkownika**.
 1. Sprawdź ustawienie **rejestracje aplikacji** . Tę wartość można ustawić tylko przez administratora. W przypadku wybrania **opcji tak**każdy użytkownik w dzierżawie usługi Azure AD może zarejestrować aplikację.
 
-Jeśli ustawienie rejestracje aplikacji ma wartość **nie**, tylko użytkownicy z rolą administratora mogą rejestrować te typy aplikacji. Zobacz [dostępne role](../users-groups-roles/directory-assign-admin-roles.md#available-roles) i [uprawnienia roli](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) , aby dowiedzieć się więcej na temat dostępnych ról administratorów i określonych uprawnień w usłudze Azure AD, które są nadawane każdej roli. Jeśli Twoje konto jest przypisane do roli użytkownika, ale ustawienie rejestracji aplikacji jest ograniczone do użytkowników administracyjnych, poproszenie administratora o przypisanie do jednej z ról administratora, które mogą tworzyć wszystkie aspekty rejestracji aplikacji i zarządzać nimi, lub aby umożliwić użytkownikom Zarejestruj aplikacje.
+Jeśli ustawienie rejestracje aplikacji ma wartość **nie**, tylko użytkownicy z rolą administratora mogą rejestrować te typy aplikacji. Zobacz [dostępne role](../users-groups-roles/directory-assign-admin-roles.md#available-roles) i [uprawnienia roli](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) , aby dowiedzieć się więcej na temat dostępnych ról administratorów i określonych uprawnień w usłudze Azure AD, które są nadawane każdej roli. Jeśli Twoje konto ma przypisaną rolę użytkownika, ale ustawienie rejestracji aplikacji jest ograniczone do użytkowników administracyjnych, poproszenie administratora o przypisanie jednej z ról administratora, które mogą tworzyć wszystkie aspekty rejestracji aplikacji i zarządzać nimi, lub umożliwić użytkownikom rejestrację korzysta.
 
 ### <a name="check-azure-subscription-permissions"></a>Sprawdź uprawnienia subskrypcji platformy Azure
 
-W ramach subskrypcji platformy Azure Twoje konto musi mieć `Microsoft.Authorization/*/Write` dostępu, aby przypisać aplikację usługi AD do roli. Ta akcja jest wykonywana za pośrednictwem roli [Właściciel](../../role-based-access-control/built-in-roles.md#owner) lub [Administrator dostępu użytkowników](../../role-based-access-control/built-in-roles.md#user-access-administrator). Jeśli Twoje konto jest przypisane do roli **współautor** , nie masz wystarczających uprawnień. Wystąpił błąd podczas próby przypisania nazwy głównej usługi do roli.
+W ramach subskrypcji platformy Azure Twoje konto musi mieć `Microsoft.Authorization/*/Write` dostępu, aby przypisać rolę do aplikacji usługi AD. Ta akcja jest wykonywana za pośrednictwem roli [Właściciel](../../role-based-access-control/built-in-roles.md#owner) lub [Administrator dostępu użytkowników](../../role-based-access-control/built-in-roles.md#user-access-administrator). Jeśli Twoje konto ma przypisaną rolę **współautor** , nie masz wystarczających uprawnień. Wystąpił błąd podczas próby przypisania jednostki usługi do roli.
 
 Aby sprawdzić uprawnienia do subskrypcji:
 
@@ -154,9 +154,9 @@ Aby sprawdzić uprawnienia do subskrypcji:
 
    ![Wybierz subskrypcję, w której chcesz utworzyć nazwę główną usługi](./media/howto-create-service-principal-portal/view-details.png)
 
-1. Wybierz **przypisania ról** , aby wyświetlić przypisane role i określić, czy masz odpowiednie uprawnienia do przypisywania aplikacji usługi AD do roli. Jeśli nie, skontaktuj się z administratorem subskrypcji, aby dodać Cię do roli administratora dostępu użytkownika. Na poniższej ilustracji użytkownik jest przypisany do roli właściciela, co oznacza, że użytkownik ma odpowiednie uprawnienia.
+1. Wybierz **przypisania ról** , aby wyświetlić przypisane role i określić, czy masz odpowiednie uprawnienia do przypisywania roli do aplikacji usługi AD. Jeśli nie, skontaktuj się z administratorem subskrypcji, aby dodać Cię do roli administratora dostępu użytkownika. Na poniższej ilustracji użytkownik ma przypisaną rolę właściciela, co oznacza, że użytkownik ma odpowiednie uprawnienia.
 
-   ![Ten przykład pokazuje, że użytkownik jest przypisany do roli właściciela](./media/howto-create-service-principal-portal/view-user-role.png)
+   ![Ten przykład pokazuje, że użytkownik ma przypisaną rolę właściciela](./media/howto-create-service-principal-portal/view-user-role.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

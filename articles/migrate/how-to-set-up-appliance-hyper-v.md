@@ -3,12 +3,12 @@ title: Konfigurowanie urządzenia Azure Migrate dla funkcji Hyper-V
 description: Dowiedz się, jak skonfigurować urządzenie Azure Migrate do oceniania i migrowania maszyn wirtualnych funkcji Hyper-V.
 ms.topic: article
 ms.date: 11/19/2019
-ms.openlocfilehash: 0704adda314b94736b01fe114c3643ef8bd83753
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 8199525a118ffca2cfc03734283eb26facba8483
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029092"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598344"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Konfigurowanie urządzenia dla maszyn wirtualnych funkcji Hyper-V
 
@@ -48,12 +48,8 @@ Przed wdrożeniem należy sprawdzić, czy spakowany plik jest bezpieczny.
 2. Uruchom następujące polecenie, aby wygenerować skrót dla wirtualnego dysku twardego
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Przykład użycia: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
-3.  W przypadku 2.19.11.12 w wersji urządzenia wygenerowany skrót powinien być zgodny z tymi ustawieniami.
+3.  W przypadku 2.19.11.12 w wersji urządzenia wygenerowany skrót powinien być zgodny z tymi [ustawieniami](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security).
 
-  **Algorytm** | **Wartość skrótu**
-  --- | ---
-  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
-  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 
 
 
@@ -133,7 +129,7 @@ Połącz się z urządzeniem z hostami lub klastrami funkcji Hyper-V, a następn
 
 1. W polu **Nazwa użytkownika** i **hasło**określ poświadczenia konta, które będą używane przez urządzenie do odnajdywania maszyn wirtualnych. Określ przyjazną nazwę dla poświadczeń, a następnie kliknij pozycję **Zapisz szczegóły**.
 2. Kliknij pozycję **Dodaj hosta**i określ szczegóły hosta/klastra funkcji Hyper-V.
-3. Kliknij przycisk **Weryfikuj**. Po walidacji wyświetlana jest liczba maszyn wirtualnych, które mogą zostać odnalezione na każdym hoście/klastrze.
+3. Kliknij pozycję **Validate** (Waliduj). Po walidacji wyświetlana jest liczba maszyn wirtualnych, które mogą zostać odnalezione na każdym hoście/klastrze.
     - Jeśli walidacja nie powiedzie się dla hosta, przejrzyj błąd, umieszczając kursor nad ikoną w kolumnie **stan** . Usuń problemy i ponownie sprawdź poprawność.
     - Aby usunąć hosty lub klastry, wybierz pozycję > **Usuń**.
     - Nie można usunąć określonego hosta z klastra. Można usunąć tylko cały klaster.

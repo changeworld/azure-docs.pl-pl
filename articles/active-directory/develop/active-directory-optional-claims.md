@@ -12,12 +12,12 @@ ms.date: 12/08/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1bc2c3a17aef232df184926dca5f70eac61b03ac
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 23433c816fc7b002c3426a0aac7c0aade8cdb338
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698768"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585853"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Instrukcje: dostarczanie opcjonalnych oświadczeń do aplikacji usługi Azure AD
 
@@ -37,7 +37,7 @@ Chociaż opcjonalne oświadczenia są obsługiwane zarówno w tokenach w formaci
 
 | Typ konta | tokeny v 1.0 | tokeny v 2.0  |
 |--------------|---------------|----------------|
-| konto Microsoft osobiste  | ND  | Obsługiwane |
+| konto Microsoft osobiste  | N/D  | Obsługiwane |
 | Konto Azure AD      | Obsługiwane | Obsługiwane |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>zestaw oświadczeń opcjonalnych 1.0 i v 2.0
@@ -49,7 +49,7 @@ Zestaw opcjonalnych oświadczeń dostępnych domyślnie dla aplikacji do użycia
 
 **Tabela 2: zestaw opcjonalnych zestawów zgłoszeń 1.0 i v 2.0**
 
-| Nazwa                       |  Opis   | Typ tokenu | Typ użytkownika | Uwagi  |
+| Name (Nazwa)                       |  Opis   | Typ tokenu | Typ użytkownika | Uwagi  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Godzina ostatniego uwierzytelnienia użytkownika. Zobacz OpenID Connect Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | Region dzierżawy zasobów | JWT        |           | |
@@ -78,17 +78,17 @@ Te oświadczenia są zawsze uwzględniane w tokenach usługi Azure AD w wersji 1
 
 **Tabela 3: v 2.0 — tylko opcjonalne oświadczenia**
 
-| Claim JWT     | Nazwa                            | Opis                                | Uwagi |
+| Claim JWT     | Name (Nazwa)                            | Opis                                | Uwagi |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | Adres IP                      | Adres IP, z którego zalogował się klient.   |       |
 | `onprem_sid`  | Lokalny identyfikator zabezpieczeń |                                             |       |
 | `pwd_exp`     | Czas wygaśnięcia hasła        | Data i godzina wygaśnięcia hasła. |       |
 | `pwd_url`     | Zmień adres URL hasła             | Adres URL, który użytkownik może odwiedzić, aby zmienić hasło.   |   |
 | `in_corp`     | Wewnątrz sieci firmowej        | Sygnalizuje, czy klient loguje się z sieci firmowej. W przeciwnym razie oświadczenia nie są uwzględniane.   |  Na podstawie ustawień [zaufanych adresów IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) w usłudze MFA.    |
-| `nickname`    | Pseudonim                        | Dodatkowa nazwa dla użytkownika. Pseudonim jest oddzielony od imienia i nazwiska. | 
+| `nickname`    | pseudonim                        | Dodatkowa nazwa dla użytkownika. Pseudonim jest oddzielony od imienia i nazwiska. | 
 | `family_name` | Nazwisko                       | Zawiera nazwisko, nazwisko lub nazwę rodziny użytkownika, zgodnie z definicją w obiekcie użytkownika. <br>"family_name":"Miller" | Obsługiwane w usłudze MSA i usłudze Azure AD   |
 | `given_name`  | Imię                      | Określa imię i nazwisko użytkownika, zgodnie z ustawieniem obiektu użytkownika.<br>"given_name": "Piotr"                   | Obsługiwane w usłudze MSA i usłudze Azure AD  |
-| `upn`         | Nazwa główna użytkownika | Identyfikator dla użytkownika, którego można użyć z parametrem username_hint.  Nie jest to trwały identyfikator użytkownika i nie należy go używać do kluczowych danych. | Zapoznaj się z [dodatkowymi właściwościami](#additional-properties-of-optional-claims) poniżej w celu skonfigurowania żądania. |
+| `upn`         | Główna nazwa użytkownika | Identyfikator dla użytkownika, którego można użyć z parametrem username_hint.  Nie jest to trwały identyfikator użytkownika i nie należy go używać do kluczowych danych. | Zapoznaj się z [dodatkowymi właściwościami](#additional-properties-of-optional-claims) poniżej w celu skonfigurowania żądania. |
 
 ### <a name="additional-properties-of-optional-claims"></a>Dodatkowe właściwości oświadczeń opcjonalnych
 
@@ -126,7 +126,7 @@ Ten obiekt OptionalClaims powoduje, że token identyfikatora zwracany do klienta
 
 Opcjonalne oświadczenia dla aplikacji można skonfigurować za pomocą interfejsu użytkownika lub manifestu aplikacji.
 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com). Wyszukaj i wybierz pozycję **Azure Active Directory**.
+1. Przejdź do witryny [Azure Portal](https://portal.azure.com). Wyszukaj i wybierz **Azure Active Directory**.
 1. W sekcji **Zarządzanie** wybierz pozycję **rejestracje aplikacji**.
 1. Wybierz aplikację, dla której chcesz skonfigurować oświadczenia opcjonalne.
 
@@ -138,7 +138,7 @@ Opcjonalne oświadczenia dla aplikacji można skonfigurować za pomocą interfej
 2. Wybierz pozycję **Dodaj opcjonalne**pole.
 3. Wybierz typ tokenu, który chcesz skonfigurować.
 4. Wybierz opcjonalne oświadczenia do dodania.
-5. Kliknij pozycję **Dodaj**.
+5. Kliknij pozycję **Add** (Dodaj).
 
 **Konfigurowanie opcjonalnych oświadczeń za pomocą manifestu aplikacji:**
 
@@ -186,7 +186,7 @@ Deklaruje opcjonalne oświadczenia wymagane przez aplikację. Aplikacja może sk
 
 **Tabela 5: właściwości typu OptionalClaims**
 
-| Nazwa        | Typ                       | Opis                                           |
+| Name (Nazwa)        | Typ                       | Opis                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Kolekcja (OptionalClaim) | Opcjonalne oświadczenia zwracane w tokenie identyfikatora JWT. |
 | `accessToken` | Kolekcja (OptionalClaim) | Opcjonalne oświadczenia zwracane w tokenie dostępu JWT. |
@@ -199,7 +199,7 @@ Jeśli jest to obsługiwane przez określone zgłoszenie, można również zmody
 
 **Tabela 6: właściwości typu OptionalClaim**
 
-| Nazwa                 | Typ                    | Opis                                                                                                                                                                                                                                                                                                   |
+| Name (Nazwa)                 | Typ                    | Opis                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Nazwa opcjonalnego żądania.                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | Źródło (obiekt katalogu) żądania. Istnieją wstępnie zdefiniowane oświadczenia i zdefiniowane przez użytkownika oświadczenia ze wszystkich właściwości rozszerzenia. Jeśli wartość źródłowa jest równa null, to jest to wstępnie zdefiniowane opcjonalne zgłoszenie. Jeśli wartością źródłową jest użytkownik, wartość we właściwości Nazwa jest właściwością rozszerzenia z obiektu użytkownika. |
@@ -207,7 +207,7 @@ Jeśli jest to obsługiwane przez określone zgłoszenie, można również zmody
 | `additionalProperties` | Kolekcja (EDM. String) | Dodatkowe właściwości żądania. Jeśli właściwość istnieje w tej kolekcji, modyfikuje zachowanie opcjonalnego żądania określonego we właściwości Nazwa.                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>Konfigurowanie opcjonalnych oświadczeń rozszerzenia katalogu
 
-Oprócz standardowego opcjonalnego zestawu oświadczeń można także skonfigurować tokeny do dołączania rozszerzeń. Aby uzyskać więcej informacji, zobacz [Dodawanie niestandardowych danych do zasobów przy użyciu rozszerzeń](https://docs.microsoft.com/graph/extensibility-overview). Ta funkcja jest przydatna do dołączania dodatkowych informacji o użytkownikach, które mogą być używane przez aplikację — na przykład dodatkowego identyfikatora lub ważnej opcji konfiguracji ustawionej przez użytkownika. Przykład znajduje się na końcu tej strony.
+Oprócz standardowego opcjonalnego zestawu oświadczeń można także skonfigurować tokeny do dołączania rozszerzeń. Ta funkcja jest przydatna do dołączania dodatkowych informacji o użytkownikach, które mogą być używane przez aplikację — na przykład dodatkowego identyfikatora lub ważnej opcji konfiguracji ustawionej przez użytkownika. Przykład znajduje się na końcu tej strony.
 
 > [!NOTE]
 > - Rozszerzenia schematu katalogu to funkcja tylko usługi Azure AD, więc jeśli manifest aplikacji żąda niestandardowego rozszerzenia i loguje się do aplikacji, te rozszerzenia nie zostaną zwrócone.
@@ -256,7 +256,7 @@ W tej sekcji omówiono opcje konfiguracji w obszarze opcjonalne oświadczenia do
    - Grupy securitygroup
    - "DirectoryRole"
 
-   Przykład:
+   Na przykład:
 
     ```json
         "groupMembershipClaims": "SecurityGroup"
@@ -286,7 +286,7 @@ W tej sekcji omówiono opcje konfiguracji w obszarze opcjonalne oświadczenia do
        }
     ```
 
-   | Opcjonalny schemat oświadczeń | Wartość |
+   | Opcjonalny schemat oświadczeń | Value |
    |----------|-------------|
    | **Nazwij** | Musi być "grupami" |
    | **zewnętrz** | Nie jest używany. Pomiń lub określ wartość null |
@@ -300,7 +300,7 @@ W tej sekcji omówiono opcje konfiguracji w obszarze opcjonalne oświadczenia do
    > [!NOTE]
    > Jeśli zostanie użyta wartość "emit_as_roles", wszystkie role aplikacji skonfigurowane do przypisania użytkownika nie będą wyświetlane w ramach tego żądania
 
-**Przykłady:**
+**Pokazują**
 
 1) Emituj grupy jako nazwy grup w tokenach dostępu OAuth w formacie dnsDomainName\sAMAccountName
 
@@ -381,7 +381,7 @@ Dostępnych jest wiele opcji aktualizowania właściwości konfiguracji tożsamo
     [![przedstawiono sposób konfigurowania opcjonalnych oświadczeń przy użyciu interfejsu użytkownika](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
 
 **Konfiguracja manifestu:**
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Po uwierzytelnieniu wybierz dzierżawę usługi Azure AD, wybierając ją w prawym górnym rogu strony.
 1. Wybierz **Azure Active Directory** z menu po lewej stronie.
 1. Znajdź aplikację, dla której chcesz skonfigurować opcjonalne oświadczenia na liście, a następnie kliknij ją.

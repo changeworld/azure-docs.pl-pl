@@ -2,17 +2,14 @@
 title: Koncepcje — zabezpieczenia w usłudze Azure Kubernetes Services (AKS)
 description: Dowiedz się więcej o zabezpieczeniach w usłudze Azure Kubernetes Service (AKS), w tym o komunikacji głównej i węzłach, zasadach sieciowych i wpisach tajnych Kubernetes.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: e461f9de8b20e4f6c8f027b1ae81ae21e54ece86
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 7238e6cd7ab3625e2953a4408c82802d43372256
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547935"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595947"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące zabezpieczeń aplikacji i klastrów w usłudze Azure Kubernetes Service (AKS)
 
@@ -22,7 +19,7 @@ W tym artykule przedstawiono podstawowe koncepcje zabezpieczania aplikacji w pro
 
 - [Zabezpieczenia składników głównych](#master-security)
 - [Zabezpieczenia węzła](#node-security)
-- [Uaktualnianie klastra](#cluster-upgrades)
+- [Uaktualnienia klastra](#cluster-upgrades)
 - [Bezpieczeństwo sieci](#network-security)
 - [Kubernetes Secret](#kubernetes-secrets)
 

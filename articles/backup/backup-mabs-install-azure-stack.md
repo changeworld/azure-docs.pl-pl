@@ -3,12 +3,12 @@ title: Instalowanie składnika Azure Backup Server w usłudze Azure Stack
 description: W tym artykule dowiesz się, jak używać Azure Backup Server do ochrony lub tworzenia kopii zapasowych obciążeń w programie Azure Stack.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 396621b43db2500ca9107979fca9d4d2c0646e6d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b78e5a662bdcf23ad38cb33292658d4d2455e579
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172396"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583439"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalowanie składnika Azure Backup Server w usłudze Azure Stack
 
@@ -29,9 +29,9 @@ Azure Backup Server chroni następujące Azure Stack obciążeń maszyn wirtualn
 | Windows Server 2012 R2 — Datacenter/Enterprise/Standard | Woluminy, pliki, foldery |
 | Windows Server 2012 — Datacenter/Enterprise/Standard | Woluminy, pliki, foldery |
 | Windows Server 2008 R2 — Datacenter/Enterprise/Standard | Woluminy, pliki, foldery |
-| SQL Server 2016 | Database (Baza danych) |
-| SQL Server 2014 | Database (Baza danych) |
-| SQL Server 2012 SP1 | Database (Baza danych) |
+| SQL Server 2016 | Baza danych |
+| SQL Server 2014 | Baza danych |
+| SQL Server 2012 SP1 | Baza danych |
 | Program SharePoint 2016 | Farma, baza danych, fronton, serwer sieci Web |
 | SharePoint 2013 | Farma, baza danych, fronton, serwer sieci Web |
 | SharePoint 2010 | Farma, baza danych, fronton, serwer sieci Web |
@@ -91,7 +91,7 @@ Maszyna wirtualna Azure Backup Server musi być przyłączona do domeny. Użytko
 
 Wybierając serwer dla Azure Backup Server, Zacznij od obrazu z galerii systemu Windows Server 2012 R2 Datacenter lub Windows Server 2016 Datacenter. W tym artykule opisano [Tworzenie pierwszej maszyny wirtualnej z systemem Windows w Azure Portal, w](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)której znajduje się samouczek z wprowadzeniem do zalecanej maszyny wirtualnej. Zalecanymi minimalnymi wymaganiami dla maszyny wirtualnej serwera (VM) powinna być: a2 Standard z dwoma rdzeniami i 3,5 GB pamięci RAM.
 
-Ochrona obciążeń za pomocą Azure Backup Server ma wiele wszystkie szczegóły. W tym artykule [Zainstaluj program DPM jako maszynę wirtualną platformy Azure, a także](https://technet.microsoft.com/library/jj852163.aspx)Wyjaśnij te wszystkie szczegóły. Przed wdrożeniem maszyny zapoznaj się z tym artykułem całkowicie.
+Ochrona obciążeń za pomocą Azure Backup Server ma wiele wszystkie szczegóły. W tym artykule [Zainstaluj program DPM jako maszynę wirtualną platformy Azure, a także](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12))Wyjaśnij te wszystkie szczegóły. Przed wdrożeniem maszyny zapoznaj się z tym artykułem całkowicie.
 
 > [!NOTE]
 > Azure Backup Server jest przeznaczony do działania na dedykowanej maszynie wirtualnej o pojedynczym przeznaczeniu. Nie można zainstalować Azure Backup Server na:
@@ -243,7 +243,7 @@ Azure Backup Server udostępnia kod z Data Protection Manager. W instalatorze Az
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    Lokalizacja tymczasowa jest wymagana do utworzenia kopii zapasowej na platformie Azure. Upewnij się, że rozmiar lokalizacji tymczasowej odpowiada co najmniej 5% danych planowanych do utworzenia kopii zapasowej na platformie Azure. W przypadku ochrony dysków należy skonfigurować oddzielne dyski po zakończeniu instalacji. Aby uzyskać więcej informacji na temat pul magazynów, zobacz [Konfigurowanie pul magazynów i magazynu dyskowego](https://technet.microsoft.com/library/hh758075.aspx).
+    Lokalizacja tymczasowa jest wymagana do utworzenia kopii zapasowej na platformie Azure. Upewnij się, że rozmiar lokalizacji tymczasowej odpowiada co najmniej 5% danych planowanych do utworzenia kopii zapasowej na platformie Azure. W przypadku ochrony dysków należy skonfigurować oddzielne dyski po zakończeniu instalacji. Aby uzyskać więcej informacji na temat pul magazynów, zobacz [Konfigurowanie pul magazynów i magazynu dyskowego](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)).
 
 6. Na ekranie **Ustawienia zabezpieczeń** Podaj silne hasło dla kont użytkowników lokalnych z ograniczeniami, a następnie kliknij przycisk **dalej**.
 
@@ -326,12 +326,12 @@ Po uzyskaniu informacji o stanie łączności z platformą Azure i subskrypcji p
 
 | Stan łączności | Subskrypcja platformy Azure | Tworzenie kopii zapasowej na platformie Azure | Utwórz kopię zapasową na dysku | Przywróć z platformy Azure | Przywracanie z dysku |
 | --- | --- | --- | --- | --- | --- |
-| Połączone |Aktywne |Występować |Występować |Występować |Występować |
-| Połączone |Wygasłe |Zatrzymano |Zatrzymano |Występować |Występować |
-| Połączone |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymano |
-| Utracono łączność > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Występować |Występować |
-| Utracono łączność > 15 dni |Wygasłe |Zatrzymano |Zatrzymano |Występować |Występować |
-| Utracono łączność > 15 dni |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymano |
+| Połączono |Aktywne |Występować |Występować |Występować |Występować |
+| Połączono |Wygaśnięcie |Zatrzymany |Zatrzymany |Występować |Występować |
+| Połączono |Anulowanie aprowizacji |Zatrzymany |Zatrzymany |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymany |
+| Utracono łączność > 15 dni |Aktywne |Zatrzymany |Zatrzymany |Występować |Występować |
+| Utracono łączność > 15 dni |Wygaśnięcie |Zatrzymany |Zatrzymany |Występować |Występować |
+| Utracono łączność > 15 dni |Anulowanie aprowizacji |Zatrzymany |Zatrzymany |Zatrzymane i usunięte punkty odzyskiwania platformy Azure |Zatrzymany |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Odzyskiwanie po utracie łączności
 
@@ -340,7 +340,7 @@ Jeśli zapora lub serwer proxy uniemożliwia dostęp do platformy Azure, Dodaj n
 - `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com
 - \*.WindowsAzure.com
-- \*. microsoftonline.com
+- \*.microsoftonline.com
 - \*.windows.net
 
 Po przywróceniu łączności z platformą Azure do Azure Backup Server stan subskrypcji platformy Azure określa operacje, które można wykonać. Po **nawiązaniu połączenia**z serwerem Użyj tabeli w obszarze [łączność sieciowa](backup-mabs-install-azure-stack.md#network-connectivity) , aby wyświetlić dostępne operacje.

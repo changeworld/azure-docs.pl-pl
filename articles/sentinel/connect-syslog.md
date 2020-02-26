@@ -3,7 +3,7 @@ title: Łączenie danych dziennika systemowego z platformą Azure Microsoft Docs
 description: Dowiedz się, jak połączyć dane dziennika systemu z platformą Azure.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: d5f3d24d10262f28023523668c22f4571799cff9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 73fd55fc24fd94dc88bba2f591c32480f77c7d5d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610475"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588080"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Łączenie rozwiązania zewnętrznego przy użyciu dziennika systemowego
 
@@ -28,7 +28,7 @@ Można podłączyć urządzenie lokalne obsługujące dziennik systemowy do plat
 > [!NOTE]
 > Jeśli urządzenie obsługuje dziennik systemowy CEF, połączenie jest bardziej kompletne i należy wybrać tę opcję i postępować zgodnie z instrukcjami w temacie [łączenie danych z CEF](connect-common-event-format.md).
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
 SYSLOG jest protokołem rejestrowania zdarzeń, który jest wspólny dla systemu Linux. Aplikacje będzie wysyłać komunikaty, które mogą być przechowywane na komputerze lokalnym lub dostarczane do modułu zbierającego Syslog. Po zainstalowaniu agenta Log Analytics dla systemu Linux program skonfiguruje lokalny demon dziennika systemowego, aby przekazywać komunikaty do agenta. Następnie Agent wysyła komunikat do Azure Monitor, w którym zostanie utworzony odpowiedni rekord.
 
@@ -87,7 +87,7 @@ Wskaźnik "Azure" może stosować Uczenie maszynowe (ML) do danych dziennika sys
  
 To wykrywanie wymaga określonej konfiguracji łącznika danych dziennika systemowego: 
 
-1. W przypadku kroku 5 w poprzedniej procedurze upewnij się, że zarówno **uwierzytelnianie** , jak i **authpriv** są wybrane jako urządzenia do monitorowania. Zachowaj ustawienia domyślne opcji ważności, aby były zaznaczone. Przykład:
+1. W przypadku kroku 5 w poprzedniej procedurze upewnij się, że zarówno **uwierzytelnianie** , jak i **authpriv** są wybrane jako urządzenia do monitorowania. Zachowaj ustawienia domyślne opcji ważności, aby były zaznaczone. Na przykład:
     
     > [!div class="mx-imgBorder"]
     > ![funkcje wymagane dla nietypowego wykrywania logowania SSH](./media/connect-syslog/facilities-ssh-detection.png)

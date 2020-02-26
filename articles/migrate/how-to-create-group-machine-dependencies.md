@@ -1,100 +1,88 @@
 ---
-title: Grupowanie maszyn przy użyciu zależności maszyn z Azure Migrate | Microsoft Docs
-description: Opisuje sposób tworzenia oceny przy użyciu zależności maszyn z usługą Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
+title: Konfigurowanie wizualizacji zależności w Azure Migrate
+description: Opisuje Konfigurowanie wizualizacji zależności w ocenie serwera Azure Migrate.
 ms.topic: article
-ms.date: 10/01/2019
-ms.author: hamusa
-ms.openlocfilehash: bf6798d557cb1d27030565e4706864e945de6f04
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 2/24/2020
+ms.openlocfilehash: f5b0682adf345681c03bb6dbf14e9a0d9ba1fd58
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472098"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589068"
 ---
-# <a name="set-up-dependency-visualization-for-assessment"></a>Konfigurowanie wizualizacji zależności dla oceny
+# <a name="set-up-dependency-visualization"></a>Konfigurowanie wizualizacji zależności
 
-W tym artykule opisano sposób konfigurowania mapowania zależności w Azure Migrate: Ocena serwera.
-
-Mapowanie zależności ułatwia wizualizację zależności między maszynami, które mają zostać poddane ocenie i przeprowadzeniem migracji.
-
-- W Azure Migrate: Ocena serwera umożliwia zebranie maszyn w celu oceny. Zazwyczaj maszyny, które chcesz migrować ze sobą.
-- Mapowanie zależności zazwyczaj jest stosowane, gdy chcesz ocenić grupy o wyższym poziomie zaufania.
-- Mapowanie zależności ułatwia sprawdzanie zależności między maszynami przed uruchomieniem oceny i migracji.
-- Mapowanie i Wizualizacja zależności ułatwiają efektywne planowanie migracji na platformę Azure. Gwarantuje to, że nic nie pozostało w tym samym czasie, co pozwoli uniknąć awarii podczas migracji.
-- Korzystając z mapowania, można odnajdywać systemy zależne, które muszą zostać zmigrowane wspólnie. Możesz również określić, czy uruchomiony system nadal obsługuje użytkowników, czy też jest kandydatem do likwidacji zamiast migracji.
-
-[Dowiedz się więcej](concepts-dependency-visualization.md#how-does-it-work) o wizualizacji zależności.
+W tym artykule opisano sposób konfigurowania wizualizacji zależności w Azure Migrate: Ocena serwera. [Wizualizacja zależności](concepts-dependency-visualization.md#what-is-dependency-visualization) ułatwia identyfikowanie i zrozumienie zależności między maszynami, które mają być oceniane i migrowane na platformę Azure.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
+- [Zapoznaj](concepts-dependency-visualization.md) się z wymaganiami i kosztami związanymi z wizualizacją zależności.
 - Upewnij się, że [utworzono](how-to-add-tool-first-time.md) projekt Azure Migrate.
 - Jeśli projekt został już utworzony, upewnij się, że [dodano](how-to-assess.md) Azure Migrate: Narzędzie do oceny serwera.
-- Upewnij się, że maszyny zostały odnalezione w Azure Migrate; w tym celu można skonfigurować urządzenie Azure Migrate dla oprogramowania [VMware](how-to-set-up-appliance-vmware.md) lub [funkcji Hyper-V](how-to-set-up-appliance-hyper-v.md). Urządzenie odnajduje maszyny lokalne i wysyła metadane i dane wydajności do Azure Migrate: Ocena serwera. [Dowiedz się więcej](migrate-appliance.md).
+- Upewnij się, że skonfigurowano [urządzenie Azure Migrate](migrate-appliance.md) w celu odnajdywania maszyn lokalnych. Dowiedz się, jak skonfigurować urządzenie dla oprogramowania [VMware](how-to-set-up-appliance-vmware.md) lub [funkcji Hyper-V](how-to-set-up-appliance-hyper-v.md). Urządzenie odnajduje maszyny lokalne i wysyła metadane i dane wydajności do Azure Migrate: Ocena serwera.
+- Aby użyć wizualizacji zależności, należy skojarzyć [obszar roboczy log Analytics](../azure-monitor/platform/manage-access.md) z projektem Azure Migrate:
+    - Upewnij się, że masz obszar roboczy w subskrypcji zawierającej projekt Azure Migrate.
+    - Obszar roboczy musi znajdować się w regionach Wschodnie stany USA, Azja Południowo-Wschodnia lub Europa Zachodnia. Obszary robocze w innych regionach nie mogą być skojarzone z projektem.
+    - Obszar roboczy musi znajdować się w regionie, w którym [jest obsługiwana Service map](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites).
+    - Do projektu Azure Migrate można skojarzyć nowy lub istniejący obszar roboczy Log Analytics.
+    - Podczas pierwszego konfigurowania wizualizacji zależności dla komputera należy dołączyć obszar roboczy. Obszaru roboczego dla projektu Azure Migrate nie można modyfikować po jego dodaniu.
+    - W Log Analytics obszar roboczy skojarzony z Azure Migrate jest otagowany przy użyciu klucza projektu migracji oraz nazwy projektu.
 
-
-**Funkcje** | **Uwaga**
---- | ---
-Dostępność | Wizualizacja zależności nie jest dostępna w Azure Government.
-Mapa usługi | Wizualizacja zależności używa rozwiązania Service Map w Azure Monitor. [Service map](../azure-monitor/insights/service-map.md) automatycznie wykrywa i pokazuje połączenia między serwerami.
-Agenci | Aby użyć wizualizacji zależności, zainstaluj następujących agentów na maszynach, które chcesz zmapować:<br/> Agent [agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md) - (wcześniej określany jako Microsoft Monitoring Agent (MMA).<br/> - [Service map agenta zależności](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent).<br/><br/> Aby zautomatyzować instalację agenta, można użyć narzędzia do wdrażania, takiego jak Configuration Manager, które ma rozwiązanie do wdrażania agenta dla Azure Migrate.
-Agent zależności | Przegląd [obsługi agentów zależności](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent) dla systemów Windows i Linux.<br/><br/> [Dowiedz się więcej](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) o używaniu skryptów w celu zainstalowania agenta zależności.
-Agent Log Analytics (MMA) | [Dowiedz się więcej](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) o metodach instalacji MMA.<br/><br/> W przypadku maszyn monitorowanych przez System Center Operations Manager 2012 R2 lub nowsze nie trzeba instalować agenta MMA. Service Map integruje się z Operations Manager. Integrację można włączyć, korzystając z wskazówek przedstawionych [tutaj](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Należy jednak pamiętać, że Agent zależności musi być zainstalowany na tych komputerach.<br/><br/> [Zapoznaj](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) się z systemami operacyjnymi Linux obsługiwanymi przez agenta log Analytics.
-Grupy oceny | Grupy, dla których chcesz wizualizować zależności, nie mogą zawierać więcej niż 10 maszyn. Jeśli masz więcej niż 10 maszyn, Podziel je na mniejsze grupy w celu wizualizacji zależności.
-
-## <a name="associate-a-log-analytics-workspace"></a>Kojarzenie obszaru roboczego Log Analytics
-
-Aby można było użyć wizualizacji zależności, należy skojarzyć [obszar roboczy log Analytics](../azure-monitor/platform/manage-access.md) z projektem Azure Migrate.
-
-- Możesz dołączyć obszar roboczy tylko w ramach subskrypcji projektu Azure Migrate.
-- Możesz dołączyć istniejący obszar roboczy lub utworzyć nowy.
-- Podczas pierwszego konfigurowania wizualizacji zależności dla komputera należy dołączyć obszar roboczy.
 - Obszar roboczy można dołączyć dopiero po odnalezieniu maszyn w projekcie Azure Migrate. W tym celu można skonfigurować urządzenie Azure Migrate dla oprogramowania [VMware](how-to-set-up-appliance-vmware.md) lub [funkcji Hyper-V](how-to-set-up-appliance-hyper-v.md). Urządzenie odnajduje maszyny lokalne i wysyła metadane i dane wydajności do Azure Migrate: Ocena serwera. [Dowiedz się więcej](migrate-appliance.md).
 
-Dołącz obszar roboczy w następujący sposób:
+## <a name="associate-a-workspace"></a>Kojarzenie obszaru roboczego
 
-1. W **Azure Migrate: Ocena serwera**, kliknij przycisk **Przegląd**. Jeśli nie dodano jeszcze narzędzia do oceny serwera, należy to [zrobić w pierwszej kolejności](how-to-assess.md).
-2. W obszarze **Przegląd**kliknij strzałkę w dół, aby rozwinąć **podstawowe**elementy.
+1. Po wykryciu maszyn do oceny w obszarze **serwery** > **Azure Migrate: Ocena serwera**, kliknij przycisk **Przegląd**.  
+2. W **Azure Migrate: Ocena serwera**, kliknij przycisk **Essentials**.
 3. W **obszarze roboczym pakietu OMS**kliknij pozycję **wymaga konfiguracji**.
-4. W obszarze **Konfiguruj obszar roboczy**Określ, czy chcesz utworzyć nowy obszar roboczy, czy użyć istniejącego:
 
-    ![Dodaj obszar roboczy](./media/how-to-create-group-machine-dependencies/workspace.png)
+     ![Konfigurowanie obszaru roboczego Log Analytics](./media/how-to-create-group-machine-dependencies/oms-workspace-select.png)   
 
-    - Po określeniu nazwy nowego obszaru roboczego można wybrać [region](https://azure.microsoft.com/global-infrastructure/regions/) , w którym zostanie utworzony obszar roboczy.
-    - Po dołączeniu istniejącego obszaru roboczego możesz wybrać wszystkie dostępne obszary robocze w tej samej subskrypcji co projekt migracji.
-    - Potrzebujesz dostępu czytelnika do obszaru roboczego, aby móc go dołączyć.
-    - Nie można modyfikować obszaru roboczego skojarzonego z projektem po jego dołączeniu.
+4. W **obszarze Konfiguracja obszaru roboczego pakietu OMS**Określ, czy chcesz utworzyć nowy obszar roboczy, czy użyć istniejącego.
+    - Możesz wybrać istniejący obszar roboczy ze wszystkich obszarów roboczych w subskrypcji Migrowanie projektu.
+    - Potrzebujesz dostępu czytelnika do obszaru roboczego, aby go skojarzyć.
+5. Jeśli tworzysz nowy obszar roboczy, wybierz dla niego lokalizację.
+
+    ![Dodaj nowy obszar roboczy](./media/how-to-create-group-machine-dependencies/workspace.png)
+
 
 ## <a name="download-and-install-the-vm-agents"></a>Pobieranie i instalowanie agentów maszyny wirtualnej
 
-Pobierz i zainstaluj agentów na każdej maszynie lokalnej, którą chcesz wizualizować przy użyciu mapowania zależności.
+Na każdej maszynie, którą chcesz analizować, zainstaluj agentów.
+
+> [!NOTE]
+    > W przypadku maszyn monitorowanych przez System Center Operations Manager 2012 R2 lub nowsze nie trzeba instalować agenta MMA. Service Map integruje się z Operations Manager. [Postępuj zgodnie z tymi](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites) wskazówkami dotyczącymi integracji.
 
 1. W **Azure Migrate: Ocena serwera**, kliknij przycisk **odnalezione serwery**.
-2. Dla każdej maszyny, dla której chcesz użyć wizualizacji zależności, kliknij pozycję **wymaga instalacji agenta**.
-3. Na stronie **zależności** dla maszyny > **pobrać i zainstalować program MMA**, pobrać odpowiedniego agenta i zainstalować go zgodnie z poniższym opisem.
-4. W obszarze **Pobierz i Zainstaluj agenta zależności**Pobierz odpowiedniego agenta i zainstaluj go zgodnie z poniższym opisem.
-5. W obszarze **Konfigurowanie agenta MMA**Skopiuj identyfikator i klucz obszaru roboczego. Są one potrzebne podczas instalacji agenta MMA.
+2. Dla każdej maszyny, którą chcesz analizować za pomocą wizualizacji zależności, w kolumnie **zależności** kliknij pozycję **wymagana instalacja agenta**.
+3. Na stronie **zależności** Pobierz agenta MMA i zależności dla systemu Windows lub Linux.
+4. W obszarze **Konfigurowanie agenta MMA**Skopiuj identyfikator i klucz obszaru roboczego. Są one potrzebne podczas instalacji agenta MMA.
 
-### <a name="install-the-mma"></a>Instalowanie programu MMA
+    ![Zainstaluj agentów](./media/how-to-create-group-machine-dependencies/dependencies-install.png)
 
-#### <a name="install-the-agent-on-a-windows-machine"></a>Instalowanie agenta na komputerze z systemem Windows
+
+## <a name="install-the-mma"></a>Instalowanie programu MMA
+
+Zainstaluj MMA na każdej maszynie z systemem Windows lub Linux, którą chcesz analizować.
+
+### <a name="install-mma-on-a-windows-machine"></a>Instalowanie MMA na komputerze z systemem Windows
 
 Aby zainstalować agenta na komputerze z systemem Windows:
 
 1. Kliknij dwukrotnie pobranego agenta.
-2. Na **stronie powitalnej** kliknij przycisk **Dalej**. Na stronie **Postanowienia licencyjne** kliknij przycisk **Zgadzam się**, aby zaakceptować warunki licencji.
+2. Na stronie **powitalnej** kliknij przycisk **Dalej**. Na stronie **Postanowienia licencyjne** kliknij przycisk **Zgadzam się**, aby zaakceptować warunki licencji.
 3. W **folderze docelowym**Zachowaj lub zmodyfikuj domyślny Folder instalacji > **dalej**.
 4. W obszarze **Opcje instalacji agenta**wybierz pozycję **Azure log Analytics** > **dalej**.
 5. Kliknij przycisk **Dodaj** , aby dodać nowy obszar roboczy log Analytics. Wklej w obszarze Identyfikator i klucz obszaru roboczego skopiowane z portalu. Kliknij przycisk **Dalej**.
 
-Agenta można zainstalować z wiersza polecenia lub przy użyciu metody zautomatyzowanej, takiej jak Configuration Manager lub [Intigua](https://go.microsoft.com/fwlink/?linkid=2104196). [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) na temat korzystania z tych metod w celu zainstalowania agenta MMA. Agenta programu MMA można również zainstalować za pomocą [tego](https://go.microsoft.com/fwlink/?linkid=2104394) skryptu.
+Agenta można zainstalować z wiersza polecenia lub przy użyciu metody zautomatyzowanej, takiej jak Configuration Manager lub [Intigua](https://go.microsoft.com/fwlink/?linkid=2104196).
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) na temat korzystania z tych metod w celu zainstalowania agenta MMA.
+- Agenta programu MMA można również zainstalować za pomocą [tego](https://go.microsoft.com/fwlink/?linkid=2104394) skryptu.
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems) o systemach operacyjnych Windows obsługiwanych przez MMA.
 
-[Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems) o systemach operacyjnych Windows obsługiwanych przez MMA.
+### <a name="install-mma-on-a-linux-machine"></a>Instalowanie MMA na komputerze z systemem Linux
 
-#### <a name="install-the-agent-on-a-linux-machine"></a>Instalowanie agenta na komputerze z systemem Linux
-
-Aby zainstalować agenta na komputerze z systemem Linux:
+Aby zainstalować MMA na komputerze z systemem Linux:
 
 1. Przenieś odpowiedni zbiór (x86 lub x64) na komputer z systemem Linux przy użyciu protokołu SCP/SFTP.
 2. Zainstaluj pakiet przy użyciu argumentu--install.
@@ -103,18 +91,24 @@ Aby zainstalować agenta na komputerze z systemem Linux:
 
 [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-linux-operating-systems) o obsłudze systemu operacyjnego Linux przez program MMA. 
 
-### <a name="install-the-dependency-agent"></a>Instalowanie agenta zależności
+## <a name="install-the-dependency-agent"></a>Instalowanie agenta zależności
+
 1. Aby zainstalować agenta zależności na komputerze z systemem Windows, kliknij dwukrotnie plik Instalatora i postępuj zgodnie z instrukcjami kreatora.
 2. Aby zainstalować agenta zależności na komputerze z systemem Linux, należy zainstalować program jako katalog główny przy użyciu następującego polecenia:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-[Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-hybrid-cloud#installation-script-examples) na temat sposobu instalowania agenta zależności za pomocą skryptów.
-
-[Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#supported-operating-systems) o systemach operacyjnych obsługiwanych przez agenta zależności.
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-hybrid-cloud#installation-script-examples) na temat sposobu instalowania agenta zależności za pomocą skryptów.
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#supported-operating-systems) o systemach operacyjnych obsługiwanych przez agenta zależności.
 
 
 ## <a name="create-a-group-using-dependency-visualization"></a>Tworzenie grupy przy użyciu wizualizacji zależności
+
+Teraz Utwórz grupę do oceny. 
+
+
+> [!NOTE]
+> Grupy, dla których chcesz wizualizować zależności, nie mogą zawierać więcej niż 10 maszyn. Jeśli masz więcej niż 10 maszyn, Podziel je na mniejsze grupy.
 
 1. W **Azure Migrate: Ocena serwera**, kliknij przycisk **odnalezione serwery**.
 2. W kolumnie **zależności** kliknij pozycję **Wyświetl zależności** dla każdej maszyny, którą chcesz przejrzeć.
@@ -125,10 +119,10 @@ Aby zainstalować agenta na komputerze z systemem Linux:
     - Procesy działające na maszynie. Rozwiń wszystkie pola maszyn, aby wyświetlić procesy.
     - Właściwości maszyny (w tym nazwa FQDN, system operacyjny, adres MAC). Kliknij każde pole komputera, aby wyświetlić szczegóły.
 
-4. Można przyjrzeć się zależnościom dla różnych czasów trwania, klikając czas trwania w etykiecie zakresu czasu. Domyślnie zakresem jest godzina. Możesz zmodyfikować zakres czasu lub określić datę początkową i końcową oraz czas trwania.
-
-    > [!NOTE]
-    > Zakres czasu może być maksymalnie godzinę. Jeśli potrzebujesz dłuższego zakresu, użyj Azure Monitor do wykonywania zapytań dotyczących danych zależnych przez dłuższy czas.
+4. Można przyjrzeć się zależnościom dla różnych czasów trwania, klikając czas trwania w etykiecie zakresu czasu.
+    - Domyślnie zakresem jest godzina. 
+    - Możesz zmodyfikować zakres czasu lub określić datę początkową i końcową oraz czas trwania.
+    - Zakres czasu może być maksymalnie godzinę. Jeśli potrzebujesz dłuższego zakresu, użyj Azure Monitor do wykonywania zapytań dotyczących danych zależnych przez dłuższy czas.
 
 5. Po zidentyfikowaniu maszyn zależnych, które mają być pogrupowane, użyj kombinacji klawiszy CTRL i kliknięcia, aby wybrać wiele maszyn na mapie, a następnie kliknij pozycję **Grupuj maszyny**.
 6. Określ nazwę grupy.
@@ -159,7 +153,7 @@ Uruchom zapytanie dotyczące danych zależności w następujący sposób:
 
 ### <a name="sample-queries"></a>Przykładowe zapytania
 
-Udostępniamy przykładowe zapytania, których można użyć do wyodrębnienia danych zależności.
+Poniżej przedstawiono kilka przykładowych zapytań, których można użyć do wyodrębnienia danych zależności.
 
 - Zapytania można modyfikować w celu wyodrębnienia preferowanych punktów danych.
 - [Zapoznaj](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) się z pełną listą rekordów danych zależności.
@@ -208,3 +202,5 @@ VMConnection
 ## <a name="next-steps"></a>Następne kroki
 
 [Utwórz ocenę](how-to-create-assessment.md) dla grupy.
+
+

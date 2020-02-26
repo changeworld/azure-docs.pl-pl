@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 43094fe91921d1399650d9cf47e7a84c47996cd5
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 07a96fdd6350d8db38a92c23e510afb05f7416fb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261572"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592089"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Zarządzanie wystąpieniami w Durable Functions na platformie Azure
 
@@ -39,7 +39,7 @@ Parametry uruchamiania nowego wystąpienia aranżacji są następujące:
 
 Poniższy kod jest przykładową funkcją, która uruchamia nowe wystąpienie aranżacji:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HelloWorldManualStart")]
@@ -56,7 +56,7 @@ public static async Task Run(
 > [!NOTE]
 > Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 <a name="javascript-function-json"></a>O ile nie określono inaczej, przykłady na tej stronie używają wyzwalacza HTTP z następującym poleceniem Function. JSON.
 
@@ -155,7 +155,7 @@ Metoda zwraca obiekt o następujących właściwościach:
 
 Ta metoda zwraca `null` (.NET) lub `undefined` (JavaScript), jeśli wystąpienie nie istnieje.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("GetStatus")]
@@ -171,7 +171,7 @@ public static async Task Run(
 > [!NOTE]
 > Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -220,7 +220,7 @@ Zamiast wysyłać zapytania do jednego wystąpienia w ramach aranżacji, może s
 
 Można użyć metody `GetStatusAsync` (.NET) lub `getStatusAll` (JavaScript) do wykonywania zapytań o Stanach wszystkich wystąpień aranżacji. W programie .NET można przekazać obiekt `CancellationToken` w przypadku, gdy chcesz go anulować. Metoda zwraca obiekty z tymi samymi właściwościami co Metoda `GetStatusAsync` z parametrami.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("GetAllStatus")]
@@ -240,7 +240,7 @@ public static async Task Run(
 > [!NOTE]
 > Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -278,7 +278,7 @@ Co zrobić, jeśli nie potrzebujesz wszystkich informacji, które mogą być uż
 
 Użyj metody `GetStatusAsync` (.NET) lub `getStatusBy` (JavaScript), aby uzyskać listę wystąpień aranżacji zgodnych z zestawem wstępnie zdefiniowanych filtrów.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryStatus")]
@@ -306,7 +306,7 @@ public static async Task Run(
 > [!NOTE]
 > Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -355,9 +355,9 @@ func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before
 
 Jeśli masz wystąpienie aranżacji, które trwa zbyt długo lub musisz zatrzymać je przed zakończeniem z dowolnego powodu, będziesz mieć możliwość jej zakończenia.
 
-Aby przerwać wystąpienia, można użyć `TerminateAsync` (.NET) lub metody `terminate` (JavaScript) [powiązania klienta aranżacji](durable-functions-bindings.md#orchestration-client) . Dwa parametry to `instanceId` i ciąg `reason`, które są zapisywane w dziennikach i do stanu wystąpienia. Przerwane wystąpienie zatrzymuje działanie zaraz po osiągnięciu kolejnego punktu `await` (.NET) lub `yield` (JavaScript) albo kończy się natychmiast, jeśli jest już na `await` lub `yield`.
+Aby przerwać wystąpienia, można użyć `TerminateAsync` (.NET) lub metody `terminate` (JavaScript) [powiązania klienta aranżacji](durable-functions-bindings.md#orchestration-client) . Dwa parametry to `instanceId` i ciąg `reason`, które są zapisywane w dziennikach i do stanu wystąpienia.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TerminateInstance")]
@@ -373,7 +373,7 @@ public static Task Run(
 > [!NOTE]
 > Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -389,6 +389,8 @@ module.exports = async function(context, instanceId) {
 Zobacz [Uruchamianie wystąpień](#javascript-function-json) dla konfiguracji Function. JSON.
 
 ---
+
+Zakończone wystąpienie będzie ostatecznie przenoszone do stanu `Terminated`. Jednak to przejście nie zostanie wykonane natychmiast. Zamiast tego operacja Terminate zostanie umieszczona w kolejce w centrum zadań wraz z innymi operacjami dla tego wystąpienia. Można użyć interfejsów API [zapytania wystąpienia](#query-instances) , aby wiedzieć, kiedy przerwane wystąpienie faktycznie osiągnęło stan `Terminated`.
 
 > [!NOTE]
 > Przerwanie wystąpienia nie jest obecnie propagowane. Funkcje działania i podzbiory są wykonywane do zakończenia, bez względu na to, czy zostało przerwane wystąpienie aranżacji, które je wywołało.
@@ -420,7 +422,7 @@ Parametry do `RaiseEventAsync` (.NET) i `raiseEvent` (JavaScript) są następuj�
 * **EventName**: Nazwa zdarzenia do wysłania.
 * **EVENTDATA**: ładunek do serializacji JSON do wysłania do wystąpienia.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEvent")]
@@ -436,7 +438,7 @@ public static Task Run(
 > [!NOTE]
 > Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -482,11 +484,11 @@ Za pomocą metody `WaitForCompletionOrCreateCheckStatusResponseAsync` (.NET) lub
 
 Oto przykład funkcji wyzwalacza HTTP, która pokazuje, jak używać tego interfejsu API:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpSyncStart.cs)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpSyncStart/index.js)]
 
@@ -556,7 +558,7 @@ Metody zwracają obiekt z następującymi właściwościami ciągu:
 
 Funkcje mogą wysyłać wystąpienia tych obiektów do systemów zewnętrznych w celu monitorowania lub wywoływania zdarzeń dotyczących odpowiednich aranżacji, jak pokazano w następujących przykładach:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("SendInstanceInfo")]
@@ -578,7 +580,7 @@ public static void SendInstanceInfo(
 > [!NOTE]
 > Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć `DurableActivityContext` zamiast `IDurableActivityContext`, należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -614,7 +616,7 @@ Załóżmy na przykład, że masz przepływ pracy obejmujący serię [zatwierdze
 > [!NOTE]
 > Funkcja *przewijania do tyłu* nie obsługuje zawijania wystąpień aranżacji korzystających z trwałych czasomierzy.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RewindInstance")]
@@ -630,7 +632,7 @@ public static Task Run(
 > [!NOTE]
 > Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -666,7 +668,7 @@ Aby usunąć wszystkie dane skojarzone z aranżacją, można przeczyścić histo
 
 Ta metoda ma dwa przeciążenia. Pierwsze Przeciążenie Przeczyszcza historię według identyfikatora wystąpienia aranżacji:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
@@ -678,7 +680,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -695,7 +697,7 @@ Zobacz [Uruchamianie wystąpień](#javascript-function-json) dla konfiguracji Fu
 
 W następnym przykładzie pokazano funkcję wyzwalaną przez czasomierz, która Przeczyszcza historię wszystkich wystąpień aranżacji, które zakończyły się po upływie określonego interwału czasu. W tym przypadku usuwa dane dla wszystkich wystąpień zakończonych 30 lub więcej dni temu. Zaplanowano uruchomienie raz dziennie, przy 12% AM:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
@@ -716,7 +718,7 @@ public static Task Run(
 > [!NOTE]
 > Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Metoda `purgeInstanceHistoryBy` może służyć do warunkowego przeczyszczania historii wystąpień dla wielu wystąpień.
 

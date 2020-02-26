@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 8913c956554fa7bf1d0362b44dc6f8031ffd74f9
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 429c221609005136663d5e64a1b8650027cba411
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429705"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588743"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Szybki Start: Tworzenie bramy NAT przy użyciu Azure Portal
 
@@ -30,11 +30,7 @@ Ten przewodnik Szybki Start przedstawia sposób korzystania z usługi Azure Virt
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-> [!IMPORTANT]
-> Po [włączeniu](./nat-overview.md#enable-preview) Virtual Network translatora adresów sieciowych w ramach subskrypcji Użyj https://aka.ms/natportal, aby uzyskać dostęp do portalu.
-
-Zaloguj się do [Azure portal](https://aka.ms/natportal).
-
+Zaloguj się do [Azure portal](https://portal.azure.com).
 
 ### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
@@ -44,13 +40,13 @@ Przed wdrożeniem maszyny wirtualnej i użyciem bramy NAT należy utworzyć grup
 
 2. W obszarze **Utwórz sieć wirtualną** wprowadź lub wybierz następujące informacje:
 
-    | Ustawienie | Wartość |
+    | Ustawienie | Value |
     | ------- | ----- |
     | Name (Nazwa) | Wprowadź nazwę **myVNet**. |
     | Przestrzeń adresowa | wprowadź wartość **192.168.0.0/16**. |
     | Subskrypcja | Wybierz subskrypcję.|
     | Grupa zasobów | Wybierz pozycję Create New- **myResourceGroupNAT**. |
-    | Lokalizacja | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
+    | Location | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
     | Podsieć — nazwa | Wprowadź nazwę moja **podsieć**. |
     | Zakres adresów podsieci: 10.41.0.0/24 | Wprowadź **192.168.0.0/24**. |
 
@@ -100,14 +96,14 @@ W tej sekcji szczegółowo opisano, jak utworzyć i skonfigurować następujące
 
 2. W obszarze **Utwórz publiczny adres IP**wprowadź lub wybierz następujące informacje:
 
-    | Ustawienie | Wartość |
+    | Ustawienie | Value |
     | ------- | ----- |
     | Wersja protokołu IP | Wybierz pozycję **IPv4**.
     | SKU | Wybierz opcję **Standardowa**.
     | Name (Nazwa) | Wprowadź **myPublicIP**. |
     | Subskrypcja | Wybierz subskrypcję.|
     | Grupa zasobów | Wybierz pozycję **myResourceGroupNAT**. |
-    | Lokalizacja | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
+    | Location | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
 
 3. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **Utwórz**.
 

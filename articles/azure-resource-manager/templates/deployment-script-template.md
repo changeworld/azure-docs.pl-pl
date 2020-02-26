@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: jgao
-ms.openlocfilehash: d8212fb55b20f051c6479071010ef4f828792baa
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 19ef5a08b66b8d1a09ddf9a6b73a3856f745485d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561157"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586710"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Używanie skryptów wdrażania w szablonach (wersja zapoznawcza)
 
@@ -42,7 +42,12 @@ Zalety skryptu wdrażania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Tożsamość zarządzana przypisana przez użytkownika z rolą współautor na poziomie subskrypcji**. Ta tożsamość jest używana do wykonywania skryptów wdrażania. Aby go utworzyć, zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)lub przy [użyciu interfejsu wiersza polecenia platformy Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)lub przy [użyciu Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md). Identyfikator tożsamości jest wymagany podczas wdrażania szablonu. Format tożsamości:
+- **Tożsamość zarządzana przypisana przez użytkownika z rolą współautor do docelowej grupy zasobów**. Ta tożsamość jest używana do wykonywania skryptów wdrażania. Aby wykonać operacje poza grupą zasobów, należy udzielić dodatkowych uprawnień. Na przykład Przypisz tożsamość do poziomu subskrypcji, jeśli chcesz utworzyć nową grupę zasobów.
+
+  > [!NOTE]
+  > Aparat skryptów wdrażania musi utworzyć konto magazynu i wystąpienie kontenera w tle.  Tożsamość zarządzana przypisana przez użytkownika z rolą współautor na poziomie subskrypcji jest wymagana, jeśli subskrypcja nie zarejestrowała zasobu konta usługi Azure Storage (Microsoft. Storage) i usługi Azure Container Instance (Microsoft. ContainerInstance) udostępnia.
+
+  Aby utworzyć tożsamość, zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)lub przy [użyciu interfejsu wiersza polecenia platformy Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)lub przy [użyciu Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md). Identyfikator tożsamości jest wymagany podczas wdrażania szablonu. Format tożsamości:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
@@ -99,8 +104,7 @@ Poniższy kod JSON jest przykładem.  Najnowszy schemat szablonu można znaleź�
       Write-Output $output
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
-    ",
-    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
+    ", // or "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
     "supportingScriptUris":[],
     "timeout": "PT30M",
     "cleanupPreference": "OnSuccess",
@@ -208,6 +212,12 @@ Dane wyjściowe skryptu wdrożenia muszą być zapisane w lokalizacji AZ_SCRIPTS
 [!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json?range=1-44)]
 
 [JQ](https://stedolan.github.io/jq/) jest używany w poprzednim przykładzie. Zawiera obrazy kontenerów. Zobacz [Konfigurowanie środowiska deweloperskiego](#configure-development-environment).
+
+## <a name="handle-non-terminating-errors"></a>Obsługuj błędy niepowodujące zakończenia
+
+Można kontrolować, jak program PowerShell reaguje na błędy niepowodujące zakończenia przy użyciu zmiennej [ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
+) w skrypcie wdrożenia. Aparat skryptu wdrażania nie ustawił/nie zmienia wartości.  Pomimo wartości ustawionej dla $ErrorActionPreference skrypt wdrażania ustawia stan aprowizacji zasobów na *Niepowodzenie* , gdy wystąpi błąd w skrypcie.
+
 
 ## <a name="debug-deployment-scripts"></a>Debuguj skrypty wdrażania
 

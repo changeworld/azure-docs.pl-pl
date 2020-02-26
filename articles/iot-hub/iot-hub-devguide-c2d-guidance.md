@@ -1,6 +1,6 @@
 ---
-title: Opcje chmury do urządzenia w usłudze Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — wskazówki dotyczące kiedy należy używać metod bezpośrednich, żądane właściwości bliźniaczej reprezentacji urządzenia lub komunikatów z chmury do urządzeń do komunikacji z chmury do urządzenia.
+title: Azure IoT Hub opcje chmury-to-Device | Microsoft Docs
+description: Przewodnik dla deweloperów — wskazówki dotyczące sytuacji, w których należy używać metod bezpośrednich, odpowiednich właściwości sznurów urządzeń lub komunikatów z chmury do urządzenia w celu komunikacji między chmurą i urządzeniem.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -8,39 +8,39 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 4b738f34ae75478c0120832e7ad2b6a6a83dbf69
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2ca9a167d50619ed2963b13515c0a772d712570
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61224782"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591272"
 ---
-# <a name="cloud-to-device-communications-guidance"></a>Wskazówki dotyczące komunikacji z chmury do urządzenia
+# <a name="cloud-to-device-communications-guidance"></a>Wskazówki dotyczące komunikacji między chmurą i urządzeniem
 
-Usługa IoT Hub udostępnia trzy opcje dla aplikacji dla urządzeń do udostępnienia funkcji do aplikacji zaplecza:
+IoT Hub udostępnia trzy opcje dla aplikacji urządzeń, które umożliwiają udostępnienie funkcjonalności aplikacji zaplecza:
 
-* [Metody bezpośrednie](iot-hub-devguide-direct-methods.md) komunikacji, które wymagają natychmiastowej potwierdzenie wyników. Metody bezpośrednie są często używane do interaktywnego kontroli urządzeń, takich jak włączenie kibicem.
+* [Metody bezpośrednie](iot-hub-devguide-direct-methods.md) do komunikacji, które wymagają natychmiastowego potwierdzenia wyniku. Metody bezpośrednie są często używane do interaktywnej kontroli nad urządzeniami, takimi jak Włączanie wentylatorów.
 
-* [Żądane właściwości bliźniaczej reprezentacji](iot-hub-devguide-device-twins.md) dla długotrwałych poleceń przeznaczone do umieszczenia urządzenia w pewnym żądanego stanu. Na przykład ustawić interwał wysyłania danych telemetrycznych do 30 minut.
+* [Odpowiednie właściwości sznurka](iot-hub-devguide-device-twins.md) dla długotrwałych poleceń przeznaczonych do przełączenia urządzenia do określonego stanu. Na przykład ustaw interwał wysyłania danych telemetrycznych na 30 minut.
 
-* [Komunikaty z chmury do urządzenia](iot-hub-devguide-messages-c2d.md) jednokierunkowe powiadomień do aplikacji urządzenia.
+* [Komunikaty z chmury do urządzenia](iot-hub-devguide-messages-c2d.md) dla powiadomień jednokierunkowych do aplikacji urządzenia.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Oto szczegółowe porównanie różnych opcji komunikacji z chmury do urządzenia.
+Poniżej przedstawiono szczegółowe porównanie różnych opcji komunikacji między chmurą i urządzeniem.
 
-|  | Metody bezpośrednie | Żądane właściwości bliźniaczej reprezentacji | Komunikaty z chmury do urządzenia |
+|  | Metody bezpośrednie | Żądane właściwości sznurka | Komunikaty z chmury do urządzenia |
 | ---- | ------- | ---------- | ---- |
-| Scenariusz | Polecenia, które wymagają natychmiastowego potwierdzenia, takich jak włączenie kibicem. | Długotrwałych poleceń przeznaczone do umieszczenia urządzenia do niektórych żądanego stanu. Na przykład ustawić interwał wysyłania danych telemetrycznych do 30 minut. | Jednokierunkowa powiadomienia do aplikacji urządzenia. |
-| Przepływ danych | Dwukierunkowe. W aplikacji urządzenia można błyskawiczne reagowanie na nie do metody. Zaplecze rozwiązania odbiera wynik kontekstowe na żądanie. | Jednokierunkowe. Aplikacja urządzenie odbiera powiadomienie o zmianie właściwości. | Jednokierunkowe. Aplikacja urządzenie odbiera wiadomości
-| Trwałość | Odłączone urządzenia nie będą wykorzystywane. Zaplecze rozwiązania zostanie powiadomiony, że urządzenie nie jest połączone. | Wartości właściwości są zachowywane w bliźniaczej reprezentacji urządzenia. Urządzenie odczyta go na następnej ponownego połączenia. Wartości właściwości są możliwe do pobierania z [język zapytań usługi IoT Hub](iot-hub-devguide-query-language.md). | Komunikaty mogą być zachowywane przez przez usługę IoT Hub w ciągu maksymalnie 48 godzin. |
-| Obiekty docelowe | Za pomocą pojedynczego urządzenia **deviceId**, lub wielu urządzeń przy użyciu [zadań](iot-hub-devguide-jobs.md). | Za pomocą pojedynczego urządzenia **deviceId**, lub wielu urządzeń przy użyciu [zadań](iot-hub-devguide-jobs.md). | Pojedyncze urządzenie przez **deviceId**. |
-| Rozmiar | Rozmiar ładunku metody bezpośredniej maksymalna to 128 KB. | Maksymalna żądanego rozmiaru właściwości wynosząca 8 KB. | Maksymalnie 64 KB wiadomości. |
-| Częstotliwość | Wysoka. Aby uzyskać więcej informacji, zobacz [usługi IoT Hub ogranicza](iot-hub-devguide-quotas-throttling.md). | Średnia. Aby uzyskać więcej informacji, zobacz [usługi IoT Hub ogranicza](iot-hub-devguide-quotas-throttling.md). | Niski. Aby uzyskać więcej informacji, zobacz [usługi IoT Hub ogranicza](iot-hub-devguide-quotas-throttling.md). |
-| Protocol | Dostępne przy użyciu protokołu MQTT lub AMQP. | Dostępne przy użyciu protokołu MQTT lub AMQP. | Dostępna dla wszystkich protokołów. Urządzenie musi wykonać sondowanie, przy użyciu protokołu HTTPS. |
+| Scenariusz | Polecenia, które wymagają natychmiastowego potwierdzenia, na przykład włączenie wentylatoru. | Długotrwałe polecenia przeznaczone do przełączenia urządzenia do określonego stanu. Na przykład ustaw interwał wysyłania danych telemetrycznych na 30 minut. | Powiadomienia jednokierunkowe do aplikacji urządzenia. |
+| Przepływ danych | Dwukierunkowo. Aplikacja urządzenia może od razu odpowiedzieć na metodę. Zaplecze rozwiązania odbiera wynik kontekstowy do żądania. | Jednokierunkowe. Aplikacja urządzenia odbiera powiadomienie ze zmianą właściwości. | Jednokierunkowe. Aplikacja urządzenia otrzymuje komunikat
+| Trwałość | Nie nawiązano połączenia z odłączonymi urządzeniami. Zaplecze rozwiązania zostaje powiadomione o tym, że urządzenie nie jest połączone. | Wartości właściwości są zachowywane w postaci dwuosiowej urządzenia. Urządzenie odczyta je przy następnym ponownym połączeniu. Wartości właściwości są możliwy do pobierania przy użyciu [języka zapytań IoT Hub](iot-hub-devguide-query-language.md). | Komunikaty mogą być przechowywane przez IoT Hub przez maksymalnie 48 godzin. |
+| Obiekty docelowe | Pojedyncze urządzenie używające **deviceId**lub wiele urządzeń korzystających z [zadań](iot-hub-devguide-jobs.md). | Pojedyncze urządzenie używające **deviceId**lub wiele urządzeń korzystających z [zadań](iot-hub-devguide-jobs.md). | Pojedyncze **urządzenie według identyfikator**urządzenia. |
+| Rozmiar | Maksymalny rozmiar ładunku metody bezpośredniej to 128 KB. | Maksymalny rozmiar żądanych właściwości to 32 KB. | Do 64 KB komunikatów. |
+| Częstotliwość | Wysoka. Aby uzyskać więcej informacji, zobacz [limity IoT Hub](iot-hub-devguide-quotas-throttling.md). | Średnia. Aby uzyskać więcej informacji, zobacz [limity IoT Hub](iot-hub-devguide-quotas-throttling.md). | Niski. Aby uzyskać więcej informacji, zobacz [limity IoT Hub](iot-hub-devguide-quotas-throttling.md). |
+| Protocol | Dostępne za pomocą MQTT lub AMQP. | Dostępne za pomocą MQTT lub AMQP. | Dostępne we wszystkich protokołach. Urządzenie musi sondować przy użyciu protokołu HTTPS. |
 
-Dowiedz się, jak używać metod bezpośrednich, żądanych właściwości i komunikatów z chmury do urządzeń w ramach następujących samouczków:
+Dowiedz się, jak korzystać z metod bezpośrednich, wymaganych właściwości i komunikatów z chmury do urządzeń w następujących samouczkach:
 
-* [Używanie metod bezpośrednich](quickstart-control-device-node.md)
-* [Żądane właściwości umożliwiają konfigurowanie urządzeń](tutorial-device-twins.md) 
-* [Wysyłanie komunikatów z chmury do urządzeń](iot-hub-node-node-c2d.md)
+* [Korzystanie z metod bezpośrednich](quickstart-control-device-node.md)
+* [Konfigurowanie urządzeń przy użyciu żądanych właściwości](tutorial-device-twins.md) 
+* [Wysyłanie komunikatów z chmury do urządzenia](iot-hub-node-node-c2d.md)

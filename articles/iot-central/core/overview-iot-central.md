@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: a16ed6ac942dd4a9fa521cc813a92e6767a98328
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 71d595ecb3a6900da3df79651ee2dddda594b9de
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024130"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589418"
 ---
 # <a name="what-is-azure-iot-central"></a>Co to jest usługa Azure IoT Central?
 
@@ -39,8 +39,12 @@ Ten artykuł zawiera opis IoT Central:
 - Zadania nie obsługują typów złożonych.
 - Typy schematów tablicy nie są obsługiwane.
 - Obsługiwane są tylko zestawy SDK dla urządzeń C i Node. js.
-- Jest on dostępny tylko w lokalizacjach Stany Zjednoczone i Europy.
+- Jest on dostępny tylko w lokalizacjach Stany Zjednoczone, Europy, Azja i Pacyfik i Australii.
 - Modele możliwości urządzeń muszą mieć wszystkie interfejsy zdefiniowane wewnętrznie w tym samym pliku.
+- Obsługa [Plug and Play IoT](../../iot-pnp/overview-iot-plug-and-play.md) jest dostępna w wersji zapoznawczej i jest obsługiwana tylko w wybranych regionach.
+
+    > [!NOTE]
+    > Skontaktuj się z pomocą techniczną, aby uzyskać dostęp do tworzenia aplikacji w wersji zapoznawczej z obsługą urządzeń Plug and Play IoT.
 
 ## <a name="personas"></a>Osoby
 
@@ -74,7 +78,7 @@ Ten szablon urządzenia obejmuje następujące:
 - Dostosowania, pulpity nawigacyjne i formularze, które są częścią aplikacji IoT Central.
 
 
-### <a name="pricing"></a>Cennik
+### <a name="pricing"></a>Ceny
 
 Możesz utworzyć aplikację IoT Central przy użyciu 7-dniowej bezpłatnej wersji próbnej lub użyć planu cenowego w warstwie Standardowa.
 
@@ -102,14 +106,14 @@ Jako Konstruktor rozwiązań można także dostosować interfejs użytkownika ap
 - Konfigurowanie niestandardowych pulpitów nawigacyjnych ułatwiających operatorom odnajdywanie szczegółowych informacji i szybsze rozwiązywanie problemów.
 - Konfigurowanie niestandardowych analiz w celu eksplorowania danych serii czasu na połączonych urządzeniach.
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 Możesz utworzyć aplikację IoT Central przy użyciu 7-dniowej bezpłatnej wersji próbnej lub użyć planu cenowego w warstwie Standardowa.
 
 - Aplikacje tworzone za pomocą planu *bezpłatnego* są bezpłatne przez siedem dni i obsługują maksymalnie pięć urządzeń. Możesz przekonwertować je tak, aby używały standardowego planu cenowego w dowolnym momencie przed wygaśnięciem.
 - W przypadku aplikacji tworzonych przy użyciu planu w *warstwie Standardowa* są naliczane opłaty za poszczególne urządzenia. możesz wybrać plan cenowy w **warstwie Standardowa 1** lub **standardowa 2** z dwoma bezpłatnymi urządzeniami. Dowiedz się więcej o [cenach IoT Central](https://aka.ms/iotcentral-pricing).
 
-## <a name="connect-your-devices"></a>Podłącz swoje urządzenia
+## <a name="connect-your-devices"></a>Łączenie urządzeń
 
 Usługa Azure IoT Central używa [usługi azure IoT Hub Device Provisioning Service (DPS)](../../iot-dps/about-iot-dps.md) do zarządzania wszystkimi rejestracjami i połączeniem urządzeń.
 
@@ -136,7 +140,7 @@ A także urządzeń utworzonych przy użyciu [zestawów SDK usługi Azure IoT](h
 
 Aby uzyskać więcej informacji, zobacz [Azure IoT Edge urządzeń i IoT Central](concepts-architecture.md#azure-iot-edge-devices).
 
-## <a name="stay-connected"></a>Bądźmy w kontakcie
+## <a name="stay-connected"></a>Zachowanie łączności
 
 Aplikacje IoT Central są w pełni hostowane przez firmę Microsoft, co zmniejsza koszty administracyjne związane z zarządzaniem aplikacjami.
 
@@ -160,7 +164,7 @@ Wbudowane [pulpity nawigacyjne](./howto-set-up-template.md#generate-default-view
 
 Twórz [niestandardowe reguły](tutorial-create-telemetry-rules.md) na podstawie stanu urządzenia i telemetrii, aby identyfikować urządzenia z koniecznością uwagi. Skonfiguruj akcje powiadamiania odpowiednich osób i zapewnić podejmowanie środków naprawczych w odpowiednim czasie.
 
-### <a name="jobs"></a>Zadania 
+### <a name="jobs"></a>Stanowiska 
 
 [Zadania](howto-run-a-job.md) umożliwiają stosowanie pojedynczych lub zbiorczych aktualizacji do urządzeń przez ustawienie właściwości lub Wywoływanie poleceń. 
 

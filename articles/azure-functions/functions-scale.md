@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb36b81d1b2a343da334d63d9c0555ed537ef122
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c4ff3ebf6239f9b62409ff0885f23115711e33cb
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024657"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584545"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions skalowanie i hosting
 
@@ -37,7 +37,7 @@ Obsługa funkcji znajduje się w następujących dwóch kategoriach:
 
 Poniższa tabela przedstawia bieżący poziom wsparcia dla trzech planów hostingu w przypadku uruchamiania w systemie Windows lub Linux:
 
-| | Plan Zużycie | Plan w warstwie Premium | Plan dedykowany |
+| | Plan Zużycie | Plan Premium | Plan dedykowany |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | Ogólna dostępność | Ogólna dostępność | Ogólna dostępność |
 | Linux | Ogólna dostępność | Ogólna dostępność | Ogólna dostępność |
@@ -158,7 +158,7 @@ Skalowanie może się różnić w zależności od liczby czynników i skalować 
 
 Różne wyzwalacze mogą również mieć różne limity skalowania, a także opisane poniżej:
 
-* [Centrum zdarzeń](functions-bindings-event-hubs.md#trigger---scaling)
+* [Centrum zdarzeń](functions-bindings-event-hubs-trigger.md#scaling)
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Najlepsze rozwiązania i wzorce dotyczące skalowalnych aplikacji
 

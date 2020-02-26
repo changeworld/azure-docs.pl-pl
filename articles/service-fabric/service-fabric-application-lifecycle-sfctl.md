@@ -5,12 +5,12 @@ author: Christina-Kang
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: db271d479fd84e5338d53cc25ecc0122d856c442
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610237"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589151"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Zarządzanie aplikacją Service Fabric platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure Service Fabric (sfctl)
 
@@ -47,7 +47,7 @@ Przed utworzeniem aplikacji Przekaż pakiet aplikacji do magazynu obrazów Servi
 
 Na przykład jeśli pakiet aplikacji znajduje się w katalogu `app_package_dir`, użyj następujących poleceń, aby przekazać katalog:
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir
 ```
 
@@ -57,7 +57,7 @@ W przypadku dużych pakietów aplikacji można określić opcję `--show-progres
 
 Po zakończeniu przekazywania Zainicjuj obsługę administracyjną aplikacji. Aby zainicjować obsługę administracyjną aplikacji, użyj następującego polecenia:
 
-```azurecli
+```shell
 sfctl application provision --application-type-build-path app_package_dir
 ```
 
@@ -69,7 +69,7 @@ Zaleca się usunięcie pakietu aplikacji po pomyślnym zarejestrowaniu aplikacji
 
 Aby usunąć pakiet aplikacji z magazynu obrazów, użyj następującego polecenia:
 
-```azurecli
+```shell
 sfctl store delete --content-path app_package_dir
 ```
 
@@ -79,7 +79,7 @@ sfctl store delete --content-path app_package_dir
 
 Po udostępnieniu aplikacji użyj następującego polecenia, aby nawiązać nazwę i utworzyć aplikację:
 
-```azurecli
+```shell
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
@@ -91,7 +91,7 @@ Nazwa aplikacji musi rozpoczynać się od prefiksu `fabric:/`.
 
 Po utworzeniu aplikacji Utwórz usługi z aplikacji. W poniższym przykładzie tworzymy nową usługę bezstanową z naszej aplikacji. Usługi, które można utworzyć na podstawie aplikacji, są definiowane w manifeście usługi w wcześniej zainicjowanym pakiecie aplikacji.
 
-```azurecli
+```shell
 sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
 --stateless --instance-count 1 --singleton-scheme
 ```
@@ -100,14 +100,14 @@ sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-t
 
 Aby sprawdzić, czy wszystko jest w dobrej kondycji, użyj następujących poleceń dotyczących kondycji:
 
-```azurecli
+```shell
 sfctl application list
 sfctl service list --application-id TestApp
 ```
 
 Aby sprawdzić, czy usługa jest w dobrej kondycji, użyj podobnych poleceń, aby pobrać kondycję zarówno usługi, jak i aplikacji:
 
-```azurecli
+```shell
 sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
@@ -122,7 +122,7 @@ Aby usunąć aplikację, należy wykonać następujące zadania:
 
 Aby usunąć aplikację, użyj następującego polecenia:
 
-```azurecli
+```shell
 sfctl application delete --application-id TestEdApp
 ```
 
@@ -130,7 +130,7 @@ sfctl application delete --application-id TestEdApp
 
 Po usunięciu aplikacji można anulować obsługę administracyjną typu aplikacji, jeśli nie jest już potrzebna. Aby anulować obsługę administracyjną typu aplikacji, użyj następującego polecenia:
 
-```azurecli
+```shell
 sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
@@ -142,7 +142,7 @@ Po utworzeniu aplikacji można powtórzyć ten sam zestaw kroków, aby udostępn
 
 Aby przeprowadzić uaktualnienie, najpierw Zainicjuj obsługę następnej wersji aplikacji przy użyciu tych samych poleceń jak wcześniej:
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir_2
 sfctl application provision --application-type-build-path app_package_dir_2
 sfctl store delete --content-path app_package_dir_2
@@ -150,7 +150,7 @@ sfctl store delete --content-path app_package_dir_2
 
 Zalecane jest, aby przeprowadzić monitorowane automatyczne uaktualnianie, a następnie uruchomić uaktualnienie, uruchamiając następujące polecenie:
 
-```azurecli
+```shell
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 

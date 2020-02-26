@@ -3,12 +3,12 @@ title: Model danych dzienników Azure Monitor
 description: W tym artykule dowiesz się więcej na temat Azure Monitor Log Analytics szczegóły modelu danych Azure Backup.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 121117d20f5b9eb6e53da1b8884557fcfb46ff76
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: d14634c5e317682462e77e0549f064c75059f15c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501006"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586380"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics model danych dla Azure Backup danych
 
@@ -18,13 +18,13 @@ Użyj Log Analytics model danych do tworzenia niestandardowych alertów z Log An
 
 > [!NOTE]
 >
-> Ten model danych znajduje się w odniesieniu do trybu Diagnostyka Azure wysyłania zdarzeń diagnostycznych do Log Analytics (LA). Aby poznać model danych dla nowego trybu specyficznego dla zasobu, można zapoznać się z następującym artykułem: [model danych dla Azure Backup zdarzeń diagnostycznych](https://aka.ms/diagnosticsdatamodel)
+> Ten model danych znajduje się w odniesieniu do trybu Diagnostyka Azure wysyłania zdarzeń diagnostycznych do Log Analytics (LA). Aby poznać model danych dla nowego trybu specyficznego dla zasobu, można zapoznać się z następującym artykułem: [model danych dla Azure Backup zdarzeń diagnostycznych](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
 ## <a name="using-azure-backup-data-model"></a>Korzystanie z Azure Backup model danych
 
 Możesz użyć następujących pól dostarczonych jako część modelu danych do tworzenia wizualizacji, niestandardowych zapytań i pulpitu nawigacyjnego zgodnie z wymaganiami.
 
-### <a name="alert"></a>Alerty
+### <a name="alert"></a>Alert
 
 Ta tabela zawiera szczegółowe informacje o polach związanych z alertami.
 

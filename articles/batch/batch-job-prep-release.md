@@ -11,15 +11,15 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 02/27/2017
+ms.date: 02/17/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 7103daa4a943edfd8d05333f413245cebaf8f4af
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d9f6f015c210592d5d8053b1b34d5357bb357629
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524260"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586788"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Uruchamianie zadań przygotowania i zwolnienia zadań w węzłach obliczeniowych wsadowych
 
@@ -54,20 +54,23 @@ Warto zachować kopię plików dziennika generowanych przez zadania lub ewentual
 
 > [!TIP]
 > Innym sposobem utrwalania dzienników i innych danych wyjściowych zadania jest użycie biblioteki [Konwencji plików Azure Batch](batch-task-output.md) .
-> 
-> 
+>
+>
 
 ## <a name="job-preparation-task"></a>Zadanie przygotowania zadania
-Przed wykonaniem zadań zadania wsadowego program Batch wykonuje zadanie przygotowania zadania na każdym węźle obliczeniowym zaplanowanym do uruchomienia zadania. Domyślnie usługa Batch czeka na ukończenie zadania przygotowania zadania przed uruchomieniem zadań zaplanowanych do wykonania w węźle. Można jednak skonfigurować usługę tak, aby nie czekać. Jeśli węzeł zostanie ponownie uruchomiony, zadanie przygotowania zadania zostanie uruchomione ponownie, ale można również wyłączyć to zachowanie. Jeśli masz zadanie z zadaniem przygotowania zadania i skonfigurowano zadanie Menedżera zadań, zadanie przygotowania zadania zostanie uruchomione przed zadaniem Menedżera zadań, tak jak w przypadku wszystkich innych zadań. Zadanie przygotowania zadania jest zawsze uruchamiane jako pierwsze.
+
+
+Przed wykonaniem zadań zadania Batch wykonuje zadanie przygotowania zadania na każdym węźle obliczeniowym zaplanowanym do uruchomienia zadania. Domyślnie usługi Batch czeka na ukończenie zadania przygotowania zadania przed uruchomieniem zadań zaplanowanych do wykonania w węźle. Można jednak skonfigurować usługę tak, aby nie czekać. Jeśli węzeł zostanie ponownie uruchomiony, zadanie przygotowania zadania zostanie uruchomione ponownie. Możesz również wyłączyć to zachowanie. Jeśli masz zadanie z zadaniem przygotowania zadania i skonfigurowano zadanie Menedżera zadań, zadanie przygotowania zadania zostanie uruchomione przed zadaniem Menedżera zadań, tak jak w przypadku wszystkich innych zadań. Zadanie przygotowania zadania jest zawsze uruchamiane jako pierwsze.
 
 Zadanie przygotowania zadania jest wykonywane tylko w węzłach, które zaplanowano do uruchomienia zadania. Zapobiega to niepotrzebnemu wykonaniu zadania przygotowania w przypadku, gdy węzeł nie ma przypisanego zadania. Taka sytuacja może wystąpić, gdy liczba zadań dla zadania jest mniejsza niż liczba węzłów w puli. Ma również zastosowanie, gdy włączone jest [współbieżne wykonywanie zadań](batch-parallel-node-tasks.md) , co pozostawia pewne węzły w stanie bezczynności, jeśli liczba zadań jest mniejsza niż łączna możliwa liczba współbieżnych zadań. Nie uruchamiając zadania przygotowania zadania w węzłach bezczynnych, można poświęcać mniej pieniędzy na opłaty za transfer danych.
 
 > [!NOTE]
 > [JobPreparationTask][net_job_prep_cloudjob] różni się od [CloudPool. StartTask][pool_starttask] w tym JobPreparationTask jest wykonywane na początku każdego zadania, natomiast StartTask jest wykonywane tylko wtedy, gdy węzeł obliczeniowy najpierw przyłączy pulę lub uruchamia ponownie.
-> 
-> 
+>
 
-## <a name="job-release-task"></a>Zadanie zwolnienia zadania
+
+>## <a name="job-release-task"></a>Zadanie zwolnienia zadania
+
 Gdy zadanie zostanie oznaczone jako ukończone, zadanie Zwolnij zadanie jest wykonywane na każdym węźle w puli, który wykonał co najmniej jedno zadanie. Zadanie jest oznaczane jako ukończone przez wystawienie żądania przerwania. Usługa Batch ustawia następnie stan zadania na *zakończenie*, kończy wszystkie aktywne lub uruchomione zadania skojarzone z zadaniem i uruchamia zadanie zwolnienia zadania. Zadanie jest następnie przenoszone do stanu *ukończone* .
 
 > [!NOTE]

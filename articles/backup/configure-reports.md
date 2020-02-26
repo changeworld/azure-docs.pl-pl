@@ -3,12 +3,12 @@ title: Konfigurowanie raportów usługi Azure Backup
 description: Konfigurowanie i wyświetlanie raportów dla Azure Backup przy użyciu Log Analytics i skoroszytów platformy Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 5c43efc8d61d7aa6c8fc94c6c39294d744cd6b87
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: cefe81e53e89b8d7903469e836f3c5d2665febea
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501123"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582708"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurowanie raportów usługi Azure Backup
 
@@ -41,11 +41,11 @@ Domyślnie dane w obszarze roboczym LA są przechowywane przez 30 dni. Aby wyśw
 
 Azure Resource Manager zasobów, takich jak magazyny Recovery Services, rejestruje informacje o operacjach zaplanowanych i operacjach wyzwalanych przez użytkownika jako danych diagnostycznych. 
 
-W sekcji monitorowanie magazynu Recovery Services wybierz pozycję **Ustawienia diagnostyczne** i określ cel dla danych diagnostycznych magazynu Recovery Services. [Dowiedz się więcej o korzystaniu z zdarzeń diagnostycznych](https://aka.ms/AzureBackupDiagnosticDocs).
+W sekcji monitorowanie magazynu Recovery Services wybierz pozycję **Ustawienia diagnostyczne** i określ cel dla danych diagnostycznych magazynu Recovery Services. [Dowiedz się więcej o korzystaniu z zdarzeń diagnostycznych](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events).
 
 ![Blok ustawień diagnostycznych](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure Backup również zawiera wbudowaną Azure Policy, która automatyzuje konfigurację ustawień diagnostycznych dla wszystkich magazynów w danym zakresie. Zapoznaj się z następującym artykułem, aby dowiedzieć się, jak korzystać z tych zasad: [Konfigurowanie ustawień diagnostyki magazynu w odpowiedniej skali](https://aka.ms/AzureBackupDiagnosticsPolicyDocs)
+Azure Backup również zawiera wbudowaną Azure Policy, która automatyzuje konfigurację ustawień diagnostycznych dla wszystkich magazynów w danym zakresie. Zapoznaj się z następującym artykułem, aby dowiedzieć się, jak korzystać z tych zasad: [Konfigurowanie ustawień diagnostyki magazynu w odpowiedniej skali](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 3. **Wyświetlanie raportów na Azure Portal:**
 
@@ -53,7 +53,7 @@ Po skonfigurowaniu magazynów w celu wysyłania danych do LA, Wyświetl raporty 
 
 ![Pulpit nawigacyjny magazynu](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
 
-Kliknięcie tego linku spowoduje otwarcie skoroszytu raportów kopii zapasowych. 
+Kliknięcie tego linku spowoduje otwarcie skoroszytu raportów kopii zapasowych.
 
 > [!NOTE]
 > Obecnie początkowe obciążenie raportu może potrwać do 1 minuty.

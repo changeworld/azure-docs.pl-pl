@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6d68599af644e5bb03fc850a880b07c6a4d262a9
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 54ad9109a23b0fb25470987c2bc863934864b83f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370468"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580682"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Dostęp do danych w usługach Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,10 +57,10 @@ Magazyny danych obsługują obecnie przechowywanie informacji o połączeniu z u
 [Magazyn Azure&nbsp;Data Lake&nbsp;gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Nazwa główna usługi| ✓ | ✓ | ✓ |✓
 Baza danych SQL&nbsp;usługi Azure&nbsp;| Uwierzytelnianie SQL <br>Nazwa główna usługi| ✓ | ✓ | ✓ |✓
 Usługa Azure&nbsp;PostgreSQL | Uwierzytelnianie SQL| ✓ | ✓ | ✓ |✓
-Usługa Azure&nbsp;Database&nbsp;dla programu&nbsp;MySQL | Uwierzytelnianie SQL|  | ✓ | ✓ |✓
-&nbsp;&nbsp;system plików| Brak uwierzytelniania | | ✓* | ✓ * |✓* 
+Usługa Azure&nbsp;Database&nbsp;dla programu&nbsp;MySQL | Uwierzytelnianie SQL|  | ✓* | ✓* |✓*
+&nbsp;&nbsp;system plików| Brak uwierzytelniania | | ✓** | ✓ ** |✓** 
 
-\* obsługiwane tylko w scenariuszach lokalnego celu obliczeń
+*Baza danych MySQL jest obsługiwana tylko w przypadku potoku [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). <br> \** Datakostki są obsługiwane tylko dla [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) potoków
 
 ### <a name="storage-guidance"></a>Wskazówki dotyczące magazynu
 
@@ -77,7 +77,7 @@ Po zarejestrowaniu rozwiązania usługi Azure Storage jako magazynu danych autom
 
 >[!IMPORTANT]
 > W ramach bieżącego procesu tworzenia i rejestrowania magazynu danych Azure Machine Learning sprawdza poprawność podanego przez użytkownika podmiotu zabezpieczeń (nazwa użytkownika, główna usługa lub token sygnatury dostępu współdzielonego), który ma dostęp do podstawowej usługi magazynu. 
-<br>
+<br><br>
 Jednak w przypadku Azure Data Lake Storage generacji 1 i 2 magazynów danych sprawdzanie poprawności odbywa się później, gdy wywoływana jest metoda dostępu do danych, taka jak [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py) lub [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) . 
 
 ### <a name="python-sdk"></a>Zestaw SDK dla języka Python
@@ -87,10 +87,13 @@ Wszystkie metody Register znajdują się w klasie [`Datastore`](https://docs.mic
 Informacje, które należy wypełnić `register()` metodę, można znaleźć za pomocą [Azure Portal](https://portal.azure.com):
 
 1. W okienku po lewej stronie wybierz pozycję **konta magazynu** , a następnie wybierz konto magazynu, które chcesz zarejestrować. 
-2. Aby uzyskać informacje takie jak nazwa konta, kontener i nazwa udziału plików, przejdź do strony **Przegląd** . Aby uzyskać informacje o uwierzytelnianiu, takie jak klucz konta lub token SAS, przejdź do pozycji **klucze dostępu** w okienku **Ustawienia** . 
+2. Aby uzyskać informacje takie jak nazwa konta, kontener i nazwa udziału plików, przejdź do strony **Przegląd** . 
+3. Aby uzyskać informacje o uwierzytelnianiu, takie jak klucz konta lub token SAS, przejdź do pozycji **klucze dostępu** w okienku **Ustawienia** . 
+
+4. W przypadku elementów nazwy głównej usługi, takich jak identyfikator dzierżawy i identyfikator klienta, przejdź do strony **przegląd** **rejestracje aplikacji**. 
 
 > [!IMPORTANT]
-> Jeśli Twoje konto magazynu znajduje się w sieci wirtualnej, obsługiwane jest tylko tworzenie magazynu danych obiektów blob platformy Azure. Aby udzielić obszaru roboczego dostępu do konta magazynu, ustaw `grant_workspace_access` parametru na `True`.
+> Jeśli Twoje konto magazynu znajduje się w sieci wirtualnej, obsługiwane jest tylko tworzenie obiektów blob, udziałów plików, ADLS generacji 1 i ADLS generacji 2 danych **z użyciem zestawu SDK** . Aby udzielić obszaru roboczego dostępu do konta magazynu, ustaw `grant_workspace_access` parametru na `True`.
 
 W poniższych przykładach pokazano, jak zarejestrować kontener obiektów blob platformy Azure, udział plików platformy Azure i Azure Data Lake Storage generacja 2 jako magazyn danych. W przypadku innych usług magazynu należy zapoznać [się z dokumentacją dotyczącą `register_azure_*` metod](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods).
 
@@ -134,7 +137,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage generacja 2
 
-W przypadku magazynu danych Azure Data Lake Storage Generation 2 (ADLS Gen 2) należy użyć [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) do zarejestrowania magazynu danych poświadczeń połączonego z magazynem usługi Azure datalake Generation 2 z [uprawnieniami nazw głównych](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Dowiedz się więcej [na temat kontroli dostępu skonfigurowanej do ADLS generacji 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+W przypadku magazynu danych Azure Data Lake Storage Generation 2 (ADLS Gen 2) należy użyć [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) do zarejestrowania magazynu danych poświadczeń połączonego z magazynem usługi Azure datalake Generation 2 z [uprawnieniami nazw głównych](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Aby można było korzystać z jednostki usługi, należy [zarejestrować aplikację](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). Dowiedz się więcej [na temat kontroli dostępu skonfigurowanej do ADLS generacji 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
 Poniższy kod tworzy i rejestruje magazyn danych `adlsgen2_datastore_name` w obszarze roboczym `ws`. Ten magazyn danych uzyskuje dostęp do systemu plików `test` na koncie magazynu `account_name` przy użyciu podanych poświadczeń jednostki usługi.
 
@@ -162,12 +165,19 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 Utwórz nowy magazyn danych w kilku krokach w programie Azure Machine Learning Studio:
 
+> [!IMPORTANT]
+> Jeśli konto magazynu znajduje się w sieci wirtualnej, obsługiwane jest tylko tworzenie magazynów danych [za pośrednictwem zestawu SDK](#python-sdk) . 
+
 1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com/).
 1. Wybierz pozycję **magazyny** danych w lewym okienku w obszarze **Zarządzaj**.
 1. Wybierz pozycję **+ nowy magazyn**danych.
 1. Wypełnij formularz dla nowego magazynu danych. Formularz jest inteligentnie aktualizowany na podstawie wybranych opcji typu usługi Azure Storage i typu uwierzytelniania.
   
-Informacje potrzebne do wypełnienia formularza można znaleźć na [Azure Portal](https://portal.azure.com). W okienku po lewej stronie wybierz pozycję **konta magazynu** , a następnie wybierz konto magazynu, które chcesz zarejestrować. Na stronie **Przegląd** znajdują się takie informacje, jak nazwa konta, kontener i nazwa udziału plików. W przypadku elementów uwierzytelniania, takich jak klucz konta lub token sygnatury dostępu współdzielonego, przejdź do pozycji **klucze kont** w okienku **Ustawienia** .
+Informacje potrzebne do wypełnienia formularza można znaleźć na [Azure Portal](https://portal.azure.com). W okienku po lewej stronie wybierz pozycję **konta magazynu** , a następnie wybierz konto magazynu, które chcesz zarejestrować. Na stronie **Przegląd** znajdują się takie informacje, jak nazwa konta, kontener i nazwa udziału plików. 
+
+* W przypadku elementów uwierzytelniania, takich jak klucz konta lub token sygnatury dostępu współdzielonego, przejdź do pozycji **klucze kont** w okienku **Ustawienia** . 
+
+* W przypadku elementów nazwy głównej usługi, takich jak identyfikator dzierżawy i identyfikator klienta, przejdź do strony **przegląd** **rejestracje aplikacji**. 
 
 Poniższy przykład pokazuje, jak wygląda formularz podczas tworzenia magazynu danych obiektów blob platformy Azure: 
     
@@ -211,7 +221,7 @@ ws.set_default_datastore('your datastore name')
 
 Metody [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-) i [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) opisane w poniższych przykładach są specyficzne dla i działają identycznie dla klas [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) i [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) .
 
-### <a name="upload"></a>Upload
+### <a name="upload"></a>Przekaż
 
 Przekaż katalog lub pojedyncze pliki do magazynu danych przy użyciu zestawu SDK języka Python:
 
@@ -226,7 +236,7 @@ datastore.upload(src_dir='your source directory',
 
 Możesz również przekazać listę pojedynczych plików do magazynu danych za pomocą metody `upload_files()`.
 
-### <a name="download"></a>Pobieranie
+### <a name="download"></a>Do pobrania
 
 Pobierz dane z magazynu danych do lokalnego systemu plików:
 

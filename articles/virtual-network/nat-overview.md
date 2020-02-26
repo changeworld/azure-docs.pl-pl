@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 6c8a341a089ef95d99669f592dbea81922d67682
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: b27baed20d8e36bf5790036e2fdc0804a94a4ea1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526318"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589440"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Co to jest Virtual Network translator adresów sieciowych (publiczna wersja zapoznawcza)?
 
@@ -140,9 +140,6 @@ Translator adresów sieciowych jest obecnie dostępny w następujących regionac
 
 Subskrypcje muszą być zarejestrowane, aby zezwolić na uczestnictwo w publicznej wersji zapoznawczej.  Uczestnictwo wymaga dwuetapowego procesu i instrukcje są podane poniżej dla interfejsu wiersza polecenia platformy Azure i Azure PowerShell.  Aktywacja może potrwać kilka minut.
 
-> [!IMPORTANT]
-> Po [włączeniu](./nat-overview.md#enable-preview) Virtual Network translatora adresów sieciowych w ramach subskrypcji Użyj https://aka.ms/natportal, aby uzyskać dostęp do portalu.
-
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
 1. Zarejestruj subskrypcję publicznej wersji zapoznawczej
@@ -189,7 +186,7 @@ W publicznej wersji zapoznawczej Cennik ma rabat w wysokości 50%.
 
 Translator adresów sieciowych jest obsługiwany za pomocą zwykłych kanałów pomocy technicznej.
 
-## <a name="feedback"></a>Opinie
+## <a name="feedback"></a>Opinia
 
 Chcemy wiedzieć, jak możemy ulepszyć usługę. Udostępnij nam swoją [opinię na temat publicznej wersji zapoznawczej](https://aka.ms/natfeedback) .  Możesz zaproponować i zagłosować, co będziemy kompilować dalej w usłudze [UserVoice dla translatora adresów sieciowych](https://aka.ms/natuservoice).
 

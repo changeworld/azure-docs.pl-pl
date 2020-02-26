@@ -2,7 +2,7 @@
 title: Łączenie funkcji DLP Forcepoint z platformą Azure Microsoft Docs
 description: Dowiedz się, jak połączyć funkcję DLP Forcepoint z platformą Azure.
 services: sentinel
-author: rkarlin
+author: yelevin
 editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
-ms.author: rkarlin
-ms.openlocfilehash: bd3940af1553ec65731ed743fd23027403e9ec53
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.author: yelevin
+ms.openlocfilehash: 3bdb9d2b23ce05929ba5612e0c6a03fe1aab05de
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500954"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588250"
 ---
 # <a name="connect-your-forcepoint-dlp-to-azure-sentinel"></a>Łączenie funkcji DLP Forcepoint z platformą Azure — wskaźnikiem
 

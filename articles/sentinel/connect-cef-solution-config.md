@@ -3,7 +3,7 @@ title: Skonfiguruj rozwiązanie zabezpieczeń, aby połączyć dane CEF z wersj�
 description: Dowiedz się, jak skonfigurować rozwiązanie zabezpieczeń, aby połączyć dane CEF z platformą Azure.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2513638be6f895598f93758d8d8dbdf04c9561e9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: bdb76954b1db8135d8a36d6658bb7fff274ac126
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615361"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588454"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>Krok 2. Konfigurowanie rozwiązania zabezpieczeń do wysyłania komunikatów CEF
 
@@ -37,7 +37,7 @@ Jeśli rozwiązanie zabezpieczeń ma już istniejący łącznik, użyj instrukcj
 - [Ochrona jednej tożsamości](connect-one-identity.md)
 - [Palo Alto Networks](connect-paloalto.md)
 - [Trend Micro — zabezpieczenia](connect-trend-micro.md)
-- [Zscaler](connect-zscaler.md)   
+- [Rozwiązania Zscaler](connect-zscaler.md)   
 
 ## <a name="configure-any-other-solution"></a>Skonfiguruj inne rozwiązanie
 Jeśli łącznik nie istnieje dla określonego rozwiązania zabezpieczającego, należy użyć poniższych ogólnych instrukcji dotyczących przekazywania dzienników do agenta CEF.

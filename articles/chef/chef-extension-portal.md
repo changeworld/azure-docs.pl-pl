@@ -2,14 +2,14 @@
 title: Zainstaluj klienta Chef z Azure Portal
 description: Dowiedz się, jak wdrożyć i skonfigurować klienta programu Chef z poziomu Azure Portal
 keywords: Azure, Chef, DevOps, klient, instalacja, Portal
-ms.date: 05/15/2018
+ms.date: 02/22/2020
 ms.topic: article
-ms.openlocfilehash: f8707c2fe39fb794381af298c24d27704b1ec255
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6e46133c598c44b314077f2d020852416d3d2745
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158262"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586363"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Zainstaluj klienta Chef z Azure Portal
 Rozszerzenie klienta Chef można dodać bezpośrednio na komputerze z systemem Linux lub Windows z poziomu Azure Portal. Ten artykuł przeprowadzi Cię przez proces przy użyciu nowej maszyny wirtualnej z systemem Linux.
@@ -79,24 +79,24 @@ W tej sekcji użyjesz najpierw Azure Portal, aby utworzyć maszynę z systemem L
 1. Na karcie **rozszerzenie instalacji** określ następujące wartości, a następnie wybierz przycisk **OK**.
 
     - **Adres URL serwera Chef** — wprowadź adres URL serwera Chef, który zawiera nazwę organizacji, na przykład *https://api.chef.io/organization/mycompany* .
-    - **Nazwa węzła Chef** — wprowadź nazwę węzła Chef. Może to być dowolna wartość.
-    - **Lista uruchamiania** — wprowadź listę uruchamiania Chef, która jest dodawana do maszyny. Może to pozostać puste.
-    - **Nazwa klienta weryfikacji** — wprowadź nazwę klienta Chef weryfikacji. na przykład *tarcher-walidator*.
+    - **Nazwa węzła Chef** — wprowadź nazwę węzła Chef.
+    - **Lista uruchamiania** — wprowadź listę uruchamiania Chef, która jest dodawana do maszyny. Ta wartość może pozostać pusta.
+    - **Nazwa klienta weryfikacji** — wprowadź nazwę klienta Chef weryfikacji. Na przykład `tarcher-validator`.
     - **Klucz weryfikacji** — wybierz plik zawierający klucz weryfikacji używany podczas uruchamiania maszyn.
-    - **Plik konfiguracji klienta** — wybierz plik konfiguracji dla Chef-Client. Może to pozostać puste.
-    - **Wersja klienta Chef** — wprowadź wersję klienta Chef do zainstalowania. Może to pozostać puste. Wartość pusta powoduje zainstalowanie najnowszej wersji.
+    - **Plik konfiguracji klienta** — wybierz plik konfiguracji dla Chef-Client. Ta wartość może pozostać pusta.
+    - **Wersja klienta Chef** — wprowadź wersję klienta Chef do zainstalowania. Ta wartość może pozostać pusta, co spowoduje zainstalowanie najnowszej wersji.
     - **Tryb weryfikacji protokołu SSL** — wybierz opcję **Brak** lub **węzeł równorzędny**. Nie wybrano *niczego* dla demonstracji.
-    - **Środowisko Chef** — wprowadź środowisko Chef, do którego należy ten węzeł. Może to pozostać puste.
-    - **Zaszyfrowany wpis tajny Databag** — wybierz plik zawierający wpis tajny dla zaszyfrowanych Databag, do których ta maszyna powinna mieć dostęp. Może to pozostać puste.
-    - **Certyfikat SSL serwera Chef** — wybierz certyfikat SSL przypisany do serwera Chef. Może to pozostać puste.
+    - **Środowisko Chef** — wprowadź środowisko Chef, do którego należy ten węzeł. Ta wartość może pozostać pusta.
+    - **Zaszyfrowany zbiór danych** — wybierz plik zawierający wpis tajny dla zaszyfrowanego zbioru danych, do którego maszyna musi uzyskać dostęp. Ta wartość może pozostać pusta.
+    - **Certyfikat SSL serwera Chef** — wybierz certyfikat SSL przypisany do serwera Chef. Ta wartość może pozostać pusta.
 
       ![Instalowanie serwera Chef na maszynie wirtualnej z systemem Linux](./media/chef-extension-portal/install-extension.png)
 
-1. Po powrocie do karty **rozszerzenia** wybierz przycisk **OK**.
+1. Gdy zostanie wyświetlona karta **rozszerzenia** , wybierz **przycisk OK**.
 
-1. Po powrocie do karty **Ustawienia** wybierz **przycisk OK**.
+1. Gdy zostanie wyświetlona karta **Ustawienia** , wybierz **przycisk OK**.
 
-1. Po powrocie do karty **Tworzenie** (przedstawia podsumowanie opcji wybranych i wprowadzonych), sprawdź informacje, a także **warunki użytkowania**i wybierz pozycję **Utwórz**.
+1. Gdy zostanie wyświetlona karta **Tworzenie** , zobaczysz podsumowanie wybranych i wprowadzonych opcji. Sprawdź informacje, a także **warunki użytkowania**i wybierz pozycję **Utwórz**.
 
 Po ukończeniu procesu tworzenia i wdrażania maszyny wirtualnej z rozszerzeniem Chef powiadomienie wskazuje na powodzenie lub niepowodzenie operacji. Ponadto strona zasobów dla nowej maszyny wirtualnej jest automatycznie otwierana w Azure Portal po jej utworzeniu.
 
@@ -104,4 +104,5 @@ Po ukończeniu procesu tworzenia i wdrażania maszyny wirtualnej z rozszerzeniem
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Tworzenie maszyny wirtualnej z systemem Windows na platformie Azure przy użyciu Chef](/azure/virtual-machines/windows/chef-automation)
+> [!div class="nextstepaction"] 
+> [Tworzenie maszyny wirtualnej z systemem Windows na platformie Azure przy użyciu Chef](chef-automation.md)

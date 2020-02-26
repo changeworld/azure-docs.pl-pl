@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: ce9ca202ee57fe9c42906ebeb62a44c724bd1a52
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72a87c3b23e0eed6cfbf1614388702443f4e99d0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978728"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588791"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>Zarządzanie zasobami interfejsu API Azure Cosmos DB SQL (rdzeń) przy użyciu szablonów Azure Resource Manager
 
-W tym artykule dowiesz się, jak używać szablonów Azure Resource Manager, aby ułatwić automatyzację zarządzania kontami Azure Cosmos DB, bazami danych i kontenerami.
+W tym artykule dowiesz się, jak używać szablonów usługi Resource Manager, aby ułatwić automatyzację zarządzania kontami, bazami danych i kontenerami usługi Azure Cosmos DB.
 
 W tym artykule przedstawiono tylko przykłady Azure Resource Manager szablonów dla kont interfejsu API SQL. Możesz również znaleźć przykłady szablonów dla interfejsów API [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md)i [Table](manage-table-with-resource-manager.md) .
 
@@ -39,7 +39,7 @@ Aby utworzyć zasoby Azure Cosmos DB, Skopiuj poniższy przykładowy szablon i W
 > * Nazwy kont są ograniczone do 44 znaków, wszystkie małe litery.
 > * Aby zmienić wartości przepływności, prześlij ponownie szablon z zaktualizowanymi jednostkami RU/s.
 
-[!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 > [!NOTE]
 > Aby utworzyć kontener z dużym kluczem partycji, zmodyfikuj poprzedni szablon w celu uwzględnienia właściwości `"version":2` w obiekcie `partitionKey`.
@@ -136,7 +136,7 @@ Skopiuj poniższy przykładowy szablon i Wdróż go zgodnie z opisem przy użyci
 * Opcjonalnie możesz odwiedzić [galerię szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/) i wdrożyć szablon z poziomu Azure Portal.
 * Możesz również pobrać szablon na komputer lokalny lub utworzyć nowy szablon i określić ścieżkę lokalną za pomocą parametru `--template-file`.
 
-[!code-json[create-cosmosdb-sql-sprocs](~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
 
 ### <a name="deploy-with-powershell"></a>Wdrażanie przy użyciu programu PowerShell
 

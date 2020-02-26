@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 40dd7066d959b56f4554ea9d0390e8b1eb41e77f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896275"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587570"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Zbiorcze importowanie danych do Azure Cosmos DB konta interfejsu API SQL przy użyciu zestawu .NET SDK
 
@@ -81,7 +81,7 @@ Nadal w katalogu aplikacji Zainstaluj Azure Cosmos DBą bibliotekę kliencką dl
 
 Przykładowa aplikacja wymaga uwierzytelnienia na koncie usługi Azure Cosmos. Aby przeprowadzić uwierzytelnianie, należy przekazać poświadczenia konta usługi Azure Cosmos do aplikacji. Uzyskaj poświadczenia konta usługi Azure Cosmos, wykonując następujące czynności:
 
-1.  Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1.  Zaloguj się do [Azure portal](https://portal.azure.com/).
 1.  Przejdź do swojego konta usługi Azure Cosmos.
 1.  Otwórz okienko **klucze** i skopiuj **Identyfikator URI** i **klucz podstawowy** konta.
 
@@ -120,13 +120,13 @@ Zacznijmy od zastąpienia domyślnej metody `Main` i zdefiniowania zmiennych glo
 
 Wewnątrz metody `Main` Dodaj następujący kod, aby zainicjować obiekt CosmosClient:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=CreateClient)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="CreateClient":::
 
 Po włączeniu wykonywania zbiorczego CosmosClient wewnętrznie grupuje współbieżne operacje w ramach pojedynczych wywołań usługi. W ten sposób optymalizuje wykorzystanie przepływności przez dystrybucję wywołań usługi między partycjami, a na koniec przypisuje poszczególne wyniki do oryginalnych wywołujących.
 
 Następnie można utworzyć kontener do przechowywania wszystkich elementów.  Zdefiniuj `/pk` jako klucz partycji, 50000 RU/s jako przepływność aprowizacji i niestandardowe zasady indeksowania, które wykluczają wszystkie pola w celu zoptymalizowania przepływności zapisu. Dodaj następujący kod po instrukcji inicjowania CosmosClient:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Initialize)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Initialize":::
 
 ## <a name="step-6-populate-a-list-of-concurrent-tasks"></a>Krok 6. wypełnienie listy współbieżnych zadań
 
@@ -141,22 +141,22 @@ Najpierw Dodaj fikcyjny pakiet do rozwiązania przy użyciu polecenia dotnet Add
 
 Zdefiniuj definicję elementów, które chcesz zapisać. Należy zdefiniować klasę `Item` w pliku `Program.cs`:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Model)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Model":::
 
 Następnie Utwórz funkcję pomocnika wewnątrz klasy `Program`. Ta funkcja pomocnika Pobiera liczbę elementów zdefiniowanych do wstawienia i wygenerowania losowych danych:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Bogus":::
 
 Odczytaj elementy i serializować je do wystąpień strumienia przy użyciu klasy `System.Text.Json`. Ze względu na charakter danych generowanych automatycznie, serializacja danych jest serializowana jako strumienie. Można również użyć wystąpienia elementu bezpośrednio, ale przez konwersję do strumieni, można wykorzystać wydajność interfejsów API strumienia w CosmosClient. Zwykle dane można używać bezpośrednio, o ile znasz klucz partycji. 
 
 
 Aby przekonwertować dane na wystąpienia strumienia, w metodzie `Main` Dodaj następujący kod bezpośrednio po utworzeniu kontenera:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Operations":::
 
 Następnie użyj strumieni danych, aby utworzyć współbieżne zadania i wypełnić listę zadań, aby wstawić elementy do kontenera. Aby wykonać tę operację, Dodaj następujący kod do klasy `Program`:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="ConcurrentTasks":::
 
 Wszystkie te współbieżne operacje na punktach zostaną wykonane razem (zbiorczo) zgodnie z opisem w sekcji wprowadzenie.
 

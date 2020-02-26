@@ -3,12 +3,12 @@ title: Korzystanie z ustawień diagnostycznych dla magazynów Recovery Services
 description: Artykuł opisujący sposób używania starych i nowych zdarzeń diagnostycznych dla Azure Backup
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 875adb82aeeb56b378a84ca01e716c7189abc64f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281105"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583949"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Używanie ustawień diagnostyki dla magazynów usługi Recovery Services
 
@@ -21,14 +21,15 @@ Ustawienia diagnostyczne dla magazynu Recovery Services można skonfigurować za
 ## <a name="diagnostics-events-available-for-azure-backup-users"></a>Zdarzenia diagnostyki dostępne dla Azure Backup użytkowników
 
 Azure Backup udostępnia następujące zdarzenia diagnostyczne, z których każdy zawiera szczegółowe dane w określonym zestawie artefaktów związanych z kopiami zapasowymi:
+
 * CoreAzureBackup
 * AddonAzureBackupAlerts
 * AddonAzureBackupProtectedInstance
 * AddonAzureBackupJobs
 * AddonAzureBackupPolicy
-* AddonAzureBackupStorage 
+* AddonAzureBackupStorage
 
-[Model danych dla zdarzeń diagnostyki Azure Backup](https://aka.ms/diagnosticsdatamodel)
+[Model danych dla zdarzeń diagnostyki Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
 Dane dla tych zdarzeń można wysłać do konta magazynu, obszaru roboczego LA lub centrum zdarzeń. Jeśli dane są wysyłane do obszaru roboczego LA, należy wybrać przełącznik **specyficzny dla zasobów** na ekranie **Ustawienia diagnostyki** (Zobacz więcej informacji w poniższych sekcjach).
 
@@ -37,6 +38,7 @@ Dane dla tych zdarzeń można wysłać do konta magazynu, obszaru roboczego LA l
 Dostosowanie do planu Log Analytics platformy Azure, Azure Backup teraz umożliwia wysyłanie danych diagnostycznych magazynu do dedykowanych tabel w celu utworzenia kopii zapasowej. Są one określane jako [tabele specyficzne dla zasobów](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific).
 
 Aby wysłać dane diagnostyczne magazynu do LA:
+
 1.  Przejdź do magazynu, a następnie kliknij pozycję **Ustawienia diagnostyczne**. Kliknij pozycję **+ Dodaj ustawienie diagnostyczne**.
 2.  Nadaj nazwę ustawieniu diagnostyki.
 3.  Zaznacz pole wyboru **Wyślij do log Analytics** a następnie wybierz obszar roboczy log Analytics.
@@ -84,4 +86,4 @@ Na poniższym obrazie przedstawiono przykład użytkownika z trzema ustawieniami
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Poznaj model danych Log Analytics dla zdarzeń diagnostycznych](https://aka.ms/diagnosticsdatamodel)
+[Poznaj model danych Log Analytics dla zdarzeń diagnostycznych](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)

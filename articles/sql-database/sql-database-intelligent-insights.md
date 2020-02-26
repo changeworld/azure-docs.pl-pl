@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 20c30a77201c4f728013bdd204eef81294eefb73
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: d32ce79d0c8b26e0e78e2bae0f0335315c1a3a40
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545164"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587332"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights przy użyciu AI do monitorowania i rozwiązywania problemów z wydajnością bazy danych (wersja zapoznawcza)
 
@@ -28,7 +28,7 @@ Intelligent Insights używa wbudowanej analizy do ciągłego monitorowania użyc
 
 Intelligent Insights to unikatowa funkcja analizy wbudowanej platformy Azure, która zapewnia następującą wartość:
 
-- Monitorowanie proaktywne
+- Aktywne monitorowanie
 - Dostosowane szczegółowe informacje o wydajności
 - Wczesne wykrywanie obniżenia wydajności bazy danych
 - Analiza głównych przyczyn problemów wykrytych
@@ -113,7 +113,7 @@ Aby użyć Event Hubs do konfiguracji niestandardowego monitorowania i generowan
 
 ### <a name="set-up-with-azure-storage"></a>Konfigurowanie za pomocą usługi Azure Storage
 
-Aby użyć Intelligent Insights z magazynem, skonfiguruj dane dziennika Intelligent Insights do przesyłania strumieniowego do magazynu, zobacz [przesyłanie strumieniowe do usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage).
+Aby użyć Intelligent Insights z magazynem, skonfiguruj dane dziennika Intelligent Insights do przesyłania strumieniowego do magazynu, zobacz [przesyłanie strumieniowe do usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage).
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>Niestandardowa integracja dziennika Intelligent Insights
 

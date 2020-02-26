@@ -3,12 +3,12 @@ title: Co nowego w programie Microsoft Azure Backup Server
 description: Serwer Microsoft Azure Backup zapewnia ulepszone możliwości tworzenia kopii zapasowych w celu ochrony maszyn wirtualnych, plików i folderów, obciążeń i nie tylko. Dowiedz się, jak zainstalować program lub uaktualnić go do wersji Azure Backup Server v3.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 564b11ebf14652166733c226485dfab94e69dfbb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172219"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582810"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Co nowego w programie Microsoft Azure Backup Server
 
@@ -18,7 +18,7 @@ W serwera usługi MAB v3 uwzględniono następujące funkcje:
 
 ## <a name="volume-to-volume-migration"></a>Migracja woluminu do woluminu
 
-W przypadku Nowoczesny magazyn kopii zapasowych (MB) w serwera usługi MAB v2 ogłoszono magazyn z obsługą obciążeń, w którym można tworzyć kopie zapasowe pewnych obciążeń do określonego magazynu na podstawie właściwości magazynu. Jednak po zakończeniu konfiguracji może zajść potrzeba przeniesienia kopii zapasowych niektórych źródeł danych do innego magazynu w celu zoptymalizowania użycia zasobów. SERWERA usługi MAB v3 daje możliwość migrowania kopii zapasowych i konfigurowania ich do przechowywania na innym woluminie w [trzech krokach](https://blogs.technet.microsoft.com/dpm/2017/10/24/storage-migration-with-dpm-2016-mbs/).
+W przypadku Nowoczesny magazyn kopii zapasowych (MB) w serwera usługi MAB v2 ogłoszono magazyn z obsługą obciążeń, w którym można tworzyć kopie zapasowe pewnych obciążeń do określonego magazynu na podstawie właściwości magazynu. Jednak po zakończeniu konfiguracji może zajść potrzeba przeniesienia kopii zapasowych niektórych źródeł danych do innego magazynu w celu zoptymalizowania użycia zasobów. SERWERA usługi MAB v3 daje możliwość migrowania kopii zapasowych i konfigurowania ich do przechowywania na innym woluminie w [trzech krokach](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842).
 
 ## <a name="prevent-unexpected-data-loss"></a>Zapobiegaj nieoczekiwanej utracie danych
 

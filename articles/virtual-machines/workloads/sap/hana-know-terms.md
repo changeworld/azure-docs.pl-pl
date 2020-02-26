@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/03/2019
+ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ea6a8963d0905036f759fbab792492cc63d551c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e9719f1a081da688501e6dbea0fc1b865168077c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806749"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591221"
 ---
 # <a name="know-the-terms"></a>Poznawanie warunków
 
@@ -38,7 +38,7 @@ Kilka typowych definicji jest szeroko używanych w przewodniku wdrażania archit
    Użytkownicy domeny lokalnej mogą uzyskać dostęp do serwerów i uruchamiać usługi na tych maszynach wirtualnych (na przykład w usługach DBMS). Możliwa jest komunikacja i rozpoznawanie nazw między maszynami wirtualnymi wdrożonymi lokalnie i maszynami wirtualnymi wdrożonymi na platformie Azure. Ten scenariusz jest typowym sposobem, w jaki są wdrażane większość zasobów SAP. Aby uzyskać więcej informacji, zobacz temat [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) i [Tworzenie sieci wirtualnej z połączeniem lokacja-lokacja przy użyciu Azure Portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - **Dzierżawca**: klient wdrożony w sygnaturze dużego wystąpienia Hana zostanie odizolowany do *dzierżawy.* Dzierżawa jest odizolowana od sieci, magazynu i warstwy obliczeniowej od innych dzierżawców. Jednostki magazynowe i obliczeniowe przypisane do różnych dzierżawców nie są ze sobą widoczne ani nie komunikują się ze sobą na poziomie sygnatury dużego wystąpienia HANA. Klient może wybrać wdrożenie w różnych dzierżawach. Nawet nie ma żadnej komunikacji między dzierżawcami na poziomie sygnatury dużego wystąpienia HANA.
 - **Kategoria SKU**: w przypadku dużego wystąpienia Hana oferowane są następujące dwie kategorie jednostek SKU:
-    - **Typ I Klasa**: S72, S72m, s96, S144, S144m, S192, S192m, S192xm i S224
+    - **Typ I Klasa**: S72, S72m, s96, S144, S144m, S192, S192m, S192xm, S224 i S224m
     - **Type II Class**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm i S960m
 - **Sygnatura**: Określa rozmiar wewnętrzny wdrożenia platformy Hana w firmie Microsoft. Przed wdrożeniem jednostek dużego wystąpienia HANA należy wdrożyć sygnaturę dużego wystąpienia HANA składającą się z stojaków obliczeniowych, sieci i magazynu w lokalizacji centrum danych. Takie wdrożenie nazywa się sygnaturą dużego wystąpienia HANA lub z poprawką 4 (patrz poniżej), w którym jest używany alternatywny okres **dużego wystąpienia wiersza**
 - **Poprawka**: Istnieją dwie różne wersje sygnatury dla sygnatur dużych wystąpień usługi Hana. Różnią się one w architekturze i sąsiedztwie na hostach maszyn wirtualnych platformy Azure

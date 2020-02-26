@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: e2b61b87707a732d3b7c27f97b9ca5fcf82b4bf3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: bfbae282f9c383c19aae84a70dfc53f754bd9367
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483053"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592615"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Wprowadzenie do zestawu SDK Azure WebJobs na potrzeby przetwarzania w tle opartego na zdarzeniach
 
@@ -33,7 +33,7 @@ W tym artykule opisano sposób wdrażania zadań WebJob jako aplikacji konsolowe
 
 3. Nazwij projekt *WebJobsSDKSample*, a następnie wybierz pozycję **Utwórz**.
 
-   ![Okno dialogowe nowego projektu](./media/webjobs-sdk-get-started/new-project.png)
+   ![Okno dialogowe Nowy projekt](./media/webjobs-sdk-get-started/new-project.png)
 
 ## <a name="webjobs-nuget-packages"></a>Pakiety NuGet zadań WebJob
 
@@ -382,7 +382,7 @@ Aby skorzystać z funkcji rejestrowania [Application Insights](../azure-monitor/
                     string instrumentationKey = context.Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"];
                     if (!string.IsNullOrEmpty(instrumentationKey))
                     {
-                        b.AddApplicationInsights(o => o.InstrumentationKey = instrumentationKey);
+                        b.AddApplicationInsightsWebJobs(o => o.InstrumentationKey = instrumentationKey);
                     }
                 });
         var host = builder.Build();

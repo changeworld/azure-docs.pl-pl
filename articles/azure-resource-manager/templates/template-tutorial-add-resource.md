@@ -2,15 +2,15 @@
 title: Samouczek — Dodawanie zasobu do szablonu
 description: W tym artykule opisano kroki tworzenia pierwszego szablonu Azure Resource Manager. Dowiesz się więcej na temat składni pliku szablonu i sposobu wdrażania konta magazynu.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 02/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8686b15501e267ab23efe654d28a3e67369a8d03
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: af571b6503f04c809b62c530f6d6254082b838be
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765587"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586686"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Samouczek: Dodawanie zasobu do szablonu Menedżer zasobów
 
@@ -26,7 +26,10 @@ Musisz mieć Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów i A
 
 Aby dodać definicję konta magazynu do istniejącego szablonu, zobacz wyróżniony kod JSON w poniższym przykładzie. Zamiast próbować skopiować sekcje szablonu, Skopiuj cały plik i Zastąp jego zawartość.
 
-Zastąp element **{Account-Unique-Name}** unikatową nazwą konta magazynu. Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure. Nazwa może zawierać tylko małe litery lub cyfry. Nie może być dłuższa niż 24 znaki. Możesz spróbować użyć wzorca nazewnictwa, takiego jak **store1** , jako prefiksu, a następnie dodać inicjały i bieżącą datę. Na przykład użyta nazwa może wyglądać jak **store1abc09092019**.
+Zastąp element **{Account-Unique-Name}** unikatową nazwą konta magazynu.
+
+> [!IMPORTANT]
+> Nazwa konta magazynu musi być unikatowa w obrębie platformy Azure. Nazwa może zawierać tylko małe litery lub cyfry. Nie może być dłuższa niż 24 znaki. Możesz spróbować użyć wzorca nazewnictwa, takiego jak **store1** , jako prefiksu, a następnie dodać inicjały i bieżącą datę. Na przykład użyta nazwa może wyglądać jak **store1abc09092019**.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
@@ -58,7 +61,7 @@ Możesz wdrożyć szablon, aby utworzyć konto magazynu. Nadaj wdrożenieowi inn
 
 Jeśli grupa zasobów nie została utworzona, zobacz [Tworzenie grupy zasobów](template-tutorial-create-first-template.md#create-resource-group). W przykładzie założono, że ustawiono zmienną **TemplateFile** na ścieżkę do pliku szablonu, jak pokazano w [pierwszym samouczku](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -67,7 +70,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+# <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -94,7 +97,7 @@ To wdrożenie trwa dłużej niż wdrożenie pustego szablonu, ponieważ konto ma
 
 Można zweryfikować wdrożenie, przeeksplorowanie grupy zasobów z Azure Portal.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Z menu po lewej stronie wybierz pozycję **grupy zasobów**.
 1. Wybierz grupę zasobów, do której została wdrożona.
 1. Zobaczysz, że konto magazynu zostało wdrożone.

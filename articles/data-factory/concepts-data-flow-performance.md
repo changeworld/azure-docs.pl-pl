@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 01/25/2020
-ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/24/2020
+ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773844"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587587"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Przewodnik dotyczący wydajności i dostrajania przepływu danych
 
@@ -35,8 +35,8 @@ Podczas projektowania mapowania przepływów danych można testować poszczegól
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Zwiększanie rozmiaru obliczeń w Azure Integration Runtime
 
 Integration Runtime o większej liczbie rdzeni zwiększa liczbę węzłów w środowiskach obliczeniowych platformy Spark i zapewnia większą moc obliczeniową do odczytywania, zapisywania i przekształcania danych.
-* Wypróbuj klaster **zoptymalizowany pod kątem obliczeń** , jeśli szybkość przetwarzania ma być wyższa niż szybkość wprowadzania
-* Wypróbuj klaster **zoptymalizowany pod kątem pamięci** , jeśli chcesz buforować więcej danych w pamięci.
+* Wypróbuj klaster **zoptymalizowany pod kątem obliczeń** , jeśli szybkość przetwarzania ma być wyższa niż stawka wejściowa.
+* Wypróbuj klaster **zoptymalizowany pod kątem pamięci** , jeśli chcesz buforować więcej danych w pamięci. Zoptymalizowane pod kątem pamięci ma wyższy poziom cen na rdzeń niż zoptymalizowany od obliczeń, ale prawdopodobnie spowoduje to szybsze przyspieszenie transformacji.
 
 ![Nowy IR](media/data-flow/ir-new.png "Nowy IR")
 
@@ -73,7 +73,7 @@ W obszarze **Opcje źródła** w transformacji źródłowej następujące ustawi
 
 Aby uniknąć przetwarzania wierszy na wierszach przepływów danych, ustaw **rozmiar wsadu** na karcie Ustawienia dla usługi Azure SQL DB i ujścia usługi Azure SQL DW. W przypadku ustawienia rozmiaru wsadu ADF przetwarza operacje zapisu bazy danych w partiach na podstawie podanego rozmiaru.
 
-![obiekt sink](media/data-flow/sink4.png "Ujście")
+![Fotografii](media/data-flow/sink4.png "Ujście")
 
 ### <a name="partitioning-on-sink"></a>Partycjonowanie na ujścia
 
@@ -87,17 +87,24 @@ W potoku Dodaj [działanie procedury składowanej](transform-data-using-stored-p
 
 Zaplanuj zmianę rozmiarów źródła i ujścia usługi Azure SQL DB oraz DW przed uruchomieniem potoku, aby zwiększyć przepływność i zminimalizować ograniczenie przepustowości platformy Azure po osiągnięciu limitów jednostek DTU. Po zakończeniu wykonywania potoku Zmień rozmiar baz danych z powrotem na ich normalną szybkość uruchamiania.
 
-### <a name="azure-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Tylko usługa Azure SQL DW] Ładowanie danych luzem przy użyciu funkcji przemieszczania za pośrednictwem bazy
+* Tabela źródłowa usługi SQL DB z 887k wierszami i kolumnami 74 w tabeli bazy danych SQL z pojedynczą transformację kolumn pochodnych zajmują około 3 minuty na zakończenie korzystania z zoptymalizowanej pod kątem pamięci 80-rdzeniowego debugowania platformy Azure.
+
+### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Tylko Azure Synapse SQL DW] Ładowanie danych luzem przy użyciu funkcji przemieszczania za pośrednictwem bazy
 
 Aby uniknąć wstawiania wierszy w wierszu do magazynu danych, zaznacz pole wyboru **Włącz przemieszczanie** w ustawieniach ujścia, aby można było użyć [bazy](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)danych ADF. Baza danych wielobase pozwala na ładowanie zbiorczych modułów ADF.
 * Gdy wykonujesz działanie przepływu danych z potoku, musisz wybrać obiekt BLOB lub ADLS Gen2 lokalizację przechowywania danych podczas ładowania zbiorczego.
 
+* Źródło pliku 421Mb z kolumnami 74 w tabeli Synapse i pojedyncza transformacja kolumn pochodnych zajmie około 4 minut, korzystając z zoptymalizowanej pod kątem pamięci 80-rdzeniowego debugowania platformy Azure.
+
 ## <a name="optimizing-for-files"></a>Optymalizacja dla plików
 
-W każdym przekształceniu można ustawić schemat partycjonowania, który ma być używany przez fabrykę danych na karcie Optymalizacja.
+W każdym przekształceniu można ustawić schemat partycjonowania, który ma być używany przez fabrykę danych na karcie Optymalizacja. Dobrym sposobem jest pierwsze przetestowanie sink opartych na plikach, zachowując domyślne partycjonowanie i optymalizacje.
+
 * W przypadku mniejszych plików może się okazać, że wybranie *pojedynczej partycji* może czasami pracować lepiej i szybciej niż w przypadku usługi Spark do partycjonowania małych plików.
 * Jeśli nie masz wystarczającej ilości informacji na temat danych źródłowych, wybierz partycjonowanie działania *okrężne* i ustaw liczbę partycji.
 * Jeśli dane zawierają kolumny, które mogą być dobrymi kluczami skrótów, wybierz opcję *partycjonowanie skrótów*.
+
+* Źródło pliku z datasinkem pliku 421Mb z kolumnami 74 i pojedyncza transformacja kolumn pochodnych trwa około 2 minuty, używając zoptymalizowanej pod kątem pamięci 80-rdzeniowego debugowania platformy Azure.
 
 W przypadku debugowania w podglądzie danych i debugowaniu potoku, rozmiary i próbkowanie dla źródłowych elementów DataSet opartych na plikach są stosowane tylko do liczby zwracanych wierszy, a nie liczby odczytanych wierszy. Może to mieć wpływ na wydajność wykonywania debugowania i może spowodować niepowodzenie przepływu.
 * Klastry debugowania są domyślnie małymi klastrami z jednym węzłem, a firma Microsoft zaleca korzystanie z przykładowych małych plików na potrzeby debugowania. Przejdź do pozycji Ustawienia debugowania i wskaż mały podzestaw danych przy użyciu pliku tymczasowego.

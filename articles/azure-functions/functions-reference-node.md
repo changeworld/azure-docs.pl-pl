@@ -4,12 +4,12 @@ description: Dowiedz się, jak opracowywać funkcje przy użyciu języka JavaScr
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: ee6b886c6ed18aad54092005d800b4087280190b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714794"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584493"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów Azure Functions JavaScript
 
@@ -100,7 +100,7 @@ module.exports = async function (context, req) {
 ## <a name="bindings"></a>Powiązania 
 W języku JavaScript [powiązania](functions-triggers-bindings.md) są konfigurowane i definiowane w funkcji Function. JSON. Funkcje współdziałają z powiązaniami na wiele sposobów.
 
-### <a name="inputs"></a>Dane wejściowe
+### <a name="inputs"></a>Wejścia
 Dane wejściowe są podzielone na dwie kategorie w Azure Functions: jeden to dane wejściowe wyzwalacza, a drugi to dodatkowe dane wejściowe. Wyzwalacz i inne powiązania wejściowe (powiązania `direction === "in"`) mogą być odczytywane przez funkcję na trzy sposoby:
  - **_[Zalecane]_ Jako parametry przesłane do funkcji.** Są one przenoszone do funkcji w takiej samej kolejności, w jakiej są zdefiniowane w *funkcji Function. JSON*. Właściwość `name` zdefiniowana w *funkcji Function. JSON* nie musi być zgodna z nazwą parametru, chociaż powinna być.
  
@@ -128,7 +128,7 @@ Dane wejściowe są podzielone na dwie kategorie w Azure Functions: jeden to dan
    };
    ```
 
-### <a name="outputs"></a>Dane wyjściowe
+### <a name="outputs"></a>Wyjścia
 Wyniki (powiązania `direction === "out"`) mogą być zapisywane przez funkcję na wiele sposobów. We wszystkich przypadkach Właściwość `name` powiązania, zgodnie z definicją w *Function. JSON* , odnosi się do nazwy składowej obiektu, która jest zapisywana w funkcji. 
 
 Dane można przypisywać do powiązań wyjściowych w jeden z następujących sposobów (nie łącz tych metod):
@@ -232,7 +232,7 @@ Można zdefiniować dane wyjściowe powiązania przy użyciu metody `context.don
 context.bindingData
 ```
 
-Zwraca nazwany obiekt, który zawiera metadane wyzwalacza i dane wywołania funkcji (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Przykład metadanych wyzwalacza zawiera przykład tego centrum [zdarzeń](functions-bindings-event-hubs.md#trigger).
+Zwraca nazwany obiekt, który zawiera metadane wyzwalacza i dane wywołania funkcji (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Przykład metadanych wyzwalacza zawiera przykład tego centrum [zdarzeń](functions-bindings-event-hubs-trigger.md).
 
 ### <a name="contextdone-method"></a>Context. done — Metoda
 
@@ -418,14 +418,17 @@ FUNCTIONS_WORKER_PROCESS_COUNT ma zastosowanie do każdego hosta, który tworzy 
 
 ## <a name="node-version"></a>Wersja węzła
 
-W poniższej tabeli przedstawiono wersję środowiska Node. js używaną przez każdą wersję główną funkcji Runtime:
+W poniższej tabeli przedstawiono bieżące obsługiwane wersje programu Node. js dla każdej wersji głównej środowiska uruchomieniowego funkcji, według systemu operacyjnego:
 
-| Wersja funkcji | Wersja środowiska Node. js | 
-|---|---|
-| 1.x | 6.11.2 (zablokowany przez środowisko uruchomieniowe) |
-| 2.x  | _Active LTS_ i _Maintenance LTS_ w wersji Node. js (zalecane: ~ 10). Aby określić wersję na platformie Azure, należy ustawić [ustawienie aplikacji](functions-how-to-use-azure-function-app-settings.md#settings) WEBSITE_NODE_DEFAULT_VERSION na `~10`.|
+| Wersja funkcji | Wersja węzła (system Windows) | Wersja węzła (Linux) |
+|---|---| --- |
+| 1.x | 6.11.2 (zablokowany przez środowisko uruchomieniowe) | Nie dotyczy |
+| 2.x  | ~ 8<br/>~ 10 (zalecane)<br/>~ 12<sup>*</sup> | ~ 8 (zalecane)<br/>~ 10  |
+| wersji | ~ 10<br/>~ 12 (zalecane)  | ~ 10<br/>~ 12 (zalecane) |
 
-Bieżącą wersję, która jest używana przez środowisko uruchomieniowe, można zobaczyć, sprawdzając powyższe ustawienie aplikacji lub drukując `process.version` z dowolnej funkcji.
+<sup>*</sup> Węzeł ~ 12 jest obecnie dozwolony w wersji 2. x środowiska uruchomieniowego funkcji. Jednak w celu uzyskania najlepszej wydajności zalecamy używanie środowiska uruchomieniowego Functions w wersji 3. x z węzłem ~ 12. 
+
+Bieżącą wersję, która jest używana przez środowisko uruchomieniowe, można zobaczyć, sprawdzając powyższe ustawienie aplikacji lub drukując `process.version` z dowolnej funkcji. Docelowa wersja na platformie Azure przez ustawienie [Ustawienia aplikacji](functions-how-to-use-azure-function-app-settings.md#settings) WEBSITE_NODE_DEFAULT_VERSION na OBSŁUGIWANĄ wersję LTS, taką jak `~10`.
 
 ## <a name="dependency-management"></a>Zarządzanie zależnościami
 Aby można było używać bibliotek społeczności w kodzie JavaScript, jak pokazano w poniższym przykładzie, należy się upewnić, że wszystkie zależności są zainstalowane na aplikacja funkcji na platformie Azure.
@@ -693,7 +696,7 @@ module.exports = async function (context) {
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji zawierają następujące zasoby:
+Więcej informacji można znaleźć w następujących zasobach:
 
 + [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 + [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)

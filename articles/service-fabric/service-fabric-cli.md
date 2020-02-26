@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b4ddc5bb52aeef622a33ace7b3ffad4694d7c072
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904825"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587621"
 ---
 # <a name="azure-service-fabric-cli"></a>Interfejs wiersza polecenia usługi Azure Service Fabric
 
@@ -41,7 +41,7 @@ Interfejs wiersza polecenia usługi Service Fabric jest przeznaczony do obsługi
 
 Opcjonalnie można określić docelową wersję interfejsu wiersza polecenia do zainstalowania, dodając do polecenia `pip install` sufiks z wersją `==<version>`. Na przykład składnia dla wersji 1.1.0 będzie następująca:
 
-```
+```shell
 pip install -I sfctl==1.1.0
 ```
 
@@ -67,14 +67,14 @@ W przypadku systemów Windows 10, Windows Server 2016 i Windows Server 2012 R2 n
 
 Możesz teraz otworzyć nowe okno polecenia i pobrać odpowiednią wersję środowiska Python i narzędzia pip.
 
-```bat
+```shell
 python --version
 pip --version
 ```
 
 Następnie uruchom następujące polecenie, aby zainstalować interfejs wiersza polecenia platformy Azure Service Fabric (sfctl) i wyświetlić stronę pomocy interfejsu wiersza polecenia:
 
-```bat
+```shell
 pip install sfctl
 sfctl -h
 ```
@@ -103,7 +103,7 @@ Upewnij się, że element `~/.local/bin` jest dostępny w lokalizacji `$PATH`:
 
 ```bash
 export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+echo "export PATH=$PATH:~/.local/bin" >> .shellrc
 ```
 
 W przypadku niepowodzenia instalacji w podsystemie systemu Windows dla systemu Linux z powodu nieprawidłowych uprawnień folderu być może trzeba będzie spróbować ponownie z podwyższonym poziomem uprawnień:
@@ -148,7 +148,7 @@ Polecenia mają zawsze prefiks `sfctl`. Aby uzyskać ogólne informacje na temat
 
 Polecenia mają powtarzalną strukturę, w której element docelowy poprzedza zlecenie (akcję).
 
-```azurecli
+```shell
 sfctl <object> <action>
 ```
 
@@ -161,7 +161,7 @@ Przed wykonaniem jakiejkolwiek operacji musisz wybrać klaster, z którym chcesz
 > [!WARNING]
 > Nie używaj niezabezpieczonych klastrów usługi Service Fabric w środowisku produkcyjnym.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint http://testcluster.com:19080
 ```
 
@@ -169,7 +169,7 @@ Punkt końcowy klastra musi mieć prefiks `http` lub `https`. Musi on zawierać 
 
 W przypadku klastrów zabezpieczonych certyfikatem możesz określić certyfikat zakodowany w formacie PEM. Certyfikat można określić jako pojedynczy plik lub jako parę obejmującą certyfikat i klucz. W przypadku certyfikatu z podpisem własnym, który nie jest podpisany przez urząd certyfikacji, można użyć opcji `--no-verify`, aby pominąć weryfikację urzędu certyfikacji.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
@@ -181,7 +181,7 @@ Informacje o połączeniu klastra są utrwalane w wielu sesjach interfejsu wiers
 
 Aby na przykład uzyskać informacje o kondycji klastra usługi Service Fabric, uruchom następujące polecenie:
 
-```azurecli
+```shell
 sfctl cluster health
 ```
 
@@ -218,13 +218,13 @@ Kilka sugestii i porad dotyczących rozwiązywania typowych problemów.
 
 Interfejs wiersza polecenia usługi Service Fabric obsługuje certyfikaty po stronie klienta w postaci plików PEM (rozszerzenie pem). Jeśli używasz plików PFX z systemu Windows, musisz konwertować te certyfikaty na format PEM. Aby konwertować plik PFX na plik PEM, użyj następującego polecenia:
 
-```bash
+```shell
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
 Podobnie aby przekonwertować plik PEM do pliku PFX, można użyć następującego polecenia (nie wymaga ono podawania hasła):
 
-```bash
+```shell
 openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certificates.pem -passout pass:'' 
 ```
 
@@ -246,13 +246,13 @@ Szczegółowe dzienniki często bywają przydatne w przypadku debugowania lub zg
 
 Aby uzyskać pomoc dotyczącą określonego polecenia lub grupy poleceń, użyj flagi `-h`.
 
-```azurecli
+```shell
 sfctl application -h
 ```
 
 Oto inny przykład:
 
-```azurecli
+```shell
 sfctl application create -h
 ```
 
@@ -260,7 +260,7 @@ sfctl application create -h
 
 Aby zaktualizować interfejs wiersza polecenia usługi Service Fabric, uruchom następujące polecenia (element `pip` zastąp elementem `pip3` w zależności od opcji wybranej podczas oryginalnej instalacji):
 
-```bash
+```shell
 pip uninstall sfctl
 pip install sfctl
 ```

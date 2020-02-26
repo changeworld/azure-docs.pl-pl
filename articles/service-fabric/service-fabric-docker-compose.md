@@ -3,12 +3,12 @@ title: Wersja zapoznawcza wdrożenia usługi Azure Service Fabric Docker Compose
 description: Usługa Azure Service Fabric akceptuje format Docker Compose, aby ułatwić organizowanie istniejących kontenerów przy użyciu Service Fabric. Ta funkcja jest obecnie w wersji zapoznawczej.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 6dd45e81a0db06cbaa75da3f94b9e7624b0acd69
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458052"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589338"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Obsługa wdrażania Docker Compose w usłudze Azure Service Fabric (wersja zapoznawcza)
 
@@ -27,7 +27,7 @@ Aby użyć tej wersji zapoznawczej, należy utworzyć klaster z wersją 5,7 lub 
 Następujące polecenia tworzą aplikację Service Fabric (o nazwie `fabric:/TestContainerApp`), którą można monitorować i zarządzać jak dowolną inną aplikacją Service Fabric. Można użyć określonej nazwy aplikacji na potrzeby zapytań dotyczących kondycji.
 Service Fabric rozpoznaje wartość "Deploymentname" jako identyfikator wdrożenia redagowania.
 
-### <a name="use-powershell"></a>Używanie programu PowerShell
+### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
 Utwórz Service Fabric Tworzenie wdrożenia z pliku Docker-Compose. yml, uruchamiając następujące polecenie w programie PowerShell:
 
@@ -69,37 +69,37 @@ Get-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp
 
 Alternatywnie, można użyć następującego Service Fabric polecenia interfejsu CLI:
 
-```azurecli
+```shell
 sfctl compose create --deployment-name TestContainerApp --file-path docker-compose.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [ --timeout ]
 ```
 
 Po utworzeniu wdrożenia można sprawdzić jego stan przy użyciu następującego polecenia:
 
-```azurecli
+```shell
 sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Aby usunąć wdrożenie redagowania, użyj następującego polecenia:
 
-```azurecli
+```shell
 sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Aby rozpocząć uaktualnianie wdrożenia redagowania, użyj następującego polecenia:
 
-```azurecli
+```shell
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
 ```
 
 Aby wycofać uaktualnienie redagowania wdrożenia, użyj następującego polecenia:
 
-```azurecli
+```shell
 sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Po zaakceptowaniu uaktualnienia można śledzić postęp uaktualniania przy użyciu następującego polecenia:
 
-```azurecli
+```shell
 sfctl compose upgrade-status --deployment-name TestContainerApp
 ```
 

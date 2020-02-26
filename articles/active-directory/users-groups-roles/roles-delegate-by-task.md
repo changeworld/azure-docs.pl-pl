@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19afaf743cc594ab17776b990687a442c339ed92
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: f07b37fffe61a6be62a72a0281e701b69167e95b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559015"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596763"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role administratorów według zadania administratora w Azure Active Directory
 
@@ -45,14 +45,14 @@ Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 Tworzenie katalogów Azure AD B2C | Wszyscy użytkownicy niebędący gośćmi ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Tworzenie aplikacji B2C | Administrator globalny | 
 Tworzenie aplikacji dla przedsiębiorstw | Administrator aplikacji w chmurze | Administrator aplikacji
-Tworzenie, odczytywanie, aktualizowanie i usuwanie zasad B2C | Administrator globalny | 
-Tworzenie, odczytywanie, aktualizowanie i usuwanie dostawców tożsamości | Administrator globalny | 
-Tworzenie, odczytywanie, aktualizowanie i usuwanie przepływów użytkownika resetowania haseł | Administrator globalny | 
-Tworzenie, odczytywanie, aktualizowanie i usuwanie profilu edytowanie przepływów użytkowników | Administrator globalny | 
-Tworzenie, odczytywanie, aktualizowanie i usuwanie przepływów użytkowników logowania | Administrator globalny | 
-Tworzenie, odczytywanie, aktualizowanie i usuwanie przepływu użytkownika przy rejestrowaniu |Administrator globalny | 
-Tworzenie, odczytywanie, aktualizowanie i usuwanie atrybutów użytkownika | Administrator globalny | 
-Tworzenie, odczytywanie, aktualizowanie i usuwanie użytkowników | Administrator globalny ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
+Tworzenie, odczytywanie, aktualizowanie i usuwanie zasad B2C | Administrator zasad B2C IEF | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie dostawców tożsamości | Administrator zewnętrznego dostawcy tożsamości | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie przepływów użytkownika resetowania haseł | Administrator przepływu użytkownika B2C | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie profilu edytowanie przepływów użytkowników | Administrator przepływu użytkownika B2C | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie przepływów użytkowników logowania | Administrator przepływu użytkownika B2C | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie przepływu użytkownika przy rejestrowaniu |Administrator przepływu użytkownika B2C | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie atrybutów użytkownika | B2C atrybutu przepływu użytkownika | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie użytkowników | Administrator użytkowników
 Odczytaj całą konfigurację | Czytnik globalny | 
 Odczytaj dzienniki inspekcji B2C | Czytnik globalny ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
 
@@ -72,7 +72,7 @@ Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Konfigurowanie właściwości firmy | Administrator globalny | 
 
-## <a name="connect"></a>Połączenie
+## <a name="connect"></a>Połącz
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -104,7 +104,7 @@ Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 Zarządzanie domenami | Administrator globalny | 
 Odczytaj całą konfigurację | Czytelnicy katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 
-## <a name="domain-services"></a>Domain Services
+## <a name="domain-services"></a>Active Directory
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -127,7 +127,7 @@ Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Wyrażanie zgody na uprawnienia delegowane | Administrator aplikacji w chmurze | Administrator aplikacji
 Wyrażanie zgody na uprawnienia aplikacji, w tym Microsoft Graph | Administrator aplikacji w chmurze | Administrator aplikacji
-Wyrażanie zgody na uprawnienia aplikacji do Microsoft Graph | Administrator globalny | 
+Wyrażanie zgody na uprawnienia aplikacji do Microsoft Graph | Administrator ról uprzywilejowanych | 
 Wyrażanie zgody na aplikacje uzyskujące dostęp do danych | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Tworzenie aplikacji dla przedsiębiorstw | Administrator aplikacji w chmurze | Administrator aplikacji
 Zarządzanie serwerem proxy aplikacji | Administrator aplikacji | 
@@ -156,7 +156,7 @@ Przypisywanie licencji | Administrator użytkowników |
 Utwórz grupę | Administrator użytkowników | 
 Tworzenie, aktualizowanie i usuwanie przeglądu dostępu do grupy lub aplikacji | Administrator użytkowników | 
 Zarządzanie wygaśnięciem grupy | Administrator użytkowników | 
-Zarządzenie ustawieniami grup | Administrator globalny | 
+Zarządzenie ustawieniami grup | Administrator grup | Administrator użytkowników | 
 Odczytaj wszystkie konfiguracje (z wyjątkiem ukrytych członkostw) | Czytelnicy katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Odczytaj ukryte członkostwo | Członek grupy | Właściciel grupy, administrator haseł, administrator serwera Exchange, administrator programu SharePoint, administrator zespołów, administrator użytkowników
 Odczytuj członkostwo grup z ukrytym członkostwem | Administrator pomocy technicznej | Administrator użytkowników, Administratorzy zespołów
@@ -234,7 +234,7 @@ Odczytaj stan serwera | Czytnik globalny |
 
 Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Zarządzaj dostawcami tożsamości | Administrator globalny | 
+Zarządzaj dostawcami tożsamości | Administrator zewnętrznego dostawcy tożsamości | 
 Zarządzanie ustawieniami | Administrator globalny | 
 Zarządzanie warunkami użytkowania | Administrator globalny | 
 Odczytaj całą konfigurację | Czytnik globalny | 
@@ -330,11 +330,11 @@ Tworzenie użytkownika | Administrator użytkowników |
 Usuwanie użytkowników | Administrator użytkowników | 
 Unieważnianie tokenów odświeżania ograniczonych administratorów (zobacz dokumentację) | Administrator użytkowników | 
 Unieważnij tokeny odświeżania nie będących administratorami (zobacz dokumentację) | Administrator haseł | Administrator użytkowników
-Unieważnianie tokenów odświeżania uprzywilejowanych administratorów (zobacz dokumentację) | Administrator globalny | 
+Unieważnianie tokenów odświeżania uprzywilejowanych administratorów (zobacz dokumentację) | Administrator uprzywilejowanego uwierzytelniania | 
 Odczytaj konfigurację podstawową | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
 Resetowanie hasła dla ograniczonych administratorów (zobacz dokumentację) | Administrator użytkowników | 
 Zresetuj hasło niebędących administratorami (zobacz dokumentację) | Administrator haseł | Administrator użytkowników
-Resetowanie hasła administratorów uprzywilejowanych | Administrator globalny | 
+Resetowanie hasła administratorów uprzywilejowanych | Administrator uprzywilejowanego uwierzytelniania | 
 Odwołaj licencję | Administrator licencji | Administrator użytkowników
 Aktualizuj wszystkie właściwości z wyjątkiem nazwy głównej użytkownika | Administrator użytkowników | 
 Aktualizowanie głównej nazwy użytkownika dla ograniczonych administratorów (zobacz dokumentację) | Administrator użytkowników | 

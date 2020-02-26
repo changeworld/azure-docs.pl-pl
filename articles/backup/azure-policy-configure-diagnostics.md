@@ -3,22 +3,22 @@ title: Konfigurowanie ustawień diagnostyki magazynu w odpowiedniej skali
 description: Skonfiguruj ustawienia diagnostyki Log Analytics dla wszystkich magazynów w danym zakresie przy użyciu Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: bdc3dd1da9d3ddc966b664f8bec479f5a8ff10f2
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: c92957cab3e1ed745e7031e3c6f32e7ecda550a5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501084"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584510"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Konfigurowanie ustawień diagnostyki magazynu w odpowiedniej skali
 
-Rozwiązanie raportowania zapewniane przez Azure Backup wykorzystuje Log Analytics (LA). Aby dane z danego magazynu były wysyłane do LA, należy utworzyć dla tego magazynu [ustawienie diagnostyczne](https://aka.ms/AzureBackupDiagnosticsDocs) .
+Rozwiązanie raportowania zapewniane przez Azure Backup wykorzystuje Log Analytics (LA). Aby dane z danego magazynu były wysyłane do LA, należy utworzyć dla tego magazynu [ustawienie diagnostyczne](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events) .
 
 Często ręczne dodanie ustawienia diagnostyki dla magazynu może być uciążliwym zadaniem. Ponadto wszystkie nowe magazyny tworzone również muszą mieć włączone ustawienia diagnostyczne, aby można było wyświetlać raporty dla tego magazynu. 
 
 Aby uprościć tworzenie ustawień diagnostycznych na dużą skalę (z LA jako miejsce docelowe), Azure Backup zapewnia wbudowaną [Azure Policy](https://docs.microsoft.com/azure/governance/policy/). Ta zasada dodaje ustawienie diagnostyki LA do wszystkich magazynów w danej subskrypcji lub grupie zasobów. Poniższe sekcje zawierają instrukcje dotyczące korzystania z tych zasad.
 
-## <a name="supported-scenarios"></a>Scenariusze obsługiwane 
+## <a name="supported-scenarios"></a>Scenariusze obsługiwane
 
 * Zasady mogą być stosowane jednocześnie do wszystkich magazynów Recovery Services w określonej subskrypcji (lub w grupie zasobów w ramach subskrypcji). Użytkownik przypisujący zasady musi mieć dostęp "właściciel" do subskrypcji, do której przypisane są zasady.
 
@@ -49,6 +49,7 @@ Aby przypisać zasady dla magazynów w wymaganym zakresie, wykonaj następujące
 ![Podstawowe informacje dotyczące przypisywania zasad](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
 7. W obszarze **Parametry**wprowadź następujące informacje:
+
 * **Nazwa profilu** — nazwa, która zostanie przypisana do ustawień diagnostycznych utworzonych przez zasady.
 * **Log Analytics obszar roboczy** — log Analytics obszar roboczy, do którego ma zostać skojarzone ustawienie diagnostyczne. Dane diagnostyczne wszystkich magazynów w zakresie przypisania zasad zostaną wypchnięte do określonego obszaru roboczego LA.
 
@@ -69,7 +70,7 @@ Zadanie korygowania jest stosowane do magazynów, które są niezgodne zgodnie z
 * Brak ustawienia diagnostyki dla magazynu.
 * Ustawienia diagnostyczne są obecne dla magazynu, ale żadne z tych ustawień nie ma **wszystkich** zdarzeń specyficznych dla zasobów, które zostały włączone przy użyciu La jako miejsca docelowego, i wybranego **zasobu** zaznaczonego w przełączniku. 
 
-Nawet jeśli użytkownik ma magazyn z włączonym zdarzeniem AzureBackupReport w trybie AzureDiagnostics (który jest obsługiwany przez raporty kopii zapasowych [), zadanie](https://aka.ms/AzureBackupDiagnosticsDocs#legacy-event)korygowania nadal będzie dotyczyło tego magazynu, ponieważ tryb specyficzny dla zasobów jest zalecanym sposobem tworzenia ustawień diagnostycznych. 
+Nawet jeśli użytkownik ma magazyn z włączonym zdarzeniem AzureBackupReport w trybie AzureDiagnostics (który jest obsługiwany przez raporty kopii zapasowych [), zadanie](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event)korygowania nadal będzie dotyczyło tego magazynu, ponieważ tryb specyficzny dla zasobów jest zalecanym sposobem tworzenia ustawień diagnostycznych.
 
 Ponadto jeśli użytkownik ma magazyn z tylko podzbiorem sześciu zdarzeń specyficznych dla zasobów, zadanie korygowania będzie dotyczyło tego magazynu, ponieważ raporty kopii zapasowych będą działały zgodnie z oczekiwaniami tylko wtedy, gdy są włączone wszystkie sześć zdarzeń specyficznych dla zasobów.
 
@@ -82,6 +83,7 @@ Ponadto jeśli użytkownik ma magazyn z tylko podzbiorem sześciu zdarzeń specy
 > Należy pamiętać, że zadanie korygujące **nie** powiedzie się, jeśli istniejące ustawienie diagnostyczne AzureBackupReport włączone z obszarem roboczym X jako miejsce docelowe, ponieważ w tym przypadku nie będzie nakładać się między zdarzeniami włączonymi przez istniejące ustawienie i zdarzeniami włączonymi przez ustawienie utworzone przez zadanie korygowania.
 
 ## <a name="next-steps"></a>Następne kroki
-- [Dowiedz się, jak używać raportów kopii zapasowych](https://aka.ms/AzureBackupReportDocs)
-- [Dowiedz się więcej o Azure Policy](https://docs.microsoft.com/azure/governance/policy/)
-- [Użyj Azure Policy, aby włączyć funkcję autotworzenia kopii zapasowych dla wszystkich maszyn wirtualnych w zakresie](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)
+
+* [Dowiedz się, jak używać raportów kopii zapasowych](https://docs.microsoft.com/azure/backup/configure-reports)
+* [Dowiedz się więcej o Azure Policy](https://docs.microsoft.com/azure/governance/policy/)
+* [Użyj Azure Policy, aby włączyć funkcję autotworzenia kopii zapasowych dla wszystkich maszyn wirtualnych w zakresie](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)

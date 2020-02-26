@@ -6,14 +6,14 @@ manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 01/30/2020
-ms.openlocfilehash: d0e0e8a5aa3a3e43997e3f9512525be9f51d2018
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 74f69f789ecb0d529e52054eeb1ac7ccb51bd6c2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934871"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588829"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co nowego w usłudze Azure Wyszukiwanie poznawcze
 
@@ -27,7 +27,7 @@ Azure Search teraz zmieniono nazwę na **platformę Azure wyszukiwanie poznawcze
 
 ## <a name="feature-announcements"></a>Anonse funkcji
 
-### <a name="february-2020"></a>Luty 2020
+### <a name="february-2020"></a>Luty 2020 r.
 
 + [Wykrywanie danych osobowych (wersja zapoznawcza)](cognitive-search-skill-pii-detection.md) to umiejętność wykorzystywana podczas indeksowania, która wyodrębnia dane osobowe z tekstu wejściowego i umożliwia zamaskowanie tego tekstu na różne sposoby.
 

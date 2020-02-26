@@ -3,12 +3,12 @@ title: Przegląd architektury
 description: Zawiera omówienie architektury, składników i procesów używanych przez usługę Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963941"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584391"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup architektura i składniki
 
@@ -135,7 +135,7 @@ Tworzenie kopii zapasowej deduplikowanych dysków | | | ![Częściowo][yellow]<b
     - Dane migawki mogą nie być od razu kopiowane do magazynu. W godzinach szczytu kopia zapasowa może trwać kilka godzin. Łączny czas wykonywania kopii zapasowej maszyny wirtualnej będzie krótszy niż 24 godziny dla codziennych zasad tworzenia kopii zapasowych.
 1. Po wysłaniu danych do magazynu zostanie utworzony punkt odzyskiwania. Domyślnie migawki są zachowywane przez dwa dni przed ich usunięciem. Ta funkcja umożliwia przywracanie z tych migawek, a tym samym wycinanie czasów przywracania. Skraca czas wymagany do przekształcania i kopiowania danych z magazynu. Zobacz [Azure Backup możliwości przywracania natychmiastowego](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
 
-Maszyny wirtualne platformy Azure wymagają dostępu do Internetu dla poleceń sterowania. Jeśli wykonujesz kopię zapasową obciążeń wewnątrz maszyny wirtualnej (na przykład SQL Server kopie zapasowe bazy danych), dane zaplecza również wymagają dostępu do Internetu.
+Nie musisz jawnie zezwalać na połączenia z Internetem, aby utworzyć kopię zapasową maszyn wirtualnych platformy Azure.
 
 ![Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure](./media/backup-architecture/architecture-azure-vm.png)
 

@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
-ms.openlocfilehash: 233edabed345cd9586647e5f430e6d3dc6a87192
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 837174b3ccc08a74583587cb9efd34f8f720aec5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505711"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589457"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Samouczek: uruchamianie Azure Functions z Azure Stream Analytics zadań 
 
@@ -190,6 +190,9 @@ Postępuj zgodnie z samouczkiem [Wykrywanie oszustw w czasie rzeczywistym](strea
 ## <a name="error-handling-and-retries"></a>Obsługa błędów oraz wykonywanie ponownych prób
 
 Jeśli wystąpi błąd podczas wysyłania zdarzeń do Azure Functions, Stream Analytics ponawiać próbę wykonania większości operacji. Wszystkie wyjątki http są ponawiane do momentu sukcesu z wyjątkiem błędu HTTP 413 (jednostka jest za duża). Zbyt duży błąd jednostki jest traktowany jako błąd danych, który podlega [ponowieniu lub porzucenia zasad](stream-analytics-output-error-policy.md).
+
+> [!NOTE]
+> Limit czasu dla żądań HTTP z Stream Analytics do Azure Functions jest ustawiony na 100 sekund. Jeśli przetworzenie partii przez aplikację Azure Functions trwa ponad 100 sekund, Stream Analytics błędy.
 
 ## <a name="known-issues"></a>Znane problemy
 

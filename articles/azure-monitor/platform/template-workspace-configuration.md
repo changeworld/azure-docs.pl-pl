@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 936008a074944c79b8b0bab3beaf3a5aaa5ecc12
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 5fb33a592601a0511fa2523ee0cf8114bc66ca99
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77151823"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591969"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Zarządzanie obszarem roboczym Log Analytics przy użyciu szablonów Azure Resource Manager
 
@@ -38,10 +38,10 @@ W tym artykule przedstawiono przykłady szablonów, które ilustrują część k
 
 W poniższej tabeli wymieniono wersje interfejsu API dla zasobów używanych w tym przykładzie.
 
-| Zasób | Typ zasobu | Wersja interfejsu API |
+| Resource | Typ zasobu | Wersja interfejsu API |
 |:---|:---|:---|
 | Obszar roboczy   | obszary robocze    | 2017-03-15 — wersja zapoznawcza |
-| Wyszukiwanie      | savedSearches | 2015-03-20 |
+| Wyszukaj      | savedSearches | 2015-03-20 |
 | Źródło danych | źródła danych   | 2015-11-01 — wersja zapoznawcza |
 | Rozwiązanie    | rozwiązania     | 2015-11-01 — wersja zapoznawcza |
 
@@ -77,52 +77,52 @@ W przypadku rezerwacji pojemności należy określić wybraną rezerwację pojem
             }
         },
       "pricingTier": {
-      "type": "string",
-      "allowedValues": [
-        "pergb2018",
-        "Free",
-        "Standalone",
-        "PerNode",
-        "Standard",
-        "Premium"
-      ],
-      "defaultValue": "pergb2018",
-      "metadata": {
+        "type": "string",
+        "allowedValues": [
+          "pergb2018",
+          "Free",
+          "Standalone",
+          "PerNode",
+          "Standard",
+          "Premium"
+          ],
+        "defaultValue": "pergb2018",
+        "metadata": {
         "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
-           }
-       },
-        "location": {
-            "type": "String",
-            "allowedValues": [
-              "australiacentral", 
-              "australiaeast", 
-              "australiasoutheast", 
-              "brazilsouth",
-              "canadacentral", 
-              "centralindia", 
-              "centralus", 
-              "eastasia", 
-              "eastus", 
-              "eastus2", 
-              "francecentral", 
-              "japaneast", 
-              "koreacentral", 
-              "northcentralus", 
-              "northeurope", 
-              "southafricanorth", 
-              "southcentralus", 
-              "southeastasia", 
-              "uksouth", 
-              "ukwest", 
-              "westcentralus", 
-              "westeurope", 
-              "westus", 
-              "westus2" 
-            ],
-            "metadata": {
-              "description": "Specifies the location in which to create the workspace."
-            }
         }
+      },
+      "location": {
+        "type": "String",
+        "allowedValues": [
+        "australiacentral", 
+        "australiaeast", 
+        "australiasoutheast", 
+        "brazilsouth",
+        "canadacentral", 
+        "centralindia", 
+        "centralus", 
+        "eastasia", 
+        "eastus", 
+        "eastus2", 
+        "francecentral", 
+        "japaneast", 
+        "koreacentral", 
+        "northcentralus", 
+        "northeurope", 
+        "southafricanorth", 
+        "southcentralus", 
+        "southeastasia", 
+        "uksouth", 
+        "ukwest", 
+        "westcentralus", 
+        "westeurope", 
+        "westus", 
+        "westus2" 
+        ],
+      "metadata": {
+        "description": "Specifies the location in which to create the workspace."
+        }
+      }
     },
     "resources": [
         {
@@ -131,9 +131,8 @@ W przypadku rezerwacji pojemności należy określić wybraną rezerwację pojem
             "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
-                "sku": { 
-                    "name": "CapacityReservation",
-                    "capacityReservationLevel": 100
+                "sku": {
+          "name": "[parameters('pricingTier')]"
                 },
                 "retentionInDays": 120,
                 "features": {
@@ -146,6 +145,13 @@ W przypadku rezerwacji pojemności należy określić wybraną rezerwację pojem
        ]
     }
     ```
+
+> [Informacje] dla ustawień rezerwacji pojemności Użyj tych właściwości w obszarze "jednostka SKU":
+
+>   "name": "CapacityReservation",
+
+>   "capacityReservationLevel": 100
+
 
 2. Edytuj szablon do własnych wymagań. Zapoznaj się z tematem dokumentacja [szablonu Microsoft. OperationalInsights/Workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) , aby dowiedzieć się, jakie właściwości i wartości są obsługiwane. 
 3. Zapisz ten plik jako **deploylaworkspacetemplate. JSON** w folderze lokalnym.
@@ -628,7 +634,7 @@ Aby wdrożyć przykładowy szablon:
 2. Edytuj szablon, aby skonfigurować żądaną konfigurację
 3. Wdrażanie szablonu przy użyciu programu PowerShell lub wiersza polecenia
 
-#### <a name="powershell"></a>Program PowerShell
+#### <a name="powershell"></a>PowerShell
 
 ```powershell
 New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json

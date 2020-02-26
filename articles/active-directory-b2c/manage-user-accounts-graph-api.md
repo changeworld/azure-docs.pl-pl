@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 64df1188692ae9f1b6200ad880a2bf1eafd98844
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b53405d199072211304e21b681de646c4e41243c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483231"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585632"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Zarządzanie kontami użytkowników Azure AD B2C przy użyciu Microsoft Graph
 
@@ -112,7 +112,7 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 Po uzyskaniu przykładowego kodu skonfiguruj go dla środowiska, a następnie Skompiluj projekt:
 
 1. Otwórz projekt w programie [Visual Studio](https://visualstudio.microsoft.com) lub [Visual Studio Code](https://code.visualstudio.com).
-1. Otwórz plik `src/appsettings.json`.
+1. Otwórz program `src/appsettings.json`.
 1. W sekcji `appSettings` Zastąp `your-b2c-tenant` nazwą dzierżawy, a `Application (client) ID` i `Client secret` z wartościami rejestracji aplikacji zarządzania (zobacz sekcję [Rejestrowanie aplikacji zarządzania](#register-a-management-application) w tym artykule).
 1. Otwórz okno konsoli w ramach lokalnego klonu repozytorium, przejdź do katalogu `src`, a następnie Skompiluj projekt:
     ```console
@@ -180,7 +180,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Wykonywanie wywołań interfejsu API przy użyciu zestawów sdk Microsoft Graph](https://docs.microsoft.comgraph/sdks/create-requests) zawiera informacje na temat odczytywania i zapisywania informacji z Microsoft Graph, używania `$select` do kontrolowania zwracanych właściwości, dostarczania niestandardowych parametrów zapytania i używania parametrów zapytania `$filter` i `$orderBy`.
+[Wykonywanie wywołań interfejsu API przy użyciu zestawów sdk Microsoft Graph](https://docs.microsoft.com/graph/sdks/create-requests) zawiera informacje na temat odczytywania i zapisywania informacji z Microsoft Graph, używania `$select` do kontrolowania zwracanych właściwości, dostarczania niestandardowych parametrów zapytania i używania parametrów zapytania `$filter` i `$orderBy`.
 
 ## <a name="next-steps"></a>Następne kroki
 

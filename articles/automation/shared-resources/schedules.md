@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8daa87eca74570f5b1fdf1537b83dae60d292128
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c4898ba62abdc42d95b77b9a77387bfe71fb4771
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849466"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592207"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Planowanie elementu Runbook w usłudze Azure Automation
 
@@ -35,7 +35,7 @@ Polecenia cmdlet w poniższej tabeli służą do tworzenia harmonogramów i zarz
 | [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) |Ustawia właściwości istniejącego harmonogramu. |
 | [Get-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/get-azurermautomationscheduledrunbook) |Pobiera zaplanowane elementy Runbook. |
 | [Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) |Kojarzy element Runbook z harmonogramem. |
-| [Unregister-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Deskojarzenie elementu Runbook z harmonogramem. |
+| [Unregister — AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Deskojarzenie elementu Runbook z harmonogramem. |
 
 ## <a name="creating-a-schedule"></a>Tworzenie harmonogramu
 
@@ -143,7 +143,7 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 
 Częstotliwość, z jaką Azure Automation można skonfigurować dla harmonogramu, wynosi godzinę. Aby harmonogramy były wykonywane częściej niż to możliwe, dostępne są dwie opcje:
 
-* Utwórz [element webhook](../automation-webhooks.md) dla elementu Runbook i Użyj [usługi Azure Scheduler](../../scheduler/scheduler-get-started-portal.md) , aby wywołać element webhook. Usługa Azure Scheduler oferuje bardziej szczegółowy stopień szczegółowości podczas definiowania harmonogramu.
+* Utwórz [element webhook](../automation-webhooks.md) dla elementu Runbook i Użyj [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) do wywołania elementu webhook. Azure Logic Apps zapewnia bardziej szczegółowy poziom szczegółowości podczas definiowania harmonogramu.
 
 * Utwórz cztery harmonogramy, rozpoczynając od 15 minut od siebie co godzinę. Ten scenariusz umożliwia uruchamianie elementu Runbook co 15 minut przy użyciu różnych harmonogramów.
 
