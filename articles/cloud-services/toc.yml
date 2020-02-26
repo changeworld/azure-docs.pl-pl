@@ -139,8 +139,6 @@
           href: cloud-services-allocation-failures.md
         - name: Typowe przyczyny powtarzania cykli ról usługi w chmurze
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
-        - name: Aplikacja nie obsługuje protokołu TLS 1.2
-          href: applications-dont-support-tls-1-2.md
         - name: Domyślny rozmiar folderu TEMP jest zbyt mały dla roli
           href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
         - name: Typowe problemy związane z wdrażaniem

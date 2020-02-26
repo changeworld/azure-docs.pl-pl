@@ -1,5 +1,5 @@
 - name: Dokumentacja usługi Mobile Apps
-  href: index.md
+  href: index.yml
 - name: Omówienie
   items:
     - name: Co to jest usługa Mobile Apps?
