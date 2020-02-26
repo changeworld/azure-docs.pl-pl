@@ -24,7 +24,7 @@
           href: service-bus-relay-tutorial.md
         - name: Uwidacznianie lokalnej usługi WCF dla klienta WCF spoza sieci
           href: service-bus-relay-rest-tutorial.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Połączenia hybrydowe
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections'
@@ -32,7 +32,7 @@
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
 - name: Pojęcia
   items:
-    - name: Bezpieczeństwo
+    - name: Zabezpieczenia
       items:
         - name: Uwierzytelnianie i autoryzacja
           href: relay-authentication-and-authorization.md
@@ -42,6 +42,8 @@
       href: relay-hybrid-connections-protocol.md
 - name: Instrukcje
   items:
+    - name: Migrowanie z interfejsów API usługi Azure Service Manager (klasycznej) do interfejsów API usługi Resource Manager
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
     - name: Planowanie i projektowanie
       items:
         - name: Migrowanie z usługi ACS do sygnatury dostępu współdzielonego
@@ -85,7 +87,7 @@
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: Kalkulator cen
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Przykłady
+    - name: Samples
       href: 'https://github.com/azure/azure-relay/tree/master/samples'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-servicebusrelay'

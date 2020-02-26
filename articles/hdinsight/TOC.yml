@@ -15,7 +15,7 @@
           href: ./hdinsight-administer-use-command-line.md
         - name: Zarządzanie klastrami usługi HDInsight — zestaw SDK platformy .NET
           href: ./hdinsight-administer-use-dotnet-sdk.md
-        - name: Zarządzanie klastrami usługi HDInsight — Powershell
+        - name: Zarządzanie klastrami usługi HDInsight — PowerShell
           href: ./hdinsight-administer-use-powershell.md
         - name: Tworzenie klastrów przy użyciu elementów Runbook
           href: ./manage-clusters-runbooks.md
@@ -71,7 +71,7 @@
               href: ./hdinsight-hadoop-create-linux-clusters-arm-templates.md
             - name: Tworzenie klastrów przy użyciu wiersza polecenia
               href: ./hdinsight-hadoop-create-linux-clusters-azure-cli.md
-            - name: Tworzenie klastrów przy użyciu programu Powershell
+            - name: Tworzenie klastrów przy użyciu programu PowerShell
               href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md
             - name: Tworzenie klastrów przy użyciu interfejsu API REST
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
@@ -810,6 +810,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: Pojęcia
       items:
+        - name: Punkt odniesienia zabezpieczeń
+          href: security-baseline.md
         - name: Ogólne wytyczne dotyczące zabezpieczeń przedsiębiorstwa
           href: ./domain-joined/general-guidelines.md
         - name: Planowanie klastrów ESP

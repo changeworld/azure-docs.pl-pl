@@ -122,6 +122,8 @@
       maintainContext: true
 - name: Przewodniki z instrukcjami
   items:
+    - name: Migrowanie z interfejsów API usługi Azure Service Manager (klasycznej) do interfejsów API usługi Resource Manager
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fevent-hubs%2ftoc.json
     - name: Programowanie
       items:
         - name: Pobieranie parametrów połączenia usługi Event Hubs

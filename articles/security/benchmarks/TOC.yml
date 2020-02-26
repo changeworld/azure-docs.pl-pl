@@ -28,3 +28,15 @@
       href: security-control-incident-response.md
     - name: Testy penetracyjne i ćwiczenia typu „red team”
       href: security-control-penetration-tests-red-team-exercises.md
+- name: Punkty odniesienia zabezpieczeń
+  items:
+    - name: Omówienie punktów odniesienia zabezpieczeń platformy Azure
+      href: security-baselines-overview.md
+    - name: Punkt odniesienia zabezpieczeń usługi Batch
+      href: ../../batch/security-baseline.md
+    - name: Punkt odniesienia zabezpieczeń usługi Key Vault
+      href: ../../key-vault/security-baseline.md
+    - name: Punkt odniesienia zabezpieczeń usługi HDInsight
+      href: ../../hdinsight/security-baseline.md
+    - name: Punkt odniesienia zabezpieczeń usługi SQL Database
+      href: ../../sql-database/security-baseline.md

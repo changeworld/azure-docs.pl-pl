@@ -890,8 +890,8 @@
                   href: log-query/examples.md
                 - name: Przykłady inteligentnej analizy
                   href: log-query/smart-analytics.md
-                - name: Pisanie wydajnych zapytań
-                  href: log-query/log-query-performance.md
+                - name: Optymalizowanie zapytań
+                  href: log-query/query-optimization.md
                 - name: Analizowanie danych tekstowych
                   href: log-query/parse-text.md
         - name: Flow/Logic Apps

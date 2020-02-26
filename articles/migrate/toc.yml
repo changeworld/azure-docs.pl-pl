@@ -104,9 +104,9 @@
       href: how-to-assess.md
     - name: Grupowanie maszyn do oceny
       href: how-to-create-a-group.md
-    - name: Grupowanie maszyn za pomocą wizualizacji zależności
+    - name: Analizowanie zależności maszyny (opartych na agentach)
       href: how-to-create-group-machine-dependencies.md
-    - name: Grupowanie maszyn za pomocą wizualizacji zależności bez agenta
+    - name: Analizowanie zależności maszyny (bez agentów)
       href: how-to-create-group-machine-dependencies-agentless.md
     - name: Tworzenie oceny
       href: how-to-create-assessment.md
