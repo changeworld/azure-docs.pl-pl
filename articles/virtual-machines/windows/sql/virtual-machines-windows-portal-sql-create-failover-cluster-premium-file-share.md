@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 57dc7bb98bf4c2f733be0f2c94e17481a429be6d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906803"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651365"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu failover SQL Server z udziałem plików w warstwie Premium na maszynach wirtualnych platformy Azure
 
@@ -149,13 +149,13 @@ Po spełnieniu tych wymagań wstępnych można rozpocząć tworzenie klastra try
 
    1. Wybierz pozycję **dalej**, a następnie wybierz pozycję **Usuń**.
 
-1. <a name="ports"></a>Otwórz porty zapory.
+1. <span id="ports"></span> Otwórz porty zapory.  
 
    Na każdej maszynie wirtualnej Otwórz te porty w zaporze systemu Windows:
 
    | Przeznaczenie | Port TCP | Uwagi
    | ------ | ------ | ------
-   | SQL Server | 1433 | Normalny port dla domyślnych wystąpień SQL Server. Jeśli obraz został użyty z galerii, ten port zostanie automatycznie otwarty.
+   | Oprogramowanie SQL Server | 1433 | Normalny port dla domyślnych wystąpień SQL Server. Jeśli obraz został użyty z galerii, ten port zostanie automatycznie otwarty.
    | Sonda kondycji | 59999 | Dowolny otwarty port TCP. W późniejszym kroku należy skonfigurować [sondę kondycji](#probe) modułu równoważenia obciążenia oraz klaster, aby używać tego portu.
    | Udział plików | 445 | Port używany przez usługę udziału plików.
 
@@ -369,7 +369,7 @@ Aby utworzyć moduł równoważenia obciążenia:
 
 1. Wybierz pozycję **Dodaj**.
 
-1. W bloku **Dodawanie sondy kondycji** <a name="probe"> </a>ustaw następujące parametry sondy kondycji.
+1. W bloku **Dodawanie sondy kondycji** <span id="probe"></span> ustaw następujące parametry sondy kondycji.
 
    - **Name**: Nazwa sondy kondycji.
    - **Protokół**: TCP.
@@ -465,7 +465,7 @@ W przypadku maszyn wirtualnych platformy Azure usługa MSDTC nie jest obsługiwa
 - Nie można skonfigurować klastrowanego zasobu usługi MSDTC do korzystania z magazynu udostępnionego. W systemie Windows Server 2016, jeśli utworzysz zasób MSDTC, nie będzie widoczny żaden magazyn udostępniony dostępny do użycia, nawet jeśli magazyn jest dostępny. Ten problem został rozwiązany w systemie Windows Server 2019.
 - Podstawowa usługa równoważenia obciążenia nie obsługuje portów RPC.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [Technologie klastrów systemu Windows](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server wystąpienia klastra trybu failover](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

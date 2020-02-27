@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 9b156193035d87472c462bae37e405e0317d8402
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045213"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650303"
 ---
 # <a name="vcore-model-overview"></a>Omówienie modelu rdzeni wirtualnych
 
@@ -25,18 +25,18 @@ Model Virtual Core (rdzeń wirtualny) zapewnia kilka korzyści:
 - Rabaty cenowe dla [korzyść użycia hybrydowego platformy Azure (AHB)](sql-database-azure-hybrid-benefit.md) i [wystąpienia zarezerwowanego (ri)](sql-database-reserved-capacity.md).
 - Większa przejrzystość szczegółów sprzętowych, które zwiększają moc obliczeniową; ułatwia planowanie migracji z wdrożeń lokalnych.
 
-## <a name="service-tiers"></a>Warstwy usługi
+## <a name="service-tiers"></a>Warstwy usług
 
 Opcje warstwy usług w modelu rdzeń wirtualny obejmują Ogólnego przeznaczenia, Krytyczne dla działania firmy i skalowanie. Warstwa usługi zwykle definiuje architekturę magazynu, limity przestrzeni i operacji we/wy oraz opcje ciągłości działania związane z dostępnością i odzyskiwaniem po awarii.
 
 ||**Zastosowania ogólne**|**Krytyczne dla działania firmy**|**Hiperskali**|
 |---|---|---|---|
 |Najlepsze dla|Większość obciążeń firmowych. Oferuje zorientowane na budżety, zrównoważone i skalowalne Opcje obliczeniowe i magazynowe. |Oferuje aplikacjom biznesowym największą odporność na błędy przy użyciu kilku izolowanych replik i zapewnia największą wydajność operacji we/wy na replikę bazy danych.|Większość obciążeń firmowych z wysoce skalowalnym magazynem i wymaganiami dotyczącymi skali odczytu.  Zapewnia wyższą odporność na błędy, umożliwiając konfigurację wielu izolowanych replik baz danych. |
-|Usługa Storage|Używa magazynu zdalnego.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Obliczenia bezserwerowe**:<br/>5 GB — 3 TB<br/>**Wystąpienie zarządzane**: 32 GB – 8 TB |Używa lokalnego magazynu SSD.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB — 4 TB |Elastyczna automatyczne zwiększanie magazynu zgodnie z wymaganiami. Obsługuje do 100 TB pamięci masowej. Używa lokalnego magazynu SSD dla lokalnej pamięci podręcznej puli buforów i lokalnego magazynu danych. Używa magazynu zdalnego platformy Azure jako końcowego długoterminowego magazynu danych. |
+|Storage|Używa magazynu zdalnego.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Obliczenia bezserwerowe**:<br/>5 GB — 3 TB<br/>**Wystąpienie zarządzane**: 32 GB – 8 TB |Używa lokalnego magazynu SSD.<br/>**Pojedyncze bazy danych i alokowane pule elastyczne**:<br/>5 GB – 4 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB — 4 TB |Elastyczna automatyczne zwiększanie magazynu zgodnie z wymaganiami. Obsługuje do 100 TB pamięci masowej. Używa lokalnego magazynu SSD dla lokalnej pamięci podręcznej puli buforów i lokalnego magazynu danych. Używa magazynu zdalnego platformy Azure jako końcowego długoterminowego magazynu danych. |
 |Operacje we/wy i przepływność (przybliżona)|**Pojedyncze bazy danych i pule elastyczne**: Zobacz limity zasobów dla [pojedynczych baz danych](../sql-database/sql-database-vcore-resource-limits-single-databases.md) i [pul elastycznych](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md).<br/>**Wystąpienie zarządzane**: zobacz [Przegląd Azure SQL Database limity zasobów wystąpienia zarządzanego](../sql-database/sql-database-managed-instance-resource-limits.md#service-tier-characteristics).|Zobacz limity zasobów dla [pojedynczych baz danych](../sql-database/sql-database-vcore-resource-limits-single-databases.md) i [pul elastycznych](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md).|Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy i przepływność będą zależeć od obciążenia.|
 |Dostępność|1 replika, brak replik w skali odczytu|3 repliki, 1 [replika w skali odczytu](sql-database-read-scale-out.md),<br/>Strefa — nadmiarowa wysoka dostępność (HA)|1 replika odczytu i zapisu oraz 0-4 [replik w skali odczytu](sql-database-read-scale-out.md)|
 |Tworzenie kopii zapasowych|[Magazyn Geograficznie nadmiarowy do odczytu (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dni (domyślnie 7 dni)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dni (domyślnie 7 dni)|Tworzenie kopii zapasowych opartych na migawce w magazynie zdalnym platformy Azure. Przywraca używanie tych migawek do szybkiego odzyskiwania. Kopie zapasowe są natychmiast i nie wpływają na wydajność obliczeń we/wy. Przywracanie odbywa się szybko i nie jest operacją o rozmiarze danych (w minutach, a nie w godzinach lub dniach).|
-|W pamięci|Brak obsługi|Obsługiwane|Brak obsługi|
+|W pamięci|Nieobsługiwane|Obsługiwane|Nieobsługiwane|
 |||
 
 
@@ -54,7 +54,7 @@ Aby uzyskać informacje na temat wybierania warstwy usług dla konkretnego obci�
 Opcje warstwy obliczeniowej w modelu rdzeń wirtualny obejmują warstwy obliczeniowe z obsługą administracyjną i bezserwerową.
 
 
-### <a name="provisioned-compute"></a>Zaaprowizowane zasoby obliczeniowe
+### <a name="provisioned-compute"></a>Zainicjowane obliczenie
 
 Wstępnie zainicjowana warstwa obliczeniowa zapewnia określoną ilość zasobów obliczeniowych, które są stale inicjowane niezależnie od aktywności obciążenia, oraz opłaty za ilość obliczeń przywidzianych przy stałej cenie za godzinę.
 
@@ -89,16 +89,16 @@ W przypadku regionów, w których jest dostępna seria Fsv2, zobacz [dostępnoś
 - Seria M to zoptymalizowana pod kątem pamięci opcja sprzętowa dla obciążeń wymagających większej ilości pamięci i wyższych limitów obliczeń niż zapewniana przez 5 rdzeń.
 - Seria M zapewnia 29 GB na rdzeń wirtualny i 128 rdzeni wirtualnych, co zwiększa limit pamięci względem 5 rdzeń przez 8x do niemal 4 TB.
 
-Aby włączyć sprzęt serii M dla subskrypcji i regionu, żądanie obsługi musi być otwarte. Jeśli żądanie pomocy technicznej zostanie zatwierdzone, wybór i środowisko aprowizacji serii M są zgodne z tym samym wzorcem, co w przypadku innych generacji sprzętowych. W przypadku regionów, w których jest dostępna Seria M, zobacz [dostępność serii m](#m-series).
+Aby włączyć sprzęt serii M dla subskrypcji i regionu, należy otworzyć żądanie obsługi. Subskrypcja musi być płatnym typem oferty, w tym płatności zgodnie z rzeczywistym użyciem lub Umowa Enterprise (EA).  Jeśli żądanie pomocy technicznej zostanie zatwierdzone, wybór i środowisko aprowizacji serii M są zgodne z tym samym wzorcem, co w przypadku innych generacji sprzętowych. W przypadku regionów, w których jest dostępna Seria M, zobacz [dostępność serii m](#m-series).
 
 
 ### <a name="compute-and-memory-specifications"></a>Specyfikacje obliczeniowe i pamięci
 
 
-|Generowanie sprzętu  |Wystąpienia obliczeniowe  |Pamięć  |
+|Generowanie sprzętu  |Compute  |Memory (Pamięć)  |
 |:---------|:---------|:---------|
-|4\. generacji     |-Procesory Intel E5-2673 v3 (Haswell) 2,4 GHz<br>— Zapewnij do 24 rdzeni wirtualnych (1 rdzeń wirtualny = 1 rdzeń fizyczny)  |-7 GB na rdzeń wirtualny<br>— Zapewnij do 168 GB|
-|5\. generacji     |**Zainicjowane obliczenie**<br>— Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz i Intel SP-8160 (Skylake)<br>— Inicjowanie obsługi administracyjnej do 80 rdzeni wirtualnych (1 rdzeń wirtualny = 1 Hyper-Thread)<br><br>**Obliczenia bezserwerowe**<br>— Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz i Intel SP-8160 (Skylake)<br>-Automatyczne skalowanie do 16 rdzeni wirtualnych (1 rdzeń wirtualny = 1 Hyper-Thread)|**Zainicjowane obliczenie**<br>-5,1 GB na rdzeń wirtualny<br>— Zapewnij do 408 GB<br><br>**Obliczenia bezserwerowe**<br>-Automatyczne skalowanie do 24 GB na rdzeń wirtualny<br>— Automatyczne skalowanie do maksymalnie 48 GB|
+|Obliczenia     |-Procesory Intel E5-2673 v3 (Haswell) 2,4 GHz<br>— Zapewnij do 24 rdzeni wirtualnych (1 rdzeń wirtualny = 1 rdzeń fizyczny)  |-7 GB na rdzeń wirtualny<br>— Zapewnij do 168 GB|
+|5 rdzeń     |**Zainicjowane obliczenie**<br>— Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz i Intel SP-8160 (Skylake)<br>— Inicjowanie obsługi administracyjnej do 80 rdzeni wirtualnych (1 rdzeń wirtualny = 1 Hyper-Thread)<br><br>**Obliczenia bezserwerowe**<br>— Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz i Intel SP-8160 (Skylake)<br>-Automatyczne skalowanie do 16 rdzeni wirtualnych (1 rdzeń wirtualny = 1 Hyper-Thread)|**Zainicjowane obliczenie**<br>-5,1 GB na rdzeń wirtualny<br>— Zapewnij do 408 GB<br><br>**Obliczenia bezserwerowe**<br>-Automatyczne skalowanie do 24 GB na rdzeń wirtualny<br>— Automatyczne skalowanie do maksymalnie 48 GB|
 |Seria Fsv2     |— Procesory Intel Xeon Platinum 8168 (SkyLake)<br>— Dzięki stałej szybkości taktu Turbo o częstotliwości 3,4 GHz i maksymalnej pojedynczej podstawowej prędkości zegarka Turbo o godz. 3,7 GHz.<br>-Inicjowanie obsługi administracyjnej 72 rdzeni wirtualnych (1 rdzeń wirtualny = 1 Hyper-Thread)|-1,9 GB na rdzeń wirtualny<br>-Inicjowanie obsługi administracyjnej 136 GB|
 |Seria M     |-Procesory Intel Xeon E7-8890 v3 2,5 GHz<br>-Inicjowanie obsługi administracyjnej 128 rdzeni wirtualnych (1 rdzeń wirtualny = 1 Hyper-Thread)|-29 GB na rdzeń wirtualny<br>— Inicjowanie obsługi administracyjnej 3,7 TB|
 
@@ -142,7 +142,7 @@ Na karcie **podstawowe** wybierz łącze **Konfiguruj bazę danych** w sekcji **
   
 **Aby zmienić generowanie sprzętu istniejącego wystąpienia zarządzanego**
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Na stronie wystąpienie zarządzane wybierz pozycję **warstwa cenowa** link do sekcji Ustawienia.
 
@@ -150,43 +150,25 @@ Na stronie wystąpienie zarządzane wybierz pozycję **warstwa cenowa** link do 
 
 Na stronie **warstwa cenowa** będzie można zmienić generowanie sprzętu zgodnie z opisem w poprzednich krokach.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Użyj poniższego skryptu programu PowerShell:
+Użyj następującego skryptu programu PowerShell:
 
 ```powershell-interactive
-$subscriptionId = "**************"
-Select-AzSubscription -Subscription $subscriptionId
-
-$instanceName = "********"
-$resourceGroup = "****"
-
-# THIS IS IMPORTANT PARAMETER:
-$sku = @{name = "GP_Gen5" }
-
-# NOTE: These properties are not necessary, but it would be good to set them to the current values:
-# You might want to change vCores or storage with hardware generation
-# $admin_login = "******"
-# $admin_pass = "******"
-# $location = "***** # for example: ""northeurope"
-# $vCores = 8
-# $maxStorage = 1024
-# $license = "BasePrice"
-# $subnetId = "/subscriptions/****/subnets/*******"
-
-## NOTE: Uncomment some of the properties below if you have set them.
-$properties = New-Object System.Object
-# $properties | Add-Member -type NoteProperty -name subnetId -Value $subnetId
-# $properties | Add-Member -type NoteProperty -name administratorLogin -Value $admin_login
-# $properties | Add-Member -type NoteProperty -name administratorLoginPassword -Value $admin_pass
-# $properties | Add-Member -type NoteProperty -name vCores -Value $vCores
-# $properties | Add-Member -type NoteProperty -name storageSizeInGB -Value $maxStorage
-# $properties | Add-Member -type NoteProperty -name licenseType -Value $license
-
-Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
+Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-Upewnij się, że wprowadzono identyfikator subskrypcji, nazwę i grupę zasobów wystąpienia zarządzanego.
+Aby uzyskać więcej szczegółów, zobacz polecenie [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) .
+
+# <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
+Wykonaj następujące polecenie interfejsu wiersza polecenia:
+
+```azurecli-interactive
+az sql mi update -g mygroup -n myinstance --family Gen5
+```
+
+Aby uzyskać więcej szczegółów, sprawdź polecenie [AZ SQL mi Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) .
 
 ---
 
@@ -194,7 +176,7 @@ Upewnij się, że wprowadzono identyfikator subskrypcji, nazwę i grupę zasobó
 
 #### <a name="gen4gen5-1"></a>Obliczenia/5 rdzeń
 
-Nowe bazy danych obliczenia nie są już obsługiwane w regionach Australia Wschodnia lub Brazylia Południowa. 
+Sprzęt obliczenia jest [stopniowo wycofywany](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) i nie jest już dostępny dla nowych wdrożeń. Wszystkie nowe bazy danych należy wdrożyć na sprzęcie 5 rdzeń.
 
 5 rdzeń jest dostępna w większości regionów na całym świecie.
 

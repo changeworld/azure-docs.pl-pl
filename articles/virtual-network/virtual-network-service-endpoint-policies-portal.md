@@ -1,35 +1,35 @@
 ---
-title: Tworzenie i kojarzenie zasad punktów końcowych usługi — witryna Azure portal
+title: Tworzenie i kojarzenie zasad punktu końcowego usługi — Azure Portal
 titlesuffix: Azure Virtual Network
-description: W tym artykule Dowiedz się, jak skonfigurować i skojarzona usługa zasad punktów końcowych przy użyciu witryny Azure portal.
+description: W tym artykule dowiesz się, jak skonfigurować zasady punktu końcowego usługi i skojarzone z nią przy użyciu Azure Portal.
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: RDhillon
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 09/18/2018
-ms.author: kumud
-ms.openlocfilehash: b1d2d04e74828323166810d93c52a60671bf71e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/21/2020
+ms.author: rdhillon
+ms.openlocfilehash: d26fd2fec5f9d5ab8e9d82ff2c6bd83b11c72e99
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710921"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651276"
 ---
-# <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Tworzenie, zmienianie lub usuwanie zasad punktów końcowych usługi za pomocą witryny Azure portal
+# <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Tworzenie, zmienianie lub usuwanie zasad punktu końcowego usługi przy użyciu Azure Portal
 
-Zasad punktów końcowych usługi umożliwiają filtrowanie ruchu w sieci wirtualnej do określonych zasobów platformy Azure za pośrednictwem punktów końcowych usługi. Jeśli nie jesteś zaznajomiony z zasad punktów końcowych usługi, zobacz [Przegląd zasad punktów końcowych usługi](virtual-network-service-endpoint-policies-overview.md) Aby dowiedzieć się więcej.
+Zasady punktu końcowego usługi umożliwiają filtrowanie ruchu w sieci wirtualnej do określonych zasobów platformy Azure za pośrednictwem punktów końcowych usługi. Jeśli nie znasz zasad punktu końcowego usługi, zobacz [Omówienie zasad punktu końcowego usługi](virtual-network-service-endpoint-policies-overview.md) , aby dowiedzieć się więcej.
 
  Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Tworzenie zasad punktów końcowych usługi
-> * Utwórz definicję zasad punktu końcowego usługi
-> * Utwórz sieć wirtualną z podsiecią
-> * Kojarzenie zasad punktów końcowych usługi do podsieci
+> * Tworzenie zasad punktu końcowego usługi
+> * Tworzenie definicji zasad punktu końcowego usługi
+> * Tworzenie sieci wirtualnej z podsiecią
+> * Kojarzenie zasad punktu końcowego usługi z podsiecią
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -37,87 +37,80 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
-## <a name="create-a-service-endpoint-policy"></a>Tworzenie zasad punktów końcowych usługi
+## <a name="create-a-service-endpoint-policy"></a>Tworzenie zasad punktu końcowego usługi
 
 1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
-2. W okienku wyszukiwania wpisz "Usługa zasad punktów końcowych" i wybierz **usługi zasad punktów końcowych (wersja zapoznawcza)** , a następnie wybierz **Utwórz**.
-3. Wprowadź lub wybierz następujące informacje w **podstawy** 
+2. W okienku wyszukiwania wpisz "zasady punktu końcowego usługi" i wybierz pozycję **zasady punktu końcowego usługi** , a następnie wybierz pozycję **Utwórz**.
 
-   - Subskrypcja: Wybierz swoją subskrypcję dla zasad.    
-   - Grupa zasobów: Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę *myResourceGroup*.     
-   - Name           : myEndpointPolicy
-   - Lokalizacja: Środkowo-zachodnie stany USA     
+![Utwórz zasady punktu końcowego usługi](./media/virtual-network-service-endpoint-policies-portal/create-sep-resource.png)
+
+3. Wprowadź lub wybierz następujące informacje w **temacie Podstawowe** 
+
+   - Subskrypcja: wybierz subskrypcję zasad
+   - Grupa zasobów: wybierz pozycję **Utwórz nową** i *wprowadź grupę zasobów.*
+   - Nazwa: myEndpointPolicy
+   - Lokalizacja: środkowe stany USA
  
-   ![Tworzenie punktu końcowego usługi podstawowe informacje dotyczące zasad](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-startpane.PNG)
-   
-4. Wprowadź lub wybierz następujące informacje w **definicje zasad**
+   ![Podstawowe informacje dotyczące tworzenia zasad punktu końcowego usługi](./media/virtual-network-service-endpoint-policies-portal/create-sep-basics.png)
 
-   - Kliknij przycisk **+ Dodaj zasób**, wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień i kliknij przycisk **Dodaj**.  
-   - Zakres: Wybierz **jednego konta** lub **wszystkich kont w subskrypcji** lub **wszystkich kont w grupie zasobów**.    
-   - Subskrypcja: Wybierz swoją subskrypcję dla konta magazynu. Konta zasad i magazynu mogą być w różnych subskrypcjach.   
-   - Grupa zasobów: Wybierz grupę zasobów. Wymagane, jeśli zakres jest ustawiony jako "Wszystkie konta w grupie zasobów" lub "Jedno konto".  
-   - Zasób: mystorageaccountportal    
-   - Kliknij przycisk **+ Dodaj zasób** aby kontynuować dodawanie większej ilości zasobów.
-   
-   ![Tworzenie punktu końcowego usługi definicje zasad](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-policydefinitionspane.PNG)
-   
-5. Opcjonalnie: Wprowadź lub wybierz następujące informacje w **tagi**:
-   
-   - Klucz: Wybierz klucz dla zasad. Na przykład: Dział     
-   - Wartość: Wprowadź pary wartości klucza. Na przykład: Finanse
+4. Wybierz pozycję **+ Dodaj** w obszarze **zasoby** i wprowadź lub wybierz następujące informacje w okienku **Dodawanie zasobu**
 
-6. Wybierz pozycję **Przegląd + utwórz**. Zweryfikuj informacje i kliknięcie **Utwórz**. Może wprowadzać dalszych zmian, kliknij przycisk **Wstecz**. 
+   - Usługa: tylko **Microsoft. Storage** jest dostępna z zasadami punktu końcowego usługi
+   - Zakres: wybierz jedno z jednego **konta**, **wszystkie konta w subskrypcji** i **wszystkie konta w grupie zasobów**
+   - Subskrypcja: wybierz subskrypcję dla konta magazynu. Konta zasad i magazynu mogą znajdować się w różnych subskrypcjach.
+   - Grupa zasobów: Wybierz grupę zasobów. Wymagane, jeśli zakres jest ustawiony jako, "wszystkie konta w grupie zasobów" lub "pojedyncze konto".  
+   - Zasób: wybierz zasób usługi Azure Storage w ramach wybranej subskrypcji lub grupy zasobów
+   - Kliknij przycisk **Dodaj** u dołu, aby zakończyć dodawanie zasobu
 
-   ![Tworzenie punktu końcowego usługi końcowego walidacji zasad](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-finalcreatereview.PNG)
+   ![Definicja zasad punktu końcowego usługi — zasób](./media/virtual-network-service-endpoint-policies-portal/create-sep-add-resource.png)
+
+   - Dodaj więcej zasobów przez powtórzenie powyższych kroków zgodnie z wymaganiami
+
+5. Opcjonalne: wprowadź lub wybierz następujące informacje w **tagach**:
+   
+   - Klucz: Wybierz klucz dla zasad. Przykład: Dept     
+   - Wartość: wprowadź parę wartości dla klucza. Ex: Finanse
+
+6. Wybierz pozycję **Przegląd + utwórz**. Sprawdź poprawność informacji i kliknij przycisk **Utwórz**. Aby wprowadzić dalsze zmiany, kliknij przycisk **Wstecz**. 
+
+   ![Utwórz końcowe walidacje zasad punktu końcowego usługi](./media/virtual-network-service-endpoint-policies-portal/create-sep-review-create.png)
   
- 
 ## <a name="view-endpoint-policies"></a>Wyświetl zasady punktu końcowego 
 
-1. W *wszystkich usług* pole w portalu, zacznij pisać *zasad punktów końcowych usługi*. Wybierz **Policies(Preview) punktu końcowego usługi**.
-2. W obszarze **subskrypcje**, wybierz subskrypcję i grupę zasobów, jak pokazano na poniższej ilustracji
+1. W polu *wszystkie usługi* w portalu zacznij pisać *zasady punktu końcowego usługi*. Wybierz pozycję **zasady punktu końcowego usługi**.
+2. W obszarze **subskrypcje**wybierz swoją subskrypcję i grupę zasobów, jak pokazano na poniższej ilustracji.
 
-   ![Pokaż zasad](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-viewpolicies.PNG)
+   ![Pokaż zasady](./media/virtual-network-service-endpoint-policies-portal/sep-view.png)
        
-3. Wybierz zasady, a następnie kliknij pozycję **definicje zasad** Aby wyświetlić lub dodać więcej definicji zasad.
+3. Wybierz zasady, a następnie kliknij pozycję **definicje zasad** , aby wyświetlić lub dodać więcej definicji zasad.
 
-   ![Pokaż definicje zasad](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-viewpolicy-adddefinitions.PNG)
+   ![Pokaż definicje zasad](./media/virtual-network-service-endpoint-policies-portal/sep-policy-definition.png)
 
-4. Wybierz **skojarzone podsieci** do wyświetlania podsieci, zasady są skojarzone. Aby skojarzyć zasady z podsiecią, kliknij "Przejdź do sieci wirtualnej, w tym samym regionie".
+4. Wybierz **skojarzone podsieci** , aby wyświetlić podsieci, które są skojarzone z zasadami. Jeśli nie skojarzono jeszcze żadnej podsieci, postępuj zgodnie z instrukcjami w następnym kroku.
 
-   ![Pokaż skojarzone podsieci](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-view-associatedsubnets.PNG)
+   ![Skojarzone podsieci](./media/virtual-network-service-endpoint-policies-portal/sep-associated-subnets.png)
  
-## <a name="associate-a-policy-to-a-subnet"></a>Skojarz zasady z podsiecią
+5. Kojarzenie zasad z podsiecią
 
 >[!WARNING] 
-> Upewnij się, że wszystkie zasoby, które są dostępne z podsieci, do wybranej usługi są dodawane do zasad przed skojarzeniem zasad. Gdy zasady są skojarzone, tylko dostęp do zasobów wymienionych w zasad może być dla punktu końcowego regionów dla usługi. 
+> Przed skojarzeniem zasad z daną podsiecią upewnij się, że wszystkie zasoby, do których uzyskano dostęp z podsieci, są dodawane do definicji zasad. Po skojarzeniu zasad tylko dostęp do zasobów *dozwolonych na liście* będzie dozwolony za pośrednictwem punktów końcowych usługi. 
+>
+> Upewnij się również, że żadne zarządzane usługi platformy Azure nie istnieją w podsieci, która jest skojarzona z zasadami punktu końcowego usługi
 
-Zanim będzie można skojarzyć zasady z podsiecią, należy utworzyć sieć wirtualną i podsieć, a następnie można skojarzyć z podsiecią:
+- Aby można było skojarzyć zasady z podsiecią, należy utworzyć sieć wirtualną i podsieć. Aby uzyskać pomoc dotyczącą tego, zapoznaj się z artykułem [tworzenie Virtual Network](./quick-create-portal.md) .
 
-1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
-2. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **Sieć wirtualna**.
-3. W obszarze **Utwórz sieć wirtualną** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
-   - Nazwa: myVirtualNetwork      
-   - Przestrzeń adresowa: 10.0.0.0/16      
-   - Subskrypcja: Wybierz subskrypcję. Zasady powinny znajdować się w tej samej subskrypcji co sieć wirtualna     
-   - Grupa zasobów: Wybierz **Użyj istniejącej** , a następnie wybierz *myResourceGroup*     
-   - Lokalizacja: Środkowo-zachodnie stany USA     
-   - Nazwa podsieci: prywatne     
-   - Zakres adresów: 10.0.0.0/24
-     
-4. W polu **Szukaj zasobów, usług i dokumentów** w górnej części portalu rozpocznij wpisywanie ciągu *myVirtualNetwork*. Gdy pozycja **myVirtualNetwork** pojawi się w wynikach wyszukiwania, wybierz ją.
-5. W obszarze **ustawienia**, wybierz opcję **podsieci** , a następnie wybierz **prywatnej**.
-6. Jak pokazano na poniższej ilustracji, wybierz **punkty końcowe usługi**, wybierz opcję **Microsoft.Storage**, wybierz opcję **zasad punktów końcowych usługi**, wybierz opcję  **myEndpointPolicy**, a następnie wybierz pozycję **Zapisz**:
+- Po skonfigurowaniu sieci wirtualnej i podsieci należy skonfigurować Virtual Network punkty końcowe usługi Azure Storage. W bloku Virtual Network wybierz pozycję **punkty końcowe usługi**, a następnie w następnym okienku wybierz pozycję **Microsoft. Storage** i w obszarze **podsieci** wybierz żądaną sieć wirtualną lub podsieci
 
-   ![Skojarz zasady](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-associatepolicies.PNG)
+- Teraz można wybrać zasady punktu końcowego usługi z listy rozwijanej w powyższym okienku, jeśli wcześniej utworzono zasady punktu końcowego usługi przed skonfigurowaniem punktu końcowego usługi dla podsieci, jak pokazano poniżej
+
+    ![Skojarz podsieć podczas tworzenia punktu końcowego usługi](./media/virtual-network-service-endpoint-policies-portal/vnet-config-service-endpoint-add-sep.png)
+
+- LUB w przypadku kojarzenia zasad punktu końcowego usługi po skonfigurowaniu punktów końcowych usługi możesz wybrać opcję skojarzenia podsieci z bloku zasad punktu końcowego usługi, przechodząc do okienka **skojarzone podsieci** , jak pokazano poniżej.
+
+    ![Skojarz podsieć za pośrednictwem protokołu SEP](./media/virtual-network-service-endpoint-policies-portal/sep-edit-subnet-association.png)
 
 >[!WARNING] 
->Z tej podsieci, w oparciu o grupy zabezpieczeń sieci (NSG) będą miały dostępu do zasobów usługi w innych regionach. Aby ograniczyć dostęp tylko punkt końcowy regionach, Ogranicz sieciowych grup zabezpieczeń z tylko ruchu w ramach usługi w regionach punktu końcowego. Aby uzyskać więcej informacji na temat sposobu tworzenia sieciowych grup zabezpieczeń z tagami usługi na region, zobacz [tagi usługi sieciowej grupy zabezpieczeń platformy Azure.](manage-network-security-group.md?toc=%2fcreate-a-security-rule%2f.json)
+>Dostęp do zasobów usługi Azure Storage we wszystkich regionach będzie ograniczony do zasad punktu końcowego usługi w tej podsieci.
 
-W poniższym przykładzie sieciowa grupa zabezpieczeń jest ograniczony do dostępu tylko zasobami usługi Azure Storage w WestCentralUS i WestUS2, z regułą "Deny wszystkie", zgodnie z zasadą o niższym priorytecie.
-
-![Odmów wszystkich sieciowych grup zabezpieczeń](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-nsg-rules.PNG)
-
-
-## <a name="next-steps"></a>Kolejne kroki
-W tym samouczku utworzono zasad punktów końcowych usługi i skojarzono ją z podsiecią. Aby dowiedzieć się więcej na temat zasad punktów końcowych usługi, zobacz [Przegląd zasad punktów końcowych usługi.](virtual-network-service-endpoint-policies-overview.md)
-
+## <a name="next-steps"></a>Następne kroki
+W tym samouczku utworzono zasady punktu końcowego usługi i skojarzono je z podsiecią. Aby dowiedzieć się więcej na temat zasad punktu końcowego usługi, zobacz [Omówienie zasad punktu końcowego usługi.](virtual-network-service-endpoint-policies-overview.md)

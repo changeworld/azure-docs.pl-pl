@@ -3,27 +3,27 @@ title: Problemy z łączeniem źródłowych baz danych
 titleSuffix: Azure Database Migration Service
 description: Dowiedz się więcej na temat rozwiązywania znanych problemów/błędów związanych z łączeniem Azure Database Migration Service ze źródłowymi bazami danych.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 06/28/2019
-ms.openlocfilehash: b697faeded4177381f70ebb9d1f93d928b25d7b1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 332f612e1ffe57fc4edd90b1fe4c6a5ea5a2904a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437790"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649179"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>Rozwiązywanie problemów z błędami DMS podczas łączenia ze źródłowymi bazami danych
 
 Poniższy artykuł zawiera szczegółowe informacje dotyczące sposobu rozwiązywania potencjalnych problemów, które mogą wystąpić podczas łączenia Azure Database Migration Service (DMS) ze źródłową bazą danych. Każda sekcja poniżej odnosi się do określonego typu źródłowej bazy danych, zawierającej błąd, który może wystąpić wraz ze szczegółami i linki do informacji o sposobach rozwiązywania problemów z łącznością.
 
-## <a name="sql-server"></a>SQL Server
+## <a name="sql-server"></a>Oprogramowanie SQL Server
 
 Potencjalne problemy związane z nawiązywaniem połączenia z źródłową bazą danych SQL Server i sposoby ich rozwiązywania znajdują się w poniższej tabeli.
 
@@ -65,7 +65,7 @@ Potencjalne problemy związane z nawiązywaniem połączenia ze źródłową baz
 > * [Rozwiązywanie problemów z łącznością Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
 > * [Jak mogę rozwiązać problemy związane z nawiązywaniem połączenia z moim wystąpieniem bazy danych Amazon RDS?](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
 
-## <a name="aws-rds-sql-server"></a>AWS RDS SQL Server
+## <a name="aws-rds-sql-server"></a>AWS SQL Server RDS
 
 Potencjalne problemy związane z nawiązywaniem połączenia z bazą danych AWS RDS SQL Server i sposób ich rozwiązywania znajdują się w poniższej tabeli.
 

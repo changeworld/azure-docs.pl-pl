@@ -6,25 +6,25 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/24/2019
-ms.openlocfilehash: 32eee22aa8e9b707d404cb85db6b7fae90d11987
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.date: 02/25/2019
+ms.openlocfilehash: cd48f29d1f3866a4cd6893746dc44999b8aba24b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589846"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622908"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optymalizowanie zapytań dzienników w Azure Monitor
-Dzienniki Azure Monitor korzystają z [usługi Azure Eksplorator danych (ADX)](/azure/data-explorer/) w celu przechowywania dzienników i zapytań oraz zarządzania nimi. Tworzy, zarządza i obsługuje klastry ADX oraz optymalizuje je do obciążeń analizy dzienników. Po uruchomieniu zapytania jest on zoptymalizowany i kierowany do odpowiedniego klastra ADX, który przechowuje obszar roboczy. Zarówno dzienniki Azure Monitor, jak i Azure Eksplorator danych korzystają z wielu automatycznych mechanizmów optymalizacji zapytań. Chociaż Optymalizacja automatyczna zapewnia znaczący wzrost, w niektórych przypadkach można znacznie poprawić wydajność zapytań. W tym artykule opisano zagadnienia dotyczące wydajności i kilka technik rozwiązywania tych problemów.
+Dzienniki Azure Monitor korzystają z [usługi Azure Eksplorator danych (ADX)](/azure/data-explorer/) do przechowywania danych dziennika i uruchamiania zapytań w celu analizowania tych danych. Tworzy, zarządza i obsługuje klastry ADX oraz optymalizuje je do obciążeń analizy dzienników. Po uruchomieniu zapytania jest on zoptymalizowany i kierowany do odpowiedniego klastra ADX, który przechowuje dane obszaru roboczego. Zarówno dzienniki Azure Monitor, jak i Azure Eksplorator danych korzystają z wielu automatycznych mechanizmów optymalizacji zapytań. Chociaż Optymalizacja automatyczna zapewnia znaczący wzrost, w niektórych przypadkach można znacznie poprawić wydajność zapytań. W tym artykule opisano zagadnienia dotyczące wydajności i kilka technik rozwiązywania tych problemów.
 
-Większość z tych technik jest wspólna dla zapytań, które są uruchamiane bezpośrednio na platformie Azure Eksplorator danych i w Azure Monitor dziennikach, chociaż istnieje kilka unikatowych zagadnień dotyczących dzienników Azure Monitor, które zostały omówione w tym miejscu. Aby uzyskać więcej porad dotyczących optymalizacji Eksplorator danych platformy Azure, zobacz [najlepsze rozwiązania dotyczące zapytań](/azure/kusto/query/best-practices).
+Większość technik jest wspólna dla zapytań, które są uruchamiane bezpośrednio na platformie Azure Eksplorator danych i w dziennikach Azure Monitor, chociaż kilka unikatowych zagadnień dotyczących dzienników Azure Monitor, które zostały omówione w tym miejscu. Aby uzyskać więcej porad dotyczących optymalizacji Eksplorator danych platformy Azure, zobacz [najlepsze rozwiązania dotyczące zapytań](/azure/kusto/query/best-practices).
 
 Zoptymalizowane zapytania będą:
 
 - Uruchamiaj szybciej, skracaj łączny czas wykonywania zapytania.
 - Mniejsza szansa na ograniczenie lub odrzucanie.
 
-Należy zwrócić szczególną uwagę na zapytania, które są używane do przekroczenia i użycia na rozerwanie, takich jak pulpity nawigacyjne i Power BI. W takich przypadkach wpływ nieskutecznego zapytania jest znaczny.
+Należy zwrócić szczególną uwagę na zapytania, które są używane do przekroczenia bieżącego i użycia na rozerwanie, takich jak pulpity nawigacyjne, alerty, Logic Apps i Power BI. W takich przypadkach wpływ nieskutecznego zapytania jest znaczny.
 
 ## <a name="query-performance-pane"></a>Okienko wydajności zapytań
 Po uruchomieniu zapytania w Log Analytics kliknij strzałkę w dół powyżej wyników zapytania, aby wyświetlić okienko wydajności zapytania, które pokazuje wyniki kilku wskaźników wydajności dla zapytania. Te wskaźniki wydajności są opisane w następnej sekcji.
@@ -38,11 +38,11 @@ Następujące wskaźniki wydajności zapytań są dostępne dla każdego wykonyw
 
 - [Łączny czas CPU](#total-cpu): ogólne obliczenia używane do przetwarzania zapytania we wszystkich węzłach obliczeniowych. Reprezentuje czas używany do przetwarzania, analizowania i pobierania danych. 
 
-- [Dane używane do przetworzenia zapytania](#data-used-for-query-processing): dane ogólne, do których uzyskano dostęp do przetwarzania zapytania. Wpływ na rozmiar tabeli docelowej, użyty zakres czasu, zastosowane filtry i liczbę kolumn, do których istnieją odwołania.
+- [Wolumin danych](#data-volume): ogólne dane, do których uzyskano dostęp do przetwarzania zapytania. Wpływ na rozmiar tabeli docelowej, użyty zakres czasu, zastosowane filtry i liczbę kolumn, do których istnieją odwołania.
 
-- [Przedział czasu przetworzonego zapytania](#time-range-of-the-data-processed): różnica między najnowszymi i najstarszymi danymi, do których uzyskano dostęp do przetwarzania zapytania. Wpływ na zapytanie o jawny zakres czasu i filtry. Może być większy niż jawny przedział czasu z powodu partycjonowania danych.
+- [Zakres czasu](#time-range): różnica między najnowszymi a najstarszymi danymi, do których uzyskano dostęp do przetwarzania zapytania. Wpływ na jawny zakres czasu określony dla zapytania.
 
-- [Wiek przetworzonych danych](#age-of-the-oldest-data-used): przerwy między nimi i najstarszych danych, do których uzyskano dostęp do przetwarzania zapytania. Ma wysoce wpływ na wydajność pobierania danych.
+- [Wiek danych](#age-of-data): przerwy między nimi a najstarszymi danymi, do których uzyskano dostęp do przetwarzania zapytania. Ma wysoce wpływ na wydajność pobierania danych.
 
 - [Liczba obszarów roboczych](#number-of-workspaces): ile obszarów roboczych zostało uzyskanych podczas przetwarzania zapytania z powodu niejawnego lub jawnego wyboru.
 
@@ -123,7 +123,7 @@ Perf
 by CounterPath
 ```
 
-Użycie procesora CPU może również mieć wpływ na warunki lub kolumny rozszerzone, które wymagają intensywnego przetwarzania danych. Wszystkie proste porównania ciągów, takie jak [równości = =](/azure/kusto/query/datatypes-string-operators) i [StartsWith](/azure/kusto/query/datatypes-string-operators) , mają mniej więcej na ten sam wpływ na procesor, podczas gdy zaawansowane dopasowania tekstu mają większy wpływ. W odróżnieniu od operatora Contains jest bardziej wydajne. Ze względu na techniki obsługi ciągów bardziej wydajne jest wyszukiwanie ciągów, które są dłuższe niż cztery znaki niż krótkie ciągi.
+Użycie procesora CPU może również mieć wpływ na warunki lub kolumny rozszerzone, które wymagają intensywnego przetwarzania danych. Wszystkie proste porównania ciągów, takie jak [równości = =](/azure/kusto/query/datatypes-string-operators) i [StartsWith](/azure/kusto/query/datatypes-string-operators) , mają mniej więcej na ten sam wpływ na procesor, podczas gdy zaawansowane dopasowania tekstu mają większy wpływ. [W odróżnieniu od operatora](/azure/kusto/query/datatypes-string-operators) [Contains](/azure/kusto/query/datatypes-string-operators) jest bardziej wydajne. Ze względu na techniki obsługi ciągów bardziej wydajne jest wyszukiwanie ciągów, które są dłuższe niż cztery znaki niż krótkie ciągi.
 
 Na przykład następujące zapytania dają podobne wyniki, w zależności od zasad nazewnictwa komputerów, ale druga z nich jest bardziej wydajna:
 
@@ -151,7 +151,7 @@ Heartbeat
 > Ten wskaźnik przedstawia tylko procesor CPU z klastra bezpośredniego. W zapytaniu obejmującym wiele regionów reprezentuje tylko jeden z regionów. W zapytaniu obejmującym wiele obszarów roboczych może nie zawierać wszystkich obszarów roboczych.
 
 
-## <a name="data-used-for-query-processing"></a>Dane używane do przetwarzania zapytań
+## <a name="data-volume"></a>Ilość danych
 
 Krytycznym czynnikiem w przetwarzaniu zapytania jest ilość danych, które są skanowane i używane do przetwarzania zapytań. Usługa Azure Eksplorator danych korzysta z agresywnych optymalizacji, które znacząco zmniejszają ilość danych w porównaniu z innymi platformami danych. Nadal istnieją kluczowe czynniki w zapytaniu, które mogą mieć wpływ na używany wolumin danych.
 W dziennikach Azure Monitor kolumna **TimeGenerated** służy jako sposób indeksowania danych. Ograniczanie wartości **TimeGenerated** do tak wąskiego zakresu, jak to możliwe, spowoduje znaczne zwiększenie wydajności zapytań przez znaczne ograniczenie ilości danych, które należy przetworzyć.
@@ -209,7 +209,7 @@ SecurityEvent
 | summarize count(), dcount(EventID), avg(Level) by Computer  
 ```
 
-## <a name="time-range-of-the-data-processed"></a>Przedział czasu przetworzonych danych
+## <a name="time-range"></a>Przedział czasu
 
 Wszystkie dzienniki dzienników Azure Monitor są partycjonowane według kolumny **TimeGenerated** . Liczba dostępnych partycji jest bezpośrednio związana z przedziałem czasu. Skrócenie zakresu czasu jest najbardziej wydajnym sposobem zapewnienia wykonywania zapytania o monit.
 
@@ -259,14 +259,10 @@ by Computer
 ) on Computer
 ```
 
-Pomiar jest zawsze większy niż określony czas rzeczywisty. Na przykład jeśli filtr zapytania wynosi 7 dni, system może skanować 7,5 lub 8,1 dni. Wynika to z faktu, że system dzieli dane na fragmenty w zmiennym rozmiarze. Aby upewnić się, że wszystkie odpowiednie rekordy są skanowane, skanuje całą partycję, która może obejmować kilka godzin, a nawet kilka dni.
+> [!IMPORTANT]
+> Ten wskaźnik nie jest dostępny dla zapytań między regionami.
 
-Istnieje kilka przypadków, w których system nie może zapewnić dokładnego pomiaru zakresu czasu. Zdarza się to w większości przypadków, gdy zapytanie obejmuje mniej niż dzień lub zapytania obejmujące wiele obszarów roboczych.
-
-> [!NOTE]
-> Ten wskaźnik przedstawia tylko dane przetworzone w bezpośrednim klastrze. W zapytaniu obejmującym wiele regionów reprezentuje tylko jeden z regionów. W zapytaniu obejmującym wiele obszarów roboczych może nie zawierać wszystkich obszarów roboczych.
-
-## <a name="age-of-the-oldest-data-used"></a>Wiek najstarszych użytych danych
+## <a name="age-of-data"></a>Wiek danych
 Usługa Azure Eksplorator danych korzysta z kilku warstw magazynowania: lokalnych dysków SSD i znacznie wolniejszych obiektów blob platformy Azure. Im nowsze dane, tym wyższy jest szansa, że jest ona przechowywana w bardziej wydajnej warstwie z mniejszym opóźnieniem, co skraca czas trwania zapytania i procesor CPU. Oprócz samych danych system ma również pamięć podręczną dla metadanych. Im starsze dane, tym mniej szansa, że metadane będą znajdować się w pamięci podręcznej.
 
 Niektóre zapytania wymagają użycia starych danych, ale zdarzają się sytuacje, w których stare dane są używane przez pomyłkę. Dzieje się tak, gdy zapytania są wykonywane bez podawania zakresu czasu w metadanych, a nie wszystkie odwołania do tabeli obejmują filtr w kolumnie **TimeGenerated** . W takich przypadkach system przeskanuje wszystkie dane, które są przechowywane w tej tabeli. Gdy przechowywanie danych jest długie, może obejmować wiele przedziałów czasu, a tym samym dane, które są tak stare jak okres przechowywania danych.
@@ -289,7 +285,7 @@ Wykonywanie zapytań między regionami wymaga, aby system mógł serializować i
 Jeśli nie ma żadnej prawdziwej przyczyny skanowania wszystkich tych regionów, należy dostosować zakres tak, aby obejmował mniejszą liczbę regionów. Jeśli zakres zasobów jest zminimalizowany, ale nadal są używane wiele regionów, może się to zdarzyć z powodu błędu konfiguracji. Na przykład dzienniki inspekcji i ustawienia diagnostyczne są wysyłane do różnych obszarów roboczych w różnych regionach lub wiele konfiguracji ustawień diagnostycznych. 
 
 > [!IMPORTANT]
-> Gdy zapytanie jest uruchamiane w kilku regionach, pomiary procesora i danych nie będą dokładne i będą przedstawiać pomiar tylko w jednym z regionów.
+> Ten wskaźnik nie jest dostępny dla zapytań między regionami.
 
 ## <a name="number-of-workspaces"></a>Liczba obszarów roboczych
 Obszary robocze są kontenerami logicznymi, które są używane do segregowania i administrowania danymi dzienników. Zaplecze optymalizuje umieszczanie obszarów roboczych w klastrach fizycznych w wybranym regionie.
@@ -305,7 +301,7 @@ Wykonywanie zapytań między regionami i między klastrami wymaga, aby system m�
 > W niektórych scenariuszach obejmujących wiele obszarów roboczych pomiary procesora i danych nie będą dokładne i będą reprezentować tylko niektóre obszary robocze.
 
 ## <a name="parallelism"></a>Równoległości
-Dzienniki Azure Monitor używają dużych klastrów usługi Azure Eksplorator danych do wykonywania zapytań. Te klastry różnią się w zależności od tego, co może mieć nawet 140 węzłów obliczeniowych. System automatycznie skaluje klastry zgodnie z logiką i pojemnością umieszczenia obszaru roboczego.
+Dzienniki Azure Monitor używają dużych klastrów usługi Azure Eksplorator danych do uruchamiania zapytań, a te klastry różnią się w skali. System automatycznie skaluje klastry zgodnie z logiką i pojemnością umieszczenia obszaru roboczego.
 
 Aby efektywnie wykonać zapytanie, jest ono partycjonowane i dystrybuowane do węzłów obliczeniowych na podstawie danych, które są wymagane do przetwarzania. Istnieją sytuacje, w których system nie może wykonać tej czynności efektywnie. Może to prowadzić do długiego czasu trwania zapytania. 
 

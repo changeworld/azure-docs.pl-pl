@@ -1,5 +1,5 @@
 ---
-title: Azure DDoS Protection — projektowanie odpornych rozwiązań | Microsoft Docs
+title: Projektowanie odpornych rozwiązań za pomocą Azure DDoS Protection
 description: Dowiedz się, jak korzystać z danych rejestrowania w celu uzyskania szczegółowych informacji o aplikacji.
 services: security
 author: barclayn
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: ac36a4c59dbec8bf27850de1565e86b78643148a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8d3fc809999508bf3d49c3765c90017e89e80fa7
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595417"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624050"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection — projektowanie odpornych rozwiązań
 
@@ -35,7 +35,7 @@ Oprócz podstawowej ochrony DDoS na platformie, [Azure DDoS Protection Standard]
 
 Poniższe sekcje zawierają wskazówki dotyczące tworzenia DDoSych odpornych na błędy usług na platformie Azure.
 
-### <a name="design-for-security"></a>Projektowanie z uwzględnieniem zabezpieczeń
+### <a name="design-for-security"></a>Projektowanie pod kątem zabezpieczeń
 
 Upewnij się, że zabezpieczenia są priorytetem całego cyklu życia aplikacji, od projektowania i implementacji wdrożenia i operacji. Aplikacje mogą mieć usterkę, która pozwala na stosunkowo małą liczbę żądań w celu użycia nadmiernej ilości zasobów, co spowodowało awarię usługi. 
 

@@ -2,14 +2,14 @@
 title: Rozwiązywanie problemów — Personalizacja
 description: Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące narzędzia do rozwiązywania problemów dotyczących narzędzia Personalizacja.
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/26/2020
 ms.author: diberry
-ms.openlocfilehash: fec403da7f54098dbf197d14f3b16afd30bf5efc
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 432b33243bdb38cf359d4fea1a336500eb244464
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469548"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650524"
 ---
 # <a name="personalizer-troubleshooting"></a>Rozwiązywanie problemów z narzędziem Personalizacja
 
@@ -32,6 +32,19 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące narzędzi
 </details>
 
 ## <a name="learning-loop"></a>Pętla szkoleniowa
+
+<details>
+<summary>
+<b>Pętla szkoleniowa nie osiąga 100% dopasowania do systemu bez personalizacji. Jak mogę rozwiązać ten problem?</b></summary>
+
+**Odpowiedź**: przyczyny nieosiągnięcia Twojego celu w pętli szkoleniowej:
+* Nie wysłano wystarczającej liczby funkcji z wywołaniem interfejsu API rangi
+* Usterki w wysyłanych funkcjach — takie jak wysyłanie niezagregowanych danych funkcji, takich jak sygnatury czasowe do rangi interfejsu API
+* Usterki dotyczące przetwarzania pętli, takie jak niewysyłanie danych o nagrodach do nagradzanego interfejsu API dla zdarzeń
+
+Aby rozwiązać ten problem, należy zmienić przetwarzanie przez zmianę funkcji wysyłanych do pętli lub upewnić się, że wynagrodzenie jest poprawną oceną jakości odpowiedzi rangi.
+
+</details>
 
 <details>
 <summary>
@@ -91,7 +104,7 @@ Po rozpoczęciu nowego okresu aktualizacji zostanie użyty zaktualizowany model 
 <details>
 <summary><b>Jak mogę zaimportować zasady uczenia?</b></summary>
 
-**Odpowiedź**: Dowiedz się więcej o [pojęciach dotyczących zasad uczenia](concept-active-learning.md#understand-learning-policy-settings) i [sposobach stosowania](how-to-learning-policy.md) nowych zasad nauki. Jeśli nie chcesz wybierać zasad uczenia, możesz użyć [oceny w trybie offline](how-to-offline-evaluation.md) , aby zasugerować zasady uczenia na podstawie bieżących wydarzeń.
+**Odpowiedź**: Dowiedz się więcej o [pojęciach dotyczących zasad uczenia](concept-active-learning.md#understand-learning-policy-settings) i [sposobach stosowania](how-to-manage-model.md) nowych zasad nauki. Jeśli nie chcesz wybierać zasad uczenia, możesz użyć [oceny w trybie offline](how-to-offline-evaluation.md) , aby zasugerować zasady uczenia na podstawie bieżących wydarzeń.
 
 </details>
 

@@ -2,13 +2,13 @@
 title: Omówienie zadań usługi ACR
 description: Wprowadzenie do ACR zadań, zestaw funkcji w Azure Container Registry, który zapewnia bezpieczną, zautomatyzowaną kompilację, zarządzanie i stosowanie poprawek w chmurze.
 ms.topic: article
-ms.date: 09/05/2019
-ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 01/22/2020
+ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938878"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615953"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatyzowanie kompilacji i konserwacji obrazów kontenerów za pomocą zadań ACR
 
@@ -56,9 +56,9 @@ Wyzwalanie kompilacji obrazu kontenera lub zadania wieloetapowego, gdy kod jest 
 
 Zadania ACR obsługują następujące wyzwalacze podczas ustawiania repozytorium git jako kontekstu zadania:
 
-| Wyzwalacz | Włączona domyślnie |
+| Wyzwalacz | Domyślnie włączona |
 | ------- | ------------------ |
-| Zatwierdzenie | Tak |
+| Zatwierdzenie | Yes |
 | Żądanie ściągnięcia | Nie |
 
 Aby skonfigurować wyzwalacz aktualizacji kodu źródłowego, należy podać zadanie w osobistym tokenie dostępu (źródła), aby ustawić element webhook w publicznym lub prywatnym repozytorium GitHub lub DevOps Azure.
@@ -70,26 +70,12 @@ Dowiedz się, jak wyzwolić kompilacje w ramach zatwierdzenia kodu źródłowego
 
 ## <a name="automate-os-and-framework-patching"></a>Automatyzowanie stosowania poprawek systemu operacyjnego i platformy
 
-Możliwości ACR zadania, aby naprawdę ulepszyć przepływ pracy kompilacji kontenera, pochodzą z możliwości wykrywania aktualizacji obrazu podstawowego. Po wypchnięciu zaktualizowanego obrazu podstawowego do rejestru lub zaktualizowaniu obrazu podstawowego w repozytorium publicznym, takim jak w usłudze Docker Hub, ACR zadania mogą automatycznie kompilować wszystkie obrazy aplikacji na ich podstawie.
+Możliwości ACR zadania, aby naprawdę ulepszyć przepływ pracy kompilacji kontenera, pochodzą z możliwości wykrywania aktualizacji *obrazu podstawowego*. Funkcja większości obrazów kontenerów jest obrazem nadrzędnym, na którym jest oparty jeden lub więcej obrazów aplikacji. Obrazy podstawowe zwykle zawierają system operacyjny, a czasami struktury aplikacji. 
 
-Obrazy kontenerów można w szerokim zakresie klasyfikować do obrazów *podstawowych* i obrazów *aplikacji* . Obrazy podstawowe zazwyczaj obejmują system operacyjny i platformy aplikacji, na których jest skompilowana aplikacja, oraz inne dostosowania. Te obrazy podstawowe są zwykle oparte na publicznych obrazach nadrzędnych, na przykład: [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet]lub [Node. js][base-node]. Kilka obrazów aplikacji może współużytkować wspólny obraz podstawowy.
+Można skonfigurować zadanie ACR, aby śledzić zależność od obrazu podstawowego podczas kompilowania obrazu aplikacji. Po wypchnięciu zaktualizowanego obrazu podstawowego do rejestru lub zaktualizowaniu obrazu podstawowego w repozytorium publicznym, takim jak w usłudze Docker Hub, ACR zadania mogą automatycznie kompilować wszystkie obrazy aplikacji na ich podstawie.
+Dzięki temu automatycznemu wykrywaniu i odbudowywaniu ACR zadania oszczędzają czas i nakłady pracy, które są zwykle wymagane do ręcznego śledzenia i aktualizowania każdego obrazu aplikacji, do którego odwołuje się zaktualizowany obraz podstawowy.
 
-W przypadku aktualizowania obrazu systemu operacyjnego lub aplikacji w ramach utrzymującego się elementu przez funkcję, na przykład z krytyczną poprawką zabezpieczeń systemu operacyjnego, należy również zaktualizować obrazy podstawowe w celu uwzględnienia poprawki krytycznej. Każdy obraz aplikacji należy również ponownie skompilować, aby uwzględnić te prefiksy nadrzędne teraz zawarte w obrazie podstawowym.
-
-Ponieważ zadania ACR dynamicznie odnajdują zależności obrazu podstawowego podczas kompilowania obrazu kontenera, może wykryć, kiedy obraz podstawowy obrazu aplikacji zostanie zaktualizowany. Po jednym wstępnie skonfigurowanym [zadaniu kompilacji](container-registry-tutorial-base-image-update.md#create-a-task)ACR zadania **automatycznie ponownie kompilują każdy obraz aplikacji** . Dzięki temu automatycznemu wykrywaniu i odbudowywaniu ACR zadania oszczędzają czas i nakłady pracy, które są zwykle wymagane do ręcznego śledzenia i aktualizowania każdego obrazu aplikacji, do którego odwołuje się zaktualizowany obraz podstawowy.
-
-W przypadku kompilacji obrazu z pliku dockerfile, zadanie ACR śledzi podstawową aktualizację obrazu, gdy podstawowy obraz znajduje się w jednej z następujących lokalizacji:
-
-* Ten sam rejestr kontenerów platformy Azure, w którym uruchomiono zadanie
-* Inna usługa Azure Container Registry w tym samym regionie 
-* Repozytorium publiczne w usłudze Docker Hub
-* Repozytorium publiczne w programie Microsoft Container Registry
-
-> [!NOTE]
-> * Wyzwalacz aktualizacji obrazu podstawowego jest domyślnie włączony w zadaniu ACR. 
-> * Obecnie zadania ACR śledzą jedynie podstawowe aktualizacje obrazu dla obrazów aplikacji (*Runtime*). Zadania ACR nie śledzą podstawowych aktualizacji obrazu dla obrazów pośrednich (*buildtime*) używanych w wieloetapowe dockerfile wieloetapowym. 
-
-Dowiedz się więcej o poprawkach systemów operacyjnych i struktur w trzecim samouczku ACR zadania, [automatyzując kompilacje obrazów w podstawowej aktualizacji obrazu przy użyciu Azure Container Registry zadań](container-registry-tutorial-base-image-update.md).
+Dowiedz się więcej na temat [podstawowych wyzwalaczy aktualizacji obrazu](container-registry-tasks-base-images.md) dla zadań ACR. I Dowiedz się, jak wyzwolić kompilację obrazu, gdy podstawowy obraz jest wypychany do rejestru kontenerów w przewodniku [Automatyzowanie obrazu kontenera, gdy obraz podstawowy zostanie zaktualizowany w usłudze Azure Container Registry](container-registry-tutorial-base-image-update.md)
 
 ## <a name="schedule-a-task"></a>Planowanie zadania
 
@@ -136,7 +122,7 @@ Domyślnie zadania ACR kompilują obrazy dla systemu operacyjnego Linux i archit
 | System operacyjny | Architektura|
 | --- | ------- | 
 | Linux | Procesor<br/>ARM<br/>arm64<br/>386 |
-| Windows | Procesor |
+| System Windows | Procesor |
 
 ## <a name="view-task-logs"></a>Wyświetlanie dzienników zadań
 

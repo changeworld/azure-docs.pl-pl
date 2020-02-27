@@ -3,18 +3,18 @@ title: Definiowanie wielu wystąpień zmiennej
 description: Użyj operacji copy w szablonie Azure Resource Manager, aby wykonać iterację wielokrotnie podczas tworzenia zmiennej.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 9e252a0b9721ffec99535c5d30e609e12e9e67eb
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: ea4caf3553b3cd14eec194b8cef0db59499a4f4c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210816"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622880"
 ---
 # <a name="variable-iteration-in-azure-resource-manager-templates"></a>Iteracja zmiennej w szablonach Azure Resource Manager
 
 W tym artykule pokazano, jak utworzyć więcej niż jedną wartość zmiennej w szablonie Azure Resource Manager. Poprzez dodanie elementu **copy** do sekcji zmienne szablonu, można dynamicznie ustawić liczbę elementów dla zmiennej podczas wdrażania. Należy również unikać powtarzania składni szablonu.
 
-Można również użyć kopiowania z [zasobami](copy-resources.md) i [właściwościami w zasobie](copy-properties.md).
+Można również użyć kopiowania z [zasobami](copy-resources.md), [właściwości w zasobów](copy-properties.md)i danych [wyjściowych](copy-outputs.md).
 
 ## <a name="variable-iteration"></a>Iteracja zmiennej
 
@@ -313,7 +313,10 @@ W poniższych przykładach przedstawiono typowe scenariusze tworzenia więcej ni
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby przejść przez samouczek, zobacz [Samouczek: Tworzenie wielu wystąpień zasobów przy użyciu szablonów Menedżer zasobów](template-tutorial-create-multiple-instances.md).
-* Aby poznać inne zastosowania elementu Copy, zobacz [iteracja zasobów w szablonach Azure Resource Manager](copy-resources.md) i [iteracji właściwości w szablonach Azure Resource Manager](copy-properties.md).
+* Aby poznać inne zastosowania elementu Copy, zobacz:
+  * [Iteracja zasobów w szablonach Azure Resource Manager](copy-resources.md)
+  * [Iteracja właściwości w szablonach Azure Resource Manager](copy-properties.md)
+  * [Iteracja danych wyjściowych w szablonach Azure Resource Manager](copy-outputs.md)
 * Jeśli chcesz dowiedzieć się więcej na temat sekcji szablonu, zobacz [Tworzenie szablonów Azure Resource Manager](template-syntax.md).
 * Aby dowiedzieć się, jak wdrożyć szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](deploy-powershell.md).
 

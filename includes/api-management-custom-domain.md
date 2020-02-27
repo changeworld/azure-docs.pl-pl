@@ -4,25 +4,25 @@ ms.service: api-management
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
-ms.openlocfilehash: dff01f8bc4a4cf58d1ed503b69a29dadc367fecb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9e601c72395b4910850714460321a83a3113e69
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66248999"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649549"
 ---
-## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>Jak serwer Proxy usługi APIM odpowiada za pomocą certyfikatów SSL w uzgadniania TLS
+## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>Jak serwer proxy APIM odpowiada za pomocą certyfikatów SSL w uzgadnianiu protokołu TLS
 
-### <a name="clients-calling-with-sni-header"></a>Klientom wywołującym z nagłówkiem SNI
-Jeśli klient ma zawartość jednego lub wielu domen niestandardowych skonfigurowanych dla serwera Proxy, usługi APIM, oznacza mogą odpowiadać na żądania HTTPS z domeny niestandardowej (np. contoso.com), a także domyślnej domeny (na przykład apim-service-name.azure-api.net). Na podstawie informacji w nagłówku oznaczaniem nazwy serwera (SNI), usługi APIM odpowiada za pomocą certyfikatu odpowiedniego serwera.
+### <a name="clients-calling-with-sni-header"></a>Klienci wywołujący nagłówek SNI
+Jeśli klient ma jedną lub wiele domen niestandardowych skonfigurowanych dla serwera proxy, APIM może odpowiedzieć na żądania HTTPS z domen niestandardowych (na przykład contoso.com), a także domenę domyślną (na przykład apim-service-name.azure-api.net). Na podstawie informacji w nagłówku Oznaczanie nazwy serwera (SNI) APIM odpowiada przy użyciu odpowiedniego certyfikatu serwera.
 
-### <a name="clients-calling-without-sni-header"></a>Klientów wywołujących bez nagłówka SNI
-Jeśli klient korzysta z klienta, który nie będzie przesyłał [SNI](https://tools.ietf.org/html/rfc6066#section-3) nagłówka APIM tworzy odpowiedzi przy użyciu logiki poniższym:
+### <a name="clients-calling-without-sni-header"></a>Klienci wywołujący bez nagłówka SNI
+Jeśli klient używa klienta programu, który nie wysyła nagłówka [SNI](https://tools.ietf.org/html/rfc6066#section-3) , APIM tworzy odpowiedzi na podstawie następujących logiki:
 
-* Jeśli usługa ma tylko jedną domenę niestandardowe skonfigurowane dla serwera Proxy, certyfikat domyślny jest certyfikat, który został wystawiony dla domeny niestandardowej serwera Proxy.
-* Jeśli usługa została skonfigurowana wielu domen niestandardowych dla serwera Proxy (obsługiwane tylko w **Premium** warstwy), klient może określić, który certyfikat powinien być domyślnego certyfikatu. Aby ustawić domyślnego certyfikatu [defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) właściwość powinna być ustawiona na wartość true ("defaultSslBinding": "true"). Jeśli klient nie ustawia się właściwości, domyślnego certyfikatu jest certyfikat wystawiony dla domyślnej domeny serwera Proxy hostowanych na *.azure-api.net.
+* Jeśli usługa ma tylko jedną domenę niestandardową skonfigurowaną dla serwera proxy, certyfikat domyślny jest certyfikatem wystawionym dla domeny niestandardowej serwera proxy.
+* Jeśli usługa skonfigurowała wiele domen niestandardowych dla serwera proxy (obsługiwana w warstwie **deweloper** i **Premium** ), klient może wyznaczyć certyfikat domyślny. Aby ustawić certyfikat domyślny, właściwość [defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) powinna mieć wartość true ("defaultSslBinding": "true"). Jeśli klient nie ustawi właściwości, domyślnym certyfikatem jest certyfikat wystawiony dla domyślnej domeny serwera proxy hostowanej w lokalizacji *. azure-api.net.
 
-## <a name="support-for-putpost-request-with-large-payload"></a>Obsługa żądania PUT/POST przy użyciu dużych ładunku
+## <a name="support-for-putpost-request-with-large-payload"></a>Obsługa żądania PUT/POST z dużym ładunkiem
 
-Serwer Proxy usługi APIM obsługuje żądania z ładunkiem dużych, podczas korzystania z certyfikatów klienta przy użyciu protokołu HTTPS (na przykład ładunku > od 40 KB). Aby zapobiec zawiesza żądanie serwera, klientów można ustawić właściwości ["negotiateClientCertificate": "true"](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/CreateOrUpdate#hostnameconfiguration) na nazwę hosta serwera Proxy. Jeśli właściwość jest ustawiona na wartość true, klient żądania certyfikatu w momencie połączenia SSL/TLS, przed wymiana jakichkolwiek żądania protokołu HTTP. Ponieważ to ustawienie ma zastosowanie w **nazwę hosta serwera Proxy** poziomie, wszystkie żądania połączeń poprosić o certyfikat klienta. Klienci mogą skonfigurować maksymalnie 20 domen niestandardowych dla serwera Proxy (obsługiwane tylko w **Premium** warstwy) i obejście tego ograniczenia.
+Serwer proxy APIM obsługuje żądanie z dużym ładunkiem w przypadku używania certyfikatów po stronie klienta w protokole HTTPS (na przykład ładunek > 40 KB). Aby zapobiec zablokowaniu żądania serwera, klienci mogą ustawić właściwość ["negotiateClientCertificate": "true"](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/CreateOrUpdate#hostnameconfiguration) na nazwie hosta serwera proxy. Jeśli właściwość ma wartość true, certyfikat klienta jest wymagany w czasie połączenia SSL/TLS przed dowolnymi żądaniami protokołu HTTP. Ponieważ to ustawienie jest stosowane na poziomie **nazwy hosta serwera proxy** , wszystkie żądania połączeń żądają certyfikatu klienta. Klienci mogą skonfigurować maksymalnie 20 domen niestandardowych dla serwera proxy (obsługiwane tylko w warstwie **Premium** ) i obejść to ograniczenie.
 

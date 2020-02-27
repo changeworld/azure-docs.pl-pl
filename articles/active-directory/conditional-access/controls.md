@@ -1,108 +1,24 @@
 ---
-title: Kontrola dostępu w Azure Active Directory dostęp warunkowy
-description: Dowiedz się, jak działają funkcje kontroli dostępu w Azure Active Directory dostęp warunkowy.
+title: Niestandardowe kontrolki dostępu warunkowego usługi Azure AD
+description: Dowiedz się, jak kontrolki niestandardowe w Azure Active Directory dostęp warunkowy.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ad8894078a15bf37a5383cdff3721f4bf7be910
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6f1df037b66c72177a96f77231cee70782d04992
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186225"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620716"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co to są kontrole dostępu w Azure Active Directory dostęp warunkowy?
-
-Za pomocą [dostępu warunkowego usługi Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md)można kontrolować sposób, w jaki autoryzowani użytkownicy uzyskują dostęp do aplikacji w chmurze. W zasadach dostępu warunkowego należy zdefiniować odpowiedź ("zrób to") z powodu wyzwolenia zasad ("w przypadku takiej sytuacji").
-
-![Kontrola](./media/controls/10.png)
-
-W kontekście dostępu warunkowego,
-
-- "**Gdy tak się stanie**" jest wywoływane **warunki**
-- "**Następnie zrób to**" jest nazywana **kontrolami dostępu**
-
-Kombinacja instrukcji Condition z kontrolkami reprezentuje zasady dostępu warunkowego.
-
-![Kontrola](./media/controls/61.png)
-
-Każda kontrolka jest wymaganiem, które musi zostać spełnione przez osobę lub System logowania, lub ograniczeniem działania użytkownika po zalogowaniu się.
-
-Istnieją dwa typy kontrolek:
-
-- **Przyznaj kontrolki** dostęp do bramy
-- **Kontrolki sesji** — aby ograniczyć dostęp w ramach sesji
-
-W tym temacie objaśniono różne kontrolki, które są dostępne w trybie dostępu warunkowego usługi Azure AD. 
-
-## <a name="grant-controls"></a>Przyznaj kontrolki
-
-Dzięki udzieleniu kontroli można zablokować dostęp całkowicie lub zezwolić na dostęp z dodatkowymi wymaganiami poprzez wybranie żądanych kontrolek. W przypadku wielu formantów można wymagać:
-
-- Wszystkie wybrane kontrolki do spełnienia (*i*)
-- Jedna wybrana kontrolka do spełnienia (*lub*)
-
-![Kontrola](./media/controls/18.png)
-
-### <a name="multi-factor-authentication"></a>Uwierzytelnianie wieloskładnikowe
-
-Za pomocą tego formantu można wymagać uwierzytelniania wieloskładnikowego w celu uzyskania dostępu do określonej aplikacji w chmurze. Ta kontrolka obsługuje następujących dostawców wieloskładnikowych:
-
-- Azure Multi-Factor Authentication
-- Dostawca lokalnego uwierzytelniania wieloskładnikowego, połączony z Active Directory Federation Services (AD FS).
-
-Korzystanie z uwierzytelniania wieloskładnikowego pomaga chronić zasoby przed dostępem nieautoryzowanego użytkownika, którzy mieli dostęp do podstawowych poświadczeń prawidłowego użytkownika.
-
-### <a name="compliant-device"></a>Zgodne urządzenie
-
-Można skonfigurować zasady dostępu warunkowego, które są oparte na urządzeniach. Celem zasad dostępu warunkowego opartego na urządzeniach jest przyznanie dostępu do wybranych aplikacji w chmurze z [zarządzanych urządzeń](require-managed-devices.md). Wymaganie, aby urządzenie było oznaczone jako zgodne, było jedną z opcji, aby ograniczyć dostęp do zarządzanych urządzeń. Urządzenie może być oznaczone jako zgodne przez usługę Intune (dla dowolnego systemu operacyjnego urządzenia) lub przez system MDM innej firmy dla urządzeń z systemem Windows 10. Systemy zarządzania urządzeniami przenośnymi innych firm dla typów systemów operacyjnych innych niż Windows 10 nie są obsługiwane. 
-
-Urządzenie musi zostać zarejestrowane w usłudze Azure AD, zanim będzie można je oznaczyć jako zgodne. Do zarejestrowania urządzenia dostępne są trzy opcje: 
-
-- Urządzenia zarejestrowane w usłudze Azure AD
-- Urządzenia dołączone do usługi Azure AD  
-- Urządzenia dołączone hybrydowo do usługi Azure AD
-
-Te trzy opcje zostały omówione w artykule [co to jest tożsamość urządzenia?](../devices/overview.md)
-
-Aby uzyskać więcej informacji, zobacz [temat jak wymagać zarządzanych urządzeń do uzyskiwania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](require-managed-devices.md).
-
-### <a name="hybrid-azure-ad-joined-device"></a>Urządzenie dołączone do hybrydowej usługi Azure AD
-
-Wymaganie hybrydowego urządzenia dołączonego do usługi Azure AD jest kolejną opcją, aby skonfigurować zasady dostępu warunkowego oparte na urządzeniach. To wymaganie dotyczy komputerów stacjonarnych, laptopów i tabletów z systemem Windows, które są przyłączone do Active Directory lokalnego. W przypadku wybrania tej opcji zasady dostępu warunkowego udzielą dostępu do prób dostępu do tych urządzeń, które są przyłączone do Active Directory lokalnego i Azure Active Directory. Urządzenia Mac nie obsługują hybrydowego sprzężenia usługi Azure AD.
-
-Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostępu warunkowego opartego na urządzeniach Azure Active Directory](require-managed-devices.md).
-
-### <a name="approved-client-app"></a>Zatwierdzona aplikacja kliencka
-
-Ze względu na to, że pracownicy korzystają z urządzeń przenośnych zarówno do zadań osobistych, jak i służbowych, warto mieć możliwość ochrony danych firmowych, do których uzyskuje się dostęp za pomocą urządzeń, nawet w przypadku, gdy nie są zarządzane przez Ciebie.
-[Zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) umożliwiają ochronę danych firmy niezależnie od dowolnego rozwiązania do zarządzania urządzeniami mobilnymi (MDM).
-
-W przypadku zatwierdzonych aplikacji klienckich można wymagać aplikacji klienckiej, która próbuje uzyskać dostęp do aplikacji w chmurze w celu obsługi [zasad ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy). Na przykład możesz ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook. Zasady dostępu warunkowego, które wymagają zatwierdzonych aplikacji klienckich, są również nazywane [zasadami dostępu warunkowego na podstawie aplikacji](app-based-conditional-access.md). Aby uzyskać listę obsługiwanych zatwierdzonych aplikacji klienckich, zobacz [wymagania dotyczące zatwierdzonej aplikacji klienckiej](concept-conditional-access-grant.md#require-approved-client-app).
-
-### <a name="app-protection-policy-preview"></a>Zasady ochrony aplikacji (wersja zapoznawcza)
-
-Ze względu na to, że pracownicy korzystają z urządzeń przenośnych zarówno do zadań osobistych, jak i służbowych, warto mieć możliwość ochrony danych firmowych, do których uzyskuje się dostęp za pomocą urządzeń, nawet w przypadku, gdy nie są zarządzane przez Ciebie.
-[Zasady ochrony aplikacji usługi Intune](https://docs.microsoft.com/intune/app-protection-policy) umożliwiają ochronę danych firmy niezależnie od dowolnego rozwiązania do zarządzania urządzeniami mobilnymi (MDM).
-
-Korzystając z zasad ochrony aplikacji, można ograniczyć dostęp do aplikacji klienckich, które zostały zgłoszone do usługi Azure AD, po odebraniu [zasad ochrony aplikacji w usłudze Intune](https://docs.microsoft.com/intune/app-protection-policy). Można na przykład ograniczyć dostęp do usługi Exchange Online do aplikacji Outlook, która ma zasady ochrony aplikacji w usłudze Intune. Zasady dostępu warunkowego, które wymagają zasad ochrony aplikacji, są również znane jako [zasady dostępu warunkowego opartego na ochronie aplikacji](concept-conditional-access-session.md#application-enforced-restrictions). 
-
-Urządzenie musi zostać zarejestrowane w usłudze Azure AD, aby można było oznaczyć aplikację jako chronioną przez zasady.
-
-Aby uzyskać listę obsługiwanych aplikacji klienckich chronionych przez zasady, zobacz [wymagania dotyczące zasad ochrony aplikacji](concept-conditional-access-session.md#application-enforced-restrictions).
-
-### <a name="terms-of-use"></a>Warunki użytkowania
-
-Możesz wymagać od użytkownika w dzierżawie wyrazić zgodę na warunki użytkowania przed udzieleniem dostępu do zasobu. Jako administrator możesz skonfigurować i dostosować warunki użytkowania przez przekazanie dokumentu PDF. Jeśli użytkownik mieści się w zakresie kontroli dostępu do aplikacji, zostanie udzielony tylko w przypadku, gdy warunki użytkowania zostały uzgodnione.
-
-## <a name="custom-controls-preview"></a>Formanty niestandardowe (wersja zapoznawcza)
+# <a name="custom-controls-preview"></a>Formanty niestandardowe (wersja zapoznawcza)
 
 Kontrolki niestandardowe są możliwością Azure Active Directory — wersja Premium wersji P1. W przypadku korzystania z kontrolek niestandardowych użytkownicy są przekierowywani do zgodnej usługi, aby spełnić dalsze wymagania poza Azure Active Directory. W celu spełnienia tej kontrolki przeglądarka użytkownika zostanie przekierowana do usługi zewnętrznej, wykonuje wszelkie wymagane operacje uwierzytelniania lub walidacji, a następnie zostanie przekierowana z powrotem do Azure Active Directory. Azure Active Directory weryfikuje odpowiedź i, jeśli użytkownik został pomyślnie uwierzytelniony lub zweryfikowany, użytkownik kontynuuje w przepływie dostępu warunkowego.
 
@@ -123,7 +39,7 @@ Dostawcy oferujący obecnie zgodną usługę obejmują:
 
 Aby uzyskać więcej informacji na temat tych usług, skontaktuj się bezpośrednio z dostawcami.
 
-### <a name="creating-custom-controls"></a>Tworzenie niestandardowych kontrolek
+## <a name="creating-custom-controls"></a>Tworzenie niestandardowych kontrolek
 
 Aby utworzyć kontrolkę niestandardową, należy najpierw skontaktować się z dostawcą, którego chcesz użyć. Każdy dostawca firmy innej niż Microsoft ma własny proces i wymagania, aby zarejestrować się, subskrybować lub w inny sposób stać się częścią usługi i wskazać, że chcesz zintegrować się z dostępem warunkowym. W tym momencie dostawca dostarczy blok danych w formacie JSON. Te dane umożliwiają dostawcy i dostęp warunkowy współdziałanie dla dzierżawy, tworzy nową kontrolkę i definiuje, jak dostęp warunkowy może stwierdzić, czy użytkownicy pomyślnie przeprowadzili weryfikację u dostawcy.
 
@@ -139,7 +55,7 @@ Kliknięcie przycisku **Nowy formant niestandardowy**powoduje otwarcie bloku z p
 
 ![Kontrola](./media/controls/81.png)
 
-### <a name="deleting-custom-controls"></a>Usuwanie formantów niestandardowych
+## <a name="deleting-custom-controls"></a>Usuwanie formantów niestandardowych
 
 Aby usunąć kontrolkę niestandardową, należy najpierw upewnić się, że nie jest ona używana w żadnym z zasad dostępu warunkowego. Po ukończeniu:
 
@@ -147,7 +63,7 @@ Aby usunąć kontrolkę niestandardową, należy najpierw upewnić się, że nie
 1. Kliknij przycisk...  
 1. Wybierz pozycję **Usuń**.
 
-### <a name="editing-custom-controls"></a>Edytowanie formantów niestandardowych
+## <a name="editing-custom-controls"></a>Edytowanie formantów niestandardowych
 
 Aby edytować kontrolkę niestandardową, należy usunąć bieżącą kontrolkę i utworzyć nową kontrolkę z zaktualizowanymi informacjami.
 

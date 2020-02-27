@@ -8,16 +8,16 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: bc2067dbde1e99619fb6e384be4e70f606c8518d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792771"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651410"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Łączenie z lokalnymi systemami plików przy użyciu Azure Logic Apps
 
-Za pomocą łącznika systemu plików i Azure Logic Apps można tworzyć automatyczne zadania i przepływy pracy, które tworzą pliki i zarządzają nimi w lokalnym udziale plików, na przykład:  
+Za pomocą Azure Logic Apps i łącznika systemu plików można tworzyć automatyczne zadania i przepływy pracy, które tworzą pliki i zarządzają nimi w lokalnym udziale plików, na przykład:
 
 - Twórz, pobieraj, dołączaj, Aktualizuj i usuwaj pliki.
 - Wyświetl listę plików w folderach lub folderach głównych.
@@ -65,14 +65,14 @@ W tym artykule pokazano, jak połączyć się z lokalnym systemem plików zgodni
 
    ![Tworzenie połączenia](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | Właściwość | Wymagane | Wartość | Opis |
+   | Właściwość | Wymagany | Wartość | Opis |
    | -------- | -------- | ----- | ----------- |
-   | **Nazwa połączenia** | Tak | <*nazwę połączenia*> | Nazwa, która ma być używany dla połączenia |
-   | **Folder główny** | Tak | *nazwa <głównego-folderu*> | Folder główny systemu plików, na przykład jeśli zainstalowano lokalną bramę danych, taką jak folder lokalny na komputerze, na którym jest zainstalowana lokalna Brama danych lub folder udziału sieciowego, do którego komputer ma dostęp. <p>Na przykład: `\\PublicShare\\DropboxFiles` <p>Folder główny jest głównym folderem nadrzędnym, który jest używany dla ścieżek względnych dla wszystkich akcji związanych z plikami. |
+   | **Nazwa połączenia** | Yes | <*nazwę połączenia*> | Nazwa, która ma być używany dla połączenia |
+   | **Folder główny** | Yes | *nazwa <głównego-folderu*> | Folder główny systemu plików, na przykład jeśli zainstalowano lokalną bramę danych, taką jak folder lokalny na komputerze, na którym jest zainstalowana lokalna Brama danych lub folder udziału sieciowego, do którego komputer ma dostęp. <p>Na przykład: `\\PublicShare\\DropboxFiles` <p>Folder główny jest głównym folderem nadrzędnym, który jest używany dla ścieżek względnych dla wszystkich akcji związanych z plikami. |
    | **Typ uwierzytelniania** | Nie | <*Typ uwierzytelniania*> | Typ uwierzytelniania używany przez system plików, na przykład **Windows** |
-   | **Nazwa użytkownika** | Tak | <*domeny*>\\<*Nazwa użytkownika*> | Nazwa użytkownika komputera, na którym znajduje się system plików |
-   | **Hasło** | Tak | <*hasło*> | Hasło do komputera, na którym znajduje się system plików |
-   | **punkt** | Tak | <*zainstalowane — nazwa bramy*> | Nazwa zainstalowanej wcześniej bramy |
+   | **Nazwa użytkownika** | Yes | <*domeny*>\\<*Nazwa użytkownika*> | Nazwa użytkownika komputera, na którym znajduje się system plików |
+   | **Hasło** | Yes | <*hasło*> | Hasło do komputera, na którym znajduje się system plików |
+   | **punkt** | Yes | <*zainstalowane — nazwa bramy*> | Nazwa zainstalowanej wcześniej bramy |
    |||||
 
 1. Gdy wszystko będzie gotowe, wybierz pozycję **Utwórz**.
@@ -93,7 +93,10 @@ W tym artykule pokazano, jak połączyć się z lokalnym systemem plików zgodni
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/fileconnector/)łącznika.
+Aby uzyskać więcej szczegółowych informacji technicznych dotyczących tego łącznika, takich jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku Swagger łącznika, zobacz [stronę odwołania łącznika](https://docs.microsoft.com/connectors/fileconnector/).
+
+> [!NOTE]
+> W przypadku aplikacji logiki w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), wersja tego łącznika z oznaczeniem ISE w zamian używa [limitów komunikatów ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
 ## <a name="next-steps"></a>Następne kroki
 

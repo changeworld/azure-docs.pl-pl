@@ -3,14 +3,14 @@ title: Start/Stop VMs during off-hours rozwiązanie
 description: To rozwiązanie do zarządzania MASZYNą wirtualną uruchamia i wstrzymuje Azure Resource Managere maszyny wirtualne zgodnie z harmonogramem i aktywnie monitoruje z Azure Monitor dzienników.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/04/2019
+ms.date: 02/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37fee7f96a27942a1295cb8c2315fedffc5bdefe
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: cbf181b9a6d3860854c7b61cca0e6c50810cced9
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030157"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616061"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Start/Stop VMs during off-hours rozwiązanie w Azure Automation
 
@@ -105,7 +105,7 @@ Wykonaj następujące kroki, aby dodać rozwiązanie Start/Stop VMs during off-h
 
 2. Na stronie **Start/Stop VMS during off-hours** wybranego rozwiązania Przejrzyj informacje podsumowujące, a następnie kliknij przycisk **Utwórz**.
 
-   ![Portal Azure](media/automation-solution-vm-management/azure-portal-01.png)
+   ![Portalu Azure](media/automation-solution-vm-management/azure-portal-01.png)
 
 3. Zostanie wyświetlona strona **Dodawanie rozwiązania** . Zostanie wyświetlony monit o skonfigurowanie rozwiązania przed zaimportowaniem go do subskrypcji usługi Automation.
 
@@ -200,36 +200,6 @@ W środowisku zawierającym co najmniej dwa składniki na wielu maszynach wirtua
 1. W tym scenariuszu nie są uwzględniane zmienne **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupnames** . W tym scenariuszu należy utworzyć własny harmonogram automatyzacji. Aby uzyskać szczegółowe informacje, zobacz [Planowanie elementu Runbook w Azure Automation](../automation/automation-schedules.md).
 1. Wyświetl podgląd akcji i wprowadź wszelkie niezbędne zmiany przed wdrożeniem na maszynach wirtualnych w środowisku produkcyjnym. Gdy wszystko będzie gotowe, ręcznie wykonaj polecenie monitoring-and-Diagnostics/monitoring-Action-groupsrunbook z parametrem ustawionym na **wartość false**lub pozwól na sekwencjonowanie harmonogramu usługi Automation **-StartVM** i **Sequenced-StopVM** uruchamiane automatycznie zgodnie z określonym harmonogramem.
 
-### <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a>Scenariusz 3. automatyczne uruchamianie/zatrzymywanie na podstawie użycia procesora CPU
-
-To rozwiązanie może pomóc w zarządzaniu kosztami uruchamiania maszyn wirtualnych w ramach subskrypcji przez ocenę maszyn wirtualnych platformy Azure, które nie są używane w okresach poza szczytem, na przykład po godzinach, i ich automatyczne wyłączenie, jeśli użycie procesora jest mniejsze niż x%.
-
-Domyślnie rozwiązanie jest wstępnie skonfigurowane, aby oszacować procentową metrykę procesora CPU, aby sprawdzić, czy średnie użycie nie jest równe 5 procent. Ten scenariusz jest kontrolowany przez następujące zmienne i można go zmodyfikować, jeśli wartości domyślne nie spełniają wymagań:
-
-- External_AutoStop_MetricName
-- External_AutoStop_Threshold
-- External_AutoStop_TimeAggregationOperator
-- External_AutoStop_TimeWindow
-
-Można włączyć opcję określania wartości docelowej dla subskrypcji i grupy zasobów lub przeznaczenie określonej listy maszyn wirtualnych, ale nie obu.
-
-#### <a name="target-the-stop-action-against-a-subscription-and-resource-group"></a>Przekieruj akcję zatrzymania na subskrypcję i grupę zasobów
-
-1. Skonfiguruj zmienne **External_Stop_ResourceGroupNames** i **External_ExcludeVMNames** , aby określić docelowe maszyny wirtualne.
-1. Włącz i zaktualizuj harmonogram **Schedule_AutoStop_CreateAlert_Parent** .
-1. Uruchom **AutoStop_CreateAlert_Parent** element Runbook z parametrem Action ustawionym na wartość **Start** i parametrem WHATIF ustawionym na **true** , aby wyświetlić podgląd zmian.
-
-#### <a name="target-the-start-and-stop-action-by-vm-list"></a>Kierowanie akcji Rozpocznij i Zatrzymaj według maszyny wirtualnej
-
-1. Uruchom **AutoStop_CreateAlert_Parent** element Runbook z parametrem Action ustawionym na wartość **Start**, Dodaj rozdzieloną przecinkami listę maszyn wirtualnych w parametrze *VMList* , a następnie ustaw parametr WHATIF na **true**. Wyświetl podgląd zmian.
-1. Skonfiguruj parametr **External_ExcludeVMNames** z rozdzieloną przecinkami listą maszyn wirtualnych (VM1, VM2, VM3).
-1. W tym scenariuszu nie są uwzględniane zmienne **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupnames** . W tym scenariuszu należy utworzyć własny harmonogram automatyzacji. Aby uzyskać szczegółowe informacje, zobacz [Planowanie elementu Runbook w Azure Automation](../automation/automation-schedules.md).
-
-Teraz, gdy masz harmonogram zatrzymywania maszyn wirtualnych na podstawie użycia procesora CPU, musisz włączyć jeden z poniższych harmonogramów, aby je uruchomić.
-
-- Docelowa akcja uruchamiania według subskrypcji i grupy zasobów. Zapoznaj się z instrukcjami w [scenariuszu 1](#scenario-1-startstop-vms-on-a-schedule) w celu testowania i włączania harmonogramów **harmonogramu StartVM** .
-- Docelowa akcja uruchamiania według subskrypcji, grupy zasobów i tagu. Zobacz kroki w [scenariuszu 2](#scenario-2-startstop-vms-in-sequence-by-using-tags) , aby przetestować i włączyć harmonogramy **sekwencyjne-StartVM** .
-
 ## <a name="solution-components"></a>Składniki rozwiązania
 
 To rozwiązanie obejmuje wstępnie skonfigurowane elementy Runbook, harmonogramy i integrację z dziennikami Azure Monitor, dzięki czemu można dostosować uruchamianie i zamykanie maszyn wirtualnych zgodnie z potrzebami firmy.
@@ -314,7 +284,7 @@ Automatyzacja tworzy dwa typy rekordów w obszarze roboczym Log Analytics: dzien
 |SourceSystem | Określa system źródłowy dla przesłanych danych. W przypadku usługi Automation wartością jest OpsManager|
 |StreamType | Określa typ zdarzenia. Możliwe wartości:<br>— Pełne<br>— Dane wyjściowe<br>— Błąd<br>— Ostrzeżenie|
 |SubscriptionId | Określa identyfikator subskrypcji zadania.
-|Czas | Data i godzina dla wykonania zadania elementu Runbook.|
+|Time | Data i godzina dla wykonania zadania elementu Runbook.|
 
 ### <a name="job-streams"></a>Strumienie zadania
 
@@ -333,7 +303,7 @@ Automatyzacja tworzy dwa typy rekordów w obszarze roboczym Log Analytics: dzien
 |RunbookName | Nazwa elementu Runbook.|
 |SourceSystem | Określa system źródłowy dla przesłanych danych. W przypadku usługi Automation wartością jest OpsManager.|
 |StreamType | Typ strumienia zadania. Możliwe wartości:<br>— Postęp<br>— Dane wyjściowe<br>— Ostrzeżenie<br>— Błąd<br>— Debugowanie<br>— Pełne|
-|Czas | Data i godzina dla wykonania zadania elementu Runbook.|
+|Time | Data i godzina dla wykonania zadania elementu Runbook.|
 
 Gdy wykonujesz każde wyszukiwanie w dzienniku, które zwraca rekordy kategorii **JobLogs** lub **JobStreams**, możesz wybrać widok **JobLogs** lub **JobStreams** , który wyświetla zestaw kafelków podsumowujących aktualizacje zwrócone przez wyszukiwanie.
 

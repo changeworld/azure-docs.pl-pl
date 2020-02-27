@@ -5,18 +5,18 @@ author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186622"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649368"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Skonfiguruj regułę limitu szybkości zapory aplikacji sieci Web przy użyciu Azure PowerShell
-Reguła limitu szybkości usługi Azure Web Application Firewall (WAF) dla drzwi frontonu platformy Azure określa liczbę żądań dozwolonych z pojedynczego adresu IP klienta w czasie trwania jednej minuty.
-W tym artykule opisano sposób konfigurowania reguły limitu szybkości WAF, która kontroluje liczbę żądań dozwolonych od pojedynczego klienta do aplikacji sieci Web, która zawiera */promo* w adresie URL przy użyciu Azure PowerShell.
+Reguła limitu szybkości usługi Azure Web Application Firewall (WAF) dla drzwi frontonu platformy Azure określa liczbę żądań dozwolonych od klientów w czasie trwania jednej minuty.
+W tym artykule opisano sposób konfigurowania reguły limitu szybkości WAF, która kontroluje liczbę żądań dozwolonych od klientów do aplikacji sieci Web, która zawiera */promo* w adresie URL przy użyciu Azure PowerShell.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -32,7 +32,7 @@ Możesz zainstalować program [Azure PowerShell](https://docs.microsoft.com/powe
 Connect-AzAccount
 
 ```
-Przed zainstalowaniem modułu usługi Front Door upewnij się, że masz zainstalowaną bieżącą wersję modułu PowerShellGet. Uruchom poniższe polecenie i ponownie otwórz program PowerShell.
+Przed zainstalowaniem modułu front-drzwi upewnij się, że jest zainstalowana bieżąca wersja programu PowerShellGet. Uruchom następujące polecenie i Otwórz ponownie program PowerShell.
 
 ```
 Install-Module PowerShellGet -Force -AllowClobber

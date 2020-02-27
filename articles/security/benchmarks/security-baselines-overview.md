@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 2114d9ecff5ee49c63d737cf13278fe45f1f9f73
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: c16d7247b781fea04cfa2d53b8854cff14e039c7
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589963"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616446"
 ---
 # <a name="overview-of-azure-security-baselines"></a>Przegląd podstaw zabezpieczeń platformy Azure
 
@@ -25,7 +25,7 @@ Każde zalecenie zawiera następujące informacje:
 - **Identyfikator platformy Azure**: Identyfikator testu porównawczego zabezpieczeń platformy Azure, który odpowiada zalecenia.
 - **Zalecenie**: bezpośrednio po identyfikatorze platformy Azure zalecenie zawiera ogólny opis formantu.
 - **Wskazówki**: uzasadnienie zalecenia i linki do wskazówek dotyczących sposobu ich implementacji. Jeśli zalecenie jest obsługiwane przez Azure Security Center, te informacje będą również wyświetlane.
-- **Odpowiedzialność**: kto jest odpowiedzialny za implementację kontroli. Możliwe scenariusze to odpowiedzialność klienta, odpowiedzialność firmy Microsoft lub odpowiedzialność za udział.
+- **Odpowiedzialność**: kto jest odpowiedzialny za implementację kontroli. Możliwe scenariusze to odpowiedzialność klienta, odpowiedzialność firmy Microsoft lub współdzielona odpowiedzialność.
 - **Azure Security Center monitorowania**: czy formant jest monitorowany przez Azure Security Center, z linkiem do odwołania.
 
-Wszystkie zalecenia, w tym zalecenia, które nie mają zastosowania do tej konkretnej usługi, znajdują się w linii bazowej, aby zapewnić kompletną wersję testu porównawczego zabezpieczeń platformy Azure dla każdej usługi. Czasami mogą to być kontrolki, które nie mają zastosowania z różnych powodów — na przykład formanty skoncentrowane na IaaS/COMPUTE (takie jak kontrolki specyficzne dla zarządzania konfiguracją systemu operacyjnego) mogą nie być stosowane do usług PaaS Services.
+Wszystkie zalecenia, w tym zalecenia, które nie mają zastosowania do tej konkretnej usługi, znajdują się w linii bazowej, aby zapewnić kompletną wersję testu porównawczego zabezpieczeń platformy Azure dla każdej usługi. Mogą być sporadyczne kontrolki, które nie mają zastosowania z różnych powodów — na przykład kontrolki ukierunkowane na IaaS/obliczeniowe (takie jak kontrolki specyficzne dla zarządzania konfiguracją systemu operacyjnego) mogą nie być stosowane do usług PaaS Services.

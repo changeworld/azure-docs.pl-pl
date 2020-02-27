@@ -3,21 +3,21 @@ title: Ponowne wdrażanie pakietów usług SSIS w pojedynczej bazie danych SQL
 titleSuffix: Azure Database Migration Service
 description: Dowiedz się, jak migrować i ponownie wdrażać SQL Server Integration Services pakiety i projekty, aby Azure SQL Database pojedynczą bazę danych przy użyciu Azure Database Migration Service i Data Migration Assistant.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 06/08/2019
-ms.openlocfilehash: b1889410a6c6925ebba5632a08c34bc967ced627
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 90a39b8fe3604a05f1d35a875ae4e34491b47d72
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437972"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648533"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>Wdróż ponownie pakiety usług SSIS w Azure SQL Database z Azure Database Migration Service
 
@@ -87,7 +87,7 @@ Aby przeprowadzić migrację projektów/pakietów SSIS na serwer Azure SQL Datab
 
     ![Kreator wdrażania — Wybieranie strony docelowej](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-destination-page.png)
 
-    d. Wybierz pozycję **Przeglądaj** , aby określić folder docelowy w SSISDB, a następnie wybierz przycisk **dalej**.
+    c. Wybierz pozycję **Przeglądaj** , aby określić folder docelowy w SSISDB, a następnie wybierz przycisk **dalej**.
 
     > [!NOTE]
     > Przycisk **dalej** jest włączony dopiero po wybraniu pozycji **Połącz**.

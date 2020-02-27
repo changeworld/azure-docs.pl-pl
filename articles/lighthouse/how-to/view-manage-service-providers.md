@@ -1,29 +1,29 @@
 ---
 title: Wyświetlanie dostawców usług i zarządzanie nimi
 description: Klienci mogą używać strony dostawcy usług w Azure Portal do wyświetlania informacji o dostawcach usług, ofertach dostawcy usług i delegowanych zasobach.
-ms.date: 01/15/2020
+ms.date: 02/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: ff3c37c02c580a833008a65315009d1e42e49043
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 94103c293ffa7ccfb9d7da0a237dc1b1c6540b72
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046127"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649742"
 ---
 # <a name="view-and-manage-service-providers"></a>Wyświetlanie dostawców usług i zarządzanie nimi
 
-Klienci mogą używać strony **dostawcy usług** w [Azure Portal](https://portal.azure.com) , aby wyświetlić informacje o dostawcach usług i ofertach dostawcy usług, delegować określone zasoby za pomocą [usługi Azure delegowane zarządzanie zasobami](../concepts/azure-delegated-resource-management.md)i kupować dodatkowe oferty dostawców usług. Mimo że będziemy odnieść się do dostawców usług i klientów w tym miejscu, przedsiębiorstwa zarządzające wieloma dzierżawcami mogą używać tego samego procesu do konsolidacji ich środowiska zarządzania.
+Klienci mogą używać strony **dostawcy usług** w [Azure Portal](https://portal.azure.com) , aby wyświetlić informacje o dostawcach usług i ofertach dostawcy usług, delegować określone zasoby za pomocą [usługi Azure delegowane zarządzanie zasobami](../concepts/azure-delegated-resource-management.md)i kupować nowe oferty dostawców usług. Mimo że będziemy odnieść się do dostawców usług i klientów w tym miejscu, przedsiębiorstwa zarządzające wieloma dzierżawcami mogą używać tego samego procesu do konsolidacji ich środowiska zarządzania.
 
 Aby uzyskać dostęp do strony **dostawcy usług** w Azure Portal, klient może wybrać **wszystkie usługi**, a następnie wyszukać **dostawców usług** i wybrać ją. Można je również znaleźć, wprowadzając "dostawcy usług" w polu wyszukiwania w górnej części Azure Portal.
 
-Należy pamiętać, że na stronie **dostawcy usług** są wyświetlane tylko informacje o dostawcach usług, które mają dostęp do subskrypcji lub grup zasobów klienta za pomocą delegowanego zarządzania zasobami platformy Azure. Jeśli klient współpracuje z dodatkowymi dostawcami usług, którzy nie korzystają z zarządzania zasobami delegowanymi przez platformę Azure w celu uzyskania dostępu do zasobów klienta, informacje o tych dostawcach usług nie są wyświetlane w tym miejscu.
+Należy pamiętać, że na stronie **dostawcy usług** są wyświetlane tylko informacje o dostawcach usług, które mają dostęp do subskrypcji lub grup zasobów klienta przy użyciu delegowanego zarządzania zasobami platformy Azure. Jeśli klient współpracuje z dodatkowymi dostawcami usług, którzy nie korzystają z zarządzania zasobami delegowanymi przez platformę Azure w celu uzyskania dostępu do zasobów klienta, informacje o tych dostawcach usług nie są wyświetlane w tym miejscu.
 
 > [!NOTE]
 > Dostawcy usług mogą przeglądać informacje o swoich klientach, przechodząc do **moich klientów** w Azure Portal. Aby uzyskać więcej informacji, zobacz [Wyświetlanie i zarządzanie klientami oraz delegowanymi zasobami](view-manage-customers.md).
 
 ## <a name="view-service-provider-details"></a>Wyświetl szczegóły dostawcy usług
 
-Aby wyświetlić informacje o dostawcach usług, z którymi pracuje klient, można wybrać **oferty dostawcy** po lewej stronie strony **dostawcy usług** .
+Aby wyświetlić informacje o dostawcach usług, klient może wybrać **oferty dostawcy** po lewej stronie strony **dostawcy usług** .
 
 Dla każdej oferty dostawcy usług klient zobaczy nazwę dostawcy usług i skojarzoną z nim ofertę, a także nazwę wprowadzoną przez klienta podczas procesu dołączania.
 
@@ -59,12 +59,20 @@ Po przejrzeniu zmian klient może zdecydować się na zaktualizowanie nowej wers
 
 Delegacje reprezentują przypisania ról, które przyznają uprawnienia dostawcy usług dla zasobów delegowanych przez klienta. Aby wyświetlić te informacje, wybierz pozycję **delegacje** w lewej części strony **dostawcy usług** .
 
-Filtry w górnej części strony pozwalają sortować i grupować informacje o delegowaniu lub filtrować według określonych klientów, ofert lub słów kluczowych.
+Filtry w górnej części strony pozwalają sortować i grupować informacje o delegowaniu. Możesz również filtrować według określonych klientów, ofert lub słów kluczowych.
 
 > [!NOTE]
 > Klienci nie będą widzieć tych przypisań ról ani żadnych użytkowników z dzierżawy dostawcy usług, którzy uzyskali te role, podczas [wyświetlania informacji o przypisaniu roli dla delegowanego zakresu w Azure Portal](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) lub za pośrednictwem interfejsów API.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="audit-delegations-in-your-environment"></a>Inspekcja delegowania w środowisku
 
+Klienci mogą chcieć uzyskać wgląd w subskrypcje i/lub grupy zasobów, które zostały delegowane do dostawców usług w celu [zarządzania zasobami delegowanymi przez platformę Azure](../concepts/azure-delegated-resource-management.md). Jest to szczególnie przydatne w przypadku klientów korzystających z dużej liczby subskrypcji lub wielu użytkowników, którzy wykonują zadania zarządzania.
+
+Zapewniamy [wbudowaną Azure Policy definicję zasad](../../governance/policy/samples/built-in-policies.md#lighthouse) służącą do inspekcji delegowania zakresów do dzierżawy zarządzającej. Te zasady można przypisać do grupy zarządzania zawierającej wszystkie subskrypcje, które mają być poddane inspekcji. Po sprawdzeniu zgodności z tymi zasadami wszystkie delegowane subskrypcje i/lub grupy zasobów (w grupie zarządzania, do których przypisane są zasady) będą wyświetlane w stanie niezgodnym. Następnie możesz przejrzeć wyniki i potwierdzić, że nie ma żadnych nieoczekiwanych delegowania.
+
+Aby uzyskać więcej informacji na temat sposobu przypisywania zasad i wyświetlania wyników stanu zgodności, zobacz [Szybki Start: Tworzenie przypisania zasad](../../governance/policy/assign-policy-portal.md).
+
+## <a name="next-steps"></a>Następne kroki
+ 
 - Dowiedz się więcej o [usłudze Azure Lighthouse](../overview.md).
 - Dowiedz się, jak dostawcy usług mogą [wyświetlać klientów i zarządzać nimi](view-manage-customers.md) , przechodząc do **moich klientów** w Azure Portal.

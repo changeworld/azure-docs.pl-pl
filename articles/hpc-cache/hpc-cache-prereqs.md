@@ -4,14 +4,14 @@ description: Wymagania wstępne dotyczące korzystania z pamięci podręcznej pl
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/20/2020
 ms.author: rohogue
-ms.openlocfilehash: 135c231f84d95ea2418fab4647d715473378e41c
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251961"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651070"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Wymagania wstępne dotyczące usługi Azure HPC cache
 
@@ -95,7 +95,9 @@ W przypadku korzystania z systemu magazynu NFS (na przykład lokalnego sprzętow
 > [!NOTE]
 > Tworzenie miejsca docelowego magazynu zakończy się niepowodzeniem, jeśli pamięć podręczna ma niewystarczający dostęp do systemu magazynu NFS.
 
-* **Łączność sieciowa:** Pamięć podręczna Azure HPC wymaga dostępu do sieci o wysokiej przepustowości między podsiecią pamięci podręcznej a centrum danych systemu plików NFS. Zalecany jest [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) lub podobny dostęp. W przypadku korzystania z sieci VPN może być konieczne skonfigurowanie jej w celu zablokowania protokołu TCP o rozmiarze 1350, aby upewnić się, że duże pakiety nie są blokowane.
+Więcej informacji znajduje się w temacie [Rozwiązywanie problemów z konfiguracją serwera nas i miejsca docelowego magazynu NFS](troubleshoot-nas.md).
+
+* **Łączność sieciowa:** Pamięć podręczna Azure HPC wymaga dostępu do sieci o wysokiej przepustowości między podsiecią pamięci podręcznej a centrum danych systemu plików NFS. Zalecany jest [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) lub podobny dostęp. W przypadku korzystania z sieci VPN może być konieczne skonfigurowanie jej w celu zablokowania protokołu TCP o rozmiarze 1350, aby upewnić się, że duże pakiety nie są blokowane. Odczytaj [ograniczenia rozmiaru pakietów sieci VPN](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) , aby uzyskać dodatkową pomoc w rozwiązywaniu problemów z ustawieniami sieci VPN.
 
 * **Dostęp do portów:** Pamięć podręczna musi mieć dostęp do określonych portów TCP/UDP w systemie magazynu. Różne typy magazynów mają różne wymagania dotyczące portów.
 
@@ -109,28 +111,34 @@ W przypadku korzystania z systemu magazynu NFS (na przykład lokalnego sprzętow
     rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
     ```
 
+  Upewnij się, że wszystkie porty zwrócone przez zapytanie ``rpcinfo`` zezwalają na nieograniczony ruch z podsieci usługi Azure HPC cache.
+
   * Oprócz portów zwracanych przez polecenie `rpcinfo` upewnij się, że te najczęściej używane porty zezwalają na ruch przychodzący i wychodzący:
 
-    | Protokół | Port  | NDES  |
+    | Protokół | Port  | Usługa  |
     |----------|-------|----------|
     | TCP/UDP  | 111   | rpcbind  |
     | TCP/UDP  | 2049  | NFS      |
     | TCP/UDP  | 4045  | nlockmgr |
     | TCP/UDP  | 4046  | Instalacja   |
-    | TCP/UDP  | 4047  | stan   |
+    | TCP/UDP  | 4047  | status   |
 
   * Sprawdź ustawienia zapory, aby upewnić się, że zezwalają na ruch na wszystkich wymaganych portach. Pamiętaj, aby sprawdzić zapory używane na platformie Azure oraz zapory lokalne w centrum danych.
 
-* **Dostęp do katalogu:** Włącz `showmount` polecenie w systemie magazynu. Pamięć podręczna Azure HPC korzysta z tego polecenia, aby sprawdzić, czy konfiguracja docelowa magazynu wskazuje na prawidłowy eksport, oraz upewnić się, że wiele instalacji nie uzyskuje dostępu do tych samych podkatalogów (co wiąże się z ryzykiem konfliktów plików).
+* **Dostęp do katalogu:** Włącz `showmount` polecenie w systemie magazynu. Pamięć podręczna Azure HPC korzysta z tego polecenia, aby sprawdzić, czy konfiguracja docelowa magazynu wskazuje na prawidłowy eksport, a także upewnić się, że wiele instalacji nie uzyskuje dostępu do tych samych podkatalogów (ryzyko kolizji plików).
 
   > [!NOTE]
   > Jeśli system magazynu NFS używa systemu operacyjnego NetApp ONTAP 9,2, nie należy **włączać `showmount`** . [Skontaktuj się z pomocą techniczną firmy Microsoft,](hpc-cache-support-ticket.md) Aby uzyskać pomoc.
+
+  Dowiedz się więcej o dostępie do listy katalogów w [artykule dotyczącym rozwiązywania problemów](troubleshoot-nas.md#enable-export-listing)z miejscem DOCELOWYM magazynu NFS.
 
 * **Dostęp do katalogu głównego:** Pamięć podręczna łączy się z systemem zaplecza jako identyfikator użytkownika 0. Sprawdź te ustawienia w systemie magazynu:
   
   * Włącz `no_root_squash`. Ta opcja zapewnia, że zdalny użytkownik główny może uzyskać dostęp do plików należących do katalogu głównego.
 
   * Zaznacz pole wyboru Eksportuj zasady, aby upewnić się, że nie obejmują one ograniczeń dotyczących dostępu głównego z podsieci pamięci podręcznej.
+
+  * Jeśli magazyn zawiera jakiekolwiek eksporty, które są podkatalogami innego eksportu, upewnij się, że pamięć podręczna ma dostęp do najniższego segmentu ścieżki. Aby uzyskać szczegółowe informacje, Przeczytaj [temat dostęp do katalogu głównego w ścieżkach katalogów](troubleshoot-nas.md#allow-root-access-on-directory-paths) w artykule dotyczącym rozwiązywania problemów dotyczących magazynu NFS.
 
 * Magazyn zaplecza systemu plików NFS musi być zgodnym sprzętem/platformą oprogramowania. Aby uzyskać szczegółowe informacje, skontaktuj się z zespołem usługi Azure HPC cache.
 

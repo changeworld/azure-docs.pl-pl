@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
-ms.openlocfilehash: 8e265b592bebfc506ae0116c955403dd1070ad3f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dece5b0bb0508e2d83ee184e71ef0b4364d25ac8
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73166410"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622952"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Eksploruj Azure Monitor dla Azure Cosmos DB (wersja zapoznawcza)
 
@@ -35,12 +35,39 @@ Ta funkcja nie wymaga włączenia ani skonfigurowania żadnych elementów, te Az
 >[!NOTE]
 >Dostęp do tej funkcji nie jest naliczany, a opłaty są naliczane tylko za Azure Monitor podstawowe funkcje, które konfigurujesz lub włączasz, zgodnie z opisem na stronie [szczegóły cennika Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) .
 
+## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Wyświetl metryki poziomu operacji dla Azure Cosmos DB
 
-## <a name="accessing-azure-monitor-for-azure-cosmos-db"></a>Uzyskiwanie dostępu do Azure Monitor dla Azure Cosmos DB
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
+
+1. Wybierz pozycję **monitor** na pasku nawigacyjnym po lewej stronie, a następnie wybierz pozycję **metryki**.
+
+   ![Okienko metryki w Azure Monitor](./media/cosmosdb-insights-overview/monitor-metrics-blade.png)
+
+1. W okienku **metryki** > **Wybierz zasób** > Wybierz wymaganą **subskrypcję**i **grupę zasobów**. W polu **Typ zasobu**wybierz pozycję **konta Azure Cosmos DB**, wybierz jedno z istniejących kont usługi Azure Cosmos i wybierz pozycję **Zastosuj**.
+
+   ![Wybierz konto Cosmos DB, aby wyświetlić metryki](./media/cosmosdb-insights-overview/select-cosmosdb-account.png)
+
+1. Następnie możesz wybrać metrykę z listy dostępnych metryk. Można wybrać metryki specyficzne dla jednostek żądań, magazynu, opóźnień, dostępności, Cassandra i innych. Aby uzyskać szczegółowe informacje na temat wszystkich dostępnych metryk na tej liście, zobacz artykuł [metryki według kategorii](../../cosmos-db/monitor-cosmos-db-reference.md) . W tym przykładzie wybieramy **jednostki żądania** i **średnika** jako wartość agregacji.
+
+   Oprócz tych szczegółów można także wybrać **zakres czasu** i **stopień szczegółowości** metryk. Co więcej, można wyświetlić metryki z ostatnich 30 dni.  Po zastosowaniu filtru na podstawie filtru zostanie wyświetlony wykres. W wybranym okresie można zobaczyć średnią liczbę jednostek żądań zużytych na minutę.  
+
+   ![Wybierz metrykę z Azure Portal](./media/cosmosdb-insights-overview/metric-types.png)
+
+### <a name="add-filters-to-metrics"></a>Dodawanie filtrów do metryk
+
+Można również filtrować metryki i wykres wyświetlany przez określoną **CollectionName**, **DatabaseName**, **OperationType**, **region**i **StatusCode**. Aby odfiltrować metryki, wybierz pozycję **Dodaj filtr** i wybierz wymaganą właściwość, taką jak **OperationType** , i wybierz wartość, taką jak **zapytanie**. Następnie Wykres wyświetla jednostki żądania wykorzystane dla operacji zapytania w wybranym okresie. Operacje wykonywane za pośrednictwem procedury składowanej nie są rejestrowane, więc nie są dostępne w ramach metryki operacji.
+
+![Dodaj filtr, aby wybrać stopień szczegółowości metryki](./media/cosmosdb-insights-overview/add-metrics-filter.png)
+
+Metryki można grupować przy użyciu opcji **Zastosuj dzielenie** . Na przykład można grupować jednostki żądań na typ operacji i wyświetlać wykres dla wszystkich operacji na raz, jak pokazano na poniższej ilustracji:
+
+![Dodaj filtr podziału zastosowania](./media/cosmosdb-insights-overview/apply-metrics-splitting.png)
+
+## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>Wyświetl metryki użycia i wydajności dla Azure Cosmos DB
 
 Aby wyświetlić użycie i wydajność kont magazynu we wszystkich subskrypcjach, wykonaj następujące czynności.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 2. Wyszukaj ciąg **monitor** i wybierz pozycję **Monitoruj**.
 
@@ -50,7 +77,7 @@ Aby wyświetlić użycie i wydajność kont magazynu we wszystkich subskrypcjach
 
     ![Zrzut ekranu przedstawiający skoroszyt omówienia Cosmos DB](./media/cosmosdb-insights-overview/cosmos-db.png)
 
-### <a name="overview"></a>Przegląd
+### <a name="overview"></a>Omówienie
 
 W obszarze **Przegląd**w tabeli są wyświetlane metryki interakcyjne Azure Cosmos DB. Wyniki można filtrować na podstawie opcji wybranych z następujących list rozwijanych:
 
@@ -90,7 +117,7 @@ Wybierz pozycję **pojemność** w górnej części strony i zostanie otwarta cz
 
 Podobnie jak w przypadku skoroszytu z omówieniem, wybranie listy rozwijanej obok zasobu Azure Cosmos DB w kolumnie **subskrypcja** spowoduje wyświetlenie podziału poszczególnych kontenerów tworzących bazę danych.
 
-### <a name="operations"></a>Operations 
+### <a name="operations"></a>Operacje 
 
 Wybierz pozycję **operacje** w górnej części strony, a zostanie otwarta część **operacje** szablonu skoroszytu. Daje ona możliwość wyświetlenia żądań, które zostały podzielone według typu żądań. 
 

@@ -3,21 +3,21 @@ title: 'Znane problemy: migracje online do SQL Database'
 titleSuffix: Azure Database Migration Service
 description: Informacje o znanych problemach/ograniczeniach migracji z migracją online w celu Azure SQL Database korzystania z Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 07/27/2019
-ms.openlocfilehash: bf747b6deb4b3c25df74364143ac48c59eb48ae1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: e7efdb7244e2c7e4651a4507b538123f8d320c1e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437830"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650779"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Znane problemy/ograniczenia migracji z migracją online do Azure SQL Database
 
@@ -28,7 +28,7 @@ Znane problemy i ograniczenia związane z migracją online z SQL Server do Azure
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Migracja tabel danych czasowych nie jest obsługiwana
 
-**Objaw**
+**Objawów**
 
 Jeśli źródłowa baza danych składa się z co najmniej jednej tabeli czasowej, migracja bazy danych nie powiedzie się w trakcie operacji "pełne ładowanie danych" i może zostać wyświetlony następujący komunikat:
 
@@ -40,7 +40,7 @@ Jeśli źródłowa baza danych składa się z co najmniej jednej tabeli czasowej
 
 **Obejście**
 
-Skorzystaj z poniższych instrukcji.
+Wykonaj poniższe kroki.
 
 1. Znajdź tabele danych czasowych w schemacie źródłowym przy użyciu poniższego zapytania.
 
@@ -58,7 +58,7 @@ Aby uzyskać więcej informacji, zobacz [tabele](https://docs.microsoft.com/sql/
 
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>Migracja tabel zawiera jedną lub więcej kolumn z typem danych hierarchyid
 
-**Objaw**
+**Objawów**
 
 Podczas operacji "pełnego ładowania danych" może zostać wyświetlony wyjątek SQL z sugestią "ntext jest niezgodna z hierarchyid":
 
@@ -66,7 +66,7 @@ Podczas operacji "pełnego ładowania danych" może zostać wyświetlony wyjąte
 
 **Obejście**
 
-Skorzystaj z poniższych instrukcji.
+Wykonaj poniższe kroki.
 
 1. Znajdź tabele użytkownika zawierające kolumny z typem danych hierarchyid przy użyciu poniższego zapytania.
 
@@ -82,7 +82,7 @@ Skorzystaj z poniższych instrukcji.
 
 **Obejście**
 
-Skorzystaj z poniższych instrukcji.
+Wykonaj poniższe kroki.
 
 1. Znajdź wyzwalacze, które są obecnie aktywne w źródłowej bazie danych, przy użyciu poniższego zapytania:
 
@@ -96,7 +96,7 @@ Skorzystaj z poniższych instrukcji.
 
 ### <a name="support-for-lob-data-types"></a>Obsługa typów danych LOB
 
-**Objaw**
+**Objawów**
 
 Jeśli długość kolumny dużego obiektu (LOB) jest większa niż 32 KB, dane mogą zostać obcięte w miejscu docelowym. Możesz sprawdzić długość kolumny LOB przy użyciu poniższego zapytania:
 
@@ -110,7 +110,7 @@ Jeśli masz kolumnę LOB o rozmiarze większym niż 32 KB, skontaktuj się z zes
 
 ### <a name="issues-with-timestamp-columns"></a>Problemy z kolumnami znaczników czasu
 
-**Objaw**
+**Objawów**
 
 Azure Database Migration Service nie migruje źródłowej wartości sygnatury czasowej; Zamiast tego Azure Database Migration Service generuje nową wartość sygnatury czasowej w tabeli docelowej.
 
@@ -120,7 +120,7 @@ Jeśli potrzebujesz Azure Database Migration Service do migrowania dokładnej wa
 
 ### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>Błędy migracji danych nie zapewniają dodatkowych informacji w bloku stanu szczegółowym bazy danych
 
-**Objaw**
+**Objawów**
 
 Po przeniesieniu błędów migracji w widoku stanu szczegółów baz danych, wybranie linku **błędy migracji danych** na górnej Wstążce może nie dostarczyć dodatkowych informacji specyficznych dla błędów migracji.
 
@@ -138,7 +138,7 @@ Aby uzyskać szczegółowe informacje o niepowodzeniu, wykonaj następujące czy
 
 ### <a name="geography-datatype-not-supported-in-sqldb-online-migration"></a>Typ danych geografii nie jest obsługiwany w migracji SQLDB online
 
-**Objaw**
+**Objawów**
 
 Migracja kończy się niepowodzeniem z komunikatem o błędzie zawierającym następujący tekst:
 
@@ -150,7 +150,7 @@ Chociaż Azure Database Migration Service obsługuje typ danych Geografia dla mi
 
 ### <a name="supported-editions"></a>Obsługiwane wersje
 
-**Objaw**
+**Objawów**
 
 Migracja kończy się niepowodzeniem z komunikatem o błędzie zawierającym następujący tekst:
 

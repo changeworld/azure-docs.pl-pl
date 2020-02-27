@@ -4,22 +4,22 @@ description: Istnieją dwie istotne możliwości tworzenia kopii zapasowych SAP 
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: 8bcfdefa2ea9de12ca6029839a41c91111a5c61c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: hermannd
+ms.openlocfilehash: c977bc7db5608e5718e98a26ed594e5ebf2be998
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078599"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617413"
 ---
-# <a name="sap-hana-backup-based-on-storage-snapshots"></a>Kopie zapasowe oprogramowania SAP HANA na podstawie migawek magazynu
+# <a name="sap-hana-backup-based-on-storage-snapshots"></a>SAP HANA kopii zapasowej na podstawie migawek magazynu
 
 ## <a name="introduction"></a>Wprowadzenie
 
@@ -51,10 +51,10 @@ Na dysku migawka zostanie wyświetlona w katalogu danych SAP HANA.
 
 Jeden z nich musi mieć pewność, że spójność systemu plików jest również gwarantowana przed uruchomieniem migawki magazynu, podczas gdy SAP HANA jest w trybie przygotowywania migawek. Zapoznaj się z tematem _SAP HANA spójności danych podczas tworzenia migawek magazynu_ w powiązanym [podręczniku wykonywania kopii zapasowych artykułu SAP HANA na platformie Azure Virtual Machines](sap-hana-backup-guide.md).
 
-Po zakończeniu migawki magazynu krytyczne jest potwierdzenie SAP HANA migawki. Istnieje odpowiednia instrukcja SQL do uruchomienia: MIGAWKA zamykania danych kopii ZAPASowej (zobacz [instrukcje dotyczące zamykania migawki danych kopii zapasowej i odzyskiwania)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm).
+Po zakończeniu migawki magazynu krytyczne jest potwierdzenie SAP HANA migawki. Istnieje odpowiednia instrukcja SQL do uruchomienia: migawka zamykania danych kopii ZAPASowej (zobacz Tworzenie kopii zapasowej [i odzyskiwanie danych)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm).
 
 > [!IMPORTANT]
-> Potwierdź migawkę platformy HANA. Ze względu na&quot; KopiowaniewtrakciezapisuSAPHANAmogąwymagaćdodatkowegomiejscanadyskuwtrybieprzygotowywaniamigawekiniemożnauruchomićnowychkopiizapasowych,dopókiniezostaniepotwierdzoneSAPHANAmigawka.&quot;
+> Potwierdź migawkę platformy HANA. Ze względu na &quot;kopiowania przy zapisie&quot; SAP HANA może wymagać dodatkowego miejsca na dysku w trybie przygotowywania migawek i nie można uruchomić nowych kopii zapasowych do momentu potwierdzenia potwierdzenia SAP HANA migawki.
 
 ## <a name="hana-vm-backup-via-azure-backup-service"></a>Tworzenie kopii zapasowej maszyny wirtualnej HANA za pośrednictwem usługi Azure Backup
 
@@ -66,15 +66,15 @@ Usługa Azure Backup oferuje opcję tworzenia kopii zapasowej i przywracania mas
 
 Istnieją dwa ważne zagadnienia, zgodnie z tym artykułem:
 
-_&quot;W przypadku maszyn wirtualnych z systemem Linux możliwy jest tylko kopia zapasowa spójna z plikami, ponieważ system Linux nie ma równoważnej platformy do usługi VSS.&quot;_
+_&quot;dla maszyn wirtualnych z systemem Linux możliwe jest tylko wykonywanie kopii zapasowych spójnych z plikami, ponieważ system Linux nie ma równoważnej platformy do usługi VSS.&quot;_
 
-_&quot;Aplikacje muszą implementować własny &quot;&quot; mechanizm naprawy dla przywróconych danych.&quot;_
+_Aplikacje &quot;muszą implementować własne &quot;naprawy&quot; na przywróconych danych.&quot;_
 
 W związku z tym przed rozpoczęciem tworzenia kopii zapasowej należy upewnić się, że SAP HANA jest w stanie spójnym na dysku. Zobacz _migawki SAP HANA_ opisane wcześniej w dokumencie. Ale występuje potencjalny problem, gdy SAP HANA pozostaje w tym trybie przygotowywania migawek. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki magazynu (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm) .
 
 Ten artykuł ma następujące stany:
 
-_&quot;Zdecydowanie zaleca się potwierdzenie lub odrzucenie migawki magazynu tak szybko, jak to możliwe po utworzeniu. Gdy migawka magazynu jest przygotowywana lub tworzona, dane dotyczące migawki są zamrożone. Mimo że dane dotyczące migawki pozostają zablokowane, w bazie danych można nadal wprowadzać zmiany. Takie zmiany nie spowodują zmiany zablokowanej migawki. Zamiast tego zmiany są zapisywane do pozycji w obszarze danych, które są niezależne od migawki magazynu. Zmiany są również zapisywane w dzienniku. Jednak im dłużej trwa zamrożone dane powiązane z migawką, tym większa ilość danych może się zwiększyć.&quot;_
+_&quot;zdecydowanie zaleca się potwierdzenie lub odrzucenie migawki magazynu tak szybko, jak to możliwe po utworzeniu. Gdy migawka magazynu jest przygotowywana lub tworzona, dane dotyczące migawki są zamrożone. Mimo że dane dotyczące migawki pozostają zablokowane, w bazie danych można nadal wprowadzać zmiany. Takie zmiany nie spowodują zmiany zablokowanej migawki. Zamiast tego zmiany są zapisywane do pozycji w obszarze danych, które są niezależne od migawki magazynu. Zmiany są również zapisywane w dzienniku. Jednak im dłużej trwa zamrożone dane powiązane z migawką, tym większa ilość danych może się zwiększyć.&quot;_
 
 Azure Backup dba o spójność systemu plików za pośrednictwem rozszerzeń maszyny wirtualnej platformy Azure. Te rozszerzenia są niedostępne autonomicznie i działają tylko w połączeniu z usługą Azure Backup. Jednak nadal jest wymagane zapewnienie skryptów do tworzenia i usuwania migawki SAP HANA w celu zagwarantowania spójności aplikacji.
 
@@ -105,7 +105,7 @@ Proces przywracania kopii zapasowej spójnej na poziomie aplikacji wykonanej prz
 
 ## <a name="hana-license-key-and-vm-restore-via-azure-backup-service"></a>Klucz licencji HANA i przywracanie maszyny wirtualnej za pośrednictwem usługi Azure Backup
 
-Usługa Azure Backup została zaprojektowana w celu utworzenia nowej maszyny wirtualnej podczas przywracania. Nie ma już planu, aby wykonać &quot;przywracanie w miejscu&quot; istniejącej maszyny wirtualnej platformy Azure.
+Usługa Azure Backup została zaprojektowana w celu utworzenia nowej maszyny wirtualnej podczas przywracania. Obecnie nie ma planu, aby wykonać &quot;&quot; przywrócenia istniejącej maszyny wirtualnej platformy Azure.
 
 ![Ten rysunek przedstawia opcję przywracania usługi platformy Azure w Azure Portal](media/sap-hana-backup-storage-snapshots/image019.png)
 

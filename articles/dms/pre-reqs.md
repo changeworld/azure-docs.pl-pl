@@ -2,21 +2,21 @@
 title: Wymagania wstępne dotyczące Azure Database Migration Service
 description: Dowiedz się więcej na temat wymagań wstępnych dotyczących korzystania z Azure Database Migration Service w celu przeprowadzenia migracji bazy danych.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 7ba317da9524c322d47fe57a866d429ff8f7e952
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/25/2020
+ms.openlocfilehash: 89cb63630e3dbe953ed3f4fd8796d01ba0d36067
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748739"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651495"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Przegląd wymagań wstępnych dotyczących używania Azure Database Migration Service
 
@@ -35,18 +35,25 @@ Azure Database Migration Service wymagania wstępne, które są wspólne dla wsz
 * Włączony protokół TCP/I (domyślnie wyłączony podczas instalacji programu SQL Server Express). Aby go włączyć, wykonaj czynności opisane w artykule [Enable or Disable a Server Network Protocol (Włączanie lub wyłączanie protokołu sieciowego serwera)](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
 
     > [!IMPORTANT]
-    > Utworzenie wystąpienia Azure Database Migration Service wymaga dostępu do wirtualnych ustawień networt, które zwykle nie należą do tej samej grupy zasobów. W związku z tym użytkownik tworzący wystąpienie elementu DMS wymaga uprawnień na poziomie subskrypcji. Aby utworzyć wymagane role, które można przypisać w razie potrzeby, uruchom następujący skrypt:
+    > Utworzenie wystąpienia Azure Database Migration Service wymaga dostępu do ustawień sieci wirtualnej, które zwykle nie należą do tej samej grupy zasobów. W związku z tym użytkownik tworzący wystąpienie elementu DMS wymaga uprawnień na poziomie subskrypcji. Aby utworzyć wymagane role, które można przypisać w razie potrzeby, uruchom następujący skrypt:
     >
     > ```
     >
     > $readerActions = `
-    > "Microsoft.DataMigration/services/*/read", `
-    > "Microsoft.Network/networkInterfaces/ipConfigurations/read"
+    > "Microsoft.Network/networkInterfaces/ipConfigurations/read", `
+    > "Microsoft.DataMigration/*/read", `
+    > "Microsoft.Resources/subscriptions/resourceGroups/read"
     >
     > $writerActions = `
     > "Microsoft.DataMigration/services/*/write", `
     > "Microsoft.DataMigration/services/*/delete", `
-    > "Microsoft.DataMigration/services/*/action"
+    > "Microsoft.DataMigration/services/*/action", `
+    > "Microsoft.Network/virtualNetworks/subnets/join/action", `
+    > "Microsoft.Network/virtualNetworks/write", `
+    > "Microsoft.Network/virtualNetworks/read", `
+    > "Microsoft.Resources/deployments/validate/action", `
+    > "Microsoft.Resources/deployments/*/read", `
+    > "Microsoft.Resources/deployments/*/write"
     >
     > $writerActions += $readerActions
     >
@@ -106,7 +113,7 @@ Oprócz Azure Database Migration Service wymagań wstępnych, które są wspóln
 
 W przypadku używania Azure Database Migration Service do przeprowadzenia SQL Server do migracji Azure SQL Database, oprócz wymagań wstępnych, które są wspólne dla wszystkich scenariuszy migracji, należy pamiętać o spełnieniu następujących dodatkowych wymagań wstępnych:
 
-* Utwórz wystąpienie Azure SQL Database wystąpienia, które możesz wykonać, postępując zgodnie ze szczegółowymi informacjami w artykule C tworzenie[bazy danych SQL Azure w Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
+* Utworzone wystąpienie usługi Azure SQL Database — szczegółowe instrukcje znajdują w artykule [Tworzenie bazy danych usługi Azure SQL Database w witrynie Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
 * Pobrany i zainstalowany program [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) w wersji 3.3 lub nowszej.
 * Otwarcie zapory systemu Windows w celu zezwolenia usłudze Azure Database Migration Service na dostęp do źródłowego wystąpienia programu SQL Server, czyli domyślnie portu TCP 1433.
 * Jeśli uruchomiono wiele nazwanych wystąpień programu SQL Server przy użyciu portów dynamicznych, konieczne może być włączenie usługi SQL Browser Service i zezwolenie na dostęp do portu UDP 1434 przez zapory, tak aby usługa Azure Database Migration Service mogła połączyć się z nazwanym wystąpieniem na serwerze źródłowym.
@@ -116,7 +123,7 @@ W przypadku używania Azure Database Migration Service do przeprowadzenia SQL Se
 
    > [!NOTE]
    > Aby zapoznać się z pełną listą wymagań wstępnych wymaganych Azure Database Migration Service do przeprowadzenia migracji z SQL Server do Azure SQL Database, zapoznaj się z samouczkiem [migrowanie SQL Server do Azure SQL Database](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql).
-   > 
+   >
 
 ## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>Wymagania wstępne dotyczące migrowania SQL Server do wystąpienia zarządzanego Azure SQL Database
 

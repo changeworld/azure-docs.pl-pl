@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5ea82d88099b0f5fdd00624db4417bbb02777581
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a427eab107c70b19932b7b8ddc5a7fc531ef19a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457772"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615426"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Szybki Start: Tworzenie aplikacji HoloLens Unity wykorzystującej kotwice przestrzenne platformy Azure
 
@@ -31,9 +31,9 @@ Omawiane tematy:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki start:
+Aby ukończyć ten przewodnik Szybki Start:
 
-- Wymagany jest komputer z systemem Windows, na którym jest zainstalowany aparat <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1</a> lub nowszy oraz <a href="https://www.visualstudio.com/downloads/" target="_blank">program Visual Studio 2019</a> lub nowszy. Instalacja programu Visual Studio musi zawierać **platforma uniwersalna systemu Windows obciążenie programowaniem** i składnik **zestawu Windows 10 SDK (10.0.18362.0 lub nowszy)** . Należy również zainstalować narzędzie <a href="https://git-scm.com/download/win" target="_blank">git dla systemu Windows</a> i <a href="https://git-lfs.github.com/">narzędzia Git LFS</a>.
+- Wymagany jest komputer z systemem Windows, na którym jest zainstalowany aparat <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1 lub 2019,2</a> lub nowszy, a także <a href="https://www.visualstudio.com/downloads/" target="_blank">program Visual Studio 2019</a> lub nowszy. Instalacja programu Visual Studio musi zawierać **platforma uniwersalna systemu Windows obciążenie programowaniem** i składnik **zestawu Windows 10 SDK (10.0.18362.0 lub nowszy)** . Należy również zainstalować narzędzie <a href="https://git-scm.com/download/win" target="_blank">git dla systemu Windows</a> i <a href="https://git-lfs.github.com/">narzędzia Git LFS</a>.
 - Potrzebujesz urządzenia HoloLens, na którym włączono [Tryb dewelopera](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) . Na urządzeniu musi być zainstalowana [Aktualizacja systemu Windows 10 październik 2018](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (znana również jako RS5). Aby zaktualizować do najnowszej wersji na serwerze HoloLens, Otwórz aplikację **Ustawienia** , przejdź do pozycji **Aktualizacja & zabezpieczenia**, a następnie wybierz pozycję **Sprawdź aktualizacje**.
 - W aplikacji należy włączyć funkcję **SpatialPerception** . To ustawienie dotyczy ustawień **kompilacji** > **Ustawienia odtwarzacza** > **Ustawienia publikowania** > **możliwości**.
 - W Twojej aplikacji należy włączyć opcję **wirtualnej rzeczywistość obsługiwaną** z **zestawem SDK rzeczywistości systemu Windows**. To ustawienie dotyczy ustawień **kompilacji** > **Ustawienia odtwarzacza** > **ustawień XR**.
@@ -89,6 +89,12 @@ Wybierz pozycje **Debugowanie** > **Rozpocznij debugowanie**, aby wdrożyć swoj
 Postępuj zgodnie z instrukcjami w aplikacji, aby umieścić i przywołać kotwicę.
 
 W programie Visual Studio Zatrzymaj aplikację, wybierając pozycję **Zatrzymaj debugowanie** lub naciśnij klawisze Shift + F5.
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+### <a name="unity-20193"></a>Unity 2019,3
+
+Ze względu na istotne zmiany, środowisko Unity 2019,3 nie jest obecnie obsługiwane. Użyj aparatu Unity 2019,1 lub 2019,2.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

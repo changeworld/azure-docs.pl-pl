@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 5c820b7e11c06f2d785da036f5174298caf56da6
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960609"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651342"
 ---
 #    <a name="custom-entity-lookup-cognitive-skill-preview"></a>Umiejętność wyszukiwania jednostek niestandardowych (wersja zapoznawcza)
 
@@ -48,7 +48,7 @@ W parametrach jest rozróżniana wielkość liter.
 | Nazwa wejściowa      | Opis                   |
 |---------------|-------------------------------|
 | tekst          | Tekst do analizy.          |
-| languageCode  | Element opcjonalny. Wartość domyślna to `"en"`.  |
+| languageCode  | Opcjonalny. Wartość domyślna to `"en"`.  |
 
 
 ## <a name="skill-outputs"></a>Wyniki umiejętności
@@ -56,14 +56,14 @@ W parametrach jest rozróżniana wielkość liter.
 
 | Nazwa wyjściowa     | Opis                   |
 |---------------|-------------------------------|
-| obiekty | Tablica obiektów, która zawiera informacje o znalezionych dopasowaniach i powiązanych metadanych. Każda identyfikowana jednostka może zawierać następujące pola:  <ul> <li> *Nazwa*: zidentyfikowana jednostka najwyższego poziomu. Jednostka reprezentuje formę "znormalizowana". </li> <li> *Identyfikator*: unikatowy identyfikator jednostki zdefiniowanej przez użytkownika w "niestandardowym formacie definicji jednostki".</li> <li> *Opis*: Opis jednostki zdefiniowany przez użytkownika w "niestandardowym formacie definicji jednostki". </li> <li> *Typ:* Typ jednostki zdefiniowany przez użytkownika w "niestandardowym formacie definicji jednostki".</li> <li> *Podtyp:* Podtyp jednostki zdefiniowany przez użytkownika w "niestandardowym formacie definicji jednostki".</li>  <li> *dopasowuje*: Kolekcja opisująca wszystkie dopasowania dla tej jednostki na źródłowym tekście. Każde dopasowanie będzie miało następujące elementy członkowskie: </li> <ul> <li> *tekst*: pierwotny tekst jest zgodny z dokumentem źródłowym. </li> <li> *przesunięcie*: lokalizacja, w której znaleziono dopasowanie w tekście. </li> <li> *Długość*: długość dopasowanego tekstu. </li> <li> *matchDistance*: liczba znaków, które różnią się od nazwy lub aliasu oryginalnej jednostki.  </li> </ul> </ul>
+| jednostki | Tablica obiektów, która zawiera informacje o znalezionych dopasowaniach i powiązanych metadanych. Każda identyfikowana jednostka może zawierać następujące pola:  <ul> <li> *Nazwa*: zidentyfikowana jednostka najwyższego poziomu. Jednostka reprezentuje formę "znormalizowana". </li> <li> *Identyfikator*: unikatowy identyfikator jednostki zdefiniowanej przez użytkownika w "niestandardowym formacie definicji jednostki".</li> <li> *Opis*: Opis jednostki zdefiniowany przez użytkownika w "niestandardowym formacie definicji jednostki". </li> <li> *Typ:* Typ jednostki zdefiniowany przez użytkownika w "niestandardowym formacie definicji jednostki".</li> <li> *Podtyp:* Podtyp jednostki zdefiniowany przez użytkownika w "niestandardowym formacie definicji jednostki".</li>  <li> *dopasowuje*: Kolekcja opisująca wszystkie dopasowania dla tej jednostki na źródłowym tekście. Każde dopasowanie będzie miało następujące elementy członkowskie: </li> <ul> <li> *tekst*: pierwotny tekst jest zgodny z dokumentem źródłowym. </li> <li> *przesunięcie*: lokalizacja, w której znaleziono dopasowanie w tekście. </li> <li> *Długość*: długość dopasowanego tekstu. </li> <li> *matchDistance*: liczba znaków, które różnią się od nazwy lub aliasu oryginalnej jednostki.  </li> </ul> </ul>
   |
 
 ## <a name="custom-entity-definition-format"></a>Niestandardowy format definicji jednostki
 
 Istnieją trzy różne sposoby udostępniania listy jednostek niestandardowych dla umiejętności wyszukiwania jednostek niestandardowych. Możesz podać listę w. Plik CSV, a. Plik JSON lub jako wbudowana Definicja w ramach definicji umiejętności.  
 
-Jeśli plik definicji jest. Wolumin CSV lub. Plik JSON, ścieżka pliku musi być podana jako część parametru *entitiesDefitionUri* . W takim przypadku plik jest pobierany raz na początku każdego uruchomienia indeksatora. Plik musi być dostępny, o ile indeksator ma być uruchomiony.
+Jeśli plik definicji jest. Wolumin CSV lub. Plik JSON, ścieżka pliku musi być podana jako część parametru *entitiesDefitionUri* . W takim przypadku plik jest pobierany raz na początku każdego uruchomienia indeksatora. Plik musi być dostępny, o ile indeksator ma być uruchomiony. Ponadto plik musi być zakodowany w formacie UTF-8.
 
 Jeśli definicja została podana w tekście, powinna być określona jako wbudowana jako zawartość parametru umiejętności *inlineEntitiesDefinition* . 
 
@@ -296,7 +296,7 @@ Alternatywnie, jeśli zdecydujesz się dostarczyć wskaźnik do pliku definicji 
   } 
 ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
 + [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)

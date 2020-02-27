@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 409e73f05366065f1c4159e9f1cd7e5bf8bb5ceb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 880f1c601cf4132fdec9e5d25b1bf1f2ff175ab7
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486247"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650541"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Wskazówki dotyczące wydajności SQL Server na platformie Azure Virtual Machines
 
@@ -136,7 +136,7 @@ W przypadku maszyn wirtualnych, które obsługują usługę Premium dysków SSD,
      > [!WARNING]
      > Zatrzymaj usługę SQL Server w przypadku zmiany ustawienia pamięci podręcznej dysków maszyn wirtualnych platformy Azure, aby uniknąć wystąpienia uszkodzenia bazy danych.
 
-* **Rozmiar jednostki alokacji systemu plików NTFS**: podczas formatowania dysku z danymi zaleca się użycie rozmiaru jednostki alokacji 64 KB dla plików danych i dziennika, a także tempdb.
+* **Rozmiar jednostki alokacji systemu plików NTFS**: podczas formatowania dysku z danymi zaleca się użycie rozmiaru jednostki alokacji 64 KB dla plików danych i dziennika, a także tempdb. Jeśli baza danych TempDB jest umieszczona na dysku tymczasowym (D:\ napęd) wydajność uzyskaną przez wykorzystanie tego dysku spowoduje, że nie ma potrzeby rozmiaru jednostki alokacji o rozmiarze 64 KB. 
 
 * **Najlepsze rozwiązania dotyczące zarządzania dyskami**: podczas usuwania dysku z danymi lub zmiany jego typu pamięci podręcznej zatrzymaj usługę SQL Server podczas zmiany. Gdy ustawienia buforowania zostaną zmienione na dysku systemu operacyjnego, platforma Azure zatrzyma maszynę wirtualną, zmieni typ pamięci podręcznej i ponownie uruchomi maszynę wirtualną. Gdy ustawienia pamięci podręcznej dysku danych zostaną zmienione, maszyna wirtualna nie zostanie zatrzymana, ale dysk danych zostanie odłączony od maszyny wirtualnej podczas zmiany, a następnie ponownie dołączony.
 

@@ -4,12 +4,12 @@ description: Dowiedz się, jak utworzyć prywatny klaster usługi Azure Kubernet
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: e59dccbcc7514f12e148bfb2f771593a53e85dc5
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594570"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649511"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Tworzenie prywatnego klastra usługi Azure Kubernetes Service (wersja zapoznawcza)
 
@@ -45,16 +45,28 @@ Płaszczyzna kontroli lub serwer interfejsu API znajduje się w subskrypcji plat
 * Japonia Zachodnia
 * Korea Środkowa
 * Korea Południowa
-* Środkowo-północne stany USA
+* Północno-środkowe stany USA
 * Europa Północna
 * Europa Północna
-* Środkowo-południowe stany USA
+* Południowo-środkowe stany USA
 * Południowe Zjednoczone Królestwo
 * Europa Zachodnia
 * Zachodnie stany USA
 * Zachodnie stany USA 2
 * Wschodnie stany USA 2
 
+## <a name="currently-supported-availability-zones"></a>Aktualnie obsługiwane Strefy dostępności
+
+* Środkowe stany USA
+* Wschodnie stany USA
+* Wschodnie stany USA 2
+* Francja Środkowa
+* Japonia Wschodnia
+* Europa Północna
+* Azja Południowo-Wschodnia
+* Południowe Zjednoczone Królestwo
+* Europa Zachodnia
+* Zachodnie stany USA 2
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>Zainstaluj najnowsze rozszerzenie AKS w wersji zapoznawczej interfejsu wiersza polecenia platformy Azure
 
@@ -115,6 +127,7 @@ Where *--enable-Private-Cluster* jest obowiązkową flagą dla klastra prywatneg
 > Jeśli adres CIDR (172.17.0.1/16) mostka platformy Docker koliduje z maską CIDR podsieci, należy odpowiednio zmienić adres mostka platformy Docker.
 
 ## <a name="connect-to-the-private-cluster"></a>Nawiązywanie połączenia z klastrem prywatnym
+
 Punkt końcowy serwera interfejsu API nie ma publicznego adresu IP. W związku z tym należy utworzyć maszynę wirtualną platformy Azure w sieci wirtualnej i połączyć się z serwerem interfejsu API. Aby to zrobić, wykonaj następujące czynności:
 
 1. Pobierz poświadczenia, aby połączyć się z klastrem.
@@ -148,7 +161,8 @@ Punkt końcowy serwera interfejsu API nie ma publicznego adresu IP. W związku z
 * Aby użyć niestandardowego serwera DNS, wdróż serwer usługi AD przy użyciu systemu DNS do przesyłania dalej do tego 168.63.129.16 IP
 
 ## <a name="limitations"></a>Ograniczenia 
-* Strefy dostępności są obecnie obsługiwane tylko w regionach Wschodnie stany USA 2 i zachodnie stany USA 2
+* Nie można zastosować dozwolonych zakresów adresów IP do punktu końcowego serwera prywatnego interfejsu API, są one stosowane tylko do publicznego serwera interfejsu API
+* Strefy dostępności są obecnie obsługiwane w niektórych regionach, zobacz początek tego dokumentu. 
 * [Ograniczenia usługi Azure Private link][private-link-service] są stosowane do prywatnych klastrów, prywatnych punktów końcowych platformy Azure i punktów końcowych usługi sieci wirtualnej, które nie są obecnie obsługiwane w tej samej sieci wirtualnej.
 * Brak obsługi węzłów wirtualnych w klastrze prywatnym do Azure Container Instances prywatnego (ACI) w prywatnej sieci wirtualnej platformy Azure
 * Brak wsparcia dla integracji usługi Azure DevOps z użyciem klastrów prywatnych

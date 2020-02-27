@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 309cf59c4b27c2a5906acfc519edd5306dece2d5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a9d3d0287e7839d6396553d532ba6f293fb19b68
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789243"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647669"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrowanie 3270 aplikacji opartych na ekranach na komputery z systemem Azure przy użyciu łącznika Azure Logic Apps i IBM 3270
 
@@ -358,12 +358,12 @@ Po zakończeniu wszystkich tych kroków możesz użyć akcji utworzonej w aplika
 
 1. Jeśli połączenie nie istnieje jeszcze, podaj niezbędne informacje dotyczące połączenia i wybierz pozycję **Utwórz**.
 
-   | Właściwość | Wymagane | Wartość | Opis |
+   | Właściwość | Wymagany | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | **Nazwa połączenia** | Tak | <*nazwę połączenia*> | Nazwa połączenia |
-   | **Identyfikator konta integracji** | Tak | <*integrację — nazwa konta*> | Nazwa konta integracji |
-   | **Adres URL sygnatury dostępu współdzielonego konta integracji** | Tak | <*Integration-Account-SAS-URL*> | Adres URL sygnatury dostępu współdzielonego (SAS) konta integracji, który można wygenerować na podstawie ustawień konta integracji w Azure Portal. <p>1. w menu konto integracji w obszarze **Ustawienia**wybierz pozycję **adres URL wywołania zwrotnego**. <br>2. w okienku po prawej stronie Skopiuj **wygenerowaną wartość adresu URL wywołania zwrotnego** . |
-   | **Serwer** | Tak | <*protokołu TN3270-Server-name*> | Nazwa serwera dla usługi protokołu TN3270 |
+   | **Nazwa połączenia** | Yes | <*nazwę połączenia*> | Nazwa połączenia |
+   | **Identyfikator konta integracji** | Yes | <*integrację — nazwa konta*> | Nazwa konta integracji |
+   | **Adres URL sygnatury dostępu współdzielonego konta integracji** | Yes | <*Integration-Account-SAS-URL*> | Adres URL sygnatury dostępu współdzielonego (SAS) konta integracji, który można wygenerować na podstawie ustawień konta integracji w Azure Portal. <p>1. w menu konto integracji w obszarze **Ustawienia**wybierz pozycję **adres URL wywołania zwrotnego**. <br>2. w okienku po prawej stronie Skopiuj **wygenerowaną wartość adresu URL wywołania zwrotnego** . |
+   | **Serwer** | Yes | <*protokołu TN3270-Server-name*> | Nazwa serwera dla usługi protokołu TN3270 |
    | **Port** | Nie | <*protokołu TN3270-Server-port*> | Port używany przez serwer protokołu TN3270. Jeśli pole pozostanie puste, łącznik użyje `23` jako wartości domyślnej. |
    | **Typ urządzenia** | Nie | <*IBM-Terminal-model*> | Nazwa lub numer modelu terminalu IBM do emulowania. Jeśli pole pozostanie puste, łącznik użyje wartości domyślnych. |
    | **Strona kodowa** | Nie | *kod <numer strony*> | Numer strony kodowej dla hosta. Jeśli pole pozostanie puste, łącznik użyje `37` jako wartości domyślnej. |
@@ -378,10 +378,10 @@ Po zakończeniu wszystkich tych kroków możesz użyć akcji utworzonej w aplika
 
 1. Podaj niezbędne informacje dotyczące akcji:
 
-   | Właściwość | Wymagane | Wartość | Opis |
+   | Właściwość | Wymagany | Wartość | Opis |
    |----------|----------|-------|-------------|
-   | **Nazwa hidx** | Tak | <*hidx-nazwa pliku*> | Wybierz plik HIDX 3270, którego chcesz użyć. |
-   | **Nazwa metody** | Tak | <*nazwę metody*> | Wybierz metodę w pliku HIDX, który ma być używany. Po wybraniu metody zostanie wyświetlona lista **Dodaj nowy parametr** , aby można było wybrać parametry do użycia z tą metodą. |
+   | **Nazwa hidx** | Yes | <*hidx-nazwa pliku*> | Wybierz plik HIDX 3270, którego chcesz użyć. |
+   | **Nazwa metody** | Yes | <*nazwę metody*> | Wybierz metodę w pliku HIDX, który ma być używany. Po wybraniu metody zostanie wyświetlona lista **Dodaj nowy parametr** , aby można było wybrać parametry do użycia z tą metodą. |
    ||||
 
    Na przykład:
@@ -409,7 +409,10 @@ Po zakończeniu wszystkich tych kroków możesz użyć akcji utworzonej w aplika
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania łącznika](/connectors/si3270/).
+Aby uzyskać więcej szczegółowych informacji technicznych dotyczących tego łącznika, takich jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku Swagger łącznika, zobacz [stronę odwołania łącznika](https://docs.microsoft.com/connectors/si3270/).
+
+> [!NOTE]
+> W przypadku aplikacji logiki w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), wersja tego łącznika z oznaczeniem ISE w zamian używa [limitów komunikatów ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
 ## <a name="next-steps"></a>Następne kroki
 

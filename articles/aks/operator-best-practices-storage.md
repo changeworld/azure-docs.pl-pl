@@ -4,18 +4,18 @@ description: Poznaj klastra operator najlepsze rozwiązania dotyczące magazynow
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 6521655ded45f0a1d15c3ec40a44993d757b8854
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: a58a42f65472a9c4b495e0cb964eefa40bf82041
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594672"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649623"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w usłudze Azure Kubernetes Service (AKS)
 
 Podczas tworzenia i zarządzania klastrami w usłudze Azure Kubernetes Service (AKS), aplikacje często muszą magazynu. Należy do zrozumienia potrzeb związanych z wydajnością i dostęp do metody do zasobników, tak, aby można było zapewnić odpowiedni magazyn dla aplikacji. Rozmiar węzłów AKS może mieć wpływ na te opcje magazynu. Należy również zaplanować, aby poznać sposoby wykonywania kopii zapasowych i przetestuj proces przywracania do dołączonego magazynu.
 
-Najlepsze rozwiązania dotyczące tej koncentruje się na zagadnienia dotyczące magazynu dla operatorów klastra. W tym artykule dowiesz się:
+Najlepsze rozwiązania dotyczące tej koncentruje się na zagadnienia dotyczące magazynu dla operatorów klastra. W tym artykule omówiono następujące zagadnienia:
 
 > [!div class="checklist"]
 > * Jakie typy magazynu są dostępne
@@ -33,9 +33,9 @@ W poniższej tabeli przedstawiono typy dostępnego magazynu i ich funkcji:
 
 | Przypadek użycia | Wtyczka woluminu | Odczyt/zapis raz | Wiele tylko do odczytu | Odczyt/zapis wielu | Obsługa kontenerów systemu Windows Server |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
-| Konfiguracja udostępniona       | Azure Files   | Tak | Tak | Tak | Tak |
-| Dane ze strukturą aplikacji        | Azure Disks   | Tak | Nie  | Nie  | Tak |
-| Dane bez określonej struktury, operacje systemu plików | [BlobFuse (wersja zapoznawcza)][blobfuse] | Tak | Tak | Tak | Nie |
+| Konfiguracja udostępniona       | Azure Files   | Yes | Yes | Yes | Yes |
+| Dane ze strukturą aplikacji        | Azure Disks   | Yes | Nie  | Nie  | Yes |
+| Dane bez określonej struktury, operacje systemu plików | [BlobFuse][blobfuse] | Yes | Yes | Yes | Nie |
 
 Dwa podstawowe typy magazynu określone woluminy w usłudze AKS są wspierane przez dyski platformy Azure lub usługi Azure Files. Aby zwiększyć bezpieczeństwo, oba typy magazynu, należy użyć szyfrowanie usługi Storage (SSE) Azure domyślnie, który szyfruje dane magazynowane. Obecnie nie można zaszyfrować dyski za pomocą usługi Azure Disk Encryption na poziomie węzłów AKS.
 

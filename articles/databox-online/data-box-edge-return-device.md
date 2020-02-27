@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: a5fee604a529e9ca6153f6c189f199577ae65426
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 521277b2eed7edfba016f6a80e8f877decfb0ac5
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356144"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651104"
 ---
 # <a name="return-or-replace-your-azure-data-box-edge-device"></a>Zwróć lub Zastąp urządzenie Azure Data Box Edge
 
@@ -39,7 +39,7 @@ Aby zresetować urządzenie przy użyciu lokalnego interfejsu użytkownika sieci
 1. W lokalnym interfejsie użytkownika sieci Web przejdź do pozycji **konserwacja > Resetowanie urządzenia**.
 2. Wybierz pozycję **Zresetuj urządzenie**.
 
-    ![Zresetuj urządzenie](media/data-box-edge-return-device/device-reset-1.png)
+    ![Resetowanie urządzenia](media/data-box-edge-return-device/device-reset-1.png)
 
 3. Po wyświetleniu monitu o potwierdzenie Sprawdź ostrzeżenie i wybierz pozycję **tak** , aby kontynuować.
 
@@ -47,7 +47,7 @@ Aby zresetować urządzenie przy użyciu lokalnego interfejsu użytkownika sieci
 
 Zresetowanie powoduje wymazanie danych z dysków danych urządzenia. W zależności od ilości danych na urządzeniu proces ten zajmie około 30-40 minut.
 
-Alternatywnie można nawiązać połączenie z interfejsem programu PowerShell urządzenia i użyć `Reset-HcsAppliance` polecenia cmdlet w celu wymazania danych z dysków danych. Aby uzyskać więcej informacji, zobacz [Resetowanie urządzenia](data-box-edge-connect-powershell-interface.md#reset-your-device).
+Alternatywnie można nawiązać połączenie z interfejsem programu PowerShell urządzenia i użyć polecenia cmdlet `Reset-HcsAppliance`, aby wymazać dane z dysków danych. Aby uzyskać więcej informacji, zobacz [Resetowanie urządzenia](data-box-edge-connect-powershell-interface.md#reset-your-device).
 
 > [!NOTE]
 > - Jeśli wymieniasz lub uaktualniasz nowe urządzenie, zalecamy zresetowanie urządzenia tylko po odebraniu nowego urządzenia.
@@ -59,7 +59,7 @@ Aby rozpocząć proces powrotu, wykonaj następujące czynności.
 
 1. Otwórz bilet pomocy technicznej z pomoc techniczna firmy Microsoft wskazujący, że chcesz zwrócić urządzenie. Wybierz typ problemu jako **Data Box Edge sprzęt**.
 
-    ![Otwórz bilet pomocy technicznej](media/data-box-edge-return-device/open-support-ticket-1.png)  
+    ![Otwieranie biletu pomocy technicznej](media/data-box-edge-return-device/open-support-ticket-1.png)  
 
 2. Inżynier pomoc techniczna firmy Microsoft skontaktuje się z Tobą. Podaj szczegóły dotyczące wysyłki.
 3. Jeśli potrzebujesz pola wysyłania zwrotnego, możesz je zażądać. Odpowiedź **tak** na pytanie **wymaga pustego pola do zwrócenia**.
@@ -72,7 +72,7 @@ Aby rozpocząć proces powrotu, wykonaj następujące czynności.
 3. Odłącz kable zasilające i Usuń wszystkie kable sieciowe z urządzenia.
 4. Przygotuj pakiet wysyłki przy użyciu własnego pola lub pustego pola otrzymanego z platformy Azure. Umieść urządzenie i zasilacze, które zostały dostarczone z urządzeniem w polu.
 5. Należy umieścić etykietę wysyłkową uzyskaną z platformy Azure w pakiecie.
-6. Zaplanuj pobranie w ramach operatora regionalnego. W przypadku powrotu urządzenia w Stanach Zjednoczonych przewoźnik jest zasilaczem UPS. Aby zaplanować odbiór:
+6. Uzgodnij odbiór urządzenia z regionalną firmą kurierską. W przypadku powrotu urządzenia w Stanach Zjednoczonych przewoźnik może być UPS lub FedEx. Aby zaplanować odbiór przy użyciu zasilacza UPS:
 
     1. Wywoływanie lokalnego zasilacza UPS (numer bezpłatny dla określonego kraju).
     2. W wywołaniu Zadzwoń na numer śledzenia wycofywania przesyłki, jak pokazano na wydrukowanej etykiecie.
@@ -103,7 +103,7 @@ Wykonaj następujące kroki, aby usunąć urządzenie i zasób w Azure Portal.
 
 2. W bloku **Usuń urządzenie** wpisz nazwę urządzenia, które chcesz usunąć, a następnie wybierz pozycję **Usuń**.
 
-    ![Potwierdź usuwanie](media/data-box-edge-return-device/delete-resource-2.png)
+    ![Potwierdzenie usunięcia](media/data-box-edge-return-device/delete-resource-2.png)
 
 Po pomyślnym usunięciu urządzenia i skojarzonego z nim zasobu zostanie wyświetlone powiadomienie.
 

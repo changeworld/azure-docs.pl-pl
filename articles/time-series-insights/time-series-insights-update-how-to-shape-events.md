@@ -8,45 +8,61 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: e814d9be4a0db2852bd9e21f3d3c1d54a45bd268
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 99a2f32c3f76d7fec475c9b299f7208b4db29cfe
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368649"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650927"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Kształt zdarzeń za pomocą usługi Azure czas Series Insights w wersji zapoznawczej
 
-Ten artykuł pomaga w utworzeniu kształtu pliku JSON na potrzeby pozyskiwania i zmaksymalizowania wydajności zapytań Azure Time Series Insights w wersji zapoznawczej.
+W tym artykule opisano najlepsze rozwiązania dotyczące kształtów ładunków w formacie JSON na potrzeby pozyskiwania danych w Azure Time Series Insights i maksymalizowania wydajności zapytań w wersji zapoznawczej.
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
-Zastanów się, jak wysyłasz zdarzenia do Time Series Insights wersji zapoznawczej. To znaczy należy zawsze:
+Najlepiej uważnie zastanowić się, jak wysyłać zdarzenia do środowiska Time Series Insights w wersji zapoznawczej. 
+
+Ogólne najlepsze rozwiązania obejmują:
 
 * jak najbardziej wydajny wysyłanie danych przez sieć.
 * Store dane w sposób, który pomoże Ci agregować je bardziej odpowiednio do danego scenariusza.
 
-Aby uzyskać najlepszą wydajność zapytań, wykonaj następujące czynności:
+W celu uzyskania najlepszej wydajności zapytań przestrzegaj następujących zasad:
 
-* Nie wysyłaj niepotrzebnych właściwości. Czas Series Insights w wersji zapoznawczej opłaty naliczane są na wykorzystanie. Najlepiej do przechowywania i przetwarzania danych, który zostanie kwerenda.
-* Użyj pól wystąpień dla danych statycznych. Praktyka ta pomaga unikać wysyłania danych statycznych za pośrednictwem sieci. Pola wystąpienia, składnik modelu szeregów czasowych, działają jak dane referencyjne w usłudze Time Series Insights, która jest ogólnie dostępna. Aby dowiedzieć się więcej o polach wystąpienia, Odczytaj [model szeregów czasowych](./time-series-insights-update-tsm.md).
+* Nie wysyłaj niepotrzebnych właściwości. Time Series Insights w wersji zapoznawczej według użycia. Najlepiej przechowywać i przetwarzać tylko dane, które będą używane do wykonywania zapytań.
+* Użyj pól wystąpień dla danych statycznych. To rozwiązanie pomaga uniknąć wysyłania danych statycznych przez sieć. Pola wystąpienia, składnik modelu szeregów czasowych, działają jak dane referencyjne w usłudze Time Series Insights, która jest ogólnie dostępna. Aby dowiedzieć się więcej o polach wystąpienia, Odczytaj [model szeregów czasowych](./time-series-insights-update-tsm.md).
 * Udostępnianie właściwości wymiaru spośród dwóch lub większej liczby zdarzeń. Pomaga to bardziej wydajne wysyłanie danych przez sieć.
 * Nie używaj tablicy głębokiego zagnieżdżenia. Wersja zapoznawcza Time Series Insights obsługuje do dwóch poziomów zagnieżdżonych tablic, które zawierają obiekty. Czas Series Insights w wersji zapoznawczej spłaszcza tablic w wiadomości do wielu zdarzeń przy użyciu pary wartości właściwości.
 * Jeśli tylko kilka istnieją środki dla wszystkich lub większości zdarzeń, zaleca się wysłać te miary jako osobne właściwości w ramach tego samego obiektu. Ich wysyłanie osobno zmniejsza liczbę zdarzeń i może poprawić wydajność zapytań, ponieważ wymaga przetworzenia mniejszych zdarzeń.
 
-W trakcie pozyskiwania ładunki zawierające zagnieżdżanie zostaną spłaszczone, tak aby nazwa kolumny była pojedynczą wartością z delineator. Time Series Insights w wersji zapoznawczej używa podkreśleń do rozliczenia. Należy zauważyć, że jest to zmiana z wersji na początku produktu, który używa okresów. W trakcie okresu zapoznawczego istnieje zastrzeżenie dotyczące spłaszczania, które przedstawiono w drugim przykładzie poniżej.
+## <a name="column-flattening"></a>Spłaszczanie kolumn
 
-## <a name="examples"></a>Przykłady
+W trakcie pozyskiwania ładunki zawierające obiekty zagnieżdżone zostaną spłaszczone, tak aby nazwa kolumny była pojedynczą wartością z delineator.
 
-Poniższy przykład opiera się na scenariuszu, gdy dwie lub większą liczbę urządzeń wysyłać pomiary i sygnały. Pomiary lub sygnały mogą być *natężeniem przepływu*, *ciśnieniem oleju*, *temperatury*i *wilgotności*.
+* Na przykład następujący zagnieżdżony kod JSON:
 
-W przykładzie istnieje pojedynczy komunikat IoT Hub platformy Azure, w którym tablica zewnętrzna zawiera wspólną sekcję wspólnych wartości wymiarów. Zewnętrzne tablicy używa wystąpienia serii czasu danych w celu zwiększenia efektywności wiadomości. 
+   ```JSON
+   "data": {
+        "flow": 1.0172575712203979,
+   },
+   ```
 
-Wystąpienie szeregów czasowych zawiera metadane urządzenia. Te metadane nie zmieniają się przy każdym zdarzeniu, ale udostępniają przydatne właściwości analizy danych. Aby zaoszczędzić w bajtach przesyłanych przez sieć i zwiększyć efektywność komunikatów, należy rozważyć tworzenie wsadowe wspólnych wartości wymiarów i korzystanie z metadanych wystąpienia szeregów czasowych.
+   Zmieni się: `data_flow` po spłaszczeniu.
 
-### <a name="example-1"></a>Przykład 1:
+> [!IMPORTANT]
+> * Azure Time Series Insights w wersji zapoznawczej używa podkreśleń (`_`) do rozkreślenia kolumn.
+> * Zanotuj różnicę z ogólnej dostępności, która używa kropek (`.`).
+
+Poniżej przedstawiono bardziej złożone scenariusze.
+
+#### <a name="example-1"></a>Przykład 1:
+
+W poniższym scenariuszu znajdują się co najmniej dwa urządzenia, które wysyłają pomiary (sygnały): *szybkość przepływu*, *ciśnienie oleju*, *temperatura*i *wilgotność*.
+
+Istnieje pojedynczy komunikat IoT Hub platformy Azure, w którym tablica zewnętrzna zawiera wspólną sekcję wspólnych wartości wymiaru (należy zwrócić uwagę na dwa wpisy urządzeń zawarte w komunikacie).
 
 ```JSON
 [
@@ -77,10 +93,23 @@ Wystąpienie szeregów czasowych zawiera metadane urządzenia. Te metadane nie z
 ]
 ```
 
-### <a name="time-series-instance"></a>Wystąpienia serii czasu 
+**Wnioski**
+
+* Przykładowy kod JSON ma zewnętrzną tablicę, która używa danych [wystąpienia szeregów czasowych](./time-series-insights-update-tsm.md#time-series-model-instances) , aby zwiększyć wydajność wiadomości. Mimo że wystąpienia szeregów czasowych metadanych urządzenia nie mogą ulec zmianie, często zapewnia przydatne właściwości analizy danych.
+
+* KOD JSON łączy dwa lub więcej komunikatów (po jednym z poszczególnych urządzeń) w jeden ładunek, oszczędzając przepustowość w miarę upływu czasu.
+
+* Pojedyncze punkty danych serii dla każdego urządzenia są łączone w jeden atrybut **serii** , co zmniejsza konieczność ciągłego przesyłania strumieniowego aktualizacji dla każdego urządzenia.
+
+> [!TIP]
+> Aby zmniejszyć liczbę komunikatów wymaganych do wysłania danych i zwiększyć wydajność telemetrii, należy rozważyć utworzenie wsadowe wspólnych wartości wymiarów i metadanych wystąpienia szeregów czasowych w jednym ładunku JSON.
+
+#### <a name="time-series-instance"></a>Wystąpienia serii czasu 
+
+Zapoznaj się z tym sposobem, jak używać [wystąpienia szeregów czasowych](./time-series-insights-update-tsm.md#time-series-model-instances) , aby bardziej optymalnie KSZTAŁTOWAĆ kod JSON. 
 
 > [!NOTE]
-> Identyfikator szeregów czasowych to *deviceId*.
+> Poniższe [identyfikatory szeregów czasowych](./time-series-insights-update-how-to-id.md) to *deviceIds*.
 
 ```JSON
 [
@@ -115,7 +144,7 @@ Wystąpienie szeregów czasowych zawiera metadane urządzenia. Te metadane nie z
 ]
 ```
 
-Czas Series Insights w wersji zapoznawczej łączy tabeli (po spłaszczanie) podczas przeszukiwania. Tabela zawiera dodatkowe kolumny, takie jak **Type**. W poniższym przykładzie pokazano, jak można [kształtować](./time-series-insights-send-events.md#supported-json-shapes) dane telemetryczne.
+Czas Series Insights w wersji zapoznawczej łączy tabeli (po spłaszczanie) podczas przeszukiwania. Tabela zawiera dodatkowe kolumny, takie jak **Type**.
 
 | deviceId  | Typ | L1 | PAMIĘCI PODRĘCZNEJ L2 | sygnatura czasowa | Częstotliwość series_Flow ft3/s | series_Engine z użyciem nacisku oleju |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -123,18 +152,20 @@ Czas Series Insights w wersji zapoznawczej łączy tabeli (po spłaszczanie) pod
 | `FXXX` | Default_Type | SYMULATOR |   System baterii |    2018-01-17T01:17:00Z | 2.445906400680542 |  49.2 |
 | `FYYY` | LINE_DATA WSPÓLNE | SYMULATOR |    System baterii |    2018-01-17T01:18:00Z | 0.58015072345733643 |    22.2 |
 
-W poprzednim przykładzie Pamiętaj o następujących kwestiach:
+> [!NOTE]
+>  Powyższa tabela przedstawia widok zapytania w [Eksploratorze wersji zapoznawczej](./time-series-insights-update-explorer.md).
 
-* Właściwości statyczne są przechowywane w czasu Series Insights w wersji zapoznawczej do optymalizacji danych przesyłanych przez sieć.
+**Wnioski**
+
+* W poprzednim przykładzie właściwości statyczne są przechowywane w Time Series Insights wersji zapoznawczej, aby zoptymalizować dane przesyłane przez sieć.
 * Time Series Insights dane podglądu są przyłączone w czasie zapytania za pomocą identyfikatora szeregów czasowych zdefiniowanego w wystąpieniu.
 * Używane są dwie warstwy zagnieżdżania. Ta liczba jest największa, która obsługuje Time Series Insights w wersji zapoznawczej. Koniecznie można uniknąć głęboko zagnieżdżonych tablic.
 * Ponieważ istnieje kilka miar, są one wysyłane jako osobne właściwości w ramach tego samego obiektu. W przykładzie jest to unikatowymi kolumnami **interfejsu psi Series_Flow rate**, **series_Engine psi**oraz **series_Flow rate ft3/s** .
 
 >[!IMPORTANT]
 > Pola wystąpienia nie są przechowywane przy użyciu telemetrii. Są one przechowywane z metadanymi w modelu szeregów czasowych.
-> Zgodnie z poprzednią tabelą reprezentuje widok zapytania.
 
-### <a name="example-2"></a>Przykład 2:
+#### <a name="example-2"></a>Przykład 2:
 
 Weź pod uwagę następujące dane JSON:
 
@@ -148,12 +179,20 @@ Weź pod uwagę następujące dane JSON:
   "data_flow" : 1.76435072345733643
 }
 ```
-W powyższym przykładzie właściwość spłaszczone `data_flow` zaprezentuje kolizję nazw z właściwością `data_flow`. W takim przypadku *Najnowsza* wartość właściwości spowoduje zastąpienie wcześniejszej wartości. Jeśli takie zachowanie przedstawia wyzwanie dla scenariuszy firmy, skontaktuj się z zespołem ds. platformy TSI.
+
+W powyższym przykładzie właściwość spłaszczone `data["flow"]` zaprezentuje kolizję nazw z właściwością `data_flow`.
+
+W takim przypadku *Najnowsza* wartość właściwości spowoduje zastąpienie wcześniejszej wartości. 
+
+> [!TIP]
+> Skontaktuj się z zespołem Time Series Insights, aby uzyskać pomoc.
 
 > [!WARNING] 
-> W przypadkach, gdy zduplikowane właściwości znajdują się w tym samym ładunku zdarzeń z powodu spłaszczania lub innego mechanizmu, najnowsza wartość właściwości jest przechowywana, overwritting wszystkie poprzednie wartości.
-
+> * W przypadkach, gdy zduplikowane właściwości są obecne w tym samym (pojedynczo) ładunku zdarzenia z powodu spłaszczania lub innego mechanizmu, Najnowsza > wartość właściwości jest przechowywana, przez zapisanie wszystkich poprzednich wartości.
+> * Seria połączonych zdarzeń nie przesłoni siebie nawzajem.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby zapoznać się z zaleceniami, Przeczytaj [Azure Time Series Insights wersja zapoznawcza zapytania](./time-series-insights-query-data-csharp.md). Dowiesz się więcej na temat składni zapytania dla interfejsu API REST usługi Time Series Insights Preview na potrzeby dostępu do danych.
+* Aby zapoznać się z zaleceniami, Przeczytaj [Azure Time Series Insights wersja zapoznawcza zapytania](./time-series-insights-query-data-csharp.md). Dowiesz się więcej na temat składni zapytania dla [interfejsu API REST](https://docs.microsoft.com/rest/api/time-series-insights/preview) usługi Time Series Insights Preview na potrzeby dostępu do danych.
+
+* Połącz najlepsze rozwiązania JSON z [modelem szeregów czasowych](./time-series-insights-update-how-to-tsm.md).

@@ -2,21 +2,21 @@
 title: Monitorowanie działania migracji — Azure Database Migration Service
 description: Dowiedz się, jak używać Azure Database Migration Service do monitorowania aktywności migracji.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: b3ba634ddb084b5637d0a0c97c0ac4ff72193c1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437934"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648516"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Monitorowanie aktywności migracji przy użyciu Azure Database Migration Service
 W tym artykule dowiesz się, jak monitorować postęp migracji zarówno na poziomie bazy danych, jak i na poziomie tabeli.
@@ -55,7 +55,7 @@ W poniższej tabeli wymieniono pola w bloku na poziomie bazy danych i opisano r�
     </tr>
     <tr>
       <td rowspan="4" class="Status"><strong>Stan</strong></td>
-      <td>Inicjowanie</td>
+      <td>Inicjacj</td>
       <td>DMS konfiguruje potok migracji.</td>
     </tr>
     <tr>
@@ -63,7 +63,7 @@ W poniższej tabeli wymieniono pola w bloku na poziomie bazy danych i opisano r�
       <td>Potok DMS jest uruchomiony i przeprowadza migrację.</td>
     </tr>
     <tr>
-      <td>Kompletne</td>
+      <td>Complete</td>
       <td>Migracja została zakończona.</td>
     </tr>
     <tr>
@@ -92,8 +92,8 @@ W poniższej tabeli wymieniono pola w bloku na poziomie bazy danych i opisano r�
       <td>Kliknij link, aby wyświetlić szczegóły błędu.</td>
     </tr>
     <tr>
-      <td rowspan="1" class="duration"><strong>Czas trwania</strong></td>
-      <td>ND</td>
+      <td rowspan="1" class="duration"><strong>Trwania</strong></td>
+      <td>Nie dotyczy</td>
       <td>Łączny czas trwania działania migracji na zakończenie migracji lub błąd migracji.</td>
     </tr>
      </tbody>
@@ -132,7 +132,7 @@ W poniższej tabeli opisano pola, które przedstawiono w postęp migracji na poz
 | Nazwa pola        | Opis       |
 | ------------- | ------------- |
 | **Stan — synchronizacja**      | Działa ciągła synchronizacja. |
-| **Wstaw**      | Liczba wstawek operacji przechwytywania w wierszach zastosowanych do celu.      |
+| **Wstawienia**      | Liczba wstawek operacji przechwytywania w wierszach zastosowanych do celu.      |
 | **Aktualizacja** | Liczba aktualizacji przechwytywania zmian w wierszach zastosowanych do celu.      |
 | **Usuwanie**      | Liczba usunięć danych przechwytywania w wierszach zastosowanych do celu. |
 | **Suma zastosowania**      | Łączna liczba aktualizacji, wstawianych i usuwanych obiektów przestawnych w wierszach zastosowanych do celu. |

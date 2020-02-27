@@ -3,18 +3,18 @@ title: Wdróż wiele wystąpień zasobów
 description: Użyj operacji kopiowania i tablic w szablonie Azure Resource Manager, aby wdrożyć wiele razy typ zasobu.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 38b5bcd38e0dc8ba8c758e9aa8371857541ba55e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e90673504ceaccdc25a477e856defa77eed37d86
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210829"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620234"
 ---
 # <a name="resource-iteration-in-azure-resource-manager-templates"></a>Iteracja zasobów w szablonach Azure Resource Manager
 
 W tym artykule pokazano, jak utworzyć więcej niż jedno wystąpienie zasobu w szablonie Azure Resource Manager. Dodając element **copy** do sekcji Resources szablonu, można dynamicznie ustawić liczbę zasobów do wdrożenia. Należy również unikać powtarzania składni szablonu.
 
-Można również użyć kopiowania z [właściwościami](copy-properties.md) i [zmiennymi](copy-variables.md).
+Można również użyć kopiowania z [właściwościami](copy-properties.md), [zmiennymi](copy-variables.md) i [wyjściami](copy-outputs.md).
 
 Jeśli musisz określić, czy zasób został wdrożony w ogóle, zobacz [warunek elementu](conditional-resource-deployment.md).
 
@@ -130,6 +130,8 @@ Poniższy przykład tworzy jedno konto magazynu dla każdej nazwy podanej w para
   "outputs": {}
 }
 ```
+
+Jeśli chcesz zwrócić wartości ze wdrożonych zasobów, możesz użyć opcji [Kopiuj w sekcji dane wyjściowe](copy-outputs.md).
 
 ## <a name="serial-or-parallel"></a>Numer seryjny lub równoległy
 
@@ -279,7 +281,10 @@ W poniższych przykładach przedstawiono typowe scenariusze tworzenia więcej ni
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby przejść przez samouczek, zobacz [Samouczek: Tworzenie wielu wystąpień zasobów przy użyciu szablonów Menedżer zasobów](template-tutorial-create-multiple-instances.md).
-* Aby poznać inne zastosowania elementu Copy, zobacz [iteracja właściwości w szablonach Azure Resource Manager](copy-properties.md) i [iteracji zmiennej w szablonach Azure Resource Manager](copy-variables.md).
+* Aby poznać inne zastosowania elementu Copy, zobacz:
+  * [Iteracja właściwości w szablonach Azure Resource Manager](copy-properties.md)
+  * [Iteracja zmiennej w szablonach Azure Resource Manager](copy-variables.md)
+  * [Iteracja danych wyjściowych w szablonach Azure Resource Manager](copy-outputs.md)
 * Aby uzyskać informacje na temat używania kopiowania z szablonami zagnieżdżonymi, zobacz [using Copy](linked-templates.md#using-copy).
 * Jeśli chcesz dowiedzieć się więcej na temat sekcji szablonu, zobacz [Tworzenie szablonów Azure Resource Manager](template-syntax.md).
 * Aby dowiedzieć się, jak wdrożyć szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](deploy-powershell.md).

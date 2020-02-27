@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: fb501a158c839e6d4d71fc2af5ae50e48c248466
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789158"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647580"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Wyślij wiadomość e-mail z konta SMTP przy użyciu Azure Logic Apps
 
@@ -49,12 +49,12 @@ Za pomocą Azure Logic Apps i łącznika Simple Mail Transfer Protocol (SMTP) mo
 
 1. Po wyświetleniu monitu podaj następujące informacje o połączeniu:
 
-   | Właściwość | Wymagane | Opis |
+   | Właściwość | Wymagany | Opis |
    |----------|----------|-------------|
-   | **Nazwa połączenia** | Tak | Nazwa połączenia z serwerem SMTP | 
-   | **Adres serwera SMTP** | Tak | Adres serwera SMTP | 
-   | **Nazwa użytkownika** | Tak | Twoja nazwa użytkownika dla konta SMTP | 
-   | **Hasło** | Tak | Hasło do konta SMTP | 
+   | **Nazwa połączenia** | Yes | Nazwa połączenia z serwerem SMTP | 
+   | **Adres serwera SMTP** | Yes | Adres serwera SMTP | 
+   | **Nazwa użytkownika** | Yes | Twoja nazwa użytkownika dla konta SMTP | 
+   | **Hasło** | Yes | Hasło do konta SMTP | 
    | **Port serwera SMTP** | Nie | Określony port na serwerze SMTP, który ma być używany | 
    | **Włączyć protokół SSL?** | Nie | Włącz lub wyłącz szyfrowanie SSL. | 
    |||| 
@@ -65,12 +65,10 @@ Za pomocą Azure Logic Apps i łącznika Simple Mail Transfer Protocol (SMTP) mo
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/smtpconnector/)łącznika.
+Aby uzyskać więcej szczegółowych informacji technicznych dotyczących tego łącznika, takich jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku Swagger łącznika, zobacz [stronę odwołania łącznika](https://docs.microsoft.com/connectors/smtpconnector/).
 
-## <a name="get-support"></a>Uzyskaj pomoc techniczną
-
-* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
+> [!NOTE]
+> W przypadku aplikacji logiki w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), wersja tego łącznika z oznaczeniem ISE w zamian używa [limitów komunikatów ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
 ## <a name="next-steps"></a>Następne kroki
 

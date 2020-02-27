@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: b28d228dd950796265c5412be30e5d7777cf94c6
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 4792c0bce7d9119f5198490d62f49f000e1567d3
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526516"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621961"
 ---
 # <a name="azure-firewall-faq"></a>Często zadawane pytania dotyczące zapory platformy Azure
 
@@ -50,11 +50,11 @@ Istnieją trzy typy kolekcji reguł:
 
 * *Reguły aplikacji*: Skonfiguruj w pełni kwalifikowane nazwy domen (FQDN), do których można uzyskać dostęp z podsieci.
 * *Reguły sieci*: Skonfiguruj reguły, które zawierają adresy źródłowe, protokoły, porty docelowe i adresy docelowe.
-* *Reguły translatora adresów sieciowych*: Skonfiguruj reguły DNAT, aby zezwalać na połączenia przychodzące.
+* *Reguły NAT*: Konfigurowanie reguł DNAT w celu zezwalania na przychodzące połączenia internetowe.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Czy Zapora platformy Azure obsługuje filtrowanie ruchu przychodzącego?
 
-Zapora platformy Azure obsługuje filtrowanie przychodzące i wychodzące. Ochrona ruchu przychodzącego jest zwykle używana dla protokołów innych niż HTTP/S. Na przykład protokoły RDP, SSH i FTP. Aby zapewnić najlepszą ochronę ruchu przychodzącego HTTP/S, użyj zapory aplikacji sieci Web, takiej jak [Zapora aplikacji sieci Web platformy Azure w usłudze azure Application Gateway](../web-application-firewall/ag/ag-overview.md).
+Zapora platformy Azure obsługuje filtrowanie przychodzące i wychodzące. Ochrona ruchu przychodzącego jest zwykle używana dla protokołów innych niż HTTP/S. Na przykład protokoły RDP, SSH i FTP. Aby zapewnić najlepszą ochronę ruchu przychodzącego HTTP/S, należy użyć zapory aplikacji sieci Web, takiej jak [Zapora aplikacji sieci Web platformy Azure (WAF)](../web-application-firewall/overview.md).
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Które usługi rejestrowania i analizy są obsługiwane przez zaporę systemu Azure?
 
@@ -139,7 +139,7 @@ Jeśli konfiguracja wymaga wymuszonego tunelowania do sieci lokalnej i można ok
 
 Tak. Wszystkie zapory, Sieć wirtualna i publiczny adres IP muszą znajdować się w tej samej grupie zasobów.
 
-## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Czy podczas konfigurowania DNAT na potrzeby przychodzącego ruchu sieciowego należy również skonfigurować odpowiednią regułę sieci, aby zezwolić na ten ruch?
+## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Czy podczas konfigurowania DNAT dla ruchu przychodzącego sieci internetowego należy również skonfigurować odpowiednią regułę sieci, aby zezwolić na ten ruch?
 
 Nie. Reguły translatora adresów sieciowych niejawnie Dodaj odpowiednią regułę sieci, aby zezwolić na ruch przetłumaczony. Aby przesłonić to zachowanie, jawnie dodaj kolekcję reguł sieci z regułami odmowy zgodnymi z przetłumaczonym ruchem. Aby dowiedzieć się więcej na temat logiki przetwarzania reguł usługi Azure Firewall, zobacz [Azure Firewall rule processing logic (Logika przetwarzania reguł usługi Azure Firewall)](rule-processing.md).
 

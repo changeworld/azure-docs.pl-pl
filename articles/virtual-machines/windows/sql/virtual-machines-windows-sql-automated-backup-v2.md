@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 009a480add9d808115f24a69a400118fec7cb293
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 458012982531e228f7c4968f29e79e8b2e29aa48
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790577"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651439"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatyczna kopia zapasowa v2 dla Virtual Machines platformy Azure (Menedżer zasobów)
 
@@ -118,11 +118,7 @@ Następnie, w poniedziałek o wartości 10 przez 6 godzin, pełne kopie zapasowe
 > [!IMPORTANT]
 > W przypadku planowania codziennej kopii zapasowej zaleca się zaplanowanie okna szerokiego czasu, aby zapewnić, że kopie zapasowe wszystkich baz danych w tym czasie mają być tworzone. Jest to szczególnie ważne w przypadku, gdy istnieje duża ilość danych do utworzenia kopii zapasowej.
 
-## <a name="configure-in-the-portal"></a>Konfigurowanie w portalu
-
-Za pomocą Azure Portal można skonfigurować automatyczne tworzenie kopii zapasowych v2 podczas aprowizacji lub dla istniejących maszyn wirtualnych SQL Server 2016/2017.
-
-## <a name="configure-for-new-vms"></a>Konfiguruj dla nowych maszyn wirtualnych
+## <a name="configure-new-vms"></a>Konfiguruj nowe maszyny wirtualne
 
 Użyj Azure Portal, aby skonfigurować automatyczne tworzenie kopii zapasowych v2 podczas tworzenia nowej maszyny wirtualnej SQL Server 2016 lub 2017 w modelu wdrażania Menedżer zasobów.
 

@@ -1,5 +1,5 @@
 ---
-title: Automatyczna kopia zapasowa dla SQL Server 2014 Virtual Machines Azure | Microsoft Docs
+title: Automatyczna kopia zapasowa dla SQL Server 2014 Azure Virtual Machines
 description: Wyjaśnia funkcję automatycznej kopii zapasowej dla maszyn wirtualnych SQL Server 2014 działających na platformie Azure. Ten artykuł dotyczy maszyn wirtualnych korzystających z Menedżer zasobów.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fdb7d9ed5164171407443596de256df02cb7e8de
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c7dea85d8de17a0f65e6e73b5b5fbe619d464d3d
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790600"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650344"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Zautomatyzowana kopia zapasowa dla SQL Server 2014 Virtual Machines (Menedżer zasobów)
 
@@ -42,7 +42,7 @@ Aby korzystać z zautomatyzowanej kopii zapasowej, należy wziąć pod uwagę na
 
 **Wersja SQL Server/Edition**:
 
-- Standard SQL Server 2014
+- SQL Server 2014 Standard
 - SQL Server 2014 Enterprise
 
 > [!IMPORTANT]
@@ -68,15 +68,12 @@ W poniższej tabeli opisano opcje, które można skonfigurować do automatyczneg
 | **Szyfrowanie** | Włącz/Wyłącz (wyłączone) | Włącza lub wyłącza szyfrowanie. Po włączeniu szyfrowania certyfikaty używane do przywracania kopii zapasowej znajdują się na określonym koncie magazynu w tym samym kontenerze `automaticbackup` przy użyciu tej samej konwencji nazewnictwa. Jeśli hasło zostanie zmienione, zostanie wygenerowany nowy certyfikat z tym hasłem, ale stary certyfikat pozostaje przywrócony do przywrócenia poprzednich kopii zapasowych. |
 | **Hasło** | Tekst hasła | Hasło dla kluczy szyfrowania. Jest to wymagane tylko wtedy, gdy szyfrowanie jest włączone. Aby można było przywrócić zaszyfrowaną kopię zapasową, należy dysponować prawidłowym hasłem i powiązanym certyfikatem użytym w czasie wykonywania kopii zapasowej. |
 
-## <a name="configure-in-the-portal"></a>Konfigurowanie w portalu
-
-Za pomocą Azure Portal można skonfigurować automatyczne tworzenie kopii zapasowej podczas aprowizacji lub dla istniejących maszyn wirtualnych SQL Server 2014.
 
 ## <a name="configure-new-vms"></a>Konfiguruj nowe maszyny wirtualne
 
 Użyj Azure Portal, aby skonfigurować automatyczne tworzenie kopii zapasowej podczas tworzenia nowej maszyny wirtualnej SQL Server 2014 w modelu wdrażania Menedżer zasobów.
 
-Na karcie **ustawienia SQL Server** przewiń w dół do opcji **zautomatyzowane tworzenie kopii zapasowej** i wybierz pozycję **Włącz**. Możesz również określić okres przechowywania oraz konto magazynu, a także włączyć szyfrowanie, utworzyć kopię zapasową systemowych baz danych i skonfigurować harmonogram tworzenia kopii zapasowych.  Poniższy zrzut ekranu Azure Portal przedstawia ustawienia **automatycznego tworzenia kopii zapasowych programu SQL Server** .
+Na karcie **ustawienia SQL Server** przewiń w dół do opcji **zautomatyzowane tworzenie kopii zapasowej** i wybierz pozycję **Włącz**. Poniższy zrzut ekranu Azure Portal przedstawia ustawienia **automatycznego tworzenia kopii zapasowych programu SQL Server** .
 
 ![Konfiguracja zautomatyzowanej kopii zapasowej SQL w Azure Portal](./media/virtual-machines-windows-sql-automated-backup/azure-sql-arm-autobackup.png)
 
@@ -84,13 +81,15 @@ Na karcie **ustawienia SQL Server** przewiń w dół do opcji **zautomatyzowane 
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-W przypadku istniejących SQL Server maszyn wirtualnych przejdź do [zasobu maszyny wirtualne SQL](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) , a następnie wybierz pozycję **kopie zapasowe**. 
+W przypadku istniejących SQL Server maszyn wirtualnych można włączyć i wyłączyć automatyczne kopie zapasowe, zmienić okres przechowywania, określić konto magazynu i włączyć szyfrowanie z Azure Portal. 
+
+Przejdź do [zasobu maszyny wirtualne SQL](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) dla maszyny wirtualnej SQL Server 2014, a następnie wybierz pozycję **kopie zapasowe**. 
 
 ![Automatyczne kopie zapasowe SQL dla istniejących maszyn wirtualnych](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-existing-vms.png)
 
 Po zakończeniu wybierz przycisk **Zastosuj** w dolnej części strony **kopie zapasowe** , aby zapisać zmiany.
 
-Jeśli automatyczne tworzenie kopii zapasowej jest włączane po raz pierwszy, platforma Azure skonfiguruje SQL Server agenta IaaS w tle. W tym czasie Azure Portal mogą nie być widoczne, że skonfigurowano automatyczną kopię zapasową. Poczekaj kilka minut, aż zostanie zainstalowany agent, który został skonfigurowany. Po tym, Azure Portal będą odzwierciedlały nowe ustawienia.
+Jeśli automatyczne tworzenie kopii zapasowej jest włączane po raz pierwszy, platforma Azure skonfiguruje SQL Server agenta IaaS w tle. W tym czasie Azure Portal mogą nie być widoczne, że skonfigurowano automatyczną kopię zapasową. Poczekaj kilka minut, aż Agent zostanie zainstalowany i skonfigurowany. Następnie Azure Portal odzwierciedla nowe ustawienia.
 
 > [!NOTE]
 > Możesz również skonfigurować automatyczne tworzenie kopii zapasowej przy użyciu szablonu. Aby uzyskać więcej informacji, zobacz [szablon szybkiego startu platformy Azure dla zautomatyzowanej kopii zapasowej](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-autobackup-update).
@@ -100,7 +99,7 @@ Jeśli automatyczne tworzenie kopii zapasowej jest włączane po raz pierwszy, p
 Za pomocą programu PowerShell można skonfigurować automatyczne tworzenie kopii zapasowych. Przed rozpoczęciem należy:
 
 - [Pobierz i zainstaluj najnowszą Azure PowerShell](https://aka.ms/webpi-azps).
-- Otwórz program Windows PowerShell i skojarz go z kontem za pomocą polecenia **Connect-AzAccount** .
+- Otwórz program Windows PowerShell i skojarz go z kontem za pomocą polecenia **Connect-AzAccount** . 
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 

@@ -3,12 +3,12 @@ title: Limity i granice — QnA Maker
 description: Usługa QnA Maker ma meta limity dla części bazy wiedzy knowledge base i usługi. Należy zachować wiedzy w ramach tych limitów w celu testowania i publikowania.
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: ba53513f21cfc2a4f16fe17decdf0df41570201c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252012"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650371"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Usługa QnA Maker wiedzy limity i granice
 
@@ -55,7 +55,7 @@ Maksymalna liczba linków głębokiego, które mogą być przeszukiwane w celu w
 
 ## <a name="metadata-limits"></a>Limity metadanych
 
-Metadane są przechowywane i porównywane małymi literami.
+Metadane są prezentowane jako para tekstowa: wartość, taka jak `product:windows 10`. Jest on przechowywany i porównywany małymi literami.
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Według warstwy cenowej usługi Azure Wyszukiwanie poznawcze
 
@@ -71,8 +71,8 @@ W poniższej tabeli wymieniono długość i dopuszczalne znaki nazwy i wartości
 
 |Element|Dozwolone znaki|Dopasowanie wzorca wyrażenia regularnego|Maks. liczba znaków|
 |--|--|--|--|
-|Name (Nazwa)|Udostępnia<br>alfanumeryczne (litery i cyfry)<br>`_` (podkreślenie)|`^[a-zA-Z0-9_]+$`|100|
-|Wartość|Zezwala na wszystko z wyjątkiem<br>`:` (dwukropek)<br>`|` (potok pionowy)|`^[^:|]+$`|500|
+|Nazwa (klucz)|Udostępnia<br>alfanumeryczne (litery i cyfry)<br>`_` (podkreślenie)<br> Nie może zawierać spacji.|`^[a-zA-Z0-9_]+$`|100|
+|Wartość|Zezwala na wszystko z wyjątkiem<br>`:` (dwukropek)<br>`|` (potok pionowy)<br>Dozwolona jest tylko jedna wartość.|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>Limity zawartości bazy wiedzy
@@ -103,4 +103,4 @@ Reprezentują one limity dla każdej akcji aktualizacji; oznacza to, że klikni�
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, kiedy i jak zmienić [warstwy cenowe usług](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker).
+Dowiedz się, kiedy i jak zmienić [warstwy cenowe usług](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku).

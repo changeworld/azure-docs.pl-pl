@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/02/2020
-ms.openlocfilehash: 13c064701a5ecae2090a99980249f5daaa8d5395
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/26/2020
+ms.openlocfilehash: 9c801f5c039996ac36c4f4479318d64cccdd204d
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198960"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649997"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie składniki Apache Hadoop i wersje są dostępne w usłudze HDInsight?
 
@@ -62,6 +62,12 @@ Wersje składników ekosystemu usługi Hadoop skojarzone z wersjami klastra usł
 Zobacz [Informacje o wersji usługi HDInsight](hdinsight-release-notes.md) , aby uzyskać dodatkowe informacje o wersji dotyczące najnowszych wersji usługi HDInsight.
 
 ## <a name="supported-hdinsight-versions"></a>Obsługiwane wersje usługi HDInsight
+
+### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>Obsługa wygaśnięcia i wycofania wersji usługi HDInsight
+
+**Wygaśnięcie pomocy technicznej** oznacza, że firma Microsoft nie będzie już obsługiwała określonej wersji usługi HDInsight i nie będzie już możliwe za pośrednictwem Azure Portal do tworzenia klastra. Jednak te wersje można nadal tworzyć przy użyciu interfejsu wiersza polecenia platformy Azure lub różnych zestawów SDK. 
+
+**Wycofanie** wersji usługi HDInsight oznacza, że istniejące klastry będą nadal działać w niezmienionej postaci. Jednak nowe klastry tej wersji nie mogą być tworzone za pomocą jakichkolwiek środków (w tym interfejsu wiersza polecenia i zestawów SDK). Inne funkcje płaszczyzny kontroli (takie jak skalowanie ręczne i skalowanie automatyczne) mogą również nie funkcjonować po wycofaniu wersji. Pomoc techniczna nie jest dostępna dla wycofanych wersji.
 
 W poniższych tabelach przedstawiono wersje usługi HDInsight. Są również udostępniane daty wygaśnięcia i wycofania pomocy technicznej, jeśli są znane.
 

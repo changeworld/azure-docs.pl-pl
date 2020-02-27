@@ -4,12 +4,12 @@ description: Informacje o znanych ograniczeniach w przypadku uruchamiania pul w�
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 6d951652e3522b7ff926b72a3916bffe97575054
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 157f890c65efd0de9fa7d8d7aa5cb43b4a902dfa
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592497"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615644"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Bieżące ograniczenia dotyczące pul węzłów systemu Windows Server i obciążeń aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -51,9 +51,9 @@ Węzły główne (płaszczyzna kontroli) w klastrze AKS są hostowane przez AKS 
 
 Klastry AKS z pulami węzłów systemu Windows muszą używać modelu sieci usługi Azure CNI (Advanced). Sieć korzystającą wtyczki kubenet (podstawowa) nie jest obsługiwana. Aby uzyskać więcej informacji na temat różnic między modelami sieci, zobacz [pojęcia dotyczące sieci dla aplikacji w AKS][azure-network-models]. — Model sieci usługi Azure CNI wymaga dodatkowego planowania i zagadnień związanych z zarządzaniem adresami IP. Aby uzyskać więcej informacji na temat planowania i implementowania usługi Azure CNI, zobacz [Konfigurowanie sieci Azure CNI w programie AKS][configure-azure-cni].
 
-## <a name="can-i-change-the-min--of-pods-per-node"></a>Czy mogę zmienić minimalną liczbę zasobników na węzeł?
+## <a name="can-i-change-the-max--of-pods-per-node"></a>Czy mogę zmienić wartość maksymalną. liczba zasobników na węzeł?
 
-Obecnie jest wymagane ustawienie co najmniej 30 zasobników, aby zapewnić niezawodność klastrów.
+Obecnie wymagane jest ustawienie maksymalnie 30 zasobników, aby zapewnić niezawodność klastrów.
 
 ## <a name="how-do-patch-my-windows-nodes"></a>Jak zastosować poprawki do węzłów systemu Windows?
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 02/25/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 86224508b9f24906abce157b92a77c0a2f24d882
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 13d12bfbf64af9e19b66e63c88c9d7e0534571f3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605733"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617278"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Obsługa języka i regionu dla usługi mowy
 
@@ -36,46 +36,46 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
  Ustawienia regionalne | Język | Obsługiwane | Dostosowania
 ------|------------|-----------|-------------
-`ar-AE` | Arabski (Zjednoczone Emiraty Arabskie) | Tak | Nie
-`ar-BH` | Arabski (Bahrajn) | Tak | Model języka
-`ar-EG` | Arabski (Egipt), standard nowoczesne | Tak | Model języka
-`ar-KW` | Arabski (Kuwejt) | Tak | Nie
-`ar-QA` | Arabski (katar) | Tak | Nie
-`ar-SA` | Arabski (Arabia Saudyjska) | Tak | Nie
-`ca-ES` | Kataloński | Tak | Model języka
-`da-DK` | Duński (Dania) | Tak | Model języka
-`de-DE` | Niemiecki (Niemcy) | Tak | Model akustyczny<br>Model języka<br>Wymowa
-`en-AU` | Angielski (Australia) | Tak | Model akustyczny<br>Model języka
-`en-CA` | Angielski (Kanada) | Tak | Model akustyczny<br>Model języka
-`en-GB` | Angielski (Zjednoczone Królestwo) | Tak | Model akustyczny<br>Model języka<br>Wymowa
-`en-IN` | English (India) | Tak | Model akustyczny<br>Model języka
-`en-NZ` | Angielski (Nowa Zelandia) | Tak | Model akustyczny<br>Model języka
-`en-US` | Polski (Polska) | Tak | Model akustyczny<br>Model języka<br>Wymowa
-`es-ES` | Hiszpański (Hiszpania) | Tak | Model akustyczny<br>Model języka
-`es-MX` | Hiszpański (Meksyk) | Tak | Model akustyczny<br>Model języka
-`fi-FI` | Fiński (Finlandia) | Tak | Model języka
-`fr-CA` | Francuski (Kanada) | Tak | Model akustyczny<br>Model języka
-`fr-FR` | Francuski (Francja) | Tak | Model akustyczny<br>Model języka<br>Wymowa
-`gu-IN` | Gudżarati (Indyjski) | Tak | Model języka
-`hi-IN` | Hindi (Indie) | Tak | Model akustyczny<br>Model języka
-`it-IT` | Włoski (Włochy) | Tak | Model akustyczny<br>Model języka<br>Wymowa
-`ja-JP` | Japoński (Japonia) | Tak | Model języka
-`ko-KR` | Koreański (Korea) | Tak | Model języka
-`mr-IN` | Marathi (Indie) | Tak | Model języka
-`nb-NO` | Norweski (Bokmal) (Norwegia) | Tak | Model języka
-`nl-NL` | Holenderski (Holandia) | Tak | Model języka
-`pl-PL` | Polski (Polska) | Tak | Model języka
-`pt-BR` | Portugalski (Brazylia) | Tak | Model akustyczny<br>Model języka<br>Wymowa
-`pt-PT` | Portugalski (Portugalia) | Tak | Model języka
-`ru-RU` | Rosyjski (Rosja) | Tak | Model akustyczny<br>Model języka
-`sv-SE` | Szwedzki (Szwecja) | Tak | Model języka
-`ta-IN` | Tamilski (Indie) | Tak | Model języka
-`te-IN` | Telugu (Indie) | Tak | Nie
-`th-TH` | Tajski (Tajlandia) | Tak | Nie
-`tr-TR` | Turecki (Turcja) | Tak | Nie
-`zh-CN` | Chiński (mandaryński uproszczony) | Tak | Model akustyczny<br>Model języka
-`zh-HK` | Chiński (kantoński, tradycyjny) | Tak | Model języka
-`zh-TW` | Chiński (mandaryński tajwańskie) | Tak | Model języka
+`ar-AE` | Arabski (Zjednoczone Emiraty Arabskie) | Yes | Nie
+`ar-BH` | Arabski (Bahrajn), nowoczesny Standard | Yes | Model języka
+`ar-EG` | Arabski (Egipt) | Yes | Model języka
+`ar-KW` | Arabski (Kuwejt) | Yes | Nie
+`ar-QA` | Arabski (katar) | Yes | Nie
+`ar-SA` | Arabski (Arabia Saudyjska) | Yes | Nie
+`ca-ES` | Kataloński | Yes | Model języka
+`da-DK` | Duński (Dania) | Yes | Model języka
+`de-DE` | Niemiecki (Niemcy) | Yes | Model akustyczny<br>Model języka<br>Wymowa
+`en-AU` | Angielski (Australia) | Yes | Model akustyczny<br>Model języka
+`en-CA` | Angielski (Kanada) | Yes | Model akustyczny<br>Model języka
+`en-GB` | Angielski (Zjednoczone Królestwo) | Yes | Model akustyczny<br>Model języka<br>Wymowa
+`en-IN` | English (India) | Yes | Model akustyczny<br>Model języka
+`en-NZ` | Angielski (Nowa Zelandia) | Yes | Model akustyczny<br>Model języka
+`en-US` | Polski (Polska) | Yes | Model akustyczny<br>Model języka<br>Wymowa
+`es-ES` | Hiszpański (Hiszpania) | Yes | Model akustyczny<br>Model języka
+`es-MX` | Hiszpański (Meksyk) | Yes | Model akustyczny<br>Model języka
+`fi-FI` | Fiński (Finlandia) | Yes | Model języka
+`fr-CA` | Francuski (Kanada) | Yes | Model akustyczny<br>Model języka
+`fr-FR` | Francuski (Francja) | Yes | Model akustyczny<br>Model języka<br>Wymowa
+`gu-IN` | Gudżarati (Indyjski) | Yes | Model języka
+`hi-IN` | Hindi (Indie) | Yes | Model akustyczny<br>Model języka
+`it-IT` | Włoski (Włochy) | Yes | Model akustyczny<br>Model języka<br>Wymowa
+`ja-JP` | Japoński (Japonia) | Yes | Model języka
+`ko-KR` | Koreański (Korea) | Yes | Model języka
+`mr-IN` | Marathi (Indie) | Yes | Model języka
+`nb-NO` | Norweski (Bokmal) (Norwegia) | Yes | Model języka
+`nl-NL` | Holenderski (Holandia) | Yes | Model języka
+`pl-PL` | Polski (Polska) | Yes | Model języka
+`pt-BR` | Portugalski (Brazylia) | Yes | Model akustyczny<br>Model języka<br>Wymowa
+`pt-PT` | Portugalski (Portugalia) | Yes | Model języka
+`ru-RU` | Rosyjski (Rosja) | Yes | Model akustyczny<br>Model języka
+`sv-SE` | Szwedzki (Szwecja) | Yes | Model języka
+`ta-IN` | Tamilski (Indie) | Yes | Model języka
+`te-IN` | Telugu (Indie) | Yes | Nie
+`th-TH` | Tajski (Tajlandia) | Yes | Nie
+`tr-TR` | Turecki (Turcja) | Yes | Nie
+`zh-CN` | Chiński (mandaryński uproszczony) | Yes | Model akustyczny<br>Model języka
+`zh-HK` | Chiński (kantoński, tradycyjny) | Yes | Model języka
+`zh-TW` | Chiński (mandaryński tajwańskie) | Yes | Model języka
 
 ## <a name="text-to-speech"></a>Zamiana tekstu na mowę
 
@@ -173,7 +173,7 @@ Ustawienia regionalne | Język | Płeć | Pełne Mapowanie nazw usług | Krótka
 | | | Mężczyzna |"Microsoft Server mowy zamiany tekstu na mowę głosowych (pt-BR, Daniel, Apollo)" | "pt-BR-Daniel-Apollo"
 `pt-PT` | Portugalski (Portugalia) | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (pt-PT, HeliaRUS)" | "pt-PT-HeliaRUS"
 `ro-RO` | rumuński | Mężczyzna | "Microsoft Server mowy Text na głos mowy (ro-RO Andrei)" | "RO-RO-Andrei"
-`ru-RU` |rosyjski| Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (ru-RU, Irina, Apollo)" | "ru-RU-Irina-Apollo"
+`ru-RU` |Rosyjski| Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (ru-RU, Irina, Apollo)" | "ru-RU-Irina-Apollo"
 | | | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (Apollo Pavel, ru-RU)" | "ru-RU-Pavel-Apollo"
 | | | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (ru-RU, EkaterinaRUS)" | ru — RU — EkaterinaRUS
 `sk-SK` | Słowacki | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (sk-SK Filip)" | "sk-SK-Filip"
@@ -236,7 +236,7 @@ Interfejs API **tłumaczenia mowy** obsługuje różne języki dla tłumaczenia 
 | Niemiecki      | `de`          |
 | Grecki      | `el`          |
 | Haitański      | `ht`          |
-| hebrajski      | `he`          |
+| Hebrajski      | `he`          |
 | Hindi      | `hi`          |
 | Hmong Daw      | `mww`          |
 | Węgierski      | `hu`          |
@@ -263,7 +263,7 @@ Interfejs API **tłumaczenia mowy** obsługuje różne języki dla tłumaczenia 
 | Pendżabski      | `pa`          |
 | Queretaro Otomi      | `otq`          |
 | rumuński      | `ro`          |
-| rosyjski      | `ru`          |
+| Rosyjski      | `ru`          |
 | (Samoa)      | `sm`          |
 | Serbski (Cyrylica)      | `sr-Cyrl`          |
 | Serbski (łaciński)      | `sr-Latn`          |

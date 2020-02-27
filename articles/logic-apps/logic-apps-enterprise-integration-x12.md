@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/31/2017
-ms.openlocfilehash: 77ec5434b83c4246dc448578dcf2902e19f42e95
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: cbf0a1f033ddafc68debab8de26dff29d73cc98e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792323"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651478"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Komunikaty programu Exchange X12 dla integracji z usługą B2B Enterprise w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 
@@ -34,7 +34,7 @@ Po [utworzeniu konta integracji](../logic-apps/logic-apps-enterprise-integration
 
 ## <a name="create-an-x12-agreement"></a>Utwórz umowę X12
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com "Azure Portal"). 
+1. Zaloguj się do [Azure portal](https://portal.azure.com "Portalu Azure"). 
 
 2. W głównym menu platformy Azure wybierz pozycję **wszystkie usługi**. 
    W polu wyszukiwania wprowadź ciąg "Integracja", a następnie wybierz pozycję **konta integracji**.  
@@ -66,7 +66,7 @@ Po [utworzeniu konta integracji](../logic-apps/logic-apps-enterprise-integration
 
     | Właściwość | Opis |
     | --- | --- |
-    | Nazwa |Nazwa umowy |
+    | Name (Nazwa) |Nazwa umowy |
     | Typ umowy | Powinien być X12 |
     | Partner hosta |Umowa wymaga zarówno hosta, jak i partnera gościa. Partner hosta reprezentuje organizację, która konfiguruje umowę. |
     | Tożsamość hosta |Identyfikator dla partnera hosta |
@@ -146,7 +146,7 @@ Wybierz schemat dla każdego typu transakcji (ST1) i aplikacji nadawcy (GS2). Po
 | Nie Zezwalaj na duplikaty numerów kontrolnych grupy |Blokuj zmiany ze zduplikowanymi numerami kontrolek grup. |
 | Nie Zezwalaj na duplikaty numerów kontrolnych zestawu transakcji |Blokuj zmiany za pomocą duplikatów numerów kontrolnych zestawu transakcji. |
 
-### <a name="validations"></a>Walidacji
+### <a name="validation"></a>Walidacja
 
 ![Ustawianie właściwości walidacji dla odebranych komunikatów](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
 
@@ -216,7 +216,7 @@ Teraz Twoja umowa jest gotowa do obsługi wiadomości wychodzących, które są 
 | --- | --- |
 | Wersja |Wybierz wersję X12 |
 | Typ transakcji (ST01) |Wybierz typ transakcji |
-| SCHEMATY |Wybierz schemat do użycia. Schematy znajdują się na koncie integracji. Jeśli wybierzesz najpierw schemat, automatycznie skonfiguruje wersję i typ transakcji  |
+| SCHEMA |Wybierz schemat do użycia. Schematy znajdują się na koncie integracji. Jeśli wybierzesz najpierw schemat, automatycznie skonfiguruje wersję i typ transakcji  |
 
 > [!NOTE]
 > Skonfiguruj wymagany [schemat](../logic-apps/logic-apps-enterprise-integration-schemas.md) , który jest przekazywany do [konta integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md).
@@ -249,7 +249,7 @@ Teraz Twoja umowa jest gotowa do obsługi wiadomości wychodzących, które są 
 | Numer kontrolny grupy (GS06) |Wymagane, wprowadź zakres liczb dla numeru kontroli grupy. Wprowadź wartość liczbową z co najmniej 1 i maksymalnie 999999999 |
 | Numer kontrolny zestawu transakcji (ST02) |Wymagane, wprowadź zakres liczb dla numeru kontrolnego zestawu transakcji. Wprowadź zakres wartości liczbowych z wartością minimalną 1 i maksymalną 999999999 |
 | Prefiks |Opcjonalne, wyznaczony dla zakresu numerów kontrolnych zestawu transakcji użytych w potwierdzeniu. Wprowadź wartość liczbową dla środkowych dwóch pól i wartość alfanumeryczną (jeśli to konieczne) dla pól prefiksu i sufiksu. Pola środkowe są wymagane i zawierają wartości minimalne i maksymalne dla numeru kontrolnego |
-| Przedrostk |Opcjonalne, wyznaczony dla zakresu numerów kontrolnych zestawu transakcji użytych w potwierdzeniu. Wprowadź wartość liczbową dla dwóch pól środkowych i wartość alfanumeryczną (jeśli to konieczne) dla pól prefiksu i sufiksu. Pola środkowe są wymagane i zawierają wartości minimalne i maksymalne dla numeru kontrolnego |
+| Suffix |Opcjonalne, wyznaczony dla zakresu numerów kontrolnych zestawu transakcji użytych w potwierdzeniu. Wprowadź wartość liczbową dla dwóch pól środkowych i wartość alfanumeryczną (jeśli to konieczne) dla pól prefiksu i sufiksu. Pola środkowe są wymagane i zawierają wartości minimalne i maksymalne dla numeru kontrolnego |
 
 ### <a name="character-sets-and-separators"></a>Zestawy znaków i separatory
 
@@ -266,7 +266,7 @@ Oprócz zestawu znaków można wprowadzić inny zestaw ograniczników dla każde
 | Separator elementów danych |Aby rozdzielić proste elementy danych w ramach złożonych elementów danych, należy wprowadzić pojedynczy znak. |
 | Znak zastępczy |Wprowadź znak zastępczy używany do zastępowania wszystkich znaków separatora w danych ładunku podczas generowania wychodzącego komunikatu X12. |
 | Terminator segmentu |Aby wskazać koniec segmentu EDI, wprowadź pojedynczy znak. |
-| Przedrostk |Wybierz znak, który jest używany z identyfikatorem segmentu. Jeśli wyznaczysz sufiks, element danych terminatora segmentu może być pusty. Jeśli terminator segmentu pozostaje pusty, należy wyznaczyć sufiks. |
+| Suffix |Wybierz znak, który jest używany z identyfikatorem segmentu. Jeśli wyznaczysz sufiks, element danych terminatora segmentu może być pusty. Jeśli terminator segmentu pozostaje pusty, należy wyznaczyć sufiks. |
 
 > [!TIP]
 > Aby podać wartości znaków specjalnych, Edytuj umowę jako kod JSON i podaj wartość ASCII dla znaku specjalnego.
@@ -296,9 +296,13 @@ Po ukończeniu każdego wiersza walidacji zostanie automatycznie dodany inny. Je
 
     ![Wybierz kafelek "umowy"](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
-## <a name="view-the-swagger"></a>Wyświetlanie struktury Swagger
-Zobacz [szczegóły struktury Swagger](/connectors/x12/). 
+## <a name="connector-reference"></a>Dokumentacja łączników
 
-## <a name="learn-more"></a>Dowiedz się więcej
-* [Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw")  
+Aby uzyskać szczegółowe informacje techniczne dotyczące tego łącznika, takie jak akcje i limity zgodnie z opisem w pliku struktury Swagger łącznika, zobacz [stronę odwołania łącznika](https://docs.microsoft.com/connectors/x12/). 
 
+> [!NOTE]
+> W przypadku aplikacji logiki w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), wersja tego łącznika z oznaczeniem ISE w zamian używa [limitów komunikatów ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
+
+## <a name="next-steps"></a>Następne kroki
+
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

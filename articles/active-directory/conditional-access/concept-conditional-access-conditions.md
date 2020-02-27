@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fe24e4a2b25b1ef3f0da2b1a5e1c0f29251df1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192235"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620730"
 ---
 # <a name="conditional-access-conditions"></a>Dostęp warunkowy: warunki
 
@@ -52,7 +52,9 @@ Podczas konfigurowania lokalizacji jako warunku organizacje mogą zdecydować si
 
 W przypadku dołączenia **dowolnej lokalizacji**ta opcja obejmuje dowolny adres IP w Internecie, który nie jest właśnie skonfigurowany nazwanymi lokalizacjami. W przypadku wybrania **dowolnej lokalizacji**Administratorzy mogą zdecydować się na wykluczenie **wszystkich zaufanych** lub **wybranych lokalizacji**.
 
-Na przykład niektóre organizacje mogą zrezygnować z uwierzytelniania wieloskładnikowego w przypadku, gdy użytkownicy są połączeni z siecią w zaufanej lokalizacji, takiej jak ich fizyczna siedziba. Administratorzy mogą utworzyć zasadę obejmującą dowolną lokalizację, ale wyklucza wybrane lokalizacje dla swoich sieci centralnych
+Na przykład niektóre organizacje mogą zrezygnować z uwierzytelniania wieloskładnikowego w przypadku, gdy użytkownicy są połączeni z siecią w zaufanej lokalizacji, takiej jak ich fizyczna siedziba. Administratorzy mogą utworzyć zasadę, która obejmuje dowolną lokalizację, ale wyklucza wybrane lokalizacje dla swoich sieci centralnych.
+
+Więcej informacji na temat lokalizacji można znaleźć w artykule [co to jest warunek lokalizacji w Azure Active Directory dostęp warunkowy](location-condition.md).
 
 ## <a name="client-apps-preview"></a>Aplikacje klienckie (wersja zapoznawcza)
 
@@ -64,9 +66,21 @@ Zasady dostępu warunkowego są domyślnie stosowane do aplikacji i aplikacji op
    - Nowoczesne komputery klienckie uwierzytelniania
       - Ta opcja obejmuje aplikacje, takie jak aplikacje dla komputerów stacjonarnych i telefonów biurowych.
    - Klienci programu Exchange ActiveSync
+      - Domyślnie obejmuje to wszystkie zastosowania protokołu Exchange ActiveSync (EAS). Wybór opcji **Zastosuj zasady tylko do obsługiwanych platform** będzie ograniczać się do obsługiwanych platform, takich jak iOS, Android i Windows.
       - Gdy zasady blokują korzystanie z programu Exchange ActiveSync, dany użytkownik otrzyma pojedynczą wiadomość e-mail z kwarantanny. Ta wiadomość e-mail z informacjami o tym, dlaczego są blokowane i w razie możliwości zawiera instrukcje dotyczące korygowania.
    - Inni klienci
-      - Ta opcja obejmuje klientów korzystających z uwierzytelniania podstawowego/starszego, takich jak IMAP, MAPI, POP, SMTP i starsze aplikacje pakietu Office, które nie obsługują nowoczesnego uwierzytelniania.
+      - Ta opcja obejmuje klientów korzystających z protokołów uwierzytelniania Basic/starszej, które nie obsługują nowoczesnego uwierzytelniania.
+         - Uwierzytelniony protokół SMTP używany przez klienta POP i IMAP do wysyłania wiadomości e-mail.
+         - Wykrywanie automatyczne — używane przez klientów programu Outlook i EAS do znajdowania skrzynek pocztowych w usłudze Exchange Online i łączenia się z nimi.
+         - Exchange Online PowerShell — służy do łączenia się z usługą Exchange Online przy użyciu zdalnego programu PowerShell. Jeśli zablokujesz uwierzytelnianie podstawowe dla programu Exchange Online PowerShell, musisz użyć modułu programu PowerShell w usłudze Exchange Online, aby nawiązać połączenie. Aby uzyskać instrukcje, zobacz [nawiązywanie połączenia z programem Exchange Online PowerShell przy użyciu uwierzytelniania wieloskładnikowego](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+         - Usługi sieci Web programu Exchange (EWS) — interfejs programowania używany przez program Outlook, program Outlook dla komputerów Mac i aplikacje innych firm.
+         - IMAP4 — używany przez klientów poczty e-mail IMAP.
+         - MAPI przez HTTP (MAPI/HTTP) — używany przez program Outlook 2010 i nowsze.
+         - Książka adresowa w trybie offline (OAB) — kopia kolekcji listy adresów, które są pobierane i używane przez program Outlook.
+         - Outlook w dowolnym miejscu (RPC przez HTTP) — używany przez program Outlook 2016 i jego starsze wersje.
+         - Usługa Outlook — używana przez aplikację poczty i kalendarza dla systemu Windows 10.
+         - POP3 — używany przez klientów POP poczty e-mail.
+         - Usługi sieci Web raportowania — służy do pobierania danych raportu w usłudze Exchange Online.
 
 Te warunki są często używane, gdy wymagane jest urządzenie zarządzane, blokowanie starszego uwierzytelniania i blokowanie aplikacji sieci Web, ale zezwalanie na aplikacje mobilne lub klasyczne.
 
@@ -139,7 +153,7 @@ To ustawienie ma wpływ na próby dostępu wykonane z następujących aplikacji 
 | Outlook 2016, Outlook 2013 (z nowoczesnego uwierzytelniania), Skype dla firm (z nowoczesnego uwierzytelniania) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
 | Aplikacja mobilna Outlook | Office 365 Exchange Online | Android, iOS |
 | Aplikacja Power BI | usługa Power BI | Windows 10, Windows 8.1, Windows 7, Android i iOS |
-| Skype dla firm | Office 365 Exchange Online| Android, IOS |
+| Skype dla firm | Office 365 Exchange Online| Android, iOS |
 | Aplikacja Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8.1, Windows 7, iOS i Android |
 
 ### <a name="exchange-activesync-clients"></a>Klienci programu Exchange ActiveSync

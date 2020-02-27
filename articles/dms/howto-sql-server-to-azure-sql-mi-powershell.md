@@ -3,21 +3,21 @@ title: 'PowerShell: Migrowanie SQL Server do wystąpienia zarządzanego SQL'
 titleSuffix: Azure Database Migration Service
 description: Dowiedz się, jak przeprowadzić migrację z SQL Server lokalnych do Azure SQL Database wystąpienia zarządzanego przy użyciu Azure PowerShell i Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 3b434bc8a495f47f7fb2de8429069283821cf397
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: 9ea9f55681b93e79eec836f5808d2c6feaa6bb29
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746632"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650728"
 ---
 # <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>Migrowanie SQL Server do SQL Database wystąpienia zarządzanego przy użyciu programu PowerShell & Azure Database Migration Service
 
@@ -27,7 +27,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 > [!div class="checklist"]
 >
 > * Utwórz grupę zasobów.
-> * Utwórz wystąpienie usługi Azure Database Migration Service.
+> * Utwórz wystąpienie Azure Database Migration Service.
 > * Utwórz projekt migracji w wystąpieniu Azure Database Migration Service.
 > * Uruchamianie migracji.
 
@@ -59,7 +59,7 @@ Aby wykonać te kroki, potrzebne są:
 
 Zaloguj się do subskrypcji platformy Azure za pomocą programu PowerShell. Aby uzyskać więcej informacji, zobacz artykuł [Logowanie przy użyciu Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Grupa zasobów platformy Azure to logiczny kontener, w którym są wdrażane i zarządzane zasoby platformy Azure.
 
@@ -297,7 +297,7 @@ Bez względu na to, czy wykonywana jest migracja w trybie offline, czy online, p
 * *SelectedLogins*. Lista wybranych logowań do migracji.
 * *SelectedAgentJobs*. Lista wybranych zadań agenta do migracji.
 
-##### <a name="additional-parameters"></a>Parametry dodatkowe
+##### <a name="additional-parameters"></a>Dodatkowe parametry
 
 `New-AzDataMigrationTask` polecenie cmdlet oczekuje również parametrów, które są unikatowe dla typu migracji, w trybie offline lub online, który jest wykonywany.
 
@@ -415,7 +415,7 @@ Po zakończeniu migracji można usunąć wystąpienie Azure Database Migration S
 Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 ```
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 Aby uzyskać informacje na temat dodatkowych scenariuszy migracji (par Source/Target), zobacz [Przewodnik po migracji bazy danych](https://datamigration.microsoft.com/)firmy Microsoft.
 
