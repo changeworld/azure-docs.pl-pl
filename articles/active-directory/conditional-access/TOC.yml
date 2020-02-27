@@ -43,7 +43,7 @@
       href: location-condition.md
     - name: Narzędzie analizy warunkowej
       href: what-if-tool.md
-    - name: Kontrolki
+    - name: Kontrolki niestandardowe
       href: controls.md
     - name: Migrowanie zasad klasycznych
       href: policy-migration.md

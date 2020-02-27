@@ -10,29 +10,43 @@ metadata:
   ms.collection: collection
   author: HeidiSteen
   ms.author: heidist
-  ms.date: 09/20/2019
-  ms.openlocfilehash: 3d011bdf1f0da04efec86adc121326a877532b6f
-  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+  ms.date: 02/25/2020
+  ms.openlocfilehash: b1df45b155e9c9d1bd4433d7ddc765c126686a07
+  ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 01/24/2020
-  ms.locfileid: "76721068"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77614974"
 landingContent:
 - title: Informacje o wyszukiwaniu poznawczym
   linkLists:
   - linkListType: overview
     links:
-    - text: Co to jest wyszukiwanie poznawcze na platformie Azure?
+    - text: Co to jest wyszukiwanie poznawcze na platformie Azure
       url: search-what-is-azure-search.md
-  - linkListType: architecture
-    links:
-    - text: Jak działa wyszukiwanie pełnotekstowe w wyszukiwaniu poznawczym
-      url: search-lucene-query-architecture.md
+    - text: Co to jest wzbogacanie AI
+      url: cognitive-search-concept-intro.md
+    - text: Co to jest indeksator
+      url: search-indexer-overview.md
   - linkListType: video
     links:
     - text: Co to jest wyszukiwanie poznawcze (1 min 27 s)
       url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
-- title: Rozpoczęcie pracy
+- title: Indeksowanie danych platformy Azure
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Indeksowanie danych z usługi Azure Blob Storage
+      url: search-blob-storage-integration.md
+    - text: Indeksowanie danych z usługi Azure SQL Database
+      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+    - text: Indeksowanie danych z usługi Cosmos DB
+      url: search-howto-index-cosmosdb.md
+  - linkListType: tutorial
+    links:
+    - text: Indeksowanie częściowo ustrukturyzowanych danych obiektów blob
+      url: search-semi-structured-data.md
+- title: 10-minutowe przewodniki Szybki start
   linkLists:
   - linkListType: quickstart
     links:
@@ -40,31 +54,11 @@ landingContent:
       url: search-create-service-portal.md
     - text: Tworzenie indeksu
       url: search-get-started-portal.md
-    - text: Tworzenie potoku wzbogacania
-      url: cognitive-search-quickstart-blob.md
-  - linkListType: tutorial
-    links:
     - text: Tworzenie aplikacji
-      url: tutorial-csharp-create-first-app.md
-  - linkListType: learn
-    links:
-    - text: Wprowadzenie do wyszukiwania poznawczego na platformie Azure
-      url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
-- title: Używanie z magazynem obiektów blob
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Korzystanie z AI w celu zrozumienia danych obiektów blob
-      url: search-blob-ai-integration.md
-    - text: Przeszukiwanie zawartości obiektu blob
-      url: search-blob-storage-integration.md
-    - text: Przechowywanie wzbogaceń o sztuczną inteligencję
-      url: knowledge-store-concept-intro.md
-  - linkListType: tutorial
-    links:
-    - text: Indeksowanie częściowo ustrukturyzowanych danych obiektów blob
-      url: search-semi-structured-data.md
-- title: Indeksowanie danych
+      url: search-create-app-portal.md
+    - text: Pozyskiwanie i wyodrębnianie nieprzetworzonego tekstu i obrazów
+      url: cognitive-search-quickstart-blob.md
+- title: Indeksowanie dowolnych danych
   linkLists:
   - linkListType: concept
     links:
@@ -72,32 +66,22 @@ landingContent:
       url: search-what-is-an-index.md
     - text: Importowanie danych
       url: search-what-is-data-import.md
-    - text: Używanie indeksatora
-      url: search-indexer-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: Indeksowanie danych z usługi Azure SQL Database
-      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-    - text: Indeksowanie danych z usługi Cosmos DB
-      url: search-howto-index-cosmosdb.md
   - linkListType: reference
     links:
     - text: Tworzenie indeksu (REST)
       url: https://docs.microsoft.com/rest/api/searchservice/create-index
     - text: Tworzenie indeksatora (REST)
       url: https://docs.microsoft.com/rest/api/searchservice/create-indexer
-- title: Wzbogacanie danych
+- title: Wzbogacanie o sztuczną inteligencję
   linkLists:
   - linkListType: concept
     links:
-    - text: Potok wzbogacania sztucznej inteligencji
-      url: cognitive-search-concept-intro.md
     - text: Zestawy umiejętności
       url: cognitive-search-defining-skillset.md
     - text: Magazyny wiedzy
       url: knowledge-store-concept-intro.md
     - text: Projekcje
-      url: knowledge-store-projection-overview.md
+      url: knowledge-store-projections-examples.md
   - linkListType: how-to-guide
     links:
     - text: Dołączanie usług Cognitive Services
@@ -110,11 +94,11 @@ landingContent:
     links:
     - text: Wbudowane umiejętności
       url: cognitive-search-predefined-skills.md
-- title: Wysyłanie zapytań dotyczących danych
+- title: Zapytania o dane
   linkLists:
   - linkListType: concept
     links:
-    - text: Omówienie
+    - text: Typy i kompozycja zapytań
       url: search-query-overview.md
     - text: Prosta składnia (domyślna)
       url: query-simple-syntax.md

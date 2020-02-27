@@ -27,19 +27,13 @@
           href: quickstarts/ruby.md
     - name: Zestawy SDK
       items:
-        - name: 'C#'
-          href: web-search-sdk-quickstart.md
-        - name: Java
-          href: web-sdk-java-quickstart.md
-        - name: Node.js
-          href: web-search-sdk-node-quickstart.md
-        - name: Python
-          href: web-sdk-python-quickstart.md
+        - name: Biblioteki klienckie Wyszukiwania w Internecie Bing
+          href: ./quickstarts/client-libraries.md
 - name: Samouczki
   items:
     - name: Tworzenie jednostronicowej aplikacji internetowej
       href: tutorial-bing-web-search-single-page-app.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady dla interfejsu REST
       href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples'

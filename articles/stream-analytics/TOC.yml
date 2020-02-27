@@ -195,6 +195,8 @@
           href: setup-cicd-vs-code.md
         - name: Eksplorowanie zadań
           href: visual-studio-code-explore-jobs.md
+        - name: Pola w pliku JobConfig.json
+          href: job-config-json.md
     - name: Rozwiązywanie problemów
       items:
         - name: Dane wejściowe

@@ -23,9 +23,11 @@
     - name: Jak działa usługa Personalizacja
       href: how-personalizer-works.md
       displayName: 'rank, reward, api, explore, exploit, score, design, research, loop, action, context, feature, JSON, event, inactive, model'
-    - name: Gdzie można używać usługi Personalizacja?
+    - name: Gdzie używać interfejsu Personalizacja
       href: where-can-you-use-personalizer.md
       displayName: 'checklist, considerations, effectiveness, recommendation engine'
+    - name: Terminologia
+      href: terminology.md
     - name: Etyka i odpowiedzialne użycie
       href: ethics-responsible-use.md
       displayName: 'best practice, design'
@@ -34,9 +36,11 @@
         - name: Działania i kontekst funkcji
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set, ID, guid, event id,'
-        - name: Zdarzenia aktywne i nieaktywne
+        - name: Zasady uczenia
           href: concept-active-learning.md
           displayName: 'active, inactive'
+        - name: Zdarzenia aktywne i nieaktywne
+          href: concept-active-inactive-events.md
         - name: Nagrody
           href: concept-rewards.md
           displayName: 'reward, wait time, default reward'
@@ -56,15 +60,15 @@
       href: concepts-scalability-performance.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Tworzenie i konfigurowanie usługi Personalizacja
+    - name: Tworzenie zasobu interfejsu Personalizacja
+      href: how-to-create-resource.md
+    - name: Konfigurowanie pętli uczenia
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
-    - name: Zarządzanie zasadami uczenia
-      href: how-to-learning-policy.md
-    - name: Analiza
-      items:
-        - name: Ocena w trybie offline
-          href: how-to-offline-evaluation.md
+    - name: Zarządzanie ustawieniami uczenia i modelu
+      href: how-to-manage-model.md
+    - name: Analizowanie za pomocą oceny w trybie offline
+      href: how-to-offline-evaluation.md
 - name: Dokumentacja
   items:
     - name: Samples

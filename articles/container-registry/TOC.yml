@@ -141,15 +141,17 @@
       items:
         - name: Automatyzacja kompilacji obrazów kontenerów
           items:
-            - name: Kompilacja na podstawie kontekstu źródłowego
+            - name: 1 — kompilacja na podstawie kontekstu źródłowego
               href: container-registry-tutorial-quick-task.md
-            - name: Kompilacja przy zatwierdzaniu kodu
+            - name: 2a — kompilacja przy zatwierdzaniu kodu
               href: container-registry-tutorial-build-task.md
-            - name: Zadanie wieloetapowe przy zatwierdzaniu kodu
+            - name: 2b — zadanie wieloetapowe przy zatwierdzaniu kodu
               href: container-registry-tutorial-multistep-task.md
-            - name: Kompilacja przy aktualizacji obrazu podstawowego
+            - name: 3a — kompilacja przy aktualizacji obrazu podstawowego
               href: container-registry-tutorial-base-image-update.md
-            - name: Planowanie zadania
+            - name: 3b — kompilacja przy aktualizacji prywatnego obrazu podstawowego
+              href: container-registry-tutorial-private-base-image-update.md
+            - name: 4 — kompilacja według harmonogramu
               href: container-registry-tasks-scheduled.md
     - name: Samples
       expanded: false
@@ -160,6 +162,8 @@
       items:
         - name: Zadania wieloetapowe
           href: container-registry-tasks-multi-step.md
+        - name: Aktualizacje obrazu podstawowego
+          href: container-registry-tasks-base-images.md
     - name: Przewodniki z instrukcjami
       expanded: false
       items:

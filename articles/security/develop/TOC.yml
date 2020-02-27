@@ -16,7 +16,7 @@
 - name: Pojęcia
   expanded: true
   items:
-    - name: Najlepsze praktyki
+    - name: Najlepsze rozwiązania
       items:
         - name: Omówienie
           href: secure-dev-overview.md
@@ -54,18 +54,20 @@
         - name: Wydania
           href: threat-modeling-tool-releases.md
           items:
-            - name: 'Threat Modeling Tool, wersja ogólnodostępna 7.1.5091.2 — 12 wrzesień 2018'
+            - name: 'Threat Modeling Tool, wersja ogólnodostępna 7.1.5091.2 — 12 września 2018'
               href: threat-modeling-tool-releases-71509112.md
-            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.1.51023.1 — 1 listopad 2018'
+            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.1.51023.1 — 1 listopada 2018'
               href: threat-modeling-tool-releases-71510231.md
-            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.1.60126.1 — 29 styczeń 2019'
+            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.1.60126.1 — 29 stycznia 2019'
               href: threat-modeling-tool-releases-71601261.md
-            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.1.60408.1 — 9 kwiecień 2019'
+            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.1.60408.1 — 9 kwietnia 2019'
               href: threat-modeling-tool-releases-71604081.md
-            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.1.60702.1 — 2019-07-02'
+            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.1.60702.1 — 2 lipca 2019'
               href: threat-modeling-tool-releases-71607021.md
-            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.1.61015.1 — 2019-10-16'
+            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.1.61015.1 — 16 października 2019'
               href: threat-modeling-tool-releases-71610151.md
+            - name: 'Threat Modeling Tool, wersja aktualizacyjna 7.3.00206.1 — 11 lutego 2020'
+              href: threat-modeling-tool-releases-73002061.md
         - name: Środki zaradcze
           href: threat-modeling-tool-mitigations.md
           items:

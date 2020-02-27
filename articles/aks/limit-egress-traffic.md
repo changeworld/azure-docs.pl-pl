@@ -2,17 +2,14 @@
 title: Ogranicz ruch wychodzący w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jakie porty i adresy są wymagane do sterowania ruchem wychodzącym w usłudze Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/21/2020
-ms.author: mlearned
-ms.openlocfilehash: 1206c20ec4f547dd591ac711d546d1dad0b7a19a
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: a76f4eb8680d07193feb29450fdba7bb2a710a68
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251604"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595012"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Sterowanie ruchem wychodzącym węzłów klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -54,7 +51,7 @@ Następujące porty wychodzące/reguły sieciowe są wymagane dla klastra AKS:
 * Port TCP *443*
 * TCP [IPAddrOfYourAPIServer]: 443 jest wymagane, jeśli masz aplikację, która musi komunikować się z serwerem interfejsu API.  Tę zmianę można ustawić po utworzeniu klastra.
 * Port TCP *9000* i port TCP *22* dla frontonu tunelu do komunikacji z końcem tunelu na serwerze interfejsu API.
-    * Aby uzyskać bardziej szczegółowe informacje, zobacz*lokalizację *.HCP.\<\>.azmk8s.IO* i * *.TUN.\<lokalizacji\>.azmk8s.IO* w poniższej tabeli.
+    * Aby uzyskać bardziej szczegółowe informacje, zobacz*lokalizację *. HCP.\<\>. azmk8s.IO* i * *. TUN.\<lokalizacji\>. azmk8s.IO* w poniższej tabeli.
 * Port UDP *123* dla synchronizacji czasu protokołu NTP (Network Time Protocol) (węzły systemu Linux).
 * Port UDP *53* dla systemu DNS jest wymagany również w przypadku bezpośredniego dostępu do serwera interfejsu API.
 

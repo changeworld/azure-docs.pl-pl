@@ -329,23 +329,18 @@
           href: how-to-deploy-existing-model.md
         - name: Rozwiązywanie problemów i debugowanie
           href: how-to-troubleshoot-deployment.md
-    - name: Korzystaj z usług sieci Web
-      items:
-        - name: Korzystanie w czasie rzeczywistym
+        - name: Tworzenie klientów
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: Prognozy partii projektanta
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
-    - name: Monitorowanie modeli
-      items:
-        - name: Zbieranie i ocenianie danych modelu
-          displayName: track production
-          href: how-to-enable-data-collection.md
-        - name: Wykrywanie dryfu danych
-          href: how-to-monitor-data-drift.md
-        - name: Monitorowanie za pomocą usługi Application Insights
-          href: how-to-enable-app-insights.md
+        - name: Monitorowanie modeli
+          items:
+            - name: Zbieranie i ocenianie danych modelu
+              displayName: track production
+              href: how-to-enable-data-collection.md
+            - name: Wykrywanie dryfu danych
+              href: how-to-monitor-data-drift.md
+            - name: Monitorowanie za pomocą usługi Application Insights
+              href: how-to-enable-app-insights.md
     - name: Tworzenie i używanie potoków uczenia maszynowego
       displayName: pipelines
       items:
@@ -372,6 +367,9 @@
         - name: Debugowanie kroku przebiegu równoległego i rozwiązywanie związanych z nim problemów
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
+        - name: Prognozy partii projektanta
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
     - name: Zarządzanie przydziałami zasobów
       displayName: limits
       href: how-to-manage-quotas.md

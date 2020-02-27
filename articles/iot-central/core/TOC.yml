@@ -21,6 +21,8 @@
   items:
     - name: Łączenie się
       items:
+        - name: Łączenie urządzenia
+          href: tutorial-connect-device.md
         - name: Łączenie urządzenia Plug and Play (wersja zapoznawcza)
           href: tutorial-connect-pnp-device.md
         - name: Tworzenie szablonu urządzenia bramy

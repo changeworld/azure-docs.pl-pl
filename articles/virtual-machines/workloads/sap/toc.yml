@@ -225,6 +225,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
             - name: System SLES z programem Pacemaker w konfiguracji z wieloma identyfikatorami SID na potrzeby wystąpienia A(SCS)
               href: high-availability-guide-suse-multi-sid.md
+            - name: System RHEL z programem Pacemaker w konfiguracji z wieloma identyfikatorami SID na potrzeby wystąpienia A(SCS)
+              href: high-availability-guide-rhel-multi-sid.md
     - name: Odzyskiwanie po awarii oprogramowania SAP za pomocą usługi Azure Site Recovery
       href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
     - name: Grupy umieszczania w pobliżu na platformie Azure w celu zapewnienia optymalnego opóźnienia sieci dla aplikacji SAP

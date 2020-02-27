@@ -23,8 +23,8 @@
       href: quick-create-net.md
     - name: .NET (zestaw SDK w wersji 3)
       href: quick-create-net-v3.md
-    - name: Szablon usługi Azure Resource Manager
-      displayName: 'resource manager, resource manager template, arm'
+    - name: Szablon usługi Resource Manager
+      displayName: ARM
       href: quick-create-template.md
 - name: Samouczki
   items:
@@ -58,6 +58,7 @@
       href: ../container-instances/container-instances-managed-identity.md
     - name: Szablon usługi Azure Resource Manager
       href: ../azure-resource-manager/templates/key-vault-parameter.md
+      displayName: ARM
     - name: Konfigurowanie rotacji i inspekcji kluczy
       href: key-vault-key-rotation-log-monitoring.md
 - name: Samples
@@ -170,6 +171,7 @@
       href: key-vault-best-practices.md
     - name: Szablon usługi Resource Manager
       href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
     - name: 'Uwierzytelnianie, żądania i odpowiedzi'
       href: authentication-requests-and-responses.md
     - name: Typowe parametry i nagłówki

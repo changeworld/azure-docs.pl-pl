@@ -62,10 +62,14 @@
       href: load-balancer-security-controls.md
 - name: Instrukcje
   items:
-    - name: Uaktualnianie publicznego moduł równoważenia obciążenia w warstwie Podstawowa do publicznego modułu równoważenia obciążenia w warstwie Standardowa
-      href: upgrade-basic-standard.md
-    - name: Podwyższanie poziomu planu wewnętrznego modułu równoważenia obciążenia w warstwie Podstawowa do wewnętrznego modułu równoważenia obciążenia w warstwie Standardowa
-      href: upgrade-basicInternal-standard.md
+    - name: Uaktualnianie modułu równoważenia obciążenia w warstwie Podstawowa do modułu równoważenia obciążenia w warstwie Standardowa
+      items:
+        - name: Uaktualnianie publicznego modułu równoważenia obciążenia w warstwie Podstawowa
+          href: upgrade-basic-standard.md
+        - name: Uaktualnianie wewnętrznego modułu równoważenia obciążenia w warstwie Podstawowa — nie jest wymagane żadne połączenie wychodzące
+          href: upgrade-basicInternal-standard.md
+        - name: Uaktualnianie wewnętrznego modułu równoważenia obciążenia w warstwie Podstawowa — połączenie wychodzące jest wymagane
+          href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Konfigurowanie reguł dla ruchu wychodzącego
       items:
         - name: Azure Portal

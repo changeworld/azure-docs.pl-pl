@@ -69,7 +69,7 @@
               href: ./hdinsight-hadoop-create-linux-clusters-portal.md
             - name: Tworzenie klastrów przy użyciu szablonów
               href: ./hdinsight-hadoop-create-linux-clusters-arm-templates.md
-            - name: Tworzenie klastrów przy użyciu wiersza polecenia
+            - name: Tworzenie klastrów przy użyciu interfejsu wiersza polecenia platformy Azure
               href: ./hdinsight-hadoop-create-linux-clusters-azure-cli.md
             - name: Tworzenie klastrów przy użyciu programu PowerShell
               href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md

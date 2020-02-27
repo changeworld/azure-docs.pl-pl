@@ -100,28 +100,20 @@
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
 - name: Przewodniki z instrukcjami
   items:
-    - name: Edytowanie bazy wiedzy
+    - name: Zarządzanie zasobami platformy Azure
       items:
-        - name: Edytowanie bazy wiedzy
-          href: How-To/edit-knowledge-base.md
-        - name: Tworzenie konwersacji wieloetapowych za pomocą dodatkowych monitów
-          href: How-To/multiturn-conversation.md
-          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
-        - name: Dodawanie konwersacji
-          href: How-to/chit-chat-knowledge-base.md
-        - name: Dodawanie zabezpieczonego pliku programu SharePoint
-          href: How-To/add-sharepoint-datasources.md
-          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+        - name: Zarządzanie zasobami
+          href: How-To/set-up-qnamaker-service-azure.md
+          displayName: 'azure, resource, key, upgrade, pricing, tier,'
+        - name: Uzyskiwanie analizy
+          href: How-To/get-analytics-knowledge-base.md
+        - name: Tworzenie planu ciągłości biznesowej
+          href: How-To/business-continuity-plan.md
     - name: Zarządzanie bazą wiedzy
       items:
         - name: Tworzenie i publikowanie bazy wiedzy
           href: Quickstarts/create-publish-knowledge-base.md
           displayName: 'create bot, bot, publish to bot, test, edit'
-        - name: Uzyskiwanie odpowiedzi przy użyciu metadanych
-          href: How-To/metadata-generateanswer-usage.md
-          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-        - name: Ustaw domyślną odpowiedź
-          href: How-to/change-default-answer.md
         - name: Tworzenie bota przy użyciu usług QnA Maker i LUIS
           href: Tutorials/integrate-qnamaker-luis.md
         - name: Wybór języka
@@ -136,17 +128,27 @@
         - name: Ulepszanie bazy wiedzy za pomocą uczenia aktywnego
           href: How-to/improve-knowledge-base.md
           displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
-    - name: Zarządzanie usługą
+        - name: Edytowanie bazy wiedzy
+          href: How-To/edit-knowledge-base.md
+        - name: Tworzenie konwersacji wieloetapowych za pomocą dodatkowych monitów
+          href: How-To/multiturn-conversation.md
+          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
+        - name: Dodawanie konwersacji
+          href: How-to/chit-chat-knowledge-base.md
+        - name: Dodawanie zabezpieczonego pliku programu SharePoint
+          href: How-To/add-sharepoint-datasources.md
+          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+        - name: Wykonywanie zapytań względem bazy wiedzy
+          href: How-To/metadata-generateanswer-usage.md
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+    - name: Używanie z aplikacją kliencką
       items:
-        - name: Zarządzanie zasobami
-          href: How-To/set-up-qnamaker-service-azure.md
-          displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: Uzyskiwanie analizy
-          href: How-To/get-analytics-knowledge-base.md
-        - name: Wybieranie pojemności
-          href: Tutorials/choosing-capacity-qnamaker-deployment.md
-        - name: Tworzenie planu ciągłości biznesowej
-          href: How-To/business-continuity-plan.md
+        - name: Struktura botów
+          href: Tutorials/create-qna-bot.md
+        - name: Usługi LUIS i QnA Maker
+          href: Tutorials/integrate-qnamaker-luis.md
+    - name: Analiza i telemetria
+      href: How-To/get-analytics-knowledge-base.md
 - name: Dokumentacja
   items:
     - name: Języki
@@ -155,12 +157,20 @@
       href: limits.md
     - name: Rozwiązywanie problemów
       href: troubleshooting.md
-    - name: Formaty plików
+    - name: Konfiguracja usługi
+      href: reference-app-service.md
+    - name: Formaty zawartości i danych
       items:
-        - name: Dokumentacja języka Markdown
-          href: reference-markdown-format.md
-        - name: Wsadowe testowanie plików TSV
-          href: reference-tsv-format-batch-testing.md
+        - name: Wytyczne dotyczące formatowania zawartości
+          href: reference-document-format-guidelines.md
+        - name: Adresy URL
+          href: reference-document-type-url.md
+        - name: Wytyczne dotyczące importowania i eksportowania danych
+          href: reference-data-guidelines.md
+    - name: Format wyświetlania
+      href: reference-markdown-format.md
+    - name: Format testowania wsadowego
+      href: reference-tsv-format-batch-testing.md
     - name: Dokumentacja interfejsu API REST
       items:
         - name: Tworzenie interfejsów API
@@ -169,7 +179,6 @@
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
         - name: Interfejs API trenowania
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
     - name: Samples
       items:
         - name: Bot pomocy funkcji QnA Maker
@@ -197,7 +206,7 @@
             - name: Dokumentacja referencyjna
               href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
             - name: NPM
-              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
+              href: 'https://www.npmjs.com/package/azure-cognitiveservices-qnamaker'
             - name: Samples
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs'
         - name: Python
