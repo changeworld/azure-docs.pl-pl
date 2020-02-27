@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: b0a8deb5f656fafde358dbcf2e1a2724f1a84113
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ff439083ca9c648ceec95b89b041bb5b60785c91
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "64727618"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603006"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Dokumentacja dotycząca maszyn wirtualnych z systemem Linux
 
@@ -42,13 +42,13 @@ Dowiedz się, jak wdrażać i skalować maszyny wirtualne z systemem Linux na pl
 - [Tworzenie kopii zapasowych maszyn wirtualnych](/azure/virtual-machines/linux/tutorial-backup-vms)
 - [Monitorowanie maszyn wirtualnych](/azure/virtual-machines/linux/tutorial-monitoring)
 - [Zarządzanie zabezpieczeniami na maszynach wirtualnych](/azure/virtual-machines/linux/tutorial-azure-security)
-- [Tworzenie infrastruktury ciągłej integracji/ciągłego dostarczania z usługami Jenkins, Docker i GitHub](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)
+- [Tworzenie infrastruktury ciągłej integracji/ciągłego dostarczania z usługami Jenkins, Docker i GitHub](/azure/jenkins/tutorial-jenkins-github-docker-cicd)
 
 ## <a name="free-pluralsight-video-training"></a>Bezpłatne szkolenie wideo firmy PluralSight
 
 - [Administrator platformy Azure](https://go.microsoft.com/fwlink/?linkid=2012827)
 
-## <a name="samples"></a>Przykłady 
+## <a name="samples"></a>Samples 
 
 Wdrażanie pierwszej aplikacji na platformie Azure.
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: bc19c6358ff116b3d7299673783e8fbd6e8cd4f5
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 82cd596f08136f6d9b327fc83122c0f32d8f9914
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201054"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649300"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Szybki start: Eksplorowanie i analizowanie kosztów za pomocą analizy kosztów
 
@@ -50,7 +50,7 @@ Początkowy widok analizy kosztów zawiera poniższe obszary.
 
 **Rzeczywisty koszt**: Przedstawia sumę kosztów użycia i zakupów dla bieżącego miesiąca, które będą widoczne na fakturze, w miarę ich naliczania.
 
-**Prognoza**: Przedstawia sumę prognozowanych kosztów w wybranym okresie. (Prognoza jest w wersji zapoznawczej).
+**Prognoza**: Przedstawia sumę prognozowanych kosztów w wybranym okresie.
 
 **Budżet**: Przedstawia limit planowanych wydatków w wybranym zakresie, jeśli jest dostępny.
 
