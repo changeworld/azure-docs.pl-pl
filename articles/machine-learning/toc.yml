@@ -83,8 +83,10 @@
       href: concept-workspace.md
     - name: Środowiska
       href: concept-environments.md
-    - name: Dane
+    - name: Dostęp do danych
       href: concept-data.md
+    - name: Wprowadzanie danych
+      href: concept-data-ingestion.md
     - name: Trenowanie modelu
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md

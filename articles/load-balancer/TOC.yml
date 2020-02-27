@@ -12,8 +12,9 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Szablon
+    - name: Szablon usługi Azure Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
+      displayName: ARM
 - name: Samouczki
   items:
     - name: Równoważenie obciążenia ruchem internetowym przez skierowanie go do maszyn wirtualnych
@@ -84,16 +85,18 @@
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
-        - name: Szablon
+        - name: Szablon usługi Azure Resource Manager
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
+          displayName: ARM
     - name: Konfigurowanie wewnętrznego modułu równoważenia obciążenia
       items:
         - name: Interfejs wiersza polecenia platformy Azure
           href: load-balancer-get-started-ilb-arm-cli.md
         - name: Azure PowerShell
           href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Szablon
+        - name: Szablon usługi Azure Resource Manager
           href: load-balancer-get-started-ilb-arm-template.md
+          displayName: ARM
     - name: Konfigurowanie limitu czasu bezczynności protokołu TCP dla usługi równoważenia obciążenia
       href: load-balancer-tcp-idle-timeout.md
     - name: Konfigurowanie trybu dystrybucji dla usługi Load Balancer
@@ -141,6 +144,9 @@
       href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations'
     - name: REST
       href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
+    - name: Szablon usługi Resource Manager
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers'
+      displayName: ARM
 - name: Zasoby
   items:
     - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
