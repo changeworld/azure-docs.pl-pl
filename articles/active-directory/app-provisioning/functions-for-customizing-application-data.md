@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd78c78a711b64c58290f09eb2ee52263375002f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: cc41a18063202bfefb9ddf7238de17fc691984af
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522513"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612143"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń na potrzeby mapowania atrybutów w usłudze Azure Active Directory
 Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, jest jeden z typów mapowania atrybutów, które można określić mapowanie wyrażenia. W tym przypadku trzeba napisać wyrażenia podobne do skryptu, która pozwala na przekształcanie danych użytkowników w formatach, które są bardziej akceptowalne dla aplikacji SaaS.
@@ -38,7 +38,7 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 * Dla stałych ciągów Jeśli potrzebujesz kreski ułamkowej odwróconej (\) lub cudzysłowu (") w ciągu go należy użyć znaków ucieczki symbolem kreski ułamkowej odwróconej (\). Na przykład: "Nazwa firmy: \\" contoso\\""
 
 ## <a name="list-of-functions"></a>Lista funkcji
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp;[RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Append
@@ -50,8 +50,8 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **zewnętrz** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
-| **przedrostk** |Wymagane |Ciąg |Ciąg, który chcesz dołączyć do końca wartość źródła. |
+| **zewnętrz** |Wymagany |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
+| **przedrostk** |Wymagany |Ciąg |Ciąg, który chcesz dołączyć do końca wartość źródła. |
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -68,8 +68,8 @@ Innymi słowy zwraca 0 we wszystkich przypadkach, z wyjątkiem sytuacji, gdy odp
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **sekwencj** |Wymagane |numerowan |Wartość liczbowa, która powinna być AND'ed z wartość2|
-| **wartość2** |Wymagane |numerowan |Wartość liczbowa, która powinna być AND'ed z wartość1|
+| **sekwencj** |Wymagany |numerowan |Wartość liczbowa, która powinna być AND'ed z wartość2|
+| **wartość2** |Wymagany |numerowan |Wartość liczbowa, która powinna być AND'ed z wartość1|
 
 **Przykład:**<br>
 BitAnd (& HF, & HF7)                                                                                
@@ -85,7 +85,7 @@ BitAnd (& HF, & HF7)
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **wyrażenia** |Wymagane | wyrażenia | Dowolne prawidłowe wyrażenie |
+| **wyrażenia** |Wymagany | wyrażenia | Dowolne prawidłowe wyrażenie |
 
 **Przykład:**<br>
 CBool ([Attribute1] = [attribute2])                                                                    
@@ -101,7 +101,7 @@ Zwraca wartość true, jeśli oba atrybuty mają tę samą wartość.
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **source1 ... sourceN** | Wymagane | Ciąg |Wymagana, zmienna liczba razy. Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
+| **source1 ... sourceN** | Wymagany | Ciąg |Wymagana, zmienna liczba razy. Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
 | **defaultValue** | Optional (Opcjonalność) | Ciąg | Wartość domyślna, która ma być używana, jeśli wszystkie wartości źródłowe mają wartość NULL. Może być pustym ciągiem ("").
 
 ---
@@ -114,7 +114,7 @@ Zwraca wartość true, jeśli oba atrybuty mają tę samą wartość.
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **zewnętrz** |Wymagane |Ciąg |Ciąg do przekonwertowania na podstawowy 64|
+| **zewnętrz** |Wymagany |Ciąg |Ciąg do przekonwertowania na podstawowy 64|
 
 **Przykład:**<br>
 ConvertToBase64 ("Witaj świecie!")                                                                                                        
@@ -130,7 +130,7 @@ Zwraca wartość "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **zewnętrz** |Wymagane |Ciąg |Ciąg, który ma zostać przekonwertowany na kodowanie szesnastkowe|
+| **zewnętrz** |Wymagany |Ciąg |Ciąg, który ma zostać przekonwertowany na kodowanie szesnastkowe|
 
 **Przykład:**<br>
 ConvertToUTF8Hex ("Witaj świecie!")                                                                                                         
@@ -146,7 +146,7 @@ Zwraca 48656C6C6F20776F726C6421
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **przypisane** |Wymagane |— atrybut |Wielowartościowy atrybut, który będzie miał zliczane elementy|
+| **przypisane** |Wymagany |— atrybut |Wielowartościowy atrybut, który będzie miał zliczane elementy|
 
 ---
 ### <a name="cstr"></a>CStr
@@ -158,7 +158,7 @@ Zwraca 48656C6C6F20776F726C6421
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **value** |Wymagane | liczbowe, odwołanie lub wartość logiczna | Może być wartością liczbową, atrybutem odwołania lub wartością logiczną. |
+| **value** |Wymagany | liczbowe, odwołanie lub wartość logiczna | Może być wartością liczbową, atrybutem odwołania lub wartością logiczną. |
 
 **Przykład:**<br>
 CStr ([DN])                                                            
@@ -174,7 +174,7 @@ Zwraca wartość "CN = Jan, DC = contoso, DC = com"
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **value** |Wymagane | Date | Data usługi AD do przekonwertowania na typ DateTime |
+| **value** |Wymagany | Date | Data usługi AD do przekonwertowania na typ DateTime |
 
 **Przykład:**<br>
 DateFromNum([lastLogonTimestamp])                                                                                                   
@@ -191,15 +191,32 @@ Zwraca datę i godzinę reprezentującą 2012-01-01 23:00:00
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **zewnętrz** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
-| **inputFormat** |Wymagane |Ciąg |Oczekiwany format wartość źródła. Obsługiwane formaty można znaleźć w temacie [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
-| **outputFormat** |Wymagane |Ciąg |Format wyjściowej daty. |
+| **zewnętrz** |Wymagany |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
+| **inputFormat** |Wymagany |Ciąg |Oczekiwany format wartość źródła. Obsługiwane formaty można znaleźć w temacie [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
+| **outputFormat** |Wymagany |Ciąg |Format wyjściowej daty. |
 
 ---
 ### <a name="guid"></a>Guid
 **Funkcyjn**<br> Identyfikator GUID ()
 
 **Zharmonizowan**<br> Identyfikator GUID funkcji generuje nowy losowy identyfikator GUID
+
+---
+### <a name="iif"></a>IIF
+**Funkcyjn**<br> IIF (warunek, valueIfTrue, valueIfFalse)
+
+**Zharmonizowan**<br> Funkcja IIF zwraca jeden z zestawu możliwych wartości na podstawie określonego warunku.
+
+**Wejściowe**<br> 
+
+| Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **rozgrzewa** |Wymagany |Zmienna lub wyrażenie |Dowolna wartość lub wyrażenie, które może przyjąć wartość PRAWDA lub FAŁSZ. |
+| **valueIfTrue** |Wymagany |Zmienna lub ciąg | Jeśli wynikiem warunku jest wartość true, zwrócona wartość. |
+| **valueIfFalse** |Wymagany |Zmienna lub ciąg |Jeśli wynikiem warunku jest false, zwrócona wartość.|
+
+**Przykład:**<br>
+IIF ([Country] = "USA", [Country], [dział])
 
 ---
 ### <a name="instr"></a>InStr
@@ -211,8 +228,8 @@ Zwraca datę i godzinę reprezentującą 2012-01-01 23:00:00
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **sekwencj** |Wymagane |Ciąg |Ciąg do przeszukania |
-| **wartość2** |Wymagane |Ciąg |Ciąg, który ma zostać znaleziony |
+| **sekwencj** |Wymagany |Ciąg |Ciąg do przeszukania |
+| **wartość2** |Wymagany |Ciąg |Ciąg, który ma zostać znaleziony |
 | **start** |Optional (Opcjonalność) |Liczba całkowita |Pozycja początkowa do znalezienia podciągu|
 | **comparetype** |Optional (Opcjonalność) |Wyliczenie |Może być vbTextCompare lub vbBinaryCompare |
 
@@ -233,7 +250,7 @@ Szacuje się w 7
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **wyrażenia** |Wymagane |wyrażenia |Wyrażenie, które ma zostać obliczone |
+| **wyrażenia** |Wymagany |wyrażenia |Wyrażenie, które ma zostać obliczone |
 
 **Przykład:**<br>
 IsNull ([displayName])                                                                                                
@@ -250,7 +267,7 @@ Odwrotność tej funkcji ma nazwę isobecne.
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **wyrażenia** |Wymagane |wyrażenia |Wyrażenie, które ma zostać obliczone |
+| **wyrażenia** |Wymagany |wyrażenia |Wyrażenie, które ma zostać obliczone |
 
 **Przykład:**<br>
 IsNullOrEmpty ([displayName])                                               
@@ -266,7 +283,7 @@ Zwraca wartość true, jeśli atrybut nie jest obecny lub jest ciągiem pustym
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **wyrażenia** |Wymagane |wyrażenia |Wyrażenie, które ma zostać obliczone |
+| **wyrażenia** |Wymagany |wyrażenia |Wyrażenie, które ma zostać obliczone |
 
 **Przykład:**<br>
 Przełącznik (isobecny ([directmanager]), [directmanager], isobecny ([skiplevelManager]), [skiplevelManager], isobecny ([dyrektor]), [dyrektor])
@@ -281,7 +298,7 @@ Przełącznik (isobecny ([directmanager]), [directmanager], isobecny ([skiplevel
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **wyrażenia** |Wymagane |wyrażenia |Wyrażenie, które ma zostać obliczone |
+| **wyrażenia** |Wymagany |wyrażenia |Wyrażenie, które ma zostać obliczone |
 
 ---
 ### <a name="item"></a>Element
@@ -293,8 +310,8 @@ Przełącznik (isobecny ([directmanager]), [directmanager], isobecny ([skiplevel
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **przypisane** |Wymagane |Atrybut |Wielowartościowy atrybut do przeszukania |
-| **indeks** |Wymagane |Liczba całkowita | Indeksuj do elementu w ciągu wielowartościowym|
+| **przypisane** |Wymagany |Atrybut |Wielowartościowy atrybut do przeszukania |
+| **indeks** |Wymagany |Liczba całkowita | Indeksuj do elementu w ciągu wielowartościowym|
 
 **Przykład:**<br>
 Element ([proxyAddresses], 1)
@@ -311,7 +328,7 @@ Jeśli jedna z wartości źródłowych jest atrybutem wielowartościowym, każda
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **rozdzielając** |Wymagane |Ciąg |Ciąg używany do oddzielania wartości źródła, gdy są one połączone w jeden ciąg. Może być "" Jeśli separator nie jest wymagana. |
+| **rozdzielając** |Wymagany |Ciąg |Ciąg używany do oddzielania wartości źródła, gdy są one połączone w jeden ciąg. Może być "" Jeśli separator nie jest wymagana. |
 | **source1 ... sourceN** |Wymagana zmienna — liczba razy |Ciąg |Ciąg wartości, które mają zostać połączone ze sobą. |
 
 ---
@@ -327,8 +344,8 @@ Jeśli ciąg zawiera mniej znaków niż liczba określona w numChars, zwracany j
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **Ciąg** |Wymagane |Atrybut | Ciąg, z którego mają zostać zwrócone znaki |
-| **NumChars** |Wymagane |Liczba całkowita | Liczba określająca liczbę znaków do zwrócenia od początku (po lewej) ciągu|
+| **Ciąg** |Wymagany |Atrybut | Ciąg, z którego mają zostać zwrócone znaki |
+| **NumChars** |Wymagany |Liczba całkowita | Liczba określająca liczbę znaków do zwrócenia od początku (po lewej) ciągu|
 
 **Przykład:**<br>
 Left ("Jan Nowak", 3)                                                            
@@ -344,9 +361,9 @@ Zwraca wartość "Joh"
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **zewnętrz** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu. |
-| **start** |Wymagane |liczba całkowita |Indeks w ciągu **źródłowym** , w którym powinien zostać uruchomiony podciąg. Pierwszy znak w ciągu ma indeks 1, drugi znak ma indeksu 2 i tak dalej. |
-| **Długość** |Wymagane |liczba całkowita |Długość podciągu. Jeśli długość kończy się poza ciągiem **źródłowym** , funkcja zwróci podciąg z **początkowego** indeksu do końca ciągu **źródłowego** . |
+| **zewnętrz** |Wymagany |Ciąg |Zazwyczaj nazwa atrybutu. |
+| **start** |Wymagany |liczba całkowita |Indeks w ciągu **źródłowym** , w którym powinien zostać uruchomiony podciąg. Pierwszy znak w ciągu ma indeks 1, drugi znak ma indeksu 2 i tak dalej. |
+| **Długość** |Wymagany |liczba całkowita |Długość podciągu. Jeśli długość kończy się poza ciągiem **źródłowym** , funkcja zwróci podciąg z **początkowego** indeksu do końca ciągu **źródłowego** . |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -358,7 +375,7 @@ Zwraca wartość "Joh"
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **zewnętrz** |Wymagane |Ciąg | Zwykle jest to atrybut imię i nazwisko. |
+| **zewnętrz** |Wymagany |Ciąg | Zwykle jest to atrybut imię i nazwisko. |
 
 ---
 ### <a name="not"></a>Not
@@ -370,7 +387,7 @@ Zwraca wartość "Joh"
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **zewnętrz** |Wymagane |Wartości logicznych |Oczekiwane wartości **źródłowe** to "true" lub "false". |
+| **zewnętrz** |Wymagany |Wartości logicznych |Oczekiwane wartości **źródłowe** to "true" lub "false". |
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
@@ -382,7 +399,7 @@ Zwraca wartość "Joh"
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **value** |Wymagane | Ciąg | Ciąg daty i godziny w obsługiwanym formacie. Obsługiwane formaty można znaleźć w temacie https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx. |
+| **value** |Wymagany | Ciąg | Ciąg daty i godziny w obsługiwanym formacie. Obsługiwane formaty można znaleźć w temacie https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx. |
 
 **Przykład:**<br>
 * Przykład produktu Workday <br>
@@ -404,7 +421,7 @@ Zwraca wartość "Joh"
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **przypisane** |Wymagane |Wielowartościowy atrybut |Atrybut wielowartościowy, który zostanie usunięty duplikaty|
+| **przypisane** |Wymagany |Wielowartościowy atrybut |Atrybut wielowartościowy, który zostanie usunięty duplikaty|
 
 **Przykład:**<br>
 RemoveDuplicates — ([proxyAddresses])                                                                                                       
@@ -438,7 +455,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **zewnętrz** |Wymagane |Ciąg |Zwykle nazwa atrybutu w obiekcie **źródłowym** . |
+| **zewnętrz** |Wymagany |Ciąg |Zwykle nazwa atrybutu w obiekcie **źródłowym** . |
 | **oldValue** |Optional (Opcjonalność) |Ciąg |Wartość, która ma zostać zastąpiona w **źródle** lub **szablonie**. |
 | **regexPattern** |Optional (Opcjonalność) |Ciąg |Wzorzec wyrażenia regularnego dla wartości, która ma zostać zastąpiona w **źródle**. Lub, gdy **replacementPropertyName** jest używany, wzorzec wyodrębniania wartości z **replacementPropertyName**. |
 | **regexGroupName** |Optional (Opcjonalność) |Ciąg |Nazwa grupy w **regexPattern**. Tylko wtedy, gdy **replacementPropertyName** jest używany, wyodrębnimy wartość tej grupy jako **replacementValue** z **replacementPropertyName**. |
@@ -476,7 +493,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **AppRoleAssignments** |Wymagane |Ciąg |**[appRoleAssignments]** obiekt. |
+| **AppRoleAssignments** |Wymagany |Ciąg |**[appRoleAssignments]** obiekt. |
 
 ---
 ### <a name="split"></a>Podział
@@ -488,8 +505,8 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **zewnętrz** |Wymagane |Ciąg |wartość **źródłowa** do zaktualizowania. |
-| **ogranicznik** |Wymagane |Ciąg |Określa znak, który będzie używany do dzielenia ciągu (przykład: ",") |
+| **zewnętrz** |Wymagany |Ciąg |wartość **źródłowa** do zaktualizowania. |
+| **ogranicznik** |Wymagany |Ciąg |Określa znak, który będzie używany do dzielenia ciągu (przykład: ",") |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -501,7 +518,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **zewnętrz** |Wymagane |Ciąg |wartość **źródłowa** do zaktualizowania. |
+| **zewnętrz** |Wymagany |Ciąg |wartość **źródłowa** do zaktualizowania. |
 
 ---
 ### <a name="switch"></a>Przełącznik
@@ -513,10 +530,10 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **zewnętrz** |Wymagane |Ciąg |Wartość **źródłowa** do zaktualizowania. |
+| **zewnętrz** |Wymagany |Ciąg |Wartość **źródłowa** do zaktualizowania. |
 | **defaultValue** |Optional (Opcjonalność) |Ciąg |Wartość domyślna ma być używany, gdy źródło nie jest zgodna żadnych kluczy. Może być pustym ciągiem (""). |
-| **Klucz** |Wymagane |Ciąg |**Klucz** do porównywania wartości **źródłowej** z. |
-| **value** |Wymagane |Ciąg |Wartość zastępcza dla **źródła** pasującego do klucza. |
+| **Klucz** |Wymagany |Ciąg |**Klucz** do porównywania wartości **źródłowej** z. |
+| **value** |Wymagany |Ciąg |Wartość zastępcza dla **źródła** pasującego do klucza. |
 
 ---
 ### <a name="tolower"></a>toLower
@@ -528,7 +545,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **zewnętrz** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego |
+| **zewnętrz** |Wymagany |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego |
 | **dziedzinie** |Optional (Opcjonalność) |Ciąg |Format nazwy kultury opartej na dokumencie RFC 4646 to *languagecode2-Country/regioncode2*, gdzie *languagecode2* to kod języka dwuliterowego i *kraj/regioncode2* to kod podkultury dwuliterowej. Przykłady obejmują ja-JP dla języka japońskiego (Japonia) i EN-US dla języka angielskiego (Stany Zjednoczone). W przypadkach, gdy kod języka dwuliterowego nie jest dostępny, używany jest trzyliterowy kod pochodzący z normy ISO 639-2.|
 
 ---
@@ -541,7 +558,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **zewnętrz** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
+| **zewnętrz** |Wymagany |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
 | **dziedzinie** |Optional (Opcjonalność) |Ciąg |Format nazwy kultury opartej na dokumencie RFC 4646 to *languagecode2-Country/regioncode2*, gdzie *languagecode2* to kod języka dwuliterowego i *kraj/regioncode2* to kod podkultury dwuliterowej. Przykłady obejmują ja-JP dla języka japońskiego (Japonia) i EN-US dla języka angielskiego (Stany Zjednoczone). W przypadkach, gdy kod języka dwuliterowego nie jest dostępny, używany jest trzyliterowy kod pochodzący z normy ISO 639-2.|
 
 ---
@@ -558,9 +575,9 @@ Jeśli ciąg zawiera mniej niż liczbowe słowa lub ciąg nie zawiera słów ide
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **Ciąg** |Wymagane |Wielowartościowy atrybut |Ciąg, z którego ma zostać zwrócony wyraz.|
-| **WordNumber** |Wymagane | Liczba całkowita | Numer identyfikacyjny, który ma zwracać numer wyrazu|
-| **Ograniczniki** |Wymagane |Ciąg| Ciąg reprezentujący ograniczniki, które powinny być używane do identyfikowania wyrazów|
+| **Ciąg** |Wymagany |Wielowartościowy atrybut |Ciąg, z którego ma zostać zwrócony wyraz.|
+| **WordNumber** |Wymagany | Liczba całkowita | Numer identyfikacyjny, który ma zwracać numer wyrazu|
+| **Ograniczniki** |Wymagany |Ciąg| Ciąg reprezentujący ograniczniki, które powinny być używane do identyfikowania wyrazów|
 
 **Przykład:**<br>
 Word ("Quick Brown Fox", 3, "")                                                                                       

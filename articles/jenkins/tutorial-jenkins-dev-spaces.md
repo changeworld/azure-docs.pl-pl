@@ -3,12 +3,12 @@ title: Korzystanie z wtyczki Azure Dev Spaces dla Jenkins za pomocą usługi Azu
 description: Dowiedz się, jak używać wtyczki Azure Dev Spaces w potoku ciągłej integracji.
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 9dba0307db8ebbf07422fd770ea336b2abc031bd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10dfbdb7d89d6f3870ec3b9dbd87d4d315360815
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209667"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619981"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Samouczek: korzystanie z wtyczki Azure Dev Spaces dla Jenkins za pomocą usługi Azure Kubernetes Service 
 
@@ -409,16 +409,5 @@ az group delete -y --no-wait -n MyResourceGroup
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób korzystania z wtyczki Azure Dev Spaces dla Jenkins i wtyczki Azure Container Registry do kompilowania kodu i wdrażania go w obszarze dev.
-
-Poniższa lista zasobów zawiera więcej informacji na temat Azure Dev Spaces, ACR zadań i ciągłej integracji/ciągłego wdrażania z Jenkins.
-
-Azure Dev Spaces:
-* [Jak działają obszary Azure Dev Spaces i jak są skonfigurowane](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works)
-
-ACR zadania:
-* [Automatyzacja systemu operacyjnego i poprawianie struktury przy użyciu usługi ACR Tasks](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-* [Automatyczne Kompilowanie przy zatwierdzaniu kodu](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-
-Ciągłej integracji/ciągłego wdrażania za pomocą Jenkins na platformie Azure:
-* [Jenkins ciągłe wdrażanie](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment)
+> [!div class="nextstepaction"]
+> [Ciągłej integracji/ciągłego wdrażania za pomocą Jenkins na platformie Azure](jenkins-continuous-deployment.md)

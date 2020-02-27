@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/29/2019
+ms.date: 02/25/2020
 ms.author: aahi
-ms.openlocfilehash: 19df2cfc58f0653b09600b43e5859753781d7151
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 560f34d21a68cecc4950db5dcceb9c8ef7b05a49
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560798"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614434"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Przykładowe scenariusze użytkowników dla interfejs API analizy tekstu
 
@@ -44,6 +44,12 @@ Użyj wyodrębnianie kluczowych fraz i rozpoznawania jednostek, aby przetwarzać
 Monitoruj Opinie użytkowników o produkcie na stronie serwisu Twitter lub w serwisie Facebook. Za pomocą danych można analizować tonacji klientów w kierunku nowych produktów, wyodrębniać kluczowe frazy dotyczące funkcji i żądań funkcji lub rozwiązywać reklamacje klientów w miarę ich występowania. Zapoznaj się z przykładowym [szablonem Microsoft Flow](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/).
 
 ![Obraz opisujący sposób monitorowania produktu i opinii firmy na nośnikach społecznościowych przy użyciu wyodrębniania kluczowych fraz](media/use-cases/social-feed.svg)
+
+## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>Klasyfikowanie i redagowanie dokumentów, które mają informacje poufne
+
+Użyj nazwanego rozpoznawania jednostek do identyfikowania osobistych i poufnych informacji w dokumentach. Dane służą do klasyfikowania dokumentów lub redagowania ich, aby mogły być bezpiecznie udostępniane.
+
+![Obraz opisujący sposób użycia NER do wykrywania informacji osobistych oraz klasyfikowania i redagowania dokumentów](media/use-cases/sensitive-docs.jpg)
 
 ## <a name="next-steps"></a>Następne kroki
 

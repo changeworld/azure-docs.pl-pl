@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 4a5aba6f8a357f33fd921ee12aac7e45f9b581ff
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512780"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613332"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Zagadnienia dotyczące projektowania sieci wirtualnej i opcje konfiguracji Azure AD Domain Services
 
@@ -60,7 +60,7 @@ Jak wspomniano w poprzedniej sekcji, można utworzyć tylko Azure AD Domain Serv
 Możesz połączyć obciążenia aplikacji hostowane w innych sieciach wirtualnych platformy Azure, korzystając z jednej z następujących metod:
 
 * Wirtualne sieci równorzędne
-* Wirtualne sieci prywatne (VPN)
+* Wirtualna sieć prywatna (VPN)
 
 ### <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
@@ -105,12 +105,12 @@ W przypadku domeny zarządzanej AD DS platformy Azure tworzone są pewne zasoby 
 
 Następujące reguły sieciowej grupy zabezpieczeń są wymagane dla usługi Azure AD DS, aby zapewnić uwierzytelnianie i usługi zarządzania. Nie Edytuj ani nie usuwaj tych reguł sieciowej grupy zabezpieczeń dla podsieci sieci wirtualnej, w której wdrożono domenę zarządzaną platformy Azure AD DS.
 
-| Numer portu | Protocol (Protokół) | Źródło                             | Cel | Działanie | Wymagane | Przeznaczenie |
+| Numer portu | Protokół | Element źródłowy                             | Element docelowy | Akcja | Wymagany | Przeznaczenie |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Dowolne         | Zezwól  | Tak      | Synchronizacja z dzierżawą usługi Azure AD. |
-| 3389        | TCP      | CorpNetSaw                         | Dowolne         | Zezwól  | Tak      | Zarządzanie domeną. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Dowolne         | Zezwól  | Tak      | Zarządzanie domeną. |
-| 636         | TCP      | Dowolne                                | Dowolne         | Zezwól  | Nie       | Włączone tylko w przypadku konfigurowania bezpiecznego protokołu LDAP (LDAPs). |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Dowolne         | Zezwalaj  | Yes      | Synchronizacja z dzierżawą usługi Azure AD. |
+| 3389        | TCP      | CorpNetSaw                         | Dowolne         | Zezwalaj  | Yes      | Zarządzanie domeną. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Dowolne         | Zezwalaj  | Yes      | Zarządzanie domeną. |
+| 636         | TCP      | Dowolne                                | Dowolne         | Zezwalaj  | Nie       | Włączone tylko w przypadku konfigurowania bezpiecznego protokołu LDAP (LDAPs). |
 
 > [!WARNING]
 > Nie edytuj ręcznie tych zasobów sieciowych i konfiguracji. W przypadku kojarzenia nieskonfigurowanej grupy zabezpieczeń sieci lub tabeli tras zdefiniowanych przez użytkownika z podsiecią, w której wdrożono AD DS platformy Azure, możesz przerwać możliwość usługi i zarządzania domeną przez firmę Microsoft. Nieprzerwana synchronizacja dzierżawy usługi Azure AD i domeny zarządzanej platformy Azure AD DS.
@@ -146,7 +146,7 @@ Następujące reguły sieciowej grupy zabezpieczeń są wymagane dla usługi Azu
 
 ## <a name="user-defined-routes"></a>Trasy definiowane przez użytkownika
 
-Trasy zdefiniowane przez użytkownika nie są domyślnie tworzone i nie są potrzebne do poprawnego działania usługi Azure AD DS. Jeśli wymagane jest użycie tabel tras, unikaj wprowadzania jakichkolwiek zmian w marszrucie *0.0.0.0* . Zmiany w tej trasie mogą zakłócać Azure AD Domain Services.
+Trasy zdefiniowane przez użytkownika nie są domyślnie tworzone i nie są potrzebne do poprawnego działania usługi Azure AD DS. Jeśli wymagane jest użycie tabel tras, unikaj wprowadzania jakichkolwiek zmian w marszrucie *0.0.0.0* . Zmiany w tej trasie zakłócają Azure AD Domain Services i umieszczają domenę zarządzaną w nieobsługiwanym stanie.
 
 Należy również skierować ruch przychodzący z adresów IP uwzględnionych w odpowiednich tagach usługi platformy Azure do podsieci Azure AD Domain Services. Aby uzyskać więcej informacji na temat tagów usługi i skojarzonych z nimi adresów IP, zobacz [zakres adresów IP platformy Azure i Tagi usług — chmura publiczna](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
 

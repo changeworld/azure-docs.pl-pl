@@ -8,12 +8,12 @@ ms.date: 2/10/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5f576d28d30907f3834600d0a6a5c152025cf912
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a5c754373ba9437c631e62acbb5d6d246db4c862
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133535"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650762"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Samouczek: uczenie i wdrażanie modelu Azure Machine Learning
 
@@ -83,7 +83,7 @@ Przejrzyjmy pliki przekazane do projektu Azure Notebooks. Działania w tej czę�
 * **01 — turbofan\_regresji. ipynb:** Ten Notes używa obszaru roboczego usługi Machine Learning, aby utworzyć i uruchomić eksperyment uczenia maszynowego. W szerokim zakresie Notes wykonuje następujące czynności:
 
   1. Pobiera dane z konta usługi Azure Storage, które zostało wygenerowane przez zespół.
-  1. Eksplorowanie i przygotowywanie danych do szkoleń oraz modelu usługi AD klasyfikatora.
+  1. Eksploruje i przygotowuje dane, a następnie używa danych do uczenia modelu klasyfikatora.
   1. Oceń model z eksperymentu przy użyciu zestawu danych testowych (test\_FD003. txt).
   1. Publikuje najlepszy model klasyfikatora w obszarze roboczym usługi Machine Learning.
 

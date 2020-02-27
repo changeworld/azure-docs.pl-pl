@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 39eacbb9a87fa18cc6ef92e319fbfbd3e415337b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 236ae017832d5d613d0bf9fc948d16a7218d2269
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525519"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621944"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Aprowizacja przepływności kontenerów i baz danych
 
@@ -108,7 +108,7 @@ W dowolnym momencie można skalować zainicjowaną przepływność kontenera lub
 |Jednostek ru przypisane lub dostępne dla określonego kontenera|Nie gwarancji. Jednostek ru przypisane do danego kontenera zależą od właściwości. Właściwościami mogą być wybór kluczy partycji kontenerów, które współdzielą przepływność, rozkład obciążenia oraz liczbę kontenerów. |Wszystkie jednostki zarezerwowane skonfigurowane w kontenerze są przeznaczone wyłącznie do kontenera.|
 |Maksymalny rozmiar magazynu dla kontenera|Nieograniczona liczba.|Nieograniczona liczba.|
 |Maksymalna przepływność na partycji logicznej kontenera|10K (RUS)|10K (RUS)|
-|Maksymalna pojemność (danych + indeksu) w jednej partycji logicznej kontenera|10 GB|10 GB|
+|Maksymalna pojemność (danych + indeksu) w jednej partycji logicznej kontenera|20 GB|20 GB|
 
 ## <a name="next-steps"></a>Następne kroki
 

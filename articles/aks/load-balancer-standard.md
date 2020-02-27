@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3fe4de2b8b85e603bc200b27fa15c67f6cc05dd4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 9c414572e1c3b2f046ae9a14139885e9927ab3bb
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595165"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622189"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Korzystanie ze standardowego modułu równoważenia obciążenia jednostki SKU w usłudze Azure Kubernetes Service (AKS)
 
@@ -39,7 +39,7 @@ Jeśli istnieje klaster z podstawową jednostką SKU Load Balancer, istnieją is
 
 Na przykład w przypadku wdrożeń Blue/Green do migrowania klastrów jest powszechną metodą, w której typ `load-balancer-sku` klastra można zdefiniować tylko w czasie tworzenia klastra. Jednak *podstawowe* usługi równoważenia obciążenia SKU używają podstawowych adresów IP *jednostki SKU* , które nie są zgodne ze *standardowymi* modułami równoważenia obciążenia jednostki SKU, ponieważ wymagają standardowych adresów IP *jednostki SKU* . W przypadku migrowania klastrów w celu uaktualnienia Load Balancer jednostek SKU będzie wymagane nowe adresy IP ze zgodną jednostką SKU adresu IP.
 
-Aby uzyskać więcej informacji na temat migracji klastrów, zapoznaj się z [naszą dokumentacją dotyczącą zagadnień związanych z migracją](acs-aks-migration.md) , aby wyświetlić listę ważnych tematów, które należy wziąć pod uwagę podczas migracji. Poniższe ograniczenia są również ważnymi różnicami w działaniu podczas korzystania ze standardowych modułów równoważenia obciążenia SKU w programie AKS.
+Aby uzyskać więcej informacji na temat migracji klastrów, zapoznaj się z [naszą dokumentacją dotyczącą zagadnień związanych z migracją](aks-migration.md) , aby wyświetlić listę ważnych tematów, które należy wziąć pod uwagę podczas migracji. Poniższe ograniczenia są również ważnymi różnicami w działaniu podczas korzystania ze standardowych modułów równoważenia obciążenia SKU w programie AKS.
 
 ### <a name="limitations"></a>Ograniczenia
 

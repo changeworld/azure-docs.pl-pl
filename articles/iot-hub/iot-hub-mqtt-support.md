@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 694697be85b61ad2d59a0a4be1ced3581873cb77
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111755"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648499"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikacja z Centrum IoT Hub przy użyciu protokołu MQTT
 
@@ -161,28 +161,27 @@ To repozytorium zawiera:
 
 **Dla systemu Windows:**
 
-• TelemetryMQTTWin32: zawiera kod służący do wysyłania komunikatów telemetrycznych do usługi Azure IoT Hub, zbudowanych i uruchamianych na komputerze z systemem Windows.
+* TelemetryMQTTWin32: zawiera kod służący do wysyłania komunikatów telemetrycznych do usługi Azure IoT Hub, zbudowanych i uruchamianych na komputerze z systemem Windows.
 
-• SubscribeMQTTWin32: zawiera kod, który subskrybuje zdarzenia z danego centrum IoT Hub na komputerze z systemem Windows.
+* SubscribeMQTTWin32: zawiera kod, który subskrybuje zdarzenia danego centrum IoT Hub na komputerze z systemem Windows.
 
-• DeviceTwinMQTTWin32: zawiera kod służący do wykonywania zapytań i subskrybowania zdarzeń z sznurka urządzenia w usłudze Azure IoT Hub na komputerze z systemem Windows.
+* DeviceTwinMQTTWin32: zawiera kod do zapytania i subskrybuje zdarzenia dotyczące sznurka urządzenia urządzenia w usłudze Azure IoT Hub na komputerze z systemem Windows.
 
-• PnPMQTTWin32: zawiera kod służący do wysyłania komunikatów telemetrycznych z funkcją IoT Plug & Play w wersji zapoznawczej do usługi Azure IoT Hub, która została utworzona i uruchomiona na komputerze z systemem Windows. Więcej informacji o usłudze IoT & Play [tutaj](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
+* PnPMQTTWin32: zawiera kod służący do wysyłania komunikatów telemetrycznych z funkcją IoT Plug & Play w wersji zapoznawczej do usługi Azure IoT Hub, która została utworzona i uruchomiona na komputerze z systemem Windows. Więcej informacji o usłudze IoT & Play [tutaj](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
 
 **Dla systemu Linux:**
 
-• MQTTLinux: zawiera kod i skrypt kompilacji do uruchomienia w systemie Linux (WSL, Ubuntu i raspbian zostały przetestowane do tej pory).
+* MQTTLinux: zawiera kod i skrypt kompilacji do uruchomienia w systemie Linux (WSL, Ubuntu i raspbian zostały dotąd przetestowane).
 
-• LinuxConsoleVS2019: zawiera ten sam kod, ale w projekcie VS2019 przeznaczonym dla WSL (podsystem systemu Windows Linux). Ten projekt umożliwia debugowanie kodu uruchomionego w systemie Linux krok po kroku z programu Visual Studio.
+* LinuxConsoleVS2019: zawiera ten sam kod, ale w projekcie VS2019 przeznaczonym dla WSL (podsystem systemu Windows Linux). Ten projekt umożliwia debugowanie kodu uruchomionego w systemie Linux krok po kroku z programu Visual Studio.
 
 **Dla mosquitto_pub:**
 
-• Ten folder zawiera dwa przykłady poleceń używanych z narzędziem narzędzi mosquitto_pub udostępnionym przez Mosquitto.org.
+Ten folder zawiera dwa przykłady poleceń używanych z narzędziem narzędzi mosquitto_pub udostępnionym przez Mosquitto.org.
 
-Mosquitto_sendmessage: aby wysłać prostą wiadomość tekstową do usługi Azure IoT Hub działającej jako urządzenie.
+* Mosquitto_sendmessage: aby wysłać prostą wiadomość tekstową do usługi Azure IoT Hub działającej jako urządzenie.
 
-Mosquitto_subscribe: Aby wyświetlić zdarzenia występujące w usłudze Azure IoT Hub.
-
+* Mosquitto_subscribe: Aby wyświetlić zdarzenia występujące w usłudze Azure IoT Hub.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Bezpośrednie używanie protokołu MQTT (jako modułu)
 
@@ -342,7 +341,7 @@ Możliwe kody stanu to:
 
 |Stan | Opis |
 | ----- | ----------- |
-| 204 | Powodzenie (nie jest zwracana żadna zawartość) |
+| 200 | Powodzenie |
 | 429 | Zbyt wiele żądań (z ograniczeniami), zgodnie z [ograniczeniami IoT Hub](iot-hub-devguide-quotas-throttling.md) |
 | 5** | Błędy serwera |
 
@@ -373,7 +372,7 @@ Możliwe kody stanu to:
 
 |Stan | Opis |
 | ----- | ----------- |
-| 200 | Powodzenie |
+| 204 | Powodzenie (nie jest zwracana żadna zawartość) |
 | 400 | Nieprawidłowe żądanie. Źle sformułowany kod JSON |
 | 429 | Zbyt wiele żądań (z ograniczeniami), zgodnie z [ograniczeniami IoT Hub](iot-hub-devguide-quotas-throttling.md) |
 | 5** | Błędy serwera |
@@ -408,7 +407,7 @@ Gdy urządzenie jest połączone, IoT Hub wysyła powiadomienia do `$iothub/twin
 }
 ```
 
-Jak w przypadku aktualizacji właściwości `null` wartości oznacza, że element członkowski obiektu JSON jest usuwany. Należy również pamiętać, że `$version` wskazuje nową wersję odpowiedniej sekcji Właściwości sznurka.
+Jak w przypadku aktualizacji właściwości `null` wartości oznaczają, że element członkowski obiektu JSON jest usuwany. Należy również pamiętać, że `$version` wskazuje nową wersję odpowiedniej sekcji Właściwości sznurka.
 
 > [!IMPORTANT]
 > IoT Hub generuje powiadomienia o zmianach tylko wtedy, gdy urządzenia są połączone. Upewnij się, że wdrożono [przepływ ponownego połączenia urządzenia](iot-hub-devguide-device-twins.md#device-reconnection-flow) , aby zachować odpowiednie właściwości zsynchronizowane między IoT Hub a aplikacją urządzenia.

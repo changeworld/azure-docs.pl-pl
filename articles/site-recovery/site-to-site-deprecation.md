@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 29a939452d9b90bd8afda7db4e115d10956ee5e5
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 68d975a1b8bb8d47011bb292d3cf897956b31712
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606635"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623616"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Wycofanie odzyskiwania po awarii między lokacjami zarządzanymi przez klienta (z programem VMM) przy użyciu Azure Site Recovery
 
@@ -26,9 +26,9 @@ Program DR między lokacjami należącymi do klienta zarządzanymi przez System 
 
 ## <a name="what-changes-should-you-expect"></a>Jakie zmiany należy oczekiwać?
 
-- Od listopada 2019 do tych scenariuszy nie będą dozwolone żadne nowe użytkownika. **Istniejące replikacje i operacje zarządzania** , w tym przełączanie do trybu failover, Testowanie pracy w trybie failover, monitorowanie itp. **nie będzie miało wpływu**.
+- Od marca 2020 r. otrzymasz powiadomienia Azure Portal & wiadomości e-mail z nadchodzącym zaniechaniem replikacji między lokacjami maszyn wirtualnych funkcji Hyper-V. Wycofanie zaplanowano na 2023 marca.
 
-- Jeśli masz istniejącą konfigurację, nie będziesz w stanie zarejestrować nowej usługi zarządzania.
+- Jeśli masz istniejącą konfigurację, nie będzie to miało wpływu na konfigurację.
 
 - Gdy scenariusze są przestarzałe, chyba że klient korzysta z alternatywnych metod, istniejące replikacje mogą ulec zakłóceniu. Klienci nie będą mogli wyświetlać, zarządzać ani wykonywać żadnych operacji związanych z odzyskiwaniem po awarii za pomocą środowiska Azure Site Recovery w Azure Portal.
  

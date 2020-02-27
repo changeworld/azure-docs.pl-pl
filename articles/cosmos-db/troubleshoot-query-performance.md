@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 0dd3cb12c52e23a0a8acd57bf401ba68acfb9925
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424936"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623689"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Rozwiązywanie problemów z kwerendą podczas korzystania z Azure Cosmos DB
 
@@ -22,6 +22,20 @@ W tym artykule przedstawiono ogólne zalecane podejście do rozwiązywania probl
 Optymalizacje zapytań można w szerokim zakresie klasyfikować w Azure Cosmos DB: optymalizacje, które zmniejszają opłaty za zapytania i optymalizacje jednostki żądania (RU), które po prostu skracają opóźnienia. Zmniejszając opłatę RU dla kwerendy, prawie zmniejsza się również opóźnienia.
 
 W tym dokumencie przedstawiono przykłady, które można odtworzyć przy użyciu zestawu danych [odżywiania](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) .
+
+## <a name="important"></a>Ważne
+
+- Aby uzyskać najlepszą wydajność, postępuj zgodnie ze [wskazówkami dotyczącymi wydajności](performance-tips.md).
+    > [!NOTE] 
+    > System Windows 64 — przetwarzanie hosta bitowego jest zalecane w celu zwiększenia wydajności. Zestaw SDK SQL zawiera natywną bibliotekę serviceinterop. dll umożliwiającą analizowanie i optymalizowanie zapytań lokalnie i jest obsługiwana tylko na platformie Windows x64. W przypadku systemu Linux i innych nieobsługiwanych platform, na których nie jest dostępny element serviceinterop. dll, spowoduje to dodatkowe wywołanie sieciowe do bramy w celu uzyskania zoptymalizowanego zapytania. 
+- Zapytanie Cosmos DB nie obsługuje minimalnej liczby elementów.
+    - Kod powinien obsługiwać wszystkie rozmiary stron od 0 do maksymalnej liczby elementów
+    - Liczba elementów na stronie może i zmieni się bez żadnych powiadomień.
+- W przypadku zapytań oczekiwano pustych stron i mogą one występować w dowolnym momencie. 
+    - Powodem, że puste strony są uwidocznione w zestawach SDK, umożliwiają anulowanie zapytania. Sprawia również, że zestaw SDK wykonuje wiele wywołań sieciowych.
+    - Puste strony mogą być wyświetlane w istniejących obciążeniach, ponieważ partycja fizyczna jest podzielona na Cosmos DB. Pierwsza partycja ma teraz 0 wyników, co powoduje wyświetlenie pustej strony.
+    - Puste strony są spowodowane przez zaplecze zastępujące zapytanie, ponieważ zapytanie trwa dłużej niż określony czas w zapleczu do pobrania dokumentów. Jeśli Cosmos DB zastąpi zapytanie, spowoduje to zwrócenie tokenu kontynuacji, co pozwoli na kontynuowanie zapytania. 
+- Upewnij się, że wszystkie zapytania są całkowicie opróżniane. Zapoznaj się z przykładami zestawu SDK i użyj pętli while w `FeedIterator.HasMoreResults`, aby opróżnić całe zapytanie.
 
 ### <a name="obtaining-query-metrics"></a>Uzyskiwanie metryk zapytania:
 
@@ -144,7 +158,7 @@ Zasady indeksowania:
 }
 ```
 
-**Opłata za ru:** 409,51 ru
+**Opłata za ru:** 409,51 jednostek ru
 
 ### <a name="optimized"></a>Optymalizacja
 
@@ -163,7 +177,7 @@ Zaktualizowane zasady indeksowania:
 }
 ```
 
-**Opłata za ru:** 2,98 ru
+**Opłata za ru:** 2,98 jednostek ru
 
 W dowolnej chwili można dodać do zasad indeksowania dodatkowe właściwości bez wpływu na dostępność lub wydajność. Jeśli dodasz nową właściwość do indeksu, zapytania, które używają tej właściwości, będą natychmiast używały nowego dostępnego indeksu. Zapytanie będzie używać nowego indeksu podczas kompilowania. W efekcie wyniki zapytania mogą być niespójne, ponieważ trwa ponowne kompilowanie indeksu. Jeśli nowa właściwość jest indeksowana, zapytania, które używają tylko istniejących indeksów, nie będą miały na nie oddziaływać podczas ponownego kompilowania indeksu. [Postęp przekształcania indeksów można śledzić](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
 
@@ -217,7 +231,7 @@ Zasady indeksowania:
 }
 ```
 
-**Opłata za ru:** 44,28 ru
+**Opłata za ru:** 44,28 jednostek ru
 
 ### <a name="optimized"></a>Optymalizacja
 
@@ -257,7 +271,7 @@ Zaktualizowane zasady indeksowania:
 
 ```
 
-**Opłata za ru:** 8,86 ru
+**Opłata za ru:** 8,86 jednostek ru
 
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>Optymalizowanie wyrażeń SPRZĘŻENIa przy użyciu podzapytania
 Podzapytania z wieloma wartościami mogą optymalizować wyrażenia `JOIN` przez wypychanie predykatów po każdym wyrażeniu SELECT-wielu, a nie po wszystkich sprzężeniach krzyżowych w klauzuli `WHERE`.
@@ -274,7 +288,7 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-**Opłata za ru:** 167,62 ru
+**Opłata za ru:** 167,62 jednostek ru
 
 W przypadku tego zapytania indeks będzie pasować do dowolnego dokumentu, który ma tag o nazwie "Formuła niemowląt", nutritionValue większym niż 0 i obsłużyć wartość większą niż 1. Wyrażenie `JOIN` w tym miejscu będzie przekroczyć iloczyn wszystkich elementów tagów, składników odżywczych i obsługuje tablice dla każdego pasującego dokumentu przed zastosowaniem filtra. Klauzula `WHERE` następnie zastosuje predykat filtru dla każdej krotki `<c, t, n, s>`.
 
@@ -290,7 +304,7 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-**Opłata za ru:** 22,17 ru
+**Opłata za ru:** 22,17 jednostek ru
 
 Załóżmy, że tylko jeden element w tablicy tagów pasuje do filtru i istnieje pięć elementów dla obydwu składników pokarmowych i obsługujących tablice. Wyrażenia `JOIN` będą następnie rozszerzane na 1 x 1 x 5 x 5 = 25 elementów, w przeciwieństwie do 1 000 elementów w pierwszym zapytaniu.
 

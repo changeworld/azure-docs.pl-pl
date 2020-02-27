@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: eec5ab6cdf4afd63db2e77046bb19436e600ece6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dc9d10a6539c7fc3a7c5c8b3db290cc951c24883
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721000"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623312"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności Azure Cosmos DB i .NET
 
@@ -23,7 +23,36 @@ ms.locfileid: "76721000"
 
 Azure Cosmos DB to szybka i elastyczna dystrybuowana baza danych, która bezproblemowo skaluje się do gwarantowanych opóźnień i przepływności. Nie trzeba wprowadzać głównych zmian architektury ani pisać złożonego kodu w celu skalowania bazy danych za pomocą Azure Cosmos DB. Skalowanie w górę i w dół jest tak proste jak w przypadku jednego wywołania interfejsu API. Aby dowiedzieć się więcej, zobacz [jak zainicjować przepływność kontenera](how-to-provision-container-throughput.md) lub [jak zapewnić przepływność bazy danych](how-to-provision-database-throughput.md). Ponieważ jednak dostęp do Azure Cosmos DB jest uzyskiwany za pośrednictwem wywołań sieciowych, istnieją optymalizacje po stronie klienta, które umożliwiają osiągnięcie szczytowej wydajności podczas korzystania z [zestawu SQL .NET SDK](sql-api-sdk-dotnet-standard.md).
 
-Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" Należy wziąć pod uwagę następujące opcje:
+Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" należy wziąć pod uwagę następujące opcje:
+
+## <a name="hosting-recommendations"></a>Zalecenia dotyczące hostingu
+
+1.  **W przypadku obciążeń intensywnie korzystających z zapytań należy użyć systemu Windows 64-bitowego zamiast przetwarzania hosta z systemem Linux lub Windows 32**
+
+    System Windows 64 — przetwarzanie hosta bitowego jest zalecane w celu zwiększenia wydajności. Zestaw SDK SQL zawiera natywną bibliotekę serviceinterop. dll umożliwiającą analizowanie i optymalizowanie zapytań lokalnie i jest obsługiwana tylko na platformie Windows x64. W przypadku systemu Linux i innych nieobsługiwanych platform, na których nie jest dostępny element serviceinterop. dll, spowoduje to dodatkowe wywołanie sieciowe do bramy w celu uzyskania zoptymalizowanego zapytania. Następujące typy aplikacji mają 32-bitowy proces hosta jako domyślny, więc aby zmienić go na 64-bitowy, wykonaj następujące kroki na podstawie typu aplikacji:
+
+    - W przypadku aplikacji wykonywalnych można to zrobić, ustawiając wartość [docelową platformy](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) na **x64** w oknie **właściwości projektu** na karcie **kompilacja** .
+
+    - W przypadku projektów testowych opartych na VSTest można to zrobić, wybierając pozycję **testuj**->**Testuj ustawienia**->**domyślnej architektury procesora jako x64**z opcji menu **test programu Visual Studio** .
+
+    - W przypadku lokalnie wdrożonych aplikacji sieci Web ASP.NET można to zrobić, sprawdzając, czy **używane są 64-bitowe wersje IIS Express dla witryn i projektów sieci Web**, w obszarze **narzędzia**->**opcje**->**projekty i rozwiązania**->**projekty sieci Web**.
+
+    - W przypadku aplikacji sieci Web ASP.NET wdrożonych na platformie Azure można to zrobić, wybierając **platformę jako 64-bitową** w **ustawieniach aplikacji** na Azure Portal.
+
+    > [!NOTE] 
+    > Program Visual Studio domyślnie nowe projekty na dowolnym procesorze CPU. Zalecamy ustawienie dla projektu wartości x64, aby uniknąć przełączenia na architekturę x86. Każdy projekt procesora można łatwo przełączyć do architektury x86, jeśli dowolna zależność jest dodawana tylko do wersji x86.<br/>
+    > Biblioteka serviceinterop. dll musi znajdować się w tym samym folderze, w którym jest wykonywana Biblioteka DLL SDK. Należy to zrobić tylko w przypadku użytkowników ręcznie dodaliśmy do bibliotek DLL lub niestandardowych systemów kompilacji/wdrażania.
+    
+2. **Włącz odzyskiwanie pamięci po stronie serwera (GC)**
+
+    Zmniejszenie częstotliwości wyrzucania elementów bezużytecznych może pomóc w niektórych przypadkach. W programie .NET Ustaw [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) na wartość true.
+
+3. **Skalowanie obciążenia klienta**
+
+    Jeśli testujesz na poziomach o wysokiej przepływności (> 50 000 RU/s), aplikacja kliencka może stać się wąskim gardłem z powodu ograniczenia przepustowości procesora lub sieci. Jeśli docierasz do tego punktu, możesz kontynuować wypychanie konta Azure Cosmos DB przez skalowanie aplikacji klienckich na wiele serwerów.
+
+    > [!NOTE] 
+    > Duże użycie procesora CPU może spowodować zwiększone opóźnienia i wyjątki limitu czasu żądania.
 
 ## <a name="networking"></a>Sieć
 <a id="direct-connection"></a>
@@ -96,6 +125,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" Na
 
     ![ilustracja zasad połączenia Azure Cosmos DB](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
+
 4. **Zwiększ liczbę wątków/zadań**
 
     Ponieważ wywołania Azure Cosmos DB są realizowane za pośrednictwem sieci, może być konieczne zróżnicowanie stopnia równoległości żądań, aby aplikacja kliencka poświęca bardzo mało czasu na żądania. Na przykład jeśli korzystasz z programu. [Biblioteka zadań równoległych](https://msdn.microsoft.com//library/dd460717.aspx)w sieci, tworzenie w kolejności setek zadań odczytywania lub zapisywania do Azure Cosmos DB.
@@ -121,9 +151,11 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" Na
     Każde wystąpienie DocumentClient i CosmosClient jest bezpieczne wątkowo i wykonuje wydajne zarządzanie połączeniami oraz buforowanie adresów podczas pracy w trybie bezpośrednim. Aby umożliwić efektywne zarządzanie połączeniami i lepszą wydajność przez klienta zestawu SDK, zaleca się użycie jednego wystąpienia na domenę aplikacji przez okres istnienia tej usługi.
 
    <a id="max-connection"></a>
+
 4. **Zwiększ System.Net MaxConnections na hosta podczas korzystania z trybu bramy**
 
-    Żądania Azure Cosmos DB są wykonywane za pośrednictwem protokołu HTTPS/REST podczas korzystania z trybu bramy i podlegają domyślnemu limitowi połączeń na nazwę hosta lub adres IP. Może być konieczne ustawienie dla elementu MaxConnections wyższej wartości (100-1000), aby Biblioteka klienta mogła używać wielu jednoczesnych połączeń do Azure Cosmos DB. W 1.8.0 .NET SDK i nowszych wartość domyślna dla [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) to 50 i aby zmienić wartość, można ustawić [dokumenty. Client. ConnectionPolicy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) na wyższą wartość.   
+    Żądania Azure Cosmos DB są wykonywane za pośrednictwem protokołu HTTPS/REST podczas korzystania z trybu bramy i podlegają domyślnemu limitowi połączeń na nazwę hosta lub adres IP. Może być konieczne ustawienie dla elementu MaxConnections wyższej wartości (100-1000), aby Biblioteka klienta mogła używać wielu jednoczesnych połączeń do Azure Cosmos DB. W 1.8.0 .NET SDK i nowszych wartość domyślna dla [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) to 50 i aby zmienić wartość, można ustawić [dokumenty. Client. ConnectionPolicy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) na wyższą wartość.
+
 5. **Dostrajanie równoległych zapytań dla kolekcji partycjonowanych**
 
      Zestaw SDK programu SQL .NET w wersji 1.9.0 lub nowszej obsługuje zapytania równoległe, które umożliwiają równoległe wykonywanie zapytań do kolekcji partycjonowanej. Aby uzyskać więcej informacji, zobacz [przykłady kodu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) związane z pracą z zestawami SDK. Zapytania równoległe są przeznaczone do poprawiania opóźnienia zapytań i przepływności w porównaniu z ich odpowiednikami seryjnymi. Zapytania równoległe zawierają dwa parametry, które użytkownicy mogą dostosowywać do własnych wymagań, (a) MaxDegreeOfParallelism: aby kontrolować maksymalną liczbę partycji, a następnie można wykonywać zapytania równoległe i (b) MaxBufferedItemCount: w celu kontrolowania liczby wstępnie pobrane wyniki.
@@ -135,10 +167,8 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" Na
     (b) ***dostrajania MaxBufferedItemCount\:*** Parallel Query została zaprojektowana w celu wstępnego pobrania, podczas gdy bieżąca partia wyników jest przetwarzana przez klienta. Wstępne pobieranie pomaga w ogólnym ulepszaniu opóźnienia zapytania. MaxBufferedItemCount jest parametrem, aby ograniczyć liczbę wstępnie pobranych wyników. Ustawienie MaxBufferedItemCount na oczekiwaną liczbę zwracanych wyników (lub wyższą liczbę) umożliwia zapytanie, aby otrzymać maksymalną korzyść z pobierania wstępnego.
 
     Wstępne pobieranie działa tak samo, niezależnie od stopnia równoległości i istnieje pojedynczy bufor dla danych ze wszystkich partycji.  
-6. **Włącz funkcję GC po stronie serwera**
 
-    Zmniejszenie częstotliwości wyrzucania elementów bezużytecznych może pomóc w niektórych przypadkach. W programie .NET Ustaw [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) na wartość true.
-7. **Implementowanie wycofywania w interwałach RetryAfter**
+6. **Implementowanie wycofywania w interwałach RetryAfter**
 
     Podczas testowania wydajności należy zwiększyć obciążenie, dopóki nie zostanie ograniczona niewielka liczba żądań. W przypadku ograniczenia przepustowości aplikacja kliencka powinna wycofywania przy użyciu ograniczenia przepustowości dla interwału ponawiania określonych przez serwer. Poszanowanie wycofywania gwarantuje, że spędzasz minimalny czas oczekiwania między ponownymi próbami. Obsługa zasad ponawiania jest dostępna w wersji 1.8.0 i nowszych od programów SQL [.NET](sql-api-sdk-dotnet.md) i [Java](sql-api-sdk-java.md), w wersji 1.9.0 i nowszych od [Node. js](sql-api-sdk-node.md) i [Python](sql-api-sdk-python.md)oraz wszystkich obsługiwanych wersji zestawów SDK [platformy .NET Core](sql-api-sdk-dotnet-core.md) . Aby uzyskać więcej informacji, [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
     
@@ -147,16 +177,13 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" Na
     ResourceResponse<Document> readDocument = await this.readClient.ReadDocumentAsync(oldDocuments[i].SelfLink);
     readDocument.RequestDiagnosticsString 
     ```
-    
-8. **Skalowanie obciążenia klienta**
 
-    Jeśli testujesz na poziomach o wysokiej przepływności (> 50 000 RU/s), aplikacja kliencka może stać się wąskim gardłem z powodu ograniczenia przepustowości procesora lub sieci. Jeśli docierasz do tego punktu, możesz kontynuować wypychanie konta Azure Cosmos DB przez skalowanie aplikacji klienckich na wiele serwerów.
-9. **Identyfikatory URI dokumentów pamięci podręcznej dla niskiego opóźnienia odczytu**
+7. **Identyfikatory URI dokumentów pamięci podręcznej dla niskiego opóźnienia odczytu**
 
-    W miarę możliwości można buforować identyfikatory URI dokumentów w celu uzyskania najlepszej wydajności odczytu. Należy zdefiniować logikę do buforowania ResourceID podczas tworzenia zasobu. Wyszukiwania oparte na ResourceID są szybsze niż wyszukiwania oparte na nazwach, więc buforowanie tych wartości zwiększa wydajność. 
+    W miarę możliwości można buforować identyfikatory URI dokumentów w celu uzyskania najlepszej wydajności odczytu. Należy zdefiniować logikę buforowania zasobu podczas tworzenia zasobu. Wyszukiwania oparte na IDENTYFIKATORach zasobów są szybsze niż wyszukiwania oparte na nazwach, więc buforowanie tych wartości zwiększa wydajność. 
 
    <a id="tune-page-size"></a>
-10. **Dostosuj rozmiar strony dla zapytań/Odczytaj źródła w celu uzyskania lepszej wydajności**
+8. **Dostosuj rozmiar strony dla zapytań/Odczytaj źródła w celu uzyskania lepszej wydajności**
 
    Podczas wykonywania zbiorczej odczytu dokumentów przy użyciu funkcji odczytywania kanału informacyjnego (na przykład ReadDocumentFeedAsync) lub podczas wystawiania zapytania SQL wyniki są zwracane w postaci segmentacji, jeśli zestaw wyników jest zbyt duży. Domyślnie wyniki są zwracane w fragmentach 100 elementów lub 1 MB, w zależności od tego, który limit zostanie osiągnięty jako pierwszy.
 
@@ -173,21 +200,9 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" Na
     
    Po wykonaniu zapytania dane uzyskane są wysyłane w ramach pakietu TCP. Jeśli określisz zbyt niską wartość dla `maxItemCount`, liczba podróży wymagana do wysłania danych w ramach pakietu TCP jest wysoka, co ma wpływ na wydajność. Dlatego jeśli nie masz pewności, jaka wartość jest ustawiana dla właściwości `maxItemCount`, najlepiej ustawić ją na wartość-1 i pozwolić zestawowi SDK na wybranie wartości domyślnej. 
 
-11. **Zwiększ liczbę wątków/zadań**
+9. **Zwiększ liczbę wątków/zadań**
 
     Zobacz temat [zwiększanie liczby wątków/zadań](#increase-threads) w sekcji Sieć.
-
-12. **Korzystanie z 64-bitowego przetwarzania hosta**
-
-    Zestaw SQL SDK działa w procesie hosta 32-bitowego w przypadku korzystania z zestawu SQL .NET SDK w wersji 1.11.4 lub nowszej. Jeśli jednak używasz zapytań między partycjami, 64-bitowe przetwarzanie hosta jest zalecane w celu zwiększenia wydajności. Następujące typy aplikacji mają 32-bitowy proces hosta jako domyślny, więc aby zmienić go na 64-bitowy, wykonaj następujące kroki na podstawie typu aplikacji:
-
-    - W przypadku aplikacji wykonywalnych można to zrobić, usuwając zaznaczenie opcji **preferuj 32-bitową** w oknie **właściwości projektu** na karcie **kompilacja** .
-
-    - W przypadku projektów testowych opartych na VSTest można to zrobić, wybierając pozycję **testuj**->**Testuj ustawienia**->**domyślnej architektury procesora jako x64**z opcji menu **test programu Visual Studio** .
-
-    - W przypadku lokalnie wdrożonych aplikacji sieci Web ASP.NET można to zrobić, sprawdzając, czy **używane są 64-bitowe wersje IIS Express dla witryn i projektów sieci Web**, w obszarze **narzędzia**->**opcje**->**projekty i rozwiązania**->**projekty sieci Web**.
-
-    - W przypadku aplikacji sieci Web ASP.NET wdrożonych na platformie Azure można to zrobić, wybierając **platformę jako 64-bitową** w **ustawieniach aplikacji** na Azure Portal.
 
 ## <a name="indexing-policy"></a>Zasady indeksowania
  
@@ -247,7 +262,7 @@ Tak więc w przypadku pytania "jak można poprawić wydajność bazy danych?" Na
     Mimo że automatyczne zachowanie ponowienia próby pozwala zwiększyć odporność i użyteczność dla większości aplikacji, może się to zdarzyć szanse podczas wykonywania testów wydajnościowych, szczególnie podczas mierzenia opóźnień.  Opóźnienie obserwowane przez klienta zostanie wykonane, jeśli eksperyment trafi na ograniczenia serwera i spowoduje, że zestaw SDK klienta zostanie ponownie powtórzony. Aby uniknąć opóźnień opóźnienia podczas eksperymentów w wydajności, należy zmierzyć opłaty zwrócone przez poszczególne operacje i upewnić się, że żądania działają poniżej zarezerwowanej stawki żądania. Aby uzyskać więcej informacji, zobacz [jednostki żądania](request-units.md).
 3. **Projektowanie dla mniejszych dokumentów w celu zwiększenia przepływności**
 
-    Opłata za żądanie (tj. koszt przetwarzania żądania) danej operacji jest bezpośrednio skorelowana z rozmiarem dokumentu. Operacje na dużych dokumentach są droższe niż operacje w przypadku małych dokumentów.
+    Opłata za żądanie (tj. koszt przetwarzania żądań) danej operacji jest bezpośrednio skorelowana z rozmiarem dokumentu. Operacje na dużych dokumentach są droższe niż operacje w przypadku małych dokumentów.
 
 ## <a name="next-steps"></a>Następne kroki
 Aby zapoznać się z przykładową aplikacją służącą do oceny Azure Cosmos DB w scenariuszach o wysokiej wydajności na kilku komputerach klienckich, zobacz [testowanie wydajności i skalowania przy użyciu Azure Cosmos DB](performance-testing.md).

@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 57bf9c9752cf2203ffcac08c213373fd71a79148
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 71b3027d86400d6921895f86e257ddff2961f91f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276878"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615151"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Samouczek: udostępnianie kotwic przestrzennych platformy Azure między sesjami i urządzeniami przy użyciu zaplecza Azure Cosmos DB
 
@@ -42,6 +42,12 @@ W **Eksplorator rozwiązań**Otwórz `SharingService\appsettings.json`.
 Znajdź Właściwość `StorageConnectionString` i ustaw wartość tak, aby była taka sama jak wartość `Connection String` skopiowana w [kroku Tworzenie konta bazy danych](#create-a-database-account). Zapisz plik.
 
 Możesz ponownie opublikować usługę udostępniania i uruchomić przykładową aplikację.
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+### <a name="unity-20193"></a>Unity 2019,3
+
+Ze względu na istotne zmiany, środowisko Unity 2019,3 nie jest obecnie obsługiwane. Użyj aparatu Unity 2019,1 lub 2019,2.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

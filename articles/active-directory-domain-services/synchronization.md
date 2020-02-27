@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: b2a1bcedcc459a21bbc8a461ba9c8d9a8d65aebe
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132204"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612921"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Jak obiekty i poświadczenia są synchronizowane w Azure AD Domain Servicesej domenie zarządzanej
 
@@ -47,9 +47,9 @@ W poniższej tabeli wymieniono niektóre typowe atrybuty i sposób ich synchroni
 | Historia identyfikatora SID dla użytkowników i grup | Lokalny podstawowy użytkownik i identyfikator SID grupy | Atrybut *SIDHistory* dla użytkowników i grup w usłudze Azure AD DS jest ustawiony jako zgodny z identyfikatorem SID odpowiedniego użytkownika podstawowego lub grupy w środowisku lokalnym AD DS. Ta funkcja ułatwia tworzenie i przenoszenie aplikacji lokalnych na platformę Azure AD DS łatwiejsze, ponieważ nie trzeba ponownie tworzyć listy ACL zasobów. |
 
 > [!TIP]
-> **Zaloguj się do domeny zarządzanej przy użyciu formatu nazwy UPN** Atrybut *sAMAccountName* , taki jak `CONTOSO\driley`, może być generowany automatycznie dla niektórych kont użytkowników w domenie zarządzanej AD DS platformy Azure. Automatycznie generowane *sAMAccountName* użytkownika może różnić się od prefiksu UPN, więc nie zawsze jest to niezawodne rozwiązanie do logowania.
+> **Zaloguj się do domeny zarządzanej przy użyciu formatu nazwy UPN** Atrybut *sAMAccountName* , taki jak `AADDSCONTOSO\driley`, może być generowany automatycznie dla niektórych kont użytkowników w domenie zarządzanej AD DS platformy Azure. Automatycznie generowane *sAMAccountName* użytkownika może różnić się od prefiksu UPN, więc nie zawsze jest to niezawodne rozwiązanie do logowania.
 >
-> Jeśli na przykład wielu użytkowników ma ten sam atrybut *mailNickname* lub użytkownicy mają zbyt długie prefiksy UPN, można automatycznie wygenerować *sAMAccountName* dla tych użytkowników. Użyj formatu UPN, takiego jak `driley@contoso.com`, aby w niezawodny sposób zalogować się do domeny zarządzanej AD DS platformy Azure.
+> Jeśli na przykład wielu użytkowników ma ten sam atrybut *mailNickname* lub użytkownicy mają zbyt długie prefiksy UPN, można automatycznie wygenerować *sAMAccountName* dla tych użytkowników. Użyj formatu UPN, takiego jak `driley@aaddscontoso.com`, aby w niezawodny sposób zalogować się do domeny zarządzanej AD DS platformy Azure.
 
 ### <a name="attribute-mapping-for-user-accounts"></a>Mapowanie atrybutów dla kont użytkowników
 

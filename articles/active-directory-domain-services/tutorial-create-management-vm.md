@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 7f7aeeaf7cbb957a276347b04633763033a62b4e
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 0c997fffc1adc60f774e651ed458d253b35a3bdd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523011"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612215"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Samouczek: Tworzenie maszyny wirtualnej zarządzania w celu skonfigurowania i administrowania Azure Active Directory Domain Services domeną zarządzaną
 
@@ -106,7 +106,7 @@ Aby zainstalować narzędzia administracyjne Active Directory na maszynie wirtua
 1. W okienku *pulpit nawigacyjny* okna **Menedżer serwera** wybierz pozycję **Dodaj role i funkcje**.
 1. Na stronie **zanim rozpoczniesz** *Kreatora dodawania ról i funkcji*wybierz pozycję **dalej**.
 1. W polu *Typ instalacji*pozostaw zaznaczoną opcję **Instalacja oparta na rolach lub oparta na funkcjach** , a następnie wybierz pozycję **dalej**.
-1. Na stronie **Wybór serwera** wybierz bieżącą maszynę wirtualną z puli serwerów, takiej jak *MyVM.aadds.contoso.com*, a następnie wybierz przycisk **dalej**.
+1. Na stronie **Wybór serwera** wybierz bieżącą maszynę wirtualną z puli serwerów, takiej jak *MyVM.aaddscontoso.com*, a następnie wybierz przycisk **dalej**.
 1. Na stronie **role serwera** kliknij przycisk **dalej**.
 1. Na stronie **funkcje** rozwiń węzeł **Narzędzia administracji zdalnej serwera** , a następnie rozwiń węzeł Narzędzia do **administrowania rolami** .
 
@@ -126,7 +126,7 @@ Po zainstalowaniu narzędzi administracyjnych Zobaczmy, jak używać ich do admi
     ![Lista narzędzi administracyjnych zainstalowanych na serwerze](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. Wybierz **Centrum administracyjne usługi Active Directory**.
-1. Aby poznać domenę zarządzaną platformy Azure AD DS, w lewym okienku wybierz nazwę domeny, na przykład *aadds.contoso.com*. Dwa kontenery o nazwie *komputery AADDC* i *Użytkownicy AADDC* znajdują się u góry listy.
+1. Aby poznać domenę zarządzaną platformy Azure AD DS, w lewym okienku wybierz nazwę domeny, na przykład *aaddscontoso.com*. Dwa kontenery o nazwie *komputery AADDC* i *Użytkownicy AADDC* znajdują się u góry listy.
 
     ![Wyświetl listę dostępnych kontenerów należącej do domeny zarządzanej AD DS platformy Azure](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 

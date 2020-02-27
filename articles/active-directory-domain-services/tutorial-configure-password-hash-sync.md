@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: deca7477c79fd2952bb57c0194202c382cd5279d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: c2a751367a96c995a24457d0357aa6a2bfe987e5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132213"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612570"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Samouczek: Włączanie synchronizacji haseł w Azure Active Directory Domain Services dla środowisk hybrydowych
 
@@ -68,7 +68,7 @@ Za pomocą Azure AD Connect zainstalowanych i skonfigurowanych do synchronizacji
 
     W tym przykładowym zrzucie ekranu są używane następujące łączniki:
 
-    * Łącznik usługi Azure AD ma nazwę *contoso.onmicrosoft.com-AAD*
+    * Łącznik usługi Azure AD ma nazwę *aaddscontoso.onmicrosoft.com-AAD*
     * Łącznik AD DS lokalnego ma nazwę *OnPrem.contoso.com*
 
 1. Skopiuj i wklej następujący skrypt programu PowerShell na komputerze z zainstalowanym Azure AD Connect. Skrypt wyzwala pełną synchronizację haseł, która zawiera starsze skróty haseł. Zaktualizuj zmienne `$azureadConnector` i `$adConnector` o nazwy łączników z poprzedniego kroku.

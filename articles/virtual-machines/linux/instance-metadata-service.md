@@ -11,15 +11,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: e74e470ec1f3e26ca6e55e74f20030efdc47f971
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 22f50a6d5136eaff457c24864dae71261a20e13e
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525255"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615611"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa metadanych wystąpienia platformy Azure
 
@@ -119,7 +119,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > [!NOTE]
 > W przypadku węzłów liścia `format=json` nie działa. Te zapytania `format=text` muszą być jawnie określone, jeśli domyślny format to JSON.
 
-### <a name="security"></a>Zabezpieczenia
+### <a name="security"></a>Bezpieczeństwo
 
 Punkt końcowy Instance Metadata Service jest dostępny tylko w ramach uruchomionego wystąpienia maszyny wirtualnej w adresie IP bez obsługi routingu. Ponadto wszystkie żądania z nagłówkiem `X-Forwarded-For` są odrzucane przez usługę.
 Żądania muszą również zawierać nagłówek `Metadata: true`, aby upewnić się, że rzeczywiste żądanie było bezpośrednio przeznaczone i nie jest częścią niezamierzonego przekierowania.
@@ -134,6 +134,7 @@ Kod stanu HTTP | Przyczyna
 400 Nieprawidłowe żądanie | Brak nagłówka `Metadata: true` lub nie ma go w czasie wykonywania zapytania dotyczącego węzła liścia
 nie znaleziono 404 | Żądany element nie istnieje
 Metoda 405 nie jest dozwolona | Obsługiwane są tylko żądania `GET`
+410 | Spróbuj ponownie za jakiś czas przez maksymalnie 70 sekund
 429 zbyt wiele żądań | Interfejs API obsługuje obecnie maksymalnie 5 zapytań na sekundę.
 Błąd usługi 500     | Ponów próbę za jakiś czas
 
@@ -453,11 +454,11 @@ Następujące interfejsy API są dostępne za pomocą punktu końcowego metadany
 Dane | Opis | Wprowadzona wersja
 -----|-------------|-----------------------
 zaświadczenia | Zobacz [zaświadczone dane](#attested-data) | 2018-10-01
-tożsamość | Zarządzane tożsamości dla zasobów platformy Azure. Zobacz [pozyskiwanie tokenu dostępu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
+identity | Zarządzane tożsamości dla zasobów platformy Azure. Zobacz [pozyskiwanie tokenu dostępu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
 wystąpienie | Zobacz [interfejs API wystąpienia](#instance-api) | 2017-04-02
 scheduledevents | Zobacz [Scheduled Events](scheduled-events.md) | 2017-08-01
 
-#### <a name="instance-api"></a>Interfejs API wystąpienia
+### <a name="instance-api"></a>Interfejs API wystąpienia
 
 Następujące kategorie obliczeniowe są dostępne za pomocą interfejsu API wystąpienia:
 
@@ -468,8 +469,8 @@ Dane | Opis | Wprowadzona wersja
 -----|-------------|-----------------------
 azEnvironment | Środowisko platformy Azure, w którym jest uruchomiona maszyna wirtualna | 2018-10-01
 customData | Ta funkcja jest obecnie wyłączona i będziemy aktualizować tę dokumentację, gdy staną się dostępne | 2019-02-01
-lokalizacja | Region platformy Azure, w którym działa maszyna wirtualna | 2017-04-02
-{1&gt;nazwa&lt;1} | Nazwa maszyny wirtualnej | 2017-04-02
+location | Region platformy Azure, w którym działa maszyna wirtualna | 2017-04-02
+name | Nazwa maszyny wirtualnej | 2017-04-02
 offer | Informacje o ofercie dla obrazu maszyny wirtualnej i dostępne tylko dla obrazów wdrożonych z galerii obrazów platformy Azure | 2017-04-02
 osType | System Linux lub Windows | 2017-04-02
 placementGroupId | [Grupa umieszczania](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) zestawu skalowania maszyn wirtualnych | 2017-08-01
@@ -486,7 +487,7 @@ Obszarze storageprofile | Zobacz [profil magazynu](#storage-profile) | 2019-06-0
 subscriptionId | Subskrypcja platformy Azure dla maszyny wirtualnej | 2017-08-01
 tagów | [Tagi](../../azure-resource-manager/management/tag-resources.md) dla maszyny wirtualnej  | 2017-08-01
 tagsList | Tagi sformatowane jako tablica JSON dla łatwiejszego analizowania programistycznego  | 2019-06-04
-wersja | Wersja obrazu maszyny wirtualnej | 2017-04-02
+version | Wersja obrazu maszyny wirtualnej | 2017-04-02
 vmId | [Unikatowy identyfikator](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) dla maszyny wirtualnej | 2017-04-02
 vmScaleSetName | [Nazwa zestawu skalowania maszyn wirtualnych](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) w zestawie skalowania maszyn wirtualnych | 2017-12-01
 vmSize | [Rozmiar maszyny wirtualnej](sizes.md) | 2017-04-02
@@ -569,7 +570,6 @@ Identyfikator jednorazowy jest opcjonalnym 10-cyfrowym ciągiem. Jeśli nie zost
 ```
 
 Obiekt BLOB sygnatury jest podpisanym przez [PKCS7](https://aka.ms/pkcs7) wersją dokumentu. Zawiera certyfikat używany do podpisywania wraz ze szczegółami maszyny wirtualnej, takimi jak identyfikator maszyny wirtualnej, SKU, nonce, Identyfikator subskrypcji, sygnatura czasowa do utworzenia i wygaśnięcia dokumentu oraz informacje o planie obrazu. Informacje o planie są wypełniane wyłącznie na potrzeby obrazów w miejscu na rynku platformy Azure. Certyfikat może zostać wyodrębniony z odpowiedzi i użyty do zweryfikowania, że odpowiedź jest prawidłowa i pochodzi z platformy Azure.
-
 
 ## <a name="example-scenarios-for-usage"></a>Przykładowe scenariusze użycia  
 
@@ -717,12 +717,14 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnviro
 ```
 
 **Odpowiedź**
+
 ```bash
 AzurePublicCloud
 ```
+
 Poniżej przedstawiono chmurę i wartości środowiska platformy Azure.
 
- Chmura   | Środowisko platformy Azure
+ Chmurowa   | Środowisko platformy Azure
 ---------|-----------------
 [Wszystkie ogólnie dostępne globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
@@ -836,12 +838,14 @@ Po otrzymaniu powyższego podpisu możesz sprawdzić, czy podpis pochodzi od fir
 > [!NOTE]
 > Certyfikat dla chmury publicznej i suwerennej chmury będzie różny.
 
- Chmura | Certyfikat
+ Chmurowa | Certyfikat
 ---------|-----------------
-[Wszystkie ogólnie dostępne globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | metadata.azure.com
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure — Chiny](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
-[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
+[Wszystkie ogólnie dostępne globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | *. metadata.azure.com
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *. metadata.azure.us
+[Azure — Chiny](https://azure.microsoft.com/global-infrastructure/china/)         | *. metadata.azure.cn
+[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | *. metadata.microsoftazure.de
+
+Istnieje znany problem związany z certyfikatem używanym do podpisywania. Certyfikaty mogą nie mieć dokładnego dopasowania `metadata.azure.com` dla chmury publicznej. W związku z tym weryfikacja certyfikacji powinna zezwalać na wspólną nazwę z dowolnej poddomeny `.metadata.azure.com`.
 
 ```bash
 
@@ -871,7 +875,7 @@ W przypadku niektórych scenariuszy podczas wykonywania zapytania dotyczącego I
 route print
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Następujące przykładowe dane wyjściowe z maszyny wirtualnej z systemem Windows Server z włączoną funkcją klaster trybu failover zawierają tylko tabelę tras IPv4 dla uproszczenia.
 
 ```bat
@@ -914,11 +918,11 @@ Obiekt odwołanie do obrazu zawiera następujące informacje o obrazie systemu o
 
 Dane    | Opis
 --------|-----------------
-{1&gt;identyfikator&lt;1}      | Identyfikator zasobu
+id      | Identyfikator zasobu
 offer   | Oferta platformy lub obrazu z witryny Marketplace
 publisher | Wydawca obrazu
 sku     | Jednostka SKU obrazu
-wersja | Wersja platformy lub obrazu witryny Marketplace
+version | Wersja platformy lub obrazu witryny Marketplace
 
 Obiekt dysku systemu operacyjnego zawiera następujące informacje na temat dysku systemu operacyjnego używanego przez maszynę wirtualną:
 
@@ -931,7 +935,7 @@ diskSizeGB | Rozmiar dysku w GB
 image   | Wirtualny dysk twardy obrazu użytkownika źródłowego
 tworzona     | Numer jednostki logicznej dysku
 managedDisk | Parametry dysku zarządzanego
-{1&gt;nazwa&lt;1}    | Nazwa dysku
+name    | Nazwa dysku
 VHD     | Wirtualny dysk twardy
 writeAcceleratorEnabled | Czy writeAccelerator jest włączona na dysku
 
@@ -946,7 +950,7 @@ diskSizeGB | Rozmiar dysku w GB
 encryptionSettings | Ustawienia szyfrowania dysku
 image   | Wirtualny dysk twardy obrazu użytkownika źródłowego
 managedDisk | Parametry dysku zarządzanego
-{1&gt;nazwa&lt;1}    | Nazwa dysku
+name    | Nazwa dysku
 osType  | Typ systemu operacyjnego znajdującego się na dysku
 VHD     | Wirtualny dysk twardy
 writeAcceleratorEnabled | Czy writeAccelerator jest włączona na dysku
