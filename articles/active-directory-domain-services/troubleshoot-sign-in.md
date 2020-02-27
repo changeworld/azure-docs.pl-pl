@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: aa03e388019bf696324ea7af6062ec98386df5fa
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0585ced3bc53f216ab203b4686b5800b5e14bbbd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827048"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612751"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>Rozwiązywanie problemów z logowaniem do konta przy użyciu domeny zarządzanej Azure AD Domain Services
 
@@ -32,7 +32,7 @@ Najczęstsze przyczyny konta użytkownika, które nie mogą zalogować się do d
 
 W zależności od rozmiaru katalogu może upłynąć trochę czasu, aż do uzyskania dostępu do kont użytkowników i skrótów poświadczeń w usłudze Azure AD DS. W przypadku dużych katalogów ta początkowa Jednokierunkowa synchronizacja z usługi Azure AD może trwać kilka godzin, a nawet jeden dzień lub dwa. Przed ponowną próbą uwierzytelnienia upewnij się, że zaczekasz wystarczająco długo.
 
-W przypadku środowisk hybrydowych, które użytkownik Azure AD Connect synchronizować lokalne dane katalogu w usłudze Azure AD, upewnij się, że uruchamiasz najnowszą wersję Azure AD Connect i [skonfigurowano Azure AD Connect do przeprowadzenia pełnej synchronizacji po włączeniu platformy Azure AD DS][azure-ad-connect-phs]. Jeśli wyłączysz usługę Azure AD DS i włączysz ją ponownie, należy ponownie wykonać te kroki.
+W środowiskach hybrydowych, które użytkownik Azure AD Connect synchronizować lokalne dane katalogu w usłudze Azure AD, upewnij się, że uruchamiasz najnowszą wersję Azure AD Connect i [skonfigurowano Azure AD Connect do przeprowadzenia pełnej synchronizacji po włączeniu usługi Azure AD DS][azure-ad-connect-phs]. Jeśli wyłączysz usługę Azure AD DS i włączysz ją ponownie, należy ponownie wykonać te kroki.
 
 Jeśli nadal występują problemy z kontami, które nie synchronizują się za pomocą Azure AD Connect, należy ponownie uruchomić usługę Azure AD Sync. Na komputerze z zainstalowanym Azure AD Connect Otwórz okno wiersza polecenia i uruchom następujące polecenia:
 
@@ -59,7 +59,7 @@ W przypadku domen zarządzanych przez platformę Azure AD DS bez synchronizacji 
     * [Zmień hasło dla konta][enable-user-accounts] , aby generować wymagane skróty haseł, a następnie poczekaj 15 minut przed podjęciem próby ponownego zalogowania.
     * Jeśli wyłączysz usługę Azure AD DS i włączysz ją ponownie, każde konto musi ponownie wykonać te czynności, aby zmienić hasło i wygenerować wymagane skróty haseł.
 * **Tak, hasło zostało zmienione.**
-    * Spróbuj zalogować się przy użyciu formatu *UPN* , takiego jak `driley@contoso.com`, zamiast formatu *sAMAccountName* , np. `CONTOSO\deeriley`.
+    * Spróbuj zalogować się przy użyciu formatu *UPN* , takiego jak `driley@aaddscontoso.com`, zamiast formatu *sAMAccountName* , np. `AADDSCONTOSO\deeriley`.
     * *SAMAccountName* może być automatycznie generowany dla użytkowników, których prefiks nazwy UPN jest zbyt długi lub jest taki sam jak inny użytkownik w domenie zarządzanej. Format *nazwy UPN* ma być unikatowy w ramach dzierżawy usługi Azure AD.
 
 ## <a name="the-account-is-locked-out"></a>Konto jest zablokowane

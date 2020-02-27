@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 234c4b0493a4f03ed89162318090d57621740cb0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6662f109f9a8227ec45d44a730abc91ebcd8dd70
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036688"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650848"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Oblicz wyniki testów porównawczych dla maszyn wirtualnych z systemem Linux
 Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w przypadku wysokiej wydajności zestawienia maszyn wirtualnych platformy Azure z systemem Ubuntu. Wyniki testów porównawczych obliczeń są również dostępne dla [maszyn wirtualnych z systemem Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -52,6 +52,8 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 | Standardowa_A8m_v2 | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 8 | 1 | 62,9 | 49 838 | 633 | 1,27% | 182 |
 | Standardowa_A8m_v2 | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 8 | 1 | 62,9 | 49 123 | 2 483 | 5,05% | 259 |
 
+Uwaga: maszyny wirtualne z serii Av2 można wdrożyć na różnych typach sprzętu i procesorach (jak pokazano powyżej). Maszyny wirtualne z serii Av2 mają wydajność procesora CPU i konfiguracje pamięci, które najlepiej pasują do obciążeń poziomu wejścia, takich jak programowanie i testowanie. Rozmiar jest ograniczany w celu zapewnienia stosunkowo spójnej wydajności procesora dla uruchomionego wystąpienia, niezależnie od sprzętu, na którym jest wdrożony. jednak oprogramowanie, które korzysta z konkretnych nowszych optymalizacji procesora, może zobaczyć bardziej znaczące różnice między różnymi typami procesorów.
+
 ## <a name="b---burstable"></a>B — do serii
 (3/15/2019 12:27:08 AM PBI 3897709)
 
@@ -69,6 +71,10 @@ Poniższe wyniki testu porównawczego przedstawiają wydajność obliczeń w prz
 | Standard_B4ms | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 4 | 1 | 15,7 | 54 051 | 1 260 | 2,33% | 672 |
 | Standard_B8ms | Procesor Intel (R) Xeon (R) E5-2673 v3 @ 2.40 GHz | 8 | 1 | 31,4 | 111 929 | 1 562 | 1,40% | 35 |
 | Standard_B8ms | Procesor Intel (R) Xeon (R) E5-2673 v4 @ 2.30 GHz | 8 | 1 | 31,4 | 109 537 | 1 354 | 1,24% | 665 |
+
+Uwaga: maszyny wirtualne z serii B są przeznaczone do obciążeń z wymaganymi możliwościami wydajności. Wystąpienia maszyn wirtualnych gromadzą kredyty przy użyciu mniejszej niż jej podstawy. Gdy maszyna wirtualna ma Zakumulowany kredyt, maszyna wirtualna może przekroczyć poziom odniesienia do 100%, aby spełnić krótkie wymagania dotyczące obciążeń procesora. Czas szeregowania zależy od dostępnych kredytów, które są funkcją rozmiaru i czasu maszyn wirtualnych.  
+
+Jest to krótki test, który zwykle kończy się w ramach dostępnych kredytów na korzystanie z serii.  W związku z tym powyższe numery zwykle reprezentują wydajność maszyn wirtualnych, co odzwierciedla znaczenie krótkich, obciążeń (typowych dla serii B) wydajności.
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 — ogólne obliczenia i Premium Storage
 (3/12/2019 6:52:03 PM PBI 3897709)

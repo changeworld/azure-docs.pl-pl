@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47d9508c891d2b4fe74b42114783b02c58e8c91f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426228"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620002"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -201,7 +201,7 @@ Analiza ruchu można również skonfigurować za pomocą polecenia cmdlet [Set-A
 
 ## <a name="view-traffic-analytics"></a>Wyświetlanie analizy ruchu
 
-Po lewej stronie portalu wybierz pozycję **wszystkie usługi**, a następnie wprowadź wartość *monitor* w polu **Filtr** . Gdy **monitor** pojawi się w wynikach wyszukiwania, wybierz go. Aby rozpocząć Eksplorowanie analizy ruchu i jej możliwości, wybierz pozycję **Monitor sieci**, a następnie **Analiza ruchu**.
+Aby wyświetlić Analiza ruchu, Wyszukaj **Network Watcher** na pasku wyszukiwania portalu. Po Network Watcher, aby poznać analizę ruchu i jej możliwości, wybierz pozycję **Analiza ruchu** z menu po lewej stronie. 
 
 ![Uzyskiwanie dostępu do pulpitu nawigacyjnego Analiza ruchu](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 

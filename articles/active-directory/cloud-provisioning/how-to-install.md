@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4e8450593b8ff0f73c09f236f17eb4ef09334c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e4581ab89f74425682f569425f62714ead2c27c5
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549506"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620936"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Instalowanie agenta aprowizacji w chmurze programu Azure AD Connect
 Ten dokument przeprowadzi Cię przez proces instalacji Azure Active Directory (Azure AD) Połącz agenta aprowizacji i sposób jego początkowego skonfigurowania w Azure Portal.
@@ -26,7 +26,7 @@ Ten dokument przeprowadzi Cię przez proces instalacji Azure Active Directory (A
 
 Instalowanie i Konfigurowanie Azure AD Connect aprowizacji jest realizowane w następujących krokach:
     
-- [Instalowanie agenta](#install-the-agent)
+- [Zainstaluj agenta](#install-the-agent)
 - [Weryfikuj instalację agenta](#verify-agent-installation)
 
 
@@ -67,7 +67,7 @@ Aby sprawdzić, czy Agent jest widziany przez platformę Azure, wykonaj następu
 1. Zaloguj się do Portalu Azure.
 1. Po lewej stronie wybierz pozycję **Azure Active Directory** > **Azure AD Connect**. W centrum wybierz pozycję **Zarządzaj Provisioning (wersja zapoznawcza)** .
 
-   ![Portal Azure](media/how-to-install/install6.png)</br>
+   ![Portalu Azure](media/how-to-install/install6.png)</br>
 
 1.  Na ekranie **Azure AD Provisioning (wersja zapoznawcza)** wybierz pozycję **Przejrzyj wszystkich agentów**.
 
@@ -96,7 +96,7 @@ Aby sprawdzić, czy agent działa, wykonaj następujące kroki.
     ![Ekran usług](media/how-to-troubleshoot/troubleshoot1.png)
 
 >[!IMPORTANT]
->Agent został zainstalowany, ale przed rozpoczęciem synchronizowania użytkowników musi zostać skonfigurowany i włączony. Aby skonfigurować nowego agenta, zobacz [Azure AD Connect w chmurze Inicjowanie obsługi nowej konfiguracji agenta](how-to-configure.md).
+>Agent został zainstalowany, ale przed rozpoczęciem synchronizowania użytkowników musi zostać skonfigurowany i włączony. Aby skonfigurować nowego agenta, zobacz [Tworzenie nowej konfiguracji na potrzeby aprowizacji Azure AD Connect opartej na chmurze](how-to-configure.md).
 
 
 

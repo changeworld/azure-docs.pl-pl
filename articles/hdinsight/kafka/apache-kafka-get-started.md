@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/01/2019
-ms.openlocfilehash: 76360ec8de645d926daec0db878906c73d0da948
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.custom: mvc
+ms.date: 02/24/2020
+ms.openlocfilehash: 286b16d850b1c1c26069c50cd4045bf7f3dd3c14
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030033"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623503"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Szybki Start: Tworzenie klastra Apache Kafka w usłudze Azure HDInsight przy użyciu Azure Portal
 
-Apache Kafka to rozproszona platforma przesyłania strumieniowego typu open source. Jest ona często używana jako broker komunikatów, ponieważ oferuje funkcje podobne do kolejki komunikatów dotyczących publikowania i subskrybowania.
+[Apache Kafka](./apache-kafka-introduction.md) to rozproszona platforma przesyłania strumieniowego typu open source. Jest ona często używana jako broker komunikatów, ponieważ oferuje funkcje podobne do kolejki komunikatów dotyczących publikowania i subskrybowania.
 
-W tym samouczku szybkiego startu dowiesz się, jak utworzyć [klaster platformy Apache Kafka](https://kafka.apache.org) przy użyciu witryny Azure Portal. Dowiesz się także, jak używać dołączonych narzędzi do wysyłania i odbierania komunikatów na platformie Apache Kafka.
+W tym przewodniku szybki start dowiesz się, jak utworzyć klaster Apache Kafka przy użyciu Azure Portal. Dowiesz się także, jak używać dołączonych narzędzi do wysyłania i odbierania komunikatów na platformie Apache Kafka. Aby uzyskać szczegółowe wyjaśnienia dotyczące dostępnych konfiguracji, zobacz [Konfigurowanie klastrów w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Aby uzyskać dodatkowe informacje dotyczące korzystania z portalu do tworzenia klastrów, zobacz [Tworzenie klastrów w portalu](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -33,23 +33,25 @@ Klient SSH. Aby uzyskać więcej informacji, zobacz [Łączenie się z usługą 
 
 ## <a name="create-an-apache-kafka-cluster"></a>Tworzenie klastra platformy Apache Kafka
 
-Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj następujące czynności:
+Aby utworzyć klaster Apache Kafka w usłudze HDInsight, wykonaj następujące czynności:
 
 1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
-1. W menu po lewej stronie przejdź do **+ Utwórz zasób** > **Analytics** > **HDInsight**.
+1. W górnym menu wybierz pozycję **+ Utwórz zasób**.
 
-    ![Azure Portal utworzyć usługi HDInsight zasobów](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
+    ![Azure Portal utworzyć usługi HDInsight zasobów](./media/apache-kafka-get-started/azure-portal-create-resource.png)
 
-1. W obszarze **podstawowe**wpisz lub wybierz następujące wartości:
+1. Wybierz pozycję **analiza** > **usłudze Azure HDInsight** , aby przejść do strony **Tworzenie klastra usługi HDInsight** .
+
+1. Na karcie **podstawowe** podaj następujące informacje:
 
     |Właściwość  |Opis  |
     |---------|---------|
-    |Subskrypcja    |  Wybierz swoją subskrypcję platformy Azure. |
+    |Subskrypcja    |  Z listy rozwijanej wybierz subskrypcję platformy Azure używaną na potrzeby klastra. |
     |Grupa zasobów     | Utwórz grupę zasobów lub wybierz istniejącą grupę zasobów.  Grupa zasobów jest kontenerem składników platformy Azure.  W tym przypadku grupa zasobów zawiera klaster usługi HDInsight i zależne konto usługi Azure Storage. |
-    |Nazwa klastra   | Wprowadź nazwę klastra usługi Hadoop. Ponieważ wszystkie klastry w usłudze HDInsight używają tej samej przestrzeni nazw DNS, ta nazwa musi być unikatowa. Nazwa może składać się z maksymalnie 59 znaków, w tym liter, cyfr i łączników. Łącznik nie może być pierwszym ani ostatnim znakiem nazwy. |
-    |Lokalizacja    | Wybierz lokalizację platformy Azure, w której chcesz utworzyć klaster.  Wybierz lokalizację znajdującą się blisko, aby zapewnić lepszą wydajność. |
-    |Typ klastra| Wybierz pozycję **Wybierz typ klastra**. Następnie wybierz pozycję **Kafka** jako typ klastra.|
+    |Nazwa klastra   | Wprowadź unikatową nazwę globalną. Nazwa może składać się z maksymalnie 59 znaków, w tym liter, cyfr i łączników. Łącznik nie może być pierwszym ani ostatnim znakiem nazwy. |
+    |Region    | Z listy rozwijanej wybierz region, w którym tworzony jest klaster.  Wybierz region bliżej siebie, aby uzyskać lepszą wydajność. |
+    |Typ klastra| Wybierz pozycję **Wybierz typ klastra** , aby otworzyć listę. Z listy wybierz **Kafka** jako typ klastra.|
     |Wersja|Zostanie określona wersja domyślna dla typu klastra. Wybierz z listy rozwijanej, jeśli chcesz określić inną wersję.|
     |Nazwa użytkownika i hasło logowania klastra    | Domyślna nazwa logowania to **admin**. Hasło musi składać się z co najmniej 10 znaków i musi zawierać co najmniej jedną cyfrę, jedną wielką i jedną małą literę oraz jeden znak inny niż alfanumeryczny (z wyjątkiem znaków "" "\). Upewnij się, że **nie zostało podane** typowe hasło, takie jak „Pass@word1”.|
     |Nazwa użytkownika protokołu SSH (Secure Shell) | Domyślna nazwa użytkownika to **sshuser**.  Możesz podać inną nazwę użytkownika protokołu SSH. |
@@ -100,15 +102,13 @@ Aby utworzyć klaster platformy Apache Kafka w usłudze HDInsight, wykonaj nast�
 
 ## <a name="connect-to-the-cluster"></a>Łączenie z klastrem
 
-1. Aby nawiązać połączenie z podstawowym węzłem głównym klastra platformy Apache Kafka, użyj następującego polecenia. Zastąp wartość `sshuser` nazwą użytkownika protokołu SSH. Zastąp ciąg `mykafka` nazwą swojego klastra Apache Kafka.
+1. Użyj [polecenia SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) do nawiązania połączenia z klastrem. Edytuj poniższe polecenie, zastępując wartość CLUSTERname nazwą klastra, a następnie wprowadź polecenie:
 
-    ```bash
-    ssh sshuser@mykafka-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Po pierwszym połączeniu z klastrem Twój klient SSH może wyświetlić ostrzeżenie, że nie można ustalić autentyczności hosta. Po wyświetleniu monitu wpisz wartość __yes__ i naciśnij klawisz __Enter__, aby dodać hosta do listy zaufanych serwerów klienta SSH.
-
-3. Po wyświetleniu monitu wprowadź hasło użytkownika SSH.
+1. Po wyświetleniu monitu wprowadź hasło użytkownika SSH.
 
     Po nawiązaniu połączenia zostanie wyświetlona informacja podobna do następującej:
 
@@ -155,6 +155,7 @@ W tej sekcji uzyskasz informacje o hoście z interfejsu API REST Apache Ambari w
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
+
     > [!Note]  
     > Jeśli ten proces jest wykonywany spoza klastra, istnieje inna procedura przechowywania nazwy klastra. W mniejszej sytuacji należy uzyskać nazwę klastra z Azure Portal. Następnie zastąp nazwę klastra `<clustername>` w następującym poleceniu i wykonaj go: `export clusterName='<clustername>'`.
 
@@ -295,9 +296,7 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 3. Wybierz pozycję __Usuń grupę zasobów__ i potwierdź.
 
 > [!WARNING]  
-> Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć.
->
-> Usunięcie platformy Apache Kafka w klastrze usługi HDInsight powoduje usunięcie wszystkich danych przechowywanych na platformie Kafka.
+> Usunięcie klastra Apache Kafka w usłudze HDInsight spowoduje usunięcie wszystkich danych przechowywanych w Kafka.
 
 ## <a name="next-steps"></a>Następne kroki
 

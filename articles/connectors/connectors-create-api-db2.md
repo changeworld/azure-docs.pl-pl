@@ -7,12 +7,12 @@ ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 0f6e32056783a816d847db191de4fcdae2616ab7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32b482607827ee4420e39b1936586d64f9ea3139
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446178"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651386"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Dostęp do zasobów IBM DB2 i zarządzanie nimi przy użyciu Azure Logic Apps
 
@@ -39,12 +39,12 @@ W tym artykule pokazano, jak utworzyć aplikację logiki, która wykonuje różn
 
 | Operacja bazy danych | Akcja łącznika |
 |--------------------|------------------|
-| Wyświetl listę tabel bazy danych | Pobieranie tabel |
+| Wyświetl listę tabel bazy danych | Pobierz tabele |
 | Odczytaj jeden wiersz przy użyciu polecenia SELECT | Pobierz wiersz |
 | Czytaj wszystkie wiersze przy użyciu polecenia SELECT | Pobierz wiersze |
 | Dodaj jeden wiersz przy użyciu instrukcji INSERT | Wstaw wiersz |
 | Edytuj jeden wiersz przy użyciu aktualizacji | Aktualizuj wiersz |
-| Usuń jeden wiersz przy użyciu polecenia DELETE | Usuń rząd |
+| Usuń jeden wiersz przy użyciu polecenia DELETE | Usuń wiersz |
 |||
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -80,17 +80,17 @@ W przykładach w tym artykule użyto wyzwalacza **cyklu** .
 
 Aby skonfigurować połączenie, podaj te szczegóły połączenia po wyświetleniu monitu, wybierz pozycję **Utwórz**, a następnie Zapisz aplikację logiki:
 
-| Właściwość | Wymagane | Opis |
+| Właściwość | Wymagany | Opis |
 |----------|----------|-------------|
 | **Łączenie za pośrednictwem bramy lokalnej** | Nie | Dotyczy tylko połączeń lokalnych. |
-| **Nazwa połączenia** | Tak | Nazwa połączenia, na przykład "MyLogicApp-DB2-Connection" |
-| **Serwer** | Tak | Numer portu lub dwukropek aliasu dla serwera bazy danych DB2, na przykład "myDB2server.cloudapp.net:50000" <p><p>**Uwaga**: Ta wartość to ciąg, który reprezentuje adres TCP/IP lub alias w formacie IPv4 lub IPv6, po którym następuje dwukropek i numer portu TCP/IP. |
-| **Baza danych** | Tak | Nazwa bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje nazwę DRDA relacyjnej bazy danych (RDBNAM): <p>-DB2 dla systemu z/OS akceptuje 16-bajtowy ciąg, w którym baza danych jest znana jako lokalizacja "IBM DB2 dla systemu z/OS". <br>-DB2 dla Akceptuję ciąg 18-bajtowy, w którym baza danych jest znana jako relacyjna baza danych "IBM DB2 for i". <br>-DB2 for LUW akceptuje ciąg 8-bajtowy. |
-| **Nazwa użytkownika** | Tak | Nazwa użytkownika bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, którego długość jest określana na podstawie określonej bazy danych: <p><p>-DB2 dla systemu z/OS akceptuje ciąg 8-bajtowy. <br>-DB2 dla i akceptuje 10-bajtowy ciąg. <br>-DB2 dla systemu Linux lub UNIX akceptuje 8-bajtowy ciąg. <br>-DB2 dla systemu Windows akceptuje 30-bajtowy ciąg. |
-| **Hasło** | Tak | Hasło do bazy danych |
+| **Nazwa połączenia** | Yes | Nazwa połączenia, na przykład "MyLogicApp-DB2-Connection" |
+| **Serwer** | Yes | Numer portu lub dwukropek aliasu dla serwera bazy danych DB2, na przykład "myDB2server.cloudapp.net:50000" <p><p>**Uwaga**: Ta wartość to ciąg, który reprezentuje adres TCP/IP lub alias w formacie IPv4 lub IPv6, po którym następuje dwukropek i numer portu TCP/IP. |
+| **Baza danych** | Yes | Nazwa bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje nazwę DRDA relacyjnej bazy danych (RDBNAM): <p>-DB2 dla systemu z/OS akceptuje 16-bajtowy ciąg, w którym baza danych jest znana jako lokalizacja "IBM DB2 dla systemu z/OS". <br>-DB2 dla Akceptuję ciąg 18-bajtowy, w którym baza danych jest znana jako relacyjna baza danych "IBM DB2 for i". <br>-DB2 for LUW akceptuje ciąg 8-bajtowy. |
+| **Nazwa użytkownika** | Yes | Nazwa użytkownika bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, którego długość jest określana na podstawie określonej bazy danych: <p><p>-DB2 dla systemu z/OS akceptuje ciąg 8-bajtowy. <br>-DB2 dla i akceptuje 10-bajtowy ciąg. <br>-DB2 dla systemu Linux lub UNIX akceptuje 8-bajtowy ciąg. <br>-DB2 dla systemu Windows akceptuje 30-bajtowy ciąg. |
+| **Hasło** | Yes | Hasło do bazy danych |
 ||||
 
-Przykład:
+Na przykład:
 
 ![Szczegóły połączenia dla baz danych opartych na chmurze](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
 
@@ -100,19 +100,19 @@ Przykład:
 
 Przed utworzeniem połączenia należy zainstalować lokalną bramę danych. W przeciwnym razie nie można zakończyć konfigurowania połączenia. Jeśli masz instalację bramy, Kontynuuj, podając te szczegóły połączenia, a następnie wybierz pozycję **Utwórz**.
 
-| Właściwość | Wymagane | Opis |
+| Właściwość | Wymagany | Opis |
 |----------|----------|-------------|
-| **Łączenie za pośrednictwem bramy lokalnej** | Tak | Ma zastosowanie, gdy chcesz połączyć lokalne i wyświetlić właściwości połączenia lokalnego. |
-| **Nazwa połączenia** | Tak | Nazwa połączenia, na przykład "MyLogicApp-DB2-Connection" | 
-| **Serwer** | Tak | Numer portu lub dwukropek aliasu dla serwera bazy danych DB2, na przykład "myDB2server: 50000" <p><p>**Uwaga**: Ta wartość to ciąg, który reprezentuje adres TCP/IP lub alias w formacie IPv4 lub IPv6, po którym następuje dwukropek i numer portu TCP/IP. |
-| **Baza danych** | Tak | Nazwa bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje nazwę DRDA relacyjnej bazy danych (RDBNAM): <p>-DB2 dla systemu z/OS akceptuje 16-bajtowy ciąg, w którym baza danych jest znana jako lokalizacja "IBM DB2 dla systemu z/OS". <br>-DB2 dla Akceptuję ciąg 18-bajtowy, w którym baza danych jest znana jako relacyjna baza danych "IBM DB2 for i". <br>-DB2 for LUW akceptuje ciąg 8-bajtowy. |
-| **Uwierzytelnianie** | Tak | Typ uwierzytelniania dla połączenia, na przykład "podstawowa" <p><p>**Uwaga**: Wybierz tę wartość z listy, która zawiera podstawowe lub Windows (Kerberos). |
-| **Nazwa użytkownika** | Tak | Nazwa użytkownika bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, którego długość jest określana na podstawie określonej bazy danych: <p><p>-DB2 dla systemu z/OS akceptuje ciąg 8-bajtowy. <br>-DB2 dla i akceptuje 10-bajtowy ciąg. <br>-DB2 dla systemu Linux lub UNIX akceptuje 8-bajtowy ciąg. <br>-DB2 dla systemu Windows akceptuje 30-bajtowy ciąg. |
-| **Hasło** | Tak | Hasło do bazy danych |
-| **Brama** | Tak | Nazwa zainstalowanej lokalnej bramy danych <p><p>**Uwaga**: Wybierz tę wartość z listy, która obejmuje wszystkie zainstalowane bramy danych w ramach subskrypcji i grupy zasobów platformy Azure. |
+| **Łączenie za pośrednictwem bramy lokalnej** | Yes | Ma zastosowanie, gdy chcesz połączyć lokalne i wyświetlić właściwości połączenia lokalnego. |
+| **Nazwa połączenia** | Yes | Nazwa połączenia, na przykład "MyLogicApp-DB2-Connection" | 
+| **Serwer** | Yes | Numer portu lub dwukropek aliasu dla serwera bazy danych DB2, na przykład "myDB2server: 50000" <p><p>**Uwaga**: Ta wartość to ciąg, który reprezentuje adres TCP/IP lub alias w formacie IPv4 lub IPv6, po którym następuje dwukropek i numer portu TCP/IP. |
+| **Baza danych** | Yes | Nazwa bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, który reprezentuje nazwę DRDA relacyjnej bazy danych (RDBNAM): <p>-DB2 dla systemu z/OS akceptuje 16-bajtowy ciąg, w którym baza danych jest znana jako lokalizacja "IBM DB2 dla systemu z/OS". <br>-DB2 dla Akceptuję ciąg 18-bajtowy, w którym baza danych jest znana jako relacyjna baza danych "IBM DB2 for i". <br>-DB2 for LUW akceptuje ciąg 8-bajtowy. |
+| **Uwierzytelnianie** | Yes | Typ uwierzytelniania dla połączenia, na przykład "podstawowa" <p><p>**Uwaga**: Wybierz tę wartość z listy, która zawiera podstawowe lub Windows (Kerberos). |
+| **Nazwa użytkownika** | Yes | Nazwa użytkownika bazy danych <p><p>**Uwaga**: Ta wartość jest ciągiem, którego długość jest określana na podstawie określonej bazy danych: <p><p>-DB2 dla systemu z/OS akceptuje ciąg 8-bajtowy. <br>-DB2 dla i akceptuje 10-bajtowy ciąg. <br>-DB2 dla systemu Linux lub UNIX akceptuje 8-bajtowy ciąg. <br>-DB2 dla systemu Windows akceptuje 30-bajtowy ciąg. |
+| **Hasło** | Yes | Hasło do bazy danych |
+| **Brama** | Yes | Nazwa zainstalowanej lokalnej bramy danych <p><p>**Uwaga**: Wybierz tę wartość z listy, która obejmuje wszystkie zainstalowane bramy danych w ramach subskrypcji i grupy zasobów platformy Azure. |
 ||||
 
-Przykład:
+Na przykład:
 
 ![Szczegóły połączenia dla lokalnych baz danych](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
 
@@ -151,10 +151,10 @@ Aby pobrać jeden rekord z tabeli bazy danych DB2, użyj akcji **Pobierz wiersz*
 
 1. Określ wartości wszystkich wymaganych właściwości (*). Po wybraniu tabeli akcja pokazuje odpowiednie właściwości, które są specyficzne dla rekordów w tej tabeli.
 
-   | Właściwość | Wymagane | Opis |
+   | Właściwość | Wymagany | Opis |
    |----------|----------|-------------|
-   | **Nazwa tabeli** | Tak | Tabela zawierająca żądany rekord, taka jak "obszar" w tym przykładzie |
-   | **Identyfikator obszaru** | Tak | Identyfikator żądanego rekordu, na przykład "99999" w tym przykładzie |
+   | **Nazwa tabeli** | Yes | Tabela zawierająca żądany rekord, taka jak "obszar" w tym przykładzie |
+   | **Identyfikator obszaru** | Yes | Identyfikator żądanego rekordu, na przykład "99999" w tym przykładzie |
    ||||
 
    ![Wybieranie tabeli](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
@@ -231,15 +231,15 @@ Aby dodać pojedynczy rekord do tabeli bazy danych DB2, użyj akcji **Wstaw wier
 
    Na potrzeby tego przykładu są następujące właściwości:
 
-   | Właściwość | Wymagane | Opis |
+   | Właściwość | Wymagany | Opis |
    |----------|----------|-------------|
-   | **Nazwa tabeli** | Tak | Tabela, w której ma zostać dodany rekord, taki jak "obszar" |
-   | **Identyfikator obszaru** | Tak | Identyfikator obszaru do dodania, na przykład "99999" |
-   | **Opis obszaru** | Tak | Opis obszaru do dodania, na przykład "obszar 99999" |
-   | **Identyfikator regionu** | Tak | Identyfikator regionu do dodania, na przykład "102" |
+   | **Nazwa tabeli** | Yes | Tabela, w której ma zostać dodany rekord, taki jak "obszar" |
+   | **Identyfikator obszaru** | Yes | Identyfikator obszaru do dodania, na przykład "99999" |
+   | **Opis obszaru** | Yes | Opis obszaru do dodania, na przykład "obszar 99999" |
+   | **Identyfikator regionu** | Yes | Identyfikator regionu do dodania, na przykład "102" |
    |||| 
 
-   Przykład:
+   Na przykład:
 
    ![Wybieranie tabeli](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
@@ -278,16 +278,16 @@ Aby zaktualizować pojedynczy rekord w tabeli bazy danych DB2, użyj akcji **Akt
 
    Na potrzeby tego przykładu są następujące właściwości:
 
-   | Właściwość | Wymagane | Opis |
+   | Właściwość | Wymagany | Opis |
    |----------|----------|-------------|
-   | **Nazwa tabeli** | Tak | Tabela, w której ma zostać zaktualizowany rekord, na przykład "obszar" |
-   | **Identyfikator wiersza** | Tak | Identyfikator rekordu do zaktualizowania, na przykład "99999" |
-   | **Identyfikator obszaru** | Tak | Nowy identyfikator obszaru, taki jak "99999" |
-   | **Opis obszaru** | Tak | Nowy opis obszaru, taki jak "zaktualizowany 99999" |
-   | **Identyfikator regionu** | Tak | Nowy identyfikator regionu, taki jak "102" |
+   | **Nazwa tabeli** | Yes | Tabela, w której ma zostać zaktualizowany rekord, na przykład "obszar" |
+   | **Identyfikator wiersza** | Yes | Identyfikator rekordu do zaktualizowania, na przykład "99999" |
+   | **Identyfikator obszaru** | Yes | Nowy identyfikator obszaru, taki jak "99999" |
+   | **Opis obszaru** | Yes | Nowy opis obszaru, taki jak "zaktualizowany 99999" |
+   | **Identyfikator regionu** | Yes | Nowy identyfikator regionu, taki jak "102" |
    ||||
 
-   Przykład:
+   Na przykład:
 
    ![Wybieranie tabeli](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
@@ -312,7 +312,7 @@ Rozwiń akcję **Aktualizuj wiersz** .
 
    ![Wyświetl dane wyjściowe ze zaktualizowanym wierszem](./media/connectors-create-api-db2/db2-connector-update-row-outputs.png)
 
-## <a name="delete-row"></a>Usuń rząd
+## <a name="delete-row"></a>Usuń wiersz
 
 Aby usunąć pojedynczy rekord z tabeli bazy danych DB2, użyj akcji **Usuń wiersz** w aplikacji logiki. Ta akcja uruchamia instrukcję `DELETE` bazy danych DB2, na przykład `DELETE FROM AREA WHERE AREAID = '99999'`.
 
@@ -326,13 +326,13 @@ Aby usunąć pojedynczy rekord z tabeli bazy danych DB2, użyj akcji **Usuń wie
 
    Na potrzeby tego przykładu są następujące właściwości:
 
-   | Właściwość | Wymagane | Opis |
+   | Właściwość | Wymagany | Opis |
    |----------|----------|-------------|
-   | **Nazwa tabeli** | Tak | Tabela, w której ma zostać usunięty rekord, na przykład "obszar" |
-   | **Identyfikator wiersza** | Tak | Identyfikator rekordu do usunięcia, na przykład "99999" |
+   | **Nazwa tabeli** | Yes | Tabela, w której ma zostać usunięty rekord, na przykład "obszar" |
+   | **Identyfikator wiersza** | Yes | Identyfikator rekordu do usunięcia, na przykład "99999" |
    ||||
 
-   Przykład:
+   Na przykład:
 
    ![Wybieranie tabeli](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
@@ -359,7 +359,10 @@ Rozwiń akcję **Usuń wiersz** .
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Aby uzyskać szczegółowe informacje techniczne, takie jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku OpenAPI łącznika (dawniej Swagger), zobacz [stronę odwołania łącznika](/connectors/db2/).
+Aby uzyskać więcej szczegółowych informacji technicznych dotyczących tego łącznika, takich jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku Swagger łącznika, zobacz [stronę odwołania łącznika](https://docs.microsoft.com/connectors/db2/).
+
+> [!NOTE]
+> W przypadku aplikacji logiki w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), wersja tego łącznika z oznaczeniem ISE w zamian używa [limitów komunikatów ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
 ## <a name="next-steps"></a>Następne kroki
 

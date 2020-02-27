@@ -3,12 +3,12 @@ title: Samouczek — Planowanie zadania ACR
 description: W tym samouczku dowiesz się, jak uruchomić zadanie Azure Container Registry zgodnie ze zdefiniowanym harmonogramem, ustawiając jeden lub więcej wyzwalaczy czasomierza
 ms.topic: article
 ms.date: 06/27/2019
-ms.openlocfilehash: 37247289ef11873ac37dc78ad56548994220f894
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 4c0962a38cca73e4a03a7417baaa595cf0d97009
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454680"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617442"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Uruchamianie zadania ACR zgodnie ze zdefiniowanym harmonogramem
 
@@ -197,6 +197,14 @@ Każde pole może mieć jeden z następujących typów wartości:
 |`"30 9 * * 1-5"`|o godzinie 9:30 UTC każdego dnia tygodnia|
 |`"30 9 * Jan Mon"`|o 9:30 czasu UTC co poniedziałek w styczniu|
 
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Aby usunąć wszystkie zasoby utworzone w tej serii samouczków, łącznie z rejestrem kontenerów lub rejestrami, wystąpieniem kontenera, magazynem kluczy i jednostką usługi, należy wydać następujące polecenia:
+
+```azurecli-interactive
+az group delete --resource-group $RES_GROUP
+az ad sp delete --id http://$ACR_NAME-pull
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

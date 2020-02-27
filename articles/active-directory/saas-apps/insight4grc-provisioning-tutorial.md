@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0ca9ed8781a13f9ab5e949e0e5f019a851dc75f4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1404854e054c8fc4967ba863486969b8a87db526
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057485"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621511"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Insight4GRC na potrzeby automatycznego aprowizacji użytkowników
 
@@ -90,7 +90,7 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Karta aprowizacji](common/provisioning-automatic.png)
 
-5. W sekcji **poświadczenia administratora** wprowadź poświadczenia administratora Insight4GRC i nazwę użytkownika. Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może się połączyć z usługą Insight4GRC. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi Insight4GRC ma uprawnienia administratora, a następnie spróbuj ponownie.
+5. W sekcji **poświadczenia administratora** wprowadź adres URL punktu końcowego Standard scim w **adresie URL dzierżawy**. Adres URL Enpoint powinien mieć format `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` gdzie **nazwa domeny Insight4GRC** jest wartością pobieraną w poprzednich krokach. Wprowadź wartość tokenu okaziciela pobranego wcześniej w **tokenie tajnym**. Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może się połączyć z usługą Insight4GRC. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi Insight4GRC ma uprawnienia administratora, a następnie spróbuj ponownie.
 
     ![aprowizacji](./media/insight4grc-provisioning-tutorial/provisioning.png)
 

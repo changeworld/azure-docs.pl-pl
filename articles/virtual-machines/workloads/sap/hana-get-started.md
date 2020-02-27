@@ -4,7 +4,7 @@ description: Przewodnik Szybki Start dotyczący ręcznej instalacji SAP HANA poj
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 630f094ffc6c57a0137d1abc46476f5abe64f616
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0090ffe977dee3e493d726c9eb4d151bcbeb503f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750370"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617249"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Szybki Start: Instalacja ręczna SAP HANA pojedynczego wystąpienia na platformie Azure Virtual Machines
 ## <a name="introduction"></a>Wprowadzenie
@@ -50,7 +50,7 @@ Aby uzyskać SAP HANA wysoką dostępność, zobacz [SAP HANA wysokiej dostępno
 
 Jeśli chcesz szybko uzyskać SAP HANA wystąpienia usługi 4HANA lub S/4HANA, rozważ użycie [biblioteki urządzeń w chmurze SAP](https://cal.sap.com). W [tym przewodniku](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)znajdziesz dokumentację dotyczącą sposobu wdrażania systemu S/4HANA za pomocą biblioteki urządzeń SAP w chmurze na platformie Azure. Wystarczy, że jest to subskrypcja platformy Azure i użytkownik SAP, który może być zarejestrowany w bibliotece urządzeń SAP Cloud.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 ### <a name="sap-hana-backup"></a>SAP HANA kopia zapasowa
 Aby uzyskać informacje na temat tworzenia kopii zapasowych baz danych SAP HANA na maszynach wirtualnych platformy Azure, zobacz:
 * [Przewodnik dotyczący tworzenia kopii zapasowych SAP HANA na platformie Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide).
@@ -63,7 +63,7 @@ Aby uzyskać informacje o sposobach wdrażania usługi S/4HANA lub BW/4HANA przy
 ### <a name="sap-hana-supported-operating-systems"></a>Obsługiwane systemy operacyjne SAP HANA
 Aby uzyskać informacje o obsługiwanych systemach operacyjnych SAP HANA, zobacz temat [SAP Note 2235581-SAP HANA: obsługiwane systemy operacyjne](https://launchpad.support.sap.com/#/notes/2235581/E). Maszyny wirtualne platformy Azure obsługują tylko podzbiór tych systemów operacyjnych. W przypadku wdrażania SAP HANA na platformie Azure obsługiwane są następujące systemy operacyjne: 
 
-* SUSE Linux Enterprise Server 12. x
+* SUSE Linux Enterprise Server 12.x
 * Red Hat Enterprise Linux 7.2
 
 Aby uzyskać dodatkową dokumentację SAP dotyczącą SAP HANA i innych systemów operacyjnych Linux, zobacz:
@@ -118,7 +118,7 @@ W tej sekcji przedstawiono podstawowe kroki ręcznej instalacji SAP HANA pojedyn
 8. Wprowadź lokalne adresy IP testów maszyn wirtualnych w pliku/etc/hosts.
 9. Wprowadź parametr **nofail** w pliku/etc/fstab.
 10. Ustaw parametry jądra systemu Linux zgodnie z używaną wersją z systemem operacyjnym Linux. Aby uzyskać więcej informacji, zobacz uwagi dotyczące oprogramowania SAP, które omawiają platformę HANA i sekcję "parametry jądra" w tym przewodniku.
-11. Dodaj obszar wymiany.
+11. Zwiększ obszar wymiany.
 12. Opcjonalnie Zainstaluj graficzny pulpit na testowych maszynach wirtualnych. W przeciwnym razie należy użyć instalacji zdalnej SAPinst.
 13. Pobierz oprogramowanie SAP z witryny SAP Service Marketplace.
 14. Zainstaluj wystąpienie SAP ASCS na maszynie wirtualnej serwera aplikacji.
@@ -140,7 +140,7 @@ W tej sekcji przedstawiono podstawowe kroki ręcznej instalacji SAP HANA pojedyn
 8. Wprowadź lokalne adresy IP testów maszyn wirtualnych w pliku/etc/hosts.
 9. Wprowadź parametr **nofail** w pliku/etc/fstab.
 10. Ustaw parametry jądra zgodnie z używaną wersją systemu operacyjnego Linux. Aby uzyskać więcej informacji, zobacz uwagi dotyczące oprogramowania SAP, które omawiają platformę HANA i sekcję "parametry jądra" w tym przewodniku.
-11. Dodaj obszar wymiany.
+11. Zwiększ obszar wymiany.
 12. Opcjonalnie Zainstaluj graficzny pulpit na testowych maszynach wirtualnych. W przeciwnym razie należy użyć instalacji zdalnej SAPinst.
 13. Pobierz oprogramowanie SAP z witryny SAP Service Marketplace.
 14. Utwórz grupę sapsys z IDENTYFIKATORem grupy 1001 na maszynie wirtualnej serwera platformy HANA.
@@ -175,19 +175,19 @@ Oto przykład sposobu sprawdzania dostępności dostępnych poprawek dla systemu
  `sudo zypper list-patches`
 
 W zależności od rodzaju problemu poprawki są klasyfikowane według kategorii i ważności. Najczęściej używane wartości dla kategorii są następujące: 
-- Zabezpieczenia
+- Bezpieczeństwo
 - Zalecane
-- Opcjonalne
-- Funkcja
-- Dokumentowa
-- yast
+- Optional (Opcjonalność)
+- Cecha
+- Dokument
+- Yast
 
 Najczęściej używane wartości dla ważności to:
 
-- Krytyczna
+- Krytyczny
 - Ważne
-- Średnia
-- Niska
+- Zawartość
+- Małe
 - Nieokreślony
 
 **Użyciu narzędzia zypper** polecenie szuka tylko aktualizacji wymaganych przez zainstalowane pakiety. Można na przykład użyć tego polecenia:
@@ -202,7 +202,7 @@ Główny system plików na maszynie wirtualnej z systemem Linux na platformie Az
 
 W oparciu o [wymagania dotyczące magazynu TDI SAP HANA](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)zasugerowana jest następująca konfiguracja usługi Azure Premium Storage: 
 
-| JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Pamięć RAM |  /Hana/Data i/Hana/log <br /> rozłożone z LVM lub mdadm | /hana/shared | wolumin/root | /usr/sap |
+| Jednostka SKU maszyny wirtualnej | Pamięć RAM |  /Hana/Data i/Hana/log <br /> rozłożone z LVM lub mdadm | /hana/shared | wolumin/root | /usr/sap |
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 

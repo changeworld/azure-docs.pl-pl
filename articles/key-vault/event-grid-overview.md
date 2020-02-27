@@ -1,21 +1,21 @@
 ---
-title: 'Samouczek: monitorowanie Key Vault z Azure Event Grid'
-description: 'Samouczek: używanie Azure Event Grid do subskrybowania zdarzeń Key Vault'
-services: media-services
+title: Key Vault monitorowania z Azure Event Grid
+description: Subskrybowanie zdarzeń Key Vault za pomocą Azure Event Grid
+services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5771af365b763d2152eea4ef4f662e08769b378c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2424fbac3c95c1c60e6ef61cba53e481f4bb478a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133349"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650745"
 ---
-# <a name="tutorial-monitoring-key-vault-with-azure-event-grid-preview"></a>Samouczek: monitorowanie Key Vault z Azure Event Grid (wersja zapoznawcza)
+# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Key Vault monitorowania z Azure Event Grid (wersja zapoznawcza)
 
 Integracja Key Vault z usługą Event Grid jest obecnie dostępna w wersji zapoznawczej. Umożliwia ona użytkownikom otrzymywanie powiadomień o zmianie stanu wpisu tajnego przechowywanego w magazynie kluczy. Zmiana stanu jest definiowana jako klucz tajny, który wkrótce wygaśnie (w ciągu 30 dni od wygaśnięcia), klucz tajny, który wygasł, lub wpis tajny, który ma nową wersję. Obsługiwane są powiadomienia dla wszystkich trzech typów tajnych (kluczy, certyfikatów i wpisów tajnych).
 
@@ -27,10 +27,10 @@ Funkcja Event Grid używa [subskrypcji zdarzeń](../event-grid/concepts.md#event
 
 Aby uzyskać więcej informacji, zobacz [schemat zdarzeń Key Vault](../event-grid/event-schema-key-vault.md).
 
-> [!NOTE]
-> Zdarzenia są wyzwalane tylko w przypadku wersji tajnych (wszystkie trzy typy) utworzonych po ustawieniu subskrypcji.
->
-> W przypadku istniejących wpisów tajnych należy wygenerować nowe wersje.
+> [!WARNING]
+> Zdarzenia powiadomień są wyzwalane tylko w nowych wersjach kluczy tajnych, kluczy i certyfikatów i należy najpierw subskrybować zdarzenie w magazynie kluczy, aby otrzymywać te powiadomienia.
+> 
+> Zdarzenia powiadomień dotyczące certyfikatów są odbierane tylko wtedy, gdy certyfikat zostanie automatycznie odnowiony zgodnie z zasadami określonymi dla certyfikatu.
 
 ## <a name="practices-for-consuming-events"></a>Praktyki związane z zużywaniem zdarzeń
 

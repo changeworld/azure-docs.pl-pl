@@ -7,15 +7,18 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 08/22/2019
-ms.openlocfilehash: 9f72edecc07c34a0f176e52f6b70644f9ceb16e0
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.date: 02/27/2020
+ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666707"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650570"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Komunikaty programu Exchange AS2 dla integracji z usługą B2B Enterprise w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
+
+> [!IMPORTANT]
+> Oryginalny łącznik AS2 jest przestarzały, więc upewnij się, że zamiast niego używasz łącznika **AS2 (v2)** . Ta wersja zapewnia te same możliwości co wersja oryginalna, jest natywna dla środowiska uruchomieniowego Logic Apps i zapewnia znaczną poprawę wydajności w zakresie przepływności i rozmiaru wiadomości. Dodatkowo łącznik macierzysty v2 nie wymaga utworzenia połączenia z kontem integracji. Zamiast tego, zgodnie z opisem w sekcji wymagania wstępne, należy się upewnić, że konto integracji zostało połączone z aplikacją logiki, w której zamierzasz korzystać z łącznika.
 
 Aby móc korzystać z komunikatów AS2 w Azure Logic Apps, można użyć łącznika AS2, który udostępnia wyzwalacze i akcje zarządzania komunikacją AS2. Aby na przykład nawiązać bezpieczeństwo i niezawodność podczas przesyłania komunikatów, możesz użyć następujących akcji:
 
@@ -46,9 +49,6 @@ Aby móc korzystać z komunikatów AS2 w Azure Logic Apps, można użyć łączn
 
 W tym artykule pokazano, jak dodać akcje kodowania i dekodowania AS2 do istniejącej aplikacji logiki.
 
-> [!IMPORTANT]
-> Oryginalny łącznik AS2 będzie przestarzały, więc upewnij się, że zamiast niego używasz łącznika **AS2 (v2)** . Ta wersja zapewnia te same możliwości co wersja oryginalna, jest natywna dla środowiska uruchomieniowego Logic Apps i zapewnia znaczną poprawę wydajności w zakresie przepływności i rozmiaru wiadomości. Dodatkowo łącznik macierzysty v2 nie wymaga utworzenia połączenia z kontem integracji. Zamiast tego, zgodnie z opisem w sekcji wymagania wstępne, należy się upewnić, że konto integracji zostało połączone z aplikacją logiki, w której zamierzasz korzystać z łącznika.
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, [zarejestruj się, aby skorzystać z bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
@@ -63,9 +63,9 @@ W tym artykule pokazano, jak dodać akcje kodowania i dekodowania AS2 do istniej
 
 * Jeśli używasz [Azure Key Vault](../key-vault/key-vault-overview.md) do zarządzania certyfikatami, sprawdź, czy klucze magazynu umożliwiają wykonywanie operacji **szyfrowania** i **odszyfrowywania** . W przeciwnym razie akcje kodowania i dekodowania kończą się niepowodzeniem.
 
-  W Azure Portal przejdź do magazynu kluczy, Wyświetl **dozwolone operacje**klucza magazynu i upewnij się, że są wybrane operacje **szyfrowania** i **odszyfrowywania** .
+  W Azure Portal przejdź do klucza w magazynie kluczy, przejrzyj **dozwolone operacje**dotyczące klucza i upewnij się, że są wybrane operacje **szyfrowania** i **odszyfrowywania** , na przykład:
 
-  ![Sprawdzanie operacji klucza magazynu](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
+  ![Sprawdzanie operacji klucza magazynu](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
@@ -88,9 +88,12 @@ W tym artykule pokazano, jak dodać akcje kodowania i dekodowania AS2 do istniej
    | **AS2 do** | Identyfikator odbiorcy wiadomości określony przez umowę AS2 |
    |||
 
-   Przykład:
+   Na przykład:
 
    ![Właściwości kodowania komunikatów](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
+
+> [!TIP]
+> Jeśli występują problemy podczas wysyłania podpisanych lub zaszyfrowanych wiadomości, rozważ podjęcie próby przeprowadzenia różnych formatów algorytmu SHA256. Specyfikacja AS2 nie udostępnia żadnych informacji o formatach SHA256, dlatego każdy dostawca używa ich własnej implementacji lub formatu.
 
 <a name="decode"></a>
 
@@ -110,14 +113,17 @@ W tym artykule pokazano, jak dodać akcje kodowania i dekodowania AS2 do istniej
 
    ![Wybieranie treści i nagłówków z danych wyjściowych żądania](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
 
-## <a name="sample"></a>Przykład
+## <a name="sample"></a>Sample
 
 Aby spróbować wdrożyć w pełni działającą aplikację logiki i przykład scenariusza AS2, zobacz [szablon i scenariusz aplikacji logiki AS2](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/).
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Aby uzyskać szczegółowe informacje techniczne, takie jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku OpenAPI łącznika (dawniej Swagger), zobacz [stronę odwołania łącznika](/connectors/as2/).
+Aby uzyskać szczegółowe informacje techniczne dotyczące tego łącznika, takie jak akcje i limity zgodnie z opisem w pliku struktury Swagger łącznika, zobacz [stronę odwołania łącznika](https://docs.microsoft.com/connectors/as2/). 
+
+> [!NOTE]
+> W przypadku aplikacji logiki w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oryginalna wersja z oznaczeniem tego łącznika w zamian używa [limitów komunikatów ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [pakiet integracyjny dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md)
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

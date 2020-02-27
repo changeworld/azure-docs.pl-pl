@@ -4,12 +4,12 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 0e81a9b6a91d2a9ed1af922dbbc53720022ff598
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 574122d3683f3de483950e2d098e890ab33dcb25
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657841"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615476"
 ---
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -23,11 +23,11 @@ Aby ukończyć kroki tego samouczka, upewnij się, że dysponujesz następujący
 * [Zestaw .NET Core 2.2 SDK](https://dotnet.microsoft.com/download).
 * Co najmniej jedno urządzenie (iOS lub Android), na którym ma zostać wdrożona i uruchomiona aplikacja.
   * Jeśli używasz systemu Android, musisz mieć:
-    * <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3,3</a> lub nowszy, <a href="https://unity3d.com/get-unity/download" target="_blank">aparatu Unity 2019,1</a> lub nowszego oraz <a href="https://git-scm.com/download/win" target="_blank">narzędzia Git dla systemu Windows</a> zainstalowane na komputerze z systemem Windows.
-    * Urządzenie <a href="https://developer.android.com/studio/debug/dev-options" target="_blank"></a> z systemem Android z obsługą dewelopera i <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore</a> .
+    * <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3,3</a> lub nowszy, <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1 lub 2019,2</a>i <a href="https://git-scm.com/download/win" target="_blank">git dla systemu Windows</a> zainstalowane na komputerze z systemem Windows.
+    * Urządzenie z systemem Android z <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">obsługą dewelopera</a> i <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore</a> .
   * W przypadku korzystania z systemu iOS należy dysponować:
-    * Komputer macOS, na którym są zainstalowane <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a> lub nowsze, <a href="https://cocoapods.org" target="_blank">CocoaPods</a>i <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1</a> lub nowsze.
+    * Komputer macOS, na którym są zainstalowane <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a> lub nowsze, <a href="https://cocoapods.org" target="_blank">CocoaPods</a>i <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1 lub 2019,2</a> .
     * Dostępne dla deweloperów urządzenie z systemem iOS <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">zgodne z ARKit</a> .
-    * Narzędzie git zainstalowane za pośrednictwem usługi oprogramowania homebrew. Wprowadź następujące polecenie w jednym wierszu w terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`Następnie uruchom `brew install git`polecenie.
+    * Narzędzie git zainstalowane za pośrednictwem usługi oprogramowania homebrew. Wprowadź następujące polecenie w jednym wierszu w terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` następnie uruchom `brew install git`.
 
 

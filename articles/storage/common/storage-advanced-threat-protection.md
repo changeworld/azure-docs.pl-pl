@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/04/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: f9889f58ead8d1dd35ceb50fa100b2b466cbe7cf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d97b63aa87bfd8cf8ca1a3f5b213d6b16ca066df
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022396"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616850"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Konfigurowanie zaawansowanej ochrony przed zagrożeniami dla usługi Azure Storage
 
@@ -31,7 +31,7 @@ Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage umożliwia po
 
 Można skonfigurować zaawansowaną ochronę przed zagrożeniami na kilka sposobów, które opisano w poniższych sekcjach.
 
-### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Uruchom [Azure Portal](https://portal.azure.com/).
 1. Przejdź do konta usługi Azure Storage. W obszarze **Ustawienia**wybierz pozycję **Zabezpieczenia zaawansowane**.
@@ -41,7 +41,7 @@ Można skonfigurować zaawansowaną ochronę przed zagrożeniami na kilka sposob
 
     ![Włączanie zaawansowanej ochrony przed zagrożeniami w usłudze Azure Storage](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
-### <a name="azure-security-centertabazure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
+### <a name="azure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
 Gdy subskrybujesz warstwę Standardowa w Azure Security Center, zaawansowana ochrona przed zagrożeniami jest automatycznie skonfigurowana na wszystkich kontach magazynu. Możesz włączyć lub wyłączyć zaawansowaną ochronę przed zagrożeniami dla kont magazynu w ramach określonej subskrypcji w następujący sposób:
 
@@ -49,19 +49,19 @@ Gdy subskrybujesz warstwę Standardowa w Azure Security Center, zaawansowana och
 1. W menu głównym kliknij pozycję **Cennik ustawienia &** .
 1. Kliknij subskrypcję, którą chcesz włączyć lub wyłączyć ochronę przed zagrożeniami dla swoich kont magazynu.
 
-    ![Wybierz subskrypcję](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
+    ![Wybieranie subskrypcji](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
 
 1. Kliknij pozycję **warstwa cenowa**.
 1. W sekcji **Wybieranie warstwy cenowej według typu zasobu** w wierszu **konta magazynu** kliknij pozycję **włączone** lub **wyłączone**.
 
     ![Włącz ATP w Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
-### <a name="templatetabtemplate"></a>[Szablon](#tab/template)
+### <a name="template"></a>[Szablon](#tab/template)
 
 Użyj szablonu Azure Resource Manager, aby wdrożyć konto usługi Azure Storage z włączoną funkcją zaawansowanej ochrony przed zagrożeniami. Aby uzyskać więcej informacji, zobacz [konto magazynu z zaawansowaną ochroną przed zagrożeniami](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
 
-### <a name="azure-policytabazure-policy"></a>[Azure Policy](#tab/azure-policy)
+### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 Użyj Azure Policy, aby włączyć zaawansowaną ochronę przed zagrożeniami na kontach magazynu w ramach określonej subskrypcji lub grupy zasobów.
 
@@ -79,14 +79,14 @@ Użyj Azure Policy, aby włączyć zaawansowaną ochronę przed zagrożeniami na
 
     ![Strona definicji zasad](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="rest-apitabrest-api"></a>[Interfejs API REST](#tab/rest-api)
+### <a name="rest-api"></a>[Interfejs API REST](#tab/rest-api)
 
 Użyj poleceń interfejsu API REST, aby utworzyć, zaktualizować lub pobrać ustawienie zaawansowanej ochrony przed zagrożeniami dla określonego konta magazynu.
 
 * [Zaawansowana ochrona przed zagrożeniami — tworzenie](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Zaawansowana ochrona przed zagrożeniami — Pobierz](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Użyj następujących poleceń cmdlet programu PowerShell:
 
@@ -116,9 +116,9 @@ Bieżące alerty zabezpieczeń można przeglądać i zarządzać nimi z poziomu 
 
 ![Adres e-mail alertu zaawansowanej ochrony przed zagrożeniami w usłudze Azure Storage](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 
-## <a name="protection-alerts"></a>Alerty ochrony
+## <a name="security-alerts"></a>Alerty zabezpieczeń
 
-Alerty są generowane przez nietypowe i potencjalnie szkodliwe próby dostępu do kont magazynu lub korzystania z nich. Aby uzyskać listę alertów dotyczących usługi Azure Storage, zobacz sekcję dotyczącą **magazynu** na [potrzeby wykrywania zagrożeń dla usług danych w Azure Security Center](../../security-center/security-center-alerts-data-services.md#azure-storage) alertach
+Alerty są generowane przez nietypowe i potencjalnie szkodliwe próby dostępu do kont magazynu lub korzystania z nich. Aby uzyskać listę alertów dotyczących usługi Azure Storage, zobacz sekcję dotyczącą **magazynu** w temacie [Ochrona przed zagrożeniami dla usług danych w Azure Security Center](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurestorage).
 
 ## <a name="next-steps"></a>Następne kroki
 

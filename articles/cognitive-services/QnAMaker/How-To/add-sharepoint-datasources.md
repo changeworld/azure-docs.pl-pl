@@ -3,12 +3,12 @@ title: Pliki programu SharePoint — QnA Maker
 description: Dodaj zabezpieczone źródła danych programu SharePoint do bazy wiedzy, aby wzbogacić bazę wiedzy z pytaniami i odpowiedziami, które mogą być zabezpieczone za pomocą Active Directory.
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: ec77d3ac217991ff191d80249bc86805e7c8ba35
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 402d8239ee9fbac01e64e3624a7e4d8a13f2e7d8
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544168"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650439"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Dodawanie bezpiecznego źródła danych programu SharePoint do bazy wiedzy
 
@@ -20,7 +20,8 @@ Jeśli Menedżer bazy wiedzy QnA Maker nie jest menedżerem Active Directory, na
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-QnA Maker używa Microsoft Graph w celu uzyskania uprawnień. Jeśli program SharePoint działa lokalnie, nie będzie można wyodrębnić z programu SharePoint, ponieważ Microsoft Graph nie będzie można określić uprawnień.
+* Oparta na chmurze QnA Maker SharePoint używa Microsoft Graph w celu uzyskania uprawnień. Jeśli program SharePoint działa lokalnie, nie będzie można wyodrębnić z programu SharePoint, ponieważ Microsoft Graph nie będzie można określić uprawnień.
+* Format adresu URL — QnA Maker obsługuje tylko adresy URL programu SharePoint, które są generowane na potrzeby udostępniania, i mają format https://*. SharePoint. com
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Dodaj obsługiwane typy plików do bazy wiedzy
 

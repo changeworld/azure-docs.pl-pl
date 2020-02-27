@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: c286efcfad78a8f7acf9974605d53ed3cc06a09e
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604537"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616484"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Ochrona Azure App Service aplikacji sieci Web i interfejsów API
 
@@ -29,7 +29,7 @@ Aby włączyć zaawansowaną ochronę przed zagrożeniami dla planu Azure App Se
 
 Po włączeniu planu App Service Security Center ocenia zasoby objęte planem App Service i generuje zalecenia dotyczące zabezpieczeń na podstawie ich wyników. Security Center chroni wystąpienie maszyny wirtualnej, w której jest uruchomiony App Service i interfejs zarządzania. Monitoruje również żądania i odpowiedzi wysyłane do i z aplikacji uruchamianych w App Service.
 
-Security Center wykorzystuje skalę chmury oraz widoczność, którą platforma Azure ma jako dostawcę chmury, aby monitorować typowe ataki aplikacji sieci Web. Security Center mogą wykrywać ataki w aplikacjach i identyfikować ataki, nawet gdy osoby atakujące znajdują się w fazie rekonesansego skanowania w celu identyfikowania luk w zabezpieczeniach w wielu aplikacjach hostowanych przez platformę Azure. Jako usługa natywna platformy Azure Security Center jest również w unikatowym miejscu, aby oferować analizę zabezpieczeń opartą na hoście obejmującą bazowe węzły obliczeniowe dla tego PaaS, umożliwiając Security Center wykrywające ataki na aplikacje sieci Web, które zostały już wykorzystane. Aby uzyskać szczegółowe informacje o alertach dotyczących wykrywania zagrożeń Security Center z Azure App Service, zobacz [wykrywanie zagrożeń w przypadku natywnych danych w chmurze](security-center-alerts-compute.md#azure-app-service-).
+Security Center wykorzystuje skalę chmury oraz widoczność, którą platforma Azure ma jako dostawcę chmury, aby monitorować typowe ataki aplikacji sieci Web. Security Center mogą wykrywać ataki w aplikacjach i identyfikować ataki, nawet gdy osoby atakujące znajdują się w fazie rekonesansego skanowania w celu identyfikowania luk w zabezpieczeniach w wielu aplikacjach hostowanych przez platformę Azure. Jako usługa natywna platformy Azure Security Center jest również w unikatowym miejscu, aby oferować analizę zabezpieczeń opartą na hoście obejmującą bazowe węzły obliczeniowe dla tego PaaS, umożliwiając Security Center wykrywające ataki na aplikacje sieci Web, które zostały już wykorzystane. Aby uzyskać więcej informacji, zobacz [Ochrona przed zagrożeniami dla Azure App Service](threat-protection.md#app-services).
 
 
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>Włączanie monitorowania i ochrony App Service

@@ -3,8 +3,8 @@ title: Omówienie SAP HANA na platformie Azure (duże wystąpienia) | Microsoft 
 description: Omówienie sposobu wdrażania SAP HANA na platformie Azure (duże wystąpienia).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ea337101a5fe44e42ce85c17fec32028c75d3b85
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101183"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616949"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Co to jest oprogramowanie SAP HANA na platformie Azure — duże wystąpienia?
 
@@ -27,8 +27,8 @@ SAP HANA na platformie Azure (duże wystąpienia) to unikatowe rozwiązanie na p
 Izolacja klienta w ramach sygnatury infrastruktury jest wykonywana w dzierżawach, które wyglądają następująco:
 
 - **Sieć**: Izolacja klientów w stosie infrastruktury za pomocą sieci wirtualnych dla dzierżawy przypisanej do klienta. Dzierżawa jest przypisana do jednego klienta. Klient może mieć wielu dzierżawców. Izolacja sieci dzierżawców zabrania komunikacji sieciowej między dzierżawcami na poziomie sygnatury infrastruktury, nawet jeśli dzierżawy należą do tego samego klienta.
-- **Składniki magazynu**: Izolacja przy użyciu maszyn wirtualnych magazynu z przypisanymi woluminami magazynu. Woluminy magazynu można przypisywać tylko do jednej maszyny wirtualnej magazynu. Maszyna wirtualna magazynu jest przypisana wyłącznie do jednej dzierżawy w stosie certyfikowanej infrastruktury SAP HANA TDI. W związku z tym woluminy magazynu przypisane do maszyny wirtualnej magazynu są dostępne tylko w jednej określonej i powiązanej dzierżawie. Nie są one widoczne między różnymi wdrożonymi dzierżawcami.
-- **Serwer lub host**: Serwer lub jednostka hosta nie są współużytkowane przez klientów ani dzierżawców. Serwer lub host wdrożony dla klienta to niepodzielna jednostka obliczeniowa bez systemu operacyjnego, która jest przypisana do jednej dzierżawy. *Nie* jest używane żadne partycjonowanie sprzętowe ani partycjonowanie, które może spowodować udostępnienie hosta lub serwera innemu klientowi. Woluminy magazynu przypisane do maszyny wirtualnej magazynu określonej dzierżawy są instalowane na takim serwerze. Dzierżawca może mieć jeden do wielu jednostek serwera z różnymi jednostkami SKU przypisanymi wyłącznie.
+- **Składniki magazynu**: Izolacja przy użyciu maszyn wirtualnych magazynu z przypisanymi woluminami magazynowymi. Woluminy magazynu można przypisywać tylko do jednej maszyny wirtualnej magazynu. Maszyna wirtualna magazynu jest przypisana wyłącznie do jednej dzierżawy w stosie certyfikowanej infrastruktury SAP HANA TDI. W związku z tym woluminy magazynu przypisane do maszyny wirtualnej magazynu są dostępne tylko w jednej określonej i powiązanej dzierżawie. Nie są one widoczne między różnymi wdrożonymi dzierżawcami.
+- **Serwer lub host**: serwer lub jednostka hosta nie są współużytkowane przez klientów lub dzierżawców. Serwer lub host wdrożony dla klienta to niepodzielna jednostka obliczeniowa bez systemu operacyjnego, która jest przypisana do jednej dzierżawy. *Nie* jest używane żadne partycjonowanie sprzętowe ani partycjonowanie, które może spowodować udostępnienie hosta lub serwera innemu klientowi. Woluminy magazynu przypisane do maszyny wirtualnej magazynu określonej dzierżawy są instalowane na takim serwerze. Dzierżawca może mieć jeden do wielu jednostek serwera z różnymi jednostkami SKU przypisanymi wyłącznie.
 - Za pomocą sygnatury infrastruktury w ramach SAP HANA na platformie Azure (duże wystąpienia) wiele różnych dzierżawców jest wdrażanych i izolowanych nawzajem w oparciu o koncepcje dotyczące sieci, magazynu i mocy obliczeniowej. 
 
 
@@ -36,10 +36,10 @@ Te jednostki serwera bez systemu operacyjnego są obsługiwane do uruchamiania t
 
 Od lipca 2019 różnice między dwiema różnymi zmianami sygnatur dużych wystąpień platformy HANA i lokalizacją wdrożeń:
 
-- "Wersja 3" (rev 3): To sygnatury, które zostały udostępnione Klientowi do wdrożenia przed lipca 2019
-- "Wersja 4" (rev 4): Nowy projekt sygnatury, który jest wdrażany w pobliżu hostów maszyn wirtualnych platformy Azure, a do tej pory są udostępniane w regionach świadczenia usługi Azure:
+- "Poprawka 3" (Rev. 3): to sygnatury, które zostały udostępnione Klientowi do wdrożenia przed lipca 2019
+- "Wersja 4" (Rev. 4): nowy projekt sygnatury wdrożony w pobliżu hostów maszyn wirtualnych platformy Azure, które są w tej chwili udostępniane w regionach świadczenia usługi Azure:
     -  Zachodnie stany USA 2 
-    -  East US 
+    -  Wschodnie stany USA 
     -  Europa Zachodnia
     -  Europa Północna
 

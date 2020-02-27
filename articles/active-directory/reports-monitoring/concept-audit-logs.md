@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714480"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648429"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące inspekcji w portalu usługi Azure Active Directory 
 
@@ -41,11 +41,11 @@ Ten artykuł zawiera omówienie raportu inspekcji.
  
 ## <a name="who-can-access-the-data"></a>Kto ma dostęp do danych?
 
-* Użytkownicy w rolach **administrator zabezpieczeń**, **czytelnik zabezpieczeń**, **czytelnik raportu** lub **administrator globalny**
+* Użytkownicy z **uprawnieniami administrator zabezpieczeń**, **czytelnik zabezpieczeń**, **czytelnik raportu** , **czytelnik globalny** lub role **administratora globalnego**
 
 ## <a name="audit-logs"></a>Dzienniki inspekcji
 
-Dzienniki inspekcji usługi Azure AD zawierają rekordy działań systemowych pod kątem zgodności. Aby uzyskać dostęp do raportu inspekcji, wybierz pozycję **dzienniki inspekcji** w sekcji **aktywność** **Azure Active Directory**. Należy pamiętać, że dzienniki inspekcji mogą mieć czas oczekiwania na godzinę, więc może upłynąć, że dane działania inspekcji będą wyświetlane w portalu po zakończeniu zadania.
+Dzienniki inspekcji usługi Azure AD zawierają rekordy działań systemowych pod kątem zgodności. Aby uzyskać dostęp do raportu inspekcji, wybierz pozycję **dzienniki inspekcji** w sekcji **monitorowanie** w **Azure Active Directory**. Należy pamiętać, że dzienniki inspekcji mogą mieć czas oczekiwania na godzinę, więc może upłynąć, że dane działania inspekcji będą wyświetlane w portalu po zakończeniu zadania.
 
 
 
@@ -90,16 +90,20 @@ Dane inspekcji można filtrować w następujących polach:
 Filtr **usługi** umożliwia wybranie z listy rozwijanej następujących usług:
 
 - Wszyscy
+- ŚRODOWISKO użytkownika zarządzania usługą AAD
 - Przeglądy dostępu
-- Aprowizacja kont 
-- Logowanie jednokrotne aplikacji
+- Aprowizacja kont
+- Serwer proxy aplikacji
 - Metody uwierzytelniania
 - B2C
 - Dostęp warunkowy
 - Katalog podstawowy
 - Zarządzanie prawami
+- Uwierzytelnianie hybrydowe
 - Identity Protection
 - Zaproszeni użytkownicy
+- Usługa MIM
+- MyApps
 - PROGRAMÓW
 - Samoobsługowe zarządzanie grupami
 - Samoobsługowe zarządzanie hasłami
@@ -118,7 +122,11 @@ Filtr **Kategoria** umożliwia wybranie jednego z następujących filtrów:
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
+- KerberosDomain
+- Zarządzanie nimi
+- Label
 - Inne
+- PermissionGrantPolicy
 - Zasady
 - ResourceManagement
 - RoleManagement
@@ -134,14 +142,13 @@ Filtr **stanu** umożliwia filtrowanie na podstawie stanu operacji inspekcji. Mo
 - Powodzenie
 - Niepowodzenie
 
-Filtr **docelowy** umożliwia wyszukiwanie określonego elementu docelowego według nazwy lub głównej nazwy użytkownika (UPN). Nazwy docelowej i nazwy UPN są rozróżniane wielkości liter. 
+Filtr **docelowy** umożliwia wyszukiwanie określonego elementu docelowego według początku nazwy lub głównej nazwy użytkownika (UPN). Nazwy docelowej i nazwy UPN są rozróżniane wielkości liter. 
 
-Filtr **zainicjowane przez** umożliwia zdefiniowanie nazwy aktora lub uniwersalnej nazwy głównej (UPN). Nazwa i nazwy UPN są rozróżniane wielkości liter.
+Filtr **zainicjowane przez** umożliwia określenie, jak zaczyna się nazwa aktora lub uniwersalna nazwa główna (UPN). Nazwa i nazwy UPN są rozróżniane wielkości liter.
 
 Filtr **zakresu dat** umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.  
 Możliwe wartości:
 
-- 1 miesiąc
 - 7 dni
 - 24 godziny
 - Niestandardowy
@@ -179,11 +186,11 @@ Za pomocą raportów inspekcji opartych na użytkownikach i grupach można uzysk
 
 - Jakie licencje zostały przypisane do grupy lub użytkownika?
 
-Jeśli chcesz przejrzeć tylko dane inspekcji powiązane z użytkownikami, możesz znaleźć widok filtrowany w obszarze **dzienniki inspekcji** w sekcji **aktywność** na karcie **Użytkownicy** . Ten punkt wejścia ma **UserManagement** jako wybraną kategorię.
+Jeśli chcesz przejrzeć tylko dane inspekcji powiązane z użytkownikami, możesz znaleźć widok filtrowany w obszarze **dzienniki inspekcji** w sekcji **monitorowanie** na karcie **Użytkownicy** . Ten punkt wejścia ma **UserManagement** jako wybraną kategorię.
 
 ![Dzienniki inspekcji](./media/concept-audit-logs/users.png "Dzienniki inspekcji")
 
-Jeśli chcesz przejrzeć tylko dane inspekcji powiązane z grupami, możesz znaleźć widok filtrowany w obszarze **dzienniki inspekcji** w sekcji **działanie** na karcie **grupy** . Ten punkt wejścia ma **GroupManagement** jako wybraną kategorię.
+Jeśli chcesz przejrzeć tylko dane inspekcji powiązane z grupami, możesz znaleźć widok filtrowany w obszarze **dzienniki inspekcji** w sekcji **monitorowanie** na karcie **grupy** . Ten punkt wejścia ma **GroupManagement** jako wybraną kategorię.
 
 ![Dzienniki inspekcji](./media/concept-audit-logs/groups.png "Dzienniki inspekcji")
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c2b79f8d0641b1a1386329a2add14ded766bf5a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445404"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623393"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Globalnie dystrybuowany magazyn transakcyjny i analityczny dla kontenerów usługi Azure Cosmos
 
@@ -27,10 +27,10 @@ Kontener usługi Azure Cosmos jest wewnętrznie obsługiwany przez dwa aparaty m
 Transakcyjny aparat magazynu jest obsługiwany przez lokalną dysków SSD, podczas gdy magazyn analityczny jest przechowywany w niedrogim magazynie SSD w klastrze. W poniższej tabeli przedstawiono istotne różnice między transakcyjną i analityczną magazynem.
 
 
-|Funkcja  |Magazyn transakcyjny  |Magazyn analityczny |
+|Cecha  |Magazyn transakcyjny  |Magazyn analityczny |
 |---------|---------|---------|
-|Maksymalny rozmiar magazynu na kontener usługi Azure Cosmos |   Bez ograniczeń      |    Bez ograniczeń     |
-|Maksymalny rozmiar magazynu na klucz partycji logicznej   |   10 GB      |   Bez ograniczeń      |
+|Maksymalny rozmiar magazynu na kontener usługi Azure Cosmos |   Nieograniczona liczba      |    Nieograniczona liczba     |
+|Maksymalny rozmiar magazynu na klucz partycji logicznej   |   20 GB      |   Nieograniczona liczba      |
 |Kodowanie magazynu  |   Zorientowane na wiersze przy użyciu formatu wewnętrznego.   |   Zorientowane na kolumny przy użyciu formatu Apache Parquet. |
 |Miejscowość magazynu |   Zreplikowane magazyny obsługiwane przez lokalne/wewnętrzne dysków SSD klastra. |  Replikowany magazyn został poddany niedrogim dysków SSD zdalnego/wyłączenia klastra.       |
 |Trwałość  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |

@@ -8,63 +8,63 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4c8761d82c8a735ac9c4bff2e5ac0107b2a57fe0
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 44d3b7c2b9e23b90f696162747d9728b18fb7d3f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537539"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623374"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Przy użyciu wykresu podzielonym na partycje w usłudze Azure Cosmos DB
 
-Jedną z kluczowych funkcji interfejsu API języka Gremlin w usłudze Azure Cosmos DB jest zdolność do obsługi dużych wykresów za pomocą skalowanie w poziomie. Kontenery można skalować niezależnie pod względem magazynu i przepływności. Możesz tworzyć kontenery w usłudze Azure Cosmos DB, która może być automatycznie skalowana do przechowywania danych programu graph. Danych jest automatycznie rozmieszczana w oparciu o określonym **klucza partycji**.
+Jedną z kluczowych funkcji interfejsu API języka Gremlin w usłudze Azure Cosmos DB jest zdolność do obsługi dużych wykresów za pomocą skalowanie w poziomie. Kontenery można skalować niezależnie pod względem magazynu i przepływności. Możesz tworzyć kontenery w usłudze Azure Cosmos DB, która może być automatycznie skalowana do przechowywania danych programu graph. Dane są automatycznie równoważone w oparciu o określony **klucz partycji**.
 
-**Partycjonowanie jest wymagana** Jeśli kontener może przechowywać więcej niż 10 GB, rozmiar lub jeśli chcesz przydzielić więcej niż 10 000 jednostek żądań na sekundę (ru). Te same zasady ogólne z [mechanizm partycjonowania usługi Azure Cosmos DB](partition-data.md) mających kilka optymalizacji specyficzne dla wykresu, opisane poniżej.
+**Partycjonowanie jest wymagane** , jeśli oczekuje się, że rozmiar kontenera przekracza 20 GB lub jeśli chcesz przydzielić więcej niż 10 000 jednostek żądań na sekundę (jednostek ru). Te same ogólne zasady dotyczące [mechanizmu partycjonowania Azure Cosmos DB](partition-data.md) stosują się z kilkoma optymalizacjami specyficznymi dla wykresu opisanymi poniżej.
 
-![Partycjonowanie grafu.](./media/graph-partitioning/graph-partitioning.png)
+![Partycjonowanie wykresu.](./media/graph-partitioning/graph-partitioning.png)
 
-## <a name="graph-partitioning-mechanism"></a>Wykres mechanizm partycjonowania
+## <a name="graph-partitioning-mechanism"></a>Mechanizm partycjonowania wykresu
 
-Poniższe wskazówki opisują, jak działa strategii partycjonowania w usłudze Azure Cosmos DB:
+W poniższych wytycznych opisano sposób działania strategii partycjonowania w Azure Cosmos DB:
 
-- **Wierzchołki i krawędzie, które są przechowywane jako dokumenty JSON**.
+- **Zarówno wierzchołki, jak i krawędzie są przechowywane jako dokumenty JSON**.
 
-- **Wierzchołki wymagają klucza partycji**. Ten klucz określi, w której partycji będą przechowywane wierzchołka za pomocą algorytmu wyznaczania wartości skrótu. Nazwa właściwości klucza partycji jest definiowany podczas tworzenia nowego kontenera i ma format: `/partitioning-key-name`.
+- **Wierzchołki wymagają klucza partycji**. Ten klucz określi, w której partycji będą przechowywane wierzchołka za pomocą algorytmu wyznaczania wartości skrótu. Nazwa właściwości klucza partycji jest definiowana podczas tworzenia nowego kontenera i ma format: `/partitioning-key-name`.
 
-- **Krawędzie będą przechowywane przy użyciu ich wierzchołka źródłowego**. Innymi słowy dla każdego wierzchołka kluczu partycji określa, gdzie są przechowywane wraz z jego krawędzi wychodzących. Tego rodzaju optymalizacji jest gotowe, aby uniknąć zapytań między partycjami, używając `out()` Kardynalność zapytania programu graph.
+- **Krawędzie będą przechowywane z wierzchołkiem źródła**. Innymi słowy dla każdego wierzchołka kluczu partycji określa, gdzie są przechowywane wraz z jego krawędzi wychodzących. Ta optymalizacja ma na celu uniknięcie zapytań między partycjami w przypadku używania kardynalności `out()` w zapytaniach grafu.
 
-- **Krawędzie zawierają odwołania do wierzchołki, które one wskazują**. Wszystkich krawędzi są przechowywane przy użyciu kluczy partycji i identyfikatory wierzchołki, na które one wskazują. To obliczenie sprawia, że wszystkie `out()` zapytania kierunek zawsze być o określonym zakresie podzielonym na partycje zapytanie i nie ukryta zapytań między partycjami. 
+- **Krawędzie zawierają odwołania do wierzchołków, do których prowadzą punkty**. Wszystkie krawędzie są przechowywane z kluczami partycji i identyfikatorami wierzchołków, do których się znajdują. To obliczenie powoduje, że wszystkie kwerendy kierunku `out()` zawsze są zapytaniem z podziałem na partycje, a nie z nieślepą kwerendą między partycjami. 
 
-- **Zapytania programu Graph, muszą określać klucz partycji**. Aby można było w pełni korzystać z partycjonowania poziomego w usłudze Azure Cosmos DB, klucza partycji należy podać w przypadku wybrania jednego wierzchołka, jeśli to możliwe. Zapytania do wybierania jednego lub wielu wierzchołków w grafie podzielonym na partycje są następujące:
+- **Zapytania programu Graph muszą określać klucz partycji**. Aby można było w pełni korzystać z partycjonowania poziomego w usłudze Azure Cosmos DB, klucza partycji należy podać w przypadku wybrania jednego wierzchołka, jeśli to możliwe. Zapytania do wybierania jednego lub wielu wierzchołków w grafie podzielonym na partycje są następujące:
 
-    - `/id` i `/label` nie są obsługiwane jako klucze partycji dla kontenera w interfejsie API języka Gremlin.
+    - `/id` i `/label` nie są obsługiwane jako klucze partycji dla kontenera w interfejsie API Gremlin.
 
 
-    - Wybraniu wierzchołka według identyfikatorów, a następnie **przy użyciu `.has()` krok, aby określić właściwości klucza partycji**: 
+    - Wybierając wierzchołka według identyfikatora, **Użyj kroku `.has()`, aby określić właściwość klucza partycji**: 
     
         ```java
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
         ```
     
-    - Wybieranie wierzchołka przez **Określanie krotki wartości klucza partycji i Identyfikatora**: 
+    - Wybieranie wierzchołka przez **określenie krotki, w tym wartości klucza partycji i identyfikatora**: 
     
         ```java
         g.V(['partitionKey_value', 'vertex_id'])
         ```
         
-    - Określanie **tablicy krotek identyfikatorów i wartości klucza partycji**:
+    - Określanie **tablicy spójnych wartości kluczy partycji i identyfikatorów**:
     
         ```java
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
         
-    - Wybierając zestaw wierzchołków przy użyciu ich identyfikatorów i **określania listy wartości klucza partycji**: 
+    - Wybieranie zestawu wierzchołków z ich identyfikatorami i **określanie listy wartości kluczy partycji**: 
     
         ```java
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
         ```
 
-    - Za pomocą **strategii partycjonowania** na początku zapytania i określania partycji dla zakresu pozostałej części zapytania języka Gremlin: 
+    - Użycie **strategii partycji** na początku zapytania i określenie partycji dla zakresu pozostałej części zapytania Gremlin: 
     
         ```java
         g.withStrategies(PartitionStrategy.build().partitionKey('partitionKey').readPartitions('partitionKey_value').create()).V()
@@ -74,18 +74,18 @@ Poniższe wskazówki opisują, jak działa strategii partycjonowania w usłudze 
 
 Skorzystaj z poniższych wskazówek, aby zapewnić wydajność i skalowalność podczas wykresach podzielonym na partycje za pomocą nieograniczone kontenery:
 
-- **Zawsze określać wartości klucza partycji podczas wykonywania zapytań dotyczących wierzchołek**. Pobieranie wierzchołka ze znanych partycji jest to sposób osiągnięcia wydajności. Wszystkie operacje kolejnych sąsiedztwem zawsze zostaną ograniczone do partycji, ponieważ krawędzie zawiera odwołanie do Identyfikatora i partycji klucza do ich wierzchołków docelowego.
+- **Zawsze określaj wartość klucza partycji podczas wykonywania zapytania w wierzchołku**. Pobieranie wierzchołka ze znanych partycji jest to sposób osiągnięcia wydajności. Wszystkie kolejne operacje sąsiedztwa zawsze zostaną ograniczone do zakresu partycji, ponieważ krawędzie zawierają identyfikator odwołania i klucz partycji do ich wierzchołków docelowych.
 
-- **Podczas wykonywania zapytań dotyczących krawędzi, jeśli to możliwe, użyj kierunku wychodzącego**. Jak wspomniano powyżej, krawędzie są przechowywane z ich źródła wierzchołki, w kierunku wychodzącego. Dlatego szanse konieczności uciekania się do zapytań między partycjami są zminimalizowane, gdy dane i zapytania, które są skonstruowane z tego wzorca należy pamiętać. Przeciwnie `in()` zapytania będą zawsze zapytania wielokierunkowego kosztowne.
+- **Użyj kierunku wychodzącego podczas wykonywania zapytania o krawędzi wszędzie tam, gdzie jest to możliwe**. Jak wspomniano powyżej, krawędzie są przechowywane z ich źródła wierzchołki, w kierunku wychodzącego. Dlatego szanse konieczności uciekania się do zapytań między partycjami są zminimalizowane, gdy dane i zapytania, które są skonstruowane z tego wzorca należy pamiętać. W przeciwieństwie do tego zapytanie `in()` będzie zawsze kosztowną kwerendą wentylatorów.
 
-- **Wybierz klucz partycji służący do równomiernego dystrybuowania danych między partycjami**. Ta decyzja silnie zależy od modelu danych rozwiązania. Przeczytaj więcej na temat tworzenia klucza odpowiednich partycji w [partycjonowanie i skalowanie w usłudze Azure Cosmos DB](partition-data.md).
+- **Wybierz klucz partycji, który będzie równomiernie dystrybuowany dane między partycjami**. Ta decyzja silnie zależy od modelu danych rozwiązania. Przeczytaj więcej na temat tworzenia odpowiedniego klucza partycji na potrzeby [partycjonowania i skalowania w Azure Cosmos DB](partition-data.md).
 
-- **Optymalizowanie zapytań, aby uzyskać dane w granicach partycji**. Optymalnej strategii partycjonowania byłaby wyrównana do wzorców zapytań. Zapytania, które pobierają dane z jednej partycji zapewnia maksymalną wydajność.
+- **Optymalizuj zapytania, aby uzyskać dane w granicach partycji**. Optymalnej strategii partycjonowania byłaby wyrównana do wzorców zapytań. Zapytania, które pobierają dane z jednej partycji zapewnia maksymalną wydajność.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Następnie możesz przejść do przeczytaj następujące artykuły:
 
-* Dowiedz się więcej o [partycji i skali w usłudze Azure Cosmos DB](partition-data.md).
-* Dowiedz się więcej o [Obsługa języka Gremlin w interfejsie API języka Gremlin](gremlin-support.md).
-* Dowiedz się więcej o [wprowadzenie do interfejsu API języka Gremlin](graph-introduction.md).
+* Dowiedz się więcej [na temat partycji i skalowania w Azure Cosmos DB](partition-data.md).
+* Dowiedz się więcej o [obsłudze Gremlin w interfejsie API Gremlin](gremlin-support.md).
+* Dowiedz się więcej o [wprowadzeniu do interfejsu API Gremlin](graph-introduction.md).

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 979e83c0eeaac4555fc5144bca479f0b5656cd28
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905485"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617541"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Błędy tworzenia klastra
 
@@ -36,7 +36,7 @@ W tym artykule opisano rozwiązania błędów, które mogą występować podczas
 
 Usługa HDInsight nie może uzyskać dostępu do adresu URL akcji skryptu podanego w ramach żądania utworzenia klastra. Usługa otrzymuje poprzedni komunikat o błędzie, gdy próbuje uzyskać dostęp do akcji skryptu.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 - W przypadku adresu URL HTTP lub HTTPS Sprawdź adres URL, próbując przejść do niego z okna przeglądarki incognito.
 - W przypadku adresu URL WASB upewnij się, że skrypt istnieje na koncie magazynu podanym w żądaniu. Upewnij się również, że klucz magazynu dla tego konta magazynu jest prawidłowy.
@@ -58,7 +58,7 @@ Usługa HDInsight nie może uzyskać dostępu do adresu URL akcji skryptu podane
 
 Usługa HDInsight nie może uzyskać dostępu do adresu URL akcji skryptu podanego w ramach żądania utworzenia klastra. Usługa otrzymuje poprzedni komunikat o błędzie, gdy próbuje uzyskać dostęp do akcji skryptu.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Dodaj odpowiednie konto Azure Data Lake Storage Gen 1 do klastra. Należy również dodać nazwę główną usługi, która uzyskuje dostęp do tego konta Data Lake Storage Gen 1 do klastra.
 
@@ -74,7 +74,7 @@ Dodaj odpowiednie konto Azure Data Lake Storage Gen 1 do klastra. Należy równi
 
 Określony rozmiar maszyny wirtualnej nie jest dozwolony dla tej roli. Ten błąd może wystąpić, ponieważ wartość rozmiaru maszyny wirtualnej nie działa zgodnie z oczekiwaniami lub nie jest odpowiednia dla roli komputera.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Komunikat o błędzie zawiera listę prawidłowych wartości dla rozmiaru maszyny wirtualnej. Wybierz jedną z tych wartości i ponów próbę utworzenia żądania klastra.
 
@@ -90,7 +90,7 @@ Komunikat o błędzie zawiera listę prawidłowych wartości dla rozmiaru maszyn
 
 Wartość **VirtualNetworkId** określona podczas tworzenia klastra nie ma poprawnego formatu.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Upewnij się, że wartości **VirtualNetworkId** i podsieci mają poprawny format. Aby uzyskać wartość **VirtualNetworkId** :
 
@@ -114,7 +114,7 @@ Oto przykład identyfikatora sieci wirtualnej:
 
 Skrypt niestandardowy dostarczony podczas żądania utworzenia klastra jest wykonywany po pomyślnym wdrożeniu klastra. Ten kod błędu wskazuje, że wystąpił błąd podczas wykonywania niestandardowego skryptu o nazwie \<SCRIPT_NAME\>.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Skrypt jest skryptem niestandardowym, dlatego zalecamy rozwiązanie problemu i ponowne uruchomienie skryptu w razie potrzeby. Aby rozwiązać problem z błędem skryptu, zapoznaj się z dziennikami w folderze/var/lib/Ambari-Agent/*. Lub Otwórz stronę **operacje** w interfejsie użytkownika Ambari, a następnie wybierz operację **run_customscriptaction** , aby wyświetlić szczegóły błędu.
 
@@ -130,7 +130,7 @@ Skrypt jest skryptem niestandardowym, dlatego zalecamy rozwiązanie problemu i p
 
 Niestandardowy magazyn metadanych jest niezgodny z wybraną wersją klastra usługi HDInsight. Obecnie klastry usługi HDInsight 4,0 obsługują tylko usługi magazynu metadanych w wersji 3,0 lub nowszej, natomiast klastry usługi HDInsight 3,6 nie obsługują magazynu metadanych w wersji 3,0 lub nowszej.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Używaj tylko wersji magazynu metadanych obsługiwanej przez wersję klastra usługi HDInsight. Jeśli nie określisz niestandardowego magazynu metadanych, Usługa HDInsight wewnętrznie tworzy magazyn metadanych, a następnie usuwa go po usunięciu klastra.
 
@@ -146,7 +146,7 @@ Używaj tylko wersji magazynu metadanych obsługiwanej przez wersję klastra us�
 
 Reguła zapory w sieciowej grupie zabezpieczeń (sieciowej grupy zabezpieczeń) blokuje komunikację z klastrem przy użyciu krytycznych usług zarządzania kondycją platformy Azure.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Jeśli planujesz użyć grup zabezpieczeń sieci do kontrolowania ruchu sieciowego, przed zainstalowaniem usługi HDInsight wykonaj następujące czynności:
 
@@ -167,12 +167,12 @@ Jeśli planujesz użyć grup zabezpieczeń sieci do kontrolowania ruchu sieciowe
 
 Nie podano uprawnień wymaganych do zarządzania tożsamościami. Tożsamość zarządzana przypisana przez użytkownika nie ma roli współautor Blob Storage na koncie magazynu Azure Data Lake Storage Gen2.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 1. Otwórz witrynę Azure Portal.
 1. Przejdź do swojego konta magazynu.
 1. Poszukaj w obszarze **Access Control (IAM)** .
-1. Upewnij się, że rola współautor danych obiektów blob magazynu lub rola właściciela danych obiektu blob magazynu ma przypisany dostęp do tożsamości zarządzanej przypisanej przez użytkownika dla subskrypcji.
+1. Upewnij się, że użytkownik ma rolę współautor danych obiektów blob magazynu lub przypisaną rolę właściciela danych obiektu blob magazynu.
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie uprawnień dla tożsamości zarządzanej na koncie Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
@@ -188,7 +188,7 @@ Aby uzyskać więcej informacji, zobacz [Konfigurowanie uprawnień dla tożsamo�
 
 Jeśli sieciowe grupy zabezpieczeń lub trasy zdefiniowane przez użytkownika (UDR) kontrolują ruch przychodzący do klastra usługi HDInsight, należy się upewnić, że klaster może komunikować się z krytycznymi usługami Azure Health i Management.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Jeśli planujesz użyć grup zabezpieczeń sieci do kontrolowania ruchu sieciowego, przed zainstalowaniem usługi HDInsight wykonaj następujące czynności:
 
@@ -208,7 +208,7 @@ Jeśli planujesz użyć grup zabezpieczeń sieci do kontrolowania ruchu sieciowe
 
 Zazwyczaj ten błąd jest generowany, gdy występuje problem przejściowy lub awaria platformy Azure.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Sprawdź na stronie [stanu platformy Azure](https://status.azure.com) ewentualne przestoje związane z platformą Azure, które mogą mieć wpływ na wdrożenie klastra. Jeśli nie ma przerwy w działaniu, ponów próbę wdrożenia klastra.
 

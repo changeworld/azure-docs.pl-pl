@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2020
+ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5453793c7e1bb1ef766939d2e7fdf32a1ac1ec72
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 01397ad078bc741977c4928f67d1834f05e1db8d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499940"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623971"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Alerty zabezpieczeń — Podręcznik referencyjny
 
@@ -33,7 +33,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 ## <a name="alerts-windows"></a>Alerty dla maszyn z systemem Windows
 
-[Dalsze szczegóły i uwagi](security-center-alerts-iaas.md#windows-)
+[Dalsze szczegóły i uwagi](threat-protection.md#windows-machines)
 
 |Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
@@ -124,7 +124,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 ## <a name="alerts-linux"></a>Alerty dla maszyn z systemem Linux
 
-[Dalsze szczegóły i uwagi](security-center-alerts-iaas.md#linux-)
+[Dalsze szczegóły i uwagi](threat-protection.md#linux-machines)
 
 |Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
@@ -213,7 +213,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 ## <a name="alerts-azureappserv"></a>Alerty dla Azure App Service
 
-[Dalsze szczegóły i uwagi](security-center-alerts-compute.md#azure-app-service-)
+[Dalsze szczegóły i uwagi](threat-protection.md#app-services)
 
 |Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
@@ -238,7 +238,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 ## <a name="alerts-akscluster"></a>Alerty dla kontenerów — klastry usługi Azure Kubernetes
 
-[Dalsze szczegóły i uwagi](security-center-alerts-compute.md#azure-containers-)
+[Dalsze szczegóły i uwagi](threat-protection.md#azure-containers)
 
 |Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
@@ -253,7 +253,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 ## <a name="alerts-containerhost"></a>Alerty dla kontenerów — poziom hosta
 
-[Dalsze szczegóły i uwagi](security-center-alerts-compute.md#azure-containers-)
+[Dalsze szczegóły i uwagi](threat-protection.md#azure-containers)
 
 |Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
@@ -269,7 +269,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 ## <a name="alerts-sql-db-and-warehouse"></a>Alerty dla SQL Database i SQL Data Warehouse
 
-[Dalsze szczegóły i uwagi](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+[Dalsze szczegóły i uwagi](threat-protection.md#data-sql)
 
 |Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
@@ -287,7 +287,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 ## <a name="alerts-azurestorage"></a>Alerty dotyczące usługi Azure Storage
 
-[Dalsze szczegóły i uwagi](security-center-alerts-data-services.md#azure-storage-)
+[Dalsze szczegóły i uwagi](threat-protection.md#azure-storage)
 
 |Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
@@ -308,7 +308,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 ## <a name="alerts-azurecosmos"></a>Alerty dla Azure Cosmos DB (wersja zapoznawcza)
 
-[Dalsze szczegóły i uwagi](security-center-alerts-data-services.md#azure-cosmos-db)
+[Dalsze szczegóły i uwagi](threat-protection.md#cosmos-db)
 
 |Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
@@ -319,7 +319,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 ## <a name="alerts-azurenetlayer"></a>Alerty dla warstwy sieci platformy Azure
 
-[Dalsze szczegóły i uwagi](security-center-alerts-service-layer.md#azure-network-layer)
+[Dalsze szczegóły i uwagi](threat-protection.md#network-layer)
 
 |Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
@@ -344,7 +344,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 ## <a name="alerts-azureresourceman"></a>Alerty dla Azure Resource Manager (wersja zapoznawcza)
 
-[Dalsze szczegóły i uwagi](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+[Dalsze szczegóły i uwagi](threat-protection.md#management-layer)
 
 |Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
@@ -363,7 +363,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 ## <a name="alerts-azurekv"></a>Alerty dla Azure Key Vault (wersja zapoznawcza)
 
-[Dalsze szczegóły i uwagi](security-center-alerts-service-layer.md#azure-keyvault)
+[Dalsze szczegóły i uwagi](threat-protection.md#azure-keyvault)
 
 |Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
@@ -381,7 +381,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 
 ## <a name="alerts-azureddos"></a>Alerty dla Azure DDoS Protection
 
-[Dalsze szczegóły i uwagi](security-center-alerts-integration.md#azure-ddos)
+[Dalsze szczegóły i uwagi](threat-protection.md#azure-ddos)
 
 |Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
@@ -418,6 +418,7 @@ Obsługiwane przez Security Center zamiary kasowania łańcucha są oparte na [M
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej o alertach, zobacz następujące tematy:
 
+* [Ochrona przed zagrożeniami w Azure Security Center](threat-protection.md)
 * [Alerty zabezpieczeń w usłudze Azure Security Center](security-center-alerts-overview.md)
 * [Zarządzanie alertami zabezpieczeń i reagowanie na nie w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Eksportowanie alertów zabezpieczeń i zaleceń (wersja zapoznawcza)](continuous-export.md)

@@ -3,28 +3,28 @@ title: Certyfikacja SAP HANA na platformie Azure (duże wystąpienia) | Microsof
 description: Certyfikacja SAP HANA na platformie Azure (duże wystąpienia).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c2c919d6e85a2b708dc247b1642e7e8987df81b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2a02f0e1b05b9de8105126d1c9e4e3f79057285f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099877"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617226"
 ---
 # <a name="certification"></a>Certyfikacja
 
 Oprócz certyfikacji NetWeaver, SAP wymaga specjalnej certyfikacji SAP HANA do obsługi SAP HANA w niektórych infrastrukturach, takich jak Azure IaaS.
 
-Podstawowa Uwaga dotycząca oprogramowania SAP w systemie NetWeaver i SAP HANA certyfikacji to [#1928533a — aplikacje SAP na platformie Azure: Obsługiwane produkty i typy](https://launchpad.support.sap.com/#/notes/1928533)maszyn wirtualnych platformy Azure.
+Podstawowa Uwaga dotycząca oprogramowania SAP w systemie NetWeaver oraz do stopnia certyfikacji SAP HANA, to [SAP uwagi #1928533 — aplikacje SAP na platformie Azure: obsługiwane produkty i typy maszyn wirtualnych platformy Azure](https://launchpad.support.sap.com/#/notes/1928533).
 
 Rekordy certyfikacji dla SAP HANA na platformie Azure (duże wystąpienia) mogą znajdować się w witrynie [SAP HANA certyfikowanych platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) . 
 

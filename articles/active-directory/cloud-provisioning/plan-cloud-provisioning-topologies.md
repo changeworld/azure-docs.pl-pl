@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 142974423816b07d754a5425017aedc3195e2f4e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793999"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620873"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect obsługiwane topologie i scenariusze aprowizacji w chmurze
 W tym artykule opisano różne topologie lokalne i Azure Active Directory (Azure AD) korzystające Azure AD Connect aprowizacji w chmurze. Ten artykuł zawiera tylko obsługiwane konfiguracje i scenariusze.
@@ -33,12 +33,16 @@ Poniżej znajduje się lista informacji, które należy wziąć pod uwagę podcz
 - Zakotwiczenie źródła dla obiektów jest wybierane automatycznie.  Używa on usługi MS-DS-ConsistencyGuid, jeśli jest obecny, w przeciwnym razie jest używany element ObjectGUID.
 - Nie można zmienić atrybutu, który jest używany dla kotwicy źródłowej.
 
+## <a name="single-forest-single-azure-ad-tenant"></a>Pojedynczy las, pojedyncza dzierżawa usługi Azure AD
+![Topologia jednego lasu i pojedynczej dzierżawy](media/plan-cloud-provisioning-topologies/single-forest.png)
+
+Najprostsza topologia to pojedynczy las lokalny, z co najmniej jedną domeną i jedną dzierżawą usługi Azure AD.  Przykład tego scenariusza można znaleźć w [samouczku: pojedynczy las z jedną dzierżawą usługi Azure AD](tutorial-single-forest.md)
 
 
 ## <a name="multi-forest-single-azure-ad-tenant"></a>Wiele lasów, pojedyncza dzierżawa usługi Azure AD
 ![Topologia dla wielu lasów i pojedynczej dzierżawy](media/plan-cloud-provisioning-topologies/multi-forest.png)
 
-Najbardziej typową topologią jest wiele lasów usługi AD, z co najmniej jedną domeną i jedną dzierżawą usługi Azure AD.  
+Wspólna topologia to wiele lasów usługi AD, z co najmniej jedną domeną i jedną dzierżawą usługi Azure AD.  
 
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>Istniejący Las z Azure AD Connectm, nowym lasem z obsługą chmury
 ![Topologia jednego lasu i pojedynczej dzierżawy](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
@@ -50,10 +54,7 @@ Topologia ![jednego lasu i pojedynczej dzierżawy](media/plan-cloud-provisioning
 
 Aby zapoznać się z przykładem tego scenariusza, zobacz [Samouczek: pilotaż Azure AD Connect aprowizacji w chmurze w istniejącym synchronizowanym lesie usługi AD](tutorial-pilot-aadc-aadccp.md)
 
-## <a name="single-forest-single-azure-ad-tenant"></a>Pojedynczy las, pojedyncza dzierżawa usługi Azure AD
-![Topologia jednego lasu i pojedynczej dzierżawy](media/plan-cloud-provisioning-topologies/single-forest.png)
 
-Najprostsza topologia to pojedynczy las lokalny, z co najmniej jedną domeną i jedną dzierżawą usługi Azure AD.  Przykład tego scenariusza można znaleźć w [samouczku: pojedynczy las z jedną dzierżawą usługi Azure AD](tutorial-single-forest.md)
 
 ## <a name="next-steps"></a>Następne kroki 
 

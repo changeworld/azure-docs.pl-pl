@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 140edb3162d4f76c741a5692faa19325581a3ba7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5507579338ad0d87bc6223b56283fe7ed46af7d8
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704494"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613305"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Skonfiguruj powiadomienia e-mail pod kątem problemów w Azure Active Directory Domain Services
 
@@ -58,7 +58,7 @@ Możesz również wybrać opcję posiadania wszystkich *administratorów globaln
 Aby przejrzeć istniejących adresatów powiadomień e-mail lub dodać dodatkowych adresatów, wykonaj następujące czynności:
 
 1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**.
-1. Wybierz domenę zarządzaną platformy Azure AD DS, na przykład *aadds.contoso.com*.
+1. Wybierz domenę zarządzaną platformy Azure AD DS, na przykład *aaddscontoso.com*.
 1. Po lewej stronie okna zasobów AD DS platformy Azure wybierz pozycję **Ustawienia powiadomień**. Są wyświetlane wszyscy adresaci powiadomień e-mail.
 1. Aby dodać adresata poczty e-mail, wprowadź adres e-mail w tabeli dodatkowych adresatów.
 1. Gdy skończysz, wybierz pozycję **Zapisz** na pasku nawigacyjnym najwyższego poziomu.

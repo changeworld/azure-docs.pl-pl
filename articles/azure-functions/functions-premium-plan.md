@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: cf70124f2e310dd62fd32de0e17edb40c047a318
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212473"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615683"
 ---
 # <a name="azure-functions-premium-plan"></a>Plan Azure Functions Premium
 
@@ -88,7 +88,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Podczas tworzenia lub skalowania planu można wybrać jeden z trzech rozmiarów wystąpień.  Opłaty zostaną naliczone za łączną liczbę rdzeni i zużywaną pamięć na sekundę.  Aplikacja może automatycznie skalować w poziomie do wielu wystąpień stosownie do potrzeb.  
 
-|SKU|Rdzenie|Pamięć|Storage|
+|SKU|Rdzenie|Memory (Pamięć)|Storage|
 |--|--|--|--|
 |EP1|1|3,5 GB|250|
 |EP2|2|7GB|250|
@@ -103,32 +103,33 @@ Na przykład aplikacja funkcji JavaScript jest ograniczona przez domyślny limit
 
 Poniżej znajdują się obecnie obsługiwane regiony dla każdego systemu operacyjnego.
 
-|Region| Windows | Linux |
+|Region| System Windows | Linux |
 |--| -- | -- |
 |Australia Środkowa| ✔<sup>1</sup> | |
 |Australia Środkowa 2| ✔<sup>1</sup> | |
-|Australia Wschodnia| ✔ | |
+|Australia Wschodnia| ✔ | ✔<sup>1</sup> |
 |Australia Południowo-Wschodnia | ✔ | ✔<sup>1</sup> |
 |Brazylia Południowa| ✔<sup>2</sup> |  |
-|Kanada Środkowa| ✔ |  |
+|Kanada Środkowa| ✔ | ✔<sup>1</sup> |
 |Środkowe stany USA| ✔ |  |
 |Azja Wschodnia| ✔ |  |
 |Wschodnie stany USA | ✔ | ✔<sup>1</sup> |
-|Wschodnie stany USA 2| ✔ |  |
+|Wschodnie stany USA 2| ✔ | ✔<sup>1</sup> |
 |Francja Środkowa| ✔ |  |
 |Niemcy Środkowo-Zachodnie| ✔ | |
 |Japonia Wschodnia| ✔ | ✔<sup>1</sup> |
-|Japonia Zachodnia| ✔ | |
-|Korea Środkowa| ✔ |  |
+|Japonia Zachodnia| ✔ | ✔<sup>1</sup> |
+|Korea Środkowa| ✔ | ✔<sup>1</sup> |
 |Północno-środkowe stany USA| ✔ |  |
 |Europa Północna| ✔ | ✔<sup>1</sup> |
 |Południowo-środkowe stany USA| ✔ | ✔<sup>1</sup> |
 |Indie Południowe | ✔ | |
 |Azja Południowo-Wschodnia| ✔ | ✔<sup>1</sup> |
-|Południowe Zjednoczone Królestwo| ✔ | |
+|Południowe Zjednoczone Królestwo| ✔ | ✔<sup>1</sup> |
 |Zachodnie Zjednoczone Królestwo| ✔ |  |
 |Europa Zachodnia| ✔ | ✔<sup>1</sup> |
 |Indie Zachodnie| ✔ |  |
+|Zachodnio-środkowe stany USA| | ✔<sup>1</sup> |
 |Zachodnie stany USA| ✔ | ✔<sup>1</sup> |
 |Zachodnie stany USA 2| ✔ |  |
 

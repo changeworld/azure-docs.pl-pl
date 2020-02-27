@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 203e3718cedca693dc029a4ba20a86ca50ab3e32
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 5c199d074a6655ad14a0c66925e4302f70424970
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603862"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615985"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Zarządzanie alertami zabezpieczeń i reagowanie na nie w Azure Security Center
 
@@ -65,19 +65,27 @@ Usługa Security Center automatycznie gromadzi, analizuje i integruje dane dzien
     > [!NOTE]
     >W niektórych przypadkach źródłowy adres IP nie jest dostępny, a niektóre dzienniki zdarzeń zabezpieczeń systemu Windows nie zawierają adresu IP.
 
-1. Kroki korygowania sugerowane przez Security Center różnią się w zależności od alertu zabezpieczeń. Obserwuj je dla każdego alertu. W niektórych przypadkach w celu ograniczenia alertu dotyczącego wykrywania zagrożeń może być konieczne użycie innych kontrolek lub usług platformy Azure w celu zaimplementowania zalecanej korekty. 
+1. Kroki korygowania sugerowane przez Security Center różnią się w zależności od alertu zabezpieczeń. Obserwuj je dla każdego alertu. 
+
+    W niektórych przypadkach w celu ograniczenia alertu dotyczącego wykrywania zagrożeń może być konieczne użycie innych kontrolek lub usług platformy Azure w celu zaimplementowania zalecanej korekty. 
 
     Poniższe tematy przeprowadzą Cię przez różne alerty, zgodnie z typami zasobów:
     
-    * [Alerty maszyn wirtualnych i serwerów IaaS](security-center-alerts-iaas.md)
-    * [Natywne alerty obliczeniowe](security-center-alerts-compute.md)
-    * [Alerty usług danych](security-center-alerts-data-services.md)
-    
+    * [Alerty dla maszyn IaaS z systemem Windows](threat-protection.md#windows-machines)
+    * [Alerty dla maszyn z systemem IaaS Linux](threat-protection.md#linux-machines)
+    * [Alerty dla Azure App Service](threat-protection.md#app-services)
+    * [Alerty dla kontenerów platformy Azure](threat-protection.md#azure-containers)
+    * [Alerty dla SQL Database i SQL Data Warehouse](threat-protection.md#data-sql)
+    * [Alerty dotyczące usługi Azure Storage](threat-protection.md#azure-storage)
+    * [Alerty dla Cosmos DB](threat-protection.md#cosmos-db)
+
     W poniższych tematach opisano, jak Security Center używa różnych danych telemetrycznych zbieranych z integracji z infrastrukturą platformy Azure w celu zastosowania dodatkowych warstw ochrony dla zasobów wdrożonych na platformie Azure:
     
-    * [Alerty warstwy usług](security-center-alerts-service-layer.md)
-    * [Wykrywanie zagrożeń dla usług Azure WAF i Azure DDoS Protection](security-center-alerts-integration.md)
-    
+    * [Alerty dla warstwy zarządzania Azure (Azure Resource Manager) (wersja zapoznawcza)](threat-protection.md#management-layer)
+    * [Alerty dla Azure Key Vault (wersja zapoznawcza)](threat-protection.md#azure-keyvault)
+    * [Alerty dla warstwy sieci platformy Azure](threat-protection.md#network-layer)
+    * [Alerty z innych usług](threat-protection.md#alerts-other)    
+
 ## <a name="see-also"></a>Zobacz też
 
 W tym dokumencie przedstawiono sposób konfigurowania zasad zabezpieczeń w Centrum zabezpieczeń. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:

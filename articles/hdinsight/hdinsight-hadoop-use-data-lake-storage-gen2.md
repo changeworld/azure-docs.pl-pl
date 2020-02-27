@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/03/2020
-ms.openlocfilehash: aeb86823ddb25bbe0340630b55360806faef59e9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/20/2020
+ms.openlocfilehash: d711cc7e58fb055eda62cfc364a5552a7d10f7bd
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186881"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623148"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Używanie Azure Data Lake Storage Gen2 z klastrami usługi Azure HDInsight
 
@@ -82,20 +82,18 @@ Przypisz zarządzaną tożsamość do roli **właściciela danych obiektów blob
     ![Zrzut ekranu przedstawiający sposób przypisywania roli RBAC](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
 1. Wybierz pozycję **Zapisz**. Wybrana tożsamość przypisana przez użytkownika jest teraz wyświetlana w obszarze wybranej roli.
-1. Po zakończeniu początkowej konfiguracji można utworzyć klaster za pomocą portalu. Klaster musi znajdować się w tym samym regionie świadczenia usługi Azure co konto magazynu. W sekcji **Magazyn** w menu Tworzenie klastra wybierz następujące opcje:
+1. Po zakończeniu początkowej konfiguracji można utworzyć klaster za pomocą portalu. Klaster musi znajdować się w tym samym regionie świadczenia usługi Azure co konto magazynu. Na karcie **Magazyn** w menu Tworzenie klastra wybierz następujące opcje:
 
     * W obszarze **Typ magazynu podstawowego**wybierz pozycję **Azure Data Lake Storage Gen2**.
-    * W obszarze **Wybierz konto magazynu**Wyszukaj i wybierz nowo utworzone konto magazynu Data Lake Storage Gen2.
+    * W obszarze **podstawowe konto magazynu**Wyszukaj i wybierz nowo utworzone konto magazynu Data Lake Storage Gen2.
 
-        ![Ustawienia magazynu na potrzeby używania Data Lake Storage Gen2 z usługą Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
+    * W obszarze **tożsamość**wybierz nowo utworzoną tożsamość zarządzaną przypisaną przez użytkownika.
 
-    * W obszarze **tożsamość**Wybierz poprawną subskrypcję i nowo utworzoną tożsamość zarządzaną przez użytkownika.
+        ![Ustawienia magazynu na potrzeby używania Data Lake Storage Gen2 z usługą Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
 
-        ![Ustawienia tożsamości dotyczące korzystania z Data Lake Storage Gen2 z usługą HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
-
-> [!NOTE]
-> * Aby dodać konto Data Lake Storage Gen2 pomocniczego, na poziomie konta magazynu wystarczy przypisać zarządzaną tożsamość utworzoną wcześniej do nowego konta magazynu Data Lake Storage Gen2, które chcesz dodać. Zaleca się dodanie pomocniczego konta Data Lake Storage Gen2 za pośrednictwem bloku "dodatkowe konta magazynu" w usłudze HDInsight nie jest obsługiwane.
-> * Na koncie usługi Azure Storage, które ma być używane przez usługę HDInsight, można włączyć RA-GRS lub RA-ZRS. Jednak tworzenie klastra za pomocą pomocniczego punktu końcowego RA-GRS lub RA-ZRS nie jest obsługiwane.
+    > [!NOTE]
+    > * Aby dodać konto Data Lake Storage Gen2 pomocniczego, na poziomie konta magazynu wystarczy przypisać zarządzaną tożsamość utworzoną wcześniej do nowego konta magazynu Data Lake Storage Gen2, które chcesz dodać. Zaleca się dodanie pomocniczego konta Data Lake Storage Gen2 za pośrednictwem bloku "dodatkowe konta magazynu" w usłudze HDInsight nie jest obsługiwane.
+    > * Na koncie usługi Azure Storage, które ma być używane przez usługę HDInsight, można włączyć RA-GRS lub RA-ZRS. Jednak tworzenie klastra za pomocą pomocniczego punktu końcowego RA-GRS lub RA-ZRS nie jest obsługiwane.
 
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Tworzenie klastra przy użyciu Data Lake Storage Gen2 za pomocą interfejsu wiersza polecenia platformy Azure
@@ -205,7 +203,7 @@ Przykłady są oparte na [połączeniu SSH](./hdinsight-hadoop-linux-use-ssh-uni
 
 #### <a name="a-few-hdfs-commands"></a>Kilka poleceń systemu plików HDFS
 
-1. Utwórz prosty plik w magazynie lokalnym.
+1. Utwórz plik w magazynie lokalnym.
 
     ```bash
     touch testFile.txt

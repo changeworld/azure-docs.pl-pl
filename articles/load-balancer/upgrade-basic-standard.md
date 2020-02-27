@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 179d0ff8143b526e100b89cffbbac0bbc29ca3e1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 83cac961eb3cd700451f16c684c64185b35e9bd3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776666"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616750"
 ---
-# <a name="upgrade-azure-public-load-balancer-from-basic-sku-to-standard-sku"></a>Uaktualnij publiczną Load Balancer platformy Azure od podstawowej jednostki SKU do standardowej jednostki SKU
+# <a name="upgrade-azure-public-load-balancer"></a>Uaktualnij Load Balancer publicznej platformy Azure
 [Usługa Azure usługa Load Balancer w warstwie Standardowa](load-balancer-overview.md) oferuje bogaty zestaw funkcji i wysokiej dostępności za pomocą nadmiarowości stref. Aby dowiedzieć się więcej na temat Load Balancer SKU, zobacz [tabela porównania](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
 
 Uaktualnienie obejmuje dwa etapy:
@@ -28,8 +28,8 @@ W tym artykule opisano migrację konfiguracji. Dodawanie maszyn wirtualnych do p
 
 Dostępny jest skrypt Azure PowerShell, który wykonuje następujące czynności:
 
-* Tworzy standardową publiczną jednostkę SKU Load Balancer w grupie zasobów i lokalizacji określonej przez użytkownika.
-* Bezproblemowo kopiuje konfiguracje Load Balancer publicznej podstawowej jednostki SKU do nowo utworzonej Load Balancer publicznego.
+* Tworzy standardową jednostkę SKU Load Balancer w grupie zasobów i lokalizacji określonej przez użytkownika.
+* Bezproblemowo kopiuje konfiguracje podstawowej jednostki SKU Load Balancer do nowo utworzonej usługa Load Balancer w warstwie Standardowa.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
@@ -70,18 +70,9 @@ Aby uruchomić skrypt:
 
 1. Użyj `Import-Module Az` do zaimportowania AZ modules.
 
-1. Uruchom `Get-Help AzureLBUpgrade.ps1`, aby przeanalizować wymagane parametry:
+1. Badanie wymaganych parametrów:
 
-   ```
-   AzurePublicLBUpgrade.ps1
-    -oldRgName <name of the Resource Group where Basic Load Balancer exists>
-    -oldLBName <name of existing Basic Load Balancer>
-    -newrgName <Name of the Resource Group where the new Standard Load Balancer will be created>
-    -newlocation <Name of the location where the new Standard Load Balancer will be created>
-    -newLBName <Name of the Standard Load Balancer to be created>
-   ```
-   Parametry skryptu:
-   * **oldRgName: [ciąg]: wymagane** — jest to grupa zasobów dla istniejących Load Balancer podstawowych, które mają zostać uaktualnione. Aby znaleźć tę wartość ciągu, przejdź do witryny Azure Portal, wybierz podstawowe źródło Load Balancer i kliknij **Przegląd** modułu równoważenia obciążenia. Grupa zasobów znajduje się na tej stronie.
+   * **oldRgName: [ciąg]: wymagane** — jest to grupa zasobów dla istniejących Load Balancer podstawowych, które mają zostać uaktualnione. Aby znaleźć tę wartość ciągu, przejdź do Azure Portal, wybierz podstawowe źródło Load Balancer i kliknij **Przegląd** usługi równoważenia obciążenia. Grupa zasobów znajduje się na tej stronie.
    * **oldLBName: [ciąg]: wymagane** — jest to nazwa istniejącego modułu, który ma zostać uaktualniony. 
    * **newrgName: [ciąg]: wymagane** — jest to grupa zasobów, w której zostanie utworzony usługa Load Balancer w warstwie Standardowa. Może to być Nowa grupa zasobów lub istniejąca. W przypadku wybrania istniejącej grupy zasobów należy pamiętać, że nazwa Load Balancer musi być unikatowa w ramach grupy zasobów. 
    * **newLocation: [ciąg]: wymagane** — lokalizacja, w której zostanie utworzony usługa Load Balancer w warstwie Standardowa. Zaleca się, aby dziedziczyć tę samą lokalizację wybranych Load Balancer podstawowych do usługa Load Balancer w warstwie Standardowa w celu lepszego skojarzenia z innymi istniejącymi zasobami.
@@ -134,4 +125,4 @@ Możesz wysłać wiadomość e-mail do slbupgradesupport@microsoft.com, otworzy�
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się więcej o standardowego modułu równoważenia obciążenia](load-balancer-overview.md)
+[Dowiedz się więcej o usługa Load Balancer w warstwie Standardowa](load-balancer-overview.md)

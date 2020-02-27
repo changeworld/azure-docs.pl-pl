@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185880"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620680"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Rozwiązywanie problemów przy użyciu narzędzia What If w dostępie warunkowym
 
@@ -98,7 +98,7 @@ Aby rozpocząć ocenę, kliknij **What If**. Wynik oceny zawiera raport, który 
 
 Jeśli dla wybranych aplikacji w chmurze istnieją [zasady klasyczne](policy-migration.md#classic-policies) , zostanie wyświetlony wskaźnik. Klikając wskaźnik, nastąpi przekierowanie do strony zasady klasyczne. Na stronie zasady klasyczne można migrować zasady klasyczne lub po prostu je wyłączyć. Możesz powrócić do wyniku oceny, zamykając Tę stronę.
 
-Na liście zasad, które są stosowane dla wybranego użytkownika, można również znaleźć listę [kontrolek](controls.md#grant-controls) i kontrolek [sesji](controls.md#session-controls) , które użytkownik musi spełnić.
+Na liście zasad, które są stosowane dla wybranego użytkownika, można również znaleźć listę [kontrolek](concept-conditional-access-grant.md) i kontrolek [sesji](concept-conditional-access-session.md) , które użytkownik musi spełnić.
 
 Na liście zasad, które nie mają zastosowania do użytkownika, możesz również znaleźć powody, dla których te zasady nie są stosowane. Dla każdej z wymienionych zasad powód reprezentuje pierwszy warunek, który nie był spełniony. Możliwą przyczyną niestosowania zasad jest zasada wyłączona, ponieważ nie są one jeszcze oceniane.   
 

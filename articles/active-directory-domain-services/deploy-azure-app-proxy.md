@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/6/2019
 ms.author: iainfou
-ms.openlocfilehash: c0fcb8c2c5f9afa7fabe2ffa63a715ec24aa4a26
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c6e4e6a45fbbeab64184d8ae4b0684ba055d7735
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720507"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613988"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Wdrażanie serwer proxy aplikacji usługi Azure AD platformy Azure w celu bezpiecznego dostępu do wewnętrznych aplikacji w domenie zarządzanej Azure AD Domain Services
 
@@ -74,7 +74,7 @@ Za pomocą maszyny wirtualnej gotowej do użycia jako łącznik usługi Azure se
         > [!NOTE]
         > Konto administratora globalnego użyte do zarejestrowania łącznika musi należeć do tego samego katalogu, w którym jest włączona usługa serwera proxy aplikacji.
         >
-        > Jeśli na przykład domena usługi Azure AD to *contoso.com*, Administrator globalny powinien mieć `admin@contoso.com` lub inny prawidłowy alias w tej domenie.
+        > Jeśli na przykład domena usługi Azure AD to *aaddscontoso.com*, Administrator globalny powinien mieć `admin@aaddscontoso.com` lub inny prawidłowy alias w tej domenie.
 
    * Jeśli konfiguracja zwiększonych zabezpieczeń programu Internet Explorer jest włączona dla maszyny wirtualnej, na której jest instalowany łącznik, ekran rejestracji może zostać zablokowany. Aby zezwolić na dostęp, postępuj zgodnie z instrukcjami w komunikacie o błędzie lub wyłącz zaawansowane zabezpieczenia programu Internet Explorer podczas procesu instalacji.
    * Jeśli rejestracja łącznika nie powiedzie się, zobacz [Rozwiązywanie problemów z serwerem proxy aplikacji](../active-directory/manage-apps/application-proxy-troubleshoot.md).
@@ -99,16 +99,16 @@ Aby uzyskać więcej informacji, zobacz [Konfigurowanie ograniczonego delegowani
 
 Użyj elementu [Get-ADComputer][Get-ADComputer] , aby pobrać ustawienia dla komputera, na którym zainstalowano łącznik usługi Azure serwer proxy aplikacji usługi Azure AD. Z poziomu maszyny wirtualnej zarządzania przyłączonym do domeny i zalogowanego jako konto użytkownika, które jest członkiem grupy *administratorzy kontrolera domeny usługi Azure AD* , uruchom następujące polecenia cmdlet.
 
-Poniższy przykład pobiera informacje o koncie komputera o nazwie *appproxy.contoso.com*. Podaj własną nazwę komputera dla maszyny wirtualnej serwer proxy aplikacji usługi Azure AD platformy Azure, która została skonfigurowana w poprzednich krokach.
+Poniższy przykład pobiera informacje o koncie komputera o nazwie *appproxy.aaddscontoso.com*. Podaj własną nazwę komputera dla maszyny wirtualnej serwer proxy aplikacji usługi Azure AD platformy Azure, która została skonfigurowana w poprzednich krokach.
 
 ```powershell
-$ImpersonatingAccount = Get-ADComputer -Identity appproxy.contoso.com
+$ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
 ```
 
-Dla każdego serwera aplikacji, na którym są uruchomione aplikacje związane z platformą Azure serwer proxy aplikacji usługi Azure AD Użyj polecenia cmdlet [Set-ADComputer][Set-ADComputer] programu PowerShell, aby skonfigurować KCD oparte na zasobach. W poniższym przykładzie łącznik usługi Azure serwer proxy aplikacji usługi Azure AD ma przyznane uprawnienia do korzystania z komputera *AppServer.contoso.com* :
+Dla każdego serwera aplikacji, na którym są uruchomione aplikacje związane z platformą Azure serwer proxy aplikacji usługi Azure AD Użyj polecenia cmdlet [Set-ADComputer][Set-ADComputer] programu PowerShell, aby skonfigurować KCD oparte na zasobach. W poniższym przykładzie łącznik usługi Azure serwer proxy aplikacji usługi Azure AD ma przyznane uprawnienia do korzystania z komputera *AppServer.aaddscontoso.com* :
 
 ```powershell
-Set-ADComputer appserver.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
 ```
 
 W przypadku wdrażania wielu łączników serwer proxy aplikacji usługi Azure AD platformy Azure należy skonfigurować KCD oparte na zasobach dla każdego wystąpienia łącznika.

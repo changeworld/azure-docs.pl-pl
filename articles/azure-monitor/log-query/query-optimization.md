@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2019
-ms.openlocfilehash: cd48f29d1f3866a4cd6893746dc44999b8aba24b
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
-ms.translationtype: HT
+ms.openlocfilehash: 521fd84e79196439ea220bd7ffa7cc6d0750f045
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622908"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648839"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optymalizowanie zapytań dzienników w Azure Monitor
 Dzienniki Azure Monitor korzystają z [usługi Azure Eksplorator danych (ADX)](/azure/data-explorer/) do przechowywania danych dziennika i uruchamiania zapytań w celu analizowania tych danych. Tworzy, zarządza i obsługuje klastry ADX oraz optymalizuje je do obciążeń analizy dzienników. Po uruchomieniu zapytania jest on zoptymalizowany i kierowany do odpowiedniego klastra ADX, który przechowuje dane obszaru roboczego. Zarówno dzienniki Azure Monitor, jak i Azure Eksplorator danych korzystają z wielu automatycznych mechanizmów optymalizacji zapytań. Chociaż Optymalizacja automatyczna zapewnia znaczący wzrost, w niektórych przypadkach można znacznie poprawić wydajność zapytań. W tym artykule opisano zagadnienia dotyczące wydajności i kilka technik rozwiązywania tych problemów.
@@ -38,11 +38,11 @@ Następujące wskaźniki wydajności zapytań są dostępne dla każdego wykonyw
 
 - [Łączny czas CPU](#total-cpu): ogólne obliczenia używane do przetwarzania zapytania we wszystkich węzłach obliczeniowych. Reprezentuje czas używany do przetwarzania, analizowania i pobierania danych. 
 
-- [Wolumin danych](#data-volume): ogólne dane, do których uzyskano dostęp do przetwarzania zapytania. Wpływ na rozmiar tabeli docelowej, użyty zakres czasu, zastosowane filtry i liczbę kolumn, do których istnieją odwołania.
+- [Dane używane do przetworzenia zapytania](#data-used-for-processed-query): dane ogólne, do których uzyskano dostęp do przetwarzania zapytania. Wpływ na rozmiar tabeli docelowej, użyty zakres czasu, zastosowane filtry i liczbę kolumn, do których istnieją odwołania.
 
-- [Zakres czasu](#time-range): różnica między najnowszymi a najstarszymi danymi, do których uzyskano dostęp do przetwarzania zapytania. Wpływ na jawny zakres czasu określony dla zapytania.
+- [Przedział czasu przetworzonego zapytania](#time-span-of-the-processed-query): różnica między najnowszymi i najstarszymi danymi, do których uzyskano dostęp do przetwarzania zapytania. Wpływ na jawny zakres czasu określony dla zapytania.
 
-- [Wiek danych](#age-of-data): przerwy między nimi a najstarszymi danymi, do których uzyskano dostęp do przetwarzania zapytania. Ma wysoce wpływ na wydajność pobierania danych.
+- [Wiek przetworzonych danych](#age-of-processed-data): przerwy między nimi i najstarszych danych, do których uzyskano dostęp do przetwarzania zapytania. Ma wysoce wpływ na wydajność pobierania danych.
 
 - [Liczba obszarów roboczych](#number-of-workspaces): ile obszarów roboczych zostało uzyskanych podczas przetwarzania zapytania z powodu niejawnego lub jawnego wyboru.
 
@@ -151,7 +151,7 @@ Heartbeat
 > Ten wskaźnik przedstawia tylko procesor CPU z klastra bezpośredniego. W zapytaniu obejmującym wiele regionów reprezentuje tylko jeden z regionów. W zapytaniu obejmującym wiele obszarów roboczych może nie zawierać wszystkich obszarów roboczych.
 
 
-## <a name="data-volume"></a>Ilość danych
+## <a name="data-used-for-processed-query"></a>Dane używane do przetworzenia zapytania
 
 Krytycznym czynnikiem w przetwarzaniu zapytania jest ilość danych, które są skanowane i używane do przetwarzania zapytań. Usługa Azure Eksplorator danych korzysta z agresywnych optymalizacji, które znacząco zmniejszają ilość danych w porównaniu z innymi platformami danych. Nadal istnieją kluczowe czynniki w zapytaniu, które mogą mieć wpływ na używany wolumin danych.
 W dziennikach Azure Monitor kolumna **TimeGenerated** służy jako sposób indeksowania danych. Ograniczanie wartości **TimeGenerated** do tak wąskiego zakresu, jak to możliwe, spowoduje znaczne zwiększenie wydajności zapytań przez znaczne ograniczenie ilości danych, które należy przetworzyć.
@@ -209,7 +209,7 @@ SecurityEvent
 | summarize count(), dcount(EventID), avg(Level) by Computer  
 ```
 
-## <a name="time-range"></a>Przedział czasu
+## <a name="time-span-of-the-processed-query"></a>Przedział czasu przetworzonego zapytania
 
 Wszystkie dzienniki dzienników Azure Monitor są partycjonowane według kolumny **TimeGenerated** . Liczba dostępnych partycji jest bezpośrednio związana z przedziałem czasu. Skrócenie zakresu czasu jest najbardziej wydajnym sposobem zapewnienia wykonywania zapytania o monit.
 
@@ -262,7 +262,7 @@ by Computer
 > [!IMPORTANT]
 > Ten wskaźnik nie jest dostępny dla zapytań między regionami.
 
-## <a name="age-of-data"></a>Wiek danych
+## <a name="age-of-processed-data"></a>Wiek przetworzonych danych
 Usługa Azure Eksplorator danych korzysta z kilku warstw magazynowania: lokalnych dysków SSD i znacznie wolniejszych obiektów blob platformy Azure. Im nowsze dane, tym wyższy jest szansa, że jest ona przechowywana w bardziej wydajnej warstwie z mniejszym opóźnieniem, co skraca czas trwania zapytania i procesor CPU. Oprócz samych danych system ma również pamięć podręczną dla metadanych. Im starsze dane, tym mniej szansa, że metadane będą znajdować się w pamięci podręcznej.
 
 Niektóre zapytania wymagają użycia starych danych, ale zdarzają się sytuacje, w których stare dane są używane przez pomyłkę. Dzieje się tak, gdy zapytania są wykonywane bez podawania zakresu czasu w metadanych, a nie wszystkie odwołania do tabeli obejmują filtr w kolumnie **TimeGenerated** . W takich przypadkach system przeskanuje wszystkie dane, które są przechowywane w tej tabeli. Gdy przechowywanie danych jest długie, może obejmować wiele przedziałów czasu, a tym samym dane, które są tak stare jak okres przechowywania danych.

@@ -4,12 +4,12 @@ description: Rozwiązywanie problemów z instalacją, rejestracją Azure Backup 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 3a83c496191baaebc30f6fe0aedda790827644cb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 018a6cee3f00531752684b12f4988cac174d3d26
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605750"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617587"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Rozwiązywanie problemów ze składnikiem Azure Backup Server
 
@@ -32,7 +32,7 @@ Przed rozpoczęciem rozwiązywania problemów Microsoft Azure Backup Server (ser
 
 | Operacja | Szczegóły błędu | Obejście |
 | --- | --- | --- |
-| Rejestrowanie w magazynie | Podano nieprawidłowe poświadczenia magazynu. Plik jest uszkodzony lub nie ma najnowszych poświadczeń skojarzonych z usługą odzyskiwania. | Zalecana akcja: <br> <ul><li> Pobierz najnowszy plik poświadczeń z magazynu i spróbuj ponownie. <br>(OR)</li> <li> Jeśli poprzednia akcja nie zadziałała, spróbuj pobrać poświadczenia do innego katalogu lokalnego lub utworzyć nowy magazyn. <br>(OR)</li> <li> Spróbuj zaktualizować ustawienia daty i godziny zgodnie z opisem w [tym blogu](https://azure.microsoft.com/blog/troubleshooting-common-configuration-issues-with-azure-backup/). <br>(OR)</li> <li> Sprawdź, czy c:\Windows\Temp. ma więcej niż 65000 plików. Przenieś stare pliki do innej lokalizacji lub Usuń elementy z folderu temp. <br>(OR)</li> <li> Sprawdź stan certyfikatów. <br> a. Otwórz przystawkę **Zarządzanie certyfikatami komputerów** (w panelu sterowania). <br> b. Rozwiń węzeł **osobisty** i jego **Certyfikaty**węzła podrzędnego.<br> c.  Usuń certyfikat **Narzędzia platformy Microsoft Azure**. <br> d. Ponów próbę rejestracji w kliencie Azure Backup. <br> (OR) </li> <li> Sprawdź, czy istnieją zasady grupy. </li></ul> |
+| Rejestrowanie w magazynie | Podano nieprawidłowe poświadczenia magazynu. Plik jest uszkodzony lub nie ma najnowszych poświadczeń skojarzonych z usługą odzyskiwania. | Zalecana akcja: <br> <ul><li> Pobierz najnowszy plik poświadczeń z magazynu i spróbuj ponownie. <br>(OR)</li> <li> Jeśli poprzednia akcja nie zadziałała, spróbuj pobrać poświadczenia do innego katalogu lokalnego lub utworzyć nowy magazyn. <br>(OR)</li> <li> Spróbuj zaktualizować ustawienia daty i godziny zgodnie z opisem w [tym artykule](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#invalid-vault-credentials-provided). <br>(OR)</li> <li> Sprawdź, czy c:\Windows\Temp. ma więcej niż 65000 plików. Przenieś stare pliki do innej lokalizacji lub Usuń elementy z folderu temp. <br>(OR)</li> <li> Sprawdź stan certyfikatów. <br> a. Otwórz przystawkę **Zarządzanie certyfikatami komputerów** (w panelu sterowania). <br> b. Rozwiń węzeł **osobisty** i jego **Certyfikaty**węzła podrzędnego.<br> c.  Usuń certyfikat **Narzędzia platformy Microsoft Azure**. <br> d. Ponów próbę rejestracji w kliencie Azure Backup. <br> (OR) </li> <li> Sprawdź, czy istnieją zasady grupy. </li></ul> |
 
 ## <a name="replica-is-inconsistent"></a>Replika jest niespójna
 
@@ -62,7 +62,7 @@ Przed rozpoczęciem rozwiązywania problemów Microsoft Azure Backup Server (ser
 
 | Operacja | Szczegóły błędu | Obejście |
 | --- | --- | --- |
-| Wypychanie agentów do serwerów chronionych | Operacja agenta nie powiodła się z powodu błędu komunikacji z usługą koordynator agenta programu DPM na \<ServerName >. | **Jeśli zalecana akcja wyświetlana w produkcie nie działa, wykonaj następujące czynności**: <ul><li> W przypadku dołączania komputera z niezaufanej domeny wykonaj [następujące kroki](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757801(v=sc.12)). <br> (OR) </li><li> Jeśli komputer jest dołączany do zaufanej domeny, należy wykonać czynności opisane w [tym blogu](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>(OR)</li><li> Spróbuj wyłączyć program antywirusowy jako krok rozwiązywania problemów. Jeśli problem nie zostanie rozwiązany, zmodyfikuj ustawienia programu antywirusowego zgodnie z opisem w [tym artykule](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12)).</li></ul> |
+| Wypychanie agentów do serwerów chronionych | Operacja agenta nie powiodła się z powodu błędu komunikacji z usługą koordynator agenta programu DPM na \<ServerName >. | **Jeśli zalecana akcja wyświetlana w produkcie nie działa, wykonaj następujące czynności**: <ul><li> W przypadku dołączania komputera z niezaufanej domeny wykonaj [następujące kroki](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019). <br> (OR) </li><li> Jeśli komputer jest dołączany do zaufanej domeny, należy wykonać czynności opisane w [tym blogu](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726). <br>(OR)</li><li> Spróbuj wyłączyć program antywirusowy jako krok rozwiązywania problemów. Jeśli problem nie zostanie rozwiązany, zmodyfikuj ustawienia programu antywirusowego zgodnie z opisem w [tym artykule](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12)).</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>Instalator nie może zaktualizować metadanych rejestru
 
@@ -75,7 +75,7 @@ Przed rozpoczęciem rozwiązywania problemów Microsoft Azure Backup Server (ser
 
 | Operacja | Szczegóły błędu | Obejście |
 | --- | --- | --- |
-| Wypychanie agentów do serwerów chronionych | Poświadczenia określone dla serwera są nieprawidłowe. | **Jeśli zalecana akcja wyświetlana w produkcie nie działa, wykonaj następujące czynności**: <br> Spróbuj zainstalować agenta ochrony ręcznie na serwerze produkcyjnym zgodnie z opisem w [tym artykule](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12)).|
+| Wypychanie agentów do serwerów chronionych | Poświadczenia określone dla serwera są nieprawidłowe. | **Jeśli zalecana akcja wyświetlana w produkcie nie działa, wykonaj następujące czynności**: <br> Spróbuj zainstalować agenta ochrony ręcznie na serwerze produkcyjnym zgodnie z opisem w [tym artykule](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).|
 | Agent Azure Backup nie mógł nawiązać połączenia z usługą Azure Backup (Identyfikator: 100050) | Agent Azure Backup nie mógł nawiązać połączenia z usługą Azure Backup. | **Jeśli zalecana akcja wyświetlana w produkcie nie działa, wykonaj następujące czynności**: <br>1. Uruchom następujące polecenie w wierszu polecenia z podwyższonym poziomem uprawnień: **PsExec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**. Spowoduje to otwarcie okna programu Internet Explorer. <br/> 2. Przejdź do pozycji **narzędzia** > **Opcje internetowe** > **połączenia** > **Ustawienia sieci LAN**. <br/> 3. Zmień ustawienia tak, aby korzystały z serwera proxy. Następnie podaj szczegóły serwera proxy.<br/> 4. Jeśli maszyna ma ograniczony dostęp do Internetu, upewnij się, że ustawienia zapory na komputerze lub serwerze proxy zezwalają na te [adresy URL](backup-configure-vault.md#verify-internet-access) i [adres IP](backup-configure-vault.md#verify-internet-access).|
 | Niepowodzenie instalacji agenta Azure Backup | Instalacja Microsoft Azure Recovery Services nie powiodła się. Wszystkie zmiany wprowadzone w systemie przez instalację Microsoft Azure Recovery Services zostały wycofane. (IDENTYFIKATOR: 4024) | Ręcznie Zainstaluj agenta platformy Azure.
 
@@ -117,24 +117,24 @@ W tej sekcji opisano typowe błędy, które mogą wystąpić podczas korzystania
 
 ### <a name="cbpsourcesnapshotfailedreplicamissingorinvalid"></a>CBPSourceSnapshotFailedReplicaMissingOrInvalid
 
-Komunikat o błędzie | Zalecane działanie |
+Komunikat o błędzie | Zalecana akcja |
 -- | --
 Tworzenie kopii zapasowej nie powiodło się, ponieważ replika kopii zapasowej na dysku jest nieprawidłowa lub nie istnieje. | Aby rozwiązać ten problem, sprawdź poniższe kroki i spróbuj ponownie wykonać operację: <br/> 1. Utwórz punkt odzyskiwania dysku<br/> 2. Uruchom sprawdzanie spójności dla źródła danych <br/> 3. Zatrzymaj ochronę źródła danych, a następnie Zmień konfigurację ochrony tego źródła.
 
 ### <a name="cbpsourcesnapshotfailedreplicametadatainvalid"></a>CBPSourceSnapshotFailedReplicaMetadataInvalid
 
-Komunikat o błędzie | Zalecane działanie |
+Komunikat o błędzie | Zalecana akcja |
 -- | --
 Nie można utworzyć migawki woluminu źródłowego, ponieważ metadane w replice są nieprawidłowe. | Utwórz punkt odzyskiwania dysku tego źródła danych i spróbuj ponownie wykonać kopię zapasową online
 
 ### <a name="cbpsourcesnapshotfailedreplicainconsistent"></a>CBPSourceSnapshotFailedReplicaInconsistent
 
-Komunikat o błędzie | Zalecane działanie |
+Komunikat o błędzie | Zalecana akcja |
 -- | --
 Nie można utworzyć migawki woluminu źródłowego z powodu niespójnej repliki źródła danych. | Uruchom sprawdzanie spójności dla tego źródła danych i spróbuj ponownie
 
 ### <a name="cbpsourcesnapshotfailedreplicacloningissue"></a>CBPSourceSnapshotFailedReplicaCloningIssue
 
-Komunikat o błędzie | Zalecane działanie |
+Komunikat o błędzie | Zalecana akcja |
 -- | --
 Próba utworzenia kopii zapasowej nie powiodła się, ponieważ nie można sklonować repliki kopii zapasowej na dysku.| Upewnij się, że wszystkie wcześniejsze pliki repliki kopii zapasowej (VHDX) są odinstalowane i nie są wykonywane żadne kopie zapasowe dysku w trakcie wykonywania kopii zapasowych online

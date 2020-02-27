@@ -3,21 +3,21 @@ title: Migrowanie pakietów usług SSIS do wystąpienia zarządzanego SQL
 titleSuffix: Azure Database Migration Service
 description: Dowiedz się, jak migrować pakiety SQL Server Integration Services (SSIS) i projekty do wystąpienia zarządzanego Azure SQL Database przy użyciu Azure Database Migration Service lub Data Migration Assistant.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 22f3e6a0e4c041024e826a7ed724d788ce77da62
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: a0669724888f02672d18ef9e8f725eef1c744f90
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751225"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650968"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>Migrowanie pakietów SQL Server Integration Services do wystąpienia zarządzanego Azure SQL Database
 Jeśli używasz SQL Server Integration Services (SSIS) i chcesz migrować projekty SSIS/pakiety z SSISDB źródłowego hostowanego przez SQL Server do SSISDB docelowego hostowanego przez wystąpienie zarządzane Azure SQL Database, możesz użyć Azure Database Migration Service.

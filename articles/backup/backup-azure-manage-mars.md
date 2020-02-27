@@ -4,12 +4,12 @@ description: Informacje o sposobach zarządzania kopiami zapasowymi agenta Micro
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b7e947e7fd473ec787d49ffe82532ffd5b6a98d1
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 26ed6fefdf95281429a8c91057195785db4f5589
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497005"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617597"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Zarządzanie kopiami zapasowymi agentów Microsoft Azure Recovery Services (MARS) za pomocą usługi Azure Backup
 
@@ -172,4 +172,4 @@ Hasło jest używane do szyfrowania i odszyfrowywania danych podczas tworzenia k
 ## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać informacje o obsługiwanych scenariuszach i ograniczeniach, zapoznaj się z [matrycą pomocy technicznej dla agenta Mars](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
-- Dowiedz się więcej [na temat zachowania przechowywania zasad tworzenia kopii zapasowej na żądanie](backup-configure-vault.md#on-demand-backup-policy-retention-behavior).
+- Dowiedz się więcej [na temat zachowania przechowywania zasad tworzenia kopii zapasowej na żądanie](backup-configure-vault.md#set-up-on-demand-backup-policy-retention-behavior).

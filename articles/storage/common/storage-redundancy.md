@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 038e53251bd81552fd3379f2d7645570fbcda4ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471350"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614294"
 ---
 # <a name="azure-storage-redundancy"></a>Nadmiarowość usługi Azure Storage
 
@@ -66,7 +66,7 @@ W poniższej tabeli przedstawiono typy kont magazynu obsługujące ZRS, w który
 |    FileStorage    | Europa Zachodnia<br /> Wschodnie stany USA    |    Tylko Azure Files    |
 
 <sup>1</sup> warstwa archiwum nie jest obecnie obsługiwana dla kont ZRS.<br />
-<sup>2</sup> dyski platformy Azure dla maszyn wirtualnych, w tym dyski zarządzane i niezarządzane, obsługują tylko LRS. Nie obsługują one ZRS ani GZRS. Aby uzyskać więcej informacji o dyskach zarządzanych, zobacz [Cennik usługi Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
+<sup>2</sup> konta magazynu zawierające dyski zarządzane przez platformę Azure dla maszyn wirtualnych zawsze używają LRS. W przypadku dysków niezarządzanych platformy Azure należy również użyć LRS. Istnieje możliwość utworzenia konta magazynu dla dysków niezarządzanych platformy Azure korzystających z GRS, ale nie jest to zalecane ze względu na potencjalne problemy ze spójnością w przypadku asynchronicznej replikacji geograficznej. Żadne dyski zarządzane ani niezarządzane nie obsługują ZRS ani GZRS. Aby uzyskać więcej informacji o dyskach zarządzanych, zobacz [Cennik usługi Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 Aby uzyskać informacje o tym, które regiony obsługują ZRS, zobacz temat **Obsługa usług według regionów** w obszarze [co to jest strefy dostępności platformy Azure?](../../availability-zones/az-overview.md).
 
@@ -145,9 +145,9 @@ W poniższej tabeli przedstawiono, jak trwałe i dostępne dane znajdują się w
 
 | Scenariusz                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS (wersja zapoznawcza)                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Węzeł w centrum danych jest niedostępny                                                                 | Tak                             | Tak                              | Tak                                  | Tak                                  |
-| Całe centrum danych (zona lub non-Zona) staną się niedostępne                                           | Nie                              | Tak                              | Tak                                  | Tak                                  |
-| Wystąpi awaria całego regionu                                                                                     | Nie                              | Nie                               | Tak                                  | Tak                                  |
+| Węzeł w centrum danych jest niedostępny                                                                 | Yes                             | Yes                              | Yes                                  | Yes                                  |
+| Całe centrum danych (zona lub non-Zona) staną się niedostępne                                           | Nie                              | Yes                              | Yes                                  | Yes                                  |
+| Wystąpi awaria całego regionu                                                                                     | Nie                              | Nie                               | Yes                                  | Yes                                  |
 | Dostęp do odczytu do danych w regionie pomocniczym, jeśli region podstawowy stał się niedostępny | Nie                              | Nie                               | Tak (z RA-GRS)                                   | Tak (z RA-GZRS)                                 |
 | Procent trwałości obiektów w danym roku<sup>1</sup>                                          | co najmniej 99,999999999% (11 9) | co najmniej 99,9999999999% (12 9) | co najmniej 99.99999999999999% (16 9) | co najmniej 99.99999999999999% (16 9) |
 | Obsługiwane typy kont magazynu<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, FileStorage                | GPv2, BlockBlobStorage, FileStorage                             | GPv2, GPv1, BlobStorage                     | GPv2                     |

@@ -4,7 +4,7 @@ description: Zapewnienie wysokiej dostępności i planowanie odzyskiwania po awa
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d0150aeace3960d075bbf61c1dd0bba4865aaf2b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0585c1251ba18e1390f3eee28a989edee6eb8591
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099710"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616942"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>SAP HANA — duże wystąpienia wysokiej dostępności i odzyskiwania po awarii na platformie Azure 
 
@@ -32,9 +32,9 @@ Wysoka dostępność i odzyskiwanie po awarii (DR) to kluczowe aspekty uruchamia
 
 Firma Microsoft obsługuje pewne SAP HANA funkcje wysokiej dostępności z dużymi wystąpieniami platformy HANA. Dostępne są następujące możliwości:
 
-- **Replikacja magazynu**: System magazynu może replikować wszystkie dane do innej sygnatury dużego wystąpienia HANA w innym regionie świadczenia usługi Azure. SAP HANA działa niezależnie od tej metody. Ta funkcja jest domyślnym mechanizmem odzyskiwania po awarii oferowanym dla dużych wystąpień platformy HANA.
-- **Replikacja systemu Hana**: [Replikacja wszystkich danych w SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) do oddzielnego systemu SAP HANA. Cel czasu odzyskiwania jest zminimalizowany przez replikację danych w regularnych odstępach czasu. SAP HANA obsługuje asynchroniczne, synchroniczne tryby w pamięci i synchroniczne. Tryb synchroniczny jest używany tylko dla systemów SAP HANA, które znajdują się w tym samym centrum danych lub mniej niż 100 km od siebie. W bieżącym projekcie sygnatur dużego wystąpienia usługi HANA replikacja systemu HANA może być używana w celu zapewnienia wysokiej dostępności tylko w obrębie jednego regionu. Replikacja systemu HANA wymaga niezależnego serwera proxy lub składnika routingu do konfiguracji odzyskiwania po awarii w innym regionie świadczenia usługi Azure. 
-- Automatycznie przełączenia w **tryb failover hosta**: Lokalne rozwiązanie do odzyskiwania błędów dla SAP HANA, które jest alternatywą dla replikacji systemu HANA. Jeśli węzeł główny stanie się niedostępny, należy skonfigurować co najmniej jedną SAP HANA wstrzymania w trybie skalowania w poziomie i SAP HANA automatycznie przechodzić w tryb failover do węzła w stanie wstrzymania.
+- **Replikacja magazynu**: system magazynu może replikować wszystkie dane do innej sygnatury dużego wystąpienia Hana w innym regionie świadczenia usługi Azure. SAP HANA działa niezależnie od tej metody. Ta funkcja jest domyślnym mechanizmem odzyskiwania po awarii oferowanym dla dużych wystąpień platformy HANA.
+- **Replikacja systemu Hana**: [replikacja wszystkich danych w SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) do oddzielnego systemu SAP HANA. Cel czasu odzyskiwania jest zminimalizowany przez replikację danych w regularnych odstępach czasu. SAP HANA obsługuje asynchroniczne, synchroniczne tryby w pamięci i synchroniczne. Tryb synchroniczny jest używany tylko dla systemów SAP HANA, które znajdują się w tym samym centrum danych lub mniej niż 100 km od siebie. W bieżącym projekcie sygnatur dużego wystąpienia usługi HANA replikacja systemu HANA może być używana w celu zapewnienia wysokiej dostępności tylko w obrębie jednego regionu. Replikacja systemu HANA wymaga niezależnego serwera proxy lub składnika routingu do konfiguracji odzyskiwania po awarii w innym regionie świadczenia usługi Azure. 
+- **Funkcja autoprzełączania do trybu failover hosta**: lokalne rozwiązanie do odzyskiwania błędów dla SAP HANA, które jest alternatywą dla replikacji systemu Hana. Jeśli węzeł główny stanie się niedostępny, należy skonfigurować co najmniej jedną SAP HANA wstrzymania w trybie skalowania w poziomie i SAP HANA automatycznie przechodzić w tryb failover do węzła w stanie wstrzymania.
 
 SAP HANA na platformie Azure (duże wystąpienia) są oferowane w dwóch regionach świadczenia usługi Azure w czterech obszarach geopolitycznych (USA, Australia, Europa i Japonia). Dwa regiony w obszarze geopolitycznym, które obsługują sygnatury dużych wystąpień usługi HANA, są połączone z oddzielnymi dedykowanymi obwodami sieciowymi. Są one używane do replikowania migawek magazynu w celu zapewnienia metod odzyskiwania po awarii. Replikacja nie jest ustanawiana domyślnie, ale jest skonfigurowana dla klientów, którzy zamawiają funkcje odzyskiwania po awarii. Replikacja magazynu zależy od użycia migawek magazynu dla dużych wystąpień platformy HANA. Nie jest możliwe wybranie regionu platformy Azure jako regionu DR, który znajduje się w innym obszarze geopolitycznym. 
 
@@ -43,7 +43,7 @@ W poniższej tabeli przedstawiono obecnie obsługiwane metody wysokiej dostępno
 | Scenariusz obsługiwany w dużych wystąpieniach HANA | Opcja wysokiej dostępności | Opcja odzyskiwania po awarii | Komentarze |
 | --- | --- | --- | --- |
 | Jeden węzeł | Niedostępne. | Dedykowana Konfiguracja odzyskiwania po awarii.<br /> Konfiguracja Multipurpose DR. | |
-| Automatycznie przełączenia w tryb failover hosta: Skalowanie w poziomie (z wstrzymywaniem lub bez)<br /> włącznie z 1 + 1 | Możliwe w przypadku wstrzymania roli aktywnej.<br /> HANA kontroluje przełącznik roli. | Dedykowana Konfiguracja odzyskiwania po awarii.<br /> Konfiguracja Multipurpose DR.<br /> Synchronizacja DR przy użyciu replikacji magazynu. | Zestawy woluminów HANA są dołączone do wszystkich węzłów.<br /> Lokacja DR musi mieć taką samą liczbę węzłów. |
+| Automatyczne przejście w tryb failover hosta: skalowanie w poziomie (z wstrzymaniem lub bez)<br /> włącznie z 1 + 1 | Możliwe w przypadku wstrzymania roli aktywnej.<br /> HANA kontroluje przełącznik roli. | Dedykowana Konfiguracja odzyskiwania po awarii.<br /> Konfiguracja Multipurpose DR.<br /> Synchronizacja DR przy użyciu replikacji magazynu. | Zestawy woluminów HANA są dołączone do wszystkich węzłów.<br /> Lokacja DR musi mieć taką samą liczbę węzłów. |
 | Replikacja systemu HANA | Możliwe z instalacją podstawową lub pomocniczą.<br /> Pomocnicze przeniesienie do roli głównej w przypadku pracy awaryjnej.<br /> Replikacja systemu HANA i tryb failover kontroli systemu operacyjnego. | Dedykowana Konfiguracja odzyskiwania po awarii.<br /> Konfiguracja Multipurpose DR.<br /> Synchronizacja DR przy użyciu replikacji magazynu.<br /> Odzyskiwanie po awarii przy użyciu funkcji replikacji systemu HANA nie jest jeszcze możliwe bez składników innych firm. | Osobny zestaw woluminów dysku są dołączane do każdego węzła.<br /> Tylko woluminy repliki pomocniczej w lokacji produkcyjnej są replikowane do lokalizacji odzyskiwania po awarii.<br /> W witrynie DR jest wymagany jeden zestaw woluminów. | 
 
 Dedykowana Konfiguracja odzyskiwania po awarii polega na tym, że jednostka usługi HANA duże wystąpienie w lokacji odzyskiwania po awarii nie jest używana do uruchamiania jakichkolwiek innych obciążeń lub systemów nieprodukcyjnych. Jednostka jest pasywna i jest wdrażana tylko wtedy, gdy jest wykonywana awaria trybu failover. Chociaż nie jest to preferowany wybór dla wielu klientów.
@@ -51,7 +51,7 @@ Dedykowana Konfiguracja odzyskiwania po awarii polega na tym, że jednostka usł
 Zapoznaj się z artykułami [obsługiwane scenariusze](hana-supported-scenario.md) , aby poznać układ magazynu i szczegóły sieci Ethernet dla architektury.
 
 > [!NOTE]
-> [SAP HANA wdrożenia MCOD](https://launchpad.support.sap.com/#/notes/1681092) (wiele wystąpień HANA w jednej jednostce) jako scenariusze nakładane współpracują z metodami HA i DR wymienionymi w tabeli. Wyjątkiem jest użycie replikacji systemu HANA z automatycznym klastrem trybu failover w oparciu o Pacemaker. Taki przypadek obsługuje tylko jedno wystąpienie HANA na jednostkę. W przypadku wdrożeń programu [SAP HANA MDC](https://launchpad.support.sap.com/#/notes/2096000) tylko metody ha i dr oparte na magazynie nie będą działały, jeśli wdrożono więcej niż jedną dzierżawę. Po wdrożeniu jednej dzierżawy wszystkie wymienione metody są prawidłowe.  
+> [SAP HANA wdrożenia MCOD](https://launchpad.support.sap.com/#/notes/1681092) (wiele wystąpień Hana w jednej jednostce) jako scenariusze nakładki współpracują z metodami ha i dr wymienionymi w tabeli. Wyjątkiem jest użycie replikacji systemu HANA z automatycznym klastrem trybu failover w oparciu o Pacemaker. Taki przypadek obsługuje tylko jedno wystąpienie HANA na jednostkę. W przypadku wdrożeń programu [SAP HANA MDC](https://launchpad.support.sap.com/#/notes/2096000) tylko metody ha i dr oparte na magazynie nie będą działały, jeśli wdrożono więcej niż jedną dzierżawę. Po wdrożeniu jednej dzierżawy wszystkie wymienione metody są prawidłowe.  
 
 W przypadku konfiguracji wieloznacznej jednostki HANA w witrynie odzyskiwania po awarii jest uruchamiane środowisko o dużym wystąpieniu. W razie awarii Zamknij system nieprodukcyjny, zainstaluj zestawy woluminów zreplikowane w magazynie (dodatkowe), a następnie uruchom wystąpienie produkcyjne platformy HANA. Większość klientów korzystających z funkcji odzyskiwania po awarii dużego wystąpienia HANA korzysta z tej konfiguracji. 
 
@@ -81,7 +81,7 @@ Na poniższej ilustracji przedstawiono odporną konfigurację dla przypadków od
 
 Oprócz powyższych wymagań dotyczących konfiguracji odzyskiwania po awarii z dużymi wystąpieniami HANA należy:
 
-- Zamów SAP HANA na platformie Azure (duże wystąpienia) jednostki SKU o takim samym rozmiarze jak jednostki SKU produkcyjne i wdrażaj je w regionie odzyskiwania po awarii. W bieżących wdrożeniach klienta te wystąpienia są używane do uruchamiania nieprodukcyjnych wystąpień platformy HANA. Te konfiguracje są nazywane konfiguracjami *MULTIPURPOSE Dr*.   
+- Zamów SAP HANA na platformie Azure (duże wystąpienia) jednostki SKU o takim samym rozmiarze jak jednostki SKU produkcyjne i wdrażaj je w regionie odzyskiwania po awarii. W bieżących wdrożeniach klienta te wystąpienia są używane do uruchamiania nieprodukcyjnych wystąpień platformy HANA. Te konfiguracje są nazywane *konfiguracjami MULTIPURPOSE Dr*.   
 - Zamów dodatkową przestrzeń dyskową w witrynie odzyskiwania po awarii dla każdego SAP HANA na platformie Azure (duże wystąpienia), które mają zostać odzyskane w tej lokacji. Zakup dodatkowego magazynu pozwala przydzielić woluminy magazynu. Możesz przydzielić woluminy docelowe replikacji magazynu z regionu produkcji usługi Azure do odzyskiwania po awarii w regionie świadczenia usługi Azure.
 - W przypadku, gdy HSR Instalatora na serwerze podstawowym i skonfigurowania replikacji na podstawie magazynu w lokacji odzyskiwania po awarii, należy zakupić dodatkowy magazyn w lokacji odzyskiwania po awarii, aby dane węzłów podstawowych i pomocniczych zostały zreplikowane do lokacji odzyskiwania po awarii.
 

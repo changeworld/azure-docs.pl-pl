@@ -1,19 +1,19 @@
 ---
-title: Partycjonowanie w usłudze Azure Cosmos DB
+title: Partycjonowanie w Azure Cosmos DB
 description: Więcej informacji na temat partycjonowania Azure Cosmos DB, najlepszych rozwiązań w przypadku wybierania klucza partycji oraz zarządzania partycjami logicznymi
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: c781c5e12f3f678ef640c6017a768e7ac14448f9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871996"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621882"
 ---
-# <a name="partitioning-in-azure-cosmos-db"></a>Partycjonowanie w usłudze Azure Cosmos DB
+# <a name="partitioning-in-azure-cosmos-db"></a>Partycjonowanie w Azure Cosmos DB
 
 Azure Cosmos DB używa partycjonowania do skalowania poszczególnych kontenerów w bazie danych w celu spełnienia wymagań dotyczących wydajności aplikacji. W przypadku partycjonowania elementy w kontenerze są podzielone na odrębne podzestawy o nazwie *partycje logiczne*. Partycje logiczne są tworzone na podstawie wartości *klucza partycji* , który jest skojarzony z każdym elementem w kontenerze. Wszystkie elementy w partycji logicznej mają tę samą wartość klucza partycji.
 
@@ -37,7 +37,7 @@ Aby dowiedzieć się więcej o tym, jak Azure Cosmos DB zarządza partycjami, zo
 
 Poniżej przedstawiono dobre wskazówki dotyczące wybierania klucza partycji:
 
-* Jedna partycja logiczna ma górny limit 10 GB pamięci masowej.  
+* Jedna partycja logiczna ma górny limit 20 GB miejsca w magazynie.  
 
 * Kontenery usługi Azure Cosmos mają minimalną przepływność wynoszącą 400 jednostek żądań na sekundę (RU/s). Gdy w bazie danych jest obsługiwana przepływność, minimalna jednostek ru na kontener to 100 jednostek żądań na sekundę (RU/s). Żądania kierowane do tego samego klucza partycji nie mogą przekroczyć przepływności przydzielonego do partycji. Jeśli żądania przekraczają przydzieloną przepływność, żądania są ograniczone proporcjonalnie. Dlatego ważne jest, aby wybrać klucz partycji, który nie powoduje "gorąca" w aplikacji.
 

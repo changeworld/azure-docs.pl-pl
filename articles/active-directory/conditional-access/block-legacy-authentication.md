@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a65145fe9752a90e3328c308ce603c8626d8708
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7f7f6f31c4d2f67660fef507ce101b2d15897d51
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380863"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620850"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Instrukcje: blokowanie starszego uwierzytelniania w usłudze Azure AD przy użyciu dostępu warunkowego   
 
@@ -48,13 +48,30 @@ Zasady dostępu warunkowego są wymuszane po zakończeniu uwierzytelniania pierw
 
 W tej sekcji opisano sposób konfigurowania zasad dostępu warunkowego w celu blokowania starszego uwierzytelniania. 
 
+### <a name="legacy-authentication-protocols"></a>Starsze protokoły uwierzytelniania
+
+Następujące opcje są uznawane za starsze protokoły uwierzytelniania
+
+- Uwierzytelniony protokół SMTP używany przez klienta POP i IMAP do wysyłania wiadomości e-mail.
+- Wykrywanie automatyczne — używane przez klientów programu Outlook i EAS do znajdowania skrzynek pocztowych w usłudze Exchange Online i łączenia się z nimi.
+- Exchange Online PowerShell — służy do łączenia się z usługą Exchange Online przy użyciu zdalnego programu PowerShell. Jeśli zablokujesz uwierzytelnianie podstawowe dla programu Exchange Online PowerShell, musisz użyć modułu programu PowerShell w usłudze Exchange Online, aby nawiązać połączenie. Aby uzyskać instrukcje, zobacz [nawiązywanie połączenia z programem Exchange Online PowerShell przy użyciu uwierzytelniania wieloskładnikowego](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+- Usługi sieci Web programu Exchange (EWS) — interfejs programowania używany przez program Outlook, program Outlook dla komputerów Mac i aplikacje innych firm.
+- IMAP4 — używany przez klientów poczty e-mail IMAP.
+- MAPI przez HTTP (MAPI/HTTP) — używany przez program Outlook 2010 i nowsze.
+- Książka adresowa w trybie offline (OAB) — kopia kolekcji listy adresów, które są pobierane i używane przez program Outlook.
+- Outlook w dowolnym miejscu (RPC przez HTTP) — używany przez program Outlook 2016 i jego starsze wersje.
+- Usługa Outlook — używana przez aplikację poczty i kalendarza dla systemu Windows 10.
+- POP3 — używany przez klientów POP poczty e-mail.
+- Usługi sieci Web raportowania — służy do pobierania danych raportu w usłudze Exchange Online.
+- Inni klienci — inne protokoły identyfikowane przy użyciu starszego uwierzytelniania.
+
 ### <a name="identify-legacy-authentication-use"></a>Identyfikuj użycie starszego uwierzytelniania
 
 Przed zablokowaniem starszego uwierzytelniania w katalogu należy najpierw zrozumieć, czy użytkownicy mają aplikacje korzystające ze starszego uwierzytelniania i jak mają wpływ na ogólny katalog. Korzystając z dzienników logowania usługi Azure AD, można zrozumieć, czy używane jest starsze uwierzytelnianie.
 
 1. Przejdź do **Azure Portal** > **Azure Active Directory** > **logowania**.
 1. Dodaj kolumnę aplikacji klienckiej, jeśli nie jest ona wyświetlana przez kliknięcie **kolumn** > **aplikacji klienckiej**.
-1. **Dodaj filtry** > **aplikacji klienckiej** > Wybierz wszystkie opcje dla **innych klientów** i kliknij przycisk **Zastosuj**.
+1. **Dodaj filtry** > **aplikacji klienckiej** > Wybierz wszystkie starsze protokoły uwierzytelniania i kliknij przycisk **Zastosuj**.
 
 Filtrowanie będzie zawierać tylko próby logowania, które zostały wykonane przez starsze protokoły uwierzytelniania. Kliknięcie każdej próby logowania spowoduje wyświetlenie dodatkowych szczegółów. Pole **aplikacji klienckiej** na karcie **Informacje podstawowe** wskazuje, który z starszych wersji protokołu uwierzytelniania był używany.
 

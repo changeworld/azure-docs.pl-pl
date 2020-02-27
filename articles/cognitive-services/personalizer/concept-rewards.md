@@ -1,27 +1,22 @@
 ---
 title: Wynik nagrody — Personalizacja
-titleSuffix: Azure Cognitive Services
 description: Wynik nagrody wskazuje, jak dobrze wybrana została opcja personalizacji, RewardActionID, czego dotyczy użytkownik. Wartość wyniku nagrody jest określana na podstawie logiki biznesowej w oparciu o obserwacje zachowania użytkownika. Personalizacja pociąga za siebie modele uczenia maszynowego, oceniając nagrody.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
+ms.date: 02/20/2020
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: diberry
-ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490887"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623777"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Wyniki nagrody wskazują na pomyślne personalizację
 
 Wynik nagrody wskazuje, jak dobrze wybrana została opcja personalizacji, [RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response), czego dotyczy użytkownik. Wartość wyniku nagrody jest określana na podstawie logiki biznesowej w oparciu o obserwacje zachowania użytkownika.
 
-Personalizacja pociąga za siebie modele uczenia maszynowego, oceniając nagrody. 
+Personalizacja pociąga za siebie modele uczenia maszynowego, oceniając nagrody.
+
+Dowiedz się, [jak](how-to-settings.md#configure-rewards-for-the-feedback-loop) skonfigurować domyślny wskaźnik nagrody w Azure Portal dla zasobu personalizacji.
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Skorzystaj z funkcji API nagradzania, aby wysłać wynik nagrody do personalizacji
 
@@ -47,16 +42,16 @@ Należy wziąć pod uwagę te sygnały i zachowania dla kontekstu wyniku nagrody
 
 Wynik nagrody musi być obliczany w logice biznesowej. Wynik może być reprezentowany jako:
 
-* Pojedyncza liczba wysłana raz 
+* Pojedyncza liczba wysłana raz
 * Wynik jest wysyłany natychmiast (na przykład 0,8) i dodatkowym wynikiem wysłanym później (zazwyczaj 0,2).
 
 ## <a name="default-rewards"></a>Nagrody domyślne
 
 Jeśli nie otrzymasz nagrody w [czasie oczekiwania na wynagrodzenie](#reward-wait-time), czas trwania od wywołania rangi, personalizujer niejawnie stosuje **wynagrodzenie domyślne** do tego zdarzenia rangi.
 
-## <a name="building-up-rewards-with-multiple-factors"></a>Tworzenie nagrody z wieloma czynnikami  
+## <a name="building-up-rewards-with-multiple-factors"></a>Tworzenie nagrody z wieloma czynnikami
 
-Aby uzyskać efektywne personalizacje, można utworzyć wynik nagrody na podstawie wielu czynników. 
+Aby uzyskać efektywne personalizacje, można utworzyć wynik nagrody na podstawie wielu czynników.
 
 Można na przykład zastosować te reguły do personalizowania listy zawartości wideo:
 
@@ -93,10 +88,10 @@ Po dodaniu uzyskanych wyników ostateczne wynagrodzenie może być poza oczekiwa
 * **Rozważ niezamierzone konsekwencje**: Utwórz funkcje nagradzania, które prowadzą do odpowiedzialnych wyników z [etyką i właściwymi do użycia](ethics-responsible-use.md).
 
 * **Korzystaj z korzyści przyrostowych**: dodanie częściowego nagrody dla mniejszych zachowań użytkownika ułatwia personalizację w celu osiągnięcia lepszych korzyści. Ten Przyrostowy wzrost umożliwia algorytmowi uzyskanie bliższego zaangażowania użytkownika w końcowe żądane zachowanie.
-    * Jeśli zostanie wyświetlona lista filmów, jeśli użytkownik umieści wskaźnik myszy nad pierwszym przez jakiś czas, aby wyświetlić więcej informacji, można określić, że wystąpił pewne zaangażowanie użytkownika. Zachowanie może być liczone z wynikiem nagrody wynoszącym 0,1. 
-    * Jeśli użytkownik otworzył stronę, a następnie zakończył działanie, wynik nagrody może być 0,2. 
+    * Jeśli zostanie wyświetlona lista filmów, jeśli użytkownik umieści wskaźnik myszy nad pierwszym przez jakiś czas, aby wyświetlić więcej informacji, można określić, że wystąpił pewne zaangażowanie użytkownika. Zachowanie może być liczone z wynikiem nagrody wynoszącym 0,1.
+    * Jeśli użytkownik otworzył stronę, a następnie zakończył działanie, wynik nagrody może być 0,2.
 
-## <a name="reward-wait-time"></a>nagradzany czas oczekiwania
+## <a name="reward-wait-time"></a>Nagradzany czas oczekiwania
 
 Personalizacja będzie skorelować informacje o randze wywołania z wynagrodzeniem wysyłanym w nagradzaniu, aby szkolić model. Mogą one występować w różnych godzinach. Personalizowanie czeka przez ograniczony czas, rozpoczynając od wywołania rangi, nawet jeśli wywołanie rangi zostało wykonane jako zdarzenie nieaktywne i aktywowane później.
 
@@ -106,12 +101,12 @@ Jeśli nastąpi **przekroczenie czasu oczekiwania** i nie otrzymasz żadnych inf
 
 Postępuj zgodnie z tymi zaleceniami, aby uzyskać lepsze wyniki.
 
-* Zwiększ czas oczekiwania, tak jak to możliwe, przy jednoczesnym pozostawieniu wystarczająco dużo czasu, aby uzyskać opinię użytkownika. 
+* Zwiększ czas oczekiwania, tak jak to możliwe, przy jednoczesnym pozostawieniu wystarczająco dużo czasu, aby uzyskać opinię użytkownika.
 
 * Nie wybieraj czasu trwania, który jest krótszy niż czas potrzebny do uzyskania opinii. Na przykład jeśli pewne nagrody są dostępne po wykonaniu przez użytkownika 1 minuty filmu wideo, Długość eksperymentu powinna wynosić co najmniej dwa razy.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Uczenie wzmacniające](concepts-reinforcement-learning.md) 
+* [Uczenie wzmacniające](concepts-reinforcement-learning.md)
 * [Wypróbuj interfejs API rangi](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)
 * [Wypróbuj interfejs API nagradzania](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)

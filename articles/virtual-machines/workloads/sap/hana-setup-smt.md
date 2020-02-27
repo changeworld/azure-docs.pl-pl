@@ -4,21 +4,21 @@ description: Jak skonfigurować serwer z systemem SMT dla SAP HANA na platformie
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d9e86e54a4c94db97b6c89b3ef8799855963020
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099759"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616995"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Konfigurowanie serwera SMT dla systemu SUSE Linux
 Duże wystąpienia SAP HANA nie mają bezpośredniej łączności z Internetem. Nie jest to prosty proces rejestracji takiej jednostki u dostawcy systemu operacyjnego oraz pobierania i stosowania aktualizacji. Rozwiązaniem dla systemu SUSE Linux jest skonfigurowanie serwera w postaci SMT na maszynie wirtualnej platformy Azure. Hostowanie maszyny wirtualnej w sieci wirtualnej platformy Azure, która jest połączona z dużym wystąpieniem HANA. Dzięki takiemu serwerowi o rozmiarze SMT duże wystąpienie wystąpienia HANA może rejestrować i pobierać aktualizacje. 
@@ -34,7 +34,7 @@ Wymagania wstępne dotyczące instalowania serwera z systemem SMT, który spełn
 
 Najpierw Zaloguj się do [centrum klient SUSE](https://scc.suse.com/).
 
-Przejdź do pozycji**poświadczenia organizacji** **organizacji** > . W tej sekcji należy znaleźć poświadczenia niezbędne do skonfigurowania serwera SMT.
+Przejdź do pozycji **organizacja** > **poświadczenia organizacji**. W tej sekcji należy znaleźć poświadczenia niezbędne do skonfigurowania serwera SMT.
 
 Następnie zainstaluj maszynę wirtualną w systemie SUSE Linux w sieci wirtualnej platformy Azure. Aby wdrożyć maszynę wirtualną, zapoznaj się z obrazem galerii SLES 12 z dodatkiem SP2 (wybierz pozycję obraz BYOS SUSE). W procesie wdrażania nie należy definiować nazwy DNS i nie należy używać statycznych adresów IP.
 

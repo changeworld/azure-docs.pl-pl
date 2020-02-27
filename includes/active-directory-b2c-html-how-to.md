@@ -3,14 +3,14 @@ author: mmacy
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 02/26/2020
 ms.author: marsma
-ms.openlocfilehash: 9612abbe078ab8d9e8c10c2da923a9a9b233d094
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 4cf8eba9632c51ce9b5bcc42feae2446348890c2
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373130"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77651686"
 ---
 ## <a name="use-custom-page-content"></a>Użyj niestandardowej zawartości strony
 
@@ -61,7 +61,7 @@ Korzystając z własnych plików HTML i CSS, aby dostosować interfejs użytkown
 ## <a name="guidelines-for-using-custom-page-content"></a>Wskazówki dotyczące korzystania z niestandardowej zawartości strony
 
 - Użyj bezwzględnego adresu URL, jeśli w pliku HTML są uwzględniane zasoby zewnętrzne, takie jak pliki multimedialne, CSS i JavaScript.
-- Dodaj atrybut `data-preload="true"` w tagach HTML, aby kontrolować kolejność ładowania dla CSS i JavaScript. Gdy `data-preload=true`, strona jest zbudowana przed wyświetleniem użytkownika. Ten atrybut pomaga zapobiec "migotaniu" na stronie przez wstępne załadowanie pliku CSS bez wyświetlania kodu HTML, który nie ma stylu. Poniższy fragment kodu HTML przedstawia użycie znacznika `data-preload`.
+- Korzystając z [wersji układu strony](../articles/active-directory-b2c/page-layout.md) 1.2.0 i nowszych, można dodać atrybut `data-preload="true"` w tagach HTML, aby kontrolować kolejność ładowania dla CSS i JavaScript. Gdy `data-preload=true`, strona jest zbudowana przed wyświetleniem użytkownika. Ten atrybut pomaga zapobiec "migotaniu" na stronie przez wstępne załadowanie pliku CSS bez wyświetlania kodu HTML, który nie ma stylu. Poniższy fragment kodu HTML przedstawia użycie znacznika `data-preload`.
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```

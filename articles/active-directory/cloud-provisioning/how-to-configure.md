@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 853950cf441007eac0170f32f28f2d9c16a71292
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c086227d23901cb7904d8cc0a768e9f4b5ad43db
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549435"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620974"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-new-agent-configuration"></a>Azure AD Connect nową konfigurację agenta aprowizacji w chmurze
+# <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>Utwórz nową konfigurację dla Azure AD Connect aprowizacji opartej na chmurze
 
 Po zainstalowaniu agenta należy zalogować się do Azure Portal i skonfigurować usługę Azure Active Directory (Azure AD) łączenie się z obsługą chmury. Wykonaj następujące kroki, aby włączyć agenta.
 
@@ -56,7 +56,8 @@ Można ograniczyć agenta do synchronizowania określonych użytkowników i grup
 
     ![Wybrane opcje grup zabezpieczeń](media/how-to-configure/scope3.png)
 
-1.  Lub można zmienić zakres, aby uwzględnić tylko określone jednostki organizacyjne. Wybierz pozycję **gotowe** i **Zapisz**.
+1.  Lub można zmienić zakres, aby uwzględnić tylko określone jednostki organizacyjne. Wybierz pozycję **gotowe** i **Zapisz**.  
+2.  Po zmianie zakresu należy [ponownie uruchomić Inicjowanie obsługi](#restart-provisioning) , aby zainicjować natychmiastową synchronizację zmian.
 
     ![Opcja wybranej jednostki organizacyjnej](media/how-to-configure/scope4.png)
 

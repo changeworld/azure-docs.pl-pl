@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 601574cc2a478dc53a261cfcb074e43a556dd4c0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 76dc964b7fe7f5e8acfcfb03b2e89bebb2caa176
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979509"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613383"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Rozwiązywanie niezgodnych błędów katalogów dla istniejących Azure AD Domain Services domen zarządzanych
 
@@ -26,7 +26,7 @@ W tym artykule wyjaśniono, dlaczego występuje błąd i jak go rozwiązać.
 
 ## <a name="what-causes-this-error"></a>Co powoduje ten błąd?
 
-Niezgodny błąd katalogu występuje, gdy domena zarządzana i Sieć wirtualna platformy Azure AD DS należą do dwóch różnych dzierżaw usługi Azure AD. Na przykład może istnieć domena zarządzana AD DS platformy Azure o nazwie *aadds.contoso.com* , która działa w dzierżawie usługi Azure AD firmy Contoso. Jednak Sieć wirtualna platformy Azure dla domeny zarządzanej jest częścią dzierżawy usługi Azure AD firmy Fabrikam.
+Niezgodny błąd katalogu występuje, gdy domena zarządzana i Sieć wirtualna platformy Azure AD DS należą do dwóch różnych dzierżaw usługi Azure AD. Na przykład może istnieć domena zarządzana AD DS platformy Azure o nazwie *aaddscontoso.com* , która działa w dzierżawie usługi Azure AD firmy Contoso. Jednak Sieć wirtualna platformy Azure dla domeny zarządzanej jest częścią dzierżawy usługi Azure AD firmy Fabrikam.
 
 Platforma Azure używa kontroli dostępu opartej na rolach (RBAC), aby ograniczyć dostęp do zasobów. Po włączeniu usługi Azure AD DS w dzierżawie usługi Azure AD skróty poświadczeń są synchronizowane z domeną zarządzaną. Ta operacja wymaga, aby być administratorem dzierżawy dla katalogu usługi Azure AD, a dostęp do tych poświadczeń musi być kontrolowany. Aby wdrożyć zasoby w sieci wirtualnej platformy Azure i kontrolować ruch, musisz mieć uprawnienia administracyjne w sieci wirtualnej, w której wdrażasz usługę Azure AD DS.
 

@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 8eb115497427338599db08e8c7bbdd55c5a158fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 348bd2b92801217a5aea2ef4d1426c020085e4c1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807945"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624148"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Projektowanie usług dostępnych globalnie przy użyciu Azure SQL Database
 
@@ -119,7 +119,7 @@ Zasoby aplikacji należy wdrożyć w każdej lokalizacji geograficznej, w które
 
 ![Scenariusz 3. Konfiguracja z podstawową w regionie Wschodnie stany USA.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
-Na koniec dnia (na przykład w czasie lokalnym 23:00) aktywne bazy danych powinny zostać przełączone do następnego regionu (Europa Północna). To zadanie można całkowicie zautomatyzować przy użyciu [usługi planowania platformy Azure](../scheduler/scheduler-intro.md).  Zadanie obejmuje następujące kroki:
+Na przykład po upływie dnia 11 czasu lokalnego aktywne bazy danych powinny zostać przełączone do następnego regionu (Europa Północna). To zadanie można całkowicie zautomatyzować przy użyciu [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Zadanie obejmuje następujące kroki:
 
 * Przełącz serwer podstawowy w grupie trybu failover do Europy Północnej przy użyciu przyjaznego trybu failover (1)
 * Usuń grupę trybu failover między regionami Wschodnie stany USA i Europa Północna
@@ -130,7 +130,7 @@ Na poniższym diagramie przedstawiono nową konfigurację po planowanej pracy w 
 
 ![Scenariusz 3. Przejście podstawowego do Europy Północnej.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-W przypadku awarii w Europie Północnej na przykład automatyczne przejście do trybu failover bazy danych jest inicjowane przez grupę trybu failover, co efektywnie skutkuje przeniesieniem aplikacji do następnego regionu przed harmonogramem (1).  W takim przypadku Wschodnie stany USA są jedynym pozostałym regionem pomocniczym, dopóki Europa Północna nie będzie w trybie online. Pozostałe dwa regiony umożliwiają klientom wszystkie trzy lokalizacje geograficzne przez przełączanie ról. Harmonogram Azure należy odpowiednio dostosować. Ponieważ pozostałe regiony uzyskują dodatkowy ruch użytkownika z Europy, wpływ na wydajność aplikacji jest taki sam jak w przypadku dodatkowych opóźnień, ale również przez większą liczbę połączeń użytkowników końcowych. Po zmniejszeniu przestojów w Europie Północnej, pomocnicza baza danych jest natychmiast synchronizowana z bieżącym serwerem podstawowym. Na poniższym diagramie przedstawiono awarię w Europie Północnej:
+W przypadku awarii w Europie Północnej na przykład automatyczne przejście do trybu failover bazy danych jest inicjowane przez grupę trybu failover, co efektywnie skutkuje przeniesieniem aplikacji do następnego regionu przed harmonogramem (1).  W takim przypadku Wschodnie stany USA są jedynym pozostałym regionem pomocniczym, dopóki Europa Północna nie będzie w trybie online. Pozostałe dwa regiony umożliwiają klientom wszystkie trzy lokalizacje geograficzne przez przełączanie ról. Azure Logic Apps należy odpowiednio dostosować. Ponieważ pozostałe regiony uzyskują dodatkowy ruch użytkownika z Europy, wpływ na wydajność aplikacji jest taki sam jak w przypadku dodatkowych opóźnień, ale również przez większą liczbę połączeń użytkowników końcowych. Po zmniejszeniu przestojów w Europie Północnej, pomocnicza baza danych jest natychmiast synchronizowana z bieżącym serwerem podstawowym. Na poniższym diagramie przedstawiono awarię w Europie Północnej:
 
 ![Scenariusz 3. Awaria w Europie Północnej.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 
@@ -152,7 +152,7 @@ Istnieją jednak pewne **kompromisy**:
 
 Konkretna Strategia odzyskiwania po awarii w chmurze może łączyć lub zwiększać te wzorce projektowe, aby najlepiej spełniały potrzeby aplikacji.  Jak wspomniano wcześniej, wybrana strategia jest oparta na umowie SLA, która ma być oferowana klientom i topologii wdrażania aplikacji. Aby ułatwić podjęcie decyzji, Poniższa tabela zawiera porównanie opcji na podstawie celu punktu odzyskiwania (RPO) i szacowanego czasu odzyskiwania (ERT).
 
-| Wzorce | ODZYSKIWANIA | ERT |
+| Wzorce | RPO | ERT |
 |:--- |:--- |:--- |
 | Wdrożenie Active-pasywne na potrzeby odzyskiwania po awarii z dostępem do udostępnionej bazy danych |Dostęp do odczytu i zapisu < 5 sek. |Czas wykrywania niepowodzeń + wartość czasu wygaśnięcia systemu DNS |
 | Wdrażanie aktywne-aktywne na potrzeby równoważenia obciążenia aplikacji |Dostęp do odczytu i zapisu < 5 sek. |Czas wykrywania niepowodzeń + wartość czasu wygaśnięcia systemu DNS |

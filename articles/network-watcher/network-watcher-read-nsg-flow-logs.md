@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: ee44dda7a7ca2f7e1ad386498798191fe792cef0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 47d927f9f17580767526ec6683e819256fc5e994
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840846"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619918"
 ---
 # <a name="read-nsg-flow-logs"></a>Odczytywanie dzienników przepływu sieciowych grup zabezpieczeń
 
@@ -31,7 +31,7 @@ Dzienniki przepływu sieciowej grupy zabezpieczeń są przechowywane na koncie m
 
 W poniższym scenariuszu przedstawiono przykładowy dziennik przepływu, który jest przechowywany na koncie magazynu. Dowiesz się, jak wybiórczo odczytywać najnowsze zdarzenia w dziennikach przepływu sieciowej grupy zabezpieczeń. W tym artykule użyto programu PowerShell, jednak koncepcje omówione w artykule nie są ograniczone do języka programowania i są stosowane do wszystkich języków obsługiwanych przez interfejsy API usługi Azure Storage.
 
-## <a name="setup"></a>Konfiguracja
+## <a name="setup"></a>Konfigurowanie
 
 Przed rozpoczęciem należy włączyć rejestrowanie przepływu sieciowych grup zabezpieczeń dla jednej lub wielu sieciowych grup zabezpieczeń na Twoim koncie. Instrukcje dotyczące włączania dzienników przepływu zabezpieczeń sieci można znaleźć w następującym artykule: [wprowadzenie do rejestrowania przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
 
@@ -186,6 +186,9 @@ W tym scenariuszu przedstawiono przykład sposobu odczytywania wpisów w dzienni
 
 ## <a name="next-steps"></a>Następne kroki
 
+
 Odwiedź stronę [Korzystanie z elastycznego stosu](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [Użyj Grafana](network-watcher-nsg-grafana.md)i [Skorzystaj z z narzędzia graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) , aby dowiedzieć się więcej na temat sposobów wyświetlania dzienników przepływu sieciowej grupy zabezpieczeń. Podejście funkcji platformy Azure typu open source do konsumowania obiektów BLOB bezpośrednio i emitowania do różnych odbiorców usługi log Analytics można znaleźć tutaj: [Łącznik usługi Azure Network Watcher sieciowej grupy zabezpieczeń Flow Logs](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
+
+Możesz użyć [usługi Azure Analiza ruchu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) , aby uzyskać wgląd w przepływy ruchu. Analiza ruchu używa [log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) , aby przepływ ruchu queryable.
 
 Aby dowiedzieć się więcej na temat obiektów blob magazynu, odwiedź: [Azure Functions powiązania magazynu obiektów BLOB](../azure-functions/functions-bindings-storage-blob.md)

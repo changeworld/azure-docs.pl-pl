@@ -4,21 +4,21 @@ description: Jak zainstalować platformę HANA na SAP HANA na platformie Azure (
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d266f458894d93540977c995ff7e8ab71414083f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101275"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617207"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>Instalowanie platformy HANA na SAP HANA na platformie Azure (duże wystąpienia)
 
@@ -39,7 +39,7 @@ Jednostki dużego wystąpienia HANA nie są bezpośrednio połączone z Internet
 
 Potrzebujesz produktu SAP S-User lub innego użytkownika, który umożliwia dostęp do portalu SAP Marketplace.
 
-1. Zaloguj się i przejdź do [witryny SAP Service Marketplace](https://support.sap.com/en/index.html). Wybierz **pozycję Pobierz instalacje oprogramowania** > **i Uaktualnij** > **według alfabetycznego indeksu**. Następnie wybierz pozycję **w obszarze H – SAP HANA platform Edition** > SAP HANA**instalacji** **wersji 2,0** > platformy. Pobierz pliki pokazane na poniższym zrzucie ekranu.
+1. Zaloguj się i przejdź do [witryny SAP Service Marketplace](https://support.sap.com/en/index.html). Wybierz pozycję **Pobierz oprogramowanie** > **instalacji i Uaktualnij** > **według alfabetycznego indeksu**. Następnie wybierz **w obszarze H – SAP HANA platform edition** > **SAP HANA platform Edition 2,0** > **instalacji**. Pobierz pliki pokazane na poniższym zrzucie ekranu.
 
    ![Zrzut ekranu przedstawiający pliki do pobrania](./media/hana-installation/image16_download_hana.PNG)
 

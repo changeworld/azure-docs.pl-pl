@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 9d8c5f98cfd8b4b3831bcbd7e65285f93e6c323f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 0743499b019bd1c7b985636e886eee9352284a55
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441956"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616074"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center-preview"></a>Integracja usług Azure Kubernetes Services z usługą Security Center (wersja zapoznawcza)
 Usługa Azure Kubernetes Service (AKS) to usługa zarządzana przez firmę Microsoft służąca do opracowywania i wdrażania aplikacji kontenerowych oraz zarządzania nimi. 
@@ -45,7 +45,7 @@ Korzystanie z dwóch usług razem zapewnia:
     * Surowe zdarzenia zabezpieczeń, takie jak dane sieciowe i tworzenie procesów
     * Dziennik inspekcji Kubernetes
 
-    Aby uzyskać więcej informacji, zobacz [wykrywanie zagrożeń dla kontenerów platformy Azure](security-center-alerts-compute.md#azure-containers-)
+    Aby uzyskać więcej informacji, zobacz [Ochrona przed zagrożeniami dla kontenerów platformy Azure](threat-protection.md#azure-containers)
 
     Aby uzyskać listę możliwych alertów, zobacz następujące sekcje w tabeli referencyjnej alertów: [AKS alertów na poziomie klastra](alerts-reference.md#alerts-akscluster) i na [poziomie hosta kontenera](alerts-reference.md#alerts-containerhost).  
 
