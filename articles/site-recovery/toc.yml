@@ -417,6 +417,8 @@
               href: vmware-physical-secondary-disaster-recovery.md
         - name: Maszyny wirtualne funkcji Hyper-V
           items:
+            - name: Wycofanie scenariusza typu lokacja-lokacja dla maszyn wirtualnych funkcji Hyper-V
+              href: site-to-site-deprecation.md
             - name: Przewodnik — odzyskiwanie po awarii maszyn wirtualnych funkcji Hyper-V w chmurach programu VMM do lokacji dodatkowej
               href: hyper-v-vmm-disaster-recovery.md
             - name: Uruchamianie próbnego odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej

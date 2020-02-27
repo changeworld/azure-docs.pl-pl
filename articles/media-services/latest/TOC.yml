@@ -148,6 +148,8 @@
           href: live-event-states-billing.md
         - name: Opóźnienie
           href: live-event-latency.md
+        - name: Kody błędów zdarzeń na żywo
+          href: live-event-error-codes.md
     - name: Monitorowanie
       items:
         - name: Zdarzenia z usługą Event Grid
@@ -175,6 +177,8 @@
           items:
             - name: Kody błędów punktu końcowego przesyłania strumieniowego
               href: streaming-endpoint-error-codes.md
+            - name: Kody błędów zdarzeń na żywo
+              href: live-event-error-codes.md
             - name: Kody błędów zadań
               href: job-error-codes.md
     - name: Wskazówki dotyczące migracji z wersji 2 do wersji 3
@@ -325,6 +329,8 @@
       items:
         - name: Kody błędów punktu końcowego przesyłania strumieniowego
           href: streaming-endpoint-error-codes.md
+        - name: Kody błędów zdarzeń na żywo
+          href: live-event-error-codes.md
         - name: Kody błędów zadań
           href: job-error-codes.md
 - name: Zasoby

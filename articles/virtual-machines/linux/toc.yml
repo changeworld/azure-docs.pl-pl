@@ -42,9 +42,9 @@
     - name: 13 — Zarządzanie zabezpieczeniami maszyn wirtualnych
       href: tutorial-azure-security.md
     - name: 14a — Kompilowanie za pomocą usługi Jenkins
-      href: tutorial-jenkins-github-docker-cicd.md
+      href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md
     - name: 14b — Integrowanie rozwiązania Jenkins z usługą Azure DevOps
-      href: tutorial-build-deploy-jenkins.md
+      href: ../../jenkins/tutorial-build-deploy-jenkins.md
     - name: 15a — Usługa DevOps dla rozwiązań IaaS i PaaS na platformie Azure
       href: tutorial-devops-azure-pipelines-classic.md
     - name: 15b — Ciągła integracja/ciągłe wdrażanie za pomocą usługi Azure Pipelines (YAML)
@@ -91,8 +91,8 @@
               href: ../av2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Seria B z możliwością zwiększania wydajności
               href: ../sizes-b-series-burstable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: Seria DC
-              href: ../dc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Seria DCv2
+              href: ../dcv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Serie Dv2 i DSv2
               href: ../dv2-dsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Serie Dv3 i Dsv3
@@ -534,7 +534,7 @@
             - name: Skalowanie przy użyciu agentów maszyn wirtualnych
               href: ../../jenkins/jenkins-azure-vm-agents.md
             - name: Publikowanie artefaktów w usłudze Storage
-              href: ../../storage/common/storage-java-jenkins-continuous-integration-solution.md
+              href: ../../jenkins/storage-java-jenkins-continuous-integration-solution.md
             - name: Zabezpieczanie usługi Jenkins
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: Uruchamianie kontenerów

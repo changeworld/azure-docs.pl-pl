@@ -1,0 +1,11 @@
+- name: Dokumentacja inżynierii niezawodności lokacji
+  href: ../index.yml
+- name: Zasoby
+  expanded: true
+  items:
+    - name: Książki dotyczące inżynierii niezawodności lokacji
+      href: books.md
+    - name: Zdarzenia dotyczące inżynierii niezawodności lokacji
+      href: events.md
+    - name: Podsumowania i kolekcje linków dotyczące inżynierii niezawodności lokacji
+      href: links.md

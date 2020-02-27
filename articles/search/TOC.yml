@@ -109,6 +109,8 @@
           href: search-capacity-planning.md
         - name: Skalowanie pod kątem wydajności
           href: search-performance-optimization.md
+        - name: Przenoszenie usługi między regionami
+          href: search-howto-move-across-regions.md
         - name: Architektura wielodostępności
           href: search-modeling-multitenant-saas-applications.md
     - name: Zabezpieczenia

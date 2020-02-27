@@ -1,0 +1,302 @@
+### YamlMime:Hub
+title: Dokumentacja inżynierii niezawodności lokacji
+summary: Inżynieria niezawodności lokacji to dyscyplina inżynieryjna, która pomaga organizacji trwale uzyskać odpowiedni poziom niezawodności w swoich systemach, usługach i produktach.
+brand: azure
+metadata:
+  title: Dokumentacja inżynierii niezawodności lokacji
+  description: Inżynieria niezawodności lokacji to dyscyplina inżynieryjna, która pomaga organizacji trwale uzyskać odpowiedni poziom niezawodności w swoich systemach, usługach i produktach.
+  services: site-reliability-engineering
+  ms.service: site-reliability-engineering
+  ms.topic: hub-page
+  author: dnblankedelman
+  ms.author: dnb
+  ms.date: 02/18/2020
+  ms.openlocfilehash: a89b50cb23d87c9495b24e4ac2ae562b637ec6fa
+  ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77598939"
+highlightedContent:
+  items:
+  - title: 'Wprowadzenie do inżynierii niezawodności lokacji:  Co to jest inżynieria niezawodności lokacji? (1/3)'
+    itemType: video
+    url: https://channel9.msdn.com/Shows/IT-Ops-Talk/Introduction-to-Site-Reliability-Engineering--Part-1/player
+  - title: 'Wprowadzenie do inżynierii niezawodności lokacji: Podstawowe reguły i rozwiązania (2/3)'
+    itemType: video
+    url: https://channel9.msdn.com/Shows/IT-Ops-Talk/Introduction-to-Site-Reliability-Engineering--Part-2/player
+  - title: 'Wprowadzenie do inżynierii niezawodności lokacji: Jak zacząć (3/3)'
+    itemType: video
+    url: https://channel9.msdn.com/Shows/IT-Ops-Talk/Introduction-to-Site-Reliability-Engineering--Part-3/player
+productDirectory:
+  items:
+  - title: Zwiększanie niezawodności dzięki nowoczesnym rozwiązaniom dotyczącym operacji
+    imageSrc: ./media/index/video.svg
+    links:
+    - url: https://myignite.techcommunity.microsoft.com/sessions/82996
+      text: 'Tworzenie podstaw dla nowoczesnych operacji: monitorowanie'
+    - url: https://myignite.techcommunity.microsoft.com/sessions/82997
+      text: Reagowanie na zdarzenia
+    - url: https://myignite.techcommunity.microsoft.com/sessions/82998
+      text: Uczenie się z niepowodzeń
+    - url: https://myignite.techcommunity.microsoft.com/sessions/82999
+      text: Rozwiązania dotyczące wdrażania zapewniające większą niezawodność
+    - url: https://myignite.techcommunity.microsoft.com/sessions/83001
+      text: 'Przygotowanie do rozwoju: planowanie pojemności i skalowanie'
+  - title: Wprowadzenie do inżynierii niezawodności lokacji — kurs online
+    imageSrc: ./media/index/learn.svg
+    links:
+    - url: https://docs.microsoft.com/learn/modules/intro-to-site-reliability-engineering/
+      text: Poznaj podstawy inżynierii niezawodności lokacji w ramach bezpłatnego kursu online
+  - title: Zasoby dotyczące inżynierii niezawodności lokacji
+    imageSrc: ./media/index/reference.svg
+    links:
+    - url: resources/books.md
+      text: Książki
+    - url: resources/events.md
+      text: Zdarzenia
+    - url: resources/links.md
+      text: Linki i podsumowania
+conceptualContent:
+  title: Inżynieria niezawodności lokacji na platformie Azure
+  summary: Dokumentacja dla inżynierów niezawodności lokacji
+  items:
+  - title: Architektura
+    links:
+    - url: https://docs.microsoft.com/azure/architecture/framework/
+      itemType: reference
+      text: Azure Architecture Framework
+    - url: https://docs.microsoft.com/azure/architecture/guide
+      itemType: reference
+      text: Przewodnik dotyczący architektury aplikacji na platformie Azure
+    - url: https://docs.microsoft.com/azure/architecture/architectures/?filter=reference-architecture
+      itemType: reference
+      text: Architektury referencyjne
+    - url: https://docs.microsoft.com/azure/architecture/cloud-adoption/
+      itemType: reference
+      text: Struktura wdrażania chmury firmy Microsoft dla platformy Azure
+    - url: https://docs.microsoft.com/azure/architecture/architectures/?filter=example-workload
+      itemType: reference
+      text: Przykładowe obciążenia
+    - url: https://docs.microsoft.com/azure/architecture/microservices
+      itemType: reference
+      text: Tworzenie mikrousług na platformie Azure
+    - url: https://docs.microsoft.com/azure/architecture/data-guide/
+      itemType: reference
+      text: Przewodnik po architekturze danych platformy Azure
+    - url: https://docs.microsoft.com/azure/architecture/best-practices/
+      itemType: reference
+      text: Najlepsze rozwiązania w chmurze
+    - url: https://docs.microsoft.com/azure/architecture/framework/resiliency/overview
+      itemType: reference
+      text: Projektowanie niezawodnych aplikacji platformy Azure
+    - url: https://docs.microsoft.com/azure/architecture/patterns
+      itemType: reference
+      text: Wzorce projektowe oparte na chmurze
+    - url: https://docs.microsoft.com/azure/architecture/aws-professional
+      itemType: reference
+      text: Platforma Azure dla ekspertów w zakresie usług AWS
+    - url: https://docs.microsoft.com/azure/architecture/performance
+      itemType: reference
+      text: Dostosowywanie wydajności
+    footerLink:
+      url: https://docs.microsoft.com/azure/architecture/
+      text: Więcej informacji znajduje się w Centrum architektury platformy Azure
+  - title: Monitorowanie
+    links:
+    - url: https://docs.microsoft.com/azure/azure-monitor/overview
+      itemType: get-started
+      text: Omówienie usługi Azure Monitor
+    - url: https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics
+      itemType: get-started
+      text: Metryki przy użyciu usługi Azure Monitor
+    - url: https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs
+      itemType: get-started
+      text: Dzienniki przy użyciu usługi Azure Monitor
+    - url: https://docs.microsoft.com/azure/azure-monitor/azure-monitor-app-hub
+      itemType: get-started
+      text: Zarządzanie wydajnością aplikacji za pomocą usługi Application Insights
+    - url: https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing
+      itemType: get-started
+      text: Śledzenie rozproszone z użyciem usługi Azure Monitor
+    footerLink:
+      url: https://docs.microsoft.com/en-us/azure/azure-monitor/
+      text: Więcej informacji o usłudze Azure Monitor
+  - title: Aprowizowanie i dostarczanie
+    links:
+    - url: https://docs.microsoft.com/azure/azure-resource-manager/
+      itemType: get-started
+      text: Azure Resource Manager
+    - url: https://docs.microsoft.com/azure/terraform/
+      itemType: get-started
+      text: Program Terraform na platformie Azure
+    - url: https://help.github.com/actions
+      itemType: get-started
+      text: GitHub Actions
+    - url: https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops
+      itemType: get-started
+      text: Azure Pipelines
+  - title: Skalowanie
+    links:
+    - url: https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview
+      itemType: get-started
+      text: Omówienie skalowania automatycznego
+    - url: https://docs.microsoft.com/azure/architecture/best-practices/auto-scaling
+      itemType: get-started
+      text: Wskazówki dotyczące skalowania automatycznego
+    - url: https://www.pluralsight.com/courses/microsoft-azure-autoscaling-developing
+      itemType: get-started
+      text: Opracowywanie pod kątem skalowania automatycznego
+    - url: https://docs.microsoft.com/azure/architecture/framework/scalability/overview
+      itemType: get-started
+      text: Filar skalowalności architektury platformy Azure
+    - url: https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out
+      itemType: get-started
+      text: Projektuj pod kątem skalowania w poziomie
+    - url: https://docs.microsoft.com/en-us/azure/architecture/patterns/category/performance-scalability
+      itemType: get-started
+      text: Wzorce wydajności i skalowalności
+additionalContent:
+  sections:
+  - title: Wykłady na temat inżynierii niezawodności lokacji od firmy Microsoft
+    items:
+    - title: Kultura
+      links:
+      - text: Ewolucja inżynierii niezawodności lokacji
+        url: https://www.usenix.org/conference/srecon18asia/presentation/purgason
+      - text: 'Tworzenie inżynierii niezawodności lokacji: Kultura od zewnątrz'
+        url: https://www.usenix.org/conference/srecon18asia/presentation/palino
+      - text: Niuanse kulturowe i efektywna współpraca zespołów wielokulturowych
+        url: https://www.usenix.org/conference/srecon18asia/presentation/ravindran
+      - text: Ewolucja inżynierii niezawodności lokacji i rosnące zapotrzebowanie na osoby katalizujące inżynierię niezawodności lokacji
+        url: https://www.usenix.org/conference/srecon18asia/presentation/ganeriwal
+      - text: 'Sprzężenia zwrotne: Jakie są korzyści dla inżynierów niezawodności lokacji i czego potrzeba, aby zrealizować ich potencjał'
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/tangi
+      - text: Dzięki poznaniu metryk biznesowych możesz stać się lepszym inżynierem niezawodności lokacji
+        url: https://www.usenix.org/conference/srecon19asia/presentation/suley
+      - text: Niekończąca się opowieść niezawodności lokacji
+        url: https://www.usenix.org/conference/srecon17europe/conference-program/presentation/andersen
+      - text: W dziale operacji codziennie jest poniedziałek
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/purgason
+    - title: Reagowanie na zdarzenia i przeglądy po zdarzeniach
+      links:
+      - text: 'Budowanie odporności: Jak uzyskiwać więcej informacji ze zdarzeń'
+        url: https://www.usenix.org/conference/srecon19emea/presentation/stenning
+      - text: 'Historia dwóch analiz po zdarzeniu: Perspektywa czynników ludzkich'
+        url: https://www.usenix.org/conference/srecon19asia/presentation/lund-postmortem
+      - text: 'Ironie automatyzacji: Komedia w trzech częściach'
+        url: https://www.usenix.org/conference/srecon19asia/presentation/lund-comedy
+      - text: 'Przeciwko dyżurom: Polemika'
+        url: https://www.usenix.org/conference/srecon18europe/presentation/murphy
+      - text: Inżynieria niezawodności lokacji jeden na jednego
+        url: https://www.usenix.org/conference/srecon19americas/presentation/tobey
+    - title: Monitorowanie i wgląd
+      links:
+      - text: 'Ponad 600 mln członków i setki mikrousług: Jak skalowaliśmy system monitorowania, aby nadążyć'
+        url: https://www.usenix.org/conference/srecon19asia/presentation/lamba
+      - text: 'Poza utartą ścieżką: Koncentrowanie wglądu na kliencie, a nie na usłudze'
+        url: https://www.usenix.org/conference/lisa19/presentation/suley
+      - text: Znasz to, co mierzysz — dlaczego metryki są ważne
+        url: https://www.usenix.org/conference/srecon18asia/presentation/srinivasamurthy-metrics
+      - text: 'Przetrwanie sztormu: Jak wczesne ostrzeżenia uratowały farmę'
+        url: https://www.usenix.org/conference/srecon19emea/presentation/sherwin
+      - text: Przechwytywanie i analizowanie milionów zapytań bez narzutu
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/appigatla
+      - text: 'Korelacja zdarzeń: Świeże podejście do zmniejszania średniego czasu do odzyskania'
+        url: https://www.usenix.org/conference/srecon17asia/program/presentation/rajan
+      - text: Jak niezawodne monitorowanie zapewnia wysoką dostępność dla kanału informacyjnego LinkedIn
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/barot
+      - text: 'Redukcja średniego czasu do odzyskania i fałszywych eskalacji: Korelacja zdarzeń w serwisie LinkedIn'
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/kehoe-0
+    - title: Rozwiązania i reguły
+      links:
+      - text: Dostępność — myślenie nie tylko o dziewiątkach
+        url: https://www.usenix.org/conference/srecon19asia/presentation/srinivasamurthy
+      - text: Modele mentalne dla inżynierów niezawodności lokacji
+        url: https://www.usenix.org/conference/srecon18asia/presentation/suley-mental
+      - text: Priorytetyzowanie zaufania podczas tworzenia aplikacji
+        url: https://www.usenix.org/conference/srecon19emea/presentation/davis
+      - text: Język Java nienawidzi systemu Linux. Pogódź się z tym.
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/banks
+      - text: Charakteryzowanie faz rozwiązań inżynierii niezawodności lokacji i informacje o nich
+        url: https://www.usenix.org/conference/srecon18asia/presentation/andersen
+      - text: 'Bezpieczeństwo i inżynieria niezawodności lokacji: Naturalne mnożniki siły'
+        url: https://www.usenix.org/conference/srecon18americas/presentation/scott
+      - text: 'Przegląd ulepszeń produkcji: Obniżanie długu naprawy'
+        url: https://www.usenix.org/conference/srecon16europe/program/presentation/check
+      - text: Zapewnianie niezawodności aplikacji o wysokiej wydajności
+        url: https://www.usenix.org/conference/srecon18asia/presentation/nayak
+      - text: Karta wyników usługi — grywalizowanie doskonałości operacyjnej
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/lawrence
+      - text: Jak ulepszyć usługę, krytykując ją
+        url: https://www.usenix.org/conference/srecon16/program/presentation/dickson
+    - title: Zespoły i zarządzanie
+      links:
+      - text: 'Kod żółty: Inteligentne pomaganie zespołom skupiającym się na operacjach'
+        url: https://www.usenix.org/conference/srecon19americas/presentation/kehoe
+      - text: 'Kierowanie bez zarządzania: Stawanie się liderem technicznym inżynierii niezawodności lokacji'
+        url: https://www.usenix.org/conference/srecon19asia/presentation/palino-leading
+      - text: Różnice w implementacjach inżynierii niezawodności lokacji w różnych firmach
+        url: https://www.usenix.org/conference/srecon19americas/presentation/andersen
+      - text: 100 zespołów, 100 przyczyn niepowodzeń
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/keiser
+      - text: Wszystko, co trzeba wiedzieć o rozpoczynaniu zaangażowania w inżynierię niezawodności lokacji
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/clawson
+      - text: Budowanie zespołów inżynierii niezawodności lokacji i kierowanie nimi
+        url: https://www.usenix.org/conference/srecon16europe/program/presentation/andersen
+      - text: 'Od studenta do inżyniera niezawodności lokacji: Dołączanie pracowników bez doświadczenia'
+        url: https://www.usenix.org/conference/srecon16/program/presentation/kehoe
+      - text: 'Inżynieria niezawodności lokacji w serwisie LinkedIn: Od wprowadzenia po skalę globalną'
+        url: https://www.usenix.org/conference/srecon17asia/program/presentation/connelly
+      - text: Składanie sekwencji DNA inżynierii niezawodności lokacji w największej firmie tworzącej oprogramowanie na świecie
+        url: https://www.usenix.org/conference/srecon16europe/program/presentation/splicing-sre-dna-sequences-biggest-software-company
+      - text: Transformacja gąsienic warstwy 1 w motyle
+        url: https://www.usenix.org/conference/srecon16/program/presentation/mushiana
+    - title: Narzędzia i technologie
+      links:
+      - text: 'Azure SREBot: Coś więcej niż czatbot — inteligentny bot minimalizujący czas ograniczania ryzyka'
+        url: https://www.usenix.org/conference/srecon17asia/program/presentation/guimaraes
+      - text: 'TrafficShift: Unikanie awarii na dużą skalę'
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/kehoe_trafficshift
+      - text: Tworzymy rozproszony system plików
+        url: https://www.usenix.org/conference/srecon19asia/presentation/patel
+      - text: TCP — architektura, ulepszenia i dostrajanie
+        url: https://www.usenix.org/conference/srecon19asia/presentation/dhakal
+      - text: BGP — szkielet Internetu
+        url: https://www.usenix.org/conference/srecon19asia/presentation/kehoe
+      - text: Operacje w środowisku bezserwerowym
+        url: https://www.usenix.org/conference/srecon19americas/presentation/davis
+      - text: Jak przeskalowaliśmy infrastrukturę bazy danych za pomocą platformy Kafka
+        url: https://www.usenix.org/conference/srecon19asia/presentation/thambara
+      - text: 'Sieci dla inżynierów niezawodności lokacji: Co muszę wiedzieć o rozwiązywaniu problemów z aplikacjami'
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/kehoe
+      - text: Ambry — rozproszony niezmienny magazyn obiektów serwisu LinkedIn
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/shenoy
+      - text: BPerf — profilowanie w chmurze Bing.com w środowisku produkcyjnym
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/sabharwal
+      - text: 'DNS: Stare rozwiązanie nowoczesnych problemów'
+        url: https://www.usenix.org/conference/srecon16europe/program/presentation/jackson
+      - text: Sterowanie ruchem przy użyciu systemu DNS w oparciu o rzeczywiste pomiary użytkowników w serwisie LinkedIn
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/rastogi
+    - title: Skalowanie
+      links:
+      - text: Prognozowanie ruchu i testowanie przeciążeniowe infrastruktury
+        url: https://www.usenix.org/conference/srecon19asia/presentation/sulakhe
+      - text: Uczenie na dużą skalę jest trudne! Analiza wzorców awarii przestojów i zanieczyszczone dane
+        url: https://www.usenix.org/conference/srecon18americas/presentation/lund
+      - text: 'Skalowanie rozproszonego systemu stanowego: Analiza przypadku serwisu LinkedIn'
+        url: https://www.usenix.org/conference/srecon18asia/presentation/kanuri
+      - text: Debugowanie na dużą skalę — przechodzenie z jednego komputera do środowiska produkcyjnego
+        url: https://www.usenix.org/conference/srecon18asia/presentation/srinivasamurthy-debugging
+      - text: Tworzenie scentralizowanej infrastruktury pamięci podręcznej na dużą skalę
+        url: https://www.usenix.org/conference/srecon19asia/presentation/won
+      - text: Skalowalne kodowanie — znajdowanie błędów
+        url: https://www.usenix.org/conference/srecon18europe/presentation/ebner-de-carvalho
+      - text: Zarządzanie pojemnością w serwisie LinkedIn
+        url: https://www.usenix.org/conference/srecon17asia/program/presentation/harkare
+      - text: 'InStream: Dystrybucja na dużą skalę przy użyciu protokołu BitTorrent, języka Python, programu Salt i platformy Kafka'
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/sharma
+      - text: Unikanie więzienia pojemności i uciekanie z niego
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/welch
+      - text: Ewolucja globalnego routingu ruchu i trybu failover
+        url: https://www.usenix.org/conference/srecon16/program/presentation/heady

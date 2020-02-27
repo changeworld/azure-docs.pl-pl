@@ -120,6 +120,11 @@
       href: sap-deployment-checklist.md
     - name: Planowanie i implementowanie oprogramowania SAP NetWeaver na platformie Azure
       href: planning-guide.md
+      items:
+        - name: Obsługiwane scenariusze obciążenia SAP na maszynie wirtualnej na platformie Azure
+          href: sap-planning-supported-configurations.md
+        - name: Jakie oprogramowanie SAP jest obsługiwane w przypadku wdrożeń platformy Azure
+          href: sap-supported-product-on-azure.md
     - name: Przewodnik wdrażania oprogramowania SAP NetWeaver
       href: deployment-guide.md
     - name: Wskazówki dotyczące wdrażania systemu DBMS dla obciążenia SAP
