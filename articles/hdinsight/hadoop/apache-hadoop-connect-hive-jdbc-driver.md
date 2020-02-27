@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 016107248399e84b7a82a656c9d590c3cbe0cdbe
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466930"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616645"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Wysyłanie zapytań do Apache Hive za pomocą sterownika JDBC w usłudze HDInsight
 
@@ -36,6 +36,18 @@ Połączenia JDBC z klastrem usługi HDInsight na platformie Azure są realizowa
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
 Element `CLUSTERNAME` należy zastąpić nazwą klastra usługi HDInsight.
+
+Można też uzyskać połączenie za pomocą **interfejsu użytkownika Ambari > Hive > konfiguracjami > Advanced**.
+
+![Pobierz parametry połączenia usługi JDBC za poorednictwem Ambari](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png)
+
+### <a name="host-name-in-connection-string"></a>Nazwa hosta w parametrach połączenia
+
+Nazwa hosta "CLUSTERNAME.azurehdinsight.net" w parametrach połączenia jest taka sama jak w przypadku adresu URL klastra. Możesz to zrobić za poorednictwem Azure Portal. 
+
+### <a name="port-in-connection-string"></a>Port w parametrach połączenia
+
+**Portu 443** można używać tylko do nawiązywania połączenia z klastrem z niektórych miejsc poza siecią wirtualną platformy Azure. HDInsight to usługa zarządzana, która oznacza, że wszystkie połączenia z klastrem są zarządzane za pośrednictwem bezpiecznej bramy. Nie można nawiązać połączenia z HiveServer 2 bezpośrednio na portach 10001 lub 10000, ponieważ te porty nie są widoczne dla zewnątrz. 
 
 ## <a name="authentication"></a>Uwierzytelnianie
 
@@ -138,6 +150,15 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 1. Zamknij SQuirreL, a następnie przejdź do katalogu, w którym SQuirreL jest zainstalowany w systemie, prawdopodobnie `C:\Program Files\squirrel-sql-4.0.0\lib`. W katalogu SquirreL w katalogu `lib` Zastąp istniejący plik Commons-Codec. jar, który został pobrany z klastra usługi HDInsight.
 
 1. Uruchom ponownie SQuirreL. Błąd nie powinien już występować podczas nawiązywania połączenia z usługą Hive w usłudze HDInsight.
+
+### <a name="connection-disconnected-by-hdinsight"></a>Połączenie zostało rozłączone przez HDInsight
+
+**Objawy**: podczas próby pobrania ogromnych ilości danych (np. kilku gigabajtów) za pośrednictwem JDBC/ODBC połączenie jest rozłączone przez HDInsight nieoczekiwanie podczas pobierania. 
+
+**Przyczyna**: ten błąd jest spowodowany przez ograniczenie w węzłach bramy. Podczas pobierania danych z JDBC/ODBC wszystkie dane muszą przechodzić przez węzeł bramy. Jednak Brama nie jest przeznaczona do pobierania ogromnych ilości danych, dlatego połączenie może zostać zamknięte przez bramę, jeśli nie może obsłużyć ruchu.
+
+**Rozwiązanie**: Unikaj używania sterownika JDBC/ODBC do pobierania ogromnych ilości danych. Skopiuj dane bezpośrednio z magazynu obiektów BLOB.
+
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 826cc155bae037121ddc303a6e1bf300e2d50a27
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 514de1435519282335124bfd67bac82669240b78
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589304"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616516"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Alerty zabezpieczeń w Centrum zabezpieczeń Azure
 
@@ -98,14 +98,20 @@ Wszystkie te połączone wysiłki skutkują nowymi i ulepszonymi sposobami wykry
 
 Poniższe tematy przeprowadzą Cię przez różne alerty, zgodnie z typami zasobów:
 
-* [Alerty maszyn wirtualnych i serwerów IaaS](security-center-alerts-iaas.md)
-* [Natywne alerty obliczeniowe](security-center-alerts-compute.md)
-* [Alerty usług danych](security-center-alerts-data-services.md)
+* [Alerty dla maszyn IaaS z systemem Windows](threat-protection.md#windows-machines)
+* [Alerty dla maszyn z systemem IaaS Linux](threat-protection.md#linux-machines)
+* [Alerty dla Azure App Service](threat-protection.md#app-services)
+* [Alerty dla kontenerów platformy Azure](threat-protection.md#azure-containers)
+* [Alerty dla SQL Database i SQL Data Warehouse](threat-protection.md#data-sql)
+* [Alerty dotyczące usługi Azure Storage](threat-protection.md#azure-storage)
+* [Alerty dla Cosmos DB](threat-protection.md#cosmos-db)
 
 W poniższych tematach opisano, jak Security Center używa różnych danych telemetrycznych zbieranych z integracji z infrastrukturą platformy Azure w celu zastosowania dodatkowych warstw ochrony dla zasobów wdrożonych na platformie Azure:
 
-* [Alerty warstwy usług](security-center-alerts-service-layer.md)
-* [Wykrywanie zagrożeń dla usług Azure WAF i Azure DDoS Protection](security-center-alerts-integration.md)
+* [Alerty dla warstwy zarządzania Azure (Azure Resource Manager) (wersja zapoznawcza)](threat-protection.md#management-layer)
+* [Alerty dla Azure Key Vault (wersja zapoznawcza)](threat-protection.md#azure-keyvault)
+* [Alerty dla warstwy sieci platformy Azure](threat-protection.md#network-layer)
+* [Alerty z innych usług](threat-protection.md#alerts-other)
 
 ## <a name="what-are-security-incidents"></a>Co to są zdarzenia związane z bezpieczeństwem?
 

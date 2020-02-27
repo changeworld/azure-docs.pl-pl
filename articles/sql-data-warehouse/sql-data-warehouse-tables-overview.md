@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9220d3adb31005551b6358034207f1071065b1a7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: da06112b0990898227191c919b209c8a95d15197
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692382"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616538"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Projektowanie tabel w Azure SQL Data Warehouse
 
@@ -43,8 +43,8 @@ Aby wyświetlić organizację tabel w SQL Data Warehouse, można użyć faktów,
 
 | Tabela WideWorldImportersDW  | Typ tabeli | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
-| Miasto | Wymiar | WWI. DimCity |
-| Zamówienie | Fact | WWI. FactOrder |
+| Miasto | Wymiar | wwi.DimCity |
+| Zamówienie | Fact | wwi.FactOrder |
 
 
 ## <a name="table-persistence"></a>Trwałość tabeli 
@@ -96,7 +96,7 @@ Kategoria tabeli często określa, którą opcję należy wybrać do dystrybucji
 | Przygotowanie        | Użyj działania okrężnego dla tabeli przemieszczania. Ładowanie za pomocą CTAS jest szybkie. Gdy dane są w tabeli przemieszczania, użyj instrukcji INSERT... Wybierz, aby przenieść dane do tabel produkcyjnych. |
 
 ## <a name="table-partitions"></a>Partycje tabel
-Partycjonowana tabela przechowuje i wykonuje operacje na wierszach tabeli zgodnie z zakresami danych. Na przykład tabela może być partycjonowana według dnia, miesiąca lub roku. Można poprawić wydajność zapytań za pomocą eliminacji partycji, co ogranicza skanowanie zapytania do danych w ramach partycji. Możesz również zachować dane za pomocą przełączania partycji. Ponieważ dane w SQL Data Warehouse są już dystrybuowane, zbyt wiele partycji może spowalniać wydajność zapytań. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące partycjonowania](sql-data-warehouse-tables-partition.md).  Po przełączeniu partycji na partycje tabeli, które nie są puste, należy rozważyć użycie opcji TRUNCATE_TARGET w instrukcji [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) , jeśli istniejące dane mają zostać obcięte. Poniższy kod umożliwia przełączenie danych dziennych na SalesFact zastępowanie wszelkich istniejących danych. 
+Partycjonowana tabela przechowuje i wykonuje operacje na wierszach tabeli zgodnie z zakresami danych. Na przykład tabela może być partycjonowana według dnia, miesiąca lub roku. Można poprawić wydajność zapytań za pomocą eliminacji partycji, co ogranicza skanowanie zapytania do danych w ramach partycji. Możesz również zachować dane za pomocą przełączania partycji. Ponieważ dane w SQL Data Warehouse są już dystrybuowane, zbyt wiele partycji może spowalniać wydajność zapytań. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące partycjonowania](sql-data-warehouse-tables-partition.md).  Gdy partycja przełączy się na partycje tabeli, które nie są puste, rozważ użycie opcji TRUNCATE_TARGET w instrukcji [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) , jeśli istniejące dane mają zostać obcięte. Poniższy kod umożliwia przełączenie danych dziennych na SalesFact zastępowanie wszelkich istniejących danych. 
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -213,6 +213,7 @@ LEFT OUTER JOIN (select * from sys.pdw_column_distribution_properties where dist
 LEFT OUTER JOIN sys.columns c
     ON cdp.[object_id] = c.[object_id]
     AND cdp.[column_id] = c.[column_id]
+WHERE pn.[type] = 'COMPUTE'
 )
 , size
 AS
