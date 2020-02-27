@@ -3,21 +3,21 @@ title: 'PowerShell: Migruj SQL Server do SQL Database'
 titleSuffix: Azure Database Migration Service
 description: Dowiedz się, jak przeprowadzić migrację z SQL Server lokalnych do Azure SQL Database przy użyciu Azure PowerShell z Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: f67572adc3b40115b2c6d4618718867eacf8c95e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: f63f79402b457017257f1762c6ddc7e04c0ee1af
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746303"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650694"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>Migrowanie SQL Server lokalnie do Azure SQL Database przy użyciu Azure PowerShell
 
@@ -38,7 +38,7 @@ Aby wykonać te kroki, potrzebne są:
 * [SQL Server 2016 lub nowszy](https://www.microsoft.com/sql-server/sql-server-downloads) (dowolna wersja)
 * Aby włączyć protokół TCP/IP, który jest domyślnie wyłączony z instalacją SQL Server Express. Włącz protokół TCP/IP, wykonując czynności opisane w artykule [Włączanie lub wyłączanie protokołu sieciowego serwera](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
 * Aby skonfigurować [zaporę systemu Windows na potrzeby dostępu do aparatu bazy danych](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Wystąpienie usługi Azure SQL Database. Można utworzyć wystąpienie Azure SQL Database, postępując zgodnie ze szczegółowymi informacjami w artykule [Tworzenie bazy danych Azure SQL Database w Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
+* Wystąpienie Azure SQL Database. Można utworzyć wystąpienie Azure SQL Database, postępując zgodnie ze szczegółowymi informacjami w artykule [Tworzenie bazy danych Azure SQL Database w Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 lub nowszy.
 * W celu utworzenia Microsoft Azure Virtual Network przy użyciu modelu wdrażania Azure Resource Manager, który zapewnia Azure Database Migration Service z połączeniem lokacja-lokacja z lokalnymi serwerami źródłowymi przy użyciu usługi [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) lub [sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 * Ukończenie oceny lokalnej bazy danych i migracji schematu przy użyciu Data Migration Assistant zgodnie z opisem w artykule [wykonywanie oceny migracji SQL Server](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)
@@ -51,7 +51,7 @@ Aby wykonać te kroki, potrzebne są:
 
 Aby zalogować się do subskrypcji platformy Azure przy użyciu programu PowerShell, Skorzystaj z instrukcji zamieszczonych w artykule [Logowanie za pomocą Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps) .
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Utwórz grupę zasobów, aby móc utworzyć maszynę wirtualną.
 

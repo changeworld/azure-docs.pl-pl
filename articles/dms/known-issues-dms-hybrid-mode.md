@@ -2,21 +2,21 @@
 title: Znane problemy/ograniczenia migracji przy użyciu trybu hybrydowego
 description: Informacje o znanych problemach/ograniczeniach migracji przy użyciu Azure Database Migration Service w trybie hybrydowym.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/19/2019
-ms.openlocfilehash: 60d1fc46ada70dc67c161f048a0206e7081ba591
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: aedc7ea3d778d52f6f348837430987568af188ef
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483117"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649606"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Znane problemy/ograniczenia migracji przy użyciu trybu hybrydowego
 
@@ -75,7 +75,7 @@ Domyślnie usługa hybrydowego procesu roboczego Azure Database Migration Servic
 
     b. Kliknij prawym przyciskiem myszy wpis **kluczowej aplikacji na DMS** , wskaż polecenie **wszystkie zadania**, a następnie wybierz pozycję **Zarządzaj kluczami prywatnymi**.
 
-    d. Na karcie **zabezpieczenia** wybierz pozycję **Dodaj**, a następnie wprowadź nazwę konta.
+    c. Na karcie **zabezpieczenia** wybierz pozycję **Dodaj**, a następnie wprowadź nazwę konta.
 
     d. Wykonaj te same czynności, aby przyznać uprawnienia klucza prywatnego nowemu kontu do certyfikatu **pary kluczy aparatu usługi DMS** .
 
@@ -95,7 +95,7 @@ W poniższych sekcjach opisano problemy dotyczące scenariusza związane z używ
 
 ### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>Migracje online do Azure SQL Database wystąpienia zarządzanego
 
-**Wysokie użycie procesora**
+**Duże użycie procesora CPU**
 
 **Problem**: w przypadku migracji w trybie online do SQL Database wystąpienia zarządzanego, komputer, na którym działa hybrydowy proces roboczy, będzie napotykał duże użycie procesora CPU, jeśli istnieje zbyt wiele kopii zapasowych lub kopia zapasowa jest zbyt duża.
 

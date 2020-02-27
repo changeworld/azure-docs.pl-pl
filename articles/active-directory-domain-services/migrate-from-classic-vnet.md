@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: bd20bb008c52b7d99416aed7a0599a6e78d2acf2
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 114a460b3db67af278f813de2e7a18d571cf3c28
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161651"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613441"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Przeprowadź migrację Azure AD Domain Services z modelu klasycznej sieci wirtualnej do Menedżer zasobów
 
@@ -206,12 +206,12 @@ Aby przygotować domenę zarządzaną platformy Azure AD DS na potrzeby migracji
     $creds = Get-Credential
     ```
 
-1. Teraz uruchom polecenie cmdlet `Migrate-Aadds` przy użyciu parametru *-Prepare* . Podaj wartość *-ManagedDomainFqdn* dla własnej domeny zarządzanej platformy Azure AD DS, na przykład *contoso.com*:
+1. Teraz uruchom polecenie cmdlet `Migrate-Aadds` przy użyciu parametru *-Prepare* . Podaj wartość *-ManagedDomainFqdn* dla własnej domeny zarządzanej platformy Azure AD DS, na przykład *aaddscontoso.com*:
 
     ```powershell
     Migrate-Aadds `
         -Prepare `
-        -ManagedDomainFqdn contoso.com `
+        -ManagedDomainFqdn aaddscontoso.com `
         -Credentials $creds
     ```
 
@@ -219,7 +219,7 @@ Aby przygotować domenę zarządzaną platformy Azure AD DS na potrzeby migracji
 
 Po przygotowaniu i wykonaniu kopii zapasowej domeny zarządzanej AD DS platformy Azure można migrować domenę. Ten krok umożliwia odtworzenie maszyn wirtualnych Azure AD Domain Services kontrolera domeny przy użyciu modelu wdrażania Menedżer zasobów. Wykonanie tego kroku może potrwać od 1 do 3 godzin.
 
-Uruchom polecenie cmdlet `Migrate-Aadds` przy użyciu parametru *-commit* . Podaj wartość *-ManagedDomainFqdn* dla własnej domeny zarządzanej AD DS platformy Azure, która została przygotowana w poprzedniej sekcji, na przykład *contoso.com*:
+Uruchom polecenie cmdlet `Migrate-Aadds` przy użyciu parametru *-commit* . Podaj wartość *-ManagedDomainFqdn* dla własnej domeny zarządzanej AD DS platformy Azure, która została przygotowana w poprzedniej sekcji, na przykład *aaddscontoso.com*:
 
 Określ docelową grupę zasobów zawierającą sieć wirtualną, do której chcesz migrować AD DS platformy Azure, na przykład grupa *zasobów*. Podaj docelową sieć wirtualną, taką jak *myVnet*i podsieć, taką jak *DomainServices*.
 
@@ -228,7 +228,7 @@ Po uruchomieniu tego polecenia nie można wycofać:
 ```powershell
 Migrate-Aadds `
     -Commit `
-    -ManagedDomainFqdn contoso.com `
+    -ManagedDomainFqdn aaddscontoso.com `
     -VirtualNetworkResourceGroupName myResourceGroup `
     -VirtualNetworkName myVnet `
     -VirtualSubnetName DomainServices `
@@ -265,7 +265,7 @@ Teraz Przetestuj połączenie z siecią wirtualną i rozpoznawanie nazw. Na masz
 
 1. Sprawdź, czy można wysłać polecenie ping do adresu IP jednego z kontrolerów domeny, takich jak `ping 10.1.0.4`
     * Adresy IP kontrolerów domeny są wyświetlane na stronie **Właściwości** dla domeny zarządzanej platformy Azure AD DS w Azure Portal.
-1. Sprawdź rozpoznawanie nazw domen zarządzanych, takich jak `nslookup contoso.com`
+1. Sprawdź rozpoznawanie nazw domen zarządzanych, takich jak `nslookup aaddscontoso.com`
     * Określ nazwę DNS swojej domeny zarządzanej AD DS platformy Azure, aby sprawdzić, czy ustawienia DNS są poprawne i rozwiązuje.
 
 Drugi kontroler domeny powinien być dostępny 1-2 godzin po zakończeniu migracji. Aby sprawdzić, czy drugi kontroler domeny jest dostępny, sprawdź na stronie **Właściwości** dla domeny zarządzanej platformy Azure AD DS w Azure Portal. Jeśli pokazane są dwa adresy IP, drugi kontroler domeny jest gotowy.
@@ -309,12 +309,12 @@ Do pewnego momentu w procesie migracji można wycofać lub przywrócić domenę 
 
 Jeśli wystąpi błąd podczas uruchamiania polecenia cmdlet programu PowerShell w celu przygotowania do migracji w kroku 2 lub migracji w kroku 3, domena zarządzana AD DS platformy Azure może przywrócić pierwotną konfigurację. Ta wycofywanie wymaga oryginalnej klasycznej sieci wirtualnej. Należy pamiętać, że adresy IP nadal mogą ulec zmianie po wycofaniu.
 
-Uruchom polecenie cmdlet `Migrate-Aadds` za pomocą parametru *-Abort* . Podaj wartość *-ManagedDomainFqdn* dla własnej domeny zarządzanej AD DS platformy Azure, która została przygotowana w poprzedniej sekcji, takiej jak *contoso.com*, i nazwę klasycznej sieci wirtualnej, na przykład *myClassicVnet*:
+Uruchom polecenie cmdlet `Migrate-Aadds` za pomocą parametru *-Abort* . Podaj wartość *-ManagedDomainFqdn* dla własnej domeny zarządzanej AD DS platformy Azure, która została przygotowana w poprzedniej sekcji, takiej jak *aaddscontoso.com*, i nazwę klasycznej sieci wirtualnej, na przykład *myClassicVnet*:
 
 ```powershell
 Migrate-Aadds `
     -Abort `
-    -ManagedDomainFqdn contoso.com `
+    -ManagedDomainFqdn aaddscontoso.com `
     -ClassicVirtualNetworkName myClassicVnet `
     -Credentials $creds
 ```

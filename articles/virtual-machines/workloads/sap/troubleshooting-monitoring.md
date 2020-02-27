@@ -3,22 +3,22 @@ title: Monitorowanie SAP HANA na platformie Azure (duże wystąpienia) | Microso
 description: Monitoruj SAP HANA na platformie Azure (duże wystąpienia).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0aea4dddef65600fe30f36499d4ad2a4f461245
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 50a6b4f15a7de02533e3bb51e5659f7b4c078b40
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70077939"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617291"
 ---
 # <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>Jak monitorować SAP HANA (duże wystąpienia) na platformie Azure
 
@@ -31,7 +31,7 @@ SAP HANA na platformie Azure (duże wystąpienia) nie różnią się od innych w
 
 Za pomocą usługi Azure Virtual Machines należy ustalić, czy klasy zasobów nazwane powyżej są wystarczające, czy są one zubożone. Poniżej przedstawiono bardziej szczegółowe informacje na temat każdej z różnych klas:
 
-**Użycie zasobów procesora CPU:** Współczynnik, który został zdefiniowany dla niektórych obciążeń względem platformy HANA, jest wymuszany, aby upewnić się, że dostępne są wystarczające zasoby procesora CPU do pracy za pomocą danych przechowywanych w pamięci. Niemniej jednak mogą wystąpić sytuacje, w których HANA zużywa wiele procesorów wykonujących zapytania z powodu brakujących indeksów lub podobnych problemów. Oznacza to, że należy monitorować użycie zasobów procesora dla jednostki dużego wystąpienia HANA, a także zasoby procesora używane przez konkretne usługi platformy HANA.
+Użycie **zasobów procesora CPU:** Współczynnik, który został zdefiniowany dla niektórych obciążeń względem platformy HANA, jest wymuszany, aby upewnić się, że dostępne są wystarczające zasoby procesora CPU do pracy za pomocą danych przechowywanych w pamięci. Niemniej jednak mogą wystąpić sytuacje, w których HANA zużywa wiele procesorów wykonujących zapytania z powodu brakujących indeksów lub podobnych problemów. Oznacza to, że należy monitorować użycie zasobów procesora dla jednostki dużego wystąpienia HANA, a także zasoby procesora używane przez konkretne usługi platformy HANA.
 
 **Użycie pamięci:** Jest ważne, aby monitorować z poziomu platformy HANA, a także poza platformą HANA w jednostce. W ramach platformy HANA Monitoruj, jak dane zużywają pamięć przydzieloną platformy HANA, aby zachować w ramach wymaganych wytycznych dotyczących ustalania wielkości dla SAP. Warto również monitorować użycie pamięci na poziomie dużego wystąpienia, aby upewnić się, że dodatkowe zainstalowane oprogramowanie inne niż HANA nie zużywa zbyt dużej ilości pamięci i w związku z tym konkuruje z platformą HANA dla pamięci.
 
@@ -39,7 +39,7 @@ Za pomocą usługi Azure Virtual Machines należy ustalić, czy klasy zasobów n
 
 **Miejsce na dysku:** Użycie miejsca na dysku zwykle rośnie w miarę upływu czasu. Najczęstszymi przyczynami są: zwiększenie ilości danych, wykonanie kopii zapasowych dziennika transakcji, przechowywanie plików śledzenia i wykonywanie migawek magazynu. W związku z tym ważne jest, aby monitorować użycie miejsca na dysku i zarządzać przestrzenią dyskową skojarzoną z jednostką dużego wystąpienia HANA.
 
-Dla **jednostek SKU typu II** dużych wystąpień Hana serwer zawiera wstępnie załadowanych narzędzi diagnostycznych systemu. Możesz użyć tych narzędzi diagnostycznych, aby przeprowadzić kontrolę kondycji systemu. Uruchom następujące polecenie, aby wygenerować plik dziennika kontroli kondycji pod adresem/var/log/health_check.
+Dla **jednostek SKU typu II** dużych wystąpień Hana serwer zawiera wstępnie załadowanych narzędzi diagnostycznych systemu. Możesz użyć tych narzędzi diagnostycznych, aby przeprowadzić kontrolę kondycji systemu. Uruchom następujące polecenie, aby wygenerować plik dziennika kontroli kondycji w/var/log/health_check.
 ```
 /opt/sgi/health_check/microsoft_tdi.sh
 ```

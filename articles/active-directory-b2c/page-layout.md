@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 02/26/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2a0a786d3e2135467c7279c76bae273bff0ba2d0
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: b24e8cc5f6bb6213bf021362c5654afd4d5266fb
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149511"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620615"
 ---
 # <a name="page-layout-versions"></a>Wersje układu strony
 
@@ -33,13 +33,13 @@ Pakiety układów stron są okresowo aktualizowane w celu uwzględnienia poprawe
 
 - Wszystkie strony
   - Poprawki ułatwień dostępu
-  - Teraz możesz dodać atrybut `data-preload="true"` w tagach HTML, aby kontrolować kolejność ładowania dla CSS i JavaScript.
+  - Teraz możesz dodać atrybut `data-preload="true"` [w TAGACH HTML](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) , aby kontrolować kolejność ładowania dla CSS i JavaScript.
     - Załaduj połączone pliki CSS jednocześnie jako szablon HTML, aby nie "migotać" między ładowaniem plików.
     - Kontrolowanie kolejności, w której Tagi `script` są pobierane i wykonywane przed załadowaniem strony.
   - Pole adresu e-mail jest teraz `type=email` a klawiatury przenośne zapewniają poprawne sugestie
   - Obsługa funkcji tłumaczenia dla programu Chrome
 - Ujednolicone i samodzielne strony
-  - Pola username/email i Password używają teraz elementu `form` HTML, aby umożliwić programowi Microsoft Edge i Internet Explorer (IE) prawidłowe Zapisywanie tych informacji.
+  - Pola username/email i Password używają teraz elementu `form` HTML, aby umożliwić programowi Edge i Internet Explorer (IE) prawidłowe Zapisywanie tych informacji.
 
 ## <a name="110"></a>1.1.0
 

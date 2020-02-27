@@ -4,7 +4,7 @@ description: Wdrażanie oprogramowania SAP S/4HANA lub BW/4HANA na maszynie wirt
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 2fa68d9dc3052263b5354086ee802cc31fa35ace
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101445"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616205"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Wdrażanie oprogramowania SAP S/4HANA lub BW/4HANA na platformie Azure
 W tym artykule opisano sposób wdrażania usługi S/4HANA na platformie Azure przy użyciu biblioteki urządzeń SAP Cloud (SAP CAL) 3,0. W celu wdrożenia innych rozwiązań opartych na SAP HANA, takich jak BW/4HANA, wykonaj te same czynności.
@@ -49,7 +49,7 @@ Na stronie **rozwiązania** są wyświetlane niektóre rozwiązania SAP cal Hana
     c. Nadaj uprawnienia SAP CAL do wdrożenia w ramach subskrypcji platformy Azure.
 
    > [!NOTE]
-   >  W następnych krokach pokazano, jak utworzyć konto SAP CAL dla wdrożeń Menedżer zasobów. Jeśli masz już konto SAP CAL, które jest połączone z klasycznym modelem wdrażania, musisz wykonać następujące kroki, aby utworzyć nowe konto SAP cal. Nowe konto SAP CAL musi zostać wdrożone w modelu Menedżer zasobów.
+   >  W następnych krokach pokazano, jak utworzyć konto SAP CAL dla wdrożeń Menedżer zasobów. Jeśli masz już konto SAP CAL, które jest połączone z klasycznym modelem wdrażania *, musisz wykonać* następujące kroki, aby utworzyć nowe konto SAP cal. Nowe konto SAP CAL musi zostać wdrożone w modelu Menedżer zasobów.
 
 1. Utwórz nowe konto SAP CAL. Na stronie **konta** są wyświetlane trzy opcje platformy Azure: 
 
@@ -75,7 +75,7 @@ Na stronie **rozwiązania** są wyświetlane niektóre rozwiązania SAP cal Hana
 
    ![Potwierdzenie usług w chmurze programu Internet Explorer](./media/cal-s4h/s4h-pic5a.png)
 
-1. Kliknij przycisk **zaakceptować**. Jeśli autoryzacja zakończyła się pomyślnie, definicja konta SAP CAL zostanie wyświetlona ponownie. Po krótkim czasie komunikat potwierdza, że proces autoryzacji zakończył się pomyślnie.
+1. Kliknij przycisk **Akceptuj**. Jeśli autoryzacja zakończyła się pomyślnie, definicja konta SAP CAL zostanie wyświetlona ponownie. Po krótkim czasie komunikat potwierdza, że proces autoryzacji zakończył się pomyślnie.
 
 1. Aby przypisać nowo utworzone konto SAP CAL do użytkownika, wprowadź swój **Identyfikator użytkownika** w polu tekstowym po prawej stronie, a następnie kliknij przycisk **Dodaj**.
 
@@ -119,7 +119,7 @@ W tym miejscu zademonstrowano ścieżkę podstawową do wdrożenia.
 
     d. Wprowadź **hasło** główne dla rozwiązania składającego się z ośmiu lub dziewięciu znaków. Hasło jest używane dla administratorów różnych składników programu.
 
-   ![Tryb podstawowy SAP CAL: Utwórz wystąpienie](./media/cal-s4h/s4h-pic10a.png)
+   ![System SAP CAL Basic: Create instance](./media/cal-s4h/s4h-pic10a.png)
 
 1. Kliknij przycisk **Utwórz**, a następnie w wyświetlonym oknie komunikatu kliknij przycisk **OK**.
 
@@ -129,7 +129,7 @@ W tym miejscu zademonstrowano ścieżkę podstawową do wdrożenia.
 
    ![Klucz prywatny SAP CAL](./media/cal-s4h/s4h-pic10c.png)
 
-1. Przeczytaj komunikat ostrzegawczy SAP cal, a następnie kliknij przycisk **OK**.
+1. Przeczytaj komunikat **ostrzegawczy** SAP cal, a następnie kliknij przycisk **OK**.
 
    ![Ostrzeżenie SAP CAL](./media/cal-s4h/s4h-pic10d.png)
 

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: d5a03629a134a0b2c7d6ee95dba9ea3ad06e99ba
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f40e54f5260f827f0b18c833d23d1f57b5ebc3a3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609829"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617464"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Przykłady manifestu aplikacji i usługi Reliable Services
 Poniżej przedstawiono przykłady manifestów aplikacji i usług dla Service Fabric aplikacji z frontonem sieci Web ASP.NET Core i zapasowym zapleczem. Te przykłady przedstawiają, jakie ustawienia są dostępne i jak z nich korzystać. Te manifesty aplikacji i usług są oparte na Service Fabric manifestach [szybkiego startu programu .NET](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) .
@@ -69,7 +69,7 @@ Aby uzyskać więcej informacji na temat określonych elementów XML, zobacz ele
                                 MemorySwapInMB="[MemorySwapInMB]"/>
 
       <!-- Share the data package across multiple instances of the VotingData service-->
-      <PackageSharingPolicy PackageRef="VotingDataPkg.Data"/>
+      <PackageSharingPolicy PackageRef="Data"/>
 
       <!-- Give read rights on the "DataEndpoint" endpoint to the Customer2 account.-->
       <SecurityAccessPolicy GrantRights="Read" PrincipalRef="Customer2" ResourceRef="DataEndpoint" ResourceType="Endpoint"/>         
@@ -278,7 +278,7 @@ W sposób deklaratywny opisano typ i wersję aplikacji. Co najmniej jeden manife
 ### <a name="parameters-element"></a>Element parameters
 Deklaruje parametry, które są używane w manifeście aplikacji. Wartość tych parametrów można podać podczas tworzenia wystąpienia aplikacji i może służyć do przesłaniania ustawień konfiguracji aplikacji lub usługi. Aby uzyskać więcej informacji, zobacz [element parameters](service-fabric-service-model-schema-elements.md#ParametersElementanonymouscomplexTypeComplexTypeDefinedInApplicationManifestTypecomplexType)
 
-### <a name="parameter-element"></a>Element Parameter
+### <a name="parameter-element"></a>Element parametru
 Parametr aplikacji, który ma być używany w tym manifeście. Wartość parametru można zmienić podczas tworzenia wystąpienia aplikacji lub, jeśli nie zostanie podana wartość, zostanie użyta wartość domyślna. Aby uzyskać więcej informacji, zobacz [element parametru](service-fabric-service-model-schema-elements.md#ParameterElementanonymouscomplexTypeComplexTypeDefinedInParameterselement)
 
 ### <a name="servicemanifestimport-element"></a>ServiceManifestImport, element
@@ -332,7 +332,7 @@ Opisuje podmioty zabezpieczeń (użytkowników, grupy) wymagane przez tę aplika
 ### <a name="groups-element"></a>Groups, element
 Deklaruje zestaw grup jako podmioty zabezpieczeń, do których można odwoływać się w zasadach. Grupy są przydatne, jeśli istnieje wielu użytkowników dla różnych punktów wejścia usługi i że muszą mieć pewne typowe uprawnienia, które są dostępne na poziomie grupy. Aby uzyskać więcej informacji, zobacz [grupy element](service-fabric-service-model-schema-elements.md#GroupsElementanonymouscomplexTypeComplexTypeDefinedInSecurityPrincipalsTypecomplexType)
 
-### <a name="group-element"></a>Group, element
+### <a name="group-element"></a>Element grupy
 Deklaruje grupę jako podmiot zabezpieczeń, do której można odwoływać się zasady. Aby uzyskać więcej informacji, zobacz [element Group](service-fabric-service-model-schema-elements.md#GroupElementanonymouscomplexTypeComplexTypeDefinedInGroupselement)
 
 ### <a name="membership-element"></a>Element Membership
@@ -353,7 +353,7 @@ Można dodać użytkowników do dowolnej istniejącej grupy członkostwa, aby mo
 ### <a name="systemgroup-element"></a>Element systemowy
 Grupa systemowa, do której zostanie dodany użytkownik.  Grupa systemowa musi być zdefiniowana w sekcji grup. Aby uzyskać więcej informacji, zobacz [element System](service-fabric-service-model-schema-elements.md#SystemGroupElementanonymouscomplexTypeComplexTypeDefinedInMemberOfelement) .
 
-### <a name="group-element"></a>Group, element
+### <a name="group-element"></a>Element grupy
 Grupa, do której ma zostać dodany użytkownik.  Grupa musi być zdefiniowana w sekcji grup. Aby uzyskać więcej informacji, zobacz [element Group](service-fabric-service-model-schema-elements.md#GroupElementanonymouscomplexTypeComplexTypeDefinedInMemberOfelement)
 
 ### <a name="policies-element"></a>Element zasad

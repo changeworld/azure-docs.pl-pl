@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 4db6ad83c44e0c811df0a3b91a473861e4e1ab87
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7abbdf03e85f425f65a45e6640b82529c2b9c84f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367144"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614068"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Tworzenie jednostki organizacyjnej (OU) w Azure AD Domain Services domenie zarządzanej
 
@@ -66,11 +66,11 @@ Aby utworzyć niestandardową jednostkę organizacyjną, należy użyć Active D
 1. Zaloguj się do maszyny wirtualnej zarządzania. Aby uzyskać instrukcje dotyczące sposobu nawiązywania połączenia przy użyciu Azure Portal, zobacz [nawiązywanie połączenia z maszyną wirtualną z systemem Windows Server][connect-windows-server-vm].
 1. Na ekranie startowym wybierz pozycję **Narzędzia administracyjne**. Zostanie wyświetlona lista dostępnych narzędzi do zarządzania, które zostały zainstalowane w samouczku, aby [utworzyć maszynę wirtualną zarządzania][tutorial-create-management-vm].
 1. Aby utworzyć jednostki organizacyjne i zarządzać nimi, wybierz **Centrum administracyjne usługi Active Directory** z listy narzędzi administracyjnych.
-1. W lewym okienku wybierz domenę zarządzaną platformy Azure AD DS, na przykład *aadds.contoso.com*. Zostanie wyświetlona lista istniejących jednostek organizacyjnych i zasobów:
+1. W lewym okienku wybierz domenę zarządzaną platformy Azure AD DS, na przykład *aaddscontoso.com*. Zostanie wyświetlona lista istniejących jednostek organizacyjnych i zasobów:
 
     ![Wybierz domenę zarządzaną platformy Azure AD DS w Centrum administracyjne usługi Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
 
-1. Okienko **zadania** zostanie wyświetlone po prawej stronie Centrum administracyjne usługi Active Directory. W obszarze domeny, takiej jak *aadds.contoso.com*, wybierz pozycję **Nowa > jednostki organizacyjnej**.
+1. Okienko **zadania** zostanie wyświetlone po prawej stronie Centrum administracyjne usługi Active Directory. W obszarze domeny, takiej jak *aaddscontoso.com*, wybierz pozycję **Nowa > jednostki organizacyjnej**.
 
     ![Wybierz opcję utworzenia nowej jednostki organizacyjnej w Centrum administracyjne usługi Active Directory](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
 

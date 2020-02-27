@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2020
 ms.author: iainfou
-ms.openlocfilehash: c40a3b1352c383b8b70a0b14f59265188b77a86d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d15877107e49c57f8f33b8ec41caeb7d48230b91
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523689"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613886"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Samouczek: dołączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej
 
@@ -149,16 +149,16 @@ Po utworzeniu maszyny wirtualnej i połączeniu RDP opartym na sieci Web za pomo
 
     ![Wybierz, aby zmienić właściwości grupy roboczej lub domeny](./media/join-windows-vm/change-domain.png)
 
-1. W polu **domena** Określ nazwę domeny zarządzanej platformy Azure AD DS, na przykład *contoso.com*, a następnie wybierz **przycisk OK**.
+1. W polu **domena** Określ nazwę domeny zarządzanej platformy Azure AD DS, na przykład *aaddscontoso.com*, a następnie wybierz **przycisk OK**.
 
     ![Określ domenę zarządzaną AD DS platformy Azure do przyłączenia](./media/join-windows-vm/join-domain.png)
 
 1. Wprowadź poświadczenia domeny w celu przyłączenia do domeny. Użyj poświadczeń dla użytkownika, który należy do grupy *administratorów DC usługi Azure AD* . Tylko członkowie tej grupy mają uprawnienia do przyłączania maszyn do domeny zarządzanej AD DS platformy Azure. Konto musi być częścią domeny zarządzanej platformy Azure AD DS lub dzierżawy usługi Azure AD z zewnętrznych katalogów skojarzonych z dzierżawą usługi Azure AD nie można prawidłowo uwierzytelnić podczas procesu przyłączania do domeny. Poświadczenia konta można określić w jeden z następujących sposobów:
 
-    * **Format nazwy UPN** (zalecane) — wprowadź sufiks głównej nazwy użytkownika (UPN) dla konta użytkownika, zgodnie z konfiguracją w usłudze Azure AD. Na przykład sufiks nazwy UPN *contosoadmin* użytkownika będzie `contosoadmin@contoso.onmicrosoft.com`. Istnieje kilka typowych przypadków użycia, w których format nazwy UPN może być niezawodnie używany do logowania się do domeny, a nie do formatu *sAMAccountName* :
+    * **Format nazwy UPN** (zalecane) — wprowadź sufiks głównej nazwy użytkownika (UPN) dla konta użytkownika, zgodnie z konfiguracją w usłudze Azure AD. Na przykład sufiks nazwy UPN *contosoadmin* użytkownika będzie `contosoadmin@aaddscontoso.onmicrosoft.com`. Istnieje kilka typowych przypadków użycia, w których format nazwy UPN może być niezawodnie używany do logowania się do domeny, a nie do formatu *sAMAccountName* :
         * Jeśli prefiks nazwy UPN użytkownika jest długi, taki jak *deehasareallylongname* *, może to* być automatycznie generowane.
         * Jeśli wielu użytkowników ma ten sam prefiks nazwy UPN w dzierżawie usługi Azure AD, np. *Dee*, jego format *sAMAccountName* może być automatycznie generowany.
-    * **Format sAMAccountName** — wprowadź nazwę konta w formacie *sAMAccountName* . Na przykład nazwa *sAMAccountName* *contosoadmin* użytkownika będzie `CONTOSO\contosoadmin`.
+    * **Format sAMAccountName** — wprowadź nazwę konta w formacie *sAMAccountName* . Na przykład nazwa *sAMAccountName* *contosoadmin* użytkownika będzie `AADDSCONTOSO\contosoadmin`.
 
 1. Przyłączenie do domeny zarządzanej platformy Azure AD DS może potrwać kilka sekund. Po zakończeniu następujący komunikat powita cię w domenie:
 
@@ -169,9 +169,9 @@ Po utworzeniu maszyny wirtualnej i połączeniu RDP opartym na sieci Web za pomo
 1. Aby ukończyć proces przyłączenia do domeny zarządzanej usługi Azure AD DS, uruchom ponownie maszynę wirtualną.
 
 > [!TIP]
-> Można przyłączyć do domeny maszynę wirtualną przy użyciu programu PowerShell przy użyciu polecenia cmdlet [Add-Computer][add-computer] . Poniższy przykład dołącza do domeny *contoso* , a następnie ponownie uruchamia maszynę wirtualną. Po wyświetleniu monitu wprowadź poświadczenia dla użytkownika, który należy do grupy *administratorów DC usługi Azure AD* :
+> Można przyłączyć do domeny maszynę wirtualną przy użyciu programu PowerShell przy użyciu polecenia cmdlet [Add-Computer][add-computer] . Poniższy przykład łączy się z domeną *AADDSCONTOSO* , a następnie ponownie uruchamia maszynę wirtualną. Po wyświetleniu monitu wprowadź poświadczenia dla użytkownika, który należy do grupy *administratorów DC usługi Azure AD* :
 >
-> `Add-Computer -DomainName CONTOSO -Restart`
+> `Add-Computer -DomainName AADDSCONTOSO -Restart`
 >
 > Aby przyłączyć do domeny maszynę wirtualną bez nawiązywania z nią połączenia i ręcznie skonfigurować połączenie, można użyć polecenia cmdlet [Set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell.
 
@@ -207,7 +207,7 @@ Jeśli nie otrzymasz monitu z prośbą o podanie poświadczeń w celu przyłącz
 Po wykonaniu każdego z tych kroków rozwiązywania problemów spróbuj ponownie dołączyć maszynę wirtualną z systemem Windows Server do domeny zarządzanej.
 
 * Sprawdź, czy maszyna wirtualna jest połączona z tą samą siecią wirtualną, w której jest włączona usługa Azure AD DS lub czy ma równorzędne połączenie sieciowe.
-* Spróbuj wysłać polecenie ping do nazwy domeny DNS domeny zarządzanej, takiej jak `ping contoso.com`.
+* Spróbuj wysłać polecenie ping do nazwy domeny DNS domeny zarządzanej, takiej jak `ping aaddscontoso.com`.
     * Jeśli żądanie ping nie powiedzie się, spróbuj wysłać polecenie ping do adresów IP dla domeny zarządzanej, takich jak `ping 10.0.0.4`. Adres IP dla Twojego środowiska jest wyświetlany na stronie *Właściwości* po wybraniu domeny zarządzanej AD DS platformy Azure z listy zasobów platformy Azure.
     * Jeśli można wysłać polecenie ping do adresu IP, ale nie do domeny, może to spowodować niepoprawne skonfigurowanie usługi DNS. Upewnij się, że adresy IP domeny zarządzanej są skonfigurowane jako serwery DNS dla sieci wirtualnej.
 * Spróbuj opróżnić pamięć podręczną programu rozpoznawania nazw DNS na maszynie wirtualnej przy użyciu polecenia `ipconfig /flushdns`.
@@ -220,7 +220,7 @@ Po wykonaniu każdego z tych kroków rozwiązywania problemów spróbuj ponownie
 
 * Upewnij się, że określone konto użytkownika należy do grupy *Administratorzy domeny usługi AAD* .
 * Upewnij się, że konto jest częścią domeny zarządzanej usługi Azure AD DS lub dzierżawy usługi Azure AD. Konta z zewnętrznych katalogów skojarzonych z dzierżawą usługi Azure AD nie mogą być prawidłowo uwierzytelniane podczas procesu przyłączania do domeny.
-* Spróbuj użyć formatu UPN, aby określić poświadczenia, takie jak `contosoadmin@contoso.onmicrosoft.com`. Jeśli istnieje wielu użytkowników z tym samym prefiksem nazwy UPN w dzierżawie lub jeśli prefiks nazwy UPN jest zbyt długi, zostanie automatycznie wygenerowany *sAMAccountName* dla Twojego konta. W takich przypadkach format *sAMAccountName* dla konta może być inny niż oczekiwany lub używany w domenie lokalnej.
+* Spróbuj użyć formatu UPN, aby określić poświadczenia, takie jak `contosoadmin@aaddscontoso.onmicrosoft.com`. Jeśli istnieje wielu użytkowników z tym samym prefiksem nazwy UPN w dzierżawie lub jeśli prefiks nazwy UPN jest zbyt długi, zostanie automatycznie wygenerowany *sAMAccountName* dla Twojego konta. W takich przypadkach format *sAMAccountName* dla konta może być inny niż oczekiwany lub używany w domenie lokalnej.
 * Sprawdź, czy [włączono synchronizację haseł][password-sync] z domeną zarządzaną. Bez tego kroku konfiguracji wymagane skróty haseł nie będą obecne w domenie zarządzanej AD DS platformy Azure w celu poprawnego uwierzytelnienia próby logowania.
 * Poczekaj na zakończenie synchronizacji haseł. Po zmianie hasła konta użytkownika automatyczna synchronizacja w tle z usługi Azure AD aktualizuje hasło w usłudze Azure AD DS. Udostępnienie hasła przez przyłączenie do domeny wymaga pewnego czasu.
 

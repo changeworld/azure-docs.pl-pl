@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 685e4f841ba077c81f46a27af8040fa6c57c0021
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: bf0710ebef21226d8d8582a920d64027bb015d34
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846215"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622722"
 ---
 # <a name="what-is-personalizer"></a>Co to jest usługa Personalizacja?
 
@@ -45,7 +45,7 @@ Oto kilka przykładowych scenariuszy:
 
 |Typ zawartości|**Akcje (z funkcjami)**|**Funkcje kontekstu**|Identyfikator akcji zwrotu<br>(Wyświetl tę zawartość)|
 |--|--|--|--|
-|Lista wiadomości|a. `The president...` (National, polityka, [text])<br>b. `Premier League ...` (globalne, sportowe, [tekst, obraz, wideo])<br> d. `Hurricane in the ...` (regionalny, Pogoda, [tekst, obraz]|Wiadomości z urządzenia są odczytywane z<br>Miesiąc lub sezon<br>|`The president...`|
+|Lista wiadomości|a. `The president...` (National, polityka, [text])<br>b. `Premier League ...` (globalne, sportowe, [tekst, obraz, wideo])<br> c. `Hurricane in the ...` (regionalny, Pogoda, [tekst, obraz]|Wiadomości z urządzenia są odczytywane z<br>Miesiąc lub sezon<br>|`The president...`|
 |Lista filmów|1. `Star Wars` (1977, [Action, Adventure, fantastykę], George Lucas)<br>2. `Hoop Dreams` (1994, [dokumentacja, Sport], Steve Kuba<br>3. `Casablanca` (1942, [Romański, dramat, War], Michael Curtiz)|Film urządzenia jest oglądany z<br>rozmiar ekranu<br>Typ użytkownika<br>|3. `Casablanca`|
 |Lista produktów|i. `Product A` (3 kg, $ $ $, Dostarcz w ciągu 24 godzin)<br>ii. `Product B` (20 kg, $ $, 2 tygodnie wysyłki z cłem)<br>iii. `Product C` (3 kg, $ $ $, dostarczenie w ciągu 48 godzin)|Odczytane są zakupy urządzeń<br>Warstwa wydatków użytkownika<br>Miesiąc lub sezon|ii. `Product B`|
 
@@ -63,7 +63,7 @@ Personalizacja wykorzystuje uczenie wzmacniające, aby wybrać jedną najlepszą
 
 Użyj personalizacji, gdy Twoja zawartość:
 
-* Ma ograniczony zestaw elementów (maks. ~ 50) do wyboru. Jeśli masz większą listę, [Użyj aparatu rekomendacji](where-can-you-use-personalizer.md#use-personalizer-with-recommendation-engines) , aby zmniejszyć listę do 50 elementów.
+* Ma ograniczony zestaw elementów (maks. ~ 50) do wyboru. Jeśli masz większą listę, [Użyj aparatu rekomendacji](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) , aby zmniejszyć listę do 50 elementów.
 * Zawiera informacje opisujące zawartość, którą chcesz klasyfikować: _akcje z funkcjami_ i _funkcjami kontekstu_.
 * Ma co najmniej ~ KB/dzień zdarzeń związanych z zawartością dla personalizacji, aby można było efektywnie. Jeśli Personalizacja nie odbiera minimalnych wymagań dotyczących ruchu, usługa zajmuje więcej czasu na ustalenie pojedynczego elementu zawartości.
 

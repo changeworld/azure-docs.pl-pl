@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 02/20/2020
 ms.author: diberry
-ms.openlocfilehash: c2aec0db2d1f9865188f2749a0eeb765a14d04ed
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: ce85c2d264b2b4849a4a36ed757150292fdf39f0
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953003"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622781"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>Analizuj pętlę szkoleniową przy użyciu oceny w trybie offline
 
@@ -25,45 +25,40 @@ Oceny w trybie offline umożliwiają mierzenie, jak skuteczny program Personaliz
 
 Przeczytaj o [ocenach w trybie offline](concepts-offline-evaluation.md) , aby dowiedzieć się więcej.
 
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Skonfigurowana pętla personalizacji
 * Pętla personalizacji musi mieć reprezentatywną ilość danych — jako przybliżoną zalecamy co najmniej 50 000 zdarzeń w swoich dziennikach w celu uzyskania istotnych wyników oceny. Opcjonalnie możesz również wcześniej wyeksportować pliki _zasad uczenia_ , które można porównywać i testować w tej samej ocenie.
 
-## <a name="steps-to-start-a-new-offline-evaluation"></a>Kroki umożliwiające rozpoczęcie nowej oceny w trybie offline
+## <a name="run-an-offline-evaluation"></a>Uruchamianie oceny w trybie offline
 
 1. W [Azure Portal](https://azure.microsoft.com/free/)Znajdź zasób personalizacji.
 1. W Azure Portal przejdź do sekcji **oceny** i wybierz pozycję **Utwórz ocenę**.
     ![na Azure Portal, przejdź do sekcji * * oceny * * i wybierz pozycję * * Utwórz ocenę * *.](./media/offline-evaluation/create-new-offline-evaluation.png)
 1. Skonfiguruj następujące wartości:
 
-    * Nazwa ewaluacyjna
-    * Data rozpoczęcia i zakończenia — są to daty w przeszłości, które określają zakres danych do użycia podczas obliczania. Te dane muszą być obecne w dziennikach, jak określono w wartości [przechowywania danych](how-to-settings.md) .
-    * Funkcja odnajdywania optymalizacji ma ustawioną **wartość tak**
+    * Nazwa ewaluacyjna.
+    * Data rozpoczęcia i zakończenia — te daty określają zakres danych do użycia podczas obliczania. Te dane muszą być obecne w dziennikach, jak określono w wartości [przechowywania danych](how-to-settings.md) .
+    * Funkcja odnajdywania optymalizacji ma ustawioną **wartość tak**.
 
-    ![Wybieranie ustawień oceny w trybie offline](./media/offline-evaluation/create-an-evaluation-form.png)
+    > [!div class="mx-imgBorder"]
+    > ![wybrać ustawienia oceny w trybie offline](./media/offline-evaluation/create-an-evaluation-form.png)
 
-1. Rozpocznij obliczanie, wybierając **przycisk OK**. 
+1. Rozpocznij obliczanie, wybierając **przycisk OK**.
 
-## <a name="results"></a>Wyniki
+## <a name="review-the-evaluation-results"></a>Przejrzyj wyniki oceny
 
 Obliczenia mogą zająć dużo czasu, w zależności od ilości danych do przetworzenia, liczby zasad uczenia do porównania oraz od tego, czy Optymalizacja zażądała.
 
-Po zakończeniu możesz wybrać ocenę z listy ocen. 
+Po zakończeniu możesz wybrać ocenę z listy ocen, a następnie wybrać opcję **PORÓWNAJ wynik swojej aplikacji z innymi ustawieniami uczenia**. Wybierz tę funkcję, jeśli chcesz zobaczyć, w jaki sposób bieżące zasady uczenia są wykonywane w porównaniu z nowymi zasadami.
 
-Porównania zasad uczenia obejmują:
+1. Zapoznaj się z wydajnością [zasad nauki](concepts-offline-evaluation.md#discovering-the-optimized-learning-policy).
 
-* **Zasady online**: bieżące zasady uczenia używane w programie personalizacji
-* **Linia bazowa**: wartość domyślna aplikacji (zgodnie z pierwszą akcją wysłaną w wywołaniach rangi),
-* **Zasady losowe**: zachowanie rangi urojonej, które zawsze zwraca losowo wybór akcji z dostarczonych.
-* **Zasady niestandardowe**: dodatkowe zasady uczenia zostały przekazane podczas uruchamiania oceny.
-* **Zoptymalizowane zasady**: Jeśli Ocena została rozpoczęta z opcją wykrywania zoptymalizowanych zasad, zostanie ona również porównana i będzie można ją pobrać lub wprowadzić zasady uczenia online, zastępując bieżące.
+    > [!div class="mx-imgBorder"]
+    > [![przeglądać wyniki oceny](./media/offline-evaluation/evaluation-results.png)](./media/offline-evaluation/evaluation-results.png#lightbox)
 
-![Wykres wyników ustawień oceny w trybie offline](./media/offline-evaluation/evaluation-results.png)
-
-Skuteczność [funkcji](concepts-features.md) dla akcji i kontekstu.
+1. Wybierz pozycję **Zastosuj** , aby zastosować zasady usprawniające model dla danych.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, [jak działają oceny w trybie offline](concepts-offline-evaluation.md).
+* Dowiedz się więcej o tym, [jak działają oceny w trybie offline](concepts-offline-evaluation.md).

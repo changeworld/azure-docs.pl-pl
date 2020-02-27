@@ -8,17 +8,17 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 50d12a0aba9018b1ecb30c018249e8f94ebe6d95
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 43e626355feaf1e51fc840f82506c559a1859b84
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903286"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621990"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Skonfiguruj klucze zarządzane przez klienta do szyfrowania danych Event Hubs platformy Azure przechowywanych przy użyciu Azure Portal
 Usługa Azure Event Hubs zapewnia szyfrowanie danych przechowywanych przy użyciu usługi Azure szyfrowanie usługi Storage (SSE platformy Azure). Event Hubs opiera się na usłudze Azure Storage do przechowywania danych i domyślnie wszystkie dane przechowywane w usłudze Azure Storage są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Usługa Azure Event Hubs obsługuje teraz opcję szyfrowania danych przechowywanych przy użyciu kluczy zarządzanych przez firmę Microsoft lub kluczy zarządzanych przez klienta (Bring Your Own Key – BYOK). Ta funkcja umożliwia tworzenie, obracanie, wyłączanie i odwoływanie dostępu do kluczy zarządzanych przez klienta, które są używane do szyfrowania danych Event Hubs platformy Azure.
 
 Włączenie funkcji BYOK to jednorazowy proces konfiguracji w przestrzeni nazw.
@@ -99,7 +99,7 @@ Wykonaj następujące kroki, aby włączyć dzienniki dla kluczy zarządzanych p
 ## <a name="log-schema"></a>Schemat dziennika 
 Wszystkie dzienniki są przechowywane w formacie JavaScript Object Notation (JSON). Każdy wpis zawiera pola ciągów, które używają formatu opisanego w poniższej tabeli. 
 
-| Nazwa | Opis |
+| Name (Nazwa) | Opis |
 | ---- | ----------- | 
 | TaskName | Opis zadania, które nie powiodło się. |
 | Identyfikator działania | Wewnętrzny identyfikator używany do śledzenia. |
@@ -109,7 +109,7 @@ Wszystkie dzienniki są przechowywane w formacie JavaScript Object Notation (JSO
 | key | Nazwa klucza służąca do szyfrowania przestrzeni nazw Event Hubs. |
 | version | Używana wersja klucza. |
 | operation | Operacja wykonywana na kluczu w magazynie kluczy. Na przykład Wyłącz/Włącz klucz, Zawijaj lub Odpakuj |
-| kod | Kod, który jest skojarzony z operacją. Przykład: kod błędu, 404 oznacza, że nie znaleziono klucza. |
+| code | Kod, który jest skojarzony z operacją. Przykład: kod błędu, 404 oznacza, że nie znaleziono klucza. |
 | message | Dowolny komunikat o błędzie skojarzony z operacją |
 
 Oto przykład dziennika dla klucza zarządzanego przez klienta:
@@ -144,12 +144,268 @@ Oto przykład dziennika dla klucza zarządzanego przez klienta:
 }
 ```
 
+## <a name="use-resource-manager-template-to-enable-encryption"></a>Użyj szablonu Menedżer zasobów, aby włączyć szyfrowanie
+W tej sekcji przedstawiono sposób wykonywania następujących zadań przy użyciu **szablonów Azure Resource Manager**. 
+
+1. Utwórz **przestrzeń nazw Event Hubs** przy użyciu tożsamości usługi zarządzanej.
+2. Utwórz **Magazyn kluczy** i przyznaj tożsamości usługi dostęp do magazynu kluczy. 
+3. Zaktualizuj przestrzeń nazw Event Hubs przy użyciu informacji o magazynie kluczy (klucz/wartość). 
+
+
+### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Tworzenie klastra Event Hubs i przestrzeni nazw z tożsamością usługi zarządzanej
+W tej sekcji przedstawiono sposób tworzenia przestrzeni nazw platformy Azure Event Hubs z tożsamością usługi zarządzanej przy użyciu szablonu Azure Resource Manager i programu PowerShell. 
+
+1. Utwórz szablon Azure Resource Manager, aby utworzyć przestrzeń nazw Event Hubs z tożsamością usługi zarządzanej. Nazwij plik: **CreateEventHubClusterAndNamespace. JSON**: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Event Hub cluster."
+             }
+          },
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.EventHub/clusters",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('clusterName')]",
+             "location":"[parameters('location')]",
+             "sku":{
+                "name":"Dedicated",
+                "capacity":1
+             }
+          },
+          {
+             "type":"Microsoft.EventHub/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Standard",
+                "tier":"Standard",
+                "capacity":1
+             },
+             "properties":{
+                "isAutoInflateEnabled":false,
+                "maximumThroughputUnits":0,
+                "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]"
+             },
+             "dependsOn":[
+                "[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]"
+             ]
+          }
+       ],
+       "outputs":{
+          "EventHubNamespaceId":{
+             "type":"string",
+             "value":"[resourceId('Microsoft.EventHub/namespaces',parameters('namespaceName'))]"
+          }
+       }
+    }
+    ```
+2. Utwórz plik parametrów szablonu o nazwie: **CreateEventHubClusterAndNamespaceParams. JSON**. 
+
+    > [!NOTE]
+    > Zastąp następujące wartości: 
+    > - `<EventHubsClusterName>` — Nazwa klastra Event Hubs    
+    > - `<EventHubsNamespaceName>` — nazwa Event Hubs przestrzeni nazw
+    > - `<Location>` lokalizacji przestrzeni nazw Event Hubs
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "value":"<EventHubsClusterName>"
+          },
+          "namespaceName":{
+             "value":"<EventHubsNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          }
+       }
+    }
+    
+    ```
+3. Uruchom następujące polecenie programu PowerShell, aby wdrożyć szablon w celu utworzenia Event Hubs przestrzeni nazw. Następnie Pobierz identyfikator przestrzeni nazw Event Hubs, aby użyć jej później. Przed uruchomieniem polecenia Zastąp `{MyRG}` nazwą grupy zasobów.  
+
+    ```powershell
+    $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
+
+    $EventHubNamespaceId = $outputs.Outputs["eventHubNamespaceId"].value
+    ```
+ 
+### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>Udzielanie tożsamości przestrzeni nazw Event Hubs dostępu do magazynu kluczy
+
+1. Uruchom następujące polecenie, aby utworzyć magazyn kluczy z **ochroną przed przeczyszczaniem** i włączonym **usuwaniem nietrwałego** . 
+
+    ```powershell
+    New-AzureRmKeyVault -Name {keyVaultName} -ResourceGroupName {RGName}  -Location {location} -EnableSoftDelete -EnablePurgeProtection    
+    ```     
+    
+    (OR)    
+    
+    Uruchom następujące polecenie, aby zaktualizować **istniejący magazyn kluczy**. Określ wartości dla grup zasobów i nazw magazynów kluczy przed uruchomieniem polecenia. 
+    
+    ```powershell
+    ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
+    ``` 
+2. Ustaw zasady dostępu magazynu kluczy, tak aby zarządzana tożsamość przestrzeni nazw Event Hubs mogła uzyskać dostęp do wartości klucza w magazynie kluczy. Użyj identyfikatora przestrzeni nazw Event Hubs z poprzedniej sekcji. 
+
+    ```powershell
+    $identity = (Get-AzureRmResource -ResourceId $EventHubNamespaceId -ExpandProperties).Identity
+    
+    Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
+    ```
+
+### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>Szyfruj dane w Event Hubs przestrzeni nazw z kluczem zarządzanym przez klienta z magazynu kluczy
+Wykonano następujące kroki: 
+
+1. Utworzono przestrzeń nazw Premium z tożsamością zarządzaną.
+2. Utwórz magazyn kluczy i przyznaj zarządzanej tożsamości dostęp do magazynu kluczy. 
+
+W tym kroku zostanie zaktualizowana przestrzeń nazw Event Hubs przy użyciu informacji o magazynie kluczy. 
+
+1. Utwórz plik JSON o nazwie **CreateEventHubClusterAndNamespace. JSON** z następującą zawartością: 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Event Hub cluster."
+             }
+          },
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          },
+          "keyVaultUri":{
+             "type":"string",
+             "metadata":{
+                "description":"URI of the KeyVault."
+             }
+          },
+          "keyName":{
+             "type":"string",
+             "metadata":{
+                "description":"KeyName."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.EventHub/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Standard",
+                "tier":"Standard",
+                "capacity":1
+             },
+             "properties":{
+                "isAutoInflateEnabled":false,
+                "maximumThroughputUnits":0,
+                "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]",
+                "encryption":{
+                   "keySource":"Microsoft.KeyVault",
+                   "keyVaultProperties":[
+                      {
+                         "keyName":"[parameters('keyName')]",
+                         "keyVaultUri":"[parameters('keyVaultUri')]"
+                      }
+                   ]
+                }
+             }
+          }
+       ]
+    }
+    ``` 
+
+2. Utwórz plik parametrów szablonu: **UpdateEventHubClusterAndNamespaceParams. JSON**. 
+
+    > [!NOTE]
+    > Zastąp następujące wartości: 
+    > - Nazwa klastra Event Hubs `<EventHubsClusterName>`.        
+    > - `<EventHubsNamespaceName>` — nazwa Event Hubs przestrzeni nazw
+    > - `<Location>` lokalizacji przestrzeni nazw Event Hubs
+    > - `<KeyVaultName>` — nazwa magazynu kluczy
+    > - `<KeyName>` — nazwa klucza w magazynie kluczy
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "value":"<EventHubsClusterName>"
+          },
+          "namespaceName":{
+             "value":"<EventHubsNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          },
+          "keyName":{
+             "value":"<KeyName>"
+          },
+          "keyVaultUri":{
+             "value":"https://<KeyVaultName>.vault.azure.net"
+          }
+       }
+    }
+    ```             
+3. Uruchom następujące polecenie programu PowerShell, aby wdrożyć szablon Menedżer zasobów. Przed uruchomieniem polecenia Zastąp `{MyRG}` nazwą grupy zasobów. 
+
+    ```powershell
+    New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
+    ```
+
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 Najlepszym rozwiązaniem jest zawsze włączenie dzienników, jak pokazano w poprzedniej sekcji. Ułatwia śledzenie działań po włączeniu szyfrowania BYOK. Ułatwia ona również określanie zakresu problemów.
 
 Poniżej przedstawiono kody typowych błędów, które należy wyszukać, gdy włączone jest szyfrowanie BYOK.
 
-| Działanie | Kod błędu | Wynikający ze stanu danych |
+| Akcja | Kod błędu | Wynikający ze stanu danych |
 | ------ | ---------- | ----------------------- | 
 | Usuń uprawnienie zawijania/odwinięcia z magazynu kluczy | 403 |    Niedostępny |
 | Usuń członkostwo roli usługi AAD z podmiotu usługi AAD, który udzielił uprawnienia do zawijania/depakowania | 403 |  Niedostępny |
@@ -166,7 +422,7 @@ Poniżej przedstawiono kody typowych błędów, które należy wyszukać, gdy w�
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz następujące artykuły:
-- [Przegląd usługi Event Hubs](event-hubs-about.md)
+- [Omówienie usługi Event Hubs](event-hubs-about.md)
 - [Przegląd Key Vault](../key-vault/key-vault-overview.md)
 
 

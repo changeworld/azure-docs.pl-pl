@@ -3,22 +3,22 @@ title: Wymagania dotyczące dołączania do SAP HANA na platformie Azure (duże 
 description: Wymagania dotyczące dołączania SAP HANA na platformie Azure (duże wystąpienia).
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/31/2019
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 99ad334a526b269879034dcc0e1cd0b1b22f1f7f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101194"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617001"
 ---
 # <a name="onboarding-requirements"></a>Wymagania dotyczące dołączania
 
@@ -27,12 +27,12 @@ Ta lista składa wymagania dotyczące uruchamiania SAP HANA na platformie Azure 
 **Microsoft Azure**
 
 - Subskrypcja platformy Azure, która może być połączona z SAP HANA na platformie Azure (duże wystąpienia).
-- Umowa dotycząca pomocy technicznej Premier firmy Microsoft. Aby uzyskać szczegółowe informacje dotyczące uruchamiania oprogramowania SAP na platformie Azure [, zobacz uwagi dotyczące pomocy technicznej SAP #2015553 — SAP on Microsoft Azure: Wymagania wstępne](https://launchpad.support.sap.com/#/notes/2015553)dotyczące obsługi. W przypadku używania dużych wystąpień platformy HANA z 384 i więcej procesorów CPU należy również zwiększyć umowę pomocy technicznej Premier, aby uwzględnić Azure Rapid Response.
+- Umowa dotycząca pomocy technicznej Premier firmy Microsoft. Aby uzyskać szczegółowe informacje dotyczące uruchamiania oprogramowania SAP na platformie Azure, zobacz [uwagi dotyczące pomocy technicznej sap #2015553 — SAP on Microsoft Azure: support — wymagania wstępne](https://launchpad.support.sap.com/#/notes/2015553). W przypadku używania dużych wystąpień platformy HANA z 384 i więcej procesorów CPU należy również zwiększyć umowę pomocy technicznej Premier, aby uwzględnić Azure Rapid Response.
 - Świadomość potrzebnych magazynów dużych wystąpień platformy HANA, które są potrzebne po dokonaniu zmiany rozmiarów przy użyciu oprogramowania SAP.
 
 **Łączność sieciowa**
 
-- ExpressRoute między środowiskiem lokalnym i platformą Azure: Aby połączyć lokalne centrum danych z platformą Azure, upewnij się, że zawarto zamówienie od usługodawcy internetowego (co najmniej 1 GB/s). Łączność między jednostkami dużej instancji HANA i platformą Azure korzysta również z technologii ExpressRoute. To połączenie ExpressRoute między jednostkami dużej wystąpienia HANA i platformą Azure jest uwzględniane w cenie jednostek dużego wystąpienia HANA, w tym wszystkich opłat za transfer danych przychodzących i wychodzących dla tego konkretnego obwodu usługi ExpressRoute. W związku z tym klient nie napotyka dodatkowych kosztów poza linkiem ExpressRoute między środowiskiem lokalnym i platformą Azure.
+- ExpressRoute między środowiskiem lokalnym i platformą Azure: Aby połączyć lokalne centrum danych z platformą Azure, upewnij się, że zawarto zamówienie od usługodawcy internetowego. Łączność między jednostkami dużej instancji HANA i platformą Azure korzysta również z technologii ExpressRoute. To połączenie ExpressRoute między jednostkami dużej wystąpienia HANA i platformą Azure jest uwzględniane w cenie jednostek dużego wystąpienia HANA, w tym wszystkich opłat za transfer danych przychodzących i wychodzących dla tego konkretnego obwodu usługi ExpressRoute. W związku z tym klient nie napotyka dodatkowych kosztów poza linkiem ExpressRoute między środowiskiem lokalnym i platformą Azure.
 
 **System operacyjny**
 
@@ -49,8 +49,8 @@ Ta lista składa wymagania dotyczące uruchamiania SAP HANA na platformie Azure 
 
 - Red Hat Subscription Manager wdrożony na platformie Azure na maszynie wirtualnej. Program Red Hat Subscription Manager oferuje możliwość SAP HANA na platformie Azure (duże wystąpienia), które mają zostać zarejestrowane i odpowiednio zaktualizowane przez firmę Red Hat. (Nie ma bezpośredniego dostępu do Internetu z dzierżawy wdrożonej w sygnaturze dużej instancji platformy Azure).
 - SAP wymaga również posiadania kontraktu pomocy technicznej dotyczącej dostawcy systemu Linux. To wymaganie nie jest usuwane przez rozwiązanie dużego wystąpienia HANA lub fakt, że jest uruchamiany system Linux na platformie Azure. W przeciwieństwie do niektórych obrazów z galerii systemu Linux Azure opłata za usługę *nie* jest uwzględniana w ofercie rozwiązania dla dużych wystąpień Hana. Ponosisz odpowiedzialność za spełnienie wymagań SAP dotyczących umów pomocy technicznej z dystrybutorem systemu Linux. 
-   - W przypadku systemu SUSE Linux zapoznaj się z wymaganiami umów pomocy [technicznej w temacie SAP uwagi #1984787-SUSE Linux Enterprise Server 12: Uwagi](https://launchpad.support.sap.com/#/notes/1984787) dotyczące instalacji i [programu SAP Note #1056161 — Obsługa priorytetu systemu SUSE dla aplikacji SAP](https://launchpad.support.sap.com/#/notes/1056161).
-   - W systemie Red Hat Linux należy dysponować prawidłowymi poziomami subskrypcji obejmującymi aktualizacje pomocy technicznej i usługi do systemów operacyjnych z dużym wystąpieniem usługi HANA. Red Hat zaleca Red Hat Enterprise Linux subskrypcję rozwiązania SAP. Odwołaj https://access.redhat.com/solutions/3082481 się do. 
+   - W przypadku systemu SUSE Linux zapoznaj się z wymaganiami umów pomocy technicznej w temacie [SAP uwaga #1984787-SUSE Linux Enterprise Server 12: uwagi dotyczące instalacji](https://launchpad.support.sap.com/#/notes/1984787) i [SAP Uwaga #1056161-SUSE Priority support for SAP Applications](https://launchpad.support.sap.com/#/notes/1056161).
+   - W systemie Red Hat Linux należy dysponować prawidłowymi poziomami subskrypcji obejmującymi aktualizacje pomocy technicznej i usługi do systemów operacyjnych z dużym wystąpieniem usługi HANA. Red Hat zaleca Red Hat Enterprise Linux subskrypcję rozwiązania SAP. Odwołaj się https://access.redhat.com/solutions/3082481. 
 
 Aby uzyskać macierz pomocy technicznej dla różnych wersji SAP HANA z różnymi wersjami systemu Linux, zobacz [uwagi dotyczące oprogramowania SAP #2235581](https://launchpad.support.sap.com/#/notes/2235581).
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/26/2016
-ms.openlocfilehash: b6a6ee21774ba931d9982d82b99008f312d19736
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3ada12a0cde122fb78815a1d3241d8acb9da2580
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793011"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651461"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Komunikaty programu Exchange EDIFACT dla integracji z usługą B2B Enterprise w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
 
@@ -36,7 +36,7 @@ Po [utworzeniu konta integracji](../logic-apps/logic-apps-enterprise-integration
 
 ## <a name="create-an-edifact-agreement"></a>Utwórz umowę EDIFACT 
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com "Azure Portal"). 
+1. Zaloguj się do [Azure portal](https://portal.azure.com "Portalu Azure"). 
 
 2. W głównym menu platformy Azure wybierz pozycję **wszystkie usługi**. W polu wyszukiwania wprowadź ciąg "Integracja", a następnie wybierz pozycję **konta integracji**.
 
@@ -63,7 +63,7 @@ Po [utworzeniu konta integracji](../logic-apps/logic-apps-enterprise-integration
 
    | Właściwość | Opis |
    | --- | --- |
-   | Nazwa |Nazwa umowy |
+   | Name (Nazwa) |Nazwa umowy |
    | Typ umowy | Powinien być EDIFACT |
    | Partner hosta |Umowa wymaga zarówno hosta, jak i partnera gościa. Partner hosta reprezentuje organizację, która konfiguruje umowę. |
    | Tożsamość hosta |Identyfikator dla partnera hosta |
@@ -106,15 +106,16 @@ Teraz Twoja umowa jest gotowa do obsługi wiadomości przychodzących, które s�
 
 | Właściwość | Opis |
 | --- | --- |
-| UNH 2.1 (TYP) |Wybierz typ zestawu transakcji. |
+| UNH2.1 (TYPE) |Wybierz typ zestawu transakcji. |
 | UNH 2.2 (WERSJA) |Wprowadź numer wersji wiadomości. (Minimum, jeden znak; maksimum, trzy znaki). |
 | UNH 2.3 (WERSJA) |Wprowadź numer wersji wiadomości. (Minimum, jeden znak; maksimum, trzy znaki). |
 | UNH 2.5 (SKOJARZONY KOD PRZYPISANY) |Wprowadź przypisany kod. (Maksymalnie sześć znaków. Musi być alfanumeryczne). |
 | UNG 2.1 (IDENTYFIKATOR NADAWCY APLIKACJI) |Wprowadź wartość alfanumeryczną zawierającą co najmniej jeden znak i maksymalnie 35 znaków. |
 | UNG 2.2 (KWALIFIKATOR KODU NADAWCY APLIKACJI) |Wprowadź wartość alfanumeryczną z maksymalnie czterema znakami. |
-| SCHEMATY |Wybierz wcześniej przekazany schemat, którego chcesz użyć ze skojarzonego konta integracji. |
+| SCHEMA |Wybierz wcześniej przekazany schemat, którego chcesz użyć ze skojarzonego konta integracji. |
 
 ### <a name="control-numbers"></a>Numery kontrolne
+
 | Właściwość | Opis |
 | --- | --- |
 | Nie Zezwalaj na duplikaty numerów kontrolnych wymiany |Aby zablokować zduplikowane zmiany, wybierz tę właściwość. W przypadku wybrania tej akcji dekodowanie EDIFACT sprawdza, czy numer kontrolki wymiany (UNB5) dla otrzymanej wymiany nie jest zgodny z wcześniej przetworzonym numerem kontroli wymiany. W przypadku wykrycia dopasowania, wymiana nie zostanie przetworzona. |
@@ -123,7 +124,7 @@ Teraz Twoja umowa jest gotowa do obsługi wiadomości przychodzących, które s�
 | Nie Zezwalaj na duplikaty numerów kontrolnych zestawu transakcji |Aby zablokować zmiany za pomocą duplikatów numerów kontroli zestawu transakcji (UNH1), wybierz tę właściwość. |
 | Numer kontrolny potwierdzenia EDIFACT |Aby wyznaczyć numery referencyjne zestawu transakcji do użycia w potwierdzeniu, wprowadź wartość dla prefiksu, zakres numerów odwołań i sufiks. |
 
-### <a name="validations"></a>Walidacji
+### <a name="validation"></a>Walidacja
 
 Po ukończeniu każdego wiersza walidacji zostanie automatycznie dodany inny. Jeśli nie określisz żadnych reguł, walidacja używa wiersza "default".
 
@@ -173,6 +174,7 @@ Teraz Twoja umowa jest gotowa do obsługi wiadomości wychodzących, które są 
 | UNB7 (identyfikator odwołania do aplikacji) |Wprowadź wartość alfanumeryczną z co najmniej jednym znakiem i maksymalnie 14 znakami |
 
 ### <a name="acknowledgment"></a>Dziękowanie
+
 | Właściwość | Opis |
 | --- | --- |
 | Otrzymanie wiadomości (CONTRL) |Zaznacz to pole wyboru, jeśli Partner hostowany oczekuje na otrzymanie CONTRL. To ustawienie określa, że partner hostowany, który wysyła wiadomość, żąda potwierdzenia od partnera gościa. |
@@ -180,14 +182,16 @@ Teraz Twoja umowa jest gotowa do obsługi wiadomości wychodzących, które są 
 | Generuj pętlę SG1/SG4 dla zaakceptowanych zestawów transakcji |Jeśli wybrano opcję zażądania potwierdzenia funkcjonalnego, zaznacz to pole wyboru, aby wymusić generowanie pętli SG1/SG4 w przypadku zaakceptowanych zestawów transakcji CONTRL. |
 
 ### <a name="schemas"></a>Schematy
+
 | Właściwość | Opis |
 | --- | --- |
-| UNH 2.1 (TYP) |Wybierz typ zestawu transakcji. |
+| UNH2.1 (TYPE) |Wybierz typ zestawu transakcji. |
 | UNH 2.2 (WERSJA) |Wprowadź numer wersji wiadomości. |
 | UNH 2.3 (WERSJA) |Wprowadź numer wersji wiadomości. |
-| SCHEMATY |Wybierz schemat do użycia. Schematy znajdują się na koncie integracji. Aby uzyskać dostęp do swoich schematów, najpierw Połącz swoje konto integracji z aplikacją logiki. |
+| SCHEMA |Wybierz schemat do użycia. Schematy znajdują się na koncie integracji. Aby uzyskać dostęp do swoich schematów, najpierw Połącz swoje konto integracji z aplikacją logiki. |
 
 ### <a name="envelopes"></a>Koperty
+
 | Właściwość | Opis |
 | --- | --- |
 | UNB8 (kod priorytetu przetwarzania) |Wprowadź wartość alfabetyczną, która nie zawiera więcej niż jeden znak. |
@@ -208,16 +212,17 @@ Oprócz zestawu znaków można wprowadzić inny zestaw ograniczników, który b�
 | Separator składników |Aby oddzielić złożone elementy danych, wprowadź pojedynczy znak. |
 | Separator elementów danych |Aby rozdzielić proste elementy danych w ramach złożonych elementów danych, należy wprowadzić pojedynczy znak. |
 | Terminator segmentu |Aby wskazać koniec segmentu EDI, wprowadź pojedynczy znak. |
-| Przedrostk |Wybierz znak, który jest używany z identyfikatorem segmentu. Jeśli wyznaczysz sufiks, element danych terminatora segmentu może być pusty. Jeśli terminator segmentu pozostaje pusty, należy wyznaczyć sufiks. |
+| Suffix |Wybierz znak, który jest używany z identyfikatorem segmentu. Jeśli wyznaczysz sufiks, element danych terminatora segmentu może być pusty. Jeśli terminator segmentu pozostaje pusty, należy wyznaczyć sufiks. |
 
 ### <a name="control-numbers"></a>Numery kontrolne
+
 | Właściwość | Opis |
 | --- | --- |
 | UNB5 (numer kontrolny wymiany) |Wprowadź prefiks, zakres wartości dla numeru kontrolnego wymiany oraz sufiks. Te wartości są używane do generowania wymiany wychodzącej. Prefiks i sufiks są opcjonalne, podczas gdy wymagany jest numer kontrolny. Numer kontrolny jest zwiększany dla każdej nowej wiadomości; prefiks i sufiks pozostają takie same. |
 | UNG5 (numer kontrolny grupy) |Wprowadź prefiks, zakres wartości dla numeru kontrolnego wymiany oraz sufiks. Te wartości są używane do generowania numeru kontrolnego grupy. Prefiks i sufiks są opcjonalne, podczas gdy wymagany jest numer kontrolny. Numer kontrolny jest zwiększany dla każdej nowej wiadomości, dopóki nie zostanie osiągnięta maksymalna wartość; prefiks i sufiks pozostają takie same. |
 | UNH1 (Numer odwołania do nagłówka komunikatu) |Wprowadź prefiks, zakres wartości dla numeru kontrolnego wymiany oraz sufiks. Te wartości są używane do generowania numeru odwołania do nagłówka komunikatu. Prefiks i sufiks są opcjonalne, podczas gdy numer referencyjny jest wymagany. Numer referencyjny jest zwiększany dla każdej nowej wiadomości; prefiks i sufiks pozostają takie same. |
 
-### <a name="validations"></a>Walidacji
+### <a name="validation"></a>Walidacja
 
 Po ukończeniu każdego wiersza walidacji zostanie automatycznie dodany inny. Jeśli nie określisz żadnych reguł, walidacja używa wiersza "default".
 
@@ -240,9 +245,13 @@ Po ukończeniu każdego wiersza walidacji zostanie automatycznie dodany inny. Je
 
     ![Wybierz kafelek "umowy"](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
-## <a name="view-swagger-file"></a>Wyświetl plik Swagger
-Aby wyświetlić szczegóły struktury Swagger dla łącznika EDIFACT, zobacz [EDIFACT](/connectors/edifact/).
+## <a name="connector-reference"></a>Dokumentacja łączników
 
-## <a name="learn-more"></a>Dowiedz się więcej
-* [Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw")  
+Aby uzyskać szczegółowe informacje techniczne dotyczące tego łącznika, takie jak akcje i limity zgodnie z opisem w pliku struktury Swagger łącznika, zobacz [stronę odwołania łącznika](https://docs.microsoft.com/connectors/edifact/).
 
+> [!NOTE]
+> W przypadku aplikacji logiki w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), wersja tego łącznika z oznaczeniem ISE w zamian używa [limitów komunikatów ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
+
+## <a name="next-steps"></a>Następne kroki
+
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

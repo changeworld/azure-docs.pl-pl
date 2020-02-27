@@ -1,24 +1,24 @@
 ---
-title: Rejestracja i logowanie za pomocą zasad niestandardowych
+title: Rejestracja i logowanie za pomocą zasad niestandardowych (wersja zapoznawcza)
 titleSuffix: Azure AD B2C
-description: Dowiedz się, jak wysyłać hasła jednorazowe w wiadomościach tekstowych do telefonów użytkowników aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C.
+description: Wysyłać hasła jednorazowe (OTP) w wiadomościach tekstowych do telefonów użytkowników aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 02/25/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 50e7d66fef67e2728c95790947393de8d58398c2
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840336"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647532"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Skonfiguruj konto i zaloguj się przy użyciu zasad niestandardowych w Azure AD B2C
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Skonfiguruj konto i zaloguj się przy użyciu zasad niestandardowych w Azure AD B2C (wersja zapoznawcza)
 
 Rejestracja i logowanie za pomocą telefonu w Azure Active Directory B2C (Azure AD B2C) umożliwia użytkownikom rejestrowanie się i logowanie do aplikacji przy użyciu hasła jednorazowego (OTP) wysyłanego w wiadomości tekstowej do telefonu. Hasła jednorazowe mogą pomóc zminimalizować ryzyko naruszenia lub naruszania haseł przez użytkowników.
 
@@ -26,7 +26,13 @@ Wykonaj kroki opisane w tym artykule, aby użyć zasad niestandardowych, aby umo
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
+## <a name="pricing"></a>Ceny
+
+Hasła jednorazowe są wysyłane do użytkowników za pomocą wiadomości SMS i mogą być naliczone za każdy wysłany komunikat. Aby uzyskać informacje o cenach, zapoznaj się z sekcją **oddzielne opłaty** w [cenniku Azure Active Directory B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+Przed skonfigurowaniem uwierzytelniania OTP wymagane są następujące zasoby.
 
 * [Dzierżawa Azure AD B2C](tutorial-create-tenant.md)
 * [Aplikacja sieci Web zarejestrowana](tutorial-register-applications.md) w dzierżawie
@@ -69,6 +75,22 @@ Podczas przekazywania każdego pliku platforma Azure dodaje prefiks `B2C_1A_`.
 1. W obszarze **adres URL odpowiedzi wybierz**opcję `https://jwt.ms`.
 1. Wybierz pozycję **Uruchom teraz** i zarejestruj się przy użyciu adresu e-mail lub numeru telefonu.
 1. Wybierz pozycję **Uruchom teraz** ponownie i zaloguj się przy użyciu tego samego konta, aby upewnić się, że konfiguracja jest poprawna.
+
+## <a name="get-user-account-by-phone-number"></a>Pobierz konto użytkownika według numeru telefonu
+
+Użytkownik, który zarejestruje się przy użyciu numeru telefonu, ale nie poda adresu e-mail odzyskiwania, jest rejestrowany w katalogu Azure AD B2C przy użyciu numeru telefonu jako nazwy logowania. Jeśli użytkownik chce zmienić swój numer telefonu, dział pomocy technicznej lub zespół pomocy technicznej musi najpierw znaleźć swoje konto, a następnie zaktualizować numer telefonu.
+
+Możesz znaleźć użytkownika według numeru telefonu (nazwy logowania), korzystając z [Microsoft Graph](manage-user-accounts-graph-api.md):
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
+```
+
+Na przykład:
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

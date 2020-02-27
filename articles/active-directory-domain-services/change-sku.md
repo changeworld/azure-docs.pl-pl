@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 46557d802222190c0ed82f6243dd2a9b997ecaa5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960570"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614235"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>Zmień jednostkę SKU dla istniejącej Azure AD Domain Services domeny zarządzanej
 
@@ -46,7 +46,7 @@ Aby uzyskać więcej informacji na temat tych limitów, zobacz [funkcje i limity
 
 Aby zmienić jednostkę SKU dla domeny zarządzanej AD DS platformy Azure przy użyciu Azure Portal, wykonaj następujące czynności:
 
-1. W górnej części Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**. Wybierz domenę zarządzaną z listy, na przykład *aadds.contoso.com*.
+1. W górnej części Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**. Wybierz domenę zarządzaną z listy, na przykład *aaddscontoso.com*.
 1. W menu po lewej stronie strony AD DS platformy Azure wybierz pozycję **ustawienia > jednostka SKU**.
 
     ![Wybierz opcję menu SKU dla domeny zarządzanej platformy Azure AD DS w Azure Portal](media/change-sku/overview-change-sku.png)

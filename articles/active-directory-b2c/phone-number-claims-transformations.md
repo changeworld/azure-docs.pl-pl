@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/26/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c5beef98f03c52ca022a7ab8047d3b392755c0bf
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 34a6d15090cd13a775ad3faa694718ec58738471
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212203"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620626"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Definiowanie przekształceń oświadczeń numeru telefonu w Azure AD B2C
 
@@ -26,9 +26,39 @@ Ten artykuł zawiera informacje i przykłady dotyczące korzystania z funkcji ob
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
+## <a name="convertphonenumberclaimtostring"></a>ConvertPhoneNumberClaimToString
+
+Konwertuje `phoneNumber` typ danych na typ danych `string`.
+
+| Element | TransformationClaimType | Typ danych | Uwagi |
+| ---- | ----------------------- | --------- | ----- |
+| Oświadczenie inputclaim | phoneNumber | phoneNumber |  Element ClaimType do przekonwertowania na ciąg. |
+| Oświadczenie outputclaim | phoneNumberString | ciąg | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. |
+
+W tym przykładzie, cellPhoneNumber z typem wartości `phoneNumber` jest konwertowana na cellPhone, z typem wartości `string`.
+
+```XML
+<ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="cellPhone" TransformationClaimType="phoneNumberString" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Przykład
+
+- Oświadczenia wejściowe:
+  - Numer **telefonu**: + 11234567890 (numer telefonu)
+- Oświadczenia wyjściowe:
+  - **phoneNumberString**: + 11234567890 (ciąg)
+
+
 ## <a name="convertstringtophonenumberclaim"></a>ConvertStringToPhoneNumberClaim
 
-To stwierdzenie weryfikuje format numeru telefonu. Jeśli jest w prawidłowym formacie, zmień go na format standardowy używany przez Azure AD B2C. Jeśli podany numer telefonu ma nieprawidłowy format, zostanie zwrócony komunikat o błędzie.
+Ta transformacja roszczeń sprawdza poprawność formatu numeru telefonu. Jeśli jest w prawidłowym formacie, zmień go na format standardowy używany przez Azure AD B2C. Jeśli podany numer telefonu ma nieprawidłowy format, zostanie zwrócony komunikat o błędzie.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
@@ -68,10 +98,10 @@ Profil techniczny z własnym potwierdzeniem, który wywołuje profil techniczny 
 ### <a name="example-1"></a>Przykład 1
 
 - Oświadczenia wejściowe:
-  - **phoneNumberString**: 045 456-7890
+  - **phoneNumberString**: 033 456-7890
   - **kraj**: DK
 - Oświadczenia wyjściowe:
-  - **oświadczenie outputclaim**: + 450546148120
+  - **oświadczenie outputclaim**: + 450334567890
 
 ### <a name="example-2"></a>Przykład 2
 
@@ -79,6 +109,7 @@ Profil techniczny z własnym potwierdzeniem, który wywołuje profil techniczny 
   - **phoneNumberString**: + 1 (123) 456-7890
 - Oświadczenia wyjściowe: 
   - **oświadczenie outputclaim**: + 11234567890
+
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
 

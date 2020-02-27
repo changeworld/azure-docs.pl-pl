@@ -4,7 +4,7 @@ description: Ustanów wysoką dostępność dla SAP HANA na platformie Azure (du
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71212528"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615081"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Wysoka dostępność skonfigurowana w SUSE przy użyciu STONITH
 Ten dokument zawiera szczegółowe instrukcje krok po kroku dotyczące konfigurowania wysokiej dostępności systemu operacyjnego SUSE przy użyciu urządzenia STONITH.
@@ -130,8 +130,8 @@ W tej sekcji opisano kroki konfigurowania klastra z systemem SUSE HA.
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
 ```
-![zypperpatternha_sles.png](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
-![zypperpatternSAPHANASR-doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
+![zypperpatternha_sles. png](media/HowToHLI/HASetupWithStonith/zypperpatternha_sles.png)
+![zypperpatternSAPHANASR-doc. png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3,2 konfigurowania klastra
 3.2.1 można użyć polecenia *"ha-Cluster-init* " lub użyć Kreatora YaST2, aby skonfigurować klaster. W takim przypadku używany jest Kreator YaST2. Ten krok jest wykonywany **tylko w węźle podstawowym**.
@@ -371,7 +371,7 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 ### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>Scenariusz 2: YaST2 nie pokazuje widoku graficznego
 Graficzny ekran YaST2 służy do konfigurowania klastra o wysokiej dostępności w tym dokumencie. Jeśli YaST2 nie jest otwarty z oknem graficznym, jak pokazano i zgłosić błąd QT, wykonaj kroki w następujący sposób. Jeśli zostanie on otwarty z oknem graficznym, możesz pominąć te czynności.
 
-**Error**
+**Porn**
 
 ![yast2-qt-gui-error.png](media/HowToHLI/HASetupWithStonith/yast2-qt-gui-error.png)
 
@@ -393,11 +393,11 @@ W obszarze zależności wybierz opcję "Zainstaluj zalecane pakiety" ![YaST-Depe
 
 Przejrzyj zmiany i naciśnij przycisk OK
 
-![yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
+![Yast](media/HowToHLI/HASetupWithStonith/yast-automatic-changes.png)
 
 Instalacja pakietu jest wykonywana ![YaST-Performing-Installation. png](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
-Kliknij przycisk Dalej
+Kliknij przycisk Dalej.
 
 ![yast-installation-report.png](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
 
@@ -413,7 +413,7 @@ zypper -n install libyui-qt
 ```
 ![zypper-Install-ligyui. png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui.png)
 ![użyciu narzędzia zypper-Install-ligyui_part2. png](media/HowToHLI/HASetupWithStonith/zypper-install-ligyui_part2.png) Yast2 powinno być w stanie otworzyć widok graficzny teraz, jak pokazano poniżej.
-![yast2-control-center.png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
+![YaST2-Control-Center. png](media/HowToHLI/HASetupWithStonith/yast2-control-center.png)
 
 ### <a name="scenario-3-yast2-does-not-high-availability-option"></a>Scenariusz 3: YaST2 nie ma opcji wysokiej dostępności
 Aby opcja wysokiej dostępności była widoczna w centrum sterowania YaST2, należy zainstalować dodatkowe pakiety.
@@ -433,8 +433,8 @@ Korzystanie z programu YaST2 > oprogramowania > zarządzania oprogramowaniem
 
 Wybierz wzorce
 
-![yast-pattern1.png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
-![yast-pattern2.png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
+![YaST-pattern1. png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
+![YaST-pattern2. png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
 Kliknij przycisk **Akceptuj**
 

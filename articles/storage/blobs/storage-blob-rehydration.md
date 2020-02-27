@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 1c06c1d0403e526e1ed58a193cfe9b57bb9fe561
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 0a7012d9daa808933a51ac05862a8a9aa4cfcf77
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780247"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614795"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Przeodwodnione dane obiektów blob z warstwy Archiwum
 
@@ -51,8 +51,8 @@ Obiekty blob w warstwie archiwum powinny być przechowywane przez co najmniej 18
 ## <a name="quickstart-scenarios"></a>Scenariusze typu Szybki start
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Umożliwia dehydratacji obiektu BLOB archiwalnego do warstwy online
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 1. W Azure Portal Wyszukaj i wybierz pozycję **wszystkie zasoby**.
 
@@ -70,14 +70,14 @@ Obiekty blob w warstwie archiwum powinny być przechowywane przez co najmniej 18
 
 ![Zmień warstwę konta magazynu](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Poniższy skrypt programu PowerShell może służyć do zmiany warstwy obiektów BLOB archiwum obiektów BLOB. Zmienna `$rgName` musi zostać zainicjowana przy użyciu nazwy grupy zasobów. Zmienna `$accountName` musi zostać zainicjowana przy użyciu nazwy konta magazynu. Zmienna `$containerName` musi zostać zainicjowana przy użyciu nazwy kontenera. Zmienna `$blobName` musi zostać zainicjowana przy użyciu nazwy obiektu BLOB. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
 $accountName = ""
 $containerName = ""
-$blobName == ""
+$blobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
@@ -99,8 +99,8 @@ $rgName = ""
 $accountName = ""
 $srcContainerName = ""
 $destContainerName = ""
-$srcBlobName == ""
-$destBlobName == ""
+$srcBlobName = ""
+$destBlobName = ""
 
 #Select the storage account and get the context
 $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName

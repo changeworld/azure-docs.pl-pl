@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: 8905f2a0a306ec4c9c6e19479c6adb96a6ed39ca
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 86097a8706956a768def107dd312c9a20c63c6ff
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931271"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612342"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Samouczek: Tworzenie i Konfigurowanie wystąpienia Azure Active Directory Domain Services
 
@@ -68,17 +68,17 @@ Podczas tworzenia wystąpienia usługi Azure AD DS należy określić nazwę DNS
 * **Sufiksy domen bez routingu:** Zwykle zalecamy uniknięcie sufiksu nazwy domeny bez obsługi routingu, takiego jak *contoso. Local*. Sufiks *. Local* nie jest w stanie routingu i może powodować problemy z ROZPOZNAWANIEM nazw DNS.
 
 > [!TIP]
-> Jeśli utworzysz niestandardową nazwę domeny, weź pod uwagę istniejące przestrzenie nazw DNS. Zaleca się dołączenie unikatowego prefiksu dla nazwy domeny. Na przykład jeśli nazwa główna DNS to *contoso.com*, Utwórz domenę zarządzaną platformy Azure AD DS przy użyciu niestandardowej nazwy domeny *Corp.contoso.com* lub *ds.contoso.com*. W środowisku hybrydowym z lokalnym środowiskiem AD DS te prefiksy mogą być już używane. Użyj unikatowego prefiksu dla usługi Azure AD DS.
+> Jeśli utworzysz niestandardową nazwę domeny, weź pod uwagę istniejące przestrzenie nazw DNS. Zalecane jest użycie nazwy domeny innej niż istniejąca lub lokalna przestrzeń nazw DNS.
 >
-> Możesz użyć głównej nazwy DNS dla domeny zarządzanej platformy Azure AD DS, ale może być konieczne utworzenie dodatkowych rekordów DNS dla innych usług w środowisku. Jeśli na przykład uruchomisz serwer sieci Web, który hostuje lokację przy użyciu nazwy głównej DNS, mogą wystąpić konflikty nazw, które wymagają dodatkowych wpisów DNS.
+> Na przykład jeśli masz istniejącą przestrzeń nazw DNS *contoso.com*, Utwórz domenę zarządzaną platformy Azure AD DS przy użyciu niestandardowej nazwy domeny *aaddscontoso.com*. Jeśli musisz użyć bezpiecznego protokołu LDAP, musisz zarejestrować i utworzyć niestandardową nazwę domeny w celu wygenerowania wymaganych certyfikatów.
 >
-> W tych samouczkach i artykułach z przewodnikiem jest używana jako krótki przykład domeny niestandardowej *aadds.contoso.com* . We wszystkich poleceniach należy określić własną nazwę domeny, która może zawierać unikatowy prefiks.
+> Może być konieczne utworzenie dodatkowych rekordów DNS dla innych usług w środowisku lub warunkowych usług przesyłania dalej DNS między istniejącymi spacjami nazw DNS w danym środowisku. Jeśli na przykład uruchomisz serwer sieci Web, który hostuje lokację przy użyciu nazwy głównej DNS, mogą wystąpić konflikty nazw, które wymagają dodatkowych wpisów DNS.
 >
-> Aby uzyskać więcej informacji, zobacz [Wybieranie prefiksu nazewnictwa dla domeny][naming-prefix].
+> W tych samouczkach i artykułach z przewodnikiem jest używana jako krótki przykład domeny niestandardowej *aaddscontoso.com* . We wszystkich poleceniach należy określić własną nazwę domeny.
 
 Obowiązują również następujące ograniczenia nazw DNS:
 
-* **Ograniczenia prefiksu domeny:** Nie można utworzyć domeny zarządzanej z prefiksem dłuższym niż 15 znaków. Prefiks określonej nazwy domeny (np. *contoso* w nazwie domeny *contoso.com* ) musi zawierać co najwyżej 15 znaków.
+* **Ograniczenia prefiksu domeny:** Nie można utworzyć domeny zarządzanej z prefiksem dłuższym niż 15 znaków. Prefiks określonej nazwy domeny (na przykład *aaddscontoso* w nazwie domeny *aaddscontoso.com* ) musi zawierać co najwyżej 15 znaków.
 * **Konflikty nazw sieciowych:** Nazwa domeny DNS dla domeny zarządzanej nie powinna już istnieć w sieci wirtualnej. W celu sprawdzenia następujących scenariuszy, które mogłyby prowadzić do konfliktu nazw:
     * Jeśli masz już domenę Active Directory z tą samą nazwą domeny DNS w sieci wirtualnej platformy Azure.
     * Jeśli sieć wirtualna, w której planujesz włączyć domenę zarządzaną, ma połączenie sieci VPN z siecią lokalną. W tym scenariuszu upewnij się, że nie masz domeny z tą samą nazwą domeny DNS w sieci lokalnej.
@@ -120,7 +120,7 @@ Na stronie **Podsumowanie** kreatora przejrzyj ustawienia konfiguracji dla domen
     ![Powiadomienie w Azure Portal wdrożenia jest w toku](./media/tutorial-create-instance/deployment-in-progress.png)
 
 1. Strona zostanie załadowana z aktualizacjami w procesie wdrażania, w tym tworzeniem nowych zasobów w katalogu.
-1. Wybierz grupę zasobów, *na przykład grupa zasobów, a*następnie wybierz wystąpienie AD DS platformy Azure z listy zasobów platformy Azure, takich jak *aadds.contoso.com*. Karta **Przegląd** pokazuje, że obecnie trwa *wdrażanie*domeny zarządzanej. Nie można skonfigurować domeny zarządzanej, dopóki nie zostanie ona w pełni zainicjowana.
+1. Wybierz grupę zasobów, *na przykład grupa zasobów, a*następnie wybierz wystąpienie AD DS platformy Azure z listy zasobów platformy Azure, takich jak *aaddscontoso.com*. Karta **Przegląd** pokazuje, że obecnie trwa *wdrażanie*domeny zarządzanej. Nie można skonfigurować domeny zarządzanej, dopóki nie zostanie ona w pełni zainicjowana.
 
     ![Stan usług domenowych w trakcie aprowizacji](./media/tutorial-create-instance/provisioning-in-progress.png)
 

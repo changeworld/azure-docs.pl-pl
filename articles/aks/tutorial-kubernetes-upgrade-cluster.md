@@ -3,14 +3,14 @@ title: Samouczek dotyczący rozwiązania Kubernetes na platformie Azure — uakt
 description: W tym samouczku dotyczącym usługi Azure Kubernetes Service (AKS) dowiesz się, jak uaktualnić istniejący klaster usługi AKS do najnowszej dostępnej wersji rozwiązania Kubernetes.
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 57cad9472c599bf0ad8f3e3d2ff53cb224db689a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4d9ef061904fb1a0fff25506eedb82158971bed5
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593132"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622024"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Samouczek: uaktualnianie rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -37,12 +37,12 @@ Przed uaktualnieniem klastra użyj polecenia [az aks get-upgrades][], aby sprawd
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-W poniższym przykładzie bieżąca wersja to *1.13.10*, a dostępne wersje są wyświetlane w kolumnie *uaktualnienia* .
+W poniższym przykładzie bieżąca wersja to *1.14.8*, a dostępne wersje są wyświetlane w kolumnie *uaktualnienia* .
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 -------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.13.10          1.13.10            1.14.5, 1.14.6
+default  myResourceGroup  1.14.8           1.14.8             1.15.5, 1.15.7
 ```
 
 ## <a name="upgrade-a-cluster"></a>Uaktualnianie klastra
@@ -58,13 +58,13 @@ Aby zminimalizować zakłócenia dla działających aplikacji, węzły są dokł
 Użyj polecenia [az aks upgrade][], aby uaktualnić klaster usługi AKS. Poniższy przykład uaktualnia klaster do Kubernetes wersja *1.14.6*.
 
 > [!NOTE]
-> Jednocześnie można uaktualnić tylko jedną wersję pomocniczą. Na przykład można przeprowadzić uaktualnienie z wersji *1.12. x* do *1.13. x*, ale nie można bezpośrednio przeprowadzić uaktualnienia z wersji *1.12. x* do *1.14. x* . Aby uaktualnić z wersji *1.12. x* do *1.14. x*, najpierw Uaktualnij z wersji *1.12. x* do *1.13. x*, a następnie wykonaj kolejne uaktualnienie z *1.13. x* do *1.14. x*.
+> Jednocześnie można uaktualnić tylko jedną wersję pomocniczą. Na przykład można przeprowadzić uaktualnienie z wersji *1.14. x* do *1.15. x*, ale nie można przeprowadzić uaktualnienia z *1.14. x* do *1.16. x* bezpośrednio. Aby przeprowadzić uaktualnienie z wersji *1.14. x* do *1.16. x*, najpierw Uaktualnij z *1.14. x* do *1.15. x*, a następnie wykonaj kolejne uaktualnienie z *1.15. x* do *1.16. x*.
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.6
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.15.5
 ```
 
-Następujące wąskie przykładowe dane wyjściowe przedstawiają *kubernetesVersion* teraz raporty *1.14.6*:
+Następujące wąskie przykładowe dane wyjściowe przedstawiają *kubernetesVersion* teraz raporty *1.15.5*:
 
 ```json
 {
@@ -82,7 +82,7 @@ Następujące wąskie przykładowe dane wyjściowe przedstawiają *kubernetesVer
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.14.6",
+  "kubernetesVersion": "1.15.5",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -97,12 +97,12 @@ Potwierdź, że uaktualnienie powiodło się, używając polecenia [az aks show]
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Następujące przykładowe dane wyjściowe przedstawiają AKS klaster *KubernetesVersion 1.14.6*:
+Następujące przykładowe dane wyjściowe przedstawiają AKS klaster *KubernetesVersion 1.15.5*:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.14.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.15.5               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>Usuwanie klastra

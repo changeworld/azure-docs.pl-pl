@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d08c0b8817c0008a0ecfbab1a9d38243ec0bea79
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705687"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619893"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer często zadawane pytania
 
@@ -59,7 +59,7 @@ Nie, Video Indexer zapewnia integrację wielu modeli uczenia maszynowego w jedny
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>Jakie formaty multimediów Video Indexer obsługiwać?
 
-Usługa Video Indexer obsługuje większość popularnych formatów multimediów. Aby uzyskać więcej informacji, zapoznaj się z listą [formatów standardowych Azure Media Encoder](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) .
+Video Indexer obsługuje najpopularniejsze formaty multimediów. Aby uzyskać więcej informacji, zapoznaj się z listą [formatów standardowych Azure Media Encoder](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) .
 
 ### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Jak przekazać nośnik do Video Indexer?
 
@@ -76,6 +76,14 @@ Tak, możesz zintegrować Video Indexer z technologiami bezserwerowymi, takimi j
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>W jakich regionach platformy Azure są dostępne indeksatory wideo?
 
 Możesz sprawdzić, które regiony platformy Azure Video Indexer są dostępne na stronie [regiony](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all) .
+
+### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>Czy mogę dostosować modele Video Indexer dla określonego przypadku użycia? 
+
+Tak. W Video Indexer można dostosować niektóre dostępne modele, aby lepiej odpowiadały potrzebom. 
+
+Na przykład nasz model osoby obsługuje gotowe do użycia 1 000 000 twarzy osobistości, ale można również przeszkolić go do rozpoznawania innych twarzy, które nie znajdują się w tej bazie danych. 
+
+Aby uzyskać szczegółowe informacje, zobacz artykuł dotyczący dostosowywania [osób](customize-person-model-overview.md), [marek](customize-brands-model-overview.md)i modeli [językowych](customize-language-model-overview.md) . 
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Co to jest umowa SLA dla Video Indexer?
 
@@ -119,6 +127,21 @@ Video Indexer podlega [zasadom zachowania poufności informacji firmy Microsoft]
 
 Video Indexer obecnie ma certyfikat SOC. Aby zapoznać się z certyfikatem Video Indexer, zapoznaj się z [Centrum zaufania Microsoft](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure).
 
+### <a name="what-is-the-difference-between-private-and-public-videos"></a>Jaka jest różnica między prywatnym i publicznym wideo? 
+
+Po przekazaniu wideo do Video Indexer można wybrać jedną z dwóch ustawień prywatności: prywatne i publiczne. Publiczne wideo są dostępne dla każdego, w tym anonimowe i niezidentyfikowane użytkownicy. Prywatne są ograniczone wyłącznie do członków konta. 
+
+### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>Próbuję przekazać wideo jako publiczne i były oflagowane dla nieodpowiedniej lub obraźliwej zawartości, co oznacza? 
+
+Podczas przekazywania wideo do Video Indexer, Automatyczna analiza zawartości jest wykonywana przez algorytmy i modele, aby upewnić się, że żadna nieodpowiednia zawartość nie zostanie ujawniona publicznie. Jeśli film wideo będzie podejrzany o podejrzenie, że zawiera jawną zawartość, nie będzie można ustawić go jako publiczny. Jednak członkowie konta mogą nadal uzyskać do niego dostęp jako prywatny film wideo (wyświetlić go, pobrać informacje i wyodrębnione artefakty oraz wykonać inne operacje dostępne dla członków konta).   
+
+Aby ustawić wideo dla dostępu publicznego, można wykonać jedną z: 
+
+* Utwórz własną warstwę interfejsu (na przykład aplikację lub witrynę sieci Web) i użyj jej do współpracy z usługą Video Indexer. W ten sposób film wideo pozostaje prywatny w naszym portalu, a użytkownicy mogą korzystać z niego za pomocą interfejsu. Możesz na przykład uzyskać szczegółowe informacje lub zezwolić na wyświetlanie wideo w Twoim interfejsie. 
+* Zażądaj humanitarnego przeglądu zawartości, co spowoduje usunięcie ograniczenia, przy założeniu, że zawartość nie jest jawna. 
+
+    Ta opcja może zostać zbadana, jeśli witryna sieci Web Video Indexer jest używana bezpośrednio przez użytkowników jako warstwa interfejsu i dla publicznego (nieuwierzytelnionego) wyświetlania. 
+
 ## <a name="api-questions"></a>Pytania dotyczące interfejsu API
 
 ### <a name="what-apis-does-video-indexer-offer"></a>Jakie interfejsy API oferuje Video Indexer?
@@ -161,7 +184,7 @@ Video Indexer korzysta z prostego modelu cen z płatność zgodnie z rzeczywisty
 
 ### <a name="when-am-i-billed-for-using-video-indexer"></a>Kiedy naliczane są opłaty za korzystanie z Video Indexer?
 
-Wysyłając wideo do indeksowania, użytkownik definiuje, czy indeksowanie ma być analizą wideo, analizą audio, czy jednym i drugim. Na tej podstawie określa się, za które jednostki SKU jest naliczana opłata. Jeśli podczas przetwarzania wystąpi błąd na poziomie krytycznym, w odpowiedzi zostanie zwrócony kod błędu. W takim przypadku nie są naliczane żadne opłaty.  Błąd krytyczny może być spowodowany usterką w naszym kodzie lub krytyczną awarią w wewnętrznej zależności usługi. Błędy takie jak nieprawidłowa identyfikacja lub ekstrakcja szczegółowych informacji nie są uważane za krytyczne i w takich przypadkach odpowiedź jest zwracana. Za każdym razem, gdy jest zwracana prawidłowa odpowiedź (czyli bez kodu błędu), jest naliczana opłata.
+Podczas wysyłania wideo do indeksowania, użytkownik definiuje indeksowanie do analizy wideo, analizy audio lub obu tych metod. Spowoduje to określenie, które jednostki SKU będą naliczone. Jeśli wystąpi błąd krytyczny podczas przetwarzania, kod błędu zostanie zwrócony jako odpowiedź. W takim przypadku nie odbywa się rozliczanie.  Błąd krytyczny może być spowodowany przez usterkę w naszym kodzie lub krytyczny błąd w wewnętrznej zależności, która ma usługa. Błędy, takie jak niepoprawna identyfikacja lub wyodrębnianie szczegółowych informacji, nie są uznawane za krytyczne i zwracana jest odpowiedź. W każdym przypadku, gdy zwracana jest prawidłowa odpowiedź (kod bez błędu), naliczane są rozliczenia.
  
 ### <a name="does-video-indexer-offer-a-free-trial"></a>Czy Video Indexer oferować bezpłatną wersję próbną?
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: iainfou
-ms.openlocfilehash: e63f330d463be21905467869474527fdf9d6abff
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 2daadb539bc08df37f15c187866b735e45309288
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030200"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612792"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Tworzenie Azure Active Directory Domain Services domeny zarządzanej przy użyciu szablonu Azure Resource Manager
 
@@ -45,17 +45,17 @@ Podczas tworzenia wystąpienia usługi Azure AD DS należy określić nazwę DNS
 * **Sufiksy domen bez routingu:** Zwykle zalecamy uniknięcie sufiksu nazwy domeny bez obsługi routingu, takiego jak *contoso. Local*. Sufiks *. Local* nie jest w stanie routingu i może powodować problemy z ROZPOZNAWANIEM nazw DNS.
 
 > [!TIP]
-> Jeśli utworzysz niestandardową nazwę domeny, weź pod uwagę istniejące przestrzenie nazw DNS. Zaleca się dołączenie unikatowego prefiksu dla nazwy domeny. Na przykład jeśli nazwa główna DNS to *contoso.com*, Utwórz domenę zarządzaną platformy Azure AD DS przy użyciu niestandardowej nazwy domeny *Corp.contoso.com* lub *ds.contoso.com*. W środowisku hybrydowym z lokalnym środowiskiem AD DS te prefiksy mogą być już używane. Użyj unikatowego prefiksu dla usługi Azure AD DS.
+> Jeśli utworzysz niestandardową nazwę domeny, weź pod uwagę istniejące przestrzenie nazw DNS. Zalecane jest użycie nazwy domeny innej niż istniejąca lub lokalna przestrzeń nazw DNS.
 >
-> Możesz użyć głównej nazwy DNS dla domeny zarządzanej platformy Azure AD DS, ale może być konieczne utworzenie dodatkowych rekordów DNS dla innych usług w środowisku. Jeśli na przykład uruchomisz serwer sieci Web, który hostuje lokację przy użyciu nazwy głównej DNS, mogą wystąpić konflikty nazw, które wymagają dodatkowych wpisów DNS.
+> Na przykład jeśli masz istniejącą przestrzeń nazw DNS *contoso.com*, Utwórz domenę zarządzaną platformy Azure AD DS przy użyciu niestandardowej nazwy domeny *aaddscontoso.com*. Jeśli musisz użyć bezpiecznego protokołu LDAP, musisz zarejestrować i utworzyć niestandardową nazwę domeny w celu wygenerowania wymaganych certyfikatów.
 >
-> W tych samouczkach i artykułach z przewodnikiem jest używana jako krótki przykład domeny niestandardowej *aadds.contoso.com* . We wszystkich poleceniach należy określić własną nazwę domeny, która może zawierać unikatowy prefiks.
+> Może być konieczne utworzenie dodatkowych rekordów DNS dla innych usług w środowisku lub warunkowych usług przesyłania dalej DNS między istniejącymi spacjami nazw DNS w danym środowisku. Jeśli na przykład uruchomisz serwer sieci Web, który hostuje lokację przy użyciu nazwy głównej DNS, mogą wystąpić konflikty nazw, które wymagają dodatkowych wpisów DNS.
 >
-> Aby uzyskać więcej informacji, zobacz [Wybieranie prefiksu nazewnictwa dla domeny][naming-prefix].
+> W tych samouczkach i artykułach z przewodnikiem jest używana jako krótki przykład domeny niestandardowej *aaddscontoso.com* . We wszystkich poleceniach należy określić własną nazwę domeny.
 
 Obowiązują również następujące ograniczenia nazw DNS:
 
-* **Ograniczenia prefiksu domeny:** Nie można utworzyć domeny zarządzanej z prefiksem dłuższym niż 15 znaków. Prefiks określonej nazwy domeny (np. *contoso* w nazwie domeny *contoso.com* ) musi zawierać co najwyżej 15 znaków.
+* **Ograniczenia prefiksu domeny:** Nie można utworzyć domeny zarządzanej z prefiksem dłuższym niż 15 znaków. Prefiks określonej nazwy domeny (na przykład *aaddscontoso* w nazwie domeny *aaddscontoso.com* ) musi zawierać co najwyżej 15 znaków.
 * **Konflikty nazw sieciowych:** Nazwa domeny DNS dla domeny zarządzanej nie powinna już istnieć w sieci wirtualnej. W celu sprawdzenia następujących scenariuszy, które mogłyby prowadzić do konfliktu nazw:
     * Jeśli masz już domenę Active Directory z tą samą nazwą domeny DNS w sieci wirtualnej platformy Azure.
     * Jeśli sieć wirtualna, w której planujesz włączyć domenę zarządzaną, ma połączenie sieci VPN z siecią lokalną. W tym scenariuszu upewnij się, że nie masz domeny z tą samą nazwą domeny DNS w sieci lokalnej.
@@ -88,7 +88,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 Po utworzeniu grupy *administratorów kontrolera domeny usługi AAD* Dodaj użytkownika do grupy przy użyciu polecenia cmdlet [Add-AzureADGroupMember][Add-AzureADGroupMember] . Najpierw uzyskasz identyfikator obiektu grupy *administratorów kontrolera domeny usługi AAD* za pomocą polecenia cmdlet [Get-AzureADGroup][Get-AzureADGroup] , a następnie identyfikator obiektu żądanego użytkownika przy użyciu polecenia cmdlet [Get-AzureADUser][Get-AzureADUser] .
 
-W poniższym przykładzie identyfikator obiektu użytkownika dla konta z nazwą UPN `admin@contoso.onmicrosoft.com`. Zastąp to konto użytkownika nazwą UPN użytkownika, który chcesz dodać do grupy *administratorów kontrolera domeny usługi AAD* :
+W poniższym przykładzie identyfikator obiektu użytkownika dla konta z nazwą UPN `admin@aaddscontoso.onmicrosoft.com`. Zastąp to konto użytkownika nazwą UPN użytkownika, który chcesz dodać do grupy *administratorów kontrolera domeny usługi AAD* :
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -98,7 +98,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@aaddscontoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -128,12 +128,12 @@ W ramach definicji zasobu Menedżer zasobów wymagane są następujące parametr
 | notificationSettings    | W przypadku wygenerowania alertów w domenie zarządzanej usługi Azure AD DS powiadomienia e-mail mogą być wysyłane. <br />*Administratorzy globalni* dzierżawy platformy Azure i członkowie grupy *Administratorzy usługi AAD* mogą *włączyć* te powiadomienia.<br /> W razie potrzeby można dodać kolejnych adresatów dla powiadomień, gdy istnieją alerty wymagające uwagi.|
 | domainConfigurationType | Domyślnie domena zarządzana AD DS platformy Azure jest tworzona jako Las *użytkownika* . Ten typ lasu służy do synchronizowania wszystkich obiektów z usługi Azure AD, w tym wszystkich kont użytkowników utworzonych w środowisku lokalnym AD DS. Nie musisz określać wartości *atrybutem domainconfiguration* , aby utworzyć Las użytkownika.<br /> Las *zasobów* synchronizuje tylko użytkowników i grupy utworzone bezpośrednio w usłudze Azure AD. Lasy zasobów są obecnie w wersji zapoznawczej. Ustaw wartość *ResourceTrusting* , aby utworzyć Las zasobów.<br />Aby uzyskać więcej informacji o lasach *zasobów* , w tym o tym, dlaczego można korzystać z jednej z nich i jak utworzyć relacje zaufania lasów z lokalnymi domenami AD DS, zobacz [Omówienie lasów zasobów platformy Azure AD DS][resource-forests].|
 
-Następująca skrócona Definicja parametrów pokazuje, jak te wartości są zadeklarowane. Las użytkownika o nazwie *aadds.contoso.com* jest tworzony dla wszystkich użytkowników z usługi Azure AD zsynchronizowanych z domeną zarządzaną platformy Azure AD DS:
+Następująca skrócona Definicja parametrów pokazuje, jak te wartości są zadeklarowane. Las użytkownika o nazwie *aaddscontoso.com* jest tworzony dla wszystkich użytkowników z usługi Azure AD zsynchronizowanych z domeną zarządzaną platformy Azure AD DS:
 
 ```json
 "parameters": {
     "domainName": {
-        "value": "aadds.contoso.com"
+        "value": "aaddscontoso.com"
     },
     "filteredSync": {
         "value": "Disabled"
@@ -176,7 +176,7 @@ Te parametry i typ zasobu mogą służyć jako część szerszego szablonu Mened
 
 ## <a name="create-a-managed-domain-using-sample-template"></a>Tworzenie domeny zarządzanej przy użyciu przykładowego szablonu
 
-Poniższy kompletny Menedżer zasobów szablon tworzy domenę zarządzaną platformy Azure AD DS i reguły obsługi sieci wirtualnej, podsieci i grup zabezpieczeń sieci. Reguły sieciowej grupy zabezpieczeń są wymagane do zabezpieczenia domeny zarządzanej i upewnienia się, że ruch może prawidłowo przepływać. Zostanie utworzony Las użytkownika z nazwą DNS *aadds.contoso.com* , ze wszystkimi użytkownikami synchronizowanymi z usługi Azure AD:
+Poniższy kompletny Menedżer zasobów szablon tworzy domenę zarządzaną platformy Azure AD DS i reguły obsługi sieci wirtualnej, podsieci i grup zabezpieczeń sieci. Reguły sieciowej grupy zabezpieczeń są wymagane do zabezpieczenia domeny zarządzanej i upewnienia się, że ruch może prawidłowo przepływać. Zostanie utworzony Las użytkownika z nazwą DNS *aaddscontoso.com* , ze wszystkimi użytkownikami synchronizowanymi z usługi Azure AD:
 
 ```json
 {
@@ -190,7 +190,7 @@ Poniższy kompletny Menedżer zasobów szablon tworzy domenę zarządzaną platf
             "value": "FullySynced"
         },
         "domainName": {
-            "value": "aadds.contoso.com"
+            "value": "aaddscontoso.com"
         },
         "filteredSync": {
             "value": "Disabled"

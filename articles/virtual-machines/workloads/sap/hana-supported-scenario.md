@@ -4,7 +4,7 @@ description: Obsługiwane scenariusze i szczegółowe informacje o architekturze
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb8278b053ef52f43171137b02e729bfed085e67
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894703"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617179"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Obsługiwane scenariusze dla dużych wystąpień HANA
 W tym artykule opisano obsługiwane scenariusze i szczegóły architektury dla dużych wystąpień platformy HANA (HLI).
@@ -39,7 +39,7 @@ Zapoznaj się z postanowieniami i definicjami, które są używane w tym artykul
 - **Wiele identyfikatorów SID**: system z wieloma skonfigurowanymi wystąpieniami; nazywana również środowiskiem MCOS
 - **HSR**: replikacja systemu SAP HANA
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Duże wystąpienia HANA obsługują różne architektury, które ułatwiają spełnienie wymagań firmy. W poniższych sekcjach omówiono scenariusze architektury i ich szczegóły konfiguracji. 
 
 Projekt architektury pochodnej jest całkowicie z perspektywy infrastruktury i należy skontaktować się z producentem SAP lub partnerami implementacji w celu wdrożenia platformy HANA. Jeśli Twoje scenariusze nie są wymienione w tym artykule, skontaktuj się z zespołem konto Microsoft, aby zapoznać się z architekturą i utworzyć rozwiązanie.
@@ -49,10 +49,10 @@ Projekt architektury pochodnej jest całkowicie z perspektywy infrastruktury i n
 
 W tym artykule opisano szczegółowe informacje o dwóch składnikach w poszczególnych obsługiwanych architekturach:
 
-- Ethernet
-- Usługa Storage
+- Obciążony
+- Storage
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 
 Każdy serwer aprowizacji jest wstępnie skonfigurowany z zestawami interfejsów sieci Ethernet. Interfejsy Ethernet skonfigurowane w poszczególnych jednostkach programu HLI są podzielone na cztery typy:
 
@@ -96,7 +96,7 @@ W przypadku replikacji systemu HANA lub wdrożenia w poziomie platformy Hana kon
 - Sieć Ethernet "D" powinna być używana wyłącznie na potrzeby dostępu do urządzeń STONITH w Pacemaker. Ten interfejs jest wymagany w przypadku skonfigurowania replikacji systemu HANA i zapewnienia automatycznie przełączenia w tryb failover systemu operacyjnego przy użyciu urządzenia z systemem SBD.
 
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Magazyn jest wstępnie skonfigurowany na podstawie wybranej topologii. Rozmiary woluminów i punkty instalacji różnią się w zależności od liczby serwerów, liczby jednostek SKU i skonfigurowanej topologii. Aby uzyskać więcej informacji, przejrzyj wymagane scenariusze (w dalszej części tego artykułu). Jeśli potrzebujesz więcej miejsca w magazynie, możesz kupić je w przyrostach o pojemności 1 TB.
 
 >[!NOTE]
@@ -130,7 +130,7 @@ Ta topologia obsługuje jeden węzeł w konfiguracji skalowania z jednym identyf
 
 ![Pojedynczy węzeł z jednym identyfikatorem SID](media/hana-supported-scenario/Single-node-with-one-SID.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -144,7 +144,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane:
 
 | Punkt instalacji | Przypadek użycia | 
@@ -165,7 +165,7 @@ Ta topologia obsługuje jeden węzeł w konfiguracji skalowania z wieloma identy
 
 ![MCOS jednego węzła](media/hana-supported-scenario/single-node-mcos.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -179,7 +179,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane:
 
 | Punkt instalacji | Przypadek użycia | 
@@ -205,7 +205,7 @@ Ta topologia obsługuje jeden węzeł w konfiguracji skalowania z co najmniej je
 
 ![Pojedynczy węzeł z odzyskiwaniem po awarii przy użyciu replikacji magazynu](media/hana-supported-scenario/Single-node-with-dr.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -219,7 +219,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane:
 
 | Punkt instalacji | Przypadek użycia | 
@@ -246,7 +246,7 @@ Ta topologia obsługuje jeden węzeł w konfiguracji skalowania z co najmniej je
 
 ![Pojedynczy węzeł z DR (Multipurpose) przy użyciu replikacji magazynu](media/hana-supported-scenario/single-node-with-dr-multipurpose.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -260,7 +260,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane:
 
 | Punkt instalacji | Przypadek użycia | 
@@ -301,7 +301,7 @@ Ta topologia obsługuje dwa węzły w konfiguracji replikacji systemu HANA. Ta k
 
 
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -315,7 +315,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Używane na potrzeby STONITH |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane:
 
 | Punkt instalacji | Przypadek użycia | 
@@ -347,7 +347,7 @@ W diagramie wielomiarowy scenariusz jest przedstawiany w witrynie odzyskiwania p
 
 ![Wysoka dostępność dzięki replikacji HSR i DR z replikacją magazynu](media/hana-supported-scenario/HSR-with-DR.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -361,7 +361,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Używane na potrzeby STONITH |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane:
 
 | Punkt instalacji | Przypadek użycia | 
@@ -406,7 +406,7 @@ Ta topologia obsługuje dwa węzły w konfiguracji automatycznej pracy awaryjnej
 
 ![Przełączenie w tryb failover hosta (1 + 1)](media/hana-supported-scenario/scaleup-with-standby.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -420,7 +420,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane:
 
 | Punkt instalacji | Przypadek użycia | 
@@ -447,7 +447,7 @@ Ta topologia obsługuje wiele węzłów w konfiguracji skalowania w poziomie. Is
 
 ![Skalowanie w poziomie przy użyciu rezerwy](media/hana-supported-scenario/scaleout-nm-standby.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -461,7 +461,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane:
 
 | Punkt instalacji | Przypadek użycia | 
@@ -483,7 +483,7 @@ Ta topologia obsługuje wiele węzłów w konfiguracji skalowania w poziomie. Is
 ![Skalowanie w poziomie bez rezerwy](media/hana-supported-scenario/scaleout-nm.png)
 
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -497,7 +497,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane:
 
 | Punkt instalacji | Przypadek użycia | 
@@ -522,7 +522,7 @@ Ta topologia obsługuje wiele węzłów w skalowaniu w poziomie przy użyciu fun
 ![Skalowanie za pomocą odzyskiwania po awarii przy użyciu replikacji magazynu](media/hana-supported-scenario/scaleout-with-dr.png)
 
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -536,7 +536,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane:
 
 | Punkt instalacji | Przypadek użycia | 
@@ -567,7 +567,7 @@ Ta topologia obsługuje jeden węzeł w konfiguracji skalowania z jednym identyf
 
 ![Pojedynczy węzeł z odzyskiwaniem po awarii przy użyciu HSR](media/hana-supported-scenario/single-node-hsr-dr-111.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -581,7 +581,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane na jednostkach HLI (podstawowa i DR):
 
 | Punkt instalacji | Przypadek użycia | 
@@ -608,7 +608,7 @@ Następujące punkty instalacji są wstępnie skonfigurowane na jednostkach HLI 
 
 ![HSR z jednym węzłem do odzyskiwania po awarii (koszt zoptymalizowany)](media/hana-supported-scenario/single-node-hsr-dr-cost-optimized-121.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -622,7 +622,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane:
 
 | Punkt instalacji | Przypadek użycia | 
@@ -658,7 +658,7 @@ Następujące punkty instalacji są wstępnie skonfigurowane:
 
 ![Wysoka dostępność i odzyskiwanie po awarii za pomocą HSR](media/hana-supported-scenario/hana-system-replication-dr-131.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -672,7 +672,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane:
 
 | Punkt instalacji | Przypadek użycia | 
@@ -703,7 +703,7 @@ Następujące punkty instalacji są wstępnie skonfigurowane:
 
 ![Wysoka dostępność i odzyskiwanie po awarii za pomocą HSR (zoptymalizowane pod kątem kosztów)](media/hana-supported-scenario/hana-system-replication-dr-cost-optimized-141.png)
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -717,7 +717,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane:
 
 | Punkt instalacji | Przypadek użycia | 
@@ -754,7 +754,7 @@ Ta topologia obsługuje wiele węzłów w skalowaniu w poziomie przy użyciu fun
 [![skalowanie w poziomie za pomocą narzędzia DR HSR](media/hana-supported-scenario/scale-out-dr-hsr-151.png)](media/hana-supported-scenario/scale-out-dr-hsr-151.png#lightbox)
 
 
-### <a name="ethernet"></a>Ethernet
+### <a name="ethernet"></a>Obciążony
 Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 
 | Interfejs logiczny karty sieciowej | Typ jednostki SKU | Nazwa przy użyciu systemu SUSE OS | Nazwa z systemem operacyjnym RHEL | Przypadek użycia|
@@ -768,7 +768,7 @@ Następujące interfejsy sieciowe są wstępnie skonfigurowane:
 | C | TYP II | Sieć VLAN\<tenantNo + 1 > | team0. Dzierżawca + 1 | Węzeł-Magazyn |
 | D | TYP II | Sieć VLAN\<tenantNo + 3 > | team0. Dzierżawca + 3 | Skonfigurowane, ale nie w użyciu |
 
-### <a name="storage"></a>Usługa Storage
+### <a name="storage"></a>Storage
 Następujące punkty instalacji są wstępnie skonfigurowane:
 
 | Punkt instalacji | Przypadek użycia | 

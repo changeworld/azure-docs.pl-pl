@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f0719542eb693e52f9a7996e28699b7425b0e0fe
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fa1cba2d791cd40a46f8ad182c123a726143faec
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509142"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614251"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Sprawdzanie kondycji domeny zarządzanej Azure Active Directory Domain Services
 
@@ -29,7 +29,7 @@ W tym artykule pokazano, jak wyświetlić stan kondycji usługi Azure AD DS i po
 Stan kondycji domeny zarządzanej AD DS platformy Azure jest wyświetlany przy użyciu Azure Portal. Informacje o czasie ostatniej kopii zapasowej i synchronizacji z usługą Azure AD można zobaczyć wraz z alertami, które wskazują na problem z kondycją domeny zarządzanej. Aby wyświetlić stan kondycji domeny zarządzanej AD DS platformy Azure, wykonaj następujące czynności:
 
 1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**.
-1. Wybierz domenę zarządzaną platformy Azure AD DS, na przykład *aadds.contoso.com*.
+1. Wybierz domenę zarządzaną platformy Azure AD DS, na przykład *aaddscontoso.com*.
 1. Po lewej stronie okna zasobów AD DS platformy Azure wybierz pozycję **kondycja**. Poniższy przykładowy zrzut ekranu przedstawia dobrą domenę zarządzaną platformy Azure AD DS i stan ostatniej synchronizacji kopii zapasowej i usługi Azure AD:
 
     ![Przegląd strony kondycji w Azure Portal pokazywania stanu Azure Active Directory Domain Services](./media/check-health/health-page.png)
@@ -53,7 +53,7 @@ Stan kondycji domeny zarządzanej AD DS platformy Azure przedstawia dwa typy *mo
 
 Monitory to obszary domeny zarządzanej AD DS platformy Azure, które są regularnie sprawdzane. Jeśli istnieją aktywne alerty dla domeny zarządzanej usługi Azure AD DS, może to spowodować zgłoszenie problemu przez jeden z monitorów. Azure AD Domain Services aktualnie ma monitory dla następujących obszarów:
 
-* Tworzenie kopii zapasowych
+* Backup
 * Synchronizacja z usługą Azure AD
 
 #### <a name="backup-monitor"></a>Monitor kopii zapasowych

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/23/2020
-ms.openlocfilehash: 33af9c8f3fbe4de57d65be432f249d4aeb5d3e27
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 169cc3f6a195a7339ab33eb9f00d9937451a93e0
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485339"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620451"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor często zadawane pytania
 
@@ -56,7 +56,7 @@ Azure Monitor zbiera dane z różnych źródeł, w tym dzienników i metryk z pl
 Azure Monitor zbiera dane z różnych źródeł w [dziennikach](platform/data-platform-logs.md) lub [metrykach](platform/data-platform-metrics.md). Każdy typ danych ma własne względne zalety, a każdy z nich obsługuje konkretny zestaw funkcji w Azure Monitor. Istnieje jedna baza danych metryk dla każdej subskrypcji platformy Azure, podczas gdy można utworzyć wiele obszarów roboczych Log Analytics do zbierania dzienników w zależności od wymagań. Zobacz [Azure monitor platformę danych](platform/data-platform.md).
 
 ### <a name="is-there-a-maximum-amount-of-data-that-i-can-collect-in-azure-monitor"></a>Czy istnieje maksymalna ilość danych, które mogę zebrać w Azure Monitor?
-Nie ma żadnego limitu ilości zbieranych danych metryki, ale dane te są przechowywane przez maksymalnie 93 dni. Zobacz [przechowywanie metryk](platform/data-platform-metrics.md#retention-of-metrics). Nie ma żadnego limitu ilości danych dziennika, które można zebrać, ale może to mieć wpływ na warstwę cenową wybraną dla obszaru roboczego Log Analytics. Zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/monitor/).
+Nie ma żadnego limitu ilości zbieranych danych metryki, ale dane te są przechowywane przez maksymalnie 93 dni. Zobacz [przechowywanie metryk](platform/data-platform-metrics.md#retention-of-metrics). Nie ma żadnego limitu ilości danych dziennika, które można zbierać, ale może to mieć wpływ na warstwę cenową wybraną dla obszaru roboczego Log Analytics. Zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>Jak mogę dostęp do danych zbieranych przez Azure Monitor?
 Szczegółowe informacje i rozwiązania zapewniają niestandardowe środowisko pracy z danymi przechowywanymi w Azure Monitor. Możesz bezpośrednio korzystać z danych dziennika przy użyciu zapytania dziennika zarejestrowanego w Kusto Query Language (KQL). W Azure Portal można pisać i uruchamiać zapytania oraz interaktywnie analizować dane przy użyciu Log Analytics. Analizuj metryki w Azure Portal przy użyciu Eksplorator metryk. Zobacz [Analizowanie danych dziennika w Azure monitor](log-query/log-query-overview.md) i rozpoczynanie [pracy z usługą Azure Eksplorator metryk](platform/metrics-getting-started.md).

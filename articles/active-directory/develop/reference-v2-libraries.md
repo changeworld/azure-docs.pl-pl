@@ -17,12 +17,12 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 09d0def2ebd012670b9502f6f9b02ad18a02922d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9d2df175fa9d1ed33eb17ae85e01a4fd7a24e728
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160411"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611940"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Biblioteki uwierzytelniania platformy tożsamości firmy Microsoft
 
@@ -93,7 +93,7 @@ Zobacz również [scenariusze według obsługiwanych platform i języków](authe
 
 | Platforma | Nazwa biblioteki | Przetestowana wersja | Kod źródłowy | Sample |
 |:---:|:---:|:---:|:---:|:---:|
-|![JavaScript](media/sample-v2-code/logo_js.png)|[Witaj. js](https://adodson.com/hello.js/) | 1\.13.5 wersja |[Witaj. js](https://github.com/MrSwitch/hello.js) |[HASŁA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
+|![JavaScript](media/sample-v2-code/logo_js.png)|[Witaj. js](https://adodson.com/hello.js/) | 1\.13.5 wersja |[Witaj. js](https://github.com/MrSwitch/hello.js) |[HASŁA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Java](media/sample-v2-code/logo_java.png) | [Kod w języku Java](https://github.com/scribejava/scribejava) | [3.2.0 wersja](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
 | ![Java](media/sample-v2-code/logo_java.png) | [Biblioteka GLUU OpenID Connect Connect](https://github.com/GluuFederation/oxAuth) | [3.0.2 wersja](https://github.com/GluuFederation/oxAuth/releases/tag/3.0.2) | [Biblioteka GLUU OpenID Connect Connect](https://github.com/GluuFederation/oxAuth) | |
 | ![Python](media/sample-v2-code/logo_python.png) | [Żądania — OAuthlib](https://github.com/requests/requests-oauthlib) | [1.2.0 wersja](https://github.com/requests/requests-oauthlib/releases/tag/v1.2.0) | [Żądania — OAuthlib](https://github.com/requests/requests-oauthlib) | |

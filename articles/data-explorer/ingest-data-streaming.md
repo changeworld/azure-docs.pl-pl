@@ -7,23 +7,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 49129bede62e456cf2807cc879b7fc5e1793b65b
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424953"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623305"
 ---
 # <a name="streaming-ingestion-preview"></a>Pozyskiwanie strumieniowe (wersja zapoznawcza)
 
 Pozyskiwanie strumieniowe jest przeznaczone dla scenariuszy wymagających małych opóźnień i czasu pozyskiwania mniejszego niż 10 sekund w przypadku różnych danych woluminu. Służy do optymalizowania przetwarzania operacyjnego wielu tabel w co najmniej jednej bazie danych, gdzie strumień danych do każdej tabeli jest stosunkowo mały (liczba rekordów na sekundę), ale ogólny wolumin pozyskiwania danych jest wysoki (tysiące rekordów na sekundę).
 
 Użyj operacji pozyskiwania klasycznego (zbiorczego) zamiast pozyskiwania strumieniowego, gdy ilość danych rośnie do ponad 1 MB na sekundę na tabelę. Zapoznaj się z omówieniem pozyskiwania [danych](/azure/data-explorer/ingest-data-overview) , aby dowiedzieć się więcej o różnych metodach pozyskiwania.
-
-> [!NOTE]
-> Pozyskiwanie strumieniowe nie obsługuje następujących funkcji:
-> * [Kursory bazy danych](/azure/kusto/management/databasecursor).
-> * [Mapowanie danych](/azure/kusto/management/mappings). Obsługiwane jest tylko [wstępnie utworzone](/azure/kusto/management/tables#create-ingestion-mapping) mapowanie danych. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -32,6 +27,9 @@ Użyj operacji pozyskiwania klasycznego (zbiorczego) zamiast pozyskiwania strumi
 * Tworzenie [klastra usługi Azure Eksplorator danych i bazy danych](create-cluster-database-portal.md)
 
 ## <a name="enable-streaming-ingestion-on-your-cluster"></a>Włącz pozyskiwanie strumieniowe w klastrze
+
+> [!WARNING]
+> Zapoznaj się z [ograniczeniami](#limitations) przed włączeniem pozyskiwania pary.
 
 1. W Azure Portal przejdź do klastra usługi Azure Eksplorator danych. W obszarze **Ustawienia**wybierz pozycję **konfiguracje**. 
 1. W okienku **konfiguracje** wybierz pozycję **włączone** , aby włączyć pozyskiwanie **strumieniowe**.
@@ -49,8 +47,9 @@ Użyj operacji pozyskiwania klasycznego (zbiorczego) zamiast pozyskiwania strumi
 
 Istnieją dwa obsługiwane typy pozyskiwania strumieniowego:
 
-* [Centrum zdarzeń](/azure/data-explorer/ingest-data-event-hub) używane jako źródło danych
-* Wprowadzanie niestandardowe wymaga napisania aplikacji korzystającej z jednej z bibliotek klienckich Eksplorator danych platformy Azure. Zobacz [przykład pozyskiwania strumieniowego](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) dla przykładowej aplikacji.
+
+* [**Centrum zdarzeń**](/azure/data-explorer/ingest-data-event-hub) używane jako źródło danych
+* Wprowadzanie **niestandardowe** wymaga zapisania aplikacji korzystającej z jednej z bibliotek klienta Eksplorator danych platformy Azure. Zobacz [przykład pozyskiwania strumieniowego](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) dla przykładowej aplikacji.
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Wybierz odpowiedni typ pozyskiwania strumieniowego
 
@@ -78,6 +77,10 @@ Istnieją dwa obsługiwane typy pozyskiwania strumieniowego:
 * Aktualizacje schematu, takie jak tworzenie i modyfikowanie tabel i mapowania pozyskiwania, mogą potrwać do 5 minut w przypadku usługi pozyskiwania strumieniowego.
 * Włączenie pozyskiwania przesyłania strumieniowego w klastrze, nawet w przypadku, gdy dane nie są pozyskiwane za pośrednictwem przesyłania strumieniowego, program używa części lokalnego dysku SSD maszyn klastra do przesyłania strumieniowego danych pozyskiwania i zmniejsza ilość miejsca dostępnego na gorącą pamięć podręczną.
 * Nie można ustawić [tagów zakresu](/azure/kusto/management/extents-overview.md#extent-tagging) w danych pozyskiwania strumieniowego.
+
+Pozyskiwanie strumieniowe nie obsługuje następujących funkcji:
+* [Kursory bazy danych](/azure/kusto/management/databasecursor).
+* [Mapowanie danych](/azure/kusto/management/mappings). Obsługiwane jest tylko [wstępnie utworzone](/azure/kusto/management/tables#create-ingestion-mapping) mapowanie danych. 
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -4,22 +4,22 @@ description: Przewodnik dotyczący tworzenia kopii zapasowych SAP HANA oferuje d
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: 05a4b8e8034e1c354a4209244694aeb2fc2c6007
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: hermannd
+ms.openlocfilehash: 8de83cbb7060e6ca5390720a4a241be71bb9dc92
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078744"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617425"
 ---
-# <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Przewodnik po wykonywaniu kopii zapasowych dla oprogramowania SAP HANA w usłudze Azure Virtual Machines
+# <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Przewodnik dotyczący tworzenia kopii zapasowych SAP HANA na platformie Azure Virtual Machines
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -34,7 +34,7 @@ SAP HANA oferuje interfejs API tworzenia kopii zapasowych, dzięki któremu narz
 
 SAP HANA jest oficjalnie obsługiwana w różnych typach maszyn wirtualnych platformy Azure, takich jak Azure M-Series. Aby uzyskać pełną listę SAP HANA certyfikowane maszyny wirtualne platformy Azure, zapoznaj się z tematem [Znajdowanie certyfikowanych platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Ten artykuł zostanie zaktualizowany w miarę dostępności nowych ofert dla SAP HANA na platformie Azure.
 
-Istnieje również SAP HANA rozwiązanie hybrydowe dostępne na platformie Azure, w którym SAP HANA nie są zwirtualizowane na serwerach fizycznych. Jednak SAP HANA ten przewodnik po usłudze Azure Backup obejmuje czyste środowisko platformy Azure, w którym SAP HANA działa na maszynie wirtualnej platformy Azure, &quot;a nie SAP HANA uruchomione w dużych wystąpieniach.&quot; Więcej informacji o tym rozwiązaniu tworzenia kopii zapasowych na &quot;&quot; platformie Azure można znaleźć w temacie [SAP HANA (duże wystąpienia)](hana-overview-architecture.md)
+Istnieje również SAP HANA rozwiązanie hybrydowe dostępne na platformie Azure, w którym SAP HANA nie są zwirtualizowane na serwerach fizycznych. SAP HANA ten przewodnik dotyczący usługi Azure Backup obejmuje jednak czyste środowisko platformy Azure, w którym SAP HANA działa na maszynie wirtualnej platformy Azure, a nie SAP HANA uruchomione na &quot;dużych wystąpieniach. Aby uzyskać więcej informacji&quot; &quot;na temat tego rozwiązania do tworzenia kopii zapasowych na platformie Azure, zapoznaj się z tematem [SAP HANA (duże wystąpienia) — omówienie i architektura w](hana-overview-architecture.md) systemie&quot;
 
 Ogólne informacje o produktach SAP obsługiwanych na platformie Azure można znaleźć w temacie [SAP Note 1928533](https://launchpad.support.sap.com/#/notes/1928533).
 
@@ -52,7 +52,7 @@ Na tym rysunku przedstawiono opcje tworzenia kopii zapasowej plików SAP HANA w 
 
 Na rysunku przedstawiono potencjalne przyszłe scenariusze SAP HANA tworzenia kopii zapasowej. Jeśli SAP HANA zezwalać na tworzenie kopii zapasowych z poziomu pomocniczej replikacji, zostaną dodane dodatkowe opcje dla strategii tworzenia kopii zapasowych. Obecnie nie jest to możliwe zgodnie z wpisem w SAP HANA wiki:
 
-_&quot;Czy można tworzyć kopie zapasowe po stronie dodatkowej?_
+_&quot;można tworzyć kopie zapasowe po stronie dodatkowej?_
 
 _Nie. obecnie można wykonywać kopie zapasowe danych i dzienników tylko po stronie głównej. Jeśli automatyczna kopia zapasowa dziennika jest włączona, po przejściu na stronę dodatkową kopie zapasowe dziennika zostaną automatycznie zapisaniu.&quot;_
 
@@ -72,7 +72,7 @@ _Nie. obecnie można wykonywać kopie zapasowe danych i dzienników tylko po str
 
 Usługa Azure Storage zapewnia dostępność i niezawodność (zobacz [wprowadzenie do Microsoft Azure Storage](../../../storage/common/storage-introduction.md) , aby uzyskać więcej informacji na temat usługi Azure Storage).
 
-Minimalna &quot;kopia zapasowa&quot; jest zależna od usługi Azure umowy SLA, co pozwala na przechowywanie SAP HANA danych i plików dziennika w wirtualnych dyskach twardych platformy Azure dołączonych do maszyny wirtualnej serwera SAP HANA. Takie podejście obejmuje awarie maszyn wirtualnych, ale nie potencjalne uszkodzenie danych SAP HANA i plików dziennika, a także błędy logiczne, takie jak usuwanie danych i plików. Kopie zapasowe są również wymagane w celu zapewnienia zgodności lub z przyczyn prawnych. W krótkim momencie istnieje konieczność tworzenia kopii zapasowych SAP HANA.
+Minimum dla &quot;kopii zapasowej&quot; polega na tym, że usługa Azure umowy SLA, SAP HANA przechowywanie plików danych i dzienników w wirtualnych dyskach twardych platformy Azure dołączonych do maszyny wirtualnej serwera SAP HANA. Takie podejście obejmuje awarie maszyn wirtualnych, ale nie potencjalne uszkodzenie danych SAP HANA i plików dziennika, a także błędy logiczne, takie jak usuwanie danych i plików. Kopie zapasowe są również wymagane w celu zapewnienia zgodności lub z przyczyn prawnych. W krótkim momencie istnieje konieczność tworzenia kopii zapasowych SAP HANA.
 
 ### <a name="how-to-verify-correctness-of-sap-hana-backup"></a>Sprawdzanie poprawności SAP HANA kopii zapasowej
 W przypadku korzystania z migawek magazynu zaleca się uruchomienie przywracania testowego w innym systemie. Takie podejście umożliwia zapewnienie, że kopia zapasowa jest poprawna, a wewnętrzne procesy tworzenia kopii zapasowych i przywracania działają zgodnie z oczekiwaniami. Chociaż jest to znaczący utrudnienie w środowisku lokalnym, znacznie łatwiej jest wykonać w chmurze, zapewniając w ten sposób tymczasowe zasoby.
@@ -89,29 +89,29 @@ W przypadku kopii zapasowych plików standardowych przywracanie testowe nie jest
 
 Na platformie Azure należy pamiętać, że funkcja&#39;migawek obiektów blob platformy Azure nie gwarantuje spójności systemu plików (zobacz [Używanie migawek obiektów BLOB w programie PowerShell](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)). W następnej sekcji, _SAP HANA spójności danych podczas tworzenia migawek magazynu_, omówiono niektóre zagadnienia dotyczące tej funkcji.
 
-Ponadto, jeden musi zrozumieć wpływ rozliczeń podczas pracy często z migawkami obiektów blob, zgodnie z opisem w tym artykule: [Zrozumienie, w jaki sposób migawki naliczane](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)są&#39;opłaty — jest t tak samo jak w przypadku korzystania z usługi Azure Virtual Disks.
+Ponadto, jeden musi zrozumieć wpływ rozliczeń podczas pracy często z migawkami obiektów blob, zgodnie z opisem w tym artykule: zrozumienie, w [jaki sposób migawki naliczane są opłaty](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)— jest&#39;t tak samo jak w przypadku korzystania z usługi Azure Virtual Disks.
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>SAP HANA spójności danych podczas tworzenia migawek magazynu
 
 Spójności systemu plików i aplikacji jest skomplikowanym problemem podczas tworzenia migawek magazynu. Najprostszym sposobem uniknięcia problemów jest zamknięcie SAP HANA lub nawet całej maszyny wirtualnej. Zamknięcie może być doable z pokazem lub prototypem, a nawet systemem programistycznym, ale nie jest opcją dla systemu produkcyjnego.
 
-Na platformie Azure należy pamiętać, że funkcja&#39;migawek obiektów blob platformy Azure nie gwarantuje spójności systemu plików. Działa ona jednak prawidłowo przy użyciu funkcji migawek SAP HANA, o ile istnieje tylko jeden dysk wirtualny. Jednak nawet w przypadku jednego dysku należy sprawdzić dodatkowe elementy. [Uwaga dotycząca oprogramowania SAP 2039883](https://launchpad.support.sap.com/#/notes/2039883) zawiera ważne informacje dotyczące SAP HANA kopii zapasowych za pośrednictwem migawek magazynu. Na przykład informacje [\_](https://linux.die.net/man/8/xfs_freeze) **\_** **o tym, że przy użyciu systemu plików XFS, należy uruchomić XFS zamrozić przed rozpoczęciem migawki magazynu w celu zagwarantowania spójności\_** Zablokuj).
+Na platformie Azure należy pamiętać, że funkcja&#39;migawek obiektów blob platformy Azure nie gwarantuje spójności systemu plików. Działa ona jednak prawidłowo przy użyciu funkcji migawek SAP HANA, o ile istnieje tylko jeden dysk wirtualny. Jednak nawet w przypadku jednego dysku należy sprawdzić dodatkowe elementy. [Uwaga dotycząca oprogramowania SAP 2039883](https://launchpad.support.sap.com/#/notes/2039883) zawiera ważne informacje dotyczące SAP HANA kopii zapasowych za pośrednictwem migawek magazynu. Na przykład informacje o tym, że w systemie plików XFS, należy uruchomić **XFS\_zamrozić** przed rozpoczęciem migawki magazynu w celu zagwarantowania spójności (zobacz [XFS\_Zablokuj (8)-Linux Man](https://linux.die.net/man/8/xfs_freeze) , aby uzyskać więcej informacji na temat **XFS\_Zablokuj**.
 
 Temat spójności jest jeszcze bardziej trudniejszy w przypadku, gdy pojedynczy system plików obejmuje wiele dysków/woluminów. Na przykład przy użyciu mdadm lub LVM i rozłożenia. Uwaga dotycząca oprogramowania SAP wymienionego powyżej stanów:
 
-_&quot;Należy jednak pamiętać, że system magazynu musi zagwarantować spójność we/wy podczas tworzenia migawki magazynu na wolumin danych SAP HANA, tj. snapshotting SAP HANA wolumin danych specyficznych dla usługi musi być operacją niepodzielną.&quot;_
+_&quot;jednak należy pamiętać, że system magazynu musi zagwarantować spójność we/wy podczas tworzenia migawki magazynu dla SAP HANA woluminu danych, tj. snapshotting SAP HANAego woluminu danych określonego dla usługi musi być operacją niepodzielną.&quot;_
 
 Zakładając, że istnieje system plików XFS z czterema dyskami wirtualnymi platformy Azure, następujące kroki zapewniają spójną migawkę, która reprezentuje obszar danych HANA:
 
 - Przygotowanie migawki platformy HANA
-- Zablokuj system plików (na przykład użyj **blokady\_XFS**)
+- Zablokuj system plików (na przykład użyj **xfs\_Zablokuj**)
 - Utwórz wszystkie wymagane migawki obiektów BLOB na platformie Azure
 - Odblokuj system plików
 - Potwierdź migawkę HANA
 
 Zalecenie polega na użyciu procedury powyżej we wszystkich przypadkach, gdy ma być po stronie bezpieczeństwa, niezależnie od tego, który system plików. Lub jeśli jest to pojedynczy dysk lub rozłożenie, za pośrednictwem mdadm lub LVM na wielu dyskach.
 
-Ważne jest, aby potwierdzić migawkę HANA. Ze względu na&quot; kopięprzyzapisie,SAPHANAmożeniewymagaćdodatkowegomiejscanadyskuwtymtrybie&quot;przygotowywania migawek. &#39;Nie można również uruchomić nowych kopii zapasowych, dopóki migawka SAP HANA nie zostanie potwierdzona.
+Ważne jest, aby potwierdzić migawkę HANA. Ze względu na &quot;kopiowania przy zapisie&quot; SAP HANA może nie wymagać dodatkowego miejsca na dysku w tym trybie przygotowywania migawek. &#39;Nie można również uruchomić nowych kopii zapasowych, dopóki migawka SAP HANA nie zostanie potwierdzona.
 
 Usługa Azure Backup używa rozszerzeń maszyny wirtualnej platformy Azure, aby zachować spójność systemu plików. Te rozszerzenia maszyn wirtualnych nie są dostępne dla autonomicznego użycia. Nadal istnieje konieczność zarządzania spójnością SAP HANA. Aby uzyskać więcej informacji, zapoznaj się z artykułem poświęconym [SAP HANA Azure Backup na poziomie pliku](sap-hana-backup-file-level.md) .
 
@@ -134,7 +134,7 @@ Przewodnik administrowania HANA zawiera przykładową listę. Sugeruje ona, że 
 5. Kopie zapasowe dzienników
 
 W odniesieniu do dokładnego harmonogramu, kiedy i jak często ma być określony typ kopii zapasowej, nie jest możliwe ogólne wytyczne — jest to zbyt specyficzne dla klienta i zależy od liczby zmian danych w systemie. Jednym z podstawowych rekomendacji po stronie SAP, które mogą być postrzegane jako ogólne wskazówki, jest jednokrotne utworzenie kopii zapasowej HANA.
-W odniesieniu do kopii zapasowych [](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm)dzienników zapoznaj się z dokumentacją SAP HANA Backup.
+W odniesieniu do kopii zapasowych [dzienników zapoznaj się z dokumentacją SAP HANA](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm)Backup.
 
 System SAP zaleca również wykonywanie niektórych dla gospodarstw domowych wykazu kopii zapasowych, aby zachować jego nieograniczoną liczbę (zobacz [dla gospodarstw domowych dla wykazu kopii zapasowych i magazynu kopii zapasowych](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm)).
 
@@ -158,7 +158,7 @@ Kopie zapasowe mogą być monitorowane w SAP HANA panelu sterowania, a po zakoń
 
 ![Przykład korzystania z programu Firefox na maszynie wirtualnej Azure SLES 12 z pulpitem GNOME](media/sap-hana-backup-guide/image006.png)
 
-Poprzednie zrzuty ekranu zostały wykonane z maszyny wirtualnej z systemem Windows Azure. Jest to przykład za pomocą przeglądarki Firefox na maszynie wirtualnej Azure SLES 12 z pulpitem GNOME. Pokazuje on opcję definiowania SAP HANA harmonogramów kopii zapasowych w panelu sterowania SAP HANA. Jak również można zobaczyć, sugeruje datę i godzinę jako prefiks plików kopii zapasowej. W programie SAP HANA Studio domyślny prefiks &quot;jest kompletna\_kopia zapasowa&quot; danych\_podczas wykonywania kopii zapasowej pełnego pliku. Zalecane jest używanie unikatowego prefiksu.
+Poprzednie zrzuty ekranu zostały wykonane z maszyny wirtualnej z systemem Windows Azure. Jest to przykład za pomocą przeglądarki Firefox na maszynie wirtualnej Azure SLES 12 z pulpitem GNOME. Pokazuje on opcję definiowania SAP HANA harmonogramów kopii zapasowych w panelu sterowania SAP HANA. Jak również można zobaczyć, sugeruje datę i godzinę jako prefiks plików kopii zapasowej. W programie SAP HANA Studio domyślny prefiks jest &quot;kompletny\_dane\_kopia ZAPASowa&quot; podczas wykonywania pełnej kopii zapasowej plików. Zalecane jest używanie unikatowego prefiksu.
 
 ### <a name="sap-hana-backup-encryption"></a>SAP HANA szyfrowanie kopii zapasowej
 
@@ -184,7 +184,7 @@ Ten rysunek przedstawia część Azure Portal przegląd dla testowej maszyny wir
 
 ![Ten rysunek został pobrany z konsoli tworzenia kopii zapasowych w programie HANA Studio i przedstawia rozmiar pliku kopii zapasowej wynoszący 229 GB dla serwera indeksu HANA](media/sap-hana-backup-guide/image008.png)
 
-Fikcyjna tabela została uzupełniona o dane, aby uzyskać łączny rozmiar kopii zapasowej danych wynoszący ponad 200 GB, aby uzyskać realistyczne dane wydajności. Rysunek został pobrany z konsoli tworzenia kopii zapasowych w programie HANA Studio i przedstawia rozmiar pliku kopii zapasowej wynoszący 229 GB dla serwera indeksów platformy HANA. Dla testów użyto domyślnego prefiksu kopii zapasowej "COMPLETE_DATA_BACKUP" w SAP HANA Studio. W rzeczywistych systemach produkcyjnych należy zdefiniować bardziej przydatny prefiks. Panel sterowania SAP HANAą proponuje datę/godzinę.
+Fikcyjna tabela została uzupełniona o dane, aby uzyskać łączny rozmiar kopii zapasowej danych wynoszący ponad 200 GB, aby uzyskać realistyczne dane wydajności. Rysunek został pobrany z konsoli tworzenia kopii zapasowych w programie HANA Studio i przedstawia rozmiar pliku kopii zapasowej wynoszący 229 GB dla serwera indeksów platformy HANA. Dla testów użyto domyślnego prefiksu kopii zapasowej "COMPLETE_DATA_BACKUP" w programie SAP HANA Studio. W rzeczywistych systemach produkcyjnych należy zdefiniować bardziej przydatny prefiks. Panel sterowania SAP HANAą proponuje datę/godzinę.
 
 ### <a name="test-tool-to-copy-files-directly-to-azure-storage"></a>Narzędzie testowe do kopiowania plików bezpośrednio do usługi Azure Storage
 
@@ -194,7 +194,7 @@ Aby przetransferować SAP HANA pliki kopii zapasowej bezpośrednio do usługi Az
 
 Ważne jest, aby oszacować rozmiar kopii zapasowej SAP HANA. To oszacowanie ułatwia zwiększenie wydajności przez zdefiniowanie maksymalnego rozmiaru pliku kopii zapasowej dla wielu plików kopii zapasowej z powodu równoległości podczas kopiowania plików. (Te szczegóły zostały wyjaśnione w dalszej części tego artykułu). Jeden z nich musi również decydować, czy należy wykonać pełną kopię zapasową, czy przyrostową kopię zapasową (przyrostową czy różnicową)
 
-Na szczęście istnieje prosta instrukcja SQL, która szacuje rozmiar plików kopii zapasowej: **Wybierz opcję \* z oszacowania\_rozmiaru\_\_kopii zapasowej** [w systemie M Kopia zapasowa](https://help.sap.com/saphelp_hanaplatform/helpdata/en/7d/46337b7a9c4c708d965b65bc0f343c/content.htm)).
+Na szczęście istnieje prosta instrukcja SQL, która szacuje rozmiar plików kopii zapasowej: **wybierz \* z M\_kopia zapasowa\_rozmiar\_oszacowania** (zobacz [oszacowania miejsca wymaganego w systemie plików dla kopii zapasowej danych](https://help.sap.com/saphelp_hanaplatform/helpdata/en/7d/46337b7a9c4c708d965b65bc0f343c/content.htm)).
 
 ![Dane wyjściowe tej instrukcji SQL dopasowują niemal dokładnie rzeczywisty rozmiar pełnej kopii zapasowej danych na dysku](media/sap-hana-backup-guide/image009.png)
 
@@ -219,7 +219,7 @@ W oparciu o wyniki testów w poniższych tabelach przedstawiono zalety i wady ro
 |Kopiowanie obiektu BLOB za pomocą programu PowerShell lub interfejsu wiersza polecenia                    |Nie jest wymagane dodatkowe narzędzie, może być realizowane za pośrednictwem programu Azure PowerShell lub interfejsu wiersza polecenia |proces ręczny, klient musi zająć się obsługą skryptów i zarządzaniem skopiowanymi obiektami BLOB na potrzeby przywracania|
 |Kopiuj do udziału NFS                                  |Przetwarzanie końcowe plików kopii zapasowej na innej maszynie wirtualnej bez wpływu na serwer HANA|Proces powolnej kopiowania|
 |Blobxfer kopiowanie do usługi plików platformy Azure                |Nie zajmują miejsca na lokalnych dyskach maszyn wirtualnych|Brak bezpośredniej obsługi zapisu przez kopię zapasową HANA, ograniczenie rozmiaru udziału plików, który jest obecnie 5 TB|
-|Agent Azure Backup                                 | Byłoby preferowane rozwiązanie         | Obecnie niedostępne w systemie Linux    |
+|Agent usługi Kopia zapasowa Azure                                 | Byłoby preferowane rozwiązanie         | Obecnie niedostępne w systemie Linux    |
 
 
 

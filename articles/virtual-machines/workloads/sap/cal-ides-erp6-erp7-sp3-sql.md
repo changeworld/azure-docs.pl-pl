@@ -4,7 +4,7 @@ description: Wdrażanie programu SAP środowisk IDE EHP7 SP3 dla oprogramowania 
 services: virtual-machines-windows
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 66921280403027d1723b27f104b42d2c83271213
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100065"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616704"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Wdrażanie programu SAP środowisk IDE EHP7 SP3 dla oprogramowania SAP ERP 6,0 na platformie Azure
 W tym artykule opisano sposób wdrażania systemu SAP środowisk IDE z systemem SQL Server i systemem operacyjnym Windows na platformie Azure za pośrednictwem biblioteki urządzeń SAP w chmurze (SAP CAL) 3,0. Zrzuty ekranu przedstawiają proces krok po kroku. Aby wdrożyć inne rozwiązanie, wykonaj te same czynności.
@@ -46,7 +46,7 @@ Po zalogowaniu się do licencji SAP CAL pierwsza strona zwykle prowadzi do stron
     c. Nadaj uprawnienia SAP CAL do wdrożenia w ramach subskrypcji platformy Azure.
 
    > [!NOTE]
-   >  W następnych krokach pokazano, jak utworzyć konto SAP CAL dla wdrożeń Menedżer zasobów. Jeśli masz już konto SAP CAL, które jest połączone z klasycznym modelem wdrażania, musisz wykonać następujące kroki, aby utworzyć nowe konto SAP cal. Nowe konto SAP CAL musi zostać wdrożone w modelu Menedżer zasobów.
+   >  W następnych krokach pokazano, jak utworzyć konto SAP CAL dla wdrożeń Menedżer zasobów. Jeśli masz już konto SAP CAL, które jest połączone z klasycznym modelem wdrażania *, musisz wykonać* następujące kroki, aby utworzyć nowe konto SAP cal. Nowe konto SAP CAL musi zostać wdrożone w modelu Menedżer zasobów.
 
 1. Aby utworzyć nowe konto SAP CAL, na stronie **konta** są wyświetlane dwie opcje platformy Azure: 
 
@@ -72,7 +72,7 @@ Po zalogowaniu się do licencji SAP CAL pierwsza strona zwykle prowadzi do stron
 
     ![Potwierdzenie usług w chmurze programu Internet Explorer](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
 
-1. Kliknij przycisk **zaakceptować**. Jeśli autoryzacja zakończyła się pomyślnie, definicja konta SAP CAL zostanie wyświetlona ponownie. Po krótkim czasie komunikat potwierdza, że proces autoryzacji zakończył się pomyślnie.
+1. Kliknij przycisk **Akceptuj**. Jeśli autoryzacja zakończyła się pomyślnie, definicja konta SAP CAL zostanie wyświetlona ponownie. Po krótkim czasie komunikat potwierdza, że proces autoryzacji zakończył się pomyślnie.
 
 1. Aby przypisać nowo utworzone konto SAP CAL do użytkownika, wprowadź swój **Identyfikator użytkownika** w polu tekstowym po prawej stronie, a następnie kliknij przycisk **Dodaj**. 
 
@@ -95,7 +95,7 @@ Pomyślnie utworzono konto SAP CAL, które jest w stanie:
 ### <a name="deploy-a-solution"></a>Wdróż rozwiązanie
 1. Po skonfigurowaniu konta SAP CAL wybierz **rozwiązanie SAP środowisk IDE w systemie Windows i SQL Server** rozwiązanie. Kliknij pozycję **Utwórz wystąpienie**i Potwierdź warunki użytkowania. 
 
-1. W trybie **Basic: Utwórz stronę** wystąpienia, musisz:
+1. Na stronie **Tryb podstawowy: Tworzenie wystąpienia** należy wykonać następujące instrukcje:
 
     a. Wprowadź **nazwę**wystąpienia.
 
@@ -103,7 +103,7 @@ Pomyślnie utworzono konto SAP CAL, które jest w stanie:
 
     c.  Wprowadź **hasło** główne dla rozwiązania, jak pokazano poniżej:
 
-    ![Tryb podstawowy SAP CAL: Utwórz wystąpienie](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
+    ![System SAP CAL Basic: Create instance](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
 1. Kliknij przycisk **Utwórz**. Po pewnym czasie, w zależności od rozmiaru i złożoności rozwiązania (system SAP CAL zawiera oszacowanie), stan jest pokazywany jako aktywny i gotowy do użycia: 
 

@@ -1,10 +1,10 @@
 ---
-title: Użyj ponownego uruchomienia maszyny wirtualnej infrastruktury platformy Azure, aby uzyskać "wyższą dostępność" systemu SAP | Microsoft Docs
+title: Użyj ponownego uruchomienia maszyn wirtualnych platformy Azure w celu uzyskania wyższej dostępności systemu SAP | Microsoft Docs
 description: Użyj ponownego uruchomienia maszyny wirtualnej infrastruktury platformy Azure, aby uzyskać "wyższą dostępność" aplikacji SAP
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2e15765d5acdfe79bbf9e58135a62614ff7caf9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 86094fd7ff9550946e1b1c13e0773f025a0e977c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647479"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623820"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Użyj ponownego uruchomienia maszyny wirtualnej infrastruktury platformy Azure, aby uzyskać "wyższą dostępność" systemu SAP
 
@@ -210,7 +210,7 @@ ms.locfileid: "75647479"
 
 > Ta sekcja ma zastosowanie do:
 >
-> ![Windows][Logo_Windows] System Windows i ![Linux][Logo_Linux] Linux
+> ![System Windows][Logo_Windows] System Windows i ![Linux][Logo_Linux] Linux
 >
 
 Jeśli użytkownik zdecyduje się nie używać takich funkcji jak Windows Server Failover Clustering (WSFC) lub Pacemaker w systemie Linux (obecnie obsługiwane tylko w SUSE Linux Enterprise Server [SLES] 12 i nowszych), zostanie wykorzystane ponowne uruchomienie maszyny wirtualnej platformy Azure. Program chroni systemy SAP przed planowanymi i nieplanowanymi przestojami infrastruktury serwera fizycznego platformy Azure i ogólną podstawową platformą platformy Azure.

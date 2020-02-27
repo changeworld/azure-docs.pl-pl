@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/30/2020
-ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982620"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623629"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Samouczek: przewidywanie ceny za samochód przy użyciu projektanta (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -203,7 +203,7 @@ Dzielenie danych to typowe zadanie w usłudze Machine Learning. Dane zostaną po
 
 1. W okienku Szczegóły modułu z prawej strony kanwy wybierz pole **komentarz** i wprowadź *Podziel zestaw danych na zestaw szkoleniowy (0,7) i zestaw testów (0,3)* .
 
-### <a name="train-the-model"></a>Trenowanie modelu
+### <a name="train-the-model"></a>Uczenie modelu
 
 Nauczenie modelu przez nadanie mu zestawu danych, który zawiera cenę. Algorytm tworzy model, który objaśnia relacje między funkcjami a ceną zaprezentowaną przez dane szkoleniowe.
 
@@ -260,7 +260,7 @@ Użyj modułu **oceny modelu** , aby oszacować, jak dobrze Model przedstawia te
 
 ## <a name="run-the-pipeline"></a>Uruchamianie potoku
 
-Teraz, gdy potok jest skonfigurowany, można przesłać uruchomienie potoku.
+Teraz, gdy potok jest skonfigurowany, możesz przesłać uruchomienie potoku w celu uczenia modelu uczenia maszynowego. Podczas kompilowania potoków w projektancie można przesłać w dowolnym momencie przebieg potoku. Możesz to zrobić, aby sprawdzić swoją pracę w trakcie pracy i zweryfikować funkcje potoku zgodnie z oczekiwaniami.
 
 1. W górnej części kanwy wybierz pozycję **Uruchom**.
 

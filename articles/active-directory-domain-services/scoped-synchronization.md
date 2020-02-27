@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: e6645a131766b7ec055ba1c8bb639f054f50c80b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704375"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613048"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Konfigurowanie synchronizacji z zakresem z usługi Azure AD do Azure Active Directory Domain Services
 
@@ -40,11 +40,11 @@ W poniższej tabeli opisano sposób używania synchronizacji w zakresie:
 
 Użyj Azure Portal lub PowerShell, aby skonfigurować ustawienia synchronizacji z zakresem:
 
-| Działanie | | |
+| Akcja | | |
 |--|--|--|
-| Utwórz domenę zarządzaną platformy Azure AD DS i skonfiguruj synchronizację z zakresem | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [Program PowerShell](#enable-scoped-synchronization-using-powershell) |
-| Modyfikuj synchronizację w zakresie | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [Program PowerShell](#modify-scoped-synchronization-using-powershell) |
-| Wyłącz synchronizację z zakresem | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [Program PowerShell](#disable-scoped-synchronization-using-powershell) |
+| Utwórz domenę zarządzaną platformy Azure AD DS i skonfiguruj synchronizację z zakresem | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Modyfikuj synchronizację w zakresie | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
+| Wyłącz synchronizację z zakresem | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
 > Zmiana zakresu synchronizacji powoduje, że domena zarządzana przez platformę Azure AD DS ponownie zsynchronizuje wszystkie dane.
@@ -70,7 +70,7 @@ Gdy Azure Portal pokazuje, że domena zarządzana AD DS platformy Azure zakończ
 
 Aby zmodyfikować listę grup, których użytkownicy mają być synchronizowane z domeną zarządzaną AD DS platformy Azure, wykonaj następujące czynności:
 
-1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**. Wybierz wystąpienie, takie jak *aadds.contoso.com*.
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**. Wybierz wystąpienie, takie jak *aaddscontoso.com*.
 1. Z menu po lewej stronie wybierz pozycję **Synchronizacja** .
 1. Aby dodać grupę, wybierz pozycję **+ Wybierz grupy** u góry, a następnie wybierz grupy do dodania.
 1. Aby usunąć grupę z zakresu synchronizacji, wybierz ją z listy aktualnie zsynchronizowanych grup i wybierz pozycję **Usuń grupy**.
@@ -82,7 +82,7 @@ Zmiana zakresu synchronizacji powoduje, że domena zarządzana przez platformę 
 
 Aby wyłączyć synchronizację z zakresem opartym na grupach dla domeny zarządzanej AD DS platformy Azure, wykonaj następujące czynności:
 
-1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**. Wybierz wystąpienie, takie jak *aadds.contoso.com*.
+1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD Domain Services**. Wybierz wystąpienie, takie jak *aaddscontoso.com*.
 1. Z menu po lewej stronie wybierz pozycję **Synchronizacja** .
 1. Ustaw zakres synchronizacji z **zakresu** na **wszystkie**, a następnie wybierz pozycję **Zapisz zakres synchronizacji**.
 
@@ -194,11 +194,11 @@ Użyj programu PowerShell, aby ukończyć ten zestaw kroków. Zapoznaj się z in
 
 1. Teraz Utwórz domenę zarządzaną platformy Azure AD DS i Włącz synchronizację z zakresem opartym na grupach. Dołącz *wartość "filteredSync" = "Enabled"* w parametrze *-Properties* .
 
-    Ustaw identyfikator subskrypcji platformy Azure, a następnie podaj nazwę domeny zarządzanej, na przykład *aadds.contoso.com*. Identyfikator subskrypcji można uzyskać za pomocą polecenia cmdlet [Get-AzSubscription][Get-AzSubscription] . Ustaw nazwę grupy zasobów, nazwę sieci wirtualnej i region na wartości używane w poprzednich krokach, aby utworzyć pomocnicze zasoby platformy Azure:
+    Ustaw identyfikator subskrypcji platformy Azure, a następnie podaj nazwę domeny zarządzanej, na przykład *aaddscontoso.com*. Identyfikator subskrypcji można uzyskać za pomocą polecenia cmdlet [Get-AzSubscription][Get-AzSubscription] . Ustaw nazwę grupy zasobów, nazwę sieci wirtualnej i region na wartości używane w poprzednich krokach, aby utworzyć pomocnicze zasoby platformy Azure:
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "aadds.contoso.com"
+   $ManagedDomainName = "aaddscontoso.com"
    $ResourceGroupName = "myResourceGroup"
    $VnetName = "myVnet"
    $AzureLocation = "westus"

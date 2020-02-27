@@ -8,14 +8,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 629b75963ba90a25d59c1601fcd479fce40c92e7
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e3385234433a292ce146c9aed25ecfeb1095d79a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467270"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616129"
 ---
-# <a name="overview-of-azure-monitor-agents"></a>Omówienie agentów Azure Monitor 
+# <a name="overview-of-azure-monitor-agents"></a>Omówienie agentów Azure Monitor
+
 Maszyny wirtualne i inne zasoby obliczeniowe wymagają od agenta zebrania danych monitorowania w celu mierzenia wydajności i dostępności systemu operacyjnego gościa oraz obciążeń. W tym artykule opisano agentów używanych przez Azure Monitor i można określić, które z nich muszą spełniać wymagania dotyczące konkretnego środowiska.
 
 > [!NOTE]
@@ -24,6 +25,7 @@ Maszyny wirtualne i inne zasoby obliczeniowe wymagają od agenta zebrania danych
 Może istnieć określony zestaw wymagań, które nie mogą być w pełni spełnione przy użyciu jednego agenta dla określonej maszyny wirtualnej. Można na przykład użyć alertów metryk, które wymagają rozszerzenia diagnostyki platformy Azure, ale również skorzystać z funkcjonalności Azure Monitor dla maszyn wirtualnych, która wymaga agenta Log Analytics i agenta zależności. W takich przypadkach można używać wielu agentów i jest to typowy scenariusz dla klientów, którzy wymagają funkcjonalności z każdego z nich.
 
 ## <a name="summary-of-agents"></a>Podsumowanie agentów
+
 W poniższych tabelach przedstawiono krótkie porównanie Azure Monitor agentów dla systemów Windows i Linux. Więcej szczegółowych informacji na ten temat znajduje się w sekcji poniżej. 
 
 ### <a name="windows-agents"></a>Agenci dla systemu Windows
@@ -46,11 +48,12 @@ W poniższych tabelach przedstawiono krótkie porównanie Azure Monitor agentów
 | Dane wysyłane do | Azure Storage<br>Centrum zdarzeń | Metryki Azure Monitor | Dzienniki usługi Azure Monitor | Dzienniki usługi Azure Monitor |
 
 ## <a name="log-analytics-agent"></a>Agent usługi Log Analytics
+
 [Agent log Analytics](log-analytics-agent.md) zbiera dane monitorowania z systemu operacyjnego gościa i obciążeń maszyn wirtualnych na platformie Azure, innych dostawców chmury i lokalnie. Gromadzi dane w obszarze roboczym Log Analytics. Agent Log Analytics jest tym samym agentem, który jest używany przez System Center Operations Manager, i można korzystać z agentów wieloznacznych, aby komunikować się z grupą zarządzania i Azure Monitor jednocześnie. Ten agent jest również wymagany przez niektóre szczegółowe informacje i rozwiązania w Azure Monitor.
 
 
 > [!NOTE]
-> Agent Log Analytics dla systemu Windows jest często określany jako Microsoft Management Agent (MMA). Agent Log Analytics dla systemu Linux jest często nazywany agentem pakietu OMS.
+> Agent Log Analytics dla systemu Windows jest często określany jako Microsoft Monitoring Agent (MMA). Agent Log Analytics dla systemu Linux jest często nazywany agentem pakietu OMS.
 
 
 
@@ -68,6 +71,7 @@ Ograniczenia Log Analytics agenta obejmują:
 - Nie można wysyłać danych do metryk Azure Monitor, usługi Azure Storage ani Event Hubs platformy Azure.
 
 ## <a name="azure-diagnostics-extension"></a>Rozszerzenie diagnostyki platformy Azure
+
 [Rozszerzenie Diagnostyka Azure](diagnostics-extension-overview.md) zbiera dane monitorowania z systemu operacyjnego gościa oraz obciążeń maszyn wirtualnych platformy Azure i innych zasobów obliczeniowych. Polega ona głównie na zbieraniu danych do usługi Azure Storage, ale również umożliwia zdefiniowanie ujścia danych w celu wysyłania danych do innych miejsc docelowych, takich jak metryki Azure Monitor i Event Hubs platformy Azure.
 
 Użyj rozszerzenia diagnostyki platformy Azure, jeśli zachodzi taka potrzeba:
@@ -82,9 +86,8 @@ Ograniczenia rozszerzenia usługi Azure Diagnostics obejmują:
 - Może być używany tylko z zasobami platformy Azure.
 - Ograniczona możliwość wysyłania danych do dzienników Azure Monitor.
 
-
-
 ## <a name="telegraf-agent"></a>Agent telegraf
+
 [Agent InfluxData telegraf](collect-custom-metrics-linux-telegraf.md) jest używany do zbierania danych wydajności z komputerów z systemem Linux do metryk Azure monitor.
 
 Użyj agenta telegraf, jeśli chcesz:
@@ -94,24 +97,25 @@ Użyj agenta telegraf, jeśli chcesz:
 
 
 ## <a name="dependency-agent"></a>Agent zależności
+
 Agent zależności zbiera odnalezione dane dotyczące procesów uruchomionych na maszynie wirtualnej i zewnętrznych zależności procesów. 
 
 Użyj agenta zależności, jeśli zachodzi taka potrzeba:
 
 * Użyj funkcji map [Azure monitor dla maszyn wirtualnych](../insights/vminsights-overview.md) lub [Service map](../insights/service-map.md) rozwiązanie.
 
-
 Podczas korzystania z agenta zależności należy wziąć pod uwagę następujące kwestie:
 
 - Agent zależności wymaga zainstalowania agenta Log Analytics na tej samej maszynie wirtualnej.
 - Na maszynach wirtualnych z systemem Linux należy zainstalować agenta Log Analytics przed rozszerzeniem diagnostyki platformy Azure.
 
-
 ## <a name="extensions-compared-to-agents"></a>Rozszerzenia w porównaniu z agentami
+
 Log Analytics rozszerzenie dla [systemów Windows](../../virtual-machines/extensions/oms-windows.md) i [Linux](../../virtual-machines/extensions/oms-linux.md) Zainstaluj agenta log Analytics na maszynach wirtualnych platformy Azure. Rozszerzenie zależności Azure Monitor dla [systemu Windows](../../virtual-machines/extensions/agent-dependency-windows.md) i [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) Zainstaluj agenta zależności na maszynach wirtualnych platformy Azure. Są to te same agenci, ale umożliwiają zarządzanie nimi za pomocą [rozszerzeń maszyny wirtualnej](../../virtual-machines/extensions/overview.md). Jeśli to możliwe, należy używać rozszerzeń do instalowania agentów i zarządzania nimi.
 
 
 ## <a name="next-steps"></a>Następne kroki
+
 Więcej informacji na temat każdego z agentów znajduje się w następujących tematach:
 
 - [Przegląd agenta Log Analytics](log-analytics-agent.md)

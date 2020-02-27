@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 9f8a14c348f4f8eddcd60c6946c831c90262757b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 02/25/2020
+ms.openlocfilehash: d2b25fb93a1e35ffa82cf49c60d181b841b1692d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588998"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616189"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Zasoby dokumentacji dotyczące wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze
 
@@ -36,7 +36,7 @@ Poniższe artykuły stanowią kompletną dokumentację dotyczącą wzbogacania A
 + [Jak zdefiniować niestandardowy interfejs umiejętności](cognitive-search-custom-skill-interface.md)
 + [Wskazówki dotyczące rozwiązywania problemów](cognitive-search-concept-troubleshooting.md)
 
-## <a name="reference"></a>Informacje ogólne
+## <a name="reference"></a>Dokumentacja
 
 + [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
   + [Microsoft. umiejętności. Text. KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)

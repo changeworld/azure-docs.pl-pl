@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 02/20/2020
 ms.author: diberry
-ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513613"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623590"
 ---
 # <a name="offline-evaluation"></a>Ocena w trybie offline
 
@@ -49,6 +49,16 @@ Poniżej przedstawiono ważne zagadnienia dotyczące oceny reprezentatywnej w tr
 Personalizowanie może korzystać z procesu oceny w trybie offline w celu automatycznego odnajdywania bardziej optymalnych zasad uczenia.
 
 Po przeprowadzeniu oceny w trybie offline można zobaczyć porównywalną efektywność personalizowania przy użyciu nowych zasad w porównaniu z bieżącymi zasadami online. Następnie można zastosować te zasady uczenia, aby działały natychmiast w personalizacji, pobierając je i przekazując w panelu modele i zasady. Można go również pobrać do przyszłej analizy lub użycia.
+
+Bieżące zasady uwzględnione w ocenie:
+
+| Ustawienia uczenia | Przeznaczenie|
+|--|--|
+|**Zasady online**| Bieżące zasady uczenia używane w programie Personalizacja |
+|**Punkcie**|Wartość domyślna aplikacji (zgodnie z pierwszą akcją wysłaną w wywołaniach rangi)|
+|**Zasady losowe**|Zachowanie rangi urojonej, które zawsze zwraca losowo wybór akcji z dostarczonych.|
+|**Zasady niestandardowe**|Dodatkowe zasady uczenia zostały przekazane podczas uruchamiania oceny.|
+|**Zoptymalizowane zasady**|Jeśli Ocena została rozpoczęta z opcją odnalezienia zoptymalizowanych zasad, zostanie również porównana i będzie można ją pobrać lub wprowadzić zasady uczenia online, zastępując bieżące.|
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Zrozumienie znaczenia wyników oceny w trybie offline
 
@@ -92,7 +102,7 @@ Zalecamy zapoznanie się z ocenami funkcji i pytaniami:
 
 * Jakie inne, dodatkowe funkcje mogą być zawarte w aplikacji lub systemie wraz z bardziej wydajnymi liniami?
 * Jakie funkcje można usunąć ze względu na niską efektywność? Funkcje niskiej efektywności zwiększają _szum_ do uczenia maszynowego.
-* Czy istnieją jakieś funkcje, które są przypadkowo uwzględniane? Przykładami są: dane osobowe, zduplikowane identyfikatory itp.
+* Czy istnieją jakieś funkcje, które są przypadkowo uwzględniane? Przykłady są następujące: informacje identyfikowane przez użytkownika, zduplikowane identyfikatory itp.
 * Czy istnieją jakieś niepożądane funkcje, które nie powinny być używane do personalizacji ze względu na kwestie prawne lub osoby odpowiedzialne za użycie? Czy istnieją funkcje, które mogą być serwerem proxy (czyli ściśle dublowane lub skorelowane z) niepożądanymi funkcjami?
 
 

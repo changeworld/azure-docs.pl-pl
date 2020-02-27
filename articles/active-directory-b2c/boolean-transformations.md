@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f0d6d74271cc4ff0be4a653b389cc70ad5c56ef9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 130fca4d5894316e7684270ff9d6361e9d9f9dd3
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983082"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620839"
 ---
 # <a name="boolean-claims-transformations"></a>Przekształcenia logiczne oświadczeń
 
@@ -122,7 +122,7 @@ Sprawdza, czy wartość logiczna oświadczeń jest równa `true` lub `false`, i 
 | ---- | ------------------------ | ---------- | ----- |
 | Oświadczenie inputclaim | Oświadczenie inputclaim | wartość logiczna | Wartość oświadczenia, która ma zostać potwierdzona. |
 | InputParameter |valueToCompareTo | wartość logiczna | Wartość do porównania (true lub false). |
-| Oświadczenie outputclaim | Oświadczenie inputclaim | wartość logiczna | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
+| Oświadczenie outputclaim | compareResult | wartość logiczna | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
 
 
 Następująca transformacja oświadczeń pokazuje, jak sprawdzić wartość elementu ClaimType Boolean z wartością `true`. Jeśli wartość `IsAgeOver21Years` ClaimType jest równa `true`, transformacja oświadczeń zwraca `true`, w przeciwnym razie `false`.

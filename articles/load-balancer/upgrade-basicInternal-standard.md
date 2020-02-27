@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 543227ac9c07207112177dfaccbd00723b61a314
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 8d3f4294a5c8b09a132d56cd72ccb36ce766e0dd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566402"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616719"
 ---
-# <a name="upgrade-azure-internal-load-balancer-from-basic-sku-to-standard-sku"></a>Uaktualnij wewnętrzną Load Balancer platformy Azure od podstawowej jednostki SKU do standardowej jednostki SKU
+# <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Uaktualnij usługę Azure Internal Load Balancer — nie jest wymagane połączenie wychodzące
 [Usługa Azure usługa Load Balancer w warstwie Standardowa](load-balancer-overview.md) oferuje bogaty zestaw funkcji i wysokiej dostępności za pomocą nadmiarowości stref. Aby dowiedzieć się więcej na temat Load Balancer SKU, zobacz [tabela porównania](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
 
 Uaktualnienie obejmuje dwa etapy:
@@ -28,12 +28,12 @@ W tym artykule opisano migrację konfiguracji. Dodawanie maszyn wirtualnych do p
 
 Dostępny jest skrypt Azure PowerShell, który wykonuje następujące czynności:
 
-* Tworzy standardową wewnętrzną jednostkę SKU Load Balancer w grupie zasobów i lokalizacji określonej przez użytkownika.
-* Bezproblemowo kopiuje konfiguracje wewnętrznej Load Balancer podstawowej jednostki SKU do nowo utworzonej Load Balancer wewnętrznej.
+* Tworzy standardowy wewnętrzny Load Balancer jednostki SKU w określonej lokalizacji. Należy pamiętać, że żadne [połączenie wychodzące](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) nie zostanie dostarczone przez standardową Load Balancer wewnętrzny.
+* Bezproblemowo kopiuje konfiguracje podstawowej jednostki SKU Load Balancer do nowo utworzonej usługa Load Balancer w warstwie Standardowa.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* Skrypt obsługuje tylko wewnętrzne uaktualnienie Load Balancer. W przypadku wewnętrznego uaktualnienia Load Balancer należy utworzyć standardowy Load Balancer wewnętrzny, jeśli łączność wychodząca jest niepożądana, i utworzyć standardową Load Balancer wewnętrzny i standardowe Load Balancer wewnętrzny, jeśli wymagana jest łączność wychodząca.
+* Skrypt obsługuje tylko wewnętrzne uaktualnienie Load Balancer, w którym nie jest wymagane połączenie wychodzące. Jeśli wymagane jest [połączenie wychodzące](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) dla niektórych maszyn wirtualnych, Skorzystaj z tej [strony](upgrade-InternalBasic-To-PublicStandard.md) , aby uzyskać instrukcje. 
 * Usługa Load Balancer w warstwie Standardowa ma nowe adresy publiczne. Nie można przenieść adresów IP skojarzonych z istniejącymi podstawowymi Load Balancer bezproblemowo do usługa Load Balancer w warstwie Standardowa, ponieważ mają różne jednostki SKU.
 * Jeśli w innym regionie zostanie utworzony standardowy moduł równoważenia obciążenia, nie będzie możliwe skojarzenie maszyn wirtualnych istniejących w starym regionie z nowo utworzonymi usługa Load Balancer w warstwie Standardowa. Aby obejść to ograniczenie, należy utworzyć nową maszynę wirtualną w nowym regionie.
 * Jeśli Load Balancer nie ma żadnej konfiguracji adresu IP frontonu lub puli zaplecza, można napotkać błąd podczas uruchamiania skryptu. Upewnij się, że nie są puste.

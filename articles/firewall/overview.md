@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 2d931ed61cc3880a6158fd82f015e663ddb669c3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 5f1672b53fa9bd8c8126fefd092e1be78a844ab9
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485288"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621844"
 ---
 # <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -79,7 +79,7 @@ Jeśli Twoja organizacja używa zakresu publicznego adresu IP dla sieci prywatny
 
 ## <a name="inbound-dnat-support"></a>Obsługa technologii DNAT dla ruchu przychodzącego
 
-Ruch sieciowy przychodzący do publicznego adresu IP zapory jest przetwarzany przy użyciu technologii DNAT i filtrowany do prywatnych adresów IP w sieciach wirtualnych.
+Ruch przychodzący w sieci Internet do publicznego adresu IP zapory jest tłumaczony (translacja adresów sieciowych) i filtrowany na prywatne adresy IP w sieciach wirtualnych.
 
 ## <a name="multiple-public-ip-addresses"></a>Wiele publicznych adresów IP
 

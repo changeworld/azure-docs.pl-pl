@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bb2371fc7732e8fa6fcfea53bf2822fcf3d7d2fa
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 48d98d6fef896f9288be88824a62fa1c8179217f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963958"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621066"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatyzowanie wdrażania zasobów dla aplikacji funkcji w Azure Functions
 
@@ -28,9 +28,9 @@ Wdrożenie Azure Functions zwykle składa się z następujących zasobów:
 
 | Zasób                                                                           | Wymaganie | Informacje o składni i właściwościach                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Aplikacja funkcji                                                                     | Wymagane    | [Microsoft. Web/witryny](/azure/templates/microsoft.web/sites)                             |   |
-| Konto [usługi Azure Storage](../storage/index.yml)                                   | Wymagane    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| Składnik [Application Insights](../azure-monitor/app/app-insights-overview.md) | Opcjonalne    | [Microsoft. Insights/składniki](/azure/templates/microsoft.insights/components)         |   |
+| Aplikacja funkcji                                                                     | Wymagany    | [Microsoft. Web/witryny](/azure/templates/microsoft.web/sites)                             |   |
+| Konto [usługi Azure Storage](../storage/index.yml)                                   | Wymagany    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| Składnik [Application Insights](../azure-monitor/app/app-insights-overview.md) | Optional (Opcjonalność)    | [Microsoft. Insights/składniki](/azure/templates/microsoft.insights/components)         |   |
 | [Plan hostingu](./functions-scale.md)                                             | Opcjonalne<sup>1</sup>    | [Microsoft. Web/dopuszczalna](/azure/templates/microsoft.web/serverfarms)                 |   |
 
 <sup>1</sup> Plan hostingu jest wymagany tylko wtedy, gdy użytkownik zdecyduje się na uruchomienie aplikacji funkcji w [planie Premium](./functions-premium-plan.md) (w wersji zapoznawczej) lub w [planie App Service](../app-service/overview-hosting-plans.md).
@@ -212,7 +212,7 @@ W przypadku jawnego definiowania planu zużycia należy ustawić właściwość 
 
 ### <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>System Windows
 
 W systemie Windows plan zużycia wymaga dwóch dodatkowych ustawień w konfiguracji lokacji: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` i `WEBSITE_CONTENTSHARE`. Te właściwości konfigurują konto magazynu i ścieżkę pliku, w którym są przechowywane kod i konfiguracja aplikacji funkcji.
 
@@ -309,17 +309,25 @@ Plan Premium oferuje takie same skalowanie jak w przypadku planu zużycia, ale o
 
 ### <a name="create-a-premium-plan"></a>Tworzenie planu Premium
 
-Plan Premium jest specjalnym typem zasobu "farma serwerów". Można go określić przy użyciu `EP1`, `EP2`lub `EP3` wartości właściwości `sku`.
+Plan Premium jest specjalnym typem zasobu "farma serwerów". Można go określić przy użyciu `EP1`, `EP2`lub `EP3` wartości właściwości `Name` w [obiekcie `sku` Description](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object).
 
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
-    "name": "[variables('hostingPlanName')]",
+    "apiVersion": "2018-02-01",
+    "name": "[parameters('hostingPlanName')]",
     "location": "[resourceGroup().location]",
     "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "EP1"
+        "name": "[parameters('hostingPlanName')]",
+        "workerSize": "[parameters('workerSize')]",
+        "workerSizeId": "[parameters('workerSizeId')]",
+        "numberOfWorkers": "[parameters('numberOfWorkers')]",
+        "hostingEnvironment": "[parameters('hostingEnvironment')]",
+        "maximumElasticWorkerCount": "20"
+    },
+    "sku": {
+        "Tier": "ElasticPremium",
+        "Name": "EP1"
     }
 }
 ```
@@ -639,7 +647,7 @@ Aplikacja funkcji ma wiele zasobów podrzędnych, których można użyć we wdro
 
 Aby wdrożyć szablon, można użyć dowolnego z poniższych sposobów:
 
-* [Program PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Interfejs wiersza polecenia platformy Azure](../azure-resource-manager/templates/deploy-cli.md)
 * [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 * [Interfejs API REST](../azure-resource-manager/templates/deploy-rest.md)
