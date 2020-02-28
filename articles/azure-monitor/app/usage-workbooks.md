@@ -1,23 +1,21 @@
 ---
 title: Twórz interaktywne raporty przy użyciu skoroszytów Azure Monitor | Dokumentacja firmy Microsoft
 description: Uprość złożone raportowanie za pomocą wstępnie skompilowanych i niestandardowych skoroszytów z parametrami
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8e14b065132e648f9c800655cfe69e5a2ec80c41
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15543f7f761c707e8eff8e0cc0a0e4532475ddf8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432270"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671005"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Tworzenie interaktywnych raportów przy użyciu skoroszytów Azure Monitor
 
-Skoroszyty łączą tekst, [kwerendy analityczne](https://docs.microsoft.com/azure/application-insights/app-insights-analytics), metryki platformy Azure i parametry w rozbudowanych raportach interaktywnych. Skoroszyty mogą być edytowane przez innych członków zespołu, którzy mają dostęp do tych samych zasobów platformy Azure.
+Skoroszyty łączą tekst, [kwerendy analityczne](https://docs.microsoft.com/azure/application-insights/app-insights-analytics), metryki platformy Azure i parametry w rozbudowanych raportach interaktywnych. Skoroszyty są edytowane przez innych członków zespołu, którzy mają dostęp do tych samych zasobów platformy Azure.
 
 Skoroszyty są przydatne w scenariuszach takich jak:
 

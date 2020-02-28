@@ -1,18 +1,17 @@
 ---
 title: Funkcja monitora wydajności w Network Performance Monitor rozwiązanie na platformie Azure Log Analytics | Microsoft Docs
 description: Funkcja monitora wydajności w Network Performance Monitor ułatwia monitorowanie łączności sieciowej w różnych punktach w sieci. Możesz monitorować wdrożenia w chmurze i lokalne lokalizacje, wiele centrów danych i oddziałów oraz wielowarstwowe aplikacje lub mikrousługi.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 745ec6ee8e69ad911e42b6360b3408d79d660718
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dfbc4ea8e168ced95a4239dd100cf7277e0adf7b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898832"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654532"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Rozwiązanie Network Performance Monitor: monitorowanie wydajności
 

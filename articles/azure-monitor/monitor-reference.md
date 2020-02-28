@@ -1,18 +1,17 @@
 ---
 title: Co jest monitorowane przez Azure Monitor
 description: Informacje o wszystkich usługach i innych zasobach monitorowanych przez Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 055ba8b5050aef639bbe6527292a18c8b405065a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620253"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669118"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co jest monitorowane przez Azure Monitor?
 W tym artykule opisano różne aplikacje i usługi monitorowane przez program Azure Monitor. 

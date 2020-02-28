@@ -1,15 +1,14 @@
 ---
 title: Pobieranie zdarzeń usługi Azure Resource Health przy użyciu interfejsu API REST | Microsoft Docs
 description: Użyj interfejsów API REST platformy Azure, aby pobrać zdarzenia dotyczące kondycji zasobów platformy Azure.
-ms.custom: REST
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/06/2017
-ms.openlocfilehash: 353bd65b0466902e450e38677a350a177a1d602c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6964a6c4e85c38d532b12e730a02c4df73be76e5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451391"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654005"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>Uzyskiwanie Resource Health przy użyciu interfejsu API REST 
 
@@ -25,18 +24,18 @@ Użyj następującego `GET` żądania HTTP, aby wyświetlić listę zdarzeń dot
 https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&%24filter=eventTimestamp%20ge%20'2018-05-16T04%3A36%3A37.6407898Z'%20and%20eventTimestamp%20le%20'2018-06-20T04%3A36%3A37.6407898Z'
 ```
 
-### <a name="request-headers"></a>Nagłówki żądań
+### <a name="request-headers"></a>Nagłówki żądania
 
 Wymagane są następujące nagłówki: 
 
 |Nagłówek żądania|Opis|  
 |--------------------|-----------------|  
 |*Content-Type:*|Wymagany. Ustaw wartość `application/json`.|  
-|*Authorization:*|Wymagany. Ustaw prawidłowy [token dostępu](/rest/api/azure/#authorization-code-grant-interactive-clients)`Bearer`. |  
+|*Authorization:*|Wymagany. Ustaw na prawidłowy `Bearer`token dostępu[ ](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>Parametry identyfikatora URI
 
-| Nazwa | Opis |
+| Name (Nazwa) | Opis |
 | :--- | :---------- |
 | subscriptionId | Identyfikator subskrypcji, który identyfikuje subskrypcję platformy Azure. Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | api-version | Wersja interfejsu API do użycia dla żądania.<br /><br /> W tym dokumencie opisano `2015-04-01`API-Version, zawarte w powyższym adresie URL.  |

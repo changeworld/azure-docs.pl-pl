@@ -13,29 +13,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 0338663046c21adad358e8fddec12a3cc8151c79
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 4df6396d156c3fe1b75e3cac3d3f4aad7f23553a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759333"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660669"
 ---
-# <a name="message-sessions-first-in-first-out-fifo"></a>Sesje komunikatów: pierwszy w, pierwszy na zewnątrz (FIFO) 
+# <a name="message-sessions"></a>Sesje komunikatów
+Sesje Microsoft Azure Service Bus umożliwiają wspólną i uporządkowaną obsługę niepowiązanych sekwencji powiązanych komunikatów. Sesji można używać w wzorcach First In, First Out (FIFO) i Request-Response. W tym artykule pokazano, jak za pomocą sesji zaimplementować te wzorce przy użyciu Service Bus. 
 
-Sesje Microsoft Azure Service Bus umożliwiają wspólną i uporządkowaną obsługę niepowiązanych sekwencji powiązanych komunikatów. Aby zrealizować gwarancję FIFO w Service Bus, użyj sesji. Service Bus nie jest zamieszczona w opisie natury relacji między komunikatami, a także nie definiuje określonego modelu do określania, gdzie przebiega lub kończąca się sekwencja komunikatów.
+## <a name="first-in-first-out-fifo-pattern"></a>Wzorzec First-In, First Out (FIFO)
+Aby zrealizować gwarancję FIFO w Service Bus, użyj sesji. Service Bus nie jest to opis charakteru relacji między komunikatami, a także nie definiuje konkretnego modelu do określenia, gdzie zostanie uruchomiona lub zakończona sekwencja komunikatów.
 
 > [!NOTE]
-> Warstwa Podstawowa Service Bus nie obsługuje sesji. W warstwach Standardowa i Premium obsługiwane są sesje. Aby uzyskać więcej informacji, zobacz [Cennik usługi Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
+> Warstwa Podstawowa Service Bus nie obsługuje sesji. W warstwach Standardowa i Premium obsługiwane są sesje. Aby zapoznać się z różnicami między tymi warstwami, zobacz [Cennik usługi Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
 
 Każdy nadawca może utworzyć sesję podczas przesyłania komunikatów do tematu lub kolejki przez ustawienie właściwości [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) na określony identyfikator zdefiniowany przez aplikację, który jest unikatowy dla sesji. Na poziomie protokołu AMQP 1,0 ta wartość jest mapowana na Właściwość *Group-ID* .
 
 W przypadku kolejek lub subskrypcji z obsługą sesji sesje są dostępne, gdy istnieje co najmniej jeden komunikat z sesją [sesji.](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) Gdy sesja już istnieje, nie ma zdefiniowanego czasu ani interfejsu API dla momentu wygaśnięcia lub znikania sesji. Teoretycznie można odebrać komunikat dla sesji dzisiaj, następnej wiadomości w czasie roku i jeśli **Identyfikator sesji** jest zgodny, sesja jest taka sama w perspektywie Service Bus.
 
-Zwykle jednak aplikacja ma jasne koncepcje, w której zestaw powiązanych komunikatów zaczyna się i kończy. Service Bus nie ustawi określonych reguł.
+Zwykle jednak aplikacja ma jasne koncepcje, w której zestaw powiązanych komunikatów zaczyna się i kończy. Service Bus nie ustawi żadnych określonych reguł.
 
 Przykładem sposobu odróżnić sekwencji transferu pliku jest ustawienie właściwości **etykieta** pierwszego komunikatu do **uruchomienia** **, w**przypadku komunikatów pośrednich i dla ostatniego komunikatu do **końca**. Względne położenie komunikatów zawartości można obliczyć jako bieżące *SequenceNumber* różnice **między komunikatami** z *SequenceNumber*.
 
-Funkcja sesji w Service Bus włącza określoną operację odbierania w postaci [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) w interfejsach API C# i Java. Aby włączyć tę funkcję, należy ustawić właściwość [requiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) w kolejce lub subskrypcji za pośrednictwem Azure Resource Manager lub ustawić flagę w portalu. Jest to wymagane przed podjęciem próby użycia powiązanych operacji interfejsu API.
+Funkcja sesji w Service Bus włącza określoną operację odbierania w postaci [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) w interfejsach API C# i Java. Aby włączyć tę funkcję, należy ustawić właściwość [requiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) w kolejce lub subskrypcji za pośrednictwem Azure Resource Manager lub ustawić flagę w portalu. Jest to wymagane przed podjęciem próby użycia pokrewnych operacji interfejsu API.
 
 W portalu Ustaw flagę przy użyciu następującego pola wyboru:
 
@@ -46,7 +48,7 @@ W portalu Ustaw flagę przy użyciu następującego pola wyboru:
 
 Interfejsy API dla sesji znajdują się na klientach w kolejkach i subskrypcjach. Istnieje model, który kontroluje czas odbierania sesji i komunikatów oraz model oparty na programie obsługi, podobny do *OnMessage*, który ukrywa złożoność zarządzania pętlą odbierania.
 
-## <a name="session-features"></a>Funkcje sesji
+### <a name="session-features"></a>Funkcje sesji
 
 Sesje umożliwiają jednoczesne usuwanie z przeplotu strumieni komunikatów podczas zachowywania i zagwarantowania uporządkowanego dostarczania.
 
@@ -58,15 +60,15 @@ Gdy obiekt [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagese
 
 Blokada jest uwalniana, gdy wywoływana jest wartość **Close** lub **CloseAsync** lub gdy blokada wygaśnie w przypadkach, w których aplikacja nie może wykonać operacji zamknięcia. Blokada sesji powinna być traktowana jak blokada wyłączna dla pliku, co oznacza, że aplikacja powinna zamykać sesję, gdy tylko nie będą potrzebne, i/lub nie oczekuje żadnych dalszych komunikatów.
 
-Gdy wiele współbieżnych odbiorników pobiera z kolejki, komunikaty należące do określonej sesji są wysyłane do określonego odbiornika, który aktualnie przechowuje blokadę dla danej sesji. W przypadku tej operacji, przechodzący strumień komunikatów znajdujący się w jednej kolejce lub subskrypcji jest usuwany z różnych odbiorników, a odbiorcy mogą również być aktywni na różnych komputerach klienckich, ponieważ zarządzanie blokadą odbywa się po stronie usługi, wewnątrz Service Bus.
+Gdy wiele współbieżnych odbiorników pobiera z kolejki, komunikaty należące do określonej sesji są wysyłane do określonego odbiornika, który aktualnie przechowuje blokadę dla danej sesji. W przypadku tej operacji, nieprzechodzący strumień komunikatów w jednej kolejce lub subskrypcji jest usuwany z różnych odbiorników, a odbiorcy mogą również być aktywni na różnych komputerach klienckich, ponieważ zarządzanie blokadą odbywa się po stronie usługi w Service Bus.
 
 Poprzednia ilustracja przedstawia trzy współbieżne odbiorniki sesji. Jedna sesja z `SessionId` = 4 nie ma aktywnego klienta będącego właścicielem, co oznacza, że żadne komunikaty nie są dostarczane z tej konkretnej sesji. Sesja działa na wiele sposobów, takich jak Kolejka podrzędna.
 
 Blokada sesji zatrzymywana przez odbiorcę sesji to parasol dla blokad komunikatów używanych przez tryb rozliczania *blokady wglądu* . Odbiornik nie może jednocześnie korzystać z dwóch komunikatów "w locie", ale komunikaty muszą być przetwarzane w kolejności. Nowy komunikat można uzyskać tylko wtedy, gdy poprzedni komunikat został ukończony lub utracony. Porzucanie komunikatu powoduje ponowne obsłużynie tego samego komunikatu z następną operacją Receive.
 
-## <a name="message-session-state"></a>Stan sesji komunikatu
+### <a name="message-session-state"></a>Stan sesji komunikatu
 
-Gdy przepływy pracy są przetwarzane w systemach w chmurze o wysokiej dostępności, obsługa przepływu pracy skojarzona z konkretną sesją musi mieć możliwość odzyskania po nieoczekiwanych awariach, a także umożliwia wznowienie częściowo ukończonej pracy w innym proces lub maszyna, z której rozpoczęto pracę.
+Gdy przepływy pracy są przetwarzane w systemach w chmurze o wysokiej dostępności, obsługa przepływu pracy skojarzona z konkretną sesją musi mieć możliwość odzyskania po nieoczekiwanych awariach i może wznowić częściowo ukończoną pracę w innym procesie lub maszynie z miejsce rozpoczęcia pracy.
 
 Funkcja stanu sesji umożliwia zdefiniowaną przez aplikację adnotację sesji wiadomości wewnątrz brokera, dzięki czemu stan zapisanego przetwarzania względem tej sesji stanie się natychmiast dostępny po uzyskaniu sesji przez nowy procesor.
 
@@ -74,21 +76,29 @@ Z perspektywy Service Bus stan sesji jest nieprzezroczystym obiektem binarnym, k
 
 Interfejsy API do zarządzania stanem sesji, [setstate](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) i [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState)można znaleźć w obiekcie [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) w interfejsach API C# i Java. Sesja, która nie ma wcześniej zestawu stanu sesji, zwraca odwołanie o **wartości null** dla elementu **GetState**. Czyszczenie poprzednio ustawionego stanu sesji odbywa się z [ustawieniem setstate (null)](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_).
 
-Należy pamiętać, że stan sesji pozostaje, dopóki nie zostanie wyczyszczony (zwracając **wartość null**), nawet jeśli wszystkie komunikaty w sesji są używane.
+Stan sesji pozostaje, dopóki nie zostanie wyczyszczony (zwracając **wartość null**), nawet jeśli wszystkie komunikaty w sesji są używane.
 
 Wszystkie istniejące sesje w kolejce lub subskrypcji można wyliczyć przy użyciu metody **SessionBrowser** w interfejsie API Java oraz z [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) na [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) i [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) w kliencie .NET.
 
 Stan sesji w kolejce lub w subskrypcji liczy się na przydział magazynu tego obiektu. Gdy aplikacja zostanie zakończona z sesją, zalecane jest, aby aplikacja mogła oczyścić stan zachowanych, aby uniknąć zewnętrznego kosztu zarządzania.
 
-## <a name="impact-of-delivery-count"></a>Wpływ liczby dostaw
+### <a name="impact-of-delivery-count"></a>Wpływ liczby dostaw
 
 Definicja liczby dostaw na komunikat w kontekście sesji różni się nieco od definicji w przypadku braku sesji. Poniżej przedstawiono tabelę podsumowującą, kiedy licznik dostarczania jest zwiększany.
 
 | Scenariusz | Czy liczba dostaw komunikatów jest zwiększana |
 |----------|---------------------------------------------|
-| Sesja została zaakceptowana, ale blokada sesji wygasa (z powodu przekroczenia limitu czasu) | Tak |
-| Sesja zostanie zaakceptowana, komunikaty w sesji nie są kończone (nawet jeśli są zablokowane), a sesja jest ZAMKNIĘTA | Nie |
+| Sesja została zaakceptowana, ale blokada sesji wygasa (z powodu przekroczenia limitu czasu) | Yes |
+| Sesja zostanie zaakceptowana, komunikaty w sesji nie są wykonywane (nawet jeśli są zablokowane), a sesja jest ZAMKNIĘTA | Nie |
 | Sesja została zaakceptowana, komunikaty są uzupełniane, a sesja jest jawnie ZAMKNIĘTA | Nie dotyczy (jest to standardowy przepływ. Komunikaty w tym miejscu są usuwane z sesji) |
+
+## <a name="request-response-pattern"></a>Wzorzec żądania-odpowiedzi
+[Wzorzec żądanie-odpowiedź](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) to dobrze ustanowiony wzorzec integracji, który umożliwia aplikacji nadawcy wysłanie żądania i pozwala odbiornikowi prawidłowo wysyłać odpowiedź z powrotem do aplikacji nadawcy. Ten wzorzec zwykle wymaga kolejki lub tematu o krótkim czasie, aby aplikacja mogła wysyłać odpowiedzi do programu. W tym scenariuszu sesje zapewniają proste rozwiązanie alternatywne z porównywalną semantyką. 
+
+Wiele aplikacji może wysyłać żądania do pojedynczej kolejki żądań z określonym parametrem nagłówka ustawionym na unikatową identyfikację aplikacji nadawcy. Aplikacja odbiornika może przetwarzać żądania przychodzące z kolejki i wysyłać odpowiedzi w kolejce z włączoną obsługą sesji, ustawiając identyfikator sesji na unikatowy identyfikator, który nadawca przesłał na komunikat żądania. Aplikacja, która wysłała żądanie, może następnie odbierać komunikaty z określonym IDENTYFIKATORem sesji i prawidłowo przetwarzać odpowiedzi.
+
+> [!NOTE]
+> Aplikacja, która wysyła żądania początkowe, powinna znać identyfikator sesji i użyć `SessionClient.AcceptMessageSession(SessionID)`, aby zablokować sesję, na której oczekuje odpowiedzi. Dobrym pomysłem jest użycie identyfikatora GUID, który jednoznacznie identyfikuje wystąpienie aplikacji jako identyfikator sesji. Nie powinna istnieć procedura obsługi sesji ani `AcceptMessageSession(timeout)` w kolejce, aby upewnić się, że odpowiedzi są dostępne do zablokowania i przetworzenia przez określonych odbiorców.
 
 ## <a name="next-steps"></a>Następne kroki
 

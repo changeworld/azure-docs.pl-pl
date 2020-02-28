@@ -7,20 +7,21 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 83cac961eb3cd700451f16c684c64185b35e9bd3
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: a4c8b029b199915cce9a417430e67675a03d327f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616750"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659955"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Uaktualnij Load Balancer publicznej platformy Azure
 [Usługa Azure usługa Load Balancer w warstwie Standardowa](load-balancer-overview.md) oferuje bogaty zestaw funkcji i wysokiej dostępności za pomocą nadmiarowości stref. Aby dowiedzieć się więcej na temat Load Balancer SKU, zobacz [tabela porównania](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
 
-Uaktualnienie obejmuje dwa etapy:
+Uaktualnienie obejmuje trzy etapy:
 
 1. Migrowanie konfiguracji
 2. Dodawanie maszyn wirtualnych do pul zaplecza usługa Load Balancer w warstwie Standardowa
+3. Tworzenie reguły ruchu wychodzącego w module równoważenia obciążenia dla połączenia wychodzącego
 
 W tym artykule opisano migrację konfiguracji. Dodawanie maszyn wirtualnych do pul zaplecza może się różnić w zależności od konkretnego środowiska. [Dostępne są](#add-vms-to-backend-pools-of-standard-load-balancer)jednak pewne ogólne zalecenia dotyczące wysokiego poziomu.
 
@@ -82,7 +83,7 @@ Aby uruchomić skrypt:
     **Przykład**
 
    ```azurepowershell
-   ./AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Dodawanie maszyn wirtualnych do pul zaplecza usługa Load Balancer w warstwie Standardowa
@@ -108,6 +109,12 @@ Poniżej przedstawiono kilka scenariuszy dodawania maszyn wirtualnych do pul zap
 
 * **Tworzenie nowych maszyn wirtualnych do dodania do pul zaplecza dla nowo utworzonej Load Balancer publicznej**.
     * Więcej instrukcji dotyczących tworzenia maszyn wirtualnych i kojarzenia ich z usługa Load Balancer w warstwie Standardowa można znaleźć [tutaj](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines).
+
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>Tworzenie reguły ruchu wychodzącego dla połączenia wychodzącego
+
+Postępuj zgodnie z [instrukcjami](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration) , aby utworzyć regułę wychodzącą, aby móc
+* Zdefiniuj wychodzące NAT od podstaw.
+* Skalowanie i dostrajanie zachowania istniejącego wychodzącego translatora adresów sieciowych.
 
 ## <a name="common-questions"></a>Często zadawane pytania
 

@@ -1,23 +1,22 @@
 ---
 title: Azure Monitor szczegółowych informacji o grupie zasobów | Microsoft Docs
 description: Zapoznaj się z kondycją i wydajnością rozproszonych aplikacji i usług na poziomie grupy zasobów przy użyciu Azure Monitor
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: fba94a5e723bfbc2719b3b4cf5cd130eda382276
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 6d97e40bf2bf2298fb53609621db8ff2c6f1038f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553987"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663542"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Monitorowanie grup zasobów przy użyciu Azure Monitor (wersja zapoznawcza)
 
-Nowoczesne aplikacje są często skomplikowane i wysoce dystrybuowane z wieloma dyskretnymi częściami, które współpracują ze sobą w celu świadczenia usługi. W celu rozpoznania tej złożoności Azure Monitor zapewnia monitorowanie szczegółowych informacji o grupach zasobów. Dzięki temu można łatwo Klasyfikacja i zdiagnozować problemy napotykane przez poszczególne zasoby, jednocześnie zapewniając w ten sposób kondycję i wydajność grupy zasobów &mdash;and aplikacji &mdash;as całości.
+Nowoczesne aplikacje są często skomplikowane i wysoce dystrybuowane z wieloma dyskretnymi częściami, które współpracują ze sobą w celu świadczenia usługi. W celu rozpoznania tej złożoności Azure Monitor zapewnia monitorowanie szczegółowych informacji o grupach zasobów. Dzięki temu można łatwo Klasyfikacja i zdiagnozować wszelkie problemy napotykane przez poszczególne zasoby, jednocześnie udostępniając kontekst w zakresie kondycji i wydajności grupy zasobów&mdash;a aplikacja&mdash;jako całość.
 
 ## <a name="access-insights-for-resource-groups"></a>Dostęp do szczegółowych informacji dla grup zasobów
 

@@ -1,18 +1,14 @@
 ---
 title: Korzystanie z wyszukiwania w usłudze Azure Application Insights | Microsoft Docs
 description: Wyszukiwanie i filtrowanie nieprzetworzonej telemetrii wysyłanej przez aplikację sieci Web.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/30/2019
-ms.openlocfilehash: 77cd0a8d0c1a93e7dc1db931e987a172d31978ef
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678055"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669679"
 ---
 # <a name="using-search-in-application-insights"></a>Korzystanie z wyszukiwania w Application Insights
 
@@ -26,7 +22,7 @@ Wyszukiwanie jest funkcją [Application Insights](../../azure-monitor/app/app-in
 
 Możesz otworzyć wyszukiwanie diagnostyczne na karcie Przegląd Application Insights aplikacji (znajdującej się na górnym pasku) lub w obszarze Zbadaj po lewej stronie.
 
-![Karta wyszukiwanie](./media/diagnostic-search/view-custom-events.png)
+![Karta Wyszukiwanie](./media/diagnostic-search/view-custom-events.png)
 
 Przejdź do menu rozwijanego typy zdarzeń, aby wyświetlić listę elementów telemetrii — żądania serwera, wyświetlenia stron, zdarzenia niestandardowe, które zostały zakodowane i tak dalej. W górnej części listy wyników jest Wykres podsumowujący przedstawiający liczbę zdarzeń w czasie.
 
@@ -60,12 +56,12 @@ Otwórz menu rozwijane typy zdarzeń i wybierz typy zdarzeń, które chcesz wyś
 
 Typy zdarzeń są następujące:
 
-* **Śledzenie**  - [dzienników diagnostycznych](../../azure-monitor/app/asp-net-trace-logs.md) , w tym wywołań TrackTrace, Log4Net, nLOG i system. Diagnostics. Trace.
+* **Śledzenie** - [dzienników diagnostycznych](../../azure-monitor/app/asp-net-trace-logs.md) , w tym wywołań TrackTrace, Log4Net, nLOG i system. Diagnostics. Trace.
 * Żądania **żądania** — http odbierane przez aplikację serwera, w tym strony, skrypty, obrazy, pliki stylów i dane. Te zdarzenia są używane do tworzenia wykresów przeglądów żądań i odpowiedzi.
-* **Widok strony**  -  dane[telemetryczne wysyłane przez klienta sieci Web](../../azure-monitor/app/javascript.md), używane do tworzenia raportów widoku strony.
+* **Widok strony** - dane [telemetryczne wysyłane przez klienta sieci Web](../../azure-monitor/app/javascript.md), używane do tworzenia raportów widoku strony.
 * **Zdarzenie niestandardowe** — w przypadku wstawienia wywołań do poleceń trackEvent () w celu [monitorowania użycia](../../azure-monitor/app/api-custom-events-metrics.md)można wyszukiwać je w tym miejscu.
 * Nieprzechwycone [wyjątki na serwerze](../../azure-monitor/app/asp-net-exceptions.md)oraz te, które są rejestrowane za pomocą funkcji trackexception ().
-* **Zależność**  - [wywołań z aplikacji serwerowej](../../azure-monitor/app/asp-net-dependencies.md) do innych usług, takich jak interfejsy API REST lub bazy danych, oraz wywołań AJAX z [kodu klienta](../../azure-monitor/app/javascript.md).
+* **Zależność** - [wywołań z aplikacji serwerowej](../../azure-monitor/app/asp-net-dependencies.md) do innych usług, takich jak interfejsy API REST lub bazy danych, oraz wywołań AJAX z [kodu klienta](../../azure-monitor/app/javascript.md).
 * **Dostępność** — wyniki [testów dostępności](../../azure-monitor/app/monitor-web-app-availability.md).
 
 ## <a name="filter-on-property-values"></a>Filtrowanie wartości właściwości

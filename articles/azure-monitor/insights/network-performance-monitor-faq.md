@@ -1,18 +1,17 @@
 ---
 title: Często zadawane pytania — Network Performance Monitor rozwiązanie na platformie Azure | Microsoft Docs
 description: W tym artykule opisano często zadawane pytania dotyczące Network Performance Monitor na platformie Azure. Network Performance Monitor (NPM) ułatwia monitorowanie wydajności sieci niemal w czasie rzeczywistym oraz wykrywanie i lokalizowanie wąskich gardeł wydajności sieci.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 7ee593a8db020134e13ea853f17f097d716f7814
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538183"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654437"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Rozwiązanie Network Performance Monitor — często zadawane pytania
 
@@ -258,7 +257,7 @@ Może się tak zdarzyć, jeśli co najmniej jeden ma wartość PRAWDA:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>W funkcji Monitor łączności usług czas odpowiedzi usługi to, ale utrata połączenia sieciowego, a także opóźnienia są prawidłowe
 Taka sytuacja może wystąpić, jeśli usługa docelowa nie jest aplikacją internetową, ale test jest skonfigurowany jako test sieci Web. Edytuj konfigurację testu i wybierz typ testowy jako sieć zamiast sieci Web.
 
-## <a name="miscellaneous"></a>Różne postanowienia
+## <a name="miscellaneous"></a>Różne
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Czy istnieje wpływ na wydajność w węźle używanym do monitorowania?
 Proces NPM jest skonfigurowany do zatrzymania, jeśli wykorzystuje ponad 5% zasobów procesora CPU hosta. Ma to na celu zapewnienie, że można nadal korzystać z węzłów dla ich zwykłych obciążeń bez wpływu na wydajność.

@@ -1,18 +1,17 @@
 ---
 title: Spis rozwiązań monitorowania na platformie Azure | Microsoft Docs
 description: Monitorowanie rozwiązań w Azure Monitor to zbiór reguł logiki, wizualizacji i pozyskiwania danych, które zapewniają metryki przestawiane wokół określonego obszaru problemu.  Ten artykuł zawiera listę rozwiązań monitorowania dostępnych od firmy Microsoft i szczegółowych informacji o ich metodzie i częstotliwości zbierania danych.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 9b0140b843d7da1b892463bff7d6014a3f9584ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b88d957bce45bf518fc77584f1691de8010459a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402024"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663134"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Szczegóły dotyczące spisu i zbierania danych na potrzeby monitorowania rozwiązań na platformie Azure
 [Rozwiązania do monitorowania](solutions.md) wykorzystują usługi platformy Azure, aby zapewnić dodatkowe informacje o działaniu konkretnej aplikacji lub usługi. Monitorowanie rozwiązań zazwyczaj zbiera dane dzienników i udostępnia zapytania i widoki umożliwiające analizowanie zebranych danych. Możesz dodać rozwiązania do monitorowania do Azure Monitor dla wszystkich używanych aplikacji i usług. Są one zazwyczaj dostępne w żadnych kosztów, ale zbieranie danych, które można wywołać opłaty za użycie.
@@ -36,41 +35,41 @@ Wyjaśnienia kolumn są następujące:
 
 
 
-| **Rozwiązanie do monitorowania** | **Platforma** | **Program Microsoft Monitoring Agent** | **Agent Operations Manager** | **Magazyn platformy Azure** | **Operations Manager jest wymagane?** | **Dane agenta Operations Manager wysyłane przez grupę zarządzania** | **Częstotliwość zbierania** |
+| **Rozwiązanie do monitorowania** | **Platformach** | **Program Microsoft Monitoring Agent** | **Agent Operations Manager** | **Azure Storage** | **Operations Manager jest wymagane?** | **Dane agenta Operations Manager wysyłane przez grupę zarządzania** | **Częstotliwość zbierania** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Analiza dzienników aktywności](../platform/activity-log-collect.md) | Azure | | | | | | przy powiadomień |
-| [Ocena usługi AD](ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dni |
-| [Stan replikacji usługi AD](ad-replication-status.md) |Windows |&#8226; |&#8226; | | |&#8226; |5 dni |
-| [Kondycja agenta](solution-agenthealth.md) | System Windows i Linux | &#8226; | &#8226; | | | &#8226; | 1 minuta |
+| [Ocena usługi AD](ad-assessment.md) |System Windows |&#8226; |&#8226; | | |&#8226; |7 dni |
+| [Stan replikacji usługi AD](ad-replication-status.md) |System Windows |&#8226; |&#8226; | | |&#8226; |5 dni |
+| [Kondycja agenta](solution-agenthealth.md) | System Windows i Linux | &#8226; | &#8226; | | | &#8226; | 1 min |
 | [Alert Management](../platform/alert-management-solution.md) (Nagios) |Linux |&#8226; | | | | |przy nadejściu |
-| [Alert Management](../platform/alert-management-solution.md) (Zabbix) |Linux |&#8226; | | | | |1 minuta |
-| [Alert Management](../platform/alert-management-solution.md) (Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 minuty |
-| [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) | Azure | | | | | | nd. |
+| [Alert Management](../platform/alert-management-solution.md) (Zabbix) |Linux |&#8226; | | | | |1 min |
+| [Alert Management](../platform/alert-management-solution.md) (Operations Manager) |System Windows | |&#8226; | |&#8226; |&#8226; |3 minuty |
+| [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) | Azure | | | | | | Nie dotyczy |
 | [Application Insights Connector (przestarzałe)](../platform/app-insights-connector.md) | Azure | | | |  |  | przy powiadomień |
-| [Automation Hybrid Worker](../../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | nd. |
-| [Usługi Azure Application Gateway Analytics](azure-networking-analytics.md) | Azure |  |  |  |  |  | przy powiadomień |
-| **Rozwiązanie do monitorowania** | **Platforma** | **Program Microsoft Monitoring Agent** | **Agent Operations Manager** | **Magazyn platformy Azure** | **Operations Manager jest wymagane?** | **Dane agenta Operations Manager wysyłane przez grupę zarządzania** | **Częstotliwość zbierania** |
+| [Automation Hybrid Worker](../../automation/automation-hybrid-runbook-worker.md) | System Windows | &#8226; | &#8226; |  |  |  | Nie dotyczy |
+| [Azure Application Gateway Analytics](azure-networking-analytics.md) | Azure |  |  |  |  |  | przy powiadomień |
+| **Rozwiązanie do monitorowania** | **Platformach** | **Program Microsoft Monitoring Agent** | **Agent Operations Manager** | **Azure Storage** | **Operations Manager jest wymagane?** | **Dane agenta Operations Manager wysyłane przez grupę zarządzania** | **Częstotliwość zbierania** |
 | [Azure Network Security Group Analytics (przestarzałe)](azure-networking-analytics.md) | Azure |  |  |  |  |  | przy powiadomień |
-| [Usługi Azure SQL Analytics (wersja zapoznawcza)](azure-sql.md) | Windows | | | | | | 1 minuta |
+| [Azure SQL Analytics (wersja zapoznawcza)](azure-sql.md) | System Windows | | | | | | 1 min |
 | [Tworzenie kopii zapasowych](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | przy powiadomień |
-| [Capacity and Performance (wersja zapoznawcza)](capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |przy nadejściu |
-| [Śledzenie zmian](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[różni się](../../automation/change-tracking.md#change-tracking-data-collection-details) |
+| [Capacity and Performance (wersja zapoznawcza)](capacity-performance.md) |System Windows |&#8226; |&#8226; | | |&#8226; |przy nadejściu |
+| [Śledzenie zmian](../../automation/change-tracking.md) |System Windows |&#8226; |&#8226; | | |&#8226; |[różni się](../../automation/change-tracking.md#change-tracking-data-collection-details) |
 | [Śledzenie zmian](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[różni się](../../automation/change-tracking.md#change-tracking-data-collection-details) |
-| [Containers](containers.md) | System Windows i Linux | &#8226; | &#8226; |  |  |  | 3 minuty |
-| [Analiza usługi Key Vault](azure-key-vault.md) |Windows | | | | | |przy powiadomień |
-| [Ocena złośliwego oprogramowania](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |co godzinę |
-| [Monitor wydajności sieci](network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | Uzgadnianie TCP co 5 sekund, dane wysyłane co 3 minuty |
-| [Office 365 Analytics (wersja zapoznawcza)](solution-office-365.md) |Windows | | | | | |przy powiadomień |
-| **Rozwiązanie do monitorowania** | **Platforma** | **Program Microsoft Monitoring Agent** | **Agent Operations Manager** | **Magazyn platformy Azure** | **Operations Manager jest wymagane?** | **Dane agenta Operations Manager wysyłane przez grupę zarządzania** | **Częstotliwość zbierania** |
-| [Analiza usługi Service Fabric](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |Windows | | |&#8226; | | |5 minut |
+| [Kontenery](containers.md) | System Windows i Linux | &#8226; | &#8226; |  |  |  | 3 minuty |
+| [Analiza usługi Key Vault](azure-key-vault.md) |System Windows | | | | | |przy powiadomień |
+| [Ocena złośliwego oprogramowania](../../security-center/security-center-install-endpoint-protection.md) |System Windows |&#8226; |&#8226; | | |&#8226; |co godzinę |
+| [Monitor wydajności sieci](network-performance-monitor.md) | System Windows | &#8226; | &#8226; |  |  |  | Uzgadnianie TCP co 5 sekund, dane wysyłane co 3 minuty |
+| [Office 365 Analytics (wersja zapoznawcza)](solution-office-365.md) |System Windows | | | | | |przy powiadomień |
+| **Rozwiązanie do monitorowania** | **Platformach** | **Program Microsoft Monitoring Agent** | **Agent Operations Manager** | **Azure Storage** | **Operations Manager jest wymagane?** | **Dane agenta Operations Manager wysyłane przez grupę zarządzania** | **Częstotliwość zbierania** |
+| [Analiza usługi Service Fabric](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |System Windows | | |&#8226; | | |5 minut |
 | [Mapa usługi](service-map.md) | System Windows i Linux | &#8226; | &#8226; |  |  |  | 15 sekund |
-| [Ocena serwera SQL](sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dni |
-| [SurfaceHub](surface-hubs.md) |Windows |&#8226; | | | | |przy nadejściu |
-| [System Center Operations Manager Assessment (wersja zapoznawcza)](scom-assessment.md) | Windows | &#8226; | &#8226; |  |  | &#8226; | siedem dni |
-| [Zarządzanie aktualizacjami](../../automation/automation-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |co najmniej 2 razy dziennie i 15 minut po zainstalowaniu aktualizacji |
-| [Gotowość do uaktualnienia](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started) | Windows | &#8226; |  |  |  |  | 2 dni |
+| [Ocena serwera SQL](sql-assessment.md) |System Windows |&#8226; |&#8226; | | |&#8226; |7 dni |
+| [SurfaceHub](surface-hubs.md) |System Windows |&#8226; | | | | |przy nadejściu |
+| [System Center Operations Manager Assessment (wersja zapoznawcza)](scom-assessment.md) | System Windows | &#8226; | &#8226; |  |  | &#8226; | siedem dni |
+| [Zarządzanie aktualizacjami](../../automation/automation-update-management.md) | System Windows |&#8226; |&#8226; | | |&#8226; |co najmniej 2 razy dziennie i 15 minut po zainstalowaniu aktualizacji |
+| [Gotowość do uaktualnienia](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started) | System Windows | &#8226; |  |  |  |  | 2 dni |
 | [VMware Monitoring (przestarzałe)](vmware.md) | Linux | &#8226; |  |  |  |  | 3 minuty |
-| [Wire Data 2.0 (wersja zapoznawcza)](wire-data.md) |Windows (2012 R2/8,1 lub nowszy) |&#8226; |&#8226; | | | | 1 minuta |
+| [Wire Data 2.0 (wersja zapoznawcza)](wire-data.md) |Windows (2012 R2/8,1 lub nowszy) |&#8226; |&#8226; | | | | 1 min |
 
 
 

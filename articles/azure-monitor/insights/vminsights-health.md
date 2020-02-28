@@ -1,18 +1,17 @@
 ---
 title: Poznaj kondycję maszyn wirtualnych platformy Azure | Microsoft Docs
 description: W tym artykule opisano, jak zrozumieć kondycję maszyn wirtualnych i podstawowych systemów operacyjnych za pomocą Azure Monitor dla maszyn wirtualnych.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: e01223783130ea6b276db26bab709e2b51a8f76d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3cecb04a4f299051860c45425f0fc4e13c3722ea
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399788"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656300"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Informacje o kondycji maszyn wirtualnych platformy Azure
 
@@ -36,44 +35,44 @@ Ta sekcja zawiera opis domyślnych kryteriów kondycji do monitorowania maszyn w
 
 | Nazwa monitora | Częstotliwość (min) | Czas trwania lookback (min) | Operator | Próg | Alert w stanie | Ważność | Kategoria obciążenia | 
 |--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
-| Dysk logiczny w trybie online | 5 | 15 | <> | 1 (prawda) | Krytyczna | Sev1 | Linux | 
-| Wolne miejsce na dysku logicznym | 5 | 15 | < | 200 MB (ostrzeżenie)<br> 100 MB (krytyczna) | Ostrzeżenie | Sev1<br> Ważność2 | Linux | 
-| Wolne węzły I na dysku logicznym (%) | 5 | 15 | < | 5% | Krytyczna | Sev1 | Linux | 
-| Wolne miejsce na dysku logicznym (%) | 5 | 15 | < | 5% | Krytyczna | Sev1 | Linux | 
-| Stan karty sieciowej | 5 | 15 | <> | 1 (prawda) | Ostrzeżenie | Ważność2 | Linux | 
-| Dostępna pamięć (MB) w systemie operacyjnym | 5 | 10 | < | 2,5 MB | Krytyczna | Sev1 | Linux | 
-| Średni czas dysku w s/odczyt | 5 | 25 | > | 0,05 s | Krytyczna | Sev1 | Linux | 
-| Średni czas dysku w s/transfer | 5 | 25 | > | 0,05 s | Krytyczna | Sev1 | Linux | 
-| Średni czas dysku w s/zapis | 5 | 25 | > | 0,05 s | Krytyczna | Sev1 | Linux | 
-| Stan dysku | 5 | 25 | <> | 1 (prawda) | Krytyczna | Sev1 | Linux | 
-| Łączny czas procesora w systemie operacyjnym (%) | 5 | 10 | >= | 95% | Krytyczna | Sev1 | Linux | 
-| Procent łącznego użycia procesora CPU | 5 | 10 | >= | 95% | Krytyczna | Sev1 | Windows | 
-| Błąd lub uszkodzenie systemu plików | 60 | 60 | <> | 4 | Krytyczna | Sev1 | Windows | 
-| Średnia liczba sekund dysku logicznego na odczyt | 1 | 15 | > | 0,04 s | Ostrzeżenie | Ważność2 | Windows | 
-| Średnia liczba sekund dysku logicznego na transfer | 1 | 15 | > | 0,04 s | Ostrzeżenie | Ważność2 | Windows | 
-| Średni czas dysku logicznego (w sekundach) na zapis (dysk logiczny) | 1 | 15 | > | 0,04 s | Ostrzeżenie | Ważność2 | Windows | 
-| Bieżąca długość kolejki dysku (dysk logiczny) | 5 | 60 | >= | 32 | Ostrzeżenie | Ważność2 | Windows | 
-| Wolne miejsce na dysku logicznym (MB) | 15 | 60 | > | Ostrzeżenie 500 MB<br> krytyczne 300 MB | Krytyczna | Sev1<br> Ważność2 | Windows | 
-| Wolne miejsce na dysku logicznym (%) | 15 | 60 | > | 10% ostrzeżenia<br> 5% krytyczne | Krytyczna | Sev1<br> Ważność2 | Windows |
-| Procent czasu bezczynności dysku logicznego | 15 | 360 | <= | 20% | Ostrzeżenie | Ważność2 | Windows | 
-| Procent wykorzystania przepustowości | 5 | 60 | >= | 60% | Ostrzeżenie | Ważność2 | Windows | 
-| Procent całkowitej liczby użytych przepustowości | 5 | 60 | >= | 75% | Ostrzeżenie | Ważność2 | Windows | 
-| Procent użycia przepustowości | 5 | 60 | >= | 60% | Ostrzeżenie | Ważność2 | Windows | 
-| Service Health klienta DHCP | 5 | 12 | <> | 4 (uruchomione) | Krytyczna | Sev1 | Windows | 
-| Service Health klienta DNS | 5 | 12 | <> | 4 (uruchomione) | Krytyczna | Sev1 | Windows | 
-| Service Health dziennika zdarzeń systemu Windows | 5 | 12 | <> | 4 (uruchomione) | Krytyczna | Sev1 | Windows | 
-| Service Health zapory systemu Windows | 5 | 12 | <> | 4 (uruchomione) | Krytyczna | Sev1 | Windows | 
-| Service Health RPC | 5 | 12 | <> | 4 (uruchomione) | Krytyczna | Sev1 | Windows | 
-| Service Health serwera | 5 | 12 | <> | 4 (uruchomione) | Krytyczna | Sev1 | Windows | 
-| Windows Remote Management Service Health | 5 | 12 | <> | 4 (uruchomione) | Krytyczna | Sev1 | Windows | 
-| Dostępna pamięć w megabajtach | 5 | 10 | < | 100 MB | Krytyczna | Sev1 | Windows | 
-| Wolne wpisy tabeli stron systemu | 5 | 10 | <= | 5000 | Krytyczna | Sev1 | Windows | 
-| Liczba stron pamięci na sekundę | 5 | 10 | >= | 5000/s | Ostrzeżenie | Sev1 | Windows | 
-| Procent zadeklarowanej pamięci w użyciu | 5 | 10 | > | 80% | Krytyczna | Sev1 | Windows | 
-| Średni czas transferu na sekundę dysku | 1 | 15 | > | 0,04 s | Ostrzeżenie | Ważność2 | Windows | 
-| Średni czas dysku na zapis | 1 | 15 | > | 0,04 s | Ostrzeżenie | Ważność2 | Windows | 
-| Bieżąca długość kolejki dysku | 5 | 60 | >= | 32 | Ostrzeżenie | Ważność2 | Windows | 
-| Procent czasu bezczynności dysku | 5 | 60 | >= | 20% | Ostrzeżenie | Ważność2 | Windows | 
+| Dysk logiczny w trybie online | 5 | 15 | <> | 1 (prawda) | Krytyczny | Sev1 | Linux | 
+| Wolne miejsce na dysku logicznym | 5 | 15 | < | 200 MB (ostrzeżenie)<br> 100 MB (krytyczna) | Ostrzeżenie | Sev1<br> Sev2 | Linux | 
+| Wolne węzły I na dysku logicznym (%) | 5 | 15 | < | 5% | Krytyczny | Sev1 | Linux | 
+| Wolne miejsce na dysku logicznym (%) | 5 | 15 | < | 5% | Krytyczny | Sev1 | Linux | 
+| Stan karty sieciowej | 5 | 15 | <> | 1 (prawda) | Ostrzeżenie | Sev2 | Linux | 
+| Dostępna pamięć (MB) w systemie operacyjnym | 5 | 10 | < | 2,5 MB | Krytyczny | Sev1 | Linux | 
+| Średni czas dysku w s/odczyt | 5 | 25 | > | 0,05 s | Krytyczny | Sev1 | Linux | 
+| Średni czas dysku w s/transfer | 5 | 25 | > | 0,05 s | Krytyczny | Sev1 | Linux | 
+| Średni czas dysku w s/zapis | 5 | 25 | > | 0,05 s | Krytyczny | Sev1 | Linux | 
+| Stan dysku | 5 | 25 | <> | 1 (prawda) | Krytyczny | Sev1 | Linux | 
+| Łączny czas procesora w systemie operacyjnym (%) | 5 | 10 | >= | 95% | Krytyczny | Sev1 | Linux | 
+| Procent łącznego użycia procesora CPU | 5 | 10 | >= | 95% | Krytyczny | Sev1 | System Windows | 
+| Błąd lub uszkodzenie systemu plików | 60 | 60 | <> | 4 | Krytyczny | Sev1 | System Windows | 
+| Średnia liczba sekund dysku logicznego na odczyt | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | System Windows | 
+| Średnia liczba sekund dysku logicznego na transfer | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | System Windows | 
+| Średni czas dysku logicznego (w sekundach) na zapis (dysk logiczny) | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | System Windows | 
+| Bieżąca długość kolejki dysku (dysk logiczny) | 5 | 60 | >= | 32 | Ostrzeżenie | Sev2 | System Windows | 
+| Wolne miejsce na dysku logicznym (MB) | 15 | 60 | > | Ostrzeżenie 500 MB<br> krytyczne 300 MB | Krytyczny | Sev1<br> Sev2 | System Windows | 
+| Wolne miejsce na dysku logicznym (%) | 15 | 60 | > | 10% ostrzeżenia<br> 5% krytyczne | Krytyczny | Sev1<br> Sev2 | System Windows |
+| Procent czasu bezczynności dysku logicznego | 15 | 360 | <= | 20C | Ostrzeżenie | Sev2 | System Windows | 
+| Procent wykorzystania przepustowości | 5 | 60 | >= | 60% | Ostrzeżenie | Sev2 | System Windows | 
+| Procent całkowitej liczby użytych przepustowości | 5 | 60 | >= | 75% | Ostrzeżenie | Sev2 | System Windows | 
+| Procent użycia przepustowości | 5 | 60 | >= | 60% | Ostrzeżenie | Sev2 | System Windows | 
+| Service Health klienta DHCP | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | System Windows | 
+| Service Health klienta DNS | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | System Windows | 
+| Service Health dziennika zdarzeń systemu Windows | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | System Windows | 
+| Service Health zapory systemu Windows | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | System Windows | 
+| Service Health RPC | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | System Windows | 
+| Service Health serwera | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | System Windows | 
+| Windows Remote Management Service Health | 5 | 12 | <> | 4 (uruchomione) | Krytyczny | Sev1 | System Windows | 
+| Dostępna pamięć w megabajtach | 5 | 10 | < | 100 MB | Krytyczny | Sev1 | System Windows | 
+| Wolne wpisy tabeli stron systemu | 5 | 10 | <= | 5000 | Krytyczny | Sev1 | System Windows | 
+| Liczba stron pamięci na sekundę | 5 | 10 | >= | 5000/s | Ostrzeżenie | Sev1 | System Windows | 
+| Procent zadeklarowanej pamięci w użyciu | 5 | 10 | > | 80% | Krytyczny | Sev1 | System Windows | 
+| Średni czas transferu na sekundę dysku | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | System Windows | 
+| Średni czas dysku na zapis | 1 | 15 | > | 0,04 s | Ostrzeżenie | Sev2 | System Windows | 
+| Bieżąca długość kolejki dysku | 5 | 60 | >= | 32 | Ostrzeżenie | Sev2 | System Windows | 
+| Procent czasu bezczynności dysku | 5 | 60 | >= | 20C | Ostrzeżenie | Sev2 | System Windows | 
 
 >[!NOTE]
 >Lookback czas trwania reprezentuje, jak często okno wyszukania sprawdza wartości metryk, na przykład w ciągu ostatnich pięciu minut.  
@@ -106,7 +105,7 @@ Stany kondycji zdefiniowane dla maszyny wirtualnej są opisane w poniższej tabe
 |Ikona |Stan kondycji |Znaczenie |
 |-----|-------------|---------------|
 | |W dobrej kondycji |Maszyna wirtualna znajduje się w określonych warunkach kondycji. Ten stan wskazuje, że nie wykryto problemów, a maszyna wirtualna działa normalnie. W przypadku nadrzędnego monitora zbiorczego kondycja jest rzutowana i odzwierciedla najlepszy przypadek lub najgorszy przypadek elementu podrzędnego.|
-| |Krytyczna |Stan nie znajduje się w określonym stanie kondycji, co oznacza, że wykryto co najmniej jeden krytyczny problem. Te problemy muszą zostać rozwiązane w celu przywrócenia normalnej funkcjonalności. W przypadku nadrzędnego monitora zbiorczego stan kondycji jest rzutowany i odzwierciedla stan najlepszego lub najgorszego przypadku podrzędnego.|
+| |Krytyczny |Stan nie znajduje się w określonym stanie kondycji, co oznacza, że wykryto co najmniej jeden krytyczny problem. Te problemy muszą zostać rozwiązane w celu przywrócenia normalnej funkcjonalności. W przypadku nadrzędnego monitora zbiorczego stan kondycji jest rzutowany i odzwierciedla stan najlepszego lub najgorszego przypadku podrzędnego.|
 | |Ostrzeżenie |Stan jest między dwoma progami dla zdefiniowanego warunku kondycji, gdzie jeden wskazuje na stan ostrzegawczy, a drugi wskazuje stan krytyczny (trzy progi stanu kondycji można skonfigurować) lub jeśli problem niekrytyczny może spowodować krytyczne problemy, jeśli nierozpoznane. W przypadku nadrzędnego monitora zbiorczego, jeśli co najmniej jeden element podrzędny jest w stanie ostrzeżenia, obiekt nadrzędny będzie odzwierciedlał stan ostrzegawczy. Jeśli jeden element podrzędny jest w stanie krytycznym i inny element podrzędny w stanie ostrzeżenia, w zestawie nadrzędnym zostanie wyświetlony stan kondycji jako krytyczny.|
 | |Nieznane |Nie można obliczyć stanu z kilku powodów. W poniższej sekcji znajdują się dodatkowe szczegółowe informacje i możliwe rozwiązania. |
 
@@ -325,7 +324,7 @@ Aby dowiedzieć się więcej na temat zarządzania alertami, zobacz [Tworzenie i
 Można zmienić stan alertu dla jednego lub wielu alertów, zaznaczając je, a następnie wybierając pozycję **Zmień stan** ze strony **wszystkie alerty** w lewym górnym rogu. Wybierz jeden z stanów w okienku **Zmień stan alertów** , Dodaj opis zmiany w polu **komentarz** , a następnie wybierz **przycisk OK** , aby zatwierdzić zmiany. Gdy informacje są weryfikowane i stosowane są zmiany, śledź postęp w obszarze **powiadomienia** w menu.
 
 ### <a name="configure-alerts"></a>Konfigurowanie alertów
-Z Azure Portal nie można zarządzać określonymi zadaniami zarządzania alertami. Te zadania muszą być wykonywane przy użyciu [interfejsu API REST Azure monitor](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). W szczególności:
+Z Azure Portal nie można zarządzać określonymi zadaniami zarządzania alertami. Te zadania muszą być wykonywane przy użyciu [interfejsu API REST Azure monitor](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Są to:
 
 - Włączanie lub wyłączanie alertu dla kryteriów kondycji
 - Konfigurowanie powiadomień dla alertów kryteriów kondycji

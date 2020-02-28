@@ -1,19 +1,17 @@
 ---
 title: Obsługiwane funkcje platformy Azure Application Insights Azure Functions
 description: Application Insights obsługiwane funkcje Azure Functions
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: reference
 author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 807dde08d6ae88054524cb9e397d36db41324482
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484574"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655654"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights Azure Functions obsługiwanych funkcji
 

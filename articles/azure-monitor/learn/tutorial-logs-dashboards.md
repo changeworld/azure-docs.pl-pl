@@ -1,19 +1,18 @@
 ---
 title: Tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Azure Log Analytics | Microsoft Docs
 description: Ten samouczek ułatwia zrozumienie, jak pulpity nawigacyjne Log Analytics mogą wizualizować wszystkie zapisane zapytania dziennika, co pozwala na wyświetlanie danych w środowisku.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
 ms.custom: mvc
-ms.openlocfilehash: d06ead285321b780490c816dc3d902dac1b6916f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 76ba79561df4a75004369d24c4c6af82de9b1cfc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365576"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661536"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Log Analytics
 
@@ -27,7 +26,7 @@ Pulpity nawigacyjne Log Analytics mogą wizualizować wszystkie zapisane zapytan
 
 Do utworzenia przykładu przedstawionego w tym samouczku potrzebna jest istniejąca maszyna wirtualna [połączona z obszarem roboczym usługi Log Analytics](quick-collect-azurevm.md).  
  
-## <a name="sign-in-to-azure-portal"></a>Zaloguj się w witrynie Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Logowanie do witryny Azure Portal
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-a-shared-dashboard"></a>Tworzenie udostępnionego pulpitu nawigacyjnego

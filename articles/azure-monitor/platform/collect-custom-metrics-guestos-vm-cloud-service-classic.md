@@ -3,17 +3,16 @@ title: Wysyłanie metryk Cloud Services klasycznych do bazy danych metryk Azure 
 description: Opisuje proces wysyłania metryk wydajności systemu operacyjnego gościa dla klasycznej Cloud Services platformy Azure do magazynu metryk Azure Monitor.
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: fb13bb7ec2de2633796aecb5216ae8b9e2574a57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3b390ffa20cf3cf79b8fb6311ad05b2978bd5d24
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971193"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655802"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Wysyłaj metryki systemu operacyjnego gościa do magazynu Azure Monitor metryk klasyczny Cloud Services 
 
@@ -45,7 +44,7 @@ Proces przedstawiony w tym artykule działa tylko w przypadku liczników wydajno
 
    ![Klucze kont magazynu](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/storage-keys.png)
 
-## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi 
+## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi 
 
 Utwórz regułę usługi w dzierżawie Azure Active Directory przy użyciu instrukcji w temacie [use Portal, aby utworzyć aplikację Azure Active Directory i nazwę główną usługi, która może uzyskiwać dostęp do zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Podczas przechodzenia przez ten proces należy pamiętać o następujących kwestiach: 
 

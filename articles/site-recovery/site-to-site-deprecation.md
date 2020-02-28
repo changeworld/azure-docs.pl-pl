@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 68d975a1b8bb8d47011bb292d3cf897956b31712
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623616"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661674"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Wycofanie odzyskiwania po awarii między lokacjami zarządzanymi przez klienta (z programem VMM) przy użyciu Azure Site Recovery
 
@@ -36,10 +36,8 @@ Program DR między lokacjami należącymi do klienta zarządzanymi przez System 
 
 Poniżej znajdują się alternatywy, które klient może wybrać, aby upewnić się, że nie ma to wpływu na strategię odzyskiwania po wycofaniu scenariusza. 
 
-- Opcja 1 (zalecana): Wybierz, aby [rozpocząć korzystanie z platformy Azure jako elementu docelowego odzyskiwania maszyn wirtualnych na hostach funkcji Hyper-V](hyper-v-azure-tutorial.md).
+- Opcja 1 (zalecana): Wybierz, aby [rozpocząć korzystanie z platformy Azure jako elementu docelowego odzyskiwania po](hyper-v-vmm-azure-tutorial.md)awarii.
 
-    > [!IMPORTANT]
-    > Należy pamiętać, że środowisko lokalne może nadal mieć SCVMMM, ale skonfigurujesz funkcję ASR z odwołaniami tylko do hostów funkcji Hyper-V.
 
 - Opcja 2: Wybierz, aby kontynuować replikację między lokacjami przy użyciu podstawowego [rozwiązania funkcji Hyper-V Replica](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica), ale nie będziesz w stanie zarządzać konfiguracjami Dr przy użyciu Azure Site Recovery w Azure Portal. 
 
@@ -50,15 +48,11 @@ W przypadku wybrania opcji 1 wykonaj następujące czynności:
 
 1. [Wyłącz ochronę wszystkich maszyn wirtualnych skojarzonych z maszyną wirtualną](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario). Użyj opcji **Wyłącz replikację i Usuń** lub Uruchom skrypty wymienione, aby upewnić się, że ustawienia replikacji są czyszczone. 
 
-2. [Wyrejestruj wszystkie serwery programu VMM](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server)
+2. [Wyrejestruj wszystkie serwery programu VMM](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server) z konfiguracji replikacji między lokacjami.
 
 3. [Przygotuj zasoby platformy Azure](tutorial-prepare-azure-for-hyperv.md) , aby umożliwić replikację maszyn wirtualnych.
 4. [Przygotowywanie lokalnych serwerów funkcji Hyper-V](hyper-v-prepare-on-premises-tutorial.md)
-
-> [!IMPORTANT]
-> Należy pamiętać, że nie trzeba wykonywać kroków w obszarze przygotowywanie programu VMM.
-
-5. [Konfigurowanie replikacji dla maszyn wirtualnych](hyper-v-azure-tutorial.md)
+5. [Konfigurowanie replikacji dla maszyn wirtualnych w chmurze programu VMM](hyper-v-vmm-azure-tutorial.md)
 6. Opcjonalne, ale zalecane: [Uruchamianie](tutorial-dr-drill-azure.md) testowania odzyskiwania po awarii
 
 W przypadku wybrania opcji 2 z funkcji Hyper-V Replica wykonaj następujące czynności:

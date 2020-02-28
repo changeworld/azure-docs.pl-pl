@@ -1,19 +1,18 @@
 ---
 title: Tworzenie niestandardowych pulpitów nawigacyjnych w usłudze Azure Application Insights | Microsoft Docs
 description: Samouczek dotyczący tworzenia niestandardowych pulpitów nawigacyjnych wskaźników KPI przy użyciu usługi Azure Application Insights.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 47d8eaff5f154e198c277ec2b63a2d09e66f7180
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: caf8b1899cad95ade6297e78e8f2cf35939ef189
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900505"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661638"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Tworzenie niestandardowych pulpitów nawigacyjnych wskaźników KPI przy użyciu usługi Azure Application Insights
 
@@ -34,7 +33,7 @@ W celu ukończenia tego samouczka:
 
 - Wdróż aplikację .NET na platformie Azure i [włącz zestaw Application Insights SDK](../../azure-monitor/app/asp-net.md).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-new-dashboard"></a>Tworzenie nowego pulpitu nawigacyjnego
@@ -102,7 +101,7 @@ Ponieważ dzienniki usługi Azure Application Insights (analiza) to osobna usłu
     ```
 
 4. Kliknij pozycję **Uruchom**, aby zweryfikować wyniki zapytania.
-5. Kliknij ikonę pinezki ![Ikona przypinania](media/tutorial-app-dashboards/pushpin.png) i wybierz nazwę pulpitu nawigacyjnego. Ta opcja umożliwia wybranie pulpitu nawigacyjnego w przeciwieństwie do poprzednich kroków, w których był używany ostatni pulpit nawigacyjny, ponieważ konsola dzienniki (analiza) jest oddzielną usługą i musi wybrać wszystkie dostępne udostępnione pulpity nawigacyjne.
+5. Kliknij ikonę pinezki ![ikona przypinania](media/tutorial-app-dashboards/pushpin.png) i wybierz nazwę pulpitu nawigacyjnego. Ta opcja umożliwia wybranie pulpitu nawigacyjnego w przeciwieństwie do poprzednich kroków, w których był używany ostatni pulpit nawigacyjny, ponieważ konsola dzienniki (analiza) jest oddzielną usługą i musi wybrać wszystkie dostępne udostępnione pulpity nawigacyjne.
 
 5. Zanim wrócisz do pulpitu nawigacyjnego, Dodaj kolejne zapytanie, ale ten czas będzie renderowany jako wykres, aby zobaczyć różne sposoby wizualizacji zapytania dzienników na pulpicie nawigacyjnym. Rozpocznij od następującego zapytania, które podsumowuje 10 operacji z największą liczbą wyjątków.
 
@@ -117,7 +116,7 @@ Ponieważ dzienniki usługi Azure Application Insights (analiza) to osobna usłu
 
     ![Wykres dzienników (analiza)](media/tutorial-app-dashboards/11querychart.png)
 
-6. Kliknij ikonę pinezki ![Ikona przypinania](media/tutorial-app-dashboards/pushpin.png) w prawym górnym rogu, aby przypiąć wykres do pulpitu nawigacyjnego, a następnie wybierz link, aby powrócić do pulpitu nawigacyjnego.
+6. Kliknij ikonę pinezki ![ikona przypinania](media/tutorial-app-dashboards/pushpin.png) w prawym górnym rogu, aby przypiąć wykres do pulpitu nawigacyjnego, a następnie wybierz link, aby powrócić do pulpitu nawigacyjnego.
 4. Wyniki zapytań w wybranym formacie zostały dodane do pulpitu nawigacyjnego.  Przeciągnij poszczególne wykresy we właściwe miejsce, a następnie kliknij pozycję **Zakończono dostosowywanie**.
 5. Wybierz ikonę ołówka ![Ikona ołówka](media/tutorial-app-dashboards/pencil.png) w każdym tytule, aby nadać im opisowy tytuł.
 

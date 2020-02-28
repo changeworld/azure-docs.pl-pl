@@ -3,17 +3,16 @@ title: Wprowadzenie do Eksploratora metryk platformy Azure
 description: Dowiedz się, jak utworzyć pierwszy wykres metryki za pomocą Eksploratora metryk platformy Azure.
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: ceaefffaf04a3ab266cde300e8c4b93a5e804796
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861084"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662285"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Wprowadzenie do usługi Azure Eksplorator metryk
 
@@ -30,9 +29,9 @@ Eksplorator metryk Azure Monitor jest składnikiem Microsoft Azure Portal, któr
 
 Aby utworzyć wykres metryki, z poziomu zasobu, grupy zasobów, subskrypcji lub Azure Monitor widoku, Otwórz kartę **metryki** i wykonaj następujące kroki:
 
-1. Za pomocą selektora zasobów wybierz zasób, dla którego chcesz wyświetlić metryki. (Zasób jest wstępnie wybrany, jeśli metryki zostały otwarte w kontekście określonego zasobu).
+1. Za pomocą selektora zasobów wybierz zasób, dla którego chcesz wyświetlić metryki. (Zasób jest wstępnie wybrany, jeśli **metryki** zostały otwarte w kontekście określonego zasobu).
 
-    > ![Wybierz zasób](./media/metrics-getting-started/resource-picker.png)
+    > ![Wybieranie zasobu](./media/metrics-getting-started/resource-picker.png)
 
 2. W przypadku niektórych zasobów należy wybrać przestrzeń nazw. Przestrzeń nazw jest tylko sposobem organizowania metryk, aby można je było łatwo znaleźć. Na przykład konta magazynu mają oddzielne przestrzenie nazw do przechowywania plików, tabel, obiektów blob i metryki kolejek. Wiele typów zasobów ma tylko jedną przestrzeń nazw.
 

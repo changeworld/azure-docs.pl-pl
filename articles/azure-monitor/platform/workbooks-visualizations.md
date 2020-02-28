@@ -4,18 +4,17 @@ description: Dowiedz się więcej na temat wszystkich składników wizualizacji 
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: f3f8f377ac8e65d375f8f78c803db5427fd31007
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394482"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658034"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Monitor wizualizacje skoroszytu
 
@@ -115,7 +114,7 @@ W poniższym przykładzie przedstawiono siatkę łączącą ikony, map cieplnych
 
 ![Zrzut ekranu przedstawiający kwerendę siatki opartą na dzienniku](./media/workbooks-visualizations/grid-query.png)
 
-## <a name="tiles"></a>Kafelki
+## <a name="tiles"></a>Okładzin
 
 Kafelki to bardzo przydatny sposób prezentowania danych podsumowujących w skoroszytach. Na poniższej ilustracji przedstawiono typowy przypadek użycia kafelków — podsumowanie poziomu aplikacji na podstawie szczegółowej siatki.
 
@@ -197,7 +196,7 @@ W poniższym przykładzie przedstawiono wizualizacje metryk (rozmiar zestawu rob
 | `Show the expander on` | Kolumna, w której ma zostać wyświetlony Ekspander drzewa. Siatka drzewa jest często ukryta, aby ukryć swoje identyfikatory i pola identyfikatorów nadrzędnych, ponieważ nie są one bardzo czytelne. Zamiast tego, Ekspander pojawia się w polu o bardziej czytelnej wartości podobnej do nazwy jednostki |
 | `Expand the top level of the tree` | Jeśli ta opcja jest zaznaczona, Siatka drzewa zostanie rozwinięta na najwyższego poziomu. Przydatne, jeśli chcesz domyślnie wyświetlić więcej informacji |
 
-## <a name="graphs"></a>Wykresy
+## <a name="graphs"></a>Diagram
 
 Skoroszyty obsługują wizualizację dowolnych wykresów opartych na danych z dzienników, aby pokazać relacje między jednostkami monitorowania.
 

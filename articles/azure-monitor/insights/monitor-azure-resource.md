@@ -1,18 +1,17 @@
 ---
 title: Monitoruj zasoby platformy Azure za pomocą Azure Monitor | Microsoft Docs
 description: Opisuje sposób zbierania i analizowania danych monitorowania z zasobów na platformie Azure przy użyciu Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: b092b037cc10671e89f18af287b52f8ad1c0060e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 01d188e0e39888297ff8d6a57129a3a17e1654fe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747311"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654923"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Monitorowanie zasobów platformy Azure za pomocą Azure Monitor
 Jeśli masz krytyczne aplikacje i procesy biznesowe polegające na zasobach platformy Azure, chcesz monitorować te zasoby pod kątem ich dostępności, wydajności i operacji. W tym artykule opisano dane monitorowania wygenerowane przez zasoby platformy Azure oraz sposób używania funkcji Azure Monitor do analizowania i generowania alertów dotyczących tych danych.
@@ -52,7 +51,7 @@ Możliwe jest Azure Monitor kosztów skojarzonych z następującymi usługami. Z
 ## <a name="monitoring-data"></a>Dane monitorowania
 Zasoby na platformie Azure generują [dzienniki](../platform/data-platform-logs.md) i [metryki](../platform/data-platform-metrics.md) pokazane na poniższym diagramie. Zapoznaj się z dokumentacją dla każdej usługi platformy Azure dla określonych danych, które generują, oraz wszelkich dodatkowych rozwiązań lub szczegółowych informacji, które zapewnia.
 
-![Przegląd](media/monitor-azure-resource/logs-metrics.png)
+![Omówienie](media/monitor-azure-resource/logs-metrics.png)
 
 
 
@@ -90,8 +89,8 @@ Postępuj zgodnie z procedurą w temacie [Tworzenie ustawień diagnostycznych, a
 ## <a name="monitoring-in-the-azure-portal"></a>Monitorowanie w Azure Portal
  Możesz uzyskać dostęp do danych monitorowania dla większości zasobów platformy Azure z menu zasobów w Azure Portal. Umożliwi to dostęp do danych pojedynczego zasobu przy użyciu standardowych narzędzi Azure Monitor. Niektóre usługi platformy Azure udostępniają różne opcje, dlatego należy odwołać się do dokumentacji tej usługi w celu uzyskania dodatkowych informacji. Użyj menu **Azure monitor** , aby przeanalizować dane ze wszystkich monitorowanych zasobów. 
 
-### <a name="overview"></a>Przegląd
-Wiele usług będzie obejmować dane monitorowania na stronie **przeglądowej** w celu szybkiego wglądu w ich działania. Zwykle jest to oparte na podzestawie metryk platformy przechowywanych w metrykach Azure Monitor. Inne opcje monitorowania są zwykle dostępne w sekcji **monitorowanie** usług. .
+### <a name="overview"></a>Omówienie
+Wiele usług będzie obejmować dane monitorowania na stronie **przeglądowej** w celu szybkiego wglądu w ich działania. Zwykle jest to oparte na podzestawie metryk platformy przechowywanych w metrykach Azure Monitor. Inne opcje monitorowania są zwykle dostępne w sekcji **monitorowanie** usług. DodajMenu.
 
 ![Strona przeglądu](media/monitor-azure-resource/overview-page.png)
 
@@ -101,7 +100,7 @@ Niektóre usługi udostępniają narzędzia wykraczające poza standardowe funkc
 
 Jeśli usługa ma Azure Monitor wgląd, możesz uzyskać do niej dostęp z poziomu **monitorowania** w menu każdego zasobu. Uzyskaj dostęp do wszystkich szczegółowych informacji i rozwiązań z menu **Azure monitor** .
 
-![Analizy](media/monitor-azure-resource/insights.png)
+![Insights](media/monitor-azure-resource/insights.png)
 
 ### <a name="metrics"></a>Metryki
 Analizuj metryki w Azure Portal przy użyciu [Eksploratora metryk](../platform/metrics-getting-started.md) , który jest dostępny z poziomu elementu menu **metryk** dla większości usług. To narzędzie umożliwia korzystanie z poszczególnych metryk lub łączenie wielu w celu identyfikowania korelacji i trendów. 

@@ -2,18 +2,18 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: f51946ea2461cd8a72cfadc8848e250e9a053758
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 22dd1fa33e6ecec29d1a79be483afbe5a16d2050
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495589"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780342"
 ---
 |Name (Nazwa) |Opis |Efekt (s) |Wersja |Element źródłowy |
-|---|---|---|---|
-|[Allowed storage account SKUs](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7433c107-6db4-4ad1-b57a-a76dce0154a1) (Dozwolone jednostki SKU konta magazynu) |Te zasady umożliwiają określenie zestawu jednostek SKU konta magazynu, które można wdrożyć w organizacji. |Odmów |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/AllowedStorageSkus_Deny.json)
+|---|---|---|---|---|
+|[Allowed storage account SKUs](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7433c107-6db4-4ad1-b57a-a76dce0154a1) (Dozwolone jednostki SKU konta magazynu) |Te zasady umożliwiają określenie zestawu jednostek SKU konta magazynu, które można wdrożyć w organizacji. |Zablokuj |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/AllowedStorageSkus_Deny.json)
 |[Inspekcja nieograniczonego dostępu sieciowego do kont magazynu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |Inspekcja nieograniczonego dostępu do sieci w ustawieniach zapory konta magazynu. Zamiast tego należy skonfigurować reguły sieciowe, tak aby tylko aplikacje z dozwolonych sieci mogły uzyskiwać dostęp do konta magazynu. Aby zezwolić na połączenia z określonych klientów internetowych lub lokalnych, można udzielić dostępu do ruchu z określonych sieci wirtualnych platformy Azure lub do publicznych zakresów adresów IP w Internecie |Inspekcja, wyłączona |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json)
 |[Wdróż zaawansowaną ochronę przed zagrożeniami na kontach magazynu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F361c2074-3595-4e5d-8cab-4f21dffc835c) |Te zasady umożliwiają zaawansowaną ochronę przed zagrożeniami na kontach magazynu. |DeployIfNotExists, wyłączone |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAdvancedThreatProtection_Deploy.json)
 |[Magazyn Geograficznie nadmiarowy powinien być włączony dla kont magazynu](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbf045164-79ba-4215-8f95-f8048dc1780b) |Ta zasada przeprowadza inspekcję wszystkich kont magazynu z magazynem geograficznie nadmiarowym, który nie jest włączony. |Inspekcja, wyłączona |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/GeoRedundant_StorageAccounts_Audit.json)

@@ -3,22 +3,21 @@ title: Samouczek — Tworzenie wykresu metryk w Azure Monitor
 description: Dowiedz się, jak utworzyć pierwszy wykres metryki za pomocą Eksploratora metryk platformy Azure.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: bwren
-ms.openlocfilehash: 7d9360840912614b6ae89d958d90de962b36506d
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: be4f026ba20ce1582f5626ec7483740831c25c1a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689953"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661468"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Samouczek: Tworzenie wykresu metryk w Azure Monitor
 Eksplorator metryk jest funkcją Azure Monitor w Azure Portal, która umożliwia tworzenie wykresów z wartości metryk, wizualnie skorelowanych trendów oraz badanie skoków i wartości w metrykach. Użyj Eksploratora metryk, aby zbadać kondycję i wykorzystanie zasobów platformy Azure lub wykresy z metryk niestandardowych. 
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Wybierz metrykę, dla której chcesz wykreślić wykres
@@ -30,7 +29,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 Do wykonania czynności w tym samouczku potrzebny jest zasób platformy Azure do monitorowania. Możesz użyć dowolnego zasobu w subskrypcji platformy Azure, który obsługuje metryki. Aby określić, czy zasób obsługuje metryki, przejdź do jego menu w Azure Portal i sprawdź, czy w sekcji **monitorowanie** menu znajduje się opcja **metryki** .
 
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="log-in-to-azure"></a>Logowanie się do platformy Azure
 Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="open-metrics-explorer-and-select-a-scope"></a>Otwórz Eksploratora metryk i wybierz zakres

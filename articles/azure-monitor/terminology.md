@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor aktualizacje terminologii | Microsoft Docs
 description: Opisuje ostatnie zmiany terminologii dotyczące usług monitorowania platformy Azure.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 01d4c8b3b803c5fce4fe24a5c96e649212fc4dca
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0c5e1096b0780d2f9e50389f772e63344935012b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894349"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657847"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor nazewnictwo i terminologia
 Wprowadzono znaczące zmiany Azure Monitor ostatnio z różnymi usługami, które są konsolidowane w celu uproszczenia monitorowania dla klientów platformy Azure. W tym artykule opisano ostatnie zmiany nazwy i terminologii w dokumentacji Azure Monitor.
@@ -48,9 +47,9 @@ Pakiet Operations Management Suite (OMS) to zbiór następujących usług zarzą
 
 - Application Insights
 - Azure Automation
-- Usługa Azure Backup
+- Azure Backup
 - Log Analytics
-- Odzyskiwanie witryn
+- Site Recovery
 
 [Dla tych usług wprowadzono nowe ceny](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/), a pakiet OMS nie jest już dostępny dla nowych klientów. Żadna z usług, które były częścią pakietu OMS, nie zmieniła się, z wyjątkiem konsolidacji do Azure Monitor opisanej powyżej. 
 

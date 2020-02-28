@@ -1,18 +1,17 @@
 ---
 title: Praca z wartościami daty i godziny w zapytaniach dziennika Azure Monitor | Microsoft Docs
 description: Opisuje sposób pracy z danymi daty i godziny w zapytaniach dziennika Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: d659be5b817317e7cec5726718f154825674349e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365346"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655382"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Praca z wartościami daty i godziny w zapytaniach dziennika Azure Monitor
 
@@ -31,10 +30,10 @@ Wartości TimeSpan są wyrażone jako liczba dziesiętna, po której następuje 
 
 |skrócon   | jednostka czasu    |
 |:---|:---|
-|d           | dzień          |
-|g           | godz.         |
-|ś           | minuta       |
-|s           | sekunda       |
+|{1&gt;d&lt;1}           | dzień          |
+|h           | wydajność         |
+|ś           | minutę       |
+|s           | drugi       |
 |ms          | milisekund  |
 |mikrosekundowych | mikrosekundowych  |
 |Investor        | nanosekund   |
@@ -128,7 +127,7 @@ Event
 
 To zapytanie daje następujące wyniki:
 
-|sygnatura czasowa|liczba_|
+|sygnatura czasowa|count_|
 |--|--|
 |2018 r-07-28T00:00:00.000|7 136|
 |2018 r-07-29T00:00:00.000|12 315|

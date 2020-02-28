@@ -5,25 +5,25 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 1e6a21e8bf9c284c83af09885aa66b612b52ad7c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.custom: hdinsightactive
+ms.date: 02/25/2020
+ms.openlocfilehash: 30664d533215cb49fa6f436ec4cf88fa319c3300
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044714"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659870"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Planowanie sieci wirtualnej dla usługi Azure HDInsight
 
-Ten artykuł zawiera ogólne informacje dotyczące korzystania z [sieci wirtualnych platformy Azure](../virtual-network/virtual-networks-overview.md) za pomocą usługi Azure HDInsight. Omówiono w nim również decyzje dotyczące projektowania i wdrażania, które należy wykonać, aby można było zaimplementować sieć wirtualną dla klastra usługi HDInsight. Po zakończeniu fazy planowania można [utworzyć sieci wirtualne dla klastrów usługi Azure HDInsight](hdinsight-create-virtual-network.md). Aby uzyskać więcej informacji na temat adresów IP zarządzania usługą HDInsight, które są konieczne do poprawnego skonfigurowania sieciowych grup zabezpieczeń i tras zdefiniowanych przez użytkownika, zobacz [adresy IP zarządzania usługą HDInsight](hdinsight-management-ip-addresses.md).
+Ten artykuł zawiera ogólne informacje dotyczące korzystania z [usługi Azure Virtual Networks](../virtual-network/virtual-networks-overview.md) (sieci wirtualnych) w usłudze HDInsight. Omówiono w nim również decyzje dotyczące projektowania i wdrażania, które należy wykonać, aby można było zaimplementować sieć wirtualną dla klastra usługi HDInsight. Po zakończeniu fazy planowania można [utworzyć sieci wirtualne dla klastrów usługi Azure HDInsight](hdinsight-create-virtual-network.md). Aby uzyskać więcej informacji na temat adresów IP zarządzania usługą HDInsight, które są konieczne do poprawnego skonfigurowania sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń) i tras zdefiniowanych przez użytkownika, zobacz [adresy IP zarządzania usługą HDInsight](hdinsight-management-ip-addresses.md).
 
 Korzystanie z Virtual Network platformy Azure umożliwia wykonywanie następujących scenariuszy:
 
 * Łączenie z usługą HDInsight bezpośrednio z sieci lokalnej.
 * Łączenie usługi HDInsight z magazynami danych w sieci wirtualnej platformy Azure.
-* Bezpośredni dostęp do usług [Apache Hadoop](https://hadoop.apache.org/) , które nie są publicznie dostępne za pośrednictwem Internetu. Na przykład [Apache Kafka](https://kafka.apache.org/) interfejsy API lub interfejs API platformy [Apache HBase](https://hbase.apache.org/) Java.
+* Bezpośredni dostęp do usług Apache Hadoop, które nie są dostępne publicznie za pośrednictwem Internetu. Na przykład Apache Kafka interfejsy API lub interfejs API platformy Apache HBase Java.
 
 > [!IMPORTANT]
 > Utworzenie klastra usługi HDInsight w sieci wirtualnej spowoduje utworzenie kilku zasobów sieciowych, takich jak karty sieciowe i moduły równoważenia obciążenia. **Nie** usuwaj tych zasobów sieciowych, ponieważ są one potrzebne do poprawnego działania klastra z siecią wirtualną.
@@ -64,19 +64,19 @@ Wykonaj kroki opisane w tej sekcji, aby dowiedzieć się, jak dodać nową usłu
 2. Czy używasz sieciowych grup zabezpieczeń, tras zdefiniowanych przez użytkownika lub urządzeń Virtual Network do ograniczania ruchu do sieci wirtualnej czy z niej?
 
     Usługa HDInsight wymaga nieograniczonego dostępu do kilku adresów IP w centrum danych platformy Azure. Aby umożliwić komunikację z tymi adresami IP, należy zaktualizować wszystkie istniejące sieciowe grupy zabezpieczeń lub trasy zdefiniowane przez użytkownika.
-    
+
     Usługa HDInsight obsługuje wiele usług, które korzystają z różnych portów. Nie blokuj ruchu do tych portów. Aby uzyskać listę portów dozwolonych przez zapory urządzeń wirtualnych, zobacz sekcję zabezpieczenia.
-    
+
     Aby znaleźć istniejącą konfigurację zabezpieczeń, użyj następujących Azure PowerShell lub poleceń interfejsu wiersza polecenia platformy Azure:
 
-    * Sieciowe grupy zabezpieczeń
+    * Grupy zabezpieczeń sieci
 
         Zastąp `RESOURCEGROUP` nazwą grupy zasobów zawierającej sieć wirtualną, a następnie wprowadź polecenie:
-    
+
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
         ```
-    
+
         ```azurecli
         az network nsg list --resource-group RESOURCEGROUP
         ```
@@ -125,7 +125,7 @@ Platforma Azure udostępnia rozpoznawanie nazw dla usług platformy Azure, któr
 
     Oba węzły mogą komunikować się bezpośrednio ze sobą oraz z innymi węzłami w usłudze HDInsight przy użyciu wewnętrznych nazw DNS.
 
-Domyślne rozpoznawanie nazw __nie zezwala usłudze HDInsight na rozpoznawanie__ nazw zasobów w sieciach, które są przyłączone do sieci wirtualnej. Na przykład często można przyłączyć sieć lokalną do sieci wirtualnej. Tylko w przypadku domyślnego rozpoznawania nazw Usługa HDInsight nie ma dostępu do zasobów w sieci lokalnej według nazwy. Przeciwieństwem jest również wartość true, zasoby w sieci lokalnej nie mogą uzyskać dostępu do zasobów w sieci wirtualnej według nazwy.
+Domyślne rozpoznawanie nazw __nie zezwala usłudze HDInsight na rozpoznawanie__ nazw zasobów w sieciach, które są przyłączone do sieci wirtualnej. Na przykład często można przyłączyć sieć lokalną do sieci wirtualnej. Tylko w przypadku domyślnego rozpoznawania nazw Usługa HDInsight nie może uzyskać dostępu do zasobów w sieci lokalnej według nazwy. Przeciwieństwem jest również wartość true, zasoby w sieci lokalnej nie mogą uzyskać dostępu do zasobów w sieci wirtualnej według nazwy.
 
 > [!WARNING]  
 > Należy utworzyć niestandardowy serwer DNS i skonfigurować sieć wirtualną tak, aby korzystała z niej przed utworzeniem klastra usługi HDInsight.
@@ -141,7 +141,7 @@ Aby włączyć rozpoznawanie nazw między siecią wirtualną i zasobami w połą
 4. Skonfiguruj przekazywanie między serwerami DNS. Konfiguracja zależy od typu sieci zdalnej.
 
    * Jeśli sieć zdalna jest siecią lokalną, skonfiguruj system DNS w następujący sposób:
-        
+
      * __Niestandardowy serwer DNS__ (w sieci wirtualnej):
 
          * Przekazuj żądania dotyczące sufiksu DNS sieci wirtualnej do programu rozpoznawania cyklicznego Azure (168.63.129.16). Platforma Azure obsługuje żądania dotyczące zasobów w sieci wirtualnej
@@ -235,12 +235,12 @@ Aby uzyskać więcej informacji na temat sterowania ruchem wychodzącym z klastr
 
 #### <a name="forced-tunneling-to-on-premises"></a>Wymuszone tunelowanie do lokalnego
 
-Wymuszone tunelowanie jest konfiguracją routingu zdefiniowaną przez użytkownika, w której cały ruch z podsieci jest wymuszany w określonej sieci lub lokalizacji, na przykład w sieci lokalnej. Usługa HDInsight __nie obsługuje__ wymuszonego tunelowania ruchu do sieci lokalnych. 
+Wymuszone tunelowanie jest konfiguracją routingu zdefiniowaną przez użytkownika, w której cały ruch z podsieci jest wymuszany w określonej sieci lub lokalizacji, na przykład w sieci lokalnej. Usługa HDInsight __nie obsługuje__ wymuszonego tunelowania ruchu do sieci lokalnych.
 
 ## <a id="hdinsight-ip"></a>Wymagane adresy IP
 
-Jeśli używasz sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika do kontrolowania ruchu, zobacz [adresy IP zarządzania usługą HDInsight](hdinsight-management-ip-addresses.md).
-    
+Jeśli używasz sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika do kontroli ruchu, zobacz [adresy IP zarządzania usługą HDInsight](hdinsight-management-ip-addresses.md).
+
 ## <a id="hdinsight-ports"></a>Wymagane porty
 
 Jeśli planujesz używanie **zapory** i dostęp do klastra z zewnątrz na określonych portach, może być konieczne zezwolenie na ruch na tych portach wymaganych przez ten scenariusz. Domyślnie nie jest wymagana żadna specjalna listy dozwolonych portów, tak długo, jak ruch związany z zarządzaniem platformy Azure opisany w poprzedniej sekcji może dotrzeć do klastra na porcie 443.
@@ -251,13 +251,16 @@ Aby uzyskać więcej informacji na temat reguł zapory dla urządzeń wirtualnyc
 
 ## <a name="load-balancing"></a>Równoważenie obciążenia
 
-Podczas tworzenia klastra usługi HDInsight jest również tworzony moduł równoważenia obciążenia. Typ tego modułu równoważenia obciążenia jest na [poziomie podstawowej jednostki SKU](../load-balancer/concepts-limitations.md#skus) , który ma pewne ograniczenia. Jedno z tych ograniczeń polega na tym, że w przypadku dwóch sieci wirtualnych w różnych regionach nie można nawiązać połączenia z podstawowymi usługami równoważenia obciążenia. Zobacz [często zadawane pytania dotyczące usługi Virtual Networks: ograniczenia dotyczące globalnej komunikacji równorzędnej sieci](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)wirtualnej, aby uzyskać więcej informacji.
+Podczas tworzenia klastra usługi HDInsight jest również tworzony moduł równoważenia obciążenia. Typ tego modułu równoważenia obciążenia jest na [poziomie podstawowej jednostki SKU](../load-balancer/concepts-limitations.md#skus), który ma pewne ograniczenia. Jedno z tych ograniczeń polega na tym, że w przypadku dwóch sieci wirtualnych w różnych regionach nie można nawiązać połączenia z podstawowymi usługami równoważenia obciążenia. Zobacz [często zadawane pytania dotyczące usługi Virtual Networks: ograniczenia dotyczące globalnej komunikacji równorzędnej sieci](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)wirtualnej, aby uzyskać więcej informacji.
 
 ## <a name="transport-layer-security"></a>Transport Layer Security
 
 Połączenia z klastrem za pośrednictwem publicznego punktu końcowego klastra `https://<clustername>.azurehdinsight.net` są serwerami proxy za pośrednictwem węzłów bramy klastra. Te połączenia są zabezpieczone przy użyciu protokołu o nazwie TLS. Wymuszanie wyższych wersji protokołu TLS na bramach usprawnia zabezpieczenia tych połączeń. Aby uzyskać więcej informacji na temat tego, dlaczego należy używać nowszych wersji protokołu TLS, zobacz [Rozwiązywanie problemów z protokołem tls 1,0](https://docs.microsoft.com/security/solving-tls1-problem).
 
-Można kontrolować minimalne wersje protokołu TLS obsługiwane w węzłach bramy dla klastra usługi HDInsight przy użyciu właściwości *minSupportedTlsVersion* w szablonie usługi Resource Manager w czasie wdrażania. Aby zapoznać się z przykładowym szablonem, zobacz [minimalny szablon szybkiego startu protokołu TLS 1,2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)w usłudze HDInsight. Ta właściwość obsługuje trzy wartości: "1,0", "1,1" i "1,2", które odnoszą się do protokołów TLS 1.0 +, TLS 1.1 + i TLS 1.2 + odpowiednio. Domyślnie bez określania tej właściwości klastry usługi Azure HDInsight akceptują połączenia protokołu TLS 1,2 na publicznych punktach końcowych HTTPS, a także w starszych wersjach zgodności z poprzednimi wersjami. Ostatecznie Usługa HDInsight będzie wymuszać protokół TLS 1,2 lub nowszy na wszystkich połączeniach węzłów bramy.
+Domyślnie klastry usługi Azure HDInsight akceptują połączenia protokołu TLS 1,2 na publicznych punktach końcowych HTTPS, a także w starszych wersjach zgodności z poprzednimi wersjami. Można kontrolować minimalną wersję protokołu TLS obsługiwaną w węzłach bramy podczas tworzenia klastra przy użyciu Azure Portal lub szablonu usługi Resource Manager. W przypadku portalu wybierz wersję TLS z karty **zabezpieczenia i sieć** podczas tworzenia klastra. W przypadku szablonu usługi Resource Manager w czasie wdrażania należy użyć właściwości **minSupportedTlsVersion** . Aby zapoznać się z przykładowym szablonem, zobacz [minimalny szablon szybkiego startu protokołu TLS 1,2](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)w usłudze HDInsight. Ta właściwość obsługuje trzy wartości: "1,0", "1,1" i "1,2", które odnoszą się do protokołów TLS 1.0 +, TLS 1.1 + i TLS 1.2 + odpowiednio.
+
+> [!IMPORTANT]
+> Począwszy od 30 czerwca 2020, usługa Azure HDInsight będzie wymuszać stosowanie protokołu TLS 1,2 lub nowszego dla wszystkich połączeń HTTPS. Zalecamy, aby upewnić się, że wszyscy klienci są gotowi do obsługi protokołu TLS 1,2 lub jego nowszych wersji. Aby uzyskać więcej informacji, zobacz [Wymuszanie usługi Azure HDINSIGHT TLS 1,2](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/).
 
 ## <a name="next-steps"></a>Następne kroki
 

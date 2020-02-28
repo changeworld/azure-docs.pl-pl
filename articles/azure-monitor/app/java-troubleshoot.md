@@ -1,21 +1,17 @@
 ---
 title: Rozwiązywanie problemów Application Insights w projekcie sieci Web w języku Java
 description: Przewodnik rozwiązywania problemów — monitorowanie aplikacji Java na żywo za pomocą Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: aea0adc9217a7729c9bf14211cf5da422ac9e198
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 04e98938bc5dd17816ae873f122073212275a414
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432535"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657184"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Rozwiązywanie problemów oraz pytania i odpowiedzi dotyczące usługi Application Insights dla języka Java
-Masz pytania lub problemy z [usługą Azure Application Insights w języku Java][java]? Oto kilka wskazówek.
+Masz pytania lub problemy z [usługą Azure Application Insights w języku Java][java]? Poniżej przedstawiono niektóre porady.
 
 ## <a name="build-errors"></a>Błędy kompilacji
 **W przypadku, gdy dodajesz zestaw Application Insights SDK za pośrednictwem Maven lub Gradle, nastąpiło przebudowywanie lub IntelliJ.**
@@ -74,7 +70,7 @@ W kodzie:
     config.setTrackingIsDisabled(true);
 ```
 
-**Or**
+**Oraz**
 
 Zaktualizuj plik ApplicationInsights. XML (w folderze Resources w projekcie). Dodaj następujące elementy w węźle głównym:
 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/09/2019
+ms.date: 02/26/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ffb2ff87eb78ed4088225f832b6df55726196493
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429723"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656638"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -47,7 +47,7 @@ Ten artykuł zawiera omówienie raportu logowania.
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaka licencja usługi Azure AD jest wymagana w celu uzyskania dostępu do informacji dotyczących logowania?
 
-* Do wyświetlenia podsumowującego raportu aktywności związanej z logowaniem wymagane jest skojarzenie dzierżawy z licencją usługi Azure AD Premium. Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md). Wyświetlenie danych w raportach po przeprowadzeniu uaktualnienia do licencji Premium bez działań związanych z danymi przed uaktualnieniem zajmie kilka dni.
+* Dzierżawca musi mieć skojarzoną licencję Azure AD — wersja Premium, aby wyświetlić raport dotyczący wszystkich działań związanych z logowaniem. Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md). Wyświetlenie danych w raportach po przeprowadzeniu uaktualnienia do licencji Premium bez działań związanych z danymi przed uaktualnieniem zajmie kilka dni.
 
 ## <a name="sign-ins-report"></a>Raport dotyczący logowań
 
@@ -59,7 +59,7 @@ Raport logowania użytkownika zawiera odpowiedzi na następujące pytania:
 
 W menu [Azure Portal](https://portal.azure.com) wybierz pozycję **Azure Active Directory**lub wyszukaj i wybierz pozycję **Azure Active Directory** z dowolnej strony.
 
-![Wybierz Azure Active Directory](./media/concept-sign-ins/select-azure-active-directory.png "Usługa Active Directory systemu Azure")
+![Wybierz Azure Active Directory](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
 W obszarze **monitorowanie**wybierz pozycję **logowania** , aby otworzyć [raport logowania](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns).
 
@@ -101,65 +101,96 @@ Wybierz element w widoku listy, aby uzyskać bardziej szczegółowe informacje.
 
 ## <a name="filter-sign-in-activities"></a>Filtrowanie działań związanych z logowaniem
 
-Najpierw Zawężanie danych raportowanych do poziomu, który się do Ciebie sprawdza. Następnie należy odfiltrować dane logowania przy użyciu pola daty jako domyślnego filtru. Usługa Azure AD udostępnia szeroką gamę dodatkowych filtrów, które można ustawić.
+Najpierw Zawężanie danych raportowanych do poziomu, który się do Ciebie sprawdza. Następnie należy odfiltrować dane logowania przy użyciu pola daty jako domyślnego filtru. Usługa Azure AD udostępnia szeroką gamę dodatkowych filtrów, które można ustawić:
 
 ![Aktywność logowania](./media/concept-sign-ins/04.png "Aktywność związana z logowaniem")
 
-Filtr **Użytkownik** umożliwia określenie nazwy lub głównej nazwy wybranego użytkownika (nazwy UPN).
+**Identyfikator żądania** — identyfikator żądanego obiektu.
 
-Filtr **Aplikacja** umożliwia określenie nazwy wybranej aplikacji.
+**Użytkownik** — nazwa lub główna nazwa użytkownika (UPN) użytkownika, którego potrzebujesz.
 
-Filtr **Stan logowania** umożliwia wybranie jednej z następujących wartości:
+**Aplikacja** — nazwa aplikacji docelowej.
+ 
+**Status** — zapoznaj się z informacjami o stanie logowania:
 
-- Wszystko
 - Powodzenie
+
 - Niepowodzenie
 
-Filtr **dostępu warunkowego** umożliwia wybranie stanu zasad urzędu certyfikacji dla logowania:
+- Działania
 
-- Wszystko
-- Nie zastosowano
+
+**Adres IP** — adres IP urządzenia służącego do nawiązywania połączenia z dzierżawcą.
+
+**Lokalizacja** — lokalizacja, z której zainicjowano połączenie:
+
+- Miasto
+
+- Województwo/Województwo
+
+- Kraj/region
+
+
+**Zasób** — nazwa usługi używanej do logowania.
+
+
+**Identyfikator zasobu** — identyfikator usługi używanej do logowania.
+
+
+**Aplikacja kliencka** — typ aplikacji klienckiej używanej do nawiązywania połączenia z dzierżawcą:
+
+![Filtr aplikacji klienta](./media/concept-sign-ins/client-app-filter.png)
+
+
+|Name (Nazwa)|Nowoczesne uwierzytelnianie|Opis|
+|---|:-:|---|
+|Uwierzytelniony protokół SMTP| |Używany przez POP i klienta IMAP do wysyłania wiadomości e-mail.|
+|Automatyczne| |Używane przez klientów programu Outlook i EAS do znajdowania skrzynek pocztowych w usłudze Exchange Online i łączenia się z nimi.|
+|Exchange ActiveSync| |Ten filtr przedstawia wszystkie próby logowania, w przypadku których podjęto próbę wykonania protokołu EAS.|
+|Przeglądarka|![Zaznacz](./media/concept-sign-ins/check.png)|Pokazuje wszystkie próby logowania od użytkowników przy użyciu przeglądarek sieci Web|
+|Exchange ActiveSync| | Pokazuje wszystkie próby logowania użytkowników z aplikacjami klienckimi przy użyciu programu Exchange ActiceSync w celu nawiązania połączenia z usługą Exchange Online|
+|Exchange Online PowerShell| |Służy do nawiązywania połączenia z usługą Exchange Online przy użyciu zdalnego programu PowerShell. Jeśli zablokujesz uwierzytelnianie podstawowe dla programu Exchange Online PowerShell, musisz użyć modułu programu PowerShell w usłudze Exchange Online, aby nawiązać połączenie. Aby uzyskać instrukcje, zobacz [nawiązywanie połączenia z programem Exchange Online PowerShell przy użyciu uwierzytelniania wieloskładnikowego](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
+|Usługi sieci Web programu Exchange| |Interfejs programowania używany przez program Outlook, program Outlook dla komputerów Mac i aplikacje innych firm.|
+|PROTOKOŁÓW| |Starsza wersja klienta poczty używającej protokołu IMAP do pobierania poczty e-mail.|
+|Interfejs MAPI przez HTTP| |Używany przez program Outlook 2010 i nowsze.|
+|Aplikacje mobilne i klienci stacjonarni|![Zaznacz](./media/concept-sign-ins/check.png)|Pokazuje wszystkie próby logowania użytkowników korzystających z aplikacji mobilnych i klientów stacjonarnych.|
+|Książka adresowa offline| |Kopia kolekcji listy adresów, które są pobierane i używane przez program Outlook.|
+|Outlook w dowolnym miejscu (RPC przez HTTP)| |Używane w programie Outlook 2016 i jego wcześniejszych wersjach.|
+|Usługa programu Outlook| |Używany przez aplikację poczty i kalendarza dla systemu Windows 10.|
+|POP3| |Starsza wersja klienta poczty używającej protokołu POP3 do pobierania poczty e-mail.|
+|Usługi sieci Web raportowania| |Służy do pobierania danych raportu w usłudze Exchange Online.|
+|Inni klienci| |Pokazuje wszystkie próby logowania od użytkowników, w których aplikacja kliencka nie jest uwzględniona lub nieznana.|
+
+
+
+**System operacyjny** — system operacyjny uruchomiony na urządzeniu, na którym jest używane logowanie do dzierżawy. 
+
+
+**Przeglądarka urządzenia** — Jeśli połączenie zostało zainicjowane z przeglądarki, to pole umożliwia filtrowanie według nazwy przeglądarki.
+
+
+**Identyfikator korelacji** — identyfikator korelacji działania.
+
+
+**Dostęp warunkowy** — stan zastosowanych reguł dostępu warunkowego
+
+- Nie zastosowano 
+
 - Powodzenie
+
 - Niepowodzenie
 
-Filtr **Data** umożliwia zdefiniowanie przedziału czasu dla zwracanych danych.  
-Możliwe wartości:
 
-- Jeden miesiąc
-- 7 dni
-- 24 godziny
-- Niestandardowy zakres czasu
 
-Po wybraniu niestandardowego przedziału czasu możesz skonfigurować godzinę rozpoczęcia i zakończenia.
 
-Jeśli dodasz kolejne pola do widoku logowań, te pola zostaną automatycznie dodane do listy filtrów. Na przykład dodanie pola **Aplikacja kliencka** do listy powoduje udostępnienie kolejnej opcji filtru, która umożliwia ustawienie następujących filtrów:  
-![Aktywność logowania](./media/concept-sign-ins/12.png "Aktywność związana z logowaniem")
 
-- **Przeglądarka**  
-    Ten filtr przedstawia wszystkie zdarzenia, dla których podjęto próbę zalogowania przy użyciu przepływów przeglądarki.
-- **Exchange ActiveSync (obsługiwane)**  
-    Ten filtr przedstawia wszystkie próby logowania, w przypadku których podjęto próbę wykonania protokołu Exchange ActiveSync (EAS) z obsługiwanych platform, takich jak iOS, Android i Windows Phone.
-- **Exchange ActiveSync (nieobsługiwane)**  
-    Ten filtr przedstawia wszystkie próby logowania, w przypadku których podjęto próbę użycia protokołu EAS z nieobsługiwanych platform, takich jak Linux dystrybucje.
-- **Klienci Mobile Apps i komputery stacjonarne** Filtr pokazuje wszystkie próby logowania, które nie były używane przez przepływy przeglądarki. Na przykład aplikacje mobilne z dowolnej platformy przy użyciu dowolnego protokołu lub aplikacji klienckich dla komputerów stacjonarnych, takich jak pakiet Office w systemie Windows lub MacOS.
-  
-- **Inni klienci**
-    - **PROTOKOŁU**  
-        Starsza wersja klienta poczty używającej protokołu IMAP do pobierania poczty e-mail.
-    - **MAPI**  
-        Pakiet Office 2013, gdzie Biblioteka ADAL jest włączona i używa interfejsu MAPI.
-    - **Stara klienci pakietu Office**  
-        Pakiet Office 2013 w konfiguracji domyślnej, gdzie Biblioteka ADAL nie jest włączona i używa interfejsu MAPI lub pakietu Office 2016, gdzie ADAL została wyłączona.
-    - **POP**  
-        Starsza wersja klienta poczty używającej protokołu POP3 do pobierania poczty e-mail.
-    - **SMTP**  
-        Starszego klienta poczty e-mail korzystającego z protokołu SMTP do wysyłania wiadomości.
+
 
 ## <a name="download-sign-in-activities"></a>Pobieranie działań związanych z logowaniem
 
 Kliknij opcję **Pobierz** , aby utworzyć plik CSV lub kod JSON z najnowszych rekordów 250 000. Rozpocznij od [pobrania danych logowania,](quickstart-download-sign-in-report.md) Jeśli chcesz korzystać z nich poza Azure Portal.  
 
-![Pobieranie](./media/concept-sign-ins/71.png "Pobierz")
+![Pobieranie](./media/concept-sign-ins/71.png "Pobieranie")
 
 > [!IMPORTANT]
 > Liczba rekordów, które można pobrać, jest ograniczona przez [zasady przechowywania raportów Azure Active Directory](reference-reports-data-retention.md).  
@@ -199,7 +230,7 @@ Klikając pozycję, można uzyskać więcej szczegółowych informacji na temat 
 - Klient
 - Lokalizacja
 - Adres IP
-- Data
+- Date
 - Wymagane uwierzytelnianie wieloskładnikowe
 - Stan logowania
 

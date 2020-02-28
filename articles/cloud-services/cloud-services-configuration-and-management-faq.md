@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 4ca8c18d448297cc2d2e2249a1dbbe04ecccd092
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019421"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656929"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemy związane z konfiguracją i zarządzaniem w usłudze Azure Cloud Services: często zadawane pytania
 
@@ -137,7 +137,7 @@ Przekroczono limit przydziału magazynu lokalnego do zapisu w katalogu dziennik�
 * Zwiększ limit przydziału dla zasobów lokalnych.
 
 Aby uzyskać więcej informacji, zobacz następujące dokumenty:
-* [Przechowywanie i przeglądanie danych diagnostycznych w usłudze Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
+* [Przechowywanie i przeglądanie danych diagnostycznych w usłudze Azure Storage](/azure/storage/common/storage-introduction)
 * [Dzienniki usług IIS zatrzymują zapisywanie w usłudze w chmurze](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Jak mogę włączyć rejestrowanie funkcji wad dla Cloud Services?
@@ -198,7 +198,7 @@ Systemy Windows 10 i Windows Server 2016 są dostarczane z obsługą protokołu 
 
 Aby uzyskać więcej informacji, zobacz:
 
-- [Protokołu HTTP/2 w programie IIS](https://blogs.iis.net/davidso/http2)
+- [Protokół HTTP/2 w usługach IIS](https://blogs.iis.net/davidso/http2)
 - [Wideo: HTTP/2 w systemie Windows 10: przeglądarka, aplikacje i serwer sieci Web](https://channel9.msdn.com/Events/Build/2015/3-88)
          
 
@@ -250,7 +250,7 @@ Aby uzyskać więcej informacji na temat włączania Application Insights dla Cl
 
 Aby uzyskać więcej informacji na temat włączania rejestrowania Diagnostyka Azure dla Cloud Services, zobacz [Konfigurowanie diagnostyki dla Cloud Services platformy Azure i maszyn wirtualnych](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
-## <a name="generic"></a>Ogólny
+## <a name="generic"></a>Ogólne
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>Jak mogę dodać "nowykrywanie" do mojej witryny sieci Web?
 Aby uniemożliwić klientom wykrywanie typów MIME, Dodaj ustawienie w pliku *Web. config* .

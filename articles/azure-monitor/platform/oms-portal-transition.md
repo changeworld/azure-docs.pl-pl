@@ -1,18 +1,17 @@
 ---
 title: Portal pakietu OMS przeniesiony do platformy Azure | Microsoft Docs
 description: Dostęp do portalu pakietu OMS jest wykonywany przy użyciu wszystkich funkcji przenoszonych do Azure Portal. Ten artykuł zawiera szczegółowe informacje na temat tego przejścia.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 170973d15b5f49021a0507bdd2fd6a2632777d48
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932147"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659258"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portal pakietu OMS przeniesiony do platformy Azure
 
@@ -59,7 +58,7 @@ W obu tych przypadkach administrator musi ręcznie przypisać odpowiednią rolę
 
 | Uprawnienie do portalu pakietu OMS | Rola platformy Azure |
 |:---|:---|
-| ReadOnly | Czytelnik usługi Log Analytics |
+| Trybie | Czytelnik usługi Log Analytics |
 | Współautor | Współautor usługi Log Analytics |
 | Administrator | Właściciel | 
  
@@ -84,7 +83,7 @@ Dane zbierane przez rozwiązanie do zarządzania alertami (rekordy z typem alert
 Aplikacja mobilna pakietu OMS zostanie również przemieszczona przy użyciu portalu pakietu OMS. Zamiast aplikacji mobilnej OMS, aby uzyskać dostęp do informacji o infrastrukturze IT, pulpitach nawigacyjnych i zapisanych zapytaniach, możesz uzyskać dostęp do Azure Portal bezpośrednio z przeglądarki na urządzeniu przenośnym. Aby otrzymywać alerty, należy skonfigurować [grupy akcji platformy Azure](action-groups.md) w celu otrzymywania powiadomień w formie wiadomości SMS lub połączenia głosowego
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Connector i rozwiązanie
-[Application Insights Connector](app-insights-connector.md) zapewnia sposób dołączania Application Insights danych do obszaru roboczego log Analytics. Ta duplikacja danych była wymagana w celu umożliwienia wglądu w dane infrastruktury i aplikacji. Dzięki obsłudze Application Insights rozszerzonej obsługi przechowywania danych w marcu 2019 i możliwości wykonywania [zapytań między zasobami](../log-query/cross-workspace-query.md) oprócz możliwości [wyświetlania wielu Azure Monitor Application Insights zasobów](../log-query/unify-app-resource-data.md), nie ma potrzeby duplikowania dane z zasobów Application Insights i wyślij je do Log Analytics. Ponadto łącznik wysyła podzestaw właściwości aplikacji do Log Analytics, podczas gdy zapytania między zasobami zapewniają większą elastyczność.  
+[Application Insights Connector](app-insights-connector.md) zapewnia sposób dołączania Application Insights danych do obszaru roboczego log Analytics. Ta duplikacja danych była wymagana w celu umożliwienia wglądu w dane infrastruktury i aplikacji. Dzięki obsłudze Application Insights rozszerzonego przechowywania danych w marcu 2019 i możliwości wykonywania [zapytań między zasobami](../log-query/cross-workspace-query.md) oprócz możliwości [wyświetlania wielu Azure Monitor Application Insights zasobów](../log-query/unify-app-resource-data.md)nie ma potrzeby duplikowania danych z zasobów Application Insights i wysyłania ich do log Analytics. Ponadto łącznik wysyła podzestaw właściwości aplikacji do Log Analytics, podczas gdy zapytania między zasobami zapewniają większą elastyczność.  
 
 W związku z tym Application Insights Connector była przestarzała i usuwana z portalu Azure Marketplace wraz z zaniechaniem korzystania z Portal OMS w dniu 30 marca 2019. Istniejące połączenia będą nadal działały do 30 czerwca 2019. W przypadku wycofania portalu pakietu OMS nie istnieje sposób konfigurowania i usuwania istniejących połączeń z portalu. Ta wartość będzie obsługiwana przy użyciu interfejsu API REST, który zostanie udostępniony w styczniu 2019, a powiadomienie zostanie ogłoszone w [usłudze Azure Updates](https://azure.microsoft.com/updates/). 
 

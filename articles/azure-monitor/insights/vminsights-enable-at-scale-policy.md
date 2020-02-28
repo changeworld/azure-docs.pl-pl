@@ -1,18 +1,17 @@
 ---
 title: Włączanie Azure Monitor dla maszyn wirtualnych przy użyciu Azure Policy | Microsoft Docs
 description: W tym artykule opisano sposób włączania Azure Monitor dla maszyn wirtualnych dla wielu maszyn wirtualnych platformy Azure lub zestawów skalowania maszyn wirtualnych przy użyciu Azure Policy.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: d9458230d07c1c40a3eec2d51879f58fac6543b5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 267072b06d936822eae7e7257d62566a020471bb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365822"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656232"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Włącz Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) za pomocą Azure Policy
 
@@ -71,15 +70,15 @@ Aby włączyć usługi Azure Monitor dla maszyn wirtualnych przy użyciu usługi
 - Przypisz inicjatywę do zakresu: grupy zarządzania, subskrypcji lub grupy zasobów.
 - Przejrzyj i skoryguj wyniki zgodności.
 
-Aby uzyskać więcej informacji na temat przypisywania zasad platformy Azure, zobacz [Omówienie usługi Azure Policy](../../governance/policy/overview.md#policy-assignment) i przejrzyj [Przegląd grup zarządzania](../../governance/management-groups/overview.md) przed kontynuowaniem.
+Aby uzyskać więcej informacji na temat przypisywania Azure Policy, zobacz [Azure Policy Omówienie](../../governance/policy/overview.md#policy-assignment) i przejrzyj [grupy zarządzania](../../governance/management-groups/overview.md) przed kontynuowaniem.
 
 ### <a name="policies-for-azure-vms"></a>Zasady dotyczące maszyn wirtualnych platformy Azure
 
 Definicje zasad dla maszyny wirtualnej platformy Azure są wymienione w poniższej tabeli.
 
-|Nazwa |Opis |Typ |
+|Name (Nazwa) |Opis |Typ |
 |-----|------------|-----|
-|\[Podgląd\]: Włączanie usługi Azure Monitor dla maszyn wirtualnych |Włącz Azure Monitor dla maszyn wirtualnych w określonym zakresie (grupy zarządzania, subskrypcji lub grupy zasobów). Obszar roboczy usługi Log Analytics przyjmuje jako parametr. |Inicjatywa |
+|\]podglądu \[: Włącz Azure Monitor dla maszyn wirtualnych |Włącz Azure Monitor dla maszyn wirtualnych w określonym zakresie (grupy zarządzania, subskrypcji lub grupy zasobów). Obszar roboczy usługi Log Analytics przyjmuje jako parametr. |Inicjatywa |
 |Wersja zapoznawcza \[\]: Inspekcja wdrożenia agenta zależności — obraz maszyny wirtualnej (OS) nie został wystawiony |Zgłasza maszyny wirtualne jako niezgodne, jeśli na liście nie ma zdefiniowanego obrazu maszyny wirtualnej (OS), a agent nie jest zainstalowany. |Zasady |
 |Wersja zapoznawcza \[\]: Przeprowadź inspekcję wdrożenia agenta Log Analytics — obraz maszyny wirtualnej (OS) nie został wystawiony |Zgłasza maszyny wirtualne jako niezgodne, jeśli na liście nie ma zdefiniowanego obrazu maszyny wirtualnej (OS), a agent nie jest zainstalowany. |Zasady |
 |\[Podgląd\]: wdrażanie agenta zależności dla maszyn wirtualnych z systemem Linux |Wdróż agenta zależności dla maszyn wirtualnych z systemem Linux, jeśli na liście jest zdefiniowany obraz maszyny wirtualnej (system operacyjny), a agent nie jest zainstalowany. |Zasady |
@@ -91,7 +90,7 @@ Definicje zasad dla maszyny wirtualnej platformy Azure są wymienione w poniższ
 
 Definicje zasad dla zestawu skalowania maszyn wirtualnych platformy Azure są wymienione w poniższej tabeli.
 
-|Nazwa |Opis |Typ |
+|Name (Nazwa) |Opis |Typ |
 |-----|------------|-----|
 |\[podglądu\]: Włączanie Azure Monitor dla zestawów skalowania maszyn wirtualnych |Włącz Azure Monitor dla zestawów skalowania maszyn wirtualnych w określonym zakresie (grupy zarządzania, subskrypcji lub grupy zasobów). Obszar roboczy usługi Log Analytics przyjmuje jako parametr. Uwaga: Jeśli zasady uaktualniania zestawu skalowania zostały ustawione na ręczne, Zastosuj rozszerzenie do wszystkich maszyn wirtualnych w zestawie, wywołując na nich uaktualnienie. W interfejsie wiersza polecenia jest to `az vmss update-instances`. |Inicjatywa |
 |Wersja zapoznawcza \[\]: Inspekcja wdrożenia agenta zależności w zestawach skalowania maszyn wirtualnych — obraz maszyny wirtualnej (OS) nie został wystawiony |Raporty zestawu skalowania maszyn wirtualnych są wyświetlane jako niezgodne, jeśli na liście nie ma zdefiniowanego obrazu maszyny wirtualnej (OS), a agent nie jest zainstalowany. |Zasady |
@@ -103,19 +102,19 @@ Definicje zasad dla zestawu skalowania maszyn wirtualnych platformy Azure są wy
 
 Zasady autonomicznym (nie dołączona inicjatywy) opisano tutaj:
 
-|Nazwa |Opis |Typ |
+|Name (Nazwa) |Opis |Typ |
 |-----|------------|-----|
 |Podgląd \[\]: obszar roboczy inspekcji Log Analytics dla maszyny wirtualnej — niezgodność raportów |Zgłaszaj maszyny wirtualne jako niezgodne, jeśli nie są rejestrowane w obszarze roboczym Log Analytics określonym w przypisaniu zasad lub inicjatyw. |Zasady |
 
 ### <a name="assign-the-azure-monitor-initiative"></a>Przypisz inicjatywę usługi Azure Monitor
 
-Aby utworzyć przypisanie zasad na stronie **pokrycie zasad Azure monitor dla maszyn wirtualnych** , wykonaj następujące czynności. Aby dowiedzieć się, jak wykonać następujące czynności, zobacz [Tworzenie przypisania zasad w witrynie Azure portal](../../governance/policy/assign-policy-portal.md).
+Aby utworzyć przypisanie zasad na stronie **pokrycie zasad Azure monitor dla maszyn wirtualnych** , wykonaj następujące czynności. Aby dowiedzieć się, jak wykonać te kroki, zobacz [Tworzenie przypisania zasad z Azure Portal](../../governance/policy/assign-policy-portal.md).
 
 Po przypisaniu zasad lub inicjatywy zakres wybrany w ramach przypisania może być zakresem wymienionym tutaj lub jego podzbiorem. Na przykład mogło zostać utworzone przypisanie dla subskrypcji (zakres zasad), a nie do grupy zarządzania (zakres pokrycia). W takim przypadku procent pokrycia będzie wskazywał maszyny wirtualne w zakresie zasad lub inicjatywy podzielone przez maszyny wirtualne w zakresie pokrycia. W innym przypadku można wykluczyć niektóre maszyny wirtualne lub grupy zasobów albo subskrypcję z zakresu zasad. Jeśli ta wartość jest pusta, oznacza to, że zasady lub inicjatywy nie istnieją lub nie masz uprawnień. Informacje są dostępne w obszarze **stan przypisania**.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
-2. W witrynie Azure portal wybierz **Monitor**. 
+2. W Azure Portal wybierz pozycję **Monitoruj**. 
 
 3. Wybierz pozycję **Virtual Machines (wersja zapoznawcza)** w sekcji **szczegółowe informacje** .
  
@@ -126,16 +125,16 @@ Po przypisaniu zasad lub inicjatywy zakres wybrany w ramach przypisania może by
 6. Na stronie **przypisanie Azure Policy** zostanie wstępnie wypełniony z inicjatywy **Włączanie Azure monitor dla maszyn wirtualnych**. 
     Pole **Nazwa przypisania** jest automatycznie wypełniane nazwą inicjatywy, ale można ją zmienić. Możesz również dodać opcjonalny opis. Pole **przypisane przez** jest wypełniane automatycznie na podstawie tego, kto jest zalogowany. Ta wartość jest opcjonalna.
 
-7. (Opcjonalnie) Aby usunąć jeden lub więcej zasobów z zakresu, zaznacz **wykluczenia**.
+7. Obowiązkowe Aby usunąć co najmniej jeden zasób z zakresu, wybierz pozycję **wykluczenia**.
 
-8. W **obszaru roboczego usługi Log Analytics** listy rozwijanej liście dla obsługiwany region, wybierz obszar roboczy.
+8. Z listy rozwijanej **obszar roboczy log Analytics** dla obsługiwanego regionu wybierz obszar roboczy.
 
    > [!NOTE]
-   > Jeśli obszar roboczy znajduje się poza zakresem przypisania, należy udzielić *Współautor usługi Log Analytics* uprawnień, aby identyfikator przypisania zasad podmiotu zabezpieczeń. Jeśli tego nie zrobisz, może zostać wyświetlony błąd wdrażania, na przykład `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`, aby udzielić dostępu, zapoznaj [się z tematem jak ręcznie skonfigurować tożsamość zarządzaną](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
+   > Jeśli obszar roboczy przekracza zakres przypisania, udziel *log Analytics uprawnienia współautora* do identyfikatora podmiotu zabezpieczeń przypisania zasad. Jeśli tego nie zrobisz, może zostać wyświetlony błąd wdrażania, na przykład `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`, aby udzielić dostępu, zapoznaj [się z tematem jak ręcznie skonfigurować tożsamość zarządzaną](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
    > 
    >  Pole wyboru **tożsamość zarządzana** jest zaznaczone, ponieważ przypisana inicjatywa zawiera zasady z efektem *deployIfNotExists* .
     
-9. W **lokalizacji Zarządzanie tożsamościami** listy rozwijanej wybierz odpowiedni region.
+9. Z listy rozwijanej **Zarządzaj lokalizacją tożsamości** wybierz odpowiedni region.
 
 10. Wybierz opcję **Przypisz**.
 
@@ -145,10 +144,10 @@ Poniższa macierz odwzorowuje każdy możliwy stan zgodności dla inicjatywy.
 
 | Stan zgodności | Opis | 
 |------------------|-------------|
-| **Zgodne** | Wszystkie maszyny wirtualne w zakresie mają wdrożonych Log Analytics i agentów zależności.|
+| **Komputera** | Wszystkie maszyny wirtualne w zakresie mają wdrożonych Log Analytics i agentów zależności.|
 | **Niezgodne** | Nie wszystkie maszyny wirtualne w zakresie mają wdrożone Log Analytics i agentów zależności i mogą wymagać skorygowania.|
 | **Nie uruchomiono** | Dodano nowe przypisanie. |
-| **Blokada** | Nie masz wystarczających uprawnień do grupy zarządzania. <sup>1</sup> | 
+| **Skręt** | Nie masz wystarczających uprawnień do grupy zarządzania. <sup>1</sup> | 
 | **Puste** | Nie przypisano żadnych zasad. | 
 
 <sup>1</sup> Jeśli nie masz dostępu do grupy zarządzania, poproszenie właściciela o udzielenie dostępu. Można też wyświetlić zgodność i zarządzać przypisaniami za pomocą podrzędnych grup zarządzania lub subskrypcji. 
@@ -158,9 +157,9 @@ Poniższa tabela odwzorowuje każdy możliwy stan przypisania dla inicjatywy.
 | Stan przypisania | Opis | 
 |------------------|-------------|
 | **Prawnego** | Wszystkie maszyny wirtualne w zakresie mają wdrożonych Log Analytics i agentów zależności.|
-| **Ostrzeżenie** | Subskrypcja nie należy do grupy zarządzania.|
+| **Wyświetlania** | Subskrypcja nie należy do grupy zarządzania.|
 | **Nie uruchomiono** | Dodano nowe przypisanie. |
-| **Blokada** | Nie masz wystarczających uprawnień do grupy zarządzania. <sup>1</sup> | 
+| **Skręt** | Nie masz wystarczających uprawnień do grupy zarządzania. <sup>1</sup> | 
 | **Puste** | Nie istnieją żadne maszyny wirtualne lub nie przypisano zasad. | 
 | **Akcja** | Przypisz zasady lub Edytuj przypisanie. | 
 
@@ -204,6 +203,6 @@ W dowolnym momencie po przypisaniu inicjatywy do grupy zarządzania lub subskryp
 
 Po włączeniu monitorowania dla maszyn wirtualnych te informacje są dostępne do analizy za pomocą Azure Monitor dla maszyn wirtualnych. 
 
-- Aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych mapy](vminsights-maps.md). 
+- Aby wyświetlić odnalezione zależności aplikacji, zobacz [view Azure monitor dla maszyn wirtualnych map](vminsights-maps.md). 
 
 - Aby identyfikować wąskie gardła i ogólne wykorzystanie z wydajnością maszyny wirtualnej, zobacz [Wyświetlanie wydajności maszyny wirtualnej platformy Azure](vminsights-performance.md). 

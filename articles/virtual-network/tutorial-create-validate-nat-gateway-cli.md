@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 26a427baddc99fa702b638c36b5378750364c849
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 988bd6dbb157276a9ee37c8ca3051a808f8b6499
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587026"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661077"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Samouczek: Tworzenie bramy NAT przy użyciu interfejsu wiersza polecenia platformy Azure i testowanie usługi translatora adresów sieciowych
 
@@ -35,7 +35,7 @@ Ten samouczek można wykonać przy użyciu Azure Cloud Shell lub uruchomić odpo
 Jeśli zdecydujesz się uruchomić te polecenia lokalnie, musisz zainstalować interfejs wiersza polecenia.  Ten samouczek wymaga korzystania z wersji interfejsu wiersza polecenia platformy Azure w wersji 2.0.71 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
@@ -62,7 +62,7 @@ Aby uzyskać dostęp do publicznej sieci Internet, wymagany jest co najmniej jed
 
 ### <a name="create-a-public-ip-prefix"></a>Tworzenie publicznego prefiksu adresu IP
 
-Można użyć co najmniej jednego publicznego zasobu adresów IP, publicznych prefiksów IP lub obu z bramą translatora adresów sieciowych. Do tego scenariusza zostanie dodany zasób prefiksu publicznego adresu IP.   Użyj [AZ Network Public-IP prefix Create](https://docs.microsoft.com/cli/azure/network/public-ip-prefix) , aby utworzyć zasób publicznego PREFIKSU adresu IP o nazwie **myPublicIPprefixsource** w **myResourceGroupNAT**.
+Można użyć co najmniej jednego publicznego zasobu adresów IP, publicznych prefiksów IP lub obu z bramą translatora adresów sieciowych. Do tego scenariusza zostanie dodany zasób prefiksu publicznego adresu IP.   Użyj [AZ Network Public-IP prefix Create](/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) , aby utworzyć zasób publicznego PREFIKSU adresu IP o nazwie **myPublicIPprefixsource** w **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network public-ip prefix create \

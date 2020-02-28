@@ -3,17 +3,16 @@ title: Wysyłanie metryk klasycznej maszyny wirtualnej z systemem Windows do baz
 description: Wysyłanie metryk systemu operacyjnego gościa do magazynu danych Azure Monitor dla maszyny wirtualnej z systemem Windows (wersja klasyczna)
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: d911a6b65ba0d63bca09437f6451019addcbc0b3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 65bb1a3915ece384974da12b4e7a1ad0c1e08133
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977624"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655821"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Wysyłanie metryk systemu operacyjnego gościa do bazy danych metryk Azure Monitor dla maszyny wirtualnej z systemem Windows (wersja klasyczna)
 
@@ -47,7 +46,7 @@ Proces przedstawiony w tym artykule działa tylko w przypadku klasycznych maszyn
 1. W Azure Portal przejdź do bloku zasobów **konta magazynu** . Wybierz pozycję **klucze**i zanotuj nazwę konta magazynu i klucz konta magazynu. Te informacje są potrzebne w dalszych krokach.
    klucze dostępu do magazynu ![](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
 
-## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
+## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
 Utwórz zasadę usługi w dzierżawie Azure Active Directory przy użyciu instrukcji w temacie [Create a Service Principal](../../active-directory/develop/howto-create-service-principal-portal.md). Podczas przechodzenia przez ten proces należy pamiętać o następujących kwestiach: 
 - Utwórz nowy klucz tajny klienta dla tej aplikacji.

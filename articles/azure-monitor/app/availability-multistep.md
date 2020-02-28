@@ -1,21 +1,17 @@
 ---
 title: Monitorowanie za pomocą wieloetapowych testów sieci Web — Application Insights platformy Azure
 description: Konfigurowanie wieloetapowych testów sieci Web w celu monitorowania aplikacji sieci Web przy użyciu usługi Azure Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 8e630f324a7a0ebdfcc74941e760b80fabefa8d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3b8baad127b16a1bd9d071d0c3d4df68da8c3304
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928971"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655944"
 ---
-# <a name="multi-step-web-tests"></a>Wieloetapowy test witryny
+# <a name="multi-step-web-tests"></a>Wieloetapowe testy sieci Web
 
 Można monitorować zarejestrowane sekwencje adresów URL i interakcji z witryną internetową za pomocą wieloetapowych testów sieci Web. Ten artykuł przeprowadzi Cię przez proces tworzenia wieloetapowego testu sieci Web za pomocą Visual Studio Enterprise.
 
@@ -70,7 +66,7 @@ Aby uzyskać wskazówki dotyczące tworzenia testów sieci Web programu Visual S
 |**Wdrożenie klasyczne** | Nie zalecamy już używania klasycznych alertów dla nowych testów dostępności.|
 |**Próg lokalizacji alertu**|Zalecamy co najmniej 3/5 lokalizacji. Optymalną relację między progiem lokalizacji alertów a liczbą lokalizacji testowych jest **próg lokalizacji alertu** = **liczbę lokalizacji testu-2 z co najmniej pięcioma lokalizacjami testów.**|
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 ### <a name="plugging-time-and-random-numbers-into-your-test"></a>Podłączanie czasu i liczb losowych do testu
 
@@ -114,8 +110,8 @@ We wszystkich przypadkach należy utworzyć konto w ramach aplikacji tylko na po
 | Hasło certyfikatu | Hasło certyfikatu klienta, które przyznaje dostęp do osadzonego klucza prywatnego. |
 | Certyfikat klienta  | Wartość certyfikatu klienta z kluczem prywatnym w formacie kodowanym algorytmem Base64. |
 | Identyfikator nazwy | Identyfikator nazwy dla tokenu |
-| Nie po | Przedział czasu, dla którego token będzie prawidłowy.  Wartość domyślna to 5 minut. |
-| Nie wcześniej niż | Obiekt TimeSpan, dla którego token utworzony w przeszłości będzie prawidłowy (do rozróżniania czasu).  Wartość domyślna to (wartość ujemna) 5 minut. |
+| Nie później niż | Przedział czasu, dla którego token będzie prawidłowy.  Wartość domyślna to 5 minut. |
+| Nie przed | Obiekt TimeSpan, dla którego token utworzony w przeszłości będzie prawidłowy (do rozróżniania czasu).  Wartość domyślna to (wartość ujemna) 5 minut. |
 | Nazwa parametru kontekstowego elementu docelowego | Parametr kontekstowy, który będzie otrzymywał wygenerowane potwierdzenie. |
 
 

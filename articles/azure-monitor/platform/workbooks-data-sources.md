@@ -5,18 +5,17 @@ services: azure-monitor
 documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 368da2baaea1be41331d77f4dae1bdd9567b8cc5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872897"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658375"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor skoroszyty ze źródłami danych
 
@@ -43,7 +42,7 @@ Zasoby platformy Azure emitują [metryki](data-platform-metrics.md) , do któryc
 
 ![Zrzut ekranu przedstawiający interfejs metryk skoroszytu](./media/workbooks-overview/metrics.png)
 
-## <a name="azure-resource-graph"></a>Graf zasobów platformy Azure 
+## <a name="azure-resource-graph"></a>Azure Resource Graph 
 
 Skoroszyty obsługują zapytania dotyczące zasobów i ich metadanych przy użyciu usługi Azure Resource Graph (ARG). Ta funkcja jest używana głównie do tworzenia niestandardowych zakresów zapytań dla raportów. Zakres zasobów jest wyrażany za pomocą podzestawu KQL, który jest obsługiwany przez argument, który jest często wystarczający dla typowych przypadków użycia.
 

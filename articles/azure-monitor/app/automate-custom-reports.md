@@ -1,19 +1,15 @@
 ---
 title: Automatyzowanie niestandardowych raportów za pomocą usługi Azure Application Insights Data
 description: Automatyzowanie niestandardowych raportów codziennych/cotygodniowych/miesięcznych przy użyciu usługi Azure Application Insights Data
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 2b23374972a071421b59bedf0eb5b9358b37d7a9
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: d91595a863901fcc420611ac644c7856e74320dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677628"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655127"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatyzowanie niestandardowych raportów za pomocą usługi Azure Application Insights Data
 
@@ -74,7 +70,7 @@ availabilityResults
 
 ## <a name="application-insights-scheduled-digest-report"></a>Raport Application Insights zaplanowanego podsumowania
 
-1. W Azure Portal wybierz pozycję **Utwórz zasób**  > **obliczenia**  > **aplikacja funkcji**.
+1. W Azure Portal wybierz pozycję **Utwórz zasób** > **obliczenia** > **aplikacja funkcji**.
 
    ![Tworzenie zrzutu ekranu aplikacja funkcji zasobów platformy Azure](./media/automate-custom-reports/function-app-01.png)
 
@@ -91,7 +87,7 @@ availabilityResults
 5. Wybierz **_szablon Application Insights zaplanowanego podsumowania_** .
 
      > [!NOTE]
-     > Domyślnie aplikacje funkcji są tworzone przy użyciu wersji 2. x środowiska uruchomieniowego. Musisz mieć [Azure Functions środowiska uruchomieniowego w wersji](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1. x** , aby użyć szablonu Application Insights zaplanowanego podsumowania.  zrzut ekranu ![runtime ](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
+     > Domyślnie aplikacje funkcji są tworzone przy użyciu wersji 2. x środowiska uruchomieniowego. Musisz mieć [Azure Functions środowiska uruchomieniowego w wersji](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1. x** , aby użyć szablonu Application Insights zaplanowanego podsumowania.  zrzut ekranu środowiska uruchomieniowego ![](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
 
 
 
@@ -101,15 +97,15 @@ availabilityResults
 
    ![Zrzut ekranu ustawień funkcji](./media/automate-custom-reports/function-app-05.png)
 
-7. Wybierz **aplikacja funkcji** **funkcje platformy**  >   > **Ustawienia aplikacji**.
+7. Wybierz **aplikacja funkcji** **funkcje platformy** >  > **Ustawienia aplikacji**.
 
     ![Zrzut ekranu ustawień aplikacji funkcji platformy Azure](./media/automate-custom-reports/function-app-07.png)
 
-8. Utwórz trzy nowe ustawienia aplikacji z odpowiednimi odpowiednimi wartościami ``AI_APP_ID``, ``AI_APP_KEY`` i ``SendGridAPI``. Wybierz pozycję **Zapisz**.
+8. Utwórz trzy nowe ustawienia aplikacji z odpowiednimi odpowiednimi wartościami ``AI_APP_ID``, ``AI_APP_KEY``i ``SendGridAPI``. Wybierz pozycję **Zapisz**.
 
      ![Zrzut ekranu interfejsu integracji funkcji](./media/automate-custom-reports/function-app-08.png)
     
-    (Wartości AI_ można znaleźć w obszarze dostęp do interfejsu API dla zasobu Application Insights, na którym chcesz utworzyć raport. Jeśli nie masz klucza interfejsu API Application Insights, istnieje możliwość **utworzenia klucza interfejsu API**.
+    (Wartości AI_ można znaleźć w obszarze dostęp do interfejsu API dla zasobu Application Insights, dla którego chcesz utworzyć raport. Jeśli nie masz klucza interfejsu API Application Insights, istnieje możliwość **utworzenia klucza interfejsu API**.
     
    * AI_APP_ID = identyfikator aplikacji
    * AI_APP_KEY = klucz interfejsu API
@@ -146,7 +142,7 @@ Te kroki mają zastosowanie tylko wtedy, gdy nie masz jeszcze skonfigurowanego k
 
      ![Zrzut ekranu klucza interfejsu API ustawień](./media/automate-custom-reports/function-app-14.png)
 
-3. Spowoduje to uruchomienie witryny SendGrid. Wybierz pozycję **ustawienia**  > **klucze interfejsu API**.
+3. Spowoduje to uruchomienie witryny SendGrid. Wybierz pozycję **ustawienia** > **klucze interfejsu API**.
 
      ![Tworzenie i Wyświetlanie zrzutu ekranu aplikacji klucza interfejsu API](./media/automate-custom-reports/function-app-15.png)
 

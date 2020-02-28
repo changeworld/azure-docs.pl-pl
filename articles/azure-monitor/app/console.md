@@ -1,19 +1,15 @@
 ---
 title: Application Insights platformy Azure dla aplikacji konsolowych | Microsoft Docs
 description: Monitoruj aplikacje sieci Web pod kątem dostępności, wydajności i użycia.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/02/2019
 ms.reviewer: lmolkova
-ms.openlocfilehash: c8c71fa3798b7c56550b742a8b19c83336bb6ddf
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: baaea0f8055eeff0314fcf5fde00729ea8091d12
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889145"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655433"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights aplikacji konsolowych .NET
 
@@ -26,7 +22,7 @@ Potrzebna jest subskrypcja z [Microsoft Azure](https://azure.com). Zaloguj się 
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-* W witrynie [Azure Portal](https://portal.azure.com) [utwórz zasób usługi Application Insights](../../azure-monitor/app/create-new-resource.md). W obszarze Typ aplikacji wybierz pozycję **Ogólne**.
+* W witrynie [Azure Portal](https://portal.azure.com)[utwórz zasób usługi Application Insights](../../azure-monitor/app/create-new-resource.md). W obszarze Typ aplikacji wybierz pozycję **Ogólne**.
 * Wykonaj kopię klucza instrumentacji. Znajdź klucz na liście rozwijanej **podstawowe** informacje o utworzonym nowym zasobie.
 * Zainstaluj najnowszy pakiet [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) .
 * Ustaw klucz Instrumentacji w kodzie przed śledzeniem danych telemetrycznych (lub Ustaw zmienną środowiskową APPINSIGHTS_INSTRUMENTATIONKEY). Następnie powinno być możliwe ręczne śledzenie danych telemetrycznych i wyświetlanie ich w Azure Portal

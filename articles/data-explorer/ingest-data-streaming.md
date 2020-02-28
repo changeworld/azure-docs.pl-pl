@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 89772bea818a0ebb57135990b3a04fcb559e2716
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623305"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664936"
 ---
 # <a name="streaming-ingestion-preview"></a>Pozyskiwanie strumieniowe (wersja zapoznawcza)
 
@@ -76,7 +76,7 @@ Istnieją dwa obsługiwane typy pozyskiwania strumieniowego:
 * Limit rozmiaru danych na żądanie pozyskiwania wynosi 4 MB.
 * Aktualizacje schematu, takie jak tworzenie i modyfikowanie tabel i mapowania pozyskiwania, mogą potrwać do 5 minut w przypadku usługi pozyskiwania strumieniowego.
 * Włączenie pozyskiwania przesyłania strumieniowego w klastrze, nawet w przypadku, gdy dane nie są pozyskiwane za pośrednictwem przesyłania strumieniowego, program używa części lokalnego dysku SSD maszyn klastra do przesyłania strumieniowego danych pozyskiwania i zmniejsza ilość miejsca dostępnego na gorącą pamięć podręczną.
-* Nie można ustawić [tagów zakresu](/azure/kusto/management/extents-overview.md#extent-tagging) w danych pozyskiwania strumieniowego.
+* Nie można ustawić [tagów zakresu](/azure/kusto/management/extents-overview#extent-tagging) w danych pozyskiwania strumieniowego.
 
 Pozyskiwanie strumieniowe nie obsługuje następujących funkcji:
 * [Kursory bazy danych](/azure/kusto/management/databasecursor).

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 786075b4641675f7b36df427fff69f33c9cfc2c5
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 27b453c4e20c2ae3ccb6ddda5a00e42ba4e522f6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495055"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780366"
 ---
 |Name (Nazwa) |Opis |Efekt (s) |Wersja |Element źródłowy |
-|---|---|---|---|
+|---|---|---|---|---|
 |[\[wersja zapoznawcza\] oceny luk w zabezpieczeniach należy włączyć w Virtual Machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |Monitoruje luki w zabezpieczeniach wykryte przez Azure Security Center ocenę luk w Virtual Machines |AuditIfNotExists, wyłączone |1.0.0 — wersja zapoznawcza |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json)
 |[\[wersji zapoznawczej\]: zakresy dozwolonych adresów IP powinny być zdefiniowane w usługach Kubernetes Services](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |Ogranicz dostęp do interfejs API zarządzania usługami Kubernetes przez przyznanie dostępu do interfejsu API tylko adresom IP w określonych zakresach. Zaleca się ograniczenie dostępu do autoryzowanych zakresów adresów IP w celu zapewnienia, że tylko aplikacje z dozwolonych sieci będą mogły uzyskiwać dostęp do klastra. |Inspekcja, wyłączona |1.0.0 — wersja zapoznawcza |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json)
 |[\[podglądu\]: przekazywanie adresów IP na maszynie wirtualnej powinno być wyłączone](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbd352bd5-2853-4985-bf0d-73806b4a5744) |Włączenie przekazywania adresów IP na karcie sieciowej maszyny wirtualnej umożliwia komputerowi odbieranie ruchu kierowanego do innych miejsc docelowych. Przekazywanie adresów IP jest rzadko wymagane (np. w przypadku używania maszyny wirtualnej jako sieciowego urządzenia wirtualnego), dlatego należy je sprawdzić przez zespół ds. zabezpieczeń sieci. |AuditIfNotExists, wyłączone |1.0.0 — wersja zapoznawcza |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_IPForwardingOnVirtualMachines_Audit.json)

@@ -1,18 +1,16 @@
 ---
 title: Użyj analizy zmian aplikacji w Azure Monitor, aby znaleźć problemy z aplikacją sieci Web | Microsoft Docs
 description: Korzystając z analizy zmian aplikacji w Azure Monitor, można rozwiązywać problemy z aplikacjami w witrynach na żywo w programie Azure App Service.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: f2602dbee12f82c32ab3a3c2ec0566d8dfbeaa83
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 143f55a02a856b536172bd5fc2bac15903a228b9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211818"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655688"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Korzystanie z analizy zmian aplikacji (wersja zapoznawcza) w Azure Monitor
 
@@ -51,7 +49,7 @@ Analiza zmian przechwytuje stan wdrożenia i konfiguracji aplikacji co 4 godziny
 
 Zmiany zależności zasobów mogą również powodować problemy w aplikacji sieci Web. Na przykład jeśli aplikacja sieci Web wywołuje w pamięci podręcznej Redis, jednostka SKU pamięci podręcznej Redis może mieć wpływ na wydajność aplikacji sieci Web. Aby wykryć zmiany w zależnościach, Analiza zmian sprawdza rekord DNS aplikacji sieci Web. W ten sposób identyfikuje zmiany we wszystkich składnikach aplikacji, które mogą powodować problemy.
 Obecnie obsługiwane są następujące zależności:
-- Aplikacje internetowe
+- Web Apps
 - Azure Storage
 - Azure SQL
 

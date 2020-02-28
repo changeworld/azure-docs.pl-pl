@@ -3,17 +3,16 @@ title: Metryki niestandardowe w Azure Monitor
 description: Dowiedz się więcej o metrykach niestandardowych w Azure Monitor i sposobach ich modelowania.
 author: ancav
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 744958fc44a8d10bbc8ca5d44af8c473548ae5ca
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669163"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662352"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Metryki niestandardowe w Azure Monitor
 
@@ -29,7 +28,7 @@ Niestandardowe metryki mogą być wysyłane do Azure Monitor za pomocą kilku me
 
 W przypadku wysyłania niestandardowych metryk do Azure Monitor, każdy punkt danych lub wartość, raportowane muszą zawierać następujące informacje.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Uwierzytelnianie
 Aby przesłać niestandardowe metryki do Azure Monitor, jednostka, która przesyła metrykę, musi być prawidłowym tokenem Azure Active Directory (Azure AD) w nagłówku **okaziciela** żądania. Istnieje kilka obsługiwanych metod uzyskiwania prawidłowego tokenu okaziciela:
 1. [Zarządzane tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Zwraca tożsamość do zasobu platformy Azure, na przykład maszynę wirtualną. Tożsamość usługi zarządzanej (MSI) jest zaprojektowana w celu przyznania zasobom uprawnień do wykonywania określonych operacji. Przykładem jest umożliwienie zasobowi emisji metryk dotyczących siebie. Do zasobu lub jego pliku MSI można przyznać uprawnienia **wydawcy metryk monitorowania** dla innego zasobu. Za pomocą tego uprawnienia plik MSI może również emitować metryki dla innych zasobów.
 2. Nazwa [główna usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). W tym scenariuszu aplikacja usługi Azure AD lub usługa może mieć przypisane uprawnienia do emisji metryk dotyczących zasobu platformy Azure.
@@ -60,7 +59,7 @@ Każdy punkt danych wysyłany do Azure Monitor musi być oznaczony sygnaturą cz
 ### <a name="namespace"></a>Przestrzeń nazw
 Przestrzenie nazw umożliwiają kategoryzowanie i grupowanie podobnych metryk jednocześnie. Używając przestrzeni nazw, można osiągnąć izolację między grupami metryk, które mogą zbierać różne szczegółowe dane lub wskaźniki wydajności. Na przykład może istnieć przestrzeń nazw o nazwie **contosomemorymetrics** , która śledzi metryki użycia pamięci, które profilują aplikację. Inna przestrzeń nazw o nazwie **contosoapptransaction** może śledzić wszystkie metryki dotyczące transakcji użytkownika w aplikacji.
 
-### <a name="name"></a>Nazwa
+### <a name="name"></a>Name (Nazwa)
 **Nazwa** to nazwa metryki, która jest raportowana. Zwykle nazwa jest wystarczająco opisowa, aby pomóc w ustaleniu, co jest mierzone. Przykładem jest Metryka, która mierzy liczbę bajtów pamięci używanych na danej maszynie wirtualnej. Może istnieć Nazwa metryki, taka jak **bajty pamięci**.
 
 ### <a name="dimension-keys"></a>Klucze wymiarów
@@ -89,7 +88,7 @@ Na przykład jeśli w danej chwili wystąpiło 4 transakcje logowania do aplikac
 
 |Transakcja 1|Transakcja 2|Transakcja 3|Transakcja 4|
 |---|---|---|---|
-|7 MS|4 MS|13 MS|16 MS|
+|7 ms|4 MS|13 MS|16 MS|
 |
 
 Następnie wynikająca z niej publikacja metryk Azure Monitor będzie następująca:

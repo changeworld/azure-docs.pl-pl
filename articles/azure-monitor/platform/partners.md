@@ -1,18 +1,15 @@
 ---
 title: Partnerzy, którzy integrują się z Azure Monitor
 description: Dowiedz się więcej o partnerach Azure Monitor i sposobach ich integracji z dokumentacją.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: e111bcdde9381e8e418e7027d8294aa7dad7e39d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40ba4c4f0a90d5bca03afea67302a5dbb77de027
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023875"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659462"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integracje partnerów
 
@@ -89,7 +86,7 @@ DynaTrace OneAgent integruje się z maszynami wirtualnymi platformy Azure i App 
 
 [Przejdź do dokumentacji.][dynatrace-doc]
 
-## <a name="elastic"></a>Elastyczność
+## <a name="elastic"></a>Kształcenia
 
 ![Elastyczne logo](./media/partners/elastic.png)
 
@@ -247,7 +244,7 @@ Sumo Logic to bezpieczna, natywna w chmurze usługa analizy danych maszynowych, 
 
 ![Logo platforma turbonomic](./media/partners/Turbonomic.png)
 
-Usługa Turbonomic automatyzuje obciążenia dla chmur hybrydowych, jednocześnie optymalizując wydajność, koszty i zgodność ze standardami w czasie rzeczywistym. Platforma turbonomic pomaga organizacjom elastycznie korzystać z platformy Azure przez ciągłą optymalizację zawartości w celu zapewnienia, że aplikacje będą stale pobierać wymagane zasoby, aby zapewnić ich umowę SLA i nie więcej niż w przypadku obliczeń, magazynu i sieci dla IaaS i PaaS warstwy. Organizacje mogą symulować migracje, poprawnie skalować obciążenia i wycofać zasoby centrum danych do zawodowej migracji na platformę Azure w ramach budżetu przy jednoczesnym zapewnieniu zarówno wydajności, jak i zgodności. Usługa Turbonomic pracuje w oparciu o interfejs API i działa jako bezagentowa maszyna wirtualna na platformie Azure oraz lokalnie.
+Platforma turbonomic zapewnia automatyzację obciążeń dla chmur hybrydowych przez równoczesne Optymalizowanie wydajności, kosztów i zgodności w czasie rzeczywistym. Platforma turbonomic pomaga organizacjom elastycznie korzystać z platformy Azure przez ciągłą optymalizację zawartości w celu zapewnienia, że aplikacje będą stale pobierać wymagane zasoby, aby zapewnić ich umowę SLA i nie więcej niż w przypadku obliczeń, magazynu i sieci dla IaaS i PaaS warstwy. Organizacje mogą symulować migracje, poprawnie skalować obciążenia i wycofać zasoby centrum danych do zawodowej migracji na platformę Azure w ramach budżetu przy jednoczesnym zapewnieniu zarówno wydajności, jak i zgodności. Platforma turbonomic jest obsługiwany przez interfejs API i działa jako maszyna wirtualna bez agentów na platformie Azure i lokalnie.
 
 [Dowiedz się więcej.][turbonomic-doc]
 

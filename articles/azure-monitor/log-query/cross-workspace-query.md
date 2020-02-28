@@ -1,18 +1,17 @@
 ---
 title: Wykonywanie zapytań między zasobami przy użyciu Azure Monitor | Microsoft Docs
 description: W tym artykule opisano, jak można wykonywać zapytania względem zasobów z wielu obszarów roboczych i aplikacji usługi App Insights w ramach subskrypcji.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/05/2019
-ms.openlocfilehash: 0eaaf1157bf49068958bc07d17a23fc31dd99de0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4740034bd970f42833125fa43bfdf72f710ac147
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365499"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670274"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Wykonywanie zapytań dotyczących dzienników wielu zasobów w Azure Monitor  
 
@@ -53,7 +52,7 @@ Identyfikację obszaru roboczego można wykonać na jeden z kilku sposobów:
 
 * Identyfikator zasobu platformy Azure — unikatowa tożsamość obszaru roboczego zdefiniowana przez platformę Azure. Identyfikator zasobu jest używany, gdy nazwa zasobu jest niejednoznaczna.  W przypadku obszarów roboczych format: */subscriptions/subscriptionId/ResourceGroups/resourceGroup/Providers/Microsoft. OperationalInsights/Workspaces/ComponentName*.  
 
-    Przykład:
+    Na przykład:
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
@@ -84,7 +83,7 @@ Identyfikowanie aplikacji w Application Insights można wykonać za pomocą wyra
 
 * Identyfikator zasobu platformy Azure — zdefiniowana przez platformę Azure unikatowa tożsamość aplikacji. Identyfikator zasobu jest używany, gdy nazwa zasobu jest niejednoznaczna. Format to: */subscriptions/subscriptionId/ResourceGroups/resourceGroup/Providers/Microsoft. OperationalInsights/Components/ComponentName*.  
 
-    Przykład:
+    Na przykład:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```

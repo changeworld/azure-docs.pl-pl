@@ -3,17 +3,16 @@ title: Omówienie dzienników platformy Azure | Microsoft Docs
 description: Omówienie dzienników w Azure Monitor, które zawierają rozbudowane, częste dane dotyczące operacji zasobu platformy Azure.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 5f02368bfb0c084691376300980d4cdee0d9b3be
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 89de6b3737c8a1e91832aba8f749078806b64e90
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530888"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659324"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Omówienie dzienników platformy Azure
 Dzienniki platformy zapewniają szczegółowe informacje diagnostyczne i inspekcji dla zasobów platformy Azure oraz platformy platformy Azure, od których zależą. Są one generowane automatycznie, mimo że konieczne jest skonfigurowanie niektórych dzienników platformy do przechowania do co najmniej jednego miejsca docelowego, które ma zostać zachowane. Ten artykuł zawiera omówienie dzienników platformy, w tym informacje, które zapewnia i jak można je skonfigurować do zbierania i analizy.
@@ -21,9 +20,9 @@ Dzienniki platformy zapewniają szczegółowe informacje diagnostyczne i inspekc
 ## <a name="types-of-platform-logs"></a>Typy dzienników platformy
 W poniższej tabeli wymieniono konkretne dzienniki platformy, które są dostępne na różnych warstwach platformy Azure.
 
-| Dziennik | Warstwa | Opis |
+| Log | Warstwa | Opis |
 |:---|:---|:---|
-| Dzienniki zasobów | Zasoby Azure | Zapewniaj wgląd w operacje wykonywane w ramach zasobu platformy Azure ( *płaszczyzny danych*), na przykład w celu uzyskania wpisu tajnego z Key Vault lub żądania do bazy danych. Zawartość dzienników zasobów zależy od usługi platformy Azure i typu zasobu.<br><br>*Dzienniki zasobów wcześniej były nazywane dziennikami diagnostycznymi.*  |
+| Dzienniki zasobów | Zasoby platformy Azure | Zapewniaj wgląd w operacje wykonywane w ramach zasobu platformy Azure ( *płaszczyzny danych*), na przykład w celu uzyskania wpisu tajnego z Key Vault lub żądania do bazy danych. Zawartość dzienników zasobów zależy od usługi platformy Azure i typu zasobu.<br><br>*Dzienniki zasobów wcześniej były nazywane dziennikami diagnostycznymi.*  |
 | Dziennik aktywności | Subskrypcja platformy Azure | Zapewnia wgląd w operacje dotyczące poszczególnych zasobów platformy Azure w ramach subskrypcji z zewnątrz (*płaszczyzny zarządzania*) poza aktualizacjami Service Health zdarzeń. Użyj dziennika _aktywności, aby określić,_ kto i kiedy _mają_być wykonywane operacje zapisu (Put, post, Delete) dotyczące zasobów w ramach subskrypcji. Dodatkowo użytkownik rozumie stanu operacji i inne odpowiednie właściwości.  Dla każdej subskrypcji platformy Azure istnieje pojedynczy dziennik aktywności. |
 | Dzienniki Azure Active Directory | Dzierżawa platformy Azure |  Zawiera historię działań związanych z logowaniem i dziennika inspekcji zmian wprowadzonych w Azure Active Directory dla określonej dzierżawy. Zobacz, [co to są raporty Azure Active Directory?](../../active-directory/reports-monitoring/overview-reports.md) , aby uzyskać pełny opis Azure Active Directory dzienników.   |
 
@@ -42,10 +41,10 @@ Dostępne są różne opcje wyświetlania i analizowania różnych dzienników p
 - Wyświetl Azure Active Directory raporty dotyczące zabezpieczeń i działań w Azure Portal. Zobacz, [co to są raporty Azure Active Directory?](../../active-directory/reports-monitoring/overview-reports.md)  Aby uzyskać szczegółowe informacje.
 - Dzienniki zasobów są generowane automatycznie przez obsługiwane zasoby platformy Azure, ale nie są dostępne do wyświetlania, dopóki nie zostaną wysłane do [miejsca docelowego](#destinations). 
 
-## <a name="destinations"></a>Miejsca docelowe
+## <a name="destinations"></a>Docelowym
 Można wysłać dzienniki platformy do co najmniej jednego miejsca docelowego w poniższej tabeli, w zależności od wymagań dotyczących monitorowania. Skonfiguruj miejsca docelowe dla dzienników platformy, [tworząc ustawienie diagnostyczne](diagnostic-settings.md).
 
-| Cel | Scenariusz | Informacje |
+| Element docelowy | Scenariusz | Dokumentacja |
 |:---|:---|:---|:---|
 | Obszar roboczy usługi Log Analytics | Analizuj dzienniki z innymi danymi monitorowania i korzystaj z funkcji Azure Monitor, takich jak zapytania i alerty dzienników. | [Dziennik aktywności i dzienniki zasobów](resource-logs-collect-workspace.md)<br>[Dzienniki katalogów aktywności platformy Azure](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
 | Azure Storage | Archiwizuj dzienniki na potrzeby inspekcji, analizy statycznej lub kopii zapasowej. |[Dziennik aktywności i dzienniki zasobów](archive-diagnostic-logs.md)<br>[Dzienniki katalogów aktywności platformy Azure](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |

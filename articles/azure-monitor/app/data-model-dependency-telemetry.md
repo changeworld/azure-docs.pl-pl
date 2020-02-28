@@ -1,25 +1,21 @@
 ---
 title: Model danych zależności Application Insights Azure Monitor
 description: Application Insights model danych dla telemetrii zależności
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 5021d3b34816159fc78590a5947ddd3a790303ee
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872642"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671923"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Telemetria zależności: Application Insights model danych
 
 Telemetria zależności (w [Application Insights](../../azure-monitor/app/app-insights-overview.md)) reprezentuje interakcję monitorowanego składnika ze składnikiem zdalnym, takim jak SQL lub punkt końcowy HTTP.
 
-## <a name="name"></a>Nazwa
+## <a name="name"></a>Name (Nazwa)
 
 Nazwa polecenia zainicjowanego z tym wywołaniem zależności. Niska wartość kardynalności. Przykładami są nazwa procedury przechowywanej i szablon ścieżki URL.
 
@@ -35,7 +31,7 @@ Polecenie zainicjowane przez to wywołanie zależności. Przykłady to instrukcj
 
 Nazwa typu zależności. Niska wartość kardynalności logicznego grupowania zależności i interpretacji innych pól, takich jak CommandName i resultCode. Przykłady to SQL, Azure Table i HTTP.
 
-## <a name="target"></a>Cel
+## <a name="target"></a>Środowisko docelowe
 
 Lokacja docelowa wywołania zależności. Przykłady to nazwa serwera, adres hosta. Aby uzyskać więcej informacji, zobacz stronę [korelacji](../../azure-monitor/app/correlation.md) .
 

@@ -11,23 +11,47 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2020
+ms.date: 02/25/2020
 ms.author: juliako
-ms.openlocfilehash: bfbef771d33ad4d63ec8eaef83331e497d476071
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f9067562f67190b8bc04392f33078d4d3262f986
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599472"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654583"
 ---
 # <a name="media-services-live-event-error-codes"></a>Kody błędów zdarzeń na żywo Media Services
 
-W poniższej tabeli wymieniono kody błędów [zdarzeń na żywo](live-events-outputs-concept.md) :
+W tabelach w tej sekcji wymieniono kody błędów [zdarzeń na żywo](live-events-outputs-concept.md) .
 
-|Błąd|Opis|
-|---|---| 
-|MPE_INGEST_FRAMERATE_EXCEEDED|Ten błąd występuje, gdy koder przychodzący wysyła strumienie przekraczające 30fps do kodowania na żywo zdarzeń/kanałów.|
-|MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED|Ten błąd występuje, gdy koder przychodzący wysyła strumienie z przekroczeniem następujących rozwiązań: 1920x1088 do kodowania na żywo zdarzeń/kanałów i 4096 x 2160 do przesyłania zdarzeń/kanałów na żywo.|
+## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
+
+Po zasubskrybowaniu zdarzeń [Event Grid](https://docs.microsoft.com/azure/event-grid/) dla zdarzenia na żywo może zostać wyświetlony jeden z następujących błędów ze zdarzenia [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected) .
+
+| Kod wyniku | Opis |
+| ----------- | ----------- |
+| MPE_RTMP_APPID_AUTH_FAILURE | Nieprawidłowy adres URL pozyskiwania |
+| MPE_INGEST_ENCODER_CONNECTION_DENIED | Nie istnieje adres IP kodera w skonfigurowanej liście dozwolonych adresów IP |
+| MPE_INGEST_RTMP_SETDATAFRAME_NOT_RECEIVED | Koder RTMP nie wysłał polecenia setDataFrame. |
+| MPE_INGEST_CODEC_NOT_SUPPORTED | Określony koder-dekoder nie jest obsługiwany. |
+| MPE_INGEST_DESCRIPTION_INFO_NOT_RECEIVED |Informacje o opisie nośnika nie zostały odebrane przed dostarczeniem rzeczywistych danych nośnika.|
+| MPE_INGEST_MEDIA_QUALITIES_EXCEEDED |Liczba jakości dla typu audio lub wideo przekroczyła maksymalny dozwolony limit.|
+| MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED |Łączna liczba przychodzących szybkości transmisji bitów w zdarzeniu lub w usłudze kanału na żywo przekroczyła maksymalny dozwolony limit.|
+| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Sygnatura czasowa dla FLVTag wideo lub audio jest nieprawidłowa z kodera RTMP. |
+| MPE_INGEST_FRAMERATE_EXCEEDED | Przychodzące strumienie dla koderów przychodzących z szybkością klatek przekraczają maksymalną dozwoloną liczbę 30fps na potrzeby kodowania na żywo zdarzeń/kanałów.|
+| MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED | Przychodzące strumienie przekazywanego kodera przekraczają następujące dozwolone rozwiązania: 1920x1088 do kodowania na żywo zdarzeń/kanałów i 4096 x 2160 dla zdarzeń przesyłanych/kanałów na żywo.|
+
+## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
+
+Może zostać wyświetlony jeden z następujących błędów ze zdarzenia [LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) .
+
+|Kod wyniku|Opis|
+|---|---|
+|MPE_RTMP_SESSION_IDLE_TIMEOUT|Przekroczono limit czasu bezczynności sesji RTMP po upływie limitu czasu.|
+|MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID|Sygnatura czasowa dla FLVTag wideo lub audio jest nieprawidłowa z kodera RTMP.|
+|MPE_CAPACITY_LIMIT_REACHED|Koder wysyła zbyt szybkie dane.|
+|Nieznane kody błędów|Te kody błędów mogą należeć do zakresu od błędu pamięci do zduplikowanych wpisów w mapie skrótów.|
+
 
 ## <a name="see-also"></a>Zobacz też
 

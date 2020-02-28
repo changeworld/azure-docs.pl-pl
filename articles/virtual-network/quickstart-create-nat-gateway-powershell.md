@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: fadf42e7bd7d754dea64542f06866a439eb460ec
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 7e8cbadf2c68b97451b40afb876ceb7d88d3758e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588777"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661060"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-powershell"></a>Szybki Start: Tworzenie bramy NAT przy użyciu Azure PowerShell
 
@@ -35,7 +35,7 @@ Ten samouczek można wykonać przy użyciu Azure Cloud Shell lub uruchomić pole
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Utwórz grupę zasobów za pomocą polecenia [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=latest). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
@@ -238,7 +238,7 @@ $sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey -VM $vmconfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 ```
-Połącz definicje konfiguracji, aby utworzyć maszynę wirtualną o nazwie **myVM** z opcją [New-AzVM]((https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.8.0)) w **myResourceGroupNAT**.
+Połącz definicje konfiguracji, aby utworzyć maszynę wirtualną o nazwie **myVM** z opcją [New-AzVM](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) w **myResourceGroupNAT**.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'

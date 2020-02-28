@@ -1,18 +1,17 @@
 ---
 title: Kierowanie rozwiązań do monitorowania w Azure Monitor | Microsoft Docs
 description: Ukierunkowane rozwiązania do monitorowania umożliwiają ograniczenie rozwiązań monitorowania do określonego zestawu agentów.  W tym artykule opisano, jak utworzyć konfigurację zakresu i zastosować ją do rozwiązania.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 04b47cb6079d9213c1a20425f62286f1b2aa778b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555310"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663236"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Kierowanie rozwiązań do monitorowania w Azure Monitor (wersja zapoznawcza)
 Po dodaniu rozwiązania do monitorowania do subskrypcji jest ono automatycznie wdrażane domyślnie dla wszystkich agentów systemu Windows i Linux połączonych z obszarem roboczym Log Analytics.  Możesz chcieć zarządzać kosztami i ograniczyć ilość danych zbieranych dla rozwiązania, ograniczając je do określonego zestawu agentów.  W tym artykule opisano sposób korzystania z funkcji **określania celu rozwiązania** , która umożliwia zastosowanie zakresu do rozwiązań.

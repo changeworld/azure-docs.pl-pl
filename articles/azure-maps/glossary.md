@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: a6c1e14e332f6081111d2a58a30702093b99a876
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c9d5c2efc14dec5beee0eaf81a4f628421ef3d49
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198245"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657048"
 ---
 # <a name="glossary"></a>Słownik
 
@@ -47,9 +47,9 @@ Poniższa lista zawiera opis typowych słów używanych z usługami Azure Maps.
 
 <a name="asynchronous-request"></a>**Żądanie asynchroniczne**: żądanie HTTP, które otwiera połączenie i wysyła żądanie do serwera zwracającego identyfikator dla żądania asynchronicznego, a następnie zamyka połączenie. Serwer nadal przetwarza żądanie, a użytkownik może sprawdzić stan przy użyciu identyfikatora. Po zakończeniu przetwarzania żądania użytkownik może pobrać odpowiedź. Ten typ żądania jest używany do długotrwałych procesów.
 
-<a name="autocomplete"></a>**Autouzupełnianie**: funkcja w aplikacji przewiduje resztę wyrazu wpisywanego przez użytkownika. 
+<a name="autocomplete"></a>**Autouzupełnianie**: funkcja w aplikacji, która przewiduje pozostałą część wyrazu wpisywaną przez użytkownika. 
 
-<a name="autosuggest"></a>Automatyczne **sugerowanie**: funkcja w aplikacji przewiduje logiczne możliwości wpisywania przez użytkownika.
+<a name="autosuggest"></a>Automatyczne **sugerowanie**: funkcja w aplikacji, która przewiduje logiczne możliwości wpisywania przez użytkownika.
 
 <a name="azure-location-based-services-lbs"></a>**Azure Location based Services (funt)** : wcześniejsza nazwa Azure Maps, gdy była w wersji zapoznawczej.
 
@@ -211,7 +211,7 @@ Poniższa lista zawiera opis typowych słów używanych z usługami Azure Maps.
 
 <a name="isodistance"></a>**Isodistance**: podano lokalizację, a isochrone definiuje obszar, w którym ktoś może poruszać się w określonej odległości dla trybu transportu w dowolnym kierunku. Zobacz też [osiągalny zakres](#reachable-range).
 
-## <a name="k"></a>k
+## <a name="k"></a>K
 
 <a name="kml"></a>**KML**: znany również jako język oznakowania, jest typowym FORMATEM pliku XML do przechowywania danych wektorów geograficznych, takich jak punkty, linie i wielokąty. 
 

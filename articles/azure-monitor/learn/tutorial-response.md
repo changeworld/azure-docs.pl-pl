@@ -1,24 +1,23 @@
 ---
 title: Odpowiadanie na zdarzenia przy użyciu alertów usługi Azure Log Analytics | Microsoft Docs
 description: Ten samouczek pomaga w zrozumieniu alertów w usłudze Log Analytics, które pomagają identyfikować ważne informacje w obszarze roboczym oraz aktywnie powiadamiają użytkownika o problemach lub wywołują akcje w celu ich skorygowania.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: 11ce572cdb8a04dac07689b37eef76f354475df3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 756ce6c8551d259fc27855489b4276d90c7aa771
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365626"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670376"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Odpowiadanie na zdarzenia przy użyciu alertów platformy Azure Monitor
 Alerty platformy Azure Monitor mogą identyfikować ważne informacje w repozytorium usługi Log Analytics. Są one tworzone przy użyciu reguł alertów, które automatycznie uruchamiają przeszukiwanie dzienników w regularnych odstępach czasu. Jeśli wyniki przeszukiwania dzienników pasują do danych kryteriów, zostaje utworzony rekord alertu. Ponadto można go skonfigurować tak, aby generował automatyczną odpowiedź.  Ten samouczek jest kontynuacją samouczka [Tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Log Analytics](tutorial-logs-dashboards.md).   
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie reguły alertu
@@ -26,7 +25,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 
 Do utworzenia przykładu przedstawionego w tym samouczku potrzebna jest istniejąca maszyna wirtualna [połączona z obszarem roboczym usługi Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
-## <a name="sign-in-to-azure-portal"></a>Zaloguj się w witrynie Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Logowanie do witryny Azure Portal
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-alerts"></a>Tworzenie alertów
@@ -41,7 +40,7 @@ W poniższym przykładzie tworzona jest reguła alertu pomiaru metryki na podsta
 5. Skonfiguruj alert przy użyciu następujących informacji:  
    a. Z listy rozwijanej **Na podstawie** wybierz pozycję **Pomiar metryki**.  Pomiar metryki utworzy alert dla każdego obiektu w zapytaniu z wartością, która przekracza określony próg.  
    b. W polu **Warunek** wybierz wartość **Większe niż**, a następnie wprowadź **90** w polu **Próg**.  
-   d. W sekcji Wyzwalaj alert w oparciu o wybierz opcję **Kolejne naruszenia**, z listy rozwijanej wybierz opcję **Większe niż** i wprowadź wartość 3.  
+   c. W sekcji Wyzwalaj alert w oparciu o wybierz opcję **Kolejne naruszenia**, z listy rozwijanej wybierz opcję **Większe niż** i wprowadź wartość 3.  
    d. W sekcji Ocena w oparciu o zmień wartość pozycji **Okres** na **30** minut. Reguła będzie uruchamiana co pięć minut i będzie zwracać rekordy utworzone w ciągu ostatnich 30 minut od aktualnej godziny.  Ustawienie okresu na szerszy zakres może spowodować potencjalne opóźnienie danych i gwarantuje, że zapytanie zwróci dane w celu uniknięcia fałszywie negatywnego wyniku, jeśli alert nigdy nie został uruchomiony.  
 6. Kliknij przycisk **Gotowe**, aby zakończyć tworzenie reguły alertu.<br><br> ![Konfigurowanie sygnału alertu](./media/tutorial-response/alert-signal-logic-02.png)<br> 
 7. Teraz przejdź do drugiego kroku: podaj nazwę alertu w polu **Nazwa reguły alertu**, np. **Procent procesora przekracza 90 procent**.  Wpisz **Opis**, podając szczegóły alertu, a następnie wybierz z dostępnych opcji pozycję **Critical(Sev 0)** (Krytyczny (ważność 0)) jako wartość pola **Ważność**.<br><br> ![Konfigurowanie szczegółów alertu](./media/tutorial-response/alert-signal-logic-04.png)<br>
@@ -49,7 +48,7 @@ W poniższym przykładzie tworzona jest reguła alertu pomiaru metryki na podsta
 9. W trzecim i ostatnim kroku określ **Grupę akcji**, która gwarantuje, że za każdym razem, gdy zostaje wywołany alert, wykonywane są te same akcje, i która może być używana dla każdej zdefiniowanej reguły.  Skonfiguruj nową grupę akcji, wprowadzając następujące informacje:  
    a. Wybierz pozycję **Nowa grupa akcji**, zostanie wyświetlone okienko **Dodaj grupę akcji**.  
    b. W polu **Nazwa grupy akcji** wpisz nazwę, np. **Dział operacji IT — powiadom**, a w polu **Krótka nazwa** wpisz skrót, np. **itops-n**.  
-   d. Sprawdź, czy wartości domyślne w polach **Subskrypcja** i **Grupa zasobów** są poprawne. Jeśli nie, wybierz je z listy rozwijanej.   
+   c. Sprawdź, czy wartości domyślne w polach **Subskrypcja** i **Grupa zasobów** są poprawne. Jeśli nie, wybierz je z listy rozwijanej.   
    d. W sekcji Akcje wpisz nazwę akcji, np. **Wyślij wiadomość e-mail**, a w obszarze **Typ akcji** wybierz z listy rozwijanej pozycję **Wiadomość e-mail/SMS/wypychana/głosowa**. Po prawej stronie zostanie otwarte okienko właściwości **Wiadomość e-mail/SMS/wypychana/głosowa**, w którym podać dodatkowe informacje.  
    e. W okienku **Wiadomość e-mail/SMS/wypychana/głosowa** włącz opcję **E-mail** i podaj prawidłowy adres e-mail SMTP, na który mają być wysyłane wiadomości.  
    f. Kliknij przycisk **OK**, aby zapisać zmiany.<br><br> 

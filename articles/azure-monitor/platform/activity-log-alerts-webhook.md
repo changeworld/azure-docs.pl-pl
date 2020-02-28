@@ -1,18 +1,15 @@
 ---
 title: Informacje o schemacie elementu webhook używanym w alertach dziennika aktywności
 description: Informacje o schemacie JSON, który jest publikowany w adresie URL elementu webhook po aktywowaniu alertu dziennika aktywności.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/31/2017
-ms.openlocfilehash: eb43db7a67063622f6a6125178267573cd209471
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.subservice: alerts
+ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748805"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669050"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Elementy webhook dla alertów dziennika aktywności platformy Azure
 W ramach definicji grupy akcji można skonfigurować punkty końcowe elementu webhook, aby otrzymywać powiadomienia o alertach dziennika aktywności. Za pomocą elementów webhook można kierować te powiadomienia do innych systemów na potrzeby akcji wykonywanych po przetworzeniu lub w niestandardowym. W tym artykule przedstawiono sposób, w jaki zostanie wyświetlony ładunek dla wpisu HTTP dla elementu webhook.
@@ -88,7 +85,7 @@ Element webhook może opcjonalnie użyć autoryzacji opartej na tokenach na potr
 }
 ```
 
-### <a name="security"></a>Zabezpieczenia
+### <a name="security"></a>Bezpieczeństwo
 
 ```json
 {
@@ -280,7 +277,7 @@ Aby uzyskać szczegółowe informacje dotyczące schematu alertów dziennika akt
 | eventDataId |Unikatowy identyfikator zdarzenia. |
 | eventSource |Nazwa usługi lub infrastruktury platformy Azure, która wygenerowała zdarzenie. |
 | httpRequest |Żądanie zwykle obejmuje metodę identyfikatorem żądania klienta, clientIpAddress i HTTP (na przykład PUT). |
-| level |Jedna z następujących wartości: krytyczne, błąd, ostrzeżenie i informacje. |
+| poziom |Jedna z następujących wartości: krytyczne, błąd, ostrzeżenie i informacje. |
 | operationId |Zazwyczaj identyfikator GUID współużytkowany przez zdarzenia odpowiadające pojedynczej operacji. |
 | operationName |Nazwa operacji. |
 | properties |Właściwości zdarzenia. |

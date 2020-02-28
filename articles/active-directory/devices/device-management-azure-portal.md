@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c8e94a1b15ad8cd55019f9351c82f58130e472d
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420605"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654668"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Zarządzanie tożsamościami urządzeń przy użyciu Azure Portal
 
@@ -29,15 +29,10 @@ W tym artykule:
 
 ## <a name="manage-device-identities"></a>Zarządzanie tożsamościami urządzeń
 
-Portal usługi Azure AD udostępnia centralne miejsce do zarządzania tożsamościami urządzeń. Można to zrobić za pomocą [linku bezpośredniego](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) lub wykonując następujące czynności ręczne:
+Portal usługi Azure AD udostępnia centralne miejsce do zarządzania tożsamościami urządzeń. Możesz to zrobić za pomocą [linku bezpośredniego](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) lub:
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako administrator.
-
-2. Wyszukaj i wybierz pozycję **Azure Active Directory** lub wybierz ją ze strony **głównej** .
-
-3. W sekcji **Zarządzanie** kliknij pozycję **urządzenia**.
-
-   ![Konfigurowanie ustawień urządzenia](./media/device-management-azure-portal/74.png)
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
+1. Przejdź do **Azure Active Directory** > **urządzeń**.
 
 Na stronie **urządzenia** można:
 
@@ -50,13 +45,11 @@ Na stronie **urządzenia** można:
 
 Aby zarządzać tożsamościami urządzeń za pomocą portalu usługi Azure AD, urządzenia muszą być [zarejestrowane lub dołączone](overview.md) do usługi Azure AD. Jako administrator możesz dostosować proces rejestrowania i dołączania urządzeń przez skonfigurowanie ustawień urządzenia.
 
-![Konfigurowanie ustawień urządzenia](./media/device-management-azure-portal/22.png)
-
-Strona Ustawienia urządzenia umożliwia konfigurowanie:
+Strona Ustawienia urządzenia umożliwia konfigurowanie ustawień związanych z tożsamościami urządzeń:
 
 ![Zarządzanie urządzeniem usługi Intune](./media/device-management-azure-portal/21.png)
 
-- **Użytkownicy mogą dołączać urządzenia do usługi Azure AD** — to ustawienie umożliwia wybranie użytkowników, którzy mogą rejestrować swoje urządzenia jako urządzenia przyłączone do usługi Azure AD. Wartość domyślna to **wszystkie**.
+- **Użytkownicy mogą dołączać urządzenia do usługi Azure AD** — to ustawienie umożliwia wybranie użytkowników, którzy mogą rejestrować swoje urządzenia jako urządzenia przyłączone do usługi Azure AD. Wartość domyślna to **Wszystkie**.
 
 > [!NOTE]
 > **Użytkownicy mogą dołączać urządzenia do ustawienia usługi Azure AD** mają zastosowanie tylko do usługi Azure AD JOIN w systemie Windows 10.
@@ -81,12 +74,7 @@ Ta opcja to funkcja Premium dostępna za pomocą produktów, takich jak Azure AD
 Dostępne są dwie opcje lokalizowania zarejestrowanych i dołączonych urządzeń:
 
 - **Wszystkie urządzenia** w sekcji **Zarządzanie** na stronie **urządzenia**  
-
-   ![Wszystkie urządzenia](./media/device-management-azure-portal/41.png)
-
 - **Urządzenia** w sekcji **Zarządzanie** na stronie **użytkownika**
-
-   ![Wszystkie urządzenia](./media/device-management-azure-portal/43.png)
 
 W przypadku obu opcji można przejść do widoku, który:
 
@@ -192,8 +180,6 @@ Działania dotyczące urządzeń są dostępne za pomocą dzienników aktywnośc
 - Operacje na urządzeniach, takie jak usuwanie lub aktualizowanie urządzenia
 
 Punktem wejścia do danych inspekcji są **dzienniki inspekcji** w sekcji **aktywność** na stronie **urządzenia** .
-
-![Dzienniki inspekcji](./media/device-management-azure-portal/61.png)
 
 Dziennik inspekcji zawiera domyślny widok listy, który pokazuje:
 

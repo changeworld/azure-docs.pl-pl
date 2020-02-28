@@ -1,18 +1,17 @@
 ---
 title: Zakres zapytania dziennika w Azure Monitor Log Analytics | Microsoft Docs
 description: Opisuje zakres i zakres czasu dla zapytania dziennika w Azure Monitor Log Analytics.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
-ms.openlocfilehash: dec81bfde160cd9913db07bb99629b8fbcc37364
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365210"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660313"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Zakres i zakres czasu zapytania dziennika w Azure Monitor Log Analytics
 Po uruchomieniu [zapytania dziennika](log-query-overview.md) w [log Analytics w Azure Portal](get-started-portal.md), zestaw danych ocenianych przez zapytanie zależy od zakresu i wybranego zakresu czasu. W tym artykule opisano zakres i zakres czasu oraz sposób, w jaki można ustawić każdą z nich w zależności od wymagań. Opisano w nim również zachowanie różnych typów zakresów.

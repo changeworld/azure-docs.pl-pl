@@ -1,18 +1,17 @@
 ---
 title: Tworzenie potoku danych za pomocą interfejsu API modułu zbierającego dane Azure Monitor | Microsoft Docs
 description: Korzystając z Azure Monitor interfejsu API modułu zbierającego dane HTTP, można dodać dane po JSON do obszaru roboczego Log Analytics z dowolnego klienta, który może wywołać interfejs API REST. W tym artykule opisano sposób przekazywania danych przechowywanych w plikach w zautomatyzowany sposób.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 3074d8d9dfcb3dbca31821d73cfd6daee056edb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0300b44577725ddb272086713220d3318f1726fe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363969"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655344"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Tworzenie potoku danych za pomocą interfejsu API modułu zbierającego dane
 

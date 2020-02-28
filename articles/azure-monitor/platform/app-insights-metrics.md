@@ -3,17 +3,16 @@ title: Metryki oparte na dzienniku usługi Azure Application Insights | Microsof
 description: W tym artykule przedstawiono metryki usługi Azure Application Insights z obsługiwanymi agregacjami i wymiarami. Szczegółowe informacje o metrykach opartych na dzienniku zawierają bazowe instrukcje zapytania Kusto.
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 847c56faae61483813286c46190764327e287783
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887249"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664919"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights metryki oparte na dzienniku
 
@@ -50,7 +49,7 @@ Metryka *dostępności* przedstawia wartość procentową przebiegów testów si
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|---|---|---|
-|Wartość procentowa|Średnia|Lokalizacja przebiegu, nazwa testu|
+|Procent|Średnia|Lokalizacja przebiegu, nazwa testu|
 
 ```Kusto
 availabilityResults 
@@ -64,7 +63,7 @@ Metryka *czas trwania testu dostępności* pokazuje, ile czasu zajęło uruchomi
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|---|---|---|
-|)|Średnia, minimum, maksimum|Lokalizacja przebiegu, nazwa testu, wynik testu
+|Milisekundy|Średnia, minimum, maksimum|Lokalizacja przebiegu, nazwa testu, wynik testu
 
 ```Kusto
 availabilityResults
@@ -99,7 +98,7 @@ Metryki przeglądarki są zbierane przez zestaw Application Insights JavaScript 
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
 |---|---|---|
-|)|Średnia, minimum, maksimum|Brak|
+|Milisekundy|Średnia, minimum, maksimum|None|
 
 ```Kusto
 browserTimings
@@ -115,7 +114,7 @@ browserTimings
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
 |---|---|---|
-|)|Średnia, minimum, maksimum|Brak|
+|Milisekundy|Średnia, minimum, maksimum|None|
 
 ```Kusto
 browserTimings
@@ -131,7 +130,7 @@ browserTimings
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
 |---|---|---|
-|)|Średnia, minimum, maksimum|Brak|
+|Milisekundy|Średnia, minimum, maksimum|None|
 
 ```Kusto
 browserTimings
@@ -147,7 +146,7 @@ browserTimings
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
 |---|---|---|
-|)|Średnia, minimum, maksimum|Brak|
+|Milisekundy|Średnia, minimum, maksimum|None|
 
 ```Kusto
 browserTimings
@@ -163,7 +162,7 @@ browserTimings
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
 |---|---|---|
-|)|Średnia, minimum, maksimum|Brak|
+|Milisekundy|Średnia, minimum, maksimum|None|
 
 ```Kusto
 browserTimings
@@ -185,7 +184,7 @@ Ta Metryka odzwierciedla liczbę zgłoszonych wyjątków z kodu aplikacji dział
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|Uwagi|
 |---|---|---|---|
-|Licznik|Licznik|Brak|Wersja oparta na dzienniku korzysta z agregacji **sum**|
+|Licznik|Licznik|None|Wersja oparta na dzienniku korzysta z agregacji **sum**|
 
 ```Kusto
 exceptions
@@ -200,7 +199,7 @@ Liczba wywołań zależności zakończonych niepowodzeniem.
 
 |Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|Uwagi|
 |---|---|---|---|
-|Licznik|Licznik|Brak|Wersja oparta na dzienniku korzysta z agregacji **sum**|
+|Licznik|Licznik|None|Wersja oparta na dzienniku korzysta z agregacji **sum**|
 
 ```Kusto
 dependencies
@@ -313,7 +312,7 @@ Metryka pokazuje, ile całkowitej pojemności procesora jest zużywanych przez p
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|
-|Wartość procentowa|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
+|Procent|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
 
 ```Kusto
 performanceCounters
@@ -343,7 +342,7 @@ Ilość pamięci nieudostępnionej, którą proces monitorowania przydzielił dl
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|
-|Szybkość|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
+|Bajty|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
 
 ```Kusto
 performanceCounters
@@ -359,7 +358,7 @@ Użycie procesora CPU przez *wszystkie* procesy uruchomione w monitorowanym wyst
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|
-|Wartość procentowa|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
+|Procent|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
 
 >[!NOTE]
 > Metryka czasu procesora nie jest dostępna dla aplikacji hostowanych w usłudze Azure App Services. Metryka [procesora CPU procesu](#process-cpu-performancecountersprocesscpupercentage) służy do śledzenia użycia procesora CPU przez aplikacje sieci Web hostowane w App Services.

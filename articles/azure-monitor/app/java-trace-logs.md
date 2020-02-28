@@ -1,18 +1,14 @@
 ---
 title: Eksplorowanie dzienników śledzenia Java na platformie Azure Application Insights
 description: Wyszukaj ślady Log4J lub Logback w Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: f552ccdbc67df93913c698e5d763dbb62b48a4ad
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927245"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657218"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Eksplorowanie dzienników śledzenia Java w Application Insights
 Jeśli używasz programu Logback lub Log4J (w wersji 1.2 lub 2.0) do śledzenia, dzienniki śledzenia mogą być automatycznie wysyłane do Application Insights, w którym można eksplorować i wyszukiwać.
@@ -77,7 +73,7 @@ Następnie Odśwież zależności projektu, aby pobrać pliki binarne pobrane.
     </dependencies>
 ```
 
-*Log4J v2.0*
+*Log4J v 2.0*
 
 ```XML
 
@@ -115,7 +111,7 @@ Następnie Odśwież zależności projektu, aby pobrać pliki binarne pobrane.
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '2.0.+'
 ```
 
-**Log4J v2.0**
+**Log4J v 2.0**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
@@ -130,7 +126,7 @@ Następnie Odśwież zależności projektu, aby pobrać pliki binarne pobrane.
 #### <a name="otherwise-"></a>W innym przypadku...
 Postępuj zgodnie z instrukcjami, aby ręcznie zainstalować Application Insights Java SDK, Pobierz plik JAR (po nadejściu na stronie Maven Central kliknij link "Jar" w sekcji pobierania) dla odpowiedniego dołączania i Dodaj pobrany plik JAR dołączonego do projektu.
 
-| Logger | Pobierz | Biblioteka |
+| Logger | Pobieranie | Biblioteka |
 | --- | --- | --- |
 | Logback |[Logback Dołącz do jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
 | Log4J v2.0 |[Log4J v2 — plik JAR](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
@@ -153,7 +149,7 @@ Aby rozpocząć pobieranie śladów, Scal odpowiedni fragment kodu z plikiem kon
     </root>
 ```
 
-*Log4J v2.0*
+*Log4J v 2.0*
 
 ```XML
 

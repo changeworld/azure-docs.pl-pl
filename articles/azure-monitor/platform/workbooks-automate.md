@@ -4,18 +4,17 @@ description: Uprość złożone raportowanie ze wstępnie skompilowanymi i niest
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: e3d29beab7b1d82f73c706897af9650b68be11f5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872914"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658408"
 ---
 # <a name="programmatically-manage-workbooks"></a>Programowe Zarządzanie skoroszytami
 

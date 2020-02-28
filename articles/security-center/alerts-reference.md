@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 01397ad078bc741977c4928f67d1834f05e1db8d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: f83385e1c0a360689569424dbba0c4548751916c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623971"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661963"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Alerty zabezpieczeń — Podręcznik referencyjny
 
@@ -399,8 +399,8 @@ Obsługiwane przez Security Center zamiary kasowania łańcucha są oparte na [M
 
 |Intencja|Opis|
 |------|-------|
-|**Sondowania**|Badanie może być próbą uzyskania dostępu do określonego zasobu niezależnie od złośliwego intencji lub nieudanej próbie uzyskania dostępu do systemu docelowego w celu zebrania informacji przed rozpoczęciem korzystania z programu. Ten krok jest zazwyczaj wykrywany jako próba, pochodząca z zewnątrz sieci, do skanowania systemu docelowego i identyfikowania punktu wejścia.|
-|**Wykorzystywanie**|Wykorzystanie jest etapem, w którym osoba atakująca zarządza przyczółka na zaatakowanym zasobie. Ten etap dotyczy hostów i zasobów obliczeniowych, takich jak konta użytkowników, certyfikaty itd. Aktory zagrożeń często będą mogły kontrolować zasób po tym etapie.|
+|**Zaatakowanie**</br>(zastępuje funkcję sondowania)|Atakujący może być próbować uzyskać dostęp do określonego zasobu niezależnie od złośliwego intencji lub nieudanej próbie uzyskania dostępu do systemu docelowego w celu zebrania informacji przed rozpoczęciem korzystania z programu. Ten krok jest zazwyczaj wykrywany jako próba, pochodząca z zewnątrz sieci, do skanowania systemu docelowego i identyfikowania punktu wejścia.</br>Więcej szczegółowych informacji na temat etapu ataku można znaleźć na [stronie Mitre](https://attack.mitre.org/matrices/pre/).|
+|**InitialAccess**</br>(Zastępuje wykorzystanie)|InitialAccess to etap, w którym osoba atakująca zarządza, aby uzyskać przyczółka na zaatakowanym zasobie. Ten etap dotyczy hostów i zasobów obliczeniowych, takich jak konta użytkowników, certyfikaty itd. Aktory zagrożeń często będą mogły kontrolować zasób po tym etapie.|
 |**Trwałość**|Trwałość to dowolna zmiana dostępu, akcji lub konfiguracji w systemie, który zapewnia podmiotowi zagrożeń trwałe obecność w tym systemie. Aktory zagrożeń często muszą obsługiwać dostęp do systemów przez zakłócenia, takie jak ponowne uruchomienia systemu, utrata poświadczeń lub inne niepowodzenia, które wymagają ponownego uruchomienia narzędzia dostępu zdalnego lub udostępnienia alternatywnej tylne wejście w celu odzyskania dostępu.|
 |**PrivilegeEscalation**|Eskalacja uprawnień jest wynikiem akcji, które umożliwiają atakującej uzyskanie wyższego poziomu uprawnień w systemie lub sieci. Niektóre narzędzia i akcje wymagają wyższego poziomu uprawnień do pracy i są potrzebne w wielu punktach w trakcie operacji. Konta użytkowników z uprawnieniami dostępu do określonych systemów lub wykonywania określonych funkcji niezbędnych do osiągnięcia ich celu przez źródłami ataków, mogą być uznawane za eskalację uprawnień.|
 |**DefenseEvasion**|Zauchylanie obrony polega na technikach, których atakującej może używać do uchylania wykrywania lub uniknięcia innych zabezpieczeń. Czasami te działania są takie same jak w przypadku technik (lub wariantów) w innych kategoriach, które mają dodatkową korzyść w odróżnieniu od konkretnej obrony lub środków zaradczych.|

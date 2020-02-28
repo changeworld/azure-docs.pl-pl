@@ -1,48 +1,48 @@
 ---
 title: Zachowanie alertów SMS w grupach akcji
-description: Wiadomości SMS, formatem komunikatu i odpowiadanie na wiadomości SMS, aby anulować subskrypcję, potrzeby ponownej subskrypcji lub prosić o pomoc.
+description: Format wiadomości SMS i odpowiadanie na wiadomości SMS w celu anulowania subskrypcji, ponownej subskrypcji lub poprosić o pomoc.
 author: dkamstra
+ms.author: dukek
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/16/2018
-ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 74666149824627308b6c5b026e0c9ba7a7750ada
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60346301"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665310"
 ---
-# <a name="sms-alert-behavior-in-action-groups"></a>Alert programu SMS, zachowanie w grupach akcji
-## <a name="overview"></a>Omówienie ##
-Grupy akcji umożliwiają skonfigurowanie listy akcji. Te grupy są używane podczas definiowania alerty; zapewnienie, że grupy określonej akcji jest powiadamiany po wyzwoleniu alertu. Jedną z akcji obsługiwanych jest SMS; Powiadomienia SMS obsługuje komunikację dwukierunkową. Użytkownik może odpowiadać na wiadomość SMS, aby:
+# <a name="sms-alert-behavior-in-action-groups"></a>Zachowanie alertów SMS w grupach akcji
 
-- **Anulowanie subskrypcji alertów:** Użytkownik może anulować subskrypcję wszystkich alertów programu SMS dla wszystkich grup akcji lub grupy pojedynczej akcji.
-- **Potrzeby ponownej subskrypcji alertów:** Użytkownik może dokonać ponownej subskrypcji dla wszystkich alertów programu SMS dla wszystkich grup akcji lub grupy pojedynczej akcji.  
-- **Prosić o pomoc:** Użytkownik może zażądać więcej informacji na temat wiadomość SMS. Są one przekierowywane do tego artykułu.
+## <a name="overview"></a>Omówienie 
+Grupy akcji umożliwiają skonfigurowanie listy akcji. Te grupy są używane podczas definiowania alertów. upewnienie się, że dana grupa akcji zostanie powiadomiona o wyzwoleniu alertu. Jedną z obsługiwanych akcji jest wiadomość SMS; Powiadomienia SMS obsługują komunikację dwukierunkową. Użytkownik może odpowiedzieć na wiadomość SMS, aby:
 
-W tym artykule opisano działanie alertów SMS i działania w odpowiedzi użytkownik może wykonania na podstawie ustawień regionalnych użytkownika:
+- **Anuluj subskrypcję alertów:** Użytkownik może anulować subskrypcję wszystkich alertów programu SMS dla wszystkich grup akcji lub pojedynczej grupy akcji.
+- **Zasubskrybuj alerty:** Użytkownik może dokonać ponownej subskrypcji wszystkich alertów programu SMS dla wszystkich grup akcji lub pojedynczej grupy akcji.  
+- **Poproś o pomoc:** Użytkownik może zażądać więcej informacji na temat wiadomości SMS. Są one przekierowywane do tego artykułu.
 
-## <a name="receiving-an-sms-alert"></a>Otrzymywanie alertów SMS
-Odbiornik programu SMS, skonfigurowany jako część grupy akcji otrzymuje wiadomość SMS po wyzwoleniu alertu. Wiadomość SMS zawiera następujące informacje:
-* SHORTNAME grupie akcji ten alert został wysłany do
+W tym artykule opisano zachowanie alertów SMS oraz akcje odpowiedzi, które użytkownik może wykonać na podstawie ustawień regionalnych użytkownika:
+
+## <a name="receiving-an-sms-alert"></a>Otrzymywanie alertu programu SMS
+Odbiornik SMS skonfigurowany jako część grupy akcji odbiera wiadomość SMS po wyzwoleniu alertu. Wiadomość SMS zawiera następujące informacje:
+* Krótka wartość grupy akcji, do której wysłano ten alert
 * Tytuł alertu
 
-| ODPOWIEDZ | Opis |
+| PRZESYŁA | Opis |
 | ----- | ----------- |
-| WYŁĄCZ `<Action Group Short name>` | Wyłącza dalsze SMS do grupy akcji |
-| WŁĄCZ `<Action Group Short name>` | Ponownie włącza SMS do grupy akcji |
-| STOP | Wyłącza SMS dalsze ze wszystkich grup akcji |
-| ROZPOCZNIJ | Ponownie włącza SMS ze wszystkich grup akcji |
-| HELP | Odpowiedź jest wysyłana do użytkownika za pomocą linku do tego artykułu. |
+| Wyłącz `<Action Group Short name>` | Wyłącza dalsze wiadomości SMS z grupy akcji |
+| Włącz `<Action Group Short name>` | Umożliwia ponowne włączenie wiadomości SMS z grupy akcji |
+| STOP | Wyłącza dalsze wiadomości SMS ze wszystkich grup akcji |
+| START | Ponowne włączenie programu SMS ze wszystkich grup akcji |
+| HELP | Do użytkownika jest wysyłana odpowiedź z linkiem do tego artykułu. |
 
 >[!NOTE]
->Jeśli użytkownik anulował subskrypcję alertów SMS, ale jest dodawane do nowej grupy akcji; one będą otrzymywać alerty programu SMS dla tej nowej grupy akcji, ale nadal Anulowano subskrypcję ze wszystkich grup, poprzednie działanie.
+>Jeśli użytkownik anulował subskrypcję alertów SMS, ale zostanie dodany do nowej grupy akcji; otrzymają one alerty programu SMS dla nowej grupy akcji, ale pozostaną bez subskrypcji ze wszystkich poprzednich grup akcji.
 
 ## <a name="next-steps"></a>Następne kroki
-Pobierz [Przegląd alertów dziennika aktywności](alerts-overview.md) i Dowiedz się, jak otrzymywać alerty  
-Dowiedz się więcej o [szybkości programu SMS](alerts-rate-limiting.md)  
-Dowiedz się więcej o [grupy akcji](../../azure-monitor/platform/action-groups.md)
+Zapoznaj się z [omówieniem alertów dziennika aktywności](alerts-overview.md) i Dowiedz się, jak uzyskać alerty  
+Dowiedz się więcej na temat [ograniczania szybkości SMS](alerts-rate-limiting.md)  
+Dowiedz się więcej na temat [grup akcji](../../azure-monitor/platform/action-groups.md)
 

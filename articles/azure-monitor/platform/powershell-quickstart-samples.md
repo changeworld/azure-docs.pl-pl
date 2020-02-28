@@ -1,18 +1,15 @@
 ---
 title: Przykłady szybki start dla programu Azure Monitor PowerShell
 description: Użyj programu PowerShell, aby uzyskiwać dostęp do funkcji Azure Monitor, takich jak automatyczne skalowanie, alerty, elementy webhook i wyszukiwanie dzienników aktywności.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 2/14/2018
-ms.openlocfilehash: d1aa4b4e2d72f10ca73616bc7e69b0d02f13a501
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551840"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659303"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Przykłady szybki start dla programu Azure Monitor PowerShell
 W tym artykule przedstawiono przykładowe polecenia programu PowerShell ułatwiające dostęp do funkcji Azure Monitor.
@@ -117,7 +114,7 @@ Aby wyświetlić historię określonej reguły alertu, można użyć polecenia c
 Get-AzAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
-@No__t_0 polecenie cmdlet obsługuje różne parametry. Więcej informacji można znaleźć w temacie [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
+`Get-AzAlertHistory` polecenie cmdlet obsługuje różne parametry. Więcej informacji można znaleźć w temacie [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
 
 ## <a name="retrieve-information-on-alert-rules"></a>Pobierz informacje o regułach alertów
 Wszystkie poniższe polecenia działają w grupie zasobów o nazwie "montest".
@@ -151,12 +148,12 @@ W poniższej tabeli opisano parametry i wartości używane do tworzenia alertu p
 
 | konstruktora | wartość |
 | --- | --- |
-| Nazwa |simpletestdiskwrite |
+| Name (Nazwa) |simpletestdiskwrite |
 | Lokalizacja tej reguły alertu |Wschodnie stany USA |
 | ResourceGroup |montest |
-| Element targetresourceid |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| Wartość metryki alertu, który został utworzony |\PhysicalDisk (_Total) \Bajty zapisów/s. Aby uzyskać dokładne nazwy metryk, zobacz polecenie cmdlet `Get-MetricDefinitions`. |
-| zakład |GreaterThan |
+| TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
+| Wartość metryki alertu, który został utworzony |\PhysicalDisk (_Total) \Bajty zapisy/s. Aby uzyskać dokładne nazwy metryk, zobacz polecenie cmdlet `Get-MetricDefinitions`. |
+| operator |GreaterThan |
 | Wartość progowa (licznik/s w dla tej metryki) |1 |
 | WindowSize (hh: mm: SS) |00:05:00 |
 | agregator (Statystyka metryki, która używa w tym przypadku średniej liczby) |Średnia |
@@ -388,7 +385,7 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-in
 
 ```
 
-Należy pamiętać, że właściwość identyfikator obszaru roboczego Pobiera *Identyfikator zasobu* obszaru roboczego. Identyfikator zasobu obszaru roboczego Log Analytics można uzyskać przy użyciu następującego polecenia:
+Należy pamiętać, że właściwość identyfikator obszaru roboczego Pobiera *Identyfikator zasobu* obszaru roboczego. Możesz uzyskać identyfikator zasobu obszaru roboczego usługi Log Analytics przy użyciu następującego polecenia:
 
 ```powershell
 (Get-AzOperationalInsightsWorkspace).ResourceId

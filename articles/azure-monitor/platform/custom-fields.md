@@ -1,18 +1,17 @@
 ---
 title: Pola niestandardowe w Azure Monitor (wersja zapoznawcza) | Microsoft Docs
 description: Funkcja pól niestandardowych Azure Monitor umożliwia tworzenie własnych pól z możliwością wyszukiwania z rekordów w Log Analytics obszarze roboczym, które są dodawane do właściwości zebranego rekordu.  W tym artykule opisano proces tworzenia pola niestandardowego i zawiera szczegółowy przewodnik z przykładowym wydarzeniem.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: 880d3ffa9914a8fc6f27edce06c5d353d7903db4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfb0a73631564c96a4af745fe9d7540a3a84f9c3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396881"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655365"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Tworzenie pól niestandardowych w obszarze roboczym Log Analytics w Azure Monitor (wersja zapoznawcza)
 
@@ -21,7 +20,7 @@ ms.locfileid: "75396881"
 
 Funkcja **pól niestandardowych** Azure monitor pozwala na rozbudowanie istniejących rekordów w obszarze roboczym log Analytics przez dodanie własnych pól do przeszukiwania.  Pola niestandardowe są automatycznie wypełniane na podstawie danych wyodrębnionych z innych właściwości w tym samym rekordzie.
 
-![Przegląd](media/custom-fields/overview.png)
+![Omówienie](media/custom-fields/overview.png)
 
 Na przykład Przykładowy rekord poniżej ma użyteczne dane, które zostały ukryte w opisie zdarzenia. Wyodrębnienie tych danych do oddzielnej właściwości sprawia, że są one dostępne dla takich akcji jak sortowanie i filtrowanie.
 

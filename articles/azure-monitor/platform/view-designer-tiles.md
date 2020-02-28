@@ -1,18 +1,17 @@
 ---
 title: Przewodnik odwołujący do kafelków projektanta widoków w Azure Monitor | Microsoft Docs
 description: Za pomocą projektanta widoków w Azure Monitor można utworzyć niestandardowe widoki, które są wyświetlane w Azure Portal i zawierać różne wizualizacje danych w obszarze roboczym Log Analytics. Ten artykuł zawiera Przewodnik dotyczący ustawień kafelków, które są dostępne w niestandardowych widokach.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
-ms.openlocfilehash: 4141a4728ef5a7dd8896e4e3f21ee6d1d4dce958
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0320be3a2cfbb96367799577a6e56bcf5da87dcb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931956"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658510"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Przewodnik dotyczący wyświetlania kafelków projektanta w Azure Monitor
 Za pomocą projektanta widoków w Azure Monitor można utworzyć różne widoki niestandardowe w Azure Portal, które mogą ułatwić wizualizację danych w obszarze roboczym Log Analytics. Ten artykuł zawiera Przewodnik dotyczący ustawień kafelków, które są dostępne w niestandardowych widokach.
@@ -46,7 +45,7 @@ Kafelek **Liczba** wyświetla zarówno liczbę rekordów z kwerendy dziennika, j
 
 | Ustawienie | Opis |
 |:--- |:--- |
-| Nazwa |Tekst wyświetlany w górnej części kafelka. |
+| Name (Nazwa) |Tekst wyświetlany w górnej części kafelka. |
 | Opis |Tekst wyświetlany pod nazwą kafelka. |
 | **Tabliczek** | |
 | Legendy |Tekst wyświetlany w polu wartość. |
@@ -54,7 +53,7 @@ Kafelek **Liczba** wyświetla zarówno liczbę rekordów z kwerendy dziennika, j
 | **Doświadczonych** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Wybierz ten link, jeśli dla kafelka powinna być włączona weryfikacja przepływu danych. Takie podejście zapewnia alternatywny komunikat, jeśli dane są niedostępne. Zwykle używasz podejścia do dostarczania komunikatu w okresie tymczasowym, gdy widok zostanie zainstalowany, a dane staną się dostępne. |
 | Zapytanie |Zapytanie, które jest uruchamiane w celu określenia, czy dane są dostępne dla widoku. Jeśli zapytanie nie zwraca żadnych wyników, zamiast wartości głównej kwerendy zostanie wyświetlony komunikat. |
-| Wiadomość |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacyjne przepływu danych nie zwraca żadnych danych. Jeśli nie podano komunikatu, zostanie wyświetlony komunikat o stanie *wykonywanie oceny* . |
+| Komunikat |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacyjne przepływu danych nie zwraca żadnych danych. Jeśli nie podano komunikatu, zostanie wyświetlony komunikat o stanie *wykonywanie oceny* . |
 
 
 ## <a name="two-numbers-tile"></a>Kafelek z dwoma liczbami
@@ -64,7 +63,7 @@ Ten kafelek przedstawia liczbę rekordów z dwóch różnych zapytań dziennikó
 
 | Ustawienie | Opis |
 |:--- |:--- |
-| Nazwa |Tekst wyświetlany w górnej części kafelka. |
+| Name (Nazwa) |Tekst wyświetlany w górnej części kafelka. |
 | Opis |Tekst wyświetlany pod nazwą kafelka. |
 | **Pierwszy kafelek** | |
 | Legendy |Tekst wyświetlany w polu wartość. |
@@ -75,7 +74,7 @@ Ten kafelek przedstawia liczbę rekordów z dwóch różnych zapytań dziennikó
 | **Doświadczonych** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Wybierz ten link, jeśli dla kafelka powinna być włączona weryfikacja przepływu danych. Takie podejście zapewnia alternatywny komunikat, jeśli dane są niedostępne. Zwykle używasz podejścia do dostarczania komunikatu w okresie tymczasowym, gdy widok zostanie zainstalowany, a dane staną się dostępne. |
 | Zapytanie |Zapytanie, które jest uruchamiane w celu określenia, czy dane są dostępne dla widoku. Jeśli zapytanie nie zwraca żadnych wyników, zamiast wartości głównej kwerendy zostanie wyświetlony komunikat. |
-| Wiadomość |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacyjne przepływu danych nie zwraca żadnych danych. Jeśli nie podano komunikatu, zostanie wyświetlony komunikat o stanie *wykonywanie oceny* . |
+| Komunikat |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacyjne przepływu danych nie zwraca żadnych danych. Jeśli nie podano komunikatu, zostanie wyświetlony komunikat o stanie *wykonywanie oceny* . |
 
 
 ## <a name="donut-tile"></a>Kafelek pierścieniowy
@@ -85,7 +84,7 @@ Kafelek **pierścieniowy** Wyświetla pojedynczą liczbę, która podsumowuje ko
 
 | Ustawienie | Opis |
 |:--- |:--- |
-| Nazwa |Tekst wyświetlany w górnej części kafelka. |
+| Name (Nazwa) |Tekst wyświetlany w górnej części kafelka. |
 | Opis |Tekst wyświetlany pod nazwą kafelka. |
 | **Pierścieniowy** | |
 | Zapytanie |Zapytanie, które jest uruchamiane dla pierścienia. Pierwsza właściwość jest wartością tekstową, a druga właściwość jest wartością numeryczną. To zapytanie zwykle używa słowa kluczowego *Measure* do podsumowywania wyników. |
@@ -99,7 +98,7 @@ Kafelek **pierścieniowy** Wyświetla pojedynczą liczbę, która podsumowuje ko
 | **Doświadczonych** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Wybierz ten link, jeśli dla kafelka powinna być włączona weryfikacja przepływu danych. Takie podejście zapewnia alternatywny komunikat, jeśli dane są niedostępne. Zwykle używasz podejścia do dostarczania komunikatu w okresie tymczasowym, gdy widok zostanie zainstalowany, a dane staną się dostępne. |
 | Zapytanie |Zapytanie, które jest uruchamiane w celu określenia, czy dane są dostępne dla widoku. Jeśli zapytanie nie zwraca żadnych wyników, zamiast wartości głównej kwerendy zostanie wyświetlony komunikat. |
-| Wiadomość |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacyjne przepływu danych nie zwraca żadnych danych. Jeśli nie podano komunikatu, zostanie wyświetlony komunikat o stanie *wykonywanie oceny* . |
+| Komunikat |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacyjne przepływu danych nie zwraca żadnych danych. Jeśli nie podano komunikatu, zostanie wyświetlony komunikat o stanie *wykonywanie oceny* . |
 
 
 ## <a name="line-chart-tile"></a>Kafelek wykresu liniowego
@@ -109,7 +108,7 @@ Ten kafelek to wykres liniowy, który wyświetla wiele serii z zapytania dzienni
 
 | Ustawienie | Opis |
 |:--- |:--- |
-| Nazwa |Tekst wyświetlany w górnej części kafelka. |
+| Name (Nazwa) |Tekst wyświetlany w górnej części kafelka. |
 | Opis |Tekst wyświetlany pod nazwą kafelka. |
 | **Wykres liniowy** | |
 | Zapytanie |Zapytanie, które jest uruchamiane dla wykresu liniowego. Pierwsza właściwość jest wartością tekstową, a druga właściwość jest wartością numeryczną. To zapytanie zwykle używa słowa kluczowego *Measure* do podsumowywania wyników. Jeśli zapytanie używa słowa kluczowego *Interval* , oś x używa tego przedziału czasowego. Jeśli zapytanie nie używa słowa kluczowego *Interval* , oś x używa interwałów godzinowych. |
@@ -120,7 +119,7 @@ Ten kafelek to wykres liniowy, który wyświetla wiele serii z zapytania dzienni
 | **Doświadczonych** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Wybierz ten link, jeśli dla kafelka powinna być włączona weryfikacja przepływu danych. Takie podejście zapewnia alternatywny komunikat, jeśli dane są niedostępne. Zwykle używasz podejścia do dostarczania komunikatu w okresie tymczasowym, gdy widok zostanie zainstalowany, a dane staną się dostępne. |
 | Zapytanie |Zapytanie, które jest uruchamiane w celu określenia, czy dane są dostępne dla widoku. Jeśli zapytanie nie zwraca żadnych wyników, zamiast wartości głównej kwerendy zostanie wyświetlony komunikat. |
-| Wiadomość |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacyjne przepływu danych nie zwraca żadnych danych. Jeśli nie podano komunikatu, zostanie wyświetlony komunikat o stanie *wykonywanie oceny* . |
+| Komunikat |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacyjne przepływu danych nie zwraca żadnych danych. Jeśli nie podano komunikatu, zostanie wyświetlony komunikat o stanie *wykonywanie oceny* . |
 
 
 ## <a name="line-chart-and-callout-tile"></a>Kafelek wykres liniowy i objaśnienie
@@ -130,7 +129,7 @@ Ten kafelek ma zarówno wykres liniowy, który wyświetla wiele serii z zapytani
 
 | Ustawienie | Opis |
 |:--- |:--- |
-| Nazwa |Tekst wyświetlany w górnej części kafelka. |
+| Name (Nazwa) |Tekst wyświetlany w górnej części kafelka. |
 | Opis |Tekst wyświetlany pod nazwą kafelka. |
 | **Wykres liniowy** | |
 | Zapytanie |Zapytanie, które jest uruchamiane dla wykresu liniowego. Pierwsza właściwość jest wartością tekstową, a druga właściwość jest wartością numeryczną. To zapytanie zwykle używa słowa kluczowego *Measure* do podsumowywania wyników. Jeśli zapytanie używa słowa kluczowego *Interval* , oś x używa tego przedziału czasowego. Jeśli zapytanie nie używa słowa kluczowego *Interval* , oś x używa interwałów godzinowych. |
@@ -145,7 +144,7 @@ Ten kafelek ma zarówno wykres liniowy, który wyświetla wiele serii z zapytani
 | **Doświadczonych** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Wybierz ten link, jeśli dla kafelka powinna być włączona weryfikacja przepływu danych. Takie podejście zapewnia alternatywny komunikat, jeśli dane są niedostępne. Zwykle używasz podejścia do dostarczania komunikatu w okresie tymczasowym, gdy widok zostanie zainstalowany, a dane staną się dostępne. |
 | Zapytanie |Zapytanie, które jest uruchamiane w celu określenia, czy dane są dostępne dla widoku. Jeśli zapytanie nie zwraca żadnych wyników, zamiast wartości głównej kwerendy zostanie wyświetlony komunikat. |
-| Wiadomość |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacyjne przepływu danych nie zwraca żadnych danych. Jeśli nie podano komunikatu, zostanie wyświetlony komunikat o stanie *wykonywanie oceny* . |
+| Komunikat |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacyjne przepływu danych nie zwraca żadnych danych. Jeśli nie podano komunikatu, zostanie wyświetlony komunikat o stanie *wykonywanie oceny* . |
 
 
 ## <a name="two-timelines-tile"></a>Kafelek dwóch osi czasu
@@ -155,7 +154,7 @@ Kafelek **dwie osie czasu** wyświetla wyniki dwóch zapytań dzienników w czas
 
 | Ustawienie | Opis |
 |:--- |:--- |
-| Nazwa |Tekst wyświetlany w górnej części kafelka. |
+| Name (Nazwa) |Tekst wyświetlany w górnej części kafelka. |
 | Opis |Tekst wyświetlany pod nazwą kafelka. |
 | Pierwszy wykres | |
 | Legendy |Tekst wyświetlany w objaśnieniu dla pierwszej serii. |
@@ -170,7 +169,7 @@ Kafelek **dwie osie czasu** wyświetla wyniki dwóch zapytań dzienników w czas
 | **Doświadczonych** |**> Weryfikacja przepływu danych** |
 | Enabled (Włączony) |Wybierz ten link, jeśli dla kafelka powinna być włączona weryfikacja przepływu danych. Takie podejście zapewnia alternatywny komunikat, jeśli dane są niedostępne. Zwykle używasz podejścia do dostarczania komunikatu w okresie tymczasowym, gdy widok zostanie zainstalowany, a dane staną się dostępne. |
 | Zapytanie |Zapytanie, które jest uruchamiane w celu określenia, czy dane są dostępne dla widoku. Jeśli zapytanie nie zwraca żadnych wyników, zamiast wartości głównej kwerendy zostanie wyświetlony komunikat. |
-| Wiadomość |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacyjne przepływu danych nie zwraca żadnych danych. Jeśli nie podano komunikatu, zostanie wyświetlony komunikat o stanie *wykonywanie oceny* . |
+| Komunikat |Komunikat, który jest wyświetlany, jeśli zapytanie weryfikacyjne przepływu danych nie zwraca żadnych danych. Jeśli nie podano komunikatu, zostanie wyświetlony komunikat o stanie *wykonywanie oceny* . |
 
 
 ## <a name="next-steps"></a>Następne kroki

@@ -3,17 +3,16 @@ title: Zbieranie dzienników zasobów platformy Azure w obszarze roboczym Log An
 description: Informacje na temat przesyłania strumieniowego dzienników zasobów platformy Azure do obszaru roboczego Log Analytics w programie Azure Monitor.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: b0b8757590876669e00e81378411c010514e3036
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750367"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659003"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbierz dzienniki platformy Azure w obszarze roboczym Log Analytics w Azure Monitor
 [Dzienniki platformy](platform-logs-overview.md) na platformie Azure, w tym dziennik aktywności platformy Azure i dzienniki zasobów, zapewniają szczegółowe informacje diagnostyczne i inspekcji dla zasobów platformy Azure oraz platformy platformy Azure, od których zależą. W tym artykule opisano zbieranie dzienników zasobów w Log Analytics obszarze roboczym, które umożliwiają analizowanie go przy użyciu innych danych monitorowania zebranych w dziennikach Azure Monitor przy użyciu zaawansowanych zapytań dzienników, a także do korzystania z innych funkcji Azure Monitor, takich jak alerty i wizualizacje. 
@@ -57,12 +56,12 @@ Tabela AzureDiagnostics będzie wyglądać następująco:
 
 | ResourceProvider    | Kategoria     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Microsoft. Service1 | Dzienniki inspekcji    | x1 | y1 | z1 |    |    |    |    |    |    |
+| Microsoft. Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
 | Microsoft. Service1 | ErrorLogs    |    |    |    | q1 | w1 | e1 |    |    |    |
-| Microsoft. Językowej2 | Dzienniki inspekcji    |    |    |    |    |    |    | j1 | k1 | l1 |
+| Microsoft. Językowej2 | AuditLogs    |    |    |    |    |    |    | j1 | k1 | l1 |
 | Microsoft. Service1 | ErrorLogs    |    |    |    | q2 | w2 | e2 |    |    |    |
-| Microsoft. Językowej2 | Dzienniki inspekcji    |    |    |    |    |    |    | j3 | k3 | l3 |
-| Microsoft. Service1 | Dzienniki inspekcji    | x5 | Y5 | z5 |    |    |    |    |    |    |
+| Microsoft. Językowej2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | l3 |
+| Microsoft. Service1 | AuditLogs    | x5 | Y5 | z5 |    |    |    |    |    |    |
 | Przyciski ... |
 
 ### <a name="resource-specific"></a>Specyficzne dla zasobów
@@ -74,8 +73,8 @@ W powyższym przykładzie powstaje trzy tabele:
 
     | Dostawca zasobów | Kategoria | A | B | C |
     | -- | -- | -- | -- | -- |
-    | Service1 | Dzienniki inspekcji | x1 | y1 | z1 |
-    | Service1 | Dzienniki inspekcji | x5 | Y5 | z5 |
+    | Service1 | AuditLogs | x1 | y1 | z1 |
+    | Service1 | AuditLogs | x5 | Y5 | z5 |
     | Przyciski ... |
 
 - *Service1ErrorLogs* tabeli w następujący sposób:  
@@ -90,8 +89,8 @@ W powyższym przykładzie powstaje trzy tabele:
 
     | Dostawca zasobów | Kategoria | G | H | I |
     | -- | -- | -- | -- | -- |
-    | Językowej2 | Dzienniki inspekcji | j1 | k1 | l1|
-    | Językowej2 | Dzienniki inspekcji | j3 | k3 | l3|
+    | Językowej2 | AuditLogs | j1 | k1 | l1|
+    | Językowej2 | AuditLogs | j3 | k3 | l3|
     | Przyciski ... |
 
 

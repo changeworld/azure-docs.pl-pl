@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 8aff431b5160548599055c56d1317065236e7a68
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 93963005ece192d9fe8a477473800e43c0b53552
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495216"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780530"
 ---
 |Name (Nazwa) |Opis |Efekt (s) |Wersja |Element źródłowy |
-|---|---|---|---|
+|---|---|---|---|---|
 |[\[Limited\]podglądu: \[AKS\] nie zezwalać na używanie kontenerów uprzywilejowanych w AKS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ce7ac02-a5c6-45d6-8d1b-844feb1c1531) |Te zasady nie zezwalają na tworzenie kontenerów uprzywilejowanych w klastrze usługi Azure Kubernetes. Ograniczone zasady wersji zapoznawczej działają tylko w przypadku zarejestrowanych subskrypcji. Aby się zarejestrować, przejdź do https://aka.ms/akspolicyonboarding. Aby uzyskać instrukcje dotyczące korzystania z tych zasad, przejdź do https://aka.ms/akspolicydoc. |EnforceRegoPolicy, wyłączone |1.0.0 — wersja zapoznawcza |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/ContainerNoPrivilege_EnforceRegoPolicy.json)
 |[\[ograniczona wersja zapoznawcza\]: \[AKS\] Wymuszanie protokołu HTTPS w AKS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2fbff515-eecc-4b7e-9b63-fcc7138b7dc3) |Te zasady wymuszają ruch przychodzący HTTPS w klastrze usługi Azure Kubernetes Service. Ograniczone zasady wersji zapoznawczej działają tylko w przypadku zarejestrowanych subskrypcji. Aby się zarejestrować, przejdź do https://aka.ms/akspolicyonboarding. Aby uzyskać instrukcje dotyczące korzystania z tych zasad, przejdź do https://aka.ms/akspolicydoc. |EnforceRegoPolicy, wyłączone |1.0.0 — wersja zapoznawcza |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/IngressHttpsOnly_EnforceRegoPolicy.json)
 |[\[ograniczona wersja zapoznawcza\]: \[AKS\] wymuszanie wewnętrznych modułów równoważenia obciążenia w AKS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa74d8f00-2fd9-4ce4-968e-0ee1eb821698) |Te zasady wymuszają usługi równoważenia obciążenia, które nie mają publicznych adresów IP w klastrze usług Kubernetes platformy Azure. Ograniczone zasady wersji zapoznawczej działają tylko w przypadku zarejestrowanych subskrypcji. Aby się zarejestrować, przejdź do https://aka.ms/akspolicyonboarding. Aby uzyskać instrukcje dotyczące korzystania z tych zasad, przejdź do https://aka.ms/akspolicydoc. |EnforceRegoPolicy, wyłączone |1.0.0 — wersja zapoznawcza |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/LoadbalancerNoPublicIPs_EnforceRegoPolicy.json)

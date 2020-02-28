@@ -1,19 +1,18 @@
 ---
 title: Tworzenie pliku rozwiązania do zarządzania na platformie Azure | Microsoft Docs
 description: Rozwiązania do zarządzania zapewniają spakowane scenariusze zarządzania, które klienci mogą dodawać do środowiska platformy Azure.  Ten artykuł zawiera szczegółowe informacje dotyczące sposobu tworzenia rozwiązań do zarządzania, które mają być używane w Twoim środowisku lub udostępniane klientom.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977690"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662541"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Tworzenie pliku rozwiązania do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -22,7 +21,7 @@ ms.locfileid: "75977690"
 Rozwiązania do zarządzania na platformie Azure są implementowane jako [szablony Menedżer zasobów](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).  Głównym zadaniem w nauce tworzenia rozwiązań do zarządzania jest zapoznanie się z sposobem [tworzenia szablonu](../../azure-resource-manager/templates/template-syntax.md).  Ten artykuł zawiera unikatowe szczegóły dotyczące szablonów używanych na potrzeby rozwiązań oraz sposób konfigurowania typowych zasobów rozwiązania.
 
 
-## <a name="tools"></a>narzędzia
+## <a name="tools"></a>Narzędzia
 
 Możesz użyć dowolnego edytora tekstu do pracy z plikami rozwiązania, ale zalecamy korzystanie z funkcji dostępnych w programie Visual Studio lub Visual Studio Code zgodnie z opisem w poniższych artykułach.
 
@@ -79,12 +78,12 @@ W poniższej tabeli wymieniono standardowe parametry dla wszystkich rozwiązań 
 
 | Parametr | Typ | Opis |
 |:--- |:--- |:--- |
-| accountName |string |Nazwa konta Azure Automation. |
-| pricingTier |string |Warstwa cenowa zarówno Log Analytics obszaru roboczego, jak i konta Azure Automation. |
-| regionId |string |Region konta Azure Automation. |
-| solutionName |string |Nazwa rozwiązania.  W przypadku wdrażania rozwiązania za pomocą szablonów szybkiego startu należy zdefiniować rozwiązanie jako parametr, aby można było zdefiniować ciąg zamiast tego, aby użytkownik mógł go określić. |
-| workspaceName |string |Log Analytics nazwa obszaru roboczego. |
-| workspaceRegionId |string |Region obszaru roboczego Log Analytics. |
+| accountName |ciąg |Nazwa konta Azure Automation. |
+| pricingTier |ciąg |Warstwa cenowa zarówno Log Analytics obszaru roboczego, jak i konta Azure Automation. |
+| regionId |ciąg |Region konta Azure Automation. |
+| solutionName |ciąg |Nazwa rozwiązania.  W przypadku wdrażania rozwiązania za pomocą szablonów szybkiego startu należy zdefiniować rozwiązanie jako parametr, aby można było zdefiniować ciąg zamiast tego, aby użytkownik mógł go określić. |
+| workspaceName |ciąg |Log Analytics nazwa obszaru roboczego. |
+| workspaceRegionId |ciąg |Region obszaru roboczego Log Analytics. |
 
 
 Poniżej znajduje się struktura standardowych parametrów, które można kopiować i wklejać do pliku rozwiązania.  
@@ -213,7 +212,7 @@ Zasób rozwiązania ma właściwości w poniższej tabeli.  Obejmuje to zasoby, 
 
 Powyższy przykład dotyczy rozwiązania z elementem Runbook, harmonogramem i widokiem.  W elemencie **Properties** *odwołuje* się do harmonogramu i elementu Runbook, dzięki czemu nie zostaną usunięte po usunięciu rozwiązania.  Widok jest *zawarty* , dlatego jest usuwany po usunięciu rozwiązania.
 
-### <a name="plan"></a>Plan
+### <a name="plan"></a>Planowanie
 Jednostka **planu** zasobu rozwiązania ma właściwości w poniższej tabeli.
 
 | Właściwość | Opis |

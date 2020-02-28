@@ -1,18 +1,14 @@
 ---
 title: Monitorowanie wydajności usługi Azure App Services | Microsoft Docs
 description: Monitorowanie wydajności aplikacji dla usług Azure App Services. Załaduj wykres i czas odpowiedzi, informacje o zależnościach i ustaw alerty wydajności.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/11/2019
-ms.openlocfilehash: 3ca9cbf2e282e3f67af3c5da470a3d81e6055f98
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 03d332af182f8f40ede634fbd563f7b064751f32
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189584"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655811"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorowanie wydajności Azure App Service
 
@@ -39,7 +35,7 @@ Istnieją dwa sposoby włączania monitorowania aplikacji na platformie Azure Ap
 
 ## <a name="enable-agent-based-monitoring"></a>Włącz monitorowanie oparte na agentach
 
-# <a name="nettabnet"></a>[.NET](#tab/net)
+# <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > Kombinacja APPINSIGHTS_JAVASCRIPT_ENABLED i urlCompression nie jest obsługiwana. Aby uzyskać więcej informacji, zobacz wyjaśnienie w [sekcji Rozwiązywanie problemów](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
@@ -75,7 +71,7 @@ Istnieją dwa sposoby włączania monitorowania aplikacji na platformie Azure Ap
 
     * Aby zapoznać się z listą obsługiwanych ustawień procesora telemetrii do próbkowania, możesz zajrzeć do [kodu](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) i [powiązanej dokumentacji](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
 
-# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 Obsługiwane są następujące wersje programu .NET Core: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0
 
@@ -96,15 +92,15 @@ Kierowanie całego środowiska z platformy .NET Core, samodzielnego wdrażania i
 
     ![Wybierz opcje na platformę](./media/azure-web-apps/choose-options-new-net-core.png)
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 Z poziomu aplikacji internetowej App Service w obszarze **ustawienia** > **wybierz pozycję Application Insights** > **Włącz**. Monitorowanie oparte na agentach Node. js jest obecnie dostępne w wersji zapoznawczej.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Aplikacje sieci Web oparte na App Service Java nie obsługują obecnie automatycznego monitorowania opartego na agentach i rozszerzeniach. Aby włączyć monitorowanie aplikacji Java, należy [ręcznie Instrumentacja aplikacji](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started).
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Aplikacje sieci Web oparte na App Service Python nie obsługują obecnie automatycznego monitorowania opartego na agentach i rozszerzeniach. Aby włączyć monitorowanie aplikacji w języku Python, musisz [ręcznie Instrumentacja aplikacji](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
 
@@ -112,7 +108,7 @@ Aplikacje sieci Web oparte na App Service Python nie obsługują obecnie automat
 
 ## <a name="enable-client-side-monitoring"></a>Włączanie monitorowania po stronie klienta
 
-# <a name="nettabnet"></a>[.NET](#tab/net)
+# <a name="net"></a>[.NET](#tab/net)
 
 Monitorowanie po stronie klienta jest zgodą na ASP.NET. Aby włączyć monitorowanie po stronie klienta:
 
@@ -129,7 +125,7 @@ Monitorowanie po stronie klienta jest zgodą na ASP.NET. Aby włączyć monitoro
 
 Aby wyłączyć monitorowanie po stronie klienta, Usuń skojarzoną parę klucz wartość z ustawień aplikacji lub ustaw wartość na false.
 
-# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 Monitorowanie po stronie klienta jest **domyślnie włączone** w przypadku aplikacji .NET Core z **zalecaną kolekcją**, niezależnie od tego, czy jest obecne ustawienie aplikacji "APPINSIGHTS_JAVASCRIPT_ENABLED".
 
@@ -146,15 +142,15 @@ Jeśli z jakiegoś powodu chcesz wyłączyć monitorowanie po stronie klienta:
 
 ![Zrzut ekranu przedstawiający interfejs użytkownika ustawień aplikacji](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 Aby włączyć monitorowanie po stronie klienta dla aplikacji node. js, należy [ręcznie dodać do aplikacji zestaw SDK JavaScript po stronie klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Aby włączyć monitorowanie po stronie klienta dla aplikacji Java, musisz [ręcznie dodać zestaw JavaScript SDK po stronie klienta do swojej aplikacji](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Aby włączyć monitorowanie po stronie klienta dla aplikacji w języku Python, musisz [ręcznie dodać zestaw SDK JavaScript po stronie klienta do swojej aplikacji](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 

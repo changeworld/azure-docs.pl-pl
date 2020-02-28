@@ -1,18 +1,14 @@
 ---
 title: Eksportuj do Power BI z poziomu platformy Azure Application Insights | Microsoft Docs
 description: Zapytania analityczne mogą być wyświetlane w Power BI.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/10/2018
-ms.openlocfilehash: 3ec20f82bc12b60e5b88a02bb92a4a0ada4dcae7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668006"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664001"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Power BI kanału informacyjnego z Application Insights
 [Power BI](https://www.powerbi.com/) to pakiet narzędzi firmy, który ułatwia analizowanie danych i udostępnianie szczegółowych informacji. Rozbudowane pulpity nawigacyjne są dostępne na każdym urządzeniu. Możesz połączyć dane z wielu źródeł, w tym zapytania analityczne z [usługi Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).

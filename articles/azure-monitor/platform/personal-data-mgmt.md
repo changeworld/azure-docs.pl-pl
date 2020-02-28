@@ -1,18 +1,17 @@
 ---
 title: Wskazówki dotyczące danych osobowych przechowywanych w usłudze Azure Log Analytics | Microsoft Docs
 description: W tym artykule opisano sposób zarządzania danymi osobowymi przechowywanymi w usłudze Azure Log Analytics i metodami ich identyfikacji i usuwania.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 7f8b40094b30a01e4189bcf04d4c194e5b0b4285
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a720627e1783d2e29ef180b7855132ea59444cab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394752"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659234"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Wskazówki dotyczące danych osobowych przechowywanych w Log Analytics i Application Insights
 
@@ -103,7 +102,7 @@ Po przypisaniu roli Azure Resource Manager dostępne są dwie nowe ścieżki int
 #### <a name="log-data"></a>Dane dziennika
 
 * [Po przeczyszczeniu](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) — pobiera parametry danych do usunięcia i zwraca identyfikator GUID odwołania 
-* Pobieranie stanu przeczyszczania — wywołanie po przeczyszczeniu zwróci nagłówek "x-MS-status-Location", który będzie zawierać adres URL, który można wywołać w celu określenia stanu interfejsu API przeczyszczania. Przykład:
+* Pobieranie stanu przeczyszczania — wywołanie po przeczyszczeniu zwróci nagłówek "x-MS-status-Location", który będzie zawierać adres URL, który można wywołać w celu określenia stanu interfejsu API przeczyszczania. Na przykład:
 
     ```
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
@@ -115,7 +114,7 @@ Po przypisaniu roli Azure Resource Manager dostępne są dwie nowe ścieżki int
 #### <a name="application-data"></a>Dane aplikacji
 
 * [Po przeczyszczeniu](https://docs.microsoft.com/rest/api/application-insights/components/purge) — pobiera parametry danych do usunięcia i zwraca identyfikator GUID odwołania
-* Pobieranie stanu przeczyszczania — wywołanie po przeczyszczeniu zwróci nagłówek "x-MS-status-Location", który będzie zawierać adres URL, który można wywołać w celu określenia stanu interfejsu API przeczyszczania. Przykład:
+* Pobieranie stanu przeczyszczania — wywołanie po przeczyszczeniu zwróci nagłówek "x-MS-status-Location", który będzie zawierać adres URL, który można wywołać w celu określenia stanu interfejsu API przeczyszczania. Na przykład:
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01

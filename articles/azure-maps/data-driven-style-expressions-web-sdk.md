@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: e3e8476d09541518d964bfaff4dabad47755eeb9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c3f5fb2a387db6e672290fcf03d46c476b6211b6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189649"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657107"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Wyrażenia stylów oparte na danych (zestaw SDK sieci Web)
 
@@ -91,6 +91,8 @@ Wyrażenia danych zapewniają dostęp do danych właściwości w funkcji.
 | `['has', string, object]` | wartość logiczna | Określa, czy właściwości obiektu mają określoną właściwość. |
 | `['id']` | wartość | Pobiera identyfikator funkcji, jeśli ma. |
 | `['length', string | array]` | numer | Pobiera długość ciągu lub tablicy. |
+| `['in', boolean | string | number, array]` | wartość logiczna | Określa, czy element istnieje w tablicy |
+| `['in', substring, string]` | wartość logiczna | Określa, czy podciąg istnieje w ciągu |
 
 **Przykłady**
 

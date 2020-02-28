@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/03/2019
-ms.openlocfilehash: 5cc54c95759ba1490f498305f05cc49a4411686d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 02/26/2020
+ms.openlocfilehash: aa71f7d2f3b277ca34e1e5fea76ada6adf93e573
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930331"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655071"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Przekształcenie przeszukiwania przepływu danych Azure Data Factory mapowania
 
@@ -36,9 +36,19 @@ Po użyciu transformacji wyszukiwania można dodać podział przekształcenia wa
 
 ## <a name="first-or-last-value"></a>Pierwsza lub Ostatnia wartość
 
-Jeśli masz wiele dopasowań z wyszukiwania, możesz chcieć zmniejszyć liczbę dopasowanych wierszy, wybierając pierwsze lub ostatnie dopasowanie. Można to zrobić przy użyciu transformacji agregacji po wyszukiwaniu.
+Transformacja wyszukiwania jest implementowana jako lewe sprzężenie zewnętrzne. Jeśli masz wiele dopasowań z wyszukiwania, możesz chcieć zmniejszyć liczbę dopasowanych wierszy, wybierając pierwszy dopasowany wiersz, ostatnie dopasowanie lub dowolny losowy wiersz.
 
-W takim przypadku transformacja agregacji o nazwie ```PickFirst``` jest używana do wybrania pierwszej wartości z dopasowań wyszukiwania.
+### <a name="option-1"></a>Opcja 1
+
+![Wyszukiwanie pojedynczego wiersza](media/data-flow/singlerowlookup.png "Wyszukiwanie pojedynczego wiersza")
+
+* Dopasuj wiele wierszy: pozostaw to pole puste, aby zwrócić pojedynczy wiersz dopasowania
+* Dopasuj na: wybierz pierwsze, ostatnie lub dowolne dopasowanie
+* Warunki sortowania: w przypadku wybrania opcji pierwszy lub ostatni moduł ADF wymaga, aby dane były uporządkowane w taki sposób, że logika jest za pierwsza i Ostatnia
+
+### <a name="option-2"></a>Opcja 2
+
+Można to również zrobić przy użyciu transformacji agregacji po wyszukiwaniu. W takim przypadku transformacja agregacji o nazwie ```PickFirst``` jest używana do wybrania pierwszej wartości z dopasowań wyszukiwania.
 
 ![Agregowanie wyszukiwania](media/data-flow/lookup333.png "Agregowanie wyszukiwania")
 
@@ -48,7 +58,7 @@ W takim przypadku transformacja agregacji o nazwie ```PickFirst``` jest używana
 
 W Data Factory przepływy danych są wykonywane w skalowanych środowiskach Spark. Jeśli zestaw danych może pasować do przestrzeni pamięci węzła procesu roboczego, możemy zoptymalizować wydajność wyszukiwania.
 
-![Sprzężenie emisji](media/data-flow/broadcast.png "Dołączanie do emisji")
+![Sprzężenie emisji](media/data-flow/broadcast.png "Sprzężenie emisji")
 
 ### <a name="broadcast-join"></a>Sprzężenie emisji
 

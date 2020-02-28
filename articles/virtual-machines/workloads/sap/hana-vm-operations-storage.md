@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/13/2020
+ms.date: 02/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4cc4db9ffcb700d4b65a7f5c21d258e9af52d164
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 155498aeaea30bf2da1d5aa0dbcb322aeb43bbdd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598531"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661298"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfiguracje magazynu maszyn wirtualnych platformy Azure SAP HANA
 
@@ -35,6 +35,10 @@ Aby dowiedzieć się więcej o tych typach dysków, zobacz artykuł [Wybieranie 
 Platforma Azure oferuje dwie metody wdrażania dysków VHD w usłudze Azure Standard i Premium Storage. Jeśli ogólny scenariusz zezwala na korzystanie z [usługi Azure Managed Disk](https://azure.microsoft.com/services/managed-disks/) Deployments. 
 
 Aby uzyskać listę typów magazynu i ich umowy SLA w przypadku operacji we/wy i przepływności magazynu, zapoznaj się z [dokumentacją platformy Azure dla dysków zarządzanych](https://azure.microsoft.com/pricing/details/managed-disks/).
+
+> [!IMPORTANT]
+> Niezależnie od wybranego typu usługi Azure Storage System plików, który jest używany w tym magazynie, musi być obsługiwany przez SAP dla danego systemu operacyjnego i DBMS. [Uwaga dotycząca pomocy technicznej SAP #405827](https://launchpad.support.sap.com/#/notes/405827) zawiera listę obsługiwanych systemów plików dla różnych systemów operacyjnych i baz danych, w tym SAP HANA. Dotyczy to wszystkich woluminów, SAP HANA mogą uzyskać dostęp do odczytu i zapisu dla każdego zadania. W przypadku korzystania z systemu plików NFS na platformie Azure SAP HANA dodatkowe ograniczenia dotyczące wersji systemu plików NFS mają zastosowanie zgodnie z opisem w dalszej części tego artykułu. 
+
 
 Minimalny SAP HANA warunki certyfikowania dla różnych typów magazynu to: 
 
@@ -197,12 +201,12 @@ Zalecenia często przekraczają minimalne wymagania SAP określone wcześniej w 
 
 | Jednostka SKU maszyny wirtualnej | Pamięć RAM | Maksymalnie z WE/WY MASZYNY WIRTUALNEJ<br /> Przepływność | wolumin/Hana/Data | przepływność we/wy/Hana/Data | /Hana/Data IOPS | wolumin/Hana/log | przepływność we/wy/Hana/log | /Hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| E64s_v3 | 432 GiB | 1 200 MB/s | 600 GB | 700 MB/s | 7,500 | 512 GB | 500 MB/s  | 2,000 |
-| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MB/s | 7,500 | 256 GB | 250 MB/s  | 2,000 |
-| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MB/s | 7,500 | 256 GB | 250 MB/s  | 2,000 |
-| M64ls | 512 GiB | 1 000 MB/s | 600 GB | 600 MB/s | 7,500 | 512 GB | 400 MB/s  | 2,500 |
-| M64s | 1 000 GiB | 1 000 MB/s |  1 200 GB | 600 MB/s | 7,500 | 512 GB | 400 MB/s  | 2,500 |
-| M64ms | 1 750 GiB | 1 000 MB/s | 2 100 GB | 600 MB/s | 7,500 | 512 GB | 400 MB/s  | 2,500 |
+| E64s_v3 | 432 GiB | 1 200 MB/s | 600 GB | 700 MB/s | 7500 | 512 GB | 500 MB/s  | 2,000 |
+| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MB/s | 7500 | 256 GB | 250 MB/s  | 2,000 |
+| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MB/s | 7500 | 256 GB | 250 MB/s  | 2,000 |
+| M64ls | 512 GiB | 1 000 MB/s | 600 GB | 600 MB/s | 7500 | 512 GB | 400 MB/s  | 2,500 |
+| M64s | 1 000 GiB | 1 000 MB/s |  1 200 GB | 600 MB/s | 7500 | 512 GB | 400 MB/s  | 2,500 |
+| M64ms | 1 750 GiB | 1 000 MB/s | 2 100 GB | 600 MB/s | 7500 | 512 GB | 400 MB/s  | 2,500 |
 | M128s | 2 000 GiB | 2 000 MB/s |2 400 GB | 1 200 MB/s |9 000 | 512 GB | 800 MB/s  | 3000 | 
 | M128ms | 3 800 GiB | 2 000 MB/s | 4 800 GB | 1200 Mb/s |9 000 | 512 GB | 800 MB/s  | 3000 | 
 | M208s_v2 | 2 850 GiB | 1 000 MB/s | 3 500 GB | 1 000 MB/s | 9 000 | 512 GB | 400 MB/s  | 2,500 | 
@@ -228,12 +232,12 @@ Zalecenia często przekraczają minimalne wymagania SAP określone wcześniej w 
 | M64ls | 512 GiB | 1 000 MB/s | 1 100 GB | 900 MB/s | 10 000 | 
 | M64s | 1 000 GiB | 1 000 MB/s |  1 700 GB | 900 MB/s | 10 000 | 
 | M64ms | 1 750 GiB | 1 000 MB/s | 2 600 GB | 900 MB/s | 10 000 | 
-| M128s | 2 000 GiB | 2 000 MB/s |2 900 GB | 1 800 MB/s |12,000 | 
-| M128ms | 3 800 GiB | 2 000 MB/s | 5 300 GB | 1 800 MB/s |12,000 |  
+| M128s | 2 000 GiB | 2 000 MB/s |2 900 GB | 1 800 MB/s |12 000 | 
+| M128ms | 3 800 GiB | 2 000 MB/s | 5 300 GB | 1 800 MB/s |12 000 |  
 | M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 000 GB | 900 MB/s | 10 000 |  
 | M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 700 GB | 900 MB/s | 10 000 | 
-| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 700 GB | 1, 800MBps | 12,000 |  
-| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 15 000 GB | 1 800 MB/s | 12,000 |    
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 700 GB | 1, 800MBps | 12 000 |  
+| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 15 000 GB | 1 800 MB/s | 12 000 |    
 
 Wymienione wartości mają być punktem początkowym i muszą być oceniane względem rzeczywistych wymagań. Zalety korzystania z usługi Azure Ultra Disk polega na tym, że wartości operacji we/wy i przepływności można dostosować bez konieczności wyłączania maszyny wirtualnej lub zatrzymania obciążenia zastosowanego do systemu.  
 

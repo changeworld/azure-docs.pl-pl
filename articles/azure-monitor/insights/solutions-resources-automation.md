@@ -1,19 +1,18 @@
 ---
 title: Zasoby Azure Automation w rozwiązaniach do zarządzania | Microsoft Docs
 description: Rozwiązania do zarządzania zwykle obejmują elementy Runbook w Azure Automation do automatyzowania procesów, takich jak gromadzenie i przetwarzanie danych monitorowania.  W tym artykule opisano, jak uwzględnić elementy Runbook i powiązane z nimi zasoby w rozwiązaniu.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401819"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663066"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Dodawanie Azure Automation zasobów do rozwiązania do zarządzania (wersja zapoznawcza)
 > [!NOTE]
@@ -196,7 +195,7 @@ Właściwości zasobów harmonogramu są opisane w poniższej tabeli.
 | description |Opcjonalny opis harmonogramu. |
 | startTime |Określa godzinę rozpoczęcia harmonogramu jako obiekt DateTime. Ciąg można podać, jeśli można go przekonwertować na prawidłową datę i godzinę. |
 | isEnabled |Określa, czy harmonogram jest włączony. |
-| interval |Typ interwału harmonogramu.<br><br>dzień<br>godz. |
+| interval |Typ interwału harmonogramu.<br><br>dzień<br>wydajność |
 | frequency |Częstotliwość, z jaką harmonogram powinien zostać uruchomiony w ciągu kilku dni lub godzin. |
 
 Harmonogramy muszą mieć czas rozpoczęcia o wartości większej niż bieżąca godzina.  Nie można podać tej wartości za pomocą zmiennej, ponieważ nie ma możliwości znajomości, kiedy ma być zainstalowana.
@@ -236,8 +235,8 @@ W poniższej tabeli opisano właściwości harmonogramów zadań.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| schedule name |Pojedynczy **name** jednostce o nazwie harmonogramu. |
-| runbook name  |Pojedynczy **name** jednostce o nazwie elementu runbook.  |
+| schedule name |Jednostka o pojedynczej **nazwie** o nazwie harmonogramu. |
+| runbook name  |Jednostka o pojedynczej **nazwie** o nazwie elementu Runbook.  |
 
 
 
@@ -275,9 +274,9 @@ Jeśli ustawisz początkową wartość dla zmiennej, należy ją skonfigurować 
 
 | Typ danych | Opis | Przykład | Jest rozpoznawana jako |
 |:--|:--|:--|:--|
-| string   | Ujmij wartość w podwójne cudzysłowy.  | "\"Hello World\"" | "Hello World" |
+| ciąg   | Ujmij wartość w podwójne cudzysłowy.  | "\"Hello World\"" | "Hello World" |
 | numeric  | Wartość liczbowa z pojedynczymi cudzysłowami.| "64" | 64 |
-| wartość logiczna  | **wartość true** lub **false** w cudzysłowie.  Należy pamiętać, że ta wartość musi być małymi literami. | "true" | true |
+| wartość logiczna  | **wartość true** lub **false** w cudzysłowie.  Należy pamiętać, że ta wartość musi być małymi literami. | „true” | true |
 | datetime | Serializowana wartość daty.<br>Aby wygenerować tę wartość dla konkretnej daty, można użyć polecenia cmdlet ConvertTo-JSON w programie PowerShell.<br>Przykład: Get-Date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date (1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Moduły
@@ -316,7 +315,7 @@ W przypadku zaktualizowania rozwiązania do zarządzania, które zawiera element
 
 
 
-## <a name="sample"></a>Przykład
+## <a name="sample"></a>Sample
 Poniżej znajduje się przykład rozwiązania, które obejmuje następujące zasoby:
 
 - Elementu Runbook.  To jest przykładowy element Runbook przechowywany w publicznym repozytorium GitHub.

@@ -1,18 +1,17 @@
 ---
 title: Grupy komputerów w zapytaniach dziennika Azure Monitor | Microsoft Docs
 description: Grupy komputerów w Azure Monitor umożliwiają określanie zakresu zapytań dziennika do określonego zestawu komputerów.  W tym artykule opisano różne metody, których można użyć do tworzenia grup komputerów i ich użycia w zapytaniu dziennika.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: eedf04a2168c67449f97d8e462d4ff82653a22b3
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513709"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655342"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Grupy komputerów w zapytaniach dziennika Azure Monitor
 Grupy komputerów w Azure Monitor umożliwiają określanie zakresu [zapytań dziennika](../log-query/log-query-overview.md) do określonego zestawu komputerów.  Każda grupa jest wypełniana komputerami za pomocą zapytań, który zdefiniujesz lub przez importowanie grup z różnych źródeł.  Gdy grupa zostanie uwzględniona w zapytaniu dziennika, wyniki są ograniczone do rekordów, które pasują do komputerów w grupie.
@@ -33,7 +32,7 @@ Grupę komputerów można utworzyć w Azure Monitor przy użyciu dowolnej metody
 ### <a name="log-query"></a>Zapytanie dziennika
 Grupy komputerów utworzone na podstawie zapytania dziennika zawierają wszystkie komputery zwrócone przez zdefiniowane zapytanie.  To zapytanie jest uruchamiany za każdym razem, gdy grupa komputerów jest używana co znajduje odzwierciedlenie zmiany, ponieważ grupa została utworzona.  
 
-Można użyć dowolnego zapytania dla grupy komputerów, ale aplikacja musi zwracać różne zestaw komputerów przy użyciu `distinct Computer`.  Poniżej przedstawiono typowe przykładowe zapytanie, którego można użyć jako grupy komputerów.
+Można użyć dowolnego zapytania dla grupy komputerów, ale musi on zwrócić unikatowy zestaw komputerów przy użyciu `distinct Computer`.  Poniżej przedstawiono typowe przykładowe zapytanie, którego można użyć jako grupy komputerów.
 
     Heartbeat | where Computer contains "srv" | distinct Computer
 
@@ -49,7 +48,7 @@ W poniższej tabeli opisano właściwości, które definiują grupę komputerów
 
 | Właściwość | Opis |
 |:---|:---|
-| Nazwa   | Nazwa zapytania do wyświetlania w portalu. |
+| Name (Nazwa)   | Nazwa zapytania do wyświetlania w portalu. |
 | Alias funkcji | Unikatowego aliasu, używany do identyfikowania grupy komputerów w zapytaniu. |
 | Kategoria       | Kategoria do organizowania zapytań w portalu. |
 
@@ -60,20 +59,20 @@ W przypadku skonfigurowania Azure Monitor w celu zaimportowania członkostw w gr
 > [!NOTE]
 > Zaimportowane grupy Active Directory zawierają tylko maszyny z systemem Windows.
 
-Konfigurowanie Azure Monitor do importowania Active Directory grup zabezpieczeń z **ustawień zaawansowanych** w obszarze roboczym Log Analytics w Azure Portal.  Wybierz **grup komputerów**, **usługi Active Directory**, a następnie **członkostwa w grupach usługi Active Directory importu z komputerów**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
+Konfigurowanie Azure Monitor do importowania Active Directory grup zabezpieczeń z **ustawień zaawansowanych** w obszarze roboczym Log Analytics w Azure Portal.  Wybierz pozycję **grupy komputerów**, **Active Directory**, a następnie **zaimportuj członkostwa w grupach Active Directory z komputerów**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
 ![Grupy komputerów z usługą Active Directory](media/computer-groups/configure-activedirectory.png)
 
-Grupy zostały zaimportowane, menu znajdują się liczby komputerów za pomocą członkostwa w grupie wykryte i liczba grup zaimportowane.  Możesz kliknąć jedno z poniższych linków, aby zwrócić **Grupa_komputerów** rekordy z tymi informacjami.
+Grupy zostały zaimportowane, menu znajdują się liczby komputerów za pomocą członkostwa w grupie wykryte i liczba grup zaimportowane.  Możesz kliknąć jedno z tych linków, aby zwrócić rekordy Grupa **komputerów** z tymi informacjami.
 
 ### <a name="windows-server-update-service"></a>Usługa Windows Update Server
 W przypadku skonfigurowania Azure Monitor w celu zaimportowania członkostwa w grupach usług WSUS program analizuje członkostwo grupy docelowej na wszystkich komputerach z agentem Log Analytics.  Jeśli używasz funkcji określania wartości docelowej po stronie klienta, każdy komputer, który jest połączony z Azure Monitor i jest częścią dowolnych grup docelowych usług WSUS, ma członkostwo w grupie zaimportowane do Azure Monitor. Jeśli używasz określania wartości docelowej po stronie serwera, Agent Log Analytics powinien być zainstalowany na serwerze programu WSUS, aby informacje o członkostwie w grupie zostały zaimportowane do Azure Monitor.  To członkostwo jest stale aktualizowany co 4 godziny. 
 
-Skonfiguruj Azure Monitor do importowania grup usług WSUS z **ustawień zaawansowanych** w obszarze roboczym Log Analytics w Azure Portal.  Wybierz **grup komputerów**, **WSUS**, a następnie **członkostwa w grupach importu programu WSUS**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
+Skonfiguruj Azure Monitor do importowania grup usług WSUS z **ustawień zaawansowanych** w obszarze roboczym Log Analytics w Azure Portal.  Wybierz pozycje **grupy komputerów**, **WSUS**, a następnie **Importuj członkostwa w grupach usług WSUS**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
 ![Grupy komputerów programu WSUS](media/computer-groups/configure-wsus.png)
 
-Grupy zostały zaimportowane, menu znajdują się liczby komputerów za pomocą członkostwa w grupie wykryte i liczba grup zaimportowane.  Możesz kliknąć jedno z poniższych linków, aby zwrócić **Grupa_komputerów** rekordy z tymi informacjami.
+Grupy zostały zaimportowane, menu znajdują się liczby komputerów za pomocą członkostwa w grupie wykryte i liczba grup zaimportowane.  Możesz kliknąć jedno z tych linków, aby zwrócić rekordy Grupa **komputerów** z tymi informacjami.
 
 ### <a name="configuration-manager"></a>Configuration Manager
 Podczas konfigurowania Azure Monitor do importowania członkostw w kolekcji Configuration Manager tworzy grupę komputerów dla każdej kolekcji.  Informacje o członkostwo w kolekcji jest pobierana co 3 godziny, aby zapewnić aktualność grup komputerów. 
@@ -82,12 +81,12 @@ Przed zaimportowaniem kolekcji Configuration Manager należy [połączyć Config
 
 ![Grupy komputerów z programu SCCM](media/computer-groups/configure-sccm.png)
 
-Po kolekcji zostały zaimportowane, menu wyświetla liczbę komputerów z członkostwem grupy wykryte i liczbę grup zaimportowanych.  Możesz kliknąć jedno z poniższych linków, aby zwrócić **Grupa_komputerów** rekordy z tymi informacjami.
+Po kolekcji zostały zaimportowane, menu wyświetla liczbę komputerów z członkostwem grupy wykryte i liczbę grup zaimportowanych.  Możesz kliknąć jedno z tych linków, aby zwrócić rekordy Grupa **komputerów** z tymi informacjami.
 
 ## <a name="managing-computer-groups"></a>Zarządzanie grupami komputerów
-Można wyświetlić grupy komputerów, które zostały utworzone na podstawie zapytania dziennika lub interfejsu API wyszukiwania dzienników z **ustawień zaawansowanych** w obszarze roboczym Log Analytics w Azure Portal.  Wybierz **grup komputerów** i następnie **zapisane grupy**.  
+Można wyświetlić grupy komputerów, które zostały utworzone na podstawie zapytania dziennika lub interfejsu API wyszukiwania dzienników z **ustawień zaawansowanych** w obszarze roboczym Log Analytics w Azure Portal.  Wybierz **grupy komputerów** , a następnie **zapisane grupy**.  
 
-Kliknij przycisk **x** w **Usuń** kolumny, aby usunąć grupę komputerów.  Kliknij przycisk **Wyświetl członków** ikony grupy uruchomić przeszukiwanie dziennika grupy, które zwraca jej członków.  Nie można zmodyfikować grupy komputerów, ale zamiast tego należy usunąć i utworzyć ją ponownie przy użyciu zmodyfikowanych ustawień.
+Kliknij **znak x** w kolumnie **Usuń** , aby usunąć grupę komputerów.  Kliknij ikonę **Wyświetl członków** w grupie, aby uruchomić przeszukiwanie dzienników grupy zwracające jego elementy członkowskie.  Nie można zmodyfikować grupy komputerów, ale zamiast tego należy usunąć i utworzyć ją ponownie przy użyciu zmodyfikowanych ustawień.
 
 ![Zapisane grupy komputerów](media/computer-groups/configure-saved.png)
 
@@ -102,7 +101,7 @@ Na przykład można użyć następujących do zwrócenia rekordy UpdateSummary t
   `UpdateSummary | where Computer in (mycomputergroup)`
 
 
-Zaimportowany komputer grupy i ich uwzględnionych komputerach, które są przechowywane w **Grupa_komputerów** tabeli.  Na przykład następujące zapytanie zwróci listę komputerów w grupie komputerów w domenie z usługi Active Directory. 
+Zaimportowane grupy komputerów i ich dołączone komputery są przechowywane w tabeli **komputerów** .  Na przykład następujące zapytanie zwróci listę komputerów w grupie komputerów w domenie z usługi Active Directory. 
 
   `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
 
@@ -117,20 +116,20 @@ Następujące zapytanie zwróci rekordy UpdateSummary tylko komputery, na komput
 
 
 ## <a name="computer-group-records"></a>Rekordów grupy komputerów
-Rekord zostanie utworzony w obszarze roboczym usługi Log Analytics dla każdego członkostwo w grupie komputerów, utworzone na podstawie usługi Active Directory lub programu WSUS.  Te rekordy mają typ **Grupa_komputerów** i mają właściwości podane w poniższej tabeli.  Rekordy nie są tworzone dla grup komputerów opartych na zapytaniach dziennika.
+Rekord zostanie utworzony w obszarze roboczym usługi Log Analytics dla każdego członkostwo w grupie komputerów, utworzone na podstawie usługi Active Directory lub programu WSUS.  Te rekordy mają typ Grupa **komputerów** i mają właściwości w poniższej tabeli.  Rekordy nie są tworzone dla grup komputerów opartych na zapytaniach dziennika.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| `Type` |*ComputerGroup* |
+| `Type` |*Grupa komputerów* |
 | `SourceSystem` |*SourceSystem* |
 | `Computer` |Nazwa komputera członkowskiego. |
 | `Group` |Nazwa grupy. |
 | `GroupFullName` |Pełna ścieżka do grupy, w tym źródłowego i nazwę źródła. |
 | `GroupSource` |Źródłowej, tej grupy, zebranych z. <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
 | `GroupSourceName` |Nazwa źródła, które zostały zebrane grupy.  Usługi Active Directory jest to nazwa domeny. |
-| `ManagementGroupName` |Nazwa grupy zarządzania agentów SCOM.  Dla innych agentów jest to AOI -\<identyfikator obszaru roboczego\> |
+| `ManagementGroupName` |Nazwa grupy zarządzania agentów SCOM.  W przypadku innych agentów jest to AOI\<identyfikator obszaru roboczego\> |
 | `TimeGenerated` |Data i godzina utworzenia lub aktualizacji grupy komputerów. |
 
 ## <a name="next-steps"></a>Następne kroki
-* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
+* Informacje na temat [zapytań dzienników](../log-query/log-query-overview.md) w celu analizowania danych zebranych ze źródeł danych i rozwiązań.  
 

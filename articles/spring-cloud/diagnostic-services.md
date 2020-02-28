@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: fc1f81c616dc6ee664bb5be924f2a1586646d16d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 90ff59bb76bceaacc7b0528ed0461b76832dc7fd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279159"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662131"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analizowanie dzienników i metryk przy użyciu ustawień diagnostycznych
 
@@ -25,7 +25,7 @@ Wybierz kategorię dziennika i kategorię metryki, którą chcesz monitorować.
 
 ## <a name="logs"></a>Dzienniki
 
-|Dziennik | Opis |
+|Log | Opis |
 |----|----|
 | **ApplicationConsole** | Dziennik konsoli wszystkich aplikacji klienta. | 
 | **SystemLogs** | Obecnie w tej kategorii znajdują się tylko [źródła dzienników serwera konfiguracji chmury](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) . |
@@ -114,7 +114,7 @@ Aby dowiedzieć się więcej o języku zapytań używanym w Log Analytics, zobac
 1. Aby przejrzeć dzienniki aplikacji, Wyszukaj kontener o nazwie **Insights-Logs-applicationconsole**.
 1. Aby przejrzeć metryki aplikacji, Wyszukaj kontener o nazwie **Insights-Metrics-pt1m**.
 
-Aby dowiedzieć się więcej o wysyłaniu informacji diagnostycznych do konta magazynu, zobacz temat [Zapisywanie i wyświetlanie danych diagnostycznych w usłudze Azure Storage](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-to-storage).
+Aby dowiedzieć się więcej o wysyłaniu informacji diagnostycznych do konta magazynu, zobacz temat [Zapisywanie i wyświetlanie danych diagnostycznych w usłudze Azure Storage](../storage/common/storage-introduction.md).
 
 ### <a name="use-your-event-hub"></a>Korzystanie z centrum zdarzeń
 

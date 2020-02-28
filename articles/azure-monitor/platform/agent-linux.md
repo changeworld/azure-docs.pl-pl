@@ -1,18 +1,17 @@
 ---
 title: Łączenie komputerów z systemem Linux z Azure Monitor | Microsoft Docs
 description: W tym artykule opisano sposób łączenia komputerów z systemem Linux hostowanych w innych chmurach lub lokalnych w celu Azure Monitor z agentem Log Analytics dla systemu Linux.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 15334f0c58f602a2728e3daa6645b957dfcd7129
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 40c279a4beee9fbebe2de7f272fe51d9039f071c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290329"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668710"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Łączenie komputerów z systemem Linux z Azure Monitor
 
@@ -32,7 +31,7 @@ Aby poznać obsługiwaną konfigurację, przejrzyj tematy dotyczące [obsługiwa
 
 Agent Log Analytics dla systemu Linux składa się z wielu pakietów. Plik Release zawiera następujące pakiety, które są dostępne przez uruchomienie pakietu Shell z parametrem `--extract`:
 
-**Pakiet** | **Wersja** | **Opis**
+**Package** | **Wersja** | **Opis**
 ----------- | ----------- | --------------
 omsagent | 1.12.15 | Agent Log Analytics dla systemu Linux
 omsconfig | 1.1.1 | Agent konfiguracji agenta Log Analytics
@@ -70,7 +69,7 @@ Przed zainstalowaniem agenta usługi Log Analytics dla systemu Linux potrzebne s
 
 5. Wartość z prawej strony **identyfikatora obszaru roboczego** i **klucza podstawowego**. Skopiuj i wklej obie wartości do ulubionego edytora.
 
-## <a name="install-the-agent-manually"></a>Ręczna instalacja agenta
+## <a name="install-the-agent-manually"></a>Zainstaluj agenta ręcznie
 
 Agent Log Analytics dla systemu Linux jest dostępny w ramach samodzielnego wyodrębniania i instalowalnego pakietu skryptu powłoki. Ten pakiet zawiera pakiety Debian i RPM dla każdego składnika agenta i może być instalowany bezpośrednio lub wyodrębniony w celu pobrania poszczególnych pakietów. Jeden pakiet jest dostarczany dla architektury x64 i jednego dla architektur x86. 
 
@@ -94,7 +93,7 @@ Agent Log Analytics dla systemu Linux jest dostępny w ramach samodzielnego wyod
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
     ```
 
-    Jeśli wymagane jest uwierzytelnianie, należy określić nazwę użytkownika i hasło. Przykład: 
+    Jeśli wymagane jest uwierzytelnianie, należy określić nazwę użytkownika i hasło. Na przykład: 
     
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>

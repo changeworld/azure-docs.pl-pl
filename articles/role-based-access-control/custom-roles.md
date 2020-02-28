@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2019
+ms.date: 02/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 64161451c0c8b1af7666fcd104d337856e5803c7
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8c5db13b343783a86dc04b84e09746bc4406186b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821454"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660703"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Role niestandardowe dla zasobów platformy Azure
 
 Jeśli [wbudowane role dla zasobów platformy Azure](built-in-roles.md) nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne role niestandardowe. Podobnie jak wbudowane role można przypisywać niestandardowe role do użytkowników, grup i jednostek usługi w ramach subskrypcji, grupy zasobów i zakresów zasobów.
 
-Role niestandardowe mogą być współużytkowane przez subskrypcje, które ufają temu samemu katalogowi usługi Azure AD. Obowiązuje limit **5 000** ról niestandardowych dla katalogu. (W przypadku wyspecjalizowanych chmur, takich jak Azure Government, Azure (Niemcy i Azure Chiny), limit to 2 000 ról niestandardowych.) Role niestandardowe można tworzyć przy użyciu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub API REST.
+Role niestandardowe mogą być współużytkowane przez subskrypcje, które ufają temu samemu katalogowi usługi Azure AD. Obowiązuje limit **5 000** ról niestandardowych dla katalogu. (W przypadku wyspecjalizowanych chmur, takich jak Azure Government, Azure (Niemcy i Azure Chiny), limit to 2 000 ról niestandardowych.) Role niestandardowe można tworzyć przy użyciu Azure Portal (wersja zapoznawcza), Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub API REST.
 
 ## <a name="custom-role-example"></a>Przykład roli niestandardowej
 
@@ -70,7 +70,7 @@ Gdy tworzysz rolę niestandardową, zostanie ona wyświetlona w Azure Portal z p
 
 1. Zdecyduj, w jaki sposób chcesz utworzyć rolę niestandardową
 
-    Role niestandardowe można tworzyć przy użyciu [Azure PowerShell](custom-roles-powershell.md), interfejsu [wiersza polecenia platformy Azure](custom-roles-cli.md)lub [API REST](custom-roles-rest.md).
+    Role niestandardowe można tworzyć przy użyciu [Azure Portal](custom-roles-portal.md) (wersja zapoznawcza), [Azure PowerShell](custom-roles-powershell.md), interfejsu [wiersza polecenia platformy Azure](custom-roles-cli.md)lub [interfejs API REST](custom-roles-rest.md).
 
 1. Ustalanie potrzebnych uprawnień
 
@@ -90,17 +90,17 @@ Aby zapoznać się z samouczkiem krok po kroku na temat tworzenia roli niestanda
 
 Rola niestandardowa ma następujące właściwości.
 
-| Właściwość | Wymagane | Typ | Opis |
+| Właściwość | Wymagany | Typ | Opis |
 | --- | --- | --- | --- |
-| `Name` | Tak | Ciąg | Nazwa wyświetlana roli niestandardowej. Chociaż definicja roli jest zasobem na poziomie subskrypcji, definicja roli może być używana w wielu subskrypcjach, które współużytkują ten sam katalog usługi Azure AD. Ta nazwa wyświetlana musi być unikatowa w zakresie katalogu usługi Azure AD. Może zawierać litery, cyfry, spacje i znaki specjalne. Maksymalna liczba znaków to 128. |
-| `Id` | Tak | Ciąg | Unikatowy identyfikator roli niestandardowej. W przypadku Azure PowerShell i interfejsu wiersza polecenia platformy Azure ten identyfikator jest generowany automatycznie podczas tworzenia nowej roli. |
-| `IsCustom` | Tak | Ciąg | Wskazuje, czy jest to rola niestandardowa. Ustaw na `true` dla ról niestandardowych. |
-| `Description` | Tak | Ciąg | Opis roli niestandardowej. Może zawierać litery, cyfry, spacje i znaki specjalne. Maksymalna liczba znaków to 1024. |
-| `Actions` | Tak | Ciąg [] | Tablica ciągów, która określa operacje zarządzania, które mogą być wykonywane przez rolę. Aby uzyskać więcej informacji, zobacz [Akcje](role-definitions.md#actions). |
+| `Name` | Yes | Ciąg | Nazwa wyświetlana roli niestandardowej. Chociaż definicja roli jest zasobem na poziomie subskrypcji, definicja roli może być używana w wielu subskrypcjach, które współużytkują ten sam katalog usługi Azure AD. Ta nazwa wyświetlana musi być unikatowa w zakresie katalogu usługi Azure AD. Może zawierać litery, cyfry, spacje i znaki specjalne. Maksymalna liczba znaków to 128. |
+| `Id` | Yes | Ciąg | Unikatowy identyfikator roli niestandardowej. W przypadku Azure PowerShell i interfejsu wiersza polecenia platformy Azure ten identyfikator jest generowany automatycznie podczas tworzenia nowej roli. |
+| `IsCustom` | Yes | Ciąg | Wskazuje, czy jest to rola niestandardowa. Ustaw na `true` dla ról niestandardowych. |
+| `Description` | Yes | Ciąg | Opis roli niestandardowej. Może zawierać litery, cyfry, spacje i znaki specjalne. Maksymalna liczba znaków to 1024. |
+| `Actions` | Yes | Ciąg [] | Tablica ciągów, która określa operacje zarządzania, które mogą być wykonywane przez rolę. Aby uzyskać więcej informacji, zobacz [Akcje](role-definitions.md#actions). |
 | `NotActions` | Nie | Ciąg [] | Tablica ciągów, która określa operacje zarządzania, które są wykluczone z dozwolonej `Actions`. Aby uzyskać więcej informacji, zobacz [Nonaruszone](role-definitions.md#notactions). |
 | `DataActions` | Nie | Ciąg [] | Tablica ciągów, która określa operacje na danych, które mogą być wykonywane na danych w tym obiekcie. Aby uzyskać więcej informacji, zobacz temat [Dataactions](role-definitions.md#dataactions). |
 | `NotDataActions` | Nie | Ciąg [] | Tablica ciągów, która określa operacje na danych, które są wykluczone z dozwolonych `DataActions`. Aby uzyskać więcej informacji, zobacz [NotDataActions](role-definitions.md#notdataactions). |
-| `AssignableScopes` | Tak | Ciąg [] | Tablica ciągów, która określa zakresy, które rola niestandardowa jest dostępna do przypisania. W przypadku ról niestandardowych nie można obecnie ustawić `AssignableScopes` na zakres główny (`"/"`) ani zakres grupy zarządzania. Aby uzyskać więcej informacji, zobacz [AssignableScopes](role-definitions.md#assignablescopes) i [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment). |
+| `AssignableScopes` | Yes | Ciąg [] | Tablica ciągów, która określa zakresy, które rola niestandardowa jest dostępna do przypisania. W przypadku ról niestandardowych nie można obecnie ustawić `AssignableScopes` na zakres główny (`"/"`) ani zakres grupy zarządzania. Aby uzyskać więcej informacji, zobacz [AssignableScopes](role-definitions.md#assignablescopes) i [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment). |
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Kto może tworzyć, usuwać, aktualizować lub wyświetlać rolę niestandardową
 
@@ -113,7 +113,6 @@ Podobnie jak wbudowane role, właściwość `AssignableScopes` określa zakresy,
 | Wyświetlanie roli niestandardowej | `Microsoft.Authorization/ roleDefinitions/read` | Użytkownicy, którym udzielono tej operacji w zakresie, mogą wyświetlać role niestandardowe, które są dostępne do przypisania w tym zakresie. Wszystkie wbudowane role umożliwiają przypisywanie ról niestandardowych. |
 
 ## <a name="next-steps"></a>Następne kroki
-- [Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu programu Azure PowerShell](custom-roles-powershell.md)
-- [Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure](custom-roles-cli.md)
+- [Tworzenie lub aktualizowanie ról niestandardowych platformy Azure przy użyciu Azure Portal (wersja zapoznawcza)](custom-roles-portal.md)
 - [Opis definicji ról dla zasobów platformy Azure](role-definitions.md)
 - [Rozwiązywanie problemów z funkcją RBAC dla zasobów platformy Azure](troubleshooting.md)

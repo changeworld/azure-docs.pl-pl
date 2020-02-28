@@ -1,18 +1,17 @@
 ---
 title: Wizualizowanie danych z Azure Monitor | Microsoft Docs
 description: Zawiera podsumowanie dostępnych metod wizualizacji danych metryk i dzienników przechowywanych w Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/24/2018
-ms.openlocfilehash: c350cb1f8e7343f6d8e7a416aa0bba71388eaa86
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7bace6ff6eb7dd1c02e4907e338fc0be9d66471c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597831"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657813"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z Azure Monitor
 Ten artykuł zawiera podsumowanie dostępnych metod wizualizacji danych dziennika i metryk przechowywanych w Azure Monitor.
@@ -48,7 +47,7 @@ Wizualizacje, takie jak wykresy i wykresy, mogą ułatwić analizowanie danych m
 ## <a name="azure-monitor-views"></a>Widoki Azure Monitor
 [Widoki w Azure monitor](platform/view-designer.md) umożliwiają tworzenie niestandardowych wizualizacji przy użyciu danych dziennika. Są one używane przez [rozwiązania monitorujące](insights/solutions.md) , które umożliwiają prezentowanie zbieranych danych.
 
-![Wyświetl](media/visualizations/view.png)
+![Widok](media/visualizations/view.png)
 
 ### <a name="advantages"></a>Zalety
 - Rozbudowane wizualizacje danych dziennika.

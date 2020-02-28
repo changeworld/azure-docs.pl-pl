@@ -1,19 +1,17 @@
 ---
 title: Profilowanie aplikacji sieci Web na maszynie wirtualnej platformy Azure — Application Insights Profiler
 description: Profilowanie aplikacji sieci Web na maszynie wirtualnej platformy Azure przy użyciu Application Insights Profiler.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 046128fda385486f5a92d215e349760483c5dfa4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432362"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671583"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profilowanie aplikacji sieci Web działających na maszynie wirtualnej platformy Azure lub zestawu skalowania maszyn wirtualnych przy użyciu Application Insights Profiler
 
@@ -21,7 +19,7 @@ ms.locfileid: "75432362"
 
 Możesz również wdrożyć usługę Azure Application Insights Profiler w ramach następujących usług:
 * [Azure App Service](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
-* [usług Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Wdróż Profiler na maszynie wirtualnej lub w zestawie skalowania maszyn wirtualnych

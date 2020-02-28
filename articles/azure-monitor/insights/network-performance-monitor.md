@@ -1,18 +1,17 @@
 ---
 title: Network Performance Monitor rozwiązanie na platformie Azure | Microsoft Docs
 description: Network Performance Monitor na platformie Azure ułatwia monitorowanie wydajności sieci w czasie niemal rzeczywistym w celu wykrywania i lokalizowania wąskich gardeł wydajności sieci.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 396652e3f8a0a8d9e18effb94a48a362054dde96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cb906f6b3cf333e3fb3a24a934e5d9f11fc10cda
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75403145"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654481"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -49,7 +48,7 @@ NPM może monitorować łączność między sieciami i aplikacjami w dowolnej cz
 * Wschodnie stany USA 2
 * Zachodnie stany USA 2
 * Japonia Wschodnia
-* Azja Południowo-wschodnia
+* Azja Południowo-Wschodnia
 * Australia Południowo-Wschodnia
 * Australia Środkowa
 * Australia Wschodnia
@@ -162,7 +161,7 @@ Skonfiguruj odpowiednie możliwości:
 
 - [Monitor wydajności](network-performance-monitor-performance-monitor.md#configuration)
 - [Monitor łączności usług](network-performance-monitor-performance-monitor.md#configuration)
-- [ExpressRoute Monitor](network-performance-monitor-expressroute.md#configuration)
+- [Monitor ExpressRoute](network-performance-monitor-expressroute.md#configuration)
 
  
 
@@ -173,7 +172,7 @@ W poniższej tabeli przedstawiono metody zbierania danych oraz inne szczegóły 
 
 | Platforma | Agent bezpośredni | Agent System Center Operations Manager | Azure Storage | Operations Manager jest wymagane? | Dane agenta Operations Manager wysyłane przez grupę zarządzania | Częstotliwość zbierania |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows | &#8226; | &#8226; |  |  |  |Uzgadnianie TCP/ICMP ECHO komunikatów co 5 sekund, dane wysyłane co 3 minuty |
+| System Windows | &#8226; | &#8226; |  |  |  |Uzgadnianie TCP/ICMP ECHO komunikatów co 5 sekund, dane wysyłane co 3 minuty |
  
 
  
@@ -276,11 +275,11 @@ Za każdym razem, gdy tworzysz alert, NPM tworzy regułę alertu dziennika na po
 Opłaty za powiadomienia są naliczone osobno zgodnie z [cennikiem za powiadomienia na stronie cennika Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 Informacje o cenach są dostępne w [trybie online](network-performance-monitor-pricing-faq.md).
 
-## <a name="provide-feedback"></a>Prześlij opinię 
+## <a name="provide-feedback"></a>Przekaż opinię 
 
 * **UserVoice:** Możesz publikować swoje pomysły dotyczące Network Performance Monitor funkcji, nad którymi chcesz, nad którymi pracujemy. Odwiedź [stronę usługi UserVoice](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
 

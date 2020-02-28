@@ -1,14 +1,14 @@
 ---
 title: Co to są powiadomienia dotyczące usługi Azure Service Health?
 description: Powiadomienia o kondycji usługi umożliwiają wyświetlanie komunikatów kondycji usługi opublikowanych przez Microsoft Azure.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 4/12/2018
-ms.openlocfilehash: f2d79dc920129241c801c75cc9009b3ba8f34b78
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451548"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653972"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Wyświetlanie powiadomień dotyczących kondycji usługi za pomocą witryny Azure Portal
 
@@ -30,7 +30,7 @@ dyplomatyczn | Jedna z następujących wartości: **administrator** lub **operac
 correlationId | Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia należące do tej samej akcji zwykle mają ten sam identyfikator korelacji.
 eventDataId | Unikatowy identyfikator zdarzenia.
 eventName | Tytuł zdarzenia.
-level | Poziom zdarzenia
+poziom | Poziom zdarzenia
 resourceProviderName | Nazwa dostawcy zasobów dla zasobu, którego dotyczy problem.
 resourceType| Typ zasobu zasobu, którego to dotyczy.
 subStatus | Zazwyczaj kod stanu HTTP odpowiadającego wywołania REST, ale może również zawierać inne ciągi opisujące podstan. Na przykład: OK (kod stanu HTTP: 200), utworzono (kod stanu HTTP: 201), zaakceptowane (kod stanu HTTP: 202), brak zawartości (kod stanu http: 204), nieprawidłowe żądanie (kod stanu http: 400), nie znaleziono (kod stanu http: 404), konflikt (kod stanu http: 409), serwer wewnętrzny Błąd (kod stanu HTTP: 500), Usługa niedostępna (kod stanu HTTP: 503) i limit czasu bramy (kod stanu HTTP: 504).

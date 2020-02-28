@@ -1,18 +1,14 @@
 ---
 title: Ciągłe monitorowanie potoku wydania usługi DevOps przy użyciu Azure Pipelines i platformy Azure Application Insights | Microsoft Docs
 description: Zawiera instrukcje umożliwiające szybkie konfigurowanie ciągłego monitorowania za pomocą Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/16/2019
-ms.openlocfilehash: c891cc7564a60dfd665d84d569e266332d255fa9
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677513"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655399"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Dodawanie ciągłego monitorowania do potoku wydania
 
@@ -24,7 +20,7 @@ W przypadku ciągłego monitorowania potoki wersji mogą zawierać dane monitoro
 
 1. W [usłudze Azure DevOps](https://dev.azure.com)wybierz organizację i projekt.
    
-1. W menu po lewej stronie projektu wybierz pozycję **potoki**  > **wersje**. 
+1. W menu po lewej stronie projektu wybierz pozycję **potoki** > **wersje**. 
    
 1. Rozwiń strzałkę obok pozycji **Nowy** i wybierz pozycję **Nowy potok wersji**. Lub, jeśli nie masz jeszcze potoku, wybierz pozycję **Nowy potok** na wyświetlonej stronie.
    

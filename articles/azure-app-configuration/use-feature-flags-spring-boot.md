@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc
-ms.openlocfilehash: 8c66e2995462701f7ddaefc3a2623c02fee883ef
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 090ede85301f9e7aff14394c8fb5c7d558d98dd4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687171"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656028"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Samouczek: używanie flag funkcji w aplikacji do rozruchu sprężynowego
 
@@ -51,11 +51,23 @@ Firma Microsoft zaleca, aby zachować flagi funkcji poza aplikacją i osobno zar
 
 Najprostszym sposobem łączenia aplikacji z rozruchem sprężynowym z konfiguracją aplikacji jest użycie dostawcy konfiguracji:
 
+### <a name="spring-cloud-11x"></a>Chmura Wiosenna 1.1. x
+
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
-    <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-    <version>1.1.0.M4</version>
+    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+    <version>1.1.1</version>
+</dependency>
+```
+
+### <a name="spring-cloud-12x"></a>Chmura Wiosenna 1.2. x
+
+```xml
+<dependency>
+    <groupId>com.microsoft.azure</groupId>
+    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+    <version>1.2.1</version>
 </dependency>
 ```
 
@@ -69,23 +81,22 @@ Program Feature Manager obsługuje *aplikację Application. yml* jako źródło 
 
 ```yml
 feature-management:
-  featureSet:
-    features:
-      FeatureA: true
-      FeatureB: false
-      FeatureC:
-        EnabledFor:
-          -
-            name: Percentage
-            parameters:
-              value: 50
+  feature-set:
+    feature-a: true
+    feature-b: false
+    feature-c:
+      enabled-for:
+        -
+          name: Percentage
+          parameters:
+            value: 50
 ```
 
 Zgodnie z Konwencją sekcja `feature-management` tego dokumentu YML jest używana na potrzeby ustawień flagi funkcji. W poprzednim przykładzie przedstawiono trzy flagi funkcji z filtrami zdefiniowanymi we właściwości `EnabledFor`:
 
-* `FeatureA` jest *włączona*.
-* `FeatureB` jest *wyłączona*.
-* `FeatureC` określa filtr o nazwie `Percentage` z właściwością `Parameters`. `Percentage` to konfigurowalny filtr. W tym przykładzie `Percentage` określa prawdopodobieństwo 50 procent dla flagi *`FeatureC`.*
+* `feature-a` jest *włączona*.
+* `feature-b` jest *wyłączona*.
+* `feature-c` określa filtr o nazwie `Percentage` z właściwością `parameters`. `Percentage` to konfigurowalny filtr. W tym przykładzie `Percentage` określa prawdopodobieństwo 50 procent dla flagi *`feature-c`.*
 
 ## <a name="feature-flag-checks"></a>Sprawdzanie flag funkcji
 
@@ -94,7 +105,7 @@ Podstawowym wzorcem zarządzania funkcjami jest najpierw sprawdzenie, czy flaga 
 ```java
 private FeatureManager featureManager;
 ...
-if (featureManager.isEnabled("FeatureA"))
+if (featureManager.isEnabledAsync("feature-a"))
 {
     // Run the following code
 }
@@ -118,11 +129,11 @@ public class HomeController {
 
 ## <a name="controller-actions"></a>Akcje kontrolera
 
-W kontrolerach MVC Użyj atrybutu `@FeatureGate`, aby określić, czy określona akcja jest włączona. Aby można było uruchomić następujące akcje `Index`, `FeatureA` musi ono być *włączone* :
+W kontrolerach MVC Użyj atrybutu `@FeatureGate`, aby określić, czy określona akcja jest włączona. Aby można było uruchomić następujące akcje `Index`, `feature-a` musi ono być *włączone* :
 
 ```java
 @GetMapping("/")
-@FeatureGate(feature = "FeatureA")
+@FeatureGate(feature = "feature-a")
 public String index(Model model) {
     ...
 }
@@ -132,7 +143,7 @@ Gdy kontroler MVC lub akcja jest blokowana, ponieważ flaga funkcji kontrolując
 
 ## <a name="mvc-filters"></a>Filtry MVC
 
-Filtry MVC można skonfigurować tak, aby były aktywowane na podstawie stanu flagi funkcji. Poniższy kod dodaje filtr MVC o nazwie `FeatureFlagFilter`. Ten filtr jest wyzwalany w ramach potoku MVC tylko wtedy, gdy `FeatureA` jest włączona.
+Filtry MVC można skonfigurować tak, aby były aktywowane na podstawie stanu flagi funkcji. Poniższy kod dodaje filtr MVC o nazwie `FeatureFlagFilter`. Ten filtr jest wyzwalany w ramach potoku MVC tylko wtedy, gdy `feature-a` jest włączona.
 
 ```java
 @Component
@@ -144,7 +155,7 @@ public class FeatureFlagFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        if(!featureManager.isEnabled("FeatureA")) {
+        if(!featureManager.isEnabled("feature-a")) {
             chain.doFilter(request, response);
             return;
         }
@@ -156,11 +167,11 @@ public class FeatureFlagFilter implements Filter {
 
 ## <a name="routes"></a>Trasy
 
-Za pomocą flag funkcji można przekierowywać trasy. Następujący kod przekierowuje użytkownika z `FeatureA` jest włączony:
+Za pomocą flag funkcji można przekierowywać trasy. Następujący kod przekierowuje użytkownika z `feature-a` jest włączony:
 
 ```java
 @GetMapping("/redirect")
-@FeatureGate(feature = "FeatureA", fallback = "/getOldFeature")
+@FeatureGate(feature = "feature-a", fallback = "/getOldFeature")
 public String getNewFeature() {
     // Some New Code
 }

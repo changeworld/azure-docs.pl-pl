@@ -1,18 +1,17 @@
 ---
 title: Network Performance Monitor rozwiązanie na platformie Azure Log Analytics | Microsoft Docs
 description: Korzystając z funkcji monitorowania ExpressRoute w Network Performance Monitor, można monitorować kompleksową łączność i wydajność między biurami oddziałów i platformą Azure za pośrednictwem usługi Azure ExpressRoute.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 5383402816eddba4c631c240585723b7c7119cef
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898895"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660754"
 ---
 # <a name="expressroute-monitor"></a>Monitor ExpressRoute
 
@@ -24,11 +23,11 @@ Korzystając z możliwości usługi Azure ExpressRoute monitor w [Network Perfor
 
 ![Monitor ExpressRoute](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
-## <a name="configuration"></a>Konfigurowanie 
+## <a name="configuration"></a>Konfiguracja 
 Aby otworzyć konfigurację Network Performance Monitor, Otwórz [rozwiązanie Network Performance Monitor](network-performance-monitor.md) i wybierz pozycję **Konfiguruj**.
 
 ### <a name="configure-network-security-group-rules"></a>Skonfiguruj reguły sieciowej grupy zabezpieczeń 
-W przypadku serwerów na platformie Azure, które są używane do monitorowania za pośrednictwem Network Performance Monitor, skonfiguruj reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) w celu zezwalania na ruch TCP na porcie używanym przez Network Performance Monitor dla transakcji syntetycznych. Domyślnym portem jest 8084. Ta konfiguracja pozwala agentowi Log Analytics zainstalowanemu na maszynach wirtualnych platformy Azure komunikować się z lokalnym agentem monitorowania. 
+W przypadku serwerów na platformie Azure, które są używane do monitorowania za pośrednictwem Network Performance Monitor, skonfiguruj reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) w celu zezwalania na ruch TCP na porcie używanym przez Network Performance Monitor dla transakcji syntetycznych. Domyślnym portem jest port 8084. Ta konfiguracja pozwala agentowi Log Analytics zainstalowanemu na maszynach wirtualnych platformy Azure komunikować się z lokalnym agentem monitorowania. 
 
 Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [Network Security Groups](../../virtual-network/manage-network-security-group.md). 
 
@@ -76,7 +75,7 @@ Pulpit nawigacyjny Network Performance Monitor zawiera omówienie kondycji obwod
 
 ### <a name="circuits-list"></a>Lista obwodów 
 
-Aby wyświetlić listę wszystkich monitorowanych obwodów usługi ExpressRoute, wybierz kafelek obwodów usługi ExpressRoute. Możesz wybrać obwód i wyświetlić jego stan kondycji, wykresy trendu dotyczące utraty pakietów, wykorzystania przepustowości i opóźnień. Wykresy są interaktywne. Można wybrać niestandardowe okno czasowe do kreślenia wykresów. Przeciągnij wskaźnik myszy nad obszar na wykresie, aby powiększyć i zobaczyć szczegółowe punkty danych. 
+Aby wyświetlić listę wszystkich monitorowanych obwodów usługi ExpressRoute, wybierz kafelek obwodów usługi ExpressRoute. Można wybrać obwodu i wyświetlić jego stan kondycji, wykresy trendów utraty pakietów, wykorzystania przepustowości i opóźnień. Wykresy są interaktywne. Możesz wybrać przedział czasu niestandardowych do kreślenia wykresów. Przeciągnij wskaźnik myszy nad obszar na wykresie, aby powiększyć i zobaczyć szczegółowe punkty danych. 
 
 ![Lista obwodów usługi ExpressRoute](media/network-performance-monitor-expressroute/expressroute-circuits.png) 
 
@@ -88,7 +87,7 @@ Wykresy o wykorzystaniu przepustowości, opóźnieniu i utracie są interaktywne
 
 ### <a name="peerings-list"></a>Lista komunikacji równorzędnych 
 
-Aby wyświetlić listę wszystkich połączeń z sieciami wirtualnymi za pośrednictwem prywatnej komunikacji równorzędnej, wybierz kafelek **prywatne elementy równorzędne** na pulpicie nawigacyjnym. W tym miejscu możesz wybrać połączenie sieci wirtualnej i wyświetlić jego stan kondycji, wykresy trendu dotyczące utraty pakietów, wykorzystania przepustowości i opóźnień. 
+Aby wyświetlić listę wszystkich połączeń z sieciami wirtualnymi za pośrednictwem prywatnej komunikacji równorzędnej, wybierz kafelek **prywatne elementy równorzędne** na pulpicie nawigacyjnym. W tym miejscu można wybrać wirtualnej połączenia sieciowego i wyświetlić jego stan kondycji, wykresy trendów utraty pakietów, wykorzystania przepustowości i opóźnień. 
 
 ![Komunikacja równorzędna ExpressRoute](media/network-performance-monitor-expressroute/expressroute-peerings.png) 
 

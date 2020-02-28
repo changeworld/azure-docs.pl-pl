@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8fdc64632be8b5fcb3dca8de2ee833fef25719fe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983099"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656742"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Identyfikator URI przekierowania lub adres URL odpowiedzi i ograniczenia
 
@@ -54,7 +54,7 @@ Model aplikacji usługi Azure AD nie obsługuje wieloznacznych identyfikatorów 
 > [!NOTE]
 > Nowe środowisko [rejestracje aplikacji](https://go.microsoft.com/fwlink/?linkid=2083908) nie pozwala deweloperom dodawać symboli wieloznacznych URI w interfejsie użytkownika. Dodawanie identyfikatora URI symbol wieloznaczny dla aplikacji, które logują się do konta służbowego, jest obsługiwane tylko za pomocą edytora manifestu aplikacji. W przód nowe aplikacje nie będą mogły używać symboli wieloznacznych w identyfikatorze URI przekierowania. Jednak starsze aplikacje zawierające symbole wieloznaczne w identyfikatorach URI przekierowania nadal będą działały.
 
-Jeśli scenariusz wymaga więcej identyfikatorów URI przekierowania niż maksymalny dozwolony limit, zamiast dodawać wieloznaczny identyfikator URI przekierowania, należy wziąć pod uwagę jedną z poniższych metod.
+Jeśli scenariusz wymaga więcej identyfikatorów URI przekierowania niż maksymalny dozwolony limit, zamiast dodawać wieloznaczny identyfikator URI przekierowania, należy wziąć pod uwagę następujące podejście.
 
 ### <a name="use-a-state-parameter"></a>Użyj parametru stanu
 
@@ -70,10 +70,6 @@ W tym podejściu:
 
 > [!NOTE]
 > Takie podejście pozwala naruszonemu klientowi zmodyfikować dodatkowe parametry wysłane w parametrze State, w związku z tym przekierowując użytkownika do innego adresu URL, który jest [otwartym zagrożeniem](https://tools.ietf.org/html/rfc6819#section-4.2.4) w dokumencie RFC 6819. W związku z tym, klient musi chronić te parametry przez szyfrowanie stanu lub Weryfikowanie go przy użyciu innych metod, takich jak Walidacja nazwy domeny w identyfikatorze URI przekierowania względem tokenu.
-
-### <a name="add-redirect-uris-to-service-principals"></a>Dodawanie identyfikatorów URI przekierowania do jednostek usługi
-
-Innym podejściem jest dodanie identyfikatorów URI przekierowania do jednostek [usługi](app-objects-and-service-principals.md#application-and-service-principal-relationship) , które reprezentują rejestrację aplikacji w dowolnej dzierżawie usługi Azure AD. Tego podejścia można użyć, jeśli nie można użyć parametru stanu lub twój scenariusz wymaga dodania nowych identyfikatorów URI przekierowania do rejestracji aplikacji dla każdej nowej dzierżawy, którą obsługujesz. 
 
 ## <a name="next-steps"></a>Następne kroki
 

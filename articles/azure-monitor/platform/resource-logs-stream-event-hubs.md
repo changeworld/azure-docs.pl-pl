@@ -3,17 +3,16 @@ title: Przesyłanie strumieniowe dzienników platformy Azure do centrum zdarzeń
 description: Informacje na temat przesyłania strumieniowego dzienników zasobów platformy Azure do centrum zdarzeń w celu wysyłania danych do systemów zewnętrznych, takich jak rozwiązań Siem innych firm i inne rozwiązania do analizy dzienników.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 00dcc1c1a1d823ab0f2497e47641916d391ee37b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 72341b6da0068ba4b7e3f53b08e6015cafb70f09
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750344"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658918"
 ---
 # <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>Przesyłanie strumieniowe dzienników platformy Azure do usługi Azure Event Hubs
 [Dzienniki platformy](platform-logs-overview.md) na platformie Azure, w tym dziennik aktywności platformy Azure i dzienniki zasobów, zapewniają szczegółowe informacje diagnostyczne i inspekcji dla zasobów platformy Azure oraz platformy platformy Azure, od których zależą.  W tym artykule opisano przesyłanie strumieniowe dzienników platformy do centrów zdarzeń w celu wysyłania danych do systemów zewnętrznych, takich jak rozwiązań Siem innych firm i inne rozwiązania do analizy dzienników.
@@ -64,7 +63,7 @@ Dzienniki platformy z centrów zdarzeń są używane w formacie JSON z elementam
 | category |Kategoria dziennika dla tego zdarzenia. |
 | resourceId |Identyfikator zasobu zasobu, który spowodowało wygenerowanie tego zdarzenia. |
 | operationName |Nazwa operacji. |
-| level |Element opcjonalny. Wskazuje poziom zdarzenia dziennika. |
+| poziom |Opcjonalny. Wskazuje poziom zdarzenia dziennika. |
 | properties |Właściwości zdarzenia. Są one różne dla każdej usługi platformy Azure, zgodnie [ ]()z opisem w temacie. |
 
 

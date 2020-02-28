@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b5d74c7c599f31694a68e7582a6447af8471508
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a727cd57e470f248321011d505f8037808f64298
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984952"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656878"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy
 
@@ -63,7 +63,7 @@ Te kroki umożliwiają utworzenie ustawień na poziomie katalogu, które mają z
    ```
    To wywołanie polecenia cmdlet zwraca wszystkie dostępne szablony:
   
-   ```powershell
+   ``` PowerShell
    Id                                   DisplayName         Description
    --                                   -----------         -----------
    62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified       ...
@@ -77,7 +77,7 @@ Te kroki umożliwiają utworzenie ustawień na poziomie katalogu, które mają z
   
    ```powershell
    $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
-   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
+   $Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value $TemplateId -EQ
    ```
 3. Następnie utwórz nowy obiekt ustawień na podstawie tego szablonu:
   
@@ -171,7 +171,7 @@ Oto ustawienia zdefiniowane w grupie. ujednolicone SettingsTemplate. O ile nie w
    ```
 2. Aby ustawić zasady gościa dla grup na poziomie katalogu, należy zgrupować. ujednolicony szablon
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value "62375ab9-6b52-47ed-826b-58e47e0e304b" -EQ
    ```
 3. Następnie utwórz nowy obiekt ustawień na podstawie tego szablonu:
   
@@ -262,7 +262,7 @@ Ten krok powoduje usunięcie ustawień na poziomie katalogu, które mają zastos
    ```
 2. Pobierz obiekt szablonu dla szablonu groups. Unified. gościa:
    ```powershell
-   $Template1 = Get-AzureADDirectorySettingTemplate -Id 08d542b9-071f-4e16-94b0-74abb372e3d9
+   $Template1 = Get-AzureADDirectorySettingTemplate | where -Property Id -Value "08d542b9-071f-4e16-94b0-74abb372e3d9" -EQ
    ```
 3. Utwórz nowy obiekt ustawień na podstawie szablonu:
    ```powershell

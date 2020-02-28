@@ -1,22 +1,21 @@
 ---
 title: Przegląd Azure Monitor | Microsoft Docs
 description: Omówienie usług i funkcji Microsoft składających się na pełną strategię monitorowania usług i aplikacji platformy Azure.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: f5d98ecdac3acacda2b592f88e7db45dc181e8da
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cec437929e2f7ccd94cf4cf94ec81f87dac2678a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934474"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669169"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
-Usługa Azure Monitor maksymalizuje dostępność i wydajność aplikacji oraz usług, zapewniając kompleksowe rozwiązanie umożliwiające zbieranie, analizowanie i przetwarzanie danych telemetrycznych z chmury i środowisk lokalnych. Usługa ta pomaga interpretować działanie aplikacji i proaktywnie identyfikuje problemy dotyczące aplikacji i zasobów, od których zależą.
+Azure Monitor maksymalizuje dostępność i wydajność aplikacji i usług, udostępniając kompleksowe rozwiązanie do zbierania, analizowania i działania na telemetrii z chmur i środowisk lokalnych. Pomaga interpretować działanie aplikacji i proaktywnie identyfikuje problemy dotyczące aplikacji i zasobów, od których zależą.
 
 Poniżej przedstawiono kilka przykładów tego, co można zrobić z Azure Monitor:
 
@@ -28,7 +27,7 @@ Poniżej przedstawiono kilka przykładów tego, co można zrobić z Azure Monito
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Poniższy diagram zawiera widok wysokiego poziomu Azure Monitor. Na środku diagramu są magazyny danych dla metryk i dzienników, czyli dwa podstawowe typy danych używanych przez Azure Monitor. Po lewej stronie znajdują się [źródła danych monitorowania](platform/data-sources.md) , które wypełniają te [magazyny danych](platform/data-platform.md). Po prawej stronie znajdują się różne funkcje, które Azure Monitor wykonuje przy użyciu tych zebranych danych, takich jak analiza, alerty i przesyłanie strumieniowe do systemów zewnętrznych.
 
@@ -68,7 +67,7 @@ Włącz monitorowanie [aplikacji App Services](app/azure-web-apps.md) lub maszyn
 
 Azure Monitor może zbierać dane dziennika z dowolnego klienta REST za pomocą [interfejsu API modułu zbierającego dane](platform/data-collector-api.md). Dzięki temu można tworzyć niestandardowe scenariusze monitorowania i zwiększać monitorowanie do zasobów, które nie ujawniają danych telemetrycznych w innych źródłach.
 
-## <a name="insights"></a>Analizy
+## <a name="insights"></a>Insights
 Dane monitorowania są przydatne tylko wtedy, gdy mogą zwiększyć widoczność do działania środowiska obliczeniowego. Azure Monitor obejmuje kilka funkcji i narzędzi, które zapewniają cenne informacje dotyczące aplikacji i innych zasobów, od których zależą. [Monitorowanie rozwiązań](insights/solutions.md) i funkcji, takich jak [Application Insights](app/app-insights-overview.md) i [Azure monitor dla kontenerów](insights/container-insights-overview.md) , zapewnia szczegółowe informacje o różnych aspektach aplikacji i określonych usługach platformy Azure. 
 
 ### <a name="application-insights"></a>Application Insights
@@ -119,7 +118,7 @@ Funkcja automatycznego skalowania umożliwia korzystanie z odpowiedniej ilości 
 ### <a name="views"></a>Widoki
 [Wyświetla](../log-analytics/log-analytics-view-designer.md) wizualne wizualizacje danych dzienników w Azure monitor.  Każdy widok zawiera pojedynczy kafelek, który przechodzi w dół do kombinacji wizualizacji, takich jak wykresy słupkowe i liniowe, oprócz list podsumowujących krytyczne dane.  Rozwiązania do monitorowania obejmują widoki, które podsumowują dane dla konkretnej aplikacji, i można tworzyć własne widoki do prezentowania danych z dowolnego zapytania dziennika. Podobnie jak w przypadku innych elementów w Azure Monitor, widoki mogą być dodawane do pulpitów nawigacyjnych platformy Azure.
 
-![Wyświetl](media/overview/view.png)
+![Widok](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com) to usługa analizy biznesowej, która zapewnia interaktywne wizualizacje w różnych źródłach danych i jest skutecznym sposobem udostępniania danych innym osobom w organizacji i poza nią. Power BI można skonfigurować do [automatycznego importowania danych dziennika z Azure monitor](../log-analytics/log-analytics-powerbi.md) , aby skorzystać z tych dodatkowych wizualizacji.
@@ -135,11 +134,11 @@ Często wymaga się, aby zintegrować Azure Monitor z innymi systemami i tworzy�
 [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) to usługa przesyłania strumieniowego i usług pozyskiwania zdarzeń, która umożliwia przekształcanie i przechowywanie danych przy użyciu dowolnego dostawcy analiz w czasie rzeczywistym lub adapterów wsadowych/magazynowych. Użyj Event Hubs, aby [przesyłać strumieniowo dane Azure monitor](platform/stream-monitoring-data-event-hubs.md) do Siem i narzędzi do monitorowania partnerów.
 
 
-### <a name="logic-apps"></a>Aplikacje logiki
+### <a name="logic-apps"></a>Logic Apps
 [Logic Apps](https://azure.microsoft.com/services/logic-apps) to usługa, która umożliwia Automatyzowanie zadań i procesów firmy przy użyciu przepływów pracy, które integrują się z różnymi systemami i usługami. Dostępne są działania dotyczące odczytu i zapisu metryk i dzienników w Azure Monitor, co umożliwia tworzenie przepływów pracy integracji z różnymi innymi systemami.
 
 
-### <a name="api"></a>API
+### <a name="api"></a>Interfejs API
 Wiele interfejsów API jest dostępnych do odczytu i zapisu metryk i dzienników do i z Azure Monitor oprócz uzyskiwania dostępu do wygenerowanych alertów. Możesz również skonfigurować i pobrać alerty. Zapewnia to bardzo nieograniczone możliwości tworzenia niestandardowych rozwiązań, które integrują się z Azure Monitor.
 
 ## <a name="next-steps"></a>Następne kroki

@@ -1,18 +1,17 @@
 ---
 title: Jak wykonywać zapytania dotyczące dzienników z Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) | Microsoft Docs
 description: Azure Monitor dla maszyn wirtualnych rozwiązanie zbiera metryki i dane dziennika do i w tym artykule opisano rekordy i zawiera przykładowe zapytania.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: 690c7ba04cf849d973295a6ec27eaa38f9b807c3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e679345669d0954008e46f48d986930038a84c10
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399316"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670716"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Jak wykonywać zapytania dotyczące dzienników z Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 
@@ -56,7 +55,7 @@ Aby zarządzać kosztami i złożonością, rekordy połączeń nie reprezentuj�
 |SourceIp |Adres IP źródła |
 |DestinationIp |Adres IP miejsca docelowego |
 |DestinationPort |Numer portu miejsca docelowego |
-|Protocol (Protokół) |Protokół używany do nawiązywania połączenia.  Wartości to *TCP*. |
+|Protokół |Protokół używany do nawiązywania połączenia.  Wartości to *TCP*. |
 
 W celu uwzględnienia wpływu grupowania informacje o liczbie zgrupowanych połączeń fizycznych są dostępne w następujących właściwościach rekordu:
 
@@ -115,11 +114,11 @@ Każda właściwość RemoteIp w tabeli *VMConnection* jest sprawdzana względem
 |IndicatorThreadType |Wykryty wskaźnik zagrożeń to jedna z następujących wartości: *botnet*, *C2*, *CryptoMining*, *sieci darknet*, *DDoS*, *MaliciousUrl*, *złośliwe oprogramowanie*, *phishing*, *proxy*, *opierająca*, *listy do obejrzenia*.   |
 |Opis |Opis zaobserwowanego zagrożenia. |
 |TLPLevel |Poziom protokołu Traffic Light Protocol (TLP) to jedna ze zdefiniowanych wartości: *biały*, *zielony*, *bursztynowy*, *czerwony*. |
-|Ufność |Wartości to *0 – 100*. |
+|Confidence |Wartości to *0 – 100*. |
 |Ważność |Wartości to *0 – 5*, gdzie *5* jest największa i *0* nie jest poważny. Wartość domyślna to *3*.  |
 |FirstReportedDateTime |Pierwszy raz dostawca zgłosił wskaźnik. |
 |LastReportedDateTime |Ostatni czas widziany przez przepływanie wskaźnika. |
-|isActive |Wskazuje, że wskaźniki są dezaktywowane z wartością *true* lub *false* . |
+|IsActive |Wskazuje, że wskaźniki są dezaktywowane z wartością *true* lub *false* . |
 |ReportReferenceLink |Linki do raportów związanych z tym, że jest to zauważalne. |
 |AdditionalInformation |Zawiera dodatkowe informacje o zaobserwowanym zagrożeniu, jeśli ma to zastosowanie. |
 
@@ -134,7 +133,7 @@ Każdy rekord w VMBoundPort jest identyfikowany przez następujące pola:
 |Proces | Tożsamość procesu (lub grup procesów), z którym jest skojarzony port.|
 |Ip | Adres IP portu (może to być symbol wieloznaczny adresu IP, *0.0.0.0*) |
 |Port |Numer portu |
-|Protocol (Protokół) | Protokół.  Przykład: *TCP* lub *UDP* (tylko *protokół TCP* jest obecnie obsługiwany).|
+|Protokół | Protokół.  Przykład: *TCP* lub *UDP* (tylko *protokół TCP* jest obecnie obsługiwany).|
  
 Tożsamość, którą port pochodzi od powyższych pięciu pól i jest przechowywana we właściwości identyfikator portu. Ta właściwość może służyć do szybkiego znajdowania rekordów dla określonego portu w czasie. 
 
@@ -162,7 +161,7 @@ Rekordy z typem *VMComputer* mają dane spisu dla serwerów z agentem zależnoś
 |TenantId | Unikatowy identyfikator obszaru roboczego |
 |SourceSystem | *Insights* | 
 |TimeGenerated | Sygnatura czasowa rekordu (UTC) |
-|Computer (Komputer) | Nazwa FQDN komputera | 
+|Computer | Nazwa FQDN komputera | 
 |Identyfikator agenta | Unikatowy identyfikator agenta Log Analytics |
 |Maszyna | Nazwa zasobu Azure Resource Manager dla maszyny uwidocznionej przez ServiceMap. Ma postać *m-{GUID}* , gdzie *GUID* jest tym samym identyfikatorem GUID co identyfikator agenta. | 
 |DisplayName | Nazwa wyświetlana | 
@@ -224,7 +223,7 @@ Rekordy z typem *VMProcess* mają dane spisu dla procesów połączonych z proto
 |TenantId | Unikatowy identyfikator obszaru roboczego |
 |SourceSystem | *Insights* | 
 |TimeGenerated | Sygnatura czasowa rekordu (UTC) |
-|Computer (Komputer) | Nazwa FQDN komputera | 
+|Computer | Nazwa FQDN komputera | 
 |Identyfikator agenta | Unikatowy identyfikator agenta Log Analytics |
 |Maszyna | Nazwa zasobu Azure Resource Manager dla maszyny uwidocznionej przez ServiceMap. Ma postać *m-{GUID}* , gdzie *GUID* jest tym samym identyfikatorem GUID co identyfikator agenta. | 
 |Proces | Unikatowy identyfikator procesu Service Map. Ma postać *p-{GUID}* . 

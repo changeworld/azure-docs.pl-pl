@@ -2,18 +2,18 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 270a5557de6edbd26a9a204ed2ce24f6c35e736e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b699a3c329fe2ac8e430f4b58d1fce2637b35469
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495519"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780184"
 ---
 |Name (Nazwa) |Opis |Efekt (s) |Wersja |Element źródłowy |
-|---|---|---|---|
-|[Wdróż ustawienia diagnostyczne dla Key Vault w centrum zdarzeń](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed7c8c13-51e7-49d1-8a43-8490431a0da2) |Wdraża ustawienia diagnostyczne dla Key Vault w celu przesyłania strumieniowego do regionalnego centrum zdarzeń, gdy jest tworzony lub aktualizowany dowolny Key Vault, dla którego brakuje tych ustawień diagnostycznych. |deployIfNotExists |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_DiagnosticLog_Deploy.json)
+|---|---|---|---|---|
+|[Wdróż ustawienia diagnostyczne dla Key Vault w centrum zdarzeń](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed7c8c13-51e7-49d1-8a43-8490431a0da2) |Wdraża ustawienia diagnostyczne dla Key Vault w celu przesyłania strumieniowego do regionalnego centrum zdarzeń, gdy jest tworzony lub aktualizowany dowolny Key Vault, dla którego brakuje tych ustawień diagnostycznych. |deployIfNotExists |2.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_DiagnosticLog_Deploy.json)
 |[Dzienniki diagnostyczne w Key Vault powinny być włączone](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |Inspekcja włączenia dzienników diagnostycznych. Pozwala to na ponowne utworzenie śladów aktywności do użycia w celach dochodzeniowych; gdy wystąpi zdarzenie związane z bezpieczeństwem lub w przypadku naruszenia bezpieczeństwa sieci |AuditIfNotExists, wyłączone |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json)
 |[Key Vault obiektów powinno być możliwe do odzyskania](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |Ta zasada przeprowadza inspekcję w przypadku braku możliwości odzyskania obiektów magazynu kluczy. Funkcja usuwania nietrwałego pomaga efektywnie przechowywać zasoby dla danego okresu przechowywania (90 dni) nawet po operacji usuwania, jednocześnie zapewniając, że obiekt jest usuwany. Gdy jest włączona ochrona przed czyszczeniem, nie można wyczyścić magazynu lub obiektu w stanie usuniętym, dopóki nie zostanie przekroczony okres przechowywania 90 dni. Te magazyny i obiekty nadal mogą być odzyskiwane, dzięki czemu klienci będą przestrzegani zasad przechowywania. |Inspekcja, wyłączona |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json)
 |[Zarządzaj dozwolonymi typami kluczy certyfikatów](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1151cede-290b-4ba0-8b38-0ad145ac888f) |Te zasady zarządzają dozwolonymi typami kluczy dla certyfikatów. |Inspekcja, Odmów, wyłączone |1.0.0 — wersja zapoznawcza |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_AllowedKeyTypes.json)

@@ -1,18 +1,14 @@
 ---
 title: Analiza użycia za pomocą usługi Azure Application Insights | Dokumentacja firmy Microsoft
 description: Zapoznaj się z użytkownikami i Dowiedz się, co robią z Twoją aplikacją.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/19/2019
-ms.openlocfilehash: aa37717c5037294c2b5ec61f7815b007cbf74992
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9f34267a1820f8b2365a41569bd3c8eaed9f2f9c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884825"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671022"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analiza użycia za pomocą usługi Application Insights
 

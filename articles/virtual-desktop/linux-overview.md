@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: af5ab05cb772909cd36e2e6bfe1c100a5b83841c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049667"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660040"
 ---
 # <a name="linux-support"></a>Obsługa systemu Linux
 
@@ -21,6 +21,9 @@ Możesz użyć zestawu Linux SDK dla pulpitu wirtualnego systemu Windows, aby sk
 ## <a name="what-is-the-linux-sdk"></a>Co to jest zestaw SDK systemu Linux?
 
 Za pomocą interfejsów API zestawu SDK można pobierać źródła zasobów, łączyć się z sesjami pulpitu lub aplikacji zdalnych oraz korzystać z wielu przekierowań, które obsługują Klienci pierwszej firmy.
+
+> [!NOTE]
+> Zestaw SDK jest obecnie w trakcie opracowywania. Zaktualizujemy ten dokument przy użyciu instrukcji, aby uzyskać dostęp do zestawu SDK, gdy jest on dostępny.
 
 ### <a name="supported-linux-distributions"></a>Obsługiwane dystrybucje systemu Linux
 
@@ -54,8 +57,6 @@ Przed rozpoczęciem opracowywania klienta systemu Linux dla pulpitu wirtualnego 
 2. Przetestuj dostępnych klientów pierwszej firmy, aby zapoznać się z interfejsem użytkownika pulpitu wirtualnego systemu Windows.
 
 ## <a name="next-steps"></a>Następne kroki
-
-Zestaw SDK jest obecnie w trakcie opracowywania. Zaktualizujemy ten dokument przy użyciu instrukcji, aby uzyskać dostęp do zestawu SDK, gdy jest on dostępny.
 
 Zapoznaj się z naszą dokumentacją dla następujących klientów:
 

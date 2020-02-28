@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 02/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5df7eedcd92d338d3f741f7092ff6ef73f3442d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d3df906936cc4e47ee1f43adb0fcbaa0e8c04b0f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585887"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656317"
 ---
 # <a name="conditional-access-grant"></a>Dostęp warunkowy: Udziel
 
@@ -55,7 +55,7 @@ Zaznaczenie tego pola wyboru spowoduje, że użytkownicy będą musieli wykonać
 
 Organizacje, które wdrożyły Microsoft Intune mogą korzystać z informacji zwróconych z urządzeń w celu identyfikowania urządzeń spełniających określone wymagania w zakresie zgodności. Te informacje o zgodności z tymi zasadami są przekazywane z usługi Intune w usłudze Azure AD, gdzie dostęp warunkowy może podejmować decyzje o udzieleniu lub zablokowaniu dostępu do zasobów. Aby uzyskać więcej informacji na temat zasad zgodności, zobacz artykuł [Ustawianie reguł na urządzeniach w celu zezwalania na dostęp do zasobów w organizacji przy użyciu usługi Intune](https://docs.microsoft.com/intune/protect/device-compliance-get-started).
 
-Urządzenie może być oznaczone jako zgodne przez usługę Intune (dla dowolnego systemu operacyjnego urządzenia) lub przez system MDM innej firmy dla urządzeń z systemem Windows 10. Systemy zarządzania urządzeniami przenośnymi innych firm dla typów systemów operacyjnych innych niż Windows 10 nie są obsługiwane.
+Urządzenie może być oznaczone jako zgodne przez usługę Intune (dla dowolnego systemu operacyjnego urządzenia) lub przez system MDM innej firmy dla urządzeń z systemem Windows 10. Jamf Pro jest jedynym obsługiwanym systemem zarządzania urządzeniami przenośnymi innej firmy. Więcej informacji na temat integracji można znaleźć w artykule integracja usługi [Jamf Pro z usługą Intune w celu zapewnienia zgodności](/intune/protect/conditional-access-integrate-jamf).
 
 Aby można było oznaczyć je jako zgodne, urządzenia muszą być zarejestrowane w usłudze Azure AD. Więcej informacji na temat rejestracji urządzeń można znaleźć w artykule [co to jest tożsamość urządzenia](../devices/overview.md).
 

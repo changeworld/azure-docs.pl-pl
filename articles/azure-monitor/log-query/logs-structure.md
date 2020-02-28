@@ -1,23 +1,22 @@
 ---
 title: Struktura dzienników Azure Monitor | Microsoft Docs
 description: Wymagane jest zapytanie dziennika do pobrania danych dziennika z Azure Monitor.  W tym artykule opisano sposób używania nowych zapytań dzienników w Azure Monitor i przedstawiono koncepcje, które należy zrozumieć przed utworzeniem jednego.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 6ce8470da6b444cedb7bff1d14bcc6448b52fe94
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893641"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662080"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktura dzienników Azure Monitor
 Możliwość szybkiego uzyskiwania wglądu w dane przy użyciu [zapytania dziennika](log-query-overview.md) jest zaawansowaną funkcją Azure monitor. Aby tworzyć wydajne i użyteczne zapytania, należy zapoznać się z podstawowymi pojęciami, takimi jak miejsce, w którym znajdują się dane i jak są one strukturalne. Ten artykuł zawiera podstawowe pojęcia, które należy wykonać, aby rozpocząć pracę.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Dane w dziennikach Azure Monitor są przechowywane w obszarze roboczym Log Analytics lub w aplikacji Application Insights. Oba są obsługiwane przez [usługę Azure Eksplorator danych](/azure/data-explorer/) , co oznacza, że korzystają z zaawansowanego aparatu danych i języka zapytań.
 
 Dane w obu obszarach roboczych i aplikacjach są zorganizowane w tabele, z których każdy przechowuje różne rodzaje danych i ma własny unikatowy zestaw właściwości. Większość [źródeł danych](../platform/data-sources.md) będzie zapisywać w własnych tabelach w log Analytics obszarze roboczym, podczas gdy Application Insights będzie zapisywać do wstępnie zdefiniowanego zestawu tabel w aplikacji Application Insights. Zapytania dzienników są bardzo elastyczne, co pozwala na łatwe łączenie danych z wielu tabel, a nawet użycie zapytania między zasobami w celu łączenia danych z tabel w wielu obszarach roboczych lub do pisania zapytań, które łączą dane obszaru roboczego i aplikacji.
@@ -59,11 +58,11 @@ W przeciwieństwie do obszaru roboczego Log Analytics, aplikacja Application Ins
 | browserTimings      | Dane dotyczące wydajności klienta, takie jak czas przetwarzania danych przychodzących. |
 | customEvents        | Zdarzenia niestandardowe utworzone przez aplikację. |
 | customMetrics       | Metryki niestandardowe utworzone przez aplikację. |
-| zależności        | Wywołania z aplikacji do składników zewnętrznych. |
+| tamten        | Wywołania z aplikacji do składników zewnętrznych. |
 | wyjątki          | Wyjątki zgłoszone przez środowisko uruchomieniowe aplikacji. |
 | pageViews           | Dane o każdym widoku witryny sieci Web z informacjami o przeglądarce. |
 | Liczniki wydajności | Pomiary wydajności z zasobów obliczeniowych obsługujących aplikację. |
-| Żądania            | Szczegóły każdego żądania aplikacji.  |
+| żądania            | Szczegóły każdego żądania aplikacji.  |
 | Ścieżki              | Wyniki z rozproszonego śledzenia. |
 
 Możesz wyświetlić schemat dla każdej tabeli na karcie **schemat** w log Analytics aplikacji.
@@ -76,7 +75,7 @@ Chociaż każda tabela w dziennikach Azure Monitor ma swój własny schemat, ist
 | Obszar roboczy usługi Log Analytics | Aplikacja Application Insights | Opis |
 |:---|:---|:---|
 | TimeGenerated | sygnatura czasowa  | Data i godzina utworzenia rekordu. |
-| Typ          | {1&gt;itemType&lt;1}   | Nazwa tabeli, z której został pobrany rekord. |
+| Typ          | ItemType   | Nazwa tabeli, z której został pobrany rekord. |
 | _ResourceId   |            | Unikatowy identyfikator zasobu, z którym jest skojarzony rekord. |
 | _IsBillable   |            | Określa, czy są naliczane opłaty za pozyskiwane dane. |
 | _BilledSize   |            | Określa rozmiar w bajtach danych, które będą rozliczane. |

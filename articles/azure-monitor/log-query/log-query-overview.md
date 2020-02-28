@@ -1,18 +1,17 @@
 ---
 title: Przegląd zapytań dzienników w Azure Monitor | Microsoft Docs
 description: Odpowiedzi na często zadawane pytania dotyczące zapytań dzienników i ułatwiają rozpoczęcie korzystania z nich.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 08af0ff3121d6721c9f5c1457655c345f50f91e0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900267"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670121"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Przegląd zapytań dzienników w Azure Monitor
 Zapytania dzienników ułatwiają całkowite wykorzystanie wartości danych zebranych w [dziennikach Azure monitor](../platform/data-platform-logs.md). Zaawansowany język zapytań umożliwia sprzęganie danych z wielu tabel, agregowanie dużych zestawów danych i wykonywanie złożonych operacji przy minimalnym kodzie. Niemal każde pytanie może być odpowiedzią i analizą wykonywaną, o ile dane pomocnicze zostały zebrane, i zrozumieć, jak utworzyć odpowiednie zapytanie.

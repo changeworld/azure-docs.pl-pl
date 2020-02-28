@@ -1,18 +1,17 @@
 ---
 title: Użyj szablonów Azure Resource Manager, aby utworzyć i skonfigurować obszar roboczy Log Analytics | Microsoft Docs
 description: Za pomocą szablonów Azure Resource Manager można tworzyć i konfigurować Log Analytics obszary robocze.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 5fb33a592601a0511fa2523ee0cf8114bc66ca99
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 1b084b8cbf87817a4ff12fdb56f44b740a6d6a12
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591969"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658901"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Zarządzanie obszarem roboczym Log Analytics przy użyciu szablonów Azure Resource Manager
 
@@ -38,10 +37,10 @@ W tym artykule przedstawiono przykłady szablonów, które ilustrują część k
 
 W poniższej tabeli wymieniono wersje interfejsu API dla zasobów używanych w tym przykładzie.
 
-| Resource | Typ zasobu | Wersja interfejsu API |
+| Zasób | Typ zasobu | Wersja interfejsu API |
 |:---|:---|:---|
 | Obszar roboczy   | obszary robocze    | 2017-03-15 — wersja zapoznawcza |
-| Wyszukaj      | savedSearches | 2015-03-20 |
+| Wyszukiwanie      | savedSearches | 2015-03-20 |
 | Źródło danych | źródła danych   | 2015-11-01 — wersja zapoznawcza |
 | Rozwiązanie    | rozwiązania     | 2015-11-01 — wersja zapoznawcza |
 
@@ -634,7 +633,7 @@ Aby wdrożyć przykładowy szablon:
 2. Edytuj szablon, aby skonfigurować żądaną konfigurację
 3. Wdrażanie szablonu przy użyciu programu PowerShell lub wiersza polecenia
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Program PowerShell
 
 ```powershell
 New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json

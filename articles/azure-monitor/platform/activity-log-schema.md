@@ -3,17 +3,16 @@ title: Schemat zdarzeń dziennika aktywności platformy Azure
 description: Opisuje schemat zdarzeń dla każdej kategorii w dzienniku aktywności platformy Azure.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 12/04/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 272b71fe5fddea9299e5d660484fcbb3eb367d58
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: ccbb4175701c3535b790f25c9ed522911dda6707
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749471"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668846"
 ---
 # <a name="azure-activity-log-event-schema"></a>Schemat zdarzeń dziennika aktywności platformy Azure
 [Dziennik aktywności platformy Azure](platform-logs-overview.md) zawiera szczegółowe informacje o wszystkich zdarzeniach na poziomie subskrypcji, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzeń dla każdej kategorii. 
@@ -124,7 +123,7 @@ Ta kategoria zawiera rekord wszystkich operacji tworzenia, aktualizowania, usuwa
 | eventName | Przyjazna nazwa zdarzenia administracyjnego. |
 | category | Zawsze "administracyjne" |
 | httpRequest |Obiekt BLOB opisujący żądanie HTTP. Zwykle obejmuje "identyfikatorem żądania klienta", "clientIpAddress" i "Method" (metoda HTTP. Na przykład Umieść. |
-| level |Poziom zdarzenia. Jedna z następujących wartości: "krytyczna", "Error", "Warning" i "informacyjny" |
+| poziom |Poziom zdarzenia. Jedna z następujących wartości: "krytyczna", "Error", "Warning" i "informacyjny" |
 | resourceGroupName |Nazwa grupy zasobów dla zasobu, którego dotyczy problem. |
 | resourceProviderName |Nazwa dostawcy zasobów dla zasobu, którego dotyczy problem |
 | resourceType | Typ zasobu, którego dotyczy zdarzenie administracyjne. |
@@ -198,7 +197,7 @@ Ta kategoria zawiera rekord wszystkich zdarzeń związanych z kondycją usług, 
 ```
 Zapoznaj się z artykułem dotyczącym [powiadomień o kondycji usługi](./../../azure-monitor/platform/service-notifications.md) , aby uzyskać informacje na temat wartości we właściwościach.
 
-## <a name="resource-health"></a>Resource Health
+## <a name="resource-health"></a>Kondycja zasobów
 Ta kategoria zawiera rekord wszystkich zdarzeń związanych z kondycją zasobów, które wystąpiły w Twoich zasobach platformy Azure. Przykładem typu zdarzenia, które zobaczysz w tej kategorii jest "stan kondycji maszyny wirtualnej zmienił się na niedostępny". Zdarzenia dotyczące kondycji zasobów mogą reprezentować jeden z czterech stanów kondycji: dostępne, niedostępne, obniżone i nieznane. Ponadto zdarzenia kondycji zasobów można klasyfikować jako zainicjowane przez platformę lub zainicjowane przez użytkownika.
 
 ### <a name="sample-event"></a>Zdarzenie próbkowania
@@ -267,7 +266,7 @@ Ta kategoria zawiera rekord wszystkich zdarzeń związanych z kondycją zasobów
 | eventDataId |Unikatowy identyfikator zdarzenia alertu. |
 | category | Zawsze "ResourceHealth" |
 | eventTimestamp |Sygnatura czasowa, gdy zdarzenie zostało wygenerowane przez usługę platformy Azure przetwarzające żądanie odpowiadające zdarzeniu. |
-| level |Poziom zdarzenia. Jedna z następujących wartości: "krytyczna", "błąd", "ostrzeżenie", "informacyjny" i "verbose" |
+| poziom |Poziom zdarzenia. Jedna z następujących wartości: "krytyczna", "błąd", "ostrzeżenie", "informacyjny" i "verbose" |
 | operationId |Identyfikator GUID współużytkowany przez zdarzenia, które odpowiadają pojedynczej operacji. |
 | operationName |Nazwa operacji. |
 | resourceGroupName |Nazwa grupy zasobów zawierającej zasób. |
@@ -287,7 +286,7 @@ Ta kategoria zawiera rekord wszystkich zdarzeń związanych z kondycją zasobów
 | Properties. nmożliwa Przyczyna | Opis przyczyny zdarzenia dotyczącego kondycji zasobu. "UserInitiated" i "PlatformInitiated". |
 
 
-## <a name="alert"></a>Alert
+## <a name="alert"></a>Alerty
 Ta kategoria zawiera rekord wszystkich aktywacji alertów platformy Azure. Przykładem typu zdarzenia, które zobaczysz w tej kategorii jest "procesor CPU% na myVM został przekroczony 80 dla ostatnich 5 minut". Różne systemy platformy Azure mają koncepcję alertów — można zdefiniować regułę określonego sortowania i otrzymywać powiadomienie, gdy warunki są zgodne z tą regułą. Za każdym razem, gdy obsługiwany typ alertu platformy Azure "aktywuje" lub warunki są spełnione, aby wygenerować powiadomienie, rekord aktywacji jest również wypychany do tej kategorii dziennika aktywności.
 
 ### <a name="sample-event"></a>Zdarzenie próbkowania
@@ -361,7 +360,7 @@ Ta kategoria zawiera rekord wszystkich aktywacji alertów platformy Azure. Przyk
 | description |Opis tekstu statycznego zdarzenia alertu. |
 | eventDataId |Unikatowy identyfikator zdarzenia alertu. |
 | category | Zawsze "Alert" |
-| level |Poziom zdarzenia. Jedna z następujących wartości: "krytyczna", "Error", "Warning" i "informacyjny" |
+| poziom |Poziom zdarzenia. Jedna z następujących wartości: "krytyczna", "Error", "Warning" i "informacyjny" |
 | resourceGroupName |Nazwa grupy zasobów dla zasobu, którego dotyczy problem, jeśli jest to alert dotyczący metryki. W przypadku innych typów alertów jest to nazwa grupy zasobów, która zawiera alert. |
 | resourceProviderName |Nazwa dostawcy zasobów, którego dotyczy problem, jeśli jest to alert dotyczący metryki. W przypadku innych typów alertów jest to nazwa dostawcy zasobów dla samego alertu. |
 | resourceId | Nazwa identyfikatora zasobu, którego dotyczy problem, jeśli jest to alert dotyczący metryki. W przypadku innych typów alertów jest to identyfikator zasobu samego zasobu alertu. |
@@ -470,7 +469,7 @@ Ta kategoria zawiera rekord wszystkich zdarzeń związanych z działaniem aparat
 | correlationId | Identyfikator GUID w formacie ciągu. |
 | description |Tekst statyczny opisu zdarzenia skalowania automatycznego. |
 | eventDataId |Unikatowy identyfikator zdarzenia skalowania automatycznego. |
-| level |Poziom zdarzenia. Jedna z następujących wartości: "krytyczna", "Error", "Warning" i "informacyjny" |
+| poziom |Poziom zdarzenia. Jedna z następujących wartości: "krytyczna", "Error", "Warning" i "informacyjny" |
 | resourceGroupName |Nazwa grupy zasobów dla ustawienia skalowania automatycznego. |
 | resourceProviderName |Nazwa dostawcy zasobów dla ustawienia skalowania automatycznego. |
 | resourceId |Identyfikator zasobu ustawienia skalowania automatycznego. |
@@ -488,7 +487,7 @@ Ta kategoria zawiera rekord wszystkich zdarzeń związanych z działaniem aparat
 | submissionTimestamp |Sygnatura czasowa, gdy zdarzenie stało się dostępne na potrzeby wykonywania zapytań. |
 | subscriptionId |Identyfikator subskrypcji platformy Azure. |
 
-## <a name="security"></a>Zabezpieczenia
+## <a name="security"></a>Bezpieczeństwo
 Ta kategoria zawiera rekordy wszystkich alertów wygenerowanych przez Azure Security Center. Przykładem typu zdarzenia, które zobaczysz w tej kategorii jest "podejrzany plik rozszerzenia o podwójnym rozszerzeniu".
 
 ### <a name="sample-event"></a>Zdarzenie próbkowania
@@ -561,7 +560,7 @@ Ta kategoria zawiera rekordy wszystkich alertów wygenerowanych przez Azure Secu
 | eventName |Przyjazna nazwa zdarzenia zabezpieczeń. |
 | category | Zawsze "zabezpieczenia" |
 | ID |Unikatowy identyfikator zasobu zdarzenia zabezpieczeń. |
-| level |Poziom zdarzenia. Jedna z następujących wartości: "krytyczna", "błąd", "ostrzeżenie" lub "informacyjny" |
+| poziom |Poziom zdarzenia. Jedna z następujących wartości: "krytyczna", "błąd", "ostrzeżenie" lub "informacyjny" |
 | resourceGroupName |Nazwa grupy zasobów dla zasobu. |
 | resourceProviderName |Nazwa dostawcy zasobów dla Azure Security Center. Zawsze "Microsoft. Security". |
 | resourceType |Typ zasobu, który wygenerował zdarzenie zabezpieczeń, na przykład "Microsoft. Security/Locations/Alerts" |
@@ -641,7 +640,7 @@ Ta kategoria zawiera rejestr wszelkich nowych zaleceń, które są generowane dl
 | eventDataId | Unikatowy identyfikator zdarzenia rekomendacji. |
 | category | Zawsze "rekomendacja" |
 | ID |Unikatowy identyfikator zasobu zdarzenia rekomendacji. |
-| level |Poziom zdarzenia. Jedna z następujących wartości: "krytyczna", "błąd", "ostrzeżenie" lub "informacyjny" |
+| poziom |Poziom zdarzenia. Jedna z następujących wartości: "krytyczna", "błąd", "ostrzeżenie" lub "informacyjny" |
 | operationName |Nazwa operacji.  Zawsze "Microsoft. Advisor/generateRecommendations/Action"|
 | resourceGroupName |Nazwa grupy zasobów dla zasobu. |
 | resourceProviderName |Nazwa dostawcy zasobów dla zasobu, do którego odnosi się to zalecenie, np. "MICROSOFT. COMPUTE" |
@@ -756,7 +755,7 @@ Ta kategoria zawiera rekordy wszystkich operacji działania akcji wykonywanych p
 | category | Deklaruje zdarzenie dziennika aktywności jako należące do "zasad". |
 | eventTimestamp | Sygnatura czasowa, gdy zdarzenie zostało wygenerowane przez usługę platformy Azure przetwarzające żądanie odpowiadające zdarzeniu. |
 | ID | Unikatowy identyfikator zdarzenia dla określonego zasobu. |
-| level | Poziom zdarzenia. Inspekcja używa "Warning" i Odmów używa "Error". Błąd auditIfNotExists lub deployIfNotExists może generować "Warning" lub "Error" w zależności od ważności. Wszystkie inne zdarzenia zasad używają "informacyjnych". |
+| poziom | Poziom zdarzenia. Inspekcja używa "Warning" i Odmów używa "Error". Błąd auditIfNotExists lub deployIfNotExists może generować "Warning" lub "Error" w zależności od ważności. Wszystkie inne zdarzenia zasad używają "informacyjnych". |
 | operationId | Identyfikator GUID współużytkowany przez zdarzenia, które odpowiadają pojedynczej operacji. |
 | operationName | Nazwa operacji i bezpośrednio skorelowanej z efektem zasad. |
 | resourceGroupName | Nazwa grupy zasobów dla szacowanego zasobu. |
@@ -790,12 +789,12 @@ Podczas przesyłania strumieniowego dziennika aktywności platformy Azure do kon
 | resultType | status. Value | |
 | resultSignature | Substatus. wartość | |
 | resultDescription | description |  |
-| durationMs | ND | Zawsze 0 |
+| durationMs | Nie dotyczy | Zawsze 0 |
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |
-| tożsamość | Właściwości oświadczeń i autoryzacji |  |
+| identity | Właściwości oświadczeń i autoryzacji |  |
 | Poziom | Poziom |  |
-| location | ND | Lokalizacja, w której zdarzenie zostało przetworzone. *Nie jest to lokalizacja zasobu, ale zamiast tego, gdzie zdarzenie zostało przetworzone. Ta właściwość zostanie usunięta w przyszłej aktualizacji.* |
+| location | Nie dotyczy | Lokalizacja, w której zdarzenie zostało przetworzone. *Nie jest to lokalizacja zasobu, ale zamiast tego, gdzie zdarzenie zostało przetworzone. Ta właściwość zostanie usunięta w przyszłej aktualizacji.* |
 | Właściwości | Właściwości. eventProperties |  |
 | Właściwości. eventCategory | category | Jeśli właściwość. eventCategory nie istnieje, kategoria ma wartość "Administrative" |
 | properties.eventName | eventName |  |

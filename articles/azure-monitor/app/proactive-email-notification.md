@@ -1,35 +1,33 @@
 ---
 title: Zmiana powiadomienia inteligentnego wykrywania — Application Insights platformy Azure
 description: Zmień domyślnych odbiorców powiadomień z wykrywania inteligentnego. Wykrywanie inteligentne umożliwia monitorowanie śladów aplikacji za pomocą usługi Azure Application Insights w przypadku nietypowych wzorców w telemetrii śledzenia.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 493deea89586347d5847895acd5eb73a866f84ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f73e5bbdd8585b3367e529a8fa00630042e56cac
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432454"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671787"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Zmiana powiadomień e-mail dotyczących wykrywania inteligentnego
 
 W oparciu o opinie klientów 1 kwietnia 2019 zmieniamy domyślne role, które odbierają powiadomienia e-mail od wykrywania inteligentnego.
 
-## <a name="what-is-changing"></a>Co ulega zmianie?
+## <a name="what-is-changing"></a>Co się zmieni?
 
-Obecnie powiadomienia e-mail dotyczące wykrywania inteligentnego są domyślnie wysyłane do ról _właściciel subskrypcji_, _współautor subskrypcji_i _czytelnik subskrypcji_ . Te role często obejmują użytkowników, którzy nie biorą aktywnie udziału w monitorowaniu, co powoduje, że wielu użytkowników niepotrzebnie otrzymuje powiadomienia. Aby ulepszyć to środowisko, wprowadzamy zmianę, dzięki czemu powiadomienia e-mail są domyślnie wysyłane tylko do [czytnika monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) i [kontrolowania ról współautor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) .
+Obecnie powiadomienia e-mail dotyczące wykrywania inteligentnego są domyślnie wysyłane do ról _właściciel subskrypcji_, _współautor subskrypcji_i _czytelnik subskrypcji_ . Te role często obejmują użytkowników, którzy nie aktywnie uczestniczą w monitorowaniu, co sprawia, że wielu z tych użytkowników może niepotrzebnie otrzymywać powiadomienia. Aby ulepszyć to środowisko, wprowadzamy zmianę, dzięki czemu powiadomienia e-mail są domyślnie wysyłane tylko do [czytnika monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) i [kontrolowania ról współautor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) .
 
 ## <a name="scope-of-this-change"></a>Zakres tej zmiany
 
-Ta zmiana będzie mieć wpływ na wszystkie reguły wykrywania inteligentnego z wyjątkiem następujących reguł:
+Ta zmiana wpłynie na wszystkie reguły wykrywania inteligentnego, z wyłączeniem następujących elementów:
 
-* Reguły wykrywania inteligentnego oznaczone jako wersja zapoznawcza. Te reguły inteligentnego wykrywania nie obsługują obecnie powiadomień e-mail.
+* Reguły inteligentnego wykrywania oznaczone jako wersja zapoznawcza. Te reguły inteligentnego wykrywania nie obsługują obecnie powiadomień e-mail.
 
-* Reguła anomalii błędów. Ta zasada zacznie korzystać z nowych ról domyślnych po migracji z klasycznego alertu do platformy ujednoliconych alertów (więcej informacji jest dostępnych [tutaj](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)).
+* Reguła anomalii dotyczących niepowodzeń. Ta zasada zacznie korzystać z nowych ról domyślnych po migracji z klasycznego alertu do platformy ujednoliconych alertów (więcej informacji jest dostępnych [tutaj](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)).
 
 ## <a name="how-to-prepare-for-this-change"></a>Jak przygotować się do tej zmiany?
 
