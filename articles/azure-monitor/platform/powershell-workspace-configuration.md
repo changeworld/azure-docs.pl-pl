@@ -1,18 +1,17 @@
 ---
 title: Aby utworzyć i skonfigurować obszar roboczy usługi Log Analytics przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
 description: Log Analytics obszary robocze w Azure Monitor przechowywanie danych z serwerów w infrastrukturze lokalnej lub w chmurze. Można zbierać dane maszyn z usługi Azure storage wygenerowanym przez narzędzie diagnostyczne systemu Azure.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 68cd0d51c16ecd63a1446c284f81c5dea07b8c06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6f3f21a7148c59de452d6407fd9a1067b86faae4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363544"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659304"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Zarządzanie obszarem roboczym Log Analytics w Azure Monitor przy użyciu programu PowerShell
 
@@ -30,7 +29,7 @@ Za pomocą [poleceń cmdlet programu PowerShell log Analytics](https://docs.micr
 * Dodaj agenta usługi log analytics na maszynie wirtualnej platformy Azure
 * Skonfiguruj usługę log analytics do indeksowania danych zebranych za pomocą diagnostyki Azure
 
-Ten artykuł zawiera dwa przykłady kodu, które pokazują niektóre funkcje, które można wykonywać za pomocą programu PowerShell.  Możesz zapoznać się z [Dokumentacja poleceń cmdlet środowiska PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) do innych funkcji.
+Ten artykuł zawiera dwa przykłady kodu, które pokazują niektóre funkcje, które można wykonywać za pomocą programu PowerShell.  Aby uzyskać informacje o innych funkcjach, można zapoznać się z artykułem [poleceń cmdlet programu log Analytics PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/) .
 
 > [!NOTE]
 > Usługa log Analytics był wcześniej nazywany programem Operational Insights, dlatego jest to nazwa używana w poleceniach cmdlet.
@@ -202,26 +201,26 @@ Bez wykorzystania agentów monitorowania zasobów platformy Azure, zasoby muszą
 
 | Typ zasobu | Dzienniki | Metryki |
 | --- | --- | --- |
-| Bramy Application Gateway    | Tak | Tak |
-| Konta usługi Automation     | Tak | |
-| Konta usługi Batch          | Tak | Tak |
-| Data Lake Analytics     | Tak | |
-| Usługa Data Lake store         | Tak | |
-| Pula elastyczna SQL        |     | Tak |
-| Przestrzeń nazw centrum zdarzeń     |     | Tak |
-| Centra IoT                |     | Tak |
-| Magazyn kluczy               | Tak | |
-| Moduły równoważenia obciążenia          | Tak | |
-| Aplikacje logiki              | Tak | Tak |
-| Sieciowe grupy zabezpieczeń | Tak | |
-| Azure Cache for Redis             |     | Tak |
-| Usługi wyszukiwania         | Tak | Tak |
-| Przestrzeń nazw magistrali usług   |     | Tak |
-| SQL (v12)               |     | Tak |
-| Witryny sieci Web               |     | Tak |
-| Farmach serwerów sieci Web        |     | Tak |
+| Bramy aplikacji    | Yes | Yes |
+| Konta usługi Automation     | Yes | |
+| Konta usługi Batch          | Yes | Yes |
+| Data Lake analytics     | Yes | |
+| Usługa Data Lake store         | Yes | |
+| Pula elastyczna SQL        |     | Yes |
+| Przestrzeń nazw centrum zdarzeń     |     | Yes |
+| Centra IoT Hub                |     | Yes |
+| Usługa Key Vault               | Yes | |
+| Moduły równoważenia obciążenia          | Yes | |
+| Logic Apps              | Yes | Yes |
+| Grupy zabezpieczeń sieci | Yes | |
+| Azure Cache for Redis             |     | Yes |
+| Usługi wyszukiwania         | Yes | Yes |
+| Przestrzeń nazw magistrali usług   |     | Yes |
+| SQL (v12)               |     | Yes |
+| Witryny sieci Web               |     | Yes |
+| Farmach serwerów sieci Web        |     | Yes |
 
-Szczegóły dostępne metryki, można znaleźć [metryki obsługiwane z usługą Azure Monitor](../../azure-monitor/platform/metrics-supported.md).
+Aby uzyskać szczegółowe informacje o dostępnych metrykach, zapoznaj się z tematem [obsługiwane metryki z Azure monitor](../../azure-monitor/platform/metrics-supported.md).
 
 Szczegółowe informacje o dostępnych dziennikach znajdują się w tematach [obsługiwane usługi i schematy dzienników zasobów](../../azure-monitor/platform/diagnostic-logs-schema.md).
 
@@ -275,5 +274,5 @@ Powyższy skrypt umożliwia również zbieranie dzienników z kont magazynu w r�
 
 
 ## <a name="next-steps"></a>Następne kroki
-* [Przegląd poleceń cmdlet programu PowerShell programu Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) dodatkowe informacje na temat konfiguracji usługi Log Analytics przy użyciu programu PowerShell.
+* Zapoznaj się z [log Analytics poleceniami cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/) , aby uzyskać dodatkowe informacje na temat konfigurowania log Analytics przy użyciu programu PowerShell.
 

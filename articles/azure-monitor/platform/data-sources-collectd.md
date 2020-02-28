@@ -1,18 +1,17 @@
 ---
 title: Zbieranie danych z zebranych w Azure Monitor | Microsoft Docs
 description: Zebrany to demon Open Source systemu Linux, który okresowo zbiera dane z aplikacji i informacji o poziomie systemu.  Ten artykuł zawiera informacje dotyczące zbierania danych z zebranych w Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 277e6c9736266b64fd717b719dc740525047ae88
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8c09d4ac5d0856eb0d448a1cabd9adc567850c4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395870"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670614"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Zbieraj dane z zebranych w agencie systemu Linux w Azure Monitor
 [Zebrany](https://collectd.org/) to demon Open Source systemu Linux, który okresowo zbiera metryki wydajności aplikacji i informacji o poziomie systemu. Przykładowe aplikacje obejmują wirtualna maszyna Java (JVM), MySQL Server i Nginx. Ten artykuł zawiera informacje dotyczące zbierania danych o wydajności z zebranych w Azure Monitor.
@@ -71,7 +70,7 @@ Agent Log Analytics dla systemu Linux nasłuchuje również na porcie 26000 dla 
 - Agent Log Analytics dla systemu Linux v 1.1.0-217 lub nowszego jest wymagany dla kolekcji metryk zebranych.
 
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 Poniżej przedstawiono podstawowe kroki konfigurowania kolekcji zbieranych danych w Azure Monitor.
 
 1. Skonfiguruj zebrane dane w celu wysłania danych do agenta Log Analytics dla systemu Linux przy użyciu wtyczki write_http.  
@@ -108,15 +107,15 @@ Aby zachować znany model między metrykami infrastruktury już zebranymi przez 
 
 | Pole metryki zebranej | Pole Azure Monitor |
 |:--|:--|
-| `host` | Computer (Komputer) |
-| `plugin` | Brak |
+| `host` | Computer |
+| `plugin` | None |
 | `plugin_instance` | Nazwa wystąpienia<br>Jeśli **plugin_instance** ma *wartość null* , następnie InstanceName = " *_Total*" |
-| `type` | ObjectName |
+| `type` | Obiektu |
 | `type_instance` | CounterName<br>Jeśli **type_instance** ma *wartość null* , CounterName =**puste** |
 | `dsnames[]` | CounterName |
-| `dstypes` | Brak |
+| `dstypes` | None |
 | `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>Następne kroki
-* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
-* Użyj [pól niestandardowych](custom-fields.md) do analizowania danych z rekordy syslog na poszczególne pola.
+* Informacje na temat [zapytań dzienników](../log-query/log-query-overview.md) w celu analizowania danych zebranych ze źródeł danych i rozwiązań. 
+* [Pola niestandardowe](custom-fields.md) służą do analizowania danych z rekordów dziennika systemowego do poszczególnych pól.

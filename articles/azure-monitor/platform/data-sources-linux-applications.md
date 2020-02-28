@@ -1,18 +1,17 @@
 ---
 title: Zbieranie danych o wydajności aplikacji systemu Linux w Azure Monitor | Microsoft Docs
 description: Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania agenta Log Analytics dla systemu Linux w celu zbierania liczników wydajności dla programu MySQL i Apache HTTP Server.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 75fd0453534e3a656bb1d8e2940b716dadfdf869
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395848"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670563"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Zbieranie liczników wydajności dla aplikacji systemu Linux w Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -76,7 +75,7 @@ Poniższa tabela zawiera szczegółowe informacje na temat składni programu myc
 | Automatyczne *lub prawdziwe* | mycimprovauth — FAŁSZ | Określa, czy plik uwierzytelniania zostanie automatycznie zaktualizowany przy ponownym uruchomieniu lub aktualizacji. |
 | domyślne *powiązanie — hasło nazwy użytkownika* | mycimprovauth domyślnie 127.0.0.1 root PWD | Ustawia domyślne wystąpienie w pliku uwierzytelniania MySQL OMI.<br>Pole hasła powinno być wprowadzane w postaci zwykłego tekstu — hasło w pliku uwierzytelniania MySQL OMI będzie kodowane zgodnie z podstawową 64. |
 | Usuń *domyślne lub port_num* | mycimprovauth 3308 | Usuwa określone wystąpienie przez domyślne lub przez numer portu. |
-| pomoc | Pomoc mycimprov | Drukuje listę poleceń do użycia. |
+| Pomoc | Pomoc mycimprov | Drukuje listę poleceń do użycia. |
 | Drukuj | mycimprov druku | Drukuje łatwy do odczytania plik uwierzytelniania MySQL OMI. |
 | Aktualizacja port_num *powiązana — adres użytkownika hasła* | mycimprov Update 3307 127.0.0.1 root PWD | Aktualizuje określone wystąpienie lub dodaje wystąpienie, jeśli nie istnieje. |
 
@@ -162,4 +161,4 @@ Po skonfigurowaniu agenta Log Analytics dla systemu Linux w celu wysyłania dany
 
 ## <a name="next-steps"></a>Następne kroki
 * [Zbieraj liczniki wydajności](data-sources-performance-counters.md) z agentów systemu Linux.
-* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Informacje na temat [zapytań dzienników](../log-query/log-query-overview.md) w celu analizowania danych zebranych ze źródeł danych i rozwiązań. 

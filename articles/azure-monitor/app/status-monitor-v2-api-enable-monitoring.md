@@ -1,18 +1,16 @@
 ---
 title: Dokumentacja interfejsu API usługi Azure Application Insights Agent
 description: Dokumentacja interfejsu API agenta Application Insights. Enable-ApplicationInsightsMonitoring. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: dccd7e617174bef4a85cb6293cbcc459542310f9
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8bbdc96a49fffc91f80d24a9eb0926766f86ee16
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899705"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671311"
 ---
 # <a name="application-insights-agent-api-enable-applicationinsightsmonitoring"></a>Interfejs API agenta Application Insights: Enable-ApplicationInsightsMonitoring
 
@@ -49,7 +47,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ### <a name="example-with-an-instrumentation-key-map"></a>Przykład z mapą kluczy Instrumentacji
 W tym przykładzie:
 - `MachineFilter` dopasowuje bieżący komputer przy użyciu symbolu wieloznacznego `'.*'`.
-- `AppFilter='WebAppExclude'` zawiera klucz Instrumentacji `null`. Określona aplikacja nie będzie Instrumentacją.
+- `AppFilter='WebAppExclude'` zapewnia `null` klucz Instrumentacji. Określona aplikacja nie będzie Instrumentacją.
 - `AppFilter='WebAppOne'` przypisuje określoną aplikację unikatowy klucz Instrumentacji.
 - `AppFilter='WebAppTwo'` przypisuje określoną aplikację unikatowy klucz Instrumentacji.
 - Na koniec `AppFilter` używa również symbolu wieloznacznego `'.*'`, aby dopasować wszystkie aplikacje sieci Web, które nie są zgodne ze starszymi regułami i przypisać domyślny klucz Instrumentacji.

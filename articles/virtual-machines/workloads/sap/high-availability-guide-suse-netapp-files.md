@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 18aecfc5ea40c8368fbf4d4a07f86e71047265f7
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 493414d6e903dba02f126c10c2f4d6a34e0b1549
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598650"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661227"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server z Azure NetApp Files dla aplikacji SAP
 
@@ -86,7 +86,7 @@ Przeczytaj najpierw następujące informacje i dokumenty SAP:
 * [Informacje o wersji w programie SUSE High Availability Extension 12 SP3][suse-ha-12sp3-relnotes]
 * [NetApp aplikacje SAP na Microsoft Azure przy użyciu Azure NetApp Files][anf-sap-applications-azure]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Wysoka dostępność (HA) dla usług SAP NetWeaver Central Services wymaga magazynu udostępnionego.
 Aby osiągnąć ten dostęp w systemie SUSE Linux, konieczne było skompilowanie oddzielnego klastra NFS o wysokiej dostępności. 
@@ -97,10 +97,6 @@ Teraz można osiągnąć rozwiązanie SAP NetWeaver HA przy użyciu magazynu udo
 ![Omówienie wysokiej dostępności SAP NetWeaver](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres WYWOŁUJĄCYCH, a SAP HANA Database używają wirtualnej nazwy hosta i wirtualnych adresów IP. Na platformie Azure [moduł równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) jest wymagany do używania wirtualnego adresu IP. Zalecamy korzystanie z usługi [równoważenia obciążenia w warstwie Standardowa](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal). Na poniższej liście przedstawiono konfigurację modułu równoważenia obciążenia (A) SCS i wykres WYWOŁUJĄCYCH.
-
-> [!IMPORTANT]
-> Klastrowanie z obsługą protokołu ASCS/wykres WYWOŁUJĄCYCH w systemie SUSE Linux jako system operacyjny gościa na maszynach wirtualnych platformy Azure **nie jest obsługiwane**. Klastrowanie wielu identyfikatorów SID opisuje instalację wielu wystąpień SAP ASCS/wykres WYWOŁUJĄCYCH z różnymi identyfikatorami SID w jednym klastrze Pacemaker
-
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -1420,6 +1416,7 @@ Poniższe testy to kopia przypadków testowych w [przewodnikach z najlepszymi ro
 
 ## <a name="next-steps"></a>Następne kroki
 
+* [HA for SAP NW na maszynach wirtualnych platformy Azure w systemie SLES for SAP — Przewodnik dotyczący wiele identyfikatorów SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 * [Planowanie i wdrażanie Virtual Machines platformy Azure dla oprogramowania SAP][planning-guide]
 * [Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP][deployment-guide]
 * [Wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP][dbms-guide]

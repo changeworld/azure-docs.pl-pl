@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/20/2019
-ms.openlocfilehash: 9f25486aba9549855939b06ea5b8dfc14db0af95
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/27/2020
+ms.openlocfilehash: 4adcda6030ed59cb6cc2285eb1c1eea0f768662c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969121"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662746"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Samouczek: Automatyzowanie zadań do przetwarzania wiadomości e-mail przy użyciu Azure Logic Apps, Azure Functions i usługi Azure Storage
 
 Usługa Azure Logic Apps pomaga automatyzować przepływy pracy i integrować dane w usługach platformy Azure, usługach firmy Microsoft, innych aplikacjach typu oprogramowanie jako usługa (SaaS) oraz systemach lokalnych. Ten samouczek pokazuje sposób tworzenia [aplikacji logiki](../logic-apps/logic-apps-overview.md), która obsługuje przychodzące wiadomości e-mail i wszelkie załączniki. Ta aplikacja logiki analizuje zawartość wiadomości e-mail, zapisuje ją w usłudze Azure Storage oraz wysyła powiadomienia dotyczące przeglądania zawartości.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Konfigurowania [magazynu platformy Azure](../storage/common/storage-introduction.md) i Eksploratora usługi Storage na potrzeby sprawdzania zapisanych wiadomości e-mail i załączników.
@@ -44,7 +44,7 @@ Po ukończeniu aplikacja logiki będzie ogólnie wyglądać jak ten przepływ pr
 
 * Pobierz i zainstaluj [bezpłatny Eksplorator usługi Microsoft Azure Storage](https://storageexplorer.com/). To narzędzie ułatwia sprawdzanie, czy kontener magazynu został skonfigurowany prawidłowo.
 
-## <a name="sign-in-to-azure-portal"></a>Zaloguj się w witrynie Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Logowanie do witryny Azure Portal
 
 Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu poświadczeń konta Azure.
 
@@ -57,10 +57,10 @@ Możesz zapisywać przychodzące wiadomości e-mail i załączniki jako obiekty 
    | Ustawienie | Wartość | Opis |
    |---------|-------|-------------|
    | **Subskrypcja** | <*Azure-subscription-name*> | Nazwa subskrypcji platformy Azure |  
-   | **Grupa zasobów** | <*Azure-resource-group*> | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/management/overview.md) używana do organizowania powiązanych zasobów i zarządzania nimi. W tym przykładzie zastosowano "LA-samouczek-RG". <p>**Uwaga:** grupa zasobów istnieje w konkretnym regionie. Chociaż elementy w tym samouczku mogą nie być dostępne we wszystkich regionach, spróbuj używać tego samego regionu, jeśli jest to możliwe. |
+   | **Grupa zasobów** | <*platformy Azure —> grupy zasobów* | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/management/overview.md) używana do organizowania powiązanych zasobów i zarządzania nimi. W tym przykładzie zastosowano "LA-samouczek-RG". <p>**Uwaga:** grupa zasobów istnieje w konkretnym regionie. Chociaż elementy w tym samouczku mogą nie być dostępne we wszystkich regionach, spróbuj używać tego samego regionu, jeśli jest to możliwe. |
    | **Nazwa konta magazynu** | <*Azure-Storage-account-name*> | Nazwa konta magazynu, która musi mieć 3-24 znaków i może zawierać tylko małe litery i cyfry. W tym przykładzie zastosowano "attachmentstorageacct". |
    | **Lokalizacja** | <> *platformy Azure* | Region, w którym są przechowywane informacje o koncie magazynu. W tym przykładzie zastosowano "zachodnie stany USA". |
-   | **Wydajność** | Standardowa | To ustawienie określa obsługiwane typy danych oraz nośniki do przechowywania danych. Zobacz [Typy kont magazynu](../storage/common/storage-introduction.md#types-of-storage-accounts). |
+   | **Wydajność** | Standard | To ustawienie określa obsługiwane typy danych oraz nośniki do przechowywania danych. Zobacz [Typy kont magazynu](../storage/common/storage-introduction.md#types-of-storage-accounts). |
    | **Rodzaj konta** | Zastosowania ogólne | [Typ konta magazynu](../storage/common/storage-introduction.md#types-of-storage-accounts) |
    | **Replikacja** | Magazyn lokalnie nadmiarowy (LRS) | To ustawienie określa sposób kopiowania, przechowywania i synchronizowania danych oraz zarządzania nimi. Zobacz [Magazyn lokalnie nadmiarowy (LRS): niski koszt nadmiarowości danych dla usługi Azure Storage](../storage/common/storage-redundancy-lrs.md). |
    | **Warstwa dostępu (domyślna)** | Zachowaj bieżące ustawienie. |
@@ -89,7 +89,7 @@ Możesz zapisywać przychodzące wiadomości e-mail i załączniki jako obiekty 
 
 1. Utwórz kontener magazynu obiektów blob na potrzeby załączników do wiadomości e-mail.
 
-   1. W menu konta magazynu wybierz pozycję **Omówienie**. W obszarze **usługi**wybierz pozycję **kontenery**.
+   1. W menu konta magazynu wybierz pozycję **Omówienie**. W okienku Przegląd wybierz pozycję **kontenery**.
 
       ![Dodawanie kontenera magazynu obiektów blob](./media/tutorial-process-email-attachments-workflow/create-storage-container.png)
 
@@ -147,8 +147,8 @@ Teraz użyj fragmentu kodu zapewnionego przez te kroki, aby utworzyć funkcję p
    | **Plan hostingu** | Plan zużycia | To ustawienie określa sposób przydzielania i skalowania zasobów, takich jak moc obliczeniowa, na potrzeby uruchamiania aplikacji funkcji. Zobacz [Hosting plan comparison (Porównanie planów hostingu)](../azure-functions/functions-scale.md). |
    | **Lokalizacja** | Zachodnie stany USA | Ten sam region, którego użyto wcześniej |
    | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje ulubiony język programowania funkcji. Wybierz pozycję .NET C# dla F# funkcji i. |
-   | **Magazyn** | cleantextfunctionstorageacct | Utwórz konto magazynu dla aplikacji funkcji. Użyj tylko małych liter i cyfr. <p>**Uwaga:** To konto magazynu zawiera aplikacje funkcji i różni się od wcześniej utworzonego konta magazynu na potrzeby załączników wiadomości e-mail. |
-   | **Application Insights** | Wyłączenie | Włącza monitorowanie aplikacji przy użyciu [Application Insights](../azure-monitor/app/app-insights-overview.md), ale na potrzeby tego samouczka wybierz pozycję **Wyłącz** > **Zastosuj**. |
+   | **Storage** | cleantextfunctionstorageacct | Utwórz konto magazynu dla aplikacji funkcji. Użyj tylko małych liter i cyfr. <p>**Uwaga:** To konto magazynu zawiera aplikacje funkcji i różni się od wcześniej utworzonego konta magazynu na potrzeby załączników wiadomości e-mail. |
+   | **Application Insights** | Wyłączanie | Włącza monitorowanie aplikacji przy użyciu [Application Insights](../azure-monitor/app/app-insights-overview.md), ale na potrzeby tego samouczka wybierz pozycję **Wyłącz** > **Zastosuj**. |
    ||||
 
    Jeśli aplikacja funkcji nie jest automatycznie otwierana po wdrożeniu, w polu wyszukiwania [Azure Portal](https://portal.azure.com) Znajdź i wybierz pozycję **aplikacja funkcji**. W obszarze **aplikacja funkcji**wybierz aplikację funkcji.
@@ -223,24 +223,24 @@ Po sprawdzeniu, czy funkcja działa, utwórz aplikację logiki. Chociaż ten sam
 
 ## <a name="create-your-logic-app"></a>Tworzenie aplikacji logiki
 
-1. Na stronie głównej platformy Azure w polu wyszukiwania Znajdź i wybierz **Logic Apps**.
+1. W polu wyszukiwania najwyższego poziomu platformy Azure wprowadź `logic apps`i wybierz pozycję **Logic Apps**.
 
    ![Znajdź i wybierz pozycję "Logic Apps"](./media/tutorial-process-email-attachments-workflow/find-select-logic-apps.png)
 
-1. Na stronie **Logic Apps** wybierz pozycję **Dodaj**.
+1. W okienku **Logic Apps** wybierz pozycję **Dodaj**.
 
-   ![Dodaj nową aplikację logiki](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
+   ![Dodaj nową aplikację logiki](./media/tutorial-process-email-attachments-workflow/add-new-logic-app.png)
 
-1. W obszarze **Tworzenie aplikacji logiki** podaj szczegółowe informacje o aplikacji logiki, jak pokazano poniżej. Po zakończeniu wybierz pozycję **Utwórz**.
+1. W okienku **aplikacja logiki** podaj szczegółowe informacje o aplikacji logiki, jak pokazano poniżej. Po zakończeniu wybierz pozycję **Przegląd + Utwórz**.
 
    ![Podawanie informacji na temat aplikacji logiki](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
    | Ustawienie | Wartość | Opis |
    | ------- | ----- | ----------- |
-   | **Nazwa** | LA-ProcessAttachment | Nazwa aplikacji logiki |
    | **Subskrypcja** | <*your-Azure-subscription-name*> | Ta sama subskrypcja platformy Azure, której użyto wcześniej |
    | **Grupa zasobów** | LA-Tutorial-RG | Ta sama grupa zasobów platformy Azure, której użyto wcześniej |
-   | **Lokalizacja** | Zachodnie stany USA | Ten sam region, którego użyto wcześniej |
+   | **Nazwa aplikacji logiki** | LA-ProcessAttachment | Nazwa aplikacji logiki |
+   | **Wybierz lokalizację** | Zachodnie stany USA | Ten sam region, którego użyto wcześniej |
    | **Log Analytics** | Wyłączone | Na potrzeby tego samouczka wybierz ustawienie **wyłączone** . |
    ||||
 
@@ -258,7 +258,7 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 1. W projektancie w polu wyszukiwania wprowadź `when new email arrives` jako filtr. Wybierz ten wyzwalacz dla dostawcy poczty e-mail: **Po nadejściu nowej wiadomości e-mail — <*Twój-dostawca-poczty-e-mail*>**
 
-   Przykład:
+   Na przykład:
 
    ![Wybieranie wyzwalacza dla dostawcy poczty e-mail: „Po nadejściu nowej wiadomości e-mail”](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
@@ -277,8 +277,8 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
       | Ustawienie | Wartość | Opis |
       | ------- | ----- | ----------- |
       | **Folder** | Skrzynka odbiorcza | Folder poczty e-mail do sprawdzania |
-      | **Zawiera załącznik** | Tak | Pobieraj tylko wiadomości e-mail z załącznikami. <p>**Uwaga:** wyzwalacz nie usuwa żadnych wiadomości e-mail z konta; sprawdza tylko nowe wiadomości i przetwarza tylko te wiadomości, które pasują do filtru tematu. |
-      | **Uwzględnij załączniki** | Tak | Pobieraj załączniki jako dane wejściowe dla przepływu pracy, zamiast tylko sprawdzać wiadomości pod kątem istnienia załączników. |
+      | **Zawiera załącznik** | Yes | Pobieraj tylko wiadomości e-mail z załącznikami. <p>**Uwaga:** wyzwalacz nie usuwa żadnych wiadomości e-mail z konta; sprawdza tylko nowe wiadomości i przetwarza tylko te wiadomości, które pasują do filtru tematu. |
+      | **Uwzględnij załączniki** | Yes | Pobieraj załączniki jako dane wejściowe dla przepływu pracy, zamiast tylko sprawdzać wiadomości pod kątem istnienia załączników. |
       | **Interwał** | 1 | Liczba interwałów do odczekania między sprawdzaniami |
       | **Częstotliwość** | Minuta | Jednostka czasu dla każdego interwału między sprawdzaniami |
       ||||
@@ -667,7 +667,15 @@ Gratulacje. Udało Ci się utworzyć i uruchomić aplikację logiki, która auto
 
 Gdy ten przykład nie będzie już potrzebny, usuń grupę zasobów zawierającą aplikację logiki i powiązane zasoby.
 
-1. Z głównego menu platformy Azure wybierz pozycję **Grupy zasobów**. Z listy grupy zasobów wybierz grupę zasobów dla tego samouczka. W okienku **Przegląd** wybierz pozycję **Usuń grupę zasobów**.
+1. W polu wyszukiwania platformy Azure najwyższego poziomu wprowadź `resources groups`i wybierz pozycję **grupy zasobów**.
+
+   ![Znajdź i wybierz pozycję "grupy zasobów"](./media/tutorial-process-email-attachments-workflow/find-azure-resource-groups.png)
+
+1. Z listy **grupy zasobów** wybierz grupę zasobów dla tego samouczka. 
+
+   ![Znajdź grupę zasobów dla samouczka](./media/tutorial-process-email-attachments-workflow/find-select-tutorial-resource-group.png)
+
+1. W okienku **Przegląd** wybierz pozycję **Usuń grupę zasobów**.
 
    ![Usuwanie grupy zasobów aplikacji logiki](./media/tutorial-process-email-attachments-workflow/delete-resource-group.png)
 

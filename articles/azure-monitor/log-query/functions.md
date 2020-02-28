@@ -1,18 +1,17 @@
 ---
 title: Funkcje w kwerendach dzienników Azure Monitor | Microsoft Docs
 description: W tym artykule opisano, jak używać funkcji do wywoływania zapytania z innego zapytania dziennika w Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
-ms.openlocfilehash: 8d8473b88327d3d17346a0351d0a9fc510152cd8
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7d94e53abbe8f4d2953729aa2363c3906ce94f74
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894175"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670223"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Używanie funkcji w kwerendach dzienników Azure Monitor
 
@@ -24,7 +23,7 @@ Utwórz funkcję z Log Analytics w Azure Portal, klikając przycisk **Zapisz** ,
 
 | Ustawienie | Opis |
 |:---|:---|
-| Nazwa           | Nazwa wyświetlana zapytania w **Eksploratorze zapytań**. |
+| Name (Nazwa)           | Nazwa wyświetlana zapytania w **Eksploratorze zapytań**. |
 | Zapisz jako        | Funkcja |
 | Alias funkcji | Krótka nazwa służąca do korzystania z funkcji w innych zapytaniach. Nie może zawierać spacji i musi być unikatowa. |
 | Kategoria       | Kategoria do organizowania zapisanych zapytań i funkcji w **Eksploratorze zapytań**. |
@@ -48,7 +47,7 @@ Update
 | where UpdateState == "Needed"
 ```
 
-Utwórz kolejne zapytanie i odwołuje się do funkcji _security_updates_last_day_ w celu wyszukania wymaganych aktualizacji zabezpieczeń związanych z programem SQL.
+Utwórz kolejne zapytanie i odwołujące się do funkcji _security_updates_last_day_ , aby wyszukać odpowiednie aktualizacje zabezpieczeń dotyczące języka SQL.
 
 ```Kusto
 security_updates_last_day | where Title contains "SQL"

@@ -1,22 +1,20 @@
 ---
 title: Tworzenie i wyświetlanie alertów dziennika aktywności oraz zarządzanie nimi w Azure Monitor
 description: Tworzenie alertów dziennika aktywności przy użyciu Azure Portal, szablonu Azure Resource Manager i Azure PowerShell.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 4835f1034149a015963569a0b1fc5f9195e3cfca
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9791ebaadeb1ee724692a9e1a0d61aff5cbae6a3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969524"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668489"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Tworzenie i wyświetlanie alertów dziennika aktywności oraz zarządzanie nimi za pomocą Azure Monitor  
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
+
 Alerty dziennika aktywności są alertami, które są aktywowane w przypadku wystąpienia nowego zdarzenia dziennika aktywności zgodnego z warunkami określonymi w alercie.
 
 Te alerty dotyczą zasobów platformy Azure i można je utworzyć przy użyciu szablonu Azure Resource Manager. Można je także tworzyć, aktualizować lub usuwać w Azure Portal. Zazwyczaj tworzysz alerty dziennika aktywności, aby otrzymywać powiadomienia o wystąpieniu konkretnych zmian w zasobach w ramach subskrypcji platformy Azure. Alerty często są ograniczone do określonych grup zasobów lub zasobów. Na przykład możesz chcieć otrzymywać powiadomienia, gdy dowolna maszyna wirtualna w przykładowej grupie zasobów **myProductionResourceGroup** jest usuwana. Możesz również otrzymać powiadomienie, jeśli dowolna z nowych ról zostanie przypisana do użytkownika w ramach subskrypcji.
@@ -31,8 +29,7 @@ Podczas tworzenia reguł alertów należy zapewnić następujące czynności:
 - W pliku JSON konfiguracji alertów nie ma warunku "anyOf" ani warunków zagnieżdżonych. Zasadniczo tylko jeden warunek "allOf" jest dozwolony w przypadku braku dalszych warunków "allOf" lub "anyOf".
 - Jeśli kategoria ma wartość "administracyjne", musisz określić co najmniej jedno z powyższych kryteriów w alercie. Nie można utworzyć alertu, który jest uaktywniany za każdym razem, gdy zdarzenie jest tworzone w dziennikach aktywności.
 
-
-## <a name="azure-portal"></a>Portal Azure
+## <a name="azure-portal"></a>Portalu Azure
 
 Za pomocą Azure Portal można tworzyć i modyfikować reguły alertów dziennika aktywności. Środowisko jest zintegrowane z dziennikiem aktywności platformy Azure w celu zapewnienia bezproblemowego tworzenia alertów dla konkretnych interesujących Cię zdarzeń.
 
@@ -205,7 +202,7 @@ Poprzedni przykładowy kod JSON można zapisać jako, na przykład sampleActivit
 ## <a name="rest-api"></a>Interfejs API REST 
 [Interfejs API alertów dziennika aktywności Azure monitor](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) jest interfejsem API REST. Jest w pełni zgodna z interfejsem API REST Azure Resource Manager. Można go użyć za pośrednictwem programu PowerShell za pomocą polecenia cmdlet Menedżer zasobów lub interfejsu wiersza poleceń platformy Azure.
 
-## <a name="powershell"></a>PowerShell
+## <a name="powershell"></a>Program PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

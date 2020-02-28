@@ -1,24 +1,23 @@
 ---
 title: Zbieranie dzienników zasobów z zasobów platformy Azure i analizowanie ich przy użyciu Azure Monitor
 description: Samouczek dotyczący konfigurowania ustawień diagnostycznych do zbierania dzienników zasobów z zasobu platformy Azure w obszarze roboczym Log Analytics, w którym można je analizować przy użyciu zapytania dziennika.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 90b2a9bc9e3e8aa6297f02a46163717a2bf58a22
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9f88a69e8d24cfa8654ac2bea3344c9adf81c16a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533559"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670410"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Samouczek: zbieranie i analizowanie dzienników zasobów z zasobów platformy Azure
 
 Dzienniki zasobów zapewniają wgląd w szczegółowe operacje związane z zasobem platformy Azure i są przydatne do monitorowania ich kondycji i dostępności. Zasoby platformy Azure automatycznie generują dzienniki zasobów, ale należy skonfigurować lokalizacje, w których mają być zbierane. Ten samouczek przeprowadzi Cię przez proces tworzenia ustawień diagnostycznych w celu zbierania dzienników zasobów dla zasobu w ramach subskrypcji platformy Azure i analizowania go za pomocą zapytania dziennika.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Utwórz obszar roboczy Log Analytics w Azure Monitor
@@ -31,7 +30,7 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 Do wykonania czynności w tym samouczku potrzebny jest zasób platformy Azure do monitorowania. Możesz użyć dowolnego zasobu w subskrypcji platformy Azure, który obsługuje ustawienia diagnostyczne. Aby określić, czy zasób obsługuje ustawienia diagnostyczne, przejdź do jego menu w Azure Portal i sprawdź, czy w sekcji **monitorowanie** menu znajduje się opcja **Ustawienia diagnostyczne** .
 
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="log-in-to-azure"></a>Logowanie się do platformy Azure
 Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com).
 
 

@@ -1,38 +1,36 @@
 ---
-title: Oceń, ograniczanie dla wiadomości SMS, wiadomości e-mail, powiadomień wypychanych w aplikacji platformy Azure i elementy webhook
-description: Dowiedz się, jak Azure ogranicza liczbę możliwych wiadomości SMS, wiadomości e-mail, powiadomienia wypychane lub elementu webhook aplikacji platformy Azure z grupy akcji.
+title: Ograniczanie szybkości dla wiadomości SMS, wiadomości e-mail, powiadomień wypychanych aplikacji platformy Azure i elementów webhook
+description: Dowiedz się, w jaki sposób platforma Azure ogranicza liczbę powiadomień SMS, poczty e-mail, aplikacji wypychanych lub elementów webhook z grupy akcji.
 author: dkamstra
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
-ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 11fd6a2c58671cc5d0bcf0593239eb9e62aca834
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 066fcac24571c8e982784a3845a010525ff9088a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60346652"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665531"
 ---
-# <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Oceń, ograniczając połączeń głosowych, wiadomości SMS, wiadomości e-mail, powiadomień wypychanych w aplikacji platformy Azure i elementu webhook wpisów
-Ograniczanie szybkości jest zawieszenia powiadomienia, który występuje, gdy za dużo są wysyłane do konkretny numer telefonu, adres e-mail lub urządzenia. Ograniczanie szybkości gwarantuje, że alerty są łatwe w obsłudze i możliwością wykonywania akcji.
+# <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Ograniczanie szybkości dla głosu, wiadomości SMS, wiadomości e-mail, powiadomień wypychanych aplikacji platformy Azure i wpisów elementu webhook
+Ograniczanie szybkości polega na zawieszeniu powiadomień, które są wykonywane, gdy zbyt wiele jest wysyłanych na określony numer telefonu, adres e-mail lub urządzenie. Ograniczanie szybkości daje gwarancję, że alerty są zarządzane i umożliwiają podejmowanie akcji.
 
-Progi limit szybkości są:
+Progi limitu szybkości są następujące:
 
-- **SMS**: Nie więcej niż 1 SMS co 5 minut.
-- **Głos**: Nie więcej niż 1 połączenie głosowe co 5 minut.
-- **adres e-mail**: Nie więcej niż 100 wiadomości e-mail w ciągu godziny.
+- **SMS**: nie więcej niż 1 SMS co 5 minut.
+- **Głos**: nie więcej niż 1 wywołanie głosowe co 5 minut.
+- **Poczta e-mail**: nie więcej niż 100 wiadomości e-mail w ciągu godziny.
  
-  Inne akcje nie są częstość jest ograniczona.
+  Inne akcje nie są ograniczone.
 
-## <a name="rate-limit-rules"></a>Zasady limitu szybkości
-- Konkretny numer telefonu lub adres e-mail jest prędkość ograniczoną po odebraniu komunikatów jest większa niż zezwala na wartość progową.
-- Numer telefonu lub adresu e-mail może być częścią grupy akcji w wielu subskrypcjach. Ograniczanie szybkości mają zastosowanie we wszystkich subskrypcjach. Ma to zastosowanie zaraz po osiągnięciu progu nawet wtedy, gdy komunikaty są wysyłane z wieloma subskrypcjami.
-- Gdy współczynnik ograniczony jest adres e-mail, dodatkowe powiadomienia są wysyłane do komunikacji, ograniczania szybkości. Stany poczty e-mail, po wygaśnięciu ograniczanie szybkości.
+## <a name="rate-limit-rules"></a>Reguły limitu szybkości
+- Określony numer telefonu lub adres e-mail jest naliczany proporcjonalnie, gdy otrzymuje więcej komunikatów niż zezwala na wartość progowa.
+- Numer telefonu lub adres e-mail może być częścią grup akcji w wielu subskrypcjach. Ograniczanie szybkości ma zastosowanie do wszystkich subskrypcji. Stosuje się to zaraz po osiągnięciu progu, nawet jeśli komunikaty są wysyłane z wielu subskrypcji.
+- Jeśli adres e-mail jest ograniczony, do przekazywania ograniczeń szybkości są wysyłane dodatkowe powiadomienia. Wiadomości e-mail po wygaśnięciu ograniczenia szybkości.
 
-## <a name="next-steps"></a>Kolejne kroki ##
-* Dowiedz się więcej o [SMS alert zachowanie](alerts-sms-behavior.md).
-* Pobierz [Przegląd alertów dziennika aktywności](alerts-overview.md)i Dowiedz się, jak otrzymywać alerty.  
-* Dowiedz się, jak [Konfigurowanie alertów po każdym opublikowaniu powiadomienia kondycji usługi](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+## <a name="next-steps"></a>Następne kroki ##
+* Dowiedz się więcej na temat [zachowania alertu programu SMS](alerts-sms-behavior.md).
+* Zapoznaj się z [omówieniem alertów dziennika aktywności](alerts-overview.md)i Dowiedz się, jak otrzymywać alerty.  
+* Informacje o sposobie [konfigurowania alertów za każdym razem, gdy jest ogłaszane powiadomienie o kondycji usługi](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 

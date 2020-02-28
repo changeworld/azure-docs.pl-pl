@@ -1,18 +1,17 @@
 ---
 title: Capacity and Performance rozwiązanie w Azure Monitor | Microsoft Docs
 description: Użyj rozwiązania Capacity and Performance w monitorze, aby ułatwić zrozumienie pojemności serwerów funkcji Hyper-V.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: c444991166d9c7d3f1d8ed39e19e333d3c27f982
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405742"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666947"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Zaplanuj pojemność maszyny wirtualnej funkcji Hyper-V za pomocą rozwiązania Capacity and Performance (przestarzałe)
 
@@ -42,9 +41,9 @@ W poniższej tabeli opisano połączone źródła, które obsługuje to rozwiąz
 
 | Połączone źródło | Pomoc techniczna | Opis |
 |---|---|---|
-| [Agenci dla systemu Windows](../../azure-monitor/platform/agent-windows.md) | Tak | Rozwiązanie zbiera informacje o danych pojemność i wydajność z agentów dla Windows. |
+| [Agenci dla systemu Windows](../../azure-monitor/platform/agent-windows.md) | Yes | Rozwiązanie zbiera informacje o danych pojemność i wydajność z agentów dla Windows. |
 | [Agenci dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nie    | Rozwiązania nie zbiera informacje o danych pojemności i wydajności z bezpośrednich agentów systemu Linux.|
-| [Grupy zarządzania SCOM](../../azure-monitor/platform/om-agents.md) | Tak |Rozwiązanie zbiera dane dotyczące pojemności i wydajności z agentów w połączonej grupie zarządzania programu SCOM. Bezpośrednie połączenie agenta programu SCOM do usługi Log Analytics nie jest wymagane.|
+| [Grupa zarządzania programu SCOM](../../azure-monitor/platform/om-agents.md) | Yes |Rozwiązanie zbiera dane dotyczące pojemności i wydajności z agentów w połączonej grupie zarządzania programu SCOM. Bezpośrednie połączenie agenta programu SCOM do usługi Log Analytics nie jest wymagane.|
 | [Konto usługi Azure Storage](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nie | Usługa Azure storage nie obejmuje dane dotyczące pojemności i wydajności.|
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -52,11 +51,11 @@ W poniższej tabeli opisano połączone źródła, które obsługuje to rozwiąz
 - Windows lub agentów programu Operations Manager musi być zainstalowany w systemie Windows Server 2012 lub wyższy hosty funkcji Hyper-V, nie maszyn wirtualnych.
 
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 Wykonaj następujący krok, aby dodać rozwiązanie pojemność i wydajność do obszaru roboczego.
 
-- Dodaj rozwiązanie pojemność i wydajność do obszaru roboczego usługi Log Analytics przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../../azure-monitor/insights/solutions.md).
+- Dodaj Capacity and Performance rozwiązanie do obszaru roboczego Log Analytics przy użyciu procesu opisanego w temacie [Dodawanie rozwiązań log Analytics z Galeria rozwiązań](../../azure-monitor/insights/solutions.md).
 
 ## <a name="management-packs"></a>Pakiety administracyjne
 
@@ -86,19 +85,19 @@ Po dodaniu rozwiązanie pojemność i wydajność do swojego obszaru roboczego p
 
 Kliknij Kafelek pojemności i wydajności, aby otworzyć pulpit nawigacyjny pojemności i wydajności. Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli. Każda kolumna zawiera do dziesięciu elementów spełniających jej kryteria dla podanego zakresu i przedziału czasu. Można uruchomić wyszukiwanie w dzienniku, które zwróci wszystkie rekordy. W tym celu kliknij przycisk **Zobacz wszystko** na dole kolumny lub kliknij nagłówek kolumny.
 
-- **Hosty**
-    - **Użycie procesora CPU hosta** pokazuje sposób graficzny trend wykorzystania procesora CPU komputerów-hostów oraz listę hostów, w oparciu o wybrany okres czasu. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę hosta, aby otworzyć wyszukiwanie w dzienniku i wyświetlić szczegóły licznika procesora CPU dla maszyn wirtualnych w hostowanej.
-    - **Wykorzystanie pamięci hosta** pokazuje sposób graficzny trend wykorzystania pamięci komputerów-hostów oraz listę hostów, w oparciu o wybrany okres czasu. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę hosta, aby otworzyć wyszukiwanie w dzienniku i wyświetlić szczegóły licznika pamięci dla maszyn wirtualnych hostowanych.
+- **Pracując**
+    - **Użycie procesora CPU hosta** Przedstawia graficzny trend użycia procesora CPU przez komputery hosta i listę hostów w oparciu o wybrany okres. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę hosta, aby otworzyć wyszukiwanie w dzienniku i wyświetlić szczegóły licznika procesora CPU dla maszyn wirtualnych w hostowanej.
+    - **Użycie pamięci hosta** Przedstawia graficzny trend wykorzystania pamięci przez komputery hosta i listę hostów w oparciu o wybrany okres. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę hosta, aby otworzyć wyszukiwanie w dzienniku i wyświetlić szczegóły licznika pamięci dla maszyn wirtualnych hostowanych.
 - **Virtual Machines**
-    - **Użycie procesora CPU maszyny Wirtualnej** pokazuje sposób graficzny trend wykorzystania procesora CPU maszyny wirtualne oraz listę maszyn wirtualnych, w oparciu o wybrany okres czasu. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie dla najważniejszych 3 maszyn wirtualnych. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę maszyny Wirtualnej, aby otworzyć wyszukiwanie w dzienniku i wyświetlić zagregowane szczegóły licznika Procesora dla maszyny Wirtualnej.
-    - **Wykorzystanie pamięci maszyny Wirtualnej** pokazuje sposób graficzny trend wykorzystania pamięci maszyn wirtualnych oraz listę maszyn wirtualnych, w oparciu o wybrany okres czasu. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie dla najważniejszych 3 maszyn wirtualnych. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę maszyny Wirtualnej, aby otworzyć wyszukiwanie w dzienniku i wyświetlić szczegóły licznika zagregowane pamięci dla maszyny Wirtualnej.
-    - **Łączna liczba IOPS dysku maszyny Wirtualnej** pokazuje sposób graficzny trend całkowitego miejsca na dysku na SEKUNDĘ dla maszyn wirtualnych oraz listę maszyn wirtualnych przy użyciu operacji We/Wy dla każdego, oparte na wybrany okres czasu. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie dla najważniejszych 3 maszyn wirtualnych. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę maszyny Wirtualnej, aby otworzyć wyszukiwanie w dziennikach i widoku zagregowane dysku, operacje We/Wy licznik szczegóły dla maszyny Wirtualnej.
-    - **Łączna przepływność dysku maszyny Wirtualnej** pokazuje sposób graficzny trend przepływności całkowitego miejsca na dysku dla maszyn wirtualnych oraz listę maszyn wirtualnych z przepływnością całkowitego miejsca na dysku dla każdego, oparte na wybrany okres czasu. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie dla najważniejszych 3 maszyn wirtualnych. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę maszyny Wirtualnej, aby otworzyć wyszukiwanie w dzienniku i wyświetlić szczegóły licznika przepływności zagregowane całkowitego miejsca na dysku dla maszyny Wirtualnej.
-- **Udostępnione woluminy klastra**
-    - **Łączna przepływność** zawiera sumę operacje odczytu i zapisu na udostępnione woluminy klastra.
-    - **Łączna liczba operacji We/Wy** przedstawia sumę operacji wejścia/wyjścia na sekundę na udostępnione woluminy klastra.
-    - **Łączny czas oczekiwania** przedstawia całkowity czas oczekiwania na udostępnione woluminy klastra.
-- **Gęstość hosta** górny Kafelek Pokazuje łączną liczbą hosty i maszyny wirtualne dostępne do rozwiązania. Kliknij górny Kafelek, aby wyświetlić dodatkowe informacje podczas wyszukiwania dziennika. Zawiera również listę wszystkich hostów i liczbę maszyn wirtualnych, które znajdują się. Kliknij wybranego hosta, aby przejść do szczegółów wyników maszyny Wirtualnej podczas wyszukiwania dziennika.
+    - **Użycie procesora CPU maszyny wirtualnej** Przedstawia graficzny trend użycia procesora CPU przez maszyny wirtualne i listę maszyn wirtualnych w oparciu o wybrany okres. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie dla najważniejszych 3 maszyn wirtualnych. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę maszyny Wirtualnej, aby otworzyć wyszukiwanie w dzienniku i wyświetlić zagregowane szczegóły licznika Procesora dla maszyny Wirtualnej.
+    - **Wykorzystanie pamięci maszyny wirtualnej** Przedstawia graficzny trend wykorzystania pamięci maszyn wirtualnych i listy maszyn wirtualnych w oparciu o wybrany okres. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie dla najważniejszych 3 maszyn wirtualnych. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę maszyny Wirtualnej, aby otworzyć wyszukiwanie w dzienniku i wyświetlić szczegóły licznika zagregowane pamięci dla maszyny Wirtualnej.
+    - **Całkowita liczba operacji we/wy dysku maszyny wirtualnej** Przedstawia graficzny trend łącznej liczby operacji we/wy na sekundę dla maszyn wirtualnych i listy maszyn wirtualnych z każdą liczbą operacji we/wy na sekundę w oparciu o wybrany okres. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie dla najważniejszych 3 maszyn wirtualnych. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę maszyny Wirtualnej, aby otworzyć wyszukiwanie w dziennikach i widoku zagregowane dysku, operacje We/Wy licznik szczegóły dla maszyny Wirtualnej.
+    - **Całkowita przepływność dysku maszyny wirtualnej** Przedstawia graficzny trend łącznej przepływności dysków dla maszyn wirtualnych i listy maszyn wirtualnych z łączną przepływność dysku dla każdej z nich w oparciu o wybrany okres. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie dla najważniejszych 3 maszyn wirtualnych. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę maszyny Wirtualnej, aby otworzyć wyszukiwanie w dzienniku i wyświetlić szczegóły licznika przepływności zagregowane całkowitego miejsca na dysku dla maszyny Wirtualnej.
+- **Udostępnione woluminy klastrowane**
+    - **Łączna przepływność** Pokazuje sumę operacji odczytu i zapisu na udostępnionych woluminach klastra.
+    - **Całkowita liczba operacji we/wy** Pokazuje sumę operacji wejścia/wyjścia na sekundę w klastrowanych woluminach udostępnionych.
+    - **Łączne opóźnienie** Pokazuje łączne opóźnienie na udostępnionych woluminach klastra.
+- **Gęstość hosta** Na górnym kafelku przedstawiono łączną liczbę hostów i maszyn wirtualnych dostępnych dla rozwiązania. Kliknij górny Kafelek, aby wyświetlić dodatkowe informacje podczas wyszukiwania dziennika. Zawiera również listę wszystkich hostów i liczbę maszyn wirtualnych, które znajdują się. Kliknij wybranego hosta, aby przejść do szczegółów wyników maszyny Wirtualnej podczas wyszukiwania dziennika.
 
 
 ![Blok hosty pulpitu nawigacyjnego](./media/capacity-performance/dashboard-hosts.png)
@@ -110,7 +109,7 @@ Kliknij Kafelek pojemności i wydajności, aby otworzyć pulpit nawigacyjny poje
 
 Produkcja środowisk przetwarzania różnią się znacznie od jednej z organizacji do innego. Ponadto pojemność i wydajność obciążeń może zależeć od jak maszyny wirtualne są uruchomione, i co należy wziąć pod uwagę normalny. Konkretne procedury, aby zmierzyć wydajność, prawdopodobnie nie będzie dotyczyć środowiska użytkownika. Dlatego uogólniony więcej normatywnych wskazówki lepiej nadaje się do pomocy. Firma Microsoft publikuje wiele artykułów wskazówki ułatwiające pomiaru wydajności.
 
-Aby podsumować, rozwiązanie zbiera dane dotyczące pojemności i wydajności z różnych źródeł takich jak liczniki wydajności. Te dane pojemności i wydajności znajdujące się w różnych powierzchniach w rozwiązaniu i porównać wyniki do tych w [pomiaru wydajności funkcji Hyper-v](https://msdn.microsoft.com/library/cc768535.aspx) artykułu. Mimo że artykuł został opublikowany pewien czas temu, metryki, zagadnienia i wytyczne są nadal ważne. Ten artykuł zawiera linki do innych przydatnych zasobów.
+Aby podsumować, rozwiązanie zbiera dane dotyczące pojemności i wydajności z różnych źródeł takich jak liczniki wydajności. Użyj tej pojemności i danych wydajności, które są prezentowane na różnych urządzeniach w rozwiązaniu, a następnie Porównaj wyniki z wynikami [pomiaru wydajności w artykule dotyczącym funkcji Hyper-V](https://msdn.microsoft.com/library/cc768535.aspx) . Mimo że artykuł został opublikowany pewien czas temu, metryki, zagadnienia i wytyczne są nadal ważne. Ten artykuł zawiera linki do innych przydatnych zasobów.
 
 
 ## <a name="sample-log-searches"></a>Przykładowe wyszukiwania dzienników
@@ -130,4 +129,4 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla danych pojemn
 
 
 ## <a name="next-steps"></a>Następne kroki
-* Użyj [przeszukiwanie dzienników w usłudze Log Analytics](../../azure-monitor/log-query/log-query-overview.md) do wyświetlania szczegółowych danych o pojemności i wydajności.
+* Użyj [przeszukiwania dzienników w log Analytics](../../azure-monitor/log-query/log-query-overview.md) , aby wyświetlić szczegółowe dane Capacity and Performance.

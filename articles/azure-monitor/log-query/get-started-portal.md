@@ -1,18 +1,17 @@
 ---
 title: Wprowadzenie do Azure Monitor Log Analytics | Microsoft Docs
 description: Ten artykuł zawiera samouczek dotyczący używania Log Analytics w Azure Portal do zapisywania zapytań.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 07/19/2019
-ms.openlocfilehash: 1117ebbb8d2c3b133156c6b63a0ab13185f9f4a5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1cf1695db50e6aee2a5dae24ed5231fdda7c12de
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933050"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670240"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Wprowadzenie do Log Analytics w Azure Monitor
 
@@ -40,11 +39,11 @@ Log Analytics jest narzędziem sieci Web służącym do zapisywania i wykonywani
 ## <a name="firewall-requirements"></a>Wymagania dotyczące zapory
 Aby można było używać Log Analytics, przeglądarka wymaga dostępu do następujących adresów. Jeśli przeglądarka uzyskuje dostęp do Azure Portal przez zaporę, należy włączyć dostęp do tych adresów.
 
-| adresu | IP | Porty |
+| URI | Adres IP | Porty |
 |:---|:---|:---|
-| portal.loganalytics.io | Dynamiczny | 80 443 |
-| api.loganalytics.io | Dynamiczny | 80 443 |
-| docs.loganalytics.io | Dynamiczny | 80 443 |
+| portal.loganalytics.io | Dynamiczny | 80,443 |
+| api.loganalytics.io | Dynamiczny | 80,443 |
+| docs.loganalytics.io | Dynamiczny | 80,443 |
 
 ## <a name="basic-queries"></a>Zapytania podstawowe
 Zapytania mogą służyć do wyszukiwania terminów, identyfikowania trendów, analizowania wzorców i udostępniania wielu szczegółowych informacji na podstawie danych. Zacznij od podstawowego zapytania:
@@ -95,7 +94,7 @@ Log Analytics automatycznie zakresy wyników według:
 To zapytanie jest bardzo ogólne i zwraca zbyt wiele wyników, aby być przydatne. Wyniki można filtrować przez elementy tabeli lub przez jawne dodanie filtru do zapytania. Filtrowanie wyników przez elementy tabeli ma zastosowanie do istniejącego zestawu wyników, podczas gdy filtr do samego zapytania zwróci nowy zestaw wyników filtrowanych i w związku z tym może generować dokładniejsze wyniki.
 
 ### <a name="add-a-filter-to-the-query"></a>Dodawanie filtru do zapytania
-Obok każdego rekordu znajduje się strzałka z lewej strony. Kliknij tę strzałkę, aby otworzyć Szczegóły dla określonego rekordu.
+Obok każdego rekordu znajduje się strzałka z lewej strony. Strzałki można otworzyć szczegóły dla określonego rekordu.
 
 Umieść kursor nad nazwą kolumny ikon "+" i "-", aby wyświetlić. Aby dodać filtr, który zwróci tylko rekordy o tej samej wartości, kliknij znak "+". Kliknij przycisk "-", aby wykluczyć rekordy z tą wartością, a następnie kliknij przycisk **Uruchom** , aby ponownie uruchomić zapytanie.
 
@@ -134,7 +133,7 @@ W przypadku wybrania niestandardowego zakresu czasu wybrane wartości są w form
 Jeśli zapytanie jawnie zawiera filtr dla _TimeGenerated_, tytuł selektora czas będzie wyświetlany _w zapytaniu_. Wybór ręczny zostanie wyłączony w celu uniknięcia konfliktu.
 
 
-## <a name="charts"></a>schematy
+## <a name="charts"></a>Wykresy
 Oprócz zwracania wyników w tabeli wyniki zapytania mogą być prezentowane w formatach wizualnych. Użyj poniższego zapytania jako przykładu:
 
 ```Kusto
@@ -172,7 +171,7 @@ Niektóre uproszczenia są stosowane do wykresu po przypięciu do pulpitu nawiga
 - Ograniczenie czasu: zapytania są automatycznie ograniczone do ostatnich 14 dni.
 - Ograniczenie liczby bin: Jeśli zostanie wyświetlony wykres, który zawiera wiele dyskretnych pojemników, mniej wypełnione pojemniki są automatycznie pogrupowane w _jeden zasobnik._
 
-## <a name="save-queries"></a>Zapisz zapytania
+## <a name="save-queries"></a>Zapisywanie zapytań
 Po utworzeniu przydatnego zapytania warto je zapisać lub udostępnić innym osobom. Ikona **Zapisz** znajduje się na górnym pasku.
 
 Można zapisać całą stronę zapytania lub pojedyncze zapytanie jako funkcję. Funkcje to kwerendy, do których można odwoływać się inne zapytania. Aby zapisać zapytanie jako funkcję, należy podać alias funkcji, który jest nazwą używaną do wywołania tego zapytania, w odniesieniu do innych zapytań.

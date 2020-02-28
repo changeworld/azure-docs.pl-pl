@@ -1,18 +1,16 @@
 ---
 title: Agent Application Insights platformy Azure — wprowadzenie | Microsoft Docs
 description: Przewodnik Szybki Start dotyczący Application Insights agenta. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 1ef354bc61d849a4d536bd26355ef21b0f1c0035
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7819de1f3dfab7f934421de86c0481d2e063f7a4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899619"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671192"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Wprowadzenie do usługi Azure Monitor Application Insights Agent dla serwerów lokalnych
 

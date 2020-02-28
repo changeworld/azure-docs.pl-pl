@@ -1,18 +1,14 @@
 ---
 title: Application Insights platformy Azure dla aplikacji ASP.NET Core | Microsoft Docs
 description: Monitoruj ASP.NET Core aplikacje sieci Web pod kątem dostępności, wydajności i użycia.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 5f54605dd5b43236a75fe73aa3b47a4e619530a1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7aa8ae7fd2742e51ab1ccfed26524241f4c11256
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765810"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666262"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights aplikacji ASP.NET Core
 
@@ -107,7 +103,7 @@ Przykład będziemy używać w tym miejscu jako [aplikacji MVC](https://docs.mic
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Przykład:
+    Na przykład:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -443,7 +439,7 @@ Ten zestaw SDK wymaga `HttpContext`, w związku z czym nie działa w żadnej apl
 
 [Odczytuj i współtworzyć kod](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 - Zapoznaj się z tym zewnętrznym filmem krok po kroku, aby [skonfigurować Application Insights z użyciem platformy .NET Core i programu Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) od podstaw.
 - Zapoznaj się z tym zewnętrznym filmem krok po kroku, aby [skonfigurować Application Insights przy użyciu platformy .NET Core i Visual Studio Code](https://youtu.be/ygGt84GDync) od podstaw.

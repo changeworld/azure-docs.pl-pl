@@ -1,18 +1,14 @@
 ---
 title: Usługa Azure Application Insights przesłania domyślne punkty końcowe zestawu SDK
 description: Zmodyfikuj domyślne Azure Monitor Application Insights punktów końcowych zestawu SDK dla regionów takich jak Azure Government.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/26/2019
-ms.openlocfilehash: c04b793512eccf6aaff7d3ed3cc65efdd3dfc303
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3aa18a6b96458533c3dc53f3f420ed264b298a3e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432588"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671991"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights Przesłanianie domyślnych punktów końcowych
 
@@ -197,20 +193,20 @@ Obecnie jedyne regiony, które wymagają modyfikacji punktów końcowych, to [Az
 
 |Region |  Nazwa punktu końcowego | Wartość |
 |-----------------|:------------|:-------------|
-| Azure (Chiny) | Kanał telemetrii | `https://dc.applicationinsights.azure.cn/v2/track` |
-| Azure (Chiny) | QuickPulse (metryki na żywo) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
-| Azure (Chiny) | Zapytanie profilu |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
-| Platforma Azure dla instytucji rządowych | Kanał telemetrii |`https://dc.applicationinsights.us/v2/track` |
-| Platforma Azure dla instytucji rządowych | QuickPulse (metryki na żywo) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
-| Platforma Azure dla instytucji rządowych | Zapytanie profilu |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
+| Azure China | Kanał telemetrii | `https://dc.applicationinsights.azure.cn/v2/track` |
+| Azure China | QuickPulse (metryki na żywo) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
+| Azure China | Zapytanie profilu |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
+| Azure Government | Kanał telemetrii |`https://dc.applicationinsights.us/v2/track` |
+| Azure Government | QuickPulse (metryki na żywo) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
+| Azure Government | Zapytanie profilu |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
 
 Jeśli obecnie używasz [interfejsu API REST Application Insights](https://dev.applicationinsights.io/
 ) , do którego zwykle uzyskuje się dostęp za pośrednictwem elementu "API.ApplicationInsights.IO", musisz użyć punktu końcowego, który jest lokalny dla regionu:
 
 |Region |  Nazwa punktu końcowego | Wartość |
 |-----------------|:------------|:-------------|
-| Azure (Chiny) | Interfejs API REST | `api.applicationinsights.azure.cn` |
-| Platforma Azure dla instytucji rządowych | Interfejs API REST | `api.applicationinsights.us`|
+| Azure China | Interfejs API REST | `api.applicationinsights.azure.cn` |
+| Azure Government | Interfejs API REST | `api.applicationinsights.us`|
 
 > [!NOTE]
 > W tych regionach **nie jest obecnie obsługiwane** monitorowanie oparte na agentach i rozszerzeniach w ramach agentów usługi Azure App Services. Po udostępnieniu tej funkcji ten artykuł zostanie zaktualizowany.

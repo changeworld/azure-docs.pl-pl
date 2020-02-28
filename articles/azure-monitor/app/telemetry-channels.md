@@ -1,19 +1,15 @@
 ---
 title: Kanały telemetrii na platformie Azure Application Insights | Microsoft Docs
 description: Jak dostosować kanały telemetryczne w zestawach SDK Application Insights platformy Azure dla platform .NET i .NET Core.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: cef35ae5cb2b66385332a3b1f9ebe177ea26a3e4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406357"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671124"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Kanały telemetrii w Application Insights
 

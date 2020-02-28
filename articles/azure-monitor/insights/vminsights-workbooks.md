@@ -1,22 +1,21 @@
 ---
 title: Twórz interaktywne raporty Azure Monitor dla maszyn wirtualnych ze skoroszytami | Microsoft Docs
 description: Uprość złożone raporty ze wstępnie zdefiniowanymi i niestandardowymi skoroszytami dla Azure Monitor dla maszyn wirtualnych.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: b89e61f0c268df0ed6dd69ae1c6d97f00678fc32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ec24f1eca0b2cf1d5ea2c171573f7c5e47319af
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365924"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670682"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Twórz interaktywne raporty Azure Monitor dla maszyn wirtualnych ze skoroszytami
 
-Skoroszyty łączą tekst, [kwerendy dzienników](../log-query/query-language.md), metryki i parametry w rozbudowanych raportach interaktywnych. Skoroszyty mogą być edytowane przez innych członków zespołu, którzy mają dostęp do tych samych zasobów platformy Azure.
+Skoroszyty łączą tekst, [kwerendy dzienników](../log-query/query-language.md), metryki i parametry w rozbudowanych raportach interaktywnych. Skoroszyty są edytowane przez innych członków zespołu, którzy mają dostęp do tych samych zasobów platformy Azure.
 
 Skoroszyty są przydatne w scenariuszach takich jak:
 
@@ -27,7 +26,7 @@ Skoroszyty są przydatne w scenariuszach takich jak:
 
 Azure Monitor dla maszyn wirtualnych zawiera kilka skoroszytów, aby rozpocząć pracę, a Poniższa tabela zawiera podsumowanie.
 
-| Skoroszyt | Opis | Zakres |
+| Arkuszu | Opis | Zakres |
 |----------|-------------|-------|
 | Wydajność | Udostępnia dostosowywalną wersję naszego górnego widoku listy i wykresów w jednym skoroszycie, który korzysta ze wszystkich Log Analytics włączonych liczników wydajności.| Na dużą skalę |
 | Liczniki wydajności | Górny widok wykresu N dla szerokiego zestawu liczników wydajności. | Na dużą skalę |
@@ -45,13 +44,13 @@ Azure Monitor dla maszyn wirtualnych zawiera kilka skoroszytów, aby rozpocząć
 
 Skoroszyt składa się z sekcji składających się niezależnie od edytowalnych wykresów, tabel, tekstu i kontrolek wejściowych. Aby lepiej zrozumieć skoroszyty, Zacznijmy od otwarcia szablonu i przeprowadzisz przez proces tworzenia niestandardowego skoroszytu. 
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
-2. Wybierz **maszyn wirtualnych**.
+2. Wybierz **Virtual Machines**.
 
 3. Z listy wybierz maszynę wirtualną.
 
-4. Na stronie maszyny Wirtualnej w **monitorowanie** zaznacz **Insights (wersja zapoznawcza)** .
+4. Na stronie maszyna wirtualna w sekcji **monitorowanie** wybierz pozycję szczegółowe dane **(wersja zapoznawcza)** .
 
 5. Na stronie usługa VM Insights wybierz pozycję **wydajność** lub **mapy** , a następnie wybierz pozycję **Wyświetl skoroszyty** z linku na stronie. 
 

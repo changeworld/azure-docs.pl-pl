@@ -1,18 +1,16 @@
 ---
 title: Application Insights platformy Azure dla aplikacji sieci Web w języku JavaScript
 description: Pobierz liczbę wyświetlanych stron i sesji, dane klienta sieci Web, aplikacje jednostronicowe (SPA) i śledź wzorce użycia. Wykrywanie wyjątków i problemów z wydajnością na stronach sieci Web w języku JavaScript.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: c98feda62b7e5de5551b02d6189a1142ca8c5f88
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 00e8cdbbd765d6baf83f64848030d08d6e712ca1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276779"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661349"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 
@@ -97,10 +95,10 @@ appInsights.trackTrace({message: 'This message will use a telemetry initializer'
 appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this is executed
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 Większość pól konfiguracji ma takie nazwy, że można je domyślnie określić jako FAŁSZ. Wszystkie pola są opcjonalne z wyjątkiem `instrumentationKey`.
 
-| Nazwa | Domyślne | Opis |
+| Name (Nazwa) | Domyślne | Opis |
 |------|---------|-------------|
 | InstrumentationKey | null | **Wymagane**<br>Klucz Instrumentacji uzyskany w Azure Portal. |
 | accountId | null | Opcjonalny identyfikator konta, jeśli aplikacja grupuje użytkowników na kontach. Bez spacji, przecinków, średników, równości lub pionowych słupków |
@@ -152,7 +150,7 @@ Obecnie oferujemy osobne wtyczki do [reagowania](#react-extensions) , które mo�
 
 | Rozszerzenia |
 |---------------|
-| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
+| [Biern](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [Zareaguj na natywny](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Eksplorowanie danych po stronie przeglądarki i klienta
@@ -254,7 +252,7 @@ Podczas pobierania skryptu z usługi CDN wszystkie śledzenie strony jest umiesz
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
-Najnowsza ✔ Chrome |  Najnowsza ✔ Firefox | Przeglądarka IE 9 + & Microsoft Edge ✔ | Najnowsza ✔ | Przeglądarka Safari Najnowsza ✔ |
+Najnowsza ✔ Chrome |  Najnowsza ✔ Firefox | Przeglądarka IE 9 + & Edge ✔ | Najnowsza ✔ | Przeglądarka Safari Najnowsza ✔ |
 
 ## <a name="open-source-sdk"></a>Zestaw SDK open source
 

@@ -1,18 +1,15 @@
 ---
 title: Zarządzanie alertami z System Center Operations Manager, Zabbix i Nagios w Azure Monitor
 description: Zarządzanie alertami z System Center Operations Manager, Zabbix i Nagios w Azure Monitor
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
 ms.date: 09/24/2018
-ms.openlocfilehash: 0e774633542f9b7f8b7de9f8f187821bfbe6b9cf
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.subservice: alerts
+ms.openlocfilehash: 5ef03f522fb91302bfdec985f1e3c5cf8138ae97
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555621"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667452"
 ---
 # <a name="manage-alerts-from-system-center-operations-manager-zabbix-and-nagios-in-azure-monitor"></a>Zarządzanie alertami z System Center Operations Manager, Zabbix i Nagios w Azure Monitor
 

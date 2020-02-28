@@ -1,21 +1,19 @@
 ---
-title: Ustawianie alertów w usłudze Azure Application Insights | Microsoft Docs
+title: Ustawianie alertów w usłudze Azure Application Insights
 description: Otrzymuj powiadomienia o wolnym czasie odpowiedzi, wyjątkach i innych zmianach wydajności lub użycia w aplikacji sieci Web.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/23/2019
 ms.reviewer: lagayhar
-ms.openlocfilehash: a21e2676d1b03472c58e2f95095a1a59d00b16be
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.subservice: alerts
+ms.openlocfilehash: 80759c94d7cc5b60b6e38a34b85fb64c3c18fd2e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678404"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666721"
 ---
 # <a name="set-alerts-in-application-insights"></a>Ustawianie alertów w Application Insights
+
 [Usługa Azure Application Insights][start] może wysyłać alerty o zmianach metryk wydajności lub użycia w aplikacji sieci Web. 
 
 Application Insights monitoruje aktywną aplikację na wielu [platformach][platforms] , aby ułatwić diagnozowanie problemów z wydajnością i zrozumienie wzorców użycia.
@@ -28,6 +26,7 @@ Istnieje wiele typów alertów:
 * [**Proaktywna Diagnostyka**](../../azure-monitor/app/proactive-diagnostics.md) jest konfigurowana automatycznie w celu powiadomienia o nietypowych wzorcach wydajności.
 
 ## <a name="set-a-metric-alert"></a>Ustawianie alertu dotyczącego metryki
+
 Otwórz kartę reguły alertów, a następnie użyj przycisku Dodaj.
 
 ![Na karcie reguły alertów wybierz pozycję Dodaj alert. Ustaw aplikację jako zasób do mierzenia, podaj nazwę alertu i wybierz metrykę.](./media/alerts/01-set-metric.png)
@@ -62,7 +61,7 @@ Historia zmian stanu znajduje się w dzienniku aktywności:
 
 ![Na karcie Przegląd kliknij pozycję Ustawienia, dzienniki inspekcji.](./media/alerts/09-alerts.png)
 
-## <a name="how-alerts-work"></a>Jak działają Alerty
+## <a name="how-alerts-work"></a>Jak działają alerty
 * Alert ma trzy stany: "nigdy nie uaktywnione", "aktywowany" i "rozwiązany". Aktywowany oznacza, że określony warunek ma wartość true, kiedy został ostatnio oceniony.
 * Po zmianie stanu alertu zostanie wygenerowane powiadomienie. (Jeśli warunek alertu był już prawdziwy podczas tworzenia alertu, możesz nie otrzymać powiadomienia, dopóki warunek nie zostanie spełniony.)
 * Każde powiadomienie generuje wiadomość e-mail, jeśli zaznaczono pole wiadomości e-mail lub podano adresy e-mail. Możesz również sprawdzić listę rozwijaną powiadomienia.
@@ -171,11 +170,11 @@ Ta sekcja ma zastosowanie tylko do klasycznych alertów i pomoże zoptymalizowa�
 
 Jeśli musisz powiadomić użytkowników na podstawie ich ról, Użyj nowego środowiska alertu/alertów w czasie rzeczywistym. Za pomocą [grup akcji](../platform/action-groups.md)można skonfigurować powiadomienia e-mail dla użytkowników z dowolnymi rolami współautor/właściciela/czytnika (nie razem ze sobą jako pojedynczą opcją).
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatyzacja
 * [Automatyzowanie konfigurowania alertów za pomocą programu PowerShell](../../azure-monitor/app/powershell-alerts.md)
 * [Używanie elementów webhook do automatyzowania reagowania na alerty](../../azure-monitor/platform/alerts-webhooks.md)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 * [Testy sieci Web dostępności](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Automatyzowanie konfigurowania alertów](../../azure-monitor/app/powershell-alerts.md)
 * [Proaktywna Diagnostyka](../../azure-monitor/app/proactive-diagnostics.md) 

@@ -1,18 +1,17 @@
 ---
 title: wyrażenie App () w kwerendach dziennika Azure Monitor | Microsoft Docs
 description: Wyrażenie aplikacji jest używane w zapytaniu dziennika Azure Monitor, aby pobrać dane z konkretnej aplikacji Application Insights w tej samej grupie zasobów, innej grupie zasobów lub innej subskrypcji.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2019
-ms.openlocfilehash: ffef73f88c8679d0b0be81222b1b61c4eaef5098
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933079"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670263"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>wyrażenie App () w kwerendzie Azure Monitor
 
@@ -29,12 +28,12 @@ Wyrażenie `app` jest używane w zapytaniu Azure Monitor do pobierania danych z 
 
 - *Identyfikator*: identyfikuje aplikację przy użyciu jednego z formatów w poniższej tabeli.
 
-| Identyfikatora | Opis | Przykład
+| Identyfikator | Opis | Przykład
 |:---|:---|:---|
 | Nazwa zasobu | Czytelna dla człowieka nazwa aplikacji ("Nazwa składnika") | Aplikacja ("fabrikamapp") |
 | Kwalifikowana nazwa | Pełna nazwa aplikacji w postaci: "subscriptionname/resourceName/ComponentName" | Aplikacja ("AI-Prototype/Fabrikam/fabrikamapp") |
-| ID | Identyfikator GUID aplikacji | Aplikacja ("988ba129-363e-4415-8fe7-8cbab5447518") |
-| Identyfikator zasobu platformy Azure | Identyfikator zasobu platformy Azure |Aplikacja ("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
+| ID | Identyfikator GUID aplikacji | app("988ba129-363e-4415-8fe7-8cbab5447518") |
+| Identyfikator zasobu platformy Azure | Identyfikator zasobu platformy Azure |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
 ## <a name="notes"></a>Uwagi

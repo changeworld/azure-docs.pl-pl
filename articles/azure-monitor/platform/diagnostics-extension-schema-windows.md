@@ -1,18 +1,17 @@
 ---
 title: Schemat rozszerzenia diagnostyki systemu Windows
 description: Dokumentacja schematu konfiguracji rozszerzenia diagnostyki systemu Windows (funkcji wad) w Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 5b4d68ab5be2566310ddcc2eaf591d9908d35ad1
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472585"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672365"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schemat rozszerzenia diagnostyki systemu Windows
 Diagnostyka Azure Extension to Agent w Azure Monitor, który zbiera dane monitorowania z systemu operacyjnego gościa i obciążeń zasobów obliczeniowych platformy Azure. W tym artykule opisano Schemat używany do konfiguracji rozszerzenia diagnostyki na maszynach wirtualnych z systemem Windows i innych zasobów obliczeniowych.

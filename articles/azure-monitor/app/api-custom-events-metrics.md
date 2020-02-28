@@ -1,20 +1,16 @@
 ---
 title: Application Insights API dla niestandardowych zdarzeń i metryk | Microsoft Docs
 description: Wstaw kilka wierszy kodu z urządzenia lub aplikacji klasycznej, strony sieci Web lub usługi, aby śledzić użycie i diagnozować problemy.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: 2136ab9a6d0cef7ad5650c8414f9a17b78498abc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74736966013581296483d1444f4ab2b8a35bbd98
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432664"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666500"
 ---
-# <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
+# <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API dla niestandardowych zdarzeń i metryk
 
 Wstaw kilka wierszy kodu w aplikacji, aby dowiedzieć się, co użytkownicy robią z nim lub aby pomóc zdiagnozować problemy. Możesz wysyłać dane telemetryczne z aplikacji urządzenia i pulpitu, klientów sieci Web i serwerów sieci Web. Za pomocą interfejsu API telemetrii [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Core można wysyłać niestandardowe zdarzenia i metryki oraz własne wersje telemetrii standardowej. Ten interfejs API jest tym samym interfejsem API, który jest używany przez moduły zbierające dane standardowe Application Insights.
 
@@ -522,7 +518,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Większość ważnych informacji stosu jest już wyodrębnionych do oddzielnych zmiennych, ale można ściągnąć strukturę `details`, aby uzyskać więcej. Ponieważ ta struktura jest dynamiczna, należy rzutować wynik na oczekiwany typ. Przykład:
+Większość ważnych informacji stosu jest już wyodrębnionych do oddzielnych zmiennych, ale można ściągnąć strukturę `details`, aby uzyskać więcej. Ponieważ ta struktura jest dynamiczna, należy rzutować wynik na oczekiwany typ. Na przykład:
 
 ```kusto
 exceptions
@@ -585,7 +581,7 @@ Można wyszukiwać zawartość wiadomości, ale (w przeciwieństwie do wartości
 Limit rozmiaru `message` jest znacznie wyższy niż limit właściwości.
 Zaletą TrackTrace jest możliwość umieszczania stosunkowo długich danych w komunikacie. Na przykład możesz kodować dane POST w tym miejscu.  
 
-Ponadto do wiadomości można dodać poziom ważności. Podobnie jak w przypadku innych telemetrii, można dodać wartości właściwości, aby ułatwić filtrowanie lub wyszukiwanie różnych zestawów śladów. Przykład:
+Ponadto do wiadomości można dodać poziom ważności. Podobnie jak w przypadku innych telemetrii, można dodać wartości właściwości, aby ułatwić filtrowanie lub wyszukiwanie różnych zestawów śladów. Na przykład:
 
 *C#*
 
@@ -733,7 +729,7 @@ Funkcja jest asynchroniczna dla [kanału telemetrii serwera](https://www.nuget.o
 
 Najlepiej używać metody Flush () w działaniu zamykania aplikacji.
 
-## <a name="authenticated-users"></a>Uwierzytelnionych użytkowników
+## <a name="authenticated-users"></a>Uwierzytelnieni użytkownicy
 
 W aplikacji sieci Web użytkownicy są (domyślnie) identyfikowane przez pliki cookie. Użytkownik może być liczony więcej niż raz, jeśli uzyskuje dostęp do aplikacji z innej maszyny lub przeglądarki lub usunie pliki cookie.
 
@@ -1148,7 +1144,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient ma Właściwość kontekstu, która zawiera wartości, które są wysyłane wraz ze wszystkimi danymi telemetrii. Są one zazwyczaj ustawiane przez standardowe moduły telemetrii, ale można je również ustawić samodzielnie. Przykład:
+TelemetryClient ma Właściwość kontekstu, która zawiera wartości, które są wysyłane wraz ze wszystkimi danymi telemetrii. Są one zazwyczaj ustawiane przez standardowe moduły telemetrii, ale można je również ustawić samodzielnie. Na przykład:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
@@ -1176,7 +1172,7 @@ Aby uniknąć osiągnięcia limitu szybkości danych, należy użyć [próbkowan
 
 Aby określić, jak długo są przechowywane dane, zobacz [przechowywanie i prywatność danych](../../azure-monitor/app/data-retention-privacy.md).
 
-## <a name="reference-docs"></a>Dokumentacja
+## <a name="reference-docs"></a>Dokumentacja dokumentacji
 
 * [Odwołanie ASP.NET](https://docs.microsoft.com/dotnet/api/overview/azure/insights?view=azure-dotnet)
 * [Dokumentacja języka Java](https://docs.microsoft.com/java/api/overview/azure/appinsights?view=azure-java-stable/)
@@ -1193,7 +1189,7 @@ Aby określić, jak długo są przechowywane dane, zobacz [przechowywanie i pryw
 * [Zestaw SDK dla języka JavaScript](https://github.com/Microsoft/ApplicationInsights-JS)
 
 
-## <a name="questions"></a>Pytania
+## <a name="questions"></a>Masz
 
 * *Jakie wyjątki mogą Track_ () zgłaszanie wywołań?*
 

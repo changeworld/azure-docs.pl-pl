@@ -1,18 +1,17 @@
 ---
 title: Dzienniki usług IIS w Azure Monitor | Microsoft Docs
 description: Internet Information Services (IIS) przechowuje aktywność użytkownika w plikach dziennika, które mogą być zbierane przez Azure Monitor.  W tym artykule opisano sposób konfigurowania kolekcji dzienników usług IIS i szczegółów dotyczących rekordów tworzonych w Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: a865f43585ccbb31569e2ca0987aae62a89a9281
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932484"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670580"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Zbieranie dzienników usług IIS w Azure Monitor
 Internet Information Services (IIS) przechowuje aktywność użytkownika w plikach dziennika, które mogą być zbierane przez Azure Monitor i przechowywane jako [dane dziennika](data-platform.md).
@@ -51,12 +50,12 @@ Rekordy dziennika usług IIS mają typ **W3CIISLog** i mają właściwości w po
 | scStatus |Kod stanu HTTP. |
 | scSubStatus |Kod błędu podstanu. |
 | scWin32Status |Kod stanu systemu Windows. |
-| kabl |Adres IP serwera sieci Web. |
+| sIP |Adres IP serwera sieci Web. |
 | SourceSystem |Programu Operations Manager |
 | sPort |Port na serwerze, z którym jest połączony klient. |
 | sSiteName |Nazwa witryny usług IIS. |
 | TimeGenerated |Data i godzina zarejestrowania wpisu. |
-| timeTaken |Długość czasu przetwarzania żądania w milisekundach. |
+| TimeTaken |Długość czasu przetwarzania żądania w milisekundach. |
 
 ## <a name="log-queries-with-iis-logs"></a>Rejestruj zapytania z dziennikami usług IIS
 W poniższej tabeli przedstawiono różne przykłady zapytań dzienników, które pobierają rekordy dziennika usług IIS.

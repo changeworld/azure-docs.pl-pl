@@ -3,23 +3,22 @@ title: Wyświetlanie zdarzeń dziennika aktywności platformy Azure w Azure Moni
 description: Wyświetl dziennik aktywności platformy Azure w Azure Monitor i Pobierz go za pomocą programu PowerShell, interfejsu wiersza polecenia i API REST.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 46d26aa5dccd32438b2028e21eaa94f7993944d1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749525"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668829"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Wyświetlanie i pobieranie zdarzeń dziennika aktywności platformy Azure
 
 [Dziennik aktywności platformy Azure](platform-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły na platformie Azure. Ten artykuł zawiera szczegółowe informacje dotyczące różnych metod wyświetlania i pobierania zdarzeń dziennika aktywności.
 
-## <a name="azure-portal"></a>Portal Azure
+## <a name="azure-portal"></a>Portalu Azure
 Wyświetl dziennik aktywności dla wszystkich zasobów z menu **Monitoruj** w Azure Portal. Wyświetl dziennik aktywności dla określonego zasobu z poziomu opcji **Dziennik aktywności** w menu tego zasobu.
 
 ![Wyświetl dziennik aktywności](./media/activity-logs-overview/view-activity-log.png)
@@ -38,17 +37,17 @@ Zdarzenia dziennika aktywności można filtrować według następujących pól:
 * **Otwórz wyszukiwanie**: Otwórz pole wyszukiwania tekstu, które wyszukuje ten ciąg we wszystkich polach wszystkich zdarzeń.
 
 ## <a name="categories-in-the-activity-log"></a>Kategorie w dzienniku aktywności
-Każde zdarzenie w dzienniku aktywności ma określoną kategorię, która została opisana w poniższej tabeli. Aby uzyskać szczegółowe informacje o wypełniana z tych kategorii, zobacz [schemat zdarzeń dziennika aktywności platformy Azure](activity-log-schema.md). 
+Każde zdarzenie w dzienniku aktywności ma określoną kategorię, która została opisana w poniższej tabeli. Aby uzyskać szczegółowe informacje dotyczące schematu tych kategorii, zobacz [schemat zdarzeń dziennika aktywności platformy Azure](activity-log-schema.md). 
 
 | Kategoria | Opis |
 |:---|:---|
 | Administracyjne | Zawiera rekord wszystkich operacji tworzenia, aktualizowania, usuwania i akcji wykonywanych za pomocą Menedżer zasobów. Przykłady zdarzeń administracyjnych obejmują _Utwórz maszynę wirtualną_ i _Usuń sieciową grupę zabezpieczeń_.<br><br>Każda Akcja podejmowana przez użytkownika lub aplikację przy użyciu Menedżer zasobów jest modelowana jako operacja dla określonego typu zasobu. Jeśli typem operacji jest _zapis_, _usuwanie_lub _Akcja_, rekordy zarówno rozpoczęcia, jak i sukcesu lub niepowodzenia tej operacji są rejestrowane w kategorii administracyjnej. Zdarzenia administracyjne zawierają również wszelkie zmiany w ramach kontroli dostępu opartej na rolach w ramach subskrypcji. |
 | Service Health | Zawiera rekord wszystkich zdarzeń związanych z kondycją usług, które wystąpiły na platformie Azure. Przykładem zdarzenia Service Health _SQL Azure w regionie Wschodnie stany USA występuje przestój_. <br><br>Service Health zdarzenia są dostępne w sześciu odmianach: _wymagane działanie_, _pomocne odzyskiwanie_, _incydent_, _konserwacja_, _informacje_lub _zabezpieczenia_. Te zdarzenia są tworzone tylko wtedy, gdy w subskrypcji znajduje się zasób, na który wpłynie zdarzenie.
 | Kondycja zasobów | Zawiera rekord wszystkich zdarzeń związanych z kondycją zasobów, które wystąpiły w Twoich zasobach platformy Azure. Przykładem zdarzenia Resource Health jest _stan kondycji maszyny wirtualnej zmieniony na niedostępny_.<br><br>Zdarzenia Resource Health mogą reprezentować jeden z czterech stanów kondycji: _dostępne_, _niedostępne_, _obniżone_i _nieznane_. Ponadto zdarzenia Resource Health mogą być kategoryzowane jako _zainicjowane przez platformę_ lub _zainicjowane przez użytkownika_. |
-| Alert | Zawiera rekord aktywacji dla alertów platformy Azure. Przykładem zdarzenia alertu jest _użycie procesora CPU w systemie 80 myVM w ciągu ostatnich 5 minut_.|
+| Alerty | Zawiera rekord aktywacji dla alertów platformy Azure. Przykładem zdarzenia alertu jest _użycie procesora CPU w systemie 80 myVM w ciągu ostatnich 5 minut_.|
 | Automatyczne skalowanie | Zawiera rekord wszystkich zdarzeń związanych z działaniem aparatu skalowania automatycznego na podstawie wszelkich ustawień automatycznego skalowania zdefiniowanych w ramach subskrypcji. Przykładem zdarzenia automatycznego skalowania jest _Akcja skalowania automatycznego w górę_. |
 | Zalecenie | Zawiera zdarzenia rekomendacji z Azure Advisor. |
-| Zabezpieczenia | Zawiera rekord wszystkich alertów wygenerowanych przez Azure Security Center. Przykład zdarzenia zabezpieczeń to _podejrzany plik o podwójnym rozszerzeniu_. |
+| Bezpieczeństwo | Zawiera rekord wszystkich alertów wygenerowanych przez Azure Security Center. Przykład zdarzenia zabezpieczeń to _podejrzany plik o podwójnym rozszerzeniu_. |
 | Zasady | Zawiera rekordy wszystkich operacji akcji wykonywanych przez Azure Policy. Przykłady zdarzeń zasad obejmują _inspekcję_ i _odmowę_. Wszystkie akcje podejmowane przez zasady są modelowane jako operacje na zasobach. |
 
 ## <a name="view-change-history"></a>Wyświetl historię zmian
@@ -68,7 +67,7 @@ Aby dowiedzieć się więcej na temat historii zmian, zobacz [pobieranie zmian z
 
 
 
-## <a name="powershell"></a>PowerShell
+## <a name="powershell"></a>Program PowerShell
 Użyj polecenia cmdlet [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) , aby pobrać dziennik aktywności z programu PowerShell. Poniżej przedstawiono kilka typowych przykładów.
 
 > [!NOTE]
@@ -112,7 +111,7 @@ Get-AzLog -MaxEvents 1000
 ```
 
 
-## <a name="cli"></a>Interfejs CLI
+## <a name="cli"></a>Interfejs wiersza polecenia
 Użyj polecenia [AZ monitor Activity-Log](cli-samples.md#view-activity-log-for-a-subscription) , aby pobrać dziennik aktywności z interfejsu CLI. Poniżej przedstawiono kilka typowych przykładów.
 
 
@@ -192,9 +191,9 @@ Kliknij kafelek **dzienniki aktywności platformy Azure** , aby otworzyć widok 
 
 | Część wizualizacji | Opis |
 | --- | --- |
-| Wpisy dziennika aktywności platformy Azure | Pokazuje wykres słupkowy najważniejszych rekordów wpisów dziennika aktywności platformy Azure dla wybranego zakresu dat i pokazuje listę głównych elementów wywołujących działania. Kliknij wykres słupkowy Aby uruchomić wyszukiwanie w dzienniku dla `AzureActivity`. Kliknij element wywołujący, aby uruchomić przeszukiwanie dziennika zwracające wszystkie wpisy dziennika aktywności dla tego elementu. |
+| Wpisy dziennika aktywności platformy Azure | Pokazuje wykres słupkowy najważniejszych rekordów wpisów dziennika aktywności platformy Azure dla wybranego zakresu dat i pokazuje listę głównych elementów wywołujących działania. Kliknij wykres słupkowy, aby uruchomić wyszukiwanie w dzienniku dla `AzureActivity`. Kliknij element wywołujący, aby uruchomić przeszukiwanie dziennika zwracające wszystkie wpisy dziennika aktywności dla tego elementu. |
 | Dzienniki aktywności według stanu | Pokazuje wykres pierścieniowy dla stanu dziennika aktywności platformy Azure dla wybranego zakresu dat oraz listę pierwszych dziesięciu rekordów stanu. Kliknij wykres, aby uruchomić zapytanie dziennika dla `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`. Kliknij element status, aby uruchomić przeszukiwanie dziennika zwracające wszystkie wpisy dziennika aktywności dla tego rekordu stanu. |
-| Dzienniki aktywności według zasobu | Pokazuje łączną liczbę zasobów z dziennikami aktywności i zawiera dziesięć najważniejszych zasobów z liczbami rekordów dla każdego zasobu. Kliknij obszar całkowitej, aby uruchomić wyszukiwanie w dzienniku dla `AzureActivity | summarize AggregatedValue = count() by Resource`, które wyświetla wszystkie zasoby platformy Azure dostępnych do rozwiązania. Kliknij zasób, aby uruchomić zapytanie dziennika zwracające wszystkie rekordy działań dla tego zasobu. |
+| Dzienniki aktywności według zasobu | Pokazuje łączną liczbę zasobów z dziennikami aktywności i zawiera dziesięć najważniejszych zasobów z liczbami rekordów dla każdego zasobu. Kliknij łączny obszar, aby uruchomić wyszukiwanie w dzienniku dla `AzureActivity | summarize AggregatedValue = count() by Resource`, w którym są wyświetlane wszystkie zasoby platformy Azure dostępne dla rozwiązania. Kliknij zasób, aby uruchomić zapytanie dziennika zwracające wszystkie rekordy działań dla tego zasobu. |
 | Dzienniki aktywności przez dostawcę zasobów | Pokazuje łączną liczbę dostawców zasobów, którzy generują dzienniki aktywności i wyświetlają dziesięć najważniejszych. Kliknij łączny obszar, aby uruchomić zapytanie dziennika dla `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`, w którym są wyświetlane wszyscy dostawcy zasobów platformy Azure. Kliknij dostawcę zasobów, aby uruchomić zapytanie dziennika zwracające wszystkie rekordy działań dla dostawcy. |
 
 

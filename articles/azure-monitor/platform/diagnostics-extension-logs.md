@@ -1,18 +1,17 @@
 ---
 title: Korzystanie z usługi BLOB Storage na potrzeby usług IIS i magazynu tabel dla zdarzeń w Azure Monitor | Microsoft Docs
 description: Azure Monitor może odczytać dzienniki usług platformy Azure, które zapisują dane diagnostyczne do magazynu tabel lub dzienników usług IIS zapisanych w usłudze BLOB Storage.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 7edf778dc2429cc1054d1550a513d7461f8e7928
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472559"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672399"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>Zbierz dane z rozszerzenia diagnostyki platformy Azure do dzienników Azure Monitor
 Rozszerzenie diagnostyki Azure to [Agent w Azure monitor](agents-overview.md) , który zbiera dane monitorowania z systemu operacyjnego gościa zasobów obliczeniowych platformy Azure, w tym maszyn wirtualnych. W tym artykule opisano sposób zbierania danych zbieranych przez rozszerzenie diagnostyki z usługi Azure Storage do dzienników Azure Monitor.

@@ -1,18 +1,16 @@
 ---
 title: Śledzenie zależności w usłudze Azure Application Insights przy użyciu języka Python OpenCensus | Microsoft Docs
 description: Monitoruj wywołania zależności dla aplikacji w języku Python za pośrednictwem języka Python OpenCensus.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 6217798f8175e7ecc1c1ec4068d7765444e4d2a2
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e400669fd96518adead74a81fc332767c5f9b23b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368294"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669934"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Śledzenie zależności przy użyciu języka Python OpenCensus
 

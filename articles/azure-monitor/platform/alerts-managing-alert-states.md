@@ -1,23 +1,23 @@
 ---
 title: Zarządzanie stanami alertów i grup inteligentnych
 description: Zarządzanie Stanami alertu i wystąpieniami grup inteligentnych
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
 author: anantr
-ms.author: robb
 ms.date: 09/24/2018
-ms.openlocfilehash: fd2a2a4b7d5033ecd35d02baa240bc7586e7a25d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a22d7b7b962b36f93ee804c64b3bc6b08ecceb0f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555665"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667520"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>Zarządzanie stanami alertów i grup inteligentnych
+
 Alerty w Azure Monitor mają teraz [stan alertu i stan monitora](https://aka.ms/azure-alerts-overview) , a podobnie grupy inteligentne mają [stan grupy inteligentnej](https://aka.ms/smart-groups). Zmiany stanu są teraz przechwytywane w historii skojarzonej z odpowiednim alertem lub grupą inteligentną. Ten artykuł przeprowadzi Cię przez proces zmiany stanu dla alertu i grupy inteligentnej.
 
 ## <a name="change-the-state-of-an-alert"></a>Zmiana stanu alertu
+
 1. Stan alertu można zmienić na następujące różne sposoby: 
     * Na stronie wszystkie alerty kliknij pole wyboru obok alertów, które chcesz zmienić, a następnie kliknij przycisk Zmień stan.   
     ![Monitorowanie](./media/alerts-managing-alert-states/state-all-alerts.jpg)

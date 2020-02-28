@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/25/2020
+ms.date: 02/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9d287d5bfc091fcbbff46095da5458fa08de73d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 5b9e7e165998e1e4c45379fb5a8ca22edc194efe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77624170"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661383"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariuszy obciążeń SAP
 
@@ -117,6 +117,10 @@ Aby uzyskać informacje na temat integracji usług platformy Azure z składnikam
 
 
 ## <a name="change-log"></a>Dziennik zmiany
+- 02/26/2020: Zmień [konfigurację magazynu maszyn wirtualnych platformy Azure na SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , aby wyjaśnić wybór systemu plików dla platformy Hana na platformie Azure
+- 02/25/2020: zmiana [architektury i scenariuszy wysokiej dostępności dla SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios) w celu uwzględnienia linku do ha dla SAP NetWeaver na maszynach wirtualnych platformy Azure w RHEL
+- 02/26/2020: zmiana [wysokiej dostępności dla oprogramowania SAP NW na maszynach wirtualnych platformy Azure w systemie SLES for SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse), [wysoka dostępność dla oprogramowania SAP NW na maszynach wirtualnych platformy Azure na platformie SLES z ANF dla aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), [maszyny wirtualne platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel) o wysokiej dostępności dla oprogramowania SAP NetWeaver na RHEL i [maszyn wirtualnych platformy Azure o wysokiej dostępności dla oprogramowania SAP NetWeaver w Azure NetApp Files RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
+- 02/26/2020: wydanie [wysokiej dostępności dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure w przewodniku dotyczącym WIELOSID RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid) w celu dodania linku do przewodnika po klastrze z obsługą wiele identyfikatorów SID
 - 02/25/2020: zmiana [architektury i scenariuszy wysokiej dostępności dla SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios) w celu dodania linków do NOWSZYCH artykułów ha
 - 02/25/2020: zmiana [wysokiej dostępności programu IBM DB2 LUW na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server z Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm) , aby wskazać dokument, który opisuje dostęp do publicznego punktu końcowego za pomocą standardowego modułu równoważenia obciążenia platformy Azure
 - 02/21/2020: Pełna wersja artykułu [SAP ASE Azure Virtual Machines wdrożenia systemu DBMS dla obciążenia SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)

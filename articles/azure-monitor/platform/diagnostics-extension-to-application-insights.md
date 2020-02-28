@@ -1,18 +1,17 @@
 ---
 title: Wyślij Diagnostyka Azure dane do Application Insights
 description: Zaktualizuj konfigurację publiczną Diagnostyka Azure, aby wysyłać dane do Application Insights.
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: b89e7d93113990e032f526d1f32e4e6acddffa75
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450579"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672331"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Wyślij usługę w chmurze, maszynę wirtualną lub Service Fabric dane diagnostyczne do Application Insights
 Cloud Services, Virtual Machines, Virtual Machine Scale Sets i Service Fabric wszystkie używają rozszerzenia Diagnostyka Azure do zbierania danych.  Diagnostyka Azure wysyła dane do tabel usługi Azure Storage.  Można jednak również potokować wszystkie lub podzbiór danych do innych lokalizacji przy użyciu rozszerzenia Diagnostyka Azure 1,5 lub nowszego.
@@ -70,7 +69,7 @@ Przykładowa konfiguracja ujścia dla Application Insights:
         - Informacje
         - Ostrzeżenie
         - Błąd
-        - Krytyczna
+        - Krytyczny
 
 Kanał działa jak filtr i umożliwia wybranie określonych poziomów dziennika do wysłania do docelowego ujścia. Można na przykład zebrać pełne dzienniki i wysłać je do magazynu, ale wysłać tylko błędy do ujścia.
 

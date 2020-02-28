@@ -1,18 +1,17 @@
 ---
 title: Przykłady zapytań w dzienniku Azure Monitor | Microsoft Docs
 description: Przykłady zapytań dzienników w Azure Monitor przy użyciu języka zapytań Kusto.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/01/2019
-ms.openlocfilehash: 8850aef8b5d45f236385551a1455e6fe7b540340
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 9bfadf55e4f68bb7188b27e4ef5bc03e3955f375
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614439"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662052"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Przykłady zapytań w dzienniku Azure Monitor
 Ten artykuł zawiera różne przykłady [zapytań](log-query-overview.md) używających [języka zapytań Kusto](/azure/kusto/query/) do pobierania różnych typów danych dziennika z Azure monitor. Różne metody służą do konsolidowania i analizowania danych, dzięki czemu można używać tych przykładów do identyfikowania różnych strategii, których można użyć do własnych wymagań.  
@@ -22,7 +21,7 @@ Aby uzyskać szczegółowe informacje o różnych słowach kluczowych używanych
 ## <a name="events"></a>Zdarzenia
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>Wyszukaj zdarzenia na poziomie aplikacji opisane jako "kryptograficzne"
-Ten przykład przeszukuje tabelę **Events** pod kątem rekordów, w których **EventLog** jest _Application_ i **RenderedDescription** zawiera dane _kryptograficzne_. Zawiera rekordy z ostatnich 24 godzin.
+Ten przykład przeszukuje tabelę **Events** pod kątem rekordów, w których **EventLog** jest _Application_ i **RenderedDescription** zawiera dane _kryptograficzne_. Wyświetlane są rekordy z ostatnich 24 godzin.
 
 ```Kusto
 Event
@@ -38,7 +37,7 @@ Wyszukaj w tabelach **zdarzenia** i **SecurityEvents** dla rekordów, które wym
 search in (Event, SecurityEvent) "unmarshaling"
 ```
 
-## <a name="heartbeat"></a>Sygnały
+## <a name="heartbeat"></a>Puls
 
 ### <a name="chart-a-week-over-week-view-of-the-number-of-computers-sending-data"></a>Wykres przedstawiający tygodniowy widok liczby komputerów wysyłających dane
 
@@ -242,7 +241,7 @@ SecurityEvent
 ```
 
 ### <a name="count-security-events-related-to-permissions"></a>Liczba zdarzeń zabezpieczeń związanych z uprawnieniami
-W tym przykładzie przedstawiono liczbę rekordów **securityEvent** , w których kolumna **Activity** zawiera _uprawnienia_całodzienne. Zapytanie dotyczy rekordów utworzonych w ciągu ostatnich 30 minut.
+W tym przykładzie przedstawiono liczbę rekordów **securityEvent** , w których kolumna **Activity** zawiera _uprawnienia_całodzienne. Kwerenda dotyczy rekordów utworzonych w ciągu ostatnich 30 minut.
 
 ```Kusto
 SecurityEvent

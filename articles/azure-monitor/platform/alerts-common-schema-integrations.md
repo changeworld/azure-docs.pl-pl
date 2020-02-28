@@ -1,24 +1,21 @@
 ---
 title: Jak zintegrować wspólny schemat alertów z Logic Apps
 description: Dowiedz się, jak utworzyć aplikację logiki, która wykorzystuje wspólny schemat alertów do obsługi wszystkich alertów.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: ananthradhakrishnan
-ms.author: robb
+ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 50a6067d271ad824f17df1ece36c3dd919c7b55b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555650"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668234"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Jak zintegrować wspólny schemat alertów z Logic Apps
 
 W tym artykule pokazano, jak utworzyć aplikację logiki, która wykorzystuje wspólny schemat alertów do obsługi wszystkich alertów.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 [Typowy schemat alertów](https://aka.ms/commonAlertSchemaDocs) zawiera znormalizowany i rozszerzalny schemat JSON dla wszystkich różnych typów alertów. Typowy schemat alertów jest najbardziej przydatny, gdy jest używany programowo — za pomocą elementów webhook, Runbook i Logic Apps. W tym artykule pokazano, jak można utworzyć pojedynczą aplikację logiki do obsługi wszystkich alertów. Te same zasady można stosować do innych metod programistycznych. Aplikacja logiki opisana w tym artykule tworzy dobrze zdefiniowane zmienne dla [pól "Essential"](alerts-common-schema-definitions.md#essentials), a także opisuje, jak można obsłużyć logikę specyficzną dla [typu alertu](alerts-common-schema-definitions.md#alert-context) .
 

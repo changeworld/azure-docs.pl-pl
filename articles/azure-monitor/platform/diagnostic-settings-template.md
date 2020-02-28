@@ -3,17 +3,16 @@ title: Tworzenie ustawień diagnostycznych na platformie Azure przy użyciu szab
 description: Tworzenie ustawień diagnostycznych przy użyciu szablonu Menedżer zasobów do przesyłania dalej dzienników platformy Azure do Azure Monitor dzienników, usługi Azure Storage lub platformy Azure Event Hubs.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 2a171ae89e8314684eddf29f78b9b09bc52f9c9b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977554"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672433"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Tworzenie ustawień diagnostycznych na platformie Azure przy użyciu szablonu Menedżer zasobów
 [Ustawienia diagnostyczne](diagnostic-settings.md) w Azure monitor określają miejsce wysyłania [dzienników platformy](platform-logs-overview.md) zbieranych przez zasoby platformy Azure i platformę Azure, od których są one zależne. Ten artykuł zawiera szczegółowe informacje i przykłady dotyczące używania [szablonu Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) do tworzenia i konfigurowania ustawień diagnostycznych w celu zbierania dzienników platformy do różnych miejsc docelowych.

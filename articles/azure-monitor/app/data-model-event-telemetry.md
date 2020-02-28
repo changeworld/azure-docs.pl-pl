@@ -1,19 +1,15 @@
 ---
 title: Azure telemetria usługi Application Insights Data Model — Telemetria zdarzeń | Microsoft Docs
 description: Application Insights model danych telemetrii zdarzeń
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 620983fb2174fe7f32a61503b0b87e8e7ce0c330
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: bd8b2581f7642f6825aaf0d1b51c8e94d4333d33
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678146"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671887"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>Telemetrię zdarzeń: Application Insights model danych
 
@@ -21,7 +17,7 @@ Można utworzyć elementy telemetrii zdarzeń (w [Application Insights](../../az
 
 Semantycznie zdarzenia mogą lub nie mogą być skorelowane z żądaniami. Jednak jeśli są używane prawidłowo, dane telemetryczne zdarzeń są ważniejsze niż żądania lub ślady. Zdarzenia reprezentują dane telemetryczne i powinny być podmiotem do oddzielenia, mniej agresywnych [próbek](../../azure-monitor/app/api-filtering-sampling.md).
 
-## <a name="name"></a>Nazwa
+## <a name="name"></a>Name (Nazwa)
 
 Nazwa zdarzenia. Aby umożliwić prawidłowe grupowanie i przydatne metryki, Ogranicz aplikację, tak aby generowała małą liczbę oddzielnych nazw zdarzeń. Na przykład nie należy używać oddzielnej nazwy dla każdego wygenerowanego wystąpienia zdarzenia.
 

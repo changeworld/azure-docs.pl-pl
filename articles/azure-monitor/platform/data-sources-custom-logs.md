@@ -1,18 +1,17 @@
 ---
 title: Zbieranie niestandardowych dzienników w Azure Monitor | Microsoft Docs
 description: Azure Monitor może zbierać zdarzenia z plików tekstowych zarówno na komputerach z systemem Windows, jak i Linux.  W tym artykule opisano sposób definiowania nowego dziennika niestandardowego i szczegółów rekordów tworzonych w Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 6d85ada428ab448bd8e96545999ca038e532a32b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450660"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670597"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Niestandardowe dzienniki w Azure Monitor
 
@@ -78,9 +77,9 @@ Poniższa tabela zawiera przykłady prawidłowych wzorców do określenia różn
 | Opis | Ścieżka |
 |:--- |:--- |
 | Wszystkie pliki w *C:\LOGS* z rozszerzeniem txt w agencie systemu Windows |C:\Logs\\\*. txt |
-| Wszystkie pliki w *C:\LOGS* o nazwie rozpoczynającej się od nazwy log i. txt w agencie systemu Windows |C:\Logs\log\*.txt |
+| Wszystkie pliki w *C:\LOGS* o nazwie rozpoczynającej się od nazwy log i. txt w agencie systemu Windows |C:\Logs\log\*. txt |
 | Wszystkie pliki w */var/log/Audit* z rozszerzeniem txt w agencie systemu Linux |/var/log/Audit/*. txt |
-| Wszystkie pliki w */var/log/Audit* o nazwie rozpoczynającej się od pliku log i rozszerzenia. txt w agencie systemu Linux |/var/log/audit/log\*.txt |
+| Wszystkie pliki w */var/log/Audit* o nazwie rozpoczynającej się od pliku log i rozszerzenia. txt w agencie systemu Linux |/var/log/Audit/log\*. txt |
 
 1. Wybierz pozycję Windows lub Linux, aby określić format ścieżki, który chcesz dodać.
 2. Wpisz ścieżkę i kliknij przycisk **+** .
@@ -123,7 +122,7 @@ Niestandardowe rekordy dziennika mają typ o podanej nazwie dziennika i właści
 | TimeGenerated |Data i godzina zebrania rekordu przez Azure Monitor.  Jeśli w dzienniku jest wykorzystywany ogranicznik oparty na czasie, to jest to czas uzyskany od wpisu. |
 | SourceSystem |Typ agenta, z którego zebrano rekord. <br> OpsManager — Agent systemu Windows, bezpośrednie połączenie lub System Center Operations Manager <br> Linux — Wszyscy agenci systemu Linux |
 | RawData |Pełny tekst zebranego wpisu. Najprawdopodobniej chcesz [przeanalizować te dane do poszczególnych właściwości](../log-query/parse-text.md). |
-| ManagementGroupName |Nazwa grupy zarządzania dla agentów programu System Center Operations Manager.  Dla innych agentów jest to AOI -\<identyfikator obszaru roboczego\> |
+| ManagementGroupName |Nazwa grupy zarządzania dla agentów programu System Center Operations Manager.  W przypadku innych agentów jest to AOI\<identyfikator obszaru roboczego\> |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Przykładowe wskazówki dotyczące dodawania dziennika niestandardowego
@@ -170,4 +169,4 @@ W przypadkach, gdy dane nie mogą być zbierane z dziennikami niestandardowymi, 
 
 ## <a name="next-steps"></a>Następne kroki
 * Zobacz [Analizowanie danych tekstowych w Azure monitor](../log-query/parse-text.md) , aby poznać metody analizowania każdego zaimportowanego wpisu dziennika do wielu właściwości.
-* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.
+* Informacje na temat [zapytań dzienników](../log-query/log-query-overview.md) w celu analizowania danych zebranych ze źródeł danych i rozwiązań.

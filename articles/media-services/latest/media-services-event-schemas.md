@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 02/25/2020
 ms.author: juliako
-ms.openlocfilehash: b1c094689c7669f03d5355be7a77b1836c90974c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d4a206bbddedfe9f23a943df27c6ac4b5fe17e8a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750858"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665753"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Schematy Azure Event Grid dla zdarzeń Media Services
 
@@ -136,8 +136,8 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| previousState | string | Stan zadania przed zdarzeniem. |
-| state | string | Nowy stan zadania, które jest zgłaszane w tym zdarzeniu. Na przykład "zaplanowane: zadanie jest gotowe do rozpoczęcia" lub "zakończone: zadanie zostało zakończone".|
+| previousState | ciąg | Stan zadania przed zdarzeniem. |
+| state | ciąg | Nowy stan zadania, które jest zgłaszane w tym zdarzeniu. Na przykład "zaplanowane: zadanie jest gotowe do rozpoczęcia" lub "zakończone: zadanie zostało zakończone".|
 
 Gdzie stan zadania może być jedną z wartości: *kolejkowane*, *zaplanowane*, *przetwarzane*, *zakończone*, *błąd*, *anulowano*, *Anulowanie*
 
@@ -322,24 +322,13 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| Obecny streamid | string | Identyfikator strumienia lub połączenia. Koder lub klient jest odpowiedzialny za dodanie tego identyfikatora w adresie URL pozyskiwania. |  
-| ingestUrl | string | Adres URL pozyskiwania podany przez wydarzenie na żywo. |  
-| encoderIp | string | Adres IP kodera. |
-| encoderPort | string | Port kodera, z którego pochodzi ten strumień. |
-| resultCode | string | Przyczyna odrzucenia połączenia. Kody wyników są wymienione w poniższej tabeli. |
+| Obecny streamid | ciąg | Identyfikator strumienia lub połączenia. Koder lub klient jest odpowiedzialny za dodanie tego identyfikatora w adresie URL pozyskiwania. |  
+| ingestUrl | ciąg | Adres URL pozyskiwania podany przez wydarzenie na żywo. |  
+| encoderIp | ciąg | Adres IP kodera. |
+| encoderPort | ciąg | Port kodera, z którego pochodzi ten strumień. |
+| resultCode | ciąg | Przyczyna odrzucenia połączenia. Kody wyników są wymienione w poniższej tabeli. |
 
-Kody wyników są następujące:
-
-| Kod wyniku | Opis |
-| ----------- | ----------- |
-| MPE_RTMP_APPID_AUTH_FAILURE | Nieprawidłowy adres URL pozyskiwania |
-| MPE_INGEST_ENCODER_CONNECTION_DENIED | Nie istnieje adres IP kodera w skonfigurowanej liście dozwolonych adresów IP |
-| MPE_INGEST_RTMP_SETDATAFRAME_NOT_RECEIVED | Koder nie wysłał metadanych dotyczących strumienia. |
-| MPE_INGEST_CODEC_NOT_SUPPORTED | Określony koder-dekoder nie jest obsługiwany. |
-| MPE_INGEST_DESCRIPTION_INFO_NOT_RECEIVED | Odebrano fragment przed odebraniem i nagłówkiem dla tego strumienia. |
-| MPE_INGEST_MEDIA_QUALITIES_EXCEEDED | Określona liczba klas przekracza dozwolony maksymalny limit. |
-| MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED | Zagregowana szybkość transmisji bitów przekracza maksymalny dozwolony limit. |
-| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Sygnatura czasowa dla FLVTag wideo lub audio jest nieprawidłowa z kodera RTMP. |
+Kody wyników błędów można znaleźć w [kodach błędów zdarzeń na żywo](live-event-error-codes.md).
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -369,10 +358,10 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| Obecny streamid | string | Identyfikator strumienia lub połączenia. Koder lub klient jest odpowiedzialny za podanie tego identyfikatora w adresie URL pozyskiwania. |
-| ingestUrl | string | Adres URL pozyskiwania podany przez wydarzenie na żywo. |
-| encoderIp | string | Adres IP kodera. |
-| encoderPort | string | Port kodera, z którego pochodzi ten strumień. |
+| Obecny streamid | ciąg | Identyfikator strumienia lub połączenia. Koder lub klient jest odpowiedzialny za podanie tego identyfikatora w adresie URL pozyskiwania. |
+| ingestUrl | ciąg | Adres URL pozyskiwania podany przez wydarzenie na żywo. |
+| encoderIp | ciąg | Adres IP kodera. |
+| encoderPort | ciąg | Port kodera, z którego pochodzi ten strumień. |
 
 ### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
@@ -403,20 +392,13 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| Obecny streamid | string | Identyfikator strumienia lub połączenia. Koder lub klient jest odpowiedzialny za dodanie tego identyfikatora w adresie URL pozyskiwania. |  
-| ingestUrl | string | Adres URL pozyskiwania podany przez wydarzenie na żywo. |  
-| encoderIp | string | Adres IP kodera. |
-| encoderPort | string | Port kodera, z którego pochodzi ten strumień. |
-| resultCode | string | Przyczyna odłączenia kodera. Może to być bezpieczne rozłączenie lub błąd. Kody wyników są wymienione w poniższej tabeli. |
+| Obecny streamid | ciąg | Identyfikator strumienia lub połączenia. Koder lub klient jest odpowiedzialny za dodanie tego identyfikatora w adresie URL pozyskiwania. |  
+| ingestUrl | ciąg | Adres URL pozyskiwania podany przez wydarzenie na żywo. |  
+| encoderIp | ciąg | Adres IP kodera. |
+| encoderPort | ciąg | Port kodera, z którego pochodzi ten strumień. |
+| resultCode | ciąg | Przyczyna odłączenia kodera. Może to być bezpieczne rozłączenie lub błąd. Kody wyników są wymienione w poniższej tabeli. |
 
-Kody wyników błędów są następujące:
-
-| Kod wyniku | Opis |
-| ----------- | ----------- |
-| MPE_RTMP_SESSION_IDLE_TIMEOUT | Przekroczono limit czasu bezczynności sesji RTMP po upływie limitu czasu. |
-| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Sygnatura czasowa dla FLVTag wideo lub audio jest nieprawidłowa z kodera RTMP. |
-| MPE_CAPACITY_LIMIT_REACHED | Koder wysyła zbyt szybkie dane. |
-| Nieznane kody błędów | Te kody błędów mogą należeć do zakresu od błędu pamięci do zduplikowanych wpisów w mapie skrótów. |
+Kody wyników błędów można znaleźć w [kodach błędów zdarzeń na żywo](live-event-error-codes.md).
 
 Kody wyniku bezpiecznego rozłączenia to:
 
@@ -460,12 +442,12 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| ścieżka śledzenia | string | Typ ścieżki (audio/wideo). |
-| ścieżka śledzenia | string | Nazwa ścieżki. |
+| ścieżka śledzenia | ciąg | Typ ścieżki (audio/wideo). |
+| ścieżka śledzenia | ciąg | Nazwa ścieżki. |
 | bitrate | liczba całkowita | Szybkość transmisji bitów ścieżki. |
-| sygnatura czasowa | string | Sygnatura czasowa fragmentu danych została porzucona. |
-| timescale | string | Skala czasu dla sygnatury czasowej. |
-| resultCode | string | Przyczyna usunięcia fragmentu danych. **FragmentDrop_OverlapTimestamp** lub **FragmentDrop_NonIncreasingTimestamp**. |
+| sygnatura czasowa | ciąg | Sygnatura czasowa fragmentu danych została porzucona. |
+| timescale | ciąg | Skala czasu dla sygnatury czasowej. |
+| resultCode | ciąg | Przyczyna usunięcia fragmentu danych. **FragmentDrop_OverlapTimestamp** lub **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
@@ -500,14 +482,14 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| ścieżka śledzenia | string | Typ ścieżki (audio/wideo). |
-| ścieżka śledzenia | string | Nazwa ścieżki (dostarczonej przez koder lub, w przypadku protokołu RTMP, serwer generuje w formacie *TrackType_Bitrate* ). |
+| ścieżka śledzenia | ciąg | Typ ścieżki (audio/wideo). |
+| ścieżka śledzenia | ciąg | Nazwa ścieżki (dostarczonej przez koder lub, w przypadku protokołu RTMP, serwer generuje w formacie *TrackType_Bitrate* ). |
 | bitrate | liczba całkowita | Szybkość transmisji bitów ścieżki. |
-| ingestUrl | string | Adres URL pozyskiwania podany przez wydarzenie na żywo. |
-| encoderIp | string  | Adres IP kodera. |
-| encoderPort | string | Port kodera, z którego pochodzi ten strumień. |
-| sygnatura czasowa | string | Odebrano pierwszą sygnaturę czasową fragmentu danych. |
-| timescale | string | Skala czasu, w której jest reprezentowana sygnatura czasowa. |
+| ingestUrl | ciąg | Adres URL pozyskiwania podany przez wydarzenie na żywo. |
+| encoderIp | ciąg  | Adres IP kodera. |
+| encoderPort | ciąg | Port kodera, z którego pochodzi ten strumień. |
+| sygnatura czasowa | ciąg | Odebrano pierwszą sygnaturę czasową fragmentu danych. |
+| timescale | ciąg | Skala czasu, w której jest reprezentowana sygnatura czasowa. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -539,12 +521,12 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| minLastTimestamp | string | Minimum ostatnich sygnatur czasowych między wszystkimi ścieżkami (audio lub wideo). |
-| typeOfTrackWithMinLastTimestamp | string | Typ ścieżki (audio lub wideo) z minimalną ostatnią sygnaturą czasową. |
-| maxLastTimestamp | string | Maksymalna liczba sygnatur czasowych między wszystkimi ścieżkami (audio lub wideo). |
-| typeOfTrackWithMaxLastTimestamp | string | Typ ścieżki (audio lub wideo) z maksymalną ostatnią sygnaturą czasową. |
-| timescaleOfMinLastTimestamp| string | Pobiera skalę czasu, w której reprezentowana jest wartość "MinLastTimestamp".|
-| timescaleOfMaxLastTimestamp| string | Pobiera skalę czasu, w której reprezentowana jest wartość "MaxLastTimestamp".|
+| minLastTimestamp | ciąg | Minimum ostatnich sygnatur czasowych między wszystkimi ścieżkami (audio lub wideo). |
+| typeOfTrackWithMinLastTimestamp | ciąg | Typ ścieżki (audio lub wideo) z minimalną ostatnią sygnaturą czasową. |
+| maxLastTimestamp | ciąg | Maksymalna liczba sygnatur czasowych między wszystkimi ścieżkami (audio lub wideo). |
+| typeOfTrackWithMaxLastTimestamp | ciąg | Typ ścieżki (audio lub wideo) z maksymalną ostatnią sygnaturą czasową. |
+| timescaleOfMinLastTimestamp| ciąg | Pobiera skalę czasu, w której reprezentowana jest wartość "MinLastTimestamp".|
+| timescaleOfMaxLastTimestamp| ciąg | Pobiera skalę czasu, w której reprezentowana jest wartość "MaxLastTimestamp".|
 
 ### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
@@ -575,11 +557,11 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| firstTimestamp | string | Odebrano sygnaturę czasową dla jednego z poziomów śledzenia/jakości typu wideo. |
-| firstDuration | string | Czas trwania fragmentu danych z pierwszym znacznikiem czasu. |
-| secondTimestamp | string  | Odebrano sygnaturę czasową dla innego poziomu śledzenia/jakości filmu wideo typu. |
-| secondDuration | string | Czas trwania fragmentu danych z drugim znacznikiem czasu. |
-| timescale | string | Skala czasu dla sygnatur czasowych i czasu trwania.|
+| firstTimestamp | ciąg | Odebrano sygnaturę czasową dla jednego z poziomów śledzenia/jakości typu wideo. |
+| firstDuration | ciąg | Czas trwania fragmentu danych z pierwszym znacznikiem czasu. |
+| secondTimestamp | ciąg  | Odebrano sygnaturę czasową dla innego poziomu śledzenia/jakości filmu wideo typu. |
+| secondDuration | ciąg | Czas trwania fragmentu danych z drugim znacznikiem czasu. |
+| timescale | ciąg | Skala czasu dla sygnatur czasowych i czasu trwania.|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -617,18 +599,18 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| ścieżka śledzenia | string | Typ ścieżki (audio/wideo). |
-| ścieżka śledzenia | string | Nazwa ścieżki (dostarczonej przez koder lub, w przypadku protokołu RTMP, serwer generuje w formacie *TrackType_Bitrate* ). |
+| ścieżka śledzenia | ciąg | Typ ścieżki (audio/wideo). |
+| ścieżka śledzenia | ciąg | Nazwa ścieżki (dostarczonej przez koder lub, w przypadku protokołu RTMP, serwer generuje w formacie *TrackType_Bitrate* ). |
 | bitrate | liczba całkowita | Szybkość transmisji bitów ścieżki. |
 | incomingBitrate | liczba całkowita | Obliczona szybkość transmisji bitów na podstawie fragmentów danych pochodzących z kodera. |
-| lastTimestamp | string | Odebrano ostatnią sygnaturę czasową dla ścieżki w ciągu ostatnich 20 sekund. |
-| timescale | string | Skala czasu, w której są wyrażane sygnatury czasowe. |
+| lastTimestamp | ciąg | Odebrano ostatnią sygnaturę czasową dla ścieżki w ciągu ostatnich 20 sekund. |
+| timescale | ciąg | Skala czasu, w której są wyrażane sygnatury czasowe. |
 | overlapCount | liczba całkowita | Liczba fragmentów danych ma nakładające się sygnatury czasowe w ciągu ostatnich 20 sekund. |
 | discontinuityCount | liczba całkowita | Liczba nietrzymań zaobserwowanych w ciągu ostatnich 20 sekund. |
 | nonIncreasingCount | liczba całkowita | Liczba fragmentów danych z sygnaturami czasowymi w przeszłości została odebrana w ciągu ostatnich 20 sekund. |
-| unexpectedBitrate | bool | Jeśli oczekiwane i rzeczywiste szybkości transmisji bitów różnią się o więcej niż dozwolony limit w ciągu ostatnich 20 sekund. Prawda, jeśli i tylko wtedy, gdy, incomingBitrate > = 2 * szybkość transmisji bitów lub incomingBitrate < = szybkość transmisji bitów/2 lub IncomingBitrate = 0. |
-| state | string | Stan zdarzenia na żywo. |
-| healthy | bool | Wskazuje, czy pozyskiwanie jest w dobrej kondycji na podstawie liczby i flag. Dobra kondycja ma wartość true, jeśli overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
+| unexpectedBitrate | logiczna | Jeśli oczekiwane i rzeczywiste szybkości transmisji bitów różnią się o więcej niż dozwolony limit w ciągu ostatnich 20 sekund. Prawda, jeśli i tylko wtedy, gdy, incomingBitrate > = 2 * szybkość transmisji bitów lub incomingBitrate < = szybkość transmisji bitów/2 lub IncomingBitrate = 0. |
+| state | ciąg | Stan zdarzenia na żywo. |
+| healthy | logiczna | Wskazuje, czy pozyskiwanie jest w dobrej kondycji na podstawie liczby i flag. Dobra kondycja ma wartość true, jeśli overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
@@ -661,13 +643,13 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| ścieżka śledzenia | string | Typ ścieżki (audio/wideo). |
-| ścieżka śledzenia | string | Nazwa ścieżki (dostarczonej przez koder lub, w przypadku protokołu RTMP, serwer generuje w formacie *TrackType_Bitrate* ). |
+| ścieżka śledzenia | ciąg | Typ ścieżki (audio/wideo). |
+| ścieżka śledzenia | ciąg | Nazwa ścieżki (dostarczonej przez koder lub, w przypadku protokołu RTMP, serwer generuje w formacie *TrackType_Bitrate* ). |
 | bitrate | liczba całkowita | Szybkość transmisji bitów ścieżki. |
-| previousTimestamp | string | Sygnatura czasowa poprzedniego fragmentu. |
-| newTimestamp | string | Sygnatura czasowa bieżącego fragmentu. |
-| discontinuityGap | string | Przerwa między powyżej dwóch sygnatur czasowych. |
-| timescale | string | Skala czasu, w której reprezentowane są obie sygnatury czasowe i przerwy w działaniu. |
+| previousTimestamp | ciąg | Sygnatura czasowa poprzedniego fragmentu. |
+| newTimestamp | ciąg | Sygnatura czasowa bieżącego fragmentu. |
+| discontinuityGap | ciąg | Przerwa między powyżej dwóch sygnatur czasowych. |
+| timescale | ciąg | Skala czasu, w której reprezentowane są obie sygnatury czasowe i przerwy w działaniu. |
 
 ### <a name="common-event-properties"></a>Właściwości typowego zdarzenia
 
@@ -675,20 +657,21 @@ Zdarzenie ma następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| temat | string | Temat EventGrid. Ta właściwość ma identyfikator zasobu dla konta Media Services. |
-| subject | string | Ścieżka zasobu dla Media Services kanału w ramach konta Media Services. Łączenie tematu i tematu zapewnia identyfikator zasobu dla zadania. |
-| eventType | string | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. Na przykład "Microsoft. Media. JobStateChange". |
-| eventTime | string | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
-| id | string | Unikatowy identyfikator zdarzenia. |
+| temat | ciąg | Temat EventGrid. Ta właściwość ma identyfikator zasobu dla konta Media Services. |
+| subject | ciąg | Ścieżka zasobu dla Media Services kanału w ramach konta Media Services. Łączenie tematu i tematu zapewnia identyfikator zasobu dla zadania. |
+| eventType | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. Na przykład "Microsoft. Media. JobStateChange". |
+| eventTime | ciąg | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
+| id | ciąg | Unikatowy identyfikator zdarzenia. |
 | data | obiekt | Media Services dane zdarzenia. |
-| dataVersion | string | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
-| metadataVersion | string | Wersja schematu metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Ta wartość jest podawana przez usługę Event Grid. |
+| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
 
 ## <a name="next-steps"></a>Następne kroki
 
 [Rejestrowanie zdarzeń zmiany stanu zadania](job-state-events-cli-how-to.md)
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 - [EventGrid .NET SDK zawierający zdarzenia usługi Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definicje zdarzeń Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
+- [Kody błędów zdarzeń na żywo](live-event-error-codes.md)

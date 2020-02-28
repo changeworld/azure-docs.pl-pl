@@ -1,18 +1,17 @@
 ---
 title: Zapytania wyszukiwania w dziennikach Azure Monitor | Microsoft Docs
 description: Ten artykuł zawiera Samouczek przedstawiający wprowadzenie do korzystania z wyszukiwania w dzienniku Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
-ms.openlocfilehash: d92cd42f0fceadee16035b605e8d25c6bc23bc67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932994"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660244"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Wyszukiwanie zapytań w dziennikach Azure Monitor
 Zapytania dziennika Azure Monitor mogą rozpoczynać się od nazwy tabeli lub polecenia wyszukiwania. Ten samouczek obejmuje zapytania oparte na wyszukiwaniach. Istnieją zalety każdej z tych metod.
@@ -93,7 +92,7 @@ search in (Event) "corp*.com"
 Możesz również uzyskać wszystko w tabeli, używając tylko symbolu wieloznacznego: `search in (Event) *`, ale tak samo jak zapis `Event`.
 
 > [!TIP]
-> Można użyć `search *` w celu uzyskania każdej kolumny z każdej tabeli. zaleca się, aby zawsze określać zakres zapytań do określonych tabel. Wykonywanie zapytań w zakresie nienależących do zakresu może potrwać trochę czasu i może zwracać zbyt wiele wyników.
+> Chociaż możesz użyć `search *`, aby uzyskać każdą kolumnę z każdej tabeli, zaleca się, aby zawsze określać zakres zapytań do określonych tabel. Wykonywanie zapytań w zakresie nienależących do zakresu może potrwać trochę czasu i może zwracać zbyt wiele wyników.
 
 ## <a name="add-and--or-to-search-queries"></a>Dodawanie *i* / *lub* wyszukiwanie zapytań
 Użyj programu **i** , aby wyszukać rekordy zawierające wiele warunków:

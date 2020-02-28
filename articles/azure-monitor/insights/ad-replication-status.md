@@ -1,18 +1,17 @@
 ---
 title: Monitoruj Active Directory stan replikacji za pomocą Azure Monitor | Microsoft Docs
 description: Pakiet rozwiązań Active Directory Replication Status regularnie monitoruje Środowisko Active Directory pod kątem błędów replikacji.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 31e6d0c8b374bd494ae8fda36f4f38aabb1ac96b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfc9572e8b21692a386c510ffd3409c571eff8f4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406094"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667180"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Monitoruj Active Directory stan replikacji za pomocą Azure Monitor
 
@@ -55,7 +54,7 @@ W poniższej tabeli przedstawiono metody zbierania danych oraz inne szczegóły 
 
 | Platforma | Agent bezpośredni | Agenta programu SCOM | Azure Storage | SCOM wymagane? | Dane agenta programu SCOM wysyłane za pośrednictwem grupy zarządzania | Częstotliwość zbierania |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |&#8226; |&#8226; |  |  |&#8226; |co pięć dni |
+| System Windows |&#8226; |&#8226; |  |  |&#8226; |co pięć dni |
 
 
 

@@ -11,27 +11,27 @@ ms.date: 11/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 305b17a9118bddac53b19462cb8c3be887395311
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c715b2328f66c58fa744235c8762b31fd0b30d1f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923597"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669493"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Zarządzanie obliczeniami w Azure SQL Data Warehouse
 Dowiedz się więcej na temat zarządzania zasobami obliczeniowymi w Azure SQL Data Warehouse. Niższe koszty przez wstrzymanie magazynu danych lub skalowanie magazynu danych w celu spełnienia wymagań dotyczących wydajności. 
 
 ## <a name="what-is-compute-management"></a>Co to jest zarządzanie obliczeniami?
-Architektura usługi SQL Data Warehouse obejmuje oddzielenie magazynu i zasobów obliczeniowych, umożliwiając niezależne skalowanie obu elementów. W rezultacie można skalować zasoby obliczeniowe w celu spełnienia wymagań związanych z wydajnością niezależnie od magazynu danych. Można również wstrzymywać i wznawiać działanie zasobów obliczeniowych. Naturalna konsekwencja tej architektury polega na tym, że [rozliczenia](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) na potrzeby obliczeniowe i magazyny są oddzielone. Jeśli przez pewien czas nie musisz używać magazynu, możesz zaoszczędzić na kosztach zasobów obliczeniowych, wstrzymując obliczenia. 
+Architektura SQL Data Warehouse oddziela magazyn i obliczeniowe, umożliwiając każdemu skalowanie niezależnie. W związku z tym można skalować obliczenia w celu spełnienia wymagań dotyczących wydajności niezależnie od magazynu danych. Możesz również wstrzymywać i wznawiać zasoby obliczeniowe. Naturalna konsekwencja tej architektury polega na tym, że [rozliczenia](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) na potrzeby obliczeniowe i magazyny są oddzielone. Jeśli nie musisz używać hurtowni danych przez pewien czas, możesz zaoszczędzić koszty obliczeń, zatrzymując obliczenia. 
 
 ## <a name="scaling-compute"></a>Skalowanie obliczeniowe
-Obliczenia można skalować w poziomie lub skali z powrotem przez dostosowanie ustawienia [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) dla magazynu danych. Wydajność ładowania i zapytań można zwiększać liniowo w miarę dodawania większej liczby jednostek magazynu danych. 
+Obliczenia można skalować w poziomie lub skali z powrotem przez dostosowanie ustawienia [jednostki magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) dla magazynu danych. Ładowanie i wydajność zapytań można zwiększyć liniowo w miarę dodawania większej liczby jednostek magazynu danych. 
 
 Aby zapoznać się z krokami skalowania, zobacz Przewodniki Szybki Start dotyczące [Azure Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md)lub [T-SQL](quickstart-scale-compute-tsql.md) . Można również wykonywać operacje skalowania w poziomie za pomocą [interfejsu API REST](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
-W celu wykonania operacji skalowania usługa SQL Data Warehouse najpierw zabija wszystkie przychodzące zapytania, a następnie wycofuje transakcje w celu zapewnienia spójnego stanu. Skalowanie jest realizowane dopiero po ukończeniu wycofywania transakcji. Na potrzeby operacji skalowania system odłącza warstwy magazynu od węzłów obliczeniowych, dodaje węzły obliczeniowe, a następnie ponownie dołącza warstwę magazynu do warstwy obliczeń. Każdy magazyn danych jest przechowywany jako 60 dystrybucji, które są równomiernie rozproszone między węzły obliczeniowe. Dodanie kolejnych węzłów obliczeniowych powoduje dodanie dalszej mocy obliczeniowej. W miarę zwiększania się liczby węzłów obliczeniowych zmniejsza się liczba dystrybucji na węzeł obliczeniowy, co zapewnia więcej mocy obliczeniowej dla zapytań. Podobnie, zmniejszenie jednostek magazynu danych zmniejsza liczbę węzłów obliczeniowych, co zmniejsza zasoby obliczeniowe dla zapytań.
+Aby wykonać operację skalowania, SQL Data Warehouse najpierw Kasuj wszystkie zapytania przychodzące, a następnie wycofywanie transakcji w celu zapewnienia spójnego stanu. Skalowanie odbywa się tylko po zakończeniu wycofywania transakcji. W przypadku operacji skalowania system odłącza warstwę magazynu od węzłów obliczeniowych, dodaje węzły obliczeniowe, a następnie ponownie dołącza warstwę magazynu do warstwy obliczeniowej. Każdy magazyn danych jest przechowywany jako dystrybucje 60, które są równomiernie dystrybuowane do węzłów obliczeniowych. Dodanie większej liczby węzłów obliczeniowych zwiększa moc obliczeniową. Wraz ze wzrostem liczby węzłów obliczeniowych liczba rozkładów na węzeł obliczeniowy zmniejsza się, co zapewnia większą moc obliczeniową dla zapytań. Podobnie, zmniejszenie jednostek magazynu danych zmniejsza liczbę węzłów obliczeniowych, co zmniejsza zasoby obliczeniowe dla zapytań.
 
-W poniższej tabeli przedstawiono, w jaki sposób liczba dystrybucji na węzeł obliczeniowy zmienia się w miarę zmiany jednostek magazynu danych.  DWU6000 udostępnia 60 węzłów obliczeniowych i osiąga znacznie wyższą wydajność zapytań niż DWU100. 
+W poniższej tabeli przedstawiono, w jaki sposób liczba dystrybucji na węzeł obliczeniowy zmienia się w miarę zmiany jednostek magazynu danych.  DW30000c udostępnia 60 węzłów obliczeniowych i osiąga znacznie wyższą wydajność zapytań niż DW100c. 
 
 | Jednostki magazynu danych  | \# węzłów obliczeniowych | \# dystrybucji na węzeł |
 | -------- | ---------------- | -------------------------- |

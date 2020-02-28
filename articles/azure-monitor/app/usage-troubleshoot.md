@@ -1,19 +1,17 @@
 ---
 title: Rozwiązywanie problemów z narzędziami do analizy użytkowników — Application Insights platformy Azure
 description: Przewodnik rozwiązywania problemów — analizowanie użycia witryny i aplikacji przy użyciu Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa540cdaef1af3016d87ab93768ceb30802cef0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432281"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670920"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Rozwiązywanie problemów z narzędziami analizy zachowania użytkownika w Application Insights
 Masz pytania dotyczące [narzędzi analitycznych zachowania użytkownika w Application Insights](usage-overview.md): [Użytkownicy, sesje, zdarzenia](usage-segmentation.md), [Lejki](usage-funnels.md), [przepływy użytkownika](usage-flows.md), [przechowywanie](usage-retention.md)lub kohorty? Oto kilka odpowiedzi.

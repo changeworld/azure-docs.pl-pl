@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 528ff47be2b18cb7d9b938e988383a9e81be67fb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 5c433140c3982813e372fd3f63243a96197d220c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599511"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661893"
 ---
 # Często zadawane pytania dotyczące klientów korzystających już z dzienników Azure Monitor<a name="existingloganalyticscust"></a>
 
@@ -28,7 +28,8 @@ Jeśli maszyna wirtualna ma już zainstalowany program Microsoft Monitoring Agen
 
 Rozwiązanie Security Center jest instalowane w obszarze roboczym wybranym na ekranie zbierania danych, jeśli nie istnieje, a rozwiązanie jest stosowane tylko do odpowiednich maszyn wirtualnych. Po dodaniu rozwiązania, automatycznie są wdrażane domyślnie wszyscy agenci Windows i Linux, połączonego z obszarem roboczym usługi Log Analytics. [Określanie celu rozwiązania](../operations-management-suite/operations-management-suite-solution-targeting.md) pozwala zastosować zakres do rozwiązań.
 
-Jeśli program Microsoft Monitoring Agent jest zainstalowany bezpośrednio na maszynie Wirtualnej (a nie jako rozszerzenie platformy Azure), usługa Security Center nie instaluje program Microsoft Monitoring Agent oraz monitorowanie zabezpieczeń jest ograniczony.
+> [!TIP]
+> Jeśli Microsoft Monitoring Agent jest zainstalowana bezpośrednio na maszynie wirtualnej (nie jako rozszerzenie platformy Azure), Security Center nie zainstaluje Microsoft Monitoring Agent i monitorowanie zabezpieczeń jest ograniczone.
 
 ## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Czy usługa Security Center zainstalowanie rozwiązania na moich istniejących obszarów roboczych usługi Log Analytics Jakie są skutki rozliczeń?
 Gdy usługa Security Center zidentyfikuje, że maszyny Wirtualnej jest już połączony obszar roboczy, który został utworzony, usługa Security Center umożliwia rozwiązań na ten obszar roboczy, zgodnie z warstwy cenowej. Rozwiązania są stosowane tylko do odpowiednich maszyn wirtualnych platformy Azure, za pośrednictwem [określania wartości docelowej rozwiązania](../operations-management-suite/operations-management-suite-solution-targeting.md), więc rozliczenia pozostają takie same.
@@ -36,7 +37,7 @@ Gdy usługa Security Center zidentyfikuje, że maszyny Wirtualnej jest już poł
 - **Warstwa Bezpłatna** — Security Center instaluje rozwiązanie "SecurityCenterFree" w obszarze roboczym. Nie zostanie naliczona opłata za warstwę bezpłatna.
 - **Warstwa standardowa** — Security Center instaluje rozwiązanie "zabezpieczenia" w obszarze roboczym.
 
-   ![Rozwiązania na domyślny obszar roboczy][1]
+   ![Rozwiązania na domyślny obszar roboczy](./media/security-center-platform-migration-faq/solutions.png)
 
 ## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>Mam już obszarów roboczych w mojej środowisku, można z nich korzystać do zbierania danych zabezpieczeń?
 Jeśli maszyna wirtualna ma już zainstalowany program Microsoft Monitoring Agent jako rozszerzenie platformy Azure, usługa Security Center korzysta z istniejącego obszaru roboczego połączonych. Rozwiązanie Security Center jest zainstalowane w obszarze roboczym, jeśli nie istnieje, a rozwiązanie jest stosowane tylko do odpowiednich maszyn wirtualnych za pośrednictwem [określania celu rozwiązania](../operations-management-suite/operations-management-suite-solution-targeting.md).
@@ -44,8 +45,4 @@ Jeśli maszyna wirtualna ma już zainstalowany program Microsoft Monitoring Agen
 Gdy usługa Security Center instaluje program Microsoft Monitoring Agent na maszynach wirtualnych, używane domyślne wszystkich obszarach roboczych, utworzonych przez usługę Security Center.
 
 ## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Mam już rozwiązania zabezpieczeń na mój obszar roboczy. Jakie są skutki rozliczeń?
-Rozwiązanie zabezpieczenia i inspekcja umożliwia włączanie funkcje warstwy standardowej usługi Security Center dla maszyn wirtualnych platformy Azure. Jeśli rozwiązanie zabezpieczenia i inspekcja jest już zainstalowany w obszarze roboczym, usługa Security Center korzysta z istniejącego rozwiązania. Nie ma zmian w rozliczeń.
-
-
-<!--Image references-->
-[1]: ./media/security-center-platform-migration-faq/solutions.png
+Rozwiązanie Security & Audit służy do włączania Security Center funkcji warstwy standardowej dla maszyn wirtualnych platformy Azure. Jeśli rozwiązanie zabezpieczenia i inspekcja jest już zainstalowany w obszarze roboczym, usługa Security Center korzysta z istniejącego rozwiązania. Nie ma zmian w rozliczeń.

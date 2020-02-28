@@ -1,18 +1,17 @@
 ---
 title: Optymalizowanie zapytań dzienników w Azure Monitor
 description: Najlepsze rozwiązania dotyczące optymalizowania zapytań dzienników w Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2019
-ms.openlocfilehash: 521fd84e79196439ea220bd7ffa7cc6d0750f045
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 19b0ce154fc19015f7faa17e339c9df259206365
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648839"
+ms.locfileid: "77670818"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optymalizowanie zapytań dzienników w Azure Monitor
 Dzienniki Azure Monitor korzystają z [usługi Azure Eksplorator danych (ADX)](/azure/data-explorer/) do przechowywania danych dziennika i uruchamiania zapytań w celu analizowania tych danych. Tworzy, zarządza i obsługuje klastry ADX oraz optymalizuje je do obciążeń analizy dzienników. Po uruchomieniu zapytania jest on zoptymalizowany i kierowany do odpowiedniego klastra ADX, który przechowuje dane obszaru roboczego. Zarówno dzienniki Azure Monitor, jak i Azure Eksplorator danych korzystają z wielu automatycznych mechanizmów optymalizacji zapytań. Chociaż Optymalizacja automatyczna zapewnia znaczący wzrost, w niektórych przypadkach można znacznie poprawić wydajność zapytań. W tym artykule opisano zagadnienia dotyczące wydajności i kilka technik rozwiązywania tych problemów.

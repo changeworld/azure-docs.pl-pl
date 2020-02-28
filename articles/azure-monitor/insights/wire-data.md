@@ -1,18 +1,17 @@
 ---
 title: Rozwiązanie danych telekomunikacyjnych w Azure Monitor | Microsoft Docs
 description: Dane o komunikacji sieciowej jest skonsolidowane dane sieci i wydajności z komputerów przy użyciu agentów usługi Log Analytics. Dane sieciowe są połączone z danymi Twojego dziennika, aby ułatwić korelowanie danych.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/03/2018
-ms.openlocfilehash: 031a09203ab2ab2bcfcdf4352e975c1374446c25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ee7a2f49641eb0cfe1f8a4bffb44c7f8642408fa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365805"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670648"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Rozwiązanie Wire Data 2.0 (wersja zapoznawcza) w Azure Monitor
 
@@ -54,9 +53,9 @@ Rozwiązanie Dane o komunikacji sieciowej pobiera swoje dane z agenta Microsoft 
 
 | **Połączone źródło** | **Obsługiwane** | **Opis** |
 | --- | --- | --- |
-| Agenci dla systemu Windows | Tak | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z komputerów z agentami systemu Windows. <br><br> Oprócz [agenta usługi Log Analytics dla Windows](../platform/agent-windows.md), agenci Windows wymagają Microsoft Dependency agent. Zobacz [obsługiwane systemy operacyjne](vminsights-enable-overview.md#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
-| Agenci dla systemu Linux | Tak | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z komputerów z agentami systemu Linux.<br><br> Oprócz [agenta usługi Log Analytics dla systemu Linux](../learn/quick-collect-linux-computer.md), agenci dla systemu Linux wymaga program Microsoft Dependency agent. Zobacz [obsługiwane systemy operacyjne](vminsights-enable-overview.md#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
-| Grupa zarządzania programu System Center Operations Manager | Tak | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z agentów systemu Windows i Linux w połączonej [grupie zarządzania programu System Center Operations Manager](../platform/om-agents.md). <br><br> Wymagane jest bezpośrednie połączenie z komputera agenta System Center Operations Manager, aby Azure Monitor. |
+| Agenci dla systemu Windows | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z komputerów z agentami systemu Windows. <br><br> Oprócz [agenta log Analytics dla systemu Windows](../platform/agent-windows.md)agenci systemu Windows wymagają programu Microsoft Dependency Agent. Zobacz [obsługiwane systemy operacyjne](vminsights-enable-overview.md#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
+| Agenci dla systemu Linux | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z komputerów z agentami systemu Linux.<br><br> Oprócz [agenta log Analytics dla systemu Linux](../learn/quick-collect-linux-computer.md)agenci z systemem Linux wymagają programu Microsoft Dependency Agent. Zobacz [obsługiwane systemy operacyjne](vminsights-enable-overview.md#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
+| Grupa zarządzania programu System Center Operations Manager | Yes | Rozwiązanie Dane o komunikacji sieciowej analizuje i gromadzi dane z agentów systemu Windows i Linux w połączonej [grupie zarządzania programu System Center Operations Manager](../platform/om-agents.md). <br><br> Wymagane jest bezpośrednie połączenie z komputera agenta System Center Operations Manager, aby Azure Monitor. |
 | Konto magazynu Azure | Nie | Rozwiązanie Dane o komunikacji sieciowej gromadzi dane z komputerów agenta, więc nie ma od niego żadnych danych do gromadzenia z usługi Azure Storage. |
 
 W systemie Windows Microsoft Monitoring Agent (MMA) jest używany przez oba System Center Operations Manager i Azure Monitor do zbierania i wysyłania danych. W zależności od kontekstu agent nosi nazwę agenta programu System Center Operations Manager, agenta usługi Log Analytics, Agent MMA lub Agent bezpośredni. System Center Operations Manager i Azure Monitor zapewniają nieco różne wersje MMA. Te wersje mogą posłużyć do System Center Operations Manager, Azure Monitor lub do obu tych raportów.
@@ -72,7 +71,7 @@ Jeśli jesteś użytkownikiem System Center Operations Manager z grupą zarządz
 - Gdy agenci System Center Operations Manager mogą uzyskać dostęp do Internetu w celu nawiązania połączenia z Azure Monitor, nie jest wymagana żadna dodatkowa konfiguracja.
 - Należy skonfigurować bramę Log Analytics do pracy z System Center Operations Manager, gdy System Center Operations Manager agenci nie będą mogli uzyskać dostępu Azure Monitor przez Internet.
 
-Jeśli komputery z systemem Windows lub Linux nie mogą łączyć się bezpośrednio z usługą, należy skonfigurować agenta Log Analytics, aby łączył się z Azure Monitor przy użyciu bramy Log Analytics. Można pobrać bramę usługi Log Analytics z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Jeśli komputery z systemem Windows lub Linux nie mogą łączyć się bezpośrednio z usługą, należy skonfigurować agenta Log Analytics, aby łączył się z Azure Monitor przy użyciu bramy Log Analytics. Bramę usługi Log Analytics można pobrać z [Centrum pobierania Microsoft](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -85,7 +84,7 @@ Jeśli komputery z systemem Windows lub Linux nie mogą łączyć się bezpośre
 
 W poniższych sekcjach wymieniono obsługiwane systemy operacyjne dla agenta zależności. Rozwiązanie Dane o komunikacji sieciowej nie obsługuje 32-bitowych architektur dla żadnego systemu operacyjnego.
 
-#### <a name="windows-server"></a>Windows Server
+#### <a name="windows-server"></a>Oprogramowanie Windows Server
 
 - Windows Server 2019
 - System Windows Server 2016 1803
@@ -100,7 +99,7 @@ W poniższych sekcjach wymieniono obsługiwane systemy operacyjne dla agenta zal
 - Windows 10
 - Windows 8.1
 - Windows 8
-- Windows 7
+- Windows 7
 
 #### <a name="supported-linux-operating-systems"></a>Obsługiwane systemy operacyjne Linux
 W poniższych sekcjach przedstawiono obsługiwane systemy operacyjne dla agenta zależności w systemie Linux.  
@@ -115,7 +114,7 @@ W poniższych sekcjach przedstawiono obsługiwane systemy operacyjne dla agenta 
 |:--|:--|
 | 7.4 | 3.10.0-693 |
 | 7.5 | 3.10.0-862 |
-| 7.6 | 3.10.0-957 |
+| 7,6 | 3.10.0-957 |
 
 ##### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
@@ -136,8 +135,8 @@ W poniższych sekcjach przedstawiono obsługiwane systemy operacyjne dla agenta 
 |:--|:--|
 | Ubuntu 18.04 | jądro 4,15.\*<br>4,18 * |
 | Systemu Ubuntu 16.04.3 | jądra 4.15. * |
-| 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
-| 14.04 | 3.13.\*<br>4.4.\* |
+| 16.04 | 4,4.\*<br>4,8.\*<br>4,10.\*<br>4,11.\*<br>4,13.\* |
+| 14.04 | 3,13.\*<br>4,4.\* |
 
 ##### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
 
@@ -156,12 +155,12 @@ W poniższych sekcjach przedstawiono obsługiwane systemy operacyjne dla agenta 
 
 | Plik | System operacyjny | Wersja | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | System Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
 
 
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 Wykonaj poniższe kroki, aby skonfigurować rozwiązanie Dane o komunikacji sieciowej dla Twoich obszarów roboczych.
 
@@ -180,7 +179,7 @@ Agent zależności jest instalowany na komputerach z systemem Windows za pomocą
 
 Wykonaj następujące kroki, aby zainstalować agenta zależności na każdym komputerze z systemem Windows:
 
-1. Zainstaluj agenta usługi Log Analytics, wykonaj czynności w [zbieranie danych z komputerów Windows hostowanych w danym środowisku](../../azure-monitor/platform/agent-windows.md).
+1. Zainstaluj agenta Log Analytics, wykonując czynności opisane w temacie [zbieranie danych z komputerów z systemem Windows hostowanych w danym środowisku](../../azure-monitor/platform/agent-windows.md).
 2. Pobierz agenta zależności systemu Windows przy użyciu linku w poprzedniej sekcji, a następnie uruchom go za pomocą następującego polecenia: `InstallDependencyAgent-Windows.exe`
 3. Użyj kreatora, aby zainstalować agenta.
 4. Jeśli agenta zależności nie powiedzie się, sprawdź dzienniki Aby uzyskać szczegółowe informacje o błędzie. W przypadku agentów systemu Windows katalog dziennika to %Programfiles%\Microsoft Dependency Agent\logs.
@@ -206,7 +205,7 @@ Agent zależności jest instalowany na komputerach z systemem Linux za pomocą I
 
 Aby zainstalować agenta zależności na każdy komputer z systemem Linux, wykonaj następujące kroki:
 
-1. Zainstaluj agenta usługi Log Analytics, wykonaj czynności w [zbieranie danych z komputerów z systemem Linux hostowanych w danym środowisku](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key).
+1. Zainstaluj agenta Log Analytics, wykonując czynności opisane w temacie [zbieranie danych z komputerów z systemem Linux hostowanych w danym środowisku](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key).
 2. Pobierz agenta zależności systemu Linux przy użyciu linku w poprzedniej sekcji, a następnie zainstaluj go jako element główny przy użyciu następującego polecenia: sh InstallDependencyAgent-Linux64. bin
 3. Jeśli agenta zależności nie powiedzie się, sprawdź dzienniki Aby uzyskać szczegółowe informacje o błędzie. Dla agentów systemu Linux katalogiem dziennika jest: /var/opt/microsoft/dependency-agent/log.
 
@@ -256,7 +255,7 @@ wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDepende
 sh InstallDependencyAgent-Linux64.bin -s
 ```
 
-### <a name="desired-state-configuration"></a>Desired State Configuration
+### <a name="desired-state-configuration"></a>Konfiguracja żądanego stanu
 
 Aby wdrożyć agenta zależności za pomocą konfiguracji żądanego stanu, można użyć modułu xPSDesiredStateConfiguration i bitu kodu, takiego jak następujące:
 
@@ -384,7 +383,7 @@ Rekord o typie _WireData_ jest tworzony dla każdego typu danych wejściowych. R
 
 | Właściwość | Opis |
 |---|---|
-| Computer (Komputer) | Nazwa komputera, gdzie są gromadzone dane |
+| Computer | Nazwa komputera, gdzie są gromadzone dane |
 | TimeGenerated | Czas rekordu |
 | LocalIP | Adres IP komputera lokalnego |
 | SessionState | Połączone lub rozłączone |

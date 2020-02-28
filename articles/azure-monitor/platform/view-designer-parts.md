@@ -1,18 +1,17 @@
 ---
 title: Przewodnik referencyjny dotyczący części projektanta widoków w Azure Monitor | Microsoft Docs
 description: Za pomocą projektanta widoków w Azure Monitor można utworzyć niestandardowe widoki, które są wyświetlane w Azure Portal i zawierać różne wizualizacje danych w obszarze roboczym Log Analytics. Ten artykuł zawiera Przewodnik dotyczący ustawień części wizualizacji, które są dostępne w niestandardowych widokach.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 853f0153283f31c9242b884babf5778f96cce141
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7dc4164cac1998a02ae62d7682f9630aa4faa619
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931990"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658561"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Przewodnik referencyjny do wyświetlania części wizualizacji projektanta w Azure Monitor
 Za pomocą projektanta widoków w Azure Monitor można utworzyć różne widoki niestandardowe w Azure Portal, które mogą ułatwić wizualizację danych w obszarze roboczym Log Analytics. Ten artykuł zawiera Przewodnik dotyczący ustawień części wizualizacji, które są dostępne w niestandardowych widokach.
@@ -82,7 +81,7 @@ W nagłówku zostanie wyświetlona jedna liczba, która pokazuje liczbę rekord�
 | Separator nazw i wartości |Ogranicznik pojedynczego znaku, który ma być używany do analizowania właściwości Text w wielu wartościach. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
 | Nawigacja przez klikanie | Akcja wykonywana po kliknięciu elementu na liście.  Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#click-through-navigation). |
 | **Staw** |**> Tytuły kolumn** |
-| Nazwa |Tekst wyświetlany w górnej części pierwszej kolumny. |
+| Name (Nazwa) |Tekst wyświetlany w górnej części pierwszej kolumny. |
 | Wartość |Tekst wyświetlany w górnej części drugiej kolumny. |
 | **Staw** |**Progi >** |
 | Włącz progi |Wybierz ten link, aby włączyć progi. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#thresholds). |
@@ -113,7 +112,7 @@ Nagłówek ma dwie liczby, które wyświetlają liczbę rekordów z oddzielnych 
 | Separator nazw i wartości |Ogranicznik pojedynczego znaku, który ma być używany do analizowania właściwości Text w wielu wartościach. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
 | Nawigacja przez klikanie | Akcja wykonywana po kliknięciu elementu na liście.  Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#click-through-navigation). |
 | **Staw** |**> Tytuły kolumn** |
-| Nazwa |Tekst wyświetlany w górnej części pierwszej kolumny. |
+| Name (Nazwa) |Tekst wyświetlany w górnej części pierwszej kolumny. |
 | Wartość |Tekst wyświetlany w górnej części drugiej kolumny. |
 | **Staw** |**Progi >** |
 | Włącz progi |Wybierz ten link, aby włączyć progi. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#thresholds). |
@@ -154,7 +153,7 @@ Nagłówek Wyświetla pojedynczą liczbę, która podsumowuje kolumnę wartości
 | Separator nazw i wartości |Ogranicznik pojedynczego znaku, który ma być używany do analizowania właściwości Text w wielu wartościach. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
 | Nawigacja przez klikanie | Akcja wykonywana po kliknięciu elementu na liście.  Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#click-through-navigation). |
 | **Staw** |**> Tytuły kolumn** |
-| Nazwa |Tekst wyświetlany w górnej części pierwszej kolumny. |
+| Name (Nazwa) |Tekst wyświetlany w górnej części pierwszej kolumny. |
 | Wartość |Tekst wyświetlany w górnej części drugiej kolumny. |
 | **Staw** |**Progi >** |
 | Włącz progi |Wybierz ten link, aby włączyć progi. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#thresholds). |
@@ -186,7 +185,7 @@ W nagłówku są wyświetlane wyniki dwóch zapytań dzienników w miarę upływ
 | Operacja |Operacja do wykonania dla wykresu przebiegu w czasie. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
 | Nawigacja przez klikanie | Akcja wykonywana po kliknięciu elementu na liście.  Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#click-through-navigation). |
 | **Staw** |**> Tytuły kolumn** |
-| Nazwa |Tekst wyświetlany w górnej części pierwszej kolumny. |
+| Name (Nazwa) |Tekst wyświetlany w górnej części pierwszej kolumny. |
 | Wartość |Tekst wyświetlany w górnej części drugiej kolumny. |
 | **Staw** |**Progi >** |
 | Włącz progi |Wybierz ten link, aby włączyć progi. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#thresholds). |
@@ -204,9 +203,9 @@ W nagłówku jest wyświetlany statyczny tekst i opcjonalny link. Na liście jes
 | Kolor |Kolor tła nagłówka. |
 | **Nagłówek** | |
 | Image (Obraz) |Plik obrazu, który jest wyświetlany w nagłówku. |
-| Etykieta |Tekst wyświetlany w nagłówku. |
+| Label |Tekst wyświetlany w nagłówku. |
 | **Nagłówek** |**> Łącze** |
-| Etykieta |Tekst łącza. |
+| Label |Tekst łącza. |
 | Url |Adres URL łącza. |
 | **Elementy informacji** | |
 | Tytuł |Tekst wyświetlany dla tytułu każdego elementu. |
@@ -247,7 +246,7 @@ W nagłówku jest wyświetlany wykres liniowy z wieloma seriami na podstawie zap
 | Separator nazw i wartości |Ogranicznik pojedynczego znaku, który ma być używany do analizowania właściwości Text w wielu wartościach. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
 | Nawigacja przez klikanie | Akcja wykonywana po kliknięciu elementu na liście.  Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#click-through-navigation). |
 | **Staw** |**> Tytuły kolumn** |
-| Nazwa |Tekst wyświetlany w górnej części pierwszej kolumny. |
+| Name (Nazwa) |Tekst wyświetlany w górnej części pierwszej kolumny. |
 | Wartość |Tekst wyświetlany w górnej części drugiej kolumny. |
 | **Staw** |**Progi >** |
 | Włącz progi |Wybierz ten link, aby włączyć progi. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#thresholds). |
@@ -283,7 +282,7 @@ W nagłówku zostanie wyświetlony wykres liniowy z wieloma seriami na podstawie
 | Separator nazw i wartości |Ogranicznik pojedynczego znaku, który ma być używany do analizowania właściwości Text w wielu wartościach. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#sparklines). |
 | Nawigacja przez klikanie | Akcja wykonywana po kliknięciu elementu na liście.  Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#click-through-navigation). |
 | **Staw** |**> Tytuły kolumn** |
-| Nazwa |Tekst wyświetlany w górnej części pierwszej kolumny. |
+| Name (Nazwa) |Tekst wyświetlany w górnej części pierwszej kolumny. |
 | Wartość |Tekst wyświetlany w górnej części drugiej kolumny. |
 | **Staw** |**Progi >** |
 | Włącz progi |Wybierz ten link, aby włączyć progi. Aby uzyskać więcej informacji, zobacz [typowe ustawienia](#thresholds). |
@@ -327,7 +326,7 @@ W poniższej tabeli opisano ustawienia nawigowania po kliknięciu.
 |:--|:--|
 | Przeszukiwanie dzienników (Auto) | Zapytanie dziennika do uruchomienia po zaznaczeniu elementu nagłówka.  Jest to ta sama kwerenda dziennika, na której jest oparty element.
 | Przeszukiwanie dzienników        | Zapytanie dziennika do uruchomienia po wybraniu elementu na liście.  Wpisz zapytanie w polu **zapytania nawigacji** .   Użyj *{Selected Item}* , aby dołączyć składnię dla elementu wybranego przez użytkownika.  Na przykład, jeśli zapytanie zawiera kolumnę o nazwie *Computer* , a zapytanie nawigacji to *{Selected Item}* , podczas wybierania komputera zostanie uruchomione zapytanie, takie jak *Computer = "MójKomputer"* . Jeśli zapytanie nawigacji jest *typu = Event {selectedd Item}* , uruchamiany jest *typ zapytania = Event Computer = "MójKomputer"* . |
-| Wyświetl              | Widok, który ma zostać otwarty po zaznaczeniu elementu nagłówka lub elementu na liście.  W polu **Nazwa widoku** wybierz nazwę widoku w obszarze roboczym. |
+| Widok              | Widok, który ma zostać otwarty po zaznaczeniu elementu nagłówka lub elementu na liście.  W polu **Nazwa widoku** wybierz nazwę widoku w obszarze roboczym. |
 
 
 
@@ -353,7 +352,7 @@ W poniższej tabeli opisano ustawienia progów:
 | Ustawienie | Opis |
 |:--- |:--- |
 | Włącz progi |Wybierz ten link, aby wyświetlić ikonę koloru po lewej stronie każdej wartości. Ikona wskazuje prawidłowość wartości względem określonych progów. |
-| Nazwa |Nazwa wartości progowej. |
+| Name (Nazwa) |Nazwa wartości progowej. |
 | Próg |Wartość progu. Kolor kondycji dla każdego elementu listy jest ustawiony na kolor najwyższej wartości progowej, który został przekroczony przez wartość elementu. Jeśli wartości progowe nie zostaną przekroczone, zostanie użyty kolor domyślny. |
 | Kolor |Kolor wskazujący wartość progową. |
 

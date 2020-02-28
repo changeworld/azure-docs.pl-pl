@@ -3,17 +3,16 @@ title: Aktualizacja klasycznego alertu & monitorowania w programie Azure Monitor
 description: Opis wycofania usług i funkcji monitorowania klasycznego, wcześniej pokazanych w Azure Portal w obszarze alerty (klasyczne).
 author: yanivlavi
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: f4639d46a796924b4fe1dcbb46735abea128388f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: dec4d6824644cabf8b1872da207b8554fee0b3d3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307086"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659479"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Ujednolicone & monitorowania alertów w Azure Monitor zastępują klasyczne alerty & monitorowania
 
@@ -76,14 +75,14 @@ Ten artykuł będzie aktualizowany w sposób ciągły wraz z linkami & szczegó�
 
 ## <a name="pricing-for-migrated-alert-rules"></a>Cennik dla zmigrowanych reguł alertów
 
-Wdrażamy narzędzie do migracji w celu ułatwienia migracji Azure Monitor [klasycznych alertów](../../azure-monitor/platform/alerts-classic.overview.md) do nowego środowiska alertów. Zmigrowane reguły alertów i odpowiadające im zmigrowane grupy akcji (poczta e-mail, element webhook lub program LogicApp) pozostaną bezpłatne. Funkcjonalność, jaka była dostępna w przypadku alertów klasycznych, w tym możliwość edytowania progu, typu agregacji i stopnia szczegółowości agregacji, będą nadal dostępne bezpłatnie ze zmigrowaną regułą alertu. Jeśli jednak dokonasz edycji zmigrowanej reguły alertu w celu używania dowolnej z nowych funkcji platformy alertów, powiadomień lub typów akcji, zostanie naliczona odpowiednia opłata. Aby uzyskać więcej informacji na temat cen reguł alertów i powiadomień, zobacz [Azure monitor Cennik](https://azure.microsoft.com/pricing/details/monitor/).
+Wdrażamy narzędzie do migracji w celu ułatwienia migracji Azure Monitor [klasycznych alertów](../../azure-monitor/platform/alerts-classic.overview.md) do nowego środowiska alertów. Zmigrowane reguły alertów i odpowiadające im zmigrowane grupy akcji (poczta e-mail, element webhook lub LogicApp) pozostaną bezpłatne. Funkcja z alertami klasycznymi, w tym możliwość edytowania progu, typu agregacji i stopnia szczegółowości agregacji, będzie nadal dostępna bezpłatnie z zmigrowanymi regułami alertów. Jednak w przypadku edytowania zmigrowanej reguły alertów w celu korzystania z dowolnej z nowych funkcji platformy alertów, powiadomień lub typów akcji zostanie naliczona odpowiednia opłata. Aby uzyskać więcej informacji na temat cen reguł alertów i powiadomień, zobacz [Azure monitor Cennik](https://azure.microsoft.com/pricing/details/monitor/).
 
-Poniżej znajdują się przykłady przypadków, w których zostanie naliczona opłata za regułę alertu:
+Poniżej przedstawiono przykłady sytuacji, w których nastąpi naliczanie opłat za regułę alertu:
 
-- Każda nowa (niezmigrowana) reguła alertu utworzona poza bezpłatnymi jednostkami na nowej platformie Azure Monitor
-- Dowolne dane pozyskane i zachowane poza jednostkami bezpłatnymi objętymi przez platformę Azure Monitor
-- Dowolne wieloetapowe testy witryny wykonane przez usługę Application Insights
-- Dowolne metryki niestandardowe przechowywane poza jednostkami bezpłatnymi zawartymi na platformie Azure Monitor
+- Każda nowa (niemigrowana) reguła alertu utworzona poza wolne jednostki na nowej platformie Azure Monitor
+- Wszelkie dane pozyskane i zachowane poza bezpłatnymi jednostkami zawartymi w Azure Monitor
+- Wszystkie testy sieci Web wielotestowego wykonywane przez Application Insights
+- Wszystkie metryki niestandardowe przechowywane poza bezpłatnymi jednostkami zawartymi w Azure Monitor
 - Wszystkie zmigrowane reguły alertów, które są edytowane w celu używania nowszych funkcji alertu metryki, takich jak częstotliwość, wiele zasobów/wymiary, [dynamiczne progi](alerts-dynamic-thresholds.md), zmiana zasobu/sygnał i tak dalej.
 - Wszystkie zmigrowane grupy akcji, które są edytowane w celu korzystania z nowszych powiadomień lub typy akcji, takich jak wiadomości SMS, połączenia głosowe i/lub integracja narzędzia ITSM.
 

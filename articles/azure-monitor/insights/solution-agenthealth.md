@@ -1,18 +1,17 @@
 ---
 title: Agent Health rozwiązanie w Azure Monitor | Microsoft Docs
 description: Ten artykuł ma na celu ułatwienie zrozumienia sposobu korzystania z tego rozwiązania do monitorowania kondycji agentów raportowanych bezpośrednio do Log Analytics lub System Center Operations Manager.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: 9a7cb80b5510ff0ac4a2491d896aded866180c19
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7093e20473b799a3f05ddf30803721636732241e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062136"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663264"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Agent Health rozwiązanie w Azure Monitor
 Agent Health rozwiązanie na platformie Azure pomaga zrozumieć, w przypadku wszystkich agentów raportowanych bezpośrednio do Log Analytics obszaru roboczego w Azure Monitor lub System Center Operations Manager grupie zarządzania połączonej z Azure Monitor, które nie odpowiadają i przesyłanie danych operacyjnych.  Można także śledzić liczbę wdrożonych agentów i ich geograficzne rozmieszczenie oraz wykonywać inne zapytania dające informacje na temat rozmieszczenia agentów wdrożonych na platformie Azure, w innych środowiskach w chmurze i lokalnie.    
@@ -41,8 +40,8 @@ W poniższej tabeli opisano połączone źródła, które obsługuje to rozwiąz
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| Agenci dla systemu Windows | Tak | Zdarzenia pulsu są zbierane z bezpośrednich agentów systemu Windows.|
-| Grupa zarządzania programu System Center Operations Manager | Tak | Zdarzenia pulsu są zbierane z agentów zgłaszanych do grupy zarządzania co 60 sekund, a następnie przekazywane do Azure Monitor. Bezpośrednie połączenie od agentów Operations Manager do Azure Monitor nie jest wymagane. Dane zdarzenia pulsu są przekazywane z grupy zarządzania do obszaru roboczego Log Analytics.|
+| Agenci dla systemu Windows | Yes | Zdarzenia pulsu są zbierane z bezpośrednich agentów systemu Windows.|
+| Grupa zarządzania programu System Center Operations Manager | Yes | Zdarzenia pulsu są zbierane z agentów zgłaszanych do grupy zarządzania co 60 sekund, a następnie przekazywane do Azure Monitor. Bezpośrednie połączenie od agentów Operations Manager do Azure Monitor nie jest wymagane. Dane zdarzenia pulsu są przekazywane z grupy zarządzania do obszaru roboczego Log Analytics.|
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
 Po dodaniu rozwiązania do obszaru roboczego Log Analytics kafelek **Agent Health** zostanie dodany do pulpitu nawigacyjnego. Ten kafelek pokazuje całkowitą liczbę agentów oraz liczbę nieodpowiadających agentów w ciągu ostatnich 24 godzin.<br><br> ![Kafelek rozwiązania Agent Health na pulpicie nawigacyjnym](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)

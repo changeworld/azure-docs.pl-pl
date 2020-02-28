@@ -1,18 +1,14 @@
 ---
 title: Eksportowanie za pomocą Stream Analytics z platformy Azure Application Insights | Microsoft Docs
 description: Stream Analytics mogą w sposób ciągły przekształcać, filtrować i kierować dane eksportowane z Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/08/2019
-ms.openlocfilehash: 3be1a643cbe942c0b740ae8ebcc2c7f2dda24854
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: b93bc49d005e3e54f1e5db84e6ff1adc49e25a65
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677950"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664018"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Użyj Stream Analytics, aby przetwarzać eksportowane dane z Application Insights
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) jest idealnym narzędziem do przetwarzania danych [wyeksportowanych z Application Insights](export-telemetry.md). Stream Analytics może pobierać dane z różnych źródeł. Może on przekształcać i filtrować dane, a następnie kierować je do różnych zlewów.
@@ -111,7 +107,7 @@ W tym przykładzie:
 > 
 
 ## <a name="add-new-output"></a>Dodaj nowe dane wyjściowe
-Teraz wybierz zadanie > dane **wyjściowe**  > **Dodaj**.
+Teraz wybierz zadanie > dane **wyjściowe** > **Dodaj**.
 
 ![](./media/export-stream-analytics/SA006.png)
 
@@ -205,10 +201,10 @@ Teraz można użyć tego zestawu danych w raportach i pulpitach nawigacyjnych w 
 
 ![W Power BI wybierz zestaw danych i pola.](./media/export-stream-analytics/210.png)
 
-## <a name="no-data"></a>Nie masz danych?
+## <a name="no-data"></a>Brak danych?
 * Sprawdź, czy [Format daty](#set-path-prefix-pattern) jest prawidłowo ustawiony na rrrr-mm-dd (z kreskami).
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 Noam Ben Zeev pokazuje, jak przetwarzać eksportowane dane przy użyciu Stream Analytics.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Export-to-Power-BI-from-Application-Insights/player]

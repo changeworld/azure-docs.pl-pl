@@ -1,18 +1,17 @@
 ---
 title: Przegląd rozszerzenia Diagnostyka Azure
 description: Korzystaj z diagnostyki platformy Azure na potrzeby debugowania, mierzenia wydajności, monitorowania, analizy ruchu w usługach Cloud Services, Virtual Machines i Service Fabric
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: d9db4b4c8e6d82f29d227b9f8afe528e000c651e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468001"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672382"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Przegląd rozszerzenia Diagnostyka Azure
 Diagnostyka Azure rozszerzenie jest [agentem w Azure monitor](agents-overview.md) , który zbiera dane monitorowania z systemu operacyjnego gościa zasobów obliczeniowych platformy Azure, w tym maszyn wirtualnych. Ten artykuł zawiera Omówienie rozszerzenia Diagnostyka Azure, w tym określonych funkcji, które obsługuje, oraz opcji instalacji i konfiguracji. 
@@ -86,7 +85,7 @@ LAD zapisuje dane w tabelach w usłudze Azure Storage. Obsługuje ona ujścia w 
 
 
 ## <a name="installation-and-configuration"></a>Instalacja i konfiguracja
-Rozszerzenie diagnostyczne jest zaimplementowane jako [rozszerzenie maszyny wirtualnej](/virtual-machines/extensions/overview) na platformie Azure, dlatego obsługuje te same opcje instalacji przy użyciu szablonów Menedżer zasobów, programu PowerShell i interfejsu wiersza polecenia. Aby uzyskać ogólne informacje na temat instalowania i konserwowania rozszerzeń maszyn wirtualnych, zobacz [rozszerzenia i funkcje maszyny wirtualnej dla systemu Windows](/virtual-machines/extensions/features-windows) i [rozszerzeń i funkcji maszyn wirtualnych](/virtual-machines/extensions/features-linux) w systemie Linux.
+Rozszerzenie diagnostyczne jest zaimplementowane jako [rozszerzenie maszyny wirtualnej](../../virtual-machines/extensions/overview.md) na platformie Azure, dlatego obsługuje te same opcje instalacji przy użyciu szablonów Menedżer zasobów, programu PowerShell i interfejsu wiersza polecenia. Aby uzyskać ogólne informacje na temat instalowania i konserwowania rozszerzeń maszyn wirtualnych, zobacz [rozszerzenia i funkcje maszyny wirtualnej dla systemu Windows](../../virtual-machines/extensions/features-windows.md) i [rozszerzeń i funkcji maszyn wirtualnych](../../virtual-machines/extensions/features-linux.md) w systemie Linux.
 
 Można także zainstalować i skonfigurować rozszerzenie diagnostyczne systemu Windows i Linux w Azure Portal w obszarze **Ustawienia diagnostyczne** w sekcji **monitorowanie** w menu maszyny wirtualnej.
 

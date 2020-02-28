@@ -2,18 +2,17 @@
 title: Akcje elementu webhook dla alertów dziennika w usłudze Azure Alerts
 description: W tym artykule opisano sposób tworzenia reguły alertu dziennika przy użyciu obszaru roboczego Log Analytics lub Application Insights, sposobu wypchnięcia danych jako elementu webhook protokołu HTTP i szczegółowych informacji o różnych możliwych dostosowaniach.
 author: yanivlavi
+ms.author: yalavi
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 3a072ae64104f8fded49ff6a00f5b58902c39903
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 7b1956ad2bf9bf38ba9edc4c7234078557564071
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838566"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667707"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akcje elementu webhook dla reguł alertów dziennika
 Po [utworzeniu alertu dziennika na platformie Azure](alerts-log.md)można [skonfigurować go za pomocą grup akcji](action-groups.md) , aby wykonać jedną lub więcej akcji. W tym artykule opisano różne akcje elementu webhook, które są dostępne i przedstawiono sposób konfigurowania niestandardowego elementu webhook opartego na notacji JSON.
@@ -21,7 +20,7 @@ Po [utworzeniu alertu dziennika na platformie Azure](alerts-log.md)można [skonf
 > [!NOTE]
 > Można również użyć [wspólnego schematu alertów](https://aka.ms/commonAlertSchemaDocs) dla integracji elementów webhook. Typowy schemat alertów umożliwia korzystanie z jednego rozszerzalnego i ujednoliconego ładunku alertów dla wszystkich usług alertów w Azure Monitor. należy pamiętać, że wspólny schemat alertów nie ma opcji niestandardowy kod JSON dla alertów dziennika. Jest ona stosowana do typowego ładunku schematu alertu, jeśli jest zaznaczone niezależnie od dostosowania, które można wykonać na poziomie reguły alertu. [Dowiedz się więcej na temat typowych definicji schematu alertów.](https://aka.ms/commonAlertSchemaDefinitions)
 
-## <a name="webhook-actions"></a>Akcje elementu webhook
+## <a name="webhook-actions"></a>Akcje elementów webhook
 
 Za pomocą akcji elementu webhook można wywołać proces zewnętrzny poprzez pojedyncze żądanie HTTP POST. Wywołana usługa powinna obsługiwać elementy webhook i określać, jak używać dowolnego otrzymanego ładunku.
 
@@ -54,7 +53,7 @@ Elementy webhook zawierają adres URL i ładunek sformatowany w formacie JSON, k
 | *Typ alertu*| #alerttype | Typ reguły alertu dziennika skonfigurowanej jako [pomiar metryki](alerts-unified-log.md#metric-measurement-alert-rules) lub [liczba wyników](alerts-unified-log.md#number-of-results-alert-rules).|
 | *Identyfikator obszaru roboczego* |#workspaceid |Identyfikator obszaru roboczego Log Analytics. |
 | *Identyfikator aplikacji* |#applicationid |Identyfikator aplikacji Application Insights. |
-| *Identyfikator subskrypcji* |#subscriptionid |Identyfikator używanej subskrypcji platformy Azure. 
+| *Subscription ID (Identyfikator subskrypcji)* |#subscriptionid |Identyfikator używanej subskrypcji platformy Azure. 
 
 > [!NOTE]
 > *LinkToSearchResults* przekazuje parametry, takie jak *SearchQuery*, *Interwał wyszukiwania StartTime*oraz *czas zakończenia interwału wyszukiwania* w adresie URL do Azure Portal do wyświetlania w sekcji Analiza. Azure Portal ma limit rozmiaru identyfikatora URI wynoszący około 2 000 znaków. W portalu *nie* będą otwierane linki podane w alertach, jeśli wartości parametrów przekraczają limit. Możesz ręcznie wprowadzić szczegóły, aby wyświetlić wyniki w portalu analizy. Można też użyć [interfejsu API REST usługi Application Insights Analytics](https://dev.applicationinsights.io/documentation/Using-the-API) lub [interfejsu API REST log Analytics](/rest/api/loganalytics/) , aby programowo pobrać wyniki. 

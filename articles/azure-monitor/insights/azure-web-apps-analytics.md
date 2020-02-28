@@ -1,18 +1,17 @@
 ---
 title: Wyświetl dane analityczne Web Apps platformy Azure | Microsoft Docs
 description: Możesz użyć rozwiązania Azure Web Apps Analytics, aby uzyskać wgląd w informacje o usłudze Azure Web Apps, zbierając różne metryki dla wszystkich zasobów aplikacji sieci Web platformy Azure.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/02/2018
-ms.openlocfilehash: 999b461447578fd6273cf5d16c9d354cca4ff985
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93d378e334d2f6443ac8a59c9022501d3023a2a4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406034"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666917"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Wyświetl dane analityczne dla metryk we wszystkich zasobach aplikacji sieci Web platformy Azure
 

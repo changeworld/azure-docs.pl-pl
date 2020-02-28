@@ -1,18 +1,17 @@
 ---
 title: Zoptymalizuj środowisko SQL Server przy użyciu Azure Monitor | Microsoft Docs
 description: Za pomocą Azure Monitor można użyć rozwiązania sprawdzania kondycji SQL w celu oceny ryzyka i kondycji środowisk w regularnych odstępach czasu.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: 23b1391033713fc8eeccf2d0872c49a4291b8292
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: ceaed0800df01bf2c44fee13d98b01b6e726200d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168892"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662488"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Zoptymalizuj środowisko SQL za pomocą rozwiązania do sprawdzania kondycji SQL Server w Azure Monitor
 
@@ -79,14 +78,14 @@ Poniższe informacje służą do ustawiania konta Uruchom jako Operations Manage
 
 1. W Operations Manager Otwórz konsolę operacje, a następnie kliknij pozycję **Administracja**.
 2. W obszarze **Konfiguracja Uruchom jako**kliknij pozycję **Profile**, a następnie otwórz **SQL Assessment profil Uruchom jako**.
-3. Na stronie **Konta Uruchom jako** kliknij pozycję **Dodaj**.
+3. Na stronie **konta Uruchom jako** kliknij przycisk **Dodaj**.
 4. Wybierz konto Uruchom jako systemu Windows zawierające poświadczenia potrzebne do SQL Server lub kliknij pozycję **Nowy** , aby je utworzyć.
 
    > [!NOTE]
    > Typ konta Uruchom jako musi być w systemie Windows. Konto Uruchom jako musi być również częścią lokalnej grupy administratorów na wszystkich serwerach z systemem Windows hostującym wystąpienia SQL Server.
    >
    >
-5. Kliknij pozycję **Zapisz**.
+5. Kliknij przycisk **Save** (Zapisz).
 6. Zmodyfikuj i wykonaj następujące przykładowe polecenie T-SQL na każdym wystąpieniu SQL Server, aby przyznać minimalnym uprawnieniam wymaganym dla konta Uruchom jako, aby przeprowadzić kontrolę kondycji. Nie trzeba jednak tego robić, jeśli konto Uruchom jako jest już częścią roli serwera sysadmin w SQL Server wystąpieniach.
 
 ```
@@ -215,7 +214,7 @@ Następnie można wyeksportować wyniki do programu Excel w celu dalszego przegl
 
 *Czy istnieje sposób skonfigurowania, jak często jest przeprowadzane sprawdzanie?*
 
-* Obecnie nie.
+* Nie w tej chwili.
 
 *Jeśli po dodaniu rozwiązania sprawdzania kondycji SQL zostanie odnaleziony inny serwer, zostanie on sprawdzony?*
 
@@ -243,7 +242,7 @@ Następnie można wyeksportować wyniki do programu Excel w celu dalszego przegl
 
 *Czy istnieje sposób skonfigurowania zbierania danych?*
 
-* Obecnie nie.
+* Nie w tej chwili.
 
 *Dlaczego należy skonfigurować konto Uruchom jako?*
 

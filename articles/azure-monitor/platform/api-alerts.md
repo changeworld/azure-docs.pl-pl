@@ -1,29 +1,27 @@
 ---
 title: Za pomocą interfejsu API REST alertów usługi Log Analytics
 description: Interfejs API REST alertów Log Analytics umożliwia tworzenie i zarządzanie alertami w Log Analytics, które są częścią Log Analytics.  Ten artykuł zawiera szczegółowe informacje o interfejsie API i przykłady do wykonywania różnych operacji.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
 ms.date: 07/29/2018
-ms.openlocfilehash: 7112f86ca123c66c5969236617f35fcb8d698030
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680668"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665004"
 ---
-# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Tworzenie i zarządzanie nimi reguły alertów w usłudze Log Analytics przy użyciu interfejsu API REST
+# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Tworzenie i zarządzanie nimi reguły alertów w usłudze Log Analytics przy użyciu interfejsu API REST 
+
 Log Analytics alertu interfejsu API REST umożliwia tworzenie i Zarządzanie alertami w usłudze Log Analytics.  Ten artykuł zawiera szczegółowe informacje o interfejsie API i przykłady do wykonywania różnych operacji.
 
 > [!IMPORTANT]
 > Jak [ogłoszono wcześniej](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)obszary robocze usługi log Analytics utworzone po *1 czerwca 2019* — będą mogły zarządzać regułami alertów przy użyciu **tylko** usługi Azure scheduledQueryRules [rest](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/), [szablonu](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) i [polecenia cmdlet programu PowerShell](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)platformy Azure. Klienci mogą łatwo [przełączać swoje preferowane środki zarządzania regułami alertów](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) dla starszych obszarów roboczych, aby korzystać z Azure monitor scheduledQueryRules jako domyślne i uzyskiwać wiele [nowych korzyści](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) , takich jak możliwość używania natywnych poleceń cmdlet programu PowerShell, zwiększonych lookback okresów czasu w regułach, tworzenie reguł w osobnej grupie zasobów lub subskrypcji i wiele innych.
 
-Interfejsu API do REST wyszukiwania usługi Log Analytics jest zgodne ze specyfikacją REST i możliwy za pośrednictwem interfejsu REST API usługi Azure Resource Manager. W tym dokumencie można znaleźć przykłady gdzie interfejsu API jest dostępny z wiersza polecenia programu PowerShell przy użyciu [ARMClient](https://github.com/projectkudu/ARMClient), narzędzie wiersza polecenia typu open source, które upraszcza wywoływanie interfejsu API usługi Azure Resource Manager. Korzystanie z programu PowerShell i ARMClient jest jedną z wielu opcji, aby dostęp do interfejsu API wyszukiwania usługi Log Analytics. Za pomocą tych narzędzi może korzystać z usługi Azure Resource Manager interfejsu API RESTful do wykonywania wywołań do obszarów roboczych usługi Log Analytics i wykonywania poleceń wyszukiwania w nich. Interfejs API zwróci wyniki wyszukiwania dla użytkownika w formacie JSON, co pozwala na wykorzystanie wyniki wyszukiwania na wiele różnych sposobów programowo.
+Interfejsu API do REST wyszukiwania usługi Log Analytics jest zgodne ze specyfikacją REST i możliwy za pośrednictwem interfejsu REST API usługi Azure Resource Manager. W tym dokumencie znajdują się przykłady, do których dostęp do interfejsu API uzyskuje się za pomocą wiersza polecenia programu PowerShell przy użyciu [ARMClient](https://github.com/projectkudu/ARMClient), narzędzia wiersza polecenia typu open source, które upraszcza wywoływanie interfejsu API Azure Resource Manager. Korzystanie z programu PowerShell i ARMClient jest jedną z wielu opcji, aby dostęp do interfejsu API wyszukiwania usługi Log Analytics. Za pomocą tych narzędzi może korzystać z usługi Azure Resource Manager interfejsu API RESTful do wykonywania wywołań do obszarów roboczych usługi Log Analytics i wykonywania poleceń wyszukiwania w nich. Interfejs API zwróci wyniki wyszukiwania dla użytkownika w formacie JSON, co pozwala na wykorzystanie wyniki wyszukiwania na wiele różnych sposobów programowo.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Obecnie alertów można tworzyć tylko za pomocą zapisanego kryterium wyszukiwania w usłudze Log Analytics.  Możesz zapoznać się z [interfejsu API REST wyszukiwania dziennika](../../azure-monitor/log-query/log-query-overview.md) Aby uzyskać więcej informacji.
+Obecnie alertów można tworzyć tylko za pomocą zapisanego kryterium wyszukiwania w usłudze Log Analytics.  Aby uzyskać więcej informacji, możesz zapoznać się z [interfejsem API REST przeszukiwania dzienników](../../azure-monitor/log-query/log-query-overview.md) .
 
 ## <a name="schedules"></a>Harmonogramy
 Zapisane wyszukiwanie może mieć co najmniej jeden harmonogram. Harmonogram definiuje, jak często wyszukiwanie jest uruchamiania i przedział czasu, przez który jest identyfikowany kryteria.
@@ -124,7 +122,7 @@ Za pomocą metody Delete ID akcji można usunąć danej akcji.
 ### <a name="alert-actions"></a>Akcje alertu
 Harmonogram powinien mieć jeden i tylko jeden Akcja alertu.  Akcje alertu mają co najmniej jeden z sekcji w poniższej tabeli.  Każdy opisano szczegółowo poniżej.
 
-| Sekcja | Opis | Użycie |
+| Sekcja | Opis | Sposób użycia |
 |:--- |:--- |:--- |
 | Próg |Kryteria dla uruchomienia działania.| Wymagane dla każdego alertu przed lub po ich zostały rozszerzone na platformę Azure. |
 | Ważność |Etykieta służy do klasyfikowania alertów po ich wyzwoleniu.| Wymagane dla każdego alertu przed lub po ich zostały rozszerzone na platformę Azure. |
@@ -202,7 +200,7 @@ Za pomocą metody Put istniejący identyfikator akcji do modyfikowania akcją wa
 #### <a name="suppress"></a>Pomiń
 Usługa log Analytics na podstawie zapytania, które alerty będą uruchamiane za każdym razem, gdy spełnione lub przekroczeniu progu. Oparte na logice podany w kwerendzie, może to spowodować wprowadzenie wyzwolony w przypadku serii interwałów alert i dlatego powiadomienia również wysyłane stale. Aby zapobiec taki scenariusz, użytkownik może ustawić opcję Pomiń poinstruowanie usługi Log Analytics poczekaj, aż określony przedział czasu, po którym powiadomień jest uruchamiany po raz drugi dla reguły alertu. Pomiń więc jeśli jest ustawiona na 30 minut; alert będą uruchamiane po raz pierwszy i wysyłać powiadomienia skonfigurowane. Ale Zaczekaj 30 minut, zanim zostaną ponownie użyte powiadomień dla reguły alertu. W okresie przejściowym będzie kontynuował działanie reguły alertu — tylko powiadomienia są pomijane przez usługę Log Analytics określony czas, niezależnie od tego, ile razy regułę alertu są uruchamiane w tym okresie.
 
-Pomiń właściwości usługi Log Analytics, reguła alertu jest określony, przy użyciu *ograniczania* wartość i pomijania okresu używania *DurationInMinutes* wartości.
+Właściwość pomijania reguły alertu Log Analytics jest określana przy użyciu wartości *ograniczenia* i okresu pomijania przy użyciu wartości *DurationInMinutes* .
 
 Poniżej znajduje się Przykładowa odpowiedź dla akcji z tylko wartością progową, ważność i Właściwość pomijania
 
@@ -233,7 +231,7 @@ Za pomocą metody Put istniejący identyfikator akcji do modyfikowania akcją wa
 #### <a name="action-groups"></a>Grupy akcji
 Wszystkie alerty na platformie Azure, użyj akcji grupy jako domyślnego mechanizmu do obsługi akcji. Grupy akcji możesz określić swoje działania raz i skojarz grupę akcji do wielu alertów — na platformie Azure. Bez konieczności wielokrotnego wielokrotnie zadeklarować te same akcje. Grupy akcji obsługują wiele akcji — w tym wiadomości e-mail, wiadomości SMS, połączenie głosowe, połączenia narzędzia ITSM, element Runbook usługi Automation, identyfikator URI elementu Webhook i innych. 
 
-W przypadku użytkowników, którzy rozszerzyły swoje alerty na platformę Azure — harmonogram powinien teraz zawierać szczegóły grupy akcji, które są przesyłane wraz z progiem, aby można było utworzyć alert. Szczegóły wiadomości e-mail, adresy URL elementu Webhook, szczegóły elementu Runbook usługi Automation i innych działań, muszą być zdefiniowane w stronie grupy akcji przed tworzenia alertu; można utworzyć [grupy akcji z usługi Azure Monitor](../../azure-monitor/platform/action-groups.md) w portalu lub użyj [API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+W przypadku użytkowników, którzy rozszerzyły swoje alerty na platformę Azure — harmonogram powinien teraz zawierać szczegóły grupy akcji, które są przesyłane wraz z progiem, aby można było utworzyć alert. Szczegóły poczty E-mail, adresy URL elementu webhook, szczegóły automatyzacji elementu Runbook i inne akcje muszą być zdefiniowane w grupie akcji najpierw przed utworzeniem alertu. jeden może utworzyć [grupę akcji na podstawie Azure monitor](../../azure-monitor/platform/action-groups.md) w portalu lub użyć [interfejsu API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Aby dodać skojarzenia grupy akcji alertu, należy określić unikatowy identyfikator usługi Azure Resource Manager do grupy akcji w definicji alertu. Ilustracja przykładowa znajduje się poniżej:
 
@@ -269,7 +267,7 @@ Za pomocą metody Put istniejący identyfikator akcji do modyfikowania grupy akc
 Akcje domyślne, wykonując standardowego szablonu i format dla powiadomień. Jednak użytkownik może dostosować pewne działania, nawet wtedy, gdy są one kontrolowane przez grupy akcji. Obecnie Dostosowywanie jest temat wiadomości E-mail i ładunek elementu Webhook.
 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>Dostosowywanie temat wiadomości E-Mail do grupy akcji
-Domyślnie jest temat wiadomości e-mail dla alertów: powiadomień o alertach `<AlertName>` dla `<WorkspaceName>`. Ale to można dostosowywać, aby można było konkretnych słów lub tagi — pozwala łatwo stosować reguły filtrowania w Twojej skrzynce odbiorczej. Szczegółowe informacje o nagłówku Dostosuj wiadomości e-mail należy wysyłać wraz ze szczegółami ActionGroup, tak jak w poniższym przykładzie.
+Domyślnie temat wiadomości e-mail dotyczący alertów to: powiadomienia o alertach `<AlertName>` `<WorkspaceName>`. Ale to można dostosowywać, aby można było konkretnych słów lub tagi — pozwala łatwo stosować reguły filtrowania w Twojej skrzynce odbiorczej. Szczegółowe informacje o nagłówku Dostosuj wiadomości e-mail należy wysyłać wraz ze szczegółami ActionGroup, tak jak w poniższym przykładzie.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -301,7 +299,7 @@ Za pomocą metody Put istniejący identyfikator akcji do modyfikowania grupy akc
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 ##### <a name="customize-webhook-payload-for-action-group"></a>Dostosowywanie ładunek elementu Webhook dla grupy akcji
-Domyślnie element webhook, który został wysłany za pośrednictwem grupy akcji dla usługi log analytics ma stałą strukturę. Jednak jeden dostosować ładunek w formacie JSON przy użyciu określonych zmiennych obsługiwane pod kątem wymagań punktem końcowym elementu webhook. Aby uzyskać więcej informacji, zobacz [Akcja elementu Webhook dla reguł alertów dzienników](../../azure-monitor/platform/alerts-log-webhook.md). 
+Domyślnie element webhook, który został wysłany za pośrednictwem grupy akcji dla usługi log analytics ma stałą strukturę. Jednak jeden dostosować ładunek w formacie JSON przy użyciu określonych zmiennych obsługiwane pod kątem wymagań punktem końcowym elementu webhook. Aby uzyskać więcej informacji, zobacz [Akcja elementu webhook dla reguł alertów dziennika](../../azure-monitor/platform/alerts-log-webhook.md). 
 
 Dostosuj szczegóły elementu webhook należy wysyłać wraz ze szczegółami ActionGroup i będzie można zastosować do wszystkich elementów Webhook identyfikatora URI określonego wewnątrz grupy akcji; tak jak w poniższym przykładzie.
 
@@ -338,7 +336,7 @@ Za pomocą metody Put istniejący identyfikator akcji do modyfikowania grupy akc
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Użyj [interfejsu API REST, aby wykonać wyszukiwanie w dzienniku](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics.
+* Użyj [interfejsu API REST do przeszukiwania dzienników](../../azure-monitor/log-query/log-query-overview.md) w log Analytics.
 * Informacje o [alertach dzienników w usłudze Azure monitor](../../azure-monitor/platform/alerts-unified-log.md)
 * Jak [tworzyć, edytować i zarządzać regułami alertów dziennika w usłudze Azure monitor](../../azure-monitor/platform/alerts-log.md)
 

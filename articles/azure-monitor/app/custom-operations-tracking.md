@@ -1,19 +1,15 @@
 ---
 title: Śledzenie operacji niestandardowych przy użyciu zestawu Azure Application Insights .NET SDK
 description: Śledzenie operacji niestandardowych przy użyciu zestawu Azure Application Insights .NET SDK
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 7b92a386d691e15975f18de169d7924b82ec5c5f
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951347"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671821"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Śledzenie operacji niestandardowych przy użyciu zestawu SDK platformy Application Insights .NET
 
@@ -27,7 +23,7 @@ Ten dokument zawiera wskazówki dotyczące śledzenia niestandardowych operacji 
 - Application Insights aplikacji sieci Web (z systemem ASP.NET) w wersji 2.4 +.
 - Application Insights ASP.NET Core wersja 2.1 +.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Operacja jest logicznym elementem pracy wykonywanym przez aplikację. Ma nazwę, czas rozpoczęcia, czas trwania, wynik i kontekst wykonania, takie jak nazwa użytkownika, właściwości i wynik. Jeśli operacja A została zainicjowana przez operację B, operacja B jest ustawiana jako element nadrzędny dla elementu. Operacja może mieć tylko jeden element nadrzędny, ale może mieć wiele operacji podrzędnych. Aby uzyskać więcej informacji na temat korelacji operacji i telemetrii, zobacz [korelacja telemetrii Azure Application Insights](correlation.md).
 
 W Application Insights .NET SDK operacja jest opisywana przez klasę abstrakcyjną [OperationTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) i jej elementy podrzędne [RequestTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) i [DependencyTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs).
@@ -217,7 +213,7 @@ Istnieje również możliwość skorelowania identyfikatora operacji Application
 #### <a name="enqueue"></a>Dodawania
 Ponieważ kolejki magazynu obsługują interfejs API protokołu HTTP, wszystkie operacje z kolejką są automatycznie śledzone przez Application Insights. W wielu przypadkach ta Instrumentacja powinna być wystarczająca. Jednak aby skorelować ślady po stronie konsumenta ze śladami producenta, należy przekazać jakiś kontekst korelacji podobnie jak w protokole HTTP dla korelacji. 
 
-Ten przykład pokazuje, jak śledzić operację `Enqueue`. Przekonaj się:
+Ten przykład pokazuje, jak śledzić operację `Enqueue`. Możesz:
 
  - **Skorelowanie ponownych prób (jeśli istnieją)** : wszystkie mają jeden wspólny element nadrzędny, który jest operacją `Enqueue`. W przeciwnym razie są one śledzone jako elementy podrzędne żądania przychodzącego. Jeśli kolejka zawiera wiele żądań logicznych, może być trudne do znalezienia, które wywołanie spowodowało ponowną próbę.
  - **Skorelowanie dzienników magazynu (jeśli**są one i w razie konieczności): są skorelowane z Application Insights telemetrii.
@@ -343,9 +339,9 @@ W przypadku usuwania komunikatów z Instrumentacji upewnij się, że ustawisz id
 
 - Utwórz nowy `Activity` po uzyskaniu elementu z kolejki.
 - Użyj `Activity.SetParentId(message.ParentId)` do skorelowania dzienników odbiorców i producentów.
-- Uruchom konsolę `Activity`.
+- Uruchom `Activity`.
 - Śledź operacje usunięcia z kolejki, procesu i usuwania za pomocą pomocników `Start/StopOperation`. Zrób to w tym samym przepływie kontroli asynchronicznej (kontekst wykonywania). W ten sposób są one skorelowane prawidłowo.
-- Zatrzymaj program `Activity`.
+- Zatrzymaj `Activity`.
 - Użyj `Start/StopOperation`lub wywołaj `Track` dane telemetryczne ręcznie.
 
 ### <a name="dependency-types"></a>Typy zależności
@@ -355,7 +351,7 @@ Application Insights używa typu zależności do Cusomize środowiska interfejsu
 - `Azure Event Hubs` dla Event Hubs platformy Azure
 - `Azure Service Bus` Azure Service Bus
 
-### <a name="batch-processing"></a>przetwarzania wsadowego.
+### <a name="batch-processing"></a>Przetwarzanie wsadowe
 W przypadku niektórych kolejek można usunąć z kolejki wiele komunikatów z jednym żądaniem. Przetwarzanie takich komunikatów jest uznawane za niezależne i należy do różnych operacji logicznych. Nie jest możliwe skorelowanie operacji `Dequeue` z przetworzonym komunikatem.
 
 Każdy komunikat powinien być przetwarzany we własnym przepływie kontroli asynchronicznej. Aby uzyskać więcej informacji, zobacz sekcję [Śledzenie zależności wychodzących](#outgoing-dependencies-tracking) .

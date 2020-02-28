@@ -1,18 +1,17 @@
 ---
 title: łącznik zarządzania usługami IT na platformie Azure Log Analytics | Microsoft Docs
 description: Ten artykuł zawiera omówienie łącznik zarządzania usługami IT (ITSMC) i informacje na temat sposobu korzystania z tego rozwiązania w celu centralnego monitorowania i zarządzania elementami roboczymi narzędzia ITSM w usłudze Azure Log Analytics oraz szybkiego rozwiązywania problemów.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 68aff01ea541a24be1f8d526fecbb6a9d2c30086
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990678"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672229"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Łączenie platformy Azure z narzędziami narzędzia ITSM przy użyciu łącznik zarządzania usługami IT
 
@@ -66,7 +65,7 @@ Aby można było utworzyć połączenie, należy dodać rozwiązanie łącznik I
    >[!NOTE]
    >W ramach trwającego przejścia z Microsoft Operations Management Suite (OMS) do Azure Monitor, obszary robocze OMS są teraz określane jako Log Analytics obszary robocze.
 
-5. Kliknij pozycję **Utwórz**.
+5. Kliknij przycisk **Utwórz**.
 
 Gdy zasób rozwiązania zostanie wdrożony, w prawym górnym rogu okna pojawi się powiadomienie.
 
@@ -91,7 +90,7 @@ Po jego narzędzi Narzędzia ITSM wykonaj następujące kroki, aby utworzyć po�
    ![połączenia narzędzia ITSM](media/itsmc-overview/itsm-connections.png)
 
    Na tej stronie zostanie wyświetlona lista połączeń.
-3. Kliknij przycisk **Dodaj połączenie**.
+3. Kliknij pozycję **Dodaj połączenie**.
 
    ![Dodaj połączenie narzędzia ITSM](media/itsmc-overview/add-new-itsm-connection.png)
 
@@ -185,10 +184,10 @@ ServiceDeskWorkItemType_s="Incident"
 - Priorytet
 - Eskalacja
 - Utworzony przez
-- Rozwiązane przez
+- Rozwiązany przez
 - Zamknięte przez
-- Źródło
-- Przypisano do
+- Element źródłowy
+- Przypisane do
 - Kategoria
 - Tytuł
 - Opis
@@ -196,7 +195,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Data zamknięcia
 - Data rozwiązania
 - Data ostatniej modyfikacji
-- Computer (Komputer)
+- Computer
 
 
 **Element roboczy:** **żądania zmiany**
@@ -208,8 +207,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Identyfikator działu obsługi
 - Utworzony przez
 - Zamknięte przez
-- Źródło
-- Przypisano do
+- Element źródłowy
+- Przypisane do
 - Tytuł
 - Typ
 - Kategoria
@@ -220,7 +219,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Priorytet
 - Ryzyko
 - Wpływ
-- Przypisano do
+- Przypisane do
 - Data utworzenia
 - Data zamknięcia
 - Data ostatniej modyfikacji
@@ -230,7 +229,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Data rozpoczęcia pracy
 - Data zakończenia pracy
 - Opis
-- Computer (Komputer)
+- Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Dane wyjściowe dla zdarzenia usługi ServiceNow
 
@@ -252,7 +251,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | CreatedDate_t|  Otworzyć |
 | ClosedDate_t| Zamknięte|
 | ResolvedDate_t|Klienta|
-| Computer (Komputer)  | Element konfiguracji |
+| Computer  | Element konfiguracji |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>Dane wyjściowe żądania zmiany usługi ServiceNow
 
@@ -277,7 +276,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | WorkStartDate_t  | Rzeczywista data rozpoczęcia |
 | WorkEndDate_t | Rzeczywista data zakończenia|
 | Description_s | Opis |
-| Computer (Komputer)  | Element konfiguracji |
+| Computer  | Element konfiguracji |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>Rozwiązywanie problemów z połączeniami narzędzia ITSM

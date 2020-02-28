@@ -1,34 +1,33 @@
 ---
-title: Tworzenie grup akcji przy użyciu szablonów usługi Resource Manager
-description: Dowiedz się, jak utworzyć grupy akcji przy użyciu szablonu usługi Azure Resource Manager.
+title: Tworzenie grup akcji przy użyciu szablonów Menedżer zasobów
+description: Dowiedz się, jak utworzyć grupę akcji przy użyciu szablonu Azure Resource Manager.
 author: dkamstra
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 638dd8efba5e86bb7e8abb78a41196bfac9524df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50ad9d57b24fab9ee57c2f9caae8f4c39d2681f0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60709970"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669084"
 ---
-# <a name="create-an-action-group-with-a-resource-manager-template"></a>Utwórz grupę akcji przy użyciu szablonu usługi Resource Manager
-W tym artykule dowiesz się, jak używać [szablonu usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) do skonfigurowania grup akcji. Za pomocą szablonów, można automatycznie skonfigurować grupy akcji, których można użyć ponownie w pewnych typów alertów. Te grupy akcji upewnij się, że poprawne strony powiadomienie, gdy zostanie wyzwolony alert.
+# <a name="create-an-action-group-with-a-resource-manager-template"></a>Tworzenie grupy akcji przy użyciu szablonu Menedżer zasobów
+W tym artykule pokazano, jak skonfigurować grupy akcji przy użyciu [szablonu Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) . Za pomocą szablonów można automatycznie konfigurować grupy akcji, które mogą być ponownie używane w niektórych typach alertów. Te grupy akcji zapewniają, że wszystkie odpowiednie strony są powiadamiane po wyzwoleniu alertu.
 
 Przedstawiono podstawowe kroki:
 
 1. Utwórz szablon jako plik JSON, który opisuje sposób tworzenia grupy akcji.
 
-2. Wdrażanie szablonu przy użyciu [dowolnej metody wdrażania](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
+2. Wdróż szablon przy użyciu [dowolnej metody wdrażania](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
 
-Po pierwsze opisano, jak utworzyć szablon usługi Resource Manager dla grupy akcji, których definicje akcji są zakodowane w szablonie. Po drugie opisano sposób tworzenia szablonu, który pobiera informacje o konfiguracji elementu webhook jako parametry wejściowe podczas wdrażania szablonu.
+Najpierw opisano sposób tworzenia szablonu Menedżer zasobów dla grupy akcji, w której definicje akcji są trwale kodowane w szablonie. Po drugie opisano sposób tworzenia szablonu, który pobiera informacje o konfiguracji elementu webhook jako parametry wejściowe podczas wdrażania szablonu.
 
-## <a name="resource-manager-templates-for-an-action-group"></a>Szablony usługi Resource Manager dla grupy akcji
+## <a name="resource-manager-templates-for-an-action-group"></a>Menedżer zasobów szablonów dla grupy akcji
 
-Aby utworzyć grupy akcji przy użyciu szablonu usługi Resource Manager, należy utworzyć zasób tego typu `Microsoft.Insights/actionGroups`. Następnie należy wypełnić wszystkie powiązane właściwości. Poniżej przedstawiono dwa przykładowe szablony, które Utwórz grupę akcji.
+Aby utworzyć grupę akcji przy użyciu szablonu Menedżer zasobów, należy utworzyć zasób typu `Microsoft.Insights/actionGroups`. Następnie Wypełnij wszystkie powiązane właściwości. Poniżej przedstawiono dwa przykładowe szablony, które tworzą grupę akcji.
 
 ```json
 {
@@ -163,8 +162,8 @@ Aby utworzyć grupy akcji przy użyciu szablonu usługi Resource Manager, należ
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [grup akcji](../../azure-monitor/platform/action-groups.md).
-* Dowiedz się więcej o [alerty](alerts-overview.md).
-* Dowiedz się, jak dodać [alertów przy użyciu szablonu usługi Resource Manager](../../azure-monitor/platform/alerts-activity-log.md).
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się więcej na temat [grup akcji](../../azure-monitor/platform/action-groups.md).
+* Dowiedz się więcej o [alertach](alerts-overview.md).
+* Dowiedz się, jak dodawać [alerty przy użyciu szablonu Menedżer zasobów](../../azure-monitor/platform/alerts-activity-log.md).
 

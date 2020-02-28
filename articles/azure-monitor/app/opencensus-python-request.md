@@ -1,18 +1,16 @@
 ---
 title: Śledzenie żądań przychodzących na platformie Azure Application Insights przy użyciu języka Python OpenCensus | Microsoft Docs
 description: Monitoruj wywołania żądań dla aplikacji w języku Python za pośrednictwem języka Python OpenCensus.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 475ba601c61169f92eddd7f203b7fa34ed2e4916
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 0396bd8d150c6145a39f36e7be9e6e2dcacef2c4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368253"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669951"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>Śledź przychodzące żądania przy użyciu języka Python OpenCensus
 

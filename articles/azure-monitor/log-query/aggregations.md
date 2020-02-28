@@ -1,18 +1,17 @@
 ---
 title: Agregacje w zapytaniach dziennika Azure Monitor | Microsoft Docs
 description: Opisuje funkcje agregacji w zapytaniach dziennika Azure Monitor, które oferują przydatne metody analizowania danych.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 86b84e76b4716c1fddda23a6d52c65c0700c5663
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900428"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670308"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Agregacje w zapytaniach dziennika Azure Monitor
 
@@ -23,7 +22,7 @@ ms.locfileid: "72900428"
 
 W tym artykule opisano funkcje agregacji w zapytaniach dziennika Azure Monitor, które oferują przydatne metody analizowania danych. Wszystkie te funkcje współpracują z operatorem `summarize`, który tworzy tabelę z zagregowanymi wynikami tabeli wejściowej.
 
-## <a name="counts"></a>Liczby
+## <a name="counts"></a>Licznik
 
 ### <a name="count"></a>count
 Policz liczbę wierszy w zestawie wyników po zastosowaniu filtrów. Poniższy przykład zwraca łączną liczbę wierszy w tabeli _wydajności_ w ciągu ostatnich 30 minut. Wynik jest zwracany w kolumnie o nazwie *count_* , chyba że zostanie przypisana nazwa określona:
@@ -86,7 +85,7 @@ Heartbeat
 |Stany Zjednoczone    | 19                  |
 |Kanada           | 3                   |
 |Irlandia          | 0                   |
-|Zjednoczone Królestwo   | 0                   |
+|Wielka Brytania   | 0                   |
 |Holandia      | 2                   |
 
 

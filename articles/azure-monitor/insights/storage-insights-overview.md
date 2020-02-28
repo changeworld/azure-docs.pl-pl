@@ -1,18 +1,17 @@
 ---
 title: Monitoruj usługi Azure Storage za pomocą Azure Monitor dla magazynu (wersja zapoznawcza) | Microsoft Docs
 description: W tym artykule opisano Azure Monitor funkcji Storage, która zapewnia administratorom magazynu szybkie zrozumienie problemów z wydajnością i wykorzystaniem ich kont usługi Azure Storage.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: 790d6ad9fb26253697ea36b402799d3eb488ca47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f23be7e764ad180a23c76abb7f9bb2218fd61e4c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401133"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662523"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Monitorowanie usługi magazynu za pomocą Azure Monitor dla magazynu (wersja zapoznawcza)
 
@@ -47,7 +46,7 @@ Z poziomu Azure Monitor można wyświetlać szczegóły transakcji, opóźnień 
 
 Aby wyświetlić wykorzystanie i dostępność kont magazynu we wszystkich subskrypcjach, wykonaj następujące czynności.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 2. Wybierz pozycję **monitor** w okienku po lewej stronie w Azure Portal i w sekcji **szczegółowe informacje** wybierz pozycję **konta magazynu (wersja zapoznawcza)** .
 

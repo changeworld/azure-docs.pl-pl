@@ -1,18 +1,16 @@
 ---
 title: Dokumentacja interfejsu API usługi Azure Application Insights Agent
 description: Dokumentacja interfejsu API agenta Application Insights. Rozpocznij śledzenie. Zbierz dzienniki ETW z monitor stanu i Application Insights SDK.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: c97315b3a215f10e5b8f9533bf09fa5ac30ee16f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b9680101f1a22dd6d9c1617c8afc13a10ad1c594
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899651"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671226"
 ---
 # <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Interfejs API agenta Application Insights: Start-ApplicationInsightsMonitoringTrace
 
@@ -47,8 +45,8 @@ Aby zebrać te zdarzenia:
 ### <a name="what-events-to-collect"></a>Jakie zdarzenia należy zebrać
 
 Podczas zbierania zdarzeń są dostępne trzy opcje:
-1. Użyj przełącznika `-CollectSdkEvents`, aby zbierać zdarzenia emitowane z zestawu Application Insights SDK.
-2. Użyj przełącznika `-CollectRedfieldEvents`, aby zbierać zdarzenia emitowane przez monitor stanu i środowisko uruchomieniowe Redfield. Te dzienniki są przydatne podczas diagnozowania usług IIS i uruchamiania aplikacji.
+1. Użyj przełącznika `-CollectSdkEvents`, aby zbierać zdarzenia emitowane z Application Insights SDK.
+2. Użyj przełącznika `-CollectRedfieldEvents` do zbierania zdarzeń emitowanych przez monitor stanu i środowisko uruchomieniowe Redfield. Te dzienniki są przydatne podczas diagnozowania usług IIS i uruchamiania aplikacji.
 3. Użyj obu przełączników do zbierania obu typów zdarzeń.
 4. Domyślnie, jeśli nie określono żadnego przełącznika, zostaną zebrane oba typy zdarzeń.
 

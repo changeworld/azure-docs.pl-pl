@@ -1,18 +1,14 @@
 ---
 title: Eksplorowanie metryk na platformie Azure Application Insights | Microsoft Docs
 description: Jak interpretować wykresy w Eksploratorze metryk oraz jak dostosować bloki w Eksploratorze metryk.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/22/2019
-ms.openlocfilehash: b0831ff500ba4cbe71dae6251fd960f6c96c0fe5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820794"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670188"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Eksplorowanie metryk w Application Insights
 Metryki w [Application Insights][start] są mierzonymi wartościami i liczbami zdarzeń wysyłanych w ramach telemetrii z aplikacji. Pomagają wykrywać problemy z wydajnością i obserwować trendy w sposobie używania aplikacji. Istnieje szeroki zakres metryk standardowych i można również utworzyć własne, niestandardowe metryki i zdarzenia.
@@ -173,7 +169,7 @@ Aby otrzymywać powiadomienia pocztą e-mail o nietypowych wartościach dowolnej
 [Dowiedz się więcej o alertach][alerts].
 
 
-## <a name="continuous-export"></a>Ciągły eksport
+## <a name="continuous-export"></a>Eksport ciągły
 Jeśli chcesz, aby dane były stale eksportowane, aby można było je przetwarzać zewnętrznie, rozważ użycie [eksportu ciągłego](../../azure-monitor/app/export-telemetry.md).
 
 ### <a name="power-bi"></a>Power BI
@@ -193,7 +189,7 @@ Na wykresie metryki możesz kliknąć ikonę analiza, aby przejść bezpośredni
 * W przypadku grupowania wykresu według właściwości, która nie jest zdefiniowana w metryce, na wykresie nie będzie niczego. Spróbuj wyczyścić polecenie "Grupuj według" lub wybierz inną właściwość grupowania.
 * Dane wydajności (procesor CPU, szybkość operacji we/wy itd.) są dostępne dla usług sieci Web Java, aplikacji klasycznych systemu Windows, [aplikacji sieci Web i usług IIS, jeśli jest instalowany Monitor stanu](../../azure-monitor/app/monitor-performance-live-website-now.md)i [usługa Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). Nie jest ona dostępna dla usługi Azure Websites.
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 

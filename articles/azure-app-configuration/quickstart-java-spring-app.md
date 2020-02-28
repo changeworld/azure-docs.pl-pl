@@ -10,12 +10,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 172fe646b294ca511a22128094c56172c4268018
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2a7cab3422a0d44e45e622e2d556b5fec4ff659c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750284"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669475"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Szybki Start: Tworzenie aplikacji ze sprężyną Java przy użyciu konfiguracji aplikacji platformy Azure
 
@@ -31,11 +31,11 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz pozycję **Eksplorator konfiguracji** >  **+ Utwórz** , aby dodać następujące pary klucz-wartość:
+1. Wybierz pozycję **Eksplorator konfiguracji** >  **+ Utwórz** , aby dodać następujące pary klucz-wartość:
 
     | Klucz | Wartość |
     |---|---|
-    | /application/config.message | Witamy |
+    | /application/config.message | Hello |
 
     Dla tej pory pozostaw pustą **etykietę** i **Typ zawartości** .
 
@@ -45,30 +45,42 @@ Użyj [sprężyny Initializr](https://start.spring.io/) , aby utworzyć nowy pro
 
 1. Przejdź do <https://start.spring.io/>.
 
-2. Określ następujące opcje:
+1. Określ następujące opcje:
 
-   * Wygeneruj projekt **Maven** z użyciem języka **Java**.
-   * Określ wersję **rozruchu sprężynowego** , która jest równa lub większa niż 2,0.
-   * Określ nazwy **Grupa** i **Artefakt** dla swojej aplikacji.
-   * Dodaj zależność **sieci Web sprężyny** .
+   - Wygeneruj projekt **Maven** z użyciem języka **Java**.
+   - Określ wersję **rozruchu sprężynowego** , która jest równa lub większa niż 2,0.
+   - Określ nazwy **Grupa** i **Artefakt** dla swojej aplikacji.
+   - Dodaj zależność **sieci Web sprężyny** .
 
-3. Po określeniu poprzednich opcji wybierz pozycję **Generuj projekt**. Po wyświetleniu monitu pobierz projekt do ścieżki na komputerze lokalnym.
+1. Po określeniu poprzednich opcji wybierz pozycję **Generuj projekt**. Po wyświetleniu monitu pobierz projekt do ścieżki na komputerze lokalnym.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Nawiązywanie połączenia z magazynem konfiguracji aplikacji
 
 1. Po wyodrębnieniu plików w systemie lokalnym, prosta aplikacja rozruchowa sprężyny jest gotowa do edycji. Znajdź plik *pom.xml* w katalogu głównym swojej aplikacji.
 
-2. Otwórz plik *pom.xml* w edytorze tekstu, a następnie dodaj starter Spring Cloud Azure Config do listy `<dependencies>`:
+1. Otwórz plik *pom.xml* w edytorze tekstu, a następnie dodaj starter Spring Cloud Azure Config do listy `<dependencies>`:
+
+    **Chmura Wiosenna 1.1. x**
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0</version>
+        <artifactId>spring-cloud-azure-feature-management</artifactId>
+        <version>1.1.2</version>
     </dependency>
     ```
 
-3. Utwórz nowy plik Java o nazwie *MessageProperties.java* w katalogu pakietów swojej aplikacji. Dodaj następujące wiersze:
+    **Chmura Wiosenna 1.2. x**
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-feature-management</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    ```
+
+1. Utwórz nowy plik Java o nazwie *MessageProperties.java* w katalogu pakietów swojej aplikacji. Dodaj następujące wiersze:
 
     ```java
     package com.example.demo;
@@ -89,7 +101,7 @@ Użyj [sprężyny Initializr](https://start.spring.io/) , aby utworzyć nowy pro
     }
     ```
 
-4. Utwórz nowy plik Java o nazwie *HelloController.java* w katalogu pakietów swojej aplikacji. Dodaj następujące wiersze:
+1. Utwórz nowy plik Java o nazwie *HelloController.java* w katalogu pakietów swojej aplikacji. Dodaj następujące wiersze:
 
     ```java
     package com.example.demo;
@@ -112,7 +124,7 @@ Użyj [sprężyny Initializr](https://start.spring.io/) , aby utworzyć nowy pro
     }
     ```
 
-5. Otwórz główny plik Java aplikacji i dodaj element `@EnableConfigurationProperties`, aby włączyć tę funkcję.
+1. Otwórz główny plik Java aplikacji i dodaj element `@EnableConfigurationProperties`, aby włączyć tę funkcję.
 
     ```java
     import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -126,10 +138,28 @@ Użyj [sprężyny Initializr](https://start.spring.io/) , aby utworzyć nowy pro
     }
     ```
 
-6. Utwórz nowy plik o nazwie `bootstrap.properties` w katalogu zasobów aplikacji, a następnie Dodaj do pliku następujące wiersze. Zastąp przykładowe wartości odpowiednimi właściwościami magazynu konfiguracji aplikacji.
+1. Utwórz nowy plik o nazwie `bootstrap.properties` w katalogu zasobów aplikacji, a następnie Dodaj do pliku następujące wiersze. Zastąp przykładowe wartości odpowiednimi właściwościami magazynu konfiguracji aplikacji.
 
     ```CLI
-    spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
+    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    ```
+
+1. Ustaw zmienną środowiskową o nazwie **APP_CONFIGURATION_CONNECTION_STRING**i ustaw ją na klucz dostępu do magazynu konfiguracji aplikacji. W wierszu polecenia Uruchom następujące polecenie i ponownie uruchom wiersz polecenia, aby zezwolić na wprowadzenie zmiany:
+
+    ```CLI
+        setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
+    ```
+
+    Jeśli używasz programu Windows PowerShell, uruchom następujące polecenie:
+
+    ```azurepowershell
+        $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
+    ```
+
+    Jeśli używasz macOS lub Linux, uruchom następujące polecenie:
+
+    ```console
+        export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>Lokalne kompilowanie i uruchamianie aplikacji

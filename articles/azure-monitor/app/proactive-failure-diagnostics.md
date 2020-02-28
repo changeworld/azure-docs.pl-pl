@@ -1,19 +1,15 @@
 ---
 title: Anomalie wykrywania inteligentnego, w Application Insights | Microsoft Docs
 description: Ostrzega o nietypowych zmianach w przypadku żądań zakończonych niepowodzeniem w aplikacji sieci Web i umożliwia analizę diagnostyki. Nie jest wymagana żadna konfiguracja.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: c556f726cd63971abe1e9b6d8b87117bb3e378db
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: e1c07fca3a4eee19e56c313a889e5b86ce2b4c42
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912853"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671753"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Wykrywanie inteligentne — anomalie błędów
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) automatycznie alarmuje użytkownika w czasie niemal rzeczywistym, jeśli aplikacja sieci Web napotyka nietypowy wzrost liczby żądań zakończonych niepowodzeniem. Wykrywa nietypowy wzrost liczby żądań HTTP lub wywołań zależności zgłaszanych jako zakończone niepowodzeniem. W przypadku żądań żądania zakończone niepowodzeniem zazwyczaj mają kody odpowiedzi 400 lub wyższe. Aby ułatwić Klasyfikacja i zdiagnozowanie problemu, analiza charakterystyk błędów i powiązanych danych aplikacji znajduje się w szczegółach alertu. Istnieją także linki do portalu Application Insights w celu przeprowadzenia dalszej diagnostyki. Ta funkcja nie wymaga konfigurowania ani konfiguracji, ponieważ używa algorytmów uczenia maszynowego do przewidywania normalnego współczynnika niepowodzeń.
@@ -37,7 +33,7 @@ Szczegóły alertu pomogą Ci:
 ## <a name="benefits-of-smart-detection"></a>Zalety wykrywania inteligentnego
 Zwykłe [alerty dotyczące metryk](../../azure-monitor/app/alerts.md) informują o problemie. Jednak funkcja inteligentnego wykrywania uruchamia pracę diagnostykę, wykonując wiele analiz, które w przeciwnym razie trzeba wykonać samodzielnie. Wyniki są zapakowane w sposób uporządkowany, co pomaga szybko uzyskać dostęp do katalogu głównego problemu.
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 Inteligentne wykrywanie monitoruje dane otrzymane z aplikacji, a w szczególności współczynnik awarii. Ta zasada zlicza liczbę żądań, dla których właściwość `Successful request` ma wartość false, oraz liczbę wywołań zależności, dla których właściwość `Successful call` ma wartość false. W przypadku żądań domyślnie `Successful request == (resultCode < 400)` (chyba że kod niestandardowy nie został zapisany do [filtrowania](../../azure-monitor/app/api-filtering-sampling.md#filtering) lub generowania własnych wywołań [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) ). 
 
 Wydajność aplikacji ma typowy wzorzec zachowania. Niektóre żądania lub wywołania zależności będą bardziej podatne na awarie niż inne; a ogólna częstotliwość niepowodzeń może być większa w miarę wzrostu obciążenia. Funkcja inteligentnego wykrywania używa uczenia maszynowego, aby znaleźć te anomalie.

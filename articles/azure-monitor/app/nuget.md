@@ -1,18 +1,14 @@
 ---
 title: Azure Monitor Application Insights pakietów NuGet
 description: Azure Monitor Application Insights listy pakietów NuGet dla ASP.NET, ASP.NET Core, Python
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: reference
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/16/2018
-ms.openlocfilehash: 0bac42242bc08fcc07bba12847a4aeb79424dc78
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5675c0fad61f1b75aa7e93db02246eed43967ec2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406568"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670002"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights pakietów NuGet
 
@@ -20,7 +16,7 @@ Poniżej znajduje się bieżąca lista stabilnych pakietów NuGet wydania dla Ap
 
 ## <a name="common-packages-for-aspnet"></a>Popularne pakiety dla ASP.NET
 
-| Nazwa pakietu | Stabilna wersja | Opis | Pobierz |
+| Nazwa pakietu | Stabilna wersja | Opis | Pobieranie |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights | 2.12.0 | Zapewnia podstawowe funkcje przesyłania wszystkich typów telemetria usługi Application Insights i jest pakietem zależnym dla wszystkich innych pakietów Application Insights | [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
 |Microsoft.ApplicationInsights.Agent.Intercept | 2.4.0 | Włącza przechwycenie wywołań metod | [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent.Intercept/) |
@@ -32,7 +28,7 @@ Poniżej znajduje się bieżąca lista stabilnych pakietów NuGet wydania dla Ap
 
 ## <a name="common-packages-for-aspnet-core"></a>Popularne pakiety dla ASP.NET Core
 
-| Nazwa pakietu | Stabilna wersja | Opis | Pobierz |
+| Nazwa pakietu | Stabilna wersja | Opis | Pobieranie |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.AspNetCore | 2.5.0 | Application Insights dla ASP.NET Core aplikacji sieci Web. | [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) |
 | Microsoft.ApplicationInsights | 2.12.0 | Ten pakiet zapewnia podstawowe funkcje przesyłania wszystkich typów telemetria usługi Application Insights i jest pakietem zależnym dla wszystkich innych pakietów Application Insights | [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
@@ -42,7 +38,7 @@ Poniżej znajduje się bieżąca lista stabilnych pakietów NuGet wydania dla Ap
 | Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.12.0 | Udostępnia kanał telemetrii do Application Insights Windows Server SDK, który będzie przechowywać dane telemetryczne w scenariuszach w trybie offline. | [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 
 ## <a name="common-packages-for-python-using-opencensus"></a>Popularne pakiety dla języka Python za pomocą OpenCensus
-| Nazwa pakietu | Stabilna wersja | Opis | Pobierz |
+| Nazwa pakietu | Stabilna wersja | Opis | Pobieranie |
 |-------------------------------|-----------------------|------------|----|
 | opencensus-EXT-Azure | 1.0.0 | Application Insights dla aplikacji języka Python w Azure Monitor za pośrednictwem OpenCensus. | [Pobierz pakiet](https://pypi.org/project/opencensus-ext-azure/) |
 | opencensus-EXT-Django | 0.7.2 | Ten pakiet zapewnia integrację z biblioteką [Django](https://pypi.org/project/django/) języka Python. | [Pobierz pakiet](https://pypi.org/project/opencensus-ext-django/) |
@@ -59,7 +55,7 @@ Poniżej znajduje się bieżąca lista stabilnych pakietów NuGet wydania dla Ap
 
 ## <a name="listenerscollectorsappenders"></a>Detektory/moduły zbierające/dołączania
 
-| Nazwa pakietu | Stabilna wersja | Opis | Pobierz |
+| Nazwa pakietu | Stabilna wersja | Opis | Pobieranie |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.DiagnosticSourceListener | 2.7.2 |  Umożliwia przekazywanie zdarzeń z DiagnosticSource do Application Insights. | [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) |
 | Microsoft.ApplicationInsights.EventSourceListener | 2.7.2 | Application Insights EventSourceListener umożliwia wysyłanie danych ze zdarzeń EventSource do Application Insights. | [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) |
@@ -69,16 +65,16 @@ Poniżej znajduje się bieżąca lista stabilnych pakietów NuGet wydania dla Ap
 | Microsoft.ApplicationInsights.NLogTarget | 2.7.2 |  niestandardowy obiekt docelowy, który umożliwia wysyłanie komunikatów dziennika NLog do Application Insights. | [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
 | Microsoft.ApplicationInsights.SnapshotCollector | 1.3.1 | Monitoruje wyjątki w aplikacji i automatycznie zbiera migawki do analizy w trybie offline. | [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/)
 
-## <a name="service-fabric"></a>Sieć szkieletowa usługi
+## <a name="service-fabric"></a>Service Fabric
 
-| Nazwa pakietu | Stabilna wersja | Opis | Pobierz |
+| Nazwa pakietu | Stabilna wersja | Opis | Pobieranie |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.ServiceFabric | 2.2.0 | Ten pakiet udostępnia automatyczne dekoracje telemetrii z kontekstem usługi Service Fabric, w którym jest uruchomiona aplikacja. Nie używaj tego NuGet dla natywnych aplikacji Service Fabric. | [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric/) |
 | Microsoft.ApplicationInsights.ServiceFabric.Native | 2.2.0 | Moduł Application Insights dla aplikacji usługi Service Fabric. Użyj tego NuGet tylko dla natywnych aplikacji Service Fabric. W przypadku aplikacji uruchamianych w kontenerach Użyj pakietu Microsoft. ApplicationInsights. servicefabric. | [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric.Native/) |  
 
 ## <a name="status-monitor"></a>Monitor stanu
 
-| Nazwa pakietu | Stabilna wersja | Opis | Pobierz |
+| Nazwa pakietu | Stabilna wersja | Opis | Pobieranie |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.Agent_x64 | 2.2.1 |  Włącza zbieranie danych środowiska uruchomieniowego dla aplikacji x64 | [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft.ApplicationInsights.Agent_x86 | 2.2.1 |  Włącza zbieranie danych środowiska uruchomieniowego dla aplikacji x86. | [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
@@ -87,7 +83,7 @@ Te pakiety składają się na część podstawowych funkcji monitorowania środo
 
 ## <a name="additional-packages"></a>Dodatkowe pakiety
 
-| Nazwa pakietu | Stabilna wersja | Opis | Pobierz |
+| Nazwa pakietu | Stabilna wersja | Opis | Pobieranie |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.AzureWebSites | 2.6.5 | To rozszerzenie włącza Application Insights monitorowania na Azure App Service. Wersja zestawu SDK. Instrukcje: Dodaj ustawienia aplikacji "APPINSIGHTS_INSTRUMENTATIONKEY" przy użyciu iKey i ponownie uruchom webapp, aby zastosować efekt.| [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AzureWebSites/) |
 | Microsoft.ApplicationInsights.Injector | 2.6.7 | Ten pakiet zawiera pliki wymagane do iniekcji bezkodu Application Insights | [Pobierz pakiet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Injector/) |

@@ -1,19 +1,18 @@
 ---
 title: Diagnozowanie wyjątków czasu wykonywania za pomocą usługi Azure Application Insights | Microsoft Docs
 description: Samouczek omawiający znajdowanie i diagnozowanie wyjątków czasu wykonywania w aplikacji za pomocą usługi Azure Application Insights.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: d56b81dbe8c78b9b48f122d79f4567d0b0f42e27
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91a0e4b052571a509ec7122e4440a8eaf58839be
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398534"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670427"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Znajdowanie i diagnozowanie wyjątków czasu wykonywania za pomocą usługi Azure Application Insights
 
@@ -40,7 +39,7 @@ W celu ukończenia tego samouczka:
 - Wdróż aplikację .NET na platformie Azure i [włącz zestaw Application Insights SDK](../../azure-monitor/app/asp-net.md). 
 - Samouczek śledzi identyfikowanie wyjątków w Twojej aplikacji, dlatego zmodyfikuj kod w środowisku deweloperskim lub testowym, aby wygenerować wyjątek. 
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="log-in-to-azure"></a>Logowanie się do platformy Azure
 Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com).
 
 
@@ -96,7 +95,7 @@ Wszystkie dane zbierane przez usługę Application Insights są przechowywane w 
 
 1. Kliknij informacje CodeLens nad kodem, aby wyświetlić dane telemetryczne dostarczane przez usługę Application Insights.
 
-    ![Code](media/tutorial-runtime-exceptions/codelens.png)
+    ![Kod](media/tutorial-runtime-exceptions/codelens.png)
 
 1. Kliknij pozycję **Analiza wpływu**, aby otworzyć okno Application Insights — analiza.  Jest ono wypełnione kilkoma zapytaniami udostępniającymi szczegóły żądań zakończonych niepowodzeniem, takie jak użytkownicy, przeglądarki i regiony dotknięte niepowodzeniem.<br><br>![Analiza](media/tutorial-runtime-exceptions/analytics.png)<br>
 

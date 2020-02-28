@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: d88c76afb3426dce8c68ae4bcda366fe17700aa7
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: e7e9ff795f7f639686b9f629dacb6f0752c20732
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566050"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660210"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych zoptymalizowane pod kątem procesora GPU
 
@@ -51,7 +51,7 @@ W przypadku wybrania opcji ręcznego instalowania sterowników procesora GPU fir
 
 - Jeśli chcesz wdrożyć więcej niż kilka maszyn wirtualnych serii N, weź pod uwagę subskrypcję z opcją płatność zgodnie z rzeczywistym użyciem lub inne opcje zakupu. Jeśli używasz [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), możesz użyć ograniczonej liczby rdzeni obliczeniowych platformy Azure.
 
-- Może być konieczne zwiększenie przydziału rdzeni (na region) w ramach subskrypcji platformy Azure i zwiększenie oddzielnego przydziału rdzeni NC, NCv2, Seria NCV3, ND, NDv2, NV lub NVv2. Aby zażądać zwiększenia limitu przydziału, [Otwórz bezpłatnie żądanie pomocy technicznej w trybie online](/../azure-supportability/how-to-create-azure-support-request.md) . Limity domyślne mogą się różnić w zależności od kategorii subskrypcji.
+- Może być konieczne zwiększenie przydziału rdzeni (na region) w ramach subskrypcji platformy Azure i zwiększenie oddzielnego przydziału rdzeni NC, NCv2, Seria NCV3, ND, NDv2, NV lub NVv2. Aby zażądać zwiększenia limitu przydziału, [Otwórz bezpłatnie żądanie pomocy technicznej w trybie online](../azure-portal/supportability/how-to-create-azure-support-request.md) . Limity domyślne mogą się różnić w zależności od kategorii subskrypcji.
 
 ## <a name="other-sizes"></a>Inne rozmiary
 

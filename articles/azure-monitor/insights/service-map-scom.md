@@ -1,18 +1,17 @@
 ---
 title: Integracja Azure Monitor dla maszyn wirtualnych map z Operations Manager | Microsoft Docs
 description: Azure Monitor dla maszyn wirtualnych automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. W tym artykule omówiono używanie funkcji map do automatycznego tworzenia diagramów aplikacji rozproszonych w Operations Manager.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: a8d0e0980b0d3634626bc1332e8219bdca7fbe01
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 112413720f969474369555a74bc89846666e2ef9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402637"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663457"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integracja System Center Operations Manager z funkcją Azure Monitor dla maszyn wirtualnych map
 
@@ -135,7 +134,7 @@ Bieżący projekt przedstawia następujące problemy i ograniczenia:
 * Mimo że serwery programu można dodać do grupy Serwery Service Map ręcznie za pomocą okienka **Tworzenie** , mapy dla tych serwerów nie są synchronizowane natychmiast. Zostaną one zsynchronizowane z funkcji mapy Azure Monitor dla maszyn wirtualnych podczas następnego cyklu synchronizacji.
 * Po wprowadzeniu zmian w diagramach aplikacji rozproszonych utworzonych przez pakiet administracyjny te zmiany prawdopodobnie zostaną zastąpione podczas następnej synchronizacji z Azure Monitor dla maszyn wirtualnych.
 
-## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
+## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
 Aby uzyskać oficjalną dokumentację platformy Azure dotyczącą tworzenia nazwy głównej usługi, zobacz:
 

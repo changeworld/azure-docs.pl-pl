@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b0d9437b10bc54aac481eb630f12a2b99d2360a1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209787"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672467"
 ---
 # <a name="building-an-accessible-application"></a>Tworzenie dostępnej aplikacji
 
@@ -32,9 +32,11 @@ Zestaw SDK sieci Web Azure Maps zawiera prekompilowaną z wieloma funkcjami uła
 Szczegółowe informacje o zgodności z pełnymi ułatwieniami dostępu dla wszystkich produktów firmy Microsoft można znaleźć [tutaj](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/). Wyszukaj ciąg "Azure Maps Web", aby znaleźć dokument przeznaczony dla Azure Maps Web SDK. 
 
 ## <a name="navigating-the-map"></a>Nawigowanie po mapie
+
 Istnieje kilka różnych sposobów, w których mapowanie może być powiększane, przesuwane, obracane i mierzone. Poniżej przedstawiono szczegółowe informacje na temat różnych sposobów nawigowania po mapie.
 
 **Powiększ mapę**
+
 - Za pomocą myszy kliknij dwukrotnie mapę, aby powiększyć na jednym poziomie.
 - Za pomocą myszy przewiń kółko, aby powiększyć mapę.
 - Korzystając z ekranu dotykowego, dotknij mapy dwoma palcami i szczypania ze sobą, aby pomniejszyć lub rozłożyć palcami od siebie do powiększania.
@@ -45,23 +47,46 @@ Istnieje kilka różnych sposobów, w których mapowanie może być powiększane
 - Naciśnij i przytrzymaj przycisk `Shift` i naciśnij lewy przycisk myszy w dół mapy i przeciągnij, aby narysować obszar, w którym chcesz powiększyć mapę.
 
 **Panoramowanie mapy**
+
 - Korzystając z myszy, naciśnij przycisk myszy w dół na mapie i przeciągnij w dowolnym kierunku.
 - Korzystając z ekranu dotykowego, dotknij mapy i przeciągnij w dowolnym kierunku.
 - Korzystając z mapy, użyj klawiszy strzałek, aby przenieść mapę.
 
 **Obróć mapę**
+
 - Za pomocą myszy naciśnij prawy przycisk myszy na mapie i przeciągnij w lewo lub w prawo. 
 - Korzystając z ekranu dotykowego, dotknij mapy dwoma palcami i Obróć.
 - Korzystając z mapy, użyj klawisza Shift i klawiszy strzałek w lewo lub w prawo.
 - Za pomocą kontrolki rotacji z klawiszami myszy, dotyku lub klawiatury/ENTER.
 
 **Wysokość mapy**
+
 - Za pomocą myszy naciśnij prawy przycisk myszy na mapie i przeciągnij w górę lub w dół. 
 - Korzystając z ekranu dotykowego, dotknij mapy dwoma palcami i przeciągnij je w górę lub w dół.
 - Korzystając z mapy, użyj klawisza Shift oraz klawiszy strzałek w górę lub w dół. 
 - Za pomocą kontrolki gęstość z klawiszem myszy, dotykiem lub klawiszem Tab/ENTER.
 
-**Zmiana stylu mapy** Nie wszyscy deweloperzy chcą, aby wszystkie możliwe style mapy były dostępne w swojej aplikacji. Deweloper może programowo ustawiać i zmieniać styl mapy. Jeśli deweloper wyświetli kontrolkę selektora stylów mapy, użytkownik może zmienić styl mapy za pomocą myszy, dotyku lub klawiatury z klawiszem Tab lub ENTER. Deweloper może określić, które style mapy mają być dostępne w kontrolce selektor stylów mapy. 
+## <a name="change-the-map-style"></a>Zmiana stylu mapy
+
+Nie wszyscy deweloperzy chcą, aby wszystkie możliwe style mapy były dostępne w swojej aplikacji. Jeśli deweloper wyświetli kontrolkę selektora stylów mapy, użytkownik może zmienić styl mapy za pomocą myszy, dotyku lub klawiatury z klawiszem Tab lub ENTER. Deweloper może określić, które style mapy mają być dostępne w kontrolce selektor stylów mapy. Ponadto deweloper może programowo ustawiać i zmieniać styl mapy.
+
+**Użyj dużego kontrastu**
+
+- Po załadowaniu kontrolki mapy sprawdza ona, czy duży kontrast jest włączony i czy przeglądarka ją obsługuje.
+- Kontrolka mapy nie monitoruje trybu dużego kontrastu urządzenia. W przypadku zmiany trybu urządzenia mapa nie zostanie zmieniona. W takim przypadku użytkownik będzie musiał ponownie załadować mapę przez odświeżenie strony.
+- Po wykryciu dużego kontrastu styl mapy zostanie automatycznie przełączony do dużego kontrastu, a wszystkie wbudowane kontrolki będą korzystać z stylu dużego kontrastu. Na przykład ZoomControl, PitchControl, CompassControl, StyleControl i inne wbudowane kontrolki będą korzystać z stylu dużego kontrastu.
+- Istnieją dwa typy dużego kontrastu, jasne i ciemne. Jeśli typ dużego kontrastu może zostać wykryty przez kontrolki mapy, zachowanie mapy zostanie odpowiednio dopasowane. Jeśli jest jasne, zostanie załadowany styl mapy grayscale_light. Jeśli typ nie może zostać wykryty lub jest ciemny, zostanie załadowany styl high_contrast_dark.
+- Jeśli tworzysz niestandardowe kontrolki, warto wiedzieć, czy wbudowane kontrolki używają stylu o wysokim kontraście. Deweloperzy mogą dodać klasę CSS do znacznika DIV kontenera mapy, aby sprawdzić. Dodawane klasy CSS to `high-contrast-dark` i `high-contrast-light`. Aby sprawdzić użycie języka JavaScript, użyj polecenia:
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-dark")
+```
+
+lub użyj:
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-light")
+```
 
 ## <a name="keyboard-shortcuts"></a>Skróty klawiaturowe
 

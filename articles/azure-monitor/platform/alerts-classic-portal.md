@@ -2,16 +2,15 @@
 title: Twórz i wyświetlaj klasyczne alerty metryk i zarządzaj nimi za pomocą Azure Monitor
 description: Dowiedz się, jak używać Azure Portal, interfejsu wiersza polecenia lub programu PowerShell do tworzenia i wyświetlania reguł alertów dotyczących częstotliwości klasycznych oraz zarządzania nimi.
 author: yanivlavi
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: yalavi
-ms.openlocfilehash: fd15d6bb9442d91c672fdd444313880001880e07
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b770b9bd34c8267889db536ec81332de32cb8776
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705602"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668319"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Twórz i wyświetlaj klasyczne alerty metryk i zarządzaj nimi za pomocą Azure Monitor
 
@@ -51,7 +50,7 @@ Po utworzeniu alertu można go wybrać i wykonać jedną z następujących czynn
 * Edytuj lub Usuń.
 * **Wyłącz** lub **Włącz** tę opcję, jeśli chcesz tymczasowo zatrzymać lub wznowić otrzymywanie powiadomień dla tego alertu.
 
-## <a name="with-azure-cli"></a>Z interfejsem wiersza polecenia platformy Azure
+## <a name="with-azure-cli"></a>Przy użyciu interfejsu wiersza polecenia platformy Azure
 
 Poprzednie sekcje opisują sposób tworzenia, wyświetlania i zarządzania regułami alertów dotyczących metryk przy użyciu Azure Portal. W tej sekcji opisano, jak wykonać to samo przy użyciu wieloplatformowego [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). Najszybszym sposobem na rozpoczęcie korzystania z interfejsu wiersza polecenia platformy Azure jest [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest).
 
@@ -83,7 +82,7 @@ az monitor alert create --name <alert name> --resource-group <group name> \
 az monitor alert delete --name <alert name> --resource-group <group name>
 ```
 
-## <a name="with-powershell"></a>Z programem PowerShell
+## <a name="with-powershell"></a>Przy użyciu programu PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

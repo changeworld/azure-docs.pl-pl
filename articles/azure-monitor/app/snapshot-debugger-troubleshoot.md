@@ -1,19 +1,16 @@
 ---
 title: Rozwiązywanie problemów z usługą Azure Application Insights Snapshot Debugger
 description: W tym artykule przedstawiono kroki rozwiązywania problemów oraz informacje pomocne w przypadku deweloperów, którzy mają problemy z włączaniem lub używaniem Snapshot Debugger Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: brahmnes
-ms.author: mbullwin
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4544f42e7c024b21c4ae050d9b11e0f9e2786d57
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432329"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671413"
 ---
 # <a id="troubleshooting"></a>Rozwiązywanie problemów z włączaniem Application Insights Snapshot Debugger lub wyświetlania migawek
 Jeśli włączono Application Insights Snapshot Debugger dla aplikacji, ale nie widzisz migawek dla wyjątków, możesz użyć tych instrukcji do rozwiązywania problemów. Może istnieć wiele różnych powodów, dla których migawki nie są generowane. Możesz uruchomić kontrolę kondycji migawek, aby zidentyfikować niektóre z możliwych częstych przyczyn.
@@ -41,19 +38,19 @@ Jeśli aplikacja korzysta z wersji zapoznawczej programu .NET Core, a Snapshot D
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Uaktualnij do najnowszej wersji pakietu NuGet
 
-Jeśli Snapshot Debugger został włączony [w okienku Application Insights w portalu](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), aplikacja powinna mieć już uruchomiony najnowszy pakiet NuGet. Jeśli Snapshot Debugger został włączony przez dołączenie pakietu NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) , użyj Menedżera pakietów NuGet programu Visual Studio, aby upewnić się, że używasz najnowszej wersji Microsoft. ApplicationInsights. SnapshotCollector. Informacje o wersji znajduje się w temacie https://github.com/Microsoft/ApplicationInsights-Home/issues/167
+Jeśli Snapshot Debugger został włączony [w okienku Application Insights w portalu](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json), aplikacja powinna mieć już uruchomiony najnowszy pakiet NuGet. Jeśli Snapshot Debugger został włączony przez dołączenie pakietu NuGet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) , użyj Menedżera pakietów NuGet programu Visual Studio, aby upewnić się, że używasz najnowszej wersji Microsoft. ApplicationInsights. SnapshotCollector. Informacje o wersji można znaleźć w witrynie https://github.com/Microsoft/ApplicationInsights-Home/issues/167
 
 ## <a name="check-the-uploader-logs"></a>Sprawdź dzienniki obiektu przekazującego
 
-Po utworzeniu migawki, tworzony jest plik minizrzutu (.dmp) na dysku. Proces obiektu przekazującego osobne tworzy ten plik minizrzutu i przekazuje go wraz z wszelkich skojarzonych plików PDB do magazynu Application Insights Snapshot Debugger. Po pomyślnym przekazaniu minizrzut jest usuwany z dysku. Pliki dziennika dla procesu Przekazywarka są przechowywane na dysku. W środowisku usługi App Service można znaleźć te dzienniki w `D:\Home\LogFiles`. Użyj witryny Kudu zarządzania dla usługi App Service, aby znaleźć te pliki dziennika.
+Po utworzeniu migawki, tworzony jest plik minizrzutu (.dmp) na dysku. Proces obiektu przekazującego osobne tworzy ten plik minizrzutu i przekazuje go wraz z wszelkich skojarzonych plików PDB do magazynu Application Insights Snapshot Debugger. Po pomyślnym przekazaniu minizrzut jest usuwany z dysku. Pliki dziennika dla procesu Przekazywarka są przechowywane na dysku. W środowisku App Service te dzienniki można znaleźć w `D:\Home\LogFiles`. Użyj witryny Kudu zarządzania dla usługi App Service, aby znaleźć te pliki dziennika.
 
 1. Otwórz aplikację usługi App Service w witrynie Azure portal.
-2. Kliknij przycisk **Narzędzia zaawansowane**, lub Wyszukaj **Kudu**.
-3. Kliknij przycisk **Przejdź**.
-4. W **konsoli debugowania** listy rozwijanej wybierz pozycję **CMD**.
-5. Kliknij przycisk **LogFiles**.
+2. Kliknij przycisk **Narzędzia zaawansowane**lub Wyszukaj pozycję **kudu**.
+3. Kliknij pozycję **Przejdź**.
+4. W polu listy rozwijanej **konsola debugowania** wybierz pozycję **cmd**.
+5. Kliknij pozycję **LogFiles**.
 
-Powinien zostać wyświetlony co najmniej jeden plik z nazwą rozpoczynającą się od `Uploader_` lub `SnapshotUploader_` i `.log` rozszerzenia. Kliknij na odpowiednią ikonę, aby pobrać wszystkie pliki dziennika lub otworzyć je w przeglądarce.
+Powinien zostać wyświetlony co najmniej jeden plik o nazwie rozpoczynającej się od `Uploader_` lub `SnapshotUploader_` i rozszerzenia `.log`. Kliknij na odpowiednią ikonę, aby pobrać wszystkie pliki dziennika lub otworzyć je w przeglądarce.
 Nazwa pliku zawiera unikatowy sufiks, który identyfikuje wystąpienia usługi App Service. Wystąpienie usługi App Service jest przechowywana na więcej niż jednym komputerze, czy osobne pliki dziennika dla poszczególnych maszyn. Gdy przekazujesz wykryje nowy plik minizrzutu, zostało zapisane w pliku dziennika. Oto przykład pomyślne migawki i przekazywania:
 
 ```
@@ -82,10 +79,10 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 ```
 
 > [!NOTE]
-> W powyższym przykładzie pochodzi z pakietu Microsoft.ApplicationInsights.SnapshotCollector NuGet wersji 1.2.0 lub nowszej. We wcześniejszych wersjach, proces Przekazywarka jest nazywany `MinidumpUploader.exe` i dziennika jest mniej szczegółowa.
+> W powyższym przykładzie pochodzi z pakietu Microsoft.ApplicationInsights.SnapshotCollector NuGet wersji 1.2.0 lub nowszej. We wcześniejszych wersjach proces obiektu przekazującego jest wywoływany `MinidumpUploader.exe`, a dziennik jest mniej szczegółowy.
 
 W poprzednim przykładzie klucz Instrumentacji jest `c12a605e73c44346a984e00000000000`. Ta wartość powinna odpowiadać klucz instrumentacji aplikacji.
-Minizrzut jest skojarzony z migawki z Identyfikatorem `139e411a23934dc0b9ea08a626db16c5`. Tego Identyfikatora można użyć później do zlokalizowania telemetrii skojarzony wyjątek w analizy usługi Application Insights.
+Minizrzutu jest skojarzony z migawką o IDENTYFIKATORze `139e411a23934dc0b9ea08a626db16c5`. Tego Identyfikatora można użyć później do zlokalizowania telemetrii skojarzony wyjątek w analizy usługi Application Insights.
 
 Przekazujesz skanowania pod kątem nowych baz danych PDB, o co 15 minut. Oto przykład:
 
@@ -100,7 +97,7 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
     DateTime=2018-03-09T01:47:19.4614027Z
 ```
 
-W przypadku aplikacji, _nie są_ hostowana w usłudze App Service, dzienniki Przekazywarka znajdują się w tym samym folderze co minizrzutów: `%TEMP%\Dumps\<ikey>` (gdzie `<ikey>` jest klucz Instrumentacji).
+W przypadku aplikacji, które _nie są_ hostowane w App Service, dzienniki obiektu przekazującego są w tym samym folderze co minizrzutów: `%TEMP%\Dumps\<ikey>` (gdzie `<ikey>` jest kluczem Instrumentacji).
 
 ## <a name="troubleshooting-cloud-services"></a>Rozwiązywanie problemów z usługami w chmurze
 Dla ról w usługach w chmurze domyślny folder tymczasowy może być zbyt mała do przechowywania plików minizrzutu, co prowadzi do utraty migawki.
@@ -117,7 +114,7 @@ Wykonaj następujące kroki, aby skonfigurować usługi roli usługi w chmurze z
    </LocalResources>
    ```
 
-2. Zmodyfikuj kod startowy roli użytkownika, aby dodać zmienną środowiskową, który wskazuje na `SnapshotStore` zasobu lokalnego. Dla ról procesów roboczych kod powinny zostać dodane do Twojej roli `OnStart` metody:
+2. Zmodyfikuj kod uruchomienia roli, aby dodać zmienną środowiskową wskazującą `SnapshotStore` zasobów lokalnych. W przypadku ról procesów roboczych kod powinien zostać dodany do metody `OnStart` roli:
    ```csharp
    public override bool OnStart()
    {
@@ -125,7 +122,7 @@ Wykonaj następujące kroki, aby skonfigurować usługi roli usługi w chmurze z
        return base.OnStart();
    }
    ```
-   Dla ról sieci Web (ASP.NET), kod należy dodać do aplikacji sieci web `Application_Start` metody:
+   W przypadku ról sieci Web (ASP.NET) należy dodać kod do metody `Application_Start` aplikacji sieci Web:
    ```csharp
    using Microsoft.WindowsAzure.ServiceRuntime;
    using System;
@@ -143,7 +140,7 @@ Wykonaj następujące kroki, aby skonfigurować usługi roli usługi w chmurze z
    }
    ```
 
-3. Aktualizowanie pliku ApplicationInsights.config Twojej roli w celu zastąpienia lokalizacja folderu tymczasowego używana przez `SnapshotCollector`
+3. Zaktualizuj plik ApplicationInsights. config roli, aby zastąpić tymczasową lokalizację folderu używaną przez `SnapshotCollector`
    ```xml
    <TelemetryProcessors>
     <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
@@ -164,15 +161,15 @@ Modułu zbierającego migawki sprawdza kilka lokalizacji dobrze znanego, upewnia
 - FOLDER DANE APLIKACJI
 - TEMP
 
-Jeśli nie można odnaleźć odpowiedniego folderu, modułu zbierającego migawki zgłasza błąd powiedzenie _"Nie można odnaleźć folderu kopii w tle odpowiednie"._
+Jeśli nie można znaleźć odpowiedniego folderu, Snapshot Collector zgłasza błąd mówiący _"nie można znaleźć odpowiedniego folderu kopii w tle"._
 
-Jeśli kopia zakończy się niepowodzeniem, raporty modułu zbierającego migawki `ShadowCopyFailed` błędu.
+Jeśli kopia nie powiedzie się, Snapshot Collector zgłasza błąd `ShadowCopyFailed`.
 
-Jeśli przekazujesz nie można uruchomić, raporty modułu zbierającego migawki `UploaderCannotStartFromShadowCopy` błędu. Treść komunikatu często zawierają `System.UnauthorizedAccessException`. Ten błąd zazwyczaj występuje, ponieważ aplikacja jest uruchomiona przy użyciu konta z ograniczonymi uprawnieniami. To konto ma uprawnienia do zapisu do folderu kopii w tle, ale go nie ma uprawnień do wykonania kodu.
+Jeśli nie można uruchomić obiektu przekazującego, Snapshot Collector zgłasza błąd `UploaderCannotStartFromShadowCopy`. Treść komunikatu często zawiera `System.UnauthorizedAccessException`. Ten błąd zazwyczaj występuje, ponieważ aplikacja jest uruchomiona przy użyciu konta z ograniczonymi uprawnieniami. To konto ma uprawnienia do zapisu do folderu kopii w tle, ale go nie ma uprawnień do wykonania kodu.
 
-Ponieważ te błędy zwykle i tak się stanie podczas uruchamiania ich będzie zazwyczaj może występować `ExceptionDuringConnect` informacją o tym błędzie _"Przekazywarka nie powiodło się."_
+Ponieważ te błędy są zwykle wykonywane podczas uruchamiania, zazwyczaj następuje błąd `ExceptionDuringConnect` mówiący o tym, że _nie udało się uruchomić obiektu przekazującego._
 
-Aby uniknąć tych błędów, można określić folder kopii w tle ręcznie za pośrednictwem `ShadowCopyFolder` opcji konfiguracji. Na przykład za pomocą pliku ApplicationInsights.config:
+Aby obejść te błędy, można ręcznie określić folder kopii w tle za pomocą opcji konfiguracji `ShadowCopyFolder`. Na przykład za pomocą pliku ApplicationInsights.config:
 
    ```xml
    <TelemetryProcessors>
@@ -199,11 +196,11 @@ Lub, jeśli używasz pliku appsettings.json za pomocą aplikacji .NET Core:
 
 ## <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Aby znaleźć wyjątki z migawkami Użyj funkcji wyszukiwania usługi Application Insights
 
-Po utworzeniu migawki Zgłaszanie wyjątku jest oznaczony przy użyciu identyfikatora migawki Ten identyfikator migawki jest dołączony jako właściwości niestandardowych, gdy dane telemetryczne dotyczące wyjątków jest zgłaszany do usługi Application Insights. Za pomocą **wyszukiwania** w usłudze Application Insights można znaleźć wszystkie dane telemetryczne z `ai.snapshot.id` właściwości niestandardowej.
+Po utworzeniu migawki Zgłaszanie wyjątku jest oznaczony przy użyciu identyfikatora migawki Ten identyfikator migawki jest dołączony jako właściwości niestandardowych, gdy dane telemetryczne dotyczące wyjątków jest zgłaszany do usługi Application Insights. Korzystając z **wyszukiwania** w Application Insights, można znaleźć wszystkie dane telemetryczne z `ai.snapshot.id` właściwości niestandardowej.
 
 1. Przejdź do zasobu usługi Application Insights w witrynie Azure portal.
-2. Kliknij polecenie **Wyszukaj**.
-3. Typ `ai.snapshot.id` w polu tekstowym wyszukiwania i naciśnij klawisz Enter.
+2. Kliknij przycisk **Wyszukaj**.
+3. Wpisz `ai.snapshot.id` w polu tekstowym Wyszukaj, a następnie naciśnij klawisz ENTER.
 
 ![Wyszukiwanie danych telemetrycznych przy użyciu Identyfikatora migawki w portalu](./media/snapshot-debugger/search-snapshot-portal.png)
 
@@ -215,7 +212,7 @@ Aby wyszukać identyfikator określoną migawkę z dzienników obiektu przekazuj
 
 2. Przy użyciu sygnaturę czasową od dziennika obiektu przekazującego, Dostosuj zakres czasu filtr wyszukiwania, aby uwzględnić ten zakres czasu.
 
-Jeśli nadal nie widzisz wyjątków o takim identyfikatorze migawki, dane telemetryczne dotyczące wyjątków nie zostało zgłoszone do usługi Application Insights. Ta sytuacja może wystąpić, jeśli aplikacja uległa awarii po zajęło migawki, ale przed zgłosił dane telemetryczne dotyczące wyjątków. W takim przypadku sprawdź dzienniki usługi App Service w ramach `Diagnose and solve problems` aby zobaczyć, czy wystąpiły nieoczekiwane ponowne uruchomienie lub nieobsługiwane wyjątki.
+Jeśli nadal nie widzisz wyjątków o takim identyfikatorze migawki, dane telemetryczne dotyczące wyjątków nie zostało zgłoszone do usługi Application Insights. Ta sytuacja może wystąpić, jeśli aplikacja uległa awarii po zajęło migawki, ale przed zgłosił dane telemetryczne dotyczące wyjątków. W takim przypadku Sprawdź dzienniki App Service w obszarze `Diagnose and solve problems`, aby sprawdzić, czy wystąpiły nieoczekiwane ponowne uruchomienia lub Nieobsłużone wyjątki.
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>Edytowanie reguł serwera proxy lub zapory sieciowej
 

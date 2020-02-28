@@ -1,18 +1,15 @@
 ---
 title: Reguły akcji dla alertów Azure Monitor
 description: Informacje o regułach akcji w Azure Monitor są i sposobami ich konfigurowania i zarządzania nimi.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
 ms.date: 04/25/2019
-ms.openlocfilehash: e9de7a1fe4cee16cd1d22ba764ab9eccdf3979fd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.subservice: alerts
+ms.openlocfilehash: 42f8d9cd30caa48376cda049f6404aa897a6866c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767691"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668472"
 ---
 # <a name="action-rules-preview"></a>Reguły akcji (wersja zapoznawcza)
 
@@ -103,7 +100,7 @@ W przypadku wybrania w przełączniku **grupy akcji** należy dodać istniejąc�
 ### <a name="action-rule-details"></a>Szczegóły reguły akcji
 
 Na koniec skonfiguruj następujące szczegóły dla reguły akcji:
-* Nazwa
+* Name (Nazwa)
 * Grupa zasobów, w której została zapisana
 * Opis 
 

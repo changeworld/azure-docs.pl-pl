@@ -3,17 +3,16 @@ title: Rozwiązywanie problemów Azure Monitor wykresy metryk
 description: Rozwiązywanie problemów związanych z tworzeniem, dostosowywaniem lub interpretacją wykresów metryk
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 072e62d89e8febc4837c10874398daea3b8114ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974867"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659666"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Rozwiązywanie problemów z wykresami metryk
 
@@ -29,7 +28,7 @@ Po kliknięciu przycisku **Wybierz zasób** nie widzisz żądanego zasobu w okni
 
 1. Upewnij się, że wybrano właściwą grupę zasobów.
     > [!WARNING]
-    > W celu uzyskania najlepszej wydajności podczas pierwszego otwarcia Eksploratora metryk lista rozwijana **Grupa zasobów** nie ma wstępnie wybranych grup zasobów. Aby wyświetlić jakiekolwiek zasoby, musisz wybrać co najmniej jedną grupę.
+    > Aby zapewnić najlepszą wydajność, przy pierwszym otwarciu Eksploratora metryk na liście rozwijanej **Grupa zasobów** nie ma żadnych wstępnie wybranych grup zasobów. Aby wyświetlić jakiekolwiek zasoby, musisz wybrać co najmniej jedną grupę.
 
 ## <a name="chart-shows-no-data"></a>Wykres nie zawiera żadnych danych
 

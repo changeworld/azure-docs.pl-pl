@@ -1,18 +1,17 @@
 ---
 title: Zarządzanie platformą Azure
 description: Omówienie obszarów zarządzania dla aplikacji platformy Azure i zasobów wraz z łączami do zawartości w narzędzia do zarządzania platformy Azure.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2018
-ms.openlocfilehash: 337b340df10eb406fef3148b1d8bfde66b3b8ff6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 93180f088935531f83da785bb7a490f80909a6cd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979832"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669204"
 ---
 # <a name="azure-management---monitoring"></a>Zarządzanie platformą Azure — monitorowanie
 
@@ -32,7 +31,7 @@ W poniższych sekcjach krótko opisano różne obszary zarządzania oraz podano 
 ## <a name="monitor"></a>Monitorowanie
 Monitorowanie to proces zbierania i analizowania danych w celu ustalania wydajności, kondycji i dostępności aplikacji biznesowych i zasobów, od których one zależą. Skuteczna strategia monitorowania pomoże poznać szczegółowe działanie różnych składników aplikacji i zwiększyć czas aktywności przez proaktywne powiadamianie o istotnych kwestiach w celu umożliwienia rozwiązywania ich, zanim staną się problemami. Monitorowanie na platformie Azure jest realizowane przede wszystkim za pomocą usługi [Azure Monitor](../azure-monitor/overview.md), która zapewnia wspólne magazyny do przechowywania danych monitorowania, wiele źródeł danych do zbierania danych z różnych warstw obsługi aplikacji i funkcje do analizowania zebranych danych oraz do reagowania na nie.
 
-## <a name="configure"></a>Konfiguracja
+## <a name="configure"></a>Konfigurowanie
 Konfigurowanie dotyczy początkowego wdrażania i konfigurowania aplikacji i zasobów oraz ich ciągłej obsługi przy użyciu poprawek i aktualizacji.  Automatyzacja tych zadań za pomocą skryptów i zasad pozwala wyeliminować nadmiarowość, zminimalizować poświęcany czas i wysiłek oraz zwiększyć dokładność i wydajność.  [Usługa Azure Automation](../automation/automation-intro.md) dostarcza większość usług do automatyzowania zadań konfiguracji.  Oprócz elementów Runbook do automatyzowania procesów zapewnia ona zarządzanie konfiguracją i aktualizacjami, co pomaga zarządzać konfiguracją za pośrednictwem zasad oraz identyfikować i wdrażać aktualizacje.
 
 ## <a name="govern"></a>Ład
@@ -45,6 +44,6 @@ Zarządzanie zabezpieczeniami aplikacji, zasobów i danych obejmuje ocenę zagro
 ## <a name="protect"></a>Ochrona
 Ochrona dotyczy zapewniania, że aplikacje i dane są zawsze dostępne, nawet w przypadku awarii poza Twoją kontrolą.  Ochrona na platformie Azure jest zapewniana przez dwie usługi.  [Usługa Azure Backup](../backup/backup-introduction-to-azure-backup.md) oferuje tworzenie kopii zapasowych i odzyskiwanie danych w chmurze lub lokalnie.    [Usługa Azure Site Recovery](../site-recovery/site-recovery-overview.md) zapewnia wysoką dostępność aplikacji, gwarantując ciągłość działania i natychmiastowe odzyskiwanie w przypadku awarii.
 
-## <a name="migrate"></a>Migrowanie 
+## <a name="migrate"></a>Migracja 
 Migracja dotyczy przenoszenia obciążeń działających obecnie lokalnie do chmury platformy Azure.  [Usługa Azure Migrate](../migrate/migrate-overview.md) pomaga oceniać gotowość do migracji maszyn wirtualnych do platformy Azure, uwzględniając dostosowywanie rozmiaru do wydajności oraz szacunkowe koszty.  Usługa Azure Site Recovery może ułatwić rzeczywistą migrację maszyn wirtualnych [ze środowiska lokalnego](../site-recovery/migrate-tutorial-on-premises-azure.md) lub [z usług Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md).  [Usługa Azure Database Migration](../dms/dms-overview.md) pomaga w migracji wielu źródłowych baz danych do platformy danych Azure.
 

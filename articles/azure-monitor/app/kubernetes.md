@@ -1,18 +1,16 @@
 ---
 title: Użyj Application Insights do monitorowania usługi Azure Kubernetes Service (AKS) lub innych aplikacji hostowanych Kubernetes — Azure Monitor | Microsoft Docs
 description: Azure Monitor korzysta z technologii siatki usługi Istio w klastrze Kubernetes w celu zapewnienia monitorowania aplikacji dla dowolnej aplikacji hostowanej Kubernetes. Dzięki temu można zbierać dane telemetryczne Application Insights związane z żądaniami przychodzących i wychodzących do i z serwerów w klastrze.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: a7821db85d4218cbccb6c10f12ecbc624f2702fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15c75d4add9615df6c42aa6121557659e54354d0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432521"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666790"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Zero monitorowanie aplikacji Instrumentacji dla aplikacji hostowanych Kubernetes
 
@@ -74,7 +72,7 @@ Aplikacje działające poza siatką usługi nie podlegają usterce.
 
 1. Pobierz i Wyodrębnij [wersję *adaptera Application Insights* ](https://github.com/Microsoft/Application-Insights-Istio-Adapter/releases/).
 2. Przejdź do */src/Kubernetes/* wewnątrz folderu Release.
-3. Edit *application-insights-istio-mixer-adapter-deployment.yaml*
+3. Edycja *Application-Insights-istio-mikser-adapter-Deployment. YAML*
     - Edytuj wartość zmiennej środowiskowej *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* , aby zawierała klucz Instrumentacji zasobu Application Insights w Azure Portal, aby zawierała dane telemetryczne.
     - W razie potrzeby Edytuj wartość zmiennej środowiskowej *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* , aby zawierała rozdzieloną przecinkami listę przestrzeni nazw, dla których chcesz włączyć monitorowanie. Pozostaw to pole puste, aby monitorować wszystkie przestrzenie nazw.
 4. Zastosuj *każdy* plik YAML znaleziony w obszarze *src/Kubernetes/* , wykonując następujące czynności (nadal musisz być wewnątrz */src/Kubernetes/* ):

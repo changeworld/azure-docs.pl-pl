@@ -3,16 +3,15 @@ title: Azure Monitor widoku projektanta na skoroszyty typowe zadania konwersji
 description: ''
 author: austonli
 ms.author: aul
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 444535f0fcc96685a9562a8f9536c0a2c2998946
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 5559dac916262998d621b40757398088ec613609
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171542"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658748"
 ---
 # <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Wyświetlanie typowych zadań konwersji projektanta na skoroszyty
 [Projektant widoków](view-designer.md) jest funkcją Azure monitor, która umożliwia tworzenie niestandardowych widoków, które ułatwiają wizualizację danych w obszarze roboczym log Analytics, z wykresami, listami i osiami czasu. Są one wycofywane i zastępowane skoroszytami, które zapewniają dodatkową funkcjonalność. W tym artykule szczegółowo opisano zadania, które są wspólne w przypadku konwertowania widoków do skoroszytów.

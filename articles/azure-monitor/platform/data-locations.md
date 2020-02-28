@@ -1,18 +1,17 @@
 ---
 title: Monitorowanie lokalizacji danych w Azure Monitor | Microsoft Docs
 description: Opisuje różne lokalizacje, w których dane monitorowania są przechowywane na platformie Azure, w tym na platformie danych Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/21/2019
-ms.openlocfilehash: 2ec1f0161713c7014f71fb3eaee31b0abdf52902
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7d4459867081d920fefb9471b1a682d21040da9d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932555"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666619"
 ---
 # <a name="monitoring-data-locations-in-azure-monitor"></a>Monitorowanie lokalizacji danych w Azure Monitor
 
@@ -28,7 +27,7 @@ W poniższej tabeli przedstawiono różne lokalizacje, w których są wysyłane 
 | Dzienniki usługi Azure Monitor    | Log Analytics obszar roboczy oparty na usłudze Azure Eksplorator danych, który oferuje zaawansowany aparat analityczny i bogaty język zapytań. | [Log Analytics](../log-query/portals.md)<br>[Interfejs API Log Analytics](https://dev.loganalytics.io/)<br>[Interfejs API Application Insights](https://dev.applicationinsights.io/reference/get-query) |
 | Dziennik aktywności | Dane z dziennika aktywności są najbardziej przydatne, gdy są wysyłane do dzienników Azure Monitor, aby przeanalizować je z innymi danymi, ale są również zbierane we własnym zakresie, dzięki czemu można je wyświetlić bezpośrednio w Azure Portal. | [Azure Portal](activity-log-view.md#azure-portal)<br>[Interfejs API zdarzeń Azure Monitor](/rest/api/monitor/eventcategories) |
 | Azure Storage | Niektóre źródła danych zapisują bezpośrednio do usługi Azure Storage i wymagają skonfigurowania przenoszenia danych do dzienników. Możesz również wysyłać dane do usługi Azure Storage w celu archiwizacji i integracji z systemami zewnętrznymi.  | [Analityka magazynu](/rest/api/storageservices/storage-analytics)<br>[Eksplorator serwera](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)<br>[Eksplorator usługi Storage](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) |
-| Centra zdarzeń | Wyślij dane do usługi Azure Event Hubs, aby przesłać strumieniowo do innych lokalizacji. | [Przechwyć do magazynu](../../event-hubs/event-hubs-capture-overview.md)  |
+| Event Hubs | Wyślij dane do usługi Azure Event Hubs, aby przesłać strumieniowo do innych lokalizacji. | [Przechwyć do magazynu](../../event-hubs/event-hubs-capture-overview.md)  |
 | Usługa Azure Monitor dla maszyn wirtualnych | Azure Monitor dla maszyn wirtualnych przechowuje dane kondycji obciążeń w niestandardowej lokalizacji używanej przez środowisko monitorowania w Azure Portal. | [Azure Portal](../insights/vminsights-overview.md)<br>[Interfejs API REST monitora obciążenia](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)<br>[Interfejs API REST usługi Azure Resource Health](https://docs.microsoft.com/rest/api/resourcehealth/)  |
 | Alerty | Alerty utworzone przez Azure Monitor. | [Azure Portal](alerts-managing-alert-instances.md)<br>[Interfejs API REST zarządzania alertami](https://docs.microsoft.com/rest/api/monitor/alertsmanagement/alerts) |
 

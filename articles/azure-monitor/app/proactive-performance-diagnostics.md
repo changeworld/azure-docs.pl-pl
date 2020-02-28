@@ -1,19 +1,15 @@
 ---
 title: Wykrywanie inteligentne — anomalie wydajności | Microsoft Docs
 description: Application Insights przeprowadza inteligentnej analizy telemetrii aplikacji i ostrzega o potencjalnych problemach. Ta funkcja nie wymaga instalacji.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: b9a95bb2ee6ab137e974b46e24738ca5194f3bd2
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820569"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671736"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Wykrywanie inteligentne — anomalie wydajności
 
@@ -36,7 +32,7 @@ Inteligentne wykrywanie wymaga co najmniej 8 dni telemetrii w woluminie, aby mo�
 
 Nie, powiadomienie nie oznacza, że w aplikacji występuje problem. To po prostu sugestia dotyczącą czegoś, czemu możesz chcieć przyjrzeć się bliżej.
 
-## <a name="how-do-i-fix-it"></a>Jak mogę rozwiązać ten problem?
+## <a name="how-do-i-fix-it"></a>Jak go naprawić?
 
 Powiadomienia obejmują informacje diagnostyczne. Oto przykład:
 

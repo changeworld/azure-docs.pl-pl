@@ -1,18 +1,17 @@
 ---
 title: Czas pozyskiwania danych dziennika w Azure Monitor | Microsoft Docs
 description: Wyjaśnia różne czynniki wpływające na opóźnienie w zbieraniu danych dzienników w Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: bd6590ebbd33dc5c9b65fc193679f4bf99760c3a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894151"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666641"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Czas pozyskiwania danych dziennika w Azure Monitor
 Azure Monitor to usługa danych o dużej skali, która umożliwia tysiącom klientów wysyłanie terabajtów danych co miesiąc w coraz większej tempie. Często zadawane pytania dotyczące czasu potrzebnego do uzyskania danych dziennika stają się dostępne po ich zebraniu. W tym artykule wyjaśniono różne czynniki wpływające na to opóźnienie.
@@ -76,7 +75,7 @@ Ten proces trwa około 5 minut, gdy istnieje niska ilość danych, ale mniej cza
 ## <a name="checking-ingestion-time"></a>Sprawdzanie czasu pozyskiwania
 Czas pozyskiwania może różnić się w zależności od różnych zasobów w różnych warunkach. Zapytania dzienników służą do identyfikowania określonego zachowania środowiska. W poniższej tabeli opisano, jak można określić różne godziny dla rekordu, które są tworzone i wysyłane do Azure Monitor.
 
-| Czynność | Właściwość lub funkcja | Komentarze |
+| Krok | Właściwość lub funkcja | Komentarze |
 |:---|:---|:---|
 | Rekord utworzony w źródle danych | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Jeśli źródło danych nie ustawi tej wartości, zostanie ona ustawiona na ten sam czas co _TimeReceived. |
 | Rekord otrzymany przez Azure Monitor punkt końcowy pozyskiwania | [_TimeReceived](log-standard-properties.md#_timereceived) | |

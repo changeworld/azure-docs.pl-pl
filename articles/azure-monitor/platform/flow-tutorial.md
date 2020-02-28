@@ -1,18 +1,17 @@
 ---
 title: Automatyzacja procesów dzienników Azure Monitor przy użyciu Microsoft Flow
 description: Dowiedz się, jak można użyć Microsoft Flow, aby szybko zautomatyzować powtarzalne procesy przy użyciu łącznika usługi Azure Log Analytics.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/29/2017
-ms.openlocfilehash: a6097d38d3335be356ca75f5a9d0eadeed414b03
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 92f0d2916b0f28760f7d028ee3e6dc0be37c32d2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77166949"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672314"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Automatyzacja procesów dzienników Azure Monitor przy użyciu łącznika dla Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) umożliwia tworzenie zautomatyzowanych przepływów pracy przy użyciu setek akcji dla różnych usług. Dane wyjściowe z jednej akcji mogą służyć jako dane wejściowe, aby umożliwić tworzenie integracji między różnymi usługami.  Łącznik usługi Azure Log Analytics dla Microsoft Flow umożliwia tworzenie przepływów pracy zawierających dane pobierane przez zapytania dzienników z obszaru roboczego Log Analytics w Azure Monitor.

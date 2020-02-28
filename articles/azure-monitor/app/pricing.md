@@ -1,19 +1,17 @@
 ---
 title: Zarządzanie użyciem i kosztami dla usługi Azure Application Insights | Microsoft Docs
 description: Zarządzanie woluminami telemetrii i monitorowanie kosztów w Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b0a800a95d00e482b2342911111f43cfadb5a9c6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f871dfa5bd3c1feb6a89fcff3fb9d95442e72986
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845644"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669781"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
 
@@ -197,7 +195,7 @@ W każdym zachowanym rekordzie `itemCount` wskazuje liczbę oryginalnych rekord�
 
 ## <a name="change-the-data-retention-period"></a>Zmienić okres przechowywania danych
 
-Domyślne przechowywanie dla zasobów Application Insights to 90 dni. Dla każdego zasobu usługi Application Insights można wybrać inny okres przechowywania. Pełny zestaw dostępnych okresów przechowywania to 30, 60, 90, 120, 180, 270, 365, 550 lub 730. 
+Domyślne przechowywanie dla zasobów Application Insights to 90 dni. Dla każdego zasobu Application Insights można wybrać różne okresy przechowywania. Pełny zestaw dostępnych okresów przechowywania to 30, 60, 90, 120, 180, 270, 365, 550 lub 730. 
 
 Aby zmienić przechowywanie, z zasobu Application Insights przejdź na stronę **użycie i szacowane koszty** i wybierz opcję **przechowywania danych** :
 
@@ -269,7 +267,7 @@ Ponieważ ta warstwa ma zastosowanie tylko do klientów z subskrypcją pakietu O
   * Jeśli aplikacja używa zestawu SDK do ustawiania **roleInstance** na wartość niestandardową, domyślnie ta sama wartość jest używana do określenia liczby węzłów. 
   * W przypadku korzystania z nowej wersji zestawu SDK z aplikacją uruchomioną z poziomu komputerów klienckich lub urządzeń przenośnych liczba węzłów może zwracać liczbę, która jest duża (z powodu dużej liczby komputerów klienckich lub urządzeń przenośnych). 
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatyzacja
 
 Można napisać skrypt do ustawienia warstwy cenowej za pomocą usługi Azure Resource Management. [Dowiedz się, jak to zrobić](powershell.md#price).
 

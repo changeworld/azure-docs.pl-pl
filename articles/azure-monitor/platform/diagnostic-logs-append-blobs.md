@@ -3,17 +3,16 @@ title: Przygotuj do zmiany formatu Azure Monitor dzienników zasobów
 description: W tym artykule opisano wpływ i sposób aktualizowania narzędzi do obsługi nowych dzienników zasobów platformy Azure, które zostały zmienione w celu używania dołączanych obiektów BLOB 1 listopada 2018.
 author: johnkemnetz
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: dc7fd8916f356414437d4def21f26f0b651ee76f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d30652d4e068cbceb79e6da60b48176b9de64647
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893522"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670444"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>Przygotowywanie do zmiany formatu Azure Monitor dzienników zasobów zarchiwizowanych na koncie magazynu
 

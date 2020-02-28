@@ -1,18 +1,17 @@
 ---
 title: Włącz Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) do oceny | Microsoft Docs
 description: Dowiedz się, jak oszacować Azure Monitor dla maszyn wirtualnych na jednej maszynie wirtualnej platformy Azure lub w zestawie skalowania maszyn wirtualnych.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: c77fabf0220ecfcb889ce7cb71fa075fde27226f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b79eaeed420426fe79b2b6caf19ba1d1be61939
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400593"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664615"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Włącz Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) do oceny
 
@@ -23,19 +22,19 @@ Przed rozpoczęciem Sprawdź [wymagania wstępne](vminsights-enable-overview.md)
 ## <a name="enable-monitoring-for-a-single-azure-vm"></a>Włączanie monitorowania pojedynczej maszyny wirtualnej platformy Azure
 Aby włączyć monitorowanie maszyny wirtualnej platformy Azure:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
-1. Wybierz **maszyn wirtualnych**.
+1. Wybierz **Virtual Machines**.
 
 1. Z listy wybierz maszynę wirtualną.
 
-1. Na stronie maszyny Wirtualnej w **monitorowanie** zaznacz **Insights (wersja zapoznawcza)** .
+1. Na stronie maszyna wirtualna w sekcji **monitorowanie** wybierz pozycję szczegółowe dane **(wersja zapoznawcza)** .
 
-1. Na **Insights (wersja zapoznawcza)** wybierz opcję **Wypróbuj teraz usługę**.
+1. Na stronie **Insights (wersja zapoznawcza)** wybierz pozycję **Wypróbuj teraz**.
 
     ![Włączanie usługi Azure Monitor dla maszyn wirtualnych dla maszyny Wirtualnej](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
-1. Na **Azure Monitor Insights dołączania** strony, jeśli masz istniejące usługi Log Analytics obszaru roboczego w tej samej subskrypcji, wybierz go na liście rozwijanej.  
+1. Na stronie Dołączanie do usługi **Azure monitor Insights** , jeśli masz istniejący obszar roboczy log Analytics w tej samej subskrypcji, wybierz go na liście rozwijanej.  
 
     Na tej liście jest wybierany domyślny obszar roboczy i lokalizacja, w której wdrożono maszynę wirtualną w ramach subskrypcji. 
 
@@ -50,7 +49,7 @@ Po włączeniu monitorowania może być konieczne odczekanie około 10 minut, za
 
 Aby włączyć monitorowanie zestawu skalowania maszyn wirtualnych platformy Azure:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 2. Wybierz **Virtual Machine Scale Sets**.
 

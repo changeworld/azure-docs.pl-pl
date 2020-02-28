@@ -1,19 +1,18 @@
 ---
 title: Tworzenie rozwiązania do zarządzania na platformie Azure | Microsoft Docs
 description: Rozwiązania do zarządzania obejmują spakowane scenariusze zarządzania na platformie Azure, które klienci mogą dodać do Log Analytics obszaru roboczego.  Ten artykuł zawiera szczegółowe informacje dotyczące sposobu tworzenia rozwiązań do zarządzania, które mają być używane w Twoim środowisku lub udostępniane klientom.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5465c177cf174ebf8d6b7d4f43c5387bce3adb70
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f1605597c7716ba6a896c7ecdae968f07d66027b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969696"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663219"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -28,7 +27,7 @@ Rozwiązania do zarządzania zawierają zasoby platformy Azure, które współpr
 Podstawową strategią jest rozpoczęcie rozwiązania do zarządzania przez utworzenie poszczególnych składników w środowisku platformy Azure.  Po poprawnym działaniu funkcji można rozpocząć pakowanie ich do [pliku rozwiązania do zarządzania]( solutions-solution-file.md). 
 
 
-## <a name="design-your-solution"></a>Projektowanie własnego rozwiązania
+## <a name="design-your-solution"></a>Zaprojektuj rozwiązanie
 Typowym wzorcem rozwiązania do zarządzania jest pokazano na poniższym diagramie.  Różne składniki w tym wzorcu zostały omówione poniżej.
 
 ![Przegląd rozwiązania do zarządzania](media/solutions-creating/solution-overview.png)

@@ -7,20 +7,20 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/26/2020
+ms.openlocfilehash: 9d18bea70670acba404b2198e6b06ea2e9200c30
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113659"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667027"
 ---
 # <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Samouczek: Wyodrębnianie tekstu i struktury z obiektów BLOB JSON na platformie Azure przy użyciu interfejsów API REST (Azure Wyszukiwanie poznawcze)
 
-Jeśli w usłudze Azure Blob Storage znajduje się niestrukturalna zawartość tekstu lub obrazu, [potok wzbogacenia](cognitive-search-concept-intro.md) może pomóc wyodrębnić informacje i utworzyć nową zawartość, która jest przydatna w przypadku wyszukiwania pełnotekstowego lub scenariuszy wyszukiwania w bazie wiedzy. Chociaż potok może przetwarzać pliki obrazów (JPG, PNG, TIFF), ten samouczek koncentruje się na zawartości opartej na programie Word, stosowaniu wykrywania języka i analizy tekstu do tworzenia nowych pól i informacji, które można wykorzystać w zapytaniach, aspektach i filtrach.
+Jeśli w usłudze Azure Blob Storage znajduje się tekst lub obrazy bez struktury, [potok wzbogacenia AI](cognitive-search-concept-intro.md) może wyodrębnić informacje i utworzyć nową zawartość, która jest przydatna w przypadku wyszukiwania pełnotekstowego lub scenariuszy wyszukiwania w bazie wiedzy. Mimo że potok może przetwarzać obrazy, ten samouczek koncentruje się na tekście, stosowaniu wykrywania języka i przetwarzania języka naturalnego w celu utworzenia nowych pól, których można użyć w zapytaniach, aspektach i filtrach.
 
 > [!div class="checklist"]
-> * Zacznij od całego dokumentu (tekst bez struktury), takiego jak PDF, MD, DOCX i PPTX, w usłudze Azure Blob Storage.
+> * Zacznij od całego dokumentu (tekst bez struktury), takiego jak PDF, HTML, DOCX i PPTX, w usłudze Azure Blob Storage.
 > * Zdefiniuj potok, który wyodrębnia tekst, wykrywa język, rozpoznaje jednostki i wykrywa kluczowe frazy.
 > * Zdefiniuj indeks do przechowywania danych wyjściowych (nieprzetworzona zawartość oraz pary nazwa-wartość w postaci potoku).
 > * Wykonaj potok, aby rozpocząć transformacje i analizę oraz utworzyć i załadować indeks.
@@ -38,7 +38,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Otwórz [bezpł
 
 ## <a name="1---create-services"></a>1 — Tworzenie usług
 
-W tym instruktażu Wyszukiwanie poznawcze indeksowania i zapytań, Cognitive Services do wzbogacania AI i usługi Azure Blob Storage w celu udostępnienia danych. Jeśli to możliwe, Utwórz wszystkie trzy usługi w tym samym regionie i grupie zasobów, aby umożliwić bliskość i łatwość zarządzania. W tym przypadku konto usługi Azure Storage może znajdować się w dowolnym regionie.
+Ten samouczek używa usługi Azure Wyszukiwanie poznawcze do indeksowania i zapytań, Cognitive Services w zapleczu do wzbogacania AI i usługi Azure Blob Storage, aby zapewnić dane. Ten samouczek jest objęty bezpłatną alokacją 20 transakcji na indeksator dziennie na Cognitive Services, więc jedyne usługi, które należy utworzyć, to wyszukiwanie i magazynowanie.
+
+Jeśli to możliwe, Utwórz zarówno w tym samym regionie, jak i w grupie zasobów, co umożliwia bliskość i łatwość zarządzania. W tym przypadku konto usługi Azure Storage może znajdować się w dowolnym regionie.
 
 ### <a name="start-with-azure-storage"></a>Rozpoczynanie pracy z usługą Azure Storage
 
@@ -167,9 +169,9 @@ Jeśli otrzymujesz błąd 403 lub 404, sprawdź, czy żądanie jest poprawnie sk
    | Czy                 | Opis    |
    |-----------------------|----------------|
    | [Rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md) | Wyodrębnia nazwy osób, organizacji i lokalizacji z zawartości w kontenerze obiektów BLOB. |
-   | [Wykrywanie języka](cognitive-search-skill-language-detection.md) | Wykrywa język zawartości. |
+   | [wykrywanie języka](cognitive-search-skill-language-detection.md) | Wykrywa język zawartości. |
    | [Podział tekstu](cognitive-search-skill-textsplit.md)  | Dzieli dużą zawartość na mniejsze fragmenty przed wywołaniem umiejętności wyodrębniania kluczowych fraz. Umiejętność wyodrębniania fraz kluczowych przyjmuje dane wejściowe składające się maksymalnie z 50 000 znaków. Kilka przykładowych plików należy podzielić, aby zmieścić się w tym limicie. |
-   | [Wyodrębnianie kluczowych fraz](cognitive-search-skill-keyphrases.md) | Pobiera najważniejsze frazy. |
+   | [wyodrębnianie kluczowych fraz](cognitive-search-skill-keyphrases.md) | Pobiera najważniejsze frazy. |
 
    Każda umiejętność jest wykonywana dla zawartości dokumentu. Podczas przetwarzania platforma Azure Wyszukiwanie poznawcze pęka każdy dokument w celu odczytania zawartości z różnych formatów plików. Tekst znaleziony w pliku źródłowym jest umieszczany w polu ```content``` generowanym pojedynczo dla każdego dokumentu. W związku z tym dane wejściowe staną się ```"/document/content"```.
 
@@ -481,13 +483,13 @@ Te zapytania ilustrują kilka sposobów pracy z składnią zapytania i filtrami 
 
 ## <a name="reset-and-rerun"></a>Resetowanie i ponowne uruchamianie
 
-W wczesnych eksperymentalnych etapach tworzenia potoku najlepszym podejściem do iteracji projektu jest usunięcie obiektów z usługi Azure Wyszukiwanie poznawcze i umożliwienie kodowi odbudowania. Nazwy zasobów są unikatowe. Usunięcie obiektu umożliwia jego ponowne utworzenie przy użyciu tej samej nazwy.
+Na wczesnym etapie opracowywania warto usunąć obiekty z platformy Azure Wyszukiwanie poznawcze i umożliwić ich ponowne skompilowanie. Nazwy zasobów są unikatowe. Usunięcie obiektu umożliwia jego ponowne utworzenie przy użyciu tej samej nazwy.
 
-Aby zaindeksować dokumenty za pomocą nowych definicji:
+Aby ponownie zindeksować dokumenty przy użyciu nowych definicji:
 
 1. Usuń indeksator, indeks i zestawu umiejętności.
-2. Modyfikuj obiekty.
-3. Utwórz ponownie w usłudze, aby uruchomić potok. 
+2. Modyfikuj definicje obiektów.
+3. Utwórz ponownie obiekty w usłudze. Ponowne utworzenie indeksatora powoduje uruchomienie potoku. 
 
 Możesz użyć portalu, aby usunąć indeksy, indeksatory i umiejętności, lub użyć **Usuń** i podaj adresy URL do każdego obiektu. Następujące polecenie usuwa indeksator.
 

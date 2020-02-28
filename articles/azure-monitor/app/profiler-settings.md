@@ -1,19 +1,17 @@
 ---
 title: Użyj okienka ustawień usługi Azure Application Insights Profiler | Microsoft Docs
 description: Zobacz temat stan profilera i uruchamianie sesji profilowania
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b383ef8c92325b0ad6561bee9b654c78e4054338
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: f66a23c0562ec9f1987bd119a45b7b767f2dfe46
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820476"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671634"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurowanie Application Insights Profiler
 

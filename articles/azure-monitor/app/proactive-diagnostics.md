@@ -1,18 +1,14 @@
 ---
 title: Inteligentne wykrywanie na platformie Azure Application Insights | Microsoft Docs
 description: Application Insights przeprowadza automatyczne głębokiej analizy danych telemetrycznych aplikacji i ostrzega o potencjalnych problemach.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 02/07/2019
-ms.openlocfilehash: ae9af5721e53277f6c939840721ca50ea67ca51e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: e232295f9da2a2ae8f3c6fafdd1dc33a42e92e69
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818816"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671804"
 ---
 # <a name="smart-detection-in-application-insights"></a>Inteligentne wykrywanie w Application Insights
  Inteligentne wykrywanie automatycznie ostrzega o potencjalnych problemach z wydajnością i anomaliach niepowodzeń w aplikacji sieci Web. Wykonuje proaktywnie analizę danych telemetrycznych wysyłanych przez aplikację do [Application Insights](../../azure-monitor/app/app-insights-overview.md). W przypadku nagłego wzrostu współczynnika błędów lub nietypowych wzorców wydajności klienta lub serwera zostanie wyświetlony alert. Ta funkcja nie wymaga konfiguracji. Działa, gdy aplikacja wysyła wystarczającą ilość danych telemetrycznych.
@@ -50,7 +46,7 @@ Konfigurowanie powiadomień e-mail dla konkretnej reguły wykrywania inteligentn
 
 Alternatywnie można zmienić konfigurację przy użyciu szablonów Azure Resource Manager. Aby uzyskać więcej informacji, [Zobacz temat zarządzanie Application Insights regułami wykrywania automatycznego przy użyciu szablonów Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config) .
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 

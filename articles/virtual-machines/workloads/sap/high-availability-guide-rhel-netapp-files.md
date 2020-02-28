@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/21/2020
+ms.date: 02/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 015fb6c720fee9ed219ec9ffa2ece14d26bb4ac9
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: b58c24fdd7912b3e424a493932fe09b1a1f058c5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566220"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661281"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Platforma Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver na Red Hat Enterprise Linux z Azure NetApp Files dla aplikacji SAP
 
@@ -96,9 +96,6 @@ Teraz można osiągnąć rozwiązanie SAP NetWeaver HA przy użyciu magazynu udo
 ![Omówienie wysokiej dostępności SAP NetWeaver](./media/high-availability-guide-rhel/high-availability-guide-rhel-anf.png)
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver wykres WYWOŁUJĄCYCH, a SAP HANA Database używają wirtualnej nazwy hosta i wirtualnych adresów IP. Na platformie Azure moduł równoważenia obciążenia jest wymagany do używania wirtualnego adresu IP. Zalecamy korzystanie z usługi [równoważenia obciążenia w warstwie Standardowa](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal). Na poniższej liście przedstawiono konfigurację modułu równoważenia obciążenia z oddzielnymi adresami IP frontonu dla (A) SCS i wykres WYWOŁUJĄCYCH.
-
-> [!IMPORTANT]
-> Klastrowanie z obsługą wiele identyfikatorów SID oprogramowania SAP ASCS/wykres WYWOŁUJĄCYCH z systemem Red Hat Linux jako systemu operacyjnego gościa na maszynach wirtualnych platformy Azure **nie jest obsługiwane**. Klastrowanie z wieloma SIDmi opisuje instalację wielu wystąpień SAP ASCS/wykres WYWOŁUJĄCYCH z różnymi identyfikatorami SID w jednym klastrze Pacemaker.
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -1256,6 +1253,7 @@ Wykonaj następujące kroki, aby zainstalować serwer aplikacji SAP.
 
 ## <a name="next-steps"></a>Następne kroki
 
+* [HA for SAP NW na maszynach wirtualnych platformy Azure w systemie RHEL for SAP — Przewodnik dotyczący wiele identyfikatorów SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
 * [Planowanie i wdrażanie Virtual Machines platformy Azure dla oprogramowania SAP][planning-guide]
 * [Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP][deployment-guide]
 * [Wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP][dbms-guide]

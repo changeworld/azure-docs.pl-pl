@@ -1,18 +1,16 @@
 ---
 title: Dokumentacja interfejsu API usługi Azure Application Insights Agent
 description: Dokumentacja interfejsu API agenta Application Insights. Get-ApplicationInsightsMonitoringStatus. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Działa z aplikacjami internetowymi platformy ASP.NET hostowanymi lokalnie na maszynach wirtualnych lub platformie Azure.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 9b1010404cb876ed818dd54cf527987c6cf0ffe0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 159dab4a228c822ef62c45c9ccceff638a9bea45
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899686"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671260"
 ---
 # <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Interfejs API agenta Application Insights: Get-ApplicationInsightsMonitoringStatus
 
@@ -77,7 +75,7 @@ W tym przykładzie:
 
 ### <a name="example-powershell-module-information"></a>Przykład: informacje o module programu PowerShell
 
-Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus -PowerShellModule`, aby wyświetlić informacje dotyczące bieżącego modułu:
+Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus -PowerShellModule`, aby wyświetlić informacje o bieżącym module:
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus -PowerShellModule

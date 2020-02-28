@@ -1,18 +1,17 @@
 ---
 title: Filtry w widokach Azure Monitor | Microsoft Docs
 description: Filtr w widoku Azure Monitor umożliwia użytkownikom filtrowanie danych w widoku przez wartość określonej właściwości bez modyfikowania widoku.  W tym artykule opisano sposób używania filtra i dodawania go do widoku niestandardowego.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: 03950c7c87f659c5d1c032b5d3c1f74d136697c7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931985"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658578"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Filtry w widokach Azure Monitor
 **Filtr** w [widoku Azure monitor](view-designer.md) umożliwia użytkownikom filtrowanie danych w widoku przez wartość określonej właściwości bez modyfikowania widoku.  Można na przykład umożliwić użytkownikom widoku filtrowanie widoku danych tylko z określonego komputera lub zestawu komputerów.  Można utworzyć wiele filtrów w jednym widoku, aby umożliwić użytkownikom filtrowanie według wielu właściwości.  W tym artykule opisano sposób używania filtra i dodawania go do widoku niestandardowego.
@@ -34,7 +33,7 @@ Jeśli usuniesz wszystkie wartości filtru, ten filtr nie zostanie już zastosow
 
 Utwórz filtr na karcie **filtry** podczas [edytowania widoku](view-designer.md).  Filtr jest globalny dla widoku i ma zastosowanie do wszystkich części w widoku.  
 
-![Ustawienia filtru](media/view-designer-filters/filters-settings.png)
+![Filtruj ustawienia](media/view-designer-filters/filters-settings.png)
 
 W poniższej tabeli opisano ustawienia filtru.
 
@@ -51,9 +50,9 @@ Poniższa tabela zawiera kilka przykładów typowych filtrów.
 | Nazwa pola | Zapytanie o wartości | Tag |
 |:--|:--|:--|
 | Computer   | Sortowanie &#124; różnego &#124; komputera pulsu według komputera ASC | Komputery |
-| EventLevelName | EventLevelName &#124; DISTINCT zdarzenia | Ważność |
-| SeverityLevel | Unikatowy &#124; SeverityLevel dziennika systemowego | Ważność |
-| SvcChangeType | Zmianakonfiguracji &#124; DISTINCT svcChangeType | ChangeType |
+| EventLevelName | Event &#124; distinct EventLevelName | Ważność |
+| Poziom ważności | Unikatowy &#124; SeverityLevel dziennika systemowego | Ważność |
+| SvcChangeType | ConfigurationChange &#124; distinct svcChangeType | ChangeType |
 
 
 ## <a name="modify-view-queries"></a>Modyfikuj zapytania widoku

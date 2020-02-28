@@ -1,22 +1,21 @@
 ---
 title: Korzystanie z rozwiązania Service Map na platformie Azure | Microsoft Docs
 description: Usługa Service Map jest rozwiązaniem platformy Azure, które automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Ten artykuł zawiera szczegółowe informacje dotyczące wdrażania rozwiązania Service Map w danym środowisku i korzystania z niego w różnych scenariuszach.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 0f2181a388a5329dbc16ce8968da79529b22ea85
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: c177589bea76770f8f72dd3267b856b00d57699c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168172"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663627"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Korzystanie z rozwiązania Service Map na platformie Azure
 
-Usługa Service Map automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Dzięki usłudze Service Map można wyświetlać serwery w sposób, w jakich się o nich myśli: jako wzajemnie połączone systemy dostarczające usługi. Usługa ta pokazuje połączenia między serwerami i procesami, opóźnienie połączeń przychodzących i wychodzących oraz porty dla każdej architektury połączonej za pomocą protokołu TCP. Nie jest wymagana żadna konfiguracja z wyjątkiem zainstalowania agenta.
+Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Dzięki usłudze Service Map można wyświetlać serwery w sposób, w jakich się o nich myśli: jako wzajemnie połączone systemy dostarczające usługi. Usługa Service Map pokazuje połączenia między serwerami i procesami, opóźnienie połączeń przychodzących i wychodzących oraz porty dla każdej architektury połączonej za pomocą protokołu TCP. Nie jest wymagana żadna konfiguracja, wystarczy zainstalować agenta.
 
 W tym artykule opisano szczegóły dotyczące dołączania i korzystania z Service Map. Aby uzyskać informacje o konfigurowaniu wymagań wstępnych dla tego rozwiązania, zobacz temat [włączanie Azure monitor dla maszyn wirtualnych przegląd](vminsights-enable-overview.md#prerequisites). Podsumowując, potrzebne są następujące elementy:
 
@@ -29,7 +28,7 @@ W tym artykule opisano szczegóły dotyczące dołączania i korzystania z Servi
 >[!NOTE]
 >Jeśli wdrożono już Service Map, można teraz również przeglądać mapy w Azure Monitor dla maszyn wirtualnych, co obejmuje dodatkowe funkcje monitorowania kondycji i wydajności maszyn wirtualnych. Aby dowiedzieć się więcej, zobacz [Azure monitor dla maszyn wirtualnych Omówienie](../../azure-monitor/insights/vminsights-overview.md). Aby dowiedzieć się więcej o różnicach między rozwiązaniem Service Map i funkcją mapy Azure Monitor dla maszyn wirtualnych, zobacz poniższe [często zadawane pytania](../faq.md#azure-monitor-for-vms-preview).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
@@ -54,7 +53,7 @@ Service Map pomaga wyeliminować wątpliwości izolacji problemu, pokazując, ja
 
 Za pomocą Service Map można efektywnie planować, przyspieszać i weryfikować migracje platformy Azure, co pomaga upewnić się, że nic nie zostanie pozostawione i wystąpiło nieoczekiwane przestoje. Można odkryć wszystkie systemy zależne, które muszą zostać zmigrowane razem, ocenić konfigurację i pojemność systemu oraz sprawdzić, czy uruchomiony system nadal obsługuje użytkowników, czy też jest kandydatem do likwidacji, a nie z migracji. Po zakończeniu przenoszenia można sprawdzić obciążenie i tożsamość klienta, aby sprawdzić, czy systemy testowe i klienci nawiązują połączenie. Jeśli w definicjach planowania podsieci i zapory występują problemy, nieudane połączenia w usłudze Service Map Maps wskażą systemy, które wymagają łączności.
 
-### <a name="business-continuity"></a>Ciągłość działania
+### <a name="business-continuity"></a>Ciągłość działalności biznesowej
 
 Jeśli używasz Azure Site Recovery i potrzebujesz pomocy przy definiowaniu sekwencji odzyskiwania dla środowiska aplikacji, Service Map mogą automatycznie pokazywać, w jaki sposób systemy są zależne od siebie, aby upewnić się, że plan odzyskiwania jest niezawodny. Wybierając serwer lub grupę krytyczną i wyświetlając jej klientów, można zidentyfikować systemy frontonu do odzyskania po przywróceniu i udostępnieniu serwera. Z drugiej strony, przeglądając zależności zaplecza serwerów krytycznych, można zidentyfikować systemy, które mają zostać odzyskane przed przywróceniem systemów fokusu.
 
@@ -547,7 +546,7 @@ Wszystkie dane dotyczące serwera, procesu i zależności w Service Map są dost
 
 Firma Microsoft automatycznie zbiera dane dotyczące użycia i wydajności przez korzystanie z usługi mapy usługi. Firma Microsoft używa tych danych do zapewniania i poprawiania jakości, bezpieczeństwa i integralności usługi mapy usługi. Aby zapewnić dokładne i wydajne możliwości rozwiązywania problemów, dane obejmują informacje o konfiguracji oprogramowania, takie jak system operacyjny, wersja, adres IP, nazwa DNS i nazwa stacji roboczej. Firma Microsoft nie zbiera nazw, adresów ani innych informacji kontaktowych.
 
-Aby uzyskać więcej informacji na temat zbierania i wykorzystywania danych, zobacz [Microsoft Online Services Privacy Statement](https://go.microsoft.com/fwlink/?LinkId=512132).
+Aby uzyskać więcej informacji na temat zbierania i używania danych, zobacz [zasady zachowania poufności informacji w witrynie Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -572,7 +571,7 @@ Czasami warto zainstalować [najnowsze biblioteki środowiska uruchomieniowego](
 
 W poniższej tabeli wymieniono numery kodu i sugerowanymi metodami rozwiązania.
 
-| Code | Opis | Rozdzielczość |
+| Kod | Opis | Rozwiązanie |
 |:--|:--|:--|
 | 0x17 | Instalator biblioteki wymaga aktualizacji Windows, która nie została ona zainstalowana. | Poszukaj w dzienniku Instalatora usługi najnowszej biblioteki.<br><br>Jeśli po odwołaniu do `Windows8.1-KB2999226-x64.msu` następuje wiersz `Error 0x80240017: Failed to execute MSU package,` nie ma wymagań wstępnych dotyczących instalacji KB2999226. Postępuj zgodnie z instrukcjami w sekcji wymagania wstępne w [środowisku uruchomieniowym uniwersalnego języka C w artykule systemu Windows](https://support.microsoft.com/kb/2999226) . Może być konieczne, uruchom usługę Windows Update i ponownie uruchomić wiele razy, aby można było zainstalować wymagania wstępne.<br><br>Ponownie uruchom Instalatora agenta Dependency firmy Microsoft. |
 

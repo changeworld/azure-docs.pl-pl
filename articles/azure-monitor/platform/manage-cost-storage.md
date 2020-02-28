@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 8c4169ccfb35b74b92ea4996cbc779bac35d6ccb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dc784fa2dd5317932294af6e9c9d36dcce7d32f1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715860"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672076"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Zarządzanie użyciem i kosztami za pomocą dzienników Azure Monitor
 
@@ -208,123 +208,120 @@ Gdy alert jest zdefiniowana i limit zostanie osiągnięty, alert zostanie wyzwol
 
 Większe użycie jest spowodowane przez jedną lub obie z następujących przyczyn:
 - Więcej węzłów niż oczekiwano wysłania danych do obszaru roboczego Log Analytics
-- Więcej danych niż oczekiwano do wysłania do obszaru roboczego Log Analytics
+- Więcej danych niż oczekiwano podczas wysyłania do obszaru roboczego Log Analytics (prawdopodobnie z powodu rozpoczęcia korzystania z nowego rozwiązania lub zmiany konfiguracji w istniejącym rozwiązaniu)
 
 ## <a name="understanding-nodes-sending-data"></a>Informacje o węzłach wysyłających dane
 
-Aby zrozumieć liczbę komputerów, które zgłaszają pulsy każdego dnia w ostatnim miesiącu, użyj
+Aby zrozumieć liczbę węzłów zgłaszających pulsy przez agenta każdego dnia w ostatnim miesiącu, użyj
 
 ```kusto
-Heartbeat | where TimeGenerated > startofday(ago(31d))
-| summarize dcount(Computer) by bin(TimeGenerated, 1d)    
+Heartbeat 
+| where TimeGenerated > startofday(ago(31d))
+| summarize nodes = dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart
 ```
-
-Aby uzyskać listę komputerów, które będą rozliczane jako węzły w przypadku, gdy obszar roboczy znajduje się w starszej warstwie cenowej węzła, poszukaj węzłów, które wysyłają **opłaty za typy danych** (niektóre typy danych są bezpłatne). Aby to zrobić, użyj [właściwości](log-standard-properties.md#_isbillable) `_IsBillable` i użyj pola z lewej strony w w pełni kwalifikowanej nazwy domeny. Spowoduje to zwrócenie listy komputerów z danymi rozliczanymi:
+Można określić liczbę węzłów, które wysyłają dane, przy użyciu: 
 
 ```kusto
 union withsource = tt * 
-| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize nodes = dcount(computerName)
+```
+
+Aby uzyskać listę węzłów wysyłających dowolne dane (i ilość danych wysyłanych przez poszczególne), można użyć poniższego zapytania:
+
+```kusto
+union withsource = tt * 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
 
-Liczba obserwowanych węzłów może być Szacowana jako: 
-
-```kusto
-union withsource = tt * 
-| where _IsBillable == true 
-| extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| where computerName != ""
-| summarize billableNodes=dcount(computerName)
-```
-
 > [!NOTE]
 > Te `union withsource = tt *` zapytania są oszczędne, ponieważ wykonywanie skanowania między typami danych jest kosztowne. To zapytanie zastępuje stary sposób wykonywania zapytań dotyczących informacji dla poszczególnych komputerów za pomocą typu danych użycia.  
 
-Dokładniejsze obliczenie wartości rzeczywistej jest rozliczane, aby uzyskać liczbę komputerów na godzinę, które wysyłają rozliczane typy danych. (W przypadku obszarów roboczych w warstwie cenowej starszej dla węzła Log Analytics oblicza liczbę węzłów, które muszą być rozliczane godzinowo.) 
-
-```kusto
-union withsource = tt * 
-| where _IsBillable == true 
-| extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| where computerName != ""
-| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
-```
-
 ## <a name="understanding-ingested-data-volume"></a>Zrozumienie ilości pozyskiwanych danych
 
-Na stronie **użycie i szacowane koszty** pozyskiwanie *danych na wykres rozwiązań* pokazuje łączną ilość wysłanych danych i ilość wysyłanych przez każde rozwiązanie. Dzięki temu można określić trendy, takie jak czy rośnie całkowite użycie danych (lub użycie przez konkretnego rozwiązania), pozostały stały, czy też maleje. Zapytanie używane do generowania, to jest
+Na stronie **użycie i szacowane koszty** pozyskiwanie *danych na wykres rozwiązań* pokazuje łączną ilość wysłanych danych i ilość wysyłanych przez każde rozwiązanie. Dzięki temu można określić trendy, takie jak czy rośnie całkowite użycie danych (lub użycie przez konkretnego rozwiązania), pozostały stały, czy też maleje. 
+
+### <a name="data-volume-by-solution"></a>Ilość danych wg rozwiązania
+
+Zapytanie używane do wyświetlania ilości danych do rozliczenia według rozwiązania to
 
 ```kusto
-Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
+Usage 
+| where TimeGenerated > startofday(ago(31d))
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution | render barchart
 ```
 
-Należy pamiętać, że klauzuli "gdzie IsBillable = true" odfiltrowuje typy danych, z niektórych rozwiązań, dla których nie są pobierane opłaty pozyskiwania. 
+Należy zauważyć, że klauzula `where IsBillable = true` filtruje typy danych z niektórych rozwiązań, dla których nie jest naliczana opłata za pozyskiwanie. 
 
-Możesz przejść dostosowaną Zobacz dane trendów dla konkretnych typów danych, na przykład jeśli chcesz badanie danych z powodu dzienniki usług IIS:
+### <a name="data-volume-by-type"></a>Ilość danych według typu
+
+Możesz przejść do szczegółów, aby zobaczyć trendy dotyczące danych według typu danych:
 
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
+| where TimeGenerated > startofday(ago(31d))
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), DataType | render barchart
+```
+
+Lub, aby wyświetlić tabelę według rozwiązania i typu w ciągu ostatniego miesiąca,
+
+```kusto
+Usage 
+| where TimeGenerated > startofday(ago(31d))
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) by Solution, DataType
+| sort by Solution asc, DataType asc
 ```
 
 ### <a name="data-volume-by-computer"></a>Ilość danych według komputera
 
-Aby wyświetlić **wielkość** rozliczania zdarzeń pobieranych na komputer, użyj [Właściwości](log-standard-properties.md#_billedsize)`_BilledSize`, która zapewnia rozmiar w bajtach:
+Typ danych `Usage` nie zawiera informacji na poziomie kompletności. Aby wyświetlić **rozmiar** pobieranych danych na komputer, użyj [Właściwości](log-standard-properties.md#_billedsize)`_BilledSize`, która zapewnia rozmiar w bajtach:
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| summarize Bytes=sum(_BilledSize) by  computerName | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
 [Właściwość](log-standard-properties.md#_isbillable) `_IsBillable` określa, czy pozyskane dane będą naliczane opłaty.
 
-Aby zobaczyć liczbę zdarzeń **rozliczanych** pobieranych na komputer, użyj 
+Aby zobaczyć **liczbę** zdarzeń rozliczanych pobieranych na komputer, użyj 
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| summarize eventCount=count() by computerName  | sort by eventCount nulls last
-```
-
-Jeśli chcesz wyświetlić liczniki dla typów danych płatnych wysyłania danych do konkretnego komputera, należy użyć:
-
-```kusto
-union withsource = tt *
-| where Computer == "computer name"
-| where _IsBillable == true 
-| summarize count() by tt | sort by count_ nulls last
+| summarize eventCount = count() by computerName  | sort by eventCount nulls last
 ```
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Ilość danych według zasobu platformy Azure, grupy zasobów lub subskrypcji
 
-W przypadku danych z węzłów hostowanych na platformie Azure można uzyskać **wielkość** rozliczania zdarzeń pobieranych __na komputer__, użyj [Właściwości](log-standard-properties.md#_resourceid)_ResourceId, która zapewnia pełną ścieżkę do zasobu:
+W przypadku danych z węzłów hostowanych na platformie Azure można uzyskać **rozmiar** pobieranych danych __na komputer__, używając [Właściwości](log-standard-properties.md#_resourceid)_ResourceId, która zapewnia pełną ścieżkę do zasobu:
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
 ```
 
-W przypadku danych z węzłów hostowanych na platformie Azure możesz uzyskać **wielkość** rozliczania zdarzeń pobieranych __na subskrypcję platformy Azure__, Przeanalizuj Właściwość `_ResourceId` jako:
+W przypadku danych z węzłów hostowanych na platformie Azure możesz uzyskać **rozmiar** pozyskanych danych __na subskrypcję platformy Azure__, Przeanalizuj Właściwość `_ResourceId` jako:
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
 | parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
     resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
 ```
 
 Zmiana `subscriptionId` na `resourceGroup` spowoduje wyświetlenie ilości danych pozyskanych z rozliczeniami przez grupę zasobów platformy Azure. 
-
 
 > [!NOTE]
 > Niektóre pola typu danych użycia, ale nadal w schemacie, są przestarzałe i ich wartości nie będą już wypełnione. Są to **komputery** , a także pola związane z pozyskiwaniem (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** i **AverageProcessingTimeMs**.
@@ -361,6 +358,18 @@ Sugestie dotyczące zmniejszyć wolumin zebranych danych dzienników obejmują:
 | Dziennik systemu                     | Zmień [konfigurację dziennika systemu](data-sources-syslog.md) w następujący sposób: <br> — Zmniejsz liczbę urządzeń, z których zbierane są dane <br> — Zbieraj wyłącznie zdarzenia o wymaganym poziomie. Na przykład nie zbieraj zdarzeń na poziomie *Informacje* i *Debugowanie*. |
 | AzureDiagnostics           | Zmień kolekcję dziennika zasobów, aby: <br> — zmniejszyć liczbę dzienników zasobów wysyłanych do usługi Log Analytics, <br> — zbierać tylko wymagane dzienniki. |
 | Dane rozwiązań z komputerów, które nie wymagają rozwiązania | Użyj funkcji [określania celu rozwiązania](../insights/solution-targeting.md), aby zbierać dane tylko z wymaganych grup komputerów. |
+
+### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Pobieranie węzłów jako rozliczane w warstwie cenowej na węzeł
+
+Aby uzyskać listę komputerów, które będą rozliczane jako węzły w przypadku, gdy obszar roboczy znajduje się w starszej warstwie cenowej węzła, poszukaj węzłów, które wysyłają **opłaty za typy danych** (niektóre typy danych są bezpłatne). Aby to zrobić, użyj [właściwości](log-standard-properties.md#_isbillable) `_IsBillable` i użyj pola z lewej strony w w pełni kwalifikowanej nazwy domeny. To zwraca liczbę komputerów z danymi rozliczanymi za godzinę (czyli stopnia szczegółowości, w których węzły są zliczane i są rozliczane):
+
+```kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
+```
 
 ### <a name="getting-security-and-automation-node-counts"></a>Pobieranie zabezpieczeń i liczby węzłów automatyzacji
 

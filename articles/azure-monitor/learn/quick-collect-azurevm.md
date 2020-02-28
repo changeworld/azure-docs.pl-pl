@@ -1,19 +1,18 @@
 ---
 title: Zbieranie danych z maszyny wirtualnej platformy Azure za pomocą Azure Monitor | Microsoft Docs
 description: Dowiedz się, jak włączyć rozszerzenie agenta usługi Log Analytics dla maszyn wirtualnych i umożliwić zbieranie danych z maszyn wirtualnych platformy Azure za pomocą usługi Log Analytics.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: cec27a2e16489850824d5b662b6bda4b23b1fa99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2e63b2ca0ee7246009068e6a2875795a14aeddb3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398920"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660193"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Zbieranie danych z maszyny wirtualnej platformy Azure za pomocą Azure Monitor
 
@@ -21,7 +20,7 @@ ms.locfileid: "75398920"
  
 W tym przewodniku Szybki start przyjęto założenie, że masz już maszynę wirtualną platformy Azure. Jeśli jeszcze jej nie masz, możesz [utworzyć maszynę wirtualną z systemem Windows](../../virtual-machines/windows/quick-create-portal.md) lub [utworzyć maszynę wirtualną z systemem Linux](../../virtual-machines/linux/quick-create-cli.md), wykonując czynności opisane w przewodnikach Szybki start dotyczących maszyn wirtualnych.
 
-## <a name="sign-in-to-azure-portal"></a>Zaloguj się w witrynie Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Logowanie do witryny Azure Portal
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com). 
 
@@ -29,7 +28,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **log Analytics obszary robocze**.
 
-    ![Portal Azure](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![Portalu Azure](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Wybierz pozycję **Utwórz**, a następnie wybierz opcje dla następujących elementów:
 

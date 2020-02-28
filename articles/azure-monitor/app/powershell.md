@@ -1,18 +1,14 @@
 ---
 title: Automatyzacja Application Insights platformy Azure przy użyciu programu PowerShell | Microsoft Docs
 description: Automatyzacja tworzenia zasobów, alertów i testów dostępności w programie PowerShell oraz zarządzania nimi przy użyciu szablonu Azure Resource Manager.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 82b406d6f2d9f9dc4464472108c8136c7b65c67a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 06fedb3d345cfe6790f7a19b88fbfdb36470638f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977833"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669815"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Zarządzanie zasobami Application Insights przy użyciu programu PowerShell
 
@@ -354,7 +350,7 @@ Możesz również ustawić plan cenowy dla istniejącego zasobu Application Insi
                -appName myApp
 ```
 
-|priceCode|plan|
+|priceCode|zamierza|
 |---|---|
 |1|Za GB (dawniej nazwany plan podstawowy)|
 |2|Na węzeł (dawniej Nazwa planu przedsiębiorstwa)|

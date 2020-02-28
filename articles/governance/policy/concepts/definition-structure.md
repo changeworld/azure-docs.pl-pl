@@ -1,14 +1,14 @@
 ---
 title: Szczegóły struktury definicji zasad
 description: Opisuje, w jaki sposób definicje zasad są używane do ustanawiania Konwencji dla zasobów platformy Azure w organizacji.
-ms.date: 11/26/2019
+ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1e90009a0c34bf166a18659a19988ea5a0c9ab07
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: ade659637f1be6cc58cebae760c5e1b753f3830f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587128"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670784"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -22,9 +22,9 @@ Schemat definicji zasad znajduje się tutaj: [https://schema.management.azure.co
 Użyjesz JSON do tworzenia definicji zasad. Definicja zasad zawiera elementy dla:
 
 - mode
-- parametry
+- parameters
 - Nazwa wyświetlana
-- Opis elementu
+- description
 - Reguła zasad
   - Ocena logiczne
   - Efekt
@@ -322,7 +322,7 @@ W poniższym przykładzie `concat` jest używany do tworzenia wyszukiwania pól 
 }
 ```
 
-### <a name="value"></a>Value
+### <a name="value"></a>Wartość
 
 Warunki mogą być również tworzone przy użyciu **wartości**. **wartość** sprawdza warunki względem [parametrów](#parameters), [obsługiwanych funkcji szablonów](#policy-functions)lub literałów.
 **wartość** jest sparowana z dowolnym obsługiwanym [warunkiem](#conditions).
@@ -712,9 +712,12 @@ Ta przykładowa reguła sprawdza, czy istnieją dopasowania **ipRules\[\*\]. Val
 
 Aby uzyskać więcej informacji, zobacz [ocenianie aliasu [\*]](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
-## <a name="initiatives"></a>Inicjatywy
+## <a name="initiatives"></a>Inicjatyw
 
 Inicjatywy pozwalają grupować kilka definicji zasad powiązane w celu uproszczenia przypisań i zarządzania, ponieważ współdziała z grupą jako pojedynczy element. Na przykład można grupować powiązane definicje zasad tagowania w jednym inicjatywy. Zamiast przypisywać każdej z zasad indywidualnie, mają zastosowanie tej inicjatywy.
+
+> [!NOTE]
+> Po przypisaniu inicjatywy nie można zmienić parametrów poziomu Initative. Ze względu na to zalecenie polega na ustawieniu elementu **DefaultValue** podczas definiowania parametru.
 
 Poniższy przykład ilustruje sposób tworzenia inicjatywy do obsługi dwóch tagów: `costCenter` i `productName`. Używa dwóch wbudowane zasady do zastosowania domyślną wartość tagu.
 
@@ -729,13 +732,15 @@ Poniższy przykład ilustruje sposób tworzenia inicjatywy do obsługi dwóch ta
                 "type": "String",
                 "metadata": {
                     "description": "required value for Cost Center tag"
-                }
+                },
+                "defaultValue": "DefaultCostCenter"
             },
             "productNameValue": {
                 "type": "String",
                 "metadata": {
                     "description": "required value for product Name tag"
-                }
+                },
+                "defaultValue": "DefaultProduct"
             }
         },
         "policyDefinitions": [{

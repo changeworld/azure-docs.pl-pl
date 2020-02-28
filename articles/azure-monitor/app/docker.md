@@ -1,18 +1,14 @@
 ---
 title: Monitorowanie aplikacji platformy Docker na platformie Azure Application Insights | Microsoft Docs
 description: Liczniki wydajności platformy Docker, zdarzenia i wyjątki mogą być wyświetlane na Application Insights wraz z danymi telemetrycznymi z aplikacji kontenerowych.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 66a2481d25c863bbdbf4d72c4683a309918776db
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677935"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669611"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Monitorowanie aplikacji platformy Docker w Application Insights (przestarzałe)
 
@@ -75,12 +71,12 @@ Kliknij kafelek Docker.
 Wkrótce zobaczysz dane przychodzące z aplikacji platformy Docker, zwłaszcza jeśli masz inne kontenery uruchomione na aparacie platformy Docker.
 
 ### <a name="docker-container-events"></a>Zdarzenia kontenera platformy Docker
-![Przyklad](./media/docker/13.png)
+![Przykład](./media/docker/13.png)
 
 Aby zbadać poszczególne zdarzenia, kliknij przycisk [Wyszukaj](../../azure-monitor/app/diagnostic-search.md). Wyszukaj i Filtruj, aby znaleźć żądane zdarzenia. Kliknij dowolne zdarzenie, aby uzyskać więcej szczegółów.
 
 ### <a name="exceptions-by-container-name"></a>Wyjątki według nazwy kontenera
-![Przyklad](./media/docker/14.png)
+![Przykład](./media/docker/14.png)
 
 ### <a name="docker-context-added-to-app-telemetry"></a>Kontekst platformy Docker został dodany do telemetrii aplikacji
 Dane telemetryczne żądania wysyłane z aplikacji z zestawem SDK AI są wzbogacane przy użyciu informacji kontekstu platformy Docker.
@@ -96,7 +92,7 @@ Dane telemetryczne żądania wysyłane z aplikacji z zestawem SDK AI są wzbogac
 
 * Zainstaluj zestaw SDK Application Insights w aplikacji. Dowiedz się, jak: [aplikacje sieci Web Java](../../azure-monitor/app/java-get-started.md), [aplikacje sieci Web systemu Windows](../../azure-monitor/app/asp-net.md).
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 

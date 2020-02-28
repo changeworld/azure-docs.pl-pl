@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 7927866adb5efbdc8eb55b9b5209603a3658ae2c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e38ac438a398ced31b2918768efeb453649de62e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495191"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780334"
 ---
 |Name (Nazwa) |Opis |Efekt (s) |Wersja |Element źródłowy |
-|---|---|---|---|
+|---|---|---|---|---|
 |[Niestandardowe zasady protokołu IPsec/IKE muszą być stosowane do wszystkich połączeń bramy sieci wirtualnej platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Te zasady zapewniają, że wszystkie połączenia bramy sieci wirtualnej platformy Azure używają niestandardowych zasad usługi Exchange Protocol Security (IPSec)/Internet. Obsługiwane algorytmy i siły klucza — https://aka.ms/AA62kb0 |Inspekcja, wyłączona |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json)
 |[App Service powinien używać punktu końcowego usługi sieci wirtualnej](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d21331d-a4c2-4def-a9ad-ee4e1e023beb) |Ta zasada przeprowadza inspekcję wszelkich App Service nieskonfigurowanych do korzystania z punktu końcowego usługi sieci wirtualnej. |AuditIfNotExists, wyłączone |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_AppService_AuditIfNotExists.json)
 |[Bramy sieci VPN platformy Azure nie powinny używać jednostki SKU "Basic"](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345b6c3-24bd-4c93-9bbb-7e5e49a17b78) |Te zasady zapewniają, że bramy sieci VPN nie używają jednostki SKU "Basic". |Inspekcja, wyłączona |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_BasicSKU_Audit.json)

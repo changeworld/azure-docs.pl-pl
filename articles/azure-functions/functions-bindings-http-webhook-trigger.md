@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 8dbb4ff0c9f8df6609d8447e84dcfe878a954fff
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: a2adf59a542f695b7845e1a871c0b297b0790fec
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443962"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672161"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions wyzwalacza HTTP
 
@@ -489,7 +489,7 @@ W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane
 | **Szlak** | **Szlak** | Definiuje szablon trasy, który kontroluje adresy URL żądań, które odpowiada funkcja. Wartość domyślna, jeśli nie jest określona, jest `<functionname>`. Aby uzyskać więcej informacji, zobacz [Dostosowywanie punktu końcowego http](#customize-the-http-endpoint). |
 | **Element webhooktype** | **Element webhooktype** | _Obsługiwane tylko dla środowiska uruchomieniowego w wersji 1. x._<br/><br/>Konfiguruje wyzwalacz HTTP do działania jako odbiornik [elementu webhook](https://en.wikipedia.org/wiki/Webhook) dla określonego dostawcy. Nie ustawiaj właściwości `methods`, jeśli ustawisz tę właściwość. Typ elementu webhook może być jedną z następujących wartości:<ul><li><code>genericJson</code>&mdash;punktu końcowego elementu webhook ogólnego przeznaczenia bez logiki dla określonego dostawcy. To ustawienie ogranicza żądania tylko do tych, które używają protokołu HTTP POST i z typem zawartości `application/json`.</li><li><code>github</code>&mdash;funkcja reaguje na elementy [webhook usługi GitHub](https://developer.github.com/webhooks/). Nie należy używać właściwości _authLevel_ z elementami webhook usługi GitHub. Aby uzyskać więcej informacji, zobacz sekcję elementy webhook w usłudze GitHub w dalszej części tego artykułu.</li><li><code>slack</code>&mdash;funkcja reaguje na elementy [webhook zapasowych](https://api.slack.com/outgoing-webhooks). Nie należy używać właściwości _authLevel_ z elementami webhook zapasowych. Aby uzyskać więcej informacji, zobacz sekcję elementy webhooks w dalszej części tego artykułu.</li></ul>|
 
-## <a name="payload"></a>ładunku
+## <a name="payload"></a>Ładunku
 
 Typ danych wejściowych wyzwalacza jest zadeklarowany jako `HttpRequest` lub typ niestandardowy. W przypadku wybrania `HttpRequest`zostanie uzyskany pełny dostęp do obiektu żądania. W przypadku typu niestandardowego środowisko uruchomieniowe próbuje przeanalizować treści żądania JSON w celu ustawienia właściwości obiektu.
 
@@ -829,7 +829,7 @@ Autoryzacja elementu webhook jest obsługiwana przez składnik odbiornika elemen
 
 ## <a name="limits"></a>Limity
 
-Długość żądania HTTP jest ograniczona do 100 MB (104 857 600 bajtów), a długość adresu URL jest ograniczona do 4 KB (4 096 bajtów). Limity te są określane przez `httpRuntime` elementu [pliku Web. config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)środowiska uruchomieniowego.
+Długość żądania HTTP jest ograniczona do 100 MB (104 857 600 bajtów), a długość adresu URL jest ograniczona do 4 KB (4 096 bajtów). Limity te są określane przez `httpRuntime` elementu [pliku Web. config](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)środowiska uruchomieniowego.
 
 Jeśli funkcja, która używa wyzwalacza HTTP, nie zostanie zakończona w ciągu 230 sekund, [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) przekroczy limit czasu i zwróci błąd http 502. Funkcja będzie kontynuowała działanie, ale nie będzie mogła zwracać odpowiedzi HTTP. W przypadku długotrwałych funkcji zalecamy wykonanie wzorców asynchronicznych i zwrócenie lokalizacji, w której można wysłać polecenie ping do stanu żądania. Informacje o tym, jak długo funkcja może być uruchamiana, znajduje się w artykule [skalowanie i planowanie zużycia](functions-scale.md#timeout).
 

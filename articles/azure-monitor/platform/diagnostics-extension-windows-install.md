@@ -3,22 +3,21 @@ title: Instalowanie i Konfigurowanie rozszerzenia diagnostyki systemu Windows Az
 description: Dowiedz się, jak zbierać dane diagnostyczne platformy Azure na koncie usługi Azure Storage, aby można było wyświetlać je za pomocą jednego z kilku dostępnych narzędzi.
 services: azure-monitor
 author: bwren
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: 5b3cc4cbaa663b7932609e85c544378a7cca69ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 929ab4109eb8d0e90b6c561a2135c0b7dd4205bb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472689"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672263"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Instalowanie i Konfigurowanie rozszerzenia diagnostyki systemu Windows Azure (funkcji wad)
 Rozszerzenie diagnostyki Azure to Agent w Azure Monitor, który zbiera dane monitorowania z systemu operacyjnego gościa i obciążeń maszyn wirtualnych platformy Azure i innych zasobów obliczeniowych. Ten artykuł zawiera szczegółowe informacje na temat instalowania i konfigurowania rozszerzenia Diagnostyka systemu Windows oraz opis sposobu przechowywania danych w usłudze i koncie usługi Azure Storage.
 
-Rozszerzenie diagnostyki jest zaimplementowane jako [rozszerzenie maszyny wirtualnej](/virtual-machines/extensions/overview) na platformie Azure, dlatego obsługuje te same opcje instalacji przy użyciu szablonów Menedżer zasobów, programu PowerShell i interfejsu wiersza polecenia. Zobacz [rozszerzenia i funkcje maszyny wirtualnej dla systemu Windows,](/virtual-machines/extensions/features-windows) Aby uzyskać szczegółowe informacje na temat instalowania i konserwowania rozszerzeń maszyn wirtualnych.
+Rozszerzenie diagnostyki jest zaimplementowane jako [rozszerzenie maszyny wirtualnej](../../virtual-machines/extensions/overview.md) na platformie Azure, dlatego obsługuje te same opcje instalacji przy użyciu szablonów Menedżer zasobów, programu PowerShell i interfejsu wiersza polecenia. Zobacz [rozszerzenia i funkcje maszyny wirtualnej dla systemu Windows,](../../virtual-machines/extensions/features-windows.md) Aby uzyskać szczegółowe informacje na temat instalowania i konserwowania rozszerzeń maszyn wirtualnych.
 
 ## <a name="install-with-azure-portal"></a>Zainstaluj przy użyciu Azure Portal
 Można zainstalować i skonfigurować rozszerzenie diagnostyki na pojedynczej maszynie wirtualnej w Azure Portal, która zapewnia interfejs, a nie działa bezpośrednio z konfiguracją. Włączenie rozszerzenia diagnostyki spowoduje automatyczne użycie konfiguracji domyślnej z najbardziej typowymi licznikami wydajności i zdarzeniami. Tę konfigurację domyślną można zmodyfikować zgodnie z określonymi wymaganiami.

@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: d0c9fe9ebd040ee59ae8717e95fd1911eaef61be
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff7420619cffc2287ab8ff6332df605d56329549
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560460"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664137"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Zarządzanie skalowaniem w poziomie klastra (skalowanie w dół) w usłudze Azure Eksplorator danych w celu uwzględnienia zmiany zapotrzebowania
 
@@ -59,13 +59,14 @@ Gdy klaster zbliża się do nadmiernego użycia, skalowanie w poziomie w celu za
 * Liczba wystąpień klastra jest mniejsza niż maksymalna liczba wystąpień zdefiniowana przez użytkownika.
 * Użycie pamięci podręcznej jest duże przez ponad godzinę.
 * Procesor CPU jest wysoki przez ponad godzinę.
+* Wykorzystanie pozyskiwania jest duże przez ponad godzinę.
 
 > [!NOTE]
 > W logice skalowanie w poziomie nie jest obecnie rozważana Metryka wykorzystania pozyskiwania. Jeśli ta Metryka jest ważna dla przypadku użycia, użyj [niestandardowego automatycznego skalowania](#custom-autoscale).
 
 **Skalowanie w poziomie**
 
-Gdy klaster zbliża się do stanu pod względem użycia, skalowanie w celu obniżenia kosztów, ale utrzymując wydajność. Wiele metryk służy do sprawdzania, czy jest to bezpieczne skalowanie w klastrze. Następujące reguły są oceniane codziennie przez 7 dni przed wykonaniem skalowania w poziomie:
+Gdy klaster zbliża się do stanu pod względem użycia, skalowanie w celu obniżenia kosztów, ale utrzymując wydajność. Wiele metryk służy do sprawdzania, czy jest to bezpieczne skalowanie w klastrze. Następujące reguły są oceniane co godzinę przez 6 godzin przed wykonaniem skalowania w poziomie:
 * Liczba wystąpień jest większa niż 2 i większa niż minimalna liczba zdefiniowanych wystąpień.
 * Aby upewnić się, że nie ma przeciążenia zasobów, przed wykonaniem skalowania w poziomie należy zweryfikować następujące metryki: 
     * Użycie pamięci podręcznej nie jest wysokie

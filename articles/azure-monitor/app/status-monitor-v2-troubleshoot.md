@@ -1,18 +1,16 @@
 ---
 title: Rozwiązywanie problemów z usługą Azure Application Insights Agent i znane problemy | Microsoft Docs
 description: Znane problemy dotyczące Application Insights agenta i rozwiązywania problemów. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 30172bf65be52ba1ddd2b9127c3e2b5a284d48dc
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 217629ba5c386557455cc2d2b8bd47f85fa8f84e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899591"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671158"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Rozwiązywanie problemów z agentem Application Insights (dawniej nazwany monitor stanu v2)
 
@@ -26,9 +24,9 @@ Jeśli wystąpi problem, którego nie ma na liście, możesz skontaktować się 
 
 Jeśli dowolna z tych bibliotek dll znajduje się w katalogu bin, monitorowanie może zakończyć się niepowodzeniem:
 
-- Microsoft. ApplicationInsights. dll
-- Microsoft. AspNet. TelemetryCorrelation. dll
-- System. Diagnostics. DiagnosticSource. dll
+- Microsoft.ApplicationInsights.dll
+- Microsoft.AspNet.TelemetryCorrelation.dll
+- System.Diagnostics.DiagnosticSource.dll
 
 Niektóre z tych bibliotek DLL są zawarte w domyślnych szablonach aplikacji programu Visual Studio, nawet jeśli aplikacja nie korzysta z nich.
 Możesz użyć narzędzi do rozwiązywania problemów, aby zobaczyć zachowanie objawem:
@@ -88,7 +86,7 @@ Konfiguracja zestawu SDK nie jest dostępna dla użytkownika końcowego w wersji
 ### <a name="troubleshooting-powershell"></a>Rozwiązywanie problemów z programem PowerShell
 
 #### <a name="determine-which-modules-are-available"></a>Określanie, które moduły są dostępne
-Aby określić, które moduły są zainstalowane, można użyć polecenia `Get-Module -ListAvailable`.
+Można użyć `Get-Module -ListAvailable` polecenia, aby określić, które moduły są zainstalowane.
 
 #### <a name="import-a-module-into-the-current-session"></a>Importowanie modułu do bieżącej sesji
 Jeśli moduł nie został załadowany do sesji programu PowerShell, można go załadować ręcznie przy użyciu polecenia `Import-Module <path to psd1>`.
@@ -113,7 +111,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 ```
 
 #### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>Określ bieżącą wersję modułu Application Insights Agent
-Uruchom polecenie `Get-ApplicationInsightsMonitoringStatus -PowerShellModule`, aby wyświetlić następujące informacje dotyczące modułu:
+Uruchom `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` polecenie, aby wyświetlić następujące informacje dotyczące modułu:
    - Wersja modułu programu PowerShell
    - Wersja zestawu SDK Application Insights
    - Ścieżki plików modułu programu PowerShell
@@ -133,13 +131,13 @@ Zapoznaj się z dokumentacją [interfejsu API](status-monitor-v2-api-get-status.
 
 ### <a name="collect-etw-logs-by-using-perfview"></a>Zbieranie dzienników ETW przy użyciu narzędzia PerfView
 
-#### <a name="setup"></a>Konfiguracja
+#### <a name="setup"></a>Konfigurowanie
 
 1. Pobierz narzędzia PerfView. exe i PerfView64. exe z usługi [GitHub](https://github.com/Microsoft/perfview/releases).
 2. Uruchom PerfView64. exe.
 3. Rozwiń **Opcje zaawansowane**.
 4. Wyczyść następujące pola wyboru:
-    - **Kodu**
+    - **Zip**
     - **Połączenie**
     - **Kolekcja symboli platformy .NET**
 5. Ustaw tych **dodatkowych dostawców**: `61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`

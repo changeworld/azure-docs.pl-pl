@@ -1,18 +1,17 @@
 ---
 title: Jak uzyskać Wykres wydajności za pomocą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) | Microsoft Docs
 description: Wydajność to funkcja Azure Monitor dla maszyn wirtualnych, która automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Ten artykuł zawiera szczegółowe informacje na temat korzystania z niego w różnych scenariuszach.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 0d679675758b736455c66066f3df4cb9ea43fdea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 245d5c0fb0a54a6d129a193deaa9445bc8fefbfb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399294"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670699"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak uzyskać Wykres wydajności przy użyciu Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 
@@ -22,7 +21,7 @@ Azure Monitor dla maszyn wirtualnych obejmuje zestaw wykresów wydajności przez
 
 W Azure Monitor funkcja wydajność zapewnia widok wszystkich monitorowanych maszyn wirtualnych wdrożonych w grupach roboczych w ramach subskrypcji lub w środowisku użytkownika. Aby uzyskać dostęp z Azure Monitor, wykonaj następujące czynności. 
 
-1. W witrynie Azure portal wybierz **Monitor**. 
+1. W Azure Portal wybierz pozycję **Monitoruj**. 
 2. Wybierz pozycję **Virtual Machines (wersja zapoznawcza)** w sekcji **rozwiązania** .
 3. Wybierz kartę **wydajność** .
 

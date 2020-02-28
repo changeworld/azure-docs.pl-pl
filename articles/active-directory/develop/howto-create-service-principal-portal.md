@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591578"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656397"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: korzystanie z portalu do tworzenia aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów
 
@@ -85,7 +85,7 @@ Aplikacje demona mogą używać dwóch form poświadczeń do uwierzytelniania w 
 
 ### <a name="upload-a-certificate"></a>Przekaż certyfikat
 
-Jeśli masz istniejący certyfikat, możesz go użyć.  Opcjonalnie można utworzyć certyfikat z podpisem własnym na potrzeby testowania. Otwórz program PowerShell i uruchom polecenie [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) z poniższymi parametrami, aby utworzyć certyfikat z podpisem własnym w magazynie certyfikatów użytkownika na komputerze: 
+Jeśli masz istniejący certyfikat, możesz go użyć.  Opcjonalnie można utworzyć certyfikat z podpisem własnym *tylko do celów testowych*. Otwórz program PowerShell i uruchom polecenie [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) z poniższymi parametrami, aby utworzyć certyfikat z podpisem własnym w magazynie certyfikatów użytkownika na komputerze: 
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -93,8 +93,18 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 Wyeksportuj ten certyfikat do pliku za pomocą przystawki [Zarządzanie certyfikatem użytkownika](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC dostępnej w panelu sterowania systemu Windows.
 
+1. Z menu **Start** wybierz polecenie **Uruchom** , a następnie wprowadź **certmgr. msc**.
+
+   Zostanie wyświetlone narzędzie Menedżer certyfikatów dla bieżącego użytkownika.
+
+1. Aby wyświetlić certyfikaty, w obszarze **Certyfikaty — bieżący użytkownik** w okienku po lewej stronie rozwiń katalog **osobisty** .
+1. Kliknij prawym przyciskiem myszy utworzony certyfikat, wybierz polecenie **wszystkie zadania — > Eksportuj**.
+1. Postępuj zgodnie z instrukcjami Kreatora eksportu certyfikatów.  Wyeksportuj klucz prywatny, określ hasło do pliku certyfikatu, a następnie wyeksportuj do pliku.
+
 Aby przekazać certyfikat:
 
+1. Wybierz pozycję **Azure Active Directory**.
+1. W obszarze **rejestracje aplikacji** w usłudze Azure AD wybierz aplikację.
 1. Wybierz pozycję **certyfikaty & wpisy tajne**.
 1. Wybierz pozycję **Przekaż certyfikat** i wybierz certyfikat (istniejący certyfikat lub wyeksportowany certyfikat z podpisem własnym).
 
@@ -146,15 +156,21 @@ W ramach subskrypcji platformy Azure Twoje konto musi mieć `Microsoft.Authoriza
 
 Aby sprawdzić uprawnienia do subskrypcji:
 
-1. Wybierz swoje konto w prawym górnym rogu, a następnie wybierz pozycję **...-> moje uprawnienia**.
+1. Wyszukaj i wybierz pozycję **subskrypcje**lub wybierz pozycję **subskrypcje** na stronie **głównej** .
 
-   ![Wybierz swoje konto i uprawnienia użytkownika](./media/howto-create-service-principal-portal/select-my-permissions.png)
+   ![Wyszukiwanie](./media/howto-create-service-principal-portal/select-subscription.png)
 
-1. Z listy rozwijanej wybierz subskrypcję, w której chcesz utworzyć nazwę główną usługi. Następnie wybierz **pozycję kliknij tutaj, aby wyświetlić pełne szczegóły dostępu dla tej subskrypcji**.
+1. Wybierz subskrypcję, w której chcesz utworzyć nazwę główną usługi.
+
+   ![Wybierz subskrypcję do przypisania](./media/howto-create-service-principal-portal/select-one-subscription.png)
+
+   Jeśli nie widzisz subskrypcji, której szukasz, wybierz pozycję **Filtr subskrypcje globalne**. Upewnij się, że wybrano subskrypcję dla portalu.
+
+1. Wybierz pozycję **Moje uprawnienia**. Następnie wybierz **pozycję kliknij tutaj, aby wyświetlić pełne szczegóły dostępu dla tej subskrypcji**.
 
    ![Wybierz subskrypcję, w której chcesz utworzyć nazwę główną usługi](./media/howto-create-service-principal-portal/view-details.png)
 
-1. Wybierz **przypisania ról** , aby wyświetlić przypisane role i określić, czy masz odpowiednie uprawnienia do przypisywania roli do aplikacji usługi AD. Jeśli nie, skontaktuj się z administratorem subskrypcji, aby dodać Cię do roli administratora dostępu użytkownika. Na poniższej ilustracji użytkownik ma przypisaną rolę właściciela, co oznacza, że użytkownik ma odpowiednie uprawnienia.
+1. Wybierz pozycję **Wyświetl** w **przypisaniach ról** , aby wyświetlić przypisane role i określić, czy masz odpowiednie uprawnienia do przypisywania roli do aplikacji usługi AD. Jeśli nie, skontaktuj się z administratorem subskrypcji, aby dodać Cię do roli administratora dostępu użytkownika. Na poniższej ilustracji użytkownik ma przypisaną rolę właściciela, co oznacza, że użytkownik ma odpowiednie uprawnienia.
 
    ![Ten przykład pokazuje, że użytkownik ma przypisaną rolę właściciela](./media/howto-create-service-principal-portal/view-user-role.png)
 

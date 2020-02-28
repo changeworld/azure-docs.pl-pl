@@ -1,19 +1,15 @@
 ---
 title: Usługa Azure Application Insights OpenCensus — lokalna usługa przesyłania dalej (wersja zapoznawcza)
 description: Przekazuj OpenCensus rozproszone i rozpięte z języków, takich jak Python, i przejdź do platformy Azure Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.openlocfilehash: 25c6c82fa1179a9173f42c3a5a4e95a371dd49c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcf7ba495897eb1c9b40c78f00825e863390b5d1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406605"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669968"
 ---
 # <a name="local-forwarder-preview"></a>Lokalna usługa przesyłania dalej (wersja zapoznawcza)
 
@@ -23,14 +19,14 @@ Lokalna usługa przesyłania dalej to Agent, który zbiera dane telemetryczne Ap
 
 Lokalna usługa przesyłania dalej to [projekt Open Source w usłudze GitHub](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases). Istnieją różne sposoby uruchamiania lokalnego usługi przesyłania dalej na wielu platformach.
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>System Windows
 
 #### <a name="windows-service"></a>Usługa systemu Windows
 
 Najprostszym sposobem uruchamiania lokalnego usługi przesyłania dalej w systemie Windows jest zainstalowanie jej jako usługi systemu Windows. Wydanie zawiera plik wykonywalny usługi systemu Windows (*WindowsServiceHost/Microsoft. LocalForwarder. WindowsServiceHost. exe*), który może być łatwo zarejestrowany w systemie operacyjnym.
 
 > [!NOTE]
-> Lokalna usługa przesyłania dalej wymaga co najmniej .NET Framework 4,7. Jeśli nie masz .NET Framework 4,7, usługa zostanie zainstalowana, ale nie zostanie uruchomiona. Najnowsza wersja programu .NET Framework dostęp do **[odwiedź stronę pobierania programu .NET Framework](
+> Lokalna usługa przesyłania dalej wymaga co najmniej .NET Framework 4,7. Jeśli nie masz .NET Framework 4,7, usługa zostanie zainstalowana, ale nie zostanie uruchomiona. Aby uzyskać dostęp do najnowszej wersji .NET Framework, **[odwiedź stronę pobierania .NET Framework](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
 1. Pobierz LF. Plik WindowsServiceHost. zip z [lokalnej strony wersji usługi przesyłania dalej](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) w witrynie GitHub.
@@ -78,7 +74,7 @@ W przypadku niektórych przypadków użycia może być korzystne uruchomienie lo
   ```batchfile
   E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
   ```
-* własny zestaw plików binarnych platformy .NET Core dla platform x86 i x64. Nie wymaga to uruchomienia środowiska uruchomieniowego .NET Core. */ConsoleHost/win-x86/publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
+* własny zestaw plików binarnych platformy .NET Core dla platform x86 i x64. Nie wymaga to uruchomienia środowiska uruchomieniowego .NET Core. */ConsoleHost/win-x86/Publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/Publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
   ```batchfile
   E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
   E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
@@ -93,7 +89,7 @@ Podobnie jak w przypadku systemu Windows, wydanie zawiera następujące wersje w
 dotnet Microsoft.LocalForwarder.ConsoleHost.dll
 ```
 
-* własny zestaw plików binarnych platformy .NET Core dla systemu Linux-64. To nie wymaga uruchomienia środowiska uruchomieniowego .NET Core. */ConsoleHost/linux-x64/publish/Microsoft.LocalForwarder.ConsoleHost*.
+* własny zestaw plików binarnych platformy .NET Core dla systemu Linux-64. To nie wymaga uruchomienia środowiska uruchomieniowego .NET Core. */ConsoleHost/Linux-x64/Publish/Microsoft.LocalForwarder.ConsoleHost*.
 
 ```batchfile
 user@machine:~/ConsoleHost/linux-x64/publish$ sudo chmod +x Microsoft.LocalForwarder.ConsoleHost

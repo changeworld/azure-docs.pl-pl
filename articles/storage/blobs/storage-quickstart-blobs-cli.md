@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: 57ab56fe3028da9011e86c589209e7505e69e719
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 785f68b98d819a58ce43837dc3c9b5a855beeb0a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650934"
+ms.locfileid: "77672518"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Szybki Start: Tworzenie, pobieranie i wyświetlanie listy obiektów BLOB za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -27,6 +27,8 @@ Interfejs wiersza polecenia platformy Azure to środowisko wiersza polecenia pla
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+## <a name="use-the-azure-cli-locally"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure lokalnie
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azure i korzystać z niego lokalnie, ten przewodnik Szybki Start będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie `az --version`, aby sprawdzić wersję. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 

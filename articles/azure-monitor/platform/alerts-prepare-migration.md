@@ -1,18 +1,17 @@
 ---
 title: Przygotowanie do Azure Monitor migracji klasycznych alertów przez aktualizację aplikacji logiki i elementów Runbook
-author: yanivlavi
 description: Dowiedz się, jak modyfikować elementy webhook, Logic Apps i Runbook, aby przygotować się do dobrowolnej migracji.
-ms.service: azure-monitor
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 58ba95ff60ddccf909578a673110c870caf57376
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9219e105acb98424939030af76b526d475585619
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705568"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665596"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Przygotuj Aplikacje logiki i elementy Runbook do migracji klasycznych reguł alertów
 
@@ -31,9 +30,9 @@ Poniższa tabela zawiera odwołanie do interfejsów programistycznych zarówno d
 
 |         |Alerty klasyczne  |Nowe alerty metryk |
 |---------|---------|---------|
-|Interfejs API REST     | [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
+|Interfejs API REST     | [Microsoft. Insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
 |Interfejs wiersza polecenia platformy Azure     | [AZ monitor alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [AZ Monitoruj metryki alertu](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [Dokumentacja](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Dokumentacja](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+|Program PowerShell      | [Dokumentacja](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Dokumentacja](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Szablon usługi Azure Resource Manager | [W przypadku alertów klasycznych](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Nowe alerty metryki](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
 
 ## <a name="notification-payload-changes"></a>Zmiany ładunku powiadomień
@@ -44,26 +43,26 @@ Skorzystaj z poniższej tabeli, aby zmapować pola ładunku elementu webhook z k
 
 |  |Alerty klasyczne  |Nowe alerty metryk |
 |---------|---------|---------|
-|Czy alert został aktywowany lub rozwiązany?    | **status**       | **Data. status** |
-|Informacje kontekstowe dotyczące alertu     | **Context**        | **data.context**        |
-|Sygnatura czasowa, o której alert został aktywowany lub rozwiązany     | **Context. timestamp**       | **data.context.timestamp**        |
+|Czy alert został aktywowany lub rozwiązany?    | **Stany**       | **Data. status** |
+|Informacje kontekstowe dotyczące alertu     | **Context**        | **Data. Context**        |
+|Sygnatura czasowa, o której alert został aktywowany lub rozwiązany     | **Context. timestamp**       | **Data. Context. timestamp**        |
 | Identyfikator reguły alertu | **context.id** | **data.context.id** |
 | Nazwa reguły alertu | **context.name** | **data.context.name** |
-| Opis reguły alertu | **context.description** | **data.context.description** |
-| Warunek reguły alertu | **context.condition** | **data.context.condition** |
-| Nazwa metryki | **context.condition.metricName** | **data.context.condition.allOf[0].metricName** |
+| Opis reguły alertu | **Context. Description** | **Data. Context. Description** |
+| Warunek reguły alertu | **Context. Condition** | **Data. Context. Condition** |
+| Nazwa metryki | **Context. Condition. metricname** | **Data. Context. Condition. allOf [0]. metricname** |
 | Agregacja czasu (stopień agregowania metryki w oknie oceny)| **Context. Condition. timeAggregation** | **Context. Condition. timeAggregation** |
-| Okres próbny | **context.condition.windowSize** | **data.context.condition.windowSize** |
-| Operator (jak zagregowana wartość metryki jest porównywana z progiem) | **context.condition.operator** | **data.context.condition.operator** |
-| Próg | **context.condition.threshold** | **data.context.condition.allOf[0].threshold** |
-| Wartość metryki | **context.condition.metricValue** | **data.context.condition.allOf[0].metricValue** |
-| Identyfikator subskrypcji | **context.subscriptionId** | **data.context.subscriptionId** |
-| Grupa zasobów zasobu, którego to dotyczy | **context.resourceGroup** | **data.context.resourceGroup** |
-| Nazwa zasobu, którego to dotyczy | **context.resourceName** | **data.context.resourceName** |
-| Typ zasobu, którego to dotyczy | **context.resourceType** | **data.context.resourceType** |
-| Identyfikator zasobu zasobu, którego to dotyczy | **context.resourceId** | **data.context.resourceId** |
-| Bezpośredni link do strony podsumowania zasobów portalu | **context.portalLink** | **data.context.portalLink** |
-| Pola ładunków niestandardowych do przesłania do elementu webhook lub aplikacji logiki | **Właściwości** | **data.properties** |
+| Okres próbny | **Context. Condition. windowSize** | **Data. Context. Condition. windowSize** |
+| Operator (jak zagregowana wartość metryki jest porównywana z progiem) | **Context. Condition. operator** | **Data. Context. Condition. operator** |
+| Próg | **Context. Condition. Threshold** | **Data. Context. Condition. allOf [0]. próg** |
+| Wartość metryki | **Context. Condition. metricValue** | **Data. Context. Condition. allOf [0]. metricValue** |
+| Identyfikator subskrypcji | **Context. Identyfikator subskrypcji** | **Data. Context. Identyfikator subskrypcji** |
+| Grupa zasobów zasobu, którego to dotyczy | **Context. resources** | **Data. Context. resources** |
+| Nazwa zasobu, którego to dotyczy | **Context. resourceName** | **Data. Context. resourceName** |
+| Typ zasobu, którego to dotyczy | **Context. ResourceType** | **Data. Context. ResourceType** |
+| Identyfikator zasobu zasobu, którego to dotyczy | **Context. resourceId** | **Data. Context. resourceId** |
+| Bezpośredni link do strony podsumowania zasobów portalu | **Context. portalLink** | **Data. Context. portalLink** |
+| Pola ładunków niestandardowych do przesłania do elementu webhook lub aplikacji logiki | **aœciwoœci** | **Data. Properties** |
 
 Ładunki są podobne, jak widać. W poniższej sekcji przedstawiono:
 

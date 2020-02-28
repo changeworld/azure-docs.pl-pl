@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: b13e5e0000cdd8e33f459400cc4c24d107ccaba3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604794"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661843"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Często zadawane pytania — ogólne pytania dotyczące Azure Security Center
 
@@ -38,16 +38,17 @@ Usługa Azure Security Center monitoruje następujących zasobów platformy Azur
 * Maszyny wirtualne (z uwzględnieniem [Cloud Services](../cloud-services/cloud-services-choose-me.md))
 * Zestawy skalowania maszyn wirtualnych
 * Sieci wirtualne platformy Azure
+* Containers
 * Usługa Azure SQL
 * Konto usługi Azure Storage
 * Web Apps platformy Azure (w [App Service Environment](../app-service/environment/intro.md))
 * Rozwiązań partnerskich zintegrowanych z subskrypcją platformy Azure, takich jak zapory aplikacji sieci web na maszynach wirtualnych i w środowisku App Service Environment
 
-Ponadto komputery z systemem innym niż Azure (łącznie z lokalnymi) mogą być monitorowane przez Azure Security Center (obsługiwane są zarówno [komputery Windows](./quick-onboard-windows-computer.md) , jak i komputery z systemem [Linux](./quick-onboard-linux-computer.md) )
+Ponadto komputery spoza platformy Azure (w tym lokalne) mogą być również monitorowane przez Azure Security Center. Obsługiwane są zarówno [maszyny z systemem Windows](./quick-onboard-windows-computer.md) , jak i komputery z systemem [Linux](./quick-onboard-linux-computer.md) .
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Jak wyświetlić bieżący stan zabezpieczeń zasobów platformy Azure, Moje?
-Na stronie **przegląd Security Centeru** są wyświetlane ogólne stan zabezpieczeń środowiska, podzielone na dane dotyczące zasobów obliczeniowych, sieci, magazynu & i aplikacji. Każdy typ zasobu ma przedstawiający wskaźnik, jeśli zidentyfikowano żadnych potencjalnych luk w zabezpieczeniach. Klikając każdy Kafelek Wyświetla listę problemów z zabezpieczeniami identyfikowane przez usługę Security Center oraz spis zasobów w ramach subskrypcji.
+Na stronie **przegląd Security Centeru** są wyświetlane ogólne stan zabezpieczeń środowiska, podzielone na dane dotyczące zasobów obliczeniowych, sieci, magazynu & i aplikacji. Każdy typ zasobu ma wskaźnik pokazujący zidentyfikowane luki w zabezpieczeniach. Klikając każdy Kafelek Wyświetla listę problemów z zabezpieczeniami identyfikowane przez usługę Security Center oraz spis zasobów w ramach subskrypcji.
 
 
 

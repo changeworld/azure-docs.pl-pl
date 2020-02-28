@@ -1,18 +1,17 @@
 ---
 title: Włącz Azure Monitor (wersja zapoznawcza) dla środowiska hybrydowego | Microsoft Docs
 description: W tym artykule opisano sposób włączania Azure Monitor dla maszyn wirtualnych dla hybrydowego środowiska chmury, które zawiera co najmniej jedną maszynę wirtualną.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 0afc67bf6d9e997ef615ecadc6836b36ed73e2ea
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bd44eebf8aceaf7fe32cf8cf1b1152db32acb344
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969678"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669628"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Włącz Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) dla środowiska hybrydowego
 
@@ -20,7 +19,7 @@ ms.locfileid: "75969678"
 
 W tym artykule wyjaśniono, jak włączyć Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) dla maszyn wirtualnych lub komputerów fizycznych hostowanych w centrum danych lub w innym środowisku chmury. Po zakończeniu tego procesu pomyślnie uruchomiono monitorowanie maszyn wirtualnych w środowisku i Dowiedz się, czy występują problemy z wydajnością lub dostępnością.
 
-Przed rozpoczęciem należy zapoznać się z wymaganiami [wstępnymi](vminsights-enable-overview.md) i upewnić się, że Twoja subskrypcja i zasoby spełniają wymagania. Przegląd wymagań i metod wdrażania [agenta Log Analytics w systemie Linux i Windows](../../log-analytics/log-analytics-agent-overview.md).
+Przed rozpoczęciem należy zapoznać się z wymaganiami [wstępnymi](vminsights-enable-overview.md) i upewnić się, że Twoja subskrypcja i zasoby spełniają wymagania. Zapoznaj się z wymaganiami i metodami wdrażania dla [log Analytics Linux i Windows Agent](../../log-analytics/log-analytics-agent-overview.md).
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -31,7 +30,7 @@ Kroki umożliwiające wykonanie tego zadania są podsumowane w następujący spo
 
 1. Zainstaluj Log Analytics agenta dla systemu Windows lub Linux. Przed zainstalowaniem agenta zapoznaj się z artykułem [Omówienie agenta log Analytics](../platform/log-analytics-agent.md) , aby poznać wymagania wstępne i metody wdrażania systemu.
 
-2. Pobierz i zainstaluj usługi Azure Monitor dla agenta zależności mapy maszyn wirtualnych dla [Windows](https://aka.ms/dependencyagentwindows) lub [Linux](https://aka.ms/dependencyagentlinux).
+2. Pobierz i Zainstaluj agenta Azure Monitor dla maszyn wirtualnych zależności mapy dla [systemu Windows](https://aka.ms/dependencyagentwindows) lub [Linux](https://aka.ms/dependencyagentlinux).
 
 3. Należy włączyć zbieranie liczników wydajności.
 
@@ -42,10 +41,10 @@ Kroki umożliwiające wykonanie tego zadania są podsumowane w następujący spo
 
 ## <a name="install-the-dependency-agent-on-windows"></a>Instalowanie agenta zależności na Windows
 
-Można zainstalować agenta zależności ręcznie na komputerach Windows przez uruchomienie `InstallDependencyAgent-Windows.exe`. Po uruchomieniu tego pliku wykonywalnego bez żadnych opcji, uruchamia Kreatora instalacji, które można wykonać, aby zainstalować agenta interaktywnie.
+Agenta zależności można zainstalować ręcznie na komputerach z systemem Windows, uruchamiając `InstallDependencyAgent-Windows.exe`. Po uruchomieniu tego pliku wykonywalnego bez żadnych opcji, uruchamia Kreatora instalacji, które można wykonać, aby zainstalować agenta interaktywnie.
 
 >[!NOTE]
->*Administrator* uprawnienia są wymagane do zainstalowania lub odinstalowania agenta.
+>Do zainstalowania lub odinstalowania agenta wymagane są uprawnienia *administratora* .
 
 W poniższej tabeli wymieniono parametry, które są obsługiwane przez Instalatora agenta z wiersza polecenia.
 
@@ -56,11 +55,11 @@ W poniższej tabeli wymieniono parametry, które są obsługiwane przez Instalat
 
 Na przykład aby uruchomić program instalacyjny z parametrem `/?`, wprowadź **InstallDependencyAgent-Windows. exe/?** .
 
-Pliki agenta zależności Windows są zainstalowane w *C:\Program Files\Microsoft Dependency Agent* domyślnie. Jeśli nie można uruchomić agenta zależności po zakończeniu instalacji, zapoznaj się z dziennikami, aby uzyskać szczegółowe informacje o błędzie. Katalog dziennika jest *%Programfiles%\Microsoft Agent\logs zależności*.
+Pliki dla agenta zależności systemu Windows są domyślnie instalowane w *katalogu C:\Program Files\Microsoft Agent zależności* . Jeśli nie można uruchomić agenta zależności po zakończeniu instalacji, zapoznaj się z dziennikami, aby uzyskać szczegółowe informacje o błędzie. Katalog dziennika to *%ProgramFiles%\Microsoft Dependency Agent\logs*.
 
 ## <a name="install-the-dependency-agent-on-linux"></a>Instalowanie agenta zależności w systemie Linux
 
-Agent zależności jest zainstalowany na serwery z systemem Linux z *InstallDependencyAgent Linux64.bin*, skrypt powłoki, za pomocą samorozpakowujący się plik binarny. Można uruchomić go za pomocą `sh` lub Dodaj uprawnienia do wykonywania do pliku sam.
+Agent zależności jest instalowany na serwerach z systemem Linux z *InstallDependencyAgent-linux64. bin*, skryptu powłoki z samowyodrębniającym się plikiem binarnym. Plik można uruchomić za pomocą `sh` lub dodać uprawnienia wykonywania do samego pliku.
 
 >[!NOTE]
 > Aby zainstalować lub skonfigurować agenta, wymagany jest dostęp na poziomie administratora.
@@ -76,7 +75,7 @@ Na przykład aby uruchomić program instalacyjny z parametrem `-help`, wprowadź
 
 Zainstaluj agenta zależności systemu Linux jako element główny, uruchamiając polecenie `sh InstallDependencyAgent-Linux64.bin`.
 
-Jeśli agenta zależności nie powiedzie się, sprawdź dzienniki Aby uzyskać szczegółowe informacje o błędzie. Na agentach systemu Linux jest katalog dziennika */var/opt/microsoft/dependency-agent/log*.
+Jeśli agenta zależności nie powiedzie się, sprawdź dzienniki Aby uzyskać szczegółowe informacje o błędzie. W przypadku agentów systemu Linux katalog dziennika to */var/opt/Microsoft/Dependency-Agent/log*.
 
 Pliki agenta zależności są umieszczone w następujących katalogach:
 
@@ -107,7 +106,7 @@ wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDepende
 sudo sh InstallDependencyAgent-Linux64.bin -s
 ```
 
-## <a name="desired-state-configuration"></a>Desired State Configuration
+## <a name="desired-state-configuration"></a>Konfiguracja żądanego stanu
 
 Aby wdrożyć agenta zależności za pomocą Desired State Configuration (DSC), możesz użyć modułu xPSDesiredStateConfiguration z poniższy przykład kodu:
 
@@ -146,7 +145,7 @@ configuration ServiceMap {
 ## <a name="enable-performance-counters"></a>Włącz liczniki wydajności
 
 Jeśli obszar roboczy usługi Log Analytics, który odwołuje się do niej rozwiązanie nie jest już skonfigurowany można zebrać liczników wydajności wymaganych przez to rozwiązanie, należy je włączyć. Można to zrobić na jeden z dwóch sposobów:
-* Ręcznie, zgodnie z opisem w [Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md)
+* Ręczne, zgodnie z opisem w temacie [źródła danych wydajności systemu Windows i Linux w log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md)
 * Pobierając i uruchamiając skrypt programu PowerShell, który jest dostępny z [galerii Azure PowerShell](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)
 
 ## <a name="deploy-azure-monitor-for-vms"></a>Wdrażanie usługi Azure Monitor dla maszyn wirtualnych
@@ -155,9 +154,9 @@ Ta metoda obejmuje szablon JSON, który określa konfigurację włączanie skła
 
 Jeśli nie wiesz, jak wdrażać zasoby przy użyciu szablonu, zobacz:
 * [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../../azure-resource-manager/templates/deploy-powershell.md)
-* [Wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/templates/deploy-cli.md)
+* [Wdrażanie zasobów za pomocą szablonów Menedżer zasobów i interfejsu wiersza polecenia platformy Azure](../../azure-resource-manager/templates/deploy-cli.md)
 
-Aby korzystać z interfejsu wiersza polecenia platformy Azure, należy najpierw zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Musi być uruchomiona wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Aby zainstalować lub uaktualnić interfejs wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Aby korzystać z interfejsu wiersza polecenia platformy Azure, należy najpierw zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Musi być uruchomiona wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Aby zidentyfikować swoją wersję, uruchom `az --version`. Aby zainstalować lub uaktualnić interfejs wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Tworzenie i wykonywanie szablonu
 
@@ -207,9 +206,9 @@ Aby korzystać z interfejsu wiersza polecenia platformy Azure, należy najpierw 
     }
     ```
 
-1. Zapisz ten plik jako *installsolutionsforvminsights.json* do folderu lokalnego.
+1. Zapisz ten plik jako *installsolutionsforvminsights. JSON* w folderze lokalnym.
 
-1. Przechwyć wartości dla *obszarów roboczych*, *ResourceGroupName*i *WorkspaceLocation*. Wartość dla *obszaru roboczegoname* jest nazwą obszaru roboczego log Analytics. Wartość *WorkspaceLocation* jest region, w obszarze roboczym jest zdefiniowany w.
+1. Przechwyć wartości dla *obszarów roboczych*, *ResourceGroupName*i *WorkspaceLocation*. Wartość dla *obszaru roboczegoname* jest nazwą obszaru roboczego log Analytics. Wartość parametru *WorkspaceLocation* to region, w którym jest zdefiniowany obszar roboczy.
 
 1. Możesz wdrożyć ten szablon przy użyciu następującego polecenia programu PowerShell:
 
@@ -232,9 +231,9 @@ Jeśli instalacja agenta zależności zakończyła się pomyślnie, ale nie widz
 
 1. Agent zależności zainstalowano pomyślnie? Aby to sprawdzić przez sprawdzanie, czy usługa jest zainstalowana i uruchomiona.
 
-    **Windows**: Wyszukaj usługę o nazwie "Agent Dependency firmy Microsoft."
+    **Windows**: Wyszukaj usługę o nazwie "Microsoft Dependency Agent".
 
-    **Linux**: Poszukaj uruchamianie przetwarzania "microsoft--agenta zależności."
+    **Linux**: poszukaj uruchomionego procesu "Microsoft-Dependency-Agent".
 
 2. Czy korzystasz z [warstwy cenowej bezpłatna log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)? Plan bezpłatny pozwala na maksymalnie pięć unikatowych komputerów. Wszystkie kolejne komputery nie będą widoczne na mapie, nawet jeśli poprzednie pięć nie wyśle już danych.
 
@@ -244,7 +243,7 @@ Jeśli instalacja agenta zależności zakończyła się pomyślnie, ale nie widz
     Usage | where Computer == "computer-name" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-    Czy zwraca co najmniej jeden wynik? To najnowsze dane? W takim przypadku Agent Log Analytics działa prawidłowo i komunikuje się z usługą. Jeśli nie, sprawdź agenta na serwerze: [agenta usługi Log Analytics na potrzeby rozwiązywania problemów Windows](../platform/agent-windows-troubleshoot.md) lub [agenta usługi Log Analytics na potrzeby rozwiązywania problemów w systemie Linux](../platform/agent-linux-troubleshoot.md).
+    Czy zwraca co najmniej jeden wynik? To najnowsze dane? W takim przypadku Agent Log Analytics działa prawidłowo i komunikuje się z usługą. Jeśli nie, sprawdź, czy Agent na serwerze: [log Analytics Agent na potrzeby rozwiązywania problemów z systemem Windows](../platform/agent-windows-troubleshoot.md) lub [agenta log Analytics do rozwiązywania problemów z systemem Linux](../platform/agent-linux-troubleshoot.md).
 
 #### <a name="computer-appears-on-the-map-but-has-no-processes"></a>Komputer jest wyświetlany na mapie, ale nie ma procesów
 
@@ -257,6 +256,6 @@ Sprawdź plik C:\Program Files\Microsoft zależności Agent\logs\wrapper.log (Wi
 
 Po włączeniu monitorowania dla maszyn wirtualnych te informacje są dostępne do analizy za pomocą Azure Monitor dla maszyn wirtualnych.
 
-- Aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych mapy](vminsights-maps.md).
+- Aby wyświetlić odnalezione zależności aplikacji, zobacz [view Azure monitor dla maszyn wirtualnych map](vminsights-maps.md).
 
 - Aby identyfikować wąskie gardła i ogólne wykorzystanie z wydajnością maszyny wirtualnej, zobacz [Wyświetlanie wydajności maszyny wirtualnej platformy Azure](vminsights-performance.md).

@@ -1,18 +1,17 @@
 ---
 title: Konfigurowanie źródeł danych agentów w Azure Monitor | Microsoft Docs
 description: Źródła danych definiują dane dziennika, które Azure Monitor zbierać z agentów i innych podłączonych źródeł.  W tym artykule opisano sposób, w jaki Azure Monitor korzystają ze źródeł danych, wyjaśniono szczegółowe informacje na temat sposobu ich konfigurowania i zawiera podsumowanie różnych dostępnych źródeł danych.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: f7960adca1c3665dbf8737cb10a898c58b1542ec
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932830"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668778"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Źródła danych agentów w Azure Monitor
 Dane, które Azure Monitor zbiera z agentów, są definiowane przez skonfigurowane źródła danych.  Dane z agentów są przechowywane jako [dane dziennika](data-platform-logs.md) z zestawem rekordów.  Każde źródło danych tworzy rekordy określonego typu z każdym typem, który ma swój własny zestaw właściwości.
@@ -23,15 +22,15 @@ Dane, które Azure Monitor zbiera z agentów, są definiowane przez skonfigurowa
 W poniższej tabeli wymieniono źródła danych agentów, które są obecnie dostępne w Azure Monitor.  Każdy z nich zawiera link do oddzielnego artykułu z szczegółowymi informacjami dla tego źródła danych.   Zawiera również informacje o ich metodzie i częstotliwości zbierania. 
 
 
-| Źródło danych | Platforma | Agent usługi log Analytics | Agent Operations Manager | Azure Storage | Operations Manager jest wymagane? | Dane agenta Operations Manager wysyłane przez grupę zarządzania | Częstotliwość zbierania |
+| Źródło danych | Platforma | Agent usługi log Analytics | Agent programu Operations Manager | Azure Storage | Operations Manager jest wymagane? | Dane agenta Operations Manager wysyłane przez grupę zarządzania | Częstotliwość zbierania |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Niestandardowe dzienniki](data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | przy nadejściu |
+| [Niestandardowe dzienniki](data-sources-custom-logs.md) | System Windows |&#8226; |  | |  |  | przy nadejściu |
 | [Niestandardowe dzienniki](data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | przy nadejściu |
-| [Dzienniki usług IIS](data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |zależy od ustawienia przerzucania pliku dziennika |
-| [Liczniki wydajności](data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |zgodnie z harmonogramem, co najmniej 10 sekund |
+| [Dzienniki usług IIS](data-sources-iis-logs.md) | System Windows |&#8226; |&#8226; |&#8226; |  |  |zależy od ustawienia przerzucania pliku dziennika |
+| [Liczniki wydajności](data-sources-performance-counters.md) | System Windows |&#8226; |&#8226; |  |  |  |zgodnie z harmonogramem, co najmniej 10 sekund |
 | [Liczniki wydajności](data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |zgodnie z harmonogramem, co najmniej 10 sekund |
-| [Dziennik systemu](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |z usługi Azure Storage: 10 minut; z agenta: przy nadejściu |
-| [Dzienniki zdarzeń systemu Windows](data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | przy nadejściu |
+| [Syslog](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |z usługi Azure Storage: 10 minut; z agenta: przy nadejściu |
+| [Dzienniki zdarzeń systemu Windows](data-sources-windows-events.md) |System Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | przy nadejściu |
 
 
 ## <a name="configuring-data-sources"></a>Konfigurowanie źródeł danych

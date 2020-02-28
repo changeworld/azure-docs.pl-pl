@@ -1,18 +1,16 @@
 ---
 title: Dokumentacja interfejsu API usługi Azure Application Insights Agent
 description: Dokumentacja interfejsu API agenta Application Insights. Disable-InstrumentationEngine. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: dd546107164632c821c1ee9a1629fe0a1ca071fc
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dafa12db95a10df467bf0d042cfd9395720648b2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899758"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671379"
 ---
 # <a name="application-insights-agent-api-disable-instrumentationengine"></a>Interfejs API agenta Application Insights: Disable-InstrumentationEngine
 

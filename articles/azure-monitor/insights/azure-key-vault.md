@@ -1,18 +1,17 @@
 ---
 title: Azure Key Vault rozwiązanie w Azure Monitor | Microsoft Docs
 description: Aby przejrzeć dzienniki Azure Key Vault, można użyć rozwiązania Azure Key Vault w Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 8d9c5f63a00179903c0920912aba642311a354e7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 7a2becf8cb43568383c324bb9f4f5b2e7b844268
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889111"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667147"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Rozwiązanie Azure Key Vault Analytics w Azure Monitor
 
@@ -114,8 +113,8 @@ Azure Key Vault rozwiązanie analizuje rekordy, które mają typy **magazynów**
 | `Resource` |Nazwa magazynu kluczy |
 | `ResourceGroup` |Grupa zasobów magazynu kluczy |
 | `ResourceId` |Identyfikator zasobu usługi Azure Resource Manager W przypadku dzienników Key Vault jest to Key Vault identyfikator zasobu. |
-| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
-| `ResourceType` | *VAULTS* |
+| `ResourceProvider` |*Programu. KEYVAULT* |
+| `ResourceType` | *MAGAZYNÓW* |
 | `ResultSignature` |Stan HTTP (na przykład *OK*) |
 | `ResultType` |Wynik żądania interfejsu API REST (na przykład *sukcesu*) |
 | `SubscriptionId` |Identyfikator subskrypcji platformy Azure dla subskrypcji zawierającej Key Vault |

@@ -1,18 +1,17 @@
 ---
 title: Usuwanie i odzyskiwanie obszaru roboczego usługi Azure Log Analytics | Microsoft Docs
 description: Dowiedz się, jak usunąć obszar roboczy Log Analytics, jeśli został on utworzony w prywatnej subskrypcji lub zmienić strukturę modelu obszaru roboczego.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 038cfe04193b734bd26ed0ffd4dec5ae9b267c22
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6f50450702c9ecdc1c1d910514d94e0a759176b8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901277"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670478"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Usuwanie i przywracanie obszaru roboczego usługi Azure Log Analytics
 
@@ -44,7 +43,7 @@ Operacja usuwania obszaru roboczego służy do usuwania obszaru roboczego Mened�
 
 Obszar roboczy można usunąć przy użyciu [programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [interfejsu API REST](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)lub w [Azure Portal](https://portal.azure.com).
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Portalu Azure
 
 1. Aby się zalogować, przejdź do [Azure Portal](https://portal.azure.com). 
 2. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **log Analytics obszary robocze**.
@@ -53,7 +52,7 @@ Obszar roboczy można usunąć przy użyciu [programu PowerShell](https://docs.m
 4. Gdy zostanie wyświetlone okno komunikatu potwierdzenia z prośbą o potwierdzenie usunięcia obszaru roboczego, kliknij przycisk **tak**.
    ![potwierdzić usunięcie obszaru roboczego](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
@@ -93,7 +92,7 @@ Obszar roboczy można odzyskać przez ponowne utworzenie go przy użyciu następ
 * Nazwa obszaru roboczego
 * Region
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 ```PowerShell
 PS C:\>Select-AzSubscription "subscription-name-the-workspace-was-in"
 PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name-the-workspace-was-in" -Name "deleted-workspace-name" -Location "region-name-the-workspace-was-in"

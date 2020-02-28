@@ -3,18 +3,17 @@ title: Automatyczne skalowanie zasobów na podstawie danych wydajności lub harm
 description: Tworzenie ustawienia automatycznego skalowania dla planu usługi App Service przy użyciu danych metryk i harmonogramu
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: tutorial
 ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 44fecf47ccd1ce07c7e51f7bcf51ef7823f2cf97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85ae76d9dcb0b4a1f95992c2f5da48a81fb12677
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637237"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661656"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Tworzenie ustawienia automatycznego skalowania dla zasobów platformy Azure na podstawie danych wydajności lub harmonogramu
 
@@ -32,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
 
-Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-web-app-and-app-service-plan"></a>Tworzenie aplikacji internetowej i planu usługi App Service
 1. Kliknij opcję **Utwórz zasób** z okienka nawigacji po lewej stronie.
@@ -170,7 +169,7 @@ Warunek skalowania na zewnątrz w ustawieniu automatycznego skalowania jest wyzw
 
 4. Potwierdź usunięcie, wpisując w polu tekstowym wartość **tak**, a następnie kliknij pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zostały wykonane następujące czynności:  
 > [!div class="checklist"]

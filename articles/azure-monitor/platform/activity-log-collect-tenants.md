@@ -1,18 +1,17 @@
 ---
 title: Zbieranie dzienników aktywności platformy Azure w obszarze roboczym Log Analytics w ramach dzierżawców platformy Azure | Microsoft Docs
 description: Użyj Event Hubs i Logic Apps, aby zbierać dane z dziennika aktywności platformy Azure i wysyłać je do obszaru roboczego Log Analytics w Azure Monitor w innej dzierżawie.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: e3b368f8a59d201f70bfad05125ed59b4b8551c5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 52bf8b955ef4dc9cfae7fd74fbad0df744609196
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530004"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669271"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Zbieranie dzienników aktywności platformy Azure w Azure Monitor między dzierżawami Azure Active Directory (starsza wersja)
 
@@ -24,7 +23,7 @@ W tym artykule opisano metodę zbierania dzienników aktywności platformy Azure
 
 Jeśli obszar roboczy Log Analytics znajduje się w tej samej subskrypcji platformy Azure lub w innej subskrypcji, ale w tej samej Azure Active Directory, wykonaj czynności opisane w sekcji [zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym log Analytics w Azure monitor](activity-log-collect.md) do zbierania dzienników aktywności platformy Azure.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Strategia używana w tym scenariuszu jest oparta na wysyłaniu zdarzeń przez dziennik aktywności platformy Azure do [centrum zdarzeń](../../event-hubs/event-hubs-about.md), skąd [aplikacja logiki](../../logic-apps/logic-apps-overview.md) wysyła je do obszaru roboczego usługi Log Analytics. 
 
@@ -127,7 +126,7 @@ Aby uzyskać nazwę centrum zdarzeń i parametry połączenia, wykonaj kroki opi
 
    |Ustawienie | Opis  |
    |:---|:---|
-   | Nazwa           | Unikatowa nazwa aplikacji logiki. |
+   | Name (Nazwa)           | Unikatowa nazwa aplikacji logiki. |
    | Subskrypcja   | Wybierz subskrypcję platformy Azure, która będzie zawierać aplikację logiki. |
    | Grupa zasobów | Wybierz istniejącą grupę zasobów platformy Azure lub utwórz nową grupę dla aplikacji logiki. |
    | Lokalizacja       | Wybierz region centrum danych do wdrażania swojej aplikacji logiki. |

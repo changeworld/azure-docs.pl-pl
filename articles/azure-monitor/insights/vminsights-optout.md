@@ -1,18 +1,17 @@
 ---
 title: Wyłącz monitorowanie w Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) | Microsoft Docs
 description: W tym artykule opisano sposób zatrzymania monitorowania maszyn wirtualnych w programie Azure Monitor dla maszyn wirtualnych.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/05/2018
-ms.openlocfilehash: b2d58b501429a47c3011fc727f756edeeb7775e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb4347e610920380792a17bb620e6d97a7d72505
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399309"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669509"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms-preview"></a>Wyłącz monitorowanie maszyn wirtualnych w Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 
@@ -43,7 +42,7 @@ Jeśli nadal potrzebujesz obszaru roboczego Log Analytics, wykonaj następujące
 >Jeśli korzystasz z rozwiązania do monitorowania Service Map przed włączeniem Azure Monitor dla maszyn wirtualnych i nadal polegasz na nim, nie usuwaj tego rozwiązania zgodnie z opisem w ostatnim kroku poniższej procedury.  
 >
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu wpisywania lista filtruje sugestie w oparciu o dane wejściowe. Wybierz pozycję **Log Analytics**.
 3. Na liście obszarów roboczych Log Analytics wybierz obszar roboczy wybrany podczas włączania Azure Monitor dla maszyn wirtualnych.
 4. Po lewej stronie wybierz pozycję **rozwiązania**.  
@@ -64,7 +63,7 @@ Jeśli obszar roboczy Log Analytics nadal musi obsługiwać monitorowanie z inny
 >
 > Jeśli usuniesz agenta Log Analytics, uniemożliwisz tym usługom i rozwiązaniom aktywne zarządzanie maszyną wirtualną. 
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com). 
+1. Zaloguj się do [Azure portal](https://portal.azure.com). 
 2. W Azure Portal wybierz pozycję **Virtual Machines**. 
 3. Z listy wybierz maszynę wirtualną. 
 4. Po lewej stronie wybierz pozycję **rozszerzenia**. Na stronie **rozszerzenia** wybierz pozycję **DependencyAgent**.

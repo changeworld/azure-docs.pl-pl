@@ -1,18 +1,14 @@
 ---
 title: Monitorowanie usług Node.js za pomocą usługi Azure Application Insights | Microsoft Docs
 description: Monitoruj wydajność i diagnozuj problemy w usługach Node.js za pomocą usługi Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 81f63380c041ae743a2b38e6ba89558b83e7497a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820726"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670019"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorowanie usług i aplikacji Node.js za pomocą usługi Application Insights
 
@@ -24,7 +20,7 @@ Zestaw Node.js SDK może automatycznie monitorować przychodzące i wychodzące 
 
 Do ręcznego instrumentowania i monitorowania dodatkowych aspektów aplikacji i systemu można używać interfejsu API TelemetryClient. Interfejs API TelemetryClient został szczegółowo opisany w dalszej części tego artykułu.
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczynanie pracy
 
 Wykonaj następujące zadania w celu skonfigurowania monitorowania aplikacji lub usługi.
 
@@ -39,7 +35,7 @@ Przed rozpoczęciem upewnij się, że masz subskrypcję platformy Azure, lub [be
 ### <a name="resource"></a> Konfigurowanie zasobu usługi Application Insights
 
 
-1. Zaloguj się do [portalu Azure][portal].
+1. Zaloguj się do [Azure portal][portal].
 2. Wybierz pozycję **Utwórz zasób** > **Narzędzia deweloperskie** > **Application Insights**. Zasób zawiera punkt końcowy do odbierania danych telemetrycznych, magazyn danych, zapisane raporty oraz pulpity nawigacyjne, konfigurację reguły i alertu oraz inne elementy.
 
 3. Na stronie tworzenia zasobu w polu **Typ aplikacji** wybierz pozycję **Aplikacja Node.js**. Typ aplikacji określa domyślne tworzone pulpity nawigacyjne i raporty. (Dowolny zasób usługi Application Insights może w rzeczywistości zbierać dane dla dowolnego języka i platformy).
@@ -88,7 +84,7 @@ Aby uzyskać więcej informacji o aplikacji i rozwiązać problemy, w sekcji **Z
 
 ![Sekcja Zbadaj](./media/nodejs/007-investigate-pane.png)
 
-#### <a name="no-data"></a>Nie masz danych?
+#### <a name="no-data"></a>Brak danych?
 
 Zestaw SDK przesyła dane partiami, dlatego niektóre elementy w portalu mogą być wyświetlane z opóźnieniem. Jeśli nie widzisz danych w swoim zasobie, wypróbuj następujące sposoby:
 

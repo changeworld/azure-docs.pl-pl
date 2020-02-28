@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor interfejs API modułu zbierającego dane HTTP | Microsoft Docs
 description: Korzystając z Azure Monitor interfejsu API modułu zbierającego dane HTTP, można dodać dane po JSON do Log Analytics obszaru roboczego z dowolnego klienta, który może wywołać interfejs API REST. W tym artykule opisano sposób korzystania z interfejsu API i przedstawiono przykłady sposobu publikowania danych przy użyciu różnych języków programowania.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/01/2019
-ms.openlocfilehash: 136644dbcfe9e2835f799b284d21263913bc67b4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f12e9e90b99a055945c34398ff5351334c344253
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932589"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666756"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Wysyłanie danych dziennika do Azure Monitor za pomocą interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
 W tym artykule pokazano, jak za pomocą interfejsu API modułu zbierającego dane HTTP wysyłać dane dziennika do Azure Monitor z klienta interfejsu API REST.  Opisano w nim sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględniania ich w żądaniu oraz żądania autoryzowane przez Azure Monitor.  Przykłady dla programu PowerShell, C#i języka Python.
@@ -38,8 +37,8 @@ Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć ż�
 ### <a name="request-uri"></a>Identyfikator URI żądania
 | Atrybut | Właściwość |
 |:--- |:--- |
-| Metoda |POUBOJOWEGO |
-| ADRESU |https://\<IDKlienta\>. ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
+| Metoda |POST |
+| Identyfikator URI |https://\<IDKlienta\>. ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | Typ zawartości |application/json |
 
 ### <a name="request-uri-parameters"></a>Parametry identyfikatora URI żądania
@@ -49,14 +48,14 @@ Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć ż�
 | Zasób |Nazwa zasobu interfejsu API:/API/logs. |
 | Wersja interfejsu API |Wersja interfejsu API, która ma być używana z tym żądaniem. Obecnie jest to 2016-04-01. |
 
-### <a name="request-headers"></a>Nagłówki żądań
+### <a name="request-headers"></a>Nagłówki żądania
 | Nagłówek | Opis |
 |:--- |:--- |
 | Autoryzacja |Podpis autoryzacji. W dalszej części artykułu można zapoznać się z informacjami na temat tworzenia nagłówka HMAC-SHA256. |
 | Typ dziennika |Określ typ rekordu przesyłanego danych. Może zawierać tylko litery, cyfry i znaki podkreślenia (_) i nie może przekraczać 100 znaków. |
-| x-MS-Date |Data przetworzenia żądania w formacie RFC 1123. |
-| x-MS-AzureResourceId | Identyfikator zasobu zasobu platformy Azure, z którym mają być skojarzone dane. Spowoduje to wypełnienie właściwości [_ResourceId](log-standard-properties.md#_resourceid) i umożliwi uwzględnienie danych w zapytaniach [kontekstu zasobów](design-logs-deployment.md#access-mode) . Jeśli to pole nie zostanie określone, dane nie zostaną uwzględnione w zapytaniach kontekstu zasobów. |
-| godzina wygenerowania pola | Nazwa pola w danych, które zawiera sygnaturę czasową elementu danych. Jeśli określisz pole, jego zawartość zostanie użyta dla **TimeGenerated**. Jeśli to pole nie zostanie określone, wartością domyślną dla **TimeGenerated** jest czas, w którym wiadomość zostanie pozyskana. Zawartość pola komunikat powinna być zgodna z formatem ISO 8601 RRRR-MM-DDTgg: mm: SSS. |
+| x-ms-date |Data przetworzenia żądania w formacie RFC 1123. |
+| x-ms-AzureResourceId | Identyfikator zasobu zasobu platformy Azure, z którym mają być skojarzone dane. Spowoduje to wypełnienie właściwości [_ResourceId](log-standard-properties.md#_resourceid) i umożliwi uwzględnienie danych w zapytaniach [kontekstu zasobów](design-logs-deployment.md#access-mode) . Jeśli to pole nie zostanie określone, dane nie zostaną uwzględnione w zapytaniach kontekstu zasobów. |
+| time-generated-field | Nazwa pola w danych, które zawiera sygnaturę czasową elementu danych. Jeśli określisz pole, jego zawartość zostanie użyta dla **TimeGenerated**. Jeśli to pole nie zostanie określone, wartością domyślną dla **TimeGenerated** jest czas, w którym wiadomość zostanie pozyskana. Zawartość pola komunikat powinna być zgodna z formatem ISO 8601 RRRR-MM-DDTgg: mm: SSS. |
 
 ## <a name="authorization"></a>Autoryzacja
 Każde żądanie do Azure Monitor interfejsu API modułu zbierającego dane HTTP musi zawierać nagłówek autoryzacji. Aby uwierzytelnić żądanie, należy podpisać żądanie przy użyciu klucza podstawowego lub pomocniczego obszaru roboczego, który wysyła żądanie. Następnie Przekaż ten podpis jako część żądania.   
@@ -129,15 +128,15 @@ Wiele rekordów można wsadowo w pojedynczym żądaniu, używając następujące
 ## <a name="record-type-and-properties"></a>Typ rekordu i właściwości
 Typ rekordu niestandardowego można zdefiniować podczas przesyłania danych za pośrednictwem interfejsu API modułu zbierającego dane HTTP Azure Monitor. Obecnie nie można zapisywać danych do istniejących typów rekordów, które zostały utworzone przez inne typy danych i rozwiązania. Azure Monitor odczytuje dane przychodzące, a następnie tworzy właściwości, które pasują do typów danych wprowadzonych wartości.
 
-Każde żądanie do interfejsu API modułu zbierającego dane musi zawierać nagłówek **log-Type** o nazwie typu rekordu. Sufiks **_CL** jest automatycznie dołączany do wprowadzonej nazwy, aby odróżnić ją od innych typów dzienników jako dziennika niestandardowego. Na przykład, jeśli wprowadzisz nazwę **MyNewRecordType**, Azure monitor tworzy rekord z typem **MyNewRecordType_CL**. Pozwala to zagwarantować, że nie występują żadne konflikty między nazwami typów utworzonych przez użytkownika i tymi, które są dostarczane w bieżących lub przyszłych rozwiązaniach firmy Microsoft.
+Każde żądanie do interfejsu API modułu zbierającego dane musi zawierać nagłówek **log-Type** o nazwie typu rekordu. Sufiks **_CL** jest automatycznie dołączany do wprowadzonej nazwy, aby odróżnić ją od innych typów dzienników jako dziennika niestandardowego. Na przykład, jeśli wprowadzisz nazwę **MyNewRecordType**, Azure monitor tworzy rekord typu **MyNewRecordType_CL**. Pozwala to zagwarantować, że nie występują żadne konflikty między nazwami typów utworzonych przez użytkownika i tymi, które są dostarczane w bieżących lub przyszłych rozwiązaniach firmy Microsoft.
 
 Aby zidentyfikować typ danych właściwości, Azure Monitor dodaje sufiks do nazwy właściwości. Jeśli właściwość zawiera wartość null, właściwość nie jest uwzględniona w tym rekordzie. Ta tabela zawiera listę typów danych właściwości i odpowiadających im sufiksów:
 
-| Typ danych właściwości | Przedrostk |
+| Typ danych właściwości | Suffix |
 |:--- |:--- |
 | Ciąg |_s |
 | Wartość logiczna |_b |
-| Double |_d |
+| Podwójne |_d |
 | Data/godzina |_t |
 | Identyfikator GUID (przechowywany jako ciąg) |_g |
 
@@ -158,14 +157,14 @@ Ale jeśli następnie zostanie wykonane następne zgłoszenie, Azure Monitor utw
 
 ![Przykładowy rekord 3](media/data-collector-api/record-03.png)
 
-Jeśli po utworzeniu typu rekordu zostanie przesłana następująca pozycja, Azure Monitor utworzy rekord z trzema właściwościami: **liczba_s**, **boolean_s**i **string_s**. W tym wpisie każda z wartości początkowych jest formatowana jako ciąg:
+Jeśli po utworzeniu typu rekordu zostanie przesłany następujący wpis, Azure Monitor utworzy rekord z trzema właściwościami, **number_s**, **boolean_s**i **string_s**. W tym wpisie każda z wartości początkowych jest formatowana jako ciąg:
 
 ![Przykładowy rekord 4](media/data-collector-api/record-04.png)
 
 ## <a name="reserved-properties"></a>Właściwości zastrzeżone
 Następujące właściwości są zarezerwowane i nie powinny być używane w niestandardowym typie rekordu. Jeśli ładunek zawiera dowolne z tych nazw właściwości, zostanie wyświetlony komunikat o błędzie.
 
-- dzierżaw
+- tenant
 
 ## <a name="data-limits"></a>Limity danych
 Istnieją pewne ograniczenia dotyczące danych ogłoszonych w interfejsie API zbierania danych Azure Monitor.
@@ -184,23 +183,23 @@ W tej tabeli przedstawiono pełny zestaw kodów stanu, które mogą zostać zwr�
 | Kod | Stan | Kod błędu | Opis |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |Żądanie zostało pomyślnie zaakceptowane. |
-| 400 |Złe żądanie |InactiveCustomer |Obszar roboczy został zamknięty. |
-| 400 |Złe żądanie |InvalidApiVersion |Określona wersja interfejsu API nie została rozpoznana przez usługę. |
-| 400 |Złe żądanie |InvalidCustomerId |Określony identyfikator obszaru roboczego jest nieprawidłowy. |
-| 400 |Złe żądanie |InvalidDataFormat |Przesłano nieprawidłowy plik JSON. Treść odpowiedzi może zawierać więcej informacji na temat sposobu rozwiązania błędu. |
-| 400 |Złe żądanie |InvalidLogType |Określony typ dziennika zawiera znaki specjalne lub wartości numeryczne. |
-| 400 |Złe żądanie |MissingApiVersion |Nie określono wersji interfejsu API. |
-| 400 |Złe żądanie |MissingContentType |Typ zawartości nie został określony. |
-| 400 |Złe żądanie |MissingLogType |Nie określono wymaganego typu dziennika wartości. |
-| 400 |Złe żądanie |UnsupportedContentType |Typ zawartości nie został ustawiony na wartość **Application/JSON**. |
+| 400 |Nieprawidłowe żądanie |InactiveCustomer |Obszar roboczy został zamknięty. |
+| 400 |Nieprawidłowe żądanie |InvalidApiVersion |Określona wersja interfejsu API nie została rozpoznana przez usługę. |
+| 400 |Nieprawidłowe żądanie |InvalidCustomerId |Określony identyfikator obszaru roboczego jest nieprawidłowy. |
+| 400 |Nieprawidłowe żądanie |InvalidDataFormat |Przesłano nieprawidłowy plik JSON. Treść odpowiedzi może zawierać więcej informacji na temat sposobu rozwiązania błędu. |
+| 400 |Nieprawidłowe żądanie |InvalidLogType |Określony typ dziennika zawiera znaki specjalne lub wartości numeryczne. |
+| 400 |Nieprawidłowe żądanie |MissingApiVersion |Nie określono wersji interfejsu API. |
+| 400 |Nieprawidłowe żądanie |MissingContentType |Typ zawartości nie został określony. |
+| 400 |Nieprawidłowe żądanie |MissingLogType |Nie określono wymaganego typu dziennika wartości. |
+| 400 |Nieprawidłowe żądanie |UnsupportedContentType |Typ zawartości nie został ustawiony na wartość **Application/JSON**. |
 | 403 |Forbidden |InvalidAuthorization |Usługa nie może uwierzytelnić żądania. Sprawdź, czy identyfikator obszaru roboczego i klucz połączenia są prawidłowe. |
 | 404 |Nie znaleziono | | Podany adres URL jest nieprawidłowy lub żądanie jest zbyt duże. |
 | 429 |Zbyt wiele żądań | | W usłudze występuje duża ilość danych z Twojego konta. Spróbuj ponownie wykonać żądanie później. |
 | 500 |Wewnętrzny błąd serwera |UnspecifiedError |Usługa napotkała błąd wewnętrzny. Spróbuj ponownie wykonać żądanie. |
-| 503 |Usługa jest niedostępna |Niedostępny |Usługa jest obecnie niedostępna do odbierania żądań. Spróbuj ponownie wykonać żądanie. |
+| 503 |Usługa jest niedostępna |ServiceUnavailable |Usługa jest obecnie niedostępna do odbierania żądań. Spróbuj ponownie wykonać żądanie. |
 
 ## <a name="query-data"></a>Zapytania o dane
-Aby wykonać zapytanie o dane przesyłane przez Azure Monitor interfejs API modułu zbierającego dane HTTP, Wyszukaj rekordy o **typie** , który jest równy podanej wartości **LogType** , dołączonej do **_CL**. Na przykład jeśli użyto **MyCustomLog**, zwróć wszystkie rekordy z `MyCustomLog_CL`.
+Aby wykonać zapytanie o dane przesyłane przez Azure Monitor interfejs API modułu zbierającego dane HTTP, Wyszukaj rekordy o **typie** , który jest równy podanej wartości **LogType** , z **_CL**. Na przykład jeśli użyto **MyCustomLog**, zwróć wszystkie rekordy z `MyCustomLog_CL`.
 
 ## <a name="sample-requests"></a>Przykładowe żądania
 W następnych sekcjach znajdziesz przykłady przesyłania danych do Azure Monitor interfejsu API modułu zbierającego dane HTTP przy użyciu różnych języków programowania.

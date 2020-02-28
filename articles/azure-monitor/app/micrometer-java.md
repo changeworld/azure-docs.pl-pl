@@ -1,18 +1,16 @@
 ---
 title: Jak używać Micrometer z usługą Azure Application Insights Java SDK
 description: Przewodnik krok po kroku dotyczący używania Micrometer Application Insights z rozruchem wiosny i niesprężynowymi aplikacjami rozruchowymi.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: c9f1c6f6742f36d376668422f9c37c6c5a2228a4
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872999"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670070"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Jak używać Micrometer z usługą Azure Application Insights Java SDK
 Micrometer do monitorowania aplikacji miaruje metryki dla kodu aplikacji opartego na JVM i umożliwia eksportowanie danych do ulubionych systemów monitorowania. W tym artykule opisano, jak używać Micrometer z Application Insights zarówno dla aplikacji rozruchowych z systemem sprężyny, jak i bez sprężyny.

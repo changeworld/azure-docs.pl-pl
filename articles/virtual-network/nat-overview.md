@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: b27baed20d8e36bf5790036e2fdc0804a94a4ea1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0e19271b5c69610dd9f44c3121e195b80732279c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589440"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669543"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Co to jest Virtual Network translator adresów sieciowych (publiczna wersja zapoznawcza)?
 
@@ -39,7 +39,7 @@ Virtual Network NAT (translator adresów sieciowych) upraszcza połączenia z In
 
 
 >[!NOTE] 
->Virtual Network translator adresów sieciowych jest w tej chwili dostępny jako publiczna wersja zapoznawcza. Jest ono obecnie dostępne tylko w ograniczonym zestawie [regionów](#region-availability). Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.comsupport/legal/preview-supplemental-terms).
+>Virtual Network translator adresów sieciowych jest w tej chwili dostępny jako publiczna wersja zapoznawcza. Jest ono obecnie dostępne tylko w ograniczonym zestawie [regionów](#region-availability). Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>Statyczne adresy IP tylko dla ruchu wychodzącego
 
@@ -200,5 +200,5 @@ Chcemy wiedzieć, jak możemy ulepszyć usługę. Udostępnij nam swoją [opini�
 ## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [zasobach bramy translatora adresów sieciowych](./nat-gateway-resource.md).
-- [Powiedz nam, co należy utworzyć w następnej kolejności w usłudze UserVoice](https://aka/natuservoice).
+- [Powiedz nam, co należy utworzyć w następnej kolejności w usłudze UserVoice](https://aka.ms/natuservoice).
 - [Prześlij opinię na temat publicznej wersji zapoznawczej](https://aka.ms/natfeedback).

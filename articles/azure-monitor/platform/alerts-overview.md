@@ -1,32 +1,26 @@
 ---
 title: Omówienie alertów i monitorowania powiadomień na platformie Azure
 description: Przegląd alertów na platformie Azure. Alerty, alerty klasyczne i interfejs alertów.
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: 7f6c7f22cef1cf49a9ff7b2cb87716abd61821c4
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830330"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665668"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Przegląd alertów w Microsoft Azure 
 
 W tym artykule opisano alerty, ich zalety oraz sposób rozpoczynania korzystania z nich.  
-
-
-
 
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Co to są alerty w Microsoft Azure?
 Alerty z wyprzedzeniem powiadamiają Cię, gdy w danych monitorowania zostaną znalezione ważne warunki. Umożliwiają identyfikowanie i rozwiązywanie problemów przed zapisaniem ich przez użytkowników systemu. 
 
 W tym artykule omówiono ujednolicone środowisko alertów w Azure Monitor, w tym alerty, które były wcześniej zarządzane przez Log Analytics i Application Insights. [Poprzednie środowisko alertów](alerts-classic.overview.md) i typy alertów są nazywane *alertami klasycznymi*. Możesz wyświetlić te starsze środowisko i starszy typ alertu, wybierając pozycję **Wyświetl klasyczne alerty** w górnej części strony alertu. 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Poniższy diagram przedstawia przepływ alertów. 
 
@@ -41,38 +35,41 @@ Poniżej przedstawiono kluczowe atrybuty reguły alertu:
 **Sygnał**: emitowany przez zasób docelowy. Sygnały mogą być następujących typów: Metryka, dziennik aktywności, Application Insights i dziennik.
 
 **Kryteria**: Kombinacja sygnałów i logiki zastosowana w zasobie docelowym. Przykłady: 
-   - Procent > procesora CPU 70%
-   - Czas odpowiedzi serwera > 4 MS 
-   - Liczba wyników zapytania dziennika > 100
+
+- Procent > procesora CPU 70%
+- Czas odpowiedzi serwera > 4 MS 
+- Liczba wyników zapytania dziennika > 100
 
 **Nazwa alertu**: określona nazwa dla reguły alertu skonfigurowanej przez użytkownika.
 
 **Opis alertu**: Opis reguły alertu skonfigurowanej przez użytkownika.
 
 **Ważność**: ważność alertu po spełnieniu kryteriów określonych w regule alertu. Ważność może być z zakresu od 0 do 4.
-   - Ważność 0 = krytyczny
-   - Ważność 1 = błąd
-   - Ważność 2 = ostrzeżenie
-   - Ważność 3 = informacyjny
-   - Ważność 4 = pełne 
+
+- Ważność 0 = krytyczny
+- Ważność 1 = błąd
+- Ważność 2 = ostrzeżenie
+- Ważność 3 = informacyjny
+- Ważność 4 = pełne 
 
 **Akcja**: określona Akcja podejmowana po wyzwoleniu alertu. Aby uzyskać więcej informacji, zobacz [grupy akcji](../../azure-monitor/platform/action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>Co można ostrzec
 
-Można generować alerty dotyczące metryk i dzienników, zgodnie z opisem w temacie [monitorowanie źródeł danych](../../azure-monitor/platform/data-sources.md). Są to między innymi następujące kwestie:
+Można generować alerty dotyczące metryk i dzienników, zgodnie z opisem w temacie [monitorowanie źródeł danych](../../azure-monitor/platform/data-sources.md). Należą do nich, ale nie są ograniczone do:
+
 - Wartości metryk
-- Zapytania przeszukiwania dzienników
-- Zdarzenia dzienników aktywności
-- Kondycja podstawowej platformy Azure
-- Testy dostępności witryny internetowej
+- Zapytania wyszukiwania w dzienniku
+- Zdarzenia dziennika aktywności
+- Kondycja podstawowej platformy platformy Azure
+- Testy dostępności witryny sieci Web
 
 Wcześniej Azure Monitor metryki, Application Insights, Log Analytics i Service Health miały oddzielne funkcje alertów. W miarę upływu czasu platforma Azure poprawiła i połączona zarówno z interfejsem użytkownika, jak i różnymi metodami alertów. Ta Konsolidacja jest nadal w toku. W związku z tym nadal istnieją pewne funkcje alertów, które nie są jeszcze dostępne w nowym systemie alertów.  
 
-| **Źródło monitora** | **Typ sygnału**  | **Opis** | 
+| **Źródło monitora** | **Typ sygnału**  | **Opis** |
 |-------------|----------------|-------------|
-| Kondycja usługi | Dziennik aktywności  | Bez pomocy technicznej. Zobacz [tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Testy dostępności sieci Web | Bez pomocy technicznej. Zobacz [alerty testu sieci Web](../../azure-monitor/app/monitor-web-app-availability.md). Dostępne dla każdej witryny sieci Web, która jest Instrumentacją do wysyłania danych do Application Insights. Otrzymuj powiadomienie, gdy dostępność lub czas odpowiedzi witryny sieci Web jest poniżej oczekiwań. |
+| Kondycja usługi | Dziennik aktywności  | Nieobsługiwane. Zobacz [tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
+| Application Insights | Testy dostępności sieci Web | Nieobsługiwane. Zobacz [alerty testu sieci Web](../../azure-monitor/app/monitor-web-app-availability.md). Dostępne dla każdej witryny sieci Web, która jest Instrumentacją do wysyłania danych do Application Insights. Otrzymuj powiadomienie, gdy dostępność lub czas odpowiedzi witryny sieci Web jest poniżej oczekiwań. |
 
 ## <a name="manage-alerts"></a>Zarządzanie alertami
 Można ustawić stan alertu, aby określić, gdzie znajduje się w procesie rozwiązywania. Po spełnieniu kryteriów określonych w regule alertu jest tworzony lub uruchamiany alert, który ma stan *Nowy*. Stan można zmienić po potwierdzeniu alertu i po jego zamknięciu. Wszystkie zmiany stanu są przechowywane w historii alertu.
@@ -81,9 +78,9 @@ Obsługiwane są następujące stany alertów.
 
 | Stan | Opis |
 |:---|:---|
-| Nowość | Problem został właśnie wykryty i nie został jeszcze zweryfikowany. |
+| Nowa | Problem został właśnie wykryty i nie został jeszcze zweryfikowany. |
 | Potwierdzone | Administrator sprawdził alert i rozpoczął jego pracę. |
-| Zamknięty | Problem został rozwiązany. Po zamknięciu alertu można go otworzyć ponownie, zmieniając go na inny stan. |
+| Zamknięte | Problem został rozwiązany. Po zamknięciu alertu można go otworzyć ponownie, zmieniając go na inny stan. |
 
 *Stan alertu* jest różny i niezależny od *warunku monitora*. Stan alertu jest ustawiany przez użytkownika. Warunek monitora jest ustawiany przez system. Po uruchomieniu alertu warunek monitora alertu jest ustawiany na wartość *wyzwolone*. Gdy podstawowy warunek, który spowodował wyczyszczenie alertu, zostanie ustawiony jako *rozwiązany*. Stan alertu nie jest zmieniany, dopóki użytkownik nie zmieni go. Dowiedz się [, jak zmienić stan alertów i grup inteligentnych](https://aka.ms/managing-alert-smart-group-states).
 
@@ -156,7 +153,7 @@ Widok można filtrować, wybierając następujące wartości z menu rozwijanego 
 | Typ zasobu | Wybierz co najmniej jeden typ zasobu. W widoku są uwzględniane tylko alerty z obiektami docelowymi wybranego typu. Ta kolumna jest dostępna tylko po określeniu grupy zasobów. |
 | Zasób | Wybierz zasób. W widoku są uwzględniane tylko alerty z tym zasobem. Ta kolumna jest dostępna tylko po określeniu typu zasobu. |
 | Ważność | Wybierz ważność alertu lub wybierz pozycję **wszystkie** , aby uwzględnić alerty wszystkich serwerów. |
-| Stan monitora | Wybierz warunek monitorowania lub wybierz pozycję **wszystkie** , aby uwzględnić alerty wszystkich warunków. |
+| Warunek monitorowania | Wybierz warunek monitorowania lub wybierz pozycję **wszystkie** , aby uwzględnić alerty wszystkich warunków. |
 | Stan alertu | Wybierz stan alertu lub wybierz pozycję **wszystkie** , aby uwzględnić alerty wszystkich stanów. |
 | Monitorowanie usługi | Wybierz usługę lub wybierz pozycję **wszystkie** , aby uwzględnić wszystkie usługi. Uwzględniane są tylko alerty utworzone przez reguły korzystające z usługi jako celu. |
 | Przedział czasu | W widoku są uwzględniane tylko alerty wywoływane w wybranym zakresie czasu. Obsługiwane wartości to Ostatnia godzina, ostatnie 24 godziny, ostatnie 7 dni i ostatnie 30 dni. |

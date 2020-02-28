@@ -1,18 +1,15 @@
 ---
 title: Typowy schemat alertów dla alertów usługi Azure monitor
 description: Informacje o typowym schemacie alertów, dlaczego należy z nich korzystać i jak go włączyć
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
+ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: ff5c0d96bd4bc87f36a69ca7e8014e118ac7b7bf
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552455"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668183"
 ---
 # <a name="common-alert-schema"></a>Typowe schematy alertów
 
@@ -34,10 +31,10 @@ Oznacza to, że można potencjalnie mieć mniejszą liczbę integracji, dzięki 
 
 Typowy schemat alertów będzie przede wszystkim używany w powiadomieniach o alertach. Poniżej znajdują się ulepszenia, które zobaczysz poniżej:
 
-| Działanie | Usprawni|
+| Akcja | Ulepszenia|
 |:---|:---|
 | SMS | Spójny szablon programu SMS dla wszystkich typów alertów. |
-| Adres e-mail | Spójny i szczegółowy szablon wiadomości e-mail, który umożliwia błyskawiczne diagnozowanie problemów. Wbudowane głębokie łącza do wystąpienia alertów w portalu i zaatakowany zasób zapewniają możliwość szybkiego przejścia do procesu korygowania. |
+| Email | Spójny i szczegółowy szablon wiadomości e-mail, który umożliwia błyskawiczne diagnozowanie problemów. Wbudowane głębokie łącza do wystąpienia alertów w portalu i zaatakowany zasób zapewniają możliwość szybkiego przejścia do procesu korygowania. |
 | Element webhook/aplikacja logiki/funkcja Azure Function/Automation | Spójna struktura JSON dla wszystkich typów alertów, która umożliwia łatwe tworzenie integracji dla różnych typów alertów. |
 
 Nowy schemat umożliwi również bardziej zaawansowane środowisko korzystania z alertów w ramach zarówno Azure Portal, jak i aplikacja mobilna platformy Azure w przyszłości. 

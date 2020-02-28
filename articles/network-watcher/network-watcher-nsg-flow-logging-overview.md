@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: f231a5339b9c696b2a427b0713118d4b46e30277
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a7f30a5a70f71ff958d9b222d2a9e21d03d85e06
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840999"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670767"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Wprowadzenie do rejestrowania przepływu dla sieciowych grup zabezpieczeń
 
@@ -33,11 +33,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ```
 Można analizować dzienniki przepływu i uzyskiwać wgląd w ruch sieciowy przy użyciu [analizy ruchu](traffic-analytics.md).
 
-Te same zasady przechowywania, które są widoczne dla innych dzienników, mają zastosowanie do dzienników przepływów. Zasady przechowywania dzienników można ustawić od 1 dnia do 365 dni. Jeśli zasady przechowywania nie są ustawione, dzienniki będą obsługiwane przez czas nieokreślony.
-
-> [!NOTE] 
-> Korzystanie z funkcji zasad przechowywania z rejestrowaniem przepływu sieciowej grupy zabezpieczeń może skutkować dużą ilością operacji magazynu i powiązanymi kosztami. Jeśli nie jest wymagana funkcja zasad przechowywania, zalecamy ustawienie wartości 0.
-
+Te same zasady przechowywania, które są widoczne dla innych dzienników, mają zastosowanie do dzienników przepływów. Zasady przechowywania dzienników można ustawić od 1 dnia do 365 dni. Jeśli zasady przechowywania nie są ustawione, dzienniki są przechowywane w nieskończoność.
 
 ## <a name="log-file"></a>Plik dziennika
 

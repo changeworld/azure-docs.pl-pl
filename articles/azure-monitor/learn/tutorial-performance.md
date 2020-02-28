@@ -1,19 +1,18 @@
 ---
 title: Diagnozowanie problemów z wydajnością za pomocą usługi Azure Application Insights | Microsoft Docs
 description: Samouczek omawiający znajdowanie i diagnozowanie problemów z wydajnością aplikacji za pomocą usługi Azure Application Insights.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
-ms.openlocfilehash: f9074a004683393df18d621a679fbb7378dc6704
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 98d7c1552a7b1f2b02ae4df1cad24e20f7ac76e1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398635"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661570"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Znajdowanie i diagnozowanie problemów z wydajnością za pomocą usługi Azure Application Insights
 
@@ -36,7 +35,7 @@ W celu ukończenia tego samouczka:
 - Wdróż aplikację .NET na platformie Azure i [włącz zestaw Application Insights SDK](../../azure-monitor/app/asp-net.md).
 - [Włącz profiler usługi Application Insights](../../azure-monitor/app/profiler.md#installation) dla swojej aplikacji.
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="log-in-to-azure"></a>Logowanie się do platformy Azure
 Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="identify-slow-server-operations"></a>Identyfikowanie wolnych operacji serwera

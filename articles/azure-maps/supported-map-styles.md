@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a65f20e04603403a1d3a180e364626d5b4440661
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208288"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664523"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps obsługiwane style mapy
 Azure Maps obsługuje kilka różnych wbudowanych stylów mapy, zgodnie z poniższym opisem.
@@ -52,7 +52,7 @@ Styl **satelity** to kombinacja zdjęć satelitarnych i antenowych.
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 Ten styl mapy jest hybrydą dróg i etykiet, które są nakładane na Zdjęcia satelitarne i anteny.
 
-![styl mapy satellite_road_labels](./media/supported-map-styles/satellite_road_labels.png)
+![styl mapy satellite_road_labels](./media/supported-map-styles/satellite-road-labels.png)
 
 **Odpowiednie interfejsy API:**
 * Kontrolka mapy zestawu SDK sieci Web
@@ -61,7 +61,7 @@ Ten styl mapy jest hybrydą dróg i etykiet, które są nakładane na Zdjęcia s
 ## <a name="grayscale_dark"></a>grayscale_dark
 **ciemna Skala szarości** jest ciemną wersją stylu mapy drogowej.
 
-![styl mapy gray_scale](./media/supported-map-styles/grayscale_dark.png)
+![styl mapy gray_scale](./media/supported-map-styles/grayscale-dark.png)
 
 **Odpowiednie interfejsy API:**
 * [Obraz mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -73,7 +73,7 @@ Ten styl mapy jest hybrydą dróg i etykiet, które są nakładane na Zdjęcia s
 ## <a name="grayscale_light"></a>grayscale_light
 **sygnalizator skali szarości** to jasna wersja stylu mapy drogowej.
 
-![styl mapy światła skali szarości](./media/supported-map-styles/grayscale_light.png)
+![styl mapy światła skali szarości](./media/supported-map-styles/grayscale-light.png)
 
 **Odpowiednie interfejsy API:**
 * Kontrolka mapy zestawu SDK sieci Web
@@ -99,6 +99,14 @@ nastąpi **odcień drogi** jest Azure Maps głównym stylem, który został uko�
 * Kontrolka mapy zestawu SDK sieci Web
 * Kontrolka mapy systemu Android
 
+## <a name="high_contrast_dark"></a>high_contrast_dark
+
+**high_contrast_dark** jest ciemnym stylem mapy z wyższym kontrastem niż inne style.
+
+![ciemny styl mapy o dużym kontraście](./media/supported-map-styles/high-contrast-dark.png)
+
+**Odpowiednie interfejsy API:**
+* Kontrolka mapy zestawu SDK sieci Web
 
 ## <a name="next-steps"></a>Następne kroki
 

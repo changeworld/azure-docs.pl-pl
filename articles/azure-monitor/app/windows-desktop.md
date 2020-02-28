@@ -1,30 +1,26 @@
 ---
 title: Monitorowanie użycia i wydajności klasycznych aplikacji systemu Windows
 description: Analizowanie użycia i wydajności klasycznej aplikacji systemu Windows za pomocą usługi Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/29/2019
-ms.openlocfilehash: a9dfc32a0f33db5639d5f74667a90a248dc358a1
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052451"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670835"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Monitorowanie użycia i wydajności klasycznych aplikacji systemu Windows
 
 Wszystkie aplikacje hostowane lokalnie, na platformie Azure i w innych chmurach mogą korzystać z możliwości usługi Application Insights. Jedynym ograniczeniem jest konieczność [zezwolenia na komunikację](../../azure-monitor/app/ip-addresses.md) z usługą Application Insights. Do monitorowania aplikacji platformy uniwersalnej systemu Windows zalecamy używanie pakietu [Visual Studio App Center](../../azure-monitor/learn/mobile-center-quickstart.md).
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>Aby wysłać dane telemetryczne do usługi Application Insights z klasycznej aplikacji systemu Windows
-1. W witrynie [Azure Portal](https://portal.azure.com) [utwórz zasób usługi Application Insights](../../azure-monitor/app/create-new-resource.md ). Jako typ aplikacji wybierz ASP.NET.
+1. W witrynie [Azure Portal](https://portal.azure.com)[utwórz zasób usługi Application Insights](../../azure-monitor/app/create-new-resource.md ). Jako typ aplikacji wybierz ASP.NET.
 2. Wykonaj kopię klucza instrumentacji. Klucz można znaleźć na liście rozwijanej Podstawy dla nowego zasobu, który właśnie został utworzony. 
 3. W programie Visual Studio edytuj pakiety NuGet projektu aplikacji, a następnie dodaj interfejs Microsoft.ApplicationInsights.WindowsServer. (Lub wybierz interfejs Microsoft.ApplicationInsights, jeśli potrzebny jest tylko podstawowy interfejs API bez standardowych modułów gromadzenia telemetrii).
 4. Ustaw klucz instrumentacji w kodzie:
    
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *Twój klucz* `";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "` *klucz* `";`
    
     albo w pliku ApplicationInsights.config (jeśli został zainstalowany jeden ze standardowych pakietów telemetrii):
    

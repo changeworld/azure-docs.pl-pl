@@ -2,13 +2,13 @@
 title: Obsługa tagów dla zasobów
 description: Pokazuje, które typy zasobów platformy Azure obsługują Tagi. Zawiera szczegółowe informacje dotyczące wszystkich usług platformy Azure.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 09dd71ef8c3ac4803a988dffbdca47116c967a0e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/26/2020
+ms.openlocfilehash: 6100c667c7df0b3e1740777565d260af9fa818a3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207931"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657577"
 ---
 # <a name="tag-support-for-azure-resources"></a>Obsługa tagów dla zasobów platformy Azure
 W tym artykule opisano, czy typ zasobu obsługuje [Tagi](tag-resources.md). Kolumna z etykietą **obsługuje znaczniki** wskazuje, czy typ zasobu ma właściwość dla tagu. Kolumna **tag z etykietą w raporcie koszt** wskazuje, czy ten typ zasobu przekazuje tag do raportu kosztów. Możesz wyświetlić koszty według tagów w [Cost Management analiza kosztów](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) oraz [dane dotyczące rozliczeń i dziennego użycia na platformie Azure](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -116,8 +116,8 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft. Migrowanie](#microsoftmigrate)
 > - [Microsoft. MixedReality](#microsoftmixedreality)
 > - [Microsoft. NetApp](#microsoftnetapp)
-> - [Microsoft. notesy](#microsoftnotebooks)
 > - [Microsoft. Network](#microsoftnetwork)
+> - [Microsoft. notesy](#microsoftnotebooks)
 > - [Microsoft. NotificationHubs](#microsoftnotificationhubs)
 > - [Microsoft. ObjectStore](#microsoftobjectstore)
 > - [Microsoft. OffAzure](#microsoftoffazure)
@@ -136,7 +136,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft. ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft. resources](#microsoftresources)
 > - [Microsoft. SaaS](#microsoftsaas)
-> - [Microsoft. Scheduler](#microsoftscheduler)
 > - [Microsoft. Search](#microsoftsearch)
 > - [Microsoft. Security](#microsoftsecurity)
 > - [Microsoft. SecurityGraph](#microsoftsecuritygraph)
@@ -292,6 +291,9 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | automationAccounts | Yes | Yes |
 > | automationAccounts/konfiguracje | Yes | Yes |
 > | automationAccounts/zadania | Nie | Nie |
+> | automationAccounts / privateEndpointConnectionProxies | Nie | Nie |
+> | automationAccounts / privateEndpointConnections | Nie | Nie |
+> | automationAccounts / privateLinkResources | Nie | Nie |
 > | automationAccounts/elementy Runbook | Yes | Yes |
 > | automationAccounts / softwareUpdateConfigurations | Nie | Nie |
 > | automationAccounts/elementy webhook | Nie | Nie |
@@ -356,7 +358,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > [!div class="mx-tableFixed"]
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
-> | billingAccounts | Nie | Nie |
+> | BillingAccounts | Nie | Nie |
 > | billingAccounts/umowy | Nie | Nie |
 > | billingAccounts / billingPermissions | Nie | Nie |
 > | billingAccounts / billingProfiles | Nie | Nie |
@@ -430,8 +432,8 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | billingRoleAssignments | Nie | Nie |
 > | billingRoleDefinitions | Nie | Nie |
 > | createBillingRoleAssignment | Nie | Nie |
-> | działów | Nie | Nie |
-> | enrollmentAccounts | Nie | Nie |
+> | Działów | Nie | Nie |
+> | EnrollmentAccounts | Nie | Nie |
 > | faktur | Nie | Nie |
 > | Sunięcia | Nie | Nie |
 > | transfery/acceptTransfer | Nie | Nie |
@@ -479,7 +481,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | botServices/kanały | Nie | Nie |
 > | botServices/połączenia | Nie | Nie |
 > | języki | Nie | Nie |
-> | templates | Nie | Nie |
+> | szablonów | Nie | Nie |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
@@ -711,6 +713,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | rejestry/importImage | Nie | Nie |
 > | rejestry/privateEndpointConnectionProxies | Nie | Nie |
 > | rejestry/privateEndpointConnectionProxies/weryfikacja | Nie | Nie |
+> | rejestry/privateEndpointConnections | Nie | Nie |
 > | rejestry/privateLinkResources | Nie | Nie |
 > | rejestry/queueBuild | Nie | Nie |
 > | rejestry/regenerateCredential | Nie | Nie |
@@ -1052,6 +1055,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | partnerNamespaces/eventChannels | Nie | Nie |
 > | partnerRegistrations | Yes | Yes |
 > | partnerTopics | Yes | Yes |
+> | partnerTopics / eventSubscriptions | Nie | Nie |
 > | systemTopics | Yes | Yes |
 > | systemTopics / eventSubscriptions | Nie | Nie |
 > | opisano | Yes | Yes |
@@ -1288,6 +1292,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- | ----------- |
 > | getentities | Nie | Nie |
 > | managementGroups | Nie | Nie |
+> | managementGroups/ustawienia | Nie | Nie |
 > | zasoby | Nie | Nie |
 > | startTenantBackfill | Nie | Nie |
 > | tenantBackfillStatus | Nie | Nie |
@@ -1395,15 +1400,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | netAppAccounts | Yes | Nie |
 > | netAppAccounts / capacityPools | Yes | Nie |
 > | netAppAccounts/capacityPools/woluminy | Yes | Nie |
-> | netAppAccounts/capacityPools/woluminy/mountTargets | Yes | Nie |
-> | netAppAccounts/capacityPools/woluminy/migawki | Yes | Nie |
-
-## <a name="microsoftnotebooks"></a>Microsoft. notesy
-
-> [!div class="mx-tableFixed"]
-> | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
-> | ------------- | ----------- | ----------- |
-> | NotebookProxies | Nie | Nie |
+> | netAppAccounts/capacityPools/woluminy/migawki | Nie | Nie |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -1495,6 +1492,13 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > W przypadku usługi Azure front-drzwi można zastosować Tagi podczas tworzenia zasobu, ale aktualizowanie lub Dodawanie tagów nie jest obecnie obsługiwane.
 
 
+## <a name="microsoftnotebooks"></a>Microsoft. notesy
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
+> | ------------- | ----------- | ----------- |
+> | NotebookProxies | Nie | Nie |
+
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
@@ -1556,6 +1560,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | legacyPeerings | Nie | Nie |
 > | peerAsns | Nie | Nie |
 > | komunikacje równorzędne | Yes | Yes |
+> | peeringServiceCountries | Nie | Nie |
 > | peeringServiceProviders | Nie | Nie |
 > | peeringServices | Yes | Yes |
 
@@ -1680,13 +1685,6 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | ------------- | ----------- | ----------- |
 > | aplikacje | Yes | Yes |
 > | saasresources | Nie | Nie |
-
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
-> | ------------- | ----------- | ----------- |
-> | jobcollections | Yes | Yes |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -2026,6 +2024,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | Typ zasobu | Obsługuje Tagi | Tag w raporcie kosztów |
 > | ------------- | ----------- | ----------- |
 > | urządzenia | Yes | Yes |
+> | registeredSubscriptions | Nie | Nie |
 > | dostawców | Nie | Nie |
 > | dostawcy/jednostki SKU | Nie | Nie |
 > | dostawcy/vnfs | Nie | Nie |

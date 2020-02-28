@@ -1,18 +1,17 @@
 ---
 title: Przenoszenie obszaru roboczego Log Analytics w Azure Monitor | Microsoft Docs
 description: Dowiedz się, jak przenieść obszar roboczy Log Analytics do innej subskrypcji lub grupy zasobów.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: 4baa65ca5dda6b266cd6c739225ebd01d011268c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9213ddf034e725f6e31c9280d47bd13e4703b3f4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980083"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659496"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Przenoszenie obszaru roboczego Log Analytics do innej subskrypcji lub grupy zasobów
 
@@ -82,7 +81,7 @@ Aby odłączyć konto usługi Automation od obszaru roboczego przy użyciu Azure
 
 ## <a name="move-your-workspace"></a>Przenoszenie obszaru roboczego
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Portalu Azure
 Aby przenieść obszar roboczy przy użyciu Azure Portal, wykonaj czynności opisane w poniższej procedurze:
 
 1. Otwórz menu **log Analytics obszary robocze** , a następnie wybierz obszar roboczy.
@@ -93,7 +92,7 @@ Aby przenieść obszar roboczy przy użyciu Azure Portal, wykonaj czynności opi
 
     ![Portal](media/move-workspace/portal.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 Aby przenieść obszar roboczy przy użyciu programu PowerShell, użyj polecenia [Move-AzResource](/powershell/module/AzureRM.Resources/Move-AzureRmResource) jak w poniższym przykładzie:
 
 ``` PowerShell

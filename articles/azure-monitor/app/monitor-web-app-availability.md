@@ -1,19 +1,15 @@
 ---
 title: Monitorowanie dostępności i czasu odpowiedzi dowolnej witryny sieci Web | Microsoft Docs
 description: Konfigurowanie testów sieci Web w usłudze Application Insights. Otrzymywanie alertów, kiedy witryna sieci Web staje się niedostępna lub wolno odpowiada.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 074b5c175305131cd67cc6660d13756a83386c11
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819295"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670036"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorowanie dostępności dowolnej witryny sieci Web
 
@@ -74,7 +70,7 @@ Aby utworzyć pierwsze żądanie dostępności, Otwórz okienko dostępność i 
 |----|----|----|
 |**Niemal w czasie rzeczywistym (wersja zapoznawcza)** | Zalecamy korzystanie z alertów niemal w czasie rzeczywistym. Konfigurowanie tego typu alertu odbywa się po utworzeniu testu dostępności.  |
 |**Wdrożenie klasyczne** | Nie zalecamy już używania klasycznych alertów dla nowych testów dostępności.|
-|**Próg lokalizacji alertu**|Zalecamy co najmniej 3/5 lokalizacji. Optymalną relację między progiem lokalizacji alertów a liczbą lokalizacji testowych jest **próg lokalizacji alertu**  = **liczbę lokalizacji testu-2 z co najmniej pięcioma lokalizacjami testów.**|
+|**Próg lokalizacji alertu**|Zalecamy co najmniej 3/5 lokalizacji. Optymalną relację między progiem lokalizacji alertów a liczbą lokalizacji testowych jest **próg lokalizacji alertu** = **liczbę lokalizacji testu-2 z co najmniej pięcioma lokalizacjami testów.**|
 
 ## <a name="see-your-availability-test-results"></a>Wyświetlanie wyników testów dostępności
 
@@ -82,11 +78,11 @@ Wyniki testu dostępności można wizualizować przy użyciu widoków liniowych 
 
 Po kilku minutach kliknij przycisk **Odśwież** , aby zobaczyć wyniki testu.
 
-![Widok wiersza](./media/monitor-web-app-availability/availability-refresh-002.png)
+![widok wiersza](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 Widok scatterplot pokazuje próbki wyników testu, które mają w nich szczegółową czynność testu diagnostycznego. Aparat testowy przechowuje szczegółowe informacje diagnostyczne dla testów z błędami. W przypadku udanych testów szczegółowe informacje diagnostyczne są przechowywane dla podzbioru wykonań. Umieść kursor na dowolnym z zielonych i czerwonych kropek, aby zobaczyć test, nazwę testu i lokalizację.
 
-![Widok wiersza](./media/monitor-web-app-availability/availability-scatter-plot-003.png)
+![widok wiersza](./media/monitor-web-app-availability/availability-scatter-plot-003.png)
 
 Wybierz określony test, lokalizację lub skróć okres czasu, aby zobaczyć więcej wyników w okolicy interesującego okresu czasu. Użyj Eksploratora wyszukiwania, aby zobaczyć wyniki z wszystkich wykonań, lub użyj zapytań analitycznych w celu uruchomienia niestandardowych raportów dla tych danych.
 
@@ -122,7 +118,7 @@ Oprócz nieprzetworzonych wyników można także wyświetlić dwie metryki dost�
 1. Dostępność: procent testów, które zostały pomyślnie zakończone, dla wszystkich wykonań testów.
 2. Czas trwania testu: średni czas trwania testu dla wszystkich wykonań testów.
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatyzacja
 
 * Automatyczne [konfigurowanie testów dostępności za pomocą skryptów środowiska PowerShell](../../azure-monitor/app/powershell.md#add-an-availability-test).
 * Konfigurowanie [elementu webhook](../../azure-monitor/platform/alerts-webhooks.md) który jest wywoływany przy zgłaszaniu alertu.

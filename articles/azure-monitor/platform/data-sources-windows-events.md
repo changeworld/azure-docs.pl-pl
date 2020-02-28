@@ -1,18 +1,17 @@
 ---
 title: Zbieranie i analizowanie dzienników zdarzeń systemu Windows w Azure Monitor | Microsoft Docs
 description: Opisuje sposób konfigurowania kolekcji dzienników zdarzeń systemu Windows przez Azure Monitor i szczegóły tworzonych przez nie rekordów.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: dd8f1e0e79f85c5d91966bcba13052f297422e67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932402"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670512"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Źródła danych dziennika zdarzeń systemu Windows w Azure Monitor
 Dzienniki zdarzeń systemu Windows to jedno z najpopularniejszych [źródeł danych](agent-data-sources.md) do zbierania danych przy użyciu agentów systemu Windows, ponieważ wiele aplikacji zapisuje w dzienniku zdarzeń systemu Windows.  Można zbierać zdarzenia z dzienników standardowych, takich jak system i aplikacja, oprócz określania dzienników niestandardowych utworzonych przez aplikacje, które mają być monitorowane.
@@ -47,16 +46,16 @@ Rekordy zdarzeń systemu Windows mają typ **zdarzenia** i mają właściwości 
 | EventCategory |Kategoria zdarzenia. |
 | EventData |Wszystkie dane zdarzeń w formacie nieprzetworzonym. |
 | EventID |Liczba zdarzeń. |
-| EventLevel |Ważność zdarzenia w postaci numerycznej. |
+| eventLevel |Ważność zdarzenia w postaci numerycznej. |
 | EventLevelName |Ważność zdarzenia w postaci tekstu. |
 | Elemencie |Nazwa dziennika zdarzeń, z którego zostały zebrane zdarzenia. |
 | ParameterXml |Wartości parametrów zdarzenia w formacie XML. |
 | ManagementGroupName |Nazwa grupy zarządzania dla agentów System Center Operations Manager.  W przypadku innych agentów ta wartość jest `AOI-<workspace ID>` |
 | RenderedDescription |Opis zdarzenia z wartościami parametrów |
-| Źródło |Źródło zdarzenia. |
+| Element źródłowy |Źródło zdarzenia. |
 | SourceSystem |Typ agenta, z którego zostały zebrane zdarzenia. <br> OpsManager — Agent systemu Windows, bezpośrednie połączenie lub Operations Manager zarządzany <br> Linux — Wszyscy agenci systemu Linux  <br> AzureStorage — Diagnostyka Azure |
 | TimeGenerated |Data i godzina utworzenia zdarzenia w systemie Windows. |
-| Uż |Nazwa użytkownika konta, które zarejestrowało zdarzenie. |
+| UserName |Nazwa użytkownika konta, które zarejestrowało zdarzenie. |
 
 ## <a name="log-queries-with-windows-events"></a>Rejestruj zapytania ze zdarzeniami systemu Windows
 W poniższej tabeli przedstawiono różne przykłady zapytań dzienników, które pobierają rekordy zdarzeń systemu Windows.
@@ -65,7 +64,7 @@ W poniższej tabeli przedstawiono różne przykłady zapytań dzienników, któr
 |:---|:---|
 | Wydarzenie |Wszystkie zdarzenia systemu Windows. |
 | Zdarzenie &#124; , gdzie EventLevelName = = "Error" |Wszystkie zdarzenia systemu Windows o ważności błędu. |
-| Liczba &#124; podsumowań zdarzeń () według źródła |Liczba zdarzeń systemu Windows według źródła. |
+| Event &#124; summarize count() by Source |Liczba zdarzeń systemu Windows według źródła. |
 | Zdarzenie &#124; , gdzie EventLevelName = = "Error &#124; " Sumuj liczbę () według źródła |Liczba zdarzeń błędów systemu Windows według źródła. |
 
 

@@ -1,18 +1,17 @@
 ---
 title: Zapytania dziennika Azure Monitor | Microsoft Docs
 description: Odwołania do zasobów na potrzeby uczenia się, jak pisać zapytania dzienników w Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 7c6530416f0eb6b822b6f5f3eb53f59aeae05d53
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: fc943ac3cf82d22a58d0ba3390ad8d9bbee6a4c9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894351"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669391"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor zapytania dziennika
 Dzienniki Azure Monitor są oparte na usłudze Azure Eksplorator danych, a Azure Monitor zapytania dzienników używają wersji tego samego języka zapytań Kusto. [Dokumentacja języka zapytań Kusto](/azure/kusto/query) zawiera wszystkie szczegóły dotyczące języka i powinna być podstawowym zasobem do pisania zapytań dziennika Azure monitor. Ta strona zawiera linki do innych zasobów na potrzeby uczenia się, jak pisać zapytania i różnice w Azure Monitor implementacji języka.
@@ -28,7 +27,7 @@ Dzienniki Azure Monitor są oparte na usłudze Azure Eksplorator danych, a Azure
 - [Analizowanie danych dziennika w Azure monitor](../../azure-monitor/log-query/log-query-overview.md) zawiera krótkie omówienie zapytań dzienników i opisuje sposób, w jaki dane dzienników Azure monitor są strukturalne.
 - [Wyświetlanie i analizowanie danych dziennika w Azure monitor](../../azure-monitor/log-query/portals.md) wyjaśnia portale, w których tworzysz i uruchamiasz zapytania dzienników.
 
-## <a name="reference"></a>Informacje ogólne
+## <a name="reference"></a>Dokumentacja
 
 - [Dokumentacja języka zapytań](/azure/kusto/query) to kompletna dokumentacja języka dla języka zapytań Kusto.
 - [Różnice w języku zapytań dziennika Azure monitor](data-explorer-difference.md) opisują różnice między wersjami języka zapytań Kusto.

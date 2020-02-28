@@ -3,17 +3,16 @@ title: Eksportowanie dziennika aktywności platformy Azure
 description: Eksportuj dziennik aktywności platformy Azure do magazynu w celu archiwizacji lub Event Hubs platformy Azure do eksportowania poza platformę Azure.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1c2047fc4b92ecd5776cb835a2f2138c25f5cb65
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845471"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668965"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Eksportowanie dziennika aktywności platformy Azure do magazynu lub Event Hubs platformy Azure
 
@@ -41,7 +40,7 @@ Konto magazynu nie musi znajdować się w tej samej subskrypcji co subskrypcja e
 > [!TIP]
 > Zobacz [Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) w celu zapewnienia dostępu do konta magazynu w ramach zabezpieczonej sieci wirtualnej.
 
-### <a name="event-hubs"></a>Centra zdarzeń
+### <a name="event-hubs"></a>Event Hubs
 Jeśli wysyłasz dziennik aktywności do centrum zdarzeń, musisz [utworzyć centrum zdarzeń](../../event-hubs/event-hubs-create.md) , jeśli jeszcze go nie masz. Jeśli wcześniej przesyłane strumieniowo zdarzenia dziennika aktywności do tej przestrzeni nazw Event Hubs, centrum zdarzeń zostanie ponownie użyte.
 
 Zasady dostępu współdzielonego definiują uprawnienia, które ma mechanizm przesyłania strumieniowego. Przesyłanie strumieniowe do Event Hubs wymaga uprawnień do zarządzania, wysyłania i nasłuchiwania. Można utworzyć lub zmodyfikować zasady dostępu współdzielonego dla przestrzeni nazw Event Hubs w Azure Portal na karcie Konfiguracja dla przestrzeni nazw Event Hubs.
@@ -118,13 +117,13 @@ Jeśli profil dziennika już istnieje, najpierw musisz usunąć istniejący prof
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Właściwość | Wymagane | Opis |
+    | Właściwość | Wymagany | Opis |
     | --- | --- | --- |
-    | Nazwa |Tak |Nazwa profilu dziennika. |
+    | Name (Nazwa) |Yes |Nazwa profilu dziennika. |
     | StorageAccountId |Nie |Identyfikator zasobu konta magazynu, w którym ma zostać zapisany dziennik aktywności. |
     | serviceBusRuleId |Nie |Service Bus Identyfikator reguły dla przestrzeni nazw Service Bus, w której chcesz utworzyć Centra zdarzeń. Jest to ciąg o formacie: `{service bus resource ID}/authorizationrules/{key name}`. |
-    | Lokalizacja |Tak |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |
-    | RetentionInDays |Tak |Liczba dni, przez jaką zdarzenia mają być przechowywane na koncie magazynu, z zakresu od 1 do 365. Wartość zero przechowuje dzienniki w nieskończoność. |
+    | Lokalizacja |Yes |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |
+    | RetentionInDays |Yes |Liczba dni, przez jaką zdarzenia mają być przechowywane na koncie magazynu, z zakresu od 1 do 365. Wartość zero przechowuje dzienniki w nieskończoność. |
     | Kategoria |Nie |Rozdzielana przecinkami lista kategorii zdarzeń, które mają być zbierane. Możliwe wartości to _Write_, _delete_i _Action_. |
 
 ### <a name="example-script"></a>Przykładowy skrypt
@@ -161,14 +160,14 @@ Jeśli profil dziennika już istnieje, należy najpierw usunąć istniejący pro
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Właściwość | Wymagane | Opis |
+    | Właściwość | Wymagany | Opis |
     | --- | --- | --- |
-    | name |Tak |Nazwa profilu dziennika. |
-    | storage-account-id |Tak |Identyfikator zasobu konta magazynu, do którego mają zostać zapisane dzienniki aktywności. |
-    | locations |Tak |Rozdzielana spacjami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Listę wszystkich regionów dla subskrypcji można wyświetlić przy użyciu `az account list-locations --query [].name`. |
-    | days |Tak |Liczba dni przechowywania zdarzeń między 1 a 365. Wartość zerowa spowoduje przechowywanie dzienników w nieskończoność (w nieskończoność).  Jeśli wartość jest równa zero, wartość parametru enabled powinna być równa false. |
-    |dostępny | Tak |Wartość TRUE lub False.  Służy do włączania lub wyłączania zasad przechowywania.  W przypadku wartości true wartość parametru Days musi być większa niż 0.
-    | categories |Tak |Rozdzielana spacjami lista kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to Write, DELETE i Action. |
+    | name |Yes |Nazwa profilu dziennika. |
+    | storage-account-id |Yes |Identyfikator zasobu konta magazynu, do którego mają zostać zapisane dzienniki aktywności. |
+    | locations |Yes |Rozdzielana spacjami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. Listę wszystkich regionów dla subskrypcji można wyświetlić przy użyciu `az account list-locations --query [].name`. |
+    | dni |Yes |Liczba dni przechowywania zdarzeń między 1 a 365. Wartość zerowa spowoduje przechowywanie dzienników w nieskończoność (w nieskończoność).  Jeśli wartość jest równa zero, wartość parametru enabled powinna być równa false. |
+    |dostępny | Yes |Wartość TRUE lub False.  Służy do włączania lub wyłączania zasad przechowywania.  W przypadku wartości true wartość parametru Days musi być większa niż 0.
+    | categories |Yes |Rozdzielana spacjami lista kategorii zdarzeń, które powinny być zbierane. Możliwe wartości to Write, DELETE i Action. |
 
 
 

@@ -1,18 +1,17 @@
 ---
 title: Zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym Log Analytics | Microsoft Docs
 description: Zbierz dziennik aktywności platformy Azure w Azure Monitor dziennikach i użyj rozwiązania do monitorowania, aby przeanalizować i przeszukać dziennik aktywności platformy Azure we wszystkich subskrypcjach platformy Azure.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 2bf2f012e553e08a1eb829f93d9af0f0e74f638b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 044f974d83eba098820639e67412110329d5ad7d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977656"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668982"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Zbieranie i analizowanie dzienników aktywności platformy Azure w obszarze roboczym Log Analytics w Azure Monitor
 
@@ -67,9 +66,9 @@ Kliknij kafelek **dzienniki aktywności platformy Azure** , aby otworzyć widok 
 
 | Część wizualizacji | Opis |
 | --- | --- |
-| Wpisy dziennika aktywności platformy Azure | Pokazuje wykres słupkowy najważniejszych rekordów wpisów dziennika aktywności platformy Azure dla wybranego zakresu dat i pokazuje listę głównych elementów wywołujących działania. Kliknij wykres słupkowy Aby uruchomić wyszukiwanie w dzienniku dla `AzureActivity`. Kliknij element wywołujący, aby uruchomić przeszukiwanie dziennika zwracające wszystkie wpisy dziennika aktywności dla tego elementu. |
+| Wpisy dziennika aktywności platformy Azure | Pokazuje wykres słupkowy najważniejszych rekordów wpisów dziennika aktywności platformy Azure dla wybranego zakresu dat i pokazuje listę głównych elementów wywołujących działania. Kliknij wykres słupkowy, aby uruchomić wyszukiwanie w dzienniku dla `AzureActivity`. Kliknij element wywołujący, aby uruchomić przeszukiwanie dziennika zwracające wszystkie wpisy dziennika aktywności dla tego elementu. |
 | Dzienniki aktywności według stanu | Pokazuje wykres pierścieniowy dla stanu dziennika aktywności platformy Azure dla wybranego zakresu dat oraz listę pierwszych dziesięciu rekordów stanu. Kliknij wykres, aby uruchomić zapytanie dziennika dla `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`. Kliknij element status, aby uruchomić przeszukiwanie dziennika zwracające wszystkie wpisy dziennika aktywności dla tego rekordu stanu. |
-| Dzienniki aktywności według zasobu | Pokazuje łączną liczbę zasobów z dziennikami aktywności i zawiera dziesięć najważniejszych zasobów z liczbami rekordów dla każdego zasobu. Kliknij obszar całkowitej, aby uruchomić wyszukiwanie w dzienniku dla `AzureActivity | summarize AggregatedValue = count() by Resource`, które wyświetla wszystkie zasoby platformy Azure dostępnych do rozwiązania. Kliknij zasób, aby uruchomić zapytanie dziennika zwracające wszystkie rekordy działań dla tego zasobu. |
+| Dzienniki aktywności według zasobu | Pokazuje łączną liczbę zasobów z dziennikami aktywności i zawiera dziesięć najważniejszych zasobów z liczbami rekordów dla każdego zasobu. Kliknij łączny obszar, aby uruchomić wyszukiwanie w dzienniku dla `AzureActivity | summarize AggregatedValue = count() by Resource`, w którym są wyświetlane wszystkie zasoby platformy Azure dostępne dla rozwiązania. Kliknij zasób, aby uruchomić zapytanie dziennika zwracające wszystkie rekordy działań dla tego zasobu. |
 | Dzienniki aktywności przez dostawcę zasobów | Pokazuje łączną liczbę dostawców zasobów, którzy generują dzienniki aktywności i wyświetlają dziesięć najważniejszych. Kliknij łączny obszar, aby uruchomić zapytanie dziennika dla `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`, w którym są wyświetlane wszyscy dostawcy zasobów platformy Azure. Kliknij dostawcę zasobów, aby uruchomić zapytanie dziennika zwracające wszystkie rekordy działań dla dostawcy. |
 
 ## <a name="next-steps"></a>Następne kroki

@@ -1,19 +1,17 @@
 ---
 title: Profilowanie aplikacji produkcyjnych na platformie Azure za pomocą Application Insights Profiler
 description: Zidentyfikuj gorącą ścieżkę w kodzie serwera sieci Web za pomocą profilera niskiego poziomu.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 64e7cc0afa4051836d38c885dff0bc0a0e0b08c6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922096"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671651"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilowanie aplikacji produkcyjnych na platformie Azure za pomocą Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Włączanie Application Insights Profiler dla aplikacji
@@ -23,7 +21,7 @@ Usługa Azure Application Insights Profiler udostępnia dane śledzenia wydajno�
 Profiler współpracuje z aplikacjami .NET, które są wdrożone w następujących usługach platformy Azure. Szczegółowe instrukcje dotyczące włączania profilera dla każdego typu usługi znajdują się w poniższych linkach.
 
 * [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
-* [usług Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines i zestawy skalowania maszyn wirtualnych](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 * [**Wersja zapoznawcza** ASP.NET Core Web Apps systemu Linux platformy Azure](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
@@ -124,7 +122,7 @@ Profiler losowo uruchamia dwie minuty co godzinę na każdej maszynie wirtualnej
 ## <a name="next-steps"></a>Następne kroki
 Włącz Application Insights Profiler dla aplikacji platformy Azure. Zobacz również:
 * [App Services](profiler.md?toc=/azure/azure-monitor/toc.json)
-* [usług Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines i zestawy skalowania maszyn wirtualnych](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 

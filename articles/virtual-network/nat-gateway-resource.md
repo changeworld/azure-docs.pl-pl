@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 9d9033689472fbc462eefd3d31c2b36a19add81a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 26de7a6d05bde8d80e22bd8801ae9b5dc8faeb36
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589474"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669560"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Projektowanie sieci wirtualnych z użyciem zasobów bramy translatora adresów sieciowych (publiczna wersja zapoznawcza)
 
@@ -34,7 +34,7 @@ Zasoby bramy translatora adresów sieciowych są częścią [Virtual Network NAT
 
 
 >[!NOTE] 
->Virtual Network translator adresów sieciowych jest w tej chwili dostępny jako publiczna wersja zapoznawcza. Jest ono obecnie dostępne tylko w ograniczonym zestawie [regionów](nat-overview.md#region-availability). Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.comsupport/legal/preview-supplemental-terms).
+>Virtual Network translator adresów sieciowych jest w tej chwili dostępny jako publiczna wersja zapoznawcza. Jest ono obecnie dostępne tylko w ograniczonym zestawie [regionów](nat-overview.md#region-availability). Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="how-to-deploy-nat"></a>Jak wdrożyć translator adresów sieciowych
 
@@ -365,5 +365,5 @@ Chcemy wiedzieć, jak możemy ulepszyć usługę. Udostępnij nam swoją [opini�
   * [interfejs API REST](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
   * [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
   * [Program PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
-- [Powiedz nam, co należy utworzyć w następnej kolejności w usłudze UserVoice](https://aka/natuservoice).
+- [Powiedz nam, co należy utworzyć w następnej kolejności w usłudze UserVoice](https://aka.ms/natuservoice).
 - [Prześlij opinię na temat publicznej wersji zapoznawczej](https://aka.ms/natfeedback).

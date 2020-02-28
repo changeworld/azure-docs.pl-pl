@@ -1,18 +1,17 @@
 ---
 title: Zbieranie niestandardowych danych JSON w Azure Monitor | Microsoft Docs
 description: Niestandardowe źródła danych JSON można zbierać do Azure Monitor przy użyciu agenta Log Analytics dla systemu Linux.  Te niestandardowe źródła danych mogą być prostymi skryptami zwracającymi kod JSON, taki jak zwinięcie lub jeden z elementów, które zostały połamane 300 +. W tym artykule opisano konfigurację wymaganą dla tej kolekcji danych.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 3e636fef31951e172f57c715ac7e080b35a978bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 49eb3fa22bc9afffb9e93f3152cdc00323b76d41
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450608"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662165"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Zbieranie niestandardowych źródeł danych JSON przy użyciu agenta Log Analytics dla systemu Linux w systemie Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -23,7 +22,7 @@ Niestandardowe źródła danych JSON można zbierać do [Azure monitor](data-pla
 > [!NOTE]
 > Agent Log Analytics dla systemu Linux v 1.1.0-217 + jest wymagany w przypadku niestandardowych danych JSON
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 ### <a name="configure-input-plugin"></a>Konfigurowanie wtyczki wejściowej
 
@@ -100,4 +99,4 @@ Zagnieżdżone źródła danych JSON są obsługiwane, ale są indeksowane na po
 
 
 ## <a name="next-steps"></a>Następne kroki
-* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Informacje na temat [zapytań dzienników](../log-query/log-query-overview.md) w celu analizowania danych zebranych ze źródeł danych i rozwiązań. 

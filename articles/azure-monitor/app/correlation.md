@@ -1,19 +1,17 @@
 ---
 title: Korelacja telemetrii Application Insights platformy Azure | Microsoft Docs
 description: Application Insights korelacji telemetrii
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: bc73dfb1c4dc77abe0bd135ecf572fa05ddf6322
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951330"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672059"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w Application Insights
 
@@ -35,7 +33,7 @@ W środowisku mikrousług ślady składników mogą przechodzić do różnych el
 
 ## <a name="example"></a>Przykład
 
-Przyjrzyjmy się przykładowi. Aplikacja o nazwie ceny giełdowe pokazuje aktualną cenę rynkową przy użyciu zewnętrznego interfejsu API o nazwie Stock. Aplikacja do cen giełdowych ma stronę o nazwie Strona giełdowa, którą otwiera przeglądarka klienta sieci Web przy użyciu `GET /Home/Stock`. Aplikacja wysyła zapytanie do interfejsu API spisu przy użyciu `GET /api/stock/value`wywołania HTTP.
+Spójrzmy na przykład. Aplikacja o nazwie ceny giełdowe pokazuje aktualną cenę rynkową przy użyciu zewnętrznego interfejsu API o nazwie Stock. Aplikacja do cen giełdowych ma stronę o nazwie Strona giełdowa, którą otwiera przeglądarka klienta sieci Web przy użyciu `GET /Home/Stock`. Aplikacja wysyła zapytanie do interfejsu API spisu przy użyciu `GET /api/stock/value`wywołania HTTP.
 
 Dane telemetryczne mogą być analizowane przez uruchomienie zapytania:
 
@@ -47,11 +45,11 @@ Dane telemetryczne mogą być analizowane przez uruchomienie zapytania:
 
 Zwróć uwagę, że wszystkie elementy telemetrii współużytkują główny `operation_Id`. Po wykonaniu wywołania AJAX ze strony nowy unikatowy identyfikator (`qJSXU`) jest przypisywany do telemetrii zależności, a identyfikator pageView jest używany jako `operation_ParentId`. Żądanie serwera używa identyfikatora AJAX jako `operation_ParentId`.
 
-| {1&gt;itemType&lt;1}   | name                      | ID           | operation_ParentId | operation_Id |
+| ItemType   | name                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Strona giełdowa                |              | STYz               | STYz         |
 | zależność | Pobierz/Home/Stock           | qJSXU        | STYz               | STYz         |
-| request    | Pobierz domowy/giełdowy            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| żądanie    | Pobierz domowy/giełdowy            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | zależność | Pobierz/API/Stock/Value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
 Gdy wywołanie `GET /api/stock/value` jest nawiązywane w usłudze zewnętrznej, należy znać tożsamość tego serwera, aby można było odpowiednio ustawić pole `dependency.target`. Gdy usługa zewnętrzna nie obsługuje monitorowania, `target` jest ustawiona na nazwę hosta usługi (na przykład `stock-prices-api.com`). Jeśli jednak usługa identyfikuje siebie przez zwrócenie wstępnie zdefiniowanego nagłówka HTTP, `target` zawiera tożsamość usługi umożliwiającą Application Insights kompilowania rozproszonego śledzenia przez przeszukiwanie danych telemetrycznych z tej usługi.
@@ -206,8 +204,8 @@ Ta funkcja jest dostępna w `Microsoft.ApplicationInsights.JavaScript`. Jest on 
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | Program `Span` z usługą `span.kind = server`                  |
-| `Dependency`                          | Program `Span` z usługą `span.kind = client`                  |
+| `Request`, `PageView`                 | `Span` z `span.kind = server`                  |
+| `Dependency`                          | `Span` z `span.kind = client`                  |
 | `Id` `Request` i `Dependency`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
 | `Operation_ParentId`                  | `Reference` typu `ChildOf` (zakres nadrzędny)   |
@@ -267,7 +265,7 @@ Pole `id` ma format `<trace-id>.<span-id>`, gdzie `trace-id` jest pobierany z na
 
 Pole `operation_ParentId` ma format `<trace-id>.<parent-id>`, gdzie `trace-id` i `parent-id` są pobierane z nagłówka śledzenia, który został przesłany w żądaniu.
 
-### <a name="log-correlation"></a>Korelacja dzienników
+### <a name="log-correlation"></a>Korelacja dziennika
 
 OpenCensus Python umożliwia skorelowanie dzienników przez dodanie identyfikatora śledzenia, identyfikatora zakresu i flagi próbkowania w celu rejestrowania rekordów. Te atrybuty są dodawane przez zainstalowanie [integracji rejestrowania](https://pypi.org/project/opencensus-ext-logging/)OpenCensus. Następujące atrybuty zostaną dodane do obiektów `LogRecord` języka Python: `traceId`, `spanId`i `traceSampled`. Należy zauważyć, że ta wartość obowiązuje tylko w przypadku rejestratorów utworzonych po integracji.
 

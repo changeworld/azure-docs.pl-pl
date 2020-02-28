@@ -1,22 +1,20 @@
 ---
 title: Alerty dziennika aktywności w Azure Monitor
 description: Otrzymywanie powiadomień za pośrednictwem wiadomości SMS, elementu webhook, wiadomości SMS, poczty e-mail i innych informacji w przypadku wystąpienia określonych zdarzeń w dzienniku aktywności.
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 09/17/2018
-ms.openlocfilehash: c42f72800a93de714f0cc126939a28a8a6b5fce4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 26ecfdb33b92c91010af63ec14089dd148d6bad0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747529"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669017"
 ---
-# <a name="alerts-on-activity-log"></a>Alerty dotyczące dziennika aktywności 
+# <a name="alerts-on-activity-log"></a>Alerty dotyczące dziennika aktywności
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
+
 Alerty dziennika aktywności są alertami, które uaktywniają się, gdy wystąpi nowe [zdarzenie dziennika aktywności](activity-log-schema.md) zgodne z warunkami określonymi w alercie. Reguła alertu będzie uruchamiana na podstawie kolejności i ilości zdarzeń zarejestrowanych w [dzienniku aktywności platformy Azure](platform-logs-overview.md). Reguły alertów dziennika aktywności to zasoby platformy Azure, dzięki czemu można je tworzyć przy użyciu szablonu Azure Resource Manager. Można je także tworzyć, aktualizować lub usuwać w Azure Portal. W tym artykule przedstawiono pojęcia dotyczące alertów dziennika aktywności. Aby uzyskać więcej informacji na temat tworzenia i używania reguł alertów dziennika aktywności, zobacz [tworzenie alertów dziennika aktywności i zarządzanie nimi](alerts-activity-log.md).
 
 > [!NOTE]
@@ -50,7 +48,7 @@ Alerty dziennika aktywności mają kilka typowych opcji:
 > [!NOTE]
 > W subskrypcji do 100 reguły alertów można utworzyć dla działania zakresu w jednym z nich: pojedynczy zasób, wszystkie zasoby w grupie zasobów (lub) cały poziom subskrypcji.
 
-Po aktywowaniu alertu dziennika aktywności program używa grupy akcji do generowania akcji lub powiadomień. Grupa akcji to zbiór odbiorników powiadomień wielokrotnego użytku, takich jak adresy e-mail, adresy URL elementów webhook lub numery telefonów SMS. Odbiorcy mogą odwoływać się z wielu alertów w celu scentralizowania i grupowania kanałów powiadomień. Podczas definiowania alertu dziennika aktywności dostępne są dwie opcje. Przekonaj się:
+Po aktywowaniu alertu dziennika aktywności program używa grupy akcji do generowania akcji lub powiadomień. Grupa akcji to zbiór odbiorników powiadomień wielokrotnego użytku, takich jak adresy e-mail, adresy URL elementów webhook lub numery telefonów SMS. Odbiorcy mogą odwoływać się z wielu alertów w celu scentralizowania i grupowania kanałów powiadomień. Podczas definiowania alertu dziennika aktywności dostępne są dwie opcje. Możesz:
 
 * Użyj istniejącej grupy akcji w alercie dziennika aktywności.
 * Utwórz nową grupę akcji.

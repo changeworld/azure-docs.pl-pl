@@ -1,18 +1,16 @@
 ---
 title: 'Szybki Start: Analiza aplikacji sieci Web w języku Java za pomocą usługi Azure Application Insights'
 description: 'Monitorowanie wydajności aplikacji internetowych w języku Java za pomocą usługi Application Insights. '
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: abc16f8e1fdc6b81634b926eeb287e5d03efdc40
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 484d4e8df8a8fdceed62a65858126a16d028121e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963686"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670087"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Szybki Start: Rozpoczynanie pracy z Application Insights w projekcie sieci Web w języku Java
 
@@ -27,7 +25,7 @@ Application Insights to rozszerzalna Usługa analityczna dla deweloperów sieci 
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Uzyskiwanie klucza instrumentacji usługi Application Insights
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. W Azure Portal Utwórz zasób Application Insights. Jako typ aplikacji ustaw wartość Aplikacja internetowa Java.
 
 3. Znajdź klucz instrumentacji nowego zasobu. Wkrótce będzie trzeba wkleić ten klucz do projektu kodu.
@@ -38,7 +36,7 @@ Application Insights to rozszerzalna Usługa analityczna dla deweloperów sieci 
 
 *Wybierz typ projektu.*
 
-# <a name="maventabmaven"></a>[Maven](#tab/maven)
+# <a name="maven"></a>[Maven](#tab/maven)
 
 Jeśli projekt jest już skonfigurowany do korzystania z Maven na potrzeby kompilacji, Scal następujący kod z plikiem *pliku pom. XML* .
 
@@ -56,7 +54,7 @@ Następnie odśwież zależności projektu, aby pliki binarne zostały pobrane.
     </dependencies>
 ```
 
-# <a name="gradletabgradle"></a>Narzędzie [Gradle](#tab/gradle)
+# <a name="gradle"></a>Narzędzie [Gradle](#tab/gradle)
 
 Jeśli projekt jest już skonfigurowany do używania Gradle na potrzeby kompilacji, Scal następujący kod z plikiem *Build. Gradle* .
 
@@ -70,13 +68,13 @@ Następnie odśwież zależności projektu, aby pliki binarne zostały pobrane.
     }
 ```
 
-# <a name="other-typestabother"></a>[Inne typy](#tab/other)
+# <a name="other-types"></a>[Inne typy](#tab/other)
 
 Pobierz [najnowszą wersję](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) i skopiuj niezbędne pliki do projektu, zastępując wszystkie poprzednie wersje.
 
 ---
 
-### <a name="questions"></a>Pytania
+### <a name="questions"></a>Masz
 * *Jaka jest relacja między składnikami `-web-auto`, `-web` i `-core`?*
   * `applicationinsights-web-auto` udostępnia metryki do śledzenia liczby żądań i czasów odpowiedzi HTTP serwletu przez automatyczne zarejestrowanie Application Insights filtru serwletu w czasie wykonywania.
   * `applicationinsights-web` zapewnia również metryki, które śledzą liczby żądań HTTP serwletu i czasy odpowiedzi, ale wymagają ręcznej rejestracji filtru Application Insights serwletu w aplikacji.
@@ -297,7 +295,7 @@ Teraz, po zainstalowaniu zestawu SDK, możesz użyć interfejsu API do wysyłani
 * [Śledź niestandardowe zdarzenia i metryki][api] , aby dowiedzieć się, co użytkownicy robią z aplikacją.
 * [Wyszukaj zdarzenia i dzienniki][diagnostic] , aby ułatwić diagnozowanie problemów.
 
-## <a name="availability-web-tests"></a>Testy sieci Web z zakresu dostępności
+## <a name="availability-web-tests"></a>Testy dostępności sieci Web
 Usługa Application Insights może służyć do testowania witryny sieci Web w regularnych odstępach czasu, aby sprawdzić, czy witryna działa i odpowiada poprawnie.
 
 [Dowiedz się więcej na temat konfigurowania testów dostępności sieci Web.][availability]

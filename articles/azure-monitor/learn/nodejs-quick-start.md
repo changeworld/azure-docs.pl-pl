@@ -1,19 +1,18 @@
 ---
 title: 'Szybki Start: monitorowanie środowiska Node. js za pomocą Azure Monitor Application Insights'
 description: Zawiera instrukcje pozwalające szybko skonfigurować aplikację sieci Web Node. js do monitorowania za pomocą Azure Monitor Application Insights
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: a6d6d70336badeaa86c9982dfa977ea389ed5402
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 694d2ae529202223869fcbb2a084e32bccaedbf1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963533"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660227"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Szybki Start: Rozpoczynanie monitorowania aplikacji sieci Web Node. js za pomocą usługi Azure Application Insights
 
@@ -30,7 +29,7 @@ Usługa Azure Application Insights umożliwia łatwe monitorowanie dostępności
 
 Application Insights może zbierać dane telemetryczne z dowolnej aplikacji połączonej z Internetem, niezależnie od tego, czy działa ona lokalnie, czy w chmurze. Aby rozpocząć wyświetlanie tych danych, wykonaj poniższe czynności.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 2. Wybierz pozycję **Utwórz zasób** > **Narzędzia deweloperskie** > **Application Insights**.
 

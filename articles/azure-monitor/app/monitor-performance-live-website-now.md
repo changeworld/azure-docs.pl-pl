@@ -1,18 +1,14 @@
 ---
 title: Monitorowanie działającej aplikacji internetowej platformy ASP.NET za pomocą usługi Application Insights | Microsoft Docs
 description: Monitorowanie wydajności witryny sieci Web bez jej ponownego wdrażania. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie lub na maszynach wirtualnych.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/26/2019
-ms.openlocfilehash: ac238ae5715e09b2e64737801a862d89852ec9d9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820756"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670053"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentacja aplikacji sieci Web w środowisku uruchomieniowym z dołączaniem bez kodu Application Insights
 
@@ -29,7 +25,7 @@ Monitor stanu służy do Instrumentacji aplikacji .NET hostowanej w usługach II
 - (Istnieją również osobne artykuły na temat Instrumentacji [Cloud Services platformy Azure](../../azure-monitor/app/cloudservices.md)).
 
 
-![Zrzut ekranu przedstawiający wykresy omówienia usługi App Insights zawierające informacje dotyczące żądań zakończonych niepowodzeniem, czas odpowiedzi serwera i żądania serwera](./media/monitor-performance-live-website-now/overview-graphs.png)
+![Zrzut ekranu usługi App Insights — Omówienie wykresów zawierających informacje dotyczące żądań zakończonych niepowodzeniem, czas odpowiedzi serwera i żądań serwera](./media/monitor-performance-live-website-now/overview-graphs.png)
 
 Dostępne są dwie trasy do zastosowania Application Insights do aplikacji sieci Web platformy .NET:
 
@@ -43,14 +39,14 @@ Poniżej przedstawiono podsumowanie tego, co można uzyskać, korzystając z dan
 
 |  | W czasie kompilacji | W czasie wykonywania |
 | --- | --- | --- |
-| Żądania i wyjątki |Tak |Tak |
-| [Bardziej szczegółowe wyjątki](../../azure-monitor/app/asp-net-exceptions.md) | |Tak |
+| Żądania i wyjątki |Yes |Yes |
+| [Bardziej szczegółowe wyjątki](../../azure-monitor/app/asp-net-exceptions.md) | |Yes |
 | [Diagnostyka zależności](../../azure-monitor/app/asp-net-dependencies.md) |Na platformie .NET 4.6 +, ale mniej szczegółów |Tak, kompletne szczegóły: kody wyników, tekst polecenia SQL, czasownik HTTP|
-| [Liczniki wydajności sytemu](../../azure-monitor/app/performance-counters.md) |Tak |Tak |
-| [Interfejs API dla telemetrii niestandardowej][api] |Tak |Nie |
-| [Integracja dziennika śledzenia](../../azure-monitor/app/asp-net-trace-logs.md) |Tak |Nie |
-| [Widok strony i dane użytkownika](../../azure-monitor/app/javascript.md) |Tak |Nie |
-| Konieczność ponownej kompilacji kodu |Tak | Nie |
+| [Liczniki wydajności sytemu](../../azure-monitor/app/performance-counters.md) |Yes |Yes |
+| [Interfejs API dla telemetrii niestandardowej][api] |Yes |Nie |
+| [Integracja dziennika śledzenia](../../azure-monitor/app/asp-net-trace-logs.md) |Yes |Nie |
+| [Widok strony i dane użytkownika](../../azure-monitor/app/javascript.md) |Yes |Nie |
+| Konieczność ponownej kompilacji kodu |Yes | Nie |
 
 
 
@@ -168,7 +164,7 @@ Usuń dowolne z tych plików znajdujących się w katalogu aplikacji:
 - Wszystkie biblioteki DLL w katalogu bin zaczynają się od "Microsoft.AI". lub "Microsoft. ApplicationInsights.".
 - Ta biblioteka DLL w katalogu bin "Microsoft. Web. Infrastructure. dll"
 - Ta biblioteka DLL w katalogu bin "System. Diagnostics. DiagnosticSource. dll"
-- W katalogu aplikacji Usuń "App_Data\packages"
+- W katalogu aplikacji Usuń "App_Data \packages"
 - W katalogu aplikacji Usuń plik "ApplicationInsights. config"
 
 
@@ -272,12 +268,12 @@ Nie zbiera on telemetrii samodzielnie. Po prostu konfiguruje aplikacje interneto
 
 Po wybraniu aplikacji internetowej do instrumentacji za pomocą monitora stanu:
 
-* Pobiera i umieszcza zestawy Application Insights i plik ApplicationInsights. config w folderze plików binarnych aplikacji sieci Web.
+* Pobiera i umieszcza zestawy usługi Application Insights i pliku ApplicationInsights.config w folderze plików binarnych aplikacji sieci web.
 * Umożliwia profilowanie aparatu CLR w celu gromadzenia wywołań zależności.
 
-### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Jakiej wersji zestawu SDK Application Insights monitor stanu zainstalować?
+### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Jakie wersje zestawu SDK usługi Application Insights Zainstaluj Monitor stanu
 
-Teraz monitor stanu można zainstalować tylko Application Insights SDK w wersji 2,3 lub 2,4. 
+Aktualnie Monitora stanu można zainstalować tylko zestaw SDK usługi Application Insights w wersji 2.3 lub 2.4. 
 
 Zestaw SDK Application Insights w wersji 2,4 to [Ostatnia wersja do obsługi platformy .net 4,0](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1) , która była [EOL stycznia 2016](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/). W związku z tym obecnie monitor stanu mogą służyć do instrumentowania aplikacji .NET 4,0. 
 
@@ -304,7 +300,7 @@ W przypadku aplikacji już instrumentowanych w czasie kompilacji:
 
 [Dowiedz się więcej](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
 
-## <a name="video"></a>Wideo
+## <a name="video"></a>Połączenia wideo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 

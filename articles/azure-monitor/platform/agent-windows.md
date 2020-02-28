@@ -1,18 +1,17 @@
 ---
 title: Łączenie komputerów z systemem Windows w celu Azure Monitor | Microsoft Docs
 description: W tym artykule opisano sposób łączenia komputerów z systemem Windows hostowanych w innych chmurach lub lokalnych w celu Azure Monitor z agentem Log Analytics dla systemu Windows.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 8918c18c9356c583b9ea23138f0d0a0fb4dcd845
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 21efb16cf519d4bcad520af1c7d8818f36a77218
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689995"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668642"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Podłącz komputery z systemem Windows do Azure Monitor
 
@@ -20,7 +19,7 @@ W celu monitorowania maszyn wirtualnych lub komputerów fizycznych w lokalnym ce
 
 Na monitorowanym komputerze z systemem Windows Agent jest wyświetlany jako usługa Microsoft Monitoring Agent. Usługa Microsoft Monitoring Agent zbiera zdarzenia z plików dziennika, dziennika zdarzeń systemu Windows, danych wydajności i innych danych telemetrycznych. Nawet jeśli Agent nie może komunikować się z Azure Monitorą raportów, Agent nadal uruchamia i kolejkuje zebrane dane na dysku monitorowanego komputera. Po przywróceniu połączenia usługa Microsoft Monitoring Agent wysyła zebrane dane do usługi.
 
-Agenta programu można zainstalować przy użyciu jednej z poniższych metod. W większości instalacji jest używana kombinacja tych metod w celu zainstalowania różnych zestawów komputerów, zgodnie z potrzebami danej konfiguracji.  Szczegółowe informacje o używaniu każdej metody są podane w dalszej części artykułu.
+Agenta programu można zainstalować przy użyciu jednej z poniższych metod. Większość instalacji używa kombinacji tych metod w celu zainstalowania różnych zestawów komputerów, odpowiednio do potrzeb.  Szczegółowe informacje o używaniu każdej metody są podane w dalszej części artykułu.
 
 * Instalacja ręczna. Instalator jest uruchamiany ręcznie na komputerze przy użyciu Kreatora instalacji, z wiersza polecenia lub wdrożony za pomocą istniejącego narzędzia do dystrybucji oprogramowania.
 * Azure Automation konfiguracji żądanego stanu (DSC). Korzystanie z usługi DSC w Azure Automation ze skryptem dla komputerów z systemem Windows, które zostały już wdrożone w danym środowisku.  
@@ -95,7 +94,7 @@ W poniższej tabeli przedstawiono określone parametry obsługiwane przez Instal
 
 |Opcje specyficzne dla MMA                   |Uwagi         |
 |---------------------------------------|--------------|
-| NOAPM=1                               | Parametr opcjonalny. Instaluje agenta programu bez programu .NET Application Performance Monitoring.|   
+| NOAPM=1                               | Opcjonalny parametr. Instaluje agenta programu bez programu .NET Application Performance Monitoring.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = Skonfiguruj agenta do raportowania do obszaru roboczego                |
 |OPINSIGHTS_WORKSPACE_ID                | Identyfikator obszaru roboczego (GUID) dla obszaru roboczego do dodania                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Klucz obszaru roboczego używany do początkowego uwierzytelniania przy użyciu obszaru roboczego |

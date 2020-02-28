@@ -1,18 +1,17 @@
 ---
 title: Zoptymalizuj środowisko System Center Operations Manager za pomocą usługi Azure Log Analytics | Microsoft Docs
 description: Możesz użyć rozwiązania System Center Operations Manager Health Check, aby ocenić ryzyko i kondycję środowisk w regularnych odstępach czasu.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 5ec0f181d9d22e9e1183a59a4fbd7d77e658862e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8add2acb8f263c54f6014699f792380d256d9b0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402865"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663474"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optymalizowanie środowiska przy użyciu rozwiązania System Center Operations Manager Health Check (wersja zapoznawcza)
 
@@ -148,7 +147,7 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 Pakiet administracyjny rozwiązania System Center Operations Manager Health Check zawiera regułę o nazwie *Uruchom test kondycji programu Microsoft System Center Operations Manager*. Ta reguła jest odpowiedzialna za uruchamianie kontroli kondycji. Aby włączyć regułę i skonfigurować częstotliwość, Użyj poniższych procedur.
 
-Domyślnie reguła sprawdzania kondycji programu Microsoft System Center Operations Manager jest wyłączona. Aby uruchomić kontrolę kondycji, należy włączyć regułę na serwerze zarządzania programu. Skorzystaj z poniższych instrukcji.
+Domyślnie reguła sprawdzania kondycji programu Microsoft System Center Operations Manager jest wyłączona. Aby uruchomić kontrolę kondycji, należy włączyć regułę na serwerze zarządzania programu. Wykonaj poniższe kroki.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>Włączanie reguły dla określonego serwera zarządzania
 

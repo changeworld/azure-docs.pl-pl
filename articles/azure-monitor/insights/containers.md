@@ -1,18 +1,17 @@
 ---
 title: Rozwiązanie do monitorowania kontenerów w Azure Monitor | Microsoft Docs
 description: Rozwiązanie do monitorowania kontenerów w Azure Monitor ułatwia wyświetlanie hostów platformy Docker i kontenerów systemu Windows oraz zarządzanie nimi w jednej lokalizacji.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/22/2019
-ms.openlocfilehash: 7dab80f901304a727b75c7861c5d865fee03bec3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 171f897f6e110e8f759281c139addab477ecede3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482994"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664698"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Rozwiązanie do monitorowania kontenerów w Azure Monitor
 
@@ -27,7 +26,7 @@ To rozwiązanie przedstawia, kontenery, które są uruchomione, jakie obraz kont
 - Docker Swarm
 - DC/OS
 - Kubernetes
-- Usługa Service Fabric
+- Service Fabric
 - Red Hat OpenShift
 
 Jeśli masz kontenery wdrożone w [usłudze Azure Service Fabric](../../service-fabric/service-fabric-overview.md), zalecamy włączenie [rozwiązania Service Fabric](../../service-fabric/service-fabric-diagnostics-oms-setup.md) i tego rozwiązania w celu uwzględnienia monitorowania zdarzeń klastra. Przed włączeniem rozwiązania Service Fabric, zapoznaj się z tematem [Service Fabric rozwiązanie](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md) , aby zrozumieć, jakie informacje zawiera i jak z nich korzystać.
@@ -46,14 +45,14 @@ Przed rozpoczęciem należy przejrzeć następujące szczegóły, aby sprawdzić
 
 W poniższej tabeli przedstawiono wsparcie w zakresie organizowania i monitorowania systemu operacyjnego platformy Docker, a następnie obsługę spisu kontenerów, wydajności i dzienników przy użyciu Azure Monitor.   
 
-| | ACS | Linux | Windows | Kontener<br>Spis | Obraz<br>Spis | Węzeł<br>Spis | Kontener<br>Wydajność | Kontener<br>Wydarzenie | Wydarzenie<br>Log | Kontener<br>Log |
+| | ACS | Linux | System Windows | Kontener<br>Spis | Image (Obraz)<br>Spis | Węzeł<br>Spis | Kontener<br>Wydajność | Kontener<br>Wydarzenie | Wydarzenie<br>Log | Kontener<br>Log |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Usługa<br>Fabric | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Otwórz w systemie Red Hat<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
-| Windows Server<br>(Wersja autonomiczna) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
+| Oprogramowanie Windows Server<br>(Wersja autonomiczna) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Serwer systemu Linux<br>(Wersja autonomiczna) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 
 ### <a name="docker-versions-supported-on-linux"></a>Obsługiwane w systemie Linux wersje platformy docker

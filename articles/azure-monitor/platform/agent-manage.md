@@ -1,18 +1,16 @@
 ---
-title: Zarządzanie agentem usługi Azure Log Analytics | Microsoft Docs
+title: Zarządzanie agentem usługi Azure Log Analytics
 description: W tym artykule opisano różne zadania zarządzania, które zwykle są wykonywane podczas cyklu życia Log Analytics agenta systemu Windows lub Linux wdrożonego na komputerze.
-ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 7e9725c2a33bd63b7ce6751f346da17eb68fe6f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364785"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668693"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Zarządzanie agentem Log Analytics dla systemów Windows i Linux i obsługa go
 
@@ -34,7 +32,7 @@ Aby zaktualizować agenta na maszynie wirtualnej z systemem Windows do najnowsze
 
 Możesz pobrać najnowszą wersję agenta systemu Windows z obszaru roboczego Log Analytics, wykonując poniższe kroki.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 
 2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **log Analytics obszary robocze**.
 
@@ -58,7 +56,7 @@ Możesz pobrać najnowszą wersję agenta systemu Windows z obszaru roboczego Lo
 
 4. W oknie dialogowym **konfiguracja Microsoft Monitoring Agent** kliknij przycisk **zgadzam** się, aby zaakceptować umowę licencyjną.
 
-5. W oknie dialogowym **Instalator programu Microsoft Monitoring Agent** kliknij przycisk **Uaktualnij**. Na stronie stanu wyświetlany będzie postęp uaktualnienia.
+5. W oknie dialogowym **konfiguracja Microsoft Monitoring Agent** kliknij przycisk **Uaktualnij**. Na stronie stan zostanie wyświetlony postęp uaktualniania.
 
 6. Po **pomyślnym ukończeniu konfiguracji Microsoft Monitoring Agent.** Kliknij przycisk **Zakończ**.
 
@@ -68,7 +66,7 @@ Możesz pobrać najnowszą wersję agenta systemu Windows z obszaru roboczego Lo
 
 2. Do wyodrębnienia plików instalacyjnych agenta z wiersza polecenia z podwyższonym poziomem uprawnień `MMASetup-<platform>.exe /c` i zostanie wyświetlony monit o ścieżkę, do której mają zostać wyodrębnione pliki. Alternatywnie możesz określić ścieżkę, przekazując argumenty `MMASetup-<platform>.exe /c /t:<Full Path>`.
 
-3. Uruchom następujące polecenie (w którym D:\ określa lokalizację pliku dziennika uaktualnienia).
+3. Uruchom następujące polecenie, gdzie D:\ jest lokalizacją pliku dziennika uaktualnienia.
 
     ```dos
     setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1
