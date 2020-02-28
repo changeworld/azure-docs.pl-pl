@@ -1,18 +1,17 @@
 ---
 title: Zbieranie i analizowanie liczników wydajności w Azure Monitor | Microsoft Docs
 description: Liczniki wydajności są zbierane przez Azure Monitor w celu przeanalizowania wydajności agentów systemu Windows i Linux.  W tym artykule opisano sposób konfigurowania kolekcji liczników wydajności dla agentów systemu Windows i Linux. szczegóły są przechowywane w obszarze roboczym i sposób analizowania ich w Azure Portal.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 624996c86423bf486111fde8743117ea888862e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363833"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670546"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Źródła danych wydajności systemów Windows i Linux w Azure Monitor
 Liczniki wydajności w systemach Windows i Linux zapewniają wgląd w wydajność składników sprzętowych, systemów operacyjnych i aplikacji.  Azure Monitor może zbierać liczniki wydajności w częstych odstępach czasu dla analizy prawie w czasie rzeczywistym (NRT), a także do agregowania danych dotyczących wydajności na potrzeby analizy i raportowania w dłuższym okresie.
@@ -77,7 +76,7 @@ Parametry w tym elemencie są opisane w poniższej tabeli.
 | Parametry | Opis |
 |:--|:--|
 | Nazwa\_obiektu | Nazwa obiektu dla kolekcji. |
-| instance\_regex |  *Wyrażenie regularne* definiujące, które wystąpienia mają być zbierane. Wartość: `.*` określa wszystkie wystąpienia. Aby zbierać metryki procesora tylko dla \_wystąpienia całkowitego, można określić `_Total`. Aby zbierać metryki procesów tylko dla wystąpień z identyfikatorem "lub" SSHD, można określić: `(crond\|sshd)`. |
+| wystąpienie\_wyrażenie regularne |  *Wyrażenie regularne* definiujące, które wystąpienia mają być zbierane. Wartość: `.*` określa wszystkie wystąpienia. Aby zbierać metryki procesora tylko dla \_wystąpienia całkowitego, można określić `_Total`. Aby zbierać metryki procesów tylko dla wystąpień z identyfikatorem "lub" SSHD, można określić: `(crond\|sshd)`. |
 | Nazwa\_licznika\_wyrażenie regularne | *Wyrażenie regularne* definiujące, które liczniki (dla obiektu) mają być zbierane. Aby zebrać wszystkie liczniki dla obiektu, określ: `.*`. Aby zebrać tylko liczniki przestrzeni wymiany dla obiektu pamięci, można na przykład określić: `.+Swap.+` |
 | interval | Częstotliwość, z jaką są zbierane liczniki obiektu. |
 
@@ -87,35 +86,35 @@ W poniższej tabeli wymieniono obiekty i liczniki, które można określić w pl
 | Nazwa obiektu | Nazwa licznika |
 |:--|:--|
 | Dysk logiczny | % Wolnego węzłów i |
-| Dysk logiczny | % Wolnego miejsca |
+| Dysk logiczny | Wartość procentowa wolnego miejsca |
 | Dysk logiczny | % Użytych węzłów i |
 | Dysk logiczny | Procent wykorzystania miejsca |
-| Dysk logiczny | Bajty odczytu z dysku/s |
+| Dysk logiczny | Bajty odczytu dysku/s |
 | Dysk logiczny | Odczyty dysku/s |
 | Dysk logiczny | Transfery dyskowe/s |
-| Dysk logiczny | Bajty zapisu na dysku/s |
+| Dysk logiczny | Bajty zapisu dysku/s |
 | Dysk logiczny | Zapisy dysku/s |
 | Dysk logiczny | Wolne megabajty |
 | Dysk logiczny | Bajty dysku logicznego/s |
-| Pamięć | Dostępna pamięć (%) |
-| Pamięć | Dostępny obszar wymiany (%) |
-| Pamięć | Używana pamięć (%) |
-| Pamięć | Używany obszar wymiany (%) |
-| Pamięć | Dostępna pamięć (MB) |
-| Pamięć | Dostępny obszar wymiany (MB) |
-| Pamięć | Odczyty stron/s |
-| Pamięć | Zapisy stron/s |
-| Pamięć | Strony/s |
-| Pamięć | Używany obszar wymiany (MB) |
-| Pamięć | Używana pamięć (MB) |
-| Network (Sieć) | Całkowita liczba przesłanych bajtów |
-| Network (Sieć) | Całkowita liczba odebranych bajtów |
-| Network (Sieć) | Łączna liczba bajtów |
-| Network (Sieć) | Całkowita liczba przesłanych pakietów |
-| Network (Sieć) | Całkowita liczba odebranych pakietów |
-| Network (Sieć) | Całkowita liczba błędów odbierania |
-| Network (Sieć) | Całkowita liczba błędów transmisji |
-| Network (Sieć) | Łączna liczba kolizji |
+| Memory (Pamięć) | Dostępna pamięć (%) |
+| Memory (Pamięć) | Dostępny obszar wymiany (%) |
+| Memory (Pamięć) | Używana pamięć (%) |
+| Memory (Pamięć) | Używany obszar wymiany (%) |
+| Memory (Pamięć) | Dostępna pamięć (MB) |
+| Memory (Pamięć) | Dostępny obszar wymiany (MB) |
+| Memory (Pamięć) | Odczyty stron/s |
+| Memory (Pamięć) | Zapisy stron/s |
+| Memory (Pamięć) | Strony/s |
+| Memory (Pamięć) | Używany obszar wymiany (MB) |
+| Memory (Pamięć) | Używana pamięć (MB) |
+| Network | Całkowita liczba przesłanych bajtów |
+| Network | Całkowita liczba odebranych bajtów |
+| Network | Łączna liczba bajtów |
+| Network | Całkowita liczba przesłanych pakietów |
+| Network | Całkowita liczba odebranych pakietów |
+| Network | Całkowita liczba błędów odbierania |
+| Network | Całkowita liczba błędów transmisji |
+| Network | Łączna liczba kolizji |
 | Dysk fizyczny | Średni czas dysku w s/odczyt |
 | Dysk fizyczny | Średni czas dysku w s/transfer |
 | Dysk fizyczny | Średni czas dysku w s/zapis |
@@ -137,7 +136,7 @@ W poniższej tabeli wymieniono obiekty i liczniki, które można określić w pl
 | System | Wolna pamięć wirtualna |
 | System | Procesy |
 | System | Rozmiar zapisany w plikach stronicowania |
-| System | Czas pracy |
+| System | Czas działania |
 | System | Użytkownicy |
 
 
@@ -183,12 +182,12 @@ Rekordy wydajności mają typ **wydajności** i mają właściwości opisane w p
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Computer (Komputer) |Komputer, który zostały zebrane zdarzenia. |
+| Computer |Komputer, który zostały zebrane zdarzenia. |
 | CounterName |Nazwa licznika wydajności |
 | CounterPath |Pełna ścieżka licznika w formularzu \\\\\<komputerze >\\obiekt (wystąpienie)\\licznik. |
 | CounterValue |Wartość liczbowa licznika. |
 | InstanceName |Nazwa wystąpienia zdarzenia.  Puste, jeśli żadne wystąpienie nie jest. |
-| ObjectName |Nazwa obiektu wydajności |
+| Obiektu |Nazwa obiektu wydajności |
 | SourceSystem |Typ agenta, z którego zostały zebrane dane. <br><br>OpsManager — Agent systemu Windows, bezpośrednie połączenie lub SCOM <br> Linux — Wszyscy agenci systemu Linux  <br> AzureStorage — Diagnostyka Azure |
 | TimeGenerated |Data i godzina próbkowania danych. |
 
@@ -202,7 +201,7 @@ W poniższej tabeli przedstawiono różne przykłady zapytań dzienników, któr
 
 | Zapytanie | Opis |
 |:--- |:--- |
-| Perf |Wszystkie dane dotyczące wydajności |
+| Wyd. |Wszystkie dane dotyczące wydajności |
 | Wydajność &#124; , w której komputer = = "MójKomputer" |Wszystkie dane dotyczące wydajności z określonego komputera |
 | Wydajność &#124; , gdzie CounterName = = "Bieżąca długość kolejki dysku" |Wszystkie dane dotyczące wydajności dla określonego licznika |
 | Wydajność &#124; , gdzie ObjectName = = "Processor" i CounterName = = "% Time procesora" i InstanceName = = " &#124; _TOTAL" podsumowuje AVGCPU = AVG (CounterValue) według komputera |Średnie użycie procesora CPU na wszystkich komputerach |
@@ -219,5 +218,5 @@ W poniższej tabeli przedstawiono różne przykłady zapytań dzienników, któr
 
 ## <a name="next-steps"></a>Następne kroki
 * [Zbieraj liczniki wydajności z aplikacji systemu Linux, w](data-sources-linux-applications.md) tym MySQL i Apache HTTP Server.
-* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
+* Informacje na temat [zapytań dzienników](../log-query/log-query-overview.md) w celu analizowania danych zebranych ze źródeł danych i rozwiązań.  
 * Eksportuj zebrane dane do [Power BI](powerbi.md) , aby uzyskać dodatkowe wizualizacje i analizę.

@@ -1,18 +1,17 @@
 ---
 title: Rozwiązywanie problemów Diagnostyka Azure rozszerzenia
 description: Rozwiązywanie problemów podczas korzystania z diagnostyki platformy Azure na platformie Azure Virtual Machines, Service Fabric lub Cloud Services.
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: e2b3ceba7a3673caa38e09f6b4dfa296fd063cfe
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467917"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672280"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Rozwiązywanie problemów Diagnostyka Azure
 W tym artykule opisano Rozwiązywanie problemów związanych z używaniem Diagnostyka Azure. Aby uzyskać więcej informacji na temat diagnostyki platformy Azure, zobacz [omówienie Diagnostyka Azure](diagnostics-extension-overview.md).

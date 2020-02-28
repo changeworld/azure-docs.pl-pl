@@ -3,18 +3,17 @@ title: Archiwizowanie metryk platformy Azure i zapisywanie danych w dzienniku pr
 description: Archiwizuj dane dziennika i metryki wygenerowane przez zasoby platformy Azure na koncie magazynu.
 author: johnkemnetz
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 87b05256103790c706f3ba0df7ea72c169b79f16
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3ed00b1c68c41bc392b09c97dd47c9cdb8fa890d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979819"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661729"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archiwizowanie metryk platformy Azure i zapisywanie danych w dzienniku przy użyciu usługi Azure Storage
 
@@ -38,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com/).
+Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
@@ -96,7 +95,7 @@ Teraz skonfigurujemy dane na poziomie zasobów (metryki zasobów i dzienniki zas
 
 6. Ustaw suwak **Okres przechowywania (w dniach)** na wartość 30. Suwak umożliwia ustawienie liczby dni przechowywania danych monitorowania na koncie magazynu. Starsze dane są automatycznie usuwane przez usługę Azure Monitor. Wpisanie wartości zero powoduje, że dane są przechowywane przez nieograniczony czas.
 
-7. Kliknij pozycję **Zapisz**.
+7. Kliknij przycisk **Save** (Zapisz).
 
 Dane monitorowania z zasobu będą teraz przepływać do konta magazynu.
 
@@ -137,7 +136,7 @@ Dane monitorowania z zasobu będą teraz przepływać do konta magazynu.
 
 9. W wyświetlonej sekcji wybierz konto magazynu utworzone w kroku **Tworzenie konta magazynu**.
 
-10. Kliknij pozycję **Zapisz**.
+10. Kliknij przycisk **Save** (Zapisz).
 
 Dane monitorowania z maszyn wirtualnych będą teraz przepływać do konta magazynu.
 

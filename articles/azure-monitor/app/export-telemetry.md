@@ -1,18 +1,14 @@
 ---
 title: Ciągły eksport danych telemetrycznych z Application Insights | Microsoft Docs
 description: Wyeksportuj dane diagnostyczne i użycia do magazynu w Microsoft Azure i Pobierz je stamtąd.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/25/2019
-ms.openlocfilehash: 6504661c2df66bda81af03a6364703b4b10f7485
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 33158919980514b70c3b0e438691427a34eed834
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819551"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663917"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Eksportuj dane telemetryczne z Application Insights
 Chcesz utrzymać dane telemetryczne dłużej niż w przypadku standardowego okresu przechowywania? Lub przetwarzać je w sposób wyspecjalizowany? Eksport ciągły jest idealnym rozwiązaniem. Zdarzenia wyświetlane w portalu Application Insights mogą zostać wyeksportowane do magazynu w Microsoft Azure w formacie JSON. Z tego miejsca możesz pobrać dane i napisać dowolny kod, który jest potrzebny do jego przetworzenia.  
@@ -183,7 +179,7 @@ W przypadku większych skal należy wziąć pod uwagę klastry usługi [HDInsigh
     Edytuj kartę Eksportuj i Otwórz lokalizację docelową eksportu. Pozostaw ten sam magazyn wybrany jak poprzednio, a następnie kliknij przycisk OK, aby potwierdzić. Eksport zostanie uruchomiony ponownie. Jeśli zmiana była w ciągu ostatnich kilku dni, utracisz dane.
 * *Czy mogę wstrzymać eksport?*
 
-    Tak. Kliknij przycisk Wyłącz.
+    Tak. Kliknij opcję Wyłącz.
 
 ## <a name="code-samples"></a>Przykłady kodu
 

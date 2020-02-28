@@ -1,25 +1,23 @@
 ---
 title: Analiza przechowywania użytkowników dla aplikacji sieci Web za pomocą platformy Azure Application Insights | Dokumentacja firmy Microsoft
 description: Ile użytkowników wraca do swojej aplikacji?
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5f5f6235354adc565815ac2eab0a1c774267102d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 37ae97d5fbc62e507f726c452999a7f6e7c989c6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899416"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670971"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analiza przechowywania użytkowników dla aplikacji sieci Web za pomocą Application Insights
 
 Funkcja przechowywania w [usłudze Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) pomaga analizować liczbę użytkowników, którzy zwracają do aplikacji, oraz częstotliwość wykonywania określonych zadań lub osiągania celów. Na przykład po uruchomieniu witryny gry można porównać liczby użytkowników, którzy powracają do lokacji po utracie gry z liczbą zwracaną po wygraniu. Ta wiedza może pomóc w ulepszaniu środowiska użytkownika i strategii biznesowej.
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczynanie pracy
 
 Jeśli nie widzisz jeszcze danych w narzędziu do przechowywania w portalu Application Insights, [Dowiedz się, jak rozpocząć pracę z narzędziami użycia](usage-overview.md).
 

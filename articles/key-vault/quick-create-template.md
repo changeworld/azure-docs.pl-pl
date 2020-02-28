@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/17/2019
 ms.author: jgao
-ms.openlocfilehash: 0462039efa02998b41560d6c308653809875ab1c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b2561a4e065fc82cc08e8275965ab0b403fc66f0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982134"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654566"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Szybki Start: Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu szablonu Menedżer zasobów
 
@@ -33,7 +33,7 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
     1. Uruchom następujące Azure PowerShell lub polecenie interfejsu wiersza polecenia platformy Azure, wybierając pozycję **Wypróbuj**, a następnie wklej skrypt do okienka powłoki. Aby wkleić skrypt, kliknij prawym przyciskiem myszy powłokę, a następnie wybierz polecenie **Wklej**.
 
-        # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
+        # <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
         ```azurecli-interactive
         echo "Enter your email address that is used to sign in to Azure:" &&
         read upn &&
@@ -41,7 +41,7 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
         echo "Press [ENTER] to continue ..."
         ```
 
-        # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
+        # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
         ```azurepowershell-interactive
         $upn = Read-Host -Prompt "Enter your email address used to sign in to Azure"
         (Get-AzADUser -UserPrincipalName $upn).Id
@@ -54,16 +54,20 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 
 ## <a name="create-a-vault-and-a-secret"></a>Tworzenie magazynu i wpisu tajnego
 
+### <a name="review-the-template"></a>Zapoznaj się z szablonem
+
 Szablon używany w tym przewodniku szybki start pochodzi z [szablonów szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-key-vault-create/).
 
-[!code-json[<Azure Resource Manager template create key vault>](~/quickstart-templates/101-key-vault-create/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-key-vault-create/azuredeploy.json" range="1-150" highlight="107-148":::
 
 Dwa zasoby platformy Azure są zdefiniowane w szablonie:
 
-* **Microsoft. Key — magazyn/magazyny**: Utwórz magazyn kluczy platformy Azure.
-* **Microsoft. Key/magazyny/wpisy tajne**: Utwórz klucz tajny magazynu kluczy.
+* [**Microsoft. Key — magazyn/magazyny**](/azure/templates/microsoft.keyvault/vaults): Utwórz magazyn kluczy platformy Azure.
+* [**Microsoft. Key/magazyny/wpisy tajne**](/azure/templates/microsoft.keyvault/vaults/secrets): Utwórz klucz tajny magazynu kluczy.
 
 Więcej przykładów szablonów Azure Key Vault można znaleźć [tutaj](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault).
+
+### <a name="deploy-the-template"></a>Wdrożenie szablonu
 
 1. Wybierz poniższy obraz, aby zalogować się na platformie Azure i otworzyć szablon. Ten szablon umożliwia utworzenie magazynu kluczy oraz wpisu tajnego.
 
@@ -90,11 +94,11 @@ Więcej przykładów szablonów Azure Key Vault można znaleźć [tutaj](https:/
 
 Azure Portal jest używany do wdrożenia szablonu. Oprócz Azure Portal można również użyć Azure PowerShell, interfejsu wiersza polecenia platformy Azure i API REST. Aby poznać inne metody wdrażania, zobacz [wdrażanie szablonów](../azure-resource-manager/templates/deploy-powershell.md).
 
-## <a name="validate-the-deployment"></a>Weryfikowanie wdrożenia
+## <a name="review-deployed-resources"></a>Przejrzyj wdrożone zasoby
 
 Możesz użyć Azure Portal, aby sprawdzić Magazyn kluczy i klucz tajny, lub użyć następującego interfejsu wiersza polecenia platformy Azure lub skryptu Azure PowerShell, aby wyświetlić utworzony wpis tajny.
 
-# <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
+# <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter your key vault name:" &&
@@ -103,7 +107,7 @@ az keyvault secret list --vault-name $keyVaultName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $keyVaultName = Read-Host -Prompt "Enter your key vault name"
@@ -115,11 +119,11 @@ Write-Host "Press [ENTER] to continue..."
 
 Dane wyjściowe wyglądają podobnie do:
 
-# <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
+# <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
 ![Szablon Menedżer zasobów, integracja z Key Vault, wdrażanie danych wyjściowych weryfikacji portalu](./media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ![Szablon Menedżer zasobów, integracja z Key Vault, wdrażanie danych wyjściowych weryfikacji portalu](./media/quick-create-template/resource-manager-template-portal-deployment-powershell-output.png)
 
@@ -127,9 +131,9 @@ Dane wyjściowe wyglądają podobnie do:
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Inne przewodniki Szybki start i samouczki usługi Key Vault bazują na tym przewodniku. Jeśli planujesz korzystać z kolejnych przewodników Szybki start i samouczków, pozostaw te zasoby na swoim miejscu.
-Jeśli nie będą Ci one już potrzebne, usuń grupę zasobów, a zostanie także usunięta usługa Key Vault i powiązane zasoby. Aby usunąć grupę zasobów przy użyciu interfejsu wiersza polecenia platformy Azure lub programu Azure PowerShell:
+Jeśli nie będą Ci one już potrzebne, usuń grupę zasobów, a zostanie także usunięta usługa Key Vault i powiązane zasoby. Aby usunąć grupę zasobów przy użyciu interfejsu wiersza polecenia platformy Azure lub Azure PowerShell:
 
-# <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
+# <a name="cli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -138,7 +142,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

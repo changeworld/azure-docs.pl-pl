@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4438851ef7ea015060926075f46822de877b85b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4a8d7f50ecf385388b63b9d83525a39737e0d157
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766435"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655756"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Szybki Start: Dodawanie flag funkcji do aplikacji z rozruchem wiosny
 
@@ -21,9 +21,9 @@ Biblioteki zarządzania funkcją rozruchu sprężynowego umożliwiają rozbudowa
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-- Obsługiwany zestaw [SDK języka Java Development Kit](https://docs.microsoft.com/java/azure/jdk) z wersją 8.
-- System [Apache Maven](https://maven.apache.org/download.cgi) w wersji 3,0 lub nowszej.
+* Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
+* Obsługiwany zestaw [SDK języka Java Development Kit](https://docs.microsoft.com/java/azure/jdk) z wersją 8.
+* System [Apache Maven](https://maven.apache.org/download.cgi) w wersji 3,0 lub nowszej.
 
 ## <a name="create-an-app-configuration-instance"></a>Tworzenie wystąpienia konfiguracji aplikacji
 
@@ -42,14 +42,14 @@ Użyj [sprężyny Initializr](https://start.spring.io/) , aby utworzyć nowy pro
 
 1. Przejdź do <https://start.spring.io/>.
 
-2. Określ następujące opcje:
+1. Określ następujące opcje:
 
-   - Wygeneruj projekt **Maven** z użyciem języka **Java**.
-   - Określ wersję **rozruchu sprężynowego** , która jest równa lub większa niż 2,0.
-   - Określ nazwy **Grupa** i **Artefakt** dla swojej aplikacji.  W tym artykule są wykorzystywane `com.example` i `demo`.
-   - Dodaj zależność **sieci Web sprężyny** .
+   * Wygeneruj projekt **Maven** z użyciem języka **Java**.
+   * Określ wersję **rozruchu sprężynowego** , która jest równa lub większa niż 2,0.
+   * Określ nazwy **Grupa** i **Artefakt** dla swojej aplikacji.  W tym artykule są wykorzystywane `com.example` i `demo`.
+   * Dodaj zależność **sieci Web sprężyny** .
 
-3. Po określeniu poprzednich opcji wybierz pozycję **Generuj projekt**. Po wyświetleniu monitu Pobierz projekt na komputer lokalny.
+1. Po określeniu poprzednich opcji wybierz pozycję **Generuj projekt**. Po wyświetleniu monitu Pobierz projekt na komputer lokalny.
 
 ## <a name="add-feature-management"></a>Dodawanie funkcji zarządzania funkcjami
 
@@ -57,20 +57,41 @@ Użyj [sprężyny Initializr](https://start.spring.io/) , aby utworzyć nowy pro
 
 1. Otwórz plik *pliku pom. XML* w edytorze tekstów i Dodaj następujący tekst do listy `<dependencies>`.:
 
+### <a name="spring-cloud-11x"></a>Chmura Wiosenna 1.1. x
+
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.2.1</version>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.2.1</version>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    ```
+
+### <a name="spring-cloud-12x"></a>Chmura Wiosenna 1.2. x
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
     ```
 
@@ -108,6 +129,7 @@ Użyj [sprężyny Initializr](https://start.spring.io/) , aby utworzyć nowy pro
         }
     }
     ```
+
 1. Utwórz nowy plik Java o nazwie *MessageProperties.java* w katalogu pakietów swojej aplikacji.
 
     ```java
@@ -131,7 +153,7 @@ Użyj [sprężyny Initializr](https://start.spring.io/) , aby utworzyć nowy pro
     }
     ```
 
-1. Utwórz nowy plik Java o nazwie *HelloController.java* w katalogu pakietów swojej aplikacji. 
+1. Utwórz nowy plik Java o nazwie *HelloController.java* w katalogu pakietów swojej aplikacji.
 
     ```java
     package com.example.demo;
@@ -220,42 +242,42 @@ Użyj [sprężyny Initializr](https://start.spring.io/) , aby utworzyć nowy pro
 
     ```
 
-6. Utwórz nowy folder o nazwie CSS w obszarze `static` i wewnątrz niego nowy plik CSS o nazwie *Main. css*.
+1. Utwórz nowy folder o nazwie CSS w obszarze `static` i wewnątrz niego nowy plik CSS o nazwie *Main. css*.
 
     ```css
     html {
-    position: relative;
-    min-height: 100%;
+     position: relative;
+     min-height: 100%;
     }
     body {
-    margin-bottom: 60px;
+     margin-bottom: 60px;
     }
     .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background-color: #f5f5f5;
+     position: absolute;
+     bottom: 0;
+     width: 100%;
+     height: 60px;
+     line-height: 60px;
+     background-color: #f5f5f5;
     }
 
     body > .container {
-    padding: 60px 15px 0;
+     padding: 60px 15px 0;
     }
 
     .footer > .container {
-    padding-right: 15px;
-    padding-left: 15px;
+     padding-right: 15px;
+     padding-left: 15px;
     }
 
     code {
-    font-size: 80%;
+     font-size: 80%;
     }
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>Lokalne kompilowanie i uruchamianie aplikacji
 
-1. Skompiluj aplikację do rozruchu ze sprężyną przy użyciu Maven i uruchom ją.
+1. Skompiluj aplikację Spring Boot przy użyciu narzędzia Maven i uruchom ją.
 
     ```shell
     mvn clean package
@@ -284,6 +306,6 @@ Użyj [sprężyny Initializr](https://start.spring.io/) , aby utworzyć nowy pro
 
 W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji, który będzie używany do zarządzania funkcjami w aplikacji sieci Web ze sprężyną rozruchu za pośrednictwem [bibliotek zarządzania](https://go.microsoft.com/fwlink/?linkid=2074664)funkcjami.
 
-- Dowiedz się więcej o [zarządzaniu funkcjami](./concept-feature-management.md).
-- [Zarządzaj flagami funkcji](./manage-feature-flags.md).
-- [Korzystanie z flag funkcji w aplikacji podstawowe rozruchowej](./use-feature-flags-spring-boot.md).
+* Dowiedz się więcej o [zarządzaniu funkcjami](./concept-feature-management.md).
+* [Zarządzaj flagami funkcji](./manage-feature-flags.md).
+* [Korzystanie z flag funkcji w aplikacji podstawowe rozruchowej](./use-feature-flags-spring-boot.md).

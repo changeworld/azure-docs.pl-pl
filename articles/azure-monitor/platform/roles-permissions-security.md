@@ -3,17 +3,16 @@ title: Role, uprawnienia i zabezpieczenia w Azure Monitor
 description: Dowiedz się, jak używać wbudowanych ról i uprawnień Azure Monitor, aby ograniczyć dostęp do zasobów monitorowania.
 author: johnkemnetz
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: d223c3483becdc8ba44bc14ec16150cf1b001943
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 81309f0b5781e6302887a5b079ed359e70659834
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894537"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658986"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Role, uprawnienia i zabezpieczenia w Azure Monitor
 

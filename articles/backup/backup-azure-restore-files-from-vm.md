@@ -3,12 +3,12 @@ title: Odzyskiwanie plików i folderów z kopii zapasowej maszyny wirtualnej pla
 description: W tym artykule dowiesz się, jak odzyskiwać pliki i foldery z punktu odzyskiwania maszyny wirtualnej platformy Azure.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: d80fb1060eca766305ecbfffe151d975472f8b3c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114326"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660924"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -206,7 +206,7 @@ W przypadku uruchamiania skryptu na komputerze z ograniczonym dostępem upewnij 
   - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (w przypadku platformy Azure — Chiny)
   - <https://pod01-rec2.geo-name.backup.windowsazure.us> (dla instytucji rządowych USA platformy Azure)
   - <https://pod01-rec2.geo-name.backup.windowsazure.de> (dla platformy Azure (Niemcy)
-- Port wychodzący 3260
+- Porty wychodzące 53 (DNS), 443, 3260
 
 > [!NOTE]
 >

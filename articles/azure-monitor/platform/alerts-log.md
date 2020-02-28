@@ -2,22 +2,20 @@
 title: Tworzenie i wyświetlanie alertów dzienników oraz zarządzanie nimi za pomocą Azure Monitor | Microsoft Docs
 description: Użyj Azure Monitor, aby tworzyć, wyświetlać i zarządzać regułami alertów dziennika na platformie Azure.
 author: yanivlavi
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 525e8d2ffcd673f47cf30699de2572b35fc3b314
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 96b1bd86576f8cf34428eb60e2d3f476312311c1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290279"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667860"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie i wyświetlanie alertów dzienników oraz zarządzanie nimi za pomocą Azure Monitor
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 W tym artykule opisano sposób konfigurowania alertów dziennika przy użyciu interfejsu alertów w programie Azure Portal. Definicja reguły alertu składa się z trzech części:
 - Cel: określony zasób platformy Azure, który ma być monitorowany
 - Kryteria: określony warunek lub logika, która pojawia się w sygnale, powinna wyzwalać akcję

@@ -1,18 +1,14 @@
 ---
 title: Jak mogę... na platformie Azure Application Insights | Microsoft Docs
 description: Często zadawane pytania w Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/04/2017
-ms.openlocfilehash: 61bd5898c494018a2bacbd894d4dc2aac97f53b4
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 5b65087c361911f0714723c315e0b7f7e9bb74e6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928418"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663861"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mogę (...) w usłudze Application Insights?
 ## <a name="get-an-email-when-"></a>Otrzymuj wiadomość e-mail, gdy...
@@ -39,7 +35,7 @@ Alerty można ustawiać w [niestandardowych metrykach](../../azure-monitor/app/a
 
     telemetry.TrackMetric("Alarm", 10);
 
-Oraz
+lub:
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;

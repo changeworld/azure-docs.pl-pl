@@ -1,18 +1,17 @@
 ---
 title: Importowanie danych Log Analytics platformy Azure do Power BI | Microsoft Docs
 description: Power BI to oparta na chmurze usługa analizy biznesowej firmy Microsoft, która udostępnia rozbudowane wizualizacje i raporty umożliwiające analizę różnych zestawów danych.  W tym artykule opisano sposób konfigurowania i importowania danych Log Analytics do Power BI i konfigurowania ich do automatycznego odświeżania.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 8c703cc2fd93900e13d39021992bc11247881b47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394702"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659289"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importuj Azure Monitor dane dziennika do Power BI
 
@@ -21,7 +20,7 @@ ms.locfileid: "75394702"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Aby zaimportować dane z [obszaru roboczego log Analytics](manage-access.md) w Azure Monitor do Power BI, należy utworzyć zestaw danych w Power BI na podstawie [zapytania dziennika](../log-query/log-query-overview.md) w Azure monitor.  Zapytanie jest uruchamiane za każdym razem, gdy zestaw danych zostanie odświeżony.  Następnie można kompilować Power BI raporty, które używają danych z zestawu danych.  Aby utworzyć zestaw danych w Power BI, należy wyeksportować zapytanie z Log Analytics do [języka Power Query (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification).  Następnie należy użyć tego do utworzenia zapytania w Power BI Desktop, a następnie opublikowania go do Power BI jako zestawu danych.  Szczegóły dotyczące tego procesu opisano poniżej.
 
 ![Log Analytics do Power BI](media/powerbi/overview.png)
@@ -51,7 +50,7 @@ Power BI Desktop to aplikacja klasyczna, która umożliwia tworzenie zestawów d
 
 
 
-## <a name="publish-to-power-bi"></a>Publikowanie w usłudze Power BI
+## <a name="publish-to-power-bi"></a>Publikuj w Power BI
 Po opublikowaniu do Power BI zostanie utworzony zestaw danych i raport.  Jeśli utworzysz raport w Power BI Desktop, zostanie on opublikowany wraz z danymi.  Jeśli nie, zostanie utworzony pusty raport.  Raport można zmodyfikować w Power BI lub utworzyć nowy oparty na zestawie danych.
 
 1. Utwórz raport na podstawie danych.  Zapoznaj się z [dokumentacją Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-report-view) , jeśli nie znasz tego programu.  

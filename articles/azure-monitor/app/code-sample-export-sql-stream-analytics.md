@@ -1,18 +1,14 @@
 ---
 title: Eksportowanie do bazy danych SQL z platformy Azure Application Insights | Microsoft Docs
 description: Ciągle Eksportuj dane Application Insights do bazy danych SQL przy użyciu Stream Analytics.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/11/2017
-ms.openlocfilehash: 41efcbc7b70395302858638a9f44f3cbba27bf9a
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3ef0420cdab64f11b699fd4031ed2b0134f18609
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678265"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663695"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Przewodnik: Eksportowanie do bazy danych SQL z Application Insights przy użyciu Stream Analytics
 W tym artykule przedstawiono sposób przenoszenia danych telemetrycznych z [usługi azure Application Insights][start] do bazy danych Azure SQL Database przy użyciu funkcji [eksportu ciągłego][export] i [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -25,7 +21,7 @@ Zaczniemy od założenia, że aplikacja ma być monitorowana.
 
 W tym przykładzie będziemy używać danych widoku strony, ale ten sam wzorzec można łatwo rozszerzyć na inne typy danych, takie jak zdarzenia niestandardowe i wyjątki. 
 
-## <a name="add-application-insights-to-your-application"></a>Dodawanie Application Insights do aplikacji
+## <a name="add-application-insights-to-your-application"></a>Dodaj usługę Application Insights do swojej aplikacji
 Aby rozpocząć:
 
 1. [Skonfiguruj Application Insights dla stron sieci Web](../../azure-monitor/app/javascript.md). 
@@ -76,7 +72,7 @@ Eksport ciągły zawsze wyprowadza dane do konta usługi Azure Storage, dlatego 
 
 Zdarzenia są zapisywane w plikach obiektów BLOB w formacie JSON. Każdy plik może zawierać jedno lub więcej zdarzeń. Więc chcemy przeczytać dane zdarzenia i odfiltrować pola, które chcemy. Istnieją wszystkie rodzaje rzeczy, które możemy zrobić z danymi, ale naszym planem jest użycie Stream Analytics do przenoszenia danych do bazy danych SQL. Dzięki temu będzie można łatwo uruchamiać wiele interesujących zapytań.
 
-## <a name="create-an-azure-sql-database"></a>Tworzenie Azure SQL Database
+## <a name="create-an-azure-sql-database"></a>Tworzenie bazy danych Azure SQL Database
 Po ponownym uruchomieniu z subskrypcji w [Azure Portal][portal]Utwórz bazę danych (i nowy serwer, chyba że już nie masz takiego komputera), na którym chcesz napisać dane.
 
 ![Nowe, dane, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
@@ -243,7 +239,7 @@ Po kilku minutach Wróć do SQL Server Management Tools i obejrzyj dane przepły
     FROM [dbo].[PageViewsTable]
 
 
-## <a name="related-articles"></a>Pokrewne artykuły:
+## <a name="related-articles"></a>Pokrewne artykuły
 * [Eksportuj do usługi PowerBI przy użyciu Stream Analytics](../../azure-monitor/app/export-power-bi.md )
 * [Szczegółowe informacje o modelu danych dla typów i wartości właściwości.](../../azure-monitor/app/export-data-model.md)
 * [Eksport ciągły w Application Insights](../../azure-monitor/app/export-telemetry.md)

@@ -1,18 +1,17 @@
 ---
 title: wyrażenie Resource () w kwerendzie dziennika Azure Monitor | Microsoft Docs
 description: Wyrażenie zasobu jest używane w zasobie zorientowanym na zasoby Azure Monitor zapytania dziennika do pobierania danych z wielu zasobów.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
-ms.openlocfilehash: 370b2547c9e726ab4f5ebc4dd732cc0bfa17f760
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2a729caefe698b13833098ba48df9d4bfbd97356
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933008"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665703"
 ---
 # <a name="resource-expression-in-azure-monitor-log-query"></a>wyrażenie Resource () w zapytaniu dziennika Azure Monitor
 
@@ -27,7 +26,7 @@ Wyrażenie `resource` jest używane w zapytaniu Azure Monitor [objętym zakresem
 
 - *Identyfikator*: Identyfikator zasobu zasobu.
 
-| Identyfikatora | Opis | Przykład
+| Identyfikator | Opis | Przykład
 |:---|:---|:---|
 | Zasób | Zawiera dane dla zasobu. | zasób ("/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup/Providers/Microsoft.COMPUTE/virtualmachines/MyVM") |
 | Grupa zasobów lub subskrypcja | Zawiera dane dotyczące zasobu i wszystkich zasobów, które zawiera.  | zasób ("/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup") |

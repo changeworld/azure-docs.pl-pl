@@ -2,18 +2,16 @@
 title: Alerty dzienników w Azure Monitor
 description: Wyzwalaj wiadomości e-mail, powiadomienia, wywołaj adresy URL witryn sieci Web (webhook) lub automatyzację, gdy określone warunki kwerendy analitycznej są spełnione dla alertów platformy Azure.
 author: yanivlavi
-services: monitoring
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: b8cae9f7c43098b713d0d5d8f74e46cb0386600c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6abf4665c27771497037da35f85bb540e6e904e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396493"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665225"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Alerty dzienników w Azure Monitor
 
@@ -31,7 +29,7 @@ Reguły przechowywania dzienników są tworzone przez usługę Azure Alerts w ce
 
 Reguły przeszukiwania dzienników są definiowane przez następujące szczegóły:
 
-- **Zapytanie dziennika**.  zapytanie uruchamiane po każdym wyzwoleniu reguły alertu.  Rekordy zwrócone przez to zapytanie są używane do określenia, czy alert ma zostać wyzwolony. Zapytanie analityczne może dotyczyć określonego obszaru roboczego Log Analytics lub Application Insights aplikacji, a nawet w [wielu log Analytics i Application Insights zasobach](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) , pod warunkiem, że użytkownik ma dostęp, a także uprawnienia zapytania do wszystkich zasobów. 
+- **Zapytanie dziennika**.  Zapytanie, które jest uruchamiane za każdym razem, gdy wyzwala regułę alertu.  Rekordy zwrócone przez to zapytanie są używane do określenia, czy alert ma zostać wyzwolony. Zapytanie analityczne może dotyczyć określonego obszaru roboczego Log Analytics lub Application Insights aplikacji, a nawet w [wielu log Analytics i Application Insights zasobach](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) , pod warunkiem, że użytkownik ma dostęp, a także uprawnienia zapytania do wszystkich zasobów. 
     > [!IMPORTANT]
     > Obsługa [zapytań między zasobami](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) w alertach dziennika Application Insights i rejestrowania alertów dotyczących [log Analytics skonfigurowanych tylko przy użyciu interfejsu API scheduledQueryRules](../../azure-monitor/platform/alerts-log-api-switch.md) .
 
@@ -108,7 +106,7 @@ Rozważmy scenariusz, w którym chcesz otrzymywać alerty w przypadku, gdy dowol
 Zapytanie utworzy średnią wartość dla każdego komputera w odstępach 5-minutowych.  To zapytanie będzie uruchamiane co 5 minut w przypadku danych zbieranych w ciągu ostatnich 30 minut. Ponieważ wybrane pole grupy (agregowany) jest kolumną "Computer" — AggregatedValue jest podzielony na różne wartości "Computer" i średnie użycie procesora dla każdego komputera jest określony dla czasu, który jest 5 minut.  Przykładowy wynik zapytania dla (Powiedz) trzy komputery, będzie jak poniżej.
 
 
-|TimeGenerated [UTC] |Computer (Komputer)  |AggregatedValue  |
+|TimeGenerated [UTC] |Computer  |AggregatedValue  |
 |---------|---------|---------|
 |20xx-xx-xxT01:00:00Z     |   srv01.contoso.com      |    72     |
 |20xx-xx-xxT01:00:00Z     |   srv02.contoso.com      |    91     |
@@ -134,11 +132,11 @@ Zobaczmy to zachowanie w działaniu z praktycznym przykładem. Załóżmy, że m
 W każdym przedziale czasowym system alertów platformy Azure oblicza warunek dotyczący *alertu contoso-log*.
 
 
-| Czas    | Liczba rekordów zwracanych przez zapytanie przeszukiwania dzienników | Evalution warunku dziennika | Wynik 
+| Time    | Liczba rekordów zwracanych przez zapytanie przeszukiwania dzienników | Evalution warunku dziennika | Wynik 
 | ------- | ----------| ----------| ------- 
 | 1:05 PM | 0 rekordów | 0 nie jest > 0, więc FALSE |  Alert nie jest wyzwalany. Nie wywołano żadnych akcji.
 | 1:10 PM | 2 rekordy | 2 > 0  | Wyzwolone alerty i grupy akcji o nazwie. Stan alertu jest aktywny.
-| 13:15 | 5 rekordów | 5 > 0, tak więc prawda  | Wyzwolone alerty i grupy akcji o nazwie. Stan alertu jest aktywny.
+| 1:15 PM | 5 rekordów | 5 > 0, tak więc prawda  | Wyzwolone alerty i grupy akcji o nazwie. Stan alertu jest aktywny.
 | 1:20 PM | 0 rekordów | 0 nie jest > 0, więc FALSE |  Alert nie jest wyzwalany. Nie wywołano żadnych akcji. Stan alertu pozostał aktywny.
 
 Jeśli na przykład użyto poprzedniego przypadku:

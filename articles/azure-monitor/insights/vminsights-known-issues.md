@@ -1,27 +1,26 @@
 ---
 title: Usługa Azure Monitor znane problemy dotyczące maszyn wirtualnych (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: W tym artykule opisano znane problemy dotyczące Azure Monitor dla maszyn wirtualnych, rozwiązania na platformie Azure, które łączy kondycję, odnajdywanie zależności aplikacji i monitorowanie wydajności systemu operacyjnego Azure VM.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/02/2019
-ms.openlocfilehash: b59e2d1897557b47bcfeafbc17141f869e2f192e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 711b3707d536c4858578817589670edf0f467b64
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450672"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670733"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Znane problemy z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 
 W tym artykule opisano znane problemy związane z Azure Monitor dla maszyn wirtualnych, rozwiązanie na platformie Azure, które łączy kondycję, odnajdywanie składników aplikacji i monitorowanie wydajności systemu operacyjnego Azure VM. 
 
-## <a name="health"></a>Zdrowie 
+## <a name="health"></a>Health 
 Poniżej przedstawiono znane problemy związane z bieżącą wersją funkcji kondycji:
 
-- Jeśli maszyna wirtualna platformy Azure zostanie usunięta lub usunięta, zostanie ona wyświetlona w widoku listy maszyn wirtualnych przez jakiś czas. Ponadto kliknięcie stan usunięto ani nie usunięto maszyny Wirtualnej spowoduje otwarcie **Diagnostyka kondycji** wyświetlić, a następnie inicjuje pętli ładowania. Wybierając nazwę usuniętej maszyny Wirtualnej powoduje otwarcie okienka z komunikat informujący, że maszyna wirtualna została usunięta.
+- Jeśli maszyna wirtualna platformy Azure zostanie usunięta lub usunięta, zostanie ona wyświetlona w widoku listy maszyn wirtualnych przez jakiś czas. Ponadto kliknięcie stanu usuniętej lub usuniętej maszyny wirtualnej spowoduje otwarcie widoku **Diagnostyka kondycji** , a następnie zainicjowanie pętli ładowania. Wybierając nazwę usuniętej maszyny Wirtualnej powoduje otwarcie okienka z komunikat informujący, że maszyna wirtualna została usunięta.
 - Nawet wtedy, gdy portal lub interfejsu API Monitor obciążenie może je wykonać natychmiastową aktualizację, zmiany konfiguracji, takie jak aktualizowanie wartości progowej, potrwać do 30 minut. 
 - Diagnostyka kondycji jest aktualizowana szybciej niż w przypadku innych widoków. Informacje mogą być opóźnione po przełączeniu między nimi. 
 - W przypadku maszyn wirtualnych z systemem Linux tytuł strony zawierający kryteria kondycji dla pojedynczego widoku maszyny wirtualnej ma całą nazwę domeny maszyny wirtualnej zamiast nazwy maszyny wirtualnej zdefiniowanej przez użytkownika. 

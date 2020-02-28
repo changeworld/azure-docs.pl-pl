@@ -1,18 +1,14 @@
 ---
 title: Przechowywanie i przechowywanie danych w usłudze Azure Application Insights | Microsoft Docs
 description: Zasady przechowywania i zasad zachowania poufności informacji
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: ba8a76cd4d3804bcb062ae0554e3fe7002804ed2
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 0b266eb0674f6de7dfb20311bba95bc7f4697f61
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031684"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669662"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w Application Insights
 
@@ -269,7 +265,7 @@ W przypadku [zestawów SDK dla innych platform][platforms]Zobacz dokumenty.
 | Wywnioskować |Lokalizacja geograficzna z adresu IP, sygnatury czasowej, systemu operacyjnego, przeglądarki |
 | Metryki |Nazwa i wartość metryki |
 | Zdarzenia |Nazwa i wartość zdarzenia |
-| PageViews |Adres URL i nazwa strony lub nazwa ekranu |
+| pageViews |Adres URL i nazwa strony lub nazwa ekranu |
 | Wydajność klienta |Nazwa adresu URL/strony, czas ładowania przeglądarki |
 | Ajax |Wywołania HTTP ze strony sieci Web na serwer |
 | Żądania |Adres URL, czas trwania, kod odpowiedzi |

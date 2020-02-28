@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor dla sieci (wersja zapoznawcza)
 description: Krótki przegląd dla Azure Monitor sieci, który zapewnia kompleksowy wgląd w kondycję i metryki dla wszystkich wdrożonych zasobów sieciowych bez żadnej konfiguracji.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 3bb92b85779366081349dab777be67e063469678
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73840056"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654872"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor dla sieci (wersja zapoznawcza)
 Azure Monitor dla sieci zapewnia kompleksowy wgląd w kondycję i metryki dla wszystkich wdrożonych zasobów sieciowych bez żadnej konfiguracji. Funkcja wyszukiwania zaawansowanego pomaga identyfikować zależności zasobów, umożliwiając takie scenariusze jak identyfikowanie zasobów, które są hostowane w witrynie sieci Web, a także w przypadku wyszukiwania nazwy witryny sieci Web.

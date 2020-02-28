@@ -1,18 +1,17 @@
 ---
 title: Obsługiwane połączenia z łącznik zarządzania usługami IT na platformie Azure Log Analytics | Microsoft Docs
 description: Ten artykuł zawiera informacje o sposobach łączenia narzędzia ITSM produktów/usług z usługą łącznik zarządzania usługami IT (ITSMC) w Azure Monitor, aby centralnie monitorować elementy robocze narzędzia ITSM i zarządzać nimi.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: a4b8e1ca245d90018647577f338ed0833cbaf324
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c6cad29b6cc392746a2e56323302521302835b2f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990287"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665871"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Połącz narzędzia ITSM produkty/usługi z łącznik zarządzania usługami IT
 Ten artykuł zawiera informacje dotyczące sposobu konfigurowania połączenia między produktem narzędzia ITSM/usługą a łącznik zarządzania usługami IT (ITSMC) w Log Analytics, aby centralnie zarządzać elementami roboczymi. Aby uzyskać więcej informacji na temat ITSMC, zobacz [Omówienie](../../azure-monitor/platform/itsmc-overview.md).
@@ -160,7 +159,7 @@ Aby skonfigurować konfigurację odbiornika dla połączenia hybrydowego, należ
 
 3. Zaloguj się przy użyciu poświadczeń platformy Azure i wybierz subskrypcję, w której utworzono połączenie hybrydowe.
 
-4. Kliknij pozycję **Zapisz**.
+4. Kliknij przycisk **Save** (Zapisz).
 
 Połączenie hybrydowe zostało pomyślnie nawiązane.
 

@@ -1,18 +1,14 @@
 ---
 title: Filtrowanie i wstępne przetwarzanie w zestawie SDK Application Insights platformy Azure | Microsoft Docs
 description: Napisz procesory telemetrii i inicjatory telemetrii dla zestawu SDK w celu filtrowania lub dodawania właściwości do danych przed wysłaniem telemetrii do portalu Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 11/23/2016
-ms.openlocfilehash: dcc71739d859fb9cf4e03e5d3540d3cdbc69ac49
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 9f4df83ed60ba94913702b9a32a298f0ac62f9f4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031547"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666466"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtrowanie i wstępne przetwarzanie danych telemetrycznych w zestawie Application Insights SDK
 

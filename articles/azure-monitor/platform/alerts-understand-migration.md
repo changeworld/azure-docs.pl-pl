@@ -1,18 +1,17 @@
 ---
 title: Informacje o tym, jak działa narzędzie do migracji dobrowolnej dla Azure Monitor alertów
 description: Informacje o sposobie działania narzędzia migracji alertów i rozwiązywaniu problemów.
-author: yalavi
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
+author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 493fa4ac51bf593b7856b236c5d861ec029769d3
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 8cc77d13567910797cd519ac193b848f3ea434da
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680685"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665276"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Informacje o działaniu narzędzia migracji
 
@@ -56,10 +55,10 @@ Wszystkie klasyczne alerty na kontach magazynu można migrować z wyjątkiem ale
 
 - PercentAuthorizationError
 - PercentClientOtherError
-- PercentNetworkError
+- Wzrost percentnetworkerror
 - PercentServerOtherError
 - PercentSuccess
-- PercentThrottlingError
+- Wzrost percentthrottlingerror
 - Wzrost percenttimeouterror
 - AnonymousThrottlingError
 - SASThrottlingError
@@ -145,7 +144,7 @@ W przypadku usług konta magazynu, takich jak obiekty blob, tabele, pliki i kole
 | AnonymousServerTimeOutError | Metryka transakcji z wymiarami "responsetype" = "ServerTimeOutError" i "Authentication" = "Anonymous" | |
 | AnonymousSuccess | Metryka transakcji z wymiarami "responsetype" = "Success" i "Authentication" = "Anonymous" | |
 | AuthorizationError | Metryka transakcji z wymiarami "responsetype" = "AuthorizationError" | |
-| AverageE2ELatency | SuccessE2ELatency | |
+| Niską averagee2elatency | SuccessE2ELatency | |
 | AverageServerLatency | SuccessServerLatency | |
 | Pojemność | BlobCapacity | Użyj `aggregationType` "Average" zamiast "Last". Metryka dotyczy tylko usługi BLOB Services |
 | ClientOtherError | Metryka transakcji z wymiarami "responsetype" = "ClientOtherError"  | |
@@ -165,7 +164,7 @@ W przypadku usług konta magazynu, takich jak obiekty blob, tabele, pliki i kole
 | Powodzenie | Metryka transakcji z wymiarami "responsetype" = "Success" | |
 | TotalBillableRequests| Transakcje | |
 | TotalEgress | Ruch wychodzący | |
-| TotalIngress | Zdarzenia związane z transferem danych przychodzących | |
+| TotalIngress | Ruch przychodzący | |
 | TotalRequests | Transakcje | |
 
 ### <a name="microsoftinsightscomponents"></a>Microsoft. Insights/składniki

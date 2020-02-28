@@ -1,18 +1,14 @@
 ---
 title: Rozwiązywanie problemów z brakiem danych — usługa Application Insights dla platformy .NET
 description: Nie widzisz danych w usłudze Azure Application Insights? Spróbuj tutaj.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: a1e299f195a148ebd1bdbda91e5a56e297f34d31
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2627fde55f4177798d04aab02db169f3117d32dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889179"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665905"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Rozwiązywanie problemów z brakiem danych — Application Insights dla platformy .NET/.NET Core
 
@@ -59,7 +55,7 @@ Prawdopodobna przyczyna:
 * Wystąpił problem z kontem platformy Azure;
 * Masz dostęp tylko [do odczytu do subskrypcji lub grupy, w której podjęto próbę utworzenia nowego zasobu](../../azure-monitor/app/resources-roles-access-control.md).
 
-Poprawka:
+Naprawa:
 
 * Sprawdź, czy podane poświadczenia logowania są odpowiednie dla odpowiedniego konta platformy Azure.
 * Sprawdź, czy masz dostęp do [Azure Portal](https://portal.azure.com)w przeglądarce. Otwórz ustawienia i sprawdź, czy istnieją jakieś ograniczenia.
@@ -84,7 +80,7 @@ Prawdopodobna przyczyna:
 * Narzędzia deweloperskie Analytics są wyłączone w programie Visual Studio.
 * Program Visual Studio jest starszy niż 2013 Update 3.
 
-Poprawka:
+Naprawa:
 
 * Upewnij się, że wersja programu Visual Studio to 2013 Update 3 lub nowszego.
 * Wybierz pozycję **Narzędzia**, **rozszerzenia i aktualizacje** , a następnie sprawdź, czy **Narzędzia Developer Analytics** są zainstalowane i włączone. Jeśli tak, kliknij pozycję **aktualizacje** , aby sprawdzić, czy jest dostępna aktualizacja.
@@ -112,7 +108,7 @@ Prawdopodobna przyczyna:
 
 Klucz Instrumentacji w ApplicationInsights. config kontroluje, gdzie jest wysyłana Telemetria. Wiersz w pliku projektu określa, który zasób jest otwierany podczas korzystania z polecenia w programie Visual Studio.
 
-Poprawka:
+Naprawa:
 
 * W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję Application Insights, skonfiguruj Application Insights. W oknie dialogowym możesz wybrać wysyłanie danych telemetrycznych do istniejącego zasobu lub utworzyć nowe. Oraz
 * Otwórz zasób bezpośrednio. Zaloguj się do [Azure Portal](https://portal.azure.com), kliknij przycisk Application Insights na lewym pasku nawigacyjnym, a następnie wybierz aplikację.

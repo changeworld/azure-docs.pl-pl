@@ -1,19 +1,15 @@
 ---
 title: 'Szybki Start: monitorowanie witryn sieci Web za pomocą Azure Monitor Application Insights'
 description: Zawiera instrukcje przewodnika Szybki Start dotyczące konfiguracji klienta/przeglądarki sieci Web po stronie programu Azure Monitor Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: quickstart
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 408b24c83c5b3d795a86d1ad0275d732bb54a6db
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 1c581867f1e7ebc29f2aaff97124a08bec4e3b40
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963623"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670852"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Szybki Start: Rozpoczynanie monitorowania witryny sieci Web za pomocą Azure Monitor Application Insights
 
@@ -30,7 +26,7 @@ Usługa Azure Monitor Application Insights umożliwia łatwe monitorowanie dost�
 
 Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowolnej aplikacji połączonej z Internetem uruchomionej lokalnie lub w chmurze. Aby rozpocząć wyświetlanie tych danych, wykonaj poniższe czynności.
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. Wybierz pozycję **Utwórz zasób** > **Narzędzia do zarządzania** > **Application Insights**.
 
    > [!NOTE]
@@ -44,7 +40,7 @@ Usługa Application Insights umożliwia zbieranie danych telemetrycznych z dowol
    | **Grupa zasobów**     | myResourceGroup      | Nazwa nowej grupy zasobów, która będzie hostować Application Insights dane. istnieje możliwość utworzenia nowej lub użycia istniejącej grupy zasobów. |
    | **Lokalizacja** | Wschodnie stany USA | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
 
-3. Kliknij pozycję **Utwórz**.
+3. Kliknij przycisk **Utwórz**.
 
 ## <a name="create-an-html-file"></a>Tworzenie pliku HTML
 

@@ -1,19 +1,17 @@
 ---
 title: Napisz kod do śledzenia żądań za pomocą usługi Azure Application Insights | Microsoft Docs
 description: Napisz kod do śledzenia żądań za pomocą Application Insights, aby można było uzyskać profile dla swoich żądań.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3f449c98ed44f13fb6b3849ef2457cd8fbd916de
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c59cbe852a91a91c7b3adb4452328700ec718a82
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900010"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671600"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Napisz kod do śledzenia żądań za pomocą Application Insights
 
