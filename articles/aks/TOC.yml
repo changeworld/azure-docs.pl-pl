@@ -105,8 +105,8 @@
               href: developer-best-practices-pod-security.md
     - name: Limity przydziału i limity regionalne
       href: quotas-skus-regions.md
-    - name: Migrowanie z usługi ACS do usługi AKS
-      href: acs-aks-migration.md
+    - name: Migrowanie do usługi AKS
+      href: aks-migration.md
     - name: Obsługiwana wersja platformy Kubernetes
       href: supported-kubernetes-versions.md
     - name: Wzmacnianie zabezpieczeń w systemie operacyjnym hosta

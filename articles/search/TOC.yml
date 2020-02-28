@@ -35,7 +35,7 @@
       href: search-get-started-python.md
 - name: Samouczki
   items:
-    - name: 'Tworzenie pierwszej aplikacji w języku C#'
+    - name: 'Tworzenie aplikacji w języku C#'
       items:
         - name: 1 — Strona wyszukiwania podstawowego
           href: tutorial-csharp-create-first-app.md
@@ -47,13 +47,15 @@
           href: tutorial-csharp-facets.md
         - name: 5 — Dodawanie porządkowania wyników
           href: tutorial-csharp-orders.md
-    - name: Indeksowanie usługi Azure SQL Database
-      href: search-indexer-tutorial.md
-    - name: Indeksowanie obiektów blob JSON platformy Azure
-      href: search-semi-structured-data.md
-    - name: Indeksowanie wielu źródeł danych na platformie Azure
-      href: tutorial-multiple-data-sources.md
-    - name: Wzbogacanie o sztuczną inteligencję (wyszukiwanie poznawcze)
+    - name: Indeksowanie danych platformy Azure
+      items:
+        - name: Indeksowanie usługi Azure SQL Database
+          href: search-indexer-tutorial.md
+        - name: Indeksowanie obiektów blob JSON platformy Azure
+          href: search-semi-structured-data.md
+        - name: Indeksowanie wielu źródeł danych na platformie Azure
+          href: tutorial-multiple-data-sources.md
+    - name: Tworzenie zawartości przy użyciu AI
       items:
         - name: 'C#'
           href: cognitive-search-tutorial-blob-dotnet.md

@@ -515,6 +515,8 @@
           href: data-flow-unpivot.md
         - name: Okno
           href: data-flow-window.md
+        - name: Spłaszcz
+          href: data-flow-flatten.md
     - name: Parametryzacja
       items:
         - name: Parametryzacja połączonych usług

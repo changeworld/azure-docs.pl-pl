@@ -272,6 +272,24 @@
               href: spot-template.md
             - name: Kody błędów
               href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
+    - name: Migrowanie z wersji klasycznej do usługi Azure Resource Manager
+      items:
+        - name: "Wycofywanie rozpocznie się 1 marca 2023\_r."
+          href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Omówienie
+          href: migration-classic-resource-manager-overview.md
+        - name: Szczegółowe informacje dotyczące migracji
+          href: migration-classic-resource-manager-deep-dive.md
+        - name: Planowanie migracji
+          href: migration-classic-resource-manager-plan.md
+        - name: Migrowanie za pomocą interfejsu wiersza polecenia
+          href: migration-classic-resource-manager-cli.md
+        - name: Typowe błędy migracji
+          href: migration-classic-resource-manager-errors.md
+        - name: Narzędzia społeczności do migracji
+          href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Często zadawane pytania
+          href: migration-classic-resource-manager-faq.md
     - name: Zabezpieczone maszyny wirtualne
       items:
         - name: Zalecenia
@@ -713,21 +731,6 @@
               href: upload-vhd.md
             - name: Korzystanie z usługi Azure Site Recovery
               href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: Migrowanie z wersji klasycznej do usługi Azure Resource Manager
-          href: migration-classic-resource-manager-overview.md
-          items:
-            - name: Szczegółowe informacje dotyczące migracji
-              href: migration-classic-resource-manager-deep-dive.md
-            - name: Planowanie migracji
-              href: migration-classic-resource-manager-plan.md
-            - name: Migrowanie za pomocą interfejsu wiersza polecenia
-              href: migration-classic-resource-manager-cli.md
-            - name: Typowe błędy migracji
-              href: migration-classic-resource-manager-errors.md
-            - name: Narzędzia społeczności do migracji
-              href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: Często zadawane pytania
-              href: migration-classic-resource-manager-faq.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

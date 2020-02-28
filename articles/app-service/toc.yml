@@ -203,10 +203,14 @@
           href: app-service-web-restore-snapshots.md
         - name: Klonowanie aplikacji
           href: app-service-web-app-cloning.md
-        - name: Przenoszenie zasobów
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
         - name: Przywracanie usuniętej usługi App Service
           href: app-service-undelete.md
+    - name: Przenoszenie aplikacji
+      items:
+        - name: Przenoszenie między regionami
+          href: manage-move-across-regions.md
+        - name: Przenoszenie subskrypcji
+          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
     - name: Uruchamianie zadań w tle
       items:
         - name: Tworzenie zadań WebJob

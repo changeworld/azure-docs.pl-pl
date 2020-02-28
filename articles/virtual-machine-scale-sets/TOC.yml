@@ -247,11 +247,11 @@
           href: virtual-machine-scale-sets-networking.md
         - name: Automatyczne uaktualnienia systemu operacyjnego
           href: virtual-machine-scale-sets-automatic-upgrade.md
-        - name: Ochrona wystąpień (wersja zapoznawcza)
+        - name: Ochrona wystąpień
           href: virtual-machine-scale-sets-instance-protection.md
-        - name: Zasady skalowania w pionie (wersja zapoznawcza)
+        - name: Zasady zmniejszania skali w poziomie
           href: virtual-machine-scale-sets-scale-in-policy.md
-        - name: Powiadomienie o przerwaniu po usunięciu (wersja zapoznawcza)
+        - name: Powiadomienie o przerwaniu po usunięciu
           href: virtual-machine-scale-sets-terminate-notification.md
         - name: Udostępnione galerie obrazów
           items:

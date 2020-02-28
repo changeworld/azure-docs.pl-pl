@@ -4,6 +4,8 @@
   items:
     - name: Co to jest usługa Automation?
       href: automation-intro.md
+    - name: Często zadawane pytania
+      href: automation-faq.md
 - name: Konto usługi Automation
   items:
     - name: Tworzenie konta usługi Automation
@@ -136,6 +138,8 @@
       displayName: 'dynamic groups, pre scripts, post scripts, reboot control, first party, pre download, inclusion'
     - name: Dołączanie
       items:
+        - name: Używanie szablonu usługi Resource Manager
+          href: automation-update-management-deploy-template.md
         - name: Dołączanie wielu maszyn wirtualnych z portalu
           href: automation-onboard-solutions-from-browse.md
         - name: Dołączanie z maszyny wirtualnej platformy Azure

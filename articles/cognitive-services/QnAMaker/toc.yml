@@ -88,6 +88,8 @@
         - name: Cykl projektowania oprogramowania
           href: Concepts/development-lifecycle-knowledge-base.md
           displayName: 'version control, test, index, publish, monitor usage, create'
+        - name: Zwiększanie wiedzy dzięki sugestiom uczenia aktywnego
+          href: Concepts/active-learning-suggestions.md
     - name: Wykonywanie zapytań względem bazy wiedzy
       items:
         - name: Uzyskiwanie odpowiedzi
