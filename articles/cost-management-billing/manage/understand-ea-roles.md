@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/26/2020
 ms.author: banders
-ms.openlocfilehash: 9fab4d8ba0cf2e6f684a1b9de177084f8ce31604
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: ef7a7a81ceeeca07e40fab8248889d7e997fbbe3
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462194"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647471"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Omówienie ról administracyjnych dla umowy Azure Enterprise Agreement na platformie Azure
 
@@ -22,9 +22,11 @@ Aby ułatwić zarządzanie użyciem i wydatkami w organizacji, klienci platformy
 - Administrator przedsiębiorstwa (tylko odczyt)<sup>1</sup>
 - Administrator działu
 - Administrator działu (tylko odczyt)
-- Właściciel konta
+- Właściciel konta<sup>2</sup>
 
 <sup>1</sup> Kontakt dla rozliczeń dotyczących umowy EA będzie objęty tą rolą.
+
+<sup>2</sup> Kontaktu dla rozliczeń nie można dodać ani zmienić w witrynie Azure EA Portal i zostanie on dodany do rejestracji umowy EA na podstawie użytkownika, który został skonfigurowany jako kontakt dla rozliczeń na poziomie umowy. Aby zmienić kontakt dla rozliczeń, należy przesłać żądanie do regionalnego centrum operacyjnego (ROC) za pośrednictwem partnera/doradcy ds. oprogramowania.
 
 Te role są specyficzne dla procesu zarządzania umowami Enterprise Agreement platformy Azure. Są one dodatkiem do wbudowanych ról platformy Azure, które umożliwiają kontrolowanie dostępu do zasobów. Aby uzyskać więcej informacji, zobacz temat [Wbudowane role dla zasobów platformy Azure](../../role-based-access-control/built-in-roles.md).
 
@@ -38,9 +40,9 @@ W poniższych sekcjach opisano ograniczenia i możliwości poszczególnych ról.
 |Administrator przedsiębiorstwa (tylko odczyt)|Nieograniczona liczba|
 |Administrator działu|Nieograniczona liczba|
 |Administrator działu (tylko odczyt)|Nieograniczona liczba|
-|Właściciel konta|1 na konto<sup>2</sup>|
+|Właściciel konta|1 na konto<sup>3</sup>|
 
-<sup>2</sup> Każde konto wymaga unikatowego konta Microsoft lub konta służbowego.
+<sup>3</sup> Każde konto wymaga unikatowego konta Microsoft lub konta służbowego.
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Struktura i uprawnienia organizacji według roli
 
@@ -48,17 +50,17 @@ W poniższych sekcjach opisano ograniczenia i możliwości poszczególnych ról.
 |---|---|---|---|---|---|
 |Wyświetlanie administratorów przedsiębiorstwa|✔|✔|✘|✘|✘|
 |Dodawanie lub usuwanie administratorów przedsiębiorstwa|✔|✘|✘|✘|✘|
-|Wyświetlanie kontaktów dla powiadomień<sup>3</sup> |✔|✔|✘|✘|✘|
-|Dodawanie lub usuwanie kontaktów dla powiadomień<sup>3</sup> |✔|✘|✘|✘|✘|
+|Wyświetlanie kontaktów dla powiadomień<sup>4</sup> |✔|✔|✘|✘|✘|
+|Dodawanie lub usuwanie kontaktów dla powiadomień<sup>4</sup> |✔|✘|✘|✘|✘|
 |Tworzenie działów i zarządzanie nimi |✔|✘|✘|✘|✘|
 |Wyświetlanie administratorów działu|✔|✔|✔|✔|✘|
 |Dodawanie lub usuwanie administratorów działu|✔|✘|✔|✘|✘|
-|Wyświetlanie kont w rejestracji |✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✘|
-|Dodawanie kont do rejestracji i zmienianie właściciela konta|✔|✘|✔<sup>4</sup>|✘|✘|
+|Wyświetlanie kont w rejestracji |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|
+|Dodawanie kont do rejestracji i zmienianie właściciela konta|✔|✘|✔<sup>5</sup>|✘|✘|
 |Tworzenie subskrypcji i uprawnień subskrypcji oraz zarządzanie nimi|✘|✘|✘|✘|✔|
 
-- <sup>3</sup> Kontakty dla powiadomień otrzymują wiadomości e-mail dotyczące umowy Enterprise Agreement platformy Azure.
-- <sup>4</sup> Zadanie jest ograniczone do kont w Twoim dziale.
+- <sup>4</sup> Kontakty dla powiadomień otrzymują wiadomości e-mail dotyczące umowy Enterprise Agreement platformy Azure.
+- <sup>5</sup> Zadanie jest ograniczone do kont w Twoim dziale.
 
 
 ## <a name="usage-and-costs-access-by-role"></a>Dostęp do danych użycia i kosztów według roli
@@ -69,11 +71,11 @@ W poniższych sekcjach opisano ograniczenia i możliwości poszczególnych ról.
 |Wyświetlanie limitów przydziału wydatków dla działu|✔|✔|✘|✘|✘|
 |Ustawianie limitów przydziału wydatków dla działu|✔|✘|✘|✘|✘|
 |Wyświetlanie arkusza cen umów EA organizacji|✔|✔|✘|✘|✘|
-|Wyświetlanie szczegółów użycia i kosztów|✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✔<sup>6</sup>|
+|Wyświetlanie szczegółów użycia i kosztów|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|
 |Zarządzanie zasobami w witrynie Azure Portal|✘|✘|✘|✘|✔|
 
-- <sup>5</sup> Wymaga, aby administrator przedsiębiorstwa włączył zasady **Administrator przedsiębiorstwa — wyświetlanie opłat** w witrynie Enterprise Portal. Administrator działu będzie następnie widzieć szczegóły kosztów dla działu.
-- <sup>6</sup> Wymaga, aby administrator przedsiębiorstwa włączył zasady **Właściciel konta — wyświetlanie opłat** w witrynie Enterprise Portal. Właściciel konta będzie następnie widzieć szczegóły kosztów dla konta.
+- <sup>6</sup> Wymaga, aby administrator przedsiębiorstwa włączył zasady **Administrator przedsiębiorstwa — wyświetlanie opłat** w witrynie Enterprise Portal. Administrator działu będzie następnie widzieć szczegóły kosztów dla działu.
+- <sup>7</sup> Wymaga, aby administrator przedsiębiorstwa włączył zasady **Właściciel konta — wyświetlanie opłat** w witrynie Enterprise Portal. Właściciel konta będzie następnie widzieć szczegóły kosztów dla konta.
 
 
 ## <a name="pricing-in-azure-portal"></a>Ceny w witrynie Azure Portal

@@ -4,16 +4,16 @@ description: W tym artykule wyjaśniono, jak uzyskać wyniki dla typowych zadań
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 2102e3af26c8f5c4ed85543bc19360a923d070f3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1d9a498185e76f9771ec98656b1cad914b0f3214
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199980"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562585"
 ---
 # <a name="common-cost-analysis-uses"></a>Najczęstsze zastosowania analizy kosztów
 
@@ -83,6 +83,9 @@ Plik raportu szczegółów użycia w formacie CSV zawiera podział wszystkich op
 ## <a name="view-monthly-ea-cost-breakdown"></a>Wyświetlanie miesięcznego podziału kosztów umowy EA
 
 Rejestracja umowy EA powoduje naliczanie kosztów dla całej organizacji. Zrozumienie sposobu, w jaki koszty są naliczane i fakturowane w czasie, ułatwia zaangażowanie właściwych uczestników projektu w celu zapewnienia, że koszty będą zarządzane w sposób odpowiedzialny.
+
+Koszty są wyświetlane tylko dla aktywnej rejestracji. W przypadku przeniesienia rejestracji (nieaktywnej) do nowej (aktywnej) koszty dla poprzedniej rejestracji nie są wyświetlane w usłudze Cost Management.
+
 
 1. W witrynie Azure Portal przejdź do obszaru **Zarządzanie kosztami i rozliczenia** > **Omówienie**.
 1. Kliknij pozycję **Podział** dla bieżącego miesiąca i wyświetl podział zobowiązania pieniężnego.  

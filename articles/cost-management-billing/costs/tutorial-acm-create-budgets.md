@@ -4,17 +4,17 @@ description: Ten samouczek ułatwia planowanie i uwzględnianie kosztów używan
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/10/2020
+ms.date: 02/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 9900a2f7a41a6b35be75326b9412ec628328e39b
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 3b479f85475be6409a6fa6621357400e954d22c8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132101"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582396"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie budżetów platformy Azure i zarządzanie nimi
 
@@ -34,7 +34,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > [!div class="checklist"]
 > * Tworzenie budżetu w witrynie Azure Portal
 > * Tworzenie i edytowanie budżetów przy użyciu programu PowerShell
-> * Edytowanie budżetu
+> * Tworzenie budżetu za pomocą szablonu usługi Azure Resource Manager
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -160,6 +160,16 @@ $ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -N
 
 New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
 ```
+## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>Tworzenie budżetu za pomocą szablonu usługi Azure Resource Manager
+
+Budżet można utworzyć za pomocą szablonu usługi Azure Resource Manager. Szablon ułatwia utworzenie budżetu w ramach grupy zasobów. Szablon obsługuje tylko klientów z umową Enterprise Agreement.
+
+Wybierz następujący obraz, aby zalogować się do witryny Azure Portal i otworzyć szablon:
+
+[![Wdrażanie szablonu Tworzenie budżetu na platformie Azure](./media/tutorial-acm-create-budgets/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fcreate-budget%2fazuredeploy.json)
+
+Aby wyświetlić listę wszystkich parametrów szablonu i ich opisów, zapoznaj się z szablonem [Tworzenie budżetu](https://azure.microsoft.com/resources/templates/create-budget/).
+
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -168,7 +178,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > [!div class="checklist"]
 > * Tworzenie budżetu w witrynie Azure Portal
 > * Tworzenie i edytowanie budżetów przy użyciu programu PowerShell
-> * Edytowanie budżetu
+> * Tworzenie budżetu za pomocą szablonu usługi Azure Resource Manager
 
 Przejdź do następnego samouczka, aby skonfigurować cykliczne eksportowanie danych związanych z zarządzaniem kosztami.
 

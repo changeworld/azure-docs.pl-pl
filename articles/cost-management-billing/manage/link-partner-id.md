@@ -7,12 +7,12 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 4e4b039b6ad6fad8a414fc9703309fa76853ef09
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199674"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651393"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Łączenie identyfikatora partnera z kontami platformy Azure
 
@@ -29,6 +29,8 @@ Przed połączeniem identyfikatora partnera klient musi zapewnić dostęp do swo
 - **Konto katalogu**: Klient może utworzyć dla Ciebie konto użytkownika w swoim własnym katalogu i przypisać dowolną rolę RBAC.
 
 - **Jednostka usługi**: Klient może dodać aplikację lub skrypt z organizacji w swoim katalogu i przypisać dowolną rolę RBAC. Tożsamość aplikacji lub skryptu jest znana jako nazwa główna usługi.
+
+- **Azure Lighthouse**: Klient może delegować subskrypcję (lub grupę zasobów), aby Twoi użytkownicy mogli z niej korzystać z poziomu Twojej dzierżawy. Aby uzyskać więcej informacji, zobacz [Zarządzanie zasobami delegowanymi na platformie Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
 
 ## <a name="link-to-a-partner-id"></a>Łączenie z identyfikatorem partnera
 
@@ -154,3 +156,7 @@ Klient może być niewidoczny w raportach z następujących powodów:
 **Czy identyfikator partnera hiperlinku współdziała z usługą Azure Stack?**
 
 Tak. Identyfikator partnera można połączyć z usługą Azure Stack.
+
+**Jak mogę połączyć swój identyfikator partnera, jeśli moja firma używa rozwiązania [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) w celu uzyskania dostępu do zasobów klienta?**
+
+Jeśli dołączasz klientów do zarządzania zasobami delegowanymi na platformie Azure przez [opublikowanie oferty usług zarządzanych w witrynie Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers), Twój identyfikator MPN zostanie automatycznie skojarzony. Jeśli [dołączasz klientów przez wdrożenie szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer), musisz skojarzyć swój identyfikator Microsoft Partner Network (MPN) z co najmniej jednym kontem użytkownika, które ma dostęp do każdej z dołączonych subskrypcji. Musisz pamiętać, że należy to zrobić w dzierżawie dostawcy usług. Dla uproszczenia zalecamy utworzenie konta jednostki usługi w dzierżawie, które będzie skojarzone z identyfikatorem MPN, i przyznanie mu dostępu czytelnika do każdego dołączonego klienta.

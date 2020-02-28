@@ -7,15 +7,17 @@ ms.service: cost-management-billing
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: banders
-ms.openlocfilehash: a5a158ce67d2d0c7dd947f7b35a96d12429c8ec9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9f9552c134fa7653e4100cae3c731e4c670d44e3
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200680"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560545"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Przegląd interfejsów API raportowania dla klientów korporacyjnych
 Interfejsy API raportowania umożliwiają klientom korporacyjnym platformy Azure programowe ściąganie danych użycia i rozliczeń do preferowanych narzędzi do analizy danych. Klienci korporacyjni podpisali umowę [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) na platformie Azure, na podstawie której mają wynegocjowane zobowiązania pieniężne i dostęp do niestandardowych cen zasobów platformy Azure.
+
+Wszystkie parametry daty i godziny wymagane dla interfejsów API muszą być reprezentowane jako wartości uniwersalnego czasu koordynowanego (UTC). Wartości zwracane przez interfejsy API są wyświetlane w formacie UTC.
 
 ## <a name="enabling-data-access-to-the-api"></a>Włączanie dostępu do danych dla interfejsu API
 * **Generowanie lub pobieranie klucza interfejsu API** — zaloguj się do witryny Enterprise Portal i przejdź do pozycji Reports > Download Usage > API Access Key (Raporty > Pobierz zestawienie użycia > Klucz dostępu interfejsu API), aby wygenerować lub pobrać klucz interfejsu API.

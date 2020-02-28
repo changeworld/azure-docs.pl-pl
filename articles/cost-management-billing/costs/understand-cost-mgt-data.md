@@ -4,17 +4,17 @@ description: Ten artykuł pomaga lepiej zrozumieć dane zawarte w usłudze Azure
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 39f2aab72491ffdf2b583879181a247d3653647f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199895"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560613"
 ---
 # <a name="understand-cost-management-data"></a>Omówienie danych usługi Cost Management
 
@@ -135,9 +135,9 @@ Oto kilka porad dotyczących pracy z tagami:
 - Użyj interfejsu API tagów w połączeniu z elementem Query lub UsageDetails, aby uzyskać wszystkie koszty na podstawie bieżących tagów.
 
 
-**Uaktualnienie bezpłatnej wersji próbnej do oferty z płatnością zgodnie z rzeczywistym użyciem**
+## <a name="free-trial-to-pay-as-you-go-upgrade"></a>Uaktualnienie bezpłatnej wersji próbnej do oferty z płatnością zgodnie z rzeczywistym użyciem
 
-Klienci z ofertą bezpłatnej wersji próbnej (044P) dokonujący konwersji na ofertę z płatnością zgodnie z rzeczywistym użyciem (003P) widzą własne użycie w okresie bezpłatnej wersji próbnej. Po konwersji utracą jednak wgląd w użycie bezpłatnej wersji próbnej. Po konwersji w usłudze Cost Management widoczne są tylko użycie i koszt oferty z płatnością zgodnie z rzeczywistym użyciem.
+Aby uzyskać informacje o dostępności usług warstwy Bezpłatna po przeprowadzeniu uaktualnienia z bezpłatnej wersji próbnej do cennika oferty z płatnością zgodnie z rzeczywistym użyciem, zobacz [Często zadawane pytania dotyczące bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/free-account-faq/).
 
 ## <a name="rated-usage-data-refresh-schedule"></a>Harmonogram odświeżania danych płatnego użycia
 
@@ -157,6 +157,17 @@ Subskrypcje z płatnością zgodnie z rzeczywistym użyciem — jeśli miesiąc 
 ### <a name="rerated-data"></a>Dane ponownego przeliczania
 
 Bez względu na to, czy do pobierania danych używasz [interfejsów API usługi Cost Management](../index.yml), usługi Power BI lub witryny Azure Portal, do czasu zamknięcia faktury możesz spodziewać się ponownego przeliczenia opłat z bieżącego okresu rozliczeniowego, a tym samym ich zmiany.
+
+## <a name="cost-rounding"></a>Zaokrąglanie kosztów
+
+Koszty wyświetlone w usłudze Cost Management są zaokrąglane. Koszty zwrócone przez interfejs API zapytań nie są zaokrąglane. Przykład:
+
+- Analiza kosztów w witrynie Azure Portal — opłaty są zaokrąglane przy użyciu standardowych reguł zaokrąglania: wartości większe niż 0,5 są zaokrąglane w górę, w przeciwnym razie koszty są zaokrąglane w dół. Zaokrąglanie jest wykonywane tylko wtedy, gdy wartości są wyświetlane. Zaokrąglanie nie jest wykonywane podczas przetwarzania i agregowania danych. Na przykład analiza kosztów agreguje koszty w następujący sposób:
+  - Opłata 1: 0,004 USD
+  - Opłata 2: 0,004 USD
+  - Renderowana opłata zagregowana: 0,004 + 0,004 = 0,008. Wyświetlana opłata to 0,01 USD.
+- Zapytania API — opłaty są pokazywane z ośmioma miejscami dziesiętnymi, a zaokrąglanie nie jest wykonywane.
+
 
 ## <a name="usage-data-update-frequency-varies"></a>Częstotliwość aktualizacji danych użycia jest różna
 

@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 2689bdeb003cec0050141374165142a62f9ea337
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 77d663fa01e24acf63acd68d0b8d7cf4cc741055
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200405"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587094"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Kupowanie rezerwacji platformy Azure przy użyciu płatności miesięcznych
 
@@ -62,7 +62,7 @@ Podobnie jak w przypadku innych rezerwacji, można uzyskiwać zwroty rezerwacji 
 
 Podczas wymiany rezerwacji opłacanej miesięcznie łączny koszt okresu istnienia nowego zakupu powinien być większy niż pozostałe płatności, które są anulowane dla zwróconej rezerwacji. Nie istnieją inne limity ani opłaty dotyczące wymian. Możesz wymienić rezerwację płatną z góry, aby kupić nową rezerwację, która jest rozliczana miesięcznie. Jednak wartość okresu istnienia nowej rezerwacji powinna być większa niż proporcjonalna wartość zwracanej rezerwacji.
 
-Jeśli anulujesz rezerwację płatną miesięcznie, firma Microsoft może zastosować opłatę za anulowanie do przyszłych zatwierdzonych płatności, które zostaną anulowane. Pozostałe płatności w ramach zobowiązania są naliczane do limitu wynoszącego 50 000 USD.
+Jeśli anulujesz rezerwację opłacaną miesięcznie, firma Microsoft może zastosować opłatę za anulowanie w wysokości 12% do anulowanych zatwierdzonych płatności. Jednak firma Microsoft obecnie nie nalicza tej kary. Anulowane płatności w ramach zobowiązania są wliczane do limitu zwrotu wynoszącego 50 000 USD. W przypadku naliczania kary za anulowanie nie ma ona wpływu na limit zwrotu.
 
 Aby uzyskać więcej informacji o wymianach i zwrotach, zobacz temat [Self-service exchanges and refunds for Azure Reservations](exchange-and-refund-azure-reservations.md) (Samoobsługowe wymiany i zwroty kosztów dla rezerwacji platformy Azure).
 

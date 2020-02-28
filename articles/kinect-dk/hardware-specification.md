@@ -14,12 +14,12 @@ ms.custom:
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: dbe4cac64e324c1188ec5a01b4da3935a5d5b479
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: e0d42a3ce1dd9deb5e73500371c367134ca852e1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371293"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619957"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Dane techniczne sprzętu zestawu Azure Kinect DK
 
@@ -71,7 +71,7 @@ Zestaw Azure Kinect DK zawiera zaprojektowaną przez firmę Microsoft 1-megapiks
 | WFOV bez łączenia pikseli   | 1024x1024  | 120°x120° | 0, 5, 15           | 0,25–2,21 m      | 20,3 ms        |
 | Pasywny czujnik podczerwieni      | 1024x1024  | Nie dotyczy       | 0, 5, 15, 30       | Nie dotyczy              | 1,6 ms         |
 
-\*współczynnik odbicia 15%–95% przy 850nm, 2,2 μW/cm<sup>2</sup>/nm, odchylenie standardowe błędów losowych ≤ 17 mm, typowy błąd systematyczny < 11 mm + 0,1% odległości bez zakłóceń wielościeżkowych. Głębia podana poza wskazanym zakresem w zależności od współczynnika odbicia obiektu.
+\*współczynnik odbicia 15%–95% przy 850nm, 2,2 μW/cm<sup>2</sup>/nm, odchylenie standardowe błędów losowych ≤ 17 mm, typowy błąd systematyczny < 11 mm + 0,1% odległości bez zakłóceń wielościeżkowych. Głębokość może być podana poza zakresem roboczym wskazanym powyżej. Zależy to od współczynnika odbicia obiektu.
 
 ## <a name="color-camera-supported-operating-modes"></a>Obsługiwane tryby operacyjne kamery kolorowej
 
