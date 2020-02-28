@@ -289,36 +289,40 @@
         - name: Narzędzie do wykrywania anomalii
           tocHref: /azure/cognitive-services/anomaly-detector/
           topicHref: /azure/cognitive-services/anomaly-detector/
-        - name: Automatyczne sugerowanie Bing
-          tocHref: /azure/cognitive-services/Bing-Autosuggest/
-          topicHref: /azure/cognitive-services/Bing-Autosuggest/
-        - name: Wyszukiwanie niestandardowe Bing
-          tocHref: /azure/cognitive-services/bing-custom-search/
-          topicHref: /azure/cognitive-services/bing-custom-search/
-        - name: Wyszukiwanie jednostek Bing
-          tocHref: /azure/cognitive-services/bing-entities-search/
-          topicHref: /azure/cognitive-services/bing-entities-search/
-        - name: Wyszukiwanie obrazów w usłudze Bing
-          tocHref: /azure/cognitive-services/bing-image-search/
-          topicHref: /azure/cognitive-services/bing-image-search/
-        - name: Wyszukiwanie wiadomości (Bing)
-          tocHref: /azure/cognitive-services/bing-news-search/
-          topicHref: /azure/cognitive-services/bing-news-search/
-        - name: Sprawdzanie pisowni Bing
-          tocHref: /azure/cognitive-services/bing-spell-check/
-          topicHref: /azure/cognitive-services/bing-spell-check/
-        - name: Wyszukiwanie klipów wideo w usłudze Bing
-          tocHref: /azure/cognitive-services/Bing-Video-Search/
-          topicHref: /azure/cognitive-services/Bing-Video-Search/
-        - name: Wyszukiwanie wizualne Bing
-          tocHref: /azure/cognitive-services/bing-visual-search/
-          topicHref: /azure/cognitive-services/bing-visual-search/
-        - name: Wyszukiwanie w sieci Web (Bing)
-          tocHref: /azure/cognitive-services/bing-web-search/
-          topicHref: /azure/cognitive-services/bing-web-search/
-        - name: Wyszukiwanie lokalnych firm w usłudze Bing
-          tocHref: /azure/cognitive-services/bing-local-business-search/
-          topicHref: /azure/cognitive-services/bing-local-business-search/
+        - name: Interfejsy API wyszukiwania Bing
+          tocHref: /azure/cognitive-services/bing-web-search
+          topicHref: /azure/cognitive-services/bing-web-search
+          items:
+            - name: Automatyczne sugerowanie Bing
+              tocHref: /azure/cognitive-services/Bing-Autosuggest
+              topicHref: /azure/cognitive-services/Bing-Autosuggest/get-suggested-search-terms
+            - name: Wyszukiwanie niestandardowe Bing
+              tocHref: /azure/cognitive-services/bing-custom-search
+              topicHref: /azure/cognitive-services/bing-custom-search/overview
+            - name: Wyszukiwanie jednostek Bing
+              tocHref: /azure/cognitive-services/bing-entities-search
+              topicHref: /azure/cognitive-services/bing-entities-search/overview
+            - name: Wyszukiwanie obrazów w usłudze Bing
+              tocHref: /azure/cognitive-services/bing-image-search
+              topicHref: /azure/cognitive-services/bing-image-search/overview
+            - name: Wyszukiwanie wiadomości (Bing)
+              tocHref: /azure/cognitive-services/bing-news-search
+              topicHref: /azure/cognitive-services/bing-news-search/search-the-web
+            - name: Sprawdzanie pisowni Bing
+              tocHref: /azure/cognitive-services/bing-spell-check
+              topicHref: /azure/cognitive-services/bing-spell-check/overview
+            - name: Wyszukiwanie klipów wideo w usłudze Bing
+              tocHref: /azure/cognitive-services/Bing-Video-Search
+              topicHref: /azure/cognitive-services/Bing-Video-Search/overview
+            - name: Wyszukiwanie wizualne Bing
+              tocHref: /azure/cognitive-services/bing-visual-search
+              topicHref: /azure/cognitive-services/bing-visual-search/overview
+            - name: Wyszukiwanie w sieci Web (Bing)
+              tocHref: /azure/cognitive-services/bing-web-search
+              topicHref: /azure/cognitive-services/bing-web-search/overview
+            - name: Wyszukiwanie lokalnych firm w usłudze Bing
+              tocHref: /azure/cognitive-services/bing-local-business-search
+              topicHref: /azure/cognitive-services/bing-local-business-search/overview
         - name: Przetwarzanie obrazów
           tocHref: /azure/cognitive-services/computer-vision/
           topicHref: /azure/cognitive-services/computer-vision/

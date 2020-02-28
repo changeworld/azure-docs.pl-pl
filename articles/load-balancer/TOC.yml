@@ -150,7 +150,7 @@
 - name: Zasoby
   items:
     - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-      href: /learn/browse/?products=azure-virtual-machines
+      href: /learn/browse/?products=azure-load-balancer
     - name: Harmonogram działania dla platformy Azure
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Opinie dotyczące usługi Azure Load Balancer
