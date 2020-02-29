@@ -2,20 +2,20 @@
 title: Skonfiguruj zachowanie sesji — Azure Active Directory B2C | Microsoft Docs
 description: Skonfiguruj zachowanie sesji w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6147dc64833f44f24afe14cd1da34432a3735519
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c1d39fdbca9484f47ce0c8537c82247b75b2e3db
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840234"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186815"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurowanie zachowania sesji w Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Następujące przypadki użycia są włączone przy użyciu tych właściwości:
 
 ## <a name="configure-the-properties"></a>Konfigurowanie właściwości
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając w górnym menu pozycję **katalog i subskrypcja** , a następnie wybierz katalog zawierający dzierżawcę Azure AD B2C.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz pozycję **przepływy użytkownika (zasady)** .
@@ -58,4 +58,4 @@ Następujące przypadki użycia są włączone przy użyciu tych właściwości:
 
     ![Ustawienia właściwości zachowanie sesji w Azure Portal](./media/session-behavior/session-behavior.png)
 
-8. Kliknij pozycję **Zapisz**.
+8. Kliknij przycisk **Save** (Zapisz).

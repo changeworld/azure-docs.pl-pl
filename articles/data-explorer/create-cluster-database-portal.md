@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Tworzenie klastra Eksplorator danych i bazy danych platformy Azure'
+title: 'Szybki Start: Tworzenie klastra usługi Azure Eksplorator danych & bazy danych'
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć klaster i bazę danych usługi Azure Data Explorer oraz pozyskiwać (ładować) dane.
 author: orspod
 ms.author: orspodek
@@ -7,19 +7,19 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: 895b26fc7f35303cbef6c9df543c87ca435c2290
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: e97a712664a5864062fef2bba36dda76175af715
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984357"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199856"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Szybki start: tworzenie klastra i bazy danych usługi Azure Data Explorer
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
 > * [Interfejs wiersza polecenia](create-cluster-database-cli.md)
-> * [Program PowerShell](create-cluster-database-powershell.md)
+> * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [Szablon usługi ARM](create-cluster-database-resource-manager.md)
@@ -31,7 +31,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [Portalu Azure](https://portal.azure.com/).
+Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 ## <a name="create-a-cluster"></a>Tworzenie klastra
 
@@ -41,7 +41,7 @@ W grupie zasobów platformy Azure utwórz klaster usługi Azure Data Explorer, k
 
 1. Wyszukaj pozycję *Azure Data Explorer*.
 
-   ![Wyszukiwanie zasobów](media/create-cluster-database-portal/search-resources.png)
+   ![Wyszukiwania zasobów](media/create-cluster-database-portal/search-resources.png)
 
 1. W obszarze **Azure Data Explorer** w dolnej części ekranu wybierz pozycję **Utwórz**.
 

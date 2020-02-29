@@ -1,6 +1,6 @@
 ---
 title: Punkty przywracania zdefiniowane przez użytkownika
-description: Jak utworzyć punkt przywracania Azure SQL Data Warehouse.
+description: Jak utworzyć punkt przywracania dla puli SQL.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bf092b5b6c6eb88b565a940de56d614426e34d8e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 72e2535730dc6c814708ef3ff563136235930475
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759605"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198280"
 ---
 # <a name="user-defined-restore-points"></a>Punkty przywracania zdefiniowane przez użytkownika
 
-W tym artykule omówiono tworzenie nowego punktu przywracania zdefiniowanego przez użytkownika dla Azure SQL Data Warehouse przy użyciu programu PowerShell i Azure Portal.
+W tym artykule opisano tworzenie nowego punktu przywracania zdefiniowanego przez użytkownika dla puli SQL w usłudze Azure Synapse Analytics przy użyciu programu PowerShell i Azure Portal.
 
 ## <a name="create-user-defined-restore-points-through-powershell"></a>Tworzenie punktów przywracania zdefiniowanych przez użytkownika za poorednictwem programu PowerShell
 
@@ -62,9 +62,9 @@ Punkty przywracania zdefiniowane przez użytkownika mogą być również tworzon
 
 1. Zaloguj się do konta [Azure Portal](https://portal.azure.com/) .
 
-2. Przejdź do SQL Data Warehouse, dla którego chcesz utworzyć punkt przywracania.
+2. Przejdź do puli SQL, dla której chcesz utworzyć punkt przywracania.
 
-3. Wybierz pozycję **Przegląd** w okienku po lewej stronie, a następnie wybierz pozycję **+ nowy punkt przywracania**. Jeśli przycisk Nowy punkt przywracania nie jest włączony, upewnij się, że magazyn danych nie jest wstrzymany.
+3. Wybierz pozycję **Przegląd** w okienku po lewej stronie, a następnie wybierz pozycję **+ nowy punkt przywracania**. Jeśli przycisk Nowy punkt przywracania nie jest włączony, upewnij się, że Pula SQL nie jest wstrzymana.
 
     ![Nowy punkt przywracania](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
@@ -74,7 +74,7 @@ Punkty przywracania zdefiniowane przez użytkownika mogą być również tworzon
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Przywracanie istniejącego magazynu danych](sql-data-warehouse-restore-active-paused-dw.md)
-- [Przywracanie usuniętego magazynu danych](sql-data-warehouse-restore-deleted-dw.md)
-- [Przywracanie z magazynu danych z geograficzną kopią zapasową](sql-data-warehouse-restore-from-geo-backup.md)
+- [Przywracanie istniejącej puli SQL](sql-data-warehouse-restore-active-paused-dw.md)
+- [Przywracanie usuniętej puli SQL](sql-data-warehouse-restore-deleted-dw.md)
+- [Przywracanie z puli SQL geograficznej kopii zapasowej](sql-data-warehouse-restore-from-geo-backup.md)
 

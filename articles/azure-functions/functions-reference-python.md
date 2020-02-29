@@ -3,12 +3,12 @@ title: Dokumentacja dla deweloperów języka Python dla Azure Functions
 description: Informacje na temat tworzenia funkcji w języku Python
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: cfac28c4a759cee66c932c7b8cfea053c9c4f505
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 8ee13b59812e6a212fbafcf4ea6bfc171e735dc3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921792"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190708"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Przewodnik dewelopera w języku Python Azure Functions
 
@@ -22,25 +22,9 @@ Azure Functions oczekuje, że funkcja będzie metodą bezstanową w skrypcie ję
 
 Dane z wyzwalaczy i powiązań są powiązane z funkcją za pośrednictwem atrybutów metod przy użyciu właściwości `name` zdefiniowanej w pliku *Function. JSON* . Na przykład, _Funkcja. JSON_ poniżej opisuje prostą funkcję wyzwalaną przez żądanie HTTP o nazwie `req`:
 
-```json
-{
-  "bindings": [
-    {
-      "name": "req",
-      "direction": "in",
-      "type": "httpTrigger",
-      "authLevel": "anonymous"
-    },
-    {
-      "name": "$return",
-      "direction": "out",
-      "type": "http"
-    }
-  ]
-}
-```
+:::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
-Plik `__init__.py` zawiera następujący kod funkcji:
+W oparciu o tę definicję plik `__init__.py` zawierający kod funkcji może wyglądać podobnie do poniższego przykładu:
 
 ```python
 def main(req):
@@ -48,7 +32,7 @@ def main(req):
     return f'Hello, {user}!'
 ```
 
-można również jawnie zadeklarować typy atrybutów i zwracany typ w funkcji przy użyciu adnotacji typu języka Python. Dzięki temu można korzystać z funkcji IntelliSense i autouzupełniania dostarczonych przez wiele edytorów kodu w języku Python.
+Można również jawnie zadeklarować typy atrybutów i zwracany typ w funkcji przy użyciu adnotacji typu języka Python. Dzięki temu można korzystać z funkcji IntelliSense i autouzupełniania dostarczonych przez wiele edytorów kodu w języku Python.
 
 ```python
 import azure.functions
@@ -171,7 +155,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Po wywołaniu funkcji żądanie HTTP jest przekazywane do tej funkcji jako `req`. Wpis zostanie pobrany z usługi Azure Blob Storage w oparciu o _Identyfikator_ w adresie URL trasy i udostępniony jako `obj` w treści funkcji.  W tym miejscu jest określone konto magazynu z parametrami połączenia znalezionymi w ustawieniu aplikacji AzureWebJobsStorage, które jest tym samym kontem magazynu, które jest używane przez aplikację funkcji.
+Gdy funkcja jest wywoływana, żądanie HTTP jest przesyłane do funkcji jako `req`. Wpis zostanie pobrany z usługi Azure Blob Storage w oparciu o _Identyfikator_ w adresie URL trasy i udostępniony jako `obj` w treści funkcji.  W tym miejscu jest określone konto magazynu z parametrami połączenia znalezionymi w ustawieniu aplikacji AzureWebJobsStorage, które jest tym samym kontem magazynu, które jest używane przez aplikację funkcji.
 
 
 ## <a name="outputs"></a>Dane wyjściowe
@@ -292,7 +276,7 @@ To zachowanie skalowania jest wystarczające dla wielu aplikacji. Jednak aplikac
 
 W takich przypadkach można dodatkowo poprawić wydajność, używając wzorców Async i procesów roboczych wielu języków.
 
-### <a name="async"></a>Async
+### <a name="async"></a>Asynchroniczne
 
 Ponieważ Python jest środowiskiem uruchomieniowym jednowątkowym, wystąpienie hosta dla języka Python może jednocześnie przetwarzać tylko jedno wywołanie funkcji. W przypadku aplikacji, które przetwarzają dużą liczbę zdarzeń we/wy i/lub są powiązane we/wy, można zwiększyć wydajność, uruchamiając funkcje asynchronicznie.
 
@@ -322,7 +306,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT ma zastosowanie do każdego hosta, który tworzy 
 
 Aby uzyskać kontekst wywołania funkcji podczas wykonywania, należy uwzględnić w podpisie argument [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) . 
 
-Przykład:
+Na przykład:
 
 ```python
 import azure.functions

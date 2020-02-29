@@ -3,20 +3,20 @@ title: Ogólne przykłady transformacji oświadczeń dla zasad niestandardowych
 titleSuffix: Azure AD B2C
 description: Ogólne przykłady transformacji oświadczeń dla schematu programu Identity Experience Framework (IEF) Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 98d9730168764f0ba683a246f9ac224c13d3bf31
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: afdf2f531ede30d868123d89cac94fcfae070384
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982810"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188549"
 ---
 # <a name="general-claims-transformations"></a>Ogólne przekształcenia oświadczeń
 
@@ -36,13 +36,13 @@ Kopiuj wartość żądania do innej. Oba oświadczenia muszą pochodzić z tego 
 Ta transformacja oświadczeń służy do kopiowania wartości z ciągu lub oświadczenia liczbowego do innego oświadczenia. Poniższy przykład kopiuje wartość externalEmail roszczeń do żądania e-mail.
 
 ```XML
-<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim"> 
+<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="email" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -51,7 +51,7 @@ Ta transformacja oświadczeń służy do kopiowania wartości z ciągu lub oświ
 - Oświadczenia wejściowe:
     - **oświadczenie inputclaim**: bob@contoso.com
 - Oświadczenia wyjściowe:
-    - **oświadczenie outputclaim**: bob@contoso.com 
+    - **oświadczenie outputclaim**: bob@contoso.com
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
@@ -88,10 +88,10 @@ Mieszaj podany zwykły tekst przy użyciu soli i wpisu tajnego. Algorytmem wyzna
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | formacie | string | Dane wejściowe do zaszyfrowania |
-| Oświadczenie inputclaim | Solo | string | Parametr soli. Można utworzyć wartość losową przy użyciu transformacji oświadczeń `CreateRandomString`. |
-| InputParameter | randomizerSecret | string | Wskazuje istniejący **klucz zasad**Azure AD B2C. Aby utworzyć nowy klucz zasad: w dzierżawie Azure AD B2C w obszarze **Zarządzaj**wybierz pozycję **platforma obsługi tożsamości**. Wybierz pozycję **klucze zasad** , aby wyświetlić klucze, które są dostępne w dzierżawie. Wybierz pozycję **Dodaj**. W obszarze **Opcje**wybierz pozycję **Ręczne**. Podaj nazwę (prefiks *B2C_1A_* może zostać dodany automatycznie). W polu tekstowym **wpis tajny** wprowadź dowolne tajne, na przykład 1234567890. W obszarze **użycie klucza**wybierz pozycję **podpis**. Wybierz pozycję **Utwórz**. |
-| Oświadczenie outputclaim | skrótu | string | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. W `plaintext` oświadczenie inputclaim. |
+| Oświadczenie inputclaim | formacie | ciąg | Dane wejściowe do zaszyfrowania |
+| Oświadczenie inputclaim | Solo | ciąg | Parametr soli. Można utworzyć wartość losową przy użyciu transformacji oświadczeń `CreateRandomString`. |
+| InputParameter | randomizerSecret | ciąg | Wskazuje istniejący **klucz zasad**Azure AD B2C. Aby utworzyć nowy klucz zasad: w dzierżawie Azure AD B2C w obszarze **Zarządzaj**wybierz pozycję **platforma obsługi tożsamości**. Wybierz pozycję **klucze zasad** , aby wyświetlić klucze, które są dostępne w dzierżawie. Wybierz pozycję **Dodaj**. W obszarze **Opcje**wybierz pozycję **Ręczne**. Podaj nazwę (prefiks *B2C_1A_* może zostać dodany automatycznie). W polu tekstowym **wpis tajny** wprowadź dowolne tajne, na przykład 1234567890. W obszarze **użycie klucza**wybierz pozycję **podpis**. Wybierz pozycję **Utwórz**. |
+| Oświadczenie outputclaim | skrótu | ciąg | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. W `plaintext` oświadczenie inputclaim. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">

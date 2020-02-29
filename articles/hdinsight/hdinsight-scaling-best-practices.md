@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: 035f819cfaad82373f7cb55a7bb2d14fc53bb49b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/26/2020
+ms.openlocfilehash: a88682cd2217850e336afc2f9ef5af84c0d8cb82
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064635"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192647"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalowanie klastrów usługi Azure HDInsight
 
@@ -33,8 +33,8 @@ Firma Microsoft udostępnia następujące narzędzia do skalowania klastrów:
 |---|---|
 |[PowerShell AZ](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -clustername \<nazwa klastra >-TargetInstanceCount \<NewSize >|
 |[AzureRM programu PowerShell](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -clustername \<nazwa klastra >-TargetInstanceCount \<NewSize >|
-|[Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [AZ HDInsight Zmień rozmiar](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --Resource-Group \<grupy zasobów >--Name \<nazwa klastra >--Target-instance-Count \<NewSize >|
-|[Interfejs wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md)|Zmiana rozmiaru klastra usługi Azure HDInsight \<ClusterName > \<liczby wystąpień docelowych > |
+|[Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [AZ HDInsight Zmień rozmiar](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --Resource-Group \<grupy zasobów >--Name \<nazwa klastra >--workernode-Count \<NewSize >|
+|[Klasyczny interfejs wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md)|Zmiana rozmiaru klastra usługi Azure HDInsight \<ClusterName > \<liczby wystąpień docelowych > |
 |[Azure Portal](https://portal.azure.com)|Otwórz okienko klastra usługi HDInsight, wybierz pozycję **rozmiar klastra** w menu po lewej stronie, a następnie w okienku rozmiar klastra wpisz liczbę węzłów procesu roboczego i wybierz pozycję Zapisz.|  
 
 ![Azure Portal skalowanie — opcja klastra](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)

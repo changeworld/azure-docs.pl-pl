@@ -10,28 +10,36 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 924705b7ce1d324583077797714491bdf3fc5cc9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: 257b33802ea95138ef8149ef9302b14ca379e7ac
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721221"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195572"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Jak monitorować pamięć podręczną Gen2
-Architektura magazynu Gen2 automatycznie warstwuje najczęściej badane segmenty magazynu kolumn w pamięci podręcznej na podstawie dysków SSD opartych na interfejsie NVMe, które są przeznaczone dla Gen2 magazynów danych. Zwiększenie wydajności jest realizowane, gdy zapytania pobierają segmenty znajdujące się w pamięci podręcznej. W tym artykule opisano sposób monitorowania i rozwiązywania problemów z niską wydajnością zapytań przez określenie, czy obciążenie jest optymalnie używane w pamięci podręcznej Gen2.  
+
+W tym artykule opisano sposób monitorowania i rozwiązywania problemów z niską wydajnością zapytań przez określenie, czy obciążenie jest optymalnie używane w pamięci podręcznej Gen2.
+
+Architektura magazynu Gen2 automatycznie warstwuje najczęściej badane segmenty magazynu kolumn w pamięci podręcznej na podstawie dysków SSD opartych na interfejsie NVMe, które są przeznaczone dla Gen2 magazynów danych. Zwiększenie wydajności jest realizowane, gdy zapytania pobierają segmenty znajdujące się w pamięci podręcznej.
+ 
 ## <a name="troubleshoot-using-the-azure-portal"></a>Rozwiązywanie problemów przy użyciu Azure Portal
-Za pomocą Azure Monitor można wyświetlać metryki pamięci podręcznej Gen2 w celu rozwiązywania problemów z wydajnością zapytań. Najpierw przejdź do Azure Portal i kliknij przycisk Monitoruj:
 
-![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache_0.png)
+Za pomocą Azure Monitor można wyświetlać metryki pamięci podręcznej Gen2 w celu rozwiązywania problemów z wydajnością zapytań. Najpierw przejdź do Azure Portal i kliknij pozycję **monitor**, **metryki** i **Wybierz zakres**:
 
-Wybierz przycisk metryki i wypełnij pola **subskrypcja**, Grupa **zasobów**, **Typ zasobu**i **nazwa zasobu** magazynu danych.
+![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache-0.png)
 
-Kluczowe metryki dotyczące rozwiązywania problemów z pamięcią podręczną Gen2 są **procentami trafień pamięci podręcznej** i **procentowo używane**. Skonfiguruj wykres metryki platformy Azure, aby wyświetlić te dwie metryki.
+Użyj słupków wyszukiwania i listy rozwijanej, aby zlokalizować magazyn danych. Następnie wybierz pozycję Zastosuj.
 
-![Metryki pamięci podręcznej](./media/sql-data-warehouse-cache-portal/cache_1.png)
+![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache-1.png)
 
+Kluczowe metryki dotyczące rozwiązywania problemów z pamięcią podręczną Gen2 są **procentami trafień pamięci podręcznej** i **procentowo używane**. Wybierz pozycję **Procent trafień pamięci podręcznej** , a następnie użyj przycisku **Dodaj metrykę** , aby dodać **procent użycia pamięci podręcznej** 
+
+![Metryki pamięci podręcznej](./media/sql-data-warehouse-cache-portal/cache-2.png)
 
 ## <a name="cache-hit-and-used-percentage"></a>Procent trafień i użycia pamięci podręcznej
+
 W poniższej macierzy opisano scenariusze oparte na wartościach metryk pamięci podręcznej:
 
 |                                | **Wysoki procent trafień w pamięci podręcznej** | **Procent trafień niskiego poziomu pamięci podręcznej** |

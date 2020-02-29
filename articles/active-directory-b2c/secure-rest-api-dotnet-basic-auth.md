@@ -3,20 +3,20 @@ title: Zabezpieczanie usługi RESTful przy użyciu uwierzytelniania podstawowego
 titleSuffix: Azure AD B2C
 description: Zabezpiecz niestandardowe wymianę oświadczeń interfejsu API REST w Azure AD B2C przy użyciu uwierzytelniania podstawowego protokołu HTTP.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 986ad1845fa2699bb3462dceb3865300a035cb71
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 505d92e33606dac327778cae179df44efbfdf853
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848540"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183860"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Zabezpieczanie usług RESTful za pomocą uwierzytelniania podstawowego protokołu HTTP
 

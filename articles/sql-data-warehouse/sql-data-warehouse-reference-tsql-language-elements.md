@@ -1,6 +1,6 @@
 ---
 title: Elementy języka T-SQL
-description: Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w Azure SQL Data Warehouse.
+description: Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w usłudze SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 02f463e12547ba64a05e04988d9c192bba4f6a27
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: edd77d711654a7f2793eb3c08b93e85fc0a89e8f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692531"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198426"
 ---
-# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Elementy języka T-SQL obsługiwane w Azure SQL Data Warehouse
-Linki do dokumentacji dla elementów języka T-SQL obsługiwanych w Azure SQL Data Warehouse.
+# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>Elementy języka T-SQL obsługiwane w analizie SQL
+Linki do dokumentacji dla elementów języka T-SQL obsługiwanych w usłudze SQL Analytics.
 
 ## <a name="core-elements"></a>Podstawowe elementy
 * [Konwencje składni](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
@@ -220,7 +220,7 @@ Linki do dokumentacji dla elementów języka T-SQL obsługiwanych w Azure SQL Da
 * [UNICODE](https://msdn.microsoft.com/library/ms180059.aspx)
 * [PRAWYM górnym](https://msdn.microsoft.com/library/ms180055.aspx)
 * [Użytkownicy](https://msdn.microsoft.com/library/ms186738.aspx)
-* [NAZWA_UŻYTKOWNIKA](https://msdn.microsoft.com/library/ms188014.aspx)
+* [USER_NAME](https://msdn.microsoft.com/library/ms188014.aspx)
 * [FUNKCJĘ](https://msdn.microsoft.com/library/ms186290.aspx)
 * [VARP](https://msdn.microsoft.com/library/ms188735.aspx)
 * [CZTEROLETNIEGO](https://msdn.microsoft.com/library/ms186313.aspx)
@@ -260,7 +260,7 @@ Linki do dokumentacji dla elementów języka T-SQL obsługiwanych w Azure SQL Da
 * [USTAW ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
 * [USTAW ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
 * [USTAW ANSI_NULLS](https://msdn.microsoft.com/library/ms188048.aspx)
-* [USTAW WARTOŚĆ ANSI_PADDING](https://msdn.microsoft.com/library/ms187403.aspx)
+* [USTAW ANSI_PADDING](https://msdn.microsoft.com/library/ms187403.aspx)
 * [USTAW ANSI_WARNINGS](https://msdn.microsoft.com/library/ms190368.aspx)
 * [USTAW WARTOŚĆ ARITHABORT](https://msdn.microsoft.com/library/ms190306.aspx)
 * [USTAW ARITHIGNORE](https://msdn.microsoft.com/library/ms184341.aspx)
@@ -278,5 +278,5 @@ Linki do dokumentacji dla elementów języka T-SQL obsługiwanych w Azure SQL Da
 * [USTAW XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji, zobacz [instrukcje języka T-SQL w Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md)i [widoki systemowe w programie Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md).
+Aby uzyskać więcej informacji, zobacz [instrukcje języka T-SQL w usłudze SQL Analytics](sql-data-warehouse-reference-tsql-statements.md)i [widoki systemowe w usłudze SQL Analytics](sql-data-warehouse-reference-tsql-system-views.md).
 

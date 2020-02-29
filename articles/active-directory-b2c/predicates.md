@@ -3,20 +3,20 @@ title: Predykaty i PredicateValidations
 titleSuffix: Azure AD B2C
 description: Zapobiegaj dodawaniu nieprawidłowo sformułowanych danych do dzierżawy Azure AD B2C przy użyciu zasad niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e38f422189ce001063276ddc7c7f82b2acb5929
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585768"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187240"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predykaty i PredicateValidations
 
@@ -42,10 +42,10 @@ Element **predykatów** zawiera następujący element:
 
 Element **predykatu** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Id | Tak | Identyfikator, który jest używany dla predykatu. Inne elementy mogą używać tego identyfikatora w zasadach. |
-| Metoda | Tak | Typ metody do użycia na potrzeby walidacji. Możliwe wartości: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**lub **IsDateRange**. Wartość **IsLengthRange** sprawdza, czy długość wartości żądania ciągu mieści się w zakresie określonych parametrów minimum i maksimum. Wartość **MatchesRegex** sprawdza, czy wartość żądania ciągu pasuje do wyrażenia regularnego. Wartość **IncludesCharacters** sprawdza, czy wartość żądania ciągu zawiera zestaw znaków. Wartość **IsDateRange** sprawdza, czy wartość żądania daty należy do zakresu od określonych parametrów minimum i maksimum. |
+| Identyfikator | Yes | Identyfikator, który jest używany dla predykatu. Inne elementy mogą używać tego identyfikatora w zasadach. |
+| Metoda | Yes | Typ metody do użycia na potrzeby walidacji. Możliwe wartości: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**lub **IsDateRange**. Wartość **IsLengthRange** sprawdza, czy długość wartości żądania ciągu mieści się w zakresie określonych parametrów minimum i maksimum. Wartość **MatchesRegex** sprawdza, czy wartość żądania ciągu pasuje do wyrażenia regularnego. Wartość **IncludesCharacters** sprawdza, czy wartość żądania ciągu zawiera zestaw znaków. Wartość **IsDateRange** sprawdza, czy wartość żądania daty należy do zakresu od określonych parametrów minimum i maksimum. |
 | HelpText | Nie | Komunikat o błędzie dla użytkowników, jeśli sprawdzenie zakończy się niepowodzeniem. Ten ciąg może być lokalizowany przy użyciu [dostosowania języka](localization.md) |
 
 Element **predykatu** zawiera następujące elementy:
@@ -65,7 +65,7 @@ Element **Parameter** zawiera następujące atrybuty:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| Id | 1:1 | Identyfikator parametru. |
+| Identyfikator | 1:1 | Identyfikator parametru. |
 
 Poniższy przykład przedstawia metodę `IsLengthRange` z parametrami `Minimum` i `Maximum` określającymi zakres długości ciągu:
 
@@ -141,9 +141,9 @@ Element **PredicateValidations** zawiera następujący element:
 
 Element **PredicateValidation** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Id | Tak | Identyfikator, który jest używany na potrzeby walidacji predykatu. Element **ClaimType** może używać tego identyfikatora w zasadach. |
+| Identyfikator | Yes | Identyfikator, który jest używany na potrzeby walidacji predykatu. Element **ClaimType** może używać tego identyfikatora w zasadach. |
 
 Element **PredicateValidation** zawiera następujący element:
 
@@ -159,9 +159,9 @@ Element **PredicateGroups** zawiera następujący element:
 
 Element grupy **predykatów** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Id | Tak | Identyfikator, który jest używany dla grupy predykatu.  |
+| Identyfikator | Yes | Identyfikator, który jest używany dla grupy predykatu.  |
 
 Element grupy **predykatów** zawiera następujące elementy:
 
@@ -172,7 +172,7 @@ Element grupy **predykatów** zawiera następujące elementy:
 
 Element **PredicateReferences** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
 | MatchAtLeast | Nie | Określa, że wartość musi być zgodna co najmniej z wieloma definicjami predykatów dla danych wejściowych, które mają zostać zaakceptowane. Jeśli nie zostanie określony, wartość musi być zgodna ze wszystkimi definicjami predykatu. |
 
@@ -184,9 +184,9 @@ Element **PredicateReferences** zawiera następujące elementy:
 
 Element **PredicateReference** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Id | Tak | Identyfikator, który jest używany na potrzeby walidacji predykatu.  |
+| Identyfikator | Yes | Identyfikator, który jest używany na potrzeby walidacji predykatu.  |
 
 
 ## <a name="configure-password-complexity"></a>Konfigurowanie złożoności hasła

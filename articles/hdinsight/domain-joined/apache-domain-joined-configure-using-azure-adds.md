@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 02/03/2020
-ms.openlocfilehash: a3a23e2adb60b2b0fd5f4a5e790990ce2ad85fa9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: cf239cbf69f3816e5ec03e07e2bd5fe370308f22
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031172"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196862"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>pakiet Enterprise Security konfiguracji z Azure Active Directory Domain Services w usłudze HDInsight
 
@@ -132,4 +132,4 @@ Utworzoną tożsamość zarządzaną można wybrać z listy rozwijanej **tożsam
 ## <a name="next-steps"></a>Następne kroki
 
 * Aby skonfigurować zasady Hive i uruchamiać zapytania programu Hive, zobacz [Konfigurowanie zasad Apache Hive dla klastrów usługi HDInsight przy użyciu protokołu ESP](apache-domain-joined-run-hive.md).
-* Aby połączyć się z klastrami usługi HDInsight przy użyciu protokołu SSH, zobacz [Używanie protokołu SSH z Apache Hadoop opartych na systemie Linux w usłudze HDInsight z systemu Linux, UNIX lub OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* Aby połączyć się z klastrami usługi HDInsight przy użyciu protokołu SSH, zobacz [Używanie protokołu SSH z Apache Hadoop opartych na systemie Linux w usłudze HDInsight z systemu Linux, UNIX lub OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight).

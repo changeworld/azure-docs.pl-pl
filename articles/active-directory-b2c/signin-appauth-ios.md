@@ -3,20 +3,20 @@ title: Korzystanie z AppAuth w aplikacji systemu iOS
 titleSuffix: Azure AD B2C
 description: Jak utworzyć aplikację dla systemu iOS, która korzysta z AppAuth z Azure Active Directory B2C, aby zarządzać tożsamościami użytkowników i uwierzytelniać użytkowników.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5433867b0676ffa644160251c9aacd81ba04dda7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c659280ebc8c91b53cbc3a176c84397edd942c23
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848358"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186832"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Logowanie przy użyciu aplikacji systemu iOS
 
@@ -62,7 +62,7 @@ Ten przykład został utworzony przez następujące instrukcje Readme dotyczące
 > AppAuth obsługuje system iOS 7 lub nowszy.  Jednak w celu zapewnienia obsługi logowań społecznościowych w usłudze Google wymagane jest SFSafariViewController, które wymagają systemu iOS 9 lub nowszego.
 >
 
-### <a name="configuration"></a>Konfigurowanie
+### <a name="configuration"></a>Konfiguracja
 
 Komunikację z Azure AD B2C można skonfigurować, określając punkt końcowy autoryzacji i identyfikatory URI punktu końcowego tokenu.  Aby wygenerować te identyfikatory URI, potrzebne są następujące informacje:
 * Identyfikator dzierżawy (na przykład contoso.onmicrosoft.com)

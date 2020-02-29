@@ -3,20 +3,20 @@ title: Niestandardowe weryfikacje wiadomości e-mail
 titleSuffix: Azure AD B2C
 description: Dowiedz się, jak dostosować weryfikację wiadomości e-mail wysyłanych do klientów podczas rejestrowania się w celu korzystania z aplikacji obsługujących Azure AD B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/05/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2bda00924015bf5abc616b7c346eacfeda53c2ed
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 32747e0e7bb1f979203fa886647712e0fd69faee
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045936"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189535"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Niestandardowa Weryfikacja poczty e-mail w Azure Active Directory B2C
 

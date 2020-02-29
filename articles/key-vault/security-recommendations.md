@@ -5,16 +5,17 @@ services: key-vault
 author: barclayn
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 5aa3ebc602396bc2d7f83150c66535039b1389e6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9fd41ae9b61a9c74fd5d99dd71199cfde06f5cb2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171342"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192374"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Zalecenia dotyczące zabezpieczeń Azure Key Vault
 
@@ -27,27 +28,27 @@ Niektóre zalecenia zawarte w tym artykule mogą być automatycznie monitorowane
 
 ## <a name="data-protection"></a>Ochrona danych
 
-| Zalecenie | Komentarze | Security Center |
+| Zalecenie | Komentarze | Centrum zabezpieczeń |
 |-|----|--|
 |Włącz usuwanie nietrwałe | [Usuwanie nietrwałe](key-vault-ovw-soft-delete.md) pozwala na odzyskanie usuniętych magazynów i obiektów magazynu |  - |
 | Ograniczanie dostępu do danych magazynu  | Stosuj zasadę najniższych uprawnień i Ogranicz, którzy członkowie organizacji mają dostęp do danych magazynu |  - |
 
 ## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
-| Zalecenie | Komentarze | Security Center |
+| Zalecenie | Komentarze | Centrum zabezpieczeń |
 |-|----|--|
 | Ogranicz liczbę użytkowników z dostępem współautora | Jeśli użytkownik ma uprawnienia współautora do płaszczyzny zarządzania magazynu kluczy, użytkownik może udzielić sobie dostępu do płaszczyzny danych przez ustawienie zasad dostępu Key Vault. Należy ściśle kontrolować, kto ma dostęp do roli współautor do Twoich magazynów kluczy. Upewnij się, że tylko osoby, które mają dostęp do autoryzowanych osób, mogą uzyskać dostęp do swoich magazynów i zarządzać nimi. Możesz przeczytać [bezpieczny dostęp do magazynu kluczy](key-vault-secure-your-key-vault.md) | - |
 
 ## <a name="monitoring"></a>Monitorowanie
 
-| Zalecenie | Komentarze | Security Center |
+| Zalecenie | Komentarze | Centrum zabezpieczeń |
 |-|----|--|
- Dzienniki diagnostyczne w Key Vault powinny być włączone | Włącz dzienniki i zachowaj je na rok. Pozwala to na ponowne utworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia związanego z bezpieczeństwem lub zabezpieczenia sieci. | [Tak](../security-center/security-center-identity-access.md) |
+ Dzienniki diagnostyczne w Key Vault powinny być włączone | Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. | [Tak](../security-center/security-center-identity-access.md) |
 | Ogranicz, kto może uzyskiwać dostęp do dzienników magazynu kluczy platformy Azure | [Dzienniki Key Vault](key-vault-logging.md) zapisywania informacji o działaniach wykonywanych w magazynie, takich jak tworzenie lub usuwanie magazynów, klucze, wpisy tajne i mogą być używane podczas badania |  - |
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Sieć
 
-| Zalecenie | Komentarze | Security Center |
+| Zalecenie | Komentarze | Centrum zabezpieczeń |
 |-|----|--|
 |Ogranicz ekspozycję sieci | Dostęp do sieci powinien być ograniczony do sieci wirtualnych używanych przez rozwiązania wymagające dostępu do magazynu. Przejrzyj informacje o [punktach końcowych usługi sieci wirtualnej dla Azure Key Vault](key-vault-overview-vnet-service-endpoints.md) | - |
 

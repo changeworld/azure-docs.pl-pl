@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7f32664f4bb9407d915b7909f9ecdeebe96bd551
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 03ad504258dd9448753f37402067a0da3e0a2c00
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771942"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197644"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault podstawowe pojęcia
 
@@ -42,7 +43,7 @@ Oto inne ważne terminy:
 
     ![Diagram przedstawiający sposób działania zarządzanych tożsamości dla zasobów platformy Azure](./media/key-vault-whatis/msi.png)
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Uwierzytelnianie
 Aby wykonać wszelkie operacje z Key Vault, musisz najpierw przeprowadzić do nich uwierzytelnienie. Istnieją trzy sposoby uwierzytelniania do Key Vault:
 
 - [Zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md): podczas wdrażania aplikacji na maszynie wirtualnej na platformie Azure można przypisać tożsamość do maszyny wirtualnej, która ma dostęp do Key Vault. Możesz również przypisywać tożsamości do [innych zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md). Zaletą tego podejścia jest to, że aplikacja lub usługa nie zarządza rotacją pierwszego klucza tajnego. Platforma Azure automatycznie obraca tożsamość. Zalecamy to podejście jako najlepsze rozwiązanie. 

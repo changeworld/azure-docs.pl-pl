@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7ea65b64e5a812b717f065c1d8cc6208e0c0ba69
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 00ec2d328265e8d301b9f54b9a6a2013072f1ed4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164567"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190283"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Instrukcje: Włączanie logowania jednokrotnego dla aplikacji w systemie iOS przy użyciu biblioteki ADAL
 
@@ -109,7 +109,7 @@ Jeśli na urządzeniu jest zainstalowany zgodny Broker, taki jak aplikacja Micro
 
 #### <a name="how-we-ensure-the-application-is-valid"></a>Jak upewnić się, że aplikacja jest prawidłowa
 
-Konieczność zapewnienia tożsamości wywołania aplikacji Broker jest kluczowym warunkiem bezpieczeństwa dostarczanym przez dane logowania z pomocą brokera. Żadne z systemów iOS i Android wymuszają unikatowe identyfikatory, które są prawidłowe tylko dla danej aplikacji, więc złośliwe aplikacje mogą "fałszować" Identyfikator legalnej aplikacji i otrzymać tokeny przeznaczone dla legalnej aplikacji. Aby upewnić się, że zawsze komunikujemy się z właściwą aplikacją w środowisku uruchomieniowym, poprosimy o udostępnienie niestandardowego redirectURI podczas rejestrowania aplikacji w firmie Microsoft. Jak deweloperzy powinni skierować ten identyfikator URI przekierowania jest szczegółowo opisany poniżej. Ten niestandardowy redirectURI zawiera identyfikator pakietu aplikacji i jest niepowtarzalny dla aplikacji w sklepie Apple App Store. Gdy aplikacja wywołuje brokera, Broker prosi system operacyjny iOS o podanie identyfikatora pakietu, który wywołał brokera. Broker dostarcza ten identyfikator pakietu firmie Microsoft w wywołaniu naszego systemu tożsamości. Jeśli identyfikator pakietu aplikacji nie jest zgodny z IDENTYFIKATORem pakietu dostarczonym przez dewelopera podczas rejestracji, odmówimy dostępu do tokenów dla zasobu, którego żąda aplikacja. Ta kontrola zapewnia, że tylko aplikacja zarejestrowana przez dewelopera otrzymuje tokeny.
+Konieczność zapewnienia tożsamości aplikacji, która wywołuje brokera, ma kluczowe znaczenie dla zabezpieczeń zapewnianych przez dane logowania obsługiwane przez brokera. Żadne z systemów iOS i Android wymuszają unikatowe identyfikatory, które są prawidłowe tylko dla danej aplikacji, więc złośliwe aplikacje mogą "fałszować" Identyfikator legalnej aplikacji i otrzymać tokeny przeznaczone dla legalnej aplikacji. Aby upewnić się, że zawsze komunikujemy się z właściwą aplikacją w środowisku uruchomieniowym, poprosimy o udostępnienie niestandardowego redirectURI podczas rejestrowania aplikacji w firmie Microsoft. Jak deweloperzy powinni skierować ten identyfikator URI przekierowania jest szczegółowo opisany poniżej. Ten niestandardowy redirectURI zawiera identyfikator pakietu aplikacji i jest niepowtarzalny dla aplikacji w sklepie Apple App Store. Gdy aplikacja wywołuje brokera, Broker prosi system operacyjny iOS o podanie identyfikatora pakietu, który wywołał brokera. Broker dostarcza ten identyfikator pakietu firmie Microsoft w wywołaniu naszego systemu tożsamości. Jeśli identyfikator pakietu aplikacji nie jest zgodny z IDENTYFIKATORem pakietu dostarczonym przez dewelopera podczas rejestracji, odmówimy dostępu do tokenów dla zasobu, którego żąda aplikacja. Ta kontrola zapewnia, że tylko aplikacja zarejestrowana przez dewelopera otrzymuje tokeny.
 
 **Deweloper ma możliwość wyboru, czy zestaw SDK wywołuje brokera, czy używa nieobsługiwanego przez brokera przepływu.** Jeśli jednak deweloper zdecyduje się nie używać przepływu z obsługą brokera, utraci korzyści wynikające z używania poświadczeń logowania jednokrotnego, które użytkownik mógł już dodać na urządzeniu, i uniemożliwia ich używanie z funkcjami biznesowymi firma Microsoft udostępnia Klienci, tacy jak dostęp warunkowy, możliwości zarządzania usługi Intune i uwierzytelnianie oparte na certyfikatach.
 

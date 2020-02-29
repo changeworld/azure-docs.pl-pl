@@ -3,20 +3,20 @@ title: Profile techniczne usługi Azure MFA w zasadach niestandardowych
 titleSuffix: Azure AD B2C
 description: Niestandardowe informacje dotyczące zasad dla profilów technicznych usługi Azure Multi-Factor Authentication (MFA) w Azure AD B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a8aaea6b2afb4d89e6e667edba0eeba2f4ddcca8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 05851dba9de06b5dfba2da4f455fbaf5e9376d08
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480218"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184285"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Zdefiniuj profil techniczny usługi Azure MFA w zasadach niestandardowych Azure AD B2C
 
@@ -28,7 +28,7 @@ Profil techniczny usługi Azure MFA może również zwrócić komunikat o błęd
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="protocol"></a>Protocol (Protokół)
+## <a name="protocol"></a>Protokół
 
 Atrybut **name** elementu **Protocol** musi mieć wartość `Proprietary`. Atrybut **programu obsługi** musi zawierać w pełni kwalifikowaną nazwę zestawu programu obsługi protokołu, który jest używany przez Azure AD B2C:
 
@@ -53,10 +53,10 @@ Pierwszy tryb tego profilu technicznego polega na wygenerowaniu kodu i wysłaniu
 
 Element **InputClaims** zawiera listę oświadczeń do wysłania do usługi Azure MFA. Możesz również zmapować nazwę swojego zgłoszenia na nazwę zdefiniowaną w profilu technicznym usługi MFA.
 
-| ClaimReferenceId | Wymagane | Opis |
+| ClaimReferenceId | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| userPrincipalName | Tak | Identyfikator użytkownika, który jest właścicielem numeru telefonu. |
-| phoneNumber | Tak | Numer telefonu, na który ma zostać wysłany kod SMS. |
+| userPrincipalName | Yes | Identyfikator użytkownika, który jest właścicielem numeru telefonu. |
+| phoneNumber | Yes | Numer telefonu, na który ma zostać wysłany kod SMS. |
 | companyName | Nie |Nazwa firmy w wiadomości SMS. Jeśli nie zostanie podany, zostanie użyta nazwa aplikacji. |
 | locale | Nie | Ustawienia regionalne wiadomości SMS. Jeśli nie zostanie podany, używane są ustawienia regionalne użytkownika w przeglądarce. |
 
@@ -70,16 +70,16 @@ Element **OutputClaimsTransformations** może zawierać kolekcję elementów **O
 
 ### <a name="metadata"></a>Metadane
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Operacja | Tak | Musi być **OneWaySMS**.  |
+| Operacja | Yes | Musi być **OneWaySMS**.  |
 | UserMessageIfInvalidFormat | Nie | Niestandardowy komunikat o błędzie, jeśli podany numer telefonu nie jest prawidłowym numerem telefonu |
 | UserMessageIfCouldntSendSms | Nie | Niestandardowy komunikat o błędzie, jeśli podany numer telefonu nie akceptuje wiadomości SMS |
 | UserMessageIfServerError | Nie | Niestandardowy komunikat o błędzie, jeśli serwer napotkał błąd wewnętrzny |
 
 ### <a name="return-an-error-message"></a>Zwróć komunikat o błędzie
 
-Zgodnie z opisem w temacie [Metadata](#metadata)można dostosować komunikat o błędzie wyświetlany użytkownikowi dla różnych przypadków błędów. Te komunikaty można później zlokalizować, tworząc prefiks ustawień regionalnych. Przykład:
+Zgodnie z opisem w temacie [Metadata](#metadata)można dostosować komunikat o błędzie wyświetlany użytkownikowi dla różnych przypadków błędów. Te komunikaty można później zlokalizować, tworząc prefiks ustawień regionalnych. Na przykład:
 
 ```XML
 <Item Key="en.UserMessageIfInvalidFormat">Invalid phone number.</Item>
@@ -115,10 +115,10 @@ Drugi tryb tego profilu technicznego polega na sprawdzeniu kodu. Dla tego trybu 
 
 Element **InputClaims** zawiera listę oświadczeń do wysłania do usługi Azure MFA. Możesz również zmapować nazwę swojego zgłoszenia na nazwę zdefiniowaną w profilu technicznym usługi MFA.
 
-| ClaimReferenceId | Wymagane | Opis |
+| ClaimReferenceId | Wymagany | Opis |
 | --------- | -------- | ----------- | ----------- |
-| phoneNumber| Tak | Ten sam numer telefonu, który został wcześniej użyty do wysłania kodu. Służy również do lokalizowania sesji weryfikacyjnej telefonu. |
-| verificationCode  | Tak | Kod weryfikacyjny dostarczony przez użytkownika do zweryfikowania |
+| phoneNumber| Yes | Ten sam numer telefonu, który został wcześniej użyty do wysłania kodu. Służy również do lokalizowania sesji weryfikacyjnej telefonu. |
+| verificationCode  | Yes | Kod weryfikacyjny dostarczony przez użytkownika do zweryfikowania |
 
 Element **InputClaimsTransformations** może zawierać kolekcję elementów **InputClaimsTransformation** , które są używane do modyfikowania oświadczeń wejściowych lub generować nowe przed wywołaniem usługi Azure MFA.
 
@@ -130,9 +130,9 @@ Element **OutputClaimsTransformations** może zawierać kolekcję elementów **O
 
 ## <a name="metadata"></a>Metadane
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Operacja | Tak | Musi być **zweryfikowana** |
+| Operacja | Yes | Musi być **zweryfikowana** |
 | UserMessageIfInvalidFormat | Nie | Niestandardowy komunikat o błędzie, jeśli podany numer telefonu nie jest prawidłowym numerem telefonu |
 | UserMessageIfWrongCodeEntered | Nie | Niestandardowy komunikat o błędzie, jeśli kod wprowadzony do weryfikacji jest błędny |
 | UserMessageIfMaxAllowedCodeRetryReached | Nie | Niestandardowy komunikat o błędzie, jeśli użytkownik próbuje wykonać kod weryfikacyjny zbyt wiele razy |
@@ -141,7 +141,7 @@ Element **OutputClaimsTransformations** może zawierać kolekcję elementów **O
 
 ### <a name="return-an-error-message"></a>Zwróć komunikat o błędzie
 
-Zgodnie z opisem w temacie [Metadata](#metadata)można dostosować komunikat o błędzie wyświetlany użytkownikowi dla różnych przypadków błędów. Te komunikaty można później zlokalizować, tworząc prefiks ustawień regionalnych. Przykład:
+Zgodnie z opisem w temacie [Metadata](#metadata)można dostosować komunikat o błędzie wyświetlany użytkownikowi dla różnych przypadków błędów. Te komunikaty można później zlokalizować, tworząc prefiks ustawień regionalnych. Na przykład:
 
 ```XML
 <Item Key="en.UserMessageIfWrongCodeEntered">Wrong code has been entered.</Item>

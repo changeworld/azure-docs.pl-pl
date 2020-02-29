@@ -1,6 +1,6 @@
 ---
 title: CREATE TABLE JAKO SELECT (CTAS)
-description: Wyjaśnienie i przykłady CREATE TABLE jako instrukcji SELECT (CTAS) w Azure SQL Data Warehouse do tworzenia rozwiązań.
+description: Wyjaśnienie i przykłady CREATE TABLE jako instrukcji SELECT (CTAS) w analizie SQL na potrzeby tworzenia rozwiązań.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: development
 ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 4992bb00fa5397ef6a4e055e08b445d35f5ed77a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 09a543ac4b4f77f0c7b7efd2411b962fa9fa2769
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685866"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195910"
 ---
-# <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>CREATE TABLE jako SELECT (CTAS) w Azure SQL Data Warehouse
+# <a name="create-table-as-select-ctas-in-sql-analytics"></a>CREATE TABLE jako SELECT (CTAS) w analizie SQL
 
-W tym artykule wyjaśniono, CREATE TABLE jako instrukcja T-SQL SELECT (CTAS) w Azure SQL Data Warehouse do tworzenia rozwiązań. Artykuł zawiera również przykłady kodu.
+W tym artykule opisano CREATE TABLE jak SELECT (CTAS) instrukcja T-SQL w programie SQL Analytics na potrzeby tworzenia rozwiązań. Artykuł zawiera również przykłady kodu.
 
 ## <a name="create-table-as-select"></a>CREATE TABLE JAKO WYBRANE
 
@@ -123,7 +123,7 @@ DROP TABLE FactInternetSales_old;
 
 ## <a name="use-ctas-to-work-around-unsupported-features"></a>Użyj CTAS, aby obejść Nieobsługiwane funkcje
 
-Możesz również użyć CTAS, aby obejść wiele nieobsługiwanych funkcji wymienionych poniżej. Ta metoda może często okazać się przydatna, ponieważ nie tylko kod będzie zgodny, ale często działa szybciej na SQL Data Warehouse. Ta wydajność jest wynikiem w pełni równoległego projektu. Scenariusze obejmują:
+Możesz również użyć CTAS, aby obejść wiele nieobsługiwanych funkcji wymienionych poniżej. Ta metoda może często okazać się przydatna, ponieważ nie tylko kod będzie zgodny, ale często działa szybciej w usłudze SQL Analytics. Ta wydajność jest wynikiem w pełni równoległego projektu. Scenariusze obejmują:
 
 * SPRZĘŻENIa ANSI na aktualizacjach
 * Sprzężenia ANSI podczas usuwania
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-SQL Data Warehouse nie obsługuje sprzężeń ANSI w klauzuli `FROM` instrukcji `UPDATE`, dlatego nie można użyć poprzedniego przykładu bez modyfikowania.
+Funkcja analizy SQL nie obsługuje sprzężeń ANSI w klauzuli `FROM` instrukcji `UPDATE`, dlatego nie można użyć poprzedniego przykładu bez modyfikowania.
 
 Aby zastąpić poprzedni przykład, można użyć kombinacji CTAS i niejawnego sprzężenia:
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>Zamiana sprzężenia ANSI dla instrukcji DELETE
 
-Czasami najlepszym rozwiązaniem do usuwania danych jest użycie CTAS, szczególnie w przypadku instrukcji `DELETE`, które używają składni sprzężenia ANSI. Dzieje się tak, ponieważ SQL Data Warehouse nie obsługuje sprzężeń ANSI w klauzuli `FROM` instrukcji `DELETE`. Zamiast usuwać dane, wybierz dane, które chcesz zachować.
+Czasami najlepszym rozwiązaniem do usuwania danych jest użycie CTAS, szczególnie w przypadku instrukcji `DELETE`, które używają składni sprzężenia ANSI. Wynika to z faktu, że usługa SQL Analytics nie obsługuje sprzężeń ANSI w klauzuli `FROM` instrukcji `DELETE`. Zamiast usuwać dane, wybierz dane, które chcesz zachować.
 
 Poniżej znajduje się przykład przekonwertowanej instrukcji `DELETE`:
 
@@ -330,7 +330,7 @@ AS
 SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 ```
 
-Pamiętaj o następujących kwestiach:
+Należy pamiętać o następujących kwestiach:
 
 * Można użyć CAST lub CONVERT.
 * Aby wymusić wartość NULL, użyj ISNULL, a nie łączenia. Zobacz poniższą uwagę.
@@ -412,7 +412,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 Można zobaczyć, że zgodność typów i utrzymywanie właściwości wartości null na CTAS to najlepsze rozwiązanie inżynieryjne. Pomaga zachować integralność obliczeń, a także zapewnia możliwość przełączenia na partycje.
 
-CTAS jest jednym z najważniejszych instrukcji w SQL Data Warehouse. Zadbaj o to, aby dokładnie je zrozumieć. Zapoznaj się z [dokumentacją CTAs](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
+CTAS jest jednym z najważniejszych instrukcji w usłudze SQL Analytics. Zadbaj o to, aby dokładnie je zrozumieć. Zapoznaj się z [dokumentacją CTAs](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
 
 ## <a name="next-steps"></a>Następne kroki
 

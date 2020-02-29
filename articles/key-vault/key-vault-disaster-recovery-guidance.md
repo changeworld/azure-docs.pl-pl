@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c0fed80f4ba9815cee49bc9968d542f168570986
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 530ae2b795b4d94802e9f0d3420f7b3af86936ad
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976370"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184642"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault dostępność i nadmiarowość
 
@@ -37,12 +38,12 @@ Należy pamiętać o kilku zastrzeżeniach:
   * Pobierz wpisy tajne
   * Klucze list
   * Pobierz (właściwości z) kluczy
-  * Szyfruj
-  * Odszyfruj
+  * Szyfrowanie
+  * Odszyfrowywanie
   * Zawijanie
   * Unwrap
-  * Sprawdź
-  * Podpisywanie
-  * Tworzenie kopii zapasowej
+  * Weryfikuj
+  * Zapis
+  * Backup
 * Po przejściu w tryb failover są dostępne wszystkie typy żądań (łącznie *z* żądaniami odczytu i zapisu).
 

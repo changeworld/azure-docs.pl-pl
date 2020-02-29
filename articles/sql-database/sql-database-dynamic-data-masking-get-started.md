@@ -1,25 +1,26 @@
 ---
 title: Dynamiczne maskowanie danych
-description: Dynamiczne maskowanie danych ogranicza narażenie na dane poufne przez zamaskowanie ich dla użytkowników bez uprawnień do SQL Database i magazynu danych
+description: Dynamiczne maskowanie danych ogranicza narażenie na dane poufne przez zamaskowanie ich użytkownikom nieuprzywilejowanym dla SQL Database i platformy Azure Synapse
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/04/2019
-ms.openlocfilehash: 149c42829762920583948958da8252a01e35ef1f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/06/2020
+tags: azure-synpase
+ms.openlocfilehash: e5b281d59245d8fbd32b18f4ac5fe577fc7ff309
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721918"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192918"
 ---
-# <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Dynamiczne maskowanie danych dla Azure SQL Database i magazynu danych
+# <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Dynamiczne maskowanie danych dla Azure SQL Database i usługi Azure Synapse Analytics
 
 SQL Database Dynamiczne maskowanie danych ogranicza narażenie na dane poufne przez zamaskowanie go dla użytkowników bez uprawnień. 
 
@@ -29,7 +30,7 @@ Na przykład przedstawiciel usługi w centrum telefonicznym może identyfikować
 
 ## <a name="dynamic-data-masking-basics"></a>Dynamiczne maskowanie danych — podstawy
 
-Aby skonfigurować zasady dynamicznego maskowania danych w Azure Portal, należy wybrać operację dynamicznego maskowania danych w bloku SQL Database lub ustawień konfiguracji. Nie można ustawić tej funkcji przy użyciu portalu dla programu SQL DW (Użyj programu PowerShell lub interfejsu API REST)
+Aby skonfigurować zasady dynamicznego maskowania danych w Azure Portal, należy wybrać operację dynamicznego maskowania danych w bloku SQL Database lub ustawień konfiguracji. Nie można ustawić tej funkcji za pomocą portalu Azure Synapse (Użyj programu PowerShell lub interfejsu API REST)
 
 ### <a name="dynamic-data-masking-permissions"></a>Uprawnienia Dynamiczne maskowanie danych
 

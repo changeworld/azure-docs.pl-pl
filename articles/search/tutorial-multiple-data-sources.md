@@ -7,21 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: aac5dc300009ec682ef1599ad654415f5c4ad190
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/28/2020
+ms.openlocfilehash: 6408689deec7de365ede86665a0eaeb0bd0de64b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495055"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196573"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Samouczek: łączenie danych z wielu źródeł danych w jednym indeksie Wyszukiwanie poznawcze platformy Azure
+# <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>Samouczek: indeksowanie danych z wielu źródeł danych wC#
 
 Usługa Azure Wyszukiwanie poznawcze umożliwia importowanie, analizowanie i indeksowanie danych z wielu źródeł danych w jednym połączonym indeksie wyszukiwania. Obsługuje to sytuacje, w których dane strukturalne są agregowane przy użyciu mniej strukturalnych lub nawet danych zwykłego tekstu z innych źródeł, takich jak tekst, HTML lub dokumenty JSON.
 
 W tym samouczku opisano sposób indeksowania danych hotelu ze źródła danych Azure Cosmos DB i scalania z informacjami o pokoju hotelowym pobranymi z dokumentów Blob Storage platformy Azure. Wynik będzie połączonym indeksem wyszukiwania hotelowego zawierającym złożone typy danych.
 
-Ten samouczek używa C#programu, zestawu .NET SDK dla platformy Azure Wyszukiwanie poznawcze i Azure Portal do wykonywania następujących zadań:
+Ten samouczek używa C# programu i [zestawu .NET SDK](https://aka.ms/search-sdk) do wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Przekazywanie przykładowych danych i tworzenie źródeł danych
@@ -30,19 +30,19 @@ Ten samouczek używa C#programu, zestawu .NET SDK dla platformy Azure Wyszukiwan
 > * Indeksuj dane hotelu z Azure Cosmos DB
 > * Scalanie danych pokoju hotelowego z magazynu obiektów BLOB
 
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym przewodniku Szybki Start są używane następujące usługi, narzędzia i dane. 
++ [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
++ [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Program Visual Studio 2019](https://visualstudio.microsoft.com/)
++ [Utwórz](search-create-service-portal.md) lub [Znajdź istniejącą usługę wyszukiwania](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
-- [Utwórz usługę Azure wyszukiwanie poznawcze](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. W tym samouczku możesz użyć bezpłatnej usługi.
+> [!Note]
+> Możesz skorzystać z bezpłatnej usługi dla tego samouczka. Bezpłatna usługa wyszukiwania ogranicza do trzech indeksów, trzech indeksatorów i trzech źródeł danych. W ramach tego samouczka tworzony jest jeden element każdego z tych typów. Przed rozpoczęciem upewnij się, że masz miejsce w usłudze, aby akceptować nowe zasoby.
 
-- [Utwórz konto Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) do przechowywania przykładowych danych hotelowych.
-
-- [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych o pokoju.
-
-- [Zainstaluj program Visual Studio 2019](https://visualstudio.microsoft.com/) , aby użyć go jako środowiska IDE.
-
-### <a name="install-the-project-from-github"></a>Instalowanie projektu z usługi GitHub
+## <a name="download-files"></a>Pobieranie plików
 
 1. Znajdź przykładowe repozytorium w usłudze GitHub: [Azure-Search-dotnet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 1. Wybierz pozycję **Klonuj lub Pobierz** , aby utworzyć prywatną kopię lokalną repozytorium.
@@ -340,13 +340,23 @@ W Azure Portal Otwórz stronę **Przegląd** usługi wyszukiwania i Znajdź na l
 
 Na liście kliknij indeks pokojów hotelowych — przykład. Zostanie wyświetlony interfejs Eksploratora wyszukiwania dla indeksu. Wprowadź zapytanie dla terminu takiego jak "możliwość zaprojektowania". W wynikach powinien być widoczny co najmniej jeden dokument, a ten dokument powinien zawierać listę obiektów Room w tablicy pokojów.
 
+## <a name="reset-and-rerun"></a>Resetowanie i ponowne uruchamianie
+
+W przypadku wczesnych eksperymentalnych etapów tworzenia najlepszym podejściem do iteracji projektu jest usunięcie obiektów z platformy Azure Wyszukiwanie poznawcze i umożliwienie kodowi odbudowania. Nazwy zasobów są unikatowe. Usunięcie obiektu umożliwia jego ponowne utworzenie przy użyciu tej samej nazwy.
+
+Przykładowy kod dla tego samouczka sprawdza istniejące obiekty i usuwa je, aby można było ponownie uruchomić kod.
+
+Możesz również użyć portalu, aby usunąć indeksy, indeksatory i źródła danych.
+
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Najszybszym sposobem oczyszczenia po samouczku jest usunięcie grupy zasobów zawierającej usługę Wyszukiwanie poznawcze platformy Azure. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. Nazwa grupy zasobów w portalu znajduje się na stronie Przegląd usługi Azure Wyszukiwanie poznawcze.
+Gdy Pracujesz w ramach własnej subskrypcji, na końcu projektu warto usunąć zasoby, które nie są już potrzebne. Zasoby po lewej stronie mogą być kosztowne. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
+
+Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku wszystkie zasoby lub grupy zasobów w okienku nawigacji po lewej stronie.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Istnieje kilka metod i wiele opcji indeksowania obiektów BLOB JSON. Jeśli dane źródłowe zawierają zawartość JSON, możesz przejrzeć te opcje, aby zobaczyć, co najlepiej sprawdza się w danym scenariuszu.
+Teraz, gdy znasz koncepcję pozyskiwania danych z wielu źródeł, przyjrzyjmy się bliżej konfiguracji indeksatora, rozpoczynając od Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Jak indeksować obiekty blob JSON przy użyciu usługi Azure Wyszukiwanie poznawcze BLOB Indexer](search-howto-index-json-blobs.md)
+> [Konfigurowanie indeksatora Azure Cosmos DB](search-howto-index-cosmosdb.md)

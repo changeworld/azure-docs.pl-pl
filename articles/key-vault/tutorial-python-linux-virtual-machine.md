@@ -1,20 +1,21 @@
 ---
-title: 'Samouczek: Używanie maszyny wirtualnej z systemem Linux i aplikacji w języku Python do przechowywania wpisów tajnych w usłudze Azure Key Vault | Microsoft Docs'
-description: Z tego samouczka dowiesz się, jak skonfigurować aplikację w języku Python, aby odczytać wpis tajny z usługi Azure Key Vault.
+title: 'Samouczek: Używanie maszyny wirtualnej z systemem Linux i aplikacji w języku Python do zapisywania wpisów tajnych w usłudze Azure Key Vault | Microsoft Docs'
+description: W ramach tego samouczka dowiesz się, jak skonfigurować aplikację w języku Python, aby odczytać wpis tajny z usługi Azure Key Vault.
 services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 15650de776b481d1635b58f2b8ecf2bf2921d12f
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 3c80a206af74eb370470c38a7af9c7f1fe840406
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242422"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198154"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Samouczek: korzystanie z maszyny wirtualnej z systemem Linux i aplikacji w języku Python do przechowywania wpisów tajnych w programie Azure Key Vault
 
@@ -24,8 +25,8 @@ W tym samouczku skonfigurujesz aplikację internetową platformy Azure pod kąte
 
 > [!div class="checklist"]
 > * Tworzenie magazynu kluczy
-> * Przechowywanie wpisu tajnego w magazynie kluczy
-> * Utwórz maszynę wirtualną z systemem Linux
+> * Zapisywanie wpisu tajnego w magazynie kluczy
+> * Tworzenie maszyny wirtualnej z systemem Linux
 > * Włączanie [tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) dla maszyny wirtualnej
 > * Przyznawanie wymaganych uprawnień w celu umożliwienia aplikacji konsolowej odczytu danych z magazynu kluczy
 > * Pobieranie wpisu tajnego z magazynu kluczy
@@ -50,7 +51,7 @@ Po włączeniu tożsamości usługi zarządzanej dla usługi platformy Azure, ta
 
 Następnie Twój kod wywołuje lokalną usługę metadanych dostępną w zasobie platformy Azure, aby uzyskać token dostępu. W celu uwierzytelnienia w usłudze Azure Key Vault kod używa tokenu dostępu, który otrzymuje z lokalnego punktu końcowego tożsamości usługi zarządzanej.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Aby zalogować się do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure, wpisz:
 
@@ -95,7 +96,7 @@ Wpisz następujące polecenia, aby utworzyć wpis tajny w magazynie kluczy o naz
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-linux-virtual-machine"></a>Utwórz maszynę wirtualną z systemem Linux
+## <a name="create-a-linux-virtual-machine"></a>Tworzenie maszyny wirtualnej z systemem Linux
 
 Utwórz maszynę wirtualną za pomocą polecenia `az vm create`.
 
@@ -156,7 +157,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 ## <a name="log-in-to-the-vm"></a>Logowanie się do maszyny wirtualnej
 
-Zaloguj się do maszyny wirtualnej za pomocą terminalu.
+zaloguj się do maszyny wirtualnej za pomocą terminalu.
 
 ```terminal
 ssh azureuser@<PublicIpAddress>

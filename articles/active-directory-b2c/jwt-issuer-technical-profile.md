@@ -3,20 +3,20 @@ title: Zdefiniuj profil techniczny dla wystawcy JWT w zasadach niestandardowych
 titleSuffix: Azure AD B2C
 description: Zdefiniuj profil techniczny dla wystawców tokenów sieci Web JSON (JWT) w zasadach niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f0adbac14c2ae886bc002ae56ab0784b608d1e5d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fa6da347289a12867a2416dea16631ba4758832f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841986"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187478"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny dla wystawcy token JWT w zasadach niestandardowych Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "76841986"
 
 Azure Active Directory B2C (Azure AD B2C) emituje kilka typów tokenów zabezpieczających podczas przetwarzania poszczególnych przepływów uwierzytelniania. Profil techniczny wystawcy token JWT emituje token JWT zwracanego z powrotem do aplikacji jednostki uzależnionej. Zazwyczaj ten profil techniczny to ostatni krok aranżacji w podróży użytkownika.
 
-## <a name="protocol"></a>Protocol (Protokół)
+## <a name="protocol"></a>Protokół
 
 Atrybut **name** elementu **Protocol** musi mieć wartość `None`. Ustaw element **OutputTokenFormat** na `JWT`.
 
@@ -45,9 +45,9 @@ Elementy **InputClaims**, **OutputClaims**i **PersistClaims** są puste lub nie 
 
 ## <a name="metadata"></a>Metadane
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| issuer_refresh_token_user_identity_claim_type | Tak | Żądanie, które ma być używane jako żądanie tożsamości użytkownika w ramach kodów autoryzacji OAuth2 i odświeżanie tokenów. Domyślnie należy ustawić ją na `objectId`, chyba że zostanie określony inny typ "SubjectNamingInfo". |
+| issuer_refresh_token_user_identity_claim_type | Yes | Żądanie, które ma być używane jako żądanie tożsamości użytkownika w ramach kodów autoryzacji OAuth2 i odświeżanie tokenów. Domyślnie należy ustawić ją na `objectId`, chyba że zostanie określony inny typ "SubjectNamingInfo". |
 | SendTokenResponseBodyWithJsonNumbers | Nie | Zawsze ustawiaj na `true`. W przypadku starszego formatu, gdzie wartości liczbowe są podawane jako ciągi zamiast liczb JSON, ustaw wartość `false`. Ten atrybut jest wymagany w przypadku klientów, którzy korzystali z zależności od wcześniejszej implementacji, która zwróciła takie właściwości jako ciągi. |
 | token_lifetime_secs | Nie | Okresy istnienia tokenu dostępu. Okres istnienia tokenu okaziciela OAuth 2,0, który służy do uzyskiwania dostępu do chronionego zasobu. Wartość domyślna to 3 600 sekund (1 godzina). Minimalna (włącznie) to 300 sekund (5 minut). Wartość maksymalna (włącznie) to 86 400 sekund (24 godziny). |
 | id_token_lifetime_secs | Nie | Okresy istnienia tokenów identyfikatorów. Wartość domyślna to 3 600 sekund (1 godzina). Minimalna (włącznie) to 300 sekund (5 minut). Wartość maksymalna (włącznie) jest sekund 86 400 (24 godziny). |
@@ -61,10 +61,10 @@ Elementy **InputClaims**, **OutputClaims**i **PersistClaims** są puste lub nie 
 
 Element CryptographicKeys zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| issuer_secret | Tak | Certyfikat x509 (zestaw kluczy RSA) służący do podpisywania tokenu JWT. Jest to klucz `B2C_1A_TokenSigningKeyContainer`, który został rozfigurować w temacie [wprowadzenie do zasad niestandardowych](custom-policy-get-started.md). |
-| issuer_refresh_token_key | Tak | Certyfikat x509 (zestaw kluczy RSA) służący do szyfrowania tokenu odświeżania. Klucz `B2C_1A_TokenEncryptionKeyContainer` został skonfigurowany w temacie [wprowadzenie do zasad niestandardowych](custom-policy-get-started.md) |
+| issuer_secret | Yes | Certyfikat x509 (zestaw kluczy RSA) służący do podpisywania tokenu JWT. Jest to klucz `B2C_1A_TokenSigningKeyContainer`, który został rozfigurować w temacie [wprowadzenie do zasad niestandardowych](custom-policy-get-started.md). |
+| issuer_refresh_token_key | Yes | Certyfikat x509 (zestaw kluczy RSA) służący do szyfrowania tokenu odświeżania. Klucz `B2C_1A_TokenEncryptionKeyContainer` został skonfigurowany w temacie [wprowadzenie do zasad niestandardowych](custom-policy-get-started.md) |
 
 
 

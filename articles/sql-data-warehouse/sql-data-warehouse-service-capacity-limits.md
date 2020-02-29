@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/04/2019
+ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 7847e76c8f0354e3a17c7df5f3ce9227dcf0e6ce
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: azure-synapse
+ms.openlocfilehash: a225c375d877ae44c2b21ea8e79e31f17db36878
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526420"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198188"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Limity pojemności usługi Azure Synapse Analytics (dawniej SQL DW)
 
@@ -30,16 +31,18 @@ Maksymalne wartości dozwolone dla różnych składników usługi Azure Synapse.
 | Połączenie z bazą danych |Maksymalna liczba otwartych sesji współbieżnych |1024<br/><br/>Liczba równoczesnych otwartych sesji różni się w zależności od wybranej jednostek dwu. DWU600c i nowsze obsługują maksymalnie 1024 otwartych sesji. DWU500c i poniżej, obsługują maksymalny limit współbieżnych sesji otwierania wynoszący 512. Uwaga Istnieją limity liczby zapytań, które mogą być wykonywane współbieżnie. Po przekroczeniu limitu współbieżności żądanie przechodzi do kolejki wewnętrznej, w której czeka na przetworzenie. |
 | Połączenie z bazą danych |Maksymalna ilość pamięci dla przygotowanych instrukcji |20 MB |
 | [Zarządzanie obciążeniami](resource-classes-for-workload-management.md) |Maksymalna liczba współbieżnych zapytań |128<br/><br/>  Zostanie wykonane maksymalnie 128 współbieżnych zapytań, a pozostałe zapytania zostaną dodane do kolejki.<br/><br/>Liczba współbieżnych zapytań może się zmniejszyć, gdy użytkownicy są przypisani do wyższych klas zasobów lub gdy ustawienie [jednostki magazynu danych](memory-concurrency-limits.md) jest mniejsze. Niektóre zapytania, takie jak zapytania DMV, są zawsze dozwolone do uruchomienia i nie wpływają na współbieżny limit zapytań. Aby uzyskać więcej informacji na temat jednoczesnego wykonywania zapytań, zobacz artykuł [maksymalne wartości współbieżności](memory-concurrency-limits.md) . |
-| [tempdb](sql-data-warehouse-tables-temporary.md) |Maksymalna ilość GB |399 GB na DW100. W związku z tym w DWU1000 baza danych tempdb ma rozmiar 3,99 TB. |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |Maksymalna ilość GB |399 GB na DW100c. W związku z tym w DWU1000c baza danych tempdb ma rozmiar 3,99 TB. |
+||||
 
 ## <a name="database-objects"></a>Obiekty bazy danych
+
 | Kategoria | Opis | Maksimum |
 |:--- |:--- |:--- |
-| Baza danych |Maksymalny rozmiar | Gen1:240 TB skompresowane na dysku. Ta przestrzeń jest niezależna od bazy danych tempdb lub miejsca w dzienniku, dlatego to miejsce jest przeznaczone do trwałych tabel.  Szacuje się, że kompresja magazynu kolumn jest w pięciokrotną.  Ta kompresja pozwala na zwiększenie rozmiaru bazy danych do około 1 PB, gdy wszystkie tabele są klastrowane z magazynu kolumn (domyślny typ tabeli). <br/><br/> Gen2:240TB dla magazynu wierszy i nieograniczony magazyn dla tabel magazynu kolumn |
-| Tabela |Maksymalny rozmiar | W przypadku tabel magazynu kolumn nie ma limitu uppper. <br/><br/>W przypadku tabel magazynu wierszy 60 TB skompresowane na dysku |
+| Baza danych |Maksymalny rozmiar | Gen1:240 TB skompresowane na dysku. Ta przestrzeń jest niezależna od bazy danych tempdb lub miejsca w dzienniku, dlatego to miejsce jest przeznaczone do trwałych tabel.  Szacuje się, że kompresja magazynu kolumn jest w pięciokrotną.  Ta kompresja pozwala na zwiększenie rozmiaru bazy danych do około 1 PB, gdy wszystkie tabele są klastrowane z magazynu kolumn (domyślny typ tabeli). <br/><br/> Gen2: nieograniczony magazyn dla tabel magazynu kolumn.  Część magazynu wierszy bazy danych jest nadal ograniczona do 240 TB skompresowanej na dysku. |
+| Tabela |Maksymalny rozmiar |Nieograniczony rozmiar dla tabel magazynu kolumn. <br>60 TB dla tabel magazynu wierszy skompresowanych na dysku. |
 | Tabela |Tabele na bazę danych | 100 000 |
 | Tabela |Kolumny na tabelę |1024 kolumn |
-| Tabela |Bajtów na kolumnę |Zależne od [typu danych](sql-data-warehouse-tables-data-types.md)kolumny. Limit wynosi 8000 dla typów danych char, 4000 dla nvarchar lub 2 GB w przypadku MAKSYMALNYch typów danych. |
+| Tabela |Bajtów na kolumnę |Zależne od [typu danych](sql-data-warehouse-tables-data-types.md)kolumny. W przypadku typów danych znak maksymalny limit może przechowywać do 2 GB poza stroną (przepełnienie wiersza).  Znaki inne niż Unicode, takie jak char lub varchar limit to 8000 na stronie danych, znaki Unicode, takie jak nchar lub nvarchar, są 4000 na stronie danych.  Użyj rozmiarów magazynów stron danych w celu zwiększenia wydajności. |
 | Tabela |Bajty na wiersz, zdefiniowany rozmiar |8060 bajtów<br/><br/>Liczba bajtów na wiersz jest obliczana w taki sam sposób, jak w przypadku SQL Server z kompresją strony. Podobnie jak SQL Server, magazyn przepełnienia wierszy jest obsługiwany, co umożliwia wypchnięcie **kolumn o zmiennej długości** poza wierszem. Gdy wiersze o zmiennej długości są wypychane poza wierszem, tylko 24-bajtowy katalog główny jest przechowywany w rekordzie głównym. Aby uzyskać więcej informacji, zobacz [dane przepełnienia wierszy przekraczające 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
 | Tabela |Partycje na tabelę |15 000<br/><br/>W celu zapewnienia wysokiej wydajności zalecamy zminimalizowanie liczby potrzebnych partycji przy zachowaniu wymagań firmy. Wraz ze wzrostem liczby partycji, obciążenie dla operacji języka definicji danych (DDL) i języka manipulowania danymi (DML) zwiększa się i powoduje wolniejszą wydajność. |
 | Tabela |Liczba znaków na wartość graniczną partycji. |4000 |
@@ -52,13 +55,17 @@ Maksymalne wartości dozwolone dla różnych składników usługi Azure Synapse.
 | Statystyki |Statystyka utworzona dla kolumn na tabelę. |30,000 |
 | Procedury składowane |Maksymalne poziomy zagnieżdżenia. |8 |
 | Widok |Kolumny na widok |1,024 |
+||||
 
 ## <a name="loads"></a>Powoduje
+
 | Kategoria | Opis | Maksimum |
 |:--- |:--- |:--- |
 | Obciążenia wielopodstawowe |MB na wiersz |1<br/><br/>Liczba wierszy ładowania bazy jest mniejsza niż 1 MB. Ładowanie typów danych obiektów LOB do tabel z klastrowanym indeksem magazynu kolumn (WIK) nie jest obsługiwane.<br/><br/> |
+||||
 
 ## <a name="queries"></a>Zapytania
+
 | Kategoria | Opis | Maksimum |
 |:--- |:--- |:--- |
 | Zapytanie |Zakolejkowane zapytania w tabelach użytkownika. |1000 |
@@ -73,8 +80,10 @@ Maksymalne wartości dozwolone dla różnych składników usługi Azure Synapse.
 | SELECT |Liczba bajtów na kolejność według kolumn |8060 bajtów<br/><br/>Kolumny w klauzuli ORDER BY mogą mieć maksymalnie 8060 bajtów. |
 | Identyfikatory na instrukcję |Liczba przywoływanych identyfikatorów |65,535<br/><br/> Liczba identyfikatorów, które mogą być zawarte w pojedynczym wyrażeniu zapytania, jest ograniczona. Przekroczenie tej liczby spowoduje SQL Server błędu 8632. Aby uzyskać więcej informacji, zobacz [błąd wewnętrzny: osiągnięto limit usług Expression Services](https://support.microsoft.com/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
 | Literały ciągu | Liczba literałów ciągu w instrukcji | 20,000 <br/><br/>Liczba stałych ciągów w pojedynczym wyrażeniu zapytania jest ograniczona. Przekroczenie tej liczby spowoduje SQL Server błędu 8632.|
+||||
 
 ## <a name="metadata"></a>Metadane
+
 | Widok systemu | Maksymalna liczba wierszy |
 |:--- |:--- |
 | sys.dm_pdw_component_health_alerts |10 000 |
@@ -86,6 +95,8 @@ Maksymalne wartości dozwolone dla różnych składników usługi Azure Synapse.
 | sys.dm_pdw_request_steps |Łączna liczba kroków dla ostatnich 1000 żądań SQL, które są przechowywane w pliku sys. dm_pdw_exec_requests. |
 | sys.dm_pdw_os_event_logs |10 000 |
 | sys.dm_pdw_sql_requests |Najnowsze 1000 żądań SQL, które są przechowywane w pliku sys. dm_pdw_exec_requests. |
+|||
 
 ## <a name="next-steps"></a>Następne kroki
+
 Aby zapoznać się z zaleceniami dotyczącymi korzystania z usługi Azure Synapse, zobacz [Arkusz Ściągawka](cheat-sheet.md).

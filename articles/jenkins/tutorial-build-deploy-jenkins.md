@@ -4,12 +4,12 @@ description: Z tego samouczka dowiesz się jak skonfigurować ciągłą integrac
 keywords: Jenkins, Azure, DevOps, maszyna wirtualna, cicd
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 380d547aaee68ad40ae12a4836826d2addae3a18
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: cae28b293a6217996b44c839dc8836ec940c3155
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606468"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192612"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Samouczek: wdrażanie aplikacji na maszynach wirtualnych systemu Linux na platformie Azure przy użyciu usług Jenkins i Azure DevOps Services
 
@@ -96,9 +96,9 @@ Najpierw musisz skonfigurować dwie wtyczki usługi Jenkins: **NodeJS** i **VS T
 5. Wybierz pozycję **Trigger release in TFS/Team Services** (Wyzwalanie wydania w TFS/Team Services). Wprowadź identyfikator URI swojej organizacji Azure DevOps Services, taki jak **https://{nazwa-organizacji}.visualstudio.com**.
 6. Wprowadź nazwę **Projektu**.
 7. Wybierz nazwę potoku wydania. (Ten potok wydania utworzysz później w usługach Azure DevOps Services).
-8. Wybierz poświadczenia niezbędne do połączenia ze środowiskiem usług Azure DevOps Services lub serwera Team Foundation Server:
+8. Wybierz poświadczenia, aby nawiązać połączenie ze środowiskiem Azure DevOps Services lub Azure DevOps Server:
    - Pozostaw puste pole **Nazwa użytkownika**, jeśli używasz usług Azure DevOps Services. 
-   - Wprowadź nazwę użytkownika i hasło, jeśli korzystasz z lokalnej wersji serwera Team Foundation Server.    
+   - Wprowadź nazwę użytkownika i hasło, jeśli używasz lokalnej wersji Azure DevOps Server.    
    ![Konfigurowanie akcji postkompilacyjnych usługi Jenkins](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
 5. Zapisz projekt usługi Jenkins.
 

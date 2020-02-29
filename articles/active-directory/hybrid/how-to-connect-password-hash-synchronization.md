@@ -9,18 +9,18 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 405b2fb9d9b8ef3bce17a9370ac87592a3437026
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: a3f7d7c9af807120457b119e0be047c7a342b961
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585955"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190538"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync
 Ten artykuł zawiera informacje potrzebne do synchronizacji haseł użytkowników z lokalnym wystąpieniem usługi Active Directory do wystąpienia usługi Azure Active Directory (Azure AD) oparte na chmurze.
@@ -136,10 +136,10 @@ Aby obsłużyć tymczasowe hasła w usłudze Azure AD dla synchronizowanych uży
 `Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
-> Wymuszanie użytkownikowi zmiany hasła przy następnym logowaniu wymaga zmiany hasła w tym samym czasie.  Program AD Connect nie wybiera flagi Wymuszaj zmianę hasła. jest uzupełnieniem wykrytej zmiany hasła, która występuje podczas synchronizacji skrótów haseł.
+> Wymuszanie użytkownikowi zmiany hasła przy następnym logowaniu wymaga zmiany hasła w tym samym czasie.  Azure AD Connect nie spowoduje pobrania przez siebie flagi "Wymuszaj zmianę hasła". jest uzupełnieniem wykrytej zmiany hasła, która występuje podczas synchronizacji skrótów haseł.
 
 > [!CAUTION]
-> Jeśli nie włączysz funkcji samoobsługowego resetowania hasła (SSPR) w usłudze Azure AD użytkownicy będą mieć mylące środowisko podczas resetowania hasła w usłudze Azure AD, a następnie podejmie próbę zalogowania się w Active Directory przy użyciu nowego hasła, ponieważ nowe hasło jest nieprawidłowe w Active Directory . Tej funkcji należy używać tylko wtedy, gdy w dzierżawie jest włączone SSPR i zapisywanie zwrotne haseł.
+> Tej funkcji należy używać tylko wtedy, gdy w dzierżawie są włączone SSPR i zapisywanie zwrotne haseł.  Jest tak dlatego, że jeśli użytkownik zmieni hasło za pośrednictwem SSPR, zostanie zsynchronizowany z Active Directory.
 
 > [!NOTE]
 > Ta funkcja jest teraz dostępna w publicznej wersji zapoznawczej.

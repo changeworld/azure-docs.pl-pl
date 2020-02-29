@@ -3,20 +3,20 @@ title: Przykłady transformacji oświadczeń JSON dla zasad niestandardowych
 titleSuffix: Azure AD B2C
 description: Przykłady transformacji oświadczeń JSON dla schematu programu Identity Experience Framework (IEF) Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/10/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56c46b8f2804e37544c94ec2d6ced7e8879b1ffa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367131"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187597"
 ---
 # <a name="json-claims-transformations"></a>Przekształcenia oświadczeń JSON
 
@@ -30,9 +30,9 @@ Aby wygenerować ciąg JSON, użyj wartości lub stałych. Ciąg ścieżki nast�
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | Dowolny ciąg następujący po kropce | string | Wykryto pliku JSON, w którym zostanie wstawiona wartość żądania. |
-| InputParameter | Dowolny ciąg następujący po kropce | string | Wykryto w formacie JSON, w którym zostanie wstawiona stała wartość ciągu. |
-| Oświadczenie outputclaim | Oświadczenie outputclaim | string | Wygenerowany ciąg JSON. |
+| Oświadczenie inputclaim | Dowolny ciąg następujący po kropce | ciąg | Wykryto pliku JSON, w którym zostanie wstawiona wartość żądania. |
+| InputParameter | Dowolny ciąg następujący po kropce | ciąg | Wykryto w formacie JSON, w którym zostanie wstawiona stała wartość ciągu. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | ciąg | Wygenerowany ciąg JSON. |
 
 Poniższy przykład generuje ciąg JSON na podstawie wartości "e-mail" i "OTP" oraz ciągów stałych.
 
@@ -96,9 +96,9 @@ Pobierz określony element z danych JSON.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | inputJson | string | Elementy Claims, które są używane przez transformację oświadczeń do pobrania elementu. |
-| InputParameter | claimToExtract | string | Nazwa elementu JSON, który ma zostać wyodrębniony. |
-| Oświadczenie outputclaim | extractedClaim | string | Element ClaimType, który jest generowany po wywołaniu tej transformacji oświadczeń, jest wartością elementu określoną w parametrze wejściowym _claimToExtract_ . |
+| Oświadczenie inputclaim | inputJson | ciąg | Elementy Claims, które są używane przez transformację oświadczeń do pobrania elementu. |
+| InputParameter | claimToExtract | ciąg | Nazwa elementu JSON, który ma zostać wyodrębniony. |
+| Oświadczenie outputclaim | extractedClaim | ciąg | Element ClaimType, który jest generowany po wywołaniu tej transformacji oświadczeń, jest wartością elementu określoną w parametrze wejściowym _claimToExtract_ . |
 
 W poniższym przykładzie transformacja oświadczeń wyekstrahowana element `emailAddress` z danych JSON: `{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
@@ -132,11 +132,11 @@ Pobierz listę określonych elementów z danych JSON.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | jsonSourceClaim | string | Oświadczenia są używane przez transformację oświadczeń do pobierania oświadczeń. |
+| Oświadczenie inputclaim | jsonSourceClaim | ciąg | Oświadczenia są używane przez transformację oświadczeń do pobierania oświadczeń. |
 | InputParameter | errorOnMissingClaims | wartość logiczna | Określa, czy zgłosić błąd, jeśli brakuje jednego z oświadczeń. |
-| InputParameter | includeEmptyClaims | string | Określ, czy mają być dołączane puste oświadczenia. |
-| InputParameter | jsonSourceKeyName | string | Nazwa klucza elementu |
-| InputParameter | jsonSourceValueName | string | Nazwa wartości elementu |
+| InputParameter | includeEmptyClaims | ciąg | Określ, czy mają być dołączane puste oświadczenia. |
+| InputParameter | jsonSourceKeyName | ciąg | Nazwa klucza elementu |
+| InputParameter | jsonSourceValueName | ciąg | Nazwa wartości elementu |
 | Oświadczenie outputclaim | Collection | String, int, Boolean i DateTime |Lista oświadczeń do wyodrębnienia. Nazwa żądania powinna być taka sama jak określona w _jsonSourceClaim_ wejściowym. |
 
 W poniższym przykładzie transformacja oświadczeń wyodrębnia następujące oświadczenia: adres e-mail (ciąg), displayName (String), membershipNum (int), Active (Boolean) i DataUrodzenia (DateTime) z danych JSON.
@@ -186,9 +186,9 @@ Pobiera określony liczbowy (Long) element z danych JSON.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | inputJson | string | Oświadczenia są używane przez transformację oświadczeń do uzyskania oświadczenia. |
-| InputParameter | claimToExtract | string | Nazwa elementu JSON do wyodrębnienia. |
-| Oświadczenie outputclaim | extractedClaim | długi | Element ClaimType wygenerowany po tym ClaimsTransformation został wywołany, wartość elementu określona w parametrach wejściowych _claimToExtract_ . |
+| Oświadczenie inputclaim | inputJson | ciąg | Oświadczenia są używane przez transformację oświadczeń do uzyskania oświadczenia. |
+| InputParameter | claimToExtract | ciąg | Nazwa elementu JSON do wyodrębnienia. |
+| Oświadczenie outputclaim | extractedClaim | long | Element ClaimType wygenerowany po tym ClaimsTransformation został wywołany, wartość elementu określona w parametrach wejściowych _claimToExtract_ . |
 
 W poniższym przykładzie transformacja oświadczeń Wyodrębnia element `id` z danych JSON.
 
@@ -229,8 +229,8 @@ Pobiera pierwszy element z tablicy danych JSON.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | inputJsonClaim | string | Elementy Claims, które są używane przez transformację oświadczeń do pobierania elementu z tablicy JSON. |
-| Oświadczenie outputclaim | extractedClaim | string | Element ClaimType, który jest generowany po wywołaniu tego ClaimsTransformation, jest pierwszym elementem w tablicy JSON. |
+| Oświadczenie inputclaim | inputJsonClaim | ciąg | Elementy Claims, które są używane przez transformację oświadczeń do pobierania elementu z tablicy JSON. |
+| Oświadczenie outputclaim | extractedClaim | ciąg | Element ClaimType, który jest generowany po wywołaniu tego ClaimsTransformation, jest pierwszym elementem w tablicy JSON. |
 
 W poniższym przykładzie transformacja oświadczeń wyodrębnia pierwszy element (adres e-mail) z tablicy JSON `["someone@example.com", "Someone", 6353399]`.
 
@@ -258,8 +258,8 @@ Konwertuje dane XML do formatu JSON.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | xml | string | Oświadczenia są używane przez transformację oświadczeń do konwersji danych z formatu XML na format JSON. |
-| Oświadczenie outputclaim | json | string | W formacie JSON jest wywoływana wartość oświadczenia, która jest generowana po wywołaniu tej ClaimsTransformation. |
+| Oświadczenie inputclaim | xml | ciąg | Oświadczenia są używane przez transformację oświadczeń do konwersji danych z formatu XML na format JSON. |
+| Oświadczenie outputclaim | kodu | ciąg | W formacie JSON jest wywoływana wartość oświadczenia, która jest generowana po wywołaniu tej ClaimsTransformation. |
 
 ```XML
 <ClaimsTransformation Id="ConvertXmlToJson" TransformationMethod="XmlStringToJsonString">

@@ -1,6 +1,6 @@
 ---
-title: Migrowanie magazynu danych do Gen2
-description: Instrukcje dotyczące migrowania istniejącego magazynu danych do Gen2 i harmonogramu migracji według regionów.
+title: Migrowanie puli SQL do Gen2
+description: Instrukcje dotyczące migrowania istniejącej puli SQL do Gen2 i harmonogramu migracji według regionów.
 services: sql-data-warehouse
 author: mlee3gsd
 ms.author: anjangsh
@@ -10,19 +10,19 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 01/21/2020
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 3f793fd68c83f90b87182647eef47a07eb452f45
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 00180c1791e765240f3f8feac188b9250162408e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314780"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199907"
 ---
-# <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnij magazyn danych do Gen2
+# <a name="upgrade-your-sql-pool-to-gen2"></a>Uaktualnij pulę SQL do Gen2
 
-Firma Microsoft pomaga w zwiększeniu kosztów wejścia/wyjścia magazynu danych na niższym poziomie.  Niższe warstwy obliczeniowe, które mogą obsługiwać wymagające zapytania, są teraz dostępne dla Azure SQL Data Warehouse. Przeczytaj pełną obsługę usługi anonsowanie [niższej warstwy obliczeniowej dla Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Nowa oferta jest dostępna w regionach zanotowanych w poniższej tabeli. W przypadku obsługiwanych regionów istniejące magazyny danych Gen1 można uaktualnić do Gen2 przez:
+Firma Microsoft pomaga w obniżeniu kosztu uruchamiania puli SQL na poziomie pozycji.  Niższe warstwy obliczeniowe mogące obsługiwać zapytania wymagające obsługi są teraz dostępne dla puli SQL. Przeczytaj pełną obsługę usługi anonsowanie [niższej warstwy obliczeniowej dla Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Nowa oferta jest dostępna w regionach zanotowanych w poniższej tabeli. W przypadku obsługiwanych regionów istniejące pule SQL Gen1 można uaktualnić do Gen2 przez:
 
-- **Proces uaktualniania automatycznego:** Automatyczne uaktualnienia nie są uruchamiane zaraz po udostępnieniu usługi w regionie.  Po rozpoczęciu automatycznych uaktualnień w określonym regionie, uaktualnienia poszczególnych magazynów będą odbywać się w ramach wybranego harmonogramu konserwacji.
+- **Proces uaktualniania automatycznego:** Automatyczne uaktualnienia nie są uruchamiane zaraz po udostępnieniu usługi w regionie.  Po rozpoczęciu uaktualnień automatycznych w określonym regionie poszczególne uaktualnienia magazynu danych będą wykonywane w ramach wybranego harmonogramu konserwacji.
 - [**Samodzielne uaktualnienie do Gen2:** ](#self-upgrade-to-gen2) Możesz określić, kiedy należy przeprowadzić uaktualnienie, wykonując samodzielne uaktualnienie do Gen2. Jeśli region nie jest jeszcze obsługiwany, można przywrócić z punktu przywracania bezpośrednio do wystąpienia Gen2 w obsługiwanym regionie.
 
 ## <a name="automated-schedule-and-region-availability-table"></a>Automatyczne planowanie i tabela dostępności regionów
@@ -37,14 +37,14 @@ Poniższa tabela podsumowuje według regionu, gdy dolna warstwa obliczeniowa Gen
 | Chiny Wschodnie |\* |\* |
 | Chiny Północne |\* |\* |
 | Niemcy Środkowe |\* |\* |
-| Niemcy Środkowo-Zachodnie |Dostępna |1 maja 2020 |
-| Indie Zachodnie |Dostępna |1 maja 2020  |
+| Niemcy Środkowo-Zachodnie |Dostępne |1 maja 2020 |
+| Indie Zachodnie |Dostępne |1 maja 2020  |
 
 ## <a name="automatic-upgrade-process"></a>Proces automatycznego uaktualniania
 
-Zgodnie z powyższym wykresem dostępności będziemy planować zautomatyzowane uaktualnienia dla wystąpień Gen1. Aby uniknąć nieoczekiwanych przerw w dostępności magazynu danych, zautomatyzowane uaktualnienia zostaną zaplanowane podczas harmonogramu konserwacji. Możliwość tworzenia nowego wystąpienia Gen1 zostanie wyłączona w regionach, które przechodzą na funkcję autouaktualniania do Gen2. Gen1 będzie przestarzałe po zakończeniu automatycznych uaktualnień. Aby uzyskać więcej informacji na temat harmonogramów, zobacz [Wyświetlanie harmonogramu konserwacji](viewing-maintenance-schedule.md)
+Zgodnie z powyższym wykresem dostępności będziemy planować zautomatyzowane uaktualnienia dla wystąpień Gen1. Aby uniknąć nieoczekiwanych przerw w dostępności puli SQL, zautomatyzowane uaktualnienia zostaną zaplanowane w harmonogramie konserwacji. Możliwość tworzenia nowego wystąpienia Gen1 zostanie wyłączona w regionach, które przechodzą na funkcję autouaktualniania do Gen2. Gen1 będzie przestarzałe po zakończeniu automatycznych uaktualnień. Aby uzyskać więcej informacji na temat harmonogramów, zobacz [Wyświetlanie harmonogramu konserwacji](viewing-maintenance-schedule.md)
 
-Proces uaktualniania obejmuje krótki spadek łączności (około 5 minut), co spowoduje ponowne uruchomienie magazynu danych.  Po ponownym uruchomieniu magazynu danych będzie on w pełni dostępny do użycia. Jednak może wystąpić spadek wydajności, podczas gdy proces uaktualniania kontynuuje uaktualnianie plików danych w tle. Łączny okres obniżonej wydajności zależy od rozmiaru plików danych.
+Proces uaktualniania obejmuje krótki spadek łączności (około 5 minut), co spowoduje ponowne uruchomienie puli SQL.  Po ponownym uruchomieniu puli SQL będzie ona w pełni dostępna do użycia. Jednak może wystąpić spadek wydajności, podczas gdy proces uaktualniania kontynuuje uaktualnianie plików danych w tle. Łączny okres obniżonej wydajności zależy od rozmiaru plików danych.
 
 Proces uaktualniania pliku danych można również przyspieszyć, uruchamiając polecenie [ALTER index Rebuild](sql-data-warehouse-tables-index.md) na wszystkich podstawowych tabelach magazynu kolumn przy użyciu większego poziomu SLO i klasy zasobów po ponownym uruchomieniu.
 
@@ -53,14 +53,14 @@ Proces uaktualniania pliku danych można również przyspieszyć, uruchamiając 
 
 ## <a name="self-upgrade-to-gen2"></a>Samodzielne uaktualnienie do Gen2
 
-Możesz wybrać opcję samouaktualnienia, wykonując następujące kroki w istniejącym magazynie danych Gen1. W przypadku wybrania opcji samodzielnego uaktualniania należy ją ukończyć przed rozpoczęciem procesu uaktualniania automatycznego w Twoim regionie. Dzięki temu można uniknąć ryzyka, że automatyczne uaktualnienia powodują konflikt.
+Możesz wybrać opcję samouaktualnienia, wykonując następujące kroki w istniejącej puli SQL Gen1. W przypadku wybrania opcji samodzielnego uaktualniania należy ją ukończyć przed rozpoczęciem procesu uaktualniania automatycznego w Twoim regionie. Dzięki temu można uniknąć ryzyka, że automatyczne uaktualnienia powodują konflikt.
 
-Podczas przeprowadzania samodzielnego uaktualniania dostępne są dwie opcje.  Możesz uaktualnić bieżący magazyn danych w miejscu lub można przywrócić magazyn danych Gen1 do wystąpienia Gen2.
+Podczas przeprowadzania samodzielnego uaktualniania dostępne są dwie opcje.  Możesz uaktualnić bieżącą pulę SQL w miejscu lub przywrócić pulę Gen1 SQL do wystąpienia Gen2.
 
-- [Uaktualnij w miejscu](upgrade-to-latest-generation.md) — ta opcja spowoduje uaktualnienie istniejącego magazynu danych Gen1 do Gen2. Proces uaktualniania obejmuje krótki spadek łączności (około 5 minut), co spowoduje ponowne uruchomienie magazynu danych.  Po ponownym uruchomieniu magazynu danych będzie on w pełni dostępny do użycia. Jeśli wystąpią problemy podczas uaktualniania, Otwórz [żądanie obsługi](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) i odwołuje się do "Gen2 upgrade" jako możliwej przyczyny.
-- [Uaktualnienie z punktu przywracania](sql-data-warehouse-restore.md) — Utwórz punkt przywracania zdefiniowany przez użytkownika w bieżącym magazynie danych Gen1, a następnie Przywróć bezpośrednio do wystąpienia Gen2. Istniejący magazyn danych Gen1 pozostanie na miejscu. Po zakończeniu przywracania magazyn danych Gen2 będzie w pełni dostępny do użycia.  Po uruchomieniu wszystkich procesów testowania i walidacji w przywracanym wystąpieniu Gen2 można usunąć oryginalne wystąpienie Gen1.
+- [Uaktualnienie w miejscu](upgrade-to-latest-generation.md) — ta opcja spowoduje uaktualnienie istniejącej puli SQL Gen1 do Gen2. Proces uaktualniania obejmuje krótki spadek łączności (około 5 minut), co spowoduje ponowne uruchomienie puli SQL.  Po ponownym uruchomieniu puli SQL będzie ona w pełni dostępna do użycia. Jeśli wystąpią problemy podczas uaktualniania, Otwórz [żądanie obsługi](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) i odwołuje się do "Gen2 upgrade" jako możliwej przyczyny.
+- [Uaktualnienie z punktu przywracania](sql-data-warehouse-restore.md) — Utwórz punkt przywracania zdefiniowany przez użytkownika w bieżącej puli SQL Gen1, a następnie Przywróć bezpośrednio do wystąpienia Gen2. Istniejąca Pula Gen1 SQL zostanie zachowana. Po zakończeniu przywracania Pula SQL Gen2 będzie w pełni dostępna do użycia.  Po uruchomieniu wszystkich procesów testowania i walidacji w przywracanym wystąpieniu Gen2 można usunąć oryginalne wystąpienie Gen1.
 
-   - Krok 1. z Azure Portal [Utwórz punkt przywracania zdefiniowany przez użytkownika](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal).
+   - Krok 1. z Azure Portal [Utwórz punkt przywracania zdefiniowany przez użytkownika](sql-data-warehouse-restore-active-paused-dw.md).
    - Krok 2. podczas przywracania z punktu przywracania zdefiniowanego przez użytkownika Ustaw poziom wydajności na preferowaną warstwę Gen2.
 
 Może nastąpić okresowe pogorszenie wydajności, gdy w tle będzie odbywać się uaktualnianie plików danych. Łączny okres obniżonej wydajności zależy od rozmiaru plików danych.
@@ -70,7 +70,7 @@ Aby przyspieszyć proces migracji danych w tle, można natychmiast wymusić prze
 > [!NOTE]
 > Instrukcja ALTER index Rebuild jest operacją w trybie offline, a tabele nie będą dostępne do momentu zakończenia odbudowy.
 
-Jeśli wystąpią problemy z magazynem danych, Utwórz [żądanie pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) i odwołuje się do "Gen2 upgrade" jako możliwej przyczyny.
+Jeśli wystąpią problemy z pulą SQL, Utwórz [żądanie pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) i odwołuje się do "Gen2 upgrade" jako możliwej przyczyny.
 
 Aby uzyskać więcej informacji, zobacz [uaktualnianie do Gen2](upgrade-to-latest-generation.md).
 
@@ -87,12 +87,12 @@ Aby uzyskać więcej informacji, zobacz [uaktualnianie do Gen2](upgrade-to-lates
 **P: jak długo trwa samodzielne uaktualnianie?**
 
 - Odp.: można uaktualnić miejsce lub uaktualnić z punktu przywracania.  
-   - Uaktualnienie w miejscu spowoduje chwilowe wstrzymanie i wznowienie działania hurtowni danych.  Proces w tle będzie kontynuowany, gdy magazyn danych jest w trybie online.  
+   - Uaktualnienie w miejscu spowoduje chwilowe wstrzymanie i wznowienie puli SQL.  Proces w tle będzie kontynuowany, gdy pula SQL jest w trybie online.  
    - Trwa to dłużej, Jeśli uaktualniasz punkt przywracania, ponieważ uaktualnienie przejdzie przez proces pełnego przywracania.
 
 **P: jak długo trwa Autouaktualnianie?**
 
-- Odp.: rzeczywisty czas przestoju w przypadku uaktualnienia to przedział czasu potrzebny do wstrzymania i wznowienia działania usługi, która wynosi od 5 do 10 minut. Po krótkim czasie przestoju proces w tle uruchomi migrację magazynu. Czas działania procesu w tle zależy od rozmiaru magazynu danych.
+- Odp.: rzeczywisty czas przestoju w przypadku uaktualnienia to przedział czasu potrzebny do wstrzymania i wznowienia działania usługi, która wynosi od 5 do 10 minut. Po krótkim czasie przestoju proces w tle uruchomi migrację magazynu. Czas trwania procesu w tle zależy od rozmiaru puli SQL.
 
 **P: Kiedy to automatyczne uaktualnienie zostanie wykonane?**
 
@@ -106,7 +106,7 @@ Aby uzyskać więcej informacji, zobacz [uaktualnianie do Gen2](upgrade-to-lates
 - Odp.: Jeśli używasz wartości DW600 lub DW1200 na Gen1, zaleca się użycie odpowiednio DW500c lub DW1000c, ponieważ Gen2 oferuje więcej pamięci, zasobów i wyższą wydajność niż Gen1.
 
 **P: Czy można wyłączyć geograficzną kopię zapasową?**
-- Odpowiedź: nie. Geograficzna kopia zapasowa to funkcja korporacyjna, która pozwala zachować dostępność magazynu danych w przypadku, gdy region staną się niedostępne. Otwórz [żądanie pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) , jeśli chcesz uzyskać więcej problemów.
+- Odpowiedź: nie. Geograficzna kopia zapasowa to funkcja korporacyjna, która zachowuje dostępność puli SQL w przypadku, gdy region staną się niedostępne. Otwórz [żądanie pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md) , jeśli chcesz uzyskać więcej problemów.
 
 **P: czy istnieje różnica w składni T-SQL między Gen1 i Gen2?**
 
@@ -128,5 +128,5 @@ Aby uzyskać więcej informacji, zobacz [uaktualnianie do Gen2](upgrade-to-lates
 - [Przejrzyj przed rozpoczęciem migracji](upgrade-to-latest-generation.md#before-you-begin)
 - [Uaktualnij w miejscu i Uaktualnij z punktu przywracania](upgrade-to-latest-generation.md)
 - [Utwórz punkt przywracania zdefiniowany przez użytkownika](sql-data-warehouse-restore-points.md)
-- [Dowiedz się, jak przywrócić do Gen2](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal)
+- [Dowiedz się, jak przywrócić do Gen2](sql-data-warehouse-restore-active-paused-dw.md)
 - [Otwórz żądanie obsługi SQL Data Warehouse](https://go.microsoft.com/fwlink/?linkid=857950)

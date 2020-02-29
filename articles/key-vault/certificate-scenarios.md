@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b6a44bc31e21a63b12a0d06c537cc026ed77e386
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 32a453678fe3702fcb4b77f0b04a8ed5c889ef59
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832852"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197627"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Wprowadzenie do Key Vault certyfikatów
 Poniższe scenariusze przedstawiają kilka podstawowych zastosowań usługi zarządzania certyfikatami Key Vault, w tym dodatkowe kroki wymagane do utworzenia pierwszego certyfikatu w magazynie kluczy.
@@ -63,7 +64,7 @@ Uwaga — Ten proces, przez krok 3,1, jest operacją jednorazowej.
 **Krok 4** . Poniższe opisy odnoszą się do zielonych numerowanych kroków na powyższym diagramie.  
   (1) — na powyższym diagramie aplikacja tworzy certyfikat, który wewnętrznie zaczyna od utworzenia klucza w magazynie kluczy.  
   (2) — Key Vault wysyła żądanie certyfikatu TLS/SSL do urzędu certyfikacji.  
-  (3) — Twoja aplikacja sonduje, w pętli i w procesie oczekiwania, do Key Vault do ukończenia certyfikatu. Tworzenie certyfikatu kończy się, gdy usługa Key Vault otrzyma odpowiedź od urzędu certyfikacji z certyfikatem X.509.  
+  (3) — Twoja aplikacja sonduje, w pętli i w procesie oczekiwania, do Key Vault do ukończenia certyfikatu. Tworzenie certyfikatu kończy się, gdy Key Vault otrzymuje odpowiedź urzędu certyfikacji z certyfikatem x509.  
   (4) — urząd certyfikacji odpowiada na żądanie certyfikatu TLS/SSL Key Vault przy użyciu certyfikatu x509 TLS/SSL.  
   (5) — nowe utworzenie certyfikatu kończy się na połączeniu z połączeniem certyfikatu x509 urzędu certyfikacji.  
 

@@ -3,20 +3,20 @@ title: TechnicalProfiles
 titleSuffix: Azure AD B2C
 description: Określ element TechnicalProfiles zasad niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/17/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5dc9bc56ac717d355f0fb0ebcc482430662378ca
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: d4dbe5a62e69f4c30d55fa1318ca79c06640a10f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425616"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186747"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -75,15 +75,15 @@ Element **TechnicalProfiles** zawiera zestaw profilów technicznych obsługiwany
 
 Element **profilu technicznym** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 |---------|---------|---------|
-| Identyfikator | Tak | Unikatowy identyfikator profilu technicznego. Profil techniczny może być przywoływany przy użyciu tego identyfikatora z innych elementów w pliku zasad. Na przykład **OrchestrationSteps** i **ValidationTechnicalProfile**. |
+| Identyfikator | Yes | Unikatowy identyfikator profilu technicznego. Profil techniczny może być przywoływany przy użyciu tego identyfikatora z innych elementów w pliku zasad. Na przykład **OrchestrationSteps** i **ValidationTechnicalProfile**. |
 
 **Profilu technicznym** zawiera następujące elementy:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| Domena | 0:1 | Nazwa domeny profilu technicznego. Na przykład jeśli Twój profil techniczny określa dostawcę tożsamości w serwisie Facebook, nazwa domeny to Facebook.com. |
+| Domain | 0:1 | Nazwa domeny profilu technicznego. Na przykład jeśli Twój profil techniczny określa dostawcę tożsamości w serwisie Facebook, nazwa domeny to Facebook.com. |
 | DisplayName | 1:1 | Nazwa profilu technicznego, który może być wyświetlany użytkownikom. |
 | Opis | 0:1 | Opis profilu technicznego, który może być wyświetlany użytkownikom. |
 | Protokół | 0:1 | Protokół używany do komunikacji z drugą stroną. |
@@ -109,9 +109,9 @@ Element **profilu technicznym** zawiera następujący atrybut:
 
 Element **Protocol** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Name (Nazwa) | Tak | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C, który jest używany jako część profilu technicznego. Możliwe wartości: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`lub `None`. |
+| Name (Nazwa) | Yes | Nazwa prawidłowego protokołu obsługiwanego przez Azure AD B2C, który jest używany jako część profilu technicznego. Możliwe wartości: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`lub `None`. |
 | Jścia | Nie | Jeśli nazwa protokołu jest ustawiona na `Proprietary`, określ w pełni kwalifikowaną nazwę zestawu, który jest używany przez Azure AD B2C do określenia procedury obsługi protokołu. |
 
 ## <a name="metadata"></a>Metadane
@@ -126,9 +126,9 @@ Element **Metadata** zawiera następujące elementy:
 
 Element **Item** elementu **Metadata** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Klucz | Tak | Klucz metadanych. Zobacz każdy typ profilu technicznego, aby wyświetlić listę elementów metadanych. |
+| Klucz | Yes | Klucz metadanych. Zobacz każdy typ profilu technicznego, aby wyświetlić listę elementów metadanych. |
 
 ## <a name="cryptographickeys"></a>CryptographicKeys
 
@@ -142,10 +142,10 @@ Element **CryptographicKeys** zawiera następujący element:
 
 Element **Key** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
 | Identyfikator | Nie | Unikatowy identyfikator konkretnej pary kluczy, do której odwołuje się inne elementy w pliku zasad. |
-| Identyfikatorze storagereferenceid | Tak | Identyfikator kontenera klucza magazynu, do którego odwołuje się inne elementy w pliku zasad. |
+| Identyfikatorze storagereferenceid | Yes | Identyfikator kontenera klucza magazynu, do którego odwołuje się inne elementy w pliku zasad. |
 
 ## <a name="inputclaimstransformations"></a>InputClaimsTransformations
 
@@ -159,9 +159,9 @@ Element **InputClaimsTransformations** zawiera następujący element:
 
 Element **InputClaimsTransformation** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| ReferenceId | Tak | Identyfikator transformacji oświadczeń zdefiniowany już w pliku zasad lub nadrzędnym pliku zasad. |
+| ReferenceId | Yes | Identyfikator transformacji oświadczeń zdefiniowany już w pliku zasad lub nadrzędnym pliku zasad. |
 
 ## <a name="inputclaims"></a>InputClaims
 
@@ -175,9 +175,9 @@ Element **InputClaims** zawiera następujący element:
 
 Element **oświadczenie inputclaim** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Tak | Identyfikator typu "Claim" jest już zdefiniowany w sekcji ClaimsSchema w pliku zasad lub nadrzędnym pliku zasad. |
+| ClaimTypeReferenceId | Yes | Identyfikator typu "Claim" jest już zdefiniowany w sekcji ClaimsSchema w pliku zasad lub nadrzędnym pliku zasad. |
 | DefaultValue | Nie | Wartość domyślna, która ma zostać użyta do utworzenia żądania, jeśli nie istnieje w nim zastrzeżenie wskazywane przez ClaimTypeReferenceId, aby uzyskane wystąpienie może być używane jako oświadczenie inputclaim przez profil techniczny. |
 | PartnerClaimType | Nie | Identyfikator typu dla partnera zewnętrznego, na który jest mapowany określony typ roszczeń zasad. Jeśli atrybut PartnerClaimType nie zostanie określony, określony typ roszczeń zasad jest mapowany na typ wiązania partnera o tej samej nazwie. Użyj tej właściwości, gdy nazwa typu usługi jest inna od drugiej strony. Na przykład nazwa pierwszego wystąpienia to "imięname", podczas gdy Partner używa roszczeń o nazwie "first_name". |
 
@@ -195,11 +195,11 @@ Funkcja DislayClaims jest obecnie w **wersji zapoznawczej**.
 
 Element **DisplayClaim** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Nie | Identyfikator typu "Claim" jest już zdefiniowany w sekcji ClaimsSchema w pliku zasad lub nadrzędnym pliku zasad. |
 | DisplayControlReferenceId | Nie | Identyfikator [kontrolki wyświetlania](display-controls.md) zdefiniowany już w sekcji ClaimsSchema w pliku zasad lub nadrzędnym pliku zasad. |
-| Wymagane | Nie | Wskazuje, czy jest wymagane żądanie wyświetlania. |
+| Wymagany | Nie | Wskazuje, czy jest wymagane żądanie wyświetlania. |
 
 **DisplayClaim** wymaga określenia `ClaimTypeReferenceId` lub `DisplayControlReferenceId`.
 
@@ -215,9 +215,9 @@ Element **PersistedClaims** zawiera następujące elementy:
 
 Element **PersistedClaim** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Tak | Identyfikator typu "Claim" jest już zdefiniowany w sekcji ClaimsSchema w pliku zasad lub nadrzędnym pliku zasad. |
+| ClaimTypeReferenceId | Yes | Identyfikator typu "Claim" jest już zdefiniowany w sekcji ClaimsSchema w pliku zasad lub nadrzędnym pliku zasad. |
 | DefaultValue | Nie | Wartość domyślna, która ma zostać użyta do utworzenia żądania, jeśli nie istnieje w nim zastrzeżenie wskazywane przez ClaimTypeReferenceId, aby uzyskane wystąpienie może być używane jako oświadczenie inputclaim przez profil techniczny. |
 | PartnerClaimType | Nie | Identyfikator typu dla partnera zewnętrznego, na który jest mapowany określony typ roszczeń zasad. Jeśli atrybut PartnerClaimType nie zostanie określony, określony typ roszczeń zasad jest mapowany na typ wiązania partnera o tej samej nazwie. Użyj tej właściwości, gdy nazwa typu usługi jest inna od drugiej strony. Na przykład nazwa pierwszego wystąpienia to "imięname", podczas gdy Partner używa roszczeń o nazwie "first_name". |
 
@@ -233,9 +233,9 @@ Element **OutputClaims** zawiera następujący element:
 
 Element **oświadczenie outputclaim** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Tak | Identyfikator typu "Claim" jest już zdefiniowany w sekcji ClaimsSchema w pliku zasad lub nadrzędnym pliku zasad. |
+| ClaimTypeReferenceId | Yes | Identyfikator typu "Claim" jest już zdefiniowany w sekcji ClaimsSchema w pliku zasad lub nadrzędnym pliku zasad. |
 | DefaultValue | Nie | Wartość domyślna, która ma zostać użyta do utworzenia żądania, jeśli nie istnieje w nim zastrzeżenie wskazywane przez ClaimTypeReferenceId, aby uzyskane wystąpienie może być używane jako oświadczenie inputclaim przez profil techniczny. |
 |AlwaysUseDefaultValue |Nie |Wymuś użycie wartości domyślnej.  |
 | PartnerClaimType | Nie | Identyfikator typu dla partnera zewnętrznego, na który jest mapowany określony typ roszczeń zasad. Jeśli atrybut PartnerClaimType nie zostanie określony, określony typ roszczeń zasad jest mapowany na typ wiązania partnera o tej samej nazwie. Użyj tej właściwości, gdy nazwa typu usługi jest inna od drugiej strony. Na przykład nazwa pierwszego wystąpienia to "imięname", podczas gdy Partner używa roszczeń o nazwie "first_name". |
@@ -252,9 +252,9 @@ Element **OutputClaimsTransformations** zawiera następujący element:
 
 Element **OutputClaimsTransformation** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| ReferenceId | Tak | Identyfikator transformacji oświadczeń zdefiniowany już w pliku zasad lub nadrzędnym pliku zasad. |
+| ReferenceId | Yes | Identyfikator transformacji oświadczeń zdefiniowany już w pliku zasad lub nadrzędnym pliku zasad. |
 
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
@@ -268,33 +268,33 @@ Element **ValidationTechnicalProfiles** zawiera następujący element:
 
 Element **ValidationTechnicalProfile** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| ReferenceId | Tak | Identyfikator profilu technicznego jest już zdefiniowany w pliku zasad lub nadrzędnym pliku zasad. |
+| ReferenceId | Yes | Identyfikator profilu technicznego jest już zdefiniowany w pliku zasad lub nadrzędnym pliku zasad. |
 
 ## <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 **SubjectNamingInfo** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Claim | Tak | Identyfikator typu "Claim" jest już zdefiniowany w sekcji ClaimsSchema w pliku zasad. |
+| Claim | Yes | Identyfikator typu "Claim" jest już zdefiniowany w sekcji ClaimsSchema w pliku zasad. |
 
 ## <a name="includetechnicalprofile"></a>IncludeTechnicalProfile
 
 Element **IncludeTechnicalProfile** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| ReferenceId | Tak | Identyfikator profilu technicznego jest już zdefiniowany w pliku zasad lub nadrzędnym pliku zasad. |
+| ReferenceId | Yes | Identyfikator profilu technicznego jest już zdefiniowany w pliku zasad lub nadrzędnym pliku zasad. |
 
 ## <a name="usetechnicalprofileforsessionmanagement"></a>UseTechnicalProfileForSessionManagement
 
 Element **UseTechnicalProfileForSessionManagement** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| ReferenceId | Tak | Identyfikator profilu technicznego jest już zdefiniowany w pliku zasad lub nadrzędnym pliku zasad. |
+| ReferenceId | Yes | Identyfikator profilu technicznego jest już zdefiniowany w pliku zasad lub nadrzędnym pliku zasad. |
 
 ## <a name="enabledforuserjourneys"></a>EnabledForUserJourneys
 

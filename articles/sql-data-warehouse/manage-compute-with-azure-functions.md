@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: Zarządzanie obliczeniami przy użyciu Azure Functions'
-description: Jak zarządzać zasobami obliczeniowymi magazynu danych przy użyciu usługi Azure Functions.
+description: Jak używać usługi Azure Functions do zarządzania obliczeniami puli SQL w usłudze Azure Synapse Analytics.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -10,27 +10,27 @@ ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: bc350ed092c063dcc7eca479f064114be9eb28f5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: a08c2c3c0167f0d82fe901e19b02db22b0ad56c5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693021"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193240"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Aby zarządzać zasobami obliczeniowymi w programie Azure SQL Data Warehouse, użyj Azure Functions
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Używanie Azure Functions do zarządzania zasobami obliczeniowymi w puli SQL usługi Azure Synapse Analytics
 
-Ten samouczek używa Azure Functions do zarządzania zasobami obliczeniowymi dla hurtowni danych w Azure SQL Data Warehouse.
+Ten samouczek używa Azure Functions do zarządzania zasobami obliczeniowymi dla puli SQL w usłudze Azure Synapse Analytics.
 
-Aby móc używać aplikacji funkcji platformy Azure z usługą SQL Data Warehouse, należy utworzyć [konto nazwy głównej usługi](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) z dostępem współautora w ramach tej samej subskrypcji, w której znajduje się wystąpienie magazynu danych. 
+Aby można było korzystać z usługi Azure aplikacja funkcji z pulą SQL, należy utworzyć [konto głównej usługi](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) z dostępem współautora w ramach tej samej subskrypcji, w której znajduje się wystąpienie puli SQL. 
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Wdrażanie skalowania opartego na czasomierzu przy użyciu szablonu Azure Resource Manager
 
 Aby wdrożyć szablon, potrzebne są następujące informacje:
 
-- Nazwa grupy zasobów, w której znajduje się wystąpienie usługi SQL DW
-- Nazwa serwera logicznego, na którym znajduje się wystąpienie usługi SQL DW
-- Nazwa wystąpienia usługi SQL DW
+- Nazwa grupy zasobów, w której znajduje się wystąpienie puli SQL
+- Nazwa serwera logicznego, w którym znajduje się wystąpienie puli SQL
+- Nazwa wystąpienia puli SQL
 - Identyfikator dzierżawy (identyfikator katalogu ) usługi Azure Active Directory
 - Identyfikator subskrypcji 
 - Identyfikator aplikacji nazwy głównej usługi
@@ -119,17 +119,17 @@ Obecnie szablon zawiera tylko dwie funkcje skalowania. Korzystając z tych funkc
 5. Ustaw dla zmiennej operacji odpowiednie zachowanie w następujący sposób:
 
    ```javascript
-   // Resume the data warehouse instance
+   // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
    }
 
-   // Pause the data warehouse instance
+   // Pause the SQL pool instance
    var operation = {
        "operationType": "PauseDw"
    }
 
-   // Scale the data warehouse instance to DW600
+   // Scale the SQL pool instance to DW600
    var operation = {
        "operationType": "ScaleDw",
        "ServiceLevelObjective": "DW600"
@@ -177,7 +177,7 @@ Skalowanie w górę o godz. 8:00 do wartości DW1000, jednokrotne skalowanie w d
 
 Dowiedz się więcej o funkcjach platformy Azure z [wyzwalaczem czasomierza](../azure-functions/functions-create-scheduled-function.md).
 
-Zapoznaj się z [repozytorium przykładów](https://github.com/Microsoft/sql-data-warehouse-samples) usługi SQL Data Warehouse.
+Wyewidencjonowywanie [repozytorium przykładów](https://github.com/Microsoft/sql-data-warehouse-samples)puli SQL.
 
 
 

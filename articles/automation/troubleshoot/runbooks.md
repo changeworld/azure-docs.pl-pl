@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 571be831d337c71a084780da18b480cdd1e42d20
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: b7d876c7f865b8368451ea1b6cc96ade89a59aa8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365214"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190963"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami Runbook
 
@@ -471,7 +471,7 @@ Element Runbook jest wyświetlany w stanie **zatrzymanym** po uruchomieniu przez
 The job was evicted and subsequently reached a Stopped state. The job cannot continue running
 ```
 
-To zachowanie jest zaprojektowana w piaskownicy platformy Azure z powodu "uczciwego udziału" monitorowania procesów w ramach Azure Automation. Jeśli jest wykonywana dłużej niż trzy godziny, prawidłowy udział automatycznie zatrzyma element Runbook. Stan elementu Runbook, który jest wcześniejszy niż limit czasu dla udziału, różni się od typu elementu Runbook. Elementy Runbook programu PowerShell i języka Python mają ustawiony stan **zatrzymany** . Elementy Runbook przepływu pracy programu PowerShell są ustawione na wartość **Niepowodzenie**.
+To zachowanie jest zaprojektowana w piaskownicy platformy Azure ze względu na [rzetelne](../automation-runbook-execution.md#fair-share) monitorowanie procesów w ramach Azure Automation. Jeśli jest wykonywana dłużej niż trzy godziny, prawidłowy udział automatycznie zatrzyma element Runbook. Stan elementu Runbook, który przekracza limit czasu udostępniania, różni się od typu elementu Runbook. Elementy Runbook programu PowerShell i języka Python mają ustawiony stan **zatrzymany** . Elementy Runbook przepływu pracy programu PowerShell są ustawione na wartość **Niepowodzenie**.
 
 ### <a name="cause"></a>Przyczyna
 
@@ -481,7 +481,7 @@ Element Runbook działał ponad 3-godzinny limit dozwolony przez sprawiedliwy ud
 
 Jednym z zalecanych rozwiązań jest uruchomienie elementu Runbook w [hybrydowym procesie roboczym elementu Runbook](../automation-hrw-run-runbooks.md).
 
-Hybrydowe procesy robocze są ograniczone przez 3-godzinny limit elementów Runbook [udziału](../automation-runbook-execution.md#fair-share) w usłudze Azure Portal. Elementy Runbook działające na hybrydowych procesach roboczych elementów Runbook należy opracować do obsługi zachowań ponownego uruchamiania w przypadku wystąpienia nieoczekiwanych problemów z infrastrukturą lokalną.
+Hybrydowe procesy robocze nie są ograniczone przez 3-godzinne ograniczenia dotyczące udziału w usłudze Azure Portal. Elementy Runbook działające na hybrydowych procesach roboczych elementów Runbook należy opracować do obsługi zachowań ponownego uruchamiania w przypadku wystąpienia nieoczekiwanych problemów z infrastrukturą lokalną.
 
 Kolejną opcją jest optymalizacja elementu Runbook przez utworzenie [podrzędnych elementów Runbook](../automation-child-runbooks.md). Jeśli element Runbook pętle za pomocą tej samej funkcji w kilku zasobach, takich jak operacja bazy danych na kilku bazach danych, można przenieść tę funkcję do podrzędnego elementu Runbook. Każdy z tych podrzędnych elementów Runbook jest wykonywany równolegle w oddzielnych procesach. To zachowanie zmniejsza łączny czas pracy nadrzędnego elementu Runbook.
 

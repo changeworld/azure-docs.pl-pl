@@ -3,20 +3,20 @@ title: Konfigurowanie logowania za pomocą konta usługi Twitter przy użyciu za
 titleSuffix: Azure AD B2C
 description: Skonfiguruj logowanie za pomocą konta usługi Twitter przy użyciu zasad niestandardowych w programie Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bae7a235ee42ca02dc72fcbc8d9a694321571ac4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 85af3457f83f06c107f8b4aa9bd88a9f915c776f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849567"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187937"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania za pomocą konta usługi Twitter przy użyciu zasad niestandardowych w programie Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Aby używać usługi Twitter jako dostawcy tożsamości w Azure AD B2C, musisz u
 
 Należy przechowywać klucz tajny, który został wcześniej zarejestrowany w dzierżawie Azure AD B2C.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. Upewnij się, że używasz katalogu zawierającego dzierżawcę Azure AD B2C. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog, w którym znajduje się Twoja dzierżawa.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Na stronie Przegląd wybierz pozycję **Struktura środowiska tożsamości**.
@@ -55,7 +55,7 @@ Należy przechowywać klucz tajny, który został wcześniej zarejestrowany w dz
 7. Wprowadź **nazwę** klucza zasad. Na przykład `TwitterSecret`. Prefiks `B2C_1A_` jest automatycznie dodawany do nazwy klucza.
 8. W **kluczu tajnym**wprowadź wcześniej zarejestrowany klucz tajny klienta.
 9. W obszarze **użycie klucza**wybierz pozycję `Encryption`.
-10. Kliknij pozycję **Utwórz**.
+10. Kliknij przycisk **Utwórz**.
 
 ## <a name="add-a-claims-provider"></a>Dodawanie dostawcy oświadczeń
 

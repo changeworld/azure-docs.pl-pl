@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819badb85e532275b4d5d6ca84c3e6e7fe527fa0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c98a583e2aa8ac679842e16d1c0cc36811db90de
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422552"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190589"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Wyświetlanie raportów i dzienników w usłudze Azure AD uprawnień zarządzania
 
@@ -109,5 +109,6 @@ Gdy przypisanie pakietu dostępu użytkownika wygaśnie, zostało anulowane prze
 
 ## <a name="next-steps"></a>Następne kroki
 
+- [Archiwizowanie raportów i dzienników](entitlement-management-logs-and-reporting.md)
 - [Rozwiązywanie problemów z zarządzaniem prawami usługi Azure AD](entitlement-management-troubleshoot.md)
 - [Typowe scenariusze](entitlement-management-scenarios.md)

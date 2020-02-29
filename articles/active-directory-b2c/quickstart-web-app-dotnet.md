@@ -3,20 +3,20 @@ title: 'Szybki Start: Konfigurowanie logowania dla aplikacji sieci Web ASP.NET'
 titleSuffix: Azure AD B2C
 description: W tym przewodniku Szybki Start Uruchom przykładową aplikację sieci Web ASP.NET, która używa Azure Active Directory B2C w celu zapewnienia logowania do konta.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7ee56e69befb220a742077326956efa996979105
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 197155650bf7b8d113f96dbcfd6d9e2b58924b7f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850174"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187206"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Szybki Start: Konfigurowanie logowania dla aplikacji ASP.NET przy użyciu Azure Active Directory B2C
 

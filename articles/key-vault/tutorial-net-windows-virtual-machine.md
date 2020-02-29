@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 5082ed06b4ce5baf3869fc035654be3c7a45f29f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9d3e9484fc6726241ff9bc1eafc56fce92d711cd
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845293"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198103"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Samouczek: używanie Azure Key Vault z maszyną wirtualną z systemem Windows w środowisku .NET
 
@@ -40,7 +41,7 @@ Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Dla systemów Windows, Mac i Linux:
-  * [Git](https://git-scm.com/downloads)
+  * [Usługa Git](https://git-scm.com/downloads)
   * Ten samouczek wymaga uruchomienia interfejsu wiersza polecenia platformy Azure lokalnie. Musisz mieć zainstalowany interfejs wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://review.docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="about-managed-service-identity"></a>Informacje o tożsamości usługi zarządzanej
@@ -57,7 +58,7 @@ Następnie w celu uzyskania tokenu dostępu kod wywołuje lokalną usługę meta
 
 Przed rozpoczęciem kodowania należy utworzyć pewne zasoby, umieścić wpis tajny w magazynie kluczy i przypisać uprawnienia.
 
-### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Aby zalogować się do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure, wpisz:
 
@@ -65,7 +66,7 @@ Aby zalogować się do platformy Azure przy użyciu interfejsu wiersza polecenia
 az login
 ```
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). 
 
@@ -106,7 +107,7 @@ Ten wpis tajny zawiera wartość **MySecret**.
 Utwórz maszynę wirtualną za pomocą jednej z następujących metod:
 
 * [Interfejs wiersza polecenia platformy Azure](../virtual-machines/windows/quick-create-cli.md)
-* [Program PowerShell](../virtual-machines/windows/quick-create-powershell.md)
+* [PowerShell](../virtual-machines/windows/quick-create-powershell.md)
 * [Witryna Azure Portal](../virtual-machines/windows/quick-create-portal.md)
 
 ### <a name="assign-an-identity-to-the-vm"></a>Przypisywanie tożsamości do maszyny wirtualnej

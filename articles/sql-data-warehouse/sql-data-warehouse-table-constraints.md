@@ -1,6 +1,6 @@
 ---
 title: Klucze podstawowe, obce i unikatowe
-description: Obsługa ograniczeń tabeli w Azure SQL Data Warehouse
+description: Obsługa ograniczeń tabeli w analizie SQL w usłudze Azure Synapse Analytics
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,29 +10,29 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 8f3102425c6f984df0f50bc05eeb6f9a5e66d3dd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 0379bed08c3ee6931e931a78a2d2c91664535250
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685490"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198137"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-azure-sql-data-warehouse"></a>Klucz podstawowy, klucz obcy i unikatowy klucz w Azure SQL Data Warehouse
+# <a name="primary-key-foreign-key-and-unique-key-in-sql-analytics"></a>Klucz podstawowy, klucz obcy i unikatowy klucz w usłudze SQL Analytics
 
-Dowiedz się więcej na temat ograniczeń tabeli w Azure SQL Data Warehouse, w tym klucz podstawowy, klucz obcy i unikatowy klucz.
+Dowiedz się więcej o ograniczeniach tabel w analizie SQL, w tym klucz podstawowy, klucz obcy i unikatowy klucz.
 
 ## <a name="table-constraints"></a>Ograniczenia tabeli 
-Azure SQL Data Warehouse obsługuje następujące ograniczenia tabeli: 
+Program SQL Analytics obsługuje następujące ograniczenia tabeli: 
 - KLUCZ podstawowy jest obsługiwany tylko w przypadku, gdy są używane obiekty nieklastrowane i niewymuszone.    
 - Ograniczenie UNIQUE jest obsługiwane tylko przez niewymuszone użycie.   
 
-Ograniczenie klucza obcego nie jest obsługiwane w Azure SQL Data Warehouse.  
+Ograniczenie klucza obcego nie jest obsługiwane w usłudze SQL Analytics.  
 
 ## <a name="remarks"></a>Uwagi
-Posiadanie klucza podstawowego i/lub unikatowego klucza pozwala aparatowi magazynu danych generować optymalny plan wykonywania zapytania.  Wszystkie wartości w kolumnie klucza podstawowego lub unikatowej kolumnie ograniczenia powinny być unikatowe. 
+Posiadanie klucza podstawowego i/lub unikatowego klucza umożliwia aparatowi usługi SQL Analytics generowanie optymalnego planu wykonywania zapytania.  Wszystkie wartości w kolumnie klucza podstawowego lub unikatowej kolumnie ograniczenia powinny być unikatowe. 
 
-Po utworzeniu tabeli z kluczem podstawowym lub ograniczeniem unikatowym w usłudze Azure Data Warehouse użytkownicy muszą upewnić się, że wszystkie wartości w tych kolumnach są unikatowe.  Naruszenie, które może spowodować zwrócenie nieprawidłowego wyniku zapytania.  Ten przykład pokazuje, jak zapytanie może zwracać niedokładne wyniki, jeśli klucz podstawowy lub kolumna ograniczenia UNIQUE zawiera zduplikowane wartości.  
+Po utworzeniu tabeli przy użyciu klucza podstawowego lub ograniczenia UNIQUE w analizie SQL użytkownicy muszą upewnić się, że wszystkie wartości w tych kolumnach są unikatowe.  Naruszenie, które może spowodować zwrócenie nieprawidłowego wyniku zapytania.  Ten przykład pokazuje, jak zapytanie może zwracać niedokładne wyniki, jeśli klucz podstawowy lub kolumna ograniczenia UNIQUE zawiera zduplikowane wartości.  
 
 ```sql
  -- Create table t1
@@ -158,12 +158,12 @@ a1          total
 ```
 
 ## <a name="examples"></a>Przykłady
-Tworzenie tabeli magazynu danych z kluczem podstawowym: 
+Utwórz tabelę analityczną SQL z kluczem podstawowym: 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-Utwórz tabelę magazynu danych z unikatowym ograniczeniem:
+Utwórz tabelę analityczną SQL z unikatowym ograniczeniem:
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -171,4 +171,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>Następne kroki
 
-Następnym krokiem po utworzeniu tabel dla hurtowni danych jest załadowanie danych do tabeli. Aby zapoznać się z samouczkiem ładowania, zobacz [ładowanie danych do SQL Data Warehouse](load-data-wideworldimportersdw.md).
+Po utworzeniu tabel dla bazy danych SQL Analytics następnym krokiem jest załadowanie danych do tabeli. Aby zapoznać się z samouczkiem ładowania, zobacz [ładowanie danych do baz danych usługi SQL Analytics](load-data-wideworldimportersdw.md).

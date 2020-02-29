@@ -1,23 +1,23 @@
 ---
-title: Akcje GitHub & usłudze Azure Kubernetes Service
+title: Akcje GitHub & usługi Azure Kubernetes (wersja zapoznawcza)
 services: azure-dev-spaces
 ms.date: 02/04/2020
 ms.topic: conceptual
 description: Przejrzyj i przetestuj zmiany z żądania ściągnięcia bezpośrednio w usłudze Azure Kubernetes za pomocą akcji usługi GitHub i Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontenery, akcje GitHub, Helm, Siatka usług, routing w sieci usług, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e2b6f47483d2c7b6c4970dac531bada1cecd279e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026102"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196556"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akcje GitHub & usługi Azure Kubernetes (wersja zapoznawcza)
 
 Azure Dev Spaces udostępnia przepływ pracy korzystający z akcji usługi GitHub, które umożliwiają przetestowanie zmian z żądania ściągnięcia bezpośrednio w AKS przed scaleniem żądania ściągnięcia z gałęzią główną repozytorium. Mając działającą aplikację, aby przeglądać zmiany żądania ściągnięcia, można zwiększyć zaufanie zarówno dla deweloperów, jak i członków zespołu. Ta działająca aplikacja może również pomóc członkom zespołu, takim jak Menedżerowie produktów i projektanci, stać się częścią procesu przeglądu podczas wczesnych etapów programowania.
 
-Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
 * Skonfiguruj Azure Dev Spaces w zarządzanym klastrze Kubernetes na platformie Azure.
 * Wdróż dużą aplikację z wieloma mikrousługami w miejscu dev.
@@ -50,7 +50,7 @@ Zapisz wartość *loginServer* z danych wyjściowych, ponieważ jest ona używan
 
 ## <a name="create-a-service-principal-for-authentication"></a>Tworzenie jednostki usługi na potrzeby uwierzytelniania
 
-Użyj [AZ AD Sp Create-for-RBAC][az-ad-sp-create-for-rbac] , aby utworzyć nazwę główną usługi. Przykład:
+Użyj [AZ AD Sp Create-for-RBAC][az-ad-sp-create-for-rbac] , aby utworzyć nazwę główną usługi. Na przykład:
 
 ```cmd
 az ad sp create-for-rbac --sdk-auth --skip-assignment

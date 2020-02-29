@@ -7,19 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fd9bd846beba718cb305907d4d0c5a613d2ef816
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.custom: azure-synapse
+ms.openlocfilehash: 69a200d4fda940f072960da9224f84a22db51647
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029947"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193802"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure Synapse Analytics — Monitorowanie portal zarządzania obciążenia (wersja zapoznawcza)
-W tym artykule wyjaśniono, jak monitorować wykorzystanie zasobów [grupy obciążeń](sql-data-warehouse-workload-isolation.md#workload-groups) i działania zapytań. Aby uzyskać szczegółowe informacje na temat konfigurowania Eksplorator metryk platformy Azure, zobacz artykuł [wprowadzenie do usługi azure Eksplorator metryk](../azure-monitor/platform/metrics-getting-started.md) .  Aby uzyskać szczegółowe informacje na temat monitorowania zużycia zasobów systemowych, zobacz sekcję [użycie zasobów](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization) w dokumentacji dotyczącej monitorowania Azure SQL Data Warehouse.
+W tym artykule wyjaśniono, jak monitorować wykorzystanie zasobów [grupy obciążeń](sql-data-warehouse-workload-isolation.md#workload-groups) i działania zapytań. Aby uzyskać szczegółowe informacje na temat konfigurowania Eksplorator metryk platformy Azure, zobacz artykuł [wprowadzenie do usługi azure Eksplorator metryk](../azure-monitor/platform/metrics-getting-started.md) .  Szczegóły dotyczące monitorowania zużycia zasobów systemowych można znaleźć w sekcji [użycie zasobów](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization) w dokumentacji monitorowania usługi Azure Synapse Analytics.
 Dostępne są dwie różne kategorie metryk grup obciążenia do monitorowania zarządzania obciążeniami: aktywność przydziału zasobów i zapytań.  Te metryki można podzielić i filtrować według grupy obciążeń.  Metryki mogą być podzielone i filtrowane w zależności od tego, czy są zdefiniowane przez system (grupy obciążenia klasy zasobów) czy zdefiniowane przez użytkownika (utworzone przez użytkownika ze składnią [tworzenia grupy obciążeń](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) ).
 
 ## <a name="workload-management-metric-definitions"></a>Definicje metryk zarządzania obciążeniami

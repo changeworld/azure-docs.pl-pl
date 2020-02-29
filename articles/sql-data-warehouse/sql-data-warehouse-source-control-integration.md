@@ -1,6 +1,6 @@
 ---
 title: Integracja kontroli źródła
-description: Środowisko DevOps Database klasy korporacyjnej dla SQL Data Warehouse z integracją natywnej kontroli źródła przy użyciu Azure Repos (git i GitHub).
+description: Środowisko DevOps Database klasy korporacyjnej dla puli SQL z integracją natywnej kontroli źródła przy użyciu Azure Repos (git i GitHub).
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fc1fdddc7a157828fcc4770c4e8237af9a45fdc3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1a4939e8c349f36fe745becb811717983caa95c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720031"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198227"
 ---
-# <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Integracja kontroli źródła dla Azure SQL Data Warehouse
+# <a name="source-control-integration-for-sql-pool"></a>Integracja kontroli źródła dla puli SQL
 
-W tym samouczku opisano sposób integrowania projektu bazy danych SQL Server Data Tools (SSDT) z kontrolą źródła.  Integracja kontroli źródła to pierwszy etap tworzenia potoku ciągłej integracji i wdrażania przy użyciu SQL Data Warehouse. 
+W tym samouczku opisano sposób integrowania projektu bazy danych SQL Server Data Tools (SSDT) z kontrolą źródła.  Integracja kontroli źródła to pierwszy krok w tworzeniu potoku ciągłej integracji i wdrażania przy użyciu zasobu puli SQL w usłudze Azure Synapse Analytics. 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -81,4 +81,4 @@ W tym samouczku opisano sposób integrowania projektu bazy danych SQL Server Dat
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Programowanie dla Azure SQL Data Warehouse](sql-data-warehouse-overview-develop.md)
+- [Programowanie dla puli SQL](sql-data-warehouse-overview-develop.md)

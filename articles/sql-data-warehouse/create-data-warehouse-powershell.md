@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: Tworzenie magazynu — Azure PowerShell'
-description: Szybko Utwórz SQL Database serwer logiczny, regułę zapory na poziomie serwera i magazyn danych z Azure PowerShell.
+title: 'Szybki Start: Tworzenie magazynu danych (PowerShell)'
+description: Szybko Utwórz serwer logiczny magazynu danych usługi Azure Synapse Analytics z regułą zapory na poziomie serwera przy użyciu Azure PowerShell.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,26 +10,28 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 94dcc0dee5dd4fe81eb5ce067d7ace31edeca353
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 9df9b4b1bdb33a856d9e31d65981e8654af049d2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461508"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200009"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Szybki Start: Tworzenie i wykonywanie zapytań do Azure SQL Data Warehouse za pomocą Azure PowerShell
+# <a name="quickstart-create--query-a-data-warehouse-with-azure-powershell"></a>Szybki Start: Tworzenie & Wysyłanie zapytań do magazynu danych za pomocą Azure PowerShell
 
-Szybko Utwórz Azure SQL Data Warehouse przy użyciu Azure PowerShell.
+Utwórz magazyn danych usługi Azure Synapse Analytics, udostępniając pulę SQL przy użyciu Azure PowerShell.
+
+## <a name="prerequisites"></a>Wymagania wstępne
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
 > [!NOTE]
-> Utworzenie bazy danych w usłudze SQL Data Warehouse może skutkować powstaniem nowej usługi płatnej.  Aby uzyskać więcej informacji, zobacz [Cennik usługi SQL Data Warehouse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Utworzenie magazynu może spowodować powstanie nowej usługi do obciążania.  Aby uzyskać więcej informacji, zobacz [Cennik usługi Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do subskrypcji platformy Azure za pomocą polecenia [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
@@ -68,16 +70,17 @@ $password = "ChangeYourAdminPassword1"
 $startip = "0.0.0.0"
 $endip = "0.0.0.0"
 # The database name
-$databasename = "mySampleDataWarehosue"
+$databasename = "mySampleDataWarehouse"
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Utwórz [grupę zasobów platformy Azure](../azure-resource-manager/management/overview.md) za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westeurope`.
 
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
+
 ## <a name="create-a-logical-server"></a>Tworzenie serwera logicznego
 
 Utwórz [serwer logiczny Azure SQL](../sql-database/sql-database-logical-servers.md) przy użyciu polecenia [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) . Serwer logiczny zawiera grupę baz danych zarządzanych jako grupa. W poniższym przykładzie tworzony jest losowo nazwany serwer w grupie zasobów z użytkownikiem administracyjnym o nazwie `ServerAdmin` i hasłem `ChangeYourAdminPassword1`. Zastąp te wstępnie zdefiniowane wartości zgodnie z potrzebami.
@@ -100,7 +103,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> SQL Database i SQL Data Warehouse komunikują się za pośrednictwem portu 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być zablokowany przez zaporę sieciową. W takim przypadku nie będzie można nawiązać połączenia z serwerem Azure SQL, chyba że dział IT otworzy port 1433.
+> Punkty końcowe SQL komunikują się za pośrednictwem portu 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być zablokowany przez zaporę sieciową. W takim przypadku nie będzie można nawiązać połączenia z serwerem Azure SQL, chyba że dział IT otworzy port 1433.
 >
 
 
@@ -121,10 +124,10 @@ New-AzSqlDatabase `
 Wymagane parametry:
 
 * **RequestedServiceObjectiveName**: ilość żądanych [jednostek magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) . Zwiększenie tej kwoty zwiększa koszt obliczeń. Aby uzyskać listę obsługiwanych wartości, zobacz [limity pamięci i współbieżności](memory-concurrency-limits.md).
-* **DatabaseName**: nazwa tworzonego SQL Data Warehouse.
+* **DatabaseName**: Nazwa tworzonego magazynu danych.
 * **Servername**: Nazwa serwera, który jest używany do tworzenia.
 * **ResourceGroupName**: Grupa zasobów, której używasz. Aby znaleźć grupy zasobów dostępne w ramach subskrypcji, użyj polecenia cmdlet Get-AzureResource.
-* **Edition**: musi mieć wartość „DataWarehouse”, aby utworzyć magazyn SQL Data Warehouse.
+* **Edition**: musi być "DataWarehouse", aby utworzyć magazyn danych.
 
 Opcjonalne parametry:
 
@@ -148,6 +151,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Następne kroki
 
-Utworzono magazyn danych, utworzono regułę zapory, połączono z magazynem danych i uruchomiono kilka zapytań. Aby dowiedzieć się więcej na temat usługi Azure SQL Data Warehouse, przejdź do samouczka na temat ładowania danych.
+Utworzono magazyn danych, utworzono regułę zapory, połączono z magazynem danych i uruchomiono kilka zapytań. Aby dowiedzieć się więcej, przejdź do samouczka dotyczącego ładowania danych.
 > [!div class="nextstepaction"]
->[Ładowanie danych do SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)
+>[Ładowanie danych do magazynu danych](load-data-from-azure-blob-storage-using-polybase.md)

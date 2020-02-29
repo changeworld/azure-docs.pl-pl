@@ -1,26 +1,26 @@
 ---
 title: Najlepsze rozwiązania dotyczące ładowania danych
-description: Zalecenia dotyczące ładowania danych do usługi Azure SQL Data Warehouse i optymalizacji wydajności tego procesu.
+description: Zalecenia i optymalizacje wydajności dotyczące ładowania danych do usługi SQL Analytics
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 08/08/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 01bb53488bf63f32d2bae804e4844400a7fd2d31
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: d59a66b25b55572865f297436331971434d831c3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686100"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199890"
 ---
-# <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Najlepsze rozwiązania dotyczące ładowania danych do usługi Azure SQL Data Warehouse
+# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Najlepsze rozwiązania dotyczące ładowania danych na potrzeby magazynowania danych
 
-Zalecenia dotyczące ładowania danych do usługi Azure SQL Data Warehouse i optymalizacji wydajności tego procesu.
+Zalecenia i optymalizacje wydajności dotyczące ładowania danych
 
 ## <a name="preparing-data-in-azure-storage"></a>Przygotowywanie danych w usłudze Azure Storage
 
@@ -36,9 +36,9 @@ Duże pliki skompresowane można podzielić na mniejsze.
 
 ## <a name="running-loads-with-enough-compute"></a>Uruchamianie zadań ładowania przy użyciu wystarczających zasobów obliczeniowych
 
-Aby uzyskać większą szybkość ładowania, uruchamiaj tylko jedno zadanie ładowania naraz. Jeśli nie jest to możliwe, uruchamiaj jak najmniejszą liczbę zadań ładowania jednocześnie. Jeśli spodziewasz się dużego zadania ładowania, rozważ skalowanie w górę magazynu danych przed uruchomieniem tego zadania.
+Aby uzyskać większą szybkość ładowania, uruchamiaj tylko jedno zadanie ładowania naraz. Jeśli nie jest to możliwe, uruchamiaj jak najmniejszą liczbę zadań ładowania jednocześnie. Jeśli spodziewasz się dużego zadania ładowania, rozważ przeskalowanie puli SQL przed obciążeniem.
 
-Aby uruchamiać zadania ładowania przy użyciu odpowiednich zasobów obliczeniowych, utwórz użytkowników ładujących na potrzeby uruchamiania ładowania. Przypisz każdego użytkownika ładującego do określonej klasy zasobów. Aby uruchomić ładowanie, zaloguj się jako jeden z użytkowników ładujących, a następnie uruchom obciążenie. Ładowanie zostanie uruchomione przy użyciu klasy zasobów przypisanej do użytkownika.  Jest to prostsza metoda niż zmienianie klasy zasobów użytkownika odpowiednio do bieżących potrzeb.
+Aby uruchamiać zadania ładowania przy użyciu odpowiednich zasobów obliczeniowych, utwórz użytkowników ładujących na potrzeby uruchamiania ładowania. Przypisz każdego użytkownika ładującego do określonej klasy zasobów lub grupy obciążeń. Aby uruchomić ładowanie, zaloguj się jako jeden z użytkowników ładujących, a następnie uruchom obciążenie. Ładowanie zostanie uruchomione przy użyciu klasy zasobów przypisanej do użytkownika.  Jest to prostsza metoda niż zmienianie klasy zasobów użytkownika odpowiednio do bieżących potrzeb.
 
 ### <a name="example-of-creating-a-loading-user"></a>Przykład tworzenia użytkownika ładującego
 
@@ -89,7 +89,7 @@ Indeksy magazynu kolumn wymagają dużej ilości pamięci w celu skompresowania 
 - Załaduj wystarczającą liczbę wierszy, aby całkowicie wypełnić nowe grupy wierszy. Podczas ładowania zbiorczego każde 1 048 576 wierszy jest kompresowanych bezpośrednio do magazynu kolumn jako pełna grupa wierszy. W przypadku zadań ładowania z liczbą wierszy mniejszą niż 102 400 wiersze są przekazywane do magazynu delta, gdzie są przechowywane w indeksie b-drzewa. W przypadku załadowania zbyt małej liczby wierszy wszystkie wiersze mogą zostać przekazane do magazynu delta, a nie natychmiast skompresowane do formatu magazynu kolumn.
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Zwiększ rozmiar wsadu podczas korzystania z interfejsu API SQLBulkCopy lub BCP
-Jak wspomniano wcześniej, ładowanie z bazą Base będzie zapewniać największą przepływność z SQL Data Warehouse. Jeśli nie można użyć wielobase do załadowania i należy użyć interfejsu API SQLBulkCopy (lub BCP), należy rozważyć zwiększenie rozmiaru wsadu w celu uzyskania lepszej przepływności. 
+Jak wspomniano wcześniej, ładowanie z bazą Base będzie zapewniać największą przepływność z SQL Data Warehouse. Jeśli nie można użyć podstawy do załadowania i należy użyć interfejsu API SQLBulkCopy (lub BCP), należy rozważyć zwiększenie rozmiaru wsadu w celu uzyskania lepszej przepływności — dobrą regułą przewijania jest rozmiar wsadu między 100 000 do 1M wierszy.
 
 ## <a name="handling-loading-failures"></a>Postępowanie w przypadku błędów ładowania
 

@@ -1,34 +1,34 @@
 ---
 title: Samouczek ładowania danych z Azure Data Lake Storage
-description: Użyj wielobazowych tabel zewnętrznych do ładowania danych z Azure Data Lake Storage do Azure SQL Data Warehouse.
+description: Użyj wielobazowych tabel zewnętrznych do ładowania danych z Azure Data Lake Storage na potrzeby analiz SQL.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 12/06/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fdbf0eb849549071b4cbbb961c9e9f71fce1faf8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.custom: azure-synapse
+ms.openlocfilehash: 9a567a8f62f8f12de725f6d9420576680a3005fe
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923637"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194584"
 ---
-# <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Załaduj dane z Azure Data Lake Storage do SQL Data Warehouse
-W tym przewodniku opisano, jak używać wielobazowych tabel zewnętrznych do ładowania danych z Azure Data Lake Storage do Azure SQL Data Warehouse. Mimo że można uruchamiać zapytania ad hoc dotyczące danych przechowywanych w Data Lake Storage, zalecamy zaimportowanie danych do SQL Data Warehouse w celu uzyskania najlepszej wydajności. 
+# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Ładowanie danych z Azure Data Lake Storage na potrzeby analiz SQL
+W tym przewodniku opisano, jak używać wielobazowych tabel zewnętrznych do ładowania danych z Azure Data Lake Storage. Mimo że można uruchamiać zapytania ad hoc dotyczące danych przechowywanych w Data Lake Storage, zalecamy zaimportowanie danych w celu uzyskania najlepszej wydajności. 
 
 > [!NOTE]  
-> Alternatywą do załadowania jest [instrukcja Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) w publicznej wersji zapoznawczej. Aby przesłać opinię na temat instrukcji COPY, Wyślij wiadomość e-mail na następującą listę dystrybucyjną: sqldwcopypreview@service.microsoft.com.
+> Alternatywą do załadowania jest [instrukcja Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) w publicznej wersji zapoznawczej.  Instrukcja COPY zapewnia największą elastyczność. Aby przesłać opinię na temat instrukcji COPY, Wyślij wiadomość e-mail na następującą listę dystrybucyjną: sqldwcopypreview@service.microsoft.com.
 >
 > [!div class="checklist"]
 
 > * Utwórz obiekty bazy danych wymagane do załadowania z Data Lake Storage.
 > * Nawiązywanie połączenia z katalogiem Data Lake Storage.
-> * Ładowanie danych do usługi Azure SQL Data Warehouse.
+> * Ładowanie danych do magazynu danych.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
@@ -37,7 +37,7 @@ Zanim rozpoczniesz ten samouczek, pobierz i zainstaluj najnowszą wersję progra
 
 Aby uruchomić ten samouczek, potrzebne są:
 
-* Azure SQL Data Warehouse. Zobacz [Tworzenie i wykonywanie zapytań oraz Azure SQL Data Warehouse](create-data-warehouse-portal.md).
+* Pula SQL. Zobacz [Tworzenie puli SQL i wykonywanie zapytań dotyczących danych](create-data-warehouse-portal.md).
 * Konto Data Lake Storage. Zobacz [wprowadzenie do Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). W przypadku tego konta magazynu musisz skonfigurować lub określić jedno z następujących poświadczeń do załadowania: klucz konta magazynu, użytkownik aplikacji usługi Azure Directory lub użytkownik AAD, który ma odpowiednią rolę RBAC dla konta magazynu. 
 
 ##  <a name="create-a-credential"></a>Utwórz poświadczenie
@@ -194,7 +194,7 @@ OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 
 
 ## <a name="optimize-columnstore-compression"></a>Optymalizowanie kompresji magazynu kolumn
-Domyślnie SQL Data Warehouse przechowuje tabelę jako klastrowany indeks magazynu kolumn. Po zakończeniu ładowania niektóre wiersze danych mogą nie zostać skompresowane do magazynu kolumn.  Istnieje wiele powodów, dla których może się to zdarzyć. Aby dowiedzieć się więcej, zobacz [Zarządzanie indeksami magazynu kolumn](sql-data-warehouse-tables-index.md).
+Domyślnie tabele są zdefiniowane jako klastrowany indeks magazynu kolumn. Po zakończeniu ładowania niektóre wiersze danych mogą nie zostać skompresowane do magazynu kolumn.  Istnieje wiele powodów, dla których może się to zdarzyć. Aby dowiedzieć się więcej, zobacz [Zarządzanie indeksami magazynu kolumn](sql-data-warehouse-tables-index.md).
 
 Aby zoptymalizować wydajność zapytań i kompresję magazynu kolumn po załadowaniu, należy ponownie skompilować tabelę, aby wymusić, że indeks magazynu kolumn będzie kompresowany ze wszystkimi wierszami.
 
@@ -212,19 +212,20 @@ Jeśli zdecydujesz się utworzyć statystykę jednokolumnową dla każdej kolumn
 Poniższy przykład jest dobrym punktem wyjścia do tworzenia statystyk. Tworzy statystykę jednokolumnową dla każdej kolumny w tabeli wymiarów i dla każdej kolumny sprzężenia w tabelach faktów. Można zawsze dodawać pojedyncze lub wielokolumnowe statystyki do innych kolumn tabeli faktów w późniejszym czasie.
 
 ## <a name="achievement-unlocked"></a>Nieodblokowane osiągnięcie!
-Dane zostały pomyślnie załadowane do Azure SQL Data Warehouse. Wspaniałe zadanie!
+Dane zostały pomyślnie załadowane do magazynu danych. Wspaniałe zadanie!
 
 ## <a name="next-steps"></a>Następne kroki 
 W tym samouczku utworzono tabele zewnętrzne w celu zdefiniowania struktury danych przechowywanych w Data Lake Storage Gen1, a następnie użyto CREATE TABLE instrukcji "SELECT Base" w celu załadowania danych do magazynu danych. 
 
 Zostały wykonane następujące zadania:
 > [!div class="checklist"]
+>
 > * Utworzono obiekty bazy danych wymagane do załadowania z Data Lake Storage.
 > * Połączono z katalogiem Data Lake Storage.
-> * Załadowano dane do Azure SQL Data Warehouse.
+> * Załadowano dane do hurtowni danych.
 >
 
-Ładowanie danych to pierwszy krok tworzenia rozwiązania magazynu danych przy użyciu SQL Data Warehouse. Zapoznaj się z naszymi zasobami programistycznymi.
+Ładowanie danych to pierwszy krok tworzenia rozwiązania magazynu danych przy użyciu usługi Azure Synapse Analytics. Zapoznaj się z naszymi zasobami programistycznymi.
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak opracowywać tabele w SQL Data Warehouse](sql-data-warehouse-tables-overview.md)
+> [Dowiedz się, jak opracowywać tabele na potrzeby magazynowania danych](sql-data-warehouse-tables-overview.md)

@@ -1,30 +1,30 @@
 ---
 title: Udzielanie dostępu
-description: Dowiedz się więcej na temat udzielania dostępu do Microsoft Azure SQL Database i SQL Data Warehouse.
+description: Dowiedz się więcej na temat udzielania dostępu do Microsoft Azure SQL Database i usługi Azure Synapse.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.custom: sql-data-warehouse, seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 05/08/2019
-ms.openlocfilehash: 05a949bbd99a36c41143190d216116f78c433951
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+ms.openlocfilehash: 5142cc941b37cfef7be79e5129b6df7094bfd00e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826594"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197848"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Azure SQL Database i SQL Data Warehouse kontroli dostępu
+# <a name="azure-sql-database-and-azure-synapse-access-control"></a>Azure SQL Database i kontrola dostępu do usługi Azure Synapse
 
-Aby zapewnić bezpieczeństwo, usługa Azure [SQL Database](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) kontrolować dostęp przy użyciu reguł zapory ograniczających łączność przy użyciu adresu IP, mechanizmy uwierzytelniania wymagają od użytkowników potwierdzenia tożsamości i mechanizmów autoryzacji Ograniczanie użytkowników do określonych działań i danych. 
+Aby zapewnić bezpieczeństwo, usługa Azure [SQL Database](sql-database-technical-overview.md) i dostęp do [usługi Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) Control za pomocą reguł zapory ograniczających łączność przy użyciu adresu IP, mechanizmy uwierzytelniania wymagające potwierdzenia tożsamości przez użytkowników oraz mechanizmy autoryzacji ograniczające użytkowników do określonych działań i danych. 
 
 > [!IMPORTANT]
-> Aby zobaczyć przegląd funkcji zabezpieczeń usługi SQL Database, zobacz [omówienie zabezpieczeń usługi SQL](sql-database-security-overview.md). Aby zapoznać się z samouczkiem, zobacz temat [zabezpieczanie Azure SQL Database](sql-database-security-tutorial.md). Omówienie funkcji zabezpieczeń SQL Data Warehouse można znaleźć w temacie [SQL Data Warehouse Security Overview](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)
+> Aby zobaczyć przegląd funkcji zabezpieczeń usługi SQL Database, zobacz [omówienie zabezpieczeń usługi SQL](sql-database-security-overview.md). Aby zapoznać się z samouczkiem, zobacz temat [zabezpieczanie Azure SQL Database](sql-database-security-tutorial.md). Aby zapoznać się z omówieniem funkcji zabezpieczeń usługi SQL Analytics w usłudze Azure Synapse, zobacz [Omówienie zabezpieczeń usługi Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md) .
 
 ## <a name="firewall-and-firewall-rules"></a>Zapora i reguły zapory
 
@@ -34,7 +34,7 @@ Usługa Azure SQL Database jest dostępna tylko za pośrednictwem portu TCP 1433
 
 W ramach procesu łączenia wszystkie połączenia przychodzące z maszyny wirtualnej platformy Azure są przekierowywane na inny adres IP i port, unikatowy dla każdej roli procesu roboczego. Numer portu należy do zakresu od 11000 do 11999. Aby uzyskać więcej informacji na temat portów TCP, zobacz [porty powyżej 1433 dla ADO.NET 4,5 i SQL Database2](sql-database-develop-direct-route-ports-adonet-v12.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Uwierzytelnianie
 
 Usługa SQL Database obsługuje dwa typy uwierzytelniania:
 

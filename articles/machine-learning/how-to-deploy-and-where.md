@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/27/2019
+ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: fa73cb690fafb67f75abafab1b0dd27ffa0b8e32
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: d3353451057037e5f3fd94347a007a9d3b2c0e15
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210503"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193088"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -594,10 +594,10 @@ W poniższej tabeli opisano różne stany usług:
 | Stan usługi WebService | Opis | Końcowy stan?
 | ----- | ----- | ----- |
 | Przechodzenie | Usługa jest w trakcie wdrażania. | Nie |
-| Nieprawidłowy | Usługa została wdrożona, ale jest obecnie nieosiągalna.  | Nie |
+| W złej kondycji | Usługa została wdrożona, ale jest obecnie nieosiągalna.  | Nie |
 | Unschedulable | Nie można teraz wdrożyć usługi z powodu braku zasobów. | Nie |
-| Niepowodzenie | Wdrożenie usługi nie powiodło się z powodu błędu lub awarii. | Tak |
-| W dobrej kondycji | Usługa jest w dobrej kondycji, a punkt końcowy jest dostępny. | Tak |
+| Niepowodzenie | Wdrożenie usługi nie powiodło się z powodu błędu lub awarii. | Yes |
+| W dobrej kondycji | Usługa jest w dobrej kondycji, a punkt końcowy jest dostępny. | Yes |
 
 ### <a id="notebookvm"></a>Usługa sieci Web wystąpienia obliczeniowego (Tworzenie i testowanie)
 
@@ -896,6 +896,8 @@ model = Model.register(workspace=ws,
 service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
+
+Jeśli używasz Pytorch, [Eksportowanie modeli z Pytorch do ONNX](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) zawiera szczegółowe informacje dotyczące konwersji i ograniczeń. 
 
 ### <a name="scikit-learn-models"></a>Scikit — uczenie modeli
 

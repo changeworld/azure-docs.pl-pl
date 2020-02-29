@@ -9,16 +9,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
-ms.openlocfilehash: 686e426ef0b7706eff168e42ffc67417b2c5c743
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.custom: azure-synapse
+ms.openlocfilehash: 70f37c70f685ee139db4b417c1c498f9eefb8205
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212897"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184761"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Wprowadzenie do inspekcji bazy danych SQL
 
-Inspekcja usługi Azure [SQL Database](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji na koncie usługi Azure Storage, w obszarze roboczym log Analytics lub Event Hubs. Inspekcja również:
+Inspekcja dla usługi Azure [SQL Database](sql-database-technical-overview.md) i [usługi Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji na koncie usługi Azure Storage, log Analytics obszarze roboczym lub Event Hubs. Inspekcja również:
 
 - Pomaga zachować zgodność z przepisami, zrozumieć aktywność bazy danych oraz uzyskać wgląd w niezgodności i anomalie, które mogą wskazywać na problemy biznesowe lub podejrzane naruszenia zabezpieczeń.
 
@@ -26,7 +27,7 @@ Inspekcja usługi Azure [SQL Database](sql-database-technical-overview.md) i [SQ
 
 
 > [!NOTE] 
-> Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
+> Ten temat ma zastosowanie do programu Azure SQL Server oraz SQL Database do baz danych usługi Azure Synapse Analytics, które są tworzone na serwerze SQL platformy Azure. Dla uproszczenia SQL Database jest używany podczas odwoływania się do SQL Database i usługi Azure Synapse.
 
 ## <a id="subheading-1"></a>Omówienie inspekcji usługi Azure SQL Database
 
@@ -80,6 +81,16 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu Azure Portal.
 
     ![Okienko nawigacji][3]
 
+5. **Nowość** — masz teraz wiele opcji konfigurowania lokalizacji, w której będą zapisywane dzienniki inspekcji. Dzienniki można zapisywać na koncie usługi Azure Storage, w obszarze roboczym Log Analytics do użycia przez dzienniki Azure Monitor lub do centrum zdarzeń w celu użycia przy użyciu centrum zdarzeń. Można skonfigurować dowolną kombinację tych opcji, a dzienniki inspekcji będą zapisywane w każdym z nich.
+  
+   > [!NOTE]
+   > Klient chcący skonfigurować niezmienny magazyn dzienników dla zdarzeń inspekcji na poziomie serwera lub bazy danych powinien postępować zgodnie z [instrukcjami dostarczonymi przez usługę Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)
+  
+   > [!WARNING]
+   > Włączenie inspekcji do Log Analytics będzie powodować naliczanie kosztów na podstawie stawek za pozyskiwanie. Zapoznaj się z powiązanym kosztem przy użyciu tej [opcji](https://azure.microsoft.com/pricing/details/monitor/)lub Rozważ przechowywanie dzienników inspekcji na koncie usługi Azure Storage.
+
+   ![Opcje magazynu](./media/sql-database-auditing-get-started/auditing-select-destination.png)
+   
 ### <a id="audit-storage-destination">Inspekcja w miejscu docelowym magazynu</a>
 
 Aby skonfigurować zapisywanie dzienników inspekcji na koncie magazynu, wybierz pozycję **Magazyn** i Otwórz **szczegóły magazynu**. Wybierz konto usługi Azure Storage, na którym będą zapisywane dzienniki, a następnie wybierz okres przechowywania. Następnie kliknij przycisk **OK**. Dzienniki starsze niż okres przechowywania są usuwane.
@@ -105,9 +116,22 @@ Aby skonfigurować zapisywanie dzienników inspekcji do obszaru roboczego Log An
 
 ### <a id="audit-event-hub-destination">Inspekcja w miejscu docelowym centrum zdarzeń</a>
 
+< < < < < < < główny < < < < < < < nagłówek = = = =
+>>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
+> [!IMPORTANT]
+> Włączanie inspekcji wstrzymanej puli SQL nie jest możliwe. Aby ją włączyć, Cofnij wstrzymanie puli SQL.
+
+> [!WARNING]
+> Włączenie inspekcji na serwerze, na którym znajduje się pula SQL, **spowoduje wznowienie i ponowne wstrzymanie puli SQL** , co może pociągnąć za sobą naliczanie opłat.
+< < < < < < < nagłówek = = = = = =, aby skonfigurować zapisywanie dzienników inspekcji do centrum zdarzeń, wybierz pozycję **centrum zdarzeń (wersja zapoznawcza)** i Otwórz **szczegóły centrum zdarzeń**. Wybierz centrum zdarzeń, w którym będą zapisywane dzienniki, a następnie kliknij przycisk **OK**. Upewnij się, że centrum zdarzeń znajduje się w tym samym regionie, w którym znajduje się baza danych i serwer.
+
+   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+>>>>>>> <a name="bf6444e83361ab743aca04ae233c420e51ea1e03"></a>bf6444e83361ab743aca04ae233c420e51ea1e03
+=======
 Aby skonfigurować zapisywanie dzienników inspekcji do centrum zdarzeń, wybierz pozycję **centrum zdarzeń (wersja zapoznawcza)** i Otwórz **szczegóły centrum zdarzeń**. Wybierz centrum zdarzeń, w którym będą zapisywane dzienniki, a następnie kliknij przycisk **OK**. Upewnij się, że centrum zdarzeń znajduje się w tym samym regionie, w którym znajduje się baza danych i serwer.
 
    ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+>>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 
 ## <a id="subheading-3"></a>Analizowanie dzienników i raportów inspekcji
 

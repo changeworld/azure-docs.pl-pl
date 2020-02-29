@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5c959dc7fa36fb41307d286b1e7d0b475d5b56c6
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5eaf4cf702e56df932a61ab277dff6b34d97854d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988468"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185033"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Odbieraj powiadomienia dotyczące magazynu kluczy i odpowiadaj na nie Azure Event Grid (wersja zapoznawcza)
 
@@ -190,7 +191,7 @@ Gratulacje! Jeśli wykonano wszystkie te kroki, możesz teraz przystąpić do pr
 
 Jeśli używasz systemu opartego na sondowaniu do wyszukiwania zmian stanu wpisów tajnych w magazynach kluczy, możesz teraz zacząć korzystać z tej funkcji powiadomień. Możesz również zastąpić skrypt testowy w elemencie Runbook za pomocą kodu, aby programowo odnowić wpisy tajne, gdy niedługo wygasną.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 
 - Przegląd: [monitorowanie Key Vault z Azure Event Grid (wersja zapoznawcza)](event-grid-overview.md)

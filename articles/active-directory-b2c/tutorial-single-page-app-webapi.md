@@ -3,26 +3,26 @@ title: 'Samouczek: udzielanie dostępu do ASP.NET Core internetowego interfejsu 
 titleSuffix: Azure AD B2C
 description: W tym samouczku dowiesz się, jak używać Active Directory B2C do ochrony interfejsu API sieci Web platformy .NET Core i wywoływać interfejs API z jednej strony aplikacji node. js.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 07/24/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 80b2165b0ec652358a3eb8ac9d55b64f525e4690
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f6f9ff7bb0d504ecc163f6ce1f87477b1ea9c2d1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850020"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186150"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do ASP.NET Core internetowego interfejsu API z aplikacji jednostronicowej przy użyciu Azure Active Directory B2C
 
 W tym samouczku pokazano, jak wywoływać zasób internetowego interfejsu API ASP.NET Core chronionych Azure Active Directory B2C (Azure AD B2C) z aplikacji jednostronicowej.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Dodawanie aplikacji internetowego interfejsu API
@@ -115,7 +115,7 @@ Aby umożliwić aplikacji jednostronicowej wywoływanie ASP.NET Core internetowe
     ```
 
 1. (Tylko Visual Studio) W obszarze **Właściwości** w Eksplorator rozwiązań otwórz plik *profilu launchsettings. JSON* , a następnie Znajdź blok `iisExpress`.
-1. (Tylko Visual Studio) Zaktualizuj wartość `applicationURL` numerem portu określonym podczas rejestrowania aplikacji *webapi1* we wcześniejszym kroku. Przykład:
+1. (Tylko Visual Studio) Zaktualizuj wartość `applicationURL` numerem portu określonym podczas rejestrowania aplikacji *webapi1* we wcześniejszym kroku. Na przykład:
 
     ```json
     "iisExpress": {
@@ -159,7 +159,7 @@ W programie Visual Studio naciśnij klawisz **F5** , aby skompilować i debugowa
 
 Jeśli wolisz używać interfejsu wiersza polecenia `dotnet` zamiast programu Visual Studio:
 
-1. Otwórz okno konsoli i przejdź do katalogu zawierającego plik *\*. csproj* . Przykład:
+1. Otwórz okno konsoli i przejdź do katalogu zawierającego plik *\*. csproj* . Na przykład:
 
     `cd active-directory-b2c-dotnetcore-webapi/B2C-WebApi`
 
@@ -177,7 +177,7 @@ Jeśli wolisz używać interfejsu wiersza polecenia `dotnet` zamiast programu Vi
 
 ### <a name="run-the-single-page-app"></a>Uruchamianie aplikacji jednostronicowej
 
-1. Otwórz okno konsoli i przejdź do katalogu zawierającego przykład środowiska Node. js. Przykład:
+1. Otwórz okno konsoli i przejdź do katalogu zawierającego przykład środowiska Node. js. Na przykład:
 
     `cd active-directory-b2c-javascript-msal-singlepageapp`
 

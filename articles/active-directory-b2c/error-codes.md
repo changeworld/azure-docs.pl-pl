@@ -3,26 +3,26 @@ title: Odwołanie do kodu błędu
 titleSuffix: Azure AD B2C
 description: Lista kodów błędów, które mogą zostać zwrócone przez usługę Azure Active Directory B2C.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 01/10/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c48f7bdd51c9b8c173ee0ebed72ed8c7f4fb51fc
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 5b09b3c19ab1c5b23e56e25afc1d9631cd1caa68
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75735081"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188668"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Kody błędów: Azure Active Directory B2C
 
 Usługa Azure Active Directory B2C może zwrócić następujące błędy.
 
-| Kod błędu | Wiadomość |
+| Kod błędu | Komunikat |
 | ---------- | ------- |
 | `AADB2C90002` | Zasób CORS "{0}" zwrócił 404. |
 | `AADB2C90006` | Identyfikator URI przekierowania "{0}" podany w żądaniu nie jest zarejestrowany dla identyfikatora klienta "{1}". |

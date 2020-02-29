@@ -3,21 +3,21 @@ title: Skonfiguruj Azure AD B2C jako element SAML dostawcy tożsamości dla apli
 title-suffix: Azure AD B2C
 description: Jak skonfigurować Azure AD B2C, aby zapewnić zatwierdzeń protokołu SAML dla aplikacji (usługodawców). Azure AD B2C będzie pełnić funkcję dostawcy pojedynczej tożsamości (dostawcy tożsamości) do aplikacji SAML.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: be7d798d96e61d1d753e130c5e4ad6a479f391fc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912244"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189654"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Rejestrowanie aplikacji SAML w Azure AD B2C
 
@@ -63,7 +63,7 @@ Jeśli nie masz jeszcze dostawcy usługi SAML i skojarzonego z nim punktu końco
 
 ## <a name="1-set-up-certificates"></a>1. Skonfiguruj certyfikaty
 
-Aby utworzyć relację zaufania między dostawcą usług i Azure AD B2C, należy podać certyfikaty x509 i ich klucze prywatne.
+Aby utworzyć relację zaufania między dostawcą usług i Azure AD B2C, musisz podać certyfikaty x509 aplikacji sieci Web.
 
 * **Certyfikaty dostawcy usług**
   * Certyfikat z kluczem prywatnym przechowywanym w aplikacji sieci Web. Ten certyfikat jest używany przez dostawcę usługi do podpisywania żądania SAML wysłanego do Azure AD B2C. Azure AD B2C odczytuje klucz publiczny z metadanych dostawcy usług w celu zweryfikowania podpisu.

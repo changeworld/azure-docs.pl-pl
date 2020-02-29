@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: 743c6fa6545342f2a7655059016637fc54158b64
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: e7708b0043b7f5baf2c12e813306595cc358a01d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164019"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194058"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Samouczek: używanie języków Python i AI do generowania zawartości z możliwością wyszukiwania z obiektów blob platformy Azure
 
 Jeśli w usłudze Azure Blob Storage znajduje się tekst lub obrazy bez struktury, [potok wzbogacenia AI](cognitive-search-concept-intro.md) może wyodrębnić informacje i utworzyć nową zawartość, która jest przydatna w przypadku wyszukiwania pełnotekstowego lub scenariuszy wyszukiwania w bazie wiedzy. Mimo że potok może przetwarzać obrazy, ten samouczek w języku Python koncentruje się na tekście, stosowaniu wykrywania języka i przetwarzania języka naturalnego w celu utworzenia nowych pól, których można użyć w zapytaniach, aspektach i filtrach.
 
-W tym samouczku Użyj języka Python i [rest](https://docs.microsoft.com/rest/api/searchservice/) , aby wykonać następujące zadania:
+Ten samouczek używa języka Python i [interfejsów API REST wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/) do wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Zacznij od całego dokumentu (tekst bez struktury), takiego jak PDF, HTML, DOCX i PPTX, w usłudze Azure Blob Storage.
@@ -512,19 +512,13 @@ W zależności od złożoności i długości ciągu zapytania można użyć meto
 
 ## <a name="reset-and-rerun"></a>Resetowanie i ponowne uruchamianie
 
-Na wczesnym etapie opracowywania warto usunąć obiekty z platformy Azure Wyszukiwanie poznawcze i umożliwić ich ponowne skompilowanie. Nazwy zasobów są unikatowe. Usunięcie obiektu umożliwia jego ponowne utworzenie przy użyciu tej samej nazwy.
+W przypadku wczesnych eksperymentalnych etapów tworzenia najlepszym podejściem do iteracji projektu jest usunięcie obiektów z platformy Azure Wyszukiwanie poznawcze i umożliwienie kodowi odbudowania. Nazwy zasobów są unikatowe. Usunięcie obiektu umożliwia jego ponowne utworzenie przy użyciu tej samej nazwy.
 
-Aby ponownie zindeksować dokumenty przy użyciu nowych definicji:
-
-1. Usuń indeksator, indeks i zestawu umiejętności.
-2. Modyfikuj definicje obiektów.
-3. Utwórz ponownie obiekty w usłudze. Ponowne utworzenie indeksatora powoduje uruchomienie potoku. 
-
-Możesz użyć portalu, aby usunąć indeksy, indeksatory i umiejętności. Po usunięciu indeksatora można opcjonalnie selektywnie usunąć indeks, zestawu umiejętności i źródło danych.
+Możesz użyć portalu, aby usunąć indeksy, indeksatory, źródła danych i umiejętności. Po usunięciu indeksatora można opcjonalnie selektywnie usunąć indeks, zestawu umiejętności i źródło danych.
 
 ![Usuwanie obiektów wyszukiwania](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "Usuwanie obiektów wyszukiwania w portalu")
 
-Można je również usunąć za pomocą skryptu. Następujący skrypt usunie utworzoną zestawu umiejętności. Możesz łatwo zmodyfikować żądanie, aby usunąć indeks, indeksator i źródło danych.
+Można je również usunąć za pomocą skryptu. Poniższy skrypt pokazuje, jak usunąć element zestawu umiejętności. 
 
 ```python
 # delete the skillset
@@ -545,11 +539,13 @@ Wreszcie zawiesz się, jak przetestować wyniki i zresetować system pod kątem 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Najszybszym sposobem oczyszczenia po samouczku jest usunięcie grupy zasobów zawierającej usługę Azure Wyszukiwanie poznawcze i Blob service platformy Azure. Przy założeniu, że obie usługi są umieszczone w tej samej grupie, Usuń grupę zasobów, aby trwale usunąć wszystkie w niej wszystkie elementy, w tym usługi i zawartość, która została utworzona dla tego samouczka. W portalu nazwa grupy zasobów znajduje się na stronie Przegląd każdej usługi.
+Gdy Pracujesz w ramach własnej subskrypcji, na końcu projektu warto usunąć zasoby, które nie są już potrzebne. Zasoby po lewej stronie mogą być kosztowne. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
+
+Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku wszystkie zasoby lub grupy zasobów w okienku nawigacji po lewej stronie.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dostosuj lub rozszerz potok za pomocą umiejętności niestandardowych. Utworzenie umiejętności niestandardowej i dołączenie jej do zestawu umiejętności pozwala na dodanie samodzielnie napisanej analizy tekstu lub obrazu.
+Teraz, gdy znasz wszystkie obiekty w potoku wzbogacenia, przyjrzyjmy się dokładniej definicjom zestawu umiejętności i indywidualnym umiejętnościom.
 
 > [!div class="nextstepaction"]
-> [Przykład: Tworzenie niestandardowej umiejętności dla wzbogacania AI](cognitive-search-create-custom-skill-example.md)
+> [Jak utworzyć zestawu umiejętności](cognitive-search-defining-skillset.md)

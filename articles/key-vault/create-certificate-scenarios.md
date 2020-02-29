@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9f88af7027f6c907b5b55eb9aac545d98e2fbb7a
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b9ff80275cc89dde0db215856c2e134c4b273020
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880838"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199737"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Monitorowanie tworzenia certyfikatów i zarządzanie tym procesem
 Dotyczy: Azure
@@ -85,11 +86,11 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Żądanie
-POBIERZ`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Pobierz `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 LUB
 
-POBIERZ`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Pobierz `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 > [!NOTE]
 > Jeśli *request_id* jest określona w zapytaniu, działa jak filtr. Jeśli *request_id* w zapytaniu i w obiekcie oczekiwania są inne, zwracany jest kod stanu HTTP 404.
@@ -120,11 +121,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-POBIERZ`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Pobierz `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 LUB
 
-POBIERZ`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Pobierz `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Odpowiedź
 
@@ -152,11 +153,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-POBIERZ`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Pobierz `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 LUB
 
-POBIERZ`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Pobierz `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Odpowiedź
 
@@ -191,11 +192,11 @@ Obiekt oczekujący może zostać usunięty lub zastąpiony przez operację tworz
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Żądanie
-POBIERZ`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Pobierz `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 LUB
 
-POBIERZ`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Pobierz `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Odpowiedź
 
@@ -295,11 +296,11 @@ Można żądać anulowania tylko. Żądanie może lub nie może być anulowane. 
 |PATCH|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Żądanie
-WYSŁANA`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Poprawka `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 LUB
 
-WYSŁANA`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Poprawka `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ```json
 {
@@ -335,11 +336,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |DELETE|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Żądanie
-USUNIĘTY`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Usuń `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 LUB
 
-USUNIĘTY`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Usuń `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Odpowiedź
 
@@ -413,9 +414,9 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-|Nazwa elementu|Wymagane|Type|Version|Opis|
+|Nazwa elementu|Wymagany|Typ|Wersja|Opis|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|Tak|array|\<Wprowadzenie do wersji >|Łańcuch certyfikatu x509 jako podstawową tablicę ciągów 64.|
+|x5c|Yes|tablica|\<wprowadzenie wersji >|Łańcuch certyfikatu x509 jako podstawową tablicę ciągów 64.|
 
 ### <a name="response"></a>Odpowiedź
 

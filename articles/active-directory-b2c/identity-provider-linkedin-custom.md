@@ -3,20 +3,20 @@ title: Konfigurowanie logowania za pomocą konta usługi LinkedIn przy użyciu z
 titleSuffix: Azure AD B2C
 description: Skonfiguruj logowanie się przy użyciu konta LinkedIn w Azure Active Directory B2C przy użyciu zasad niestandardowych.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f4ad74104d34e7e2c3f4d6aafc05b36574f8e287
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 80bd1b65d04ea49fc742033e1850d95a85021c9f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847435"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188175"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie logowania za pomocą konta LinkedIn przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
@@ -60,7 +60,7 @@ Aby korzystać z serwisu LinkedIn jako dostawcy tożsamości w Azure AD B2C, mus
 
 Należy przechowywać klucz tajny klienta, który został wcześniej zarejestrowany w dzierżawie Azure AD B2C.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. Upewnij się, że używasz katalogu zawierającego dzierżawcę Azure AD B2C. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog, w którym znajduje się Twoja dzierżawa.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Na stronie Przegląd wybierz pozycję **Struktura środowiska tożsamości**.
@@ -69,7 +69,7 @@ Należy przechowywać klucz tajny klienta, który został wcześniej zarejestrow
 7. Wprowadź **nazwę** klucza zasad. Na przykład `LinkedInSecret`. Prefiks *B2C_1A_* jest automatycznie dodawany do nazwy klucza.
 8. W **kluczu tajnym**wprowadź wcześniej zarejestrowany klucz tajny klienta.
 9. W obszarze **użycie klucza**wybierz pozycję `Signature`.
-10. Kliknij pozycję **Utwórz**.
+10. Kliknij przycisk **Utwórz**.
 
 ## <a name="add-a-claims-provider"></a>Dodawanie dostawcy oświadczeń
 
@@ -77,7 +77,7 @@ Jeśli chcesz, aby użytkownicy mogli się logować przy użyciu konta LinkedIn,
 
 Zdefiniuj konto serwisu LinkedIn jako dostawcę oświadczeń, dodając je do elementu **ClaimsProviders** w pliku rozszerzenia zasad.
 
-1. Otwórz plik *SocialAndLocalAccounts/ **TrustFrameworkExtensions. XML*** w edytorze. Ten plik znajduje się w [pakiecie startowym zasad niestandardowych][starter-pack] pobranym jako część jednego z wymagań wstępnych.
+1. Otwórz plik *SocialAndLocalAccounts/* * TrustFrameworkExtensions. XML** * w edytorze. Ten plik znajduje się w [pakiecie startowym zasad niestandardowych][starter-pack] pobranym jako część jednego z wymagań wstępnych.
 1. Znajdź element **ClaimsProviders** . Jeśli nie istnieje, Dodaj ją do elementu głównego.
 1. Dodaj nową **ClaimsProvider** w następujący sposób:
 
@@ -246,7 +246,7 @@ W istniejącym elemencie **metadanych** **profilu technicznym**zaktualizuj nast�
 <Item Key="scope">r_emailaddress r_basicprofile</Item>
 ```
 
-Do
+Do:
 
 ```XML
 <Item Key="ClaimsEndpoint">https://api.linkedin.com/v2/me</Item>
@@ -272,7 +272,7 @@ W istniejącej **OutputClaims** **profilu technicznym**, zaktualizuj następują
 <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
 ```
 
-Do
+Do:
 
 ```XML
 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName.localized" />

@@ -3,20 +3,20 @@ title: Zarządzanie użytkownikami za pomocą interfejsu API Microsoft Graph
 titleSuffix: Azure AD B2C
 description: Jak zarządzać użytkownikami w dzierżawie Azure AD B2C przez wywołanie interfejsu API Microsoft Graph i użycie tożsamości aplikacji w celu zautomatyzowania procesu.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b53405d199072211304e21b681de646c4e41243c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 8d65217a109a851275d3ba9205024f32bd182d4f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585632"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187320"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Zarządzanie kontami użytkowników Azure AD B2C przy użyciu Microsoft Graph
 
@@ -112,7 +112,7 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 Po uzyskaniu przykładowego kodu skonfiguruj go dla środowiska, a następnie Skompiluj projekt:
 
 1. Otwórz projekt w programie [Visual Studio](https://visualstudio.microsoft.com) lub [Visual Studio Code](https://code.visualstudio.com).
-1. Otwórz program `src/appsettings.json`.
+1. Otwórz plik `src/appsettings.json`.
 1. W sekcji `appSettings` Zastąp `your-b2c-tenant` nazwą dzierżawy, a `Application (client) ID` i `Client secret` z wartościami rejestracji aplikacji zarządzania (zobacz sekcję [Rejestrowanie aplikacji zarządzania](#register-a-management-application) w tym artykule).
 1. Otwórz okno konsoli w ramach lokalnego klonu repozytorium, przejdź do katalogu `src`, a następnie Skompiluj projekt:
     ```console

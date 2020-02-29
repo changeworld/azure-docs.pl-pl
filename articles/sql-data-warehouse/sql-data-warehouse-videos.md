@@ -1,6 +1,6 @@
 ---
 title: Filmy wideo
-description: Linki do różnych list odtwarzania wideo dla Azure SQL Data Warehouse.
+description: Linki do różnych list odtwarzania wideo dla usługi Azure Synapse Analytics.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d01ff2eb74844997eb1640123e4af59abe2340b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bc6d0aed017dea46a781ca2b1d8d238e9d761e1b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692440"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192170"
 ---
-# <a name="azure-sql-data-warehouse---videos"></a>Azure SQL Data Warehouse — wideo
+# <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure Synapse Analytics — wideo z puli SQL
 
-Obejrzyj najnowsze Azure SQL Data Warehouse wideo, aby dowiedzieć się więcej o nowych możliwościach i ulepszeniach wydajności. 
+Obejrzyj najnowsze wideo z puli usługi Azure Synapse, aby poznać nowe możliwości i ulepszenia wydajności. 
 
-Aby rozpocząć, wybierz poniższe wideo z omówieniem, aby dowiedzieć się więcej o nowych aktualizacjach do Azure SQL Data Warehouse. Należy również dowiedzieć się, jak nowoczesne wzorce magazynu danych mogą służyć do rozwiązywania rzeczywistych scenariuszy, takich jak Cybercrime.
+Aby rozpocząć, wybierz poniższe wideo z omówieniem, aby dowiedzieć się więcej o nowych aktualizacjach usługi Azure Synapse w puli SQL. Należy również dowiedzieć się, jak nowoczesne wzorce magazynu danych mogą służyć do rozwiązywania rzeczywistych scenariuszy, takich jak Cybercrime.
 </br>
 
 <a href="https://www.youtube.com/watch?v=7MDCWgxPnVY&list=PLXtHYVsvn_b_v4EKljH6dGo9qJ7JjItWL&index=2">

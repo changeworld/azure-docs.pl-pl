@@ -4,12 +4,12 @@ description: Dowiedz się, jak aktualizować węzły systemu Linux i automatyczn
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.openlocfilehash: b0bb7a3309cf1b56a5779b54b34310aa01f3e719
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 74b12c1bc6e2a88582cc357c8091b5590e6bf3cb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594944"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191286"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Stosowanie aktualizacji zabezpieczeń i jądra do węzłów systemu Linux w usłudze Azure Kubernetes Service (AKS)
 
@@ -51,13 +51,23 @@ Nie można pozostawać w tej samej wersji Kubernetes podczas zdarzenia uaktualni
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>Wdrażanie kured w klastrze AKS
 
-Aby wdrożyć `kured` elementu daemonset, zastosuj następujący przykładowy manifest YAML ze strony projektu GitHub. Ten manifest tworzy rolę i rolę klastra, powiązania i konto usługi, a następnie wdraża elementu daemonset przy użyciu usługi `kured` w wersji 1.1.0, która obsługuje klastry AKS 1,9 lub nowsze.
+Aby wdrożyć `kured` elementu daemonset, zainstaluj Poniższy oficjalny wykres Kured Helm. Spowoduje to utworzenie roli i roli klastra, powiązań i konta usługi, a następnie wdrożenie elementu daemonset przy użyciu `kured`.
 
 ```console
-kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
+# Add the stable Helm repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
+# Update your local Helm chart repository cache
+helm repo update
+
+# Create a dedicated namespace where you would like to deploy kured into
+kubectl create namespace kured
+
+# Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
+helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Możesz również skonfigurować dodatkowe parametry dla `kured`, na przykład integrację z Prometheus lub zapasem czasu. Aby uzyskać więcej informacji na temat dodatkowych parametrów konfiguracji, zobacz dokumentację [instalacji kured][kured-install].
+Możesz również skonfigurować dodatkowe parametry dla `kured`, na przykład integrację z Prometheus lub zapasem czasu. Aby uzyskać więcej informacji na temat dodatkowych parametrów konfiguracyjnych, zobacz [Wykres Kured Helm][kured-install].
 
 ## <a name="update-cluster-nodes"></a>Aktualizowanie węzłów klastra
 
@@ -96,7 +106,7 @@ W przypadku klastrów AKS korzystających z węzłów systemu Windows Server zob
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
-[kured-install]: https://github.com/weaveworks/kured#installation
+[kured-install]: https://hub.helm.sh/charts/stable/kured
 [kubectl-get-nodes]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- LINKS - internal -->

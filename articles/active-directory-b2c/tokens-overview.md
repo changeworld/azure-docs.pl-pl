@@ -2,20 +2,20 @@
 title: Omówienie tokenów — Azure Active Directory B2C
 description: Dowiedz się więcej na temat tokenów używanych w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 543a3558333933e9d8d6262c76c1e6e9419be877
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cbbd083a6b62733d71c316af95dffaa188b28955
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848189"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186492"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Omówienie tokenów w Azure Active Directory B2C
 
@@ -50,9 +50,9 @@ Oświadczenia w tokenach identyfikatorów nie są zwracane w żadnej określonej
 
 W poniższej tabeli wymieniono oświadczenia, których można oczekiwać w tokenach identyfikatorów i tokenach dostępu wystawionych przez Azure AD B2C.
 
-| Nazwa | Claim | Przykładowa wartość | Opis |
+| Name (Nazwa) | Claim | Przykładowa wartość | Opis |
 | ---- | ----- | ------------- | ----------- |
-| Odbiorcy | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identyfikuje zamierzony odbiorcę tokenu. W przypadku Azure AD B2C odbiorca jest IDENTYFIKATORem aplikacji. Aplikacja powinna sprawdzić poprawność tej wartości i odrzucić token, jeśli nie jest zgodny. Odbiorcy są równoznaczne z zasobami. |
+| Grupy odbiorców | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identyfikuje zamierzony odbiorcę tokenu. W przypadku Azure AD B2C odbiorca jest IDENTYFIKATORem aplikacji. Aplikacja powinna sprawdzić poprawność tej wartości i odrzucić token, jeśli nie jest zgodny. Odbiorcy są równoznaczne z zasobami. |
 | Wystawca | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identyfikuje usługę tokenu zabezpieczającego (STS), która konstruuje i zwraca token. Identyfikuje także katalog, w którym użytkownik został uwierzytelniony. Twoja aplikacja powinna sprawdzać poprawność roszczeń wystawcy, aby upewnić się, że token pochodzi z odpowiedniego punktu końcowego. |
 | Wystawiony o | `iat` | `1438535543` | Godzina wystawienia tokenu reprezentowana w czasie epoki. |
 | Czas wygaśnięcia | `exp` | `1438539443` | Godzina, o której token stał się nieprawidłowy, reprezentowane w czasie epoki. Twoja aplikacja powinna używać tego żądania, aby zweryfikować ważność okresu istnienia tokenu. |
@@ -61,14 +61,14 @@ W poniższej tabeli wymieniono oświadczenia, których można oczekiwać w token
 | Skrót kodu | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Skrót kodu zawarty w tokenie identyfikatora tylko wtedy, gdy token jest wystawiany wraz z kodem autoryzacji OAuth 2,0. Skrót kodu może służyć do weryfikowania autentyczności kodu autoryzacji. Aby uzyskać więcej informacji o tym, jak wykonać to sprawdzanie poprawności, zobacz [specyfikację OpenID Connect Connect](https://openid.net/specs/openid-connect-core-1_0.html).  |
 | Skrót tokenu dostępu | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Skrót tokenu dostępu zawarty w tokenie identyfikatora tylko wtedy, gdy token jest wystawiany wraz z tokenem dostępu OAuth 2,0. Skrót tokenu dostępu może służyć do weryfikowania autentyczności tokenu dostępu. Aby uzyskać więcej informacji o tym, jak wykonać to sprawdzanie poprawności, zobacz [Specyfikacja OpenID Connect Connect](https://openid.net/specs/openid-connect-core-1_0.html)  |
 | Jednorazow | `nonce` | `12345` | Identyfikator jednorazowy jest strategią używaną do ograniczania ataków metodą powtórzeń tokenu. Aplikacja może określić identyfikator jednorazowy w żądaniu autoryzacji za pomocą `nonce` parametru zapytania. Wartość podaną w żądaniu jest emitowana niezmodyfikowana w `nonce`m tylko do żądania tokenu identyfikatora. To zastrzeżenie umożliwia aplikacji zweryfikowanie wartości względem wartości określonej w żądaniu. Twoja aplikacja powinna przeprowadzić tę weryfikację podczas procesu weryfikacji tokenu identyfikatora. |
-| Temat | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Podmiot zabezpieczeń, dla którego token potwierdza informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienna i nie można jej ponownie przypisać ani ponownie użyć. Może służyć do bezpiecznego sprawdzania autoryzacji, na przykład gdy token jest używany w celu uzyskania dostępu do zasobu. Domyślnie, zgłoszenie podmiotu jest wypełniane IDENTYFIKATORem obiektu użytkownika w katalogu. |
+| Podmiot | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Podmiot zabezpieczeń, dla którego token potwierdza informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienna i nie można jej ponownie przypisać ani ponownie użyć. Może służyć do bezpiecznego sprawdzania autoryzacji, na przykład gdy token jest używany w celu uzyskania dostępu do zasobu. Domyślnie, zgłoszenie podmiotu jest wypełniane IDENTYFIKATORem obiektu użytkownika w katalogu. |
 | Odwołanie do klasy kontekstu uwierzytelniania | `acr` | Nie dotyczy | Używany tylko ze starszymi zasadami. |
 | Zasady dotyczące struktury zaufania | `tfp` | `b2c_1_signupsignin1` | Nazwa zasad, która została użyta w celu uzyskania tokenu identyfikatora. |
 | Czas uwierzytelniania | `auth_time` | `1438535543` | Godzina, o której ostatnio wprowadzono poświadczenia, reprezentowane w czasie epoki. Nie ma żadnej dyskryminacji między tym uwierzytelnianiem, czyli sesją logowania jednokrotnego (SSO) lub innym typem logowania. `auth_time` to czas ostatniego zainicjowania przez aplikację (lub użytkownika) próby uwierzytelnienia w odniesieniu do Azure AD B2C. Metoda używana do uwierzytelniania nie jest rozróżniana. |
 | Zakres | `scp` | `Read`| Uprawnienia przyznane do zasobu dla tokenu dostępu. Wiele przyznanych uprawnień jest rozdzielonych spacją. |
 | Uprawniony podmiot | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | **Identyfikator aplikacji** klienckiej, która zainicjowała żądanie. |
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 Następujące właściwości są używane do [zarządzania okresami istnienia tokenów zabezpieczających](configure-tokens.md) emitowanych przez Azure AD B2C:
 
@@ -101,7 +101,7 @@ Po rozpoczęciu podróży użytkownika Azure AD B2C otrzymuje token dostępu od 
 
 Azure AD B2C obecnie obsługuje tylko przekazywanie tokenu dostępu dla dostawców tożsamości OAuth 2,0, w tym Facebook i Google. W przypadku wszystkich innych dostawców tożsamości, zgłoszenie jest zwracane puste.
 
-## <a name="validation"></a>Sprawdzanie poprawności
+## <a name="validation"></a>Walidacja
 
 Aby sprawdzić poprawność tokenu, aplikacja powinna sprawdzić zarówno podpis, jak i oświadczenia tokenu. Wiele bibliotek typu open source jest dostępnych do sprawdzania poprawności JWTs, w zależności od preferowanego języka. Zalecane jest zapoznanie się z tymi opcjami zamiast implementowania własnej logiki walidacji.
 

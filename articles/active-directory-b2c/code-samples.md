@@ -2,20 +2,20 @@
 title: Przykłady kodu usługi Azure Active Directory B2C | Microsoft Docs
 description: Przykłady kodu mobilnych, klasycznych, internetowych i jednostronicowych aplikacji usługi Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 01/29/2020
 ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: d0a5790e84364bf34072977d5d3976fd880996bb
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: fc37e594984aa4c13fc9e770129a0423ba512737
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620587"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189688"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Przykłady kodu usługi Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ Poniższe tabele zawierają linki do przykładów dla aplikacji systemu iOS i An
 | [android-native-msal](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal) | Prosta aplikacja systemu Android przedstawiająca sposób użycia biblioteki MSAL do uwierzytelniania użytkowników za pośrednictwem usługi Azure Active Directory B2C oraz do uzyskiwania dostępu do internetowego interfejsu API z tokenami wynikowymi. |
 | [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | Przykład przedstawiający sposób użycia biblioteki innej firmy do kompilowania aplikacji systemu iOS w języku Objective-C, która uwierzytelnia użytkowników tożsamości firmy Microsoft w naszej usłudze tożsamości Azure AD B2C. |
 | [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | Przykład przedstawiający sposób użycia biblioteki innej firmy do kompilowania aplikacji systemu Android, która uwierzytelnia użytkowników tożsamości firmy Microsoft w naszej usłudze tożsamości Azure AD B2C i wywołuje internetowy interfejs API za pomocą tokenów dostępu standardu OAuth 2.0. |
-| [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | Przykład przedstawiający sposób użycia aplikacji klasycznej systemu Windows na platformie .NET (WPF) do logowania użytkownika za pomocą usługi Azure AD B2C, uzyskiwania tokenu dostępu przy użyciu platformy MSAL.NET i wywoływania interfejsu API. | 
+| [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | Przykład przedstawiający sposób użycia aplikacji klasycznej systemu Windows na platformie .NET (WPF) do logowania użytkownika za pomocą usługi Azure AD B2C, uzyskiwania tokenu dostępu przy użyciu platformy MSAL.NET i wywoływania interfejsu API. |
 | [xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Prosta aplikacja Xamarin Forms przedstawiająca sposób użycia biblioteki MSAL do uwierzytelniania użytkowników za pośrednictwem usługi Azure Active Directory B2C oraz do uzyskiwania dostępu do internetowego interfejsu API z tokenami wynikowymi. |
 
 ## <a name="web-apps-and-apis"></a>Aplikacje internetowe i interfejsy API
@@ -46,5 +46,5 @@ Poniższe tabele zawierają linki do przykładów dla aplikacji systemu iOS i An
 
 | Sample | Opis |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Aplikacja jednostronicowa (SPA) wywołująca internetowy interfejs API. Uwierzytelnianie jest przeprowadzane przy użyciu usługi Azure AD B2C w środowisku MSAL.js. | 
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Aplikacja jednostronicowa (SPA) wywołująca internetowy interfejs API. Uwierzytelnianie jest przeprowadzane przy użyciu usługi Azure AD B2C w środowisku MSAL.js. |
 | [javascript-hellojs-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-hellojs-singlepageapp) | Jednostronicowa aplikacja implementowana przy użyciu zaplecza internetowego interfejsu API platformy ASP.NET, która umożliwia logowanie użytkowników i tworzenie nowych kont przy użyciu usługi Azure AD B2C oraz wywołuje internetowy interfejs API przy użyciu tokenów dostępu protokołu OAuth 2.0. |

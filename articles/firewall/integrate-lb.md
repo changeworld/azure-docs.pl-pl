@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 02/28/2020
 ms.author: victorh
-ms.openlocfilehash: 91f34d06532b2d7f56d293df40939212a4f3d68c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ab9a500d9535b55702b8baff15f8cc47e6ac2c86
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167073"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196725"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integracja usługi Azure Firewall z usługą Azure Load Balancer w warstwie Standardowa
 
@@ -39,9 +39,23 @@ Aby uniknąć tego problemu, należy utworzyć dodatkową trasę hosta dla publi
 
 ![Routing asymetryczny](media/integrate-lb/Firewall-LB-asymmetric.png)
 
-Na przykład następujące trasy dotyczą zapory pod publicznym adresem IP 13.86.122.41 i prywatnym adresem IP 10.3.1.4.
+### <a name="route-table-example"></a>Przykład tabeli tras
 
-![Tabela tras](media/integrate-lb/route-table.png)
+Na przykład następujące trasy dotyczą zapory pod publicznym adresem IP 20.185.97.136 i prywatnym adresem IP 10.0.1.4.
+
+> [!div class="mx-imgBorder"]
+> ![Tabela tras](media/integrate-lb/route-table.png)
+
+### <a name="nat-rule-example"></a>Przykład reguły NAT
+
+W poniższym przykładzie reguła NAT tłumaczy ruch RDP na zaporę w 20.185.97.136 przez moduł równoważenia obciążenia w 20.42.98.220:
+
+> [!div class="mx-imgBorder"]
+> ![regułę NAT](media/integrate-lb/nat-rule-02.png)
+
+### <a name="health-probes"></a>Sondy kondycji
+
+Należy pamiętać, że usługa sieci Web jest uruchomiona na hostach w puli modułu równoważenia obciążenia, jeśli sondy kondycji protokołu TCP są używane do portów 80 lub sond protokołu HTTP/HTTPS.
 
 ## <a name="internal-load-balancer"></a>Wewnętrzny moduł równoważenia obciążenia
 
@@ -56,6 +70,8 @@ Tak więc można wdrożyć ten scenariusz podobny do scenariusza publicznego mod
 Aby dodatkowo zwiększyć bezpieczeństwo scenariusza z równoważeniem obciążenia, możesz użyć sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń).
 
 Można na przykład utworzyć sieciowej grupy zabezpieczeń w podsieci zaplecza, w której znajdują się maszyny wirtualne o zrównoważonym obciążeniu. Zezwalaj na ruch przychodzący pochodzący z adresu IP/portu zapory.
+
+![Sieciowa grupa zabezpieczeń](media/integrate-lb/nsg-01.png)
 
 Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [grupy zabezpieczeń](../virtual-network/security-overview.md).
 

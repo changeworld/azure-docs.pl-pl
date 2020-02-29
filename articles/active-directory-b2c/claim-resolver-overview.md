@@ -3,20 +3,20 @@ title: Rozwiązywanie problemów w zasadach niestandardowych
 titleSuffix: Azure AD B2C
 description: Dowiedz się, jak używać resolverów oświadczeń w zasadach niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/02/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 97e51331657c62094996f79483148f2f441e6a44
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 02277d2da2e431ac1cefdd9b018af4c25f7d5a9a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161605"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189841"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informacje o rozpoznawaniu roszczeń w Azure Active Directory B2C zasadach niestandardowych
 
@@ -50,8 +50,8 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 | ----- | ----------- | --------|
 | {Culture: LanguageName} | Dwuliterowy kod ISO dla języka. | pl |
 | {Culture: LCID}   | Identyfikator LCID kodu języka. | 1033 |
-| {Culture: RegionName} | Dwuliterowy kod ISO dla regionu. | US |
-| {Culture: RFC5646} | Kod języka RFC5646. | pl-pl |
+| {Culture: RegionName} | Dwuliterowy kod ISO dla regionu. | USA |
+| {Culture: RFC5646} | Kod języka RFC5646. | pl-PL |
 
 ### <a name="policy"></a>Zasady
 
@@ -66,14 +66,14 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 
 | Claim | Opis | Przykład |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |`acr_values` parametr ciągu zapytania. | N/D |
+| {OIDC: AuthenticationContextReferences} |`acr_values` parametr ciągu zapytania. | Nie dotyczy |
 | {OIDC:ClientId} |`client_id` parametr ciągu zapytania. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC: DomainHint} |`domain_hint` parametr ciągu zapytania. | facebook.com |
 | {OIDC: LoginHint} |  `login_hint` parametr ciągu zapytania. | someone@contoso.com |
-| {OIDC:MaxAge} | Element `max_age`. | N/D |
+| {OIDC:MaxAge} | Element `max_age`. | Nie dotyczy |
 | {OIDC: nonce} |`Nonce` parametr ciągu zapytania. | defaultNonce |
 | {OIDC: Prompt} | `prompt` parametr ciągu zapytania. | logowanie |
-| {OIDC: Resource} |`resource` parametr ciągu zapytania. | N/D |
+| {OIDC: Resource} |`resource` parametr ciągu zapytania. | Nie dotyczy |
 | {OIDC: Scope} |`scope` parametr ciągu zapytania. | OpenID Connect |
 | {OIDC: RedirectUri} |`redirect_uri` parametr ciągu zapytania. | https://jwt.ms |
 
@@ -86,7 +86,7 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 | {Context:DateTimeInUtc} |Data i godzina w formacie UTC.  | 10/10/2018 12:00:00 PM |
 | {Context: DeploymentMode} |Tryb wdrażania zasad.  | Produkcja |
 | {Context: IPAddress} | Adres IP użytkownika. | 11.111.111.11 |
-| {Context: KMSI} | Wskazuje, czy pole wyboru nie [wylogowuj mnie](custom-policy-keep-me-signed-in.md) jest zaznaczone. |  {1&gt;true&lt;1} |
+| {Context: KMSI} | Wskazuje, czy pole wyboru nie [wylogowuj mnie](custom-policy-keep-me-signed-in.md) jest zaznaczone. |  true |
 
 ### <a name="non-protocol-parameters"></a>Parametry niebędące protokołem
 
@@ -97,13 +97,13 @@ Wszelkie nazwy parametrów dołączone jako część żądania OIDC lub OAuth2 m
 | {OAUTH-KV: campaignId} | Parametr ciągu zapytania. | Hawaje |
 | {OAUTH-KV: app_session} | Parametr ciągu zapytania. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Parametr ciągu zapytania. | 1234 |
-| {OAUTH-KV: dowolny niestandardowy ciąg zapytania} | Parametr ciągu zapytania. | N/D |
+| {OAUTH-KV: dowolny niestandardowy ciąg zapytania} | Parametr ciągu zapytania. | Nie dotyczy |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Claim | Opis | Przykład |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | Token dostępu. | N/D |
+| {oauth2:access_token} | Token dostępu. | Nie dotyczy |
 
 
 ### <a name="saml"></a>SAML
@@ -117,9 +117,9 @@ Wszelkie nazwy parametrów dołączone jako część żądania OIDC lub OAuth2 m
 | {SAML: ForceAuthn} | Wartość atrybutu `ForceAuthN` z elementu `AuthnRequest` żądania SAML. | True |
 | {SAML: ProviderName} | Wartość atrybutu `ProviderName` z elementu `AuthnRequest` żądania SAML.| Contoso.com |
 
-## <a name="using-claim-resolvers"></a>Korzystanie z resolverów roszczeń 
+## <a name="using-claim-resolvers"></a>Korzystanie z resolverów roszczeń
 
-Można użyć resolverów oświadczeń z następującymi elementami: 
+Można użyć resolverów oświadczeń z następującymi elementami:
 
 | Element | Element | Ustawienia |
 | ----- | ----------------------- | --------|
@@ -135,7 +135,7 @@ Można użyć resolverów oświadczeń z następującymi elementami:
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
 |Profil techniczny [RelyingParty](relyingparty.md#technicalprofile)| `OutputClaim`| 2 |
 
-Ustawienia: 
+Ustawienia:
 1. Metadane `IncludeClaimResolvingInClaimsHandling` muszą być ustawione na `true`.
 1. `AlwaysUseDefaultValue` atrybutu oświadczeń wejściowych lub wyjściowych musi być ustawiona na `true`.
 
@@ -195,7 +195,7 @@ W związku z tym Azure AD B2C wysyła powyższe parametry do strony zawartości 
 
 ### <a name="content-definition"></a>Definicja zawartości
 
-W `LoadUri`[ContentDefinition](contentdefinitions.md) można wysyłać resolvery roszczeń w celu ściągania zawartości z różnych miejsc, na podstawie używanych parametrów. 
+W `LoadUri`[ContentDefinition](contentdefinitions.md) można wysyłać resolvery roszczeń w celu ściągania zawartości z różnych miejsc, na podstawie używanych parametrów.
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -224,7 +224,7 @@ Za pomocą usługi Azure Application Insights i rozwiązania do rozwiązywania p
 
 ### <a name="relying-party-policy"></a>Zasady jednostki uzależnionej
 
-W profilu technicznym zasad [jednostki uzależnionej](relyingparty.md) możesz chcieć wysłać identyfikator dzierżawy lub identyfikator korelacji do aplikacji jednostki uzależnionej w ramach tokenu JWT. 
+W profilu technicznym zasad [jednostki uzależnionej](relyingparty.md) możesz chcieć wysłać identyfikator dzierżawy lub identyfikator korelacji do aplikacji jednostki uzależnionej w ramach tokenu JWT.
 
 ```XML
 <RelyingParty>

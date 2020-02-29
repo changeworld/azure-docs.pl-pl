@@ -3,12 +3,12 @@ title: Zrozumienie blokowania zasobów
 description: Dowiedz się więcej na temat opcji blokowania w planach platformy Azure w celu ochrony zasobów podczas przypisywania planu.
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1491af0ddfb0f6f5fbea322bd00dc9838c155983
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919876"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199703"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Zrozumienie blokowania zasobów w planach platformy Azure
 
@@ -83,6 +83,9 @@ Treść żądania przypisania strategii wygląda następująco:
 ```
 
 Kluczową różnicą w tej treści żądania i jedną przypisaną do subskrypcji jest właściwość `properties.scope`. Ta wymagana właściwość musi być ustawiona na subskrypcję, do której ma zastosowanie przypisanie planu. Subskrypcja musi być bezpośrednim elementem podrzędnym hierarchii grupy zarządzania, w której jest przechowywane przypisanie planu.
+
+> [!NOTE]
+> Plan przypisany do zakresu grupy zarządzania nadal działa jako przypisanie strategii na poziomie subskrypcji. Jedyną różnicą jest to, że przypisanie strategii jest przechowywane, aby uniemożliwić właścicielom subskrypcji usuwanie przypisania i skojarzonych blokad.
 
 ## <a name="removing-locking-states"></a>Usuwanie Stanów blokowania
 

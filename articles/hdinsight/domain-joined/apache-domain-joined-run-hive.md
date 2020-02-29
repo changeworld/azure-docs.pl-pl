@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: ff612c43a058fce02bd801e15632c27979f22d17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435875"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196930"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurowanie zasad technologii Apache Hive w usłudze HDInsight przy użyciu pakietu Enterprise Security
 
@@ -59,7 +59,7 @@ W tej sekcji utworzysz dwie zasady Ranger na potrzeby uzyskiwania dostępu do hi
     |table|hivesampletable|
     |Kolumna Hive|*|
     |Select User (Wybierz użytkownika)|Użytkownik hiveuser1|
-    |Uprawnienia|wybierz z listy pozycję|
+    |Uprawnienia|zaznaczenia|
 
     ![Konfiguracja zasad Hive ESP Ranger usługi HDInsight](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
@@ -77,7 +77,7 @@ W tej sekcji utworzysz dwie zasady Ranger na potrzeby uzyskiwania dostępu do hi
     |table|hivesampletable|
     |Kolumna Hive|ClientID, devicemake|
     |Select User (Wybierz użytkownika)|hiveuser2|
-    |Uprawnienia|wybierz z listy pozycję|
+    |Uprawnienia|zaznaczenia|
 
 ## <a name="create-hive-odbc-data-source"></a>Tworzenie źródła danych ODBC usługi Hive
 
@@ -88,11 +88,11 @@ Instrukcje można znaleźć w sekcji [Create Hive ODBC data source](../hadoop/ap
  | Data Source Name (Nazwa źródła danych) | Nadaj nazwę źródła danych. |
  | Host | Wprowadź CLUSTERNAME.azurehdinsight.net. np. myHDICluster.azurehdinsight.net. |
  | Port | Użyj portu **443**. (Ten port został zmieniony z 563 na 443). |
- | baza danych | Użyj wartości **Default** (Domyślna). |
+ | Baza danych | Użyj wartości **Default** (Domyślna). |
  | Hive Server Type (Typ serwera Hive) | Wybierz wartość **Hive Server 2**. |
  | Mechanism (Mechanizm) | Wybierz wartość **Azure HDInsight Service** (Usługa Azure HDInsight). |
  | HTTP Path (Ścieżka HTTP) | Pozostaw to pole puste. |
- | Nazwa użytkownika | Wprowadź polecenie hiveuser1@contoso158.onmicrosoft.com. Zaktualizuj nazwę domeny, jeśli jest inna. |
+ | User Name (Nazwa użytkownika) | Wprowadź polecenie hiveuser1@contoso158.onmicrosoft.com. Zaktualizuj nazwę domeny, jeśli jest inna. |
  | Hasło | Wprowadź hasło użytkownika hiveuser1. |
 
 Pamiętaj o kliknięciu przycisku **Test** (Testuj) przed zapisaniem źródła danych.
@@ -152,7 +152,7 @@ Aby przetestować drugie zasady (Read-hivesampletable-devicemake), utworzone w o
 
 * Aby skonfigurować klaster usługi HDInsight z pakiet Enterprise Security, zobacz [Konfigurowanie klastrów usługi HDInsight przy użyciu protokołu ESP](apache-domain-joined-configure.md).
 * Aby zarządzać klastrem usługi HDInsight przy użyciu protokołu ESP, zobacz [Zarządzanie klastrami usługi HDInsight przy użyciu protokołu ESP](apache-domain-joined-manage.md).
-* Aby uruchamiać zapytania programu Hive przy użyciu protokołu SSH w klastrach usługi HDInsight z protokołem ESP, zobacz [Używanie protokołu SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* Aby uruchamiać zapytania programu Hive przy użyciu protokołu SSH w klastrach usługi HDInsight z protokołem ESP, zobacz [Używanie protokołu SSH z usługą HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight).
 * Aby nawiązać połączenie z usługą Hive przy użyciu usługi Hive JDBC, zobacz [nawiązywanie połączenia z Apache Hive w usłudze Azure HDInsight przy użyciu sterownika JDBC Hive](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)
 * Aby połączyć program Excel z usługą Hadoop przy użyciu interfejsu ODBC platformy Hive, zobacz [Connect Excel to Apache Hadoop z dyskiem ODBC Microsoft Hive](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)
 * Aby połączyć program Excel z usługą Hadoop przy użyciu Power Query, zobacz [Connect Excel to Apache Hadoop przy użyciu Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md)

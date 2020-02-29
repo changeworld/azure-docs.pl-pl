@@ -3,20 +3,20 @@ title: Konfigurowanie rejestracji i logowania przy użyciu konta Amazon
 titleSuffix: Azure AD B2C
 description: Zapewnij klientom konta usługi Amazon i zaloguj się w swoich aplikacjach przy użyciu Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b22c4fb8f5c54437281e90a74032e8ee1d05bcb8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d4538c1d15aeae624f5d73e9985448bda2fd8f1b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846642"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188464"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Skonfiguruj konto usługi Amazon i zaloguj się na nim przy użyciu Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Aby użyć konta Amazon jako [dostawcy tożsamości](authorization-code-flow.md)
 1. Wprowadź **nazwę**, **Opis**i **adres URL informacji o ochronie prywatności**, a następnie kliknij przycisk **Zapisz**. Powiadomienie o zasadach zachowania poufności informacji to strona, którą można zarządzać, która zapewnia użytkownikom informacje o ochronie prywatności.
 1. W sekcji **Ustawienia sieci Web** Skopiuj wartości **Identyfikator klienta**. Wybierz pozycję **Pokaż klucz tajny** , aby uzyskać klucz tajny klienta, a następnie skopiuj go. Musisz mieć oba te elementy, aby skonfigurować konto Amazon jako dostawcę tożsamości w dzierżawie. **Klucz tajny klienta** jest ważnym poświadczeniem zabezpieczeń.
 1. W sekcji **Ustawienia sieci Web** wybierz pozycję **Edytuj**, a następnie wprowadź `https://your-tenant-name.b2clogin.com` w polu **dozwolone źródła języka JavaScript** i `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` w polu **dozwolone adresy URL**. Zastąp `your-tenant-name` nazwą dzierżawy. Musisz użyć wszystkich małych liter, wprowadzając nazwę dzierżawy, nawet jeśli dzierżawa jest zdefiniowana z dużymi literami w Azure AD B2C.
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Save** (Zapisz).
 
 ## <a name="configure-an-amazon-account-as-an-identity-provider"></a>Konfigurowanie konta Amazon jako dostawcy tożsamości
 

@@ -9,14 +9,14 @@ ms.workload: big-compute
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: lahugh
-ms.openlocfilehash: 14cbacf43e83dc768e9a85620df131533b746671
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 0134e7d92ddca9bd3b45abaf642f33de9d209b33
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463104"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192306"
 ---
-# <a name="securely-access-key-vault-with-batch"></a>Bezpieczny dostęp Key Vault za pomocą programu Batch
+# <a name="securely-access-key-vault-with-batch"></a>Bezpieczny dostęp do usługi Key Vault za pomocą usługi Batch
 
 W tym artykule dowiesz się, jak skonfigurować węzły wsadowe pod kątem bezpiecznego dostępu do poświadczeń przechowywanych w Azure Key Vault. Nie ma żadnego punktu podczas umieszczania poświadczeń administratora w Key Vault, a następnie do uzyskiwania dostępu do Key Vault ze skryptu. Rozwiązanie polega na użyciu certyfikatu, który przyznaje węzłom partii dostęp do Key Vault. Za pomocą kilku kroków możemy zaimplementować bezpieczny Magazyn kluczy dla usługi Batch.
 
@@ -40,7 +40,7 @@ cd C:\Program Files (x86)\Windows Kits\10\bin\x64
 Następnie użyj narzędzia `makecert`, aby utworzyć pliki certyfikatów z podpisem własnym o nazwie `batchcertificate.cer` i `batchcertificate.pvk`. Użyta nazwa pospolita (CN) nie jest ważna dla tej aplikacji, ale warto ją określić, która informuje o tym, jak certyfikat jest używany.
 
 ```console
-makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
+makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
 Zadanie wsadowe wymaga pliku `.pfx`. Użyj narzędzia [Pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) do przekonwertowania plików `.cer` i `.pvk` utworzonych przez `makecert` na pojedynczy plik `.pfx`.

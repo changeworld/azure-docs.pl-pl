@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 12/06/2019
-ms.openlocfilehash: 81bc632f1061f0ee73d2295cafa5f7a8472d20ee
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.date: 02/26/2020
+ms.openlocfilehash: 2c6495454e5ba2449d4b3c74a096681f74610813
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951806"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199465"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Zarządzanie klastrami usługi Azure HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -82,10 +82,10 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>Skalowanie klastrów
 
-Użyj [AZ HDInsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) size, aby zmienić rozmiar określonego klastra usługi HDInsight na określony rozmiar. Edytuj poniższe polecenie, zastępując `RESOURCE_GROUP_NAME`i `CLUSTER_NAME` z odpowiednimi informacjami. Zastąp `TARGET_INSTANCE_COUNT` wymaganą liczbą węzłów procesu roboczego dla klastra. Aby uzyskać więcej informacji na temat skalowania klastrów, zobacz [skalowanie klastrów usługi HDInsight](./hdinsight-scaling-best-practices.md). Wprowadź polecenie:
+Użyj [AZ HDInsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) size, aby zmienić rozmiar określonego klastra usługi HDInsight na określony rozmiar. Edytuj poniższe polecenie, zastępując `RESOURCE_GROUP_NAME`i `CLUSTER_NAME` z odpowiednimi informacjami. Zastąp `WORKERNODE_COUNT` wymaganą liczbą węzłów procesu roboczego dla klastra. Aby uzyskać więcej informacji na temat skalowania klastrów, zobacz [skalowanie klastrów usługi HDInsight](./hdinsight-scaling-best-practices.md). Wprowadź polecenie:
 
 ```azurecli-interactive
-az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --target-instance-count TARGET_INSTANCE_COUNT
+az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT
 ```
 
 ## <a name="next-steps"></a>Następne kroki

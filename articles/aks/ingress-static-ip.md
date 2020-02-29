@@ -4,12 +4,12 @@ description: Dowiedz się, jak zainstalować i skonfigurować kontroler transfer
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: a72312e2921b4721a4a5944cf62241b513da1e0a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 10422595b85c71020225df694778e6b8ae7e0185
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595522"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191354"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Utwórz kontroler transferu danych przychodzących ze statycznym publicznym adresem IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -17,7 +17,7 @@ Kontroler ruchu przychodzącego to element oprogramowania dostarczający odwrotn
 
 W tym artykule pokazano, jak wdrożyć [kontroler Nginx Ingress][nginx-ingress] w klastrze usługi Azure Kubernetes Service (AKS). Kontroler transferu danych przychodzących jest skonfigurowany ze statycznym publicznym adresem IP. Projekt [Menedżera certyfikatów][cert-manager] służy do automatycznego generowania i konfigurowania certyfikatów [szyfrowania][lets-encrypt] . Na koniec dwie aplikacje są uruchamiane w klastrze AKS, z których każdy jest dostępny za pośrednictwem jednego adresu IP.
 
-Możesz także:
+Możesz również wykonać następujące czynności:
 
 - [Tworzenie podstawowego kontrolera danych wejściowych z łącznością sieci zewnętrznej][aks-ingress-basic]
 - [Włącz dodatek routingu aplikacji protokołu HTTP][aks-http-app-routing]
@@ -28,7 +28,7 @@ Możesz także:
 
 W tym artykule przyjęto założenie, że masz istniejący klaster AKS. Jeśli potrzebujesz klastra AKS, zapoznaj się z przewodnikiem Szybki Start AKS [przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart-cli] lub [przy użyciu Azure Portal][aks-quickstart-portal].
 
-W tym artykule używa się Helm do zainstalowania kontrolera transferu danych przychodzących, Menedżera certyfikatów i przykładowej aplikacji sieci Web. Konieczne jest zainicjowanie Helm w ramach klastra AKS i użycie konta usługi dla tego elementu. Upewnij się, że korzystasz z najnowszej wersji Helm 3. Instrukcje dotyczące uaktualniania można znaleźć w dokumentacji [Helm Install][helm-install]. Aby uzyskać więcej informacji na temat konfigurowania i używania Helm, zobacz [Install Applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
+W tym artykule używa się Helm do zainstalowania kontrolera transferu danych przychodzących, Menedżera certyfikatów i przykładowej aplikacji sieci Web. Upewnij się, że korzystasz z najnowszej wersji programu Helm. Instrukcje dotyczące uaktualniania można znaleźć w dokumentacji [Helm Install][helm-install]. Aby uzyskać więcej informacji na temat konfigurowania i używania Helm, zobacz [Install Applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
 
 Ten artykuł wymaga również uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.64 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
@@ -116,13 +116,10 @@ Aby zainstalować kontroler Menedżera certyfikatów w klastrze z obsługą RBAC
 
 ```console
 # Install the CustomResourceDefinition resources separately
-kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
-
-# Create the namespace for cert-manager
-kubectl create namespace cert-manager
+kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.13/deploy/manifests/00-crds.yaml
 
 # Label the cert-manager namespace to disable resource validation
-kubectl label namespace cert-manager cert-manager.io/disable-validation=true
+kubectl label namespace ingress-basic cert-manager.io/disable-validation=true
 
 # Add the Jetstack Helm repository
 helm repo add jetstack https://charts.jetstack.io
@@ -133,8 +130,8 @@ helm repo update
 # Install the cert-manager Helm chart
 helm install \
   cert-manager \
-  --namespace cert-manager \
-  --version v0.12.0 \
+  --namespace ingress-basic \
+  --version v0.13.0 \
   jetstack/cert-manager
 ```
 
@@ -151,7 +148,6 @@ apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-staging
-  namespace: ingress-basic
 spec:
   acme:
     server: https://acme-staging-v02.api.letsencrypt.org/directory
@@ -167,7 +163,7 @@ spec:
 Aby utworzyć wystawcę, użyj polecenia `kubectl apply -f cluster-issuer.yaml`.
 
 ```
-$ kubectl apply -f cluster-issuer.yaml
+$ kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
 
 clusterissuer.cert-manager.io/letsencrypt-staging created
 ```
@@ -347,20 +343,17 @@ NAME                    NAMESPACE       REVISION        UPDATED                 
 aks-helloworld          ingress-basic   1               2020-01-11 15:02:21.51172346   deployed        aks-helloworld-0.1.0
 aks-helloworld-2        ingress-basic   1               2020-01-11 15:03:10.533465598  deployed        aks-helloworld-0.1.0
 nginx-ingress           ingress-basic   1               2020-01-11 14:51:03.454165006  deployed        nginx-ingress-1.28.2    0.26.2
-cert-manager            cert-manager    1               2020-01-06 21:19:03.866212286  deployed        cert-manager-v0.12.0            v0.12.0
+cert-manager            ingress-basic    1               2020-01-06 21:19:03.866212286  deployed        cert-manager-v0.13.0    v0.13.0
 ```
 
 Usuń wydania za pomocą polecenia `helm uninstall`. Poniższy przykład usuwa wdrożenie NGINX, Menedżer certyfikatów oraz dwie przykładowe aplikacje AKS Hello World.
 
 ```
-$ helm uninstall aks-helloworld aks-helloworld-2 nginx-ingress -n ingress-basic
+$ helm uninstall aks-helloworld aks-helloworld-2 nginx-ingress cert-manager -n ingress-basic
 
 release "aks-helloworld" deleted
 release "aks-helloworld-2" deleted
 release "nginx-ingress" deleted
-
-$ helm uninstall cert-manager -n cert-manager
-
 release "cert-manager" deleted
 ```
 
@@ -390,7 +383,7 @@ W tym artykule uwzględniono niektóre składniki zewnętrzne do AKS. Aby dowied
 - [Kontroler transferu danych przychodzących NGINX][nginx-ingress]
 - [Menedżer certyfikatów][cert-manager]
 
-Możesz także:
+Możesz również wykonać następujące czynności:
 
 - [Tworzenie podstawowego kontrolera danych wejściowych z łącznością sieci zewnętrznej][aks-ingress-basic]
 - [Włącz dodatek routingu aplikacji protokołu HTTP][aks-http-app-routing]

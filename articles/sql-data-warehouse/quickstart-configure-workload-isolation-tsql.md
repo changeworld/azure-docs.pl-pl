@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: workload-management
-ms.date: 11/21/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 2a6c5ca9f7d2ceaef08b28e78b38b94a459548f5
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.custom: azure-synapse
+ms.openlocfilehash: bd3ad98116b18a77a77e8f6f327689d0ebb7dd21
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304764"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200519"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Szybki Start: Konfigurowanie izolacji obciążenia przy użyciu języka T-SQL
 
@@ -25,17 +25,17 @@ W tym przewodniku szybki start utworzysz grupę obciążeń i klasyfikator w cel
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
 > [!NOTE]
-> Utworzenie bazy danych w usłudze SQL Data Warehouse może skutkować powstaniem nowej usługi płatnej.  Aby uzyskać więcej informacji, zobacz [Cennik usługi SQL Data Warehouse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Tworzenie wystąpienia usługi SQL Analytics w usłudze Azure Synapse Analytics może skutkować powstaniem nowej, rozliczanej usłudze.  Aby uzyskać więcej informacji, zobacz [Cennik usługi Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 >
 
 ## <a name="prerequisites"></a>Wymagania wstępne
  
-W tym przewodniku szybki start założono, że masz już SQL Data Warehouse i masz uprawnienia sterujące bazą danych. Jeżeli chcesz utworzyć taki magazyn, skorzystaj z przewodnika [Szybki start: tworzenie i łączenie — portal](create-data-warehouse-portal.md), aby utworzyć magazyn danych o nazwie **mySampleDataWarehouse**.
+W tym przewodniku szybki start założono, że masz już wystąpienie usługi SQL Analytics w usłudze Azure Synapse i że masz uprawnienia sterujące bazą danych. Jeżeli chcesz utworzyć taki magazyn, skorzystaj z przewodnika [Szybki start: tworzenie i łączenie — portal](create-data-warehouse-portal.md), aby utworzyć magazyn danych o nazwie **mySampleDataWarehouse**.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 ## <a name="create-login-for-dataloads"></a>Utwórz nazwę logowania dla ładowania danych
 
@@ -109,7 +109,7 @@ DROP USER [ELTLogin]
 
 Opłaty są naliczane za jednostki magazynu danych i dane przechowywane w magazynie danych. Opłaty za te zasoby obliczeniowe i magazynowe są naliczane osobno.
 
-- Jeśli chcesz przechowywać dane w magazynie, możesz wstrzymać obliczenia, gdy nie korzystasz z magazynu danych. Przez wstrzymywanie obliczeń opłata jest naliczana tylko za magazyn danych. Gdy wszystko będzie gotowe do pracy z danymi, Wznów obliczenia.
+- Jeśli chcesz zachować dane w magazynie, możesz wstrzymać obliczenia, gdy nie używasz puli SQL. Przez wstrzymywanie obliczeń opłata jest naliczana tylko za magazyn danych. Gdy wszystko będzie gotowe do pracy z danymi, Wznów obliczenia.
 - Aby uniknąć opłat w przyszłości, możesz usunąć magazyn danych.
 
 Wykonaj następujące kroki, aby wyczyścić zasoby.
@@ -129,4 +129,4 @@ Wykonaj następujące kroki, aby wyczyścić zasoby.
 ## <a name="next-steps"></a>Następne kroki
 
 - Grupa obciążeń została już utworzona. Uruchom kilka zapytań jako ELTLogin, aby zobaczyć, jak są one wykonywane. Zobacz sekcję [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) , aby wyświetlić zapytania i przypisaną grupę obciążeń.
-- Aby uzyskać więcej informacji na temat zarządzania obciążeniem Azure SQL Data Warehouse, zobacz [zarządzanie obciążeniami](sql-data-warehouse-workload-management.md) i [izolacja obciążenia](sql-data-warehouse-workload-isolation.md).
+- Aby uzyskać więcej informacji na temat zarządzania obciążeniem usługi SQL Analytics, zobacz [zarządzanie obciążeniami](sql-data-warehouse-workload-management.md) i [izolacja obciążeń](sql-data-warehouse-workload-isolation.md).

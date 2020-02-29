@@ -1,22 +1,22 @@
 ---
-title: Zarządzanie obciążeniami
-description: Wskazówki dotyczące implementowania zarządzania obciążeniami w Azure SQL Data Warehouse.
+title: Zarządzanie obciążeniem
+description: Wskazówki dotyczące implementowania zarządzania obciążeniami w usłudze Azure Synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.custom: azure-synapse
+ms.openlocfilehash: 14ea742a40afff8105560f1003655004687c7c9e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935411"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197661"
 ---
 # <a name="what-is-workload-management"></a>Co to jest zarządzanie obciążeniami?
 
@@ -36,11 +36,11 @@ Wydajność hurtowni danych jest określana przez [jednostki magazynu danych](wh
 
 
 ## <a name="workload-management-concepts"></a>Pojęcia związane z zarządzaniem obciążeniem
-W przeszłości można było zarządzać wydajnością zapytań na SQL Data Warehouse za pomocą [klas zasobów](resource-classes-for-workload-management.md).  Klasy zasobów dozwolone do przypisywania pamięci do zapytania na podstawie przynależności do roli.  Podstawowym wyzwaniem z klasami zasobów jest to, że po skonfigurowaniu nie było żadnego ładu ani kontrolować obciążenia.  
+W przeszłości w przypadku analiz SQL na platformie Azure Synapse wydajność zapytań za pomocą [klas zasobów](resource-classes-for-workload-management.md).  Klasy zasobów dozwolone do przypisywania pamięci do zapytania na podstawie przynależności do roli.  Podstawowym wyzwaniem z klasami zasobów jest to, że po skonfigurowaniu nie było żadnego ładu ani kontrolować obciążenia.  
 
 Załóżmy na przykład, że przyznanie roli użytkownika ad hoc do smallrc zezwala temu użytkownikowi na korzystanie z 100% pamięci w systemie.  W przypadku klas zasobów nie ma możliwości zarezerwowania i zapewnienia dostępności zasobów dla obciążeń krytycznych.
 
-Zarządzanie obciążeniami na SQL Data Warehouse obejmuje trzy koncepcje wysokiego poziomu: [klasyfikację obciążeń](sql-data-warehouse-workload-classification.md), [znaczenie obciążeń](sql-data-warehouse-workload-importance.md) i [izolację obciążeń](sql-data-warehouse-workload-isolation.md).  Te funkcje zapewniają większą kontrolę nad sposobem, w jaki obciążenie wykorzystuje zasoby systemowe.
+Zarządzanie obciążeniem usługi SQL Analytics w usłudze Azure Synapse składa się z trzech koncepcji wysokiego poziomu: [klasyfikacji obciążeń](sql-data-warehouse-workload-classification.md), [ważności obciążeń](sql-data-warehouse-workload-importance.md) i [izolacji obciążeń](sql-data-warehouse-workload-isolation.md).  Te funkcje zapewniają większą kontrolę nad sposobem, w jaki obciążenie wykorzystuje zasoby systemowe.
 
 Klasyfikacja obciążenia to koncepcja przypisywania żądania do grupy obciążeń i ustawiania poziomów ważności.  W przeszłości to przypisanie zostało wykonane za pośrednictwem przynależności do roli przy użyciu [sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class).  Można to zrobić za pośrednictwem [tworzenia obciążenia CLASSIFER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  Funkcja klasyfikacji oferuje bogatszy zestaw opcji, takich jak etykieta, sesja i czas, aby sklasyfikować żądania.
 

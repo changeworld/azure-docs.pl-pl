@@ -2,20 +2,20 @@
 title: Dostosowanie języka w Azure Active Directory B2C
 description: Dowiedz się więcej o dostosowywaniu środowiska w przepływach użytkownika.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/13/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ab34c1c34c2d2a67b5e3fdd6a5e84f0663455e20
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5b3af812b2b78c276b5345b9b19226e6e1dba80b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847916"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185764"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Dostosowanie języka w Azure Active Directory B2C
 
@@ -207,24 +207,24 @@ Azure AD B2C obejmuje obsługę następujących języków. Języki przepływu u�
 | Bułgarski             | BG            | ![nie](./media/user-flow-language-customization/no.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Bengalski                | bn            | ![tak](./media/user-flow-language-customization/yes.png) | ![nie](./media/user-flow-language-customization/no.png) |
 | Kataloński               | urzędu certyfikacji            | ![nie](./media/user-flow-language-customization/no.png) | ![tak](./media/user-flow-language-customization/yes.png) |
-| Czeski                 | cs            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
+| Czeski                 | Rejestr            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Duński                | da            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
-| Niemiecki                | de            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
+| Niemiecki                | Ukryj            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Grecki                 | el            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
-| Polski               | en            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
-| Hiszpański               | es            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
+| Polski               | pl            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
+| Hiszpański               | AK            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Estoński              | staw            | ![nie](./media/user-flow-language-customization/no.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Baskijski                | Europejska            | ![nie](./media/user-flow-language-customization/no.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Fiński               | fi            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Francuski                | fr            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Galicyjski              | GL            | ![nie](./media/user-flow-language-customization/no.png) | ![tak](./media/user-flow-language-customization/yes.png) |
-| Gujarati              | gu            | ![tak](./media/user-flow-language-customization/yes.png) | ![nie](./media/user-flow-language-customization/no.png) |
+| Gudżarati              | gu            | ![tak](./media/user-flow-language-customization/yes.png) | ![nie](./media/user-flow-language-customization/no.png) |
 | Hebrajski                | Przewodniczący            | ![nie](./media/user-flow-language-customization/no.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Hindi                 | hi            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Chorwacki              | wysoki            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
-| węgierski             | hu            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
+| Węgierski             | hu            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Indonezyjski            | id            | ![nie](./media/user-flow-language-customization/no.png) | ![tak](./media/user-flow-language-customization/yes.png) |
-| Włoski               | it            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
+| Włoski               | go            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Japoński              | ja            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Kazachski                | kk            | ![nie](./media/user-flow-language-customization/no.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Kannada               | kn            | ![tak](./media/user-flow-language-customization/yes.png) | ![nie](./media/user-flow-language-customization/no.png) |
@@ -234,10 +234,10 @@ Azure AD B2C obejmuje obsługę następujących języków. Języki przepływu u�
 | Malajalam             | ml            | ![tak](./media/user-flow-language-customization/yes.png) | ![nie](./media/user-flow-language-customization/no.png) |
 | Marathi               | mr            | ![tak](./media/user-flow-language-customization/yes.png) | ![nie](./media/user-flow-language-customization/no.png) |
 | Malajski                 | ms            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
-| Norweski (Bokmal)      | nb            | ![tak](./media/user-flow-language-customization/yes.png) | ![nie](./media/user-flow-language-customization/no.png) |
+| Norweski (Bokmal)      | sesja            | ![tak](./media/user-flow-language-customization/yes.png) | ![nie](./media/user-flow-language-customization/no.png) |
 | Holenderski                 | nl            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Norweski             | nie            | ![nie](./media/user-flow-language-customization/no.png) | ![tak](./media/user-flow-language-customization/yes.png) |
-| Punjabi               | pa            | ![tak](./media/user-flow-language-customization/yes.png) | ![nie](./media/user-flow-language-customization/no.png) |
+| Pendżabski               | pa            | ![tak](./media/user-flow-language-customization/yes.png) | ![nie](./media/user-flow-language-customization/no.png) |
 | Polski                | pl            | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Portugalski (Brazylia)   | pt-br         | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |
 | Portugalski (Portugalia) | pt-pt         | ![tak](./media/user-flow-language-customization/yes.png) | ![tak](./media/user-flow-language-customization/yes.png) |

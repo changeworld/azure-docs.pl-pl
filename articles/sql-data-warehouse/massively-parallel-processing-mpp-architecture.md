@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d808210861d971b2915206e7be0fe9b955616c5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 6e4b5bc6d30f6caa2809b7aa1e72be70ae12dbc1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720320"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193038"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura usługi Azure Synapse Analytics (dawniej SQL DW) 
 
@@ -25,7 +25,7 @@ Azure Synapse to nieograniczona usługa analizy, która łączy magazynowanie da
 - Analiza SQL: Pełna analiza oparta na języku T-SQL 
     - Pula SQL (płatność za jednostek DWUd) — ogólnie dostępna
     - SQL na żądanie (płatność za 1 TB przetworzonych) — (wersja zapoznawcza)
-- Spark: głębokie zintegrowane Apache Spark (wersja zapoznawcza) 
+- Spark: głębokie zintegrowane Apache Spark (wersja zapoznawcza)
 - Integracja danych: integracja danych hybrydowych (wersja zapoznawcza)
 - Studio: ujednolicone środowisko użytkownika.  (Wersja zapoznawcza)
 

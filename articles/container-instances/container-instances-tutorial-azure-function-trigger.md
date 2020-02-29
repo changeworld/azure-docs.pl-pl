@@ -4,12 +4,12 @@ description: Tworzenie wyzwalanej przez protokół HTTP bezserwerowej funkcji pr
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533372"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196539"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Samouczek: Tworzenie grupy kontenerów za pomocą funkcji platformy Azure wyzwalanej przez protokół HTTP
 
@@ -30,7 +30,7 @@ Omawiane kwestie:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Zobacz [Tworzenie pierwszej funkcji programu PowerShell na platformie Azure](../azure-functions/functions-create-first-function-powershell.md#prerequisites) , aby uzyskać wymagania wstępne dotyczące instalowania i używania Visual Studio Code z Azure Functions w systemie operacyjnym.
+Zobacz [Tworzenie pierwszej funkcji na platformie Azure](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment) , aby uzyskać wymagania wstępne dotyczące instalowania i używania Visual Studio Code z Azure Functions w systemie operacyjnym.
 
 W niektórych krokach w tym artykule jest używany interfejs wiersza polecenia platformy Azure. Aby wykonać te kroki, można użyć Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: pozyskiwanie danych monitorowania bez kodu — Eksplorator danych platformy Azure'
+title: 'Samouczek: pozyskiwanie danych monitorowania na platformie Azure Eksplorator danych bez kodu'
 description: W ramach tego samouczka nauczysz się, jak pozyskiwać dane monitorowania do platformy Azure Eksplorator danych bez jednego wiersza kodu i wysyłać zapytania o dane.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 24e09f6578431e6b7f2a83be13bae59bf2e707de
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3a53a660da2257540f23bc6438fc5933e5229c76
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986210"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198052"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Samouczek: pozyskiwanie i wykonywanie zapytań dotyczących danych monitorowania na platformie Azure Eksplorator danych 
 
@@ -43,7 +43,7 @@ Wyświetl i zapoznaj się z danymi dostarczonymi przez Azure Monitor metryki dia
 
 Metryki i dzienniki diagnostyczne platformy Azure są emitowane przez usługę platformy Azure i zapewniają dane dotyczące operacji tej usługi. 
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Metryki diagnostyczne](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Metryki diagnostyczne](#tab/diagnostic-metrics)
 #### <a name="example"></a>Przykład
 
 Metryki diagnostyczne są agregowane z użyciem ziarna czasu o wartości 1 minuty. Poniżej znajduje się przykład metryki usługi Azure Eksplorator danych — schemat zdarzenia w czasie trwania zapytania:
@@ -77,7 +77,7 @@ Metryki diagnostyczne są agregowane z użyciem ziarna czasu o wartości 1 minut
 }
 ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Dzienniki diagnostyczne](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Dzienniki diagnostyczne](#tab/diagnostic-logs)
 #### <a name="example"></a>Przykład
 
 Poniżej znajduje się przykład dziennika pozyskiwania danych [diagnostycznych](using-diagnostic-logs.md#diagnostic-logs-schema)na platformie Azure Eksplorator danych:
@@ -133,7 +133,7 @@ Poniżej znajduje się przykład dziennika pozyskiwania danych [diagnostycznych]
     }
 }
 ```
-# <a name="activity-logstabactivity-logs"></a>[Dzienniki aktywności](#tab/activity-logs)
+# <a name="activity-logs"></a>[Dzienniki aktywności](#tab/activity-logs)
 #### <a name="example"></a>Przykład
 
 Dzienniki aktywności platformy Azure to dzienniki na poziomie subskrypcji, które zapewniają wgląd w operacje wykonywane na zasobach w ramach subskrypcji. Poniżej przedstawiono przykład zdarzenia dziennika aktywności w celu sprawdzenia dostępu:
@@ -210,7 +210,7 @@ Struktura dzienników Azure Monitor nie jest tabelaryczna. Dane będą przetwarz
 
 Do utworzenia tabel docelowych w bazie danych usługi Azure Data Explorer użyj internetowego interfejsu użytkownika usługi Azure Data Explorer.
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Metryki diagnostyczne](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Metryki diagnostyczne](#tab/diagnostic-metrics)
 #### <a name="create-tables-for-the-diagnostic-metrics"></a>Tworzenie tabel dla metryk diagnostycznych
 
 1. W bazie danych *TestDatabase* Utwórz tabelę o nazwie *DiagnosticMetrics* do przechowywania rekordów metryk diagnostycznych. Użyj następującego polecenia kontroli `.create table`:
@@ -235,7 +235,7 @@ Do utworzenia tabel docelowych w bazie danych usługi Azure Data Explorer użyj 
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Dzienniki diagnostyczne](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Dzienniki diagnostyczne](#tab/diagnostic-logs)
 #### <a name="create-tables-for-the-diagnostic-logs"></a>Tworzenie tabel dla dzienników diagnostycznych 
 
 1. W bazie danych *TestDatabase* Utwórz tabelę o nazwie *DiagnosticLogs* do przechowywania rekordów dzienników diagnostycznych. Użyj następującego polecenia kontroli `.create table`:
@@ -258,7 +258,7 @@ Do utworzenia tabel docelowych w bazie danych usługi Azure Data Explorer użyj 
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[Dzienniki aktywności](#tab/activity-logs)
+# <a name="activity-logs"></a>[Dzienniki aktywności](#tab/activity-logs)
 #### <a name="create-tables-for-the-activity-logs"></a>Tworzenie tabel dla dzienników aktywności 
 
 1. Utwórz tabelę o nazwie *ActivityLogs* w bazie danych *TestDatabase* , aby otrzymywać rekordy dziennika aktywności. Uruchom następujące zapytanie usługi Azure Data Explorer w celu utworzenia tabeli:
@@ -284,7 +284,7 @@ Do utworzenia tabel docelowych w bazie danych usługi Azure Data Explorer użyj 
 
  Format danych to `json`, dlatego wymagane jest mapowanie danych. Mapowanie `json` mapuje każdą ścieżkę JSON na nazwę kolumny tabeli.
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Metryki diagnostyki/dzienniki diagnostyczne](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Metryki diagnostyki/dzienniki diagnostyczne](#tab/diagnostic-metrics+diagnostic-logs) 
 #### <a name="map-diagnostic-metrics-and-logs-to-the-table"></a>Mapowanie metryk i dzienników diagnostycznych na tabelę
 
 Aby zmapować metrykę diagnostyczną i dane dziennika do tabeli, należy użyć następującego zapytania:
@@ -293,7 +293,7 @@ Aby zmapować metrykę diagnostyczną i dane dziennika do tabeli, należy użyć
 .create table DiagnosticRawRecords ingestion json mapping 'DiagnosticRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-# <a name="activity-logstabactivity-logs"></a>[Dzienniki aktywności](#tab/activity-logs)
+# <a name="activity-logs"></a>[Dzienniki aktywności](#tab/activity-logs)
 #### <a name="map-activity-logs-to-the-table"></a>Mapowanie dzienników aktywności do tabeli
 
 Aby zmapować dane dziennika aktywności do tabeli, należy użyć następującego zapytania:
@@ -305,7 +305,7 @@ Aby zmapować dane dziennika aktywności do tabeli, należy użyć następujące
 
 ### <a name="create-the-update-policy-for-metric-and-log-data"></a>Tworzenie zasad aktualizacji dla danych metryk i dzienników
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Metryki diagnostyczne](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Metryki diagnostyczne](#tab/diagnostic-metrics)
 #### <a name="create-data-update-policy-for-diagnostics-metrics"></a>Utwórz zasady aktualizacji danych dla metryk diagnostyki
 
 1. Utwórz [funkcję](/azure/kusto/management/functions) , która rozszerza zbiór rekordów metryk diagnostycznych, tak aby każda wartość w kolekcji otrzymywała oddzielny wiersz. Użyj operatora [`mv-expand`](/azure/kusto/query/mvexpandoperator):
@@ -333,7 +333,7 @@ Aby zmapować dane dziennika aktywności do tabeli, należy użyć następujące
     .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Dzienniki diagnostyczne](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Dzienniki diagnostyczne](#tab/diagnostic-logs)
 #### <a name="create-data-update-policy-for-diagnostics-logs"></a>Tworzenie zasad aktualizacji danych dla dzienników diagnostycznych
 
 1. Utwórz [funkcję](/azure/kusto/management/functions) , która rozszerza kolekcję dzienników diagnostycznych, tak aby każda wartość w kolekcji otrzymywała oddzielny wiersz. Należy włączyć dzienniki pozyskiwania w klastrze usługi Azure Eksplorator danych i użyć [schematu dzienników](/azure/data-explorer/using-diagnostic-logs#diagnostic-logs-schema)pozyskiwania. Utworzenie jednej tabeli dla powiodło się, a w przypadku pomyślnego pomyślnego pozyskania niektóre pola będą puste, aby pozyskanie powiodło się (przykład ErrorCode). Użyj operatora [`mv-expand`](/azure/kusto/query/mvexpandoperator):
@@ -366,7 +366,7 @@ Aby zmapować dane dziennika aktywności do tabeli, należy użyć następujące
     .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
-# <a name="activity-logstabactivity-logs"></a>[Dzienniki aktywności](#tab/activity-logs)
+# <a name="activity-logs"></a>[Dzienniki aktywności](#tab/activity-logs)
 #### <a name="create-data-update-policy-for-activity-logs"></a>Tworzenie zasad aktualizacji danych dla dzienników aktywności
 
 1. Utwórz [funkcję](/azure/kusto/management/functions) , która rozszerza zbiór rekordów dziennika aktywności, tak aby każda wartość w kolekcji otrzymywała oddzielny wiersz. Użyj operatora [`mv-expand`](/azure/kusto/query/mvexpandoperator):
@@ -425,7 +425,7 @@ Ustawienia diagnostyki platformy Azure umożliwiają eksportowanie metryk i dzie
 
 Teraz konieczne jest połączenie metryk i dzienników diagnostycznych oraz dzienników aktywności z centrum zdarzeń.
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Metryki diagnostyki/dzienniki diagnostyczne](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Metryki diagnostyki/dzienniki diagnostyczne](#tab/diagnostic-metrics+diagnostic-logs) 
 ### <a name="connect-diagnostic-metrics-and-logs-to-your-event-hub"></a>Łączenie metryk i dzienników diagnostycznych z centrum zdarzeń
 
 Wybierz zasób, z którego chcesz eksportować metryki. Kilka typów zasobów obsługuje eksportowanie danych diagnostycznych, w tym Event Hubs przestrzeni nazw, Azure Key Vault, IoT Hub platformy Azure i klastrów Eksplorator danych platformy Azure. W tym samouczku użyjemy klastra usługi Azure Eksplorator danych jako zasobu. będziemy przeglądać metryki wydajności zapytań i dzienniki wyników pozyskiwania.
@@ -452,7 +452,7 @@ Wybierz zasób, z którego chcesz eksportować metryki. Kilka typów zasobów ob
 
 1. Wybierz pozycję **Zapisz**.
 
-# <a name="activity-logstabactivity-logs"></a>[Dzienniki aktywności](#tab/activity-logs)
+# <a name="activity-logs"></a>[Dzienniki aktywności](#tab/activity-logs)
 ### <a name="connect-activity-logs-to-your-event-hub"></a>Łączenie dzienników aktywności z centrum zdarzeń
 
 1. W menu po lewej stronie w witrynie Azure Portal wybierz pozycję **Dziennik aktywności**.
@@ -501,7 +501,7 @@ Teraz musisz utworzyć połączenia danych dla metryk i dzienników diagnostyczn
 
     ![Połączenie danych centrum zdarzeń](media/ingest-data-no-code/event-hub-data-connection.png)
 
-# <a name="diagnostic-metrics--diagnostic-logstabdiagnostic-metricsdiagnostic-logs"></a>[Metryki diagnostyki/dzienniki diagnostyczne](#tab/diagnostic-metrics+diagnostic-logs) 
+# <a name="diagnostic-metrics--diagnostic-logs"></a>[Metryki diagnostyki/dzienniki diagnostyczne](#tab/diagnostic-metrics+diagnostic-logs) 
 
 1. Użyj następujących ustawień w oknie **Połączenie danych**:
 
@@ -528,7 +528,7 @@ Teraz musisz utworzyć połączenia danych dla metryk i dzienników diagnostyczn
 
 1. Wybierz pozycję **Utwórz**.  
 
-# <a name="activity-logstabactivity-logs"></a>[Dzienniki aktywności](#tab/activity-logs)
+# <a name="activity-logs"></a>[Dzienniki aktywności](#tab/activity-logs)
 
 1. Użyj następujących ustawień w oknie **Połączenie danych**:
 
@@ -560,7 +560,7 @@ Teraz musisz utworzyć połączenia danych dla metryk i dzienników diagnostyczn
 
 Masz teraz potok z przepływającymi danymi. Pozyskiwanie za pośrednictwem klastra trwa domyślnie 5 minut, co pozwala na przepływ danych przez kilka minut przed rozpoczęciem tworzenia zapytania.
 
-# <a name="diagnostic-metricstabdiagnostic-metrics"></a>[Metryki diagnostyczne](#tab/diagnostic-metrics)
+# <a name="diagnostic-metrics"></a>[Metryki diagnostyczne](#tab/diagnostic-metrics)
 ### <a name="query-the-diagnostic-metrics-table"></a>Kwerenda tabeli metryk diagnostyki
 
 Następujące zapytanie analizuje dane czasu trwania zapytania z rekordów metryk diagnostycznych w usłudze Azure Eksplorator danych:
@@ -579,7 +579,7 @@ Wyniki zapytania:
 |   | 00:06,156 |
 | | |
 
-# <a name="diagnostic-logstabdiagnostic-logs"></a>[Dzienniki diagnostyczne](#tab/diagnostic-logs)
+# <a name="diagnostic-logs"></a>[Dzienniki diagnostyczne](#tab/diagnostic-logs)
 ### <a name="query-the-diagnostic-logs-table"></a>Kwerenda tabeli dzienników diagnostycznych
 
 Ten potok tworzy pozyskiwanie za pośrednictwem centrum zdarzeń. Przejrzyj wyniki tych postanowień.
@@ -599,7 +599,7 @@ Wyniki zapytania:
 |   | 00:06,156 | TestDatabase | DiagnosticRawRecords | https://rtmkstrldkereneus00.blob.core.windows.net/20190827-readyforaggregation/1133_TestDatabase_DiagnosticRawRecords_6cf02098c0c74410bd8017c2d458b45d.json.zip
 | | |
 
-# <a name="activity-logstabactivity-logs"></a>[Dzienniki aktywności](#tab/activity-logs)
+# <a name="activity-logs"></a>[Dzienniki aktywności](#tab/activity-logs)
 ### <a name="query-the-activity-logs-table"></a>Tworzenie zapytań względem tabeli dzienników aktywności
 
 Następujące zapytanie analizuje dane z rekordów dziennika aktywności w usłudze Azure Data Explorer:
