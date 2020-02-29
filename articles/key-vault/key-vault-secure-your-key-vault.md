@@ -6,15 +6,16 @@ author: amitbapat
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: d22231541a7fe29d4517985742d4bf88dc4c3fa7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: eac3850cfa0684bd1751cf7b88b4ff8e92667293
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980450"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197440"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Bezpieczny dostęp do magazynu kluczy
 
@@ -30,7 +31,7 @@ Aby uzyskać dostęp do magazynu kluczy w jednej z płaszczyzn, wszyscy wywołuj
 
 Obie płaszczyzny używają Azure Active Directory (Azure AD) do uwierzytelniania. W przypadku autoryzacji płaszczyzna zarządzania używa kontroli dostępu opartej na rolach (RBAC), a płaszczyzna danych używa zasad dostępu Key Vault.
 
-## <a name="active-directory-authentication"></a>Uwierzytelnianie za pomocą usługi Active Directory
+## <a name="active-directory-authentication"></a>Uwierzytelnianie w usłudze Active Directory
 
 Podczas tworzenia magazynu kluczy w ramach subskrypcji platformy Azure jest on automatycznie kojarzony z dzierżawą usługi Azure AD subskrypcji. Wszystkie obiekty wywołujące w obu płaszczyznach muszą rejestrować się w tej dzierżawie i uwierzytelniać się w celu uzyskania dostępu do magazynu kluczy. W obu przypadkach aplikacje mogą uzyskiwać dostęp do Key Vault na dwa sposoby:
 
@@ -51,7 +52,7 @@ Aplikacje uzyskują dostęp do płaszczyzn za pomocą punktów końcowych. Kontr
 
 W poniższej tabeli przedstawiono punkty końcowe dla punktów zarządzania i płaszczyzny danych.
 
-| &nbsp;płaszczyzny dostępu | Punkty końcowe dostępu | Operations | Mechanizm kontroli dostępu&nbsp; |
+| &nbsp;płaszczyzny dostępu | Punkty końcowe dostępu | Operacje | Mechanizm kontroli dostępu&nbsp; |
 | --- | --- | --- | --- |
 | Płaszczyzna zarządzania | **Cały świat:**<br> management.azure.com:443<br><br> **Azure Chiny 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Wersja platformy Azure dla administracji USA:**<br> management.usgovcloudapi.net:443<br><br> **Niemiecka wersja platformy Azure:**<br> management.microsoftazure.de:443 | Tworzenie, odczytywanie, aktualizowanie i usuwanie magazynów kluczy<br><br>Ustawianie zasad dostępu Key Vault<br><br>Ustawianie tagów Key Vault | Azure Resource Manager RBAC |
 | Płaszczyzna danych | **Cały świat:**<br> &lt;nazwa_magazynu&gt;.vault.azure.net:443<br><br> **Azure Chiny 21Vianet:**<br> &lt;nazwa_magazynu&gt;.vault.azure.cn:443<br><br> **Wersja platformy Azure dla administracji USA:**<br> &lt;nazwa_magazynu&gt;.vault.usgovcloudapi.net:443<br><br> **Niemiecka wersja platformy Azure:**<br> &lt;nazwa_magazynu&gt;.vault.microsoftazure.de:443 | Klucze: Odszyfruj, Szyfruj,<br> odpakowywanie, zawijanie, weryfikowanie, podpisywanie,<br> Pobieranie, wyświetlanie, aktualizowanie, tworzenie,<br> Importuj, Usuń, Utwórz kopię zapasową, Przywróć<br><br> Wpisy tajne: pobieranie, wyświetlanie, Ustawianie, usuwanie | Zasady dostępu Key Vault |
@@ -126,9 +127,9 @@ Poniższa tabela zawiera podsumowanie uprawnień dostępu dla naszych ról i apl
 | Rola | Uprawnienia do płaszczyzny zarządzania | Uprawnienia do płaszczyzny danych |
 | --- | --- | --- |
 | Zespół ds. zabezpieczeń | Współautor Key Vault | Klucze: wykonywanie kopii zapasowej, tworzenie, usuwanie, pobieranie, importowanie, wyświetlanie, przywracanie<br>Wpisy tajne: wszystkie operacje |
-| Deweloperzy i&nbsp;operatory | Uprawnienie do wdrażania Key Vault<br><br> **Uwaga**: to uprawnienie umożliwia wdrożonym maszynom wirtualnym pobieranie wpisów tajnych z magazynu kluczy. | Brak |
-| Audytorzy | Brak | Klucze: wyświetlanie<br>Wpisy tajne: wyświetlanie<br><br> **Uwaga**: to uprawnienie umożliwia audytorom inspekcję atrybutów (tagów, dat aktywacji, dat wygaśnięcia) dla kluczy i wpisów tajnych, które nie są emitowane w dziennikach. |
-| Aplikacja | Brak | Klucze: podpisywanie<br>Wpisy tajne: pobieranie |
+| Deweloperzy i&nbsp;operatory | Uprawnienie do wdrażania Key Vault<br><br> **Uwaga**: to uprawnienie umożliwia wdrożonym maszynom wirtualnym pobieranie wpisów tajnych z magazynu kluczy. | None |
+| Audytorzy | None | Klucze: wyświetlanie<br>Wpisy tajne: wyświetlanie<br><br> **Uwaga**: to uprawnienie umożliwia audytorom inspekcję atrybutów (tagów, dat aktywacji, dat wygaśnięcia) dla kluczy i wpisów tajnych, które nie są emitowane w dziennikach. |
+| Aplikacja | None | Klucze: podpisywanie<br>Wpisy tajne: pobieranie |
 
 Trzy role zespołu potrzebują dostępu do innych zasobów wraz z uprawnieniami Key Vault. Aby wdrożyć maszyny wirtualne (lub Web Apps funkcję Azure App Service), deweloperzy i operatorzy potrzebują `Contributor` dostępu do tych typów zasobów. Audytorzy muszą mieć dostęp do odczytu do konta magazynu, w którym są przechowywane dzienniki Key Vault.
 

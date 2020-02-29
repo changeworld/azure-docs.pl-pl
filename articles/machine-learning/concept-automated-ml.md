@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
-ms.date: 11/04/2019
-ms.openlocfilehash: 2ef3cbc83cd67647709a53fee2c32b444c5d86f4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 02/28/2020
+ms.openlocfilehash: 9739c0a6b66099a2bebb1d42922d8653a92e650b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526131"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190351"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
@@ -139,17 +139,25 @@ Krzyżowe sprawdzanie poprawności (CV) to proces tworzenia wielu podzbiorów da
 
 Należy wziąć pod uwagę następujące przeszkolone modele i ich odpowiadające im uczenia i testy.
 
-| Model | Dokładność szkolenia | Dokładność testu |
+| Modelowanie | Dokładność szkolenia | Dokładność testu |
 |-------|----------------|---------------|
 | A | 99,9% | 95% |
 | B | 87% | 87% |
-| K | 99,9% | 45% |
+| C | 99,9% | 45% |
 
 Biorąc pod uwagę model **A**, istnieje powszechna koncepcja, że jeśli dokładność testu dla niewidocznych danych jest mniejsza niż dokładność szkolenia, model jest nadmiernie dopasowany. Jednak dokładność testu powinna być zawsze mniejsza od dokładności szkolenia, a rozróżnienie dla nadmiernego dopasowania a odpowiednio dopasowane, przydaje się do *znacznie* mniejszej dokładności. 
 
 **W przypadku** porównywania modeli a i **B**model **a** jest lepszym modelem, ponieważ ma wyższą dokładność testu, a chociaż dokładność testu jest nieco mniejsza o 95%, nie jest to znacząca różnica, która sugeruje nadmierne dopasowanie. Nie możesz wybrać modelu **B** po prostu, ponieważ ścisłe nauczenie i testy są bliżej siebie.
 
 Model **C** reprezentuje wyraźny przypadek nadmiernego dopasowania; dokładność uczenia jest bardzo wysoka, ale dokładność testu nie jest w dowolnym miejscu w dużej okolicy. To rozróżnienie jest subiektywne, ale pochodzi z wiedzy o problemie i danych oraz o tym, jakie wielkości błędów są dopuszczalne. 
+
+## <a name="classification--regression"></a>Klasyfikacja & regresja
+
+Klasyfikacja i regresja to najczęściej spotykane typy zadań uczenia maszynowego. Oba są typami nadzorowanych szkoleń, w których modele uczyją się korzystać z danych szkoleniowych i stosują te informacje do nowych danych. Azure Machine Learning oferuje featurizations dla tych zadań, takich jak głębokie neuronowych Network Text featurizers for klasyfikacji. Dowiedz się więcej o [opcjach cechowania](how-to-create-portal-experiments.md#featurization). 
+
+Głównym celem modeli klasyfikacji jest przewidywanie, do których kategorii nowe dane będą się opierać na podstawie informacji szkoleniowych. Typowe przykłady klasyfikacji obejmują wykrywanie oszustw, rozpoznawanie pisma ręcznego i wykrywanie obiektów.  Dowiedz się więcej i zapoznaj się z przykładem [klasyfikacji przy użyciu automatycznej uczenia maszynowego](tutorial-train-models-with-aml.md).
+
+Różni się od klasyfikacji, w której przewidywane wartości wyjściowe to kategorii, modele regresji przewidywania liczbowych wartości wyjściowych na podstawie niezależnych predykcyjnych. W regresji celem jest pomoc w ustaleniu relacji między niezależnymi zmiennymi predykcyjnymi przez oszacowanie wpływu jednej zmiennej na inne. Na przykład cena na urządzeniach przenośnych oparta na funkcjach takich jak, kilometry gazu, Ocena bezpieczeństwa itp. Dowiedz się więcej i zobacz przykład [regresji przy użyciu automatycznej uczenia maszynowego](tutorial-auto-train-models.md).
 
 ## <a name="time-series-forecasting"></a>Prognozowanie szeregów czasowych
 

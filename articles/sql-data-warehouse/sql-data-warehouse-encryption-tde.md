@@ -1,6 +1,6 @@
 ---
 title: Transparent Data Encryption (Portal)
-description: Transparent Data Encryption (TDE) w SQL Data Warehouse
+description: Transparent Data Encryption (TDE) w usłudze Azure Synapse Analytics
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4435c5f246d6dd20fd0b2c560634f6980d6aa2ff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c121f9c16895a749922525d1ba85ee2c2e60cfb0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685779"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195860"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>Wprowadzenie do Transparent Data Encryption (TDE) w SQL Data Warehouse
+# <a name="get-started-with-transparent-data-encryption-tde"></a>Wprowadzenie do Transparent Data Encryption (TDE)
 > [!div class="op_single_selector"]
 > * [Przegląd zabezpieczeń](sql-data-warehouse-overview-manage-security.md)
 > * [Uwierzytelnianie](sql-data-warehouse-authentication.md)
@@ -31,7 +31,7 @@ ms.locfileid: "73685779"
 Aby włączyć Transparent Data Encryption (TDE), musisz być administratorem lub członkiem roli dbmanager.
 
 ## <a name="enabling-encryption"></a>Włączanie szyfrowania
-Aby włączyć TDE dla SQL Data Warehouse, wykonaj następujące kroki:
+Aby włączyć TDE, wykonaj następujące czynności:
 
 1. Otwórz bazę danych w [Azure Portal](https://portal.azure.com)
 2. W bloku baza danych kliknij przycisk **Ustawienia**
@@ -41,7 +41,7 @@ Aby włączyć TDE dla SQL Data Warehouse, wykonaj następujące kroki:
    ![][3]  
 
 ## <a name="disabling-encryption"></a>Wyłączanie szyfrowania
-Aby wyłączyć TDE dla SQL Data Warehouse, wykonaj następujące czynności:
+Aby wyłączyć TDE, wykonaj następujące czynności:
 
 1. Otwórz bazę danych w [Azure Portal](https://portal.azure.com)
 2. W bloku baza danych kliknij przycisk **Ustawienia**
@@ -53,13 +53,13 @@ Aby wyłączyć TDE dla SQL Data Warehouse, wykonaj następujące czynności:
 ## <a name="encryption-dmvs"></a>Szyfrowanie widoków DMV
 Szyfrowanie można potwierdzić przy użyciu następujących widoków DMV:
 
-* [sys.databases]
-* [sys.dm_pdw_nodes_database_encryption_keys]
+* [sys. databases]
+* [sys. dm_pdw_nodes_database_encryption_keys]
 
 <!--MSDN references-->
 [Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
-[sys.databases]: https://msdn.microsoft.com/library/ms178534.aspx
-[sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
+[sys. databases]: https://msdn.microsoft.com/library/ms178534.aspx
+[sys. dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png

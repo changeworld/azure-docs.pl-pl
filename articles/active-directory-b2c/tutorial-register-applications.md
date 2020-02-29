@@ -3,20 +3,20 @@ title: 'Samouczek: rejestrowanie aplikacji'
 titleSuffix: Azure AD B2C
 description: Dowiedz się, jak zarejestrować aplikację sieci Web w Azure Active Directory B2C przy użyciu Azure Portal.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/16/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dbb689182a45367061ae129304a98a8ee9962051
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a688f5e75f7513d0ea4308b751f87f75a2c9510a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840115"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183095"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Samouczek: rejestrowanie aplikacji w Azure Active Directory B2C
 
@@ -38,9 +38,9 @@ Jeśli nie utworzono jeszcze własnej [dzierżawy Azure AD B2C](tutorial-create-
 
 Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć bieżącego środowiska **aplikacji** lub naszego nowego interfejsu Unified **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat nowego środowiska](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
+#### <a name="applications"></a>[Aplikacje](#tab/applications/)
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
@@ -57,9 +57,9 @@ Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć bieżą
 
 1. Wybierz pozycję **Utwórz** , aby zakończyć rejestrację aplikacji.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 1. W Azure Portal Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz pozycję **Nowa rejestracja**.
@@ -90,13 +90,13 @@ Po zakończeniu rejestracji aplikacji Włącz przepływ niejawnego przydzielenia
 
 Jeśli aplikacja wymienia kod autoryzacji dla tokenu dostępu, należy utworzyć klucz tajny aplikacji.
 
-#### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
+#### <a name="applications"></a>[Aplikacje](#tab/applications/)
 
 1. Na stronie **Azure AD B2C — aplikacje** Wybierz utworzoną aplikację, na przykład *webapp1*.
 1. Wybierz pozycję **klucze** , a następnie pozycję **Generuj klucz**.
 1. Wybierz pozycję **Zapisz** , aby wyświetlić klucz. Zanotuj wartość pola **Klucz aplikacji**. Ta wartość jest używana jako klucz tajny aplikacji w kodzie aplikacji.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
 
 1. Na stronie **Azure AD B2C rejestracje aplikacji (wersja zapoznawcza)** Wybierz utworzoną aplikację, na przykład *webapp1*.
 1. W obszarze **Zarządzaj**wybierz pozycję **Certyfikaty & wpisy tajne**.

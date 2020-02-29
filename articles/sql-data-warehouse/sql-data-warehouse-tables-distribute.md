@@ -1,6 +1,6 @@
 ---
 title: Wskazówki dotyczące projektowania tabel rozproszonych
-description: Zalecenia dotyczące projektowania tabel rozproszonych rozproszonych i rozmieszczonych w trybie okrężnym w Azure SQL Data Warehouse.
+description: Zalecenia dotyczące projektowania rozproszonych i rozdystrybuowanych tabel w usłudze SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.custom: azure-synapse
+ms.openlocfilehash: 3a07dd6ccd5d0bf3440df21b2af4e67cbcf663c9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049131"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199448"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Wskazówki dotyczące projektowania tabel rozproszonych w Azure SQL Data Warehouse
-Zalecenia dotyczące projektowania tabel rozproszonych rozproszonych i rozmieszczonych w trybie okrężnym w Azure SQL Data Warehouse.
+# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>Wskazówki dotyczące projektowania tabel rozproszonych w usłudze SQL Analytics
+Zalecenia dotyczące projektowania rozproszonych i rozdystrybuowanych tabel w usłudze SQL Analytics.
 
-W tym artykule założono, że znasz koncepcje dystrybucji i przenoszenia danych w SQL Data Warehouse.  Aby uzyskać więcej informacji, zobacz [architektura przetwarzania równoległego (Azure SQL Data Warehouse — wysoce Parallel Processing)](massively-parallel-processing-mpp-architecture.md). 
+W tym artykule założono, że znasz koncepcje dystrybucji i przenoszenia danych w usłudze SQL Analytics.  Aby uzyskać więcej informacji, zobacz [Architektura wysoce Parallel Processing (MPP) usługi SQL Analytics](massively-parallel-processing-mpp-architecture.md). 
 
 ## <a name="what-is-a-distributed-table"></a>Co to jest tabela rozproszona?
 Rozproszona tabela jest wyświetlana w postaci pojedynczej tabeli, ale wiersze są faktycznie przechowywane w dystrybucji 60. Wiersze są dystrybuowane z algorytmem skrótu lub działania okrężnego.  
@@ -34,7 +34,7 @@ W ramach projektu tabeli należy zrozumieć możliwie jak najwięcej danych i ja
 
 - Jak duży jest tabela?   
 - Jak często jest odświeżana tabela?   
-- Czy istnieją tabele faktów i wymiarów w magazynie danych?   
+- Czy istnieją tabele faktów i wymiarów w bazie danych SQL Analytics?   
 
 
 ### <a name="hash-distributed"></a>Wartość skrótu dystrybuowana
@@ -42,7 +42,7 @@ W tabeli rozproszonej przez funkcję mieszania wiersze tabeli są dystrybuowane 
 
 ![Tabela rozproszona](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "Tabela rozproszona")  
 
-Ponieważ identyczne wartości zawsze są skrótami do tej samej dystrybucji, magazyn danych ma wbudowaną wiedzę o lokalizacjach wierszy. SQL Data Warehouse używa tej wiedzy do minimalizowania przenoszenia danych podczas wykonywania zapytań, co zwiększa wydajność zapytań. 
+Ponieważ identyczne wartości zawsze są skrótami do tej samej dystrybucji, analityczna baza danych ma wbudowaną wiedzę o lokalizacjach wierszy. Analiza SQL używa tej wiedzy do minimalizowania przenoszenia danych podczas wykonywania zapytań, co zwiększa wydajność zapytań. 
 
 Tabele rozproszone przez funkcję mieszania dobrze sprawdzają się w przypadku dużych tabel faktów w schemacie gwiazdy. Mogą mieć bardzo dużą liczbę wierszy i nadal osiągać wysoką wydajność. Istnieją oczywiście zagadnienia dotyczące projektowania, które pomagają w uzyskaniu wydajności systemu rozproszonego do zapewnienia. Wybór odpowiedniej kolumny dystrybucji jest taki, jak opisano w tym artykule. 
 
@@ -65,7 +65,7 @@ Należy rozważyć użycie rozkładu okrężnego dla tabeli w następujących sc
 - Jeśli sprzężenie jest mniej znaczące niż inne sprzężenia w zapytaniu
 - Gdy tabela jest tymczasową tabelą tymczasową
 
-W samouczku [Załaduj dane z Nowego Jorku Taxicab do Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) przedstawiono przykład ładowania danych do tabeli przemieszczania okrężnego.
+Samouczek [Załaduj Nowy Jork Taxicab dane](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) zawiera przykład ładowania danych do tabeli przemieszczania w trybie okrężnym w usłudze SQL Analytics.
 
 
 ## <a name="choosing-a-distribution-column"></a>Wybieranie kolumny dystrybucji
@@ -109,7 +109,7 @@ Aby zrównoważyć przetwarzanie równoległe, wybierz kolumnę dystrybucji, kt�
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Wybierz kolumnę dystrybucji, która minimalizuje przenoszenie danych
 
-W celu uzyskania poprawnych kwerend wyników zapytania mogą przenosić dane z jednego węzła obliczeniowego do innego. Przenoszenie danych odbywa się często, gdy zapytania mają sprzężenia i agregacje w tabelach rozproszonych. Wybór kolumny dystrybucji, która pomaga zminimalizować przenoszenie danych, jest jednym z najważniejszych strategii optymalizacji wydajności SQL Data Warehouse.
+W celu uzyskania poprawnych kwerend wyników zapytania mogą przenosić dane z jednego węzła obliczeniowego do innego. Przenoszenie danych odbywa się często, gdy zapytania mają sprzężenia i agregacje w tabelach rozproszonych. Wybranie kolumny dystrybucji, która pomaga zminimalizować przenoszenie danych, to jedna z najważniejszych strategii optymalizacji wydajności bazy danych SQL Analytics.
 
 Aby zminimalizować przenoszenie danych, wybierz kolumnę dystrybucji, która:
 
@@ -137,7 +137,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 Aby określić, które tabele mają więcej niż 10% pochylenia danych:
 
 1. Utwórz widok dbo. vTableSizes, który jest widoczny w artykule [Przegląd tabel](sql-data-warehouse-tables-overview.md#table-size-queries) .  
-2. Uruchom następujące zapytanie:
+2. Uruchom następującą kwerendę:
 
 ```sql
 select *
@@ -217,7 +217,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Aby utworzyć tabelę rozproszoną, należy użyć jednej z następujących instrukcji:
 
-- [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE jako wybrane (Azure SQL Data Warehouse](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (analiza SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [CREATE TABLE jako wybrane (analiza SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

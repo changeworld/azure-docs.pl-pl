@@ -1,6 +1,6 @@
 ---
-title: Element LiveEvent opóźnienia w usłudze Azure Media Services | Dokumentacja firmy Microsoft
-description: W tym temacie ogólny czas oczekiwania na element LiveEvent i przedstawiono sposób ustawiania małymi opóźnieniami.
+title: Ustawienia małych opóźnień LiveEvent w Azure Media Services | Microsoft Docs
+description: Ten temat zawiera omówienie ustawień małych opóźnień LiveEvent i pokazuje, jak ustawić małe opóźnienia.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,23 +13,23 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 393b87aeed759950b946ccb45a008da9af4b7ebe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702790"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199652"
 ---
-# <a name="live-event-latency-in-media-services"></a>Czas oczekiwania na zdarzenie na żywo w usłudze Media Services
+# <a name="live-event-low-latency-settings"></a>Ustawienia niskiego opóźnienia zdarzenia na żywo
 
-W tym artykule przedstawiono sposób ustawiania małe opóźnienia na [wydarzenie na żywo](https://docs.microsoft.com/rest/api/media/liveevents). Omawia także typowe wyniki, które podczas przy użyciu ustawień małe opóźnienia w różne odtwarzacze są wyświetlane. Wyniki różnią się zależnie od opóźnienia sieci i usługi CDN.
+W tym artykule przedstawiono sposób ustawiania małych opóźnień dla [zdarzenia na żywo](https://docs.microsoft.com/rest/api/media/liveevents). Omówiono w nim również typowe wyniki, które są wyświetlane podczas korzystania z ustawień małych opóźnień w różnych graczy. Wyniki różnią się w zależności od czasu oczekiwania na sieć CDN i sieci.
 
-Aby użyć nowego **LowLatency** funkcji, możesz ustawić **StreamOptionsFlag** do **LowLatency** na **element LiveEvent**. Podczas tworzenia [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) odtwarzania HLS, ustaw [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 1. Gdy strumień jest uruchomiona, możesz użyć [usługi Azure Media Player](https://ampdemo.azureedge.net/) (AMP pokaz strony) i ustaw opcje odtwarzania, aby używać "Niskie opóźnienie Algorytm heurystyczny profil".
+Aby użyć nowej funkcji **LowLatency** , należy ustawić **StreamOptionsFlag** na **LowLatency** na **LiveEvent**. Podczas tworzenia [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) na potrzeby odtwarzania HLS Ustaw [LiveOutput. HLS. fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) na 1. Gdy strumień jest uruchomiony, możesz użyć [Azure Media Player](https://ampdemo.azureedge.net/) (strona Demonstracja amp) i ustawić opcje odtwarzania, aby użyć "profilu heurystycznego o małym opóźnieniu".
 
 > [!NOTE]
-> Obecnie LowLatency HeuristicProfile w usłudze Azure Media Player jest przeznaczona do odtwarzania strumieni w protokole MPEG-DASH w formacie CSF lub CMAF (na przykład `format=mdp-time-csf` lub `format=mdp-time-cmaf`). 
+> Obecnie LowLatency HeuristicProfile w Azure Media Player jest przeznaczony do odtwarzania strumieni w protokole MPEG-KRESKowego przy użyciu formatu CSF lub CMAF (na przykład `format=mdp-time-csf` lub `format=mdp-time-cmaf`). 
 
-W poniższym przykładzie .NET pokazuje, jak ustawić **LowLatency** na **element LiveEvent**:
+Poniższy przykład .NET pokazuje, jak ustawić **LowLatency** na **LiveEvent**:
 
 ```csharp
 LiveEvent liveEvent = new LiveEvent(
@@ -54,29 +54,29 @@ LiveEvent liveEvent = new LiveEvent(
 
 Zobacz pełny przykład: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
-## <a name="live-events-latency"></a>Czas oczekiwania na zdarzenia na żywo
+## <a name="live-events-latency"></a>Opóźnienie zdarzeń na żywo
 
-W poniższej tabeli przedstawiono typowe wyniki opóźnienia (jeśli jest włączona Flaga LowLatency) w usłudze Media Services, zmierzony od momentu kanału informacyjnego wkład osiągnie usługi, gdy przeglądarka widzi odtwarzanie na odtwarzaczu. Aby użyć optymalnie małe opóźnienia, powinien Dostosowywanie ustawień kodera do 1 sekunda "Grupa z obrazów" (GOP) długości. Przy użyciu nowszej długości GOP, możesz zminimalizować użycie przepustowości i zmniejszenie szybkości transmisji bitów w ramach tej samej szybkość klatek. Jest szczególnie korzystne w filmach wideo z mniej ruchu.
+W poniższych tabelach przedstawiono typowe wyniki opóźnienia (gdy flaga LowLatency jest włączona) w Media Services mierzony od momentu, gdy w przeglądarce jest widoczne odtwarzanie w odtwarzaczu. Aby optymalnie korzystać z małych opóźnień, należy dostosować ustawienia kodera do 1 sekundy długości "grupy obrazów" (grupę GOP). W przypadku używania większej grupę GOP długości można zminimalizować użycie przepustowości i zmniejszyć szybkość transmisji bitów w ramach tej samej szybkości klatek. Jest to szczególnie przydatne w przypadku wideo z mniejszym ruchem.
 
 ### <a name="pass-through"></a>Przekazywanie 
 
-||2S GOP krótki czas oczekiwania, włączone|1s GOP krótki czas oczekiwania, włączone|
+||2 grupę GOP małe opóźnienia włączone|1 grupę GOP małe opóźnienia włączone|
 |---|---|---|
-|KRESKI w AMP|10s|8S|
-|HLS na odtwarzaczu natywnych dla systemów iOS|14S|10s|
+|KRESKa w AMP|dziesiątkach|8S|
+|HLS na natywnym odtwarzaczu systemu iOS|14s|dziesiątkach|
 
 ### <a name="live-encoding"></a>Kodowanie na żywo
 
-||2S GOP krótki czas oczekiwania, włączone|1s GOP krótki czas oczekiwania, włączone|
+||2 grupę GOP małe opóźnienia włączone|1 grupę GOP małe opóźnienia włączone|
 |---|---|---|
-|KRESKI w AMP|14S|10s|
-|HLS na odtwarzaczu natywnych dla systemów iOS|18s|13s|
+|KRESKa w AMP|14s|dziesiątkach|
+|HLS na natywnym odtwarzaczu systemu iOS|18s|13s|
 
 > [!NOTE]
-> Opóźnienie end-to-end mogą się różnić w zależności od warunków sieci lokalnej lub wprowadzając warstwy buforowania usługi CDN. Należy przetestować dokładnie konfiguracje.
+> Opóźnienie end-to-end może się różnić w zależności od warunków sieci lokalnej lub przez wprowadzenie warstwy buforowania sieci CDN. Należy przetestować dokładne konfiguracje.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Omówienie transmisji strumieniowej na żywo](live-streaming-overview.md)
-- [Samouczek transmisji strumieniowej na żywo](stream-live-tutorial-with-api.md)
+- [Omówienie przesyłania strumieniowego na żywo](live-streaming-overview.md)
+- [Samouczek przesyłania strumieniowego na żywo](stream-live-tutorial-with-api.md)
 

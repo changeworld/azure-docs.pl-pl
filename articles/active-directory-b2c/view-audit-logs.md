@@ -3,21 +3,21 @@ title: Dostęp do dzienników inspekcji i ich przeglądanie
 titleSuffix: Azure AD B2C
 description: Jak uzyskać dostęp do dzienników inspekcji Azure AD B2C programowo i w Azure Portal.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/20/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 62a969519ebefaab919505d9c8faae830f55f4c6
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505626"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185781"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Uzyskiwanie dostępu do dzienników inspekcji Azure AD B2C
 
@@ -38,8 +38,8 @@ Kategoria **B2C** w dziennikach inspekcji zawiera następujące typy działań:
 |Katalog |Działania związane z atrybutami katalogu pobrane, gdy administrator zaloguje się przy użyciu Azure Portal. |
 |Aplikacja | Tworzenie, odczytywanie, aktualizowanie i usuwanie (CRUD) operacji na aplikacjach B2C. |
 |Klucz |Operacje CRUD na kluczach przechowywanych w kontenerze kluczy B2C. |
-|Resource |CRUD operacji na zasobach B2C. Na przykład zasady i dostawcy tożsamości.
-|Authentication |Weryfikowanie poświadczeń użytkownika i wystawianie tokenów.|
+|Zasób |CRUD operacji na zasobach B2C. Na przykład zasady i dostawcy tożsamości.
+|Uwierzytelnianie |Weryfikowanie poświadczeń użytkownika i wystawianie tokenów.|
 
 W przypadku działań CRUD obiektów użytkownika zapoznaj się z kategorią **katalogu podstawowego** .
 

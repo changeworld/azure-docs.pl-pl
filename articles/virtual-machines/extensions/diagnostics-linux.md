@@ -2,19 +2,19 @@
 title: Azure COMPUTE — rozszerzenie diagnostyczne systemu Linux
 description: Jak skonfigurować rozszerzenie diagnostyczne systemu Linux (LAD) do zbierania metryk i zdarzeń dzienników z maszyn wirtualnych systemu Linux działających na platformie Azure.
 services: virtual-machines-linux
-author: MicahMcKittrick-MSFT
+author: axayjo
 manager: gwallace
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
-ms.author: mimckitt
-ms.openlocfilehash: 5b4ddc177359a08aad404c78b5cc0793f8d80e93
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.author: akjosh
+ms.openlocfilehash: d9375d09219d2655bd9947c0953557f4a1bf8f3c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156526"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199618"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Monitorowanie metryk i dzienników przy użyciu rozszerzenia diagnostycznego systemu Linux
 
@@ -94,80 +94,29 @@ Adres URL dla przykładowej konfiguracji i jej zawartość mogą ulec zmianie. P
 #### <a name="powershell-sample"></a>Przykładowy skrypt programu PowerShell
 
 ```Powershell
-// Set your Azure VM diagnostics variables correctly below - don't forget to replace the VMResourceID
+$storageAccountName = "yourStorageAccountName"
+$storageAccountResourceGroup = "yourStorageAccountResourceGroupName"
+$vmName = "yourVMName"
+$VMresourceGroup = "yourVMResourceGroupName"
 
-$SASKey = '<SASKeyForDiagStorageAccount>'
+# Get the VM object
+$vm = Get-AzVM -Name $vmName -ResourceGroupName $VMresourceGroup
 
-$ladCfg = "{
-'diagnosticMonitorConfiguration': {
-'performanceCounters': {
-'sinks': 'WADMetricEventHub,WADMetricJsonBlob',
-'performanceCounterConfiguration': [
-{
-'unit': 'Percent',
-'type': 'builtin',
-'counter': 'PercentProcessorTime',
-'counterSpecifier': '/builtin/Processor/PercentProcessorTime',
-'annotation': [
-{
-'locale': 'en-us',
-'displayName': 'Aggregate CPU %utilization'
-}
-],
-'condition': 'IsAggregate=TRUE',
-'class': 'Processor'
-},
-{
-'unit': 'Bytes',
-'type': 'builtin',
-'counter': 'UsedSpace',
-'counterSpecifier': '/builtin/FileSystem/UsedSpace',
-'annotation': [
-{
-'locale': 'en-us',
-'displayName': 'Used disk space on /'
-}
-],
-'condition': 'Name='/'',
-'class': 'Filesystem'
-}
-]
-},
-'metrics': {
-'metricAggregation': [
-{
-'scheduledTransferPeriod': 'PT1H'
-},
-{
-'scheduledTransferPeriod': 'PT1M'
-}
-],
-'resourceId': '<VMResourceID>'
-},
-'eventVolume': 'Large',
-'syslogEvents': {
-'sinks': 'SyslogJsonBlob,LoggingEventHub',
-'syslogEventConfiguration': {
-'LOG_USER': 'LOG_INFO'
-}
-}
-}
-}"
-$ladCfg = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($ladCfg))
-$perfCfg = "[
-{
-'query': 'SELECT PercentProcessorTime, PercentIdleTime FROM SCX_ProcessorStatisticalInformation WHERE Name='_TOTAL'',
-'table': 'LinuxCpu',
-'frequency': 60,
-'sinks': 'LinuxCpuJsonBlob'
-}
-]"
+# Get the public settings template from GitHub and update the templated values for storage account and resource ID
+$publicSettings = (Invoke-WebRequest -Uri https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json).Content
+$publicSettings = $publicSettings.Replace('__DIAGNOSTIC_STORAGE_ACCOUNT__', $storageAccountName)
+$publicSettings = $publicSettings.Replace('__VM_RESOURCE_ID__', $vm.Id)
 
-// Get the VM Resource
-Get-AzureRmVM -ResourceGroupName <RGName> -VMName <VMName>
+# If you have your own customized public settings, you can inline those rather than using the template above: $publicSettings = '{"ladCfg":  { ... },}'
 
-// Finally tell Azure to install and enable the extension
-Set-AzureRmVMExtension -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -ResourceGroupName <RGName> -VMName <VMName> -Location <Location> -Name LinuxDiagnostic -Settings @{'StorageAccount'='<DiagStorageAccount>'; 'sampleRateInSeconds' = '15' ; 'ladCfg'=$ladCfg; 'perfCfg' = $perfCfg} -ProtectedSettings @{'storageAccountName' = '<DiagStorageAccount>'; 'storageAccountSasToken' = $SASKey } -TypeHandlerVersion 3.0
+# Generate a SAS token for the agent to use to authenticate with the storage account
+$sasToken = New-AzStorageAccountSASToken -Service Blob,Table -ResourceType Service,Container,Object -Permission "racwdlup" -Context (Get-AzStorageAccount -ResourceGroupName $storageAccountResourceGroup -AccountName $storageAccountName).Context
+
+# Build the protected settings (storage account SAS token)
+$protectedSettings="{'storageAccountName': '$storageAccountName', 'storageAccountSasToken': '$sasToken'}"
+
+# Finally install the extension with the settings built above
+Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location $vm.Location -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0 
 ```
 
 ### <a name="updating-the-extension-settings"></a>Aktualizowanie ustawień rozszerzenia
@@ -176,7 +125,7 @@ Po zmianie ustawień chronionych lub publicznych należy wdrożyć je na maszyni
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>Migracja z poprzednich wersji rozszerzenia
 
-Najnowsza wersja rozszerzenia to **3,0**. **Wszystkie starsze wersje (2.x) są przestarzałe i może być nieopublikowane na lub po 31 lipca 2018 r**.
+Najnowsza wersja rozszerzenia to **3,0**. **Wszystkie stare wersje (2. x) są przestarzałe i mogą być cofnięte w dniu 31 lipca 2018**.
 
 > [!IMPORTANT]
 > To rozszerzenie wprowadza istotne zmiany w konfiguracji rozszerzenia. Wprowadzono taką zmianę w celu poprawy bezpieczeństwa rozszerzenia; w związku z tym nie można utrzymywać zgodności z poprzednimi wersjami z 2. x. Ponadto Wydawca rozszerzenia dla tego rozszerzenia różni się od wydawcy dla wersji 2. x.
@@ -206,7 +155,7 @@ Ten zestaw informacji o konfiguracji zawiera poufne informacje, które powinny b
 }
 ```
 
-Nazwa | Wartość
+Name (Nazwa) | Wartość
 ---- | -----
 storageAccountName | Nazwa konta magazynu, w którym dane są zapisywane przez rozszerzenie.
 storageAccountEndPoint | obowiązkowe Punkt końcowy identyfikujący chmurę, w której znajduje się konto magazynu. Jeśli to ustawienie jest nieobecne, LAD domyślnie do chmury publicznej platformy Azure, `https://core.windows.net`. Aby użyć konta magazynu na platformie Azure (Niemcy), Azure Government lub Chiny platformy Azure, ustaw tę wartość odpowiednio.
@@ -353,7 +302,7 @@ scheduledTransferPeriod | Częstotliwość, z jaką zagregowane metryki mają by
 
 Próbki metryk określonych w sekcji liczniki wydajności są zbierane co 15 sekund lub według częstotliwości próbkowania jawnie zdefiniowanej dla licznika. Jeśli zostanie wyświetlona wiele częstotliwości scheduledTransferPeriod (jak w przykładzie), każda agregacja jest obliczana niezależnie.
 
-#### <a name="performancecounters"></a>performanceCounters
+#### <a name="performancecounters"></a>Liczniki wydajności
 
 ```json
 "performanceCounters": {
@@ -390,12 +339,12 @@ Element | Wartość
 ------- | -----
 sink — Obiekty | obowiązkowe Rozdzielana przecinkami lista nazw zlewów, do których LAD wysyła zagregowane wyniki metryk. Wszystkie zagregowane metryki są publikowane w każdym z wymienionych zbiorników. Zobacz [sinksConfig](#sinksconfig). Przykład: `"EHsink1, myjsonsink"`.
 type | Identyfikuje rzeczywistego dostawcę metryki.
-class | Wraz z "licznik" identyfikuje konkretną metrykę w przestrzeni nazw dostawcy.
+Klasa | Wraz z "licznik" identyfikuje konkretną metrykę w przestrzeni nazw dostawcy.
 counter | Wraz z "klasą" identyfikuje konkretną metrykę w przestrzeni nazw dostawcy.
 counterSpecifier | Identyfikuje konkretną metrykę w przestrzeni nazw metryk platformy Azure.
 condition | obowiązkowe Wybiera określone wystąpienie obiektu, do którego jest stosowana Metryka, lub wybiera agregację we wszystkich wystąpieniach tego obiektu. Aby uzyskać więcej informacji, zobacz definicje metryk `builtin`.
 sampleRate | JEST 8601 interwał, który ustawia szybkość, z jaką zbierane są nieprzetworzone próbki dla tej metryki. Jeśli nie zostanie ustawiona, interwał kolekcji jest ustawiany przez wartość [sampleRateInSeconds](#ladcfg). Najkrótsza obsługiwana częstotliwość próbkowania wynosi 15 sekund (PT15S).
-jednostka | Powinien być jednym z następujących ciągów: "Count", "bajtów", "sek", "PERCENT", "CountPerSecond", "BytesPerSecond", "milisekundy". Definiuje jednostkę dla metryki. Odbiorcy zebranych danych oczekują wartości zebranych danych w celu dopasowania do tej jednostki. LAD ignoruje to pole.
+unit | Powinien być jednym z następujących ciągów: "Count", "bajtów", "sek", "PERCENT", "CountPerSecond", "BytesPerSecond", "milisekundy". Definiuje jednostkę dla metryki. Odbiorcy zebranych danych oczekują wartości zebranych danych w celu dopasowania do tej jednostki. LAD ignoruje to pole.
 displayName | Etykieta (w języku określonym przez skojarzone ustawienie regionalne), która ma zostać dołączona do tych danych w usłudze Azure Metrics. LAD ignoruje to pole.
 
 CounterSpecifier jest dowolnym identyfikatorem. Odbiorcy metryk, takie jak Azure Portal wykresy i funkcja alertów, używają counterSpecifier jako klucza, który identyfikuje metrykę lub wystąpienie metryki. W przypadku metryk `builtin` zalecamy użycie wartości counterSpecifier zaczynających się od `/builtin/`. W przypadku zbierania określonego wystąpienia metryki Zalecamy dołączenie identyfikatora wystąpienia do wartości counterSpecifier. Oto niektóre przykłady:
@@ -487,7 +436,7 @@ Steruje przechwytywaniem plików dziennika. LAD przechwytuje nowe wiersze tekstu
 
 Element | Wartość
 ------- | -----
-plik | Pełna nazwa ścieżki pliku dziennika do obserwowania i przechwycenia. Nazwa ścieżki musi mieć nazwę pojedynczego pliku; nie może to być nazwa katalogu ani zawierać symboli wieloznacznych.
+file | Pełna nazwa ścieżki pliku dziennika do obserwowania i przechwycenia. Nazwa ścieżki musi mieć nazwę pojedynczego pliku; nie może to być nazwa katalogu ani zawierać symboli wieloznacznych.
 table | obowiązkowe Tabela usługi Azure Storage w wyznaczonym koncie magazynu (zgodnie z konfiguracją chronioną), do której zapisywane są nowe wiersze z "ogona" pliku.
 sink — Obiekty | obowiązkowe Rozdzielana przecinkami lista nazw dodatkowych obiektów ujścia, do których są wysyłane wiersze dziennika.
 
@@ -498,8 +447,8 @@ Należy określić "Table" lub "ujścia" albo oba te elementy.
 Dostawca metryk wbudowanej jest źródłem metryk najbardziej interesujących dla szerokiego zbioru użytkowników. Te metryki należą do pięciu szerokich klas:
 
 * Procesor
-* Pamięć
-* Network (Sieć)
+* Memory (Pamięć)
+* Network
 * System plików
 * Dysk
 
@@ -774,7 +723,7 @@ Dane wysyłane do ujścia JsonBlob są przechowywane w obiektach Blob na koncie 
 Ponadto można używać tych narzędzi interfejsu użytkownika do uzyskiwania dostępu do danych w usłudze Azure Storage:
 
 * Program Visual Studio Eksplorator serwera.
-* [Eksplorator usługi Microsoft Azure Storage](https://azurestorageexplorer.codeplex.com/ "Eksplorator magazynu Azure").
+* [Eksplorator usługi Microsoft Azure Storage](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
 
 Ta migawka sesji Eksplorator usługi Microsoft Azure Storage zawiera wygenerowane tabele i kontenery usługi Azure Storage ze prawidłowej konfiguracji rozszerzenia LAD 3,0 na testowej maszynie wirtualnej. Obraz nie jest dokładnie zgodny z [konfiguracją przykładu LAD 3,0](#an-example-lad-30-configuration).
 

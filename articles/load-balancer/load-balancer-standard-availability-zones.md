@@ -13,82 +13,31 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 0d61ad33b97b97c3a45334704544d72809e56848
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5a65982c5c13eb4e4273efcfd8d14910b0f35572
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715274"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197151"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Usługa Load Balancer w warstwie Standardowa i strefy dostępności
 
 Usługa Azure usługa Load Balancer w warstwie Standardowa obsługuje scenariusze [stref dostępności](../availability-zones/az-overview.md) . Aby zoptymalizować dostępność w kompleksowym scenariuszu, można użyć usługa Load Balancer w warstwie Standardowa, przez wyrównanie zasobów do stref i dystrybuowanie ich między strefami.  Przejrzyj [strefy dostępności](../availability-zones/az-overview.md) , aby uzyskać wskazówki dotyczące stref dostępności, które obecnie obsługują strefy dostępności, oraz inne powiązane koncepcje i produkty. Strefy dostępności w połączeniu z usługa Load Balancer w warstwie Standardowa są rozległych i elastycznym zestawem funkcji, który może tworzyć wiele różnych scenariuszy.  Zapoznaj się z tym dokumentem, aby poznać te [koncepcje](#concepts) i podstawowe [wskazówki dotyczące projektowania](#design).
 
->[!IMPORTANT]
->Przejrzyj [strefy dostępności](../availability-zones/az-overview.md) Tematy pokrewne, w tym informacje specyficzne dla regionu.
-
 ## <a name="concepts"></a>Koncepcje Strefy dostępności zastosowane do Load Balancer
 
-Nie istnieje bezpośredni związek między zasobami Load Balancer i rzeczywistą infrastrukturą; utworzenie Load Balancer nie powoduje utworzenia wystąpienia. Zasoby Load Balancer są obiektami, w których można wypróbować, w jaki sposób platforma Azure powinna programować wbudowaną infrastrukturę z wieloma dzierżawcami w celu osiągnięcia scenariusza, który ma zostać utworzony.  Jest to istotne w kontekście stref dostępności, ponieważ pojedynczy zasób Load Balancer może kontrolować programowanie infrastruktury w wielu strefach dostępności, podczas gdy usługa nadmiarowa strefy jest wyświetlana jako jeden zasób z punktu widzenia klienta.  
-
-Sam zasób Load Balancer jest regionalny i nigdy nie jest strefą.  A sieć wirtualna i podsieci zawsze są regionalne i nigdy nie są zona. Stopień szczegółowości tego, co można skonfigurować, jest ograniczony przez każdą konfigurację frontonu, reguły i definicji puli zaplecza.
-
+Sam zasób Load Balancer jest regionalny i nigdy nie jest strefą. Stopień szczegółowości tego, co można skonfigurować, jest ograniczony przez każdą konfigurację frontonu, reguły i definicji puli zaplecza.
 W kontekście stref dostępności zachowanie i właściwości reguły Load Balancer są opisane jako strefa nadmiarowa lub strefa.  Strefowo nadmiarowe i strefowo opisują zonality właściwości.  W kontekście Load Balancer strefa nadmiarowa zawsze oznacza, że *wiele stref* i stref oznacza izolację usługi do *pojedynczej strefy*.
-
 Zarówno publiczne, jak i wewnętrzne Load Balancer obsługują scenariusze nadmiarowe i strefowe, a oba mogą kierować ruchem między strefami w razie potrzeby (*równoważenie obciążenia między strefami*). 
 
 ### <a name="frontend"></a>Frontonu
 
 Fronton Load Balancer jest konfiguracją adresów IP frontonu odwołującą się do zasobu publicznego adresu IP lub prywatnego adresu IP w podsieci zasobu sieci wirtualnej.  Tworzy punkt końcowy ze zrównoważonym obciążeniem, w którym jest udostępniana usługa.
+Zasób Load Balancer może zawierać reguły ze strefą i nadmiarowe strefy frontonu jednocześnie. Gdy zasób publicznego adresu IP lub prywatny adres IP jest gwarantowany dla strefy, zonality (lub ich brak) nie jest modyfikowalny.  Jeśli chcesz zmienić lub pominąć zonality publicznej lub prywatnego adresu IP frontonu, należy ponownie utworzyć publiczny adres IP w odpowiedniej strefie.  Strefy dostępności nie zmieniają ograniczeń dla wielu frontonów, przejrzyj [wiele frontonów dla Load Balancer](load-balancer-multivip-overview.md) , aby uzyskać szczegółowe informacje na temat tej możliwości.
 
-Zasób Load Balancer może zawierać reguły ze strefą i nadmiarowe strefy frontonu jednocześnie. 
+#### <a name="zone-redundant"></a>Strefa nadmiarowa 
 
-Gdy zasób publicznego adresu IP lub prywatny adres IP jest gwarantowany dla strefy, zonality (lub ich brak) nie jest modyfikowalny.  Jeśli chcesz zmienić lub pominąć zonality publicznej lub prywatnego adresu IP frontonu, należy ponownie utworzyć publiczny adres IP w odpowiedniej strefie.  Strefy dostępności nie zmieniają ograniczeń dla wielu frontonów, przejrzyj [wiele frontonów dla Load Balancer](load-balancer-multivip-overview.md) , aby uzyskać szczegółowe informacje na temat tej możliwości.
-
-#### <a name="zone-redundant-by-default"></a>Strefy nadmiarowe domyślnie
-
-W regionie ze strefami dostępności usługa Load Balancer w warstwie Standardowa frontonu jest domyślnie strefowo nadmiarowy.  Strefa nadmiarowa oznacza, że wszystkie przepływy ruchu przychodzącego lub wychodzącego są obsługiwane przez wiele stref dostępności w regionie jednocześnie przy użyciu jednego adresu IP. Schematy nadmiarowości DNS nie są wymagane. Pojedynczy adres IP frontonu może przetrwać awarię strefy i może być używany do uzyskiwania dostępu do wszystkich członków puli zaplecza (bez wpływu), niezależnie od strefy. Co najmniej jedna strefa dostępności może zakończyć się niepowodzeniem, a ścieżka danych przeżyje, dopóki jedna strefa w regionie pozostanie w dobrej kondycji. Pojedynczy adres IP frontonu jest obsługiwany jednocześnie przez wiele niezależnych wdrożeń infrastruktury w wielu strefach dostępności.  Nie oznacza to, że hitless ścieżka danych, ale wszystkie ponowne próby lub ponowna próba zostaną wykonane pomyślnie w innych strefach, które nie wpłyną na awarię strefy.   
-
-Poniższy fragment przedstawia sposób definiowania publicznego adresu IP w strefie nadmiarowy publiczny adres IP do użycia z publiczną usługa Load Balancer w warstwie Standardowa. Jeśli używasz istniejących szablonów Menedżer zasobów w konfiguracji, Dodaj sekcję **SKU** do tych szablonów.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-Poniższy fragment przedstawia sposób definiowania Strefowo nadmiarowego adresu IP frontonu dla wewnętrznej usługa Load Balancer w warstwie Standardowa. Jeśli używasz istniejących szablonów Menedżer zasobów w konfiguracji, Dodaj sekcję **SKU** do tych szablonów.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zone_redundant_frontend",
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-Poprzednie fragmenty nie są kompletnymi szablonami, ale mają na celu pokazanie sposobu prezentowania właściwości stref dostępności.  Musisz dołączyć te instrukcje do szablonów.
+W regionie ze strefami dostępności usługa Load Balancer w warstwie Standardowa fronton może być strefowo nadmiarowy.  Strefa nadmiarowa oznacza, że wszystkie przepływy ruchu przychodzącego lub wychodzącego są obsługiwane przez wiele stref dostępności w regionie jednocześnie przy użyciu jednego adresu IP. Schematy nadmiarowości DNS nie są wymagane. Pojedynczy adres IP frontonu może przetrwać awarię strefy i może być używany do uzyskiwania dostępu do wszystkich członków puli zaplecza (bez wpływu), niezależnie od strefy. Co najmniej jedna strefa dostępności może zakończyć się niepowodzeniem, a ścieżka danych przeżyje, dopóki jedna strefa w regionie pozostanie w dobrej kondycji. Pojedynczy adres IP frontonu jest obsługiwany jednocześnie przez wiele niezależnych wdrożeń infrastruktury w wielu strefach dostępności.  Nie oznacza to, że hitless ścieżka danych, ale wszystkie ponowne próby lub ponowna próba zostaną wykonane pomyślnie w innych strefach, które nie wpłyną na awarię strefy.   
 
 #### <a name="optional-zone-isolation"></a>Opcjonalna izolacja strefy
 
@@ -101,49 +50,6 @@ Jeśli chcesz mieszać te koncepcje (strefowo nadmiarowe i zona dla tego samego 
 W przypadku publicznego Load Balancer frontonu należy dodać parametr *strefy* do zasobu publicznego adresu IP, do którego odwołuje się Konfiguracja adresu IP frontonu używana przez odpowiednią regułę.
 
 W przypadku wewnętrznego Load Balancer frontonu Dodaj parametr *strefy* do konfiguracji wewnętrznego adresu IP frontonu Load Balancer. Strefa frontonu powoduje, że Load Balancer zagwarantowania adresu IP w podsieci do określonej strefy.
-
-Poniższy fragment przedstawia sposób definiowania standardowego publicznego adresu IP strefowego w Strefa 1 dostępności. Jeśli używasz istniejących szablonów Menedżer zasobów w konfiguracji, Dodaj sekcję **SKU** do tych szablonów.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "zones": [ "1" ],
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-Poniższy fragment przedstawia sposób definiowania wewnętrznego usługa Load Balancer w warstwie Standardowa frontonu w Strefa 1 dostępności. Jeśli używasz istniejących szablonów Menedżer zasobów w konfiguracji, Dodaj sekcję **SKU** do tych szablonów. Ponadto Zdefiniuj Właściwość **Zones** w konfiguracji adresu IP frontonu dla zasobu podrzędnego.
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zonal_frontend_in_az1",
-                        "zones": [ "1" ],
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-Poprzednie fragmenty nie są kompletnymi szablonami, ale mają na celu pokazanie sposobu prezentowania właściwości stref dostępności.  Musisz dołączyć te instrukcje do szablonów.
 
 ### <a name="cross-zone-load-balancing"></a>Równoważenie obciążenia między strefami
 
@@ -201,14 +107,6 @@ Unikaj wprowadzania niezamierzonych zależności między strefami, co spowoduje 
   - Czy w przypadku powracania strefy aplikacja rozumie, jak bezpiecznie przeprowadzić zbieżność?
 
 Przejrzyj [wzorce projektowania w chmurze platformy Azure](https://docs.microsoft.com/azure/architecture/patterns/) , aby zwiększyć odporność aplikacji na błędy.
-
-### <a name="zonalityguidance"></a>Strefowo nadmiarowe w stosunku do stref
-
-Strefa — nadmiarowe może zapewnić prostotę z opcją niezależny od strefy i w tym samym czasie odporny na jeden adres IP dla usługi.  Może ona zmniejszyć stopień złożoności.  Strefa nadmiarowa również ma mobilność między strefami i może być bezpiecznie używana do zasobów w dowolnej strefie.  Ponadto jest to przyszłe potwierdzenie w regionach bez stref dostępności, co może ograniczyć zmiany wymagane, gdy region uzyska strefy dostępności.  Składnia konfiguracji nadmiarowego adresu IP lub frontonu w dowolnym regionie, w tym w przypadku braku stref dostępności: strefa nie została określona w obszarze strefy: właściwość zasobu.
-
-Strefa może zapewnić jawną gwarancję dla strefy, jawnie udostępniającą losy z kondycją strefy. Tworzenie reguły Load Balancer przy użyciu strefy frontonu IP lub strefy wewnętrznej Load Balancer wewnętrzna może być pożądane, szczególnie jeśli dołączony zasób jest maszyną wirtualną w tej samej strefie.  Lub być może Twoja aplikacja wymaga jawnej wiedzy na temat strefy, w której zasób znajduje się przed chwilą, i chcemy jawnie określić dostępność w oddzielnych strefach.  Możesz uwidocznić wiele frontonów na potrzeby kompleksowych usług rozproszonych w różnych strefach (to jest na frontony strefy stref dla wielu zestawów skalowania maszyn wirtualnych).  A jeśli strefą frontony są publiczne adresy IP, można użyć tych wielu frontonów, aby uwidocznić swoją usługę za pomocą [Traffic Manager](../traffic-manager/traffic-manager-overview.md).  Można też użyć wielu stref frontonów, aby uzyskać informacje o kondycji strefy i wydajności za pomocą rozwiązań do monitorowania innych firm i uwidocznić ogólną usługę za pomocą nadmiarowej strefy. Zasoby strefowe z frontonami stref są wyrównane do tej samej strefy, co pozwala uniknąć potencjalnie szkodliwych scenariuszy między strefami dla zasobów strefowych.  Zasoby strefowe istnieją tylko w regionach, w których istnieją strefy dostępności.
-
-Nie ma ogólnych wskazówek, które są lepszym wyborem niż pozostałe, bez znajomości architektury usług.  Przejrzyj [wzorce projektowania w chmurze platformy Azure](https://docs.microsoft.com/azure/architecture/patterns/) , aby zwiększyć odporność aplikacji na błędy.
 
 ## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [strefy dostępności](../availability-zones/az-overview.md)

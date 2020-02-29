@@ -1,6 +1,6 @@
 ---
 title: 'Samouczek: ładowanie danych przy użyciu Azure Portal & SSMS'
-description: Samouczek używa Azure Portal i SQL Server Management Studio do załadowania magazynu danych WideWorldImportersDW z globalnego obiektu blob platformy Azure do Azure SQL Data Warehouse.
+description: Samouczek używa Azure Portal i SQL Server Management Studio do ładowania magazynu danych WideWorldImportersDW z globalnego obiektu blob platformy Azure do puli SQL usługi Azure Synapse Analytics.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,22 +10,22 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: a2adc2acdb9c1d850bb12833540ed8da51701e58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, synapse-analytics
+ms.openlocfilehash: 8e58c315ddc171ba19e0bce1cea4f694691f946e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370140"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193668"
 ---
-# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Samouczek: Ładowanie danych do usługi Azure SQL Data Warehouse
+# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Samouczek: ładowanie danych do puli SQL usługi Azure Synapse Analytics
 
-W tym samouczku magazyn danych WideWorldImportersDW jest ładowany z usługi Azure Blob Storage do usługi Azure SQL Data Warehouse za pomocą programu PolyBase. W tym samouczku użyto witryny [Azure Portal](https://portal.azure.com) i programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), aby wykonać następujące czynności:
+W tym samouczku pokazano, jak załadować magazyn danych WideWorldImportersDW z usługi Azure Blob Storage do magazynu danych w puli SQL usługi Azure Synapse Analytics. W tym samouczku użyto witryny [Azure Portal](https://portal.azure.com) i programu [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS), aby wykonać następujące czynności:
 
 > [!div class="checklist"]
-> * Tworzenie magazynu danych w witrynie Azure Portal
-> * Konfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
-> * Nawiązywanie połączenia z magazynem danych za pomocą programu SSMS
+> * Tworzenie magazynu danych przy użyciu puli SQL w Azure Portal
+> * Skonfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
+> * Nawiązywanie połączenia z pulą SQL za pomocą programu SSMS
 > * Tworzenie użytkownika wyznaczonego do ładowania danych
 > * Tworzenie tabel zewnętrznych używających obiektu blob platformy Azure jako źródła danych
 > * Ładowanie danych do magazynu danych za pomocą instrukcji CTAS T-SQL
@@ -41,103 +41,85 @@ Zanim rozpoczniesz ten samouczek, pobierz i zainstaluj najnowszą wersję progra
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [portalu Azure](https://portal.azure.com/).
+Zaloguj się do [Azure portal](https://portal.azure.com/).
 
-## <a name="create-a-blank-sql-data-warehouse"></a>Utwórz puste SQL Data Warehouse
+## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Tworzenie pustego magazynu danych w puli SQL
 
-Azure SQL Data Warehouse jest tworzony ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-concurrency-limits.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/management/overview.md) oraz na [serwerze logicznym SQL platformy Azure](../sql-database/sql-database-features.md). 
+Pula SQL jest tworzona ze zdefiniowanym zestawem [zasobów obliczeniowych](memory-concurrency-limits.md). Pula SQL jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/management/overview.md) oraz na [serwerze logicznym usługi Azure SQL](../sql-database/sql-database-features.md). 
 
-Wykonaj następujące kroki, aby utworzyć puste SQL Data Warehouse. 
+Wykonaj następujące kroki, aby utworzyć pustą pulę SQL. 
 
-1. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
+1. Wybierz pozycję **Utwórz zasób** w Azure Portal.
 
-2. Na stronie **Nowy** wybierz pozycję **Bazy danych**, a następnie na stronie **Nowy** w obszarze **Polecane** wybierz pozycję **SQL Data Warehouse**.
+1. Na stronie **Nowy** wybierz pozycję **bazy danych** , a następnie wybierz pozycję **Azure Synapse Analytics** w obszarze **proponowane** na **nowej** stronie.
 
-    ![tworzenie magazynu danych](media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
+    ![Utwórz pulę SQL](media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
 
-3. Wypełnij formularz magazynu danych SQL Data Warehouse, używając następujących informacji:   
+1. Wypełnij sekcję **szczegóły projektu** , podając następujące informacje:   
 
-   | Ustawienie | Sugerowana wartość | Opis | 
-   | ------- | --------------- | ----------- | 
-   | **Nazwa bazy danych** | SampleDW | Prawidłowe nazwy baz danych opisano w artykule [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). | 
+   | Ustawienie | Przykład | Opis | 
+   | ------- | --------------- | ----------- |
    | **Subskrypcja** | Twoja subskrypcja  | Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions). |
-   | **Grupa zasobów** | SampleRG | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). |
-   | **Wybierz źródło** | Pusta baza danych | Określa, że ma zostać utworzona pusta baza danych. Pamiętaj, że magazyn danych jest jednym z typów bazy danych.|
+   | **Grupa zasobów** | myResourceGroup | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). |
 
-    ![tworzenie magazynu danych](media/load-data-wideworldimportersdw/create-data-warehouse.png)
-
-4. Kliknij pozycję **Serwer**, aby utworzyć i skonfigurować nowy serwer dla nowej bazy danych. Wypełnij **formularz nowego serwera**, używając następujących informacji: 
+1. W obszarze **szczegóły puli SQL**Podaj nazwę puli SQL. Następnie wybierz istniejący serwer na liście rozwijanej lub wybierz pozycję **Utwórz nowy** w obszarze Ustawienia **serwera** , aby utworzyć nowy serwer. Wypełnij formularz, używając poniższych informacji: 
 
     | Ustawienie | Sugerowana wartość | Opis | 
     | ------- | --------------- | ----------- |
+    |**Nazwa puli SQL**|SampleDW| Prawidłowe nazwy baz danych opisano w artykule [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). | 
     | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Reguły i ograniczenia nazewnictwa). | 
     | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych).|
     | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej osiem znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
-    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony systemu Azure](https://azure.microsoft.com/regions/). |
+    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |
 
     ![tworzenie serwera bazy danych](media/load-data-wideworldimportersdw/create-database-server.png)
 
-5. Kliknij pozycję **Wybierz**.
+1. **Wybierz pozycję poziom wydajności**. Suwak domyślnie jest ustawiony na **DW1000c**. Przesuń suwak w górę i w dół, aby wybrać żądaną skalę wydajności. 
 
-6. Kliknij pozycję **warstwa wydajności** , aby określić, czy magazyn danych to Gen1, czy Gen2, oraz liczbę jednostek magazynu danych. 
+    ![tworzenie serwera bazy danych](media/load-data-wideworldimportersdw/create-data-warehouse.png)
 
-7. Na potrzeby tego samouczka wybierz warstwę usług **Gen1** . Suwak jest domyślnie ustawiony na pozycję **DW400**.  Spróbuj przesunąć go w górę i w dół, aby zobaczyć, jak działa. 
+1. Na stronie **Ustawienia dodatkowe** ustaw opcję **Użyj istniejących danych** na brak i Pozostaw domyślne ustawienie *SQL_Latin1_General_CP1_CI_AS*. 
 
-    ![konfigurowanie wydajności](media/load-data-wideworldimportersdw/configure-performance.png)
+1. Wybierz pozycję **Przegląd + Utwórz** , aby przejrzeć ustawienia, a następnie wybierz pozycję **Utwórz** , aby utworzyć magazyn danych. Postęp można monitorować, otwierając stronę **wdrożenia w toku** z menu **powiadomienia** . 
 
-8. Kliknij przycisk **Zastosuj**.
-9. Na stronie usługi SQL Data Warehouse wybierz **sortowanie** dla pustej bazy danych. Na potrzeby tego samouczka użyj wartości domyślnej. Aby uzyskać więcej informacji na temat sortowań, zobacz [Sortowania](/sql/t-sql/statements/collations)
-
-11. Teraz po uzupełnieniu formularza SQL Database kliknij przycisk **Utwórz**, aby aprowizować bazę danych. Aprowizacja zajmuje kilka minut. 
-
-    ![kliknięcie przycisku utwórz](media/load-data-wideworldimportersdw/click-create.png)
-
-12. Na pasku narzędzi kliknij pozycję **Powiadomienia**, aby monitorować proces wdrażania.
-    
      ![powiadomienie](media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Tworzenie reguły zapory na poziomie serwera
 
-Usługa SQL Data Warehouse tworzy zaporę na poziomie serwera, która uniemożliwia zewnętrznym aplikacjom i narzędziom łączenie się z serwerem i wszelkimi bazami danych na tym serwerze. Aby umożliwić łączność, możesz dodać reguły zezwalające na połączenia dla konkretnych adresów IP.  Wykonaj następujące kroki, aby utworzyć [regułę zapory na poziomie serwera](../sql-database/sql-database-firewall-configure.md) dla Twojego adresu IP klienta. 
+Usługa Azure Synapse Analytics tworzy zaporę na poziomie serwera, która uniemożliwia zewnętrznym aplikacjom i narzędziom łączenie się z serwerem lub dowolnymi bazami danych na serwerze. Aby umożliwić łączność, możesz dodać reguły zezwalające na połączenia dla konkretnych adresów IP.  Wykonaj następujące kroki, aby utworzyć [regułę zapory na poziomie serwera](../sql-database/sql-database-firewall-configure.md) dla Twojego adresu IP klienta. 
 
 > [!NOTE]
-> Usługa SQL Data Warehouse komunikuje się przez port 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. Jeśli nastąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 1433.
+> Pula SQL usługi Azure Synapse Analytics komunikuje się przez port 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. Jeśli nastąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 1433.
 >
 
-1. Po ukończeniu wdrażania kliknij pozycję **Bazy danych SQL** w menu po lewej stronie i kliknij pozycję **SampleDW** na stronie **Bazy danych SQL**. Zostanie otwarta strona przeglądu bazy danych zawierająca w pełni kwalifikowaną nazwę serwera (na przykład **sample-svr.database.windows.net**) i opcje dalszej konfiguracji. 
 
-2. Skopiuj tę w pełni kwalifikowaną nazwę serwera w celu nawiązania połączenia z serwerem i jego bazami danych w kolejnych przewodnikach Szybki start. Aby otworzyć ustawienia serwera, kliknij nazwę serwera.
+1. Po zakończeniu wdrożenia Wyszukaj nazwę puli w polu wyszukiwania w menu nawigacji, a następnie wybierz zasób puli SQL. Wybierz nazwę serwera. 
 
-    ![znajdowanie nazwy serwera](media/load-data-wideworldimportersdw/find-server-name.png) 
+    ![Przejdź do zasobu](media/load-data-wideworldimportersdw/search-for-sql-pool.png) 
 
-3. Aby otworzyć ustawienia serwera, kliknij nazwę serwera.
+1. Wybierz nazwę serwera. 
+    ![nazwa serwera](media/load-data-wideworldimportersdw/find-server-name.png) 
+
+1. Wybierz pozycję **Pokaż ustawienia zapory**. Zostanie otwarta strona **Ustawienia zapory** dla serwera puli SQL. 
 
     ![ustawienia serwera](media/load-data-wideworldimportersdw/server-settings.png) 
 
-5. Kliknij pozycję **Pokaż ustawienia zapory**. Zostanie otwarta strona **Ustawienia zapory** dla serwera usługi SQL Database. 
+1. Na stronie **zapory i sieci wirtualne** wybierz pozycję Dodaj adres **IP klienta** , aby dodać bieżący adres IP do nowej reguły zapory. Reguła zapory może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
 
     ![reguła zapory serwera](media/load-data-wideworldimportersdw/server-firewall-rule.png) 
 
-4.  Aby dodać bieżący adres IP do nowej reguły zapory, kliknij pozycję **Dodaj adres IP klienta** na pasku narzędzi. Reguła zapory może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
+1. Wybierz pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze logicznym.
 
-5. Kliknij pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze logicznym.
-
-6. Kliknij przycisk **OK**, a następnie zamknij stronę **Ustawienia zapory**.
-
-Teraz możesz łączyć się z serwerem SQL i jego magazynami danych przy użyciu tego adresu IP. Połączenie działa z programu SQL Server Management Studio lub dowolnego innego narzędzia. Przy łączeniu się używaj wcześniej utworzonego konta administratora serwera.  
+Teraz możesz nawiązać połączenie z serwerem SQL przy użyciu adresu IP klienta. Połączenie działa z programu SQL Server Management Studio lub dowolnego innego narzędzia. Przy łączeniu się używaj wcześniej utworzonego konta administratora serwera.  
 
 > [!IMPORTANT]
 > Domyślnie dostęp za pośrednictwem zapory usługi SQL Database jest włączony dla wszystkich usług platformy Azure. Kliknij pozycję **WYŁĄCZ** na tej stronie, a następnie kliknij przycisk **Zapisz**, aby wyłączyć zaporę dla wszystkich usług platformy Azure.
 
 ## <a name="get-the-fully-qualified-server-name"></a>Uzyskiwanie w pełni kwalifikowanej nazwy serwera
 
-Uzyskaj w pełni kwalifikowaną nazwę serwera dla swojego serwera SQL w witrynie Azure Portal. Nazwa ta będzie używana później przy nawiązywaniu połączenia z serwerem.
+W pełni kwalifikowana nazwa serwera jest używana do nawiązywania połączenia z serwerem. Przejdź do zasobu puli SQL w Azure Portal i Wyświetl w pełni kwalifikowaną nazwę w polu **Nazwa serwera**.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
-2. Wybierz opcję **Bazy danych SQL** z menu po lewej stronie, a następnie kliknij bazę danych na stronie **Bazy danych SQL**. 
-3. W okienku **Essentials** na stronie bazy danych w witrynie Azure Portal zlokalizuj i skopiuj **nazwę serwera**. W tym przykładzie w pełni kwalifikowana nazwa to mynewserver-20171113.database.windows.net. 
-
-    ![informacje o połączeniu](media/load-data-wideworldimportersdw/find-server-name.png)  
+![nazwa serwera](media/load-data-wideworldimportersdw/find-server-name.png) 
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Nawiąż połączenie z serwerem jako administrator serwera
 
@@ -150,14 +132,14 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
     | Ustawienie      | Sugerowana wartość | Opis | 
     | ------------ | --------------- | ----------- | 
     | Typ serwera | Aparat bazy danych | Ta wartość jest wymagana |
-    | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Na przykład **sample-svr.database.windows.net** jest w pełni kwalifikowaną nazwą serwera. |
-    | Authentication | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
-    | Zaloguj się | Konto administratora serwera | To konto określono podczas tworzenia serwera. |
+    | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Na przykład **sqlpoolservername.Database.Windows.NET** to w pełni kwalifikowana nazwa serwera. |
+    | Uwierzytelnianie | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
+    | Login | Konto administratora serwera | To konto określono podczas tworzenia serwera. |
     | Hasło | Hasło konta administratora serwera | To hasło określono podczas tworzenia serwera. |
 
     ![łączenie z serwerem](media/load-data-wideworldimportersdw/connect-to-server.png)
 
-4. Kliknij przycisk **Połącz**. W programie SSMS zostanie otwarte okno Eksplorator obiektów. 
+4. Kliknij przycisk **Connect** (Połącz). W programie SSMS zostanie otwarte okno Eksplorator obiektów. 
 
 5. W Eksploratorze obiektów rozwiń pozycję **Bazy danych**. Następnie rozwiń węzły **Systemowe bazy danych** i **master**, aby wyświetlić obiekty w bazie danych master.  Rozwiń węzeł **SampleDW** , aby wyświetlić obiekty w nowej bazie danych.
 
@@ -165,7 +147,7 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
 
 ## <a name="create-a-user-for-loading-data"></a>Tworzenie użytkownika do ładowania danych
 
-Konto administratora serwera jest przeznaczone do wykonywania operacji zarządzania i nie jest odpowiednie do wykonywania zapytań względem danych użytkownika. Operacja ładowania danych bardzo obciąża pamięć. Maksymalne wartości pamięci są definiowane zgodnie z generacją używanej usługi SQL Data Warehouse, [jednostkami magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) i [klasą zasobów](resource-classes-for-workload-management.md). 
+Konto administratora serwera jest przeznaczone do wykonywania operacji zarządzania i nie jest odpowiednie do wykonywania zapytań względem danych użytkownika. Operacja ładowania danych bardzo obciąża pamięć. Maksymalne wartości pamięci są zdefiniowane w zależności od generacji puli SQL, która jest używana, [jednostek magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md)i [klasy zasobów](resource-classes-for-workload-management.md). 
 
 Najlepszym rozwiązaniem jest utworzenie identyfikatora logowania i użytkownika, które są przeznaczone do ładowania danych. Następnie należy dodać użytkownika ładującego do [klasy zasobów](resource-classes-for-workload-management.md), która umożliwia odpowiednią maksymalną alokację pamięci.
 
@@ -208,7 +190,7 @@ Pierwszym krokiem do załadowania danych jest zalogowanie się jako użytkownik 
 
 2. Wprowadź w pełni kwalifikowaną nazwę serwera i jako nazwę logowania wprowadź identyfikator **LoaderRC60**.  Wprowadź hasło dla użytkownika LoaderRC60.
 
-3. Kliknij przycisk **Połącz**.
+3. Kliknij przycisk **Connect** (Połącz).
 
 4. Gdy połączenie będzie gotowe, w Eksploratorze obiektów zobaczysz dwa połączenia z serwerem. Jedno połączenie jako ServerAdmin i jedno połączenie jako LoaderRC60.
 
@@ -216,7 +198,7 @@ Pierwszym krokiem do załadowania danych jest zalogowanie się jako użytkownik 
 
 ## <a name="create-external-tables-and-objects"></a>Tworzenie tabel zewnętrznych i obiektów
 
-Wszystko jest gotowe do rozpoczęcia procesu ładowania danych do nowego magazynu danych. Aby dowiedzieć się, jak przesłać dane do usługi Azure Blob Storage lub załadować je bezpośrednio ze źródła do usługi SQL Data Warehouse, zobacz [omówienie ładowania](sql-data-warehouse-overview-load.md).
+Wszystko jest gotowe do rozpoczęcia procesu ładowania danych do nowego magazynu danych. Aby dowiedzieć się, jak pobrać dane do usługi Azure Blob Storage lub załadować je bezpośrednio ze źródła do puli SQL, zobacz [Omówienie ładowania](sql-data-warehouse-overview-load.md).
 
 Uruchom następujące skrypty SQL, aby podać informacje o danych do załadowania. Informacje te obejmują obecną lokalizację danych, format zawartości danych i definicję tabel dla danych. Dane znajdują się w globalnym obiekcie blob platformy Azure.
 
@@ -266,7 +248,7 @@ Uruchom następujące skrypty SQL, aby podać informacje o danych do załadowani
     CREATE SCHEMA wwi;
     ```
 
-7. Utwórz tabele zewnętrzne. Definicje tabel są przechowywane w usłudze SQL Data Warehouse, ale tabele odwołują się do danych przechowywanych w usłudze Azure Blob Storage. Uruchom poniższe polecenia T-SQL, aby utworzyć kilka tabel zewnętrznych wskazujących obiekt blob platformy Azure zdefiniowany wcześniej w zewnętrznym źródle danych.
+7. Utwórz tabele zewnętrzne. Definicje tabel są przechowywane w bazie danych, ale tabele odwołują się do danych przechowywanych w usłudze Azure Blob Storage. Uruchom poniższe polecenia T-SQL, aby utworzyć kilka tabel zewnętrznych wskazujących obiekt blob platformy Azure zdefiniowany wcześniej w zewnętrznym źródle danych.
 
     ```sql
     CREATE EXTERNAL TABLE [ext].[dimension_City](
@@ -545,15 +527,15 @@ Uruchom następujące skrypty SQL, aby podać informacje o danych do załadowani
 
     ![Wyświetlanie tabel zewnętrznych](media/load-data-wideworldimportersdw/view-external-tables.png)
 
-## <a name="load-the-data-into-your-data-warehouse"></a>Ładowanie danych do magazynu danych
+## <a name="load-the-data-into-sql-pool"></a>Ładowanie danych do puli SQL
 
-W tej sekcji są stosowane tabele zewnętrzne zdefiniowane w celu załadowania przykładowych danych z obiektu blob platformy Azure do SQL Data Warehouse.  
+W tej sekcji są stosowane tabele zewnętrzne zdefiniowane w celu załadowania przykładowych danych z obiektu blob platformy Azure do puli SQL.  
 
 > [!NOTE]
 > W tym samouczku dane są ładowane bezpośrednio do tabeli końcowej. W środowisku produkcyjnym zazwyczaj używa się instrukcji CREATE TABLE AS SELECT, aby załadować dane do tabeli przejściowej. Gdy dane znajdują się w tabeli przejściowej, można wykonać wszelkie niezbędne przekształcenia. Aby dołączyć dane z tabeli przejściowej do tabeli produkcyjnej, można użyć instrukcji INSERT...SELECT. Aby uzyskać więcej informacji, zobacz [Wstawianie danych do tabeli produkcyjnej](guidance-for-loading-data.md#inserting-data-into-a-production-table).
 > 
 
-W skrypcie użyto instrukcji języka T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse), aby załadować dane z usługi Azure Storage Blob do nowych tabel w magazynie danych. Instrukcja CTAS tworzy nową tabelę na podstawie wyników instrukcji select. Nowa tabela ma takie same kolumny i typy danych jak wyniki instrukcji select. Gdy instrukcja select wybiera dane z tabeli zewnętrznej, usługa SQL Data Warehouse importuje dane do tabeli relacyjnej w magazynie danych. 
+W skrypcie użyto instrukcji języka T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse), aby załadować dane z usługi Azure Storage Blob do nowych tabel w magazynie danych. Instrukcja CTAS tworzy nową tabelę na podstawie wyników instrukcji select. Nowa tabela ma takie same kolumny i typy danych jak wyniki instrukcji select. Gdy instrukcja SELECT wybiera z tabeli zewnętrznej, dane są importowane do relacyjnej tabeli w magazynie danych. 
 
 Ten skrypt nie ładuje danych do tabel WWI. dimension_Date i WWI. fact_Sale. Te tabele są generowane w późniejszym kroku, aby mogły mieć znaczną liczbę wierszy.
 
@@ -704,7 +686,7 @@ Ten skrypt nie ładuje danych do tabel WWI. dimension_Date i WWI. fact_Sale. Te 
     ;
     ```
 
-2. Wyświetlaj dane podczas ładowania. Ładowane jest kilka gigabajtów danych, które są kompresowane do wysoce wydajnych indeksów magazynu kolumn klastra. Otwórz nowe okno zapytania dla bazy danych SampleDW, a następnie uruchom następujące zapytanie w celu pokazania stanu ładowania. Po uruchomieniu zapytania można zrobić sobie przerwę, podczas gdy usługa SQL Data Warehouse będzie wykonywała skomplikowane obliczenia.
+2. Wyświetlaj dane podczas ładowania. Ładowane jest kilka gigabajtów danych, które są kompresowane do wysoce wydajnych indeksów magazynu kolumn klastra. Otwórz nowe okno zapytania dla bazy danych SampleDW, a następnie uruchom następujące zapytanie w celu pokazania stanu ładowania. Po rozpoczęciu zapytania Pochwyć kawę i aż, gdy pula SQL wykonuje bardzo duże podnoszenie poziomu.
 
     ```sql
     SELECT
@@ -977,7 +959,8 @@ Użyj utworzonych procedur składowanych w celu wygenerowania milionów wierszy 
     ```
 
 ## <a name="populate-the-replicated-table-cache"></a>Wypełnienie pamięci podręcznej replikowanej tabeli
-Usługa SQL Data Warehouse replikuje tabelę przez buforowanie danych w każdym węźle obliczeniowym. Pamięć podręczna jest wypełniana po uruchomieniu zapytania względem tabeli. W związku z tym pierwsze zapytanie dotyczące replikowanej tabeli może wymagać dodatkowego czasu na wypełnienie pamięci podręcznej. Po zapełnieniu pamięci podręcznej zapytania względem replikowanych tabel są wykonywane szybciej.
+
+Pula SQL replikuje tabelę przez buforowanie danych w poszczególnych węzłach obliczeniowych. Pamięć podręczna jest wypełniana po uruchomieniu zapytania względem tabeli. W związku z tym pierwsze zapytanie dotyczące replikowanej tabeli może wymagać dodatkowego czasu na wypełnienie pamięci podręcznej. Po zapełnieniu pamięci podręcznej zapytania względem replikowanych tabel są wykonywane szybciej.
 
 Uruchom te zapytania SQL w celu wypełnienia pamięci podręcznej replikowanej tabeli w węzłach obliczeniowych. 
 
@@ -1112,16 +1095,16 @@ W tym samouczku przedstawiono sposób tworzenia magazynu danych i tworzenia uży
 
 Zostały wykonane następujące zadania:
 > [!div class="checklist"]
-> * Utworzenie magazynu danych w witrynie Azure Portal
-> * Konfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
-> * Nawiązanie połączenia z magazynem danych za pomocą programu SSMS
+> * Utworzono magazyn danych z użyciem puli SQL w Azure Portal
+> * Skonfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
+> * Połączono z pulą SQL za pomocą programu SSMS
 > * Utworzenie użytkownika wyznaczonego do ładowania danych
 > * Utworzenie tabel zewnętrznych dla danych w usłudze Azure Storage Blob
 > * Załadowanie danych do magazynu danych za pomocą instrukcji CTAS T-SQL
 > * Wyświetlenie postępu ładowania danych
 > * Utworzenie statystyk dotyczących nowo załadowanych danych
 
-Przejdź do omówienia opracowywania, aby dowiedzieć się, jak przeprowadzić migrację istniejącej bazy danych do SQL Data Warehouse.
+Przejdź do omówienia opracowywania, aby dowiedzieć się, jak przeprowadzić migrację istniejącej bazy danych do puli SQL usługi Azure Synapse.
 
 > [!div class="nextstepaction"]
->[Podejmowanie decyzji projektowych dotyczących migracji istniejącej bazy danych do SQL Data Warehouse](sql-data-warehouse-overview-develop.md)
+>[Podejmowanie decyzji projektowych dotyczących migracji istniejącej bazy danych do puli SQL](sql-data-warehouse-overview-develop.md)

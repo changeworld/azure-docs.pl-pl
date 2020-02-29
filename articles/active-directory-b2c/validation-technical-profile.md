@@ -3,20 +3,20 @@ title: Zdefiniuj profil techniczny weryfikacji w zasadach niestandardowych
 titleSuffix: Azure AD B2C
 description: Sprawdź poprawność oświadczeń w ramach zasad niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: facef1e1288f2a64872efbf37a9a31fa05244a7e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 65a2eab05e7c475431602d9c2d3fc44b59bbc8f7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950803"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185730"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny weryfikacji w zasadach niestandardowych Azure Active Directory B2C
 
@@ -53,9 +53,9 @@ Element **ValidationTechnicalProfiles** zawiera następujące elementy:
 
 Element **ValidationTechnicalProfile** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator odwołania | Tak | Identyfikator profilu technicznego jest już zdefiniowany w zasadach lub zasadach nadrzędnych. |
+| ReferenceId | Yes | Identyfikator profilu technicznego jest już zdefiniowany w zasadach lub zasadach nadrzędnych. |
 |ContinueOnError|Nie| Wskazuje, czy sprawdzanie poprawności wszelkich kolejnych weryfikacji profilów technicznych powinno być kontynuowane, jeśli ten profil techniczny tego sprawdzania poprawności zgłosi błąd. Możliwe wartości: `true` lub `false` (domyślnie przetwarzanie dalszych profilów weryfikacji zostanie zatrzymane i zostanie zwrócony błąd). |
 |ContinueOnSuccess | Nie | Wskazuje, czy sprawdzanie poprawności wszelkich kolejnych profilów weryfikacji powinno być kontynuowane, jeśli ten profil techniczny zostanie pomyślnie zakończony. Możliwe wartości: `true` lub `false`. Wartość domyślna to `true`, co oznacza, że przetwarzanie dalszych profilów weryfikacji będzie kontynuowane. |
 
@@ -67,17 +67,17 @@ Element **ValidationTechnicalProfile** zawiera następujący element:
 
 Element **Conditional** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| `Type` | Tak | Typ sprawdzenia lub zapytania do wykonania dla warunku wstępnego. `ClaimsExist` jest określony w celu zapewnienia, że akcje należy wykonać, jeśli określone oświadczenia istnieją w bieżącym zestawie oświadczeń użytkownika, lub `ClaimEquals` określono, że akcje należy wykonać, jeśli istnieje określone oświadczenie, a jego wartość jest równa określonej wartości. |
-| `ExecuteActionsIf` | Tak | Wskazuje, czy akcje w warunku wstępnym mają być wykonywane, jeśli test ma wartość true lub false. |
+| `Type` | Yes | Typ sprawdzenia lub zapytania do wykonania dla warunku wstępnego. `ClaimsExist` jest określony w celu zapewnienia, że akcje należy wykonać, jeśli określone oświadczenia istnieją w bieżącym zestawie oświadczeń użytkownika, lub `ClaimEquals` określono, że akcje należy wykonać, jeśli istnieje określone oświadczenie, a jego wartość jest równa określonej wartości. |
+| `ExecuteActionsIf` | Yes | Wskazuje, czy akcje w warunku wstępnym mają być wykonywane, jeśli test ma wartość true lub false. |
 
 Element **Conditional** zawiera następujące elementy:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
 | Wartość | 1: n | Dane, które są używane przez sprawdzanie. Jeśli typ tego sprawdzenia to `ClaimsExist`, to pole określa ClaimTypeReferenceId do zapytania. Jeśli typ sprawdzenia to `ClaimEquals`, to pole określa ClaimTypeReferenceId do zapytania. Gdy inny element wartości zawiera wartość, która ma zostać sprawdzona.|
-| Działanie | 1:1 | Akcja, która powinna zostać podjęta, jeśli sprawdzanie warunków wstępnych w ramach kroku aranżacji ma wartość true. Wartość **akcji** jest ustawiona na `SkipThisValidationTechnicalProfile`. Określa, że skojarzony profil techniczny weryfikacji nie powinien być wykonywany. |
+| Akcja | 1:1 | Akcja, która powinna zostać podjęta, jeśli sprawdzanie warunków wstępnych w ramach kroku aranżacji ma wartość true. Wartość **akcji** jest ustawiona na `SkipThisValidationTechnicalProfile`. Określa, że skojarzony profil techniczny weryfikacji nie powinien być wykonywany. |
 
 ### <a name="example"></a>Przykład
 

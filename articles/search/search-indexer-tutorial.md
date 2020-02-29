@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: indeksowanie danych C# z baz danych usługi Azure SQL Database'
+title: 'Samouczek: indeksowanie danych z baz danych usługi Azure SQL DatabaseC# '
 titleSuffix: Azure Cognitive Search
 description: W tym C# samouczku Nawiąż połączenie z usługą Azure SQL Database, Wyodrębnij dane z możliwością wyszukiwania i załaduj je do indeksu wyszukiwanie poznawcze platformy Azure.
 manager: nitinme
@@ -7,21 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/26/2020
-ms.openlocfilehash: 978587b68e719b79db31ff25adaf2b38d2235095
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.date: 02/28/2020
+ms.openlocfilehash: 7660c89032ea3ef8371655b94b75c1f60603ee32
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650091"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193972"
 ---
-# <a name="tutorial-index-azure-sql-data-in-c-using-azure-cognitive-search-indexers"></a>Samouczek: indeksowanie danych usługi Azure C# SQL przy użyciu indeksatorów usługi Azure wyszukiwanie poznawcze
+# <a name="tutorial-use-c-to-index-data-from-sql-databases-in-azure-cognitive-search"></a>Samouczek: używanie C# do indeksowania danych z baz danych SQL na platformie Azure wyszukiwanie poznawcze
 
-Za C#pomocą programu Skonfiguruj [indeksator](search-indexer-overview.md) , który wyodrębnia dane z możliwością wyszukiwania z usługi Azure SQL Database i wysyła je do indeksu wyszukiwania. W tym samouczku do wykonywania następujących zadań używamy [bibliotek klienckich platformy Azure wyszukiwanie poznawcze .NET](https://aka.ms/search-sdk) i aplikacji konsolowej platformy .NET Core:
+Skonfiguruj [indeksator](search-indexer-overview.md) , aby wyodrębnić dane z możliwością wyszukiwania z usługi Azure SQL Database, wysyłając je do indeksu wyszukiwania w usłudze Azure wyszukiwanie poznawcze. 
+
+Ten samouczek używa C# programu i [zestawu .NET SDK](https://aka.ms/search-sdk) do wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Utwórz źródło danych łączące się z Azure SQL Database
-> * Konfigurowanie indeksatora
+> * Tworzenie indeksatora
 > * Uruchamianie indeksatora w celu załadowania danych do indeksu
 > * Wykonywanie zapytań względem indeksu w ramach kroku weryfikacji
 
@@ -36,39 +38,17 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 > [!Note]
 > Możesz skorzystać z bezpłatnej usługi dla tego samouczka. Bezpłatna usługa wyszukiwania ogranicza do trzech indeksów, trzech indeksatorów i trzech źródeł danych. W ramach tego samouczka tworzony jest jeden element każdego z tych typów. Przed rozpoczęciem upewnij się, że masz miejsce w usłudze, aby akceptować nowe zasoby.
 
-## <a name="download-source-code"></a>Pobierz kod źródłowy
+## <a name="download-files"></a>Pobieranie plików
 
 Kod źródłowy dla tego samouczka znajduje się w folderze [DotNetHowToIndexer](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) w repozytorium GitHub [Azure-Samples/Search-dotnet-](https://github.com/Azure-Samples/search-dotnet-getting-started) The-Started.
 
-## <a name="get-a-key-and-url"></a>Pobierz klucz i adres URL
+## <a name="1---create-services"></a>1 — Tworzenie usług
 
-Wywołania interfejsu API wymagają adresu URL usługi i klucza dostępu. Usługa wyszukiwania jest tworzona razem z usługą, więc jeśli do subskrypcji dodano Wyszukiwanie poznawcze platformy Azure, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
+Ten samouczek używa platformy Azure Wyszukiwanie poznawcze do indeksowania i zapytań oraz Azure SQL Database jako zewnętrzne źródło danych. Jeśli to możliwe, Utwórz obie usługi w tym samym regionie i grupie zasobów, aby umożliwić bliskość i łatwość zarządzania. W przypadku Azure SQL Database może być w dowolnym regionie.
 
-1. [Zaloguj się do Azure Portal](https://portal.azure.com/)i na stronie **Przegląd** usługi wyszukiwania Uzyskaj adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
+### <a name="start-with-azure-sql-database"></a>Rozpocznij od Azure SQL Database
 
-1. W obszarze **ustawienia** > **klucze**Uzyskaj klucz administratora dla pełnych praw do usługi. Istnieją dwa wymienne klucze administratora zapewniające ciągłość działania w przypadku, gdy trzeba ją wycofać. W przypadku żądań dotyczących dodawania, modyfikowania i usuwania obiektów można użyć klucza podstawowego lub pomocniczego.
-
-   ![Pobieranie punktu końcowego HTTP i klucza dostępu](media/search-get-started-postman/get-url-key.png "Pobieranie punktu końcowego HTTP i klucza dostępu")
-
-## <a name="set-up-connections"></a>Konfigurowanie połączeń
-
-1. Uruchom program Visual Studio i Otwórz **DotNetHowToIndexers. sln**.
-
-1. W Eksplorator rozwiązań otwórz plik **appSettings. JSON** i Zastąp wartości zastępcze informacjami o połączeniu z usługą wyszukiwania. Jeśli pełny adres URL to "https://my-demo-service.search.windows.net", nazwa usługi do udostępnienia to "My-demonstracyjn-Service".
-
-    ```json
-    {
-      "SearchServiceName": "Put your search service name here",
-      "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-      "AzureSqlConnectionString": "Put your Azure SQL database connection string here",
-    }
-    ```
-
-Ostatni wpis wymaga istniejącej bazy danych. Utworzysz ją w następnym kroku.
-
-## <a name="prepare-sample-data"></a>Przygotowywanie przykładowych danych
-
-W tym kroku utworzysz zewnętrzne źródło danych na Azure SQL Database, które indeksator może przeszukać. Przy użyciu witryny Azure Portal i pliku *hotels.sql* z przykładu można utworzyć zestaw danych w bazie danych Azure SQL Database. Usługa Azure Wyszukiwanie poznawcze zużywa spłaszczone zestawy wierszy, takie jak wygenerowane na podstawie widoku lub zapytania. Plik SQL w przykładowym rozwiązaniu umożliwia utworzenie i wypełnienie pojedynczej tabeli.
+W tym kroku utworzysz zewnętrzne źródło danych na Azure SQL Database, które indeksator może przeszukać. Aby utworzyć zestaw danych w Azure SQL Database, można użyć Azure Portal i pliku *Hotelis. SQL* z przykładowego pobierania. Usługa Azure Wyszukiwanie poznawcze zużywa spłaszczone zestawy wierszy, takie jak wygenerowane na podstawie widoku lub zapytania. Plik SQL w przykładowym rozwiązaniu umożliwia utworzenie i wypełnienie pojedynczej tabeli.
 
 Jeśli masz istniejący zasób Azure SQL Database, możesz dodać do niego tabelę hoteli, rozpoczynając od kroku 4.
 
@@ -104,59 +84,45 @@ Jeśli masz istniejący zasób Azure SQL Database, możesz dodać do niego tabel
     Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
     ```
 
-1. Wklej parametry połączenia w obszarze „AzureSqlConnectionString” jako trzeci wpis w pliku **appsettings.json** w programie Visual Studio.
+Te parametry połączenia będą potrzebne w następnym ćwiczeniu, konfigurując środowisko.
+
+### <a name="azure-cognitive-search"></a>Azure Cognitive Search
+
+Następnym składnikiem jest usługa Azure Wyszukiwanie poznawcze, którą można [utworzyć w portalu](search-create-service-portal.md). Aby ukończyć ten przewodnik, możesz skorzystać z warstwy Bezpłatna. 
+
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Pobierz klucz API i adres URL administratora dla usługi Azure Wyszukiwanie poznawcze
+
+Wywołania interfejsu API wymagają adresu URL usługi i klucza dostępu. Usługa wyszukiwania jest tworzona razem z usługą, więc jeśli do subskrypcji dodano Wyszukiwanie poznawcze platformy Azure, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
+
+1. [Zaloguj się do Azure Portal](https://portal.azure.com/)i na stronie **Przegląd** usługi wyszukiwania Uzyskaj adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
+
+1. W obszarze **ustawienia** > **klucze**Uzyskaj klucz administratora dla pełnych praw do usługi. Istnieją dwa wymienne klucze administratora zapewniające ciągłość działania w przypadku, gdy trzeba ją wycofać. W przypadku żądań dotyczących dodawania, modyfikowania i usuwania obiektów można użyć klucza podstawowego lub pomocniczego.
+
+   ![Pobieranie punktu końcowego HTTP i klucza dostępu](media/search-get-started-postman/get-url-key.png "Pobieranie punktu końcowego HTTP i klucza dostępu")
+
+## <a name="2---set-up-your-environment"></a>2 — Konfigurowanie środowiska
+
+1. Uruchom program Visual Studio i Otwórz **DotNetHowToIndexers. sln**.
+
+1. W Eksplorator rozwiązań otwórz plik **appSettings. JSON** , aby podać informacje o połączeniu.
+
+1. W przypadku `searchServiceName`, jeśli pełny adres URL to "https://my-demo-service.search.windows.net", nazwa usługi do udostępnienia to "My-Demonstracja-usługa".
+
+1. W przypadku `AzureSqlConnectionString`format ciągu jest podobny do tego: `"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
       "SearchServiceName": "<placeholder-Azure-Search-service-name>",
       "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
-      "AzureSqlConnectionString": "Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+      "AzureSqlConnectionString": "<placeholder-ADO.NET-connection-string",
     }
     ```
 
-1. Wprowadź hasło do parametrów połączenia w pliku **appSettings. JSON** . Nazwy baz danych i użytkowników zostaną skopiowane przez parametry połączenia, ale hasło należy wprowadzić ręcznie.
+1. Upewnij się, że parametry połączenia zawierają prawidłowe hasło w parametrach połączenia. Podczas kopiowania nazw baz danych i użytkowników należy ręcznie wprowadzić hasło.
 
-## <a name="build-the-solution"></a>Kompilowanie rozwiązania
+## <a name="3---create-the-pipeline"></a>3 — Tworzenie potoku
 
-Naciśnij klawisz F5, aby skompilować rozwiązanie. Program będzie działać w trybie debugowania. Stan każdej operacji będzie zgłaszany w oknie konsoli.
-
-   ![Dane wyjściowe konsoli](./media/search-indexer-tutorial/console-output.png "Dane wyjściowe konsoli")
-
-Kod jest uruchamiany lokalnie w programie Visual Studio, łącząc się z usługą wyszukiwania na platformie Azure, która z kolei łączy się z Azure SQL Database i Pobiera zestaw danych. W przypadku tej wielu operacji istnieje kilka potencjalnych punktów awarii. Jeśli wystąpi błąd, należy najpierw sprawdzić następujące warunki:
-
-+ Podane informacje o połączeniu usługi wyszukiwania zostały w tym samouczku ograniczone do nazwy usługi. Jeśli wprowadzono pełny adres URL, operacje zatrzymują się na etapie tworzenia indeksu i występuje błąd nawiązywania połączenia.
-
-+ Informacje o połączeniu z bazą danych w pliku **appsettings.json**. Powinny to być parametry połączenia ADO.NET uzyskane z portalu i zmodyfikowane w celu uwzględnienia nazwy użytkownika i hasła, które obowiązują w przypadku Twojej bazy danych. Konto użytkownika musi mieć uprawnienia do pobierania danych. Adres IP klienta lokalnego musi mieć dozwolony dostęp.
-
-+ Limity zasobów. Należy przypomnieć, że warstwa Bezpłatna ma limity trzech indeksów, indeksatorów i źródeł danych. W usłudze obsługującej maksymalny limit nie można tworzyć nowych obiektów.
-
-## <a name="check-results"></a>Sprawdź wyniki
-
-Użyj Azure Portal, aby zweryfikować Tworzenie obiektów, a następnie użyj **Eksploratora wyszukiwania** do wykonywania zapytań względem indeksu.
-
-1. [Zaloguj się do Azure Portal](https://portal.azure.com/)i na stronie **Przegląd** usługi wyszukiwania Otwórz każdą z list z kolei, aby sprawdzić, czy obiekt został utworzony. **Indeksy**, **indeksatory**i **źródła danych** będą zawierały odpowiednio "Hotele", "Azure-SQL-Indexer" i "Azure-SQL".
-
-   ![Kafelki Indeksatory i Źródła danych](./media/search-indexer-tutorial/tiles-portal.png)
-
-1. Wybierz indeks hoteli. Na stronie Hotele, **Eksplorator wyszukiwania** jest pierwszą kartą. 
-
-1. Kliknij przycisk **Wyszukaj** , aby wydać puste zapytanie. 
-
-   Trzy wpisy w indeksie zostaną zwrócone jako dokumenty JSON. Eksplorator wyszukiwania zwraca dokumenty w formacie JSON, tak, aby można było przeglądać całą strukturę.
-
-   ![Tworzenie zapytań względem indeksu](./media/search-indexer-tutorial/portal-search.png "Tworzenie zapytań względem indeksu")
-   
-1. Następnie wprowadź wyszukiwany ciąg: `search=river&$count=true`. 
-
-   To zapytanie powoduje wywołanie wyszukiwania pełnotekstowego terminu `river`, a wynik obejmuje również liczbę pasujących dokumentów. Zwracanie liczby pasujących dokumentów jest przydatne w przypadku testowania scenariuszy, jeśli masz duży indeks z tysiącami lub milionami dokumentów. W takim przypadku tylko jeden dokument pasuje do zapytania.
-
-1. Na koniec wprowadź wyszukiwany ciąg, który ogranicza dane wyjściowe JSON do odpowiednich pól: `search=river&$count=true&$select=hotelId, baseRate, description`. 
-
-   Odpowiedź na zapytanie jest redukowana do wybranych pól, co zapewnia bardziej zwięzły widok danych wyjściowych.
-
-## <a name="explore-the-code"></a>Eksplorowanie kodu
-
-Teraz, gdy zrozumiesz, jak tworzony jest przykładowy kod, wróćmy do rozwiązania, aby przejrzeć kod. Odpowiedni kod znajduje się w dwóch plikach:
+Indeksatory wymagają obiektu źródła danych i indeksu. Odpowiedni kod znajduje się w dwóch plikach:
 
   + **Hotel.cs**zawierający schemat definiujący indeks
   + **Program.cs**zawierające funkcje tworzenia struktur w usłudze i zarządzania nimi
@@ -230,17 +196,61 @@ Obiekt indeksatora to platform-niezależny od, w których konfiguracja, planowan
   }
   ```
 
+## <a name="4---build-the-solution"></a>4 — Kompilowanie rozwiązania
+
+Naciśnij klawisz F5, aby skompilować i uruchomić rozwiązanie. Program będzie działać w trybie debugowania. Stan każdej operacji będzie zgłaszany w oknie konsoli.
+
+   ![Dane wyjściowe konsoli](./media/search-indexer-tutorial/console-output.png "Dane wyjściowe konsoli")
+
+Kod jest uruchamiany lokalnie w programie Visual Studio, łącząc się z usługą wyszukiwania na platformie Azure, która z kolei łączy się z Azure SQL Database i Pobiera zestaw danych. W przypadku tej wielu operacji istnieje kilka potencjalnych punktów awarii. Jeśli wystąpi błąd, należy najpierw sprawdzić następujące warunki:
+
++ Podane informacje o połączeniu usługi wyszukiwania zostały w tym samouczku ograniczone do nazwy usługi. Jeśli wprowadzono pełny adres URL, operacje zatrzymują się na etapie tworzenia indeksu i występuje błąd nawiązywania połączenia.
+
++ Informacje o połączeniu z bazą danych w pliku **appsettings.json**. Powinny to być parametry połączenia ADO.NET uzyskane z portalu i zmodyfikowane w celu uwzględnienia nazwy użytkownika i hasła, które obowiązują w przypadku Twojej bazy danych. Konto użytkownika musi mieć uprawnienia do pobierania danych. Adres IP klienta lokalnego musi mieć dozwolony dostęp.
+
++ Limity zasobów. Należy przypomnieć, że warstwa Bezpłatna ma limity trzech indeksów, indeksatorów i źródeł danych. W usłudze obsługującej maksymalny limit nie można tworzyć nowych obiektów.
+
+## <a name="5---search"></a>5 — wyszukiwanie
+
+Użyj Azure Portal, aby zweryfikować Tworzenie obiektów, a następnie użyj **Eksploratora wyszukiwania** do wykonywania zapytań względem indeksu.
+
+1. [Zaloguj się do Azure Portal](https://portal.azure.com/)i na stronie **Przegląd** usługi wyszukiwania Otwórz każdą z list z kolei, aby sprawdzić, czy obiekt został utworzony. **Indeksy**, **indeksatory**i **źródła danych** będą zawierały odpowiednio "Hotele", "Azure-SQL-Indexer" i "Azure-SQL".
+
+   ![Kafelki Indeksatory i Źródła danych](./media/search-indexer-tutorial/tiles-portal.png)
+
+1. Wybierz indeks hoteli. Na stronie Hotele, **Eksplorator wyszukiwania** jest pierwszą kartą. 
+
+1. Kliknij przycisk **Wyszukaj** , aby wydać puste zapytanie. 
+
+   Trzy wpisy w indeksie zostaną zwrócone jako dokumenty JSON. Eksplorator wyszukiwania zwraca dokumenty w formacie JSON, tak, aby można było przeglądać całą strukturę.
+
+   ![Tworzenie zapytań względem indeksu](./media/search-indexer-tutorial/portal-search.png "Tworzenie zapytań względem indeksu")
+   
+1. Następnie wprowadź wyszukiwany ciąg: `search=river&$count=true`. 
+
+   To zapytanie powoduje wywołanie wyszukiwania pełnotekstowego terminu `river`, a wynik obejmuje również liczbę pasujących dokumentów. Zwracanie liczby pasujących dokumentów jest przydatne w przypadku testowania scenariuszy, jeśli masz duży indeks z tysiącami lub milionami dokumentów. W takim przypadku tylko jeden dokument pasuje do zapytania.
+
+1. Na koniec wprowadź wyszukiwany ciąg, który ogranicza dane wyjściowe JSON do odpowiednich pól: `search=river&$count=true&$select=hotelId, baseRate, description`. 
+
+   Odpowiedź na zapytanie jest redukowana do wybranych pól, co zapewnia bardziej zwięzły widok danych wyjściowych.
+
+## <a name="reset-and-rerun"></a>Resetowanie i ponowne uruchamianie
+
+W przypadku wczesnych eksperymentalnych etapów tworzenia najlepszym podejściem do iteracji projektu jest usunięcie obiektów z platformy Azure Wyszukiwanie poznawcze i umożliwienie kodowi odbudowania. Nazwy zasobów są unikatowe. Usunięcie obiektu umożliwia jego ponowne utworzenie przy użyciu tej samej nazwy.
+
+Przykładowy kod dla tego samouczka sprawdza istniejące obiekty i usuwa je, aby można było ponownie uruchomić kod.
+
+Możesz również użyć portalu, aby usunąć indeksy, indeksatory i źródła danych.
+
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Gdy Pracujesz w ramach własnej subskrypcji, na końcu projektu warto usunąć zasoby, które nie są już potrzebne. Zasoby po lewej stronie mogą być kosztowne. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
 
 Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku wszystkie zasoby lub grupy zasobów w okienku nawigacji po lewej stronie.
 
-Jeśli używasz bezpłatnej usługi, pamiętaj, że masz ograniczone do trzech indeksów, indeksatorów i źródeł danych. Możesz usunąć poszczególne elementy w portalu, aby zachować limit.
-
 ## <a name="next-steps"></a>Następne kroki
 
-Na platformie Azure Wyszukiwanie poznawcze Indeksatory są dostępne dla wielu źródeł danych platformy Azure. Następnym krokiem jest zapoznanie się z indeksatorem usługi Azure Blob Storage.
+Teraz, gdy znasz już podstawy indeksowania SQL Database, przyjrzyjmy się bliżej konfiguracji indeksatora.
 
 > [!div class="nextstepaction"]
-> [Indexing Documents in Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) (Indeksowanie dokumentów w usłudze Azure Blob Storage)
+> [Konfigurowanie indeksatora usługi Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

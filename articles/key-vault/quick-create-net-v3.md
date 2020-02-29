@@ -5,13 +5,14 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 11/05/2019
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 9b92796e477ea0dd6795015edd3f400dd2cc9aa7
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4b27893502dcded1e88b8a664531267a99c98af3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773743"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197542"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>Szybki Start: Azure Key Vaulta Biblioteka kliencka dla platformy .NET (SDK v3)
 
@@ -96,7 +97,7 @@ az group create --name "myResourceGroup" -l "EastUS"
 az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 ```
 
-### <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
+### <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
 Najprostszym sposobem uwierzytelniania aplikacji .NET opartej na chmurze jest tożsamość zarządzana; Aby uzyskać szczegółowe informacje [, zobacz używanie Azure Key Vault tożsamości zarządzanej App Service](managed-identity.md) . W tym przewodniku szybki start można jednak utworzyć aplikację konsolową platformy .NET. Uwierzytelnianie aplikacji klasycznej przy użyciu platformy Azure wymaga użycia nazwy głównej usługi i zasad kontroli dostępu.
 

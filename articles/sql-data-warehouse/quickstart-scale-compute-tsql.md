@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: skalowanie obliczeniowe — T-SQL '
-description: Skalowanie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse przy użyciu języka T-SQL i programu SQL Server Management Studio (SSMS). Skalowanie zasobów obliczeniowych w poziomie zapewnia lepszą wydajność, a zmniejszenie ich skali pozwala ograniczyć koszty.
+title: Skalowanie obliczeniowe w usłudze Azure Synapse Analytics — T-SQL
+description: Skalowanie zasobów obliczeniowych w usłudze Azure Synapse Analytics przy użyciu języka T-SQL i SQL Server Management Studio (SSMS). Skalowanie zasobów obliczeniowych w poziomie zapewnia lepszą wydajność, a ich ponowne przeskalowanie pozwala ograniczyć koszty.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 6729552262d7bea619948ddba406418b80cf69dc
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: a6d47a41375c00b9bdad5079f8e1f11cf369120a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685944"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200427"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Szybki start: skalowanie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse przy użyciu języka T-SQL
+# <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Szybki Start: skalowanie zasobów obliczeniowych w usłudze Azure Synapse Analytics przy użyciu języka T-SQL
 
-Skalowanie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse przy użyciu języka T-SQL i programu SQL Server Management Studio (SSMS). [Skalowanie zasobów obliczeniowych w poziomie](sql-data-warehouse-manage-compute-overview.md) zapewnia lepszą wydajność, a zmniejszenie ich skali pozwala ograniczyć koszty. 
+Skalowanie obliczeniowe w usłudze Azure Synapse Analytics (dawniej SQL DW) przy użyciu języka T-SQL i SQL Server Management Studio (SSMS). [Skalowanie zasobów obliczeniowych w poziomie](sql-data-warehouse-manage-compute-overview.md) zapewnia lepszą wydajność, a ich ponowne przeskalowanie pozwala ograniczyć koszty. 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -30,7 +30,7 @@ Pobierz i zainstaluj najnowszą wersję programu [SQL Server Management Studio](
  
 ## <a name="create-a-data-warehouse"></a>Tworzenie magazynu danych
 
-Wykonaj czynności opisane w przewodniku [Szybki start: tworzenie i łączenie — portal](create-data-warehouse-portal.md), aby utworzyć magazyn danych o nazwie **mySampleDataWarehouse**. Ukończ przewodnik Szybki start, aby mieć pewność, że masz regułę zapory i możesz połączyć się z magazynem danych z poziomu programu SQL Server Management Studio.
+Wykonaj czynności opisane w przewodniku [Szybki start: tworzenie i łączenie — portal](create-data-warehouse-portal.md), aby utworzyć magazyn danych o nazwie **mySampleDataWarehouse**. Ukończ Przewodnik Szybki Start, aby upewnić się, że masz regułę zapory i można nawiązać połączenie z magazynem danych z poziomu SQL Server Management Studio.
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Nawiąż połączenie z serwerem jako administrator serwera
 
@@ -43,25 +43,25 @@ W tej sekcji używany jest program [SQL Server Management Studio](/sql/ssms/down
    | Ustawienie       | Sugerowana wartość | Opis | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | Typ serwera | Aparat bazy danych | Ta wartość jest wymagana |
-   | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Oto przykład: **mynewserver-20171113.database.windows.net**. |
-   | Authentication | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
-   | Zaloguj się | Konto administratora serwera | Konto określone podczas tworzenia serwera. |
-   | Hasło | Hasło konta administratora serwera | To hasło określono podczas tworzenia serwera. |
+   | Nazwa serwera | W pełni kwalifikowana nazwa serwera | Oto przykład: **mySampleDataWarehouseservername.Database.Windows.NET**. |
+   | Uwierzytelnianie | Uwierzytelnianie programu SQL Server | Uwierzytelnianie SQL to jedyny typ uwierzytelniania skonfigurowany w tym samouczku. |
+   | Login | Konto administratora serwera | Konto określone podczas tworzenia serwera. |
+   | Hasło | Hasło konta administratora serwera | Hasło określone podczas tworzenia serwera. |
 
-    ![łączenie z serwerem](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
+    ![Połącz z serwerem](media/quickstart-scale-compute-tsql/connect-to-server.png)
 
-4. Kliknij przycisk **Połącz**. W programie SSMS zostanie otwarte okno Eksplorator obiektów. 
+3. Kliknij przycisk **Connect** (Połącz). W programie SSMS zostanie otwarte okno Eksplorator obiektów.
 
-5. W Eksploratorze obiektów rozwiń pozycję **Bazy danych**. Następnie rozwiń pozycję **mySampleDatabase**, aby wyświetlić obiekty w nowej bazy danych.
+4. W Eksploratorze obiektów rozwiń pozycję **Bazy danych**. Następnie rozwiń węzeł **mySampleDataWarehouse** , aby wyświetlić obiekty w nowej bazie danych.
 
-    ![obiekty bazy danych](media/create-data-warehouse-portal/connected.png) 
+    ![Obiekty bazy danych](media/quickstart-scale-compute-tsql/connected.png)
 
 ## <a name="view-service-objective"></a>Wyświetlanie celu usługi
 Ustawienie dotyczące celu usługi zawiera liczbę jednostek magazynu danych dla magazynu danych. 
 
 Aby wyświetlić bieżące jednostki magazynu danych dla magazynu danych:
 
-1. W obszarze połączenia z serwerem **mynewserver-20171113.database.windows.net** rozwiń węzeł **Systemowe bazy danych**.
+1. W obszarze połączenie z usługą **mySampleDataWarehouseservername.Database.Windows.NET**rozwiń pozycję **systemowe bazy danych**.
 2. Kliknij prawym przyciskiem myszy pozycję **master**, a następnie wybierz pozycję **Nowe zapytanie**. Otworzy się okno nowego zapytania.
 3. Uruchom następujące zapytanie, aby wybrać odpowiedni element z dynamicznego widoku zarządzania sys.database_service_objectives. 
 
@@ -80,11 +80,10 @@ Aby wyświetlić bieżące jednostki magazynu danych dla magazynu danych:
 
 4. Następujące wyniki wskazują, że cel usługi dla bazy danych **mySampleDataWarehouse** przyjmuje wartość DW400. 
 
-    ![Widok bieżących jednostek DWU](media/quickstart-scale-compute-tsql/view-current-dwu.png)
-
+    ![każ-Current-jednostek dwu](media/quickstart-scale-compute-tsql/view-current-dwu.png)
 
 ## <a name="scale-compute"></a>Skalowanie zasobów obliczeniowych
-W usłudze SQL Data Warehouse można zwiększyć lub zmniejszyć ilość zasobów obliczeniowych przez odpowiednie dostosowanie jednostek magazynu danych. Postępując według czynności opisanych w artykule [Tworzenie i łączenie — portal](create-data-warehouse-portal.md) utworzono bazę danych **mySampleDataWarehouse** z 400 jednostkami DWU. Poniższe kroki umożliwiają dostosowanie liczby jednostek DWU dla bazy danych **mySampleDataWarehouse**.
+W usłudze Azure Synapse można zwiększyć lub zmniejszyć zasoby obliczeniowe przez dostosowanie jednostek magazynu danych. Postępując według czynności opisanych w artykule [Tworzenie i łączenie — portal](create-data-warehouse-portal.md) utworzono bazę danych **mySampleDataWarehouse** z 400 jednostkami DWU. Poniższe kroki umożliwiają dostosowanie liczby jednostek DWU dla bazy danych **mySampleDataWarehouse**.
 
 Aby zmienić jednostki magazynu danych:
 
@@ -93,8 +92,7 @@ Aby zmienić jednostki magazynu danych:
 
     ```Sql
     ALTER DATABASE mySampleDataWarehouse
-    MODIFY (SERVICE_OBJECTIVE = 'DW300c')
-    ;
+    MODIFY (SERVICE_OBJECTIVE = 'DW300c');
     ```
 
 ## <a name="monitor-scale-change-request"></a>Monitorowanie żądania zmiany skali
@@ -113,7 +111,7 @@ Aby sondować stan zmiany obiektu usługi:
         WHERE 
             1=1
             AND resource_type_desc = 'Database'
-            AND major_resource_id = 'MySampleDataWarehouse'
+            AND major_resource_id = 'mySampleDataWarehouse'
             AND operation = 'ALTER DATABASE'
         ORDER BY
             start_time DESC
@@ -134,7 +132,7 @@ Gdy magazyn danych jest wstrzymany, nawiązanie z nim połączenia za pomocą j�
 
 ## <a name="check-operation-status"></a>Sprawdzanie stanu operacji
 
-Aby zostały zwrócone informacje na temat różnych operacji zarządzania w usłudze SQL Data Warehouse, uruchom następujące zapytanie w dynamicznym widoku zarządzania (DMV) [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). Na przykład zwraca operację i typ stanu operacji: IN_PROGRESS (W toku) lub COMPLETED (Ukończono).
+Aby zwrócić informacje dotyczące różnych operacji zarządzania na platformie Azure Synapse, uruchom następujące zapytanie w [tabeli sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) DMV. Na przykład zwraca operację i typ stanu operacji: IN_PROGRESS (W toku) lub COMPLETED (Ukończono).
 
 ```sql
 SELECT *
@@ -143,12 +141,12 @@ FROM
 WHERE
     resource_type_desc = 'Database'
 AND 
-    major_resource_id = 'MySampleDataWarehouse'
+    major_resource_id = 'mySampleDataWarehouse'
 ```
 
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz już wiesz, jak skalować zasoby obliczeniowe na potrzeby magazynu danych. Aby dowiedzieć się więcej na temat usługi Azure SQL Data Warehouse, przejdź do samouczka na temat ładowania danych.
+Teraz już wiesz, jak skalować zasoby obliczeniowe na potrzeby magazynu danych. Aby dowiedzieć się więcej o usłudze Azure Synapse, przejdź do samouczka dotyczącego ładowania danych.
 
 > [!div class="nextstepaction"]
->[Ładowanie danych do SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)
+>[Ładowanie danych do usługi Azure Synapse Analytics](load-data-from-azure-blob-storage-using-polybase.md)

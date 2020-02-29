@@ -3,7 +3,7 @@ title: Log Analytics rozszerzenie maszyny wirtualnej dla systemu Windows
 description: Wdróż agenta Log Analytics na maszynie wirtualnej z systemem Windows przy użyciu rozszerzenia maszyny wirtualnej.
 services: virtual-machines-windows
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/30/2020
 ms.author: akjosh
-ms.openlocfilehash: 85b97f31e77736603bd0dc7003d4dbfb91a694dc
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: a0b5f45ba993033a9f56ee6b078193677b1c5aad
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470704"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191813"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics rozszerzenie maszyny wirtualnej dla systemu Windows
 

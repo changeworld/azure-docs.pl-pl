@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 02/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f250d4593c8dac8007590245e1b774b95d8fa786
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: bc76f8edc8520ca50cd4c9527b037d99d24ce63c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767946"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190504"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Wymagania wstępne dotyczące Azure AD Connect
 Ten temat zawiera opis wymagań wstępnych i wymagania sprzętowe Azure AD Connect.
@@ -31,7 +31,7 @@ Przed zainstalowaniem Azure AD Connect istnieje kilka rzeczy, które są potrzeb
 
 ### <a name="azure-ad"></a>Azure AD
 * Dzierżawa usługi Azure AD. Otrzymujesz jedną z [bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/). Aby zarządzać Azure AD Connect, można użyć jednego z następujących portalów:
-  * [Witryny Azure portal](https://portal.azure.com).
+  * [Azure Portal](https://portal.azure.com).
   * [Portal Office](https://portal.office.com).  
 * [Dodaj i sprawdź domenę](../active-directory-domains-add-azure-portal.md) , która ma być używana w usłudze Azure AD. Jeśli na przykład zamierzasz używać contoso.com dla użytkowników, upewnij się, że ta domena została zweryfikowana i nie tylko używasz domyślnej domeny contoso.onmicrosoft.com.
 * Dzierżawa usługi Azure AD zezwala na używanie domyślnych obiektów 50 000. Po zweryfikowaniu domeny limit zostaje zwiększony do obiektów 300 tysięcy pozycji. Jeśli potrzebujesz jeszcze więcej obiektów w usłudze Azure AD, musisz otworzyć zgłoszenie do pomocy technicznej, aby limit został jeszcze bardziej zwiększony. Jeśli potrzebujesz więcej niż 500 000 obiektów, potrzebna jest licencja, taka jak Office 365, Azure AD — wersja Podstawowa, Azure AD — wersja Premium lub Enterprise Mobility i Security.
@@ -86,8 +86,8 @@ Aby dowiedzieć się więcej, zobacz:
 
 ### <a name="accounts"></a>Konta
 * Konto administratora globalnego usługi Azure AD dla dzierżawy usługi Azure AD, z którą chcesz przeprowadzić integrację. To konto musi być **kontem szkoły lub organizacji** i nie może być **konto Microsoft**.
-* W przypadku korzystania z ustawień ekspresowych lub uaktualniania z narzędzia DirSync wymagane jest posiadanie konta administratora przedsiębiorstwa dla Active Directory lokalnego.
-* [Konta w Active Directory](reference-connect-accounts-permissions.md) , jeśli używasz ścieżki instalacji ustawień niestandardowych lub konta administratora przedsiębiorstwa dla Active Directory lokalnych.
+* W przypadku korzystania z [ustawień ekspresowych](reference-connect-accounts-permissions.md#express-settings-installation) lub uaktualniania z narzędzia DirSync wymagane jest posiadanie konta administratora przedsiębiorstwa dla Active Directory lokalnego.
+* Jeśli używasz ścieżki instalacji ustawień niestandardowych, masz więcej opcji, zobacz [konta w Active Directory](reference-connect-accounts-permissions.md#custom-installation-settings)
 
 ### <a name="connectivity"></a>Łączność
 * Serwer Azure AD Connect wymaga rozpoznawania nazw DNS dla intranetu i Internetu. Serwer DNS musi być w stanie rozpoznawać nazwy zarówno w lokalnym Active Directory, jak i w punktach końcowych usługi Azure AD.

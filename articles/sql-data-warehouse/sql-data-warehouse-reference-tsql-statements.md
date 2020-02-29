@@ -1,6 +1,6 @@
 ---
 title: Instrukcje języka T-SQL
-description: Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w Azure SQL Data Warehouse.
+description: Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w usłudze SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 861675941693697a20da189edebe33d91918782c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: d37e1b727829505940b77c7a82293f90050a87c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685519"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198358"
 ---
-# <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Instrukcje języka T-SQL obsługiwane w Azure SQL Data Warehouse
-Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w Azure SQL Data Warehouse.
+# <a name="t-sql-statements-supported-in-sql-analytics"></a>Instrukcje języka T-SQL obsługiwane w analizie SQL
+Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w usłudze SQL Analytics.
 
 ## <a name="data-definition-language-ddl-statements"></a>Instrukcje języka definicji danych (DDL)
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
@@ -70,11 +70,11 @@ Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w Azur
 * [POLECENIE DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
 * [POLECENIE DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
 * [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
-* [POLECENIE DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest)
+* [PDW_SHOWMATERIALIZEDVIEWOVERHEAD DBCC](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest)
 * [DBCC SHOWRESULTCACHESPACEUSED](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql) (wersja zapoznawcza)
-* [POLECENIE DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
-* [POLECENIE DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
-* [POLECENIE DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
+* [PDW_SHOWPARTITIONSTATS DBCC](https://msdn.microsoft.com/library/mt204013.aspx)
+* [PDW_SHOWSPACEUSED DBCC](https://msdn.microsoft.com/library/mt204028.aspx)
+* [SHOW_STATISTICS DBCC](https://msdn.microsoft.com/library/mt204043.aspx)
 
 ## <a name="query-statements"></a>Instrukcje zapytania
 * [ZAZNACZENIA](https://msdn.microsoft.com/library/ms189499.aspx)
@@ -120,4 +120,4 @@ Linki do dokumentacji dotyczącej instrukcji języka T-SQL obsługiwanych w Azur
 * [OTWÓRZ KLUCZ GŁÓWNY](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji, zobacz [elementy języka T-SQL w Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md)i [widoki systemowe w programie Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md).
+Aby uzyskać więcej informacji, zobacz [elementy języka T-SQL w usłudze SQL Analytics](sql-data-warehouse-reference-tsql-language-elements.md)i [widoki systemowe w usłudze SQL Analytics](sql-data-warehouse-reference-tsql-system-views.md).

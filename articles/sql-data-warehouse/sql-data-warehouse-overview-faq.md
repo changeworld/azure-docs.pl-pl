@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1a4fbfa87756914f169bb20387702cac69d8736d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: f7cac849caf478850707eb0a71b2369dcfa49520
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759486"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197185"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (dawniej SQL DW) — często zadawane pytania
 
@@ -23,9 +23,9 @@ ms.locfileid: "76759486"
 
 PYTANIE: Co to jest usługa Azure Synapse?
 
-A. Azure Synapse to nieograniczona Usługa analityczna, która łączy magazyn danych i analizę danych Big Data. Zapewnia to swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, korzystając z niezależnych od serwera zasobów na żądanie lub aprowizacji. Usługa Azure Synapse łączy te dwa światy w ujednolicone środowisko umożliwiające pozyskiwanie, przygotowywanie i udostępnianie danych oraz zarządzanie nimi na potrzeby natychmiastowej analizy biznesowej oraz uczenia maszynowego. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Azure Synapse to nieograniczona Usługa analityczna, która łączy magazyn danych i analizę danych Big Data. Zapewnia to swobodę wykonywania zapytań dotyczących danych na Twoich warunkach, korzystając z niezależnych od serwera zasobów na żądanie lub aprowizacji. Usługa Azure Synapse udostępnia te dwa światy wraz z ujednoliconym doświadczeniem do pozyskiwania, przygotowywania, zarządzania i obsługi danych w celu natychmiastowej analizy biznesowej i uczenia maszynowego. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
-PYTANIE: Co się stało z usługą Azure SQL Data Warehouse?
+PYTANIE: Co się stało z Azure SQL Data Warehouse?
 
 A. Usługa Azure Synapse jest rozwijająca się Azure SQL Data Warehouse (SQL DW). Ten sam wiodący w branży magazyn danych jest poświęcony na cały nowy poziom wydajności i możliwości. Możesz nadal uruchamiać istniejące obciążenia magazynu danych w środowisku produkcyjnym za pomocą usługi Azure Synapse i automatycznie korzystać z nowych funkcji, które są dostępne w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
@@ -47,7 +47,7 @@ A. Odwiedź stronę [zgodności firmy Microsoft](https://www.microsoft.com/trust
 
 PYTANIE: Czy mogę połączyć Power BI?
 
-A. Tak. Mimo że Power BI obsługuje bezpośrednie zapytania za pomocą usługi Azure Synapse, nie jest ona przeznaczona dla dużej liczby użytkowników ani danych w czasie rzeczywistym. Aby zwiększyć wydajność Power BI, należy rozważyć użycie Power BI na platformie Azure Analysis Services lub Analysis Service IaaS.
+A. Tak! Mimo że Power BI obsługuje bezpośrednie zapytania za pomocą usługi Azure Synapse, nie jest ona przeznaczona dla dużej liczby użytkowników ani danych w czasie rzeczywistym. Aby zwiększyć wydajność Power BI, należy rozważyć użycie Power BI na platformie Azure Analysis Services lub Analysis Service IaaS.
 
 PYTANIE: Co to są limity pojemności usługi SQL Analytics?
 
@@ -88,7 +88,7 @@ PYTANIE: Czy usługa SQL Analytics obsługuje interfejsy API REST?
 A. Tak. Większość funkcji REST, które mogą być używane z SQL Database, jest również dostępna w usłudze SQL Analytics. Informacje o interfejsie API można znaleźć na stronach dokumentacji REST lub w [witrynie MSDN](https://msdn.microsoft.com/library/azure/mt163685.aspx).
 
 
-## <a name="loading"></a>Ładowanie
+## <a name="loading"></a>Ładowaniu
 
 PYTANIE: Jakie sterowniki klientów są obsługiwane?
 
@@ -108,7 +108,7 @@ Odp.: nie, baza nie działa tylko z składnikami magazynu.
 
 P: Czy można nawiązać połączenie z usługą HDI?
 
-Odp.: HDI może użyć ADLS lub WASB jako warstwy systemu plików HDFS. Jeśli masz albo jako warstwę systemu plików HDFS, możesz załadować te dane do programu SQL DW. Nie można jednak generować obliczeń przekazywania do wystąpienia HDI. 
+Odp.: HDI może użyć ADLS lub WASB jako warstwy systemu plików HDFS. Jeśli masz albo jako warstwę systemu plików HDFS, możesz załadować te dane do magazynu danych usługi SQL Analytics. Nie można jednak generować obliczeń przekazywania do wystąpienia HDI. 
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat usługi Azure Synapse jako całości, zobacz naszą stronę z [omówieniem](sql-data-warehouse-overview-faq.md) .

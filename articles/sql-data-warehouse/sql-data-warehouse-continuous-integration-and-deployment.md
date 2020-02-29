@@ -1,25 +1,26 @@
 ---
 title: Ciągła integracja i ciągłe wdrażanie
-description: Środowisko DevOps Database klasy korporacyjnej dla SQL Data Warehouse z wbudowaną obsługą ciągłej integracji i wdrażania przy użyciu Azure Pipelines.
+description: Baza danych klasy korporacyjnej DevOps środowisko umożliwiające magazynowanie danych dzięki wbudowanej obsłudze ciągłej integracji i wdrażania przy użyciu Azure Pipelines.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: integration
-ms.date: 08/28/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8178e5ff9ff4816ddd422d3c45cfc0e1e0b3d41
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: cb28afc84c423c5c5321a8f948e82f82031888a0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712981"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195944"
 ---
-# <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Ciągła integracja i wdrażanie dla Azure SQL Data Warehouse
+# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Ciągła integracja i wdrażanie na potrzeby magazynowania danych
 
-W tym prostym samouczku przedstawiono sposób integrowania projektu bazy danych SQL Server Data Tools (SSDT) z usługą Azure DevOps i korzystania z Azure Pipelines w celu skonfigurowania ciągłej integracji i wdrażania. Ten samouczek to drugi krok tworzenia potoku ciągłej integracji i wdrażania przy użyciu SQL Data Warehouse. 
+W tym prostym samouczku przedstawiono sposób integrowania projektu bazy danych SQL Server Data Tools (SSDT) z usługą Azure DevOps i korzystania z Azure Pipelines w celu skonfigurowania ciągłej integracji i wdrażania. Ten samouczek to drugi krok tworzenia potoku ciągłej integracji i wdrażania na potrzeby magazynowania danych. 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -61,7 +62,7 @@ W tym momencie istnieje proste środowisko, w którym każde ewidencjonowanie ga
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Eksploruj [Azure SQL Data Warehouse architekturę](massively-parallel-processing-mpp-architecture.md)
-- Szybkie [tworzenie SQL Data Warehouse](create-data-warehouse-portal.md)
+- Eksplorowanie [architektury MPP usługi SQL Analytics](massively-parallel-processing-mpp-architecture.md)
+- Szybkie [Tworzenie puli SQL](create-data-warehouse-portal.md)
 - [Ładowanie danych przykładowych](sql-data-warehouse-load-sample-databases.md)
 - Eksploruj [wideo](/azure/sql-data-warehouse/sql-data-warehouse-videos)

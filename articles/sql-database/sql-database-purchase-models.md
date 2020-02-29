@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 20c93d214195f8fe389f4982e1d8b10998c7057d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587298"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192391"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Wybierz między rdzeń wirtualny i modelami zakupów jednostek DTU
 
@@ -142,6 +142,20 @@ Wartości wejściowe dla tej formuły można uzyskać z [tabeli sys. dm_db_resou
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Obciążenia, które korzystają z elastycznej puli zasobów
 
 Pule są dostosowane do baz danych z niską ilością wykorzystania zasobów i stosunkowo nieczęstego wzrostu użycia. Aby uzyskać więcej informacji, zobacz [kiedy należy wziąć pod uwagę SQL Database puli elastycznej?](sql-database-elastic-pool.md).
+
+### <a name="hardware-generations-in-the-dtu-based-purchasing-model"></a>Generacja sprzętowa w modelu zakupu opartego na jednostkach DTU
+
+W modelu zakupu opartego na jednostkach DTU klienci nie mogą wybrać generowania sprzętu używanego dla swoich baz danych. Chociaż dana baza danych jest zwykle w określonym generowaniu sprzętu przez długi czas (zazwyczaj przez wiele miesięcy), istnieją pewne zdarzenia, które mogą spowodować przeniesienie bazy danych do innej generacji sprzętowej.
+
+Na przykład baza danych może zostać przeniesiona na inną generację sprzętu w przypadku skalowania w górę lub w dół do innego celu usługi, lub jeśli Bieżąca infrastruktura w centrum danych zbliża się do limitów pojemności lub jeśli aktualnie używany sprzęt jest zlikwidowany z powodu jego końca życia.
+
+Jeśli baza danych jest przenoszona na inny sprzęt, wydajność obciążeń może ulec zmianie. Model DTU gwarantuje, że przepływność i czas odpowiedzi dla obciążenia [porównawczego jednostki DTU](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) pozostaną zasadniczo identyczne, ponieważ baza danych przejdzie do innej generacji sprzętu, o ile jej cel usługi (liczba DTU) pozostaje taki sam. 
+
+Jednak w szerokim spektrum obciążeń klientów działających w Azure SQL Database, wpływ używania innego sprzętu dla tego samego celu usługi może być bardziej widoczny. Różne obciążenia będą korzystać z różnych konfiguracji sprzętowych i funkcji. W związku z tym, w przypadku obciążeń innych niż test porównawczy jednostek DTU, można zobaczyć różnice wydajności, jeśli baza danych przejdzie z jednej generacji sprzętowej na inną.
+
+Na przykład aplikacja, która jest wrażliwa na opóźnienie sieci, może mieć lepszą wydajność na 5 rdzeń sprzęcie a obliczenia z powodu użycia przyspieszonej sieci w 5 rdzeń, ale Aplikacja korzystająca z intensywnie odczytywania we/wy może zobaczyć lepszą wydajność na obliczenia sprzęt a 5 rdzeń z powodu większa ilość pamięci na rdzeń w obliczenia.
+
+Klienci korzystający z obciążeń, które są wrażliwe na zmiany sprzętu, lub Klienci, którzy chcą kontrolować wybór generacji sprzętu dla swojej bazy danych, mogą używać modelu [rdzeń wirtualny](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) do wybierania preferowanych generacji sprzętu podczas tworzenia i skalowania bazy danych. W modelu rdzeń wirtualny, limity zasobów każdego celu usługi na każdym generowaniu sprzętu są udokumentowane w przypadku [pojedynczych baz danych](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) i [pul elastycznych](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools). Aby uzyskać więcej informacji o generacjach sprzętowych w modelu rdzeń wirtualny, zobacz [generacja sprzętu](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
 
 ## <a name="frequently-asked-questions-faqs"></a>Często zadawane pytania
 

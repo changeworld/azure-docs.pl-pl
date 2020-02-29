@@ -1,22 +1,23 @@
 ---
 title: Analizowanie danych przy użyciu usługi Azure Machine Learning
-description: Używając usługi Azure Machine Learning, można utworzyć predykcyjny model uczenia maszynowego korzystający z danych przechowywanych w usłudze Azure SQL Data Warehouse.
+description: Użyj Azure Machine Learning, aby utworzyć predykcyjny model uczenia maszynowego na podstawie danych przechowywanych w usłudze Azure Synapse.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: integration
-ms.date: 03/22/2019
+ms.date: 02/05/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 892d4642d700949d1d1169c69926021c751cef67
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+tag: azure-Synapse
+ms.openlocfilehash: f6765fdbb65f62bb790d1e8781512db572170b10
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721289"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195893"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analizowanie danych przy użyciu usługi Azure Machine Learning
 > [!div class="op_single_selector"]
@@ -28,7 +29,7 @@ ms.locfileid: "76721289"
 > 
 > 
 
-Ten samouczek przedstawia sposób tworzenia predykcyjnego modelu uczenia maszynowego przy użyciu usługi Azure Machine Learning korzystającej z danych przechowywanych w usłudze Azure SQL Data Warehouse. W szczególności ten samouczek omawia tworzenie ukierunkowanej kampanii marketingowej dla sklepu rowerowego Adventure Works przez prognozowanie prawdopodobieństwa zakupu roweru przez klienta.
+Ten samouczek używa Azure Machine Learning do tworzenia predykcyjnego modelu uczenia maszynowego na podstawie danych przechowywanych w usłudze Azure Synapse. W szczególności ten samouczek omawia tworzenie ukierunkowanej kampanii marketingowej dla sklepu rowerowego Adventure Works przez prognozowanie prawdopodobieństwa zakupu roweru przez klienta.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
 > 
@@ -37,7 +38,7 @@ Ten samouczek przedstawia sposób tworzenia predykcyjnego modelu uczenia maszyno
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania kroków opisanych w tym samouczku potrzebne są:
 
-* Baza danych usługi SQL Data Warehouse. ze wstępnie załadowanymi danymi z bazy danych AdventureWorksDW. Aby dowiedzieć się, jak załadować dane przykładowe, zobacz artykuł [Tworzenie bazy danych w usłudze SQL Data Warehouse](create-data-warehouse-portal.md). Jeśli masz już magazyn danych, ale bez przykładowych danych, możesz [ręcznie załadować przykładowe dane](sql-data-warehouse-load-sample-databases.md).
+* Pula SQL wstępnie załadowana z przykładowymi danymi AdventureWorksDW. Aby to umożliwić, zobacz [Tworzenie puli SQL](create-data-warehouse-portal.md) i wybieranie do załadowania przykładowych danych. Jeśli masz już magazyn danych, ale bez przykładowych danych, możesz [ręcznie załadować przykładowe dane](sql-data-warehouse-load-sample-databases.md).
 
 ## <a name="1-get-the-data"></a>1. Pobierz dane
 Dane znajdują się w widoku dbo.vTargetMail w bazie danych AdventureWorksDW. Aby odczytać te dane:
@@ -46,7 +47,7 @@ Dane znajdują się w widoku dbo.vTargetMail w bazie danych AdventureWorksDW. Ab
 2. Kliknij pozycję **+ Nowy** w lewym dolnym rogu ekranu, a następnie wybierz pozycję **pusty eksperyment**.
 3. Wprowadź nazwę swojego eksperymentu: Targeted Marketing (Marketing docelowy).
 4. Przeciągnij moduł **Importuj dane** w obszarze **dane wejściowe i wyjściowe** z okienka moduły do kanwy.
-5. Określ szczegóły bazy danych usługi SQL Data Warehouse w okienku Properties (Właściwości).
+5. Określ szczegóły puli SQL w okienku właściwości.
 6. Określ **zapytanie** do bazy danych, aby odczytać potrzebne dane.
 
 ```sql
@@ -128,7 +129,7 @@ Zostaną wyświetlone dwie kolumny dodane do zestawu danych testowych.
 * Scored Probabilities (Sklasyfikowane prawdopodobieństwo): prawdopodobieństwo, że klient jest nabywcą roweru.
 * Scored Labels (Sklasyfikowane etykiety): klasyfikacja dokonana przez model — nabywca roweru (1) lub nie (0). Ustawiony próg prawdopodobieństwa etykietowania wynosi 50% i można go dostosować.
 
-Porównując wartości w kolumnach BikeBuyer (Nabywca roweru) (rzeczywiste) oraz Scored Labels (Sklasyfikowane etykiety) (prognozowane), można określić prawidłowość działania modelu. Następnie możesz użyć tego modelu, aby utworzyć prognozy dla nowych klientów i opublikować ten model jako usługę sieci Web lub zapisać wyniki z powrotem do SQL Data Warehouse.
+Porównując wartości w kolumnach BikeBuyer (Nabywca roweru) (rzeczywiste) oraz Scored Labels (Sklasyfikowane etykiety) (prognozowane), można określić prawidłowość działania modelu. Następnie możesz użyć tego modelu, aby dokonać prognoz dla nowych klientów i opublikować ten model jako usługę sieci Web lub zapisać wyniki z powrotem do usługi Azure Synapse.
 
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej o tworzeniu predykcyjnych modeli uczenia maszynowego, zapoznaj się z artykułem [Wprowadzenie do usługi Machine Learning na platformie Azure](https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/).

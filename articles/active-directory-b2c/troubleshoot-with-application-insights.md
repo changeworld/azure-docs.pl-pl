@@ -3,20 +3,20 @@ title: Rozwiązywanie problemów z zasadami niestandardowymi za pomocą Applicat
 titleSuffix: Azure AD B2C
 description: Jak skonfigurować Application Insights do śledzenia wykonywania zasad niestandardowych.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3aeef1614f22563e0fd348c5bc6ae7ff1e7b0b03
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 403dbe6106cb7a1d277ba672112d2bc45dbc2987
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848150"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186271"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Zbieranie dzienników Azure Active Directory B2C z Application Insights
 
@@ -31,7 +31,7 @@ Szczegółowe dzienniki działań opisane tutaj należy włączyć **tylko** pod
 
 Jeśli jeszcze tego nie masz, Utwórz wystąpienie Application Insights w subskrypcji.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog, który zawiera subskrypcję platformy Azure (nie katalog Azure AD B2C).
 1. Wybierz pozycję **Utwórz zasób** w menu nawigacji po lewej stronie.
 1. Wyszukaj i wybierz pozycję **Application Insights**, a następnie wybierz pozycję **Utwórz**.
@@ -61,7 +61,7 @@ Jeśli jeszcze tego nie masz, Utwórz wystąpienie Application Insights w subskr
     * `ClientEnabled="true"` wysyła skrypt po stronie klienta ApplicationInsights na potrzeby śledzenia widoku strony i błędów po stronie klienta. Można je wyświetlić w tabeli **browserTimings** w portalu Application Insights. Ustawienie `ClientEnabled= "true"`powoduje dodanie Application Insights do skryptu strony, a następnie uzyskanie chronometrażu obciążeń stron i wywołań AJAX, liczników, szczegółów wyjątków przeglądarki i błędów AJAX oraz liczby użytkowników i sesji. To pole jest **opcjonalne**i domyślnie jest ustawione na `false`.
     * `ServerEnabled="true"` wysyła istniejący kod JSON UserJourneyRecorder jako zdarzenie niestandardowe do Application Insights.
 
-    Przykład:
+    Na przykład:
 
     ```XML
     <TrustFrameworkPolicy

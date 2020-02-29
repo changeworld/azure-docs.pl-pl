@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 37055d9b59d49091261109e3553f99bcc03d8e14
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 48c28831d1fbbfc4fe78ebe12e5a158a8259cf44
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164580"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190300"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Instrukcje: Włączanie logowania jednokrotnego dla aplikacji w systemie Android przy użyciu biblioteki ADAL
 
@@ -60,7 +60,7 @@ Jeśli na urządzeniu jest zainstalowany zgodny Broker, taki jak aplikacja Micro
 
 #### <a name="how-microsoft-ensures-the-application-is-valid"></a>Jak firma Microsoft gwarantuje, że aplikacja jest ważna
 
-Konieczność zapewnienia tożsamości wywołania aplikacji Broker jest kluczowy dla zabezpieczeń podanych w przypadku logowania przy użyciu pomocy brokera. Systemy iOS i Android nie wymuszają unikatowych identyfikatorów, które są prawidłowe tylko dla danej aplikacji, więc złośliwe aplikacje mogą "fałszować" Identyfikator legalnej aplikacji i otrzymać tokeny przeznaczone dla legalnej aplikacji. Aby zapewnić, że firma Microsoft zawsze komunikuje się z właściwą aplikacją w czasie wykonywania, deweloper jest proszony o dostarczenie niestandardowego redirectURI podczas rejestrowania aplikacji w firmie Microsoft. **Jak deweloperzy powinni skierować ten identyfikator URI przekierowania jest szczegółowo opisany poniżej.** Ten niestandardowy redirectURI zawiera odcisk palca certyfikatu aplikacji i jest niepowtarzalny dla aplikacji przez Sklep Google Play. Gdy aplikacja wywołuje brokera, Broker prosi system operacyjny Android o podanie odcisku palca certyfikatu, który wywołał brokera. Broker udostępnia odcisk palca tego certyfikatu firmie Microsoft w wywołaniu systemu tożsamości. Jeśli odcisk palca certyfikatu aplikacji nie jest zgodny z odciskiem palca certyfikatu przekazanego do nas przez dewelopera podczas rejestracji, dostęp zostaje odrzucony do tokenów dla zasobu, którego żąda aplikacja. Ta kontrola zapewnia, że tylko aplikacja zarejestrowana przez dewelopera otrzymuje tokeny.
+Konieczność upewnienia się, że tożsamość aplikacji wywołującej brokera jest kluczowym zabezpieczeniem dostępnym w nazwach logowania obsługiwanych przez brokera. Systemy iOS i Android nie wymuszają unikatowych identyfikatorów, które są prawidłowe tylko dla danej aplikacji, więc złośliwe aplikacje mogą "fałszować" Identyfikator legalnej aplikacji i otrzymać tokeny przeznaczone dla legalnej aplikacji. Aby zapewnić, że firma Microsoft zawsze komunikuje się z właściwą aplikacją w czasie wykonywania, deweloper jest proszony o dostarczenie niestandardowego redirectURI podczas rejestrowania aplikacji w firmie Microsoft. **Jak deweloperzy powinni skierować ten identyfikator URI przekierowania jest szczegółowo opisany poniżej.** Ten niestandardowy redirectURI zawiera odcisk palca certyfikatu aplikacji i jest niepowtarzalny dla aplikacji przez Sklep Google Play. Gdy aplikacja wywołuje brokera, Broker prosi system operacyjny Android o podanie odcisku palca certyfikatu, który wywołał brokera. Broker udostępnia odcisk palca tego certyfikatu firmie Microsoft w wywołaniu systemu tożsamości. Jeśli odcisk palca certyfikatu aplikacji nie jest zgodny z odciskiem palca certyfikatu przekazanego do nas przez dewelopera podczas rejestracji, dostęp zostaje odrzucony do tokenów dla zasobu, którego żąda aplikacja. Ta kontrola zapewnia, że tylko aplikacja zarejestrowana przez dewelopera otrzymuje tokeny.
 
 Obsługiwane przez brokera Logowanie jednokrotne ma następujące zalety:
 

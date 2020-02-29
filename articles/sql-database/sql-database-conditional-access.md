@@ -1,6 +1,6 @@
 ---
 title: Dostęp warunkowy
-description: Dowiedz się, jak skonfigurować dostęp warunkowy dla Azure SQL Database i magazynu danych.
+description: Dowiedz się, jak skonfigurować dostęp warunkowy dla Azure SQL Database i Azure Synapse.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,25 +10,26 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 03/29/2019
-ms.openlocfilehash: 9b8c0dbe03e47d32d8194408663973f07a07b1b9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+tag: azure-synpase
+ms.openlocfilehash: f2431ee7c62079a3691a5ea99e562460df8f9309
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827159"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197576"
 ---
-# <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Dostęp warunkowy (MFA) z Azure SQL Database i magazynem danych  
+# <a name="conditional-access-mfa-with-azure-sql-database-and-azure-synapse-analytics"></a>Dostęp warunkowy (MFA) z usługami Azure SQL Database i Azure Synapse Analytics
 
-[SQL Database](sql-database-technical-overview.md)platformy Azure, [wystąpienia zarządzane](sql-database-managed-instance.md)i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) obsługują dostęp warunkowy do firmy Microsoft. 
+Usługa Azure [SQL Database](sql-database-technical-overview.md), [wystąpienie zarządzane](sql-database-managed-instance.md)i [usługa Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) obsługują dostęp warunkowy do firmy Microsoft. 
 
 > [!NOTE]
-> Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
+> Ten temat ma zastosowanie do programu Azure SQL Server oraz do SQL Database i Azure Synapse, które są tworzone na serwerze Azure SQL. Dla uproszczenia SQL Database jest używany podczas odwoływania się do SQL Database i usługi Azure Synapse.
 
 Poniższe kroki pokazują, jak skonfigurować SQL Database, aby wymusić zasady dostępu warunkowego.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne  
-- Należy skonfigurować SQL Database lub SQL Data Warehouse do obsługi uwierzytelniania Azure Active Directory. Aby zapoznać się z określonymi krokami, zobacz [Konfigurowanie uwierzytelniania Azure Active Directory i zarządzanie nim za pomocą SQL Database lub SQL Data Warehouse](sql-database-aad-authentication-configure.md).  
+- Należy skonfigurować SQL Database lub pulę SQL na platformie Azure Synapse, aby obsługiwały Azure Active Directory uwierzytelnianie. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie uwierzytelniania Azure Active Directory i zarządzanie nim za pomocą SQL Database lub Azure Synapse](sql-database-aad-authentication-configure.md).  
 - W przypadku włączenia uwierzytelniania wieloskładnikowego należy nawiązać połączenie za pomocą obsługiwanego narzędzia, takiego jak najnowszy program SSMS. Aby uzyskać więcej informacji, zobacz [konfigurowanie Azure SQL Database uwierzytelniania wieloskładnikowego dla SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).  
 
 ## <a name="configure-ca-for-azure-sql-dbdw"></a>Konfigurowanie urzędu certyfikacji dla usługi Azure SQL DB/DW  
@@ -44,14 +45,14 @@ Poniższe kroki pokazują, jak skonfigurować SQL Database, aby wymusić zasady 
    Jeśli nie możesz znaleźć **Azure SQL Database** wymienionych na poniższym, trzecim zrzucie ekranu, wykonaj następujące czynności:   
    - Zaloguj się do wystąpienia usługi Azure SQL DB/DW przy użyciu programu SSMS z kontem administratora AAD.  
    - Wykonaj `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`.  
-   - Zaloguj się do usługi AAD i sprawdź, czy Azure SQL Database i magazyn danych są wymienione w aplikacjach w usłudze AAD.  
+   - Zaloguj się w usłudze AAD i sprawdź, czy Azure SQL Database i Azure Synapse są wymienione w aplikacjach w usłudze AAD.  
 
 5. Wybierz pozycję **Kontrola dostępu**, wybierz pozycję **Udziel**, a następnie sprawdź zasady, które chcesz zastosować. W tym przykładzie wybieramy opcję **Wymagaj uwierzytelniania wieloskładnikowego**.  
    ![wybierz pozycję Udziel dostępu](./media/sql-database-conditional-access/grant-access.png)  
 
 ## <a name="summary"></a>Podsumowanie  
 Wybrana aplikacja (Azure SQL Database) umożliwiająca nawiązywanie połączenia z usługą Azure SQL DB/DW przy użyciu Azure AD — wersja Premium, teraz wymusza wybrane zasady dostępu warunkowego, **wymaga uwierzytelniania wieloskładnikowego.**  
-Pytania dotyczące Azure SQL Database i magazynu danych dotyczącego uwierzytelniania wieloskładnikowego, MFAforSQLDB@microsoft.comkontaktów.  
+Pytania dotyczące Azure SQL Database i usługi Azure Synapse w zakresie uwierzytelniania wieloskładnikowego, MFAforSQLDB@microsoft.comkontaktów.  
 
 ## <a name="next-steps"></a>Następne kroki  
 

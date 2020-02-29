@@ -2,26 +2,26 @@
 title: 'Samouczek: udzielanie dostępu do internetowego interfejsu API platformy Node. js z aplikacji klasycznej'
 description: Samouczek dotyczący sposobu używania Active Directory B2C do ochrony interfejsu API sieci Web Node. js i wywoływania go z aplikacji klasycznej platformy .NET.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: a72c45f80d03cda7b176c421cc5498dd16c242ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 59670cda68f54e4c0b20b361f0688e6766acba61
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850041"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183390"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Samouczek — udzielanie dostępu do internetowego interfejsu API platformy Node.js z aplikacji klasycznej przy użyciu usługi Azure Active Directory B2C
 
 W tym samouczku pokazano, jak wywołać interfejs API sieci Web w środowisku Node. js chronionych przez program Azure Active Directory B2C (Azure AD B2C) z aplikacji klasycznej Windows Presentation Foundation (WPF), a także chronić ją przez Azure AD B2C.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Dodawanie aplikacji internetowego interfejsu API
@@ -51,7 +51,7 @@ Aby wywołać chroniony internetowy interfejs API z natywnej aplikacji klienckie
 
 W samouczku wymagań wstępnych zarejestrowano natywną aplikację kliencką o nazwie *nativeapp1*. Poniższe kroki umożliwiają skonfigurowanie natywnej rejestracji aplikacji przy użyciu zakresów interfejsu API, które zostały uwidocznione dla *webapi1* w poprzedniej sekcji. Dzięki temu aplikacja klasyczna może uzyskać token dostępu z Azure AD B2C, z którego korzysta interfejs API sieci Web w celu sprawdzenia i zapewnienia dostępu do zakresu zasobów. W dalszej części tego samouczka konfigurujesz i uruchamiasz zarówno przykład kodu aplikacji klasycznych, jak i interfejsu API sieci Web.
 
-#### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
+#### <a name="applications"></a>[Aplikacje](#tab/applications/)
 
 1. Wybierz pozycję **Aplikacje**, a następnie wybierz pozycję *nativeapp1*.
 1. Wybierz pozycję **Dostęp do interfejsu API**, a następnie wybierz polecenie **Dodaj**.
@@ -59,7 +59,7 @@ W samouczku wymagań wstępnych zarejestrowano natywną aplikację kliencką o n
 1. Z listy rozwijanej **Wybierz zakresy** wybierz zdefiniowane wcześniej zakresy. Na przykład *Demonstracja. odczyt* i *Demonstracja. Write*.
 1. Kliknij przycisk **OK**.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
 
 1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz natywną aplikację kliencką, która powinna mieć dostęp do interfejsu API. Na przykład *nativeapp1*.
 1. W obszarze **Zarządzaj**wybierz pozycję **uprawnienia interfejsu API**.

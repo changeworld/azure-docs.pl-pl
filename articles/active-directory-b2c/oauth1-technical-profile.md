@@ -3,20 +3,20 @@ title: Zdefiniuj profil techniczny OAuth1 w zasadach niestandardowych
 titleSuffix: Azure AD B2C
 description: Zdefiniuj profil techniczny OAuth 1,0 w zasadach niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4f26f180e34ee9c7a0222b0d7f6be95c78de1b4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7f734844859d44e66bddbc2ddd999659e52f9668
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840387"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184081"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny OAuth1 w zasadach niestandardowych Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "76840387"
 
 Azure Active Directory B2C (Azure AD B2C) zapewnia obsługę dostawcy tożsamości [protokołu OAuth 1,0](https://tools.ietf.org/html/rfc5849) . W tym artykule opisano szczegóły dotyczące profilu technicznego dotyczącego współpracy z dostawcą oświadczeń obsługującym ten standardowy protokół. Profil techniczny OAuth1 umożliwia sfederować z dostawcą tożsamości opartym na OAuth1, takim jak Twitter. Federowanie z dostawcą tożsamości umożliwia użytkownikom logowanie się przy użyciu istniejących tożsamości społecznościowych lub firmowych.
 
-## <a name="protocol"></a>Protocol (Protokół)
+## <a name="protocol"></a>Protokół
 
 Atrybut **name** elementu **Protocol** musi mieć wartość `OAuth1`. Na przykład protokół dla profilu technicznego **Twitter-OAUTH1** jest `OAuth1`.
 
@@ -68,13 +68,13 @@ Profil techniczny zwraca również oświadczenia, które nie są zwracane przez 
 
 ## <a name="metadata"></a>Metadane
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| client_id | Tak | Identyfikator aplikacji dostawcy tożsamości. |
+| client_id | Yes | Identyfikator aplikacji dostawcy tożsamości. |
 | ProviderName | Nie | Nazwa dostawcy tożsamości. |
-| request_token_endpoint | Tak | Adres URL punktu końcowego tokenu żądania zgodnie z dokumentem RFC 5849. |
-| authorization_endpoint | Tak | Adres URL punktu końcowego autoryzacji zgodnie z dokumentem RFC 5849. |
-| access_token_endpoint | Tak | Adres URL tokenu dla punktu końcowego w formacie RFC 5849. |
+| request_token_endpoint | Yes | Adres URL punktu końcowego tokenu żądania zgodnie z dokumentem RFC 5849. |
+| authorization_endpoint | Yes | Adres URL punktu końcowego autoryzacji zgodnie z dokumentem RFC 5849. |
+| access_token_endpoint | Yes | Adres URL tokenu dla punktu końcowego w formacie RFC 5849. |
 | ClaimsEndpoint | Nie | Adres URL punktu końcowego informacji o użytkowniku. |
 | ClaimsResponseFormat | Nie | Format odpowiedzi na oświadczenia.|
 
@@ -82,9 +82,9 @@ Profil techniczny zwraca również oświadczenia, które nie są zwracane przez 
 
 Element **CryptographicKeys** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| client_secret | Tak | Klucz tajny klienta aplikacji dostawcy tożsamości.   |
+| client_secret | Yes | Klucz tajny klienta aplikacji dostawcy tożsamości.   |
 
 ## <a name="redirect-uri"></a>Identyfikator URI przekierowania
 

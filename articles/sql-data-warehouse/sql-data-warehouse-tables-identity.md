@@ -1,6 +1,6 @@
 ---
 title: Używanie tożsamości do tworzenia kluczy zastępczych
-description: Zalecenia i przykłady dotyczące używania właściwości IDENTITY do tworzenia kluczy zastępczych w tabelach w Azure SQL Data Warehouse.
+description: Zalecenia i przykłady dotyczące używania właściwości IDENTITY do tworzenia kluczy zastępczych w tabelach w usłudze SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,25 +10,25 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: c29b83b3473b8a4224587195587feacf834f2d72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692469"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199431"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Używanie tożsamości do tworzenia kluczy zastępczych w Azure SQL Data Warehouse
+# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>Używanie tożsamości do tworzenia kluczy zastępczych w usłudze SQL Analytics
 
-Zalecenia i przykłady dotyczące używania właściwości IDENTITY do tworzenia kluczy zastępczych w tabelach w Azure SQL Data Warehouse.
+Zalecenia i przykłady dotyczące używania właściwości IDENTITY do tworzenia kluczy zastępczych w tabelach w usłudze SQL Analytics.
 
 ## <a name="what-is-a-surrogate-key"></a>Co to jest klucz zastępczy
 
-Klucz zastępczy w tabeli jest kolumną o unikatowym identyfikatorze dla każdego wiersza. Klucz nie jest generowany na podstawie danych tabeli. Modele danych, takie jak tworzenie kluczy zastępczych w tabelach, podczas projektowania modeli magazynu danych. Można użyć właściwości IDENTITY do osiągnięcia tego celu po prostu i efektywnie bez wpływu na wydajność ładowania.  
+Klucz zastępczy w tabeli jest kolumną o unikatowym identyfikatorze dla każdego wiersza. Klucz nie jest generowany na podstawie danych tabeli. Modelarze danych, takie jak tworzenie kluczy zastępczych w tabelach, podczas projektowania modeli analitycznych SQL. Można użyć właściwości IDENTITY do osiągnięcia tego celu po prostu i efektywnie bez wpływu na wydajność ładowania.  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Tworzenie tabeli z kolumną tożsamości
 
-Właściwość IDENTITY została zaprojektowana w celu skalowania w poziomie między wszystkimi dystrybucjami w hurtowni danych bez wpływu na wydajność ładowania. W związku z tym implementacja tożsamości jest ukierunkowana na osiągnięcie tych celów.
+Właściwość IDENTITY została zaprojektowana w celu skalowania w poziomie między wszystkimi dystrybucjami w bazie danych SQL Analytics bez wpływu na wydajność ładowania. W związku z tym implementacja tożsamości jest ukierunkowana na osiągnięcie tych celów.
 
 Można zdefiniować tabelę jako mającą właściwość IDENTITY podczas pierwszej tworzenia tabeli przy użyciu składni podobnej do następującej:
 
@@ -50,7 +50,7 @@ W tym pozostałej części tej sekcji przedstawiono wszystkie szczegóły wdroż
 
 ### <a name="allocation-of-values"></a>Alokacja wartości
 
-Właściwość IDENTITY nie gwarantuje kolejności, w której są przyliczane wartości zastępcze, co odzwierciedla zachowanie SQL Server i Azure SQL Database. Jednak w Azure SQL Data Warehouse nie ma więcej informacji na temat braku gwarancji.
+Właściwość IDENTITY nie gwarantuje kolejności, w której są przyliczane wartości zastępcze, co odzwierciedla zachowanie SQL Server i Azure SQL Database. Jednak w analizie SQL nie ma więcej informacji o braku gwarancji.
 
 Poniższy przykład jest ilustracją:
 
@@ -100,7 +100,7 @@ CREATE TABLE jako SELECT (CTAS) ma takie samo zachowanie SQL Server, które zost
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Jawne wstawianie wartości do kolumny tożsamości
 
-SQL Data Warehouse obsługuje składnię `SET IDENTITY_INSERT <your table> ON|OFF`. Możesz użyć tej składni, aby jawnie wstawić wartości do kolumny tożsamość.
+Program SQL Analytics obsługuje składnię `SET IDENTITY_INSERT <your table> ON|OFF`. Możesz użyć tej składni, aby jawnie wstawić wartości do kolumny tożsamość.
 
 Wiele modeli danych, takich jak użycie wstępnie zdefiniowanych wartości ujemnych dla niektórych wierszy w ich wymiarach. Przykładem jest wiersz-1 lub "nieznany element członkowski".
 
@@ -161,13 +161,13 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > Nie jest możliwe używanie `CREATE TABLE AS SELECT` obecnie podczas ładowania danych do tabeli z kolumną tożsamości.
 >
 
-Aby uzyskać więcej informacji na temat ładowania danych, zobacz [projektowanie wyodrębniania, ładowania i przekształcania (ELT) w celu Azure SQL Data Warehouse](design-elt-data-loading.md) i [ładowania najlepszych](guidance-for-loading-data.md)rozwiązań.
+Aby uzyskać więcej informacji na temat ładowania danych, zobacz [projektowanie wyodrębniania, ładowania i przekształcania (ELT) na potrzeby analiz SQL](design-elt-data-loading.md) i [ładowanie najlepszych](guidance-for-loading-data.md)rozwiązań.
 
 ## <a name="system-views"></a>Widoki systemowe
 
-Możesz użyć widoku wykazu [sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) , aby zidentyfikować kolumnę, która ma właściwość Identity.
+Widok wykazu [sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) służy do identyfikowania kolumny zawierającej właściwość Identity.
 
-Aby lepiej zrozumieć schemat bazy danych, w tym przykładzie pokazano, jak zintegrować sys. identity_column ' z innymi widokami wykazu systemu:
+Aby lepiej zrozumieć schemat bazy danych, w tym przykładzie pokazano, jak zintegrować sys. identity_column z innymi widokami wykazu systemu:
 
 ```sql
 SELECT  sm.name
@@ -195,7 +195,7 @@ Nie można użyć właściwości IDENTITY:
 - Gdy kolumna jest również kluczem dystrybucji
 - Gdy tabela jest tabelą zewnętrzną
 
-Następujące powiązane funkcje nie są obsługiwane w SQL Data Warehouse:
+Następujące powiązane funkcje nie są obsługiwane w analizie SQL:
 
 - [TOŻSAMOŚĆ ()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)

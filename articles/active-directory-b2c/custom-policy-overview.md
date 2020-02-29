@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C zasad niestandardowych | Microsoft Docs
 description: Dowiedz się więcej na temat Azure Active Directory B2C zasad niestandardowych.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b1f3bbcba562d126d503920cb7b6787e2ca0025c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847045"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189246"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Zasady niestandardowe w Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ Zasady niestandardowe to pliki konfiguracji, które definiują zachowanie dzier�
 |-|-------------------|-----------------|
 | Użytkownicy docelowi | Wszyscy deweloperzy aplikacji z wiedzą lub bez wiedzy z zakresu tożsamości. | Specjaliści tożsamości, Integratory systemów, konsultanci i wewnętrzne zespoły tożsamości. Są one wygodne w połączeniu z usługą OpenID Connect Connect Flows i wiedzą dostawców tożsamości i uwierzytelniania opartego na oświadczeniach. |
 | Metoda konfiguracji | Azure Portal z interfejsem użytkownika przyjaznym dla użytkownika (UI). | Bezpośrednie edytowanie plików XML i przekazywanie ich do Azure Portal. |
-| Dostosowanie interfejsu użytkownika | Pełne dostosowanie interfejsu użytkownika, w tym HTML, CSS i JavaScript.<br><br>Obsługa wielu języków za pomocą ciągów niestandardowych. | Ten |
+| dostosowanie interfejsu użytkownika | Pełne dostosowanie interfejsu użytkownika, w tym HTML, CSS i JavaScript.<br><br>Obsługa wielu języków za pomocą ciągów niestandardowych. | Ten |
 | Dostosowanie atrybutu | Atrybuty standardowe i niestandardowe. | Ten |
 | Zarządzanie tokenami i sesjami | Token niestandardowy i wiele opcji sesji. | Ten |
 | Dostawcy tożsamości | Wstępnie zdefiniowany dostawca usług lokalnych lub społecznościowych oraz większość OIDC dostawców tożsamości, takich jak Federacja Federacji z dzierżawami Azure Active Directory. | OIDC oparte na standardach, OAUTH i SAML.  Uwierzytelnianie jest również możliwe przy użyciu integracji z interfejsami API REST. |

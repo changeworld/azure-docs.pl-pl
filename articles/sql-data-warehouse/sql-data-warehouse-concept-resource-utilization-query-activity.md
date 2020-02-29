@@ -1,28 +1,28 @@
 ---
 title: Zarządzanie i monitorowanie — aktywność zapytań, wykorzystanie zasobów
-description: Dowiedz się, jakie funkcje są dostępne do monitorowania Azure SQL Data Warehouse i zarządzania nimi. Użyj Azure Portal i dynamicznych widoków zarządzania (widoków DMV), aby zrozumieć aktywność zapytań i wykorzystanie zasobów magazynu danych.
+description: Dowiedz się, jakie funkcje są dostępne, aby zarządzać usługą Azure Synapse Analytics i monitorować ją. Użyj Azure Portal i dynamicznych widoków zarządzania (widoków DMV), aby zrozumieć aktywność zapytań i wykorzystanie zasobów magazynu danych.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: kevin
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 366d170a4caf9ee7428b68d71f910c65356038ff
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 47f142a19ac470fb29e9542941cd94a6b29ce240
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024543"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195927"
 ---
-# <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Monitorowanie działania użycia zasobów i zapytań w Azure SQL Data Warehouse
-Azure SQL Data Warehouse zapewnia rozbudowane środowisko monitorowania w ramach Azure Portal do uzyskiwania szczegółowych informacji o obciążeniu magazynu danych. Azure Portal jest zalecanym narzędziem do monitorowania magazynu danych, ponieważ umożliwia on Konfigurowanie okresów przechowywania, alertów, zaleceń oraz dostosowywalnych wykresów i pulpitów nawigacyjnych na potrzeby metryk i dzienników. Portal umożliwia także integrację z innymi usługami monitorowania platformy Azure, takimi jak Operations Management Suite (OMS) i Azure Monitor (dzienniki), aby zapewnić kompleksowe środowisko monitorowania nie tylko dla magazynu danych, ale również całą analizę platformy Azure Platforma umożliwiająca zintegrowane środowisko monitorowania. W tej dokumentacji opisano, jakie funkcje monitorowania są dostępne, aby zoptymalizować platformę analityczną i zarządzać nią za pomocą SQL Data Warehouse. 
+# <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorowanie działania użycia zasobów i zapytań w usłudze Azure Synapse Analytics
+Usługa Azure Synapse Analytics zapewnia rozbudowane środowisko monitorowania w Azure Portal do uzyskiwania szczegółowych informacji o obciążeniu magazynu danych. Azure Portal jest zalecanym narzędziem do monitorowania magazynu danych, ponieważ umożliwia on Konfigurowanie okresów przechowywania, alertów, zaleceń oraz dostosowywalnych wykresów i pulpitów nawigacyjnych na potrzeby metryk i dzienników. Portal umożliwia także integrację z innymi usługami monitorowania platformy Azure, takimi jak Operations Management Suite (OMS) i Azure Monitor (dzienniki), aby zapewnić kompleksowe środowisko monitorowania nie tylko dla magazynu danych, ale również całą analizę platformy Azure Platforma umożliwiająca zintegrowane środowisko monitorowania. W tej dokumentacji opisano, jakie funkcje monitorowania są dostępne, aby zoptymalizować platformę analityczną i zarządzać nią za pomocą usługi SQL Analytics. 
 
 ## <a name="resource-utilization"></a>Wykorzystanie zasobów 
-Następujące metryki są dostępne w Azure Portal SQL Data Warehouse. Te metryki są [naAzure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).
+Następujące metryki są dostępne w Azure Portal dla usługi SQL Analytics. Te metryki są [naAzure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).
 
 
 | Nazwa metryki             | Opis                                                  | Typ agregacji |
@@ -49,12 +49,12 @@ Zagadnienia, które należy wziąć pod uwagę podczas przeglądania metryk i us
 
 
 ## <a name="query-activity"></a>Działanie zapytania
-W przypadku środowiska programistycznego podczas monitorowania SQL Data Warehouse przy użyciu języka T-SQL Usługa udostępnia zestaw dynamicznych widoków zarządzania (widoków DMV). Te widoki są przydatne podczas aktywnego rozwiązywania problemów i identyfikowania wąskich gardeł wydajności w obciążeniu.
+Aby program programistyczny był monitorowany przy użyciu języka T-SQL, usługa udostępnia zestaw dynamicznych widoków zarządzania (widoków DMV). Te widoki są przydatne podczas aktywnego rozwiązywania problemów i identyfikowania wąskich gardeł wydajności w obciążeniu.
 
-Aby wyświetlić listę widoków DMV, które zawiera SQL Data Warehouse, zapoznaj się z tą [dokumentacją](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs). 
+Aby wyświetlić listę widoków DMV, które zapewnia program SQL Analytics, zapoznaj się z tą [dokumentacją](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs). 
 
-## <a name="metrics-and-diagnostics-logging"></a>Rejestrowanie metryk i diagnostyki
-Wszystkie metryki i dzienniki można eksportować do Azure Monitor, w odniesieniu do składnika [dzienników Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) , i można programowo uzyskać do nich dostęp za pomocą [zapytań dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata). Opóźnienie dziennika dla SQL Data Warehouse wynosi około 10-15 minut. Więcej informacji o czynnikach wpływających na opóźnienia można znaleźć w następującej dokumentacji.
+## <a name="metrics-and-diagnostics-logging"></a>Rejestrowanie metryk i informacji diagnostycznych
+Wszystkie metryki i dzienniki można eksportować do Azure Monitor, w odniesieniu do składnika [dzienników Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) , i można programowo uzyskać do nich dostęp za pomocą [zapytań dzienników](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata). Opóźnienie dziennika dla usługi SQL Analytics wynosi około 10-15 minut. Więcej informacji o czynnikach wpływających na opóźnienia można znaleźć w następującej dokumentacji.
 
 
 ## <a name="next-steps"></a>Następne kroki

@@ -1,6 +1,6 @@
 ---
 title: Transparent Data Encryption (T-SQL)
-description: Transparent Data Encryption (TDE) w SQL Data Warehouse (T-SQL)
+description: Transparent Data Encryption (TDE) w usłudze Azure Synapse Analytics (T-SQL)
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4e7f4f31cd8b899e3fcf79568ea62830313936b9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bd6f40b8389284c1932a2f16a70060cd56e412fb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822604"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195809"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Wprowadzenie do Transparent Data Encryption (TDE)
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "73822604"
 Aby włączyć Transparent Data Encryption (TDE), musisz być administratorem lub członkiem roli dbmanager.
 
 ## <a name="enabling-encryption"></a>Włączanie szyfrowania
-Wykonaj następujące kroki, aby włączyć TDE dla SQL Data Warehouse:
+Wykonaj następujące kroki, aby włączyć TDE:
 
 1. Nawiąż połączenie z bazą danych *Master* na serwerze hostującym bazę danych przy użyciu nazwy logowania będącej administratorem lub członkiem roli **DBManager** w bazie danych Master.
 2. Wykonaj następującą instrukcję, aby zaszyfrować bazę danych.
@@ -41,7 +41,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
 ## <a name="disabling-encryption"></a>Wyłączanie szyfrowania
-Wykonaj następujące kroki, aby wyłączyć TDE dla SQL Data Warehouse:
+Wykonaj następujące kroki, aby wyłączyć TDE:
 
 1. Łączenie się z bazą danych *Master* przy użyciu nazwy logowania będącej administratorem lub członkiem roli **DBManager** w bazie danych Master
 2. Wykonaj następującą instrukcję, aby zaszyfrować bazę danych.
@@ -51,12 +51,12 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
 > [!NOTE]
-> Wstrzymywanie SQL Data Warehouse musi zostać wznowione przed wprowadzeniem zmian w ustawieniach TDE.
+> Przed wprowadzeniem zmian w ustawieniach TDE należy wznowić wstrzymaną pulę SQL.
 > 
 > 
 
 ## <a name="verifying-encryption"></a>Weryfikowanie szyfrowania
-Aby sprawdzić stan szyfrowania SQL Data Warehouse, wykonaj następujące czynności:
+Aby sprawdzić stan szyfrowania, wykonaj następujące czynności:
 
 1. Łączenie się z bazą danych *Master* lub wystąpieniem przy użyciu nazwy logowania będącej administratorem lub członkiem roli **DBManager** w bazie danych Master
 2. Wykonaj następującą instrukcję, aby zaszyfrować bazę danych.

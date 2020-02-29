@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/02/2019
+ms.date: 02/28/2020
 ms.author: juliako
-ms.openlocfilehash: dc3b122ab7f4a243f3a4ecd6f220caa00beb044e
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 2a670c7bce113de8854b33e407c7de2236edd794
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505770"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197865"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji dotyczące przenoszenia z Media Services V2 do wersji v3
 
@@ -77,7 +77,26 @@ Jeśli masz już zainstalowaną usługę wideo na [starszej wersji interfejsów 
 * Dane wyjściowe na żywo są uruchamiane w momencie utworzenia i zatrzymywane podczas usuwania. Programy pracowały inaczej w interfejsach API v2, musiały zostać uruchomione po utworzeniu.
 * Aby uzyskać informacje o zadaniu, należy znać nazwę przekształcenia, w której utworzono zadanie. 
 * W wersji 2 pliki metadanych [danych wejściowych](../previous/media-services-input-metadata-schema.md) i [wyjściowych](../previous/media-services-output-metadata-schema.md) XML są generowane w wyniku zadania kodowania. W wersji 3 format metadanych został zmieniony z XML na JSON. 
+* W Media Services V2 można określić wektor inicjalizacji (IV). W Media Services V3 nie można określić FairPlay IV. Chociaż nie ma to wpływu na klientów korzystających z Media Services w przypadku dostarczania pakietów i licencji, może to być problem w przypadku korzystania z systemu DRM innej firmy w celu dostarczenia licencji FairPlay (Tryb hybrydowy). W takim przypadku ważne jest, aby wiedzieć, że FairPlay IV pochodzi od identyfikatora klucza cbcs i można go pobrać za pomocą tej formuły:
 
+    ```
+    string cbcsIV =  Convert.ToBase64String(HexStringToByteArray(cbcsGuid.ToString().Replace("-", string.Empty)));
+    ```
+
+    with
+
+    ``` 
+    public static byte[] HexStringToByteArray(string hex)
+    {
+        return Enumerable.Range(0, hex.Length)
+            .Where(x => x % 2 == 0)
+            .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
+            .ToArray();
+    }
+    ```
+
+    Aby uzyskać więcej informacji, zobacz [kod C# Azure Functions dla Media Services V3 w trybie hybrydowym dla operacji na żywo i VOD](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/master/LiveAndVodDRMOperationsV3).
+ 
 > [!NOTE]
 > Zapoznaj się z konwencjami nazewnictwa, które są stosowane do [zasobów Media Services v3](media-services-apis-overview.md#naming-conventions). Przejrzyj również [nazwy obiektów BLOB](assets-concept.md#naming).
 

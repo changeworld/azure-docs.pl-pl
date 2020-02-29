@@ -1,26 +1,26 @@
 ---
-title: Ważność obciążeń
-description: Wskazówki dotyczące ustawiania ważności dla zapytań w Azure SQL Data Warehouse.
+title: Znaczenie obciążenia
+description: Wskazówki dotyczące ustawiania ważności zapytań usługi SQL Analytics w usłudze Azure Synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 76a77c1833ae1827f2a6a9b577b3cca51b35a344
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: azure-synapse
+ms.openlocfilehash: de7bb28770bc356514c392c3478fd0e33658f878
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351423"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191777"
 ---
-# <a name="azure-sql-data-warehouse-workload-importance"></a>Ważność obciążenia Azure SQL Data Warehouse
+# <a name="azure-synapse-analytics-workload-importance"></a>Ważność obciążeń usługi Azure Synapse Analytics
 
-W tym artykule wyjaśniono, jak ważność obciążenia może mieć wpływ na kolejność wykonywania żądań SQL Data Warehouse.
+W tym artykule wyjaśniono, jak ważność obciążenia może mieć wpływ na kolejność wykonywania żądań analizy SQL na platformie Azure Synapse.
 
 ## <a name="importance"></a>Znaczenie
 
@@ -36,9 +36,9 @@ Istnieje pięć poziomów ważności: niski, below_normal, normalny, above_norma
 
 Poza podstawowym scenariuszem ważności opisanym powyżej z danymi dotyczącymi sprzedaży i pogody istnieją inne scenariusze, w których ważność obciążenia pomaga spełnić wymagania związane z przetwarzaniem danych i wykonywaniem zapytań.
 
-### <a name="locking"></a>Blokowanie
+### <a name="locking"></a>Blokowan
 
-Dostęp do blokad dla działania odczytu i zapisu jest jednym obszarem naturalnej rywalizacji. Działania takie jak [przełączanie partycji](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) lub [zmiana nazwy obiektu](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) wymagają podniesionych blokad.  Bez znaczenia obciążenia SQL Data Warehouse optymalizuje pod kątem przepływności. Optymalizacja pod kątem przepływności oznacza, że gdy uruchomione i kolejkowane żądania mają takie same potrzeby blokowania i dostępne są zasoby, żądania kolejkowane mogą pomijać żądania o wyższych wymaganiach blokowania, które dotarły wcześniej do kolejki żądań. Po zastosowaniu ważności obciążenia do żądań o wyższych wymaganiach blokowania. Żądanie o wyższej ważności zostanie uruchomione przed żądaniem o niższej ważności.
+Dostęp do blokad dla działania odczytu i zapisu jest jednym obszarem naturalnej rywalizacji. Działania takie jak [przełączanie partycji](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) lub [zmiana nazwy obiektu](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) wymagają podniesionych blokad.  Bez znaczenia obciążenia usługa SQL Analytics w usłudze Azure Synapse optymalizuje się pod kątem przepływności. Optymalizacja pod kątem przepływności oznacza, że gdy uruchomione i kolejkowane żądania mają takie same potrzeby blokowania i dostępne są zasoby, żądania kolejkowane mogą pomijać żądania o wyższych wymaganiach blokowania, które dotarły wcześniej do kolejki żądań. Po zastosowaniu ważności obciążenia do żądań o wyższych wymaganiach blokowania. Żądanie o wyższej ważności zostanie uruchomione przed żądaniem o niższej ważności.
 
 Rozważmy następujący przykład:
 
@@ -50,7 +50,7 @@ Jeśli Q2 i Q3 mają takie same znaczenie i jest nadal wykonywane, Q3 rozpocznie
 
 ### <a name="non-uniform-requests"></a>Niejednorodne żądania
 
-W innym scenariuszu, w którym istotność może pomóc spełnić wymagania dotyczące zapytań, są przesyłane żądania z różnymi klasami zasobów.  Jak wcześniej wspomniano, w tym samym znaczeniu, SQL Data Warehouse optymalizuje pod kątem przepływności. Gdy żądania o rozmiarze mieszanym (takie jak smallrc lub mediumrc) są umieszczane w kolejce, SQL Data Warehouse wybierze najwcześniejsze żądanie, które mieści się w dostępnych zasobach. Jeśli jest stosowana ważność obciążenia, żądanie o najwyższym znaczeniu zostanie zaplanowane dalej.
+W innym scenariuszu, w którym istotność może pomóc spełnić wymagania dotyczące zapytań, są przesyłane żądania z różnymi klasami zasobów.  Jak wcześniej wspomniano, w tym samym znaczeniu usługa SQL Analytics w usłudze Azure Synapse optymalizuje się pod kątem przepływności. Gdy żądania o rozmiarze mieszanym (takie jak smallrc lub mediumrc) są umieszczane w kolejce, program SQL Analytics wybierze najwcześniejsze żądanie, które mieści się w ramach dostępnych zasobów. Jeśli jest stosowana ważność obciążenia, żądanie o najwyższym znaczeniu zostanie zaplanowane dalej.
   
 Rozważmy następujący przykład na DW500c:
 
@@ -63,7 +63,7 @@ Ponieważ Q5 jest mediumrc, wymaga dwóch miejsc współbieżności. Q5 musi cze
 ## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać więcej informacji na temat tworzenia klasyfikatora, zobacz [Tworzenie KLASYFIKATORA obciążenia (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql).  
-- Aby uzyskać więcej informacji na temat klasyfikacji obciążeń SQL Data Warehouse, zobacz [Klasyfikacja obciążeń](sql-data-warehouse-workload-classification.md).  
+- Aby uzyskać więcej informacji na temat klasyfikacji obciążeń, zobacz [Klasyfikacja obciążeń](sql-data-warehouse-workload-classification.md).  
 - Zobacz Przewodnik Szybki Start dotyczący [tworzenia obciążenia](quickstart-create-a-workload-classifier-tsql.md) , aby utworzyć klasyfikator obciążeń. 
 - Zapoznaj się z artykułami z artykułu jak, aby [skonfigurować ważność obciążenia](sql-data-warehouse-how-to-configure-workload-importance.md) oraz jak [zarządzać i monitorować zarządzanie obciążeniami](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
 - Zobacz sekcję [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) , aby wyświetlić zapytania i przypisane znaczenie.

@@ -1,6 +1,6 @@
 ---
-title: Przywracanie usuniętego magazynu danych
-description: Przewodnik dotyczący przywracania usuniętego Azure SQL Data Warehouse.
+title: Przywracanie usuniętej puli SQL
+description: Przewodnik dotyczący przywracania usuniętej puli SQL.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e508eff3b322b49a6dc50d818c8bcccc3e924ff2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 34851203432b7e2daf44e840e45275de76bc3b3a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759675"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196642"
 ---
-# <a name="restore-a-deleted-azure-sql-data-warehouse"></a>Przywracanie usuniętego Azure SQL Data Warehouse
+# <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Przywracanie usuniętej puli SQL przy użyciu usługi Azure Synapse Analytics
 
-W tym artykule dowiesz się, jak przywrócić usunięte SQL Data Warehouse przy użyciu Azure Portal i programu PowerShell:
+Ten artykuł zawiera informacje na temat przywracania bazy danych SQL przy użyciu Azure Portal lub programu PowerShell.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Sprawdź pojemność jednostek DTU.** Każdy SQL Data Warehouse jest obsługiwany przez program SQL Server (na przykład myserver.database.windows.net), który ma domyślny limit przydziału jednostek DTU.  Sprawdź, czy program SQL Server ma wystarczający limit przydziału jednostek DTU dla przywracanej bazy danych. Aby dowiedzieć się, jak obliczyć liczbę jednostek DTU potrzebnych lub aby zażądać większej liczby jednostek DTU, zobacz [żądanie zmiany limitu przydziału jednostek DTU](sql-data-warehouse-get-started-create-support-ticket.md).
+**Sprawdź pojemność jednostek DTU.** Każda pula SQL jest hostowana przez program SQL Server (na przykład myserver.database.windows.net), który ma domyślny limit przydziału jednostek DTU.  Sprawdź, czy program SQL Server ma wystarczający limit przydziału jednostek DTU dla przywracanej bazy danych. Aby dowiedzieć się, jak obliczyć liczbę jednostek DTU potrzebnych lub aby zażądać większej liczby jednostek DTU, zobacz [żądanie zmiany limitu przydziału jednostek DTU](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Przywracanie usuniętego magazynu danych za pomocą programu PowerShell
 
-Aby przywrócić usunięty SQL Data Warehouse, należy użyć polecenia cmdlet [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) . Jeśli odpowiedni serwer logiczny został również usunięty, nie można przywrócić tego magazynu danych.
+Aby przywrócić usuniętą pulę SQL, użyj polecenia cmdlet [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) . Jeśli odpowiedni serwer logiczny został również usunięty, nie można przywrócić tego magazynu danych.
 
 1. Przed rozpoczęciem upewnij się, że [zainstalowano Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 2. Otwórz program PowerShell.
@@ -71,7 +71,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Przywracanie usuniętej bazy danych przy użyciu Azure Portal
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. Przejdź do programu SQL Server, w którym jest hostowany usunięty magazyn danych.
 3. Wybierz ikonę **usunięte bazy danych** w spisie treści.
 
@@ -86,5 +86,5 @@ $RestoredDatabase.status
     ![Określ nazwę bazy danych](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>Następne kroki
-- [Przywracanie istniejącego magazynu danych](sql-data-warehouse-restore-active-paused-dw.md)
-- [Przywracanie z magazynu danych z geograficzną kopią zapasową](sql-data-warehouse-restore-from-geo-backup.md)
+- [Przywracanie istniejącej puli SQL](sql-data-warehouse-restore-active-paused-dw.md)
+- [Przywracanie z puli SQL geograficznej kopii zapasowej](sql-data-warehouse-restore-from-geo-backup.md)

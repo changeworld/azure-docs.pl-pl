@@ -3,20 +3,20 @@ title: Konfigurowanie złożoności haseł przy użyciu zasad niestandardowych
 titleSuffix: Azure AD B2C
 description: Jak skonfigurować wymagania dotyczące złożoności hasła przy użyciu zasad niestandardowych w programie Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d0caa029bd33da499db23f218b2392344c4585ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2de1130e28b5071913e4cf3632c3fe4407597a98
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849073"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189144"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurowanie złożoności haseł przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
@@ -112,7 +112,7 @@ Podczas testowania aplikacji w Azure AD B2C może być przydatne, aby token Azur
 
 ### <a name="upload-the-files"></a>Przekaż pliki
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. Upewnij się, że używasz katalogu, który zawiera dzierżawę Azure AD B2C, wybierając pozycję **katalog i subskrypcja** w górnym menu i wybierając katalog zawierający dzierżawcę.
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz pozycję **platforma obsługi tożsamości**.

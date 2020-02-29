@@ -15,16 +15,16 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3786386f75f4b85fe89562254eab63471de6cb2
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: f09b2fc685881aa8a7bd87b6a855c657af9ef43d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549401"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190317"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Azure AD Connect agenta aprowizacji w chmurze: automatyczne uaktualnianie
 
-Upewnienie się, że Azure Active Directory (Azure AD) łączenie z agentem aprowizacji usług w chmurze jest zawsze aktualne, dzięki funkcji automatycznego uaktualniania. Ta funkcja jest domyślnie włączona i nie można jej wyłączyć.
+Upewnienie się, że Azure Active Directory (Azure AD) łączenie z agentem aprowizacji usług w chmurze jest zawsze aktualne, dzięki funkcji automatycznego uaktualniania.
 
 Agent jest instalowany w tym miejscu: "program files\Azure AD Connecting Agent\AADConnectProvisioningAgent.exe"
 

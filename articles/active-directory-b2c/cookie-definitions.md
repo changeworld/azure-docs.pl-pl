@@ -3,20 +3,20 @@ title: Definicje plików cookie
 titleSuffix: Azure AD B2C
 description: Zawiera definicje plików cookie używanych w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c6e48a663e4d1702851e11bc5124e56c52309d08
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b984b75b3a12606aa0d82c7e7b399d5dce59df33
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908874"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189518"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Definicje plików cookie dla Azure AD B2C
 
@@ -39,7 +39,7 @@ Aby uzyskać więcej informacji, zobacz:
 
 W poniższej tabeli wymieniono pliki cookie używane w Azure AD B2C.
 
-| Nazwa | Domain | Datę | Przeznaczenie |
+| Name (Nazwa) | Domain | Datę | Przeznaczenie |
 | ----------- | ------ | -------------------------- | --------- |
 | `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | Koniec [sesji przeglądarki](session-behavior.md) | Przechowuje dane członkostwa użytkowników między dzierżawcami. Dzierżawy, których użytkownik jest członkiem i poziom członkostwa (administrator lub użytkownik). |
 | `x-ms-cpim-slice` | b2clogin.com, login.microsoftonline.com, domena z marką | Koniec [sesji przeglądarki](session-behavior.md) | Służy do kierowania żądaniami do odpowiedniego wystąpienia produkcyjnego. |

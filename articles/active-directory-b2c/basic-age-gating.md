@@ -2,20 +2,20 @@
 title: Włącz kontroli wieku w Azure Active Directory B2C | Microsoft Docs
 description: Dowiedz się więcej na temat identyfikowania małoletnich za pomocą aplikacji.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1fc63b222fd2f08bb4b5596d58f825c8f6b1910e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 56cbeb8e8fe21f4b39c2f5c6af43e83ae330e5d5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836240"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189977"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Włącz kontroli wieku w Azure Active Directory B2C
 
@@ -33,24 +33,24 @@ Wiek kontroli obejmuje dwie wartości wiekowe: wiek, którego ktoś nie jest ju�
 
 | Kraj/region | Nazwa kraju/regionu | Niewielki wiek zgody | Wiek pomocniczy |
 | -------------- | ------------------- | ----------------- | --------- |
-| Domyślne | Brak | Brak | 18 |
-| AE | Zjednoczone Emiraty Arabskie | Brak | 21 |
+| Domyślne | None | None | 18 |
+| AE | Zjednoczone Emiraty Arabskie | None | 21 |
 | AT | Austria | 14 | 18 |
 | BE | Belgia | 14 | 18 |
 | BG | Bułgaria | 16 | 18 |
-| BH | Bahrajn | Brak | 21 |
-| CM | Kamerun | Brak | 21 |
+| BH | Bahrajn | None | 21 |
+| CM | Kamerun | None | 21 |
 | CY | Cypr | 16 | 18 |
-| CZ | Republika Czeska | 16 | 18 |
-| Niemcy | Niemcy | 16 | 18 |
+| CZ | Czechy | 16 | 18 |
+| DE | Niemcy | 16 | 18 |
 | DK | Dania | 16 | 18 |
 | EE | Estonia | 16 | 18 |
-| EG | Egipt | Brak | 21 |
+| EG | Egipt | None | 21 |
 | ES | Hiszpania | 13 | 18 |
 | PW | Francja | 16 | 18 |
-| GB | Zjednoczone Królestwo | 13 | 18 |
+| GB | Wielka Brytania | 13 | 18 |
 | GR | Grecja | 16 | 18 |
-| Kadry | Chorwacja | 16 | 18 |
+| HR | Chorwacja | 16 | 18 |
 | HU | Węgry | 16 | 18 |
 | IE | Irlandia | 13 | 18 |
 | IT | Włochy | 16 | 18 |
@@ -59,19 +59,19 @@ Wiek kontroli obejmuje dwie wartości wiekowe: wiek, którego ktoś nie jest ju�
 | LU | Luksemburg | 16 | 18 |
 | LV | Łotwa | 16 | 18 |
 | MT | Malta | 16 | 18 |
-| Nie dotyczy | Namibia | Brak | 21 |
+| Nie dotyczy | Namibia | None | 21 |
 | NL | Holandia | 16 | 18 |
 | PL | Polska | 13 | 18 |
 | PT | Portugalia | 16 | 18 |
 | RO | Rumunia | 16 | 18 |
 | SE | Szwecja | 13 | 18 |
-| SG | Singapur | Brak | 21 |
+| SG | Singapur | None | 21 |
 | SI | Słowenia | 16 | 18 |
 | SK | Słowacja | 16 | 18 |
-| BADAŃ | Czad | Brak | 21 |
-| TH | Tajlandia | Brak | 20 |
-| TW | Tajwan | Brak | 20 |
-| Stany Zjednoczone | Stany Zjednoczone | 13 | 18 |
+| BADAŃ | Czad | None | 21 |
+| TH | Tajlandia | None | 20 |
+| TW | Tajwan | None | 20 |
+| USA | Stany Zjednoczone | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Opcje kontroli wieku
 

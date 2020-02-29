@@ -3,20 +3,20 @@ title: 'Samouczek: Dostosowywanie interfejsu użytkownika'
 titleSuffix: Azure AD B2C
 description: Dowiedz się, jak dostosować interfejs użytkownika aplikacji w Azure Active Directory B2C przy użyciu Azure Portal.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1b0ad7049375cb20d2daa0e6f920b680d03530a5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840132"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186254"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Samouczek: Dostosowywanie interfejsu środowiska użytkownika w Azure Active Directory B2C
 
@@ -43,7 +43,7 @@ Tworzysz konto usługi Azure Storage i kontener, a następnie umieścisz podstaw
 
 Chociaż pliki można przechowywać na wiele sposobów, w tym samouczku można je przechowywać w [usłudze Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md).
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Upewnij się, że używasz katalogu, który zawiera subskrypcję platformy Azure. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog, który zawiera twoją subskrypcję. Ten katalog jest inny niż ten, który zawiera dzierżawę usługi Azure B2C.
 3. Wybierz pozycję Wszystkie usługi w lewym górnym rogu Azure Portal, Wyszukaj i wybierz pozycję **konta magazynu**.
 4. Wybierz pozycję **Dodaj**.
@@ -63,7 +63,7 @@ Chociaż pliki można przechowywać na wiele sposobów, w tym samouczku można j
  Azure AD B2C kod w przeglądarce korzysta z nowoczesnego i standardowego podejścia do załadowania niestandardowej zawartości z adresu URL określonego w przepływie użytkownika. Współużytkowanie zasobów między źródłami (CORS) umożliwia zażądanie zasobów na stronie sieci Web z innych domen.
 
 1. Z menu wybierz pozycję **CORS**.
-2. W przypadku **dozwolonych źródeł**wprowadź `https://your-tenant-name.b2clogin.com`. Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C. Na przykład `https://fabrikam.b2clogin.com`. Podczas wprowadzania nazwy dzierżawy należy używać wszystkich małych liter.
+2. W przypadku **dozwolonych źródeł**wprowadź `https://your-tenant-name.b2clogin.com`. Zastąp `your-tenant-name` nazwą dzierżawy Azure AD B2C. Na przykład `https://fabrikam.b2clogin.com`. Podczas wprowadzania nazwy dzierżawy należy używać wszystkich małych liter.
 3. Dla **dozwolonych metod**wybierz `GET`,`PUT`i `OPTIONS`.
 4. Dla **dozwolonych nagłówków**Wprowadź gwiazdkę (*).
 5. W przypadku **widocznych nagłówków**Wprowadź gwiazdkę (*).
@@ -71,7 +71,7 @@ Chociaż pliki można przechowywać na wiele sposobów, w tym samouczku można j
 
     ![Strona konfiguracji funkcji CORS w usłudze Azure Blob Storage w Azure Portal](./media/tutorial-customize-ui/enable-cors.png)
 
-5. Kliknij pozycję **Zapisz**.
+5. Kliknij przycisk **Save** (Zapisz).
 
 ### <a name="create-the-customization-files"></a>Tworzenie plików dostosowania
 

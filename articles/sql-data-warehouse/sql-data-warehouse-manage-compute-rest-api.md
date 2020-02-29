@@ -1,6 +1,6 @@
 ---
 title: Wstrzymywanie, wznawianie i skalowanie przy użyciu interfejsów API REST
-description: Zarządzanie mocą obliczeniową w Azure SQL Data Warehouse za poorednictwem interfejsów API REST.
+description: Zarządzanie mocą obliczeniową w magazynie danych usługi Azure Synapse Analytics za pomocą interfejsów API REST.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: implement
 ms.date: 03/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: f72b3fd1024a68a6f48d2e9e676fc7ca23bf2a4f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 4e3435fdaa505a73abf96b9463b061c623c192ad
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686042"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199397"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Interfejsy API REST dla Azure SQL Data Warehouse
-Interfejsy API REST do zarządzania obliczeniami w Azure SQL Data Warehouse.
+Interfejsy API REST do zarządzania obliczeniami w usłudze Azure Synapse Analytics Data Warehouse.
 
 ## <a name="scale-compute"></a>Skalowanie zasobów obliczeniowych
 Aby zmienić jednostki magazynu danych, należy użyć interfejsu API REST [tworzenia lub aktualizacji bazy danych](/rest/api/sql/databases/createorupdate) . Poniższy przykład ustawia jednostki magazynu danych wartości DW1000 dla bazy danych MySQLDW, która jest hostowana na serwerze Server. Serwer należy do grupy zasobów platformy Azure o nazwie ResourceGroup1.
@@ -69,7 +69,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 ```
 
 ## <a name="set-maintenance-schedule"></a>Ustaw harmonogram konserwacji
-Aby ustawić i zaktualizować harmonogram maintnenance w istniejącym magazynie danych.
+Ustawianie i aktualizowanie harmonogramu konserwacji w istniejącym magazynie danych.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1

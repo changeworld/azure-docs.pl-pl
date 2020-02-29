@@ -2,20 +2,20 @@
 title: Zabezpieczanie interfejsu API usługi Azure API Management przy użyciu Azure Active Directory B2C
 description: Dowiedz się, jak używać tokenów dostępu wystawionych przez Azure Active Directory B2C, aby zabezpieczyć punkt końcowy interfejsu API usługi Azure API Management.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 942c565c885d59a14d64e7ec06beee0354e7c4ca
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 00938d831e70289b24acb599b81016aa6e564d78
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641621"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186934"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Zabezpieczanie interfejsu API usługi Azure API Management przy użyciu Azure AD B2C
 
@@ -37,17 +37,17 @@ W przypadku zabezpieczania interfejsu API w usłudze Azure API Management przy u
 
 Aby uzyskać identyfikator aplikacji, możesz użyć aktualnego środowiska **aplikacji** lub naszego nowego systemu ujednoliconego **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat nowego środowiska](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
+#### <a name="applications"></a>[Aplikacje](#tab/applications/)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. W obszarze **Zarządzaj**wybierz pozycję **aplikacje**.
 1. Zapisz wartość w kolumnie **Identyfikator aplikacji** dla *webapp1* lub innej aplikacji, która została wcześniej utworzona.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
 1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz kartę **posiadane aplikacje** .

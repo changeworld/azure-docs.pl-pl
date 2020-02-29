@@ -1,25 +1,28 @@
 ---
-title: Przesyłanie strumieniowe dzienników aplikacji w chmurze Azure wiosny w czasie rzeczywistym
+title: Przesyłanie strumieniowe dzienników aplikacji Azure Spring Cloud w czasie rzeczywistym
 description: Jak używać przesyłania strumieniowego dzienników do natychmiastowego wyświetlania dzienników aplikacji
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
-ms.openlocfilehash: 27978d367ded7a31d73949cd675ae9e6f8cb887c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: fc208a3542528fb4554a365a02e13c2da3055cf2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264003"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192204"
 ---
-# <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Przesyłanie strumieniowe dzienników aplikacji w chmurze Azure wiosny w czasie rzeczywistym
+# <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Przesyłanie strumieniowe dzienników aplikacji Azure Spring Cloud w czasie rzeczywistym
 Chmura sprężynowa Azure umożliwia przesyłanie strumieniowe dzienników w interfejsie wiersza polecenia platformy Azure w czasie rzeczywistym w celu rozwiązywania problemów. Możesz również [analizować dzienniki i metryki przy użyciu ustawień diagnostycznych](./diagnostic-services.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Zainstaluj [rozszerzenie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) dla chmury wiosennej, minimalną wersję 0.2.0.
 * Wystąpienie **chmurowej platformy Azure** z uruchomioną aplikacją, na przykład [aplikacja Wiosenna w chmurze](./spring-cloud-quickstart-launch-app-cli.md).
+
+> [!NOTE]
+>  Rozszerzenie interfejsu wiersza polecenia ASC zostało zaktualizowane z wersji 0.2.0 do 0.2.1. Ta zmiana ma wpływ na składnię polecenia przesyłania strumieniowego dzienników: `az spring-cloud app log tail`, który został zastąpiony przez: `az spring-cloud app logs`. Polecenie: `az spring-cloud app log tail` będzie przestarzałe w przyszłej wersji. Jeśli używasz wersji 0.2.0, możesz przeprowadzić uaktualnienie do 0.2.1. Najpierw usuń starą wersję za pomocą polecenia: `az extension remove -n spring-cloud`.  Następnie zainstaluj 0.2.1 za pomocą polecenia: `az extension add -n spring-cloud`.
 
 ## <a name="use-cli-to-tail-logs"></a>Używanie interfejsu wiersza polecenia do dzienników końcowych
 
@@ -33,7 +36,7 @@ W poniższych przykładach nazwa grupy zasobów i usługi zostanie pominięta w 
 ### <a name="tail-log-for-app-with-single-instance"></a>Dziennik końcowy aplikacji z pojedynczym wystąpieniem
 Jeśli aplikacja o nazwie auth-Service ma tylko jedno wystąpienie, można wyświetlić dziennik wystąpienia aplikacji za pomocą następującego polecenia:
 ```
-az spring-cloud app log tail -n auth-service
+az spring-cloud app logs -n auth-service
 ```
 Spowoduje to zwrócenie dzienników:
 ```
@@ -66,7 +69,7 @@ auth-service-default-12-75cc4577fc-n25mh  Running   UP
 Następnie można przesłać strumieniowo dzienniki wystąpienia aplikacji z opcją `-i/--instance` opcji:
 
 ```
-az spring-cloud app log tail -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
+az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
 
 Możesz również uzyskać szczegółowe informacje o wystąpieniach aplikacji z Azure Portal.  Po wybraniu **aplikacji** w okienku nawigacji po lewej stronie usługi w chmurze Azure wiosny wybierz pozycję **wystąpienia aplikacji**.
@@ -75,11 +78,11 @@ Możesz również uzyskać szczegółowe informacje o wystąpieniach aplikacji z
 Domyślnie program `az spring-cloud ap log tail` drukuje tylko istniejące dzienniki przesyłane strumieniowo do konsoli aplikacji, a następnie kończy pracę. Jeśli chcesz przesyłać strumieniowo nowe dzienniki, Dodaj polecenie-f (--Obserwuj):  
 
 ```
-az spring-cloud app log tail -n auth-service -f
+az spring-cloud app logs -n auth-service -f
 ``` 
 Aby sprawdzić wszystkie obsługiwane opcje rejestrowania:
 ``` 
-az spring-cloud app log tail -h 
+az spring-cloud app logs -h 
 ```
 
 ## <a name="next-steps"></a>Następne kroki

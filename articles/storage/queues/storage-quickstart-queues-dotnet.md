@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 71a714124cecfc4f985d448371042c8aff092a11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c69aa91596ff203445aa4fa3ccd59001ffe16649
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463840"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197491"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Szybki Start: V12 biblioteki klienta usługi Azure queue storage dla platformy .NET
 
@@ -31,7 +31,7 @@ Użyj biblioteki klienta usługi Azure queue storage V12 dla platformy .NET, aby
 * Usuwanie komunikatów z kolejki
 * Usuwanie kolejki
 
-[Dokumentacja dotycząca interfejsów API](/dotnet/api/azure.storage.queues) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues) [(NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0) [ | ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
+[Dokumentacja dotycząca interfejsów API](/dotnet/api/azure.storage.queues) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues) [(NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0) [ | ](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

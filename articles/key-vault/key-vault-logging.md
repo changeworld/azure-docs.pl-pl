@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 997651887c3c378e4791553d5ff05f585ad169ea
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8915970cd4c70228fad3b49921f4c81d6d90aa72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000667"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195349"
 ---
 # <a name="azure-key-vault-logging"></a>Funkcja rejestrowania usługi Azure Key Vault
 
@@ -42,7 +43,7 @@ Aby uzyskać przegląd informacji na temat Key Vault, zobacz [co to jest Azure K
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Istniejący magazyn kluczy, który był przez Ciebie używany.  
-* Azure PowerShell, minimalna wersja 1.0.0. Aby zainstalować program Azure PowerShell i skojarzyć go z subskrypcją platformy Azure, zobacz [Sposób instalowania i konfigurowania programu Azure PowerShell](/powershell/azure/overview). Jeśli zainstalowano już Azure PowerShell i nie znasz wersji, w konsoli Azure PowerShell wprowadź `$PSVersionTable.PSVersion`wartość.  
+* Azure PowerShell, minimalna wersja 1.0.0. Aby zainstalować program Azure PowerShell i skojarzyć go z subskrypcją platformy Azure, zobacz [Sposób instalowania i konfigurowania programu Azure PowerShell](/powershell/azure/overview). Jeśli zainstalowano już Azure PowerShell i nie znasz wersji, w konsoli Azure PowerShell wprowadź `$PSVersionTable.PSVersion`.  
 * Wystarczająca ilość miejsca w magazynie platformy Azure dla dzienników usługi Key Vault.
 
 ## <a id="connect"></a>Nawiązywanie połączenia z subskrypcją magazynu kluczy
@@ -162,7 +163,7 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json
 ```
 
-Jak widać na tych danych wyjściowych, obiekty BLOB konwencją nazewnictwa: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
+Jak widać na podstawie tych danych wyjściowych, obiekty blob są zgodne z konwencją nazewnictwa: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 Wartości daty i godziny używają czasu UTC.
 
@@ -186,7 +187,7 @@ Potoku tej listy za pomocą elementu **Get-AzStorageBlobContent** w celu pobrani
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-Po uruchomieniu tego drugiego polecenia **/** ogranicznika w nazwach obiektów blob utworzy pełną strukturę folderów w folderze docelowym. Ta struktura będzie używana do pobierania i przechowywania obiektów BLOB jako plików.
+Po uruchomieniu drugiego polecenia ogranicznik **/** w nazwach obiektów BLOB tworzy pełną strukturę folderów w folderze docelowym. Ta struktura będzie używana do pobierania i przechowywania obiektów BLOB jako plików.
 
 Aby selektywnie pobierać obiekty blob, użyj symboli wieloznacznych. Na przykład:
 
@@ -202,7 +203,7 @@ Aby selektywnie pobierać obiekty blob, użyj symboli wieloznacznych. Na przykł
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
-* Jeśli chcesz pobrać wszystkie dzienniki przez miesiąc stycznia 2019, użyj `-Blob '*/year=2019/m=01/*'`:
+* Jeśli chcesz pobrać wszystkie dzienniki na miesiąc stycznia 2019, użyj `-Blob '*/year=2019/m=01/*'`:
 
   ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
@@ -250,25 +251,25 @@ W poniższej tabeli wymieniono nazwy pól i opisy:
 
 | Nazwa pola | Opis |
 | --- | --- |
-| **czas** |Data i godzina w formacie UTC. |
-| **resourceId** |Identyfikator usługi Azure Resource Manager zasobu. W przypadku dzienników Key Vault jest to zawsze identyfikator zasobu Key Vault. |
-| **OperationName** |Nazwa operacji zgodnie z opisem w następnej tabeli. |
+| **pierwszym** |Data i godzina w formacie UTC. |
+| **Identyfikator** |Identyfikator usługi Azure Resource Manager zasobu. W przypadku dzienników Key Vault jest to zawsze identyfikator zasobu Key Vault. |
+| **operationName** |Nazwa operacji zgodnie z opisem w następnej tabeli. |
 | **operationVersion** |Wersja interfejsu API REST żądana przez klienta. |
-| **category** |Typ wyniku. W przypadku dzienników Key Vault **AuditEvent** jest jedną, dostępną wartością. |
-| **resultType** |Wynik żądania interfejsu API REST. |
+| **kategorii** |Typ wyniku. W przypadku dzienników Key Vault **AuditEvent** jest jedną, dostępną wartością. |
+| **Result** |Wynik żądania interfejsu API REST. |
 | **resultSignature** |Stan HTTP. |
 | **resultDescription** |Dodatkowy opis wyniku, jeśli jest dostępny. |
 | **Milisekundach)** |Czas potrzebny do obsłużenia żądania interfejsu API REST podany w milisekundach. Nie obejmuje opóźnienia sieci, więc czas zmierzony po stronie klienta może być niezgodny z tym czasem. |
 | **callerIpAddress** |Adres IP klienta, który wykonał żądanie. |
-| **correlationId** |Opcjonalny identyfikator GUID, który klient może przekazać w celu skorelowania dzienników po stronie klienta z dziennikami po stronie usługi (Key Vault). |
+| **korelacj** |Opcjonalny identyfikator GUID, który klient może przekazać w celu skorelowania dzienników po stronie klienta z dziennikami po stronie usługi (Key Vault). |
 | **Identity** |Tożsamość z tokenu, która została przedstawiona w żądaniu interfejsu API REST. Zwykle jest to "użytkownik", "Nazwa główna usługi" lub kombinacja "użytkownik + appId", jak w przypadku żądania, które wynika z Azure PowerShell polecenia cmdlet. |
-| **Właściwości** |Informacje, które różnią się w zależności od operacji (**OperationName**). W większości przypadków to pole zawiera informacje o kliencie (ciąg agenta użytkownika przekazaną przez klienta), dokładny identyfikator URI żądania interfejsu API REST i kod stanu HTTP. Ponadto, gdy obiekt jest zwracany w wyniku żądania (na przykład **Create** lub **VaultGet**), zawiera również identyfikator URI klucza (as "ID"), identyfikator URI magazynu lub tajny identyfikator URI. |
+| **aœciwoœci** |Informacje, które różnią się w zależności od operacji (**OperationName**). W większości przypadków to pole zawiera informacje o kliencie (ciąg agenta użytkownika przekazaną przez klienta), dokładny identyfikator URI żądania interfejsu API REST i kod stanu HTTP. Ponadto, gdy obiekt jest zwracany w wyniku żądania (na przykład **Create** lub **VaultGet**), zawiera również identyfikator URI klucza (as "ID"), identyfikator URI magazynu lub tajny identyfikator URI. |
 
-Wartości pola **OperationName** są w formacie *ObjectVerb* . Przykład:
+Wartości pola **OperationName** są w formacie *ObjectVerb* . Na przykład:
 
-* Wszystkie operacje magazynu kluczy mają `Vault<action>` format, taki jak `VaultGet` i `VaultCreate`.
-* Wszystkie operacje na kluczach `Key<action>` mają format, taki `KeySign` jak `KeyList`i.
-* Wszystkie operacje tajne mają `Secret<action>` format, taki jak `SecretGet` i `SecretListVersions`.
+* Wszystkie operacje magazynu kluczy mają format `Vault<action>`, na przykład `VaultGet` i `VaultCreate`.
+* Wszystkie operacje na kluczach mają format `Key<action>`, na przykład `KeySign` i `KeyList`.
+* Wszystkie operacje tajne mają format `Secret<action>`, na przykład `SecretGet` i `SecretListVersions`.
 
 W poniższej tabeli wymieniono wartości **OperationName** i odpowiednie polecenia interfejsu API REST:
 

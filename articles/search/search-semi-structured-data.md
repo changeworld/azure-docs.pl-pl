@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: indeksowanie częściowo struturedch danych w obiektach Blob JSON'
+title: 'Samouczek: indeksowanie danych z częściową strukturą w obiektach Blob JSON'
 titleSuffix: Azure Cognitive Search
 description: Dowiedz się, jak indeksować i przeszukiwać rozbudowane obiekty blob w formacie JSON platformy Azure przy użyciu usługi Azure Wyszukiwanie poznawcze API REST i programu Poster.
 manager: nitinme
@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 0603ad1fbecf33e5880fd7f18d35af51795f8e39
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 02/28/2020
+ms.openlocfilehash: f025b3357943014a6d9c6e331c47f019fe94c5bf
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251995"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196947"
 ---
-# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>Samouczek REST: indeksowanie i wyszukiwanie danych częściowo strukturalnych (obiektów BLOB JSON) na platformie Azure Wyszukiwanie poznawcze
+# <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Samouczek: indeksowanie obiektów BLOB JSON z usługi Azure Storage przy użyciu interfejsu REST
 
 Usługa Azure Wyszukiwanie poznawcze umożliwia indeksowanie dokumentów i tablic w formacie JSON w usłudze Azure Blob Storage za pomocą [indeksatora](search-indexer-overview.md) , który wie, jak odczytywać dane z częściową strukturą. Częściowo ustrukturyzowane dane zawierają tagi lub oznaczenia, które dzielą zawartość w ramach danych. Dzieli różnicę między danymi niestrukturalnymi, które muszą być w pełni indeksowane i formalnie uporządkowane dane, które są zgodne z modelem danych, takim jak schemat relacyjnej bazy danych, który można indeksować według poszczególnych pól.
 
-W tym samouczku Użyj [interfejsów API REST usługi Azure wyszukiwanie poznawcze](https://docs.microsoft.com/rest/api/searchservice/) i klienta REST, aby wykonać następujące zadania:
+W tym samouczku jest używany program Poster i [interfejsy API REST wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/) do wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Konfigurowanie źródła danych Wyszukiwanie poznawcze platformy Azure dla kontenera obiektów blob platformy Azure
@@ -27,15 +27,18 @@ W tym samouczku Użyj [interfejsów API REST usługi Azure wyszukiwanie poznawcz
 > * Konfigurowanie i uruchamianie indeksatora w celu odczytu kontenera i wyodrębnienia zawartości możliwej do przeszukania z usługi Azure Blob Storage
 > * Przeszukać utworzony indeks
 
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym przewodniku Szybki Start są używane następujące usługi, narzędzia i dane. 
++ [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Aplikacja klasyczna narzędzia Postman](https://www.getpostman.com/)
++ [Utwórz](search-create-service-portal.md) lub [Znajdź istniejącą usługę wyszukiwania](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
-[Utwórz usługę Azure wyszukiwanie poznawcze](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. W tym samouczku możesz użyć bezpłatnej usługi. 
+> [!Note]
+> Możesz skorzystać z bezpłatnej usługi dla tego samouczka. Bezpłatna usługa wyszukiwania ogranicza do trzech indeksów, trzech indeksatorów i trzech źródeł danych. W ramach tego samouczka tworzony jest jeden element każdego z tych typów. Przed rozpoczęciem upewnij się, że masz miejsce w usłudze, aby akceptować nowe zasoby.
 
-[Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych.
-
-[Publikowanie aplikacji klasycznych](https://www.getpostman.com/) na potrzeby wysyłania żądań do usługi Azure wyszukiwanie poznawcze.
+## <a name="download-files"></a>Pobieranie plików
 
 Plik [Clinical-Trials-JSON. zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) zawiera dane używane w tym samouczku. Pobierz i rozpakuj ten plik do własnego folderu. Dane pochodzą z [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results), konwertowane na format JSON dla tego samouczka.
 
@@ -283,13 +286,27 @@ Jeśli chcesz poeksperymentować, możesz samodzielnie wypróbować kilka zapyta
 
 Parametr `$filter` działa wyłącznie z metadanymi, które podczas tworzenia indeksu zostały oznaczone jako możliwe do filtrowania.
 
+## <a name="reset-and-rerun"></a>Resetowanie i ponowne uruchamianie
+
+W przypadku wczesnych eksperymentalnych etapów tworzenia najlepszym podejściem do iteracji projektu jest usunięcie obiektów z platformy Azure Wyszukiwanie poznawcze i umożliwienie kodowi odbudowania. Nazwy zasobów są unikatowe. Usunięcie obiektu umożliwia jego ponowne utworzenie przy użyciu tej samej nazwy.
+
+Możesz użyć portalu, aby usunąć indeksy, indeksatory i źródła danych. Lub Użyj **Usuń** i podaj adresy URL do każdego obiektu. Następujące polecenie usuwa indeksator.
+
+```http
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2019-05-06
+```
+
+W przypadku pomyślnego usunięcia jest zwracany kod stanu 204.
+
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Najszybszym sposobem oczyszczenia po samouczku jest usunięcie grupy zasobów zawierającej usługę Wyszukiwanie poznawcze platformy Azure. Możesz teraz usunąć tę grupę zasobów, aby trwale usunąć całą jej zawartość. Nazwa grupy zasobów w portalu znajduje się na stronie Przegląd usługi Azure Wyszukiwanie poznawcze.
+Gdy Pracujesz w ramach własnej subskrypcji, na końcu projektu warto usunąć zasoby, które nie są już potrzebne. Zasoby po lewej stronie mogą być kosztowne. Możesz usunąć zasoby pojedynczo lub usunąć grupę zasobów, aby usunąć cały zestaw zasobów.
+
+Zasoby można znaleźć w portalu i zarządzać nimi za pomocą linku wszystkie zasoby lub grupy zasobów w okienku nawigacji po lewej stronie.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Istnieje kilka metod i wiele opcji indeksowania obiektów BLOB JSON. W następnym kroku Przejrzyj i Przetestuj różne opcje, aby zobaczyć, co najlepiej sprawdza się w danym scenariuszu.
+Teraz, gdy znasz już podstawy indeksowania obiektów blob platformy Azure, przyjrzyjmy się bliżej konfiguracji indeksatora.
 
 > [!div class="nextstepaction"]
-> [Jak indeksować obiekty blob JSON przy użyciu usługi Azure Wyszukiwanie poznawcze BLOB Indexer](search-howto-index-json-blobs.md)
+> [Konfigurowanie indeksatora usługi Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)

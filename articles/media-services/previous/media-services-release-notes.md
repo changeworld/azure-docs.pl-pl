@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 91578b5c840f589f3e49737b71e63f4d5e82a126
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a55ef4f814c0d13a6efbeeb8cd9a5565d2869432
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919655"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183299"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji Azure Media Services
 
@@ -232,7 +232,7 @@ Media Services jest teraz aktywny w następujących centrach danych: Brazylia Po
 
 ## <a id="september_changes_15"></a>Wydanie z września 2015
 Media Services teraz oferuje możliwość ochrony zarówno wideo na żądanie, jak i strumieni na żywo za pomocą Widevine modularnej technologii DRM. W celu zapewnienia licencji Widevine można użyć następujących partnerów usług dostarczania:
-* [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/) 
+* [Axinom](https://www.axinom.com) 
 * [EZDRM](https://ezdrm.com/) 
 * [castLabs](https://castlabs.com/company/partners/azure/) 
 
@@ -527,7 +527,7 @@ Poprawki dotyczące problemów znalezionych w zestawie SDK listopad 2012:
 ## <a id="november_changes_12"></a>Wydanie z listopada 2012
 Zmiany wymienione w tej sekcji zostały zaktualizowane w wersji 2012 (wersja 2.0.0.0) zestawu SDK. Te zmiany mogą wymagać zmodyfikowania lub zapisania kodu w wersji zapoznawczej zestawu SDK z czerwca 2012.
 
-* dzierżawców
+* Elementy zawartości
   
     * IAsset. Create (assetname) jest *jedyną* funkcją tworzenia zasobów. IAsset. Create nie jest już przeciążać plików jako części wywołania metody. Użyj IAssetFile do przekazywania.
     * Metoda IAsset. publish oraz wartość wyliczenia AssetState. publish zostały usunięte z zestawu SDK usług. Każdy kod, który opiera się na tej wartości, musi zostać ponownie zapisany.

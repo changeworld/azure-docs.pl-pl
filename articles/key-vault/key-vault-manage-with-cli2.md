@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 51e5c654da95732409c3bbb7acae088d8935a59d
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 642cc42a9853fe0a93a40ca65652b6dc5fcd8d40
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000637"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195281"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia platformy Azure 
 
@@ -93,7 +94,7 @@ az account set --subscription <subscription name or ID>
 
 Aby uzyskać więcej informacji na temat konfigurowania wieloplatformowego interfejsu wiersza polecenia platformy Azure, zobacz [Install Azure CLI](/cli/azure/install-azure-cli).
 
-### <a name="create-a-new-resource-group"></a>Utwórz nową grupę zasobów
+### <a name="create-a-new-resource-group"></a>Utworzenie nowej grupy zasobów
 
 W przypadku korzystania z Azure Resource Manager wszystkie powiązane zasoby są tworzone wewnątrz grupy zasobów. Magazyn kluczy można utworzyć w istniejącej grupie zasobów. Jeśli chcesz użyć nowej grupy zasobów, możesz utworzyć nową.
 
@@ -117,7 +118,7 @@ az provider register -n Microsoft.KeyVault
 
 ### <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
 
-Użyj polecenia `az keyvault create` , aby utworzyć magazyn kluczy. Ten skrypt ma trzy obowiązkowe parametry: nazwę grupy zasobów, nazwę magazynu kluczy i lokalizację geograficzną.
+Użyj `az keyvault create` polecenie, aby utworzyć magazyn kluczy. Ten skrypt ma trzy obowiązkowe parametry: nazwę grupy zasobów, nazwę magazynu kluczy i lokalizację geograficzną.
 
 Aby utworzyć nowy magazyn o nazwie **ContosoKeyVault**, w grupie zasobów **ContosoResourceGroup**, znajdującej się w lokalizacji **Azja Wschodnia** , wpisz: 
 
@@ -127,14 +128,14 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 Dane wyjściowe tego polecenia przedstawiają właściwości utworzonego magazynu kluczy. Dwie najważniejsze właściwości to:
 
-* **name**: W tym przykładzie nazwą jest ContosoKeyVault. Ta nazwa będzie używana do innych poleceń Key Vault.
-* **vaultUri**: W tym przykładzie identyfikator URI to https://contosokeyvault.vault.azure.net. Aplikacje korzystające z magazynu za pomocą jego interfejsu API REST muszą używać tego identyfikatora URI.
+* **Nazwa**: w tym przykładzie nazwa to ContosoKeyVault. Ta nazwa będzie używana do innych poleceń Key Vault.
+* **vaultUri**: w tym przykładzie identyfikator URI jest https://contosokeyvault.vault.azure.net. Aplikacje korzystające z magazynu za pomocą jego interfejsu API REST muszą używać tego identyfikatora URI.
 
 Twoje konto platformy Azure ma teraz uprawnienia do wykonywania dowolnych operacji na tym magazynie kluczy. Od tej pory nikt nie jest autoryzowany.
 
 ## <a name="adding-a-key-secret-or-certificate-to-the-key-vault"></a>Dodawanie klucza, wpisu tajnego lub certyfikatu do magazynu kluczy
 
-Jeśli chcesz, aby Azure Key Vault utworzyć dla Ciebie klucz chroniony oprogramowaniem, użyj `az key create` polecenia.
+Jeśli chcesz, aby Azure Key Vault utworzyć dla Ciebie klucz chroniony oprogramowaniem, użyj polecenia `az key create`.
 
 ```azurecli
 az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --protection software
@@ -154,7 +155,7 @@ Dodaj wpis tajny do magazynu, który jest hasłem o nazwie SQLPassword i ma wart
 az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
-Odwołuje się do tego hasła przy użyciu identyfikatora URI. Użyj **https://ContosoVault.vault.azure.net/secrets/SQLPassword** , aby zawsze pobrać bieżącą wersję, i https://[nazwa usługi magazynu]. magazyn. Azure. NET/Secret/[Secret-Name]/[Secret-Unique-ID], aby uzyskać tę określoną wersję. Na przykład **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** .
+Odwołuje się do tego hasła przy użyciu identyfikatora URI. Użyj **https://ContosoVault.vault.azure.net/secrets/SQLPassword** , aby zawsze pobrać bieżącą wersję, i https://[nazwa usługi magazynu]. magazyn. Azure. NET/Secret/[Secret-Name]/[Secret-Unique-ID], aby uzyskać dostęp do tej konkretnej wersji. Na przykład **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** .
 
 Zaimportuj certyfikat do magazynu przy użyciu pliku PEM lub PFX.
 
@@ -193,7 +194,7 @@ Aplikacje używające magazynu kluczy muszą zostać uwierzytelnione przy użyci
 
 Aby uzyskać token, aplikacja musi przedstawić obie wartości usłudze Azure Active Directory. Sposób, w jaki aplikacja jest skonfigurowana w celu uzyskania tokenu, będzie zależeć od aplikacji. W przypadku [przykładowej aplikacji usługi Key Vault](https://www.microsoft.com/download/details.aspx?id=45343) właściciel aplikacji ustawia te wartości w pliku app.config.
 
-Aby uzyskać szczegółowe instrukcje dotyczące rejestrowania aplikacji z Azure Active Directory należy zapoznać się z artykułami dotyczącymi [integrowania aplikacji z Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md)przy [użyciu portalu do tworzenia aplikacji Azure Active Directory i usługi podmiot zabezpieczeń, który może uzyskać dostęp do zasobów](../active-directory/develop/howto-create-service-principal-portal.md)i [utworzyć jednostkę usługi platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli).
+Aby uzyskać szczegółowe instrukcje dotyczące rejestrowania aplikacji z Azure Active Directory należy zapoznać się z artykułami dotyczącymi [integrowania aplikacji z Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md), [używania portalu do tworzenia aplikacji Azure Active Directory i nazwy głównej usługi, która może uzyskiwać dostęp do zasobów](../active-directory/develop/howto-create-service-principal-portal.md), oraz [utworzyć jednostkę usługi platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli).
 
 Aby zarejestrować aplikację w Azure Active Directory:
 
@@ -204,7 +205,7 @@ az ad sp create-for-rbac -n "MyApp" --password "hVFkk965BuUv" --skip-assignment
 
 ## <a name="authorizing-an-application-to-use-a-key-or-secret"></a>Autoryzowanie aplikacji do korzystania z klucza lub wpisu tajnego
 
-Aby autoryzować aplikację do uzyskiwania dostępu do klucza lub wpisu tajnego w magazynie, użyj `az keyvault set-policy` polecenia.
+Aby autoryzować aplikację do uzyskiwania dostępu do klucza lub wpisu tajnego w magazynie, użyj polecenia `az keyvault set-policy`.
 
 Na przykład jeśli nazwa magazynu to ContosoKeyVault, aplikacja ma identyfikator aplikacji 8f8c4bbd-485b-45FD-98f7-ec6300b7b4ed i chcesz autoryzować aplikację do odszyfrowywania i podpisywania kluczy w magazynie, użyj następującego polecenia:
 
@@ -222,19 +223,19 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 Użyj [AZ Key Update](/cli/azure/keyvault#az-keyvault-update) , aby włączyć zaawansowane zasady dla magazynu kluczy.
 
- Włącz Key Vault wdrożenia: Umożliwia maszynom wirtualnym pobieranie certyfikatów przechowywanych jako wpisy tajne z magazynu.
+ Włącz Key Vault wdrożenia: umożliwia maszynom wirtualnym pobieranie certyfikatów przechowywanych jako wpisy tajne z magazynu.
 
  ```azurecli
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
  ```
 
-Włącz Key Vault szyfrowania dysku: Wymagane w przypadku korzystania z magazynu na potrzeby usługi Azure Disk Encryption.
+Włącz Key Vault szyfrowania dysku: wymagane w przypadku korzystania z magazynu dla usługi Azure Disk Encryption.
 
  ```azurecli
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-disk-encryption "true"
  ```  
 
-Włącz Key Vault wdrożenia szablonu: Zezwala Menedżer zasobów na pobieranie wpisów tajnych z magazynu.
+Włącz Key Vault wdrożenia szablonu: umożliwia Menedżer zasobów pobierania wpisów tajnych z magazynu.
 
 ```azurecli 
  az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-template-deployment "true"
@@ -274,7 +275,7 @@ Aby uzyskać szczegółowe instrukcje dotyczące sposobu generowania tego pakiet
 
 ## <a name="deleting-the-key-vault-and-associated-keys-and-secrets"></a>Usuwanie magazynu kluczy oraz skojarzonych kluczy i wpisów tajnych
 
-Jeśli magazyn kluczy i jego klucze lub wpisy tajne nie są już potrzebne, można usunąć magazyn kluczy za pomocą `az keyvault delete` polecenia:
+Jeśli magazyn kluczy i jego klucze lub wpisy tajne nie są już potrzebne, można usunąć magazyn kluczy za pomocą polecenia `az keyvault delete`:
 
 ```azurecli
 az keyvault delete --name "ContosoKeyVault"

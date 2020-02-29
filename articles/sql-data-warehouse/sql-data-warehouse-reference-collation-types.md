@@ -1,6 +1,6 @@
 ---
-title: Sortowanie
-description: Typy sortowania obsługiwane w Azure SQL Data Warehouse.
+title: Typy sortowania magazynu danych
+description: Typy sortowania obsługiwane w puli SQL usługi Azure Synapse Analytics.
 services: sql-data-warehouse
 author: antvgski
 manager: igorstan
@@ -9,21 +9,22 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 49a250a43c7b2654e1317981c853b0117fa0cf28
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 67627e4157c85853cf05dd6b24ced968a9654e62
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851795"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198443"
 ---
-# <a name="database-collation-support-for-azure-sql-data-warehouse"></a>Obsługa sortowania bazy danych dla Azure SQL Data Warehouse
+# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Obsługa sortowania bazy danych dla puli SQL usługi Azure Synapse Analytics
 
-Podczas tworzenia nowej bazy danych Azure SQL Data Warehouse można zmienić domyślne sortowanie bazy danych z Azure Portal. Ta funkcja ułatwia tworzenie nowej bazy danych przy użyciu jednego z 3800 obsługiwanych w ramach sortowania baz danych dla SQL Data Warehouse.
+Domyślne sortowanie baz danych można zmienić z Azure Portal podczas tworzenia nowej bazy danych puli SQL usługi Azure Synapse. Ta funkcja ułatwia tworzenie nowej bazy danych przy użyciu jednego z 3800 obsługiwanych baz danych. 
+
 Sortowania zapewniają ustawienia regionalne, strony kodowej, porządek sortowania i reguły czułości znaków dla typów danych opartych na znakach. Po wybraniu tej opcji wszystkie kolumny i wyrażenia wymagające informacji o sortowaniu dziedziczą wybrane sortowanie z poziomu bazy danych. Dziedziczenie domyślne można przesłonić, jawnie podając inne sortowanie dla typu danych opartego na znakach.
 
 ## <a name="changing-collation"></a>Zmiana sortowania
-Aby zmienić domyślne sortowanie, można wykonać prostą aktualizację pola sortowania w środowisku aprowizacji.
+Aby zmienić domyślne sortowanie, należy zaktualizować do pola sortowania w środowisku aprowizacji.
 
 Na przykład jeśli chcesz zmienić domyślne sortowanie na uwzględniające wielkość liter, po prostu zmień nazwę sortowania z SQL_Latin1_General_CP1_CI_AS na SQL_Latin1_General_CP1_CS_AS. 
 
@@ -100,9 +101,12 @@ Na przykład jeśli chcesz zmienić domyślne sortowanie na uwzględniające wie
 *   SQL_EBCDIC277_2_CP1_CS_AS
 
 ## <a name="checking-the-current-collation"></a>Sprawdzanie bieżącego sortowania
+
 Aby sprawdzić bieżące sortowanie bazy danych, można uruchomić następujące fragmenty kodu T-SQL:
+
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
-Po przekazaniu elementu "Collation" jako parametru właściwości funkcja DatabasePropertyEx zwraca bieżące sortowanie dla określonej bazy danych. Więcej informacji na temat funkcji DatabasePropertyEx można znaleźć w witrynie MSDN.
+
+Po przekazaniu elementu "Collation" jako parametru właściwości funkcja DatabasePropertyEx zwraca bieżące sortowanie dla określonej bazy danych. Aby uzyskać więcej informacji, zobacz [DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql).
 

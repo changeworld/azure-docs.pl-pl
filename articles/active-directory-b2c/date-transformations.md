@@ -2,20 +2,20 @@
 title: Data — przykłady transformacji oświadczeń dla zasad niestandardowych
 description: Date przykłady transformacji oświadczeń dla schematu programu Identity Experience Framework (IEF) Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b831a3175e1dc8b19395d1c923b076ac9428690c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f3e5a7b90892f0ed0243d448ea1ac63fb56f277f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982912"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188838"
 ---
 # <a name="date-claims-transformations"></a>Przekształceń oświadczeń dat
 
@@ -29,8 +29,8 @@ Sprawdza, czy jedno wystąpienie daty i czasu (typu danych String) jest późnie
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | leftOperand | string | Typ pierwszego wystąpienia, który powinien być późniejszy od drugiego żądania. |
-| Oświadczenie inputclaim | rightOperand | string | Typ drugiego zgłoszenia, który powinien być wcześniejszy niż pierwszy z nich. |
+| Oświadczenie inputclaim | leftOperand | ciąg | Typ pierwszego wystąpienia, który powinien być późniejszy od drugiego żądania. |
+| Oświadczenie inputclaim | rightOperand | ciąg | Typ drugiego zgłoszenia, który powinien być wcześniejszy niż pierwszy z nich. |
 | InputParameter | AssertIfEqualTo | wartość logiczna | Określa, czy potwierdzenie powinno być przekazywane, jeśli lewy operand jest równy operandowi z prawej strony. |
 | InputParameter | AssertIfRightOperandIsNotPresent | wartość logiczna | Określa, czy potwierdzenie ma być przekazywane, jeśli brakuje prawego operandu. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | Określa liczbę milisekund, które mają być dozwolone między dwiema datami czasu, aby uwzględnić czasy równe (na przykład w przypadku pochylenia zegara). |
@@ -114,7 +114,7 @@ W poniższym przykładzie zademonstrowano konwersję `dateOfBirth` (Data typ dan
 - Oświadczenia wyjściowe:
     - **oświadczenie outputclaim**: 1559347200 (1 czerwca 2019 12:00:00 am)
 
-## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim 
+## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
 
 Konwertuje element ClaimType **DateTime** na **datę** ClaimType. Transformacja oświadczeń usuwa format czasu z daty.
 
@@ -172,7 +172,7 @@ Ustal, czy jedna wartość daty i godziny jest późniejsza, wcześniejsza lub r
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie inputclaim | firstDateTime | Data i godzina | Pierwszy element dateTime, aby porównać, czy jest on wcześniejszy, czy późniejszy niż drugi dateTime. Wartość null zgłasza wyjątek. |
 | Oświadczenie inputclaim | secondDateTime | Data i godzina | Druga data/godzina do porównania, czy jest wcześniejsza lub późniejsza niż pierwsza wartość daty i godziny. Wartość zerowa jest traktowana jako bieżąca datetTime. |
-| InputParameter | zakład | string | Jedna z następujących wartości: taka sama, późniejsza niż lub wcześniejsza niż. |
+| InputParameter | operator | ciąg | Jedna z następujących wartości: taka sama, późniejsza niż lub wcześniejsza niż. |
 | InputParameter | timeSpanInSeconds | int | Dodaj przedział czasu do pierwszej wartości daty i godziny. |
 | Oświadczenie outputclaim | wynik | wartość logiczna | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
 

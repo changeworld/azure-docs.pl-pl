@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 275fa173c5005c4d1609a858c8edb39b5c307c5e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2ec3276b9b02c29b80d46e5fd31298c909857182
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974618"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197168"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Korzystanie z Axinom w celu dostarczania licencji Widevine do usługi Azure Media Services 
 > [!div class="op_single_selector"]
@@ -29,10 +29,10 @@ ms.locfileid: "74974618"
 > 
 > 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Azure Media Services (AMS) dodał ochronę dynamiczną Google Widevine (szczegółowe informacje znajdują się w [blogu Mingfei](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) ). Ponadto Azure Media Player (AMP) również dodaliśmy obsługę Widevine (szczegółowe informacje znajdują się w [dokumencie amp](https://amp.azure.net/libs/amp/latest/docs/) ). Jest to poważny wpływ na zawartość KRESek strumieniowych chronioną przez CENC z wielojęzyczną funkcją DRM (PlayReady i Widevine) w nowoczesnych przeglądarkach, które są wyposażone w MSE i EME.
 
-Począwszy od zestawu SDK Media Services .NET w wersji 3.5.2, Media Services umożliwia skonfigurowanie szablonu licencji Widevine i uzyskanie licencji Widevine. Licencje Widevine są dostępne również u następujących partnerów usługi AMS: [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/) i [castLabs](https://castlabs.com/company/partners/azure/).
+Począwszy od zestawu SDK Media Services .NET w wersji 3.5.2, Media Services umożliwia skonfigurowanie szablonu licencji Widevine i uzyskanie licencji Widevine. Licencje Widevine są dostępne również u następujących partnerów usługi AMS: [Axinom](https://www.axinom.com), [EZDRM](https://ezdrm.com/) i [castLabs](https://castlabs.com/company/partners/azure/).
 
 W tym artykule opisano sposób integrowania i testowania serwera licencji Widevine zarządzanego przez program Axinom. Obejmuje to:  
 
@@ -44,7 +44,7 @@ Kompletny system i przepływ klucza zawartości, identyfikatora klucza, inicjato
 
 ![KRESKa i CENC](./media/media-services-axinom-integration/media-services-axinom1.png)
 
-## <a name="content-protection"></a>Ochrona zawartości
+## <a name="content-protection"></a>Content Protection
 Aby skonfigurować ochronę dynamiczną i zasady dostarczania kluczy, zobacz blog Mingfei: [How to configure Widevine pakowanie with Azure Media Services](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services).
 
 Dynamiczną ochronę CENC można skonfigurować przy użyciu technologii wielowątkowości w przypadku przesyłania strumieniowego z użyciem obu następujących elementów:
@@ -202,9 +202,9 @@ W przypadku korzystania z serwera licencji Axinom Widevine wymagane są następu
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Podziękowania
+### <a name="acknowledgments"></a>Potwierdzeń
 Chcemy potwierdzić następujące osoby, które przyczyniają się do tworzenia tego dokumentu: Kristjan jõgi of Axinom, Mingfei Yan i Amit Rajput.
 

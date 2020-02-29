@@ -3,20 +3,20 @@ title: Omówienie profilów technicznych w zasadach niestandardowych
 titleSuffix: Azure AD B2C
 description: Dowiedz się, jak profile techniczne są używane w zasadach niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/11/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 48324d252e22ca898f923e1f0ad9b76df1c10861
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505652"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183656"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informacje o profilach technicznych w Azure Active Directory B2C zasadach niestandardowych
 
@@ -40,7 +40,7 @@ Profil techniczny umożliwia realizację następujących typów scenariuszy:
 - [Samodzielne](self-asserted-technical-profile.md) współpracujące z użytkownikiem. Na przykład Zbierz poświadczenia użytkownika w celu zalogowania się, renderowania strony rejestracji lub resetowania hasła.
 - [Zarządzanie sesjami](custom-policy-reference-sso.md) — obsługa różnych typów sesji.
 - [Application Insights](../azure-monitor/app/usage-overview.md)
-- [Hasło](one-time-password-technical-profile.md) jednorazowe — zapewnia obsługę zarządzania generowaniem i weryfikacją hasła jednorazowego. 
+- [Hasło](one-time-password-technical-profile.md) jednorazowe — zapewnia obsługę zarządzania generowaniem i weryfikacją hasła jednorazowego.
 
 ## <a name="technical-profile-flow"></a>Przepływ profilu technicznego
 
@@ -48,7 +48,7 @@ Wszystkie typy profilów technicznych mają takie same koncepcje. Wysyłasz ośw
 
 ![Diagram ilustrujący przepływ profilu technicznego](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
-1. **Zarządzanie sesjami logowania** jednokrotnego — przywraca stan sesji profilu technicznego przy użyciu funkcji [zarządzania sesjami logowania jednokrotnego](custom-policy-reference-sso.md). 
+1. **Zarządzanie sesjami logowania** jednokrotnego — przywraca stan sesji profilu technicznego przy użyciu funkcji [zarządzania sesjami logowania jednokrotnego](custom-policy-reference-sso.md).
 1. **Przekształcanie oświadczeń wejściowych** — oświadczenia wejściowe dla każdej [transformacji oświadczeń](claimstransformations.md) wejściowych są pobierane z zbioru oświadczeń.  Oświadczenia wyjściowe przekształcenia oświadczeń wejściowych mogą być oświadczeniami wejściowymi kolejnych transformacji oświadczeń wejściowych.
 1. **Oświadczenia wejściowe** — oświadczenia są pobierane z zbioru oświadczeń i są używane w profilu technicznym. Na przykład [samodzielnie potwierdzony profil techniczny](self-asserted-technical-profile.md) używa oświadczeń wejściowych do wstępnego wypełniania oświadczeń wyjściowych dostarczanych przez użytkownika. Profil techniczny interfejsu API REST używa oświadczeń wejściowych do wysyłania parametrów wejściowych do punktu końcowego interfejsu API REST. Azure Active Directory używa jako unikatowego identyfikatora do odczytywania, aktualizowania lub usuwania konta.
 1. **Wykonywanie profilu technicznego** — profil techniczny wymienia oświadczenia ze skonfigurowaną stroną. Na przykład:
@@ -64,7 +64,7 @@ Wszystkie typy profilów technicznych mają takie same koncepcje. Wysyłasz ośw
 
 ## <a name="technical-profile-inclusion"></a>Włączenie profilu technicznego
 
-Profil techniczny może zawierać inny profil techniczny, aby zmienić ustawienia lub dodać nową funkcję.  Element `IncludeTechnicalProfile` jest odwołaniem do podstawowego profilu technicznego, z którego pochodzi profil techniczny. Nie ma żadnego limitu liczby poziomów. 
+Profil techniczny może zawierać inny profil techniczny, aby zmienić ustawienia lub dodać nową funkcję.  Element `IncludeTechnicalProfile` jest odwołaniem do podstawowego profilu technicznego, z którego pochodzi profil techniczny. Nie ma żadnego limitu liczby poziomów.
 
 Na przykład profil techniczny **AAD-UserReadUsingAlternativeSecurityId-NOERROR** obejmuje usługi **AAD-UserReadUsingAlternativeSecurityId**. Ten profil techniczny ustawia `RaiseErrorIfClaimsPrincipalDoesNotExist` element metadanych do `true`i zgłasza błąd, jeśli konto społecznościowe nie istnieje w katalogu. **AAD-UserReadUsingAlternativeSecurityId-NOERROR** zastępuje to zachowanie i wyłącza ten komunikat o błędzie.
 

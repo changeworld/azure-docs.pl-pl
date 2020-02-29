@@ -3,20 +3,20 @@ title: Rejestracja i logowanie za pomocą zasad niestandardowych (wersja zapozna
 titleSuffix: Azure AD B2C
 description: Wysyłać hasła jednorazowe (OTP) w wiadomościach tekstowych do telefonów użytkowników aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 50e7d66fef67e2728c95790947393de8d58398c2
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: eadac0e973b361b1fdee63dcc9cfa848a0b2bacb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647532"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183962"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Skonfiguruj konto i zaloguj się przy użyciu zasad niestandardowych w Azure AD B2C (wersja zapoznawcza)
 

@@ -1,6 +1,6 @@
 ---
 title: Poprawianie wydajności indeksu magazynu kolumn
-description: Azure SQL Data Warehouse zmniejszyć wymagania dotyczące pamięci lub zwiększyć ilość dostępnej pamięci, aby zmaksymalizować liczbę wierszy, które są kompresowane przez indeks magazynu kolumn do poszczególnych grupy wierszy.
+description: Zmniejsz wymagania dotyczące pamięci lub Zwiększ ilość dostępnej pamięci, aby zmaksymalizować liczbę wierszy w ramach każdego grupy wierszyu.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,13 +10,13 @@ ms.subservice: load-data
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d5dba4e9a086502f638252a0ce2b16b4abeeb643
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 11c0a168e4b2e8eac03eaebd37b208446082d1b4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685655"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197202"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maksymalizowanie jakości grupy wierszy dla magazynu kolumn
 
@@ -34,13 +34,13 @@ W celu uzyskania najlepszej wydajności zapytań celem jest maksymalizacja liczb
 
 Podczas ponownej kompilacji lub ponownego kompilowania indeksu magazynu kolumn czasami brak wystarczającej ilości pamięci do skompresowania wszystkich wierszy wyznaczono dla każdego grupy wierszyu. W przypadku wykorzystania pamięci indeksy magazynu kolumn przycinania rozmiary grupy wierszy, dzięki czemu kompresja do magazynu kolumn może zakończyć się powodzeniem. 
 
-Gdy jest za mało pamięci, aby skompresować co najmniej 10 000 wierszy w każdej grupy wierszy, SQL Data Warehouse generuje błąd.
+Gdy jest za mało pamięci, aby skompresować co najmniej 10 000 wierszy w każdym grupy wierszy, zostanie wygenerowany błąd.
 
 Aby uzyskać więcej informacji na temat ładowania zbiorczego, zobacz [ładowanie zbiorcze do klastrowanego indeksu magazynu kolumn](https://msdn.microsoft.com/library/dn935008.aspx#Bulk ).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Jak monitorować jakość grupy wierszy
 
-DMV sys. DM _pdw_nodes_db_column_store_row_group_physical_stats ([sys. DM _db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) zawiera definicję widoku zgodną z bazą danych SQL SQL Data Warehouse), która udostępnia przydatne informacje, takie jak liczba wierszy w rowgroups i powód przycinania w przypadku przycinania. Aby uzyskać informacje na temat przycinania grupy wierszy, można utworzyć następujący widok jako wygodny sposób wykonywania zapytania dotyczącego tego DMV.
+DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys. dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) zawiera definicję widoku zgodną z bazą danych SQL), która udostępnia przydatne informacje, takie jak liczba wierszy w rowgroups i powód przycinania w przypadku przycinania. Aby uzyskać informacje na temat przycinania grupy wierszy, można utworzyć następujący widok jako wygodny sposób wykonywania zapytania dotyczącego tego DMV.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -67,10 +67,10 @@ select *
 from cte;
 ```
 
-Trim_reason_desc informuje, czy grupy wierszy został przycięty (trim_reason_desc = NO_TRIM oznacza, że nie ma żadnej przycinania, a grupa wierszy nie ma optymalnej jakości). Następujące przyczyny przycinania wskazują przedwcześnie przycinanie grupy wierszy:
+Trim_reason_desc informuje o tym, czy grupy wierszy został przycięty (trim_reason_desc = NO_TRIM oznacza, że nie ma żadnej przycinania, a grupa wierszy jest optymalną jakością). Następujące przyczyny przycinania wskazują przedwcześnie przycinanie grupy wierszy:
 - BULKLOAD: Ten powód przycinania jest używany, gdy przychodząca partia wierszy dla ładowania była mniejsza niż 1 000 000 wierszy. Aparat utworzy skompresowane grupy wierszy, jeśli są wstawiane ponad 100 000 wierszy (w przeciwieństwie do wstawiania do magazynu różnicowego), ale ustawia przyczynę przycięcia do BULKLOAD. W tym scenariuszu należy rozważyć zwiększenie obciążenia partii, aby uwzględnić więcej wierszy. Ponadto należy ponownie oszacować schemat partycjonowania, aby upewnić się, że nie jest zbyt szczegółowy, ponieważ grupy wierszy nie mogą obejmować granic partycji.
 - MEMORY_LIMITATION: Aby utworzyć grupy wierszy z 1 000 000 wierszy, aparat musi mieć określoną ilość pamięci roboczej. Gdy dostępna pamięć sesji ładowania jest mniejsza niż wymagana pamięć robocza, grupy wierszy zostaną przedwcześnie przycięte. W poniższych sekcjach wyjaśniono, jak oszacować wymaganą pamięć i przydzielić więcej pamięci.
-- DICTIONARY_SIZE: Ten powód przycinania wskazuje, że przycinanie grupy wierszy nastąpiło z powodu co najmniej jednej kolumny typu String o szerokim i/lub wysokim ciągu kardynalności. Rozmiar słownika jest ograniczony do 16 MB w pamięci, a po osiągnięciu tego limitu zostanie skompresowana grupa wierszy. Jeśli uruchamiasz w tej sytuacji, rozważ odizolowanie problematycznej kolumny do oddzielnej tabeli.
+- DICTIONARY_SIZE: Ten powód przycinania wskazuje, że przycinanie grupy wierszy wystąpiło z powodu co najmniej jednej kolumny typu String o szerokim i/lub wysokim ciągu kardynalności. Rozmiar słownika jest ograniczony do 16 MB w pamięci, a po osiągnięciu tego limitu zostanie skompresowana grupa wierszy. Jeśli uruchamiasz w tej sytuacji, rozważ odizolowanie problematycznej kolumny do oddzielnej tabeli.
 
 ## <a name="how-to-estimate-memory-requirements"></a>Jak oszacować wymagania dotyczące pamięci
 
@@ -89,7 +89,7 @@ gdzie kolumny krótkie-String używają typów danych typu String < = 32 bajtów
 
 Długie ciągi są kompresowane przy użyciu metody kompresji zaprojektowanej do kompresowania tekstu. Ta metoda kompresji używa *słownika* do przechowywania wzorców tekstu. Maksymalny rozmiar słownika wynosi 16 MB. Istnieje tylko jeden słownik dla każdej długiej kolumny ciągu w grupy wierszy.
 
-Szczegółowe omówienie wymagań dotyczących pamięci magazynu kolumn znajduje się w temacie [skalowanie Azure SQL Data Warehouse wideo: Konfiguracja i wskazówki](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
+Szczegółowe omówienie wymagań dotyczących pamięci magazynu kolumn można znaleźć w temacie [skalowanie i wskazówki dotyczące języka wideo w usłudze SQL Analytics: Konfiguracja](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Sposoby zmniejszenia wymagań dotyczących pamięci
 
@@ -109,7 +109,7 @@ Dodatkowe wymagania dotyczące pamięci dla kompresji ciągów:
 
 ### <a name="avoid-over-partitioning"></a>Unikaj nadmiernego partycjonowania
 
-Indeksy magazynu kolumn tworzą co najmniej jedną RowGroups na partycję. W SQL Data Warehouse liczba partycji rośnie szybko, ponieważ dane są dystrybuowane i Każda dystrybucja jest podzielona na partycje. Jeśli tabela zawiera zbyt wiele partycji, może być za mało wierszy, aby wypełnić RowGroups. Brak wierszy nie powoduje zwiększenia ilości pamięci podczas kompresji, ale prowadzi do RowGroups, która nie osiąga najlepszej wydajności zapytania magazynu kolumn.
+Indeksy magazynu kolumn tworzą co najmniej jedną RowGroups na partycję. W przypadku magazynowania danych w usłudze Azure Synapse Analytics liczba partycji rośnie szybko, ponieważ dane są dystrybuowane i każda z nich jest dzielona na partycje. Jeśli tabela zawiera zbyt wiele partycji, może być za mało wierszy, aby wypełnić RowGroups. Brak wierszy nie powoduje zwiększenia ilości pamięci podczas kompresji, ale prowadzi do RowGroups, która nie osiąga najlepszej wydajności zapytania magazynu kolumn.
 
 Innym powodem, aby uniknąć nadmiernego partycjonowania, jest obciążenie pamięci na potrzeby ładowania wierszy do indeksu magazynu kolumn na partycjonowanej tabeli. Podczas ładowania wiele partycji może odbierać przychodzące wiersze, które są przechowywane w pamięci, dopóki każda partycja ma wystarczającą ilość wierszy do skompresowania. Zbyt wiele partycji tworzy dodatkowe wykorzystanie pamięci.
 
@@ -141,5 +141,4 @@ Rozmiar jednostek dwu i Klasa zasobów użytkownika wspólnie określają iloś�
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o sposobach poprawy wydajności SQL Data Warehouse, zobacz [Omówienie wydajności](sql-data-warehouse-overview-manage-user-queries.md).
-
+Aby dowiedzieć się więcej o sposobach poprawy wydajności usługi SQL Analytics, zobacz [Omówienie wydajności](sql-data-warehouse-overview-manage-user-queries.md).

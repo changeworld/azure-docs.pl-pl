@@ -1,6 +1,6 @@
 ---
 title: Optymalizowanie transakcji
-description: Dowiedz się, jak zoptymalizować wydajność kodu transakcyjnego w Azure SQL Data Warehouse, jednocześnie minimalizując ryzyko długotrwałego wycofywania.
+description: Dowiedz się, jak zoptymalizować wydajność kodu transakcyjnego w analizie SQL, jednocześnie minimalizując ryzyko długotrwałego wycofywania.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,21 +10,21 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: b8b8be9467ade870e57355be91b0de329b0f6217
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 6f7005f1706e72ea1794f99c030a25fa533327b8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692866"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195842"
 ---
-# <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Optymalizowanie transakcji w Azure SQL Data Warehouse
-Dowiedz się, jak zoptymalizować wydajność kodu transakcyjnego w Azure SQL Data Warehouse, jednocześnie minimalizując ryzyko długotrwałego wycofywania.
+# <a name="optimizing-transactions-in-sql-analytics"></a>Optymalizowanie transakcji w usłudze SQL Analytics
+Dowiedz się, jak zoptymalizować wydajność kodu transakcyjnego w analizie SQL, jednocześnie minimalizując ryzyko długotrwałego wycofywania.
 
 ## <a name="transactions-and-logging"></a>Transakcje i rejestrowanie
-Transakcje są ważnym składnikiem aparatu relacyjnej bazy danych. SQL Data Warehouse używa transakcji podczas modyfikacji danych. Te transakcje mogą być jawne lub niejawne. Pojedyncze instrukcje INSERT, UPDATE i DELETE to wszystkie przykłady niejawnych transakcji. Transakcje jawne używają instrukcji BEGIN przeładunek, Zatwierdź transakcję lub Wycofaj ładunek. Jawne transakcje są zwykle używane, gdy wielokrotne instrukcje modyfikacji muszą być powiązane ze sobą w jednej jednostce niepodzielnej. 
+Transakcje są ważnym składnikiem aparatu relacyjnej bazy danych. Funkcja analizy SQL używa transakcji podczas modyfikacji danych. Te transakcje mogą być jawne lub niejawne. Pojedyncze instrukcje INSERT, UPDATE i DELETE to wszystkie przykłady niejawnych transakcji. Transakcje jawne używają instrukcji BEGIN przeładunek, Zatwierdź transakcję lub Wycofaj ładunek. Jawne transakcje są zwykle używane, gdy wielokrotne instrukcje modyfikacji muszą być powiązane ze sobą w jednej jednostce niepodzielnej. 
 
-Azure SQL Data Warehouse zatwierdza zmiany w bazie danych przy użyciu dzienników transakcji. Każda dystrybucja ma swój własny dziennik transakcji. Zapisy w dzienniku transakcji są automatyczne. Nie jest wymagana żadna konfiguracja. Jednak mimo że ten proces gwarantuje, że zapis wprowadza narzuty w systemie. Ten wpływ można zminimalizować przez zapisanie wydajnego kodu transactionowego. W szerokim stopniu funkcjonalny kod jest podzielony na dwie kategorie.
+Analiza SQL zatwierdza zmiany w bazie danych przy użyciu dzienników transakcji. Każda dystrybucja ma swój własny dziennik transakcji. Zapisy w dzienniku transakcji są automatyczne. Nie jest wymagana żadna konfiguracja. Jednak mimo że ten proces gwarantuje, że zapis wprowadza narzuty w systemie. Ten wpływ można zminimalizować przez zapisanie wydajnego kodu transactionowego. W szerokim stopniu funkcjonalny kod jest podzielony na dwie kategorie.
 
 * Używaj minimalnych konstrukcji rejestrowania wszędzie tam, gdzie to możliwe
 * Przetwarzaj dane przy użyciu partii o określonym zakresie, aby uniknąć długotrwałych transakcji długoterminowych
@@ -71,14 +71,14 @@ CTAS i Wstaw... SELECT to operacje ładowania zbiorczego. Jednak oba mają wpły
 | Sterta |Dowolne |**Mniejsze** |
 | Klastrowany indeks |Pusta tabela docelowa |**Mniejsze** |
 | Klastrowany indeks |Załadowane wiersze nie nakładają się na istniejące strony w miejscu docelowym |**Mniejsze** |
-| Klastrowany indeks |Załadowane wiersze nakładają się na istniejące strony w miejscu docelowym |Pełne |
+| Klastrowany indeks |Załadowane wiersze nakładają się na istniejące strony w miejscu docelowym |szczegółowe |
 | Klastrowany indeks magazynu kolumn |Rozmiar wsadu > = 102 400 na wyrównanej dystrybucji partycji |**Mniejsze** |
-| Klastrowany indeks magazynu kolumn |Rozmiar wsadu < 102 400 na rozkład wyrównany do partycji |Pełne |
+| Klastrowany indeks magazynu kolumn |Rozmiar wsadu < 102 400 na rozkład wyrównany do partycji |szczegółowe |
 
 Warto zauważyć, że wszystkie zapisy do aktualizacji pomocniczych lub nieklastrowanych indeksów będą zawsze w pełni zarejestrowane.
 
 > [!IMPORTANT]
-> SQL Data Warehouse ma dystrybucje 60. W związku z tym, przy założeniu, że wszystkie wiersze są równomiernie dystrybuowane i wypełnianie w pojedynczej partycji, partia będzie musiała zawierać 6 144 000 wierszy lub większa do minimalnej rejestracji podczas zapisywania w klastrowanym indeksie magazynu kolumn. Jeśli tabela jest podzielona na partycje i wstawiane wiersze rozciągają się na granice partycji, w granicach partycji będą potrzebne 6 144 000 wierszy, przy założeniu, że nawet dystrybucji danych. Każda partycja w każdej dystrybucji musi niezależnie przekroczyć próg wiersza 102 400 dla operacji INSERT, który ma być minimalnym zalogowaniem do dystrybucji.
+> Baza danych programu SQL Analytics ma dystrybucje 60. W związku z tym, przy założeniu, że wszystkie wiersze są równomiernie dystrybuowane i wypełnianie w pojedynczej partycji, partia będzie musiała zawierać 6 144 000 wierszy lub większa do minimalnej rejestracji podczas zapisywania w klastrowanym indeksie magazynu kolumn. Jeśli tabela jest podzielona na partycje i wstawiane wiersze rozciągają się na granice partycji, w granicach partycji będą potrzebne 6 144 000 wierszy, przy założeniu, że nawet dystrybucji danych. Każda partycja w każdej dystrybucji musi niezależnie przekroczyć próg wiersza 102 400 dla operacji INSERT, który ma być minimalnym zalogowaniem do dystrybucji.
 > 
 > 
 
@@ -177,7 +177,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Ponowne utworzenie dużych tabel może skorzystać z używania funkcji zarządzania obciążeniami SQL Data Warehouse. Aby uzyskać więcej informacji, zobacz [klasy zasobów dla zarządzania obciążeniami](resource-classes-for-workload-management.md).
+> Ponowne utworzenie dużych tabel może korzystać z funkcji zarządzania obciążeniem usługi SQL Analytics. Aby uzyskać więcej informacji, zobacz [klasy zasobów dla zarządzania obciążeniami](resource-classes-for-workload-management.md).
 > 
 > 
 
@@ -405,18 +405,18 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Wskazówki dotyczące wstrzymywania i skalowania
-Azure SQL Data Warehouse umożliwia [wstrzymywanie, wznawianie i skalowanie](sql-data-warehouse-manage-compute-overview.md) magazynu danych na żądanie. Po wstrzymaniu lub przeskalowaniu SQL Data Warehouse należy zrozumieć, że wszystkie transakcje związane z lotem są kończone natychmiast; powoduje wycofywanie wszelkich otwartych transakcji. Jeśli obciążenie wystawiło długotrwałą i niekompletną modyfikację danych przed operacją wstrzymania lub skalowania, należy to zrobić. To cofnięcie może mieć wpływ na czas oczekiwania na wstrzymanie lub skalowanie bazy danych Azure SQL Data Warehouse. 
+Funkcja analizy SQL umożliwia [wstrzymywanie, wznawianie i skalowanie](sql-data-warehouse-manage-compute-overview.md) puli SQL na żądanie. W przypadku wstrzymania lub skalowania puli SQL należy zrozumieć, że wszystkie transakcje związane z lotem są kończone natychmiastowo; powoduje wycofywanie wszelkich otwartych transakcji. Jeśli obciążenie wystawiło długotrwałą i niekompletną modyfikację danych przed operacją wstrzymania lub skalowania, należy to zrobić. To cofnięcie może mieć wpływ na czas oczekiwania na wstrzymanie lub skalowanie puli SQL. 
 
 > [!IMPORTANT]
 > Zarówno `UPDATE`, jak i `DELETE` są w pełni zarejestrowane operacje i dlatego operacje cofania/ponawiania mogą trwać znacznie dłużej niż równoważne operacje w sposób minimalny. 
 > 
 > 
 
-Najlepszym scenariuszem jest umożliwienie przeprowadzenia transakcji modyfikacji danych lotu przed zawstrzymywaniem lub skalowaniem SQL Data Warehouse. Jednak ten scenariusz może nie zawsze być praktyczny. Aby zmniejszyć ryzyko długotrwałego wycofywania, należy wziąć pod uwagę jedną z następujących opcji:
+Najlepszym scenariuszem jest umożliwienie wykonywania transakcji modyfikacji danych lotu przed zawstrzymywaniem lub skalowaniem puli SQL. Jednak ten scenariusz może nie zawsze być praktyczny. Aby zmniejszyć ryzyko długotrwałego wycofywania, należy wziąć pod uwagę jedną z następujących opcji:
 
 * Ponownie Napisz długotrwałe operacje przy użyciu [CTAs](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 * Przerwij operację do fragmentów; działanie na podzestawie wierszy
 
 ## <a name="next-steps"></a>Następne kroki
-Zobacz [transakcje w SQL Data Warehouse](sql-data-warehouse-develop-transactions.md) , aby dowiedzieć się więcej na temat poziomów izolacji i limitów transakcyjnych.  Aby zapoznać się z innymi najlepszymi rozwiązaniami, zobacz [SQL Data Warehouse Best Practices](sql-data-warehouse-best-practices.md).
+Zobacz [transakcje w usłudze SQL Analytics](sql-data-warehouse-develop-transactions.md) , aby dowiedzieć się więcej na temat poziomów izolacji i limitów transakcyjnych.  Aby zapoznać się z innymi najlepszymi rozwiązaniami, zobacz [SQL Data Warehouse Best Practices](sql-data-warehouse-best-practices.md).
 

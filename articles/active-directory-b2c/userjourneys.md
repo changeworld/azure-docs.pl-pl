@@ -2,20 +2,20 @@
 title: UserJourneys | Microsoft Docs
 description: Określ element UserJourneys zasad niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/04/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7ec2d24c399e44bf973fc1ee78466dbee26f0394
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f4af9b14b1d751c855a04f0683bc0f9d4115e7b5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983184"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183175"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -25,19 +25,19 @@ Podróże użytkowników określają jawne ścieżki, za pomocą których zasady
 
 Te podróże użytkowników mogą być uważane za szablony dostępne w celu spełnienia podstawowych potrzeb różnych jednostek uzależnionych zainteresowanych społeczności. Podróże użytkowników ułatwiają zdefiniowanie w ramach zasad jednostki uzależnionej. Zasady mogą definiować wiele podróży użytkownika. Każda podróż użytkownika to sekwencja kroków aranżacji.
 
-Aby zdefiniować podróże użytkownika obsługiwane przez zasady, element **UserJourneys** jest dodawany do elementu najwyższego poziomu w pliku zasad. 
+Aby zdefiniować podróże użytkownika obsługiwane przez zasady, element **UserJourneys** jest dodawany do elementu najwyższego poziomu w pliku zasad.
 
 Element **UserJourneys** zawiera następujący element:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| UserJourney | 1: n | Podróż użytkownika, która definiuje wszystkie konstrukcje niezbędne do całkowitego przepływu użytkownika. | 
+| UserJourney | 1: n | Podróż użytkownika, która definiuje wszystkie konstrukcje niezbędne do całkowitego przepływu użytkownika. |
 
 Element **UserJourney** zawiera następujący atrybut:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Tak | Identyfikator podróży użytkownika, który może służyć do odwoływania się do niego z innych elementów w zasadach. Element **DefaultUserJourney** [zasad jednostki uzależnionej](relyingparty.md) wskazuje na ten atrybut. |
+| Identyfikator | Yes | Identyfikator podróży użytkownika, który może służyć do odwoływania się do niego z innych elementów w zasadach. Element **DefaultUserJourney** [zasad jednostki uzależnionej](relyingparty.md) wskazuje na ten atrybut. |
 
 Element **UserJourney** zawiera następujące elementy:
 
@@ -49,7 +49,7 @@ Element **UserJourney** zawiera następujące elementy:
 
 Podróż użytkownika jest reprezentowana jako sekwencja aranżacji, która musi być stosowana w przypadku pomyślnej transakcji. Jeśli którykolwiek z kroków zakończy się niepowodzeniem, transakcja nie powiedzie się. Te kroki aranżacji odwołują się zarówno do bloków konstrukcyjnych, jak i dostawców oświadczeń, które są dozwolone w pliku zasad. Każdy krok aranżacji, który jest odpowiedzialny za pokazywanie lub renderowanie środowiska użytkownika, ma również odniesienie do odpowiadającego identyfikatora definicji zawartości.
 
-Kroki aranżacji można wykonać warunkowo na podstawie warunków wstępnych zdefiniowanych w elemencie kroku aranżacji. Na przykład możesz zaznaczyć, aby wykonać krok aranżacji tylko wtedy, gdy istnieją określone oświadczenia, lub jeśli oświadczenie jest równe lub nie jest podaną wartością. 
+Kroki aranżacji można wykonać warunkowo na podstawie warunków wstępnych zdefiniowanych w elemencie kroku aranżacji. Na przykład możesz zaznaczyć, aby wykonać krok aranżacji tylko wtedy, gdy istnieją określone oświadczenia, lub jeśli oświadczenie jest równe lub nie jest podaną wartością.
 
 Aby określić uporządkowaną listę kroków aranżacji, element **OrchestrationSteps** jest dodawany w ramach zasad. Ten element jest wymagany.
 
@@ -57,50 +57,50 @@ Element **OrchestrationSteps** zawiera następujący element:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| OrchestrationStep | 1: n | Uporządkowany krok aranżacji. | 
+| OrchestrationStep | 1: n | Uporządkowany krok aranżacji. |
 
 Element **OrchestrationStep** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| `Order` | Tak | Kolejność kroków aranżacji. | 
-| `Type` | Tak | Typ kroku aranżacji. Możliwe wartości: <ul><li>**ClaimsProviderSelection** — wskazuje, że krok aranżacji przedstawia różne dostawcy oświadczeń dla użytkownika w celu wybrania jednego z nich.</li><li>**CombinedSignInAndSignUp** — wskazuje, że krok aranżacji przedstawia łączną stronę logowania dostawcy społecznego i konta lokalnego.</li><li>**ClaimsExchange** — wskazuje, że krok aranżacji wymienia oświadczenia z dostawcą oświadczeń.</li><li>**SendClaims** — wskazuje, że krok aranżacji wysyła oświadczenia do jednostki uzależnionej przy użyciu tokenu wystawionego przez wystawcę oświadczeń.</li></ul> | 
-| ContentDefinitionReferenceId | Nie | Identyfikator [definicji zawartości](contentdefinitions.md) skojarzonej z tym krokiem aranżacji. Zazwyczaj identyfikator odwołania definicji zawartości jest zdefiniowany w profilu technicznym z własnym potwierdzeniem. Ale istnieją sytuacje, w których Azure AD B2C muszą wyświetlać coś bez profilu technicznego. Istnieją dwa przykłady — jeśli typ kroku aranżacji ma jedną z następujących wartości: `ClaimsProviderSelection` lub `CombinedSignInAndSignUp`, Azure AD B2C musi wyświetlić wybór dostawcy tożsamości bez profilu technicznego. | 
+| `Order` | Yes | Kolejność kroków aranżacji. |
+| `Type` | Yes | Typ kroku aranżacji. Dopuszczalne wartości: <ul><li>**ClaimsProviderSelection** — wskazuje, że krok aranżacji przedstawia różne dostawcy oświadczeń dla użytkownika w celu wybrania jednego z nich.</li><li>**CombinedSignInAndSignUp** — wskazuje, że krok aranżacji przedstawia łączną stronę logowania dostawcy społecznego i konta lokalnego.</li><li>**ClaimsExchange** — wskazuje, że krok aranżacji wymienia oświadczenia z dostawcą oświadczeń.</li><li>**SendClaims** — wskazuje, że krok aranżacji wysyła oświadczenia do jednostki uzależnionej przy użyciu tokenu wystawionego przez wystawcę oświadczeń.</li></ul> |
+| ContentDefinitionReferenceId | Nie | Identyfikator [definicji zawartości](contentdefinitions.md) skojarzonej z tym krokiem aranżacji. Zazwyczaj identyfikator odwołania definicji zawartości jest zdefiniowany w profilu technicznym z własnym potwierdzeniem. Ale istnieją sytuacje, w których Azure AD B2C muszą wyświetlać coś bez profilu technicznego. Istnieją dwa przykłady — jeśli typ kroku aranżacji ma jedną z następujących wartości: `ClaimsProviderSelection` lub `CombinedSignInAndSignUp`, Azure AD B2C musi wyświetlić wybór dostawcy tożsamości bez profilu technicznego. |
 | CpimIssuerTechnicalProfileReferenceId | Nie | Typ kroku aranżacji jest `SendClaims`. Ta właściwość określa identyfikator profilu technicznego dostawcy oświadczeń, który wystawia token dla jednostki uzależnionej.  Jeśli nie istnieje, nie zostanie utworzony token jednostki uzależnionej. |
 
 
 Element **OrchestrationStep** może zawierać następujące elementy:
 
 | Element | Wystąpień | Opis |
-| ------- | ----------- | ----------- | 
-| Warunki wstępne | 0: n | Lista warunków wstępnych, które muszą być spełnione, aby krok aranżacji został wykonany. | 
-| ClaimsProviderSelections | 0: n | Lista wybranych dostawców oświadczeń dla kroku aranżacji. | 
-| ClaimsExchanges | 0: n | Lista wymian oświadczeń dla kroku aranżacji. | 
+| ------- | ----------- | ----------- |
+| Warunki wstępne | 0: n | Lista warunków wstępnych, które muszą być spełnione, aby krok aranżacji został wykonany. |
+| ClaimsProviderSelections | 0: n | Lista wybranych dostawców oświadczeń dla kroku aranżacji. |
+| ClaimsExchanges | 0: n | Lista wymian oświadczeń dla kroku aranżacji. |
 
 ### <a name="preconditions"></a>Warunki wstępne
 
 Element **warunki wstępne** zawiera następujący element:
 
 | Element | Wystąpień | Opis |
-| ------- | ----------- | ----------- | 
-| Warunek wstępny | 1: n | W zależności od używanego profilu technicznego program przekierowuje klienta zgodnie z wyborem dostawcy oświadczeń lub wysyła do usługi Exchange oświadczenia serwera. | 
+| ------- | ----------- | ----------- |
+| Warunek wstępny | 1: n | W zależności od używanego profilu technicznego program przekierowuje klienta zgodnie z wyborem dostawcy oświadczeń lub wysyła do usługi Exchange oświadczenia serwera. |
 
 
 #### <a name="precondition"></a>Warunek wstępny
 
 Element **Conditional** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| `Type` | Tak | Typ sprawdzenia lub zapytania, które ma zostać wykonane dla tego warunku wstępnego. Wartość może być **ClaimsExist**, która określa, że akcje należy wykonać, jeśli określone oświadczenia istnieją w bieżącym zestawie oświadczeń użytkownika lub **ClaimEquals**, które określa, że akcje należy wykonać, jeśli istnieje określone oświadczenie, a jego wartość jest równa określonej wartości. |
-| `ExecuteActionsIf` | Tak | Użyj testu "prawda" lub "fałsz", aby określić, czy akcje w warunku wstępnym mają być wykonywane. | 
+| `Type` | Yes | Typ sprawdzenia lub zapytania, które ma zostać wykonane dla tego warunku wstępnego. Wartość może być **ClaimsExist**, która określa, że akcje należy wykonać, jeśli określone oświadczenia istnieją w bieżącym zestawie oświadczeń użytkownika lub **ClaimEquals**, które określa, że akcje należy wykonać, jeśli istnieje określone oświadczenie, a jego wartość jest równa określonej wartości. |
+| `ExecuteActionsIf` | Yes | Użyj testu "prawda" lub "fałsz", aby określić, czy akcje w warunku wstępnym mają być wykonywane. |
 
 Elementy **warunku wstępnego** zawierają następujące elementy:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
 | Wartość | 1: n | ClaimTypeReferenceId do zapytania. Inny element wartości zawiera wartość, która ma zostać sprawdzona.</li></ul>|
-| Działanie | 1:1 | Akcja, która powinna zostać wykonana, jeśli w kroku aranżacji jest spełniony warunek wstępny. Jeśli wartość `Action` jest ustawiona na `SkipThisOrchestrationStep`, skojarzone `OrchestrationStep` nie powinny być wykonywane. | 
+| Akcja | 1:1 | Akcja, która powinna zostać wykonana, jeśli w kroku aranżacji jest spełniony warunek wstępny. Jeśli wartość `Action` jest ustawiona na `SkipThisOrchestrationStep`, skojarzone `OrchestrationStep` nie powinny być wykonywane. |
 
 #### <a name="preconditions-examples"></a>Przykłady warunków wstępnych
 
@@ -151,7 +151,7 @@ Warunki wstępne mogą sprawdzić wiele warunków wstępnych. Poniższy przykła
       <Value>email</Value>
       <Action>SkipThisOrchestrationStep</Action>
     </Precondition>
-  </Preconditions>      
+  </Preconditions>
   <ClaimsExchanges>
     <ClaimsExchange Id="SelfAsserted-SocialEmail" TechnicalProfileReferenceId="SelfAsserted-SocialEmail" />
   </ClaimsExchanges>
@@ -168,17 +168,17 @@ Element **ClaimsProviderSelections** zawiera następujący element:
 | ------- | ----------- | ----------- |
 | ClaimsProviderSelection | 1: n | Zawiera listę dostawców oświadczeń, które można wybrać.|
 
-Element **ClaimsProviderSelections** zawiera następujące atrybuty: 
+Element **ClaimsProviderSelections** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| DisplayOption| Nie | Steruje zachowaniem przypadku, gdy dostępny jest pojedynczy wybór dostawcy oświadczeń. Możliwe wartości: `DoNotShowSingleProvider` (domyślnie), użytkownik zostanie natychmiast przekierowany do dostawcy tożsamości federacyjnych. Lub `ShowSingleProvider` Azure AD B2C przedstawia stronę logowania przy użyciu wyboru dostawcy pojedynczej tożsamości. Aby można było użyć tego atrybutu, [wersja definicji zawartości](page-layout.md) musi być `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` i nowsza.| 
+| DisplayOption| Nie | Steruje zachowaniem przypadku, gdy dostępny jest pojedynczy wybór dostawcy oświadczeń. Możliwe wartości: `DoNotShowSingleProvider` (domyślnie), użytkownik zostanie natychmiast przekierowany do dostawcy tożsamości federacyjnych. Lub `ShowSingleProvider` Azure AD B2C przedstawia stronę logowania przy użyciu wyboru dostawcy pojedynczej tożsamości. Aby można było użyć tego atrybutu, [wersja definicji zawartości](page-layout.md) musi być `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` i nowsza.|
 
-Element **ClaimsProviderSelection** zawiera następujące atrybuty: 
+Element **ClaimsProviderSelection** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| TargetClaimsExchangeId | Nie | Identyfikator wymiany oświadczeń, który jest wykonywany w następnym kroku aranżacji wybranego dostawcy oświadczeń. Ten atrybut lub atrybut ValidationClaimsExchangeId musi być określony, ale nie oba. | 
+| TargetClaimsExchangeId | Nie | Identyfikator wymiany oświadczeń, który jest wykonywany w następnym kroku aranżacji wybranego dostawcy oświadczeń. Ten atrybut lub atrybut ValidationClaimsExchangeId musi być określony, ale nie oba. |
 | ValidationClaimsExchangeId | Nie | Identyfikator wymiany oświadczeń, który jest wykonywany w bieżącym kroku aranżacji w celu zweryfikowania wyboru dostawcy oświadczeń. Ten atrybut lub atrybut TargetClaimsExchangeId musi być określony, ale nie oba. |
 
 ### <a name="claimsproviderselection-example"></a>Przykład ClaimsProviderSelection
@@ -195,7 +195,7 @@ W poniższym kroku aranżacji użytkownik może zalogować się przy użyciu kon
     <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
     </ClaimsProviderSelections>
     <ClaimsExchanges>
-    <ClaimsExchange Id="LocalAccountSigninEmailExchange" 
+    <ClaimsExchange Id="LocalAccountSigninEmailExchange"
                     TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
     </ClaimsExchanges>
 </OrchestrationStep>
@@ -224,11 +224,11 @@ Element **ClaimsExchanges** zawiera następujący element:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | ----------- |
-| ClaimsExchange | 1: n | W zależności od używanego profilu technicznego program przekierowuje klienta zgodnie z wybraną ClaimsProviderSelection lub przetworzy połączenie serwera do oświadczeń programu Exchange. | 
+| ClaimsExchange | 1: n | W zależności od używanego profilu technicznego program przekierowuje klienta zgodnie z wybraną ClaimsProviderSelection lub przetworzy połączenie serwera do oświadczeń programu Exchange. |
 
 Element **ClaimsExchange** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Tak | Identyfikator kroku wymiany oświadczeń. Identyfikator jest używany do odwoływania się do wymiany oświadczeń z poziomu dostawcy oświadczeń w ramach zasad. | 
-| TechnicalProfileReferenceId | Tak | Identyfikator profilu technicznego, który ma zostać wykonany. |
+| Identyfikator | Yes | Identyfikator kroku wymiany oświadczeń. Identyfikator jest używany do odwoływania się do wymiany oświadczeń z poziomu dostawcy oświadczeń w ramach zasad. |
+| TechnicalProfileReferenceId | Yes | Identyfikator profilu technicznego, który ma zostać wykonany. |

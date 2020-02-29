@@ -3,21 +3,21 @@ title: Konfigurowanie logowania dla organizacji usługi Azure AD
 titleSuffix: Azure AD B2C
 description: Skonfiguruj logowanie do konkretnej organizacji Azure Active Directory w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b0ff1c2d913d0a4402b491f3c84ce0d35cd081df
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 35fc4e1d64fa7df392fa878db14c0464da7dccf4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847591"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188311"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Konfigurowanie logowania dla konkretnej organizacji Azure Active Directory w programie Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ Aby użyć Azure Active Directory (Azure AD) jako [dostawcy tożsamości](author
 
 Aby włączyć Logowanie użytkowników z określonej organizacji usługi Azure AD, musisz zarejestrować aplikację w ramach organizacji dzierżawy usługi Azure AD, która nie jest taka sama jak dzierżawy Azure AD B2C.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Upewnij się, że używasz katalogu, który zawiera dzierżawę usługi Azure AD. W górnym menu wybierz pozycję **katalog i subskrypcja** , a następnie wybierz katalog zawierający dzierżawę usługi Azure AD. To nie jest ta sama dzierżawa, co dzierżawa Azure AD B2C.
 3. Wybierz pozycję **wszystkie usługi** w lewym górnym rogu Azure Portal, a następnie wyszukaj i wybierz pozycję **rejestracje aplikacji**.
 4. Wybierz pozycję **Nowa rejestracja**.

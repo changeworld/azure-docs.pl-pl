@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 84ef01b5e7fc3f628b1cdf7a1f13175604ebcdd4
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 60f6443e041c2f3a76a9027bebd33dc29a07f445
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137955"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197474"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Instrukcje: wykrywanie tonacji przy użyciu interfejs API analizy tekstu
 
@@ -50,7 +50,7 @@ Interfejs API analizy tekstu oferuje dwie wersje analiza tonacji-v2 i v3. Analiz
 | Etykietowanie tonacji                        |                       | X                     |
 | Przechowywanie wersji modelu                   |                       | X                     |
 
-#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Wersja 3,0-Preview](#tab/version-3)
 
 ### <a name="sentiment-scoring"></a>Ocenianie tonacji
 
@@ -76,10 +76,10 @@ Analiza tonacji v3 może zwracać wyniki i etykiety na poziomie zdania i dokumen
 
 ### <a name="example-c-code"></a>Przykładowy C# kod
 
-Przykładową C# aplikację, która wywołuje tę wersję analiza tonacji w serwisie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs), można znaleźć.
+Przykładową C# aplikację, która wywołuje tę wersję analiza tonacji w serwisie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/TextAnalyticsSentiment.cs), można znaleźć.
 
 
-#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Wersja 2,1](#tab/version-2)
 
 ### <a name="sentiment-scoring"></a>Ocenianie tonacji
 
@@ -101,11 +101,11 @@ Rozmiar dokumentu musi zawierać 5 120 znaków na dokument. Możesz mieć do 1 0
 
 Utwórz żądanie POST. Możesz [użyć programu Poster](text-analytics-how-to-call-api.md) lub **konsoli testowania interfejsu API** w poniższych linkach referencyjnych, aby szybko ją i ją wysłać. 
 
-#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Wersja 3,0-Preview](#tab/version-3)
 
 [Informacje dotyczące analiza tonacji v3](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
 
-#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Wersja 2,1](#tab/version-2)
 
 [Dokumentacja analiza tonacji v2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
@@ -116,11 +116,11 @@ Ustaw punkt końcowy HTTPS na potrzeby analizy tonacji przy użyciu zasobu anali
 > [!NOTE]
 > Klucz i punkt końcowy dla zasobu analiza tekstu można znaleźć w witrynie Azure Portal. Zostaną one umieszczone na stronie **szybkiego startu** zasobu w obszarze **Zarządzanie zasobami**. 
 
-#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Wersja 3,0-Preview](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
 
-#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Wersja 2,1](#tab/version-2)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
@@ -162,7 +162,7 @@ Analizator tonacji klasyfikuje tekst jako "dodatnie" lub ujemne. Przypisuje wyni
 
 Dane wyjściowe są zwracane natychmiast. Można przesyłać strumieniowo wyniki do aplikacji, która akceptuje kod JSON lub zapisuje dane wyjściowe do pliku w systemie lokalnym. Następnie zaimportuj dane wyjściowe do aplikacji, która może być używana do sortowania, wyszukiwania i manipulowania danymi.
 
-#### <a name="version-30-previewtabversion-3"></a>[Wersja 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Wersja 3,0-Preview](#tab/version-3)
 
 ### <a name="sentiment-analysis-v3-example-response"></a>Przykładowa odpowiedź analiza tonacji v3
 
@@ -238,7 +238,7 @@ Odpowiedzi z analiza tonacji v3 zawierają etykiety i oceny tonacji dla każdego
 }
 ```
 
-#### <a name="version-21tabversion-2"></a>[Wersja 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Wersja 2,1](#tab/version-2)
 
 ### <a name="sentiment-analysis-v2-example-response"></a>Przykładowa odpowiedź analiza tonacji v2
 

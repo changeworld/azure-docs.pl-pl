@@ -7,12 +7,12 @@ ms.date: 12/10/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: a34fdc2f6d6698f53dc2ff7fdc11d0a985b23415
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6ccd3cc61f9d8244874823be76496a4f4e1073c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473129"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199771"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Szybki Start: V12 biblioteki klienta usługi Azure queue storage dla języka Python
 
@@ -28,7 +28,7 @@ Użyj biblioteki klienta usługi Azure queue storage V12 dla języka Python, aby
 * Usuwanie komunikatów z kolejki
 * Usuwanie kolejki
 
-[Dokumentacja referencyjna interfejsu API](https://docs.microsoft.com/python/api/azure-storage-queue/index) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) [(indeks pakietu Python)](https://pypi.org/project/azure-storage-queue/) | [przykładów](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
+[Dokumentacja referencyjna interfejsu API](https://docs.microsoft.com/python/api/azure-storage-queue/index) |  | pakietu [kodu źródłowego biblioteki](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) [(indeks pakietu Python)](https://pypi.org/project/azure-storage-queue/) | [przykładów](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

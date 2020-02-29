@@ -3,20 +3,20 @@ title: Zdefiniuj profil techniczny z własnym potwierdzeniem w zasadach niestand
 titleSuffix: Azure AD B2C
 description: Zdefiniuj profil techniczny z własnym potwierdzeniem w zasadach niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/17/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8f2a86f72f16a23b0133601cfe41b9e636d8866d
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e0a282be9b8a20c64cd3e74e7860a289baa5aec6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425599"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183809"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj własny profil techniczny w Azure Active Directory B2C zasad niestandardowych
 
@@ -198,7 +198,7 @@ Możesz również wywołać profil techniczny interfejsu API REST z logiką bizn
 | Ustawianie. showCancelButton | Nie | Wyświetla przycisk Anuluj. Możliwe wartości: `true` (wartość domyślna) lub `false` |
 | Ustawianie. showContinueButton | Nie | Wyświetla przycisk Kontynuuj. Możliwe wartości: `true` (wartość domyślna) lub `false` |
 | Ustawianie. showSignupLink <sup>2</sup>| Nie | Wyświetla przycisk rejestracji. Możliwe wartości: `true` (wartość domyślna) lub `false` |
-| Ustawianie. forgotPasswordLinkLocation <sup>2</sup>| Nie| Wyświetla łącze zapomniane hasło. Możliwe wartości: `AfterInput` (domyślnie) łącze jest wyświetlane w dolnej części strony lub `None` usuwa łącze zapomniane hasło.| 
+| Ustawianie. forgotPasswordLinkLocation <sup>2</sup>| Nie| Wyświetla łącze zapomniane hasło. Możliwe wartości: `AfterInput` (domyślnie) łącze jest wyświetlane w dolnej części strony lub `None` usuwa łącze zapomniane hasło.|
 | IncludeClaimResolvingInClaimsHandling  | Nie | W przypadku oświadczeń wejściowych i wyjściowych określa, czy w profilu technicznym znajduje się [rozpoznawanie oświadczeń](claim-resolver-overview.md) . Możliwe wartości: `true`lub `false` (wartość domyślna). Jeśli chcesz użyć programu rozpoznawania oświadczeń w profilu technicznym, ustaw tę opcję na `true`. |
 
 Uwagi:

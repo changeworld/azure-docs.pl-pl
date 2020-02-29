@@ -10,22 +10,22 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: abeb5c125a746842f522030878f93941450df974
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685994"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200553"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Dostrajanie wydajności z uporządkowanym klastrowanym indeksem magazynu kolumn  
 
-Gdy użytkownicy wysyłają zapytanie do tabeli magazynu kolumn w Azure SQL Data Warehouse, optymalizator sprawdza wartości minimalne i maksymalne przechowywane w każdym segmencie.  Segmenty, które znajdują się poza granicami predykatu zapytania, nie są odczytywane z dysku do pamięci.  Zapytanie może zwiększyć wydajność, jeśli liczba segmentów do odczytu i ich łączny rozmiar jest mały.   
+Gdy użytkownicy wysyłają zapytania do tabeli magazynu kolumn w usłudze SQL Analytics, optymalizator sprawdza wartości minimalne i maksymalne przechowywane w poszczególnych segmentach.  Segmenty, które znajdują się poza granicami predykatu zapytania, nie są odczytywane z dysku do pamięci.  Zapytanie może zwiększyć wydajność, jeśli liczba segmentów do odczytu i ich łączny rozmiar jest mały.   
 
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Uporządkowany a nieuporządkowany klastrowany indeks magazynu kolumn 
-Domyślnie dla każdej tabeli magazynu danych platformy Azure, która została utworzona bez opcji indeksu, składnik wewnętrzny (Konstruktor indeksowania) tworzy na nim nieuporządkowany klastrowany indeks magazynu kolumn (WIK).  Dane w każdej kolumnie są kompresowane do oddzielnego segmentu grupy wierszy WIK.  Istnieją metadane dla każdego zakresu wartości segmentu, dlatego segmenty, które znajdują się poza granicami predykatu zapytania, nie są odczytywane z dysku podczas wykonywania zapytania.  WIK oferuje najwyższy poziom kompresji danych i zmniejsza rozmiar segmentów do odczytu, dzięki czemu zapytania mogą działać szybciej. Jednak ponieważ Konstruktor indeksu nie sortuje danych przed ich kompresowaniem do segmentów, mogą wystąpić segmenty z nakładającymi się zakresami wartości, co sprawia, że zapytania odczytują więcej segmentów z dysku i trwają dłużej.  
+Domyślnie dla każdej tabeli analizy SQL, która została utworzona bez opcji indeksu, składnik wewnętrzny (Konstruktor indeksowania) tworzy na nim nieuporządkowany klastrowany indeks magazynu kolumn (WIK).  Dane w każdej kolumnie są kompresowane do oddzielnego segmentu grupy wierszy WIK.  Istnieją metadane dla każdego zakresu wartości segmentu, dlatego segmenty, które znajdują się poza granicami predykatu zapytania, nie są odczytywane z dysku podczas wykonywania zapytania.  WIK oferuje najwyższy poziom kompresji danych i zmniejsza rozmiar segmentów do odczytu, dzięki czemu zapytania mogą działać szybciej. Jednak ponieważ Konstruktor indeksu nie sortuje danych przed ich kompresowaniem do segmentów, mogą wystąpić segmenty z nakładającymi się zakresami wartości, co sprawia, że zapytania odczytują więcej segmentów z dysku i trwają dłużej.  
 
-Podczas tworzenia uporządkowanej WIK, aparat Azure SQL Data Warehouse sortuje istniejące dane w pamięci przez klucze kolejności, zanim Konstruktor index kompresuje je do segmentów indeksu.  Posortowane dane, nakładające się segmenty, zmniejszają się, umożliwiając wykonywanie zapytań o bardziej wydajny sposób eliminacji segmentów, co zwiększa wydajność, ponieważ liczba segmentów odczytywanych z dysku jest mniejsza.  Jeśli wszystkie dane można sortować jednocześnie w pamięci, można uniknąć nakładania się segmentów.  W przypadku dużej ilości danych w tabelach magazynu danych ten scenariusz nie jest często wykonywany.  
+Podczas tworzenia uporządkowanej WIK aparat analityczny SQL sortuje istniejące dane w pamięci przez klucze kolejności, zanim Konstruktor index kompresuje je do segmentów indeksu.  Posortowane dane, nakładające się segmenty, zmniejszają się, umożliwiając wykonywanie zapytań o bardziej wydajny sposób eliminacji segmentów, co zwiększa wydajność, ponieważ liczba segmentów odczytywanych z dysku jest mniejsza.  Jeśli wszystkie dane można sortować jednocześnie w pamięci, można uniknąć nakładania się segmentów.  W przypadku dużej ilości danych w tabelach analitycznych SQL ten scenariusz nie jest często wykonywany.  
 
 Aby sprawdzić zakresy segmentów dla kolumny, Uruchom to polecenie z nazwą tabeli i nazwą kolumny:
 
@@ -44,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> W tabeli uporządkowanej WIK nowe dane, które wynikają z tej samej partii operacji ładowania DML lub danych, są sortowane w tej partii, nie istnieje sortowanie globalne dla wszystkich danych w tabeli.  Użytkownicy mogą odbudować uporządkowaną WIK, aby posortować wszystkie dane w tabeli.  W Azure SQL Data Warehouse ponowne KOMPILOWAnie indeksu magazynu kolumn jest operacją offline.  W przypadku partycjonowanej tabeli ponowne KOMPILOWAnie wykonuje jedną partycję w danym momencie.  Dane w partycji, która jest ponownie skompilowana, są w trybie offline i niedostępne do momentu ukończenia odbudowy dla tej partycji. 
+> W tabeli uporządkowanej WIK nowe dane, które wynikają z tej samej partii operacji ładowania DML lub danych, są sortowane w tej partii, nie istnieje sortowanie globalne dla wszystkich danych w tabeli.  Użytkownicy mogą odbudować uporządkowaną WIK, aby posortować wszystkie dane w tabeli.  W usłudze SQL Analytics indeks magazynu kolumn jest ponownie przełączony do trybu offline.  W przypadku partycjonowanej tabeli ponowne KOMPILOWAnie wykonuje jedną partycję w danym momencie.  Dane w partycji, która jest ponownie skompilowana, są w trybie offline i niedostępne do momentu ukończenia odbudowy dla tej partycji. 
 
 ## <a name="query-performance"></a>Wydajność zapytań
 
@@ -55,7 +55,7 @@ Zapytania ze wszystkimi tymi wzorcami zazwyczaj działają szybciej przy użyciu
 1. Kolumny predykatu i uporządkowane kolumny WIK są takie same.  
 1. Kolumny predykatu są używane w tej samej kolejności co numer kolumny uporządkowanej kolumny WIK.  
  
-W tym przykładzie tabela T1 ma klastrowany indeks magazynu kolumn uporządkowany według sekwencji Col_C, Col_B i Col_A.
+W tym przykładzie tabela T1 ma klastrowany indeks magazynu kolumn uporządkowany w sekwencji Col_C, Col_B i Col_A.
 
 ```sql
 
@@ -110,7 +110,7 @@ CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX O
 AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
-- Przed załadowaniem danych do tabel Azure SQL Data Warehouse należy je wstępnie sortować według kluczy sortowania.
+- Przed załadowaniem danych do tabel analitycznych SQL należy je wstępnie sortować według kluczy sortowania.
 
 
 Oto przykład uporządkowanej dystrybucji tabel WIK, która ma zerowy segment nakładający się na poniższe zalecenia. Uporządkowana tabela WIK jest tworzona w bazie danych DWU1000c za pośrednictwem CTAS z tabeli sterty 20 GB z użyciem MAXDOP 1 i xlargerc.  WIK jest uporządkowana w kolumnie BIGINT bez duplikatów.  
@@ -123,7 +123,7 @@ Tworzenie uporządkowanej WIK jest operacją offline.  W przypadku tabel bez par
 1.  Utwórz partycje w docelowej dużej tabeli (o nazwie Table_A).
 2.  Utwórz pustą tabelę z uporządkowaną WIK (o nazwie Table_B) z tą samą tabelą i schematem partycji co tabela A.
 3.  Przełącz jedną partycję z tabeli A na tabelę B.
-4.  Uruchom polecenie ALTER INDEX < Ordered_CCI_Index > na < Table_B > Rebuild PARTITION = < Partition_ID > w tabeli B w celu odbudowania partycji przełączanej.  
+4.  Uruchom polecenie ALTER INDEX < Ordered_CCI_Index > na < Table_B > Rebuild PARTITION = < Partition_ID > w tabeli B w celu odbudowania partycji przełączonej.  
 5.  Powtórz kroki 3 i 4 dla każdej partycji w Table_A.
 6.  Po przełączeniu wszystkich partycji z Table_A do Table_B i zostały one ponownie skompilowane, Porzuć Table_A i Zmień nazwę Table_B na Table_A. 
 
@@ -145,4 +145,4 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Więcej porad programistycznych znajdziesz w artykule [Omówienie programowania w usłudze SQL Data Warehouse](sql-data-warehouse-overview-develop.md).
+Aby uzyskać więcej porad programistycznych, zobacz [Omówienie projektowania](sql-data-warehouse-overview-develop.md).

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 71df31562971af8bcdb38be76894c1d0abeccc3f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: cb68f1bc851a8573ddec01d1eee803135a11b067
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925581"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195364"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Usługi platformy Azure, które obsługują Azure Data Lake Storage Gen2
 
 Usług platformy Azure można używać do pozyskiwania danych, wykonywania analiz i tworzenia wizualizacji wizualnych. Ten artykuł zawiera listę obsługiwanych usług platformy Azure, odmknął swój poziom wsparcia i zawiera linki do artykułów, które ułatwiają korzystanie z tych usług w Azure Data Lake Storage Gen2.
 
-## <a name="supportedazureservices"></a>Obsługiwane usługi platformy Azure
+## <a name="supported-azure-services"></a>Obsługiwane usługi platformy Azure
 
 Ta tabela zawiera listę usług platformy Azure, których można używać z usługą Azure Data Lake Storage Gen2. Elementy, które pojawiają się w tych tabelach, zmienią się w miarę upływu czasu, gdy obsługa będzie nadal rozszerzana.
 
@@ -36,7 +36,7 @@ Ta tabela zawiera listę usług platformy Azure, których można używać z usł
 |Usługa Azure Stream Analytics|Ogólnie dostępna|[Szybki Start: Tworzenie zadania Stream Analytics przy użyciu Azure Portal](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Ruch wychodzący do Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
 |Data Box| Ogólnie dostępna|[Używanie Azure Data Box do migrowania danych z lokalnego magazynu systemu plików HDFS do usługi Azure Storage](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
 |HDInsight | Ogólnie dostępna|[Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[Korzystanie z interfejsu wiersza polecenia systemu plików HDFS z Data Lake Storage Gen2](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu Apache Hive w usłudze Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)|
-|Centrum IoT | Ogólnie dostępna|[Używanie routingu komunikatów IoT Hub do wysyłania komunikatów z urządzenia do chmury do różnych punktów końcowych](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|
+|Usługa IoT Hub | Ogólnie dostępna|[Używanie routingu komunikatów IoT Hub do wysyłania komunikatów z urządzenia do chmury do różnych punktów końcowych](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|
 |Power BI| Ogólnie dostępna|[Analizowanie danych w Data Lake Storage Gen2 przy użyciu Power BI](https://docs.microsoft.com/power-query/connectors/datalakestorage)|
 |SQL Data Warehouse|Ogólnie dostępna|[Używanie z Azure SQL Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
 |Usługi SQL Server Integration Services (SSIS)|Ogólnie dostępna|[Menedżer połączeń usługi Azure Storage](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|

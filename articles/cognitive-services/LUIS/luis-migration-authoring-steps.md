@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 9c92a3ad2fc6a372b58aa651228a7bbccdf8ba0a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552030"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194646"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Kroki migracji do zasobu tworzenia platformy Azure
 
@@ -32,7 +32,10 @@ Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się](https://azure.mi
 
 ## <a name="access-the-migration-process"></a>Dostęp do procesu migracji
 
-Co tydzień zostanie wyświetlony monit o migrację aplikacji. To okno można anulować bez migrowania. Jeśli chcesz przeprowadzić migrację przed następnym zaplanowanym okresem, możesz rozpocząć proces migracji z ikony **kłódki** na górnym pasku narzędzi portalu Luis.
+Co tydzień zostanie wyświetlony monit o migrację aplikacji. To okno można anulować bez migrowania. Jeśli chcesz przeprowadzić migrację przed następnym zaplanowanym okresem, możesz rozpocząć proces migracji z ikony **platformy Azure** na górnym pasku narzędzi portalu Luis.
+
+> [!div class="mx-imgBorder"]
+> ikona migracji ![](./media/migrate-authoring-key/migration-button.png)
 
 ## <a name="app-owner-begins-the-migration-process"></a>Właściciel aplikacji rozpoczyna proces migracji
 

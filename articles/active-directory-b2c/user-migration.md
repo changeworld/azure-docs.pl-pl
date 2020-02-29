@@ -3,20 +3,20 @@ title: Podejście do migracji użytkowników
 titleSuffix: Azure AD B2C
 description: Przeprowadź migrację kont użytkowników z innego dostawcy tożsamości do Azure AD B2C przy użyciu metod importowania zbiorczego lub bezproblemowej migracji.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 759379d99bbd422c43998997be1d52ecbf34966d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 90ef9402e0891915be4ed6bb89573eced546c59a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484296"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183146"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrowanie użytkowników do Azure AD B2C
 
@@ -67,7 +67,7 @@ Aby zapoznać się z przykładem niestandardowych zasad i interfejsu API REST, z
 
 ![diagram schematu blokowego dla bezproblemowego podejścia migracji do migracji użytkowników](./media/user-migration/diagram-01-seamless-migration.png)<br />*Diagram: bezproblemowe przenoszenie przepływu*
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 
 ### <a name="security"></a>Bezpieczeństwo
 

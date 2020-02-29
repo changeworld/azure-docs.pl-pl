@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: aef4061a8349e6602ac4394cb31bbe76b6cb63c0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976295"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197321"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Korzystanie z Key Vault nietrwałego usuwania przy użyciu interfejsu wiersza polecenia
 
@@ -35,8 +36,8 @@ Operacje Key Vault są zarządzane oddzielnie za pośrednictwem uprawnień kontr
 | Operacja | Opis | Uprawnienie użytkownika |
 |:--|:--|:--|
 |List|Wyświetla listę usuniętych magazynów kluczy.|Microsoft.KeyVault/deletedVaults/read|
-|Odzyskaj|Przywraca usunięty Magazyn kluczy.|Microsoft.KeyVault/vaults/write|
-|Przeczyść|Trwale usuwa usunięty Magazyn kluczy i całą jego zawartość.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
+|Recover|Przywraca usunięty Magazyn kluczy.|Microsoft.KeyVault/vaults/write|
+|Purge|Trwale usuwa usunięty Magazyn kluczy i całą jego zawartość.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
 Aby uzyskać więcej informacji na temat uprawnień i kontroli dostępu, zobacz temat [Zabezpieczanie magazynu kluczy](key-vault-secure-your-key-vault.md).
 
@@ -150,7 +151,7 @@ Aby trwale usunąć (nazywane także przeczyszczaniem) klucz nietrwałego:
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-Akcje odzyskania i **przeczyszczania** mają własne uprawnienia skojarzone z zasadami dostępu magazynu kluczy. Aby użytkownik lub usługa mogła wykonać akcję odzyskania lub przeczyszczania , muszą mieć odpowiednie uprawnienia do tego klucza lub wpisu tajnego. Domyślnie przeczyszczanie nie jest dodawane do zasad dostępu magazynu kluczy, gdy skrót "wszystkie" jest używany do udzielania wszystkich uprawnień. Musisz jawnie udzielić uprawnienia do przeczyszczania. 
+Akcje **odzyskania** i **przeczyszczania** mają własne uprawnienia skojarzone z zasadami dostępu magazynu kluczy. Aby użytkownik lub usługa mogła wykonać akcję **odzyskania** lub **przeczyszczania** , muszą mieć odpowiednie uprawnienia do tego klucza lub wpisu tajnego. Domyślnie **przeczyszczanie** nie jest dodawane do zasad dostępu magazynu kluczy, gdy skrót "wszystkie" jest używany do udzielania wszystkich uprawnień. Musisz jawnie udzielić uprawnienia do **przeczyszczania** . 
 
 #### <a name="set-a-key-vault-access-policy"></a>Ustawianie zasad dostępu do magazynu kluczy
 
@@ -206,7 +207,7 @@ Ta sama wartość dotyczy magazynu kluczy. W celu trwałego usunięcia nietrwał
 
 ### <a name="purging-a-key-vault"></a>Przeczyszczanie magazynu kluczy
 
-Po przeczyszczeniu magazynu kluczy jego cała zawartość jest trwale usuwana, w tym kluczy, wpisów tajnych i certyfikatów. Aby przeczyścić Magazyn kluczy usunięty z nietrwałego `az keyvault purge` , użyj polecenia. Lokalizację usuniętych magazynów kluczy subskrypcji można znaleźć za pomocą polecenia `az keyvault list-deleted`.
+Po przeczyszczeniu magazynu kluczy jego cała zawartość jest trwale usuwana, w tym kluczy, wpisów tajnych i certyfikatów. Aby przeczyścić Magazyn kluczy usunięty z nietrwałego, użyj polecenia `az keyvault purge`. Lokalizację usuniętych magazynów kluczy subskrypcji można znaleźć za pomocą polecenia `az keyvault list-deleted`.
 
 ```azurecli
 az keyvault purge --location westus --name ContosoVault
@@ -222,7 +223,7 @@ az keyvault purge --location westus --name ContosoVault
 Wyświetlanie listy usuniętych obiektów magazynu kluczy również pokazuje, kiedy mają być przeczyszczone przez Key Vault. *Zaplanowana data przeczyszczania* wskazuje, kiedy obiekt magazynu kluczy zostanie trwale usunięty, jeśli nie zostanie podjęta żadna akcja. Domyślnie okres przechowywania usuniętego obiektu magazynu kluczy wynosi 90 dni.
 
 >[!IMPORTANT]
->Przeczyszczony obiekt magazynu wyzwalany przez zaplanowaną wartość pola *Data przeczyszczania* zostanie trwale usunięty. Nie jest możliwe do odzyskania!
+>Przeczyszczony obiekt magazynu wyzwalany przez *zaplanowaną wartość pola Data przeczyszczania* zostanie trwale usunięty. Nie jest możliwe do odzyskania!
 
 ## <a name="enabling-purge-protection"></a>Włączanie ochrony przed czyszczeniem
 

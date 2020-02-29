@@ -2,20 +2,20 @@
 title: Samouczek — Tworzenie dzierżawy Azure Active Directory B2C
 description: Dowiedz się, jak przygotować się do rejestracji aplikacji, tworząc dzierżawę Azure Active Directory B2C przy użyciu Azure Portal.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/28/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9cb23dc11a853401d8d99a750a0c79082adbe036
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: c31f3c4c6688af7d2142180e8d9b7100965bad96
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547595"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186407"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Samouczek: Tworzenie dzierżawy Azure Active Directory B2C
 
@@ -35,7 +35,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Tworzenie dzierżawy usługi Azure AD B2C
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/). Zaloguj się przy użyciu konta platformy Azure, do którego przypisano co najmniej rolę [współautor](../role-based-access-control/built-in-roles.md) w ramach subskrypcji lub grupy zasobów w ramach subskrypcji.
+1. Zaloguj się do [Azure portal](https://portal.azure.com/). Zaloguj się przy użyciu konta platformy Azure, do którego przypisano co najmniej rolę [współautor](../role-based-access-control/built-in-roles.md) w ramach subskrypcji lub grupy zasobów w ramach subskrypcji.
 
 1. Wybierz katalog, który zawiera twoją subskrypcję.
 
@@ -43,7 +43,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
     ![Dzierżawa subskrypcji, katalog + subskrypcja z wybraną dzierżawą subskrypcji](media/tutorial-create-tenant/portal-01-pick-directory.png)
 
-1. W menu witryny Azure Portal lub na **stronie głównej** wybierz pozycję **Utwórz zasób**.
+1. W menu Azure Portal lub na stronie **głównej** wybierz pozycję **Utwórz zasób**.
 1. Wyszukaj **Azure Active Directory B2C**, a następnie wybierz pozycję **Utwórz**.
 1. Wybierz pozycję **Utwórz nową dzierżawę usługi Azure AD B2C**.
 
@@ -68,8 +68,8 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     W obszarze **Grupa zasobów** wybierz pozycję **Utwórz nową**. Wprowadź **nazwę** grupy zasobów, która będzie zawierać dzierżawę, wybierz **lokalizację grupy zasobów**, a następnie wybierz pozycję **Utwórz**.
 
     ![Formularz ustawień subskrypcji linku w Azure Portal](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
-    
-    Możesz połączyć wiele dzierżawców Azure AD B2C z pojedynczą subskrypcją platformy Azure na potrzeby rozliczeń. 
+
+    Możesz połączyć wiele dzierżawców Azure AD B2C z pojedynczą subskrypcją platformy Azure na potrzeby rozliczeń.
 
 ## <a name="select-your-b2c-tenant-directory"></a>Wybierz katalog dzierżawy B2C
 
@@ -89,7 +89,7 @@ Zamiast wyszukiwania *Azure AD B2C* we **wszystkich usługach** za każdym razem
 
 Wystarczy wykonać tę operację tylko raz. Przed wykonaniem tych kroków upewnij się, że została przełączona do katalogu zawierającego dzierżawę Azure AD B2C, zgodnie z opisem w poprzedniej sekcji, [Wybierz katalog dzierżawy B2C](#select-your-b2c-tenant-directory).
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. W menu Azure Portal wybierz pozycję **wszystkie usługi**.
 1. W polu wyszukiwania **wszystkie usługi** wyszukaj pozycję **Azure AD B2C**, umieść kursor nad wynikiem wyszukiwania, a następnie wybierz ikonę gwiazdki w etykietce narzędzia. **Azure AD B2C** teraz pojawia się w Azure Portal w obszarze **Ulubione**.
 1. Jeśli chcesz zmienić położenie nowego elementu ulubionego, przejdź do menu Azure Portal, wybierz pozycję **Azure AD B2C**, a następnie przeciągnij go w górę lub w dół do żądanej pozycji.

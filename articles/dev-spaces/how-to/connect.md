@@ -1,16 +1,16 @@
 ---
-title: Łączenie komputera deweloperskiego z klastrem AKS
+title: Łączenie komputera deweloperskiego z klastrem AKS (wersja zapoznawcza)
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Dowiedz się, jak połączyć maszynę deweloperskią z klastrem AKS przy użyciu Azure Dev Spaces
 keywords: Azure Dev Spaces, Spaces dev, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontenery
-ms.openlocfilehash: cba68702155475832930c791c3a7be014375ba04
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 13e6f16e66941be0ae463e8280827dc0b8183450
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770683"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196097"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Łączenie komputera deweloperskiego z klastrem AKS (wersja zapoznawcza)
 
@@ -18,7 +18,7 @@ Azure Dev Spaces umożliwia uruchamianie i debugowanie kodu z lub bez kontenera 
 
 Azure Dev Spaces przekierowuje ruch między podłączonym klastrem AKS a maszyną deweloperskią. To przekierowywanie ruchu umożliwia kod na komputerze deweloperskim i usługach uruchomionych w klastrze AKS, aby komunikować się tak, jakby znajdowały się w tym samym klastrze AKS. Ponieważ Twój kod jest uruchomiony na komputerze deweloperskim, masz również elastyczność w narzędziach programistycznych, które są używane do uruchamiania i debugowania tego kodu. Azure Dev Spaces zapewnia również sposób replikowania zmiennych środowiskowych i zainstalowanych plików dostępnych dla zasobników w klastrze AKS na komputerze deweloperskim.
 
-Ten przewodnik zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czynności:
 
 * Skonfiguruj Azure Dev Spaces w zarządzanym klastrze Kubernetes na platformie Azure.
 * Wdróż dużą aplikację z wieloma mikrousługami w miejscu dev.

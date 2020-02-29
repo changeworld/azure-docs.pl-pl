@@ -3,20 +3,20 @@ title: Zarządzanie sesjami logowania jednokrotnego przy użyciu zasad niestanda
 titleSuffix: Azure AD B2C
 description: Dowiedz się, jak zarządzać sesjami logowania jednokrotnego przy użyciu zasad niestandardowych w programie Azure AD B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b905591266b90e5bba83e7c74b27e7f6b3cab610
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a64af5d2b19b05ec9a5eda97c43e278cdfb8b4ff
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912549"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189110"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Zarządzanie sesjami logowania jednokrotnego w usłudze Azure Active Directory B2C
 
@@ -39,11 +39,11 @@ Klasy zarządzania logowaniem jednokrotnym są określane przy użyciu elementu 
 
 ## <a name="input-claims"></a>Oświadczenia wejściowe
 
-Element `InputClaims` jest pusty lub nie istnieje. 
+Element `InputClaims` jest pusty lub nie istnieje.
 
 ## <a name="persisted-claims"></a>Utrwalone oświadczenia
 
-Oświadczenia, które muszą zostać zwrócone do aplikacji lub używane przez warunki wstępne w kolejnych krokach, powinny być przechowywane w sesji lub uzupełnione przez odczyt z profilu użytkownika w katalogu. Korzystanie z utrwalonych oświadczeń gwarantuje, że w przypadku brakujących oświadczeń przejazdów uwierzytelniania nie powiedzie się. Aby dodać oświadczenia w sesji, użyj elementu `<PersistedClaims>` w profilu technicznym. Gdy dostawca jest używany do ponownego wypełniania sesji, utrwalane oświadczenia są dodawane do zbioru oświadczeń. 
+Oświadczenia, które muszą zostać zwrócone do aplikacji lub używane przez warunki wstępne w kolejnych krokach, powinny być przechowywane w sesji lub uzupełnione przez odczyt z profilu użytkownika w katalogu. Korzystanie z utrwalonych oświadczeń gwarantuje, że w przypadku brakujących oświadczeń przejazdów uwierzytelniania nie powiedzie się. Aby dodać oświadczenia w sesji, użyj elementu `<PersistedClaims>` w profilu technicznym. Gdy dostawca jest używany do ponownego wypełniania sesji, utrwalane oświadczenia są dodawane do zbioru oświadczeń.
 
 ## <a name="output-claims"></a>Oświadczenia wyjściowe
 
@@ -53,7 +53,7 @@ Oświadczenia, które muszą zostać zwrócone do aplikacji lub używane przez w
 
 ### <a name="noopssosessionprovider"></a>NoopSSOSessionProvider
 
-Jak nazywa się, ten dostawca niczego nie robi. Ten dostawca może służyć do pomijania zachowania logowania jednokrotnego dla określonego profilu technicznego. Następujący `SM-Noop` profil techniczny jest zawarty w [pakiecie startowym zasad niestandardowych](custom-policy-get-started.md#custom-policy-starter-pack).  
+Jak nazywa się, ten dostawca niczego nie robi. Ten dostawca może służyć do pomijania zachowania logowania jednokrotnego dla określonego profilu technicznego. Następujący `SM-Noop` profil techniczny jest zawarty w [pakiecie startowym zasad niestandardowych](custom-policy-get-started.md#custom-policy-starter-pack).
 
 ```XML
 <TechnicalProfile Id="SM-Noop">
@@ -64,7 +64,7 @@ Jak nazywa się, ten dostawca niczego nie robi. Ten dostawca może służyć do 
 
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
-Tego dostawcy można używać do przechowywania oświadczeń w sesji. Ten dostawca jest zwykle przywoływany w profilu technicznym używanym do zarządzania kontami lokalnymi. Następujący `SM-AAD` profil techniczny jest zawarty w [pakiecie startowym zasad niestandardowych](custom-policy-get-started.md#custom-policy-starter-pack). 
+Tego dostawcy można używać do przechowywania oświadczeń w sesji. Ten dostawca jest zwykle przywoływany w profilu technicznym używanym do zarządzania kontami lokalnymi. Następujący `SM-AAD` profil techniczny jest zawarty w [pakiecie startowym zasad niestandardowych](custom-policy-get-started.md#custom-policy-starter-pack).
 
 ```XML
 <TechnicalProfile Id="SM-AAD">
@@ -84,7 +84,7 @@ Tego dostawcy można używać do przechowywania oświadczeń w sesji. Ten dostaw
 </TechnicalProfile>
 ```
 
-Poniższy `SM-MFA` profil techniczny znajduje się w `SocialAndLocalAccountsWithMfa`[zasad niestandardowych pakietu](custom-policy-get-started.md#custom-policy-starter-pack) . Ten profil techniczny służy do zarządzania sesją uwierzytelniania wieloskładnikowego. 
+Poniższy `SM-MFA` profil techniczny znajduje się w `SocialAndLocalAccountsWithMfa`[zasad niestandardowych pakietu](custom-policy-get-started.md#custom-policy-starter-pack) . Ten profil techniczny służy do zarządzania sesją uwierzytelniania wieloskładnikowego.
 
 ```XML
 <TechnicalProfile Id="SM-MFA">
@@ -117,8 +117,8 @@ Ten dostawca służy do pomijania ekranu "wybieranie dostawcy tożsamości". Zwy
 ```
 
 #### <a name="metadata"></a>Metadane
-        
-| Atrybut | Wymagane | Opis|
+
+| Atrybut | Wymagany | Opis|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | Nie | Obecnie nie są używane, można je zignorować. |
 
@@ -138,7 +138,7 @@ Ten dostawca służy do zarządzania Azure AD B2C sesji SAML między aplikacją 
 ```
 
 W przypadku korzystania z dostawcy do przechowywania sesji B2C SAML, `IncludeSessionIndex` i `RegisterServiceProviders` muszą mieć ustawioną wartość `true`. Wylogowanie sesji SAML wymaga wykonania `SessionIndex` i `NameID`.
- 
+
 Następujący `SM-Saml-idp` profil techniczny jest używany przez [profil techniczny wystawcy SAML](connect-with-saml-service-providers.md)
 
 ```XML
@@ -148,8 +148,8 @@ Następujący `SM-Saml-idp` profil techniczny jest używany przez [profil techni
 </TechnicalProfile>
 ```
 #### <a name="metadata"></a>Metadane
-        
-| Atrybut | Wymagane | Opis|
+
+| Atrybut | Wymagany | Opis|
 | --- | --- | --- |
 | IncludeSessionIndex | Nie | Wskazuje dostawcę, który ma być przechowywany w indeksie sesji. Możliwe wartości: `true` (wartość domyślna) lub `false`.|
 | RegisterServiceProviders | Nie | Wskazuje, że dostawca powinien rejestrować wszystkich dostawców usług SAML, którzy wystawiły potwierdzenie. Możliwe wartości: `true` (wartość domyślna) lub `false`.|

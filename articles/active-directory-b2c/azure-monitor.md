@@ -3,20 +3,20 @@ title: Monitoruj Azure AD B2C z Azure Monitor
 titleSuffix: Azure AD B2C
 description: Dowiedz się, jak rejestrować Azure AD B2C zdarzenia za pomocą Azure Monitor przy użyciu delegowanego zarządzania zasobami.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 6f7f0252a6377397ccaccdc44c9c8561da7c9d29
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121385"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190062"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitoruj Azure AD B2C z Azure Monitor
 
@@ -226,7 +226,7 @@ Aby skonfigurować ustawienia monitorowania dla Azure AD B2C dzienników aktywno
 1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 1. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** , a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
 1. Wybierz **Azure Active Directory**
-1. W obszarze **monitorowanie**wybierz pozycję **Ustawienia diagnostyczne**.
+1. W obszarze **Monitorowanie** wybierz pozycję **Ustawienia diagnostyczne**.
 1. Jeśli w zasobie istnieją istniejące ustawienia, zostanie wyświetlona lista ustawień, które zostały już skonfigurowane. Wybierz opcję **Dodaj ustawienie diagnostyczne** , aby dodać nowe ustawienie, lub **Edytuj** ustawienie, aby edytować istniejące. Każde ustawienie nie może mieć więcej niż jednego z typów docelowych...
 
     ![Okienko ustawień diagnostycznych w Azure Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)

@@ -2,20 +2,20 @@
 title: Co to jest usługa Azure Active Directory B2C?
 description: Dowiedz się, jak używać usługi Azure Active Directory B2C do obsługi tożsamości zewnętrznych w aplikacjach, w tym logowania do społeczności w serwisach Facebook, Google i innych dostawców tożsamości.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 09/19/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7159d695d502f2fba7a8b502eed7fdeffbe0ad03
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 61b6d5ea903d00519c58556bc99da7065741a6e3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850251"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184064"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co to jest usługa Azure Active Directory B2C?
 

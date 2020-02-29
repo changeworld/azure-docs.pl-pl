@@ -1,6 +1,6 @@
 ---
-title: Polecenia cmdlet programu PowerShell
-description: Znajdź najważniejsze polecenia cmdlet programu PowerShell dla Azure SQL Data Warehouse, w tym informacje na temat wstrzymania i wznowienia bazy danych.
+title: Interfejsy API REST programu PowerShell &
+description: Znajdź najważniejsze polecenia cmdlet programu PowerShell dla puli SQL usługi Azure Synapse Analytics, w tym sposób wstrzymywania i wznawiania bazy danych.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,19 +11,21 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c5f85f102d72ac2e4a0315109748d48573f49407
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c0c8b1e9b7526bd45d037f053715613b53ec163f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721187"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198460"
 ---
-# <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Polecenia cmdlet programu PowerShell i interfejsy API REST dla SQL Data Warehouse
-Wiele zadań administracyjnych SQL Data Warehouse można zarządzać przy użyciu poleceń cmdlet Azure PowerShell lub interfejsów API REST.  Poniżej przedstawiono kilka przykładów użycia poleceń programu PowerShell do automatyzowania typowych zadań w SQL Data Warehouse.  Aby zapoznać się z niektórymi dobrymi przykładami REST, zobacz artykuł [Zarządzanie skalowalnością przy użyciu interfejsu REST](sql-data-warehouse-manage-compute-rest-api.md).
+# <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>Interfejsy API REST programu PowerShell & dla puli SQL usługi Azure Synapse Analytics
+
+Wiele zadań administracyjnych puli SQL usługi Azure Synapse Analytics można zarządzać przy użyciu poleceń cmdlet Azure PowerShell lub interfejsów API REST.  Poniżej przedstawiono kilka przykładów użycia poleceń programu PowerShell do automatyzowania typowych zadań w puli SQL.  Aby zapoznać się z niektórymi dobrymi przykładami REST, zobacz artykuł [Zarządzanie skalowalnością przy użyciu interfejsu REST](sql-data-warehouse-manage-compute-rest-api.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-started-with-azure-powershell-cmdlets"></a>Wprowadzenie do Azure PowerShell poleceń cmdlet
+
 1. Otwórz program Windows PowerShell.
 2. W wierszu polecenia programu PowerShell uruchom następujące polecenie, aby zalogować się do Azure Resource Manager i wybrać subskrypcję.
    
@@ -33,12 +35,13 @@ Wiele zadań administracyjnych SQL Data Warehouse można zarządzać przy użyci
     Select-AzSubscription -SubscriptionName "MySubscription"
     ```
 
-## <a name="pause-sql-data-warehouse-example"></a>Przykład wstrzymywania SQL Data Warehouse
+## <a name="pause-data-warehouse-example"></a>Przykład wstrzymywania magazynu danych
 Wstrzymywanie bazy danych o nazwie "Database02" hostowanej na serwerze o nazwie "Serwer01".  Serwer należy do grupy zasobów platformy Azure o nazwie "ResourceGroup1".
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
+
 Odmiana, w tym przykładzie potok pobrano do [zawieszania-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase).  W związku z tym baza danych jest wstrzymana. Końcowe polecenie wyświetla wyniki.
 
 ```Powershell
@@ -47,7 +50,8 @@ $resultDatabase = $database | Suspend-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="start-sql-data-warehouse-example"></a>Rozpocznij SQL Data Warehouse przykład
+## <a name="start-data-warehouse-example"></a>Uruchom przykład magazynu danych
+
 Wznów działanie bazy danych o nazwie "Database02" hostowanej na serwerze o nazwie "Serwer01". Serwer jest zawarty w grupie zasobów o nazwie "ResourceGroup1".
 
 ```Powershell
@@ -67,7 +71,7 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 > 
 
 ## <a name="other-supported-powershell-cmdlets"></a>Inne obsługiwane polecenia cmdlet programu PowerShell
-Te polecenia cmdlet programu PowerShell są obsługiwane w Azure SQL Data Warehouse.
+Te polecenia cmdlet programu PowerShell są obsługiwane przez usługę Azure Synapse Analytics Data Warehouse.
 
 * [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase)
 * [Get-AzSqlDeletedDatabaseBackup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup)
@@ -83,7 +87,7 @@ Te polecenia cmdlet programu PowerShell są obsługiwane w Azure SQL Data Wareho
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej przykładów dla programu PowerShell, zobacz:
 
-* [Tworzenie SQL Data Warehouse przy użyciu programu PowerShell](create-data-warehouse-powershell.md)
+* [Tworzenie magazynu danych przy użyciu programu PowerShell](create-data-warehouse-powershell.md)
 * [Przywracanie bazy danych](sql-data-warehouse-restore-database-powershell.md)
 
-Aby zapoznać się z innymi zadaniami, które można zautomatyzować za pomocą programu PowerShell, zobacz [Azure SQL Database polecenia cmdlet](https://docs.microsoft.com/powershell/module/az.sql). Nie wszystkie polecenia cmdlet Azure SQL Database są obsługiwane przez Azure SQL Data Warehouse.  Aby zapoznać się z listą zadań, które można zautomatyzować za pomocą usługi REST, zobacz [operacje dla Azure SQL Database](https://msdn.microsoft.com/library/azure/dn505719.aspx).
+Aby zapoznać się z innymi zadaniami, które można zautomatyzować za pomocą programu PowerShell, zobacz [Azure SQL Database polecenia cmdlet](https://docs.microsoft.com/powershell/module/az.sql). Nie wszystkie polecenia cmdlet Azure SQL Database są obsługiwane przez usługę Azure Synapse Analytics Data Warehouse.  Aby zapoznać się z listą zadań, które można zautomatyzować za pomocą usługi REST, zobacz [operacje dla Azure SQL Database](/rest/api/sql/).

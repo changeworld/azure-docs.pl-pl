@@ -8,25 +8,25 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/09/2019
-ms.openlocfilehash: ecc4d5053ef6d9194f09b8a5aa6ba1528f9d94fa
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 9ef54707f7fac3dd1328e29f6d05f62c1dee2561
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920714"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194907"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Uruchamianie platformy Apache Oozie w klastrach usługi HDInsight Hadoop przy użyciu pakiet Enterprise Security
 
 Apache Oozie to przepływ pracy i system koordynacji, który zarządza zadaniami Apache Hadoop. Usługa Oozie jest zintegrowana z stosem usługi Hadoop i obsługuje następujące zadania:
 
 - Apache MapReduce
-- Apache Pig
+- Apache świni
 - Apache Hive
 - Apache Sqoop
 
 Można również użyć Oozie do planowania zadań specyficznych dla systemu, takich jak programy Java lub skrypty powłoki.
 
-## <a name="prerequisite"></a>Warunek wstępny
+## <a name="prerequisite"></a>Wymagania wstępne
 
 Klaster Azure HDInsight Hadoop z pakiet Enterprise Security (ESP). Zobacz [Konfigurowanie klastrów usługi HDInsight przy użyciu protokołu ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
@@ -348,4 +348,4 @@ Interfejs użytkownika sieci Web Oozie zapewnia internetowy widok stanu zadań O
 ## <a name="next-steps"></a>Następne kroki
 
 - [Użyj programu Apache Oozie z Apache Hadoop, aby zdefiniować i uruchomić przepływ pracy w usłudze Azure HDInsight opartej na systemie Linux](../hdinsight-use-oozie-linux-mac.md).
-- [Łączenie z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+- [Łączenie z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight).

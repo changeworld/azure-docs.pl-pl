@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: debc674184e6846128b0b8cff857c75a805e365a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 215244204aa58cc2fdedc639d48e01b514759694
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925698"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196012"
 ---
-# <a name="blobstoragefeaturesavailableinazuredatalakestoragegen2"></a>Funkcje magazynu obiektów BLOB dostępne w Azure Data Lake Storage Gen2
+# <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Funkcje magazynu obiektów BLOB dostępne w Azure Data Lake Storage Gen2
 
-Blob Storage funkcje, takie jak [rejestrowanie diagnostyczne](../common/storage-analytics-logging.md), [warstwy dostępu](storage-blob-storage-tiers.md)i [zasady zarządzania cyklem BLOB Storage](storage-lifecycle-management-concepts.md) , teraz działają z kontami, które mają hierarchiczną przestrzeń nazw. W związku z tym można włączyć hierarchiczne przestrzenie nazw na kontach magazynu obiektów Blob bez utraty dostępu do tych funkcji.
+Blob Storage funkcje, takie jak [rejestrowanie diagnostyczne](../common/storage-analytics-logging.md), [warstwy dostępu](storage-blob-storage-tiers.md)i [zasady zarządzania cyklem BLOB Storage](storage-lifecycle-management-concepts.md) , teraz działają z kontami, które mają hierarchiczną przestrzeń nazw. W związku z tym można włączyć hierarchiczne przestrzenie nazw na kontach magazynu obiektów Blob bez utraty dostępu do tych funkcji.
 
 Ta tabela zawiera listę funkcji magazynu obiektów blob, których można używać z Azure Data Lake Storage Gen2. Elementy, które pojawiają się w tych tabelach, zmienią się w miarę upływu czasu, gdy obsługa będzie nadal rozszerzana.
 
-## <a name="supportedblobstoragefeatures"></a>Obsługiwane funkcje magazynu obiektów BLOB
+## <a name="supported-blob-storage-features"></a>Obsługiwane funkcje magazynu obiektów BLOB
 
 > [!NOTE]
 > Poziom pomocy technicznej odnosi się tylko do tego, w jaki sposób funkcja jest obsługiwana w Data Lake Storage Gen2.
 
-|Funkcja Blob Storage |Poziom pomocy technicznej |Powiązane artykuły |
+|Funkcja Blob Storage |Poziom pomocy technicznej |Pokrewne artykuły |
 |---------------|-------------------|---|
-|Warstwa dostępu Gorąca |Ogólnie dostępna|[Usługa Azure Blob Storage: warstwy dostępu Gorąca, Chłodna i Archiwum](storage-blob-storage-tiers.md)|
-|Warstwa dostępu Chłodna |Ogólnie dostępna|[Usługa Azure Blob Storage: warstwy dostępu Gorąca, Chłodna i Archiwum](storage-blob-storage-tiers.md)|
+|Warstwa dostępu Gorąca|Ogólnie dostępna|[Usługa Azure Blob Storage: warstwy dostępu Gorąca, Chłodna i Archiwum](storage-blob-storage-tiers.md)|
+|Warstwa dostępu Chłodna|Ogólnie dostępna|[Usługa Azure Blob Storage: warstwy dostępu Gorąca, Chłodna i Archiwum](storage-blob-storage-tiers.md)|
 |Zdarzenia|Ogólnie dostępna|[Reagowanie na zdarzenia usługi Blob Storage](storage-blob-event-overview.md)|
 |Metryki (klasyczne)|Ogólnie dostępna|[Metryki usługi Azure Storage Analytics (klasyczne)](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Metryki w usłudze Azure Monitor|Ogólnie dostępna|[Metryki usługi Azure Storage w usłudze Azure Monitor](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|

@@ -1,6 +1,6 @@
 ---
 title: Wskazówki dotyczące projektowania zreplikowanych tabel
-description: Zalecenia dotyczące projektowania zreplikowanych tabel w schemacie Azure SQL Data Warehouse. 
+description: Zalecenia dotyczące projektowania zreplikowanych tabel w usłudze SQL Analytics
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,32 +10,32 @@ ms.subservice: development
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 18577cb729c9f17a112979cd1ebb763af38b9ca2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: ff141b0da0eb2fe68bbeccb7e39292a70b7305f0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693043"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194754"
 ---
-# <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Wskazówki dotyczące projektowania na potrzeby używania zreplikowanych tabel w Azure SQL Data Warehouse
-W tym artykule przedstawiono zalecenia dotyczące projektowania zreplikowanych tabel w schemacie SQL Data Warehouse. Te zalecenia umożliwiają zwiększenie wydajności zapytań, zmniejszając jednocześnie przemieszczenie danych i złożoność zapytań.
+# <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>Wskazówki dotyczące projektowania na potrzeby używania zreplikowanych tabel w usłudze SQL Analytics
+W tym artykule przedstawiono zalecenia dotyczące projektowania zreplikowanych tabel w schemacie usługi SQL Analytics. Te zalecenia umożliwiają zwiększenie wydajności zapytań, zmniejszając jednocześnie przemieszczenie danych i złożoność zapytań.
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule założono, że znasz koncepcje dystrybucji i przenoszenia danych w SQL Data Warehouse.  Aby uzyskać więcej informacji, zobacz artykuł dotyczący [architektury](massively-parallel-processing-mpp-architecture.md) . 
+W tym artykule założono, że znasz koncepcje dystrybucji i przenoszenia danych w usłudze SQL Analytics.  Aby uzyskać więcej informacji, zobacz artykuł dotyczący [architektury](massively-parallel-processing-mpp-architecture.md) . 
 
 W ramach projektu tabeli należy zrozumieć możliwie jak najwięcej danych i jak są wykonywane zapytania dotyczące danych.  Rozważmy na przykład następujące pytania:
 
 - Jak duży jest tabela?   
 - Jak często jest odświeżana tabela?   
-- Czy istnieją tabele faktów i wymiarów w magazynie danych?   
+- Czy istnieją tabele faktów i wymiarów w bazie danych SQL Analytics?   
 
 ## <a name="what-is-a-replicated-table"></a>Co to jest zreplikowana tabela?
 Replikowana tabela ma pełną kopię tabeli dostępną w każdym węźle obliczeniowym. Replikowanie tabeli eliminuje konieczność transferu danych między węzłami obliczeniowymi przed przypisaniem lub agregacją. Ponieważ tabela ma wiele kopii, zreplikowane tabele działają najlepiej, gdy rozmiar tabeli jest mniejszy niż 2 GB skompresowane.  2 GB nie jest sztywnym limitem.  Jeśli dane są statyczne i nie zmieniają się, można replikować większe tabele.
 
-Na poniższym diagramie przedstawiono zreplikowane tabele, które są dostępne w każdym węźle obliczeniowym. W SQL Data Warehouse replikowana tabela jest w pełni kopiowana do bazy danych dystrybucji w każdym węźle obliczeniowym. 
+Na poniższym diagramie przedstawiono zreplikowane tabele, które są dostępne w każdym węźle obliczeniowym. W usłudze SQL Analytics replikowana tabela jest w pełni kopiowana do bazy danych dystrybucji w każdym węźle obliczeniowym. 
 
 ![Zreplikowane tabele](media/guidance-for-using-replicated-tables/replicated-table.png "Zreplikowane tabele")  
 
@@ -44,13 +44,13 @@ Zreplikowane tabele działają dobrze w przypadku tabel wymiarów w schemacie gw
 Rozważ użycie zreplikowanej tabeli, gdy:
 
 - Rozmiar tabeli na dysku jest mniejszy niż 2 GB, niezależnie od liczby wierszy. Aby znaleźć rozmiar tabeli, można użyć polecenia [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) : `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
-- Tabela jest używana w sprzężeniach, które w przeciwnym razie wymagają przeniesienia danych. Podczas sprzęgania tabel, które nie są dystrybuowane w tej samej kolumnie, takich jak tabela dystrybuowana z mieszaniem do tabeli okrężnej, przenoszenie danych jest wymagane do ukończenia zapytania.  Jeśli jedna z tabel jest mała, weź pod uwagę zreplikowaną tabelę. W większości przypadków zalecamy używanie zreplikowanych tabel zamiast tabel z działaniem okrężnym. Aby wyświetlić operacje przenoszenia danych w planach zapytań, użyj [widoku sys. DM _pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql).  BroadcastMoveOperation to typowa Operacja przenoszenia danych, którą można wyeliminować przy użyciu zreplikowanej tabeli.  
+- Tabela jest używana w sprzężeniach, które w przeciwnym razie wymagają przeniesienia danych. Podczas sprzęgania tabel, które nie są dystrybuowane w tej samej kolumnie, takich jak tabela dystrybuowana z mieszaniem do tabeli okrężnej, przenoszenie danych jest wymagane do ukończenia zapytania.  Jeśli jedna z tabel jest mała, weź pod uwagę zreplikowaną tabelę. W większości przypadków zalecamy używanie zreplikowanych tabel zamiast tabel z działaniem okrężnym. Aby wyświetlić operacje przenoszenia danych w planach zapytań, użyj wykazu [sys. dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql).  BroadcastMoveOperation to typowa Operacja przenoszenia danych, którą można wyeliminować przy użyciu zreplikowanej tabeli.  
  
 Zreplikowane tabele mogą nie dać najlepszej wydajności zapytania, gdy:
 
 - W tabeli występują częste operacje wstawiania, aktualizowania i usuwania. Te operacje języka przetwarzania danych (DML) wymagają odbudowania zreplikowanej tabeli. Ponowne kompilowanie często może spowodować wolniejszą wydajność.
-- Magazyn danych jest często skalowany. Skalowanie magazynu danych zmienia liczbę węzłów obliczeniowych, co powoduje ponowne skompilowanie zreplikowanej tabeli.
-- Tabela zawiera dużą liczbę kolumn, ale operacje na danych zazwyczaj uzyskują dostęp tylko do niewielkiej liczby kolumn. W tym scenariuszu zamiast replikowania całej tabeli może być bardziej efektywne dystrybuowanie tabeli, a następnie utworzenie indeksu na często używanych kolumnach. Gdy zapytanie wymaga przenoszenia danych, SQL Data Warehouse przenosi tylko dane dla żądanych kolumn. 
+- Baza danych SQL Analytics jest często skalowana. Skalowanie bazy danych analitycznej SQL zmienia liczbę węzłów obliczeniowych, co spowoduje ponowne skompilowanie zreplikowanej tabeli.
+- Tabela zawiera dużą liczbę kolumn, ale operacje na danych zazwyczaj uzyskują dostęp tylko do niewielkiej liczby kolumn. W tym scenariuszu zamiast replikowania całej tabeli może być bardziej efektywne dystrybuowanie tabeli, a następnie utworzenie indeksu na często używanych kolumnach. Gdy zapytanie wymaga przenoszenia danych, program SQL Analytics przenosi dane dla żądanych kolumn. 
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>Korzystanie z zreplikowanych tabel z prostymi predykatami zapytań
 Przed wybraniem opcji dystrybucji lub replikowania tabeli należy wziąć pod uwagę typy zapytań, które mają być uruchamiane względem tabeli. Zawsze, gdy jest to możliwe,
@@ -94,7 +94,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 ### <a name="query-performance-example-for-round-robin-versus-replicated"></a>Przykład wydajności zapytań dla działania okrężnego i zreplikowanego 
 
-Replikowana tabela nie wymaga przenoszenia danych dla sprzężeń, ponieważ cała tabela jest już obecna w każdym węźle obliczeniowym. Jeśli tabele wymiarów są dystrybuowane w sposób okrężny, sprzężenie kopiuje tabelę wymiarów w całości do każdego węzła obliczeniowego. Aby przenieść dane, plan zapytania zawiera operację o nazwie BroadcastMoveOperation. Ten typ operacji przenoszenia danych spowalnia wydajność zapytań i jest eliminowany przy użyciu zreplikowanych tabel. Aby wyświetlić kroki planu zapytania, użyj widoku wykazu systemu [sys. DM _pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) . 
+Replikowana tabela nie wymaga przenoszenia danych dla sprzężeń, ponieważ cała tabela jest już obecna w każdym węźle obliczeniowym. Jeśli tabele wymiarów są dystrybuowane w sposób okrężny, sprzężenie kopiuje tabelę wymiarów w całości do każdego węzła obliczeniowego. Aby przenieść dane, plan zapytania zawiera operację o nazwie BroadcastMoveOperation. Ten typ operacji przenoszenia danych spowalnia wydajność zapytań i jest eliminowany przy użyciu zreplikowanych tabel. Aby wyświetlić kroki planu zapytania, użyj widoku wykazu systemu [sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) . 
 
 Na przykład w poniższym zapytaniu względem schematu AdventureWorks w tabeli `FactInternetSales` jest dystrybuowana wartość skrótu. Tabele `DimDate` i `DimSalesTerritory` są mniejszymi tabelami wymiarów. To zapytanie zwraca łączną wartość sprzedaży w Ameryka Północna dla roku obrachunkowego 2004:
 
@@ -118,11 +118,11 @@ Ponownie utworzono `DimDate` i `DimSalesTerritory` jako zreplikowane tabele i po
 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Zagadnienia dotyczące wydajności związane z modyfikowaniem zreplikowanych tabel
-SQL Data Warehouse implementuje zreplikowaną tabelę przez utrzymywanie głównej wersji tabeli. Kopiuje wersję główną do jednej bazy danych dystrybucji w każdym węźle obliczeniowym. W przypadku zmiany, SQL Data Warehouse najpierw aktualizuje tabelę główną. Następnie odbudowuje tabele w każdym węźle obliczeniowym. Odbudowa zreplikowanej tabeli obejmuje skopiowanie tabeli do każdego węzła obliczeniowego, a następnie utworzenie indeksów.  Na przykład zreplikowana tabela na DW400 ma 5 kopii danych.  Kopia główna i pełna kopia na każdym węźle obliczeniowym.  Wszystkie dane są przechowywane w bazach danych dystrybucji. SQL Data Warehouse używa tego modelu do obsługi szybszych instrukcji modyfikacji danych i elastycznych operacji skalowania. 
+Usługi SQL Analytics implementują zreplikowaną tabelę przez utrzymywanie głównej wersji tabeli. Kopiuje wersję główną do jednej bazy danych dystrybucji w każdym węźle obliczeniowym. W przypadku zmiany, analiza SQL najpierw aktualizuje tabelę główną. Następnie odbudowuje tabele w każdym węźle obliczeniowym. Odbudowa zreplikowanej tabeli obejmuje skopiowanie tabeli do każdego węzła obliczeniowego, a następnie utworzenie indeksów.  Na przykład zreplikowana tabela na DW400 ma 5 kopii danych.  Kopia główna i pełna kopia na każdym węźle obliczeniowym.  Wszystkie dane są przechowywane w bazach danych dystrybucji. Analiza SQL używa tego modelu do obsługi szybszych instrukcji modyfikacji danych i elastycznych operacji skalowania. 
 
 Ponowne kompilacje są wymagane po:
 - Dane są ładowane lub modyfikowane
-- Magazyn danych jest skalowany na innym poziomie
+- Wystąpienie usługi SQL Analytics jest skalowane do innego poziomu
 - Definicja tabeli została zaktualizowana
 
 Ponowne kompilacje nie są wymagane po:
@@ -132,7 +132,7 @@ Ponowne kompilacje nie są wymagane po:
 Ponowne kompilowanie nie następuje natychmiast po zmodyfikowaniu danych. Zamiast tego, ponowne kompilowanie jest wyzwalane podczas pierwszego wybierania zapytania z tabeli.  Zapytanie, które wyzwoliło odbudowę natychmiast, od wersji głównej tabeli, gdy dane są asynchronicznie kopiowane do każdego węzła obliczeniowego. Do momentu ukończenia kopiowania danych kolejne zapytania będą nadal używać wersji głównej tabeli.  Jeśli dowolne działanie dotyczy zreplikowanej tabeli, która wymusza kolejną ponowną kompilację, kopiowanie danych jest unieważnione i kolejna instrukcja SELECT wyzwoli dane, które zostaną ponownie skopiowane. 
 
 ### <a name="use-indexes-conservatively"></a>Używaj indeksów w sposób ostrożny
-Standardowe rozwiązania indeksowania mają zastosowanie do zreplikowanych tabel. SQL Data Warehouse ponownie kompiluje każdy replikowany indeks tabeli w ramach odbudowy. Indeksy należy stosować tylko wtedy, gdy wydajność zwiększa koszt odbudowy indeksów.  
+Standardowe rozwiązania indeksowania mają zastosowanie do zreplikowanych tabel. Analiza bazy danych SQL odbudowuje każdy replikowany indeks tabeli w ramach odbudowy. Indeksy należy stosować tylko wtedy, gdy wydajność zwiększa koszt odbudowy indeksów.  
  
 ### <a name="batch-data-loads"></a>Ładowanie danych wsadowych
 Podczas ładowania danych do zreplikowanych tabel, spróbuj zminimalizować kompilacje w partiach zbiorczo. Wykonaj wszystkie obciążenia wsadowe przed uruchomieniem instrukcji SELECT.
@@ -160,7 +160,7 @@ Na przykład ten wzorzec ładowania ładuje dane z czterech źródeł, ale wywo�
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>Kompiluj zreplikowaną tabelę po załadowaniu partii
 Aby zapewnić spójne czasy wykonywania zapytań, rozważ wymuszenie skompilowania zreplikowanych tabel po załadowaniu partii. W przeciwnym razie pierwsze zapytanie będzie nadal używać przenoszenia danych do ukończenia zapytania. 
 
-To zapytanie używa pliku [sys. PDW _replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV w celu wyświetlenia listy zreplikowanych tabel, które zostały zmodyfikowane, ale nie zostały odbudowane.
+To zapytanie używa DMV [sys. pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) , aby wyświetlić zreplikowane tabele, które zostały zmodyfikowane, ale nie zostały odbudowane.
 
 ```sql 
 SELECT [ReplicatedTable] = t.[name]
@@ -182,8 +182,8 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 ## <a name="next-steps"></a>Następne kroki 
 Aby utworzyć zreplikowaną tabelę, należy użyć jednej z następujących instrukcji:
 
-- [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE jako wybrane (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (analiza SQL)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [CREATE TABLE jako wybrane (analiza SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 Aby zapoznać się z omówieniem tabel rozproszonych, zobacz [tabele rozproszone](sql-data-warehouse-tables-distribute.md).
 

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 5492850944b04ea4b4d30dd206e7b297b34c075c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 8e607a4447448ee0e822dbee721b701d677d4f63
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062850"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197457"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Wyrażenia transformacji danych w mapowaniu przepływu danych 
 
@@ -142,7 +142,7 @@ Oblicza wartość skrótu CRC32 zestawu kolumn o różnych typach danych pierwot
 ___
 ### <code>currentDate</code>
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
-Pobiera bieżącą datę, kiedy to zadanie zostanie uruchomione. Można przekazać opcjonalną strefę czasową w postaci "GMT", "PST", "UTC", "Ameryka/Kajmany". Lokalna strefa czasowa jest używana domyślnie. Odwołaj się do SimpleDateFormat języka Java, aby uzyskać dostęp do dostępnych formatów. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``currentDate() == toDate('2250-12-31') -> false``
+Pobiera bieżącą datę, kiedy to zadanie zostanie uruchomione. Można przekazać opcjonalną strefę czasową w postaci "GMT", "PST", "UTC", "Ameryka/Kajmany". Lokalna strefa czasowa jest używana domyślnie. Odwołaj się do SimpleDateFormat języka Java, aby uzyskać dostęp do dostępnych formatów. (https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) * ``currentDate() == toDate('2250-12-31') -> false``
 * ``currentDate('PST')  == toDate('2250-12-31') -> false``
 * ``currentDate('America/New_York')  == toDate('2250-12-31') -> false``
 ___

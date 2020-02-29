@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 43352117d149abbe41ba7bf49a1ffb68e46d2707
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210161"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190757"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie wdrażania w Azure Functions
 
@@ -104,7 +104,7 @@ Możesz użyć zewnętrznego adresu URL pakietu, aby odwołać się do pliku pak
 
 Użyj narzędzia zip Deploy, aby wypchnąć plik zip, który zawiera aplikację funkcji na platformie Azure. Opcjonalnie możesz ustawić aplikację, aby rozpocząć [Uruchamianie z pakietu](run-functions-from-deployment-package.md)lub określić, że [kompilacja zdalna](#remote-build) jest wykonywana.
 
->__Jak z niej korzystać:__ Wdróż przy użyciu ulubionego narzędzia klienckiego: [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure), [Azure Functions Core Tools](functions-run-local.md)lub [interfejsu wiersza polecenia platformy Azure](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Domyślnie narzędzia te używają wdrożenia zip i [uruchamiania z pakietu](run-functions-from-deployment-package.md). Podstawowe narzędzia i rozszerzenie Visual Studio Code umożliwiają [zdalne Kompilowanie](#remote-build) podczas wdrażania w systemie Linux. Aby ręcznie wdrożyć plik zip w aplikacji funkcji, postępuj zgodnie z instrukcjami w temacie [Deploy from a. zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
+>__Jak z niej korzystać:__ Wdróż przy użyciu ulubionego narzędzia klienckiego: [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)lub z wiersza polecenia przy użyciu [Azure Functions Core Tools](functions-run-local.md#project-file-deployment). Domyślnie narzędzia te używają wdrożenia zip i [uruchamiania z pakietu](run-functions-from-deployment-package.md). Podstawowe narzędzia i rozszerzenie Visual Studio Code umożliwiają [zdalne Kompilowanie](#remote-build) podczas wdrażania w systemie Linux. Aby ręcznie wdrożyć plik zip w aplikacji funkcji, postępuj zgodnie z instrukcjami w temacie [Deploy from a. zip](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
 >Podczas wdrażania przy użyciu narzędzia zip Deploy można ustawić [Uruchamianie aplikacji z pakietu](run-functions-from-deployment-package.md). Aby uruchomić z pakietu, ustaw wartość ustawienia `WEBSITE_RUN_FROM_PACKAGE` aplikacji na `1`. Zalecamy wdrożenie pliku zip. Zapewnia ona krótszy czas ładowania aplikacji i jest to wartość domyślna dla VS Code, Visual Studio i interfejsu wiersza polecenia platformy Azure. 
 

@@ -1,32 +1,30 @@
 ---
-title: Zalecenia dotyczące SQL Data Warehouse
-description: Dowiedz się więcej na temat SQL Data Warehouse zaleceń i sposobu ich generowania
+title: Zalecenia dotyczące analizy SQL
+description: Informacje na temat zaleceń dotyczących analizy SQL i sposobu ich generowania
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 11/05/2018
+ms.date: 02/05/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a93339b99c6591ee9ed615c032d0eac58a372fe
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.custom: azure-synapse
+ms.openlocfilehash: 5471236c09737eeef2d4cb7542c245d3087e726c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827502"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195961"
 ---
-# <a name="sql-data-warehouse-recommendations"></a>Zalecenia dotyczące SQL Data Warehouse
+# <a name="sql-analytics-recommendations"></a>Zalecenia dotyczące analizy SQL
 
-W tym artykule opisano zalecenia obsługiwane przez SQL Data Warehouse przez Azure Advisor.  
+W tym artykule opisano zalecenia dotyczące analizy SQL obsługiwane za pomocą Azure Advisor.  
 
-SQL Data Warehouse zawiera zalecenia, aby zapewnić, że magazyn danych jest spójnie zoptymalizowany pod kątem wydajności. Zalecenia dotyczące magazynu danych są ściśle zintegrowane z [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) , aby zapewnić najlepsze rozwiązania bezpośrednio w ramach [Azure Portal](https://aka.ms/Azureadvisor). SQL Data Warehouse analizuje bieżący stan magazynu danych, zbiera dane telemetryczne i wyświetla zalecenia dotyczące aktywnego obciążenia w codziennym erze. Obsługiwane scenariusze rekomendacji magazynu danych przedstawiono poniżej wraz z sposobem zastosowania zalecanych akcji.
+Analiza SQL udostępnia zalecenia, aby zapewnić ciągłą optymalizację obciążenia magazynu danych pod kątem wydajności. Zalecenia są ściśle zintegrowane z [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) , aby zapewnić najlepszym praktykom bezpośrednio w ramach [Azure Portal](https://aka.ms/Azureadvisor). Usługa SQL Analytics zbiera zalecenia dotyczące danych telemetrycznych i powierzchni dla aktywnego obciążenia w codziennym erze. Obsługiwane scenariusze rekomendacji opisano poniżej wraz z sposobem zastosowania zalecanych akcji.
 
-Jeśli masz jakiekolwiek opinie dotyczące usługi SQL Data Warehouse Advisor lub problemy, skontaktuj się z [sqldwadvisor@service.microsoft.com](mailto:sqldwadvisor@service.microsoft.com).   
-
-Kliknij [tutaj](https://aka.ms/Azureadvisor) , aby sprawdzić swoje rekomendacje już dzisiaj! Obecnie ta funkcja ma zastosowanie tylko do magazynów danych Gen2. 
+Możesz [sprawdzić swoje rekomendacje](https://aka.ms/Azureadvisor) już dzisiaj! Obecnie ta funkcja ma zastosowanie tylko do magazynów danych Gen2. 
 
 ## <a name="data-skew"></a>Pochylenie danych
 
@@ -36,7 +34,7 @@ Pochylenie danych może spowodować dodatkowe wąskie gardła lub zasoby związa
 
 ## <a name="no-or-outdated-statistics"></a>Nieaktualne dane statystyczne
 
-Posiadanie nieoptymalnych statystyk może poważnie wpływać na wydajność zapytań, ponieważ może to spowodować, że optymalizator zapytań SQL Data Warehouse generuje nieoptymalne plany zapytań. W poniższej dokumentacji opisano najlepsze rozwiązania dotyczące tworzenia i aktualizowania statystyk:
+Posiadanie nieoptymalnych statystyk może poważnie wpływać na wydajność zapytań, ponieważ może to spowodować, że optymalizator zapytań SQL generuje nieoptymalne plany zapytań. W poniższej dokumentacji opisano najlepsze rozwiązania dotyczące tworzenia i aktualizowania statystyk:
 
 - [Tworzenie i aktualizowanie statystyk tabeli](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 

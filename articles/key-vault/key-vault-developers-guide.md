@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7991fcec42a81a74ead1a00784e2cec59997da57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 331e3d5855e4ea1fc18a3b638741f6297a7a27d8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981531"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184676"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Przewodnik dewelopera Azure Key Vault
 
@@ -80,7 +81,7 @@ W programie Node. js interfejs API zarządzania Key Vault i interfejs API obiekt
 
 [Interfejs wiersza polecenia platformy Azure dla Key Vault](/cli/azure/keyvault)
 
-#### <a name="azure-powershell"></a>Program Azure PowerShell 
+#### <a name="azure-powershell"></a>Azure PowerShell 
 
 [Azure PowerShell Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
 
@@ -119,7 +120,7 @@ W tych artykułach przedstawiono inne scenariusze i usługi, które korzystają 
 
 - [Azure Disk Encryption](../security/fundamentals/encryption-overview.md) korzysta z funkcji funkcji [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) standardowego w branży w systemie Windows i funkcji [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systemu Linux, aby zapewnić szyfrowanie woluminów dla systemu operacyjnego i dysków danych. Rozwiązanie jest zintegrowane z Azure Key Vault, które ułatwiają sterowanie kluczami szyfrowania dysków i wpisami tajnymi w ramach subskrypcji magazynu kluczy oraz zarządzanie nimi, przy jednoczesnym zapewnieniu, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane w usłudze Azure Storage.
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) zapewnia opcję szyfrowania danych przechowywanych na koncie. W przypadku zarządzania kluczami Data Lake Store zapewnia dwa tryby zarządzania głównymi kluczami szyfrowania (głównymi kluczami szyfrowania), które są wymagane do odszyfrowania danych przechowywanych w Data Lake Store. Możesz pozwolić, Data Lake Store zarządzać głównymi kluczami szyfrowaniaem, lub wybrać opcję zachowania własności głównymi kluczami szyfrowania przy użyciu konta Azure Key Vault. Podczas tworzenia konta Data Lake Store należy określić tryb zarządzania kluczami.
-- [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) umożliwia kierownika własnego klucza dzierżawy. Na przykład zamiast firmy Microsoft zarządzającej kluczem dzierżawy (domyślnie) można zarządzać własnym kluczem dzierżawy w celu zapewnienia zgodności z określonymi przepisami obowiązującymi w organizacji. Samodzielne zarządzanie kluczem dzierżawy określa się także mianem strategii BYOK (Bring Your Own Key), czyli „Przynieś własny klucz”.
+- [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) umożliwia kierownika własnego klucza dzierżawy. Na przykład zamiast firmy Microsoft zarządzającej kluczem dzierżawy (domyślnie) można zarządzać własnym kluczem dzierżawy w celu zapewnienia zgodności z określonymi przepisami obowiązującymi w organizacji. Zarządzanie własnym kluczem dzierżawy jest również określane jako przeprowadzenie własnego klucza lub BYOK.
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault przeglądy i koncepcje
 
@@ -128,7 +129,7 @@ W tych artykułach przedstawiono inne scenariusze i usługi, które korzystają 
 - [Omówienie kluczy konta magazynu Key Vault](key-vault-ovw-storage-keys.md) opis Key Vault integracji kluczy kont usługi Azure Storage.
 - [Key Vault światy zabezpieczeń](key-vault-ovw-security-worlds.md) opisuje relacje między regionami i obszarami zabezpieczeń.
 
-## <a name="social"></a>Aspekty społeczne
+## <a name="social"></a>Społeczności
 
 - [Blog Key Vault](https://aka.ms/kvblog)
 - [Forum Key Vault](https://aka.ms/kvforum)

@@ -5,21 +5,22 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/22/2019
-ms.openlocfilehash: dda65c94671044f3c5a569a3f9753951de9eee3a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/05/2020
+tags: azure-synapse
+ms.openlocfilehash: e22205e81178ac0caff4b71462ece776238900f6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717682"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191949"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasyfikacja & Azure SQL Database i SQL Data Warehouse odnajdywania danych
+# <a name="azure-sql-database-and-azure-synapse-analytics-data-discovery--classification"></a>Azure SQL Database i Klasyfikacja & usługi Azure Synapse Analytics
 
 Klasyfikacja & odnajdywania danych oferuje zaawansowane możliwości wbudowane w Azure SQL Database do **odnajdywania**, **klasyfikowania**i **etykietowania** & **raportowania** poufnych danych w bazach danych.
 
@@ -32,7 +33,7 @@ Odnajdywanie i klasyfikowanie najbardziej poufnych danych (biznes, finanse, opie
 Funkcja odnajdywania danych & klasyfikacja jest częścią oferty [Advanced Data Security](sql-database-advanced-data-security.md) (ADS), która jest ujednoliconym pakietem zaawansowanych funkcji zabezpieczeń SQL. do funkcji odnajdywania danych & można uzyskać dostęp i zarządzać nimi za pośrednictwem centralnego portalu SQL ADS.
 
 > [!NOTE]
-> Ten dokument odnosi się do Azure SQL Database i Azure SQL Data Warehouse. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database. Aby uzyskać SQL Server (lokalnie), zobacz [odnajdywanie i Klasyfikacja danych SQL](https://go.microsoft.com/fwlink/?linkid=866999).
+> Ten dokument odnosi się do Azure SQL Database i usługi Azure Synapse. Dla uproszczenia SQL Database jest używany podczas odwoływania się do SQL Database i usługi Azure Synapse. Aby uzyskać SQL Server (lokalnie), zobacz [odnajdywanie i Klasyfikacja danych SQL](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>Co to jest funkcja odnajdywania danych & Klasyfikacja
 
@@ -138,7 +139,7 @@ Dowiedz się więcej o rolach [RBAC dla zasobów platformy Azure](https://docs.m
 
 ## <a id="subheading-5"></a>Zarządzaj klasyfikacjami
 
-# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
+# <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
 Przy użyciu języka T-SQL można dodawać/usuwać klasyfikacje kolumn, a także pobierać wszystkie klasyfikacje dla całej bazy danych.
 
 > [!NOTE]
@@ -148,7 +149,7 @@ Przy użyciu języka T-SQL można dodawać/usuwać klasyfikacje kolumn, a także
 - Usuń klasyfikację z jednej lub kilku kolumn: [Klasyfikacja czułości](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Wyświetl wszystkie klasyfikacje w bazie danych: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-# <a name="rest-apistabazure-rest-api"></a>[Interfejsy API REST](#tab/azure-rest-api)
+# <a name="rest-apis"></a>[Interfejsy API REST](#tab/azure-rest-api)
 Interfejsów API REST można używać do programistycznego zarządzania klasyfikacjami i zaleceniami. Opublikowane interfejsy API REST obsługują następujące operacje:
 
 - [Utwórz lub zaktualizuj](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) — tworzy lub aktualizuje etykietę czułości danej kolumny.
@@ -159,7 +160,7 @@ Interfejsów API REST można używać do programistycznego zarządzania klasyfik
 - [Lista bieżąca według bazy danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) — pobiera bieżące etykiety czułości danej bazy danych
 - [Lista zalecana przez bazę danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) — pobiera zalecane etykiety czułości danej bazy danych.
 
-# <a name="powershell-cmdlettabazure-powelshell"></a>[Polecenie cmdlet programu PowerShell](#tab/azure-powelshell)
+# <a name="powershell-cmdlet"></a>[Polecenie cmdlet programu PowerShell](#tab/azure-powelshell)
 Za pomocą programu PowerShell można zarządzać klasyfikacjami i zaleceniami dotyczącymi Azure SQL Database i wystąpienia zarządzanego.
 
 ### <a name="powershell-cmdlet-for-azure-sql-database"></a>Polecenie cmdlet programu PowerShell dla Azure SQL Database

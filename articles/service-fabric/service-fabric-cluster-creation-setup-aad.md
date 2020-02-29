@@ -3,12 +3,12 @@ title: Konfigurowanie Azure Active Directory na potrzeby uwierzytelniania klient
 description: Dowiedz się, jak skonfigurować Azure Active Directory (Azure AD) do uwierzytelniania klientów Service Fabric klastrów.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843824"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193388"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Konfigurowanie Azure Active Directory na potrzeby uwierzytelniania klientów
 
@@ -38,7 +38,7 @@ Aby uprościć niektóre kroki konfigurowania usługi Azure AD za pomocą klastr
 
 Użyjemy skryptów, aby utworzyć dwie aplikacje usługi Azure AD w celu kontrolowania dostępu do klastra: jedną aplikację sieci Web i jedną aplikację natywną. Po utworzeniu aplikacji do reprezentowania klastra utworzysz użytkowników dla [ról obsługiwanych przez Service Fabric](service-fabric-cluster-security-roles.md): tylko do odczytu i administrator.
 
-Uruchom skrypt `SetupApplications.ps1` i podaj jako parametry identyfikator dzierżawy, nazwę klastra i adres URL odpowiedzi aplikacji internetowej.  Podaj także nazwy użytkowników i ich hasła. Przykład:
+Uruchom skrypt `SetupApplications.ps1` i podaj jako parametry identyfikator dzierżawy, nazwę klastra i adres URL odpowiedzi aplikacji internetowej.  Podaj także nazwy użytkowników i ich hasła. Na przykład:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -104,7 +104,7 @@ Podczas próby zalogowania się do usługi Azure AD w Service Fabric Explorer st
 Aplikacja klastra (sieci Web) reprezentująca Service Fabric Explorer próbuje uwierzytelnić się w usłudze Azure AD, a w ramach żądania zawiera adres URL zwrotu przekierowania. Ale adres URL nie jest wyświetlany na liście **adresów URL odpowiedzi** aplikacji usługi Azure AD.
 
 #### <a name="solution"></a>Rozwiązanie
-Na stronie usługi Azure AD wybierz pozycję **rejestracje aplikacji**, wybierz aplikację klastra, a następnie wybierz pozycję **adresy URL odpowiedzi**. W okienku **adresy URL odpowiedzi** Dodaj adres URL Service Fabric Explorer do listy lub Zastąp jeden z elementów na liście. Zapisz zmiany.
+Na stronie Rejestracja aplikacji usługi Azure AD dla klastra wybierz pozycję **uwierzytelnianie**i w sekcji **identyfikatory URI przekierowania** Dodaj adres URL Service Fabric Explorer do listy. Zapisz zmiany.
 
 ![Adres URL odpowiedzi aplikacji sieci Web][web-application-reply-url]
 

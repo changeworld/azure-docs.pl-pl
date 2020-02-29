@@ -15,29 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: kumud
-ms.openlocfilehash: bd734f171f4e10c4227fbab77485a788f02848b3
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: b1019b15463a03282c5d1bd8f0a878433d7f488e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196630"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199567"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Skonfiguruj prywatne adresy IP dla maszyny wirtualnej przy użyciu Azure Portal
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](virtual-networks-static-private-ip-arm-pportal.md)
-> * [Program PowerShell](virtual-networks-static-private-ip-arm-ps.md)
-> * [Interfejs wiersza polecenia platformy Azure](virtual-networks-static-private-ip-arm-cli.md)
-> * [Azure Portal (klasyczny)](virtual-networks-static-private-ip-classic-pportal.md)
-> * [PowerShell (klasyczny)](virtual-networks-static-private-ip-classic-ps.md)
-> * [Interfejs wiersza polecenia platformy Azure (klasyczny)](virtual-networks-static-private-ip-classic-cli.md)
-
-
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
-
-[!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
-
-W tym artykule opisano model wdrażania usługi Resource Manager. Można także [zarządzać statycznym prywatnym adresem IP w klasycznym modelu wdrażania](virtual-networks-static-private-ip-classic-pportal.md).
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 

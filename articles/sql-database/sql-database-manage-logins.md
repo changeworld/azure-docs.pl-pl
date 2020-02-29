@@ -1,6 +1,6 @@
 ---
 title: Nazwy logowania i użytkownicy
-description: Dowiedz się więcej na temat SQL Database i SQL Data Warehouse zarządzania zabezpieczeniami, w tym, jak zarządzać dostępem do bazy danych i zabezpieczeniami logowania za pomocą konta głównego na poziomie serwera.
+description: Dowiedz się więcej na temat SQL Database i usługi Azure Synapse Security Management, a w ten sposób zarządzać dostępem do bazy danych i zabezpieczeniami logowania za pomocą konta głównego na poziomie serwera.
 keywords: zabezpieczenia bazy danych sql, zarządzanie zabezpieczeniami bazy danych, zabezpieczenia logowania, zabezpieczenia bazy danych, dostęp do bazy danych
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,21 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 03/26/2019
-ms.openlocfilehash: e9934f868fb62f9b1a19ef408dab69ab8a2c0e29
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 02/06/2020
+tags: azure-synapse
+ms.openlocfilehash: 79a31e5b8e3433af7879fcde8597173f25bf96b7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159147"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196964"
 ---
-# <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Kontrolowanie i udzielanie dostępu do bazy danych do SQL Database i SQL Data Warehouse
+# <a name="controlling-and-granting-database-access-to-sql-database-and-azure-synapse-analytics"></a>Kontrolowanie i udzielanie dostępu do bazy danych do SQL Database i usługi Azure Synapse Analytics
 
-Po skonfigurowaniu reguł zapory można nawiązać połączenie z usługą Azure [SQL Database](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) jako jeden z kont administratora jako właściciel bazy danych lub jako użytkownik bazy danych w bazie danych programu.  
+Po skonfigurowaniu reguł zapory można nawiązać połączenie z usługą Azure [SQL Database](sql-database-technical-overview.md) i [usługą Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) jako jedno z kont administratorów jako właściciel bazy danych lub jako użytkownik bazy danych w bazie danych programu.  
 
 > [!NOTE]  
-> Ten temat ma zastosowanie do programu Azure SQL Server oraz do SQL Database i SQL Data Warehouse baz danych utworzonych na serwerze SQL platformy Azure. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database. 
+> Ten temat ma zastosowanie do programu Azure SQL Server oraz do SQL Database i platformy Azure Synapse utworzonych na serwerze Azure SQL. Dla uproszczenia SQL Database jest używany podczas odwoływania się do SQL Database i usługi Azure Synapse.
 > [!TIP]
 > Aby zapoznać się z samouczkiem, zobacz temat [zabezpieczanie Azure SQL Database](sql-database-security-tutorial.md). Ten samouczek nie ma zastosowania do **Azure SQL Database wystąpienia zarządzanego**.
 
@@ -43,7 +44,7 @@ Istnieją dwa konta z uprawnieniami administracyjnymi (**Administrator serwera**
 
 - **Azure Active Directory administrator**
 
-  Jako konto administratora można również skonfigurować jedno konto usługi Azure Active Directory (indywidualne lub grupy zabezpieczeń). Skonfigurowanie administratora usługi Azure AD jest opcjonalne, ale **należy** skonfigurować administratora usługi Azure AD, jeśli chcesz używać kont usługi Azure AD do nawiązywania połączenia z usługą SQL Database. Aby uzyskać więcej informacji na temat konfigurowania dostępu do usługi Azure Active Directory, zobacz artykuły [Connecting to SQL Database or SQL Data Warehouse By Using Azure Active Directory Authentication](sql-database-aad-authentication.md) (Łączenie się z usługą SQL Database lub SQL Data Warehouse przy użyciu uwierzytelnienia usługi Azure Active Directory) i [SSMS support for Azure AD MFA with SQL Database and SQL Data Warehouse](sql-database-ssms-mfa-authentication.md) (Obsługa programu SSMS w usłudze Azure AD MFA przy użyciu usługi SQL Database i SQL Data Warehouse).
+  Jako konto administratora można również skonfigurować jedno konto usługi Azure Active Directory (indywidualne lub grupy zabezpieczeń). Skonfigurowanie administratora usługi Azure AD jest opcjonalne, ale **należy** skonfigurować administratora usługi Azure AD, jeśli chcesz używać kont usługi Azure AD do nawiązywania połączenia z usługą SQL Database. Aby uzyskać więcej informacji o konfigurowaniu dostępu Azure Active Directory, zobacz [nawiązywanie połączenia z usługą SQL Database lub Azure Synapse za pomocą uwierzytelniania Azure Active Directory](sql-database-aad-authentication.md) oraz [obsługi usługi Azure AD MFA z usługami SQL Database i Azure Synapse](sql-database-ssms-mfa-authentication.md).
 
 Konta administratorów **serwera** i **usługi Azure AD** mają następującą charakterystykę:
 
@@ -72,7 +73,7 @@ Używając otwartego portu w zaporze na poziomie serwera, administratorzy mogą 
 
 ### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>Łączenie się z bazą danych przy użyciu programu SQL Server Management Studio
 
-Aby dowiedzieć się, jak utworzyć serwer, bazę danych, reguły zapory adresów IP na poziomie serwera i używać SQL Server Management Studio do wykonywania zapytań dotyczących bazy danych, zobacz Rozpoczynanie [pracy z serwerami Azure SQL Database, bazami danych i regułami zapory przy użyciu Azure Portal i SQL Management Studio serwera](sql-database-single-database-get-started.md).
+Aby uzyskać szczegółowe instrukcje dotyczące tworzenia serwera, bazy danych, reguł zapory adresów IP na poziomie serwera i używania SQL Server Management Studio do wykonywania zapytań w bazie danych, zobacz Rozpoczynanie [pracy z serwerami Azure SQL Database, bazami danych i regułami zapory przy użyciu Azure Portal i SQL Server Management Studio](sql-database-single-database-get-started.md).
 
 > [!IMPORTANT]
 > Zalecane jest używanie najnowszej wersji programu Management Studio, aby zachować synchronizację z aktualizacjami platformy Microsoft Azure i usługi SQL Database. [Zaktualizuj program SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
@@ -128,7 +129,7 @@ Druga rola administracyjna to rola menedżera logowania. Członkowie tej roli mo
 
 ## <a name="non-administrator-users"></a>Użytkownicy niebędący administratorami
 
-Ogólnie rzecz biorąc, konta inne niż administracyjne nie potrzebują dostępu do bazy danych master. Tworzenie użytkowników zawartej bazy danych na poziomie bazy danych przy użyciu instrukcji [CREATE USER (język Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx). Użytkownik może być Azure Active Directory uwierzytelnieniem zawartej bazy danych (Jeśli skonfigurowano środowisko na potrzeby uwierzytelniania w usłudze Azure AD) lub użytkownika uwierzytelniania SQL Server zawartej bazy danych lub SQL Server użytkownika uwierzytelniania na podstawie SQL Server Logowanie uwierzytelniania (utworzone w poprzednim kroku). Aby uzyskać więcej informacji, zobacz [Użytkownicy zawartej bazy danych — Tworzenie przenośnej bazy danych](https://msdn.microsoft.com/library/ff929188.aspx). 
+Ogólnie rzecz biorąc, konta inne niż administracyjne nie potrzebują dostępu do bazy danych master. Tworzenie użytkowników zawartej bazy danych na poziomie bazy danych przy użyciu instrukcji [CREATE USER (język Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx). Użytkownik może być Azure Active Directory uwierzytelnienia zawartej bazy danych (Jeśli skonfigurowano środowisko do uwierzytelniania w usłudze Azure AD) lub użytkownika uwierzytelniania SQL Server zawartej bazy danych lub SQL Server użytkownika uwierzytelniania na podstawie logowania do SQL Server uwierzytelniania (utworzonego w poprzednim kroku). Aby uzyskać więcej informacji, zobacz [Użytkownicy zawartej bazy danych — Tworzenie przenośnej bazy danych](https://msdn.microsoft.com/library/ff929188.aspx). 
 
 Aby utworzyć użytkowników, połącz się z bazą danych i wykonaj instrukcje podobne do następujących:
 
@@ -151,7 +152,7 @@ W Azure SQL Database Użyj instrukcji `ALTER ROLE`.
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-W Azure SQL Data Warehouse Użyj [Sp_addrolemember exec](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql).
+W usłudze Azure Synapse Użyj [Sp_addrolemember exec](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql).
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
 ```

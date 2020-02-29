@@ -5,18 +5,19 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 84256d79ec543d038b4d3d3f3dc6901bbd003871
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: e636ab843a9801097bf770ca12c9d1e512750c91
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003371"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198120"
 ---
-# <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Samouczek: Korzystanie z usługi Azure Key Vault w aplikacji internetowej platformy Azure na platformie .NET
+# <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Samouczek: Korzystanie z usługi Azure Key Vault za pomocą aplikacji internetowej platformy Azure na platformie .NET
 
 Usługa Azure Key Vault umożliwia ochronę wpisów tajnych, takich jak klucze interfejsu API i parametry połączenia bazy danych. Umożliwia dostęp do aplikacji, usług i zasobów informatycznych.
 
@@ -40,7 +41,7 @@ Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Dla systemu Windows: [zestaw .NET Core 2,1 SDK lub nowszy](https://www.microsoft.com/net/download/windows)
-* Dla komputerów Mac: [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)
+* Dla komputerów Mac: [Visual Studio dla komputerów Mac](https://visualstudio.microsoft.com/vs/mac/)
 * Dla systemów Windows, Mac i Linux:
   * [Usługa Git](https://git-scm.com/downloads)
   * Ten samouczek wymaga uruchomienia interfejsu wiersza polecenia platformy Azure lokalnie. Musisz mieć zainstalowany interfejs wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
@@ -56,7 +57,7 @@ Po włączeniu MSI dla usługi platformy Azure, takiej jak Azure Virtual Machine
 
 Następnie w celu uzyskania tokenu dostępu kod wywołuje lokalną usługę metadanych, która jest dostępna w ramach zasobu platformy Azure. W celu uwierzytelnienia w usłudze Azure Key Vault kod używa tokenu dostępu, który otrzymuje z lokalnego punktu końcowego tożsamości usługi zarządzanej.
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="log-in-to-azure"></a>Logowanie się do platformy Azure
 
 Aby zalogować się do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure, wpisz:
 
@@ -64,7 +65,7 @@ Aby zalogować się do platformy Azure przy użyciu interfejsu wiersza polecenia
 az login
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
@@ -127,7 +128,7 @@ Możesz również obejrzeć to wideo:
 
 ## <a name="open-and-edit-the-solution"></a>Otwieranie i edytowanie rozwiązania
 
-1. Przejdź do pliku**about.cshtml.cs** **strony** > .
+1. Przejdź do **strony** > pliku **about.cshtml.cs** .
 
 1. Zainstaluj następujące pakiety NuGet:
    - [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)
@@ -189,9 +190,9 @@ Możesz również obejrzeć to wideo:
     }
     ```
 
-## <a name="run-the-web-app"></a>Uruchamianie aplikacji sieci web
+## <a name="run-the-web-app"></a>Uruchamianie aplikacji internetowej
 
-1. W menu głównym programu Visual Studio 2019 wybierz polecenie **Debuguj** > **Start**, z lub bez debugowania. 
+1. W menu głównym programu Visual Studio 2019 wybierz polecenie **debuguj** > **Rozpocznij**, z lub bez debugowania. 
 1. W przeglądarce przejdź do strony **informacje** .  
     Wyświetlona zostanie wartość wpisu **AppSecret**.
 
@@ -206,7 +207,7 @@ az webapp identity assign --name "<YourAppName>" --resource-group "<YourResource
 ```
 
 Zastąp \<YourAppName > nazwą opublikowanej aplikacji na platformie Azure.  
-    Na przykład jeśli nazwa opublikowanej aplikacji to **MyAwesomeapp.azurewebsites.NET**, Zastąp \<YourAppName > **MyAwesomeapp**.
+    Na przykład jeśli nazwa opublikowanej aplikacji to **MyAwesomeapp.azurewebsites.NET**, zastąp \<YourAppName > **MyAwesomeapp**.
 
 Zapisz identyfikator `PrincipalId` po opublikowaniu aplikacji na platformie Azure. Dane wyjściowe polecenia w kroku 1 powinny być w następującym formacie:
 

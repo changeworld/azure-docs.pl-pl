@@ -3,20 +3,20 @@ title: Migrowanie interfejsów API sieci Web opartych na OWIN do b2clogin.com
 titleSuffix: Azure AD B2C
 description: Dowiedz się, jak włączyć interfejs API sieci Web platformy .NET, aby obsługiwał tokeny wystawione przez wielu wystawców tokenów podczas migrowania aplikacji do usługi b2clogin.com.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e6a92d12e7f2f24289aafa7e4a9acc9edccbd34c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5daf88e746ea803f345c79bd31d656f2615b6754
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840404"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184098"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Migrowanie internetowego interfejsu API opartego na OWIN do usługi b2clogin.com
 
@@ -88,7 +88,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 W tej sekcji należy zaktualizować kod, aby określić, że oba punkty końcowe wystawcy tokenu są prawidłowe.
 
 1. Otwórz rozwiązanie **B2C-WebAPI-dotnet. sln** w programie Visual Studio
-1. W projekcie **TaskService** Otwórz plik *TaskService\\App_Start\\ **Startup.auth.cs** w* edytorze
+1. W projekcie **TaskService** Otwórz plik *TaskService\\App_Start\\* * Startup.auth.cs** * w edytorze
 1. Dodaj następującą `using` dyrektywę na początku pliku:
 
     `using System.Collections.Generic;`
@@ -123,7 +123,7 @@ Jak wspomniano wcześniej, inne biblioteki OWIN zazwyczaj oferują podobną funk
 
 Przy użyciu obu identyfikatorów URI teraz obsługiwanych przez internetowy interfejs API, musisz teraz zaktualizować aplikację sieci Web tak, aby pobierali tokeny z punktu końcowego b2clogin.com.
 
-Przykładowo można skonfigurować przykładową aplikację sieci Web, aby korzystała z nowego punktu końcowego, `ida:AadInstance` modyfikując wartość w *pliku\\TaskWebApp **Web. config** projektu* **TaskWebApp** .
+Przykładowo można skonfigurować przykładową aplikację sieci Web, aby korzystała z nowego punktu końcowego, modyfikując wartość `ida:AadInstance` w pliku *TaskWebApp\\* * Web. config** * projektu **TaskWebApp** .
 
 Zmień wartość `ida:AadInstance` w *pliku Web. config* TaskWebApp, tak aby odwoływał się do `{your-b2c-tenant-name}.b2clogin.com` zamiast `login.microsoftonline.com`.
 

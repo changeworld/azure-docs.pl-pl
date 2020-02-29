@@ -1,30 +1,30 @@
 ---
 title: Klasy zasobów do zarządzania obciążeniami
-description: Wskazówki dotyczące używania klas zasobów do zarządzania współbieżnością i zasobami obliczeniowymi dla zapytań w Azure SQL Data Warehouse.
+description: Wskazówki dotyczące korzystania z klas zasobów do zarządzania zasobami współbieżności i zasobów obliczeniowych dla zapytań w usłudze Azure Synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 12/04/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 30d3c67a815d05a256717fc4447ae3687adb8146
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.custom: azure-synapse
+ms.openlocfilehash: c94b2a755d85bdf425980574b63d8fd74a232b19
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548173"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195995"
 ---
-# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Zarządzanie obciążeniami przy użyciu klas zasobów w Azure SQL Data Warehouse
+# <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Zarządzanie obciążeniami przy użyciu klas zasobów w usłudze Azure Synapse Analytics
 
-Wskazówki dotyczące używania klas zasobów do zarządzania pamięcią i współbieżnością dla zapytań w Azure SQL Data Warehouse.  
+Wskazówki dotyczące używania klas zasobów do zarządzania pamięcią i współbieżnością dla zapytań usługi SQL Analytics w usłudze Azure Synapse.  
 
 ## <a name="what-are-resource-classes"></a>Co to są klasy zasobów
 
-Wydajność zapytania jest określana na podstawie klasy zasobów użytkownika.  Klasy zasobów to wstępnie określone limity zasobów w Azure SQL Data Warehouse, które regulują zasoby obliczeniowe i współbieżność na potrzeby wykonywania zapytań. Klasy zasobów mogą pomóc w konfigurowaniu zasobów dla zapytań przez ustawienie limitów liczby zapytań, które są uruchamiane współbieżnie i w zasobach obliczeniowych przypisanych do każdego zapytania.  Istnieje kompromis między ilością pamięci i współbieżnością.
+Wydajność zapytania jest określana na podstawie klasy zasobów użytkownika.  Klasy zasobów to wstępnie określone limity zasobów w analizie SQL, które regulują zasoby obliczeniowe i współbieżność na potrzeby wykonywania zapytań. Klasy zasobów mogą pomóc w konfigurowaniu zasobów dla zapytań przez ustawienie limitów liczby zapytań, które są uruchamiane współbieżnie i w zasobach obliczeniowych przypisanych do każdego zapytania.  Istnieje kompromis między ilością pamięci i współbieżnością.
 
 - Mniejsze klasy zasobów zmniejszają maksymalną ilość pamięci na zapytanie, ale zwiększają współbieżność.
 - Większe klasy zasobów zwiększają maksymalną ilość pamięci na zapytanie, ale zmniejszają współbieżność.
@@ -71,10 +71,10 @@ Alokacja pamięci dla każdej klasy zasobów jest następująca.
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
 | DW100c         | 25%               | 25%                    | 25%                    | 70%                    |
 | DW200c         | 12,5%             | 12,5%                  | 22%                    | 70%                    |
-| DW300c         | 8%                | 10%                    | 22%                    | 70%                    |
-| DW400c         | 6,25%             | 10%                    | 22%                    | 70%                    |
-| DW500c         | 20%               | 10%                    | 22%                    | 70%                    |
-| DW1000c do<br> DW30000c | 3%       | 10%                    | 22%                    | 70%                    |
+| DW300c         | 0,8                | dziesięć                    | 22%                    | 70%                    |
+| DW400c         | 6,25%             | dziesięć                    | 22%                    | 70%                    |
+| DW500c         | 20C               | dziesięć                    | 22%                    | 70%                    |
+| DW1000c do<br> DW30000c | 3%       | dziesięć                    | 22%                    | 70%                    |
 
 
 
@@ -82,7 +82,7 @@ Alokacja pamięci dla każdej klasy zasobów jest następująca.
 
 Domyślnie każdy użytkownik jest członkiem klasy zasobów dynamicznych **smallrc**.
 
-Klasa zasobów administratora usługi ma stałą wartość smallrc i nie można jej zmienić.  Administrator usługi jest użytkownikiem utworzonym podczas procesu aprowizacji.  Administrator usługi w tym kontekście to nazwa logowania określona dla "nazwy logowania administratora serwera" podczas tworzenia nowego wystąpienia SQL Data Warehouse na nowym serwerze.
+Klasa zasobów administratora usługi ma stałą wartość smallrc i nie można jej zmienić.  Administrator usługi jest użytkownikiem utworzonym podczas procesu aprowizacji.  Administrator usługi w tym kontekście to nazwa logowania określona dla "logowania administratora serwera" podczas tworzenia nowego wystąpienia usługi SQL Analytics z nowym serwerem.
 
 > [!NOTE]
 > Użytkownicy lub grupy zdefiniowane jako administrator Active Directory są również administratorami usługi.
@@ -143,7 +143,7 @@ Removed as these two are not confirmed / supported under SQL DW
 
 ## <a name="concurrency-slots"></a>Gniazda współbieżności
 
-Gniazda współbieżności to wygodny sposób śledzenia zasobów dostępnych na potrzeby wykonywania zapytań. Są one podobne do biletów zakupionych w celu zarezerwowania miejsc, ponieważ jest ograniczone. Łączna liczba miejsc współbieżności na magazyn danych jest określana na podstawie poziomu usługi. Aby można było rozpocząć wykonywanie zapytania, musi być w stanie zarezerwować wystarczającą liczbę miejsc współbieżności. Po zakończeniu zapytania powoduje wydanie jego miejsc współbieżności.  
+Gniazda współbieżności to wygodny sposób śledzenia zasobów dostępnych na potrzeby wykonywania zapytań. Są one podobne do biletów zakupionych w celu zarezerwowania miejsc, ponieważ jest ograniczone. Łączna liczba miejsc współbieżności na magazyn danych jest określana na podstawie poziomu usługi. Aby można było rozpocząć wykonywanie zapytania, musi być w stanie zarezerwować wystarczającą liczbę miejsc współbieżności. Po zakończeniu zapytania zwalnia jego miejsca współbieżności.  
 
 - Zapytanie działające z 10 miejsc współbieżności może uzyskać dostęp do 5 razy więcej zasobów obliczeniowych niż zapytanie działające z 2 miejscami współbieżności.
 - Jeśli każde zapytanie wymaga 10 miejsc współbieżności, a istnieją 40 miejsc współbieżności, można jednocześnie uruchamiać tylko 4 zapytania.
@@ -183,7 +183,7 @@ Użytkownicy mogą być członkami wielu klas zasobów. Gdy użytkownik należy 
 - Dynamiczne klasy zasobów mają pierwszeństwo przed klasami zasobów statycznych. Na przykład, jeśli użytkownik jest członkiem obu mediumrc (dynamicznych) i staticrc80 (static), zapytania są uruchamiane z mediumrc.
 - Większe klasy zasobów mają pierwszeństwo przed klasami mniejszych zasobów. Na przykład jeśli użytkownik jest członkiem mediumrc i largerc, zapytania są uruchamiane z largerc. Podobnie, jeśli użytkownik jest członkiem zarówno staticrc20, jak i statirc80, zapytania uruchamiają się przy użyciu alokacji zasobów staticrc80.
 
-## <a name="recommendations"></a>Polecane elementy
+## <a name="recommendations"></a>Zalecenia
 
 >[!NOTE]
 >Rozważ użycie funkcji zarządzania obciążeniami ([izolacja obciążenia](sql-data-warehouse-workload-isolation.md), [klasyfikacji](sql-data-warehouse-workload-classification.md) i [ważności](sql-data-warehouse-workload-importance.md)), aby uzyskać większą kontrolę nad obciążeniem i przewidywalną wydajnością.  
@@ -594,5 +594,5 @@ GO
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat zarządzania użytkownikami i zabezpieczeniami bazy danych, zobacz temat [Zabezpieczanie bazy danych w SQL Data Warehouse](./sql-data-warehouse-overview-manage-security.md). Aby uzyskać więcej informacji o tym, jak większe klasy zasobów mogą ulepszyć jakość klastrowanego indeksu magazynu kolumn, zobacz [optymalizacje pamięci dla kompresji magazynu kolumn](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Aby uzyskać więcej informacji na temat zarządzania użytkownikami i zabezpieczeniami bazy danych, zobacz temat [Zabezpieczanie bazy danych w usłudze SQL Analytics](./sql-data-warehouse-overview-manage-security.md). Aby uzyskać więcej informacji o tym, jak większe klasy zasobów mogą ulepszyć jakość klastrowanego indeksu magazynu kolumn, zobacz [optymalizacje pamięci dla kompresji magazynu kolumn](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 

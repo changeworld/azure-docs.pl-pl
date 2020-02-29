@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 6e1005e3d9c3769de3249f3244d65a656edc963e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ec6f9592a4c149be382fab66cca27d929644d988
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891749"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194513"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrowanie do klucza tworzenia zasobów platformy Azure
 
@@ -80,7 +80,7 @@ Po zakończeniu migracji wszystkie Twoje aplikacje LUIS są teraz przypisane do 
 
 Można utworzyć więcej zasobów autorstwa i przypisać je na stronie **zarządzaj > zasobów platformy Azure** w _portalu Luis_.
 
-Współautorzy można dodać do zasobu tworzenia z _Azure Portal_na stronie **Access Control (IAM)** dla tego zasobu. Aby uzyskać więcej informacji, zobacz [Dodawanie dostępu współautora](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource) .
+Współautorzy można dodać do zasobu tworzenia z _Azure Portal_na stronie **Access Control (IAM)** dla tego zasobu. Aby uzyskać więcej informacji, zobacz [Dodawanie dostępu współautora](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
 
 |Portal|Przeznaczenie|
 |--|--|
@@ -104,12 +104,20 @@ Właściciel aplikacji musi [dodać swój adres e-mail do zasobu tworzenia platf
 
 Po zakończeniu procesu migracji wszystkie posiadane aplikacje są dostępne na stronie **Moje aplikacje** w portalu Luis.
 
-## <a name="troubleshooting"></a>Rozwiązywanie problemów
+## <a name="troubleshooting-the-migration-process-for-luis-authoring"></a>Rozwiązywanie problemów z procesem migracji w celu LUIS tworzenia
 
-* Klucze tworzenia LUIS są widoczne tylko w portalu LUIS po zakończeniu procesu migracji. Jeśli utworzysz klucze tworzenia, na przykład w interfejsie wiersza polecenia LUIS, użytkownik nadal musi ukończyć proces migracji.
+* Klucze tworzenia LUIS są widoczne tylko w portalu LUIS po zakończeniu procesu migracji. Jeśli utworzysz klucze tworzenia, na przykład w interfejsie wiersza polecenia LUIS, użytkownik nadal musi zakończyć proces migracji w portalu LUIS.
 * Jeśli migrowany użytkownik doda niezmigrowanych użytkowników jako współautora w swoim zasobie platformy Azure, niezmigrowany użytkownik nie będzie miał dostępu do aplikacji, chyba że dokonają migracji.
-* Jeśli Niemigrowany użytkownik nie jest właścicielem żadnej aplikacji, ale jest współpracownikiem innych aplikacji należących do innych użytkowników, a właściciele przeprowadzili proces migracji, ten użytkownik będzie musiał przeprowadzić migrację w celu uzyskania dostępu do aplikacji.
+* Jeśli Niemigrowany użytkownik nie jest właścicielem żadnej aplikacji, ale jest współpracownikiem innych aplikacji należących do innych użytkowników, a właściciele przeszedł proces migracji, ten użytkownik będzie musiał przeprowadzić migrację w celu uzyskania dostępu do aplikacji.
 * Jeśli użytkownik, którego nie przeprowadzono migracji, dodał innego zmigrowanego użytkownika jako współpracownika do swojej aplikacji, wystąpi błąd, ponieważ nie będzie można dodać zmigrowanego użytkownika jako współpracownika do aplikacji. Niemigrowany użytkownik będzie musiał przejść przez proces migracji i utworzyć zasób platformy Azure i dodać zmigrowanego użytkownika jako współautora do tego zasobu.
+
+Wystąpił błąd podczas procesu migracji, jeśli:
+* Twoja subskrypcja nie upoważnia do tworzenia zasobów Cognitive Services
+* Migracja ma negatywny wpływ na wszystkie aplikacje środowiska uruchomieniowego. Podczas migracji wszystkie współpracownicy są usuwani z aplikacji, a użytkownik jest usuwany jako współpracownik z innych aplikacji. Ten proces oznacza, że przydzielone klucze zostaną również usunięte. Migracja zostanie zablokowana, jeśli masz przypisane klucze w innych aplikacjach. Przed przeprowadzeniem migracji Usuń przypisany klucz. Jeśli wiesz, że przypisany klucz nie jest używany w środowisku uruchomieniowym, musisz go usunąć, aby móc postępować w ramach migracji.
+
+Uzyskaj dostęp do listy zasobów platformy Azure aplikacji przy użyciu następującego formatu adresu URL:
+
+`https://www.luis.ai/applications/REPLACE-WITH-YOUR-APP-ID/versions/REPLACE-WITH-YOUR-VERSION-ID/manage/resources`
 
 ## <a name="next-steps"></a>Następne kroki
 

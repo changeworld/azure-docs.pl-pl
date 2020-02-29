@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 7c94ad096cf7d0d01bf2076f6748b49cf4ae1bb4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/28/2020
+ms.openlocfilehash: aa573e84fa9fff83bd6a894f516ce5f67b3afa79
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794221"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194346"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synonimy w usłudze Azure Wyszukiwanie poznawcze
 
@@ -27,7 +27,7 @@ Brak obsługi portalu do tworzenia synonimów, ale można użyć interfejsu API 
 
 Opcjonalnie, jeśli używasz [kluczy zarządzanych przez klienta](search-security-manage-encryption-keys.md) do szyfrowania po stronie usługi — w spoczynku, możesz zastosować tę ochronę do zawartości mapy synonimów.
 
-## <a name="use-synonyms"></a>Użyj synonimów
+## <a name="use-synonyms"></a>Używać synonimów
 
 Na platformie Azure Wyszukiwanie poznawcze obsługa synonimów opiera się na mapach synonimów, które definiujesz i przekazujesz do usługi. Te mapy stanowią zasób niezależny (na przykład indeksy lub źródła danych) i mogą być używane przez dowolne pola do przeszukiwania w dowolnym indeksie w usłudze wyszukiwania.
 
@@ -45,7 +45,7 @@ Możesz utworzyć wiele map synonimów dla aplikacji wyszukiwania (na przykład 
 
 #### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>Dodawanie lub aktualizowanie mapy synonimów w ramach usługi przy użyciu funkcji POST lub PUT.
 
-Mapy synonimów są przekazywane do usługi za pośrednictwem funkcji POST lub PUT. Każda reguła musi być rozdzielone znakiem nowego wiersza ("\n"). Można zdefiniować maksymalnie 5 000 reguł na potrzeby mapowania synonimów w ramach bezpłatnej usługi i reguł 10 000 we wszystkich innych jednostkach SKU. Każda reguła może mieć do 20 rozszerzeń.
+Mapy synonimów są przekazywane do usługi za pośrednictwem funkcji POST lub PUT. Każda reguła musi być rozdzielone znakiem nowego wiersza ("\n"). Można zdefiniować maksymalnie 5 000 reguł na potrzeby mapowania synonimów w ramach bezpłatnej usługi i reguły 20 000 na mapę we wszystkich innych jednostkach SKU. Każda reguła może mieć do 20 rozszerzeń.
 
 Mapy synonimów muszą znajdować się w formacie Apache Solr, który wyjaśniono poniżej. Jeśli masz istniejący słownik synonimów w innym formacie i chcesz go używać bezpośrednio, daj nam znać w usłudze [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 

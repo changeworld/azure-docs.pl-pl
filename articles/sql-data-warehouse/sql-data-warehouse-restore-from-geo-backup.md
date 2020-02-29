@@ -1,6 +1,6 @@
 ---
 title: Przywracanie magazynu danych z geograficznej kopii zapasowej
-description: Przewodnik dotyczący przywracania geograficznego Azure SQL Data Warehouse.
+description: Przewodnik dotyczący przywracania geograficznego dla puli SQL.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 69ba3ed981a27dfff41ea9ea52e1da769a9366c4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 624c6665e70802907be8a41015b78d36cca7df1c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759639"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198388"
 ---
-# <a name="geo-restore-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse przywracania geograficznego
+# <a name="geo-restore-for-sql-pool"></a>Przywracanie geograficzne dla puli SQL
 
-W tym artykule dowiesz się, jak przywrócić magazyn danych z geograficznej kopii zapasowej za pośrednictwem Azure Portal i programu PowerShell.
+W tym artykule dowiesz się, jak przywrócić pulę SQL z geograficznej kopii zapasowej za pośrednictwem Azure Portal i programu PowerShell.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Sprawdź pojemność jednostek DTU.** Każdy SQL Data Warehouse jest obsługiwany przez program SQL Server (na przykład myserver.database.windows.net), który ma domyślny limit przydziału jednostek DTU. Sprawdź, czy program SQL Server ma wystarczający limit przydziału jednostek DTU dla przywracanej bazy danych. Aby dowiedzieć się, jak obliczyć liczbę jednostek DTU potrzebnych lub aby zażądać większej liczby jednostek DTU, zobacz [żądanie zmiany limitu przydziału jednostek DTU](sql-data-warehouse-get-started-create-support-ticket.md).
+**Sprawdź pojemność jednostek DTU.** Każda pula SQL jest hostowana przez program SQL Server (na przykład myserver.database.windows.net), który ma domyślny limit przydziału jednostek DTU. Sprawdź, czy program SQL Server ma wystarczający limit przydziału jednostek DTU dla przywracanej bazy danych. Aby dowiedzieć się, jak obliczyć liczbę jednostek DTU potrzebnych lub aby zażądać większej liczby jednostek DTU, zobacz [żądanie zmiany limitu przydziału jednostek DTU](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Przywracanie z regionu geograficznego platformy Azure za pomocą programu PowerShell
 
@@ -74,20 +74,27 @@ Odzyskana baza danych będzie TDE, jeśli źródłowa baza danych jest włączon
 
 ## <a name="restore-from-an-azure-geographical-region-through-azure-portal"></a>Przywracanie z regionu geograficznego platformy Azure za pośrednictwem Azure Portal
 
-Wykonaj kroki opisane poniżej, aby przywrócić Azure SQL Data Warehouse z geograficznej kopii zapasowej:
+Wykonaj kroki opisane poniżej, aby przywrócić pulę SQL z kopii zapasowej geograficznej:
 
 1. Zaloguj się do konta [Azure Portal](https://portal.azure.com/) .
-1. Kliknij pozycję **+ Utwórz zasób** i Wyszukaj SQL Data Warehouse a następnie kliknij przycisk **Utwórz**.
+1. Kliknij pozycję **+ Utwórz zasób**. 
 
-    ![Nowy magazyn DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
-1. Wprowadź informacje wymagane na karcie **podstawowe** i kliknij przycisk **Dalej: Ustawienia dodatkowe**.
+![Nowy magazyn DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-    ![Podstawy](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
-1. W polu **Użyj istniejącego parametru danych** wybierz pozycję **kopia zapasowa** , a następnie wybierz odpowiednią kopię zapasową z opcji przewijania w dół. Kliknij przycisk **Przegląd + Utwórz**.
+3. Kliknij pozycję **bazy danych** , a następnie * * Azure Synapse Analytics (dawniej SQL DW) * *.
+
+![Nowy DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
+
+4. Wprowadź informacje wymagane na karcie **podstawowe** i kliknij przycisk **Dalej: Ustawienia dodatkowe**.
+
+![Podstawy](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+
+5. W polu **Użyj istniejącego parametru danych** wybierz pozycję **kopia zapasowa** , a następnie wybierz odpowiednią kopię zapasową z opcji przewijania w dół. Kliknij przycisk **Przegląd + Utwórz**.
  
-   ![backup](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
-2. Po przywróceniu magazynu danych sprawdź, czy **stan** jest w trybie online.
+![kopia zapasowa](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
+
+6. Po przywróceniu magazynu danych sprawdź, czy **stan** jest w trybie online.
 
 ## <a name="next-steps"></a>Następne kroki
-- [Przywracanie istniejącego magazynu danych](sql-data-warehouse-restore-active-paused-dw.md)
-- [Przywracanie usuniętego magazynu danych](sql-data-warehouse-restore-deleted-dw.md)
+- [Przywracanie istniejącej puli SQL](sql-data-warehouse-restore-active-paused-dw.md)
+- [Przywracanie usuniętej puli SQL](sql-data-warehouse-restore-deleted-dw.md)

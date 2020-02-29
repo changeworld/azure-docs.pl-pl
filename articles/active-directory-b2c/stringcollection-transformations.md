@@ -3,20 +3,20 @@ title: Przykłady transformacji oświadczeń w usłudze StringCollection dla zas
 titleSuffix: Azure AD B2C
 description: Przykłady transformacji oświadczeń w usłudze StringCollection dla schematu programu Identity Experience Framework (IEF) Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e3ce7ff633f41ccfe6faa3cc1dba1020e74459aa
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6aea537ebff4ae61e00861e6cafe742a7feb165e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656096"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186781"
 ---
 # <a name="stringcollection-claims-transformations"></a>Przekształcenia oświadczeń w programie StringCollection
 
@@ -26,7 +26,7 @@ W tym artykule przedstawiono przykłady użycia przekształceń kolekcji ciągó
 
 ## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
-Dodaje do nowych unikatowych wartości unikatowego żądania StringCollection. 
+Dodaje do nowych unikatowych wartości unikatowego żądania StringCollection.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
@@ -147,7 +147,7 @@ Poniższy przykład sprawdza, czy typ żądania `roles` StringCollection zawiera
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 

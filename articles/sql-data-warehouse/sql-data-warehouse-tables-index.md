@@ -1,6 +1,6 @@
 ---
 title: Indeksowanie tabel
-description: Zalecenia i przykłady dotyczące indeksowania tabel w Azure SQL Data Warehouse.
+description: Zalecenia i przykłady dotyczące indeksowania tabel w usłudze SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,27 +10,27 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 079891824bf71caf1ebfa575833de650a55ed5be
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 5167c897109f9e4f050ac6f7416ecabbbb28a4a9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685458"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196605"
 ---
-# <a name="indexing-tables-in-sql-data-warehouse"></a>Indeksowanie tabel w SQL Data Warehouse
+# <a name="indexing-tables-in-sql-analytics"></a>Indeksowanie tabel w usłudze SQL Analytics
 
-Zalecenia i przykłady dotyczące indeksowania tabel w Azure SQL Data Warehouse.
+Zalecenia i przykłady dotyczące indeksowania tabel w usłudze SQL Analytics.
 
 ## <a name="index-types"></a>Typy indeksów
 
-SQL Data Warehouse oferuje kilka opcji indeksowania, takich jak [klastrowane indeksy magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-overview), [indeksy klastrowane i indeksy nieklastrowane](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), a także opcję nieindeksowaną, znaną również jako [sterta](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes).  
+Program SQL Analytics oferuje kilka opcji indeksowania, takich jak [klastrowane indeksy magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-overview), [indeksy klastrowane i indeksy nieklastrowane](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), a także opcję niebędącą indeksem, znaną również jako [sterta](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes).  
 
-Aby utworzyć tabelę z indeksem, zapoznaj się z dokumentacją [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) .
+Aby utworzyć tabelę z indeksem, zapoznaj się z dokumentacją [CREATE TABLE (SQL Analytics)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) .
 
 ## <a name="clustered-columnstore-indexes"></a>Klastrowane indeksy magazynu kolumn
 
-Domyślnie SQL Data Warehouse tworzy klastrowany indeks magazynu kolumn, gdy w tabeli nie określono żadnych opcji indeksu. Klastrowane tabele magazynu kolumn oferują zarówno najwyższy poziom kompresji danych, jak i najlepszą ogólną wydajność zapytań.  Klastrowane tabele magazynu kolumn zwykle outperformją tabele indeksu lub sterty klastrowane i zazwyczaj najlepiej sprawdzają się w przypadku dużych tabel.  Z tego względu klastrowana magazyn kolumn jest najlepszym miejscem do uruchomienia, gdy nie masz pewności, jak indeksować tabelę.  
+Domyślnie program SQL Analytics tworzy klastrowany indeks magazynu kolumn, gdy w tabeli nie określono żadnych opcji indeksu. Klastrowane tabele magazynu kolumn oferują zarówno najwyższy poziom kompresji danych, jak i najlepszą ogólną wydajność zapytań.  Klastrowane tabele magazynu kolumn zwykle outperformją tabele indeksu lub sterty klastrowane i zazwyczaj najlepiej sprawdzają się w przypadku dużych tabel.  Z tego względu klastrowana magazyn kolumn jest najlepszym miejscem do uruchomienia, gdy nie masz pewności, jak indeksować tabelę.  
 
 Aby utworzyć klastrowaną tabelę magazynu kolumn, wystarczy określić KLASTROWANY indeks magazynu kolumn w klauzuli WITH lub pozostawić klauzulę WITH off:
 
@@ -52,7 +52,7 @@ Istnieje kilka scenariuszy, w których klastrowana magazyn kolumn może nie być
 
 ## <a name="heap-tables"></a>Tabele sterty
 
-Po tymczasowym wypełnieniu danych w SQL Data Warehouse, może się okazać, że użycie tabeli sterty przyspiesza cały proces. Jest to spowodowane tym, że obciążenia na sterty są szybsze niż w przypadku tabel indeksów, a w niektórych przypadkach można wykonać kolejne operacje odczytu z pamięci podręcznej.  W przypadku ładowania danych tylko w celu przygotowania ich przed uruchomieniem większej liczby przekształceń ładowanie tabeli do sterty jest znacznie szybsze niż załadowanie danych do tabeli klastrowanej magazynu kolumn. Ponadto ładowanie danych do [tymczasowej tabeli](sql-data-warehouse-tables-temporary.md) ładuje się szybciej niż ładowanie tabeli do magazynu trwałego.  
+W przypadku tymczasowego ładowania danych w usłudze SQL Analytics może się okazać, że korzystanie z tabeli sterty przyspiesza cały proces. Jest to spowodowane tym, że obciążenia na sterty są szybsze niż w przypadku tabel indeksów, a w niektórych przypadkach można wykonać kolejne operacje odczytu z pamięci podręcznej.  W przypadku ładowania danych tylko w celu przygotowania ich przed uruchomieniem większej liczby przekształceń ładowanie tabeli do sterty jest znacznie szybsze niż załadowanie danych do tabeli klastrowanej magazynu kolumn. Ponadto ładowanie danych do [tymczasowej tabeli](sql-data-warehouse-tables-temporary.md) ładuje się szybciej niż ładowanie tabeli do magazynu trwałego.  
 
 W przypadku małych tabel odnośników, mniej niż 60 000 000 wierszy, często są to tabele sterty.  Tabele magazynu kolumn klastra zaczynają optymalną kompresję, gdy istnieje więcej niż 60 000 000 wierszy.
 
@@ -190,7 +190,7 @@ Te czynniki mogą spowodować, że indeks magazynu kolumn będzie znacznie mniej
 
 ### <a name="memory-pressure-when-index-was-built"></a>Wykorzystanie pamięci po skompilowaniu indeksu
 
-Liczba wierszy na grupę wierszy skompresowanych jest bezpośrednio odnosząca się do szerokości wiersza i ilości pamięci dostępnej do przetworzenia grupy wierszy.  Jeśli wiersze są zapisywane w tabelach magazynu kolumn przy dużym wykorzystaniu pamięci, może to spowodować obniżenie jakości segmentów w magazynie kolumn.  W związku z tym najlepszym rozwiązaniem jest nadanie sesji zapisu w tabelach indeksów magazynu kolumn dostęp do możliwie największej ilości pamięci.  Ponieważ istnieje kompromis między ilością pamięci i współbieżnością, wskazówki dotyczące odpowiedniej alokacji pamięci są zależne od danych w poszczególnych wierszach tabeli, jednostek magazynów danych przydzielonych do systemu i liczby miejsc współbieżności, które można przypisać do sesji zapisuje dane do tabeli.
+Liczba wierszy na grupę wierszy skompresowanych jest bezpośrednio odnosząca się do szerokości wiersza i ilości pamięci dostępnej do przetworzenia grupy wierszy.  Jeśli wiersze są zapisywane w tabelach magazynu kolumn przy dużym wykorzystaniu pamięci, może to spowodować obniżenie jakości segmentów w magazynie kolumn.  W związku z tym najlepszym rozwiązaniem jest nadanie sesji zapisu w tabelach indeksów magazynu kolumn dostęp do możliwie największej ilości pamięci.  Ze względu na to, że istnieje kompromis między ilością pamięci i współbieżnością, wskazówki dotyczące odpowiedniej alokacji pamięci są zależne od danych w poszczególnych wierszach tabeli, jednostek analitycznych SQL przydzielonych do systemu i liczby miejsc współbieżności, które można przypisać do sesji Zapisywanie danych w tabeli.
 
 ### <a name="high-volume-of-dml-operations"></a>Duża liczba operacji DML
 
@@ -204,13 +204,13 @@ Wsadowe operacje aktualizacji i wstawiania, które przekraczają próg zbiorczy 
 
 ### <a name="small-or-trickle-load-operations"></a>Operacje ładowania małego lub Trickle
 
-Małe obciążenia, które są przesyłane do SQL Data Warehouse są również czasami znane jako obciążenia Trickle. Zwykle przedstawiają one blisko stałego strumienia danych wprowadzanych przez system. Jednak ponieważ ten strumień zbliża się do ciągłego, ilość wierszy nie jest szczególnie duża. Częściej niż nie są znacznie częściej wartości progowej wymaganej do bezpośredniego ładowania do formatu magazynu kolumn.
+Małe obciążenia, które są przesyłane do baz danych usługi SQL Analytics, są czasami nazywane Trickle ładowania. Zwykle przedstawiają one blisko stałego strumienia danych wprowadzanych przez system. Jednak ponieważ ten strumień zbliża się do ciągłego, ilość wierszy nie jest szczególnie duża. Częściej niż nie są znacznie częściej wartości progowej wymaganej do bezpośredniego ładowania do formatu magazynu kolumn.
 
 W takich sytuacjach często lepiej jest wystawić dane w usłudze Azure Blob Storage i pozwolić na jego gromadzenie przed załadowaniem. Ta technika jest często znana jako *mikropartie*.
 
 ### <a name="too-many-partitions"></a>Zbyt wiele partycji
 
-Innym zagadnieniem, które należy wziąć pod uwagę, jest wpływ partycjonowania na klastrowanych tabelach magazynu kolumn.  Przed partycjonowaniem SQL Data Warehouse już dzieli dane na 60 baz danych.  Partycjonowanie dzieli dane.  W przypadku partycjonowania danych należy wziąć pod uwagę, że **każda** partycja wymaga co najmniej 1 000 000 wierszy do skorzystania z klastrowanego indeksu magazynu kolumn.  W przypadku partycjonowania tabeli do 100 partycji, tabela wymaga co najmniej 6 000 000 000 wierszy do skorzystania z klastrowanego indeksu magazynu kolumn (60 dystrybucje *100 partycje* 1 000 000). Jeśli tabela partycji 100 nie zawiera 6 000 000 000 wierszy, zmniejsz liczbę partycji lub Rozważ użycie tabeli sterty.
+Innym zagadnieniem, które należy wziąć pod uwagę, jest wpływ partycjonowania na klastrowanych tabelach magazynu kolumn.  Przed partycjonowaniem program SQL Analytics dzieli dane na 60 baz danych.  Partycjonowanie dzieli dane.  W przypadku partycjonowania danych należy wziąć pod uwagę, że **każda** partycja wymaga co najmniej 1 000 000 wierszy do skorzystania z klastrowanego indeksu magazynu kolumn.  W przypadku partycjonowania tabeli do 100 partycji, tabela wymaga co najmniej 6 000 000 000 wierszy do skorzystania z klastrowanego indeksu magazynu kolumn (60 dystrybucje *100 partycje* 1 000 000). Jeśli tabela partycji 100 nie zawiera 6 000 000 000 wierszy, zmniejsz liczbę partycji lub Rozważ użycie tabeli sterty.
 
 Po załadowaniu tabel z danymi wykonaj następujące kroki, aby zidentyfikować i skompilować ponownie tabele z nieoptymalnymi klastrowanymi indeksami magazynu kolumn.
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Ponowne kompilowanie indeksu w SQL Data Warehouse jest operacją offline.  Aby uzyskać więcej informacji na temat odbudowywania indeksów, zobacz sekcję ALTER INDEX Rebuild w obszarze [defragmentacja indeksów magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)i [Zmień indeks](/sql/t-sql/statements/alter-index-transact-sql).
+Ponowne kompilowanie indeksu w analizie SQL jest operacją offline.  Aby uzyskać więcej informacji na temat odbudowywania indeksów, zobacz sekcję ALTER INDEX Rebuild w obszarze [defragmentacja indeksów magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)i [Zmień indeks](/sql/t-sql/statements/alter-index-transact-sql).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3. ulepszone sprawdzanie jakości klastrowanego segmentu magazynu kolumn
 
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-Aby uzyskać więcej informacji na temat ponownego tworzenia partycji za pomocą CTAS, zobacz [Używanie partycji w SQL Data Warehouse](sql-data-warehouse-tables-partition.md).
+Aby uzyskać więcej informacji na temat ponownego tworzenia partycji za pomocą CTAS, zobacz [using Partitions in SQL Analytics](sql-data-warehouse-tables-partition.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

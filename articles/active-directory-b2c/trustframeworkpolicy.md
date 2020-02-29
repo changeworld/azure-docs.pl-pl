@@ -2,20 +2,20 @@
 title: TrustFrameworkPolicy — Azure Active Directory B2C | Microsoft Docs
 description: Określ element TrustFrameworkPolicy zasad niestandardowych w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/31/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b49c873112358db4fec2992ef3d2d61161e8b373
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c964a7bde0b7db9357c73fc79d2df3170075fcc1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982419"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186390"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -38,13 +38,13 @@ Zasady niestandardowe są reprezentowane jako jeden lub więcej plików w formac
 
 Element **TrustFrameworkPolicy** zawiera następujące atrybuty:
 
-| Atrybut | Wymagane | Opis |
+| Atrybut | Wymagany | Opis |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Tak | Wersja schematu, która ma zostać użyta do wykonania zasad. Wartość musi być `0.3.0.0` |
+| PolicySchemaVersion | Yes | Wersja schematu, która ma zostać użyta do wykonania zasad. Wartość musi być `0.3.0.0` |
 | TenantObjectId | Nie | Unikatowy identyfikator obiektu dzierżawy Azure Active Directory B2C (Azure AD B2C). |
-| tenantId | Tak | Unikatowy identyfikator dzierżawy, do której należy ta zasada. |
-| `PolicyId` | Tak | Unikatowy identyfikator zasad. Ten identyfikator musi być poprzedzony *B2C_1A_* |
-| PublicPolicyUri | Tak | Identyfikator URI dla zasad, który jest kombinacją identyfikatora dzierżawy i identyfikatora zasad. |
+| TenantId | Yes | Unikatowy identyfikator dzierżawy, do której należy ta zasada. |
+| `PolicyId` | Yes | Unikatowy identyfikator zasad. Ten identyfikator musi być poprzedzony *B2C_1A_* |
+| PublicPolicyUri | Yes | Identyfikator URI dla zasad, który jest kombinacją identyfikatora dzierżawy i identyfikatora zasad. |
 | DeploymentMode | Nie | Możliwe wartości: `Production`lub `Development`. Wartość domyślna to `Production`. Ta właściwość służy do debugowania zasad. Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](troubleshoot-with-application-insights.md). |
 | UserJourneyRecorderEndpoint | Nie | Punkt końcowy, który jest używany, gdy ustawienie **DeploymentMode** ma wartość `Development`. Wartość musi być `urn:journeyrecorder:applicationinsights`. Aby uzyskać więcej informacji, zobacz [zbieranie dzienników](troubleshoot-with-application-insights.md). |
 
@@ -90,7 +90,7 @@ Element **BasePolicy** zawiera następujące elementy:
 
 | Element | Wystąpień | Opis |
 | ------- | ----------- | --------|
-| tenantId | 1:1 | Identyfikator dzierżawy Azure AD B2C. |
+| TenantId | 1:1 | Identyfikator dzierżawy Azure AD B2C. |
 | `PolicyId` | 1:1 | Identyfikator zasad nadrzędnych. |
 
 

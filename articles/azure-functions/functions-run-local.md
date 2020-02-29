@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 0b15b35f6fc83097e94f7d69815a163a0e98a228
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 559c9ee237f95f9d175aaefb487131466700e899
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523275"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190793"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Pracuj z Azure Functions Core Tools
 
@@ -463,7 +463,7 @@ Azure Functions Core Tools obsługuje dwa typy wdrożeń: Wdrażanie plików pro
 
 Folder projektu może zawierać pliki i katalogi specyficzne dla języka, które nie powinny być publikowane. Wykluczone elementy są wymienione w pliku. funcignore w folderze głównym projektu.     
 
-### <a name="project-file-deployment"></a>Wdrożenie (pliki projektu)
+### <a name="project-file-deployment"></a>Wdróż pliki projektu
 
 Aby opublikować kod lokalny w aplikacji funkcji na platformie Azure, użyj polecenia `publish`:
 
@@ -500,7 +500,7 @@ Następujące opcje publikowania są obsługiwane tylko w wersji 2. x:
 | **`--no-build`** | Nie Kompiluj funkcji biblioteki klas .NET. |
 | **`--dotnet-cli-params`** | Podczas publikowania skompilowanych C# funkcji (. csproj) podstawowe narzędzia wywołują polecenie "dotnet Build--Output bin/Publish". Wszystkie parametry przesłane do tego zostaną dołączone do wiersza polecenia. |
 
-### <a name="deployment-custom-container"></a>Wdrożenie (kontener niestandardowy)
+### <a name="deploy-custom-container"></a>Wdróż kontener niestandardowy
 
 Azure Functions umożliwia wdrożenie projektu funkcji w [niestandardowym kontenerze platformy Docker](functions-deployment-technologies.md#docker-container). Aby uzyskać więcej informacji, zobacz [Tworzenie funkcji w systemie Linux przy użyciu obrazu niestandardowego](functions-create-function-linux-custom-image.md). Kontenery niestandardowe muszą mieć pliku dockerfile. Aby utworzyć aplikację za pomocą pliku dockerfile, użyj opcji--pliku dockerfile w `func init`.
 

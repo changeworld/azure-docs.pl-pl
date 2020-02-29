@@ -1,17 +1,17 @@
 ---
-title: Łączenie funkcji z usługą Azure Storage przy użyciu Visual Studio Code
-description: Dowiedz się, jak dodać powiązanie danych wyjściowych, aby połączyć funkcje z kolejką usługi Azure Storage przy użyciu Visual Studio Code.
-ms.date: 06/25/2019
+title: Łączenie Azure Functions z usługą Azure Storage przy użyciu Visual Studio Code
+description: Dowiedz się, jak połączyć Azure Functions z kolejką usługi Azure Storage, dodając powiązanie danych wyjściowych do projektu Visual Studio Code.
+ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 5b7d7be7854a216b7cb7b610ea6d51fdc496a93f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 22f7df52e90a35a3ed9a26a7672f8354efc173e3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845661"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191068"
 ---
-# <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>Łączenie funkcji z usługą Azure Storage przy użyciu Visual Studio Code
+# <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Łączenie Azure Functions z usługą Azure Storage przy użyciu Visual Studio Code
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
@@ -19,7 +19,7 @@ W tym artykule pokazano, jak za pomocą Visual Studio Code połączyć funkcję 
 
 Większość powiązań wymaga przechowywanych parametrów połączenia używanych przez funkcje do uzyskiwania dostępu do usługi powiązanej. Aby ułatwić sobie korzystanie z konta magazynu utworzonego za pomocą aplikacji funkcji programu. Połączenie z tym kontem jest już przechowywane w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.  
 
-## <a name="prerequisites"></a>Wymagania wstępne
+## <a name="configure-your-local-environment"></a>Konfigurowanie środowiska lokalnego
 
 Przed rozpoczęciem pracy z tym artykułem należy spełnić następujące wymagania:
 
@@ -90,98 +90,17 @@ W funkcjach każdy typ powiązania wymaga `direction`, `type`i unikatowy `name` 
 
 Po zdefiniowaniu powiązania można użyć `name` powiązania, aby uzyskać do niego dostęp jako atrybut w sygnaturze funkcji. Za pomocą powiązania danych wyjściowych nie trzeba używać kodu zestawu SDK usługi Azure Storage do uwierzytelniania, uzyskiwania odwołania do kolejki lub zapisywania danych. Te zadania są wykonywane za pomocą środowiska uruchomieniowego usługi Functions i powiązania danych wyjściowych kolejki.
 
-::: zone pivot="programming-language-javascript"
-
+::: zone pivot="programming-language-javascript"  
 [!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
+::: zone-end  
 
-::: zone-end
-
-::: zone pivot="programming-language-typescript"
-
-Dodaj kod, który używa `msg` obiektu powiązania danych wyjściowych na `context.bindings`, aby utworzyć komunikat w kolejce. Dodaj ten kod przed instrukcją `context.res`.
-
-```typescript
-// Add a message to the Storage queue.
-context.bindings.msg = "Name passed to the function: " + name;
-```
-
-W tym momencie funkcja powinna wyglądać w następujący sposób:
-
-```javascript
-import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-
-const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    context.log('HTTP trigger function processed a request.');
-    const name = (req.query.name || (req.body && req.body.name));
-
-    if (name) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " + name; 
-        // Send a "hello" response.
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-
-export default httpTrigger;
-```
-
-::: zone-end
+::: zone pivot="programming-language-typescript"  
+[!INCLUDE [functions-add-output-binding-ts](../../includes/functions-add-output-binding-ts.md)]
+::: zone-end  
 
 ::: zone pivot="programming-language-powershell"
 
-Dodaj kod, który używa polecenia cmdlet `Push-OutputBinding`, aby napisać tekst do kolejki przy użyciu powiązania danych wyjściowych `msg`. Dodaj ten kod przed ustawieniem stanu OK w instrukcji `if`.
-
-```powershell
-# Write the $name value to the queue.
-$outputMsg = "Name passed to the function: $name"
-Push-OutputBinding -name msg -Value $outputMsg
-```
-
-W tym momencie funkcja powinna wyglądać w następujący sposób:
-
-```powershell
-using namespace System.Net
-
-# Input bindings are passed in via param block.
-param($Request, $TriggerMetadata)
-
-# Write to the Azure Functions log stream.
-Write-Host "PowerShell HTTP trigger function processed a request."
-
-# Interact with query parameters or the body of the request.
-$name = $Request.Query.Name
-if (-not $name) {
-    $name = $Request.Body.Name
-}
-
-if ($name) {
-    # Write the $name value to the queue.
-    $outputMsg = "Name passed to the function: $name"
-    Push-OutputBinding -name msg -Value $outputMsg
-
-    $status = [HttpStatusCode]::OK
-    $body = "Hello $name"
-}
-else {
-    $status = [HttpStatusCode]::BadRequest
-    $body = "Please pass a name on the query string or in the request body."
-}
-
-# Associate values to output bindings by calling 'Push-OutputBinding'.
-Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
-    StatusCode = $status
-    Body = $body
-})
-```
+[!INCLUDE [functions-add-output-binding-powershell](../../includes/functions-add-output-binding-powershell.md)]
 
 ::: zone-end
 
@@ -191,11 +110,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 
 ::: zone-end
 
-::: zone pivot="programming-language-csharp"
-
+::: zone pivot="programming-language-csharp"  
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
-
-::: zone-end
+::: zone-end  
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
@@ -215,7 +132,7 @@ Nowa kolejka o nazwie **requeue** została utworzona na koncie magazynu przez ś
 
 Pomiń tę sekcję, jeśli już zainstalowano Eksplorator usługi Azure Storage i połączono ją z kontem platformy Azure.
 
-1. Uruchom narzędzie [Azure Storage Explorer] , wybierz ikonę Połącz po lewej stronie, a następnie wybierz pozycję **Dodaj konto**.
+1. Uruchom narzędzie [Eksplorator usługi Azure Storage], wybierz ikonę Połącz po lewej stronie, a następnie wybierz pozycję **Dodaj konto**.
 
     ![Dodaj konto platformy Azure do Eksplorator usługi Microsoft Azure Storage](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-add-account.png)
 
@@ -263,9 +180,29 @@ Aby ukończyć te przewodniki Szybki start, zostały utworzone zasoby. Za te zas
 
 ## <a name="next-steps"></a>Następne kroki
 
-Została zaktualizowana funkcja wyzwalana przez protokół HTTP w celu zapisania danych w kolejce magazynu. Następnie można dowiedzieć się więcej na temat opracowywania funkcji przy użyciu Visual Studio Code:
+Została zaktualizowana funkcja wyzwalana przez protokół HTTP w celu zapisania danych w kolejce magazynu. Teraz można dowiedzieć się więcej na temat opracowywania funkcji przy użyciu Visual Studio Code:
 
-> [!div class="nextstepaction"]
-> [Opracowywanie Azure Functions przy użyciu Visual Studio Code](functions-develop-vs-code.md)
-
-[Azure Storage Explorer]: https://storageexplorer.com/
++ [Opracowywanie Azure Functions przy użyciu Visual Studio Code](functions-develop-vs-code.md)
+::: zone pivot="programming-language-csharp"  
++ [Przykłady kompletnych projektów funkcji w C# ](/samples/browse/?products=azure-functions&languages=csharp).
++ [Dokumentacja C# dla deweloperów Azure Functions](functions-dotnet-class-library.md)  
+::: zone-end 
+::: zone pivot="programming-language-javascript"  
++ [Przykłady kompletnych projektów funkcji w języku JavaScript](/samples/browse/?products=azure-functions&languages=javascript).
++ [Przewodnik dla deweloperów Azure Functions JavaScript](functions-reference-node.md)  
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
++ [Przykłady całych projektów funkcji w języku TypeScript](/samples/browse/?products=azure-functions&languages=typescript).
++ [Azure Functions przewodnik dewelopera języka TypeScript](functions-reference-node.md#typescript)  
+::: zone-end  
+::: zone pivot="programming-language-python"  
++ [Przykłady kompletnych projektów funkcji w języku Python](/samples/browse/?products=azure-functions&languages=python).
++ [Przewodnik dewelopera w języku Python Azure Functions](functions-reference-python.md)  
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
++ [Przykłady kompletnych projektów funkcji w programie PowerShell](/samples/browse/?products=azure-functions&languages=azurepowershell).
++ [Przewodnik dewelopera programu Azure Functions PowerShell](functions-reference-powershell.md) 
+::: zone-end
++ [Azure Functions wyzwalacze i powiązania](functions-triggers-bindings.md).
++ [Strona cennika funkcji](https://azure.microsoft.com/pricing/details/functions/)
++ [Szacowanie kosztów planu zużycia](functions-consumption-costs.md) .

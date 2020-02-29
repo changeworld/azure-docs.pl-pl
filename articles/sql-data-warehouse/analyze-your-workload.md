@@ -1,30 +1,30 @@
 ---
 title: Analizowanie obciążenia
-description: Techniki analizowania priorytetyzacji zapytań dla obciążenia w Azure SQL Data Warehouse.
+description: Techniki analizowania priorytetyzacji zapytań dla obciążenia w usłudze Azure Synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 03/13/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 14e53c1ebe63fac0f7c8e29f66ee5aa0cb3b9526
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 9b1432c41e56c6e0bc3fd80f9c2dbb36374d9e2a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693119"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199999"
 ---
-# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analizowanie obciążenia w Azure SQL Data Warehouse
+# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analizowanie obciążenia w usłudze Azure Synapse Analytics
 
-Techniki analizowania obciążeń w Azure SQL Data Warehouse.
+Techniki analizowania obciążeń SQL Analytics w usłudze Azure Synapse Analytics.
 
 ## <a name="resource-classes"></a>Klasy zasobów
 
-SQL Data Warehouse udostępnia klasy zasobów do przypisywania zasobów systemowych do zapytań.  Aby uzyskać więcej informacji na temat klas zasobów, zobacz [klasy zasobów & zarządzanie obciążeniami](resource-classes-for-workload-management.md).  Zapytania zaczekają, jeśli klasa zasobów przypisana do zapytania będzie potrzebowała więcej zasobów niż jest to obecnie dostępne.
+Analiza SQL udostępnia klasy zasobów do przypisywania zasobów systemowych do zapytań.  Aby uzyskać więcej informacji na temat klas zasobów, zobacz [klasy zasobów & zarządzanie obciążeniami](resource-classes-for-workload-management.md).  Zapytania zaczekają, jeśli klasa zasobów przypisana do zapytania będzie potrzebowała więcej zasobów niż jest to obecnie dostępne.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Wykrywanie zapytań w kolejce i inne widoków DMV
 
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL Data Warehouse ma następujące typy oczekiwania:
+Program SQL Analytics ma następujące typy oczekiwania:
 
 * **LocalQueriesConcurrencyResourceType**: zapytania, które znajdują się poza platformą miejsc współbieżności. Zapytania DMV i funkcje systemowe, takie jak `SELECT @@VERSION` są przykładami zapytań lokalnych.
 * **UserConcurrencyResourceType**: zapytania, które znajdują się wewnątrz struktury gniazda współbieżności. Zapytania dotyczące tabel użytkowników końcowych przedstawiają przykłady, które mogłyby używać tego typu zasobu.
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat zarządzania użytkownikami i zabezpieczeniami bazy danych, zobacz temat [Zabezpieczanie bazy danych w SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). Aby uzyskać więcej informacji o tym, jak większe klasy zasobów mogą ulepszyć jakość klastrowanego indeksu magazynu kolumn, zobacz Ponowne [Kompilowanie indeksów w celu zwiększenia jakości segmentu](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Aby uzyskać więcej informacji na temat zarządzania użytkownikami i zabezpieczeniami bazy danych, zobacz temat [Zabezpieczanie bazy danych w usłudze SQL Analytics](sql-data-warehouse-overview-manage-security.md). Aby uzyskać więcej informacji o tym, jak większe klasy zasobów mogą ulepszyć jakość klastrowanego indeksu magazynu kolumn, zobacz Ponowne [Kompilowanie indeksów w celu zwiększenia jakości segmentu](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

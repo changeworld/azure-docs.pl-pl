@@ -4,13 +4,13 @@ description: Informacje o sposobie tworzenia usługi Azure Functions działając
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
-zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 29b0719670529a486222ef5fad21dd803ea6f195
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482364"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190810"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Tworzenie funkcji w systemie Linux przy użyciu kontenera niestandardowego
 
@@ -70,7 +70,7 @@ Ten samouczek można wykonać na dowolnym komputerze z systemem Windows, Mac OS 
 
 1. W terminalu lub wierszu polecenia Utwórz folder dla tego samouczka w odpowiedniej lokalizacji, a następnie przejdź do tego folderu.
 
-1. Postępuj zgodnie z instrukcjami dotyczącymi [tworzenia i aktywowania środowiska wirtualnego](functions-create-first-function-python.md#create-and-activate-a-virtual-environment) w celu utworzenia środowiska wirtualnego do użycia z tym samouczkiem.
+1. Postępuj zgodnie z instrukcjami dotyczącymi [tworzenia i aktywowania środowiska wirtualnego](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv) w celu utworzenia środowiska wirtualnego do użycia z tym samouczkiem.
 
 1. Uruchom następujące polecenie dla wybranego języka, aby utworzyć projekt aplikacji funkcji w folderze o nazwie `LocalFunctionsProject`. Opcja `--docker` generuje `Dockerfile` dla projektu, który definiuje odpowiedni kontener niestandardowy do użycia z Azure Functions i wybranym środowiskiem uruchomieniowym.
 

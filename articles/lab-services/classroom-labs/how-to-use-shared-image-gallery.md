@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 79aea7d8a4a969e0ccd42ef94d77a9aa396ab91c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: c611ecdb5a2534f7368e533e3e19e6e3f96de57f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591323"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190453"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Używanie galerii obrazów udostępnionych w Azure Lab Services
 W tym artykule pokazano, jak nauczyciele/administrator laboratorium mogą zapisać obraz maszyny wirtualnej szablonu, aby był on ponownie używany przez inne osoby. Te obrazy są zapisywane w [galerii udostępnionych obrazów](../../virtual-machines/windows/shared-image-galleries.md)systemu Azure. Pierwszym krokiem jest dołączenie istniejącej galerii udostępnionych obrazów do konta laboratorium przez administratora laboratorium. Po dołączeniu do galerii obrazów udostępnionych laboratoria utworzone na koncie laboratorium mogą zapisywać obrazy w galerii obrazów udostępnionych. Inni nauczyciele mogą wybrać ten obraz z galerii obrazów udostępnionych, aby utworzyć szablon dla ich klas. 
 
 > [!NOTE]
-> Obecnie Azure Lab Services obsługuje tworzenie maszyn wirtualnych na podstawie **uogólnionych** obrazów maszyn wirtualnych (niewyspecjalizowanych obrazów) w galerii obrazów udostępnionych. 
+> Obecnie Azure Lab Services obsługuje tworzenie maszyn wirtualnych szablonów opartych na **uogólnionych** obrazach maszyn wirtualnych (niewyspecjalizowanych obrazów) w galerii obrazów udostępnionych. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - Utwórz udostępnioną galerię obrazów przy użyciu [Azure PowerShell](../../virtual-machines/windows/shared-images.md) lub [interfejsu wiersza polecenia platformy Azure](../../virtual-machines/linux/shared-images.md).

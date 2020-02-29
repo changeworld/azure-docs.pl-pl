@@ -3,20 +3,20 @@ title: 'Szybki Start: Konfigurowanie logowania dla aplikacji jednostronicowej (S
 titleSuffix: Azure AD B2C
 description: W tym przewodniku Szybki Start Uruchom przykładową aplikację jednostronicową, która używa Azure Active Directory B2C w celu zapewnienia logowania do konta.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/12/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 98b4e7e6b64d68d98597c40c6aea3d6cfe104be0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a5d4319f47530a91bcceb9b2dba94c6aa8e4c388
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850146"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183894"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Szybki start: konfigurowanie logowania dla aplikacji jednostronicowej przy użyciu usługi Azure Active Directory B2C
 

@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 108d116500454605f33de201caffc11ae263f74c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6132aab98cc8145cb99cf153c64f20fbac00131c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851506"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197009"
 ---
 # <a name="onboarding-and-installing"></a>Dołączanie i Instalowanie
 
@@ -30,24 +30,29 @@ Wymagania wstępne dotyczące analizy kodu zabezpieczeń firmy Microsoft:
 
 ## <a name="onboarding-the-microsoft-security-code-analysis-extension"></a>Dołączanie rozszerzenia Microsoft Security code Analysis
 
-- Jeśli masz jedną z następujących ofert pomocy technicznej, skontaktuj się z kierownikiem ds. klientów, aby zakupić lub zamienić istniejące godziny w celu uzyskania dostępu do rozszerzenia:
-  - Ujednolicona warstwa zaawansowanej pomocy technicznej
-  - Ujednolicona warstwa wydajności wsparcia
-  - pomoc techniczna Premier dla deweloperów
-  - pomoc techniczna Premier dla partnerów
-  - pomoc techniczna Premier dla przedsiębiorstw
-- Jeśli masz jedną z następujących usług pomocy technicznej lub nie masz planu pomocy technicznej firmy Microsoft, musisz przeprowadzić uaktualnienie do uprawnionej oferty pomocy technicznej:
-  - Pomoc techniczna platformy Azure dla partnerów
-  - Podstawowa pomoc techniczna Azure
-  - pomoc techniczna Developer platformy Azure
-  - pomoc techniczna Standard platformy Azure
-  - Azure Professional Direct
-  - Ujednolicona warstwa podstawowa wsparcia
-- Aby zakupić uprawniającą ofertę pomocy technicznej, przejdź do naszej [strony głównej usług pomocy technicznej](https://www.microsoft.com/enterprise/services/support).
-- Po zakończeniu kontraktu pomocy technicznej skontaktuj się z kierownikiem ds. klientów, aby pomóc Ci rozpocząć pracę i pomóc Ci zebrać wszystkie wymagane szczegóły.
+### <a name="interested-in-purchasing-the-microsoft-security-code-analysis-extension"></a>Interesuje Cię zakup rozszerzenia Microsoft Security code Analysis?
 
->[!NOTE]
->Jeśli nie masz umowy dotyczącej pomocy technicznej, pracujemy również nad programem zakupów dla partnerów, który umożliwia zakupienie rozszerzenia bez konieczności kupowania ujednoliconego planu pomocy technicznej. [Wyślij wiadomość e-mail do nas](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Onboarding%20Request). Aby poinformować nas, że interesuje Cię tę opcję. Prosimy o zanotowanie zainteresowania i powrót do Ciebie, gdy tylko ta opcja jest dostępna.
+Jeśli masz jedną z następujących ofert pomocy technicznej, skontaktuj się z kierownikiem ds. klientów, aby zakupić lub zamienić istniejące godziny w celu uzyskania dostępu do rozszerzenia:
+
+- Ujednolicona warstwa zaawansowanej pomocy technicznej
+- Ujednolicona warstwa wydajności wsparcia
+- pomoc techniczna Premier dla deweloperów
+- pomoc techniczna Premier dla partnerów
+- pomoc techniczna Premier dla przedsiębiorstw
+
+Jeśli nie masz jednego z wymienionych powyżej umów pomocy technicznej, możesz kupić rozszerzenie od jednego z naszych partnerów.
+
+**Następne kroki:**
+
+Skontaktuj się z partnerem z poniższej listy i poproś o zakupienie rozszerzenia Microsoft Security code Analysis.
+
+>**Partnerów**
+
+- Strefy — szczegóły kontaktu: cloudsupport@zones.com
+
+### <a name="become-a-partner"></a>Zostań partnerem
+
+Zespół ds. analizy kodu zabezpieczeń firmy Microsoft chce dołączać partnerów do pomoc techniczna Premier umowy partnerskiej. Partnerzy mogą pomóc klientom z DevOpsm się bardziej bezpiecznym programowaniem, oferując rozszerzenie klientom, którzy chcą go zakupić, ale nie mają umowy wsparcia dla przedsiębiorstw z firmą Microsoft. Zainteresowani partnerzy mogą zarejestrować się [tutaj](http://www.microsoftpartnersupport.com/msrd/opin).
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>Instalowanie rozszerzenia Microsoft Security code Analysis
 

@@ -3,20 +3,20 @@ title: Przykłady logicznej transformacji oświadczeń dla zasad niestandardowyc
 titleSuffix: Azure AD B2C
 description: Przykłady logicznej transformacji oświadczeń dla schematu programu Identity Experience Framework (IEF) Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 130fca4d5894316e7684270ff9d6361e9d9f9dd3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 65f5b9bc09bb74ccbc63a457ba8e5681de8eefab
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620839"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189945"
 ---
 # <a name="boolean-claims-transformations"></a>Przekształcenia logiczne oświadczeń
 
@@ -116,7 +116,7 @@ Profil techniczny z własnym potwierdzeniem wywołuje profil techniczny **logowa
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 
-Sprawdza, czy wartość logiczna oświadczeń jest równa `true` lub `false`, i zwraca wynik kompresji. 
+Sprawdza, czy wartość logiczna oświadczeń jest równa `true` lub `false`, i zwraca wynik kompresji.
 
 | Element | TransformationClaimType  | Typ danych  | Uwagi |
 | ---- | ------------------------ | ---------- | ----- |
@@ -148,7 +148,7 @@ Następująca transformacja oświadczeń pokazuje, jak sprawdzić wartość elem
 - Parametry wejściowe:
     - **valueToCompareTo**: true
 - Oświadczenia wyjściowe:
-    - **compareResult**: FAŁSZ 
+    - **compareResult**: FAŁSZ
 
 
 
