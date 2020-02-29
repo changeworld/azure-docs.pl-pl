@@ -5,18 +5,19 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 65c59ba299490ee2bbef849b6f7354abc05ad885
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8c5b3fcc1cb2ac481be0b435c48ce213c716edde
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003347"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198171"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Samouczek: Używanie maszyny wirtualnej z systemem Linux i aplikacji platformy .NET do przechowywania wpisów tajnych w programie Azure Key Vault
+# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Samouczek: korzystanie z maszyny wirtualnej z systemem Linux i aplikacji platformy .NET do przechowywania wpisów tajnych w programie Azure Key Vault
 
 Azure Key Vault pomaga chronić wpisy tajne, takie jak klucze interfejsu API i parametry połączenia bazy danych, które są potrzebne do uzyskiwania dostępu do aplikacji, usług i zasobów IT.
 
@@ -59,11 +60,11 @@ Aby zalogować się do platformy Azure przy użyciu interfejsu wiersza polecenia
 az login
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
-Utwórz grupę zasobów za pomocą `az group create` polecenia. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
+Utwórz grupę zasobów za pomocą polecenia `az group create`. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
-Utwórz grupę zasobów w lokalizacji zachodnie stany USA. Wybierz nazwę grupy zasobów i Zastąp `YourResourceGroupName` ją w następującym przykładzie:
+Utwórz grupę zasobów w lokalizacji zachodnie stany USA. Wybierz nazwę grupy zasobów i Zastąp `YourResourceGroupName` w następującym przykładzie:
 
 ```azurecli-interactive
 # To list locations: az account list-locations --output table
@@ -76,7 +77,7 @@ Możesz używać tej grupy zasobów w całym samouczku.
 
 Następnie utwórz magazyn kluczy w grupie zasobów. Podaj następujące informacje:
 
-* Nazwa magazynu kluczy: ciąg od 3 do 24 znaków, który może zawierać tylko cyfry, litery i łączniki (0-9, a-z, A-Z \- i).
+* Nazwa magazynu kluczy: ciąg od 3 do 24 znaków, który może zawierać tylko cyfry, litery i łączniki (0-9, a-z, A-Z i \-).
 * Nazwa grupy zasobów
 * Lokalizacja: **Zachodnie stany USA**
 
@@ -96,11 +97,11 @@ W tym samouczku wpisz następujące polecenia, aby utworzyć wpis tajny w magazy
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-linux-virtual-machine"></a>Utwórz maszynę wirtualną z systemem Linux
+## <a name="create-a-linux-virtual-machine"></a>Tworzenie maszyny wirtualnej z systemem Linux
 
-Utwórz maszynę wirtualną za `az vm create` pomocą polecenia.
+Utwórz maszynę wirtualną za pomocą polecenia `az vm create`.
 
-W poniższym przykładzie zostanie utworzona maszyna wirtualna o nazwie **myVM** i dodane konto użytkownika o nazwie **azureuser**. Parametr US używany do automatycznego generowania klucza SSH i umieszczania go w lokalizacji domyślnej ( **~/.SSH**). `--generate-ssh-keys` Aby zamiast niego użyć określonego zestawu kluczy, skorzystaj z opcji `--ssh-key-value`.
+W poniższym przykładzie zostanie utworzona maszyna wirtualna o nazwie **myVM** i dodane konto użytkownika o nazwie **azureuser**. `--generate-ssh-keys` parametr, używany do automatycznego generowania klucza SSH i umieszczania go w lokalizacji domyślnej klucza ( **~/.SSH**). Aby zamiast niego użyć określonego zestawu kluczy, skorzystaj z opcji `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \
@@ -126,7 +127,7 @@ Utworzenie maszyny wirtualnej i zasobów pomocniczych potrwa kilka minut. Nastę
 }
 ```
 
-Zanotuj `publicIpAddress` dane wyjściowe z maszyny wirtualnej. Ten adres służy do uzyskiwania dostępu do maszyny wirtualnej w późniejszych krokach.
+Zanotuj `publicIpAddress` w danych wyjściowych z maszyny wirtualnej. Ten adres służy do uzyskiwania dostępu do maszyny wirtualnej w późniejszych krokach.
 
 ## <a name="assign-an-identity-to-the-vm"></a>Przypisywanie tożsamości do maszyny wirtualnej
 
@@ -136,7 +137,7 @@ Utwórz tożsamość przypisaną przez system do maszyny wirtualnej, uruchamiaj�
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
-Dane wyjściowe polecenia powinny mieć następujące wartości:
+Dane wyjściowe polecenia powinny wyglądać następująco:
 
 ```azurecli
 {
@@ -157,7 +158,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 ## <a name="log-in-to-the-vm"></a>Logowanie się do maszyny wirtualnej
 
-Zaloguj się do maszyny wirtualnej za pomocą terminalu.
+zaloguj się do maszyny wirtualnej za pomocą terminalu.
 
 ```terminal
 ssh azureuser@<PublicIpAddress>
