@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/29/2020
+ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: f34d4e50042f0fd05a224ff096c2b472224248f8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992401"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919672"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>Szybki Start: korzystanie z biblioteki klienta analiza tekstu dla języka Ruby
 
@@ -23,7 +23,7 @@ Rozpocznij pracę z biblioteką klienta analiza tekstu. Wykonaj następujące kr
 
 Użyj biblioteki klienta analiza tekstu do wykonania:
 
-* Analiza opinii
+* Analiza tonacji
 * Wykrywanie języka
 * Rozpoznawanie jednostek
 * Wyodrębnianie kluczowych fraz
@@ -39,12 +39,11 @@ Użyj biblioteki klienta analiza tekstu do wykonania:
 
 * Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
 * Bieżąca wersja języka [Ruby](https://www.ruby-lang.org/)
+* Gdy masz subskrypcję platformy Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="utworzyć zasób analiza tekstu"  target="_blank">utworzyć analiza tekstu</a> zasobów <span class="docon docon-navigate-external x-hidden-focus"></span> w Azure Portal, aby uzyskać klucz i punkt końcowy. 
+    * Będziesz potrzebować klucza i punktu końcowego z zasobu, który tworzysz, aby połączyć aplikację z interfejs API analizy tekstu. Tę czynność należy wykonać w dalszej części przewodnika Szybki Start.
+    * Możesz użyć warstwy cenowej bezpłatna, aby wypróbować usługę i uaktualnić ją później do warstwy płatnej dla środowiska produkcyjnego.
 
 ## <a name="setting-up"></a>Konfigurowanie
-
-### <a name="create-a-text-analytics-azure-resource"></a>Tworzenie zasobu analiza tekstu platformy Azure 
-
-[!INCLUDE [text-analytics-resource-creation](../includes/quickstarts/resource-creation.md)]
 
 ### <a name="create-a-new-ruby-application"></a>Tworzenie nowej aplikacji Ruby
 
@@ -87,7 +86,7 @@ Obiekt Response jest listą zawierającą informacje o analizie dla każdego dok
 Te fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą biblioteki klienta analiza tekstu dla języka Python:
 
 * [Uwierzytelnianie klienta](#authenticate-the-client)
-* [Analiza tonacji](#sentiment-analysis)
+* [analiza tonacji](#sentiment-analysis)
 * [Wykrywanie języka](#language-detection)
 * [Rozpoznawanie jednostek](#entity-recognition)
 * [Wyodrębnianie kluczowych fraz](#key-phrase-extraction)
@@ -113,7 +112,7 @@ Poza klasą Użyj funkcji `new()` klienta, aby ją utworzyć.
 
 <a name="SentimentAnalysis"></a>
 
-## <a name="sentiment-analysis"></a>Analiza opinii
+## <a name="sentiment-analysis"></a>Analiza tonacji
 
 W obiekcie Client Utwórz funkcję o nazwie `AnalyzeSentiment()`, która pobiera listę dokumentów wejściowych, które zostaną utworzone później. Wywołaj funkcję `sentiment()` klienta i uzyskaj wynik. Następnie można wykonać iterację w wynikach i wydrukować identyfikator każdego dokumentu oraz tonacji ocenę. Wynik zbliżony do 0 wskazuje negatywną tonacji, natomiast wynik zbliżony do 1 wskazuje pozytywny tonacji.
 

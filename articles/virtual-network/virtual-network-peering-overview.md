@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5fb54e812e72b9393ffdf632085d0f32ab8b1988
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980104"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918363"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
@@ -97,14 +97,14 @@ Aby uzyskać więcej informacji, zobacz [wymagania i ograniczenia](virtual-netwo
 
 Aby dowiedzieć się więcej o uprawnieniach wymaganych do utworzenia komunikacji równorzędnej sieci wirtualnej, zobacz [uprawnienia](virtual-network-manage-peering.md#permissions).
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 Jest naliczona nominalna opłata za ruch przychodzący i ruchu wyjściowego, który używa połączenia komunikacji równorzędnej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [Cennik usługi Virtual Network](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Tranzyt bramy to właściwość komunikacji równorzędnej, która umożliwia sieci wirtualnej korzystanie z bramy sieci VPN/ExpressRoute w równorzędnej sieci wirtualnej. Tranzyt bramy działa zarówno w przypadku połączeń między sieciami lokalnymi, jak i między sieciami. Ruch do bramy (ruchu przychodzącego lub wychodzącego) w równorzędnej sieci wirtualnej wiąże się z opłatami za wirtualne sieci równorzędne. Aby uzyskać więcej informacji, zobacz [VPN Gateway cennika](https://azure.microsoft.com/pricing/details/vpn-gateway/) dla opłat za bramę sieci VPN i cennika usługi ExpressRoute Gateway na potrzeby opłat za bramę ExpressRoute.
+Tranzyt bramy to właściwość komunikacji równorzędnej, która umożliwia sieci wirtualnej korzystanie z bramy sieci VPN/ExpressRoute w równorzędnej sieci wirtualnej. Tranzyt bramy działa zarówno w przypadku połączeń między sieciami lokalnymi, jak i między sieciami. Ruch skierowany do bramy (ruchu przychodzącego lub wychodzącego) w równorzędnej sieci wirtualnej wiąże się z naliczeniem połączeń równorzędnych sieci wirtualnych za pomocą połączenia wirtualnej szprychy (lub sieci wirtualnej bez bramy). Aby uzyskać więcej informacji, zobacz [VPN Gateway cennika](https://azure.microsoft.com/pricing/details/vpn-gateway/) dla opłat za bramę sieci VPN i cennika usługi ExpressRoute Gateway na potrzeby opłat za bramę ExpressRoute.
 
 >[!NOTE]
-> Poprzednia wersja tego dokumentu stwierdziła, że opłaty za komunikację równorzędną sieci wirtualnych nie będą stosowane z tranzytem bramy. Teraz odzwierciedla dokładne ceny na stronie z cennikiem.
+> Poprzednia wersja tego dokumentu stwierdziła, że opłaty za komunikację równorzędną w sieci wirtualnej nie będą stosowane w połączeniu z siecią wirtualną szprychy (ani z siecią wirtualną bez bramy) z tranzytem bramy. Teraz odzwierciedla dokładne ceny na stronie z cennikiem.
 
 ## <a name="next-steps"></a>Następne kroki
 

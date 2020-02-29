@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: 925b859de28b8878412ee99402ffd727edcc4e7c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934725"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915643"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Zapora aplikacji sieci Web platformy Azure na platformie Azure
 
@@ -77,7 +77,7 @@ Niestandardowe reguły WAF można skonfigurować w następujący sposób:
 
 ### <a name="azure-managed-rule-sets"></a>Zestawy reguł zarządzane przez platformę Azure
 
-Zestawy reguł zarządzane przez platformę Azure zapewniają łatwy sposób wdrażania ochrony przed wspólnym zbiorem zagrożeń bezpieczeństwa. Ponieważ takie zestaw reguł jest zarządzany przez platformę Azure, reguły są aktualizowane w razie potrzeby w celu ochrony przed nowymi sygnaturami ataków. W publicznej wersji zapoznawczej zarządzana przez platformę Azure reguła domyślna obejmuje reguły dotyczące następujących kategorii zagrożeń:
+Zestawy reguł zarządzane przez platformę Azure zapewniają łatwy sposób wdrażania ochrony przed wspólnym zbiorem zagrożeń bezpieczeństwa. Ponieważ takie zestaw reguł jest zarządzany przez platformę Azure, reguły są aktualizowane w razie potrzeby w celu ochrony przed nowymi sygnaturami ataków. Zestaw reguł domyślnych zarządzany przez platformę Azure zawiera reguły dotyczące następujących kategorii zagrożeń:
 
 - Skrypty między lokacjami
 - Ataki Java
@@ -91,6 +91,8 @@ Zestawy reguł zarządzane przez platformę Azure zapewniają łatwy sposób wdr
 
 Numer wersji zestawu reguł domyślnych jest zwiększany, gdy do zestawu reguł są dodawane nowe podpisy ataków.
 Domyślny zestaw reguł jest domyślnie włączony w trybie wykrywania w zasadach WAF. Można wyłączyć lub włączyć poszczególne reguły w ramach domyślnego zestawu reguł, aby spełniały wymagania aplikacji. Można również ustawić określone akcje (Zezwalaj/Blokuj/REDIRECT/LOG) dla każdej reguły.
+
+Czasami może być konieczne pominięcie niektórych atrybutów żądania z oceny WAF. Typowym przykładem są tokeny wstawione Active Directory, które są używane do uwierzytelniania. Można skonfigurować listę wykluczeń dla reguły zarządzanej, grupy reguł lub całego zestawu reguł.  
 
 Domyślną akcją jest blokowanie. Ponadto reguły niestandardowe można skonfigurować w tych samych zasadach WAF, jeśli chcesz pominąć wszystkie wstępnie skonfigurowane reguły w domyślnym zestawie reguł.
 
@@ -115,7 +117,7 @@ Nieznane botów są klasyfikowane przez opublikowanych agentów użytkownika bez
 
 Jeśli ochrona bot jest włączona, przychodzące żądania zgodne z regułami bot są rejestrowane w dzienniku FrontdoorWebApplicationFirewallLog. Użytkownik może uzyskać dostęp do dzienników WAF z konta magazynu, centrum zdarzeń lub usługi log Analytics.
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 Można skonfigurować i wdrożyć wszystkie typy reguł WAF za pomocą Azure Portal, interfejsów API REST, szablonów Azure Resource Manager i Azure PowerShell.
 

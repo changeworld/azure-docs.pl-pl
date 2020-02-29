@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 7986a48b69b1d2c4df494dbd0a448d1bbe3091b4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 214b5eea6f8de2d59869f7279aa17bcd786d8742
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661791"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913841"
 ---
 # <a name="billing-questions"></a>Pytania dotyczące rozliczeń
 
@@ -27,7 +27,7 @@ Usługa Security Center jest oferowana w dwóch warstwach:
 
 - **Warstwa Bezpłatna** zapewnia wgląd w stan zabezpieczeń zasobów platformy Azure, podstawowe zasady zabezpieczeń, zalecenia dotyczące zabezpieczeń i integrację z produktami i usługami zabezpieczeń z partnerów.
 
-- **Warstwa standardowa** dodaje możliwości zaawansowanego wykrywania zagrożeń, w tym analizy zagrożeń, analizy behawioralnej, wykrywania anomalii, zdarzeń związanych z zabezpieczeniami i raportów dotyczących autorstwa zagrożeń. Możesz rozpocząć korzystanie z bezpłatnej wersji próbnej warstwy Standardowa. W celu uaktualnienia wybierz pozycję [warstwa cenowa](https://docs.microsoft.com/azure/security-center/security-center-pricing) w obszarze Zasady zabezpieczeń. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
+- **Warstwa standardowa** obejmuje funkcje ochrony przed zagrożeniami, w tym alerty zabezpieczeń, analizy zagrożeń, analizy zachowań, wykrywanie anomalii i raporty dotyczące autorstwa zagrożeń. Możesz rozpocząć korzystanie z bezpłatnej wersji próbnej warstwy Standardowa. W celu uaktualnienia wybierz pozycję [warstwa cenowa](https://docs.microsoft.com/azure/security-center/security-center-pricing) w obszarze Zasady zabezpieczeń. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>Jak mogę śledzić, kto w organizacji wykonał zmiany warstwy cenowej w Azure Security Center
 Subskrypcje platformy Azure mogą mieć wielu administratorów z uprawnieniami do zmiany warstwy cenowej. Aby dowiedzieć się, który użytkownik wykonał zmianę warstwy cenowej, użyj dziennika aktywności platformy Azure. Aby uzyskać więcej informacji, zobacz [tutaj](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832).

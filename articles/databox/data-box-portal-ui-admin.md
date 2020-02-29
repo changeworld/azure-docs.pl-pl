@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
+ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a7681ba815533296deae2b585e377a733074b6c9
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147911"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911818"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Administrowanie usługą Data Box Disk w witrynie Azure Portal
 
@@ -51,7 +51,7 @@ Aby sklonować zamówienie, wykonaj następujące czynności.
 
     ![Klonowanie zamówienia — 1](media/data-box-portal-ui-admin/clone-order1.png)
 
-2.  Wszystkie szczegóły zamówienia pozostaną takie same. Nazwa zamówienia będzie taka jak nazwa oryginalnego zamówienia z dodaną końcówką *— klon*. Zaznacz pole wyboru, aby potwierdzić zapoznanie się z informacjami dotyczącymi prywatności. Kliknij pozycję **Utwórz**.    
+2.  Wszystkie szczegóły zamówienia pozostaną takie same. Nazwa zamówienia będzie taka jak nazwa oryginalnego zamówienia z dodaną końcówką *— klon*. Zaznacz pole wyboru, aby potwierdzić zapoznanie się z informacjami dotyczącymi prywatności. Kliknij przycisk **Utwórz**.    
 
 W ciągu kilku minut sklonowanie zamówienie zostanie utworzone i wyświetlone w portalu.
 
@@ -71,7 +71,7 @@ Można usuwać tylko zamówienia, które zostały zakończone lub anulowane. Aby
 
     ![Usuwanie zamówienia w usłudze Data Box Disk — 1](media/data-box-portal-ui-admin/delete-order1.png)
 
-3. Gdy pojawi się monit o potwierdzenie usunięcia zamówienia, podaj nazwę zamówienia. Kliknij przycisk **Usuń**.
+3. Gdy pojawi się monit o potwierdzenie usunięcia zamówienia, podaj nazwę zamówienia. Kliknij pozycję **Usuń**.
 
      ![Usuwanie zamówienia w usłudze Data Box Disk — 2](media/data-box-portal-ui-admin/delete-order2.png)
 
@@ -105,7 +105,7 @@ Aby edytować zamówienie, wykonaj następujące czynności.
 
 ## <a name="edit-notification-details"></a>Edytowanie szczegółów powiadomienia
 
-Może być konieczna zmiana danych użytkowników, którzy mają otrzymywać wiadomości e-mail z powiadomieniami o stanie zamówienia. Na przykład określony użytkownik może potrzebować informacji o dostarczeniu lub odebraniu dysku. Inny użytkownik może być konieczne ogłaszano kopiowanie danych zostanie zakończone, aby mogli zweryfikować, że dane są w ramach konta usługi Azure storage przed jego usunięciem ze źródła. W takich przypadkach można edytować szczegóły powiadomień.
+Może być konieczna zmiana danych użytkowników, którzy mają otrzymywać wiadomości e-mail z powiadomieniami o stanie zamówienia. Na przykład określony użytkownik może potrzebować informacji o dostarczeniu lub odebraniu dysku. Może być konieczne uzyskanie informacji o innym użytkowniku, gdy kopia danych zostanie ukończona, aby można było sprawdzić, czy dane znajdują się na koncie usługi Azure Storage, przed usunięciem go ze źródła. W takich przypadkach można edytować szczegóły powiadomień.
 
 Aby edytować szczegóły powiadomień, wykonaj następujące czynności.
 
@@ -129,11 +129,11 @@ Aby edytować szczegóły powiadomień, wykonaj następujące czynności.
 |Odebrano     | Twoje dyski zostały odebrane w centrum danych Azure. Wkrótce rozpocznie się kopiowanie danych.        |
 |Skopiowane dane     |Kopiowanie danych jest w toku.<br> Poczekaj na zakończenie kopiowania danych.         |
 |Zakończone       |Zamówienie zostało pomyślnie zrealizowane.<br> Przed usunięciem danych lokalnych z serwerów upewnij się, że Twoje dane znajdują się na platformie Azure.         |
-|Zakończone z błędami| Kopiowanie danych zostało ukończone, ale wystąpiły błędy. <br> Przejrzyj dzienniki błędów w celu przekazania przy użyciu ścieżki w **Przegląd**. Aby uzyskać więcej informacji, przejdź do [dzienniki błędów przekazywania pobierania](data-box-disk-troubleshoot-upload.md#download-logs).   |
+|Zakończone z błędami| Kopiowanie danych zostało ukończone, ale wystąpiły błędy. <br> Zapoznaj się z dziennikami błędów na potrzeby przekazywania, używając ścieżki podanej w **przeglądzie**. Aby uzyskać więcej informacji, przejdź do pozycji [Pobierz dzienniki błędów przekazywania](data-box-disk-troubleshoot-upload.md#download-logs).   |
 |Anulowane            |Twoje zamówienie zostało anulowane. <br> Zamówienie mogło zostać anulowane przez Ciebie lub, w przypadku wystąpienia błędu, przez usługę.     |
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [rozwiązywać problemy z usługą Data Box Disk](data-box-disk-troubleshoot.md).

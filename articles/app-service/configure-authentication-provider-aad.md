@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 69959418c52eb7324efe19ca41481e426b822ab4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 717336e0ddfe99c96afda4861f4de1239ee949bf
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842365"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913212"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Konfigurowanie aplikacji App Service do korzystania z usługi Azure AD login
 
@@ -25,6 +25,9 @@ Podczas konfigurowania aplikacji i uwierzytelniania postępuj zgodnie z następu
 - Unikaj udostępniania uprawnień między środowiskami przy użyciu oddzielnych rejestracji aplikacji dla oddzielnych miejsc wdrożenia. W przypadku testowania nowego kodu to rozwiązanie może pomóc zapobiec problemom związanym z aplikacją produkcyjną.
 
 ## <a name="express"> </a>Skonfiguruj przy użyciu ustawień ekspresowych
+
+> [!NOTE]
+> Opcja **ekspresowa** nie jest dostępna dla chmur dla instytucji rządowych. 
 
 1. W [Azure Portal]Wyszukaj i wybierz pozycję **App Services**, a następnie wybierz aplikację.
 2. W okienku nawigacji po lewej stronie wybierz pozycję **uwierzytelnianie/autoryzacja** > **na**.

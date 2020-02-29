@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 1/16/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: eba793a761bd9f96b1a4ec5d4730f08187a758ef
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 5707a99b329915b35131fe793b0dfabd02348677
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515343"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912532"
 ---
 # <a name="tutorial-integrated-devops-for-iaas-and-paas-on-azure"></a>Samouczek: zintegrowana DevOps dla IaaS i PaaS na platformie Azure
 
@@ -91,6 +91,6 @@ Za pomocą DevOps Projects Zacznij uruchamiać aplikację w dowolnej usłudze pl
  
 [Dowiedz się więcej](https://azure.microsoft.com/features/devops-projects/ ).
  
-## <a name="additional-resources"></a>Zasoby dodatkowe 
+## <a name="additional-resources"></a>Dodatkowe zasoby 
 - [Wdrażanie na platformie Azure Virtual Machines przy użyciu projektu DevOps](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
 - [Implementowanie ciągłego wdrażania aplikacji w zestawie skalowania maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

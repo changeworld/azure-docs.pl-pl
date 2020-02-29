@@ -10,12 +10,12 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b49b3187f9178012131d793a7762ae470b0ea540
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f5c6125b850062450516e7fc0b19c2e0d5d6f577
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965718"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916068"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Wywoływanie operacji interfejsu API REST przy użyciu autoryzacji klucza wspólnego
 
@@ -175,7 +175,7 @@ Teraz, gdy tworzysz żądanie, możesz wywołać metodę SendAsync, aby wysłać
 }
 ```
 
-Jeśli uruchamiasz szperacz sieciowy, taki jak [programu Fiddler](https://www.telerik.com/fiddler) podczas wywołania SendAsync, zobaczysz informacje dotyczące żądania i odpowiedzi. Zobaczmy. Nazwa konta magazynu to *contosorest*.
+Jeśli uruchamiasz szperacz sieciowy, taki jak [programu Fiddler](https://www.telerik.com/fiddler) podczas wywołania SendAsync, zobaczysz informacje dotyczące żądania i odpowiedzi. Przyjrzyjmy się. Nazwa konta magazynu to *contosorest*.
 
 **Żądając**
 
@@ -410,7 +410,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 
     // This is the actual header that will be added to the list of request headers.
     AuthenticationHeaderValue authHV = new AuthenticationHeaderValue("SharedKey",
-        storageAccountName + ":" + Convert.ToBase64String(SHA256.ComputeHash(SignatureBytes)));
+        storageAccountName + ":" + signature);
     return authHV;
 }
 ```
@@ -569,7 +569,7 @@ W tym artykule przedstawiono sposób tworzenia żądania do interfejsu API REST 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Interfejs API REST usługi Blob Service](/rest/api/storageservices/blob-service-rest-api)
-- [Interfejs API REST usługi File (Plik)](/rest/api/storageservices/file-service-rest-api)
-- [Interfejs API REST usługi Queue (Kolejka)](/rest/api/storageservices/queue-service-rest-api)
-- [Interfejs API REST usługi Table (Tabela)](/rest/api/storageservices/table-service-rest-api)
+- [Interfejs API REST usługi BLOB Service](/rest/api/storageservices/blob-service-rest-api)
+- [Interfejs API REST usługi plików](/rest/api/storageservices/file-service-rest-api)
+- [Interfejs API REST usługi kolejkowania](/rest/api/storageservices/queue-service-rest-api)
+- [Interfejs API REST usługi Table Service](/rest/api/storageservices/table-service-rest-api)

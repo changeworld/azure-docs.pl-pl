@@ -16,12 +16,12 @@ ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f7bc881cee362103fc611cbf8a094e07ad50699
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: f5d63577cbdbdf18cb17618bdb5c9e3b5de0e44a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499042"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162270"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Możliwości zarządzania dla ról usługi Azure AD w Privileged Identity Management
 
@@ -62,7 +62,7 @@ Wszyscy klienci, którzy korzystają z poprzedniego interfejsu API, chętnie poi
 
 ## <a name="powershell-change"></a>Zmiana programu PowerShell
 
-W przypadku klientów, którzy korzystają z modułu Privileged Identity Management PowerShell dla ról usługi Azure AD, program PowerShell przestanie działać z aktualizacją. Zamiast poprzednich poleceń cmdlet należy użyć poleceń cmdlet Privileged Identity Management w module programu PowerShell usługi Azure AD w wersji zapoznawczej. Zainstaluj moduł Azure AD PowerShell z [Galeria programu PowerShell](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17). Polecenia cmdlet są zbudowane na podstawie interfejs API programu Graph.
+W przypadku klientów, którzy korzystają z modułu Privileged Identity Management PowerShell dla ról usługi Azure AD, program PowerShell przestanie działać z aktualizacją. Zamiast poprzednich poleceń cmdlet należy użyć poleceń cmdlet Privileged Identity Management w module programu PowerShell usługi Azure AD w wersji zapoznawczej. Zainstaluj moduł Azure AD PowerShell z [Galeria programu PowerShell](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17). Teraz możesz [zapoznać się z dokumentacją i przykładami dotyczącymi operacji PIM w tym module programu PowerShell](powershell-for-azure-ad-roles.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

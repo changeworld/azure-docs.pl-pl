@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: f3cb583a3594b14266249ef80f8c49633c1df1de
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: cd634c41a1d6e3d9846e8299dd281b52beb77130
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152197"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912793"
 ---
 # <a name="linear-regression-module"></a>Moduł regresji liniowej
 W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
@@ -51,17 +51,15 @@ W latach statystyków opracowano coraz bardziej zaawansowane metody regresji. Je
 
 Ten moduł obsługuje dwie metody dostosowania modelu regresji z różnymi opcjami:
 
-+ [Tworzenie modelu regresji przy użyciu gradientu online](#bkmk_GradientDescent)
++ [Dopasuj model regresji przy użyciu zwykłych, najmniejszych kwadratów](#create-a-regression-model-using-ordinary-least-squares)
+
+    W przypadku małych zestawów danych najlepiej wybrać zwykłe, najmniejsze kwadraty. Powinno to dawać podobne wyniki do programu Excel.
+    
++ [Tworzenie modelu regresji przy użyciu gradientu online](#create-a-regression-model-using-online-gradient-descent)
 
     Nachylenie gradientu to lepsza funkcja strat dla modeli, które są bardziej skomplikowane lub które mają zbyt małe dane szkoleniowe z uwzględnieniem liczby zmiennych.
 
-
-
-+ [Dopasuj model regresji przy użyciu zwykłych, najmniejszych kwadratów](#bkmk_OrdinaryLeastSquares)
-
-    W przypadku małych zestawów danych najlepiej wybrać zwykłe, najmniejsze kwadraty. Powinno to dawać podobne wyniki do programu Excel.
-
-## <a name="bkmk_OrdinaryLeastSquares"></a>Tworzenie modelu regresji przy użyciu zwykłych, najmniejszych kwadratów
+### <a name="create-a-regression-model-using-ordinary-least-squares"></a>Tworzenie modelu regresji przy użyciu zwykłych, najmniejszych kwadratów
 
 1. Dodaj moduł **modelu regresji liniowej** do potoku w projektancie.
 
@@ -86,7 +84,7 @@ Ten moduł obsługuje dwie metody dostosowania modelu regresji z różnymi opcja
 
 8. Uruchamianie potoku.
 
-## <a name="results-for-ordinary-least-squares-model"></a>Wyniki dla modelu z najniższymi kwadratami
+### <a name="results-for-ordinary-least-squares-model"></a>Wyniki dla modelu z najniższymi kwadratami
 
 Po zakończeniu szkolenia:
 
@@ -94,7 +92,7 @@ Po zakończeniu szkolenia:
 + Aby dokonać prognoz, Połącz model przeszkolony z modułem [modelu oceny](./score-model.md) wraz z zestawem danych nowych wartości. 
 
 
-## <a name="bkmk_GradientDescent"></a>Tworzenie modelu regresji przy użyciu gradientu online
+### <a name="create-a-regression-model-using-online-gradient-descent"></a>Tworzenie modelu regresji przy użyciu gradientu online
 
 1. Dodaj moduł **modelu regresji liniowej** do potoku w projektancie.
 
@@ -105,6 +103,8 @@ Po zakończeniu szkolenia:
 3. W przypadku **tworzenia trybu Trainer**wskaż, czy chcesz nauczyć model ze wstępnie zdefiniowanym zestawem parametrów, czy chcesz zoptymalizować model przy użyciu odchylenia parametrów.
 
     + **Pojedynczy parametr**: Jeśli wiesz, jak chcesz skonfigurować sieć regresji liniowej, możesz podać określony zestaw wartości jako argumenty.
+    
+    + **Zakres parametrów**: Wybierz tę opcję, jeśli nie masz pewności co do najlepszych parametrów i chcesz uruchomić odchylenia parametrów. Wybierz zakres wartości do iteracji, a [Parametry dostrojenia modelu](tune-model-hyperparameters.md) przechodzą na wszystkie możliwe kombinacje ustawień, które podano, aby określić parametry, które generują optymalne wyniki.  
 
    
 4. W polu **stawka szkoleniowa**określ początkową stawkę szkoleniową dla stochastycznegoego gradientu.
@@ -133,7 +133,7 @@ Po zakończeniu szkolenia:
 
 13. Uruchamianie potoku.
 
-## <a name="results-for-online-gradient-descent"></a>Wyniki dla gradientu online
+### <a name="results-for-online-gradient-descent"></a>Wyniki dla gradientu online
 
 Po zakończeniu szkolenia:
 

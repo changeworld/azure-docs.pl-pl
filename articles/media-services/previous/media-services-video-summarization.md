@@ -15,16 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: da397c180b6ccaf91084a0ec22210c7bcc88a5dc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084796"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918341"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Użyj Azure Media Video Thumbnails, aby utworzyć podsumowanie wideo  
- 
-## <a name="overview"></a>Przegląd
+
+> [!NOTE]
+> Procesor multimediów **Azure Media Video thumbnails** zostanie wycofany. Aby uzyskać datę wycofania, zobacz temat [starsze składniki](legacy-components.md) .
+
+## <a name="overview"></a>Omówienie
 
 Procesor Media **Azure Media Video thumbnails** (MP) umożliwia tworzenie podsumowania filmu wideo, który jest przydatny dla klientów, którzy po prostu chcą obejrzeć podsumowanie długiego wideo. Na przykład klienci mogą chcieć zobaczyć krótkie "Podsumowanie wideo" po umieszczeniu wskaźnika myszy na miniaturie. Przez dostosowanie parametrów **Azure Media Video thumbnails** za pomocą ustawień wstępnych konfiguracji, można użyć zaawansowanego wykrywania zastrzelonych pakietów MP i technologii łączenia, aby algorithmically wygenerować opisowy podklip.  
 
@@ -284,7 +287,7 @@ Skonfiguruj środowisko projektowe i wypełnij plik app.config przy użyciu info
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Powiązane linki

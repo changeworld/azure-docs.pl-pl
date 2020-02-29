@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 61c3dde49d4cd298fb3a0f19dc1d8c00e54977af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 27c359a594cec66708647d5a648c7e8414c0d92c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152350"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917479"
 ---
 # <a name="enter-data-manually-module"></a>Wprowadź ręcznie moduł danych
 
@@ -36,13 +36,13 @@ Ten moduł może być przydatny w następujących scenariuszach:
   
 2.  W polu **Format**danych wybierz jedną z następujących opcji. Te opcje określają sposób, w jaki podane dane powinny być analizowane. Wymagania dotyczące każdego formatu różnią się znacznie, dlatego pamiętaj, aby przeczytać tematy pokrewne.  
   
-    -   **ARFF**. Format pliku relacji atrybutu używany przez Weka.   
+    -   **ARFF**: Format pliku relacji atrybutu używany przez Weka.   
   
-    -   **Wolumin CSV**. Format wartości rozdzielanych przecinkami. Aby uzyskać więcej informacji, zobacz [konwertowanie do formatu CSV](./convert-to-csv.md).  
+    -   **CSV**: format wartości rozdzielanych przecinkami. Aby uzyskać więcej informacji, zobacz [konwertowanie do formatu CSV](./convert-to-csv.md).  
   
-    -   **SVMLight**. Format używany przez Vowpal Wabbit i inne platformy uczenia maszynowego.  
+    -   **SVMLight**: format używany przez Vowpal Wabbit i inne platformy uczenia maszynowego.  
   
-    -   **TSV**. Format wartości rozdzielanych znakami tabulacji.
+    -   **TSV**: format wartości rozdzielanych znakami tabulacji.
 
      Jeśli wybierzesz format i nie podasz danych, które spełniają wymagania formatu, wystąpi błąd w czasie wykonywania.
   

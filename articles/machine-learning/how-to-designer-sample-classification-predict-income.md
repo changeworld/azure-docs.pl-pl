@@ -9,13 +9,13 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 12/25/2019
-ms.openlocfilehash: 560339fb04e3bbbe42c4370655e74e8536a7c015
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/22/2020
+ms.openlocfilehash: 7fd51f587ff51e09254741615d3059d038e1205a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963376"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915915"
 ---
 # <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Kompilowanie klasyfikatora & używanie wyboru funkcji do przewidywania przychodów za pomocą projektanta Azure Machine Learning
 
@@ -25,7 +25,7 @@ ms.locfileid: "76963376"
 
 Dowiedz się, jak utworzyć klasyfikator uczenia maszynowego bez pisania pojedynczego wiersza kodu przy użyciu narzędzia Projektant (wersja zapoznawcza). Ten przykład pociąga **drzewa decyzyjne z dwoma klasami** do przewidywania dochodów z spisu dla dorosłych (> = 50 000 lub < = 50 000).
 
-Ponieważ odpowiedź na pytanie dotyczy "? jest to nazywane problemem klasyfikacji. Można jednak zastosować ten sam podstawowy proces do rozwiązywania dowolnego typu problemu z uczeniem maszynowym, klasyfikacji, klastrowania i tak dalej.
+Ponieważ pytanie ma odpowiedź "co to jest?", jest to nazywane problemem klasyfikacji. Można jednak zastosować ten sam podstawowy proces do rozwiązywania dowolnego typu problemu z uczeniem maszynowym, klasyfikacji, klastrowania i tak dalej.
 
 Oto wykres końcowego potoku dla tego przykładu:
 
@@ -51,7 +51,7 @@ Wykonaj następujące kroki, aby utworzyć potok:
 
 1. Przeciągnij moduł danych binarnych dochodu spisu treści do kanwy potoku.
 1. Dodaj moduł **Split Data (podział danych** ), aby utworzyć zestawy szkoleniowe i testowe. Ustaw ułamek wierszy w pierwszym zestawie danych wyjściowych na 0,7. To ustawienie określa, że 70% danych będzie wyprowadzane na lewy port modułu i reszta na właściwy port. Używamy lewego zestawu danych do szkolenia i po prawej stronie do testowania.
-1. Dodaj moduł **wyboru funkcji na podstawie filtru** , aby wybrać 5 funkcji według PearsonCorreclation. 
+1. Dodaj moduł **wyboru funkcji na podstawie filtru** , aby wybrać 5 funkcji według PearsonCorrelation. 
 1. Dodaj moduł **drzewa decyzyjnego z dwoma klasami** , aby zainicjować podwyższający klasyfikator drzewa decyzyjnego.
 1. Dodaj moduł **uczenia modelu** . Połącz klasyfikatora z poprzedniego kroku z lewym portem wejściowym **modelu uczenia**. Połącz filtrowany zestaw danych z modułu wyboru funkcji opartego na filtrze jako zestawu danych szkoleniowych.  **Model uczenia** będzie szkolić klasyfikatora.
 1. Dodaj przekształcenie wybierz kolumny i Zastosuj moduł transformacji, aby zastosować tę samą transformację (wybór funkcji na podstawie filtrowania) do testu zestawu danych.

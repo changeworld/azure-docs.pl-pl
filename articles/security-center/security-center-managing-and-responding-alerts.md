@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 5c199d074a6655ad14a0c66925e4302f70424970
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 834a097eb77cc7de2d0a3643bf1499ff7517ddb0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615985"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912277"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Zarządzanie alertami zabezpieczeń i reagowanie na nie w Azure Security Center
 
@@ -67,7 +67,7 @@ Usługa Security Center automatycznie gromadzi, analizuje i integruje dane dzien
 
 1. Kroki korygowania sugerowane przez Security Center różnią się w zależności od alertu zabezpieczeń. Obserwuj je dla każdego alertu. 
 
-    W niektórych przypadkach w celu ograniczenia alertu dotyczącego wykrywania zagrożeń może być konieczne użycie innych kontrolek lub usług platformy Azure w celu zaimplementowania zalecanej korekty. 
+    W niektórych przypadkach w celu ograniczenia alertu zabezpieczeń może być konieczne użycie innych usług lub kontroli platformy Azure w celu zaimplementowania zalecanej korekty. 
 
     Poniższe tematy przeprowadzą Cię przez różne alerty, zgodnie z typami zasobów:
     

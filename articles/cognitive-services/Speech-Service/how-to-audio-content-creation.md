@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: dapine
-ms.openlocfilehash: aed9c0a72af063c84c0744757772e11c689ac14c
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 4785356963e7df1d7b175ac21ceebc921f851ffb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561038"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913654"
 ---
 # <a name="improve-synthesis-with-audio-content-creation"></a>Poprawa syntezy przy użyciu tworzenia zawartości audio
 
@@ -43,7 +43,7 @@ Na tym diagramie przedstawiono kroki, które należy wykonać, aby dostroić i w
 
 Wykonaj następujące kroki, aby utworzyć zasób mowy i połączyć go z usługą Speech Studio.
 
-1. Postępuj zgodnie z tymi instrukcjami, aby [zarejestrować się w celu utworzenia konta platformy Azure](get-started.md#try-the-speech-service-using-a-new-azure-account) i [utworzyć zasób mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Upewnij się, że warstwa cenowa jest ustawiona na **S0**. Jeśli używasz jednego z głosów neuronowych, upewnij się, że zasób jest tworzony w [obsługiwanym regionie](regions.md#standard-and-neural-voices).
+1. Postępuj zgodnie z tymi instrukcjami, aby [zarejestrować się w celu utworzenia konta platformy Azure](get-started.md#new-resource) i [utworzyć zasób mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Upewnij się, że warstwa cenowa jest ustawiona na **S0**. Jeśli używasz jednego z głosów neuronowych, upewnij się, że zasób jest tworzony w [obsługiwanym regionie](regions.md#standard-and-neural-voices).
 2. Zaloguj się do [tworzenia zawartości audio](https://aka.ms/audiocontentcreation).
 3. Wybierz istniejący projekt lub kliknij pozycję **Utwórz nowy**.
 4. Subskrypcję można zmienić w dowolnym momencie za pomocą opcji **Ustawienia** , która znajduje się w górnym obszarze nawigacji.

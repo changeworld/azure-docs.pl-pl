@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 02/15/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: eda567fda13d6caca679d0ce4947e042eca9530d
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 94ed936e619461a2dbf7ec837c2d80e21c01c88e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77652011"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919995"
 ---
 # <a name="detecting-and-handling-batch-service-errors"></a>Wykrywanie i obsługa błędów usługi Batch
 
@@ -33,11 +33,16 @@ Ważne jest, aby pamiętać o błędach podczas pracy z interfejsem API usługi 
 - Ograniczanie wydajności może spowodować błędy, takie jak 429 lub 503, kod stanu odpowiedzi HTTP przy użyciu nagłówka retry-After.
 - 4xx błędy, które zawierają takie błędy jak już istnieje i InvalidOperation. Oznacza to, że zasób nie jest w poprawnym stanie dla przejścia stanu.
 
+Aby uzyskać szczegółowe informacje o różnych typach kodów błędów i określonych kodach błędów, zobacz [stan partii i kody błędów](https://docs.microsoft.com/rest/api/batchservice/batch-status-and-error-codes).
+
 ## <a name="when-to-retry"></a>Kiedy ponowić próbę
 
 Interfejsy API partii będą powiadamiane o wystąpieniu błędu. Wszystkie te możliwości są ponawiane i wszystkie obejmują globalną procedurę obsługi ponowień. Najlepszym rozwiązaniem jest użycie tego wbudowanego mechanizmu.
 
 Po awarii należy poczekać chwilę (kilka sekund między ponownymi próbami) przed ponowną próbą. W przypadku ponawiania próby zbyt częste lub zbyt szybko, procedura obsługi ponowień będzie ograniczać.
 
+### <a name="for-more-information"></a>Więcej informacji  
+
+[Interfejsy API i narzędzia usługi Batch](batch-apis-tools.md) zawierają linki do informacji referencyjnych interfejsu API. Interfejs API platformy .NET, na przykład, ma [klasę RetryPolicyProvider]( https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet) , w której należy określić wymagane zasady ponawiania. 
 
 Aby uzyskać szczegółowe informacje na temat poszczególnych interfejsów API i ich domyślnych zasad ponawiania, Przeczytaj [stan partii i kody błędów](https://docs.microsoft.com/rest/api/batchservice/batch-status-and-error-codes).

@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122455"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919774"
 ---
 # <a name="azure-classic-cli-commands"></a>Klasyczne polecenie interfejsu wiersza polecenia platformy Azure 
 
-> [!IMPORTANT]
-> W tym temacie opisano sposób instalowania klasycznego interfejsu wiersza polecenia platformy Azure. Klasyczny interfejs wiersza polecenia jest przestarzały i należy go używać jedynie w przypadku klasycznego modelu wdrażania.
-> W przypadku wszystkich innych wdrożeń Użyj [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/).
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
+
+W tym temacie opisano sposób instalowania klasycznego interfejsu wiersza polecenia platformy Azure. Klasyczny interfejs wiersza polecenia jest przestarzały i należy go używać jedynie w przypadku klasycznego modelu wdrażania. W przypadku wszystkich innych wdrożeń Użyj [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/).
 
 Ten artykuł zawiera składnię i opcje dla klasycznych poleceń interfejsu wiersza polecenia (CLI) platformy Azure, które są często używane do tworzenia zasobów platformy Azure i zarządzania nimi. To nie jest kompletne odwołanie, a wersja interfejsu wiersza polecenia może być nieznacznie różna. 
 

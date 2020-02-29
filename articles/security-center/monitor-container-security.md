@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
-ms.openlocfilehash: d208629ee29bb9102f16fcb1d541677bd4a4d5fa
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431568"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919536"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>Monitorowanie zabezpieczeń kontenerów
 
@@ -29,7 +29,7 @@ Azure Security Center obejmuje następujące trzy aspekty zabezpieczeń kontener
 
 - **Zabezpieczanie klastrów usługi Azure Kubernetes Service** — Security Center zawiera zalecenia dotyczące znajdowania luk w zabezpieczeniach konfiguracji klastrów usługi Azure Kubernetes. Aby uzyskać szczegółowe informacje na temat konkretnych zaleceń, które mogą pojawić się, zobacz [zalecenia dotyczące usługi Kubernetes](recommendations-reference.md#recs-containers).
 
-- **Ochrona środowiska uruchomieniowego** — Jeśli korzystasz z warstwy cenowej standardowa Security Center, będziesz otrzymywać wykrywanie zagrożeń w czasie rzeczywistym w środowiskach kontenerów. Security Center generuje alerty o podejrzanych działaniach na poziomie klastra hosta i AKS. Aby uzyskać szczegółowe informacje na temat odpowiednich alertów zabezpieczeń, które mogą się pojawić, zobacz sekcję alerty dotyczące klastrów i [alertów dotyczących poziomu](alerts-reference.md#alerts-containerhost) [usług Azure Kubernetes](alerts-reference.md#alerts-akscluster) w tabeli referencyjnej alertów.
+- **Ochrona środowiska uruchomieniowego** — Jeśli korzystasz ze standardowej warstwy cenowej Security Center, uzyskasz ochronę przed zagrożeniami w czasie rzeczywistym w środowiskach kontenerów. Security Center generuje alerty o podejrzanych działaniach na poziomie klastra hosta i AKS. Aby uzyskać szczegółowe informacje na temat odpowiednich alertów zabezpieczeń, które mogą się pojawić, zobacz sekcję alerty dotyczące klastrów i [alertów dotyczących poziomu](alerts-reference.md#alerts-containerhost) [usług Azure Kubernetes](alerts-reference.md#alerts-akscluster) w tabeli referencyjnej alertów.
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Skanowanie rejestrów kontenerów opartych na usłudze ARM pod kątem luk w zabezpieczeniach 
 

@@ -9,18 +9,23 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 114a460b3db67af278f813de2e7a18d571cf3c28
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: e7caacf23cb489da6f9f85748ae839bc4babff8e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613441"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917309"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Przeprowadź migrację Azure AD Domain Services z modelu klasycznej sieci wirtualnej do Menedżer zasobów
 
 Azure Active Directory Domain Services (AD DS) obsługuje jednorazowe przeniesienie dla klientów korzystających obecnie z klasycznego modelu sieci wirtualnej do modelu sieci wirtualnej Menedżer zasobów. Domeny zarządzane AD DS platformy Azure korzystające z modelu wdrażania Menedżer zasobów oferują dodatkowe funkcje, takie jak szczegółowe zasady haseł, dzienniki inspekcji i ochrona blokady konta.
 
 W tym artykule przedstawiono zalety i kwestie związane z migracją, a następnie wymagane kroki w celu pomyślnego przeprowadzenia migracji istniejącego wystąpienia usługi Azure AD DS.
+
+> [!NOTE]
+> W 2017 Azure AD Domain Services stało się dostępne do hostowania w sieci Azure Resource Manager. Od tego czasu mogliśmy stworzyć bezpieczniejsze usługi przy użyciu nowoczesnych możliwości Azure Resource Manager. Ponieważ wdrożenia Azure Resource Manager w pełni zastępują wdrożenia klasyczne, wdrożenia usługi Azure AD DS klasycznej sieci wirtualnej zostaną wycofane 1 marca 2023.
+>
+> Aby uzyskać więcej informacji, zobacz [oficjalne powiadomienie o zaniechaniu](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
 
 ## <a name="overview-of-the-migration-process"></a>Omówienie procesu migracji
 

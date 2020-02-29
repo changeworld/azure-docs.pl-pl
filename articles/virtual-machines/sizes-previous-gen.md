@@ -3,7 +3,7 @@ title: Rozmiary maszyn wirtualnych z systemem Linux na platformie Azure — popr
 description: Zawiera listę poprzednich generacji rozmiarów dostępnych dla maszyn wirtualnych z systemem Linux na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych vCPU, dyskach danych i kartach sieciowych oraz o przepływności magazynu i przepustowości sieci dla rozmiarów w tej serii.
 services: virtual-machines-linux
 documentationcenter: ''
-author: jonbeck7
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 2d54c39577a359499cf6dc3aca84cebc4fa6e206
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 700847c041a5b9111414d6b43ff734d83b1ca49f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598021"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913467"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Poprzednie generacji rozmiarów maszyn wirtualnych
 
@@ -103,7 +103,7 @@ Rozmiary warstwy Podstawowa są przeznaczone głównie dla obciążeń związany
 
 | Rozmiar — rozmiar\nazwa | Procesor wirtualny | Pamięć|Karty sieciowe (maks.)| Maksymalny rozmiar dysku tymczasowego | Maksymalnie z dyski z danymi (1023 GB każdego)| Maksymalnie z liczba operacji we/wy na sekundę (300 na dysk) |
 |---|---|---|---|---|---|---|
-| A0\Podstawowa_A0 | 1 | 768 MB  | 2 | 20 GB  | 1  | 1x300  |
+| A0\Podstawowa_A0 | 1 | 768 MB  | 2 | 20 GB  | 1  | 1x300  |
 | A1\Podstawowa_A1 | 1 | 1,75 GB | 2 | 40 GB  | 2  | 2x300  |
 | A2\Podstawowa_A2 | 2 | 3,5 GB  | 2 | 60 GB  | 4  | 4x300  |
 | A3\Podstawowa_A3 | 4 | 7 GB    | 2 | 120 GB | 8  | 8x300  |

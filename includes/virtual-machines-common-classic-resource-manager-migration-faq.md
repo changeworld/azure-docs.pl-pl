@@ -8,20 +8,28 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: c923dfed24253ce2e3551c13a457f19d155a1e40
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068420"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912578"
 ---
+## <a name="what-is-the-time-required-for-migration"></a>Jaki jest czas wymagany do migracji?
+
+Planowanie i wykonywanie migracji znacznie zależy od złożoności architektury i może trwać kilka miesięcy.  
+
+## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>Jaka jest definicja nowego klienta na maszynach wirtualnych IaaS (klasyczny)?
+
+Klienci, którzy nie zainstalowali maszyn wirtualnych IaaS (klasyczny) w swoich subskrypcjach w miesiącu Febrauary 2020 (miesiąc przed rozpoczęciem wycofania), są uważani za nowych klientów. 
+
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Czy ten plan migracji wpływa na moje istniejące usługi lub aplikacje uruchomione na maszynach wirtualnych platformy Azure? 
 
-Nie. Maszyny wirtualne (klasyczne) to w pełni obsługiwane usługi w ramach ogólnej dostępności. Możesz nadal używać tych zasobów do zwiększenia Twojej obecności na platformie Microsoft Azure.
+Nie do 1 marca, 2023 dla maszyn wirtualnych IaaS (klasyczny). Maszyny wirtualne IaaS (klasyczne) to w pełni obsługiwane usługi ogólnie dostępne. Możesz nadal używać tych zasobów do zwiększenia Twojej obecności na platformie Microsoft Azure. 1 marca 2023 te maszyny wirtualne zostaną w pełni wycofane, a wszystkie aktywne lub przydzieloną maszyny wirtualne zostaną zatrzymane & cofania przydziału. Nie będzie to miało wpływu na inne zasoby klasyczne, takie jak Cloud Services (klasyczne), konta magazynu (klasyczne) itp.   
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Co stanie się z moimi maszynami wirtualnymi, jeśli nie planuję migracji w najbliższej przyszłości? 
 
-Istniejące klasyczne interfejsy API i model zasobów nie są przestarzałe. Chcemy ułatwić migrację, biorąc pod uwagę zaawansowane funkcje, które są dostępne w modelu wdrażania usługi Resource Manager. Zdecydowanie zalecamy przejrzenie [niektórych udoskonaleń](../articles/azure-resource-manager/management/deployment-models.md), które są częścią infrastruktury IaaS w ramach usługi Resource Manager.
+1 marca 2023 maszyny wirtualne IaaS (klasyczne) zostaną w pełni wycofane, a wszystkie aktywne lub przydzieloną maszyny wirtualne zostaną zatrzymane & cofania przydziału. Aby zapobiec wpływowi na działalność biznesową, należy wysoce odkomentować, aby rozpocząć planowanie migracji i zakończyć ją przed 1 marca, 2023. Istniejące klasyczne interfejsy API, Cloud Services i model zasobów nie są przestarzałe. Chcemy ułatwić migrację, biorąc pod uwagę zaawansowane funkcje, które są dostępne w modelu wdrażania usługi Resource Manager. Zalecamy rozpoczęcie planowania migracji tych zasobów do Azure Resource Manager. 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>Co oznacza ten plan migracji dla moich istniejących narzędzi? 
 
@@ -37,7 +45,7 @@ Możesz przerwać migrację, o ile zasoby są w stanie przygotowania. Wycofanie 
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>Czy mogę wycofać migrację w przypadku niepowodzenia operacji zatwierdzenia? 
 
-Nie można przerwać migracji, jeśli operacja zatwierdzenia nie powiedzie się. Wszystkie operacje migracji, w tym operacja zatwierdzenia, są idempotentne. Dlatego zalecamy podjęcie ponownej próby wykonania operacji po chwili. Jeśli nadal wystąpi błąd, Utwórz bilet pomocy technicznej lub Utwórz wpis na forum w witrynie [Microsoft Q & a](https://docs.microsoft.com/answers/index.html).
+Nie można przerwać migracji, jeśli operacja zatwierdzenia nie powiedzie się. Wszystkie operacje migracji, w tym operacja zatwierdzenia, są idempotentne. Dlatego zalecamy podjęcie ponownej próby wykonania operacji po chwili. Jeśli nadal wystąpi błąd, Utwórz bilet pomocy technicznej.
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Czy muszę kupić kolejny obwód usługi ExpressRoute, jeśli muszę używać infrastruktury IaaS w ramach usługi Resource Manager? 
 

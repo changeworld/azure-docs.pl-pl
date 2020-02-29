@@ -14,16 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: a8560df6120dd773e13dbfc7427d9a16e6f6c83b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896002"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914334"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Korzystanie z usługi Azure Media Content Moderator do wykrywania możliwej zawartości dla osób dorosłych i erotycznej 
 
-## <a name="overview"></a>Przegląd
+> [!NOTE]
+> Procesor multimediów **usługi Azure media Content moderator** zostanie wycofany. Aby uzyskać datę wycofania, zobacz temat [starsze składniki](legacy-components.md) .
+
+## <a name="overview"></a>Omówienie
 **Usługa Azure media Content moderator** Media procesor (MP) umożliwia korzystanie z moderowania dla filmów wideo przy użyciu wspomaganego maszynowo. Na przykład chcesz wykrywać potencjalną zawartość dla dorosłych i nieodpowiednią w filmach wideo oraz przesyłać zawartość oznaczoną flagą do przejrzenia przez zespoły ds. moderowania obsługiwanego przez ludzi.
 
 Pakiet MP **usługi Azure Media Content moderator** jest obecnie w wersji zapoznawczej.
@@ -46,12 +49,12 @@ Wyjściowy kod JSON zawiera następujące elementy:
 
 | Element | Opis |
 | --- | --- |
-| version |Wersja Content Moderator. |
+| wersja |Wersja Content Moderator. |
 | timescale |"Ticks" na sekundę filmu wideo. |
 | offset |Przesunięcie czasu dla sygnatur czasowych. W wersji 1,0 interfejsów API wideo ta wartość będzie zawsze równa 0. Ta wartość może ulec zmianie w przyszłości. |
 | szybkości |Liczba klatek na sekundę w wideo. |
-| szerokość |Szerokość wyjściowej ramki wideo (w pikselach).|
-| wysokość |Wysokość wyjściowej ramki wideo (w pikselach).|
+| Szerokość |Szerokość wyjściowej ramki wideo (w pikselach).|
+| proporcj |Wysokość wyjściowej ramki wideo (w pikselach).|
 | TotalDuration |Czas trwania wejściowego filmu wideo w "taktach". |
 | [elementy](#fragments-json-elements) |Metadane są podzielone na różne segmenty o nazwie fragmenty. Każdy fragment jest wykrytym wstępnie zrzutem z początkiem, czasem trwania, numerem interwału i zdarzeniami. |
 
@@ -220,7 +223,7 @@ The following example of a Content Moderator JSON output was truncated.
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Powiązane linki

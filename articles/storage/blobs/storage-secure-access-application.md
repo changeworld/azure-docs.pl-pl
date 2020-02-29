@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: 1075c03820efba44ceb8dea28aff6302d2667cf2
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 654efd8f5fbe31131ae03a8e794bc2113df2d29f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892434"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912192"
 ---
 # <a name="secure-access-to-application-data"></a>Bezpieczny dostęp do danych aplikacji
 
@@ -36,7 +36,7 @@ Aby ukończyć ten samouczek, musisz ukończyć poprzedni samouczek magazynu: [A
 
 ## <a name="set-container-public-access"></a>Włączanie dostępu publicznego do kontenera
 
-W tej części serii samouczków do uzyskania dostępu do miniatur zostaną użyte tokeny SAS. W tym kroku ustawisz wartość `off` w konfiguracji publicznego dostępu do kontenera _thumbnails_.
+W tej części serii samouczków do uzyskania dostępu do miniatur zostaną użyte tokeny SAS. W tym kroku ustawisz wartość _w konfiguracji publicznego dostępu do kontenera_thumbnails`off`.
 
 ```azurecli-interactive 
 blobStorageAccount=<blob_storage_account>
@@ -44,8 +44,9 @@ blobStorageAccount=<blob_storage_account>
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
 -n $blobStorageAccount --query [0].value --output tsv) 
 
-az storage container set-permission \ --account-name $blobStorageAccount \ --account-key $blobStorageAccountKey \ --name thumbnails  \
---public-access off
+az storage container set-permission \ 
+--account-name $blobStorageAccount --account-key $blobStorageAccountKey \ 
+--name thumbnails --public-access off
 ``` 
 
 ## <a name="configure-sas-tokens-for-thumbnails"></a>Konfigurowanie tokenów SAS dla miniatur

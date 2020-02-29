@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: d8096a14bf2abc0b06b7ab7c3d340a313b1cd24c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2c4152ec5e67761ce9be9a81bfbf39e1591787da
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057297"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913518"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Wdróż ponownie maszynę wirtualną z systemem Linux w nowym węźle platformy Azure
 Jeśli napotykasz problemy z rozwiązywaniem problemów z protokołem SSH lub dostępem aplikacji do maszyny wirtualnej z systemem Linux na platformie Azure, możesz ponownie wdrożyć maszynę wirtualną. Po ponownym wdrożeniu maszyny wirtualnej jest ona przenoszona do nowego węzła w ramach infrastruktury platformy Azure, a następnie ponownie ją włącza. Wszystkie opcje konfiguracji i skojarzone zasoby są zachowywane. W tym artykule pokazano, jak ponownie wdrożyć maszynę wirtualną przy użyciu interfejsu wiersza polecenia platformy Azure lub Azure Portal.
@@ -37,6 +37,10 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="use-the-azure-classic-cli"></a>Korzystanie z klasycznego interfejsu wiersza polecenia platformy Azure
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+
 Zainstaluj [najnowszy klasyczny interfejs wiersza polecenia platformy Azure](../../cli-install-nodejs.md) i zaloguj się do konta platformy Azure. Upewnij się, że jesteś w trybie Menedżer zasobów (`azure config mode arm`).
 
 Poniższy przykład ponownie wdraża maszynę wirtualną o nazwie *myVM* w grupie zasobów o nazwie Moja *zasobów*:

@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 0b321f3548910a2bc79e4473609de30eda8c8622
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/10/2020
+ms.openlocfilehash: a3eafc28dc6d0f44a1f1019cb3393259aa2a698a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314355"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920352"
 ---
 # <a name="score-svd-recommender"></a>Wynik modułu poleceń SVD
 
-W tym artykule opisano sposób korzystania z modułu polecania "Ocena SVD" w programie Azure Machine Learning Designer. Ten moduł służy do tworzenia prognoz przy użyciu przeszkolonego modelu rekomendacji opartego na algorytmie z rozkładem pojedynczego wartości (SVD).
+W tym artykule opisano sposób korzystania z modułu polecania "Score SVD" w programie Azure Machine Learning Designer (wersja zapoznawcza). Ten moduł służy do tworzenia prognoz przy użyciu przeszkolonego modelu rekomendacji opartego na algorytmie z rozkładem pojedynczego wartości (SVD).
 
 Zalecenie SVD może generować dwa różne rodzaje prognoz:
 
@@ -91,7 +91,7 @@ Aby zalecać elementy dla użytkowników, należy podać listę użytkowników i
 
 5. **Maksymalna liczba elementów, które mają być zalecane dla użytkownika**: wprowadź liczbę elementów do zwrócenia dla każdego użytkownika. Domyślnie moduł zaleca pięć elementów.
 
-6. **Minimalny rozmiar puli rekomendacji na użytkownika**: wprowadź wartość wskazującą, ile wcześniejszych rekomendacji są wymagane. Domyślnie ten parametr jest ustawiony na **2**, co oznacza, że element jest zalecany dla co najmniej dwóch innych użytkowników.
+6. **Minimalny rozmiar puli rekomendacji na użytkownika**: wprowadź wartość wskazującą, ile wcześniejszych rekomendacji są wymagane. Domyślnie ten parametr jest ustawiony na 2, co oznacza, że element jest zalecany dla co najmniej dwóch innych użytkowników.
 
    Tej opcji należy używać tylko wtedy, gdy ocenia się tryb oceny. Opcja jest niedostępna, jeśli wybrano opcję **spośród wszystkich elementów** lub **niesklasyfikowanych elementów (w celu zaproponowania nowych elementów użytkownikom)** .
 

@@ -8,51 +8,21 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 02/27/2020
 ms.author: diberry
-ms.openlocfilehash: cadbf5fa88db7d5e524cb7e075745c03a844f750
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: dea2bf3b34ca336f3932dd85bf587184ab6881db
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901717"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914997"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Ulepszanie bazy wiedzy za pomocą uczenia aktywnego
 
-Usługa Active Learning pozwala ulepszyć jakość bazy wiedzy, sugerując alternatywne pytania na podstawie przesłanych przez użytkowników do pary pytań i odpowiedzi. Te sugestie można przejrzeć, dodając je do istniejących pytań lub odrzucając je.
+[Usługa Active Learning](../Concepts/active-learning-suggestions.md) pozwala ulepszyć jakość bazy wiedzy, sugerując alternatywne pytania na podstawie przesłanych przez użytkowników do pary pytań i odpowiedzi. Te sugestie można przejrzeć, dodając je do istniejących pytań lub odrzucając je.
 
 Baza wiedzy nie zmienia się automatycznie. Aby zmiany zaczęły obowiązywać, należy zaakceptować sugestie. Te sugestie dodają pytania, ale nie zmieniają ani nie usuwają istniejących pytań.
 
-## <a name="what-is-active-learning"></a>Co to jest aktywna nauka?
-
-QnA Maker poznaje nowe odmiany pytań z niejawną i jawną opinią.
-
-* [Niejawna opinia](#how-qna-makers-implicit-feedback-works) — ranga jest zrozumiała, gdy pytanie użytkownika ma wiele odpowiedzi z wynikami, które są bardzo bliskie i uważa za opinię. Nie musisz nic robić, aby to zrobić.
-* [Jawne Opinie](#how-you-give-explicit-feedback-with-the-train-api) — w przypadku zwrócenia z bazy wiedzy wielu odpowiedzi z małą różnicą w ocenie, aplikacja kliencka prosi użytkownika o to, jakie pytanie jest odpowiednie. Jawne Opinie użytkownika są wysyłane do QnA Maker za pomocą [interfejsu API uczenia](#train-api).
-
-Obie metody zapewniają rangę z podobnymi zapytaniami, które są klastrowane.
-
-## <a name="how-active-learning-works"></a>Jak działa aktywna nauka
-
-Aktywne uczenie jest wyzwalane na podstawie ocen odpowiedzi z kilku najważniejszych wartości zwracanych przez QnA Maker. Jeśli różnice między wynikami są w niewielkim zakresie, zapytanie jest uznawane za możliwą sugestię (jako zapytanie alternatywne) dla każdej możliwej pary QnA. Po zaakceptowaniu sugerowanego pytania dotyczącego określonej pary QnA zostanie on odrzucony dla innych par. Należy pamiętać o zapisaniu i pouczeniu po zaakceptowaniu sugestii.
-
-Usługa Active Learning daje najlepsze możliwe sugestie w przypadkach, gdy punkty końcowe uzyskują odpowiednią ilość i różne zapytania dotyczące użycia. Gdy co najmniej 5 podobnych zapytań jest klastrowane, co 30 minut QnA Maker sugeruje pytania oparte na użytkownikach do projektanta bazy wiedzy w celu ich zaakceptowania lub odrzucenia. Wszystkie sugestie są klastrowane według podobieństwa i najlepsze sugestie dotyczące alternatywnych pytań są wyświetlane na podstawie częstotliwości określonych zapytań przez użytkowników końcowych.
-
-Po wybraniu pytań w portalu QnA Maker należy przejrzeć i zaakceptować lub odrzucić te sugestie. Brak interfejsu API do zarządzania sugestiami.
-
-## <a name="how-qna-makers-implicit-feedback-works"></a>Jak działa niejawna opinia QnA Maker
-
-Niejawna opinia QnA Maker używa algorytmu w celu określenia bliskości oceny, a następnie udostępnienia aktywnych sugestii szkoleniowych. Algorytm określający bliskość nie jest prostym wyliczeniem. Zakresów w poniższym przykładzie nie są przeznaczone do naprawienia, ale powinny być używane jako przewodnik, aby zrozumieć wpływ tylko algorytmu.
-
-Gdy Ocena pytania ma duże wątpliwości, na przykład 80%, zakres ocen, które są brane pod uwagę w przypadku aktywnego uczenia, jest szeroki, około 10%. W miarę zmniejszania wyniku zaufania, takiego jak 40%, zakres ocen również zmniejsza się, około 4%.
-
-## <a name="how-you-give-explicit-feedback-with-the-train-api"></a>Jak przekazać jawne informacje zwrotne za pomocą interfejsu API uczenia
-
-Ważne jest, aby QnA Maker uzyskać jawną opinię na temat tego, która z odpowiedzi była najlepszą odpowiedzią. Najlepsza odpowiedź jest określana przez użytkownika i może obejmować:
-
-* Opinie użytkowników, wybierając jedną z odpowiedzi.
-* Logika biznesowa, na przykład określenie akceptowalnego zakresu oceny.
-* Kombinacja opinii użytkowników i logiki biznesowej.
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>Uaktualnij wersję środowiska uruchomieniowego, aby korzystać z usługi Active Learning
 
@@ -187,22 +157,22 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Właściwość żądania HTTP|Nazwa|Typ|Przeznaczenie|
+|Właściwość żądania HTTP|Name (Nazwa)|Typ|Przeznaczenie|
 |--|--|--|--|
-|Parametr trasy adresu URL|Identyfikator bazy wiedzy|string|Identyfikator GUID bazy wiedzy.|
-|Niestandardowa poddomena|Nazwa zasobu QnAMaker|string|Nazwa zasobu jest używana jako niestandardowa poddomena dla QnA Maker. Jest on dostępny na stronie Ustawienia po opublikowaniu bazy wiedzy. Jest on wyświetlany jako `host`.|
-|Nagłówek|Content-Type|string|Typ nośnika treści wysyłanej do interfejsu API. Wartość domyślna to: `application/json`|
-|Nagłówek|Autoryzacja|string|Klucz punktu końcowego (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
-|Opublikuj treść|Obiekt JSON|JSON|Opinie szkoleniowe|
+|Parametr trasy adresu URL|Identyfikator bazy wiedzy|ciąg|Identyfikator GUID bazy wiedzy.|
+|Niestandardowa poddomena|Nazwa zasobu QnAMaker|ciąg|Nazwa zasobu jest używana jako niestandardowa poddomena dla QnA Maker. Jest on dostępny na stronie Ustawienia po opublikowaniu bazy wiedzy. Jest on wyświetlany jako `host`.|
+|Nagłówek|Content-Type|ciąg|Typ nośnika treści wysyłanej do interfejsu API. Wartość domyślna to: `application/json`|
+|Nagłówek|Autoryzacja|ciąg|Klucz punktu końcowego (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Opublikuj treść|JSON — Obiekt|JSON|Opinie szkoleniowe|
 
 Treść JSON ma kilka ustawień:
 
 |Właściwość treści JSON|Typ|Przeznaczenie|
 |--|--|--|--|
 |`feedbackRecords`|tablica|Lista opinii.|
-|`userId`|string|Identyfikator użytkownika osoby akceptującej sugerowane pytania. Format identyfikatora użytkownika jest aktualny. Na przykład adres e-mail może być prawidłowym IDENTYFIKATORem użytkownika w danej architekturze. Element opcjonalny.|
-|`userQuestion`|string|Dokładny tekst zapytania użytkownika. Wymagany.|
-|`qnaID`|numer|Identyfikator pytania znaleziony w [odpowiedzi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties). |
+|`userId`|ciąg|Identyfikator użytkownika osoby akceptującej sugerowane pytania. Format identyfikatora użytkownika jest aktualny. Na przykład adres e-mail może być prawidłowym IDENTYFIKATORem użytkownika w danej architekturze. Opcjonalny.|
+|`userQuestion`|ciąg|Dokładny tekst zapytania użytkownika. Wymagany.|
+|`qnaID`|liczba|Identyfikator pytania znaleziony w [odpowiedzi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties). |
 
 Przykładowa treść JSON wygląda następująco:
 
@@ -399,7 +369,7 @@ Po ponownym zaimportowaniu tej aplikacji aktywna nauka nadal zbiera informacje i
 
 
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 
 Najlepsze rozwiązania dotyczące korzystania z usługi Active Learning można znaleźć w temacie [Best Practices](../Concepts/best-practices.md#active-learning).
 

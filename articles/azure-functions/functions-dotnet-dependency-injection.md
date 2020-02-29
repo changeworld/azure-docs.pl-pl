@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a17ff15e71251e781cd30c33a5616af85e4f4eb9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260087"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915711"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Używanie iniekcji zależności w programie .NET Azure Functions
 
@@ -25,7 +25,7 @@ Azure Functions obsługuje wzorzec projektowania oprogramowania dla iniekcji zal
 
 Aby można było użyć iniekcji zależności, należy zainstalować następujące pakiety NuGet:
 
-- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Microsoft. Azure. Functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
 - [Pakiet Microsoft. NET. Sdk. Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) w wersji 1.0.28 lub nowszej
 
@@ -130,7 +130,7 @@ Jeśli potrzebujesz własnego dostawcy rejestrowania, Zarejestruj niestandardowy
 
 > [!WARNING]
 > - Nie należy dodawać `AddApplicationInsightsTelemetry()` do kolekcji usług, ponieważ rejestruje ona usługi, które powodują konflikt z usługami udostępnianymi przez środowisko.
-> - Nie rejestruj własnych `TelemetryConfiguration` ani `TelemetryClient`, jeśli używasz wbudowanej funkcji Application Insights.
+> - Nie rejestruj własnych `TelemetryConfiguration` ani `TelemetryClient`, jeśli używasz wbudowanej funkcji Application Insights. Jeśli musisz skonfigurować własne wystąpienie `TelemetryClient`, utwórz je za pomocą wstrzykniętego `TelemetryConfiguration`, jak pokazano w [Azure Functions monitora](./functions-monitoring.md#version-2x-and-later-2).
 
 ## <a name="function-app-provided-services"></a>Usługi funkcji dostarczone przez aplikację
 

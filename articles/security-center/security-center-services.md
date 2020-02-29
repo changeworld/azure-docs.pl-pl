@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8d905da733ea0573b91b289da43684ed8083c804
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 14c54028dacb545532b540ae8ff79fc3dc5356bc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616385"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921270"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Obsługiwane funkcje dostępne w Azure Security Center
 
@@ -38,10 +38,10 @@ W poniższych sekcjach przedstawiono Security Center funkcje, które są dostęp
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure Virtual Machines**|**Virtual Machine Scale Sets platformy Azure**|**Maszyny spoza platformy Azure**|**Cennik**
-|[Integracja z programem Microsoft Defender ATP](security-center-wdatp.md)|✔ (w obsługiwanych wersjach)|✔ (w obsługiwanych wersjach)|✔|Standard|
-|[Alerty wykrywania zagrożeń analizy zachowań maszyn wirtualnych](threat-protection.md)|✔|✔|✔|Zalecenia (bezpłatne) wykrywanie zagrożeń (wersja standardowa)|
-|[Alerty wykrywania zagrożeń bezplikowych](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
-|[Alerty dotyczące wykrywania zagrożeń opartych na sieci](threat-protection.md#network-layer)|✔|✔|-|Standard|
+|[Integracja z programem Microsoft Defender ATP](security-center-wdatp.md)|✔</br>(w obsługiwanych wersjach)|✔</br>(w obsługiwanych wersjach)|✔|Standard|
+|[Analiza behawioralna maszyn wirtualnych (i alerty zabezpieczeń)](threat-protection.md)|✔|✔|✔|Zalecenia (bezpłatnie) </br></br> Alerty zabezpieczeń (standard)|
+|[Alerty zabezpieczeń bezplikowych](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
+|[Alerty zabezpieczeń oparte na sieci](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Dostęp do maszyny wirtualnej just in Time](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Ocena natywnych luk w zabezpieczeniach](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Monitorowanie integralności plików](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -50,7 +50,7 @@ W poniższych sekcjach przedstawiono Security Center funkcje, które są dostęp
 |[Adaptacyjne ograniczanie sieci](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |Adaptacyjne kontrolki sieci|✔|✔|-|Standard|
 |[& Raporty dotyczące pulpitu nawigacyjnego zgodności z przepisami](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
-|Zalecenia i wykrywanie zagrożeń w kontenerach IaaS hostowanych przez platformę Docker|-|-|-|Standard|
+|Zalecenia i ochrona przed zagrożeniami w kontenerach IaaS hostowanych przez platformę Docker|-|-|-|Standard|
 |Brak oceny poprawek systemu operacyjnego|✔|✔|✔|Bezpłatna|
 |Ocena niezgodności konfiguracji zabezpieczeń|✔|✔|✔|Bezpłatna|
 |[Ocena programu Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Bezpłatna|
@@ -65,9 +65,9 @@ W poniższych sekcjach przedstawiono Security Center funkcje, które są dostęp
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure Virtual Machines**|**Virtual Machine Scale Sets platformy Azure**|**Maszyny spoza platformy Azure**|**Cennik**
 |[Integracja z programem Microsoft Defender ATP](security-center-wdatp.md)|-|-|-|Standard|
-|[Alerty wykrywania zagrożeń analizy zachowań maszyn wirtualnych](security-center-alerts-iaas.md)|✔ (w obsługiwanych wersjach)|✔ (w obsługiwanych wersjach)|✔|Zalecenia (bezpłatne) wykrywanie zagrożeń (wersja standardowa)|
-|[Alerty wykrywania zagrożeń bezplikowych](alerts-reference.md#alerts-windows)|-|-|-|Standard|
-|[Alerty dotyczące wykrywania zagrożeń opartych na sieci](threat-protection.md#network-layer)|✔|✔|-|Standard|
+|[Analiza behawioralna maszyn wirtualnych (i alerty zabezpieczeń)](security-center-alerts-iaas.md)|✔</br>(w obsługiwanych wersjach)|✔</br>(w obsługiwanych wersjach)|✔|Zalecenia (bezpłatnie) </br></br> Alerty zabezpieczeń (standard)|
+|[Alerty zabezpieczeń bezplikowych](alerts-reference.md#alerts-windows)|-|-|-|Standard|
+|[Alerty zabezpieczeń oparte na sieci](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Dostęp do maszyny wirtualnej just in Time](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Ocena natywnych luk w zabezpieczeniach](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Monitorowanie integralności plików](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -76,7 +76,7 @@ W poniższych sekcjach przedstawiono Security Center funkcje, które są dostęp
 |[Adaptacyjne ograniczanie sieci](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |Adaptacyjne kontrolki sieci|✔|✔|-|Standard|
 |[& Raporty dotyczące pulpitu nawigacyjnego zgodności z przepisami](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
-|Zalecenia i wykrywanie zagrożeń w kontenerach IaaS hostowanych przez platformę Docker|✔|✔|✔|Standard|
+|Zalecenia i ochrona przed zagrożeniami w kontenerach IaaS hostowanych przez platformę Docker|✔|✔|✔|Standard|
 |Brak oceny poprawek systemu operacyjnego|✔|✔|✔|Bezpłatna|
 |Ocena niezgodności konfiguracji zabezpieczeń|✔|✔|✔|Bezpłatna|
 |[Ocena programu Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Bezpłatna|
@@ -116,7 +116,7 @@ Aby uzyskać informacje o tym, kiedy są generowane zalecenia dla każdej z tych
 
 Następujące zasoby PaaS są obsługiwane przez Azure Security Center:
 
-|Usługa|Zalecenia (bezpłatnie)|Alerty wykrywania zagrożeń (standardowa)|Ocena luk w zabezpieczeniach (standardowa)|
+|Usługa|Zalecenia (bezpłatnie)|Alerty zabezpieczeń (standard)|Ocena luk w zabezpieczeniach (standardowa)|
 |----|:----:|:----:|:----:|
 |Bazy danych SQL|✔|✔|✔|
 |Azure Container Registry|-|-|✔|
@@ -158,6 +158,5 @@ zalecenia dotyczące \*\* Azure Active Directory (Azure AD) są dostępne tylko 
 - Dowiedz się [, jak Security Center zarządza i zabezpiecza dane](security-center-data-security.md).
 - Dowiedz się, jak [planować i zrozumieć zagadnienia dotyczące projektowania, aby przyjąć Azure Security Center](security-center-planning-and-operations-guide.md).
 - Przejrzyj [platformy, które obsługują Centrum zabezpieczeń](security-center-os-coverage.md).
-- Dowiedz się więcej [na temat wykrywania zagrożeń dla maszyn wirtualnych & serwerów w Azure Security Center](security-center-alerts-iaas.md).
+- Dowiedz się więcej o [ochronie przed zagrożeniami dla maszyn z systemami Windows i Linux w Azure Security Center](threat-protection.md#windows-machines).
 - Znajdź [często zadawane pytania dotyczące Azure Security Center](faq-general.md).
-- Znajdź [wpisy w blogu dotyczące zabezpieczeń i zgodności platformy Azure](https://blogs.msdn.com/b/azuresecurity/).

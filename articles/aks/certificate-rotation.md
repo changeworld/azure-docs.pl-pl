@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 02bfdbc840065558003b249e1e3ea52f46ec64d6
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 3c22f63b7085c7ab8d6b54e383528568dc9c12e7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596271"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917037"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Obróć certyfikaty w usłudze Azure Kubernetes Service (AKS)
 
@@ -84,6 +84,9 @@ Sprawdź, czy certyfikaty zostały zaktualizowane, uruchamiając polecenie `kube
 kubectl get no
 ```
 
+> [!NOTE]
+> Jeśli masz jakiekolwiek usługi działające na AKS, takie jak [Azure dev Spaces][dev-spaces], może być konieczne [zaktualizowanie również certyfikatów związanych z tymi usługami][dev-spaces-rotate] .
+
 ## <a name="next-steps"></a>Następne kroki
 
 W tym artykule pokazano, jak automatycznie obrócić certyfikaty klastra, urzędy certyfikacji i sygnaturę dostępu współdzielonego. Aby uzyskać więcej informacji na temat najlepszych rozwiązań dotyczących zabezpieczeń [, Zobacz najlepsze rozwiązania dotyczące zabezpieczeń klastrów i uaktualnień w usłudze Azure Kubernetes Service (AKS)][aks-best-practices-security-upgrades] .
@@ -94,3 +97,5 @@ W tym artykule pokazano, jak automatycznie obrócić certyfikaty klastra, urzęd
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md
+[dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[dev-spaces-rotate]: ../dev-spaces/troubleshooting.md#error-using-dev-spaces-after-rotating-aks-certificates

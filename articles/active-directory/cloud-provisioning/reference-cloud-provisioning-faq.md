@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020764"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916578"
 ---
-# <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect — często zadawane pytania
+# <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect często zadawane pytania
 
 Zapoznaj się z często zadawanymi pytaniami dotyczącymi usługi Azure Active Directory (Azure AD) łączenie z obsługą chmury.
 
@@ -71,6 +71,14 @@ Nie, Inicjowanie obsługi administracyjnej nie obsługuje zapisywania zwrotnego 
 **Pytanie: jestem użytkownikom aprowizacji przy użyciu aprowizacji w chmurze. Usunięto konfigurację. Dlaczego nadal widzę stare zsynchronizowane obiekty w usłudze Azure AD?** 
 
 Po usunięciu konfiguracji Inicjowanie obsługi administracyjnej nie będzie oczyszczać zsynchronizowanych obiektów w usłudze Azure AD. Aby upewnić się, że nie masz starych obiektów, Zmień zakres konfiguracji na pustą grupę lub jednostki organizacyjne. Po uruchomieniu aprowizacji i oczyszczeniu obiektów należy wyłączyć i usunąć konfigurację. 
+
+**P: co oznacza, że hybrydowe różnice między programem Exchange nie są obsługiwane?**
+
+Funkcja wdrożenia hybrydowego programu Exchange umożliwia jednoczesne istnienie skrzynek pocztowych programu Exchange lokalnie i w usłudze Office 365. Azure AD Connect synchronizuje określony zestaw atrybutów z usługi Azure AD z powrotem w katalogu lokalnym.  Agent aprowizacji w chmurze obecnie nie synchronizuje tych atrybutów z powrotem w katalogu lokalnym, dlatego nie jest on obsługiwany jako zamiennik Azure AD Connect.
+
+**P: Czy można zainstalować agenta aprowizacji w chmurze w systemie Windows Server Core?**
+
+Nie, Instalacja agenta na serwerze Core nie jest obsługiwana.
 
 ## <a name="next-steps"></a>Następne kroki 
 

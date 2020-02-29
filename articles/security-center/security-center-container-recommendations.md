@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: b1e1402f58b103570d6a98a5f9a01c8168abf749
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604267"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912366"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Omówienie zaleceń dotyczących kontenera Azure Security Center
 
@@ -35,7 +35,7 @@ Azure Security Center zapewnia następujące funkcje, które ułatwiają Zabezpi
 
     ![Karta kontener](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **Wykrywanie zagrożeń kontenera w czasie rzeczywistym**<br> Security Center zapewnia wykrywanie zagrożeń w czasie rzeczywistym dla kontenerów na komputerach z systemem Linux z poddawanym inspekcją składnikiem. Alerty identyfikują kilka podejrzanych działań platformy Docker, takich jak tworzenie kontenera uprzywilejowanego na hoście, wskazanie serwera Secure Shell (SSH) działającego wewnątrz kontenera Docker lub użycie kryptografii wyszukiwarek używa tego. Te informacje pozwalają na szybkie rozwiązywanie problemów dotyczących zabezpieczeń i poprawę bezpieczeństwa kontenerów.
+- **Ochrona przed zagrożeniami kontenera w czasie rzeczywistym**<br> Security Center zapewnia ochronę przed zagrożeniami w czasie rzeczywistym dla kontenerów na komputerach z systemem Linux z poddawanym inspekcją składnikiem. Alerty identyfikują kilka podejrzanych działań platformy Docker, takich jak tworzenie kontenera uprzywilejowanego na hoście, wskazanie serwera Secure Shell (SSH) działającego wewnątrz kontenera Docker lub użycie kryptografii wyszukiwarek używa tego. Te informacje pozwalają na szybkie rozwiązywanie problemów dotyczących zabezpieczeń i poprawę bezpieczeństwa kontenerów.
 
     ![Karta kontener](./media/security-center-container-recommendations/docker-threat-detection.png)
 

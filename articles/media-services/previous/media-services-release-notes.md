@@ -13,19 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: cfe5ea47ad2cbed7bd2779ee535d7bef447475e5
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 91578b5c840f589f3e49737b71e63f4d5e82a126
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500343"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919655"
 ---
 # <a name="azure-media-services-release-notes"></a>Informacje o wersji Azure Media Services
 
 Te informacje o wersji Azure Media Services podsumowują zmiany z poprzednich wersji i znanych problemów.
 
 > [!NOTE]
-> Do Media Services V2 nie są dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
 
 Chcemy poznać naszych klientów, aby móc skupić się na rozwiązywaniu problemów, które mają wpływ na Ciebie. Aby zgłosić problem lub zadawać pytania, Prześlij wpis na [forum MSDN Azure Media Services]. 
 
@@ -45,6 +45,10 @@ Chcemy poznać naszych klientów, aby móc skupić się na rozwiązywaniu proble
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a>historia wersji interfejsu API REST usługi <a id="rest_version_history"/>
 Informacje o historii wersji interfejsu API REST Media Services można znaleźć w [Dokumentacja interfejsu API REST Azure Media Services].
+
+## <a name="february-2020"></a>Luty 2020 r.
+
+Niektóre procesory multimediów analitycznych zostaną wycofane. Aby uzyskać daty wycofania, zobacz temat [starsze składniki](legacy-components.md) .
 
 ## <a name="september-2019"></a>Wrzesień 2019 r.
 
@@ -523,7 +527,7 @@ Poprawki dotyczące problemów znalezionych w zestawie SDK listopad 2012:
 ## <a id="november_changes_12"></a>Wydanie z listopada 2012
 Zmiany wymienione w tej sekcji zostały zaktualizowane w wersji 2012 (wersja 2.0.0.0) zestawu SDK. Te zmiany mogą wymagać zmodyfikowania lub zapisania kodu w wersji zapoznawczej zestawu SDK z czerwca 2012.
 
-* Elementy zawartości
+* dzierżawców
   
     * IAsset. Create (assetname) jest *jedyną* funkcją tworzenia zasobów. IAsset. Create nie jest już przeciążać plików jako części wywołania metody. Użyj IAssetFile do przekazywania.
     * Metoda IAsset. publish oraz wartość wyliczenia AssetState. publish zostały usunięte z zestawu SDK usług. Każdy kod, który opiera się na tej wartości, musi zostać ponownie zapisany.
@@ -561,7 +565,7 @@ W wersji z listopada zestawu SDK wprowadzono następujące funkcje:
 
 * Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->

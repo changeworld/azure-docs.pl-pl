@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: d4a51a44b48e94669e92a9d525c1b0966df53c18
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 3a7254cc9de89a297811792b4dd64b4b669ba8e4
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68964133"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921043"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Wysyłanie komunikatów z chmury do urządzeń z Centrum IoT Hub
 
@@ -35,7 +35,7 @@ Wykres stanu cyklu życia jest wyświetlany na poniższym diagramie:
 
 ![Cykl życia komunikatów z chmury do urządzenia](./media/iot-hub-devguide-messages-c2d/lifecycle.png)
 
-Gdy usługa IoT Hub wysyła komunikat do urządzenia, Usługa ustawia stan komunikatu na wartość z *kolejki*. Gdy urządzenie chce *odebrać* komunikat, centrum IoT *blokuje* komunikat, ustawiając stan na niewidoczny. Ten stan umożliwia innym wątkom na urządzeniu rozpoczęcie otrzymywania innych komunikatów. Gdy wątek urządzenia kończy przetwarzanie komunikatu, wysyła komunikat do centrum IoT Hub. Usługa IoT Hub ustawia stan na *ukończone*.
+Gdy usługa IoT Hub wysyła komunikat do urządzenia, Usługa ustawia stan komunikatu na wartość z *kolejki*. Gdy urządzenie chce *odebrać* komunikat, centrum IoT *blokuje* komunikat, ustawiając stan na *niewidoczny*. Ten stan umożliwia innym wątkom na urządzeniu rozpoczęcie otrzymywania innych komunikatów. Gdy wątek urządzenia kończy przetwarzanie komunikatu, wysyła *komunikat do centrum* IoT Hub. Usługa IoT Hub ustawia stan na *ukończone*.
 
 Urządzenie może również:
 
@@ -43,9 +43,9 @@ Urządzenie może również:
 
 * *Porzuć* komunikat, co spowoduje, że Centrum IoT przeniesie komunikat z powrotem do kolejki, a stan ustawi jako umieszczony na *kolejce*. Urządzenia, które nawiązują połączenie za pośrednictwem protokołu MQTT, nie mogą zrezygnować z komunikatów z chmury do urządzenia.
 
-Wątek nie może przetworzyć komunikatu bez powiadomienia centrum IoT Hub. W takim przypadku komunikaty są automatycznie przenoszone z *niewidocznego* stanu po przekroczeniu limitu czasu *widoczności* (lub przekroczenia limitu czasu *blokady* ). Wartość tego limitu czasu wynosi jedna minuta i nie można jej zmienić.
+Wątek nie może przetworzyć komunikatu bez powiadomienia centrum IoT Hub. W takim przypadku komunikaty są automatycznie przenoszone z *niewidocznego* *stanu po* przekroczeniu limitu czasu *widoczności* (lub przekroczenia limitu czasu *blokady* ). Wartość tego limitu czasu wynosi jedna minuta i nie można jej zmienić.
 
-Właściwość **Maksymalna liczba dostaw** w centrum IoT określa maksymalną liczbę przypadków przejścia komunikatu między podstanem w *kolejce* i niewidocznym stanie. Po tej liczbie zmian Centrum IoT ustawia stan wiadomości na *utracony*. Podobnie Centrum IoT określa stan wiadomości, które mają zostać *utracone* po upływie czasu wygaśnięcia. Aby uzyskać więcej informacji, zobacz [Time to Live](#message-expiration-time-to-live).
+Właściwość **Maksymalna liczba dostaw** w centrum IoT określa maksymalną liczbę przypadków przejścia komunikatu między podstanem w *kolejce* i *niewidocznym* stanie. Po tej liczbie zmian Centrum IoT ustawia stan wiadomości na *utracony*. Podobnie Centrum IoT określa stan wiadomości, które mają zostać *utracone* po upływie czasu wygaśnięcia. Aby uzyskać więcej informacji, zobacz [Time to Live](#message-expiration-time-to-live).
 
 [Informacje o sposobie wysyłania komunikatów z chmury do urządzenia z IoT Hub](iot-hub-csharp-csharp-c2d.md) artykułu pokazują, jak wysyłać komunikaty z chmury do urządzenia z chmury i odbierać je na urządzeniu.
 
@@ -77,18 +77,18 @@ Po wysłaniu komunikatu z chmury do urządzenia usługa może zażądać dostarc
 | ------------ | -------- |
 | brak     | Centrum IoT nie generuje wiadomości z opiniami (domyślne zachowanie). |
 | pozytywna | Jeśli komunikat z chmury do urządzenia osiągnie stan *ukończono* , usługa IoT Hub generuje wiadomość z opinią. |
-| poziomem | Jeśli komunikat z chmury do urządzenia osiągnie stan utraconych wiadomości, usługa IoT Hub generuje wiadomość z opinią. |
-| pełne     | W obu przypadkach w usłudze IoT Hub jest generowany komunikat z opinią. |
+| poziomem | Jeśli komunikat z chmury do urządzenia osiągnie stan *utraconych* wiadomości, usługa IoT Hub generuje wiadomość z opinią. |
+| szczegółowe     | W obu przypadkach w usłudze IoT Hub jest generowany komunikat z opinią. |
 
 Jeśli wartość **ACK** jest *pełna*i nie otrzymasz wiadomości z opinią, oznacza to, że wiadomość dotycząca opinii wygasła. Usługa nie może znać, co się stało z oryginalnym komunikatem. W tym przypadku usługa powinna upewnić się, że może przetworzyć opinię przed jej wygaśnięciem. Maksymalny czas wygaśnięcia wynosi dwa dni, co pozostawia czas na ponowne uruchomienie usługi w przypadku wystąpienia błędu.
 
-Jak wyjaśniono [](iot-hub-devguide-endpoints.md)w punktach końcowych, usługa IoT Hub dostarcza informacje zwrotne za pomocą punktu końcowego opartego na usłudze, */messages/servicebound/feedback*jako komunikatów. Semantyka do otrzymywania opinii jest taka sama jak w przypadku komunikatów z chmury do urządzenia. Zawsze, gdy jest to możliwe, informacja zwrotna wiadomości jest przetwarzana w jednej wiadomości, w następującym formacie:
+Jak wyjaśniono w [punktach końcowych](iot-hub-devguide-endpoints.md), usługa IoT Hub dostarcza informacje zwrotne za pomocą punktu końcowego opartego na usłudze, */messages/servicebound/feedback*jako komunikatów. Semantyka do otrzymywania opinii jest taka sama jak w przypadku komunikatów z chmury do urządzenia. Zawsze, gdy jest to możliwe, informacja zwrotna wiadomości jest przetwarzana w jednej wiadomości, w następującym formacie:
 
 | Właściwość     | Opis |
 | ------------ | ----------- |
 | EnqueuedTime | Sygnatura czasowa wskazująca, kiedy wiadomość zwrotna została odebrana przez centrum |
 | UserId       | `{iot hub name}` |
-| ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
+| contentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
 Treść jest serializowaną w formacie JSON tablicą rekordów, z których każdy ma następujące właściwości:
 
@@ -98,7 +98,7 @@ Treść jest serializowaną w formacie JSON tablicą rekordów, z których każd
 | OriginalMessageId  | Identyfikator *MessageID* komunikatu z chmury do urządzenia, do którego odnoszą się informacje o opinii |
 | StatusCode         | Wymagany ciąg używany w wiadomościach zwrotnych, które są generowane przez Centrum IoT: <br/> *Prawnego* <br/> *Przeterminowanych* <br/> *DeliveryCountExceeded* <br/> *Odrzucono* <br/> *Przeczyszczane* |
 | Opis        | Wartości ciągu dla elementu *StatusCode* |
-| DeviceId           | Identyfikator urządzenia docelowego komunikatu z chmury do urządzenia, do którego odnosi się ten element opinii |
+| DeviceId           | Identyfikator urządzenia docelowego komunikatu z chmury do *urządzenia, do* którego odnosi się ten element opinii |
 | DeviceGenerationId | *DeviceGenerationId* urządzenia docelowego komunikatu z chmury do urządzenia, do którego odnosi się ten element opinii |
 
 Aby komunikat z chmury do urządzenia mógł skorelować swoją opinię z oryginalnym komunikatem, usługa musi określić wartość *MessageID*.
@@ -134,12 +134,36 @@ Każde Centrum IoT Hub udostępnia następujące opcje konfiguracji obsługi kom
 
 | Właściwość                  | Opis | Zakres i domyślny |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | Domyślny czas wygaśnięcia dla komunikatów z chmury do urządzenia | Interwał ISO_8601 do 2 dni (minimum 1 min); wartooć 1 godzina |
-| maxDeliveryCount          | Maksymalna liczba dostaw dla kolejek dla poszczególnych urządzeń w chmurze | od 1 do 100; wartooć 10 |
-| feedback.ttlAsIso8601     | Przechowywanie komunikatów z odpowiedziami związanymi z usługą | Interwał ISO_8601 do 2 dni (minimum 1 min); wartooć 1 godzina |
-| feedback.maxDeliveryCount | Maksymalna liczba dostaw dla kolejki opinii | od 1 do 100; wartooć 100 |
+| defaultTtlAsIso8601       | Domyślny czas wygaśnięcia dla komunikatów z chmury do urządzenia | Interwał ISO_8601 do 2 dni (minimum 1 min); wartość domyślna: 1 godzina |
+| maxDeliveryCount          | Maksymalna liczba dostaw dla kolejek dla poszczególnych urządzeń w chmurze | od 1 do 100; wartość domyślna: 10 |
+| feedback.ttlAsIso8601     | Przechowywanie komunikatów z odpowiedziami związanymi z usługą | Interwał ISO_8601 do 2 dni (minimum 1 min); wartość domyślna: 1 godzina |
+| feedback.maxDeliveryCount | Maksymalna liczba dostaw dla kolejki opinii | od 1 do 100; wartość domyślna: 10 |
+| Opinia. lockDurationAsIso8601 | Maksymalna liczba dostaw dla kolejki opinii | Interwał ISO_8601 od 5 do 300 sekund (minimum 5 sekund); wartość domyślna: 60 sekund. |
 
-Aby uzyskać więcej informacji na temat sposobu ustawiania tych opcji konfiguracji, zobacz [Tworzenie centrów IoT](iot-hub-create-through-portal.md).
+Opcje konfiguracji można ustawić w jeden z następujących sposobów:
+
+* **Azure Portal**: w obszarze **Ustawienia** w centrum IoT wybierz **wbudowane punkty końcowe** i rozwiń pozycję **Cloud to Device Messaging**. (Ustawienie **informacji zwrotnych. maxDeliveryCount** i **opinia. lockDurationAsIso8601** nie są obecnie obsługiwane w Azure Portal).
+
+    ![Ustawianie opcji konfiguracji dla komunikatów z chmury do urządzeń w portalu](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
+
+* **Interfejs wiersza polecenia platformy Azure**: Użyj narzędzia [AZ IoT Hub Update](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) :
+
+    ```azurecli
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.defaultTtlAsIso8601=PT1H0M0S
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.maxDeliveryCount=10
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.ttlAsIso8601=PT1H0M0S
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.maxDeliveryCount=10
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.lockDurationAsIso8601=PT0H1M0S
+    ```
 
 ## <a name="next-steps"></a>Następne kroki
 

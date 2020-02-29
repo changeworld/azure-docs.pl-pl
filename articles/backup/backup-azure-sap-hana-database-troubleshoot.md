@@ -3,12 +3,12 @@ title: Rozwiązywanie problemów z kopiami zapasowymi baz danych SAP HANA
 description: Opisuje sposób rozwiązywania typowych błędów, które mogą wystąpić podczas tworzenia kopii zapasowej SAP HANA baz danych przy użyciu Azure Backup.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 04f9bafba0ca490b33a0daf3c3725e57d81bcc7e
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 8872cfe87df9b8d0553d777f72fe7102d08dea4d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664602"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916867"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Rozwiązywanie problemów z tworzeniem kopii zapasowych baz danych SAP HANA na platformie Azure
 
@@ -16,9 +16,16 @@ Ten artykuł zawiera informacje dotyczące rozwiązywania problemów dotyczącyc
 
 ## <a name="prerequisites-and-permissions"></a>Wymagania wstępne i uprawnienia
 
-Przed skonfigurowaniem kopii zapasowych zapoznaj się z sekcjami [wymagania wstępne](tutorial-backup-sap-hana-db.md#prerequisites) i [Ustawienia uprawnień](tutorial-backup-sap-hana-db.md#setting-up-permissions) .
+Przed skonfigurowaniem kopii zapasowych zapoznaj się z sekcją [wymagania wstępne](tutorial-backup-sap-hana-db.md#prerequisites) i [co to jest skrypt przed rejestracją](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) .
 
 ## <a name="common-user-errors"></a>Typowe błędy użytkowników
+
+### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
+
+| **Komunikat o błędzie**      | <span style="font-weight:normal">Usługa Azure Backup nie ma uprawnień do wykonywania kopii zapasowych wymaganych przez rolę.</span>    |
+| ---------------------- | ------------------------------------------------------------ |
+| **Możliwe przyczyny**    | Rola mogła zostać nadpisywana.                          |
+| **Zalecana akcja** | Aby rozwiązać ten problem, uruchom skrypt z okienka **odnajdywanie bazy danych** lub Pobierz go [tutaj](https://aka.ms/scriptforpermsonhana). Alternatywnie Dodaj rolę "SAP_INTERNAL_HANA_SUPPORT" do użytkownika kopii zapasowej obciążenia (AZUREWLBACKUPHANAUSER). |
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 

@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f17192e738bb82fb348c660488e6296aa550bd25
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838551"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913484"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Rozwiązywanie problemów z typowymi błędami indeksatora i ostrzeżeniami w usłudze Azure Wyszukiwanie poznawcze
 
@@ -35,7 +35,7 @@ Począwszy od wersji interfejsu API `2019-05-06`, błędy indeksatora na poziomi
 | Właściwość | Opis | Przykład |
 | --- | --- | --- |
 | key | Identyfikator dokumentu dokumentu, którego dotyczy błąd lub ostrzeżenie. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
-| name | Nazwa operacji opisująca miejsce wystąpienia błędu lub ostrzeżenia. Ta wartość jest generowana przez następującą strukturę: [Kategoria]. [Podkategoria]. [ResourceType]. Source | DocumentExtraction. azureblob. myBlobContainerName wzbogacanie. WebApiSkill. Moja umiejętność projekcji. SearchIndex. OutputFieldMapping. myOutputFieldName projekcji. SearchIndex. MergeOrUpload. Indeksname Projekcja. KnowledgeStore. Table. webtablename |
+| {1&gt;nazwa&lt;1} | Nazwa operacji opisująca miejsce wystąpienia błędu lub ostrzeżenia. Ta wartość jest generowana przez następującą strukturę: [Kategoria]. [Podkategoria]. [ResourceType]. Source | DocumentExtraction. azureblob. myBlobContainerName wzbogacanie. WebApiSkill. Moja umiejętność projekcji. SearchIndex. OutputFieldMapping. myOutputFieldName projekcji. SearchIndex. MergeOrUpload. Indeksname Projekcja. KnowledgeStore. Table. webtablename |
 | message | Ogólny opis błędu lub ostrzeżenia. | Nie można wykonać umiejętności, ponieważ żądanie interfejsu API sieci Web nie powiodło się. |
 | details informacje | Wszelkie dodatkowe szczegóły, które mogą być pomocne w diagnozowaniu problemu, takie jak odpowiedź WebApi w przypadku niepowodzenia wykonywania niestandardowej umiejętności. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 Źródło, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... Pozostałe ślady stosu... |
 | documentationLink | Link do odpowiedniej dokumentacji ze szczegółowymi informacjami na temat debugowania i rozwiązywania problemu. Ten link będzie często wskazywał jedną z poniższych sekcji na tej stronie. | https://go.microsoft.com/fwlink/?linkid=2106475 |
@@ -46,7 +46,7 @@ Począwszy od wersji interfejsu API `2019-05-06`, błędy indeksatora na poziomi
 
 Indeksator nie mógł odczytać dokumentu ze źródła danych. Przyczyną może być:
 
-| Przyczyna | Szczegóły/przykład | Rozdzielczość |
+| Przyczyna | Szczegóły/przykład | Rozwiązanie |
 | --- | --- | --- |
 | niespójne typy pól w różnych dokumentach | Typ wartości jest niezgodny z typem kolumny. Nie można zapisać `'{47.6,-122.1}'` w kolumnie autorów.  Oczekiwany typ to JArray. | Upewnij się, że typ każdego pola jest taki sam w różnych dokumentach. Na przykład jeśli pierwszy dokument `'startTime'` pole jest datą i w drugim dokumencie jest ciągiem, ten błąd zostanie trafiony. |
 | błędy usługi źródłowej źródła danych | (z Cosmos DB) `{"Errors":["Request rate is large"]}` | Sprawdź wystąpienie magazynu, aby upewnić się, że jest w dobrej kondycji. Może być konieczne dostosowanie skalowania/partycjonowania. |
@@ -57,7 +57,7 @@ Indeksator nie mógł odczytać dokumentu ze źródła danych. Przyczyną może 
 ## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>Błąd: nie można wyodrębnić zawartości lub metadanych z dokumentu
 Indeksator ze źródłem danych obiektu BLOB nie mógł wyodrębnić zawartości lub metadanych z dokumentu (na przykład pliku PDF). Przyczyną może być:
 
-| Przyczyna | Szczegóły/przykład | Rozdzielczość |
+| Przyczyna | Szczegóły/przykład | Rozwiązanie |
 | --- | --- | --- |
 | rozmiar obiektu BLOB przekracza limit. | Dokument ma `'150441598'` bajtów, który przekracza maksymalny rozmiar `'134217728'` bajtów na potrzeby wyodrębniania dokumentu dla bieżącej warstwy usług. | [Błędy indeksowania obiektów BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | Obiekt BLOB ma nieobsługiwany typ zawartości | Dokument zawiera nieobsługiwany typ zawartości `'image/png'` | [Błędy indeksowania obiektów BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,7 +69,7 @@ Indeksator ze źródłem danych obiektu BLOB nie mógł wyodrębnić zawartości
 ## <a name="error-could-not-parse-document"></a>Błąd: nie można przeanalizować dokumentu
 Indeksator odczytuje dokument ze źródła danych, ale wystąpił problem podczas konwertowania zawartości dokumentu do określonego schematu mapowania pól. Przyczyną może być:
 
-| Przyczyna | Szczegóły/przykład | Rozdzielczość |
+| Przyczyna | Szczegóły/przykład | Rozwiązanie |
 | --- | --- | --- |
 | Brak klucza dokumentu | Brak klucza dokumentu lub jest on pusty | Upewnij się, że wszystkie dokumenty mają prawidłowe klucze dokumentu |
 | Klucz dokumentu jest nieprawidłowy | Klucz dokumentu nie może mieć więcej niż 1024 znaków | Zmodyfikuj klucz dokumentu, aby spełniał wymagania dotyczące weryfikacji. |
@@ -81,7 +81,7 @@ Indeksator odczytuje dokument ze źródła danych, ale wystąpił problem podcza
 ## <a name="error-could-not-execute-skill"></a>Błąd: nie można wykonać umiejętności
 Indeksator nie mógł uruchomić umiejętności w zestawu umiejętności.
 
-| Przyczyna | Szczegóły/przykład | Rozdzielczość |
+| Przyczyna | Szczegóły/przykład | Rozwiązanie |
 | --- | --- | --- |
 | Przejściowe problemy z łącznością | Wystąpił błąd przejściowy. Spróbuj ponownie później. | Sporadycznie występują nieoczekiwane problemy z łącznością. Spróbuj ponownie uruchomić dokument za pomocą indeksatora później. |
 | Potencjalna usterka produktu | Wystąpił nieoczekiwany błąd. | Oznacza to nieznaną klasę błędu i może oznaczać, że występuje usterka produktu. Zapoznaj się z [biletem pomocy technicznej](https://ms.portal.azure.com/#create/Microsoft.Support) , aby uzyskać pomoc. |
@@ -140,7 +140,7 @@ Maksymalna wartość, którą można ustawić dla parametru `timeout` to 230 sek
 
 Dokument został odczytany i przetworzony, ale indeksator nie mógł go dodać do indeksu wyszukiwania. Przyczyną może być:
 
-| Przyczyna | Szczegóły/przykład | Rozdzielczość |
+| Przyczyna | Szczegóły/przykład | Rozwiązanie |
 | --- | --- | --- |
 | Pole zawiera termin, który jest zbyt duży | Termin w dokumencie jest większy niż [limit 32 KB](search-limits-quotas-capacity.md#api-request-limits) | Można uniknąć tego ograniczenia, upewniając się, że pole nie jest skonfigurowane jako możliwe do filtrowania, tworzenia i sortowania.
 | Dokument jest zbyt duży, aby można go było zindeksować | Dokument jest większy niż [Maksymalny rozmiar żądania interfejsu API](search-limits-quotas-capacity.md#api-request-limits) | [Jak indeksować duże zestawy danych](search-howto-large-index.md)
@@ -152,9 +152,9 @@ Dokument został odczytany i przetworzony, ale indeksator nie mógł go dodać d
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
 
-## <a name="error-could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>Błąd: nie można indeksować dokumentu, ponieważ dane indeksatora są nieprawidłowe
+## <a name="error-could-not-index-document-because-some-of-the-documents-data-was-not-valid"></a>Błąd: nie można indeksować dokumentu, ponieważ niektóre dane dokumentu były nieprawidłowe
 
-Dokument został odczytany i przetworzony, ale z powodu niezgodności konfiguracji pól indeksu i charakteru danych wyodrębnionych przez indeksator, nie można go dodać do indeksu wyszukiwania. Przyczyną może być:
+Dokument został odczytany i przetworzony przez indeksator, ale z powodu niezgodności konfiguracji pól indeksu i danych wyodrębnionych i przetworzonych przez indeksator, nie można dodać go do indeksu wyszukiwania. Przyczyną może być:
 
 | Przyczyna | Szczegóły/przykład
 | --- | ---
@@ -166,12 +166,11 @@ Dokument został odczytany i przetworzony, ale z powodu niezgodności konfigurac
 
 We wszystkich tych przypadkach należy zapoznać się z [obsługiwanymi typami danych](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) i [mapą typów danych dla indeksatorów](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) , aby upewnić się, że schemat indeksu jest prawidłowo skonstruowany i skonfigurowano odpowiednie [mapowania pól indeksatora](search-indexer-field-mappings.md). Komunikat o błędzie będzie zawierać szczegóły, które mogą pomóc w śledzeniu źródła niezgodności.
 
-<a name="could-not-process-document-within-indexer-max-run-time"/>
-
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Błąd: nie można użyć zintegrowanych zasad śledzenia zmian, ponieważ tabela zawiera złożony klucz podstawowy
 
 Dotyczy to tabel SQL i zwykle ma miejsce, gdy klucz jest zdefiniowany jako klucz złożony lub, gdy tabela ma zdefiniowany unikatowy indeks klastrowany (jak w indeksie SQL, a nie indeks Azure Search). Głównym powodem jest to, że atrybut klucza jest modyfikowany jako złożony klucz podstawowy w przypadku [unikatowego indeksu klastrowanego](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15). W takim przypadku upewnij się, że tabela SQL nie ma unikatowego indeksu klastrowanego lub że pole klucza zostało zamapowane na pole, które nie ma zduplikowanych wartości.
 
+<a name="could-not-process-document-within-indexer-max-run-time"/>
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Błąd: nie można przetworzyć dokumentu w maksymalnym czasie wykonywania indeksatora
 
@@ -183,7 +182,7 @@ Ten błąd występuje, gdy indeksator nie może zakończyć przetwarzania pojedy
 
 Ten błąd występuje, gdy indeksator próbuje [projektować dane w sklepie z wiedzą](knowledge-store-projection-overview.md) i wystąpił błąd w naszej próbie.  Ten błąd może być spójny i fixable. może to być błąd przejściowy, który może wymagać poczekania i ponowienia próby w celu rozwiązania problemu.  Poniżej przedstawiono zestaw znanych Stanów niepowodzeń i możliwych rozwiązań.
 
-| Przyczyna | Szczegóły/przykład | Rozdzielczość |
+| Przyczyna | Szczegóły/przykład | Rozwiązanie |
 | --- | --- | --- |
 | Nie można zaktualizować `'blobUri'` projekcji BLOB w kontenerze `'containerName'` |Określony kontener nie istnieje. | Indeksator sprawdzi, czy określony kontener został wcześniej utworzony i utworzy go w razie potrzeby, ale wykonuje to sprawdzenie tylko raz dla indeksatora. Ten błąd oznacza, że element usunięty z kontenera jest usuwany po tym kroku.  Aby rozwiązać ten problem, wypróbuj: pozostaw same informacje o koncie magazynu, poczekaj na zakończenie indeksatora, a następnie ponownie uruchom indeksator. |
 | Nie można zaktualizować `'blobUri'` projekcji BLOB w kontenerze `'containerName'` |Nie można zapisać danych do połączenia transportowego: wykryto, że istniejące połączenie zostało wymuszone przez hosta zdalnego. | Jest to oczekiwany błąd przejściowy usługi Azure Storage, dlatego należy rozwiązać ten problem przez ponowne uruchomienie indeksatora. Jeśli ten błąd wystąpi konsekwentnie, Utwórz [bilet pomocy technicznej](https://ms.portal.azure.com/#create/Microsoft.Support) , aby można było go dokładniej zbadać.  |
@@ -220,7 +219,7 @@ Jeśli chcesz podać wartość domyślną w przypadku braku danych wejściowych,
 }
 ```
 
-| Przyczyna | Szczegóły/przykład | Rozdzielczość |
+| Przyczyna | Szczegóły/przykład | Rozwiązanie |
 | --- | --- | --- |
 | Dane wejściowe umiejętności są niewłaściwego typu | "Wymagane dane wejściowe kwalifikacji nie mają oczekiwanego typu `String`. Nazwa: `text`, Źródło: `/document/merged_content`".  "Wymagane dane wejściowe kwalifikacji mają nieoczekiwany format. Nazwa: `text`, Źródło: `/document/merged_content`".  "Nie można wykonać iteracji dla niearray `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`".  "Nie można wybrać `0` w niearray `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`" | Pewne umiejętności oczekują danych wejściowych określonych typów, na przykład [umiejętność tonacji](cognitive-search-skill-sentiment.md) oczekuje, że `text` być ciągiem. Jeśli dane wejściowe określają wartość różną od ciągu, wówczas umiejętność nie zostanie wykonana i nie wygeneruje żadnych danych wyjściowych. Upewnij się, że zestaw danych zawiera wartości wejściowe, które są jednorodne w typie, lub Użyj [niestandardowej umiejętności interfejsu API sieci Web](cognitive-search-custom-skill-web-api.md) , aby wstępnie przetworzyć dane wejściowe. Jeśli Iteracja jest przeprowadzana przez tablicę, sprawdź kontekst umiejętności i wprowadź `*` w poprawnych pozycjach. Zwykle zarówno kontekst, jak i źródło danych wejściowych powinny kończyć się `*` dla tablic. |
 | Brak danych wejściowych kwalifikacji | Brak "wymaganych danych wejściowych umiejętności. Nazwa: `text`, Źródło: `/document/merged_content`"" brak wartości `/document/normalized_images/0/imageTags`. "  "Nie można wybrać `0` w tablicy `/document/pages` długości `0`." | Jeśli wszystkie dokumenty otrzymają to ostrzeżenie, najprawdopodobniej występuje literówka w ścieżkach wejściowych i należy dokładnie sprawdzić wielkość liter nazwy właściwości, dodatkowe lub brakujące `*` w ścieżce, i upewnić się, że dokumenty ze źródła danych zawierają wymagane dane wejściowe. |
@@ -323,7 +322,7 @@ Mapowania pól wyjściowych, które odwołują się do nieistniejących/niepusty
 
 [Tryby analizowania indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters) muszą wiedzieć, jak kodowanie tekstu przed jego przeanalizą. Dwa najczęstsze sposoby kodowania tekstu to UTF-16 i UTF-8. UTF-8 to kodowanie o zmiennej długości, gdzie każdy znak ma długość od 1 do 4 bajtów. UTF-16 to kodowanie o stałej długości, gdzie każdy znak ma długość 2 bajtów. UTF-16 ma dwa różne warianty, "big endian" i "little endian". Kodowanie tekstu jest określane na podstawie "znacznika kolejności bajtów", serii bajtów przed tekstem.
 
-| Encoding | Znacznik kolejności bajtów |
+| Kodowanie | Znacznik kolejności bajtów |
 | --- | --- |
 | Big endian UTF-16 | 0xFE 0xFF |
 | Little endian UTF-16 | 0xFF 0xFE |

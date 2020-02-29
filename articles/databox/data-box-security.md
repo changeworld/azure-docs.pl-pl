@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 678bef1b18d60679be6c296a1fd7beef42f721b7
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203824"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911737"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Zabezpieczenia i ochrona danych w usłudze Azure Data Box
 
@@ -78,13 +78,13 @@ W usłudze Azure Data Box dane osobowe są zbierane i wyświetlane w następują
 
 - **Szczegóły zamówienia** — po utworzeniu zamówienia na platformie Azure zostaną zapisane dane kontaktowe użytkowników, adres wysyłki, adres e-mail. Zapisane informacje obejmują:
 
-  - Nazwa kontaktu
+  - Nazwisko osoby kontaktowej
   - Numer telefonu
   - Email
-  - Ulica
+  - Adres
   - Miasto
   - Kod pocztowy
-  - State
+  - Stan
   - Kraj/Województwo/Region
   - Numer konta operatora
   - Numer śledzenia dostawy

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: dce01cb8ed6043193878551207eeca3d573f9d4d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 8b1acb4676d97ff16410543828493428059ad0fb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672484"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919893"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Obsługa maszyn wirtualnych 2. generacji na platformie Azure
 
@@ -33,18 +33,18 @@ Maszyny wirtualne generacji 2 wykorzystują nową architekturę rozruchową opar
 Maszyny wirtualne generacji 1 są obsługiwane przez wszystkie rozmiary maszyn wirtualnych na platformie Azure (z wyjątkiem maszyn wirtualnych z serii Mv2). Platforma Azure oferuje teraz obsługę generacji 2 dla następującej wybranej serii maszyn wirtualnych:
 
 * [Seria B](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
-* [Seria DC](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dc-series)
-* Seria [Dsv2](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series) i [Dsv3](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
-* [Seria Esv3](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
-* [Seria Fsv2](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
+* [Seria DC](../dcv2-series.md)
+* Seria [DSv2](../dv2-dsv2-series.md) i [Dsv3](../dv3-dsv3-series.md)
+* [Seria Esv3](../ev3-esv3-series.md)
+* [Seria Fsv2](../fsv2-series.md)
 * [Seria GS](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
-* [HB — seria](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hb-series)
-* [Seria HC](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hc-series)
-* Seria [ls](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) i seria [Lsv2](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-storage#lsv2-series)
-* [Seria Mv2](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series)
-* Seria [NCv2](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv2-series) i [Seria NCV3](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv3-series)
-* [Seria ND](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nd-series)
-* [Seria NVv3](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
+* [HB — seria](../hb-series.md)
+* [Seria HC](../hc-series.md)
+* Seria [ls](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) i seria [Lsv2](../lsv2-series.md)
+* [Seria Mv2](../mv2-series.md)
+* Seria [NCv2](../ncv2-series.md) i [Seria NCV3](../ncv3-series.md)
+* [Seria ND](../nd-series.md)
+* [Seria NVv3](../nvv3-series.md)
 
 > [!NOTE]
 > Użycie obrazów maszyn wirtualnych generacji 2 dla maszyn wirtualnych z serii Mv2 jest ogólnie dostępne, ponieważ seria Mv2 współpracuje wyłącznie z obrazami maszyny wirtualnej generacji 2. Obrazy maszyn wirtualnych generacji 1 nie są obsługiwane na maszynach wirtualnych z serii Mv2. 

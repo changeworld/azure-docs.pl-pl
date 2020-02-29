@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
-ms.openlocfilehash: db74415d3c6c5f6636a150d212bc2bc3d790fbec
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: be26a9d4c66412518079de303ac0764d979c3e7c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686382"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912056"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Dołączanie do Azure Security Center Standard w celu zapewnienia zwiększonych zabezpieczeń
 Uaktualnij do wersji Standard Security Center, aby korzystać z ulepszonych funkcji zarządzania zabezpieczeniami i ochrony przed zagrożeniami dla obciążeń chmury hybrydowej. Możesz wypróbować usługę w warstwie Standardowa. Aby uzyskać więcej informacji, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/) Security Center.
 
-Standard Security Center obejmuje:
+Warstwa standardowa Security Center obejmuje:
 
 - **Bezpieczeństwo hybrydowe** — Uzyskaj ujednolicony widok zabezpieczeń we wszystkich obciążeniach lokalnych i w chmurze. Stosuj zasady zabezpieczeń i stale oceniaj bezpieczeństwo obciążeń chmury hybrydowej w celu zapewnienia zgodności ze standardami zabezpieczeń. Zbieranie, wyszukiwanie i analizowanie danych zabezpieczeń z różnych źródeł, w tym zapór i innych rozwiązań partnerskich.
-- **Zaawansowane wykrywanie zagrożeń** — Użyj zaawansowanej analizy i Microsoft Intelligent Security Graph, aby uzyskać krawędzie przed rozwojem ataków cybernetycznymi. Wykorzystaj wbudowaną analizę behawioralną i uczenie maszynowe do identyfikowania ataków i luk typu zero day. Monitoruj sieci, maszyny i usługi w chmurze pod kątem przychodzących ataków i działań po naruszeniu zabezpieczeń. Usprawnij badanie dzięki interaktywnym narzędziom i kontekstowej analizie zagrożeń.
+- **Alerty zabezpieczeń** — Użyj zaawansowanej analizy i Microsoft Intelligent Security Graph, aby uzyskać krawędzie przed rozwijającym się atakami cybernetycznymi. Korzystaj z wbudowanej analizy behawioralnej i uczenia maszynowego, aby identyfikować ataki i wypróbować programy wykorzystujące zero dni. Monitoruj sieci, maszyny i usługi w chmurze pod kątem ataków przychodzących i działań po naruszeniu. Usprawnij badanie przy użyciu interaktywnych narzędzi i kontekstowej analizy zagrożeń.
 - **Kontrola dostępu i aplikacji** — Zablokuj złośliwe oprogramowanie i inne niechciane aplikacje, stosując zalecenia listy dozwolonych dostosowane do konkretnych obciążeń i obsługiwane przez uczenie maszynowe. Zmniejszenie podatności na ataki sieci z dostępem just-in-Time do portów zarządzania na maszynach wirtualnych platformy Azure, co znacząco zmniejsza narażenie na odżycie i inne ataki sieciowe.
 
 ## <a name="detecting-unprotected-resources"></a>Wykrywanie zasobów niechronionych
@@ -42,7 +42,7 @@ Możesz uaktualnić całą subskrypcję platformy Azure do warstwy Standardowa, 
 ## <a name="upgrade-an-azure-subscription-or-workspace"></a>Uaktualnianie subskrypcji lub obszaru roboczego platformy Azure
 Aby uaktualnić subskrypcję lub obszar roboczy do warstwy Standardowa:
 1. W menu głównym usługi Security Center wybierz pozycję **Wprowadzenie**.
-  ![Wprowadzenie](./media/security-center-onboarding/get-started.png)
+  ![Rozpoczęcie pracy](./media/security-center-onboarding/get-started.png)
 2. W obszarze **Uaktualnienie** usługa Security Center wyświetla listę subskrypcji i obszarów roboczych, które kwalifikują się do dołączenia. 
    - Możesz kliknąć listę rozwijaną **Zastosuj wersję próbną**, aby wyświetlić listę wszystkich subskrypcji i obszarów roboczych ze stanem kwalifikacji do korzystania z wersji próbnej.
    -    Możesz uaktualnić subskrypcje i obszary robocze, które nie kwalifikują się do korzystania z wersji próbnej.
@@ -63,7 +63,7 @@ Usługa Security Center może monitorować stan bezpieczeństwa komputerów nien
 1. Wróć do **początku**.
 2. Wybierz kartę **Rozpoczęcie pracy**.
 
-   ![Poza platformą Azure](./media/security-center-onboarding/non-azure.png)
+   ![Non-Azure](./media/security-center-onboarding/non-azure.png)
 
 3. Kliknij przycisk **Konfiguruj** w obszarze **Dodaj nowe komputery spoza platformy Azure**. Zostanie wyświetlona lista obszarów roboczych usługi Log Analytics. Jeśli ma to zastosowanie, lista zawiera domyślny obszar roboczy utworzony przez usługę Security Center po włączeniu automatycznej aprowizacji. Wybierz ten obszar roboczy lub inny obszar roboczy, którego chcesz użyć.
 
@@ -101,7 +101,7 @@ Komputer można dodać, wykonując przepływ **pracy z**dołączania, jak pokaza
 
 4. W obszarze **Dodaj nowe komputery spoza platformy Azure**wybierz obszar roboczy, z którym chcesz połączyć komputer, a następnie kliknij pozycję **Dodaj komputery**.
 
-   ![Dodaj komputery][7]
+   ![Dodawanie komputerów][7]
 
    Blok **bezpośredni Agent** zawiera link do pobierania agenta systemu Windows lub Linux oraz identyfikator obszaru roboczego i klucze do użycia podczas konfigurowania agenta.
 

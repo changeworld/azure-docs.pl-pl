@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: ac67ef64ca4850c6e805b5314ace856114d889a7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132279"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917234"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Typowe przypadki użycia i scenariusze dla Azure Active Directory Domain Services
 
@@ -97,7 +97,7 @@ Następujące zagadnienia dotyczące wdrażania dotyczą tego przykładowego prz
 
 Usługa Azure AD DS umożliwia udostępnianie usług domenowych zarządzanej na serwerach usług pulpitu zdalnego wdrożonych na platformie Azure. Aby uzyskać więcej informacji o tym scenariuszu wdrażania, zobacz [Jak zintegrować Azure AD Domain Services z wdrożeniem usług pulpitu zdalnego][windows-rds].
 
-## <a name="domain-joined-hdinsight-clusters-preview"></a>Przyłączone do domeny klastry usługi HDInsight (wersja zapoznawcza)
+## <a name="domain-joined-hdinsight-clusters"></a>Przyłączone do domeny klastry usługi HDInsight
 
 Można skonfigurować klaster usługi Azure HDInsight, który jest przyłączony do domeny zarządzanej AD DS platformy Azure z włączonym systemem Apache Ranger. Korzystając z narzędzi opartych na ODBC, takich jak Excel lub Tableau, można tworzyć i stosować zasady usługi Hive za pośrednictwem usługi Apache Ranger. Nadal pracujemy nad dodaniem innych obciążeń, takich jak HBase, Spark i burza, do usługi HDInsight przyłączonego do domeny.
 

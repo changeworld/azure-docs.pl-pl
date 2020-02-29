@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 92c4a40de7e35d0580fe407e36305a50ad68094c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981783"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919468"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Usługi pulpitu zdalnego nie jest uruchamiane na maszynie wirtualnej platformy Azure
 
 W tym artykule opisano sposób rozwiązywania problemów związanych z nawiązywaniem połączenia z maszyną wirtualną platformy Azure i Usługi pulpitu zdalnego, lub TermService, nie uruchamia się lub nie można uruchomić usługi.
 
-> [!NOTE]  
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia zasobów i pracy z nimi: [Azure Resource Manager i klasyczne](../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano użycie Menedżer zasobów model wdrażania. Zalecamy używanie tego modelu w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptoms"></a>Objawy
 
@@ -40,7 +38,7 @@ Podczas próby nawiązania połączenia z maszyną wirtualną występują nastę
     **Źródło**: Menedżer sterowania usługami </br>
     **Data**: 12/16/2017 11:19:36 am</br>
     **Identyfikator zdarzenia**: 7022</br>
-    **Zadanie kategorii**: Brak</br>
+    **Kategoria zadania**: brak</br>
     **Poziom**: błąd</br>
     **Słowa kluczowe**: klasyczne</br>
     **Użytkownik**: nie dotyczy</br>
@@ -112,7 +110,7 @@ Aby rozwiązać ten problem, użyj konsoli szeregowej. Lub w przeciwnym razie [n
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>Usługa TermService została zatrzymana z powodu problemu z odmową dostępu
 
-1. Połączyć się z [konsoli szeregowej](serial-console-windows.md) , a następnie otwórz wystąpienie programu PowerShell.
+1. Połącz się z [konsolą szeregową](serial-console-windows.md) i Otwórz wystąpienie programu PowerShell.
 2. Pobierz narzędzie Monitor procesu, uruchamiając następujący skrypt:
 
    ```
@@ -123,7 +121,7 @@ Aby rozwiązać ten problem, użyj konsoli szeregowej. Lub w przeciwnym razie [n
    $wc.DownloadFile($source,$destination) 
    ```
 
-3. Teraz rozpocząć **procmon** śledzenia:
+3. Teraz uruchom śledzenie **ProcMon** :
 
    ```
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML 
@@ -143,7 +141,7 @@ Aby rozwiązać ten problem, użyj konsoli szeregowej. Lub w przeciwnym razie [n
 
 5. Zbierz **c:\temp\ProcMonTrace.PML**pliku:
 
-    1. [Dołączanie dysku danych do maszyny Wirtualnej](../windows/attach-managed-disk-portal.md
+    1. [Dołącz dysk z danymi do maszyny wirtualnej](../windows/attach-managed-disk-portal.md
 ).
     2. Użyj konsoli szeregowej, możesz skopiować go na nowy dysk. Na przykład `copy C:\temp\ProcMonTrace.PML F:\`. W tym poleceniu F jest literą sterownika dołączonego dysku danych.
     3. Odłącz dysk danych i dołącz go do działającej maszyny wirtualnej z zainstalowanym monitorem procesu ubstakke.
@@ -203,9 +201,9 @@ Aby rozwiązać ten problem, użyj konsoli szeregowej. Lub w przeciwnym razie [n
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania
 
-1. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md).
-2. Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania. Upewnij się, że dysk dołączony jest oznaczone jako **Online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
-3. Otwórz wiersz polecenia z podwyższonym wystąpienie (**Uruchom jako administrator**). Następnie uruchom następujący skrypt. Załóżmy, że litera dysku przypisana do dołączonego dysku systemu operacyjnego to **F**. Zastąp ją odpowiednią wartością na maszynie wirtualnej. 
+1. [Dołącz dysk systemu operacyjnego do maszyny wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md).
+2. Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania. Upewnij się, że dołączony dysk jest oznaczony jako **online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
+3. Otwórz wystąpienie wiersza polecenia z podwyższonym poziomem uprawnień (**Uruchom jako administrator**). Następnie uruchom następujący skrypt. Załóżmy, że litera dysku przypisana do dołączonego dysku systemu operacyjnego to **F**. Zastąp ją odpowiednią wartością na maszynie wirtualnej. 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -219,7 +217,7 @@ Aby rozwiązać ten problem, użyj konsoli szeregowej. Lub w przeciwnym razie [n
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [Odłącz dysk systemu operacyjnego i ponowne utworzenie maszyny Wirtualnej](../windows/troubleshoot-recovery-disks-portal.md). Następnie sprawdź, czy problem został rozwiązany.
+4. [Odłącz dysk systemu operacyjnego i Utwórz ponownie maszynę wirtualną](../windows/troubleshoot-recovery-disks-portal.md). Następnie sprawdź, czy problem został rozwiązany.
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
 

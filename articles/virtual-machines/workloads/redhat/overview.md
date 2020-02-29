@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: daba49e6861eb67fd07c6fcf618b2b2d6cdd8c89
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 424ef37885d685829a11d1864a72b043a562231c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133824"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920556"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Obciążenia Red Hat na platformie Azure
 Obciążenia Red Hat są obsługiwane przez różne oferty na platformie Azure. Obrazy Red Hat Enterprise Linux (RHEL) są podstawą obciążeń RHEL, podobnie jak infrastruktura aktualizacji Red Hat (RHUI).
@@ -39,7 +39,7 @@ Platforma Azure oferuje również obrazy Red Hat Gold. Te obrazy mogą być przy
 > Uwaga dotycząca podwójnego rozliczania: podwójne rozliczenie jest naliczane, gdy użytkownik płaci dwa razy dla subskrypcji RHEL. Dzieje się tak zwykle, gdy klient korzysta z Menedżera subskrypcji w celu dołączenia uprawnienia do maszyny wirtualnej RHEL PAYG. Na przykład klient korzystający z Menedżera subskrypcji w celu dołączenia uprawnień do pakietów SAP w obrazie RHEL PAYG zostanie policzony dwukrotnie, ponieważ będzie obciążany dwa razy dla RHEL — za pośrednictwem opłaty za subskrypcję w wersji Premium, a raz za pośrednictwem subskrypcji SAP. Nie będzie to miało miejsce w przypadku użytkowników obrazu BYOS.
 
 ### <a name="generation-2-images"></a>Obrazy generacji 2
-Maszyny wirtualne 2. generacji zapewniają nowe funkcje w porównaniu z maszynami wirtualnymi generacji 1. Szczegółowe informacje znajdują się w [dokumentacji generacji 2](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2). Różnica klucza z perspektywy obrazu RHEL polega na tym, że maszyny wirtualne 2. generacji używają interfejsu UEFI zamiast z poziomu oprogramowania układowego BIOS i używają tabeli partycji GUID (GPT) zamiast głównego rekordu rozruchowego (MBR) w czasie rozruchu. Pozwala to na, między innymi, rozmiar dysku systemu operacyjnego większy niż 2 TB. Ponadto [maszyny wirtualne z serii Mv2](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series) są uruchamiane tylko na obrazach generacji 2.
+Maszyny wirtualne 2. generacji zapewniają nowe funkcje w porównaniu z maszynami wirtualnymi generacji 1. Szczegółowe informacje znajdują się w [dokumentacji generacji 2](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2). Różnica klucza z perspektywy obrazu RHEL polega na tym, że maszyny wirtualne 2. generacji używają interfejsu UEFI zamiast z poziomu oprogramowania układowego BIOS i używają tabeli partycji GUID (GPT) zamiast głównego rekordu rozruchowego (MBR) w czasie rozruchu. Pozwala to na, między innymi, rozmiar dysku systemu operacyjnego większy niż 2 TB. Ponadto [maszyny wirtualne z serii Mv2](../../mv2-series.md) są uruchamiane tylko na obrazach generacji 2.
 
 Obrazy generacji RHEL 2 są dostępne w portalu Marketplace. Poszukaj pozycji "Gen2" w jednostce SKU obrazu podczas wyświetlania listy wszystkich obrazów przy użyciu interfejsu wiersza polecenia platformy Azure, a następnie przejdź do karty "Zaawansowane" w procesie wdrażania maszyny wirtualnej, aby wdrożyć maszynę wirtualną generacji 2.
 

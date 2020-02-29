@@ -12,18 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: be0f61b1458fa8bd63d85669c7956a789892996a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981330"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918261"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Występuje błąd wewnętrzny podczas próby połączenia z Maszyną wirtualną platformy Azure za pośrednictwem pulpitu zdalnego
 
 W tym artykule opisano błędem, które mogą wystąpić podczas próby nawiązania połączenia z maszyną wirtualną (VM) w systemie Microsoft Azure.
-> [!NOTE]
-> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
+
 
 ## <a name="symptoms"></a>Objawy
 
@@ -44,20 +43,20 @@ Ten problem może wystąpić z następujących powodów:
 
 ## <a name="solution"></a>Rozwiązanie
 
-Przed wykonaniem tych kroków należy utworzyć migawkę dysku systemu operacyjnego, których to dotyczy maszyny wirtualnej do przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
+Przed wykonaniem tych kroków należy utworzyć migawkę dysku systemu operacyjnego, których to dotyczy maszyny wirtualnej do przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [migawka dysku](../windows/snapshot-copy-managed-disk.md).
 
-Aby rozwiązać ten problem, należy użyć konsoli szeregowej lub [napraw maszynę Wirtualną w tryb offline](#repair-the-vm-offline) , dołączając dysk systemu operacyjnego maszyny wirtualnej do maszyny Wirtualnej odzyskiwania.
+Aby rozwiązać ten problem, należy użyć konsoli szeregowej lub [naprawić maszynę wirtualną w trybie offline](#repair-the-vm-offline) , dołączając dysk systemu operacyjnego maszyny wirtualnej do maszyny wirtualnej odzyskiwania.
 
 
 ### <a name="use-serial-control"></a>Korzystanie z kontroli szeregowej
 
-Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShell](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, przejdź do strony [napraw maszynę Wirtualną w tryb offline](#repair-the-vm-offline) sekcji.
+Połącz się z [konsolą szeregową i Otwórz wystąpienie programu PowerShell](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). Jeśli konsola szeregowa nie jest włączona na maszynie wirtualnej, przejdź do sekcji [Naprawa maszyny wirtualnej w trybie offline](#repair-the-vm-offline) .
 
 #### <a name="step-1-check-the-rdp-port"></a>Krok 1. sprawdzenie portu RDP
 
-1. W wystąpieniu programu PowerShell, użyj [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
-) do sprawdzenia, czy port 8080 jest używany przez inne aplikacje:
+1. W wystąpieniu programu PowerShell Użyj polecenia [netstat](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
+) , aby sprawdzić, czy port 8080 jest używany przez inne aplikacje:
 
         Netstat -anob |more
 2. Jeśli Termservice.exe używa portu 8080, przejdź do kroku 2. Jeśli przez inną usługę lub aplikację inną niż Termservice.exe używa portu 8080, wykonaj następujące kroki:
@@ -84,7 +83,7 @@ Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShel
 
             Set-NetFirewallRule -Name "RemoteDesktop-UserMode-In-TCP" -LocalPort <NEW PORT (decimal)>
 
-    3. [Aktualizowanie sieciowej grupy zabezpieczeń dla nowego portu](../../virtual-network/security-overview.md) w portalu Azure portem RDP.
+    3. [Zaktualizuj grupę zabezpieczeń sieci dla nowego portu](../../virtual-network/security-overview.md) w Azure Portal port RDP.
 
 #### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Uprawnienia są poprawne certyfikatu z podpisem własnym protokołu RDP
 
@@ -104,10 +103,10 @@ Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShel
 
 2. Za pomocą tej metody nie mogą odnowić certyfikat, próbuje zdalnie odnawiania certyfikatu z podpisem własnym protokołu RDP:
 
-    1. Z działającej maszyny Wirtualnej, który ma łączność z maszyną Wirtualną, z którym występują problemy, typ **mmc** w **Uruchom** okno, aby otworzyć konsolę Microsoft Management Console.
-    2. Na **pliku** menu, wybierz opcję **Dodaj/Usuń przystawkę**, wybierz opcję **certyfikaty**, a następnie wybierz pozycję **Dodaj**.
-    3. Wybierz **kont komputerów**, wybierz opcję **inny komputer**, a następnie dodaj adres IP problem maszyny Wirtualnej.
-    4. Przejdź do **zdalnego Desktop\Certificates** folderu, kliknij prawym przyciskiem myszy certyfikat, wybierz opcję a następnie **Usuń**.
+    1. Z działającej maszyny wirtualnej, która ma łączność z maszyną wirtualną, na której występują problemy, wpisz **MMC** w polu **Uruchom** , aby otworzyć program Microsoft Management Console.
+    2. W menu **plik** wybierz pozycję **Dodaj/Usuń przystawkę**, wybierz pozycję **Certyfikaty**, a następnie wybierz pozycję **Dodaj**.
+    3. Wybierz pozycję **konta komputerów**, wybierz **inny komputer**, a następnie Dodaj adres IP maszyny wirtualnej problemu.
+    4. Przejdź do folderu **Remote Desktop\Certificates** , kliknij prawym przyciskiem myszy certyfikat, a następnie wybierz polecenie **Usuń**.
     5. W wystąpieniu programu PowerShell z poziomu konsoli szeregowej Uruchom ponownie usługę konfiguracji pulpitu zdalnego:
 
             Stop-Service -Name "SessionEnv"
@@ -159,8 +158,8 @@ Klient protokołu RDP korzysta z protokołu TLS 1.0 jako domyślnego protokołu.
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania
 
-1. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md).
-2. Po dołączeniu dysku systemu operacyjnego do maszyny Wirtualnej odzyskiwania, upewnij się, że dysk jest oznaczone jako **Online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
+1. [Dołącz dysk systemu operacyjnego do maszyny wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md).
+2. Po dołączeniu dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania upewnij się, że dysk jest oznaczony jako **online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
 3. Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania.
 
 #### <a name="enable-dump-log-and-serial-console"></a>Włącz dziennik zrzutu i konsoli szeregowej
@@ -263,7 +262,7 @@ Aby włączyć dziennik zrzutu i konsoli szeregowej, uruchom następujący skryp
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
-5.  [Odłącz dysk systemu operacyjnego i ponowne utworzenie maszyny Wirtualnej](../windows/troubleshoot-recovery-disks-portal.md), a następnie sprawdź, czy problem został rozwiązany.
+5.  [Odłącz dysk systemu operacyjnego i Utwórz ponownie maszynę wirtualną](../windows/troubleshoot-recovery-disks-portal.md), a następnie sprawdź, czy problem został rozwiązany.
 
 
 

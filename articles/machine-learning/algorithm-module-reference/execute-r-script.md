@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 4991fe9fb06d0a49da3e0404f0362c85f15571af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152299"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917411"
 ---
 # <a name="execute-r-script"></a>Wykonywanie skryptu języka R
 
@@ -130,6 +130,8 @@ azureml_main <- function(dataframe1, dataframe2){
 Moduły **Execute skryptu języka R** mogą zwracać wiele danych wyjściowych, ale muszą one być podane jako ramki z danymi języka r. Ramki danych są automatycznie konwertowane na zestawy DataSet w projektancie w celu zapewnienia zgodności z innymi modułami.
 
 Standardowe komunikaty i błędy w języku R są zwracane do dziennika modułu.
+
+Jeśli chcesz wydrukować wyniki w skrypcie języka R, możesz znaleźć wyniki wydrukowane w **70_driver_log** na karcie dane **wyjściowe i dzienniki** na prawym panelu modułu.
 
 ## <a name="sample-scripts"></a>Przykładowe skrypty
 

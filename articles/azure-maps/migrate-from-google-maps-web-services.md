@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fac83a7a5137a50a26721da58395cc2e915f222d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fae9b8a2101329383cc90c8f7f0ff225e3a9059c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086190"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913822"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Migruj usługę sieci Web z usługi Google Maps
 
@@ -24,21 +24,24 @@ W tabeli przedstawiono interfejsy API usługi Azure Maps, które mają podobną 
 
 | Interfejs API usługi Mapy Google | Interfejs API usługi Azure Maps                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Ze              | [Szlak](https://docs.microsoft.com/rest/api/maps/route)                               |
-| Macierz odległości         | [Macierz trasy](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview) |
-| Geokodowanie               | [Wyszukiwanie](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Wyszukiwanie miejsc           | [Wyszukiwanie](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Umieść Autouzupełnianie      | [Wyszukiwanie](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Mapa statyczna              | [Renderowania](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                 |
-| Strefa czasowa               | [Strefa czasowa](https://docs.microsoft.com/rest/api/maps/timezone)                        |
+| Ze              | [Szlak](https://docs.microsoft.com/rest/api/maps/route)                                     |
+| Macierz odległości         | [Macierz trasy](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
+| Geokodowanie               | [Wyszukiwanie](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Wyszukiwanie miejsc           | [Wyszukiwanie](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Umieść Autouzupełnianie      | [Wyszukiwanie](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Przyciągaj do drogi            | Zobacz sekcję [obliczanie tras i wskazówek](#calculate-routes-and-directions) .            |
+| Limity szybkości            | Zobacz sekcję [Odwróć do kodu współrzędnej](#reverse-geocode-a-coordinate) .                  |
+| Mapa statyczna              | [Renderowania](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
+| Strefa czasowa               | [Strefa czasowa](https://docs.microsoft.com/rest/api/maps/timezone)                              |
 
 Następujące interfejsy API usługi nie są obecnie dostępne w Azure Maps:
 
 - Noszeniu
 - Geolokalizacja
-- Umieść szczegóły i umieść zdjęcia. Numery telefonów i adresy URL witryn internetowych są dostępne w interfejsie API wyszukiwania Azure Maps.
+- Umieszcza szczegóły i zdjęcia — numery telefonów i adresy URL witryn internetowych są dostępne w interfejsie API wyszukiwania Azure Maps.
 - Adresy URL map
-- Drogach. Dane limitu szybkości są dostępne za pomocą interfejsów API trasy i odwrócenia geokodowania w Azure Maps.
+- Najbliższe drogi — można to uzyskać za pomocą zestawu SDK sieci Web, jak pokazano [tutaj](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
+), ale nie jest to obecnie dostępne jako usługa.
 - Widok statyczny
 
 Azure Maps ma kilka dodatkowych usług sieci Web REST, które mogą być interesujące:
@@ -176,8 +179,8 @@ Obliczaj trasy i wskazówki przy użyciu Azure Maps. Azure Maps ma wiele z tych 
 
 Usługa routingu Azure Maps udostępnia następujące interfejsy API do obliczania tras:
 
-- [**Obliczanie trasy**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): Obliczanie trasy i natychmiastowe przetworzenie żądania. Ten interfejs API obsługuje zarówno żądania GET, jak i POST. Użyj żądań POST, gdy określisz dużą liczbę waypoints lub używasz wielu opcji trasy. Wynika to z faktu, że użycie polecenia POST gwarantuje, że żądanie adresu URL nie staje się zbyt długie i powoduje problemy.
-- [**Trasa wsadowa**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): Utwórz żądanie zawierające maksymalnie 1 000 żądanie trasy i przetworzy je w danym okresie czasu. Wszystkie dane będą przetwarzane równolegle na serwerze. Po zakończeniu przetwarzania można pobrać pełny zestaw wyników.
+- [**Obliczanie trasy**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): Obliczanie trasy i natychmiastowe przetworzenie żądania. Ten interfejs API obsługuje zarówno żądania GET, jak i POST. Żądania POST są zalecane w przypadku określenia dużej liczby waypoints lub użycia wielu opcji trasy, aby zapewnić, że żądanie adresu URL nie stanie się zbyt długie i powoduje problemy. Kierunek po trasie w Azure Maps może przyjmować tysiące [punktów pomocniczych](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints) i użyć ich do ponownego utworzenia ścieżki trasy logicznej między nimi (przyciąganie do drogi). 
+- [**Trasa wsadowa**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): Utwórz żądanie zawierające maksymalnie 1 000 żądanie trasy i przetworzy je w danym okresie czasu. Wszystkie dane zostaną przetworzone równolegle na serwerze i po ukończeniu można pobrać pełny zestaw wyników.
 - [**Usługi mobilności**](https://docs.microsoft.com/rest/api/maps/mobility): obliczanie tras i wskazówek przy użyciu tranzytu publicznego.
 
 Tabela krzyżowo odwołuje się do parametrów interfejsu API usługi Google Maps przy użyciu porównywalnych parametrów interfejsu API w Azure Maps.
