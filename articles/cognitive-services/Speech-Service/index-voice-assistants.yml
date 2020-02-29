@@ -12,29 +12,33 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/11/2020
   ms.author: dapine
-  ms.openlocfilehash: b411ef91dd84916e9ace544f26ed88f3f316dc02
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 95cb9fdccac0955f29686ddfa27ca4431e2e3857
+  ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
   ms.translationtype: MT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562890"
+  ms.lasthandoff: 02/29/2020
+  ms.locfileid: "78196913"
 landingContent:
 - title: Rozpoczynanie pracy
   linkLists:
   - linkListType: overview
     links:
-    - text: Asystenci głosu — informacje
+    - text: Rozwiązania asystenta głosowego
       url: voice-assistants.md
+    - text: Informacje o poleceniach niestandardowych
+      url: custom-commands.md
     - text: Informacje o bezpośredniej mowie wiersza
       url: direct-line-speech.md
+  - linkListType: reference
+    links:
+    - text: Ceny
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: Często zadawane pytania dotyczące asystentów głosowych
+      url: faq-voice-assistants.md
+- title: Polecenia niestandardowe
+  linkLists:
   - linkListType: quickstart
     links:
-    - text: C# (UWP)
-      url: quickstart-voice-assistant-csharp-uwp.md
-    - text: Java (Windows, macOS, Linux)
-      url: quickstart-voice-assistant-java-jre.md
-    - text: Java (Android)
-      url: quickstart-voice-assistant-java-android.md
     - text: Tworzenie polecenia niestandardowego (wersja zapoznawcza)
       url: quickstart-custom-speech-commands-create-new.md
     - text: Tworzenie polecenia niestandardowego z parametrami (wersja zapoznawcza)
@@ -43,16 +47,8 @@ landingContent:
       url: quickstart-custom-speech-commands-select-custom-voice.md
     - text: Używanie poleceń niestandardowych z zestawem SDK usługi Mowa (wersja zapoznawcza)
       url: quickstart-custom-speech-commands-speech-sdk.md
-- title: Przewodniki krok po kroku
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Dodawanie obsługi głosu do bota przy użyciu zestawu SDK usługi Mowa
-      url: tutorial-voice-enable-your-bot-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: Polecenia niestandardowe (wersja zapoznawcza)
-      url: custom-commands.md
     - text: Polecenia niestandardowe z zestawem SDK mowy
       url: how-to-custom-speech-commands-fulfill-sdk.md
     - text: Wykonywanie poleceń niestandardowych przy użyciu zestawu SDK usługi Mowa
@@ -63,11 +59,17 @@ landingContent:
       url: how-to-custom-speech-commands-confirmations.md
     - text: Dodawanie korekty jednoetapowej do polecenia niestandardowego
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: Dokumentacja
+- title: Mowa Direct Line
   linkLists:
-  - linkListType: reference
+  - linkListType: quickstart
     links:
-    - text: Ceny
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
-    - text: Często zadawane pytania dotyczące asystentów głosowych
-      url: faq-voice-assistants.md
+    - text: C# (UWP)
+      url: quickstart-voice-assistant-csharp-uwp.md
+    - text: Java (Windows, macOS, Linux)
+      url: quickstart-voice-assistant-java-jre.md
+    - text: Java (Android)
+      url: quickstart-voice-assistant-java-android.md
+  - linkListType: tutorial
+    links:
+    - text: Dodawanie obsługi głosu do bota przy użyciu zestawu SDK usługi Mowa
+      url: tutorial-voice-enable-your-bot-speech-sdk.md

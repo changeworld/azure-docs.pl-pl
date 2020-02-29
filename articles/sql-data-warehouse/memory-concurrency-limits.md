@@ -1,25 +1,25 @@
 ---
 title: Limity pamięci i współbieżności
-description: Wyświetl limity pamięci i współbieżności przydzielono do różnych poziomów wydajności i klas zasobów w Azure SQL Data Warehouse.
+description: Wyświetl limity pamięci i współbieżności przydzielono do różnych poziomów wydajności i klas zasobów w usłudze Azure Synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 12/04/2019
+ms.date: 02/04/2020
 ms.author: rortloff
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: dfdaef0002f068dc4c9044e979b169de779cf6d5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 73c7b756009035c8592c85bec3a6b7d85d93666c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851285"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200689"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Limity pamięci i współbieżności dla Azure SQL Data Warehouse
-Wyświetl limity pamięci i współbieżności przydzielono do różnych poziomów wydajności i klas zasobów w Azure SQL Data Warehouse.  
+# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Limity pamięci i współbieżności dla usługi Azure Synapse Analytics
+Wyświetl limity pamięci i współbieżności przydzielono do różnych poziomów wydajności i klas zasobów w usłudze Azure Synapse Analytics.  
 
 ## <a name="data-warehouse-capacity-settings"></a>Ustawienia wydajności magazynu danych
 W poniższych tabelach przedstawiono maksymalną pojemność hurtowni danych na różnych poziomach wydajności. Aby zmienić poziom wydajności, zobacz [skalowanie obliczeniowe — Portal](quickstart-scale-compute-portal.md).
@@ -56,7 +56,7 @@ Po wprowadzeniu [grup obciążeń](sql-data-warehouse-workload-isolation.md)nie 
 |---|---|---|
 |DW100c|4|25%|
 |DW200c|8|12,5%|
-|DW300c|12|8%|
+|DW300c|12|0,8|
 |DW400c|16|6,25%|
 |DW500c|20|5%|
 |DW1000c|32|3%|
@@ -73,7 +73,7 @@ Po wprowadzeniu [grup obciążeń](sql-data-warehouse-workload-isolation.md)nie 
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Maksymalne wartości współbieżności dla klas zasobów
-Aby upewnić się, że każda kwerenda ma wystarczającą ilość zasobów do wydajnego wykonywania, SQL Data Warehouse śledzi wykorzystanie zasobów przez przypisanie miejsc współbieżności do poszczególnych zapytań. System umieszcza zapytania w kolejce na podstawie ważności i miejsc współbieżności. Zapytania oczekują w kolejce do momentu udostępnienia wystarczającej liczby miejsc współbieżności. [Znaczenie](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) i miejsca współbieżności określają priorytety procesora. Aby uzyskać więcej informacji, zobacz [Analizowanie obciążenia](analyze-your-workload.md)
+Aby upewnić się, że każda kwerenda ma wystarczającą ilość zasobów do wydajnego wykonywania, usługa SQL Analytics w usłudze Azure Synapse śledzi wykorzystanie zasobów przez przypisanie do każdego zapytania miejsc współbieżności. System umieszcza zapytania w kolejce na podstawie ważności i miejsc współbieżności. Zapytania oczekują w kolejce do momentu udostępnienia wystarczającej liczby miejsc współbieżności. [Znaczenie](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) i miejsca współbieżności określają priorytety procesora. Aby uzyskać więcej informacji, zobacz [Analizowanie obciążenia](analyze-your-workload.md)
 
 **Statyczne klasy zasobów**
 
