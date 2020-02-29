@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 02/28/2020
 tags: connectors
-ms.openlocfilehash: 3370eea8909f30563babcf2a84f727ba51f67e29
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647641"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161878"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorowanie i tworzenie plików SFTP oraz zarządzanie nimi za pomocą protokołów SSH i Azure Logic Apps
 
@@ -31,7 +31,28 @@ Aby uzyskać różnice między łącznikiem protokołu SFTP-SSH a łącznikiem S
 
 ## <a name="limits"></a>Limity
 
-* Domyślnie działania protokołu SFTP-SSH mogą odczytywać lub zapisywać pliki, które są *1 GB lub mniejsze* , ale tylko w przypadku fragmentów *15 MB* naraz. Aby obsłużyć pliki o rozmiarze większym niż 15 MB, operacje SFTP-SSH obsługują [fragmenty komunikatów](../logic-apps/logic-apps-handle-large-messages.md), z wyjątkiem akcji Kopiuj plik, która może obsługiwać tylko 15 MB plików. Akcja **Pobierz zawartość pliku** niejawnie używa fragmentacji komunikatów.
+* W przypadku akcji protokołu SFTP-SSH, które obsługują dzielenie może obsłużyć pliki o rozmiarze do 1 GB, natomiast akcje SFTP-SSH, które nie obsługują fragmentów [, mogą obsługiwać](../logic-apps/logic-apps-handle-large-messages.md) pliki do 50 MB. Mimo że domyślny rozmiar fragmentu to 15 MB, ten rozmiar można dynamicznie zmieniać, rozpoczynając od 5 MB i stopniowo zwiększając do 50 MB, na podstawie takich czynników, jak opóźnienie sieci, czas odpowiedzi serwera i tak dalej.
+
+  > [!NOTE]
+  > W przypadku aplikacji logiki w [środowisku usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), wersja tego łącznika z oznaczeniem ISE w zamian używa [limitów komunikatów ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
+
+  Rozmiar fragmentu jest skojarzony z połączeniem, co oznacza, że można użyć tego samego połączenia dla akcji, które obsługują rozdzielenie, a następnie dla akcji, które nie obsługują rozdzielania. W tym przypadku rozmiar fragmentu dla akcji, które nie obsługują zakresów podziału z 5 MB do 50 MB. W tej tabeli przedstawiono, które działania SFTP obsługują fragmenty:
+
+  | Akcja | Obsługa fragmentów |
+  |--------|------------------|
+  | **Kopiuj plik** | Nie |
+  | **Utwórz plik** | Tak |
+  | **Utwórz folder** | Nie dotyczy |
+  | **Usuń plik** | Nie dotyczy |
+  | **Wyodrębnij archiwum do folderu** | Nie dotyczy |
+  | **Pobierz zawartość pliku** | Tak |
+  | **Pobierz zawartość pliku przy użyciu ścieżki** | Tak |
+  | **Pobierz metadane pliku** | Nie dotyczy |
+  | **Pobierz metadane pliku przy użyciu ścieżki** | Nie dotyczy |
+  | **Wyświetl listę plików w folderze** | Nie dotyczy |
+  | **Zmień nazwę pliku** | Nie dotyczy |
+  | **Plik aktualizacji** | Nie |
+  |||
 
 * Protokół SFTP-SSH nie obsługuje fragmentów. Podczas żądania zawartości pliku wyzwalane są tylko pliki o rozmiarze 15 MB lub mniejszej. Aby uzyskać pliki o rozmiarze większym niż 15 MB, użyj tego wzorca:
 
@@ -46,10 +67,6 @@ Aby uzyskać różnice między łącznikiem protokołu SFTP-SSH a łącznikiem S
 Poniżej przedstawiono inne kluczowe różnice między łącznikiem SFTP-SSH a łącznikiem SFTP, gdzie łącznik SFTP-SSH ma następujące możliwości:
 
 * Używa [biblioteki SSH.NET](https://github.com/sshnet/SSH.NET), która jest biblioteką Secure Shell (SSH), która obsługuje platformę .NET.
-
-* Domyślnie działania protokołu SFTP-SSH mogą odczytywać lub zapisywać pliki, które są *1 GB lub mniejsze* , ale tylko w przypadku fragmentów *15 MB* naraz.
-
-  Aby obsłużyć pliki o rozmiarze większym niż 15 MB, w akcjach SFTP-SSH można używać [fragmentów komunikatów](../logic-apps/logic-apps-handle-large-messages.md). Jednak akcja Kopiuj plik obsługuje tylko 15 MB plików, ponieważ ta akcja nie obsługuje fragmentacji komunikatów. Protokół SFTP-SSH nie obsługuje fragmentów. Aby przekazać duże pliki, musisz mieć uprawnienia do odczytu i zapisu dla folderu głównego na serwerze SFTP.
 
 * Udostępnia akcję **Utwórz folder** , która tworzy folder w określonej ścieżce na serwerze SFTP.
 
@@ -138,7 +155,7 @@ Jeśli klucz prywatny jest w formacie pobierania, który używa rozszerzenia naz
 
 1. W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź ciąg "SFTP SSH" jako filtr. Na liście Wyzwalacze wybierz wyzwalacz, który chcesz.
 
-   — lub —
+   lub
 
    W przypadku istniejących aplikacji logiki w ostatnim kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. W polu wyszukiwania wprowadź ciąg "SFTP SSH" jako filtr. Na liście Akcje wybierz żądaną akcję.
 

@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: cf70124f2e310dd62fd32de0e17edb40c047a318
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 19c136c7f312d800b76aa60f2cab6e8da992591c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615683"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161571"
 ---
 # <a name="azure-functions-premium-plan"></a>Plan Azure Functions Premium
 
@@ -88,7 +88,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Podczas tworzenia lub skalowania planu można wybrać jeden z trzech rozmiarów wystąpień.  Opłaty zostaną naliczone za łączną liczbę rdzeni i zużywaną pamięć na sekundę.  Aplikacja może automatycznie skalować w poziomie do wielu wystąpień stosownie do potrzeb.  
 
-|SKU|Rdzenie|Memory (Pamięć)|Storage|
+|SKU|Rdzenie|Pamięć|Storage|
 |--|--|--|--|
 |EP1|1|3,5 GB|250|
 |EP2|2|7GB|250|
@@ -103,35 +103,36 @@ Na przykład aplikacja funkcji JavaScript jest ograniczona przez domyślny limit
 
 Poniżej znajdują się obecnie obsługiwane regiony dla każdego systemu operacyjnego.
 
-|Region| System Windows | Linux |
+|Region| Windows | Linux |
 |--| -- | -- |
 |Australia Środkowa| ✔<sup>1</sup> | |
 |Australia Środkowa 2| ✔<sup>1</sup> | |
 |Australia Wschodnia| ✔ | ✔<sup>1</sup> |
 |Australia Południowo-Wschodnia | ✔ | ✔<sup>1</sup> |
-|Brazylia Południowa| ✔<sup>2</sup> |  |
+|Brazylia Południowa| ✔<sup>2</sup> | ✔<sup>1</sup> |
 |Kanada Środkowa| ✔ | ✔<sup>1</sup> |
-|Środkowe stany USA| ✔ |  |
-|Azja Wschodnia| ✔ |  |
+|Środkowe stany USA| ✔ | ✔<sup>1</sup> |
+|Azja Wschodnia| ✔ | ✔<sup>1</sup> |
 |Wschodnie stany USA | ✔ | ✔<sup>1</sup> |
 |Wschodnie stany USA 2| ✔ | ✔<sup>1</sup> |
-|Francja Środkowa| ✔ |  |
+|Francja Środkowa| ✔ | ✔<sup>1</sup> |
 |Niemcy Środkowo-Zachodnie| ✔ | |
 |Japonia Wschodnia| ✔ | ✔<sup>1</sup> |
 |Japonia Zachodnia| ✔ | ✔<sup>1</sup> |
 |Korea Środkowa| ✔ | ✔<sup>1</sup> |
-|Północno-środkowe stany USA| ✔ |  |
+|Północno-środkowe stany USA| ✔ | ✔<sup>1</sup> |
 |Europa Północna| ✔ | ✔<sup>1</sup> |
+|Norwegia Wschodnia| ✔<sup>1</sup> | ✔<sup>1</sup> |
 |Południowo-środkowe stany USA| ✔ | ✔<sup>1</sup> |
 |Indie Południowe | ✔ | |
 |Azja Południowo-Wschodnia| ✔ | ✔<sup>1</sup> |
 |Południowe Zjednoczone Królestwo| ✔ | ✔<sup>1</sup> |
-|Zachodnie Zjednoczone Królestwo| ✔ |  |
+|Zachodnie Zjednoczone Królestwo| ✔ | ✔<sup>1</sup> |
 |Europa Zachodnia| ✔ | ✔<sup>1</sup> |
-|Indie Zachodnie| ✔ |  |
-|Zachodnio-środkowe stany USA| | ✔<sup>1</sup> |
+|Indie Zachodnie| ✔ | ✔<sup>1</sup> |
+|Zachodnio-środkowe stany USA| ✔<sup>1</sup> | ✔<sup>1</sup> |
 |Zachodnie stany USA| ✔ | ✔<sup>1</sup> |
-|Zachodnie stany USA 2| ✔ |  |
+|Zachodnie stany USA 2| ✔ | ✔<sup>1</sup> |
 
 <sup>1</sup> Maksymalna skalowanie w poziomie jest ograniczone do 20 wystąpień.  
 <sup>2</sup> Maksymalna wartość skalowania w poziomie ograniczona do 60 wystąpień.

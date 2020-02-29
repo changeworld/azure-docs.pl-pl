@@ -2,17 +2,17 @@
 title: Lsv2 — seria Virtual Machines platformy Azure
 description: Specyfikacje dotyczące maszyn wirtualnych z serii Lsv2.
 services: virtual-machines
-author: jonbeck7
+author: sasha-melamed
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: b10433190ccc7703938bed2a75a5d816f073295e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 103e19d6e299956b5ee1ad45b577e25f9f2de1c4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587264"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164036"
 ---
 # <a name="lsv2-series"></a>Seria Lsv2
 
@@ -30,6 +30,10 @@ ACU: 150-175
 Premium Storage: obsługiwane
 
 Buforowanie Premium Storage: nieobsługiwane
+
+Migracja na żywo: nieobsługiwane
+
+Aktualizacje z zachowaniem pamięci: nieobsługiwane
 
 | Rozmiar | Procesor wirtualny | Pamięć (GiB) | Dysk tymczasowy<sup>1</sup> (GIB) | Dyski interfejsu NVMe<sup>2</sup> | Przepływność dysków interfejsu NVMe<sup>3</sup> (odczyt operacji we/wy/s) | Maksymalna przepływność dysku danych w pamięci podręcznej (IOPs/MB/s)<sup>4</sup> | Maksymalna liczba dysków danych | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 |---|---|---|---|---|---|---|---|---|

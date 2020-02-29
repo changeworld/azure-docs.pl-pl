@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: lahugh
-ms.openlocfilehash: 7b739e8a282fdd462ee6b465371bc04a9172ab46
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 6654506a1e53165ef0891ba0de32a7937c21c904
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493074"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164818"
 ---
 # <a name="h-series"></a>Seria H
 
@@ -23,6 +23,10 @@ ACU: 290–300
 Premium Storage: nieobsługiwane
 
 Buforowanie Premium Storage: nieobsługiwane
+
+Migracja na żywo: nieobsługiwane
+
+Aktualizacje z zachowaniem pamięci: nieobsługiwane
 
 | Rozmiar | Procesor wirtualny | Procesor | Pamięć (GB) | Przepustowość pamięci GB/s | Podstawowa częstotliwość procesora CPU (GHz) | Częstotliwość wszystkich rdzeni (GHz, szczyt) | Częstotliwość jednordzeniowa (GHz, szczytowa) | Wydajność RDMA (GB/s) | Obsługa MPI | Magazyn tymczasowy (GB) | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych Ethernet |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

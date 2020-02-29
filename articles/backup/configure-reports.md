@@ -3,12 +3,12 @@ title: Konfigurowanie raportów usługi Azure Backup
 description: Konfigurowanie i wyświetlanie raportów dla Azure Backup przy użyciu Log Analytics i skoroszytów platformy Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cefe81e53e89b8d7903469e836f3c5d2665febea
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582708"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161205"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurowanie raportów usługi Azure Backup
 
@@ -47,6 +47,9 @@ W sekcji monitorowanie magazynu Recovery Services wybierz pozycję **Ustawienia 
 
 Azure Backup również zawiera wbudowaną Azure Policy, która automatyzuje konfigurację ustawień diagnostycznych dla wszystkich magazynów w danym zakresie. Zapoznaj się z następującym artykułem, aby dowiedzieć się, jak korzystać z tych zasad: [Konfigurowanie ustawień diagnostyki magazynu w odpowiedniej skali](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
+> [!NOTE]
+> Po skonfigurowaniu diagnostyki zakończenie wypychania danych może potrwać do 24 godzin. Gdy dane zaczynają przepływać do obszaru roboczego LA, możesz nie być w stanie natychmiast zobaczyć danych w raportach, ponieważ dane dla bieżącego częściowego dnia nie są wyświetlane w raportach (więcej informacji znajdziesz [tutaj](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)). W związku z tym zalecane jest rozpoczęcie wyświetlania raportów 2 dni po skonfigurowaniu magazynów w celu wysyłania danych do Log Analytics.
+
 3. **Wyświetlanie raportów na Azure Portal:**
 
 Po skonfigurowaniu magazynów w celu wysyłania danych do LA, Wyświetl raporty kopii zapasowej, przechodząc do bloku dowolnego magazynu i klikając element menu **raporty kopii zapasowych** . 
@@ -56,7 +59,8 @@ Po skonfigurowaniu magazynów w celu wysyłania danych do LA, Wyświetl raporty 
 Kliknięcie tego linku spowoduje otwarcie skoroszytu raportów kopii zapasowych.
 
 > [!NOTE]
-> Obecnie początkowe obciążenie raportu może potrwać do 1 minuty.
+> * Obecnie początkowe obciążenie raportu może potrwać do 1 minuty.
+> * Magazyn Recovery Services jest tylko punktem wejścia dla raportów kopii zapasowych. Gdy skoroszyt raporty dotyczące tworzenia kopii zapasowych zostanie otwarty z bloku magazynu, będzie można zobaczyć dane zagregowane we wszystkich magazynach (wybierając odpowiedni zestaw LA Workspaces).
 
 Poniżej znajduje się opis różnych kart, które zawiera raport:
 

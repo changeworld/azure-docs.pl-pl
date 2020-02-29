@@ -2,19 +2,19 @@
 title: Dv2 i Dsv2 — seria Virtual Machines platformy Azure
 description: Specyfikacje dotyczące maszyn wirtualnych z serii Dv2 i Dsv2.
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: cdfb8e333e3834adf242029e9e00eac9cf9abebe
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 808b14f118e842cb9e52d110075f92ba25a343c9
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493100"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164427"
 ---
-# <a name="dv2-and-dsv2-series"></a>Dv2 i DSv2 — seria
+# <a name="dv2-and-dsv2-series"></a>Serie Dv2 i DSv2
 
 Serie Dv2 i Dsv2, kolejne z serii D, oferują bardziej wydajny procesor CPU i optymalną konfigurację procesora CPU i pamięci, które są odpowiednie dla większości obciążeń produkcyjnych. Seria Dv2 jest o około 35% szybsza niż seria D. Seria Dv2 jest uruchamiana na procesorach Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) lub procesora Intel® Xeon® E5-2673 v3 2,4 GHz (Haswell) z technologią Intel Turbo — rozwiązanie 2,0. Konfiguracje pamięci i dysków serii Dv2 są takie same jak w przypadku serii D.
 
@@ -27,6 +27,10 @@ ACU: 210–250
 Premium Storage: nieobsługiwane
 
 Buforowanie Premium Storage: nieobsługiwane
+
+Migracja na żywo: obsługiwane
+
+Aktualizacje z zachowaniem pamięci: obsługiwane
 
 | Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu: IOPS/Odczyt MB/s/zapis MB/s | Maks. liczba dysków danych | Przepływność: operacje we/wy | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 |---|---|---|---|---|---|---|---|
@@ -45,6 +49,10 @@ ACU: 210–250
 Premium Storage: obsługiwane
 
 Buforowanie Premium Storage: obsługiwane
+
+Migracja na żywo: obsługiwane
+
+Aktualizacje z zachowaniem pamięci: obsługiwane
 
 | Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu w pamięci podręcznej i temp: IOPS/MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność dysku w pamięci podręcznej: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
 |---|---|---|---|---|---|---|---|

@@ -1,17 +1,17 @@
 ---
 title: Mapowanie transformacji spłaszczania przepływu danych
-description: Transformacja spłaszczania przepływu danych w usłudze Azure Data Factory
+description: Przekształcenie spłaszczania przepływu danych Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 435d2469be8eb572caa02e381d84ae4e9ac32f4b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 415a093fd8a8fbe27e1d240b061548e18f2ca6b6
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77674846"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164733"
 ---
 # <a name="azure-data-factory-flatten-transformation"></a>Przekształcenie Azure Data Factory spłaszczania
 
@@ -29,7 +29,7 @@ Najpierw wybierz kolumnę tablicową, którą chcesz odrzucić i przestawić.
 
 ## <a name="unroll-root"></a>Odwrócenie elementu głównego
 
-Domyślnie automatyczny podajnik APD zostanie spłaszczony przy użyciu tablicy odwrócenia wybranej powyżej. Można też wybrać inną część hierarchii, do której ma zostać cofnięte odwrócenie.
+Domyślnie automatyczny podajnik APD zostanie spłaszczony przy użyciu tablicy odwrócenia wybranej powyżej. Można też wybrać inną część hierarchii, do której ma zostać cofnięte odwrócenie. Ustawienie "odrzucij katalog główny" jest opcjonalne.
 
 ## <a name="input-columns"></a>Kolumny wejściowe
 

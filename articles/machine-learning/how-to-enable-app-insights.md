@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 6498717f5d542be228483b9c323dbd8f3ca2ff00
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 621188b3901bdea1a7ae50ac49c0e6f625a3e79a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251927"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915779"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorowanie i zbieranie danych z punktów końcowych usługi sieci Web ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,39 +43,6 @@ W tym artykule dowiesz się, jak zbierać dane i monitorować modele wdrożone w
 
 Metadane i odpowiedź usługi — odpowiadające metadanymi usługi sieci Web i prognozom modelu — są rejestrowane w śladach Application Insights platformy Azure w `"model_data_collection"`komunikatów. Możesz wysyłać zapytania do usługi Azure Application Insights bezpośrednio, aby uzyskać dostęp do tych danych, lub skonfigurować [ciągły eksport](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) do konta magazynu w celu dłuższego przechowywania lub dalszego przetwarzania. Dane modelu można następnie użyć w Azure Machine Learning, aby skonfigurować etykietowanie, przeszkolenie, wyjaśnienie, analizę danych lub inne użycie. 
 
-## <a name="use-the-azure-portal-to-configure"></a>Użyj Azure Portal, aby skonfigurować
-
-Możesz włączyć i wyłączyć usługę Azure Application Insights w Azure Portal. 
-
-1. W [Azure Portal](https://portal.azure.com)Otwórz obszar roboczy
-
-1. Na karcie **wdrożenia** wybierz usługę, w której chcesz włączyć Application Insights platformy Azure
-
-   [![listę usług na karcie wdrożenia](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
-
-3. Wybierz pozycję **Edytuj**
-
-   [przycisk edycji ![](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-4. W obszarze **Ustawienia zaawansowane**zaznacz pole wyboru **Włącz diagnostykę AppInsights**
-
-   [![zaznaczone pole wyboru włączania diagnostyki](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
-
-1. Wybierz pozycję **Aktualizuj** w dolnej części ekranu, aby zastosować zmiany
-
-### <a name="disable"></a>Wartość Wyłącz
-
-1. W [Azure Portal](https://portal.azure.com)Otwórz obszar roboczy
-1. Wybierz pozycję **wdrożenia**, wybierz pozycję Usługa, a następnie wybierz pozycję **Edytuj** .
-
-   [![użyć przycisku Edytuj](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-1. W obszarze **Ustawienia zaawansowane**wyczyść pole wyboru **Włącz diagnostykę AppInsights**
-
-   [pole wyboru ![wyczyszczone w celu włączenia diagnostyki](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
-
-1. Wybierz pozycję **Aktualizuj** w dolnej części ekranu, aby zastosować zmiany
- 
 ## <a name="use-python-sdk-to-configure"></a>Użyj zestawu SDK języka Python, aby skonfigurować 
 
 ### <a name="update-a-deployed-service"></a>Aktualizowania wdrożonej usługi

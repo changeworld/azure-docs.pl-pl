@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: sihhu
-author: MayMSFT
+ms.author: keli19
+author: likebupt
 ms.reviewer: nibaccam
-ms.date: 01/15/2020
+ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: b31d0237f04ef535fa6528d5b3a04e5ee7256e22
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 1db3679053edbbc2874c456b1c8db4a4f8e0dabd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623675"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164880"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Dostęp do danych w usługach Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -187,6 +187,10 @@ Poniższy przykład pokazuje, jak wygląda formularz podczas tworzenia magazynu 
 
 ## <a name="get-datastores-from-your-workspace"></a>Pobieranie magazynów danych z obszaru roboczego
 
+> [!IMPORTANT]
+> Program Azure Machine Learning Designer (wersja zapoznawcza) utworzy magazyn danych o nazwie **azureml_globaldatasets** automatycznie po otwarciu przykładu na stronie głównej projektanta. Ten magazyn danych zawiera tylko przykładowe zestawy danych. **Nie** używaj tego magazynu danych do uzyskiwania dostępu do poufnych informacji.
+> ![utworzony przez projektanta magazyny danych dla przykładów przykładowych](media/how-to-access-data/datastore-designer-sample.png)
+
 Aby uzyskać określony magazyn danych zarejestrowany w bieżącym obszarze roboczym, użyj metody statycznej [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) w klasie `Datastore`:
 
 ```Python
@@ -220,7 +224,7 @@ ws.set_default_datastore('your datastore name')
 
 Metody [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-) i [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) opisane w poniższych przykładach są specyficzne dla i działają identycznie dla klas [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) i [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) .
 
-### <a name="upload"></a>Upload
+### <a name="upload"></a>Przekaż
 
 Przekaż katalog lub pojedyncze pliki do magazynu danych przy użyciu zestawu SDK języka Python:
 

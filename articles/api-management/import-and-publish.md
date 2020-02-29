@@ -1,6 +1,6 @@
 ---
-title: Importowanie i publikowanie pierwszego interfejsu API w usłudze Azure API Management | Microsoft Docs
-description: Dowiedz się, jak zaimportować i opublikować pierwszy interfejs API przy użyciu usługi API Management.
+title: Importowanie i publikowanie pierwszego interfejsu API na platformie Azure API Management
+description: Dowiedz się, jak zaimportować interfejs API specyfikacji OpenAPI do platformy Azure API Management i przetestować interfejs API w Azure Portal.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,82 +11,78 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 02/24/2019
+ms.date: 02/27/2020
 ms.author: apimpm
-ms.openlocfilehash: bae762b4603b2f5f80447a16671fed4e37e62b95
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 886063dcf886d79ac960814f20b3789e8e3b6839
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108544"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163508"
 ---
 # <a name="import-and-publish-your-first-api"></a>Importowanie i publikowanie pierwszego interfejsu API 
 
-Ten samouczek pokazuje, jak zaimportować interfejs API zaplecza „Specyfikacja OpenAPI” znajdujący się w https://conferenceapi.azurewebsites.net?format=json. Ten interfejs API zaplecza jest zapewniany przez firmę Microsoft i hostowany na platformie Azure. 
+W tym samouczku przedstawiono sposób importowania interfejsu API zaplecza specyfikacji OpenAPI w formacie JSON do usługi Azure API Management. Firma Microsoft udostępnia interfejs API zaplecza i hostuje go na platformie Azure w [https://conferenceapi.azurewebsites.net?format=json](https://conferenceapi.azurewebsites.net?format=json).
 
-Po zaimportowaniu interfejsu API zaplecza do usługi API Management (APIM), interfejs API APIM staje się fasadą dla interfejsu API zaplecza. Podczas importowania interfejsu API zaplecza źródłowy interfejs API i interfejs API APIM są identyczne. Usługa APIM umożliwia dostosowywanie fasady zgodnie z potrzebami bez ingerencji w interfejs API zaplecza. Aby uzyskać więcej informacji, zobacz [Przekształcanie i ochrona interfejsu API](transform-api.md). 
+Po zaimportowaniu interfejsu API zaplecza do API Management, interfejs API API Management stał się elewacją dla interfejsu API zaplecza. Możesz dostosować elewację do swoich potrzeb w API Management bez dotykania interfejsu API zaplecza. Aby uzyskać więcej informacji, zobacz [Przekształcanie i ochrona interfejsu API](transform-api.md). 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Importowanie pierwszego interfejsu API
+> * Importowanie interfejsu API do API Management
 > * Testowanie interfejsu API w witrynie Azure Portal
-> * Testowanie interfejsu API w portalu dla deweloperów
 
-![Nowy interfejs API](./media/api-management-get-started/created-api.png)
+![Nowy interfejs API](./media/api-management-import-and-publish/created-api.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-+ Poznaj [terminologię dotyczącą usługi Azure API Management](api-management-terminology.md).
-+ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
+- Poznaj [terminologię dotyczącą API Management platformy Azure](api-management-terminology.md).
+- [Tworzenie wystąpienia usługi Azure API Management](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="create-api"> </a>Importowanie i publikowanie interfejsu API zaplecza
 
-Ta sekcja przedstawia sposób importowania i publikowania interfejsu API zaplecza specyfikacji OpenAPI.
+W tej sekcji przedstawiono sposób importowania i publikowania interfejsu API zaplecza specyfikacji OpenAPI.
  
-1. Wybierz **Interfejsy API** w obszarze **ZARZĄDZANIE INTERFEJSAMI API**.
-2. Wybierz z listy pozycję **Specyfikacja interfejsu OpenAPI** i kliknij przycisk **Pełna** w okienku wyskakującym.
+1. W lewym panelu nawigacyjnym wystąpienia API Management wybierz opcję **interfejsy API** z sekcji **API Management** .
+1. Wybierz kafelek **openapi** , a następnie na ekranie podręcznym wybierz pozycję **pełne** .
+1. Na ekranie **Tworzenie ze specyfikacją openapi** Użyj wartości z poniższej tabeli, aby utworzyć interfejs API.
+   
+   Czerwona gwiazdka obok pola w formularzu wskazuje, że pole jest wymagane. Możesz ustawić wartości interfejsu API podczas tworzenia lub później, przechodząc do karty **Ustawienia** . 
+   
+   ![Tworzenie interfejsu API](./media/api-management-import-and-publish/create-api.png)
+   
+   |Ustawienie|Wartość|Opis|
+   |-------|-----|-----------|
+   |**Specyfikacja interfejsu OpenAPI**|*https:\//conferenceapi.azurewebsites.NET? format = JSON*|Usługa implementująca interfejs API. Usługa API Management przekazuje żądania na ten adres.|
+   |**Nazwa wyświetlana**|Po wprowadzeniu powyższego adresu URL usługi API Management wypełnia to pole na podstawie kodu JSON.|Nazwa wyświetlana w portalu dla deweloperów.|
+   |**Nazwa**|Po wprowadzeniu powyższego adresu URL usługi API Management wypełnia to pole na podstawie kodu JSON.|Unikatowa nazwa interfejsu API.|
+   |**Opis**|Po wprowadzeniu powyższego adresu URL usługi API Management wypełnia to pole na podstawie kodu JSON.|Opcjonalny opis interfejsu API.|
+   |**Schemat adresu URL**|**HTTPS**|Protokołów, które mogą być używane do uzyskiwania dostępu do interfejsu API.|
+   |**Sufiks adresu URL interfejsu API**|*conference*|Sufiks dołączany do podstawowego adresu URL usługi API Management. API Management odróżnia interfejsy API według ich sufiksów, więc sufiks musi być unikatowy dla każdego interfejsu API dla danego wydawcy.|
+   |**Produkty**|**Unlimited (nieograniczony)**|Skojarzenie jednego lub więcej interfejsów API. Każde wystąpienie API Management zawiera dwa przykładowe produkty: **Starter** i **nieograniczone**. Interfejs API jest publikowany przez skojarzenie interfejsu API z produktem, **nieograniczoną** w tym przykładzie.<br/>Możesz dołączyć kilka interfejsów API w produkcie i zaoferować je deweloperom za pomocą portalu dla deweloperów. Aby dodać ten interfejs API do innego produktu, wpisz lub wybierz nazwę produktu. Powtórz ten krok, aby dodać interfejs API do wielu produktów. Możesz również dodać interfejsy API do produktów później ze strony **ustawień** .<br/>Przed uzyskaniem dostępu do interfejsu API deweloperzy muszą najpierw zasubskrybować produkt. Podczas subskrybowania uzyskują klucz subskrypcji dobry dla każdego interfejsu API w tym produkcie. <br/>Jeśli utworzono wystąpienie API Management, jesteś już administratorem, więc subskrybujesz każdy produkt w wystąpieniu.|
+   |**Tagi**| |Tagi służące do organizowania interfejsów API do wyszukiwania, grupowania lub filtrowania.|
+   |**Czy chcesz utworzyć wersję tego interfejsu API?**|Zaznacz lub usuń zaznaczenie|Aby uzyskać więcej informacji na temat przechowywania wersji, zobacz [Publikowanie wielu wersji interfejsu API](api-management-get-started-publish-versions.md).|
+   
+   > [!NOTE]
+   > Aby opublikować interfejs API, musisz skojarzyć go z produktem. Można to zrobić na stronie **Ustawienia** .
+   
+1. Wybierz pozycję **Utwórz**.
 
-    ![Tworzenie interfejsu API](./media/api-management-get-started/create-api.png)
-
-    Wartości interfejsu API można ustawić podczas tworzenia lub później, przechodząc do karty **Ustawienia** . Czerwona gwiazdka obok pola wskazuje, że pole jest wymagane.
-
-    Użyj wartości z poniższej tabeli, aby utworzyć pierwszy interfejs API.
-
-    | Ustawienie                   | Wartość                                              | Opis                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-    |---------------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | **Specyfikacja interfejsu OpenAPI** | https://conferenceapi.azurewebsites.net?format=json | Zawiera odwołanie do usługi implementującej interfejs API. Usługa API Management przekazuje żądania na ten adres.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-    | **Nazwa wyświetlana**          | *Wersja demonstracyjna interfejsu API Conference*                              | W przypadku naciśnięcia klawisza Tab po wprowadzeniu adresu URL usługi usługa APIM wypełni to pole w oparciu o zawartość pliku JSON. <br/>Ta nazwa jest wyświetlana w portalu dla deweloperów.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-    | **Nazwa**                  | *demo-conference-api*                              | Zapewnia unikatową nazwę interfejsu API. <br/>W przypadku naciśnięcia klawisza Tab po wprowadzeniu adresu URL usługi usługa APIM wypełni to pole w oparciu o zawartość pliku JSON.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-    | **Opis**           | Wprowadź opcjonalny opis interfejsu API.        | W przypadku naciśnięcia klawisza Tab po wprowadzeniu adresu URL usługi usługa APIM wypełni to pole w oparciu o zawartość pliku JSON.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-    | **Schemat adresu URL**            | *HTTPS*                                            | Określa, których protokołów można używać w celu uzyskania dostępu do interfejsu API.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-    | **Sufiks adresu URL interfejsu API**        | *conference*                                       | Sufiks jest dołączany do podstawowego adresu URL usługi API Management. W usłudze API Management interfejsy API są rozróżniane na podstawie sufiksów, dlatego sufiksy poszczególnych interfejsów API dla danego wydawcy muszą być unikatowe.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-    | **Produkty**              | *Unlimited (nieograniczony)*                                        | Produkty to skojarzenia co najmniej jednego interfejsu API. Możesz uwzględnić wiele interfejsów API w produkcie i zaoferować je deweloperom za pośrednictwem portalu deweloperów. <br/>Publikowanie interfejsu API odbywa się poprzez skojarzenie interfejsu API z produktem (w tym przypadku *Unlimited*). Aby dodać ten nowy interfejs API do produktu, wpisz nazwę produktu (możesz też zrobić to później na stronie **Ustawienia**). Ten krok można powtórzyć wiele razy, aby dodać interfejs API do wielu produktów.<br/>Przed uzyskaniem dostępu do interfejsu API deweloperzy muszą najpierw zasubskrybować produkt. Podczas subskrybowania otrzymują oni klucz subskrypcji działający dla każdego interfejsu API w tym produkcie. <br/> Jeśli utworzono wystąpienie usługi APIM, oznacza to, że użytkownik jest już administratorem, więc posiada subskrypcję każdego produktu.<br/> Domyślnie każde wystąpienie usługi API Management zawiera dwa produkty przykładowe: **Starter** i **Unlimited**. |
-    | **Tagi**                  |                                                    | Tagi do organizowania interfejsów API. Tagi mogą służyć do wyszukiwania, grupowania lub filtrowania.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-    | **Czy chcesz utworzyć wersję tego interfejsu API?**     |                                                    | Aby uzyskać więcej informacji o przechowywaniu wersji, zobacz [Publikowanie wielu wersji interfejsu API](api-management-get-started-publish-versions.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-
-    >[!NOTE]
-    > Aby opublikować interfejs API, musisz skojarzyć go z produktem. Możesz to zrobić na stronie **Ustawienia**.
-
-3. Wybierz pozycję **Utwórz**.
-
-> [!TIP]
-> Jeśli występują problemy z zaimportowaniem Twojej definicji interfejsu API [wyświetl listę znanych problemów i ograniczeń](api-management-api-import-restrictions.md).
+Jeśli masz problemy z importowaniem definicji interfejsu API, zobacz [listę znanych problemów i ograniczeń](api-management-api-import-restrictions.md).
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>Przetestuj nowy interfejs API w Azure Portal
 
-![Mapa testowania interfejsu API](./media/api-management-get-started/01-import-first-api-01.png)
+Operacje interfejsu API można wywoływać bezpośrednio z Azure Portal, co zapewnia wygodny sposób wyświetlania i testowania operacji.
 
-Operacje mogą być wywoływane bezpośrednio z witryny Azure Portal, która zapewnia wygodny sposób wyświetlania i testowania operacji interfejsu API.
-
-1. Wybierz interfejs API utworzony w poprzednim kroku (z karty **Interfejsy API**).
-2. Naciśnij kartę **Test**.
-3. Kliknij pozycję **GetSpeakers**. Na stronie są wyświetlane pola parametrów zapytania (w tym przypadku nie ma żadnych parametrów) i nagłówków. Jeden z nagłówków to „Ocp-Apim-Subscription-Key” dla klucza subskrypcji produktu, który został skojarzony z tym interfejsem API. Klucz jest uzupełniany automatycznie.
-4. Kliknij pozycję **Wyślij**.
-
-    Zaplecze odpowiada wartością **200 OK** i pewnymi danymi.
+1. W lewym panelu nawigacyjnym wystąpienia API Management wybierz opcję **interfejsy API** z sekcji **API Management** , a następnie wybierz pozycję **interfejs API konferencji demonstracyjnej**.
+1. Wybierz kartę **test** , a następnie wybierz pozycję **getgłośników**. Na stronie są wyświetlane parametry i **nagłówki** **zapytania** , jeśli istnieją. Wartość **OCP-APIM-Subscription-Key** jest automatycznie wypełniana dla klucza subskrypcji skojarzonego z tym interfejsem API.
+1. Wybierz pozycję **Wyślij**.
+   
+   ![Mapa testowania interfejsu API](./media/api-management-import-and-publish/01-import-first-api-01.png)
+   
+   Zaplecze odpowiada wartością **200 OK** i pewnymi danymi.
 
 ## <a name="next-steps"> </a>Następne kroki
 
@@ -96,7 +92,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Importowanie pierwszego interfejsu API
 > * Testowanie interfejsu API w witrynie Azure Portal
 
-Przejdź do następnego samouczka:
+Przejdź do następnego samouczka, aby dowiedzieć się, jak utworzyć i opublikować produkt:
 
 > [!div class="nextstepaction"]
 > [Tworzenie i publikowanie produktu](api-management-howto-add-products.md)

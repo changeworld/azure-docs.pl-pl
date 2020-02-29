@@ -16,15 +16,16 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 138ca9bf3352c46b8ac495b58a2fd6d7bafeb658
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889851"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917917"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Synchronize: rozszerzenia katalogów
-Możesz użyć rozszerzeń katalogów, aby rozszerzać schemat w Azure Active Directory (Azure AD) z własnymi atrybutami z Active Directory lokalnych. Ta funkcja umożliwia tworzenie aplikacji biznesowych przez konsumowanie atrybutów, które nadal są zarządzane lokalnie. Te atrybuty mogą być używane za pomocą [rozszerzeń katalogów usługi Azure AD interfejs API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) lub [Microsoft Graph](https://developer.microsoft.com/graph/). Dostępne atrybuty można wyświetlić za pomocą [Eksploratora grafów usługi Azure AD](https://graphexplorer.azurewebsites.net/) i [Eksploratora Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer). Za pomocą tej funkcji można także tworzyć grupy dynamiczne w usłudze Azure AD.
+Możesz użyć rozszerzeń katalogów, aby rozszerzać schemat w Azure Active Directory (Azure AD) z własnymi atrybutami z Active Directory lokalnych. Ta funkcja umożliwia tworzenie aplikacji biznesowych przez konsumowanie atrybutów, które nadal są zarządzane lokalnie. Te atrybuty mogą być używane przez [rozszerzenia](https://docs.microsoft.com/graph/extensibility-overview
+). Dostępne atrybuty można wyświetlić za pomocą [eksploratora Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer). Za pomocą tej funkcji można także tworzyć grupy dynamiczne w usłudze Azure AD.
 
 W tej chwili żadne obciążenie pakietu Office 365 nie korzysta z tych atrybutów.
 
@@ -61,16 +62,12 @@ Upewnij się, że wybrano pozycję **wszystkie aplikacje** , aby wyświetlić t�
 
 Atrybuty są poprzedzone prefiksem **\_{identyfikator aplikacji}\_** . Identyfikator aplikacji ma taką samą wartość dla wszystkich atrybutów w dzierżawie usługi Azure AD. Ta wartość będzie potrzebna dla wszystkich innych scenariuszy w tym temacie.
 
-## <a name="viewing-attributes-using-graph"></a>Wyświetlanie atrybutów przy użyciu grafu
+## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>Wyświetlanie atrybutów przy użyciu interfejsu API Microsoft Graph
 
-Te atrybuty są teraz dostępne za pomocą usługi Azure AD interfejs API programu Graph. Możesz wysyłać zapytania do nich za pomocą [Eksploratora Azure AD Graph](https://graphexplorer.azurewebsites.net/).
-
-![Eksplorator grafów usługi Azure AD](./media/how-to-connect-sync-feature-directory-extensions/extension4.png)
-
-Lub można wykonywać zapytania dotyczące atrybutów za pośrednictwem interfejsu API Microsoft Graph przy użyciu [eksploratora Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer#).
+Te atrybuty są teraz dostępne za pośrednictwem interfejsu API Microsoft Graph przy użyciu [eksploratora Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer#).
 
 >[!NOTE]
-> W Microsoft Graph należy poproszony o zwrócenie atrybutów. Jawnie wybierz następujące atrybuty: https\://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $select = extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division.
+> W interfejsie API Microsoft Graph należy poproszony o zwrócenie atrybutów. Jawnie wybierz następujące atrybuty: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`.
 >
 > Aby uzyskać więcej informacji, zobacz [Microsoft Graph: Użyj parametrów zapytania](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
 

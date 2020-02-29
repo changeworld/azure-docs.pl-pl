@@ -2,17 +2,17 @@
 title: Seria NCV3 — seria Virtual Machines platformy Azure
 description: Specyfikacje dotyczące maszyn wirtualnych z serii seria NCV3.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 363f8d2aae4e77453b8291637f2f6067d24bb80b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 1f93fd3c293f8f6108d7c5fbcd83f2f7a8b8f5d9
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661128"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162166"
 ---
 # <a name="ncv3-series"></a>Seria NCv3
 
@@ -21,6 +21,10 @@ Maszyny wirtualne z serii seria NCV3 są obsługiwane przez procesory [NVIDIA Te
 Premium Storage: obsługiwane
 
 Buforowanie Premium Storage: obsługiwane
+
+Migracja na żywo: nieobsługiwane
+
+Aktualizacje z zachowaniem pamięci: nieobsługiwane
 
 > [!IMPORTANT]
 > W przypadku tej serii maszyn wirtualnych limit przydziału vCPU (rdzeń) w subskrypcji jest początkowo ustawiany na 0 w każdym regionie. [Zażądaj zwiększenia limitu przydziału vCPU](../azure-supportability/resource-manager-core-quotas-request.md) dla tej serii w [dostępnym regionie](https://azure.microsoft.com/regions/services/).

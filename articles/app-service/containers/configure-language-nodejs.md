@@ -4,12 +4,12 @@ description: Dowiedz się, jak skonfigurować wstępnie skompilowany kontener No
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 6cf60472307a378d2fd4258a9777152344a11ded
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 45d7d141bc2ab85ab33be455fc3da5570b0e7f51
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670270"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920029"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Konfigurowanie aplikacji node. js w systemie Linux dla Azure App Service
 
@@ -43,6 +43,32 @@ To ustawienie określa wersję środowiska Node. js, która ma być używana zar
 
 > [!NOTE]
 > Należy ustawić wersję środowiska Node. js w `package.json`projektu. Aparat wdrażania działa w oddzielnym kontenerze zawierającym wszystkie obsługiwane wersje środowiska Node. js.
+
+## <a name="customize-build-automation"></a>Dostosuj automatyzację kompilacji
+
+Jeśli aplikacja zostanie wdrożona za pomocą usługi Git lub zip z włączonym automatyzacją kompilacji, App Service kroki automatyzacji kompilacji w następującej kolejności:
+
+1. Uruchom skrypt niestandardowy, jeśli został określony przez `PRE_BUILD_SCRIPT_PATH`.
+1. Uruchom `npm install` bez żadnych flag, które obejmują npm `preinstall` i skryptów `postinstall`, a także instaluje `devDependencies`.
+1. Uruchom `npm run build`, jeśli skrypt kompilacji jest określony w pliku *Package. JSON*.
+1. Uruchom `npm run build:azure`, jeśli kompilacja: skrypt platformy Azure został określony w pliku *Package. JSON*.
+1. Uruchom skrypt niestandardowy, jeśli został określony przez `POST_BUILD_SCRIPT_PATH`.
+
+> [!NOTE]
+> Zgodnie z opisem w dokumentacji [npm](https://docs.npmjs.com/misc/scripts), skrypty o nazwie `prebuild` i `postbuild` uruchamiane przed i po `build`odpowiednio, jeśli zostały określone. `preinstall` i `postinstall` uruchomione odpowiednio przed i po `install`.
+
+`PRE_BUILD_COMMAND` i `POST_BUILD_COMMAND` są zmiennymi środowiskowymi, które są domyślnie puste. Aby uruchomić polecenia przed kompilacją, zdefiniuj `PRE_BUILD_COMMAND`. Aby uruchomić polecenia po kompilacji, zdefiniuj `POST_BUILD_COMMAND`.
+
+W poniższym przykładzie określono dwie zmienne do szeregu poleceń, oddzielone przecinkami.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+Aby uzyskać dodatkowe zmienne środowiskowe umożliwiające dostosowanie automatyzacji kompilacji, zobacz [Konfiguracja Oryx](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+
+Aby uzyskać więcej informacji na temat sposobu uruchamiania App Service i kompilowania aplikacji node. js w systemie Linux, zobacz [dokumentację Oryx: jak wykrywane są i kompilowane aplikacje Node. js](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/nodejs.md).
 
 ## <a name="configure-nodejs-server"></a>Konfigurowanie serwera Node. js
 

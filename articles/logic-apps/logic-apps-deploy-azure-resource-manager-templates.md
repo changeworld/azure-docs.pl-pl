@@ -6,23 +6,23 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 662f8c2a4184e858d33dc40effed363ef3ec17e5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 95bfa7b1918da09e4f5913eeb2b57c290b093efe
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904963"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162385"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Wdróż szablony Azure Resource Manager dla Azure Logic Apps
 
 Po utworzeniu szablonu Azure Resource Manager dla aplikacji logiki można wdrożyć szablon w następujący sposób:
 
 * [Azure Portal](#portal)
-* [Program Visual Studio](#visual-studio)
+* [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Interfejs wiersza polecenia platformy Azure](#cli)
 * [Interfejs API REST Azure Resource Manager](../azure-resource-manager/templates/deploy-rest.md)
-* [Azure Pipelines platformy Azure DevOps](#azure-pipelines)
+* [Azure DevOps](#azure-pipelines)
 
 <a name="portal"></a>
 
@@ -96,6 +96,7 @@ Aby uzyskać więcej informacji na temat ciągłej integracji i ciągłego wdra�
 * [Przykład: łączenie z kontami usługi Azure Storage z Azure Logic Apps i wdrażanie za pomocą Azure Pipelines na platformie Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Przykład: Konfigurowanie akcji aplikacji funkcji dla Azure Logic Apps i wdrażanie za pomocą Azure Pipelines na platformie Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Przykład: Nawiązywanie połączenia z kontem integracji z Azure Logic Apps i wdrażanie za pomocą Azure Pipelines na platformie Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [Przykład: organizowanie Azure Pipelines przy użyciu Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
 
 Poniżej przedstawiono ogólne kroki wysokiego poziomu dotyczące korzystania z Azure Pipelines:
 

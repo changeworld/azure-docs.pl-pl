@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 16c325f2d6ea78ba980406f56839dd4d0b64bee1
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 71321fa631bafde5b1dbaac2d165cb68fd8116d4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482262"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164597"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Wyzwalacz usługi Azure queue storage i powiązania dla Azure Functions — Omówienie
 
@@ -20,7 +20,7 @@ Azure Functions mogą działać jako nowe wiadomości usługi Azure queue storag
 | Akcja | Typ |
 |---------|---------|
 | Uruchamianie funkcji jako kolejki zmian danych | [Wyzwalacz](./functions-bindings-storage-queue-trigger.md) |
-| Komunikaty magazynu kolejki zapisu |[Powiązanie danych wyjściowych](./functions-bindings-storage-blob-output.md) |
+| Komunikaty magazynu kolejki zapisu |[Powiązanie danych wyjściowych](./functions-bindings-storage-queue-output.md) |
 
 ## <a name="add-to-your-functions-app"></a>Dodawanie do aplikacji funkcji
 
@@ -49,4 +49,4 @@ Aplikacje Functions 1. x automatycznie mają odwołanie do pakietu NuGet [Micros
 ## <a name="next-steps"></a>Następne kroki
 
 - [Uruchamianie funkcji jako kolejki zmian danych magazynu (wyzwalacz)](./functions-bindings-storage-queue-trigger.md)
-- [Komunikaty magazynu kolejki zapisu (powiązanie danych wyjściowych)](./functions-bindings-storage-blob-output.md)
+- [Komunikaty magazynu kolejki zapisu (powiązanie danych wyjściowych)](./functions-bindings-storage-queue-output.md)

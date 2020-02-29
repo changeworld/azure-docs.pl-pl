@@ -2,17 +2,17 @@
 title: Seria M Virtual Machines platformy Azure
 description: Specyfikacje dotyczące maszyn wirtualnych z serii M.
 services: virtual-machines
-author: jonbeck7
+author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: lahugh
-ms.openlocfilehash: 49b12341e5ca119ee20c7e509d9bbef64d4d5b37
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e8952218675493710cbdd1f92661e9a9c077f34c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493672"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164053"
 ---
 # <a name="m-series"></a>Seria M
 
@@ -25,6 +25,10 @@ ACU: 160–180
 Premium Storage: obsługiwane
 
 Buforowanie Premium Storage: obsługiwane
+
+Migracja na żywo: nieobsługiwane
+
+Aktualizacje z zachowaniem pamięci: nieobsługiwane
 
 Akcelerator zapisu: [obsługiwane](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 

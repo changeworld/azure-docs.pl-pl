@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae5c4cdd76f164d13da349c355a30d8b6dc83058
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: deb337d989a3658e909cefa7a9ab028e37792562
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102085"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918380"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Nawiązywanie połączenia z maszyną wirtualną SQL Server na platformie Azure
 
@@ -41,7 +41,7 @@ Dostępne są następujące opcje łączności:
 
 | Opcja | Opis |
 |---|---|
-| **Public** | Nawiązywanie połączenia z SQL Server za pośrednictwem Internetu |
+| **Społeczeństwo** | Nawiązywanie połączenia z SQL Server za pośrednictwem Internetu |
 | **Użytek** | Połącz z SQL Server w tej samej sieci wirtualnej |
 | **LAN** | Połącz się z SQL Server lokalnie na tej samej maszynie wirtualnej | 
 
@@ -59,7 +59,7 @@ Jeśli chcesz nawiązać połączenie z aparatem bazy danych SQL Server z Intern
 > [!IMPORTANT]
 > W przypadku obrazów maszyn wirtualnych dla SQL Server Developer i wersji Express nie jest automatycznie włączany protokół TCP/IP. W przypadku wersji Developer i Express należy użyć Configuration Manager SQL Server, aby [ręcznie włączyć protokół TCP/IP](#manualtcp) po utworzeniu maszyny wirtualnej.
 
-Dowolny klient z dostępem do Internetu może połączyć się z wystąpieniem SQL Server, określając publiczny adres IP maszyny wirtualnej lub dowolną etykietę DNS przypisaną do tego adresu IP. Jeśli port SQL Server to 1433, nie trzeba określać go w parametrach połączenia. Poniższe parametry połączenia nawiązują połączenie z maszyną wirtualną SQL z etykietą `sqlvmlabel.eastus.cloudapp.azure.com` DNS przy użyciu uwierzytelniania SQL (można również użyć publicznego adresu IP).
+Dowolny klient z dostępem do Internetu może połączyć się z wystąpieniem SQL Server, określając publiczny adres IP maszyny wirtualnej lub dowolną etykietę DNS przypisaną do tego adresu IP. Jeśli port SQL Server to 1433, nie trzeba określać go w parametrach połączenia. Poniższe parametry połączenia nawiązują połączenie z maszyną wirtualną SQL z etykietą DNS `sqlvmlabel.eastus.cloudapp.azure.com` przy użyciu uwierzytelniania SQL (można również użyć publicznego adresu IP).
 
 ```
 Server=sqlvmlabel.eastus.cloudapp.azure.com;Integrated Security=false;User ID=<login_name>;Password=<your_password>
@@ -72,7 +72,7 @@ Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User 
 ```
 
 > [!NOTE]
-> Podczas wykonywania zapytań o SQL Server w maszynie wirtualnej przez Internet wszystkie dane wychodzące z centrum danych platformy Azure podlegają normalnym cennikom wychodzących [transferów danych](https://azure.microsoft.com/pricing/details/data-transfers/).
+> Podczas wykonywania zapytań o SQL Server w maszynie wirtualnej przez Internet wszystkie dane wychodzące z centrum danych platformy Azure podlegają normalnym [cennikom wychodzących transferów danych](https://azure.microsoft.com/pricing/details/data-transfers/).
 
 ## <a name="connect-to-sql-server-within-a-virtual-network"></a>Nawiązywanie połączenia z SQL Server w sieci wirtualnej
 
@@ -137,7 +137,7 @@ W poniższej tabeli przedstawiono wymagania dotyczące łączenia się z SQL Ser
 
 | Wymaganie | Opis |
 |---|---|
-| [Włącz tryb uwierzytelniania SQL Server](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | Uwierzytelnianie SQL Server jest potrzebne do zdalnego nawiązywania połączenia z maszyną wirtualną, o ile nie skonfigurowano Active Directory na Virtual Network. |
+| [Włącz tryb uwierzytelniania SQL Server](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | Uwierzytelnianie SQL Server jest potrzebne do zdalnego nawiązywania połączenia z maszyną wirtualną, o ile nie skonfigurowano Active Directory na Virtual Network. |
 | [Tworzenie identyfikatora logowania SQL](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Jeśli używasz uwierzytelniania SQL, potrzebujesz logowania SQL z nazwą użytkownika i hasłem, które ma także uprawnienia do docelowej bazy danych. |
 | [Włącz protokół TCP/IP](#manualtcp) | SQL Server musi zezwalać na połączenia za pośrednictwem protokołu TCP. |
 | [Włącz regułę zapory dla portu SQL Server](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | Zapora na maszynie wirtualnej musi zezwalać na ruch przychodzący na porcie SQL Server (domyślnie 1433). |
