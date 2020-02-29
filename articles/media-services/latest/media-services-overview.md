@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 02/03/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 559050d11b6b85a9842c679b94e0e5b2fd5dd0f8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: df1602fe82b4a625dd5f01de2bd7236816fbb0ac
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987717"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164665"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services wersja 3 — Omówienie
 
@@ -33,14 +33,14 @@ Zestawy SDK Media Services V3 są oparte na [specyfikacji Media Services v3 open
 > [!NOTE]
 > Obecnie nie można używać Azure Portal do zarządzania zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 
-## <a name="compliance-privacy-and-security"></a>Zgodność, prywatność i zabezpieczenia
+## <a name="compliance-privacy-and-security"></a>Zgodność, ochrona prywatności i zabezpieczenia
+
+Ważną kwestią jest przestrzeganie wszystkich obowiązujących przepisów dotyczących używania Azure Media Services i nie można używać Media Services lub żadnej usługi platformy Azure w sposób naruszający prawa innych osób lub mogą być szkodliwe dla innych osób.
+
+Przed przekazaniem dowolnych filmów wideo/obrazów do Media Services należy dysponować wszystkimi odpowiednimi prawami do używania wideo/obrazu, w tym, gdzie jest to wymagane przez prawo, do użycia, przetwarzania i przechowywania danych w usłudze Media Services i na platformie Azure. Niektóre jurysdykcje mogą nakładać specjalne wymagania prawne dotyczące zbierania, przetwarzania online i przechowywania określonych kategorii danych, takich jak dane biometryczne. Przed rozpoczęciem korzystania z Media Services i platformy Azure do przetwarzania i przechowywania danych z zastrzeżeniem szczególnych wymagań prawnych należy zapewnić zgodność z wszelkimi wymaganiami prawnymi, które mogą mieć zastosowanie do Ciebie.
+
+Aby dowiedzieć się więcej o zgodności, prywatności i zabezpieczeniach w Media Services odwiedź [Centrum zaufania](https://www.microsoft.com/trust-center/?rtc=1)firmy Microsoft. W przypadku zobowiązań związanych z ochroną prywatności firmy Microsoft, obsługi i przechowywania danych, w tym sposobu usuwania danych, zapoznaj się z zasadami [zachowania poufności informacji](https://privacy.microsoft.com/PrivacyStatement)firmy Microsoft, [postanowieniami dotyczącymi usług online](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("Ost") i [uzupełnieniem przetwarzania danych](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Korzystając z Media Services, wyrażasz zgodę na powiązanie plików OST, DPA i zasad zachowania poufności informacji.
  
-Ważną kwestią jest przestrzeganie wszystkich obowiązujących przepisów, przy użyciu Azure Media Services i nie można używać Azure Media Services lub żadnej innej usługi platformy Azure w sposób naruszający prawa innych lub mogą być szkodliwe dla innych osób. 
-
-Przed przekazaniem plików wideo/obrazów, w tym danych biometrycznych, do Media Services do przetwarzania i przechowywania, należy (1) uzyskać wszystkie odpowiednie prawa do filmów wideo/obrazów; i (2) posiadają wszystkie odpowiednie zależności od osób w filmach wideo, co pozwala na używanie i przechowywanie danych biometrycznych w Media Services. 
-
-Aby dowiedzieć się więcej na temat zgodności, ochrony prywatności i sposobu, w jaki firma Microsoft chroni dane w Azure Media Services, odwiedź [Centrum zaufania](https://www.microsoft.com/trust-center/?rtc=1)systemu Azure. W przypadku obowiązków związanych z ochroną prywatności firmy Microsoft i obsługi danych należy zapoznać się z zasadami [zachowania poufności informacji](https://privacy.microsoft.com/PrivacyStatement)firmy Microsoft, tematami dotyczącymi [usług online](https://www.microsoft.com/licensing/product-licensing/products) ("Ost") i [uzupełnieniem przetwarzania danych](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Informacje o przechowywaniu i usuwaniu danych klienta są dostępne w DPA. Korzystając z Azure Media Services, wyrażasz zgodę na powiązanie plików OST, DPA i zasad zachowania poufności informacji.
-
 ## <a name="what-can-i-do-with-media-services"></a>Co mogę zrobić za pomocą usługi Media Services?
 
 Media Services pozwala tworzyć różne przepływy pracy multimedialnej w chmurze. Poniżej przedstawiono kilka przykładów tego, co można zrobić z Media Services:
@@ -66,7 +66,7 @@ Dowiedz się, jak kodować i spakować zawartość, przesyłać strumieniowo fil
 
 Rozpocznij programowanie przy użyciu [zestawów SDK klienta Azure Media Services v3](media-services-apis-overview.md#sdks).
 
-### <a name="quickstarts"></a>Szybki start  
+### <a name="quickstarts"></a>Przewodniki Szybki start  
 
 Przewodniki Szybki Start pokazują podstawowe instrukcje dotyczące pierwszego dnia dla nowych klientów, aby szybko wypróbować Media Services.
 
@@ -84,7 +84,7 @@ W samouczkach przedstawiono procedury oparte na scenariuszu dla niektórych najw
 * [Analizowanie wideo — .NET](analyze-videos-tutorial-with-api.md)
 * [Szyfrowanie dynamiczne AES-128 — .NET](protect-with-aes128.md)
 
-### <a name="samples"></a>Samples
+### <a name="samples"></a>Przykłady
 
 Użyj [tej przeglądarki przykładów](https://docs.microsoft.com/samples/browse/?products=azure-media-services) do przeglądania przykładów kodu Azure Media Services.
 
@@ -106,4 +106,3 @@ Zapoznaj się z artykułem [community Azure Media Services](media-services-commu
 ## <a name="next-steps"></a>Następne kroki
 
 [Poznaj podstawowe koncepcje](concepts-overview.md)
-

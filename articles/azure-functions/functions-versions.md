@@ -3,12 +3,12 @@ title: Przegląd wersji środowiska uruchomieniowego Azure Functions
 description: Azure Functions obsługuje wiele wersji środowiska uruchomieniowego. Poznaj różnice między nimi i wybierz odpowiedni dla siebie.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 21a7b25087efd5d4adf2154c935636c263df9afd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539505"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919757"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Przegląd wersji środowiska uruchomieniowego Azure Functions
 
@@ -58,7 +58,7 @@ Kilka funkcji zostało usuniętych, zaktualizowanych lub zastąpionych po wersji
 
 W wersji 2. x wprowadzono następujące zmiany:
 
-* Klucze do wywoływania punktów końcowych HTTP są zawsze przechowywane w postaci zaszyfrowanej w usłudze Azure Blob Storage. W wersji 1. x klucze były przechowywane w usłudze Azure File Storage. Podczas uaktualniania aplikacji z wersji 1. x do wersji 2. x istniejące klucze tajne w magazynie plików są resetowane.
+* Klucze do wywoływania punktów końcowych HTTP są zawsze przechowywane w postaci zaszyfrowanej w usłudze Azure Blob Storage. W wersji 1. x klucze są domyślnie przechowywane w usłudze Azure File Storage. Podczas uaktualniania aplikacji z wersji 1. x do wersji 2. x istniejące klucze tajne w magazynie plików są resetowane.
 
 * Środowisko uruchomieniowe w wersji 2. x nie obejmuje wbudowanej obsługi dostawców elementu webhook. Ta zmiana została wprowadzona w celu zwiększenia wydajności. Można nadal używać wyzwalaczy HTTP jako punktów końcowych dla elementów webhook.
 
@@ -202,7 +202,7 @@ W poniższej tabeli przedstawiono powiązania obsługiwane w poszczególnych wer
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji zawierają następujące zasoby:
+Więcej informacji można znaleźć w następujących zasobach:
 
 * [Kodowanie i testowanie usługi Azure Functions lokalnie](functions-run-local.md)
 * [Jak docelowa Azure Functions wersje środowiska uruchomieniowego](set-runtime-version.md)

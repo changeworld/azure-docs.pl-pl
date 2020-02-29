@@ -3,12 +3,12 @@ title: Często zadawane pytania — odnajdywanie, Ocena i analiza zależności w
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności w programie Azure Migrate.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 179be4f5b39806c717e94789c9fe52842d2a07d8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6db521791e5ebb846585d4e0e823ba20d178d54a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589236"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918550"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Często zadawane pytania dotyczące odnajdywania, oceny i analizy zależności
 
@@ -100,7 +100,7 @@ Nie, nie można wyeksportować wizualizacji zależności. Jednak Azure Migrate u
 
 ## <a name="can-i-automate--mmadependency-agent-installation"></a>Czy można zautomatyzować instalację agenta MMA/zależności?
 
-Ten [skrypt służy do instalowania agenta zależności](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Postępuj zgodnie [z tymi instrukcjami, aby zainstalować MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) za pomocą wiersza polecenia lub automatyzacji. W przypadku MMA Użyj [tego skryptu](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+Ten [skrypt służy do instalowania agenta zależności](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Postępuj zgodnie [z tymi instrukcjami, aby zainstalować MMA](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) za pomocą wiersza polecenia lub automatyzacji. W przypadku MMA Użyj [tego skryptu](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 
 Oprócz skryptów można także użyć narzędzi wdrażania, takich jak Microsoft Endpoint Configuration Manager i [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) , aby wdrożyć agentów.
 

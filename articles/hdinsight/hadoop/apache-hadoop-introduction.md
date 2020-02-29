@@ -1,20 +1,19 @@
 ---
 title: Co to jest stos technologii Apache Hadoop? — Azure HDInsight
 description: Wprowadzenie do usługi HDInsight oraz stos i składniki technologii Apache Hadoop.
-keywords: azure hadoop, hadoop azure, wprowadzenie do hadoop, wprowadzenie do usługi hadoop, stos technologii hadoop, wstęp do hadoop, wprowadzenie do platformy hadoop, co to jest klaster hadoop, co to są klastry hadoop, do czego służy usługa hadoop
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-ms.date: 08/15/2019
-ms.openlocfilehash: 193b8f59a805de4303bfc38d397a821cc068dcc0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
+ms.date: 02/27/2020
+ms.openlocfilehash: e98a11d9aee1c4f76453dc1716f92514b021444f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088200"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917836"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Co to jest Apache Hadoop w usłudze Azure HDInsight?
 
@@ -24,15 +23,15 @@ Azure HDInsight to w pełni zarządzana usługa analizy typu open source w chmur
 
 Aby wyświetlić dostępne składniki stosu technologii Hadoop w usłudze HDInsight, zobacz [składniki i wersje dostępne w usłudze HDInsight](../hdinsight-component-versioning.md). Aby dowiedzieć się więcej o platformie Hadoop w usłudze HDInsight, zobacz [stronę z opisem funkcji platformy Azure w usłudze HDInsight](https://azure.microsoft.com/services/hdinsight/).
 
-## <a id="whatis"></a>Co to jest MapReduce
+## <a name="what-is-mapreduce"></a>Co to jest MapReduce
 
 Apache Hadoop MapReduce jest platformą oprogramowania do pisania zadań, które przetwarzają ogromną ilość danych. Dane wejściowe są dzielone na niezależne fragmenty. Każdy fragment jest przetwarzany równolegle między węzłami w klastrze. Zadanie MapReduce składa się z dwóch funkcji:
 
-* **Maper**: Wykorzystuje dane wejściowe, analizuje je (zazwyczaj przy użyciu operacji filtrowania i sortowania) i emituje krotki (pary klucz-wartość)
+* **Maper**: wykorzystuje dane wejściowe, analizuje je (zazwyczaj z operacjami filtrowania i sortowania) i emituje krotki (pary klucz-wartość)
 
-* **Zmniejszenie**: Wykorzystuje krotki emitowane przez mapowanie i wykonuje operację podsumowującą, która tworzy mniejszy wynik połączony z danych mapowania
+* **Redukcja**: wykorzystuje krotki emitowane przez mapowanie i wykonuje operację podsumowującą, która tworzy mniejszy, połączony wynik z danych mapowania
 
-Przykład podstawowego zadania MapReduce zliczania wyrazów przedstawiono na poniższym diagramie:   
+Przykład podstawowego zadania MapReduce zliczania wyrazów przedstawiono na poniższym diagramie:
 
  ![HDI.WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
@@ -51,7 +50,7 @@ Przesyłanie strumieniowe w usłudze Hadoop komunikuje się z mapowaniem i zmnie
 
     [key]/t[value]
 
-Aby uzyskać więcej informacji, zobacz Usługa [przesyłania strumieniowego Hadoop](https://hadoop.apache.org/docs/r1.2.1/streaming.html).
+Aby uzyskać więcej informacji, zobacz Usługa [przesyłania strumieniowego Hadoop](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html).
 
 Przykłady korzystania z przesyłania strumieniowego Hadoop za pomocą usługi HDInsight można znaleźć w następującym dokumencie:
 

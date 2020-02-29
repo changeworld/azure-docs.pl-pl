@@ -12,18 +12,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 590505d954d52ebec9f8a5c344d6e750f11ef677
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981361"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921457"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>System Windows wyświetla "KRYTYCZNa usługa nie powiodła się" na niebieskim ekranie podczas uruchamiania maszyny wirtualnej platformy Azure
 W tym artykule opisano błąd "niepowodzenie usługi KRYTYCZNEj", która może wystąpić w przypadku uruchamiania maszyny wirtualnej z systemem Windows w Microsoft Azure. Zawiera kroki rozwiązywania problemów, aby pomóc w rozwiązaniu problemów. 
 
-> [!NOTE] 
-> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano użycie modelu wdrażania Menedżer zasobów, którego zalecamy używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptom"></a>Objaw 
 
@@ -45,8 +43,8 @@ Aby rozwiązać ten problem, [skontaktuj się z pomocą techniczną i Prześlij 
 
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania
 
-1. Utwórz migawkę dysku systemu operacyjnego z zaatakowaną maszyną wirtualną jako kopię zapasową. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
-2. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](./troubleshoot-recovery-disks-portal-windows.md). 
+1. Utwórz migawkę dysku systemu operacyjnego z zaatakowaną maszyną wirtualną jako kopię zapasową. Aby uzyskać więcej informacji, zobacz [migawka dysku](../windows/snapshot-copy-managed-disk.md).
+2. [Dołącz dysk systemu operacyjnego do maszyny wirtualnej odzyskiwania](./troubleshoot-recovery-disks-portal-windows.md). 
 3. Nawiąż połączenie pulpitu zdalnego z maszyną wirtualną odzyskiwania.
 
 ### <a name="enable-dump-logs-and-serial-console"></a>Włącz dzienniki zrzutów i konsolę seryjną

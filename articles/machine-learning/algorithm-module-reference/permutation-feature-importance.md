@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 9ef859cce68e13f5207d77d8396bc69ddbbce339
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/24/2020
+ms.openlocfilehash: 8611abd4e504e0378b744b12d0adb5fa22f5476b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314950"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920369"
 ---
 # <a name="permutation-feature-importance"></a>Ważność funkcji permutacji
 
-W tym artykule opisano, jak używać modułu ważności funkcji permutacji w programie Azure Machine Learning Designer do obliczania zestawu wyników ważności funkcji dla zestawu danych. Te wyniki służą do określenia najlepszych funkcji do użycia w modelu.
+W tym artykule opisano, jak używać modułu ważności funkcji permutacji w programie Azure Machine Learning Designer (wersja zapoznawcza) w celu obliczenia zestawu wyników ważności funkcji dla zestawu danych. Te wyniki służą do określenia najlepszych funkcji do użycia w modelu.
 
 W tym module wartości funkcji są losowo przebierane w jedną kolumnę w czasie. Wydajność modelu jest mierzona przed i po. Możesz wybrać jedną ze standardowych metryk, aby zmierzyć wydajność.
 
@@ -46,9 +46,9 @@ Generowanie zestawu wyników funkcji wymaga, aby był już szkolony model, a tak
 
     -   **Classification** (Klasyfikacja)
 
-        Dokładność, precyzja, odwołanie, średnia utrata dziennika  
+        Dokładność, precyzja, odwołanie  
 
-    -   **Regression**
+    -   **Ubytk**
 
         Precyzja, odwoływanie, średnie Błędy bezwzględne, główny, średni, błąd względny  
 

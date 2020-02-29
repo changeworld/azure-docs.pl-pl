@@ -3,12 +3,12 @@ title: Uruchamianie aplikacji z pakietu ZIP
 description: Wdróż pakiet ZIP aplikacji z niepodzielną. Popraw przewidywalność i niezawodność zachowania aplikacji podczas procesu wdrażania ZIP.
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 316ada7700a5cf45ee90f515336039702bab48c0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945840"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920726"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Uruchom aplikację w Azure App Service bezpośrednio z pakietu ZIP
 
@@ -41,7 +41,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 ## <a name="run-the-package"></a>Uruchom pakiet
 
-Najprostszym sposobem uruchomienia pakietu w App Service jest interfejs wiersza polecenia platformy Azure [AZ webapp Deployment Source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) . Przykład:
+Najprostszym sposobem uruchomienia pakietu w App Service jest interfejs wiersza polecenia platformy Azure [AZ webapp Deployment Source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) . Na przykład:
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src <filename>.zip
@@ -62,6 +62,33 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 ```
 
 Jeśli publikujesz zaktualizowany pakiet o tej samej nazwie w usłudze BLOB Storage, musisz ponownie uruchomić aplikację, aby zaktualizowany pakiet został załadowany do App Service.
+
+### <a name="use-key-vault-references"></a>Użyj odwołań Key Vault
+
+Aby zwiększyć bezpieczeństwo, można użyć odwołań Key Vault w połączeniu z zewnętrznym adresem URL. Dzięki temu adres URL jest szyfrowany i umożliwia korzystanie Key Vault na potrzeby zarządzania i rotacji tajnych. Zaleca się używanie usługi Azure Blob Storage, dzięki czemu można łatwo obrócić skojarzony klucz SAS. Magazyn obiektów blob platformy Azure jest szyfrowany w spoczynku, co zapewnia bezpieczeństwo danych aplikacji, gdy nie jest ona wdrożona w App Service.
+
+1. Utwórz Azure Key Vault.
+
+    ```azurecli
+    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
+    ```
+
+1. Dodaj zewnętrzny adres URL jako wpis tajny w Key Vault.
+
+    ```azurecli
+    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
+    ```
+
+1. Utwórz ustawienie aplikacji `WEBSITE_RUN_FROM_PACKAGE` i ustaw wartość jako odwołanie Key Vault do zewnętrznego adresu URL.
+
+    ```azurecli
+    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
+    ```
+
+Zobacz następujące artykuły, aby uzyskać więcej informacji.
+
+- [Key Vault odwołań dla App Service](app-service-key-vault-references.md)
+- [Szyfrowanie usługi Azure Storage dla danych magazynowanych](../storage/common/storage-service-encryption.md)
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

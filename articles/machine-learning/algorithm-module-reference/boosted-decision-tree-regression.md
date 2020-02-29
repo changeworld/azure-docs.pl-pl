@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 5298655437e04736e56193c443b8a770ea929606
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 10821639fb26af935326bda0bff7895105da675c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152418"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919961"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Moduł regresji drzewa decyzyjnego
 
@@ -54,7 +54,9 @@ Metodę zwiększania gradientu można również użyć w przypadku problemów z 
   
 2.  Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .  
   
-    -   **Pojedynczy parametr**: zaznacz tę opcję, Jeśli wiesz, jak chcesz skonfigurować model i udostępnić określony zestaw wartości jako argumenty.  
+    -   **Pojedynczy parametr**: zaznacz tę opcję, Jeśli wiesz, jak chcesz skonfigurować model i udostępnić określony zestaw wartości jako argumenty. 
+     
+    -   **Zakres parametrów**: Wybierz tę opcję, jeśli nie masz pewności co do najlepszych parametrów i chcesz uruchomić odchylenia parametrów. Wybierz zakres wartości do iteracji, a [Parametry dostrojenia modelu](tune-model-hyperparameters.md) przechodzą na wszystkie możliwe kombinacje ustawień, które podano, aby określić parametry, które generują optymalne wyniki.    
    
   
 3. **Maksymalna liczba liści na drzewo**: wskazuje maksymalną liczbę węzłów terminalu (liści), które można utworzyć w dowolnym drzewie.  
@@ -75,7 +77,6 @@ Metodę zwiększania gradientu można również użyć w przypadku problemów z 
 
     Domyślnie losowy inicjator jest ustawiony na 0, co oznacza, że początkowa wartość inicjatora jest uzyskiwana z zegara systemowego.
   
-8. **Zezwalaj na nieznane poziomy kategorii**: Wybierz tę opcję, aby utworzyć grupę dla nieznanych wartości w zestawach szkoleń i walidacji. W przypadku zaznaczenia tej opcji model może akceptować tylko wartości, które są zawarte w danych szkoleniowych. Model może być mniej dokładny dla znanych wartości, ale może zapewnić lepsze przewidywania dla nowych wartości (nieznanych).
 
 9. Dodaj zestaw danych szkoleniowych i jeden z modułów szkoleniowych:
 

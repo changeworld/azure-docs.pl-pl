@@ -1,23 +1,23 @@
 ---
-title: Ponowne uczenie modeli przy użyciu narzędzia Azure Machine Learning Designer
+title: Ponowne uczenie modeli przy użyciu programu Azure Machine Learning Designer (wersja zapoznawcza)
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak ponownie szkolić modele z opublikowanymi potokami w programie Azure Machine Learning Designer.
+description: Dowiedz się, jak ponownie szkolić modele z opublikowanymi potokami w programie Azure Machine Learning Designer (wersja zapoznawcza).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: peterlu
-author: peterclu
-ms.date: 12/15/2019
-ms.openlocfilehash: d1382da739fd8ca56d4cc53c2c302331bdfbf1c3
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.author: keli19
+author: likebupt
+ms.date: 02/24/2020
+ms.openlocfilehash: b69cd4c8459ffae363f02247b1f20488afe1cd9b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311873"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921604"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>Ponowne uczenie modeli za pomocą narzędzia Azure Machine Learning Designer
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Ponowne uczenie modeli za pomocą programu Azure Machine Learning Designer (wersja zapoznawcza)
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 W tym instruktażu dowiesz się, jak za pomocą narzędzia Azure Machine Learning Designer ponownie przeprowadzić uczenie modelu uczenia maszynowego. Dowiedz się, jak używać opublikowanych potoków do automatyzowania przepływów pracy uczenia maszynowego na potrzeby ponownego szkolenia.
 
@@ -69,11 +69,11 @@ Projektant zapisuje wszystkie dane wyjściowe potoku, w tym modele przeszkolone,
 
 1. Wybierz moduł **uczenie modelu** .
 
-1. W okienku Ustawienia wybierz pozycję dane **wyjściowe**.
+1. W okienku Ustawienia wybierz pozycję dane **wyjściowe + dzienniki**.
 
-1. Wybierz **Trained_model** , aby pobrać model.
+1. Kliknij przycisk **Wyświetl ikonę danych wyjściowych** i postępuj zgodnie z instrukcjami w oknie podręcznym, aby zlokalizować szkolony model.
 
-![Zrzut ekranu przedstawiający sposób pobierania przeszkolonego modelu](./media/how-to-retrain-designer/download-model.png)
+![Zrzut ekranu przedstawiający sposób pobierania przeszkolonego modelu](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="create-a-pipeline-parameter"></a>Tworzenie parametru potoku
 

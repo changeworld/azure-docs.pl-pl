@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 4a2887ef8b264628128872730422fd38d6b0ac0f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e30587ed4d09ba792516ebc7b16529a6ee5ac57c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425004"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918958"
 ---
 # <a name="what-is-custom-speech"></a>Co to jest Custom Speech?
 
@@ -43,7 +43,7 @@ Ten diagram przedstawia elementy wchodzące w skład [portalu Custom Speech](htt
 
 ## <a name="set-up-your-azure-account"></a>Skonfiguruj swoje konto platformy Azure
 
-Wymagana jest subskrypcja usługi mowy, aby można było użyć [portalu Custom Speech](https://speech.microsoft.com/customspeech) w celu utworzenia modelu niestandardowego. Postępuj zgodnie z tymi instrukcjami, aby utworzyć standardową subskrypcję usługi mowy: [Utwórz subskrypcję mowy](get-started.md#try-the-speech-service-using-a-new-azure-account).
+Wymagana jest subskrypcja usługi mowy, aby można było użyć [portalu Custom Speech](https://speech.microsoft.com/customspeech) w celu utworzenia modelu niestandardowego. Postępuj zgodnie z tymi instrukcjami, aby utworzyć standardową subskrypcję usługi mowy: [Utwórz subskrypcję mowy](get-started.md#new-resource).
 
 > [!NOTE]
 > Pamiętaj, aby utworzyć standardowe subskrypcje (S0) i subskrypcje bezpłatnej wersji próbnej (F0) nie są obsługiwane.

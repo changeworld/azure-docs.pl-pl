@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 02/27/2020
 ms.author: spelluru
-ms.openlocfilehash: 483b8251bf17eaa5fe7aa7cbd86299575535725d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dda2fd98c4c0d330059156a5ec00baa97ffaf627
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170040"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921066"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid dostarczania komunikatów i ponów próbę
 
@@ -26,12 +26,33 @@ Event Grid domyślnie wysyłać każde zdarzenie do subskrybentów. Subskrybent 
 
 Wsadowe dostarczanie ma dwa ustawienia:
 
-* Maksymalna liczba **zdarzeń na partię** jest maksymalną liczbą zdarzeń, Event Grid będzie dostarczanych na partię. Ta liczba nigdy nie zostanie przekroczona. można jednak dostarczyć mniejszą liczbę zdarzeń, jeśli podczas publikowania nie będą dostępne żadne inne zdarzenia. Event Grid nie opóźnia zdarzeń, aby można było utworzyć partię, jeśli są dostępne mniej zdarzeń. Musi zawierać się w przedziale od 1 do 5 000.
-* **Preferowany rozmiar wsadu w kilobajtach** to docelowy limit rozmiaru wsadu w kilobajtach. Podobnie jak w przypadku maksymalnych zdarzeń, rozmiar wsadu może być mniejszy, jeśli podczas publikowania nie są dostępne więcej zdarzeń. Istnieje możliwość, że partia jest większa niż preferowany rozmiar partii, *Jeśli* pojedyncze zdarzenie jest większe niż preferowany rozmiar. Na przykład jeśli preferowany rozmiar to 4 KB, a do Event Grid zostanie wypchnięte zdarzenie o rozmiarze 10 KB, zdarzenie o rozmiarze 10 KB będzie nadal dostarczane do własnej partii, a nie do porzucenia.
+* **Maksymalna Event Grid liczba zdarzeń przypadających na partie** Ta liczba nigdy nie zostanie przekroczona. można jednak dostarczyć mniejszą liczbę zdarzeń, jeśli podczas publikowania nie będą dostępne żadne inne zdarzenia. Event Grid nie opóźnia zdarzeń, aby można było utworzyć partię, jeśli są dostępne mniej zdarzeń. Musi zawierać się w przedziale od 1 do 5 000.
+* **Preferowany rozmiar wsadu w kilobajtach** — docelowy limit rozmiaru partii w kilobajtach. Podobnie jak w przypadku maksymalnych zdarzeń, rozmiar wsadu może być mniejszy, jeśli podczas publikowania nie są dostępne więcej zdarzeń. Istnieje możliwość, że partia jest większa niż preferowany rozmiar partii, *Jeśli* pojedyncze zdarzenie jest większe niż preferowany rozmiar. Na przykład jeśli preferowany rozmiar to 4 KB, a do Event Grid zostanie wypchnięte zdarzenie o rozmiarze 10 KB, zdarzenie o rozmiarze 10 KB będzie nadal dostarczane do własnej partii, a nie do porzucenia.
 
 Dostarczanie wsadowe skonfigurowane dla każdej subskrypcji zdarzenia za pośrednictwem portalu, interfejsu wiersza polecenia, programu PowerShell lub zestawów SDK.
 
+### <a name="azure-portal"></a>Witryna Azure Portal: 
 ![Ustawienia dostarczania wsadowego](./media/delivery-and-retry/batch-settings.png)
+
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+Podczas tworzenia subskrypcji zdarzeń należy użyć następujących parametrów: 
+
+- **Maksymalna liczba zdarzeń na partie** z maksymalną liczbą zdarzeń w partii. Musi być liczbą z przedziału od 1 do 5000.
+- **preferowany rozmiar partii (w** kilobajtach) — rozmiar wsadu preferowany w kilobajtach. Musi być liczbą z przedziału od 1 do 1024.
+
+```azurecli
+storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
+
+az eventgrid event-subscription create \
+  --resource-id $storageid \
+  --name <event_subscription_name> \
+  --endpoint $endpoint \
+  --max-events-per-batch 1000 \
+  --preferred-batch-size-in-kilobytes 512
+```
+
+Aby uzyskać więcej informacji na temat korzystania z interfejsu wiersza polecenia platformy Azure z Event Grid, zobacz [Route Storage Events to Web Endpoint with Azure CLI](../storage/blobs/storage-blob-event-quickstart.md).
 
 ## <a name="retry-schedule-and-duration"></a>Harmonogram ponownych prób i czas trwania
 
@@ -97,11 +118,11 @@ Wszystkie inne kody, które nie znajdują się w powyższym zestawie (200-204), 
 | 400 Nieprawidłowe żądanie | Ponów próbę po 5 minutach lub więcej (Utracono wiadomości natychmiast, jeśli konfiguracja utraconych wiadomości) |
 | 401 — nieautoryzowane | Ponów próbę po 5 minutach lub dłużej |
 | 403 Zabronione | Ponów próbę po 5 minutach lub dłużej |
-| 404 — Nie odnaleziono | Ponów próbę po 5 minutach lub dłużej |
+| nie znaleziono 404 | Ponów próbę po 5 minutach lub dłużej |
 | 408 — limit czasu żądania | Ponów próbę po 2 minutach lub więcej |
 | Jednostka żądania 413 jest zbyt duża | Ponów próbę po upływie 10 sekund lub więcej (utraconych wiadomości, jeśli konfiguracja utraconych wiadomości) |
 | 503 — usługa niedostępna | Ponów próbę po 30 sekundach lub więcej |
-| Wszystkie pozostałe | Ponów próbę po 10 sekundach lub więcej |
+| Wszystkie inne | Ponów próbę po 10 sekundach lub więcej |
 
 
 ## <a name="next-steps"></a>Następne kroki

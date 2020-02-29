@@ -4,18 +4,18 @@ description: W tym samouczku dowiesz się, jak skalować klaster Service Fabric 
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 9f3049f5a46918d9e70e27fe862372de2cf577ae
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f33f1a9b3e3132475f9a35a3703327b1a193d1e1
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639058"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921423"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Samouczek: skalowanie klastra usługi Service Fabric na platformie Azure
 
 Ten samouczek jest trzecią częścią serii i pokazuje, jak skalować istniejący klaster poza i w programie. Ukończenie tego samouczka pozwoli Ci uzyskać wiedzę na temat skalowania klastra i czyszczenia pozostałych zasobów.  Aby uzyskać więcej informacji na temat skalowania klastra działającego na platformie Azure, Przeczytaj [Service Fabric skalowanie klastrów](service-fabric-cluster-scaling.md).
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Dodawanie i usuwanie węzłów (skalowanie w poziomie i skalowanie w górę)
@@ -37,7 +37,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * Zainstaluj program [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) lub [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 * Tworzenie bezpiecznego [klastra systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) na platformie Azure
 
@@ -55,8 +55,8 @@ Podczas skalowania klastra platformy Azure należy pamiętać o następujących 
 
 * Jeden Service Fabric typu węzła/zestawu skalowania nie może zawierać więcej niż 100 węzłów/maszyn wirtualnych.  Aby skalować klaster poza 100 węzłów, Dodaj dodatkowe typy węzłów.
 * Typy węzła podstawowego z uruchomionymi obciążeniami produkcyjnymi powinny mieć [poziom trwałości][durability] Gold lub Silver i zawsze mieć pięć lub więcej węzłów.
-* typy węzłów innych niż podstawowe działające stanowe obciążenia produkcyjne powinny mieć zawsze pięć lub więcej węzłów.
-* typy węzłów innych niż podstawowe, które działają bezstanowe obciążenia produkcyjne, powinny zawsze mieć co najmniej dwa węzły.
+* Typy węzłów innych niż podstawowe działające stanowe obciążenia produkcyjne powinny mieć zawsze pięć lub więcej węzłów.
+* Typy węzłów innych niż podstawowe, które działają bezstanowe obciążenia produkcyjne, powinny zawsze mieć co najmniej dwa węzły.
 * Każdy typ węzła [poziomu trwałości][durability] Gold lub Silver powinien mieć zawsze pięć lub więcej węzłów.
 * Jeśli skalowanie w (usuwanie węzłów z) typu węzła podstawowego, nigdy nie należy zmniejszać liczby wystąpień do wartości mniejszej niż wymagana przez [poziom niezawodności][reliability] .
 
@@ -82,7 +82,7 @@ Skalowanie do wewnątrz i na zewnątrz lub skalowanie w poziomie powoduje zmian�
 
 [Wyeksportuj plik szablonu i parametrów](#export-the-template-for-the-resource-group) z grupy zasobów dla najnowszego wdrożenia.  Otwórz plik *Parameters. JSON* .  Jeśli klaster został wdrożony przy użyciu [przykładowego szablonu][template] w tym samouczku, istnieją trzy typy węzłów w klastrze i trzy parametry ustawiające liczbę węzłów dla każdego typu węzła: *nt0InstanceCount*, *nt1InstanceCount*i *nt2InstanceCount*.  Parametr *nt1InstanceCount* , na przykład, ustawia liczbę wystąpień dla drugiego typu węzła, a następnie ustawia liczba maszyn wirtualnych w skojarzonym zestawie skalowania maszyn wirtualnych.
 
-Aby więc zaktualizować wartość *nt1InstanceCount* , należy zmienić liczbę węzłów w drugim typie węzła.  Należy pamiętać, że nie można skalować typu węzła do więcej niż 100 węzłów.  typy węzłów innych niż podstawowe działające stanowe obciążenia produkcyjne powinny mieć zawsze pięć lub więcej węzłów. typy węzłów innych niż podstawowe, które działają bezstanowe obciążenia produkcyjne, powinny zawsze mieć co najmniej dwa węzły.
+Aby więc zaktualizować wartość *nt1InstanceCount* , należy zmienić liczbę węzłów w drugim typie węzła.  Należy pamiętać, że nie można skalować typu węzła do więcej niż 100 węzłów.  Typy węzłów innych niż podstawowe działające stanowe obciążenia produkcyjne powinny mieć zawsze pięć lub więcej węzłów. Typy węzłów innych niż podstawowe, które działają bezstanowe obciążenia produkcyjne, powinny zawsze mieć co najmniej dwa węzły.
 
 W przypadku skalowania w programie usuwanie węzłów z, typ węzła na [poziomie trwałości][durability] brony, należy [ręcznie usunąć stan tych węzłów](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  W przypadku warstwy trwałości Silver i Gold te kroki są wykonywane automatycznie przez platformę.
 
@@ -845,7 +845,7 @@ Po utworzeniu klastra Service Fabric można skalować typ węzła klastra w pion
 
 [Wyeksportuj plik szablonu i parametrów](#export-the-template-for-the-resource-group) z grupy zasobów dla najnowszego wdrożenia.  Otwórz plik *Parameters. JSON* .  Jeśli klaster został wdrożony przy użyciu [przykładowego szablonu][template] w tym samouczku, w klastrze istnieją trzy typy węzłów.  
 
-Rozmiar maszyn wirtualnych w drugim typie węzła jest ustawiany w parametrze *vmNodeType1Size* .  Zmień wartość parametru *vmNodeType1Size* z Standard_D2_V2 na [Standard_D3_V2](/azure/virtual-machines/windows/sizes-general#dv2-series), co podwaja zasoby poszczególnych wystąpień maszyn wirtualnych.
+Rozmiar maszyn wirtualnych w drugim typie węzła jest ustawiany w parametrze *vmNodeType1Size* .  Zmień wartość parametru *vmNodeType1Size* z Standard_D2_V2 na [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md), co podwaja zasoby poszczególnych wystąpień maszyn wirtualnych.
 
 Jednostka SKU maszyny wirtualnej dla wszystkich trzech typów węzłów jest ustawiana za pomocą parametru *vmImageSku* .  W przypadku zmiany jednostki SKU maszyny wirtualnej typu węzła należy zachować ostrożność i nie jest to zalecane w przypadku podstawowego typu węzła.
 

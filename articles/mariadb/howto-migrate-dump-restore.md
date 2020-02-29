@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 660b39a063496eb6566d51dbef2c914499dc70c9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: 72735e83af97fde8377e27daa45501704ef5a3c8
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776009"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164546"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migrowanie bazy danych MariaDB do Azure Database for MariaDB przy użyciu zrzutów i przywracania
 W tym artykule opisano dwa typowe sposoby tworzenia kopii zapasowych i przywracania baz danych w Azure Database for MariaDB
@@ -22,10 +22,10 @@ W tym artykule opisano dwa typowe sposoby tworzenia kopii zapasowych i przywraca
 Aby krokowo korzystać z tego przewodnika, musisz mieć:
 - [Tworzenie Azure Database for MariaDB Server — Azure Portal](quickstart-create-mariadb-server-database-using-azure-portal.md)
 - Narzędzie wiersza polecenia [mysqldump](https://mariadb.com/kb/en/library/mysqldump/) zainstalowane na komputerze.
-- Program MySQL Workbench [MySQL Workbench pobieranie](https://dev.mysql.com/downloads/workbench/), TOAD, Navicat lub inne narzędzie MySQL innej firmy do wykonywania poleceń zrzutów i przywracania.
+- Narzędzia MySQL Workbench [MySQL Workbench Download](https://dev.mysql.com/downloads/workbench/) lub inne narzędzie MySQL innej firmy do wykonywania poleceń zrzutów i przywracania.
 
 ## <a name="use-common-tools"></a>Korzystanie z popularnych narzędzi
-Używaj popularnych narzędzi i narzędzi, takich jak MySQL Workbench, mysqldump, TOAD lub Navicat, aby zdalnie łączyć i przywracać dane w Azure Database for MariaDB. Użyj tych narzędzi na komputerze klienckim z połączeniem internetowym, aby nawiązać połączenie z Azure Database for MariaDB. Użyj połączenia szyfrowanego protokołem SSL, aby uzyskać najlepsze rozwiązania w zakresie zabezpieczeń, zobacz również [Konfigurowanie łączności SSL w Azure Database for MariaDB](concepts-ssl-connection-security.md). Nie ma potrzeby przenoszenia plików zrzutu do żadnej specjalnej lokalizacji w chmurze podczas migracji do Azure Database for MariaDB. 
+Używaj popularnych narzędzi i narzędzi, takich jak MySQL Workbench lub mysqldump, aby zdalnie łączyć i przywracać dane w Azure Database for MariaDB. Użyj tych narzędzi na komputerze klienckim z połączeniem internetowym, aby nawiązać połączenie z Azure Database for MariaDB. Użyj połączenia szyfrowanego protokołem SSL, aby uzyskać najlepsze rozwiązania w zakresie zabezpieczeń, zobacz również [Konfigurowanie łączności SSL w Azure Database for MariaDB](concepts-ssl-connection-security.md). Nie ma potrzeby przenoszenia plików zrzutu do żadnej specjalnej lokalizacji w chmurze podczas migracji do Azure Database for MariaDB. 
 
 ## <a name="common-uses-for-dump-and-restore"></a>Typowe zastosowania zrzutów i przywracania
 Możesz użyć narzędzi MySQL, takich jak mysqldump i mysqlpump, aby zrzucić i ładować bazy danych do serwera Azure Database for MariaDB w kilku typowych scenariuszach. 
@@ -41,7 +41,7 @@ Możesz użyć narzędzi MySQL, takich jak mysqldump i mysqlpump, aby zrzucić i
    ```
 - Aby uniknąć problemów ze zgodnością, upewnij się, że w przypadku zrzucania baz danych w systemach źródłowym i docelowym jest używana ta sama wersja programu MariaDB. Na przykład jeśli istniejący serwer MariaDB jest w wersji 10,2, należy przeprowadzić migrację do Azure Database for MariaDB skonfigurowany do uruchamiania wersji 10,2. Polecenie `mysql_upgrade` nie działa na serwerze Azure Database for MariaDB i nie jest obsługiwane. Jeśli musisz przeprowadzić uaktualnienie w wersjach MariaDB, najpierw wykonaj zrzut lub wyeksportuj niższą wersję bazy danych do nowszej wersji MariaDB we własnym środowisku. Następnie przed podjęciem próby migracji do Azure Database for MariaDB Uruchom `mysql_upgrade`.
 
-## <a name="performance-considerations"></a>Zagadnienia związane z wydajnością
+## <a name="performance-considerations"></a>Zagadnienia dotyczące wydajności
 Aby zoptymalizować wydajność, należy wziąć pod uwagę następujące kwestie w przypadku zatopienia dużych baz danych:
 -   Użyj opcji `exclude-triggers` w mysqldump, gdy zrzucane są bazy danych. Wyklucz wyzwalacze z plików zrzutów, aby uniknąć uruchamiania poleceń wyzwalacza podczas przywracania danych. 
 -   Użyj opcji `single-transaction`, aby ustawić tryb izolacji transakcji na POWTARZAjący ODCZYTYWANie i wysyłanie instrukcji SQL START TRANSACTION do serwera przed zatopieniem danych. Zatopienie wielu tabel w ramach jednej transakcji powoduje, że niektóre dodatkowe magazyny mają być zużywane podczas przywracania. Opcja `single-transaction` i opcja `lock-tables` wykluczają się wzajemnie, ponieważ tabele blokad powodują niejawne zatwierdzenie oczekujących transakcji. Aby zrzucić duże tabele, Połącz opcję `single-transaction` z opcją `quick`. 
@@ -81,7 +81,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 
 ## <a name="create-a-database-on-the-target-server"></a>Tworzenie bazy danych na serwerze docelowym
-Utwórz pustą bazę danych na docelowym serwerze Azure Database for MariaDB, na którym chcesz przeprowadzić migrację danych. Utwórz bazę danych za pomocą narzędzia, takiego jak MySQL Workbench, TOAD lub Navicat. Baza danych może mieć taką samą nazwę, jak baza danych, która zawiera dane z danymi zrzutu, lub można utworzyć bazę danych o innej nazwie.
+Utwórz pustą bazę danych na docelowym serwerze Azure Database for MariaDB, na którym chcesz przeprowadzić migrację danych. Utwórz bazę danych za pomocą narzędzia, takiego jak MySQL Workbench. Baza danych może mieć taką samą nazwę, jak baza danych, która zawiera dane z danymi zrzutu, lub można utworzyć bazę danych o innej nazwie.
 
 Aby nawiązać połączenie, Znajdź informacje o połączeniu w **przeglądzie** Azure Database for MariaDB.
 

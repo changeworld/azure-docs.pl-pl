@@ -1,5 +1,6 @@
 ---
-title: Wprowadzenie do zasad niestandardowych — Azure Active Directory B2C
+title: Wprowadzenie do zasad niestandardowych
+titleSuffix: Azure AD B2C
 description: Dowiedz się, jak rozpocząć pracę z zasadami niestandardowymi w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 02/28/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5a0e5846dd541e4997c271aee180b3790efa16e9
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 04978b561e3b0057318d08146f344411dec55ee4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114041"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161673"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Wprowadzenie do zasad niestandardowych w Azure Active Directory B2C
 
@@ -27,7 +28,7 @@ ms.locfileid: "77114041"
 
 - Jeśli jeszcze tego nie zrobiono, [Utwórz dzierżawę Azure AD B2C](tutorial-create-tenant.md) , która jest połączona z subskrypcją platformy Azure.
 - [Zarejestruj swoją aplikację](tutorial-register-applications.md) w utworzonej dzierżawie, aby mogła ona komunikować się z Azure AD B2C.
-- Wykonaj kroki opisane w temacie [Konfigurowanie rejestracji i logowania przy użyciu konta w serwisie Facebook](identity-provider-facebook.md) , aby skonfigurować aplikację w serwisie Facebook.
+- Wykonaj kroki opisane w temacie [Konfigurowanie rejestracji i logowania przy użyciu konta w serwisie Facebook](identity-provider-facebook.md) , aby skonfigurować aplikację w serwisie Facebook. Mimo że aplikacja Facebook nie jest wymagana do korzystania z zasad niestandardowych, jest używana w tym instruktażu, aby zademonstrować włączenie logowania do sieci społecznościowej w zasadach niestandardowych.
 
 ## <a name="add-signing-and-encryption-keys"></a>Dodaj klucze podpisywania i szyfrowania
 
@@ -75,7 +76,7 @@ Musisz zarejestrować te dwie aplikacje w dzierżawie Azure AD B2C tylko raz.
 
 Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć środowiska **rejestracje aplikacji (starszej)** lub naszego nowego systemu ujednoliconego **rejestracje aplikacji (wersja zapoznawcza)** . [Dowiedz się więcej na temat nowego środowiska](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
+#### <a name="applications"></a>[Aplikacje](#tab/applications/)
 
 1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. W Azure Portal Wyszukaj i wybierz pozycję **Azure Active Directory**.
@@ -86,7 +87,7 @@ Aby zarejestrować aplikację w dzierżawie Azure AD B2C, możesz użyć środow
 1. W obszarze **adres URL logowania**wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, gdzie `your-tenant-name` jest nazwą domeny dzierżawy Azure AD B2C. Wszystkie adresy URL powinny teraz używać [b2clogin.com](b2clogin.md).
 1. Wybierz pozycję **Utwórz**. Po jego utworzeniu Skopiuj identyfikator aplikacji i Zapisz go do późniejszego użycia.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
 
 1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz pozycję **Nowa rejestracja**.
 1. W obszarze **Nazwa**wprowadź `IdentityExperienceFramework`.
@@ -110,7 +111,7 @@ Następnie udostępnienie interfejsu API przez dodanie zakresu:
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>Rejestrowanie aplikacji ProxyIdentityExperienceFramework
 
-#### <a name="applicationstabapplications"></a>[Aplikacje](#tab/applications/)
+#### <a name="applications"></a>[Aplikacje](#tab/applications/)
 
 1. W **rejestracje aplikacji (starsza wersja)** wybierz pozycję **rejestracja nowej aplikacji**.
 1. W obszarze **Nazwa**wprowadź `ProxyIdentityExperienceFramework`.
@@ -122,7 +123,7 @@ Następnie udostępnienie interfejsu API przez dodanie zakresu:
 1. Zaznacz pole wyboru obok pozycji **dostęp do IdentityExperienceFramework**, kliknij pozycję **Wybierz**, a następnie kliknij pozycję **gotowe**.
 1. Wybierz pozycję **Udziel uprawnień**, a następnie potwierdź, wybierając pozycję **tak**.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Rejestracje aplikacji (wersja zapoznawcza)](#tab/app-reg-preview/)
 
 1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz pozycję **Nowa rejestracja**.
 1. W obszarze **Nazwa**wprowadź `ProxyIdentityExperienceFramework`.
@@ -221,6 +222,8 @@ Podczas przekazywania plików platforma Azure dodaje prefiks `B2C_1A_` do każde
 1. Zaloguj się przy użyciu tego samego konta, aby potwierdzić, że konfiguracja jest poprawna.
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Dodawanie usługi Facebook jako dostawcy tożsamości
+
+Jak wspomniano w [wymaganiach wstępnych](#prerequisites), serwis Facebook *nie* jest wymagany do korzystania z zasad niestandardowych, ale jest używany w tym miejscu do zademonstrowania, jak można włączyć federacyjne logowanie społeczne w zasadach niestandardowych.
 
 1. W pliku `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** Zastąp wartość `client_id` identyfikatorem aplikacji Facebook:
 

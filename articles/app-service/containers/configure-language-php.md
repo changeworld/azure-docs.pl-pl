@@ -4,12 +4,12 @@ description: Dowiedz się, jak skonfigurować wstępnie zbudowany kontener PHP d
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: a3de4769193d95a3ef483924c4d65c4fa1cc9f8d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e805487075499bd4e461a21fffb4c44156ce192b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671835"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913875"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurowanie aplikacji PHP w systemie Linux dla Azure App Service
 
@@ -39,52 +39,26 @@ Uruchom następujące polecenie w [Cloud Shell](https://shell.azure.com) , aby u
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
 ```
 
-## <a name="run-composer"></a>Uruchom układacz
+## <a name="customize-build-automation"></a>Dostosuj automatyzację kompilacji
 
-Domyślnie kudu nie uruchamia [układacz](https://getcomposer.org/). Aby włączyć automatyzację kompozytora podczas wdrażania kudu, należy podać [niestandardowy skrypt wdrożenia](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
+Jeśli aplikacja zostanie wdrożona za pomocą usługi Git lub zip z włączonym automatyzacją kompilacji, App Service kroki automatyzacji kompilacji w następującej kolejności:
 
-W oknie lokalnego terminalu Zmień katalog na katalog główny repozytorium. Postępuj zgodnie z [instrukcjami instalacji wiersza polecenia](https://getcomposer.org/download/) , aby pobrać *Composer. PHAR*.
+1. Uruchom skrypt niestandardowy, jeśli został określony przez `PRE_BUILD_SCRIPT_PATH`.
+1. Uruchom polecenie `php composer.phar install`.
+1. Uruchom skrypt niestandardowy, jeśli został określony przez `POST_BUILD_SCRIPT_PATH`.
 
-Uruchom następujące polecenia:
+`PRE_BUILD_COMMAND` i `POST_BUILD_COMMAND` są zmiennymi środowiskowymi, które są domyślnie puste. Aby uruchomić polecenia przed kompilacją, zdefiniuj `PRE_BUILD_COMMAND`. Aby uruchomić polecenia po kompilacji, zdefiniuj `POST_BUILD_COMMAND`.
 
-```bash
-npm install kuduscript -g
-kuduscript --php --scriptType bash --suppressPrompt
+W poniższym przykładzie określono dwie zmienne do szeregu poleceń, oddzielone przecinkami.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-Katalog główny repozytorium ma teraz dwa nowe pliki oprócz *Composer. PHAR*: *. Deployment* i *Deploy.sh*. Te pliki działają zarówno w przypadku systemów Windows, jak i Linux App Service.
+Aby uzyskać dodatkowe zmienne środowiskowe umożliwiające dostosowanie automatyzacji kompilacji, zobacz [Konfiguracja Oryx](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
 
-Otwórz *Deploy.sh* i znajdź sekcję `Deployment`. Zastąp całą sekcję następującym kodem:
-
-```bash
-##################################################################################################################################
-# Deployment
-# ----------
-
-echo PHP deployment
-
-# 1. KuduSync
-if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
-  exitWithMessageOnError "Kudu Sync failed"
-fi
-
-# 3. Initialize Composer Config
-initializeDeploymentConfig
-
-# 4. Use composer
-echo "$DEPLOYMENT_TARGET"
-if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
-  echo "Found composer.json"
-  pushd "$DEPLOYMENT_TARGET"
-  php composer.phar install $COMPOSER_ARGS
-  exitWithMessageOnError "Composer install failed"
-  popd
-fi
-##################################################################################################################################
-```
-
-Zatwierdź wszystkie zmiany i ponownie Wdróż swój kod. Układacz powinien teraz działać w ramach automatyzacji wdrażania.
+Aby uzyskać więcej informacji na temat sposobu uruchamiania i kompilowania aplikacji PHP w systemie Linux przez App Service, zobacz [dokumentację Oryx: jak wykrywane są i kompilowane aplikacje PHP](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md).
 
 ## <a name="customize-start-up"></a>Dostosowywanie uruchamiania
 

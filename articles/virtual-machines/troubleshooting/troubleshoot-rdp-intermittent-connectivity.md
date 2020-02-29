@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: 636973110e11770e33c635e312c86b25110705da
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981349"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918227"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Pulpit zdalny rozłącza często z maszyną wirtualną platformy Azure
 
 W tym artykule wyjaśniono, jak rozwiązywać problemy z częstymi połączeniami z maszyną wirtualną platformy Azure za pomocą protokołu Remote Desktop Protocol RDP).
 
-> [!NOTE] 
-> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano użycie Menedżer zasobów model wdrażania. Zalecamy używanie tego modelu w przypadku nowych wdrożeń zamiast korzystania z klasycznego modelu wdrażania.
 
 ## <a name="symptom"></a>Objaw
 
@@ -42,7 +40,7 @@ Aby rozwiązać ten problem, należy użyć kontrolki serial lub [naprawić masz
 
 ### <a name="serial-control"></a>Kontrolka szeregowa
 
-1. Połączyć się z [konsoli szeregowej i otwórz wystąpienie CMD](./serial-console-windows.md). Następnie uruchom następujące polecenia, aby zresetować konfiguracje protokołu RDP. Jeśli konsola szeregowa nie jest włączona na maszynie wirtualnej, przejdź do następnego kroku.
+1. Połącz się z [konsolą szeregową i Otwórz wystąpienie programu Cmd](./serial-console-windows.md). Następnie uruchom następujące polecenia, aby zresetować konfiguracje protokołu RDP. Jeśli konsola szeregowa nie jest włączona na maszynie wirtualnej, przejdź do następnego kroku.
 2. Obniż poziom warstwy zabezpieczeń protokołu RDP do wartości 0. W przypadku tego ustawienia komunikacja między serwerem a klientem jest używana przez natywne szyfrowanie protokołu RDP.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
@@ -89,8 +87,8 @@ Aby rozwiązać ten problem, należy użyć kontrolki serial lub [naprawić masz
 
 ### <a name="repair-the-vm-offline"></a>Napraw maszynę Wirtualną w tryb offline
 
-1. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md).
-2. Po dołączeniu dysku systemu operacyjnego do maszyny Wirtualnej odzyskiwania, upewnij się, że dysk jest oznaczone jako **Online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
+1. [Dołącz dysk systemu operacyjnego do maszyny wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md).
+2. Po dołączeniu dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania upewnij się, że dysk jest oznaczony jako **online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
 3. Na dołączonym dysku systemu operacyjnego przejdź do folderu **\Windows\System32\Config** . Skopiuj wszystkie pliki w tym folderze jako kopię zapasową, w przypadku gdy wymagane jest wycofanie.
 4. Uruchom Edytor rejestru (regedit. exe).
 5. Wybierz klucz **HKEY_LOCAL_MACHINE** . W menu wybierz kolejno pozycje **plik** > **ładowanie Hive**:

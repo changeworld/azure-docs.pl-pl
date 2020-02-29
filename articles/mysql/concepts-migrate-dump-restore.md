@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 65cd5e637434c717ab9ba1b5598c467eea9b4a74
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: b15da2aa83231bfdc8732995888349b06ab56d15
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770938"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163781"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrowanie bazy danych MySQL do Azure Database for MySQL przy użyciu zrzutów i przywracania
 W tym artykule opisano dwa typowe sposoby tworzenia kopii zapasowych i przywracania baz danych w Azure Database for MySQL
@@ -22,10 +22,10 @@ W tym artykule opisano dwa typowe sposoby tworzenia kopii zapasowych i przywraca
 Aby krokowo korzystać z tego przewodnika, musisz mieć:
 - [Tworzenie Azure Database for MySQL Server — Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - Narzędzie wiersza polecenia [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) zainstalowane na komputerze.
-- Program MySQL Workbench [MySQL Workbench pobieranie](https://dev.mysql.com/downloads/workbench/), TOAD, Navicat lub inne narzędzie MySQL innej firmy do wykonywania poleceń zrzutów i przywracania.
+- Narzędzia MySQL Workbench [MySQL Workbench Download](https://dev.mysql.com/downloads/workbench/) lub inne narzędzie MySQL innej firmy do wykonywania poleceń zrzutów i przywracania.
 
 ## <a name="use-common-tools"></a>Korzystanie z popularnych narzędzi
-Używaj popularnych narzędzi i narzędzi, takich jak MySQL Workbench, mysqldump, TOAD lub Navicat, aby zdalnie łączyć i przywracać dane w Azure Database for MySQL. Użyj tych narzędzi na komputerze klienckim z połączeniem internetowym, aby nawiązać połączenie z Azure Database for MySQL. Użyj połączenia szyfrowanego protokołem SSL, aby uzyskać najlepsze rozwiązania w zakresie zabezpieczeń, zobacz również [Konfigurowanie łączności SSL w Azure Database for MySQL](concepts-ssl-connection-security.md). Nie ma potrzeby przenoszenia plików zrzutu do żadnej specjalnej lokalizacji w chmurze podczas migracji do Azure Database for MySQL. 
+Używaj popularnych narzędzi i narzędzi, takich jak MySQL Workbench lub mysqldump, aby zdalnie łączyć i przywracać dane w Azure Database for MySQL. Użyj tych narzędzi na komputerze klienckim z połączeniem internetowym, aby nawiązać połączenie z Azure Database for MySQL. Użyj połączenia szyfrowanego protokołem SSL, aby uzyskać najlepsze rozwiązania w zakresie zabezpieczeń, zobacz również [Konfigurowanie łączności SSL w Azure Database for MySQL](concepts-ssl-connection-security.md). Nie ma potrzeby przenoszenia plików zrzutu do żadnej specjalnej lokalizacji w chmurze podczas migracji do Azure Database for MySQL. 
 
 ## <a name="common-uses-for-dump-and-restore"></a>Typowe zastosowania zrzutów i przywracania
 Możesz użyć narzędzi MySQL, takich jak mysqldump i mysqlpump, aby zrzucić i ładować bazy danych do bazy danych Azure MySQL w kilku typowych scenariuszach. W innych scenariuszach zamiast tego można użyć metody [importu i eksportu](concepts-migrate-import-export.md) .
@@ -39,7 +39,7 @@ Możesz użyć narzędzi MySQL, takich jak mysqldump i mysqlpump, aby zrzucić i
    ```
 - Aby uniknąć problemów ze zgodnością, upewnij się, że w przypadku zrzucania baz danych w systemach źródłowym i docelowym jest używana ta sama wersja programu MySQL. Na przykład jeśli istniejący serwer MySQL jest w wersji 5,7, należy przeprowadzić migrację do Azure Database for MySQL skonfigurowany do uruchamiania wersji 5,7. Polecenie `mysql_upgrade` nie działa na serwerze Azure Database for MySQL i nie jest obsługiwane. Jeśli musisz przeprowadzić uaktualnienie między wersjami programu MySQL, najpierw wykonaj zrzut lub wyeksportuj niższą wersję bazy danych do nowszej wersji programu MySQL w Twoim środowisku. Następnie przed podjęciem próby migracji do Azure Database for MySQL Uruchom `mysql_upgrade`.
 
-## <a name="performance-considerations"></a>Zagadnienia związane z wydajnością
+## <a name="performance-considerations"></a>Zagadnienia dotyczące wydajności
 Aby zoptymalizować wydajność, należy wziąć pod uwagę następujące kwestie w przypadku zatopienia dużych baz danych:
 -   Użyj opcji `exclude-triggers` w mysqldump, gdy zrzucane są bazy danych. Wyklucz wyzwalacze z plików zrzutów, aby uniknąć uruchamiania poleceń wyzwalacza podczas przywracania danych. 
 -   Użyj opcji `single-transaction`, aby ustawić tryb izolacji transakcji na POWTARZAjący ODCZYTYWANie i wysyłanie instrukcji SQL START TRANSACTION do serwera przed zatopieniem danych. Zatopienie wielu tabel w ramach jednej transakcji powoduje, że niektóre dodatkowe magazyny mają być zużywane podczas przywracania. Opcja `single-transaction` i opcja `lock-tables` wykluczają się wzajemnie, ponieważ tabele blokad powodują niejawne zatwierdzenie oczekujących transakcji. Aby zrzucić duże tabele, Połącz opcję `single-transaction` z opcją `quick`. 
@@ -80,7 +80,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>Tworzenie bazy danych na serwerze docelowym Azure Database for MySQL
-Utwórz pustą bazę danych na docelowym serwerze Azure Database for MySQL, na którym chcesz przeprowadzić migrację danych. Utwórz bazę danych za pomocą narzędzia, takiego jak MySQL Workbench, TOAD lub Navicat. Baza danych może mieć taką samą nazwę, jak baza danych, która zawiera dane z danymi zrzutu, lub można utworzyć bazę danych o innej nazwie.
+Utwórz pustą bazę danych na docelowym serwerze Azure Database for MySQL, na którym chcesz przeprowadzić migrację danych. Utwórz bazę danych za pomocą narzędzia, takiego jak MySQL Workbench. Baza danych może mieć taką samą nazwę, jak baza danych, która zawiera dane z danymi zrzutu, lub można utworzyć bazę danych o innej nazwie.
 
 Aby nawiązać połączenie, Znajdź informacje o połączeniu w **przeglądzie** Azure Database for MySQL.
 

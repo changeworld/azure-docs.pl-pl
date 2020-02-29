@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 36d6b0cac0321c989fecbc5751d71c744cd83292
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087029"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920947"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Samouczek: uczenie i wdrażanie modelu z poziomu interfejsu wiersza polecenia
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -68,7 +68,7 @@ Katalog `examples/cli-train-deploy` z projektu zawiera następujące pliki, któ
 Repozytorium zawiera następujące pliki, które są używane do wdrożenia przeszkolonego modelu jako usługi sieci Web:
 
 * `aciDeploymentConfig.yml`: plik __konfiguracji wdrożenia__ . Ten plik definiuje środowisko hostingu, które jest niezbędne dla modelu.
-* `inferenceConfig.yml`: wnioskowanie configuration__ pliku. Ten plik definiuje środowisko oprogramowania używane przez usługę do oceny danych w modelu.
+* `inferenceConfig.yml`: plik __konfiguracyjny wnioskowania__ . Ten plik definiuje środowisko oprogramowania używane przez usługę do oceny danych w modelu.
 * `score.py`: skrypt języka Python, który akceptuje dane przychodzące, ocenia je przy użyciu modelu, a następnie zwraca odpowiedź.
 * `scoring-env.yml`: Conda zależności, które są konieczne do uruchomienia modelu i `score.py` skryptu.
 * `testdata.json`: plik danych, którego można użyć do przetestowania wdrożonej usługi sieci Web.

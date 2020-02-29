@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: df6f8ce22e8215a0727db7f69e0f6e5c3f5fc9e0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840268"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917394"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurowanie przepływu poświadczeń hasła właściciela zasobu w Azure Active Directory B2C przy użyciu zasad niestandardowych
 
@@ -24,17 +24,7 @@ ms.locfileid: "76840268"
 
 W Azure Active Directory B2C (Azure AD B2C) przepływ poświadczeń hasła właściciela zasobu (ROPC) jest standardowym przepływem uwierzytelniania OAuth. W tym przepływie aplikacja, nazywana również jednostką uzależnioną, wymienia prawidłowe poświadczenia dla tokenów. Poświadczenia zawierają identyfikator użytkownika i hasło. Zwracane tokeny są tokenem identyfikatora, tokenem dostępu i tokenem odświeżania.
 
-W przepływie ROPC są obsługiwane następujące opcje:
-
-- **Natywna** interakcja z użytkownikiem w trakcie uwierzytelniania występuje, gdy kod jest uruchamiany na urządzeniu po stronie użytkownika.
-- **Publiczne przepływy klienta** — tylko poświadczenia użytkownika, które są zbierane przez aplikację, są wysyłane w wywołaniu interfejsu API. Poświadczenia aplikacji nie są wysyłane.
-- **Dodawanie nowych oświadczeń** — zawartość tokenu identyfikatora można zmienić, aby dodać nowe oświadczenia.
-
-Następujące przepływy nie są obsługiwane:
-
-- **Serwer-** serwer — system ochrony tożsamości musi mieć niezawodny adres IP zebrany od wywołującego (natywnego klienta) w ramach interakcji. W wywołaniu interfejsu API po stronie serwera jest używany tylko adres IP serwera. Jeśli zbyt wiele logowań nie powiedzie się, system ochrony tożsamości może wyszukać powtórzony adres IP jako osobę atakującą.
-- **Aplikacja jednostronicowa** — aplikacja frontonu, która jest przede wszystkim zapisywana w języku JavaScript. Często aplikacja jest zapisywana przy użyciu struktury, takiej jak AngularJS, wpływ. js lub Durandal.
-- **Poufny przepływ klienta** — identyfikator klienta aplikacji jest zweryfikowany, ale wpis tajny aplikacji nie jest.
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -258,7 +248,7 @@ Użyj ulubionej aplikacji do programowania interfejsów API do wygenerowania wyw
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C.
+- Zastąp `your-tenant-name` nazwą dzierżawy Azure AD B2C.
 - Zastąp `B2C_1A_ROPC_Auth` pełną nazwą zasad poświadczeń hasła właściciela zasobu.
 
 | Klucz | Wartość |
@@ -303,7 +293,7 @@ Utwórz wywołanie POST podobne do pokazanego tutaj. Użyj informacji w poniższ
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C.
+- Zastąp `your-tenant-name` nazwą dzierżawy Azure AD B2C.
 - Zastąp `B2C_1A_ROPC_Auth` pełną nazwą zasad poświadczeń hasła właściciela zasobu.
 
 | Klucz | Wartość |

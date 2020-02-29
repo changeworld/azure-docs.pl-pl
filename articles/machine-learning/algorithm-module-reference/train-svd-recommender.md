@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 075216cf7d67aa4d5a04f34a7ae3444a078b4c62
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/22/2020
+ms.openlocfilehash: 1778ba543e070bbffbbc8579b280373d834492fd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313913"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920805"
 ---
 # <a name="train-svd-recommender"></a>Trenowanie modułu poleceń SVD
 
-W tym artykule opisano sposób korzystania z modułu polecania SVD w programie Azure Machine Learning Designer. Ten moduł służy do uczenia modelu rekomendacji na podstawie algorytmu pojedynczego rozkładu wartości (SVD).  
+W tym artykule opisano, jak używać modułu polecania SVD w programie Azure Machine Learning Designer (wersja zapoznawcza). Ten moduł służy do uczenia modelu rekomendacji na podstawie algorytmu pojedynczego rozkładu wartości (SVD).  
 
 Moduł polecający SVD pociąg odczytuje zestaw danych potrójnych ocen elementów użytkownika. Zwraca zalecany polecający SVD. Można następnie użyć przeszkolonego modelu do przewidywania klasyfikacji lub wygenerowania zaleceń przy użyciu modułu [zalecanego do oceny SVD](score-svd-recommender.md) .  
 
@@ -48,16 +48,13 @@ Przed użyciem modułu, dane wejściowe muszą być w formacie, którego oczekuj
 + Druga kolumna zawiera identyfikatory elementów.
 + Trzecia kolumna zawiera klasyfikację dla pary elementu User-Item. Wartości klasyfikacji muszą być typu liczbowego.  
 
-Zestaw danych **klasyfikacji restauracji** w projektancie Azure Machine Learning (wybierz pozycję **zapisane zestawy danych** , a następnie **przykłady**) demonstruje oczekiwany format:
+Zestaw danych **klasyfikacji filmów** w projektancie Azure Machine Learning (wybierz **zestawy danych** , a następnie **przykłady**) demonstruje oczekiwany format:
 
-|userID|placeID|rating|
-|------------|-------------|------------|
-|U1077|135085|2|
-|U1077|135038|2|
+![Klasyfikacje filmów](media/module/movie-ratings-dataset.png)
 
-Z tego przykładu można zobaczyć, że jeden użytkownik ocenił dwa osobne Restauracje. 
+Z tego przykładu można zobaczyć, że jeden użytkownik ma sklasyfikowane kilka filmów. 
 
-### <a name="train-the-model"></a>Trenowanie modelu
+### <a name="train-the-model"></a>Uczenie modelu
 
 1.  Dodaj moduł polecający SVD (szkolenie) do potoku w Projektancie i podłącz go do danych szkoleniowych.  
    

@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/23/2020
 ms.author: rogarana
-ms.openlocfilehash: 9bda3331bc27f387bd05ea0fcd29e7badf6d6a02
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 419f0506751ddc328539eafa52507b0dd0739c79
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651087"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921559"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Włącz uwierzytelnianie Active Directory za pośrednictwem protokołu SMB dla udziałów plików platformy Azure
 
@@ -62,7 +62,7 @@ Przed włączeniem uwierzytelniania usługi AD dla udziałów plików platformy 
 
 ## <a name="regional-availability"></a>Dostępność regionalna
 
-Azure Files uwierzytelnianie usługi AD jest dostępne w [większości regionów publicznych](https://azure.microsoft.com/global-infrastructure/regions/), podzbiór regionów, w których nie jest jeszcze dostępny, to:
+Azure Files uwierzytelnianie usługi AD (wersja zapoznawcza) jest dostępna w [większości regionów publicznych](https://azure.microsoft.com/global-infrastructure/regions/) z wyjątkiem:
 
 - Zachodnie stany USA
 - Zachodnie stany USA 2
@@ -130,7 +130,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
 
 #Register the target storage account with your active directory environment under the target OU
-join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationUnitName "<ou-name-here>"
+join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationalUnitName "<ou-name-here>"
 ```
 
 Poniższy opis podsumowuje wszystkie akcje wykonywane po wykonaniu polecenia cmdlet `join-AzStorageAccountForAuth`. Te kroki można wykonać ręcznie, jeśli wolisz nie używać polecenia:

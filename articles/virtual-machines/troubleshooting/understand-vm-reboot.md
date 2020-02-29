@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 1bf023dc886481354306a763a0f9c56286c57e05
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749866"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919417"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Opis ponownego uruchomienia systemu dla maszyny wirtualnej platformy Azure
 
@@ -30,10 +30,7 @@ Najlepszym sposobem na ochronę aplikacji działającej na platformie Azure prze
 
 Aby zapewnić ten poziom nadmiarowości aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Ta konfiguracja gwarantuje, że podczas planowanego lub nieplanowanego zdarzenia konserwacji jest dostępna co najmniej jedna maszyna wirtualna i spełnia warunki [umowy SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/)na 99,95%.
 
-Aby uzyskać więcej informacji na temat zestawów dostępności, zobacz następujące artykuły:
-
-- [Zarządzanie dostępnością maszyn wirtualnych](../windows/manage-availability.md)
-- [Konfigurowanie dostępności maszyn wirtualnych](../windows/classic/configure-availability.md)
+Aby uzyskać więcej informacji na temat zestawów dostępności, zobacz [Zarządzanie dostępnością maszyn wirtualnych](../windows/manage-availability.md)
 
 ## <a name="resource-health-information"></a>Informacje Resource Health
 

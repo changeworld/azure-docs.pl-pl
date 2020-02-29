@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 8eb54e232478ae24e1efb49a8ad43dc827aa2b6a
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 2cf0efb24a10da602ac0c26276a081342776cdcc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150684"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920403"
 ---
 # <a name="normalize-data-module"></a>Normalizowanie modułu danych
 
@@ -104,7 +104,7 @@ Moduł **normalizowanie danych** generuje dwa dane wyjściowe:
 
 - Aby zapisać transformację w taki sposób, aby można było zastosować tę samą metodę normalizacji do innego zestawu danych, wybierz moduł, a następnie wybierz pozycję **zarejestruj zestaw danych** na karcie dane **wyjściowe** w prawym panelu.
 
-    Następnie można załadować zapisane przekształcenia z grupy **transformacje** w lewym okienku nawigacji i zastosować je do zestawu danych z tym samym schematem za pomocą [transformacji./Apply](apply-transformation.md).  
+    Następnie można załadować zapisane przekształcenia z grupy **transformacje** okienka nawigacji po lewej stronie i zastosować je do zestawu danych z tym samym schematem za pomocą [przekształcenia Zastosuj](apply-transformation.md).  
 
 
 ## <a name="next-steps"></a>Następne kroki

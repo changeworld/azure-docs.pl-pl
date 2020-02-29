@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/25/2019
 ms.author: memildin
-ms.openlocfilehash: 7d078fb93f933320d13bfeb768b27923748b1262
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 8bd66b602201dbbb47a1fdba879c52a8ac441762
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623951"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921644"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrona przed zagrożeniami w Azure Security Center
 
@@ -113,7 +113,7 @@ Security Center zapewnia ochronę przed zagrożeniami na różnych poziomach:
     Aby uzyskać dokładniejszy wgląd w zabezpieczenia środowiska kontenerowego, agent monitoruje analizę specyficzną dla kontenera. Spowoduje to wyzwolenie alertów dotyczących zdarzeń, takich jak tworzenie kontenera uprzywilejowanego, podejrzany dostęp do serwerów interfejsu API i serwery Secure Shell (SSH) działające wewnątrz kontenera Docker.
 
     >[!IMPORTANT]
-    > Jeśli zdecydujesz się nie instalować agentów na hostach, będziesz otrzymywać tylko podzbiór korzyści i alertów dotyczących wykrywania zagrożeń. Nadal będziesz otrzymywać alerty dotyczące analizy sieci i komunikacji ze złośliwymi serwerami.
+    > Jeśli zdecydujesz się nie instalować agentów na hostach, będziesz otrzymywać tylko podzbiór korzyści z ochrony przed zagrożeniami i alerty zabezpieczeń. Nadal będziesz otrzymywać alerty dotyczące analizy sieci i komunikacji ze złośliwymi serwerami.
 
     Listę alertów na poziomie hosta można znaleźć w [tabeli referencyjnej alertów](alerts-reference.md#alerts-containerhost).
 
@@ -240,7 +240,7 @@ Aby uzyskać listę alertów Azure Resource Manager (wersja zapoznawcza), zobacz
 
 
 >[!NOTE]
-> Niektóre z powyższych analiz są obsługiwane przez Microsoft Cloud App Security. Aby skorzystać z tych analiz, należy aktywować licencję Cloud App Securityową. Jeśli masz licencję na Cloud App Security, te alerty są domyślnie włączone. Aby je wyłączyć:
+> Niektóre z powyższych analiz są obsługiwane przez Microsoft Cloud App Security. Aby skorzystać z tych analiz, należy aktywować licencję Cloud App Securityową. Jeśli masz licencję na Cloud App Security, te alerty są domyślnie włączone. Aby wyłączyć alerty:
 >
 > 1. W bloku **Security Center** wybierz pozycję **zasady zabezpieczeń**. W przypadku subskrypcji, którą chcesz zmienić, wybierz pozycję **Edytuj ustawienia**.
 > 2. Wybierz pozycję **wykrywanie zagrożeń**.

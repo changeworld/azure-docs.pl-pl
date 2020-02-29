@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: a53a27a92b393c38d1f49efbd50d91fa1a2e9657
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 712626345e10ab0e4290ac91b0f121ff6960303e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597698"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920573"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux Przenieś własne obrazy z subskrypcji na platformę Azure
 
@@ -41,6 +41,9 @@ Obrazy Red Hat Enterprise Linux (RHEL) są dostępne na platformie Azure za poś
 - Obrazy są nieuprawnione, dlatego należy użyć Menedżera subskrypcji do zarejestrowania i subskrybowania maszyn wirtualnych, aby uzyskać aktualizacje z rozwiązania Red Hat bezpośrednio
 
 - Nie jest obecnie możliwe przełączenie dynamicznie między modelami rozliczeń BYOS i PAYG dla obrazów systemu Linux. Ponowne wdrożenie maszyny wirtualnej z odpowiedniego obrazu jest wymagane do przełączenia modelu rozliczania
+
+>[!NOTE]
+> Obrazy generacji 2 RHEL BYOS nie są obecnie dostępne w ramach oferty portalu Marketplace. Jeśli potrzebujesz obrazu Gen 2 RHEL BYOS, odwiedź pulpit nawigacyjny dostępu coud w usłudze Red Hat Subscription Management. Więcej szczegółów można znaleźć w [dokumentacji Red Hat](https://access.redhat.com/articles/4847681).
 
 ## <a name="requirements-and-conditions-to-access-the-red-hat-gold-images"></a>Wymagania i warunki dostępu do obrazów Red Hat Gold
 

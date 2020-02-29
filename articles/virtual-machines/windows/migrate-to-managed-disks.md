@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7b907cf5bf64aa1a8a458a8d2b42c30dffd0dfd1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: e8f2753ac9062803a2d6252eca1829cb0b168f02
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029792"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921355"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrowanie maszyn wirtualnych platformy Azure do Managed Disks na platformie Azure
 
@@ -29,6 +29,8 @@ Można migrować do Managed Disks w następujących scenariuszach:
 |Konwertowanie pojedynczej maszyny wirtualnej z klasycznej na Menedżer zasobów na dyskach zarządzanych     |[Tworzenie maszyny wirtualnej na podstawie klasycznego wirtualnego dysku twardego](create-vm-specialized-portal.md)         |
 |Konwertuj wszystkie maszyny wirtualne w sieci wirtualnej z klasycznej do Menedżer zasobów na dyskach zarządzanych     |[Migruj zasoby IaaS z klasycznej do Menedżer zasobów](migration-classic-resource-manager-ps.md) a następnie [przekonwertuj maszynę wirtualną z dysków niezarządzanych na dyski zarządzane](convert-unmanaged-to-managed-disks.md)         |
 |Uaktualnij maszyny wirtualne ze standardowymi dyskami niezarządzanymi do maszyn wirtualnych z zarządzanymi dyskami Premium     | Najpierw [przekonwertuj maszynę wirtualną z systemem Windows z dysków niezarządzanych na dyski zarządzane](convert-unmanaged-to-managed-disks.md). Następnie [zaktualizuj typ magazynu dla dysku zarządzanego](convert-disk-storage.md).         |
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

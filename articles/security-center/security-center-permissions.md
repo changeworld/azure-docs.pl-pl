@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: f52d518d2ed1dfb62eed72cf9c0b839a37b7f856
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0e60e782fa65cd5868bebe081673f9a158e07799
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201642"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921321"
 ---
 # <a name="permissions-in-azure-security-center"></a>Uprawnienia w Azure Security Center
 
@@ -29,8 +29,8 @@ Usługa Security Center ocenia konfigurację zasobów, aby zidentyfikować probl
 
 Oprócz tych ról istnieją dwie określone role usługi Security Center:
 
-* **Czytelnik zabezpieczeń**: Użytkownik, który należy do tej roli, ma uprawnienia do wyświetlania Security Center. Użytkownik może wyświetlać zalecenia, alerty, zasady zabezpieczeń i Stany zabezpieczeń, ale nie może wprowadzać zmian.
-* **Administrator zabezpieczeń**: Użytkownik należący do tej roli ma takie same prawa jak czytelnik zabezpieczeń, a także może zaktualizować zasady zabezpieczeń i odrzucić alerty i zalecenia.
+* **Czytelnik zabezpieczeń**: użytkownik, który należy do tej roli, ma uprawnienia do wyświetlania Security Center. Użytkownik może wyświetlać zalecenia, alerty, zasady zabezpieczeń i Stany zabezpieczeń, ale nie może wprowadzać zmian.
+* **Administrator zabezpieczeń**: użytkownik należący do tej roli ma takie same prawa jak czytelnik zabezpieczeń, a także może zaktualizować zasady zabezpieczeń i odrzucić alerty i zalecenia.
 
 > [!NOTE]
 > Role zabezpieczeń, czytelnik zabezpieczeń i administrator zabezpieczeń mają dostęp tylko w Security Center. Role zabezpieczeń nie mają dostępu do innych obszarów usługi platformy Azure, takich jak Storage, Web & Mobile lub Internet rzeczy.
@@ -39,17 +39,17 @@ Oprócz tych ról istnieją dwie określone role usługi Security Center:
 
 ## <a name="roles-and-allowed-actions"></a>Role i dozwolone akcje
 
-W poniższej tabeli przedstawiono role i dozwolone akcje w Security Center. Symbol X wskazuje, że akcja jest dozwolona dla tej roli.
+W poniższej tabeli przedstawiono role i dozwolone akcje w Security Center.
 
-| Role | Edytuj zasady zabezpieczeń | Stosowanie zaleceń dotyczących zabezpieczeń dla zasobu | Odrzuć alerty i zalecenia | Wyświetlanie alertów i zaleceń |
+| Rola | Edytuj zasady zabezpieczeń | Stosowanie zaleceń dotyczących zabezpieczeń dla zasobu</br> (w tym z opcją "szybkie rozwiązanie!") | Odrzuć alerty i zalecenia | Wyświetlanie alertów i zaleceń |
 |:--- |:---:|:---:|:---:|:---:|
-| Właściciel subskrypcji | X | X | X | X |
-| Współautor subskrypcji | -- | X | X | X |
-| Właściciel grupy zasobów | -- | X | -- | X |
-| Współautor grupy zasobów | -- | X | -- | X |
-| Czytelnik | -- | -- | -- | X |
-| Administrator zabezpieczeń | X | -- | X | X |
-| Czytelnik zabezpieczeń | -- | -- | -- | X |
+| Właściciel subskrypcji | ✔ | ✔ | ✔ | ✔ |
+| Współautor subskrypcji | -- | ✔ | ✔ | ✔ |
+| Właściciel grupy zasobów | -- | ✔ | -- | ✔ |
+| Współautor grupy zasobów | -- | ✔ | -- | ✔ |
+| Czytelnik | -- | -- | -- | ✔ |
+| Administrator zabezpieczeń | ✔ | -- | ✔ | ✔ |
+| Czytelnik zabezpieczeń | -- | -- | -- | ✔ |
 
 > [!NOTE]
 > Zaleca się przypisanie użytkownikom najbardziej ograniczonej roli wystarczającej do wykonywania zadań. Na przykład Przypisz rolę czytelnik do użytkowników, którzy muszą jedynie wyświetlać informacje o kondycji zabezpieczeń zasobu, ale nie podejmować działań, takich jak stosowanie zaleceń lub edytowanie zasad.

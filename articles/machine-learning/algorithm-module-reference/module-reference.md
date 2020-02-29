@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: reference
 author: peterclu
 ms.author: peterlu
-ms.date: 12/17/2019
-ms.openlocfilehash: d3feb62c0c7fa24dd998add08d17ebd1d4e9ee6c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 02/22/2020
+ms.openlocfilehash: ece4b7a85ff5738900b8f999cc2f14ba35ecab0d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162586"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920097"
 ---
-# <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Informacje o algorytmach & module dla projektanta Azure Machine Learning
+# <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Informacje o algorytmach & module dla projektanta Azure Machine Learning (wersja zapoznawcza)
 
 Ta zawartość referencyjna zawiera informacje techniczne na temat każdego z algorytmów uczenia maszynowego i modułów dostępnych w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
@@ -44,7 +44,7 @@ Aby uzyskać pomoc dotyczącą wybierania algorytmów, zobacz
 | Funkcjonalność | Opis | Moduł |
 | --- |--- | --- |
 | Regresja | Przewidywanie wartości. | [Regresja drzewa decyzyjnej](boosted-decision-tree-regression.md) <br/> [Regresja lasu decyzyjnego](decision-forest-regression.md) <br/> [Regresja liniowa](linear-regression.md)  <br/> [Regresja sieci neuronowych](neural-network-regression.md)  <br/> |
-| Klastrowanie | Grupuj dane jednocześnie.| [K-oznacza klastrowanie](k-means-clustering.md)
+| Obsługa klastrów | Grupuj dane jednocześnie.| [K-oznacza klastrowanie](k-means-clustering.md)
 | Klasyfikacja | Przewidywanie klasy.  Wybierz jeden z dwuklasowego algorytmu lub algorytmów wieloklasowych.| [Wieloklasowe drzewo decyzyjne](multiclass-boosted-decision-tree.md) <br/> [Las decyzyjny wieloklasowej](multiclass-decision-forest.md) <br/> [Wieloklasowa regresja logistyczna](multiclass-logistic-regression.md)  <br/> [Wieloklasowa sieć neuronowych](multiclass-neural-network.md) <br/> [Jeden i wszystkie wieloklasowe](one-vs-all-multiclass.md) <br/> [Średnia Perceptron średniej klasy](two-class-averaged-perceptron.md) <br/>  [Dwuklasowe drzewo decyzyjne](two-class-boosted-decision-tree.md)  <br/> [Las decyzyjny dwóch klas](two-class-decision-forest.md) <br/>  [Regresja logistyczna dla dwóch klas](two-class-logistic-regression.md) <br/> [Sieć neuronowych z dwiema klasami](two-class-neural-network.md) <br/> [Maszyna wektorowa obsługi dwóch klas](two-class-support-vector-machine.md) | 
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Moduły do kompilowania i oceniania modeli
@@ -57,6 +57,7 @@ Aby uzyskać pomoc dotyczącą wybierania algorytmów, zobacz
 | Język R | Napisz kod i Osadź go w module, aby zintegrować język R z potokiem. | [Wykonaj skrypt języka R](execute-r-script.md) |
 | Analiza tekstu | Udostępniaj wyspecjalizowane narzędzia obliczeniowe służące do pracy z tekstem ze strukturą i bez struktury. | [Wyodrębnij funkcje N gramów z tekstu](extract-n-gram-features-from-text.md) <br/> [Mieszanie funkcji](feature-hashing.md) <br/> [Przetwarzaj wstępnie tekst](preprocess-text.md) |
 | Zalecenie | Kompiluj modele rekomendacji. | [Oceń zalecaną](evaluate-recommender.md) <br/> [Polecający wskaźnik SVD](score-svd-recommender.md) <br/> [Polecający pociąg](train-SVD-recommender.md) |
+| Wykrywanie anomalii | Tworzenie modeli wykrywania anomalii. | [Wykrywanie anomalii oparte na UPW](pca-based-anomaly-detection.md) <br/> [Wyszkol model wykrywania anomalii](train-anomaly-detection-model.md) |
 
 ## <a name="error-messages"></a>Komunikaty o błędach
 
