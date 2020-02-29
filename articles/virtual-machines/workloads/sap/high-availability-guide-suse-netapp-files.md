@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/26/2020
+ms.date: 02/27/2020
 ms.author: radeltch
-ms.openlocfilehash: 493414d6e903dba02f126c10c2f4d6a34e0b1549
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ac8ffba279fac338f3d28cec2f0d671be740150e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661227"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164750"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server z Azure NetApp Files dla aplikacji SAP
 
@@ -679,14 +679,14 @@ W przypadku korzystania z architektury Server 1 Architecture (ENSA1) Zdefiniuj z
    
    sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
     operations \$id=rsc_sap_<b>QAS</b>_ASCS<b>00</b>-operations \
-    op monitor interval=11 timeout=60 on_fail=restart \
+    op monitor interval=11 timeout=60 on-fail=restart \
     params InstanceName=<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b>" \
     AUTOMATIC_RECOVER=false \
     meta resource-stickiness=5000 failure-timeout=60 migration-threshold=1 priority=10
    
    sudo crm configure primitive rsc_sap_<b>QAS</b>_ERS<b>01</b> SAPInstance \
     operations \$id=rsc_sap_<b>QAS</b>_ERS<b>01</b>-operations \
-    op monitor interval=11 timeout=60 on_fail=restart \
+    op monitor interval=11 timeout=60 on-fail=restart \
     params InstanceName=<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b>" AUTOMATIC_RECOVER=false IS_ERS=true \
     meta priority=1000
    
@@ -708,14 +708,14 @@ Jeśli używana jest architektura Server 2 ([ENSA2](https://help.sap.com/viewer/
    
    sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
     operations \$id=rsc_sap_<b>QAS</b>_ASCS<b>00</b>-operations \
-    op monitor interval=11 timeout=60 on_fail=restart \
+    op monitor interval=11 timeout=60 on-fail=restart \
     params InstanceName=<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b>" \
     AUTOMATIC_RECOVER=false \
     meta resource-stickiness=5000
    
    sudo crm configure primitive rsc_sap_<b>QAS</b>_ERS<b>01</b> SAPInstance \
     operations \$id=rsc_sap_<b>QAS</b>_ERS<b>01</b>-operations \
-    op monitor interval=11 timeout=60 on_fail=restart \
+    op monitor interval=11 timeout=60 on-fail=restart \
     params InstanceName=<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b>" AUTOMATIC_RECOVER=false IS_ERS=true
    
    sudo crm configure modgroup g-<b>QAS</b>_ASCS add rsc_sap_<b>QAS</b>_ASCS<b>00</b>

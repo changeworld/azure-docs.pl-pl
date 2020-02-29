@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 514ead43159b416752f968da3883e644fb0ccc2f
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 7157d9c0b96dbb31a158f599efd5489e8059f6ba
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650899"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163441"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informacje o limitach i konfiguracji Azure Logic Apps
 
@@ -156,7 +156,7 @@ Niektóre operacje łączników powodują wywołania asynchroniczne lub Nasłuch
 | Name (Nazwa) | Limit wielu dzierżawców | Limit środowiska usługi integracji | Uwagi |
 |------|--------------------|---------------------------------------|-------|
 | Rozmiar komunikatu | 100 MB | 200 MB | Łączniki ISE z oznaczeniem używają limitu ISE, a nie limitów łączników innych niż ISE. <p><p>Aby obejść ten limit, zobacz [Obsługa dużych komunikatów przy użyciu fragmentów](../logic-apps/logic-apps-handle-large-messages.md). Jednak niektóre łączniki i interfejsy API mogą nie obsługiwać fragmentacji lub nawet domyślnego limitu. |
-| Rozmiar komunikatu z fragmentem | 1 GB | 5 GB | Ten limit ma zastosowanie do akcji, które natywnie obsługują fragmenty i umożliwiają włączenie fragmentu w konfiguracji środowiska uruchomieniowego. <p>W przypadku środowiska usługi integracji aparat Logic Apps obsługuje ten limit, ale łączniki mają własne ograniczenia dotyczące limitu aparatu, na przykład informacje o [interfejsie API łącznika usługi Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/). Aby uzyskać więcej informacji, zobacz [Obsługa dużych komunikatów przy użyciu fragmentów](../logic-apps/logic-apps-handle-large-messages.md). |
+| Rozmiar komunikatu z fragmentem | 1 GB | 5 GB | Ten limit ma zastosowanie do akcji, które w sposób natywny obsługują fragmenty lub umożliwiają włączenie fragmentu w konfiguracji środowiska uruchomieniowego. <p><p>W przypadku środowiska usługi integracji aparat Logic Apps obsługuje ten limit, ale łączniki mają własne ograniczenia dotyczące limitu aparatu, na przykład informacje o [interfejsie API łącznika usługi Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/). Aby uzyskać więcej informacji o fragmentacji, zobacz [Obsługa dużych komunikatów przy użyciu fragmentów](../logic-apps/logic-apps-handle-large-messages.md). |
 |||||
 
 #### <a name="character-limits"></a>Limity znaków

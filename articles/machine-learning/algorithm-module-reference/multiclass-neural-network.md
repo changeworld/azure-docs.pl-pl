@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: f94427ddfbdc19836cd177fd642987aaaeedf1ee
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 653b12ddd54c5ec9e4e7dd23a323f34460daa962
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152095"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920420"
 ---
 # <a name="multiclass-neural-network-module"></a>Wieloklasowy moduł sieci neuronowych
 
@@ -46,7 +46,7 @@ Aby obliczyć dane wyjściowe sieci dla konkretnych danych wejściowych, wartoś
 
     - **Pojedynczy parametr**: Wybierz tę opcję, jeśli już wiesz, jak chcesz skonfigurować model.
 
-    
+    - **Zakres parametrów**: Wybierz tę opcję, jeśli nie masz pewności co do najlepszych parametrów i chcesz uruchomić odchylenia parametrów. Wybierz zakres wartości do iteracji, a [Parametry dostrojenia modelu](tune-model-hyperparameters.md) przechodzą na wszystkie możliwe kombinacje ustawień, które podano, aby określić parametry, które generują optymalne wyniki.  
 
 3. **Specyfikacja warstwy ukrytej**: Wybierz typ architektury sieci do utworzenia.
 

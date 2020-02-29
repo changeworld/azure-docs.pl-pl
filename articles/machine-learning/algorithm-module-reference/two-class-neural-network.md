@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: c87673fef0079ff1b04b0840da0434b090cda67c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 03e6c2ecbf8fa0c5f71218d29b67cb03cdf3d5db
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153659"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916799"
 ---
 # <a name="two-class-neural-network-module"></a>Dwuklasowy moduł sieci neuronowych
 
@@ -42,7 +42,9 @@ Aby obliczyć dane wyjściowe sieci dla konkretnych danych wejściowych, wartoś
   
 2.  Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .  
   
-    -   **Pojedynczy parametr**: Wybierz tę opcję, jeśli już wiesz, jak chcesz skonfigurować model.  
+    -   **Pojedynczy parametr**: Wybierz tę opcję, jeśli już wiesz, jak chcesz skonfigurować model.
+
+    -   **Zakres parametrów**: Jeśli nie masz pewności co do najlepszych parametrów, możesz znaleźć optymalne parametry przy użyciu modułu [dostrajania parametrów modelu](tune-model-hyperparameters.md) . Podajesz kilka wartości, a Trainer wykonuje iterację wielu kombinacji ustawień, aby określić kombinację wartości, które tworzą najlepszy wynik.  
 
 3.  W obszarze **Specyfikacja warstwy ukrytej**wybierz typ architektury sieci do utworzenia.  
   

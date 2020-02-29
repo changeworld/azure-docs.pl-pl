@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 90ff59bb76bceaacc7b0528ed0461b76832dc7fd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 544de1b4ac46a58d533f71a46266807a3b93820a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662131"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920046"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analizowanie dzienników i metryk przy użyciu ustawień diagnostycznych
 
@@ -32,7 +32,7 @@ Wybierz kategorię dziennika i kategorię metryki, którą chcesz monitorować.
 
 ## <a name="metrics"></a>Metryki
 
-Aby uzyskać pełną listę metryk, zobacz [metryki w chmurze wiosennej](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
+Aby uzyskać pełną listę metryk, zobacz [sprężynowe metryki w chmurze](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options).
 
 Aby rozpocząć, włącz jedną z tych usług, aby otrzymywać dane. Aby dowiedzieć się więcej o konfigurowaniu Log Analytics, zobacz Wprowadzenie do [log Analytics w Azure monitor](../azure-monitor/log-query/get-started-portal.md). 
 

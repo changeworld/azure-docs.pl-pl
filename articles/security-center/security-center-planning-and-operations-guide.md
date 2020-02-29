@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 039a30d23c45471d88132f544c11df813fb4b8e6
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 63b947a27c3aa24b42252bf33febd031f7caefbf
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603743"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920675"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Przewodnik planowania i obsługi usługi Azure Security Center
 Ten przewodnik jest przeznaczony dla specjalistów IT, architektów IT, analityków zabezpieczeń informacji i administratorów chmury do korzystania z Azure Security Center.
@@ -179,7 +179,7 @@ Po podjęciu decyzji o pierwszym użyciu usługi Security Center dla bieżącego
 
 Po wykonaniu wszystkich zaleceń sekcja **Zapobieganie** powinna być zielona dla wszystkich przejrzanych zasobów. Na tym etapie monitorowanie ciągłe staje się łatwiejsze, ponieważ działania są podejmowane tylko w oparciu o zmiany kondycji zabezpieczeń zasobów oraz kafelki zaleceń.
 
-Sekcja **Wykrywanie** jest bardziej reaktywna. Zawiera ona alerty dotyczące problemów, które występują teraz lub wystąpiły w przeszłości, wykrytych przez kontrolki usługi Security Center i systemy innych firm. W kafelku Alerty są wyświetlane wykresy słupkowe zawierające liczbę alertów wykrywania zagrożeń zidentyfikowanych w poszczególnych dniach oraz przedstawiające ich rozkład według różnych kategorii ważności (niskiej, średniej, wysokiej). Więcej informacji na temat alertów zabezpieczeń znajduje się w artykule [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w Centrum zabezpieczeń Azure](security-center-managing-and-responding-alerts.md).
+Sekcja **Wykrywanie** jest bardziej reaktywna. Zawiera ona alerty dotyczące problemów, które występują teraz lub wystąpiły w przeszłości, wykrytych przez kontrolki usługi Security Center i systemy innych firm. Kafelek alerty zabezpieczeń pokazuje wykresy słupkowe przedstawiające liczbę alertów, które zostały znalezione w poszczególnych dniach, i ich dystrybucję do różnych kategorii ważności (niski, średni, wysoki). Więcej informacji na temat alertów zabezpieczeń znajduje się w artykule [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w Centrum zabezpieczeń Azure](security-center-managing-and-responding-alerts.md).
 
 Zaplanuj odwiedzenie opcji [analizy zagrożeń](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) jako część codziennych operacji zabezpieczeń. Możesz tam zidentyfikować zagrożenia bezpieczeństwa środowiska, takie jak ustalenie, czy dany komputer jest częścią botnetu.
 
@@ -211,11 +211,11 @@ Możesz użyć [adaptacyjnych kontrolek aplikacji](https://docs.microsoft.com/az
 
 
 ## <a name="incident-response"></a>Reagowanie na zdarzenia
-Usługa Security Center wykrywa zagrożenia i powiadamia o nich, gdy tylko wystąpią. Firmy powinny śledzić pojawianie się nowych alertów zabezpieczeń i w razie potrzeby podejmować działania w celu zbadania ataku lub usunięcia jego skutków. Aby uzyskać więcej informacji na temat sposobu działania wykrywania zagrożeń Security Center, Przeczytaj, [jak Azure Security Center wykrywa zagrożenia i reaguje na](security-center-alerts-overview.md#detect-threats)nie.
+Usługa Security Center wykrywa zagrożenia i powiadamia o nich, gdy tylko wystąpią. Firmy powinny śledzić pojawianie się nowych alertów zabezpieczeń i w razie potrzeby podejmować działania w celu zbadania ataku lub usunięcia jego skutków. Aby uzyskać więcej informacji na temat działania Security Center ochrony przed zagrożeniami, Przeczytaj, [w jaki sposób Azure Security Center wykrywać zagrożenia i reagować na](security-center-alerts-overview.md#detect-threats)nie.
 
 Ponieważ celem tego artykułu nie jest pomoc w tworzeniu Twojego planu reagowania na zdarzenia, jako podstawy dla etapów reagowania na zdarzenia użyjemy funkcji Microsoft Azure Security Response w cyklu życia chmury. Poszczególne etapy przedstawiono na poniższym diagramie:
 
-![Podejrzane działanie](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
+![Podejrzane działania](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
 > [!NOTE]
 > W tworzeniu takiego planu może pomóc [Computer Security Incident Handling Guide](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) (Przewodnik obsługi zdarzeń zabezpieczeń komputera) Narodowego Instytutu Norm i Technologii (NIST).
@@ -231,7 +231,7 @@ Każdy alert zabezpieczeń zawiera informacje, które mogą ułatwić lepsze zro
 
 W poniższym przykładzie pokazano podejrzane działanie w protokole RDP:
 
-![Podejrzane działanie](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
+![Podejrzane działania](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
 
 Ta strona pokazuje szczegóły dotyczące godziny, o której nastąpił atak, nazwy hosta źródłowego, docelowej maszyny wirtualnej oraz poszczególnych kroków zaleceń. W pewnych okolicznościach informacje źródłowe ataku mogą być puste. Więcej informacji na temat działania tego typu znajduje się w artykule [Missing Source Information in Azure Security Center Alerts](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) (Brakujące informacje źródłowe w alertach Centrum zabezpieczeń Azure).
 

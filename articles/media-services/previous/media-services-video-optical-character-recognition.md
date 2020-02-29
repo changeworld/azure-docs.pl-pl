@@ -14,16 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 11f897852ce820e666d7403f42735b2ee3bdd73b
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084822"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918340"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Użyj Azure Media Analytics do przekonwertowania zawartości tekstowej w plikach wideo na tekst cyfrowy  
 
-## <a name="overview"></a>Przegląd
+> [!NOTE]
+> Procesor multimediów **usługi Azure Media OCR** zostanie wycofany. Aby uzyskać datę wycofania, zobacz temat [starsze składniki](legacy-components.md) .
+
+## <a name="overview"></a>Omówienie
 Jeśli zachodzi potrzeba wyodrębnienia zawartości tekstowej z plików wideo i wygenerowania edytowalnego, możliwego do przeszukiwania tekstu cyfrowego, należy użyć Azure Media Analytics OCR (optyczne rozpoznawanie znaków). Ten procesor multimediów platformy Azure wykrywa zawartość tekstową w plikach wideo i generuje pliki tekstowe do użycia. OCR umożliwia automatyzację wyodrębniania znaczących metadanych z sygnału wideo nośnika.
 
 W połączeniu z aparatem wyszukiwania można łatwo indeksować multimedia według tekstu i zwiększyć wykrywalność zawartości. Jest to niezwykle przydatne w przypadku bardzo tekstowego wideo, takiego jak nagrywanie wideo lub przechwytywanie ekranu prezentacji pokazu slajdów. Procesor multimediów OCR na platformie Azure jest zoptymalizowany pod kątem tekstu cyfrowego.
@@ -106,7 +109,7 @@ Dane wyjściowe zawierają następujące atrybuty:
 
 | Element | Opis |
 | --- | --- |
-| Timescale |"Takty" na sekundę filmu wideo |
+| Skala czasu |"Takty" na sekundę filmu wideo |
 | Przesunięcie |przesunięcie czasu dla sygnatur czasowych. W wersji 1,0 interfejsów API wideo zawsze będzie równa 0. |
 | Framerate |Klatki na sekundę filmu wideo |
 | Szerokość |Szerokość filmu wideo w pikselach |
@@ -119,7 +122,7 @@ Dane wyjściowe zawierają następujące atrybuty:
 | region |Obiekt reprezentujący wykryte wyrazy lub frazy |
 | language |język tekstu wykryty w regionie |
 | zorientowany |Orientacja tekstu wykryta w regionie |
-| wiersze |Tablica wierszy tekstu wykrytych w regionie |
+| Wiersze |Tablica wierszy tekstu wykrytych w regionie |
 | tekst |rzeczywisty tekst |
 
 ### <a name="json-output-example"></a>Przykład danych wyjściowych JSON
@@ -366,7 +369,7 @@ namespace OCR
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Powiązane linki

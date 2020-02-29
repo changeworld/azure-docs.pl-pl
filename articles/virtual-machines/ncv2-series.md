@@ -2,17 +2,17 @@
 title: NCv2 — seria Virtual Machines platformy Azure
 description: Specyfikacje dotyczące maszyn wirtualnych z serii NCv2.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 4ea199cdc75732ff3af730fa79530399e4372ebd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: f4a382e422fd56e754d8014bfb4f0f0af1a3ec77
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661043"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163985"
 ---
 # <a name="ncv2-series"></a>Seria NCv2
 
@@ -23,6 +23,10 @@ Konfiguracja NC24rs v2 zapewnia małe opóźnienia i wysoką przepływność int
 Premium Storage: obsługiwane
 
 Buforowanie Premium Storage: obsługiwane
+
+Migracja na żywo: nieobsługiwane
+
+Aktualizacje z zachowaniem pamięci: nieobsługiwane
 
 > [!IMPORTANT]
 > W przypadku tej serii maszyn wirtualnych limit przydziału vCPU (rdzeń) w subskrypcji jest początkowo ustawiany na 0 w każdym regionie. [Zażądaj zwiększenia limitu przydziału vCPU](../azure-supportability/resource-manager-core-quotas-request.md) dla tej serii w [dostępnym regionie](https://azure.microsoft.com/regions/services/).

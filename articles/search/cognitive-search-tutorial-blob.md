@@ -1,23 +1,25 @@
 ---
-title: 'Samouczek: Wyodrębnianie tekstu i struktury z obiektów BLOB JSON'
+title: 'Samouczek: REST i AI przez obiekty blob platformy Azure'
 titleSuffix: Azure Cognitive Search
-description: Przechodzenie między przykładem wyodrębniania tekstu i przetwarzania języka naturalnego nad zawartością w obiektach Blob JSON przy użyciu programu Poster i interfejsów API REST platformy Azure Wyszukiwanie poznawcze.
+description: Przechodzenie między przykładem wyodrębniania tekstu i przetwarzania języka naturalnego za pośrednictwem zawartości w usłudze BLOB Storage przy użyciu programu Poster i interfejsów API REST platformy Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: 9d18bea70670acba404b2198e6b06ea2e9200c30
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 7db2d89c112c5f874460f5e6955cdce90cc2f9ae
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77667027"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163003"
 ---
-# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Samouczek: Wyodrębnianie tekstu i struktury z obiektów BLOB JSON na platformie Azure przy użyciu interfejsów API REST (Azure Wyszukiwanie poznawcze)
+# <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Samouczek: używanie REST i AI do generowania zawartości z możliwością wyszukiwania z obiektów blob platformy Azure
 
-Jeśli w usłudze Azure Blob Storage znajduje się tekst lub obrazy bez struktury, [potok wzbogacenia AI](cognitive-search-concept-intro.md) może wyodrębnić informacje i utworzyć nową zawartość, która jest przydatna w przypadku wyszukiwania pełnotekstowego lub scenariuszy wyszukiwania w bazie wiedzy. Mimo że potok może przetwarzać obrazy, ten samouczek koncentruje się na tekście, stosowaniu wykrywania języka i przetwarzania języka naturalnego w celu utworzenia nowych pól, których można użyć w zapytaniach, aspektach i filtrach.
+Jeśli w usłudze Azure Blob Storage znajduje się tekst lub obrazy bez struktury, [potok wzbogacenia AI](cognitive-search-concept-intro.md) może wyodrębnić informacje i utworzyć nową zawartość, która jest przydatna w przypadku wyszukiwania pełnotekstowego lub scenariuszy wyszukiwania w bazie wiedzy. Mimo że potok może przetwarzać obrazy, ten samouczek REST koncentruje się na tekście, stosowaniu wykrywania języka i przetwarzania języka naturalnego w celu utworzenia nowych pól, których można użyć w zapytaniach, aspektach i filtrach.
+
+W tym samouczku Użyj programu Poster i [rest](https://docs.microsoft.com/rest/api/searchservice/) , aby wykonać następujące zadania:
 
 > [!div class="checklist"]
 > * Zacznij od całego dokumentu (tekst bez struktury), takiego jak PDF, HTML, DOCX i PPTX, w usłudze Azure Blob Storage.
@@ -26,9 +28,16 @@ Jeśli w usłudze Azure Blob Storage znajduje się tekst lub obrazy bez struktur
 > * Wykonaj potok, aby rozpocząć transformacje i analizę oraz utworzyć i załadować indeks.
 > * Eksplorowanie wyników przy użyciu wyszukiwania pełnotekstowego i zaawansowanej składni zapytań.
 
-Aby ukończyć ten przewodnik, będziesz potrzebować kilku usług oraz [aplikacji klasycznej programu Poster](https://www.getpostman.com/) lub innego narzędzia do testowania sieci Web, aby umożliwić wywoływanie interfejsu API REST. 
-
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Otwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
++ [Azure Storage](https://azure.microsoft.com/services/storage/)
++ [Aplikacja klasyczna narzędzia Postman](https://www.getpostman.com/)
++ [Utwórz](search-create-service-portal.md) lub [Znajdź istniejącą usługę wyszukiwania](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
+
+> [!Note]
+> Możesz skorzystać z bezpłatnej usługi dla tego samouczka. Bezpłatna usługa wyszukiwania ogranicza do trzech indeksów, trzech indeksatorów i trzech źródeł danych. W ramach tego samouczka tworzony jest jeden element każdego z tych typów. Przed rozpoczęciem upewnij się, że masz miejsce w usłudze, aby akceptować nowe zasoby.
 
 ## <a name="download-files"></a>Pobieranie plików
 
@@ -104,9 +113,9 @@ Tak jak w przypadku usługi Azure Blob Storage, poświęć chwilę na zebranie k
 
 2. W obszarze **ustawienia** > **klucze**Uzyskaj klucz administratora dla pełnych praw do usługi. Istnieją dwa wymienne klucze administratora zapewniające ciągłość działania w przypadku, gdy trzeba ją wycofać. W przypadku żądań dotyczących dodawania, modyfikowania i usuwania obiektów można użyć klucza podstawowego lub pomocniczego.
 
-    Pobierz również klucz zapytania. Najlepszym rozwiązaniem jest wydawanie żądań zapytań z dostępem tylko do odczytu.
+   Pobierz również klucz zapytania. Najlepszym rozwiązaniem jest wydawanie żądań zapytań z dostępem tylko do odczytu.
 
-![Pobieranie nazwy usługi i administratora oraz kluczy zapytań](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![Pobieranie nazwy usługi i administratora oraz kluczy zapytań](media/search-get-started-nodejs/service-name-and-keys.png)
 
 Wszystkie żądania wymagają klucza API-Key w nagłówku każdego żądania wysyłanego do usługi. Prawidłowy klucz ustanawia zaufanie dla każdego żądania, między aplikacją wysyłającą żądanie a usługą, która go obsługuje.
 
@@ -498,8 +507,6 @@ DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-
 ```
 
 W przypadku pomyślnego usunięcia jest zwracany kod stanu 204.
-
-W miarę rozwoju kodu można udoskonalić strategię odbudowywania. Aby uzyskać więcej informacji, zobacz [Jak odbudować indeks](search-howto-reindex.md).
 
 ## <a name="takeaways"></a>Wnioski
 

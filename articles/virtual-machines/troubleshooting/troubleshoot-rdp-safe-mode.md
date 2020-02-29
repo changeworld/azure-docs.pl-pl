@@ -12,23 +12,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 14cd43f7bd7965b755eca14e5914c64e2ec8e044
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981289"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918210"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Nie można nawiązać połączenia RDP z maszyny Wirtualnej, ponieważ maszyna wirtualna jest uruchamiany w trybie awaryjnym
 
 W tym artykule pokazano, jak rozwiązać problem, w której nie można dołączyć do platformy Azure Windows Virtual Machines (VMs), ponieważ maszyna wirtualna jest skonfigurowana do uruchamiania w trybie awaryjnym.
 
-> [!NOTE]
-> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptoms"></a>Objawy
 
-Nie można wprowadzać z połączeniem RDP lub inne połączenia (na przykład HTTP) do maszyny Wirtualnej na platformie Azure, ponieważ maszyna wirtualna jest skonfigurowana do uruchamiania w trybie awaryjnym. Podczas ewidencjonowania zrzucie ekranu [diagnostykę rozruchu](../troubleshooting/boot-diagnostics.md) w witrynie Azure portal można napotkać wykonać normalnego rozruchu maszyny Wirtualnej, że interfejs sieciowy nie jest dostępna:
+Nie można wprowadzać z połączeniem RDP lub inne połączenia (na przykład HTTP) do maszyny Wirtualnej na platformie Azure, ponieważ maszyna wirtualna jest skonfigurowana do uruchamiania w trybie awaryjnym. Po sprawdzeniu zrzutu ekranu w [diagnostyki rozruchu](../troubleshooting/boot-diagnostics.md) w Azure Portal można zobaczyć, że maszyna wirtualna jest uruchamiana normalnie, ale interfejs sieciowy nie jest dostępny:
 
 ![Obraz dotyczący inferce sieci w trybie awaryjnym](./media/troubleshoot-rdp-safe-mode/network-safe-mode.png)
 
@@ -39,33 +37,33 @@ Usługa RDP nie jest w trybie awaryjnym. Tylko system podstawowych programów i 
 
 ## <a name="solution"></a>Rozwiązanie
 
-Przed wykonaniem tych kroków należy utworzyć migawkę dysku systemu operacyjnego, których to dotyczy maszyny wirtualnej do przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
+Przed wykonaniem tych kroków należy utworzyć migawkę dysku systemu operacyjnego, których to dotyczy maszyny wirtualnej do przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [migawka dysku](../windows/snapshot-copy-managed-disk.md).
 
-Aby rozwiązać ten problem, Użyj sterowania Serial, aby skonfigurować maszynę Wirtualną do rozruchu w trybie normalnym lub [napraw maszynę Wirtualną w tryb offline](#repair-the-vm-offline) za pomocą maszyny Wirtualnej odzyskiwania.
+Aby rozwiązać ten problem, należy użyć kontrolki serial, aby skonfigurować maszynę wirtualną do uruchamiania w trybie normalnym lub [naprawić maszynę wirtualną w trybie offline](#repair-the-vm-offline) przy użyciu maszyny wirtualnej odzyskiwania.
 
 ### <a name="use-serial-control"></a>Korzystanie z kontroli szeregowej
 
-1. Połączyć się z [konsoli szeregowej i otwórz wystąpienie CMD](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-   ). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, zobacz [napraw maszynę Wirtualną w tryb offline](#repair-the-vm-offline).
+1. Połącz się z [konsolą szeregową i Otwórz wystąpienie programu Cmd](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+   ). Jeśli konsola szeregowa nie jest włączona na maszynie wirtualnej, zobacz [Naprawa maszyny wirtualnej w trybie offline](#repair-the-vm-offline).
 2. Sprawdzanie danych konfiguracji rozruchu:
 
         bcdedit /enum
 
-    Jeśli maszyna wirtualna jest skonfigurowana do rozruchu w trybie awaryjnym, zobaczą dodatkowe flagi, w obszarze **moduł ładujący rozruchu Windows** sekcję o nazwie **tryb awaryjny**. Jeśli nie widzisz **tryb awaryjny** Flaga, maszyna wirtualna nie jest w trybie awaryjnym. W tym artykule nie ma zastosowania do danego scenariusza.
+    Jeśli maszyna wirtualna jest skonfigurowana do uruchamiania w trybie awaryjnym, w sekcji **modułu ładującego rozruchu systemu Windows** o nazwie **SAFEBOOT**zostanie wyświetlona dodatkowa flaga. Jeśli flaga **SAFEBOOT** nie jest widoczna, maszyna wirtualna nie jest w trybie awaryjnym. W tym artykule nie ma zastosowania do danego scenariusza.
 
-    **Tryb awaryjny** flagi może się pojawić, z następującymi wartościami:
+    Flaga **SAFEBOOT** może się pojawić z następującymi wartościami:
    - Minimalny
-   - Network (Sieć)
+   - Network
 
      W jednej z tych dwóch trybów RDP nie zostanie uruchomiona. W związku z tym poprawki pozostaje taki sam.
 
      ![Obraz dotyczący flagi trybu awaryjnego](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
 
-3. Usuń **safemoade** flagę, aby maszyna wirtualna zostanie uruchomiony w trybie normalnym:
+3. Usuń flagę **safemoade** , aby maszyna wirtualna przejdzie w tryb normalny:
 
         bcdedit /deletevalue {current} safeboot
 
-4. Sprawdzanie danych konfiguracji rozruchu, aby upewnić się, że **tryb awaryjny** flaga zostanie usunięty:
+4. Sprawdź dane konfiguracji rozruchu, aby upewnić się, że flaga **SAFEBOOT** została usunięta:
 
         bcdedit /enum
 
@@ -75,9 +73,9 @@ Aby rozwiązać ten problem, Użyj sterowania Serial, aby skonfigurować maszyn�
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania
 
-1. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Dołącz dysk systemu operacyjnego do maszyny wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md).
 2. Rozpocznij połączenie pulpitu zdalnego do maszyny Wirtualnej odzyskiwania.
-3. Upewnij się, że dysk jest oznaczone jako **Online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
+3. Upewnij się, że dysk jest oflagowany jako **online** w konsoli Zarządzanie dyskami. Zanotuj literę dysku, która jest przypisana do dołączonym dysku systemu operacyjnego.
 
 #### <a name="enable-dump-log-and-serial-console-optional"></a>Włącz dziennik zrzutu i konsoli szeregowej (opcjonalnie)
 
@@ -120,14 +118,14 @@ Aby włączyć dziennik zrzutu i konsoli szeregowej, uruchom następujący skryp
         bcdedit /store F:\boot\bcd /enum
     Zanotuj nazwę identyfikatora partycji, która ma folder **\Windows** . Domyślnie nazwa identyfikatora to "default".
 
-    Jeśli maszyna wirtualna jest skonfigurowana do rozruchu w trybie awaryjnym, zobaczą dodatkowe flagi, w obszarze **moduł ładujący rozruchu Windows** sekcję o nazwie **tryb awaryjny**. Jeśli flaga **SAFEBOOT** nie jest widoczna, ten artykuł nie dotyczy Twojego scenariusza.
+    Jeśli maszyna wirtualna jest skonfigurowana do uruchamiania w trybie awaryjnym, w sekcji **modułu ładującego rozruchu systemu Windows** o nazwie **SAFEBOOT**zostanie wyświetlona dodatkowa flaga. Jeśli flaga **SAFEBOOT** nie jest widoczna, ten artykuł nie dotyczy Twojego scenariusza.
 
     ![Obraz przedstawiający identyfikator rozruchu](./media/troubleshoot-rdp-safe-mode/boot-id.png)
 
 3. Usuń flagę **SAFEBOOT** , aby maszyna wirtualna przejdzie w tryb normalny:
 
         bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
-4. Sprawdzanie danych konfiguracji rozruchu, aby upewnić się, że **tryb awaryjny** flaga zostanie usunięty:
+4. Sprawdź dane konfiguracji rozruchu, aby upewnić się, że flaga **SAFEBOOT** została usunięta:
 
         bcdedit /store F:\boot\bcd /enum
-5. [Odłącz dysk systemu operacyjnego i ponowne utworzenie maszyny Wirtualnej](../windows/troubleshoot-recovery-disks-portal.md). Następnie sprawdź, czy problem został rozwiązany.
+5. [Odłącz dysk systemu operacyjnego i Utwórz ponownie maszynę wirtualną](../windows/troubleshoot-recovery-disks-portal.md). Następnie sprawdź, czy problem został rozwiązany.

@@ -2,17 +2,17 @@
 title: NVv4 — seria Virtual Machines platformy Azure
 description: Specyfikacje dotyczące maszyn wirtualnych z serii NVv4.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 2afec4dc89c8d8892356888ec3404d36ba929d23
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ccafe6f317ff50684922fd4409beb42214c18858
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669645"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161861"
 ---
 # <a name="nvv4-series-preview"></a>NVv4 — seria (wersja zapoznawcza)
 
@@ -24,6 +24,10 @@ Maszyny wirtualne z serii NVv4 są obsługiwane przez procesory [AMD Radeon Inst
 Premium Storage: obsługiwane
 
 Buforowanie Premium Storage: obsługiwane
+
+Migracja na żywo: nieobsługiwane
+
+Aktualizacje z zachowaniem pamięci: nieobsługiwane
 
 | Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych |
 | --- | --- | --- | --- | --- | --- | --- | --- |

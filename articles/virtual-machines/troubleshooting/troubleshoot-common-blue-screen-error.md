@@ -12,18 +12,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: d9732f232c5a7ec1e551f42fe0e8187e382aec6e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: beb1562738699bbcede58d8214e69342abbb7c93
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981866"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921474"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>System Windows wyświetla błąd niebieskiego ekranu podczas uruchamiania maszyny wirtualnej platformy Azure
 W tym artykule opisano błędy niebieskiego ekranu, które mogą wystąpić podczas uruchamiania maszyny wirtualnej z systemem Windows w Microsoft Azure. Zawiera instrukcje ułatwiające zbieranie danych dla biletu pomocy technicznej. 
 
-> [!NOTE] 
-> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano użycie modelu wdrażania Menedżer zasobów, którego zalecamy używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptom"></a>Objaw 
 
@@ -48,8 +46,8 @@ Aby rozwiązać ten problem, należy najpierw zebrać plik zrzutu dla awarii i s
 
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania
 
-1. Utwórz migawkę dysku systemu operacyjnego z zaatakowaną maszyną wirtualną jako kopię zapasową. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
-2. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md). 
+1. Utwórz migawkę dysku systemu operacyjnego z zaatakowaną maszyną wirtualną jako kopię zapasową. Aby uzyskać więcej informacji, zobacz [migawka dysku](../windows/snapshot-copy-managed-disk.md).
+2. [Dołącz dysk systemu operacyjnego do maszyny wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md). 
 3. Pulpit zdalny do maszyny wirtualnej odzyskiwania.
 
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Lokalizowanie pliku zrzutu i przesyłanie biletu pomocy technicznej

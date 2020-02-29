@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8b651d6e5ca9262d38f5bfb9e10c404e2614809e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 0fe04941821de2ac6e4e873e8d073c3e9b9d9508
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77055672"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919383"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Dołączanie dysku danych zarządzanych do maszyny Wirtualnej z systemem Windows przy użyciu witryny Azure portal
 
@@ -48,4 +48,4 @@ W tym artykule pokazano, jak dołączyć nowy dysk danych zarządzanych na maszy
 ## <a name="next-steps"></a>Następne kroki
 
 - [Dysk danych można również dołączyć przy użyciu programu PowerShell](attach-disk-ps.md).
-- Jeśli aplikacja musi używać dysku *D:* do przechowywania danych, można [zmienić literę dysku na dysku tymczasowym systemu Windows](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+- Jeśli aplikacja musi używać dysku *D:* do przechowywania danych, można [zmienić literę dysku na dysku tymczasowym systemu Windows](change-drive-letter.md).

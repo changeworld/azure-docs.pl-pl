@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/11/2020
+ms.date: 02/26/2020
 ms.author: aahi
 ms.reviewer: tasharm, assafi
-ms.openlocfilehash: eeaef4a9970609c43c03cd784436796a6f8af174
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 79b4063d6b65d6861dd7864c4225e91f4ea5bc6d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211405"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78155416"
 ---
 <a name="HOLTop"></a>
 
@@ -24,13 +24,13 @@ ms.locfileid: "77211405"
 
 * Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
 * [Zestaw Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) z wersją 8 lub nowszą
-
-
-[!INCLUDE [text-analytics-resource-creation](resource-creation.md)]
+* Gdy masz subskrypcję platformy Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="utworzyć zasób analiza tekstu"  target="_blank">utworzyć analiza tekstu</a> zasobów <span class="docon docon-navigate-external x-hidden-focus"></span> w Azure Portal, aby uzyskać klucz i punkt końcowy. 
+    * Będziesz potrzebować klucza i punktu końcowego z zasobu, który tworzysz, aby połączyć aplikację z interfejs API analizy tekstu. Tę czynność należy wykonać w dalszej części przewodnika Szybki Start.
+    * Możesz użyć warstwy cenowej bezpłatna, aby wypróbować usługę i uaktualnić ją później do warstwy płatnej dla środowiska produkcyjnego.
 
 ## <a name="setting-up"></a>Konfigurowanie
 
-### <a name="create-a-new-maven-project"></a>Utwórz nowy projekt Maven
+### <a name="create-a-new-maven-project"></a>Tworzenie nowego projektu Maven
 
 Dodaj następującą zależność analizy tekstu do projektu. Ta wersja zależności używa `3.0-preview` wersji interfejs API analizy tekstu. 
 

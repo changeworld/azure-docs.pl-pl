@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 4766f22cd84b2aab00f6dcc4064dbeea8018f694
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564981"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920590"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenariusze i dostępność funkcji usługi Media Services w centrach danych
 
@@ -202,6 +202,9 @@ Usługa AMS oferuje dwa kodery na żądanie: **Media Encoder Standard** i **Medi
 ### <a name="analytics-media-processors"></a>Procesory multimediów usługi analizy
 
 Analiza multimediów to kolekcja składników mowy i obrazu, które ułatwiają organizacjom i przedsiębiorstwom pozyskiwanie przydatnych informacji z posiadanych plików wideo. Aby uzyskać więcej informacji, zobacz temat [Przegląd analiz usługi Azure Media Services](media-services-analytics-overview.md).
+
+> [!NOTE]
+> Niektóre procesory multimediów analitycznych zostaną wycofane. Aby uzyskać daty wycofania, zobacz temat [starsze składniki](legacy-components.md) .
 
 #### <a name="availability"></a>Dostępność
 

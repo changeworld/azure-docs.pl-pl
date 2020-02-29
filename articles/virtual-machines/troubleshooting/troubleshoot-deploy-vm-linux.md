@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 230319471dbf62bf64ee980d84c360807687ce17
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5a8a58a3935b7cd5efb8565f7e3278ccaae4f4de
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058229"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921440"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Rozwiązywanie problemów z wdrażaniem maszyn wirtualnych z systemem Linux na platformie Azure
 
@@ -86,6 +86,7 @@ Listę można znaleźć w systemie Linux na temat [dystrybucji z zatwierdzeniem 
 
 Tak. Istniejącą klasyczną maszynę wirtualną można dodać do nowego lub istniejącego zestawu dostępności. Aby uzyskać więcej informacji [, zobacz Dodawanie istniejącej maszyny wirtualnej do zestawu dostępności](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/).

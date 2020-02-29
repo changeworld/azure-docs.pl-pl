@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: ee2fb3757b0e3a7015a98f4e04084fd9c6a4850d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: ea448b87f9e6954abecead2934bfb7f4ed04a9c5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747548"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920148"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Szczegółowe kroki rozwiązywania problemów z połączeniami pulpitu zdalnego z maszynami wirtualnymi z systemem Windows na platformie Azure
 Ten artykuł zawiera szczegółowe kroki rozwiązywania problemów w celu zdiagnozowania i rozwiązania złożonych błędów Pulpit zdalny dla maszyn wirtualnych platformy Azure opartych na systemie Windows.
@@ -38,7 +38,7 @@ Następujące składniki są objęte połączeniem RDP:
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
-Przed kontynuowaniem może być pomocne sprawdzenie, co zmieniło się od czasu ostatniego pomyślnego nawiązania połączenia z maszyną wirtualną Pulpit zdalny. Przykład:
+Przed kontynuowaniem może być pomocne sprawdzenie, co zmieniło się od czasu ostatniego pomyślnego nawiązania połączenia z maszyną wirtualną Pulpit zdalny. Na przykład:
 
 * Publiczny adres IP maszyny wirtualnej lub usługi w chmurze zawierającej MASZYNę wirtualną (nazywany również wirtualnym adresem IP adresu [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)) został zmieniony. Awaria protokołu RDP może być spowodowana tym, że w pamięci podręcznej klienta DNS nadal jest zarejestrowany *stary adres IP* dla nazwy DNS. Opróżnij pamięć podręczną klienta DNS i spróbuj ponownie nawiązać połączenie z maszyną wirtualną. Lub spróbuj połączyć się bezpośrednio z nowym adresem VIP.
 * Używasz aplikacji innych firm do zarządzania połączeniami Pulpit zdalny, zamiast korzystać z połączenia wygenerowanego przez Azure Portal. Sprawdź, czy konfiguracja aplikacji zawiera poprawny port TCP dla ruchu Pulpit zdalny. Możesz sprawdzić ten port dla klasycznej maszyny wirtualnej w [Azure Portal](https://portal.azure.com), klikając ustawienia maszyny wirtualnej > punkty końcowe.
@@ -92,6 +92,9 @@ Jeśli można utworzyć połączenie Pulpit zdalny z komputerem połączonym bez
 Skontaktuj się z administratorem sieci, aby skorygować ustawienia intranetowej urządzenia brzegowego, aby umożliwić nawiązywanie połączeń Pulpit zdalny z Internetem za pośrednictwem protokołu HTTPS.
 
 ## <a name="source-3-cloud-service-endpoint-and-acl"></a>Źródło 3: punkt końcowy usługi w chmurze i lista ACL
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 W przypadku maszyn wirtualnych utworzonych przy użyciu klasycznego modelu wdrażania Sprawdź, czy inna maszyna wirtualna platformy Azure, która znajduje się w tej samej usłudze w chmurze lub sieci wirtualnej, może nawiązać Pulpit zdalny połączenia z MASZYNą wirtualną platformy Azure.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
@@ -190,10 +193,10 @@ Exit-PSSession
 
 Sprawdź, czy punkt końcowy Pulpit zdalny dla maszyny wirtualnej platformy Azure używa również portu TCP 3398 jako portu wewnętrznego. Uruchom ponownie maszynę wirtualną platformy Azure i spróbuj ponownie nawiązać połączenie Pulpit zdalny.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 [Jak zresetować hasło lub usługę Pulpit zdalny dla maszyn wirtualnych z systemem Windows](../windows/reset-rdp.md)
 
-[How to install and configure Azure PowerShell](/powershell/azure/overview)
+[Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview)
 
 [Rozwiązywanie problemów z połączeniami Secure Shell (SSH) z maszyną wirtualną platformy Azure opartą na systemie Linux](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

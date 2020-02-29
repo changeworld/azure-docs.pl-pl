@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowej bazy danych SAP HANA na platformie Azure przy u
 description: W tym artykule dowiesz się, jak utworzyć kopię zapasową bazy danych SAP HANA na maszynach wirtualnych platformy Azure przy użyciu usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: dd4c6fc0e018f3fc8f2a2029ef8a90cdc305e2c2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a5fd09e0e487d103e8bd78964c11b572a62e28fa
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765518"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164614"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Tworzenie kopii zapasowych baz danych platformy SAP HANA na maszynach wirtualnych platformy Azure
 
@@ -21,7 +21,7 @@ W tym artykule dowiesz się jak:
 >
 > * Tworzenie i Konfigurowanie magazynu
 > * Odnajdywanie baz danych
-> * Skonfiguruj kopie zapasowe
+> * Skonfigurowanie funkcji tworzenia kopii zapasowych
 > * Uruchamianie zadania tworzenia kopii zapasowej na żądanie
 
 >[!NOTE]
@@ -30,7 +30,7 @@ W tym artykule dowiesz się jak:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Zapoznaj się z sekcjami [wymagania wstępne](tutorial-backup-sap-hana-db.md#prerequisites) i [Ustawienia uprawnień](tutorial-backup-sap-hana-db.md#setting-up-permissions) , aby skonfigurować bazę danych do tworzenia kopii zapasowych.
+Zapoznaj się z [wymaganiami wstępnymi](tutorial-backup-sap-hana-db.md#prerequisites) i informacjami o [skrypcie przed rejestracją](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) , aby skonfigurować bazę danych do tworzenia kopii zapasowych.
 
 ### <a name="set-up-network-connectivity"></a>Konfigurowanie łączności sieciowej
 
@@ -89,23 +89,6 @@ Użyj tagów usługi sieciowej grupy zabezpieczeń | Łatwiejsze zarządzanie, p
 Używanie tagów nazwy FQDN zapory platformy Azure | Łatwiejsze zarządzanie, ponieważ wymagane są automatycznie zarządzane nazwy FQDN | Może być używany tylko z zaporą platformy Azure
 Używanie serwera proxy HTTP | Szczegółowa kontrola w serwerze proxy za pośrednictwem adresów URL magazynu jest dozwolona <br/><br/> Dostęp do maszyn wirtualnych w jednym punkcie dostępu do Internetu <br/><br/> Nie podlegają zmianom adresów IP platformy Azure | Dodatkowe koszty związane z uruchamianiem maszyny wirtualnej za pomocą oprogramowania serwera proxy
 
-## <a name="onboard-to-the-public-preview"></a>Dołączanie do publicznej wersji zapoznawczej
-
-Dołączanie do publicznej wersji zapoznawczej w następujący sposób:
-
-* W portalu Zarejestruj swój identyfikator subskrypcji dla dostawcy usług Recovery Services, wykonując [ten artykuł](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal).
-* Dla modułu "AZ" w programie PowerShell uruchom to polecenie cmdlet. Powinna zostać zakończona jako "zarejestrowane".
-
-    ```powershell
-    Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-* Jeśli używasz modułu "AzureRM" w programie PowerShell, Uruchom to polecenie cmdlet. Powinna zostać zakończona jako "zarejestrowane".
-
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-    
-
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-the-databases"></a>Odnajdywanie baz danych
@@ -130,7 +113,7 @@ Teraz Włącz tworzenie kopii zapasowej.
 
 1. W kroku 2 kliknij pozycję **Konfiguruj kopię zapasową**.
 
-    ![Konfigurowanie usługi Backup](./media/backup-azure-sap-hana-database/configure-backup.png)
+    ![Skonfiguruj kopię zapasową](./media/backup-azure-sap-hana-database/configure-backup.png)
 2. W obszarze **Wybierz elementy do utworzenia kopii zapasowej**wybierz wszystkie bazy danych, które mają być chronione > **OK**.
 
     ![Wybierz elementy do utworzenia kopii zapasowej](./media/backup-azure-sap-hana-database/select-items.png)

@@ -2,19 +2,19 @@
 title: Dav4 i Dasv4 — seria Virtual Machines platformy Azure
 description: Specyfikacje dotyczące maszyn wirtualnych z serii Dav4 i Dasv4.
 services: virtual-machines
-author: jonbeck7
+author: migerdes
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: f371281e4072902f9946eb9fd107b68a1e4bf4f6
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 809843bddc4216df4dab44330172d36778248b1a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493880"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162183"
 ---
-# <a name="dav4-and-dasv4-series"></a>Dav4 i Dasv4 — seria
+# <a name="dav4-and-dasv4-series"></a>Serie Dav4 i Dasv4
 
 Serie Dav4 i Dasv4 to nowe rozmiary wykorzystujące procesor<sup>AMD 7452 o</sup> rozmiarze 2.35 GHz w konfiguracji wielowątkowej z maksymalnie 256 MB pamięci podręcznej L3 z 8 GB pamięci podręcznej L3 do każdego 8 rdzeni, które zwiększają możliwości uruchamiania ich obciążeń ogólnego przeznaczenia. Serie Dav4 i Dasv4 mają takie same konfiguracje pamięci i dysków jak seria D & Dsv3.
 
@@ -25,6 +25,10 @@ ACU: 230-260
 Premium Storage: nieobsługiwane
 
 Buforowanie Premium Storage: nieobsługiwane
+
+Migracja na żywo: obsługiwane
+
+Aktualizacje z zachowaniem pamięci: obsługiwane
 
 Rozmiary serii Dav4 są oparte na procesorze 2.35 GHz AMD EPYC<sup>TM</sup> 7452, który umożliwia zwiększenie maksymalnej częstotliwości 3.35 GHz. Rozmiary serii Dav4 oferują kombinację vCPU, pamięci i magazynu tymczasowego dla większości obciążeń produkcyjnych. Opłaty za magazyn dysków danych są naliczane oddzielnie od opłat za maszyny wirtualne. Aby korzystać z dysku SSD Premium, użyj rozmiarów Dasv4. Liczniki cen i rozliczeń dla rozmiarów Dasv4 są takie same jak dla serii Dav4.
 
@@ -48,6 +52,10 @@ ACU: 230-260
 Premium Storage: obsługiwane
 
 Buforowanie Premium Storage: obsługiwane
+
+Migracja na żywo: obsługiwane
+
+Aktualizacje z zachowaniem pamięci: obsługiwane
 
 Rozmiary serii Dasv4 są oparte na procesorze 2.35 GHz AMD EPYC<sup>TM</sup> 7452, który może osiągnąć podwyższaną maksymalną częstotliwość 3.35 GHz i korzystać z dysku SSD Premium. Rozmiary serii Dasv4 oferują kombinację vCPU, pamięci i magazynu tymczasowego dla większości obciążeń produkcyjnych.
 

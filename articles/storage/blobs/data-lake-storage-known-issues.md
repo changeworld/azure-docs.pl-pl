@@ -1,27 +1,41 @@
 ---
 title: Znane problemy związane z usługi Azure Data Lake Storage Gen2 | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o ograniczeniach i znanych problemach, za pomocą usługi Azure Data Lake Storage Gen2
+description: Poznaj ograniczenia i znane problemy dotyczące Azure Data Lake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/03/2019
+ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 951d707c898ad0efa1f21480c12f0c733f5218ee
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 7d637c2fb3f4a4d5f8deac9cd99c0a44af6568e6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834942"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919615"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
-W tym artykule wymieniono funkcje i narzędzia, które nie są jeszcze obsługiwane lub są obsługiwane tylko częściowo w przypadku kont magazynu, które mają hierarchiczną przestrzeń nazw (Azure Data Lake Storage Gen2).
+W tym artykule opisano ograniczenia i znane problemy dotyczące Azure Data Lake Storage Gen2.
 
-<a id="blob-apis-disabled" />
+## <a name="supported-blob-storage-features"></a>Obsługiwane funkcje magazynu obiektów BLOB
 
-## <a name="issues-and-limitations-with-using-blob-apis"></a>Problemy i ograniczenia związane z korzystaniem z interfejsów API obiektów BLOB
+Rosnąca liczba funkcji magazynu obiektów BLOB działa teraz z kontami, które mają hierarchiczną przestrzeń nazw. Aby uzyskać pełną listę, zobacz [BLOB Storage funkcje dostępne w programie Azure Data Lake Storage Gen2](data-lake-storage-supported-blob-storage-features.md).
+
+## <a name="supported-azure-service-integrations"></a>Obsługiwane integracje usług platformy Azure
+
+Data Lake Storage Gen2 obsługuje kilka usług platformy Azure, których można użyć do pozyskiwania danych, wykonywania analiz i tworzenia reprezentacji wizualnych. Aby uzyskać listę obsługiwanych usług platformy Azure, zobacz [usługi platformy Azure, które obsługują Azure Data Lake Storage Gen2](data-lake-storage-supported-azure-services.md).
+
+Zobacz [usługi platformy Azure, które obsługują Azure Data Lake Storage Gen2](data-lake-storage-supported-azure-services.md).
+
+## <a name="supported-open-source-platforms"></a>Obsługiwane platformy typu open source
+
+Wiele platform typu open source obsługi Gen2 magazynu programu Data Lake. Aby uzyskać pełną listę, zobacz [platformy typu "open source" obsługujące Azure Data Lake Storage Gen2](data-lake-storage-supported-open-source-platforms.md).
+
+Zobacz [platformę Open Source, która obsługuje Azure Data Lake Storage Gen2](data-lake-storage-supported-open-source-platforms.md).
+
+## <a name="blob-storage-apis"></a>Magazyn obiektów blob interfejsów API
 
 Interfejsy API obiektów blob i interfejsy API Data Lake Storage Gen2 mogą działać na tych samych danych.
 
@@ -48,38 +62,57 @@ Niezarządzane dyski maszyny wirtualnej nie są obsługiwane na kontach z hierar
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="filesystem-support-in-sdks"></a>Obsługa systemu plików w zestawach SDK
+## <a name="file-system-support-in-sdks"></a>Obsługa systemu plików w zestawach SDK
 
-- Obsługa [platform .NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md) i [Python](data-lake-storage-directory-file-acl-python.md) znajduje się w publicznej wersji zapoznawczej. Inne zestawy SDK nie są obecnie obsługiwane.
+- [Programy .NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md) i [Python](data-lake-storage-directory-file-acl-python.md)oraz obsługa [języka JavaScript](data-lake-storage-directory-file-acl-javascript.md) i pomocy technicznej są dostępne w publicznej wersji zapoznawczej. Inne zestawy SDK nie są obecnie obsługiwane.
 - Operacje pobierania i ustawiania listy ACL nie są obecnie cykliczne.
 
-## <a name="filesystem-support-in-powershell-and-azure-cli"></a>Obsługa systemu plików w programie PowerShell i interfejsie wiersza polecenia platformy Azure
+## <a name="file-system-support-in-powershell-and-azure-cli"></a>Obsługa systemu plików w programie PowerShell i interfejsie wiersza polecenia platformy Azure
 
 - Obsługa [programu PowerShell](data-lake-storage-directory-file-acl-powershell.md) i [interfejsu wiersza polecenia platformy Azure](data-lake-storage-directory-file-acl-cli.md) znajduje się w publicznej wersji zapoznawczej.
 - Operacje pobierania i ustawiania listy ACL nie są obecnie cykliczne.
 
-## <a name="support-for-other-blob-storage-features"></a>Obsługa innych funkcji Blob Storage
+## <a name="lifecycle-management-policies"></a>Zasady zarządzania cyklem życia
 
-W poniższej tabeli wymieniono wszystkie inne funkcje i narzędzia, które nie są jeszcze obsługiwane lub tylko częściowo obsługiwane z kontami magazynu, które mają hierarchiczną przestrzeń nazw (Azure Data Lake Storage Gen2).
+* Usuwanie migawek obiektów BLOB nie jest jeszcze obsługiwane.  
 
-| Funkcja/narzędzie    | Więcej informacji    |
-|--------|-----------|
-| **Tryb failover konta** |Jeszcze nieobsługiwane|
-| **Narzędzie AzCopy** | Obsługa specyficzna dla wersji <br><br>Użyj tylko najnowszej wersji AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Wcześniejsze wersje AzCopy, takie jak AzCopy v 8.1, nie są obsługiwane.|
-| **Zasady zarządzania cyklem życia Blob Storage platformy Azure** | Zasady zarządzania cyklem życia są obsługiwane (wersja zapoznawcza).  Utwórz konto w wersji zapoznawczej zasad zarządzania cyklem życia i zarchiwizuj warstwę dostępu w [tym miejscu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).   <br><br>Obsługiwane są wszystkie warstwy dostępu. Warstwa dostępu archiwalnego jest obecnie w wersji zapoznawczej. Usuwanie migawek obiektów BLOB nie jest jeszcze obsługiwane.  Obecnie niektóre usterki mają wpływ na zasady zarządzania cyklem życia i warstwę dostępu archiwizowania.  |
-| **Azure Content Delivery Network (CDN)** | Jeszcze nieobsługiwane|
-| **Usługa Azure Search** |Obsługiwane (wersja zapoznawcza)|
-| **Azure Storage Explorer** | Obsługa specyficzna dla wersji. <br><br>Używaj tylko wersji `1.6.0` lub nowszej. <br> Obecnie istnieje usterka magazynu wpływająca na `1.11.0` wersji, która może powodować błędy uwierzytelniania w niektórych scenariuszach. Poprawka dotycząca usterki magazynu jest wdrażana, ale jako obejście zalecamy korzystanie z wersji `1.10.x` dostępnej [bezpłatnie do pobrania](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). Usterka magazynu nie ma na `1.10.x`.|
-| **Listy ACL kontenera obiektów BLOB** |Jeszcze nieobsługiwane|
-| **Blobfuse** |Jeszcze nieobsługiwane|
-| **Niestandardowe domeny** |Jeszcze nieobsługiwane|
-| **Eksplorator usługi Storage w Azure Portal** | Ograniczona pomoc techniczna. Listy ACL nie są jeszcze obsługiwane. |
-| **Rejestrowanie diagnostyczne** |Dzienniki diagnostyczne są obsługiwane (wersja zapoznawcza). <br><br>Eksplorator usługi Azure Storage 1.10. x nie można używać do wyświetlania dzienników diagnostycznych. Aby wyświetlić dzienniki, użyj AzCopy lub zestawów SDK.
-| **Niezmienny magazyn** |Jeszcze nieobsługiwane <br><br>Niezmienny magazyn umożliwia przechowywanie danych w [robaku (zapis jeden raz, odczyt wielu)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
-| **Warstwy na poziomie obiektów** |Obsługiwane są warstwy chłodna i archiwalna. Warstwa archiwum jest w wersji zapoznawczej. Wszystkie inne warstwy dostępu nie są jeszcze obsługiwane. <br><br> Obecnie niektóre usterki mają wpływ na warstwę dostępu archiwizowania.  Utwórz konto w wersji zapoznawczej warstwy dostępu archiwalnego w [tym miejscu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u).|
-| **Statyczne witryny sieci Web** |Jeszcze nieobsługiwane <br><br>W oddzielnym zakresie możliwość obsługiwania plików do [statycznych witryn sieci Web](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
-| **Aplikacje innych firm** | Ograniczona obsługa <br><br>Aplikacje innych firm, które używają interfejsów API REST do pracy, będą nadal działały, jeśli są używane z Data Lake Storage Gen2. <br>Aplikacje wywołujące interfejsy API obiektów BLOB prawdopodobnie będą działały.|
-|**Usuwanie nietrwałe** |Jeszcze nieobsługiwane|
-| **Funkcje obsługi wersji** |Jeszcze nieobsługiwane <br><br>Dotyczy to również [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)oraz innych funkcji przechowywania wersji, takich jak [migawki](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob).|
+* Obecnie niektóre usterki mają wpływ na zasady zarządzania cyklem życia i warstwę dostępu archiwizowania. 
+
+## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
+
+Eksplorator usługi Azure Storage 1.10. x nie można używać do wyświetlania dzienników diagnostycznych. Aby wyświetlić dzienniki, użyj AzCopy lub zestawów SDK.
+
+## <a name="blobfuse"></a>Blobfuse
+
+Blobfuse nie jest obsługiwana.
+
+
+
+<a id="known-issues-tools" />
+
+## <a name="azcopy"></a>Narzędzie AzCopy
+
+Użyj tylko najnowszej wersji AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Wcześniejsze wersje AzCopy, takie jak AzCopy v 8.1, nie są obsługiwane.
+
+<a id="storage-explorer" />
+
+## <a name="azure-storage-explorer"></a>Azure Storage Explorer
+
+Używaj tylko wersji `1.6.0` lub nowszej. Obecnie istnieje usterka magazynu wpływająca na `1.11.0`wersji  , która może powodować błędy uwierzytelniania w niektórych scenariuszach. Poprawka dotycząca usterki magazynu jest wdrażana, ale jako obejście zalecamy użycie wersji `1.10.x` dostępnej jako [bezpłatnego pobrania](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). Usterka magazynu nie dotyczy   `1.10.x`.
+
+<a id="explorer-in-portal" />
+
+## <a name="storage-explorer-in-the-azure-portal"></a>Eksplorator usługi Storage w witrynie Azure Portal
+
+Listy ACL nie są jeszcze obsługiwane.
+
+<a id="third-party-apps" />
+
+## <a name="thirdpartyapplications"></a>Aplikacje innych firm
+
+Aplikacje innych firm, które używają interfejsów API REST do pracy, będą nadal działały w przypadku używania ich z Data Lake Storage Gen2 aplikacjami, które wywołują interfejsy API obiektów blob, prawdopodobnie będą działały.
+
+
+
 
 

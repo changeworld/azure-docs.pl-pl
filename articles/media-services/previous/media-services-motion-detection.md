@@ -14,14 +14,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: fd31528325ddbe913333bc228fc3847242abcd24
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083752"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913008"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Wykrywaj ruchy przy użyciu Azure Media Analytics
+
+> [!NOTE]
+> Procesor multimediów **Azure Media Motion Detector** zostanie wycofany. Aby uzyskać datę wycofania, zobacz temat [starsze składniki](legacy-components.md) .
  
 ## <a name="overview"></a>Omówienie
 
@@ -42,7 +45,7 @@ Podczas tworzenia zadania z **Azure Media Motion Detector**należy określić us
 ### <a name="parameters"></a>Parametry
 Można użyć następujących parametrów:
 
-| Nazwa | Opcje | Opis | Domyślne |
+| Name (Nazwa) | Opcje | Opis | Domyślne |
 | --- | --- | --- | --- |
 | sensitivityLevel |String:'low', 'medium', 'high' |Ustawia poziom czułości, przy którym są raportowane ruchy. Dostosuj ten sposób, aby dopasować liczbę fałszywie dodatnich. |średniookresow |
 | frameSamplingValue |Dodatnia liczba całkowita |Ustawia częstotliwość uruchamiania algorytmu. 1 równa się każdej klatce, 2 oznacza każdą klatkę i tak dalej. |1 |
@@ -97,7 +100,7 @@ W poniższej tabeli opisano elementy wyjściowego pliku JSON.
 
 | Element | Opis |
 | --- | --- |
-| version |Odnosi się to do wersji interfejsu API wideo. Bieżąca wersja to 2. |
+| wersja |Odnosi się to do wersji interfejsu API wideo. Bieżąca wersja to 2. |
 | timescale |"Ticks" na sekundę filmu wideo. |
 | offset |Przesunięcie czasu dla sygnatur czasowych w "Takty". W wersji 1,0 interfejsów API wideo zawsze będzie równa 0. W przyszłych scenariuszach dział IT może zmienić tę wartość. |
 | szybkości |Liczba klatek na sekundę w wideo. |
@@ -106,12 +109,12 @@ W poniższej tabeli opisano elementy wyjściowego pliku JSON.
 | duration |Długość zdarzenia w "taktach". |
 | interval |Interwał każdego wpisu w zdarzeniu w "Takty". |
 | zdarzenia |Każdy fragment zdarzenia zawiera ruch wykryty w tym czasie. |
-| type |W bieżącej wersji jest to zawsze "2" dla ruchu ogólnego. Ta etykieta umożliwia interfejsom API wideo elastyczność kategoryzowania ruchu w przyszłych wersjach. |
+| typ |W bieżącej wersji jest to zawsze "2" dla ruchu ogólnego. Ta etykieta umożliwia interfejsom API wideo elastyczność kategoryzowania ruchu w przyszłych wersjach. |
 | regionId |Zgodnie z powyższym opisem, ta wersja będzie zawsze równa 0. Ta etykieta daje interfejsowi API wideo elastyczność umożliwiającą znalezienie ruchu w różnych regionach w przyszłych wersjach. |
-| — regiony |Odnosi się do obszaru w Twoim wideo, w którym zawarto informacje o ruchu. <br/><br/>-"ID" reprezentuje obszar regionu — w tej wersji istnieje tylko jeden identyfikator 0. <br/>-"Type" reprezentuje kształt regionu, który ma być związany z ruchem. Aktualnie "prostokąt" i "Wielokąt" są obsługiwane.<br/> Jeśli określono "prostokąt", region ma wymiary w X, Y, Szerokość i wysokość. Współrzędne X i Y reprezentują górne współrzędne XY w regionie w znormalizowanej skali od 0,0 do 1,0. Szerokość i wysokość przedstawiają rozmiar regionu w znormalizowanej skali od 0,0 do 1,0. W bieżącej wersji, X, Y, Szerokość i wysokość są zawsze stałe na 0, 0 i 1, 1. <br/>Jeśli określono "Wielokąt", region ma wymiary w punktach. <br/> |
-| elementy |Metadane są podzielone na różne segmenty o nazwie fragmenty. Każdy fragment zawiera rozpoczęcie, czas trwania, wartość interwału i zdarzenia. Fragment bez zdarzeń oznacza, że nie wykryto żadnego ruchu w czasie i czasie trwania. |
+| regiony |Odnosi się do obszaru w Twoim wideo, w którym zawarto informacje o ruchu. <br/><br/>-"ID" reprezentuje obszar regionu — w tej wersji istnieje tylko jeden identyfikator 0. <br/>-"Type" reprezentuje kształt regionu, który ma być związany z ruchem. Aktualnie "prostokąt" i "Wielokąt" są obsługiwane.<br/> Jeśli określono "prostokąt", region ma wymiary w X, Y, Szerokość i wysokość. Współrzędne X i Y reprezentują górne współrzędne XY w regionie w znormalizowanej skali od 0,0 do 1,0. Szerokość i wysokość przedstawiają rozmiar regionu w znormalizowanej skali od 0,0 do 1,0. W bieżącej wersji, X, Y, Szerokość i wysokość są zawsze stałe na 0, 0 i 1, 1. <br/>Jeśli określono "Wielokąt", region ma wymiary w punktach. <br/> |
+| fragmenty |Metadane są podzielone na różne segmenty o nazwie fragmenty. Każdy fragment zawiera rozpoczęcie, czas trwania, wartość interwału i zdarzenia. Fragment bez zdarzeń oznacza, że nie wykryto żadnego ruchu w czasie i czasie trwania. |
 | nawiasy kwadratowe [] |Każdy nawias reprezentuje jeden interwał w zdarzeniu. Puste nawiasy dla tego interwału oznacza, że nie wykryto żadnego ruchu. |
-| locations |Ten nowy wpis w obszarze zdarzenia zawiera listę lokalizacji, w której wystąpiło ruch. Jest to bardziej szczegółowe niż strefy wykrywania. |
+| lokalizacje |Ten nowy wpis w obszarze zdarzenia zawiera listę lokalizacji, w której wystąpiło ruch. Jest to bardziej szczegółowe niż strefy wykrywania. |
 
 Poniższy przykład JSON przedstawia dane wyjściowe:
 
@@ -381,7 +384,7 @@ namespace VideoMotionDetection
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Powiązane linki

@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a1c19523508f434c114df884824d1595376bac21
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c02595ebdb2f011dcc94b517771a79a4b2df754d
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276924"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161724"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Samouczek: instrukcje krok po kroku dotyczące tworzenia nowej aplikacji dla systemu Android przy użyciu kotwic przestrzennych platformy Azure
 
@@ -30,7 +30,7 @@ Aby ukończyć kroki tego samouczka, upewnij się, że dysponujesz następujący
 
 Uruchom program Android Studio. W oknie **Witamy w Android Studio** kliknij pozycję **rozpocznij nowy projekt Android Studio**. Lub, jeśli masz już otwarty projekt, wybierz pozycję **plik**->**Nowy projekt**.
 
-W oknie **Tworzenie nowego projektu** w obszarze **telefon i tablet** wybierz pozycję **puste działanie**, a następnie kliknij przycisk **dalej**. Następnie w obszarze **minimalny poziom interfejsu API**wybierz pozycję `API 26: Android 8.0 (Oreo)`i upewnij się, że **Język** jest ustawiony na `Java`. Możesz chcieć zmienić nazwę projektu & lokalizacji i nazwę pakietu. Pozostaw inne opcje. Kliknij przycisk **Zakończ**. Zostanie uruchomiony **Instalator składnika** . Po zakończeniu kliknij przycisk **Zakończ**. Po zakończeniu niektórych operacji Android Studio otworzy środowisko IDE.
+W oknie **Tworzenie nowego projektu** w obszarze **telefon i tablet** wybierz pozycję **puste działanie**, a następnie kliknij przycisk **dalej**. Następnie w obszarze **minimalny poziom interfejsu API**wybierz pozycję `API 26: Android 8.0 (Oreo)`i upewnij się, że **Język** jest ustawiony na `Java`. Możesz chcieć zmienić nazwę projektu & lokalizacji i nazwę pakietu. Pozostaw inne opcje. Kliknij przycisk **Finish** (Zakończ). Zostanie uruchomiony **Instalator składnika** . Po zakończeniu kliknij przycisk **Zakończ**. Po zakończeniu niektórych operacji Android Studio otworzy środowisko IDE.
 
 ## <a name="trying-it-out"></a>Trwa próba
 
@@ -123,13 +123,13 @@ Ponownie [Wdróż](#trying-it-out) aplikację na urządzeniu, aby zweryfikować 
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>Dołącz lokalną kotwicę przestrzenną platformy Azure
 
-Zmodyfikuj `Gradle Scripts\build.gradle (Module: app)` tak, aby zawierał następujący wpis. Ten kod zapewni, że aplikacja będzie ukierunkowana na kotwice przestrzenne platformy Azure w wersji 1.3.0. Wspomniane odwołanie odwołujące się do wszystkich najnowszych wersji zakotwiczenia przestrzennego platformy Azure powinno funkcjonować.
+Zmodyfikuj `Gradle Scripts\build.gradle (Module: app)` tak, aby zawierał następujący wpis. Ten kod zapewni, że aplikacja będzie ukierunkowana na kotwice przestrzenne platformy Azure w wersji 2.2.0. Wspomniane odwołanie odwołujące się do wszystkich najnowszych wersji zakotwiczenia przestrzennego platformy Azure powinno funkcjonować. Informacje o wersji można znaleźć [tutaj.](https://github.com/Azure/azure-spatial-anchors-samples/releases)
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.3.0]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.3.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.2.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.2.0]"
     ...
 }
 ```

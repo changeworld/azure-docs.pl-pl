@@ -11,18 +11,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 745d7335f70fb082ced16341742e3eb77a34f563
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 35744780030ebf601802ea00eb1a1ed9c623465b
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120472"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160882"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Szybki start: uzyskiwanie tokenu i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji klasycznej w systemie Windows
 
-W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną .NET (WPF) w systemie Windows umożliwiającą logowanie się na kontach osobistych i służbowych, uzyskiwanie tokenów dostępu i wywoływanie interfejsu API programu Microsoft Graph.
-
-![Pokazuje sposób działania przykładowej aplikacji wygenerowanej przez ten przewodnik Szybki Start](media/quickstart-v2-windows-desktop/windesktop-intro.svg)
+W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną .NET (WPF) w systemie Windows umożliwiającą logowanie się na kontach osobistych i służbowych, uzyskiwanie tokenów dostępu i wywoływanie interfejsu API programu Microsoft Graph. (Zobacz [, jak działa przykład](#how-the-sample-works) dla ilustracji).
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Rejestrowanie i pobieranie aplikacji Szybki start
@@ -63,23 +61,33 @@ W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną 
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Krok 2. Pobieranie projektu programu Visual Studio
 
-[Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip) ([Wyświetl projekt w serwisie GitHub](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/))
+> [!div renderon="docs"]
+> [Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)  
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3. Konfigurowanie projektu programu Visual Studio
+> [!div class="sxs-lookup" renderon="portal"]
+> Uruchom projekt przy użyciu programu Visual Studio 2019.
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Pobierz przykład kodu]()
 
-1. Wyodrębnij plik zip do folderu lokalnego blisko folderu głównego dysku, na przykład **C:\Azure-Samples**.
-1. Otwórz projekt w programie Visual Studio.
-1. Edytuj plik **App.Xaml.cs** i zastąp wartości pól `ClientId` i `Tenant` następującym kodem:
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3. Twoja aplikacja jest skonfigurowana i gotowa do uruchomienia
+> Twój projekt został skonfigurowany z wartościami właściwości aplikacji i jest gotowy do uruchomienia. 
 
-    ```csharp
-    private static string ClientId = "Enter_the_Application_Id_here";
-    private static string Tenant = "Enter_the_Tenant_Info_Here";
-    ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Ten przewodnik Szybki Start obsługuje Enter_the_Supported_Account_Info_Here.
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3. Konfigurowanie projektu programu Visual Studio
+> 1. Wyodrębnij plik zip do folderu lokalnego blisko folderu głównego dysku, na przykład **C:\Azure-Samples**.
+> 1. Otwórz projekt w programie Visual Studio.
+> 1. Edytuj plik **App.Xaml.cs** i zastąp wartości pól `ClientId` i `Tenant` następującym kodem:
+>
+>    ```csharp
+>    private static string ClientId = "Enter_the_Application_Id_here";
+>    private static string Tenant = "Enter_the_Tenant_Info_Here";
+>    ```
+> 
 > Gdzie:
 > - `Enter_the_Application_Id_here` jest **identyfikatorem aplikacji (klienta)** dla zarejestrowanej aplikacji.
 > - `Enter_the_Tenant_Info_Here` to wartość ustawiana na jedną z następujących opcji:
@@ -92,8 +100,10 @@ W tym przewodniku Szybki start dowiesz się, jak napisać aplikację klasyczną 
 
 ## <a name="more-information"></a>Więcej informacji
 
-### <a name="msalnet"></a>MSAL.NET
+### <a name="how-the-sample-works"></a>Jak działa przykład
+![Pokazuje sposób działania przykładowej aplikacji wygenerowanej przez ten przewodnik Szybki Start](media/quickstart-v2-windows-desktop/windesktop-intro.svg)
 
+### <a name="msalnet"></a>MSAL.NET
 MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) to biblioteka służąca do logowania użytkowników i żądania tokenów używanych w celu uzyskania dostępu do interfejsu API chronionego przez platformę tożsamości firmy Microsoft. Bibliotekę MSAL można zainstalować, uruchamiając następujące polecenie w **Konsoli menedżera pakietów** programu Visual Studio:
 
 ```powershell

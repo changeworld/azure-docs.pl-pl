@@ -7,27 +7,28 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: b2e7b9f28c84b769fe64be82f91418cc2a7d634f
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 373656c3585d503eccf166ce049b58e784e9131c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044370"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921338"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Co nowego w usłudze Azure Application Gateway?
 
-Usługa Azure Application Gateway jest regularnie aktualizowana. Aby zachować aktualność najnowszych zmian, ten artykuł zawiera informacje na temat:
+Usługa Azure Application Gateway jest regularnie aktualizowana. Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedstawiono informacje o:
 
-- Najnowsze wersje
+- Zainstalowane najnowsze wersje
 - Znane problemy
 - Poprawki błędów
 - Przestarzałe funkcje
 
 ## <a name="new-features"></a>Nowe funkcje
 
-|Funkcja  |Opis  |Data dodania  |
+|Cecha  |Opis  |Data dodania  |
 |---------|---------|---------|
-|Udoskonalenia sondy |W przypadku ulepszeń niestandardowych w Application Gateway wersji 2 jednostki SKU mamy uproszczoną [konfigurację sondowania](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#create-probe-for-application-gateway-v2-sku), usprawnienia [testów kondycji zaplecza na żądanie](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#test-backend-health-with-the-probe) i dodaliśmy [więcej informacji diagnostycznych](https://docs.microsoft.com/azure/application-gateway/application-gateway-backend-health-troubleshooting#error-messages) ułatwiających rozwiązywanie problemów z kondycją zaplecza luk.  |Październik 2019 |
+|Zmiany plików cookie koligacji |Gdy włączona jest koligacja oparta na plikach cookie, Application Gateway wprowadza inny identyczny plik cookie o nazwie *ApplicationGatewayAffinityCORS* , a także istniejący plik cookie ApplicationGatewayAffinity. *ApplicationGatewayAffinityCORS* ma dwa dodatkowe atrybuty (*SameSite = None). Zabezpiecz*), tak aby sesja programu Sticky Notes była utrzymywana nawet w przypadku żądań między źródłami. Aby uzyskać więcej informacji, zobacz [Application Gateway koligacja oparta na plikach cookie](configuration-overview.md#cookie-based-affinity) . |Luty 2020 r. |
+|Udoskonalenia sondy |W przypadku ulepszeń niestandardowych w Application Gateway wersji 2 jednostki SKU mamy uproszczoną [konfigurację sondowania](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#create-probe-for-application-gateway-v2-sku), usprawnienia [testów kondycji zaplecza na żądanie](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#test-backend-health-with-the-probe) i dodaliśmy [więcej informacji diagnostycznych](https://docs.microsoft.com/azure/application-gateway/application-gateway-backend-health-troubleshooting#error-messages) ułatwiających rozwiązywanie problemów z kondycją zaplecza.  |Październik 2019 r. |
 |Więcej metryk |Dodaliśmy następujące nowe metryki ułatwiające monitorowanie jednostki SKU bramy Application w wersji 2: [metryki dotyczące chronometrażu](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#timing-metrics), stan odpowiedzi wewnętrznej bazy danych, bajty odebrane, protokół TLS klienta i bieżące jednostki obliczeniowe. Zobacz [metryki obsługiwane przez jednostkę SKU Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-supported-by-application-gateway-v2-sku). |Sierpień 2019 r. |
 |Reguły niestandardowe zapory aplikacji internetowej |Application Gateway WAF_v2 obsługuje teraz Tworzenie reguł niestandardowych. Zobacz [Application Gateway reguł niestandardowych](custom-waf-rules-overview.md). |Czerwiec 2019 r. |
 |Skalowanie automatyczne, nadmiarowość stref, obsługa statycznych adresów VIP |Ogólna dostępność dla jednostki SKU w wersji 2, która obsługuje skalowanie automatyczne, nadmiarowość stref, podnoszenie wydajności, statyczne adresy VIP, Key Vault, ponowne zapisywanie nagłówka. Zobacz [Application Gateway dokumentacji skalowania](application-gateway-autoscaling-zone-redundant.md)automatycznego. |Kwiecień 2019 r. |

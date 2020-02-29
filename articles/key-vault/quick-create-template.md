@@ -8,20 +8,20 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/17/2019
+ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: b2561a4e065fc82cc08e8275965ab0b403fc66f0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9c2217fc72f846c5542345621a13fd066a166dd7
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654566"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162863"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Szybki Start: Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu szablonu Menedżer zasobów
 
 [Azure Key Vault](./key-vault-overview.md) to usługa w chmurze, która zapewnia bezpieczny magazyn dla wpisów tajnych, takich jak klucze, hasła, certyfikaty i inne wpisy tajne. Ten przewodnik Szybki Start koncentruje się na procesie wdrażania szablonu Menedżer zasobów, aby utworzyć magazyn kluczy i klucz tajny.
 
-[Szablon Menedżer zasobów](../azure-resource-manager/templates/overview.md) to plik JavaScript Object Notation (JSON), który definiuje infrastrukturę i konfigurację projektu. Szablon używa składni deklaracyjnej, która pozwala na określenie, co zamierzasz wdrożyć, bez konieczności pisania sekwencji poleceń programowania, aby je utworzyć. Jeśli chcesz dowiedzieć się więcej na temat opracowywania szablonów Menedżer zasobów, zobacz [dokumentację Menedżer zasobów i dokumentacja](/azure/azure-resource-manager/) [szablonu](/azure/templates/microsoft.keyvault/allversions).
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

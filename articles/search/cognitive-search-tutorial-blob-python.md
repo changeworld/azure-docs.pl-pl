@@ -1,97 +1,130 @@
 ---
-title: 'Samouczek: Tworzenie zestawu umiejętności w języku Python przy użyciu interfejsów API REST'
+title: 'Samouczek: Python i AI za pośrednictwem obiektów blob platformy Azure'
 titleSuffix: Azure Cognitive Search
-description: Przejdź do przykładowego sposobu wyodrębniania danych, języka naturalnego i przetwarzania obrazu AI na platformie Azure Wyszukiwanie poznawcze przy użyciu notesu Python Jupyter. Wyodrębnione dane są indeksowane i łatwo dostępne przez zapytanie.
+description: Przechodzenie między przykładem wyodrębniania tekstu i przetwarzania języka naturalnego za pośrednictwem zawartości w usłudze BLOB Storage przy użyciu notesu Python Jupyter i interfejsów API REST platformy Azure Wyszukiwanie poznawcze.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: d9ae7f4b7dd8b0f45ae02bd2a90aca78127fd3d3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 02/26/2020
+ms.openlocfilehash: 743c6fa6545342f2a7655059016637fc54158b64
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472404"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164019"
 ---
-# <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Samouczek: Tworzenie potoku wzbogacania AI przy użyciu języka REST i języka Python
+# <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Samouczek: używanie języków Python i AI do generowania zawartości z możliwością wyszukiwania z obiektów blob platformy Azure
 
-W ramach tego samouczka nauczysz się Mechanics wzbogacania danych programistycznych na platformie Wyszukiwanie poznawcze Azure, korzystając z *umiejętności poznawczych*. Umiejętności są obsługiwane przez funkcję przetwarzania języka naturalnego (NLP) i możliwości analizy obrazów w Cognitive Services. Za poorednictwem kompozycji i konfiguracji zestawu umiejętności można wyodrębnić tekst i tekst reprezentacje obrazu lub zeskanowanego pliku dokumentu. Możesz również wykryć język, jednostki, kluczowe frazy i inne. Wynik zawiera rozbudowaną dodatkową zawartość w indeksie wyszukiwania utworzonym przy użyciu wzbogacania AI w potoku indeksowania. 
+Jeśli w usłudze Azure Blob Storage znajduje się tekst lub obrazy bez struktury, [potok wzbogacenia AI](cognitive-search-concept-intro.md) może wyodrębnić informacje i utworzyć nową zawartość, która jest przydatna w przypadku wyszukiwania pełnotekstowego lub scenariuszy wyszukiwania w bazie wiedzy. Mimo że potok może przetwarzać obrazy, ten samouczek w języku Python koncentruje się na tekście, stosowaniu wykrywania języka i przetwarzania języka naturalnego w celu utworzenia nowych pól, których można użyć w zapytaniach, aspektach i filtrach.
 
-W tym samouczku użyjesz języka Python, aby wykonać następujące zadania:
+W tym samouczku Użyj języka Python i [rest](https://docs.microsoft.com/rest/api/searchservice/) , aby wykonać następujące zadania:
 
 > [!div class="checklist"]
-> * Utworzenie potoku indeksowania, który wzbogaca przykładowe dane w drodze do indeksu
-> * Zastosowanie wbudowanych umiejętności: rozpoznawania jednostek, wykrywania języka, manipulacji tekstem i wyodrębniania fraz kluczowych
-> * Poznanie sposobu łączenia umiejętności w łańcuch przez mapowanie danych wejściowych na dane wyjściowe w zestawie umiejętności
-> * Wykonywanie żądań i przeglądanie wyników
-> * Resetowanie indeksu i indeksatorów w celu kontynuowania opracowywania
+> * Zacznij od całego dokumentu (tekst bez struktury), takiego jak PDF, HTML, DOCX i PPTX, w usłudze Azure Blob Storage.
+> * Zdefiniuj potok, który wyodrębnia tekst, wykrywa język, rozpoznaje jednostki i wykrywa kluczowe frazy.
+> * Zdefiniuj indeks do przechowywania danych wyjściowych (nieprzetworzona zawartość oraz pary nazwa-wartość w postaci potoku).
+> * Wykonaj potok, aby rozpocząć transformacje i analizę oraz utworzyć i załadować indeks.
+> * Eksplorowanie wyników przy użyciu wyszukiwania pełnotekstowego i zaawansowanej składni zapytań.
 
-Wyjście jest indeksem pełnotekstowym z możliwością wyszukiwania tekstu na platformie Azure Wyszukiwanie poznawcze. Indeks możesz rozszerzyć za pomocą innych standardowych możliwości, takich jak [synonimy](search-synonyms.md), [profile oceniania](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [analizatory](search-analyzers.md) i [filtry](search-filters.md). 
-
-Ten samouczek jest uruchamiany w ramach bezpłatnej usługi, ale liczba bezpłatnych transakcji jest ograniczona do 20 dokumentów dziennie. Jeśli chcesz uruchomić ten samouczek więcej niż raz w tym samym dniu, Usuń indeksator, aby zresetować licznik.
-
-> [!NOTE]
-> Podczas rozszerzania zakresu przez zwiększenie częstotliwości przetwarzania, Dodawanie większej liczby dokumentów lub Dodawanie algorytmów AI, należy [dołączyć Cognitive Services rozliczanego zasobu](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w usłudze Azure Wyszukiwanie poznawcze. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
->
-> Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika usługi Azure wyszukiwanie poznawcze](https://go.microsoft.com/fwlink/?linkid=2042400).
-
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Otwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-W tym samouczku są używane następujące usługi, narzędzia i dane. 
-
-+ [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) do przechowywania przykładowych danych. Upewnij się, że konto magazynu znajduje się w tym samym regionie co usługa Azure Wyszukiwanie poznawcze.
-
-+ [Anaconda 3. x](https://www.anaconda.com/distribution/#download-section), dostarczając notesy języka Python 3. x i Jupyter.
-
-+ [Przykładowe dane](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) składają się z małego zestawu plików różnych typów. 
-
-+ [Utwórz usługę Azure wyszukiwanie poznawcze](search-create-service-portal.md) lub [Znajdź istniejącą usługę](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) w ramach bieżącej subskrypcji. W tym samouczku możesz użyć bezpłatnej usługi.
-
-## <a name="get-a-key-and-url"></a>Pobierz klucz i adres URL
-
-Aby można było korzystać z usługi Azure Wyszukiwanie poznawcze, wymagany jest adres URL usługi i klucz dostępu. Usługa wyszukiwania jest tworzona razem z usługą, więc jeśli do subskrypcji dodano Wyszukiwanie poznawcze platformy Azure, wykonaj następujące kroki, aby uzyskać niezbędne informacje:
-
-1. [Zaloguj się do Azure Portal](https://portal.azure.com/)i na stronie **Przegląd** usługi wyszukiwania Uzyskaj adres URL. Przykładowy punkt końcowy może wyglądać podobnie jak `https://mydemo.search.windows.net`.
-
-1. W obszarze **ustawienia** > **klucze**Uzyskaj klucz administratora dla pełnych praw do usługi. Istnieją dwa wymienne klucze administratora zapewniające ciągłość działania w przypadku, gdy trzeba ją wycofać. W przypadku żądań dotyczących dodawania, modyfikowania i usuwania obiektów można użyć klucza podstawowego lub pomocniczego.
-
-![Pobieranie punktu końcowego HTTP i klucza dostępu](media/search-get-started-postman/get-url-key.png "Pobieranie punktu końcowego HTTP i klucza dostępu")
-
-Wszystkie żądania wymagają klucza API dla każdego żądania wysyłanego do usługi. Prawidłowy klucz ustanawia zaufanie dla każdego żądania, między aplikacją wysyłającą żądanie a usługą, która go obsługuje.
-
-## <a name="prepare-sample-data"></a>Przygotowywanie przykładowych danych
-
-Potok wzbogacania ściąga dane ze źródeł danych platformy Azure. Dane źródłowe muszą pochodzić z obsługiwanego typu źródła danych [indeksatora wyszukiwanie poznawcze platformy Azure](search-indexer-overview.md). Na potrzeby tego ćwiczenia będziemy korzystać z usługi Blob Storage, aby zaprezentować wiele typów zawartości.
-
-1. [Zaloguj się do Azure Portal](https://portal.azure.com), przejdź do konta usługi Azure Storage, kliknij pozycję **obiekty blob**, a następnie kliknij pozycję **+ kontener**.
-
-1. [Utwórz kontener obiektów BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) , aby zawierał przykładowe dane. Można ustawić poziom dostępu publicznego na dowolną z jego prawidłowych wartości.
-
-1. Po utworzeniu kontenera Otwórz go i wybierz pozycję **Przekaż** na pasku poleceń, aby przekazać pliki przykładowe pobrane w poprzednim kroku.
-
-   ![Pliki źródłowe w usłudze Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
-
-1. Po załadowaniu przykładowych plików uzyskaj nazwę kontenera i parametry połączenia dla usługi Blob Storage. Te dane są dostępne po przejściu do konta usługi Storage w witrynie Azure Portal. Kliknij pozycję **klucze dostępu**, a następnie skopiuj pole **Parametry połączenia** .
-
-Parametry połączenia mają następujący format: `DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT-NAME>;AccountKey=<YOUR-STORAGE-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
-
-Poinformuj parametry połączenia. Będzie ona potrzebna w przyszłości.
-
-Istnieją inne sposoby określania parametrów połączenia, takie jak podanie sygnatury dostępu współdzielonego. Aby dowiedzieć się więcej na temat poświadczeń źródła danych, zobacz [Indeksowanie w usłudze Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials).
-
-## <a name="create-a-jupyter-notebook"></a>Tworzenie notesu Jupyter
++ [Azure Storage](https://azure.microsoft.com/services/storage/)
++ [Anaconda 3,7](https://www.anaconda.com/distribution/#download-section)
++ [Utwórz](search-create-service-portal.md) lub [Znajdź istniejącą usługę wyszukiwania](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
 > [!Note]
-> W tym artykule przedstawiono sposób tworzenia źródła danych, indeksu, indeksatora i zestawu umiejętności przy użyciu szeregu skryptów języka Python. Aby pobrać pełny przykład notesu, przejdź do [repozytorium Azure-Search-Python-Samples](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment).
+> Możesz skorzystać z bezpłatnej usługi dla tego samouczka. Bezpłatna usługa wyszukiwania ogranicza do trzech indeksów, trzech indeksatorów i trzech źródeł danych. W ramach tego samouczka tworzony jest jeden element każdego z tych typów. Przed rozpoczęciem upewnij się, że masz miejsce w usłudze, aby akceptować nowe zasoby.
+
+## <a name="download-files"></a>Pobieranie plików
+
+1. Otwórz ten [folder w usłudze OneDrive](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) i w lewym górnym rogu, kliknij pozycję **Pobierz** , aby skopiować pliki do komputera. 
+
+1. Kliknij prawym przyciskiem myszy plik zip i wybierz polecenie **Wyodrębnij wszystko**. Istnieje 14 plików różnych typów. W tym ćwiczeniu należy użyć 7.
+
+## <a name="1---create-services"></a>1 — Tworzenie usług
+
+Ten samouczek używa usługi Azure Wyszukiwanie poznawcze do indeksowania i zapytań, Cognitive Services w zapleczu do wzbogacania AI i usługi Azure Blob Storage, aby zapewnić dane. Ten samouczek jest objęty bezpłatną alokacją 20 transakcji na indeksator dziennie na Cognitive Services, więc jedyne usługi, które należy utworzyć, to wyszukiwanie i magazynowanie.
+
+Jeśli to możliwe, Utwórz zarówno w tym samym regionie, jak i w grupie zasobów, co umożliwia bliskość i łatwość zarządzania. W tym przypadku konto usługi Azure Storage może znajdować się w dowolnym regionie.
+
+### <a name="start-with-azure-storage"></a>Rozpoczynanie pracy z usługą Azure Storage
+
+1. [Zaloguj się do Azure Portal](https://portal.azure.com/) i kliknij pozycję **+ Utwórz zasób**.
+
+1. Wyszukaj *konto magazynu* i wybierz ofertę konta magazynu firmy Microsoft.
+
+   ![Utwórz konto magazynu](media/cognitive-search-tutorial-blob/storage-account.png "Utwórz konto magazynu")
+
+1. Na karcie podstawowe wymagane są następujące elementy. Zaakceptuj wartości domyślne dla wszystkich innych elementów.
+
+   + **Grupa zasobów**. Wybierz istniejący lub Utwórz nowy, ale Użyj tej samej grupy dla wszystkich usług, aby można było zarządzać nimi zbiorczo.
+
+   + **Nazwa konta magazynu**. Jeśli uważasz, że może istnieć wiele zasobów tego samego typu, użyj nazwy, aby odróżnić według typu i regionu, na przykład *blobstoragewestus*. 
+
+   + **Lokalizacja**. Jeśli to możliwe, wybierz tę samą lokalizację, która jest używana dla usługi Azure Wyszukiwanie poznawcze i Cognitive Services. Pojedyncza lokalizacja unieważnia opłaty za przepustowość.
+
+   + **Rodzaj konta**. Wybierz wartość domyślną *StorageV2 (ogólnego przeznaczenia w wersji 2)* .
+
+1. Kliknij przycisk **Przegląd + Utwórz** , aby utworzyć usługę.
+
+1. Po jego utworzeniu kliknij pozycję **Przejdź do zasobu** , aby otworzyć stronę przegląd.
+
+1. Kliknij pozycję **obiekty blob** usługa.
+
+1. Kliknij pozycję **+ kontener** , aby utworzyć kontener i nadaj mu nazwę *koło zębate-Search-demonstracyjn*.
+
+1. Wybierz pozycję *koło zębate-Search-demonstracyjny* , a następnie kliknij pozycję **Przekaż** , aby otworzyć folder, w którym zapisano pliki do pobrania. Zaznacz wszystkie pliki niebędące obrazami. Należy mieć 7 plików. Kliknij przycisk **OK** , aby przekazać.
+
+   ![Przekaż pliki przykładowe](media/cognitive-search-tutorial-blob/sample-files.png "Przekaż pliki przykładowe")
+
+1. Przed opuszczeniem usługi Azure Storage należy uzyskać parametry połączenia, aby można było sformułować połączenie w usłudze Azure Wyszukiwanie poznawcze. 
+
+   1. Przejdź z powrotem do strony Przegląd Twojego konta magazynu (na przykład użyto *blobstragewestus* ). 
+   
+   1. W okienku nawigacji po lewej stronie wybierz pozycję **klucze dostępu** i skopiuj jeden z parametrów połączenia. 
+
+   Ciąg połączenia jest adresem URL podobnym do poniższego przykładu:
+
+      ```http
+      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
+      ```
+
+1. Zapisz parametry połączenia w Notatniku. Będzie ona potrzebna później podczas konfigurowania połączenia ze źródłem danych.
+
+### <a name="cognitive-services"></a>Cognitive Services
+
+Wzbogacanie AI jest obsługiwane przez Cognitive Services, w tym analiza tekstu i przetwarzanie obrazów dla przetwarzania w języku naturalnym i obrazie. Jeśli celem było ukończenie rzeczywistego prototypu lub projektu, w tym momencie należy zastanowić się, Cognitive Services (w tym samym regionie co usługa Azure Wyszukiwanie poznawcze), aby można było dołączyć go do operacji indeksowania.
+
+W tym ćwiczeniu można jednak pominąć Inicjowanie obsługi zasobów, ponieważ usługa Azure Wyszukiwanie poznawcze może nawiązać połączenie Cognitive Services w tle i zapewnić 20 bezpłatnych transakcji dla indeksatora. Ponieważ w tym samouczku są stosowane 7 transakcji, wystarczające jest bezpłatne przydzielanie. W przypadku większych projektów Zaplanuj obsługę Cognitive Services w warstwie płatność zgodnie z rzeczywistym użyciem. Aby uzyskać więcej informacji, zobacz [Attach Cognitive Services](cognitive-search-attach-cognitive-services.md).
+
+### <a name="azure-cognitive-search"></a>Azure Cognitive Search
+
+Trzeci składnik to Wyszukiwanie poznawcze platformy Azure, który można [utworzyć w portalu](search-create-service-portal.md). Aby ukończyć ten przewodnik, możesz skorzystać z warstwy Bezpłatna. 
+
+Tak jak w przypadku usługi Azure Blob Storage, poświęć chwilę na zebranie klucza dostępu. Ponadto po rozpoczęciu tworzenia struktury żądań należy podać punkt końcowy i klucz interfejsu API administratora używany do uwierzytelniania każdego żądania.
+
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Pobierz klucz API i adres URL administratora dla usługi Azure Wyszukiwanie poznawcze
+
+1. [Zaloguj się do Azure Portal](https://portal.azure.com/)i na stronie **Przegląd** usługi wyszukiwania Pobierz nazwę usługi wyszukiwania. Nazwę usługi można potwierdzić, przeglądając adres URL punktu końcowego. Jeśli adres URL punktu końcowego został `https://mydemo.search.windows.net`, nazwa usługi będzie `mydemo`.
+
+2. W obszarze **ustawienia** > **klucze**Uzyskaj klucz administratora dla pełnych praw do usługi. Istnieją dwa wymienne klucze administratora zapewniające ciągłość działania w przypadku, gdy trzeba ją wycofać. W przypadku żądań dotyczących dodawania, modyfikowania i usuwania obiektów można użyć klucza podstawowego lub pomocniczego.
+
+   Pobierz również klucz zapytania. Najlepszym rozwiązaniem jest wydawanie żądań zapytań z dostępem tylko do odczytu.
+
+   ![Pobieranie nazwy usługi i administratora oraz kluczy zapytań](media/search-get-started-nodejs/service-name-and-keys.png)
+
+Wszystkie żądania wymagają klucza API-Key w nagłówku każdego żądania wysyłanego do usługi. Prawidłowy klucz ustanawia zaufanie dla każdego żądania, między aplikacją wysyłającą żądanie a usługą, która go obsługuje.
+
+## <a name="2---start-a-notebook"></a>2 — Uruchamianie notesu
+
+Utwórz Notes, wykonując poniższe instrukcje, lub Pobierz gotowy Notes z [repozytorium Azure-Search-Python-Samples](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment).
 
 Użyj nawigatora Anaconda, aby uruchomić Jupyter Notebook i utworzyć nowy Notes Python 3.
-
-## <a name="connect-to-azure-cognitive-search"></a>Nawiązywanie połączenia z usługą Azure Wyszukiwanie poznawcze
 
 W Twoim notesie Uruchom ten skrypt, aby załadować biblioteki używane do pracy z JSON i formułowania żądań HTTP.
 
@@ -101,7 +134,7 @@ import requests
 from pprint import pprint
 ```
 
-Następnie zdefiniuj nazwy dla źródła danych, indeksu, indeksatora i zestawu umiejętności. Uruchom ten skrypt, aby skonfigurować nazwy dla tego samouczka.
+W tym samym notesie Zdefiniuj nazwy dla źródła danych, indeksu, indeksatora i zestawu umiejętności. Uruchom ten skrypt, aby skonfigurować nazwy dla tego samouczka.
 
 ```python
 # Define the names for the data source, skillset, index and indexer
@@ -110,9 +143,6 @@ skillset_name = "cogsrch-py-skillset"
 index_name = "cogsrch-py-index"
 indexer_name = "cogsrch-py-indexer"
 ```
-
-> [!Tip]
-> W przypadku bezpłatnej usługi jest ograniczona do trzech indeksów, indeksatorów i źródeł danych. W ramach tego samouczka tworzony jest jeden element każdego z tych typów. Upewnij się, że masz miejsce na utworzenie nowych obiektów, zanim przezaczniesz jeszcze więcej.
 
 W poniższym skrypcie Zastąp symbole zastępcze usługi wyszukiwania (nazwa użytkownika-SEARCH-SERVICE-NAME) i klucz interfejsu API administratora (klucz-ADMIN-API-KEY), a następnie uruchom go, aby skonfigurować punkt końcowy usługi wyszukiwania.
 
@@ -126,11 +156,15 @@ params = {
 }
 ```
 
-## <a name="create-a-data-source"></a>Tworzenie źródła danych
+## <a name="3---create-the-pipeline"></a>3 — Tworzenie potoku
 
-Teraz, gdy usługi i pliki źródłowe są gotowe, rozpocznij łączenie składników potoku indeksowania. Zacznij od obiektu źródła danych, który informuje platformę Azure Wyszukiwanie poznawcze jak pobrać zewnętrzne dane źródłowe.
+W przypadku usługi Azure Wyszukiwanie poznawcze przetwarzanie AI odbywa się podczas indeksowania (lub pozyskiwania danych). W tej części przewodnika utworzono cztery obiekty: Źródło danych, definicja indeksu, zestawu umiejętności, indeksator. 
 
-W poniższym skrypcie Zastąp symbol zastępczy obiektu-BLOB-RESOURCE-CONNECTION-String parametrami połączenia dla obiektu BLOB utworzonego w poprzednim kroku. Następnie uruchom skrypt, aby utworzyć źródło danych o nazwie `cogsrch-py-datasource`.
+### <a name="step-1-create-a-data-source"></a>Krok 1. Tworzenie źródła danych
+
+[Obiekt źródła danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source) dostarcza parametry połączenia z kontenerem obiektów BLOB zawierającym pliki.
+
+W poniższym skrypcie Zastąp symbol zastępczy obiektu-BLOB-RESOURCE-CONNECTION-String parametrami połączenia dla obiektu BLOB utworzonego w poprzednim kroku. Zamień tekst zastępczy dla kontenera. Następnie uruchom skrypt, aby utworzyć źródło danych o nazwie `cogsrch-py-datasource`.
 
 ```python
 # Create a data source
@@ -143,7 +177,7 @@ datasource_payload = {
         "connectionString": datasourceConnectionString
     },
     "container": {
-        "name": "basic-demo-data-pr"
+        "name": "<YOUR-BLOB-CONTAINER-NAME>"
     }
 }
 r = requests.put(endpoint + "/datasources/" + datasource_name,
@@ -157,19 +191,18 @@ Na Azure Portal na stronie Pulpit nawigacyjny usługi wyszukiwania Sprawdź, czy
 
 ![Kafelek źródła danych w portalu](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "Kafelek źródła danych w portalu")
 
-## <a name="create-a-skillset"></a>Tworzenie zestawu umiejętności
+### <a name="step-2-create-a-skillset"></a>Krok 2. Tworzenie elementu zestawu umiejętności
 
 W tym kroku zdefiniujesz zestaw kroków wzbogacania, które zostaną zastosowane do danych. Każdy krok wzbogacania to *umiejętność*, a zestaw kroków wzbogacenia to *zestaw umiejętności*. W tym samouczku są stosowane [wbudowane umiejętności poznawcze](cognitive-search-predefined-skills.md) dla zestawu umiejętności:
+
++ [Rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md) do wyodrębniania nazw organizacji z zawartości kontenera obiektów BLOB.
 
 + [Wykrywanie języka](cognitive-search-skill-language-detection.md) — identyfikowanie języka zawartości.
 
 + [Dzielenie tekstu](cognitive-search-skill-textsplit.md) — dzielenie dużej zawartości na mniejsze fragmenty przed wywołaniem umiejętności wyodrębniania fraz kluczowych. Umiejętność wyodrębniania fraz kluczowych przyjmuje dane wejściowe składające się maksymalnie z 50 000 znaków. Kilka przykładowych plików należy podzielić, aby zmieścić się w tym limicie.
 
-+ [Rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md) do wyodrębniania nazw organizacji z zawartości kontenera obiektów BLOB.
-
 + [Wyodrębnianie kluczowych fraz](cognitive-search-skill-keyphrases.md) — określanie najczęściej występujących fraz kluczowych. 
 
-### <a name="python-script"></a>Skrypt języka Python
 Uruchom następujący skrypt, aby utworzyć obiekt zestawu umiejętności o nazwie `cogsrch-py-skillset`.
 
 ```python
@@ -270,13 +303,13 @@ Wyniki mogą być mapowane na indeks, używany jako dane wejściowe do poziomu u
 
 Aby uzyskać więcej podstawowych informacji na temat zestawów umiejętności, zobacz [Jak zdefiniować zestaw umiejętności](cognitive-search-defining-skillset.md).
 
-## <a name="create-an-index"></a>Tworzenie indeksu
+### <a name="step-3-create-an-index"></a>Krok 3. Tworzenie indeksu
 
 W tej sekcji zdefiniujesz schemat indeksu, określając pola do uwzględnienia w indeksie wyszukiwania i ustawiając atrybuty wyszukiwania dla każdego pola. Pola mogą mieć typ i atrybuty, które określają sposób używania pola (z możliwością wyszukiwania, sortowania itp.). Nazwy pól w indeksie nie muszą dokładnie zgadzać się z nazwami pól w źródle. W kolejnym kroku są dodawane mapowania pól w indeksatorze w celu połączenia pól źródłowych z polami docelowymi. W tym kroku zdefiniuj indeks przy użyciu konwencji nazewnictwa pól właściwej dla aplikacji wyszukiwania.
 
 W tym ćwiczeniu są używane następujące pola i typy pól:
 
-| field-names: | {1&gt;identyfikator&lt;1}         | content   | languageCode | keyPhrases         | organizations     |
+| field-names: | id         | content   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
@@ -338,9 +371,11 @@ print(r.status_code)
 
 Aby dowiedzieć się więcej na temat definiowania indeksu, zobacz [create index (Azure wyszukiwanie POZNAWCZE REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>Tworzenie indeksatora, mapowanie pól i wykonywanie przekształceń
+### <a name="step-4-create-and-run-an-indexer"></a>Krok 4. Tworzenie i uruchamianie indeksatora
 
-Do tej pory utworzono źródło danych, zestawu umiejętności i indeks. Te trzy składniki staną się częścią [indeksatora](search-indexer-overview.md), który łączy wszystkie części w pojedynczą operację obejmującą wiele faz. Aby powiązać te obiekty ze sobą w indeksatorze, należy zdefiniować mapowania pól.
+[Indeksator](https://docs.microsoft.com/rest/api/searchservice/create-indexer) steruje potokiem. Trzy składniki, które zostały utworzone w tym przypadku (Źródło danych, zestawu umiejętności, indeks), są danymi wejściowymi indeksatora. Tworzenie indeksatora na platformie Azure Wyszukiwanie poznawcze to zdarzenie, które umieszcza cały potok w ruchu. 
+
+Aby powiązać te obiekty ze sobą w indeksatorze, należy zdefiniować mapowania pól.
 
 + FieldMappings są przetwarzane przed zestawu umiejętności, mapując pola źródłowe ze źródła danych do pól docelowych w indeksie. Jeśli nazwy pól i typy są takie same na obu końcach, mapowanie nie jest wymagane.
 
@@ -401,14 +436,14 @@ r = requests.put(endpoint + "/indexers/" + indexer_name,
 print(r.status_code)
 ```
 
-Żądanie powinno szybko zwrócić kod stanu 201, jednak przetwarzanie może potrwać kilka minut. Mimo że zestaw danych jest mały, umiejętności analityczne, takie jak analiza obrazu, są znacznie pracochłonne i czasochłonne.
+Żądanie powinno zwrócić kod stanu 201 wkrótce, jednak przetwarzanie może potrwać kilka minut. Mimo że zestaw danych jest mały, umiejętności analityczne, takie jak analiza obrazu, są znacznie pracochłonne i czasochłonne.
 
-Użyj skryptu [stanu indeksatora](#check-indexer-status) w następnej sekcji, aby określić, kiedy proces indeksatora został ukończony.
+Możesz [monitorować stan indeksatora](#check-indexer-status) , aby określić, kiedy indeksator jest uruchomiony lub zakończony.
 
 > [!TIP]
 > Utworzenie indeksatora powoduje wywołanie potoku. Jeśli wystąpi problem z uzyskaniem dostępu do danych, mapowanie wejść i wyjść lub z kolejnością operacji, pojawi się on na tym etapie. Aby ponownie uruchomić potok ze zmianami kodu lub skryptu, konieczne może być najpierw usunięcie obiektów. Aby uzyskać więcej informacji, zobacz [Resetowanie i ponowne uruchamianie](#reset).
 
-#### <a name="explore-the-request-body"></a>Eksplorowanie treści żądania
+#### <a name="about-the-request-body"></a>Informacje o treści żądania
 
 Skrypt ustawia dla elementu `"maxFailedItems"` wartość -1, która powoduje, że aparat indeksowania ignoruje błędy podczas importowania danych. Jest to przydatne, ponieważ pokazowe źródło danych zawiera tak mało dokumentów. W przypadku większego źródła danych należy ustawić wartość większą od 0.
 
@@ -418,7 +453,7 @@ Gdy zawartość zostanie wyodrębniona, możesz ustawić element `imageAction`, 
 
 <a name="check-indexer-status"></a>
 
-## <a name="check-indexer-status"></a>Sprawdzanie stanu indeksatora
+## <a name="4---monitor-indexing"></a>4 — monitorowanie indeksowania
 
 Po zdefiniowaniu indeksatora jest on uruchamiany automatycznie przy przesyłaniu żądania. W zależności od tego, które umiejętności poznawcze zdefiniowano, indeksowanie może trwać dłużej, niż oczekujesz. Aby dowiedzieć się, czy przetwarzanie indeksatora zostało zakończone, uruchom następujący skrypt.
 
@@ -433,18 +468,18 @@ W odpowiedzi Monitoruj wartość "lastResult" dla swoich wartości "status" i "e
 
 ![Utworzono indeksator](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "Utworzono indeksator")
 
-Ostrzeżenia często występują dla niektórych kombinacji plików źródłowych i umiejętności oraz nie zawsze wskazują istnienie problemu. W tym samouczku ostrzeżenia są niegroźne. Na przykład jeden z plików JPEG, które nie ma tekstu, będzie wyświetlał ostrzeżenie na tym zrzucie ekranu.
+Ostrzeżenia często występują dla niektórych kombinacji plików źródłowych i umiejętności oraz nie zawsze wskazują istnienie problemu. Wiele ostrzeżeń jest niegroźnych. Na przykład w przypadku indeksowania pliku JPEG, który nie zawiera tekstu, na tym zrzucie ekranu zobaczysz ostrzeżenie.
 
 ![Przykładowe ostrzeżenie indeksatora](./media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png "Przykładowe ostrzeżenie indeksatora")
 
-## <a name="query-your-index"></a>Tworzenie zapytań względem indeksu
+## <a name="5---search"></a>5 — wyszukiwanie
 
 Po zakończeniu indeksowania uruchom zapytania zwracające zawartość poszczególnych pól. Domyślnie usługa Azure Wyszukiwanie poznawcze zwraca górne wyniki 50. Przykładowych danych jest mało, więc wartość domyślna działa dobrze. Jednak podczas pracy z większymi zestawami danych może być konieczne dołączenie do ciągu zapytania parametrów powodujących zwrócenie większej liczby wyników. Aby uzyskać instrukcje, zobacz [How to Page Results in Azure wyszukiwanie poznawcze](search-pagination-page-layout.md).
 
-W ramach kroku weryfikacji odpytaj indeks o wszystkie pola.
+Jako krok weryfikacji Pobierz definicję indeksu pokazującą wszystkie pola.
 
 ```python
-# Query the index for all fields
+# Query the service for the index definition
 r = requests.get(endpoint + "/indexes/" + index_name,
                  headers=headers, params=params)
 pprint(json.dumps(r.json(), indent=1))
@@ -477,13 +512,13 @@ W zależności od złożoności i długości ciągu zapytania można użyć meto
 
 ## <a name="reset-and-rerun"></a>Resetowanie i ponowne uruchamianie
 
-W wczesnych eksperymentalnych etapach tworzenia potoku najlepszym podejściem do iteracji projektu jest usunięcie obiektów z usługi Azure Wyszukiwanie poznawcze i umożliwienie kodowi odbudowania. Nazwy zasobów są unikatowe. Usunięcie obiektu umożliwia jego ponowne utworzenie przy użyciu tej samej nazwy.
+Na wczesnym etapie opracowywania warto usunąć obiekty z platformy Azure Wyszukiwanie poznawcze i umożliwić ich ponowne skompilowanie. Nazwy zasobów są unikatowe. Usunięcie obiektu umożliwia jego ponowne utworzenie przy użyciu tej samej nazwy.
 
-Aby zaindeksować dokumenty za pomocą nowych definicji:
+Aby ponownie zindeksować dokumenty przy użyciu nowych definicji:
 
-1. Usuń indeks, aby usunąć utrwalone dane. Usuń indeksator, aby utworzyć go ponownie w usłudze.
-2. Zmodyfikuj definicje zestawu umiejętności i index.
-3. Utwórz ponownie indeks i indeksator dla usługi w celu uruchomienia potoku.
+1. Usuń indeksator, indeks i zestawu umiejętności.
+2. Modyfikuj definicje obiektów.
+3. Utwórz ponownie obiekty w usłudze. Ponowne utworzenie indeksatora powoduje uruchomienie potoku. 
 
 Możesz użyć portalu, aby usunąć indeksy, indeksatory i umiejętności. Po usunięciu indeksatora można opcjonalnie selektywnie usunąć indeks, zestawu umiejętności i źródło danych.
 
@@ -498,7 +533,7 @@ r = requests.delete(endpoint + "/skillsets/" + skillset_name,
 pprint(json.dumps(r.json(), indent=1))
 ```
 
-W miarę rozwoju kodu można udoskonalić strategię odbudowywania. Aby uzyskać więcej informacji, zobacz [Jak odbudować indeks](search-howto-reindex.md).
+W przypadku pomyślnego usunięcia jest zwracany kod stanu 204.
 
 ## <a name="takeaways"></a>Wnioski
 

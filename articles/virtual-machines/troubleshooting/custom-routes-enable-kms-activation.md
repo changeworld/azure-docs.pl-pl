@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 47ff8870df7c89ee2ab3e48e064e31aa581f65f0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748634"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920165"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Aktywacja systemu Windows kończy się niepowodzeniem w scenariuszu wymuszonego tunelowania
 
@@ -84,6 +84,8 @@ Aby dodać trasę niestandardową, wykonaj następujące kroki:
 4. Spróbuj aktywować system Windows i sprawdź, czy problem został rozwiązany.
 
 ### <a name="for-classic-vms"></a>Dla klasycznych maszyn wirtualnych
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 1. Otwórz Azure PowerShell, a następnie [Zaloguj się do swojej subskrypcji platformy Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Uruchom następujące polecenia:

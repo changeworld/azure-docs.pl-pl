@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: amverma
-ms.openlocfilehash: ad5fb1098f88a253252dad43c9da51b5d9f11237
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: eea649610ca53ccbb98b5ca361555280dcd3dafe
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492827"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164801"
 ---
 # <a name="hbv2-series"></a>Seria HBv2
 
@@ -20,9 +20,13 @@ Maszyny wirtualne z serii HBv2 są zoptymalizowane pod kątem aplikacji opartych
 
 Premium Storage: obsługiwane
 
+Migracja na żywo: nieobsługiwane
+
+Aktualizacje z zachowaniem pamięci: nieobsługiwane
+
 | Rozmiar | Procesor wirtualny | Procesor | Pamięć (GB) | Przepustowość pamięci GB/s | Podstawowa częstotliwość procesora CPU (GHz) | Częstotliwość wszystkich rdzeni (GHz, szczyt) | Częstotliwość jednordzeniowa (GHz, szczytowa) | Wydajność RDMA (GB/s) | Obsługa MPI | Magazyn tymczasowy (GB) | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych Ethernet |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HB120rs_v2 | 120 | 7V12 AMD EPYC | 480 | 350 | 2.45 | 3.1 | 3.3 | 200 | Wszyscy | 480 + 960 | 8 | 1 |
+| Standard_HB120rs_v2 | 120 | 7V12 AMD EPYC | 480 | 350 | 2.45 | 3.1 | 3.3 | 200 | Wszystkie | 480 + 960 | 8 | 1 |
 
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]

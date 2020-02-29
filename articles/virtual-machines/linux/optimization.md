@@ -1,5 +1,5 @@
 ---
-title: Optymalizowanie maszyny wirtualnej systemu Linux na platformie Azure
+title: Optymalizowanie maszyny wirtualnej z systemem Linux na platformie Azure
 description: Poznaj pewne porady dotyczące optymalizacji, aby upewnić się, że maszyna wirtualna z systemem Linux została skonfigurowana pod kątem optymalnej wydajności na platformie Azure
 keywords: Maszyna wirtualna z systemem Linux, maszyna wirtualna z systemem Linux, Ubuntu, maszyna wirtualna
 services: virtual-machines-linux
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: a042e768ef6693d2ced6d679947a6fe321d259bf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: a80446317a289f27cdbbff3b2939cfe0db45748f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934720"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918057"
 ---
-# <a name="optimize-your-linux-vm-on-azure"></a>Optymalizowanie maszyny wirtualnej systemu Linux na platformie Azure
+# <a name="optimize-your-linux-vm-on-azure"></a>Optymalizowanie maszyny wirtualnej z systemem Linux na platformie Azure
 Tworzenie maszyny wirtualnej z systemem Linux jest proste z poziomu wiersza polecenia lub portalu. W tym samouczku pokazano, jak upewnić się, że został skonfigurowany, aby zoptymalizować jego wydajność na platformie Microsoft Azure. W tym temacie jest używana maszyna wirtualna serwera Ubuntu, ale można również utworzyć maszynę wirtualną z systemem Linux przy użyciu [własnych obrazów jako szablonów](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -135,5 +135,4 @@ Pamiętaj, podobnie jak w przypadku wszystkich dyskusji optymalizacji, musisz wy
 Niektóre przydatne linki do dodatkowych zasobów:
 
 * [Podręcznik użytkownika agenta platformy Azure dla systemu Linux](../extensions/agent-linux.md)
-* [Optymalizowanie wydajności MySQL na maszynach wirtualnych z systemem Linux na platformie Azure](classic/optimize-mysql.md)
 * [Konfigurowanie RAID oprogramowania w systemie Linux](configure-raid.md)

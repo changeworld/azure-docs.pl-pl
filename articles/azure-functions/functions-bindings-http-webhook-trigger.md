@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: a2adf59a542f695b7845e1a871c0b297b0790fec
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672161"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162966"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions wyzwalacza HTTP
 
@@ -749,7 +749,7 @@ Uwierzytelniony użytkownik jest dostępny za pośrednictwem [nagłówków HTTP]
 
 ## <a name="authorization-keys"></a>Klucze autoryzacji
 
-Funkcje umożliwiają korzystanie z kluczy, aby utrudnić dostęp do punktów końcowych funkcji HTTP podczas opracowywania.  Standardowy wyzwalacz HTTP może wymagać takiego klucza interfejsu API w żądaniu. 
+Funkcje umożliwiają korzystanie z kluczy, aby utrudnić dostęp do punktów końcowych funkcji HTTP podczas opracowywania.  Jeśli poziom autoryzacji HTTP w funkcji wyzwalanej przez protokół HTTP nie jest ustawiony na `anonymous`, żądania muszą zawierać klucz interfejsu API w żądaniu. 
 
 > [!IMPORTANT]
 > Chociaż klucze mogą pomóc w zablokowaniu punktów końcowych HTTP podczas opracowywania, nie są one przeznaczone do zabezpieczania wyzwalacza HTTP w środowisku produkcyjnym. Aby dowiedzieć się więcej, zobacz temat [Zabezpieczanie punktu końcowego HTTP w środowisku produkcyjnym](#secure-an-http-endpoint-in-production).
@@ -757,14 +757,19 @@ Funkcje umożliwiają korzystanie z kluczy, aby utrudnić dostęp do punktów ko
 > [!NOTE]
 > W środowisku uruchomieniowym Functions 1. x dostawcy elementów webhook mogą używać kluczy do autoryzowania żądań na różne sposoby, w zależności od tego, co obsługuje dostawca. Dotyczy to elementów [webhook i kluczy](#webhooks-and-keys). Środowisko uruchomieniowe funkcji w wersji 2. x i nowszych nie obejmuje wbudowanej obsługi dostawców elementu webhook.
 
-Istnieją dwa typy kluczy:
+#### <a name="authorization-scopes-function-level"></a>Zakresy autoryzacji (na poziomie funkcji)
 
-* **Klucze hosta**: te klucze są udostępniane przez wszystkie funkcje w aplikacji funkcji. Gdy jest używany jako klucz interfejsu API, zezwalają na dostęp do dowolnej funkcji w aplikacji funkcji.
-* **Klawisze funkcyjne**: te klucze dotyczą tylko określonych funkcji, w których są zdefiniowane. Gdy jest używany jako klucz interfejsu API, zezwala na dostęp tylko do tej funkcji.
+Istnieją dwa zakresy autoryzacji dla kluczy poziomu funkcji:
+
+* **Funkcja**: te klucze dotyczą tylko określonych funkcji, w których są zdefiniowane. Gdy jest używany jako klucz interfejsu API, zezwala na dostęp tylko do tej funkcji.
+
+* **Host**: klucze z zakresem hosta mogą służyć do uzyskiwania dostępu do wszystkich funkcji w aplikacji funkcji. Gdy jest używany jako klucz interfejsu API, zezwalają na dostęp do dowolnej funkcji w aplikacji funkcji. 
 
 Każdy klucz ma nazwę dla odwołania i istnieje klucz domyślny (o nazwie "domyślny") na poziomie funkcji i hosta. Klucze funkcji mają pierwszeństwo przed Kluczami hosta. Gdy dwa klucze są zdefiniowane z tą samą nazwą, klucz funkcji jest zawsze używany.
 
-Każda aplikacja funkcji ma również specjalny **klucz główny**. Ten klucz jest kluczem hosta o nazwie `_master`, który zapewnia dostęp administracyjny do interfejsów API środowiska uruchomieniowego. Nie można odwołać tego klucza. Po ustawieniu poziomu autoryzacji `admin`, żądania muszą używać klucza głównego; wszystkie inne kluczowe wyniki w przypadku niepowodzenia autoryzacji.
+#### <a name="master-key-admin-level"></a>Klucz główny (poziom administratora) 
+
+Każda aplikacja funkcji ma również klucz hosta na poziomie administratora o nazwie `_master`. Oprócz zapewniania dostępu na poziomie hosta do wszystkich funkcji w aplikacji klucz główny zapewnia również dostęp administracyjny do interfejsów API REST środowiska uruchomieniowego. Nie można odwołać tego klucza. Po ustawieniu poziomu autoryzacji `admin`, żądania muszą używać klucza głównego; wszystkie inne kluczowe wyniki w przypadku niepowodzenia autoryzacji.
 
 > [!CAUTION]  
 > Ze względu na podwyższony poziom uprawnień w aplikacji funkcji udzielanej przez klucz główny nie należy udostępniać tego klucza innym podmiotom lub rozpowszechniać go w natywnych aplikacjach klienckich. Należy zachować ostrożność podczas wybierania poziomu autoryzacji administratora.

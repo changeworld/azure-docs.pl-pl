@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 768d01346b7697953d44742458c7e507ae7c115a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894609"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164903"
 ---
-# <a name="what-is-azure-virtual-network"></a>Co to jest Azure Virtual Network?
+# <a name="what-is-azure-virtual-network"></a>Co to jest usługa Azure Virtual Network?
 
 Usługa Azure Virtual Network (VNet) to podstawowy blok konstrukcyjny dla sieci prywatnej na platformie Azure. Sieć wirtualna umożliwia bezpieczne komunikowanie się ze sobą za pomocą Internetu i sieci lokalnych w wielu typach zasobów platformy Azure, takich jak Azure Virtual Machines (VM). Sieć wirtualna jest podobna do tradycyjnej sieci, która działa w Twoim centrum danych, ale oferuje dodatkowe korzyści wynikające z infrastruktury platformy Azure, takiej jak skalowanie, dostępność i izolacja.
 
@@ -31,14 +31,14 @@ Usługa Azure Virtual Network (VNet) to podstawowy blok konstrukcyjny dla sieci 
 - **Regiony**: Sieć wirtualna jest objęta zakresem pojedynczego regionu/lokalizacji; Jednak wiele sieci wirtualnych z różnych regionów można połączyć ze sobą za pomocą komunikacji równorzędnej Virtual Network.
 - **Subskrypcja:** Sieć wirtualna jest objęta zakresem subskrypcji. W każdej [subskrypcji](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) platformy Azure oraz w każdym [regionie](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region) świadczenia usługi Azure możesz zaimplementować wiele sieci wirtualnych.
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 
 Podczas tworzenia sieci na platformie Azure ważne jest, aby pamiętać o następujących zasadach dotyczących projektowania uniwersalnego:
 
 - Upewnij się, że przestrzenie adresowe nie nakładają się na siebie. Upewnij się, że przestrzeń adresowa sieci wirtualnej (blok CIDR) nie nakłada się na inne zakresy sieci w organizacji.
 - Podsieci nie powinny obejmować całej przestrzeni adresowej sieci wirtualnej. Planuj z wyprzedzeniem i Zarezerwuj pewną przestrzeń adresową na przyszłość.
 - Zalecane jest używanie mniejszej ilości sieci wirtualnych niż w przypadku wielu małych sieci wirtualnychów. Pozwoli to zapobiec obciążeniu zarządzania.
-- Zabezpiecz sieć wirtualną za pomocą sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń).
+- Zabezpiecz sieć wirtualną przez przypisanie sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń) do podsieci poniżej.
 
 ## <a name="communicate-with-the-internet"></a>Komunikacja z Internetem
 
@@ -81,7 +81,7 @@ Platforma Azure domyślnie kieruje ruchem pomiędzy podsieciami, połączonymi s
 
 Istnieją pewne ograniczenia dotyczące liczby zasobów platformy Azure, które można wdrożyć. Większość limitów sieci platformy Azure znajduje się na maksymalnych wartościach. Można jednak [zwiększyć niektóre limity sieci](../azure-portal/supportability/networking-quota-requests.md) , zgodnie z [limitem na stronie limity Sieć wirtualna](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits). 
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 Za korzystanie z sieci wirtualnej platformy Azure nie są naliczane opłaty. Opłaty standardowe są stosowane do zasobów, takich jak Virtual Machines (maszyny wirtualne) i inne produkty. Aby dowiedzieć się więcej, zobacz [Cennik sieci VNET](https://azure.microsoft.com/pricing/details/virtual-network/) i [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/)platformy Azure.
 

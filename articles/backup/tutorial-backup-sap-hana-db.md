@@ -2,13 +2,13 @@
 title: Samouczek — Tworzenie kopii zapasowych baz danych SAP HANA na maszynach wirtualnych platformy Azure
 description: W tym samouczku dowiesz się, jak utworzyć kopię zapasową SAP HANA baz danych działających na maszynie wirtualnej platformy Azure do magazynu Azure Backup Recovery Services.
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: bb84f6b362adf7c190f3300e6e3f1bc572153151
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/24/2020
+ms.openlocfilehash: 6273b4d5745b3c13b48622cde842c0222a47c5d4
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753976"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921219"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Samouczek: Tworzenie kopii zapasowych baz danych SAP HANA na maszynie wirtualnej platformy Azure
 
@@ -22,36 +22,16 @@ W tym samouczku pokazano, jak utworzyć kopię zapasową SAP HANA baz danych dzi
 
 [Oto](sap-hana-backup-support-matrix.md#scenario-support) wszystkie scenariusze, które obecnie są obsługiwane.
 
-## <a name="onboard-to-the-public-preview"></a>Dołączanie do publicznej wersji zapoznawczej
-
-Dołączanie do publicznej wersji zapoznawczej w następujący sposób:
-
-* W portalu Zarejestruj swój identyfikator subskrypcji dla dostawcy usług Recovery Services, wykonując [ten artykuł](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal).
-
-* Dla programu PowerShell uruchom to polecenie cmdlet. Powinna zostać zakończona jako "zarejestrowane".
-
-    ```powershell
-    Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed skonfigurowaniem kopii zapasowych upewnij się, że wykonano następujące czynności:
 
-1. Na maszynie wirtualnej z uruchomioną SAP HANA bazą danych Zainstaluj i włącz pakiety sterowników ODBC z oficjalnego pakietu SLES/nośnika przy użyciu użyciu narzędzia zypper w następujący sposób:
-
-```bash
-sudo zypper update
-sudo zypper install unixODBC
-```
-
->[!NOTE]
-> Jeśli repozytoria nie są aktualizowane, upewnij się, że wersja unixODBC jest minimalna liczba 2.3.4. Aby znać wersję programu uniXODBC, uruchom `odbcinst -j` jako element główny
->
-
-2. Zezwalaj na połączenie z poziomu maszyny wirtualnej z Internetem, aby można było uzyskać dostęp do platformy Azure, zgodnie z opisem w [poniższej procedurze](#set-up-network-connectivity).
-
-3. Uruchom skrypt poprzedzający rejestrację na maszynie wirtualnej, na której jest zainstalowany system HANA jako użytkownik główny. [Ten skrypt](https://aka.ms/scriptforpermsonhana) ustawi odpowiednie [uprawnienia](#setting-up-permissions).
+* Zezwól na połączenie z maszyną wirtualną z Internetem, aby można było uzyskać dostęp do platformy Azure, zgodnie z opisem w poniższej procedurze [Konfigurowanie łączności sieciowej](#set-up-network-connectivity) .
+* Klucz powinien istnieć w **hdbuserstore** , który spełnia następujące kryteria:
+  * Powinien być obecny w domyślnym **hdbuserstore**
+  * W przypadku MDC klucz powinien wskazywać port SQL **serwer nazw**. W przypadku SDC powinna wskazywać port SQL of **INDEXSERVER**
+  * Należy mieć poświadczenia, aby dodawać i usuwać użytkowników
+* Uruchom skrypt konfiguracji kopii zapasowej SAP HANA (skrypt przed rejestracją) na maszynie wirtualnej, na której jest zainstalowany program HANA, jako użytkownik główny. [Ten skrypt](https://aka.ms/scriptforpermsonhana) Pobiera System Hana do utworzenia kopii zapasowej. Zapoznaj się z sekcją co to jest [skrypt przed rejestracją](#what-the-pre-registration-script-does) , aby dowiedzieć się więcej na temat skryptu przed rejestracją.
 
 ## <a name="set-up-network-connectivity"></a>Konfigurowanie łączności sieciowej
 
@@ -110,27 +90,13 @@ Użyj tagów usługi sieciowej grupy zabezpieczeń | Łatwiejsze zarządzanie, p
 Używanie tagów nazwy FQDN zapory platformy Azure | Łatwiejsze zarządzanie, ponieważ wymagane są automatycznie zarządzane nazwy FQDN | Może być używany tylko z zaporą platformy Azure
 Używanie serwera proxy HTTP | Szczegółowa kontrola w serwerze proxy za pośrednictwem adresów URL magazynu jest dozwolona <br/><br/> Dostęp do maszyn wirtualnych w jednym punkcie dostępu do Internetu <br/><br/> Nie podlegają zmianom adresów IP platformy Azure | Dodatkowe koszty związane z uruchamianiem maszyny wirtualnej za pomocą oprogramowania serwera proxy
 
-## <a name="setting-up-permissions"></a>Konfigurowanie uprawnień
+## <a name="what-the-pre-registration-script-does"></a>Co robi skrypt przed rejestracją
 
-Skrypt poprzedzający rejestrację wykonuje następujące czynności:
+Uruchamianie skryptu przed rejestracją wykonuje następujące funkcje:
 
-1. Tworzy AZUREWLBACKUPHANAUSER w systemie HANA i dodaje te wymagane role i uprawnienia:
-   * Administrator bazy danych: tworzenie nowych baz danych podczas przywracania.
-   * Odczyt wykazu: odczytywanie wykazu kopii zapasowych.
-   * SAP_INTERNAL_HANA_SUPPORT: Aby uzyskać dostęp do kilku tabel prywatnych.
-2. Dodaje klucz do Hdbuserstore dla wtyczki HANA w celu obsługi wszystkich operacji (zapytań bazy danych, operacji przywracania, konfigurowania i uruchamiania kopii zapasowej).
-
-Aby potwierdzić utworzenie klucza, uruchom polecenie HDBSQL na maszynie HANA z poświadczeniami SIDADM:
-
-```hdbsql
-hdbuserstore list
-```
-
-W danych wyjściowych polecenia powinien być wyświetlany klucz {SID} {dbname}, który jest wyświetlany jako AZUREWLBACKUPHANAUSER.
-
->[!NOTE]
-> Upewnij się, że masz unikatowy zestaw plików SSFS w obszarze/usr/sap/{SID}/home/.hdb/. W tej ścieżce powinien znajdować się tylko jeden folder.
->
+* Instaluje lub aktualizuje wszelkie niezbędne pakiety wymagane przez agenta Azure Backup w dystrybucji.
+* Przeprowadza ona kontrolę łączności sieciowej wychodzącej za pomocą serwerów Azure Backup i usług zależnych, takich jak Azure Active Directory i Azure Storage.
+* Loguje się do systemu HANA przy użyciu klucza użytkownika podanego w ramach [wymagań wstępnych](#prerequisites). Ten klucz służy do tworzenia użytkownika kopii zapasowej (AZUREWLBACKUPHANAUSER) w systemie HANA i można go usunąć po pomyślnym uruchomieniu skryptu przed rejestracją. Ten użytkownik kopii zapasowej (AZUREWLBACKUPHANAUSER) zezwoli agentowi kopii zapasowej na odnajdywanie, tworzenie kopii zapasowych i przywracanie baz danych w systemie HANA.
 
 ## <a name="create-a-recovery-service-vault"></a>Utwórz magazyn usługi Recovery Service
 
@@ -142,25 +108,25 @@ Aby utworzyć magazyn Usług odzyskiwania:
 
 2. Z menu po lewej stronie wybierz pozycję **wszystkie usługi** .
 
-![Wybieranie pozycji Wszystkie usługi](./media/tutorial-backup-sap-hana-db/all-services.png)
+   ![Wybieranie pozycji Wszystkie usługi](./media/tutorial-backup-sap-hana-db/all-services.png)
 
 3. W oknie dialogowym **Wszystkie usługi** wprowadź frazę **Recovery Services**. Lista filtrów zasobów zgodnie z danymi wejściowymi. Na liście zasobów wybierz pozycję **magazyny Recovery Services**.
 
-![Wybierz Recovery Services magazyny](./media/tutorial-backup-sap-hana-db/recovery-services-vaults.png)
+   ![Wybierz Recovery Services magazyny](./media/tutorial-backup-sap-hana-db/recovery-services-vaults.png)
 
 4. Na pulpicie nawigacyjnym **Recovery Services** magazynów wybierz pozycję **Dodaj**.
 
-![Dodaj magazyn Recovery Services](./media/tutorial-backup-sap-hana-db/add-vault.png)
+   ![Dodaj magazyn Recovery Services](./media/tutorial-backup-sap-hana-db/add-vault.png)
 
-Zostanie otwarte okno dialogowe **magazyn Recovery Services** . Podaj wartości dla **nazwy, subskrypcji, grupy zasobów** i **lokalizacji**
+   Zostanie otwarte okno dialogowe **magazyn Recovery Services** . Podaj wartości dla **nazwy, subskrypcji, grupy zasobów** i **lokalizacji**
 
-![Tworzenie magazynu usługi Recovery Services](./media/tutorial-backup-sap-hana-db/create-vault.png)
+   ![Tworzenie magazynu usługi Recovery Services](./media/tutorial-backup-sap-hana-db/create-vault.png)
 
-* **Nazwa**: nazwa służy do identyfikowania magazynu usług Recovery Services i musi być unikatowa dla subskrypcji platformy Azure. Określ nazwę, która ma co najmniej dwa znaki, ale nie więcej niż 50 znaków. Nazwa musi rozpoczynać się od litery i zawierać tylko litery, cyfry i łączniki. W tym samouczku użyto nazwy **SAPHanaVault**.
-* **Subskrypcja**: wybierz subskrypcję do użycia. Jeśli jesteś członkiem tylko jednej subskrypcji, zobaczysz tę nazwę. Jeśli nie masz pewności, której subskrypcji użyć, Użyj domyślnej (sugerowanej) subskrypcji. Istnieje wiele opcji, które są dostępne tylko wtedy, gdy konto służbowe jest skojarzone z więcej niż jedną subskrypcją platformy Azure. W tym miejscu użyto subskrypcji **subskrypcji SAP HANA Solution Lab** .
-* **Grupa zasobów**: Użyj istniejącej grupy zasobów lub Utwórz nową. W tym miejscu użyto **SAPHANADemo**.<br>
-Aby wyświetlić listę dostępnych grup zasobów w ramach subskrypcji, wybierz pozycję **Użyj istniejącej**, a następnie wybierz zasób z listy rozwijanej. Aby utworzyć nową grupę zasobów, wybierz pozycję **Utwórz nową** i wprowadź nazwę. Aby uzyskać pełne informacje na temat grup zasobów, zobacz [Azure Resource Manager przegląd](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
-* **Lokalizacja**: Wybierz region geograficzny magazynu. Magazyn musi znajdować się w tym samym regionie co maszyna wirtualna, na której działa SAP HANA. Użyto **Wschodnie stany USA 2**.
+   * **Nazwa**: nazwa służy do identyfikowania magazynu usług Recovery Services i musi być unikatowa dla subskrypcji platformy Azure. Określ nazwę, która ma co najmniej dwa znaki, ale nie więcej niż 50 znaków. Nazwa musi rozpoczynać się od litery i zawierać tylko litery, cyfry i łączniki. W tym samouczku użyto nazwy **SAPHanaVault**.
+   * **Subskrypcja**: wybierz subskrypcję do użycia. Jeśli jesteś członkiem tylko jednej subskrypcji, zobaczysz tę nazwę. Jeśli nie masz pewności, której subskrypcji użyć, Użyj domyślnej (sugerowanej) subskrypcji. Istnieje wiele opcji, które są dostępne tylko wtedy, gdy konto służbowe jest skojarzone z więcej niż jedną subskrypcją platformy Azure. W tym miejscu użyto subskrypcji **subskrypcji SAP HANA Solution Lab** .
+   * **Grupa zasobów**: Użyj istniejącej grupy zasobów lub Utwórz nową. W tym miejscu użyto **SAPHANADemo**.<br>
+   Aby wyświetlić listę dostępnych grup zasobów w ramach subskrypcji, wybierz pozycję **Użyj istniejącej**, a następnie wybierz zasób z listy rozwijanej. Aby utworzyć nową grupę zasobów, wybierz pozycję **Utwórz nową** i wprowadź nazwę. Aby uzyskać pełne informacje na temat grup zasobów, zobacz [Azure Resource Manager przegląd](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+   * **Lokalizacja**: Wybierz region geograficzny magazynu. Magazyn musi znajdować się w tym samym regionie co maszyna wirtualna, na której działa SAP HANA. Użyto **Wschodnie stany USA 2**.
 
 5. Wybierz pozycję **Przegląd + utwórz**.
 
@@ -185,15 +151,15 @@ Po odnalezieniu baz danych, których kopia zapasowa ma zostać utworzona, należ
 
 1. Kliknij pozycję **Konfiguruj kopię zapasową**.
 
-![Konfigurowanie kopii zapasowych](./media/tutorial-backup-sap-hana-db/configure-backup.png)
+   ![Konfigurowanie kopii zapasowych](./media/tutorial-backup-sap-hana-db/configure-backup.png)
 
 2. W obszarze **Wybierz elementy do utworzenia kopii zapasowej**wybierz co najmniej jedną bazę danych, która ma być chroniona, a następnie kliknij przycisk **OK**.
 
-![Wybierz elementy do utworzenia kopii zapasowej](./media/tutorial-backup-sap-hana-db/select-items-to-backup.png)
+   ![Wybierz elementy do utworzenia kopii zapasowej](./media/tutorial-backup-sap-hana-db/select-items-to-backup.png)
 
 3. W obszarze **zasady tworzenia kopii zapasowych > wybierz pozycję Zasady tworzenia kopii**zapasowych, Utwórz nowe zasady tworzenia kopii zapasowej dla baz danych, zgodnie z instrukcjami w następnej sekcji.
 
-![Wybieranie zasad kopii zapasowych](./media/tutorial-backup-sap-hana-db/backup-policy.png)
+   ![Wybieranie zasad kopii zapasowych](./media/tutorial-backup-sap-hana-db/backup-policy.png)
 
 4. Po utworzeniu zasad w **menu kopia zapasowa**kliknij pozycję **Włącz kopię zapasową**.
 
@@ -212,11 +178,11 @@ Określ ustawienia zasad w następujący sposób:
 
 1. W polu **Nazwa zasad** wprowadź nazwę nowych zasad. W takim przypadku wprowadź **SAPHANA**.
 
-![Wprowadź nazwę nowych zasad](./media/tutorial-backup-sap-hana-db/new-policy.png)
+   ![Wprowadź nazwę nowych zasad](./media/tutorial-backup-sap-hana-db/new-policy.png)
 
 2. W obszarze **zasady pełnej kopii zapasowej**wybierz **częstotliwość tworzenia kopii zapasowych**. Możesz wybrać opcję **codziennie** lub **co tydzień**. Na potrzeby tego samouczka wybieramy **codzienne** kopie zapasowe.
 
-![Wybierz częstotliwość tworzenia kopii zapasowych](./media/tutorial-backup-sap-hana-db/backup-frequency.png)
+   ![Wybierz częstotliwość tworzenia kopii zapasowych](./media/tutorial-backup-sap-hana-db/backup-frequency.png)
 
 3. W obszarze **Zakres przechowywania**Skonfiguruj ustawienia przechowywania dla pełnej kopii zapasowej.
    * Domyślnie są wybierane wszystkie opcje. Wyczyść limity zakresu przechowywania, których nie chcesz używać, i ustaw te, które chcesz wykonać.
@@ -230,9 +196,9 @@ Określ ustawienia zasad w następujący sposób:
 
    ![Zasady różnicowych kopii zapasowych](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
->[!NOTE]
->Przyrostowe kopie zapasowe nie są obecnie obsługiwane.
->
+   >[!NOTE]
+   >Przyrostowe kopie zapasowe nie są obecnie obsługiwane.
+   >
 
 7. Kliknij przycisk **OK** , aby zapisać zasady i wrócić do głównego menu **zasad kopii zapasowych** .
 8. Wybierz pozycję **kopia zapasowa dziennika** , aby dodać zasady kopii zapasowej dziennika transakcyjnego,
@@ -241,9 +207,9 @@ Określ ustawienia zasad w następujący sposób:
 
     ![Zasady tworzenia kopii zapasowych dziennika](./media/tutorial-backup-sap-hana-db/log-backup-policy.png)
 
->[!NOTE]
-> Kopie zapasowe dzienników zaczynają przepływać dopiero po ukończeniu jednej pełnej kopii zapasowej.
->
+   >[!NOTE]
+   > Kopie zapasowe dzienników zaczynają przepływać dopiero po ukończeniu jednej pełnej kopii zapasowej.
+   >
 
 9. Kliknij przycisk **OK** , aby zapisać zasady i wrócić do głównego menu **zasad kopii zapasowych** .
 10. Po zdefiniowaniu zasad tworzenia kopii zapasowej kliknij przycisk **OK**.

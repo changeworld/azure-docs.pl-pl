@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 089fcc89f330e47a09187b5338176bf23fd801bb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 39e2deead1affd750d9a5e68985b02ebfe8e0efd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603752"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921304"
 ---
 # <a name="supported-platforms"></a>Obsługiwane platformy 
 
@@ -41,7 +41,7 @@ W poniższych sekcjach wymieniono obsługiwane systemy operacyjne serwera, na kt
 
 ### Systemy operacyjne Windows Server<a name="os-windows"></a>
 
-|OS|Obsługiwane przez Azure Security Center|Obsługa integracji z usługą Microsoft Defender ATP|
+|System operacyjny|Obsługiwane przez Azure Security Center|Obsługa integracji z usługą Microsoft Defender ATP|
 |:---|:-:|:-:|
 |Windows Server 2019|✔|X|
 |Windows Server 2016|✔|✔|
@@ -99,14 +99,14 @@ Następujące zasoby usługi Azure PaaS są obsługiwane przez Azure Security Ce
 * Funkcja
 * Usługa w chmurze
 * VNet
-* Subnet
+* Podsieć
 * Karta sieciowa
 * Sieciowa grupa zabezpieczeń
 * Konto usługi Batch
 * Konto usługi Service Fabric
 * Konto usługi Automation
 * Moduł równoważenia obciążenia
-* Wyszukaj
+* Wyszukiwanie
 * Przestrzeń nazw magistrala usług
 * Stream Analytics
 * Przestrzeń nazw centrum zdarzeń
@@ -126,4 +126,4 @@ Obsługiwane jest również ochrona Virtual Machines znajdujących się w Azure 
 - Dowiedz się [, jak Security Center zarządza i zabezpiecza dane](security-center-data-security.md).
 - Dowiedz się, jak [planować i zrozumieć zagadnienia dotyczące projektowania, aby przyjąć Azure Security Center](security-center-planning-and-operations-guide.md).
 - Dowiedz się więcej o [funkcjach dostępnych dla różnych środowisk chmury](security-center-services.md).
-- Dowiedz się więcej [na temat wykrywania zagrożeń dla maszyn wirtualnych & serwerów w Azure Security Center](security-center-alerts-iaas.md).
+- Dowiedz się więcej o [ochronie przed zagrożeniami dla maszyn z systemami Windows i Linux w Azure Security Center](threat-protection.md#windows-machines).

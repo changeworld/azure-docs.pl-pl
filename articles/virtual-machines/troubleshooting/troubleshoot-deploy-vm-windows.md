@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 2baa82bda1f92fe81bb0db69b84e6865b2709e42
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: cdbaeb5a97beba342bc471e75d1b07be0d0141ae
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058031"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921415"
 ---
-# <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Rozwiązywanie problemów z wdrażaniem maszyn wirtualnych z systemem Windows na platformie Azure
+# <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Rozwiązywanie problemów z wdrażaniem maszyny wirtualnej z systemem Windows na platformie Azure
 
 Aby rozwiązać problemy z wdrażaniem maszyn wirtualnych na platformie Azure, zapoznaj się z [najważniejszymi problemami](#top-issues) dotyczącymi typowych awarii i rozwiązań.
 
@@ -62,7 +62,7 @@ Dla umowy Enterprise Agreement:
 
 • Przekaż niestandardową maszynę wirtualną i Wdróż ją przy użyciu szablonu Menedżer zasobów lub Azure PowerShell.
 
-Aby uzyskać więcej informacji, zobacz następujące zasoby:
+Więcej informacji można znaleźć w następujących zasobach:
 
  - [Omówienie korzyści z używania hybrydowej platformy Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 
@@ -78,7 +78,7 @@ Aby aktywować miesięczne środki, zobacz ten [artykuł](https://azure.microsof
 
 ## <a name="how-to-add-enterprise-devtest-to-my-enterprise-agreement-ea-to-get-access-to-window-client-images"></a>Jak dodać Enterprise — tworzenie i testowanie do Umowa Enterprise (EA) w celu uzyskania dostępu do obrazów klientów systemu Windows?
 
-Możliwość tworzenia subskrypcji w ramach oferty „Enterprise — tworzenie i testowanie” jest zarezerwowana dla właścicieli kont z odpowiednimi uprawnieniami udzielonymi przez administratora przedsiębiorstwa. Właściciel konta tworzy subskrypcje za pośrednictwem portalu konta platformy Azure, a następnie powinien dodawać aktywnych subskrybentów programu Visual Studio jako współadministratorów. Dzięki temu użytkownicy mogą zarządzać zasobami wymaganymi do projektowania i testowania oraz korzystać z nich. Aby uzyskać więcej informacji, zobacz [Enterprise — tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0148p/).
+Możliwość tworzenia subskrypcji na podstawie oferty Enterprise — tworzenie i testowanie jest ograniczona do właścicieli kont, którzy uzyskali odpowiednie uprawnienia przez administratora przedsiębiorstwa. Właściciel konta tworzy subskrypcje za pośrednictwem portalu konta platformy Azure, a następnie powinien dodawać aktywnych subskrybentów programu Visual Studio jako współadministratorów. Dzięki temu użytkownicy mogą zarządzać zasobami wymaganymi do projektowania i testowania oraz korzystać z nich. Aby uzyskać więcej informacji, zobacz [Enterprise — tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
 ## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Brak moich sterowników dla mojej maszyny wirtualnej z serii N systemu Windows
 
@@ -106,6 +106,8 @@ W tym [artykule](../windows/client-images.md) przedstawiono wymagania dotyczące
 Gdy maszyna wirtualna jest uruchomiona, jest wdrażana na serwerze fizycznym. Serwery fizyczne w regionach platformy Azure są pogrupowane w klastrach wspólnego sprzętu fizycznego. Zmienianie rozmiarów maszyny wirtualnej, która wymaga przeniesienia maszyny wirtualnej do różnych klastrów sprzętowych, różni się w zależności od modelu wdrażania użytego do wdrożenia maszyny wirtualnej.
 
 - W przypadku maszyn wirtualnych wdrożonych w klasycznym modelu wdrażania należy usunąć i ponownie wdrożyć wdrożenie usługi w chmurze w celu zmiany rozmiaru maszyn wirtualnych w innej rodzinie rozmiarów.
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 - Maszyny wirtualne wdrożone w modelu wdrażania Menedżer zasobów należy zatrzymać wszystkie maszyny wirtualne w zestawie dostępności przed zmianą rozmiaru każdej maszyny wirtualnej w zestawie dostępności.
 

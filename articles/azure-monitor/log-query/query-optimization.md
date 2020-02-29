@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2019
-ms.openlocfilehash: 19b0ce154fc19015f7faa17e339c9df259206365
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 874fd0ccdd2fdf0a2e75412ae2da82abb736ff3f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670818"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164580"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optymalizowanie zapytań dzienników w Azure Monitor
 Dzienniki Azure Monitor korzystają z [usługi Azure Eksplorator danych (ADX)](/azure/data-explorer/) do przechowywania danych dziennika i uruchamiania zapytań w celu analizowania tych danych. Tworzy, zarządza i obsługuje klastry ADX oraz optymalizuje je do obciążeń analizy dzienników. Po uruchomieniu zapytania jest on zoptymalizowany i kierowany do odpowiedniego klastra ADX, który przechowuje dane obszaru roboczego. Zarówno dzienniki Azure Monitor, jak i Azure Eksplorator danych korzystają z wielu automatycznych mechanizmów optymalizacji zapytań. Chociaż Optymalizacja automatyczna zapewnia znaczący wzrost, w niektórych przypadkach można znacznie poprawić wydajność zapytań. W tym artykule opisano zagadnienia dotyczące wydajności i kilka technik rozwiązywania tych problemów.
@@ -258,8 +258,13 @@ by Computer
 ) on Computer
 ```
 
+Pomiar jest zawsze większy niż określony czas rzeczywisty. Na przykład jeśli filtr zapytania wynosi 7 dni, system może skanować 7,5 lub 8,1 dni. Wynika to z faktu, że system dzieli dane na fragmenty w zmiennym rozmiarze. Aby upewnić się, że wszystkie odpowiednie rekordy są skanowane, skanuje całą partycję, która może obejmować kilka godzin, a nawet kilka dni.
+
+Istnieje kilka przypadków, w których system nie może zapewnić dokładnego pomiaru zakresu czasu. Zdarza się to w większości przypadków, gdy zapytanie obejmuje mniej niż dzień lub zapytania obejmujące wiele obszarów roboczych.
+
+
 > [!IMPORTANT]
-> Ten wskaźnik nie jest dostępny dla zapytań między regionami.
+> Ten wskaźnik przedstawia tylko dane przetworzone w bezpośrednim klastrze. W zapytaniu obejmującym wiele regionów reprezentuje tylko jeden z regionów. W zapytaniu obejmującym wiele obszarów roboczych może nie zawierać wszystkich obszarów roboczych.
 
 ## <a name="age-of-processed-data"></a>Wiek przetworzonych danych
 Usługa Azure Eksplorator danych korzysta z kilku warstw magazynowania: lokalnych dysków SSD i znacznie wolniejszych obiektów blob platformy Azure. Im nowsze dane, tym wyższy jest szansa, że jest ona przechowywana w bardziej wydajnej warstwie z mniejszym opóźnieniem, co skraca czas trwania zapytania i procesor CPU. Oprócz samych danych system ma również pamięć podręczną dla metadanych. Im starsze dane, tym mniej szansa, że metadane będą znajdować się w pamięci podręcznej.
@@ -284,7 +289,7 @@ Wykonywanie zapytań między regionami wymaga, aby system mógł serializować i
 Jeśli nie ma żadnej prawdziwej przyczyny skanowania wszystkich tych regionów, należy dostosować zakres tak, aby obejmował mniejszą liczbę regionów. Jeśli zakres zasobów jest zminimalizowany, ale nadal są używane wiele regionów, może się to zdarzyć z powodu błędu konfiguracji. Na przykład dzienniki inspekcji i ustawienia diagnostyczne są wysyłane do różnych obszarów roboczych w różnych regionach lub wiele konfiguracji ustawień diagnostycznych. 
 
 > [!IMPORTANT]
-> Ten wskaźnik nie jest dostępny dla zapytań między regionami.
+> Gdy zapytanie jest uruchamiane w kilku regionach, pomiary procesora i danych nie będą dokładne i będą przedstawiać pomiar tylko w jednym z regionów.
 
 ## <a name="number-of-workspaces"></a>Liczba obszarów roboczych
 Obszary robocze są kontenerami logicznymi, które są używane do segregowania i administrowania danymi dzienników. Zaplecze optymalizuje umieszczanie obszarów roboczych w klastrach fizycznych w wybranym regionie.
@@ -300,7 +305,7 @@ Wykonywanie zapytań między regionami i między klastrami wymaga, aby system m�
 > W niektórych scenariuszach obejmujących wiele obszarów roboczych pomiary procesora i danych nie będą dokładne i będą reprezentować tylko niektóre obszary robocze.
 
 ## <a name="parallelism"></a>Równoległości
-Dzienniki Azure Monitor używają dużych klastrów usługi Azure Eksplorator danych do uruchamiania zapytań, a te klastry różnią się w skali. System automatycznie skaluje klastry zgodnie z logiką i pojemnością umieszczenia obszaru roboczego.
+Dzienniki Azure Monitor korzystają z dużych klastrów usługi Azure Eksplorator danych do uruchamiania zapytań. te klastry różnią się w zależności od liczby węzłów obliczeniowych. System automatycznie skaluje klastry zgodnie z logiką i pojemnością umieszczenia obszaru roboczego.
 
 Aby efektywnie wykonać zapytanie, jest ono partycjonowane i dystrybuowane do węzłów obliczeniowych na podstawie danych, które są wymagane do przetwarzania. Istnieją sytuacje, w których system nie może wykonać tej czynności efektywnie. Może to prowadzić do długiego czasu trwania zapytania. 
 

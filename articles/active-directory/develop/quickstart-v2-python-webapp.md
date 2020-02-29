@@ -11,20 +11,19 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 2710263aa099618d57f763edd199673ae04b53ed
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 5a2d6bfe2c58d382aea14b6ca8d4151acb9adfbf
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160493"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160870"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Szybki Start: Dodawanie logowania z firmą Microsoft do aplikacji sieci Web w języku Python
 
 W tym przewodniku szybki start dowiesz się, jak zintegrować aplikację sieci Web w języku Python z platformą tożsamości firmy Microsoft. Twoja aplikacja zaloguje użytkownika, uzyskaj token dostępu, aby wywołać interfejs API Microsoft Graph i przetworzyć żądanie do interfejsu API Microsoft Graph.
 
-Po ukończeniu tego przewodnika aplikacja będzie akceptować logowania do osobistych kont Microsoft (w tym outlook.com, live.com i innych) oraz kont służbowych z dowolnej firmy lub organizacji korzystającej z Azure Active Directory.
+Po ukończeniu tego przewodnika aplikacja będzie akceptować logowania do osobistych kont Microsoft (w tym outlook.com, live.com i innych) oraz kont służbowych z dowolnej firmy lub organizacji korzystającej z Azure Active Directory. (Zobacz [, jak działa przykład](#how-the-sample-works) dla ilustracji).
 
-![Pokazuje sposób działania przykładowej aplikacji wygenerowanej przez ten przewodnik Szybki Start](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -92,45 +91,56 @@ Do uruchomienia tego przykładu potrzebne są:
 > > ![Already configured](media/quickstart-v2-aspnet-webapp/green-check.png) (Już skonfigurowano) Twoja aplikacja została skonfigurowana za pomocą tego atrybutu
 
 #### <a name="step-2-download-your-project"></a>Krok 2. Pobieranie projektu
+> [!div renderon="docs"]
+> [Pobierz przykład kodu](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
-[Pobierz przykład kodu](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
-
-#### <a name="step-3-configure-the-application"></a>Krok 3. Konfigurowanie aplikacji
-
-1. Wyodrębnij plik zip do folderu lokalnego bliższego folderowi głównemu, na przykład **C:\Azure-Samples**
-1. Jeśli używasz zintegrowanego środowiska programistycznego, Otwórz przykład w ulubionym środowisku IDE (opcjonalnie).
-1. Otwórz plik **app_config. PR** , który znajduje się w folderze głównym i Zamień na następujący fragment kodu:
-
-```python
-CLIENT_ID = "Enter_the_Application_Id_here"
-CLIENT_SECRET = "Enter_the_Client_Secret_Here"
-AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
-```
+> [!div class="sxs-lookup" renderon="portal"]
+> Pobierz projekt i wyodrębnij plik zip do folderu lokalnego bliżej folderu głównego — na przykład **C:\Azure-Samples**
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Pobierz przykład kodu]()
 
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-the-application"></a>Krok 3. Konfigurowanie aplikacji
+> 
+> 1. Wyodrębnij plik zip do folderu lokalnego bliższego folderowi głównemu, na przykład **C:\Azure-Samples**
+> 1. Jeśli używasz zintegrowanego środowiska programistycznego, Otwórz przykład w ulubionym środowisku IDE (opcjonalnie).
+> 1. Otwórz plik **app_config. PR** , który znajduje się w folderze głównym i Zamień na następujący fragment kodu:
+> 
+> ```python
+> CLIENT_ID = "Enter_the_Application_Id_here"
+> CLIENT_SECRET = "Enter_the_Client_Secret_Here"
+> AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
+> ```
 > Gdzie:
 >
 > - `Enter_the_Application_Id_here` jest identyfikatorem dla zarejestrowanej aplikacji.
 > - `Enter_the_Client_Secret_Here` — jest **kluczem tajnym klienta** utworzonym w **certyfikatach & wpisy tajne** dla zarejestrowanej aplikacji.
 > - `Enter_the_Tenant_Name_Here` — jest wartością **identyfikatora katalogu (dzierżawy)** zarejestrowanej aplikacji.
 
-#### <a name="step-4-run-the-code-sample"></a>Krok 4. Uruchamianie przykładu kodu
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-run-the-code-sample"></a>Krok 3. Uruchamianie przykładu kodu
+
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-code-sample"></a>Krok 4. Uruchamianie przykładu kodu
 
 1. Konieczne będzie zainstalowanie biblioteki języka Python MSAL, struktury kolby, sesji do zarządzania sesjami po stronie serwera i żądań przy użyciu funkcji PIP w następujący sposób:
 
-   ```Shell
-   pip install -r requirements.txt
-   ```
+    ```Shell
+    pip install -r requirements.txt
+    ```
 
 2. Uruchom app.py z powłoki lub wiersza polecenia:
 
-   ```Shell
-   python app.py
-   ```
+    ```Shell
+    python app.py
+    ```
    > [!IMPORTANT]
    > Aplikacja w tym przewodniku Szybki start używa klucza tajnego klienta do identyfikowania się jako klienta poufnego. Ponieważ klucz tajny klienta jest dodawany jako zwykły tekst w plikach projektu, ze względów bezpieczeństwa zaleca się używanie certyfikatu zamiast klucza tajnego klienta, zanim będzie można uznać aplikację za produkcyjną. Aby uzyskać więcej informacji na temat korzystania z certyfikatu, zobacz [te instrukcje](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials).
 
 ## <a name="more-information"></a>Więcej informacji
+
+### <a name="how-the-sample-works"></a>Jak działa przykład
+![Pokazuje sposób działania przykładowej aplikacji wygenerowanej przez ten przewodnik Szybki Start](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
 ### <a name="getting-msal"></a>Pobieranie MSAL
 MSAL to biblioteka służąca do logowania użytkowników i żądania tokenów używanych w celu uzyskania dostępu do interfejsu API chronionego przez platformę tożsamości firmy Microsoft.

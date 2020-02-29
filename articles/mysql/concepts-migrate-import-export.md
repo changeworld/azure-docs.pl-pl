@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 8cf0b88ddc24bfc6bc293dd62416417f1eec3a06
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770955"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163730"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrowanie bazy danych MySQL przy użyciu funkcji importowania i eksportowania
 W tym artykule opisano dwa typowe podejścia do importowania i eksportowania danych na serwer Azure Database for MySQL przy użyciu programu MySQL Workbench. 
@@ -19,10 +19,10 @@ W tym artykule opisano dwa typowe podejścia do importowania i eksportowania dan
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Aby krokowo poprowadzić ten przewodnik, musisz:
 - Serwer Azure Database for MySQL, wykonując następujące czynności: [Utwórz serwer Azure Database for MySQL przy użyciu Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md).
-- [Pobrano](https://dev.mysql.com/downloads/workbench/)program MySQL Workbench lub inne narzędzie MySQL do zaimportowania i wyeksportowania.
+- Narzędzia MySQL Workbench [MySQL Workbench Download](https://dev.mysql.com/downloads/workbench/) lub inne narzędzie MySQL innej firmy do wykonania importu/eksportu.
 
 ## <a name="use-common-tools"></a>Korzystanie z popularnych narzędzi
-Używaj popularnych narzędzi, takich jak MySQL Workbench, TOAD lub Navicat, aby zdalnie łączyć i importować lub eksportować dane do Azure Database for MySQL. 
+Korzystaj z popularnych narzędzi i narzędzi, takich jak MySQL Workbench lub mysqldump, aby zdalnie łączyć i importować dane oraz eksportować je do Azure Database for MySQL. 
 
 Użyj tych narzędzi na komputerze klienckim z połączeniem internetowym, aby nawiązać połączenie z usługą Azure Database for MySQL. Użyj połączenia szyfrowanego za pośrednictwem protokołu SSL w celu uzyskania najlepszych rozwiązań z zakresu zabezpieczeń, zgodnie z opisem w temacie [Konfigurowanie łączności SSL w Azure Database for MySQL](concepts-ssl-connection-security.md).
 

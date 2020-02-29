@@ -3,27 +3,16 @@ title: Tabela obsługi kopii zapasowych platformy SAP HANA
 description: W tym artykule omówiono obsługiwane scenariusze i ograniczenia dotyczące tworzenia kopii zapasowych SAP HANA baz danych na maszynach wirtualnych platformy Azure przy użyciu usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 82d844385290ab0dc2953537c1f9a3387dd7b2b2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 941ec71cec42a4a61b6b3e24712471c5df448112
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842635"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161588"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Macierz obsługi dla kopii zapasowych baz danych platformy SAP HANA na maszynach wirtualnych platformy Azure
 
 Azure Backup obsługuje tworzenie kopii zapasowych baz danych SAP HANA na platformie Azure. W tym artykule przedstawiono podsumowanie obsługiwanych scenariuszy i ograniczeń występujących podczas tworzenia kopii zapasowych SAP HANA baz danych na maszynach wirtualnych platformy Azure za pomocą Azure Backup.
-
-## <a name="onboard-to-the-public-preview"></a>Dołączanie do publicznej wersji zapoznawczej
-
-Dołączanie do publicznej wersji zapoznawczej w następujący sposób:
-
-* W portalu Zarejestruj swój identyfikator subskrypcji dla dostawcy usług Recovery Services, wykonując [ten artykuł](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal).
-* Dla programu PowerShell uruchom to polecenie cmdlet. Powinna zostać zakończona jako "zarejestrowane".
-
-```PowerShell
-Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-```
 
 > [!NOTE]
 > Częstotliwość wykonywania kopii zapasowych dziennika może teraz wynosić co najmniej 15 minut. Kopie zapasowe dzienników zaczynają przepływać dopiero po pomyślnym wykonaniu pełnej kopii zapasowej bazy danych.
@@ -33,9 +22,9 @@ Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Micros
 | **Scenariusz**               | **Obsługiwane konfiguracje**                                | **Nieobsługiwane konfiguracje**                              |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Topologia**               | SAP HANA działa tylko na maszynach wirtualnych z systemem Linux Azure                    | Duże wystąpienia HANA (HLI)                                   |
-| **Georegiony**                   | **POWSZECHNE**<br />**Europa** — Europa Zachodnia, Europa Północna, Francja środkowa, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, Niemcy Północne, Niemcy Środkowo-Zachodnie, Szwajcaria Północna, Szwajcaria Zachodnia<br />**Azja i Pacyfik** — Australia Środkowa, Australia Środkowa 2, Australia Wschodnia, Australia Wschodnia, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa<br /><br>**Przeglądania**<br />**Ameryki** — środkowe stany USA, Wschodnie stany USA 2, Wschodnie stany USA, Północno-środkowe stany USA, Południowo-środkowe stany USA, zachodnie stany USA 2, zachodnie stany USA, Europa Zachodnia, Kanada środkowa, Kanada Wschodnia <br />**Azja i Pacyfik** — Azja Wschodnia, Azja Południowo-Wschodnia, Indie Środkowe, Indie Południowe | Chiny Wschodnie, Chiny Północne, Chiny 2, Chiny Północne 2, Indie Zachodnie, środkowe Szwajcaria Północna, Północna Republika Południowej Afryki, Zachodnia Republika Południowej Afryki, Zjednoczone Emiraty Arabskie, środkowe Zjednoczone Emiraty Arabskie, regiony Azure Government, Francja Południowa, Brazylia Południowa |
-| **Wersje systemu operacyjnego**            | SLES 12 z dodatkiem SP2, SP3 lub SP4                                | SLES 15, RHEL                                                |
-| **Wersje platformy HANA**          | SDC na platformie HANA 1. x, MDC w systemie HANA 2. x < = SPS04 Rev 44            | -                                                            |
+| **Georegiony**                   | **POWSZECHNE**<br> **Ameryki** — środkowe stany USA, Wschodnie stany USA 2, Wschodnie stany USA, Północno-środkowe stany USA, Południowo-środkowe stany USA, zachodnie stany USA 2, zachodnie stany USA, Europa Zachodnia, Kanada środkowa, Kanada Wschodnia, Brazylia Południowa <br> **Azja i Pacyfik** — Australia Środkowa, Australia Środkowa 2, Australia Wschodnia, Australia Południowo-Wschodnia, Japonia Zachodnia, Japonia zachodni, Korea środkowa, Korea Południowa, Republika Azja Wschodnia Południowej południowo-wschodnia, Chiny Północne Chiny Północne Chiny Wschodnie Indie Południowe <br> **Europa** — Europa Zachodnia, Europa Północna, Francja środkowa, Południowe Zjednoczone Królestwo, Zachodnie Zjednoczone Królestwo, Niemcy Północne, Niemcy Środkowo-Zachodnie, Szwajcaria Północna, Szwajcaria Zachodnia, środkowe Szwajcaria Północna <br> **Afryka/Me** -Północna Republika Południowej Afryki, Zachodnia Republika Południowej Afryki, Zjednoczone Emiraty Arabskie, środkowe Zjednoczone Emiraty Arabskie  <BR>  **Azure Government regiony** | Francja Południowa, Niemcy środkowe, Niemcy północny, US Gov IOWA |
+| **Wersje systemu operacyjnego**            | SLES 12 z dodatkiem SP2, SP3 lub SP4; SLES 15 z dodatkiem SP1                              | RHEL                                                |
+| **Wersje platformy HANA**          | SDC na platformie HANA 1. x, MDC w systemie HANA 2. x < = SPS04 Rev 46       | -                                                            |
 | **Wdrożenia HANA**       | SAP HANA pojedynczej maszynie wirtualnej platformy Azure — skalowanie w górę               | Skalowanie w poziomie                                                    |
 | **Wystąpienia HANA**         | Pojedyncze wystąpienie SAP HANA na pojedynczej maszynie wirtualnej platformy Azure — skalowanie w górę | Wiele wystąpień SAP HANA na jednej maszynie wirtualnej                  |
 | **Typy baz danych HANA**    | Kontener pojedyncza baza danych (SDC) na 1. x, kontener wielobaza danych (MDC) w 2. x | MDC w HANA 1. x                                              |
@@ -49,8 +38,6 @@ Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Micros
 
 > [!NOTE]
 > Operacje tworzenia kopii zapasowych i przywracania z SAP HANA natywnych klientów (SAP HANA Studio/Panel sterowania/DBA) nie są obecnie obsługiwane.
-
-
 
 ## <a name="next-steps"></a>Następne kroki
 

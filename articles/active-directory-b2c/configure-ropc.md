@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 03ff564848298d31c8bf92169d9e5f66d024d711
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 1d17f9af5700df5458cc4373dfc5cd8fb7774f91
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949188"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912407"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurowanie przepływu poświadczeń hasła właściciela zasobu w Azure AD B2C
 
@@ -24,16 +24,7 @@ Przepływ poświadczeń hasła właściciela zasobu (ROPC) to standardowy przep�
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-W Azure Active Directory B2C (Azure AD B2C) obsługiwane są następujące opcje:
-
-- **Klient natywny**: interakcja użytkownika podczas uwierzytelniania występuje, gdy kod jest uruchamiany na urządzeniu po stronie użytkownika. Urządzenie może być aplikacją mobilną, która działa w natywnym systemie operacyjnym, takim jak Android i iOS.
-- **Publiczny przepływ klienta**: tylko poświadczenia użytkownika zebrane przez aplikację są wysyłane w wywołaniu interfejsu API. Poświadczenia aplikacji nie są wysyłane.
-- **Dodawanie nowych oświadczeń**: zawartość tokenu identyfikatora można zmienić, aby dodać nowe oświadczenia.
-
-Następujące przepływy nie są obsługiwane:
-
-- **Serwer-serwer**: system ochrony tożsamości musi mieć niezawodny adres IP zebrany od wywołującego (natywnego klienta) w ramach interakcji. W wywołaniu interfejsu API po stronie serwera jest używany tylko adres IP serwera. Jeśli zostanie przekroczony dynamiczny próg nieudanych uwierzytelnień, system ochrony tożsamości może zidentyfikować powtórzony adres IP jako osobę atakującą.
-- **Poufny przepływ klienta**: identyfikator klienta aplikacji został zweryfikowany, ale wpis tajny aplikacji nie jest zweryfikowany.
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Tworzenie przepływu użytkownika właściciela zasobu
 
@@ -70,8 +61,8 @@ Użyj ulubionej aplikacji do programowania interfejsów API do wygenerowania wyw
 | nazwa użytkownika | leadiocl@outlook.com |
 | hasło | Passxword1 |
 | grant_type | hasło |
-| scope | OpenID Connect \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| zakres | OpenID Connect \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | response_type | id_token tokenu |
 
 *Client_id* jest wartością zanotowaną wcześniej jako identyfikator aplikacji. *Offline_access* jest opcjonalne, jeśli chcesz otrzymać token odświeżenia. Używana nazwa użytkownika i hasło muszą być poświadczeniami istniejącego użytkownika w dzierżawie Azure AD B2C.
@@ -109,8 +100,8 @@ Utwórz wywołanie POST podobne do przedstawionego tutaj z informacjami w poniż
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
-| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* i *zasób* to wartości, które zostały wcześniej zanotowane jako identyfikator aplikacji. *Refresh_token* to token otrzymany wcześniej w wywołaniu uwierzytelniania.

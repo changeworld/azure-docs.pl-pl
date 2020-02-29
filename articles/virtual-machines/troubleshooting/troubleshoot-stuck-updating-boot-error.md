@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: e8e4bed052ec5b70c441a3ae76f3409c307299e5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981432"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919434"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Uruchamianie maszyny wirtualnej platformy Azure jest zablokowane w usłudze Windows Update
 
 Ten artykuł pomaga w rozwiązaniu problemu, gdy maszyna wirtualna (VM) jest zablokowana na Windows Update etapie podczas uruchamiania. 
 
-> [!NOTE] 
-> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/management/deployment-models.md). W tym artykule opisano użycie Menedżer zasobów model wdrażania. Zalecamy używanie tego modelu w przypadku nowych wdrożeń zamiast korzystania z klasycznego modelu wdrażania.
 
 ## <a name="symptom"></a>Objaw
 
@@ -44,8 +42,8 @@ W zależności od liczby aktualizacji, które są instalowane lub wycofywane, pr
 
 ### <a name="remove-the-update-that-causes-the-problem"></a>Usuń aktualizację, która powoduje problem
 
-1. Utwórz migawkę dysku systemu operacyjnego z zaatakowaną maszyną wirtualną jako kopię zapasową. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md). 
-2. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](troubleshoot-recovery-disks-portal-windows.md).
+1. Utwórz migawkę dysku systemu operacyjnego z zaatakowaną maszyną wirtualną jako kopię zapasową. Aby uzyskać więcej informacji, zobacz [migawka dysku](../windows/snapshot-copy-managed-disk.md). 
+2. [Dołącz dysk systemu operacyjnego do maszyny wirtualnej odzyskiwania](troubleshoot-recovery-disks-portal-windows.md).
 3. Po dołączeniu dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania Uruchom polecenie **diskmgmt. msc** , aby otworzyć przystawkę Zarządzanie dyskami, a następnie upewnij się, że dołączony dysk jest w **trybie online**. Zanotuj literę dysku przypisaną do dołączonego dysku systemu operacyjnego, znajdującego się w folderze \Windows. Jeśli dysk jest zaszyfrowany, przed przejściem do następnego kroku w tym dokumencie należy go odszyfrować.
 
 4. Otwórz wystąpienie wiersza polecenia z podwyższonym poziomem uprawnień (Uruchom jako administrator). Uruchom następujące polecenie, aby uzyskać listę pakietów aktualizacji znajdujących się na dołączonym dysku systemu operacyjnego:
@@ -77,4 +75,4 @@ W zależności od liczby aktualizacji, które są instalowane lub wycofywane, pr
     > [!NOTE] 
     > W zależności od rozmiaru pakietu narzędzie DISM zajmie trochę czasu, aby przetworzyć dezinstalację. Zwykle proces zostanie zakończony w ciągu 16 minut.
 
-7. [Odłącz dysk systemu operacyjnego i ponowne utworzenie maszyny Wirtualnej](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Następnie sprawdź, czy problem został rozwiązany.
+7. [Odłącz dysk systemu operacyjnego i Utwórz ponownie maszynę wirtualną](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Następnie sprawdź, czy problem został rozwiązany.

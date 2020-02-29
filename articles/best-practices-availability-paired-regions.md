@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c1e14db9dafc8b03acbeb1c6b97e5ac0e27cb0fd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718746"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163052"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Ciągłość działania i odzyskiwanie po awarii (BCDR): wielosparowane regiony platformy Azure
 
@@ -23,6 +23,9 @@ Platforma Azure działa w wielu lokalizacje geograficzne na całym świecie. Lok
 Każdy region platformy Azure jest sparowany z innym regionem w tej samej lokalizacji geograficznej, tworząc parę regionalną. Wyjątkiem jest Brazylia Południowa, która jest sparowana z regionem spoza położenia geograficznego. W obszarze pary regionów są używane aktualizacje serializacji platformy Azure (planowana konserwacja), dzięki czemu w danym momencie będzie aktualizowana tylko jedna sparowany region. W przypadku awarii mającej wpływ na wiele regionów, co najmniej jeden region w każdej parze będzie miał priorytet na potrzeby odzyskiwania.
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
+
+> [!NOTE]
+> Nie można modyfikować przypisanych par regionalnych platformy Azure.
 
 Rysunek 1 — pary regionalne platformy Azure
 
@@ -48,11 +51,11 @@ Rysunek 1 — pary regionalne platformy Azure
 | Ameryka Północna |Zachodnie stany USA 2 |Zachodnio-środkowe stany USA 
 | Republika Południowej Afryki | Północna Republika Południowej Afryki | Zachodnia Republika Południowej Afryki
 | Zjednoczone Królestwo |Zachodnie Zjednoczone Królestwo |Południowe Zjednoczone Królestwo |
-| Zjednoczone Emiraty Arabskie | Północne Zjednoczone Emiraty Arabskie | Środkowe Zjednoczone Emiraty Arabskie
+| Zjednoczone Emiraty Arabskie | Północne Zjednoczone Emiraty Arabskie | Środkowy Zjednoczone Emiraty Arabskie
 | Departament Obrony Stanów Zjednoczonych |US DoD (region wschodni) |US DoD (region środkowy) |
-| Rząd USA |US Gov Arizona |US Gov Teksas |
-| Rząd USA |US Gov Iowa |US Gov Wirginia |
-| Rząd USA |US Gov Wirginia |US Gov Teksas |
+| Administracja USA |US Gov Arizona |US Gov Teksas |
+| Administracja USA |US Gov Iowa |US Gov Wirginia |
+| Administracja USA |US Gov Wirginia |US Gov Teksas |
 
 Tabela 1 — mapowanie par regionalnych platformy Azure
 

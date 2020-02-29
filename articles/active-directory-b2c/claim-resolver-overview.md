@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 97e51331657c62094996f79483148f2f441e6a44
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425650"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161605"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informacje o rozpoznawaniu roszczeń w Azure Active Directory B2C zasadach niestandardowych
 
@@ -50,8 +50,8 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 | ----- | ----------- | --------|
 | {Culture: LanguageName} | Dwuliterowy kod ISO dla języka. | pl |
 | {Culture: LCID}   | Identyfikator LCID kodu języka. | 1033 |
-| {Culture: RegionName} | Dwuliterowy kod ISO dla regionu. | USA |
-| {Culture: RFC5646} | Kod języka RFC5646. | pl-PL |
+| {Culture: RegionName} | Dwuliterowy kod ISO dla regionu. | US |
+| {Culture: RFC5646} | Kod języka RFC5646. | pl-pl |
 
 ### <a name="policy"></a>Zasady
 
@@ -66,15 +66,16 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 
 | Claim | Opis | Przykład |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |`acr_values` parametr ciągu zapytania. | Nie dotyczy |
+| {OIDC: AuthenticationContextReferences} |`acr_values` parametr ciągu zapytania. | N/D |
 | {OIDC:ClientId} |`client_id` parametr ciągu zapytania. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC: DomainHint} |`domain_hint` parametr ciągu zapytania. | facebook.com |
 | {OIDC: LoginHint} |  `login_hint` parametr ciągu zapytania. | someone@contoso.com |
-| {OIDC:MaxAge} | Element `max_age`. | Nie dotyczy |
+| {OIDC:MaxAge} | Element `max_age`. | N/D |
 | {OIDC: nonce} |`Nonce` parametr ciągu zapytania. | defaultNonce |
 | {OIDC: Prompt} | `prompt` parametr ciągu zapytania. | logowanie |
-| {OIDC: Resource} |`resource` parametr ciągu zapytania. | Nie dotyczy |
+| {OIDC: Resource} |`resource` parametr ciągu zapytania. | N/D |
 | {OIDC: Scope} |`scope` parametr ciągu zapytania. | OpenID Connect |
+| {OIDC: RedirectUri} |`redirect_uri` parametr ciągu zapytania. | https://jwt.ms |
 
 ### <a name="context"></a>Kontekst
 
@@ -85,7 +86,7 @@ W poniższych sekcjach znajduje się lista dostępnych elementów rozwiązywania
 | {Context:DateTimeInUtc} |Data i godzina w formacie UTC.  | 10/10/2018 12:00:00 PM |
 | {Context: DeploymentMode} |Tryb wdrażania zasad.  | Produkcja |
 | {Context: IPAddress} | Adres IP użytkownika. | 11.111.111.11 |
-
+| {Context: KMSI} | Wskazuje, czy pole wyboru nie [wylogowuj mnie](custom-policy-keep-me-signed-in.md) jest zaznaczone. |  {1&gt;true&lt;1} |
 
 ### <a name="non-protocol-parameters"></a>Parametry niebędące protokołem
 
@@ -96,13 +97,13 @@ Wszelkie nazwy parametrów dołączone jako część żądania OIDC lub OAuth2 m
 | {OAUTH-KV: campaignId} | Parametr ciągu zapytania. | Hawaje |
 | {OAUTH-KV: app_session} | Parametr ciągu zapytania. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Parametr ciągu zapytania. | 1234 |
-| {OAUTH-KV: dowolny niestandardowy ciąg zapytania} | Parametr ciągu zapytania. | Nie dotyczy |
+| {OAUTH-KV: dowolny niestandardowy ciąg zapytania} | Parametr ciągu zapytania. | N/D |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Claim | Opis | Przykład |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | Token dostępu. | Nie dotyczy |
+| {oauth2:access_token} | Token dostępu. | N/D |
 
 
 ### <a name="saml"></a>SAML

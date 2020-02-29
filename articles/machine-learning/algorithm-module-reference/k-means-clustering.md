@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 6e2fa96584570e5837c4367c8be4701b7398fb0f
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/19/2020
+ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152214"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921168"
 ---
 # <a name="module-k-means-clustering"></a>Moduł: K-oznacza klastrowanie
 
@@ -107,11 +107,11 @@ Gdy przetwarza dane szkoleniowe, algorytm K-oznacza rozpoczyna się od początko
   
     -   Jeśli ustawisz **tryb Trainer** na **pojedynczy parametr**, Dodaj oznakowany zestaw danych i nauczysz model przy użyciu modułu [uczenie klastra](train-clustering-model.md) .  
   
-### <a name="results"></a>Wyniki
+## <a name="results"></a>Wyniki
 
 Po zakończeniu konfigurowania i uczenia modelu masz model, którego można użyć do generowania wyników. Istnieje jednak wiele sposobów uczenia modelu i wiele sposobów wyświetlania wyników i korzystania z nich: 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Przechwytywanie migawki modelu w obszarze roboczym
+### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Przechwytywanie migawki modelu w obszarze roboczym
 
 Jeśli użyto modułu [klastra uczenia](train-clustering-model.md) :
 
@@ -121,7 +121,7 @@ Jeśli użyto modułu [klastra uczenia](train-clustering-model.md) :
 
 Zapisany model reprezentuje dane szkoleniowe w momencie zapisania modelu. Jeśli później zaktualizujesz dane szkoleniowe używane w potoku, nie zaktualizujesz zapisanego modelu. 
 
-#### <a name="see-the-clustering-result-dataset"></a>Zobacz zestaw danych wyników klastrowania 
+### <a name="see-the-clustering-result-dataset"></a>Zobacz zestaw danych wyników klastrowania 
 
 Jeśli użyto modułu [klastra uczenia](train-clustering-model.md) :
 
@@ -142,3 +142,7 @@ Można uniknąć tego problemu na kilka sposobów:
 -   Utwórz wiele modeli, zmieniając metrykę lub przeiterj więcej.  
   
 Ogólnie rzecz biorąc, w przypadku modeli klastrowania istnieje możliwość, że każda dana konfiguracja spowoduje przeprowadzenie lokalnie zoptymalizowanego zestawu klastrów. Innymi słowy, zestaw klastrów, które są zwracane przez model, odpowiada tylko bieżącym punktom danych i nie można go uogólniać do innych danych. W przypadku korzystania z innej konfiguracji początkowej Metoda K-oznacza, że może znaleźć inną, wyższą konfigurację. 
+
+## <a name="next-steps"></a>Następne kroki
+
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 

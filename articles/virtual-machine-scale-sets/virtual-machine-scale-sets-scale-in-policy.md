@@ -1,32 +1,32 @@
 ---
 title: Korzystanie z niestandardowych zasad skalowania przy użyciu zestawów skalowania maszyn wirtualnych platformy Azure
 description: Dowiedz się, jak używać niestandardowych zasad skalowania przy użyciu zestawów skalowania maszyn wirtualnych platformy Azure, które używają konfiguracji skalowania automatycznego do zarządzania liczbą wystąpień
-author: avverma
+services: virtual-machine-scale-sets
+author: avirishuv
+manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 02/26/2020
 ms.author: avverma
-ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: ffcdaf76bdd08ee5505ddbeff6a6698e231b6171
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271764"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919842"
 ---
-# <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Wersja zapoznawcza: używanie niestandardowych zasad skalowania przy użyciu zestawów skalowania maszyn wirtualnych platformy Azure
+# <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Korzystanie z niestandardowych zasad skalowania przy użyciu zestawów skalowania maszyn wirtualnych platformy Azure
 
-Wdrożenie zestawu skalowania maszyn wirtualnych może być skalowane lub skalowane w oparciu o tablicę metryk, w tym platformę i metryki niestandardowe zdefiniowane przez użytkownika. Podczas gdy skalowanie w poziomie tworzy nowe Virtual Machines w oparciu o model zestawu skalowania, skalowanie w poziomie ma wpływ na uruchomione maszyny wirtualne, które mogą mieć różne konfiguracje i/lub funkcje, gdy obciążenie zestawu skalowania jest rozwijające. 
+Wdrożenie zestawu skalowania maszyn wirtualnych może być skalowane lub skalowane w oparciu o tablicę metryk, w tym platformę i metryki niestandardowe zdefiniowane przez użytkownika. Podczas gdy skalowanie w poziomie tworzy nowe maszyny wirtualne oparte na modelu zestawu skalowania, skalowanie w poziomie ma wpływ na uruchomione maszyny wirtualne, które mogą mieć różne konfiguracje i/lub funkcje w miarę rozwoju obciążeń zestawu skalowania. 
 
-Funkcja skalowania w poziomie umożliwia użytkownikom konfigurowanie kolejności skalowania maszyn wirtualnych. W wersji zapoznawczej wprowadzono trzy konfiguracje skalowania: 
+Funkcja skalowania w poziomie umożliwia użytkownikom skonfigurowanie kolejności skalowania maszyn wirtualnych w poziomie przy użyciu trzech konfiguracji skalowania: 
 
 1. Domyślne
 2. NewestVM
 3. OldestVM
-
-***Ta funkcja w wersji zapoznawczej jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych.***
 
 ### <a name="default-scale-in-policy"></a>Domyślne zasady skalowania
 
@@ -38,7 +38,7 @@ Domyślnie zestaw skalowania maszyn wirtualnych stosuje te zasady, aby określi�
 
 Użytkownicy nie muszą określać zasad skalowania, jeśli chcą, aby kolejność była stosowana domyślnie.
 
-Należy zauważyć, że równoważenie w strefach dostępności lub domenach błędów nie przenosi wystąpień między strefami dostępności ani domenami błędów. Równoważenie jest realizowane za pośrednictwem usuwania maszyn wirtualnych z niezrównoważonych stref dostępności lub domen błędów, dopóki Dystrybucja maszyn wirtualnych jest zrównoważona.
+Należy zauważyć, że równoważenie w strefach dostępności lub domenach błędów nie przenosi wystąpień między strefami dostępności ani domenami błędów. Równoważenie jest realizowane za pośrednictwem usuwania maszyn wirtualnych z niezrównoważonych stref dostępności lub domen błędów do momentu zrównoważenia dystrybucji maszyn wirtualnych.
 
 ### <a name="newestvm-scale-in-policy"></a>Zasady skalowania w NewestVM
 
@@ -53,6 +53,17 @@ Te zasady spowodują usunięcie najstarszej utworzonej maszyny wirtualnej w zest
 Zasady skalowania są zdefiniowane w modelu zestawu skalowania maszyn wirtualnych. Jak wskazano w powyższych sekcjach, w przypadku używania zasad "NewestVM" i "OldestVM" jest wymagana definicja zasad skalowania w poziomie. Zestaw skalowania maszyn wirtualnych automatycznie użyje "domyślnych" zasad skalowania, jeśli w modelu zestawu skalowania nie znaleziono definicji zasad skalowania. 
 
 Zasady skalowania w poziomie można definiować w modelu zestawu skalowania maszyn wirtualnych w następujący sposób:
+
+### <a name="azure-portal"></a>Portalu Azure
+ 
+Poniższe kroki definiują zasady skalowania podczas tworzenia nowego zestawu skalowania. 
+ 
+1. Przejdź do **zestawu skalowania maszyn wirtualnych**.
+1. Wybierz pozycję **+ Dodaj** , aby utworzyć nowy zestaw skalowania.
+1. Przejdź do karty **skalowanie** . 
+1. Znajdź sekcję **zasady skalowania w poziomie** .
+1. Wybierz zasady skalowania z listy rozwijanej.
+1. Po zakończeniu tworzenia nowego zestawu skalowania wybierz pozycję **Recenzja + Utwórz** .
 
 ### <a name="using-api"></a>Używanie interfejsu API
 
@@ -70,6 +81,33 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 } 
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Utwórz grupę zasobów, a następnie utwórz nowy zestaw skalowania z zasadami skalowania w poziomie ustawionym jako *OldestVM*.
+
+```azurepowershell-interactive
+New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "<VMSS location>"
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "<VMSS location>" `
+  -VMScaleSetName "myScaleSet" `
+  -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
+
+Poniższy przykład dodaje zasady skalowania podczas tworzenia nowego zestawu skalowania. Najpierw utwórz grupę zasobów, a następnie utwórz nowy zestaw skalowania przy użyciu zasad skalowania jako *OldestVM*. 
+
+```azurecli-interactive
+az group create --name <myResourceGroup> --location <VMSSLocation>
+az vmss create \
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --image UbuntuLTS \
+  --admin-username <azureuser> \
+  --generate-ssh-keys \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>Korzystanie z szablonu
@@ -94,6 +132,15 @@ Ten sam proces ma zastosowanie w przypadku używania "NewestVM" w powyższych za
 
 Modyfikacja zasad skalowania odbywa się zgodnie z tym samym procesem co zastosowanie zasad skalowania w poziomie. Na przykład jeśli w powyższym przykładzie chcesz zmienić zasady z "OldestVM" na "NewestVM", możesz to zrobić, wykonując następujące czynności:
 
+### <a name="azure-portal"></a>Portalu Azure
+
+Możesz zmodyfikować zasady skalowania istniejącego zestawu skalowania za pomocą Azure Portal. 
+ 
+1. W istniejącym zestawie skalowania maszyn wirtualnych wybierz pozycję **skalowanie** z menu po lewej stronie.
+1. Wybierz kartę **zasady skalowania w poziomie** .
+1. Wybierz zasady skalowania z listy rozwijanej.
+1. Gdy skończysz, wybierz pozycję **Zapisz**. 
+
 ### <a name="using-api"></a>Używanie interfejsu API
 
 Wykonaj umieszczenie zestawu skalowania maszyn wirtualnych przy użyciu interfejsu API 2019-03-01:
@@ -110,6 +157,27 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 }
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Zaktualizuj zasady skalowania w istniejącym zestawie skalowania:
+
+```azurepowershell-interactive
+Update-AzVmss `
+ -ResourceGroupName "myResourceGroup" `
+ -VMScaleSetName "myScaleSet" `
+ -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
+
+Poniżej przedstawiono przykład aktualizowania zasad skalowania w istniejącym zestawie skalowania: 
+
+```azurecli-interactive
+az vmss update \  
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>Korzystanie z szablonu
@@ -141,9 +209,9 @@ W poniższych przykładach pokazano, jak zestaw skalowania maszyn wirtualnych b�
 
 ### <a name="oldestvm-scale-in-policy"></a>Zasady skalowania w OldestVM
 
-| Wydarzenie                 | Identyfikatory wystąpień w strefie 1  | Identyfikatory wystąpień w strefie 2  | Identyfikatory wystąpień w strefie 3  | Skalowanie w poziomie                                                                                                               |
+| Zdarzenie                 | Identyfikatory wystąpień w strefie 1  | Identyfikatory wystąpień w strefie 2  | Identyfikatory wystąpień w strefie 3  | Skalowanie w poziomie                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Wartość początkowa               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Początkowego               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
 | Skalowanie w poziomie              | 3, 4, 5, 10            | ***2***, 6, 9, 11      | 1, 7, 8                | Wybierz między Strefa 1 i 2, chociaż Strefa 3 ma najstarszą maszynę wirtualną. Usuń VM2 z Strefa 2, ponieważ jest najstarszą maszyną wirtualną w tej strefie.   |
 | Skalowanie w poziomie              | ***3***, 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | Wybierz Strefa 1, mimo że Strefa 3 ma najstarszą maszynę wirtualną. Usuń VM3 z Strefa 1, ponieważ jest najstarszą maszyną wirtualną w tej strefie.                  |
 | Skalowanie w poziomie              | 4, 5, 10               | 6, 9, 11               | ***1***, 7, 8          | Strefy są zrównoważone. Usuń VM1 w Strefa 3, ponieważ jest najstarszą maszyną wirtualną w zestawie skalowania.                                               |
@@ -155,9 +223,9 @@ W przypadku zestawów skalowania maszyn wirtualnych niebędących strefami zasad
 
 ### <a name="newestvm-scale-in-policy"></a>Zasady skalowania w NewestVM
 
-| Wydarzenie                 | Identyfikatory wystąpień w strefie 1  | Identyfikatory wystąpień w strefie 2  | Identyfikatory wystąpień w strefie 3  | Skalowanie w poziomie                                                                                                               |
+| Zdarzenie                 | Identyfikatory wystąpień w strefie 1  | Identyfikatory wystąpień w strefie 2  | Identyfikatory wystąpień w strefie 3  | Skalowanie w poziomie                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Wartość początkowa               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Początkowego               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
 | Skalowanie w poziomie              | 3, 4, 5, 10            | 2, 6, 9, ***11***      | 1, 7, 8                | Wybierz między Strefa 1 i 2. Usuń MW11 z Strefa 2, ponieważ jest to najnowsza maszyna wirtualna w ramach obu tych stref.                                |
 | Skalowanie w poziomie              | 3, 4, 5, ***10***      | 2, 6, 9                | 1, 7, 8                | Wybierz Strefa 1, ponieważ zawiera więcej maszyn wirtualnych niż pozostałe dwie strefy. Usuń MW10 z Strefa 1, ponieważ jest to najnowsza maszyna wirtualna w tej strefie.          |
 | Skalowanie w poziomie              | 3, 4, 5                | 2, 6, ***9***          | 1, 7, 8                | Strefy są zrównoważone. Usuń VM9 w Strefa 2, ponieważ jest to najnowsza maszyna wirtualna w zestawie skalowania.                                                |
@@ -169,7 +237,7 @@ W przypadku zestawów skalowania maszyn wirtualnych niebędących strefami zasad
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-1. Nie można włączyć scaleInPolicy, jeśli wystąpi błąd "nieprawidłowego żądania" z komunikatem o błędzie z informacją "nie można odnaleźć elementu członkowskiego" scaleInPolicy "w obiekcie typu" Properties "", a następnie sprawdź wersję interfejsu API używaną dla zestawu skalowania maszyn wirtualnych. Wymagany jest interfejs API w wersji 2019-03-01 lub nowszej.
+1. Nie można włączyć scaleInPolicy, jeśli wystąpi błąd "nieprawidłowego żądania" z komunikatem o błędzie z informacją "nie można odnaleźć elementu członkowskiego" scaleInPolicy "w obiekcie typu" Properties "", a następnie sprawdź wersję interfejsu API używaną dla zestawu skalowania maszyn wirtualnych. Dla tej funkcji wymagany jest interfejs API w wersji 2019-03-01 lub nowszej.
 
 2. Niewłaściwy wybór maszyn wirtualnych do skalowania w górę zapoznaj się z powyższymi przykładami. Jeśli zestaw skalowania maszyn wirtualnych jest wdrożeniem strefowym, zasady skalowania w poziomie są stosowane najpierw w strefach ze zrównoważonym obciążeniem, a następnie przez zestaw skalowania, gdy jest on zbilansowany. Jeśli kolejność skalowania w poziomie nie jest spójna z powyższymi przykładami, zgłoś zapytanie z zespołem zestawu skalowania maszyn wirtualnych w celu rozwiązywania problemów.
 

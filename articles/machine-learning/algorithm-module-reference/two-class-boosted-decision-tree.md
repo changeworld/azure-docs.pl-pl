@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 985417200737e00ddbda4194cf7596b11c74ac10
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 1d144a48f79e59b35c88c5b338747d3186ebceda
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153727"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920743"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Moduł drzewa decyzyjnej z dwoma klasami
 
@@ -38,6 +38,7 @@ Możesz przeszkolić model tego typu przy użyciu [modelu uczenia](././train-mod
   
     + **Pojedynczy parametr**: Jeśli wiesz, jak chcesz skonfigurować model, możesz podać określony zestaw wartości jako argumenty.
   
+    + **Zakres parametrów**: Jeśli nie masz pewności co do najlepszych parametrów, możesz znaleźć optymalne parametry przy użyciu modułu [dostrajania parametrów modelu](tune-model-hyperparameters.md) . Podajesz kilka wartości, a Trainer wykonuje iterację wielu kombinacji ustawień, aby określić kombinację wartości, które tworzą najlepszy wynik.
   
 3.  **Maksymalna liczba liści na drzewo**wskazuje maksymalną liczbę węzłów terminalu (liści), które można utworzyć w dowolnym drzewie.
   

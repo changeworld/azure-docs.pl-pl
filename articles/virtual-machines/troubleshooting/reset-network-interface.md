@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: a809cabd2ace1b18af6c93dc54348137e9ba5750
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a8bd12d98b76d5848753987c4f7bcb76d4e2266d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749906"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921576"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Jak zresetować interfejs sieciowy dla maszyny wirtualnej platformy Azure z systemem Windows 
 
@@ -72,6 +72,8 @@ W tym artykule opisano sposób resetowania interfejsu sieciowego dla maszyny wir
 
 ### <a name="for-classic-vms"></a>Dla klasycznych maszyn wirtualnych
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 Aby zresetować interfejs sieciowy, wykonaj następujące kroki:
 
 #### <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal
@@ -114,7 +116,7 @@ Aby zresetować interfejs sieciowy, wykonaj następujące kroki:
 ## <a name="delete-the-unavailable-nics"></a>Usuń niedostępne karty sieciowe
 Po dodaniu pulpitu zdalnego do komputera należy usunąć stare karty sieciowe, aby uniknąć potencjalnego problemu:
 
-1.  Otwórz Menedżera urządzeń.
+1.  Otwórz Menedżer urządzeń.
 2.  Wybierz pozycję **wyświetl** > **Pokaż ukryte urządzenia**.
 3.  Wybierz pozycję **karty sieciowe**. 
 4.  Sprawdź karty o nazwie "Microsoft Hyper-V karcie sieciowej".

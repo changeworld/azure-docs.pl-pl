@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: bb6ad1f131d1299ce1e076fee70e6640e3bdf20a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485084"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913263"
 ---
 # <a name="application-gateway-configuration-overview"></a>Przegląd konfiguracji Application Gateway
 
@@ -153,7 +153,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 Obsługa protokołu WebSocket jest domyślnie włączona. Nie istnieje ustawienie konfigurowalne przez użytkownika, które można włączyć lub wyłączyć. Można używać obiektów WebSockets z odbiornikami HTTP i HTTPS.
 
-### <a name="custom-error-pages"></a>Niestandardowe strony błędów
+### <a name="custom-error-pages"></a>Strony błędów niestandardowych
 
 Błąd niestandardowy można zdefiniować na poziomie globalnym lub na poziomie odbiornika. Jednak tworzenie niestandardowych stron błędów niestandardowych na poziomie globalnym na podstawie Azure Portal nie jest obecnie obsługiwane. Można skonfigurować niestandardową stronę błędów dla błędu zapory aplikacji sieci Web 403 lub strony obsługi 502 na poziomie odbiornika. Należy również określić publicznie dostępny adres URL obiektu BLOB dla danego kodu stanu błędu. Aby uzyskać więcej informacji, zobacz [Create Application Gateway custom error pages (Tworzenie niestandardowych stron błędów w usłudze Application Gateway)](https://docs.microsoft.com/azure/application-gateway/custom-error).
 
@@ -256,14 +256,14 @@ Usługa Azure Application Gateway używa plików cookie zarządzanych przez bram
 
 Ta funkcja jest przydatna, gdy chcesz zachować sesję użytkownika na tym samym serwerze, a stan sesji jest zapisywany lokalnie na serwerze na potrzeby sesji użytkownika. Jeśli aplikacja nie może obsłużyć koligacji opartej na plikach cookie, nie można użyć tej funkcji. Aby go użyć, należy się upewnić, że klienci obsługują pliki cookie.
 
-Począwszy od **17 lutego 2020**, [Aktualizacja V80](https://chromiumdash.appspot.com/schedule) [chromu](https://www.chromium.org/Home) pozwala na to, gdzie pliki cookie HTTP bez atrybutu SameSite mają być traktowane jako SameSite = swobodny. W przypadku żądań CORS (współużytkowanie zasobów między źródłami), jeśli plik cookie musi zostać wysłany w kontekście innej firmy, musi użyć "SameSite = none; Secure "atrybuty i powinny być wysyłane tylko za pośrednictwem protokołu HTTPS. W przeciwnym razie w scenariuszu tylko HTTP przeglądarka nie wyśle plików cookie w kontekście innej firmy. Celem tej aktualizacji z programu Chrome jest podwyższenie poziomu zabezpieczeń oraz uniknięcie ataków na wiele witryn (CSRF). 
+[Aktualizacja V80](https://chromiumdash.appspot.com/schedule) w [przeglądarce chrom](https://www.chromium.org/Home) została przypisana, gdzie pliki cookie HTTP bez atrybutu [SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7) musi być traktowany jako SameSite = swobodny. W przypadku żądań CORS (współużytkowanie zasobów między źródłami), jeśli plik cookie musi zostać wysłany w kontekście innej firmy, musi używać *SameSite = none; Bezpieczne* atrybuty i powinny być wysyłane tylko za pośrednictwem protokołu HTTPS. W przeciwnym razie w scenariuszu tylko HTTP przeglądarka nie wysyła plików cookie w kontekście innej firmy. Celem tej aktualizacji z programu Chrome jest podwyższenie poziomu zabezpieczeń oraz uniknięcie ataków na wiele witryn (CSRF). 
 
-Aby obsłużyć tę zmianę, Application Gateway (wszystkie typy jednostek SKU) będą wprowadzać inny identyczny plik cookie o nazwie **ApplicationGatewayAffinityCORS** , a także istniejący plik cookie **ApplicationGatewayAffinity** , który jest podobny, ale ten plik cookie będzie miał teraz dwa dodatkowe atrybuty **"SameSite = none; "** Dodano do niej", aby można było utrzymywać sesję programu Sticky Notes nawet w przypadku żądań między źródłami danych.
+Aby obsłużyć tę zmianę, od 17 lutego 2020 Application Gateway (wszystkie typy jednostek SKU) będą wstrzyknąć inny plik cookie o nazwie *ApplicationGatewayAffinityCORS* , a także istniejący plik cookie *ApplicationGatewayAffinity* . Plik cookie *ApplicationGatewayAffinityCORS* ma dwa więcej atrybutów ( *"SameSite = none; Secure "* ), aby sesja programu Sticky Notes była utrzymywana nawet w przypadku żądań między źródłami.
 
-Należy pamiętać, że domyślna nazwa pliku cookie koligacji to **ApplicationGatewayAffinity** , co może zostać zmienione przez użytkowników. Jeśli używasz niestandardowej nazwy pliku cookie koligacji, dodatkowy plik cookie zostanie dodany za pomocą mechanizmu CORS jako sufiks, na przykład **CustomCookieNameCORS**.
+Należy pamiętać, że domyślna nazwa pliku cookie koligacji to *ApplicationGatewayAffinity* i można ją zmienić. Jeśli używasz niestandardowej nazwy pliku cookie koligacji, dodatkowy plik cookie jest dodawany przy użyciu mechanizmu CORS jako sufiks. Na przykład *CustomCookieNameCORS*.
 
 > [!NOTE]
-> Jeśli atrybut **SameSite = none** ma ustawioną wartość, plik cookie powinien również zawierać flagę **Secure** i powinien być wysyłany przy użyciu **protokołu HTTPS**. Dlatego jeśli koligacja sesji jest wymagana za pośrednictwem mechanizmu CORS, należy przeprowadzić migrację obciążenia do protokołu HTTPS. Zapoznaj się z dokumentacją dotyczącą odciążania protokołu SSL i kompleksowej dokumentacji protokołu SSL dla Application Gateway tym miejscu — [Omówienie](ssl-overview.md), [jak skonfigurować odciążanie protokołu SSL](create-ssl-portal.md), [jak skonfigurować kompleksowy protokół SSL](end-to-end-ssl-portal.md).
+> Jeśli atrybut *SameSite = none* jest ustawiony, wymagane jest, aby plik cookie zawierał także flagę *Secure* , i musi być wysyłany za pośrednictwem protokołu HTTPS.  Jeśli koligacja sesji jest wymagana za pośrednictwem mechanizmu CORS, należy przeprowadzić migrację obciążenia do protokołu HTTPS. Zapoznaj się z dokumentacją dotyczącą odciążania protokołu SSL i kompleksowej dokumentacji protokołu SSL dla Application Gateway tym miejscu — [Omówienie](ssl-overview.md), [jak skonfigurować odciążanie protokołu SSL](create-ssl-portal.md), [jak skonfigurować kompleksowy protokół SSL](end-to-end-ssl-portal.md).
 
 ### <a name="connection-draining"></a>Opróżnianie połączeń
 

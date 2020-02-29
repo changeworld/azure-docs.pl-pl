@@ -1,14 +1,14 @@
 ---
 title: Zrozumienie blokowania zasobów
 description: Dowiedz się więcej na temat opcji blokowania w planach platformy Azure w celu ochrony zasobów podczas przypisywania planu.
-ms.date: 04/24/2019
+ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1491af0ddfb0f6f5fbea322bd00dc9838c155983
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057349"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919876"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Zrozumienie blokowania zasobów w planach platformy Azure
 
@@ -33,6 +33,56 @@ Zasoby utworzone przez artefakty w przypisaniu planu mają cztery stany: **nie z
 Jest to zwykle możliwe dla kogoś z odpowiednią [rolą kontroli dostępu opartej na rolach](../../../role-based-access-control/overview.md) (RBAC) w ramach subskrypcji, takiej jak rola "właściciel", aby umożliwić zmianę lub usunięcie dowolnego zasobu. Ten dostęp nie jest dozwolony w przypadku, gdy plany stosują blokowanie w ramach wdrożonego przypisania. Jeśli przypisanie zostało ustawione przy użyciu opcji **tylko do odczytu** lub **nie usuwaj** , a właściciel subskrypcji może wykonać zablokowaną akcję dla chronionego zasobu.
 
 Ten środek zabezpieczeń chroni spójność zdefiniowanego planu i środowiska, które zostało zaprojektowane do tworzenia z przypadkowego lub programowego usunięcia lub zmiany.
+
+### <a name="assign-at-management-group"></a>Przypisz w grupie zarządzania
+
+Dodatkowa opcja uniemożliwiająca właścicielom subskrypcji usuwanie przypisania strategii polega na przypisaniu planu do grupy zarządzania. W tym scenariuszu tylko **właściciele** grupy zarządzania mają uprawnienia, które są konieczne do usunięcia przypisania planu.
+
+Aby przypisać plan do grupy zarządzania zamiast subskrypcji, wywołanie interfejsu API REST zmieni się, aby wyglądać następująco:
+
+```http
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
+```
+
+Grupa zarządzania zdefiniowana przez `{assignmentMG}` musi znajdować się w hierarchii grupy zarządzania lub być tą samą grupą zarządzania, w której jest zapisywana definicja planu.
+
+Treść żądania przypisania strategii wygląda następująco:
+
+```json
+{
+    "identity": {
+        "type": "SystemAssigned"
+    },
+    "location": "eastus",
+    "properties": {
+        "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
+        "blueprintId": "/providers/Microsoft.Management/managementGroups/{blueprintMG}/providers/Microsoft.Blueprint/blueprints/simpleBlueprint",
+        "scope": "/subscriptions/{targetSubscriptionId}",
+        "parameters": {
+            "storageAccountType": {
+                "value": "Standard_LRS"
+            },
+            "costCenter": {
+                "value": "Contoso/Online/Shopping/Production"
+            },
+            "owners": {
+                "value": [
+                    "johnDoe@contoso.com",
+                    "johnsteam@contoso.com"
+                ]
+            }
+        },
+        "resourceGroups": {
+            "storageRG": {
+                "name": "defaultRG",
+                "location": "eastus"
+            }
+        }
+    }
+}
+```
+
+Kluczową różnicą w tej treści żądania i jedną przypisaną do subskrypcji jest właściwość `properties.scope`. Ta wymagana właściwość musi być ustawiona na subskrypcję, do której ma zastosowanie przypisanie planu. Subskrypcja musi być bezpośrednim elementem podrzędnym hierarchii grupy zarządzania, w której jest przechowywane przypisanie planu.
 
 ## <a name="removing-locking-states"></a>Usuwanie Stanów blokowania
 
@@ -61,7 +111,7 @@ Akcja Odmów [przypisania](../../../role-based-access-control/deny-assignments.m
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>Wyklucz podmiot zabezpieczeń z przypisania Odmów
 
-W niektórych scenariuszach projektowych lub zabezpieczających może być konieczne wykluczenie podmiotu zabezpieczeń z [przydziału Odmów](../../../role-based-access-control/deny-assignments.md) , które tworzy. Jest to realizowane w interfejsie API REST przez dodanie maksymalnie pięciu wartości do tablicy **excludedPrincipals** we właściwości **Locks** podczas [tworzenia przypisania](/rest/api/blueprints/assignments/createorupdate). Jest to przykład treści żądania, która zawiera **excludedPrincipals**:
+W niektórych scenariuszach projektowych lub zabezpieczających może być konieczne wykluczenie podmiotu zabezpieczeń z [przydziału Odmów](../../../role-based-access-control/deny-assignments.md) , które tworzy. Ten krok jest realizowany w interfejsie API REST przez dodanie maksymalnie pięciu wartości do tablicy **excludedPrincipals** we właściwości **Locks** podczas [tworzenia przypisania](/rest/api/blueprints/assignments/createorupdate). Następująca definicja przypisania jest przykładem treści żądania, która zawiera **excludedPrincipals**:
 
 ```json
 {
