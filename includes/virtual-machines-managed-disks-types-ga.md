@@ -5,21 +5,21 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/14/2019
+ms.date: 02/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a355307eef9f5ce1f833cfd7924f5efa234a0cd7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e145cf481dd165144b188e6205e4b78cc61359fd
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73523455"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202559"
 ---
-## <a name="premium-ssd"></a>Premium, SSD
+## <a name="premium-ssd"></a>SSD w warstwie Premium
 
 Usługa Azure Premium dysków SSD zapewnia obsługę dysków o wysokiej wydajności i małych opóźnieniach dla maszyn wirtualnych z intensywnymi obciążeniami we/wy (IO). Aby skorzystać z szybkości i wydajności dysków magazynu w warstwie Premium, można migrować istniejące dyski maszyn wirtualnych do dysków SSD Premium. Dysków SSD Premium są odpowiednie dla aplikacji produkcyjnych o kluczowym znaczeniu. Dysków SSD Premium można używać tylko z seriami maszyn wirtualnych, które są zgodne z magazynem w warstwie Premium.
 
-Aby dowiedzieć się więcej o poszczególnych typach maszyn wirtualnych i rozmiarach na platformie Azure dla systemu Windows, w tym o rozmiarach, które są zgodne z magazynem Premium, zobacz [rozmiary maszyn wirtualnych z systemem Windows](../articles/virtual-machines/windows/sizes.md). Aby dowiedzieć się więcej o poszczególnych typach maszyn wirtualnych i rozmiarach na platformie Azure dla systemu Linux, w tym o rozmiarach, które są zgodne z magazynem Premium, zobacz [rozmiary maszyn wirtualnych z systemem Linux](../articles/virtual-machines/linux/sizes.md).
+Aby dowiedzieć się więcej o poszczególnych typach maszyn wirtualnych i rozmiarach na platformie Azure dla systemu Windows, w tym o rozmiarach, które są zgodne z magazynem Premium, zobacz [rozmiary maszyn wirtualnych z systemem Windows](../articles/virtual-machines/windows/sizes.md). Aby dowiedzieć się więcej o poszczególnych typach maszyn wirtualnych i rozmiarach na platformie Azure dla systemu Linux, w tym o rozmiarach, które są zgodne z magazynem Premium, zobacz [rozmiary maszyn wirtualnych z systemem Linux](../articles/virtual-machines/linux/sizes.md). Z dowolnego z tych artykułów należy sprawdzić każdy artykuł o rozmiarze poszczególnych maszyn wirtualnych, aby określić, czy jest on zgodny z magazynem w warstwie Premium.
 
 ### <a name="disk-size"></a>Rozmiar dysku
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
@@ -36,7 +36,7 @@ Obsługa serii dysków zostanie włączona w nowych wdrożeniach odpowiednich ro
 
 W przypadku usługi Premium dysków SSD każda operacja we/wy mniejsza lub równa 256 KiB przepływności jest uznawana za pojedynczą operację we/wy. Operacje we/wy o rozmiarze większym niż 256 KiB przepływności są uważane za wiele systemów I/OS o rozmiarach 256 KiB.
 
-## <a name="standard-ssd"></a>Standardowa, SSD
+## <a name="standard-ssd"></a>SSD w warstwie Standardowa
 
 Azure Standard dysków SSD to ekonomiczna opcja magazynowania zoptymalizowana pod kątem obciążeń, które wymagają spójnej wydajności na niższych poziomach IOPS. SSD w warstwie Standardowa oferuje dobry komfort na poziomie wpisu dla osób, które chcą przejść do chmury, szczególnie w przypadku wystąpienia problemów z wariancją obciążeń uruchomionych na rozwiązaniach dysków twardych. W porównaniu do standardowej HDD, standardowa dysków SSD zapewnia lepszą dostępność, spójność, niezawodność i opóźnienia. Standardowe dysków SSD są odpowiednie dla serwerów sieci Web, serwerów aplikacji o małej liczbie IOPS, nieużywanych aplikacji dla przedsiębiorstw oraz obciążeń deweloperskich i testowych. Podobnie jak w przypadku standardowych HDD, standardowe dysków SSD są dostępne na wszystkich maszynach wirtualnych platformy Azure.
 
@@ -49,7 +49,7 @@ Standard dysków SSD został zaprojektowany w celu zapewnienia jednocyfrowych op
 
 W przypadku standardowej dysków SSD każda operacja we/wy mniejsza lub równa 256 KiB przepływności jest uznawana za pojedynczą operację we/wy. Operacje we/wy o rozmiarze większym niż 256 KiB przepływności są uważane za wiele systemów I/OS o rozmiarach 256 KiB. Te transakcje mają wpływ na rozliczenia.
 
-## <a name="standard-hdd"></a>Standardowa, dysk twardy
+## <a name="standard-hdd"></a>HDD w warstwie Standardowa
 
 Usługa Azure Standard HDD zapewnia niezawodną, tańszą obsługę dysków dla maszyn wirtualnych, na których działają obciążenia bez uwzględniania opóźnień. W przypadku magazynu w warstwie Standardowa dane są przechowywane na dyskach twardych (HDD). Opóźnienia, operacje we/wy i przepływność dysków HDD w warstwie Standardowa mogą być różne w porównaniu z dyskami SSD. HDD w warstwie Standardowa dyski zostały zaprojektowane w celu zapewnienia opóźnień zapisu w obszarze 10 ms i odczyt opóźnień w obszarze 20ms dla większości operacji we/wy, jednak Rzeczywista wydajność może się różnić w zależności od rozmiaru operacji we/wy i wzorca obciążenia. Podczas pracy z maszynami wirtualnymi można używać standardowych dysków DYSKowych na potrzeby scenariuszy tworzenia i testowania oraz mniej krytycznych obciążeń. Standardowe HDD są dostępne we wszystkich regionach świadczenia usługi Azure i mogą być używane ze wszystkimi maszynami wirtualnymi platformy Azure.
 

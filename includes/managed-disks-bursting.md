@@ -5,17 +5,17 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/24/2019
+ms.date: 02/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7564d40aa9344288c0368818b0b6501dc22a5a27
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a04df7ed283a17ddad6af87cf8215ff8d39a5079
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705528"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202460"
 ---
-Szeregowanie dysków jest obecnie funkcją w wersji zapoznawczej dla dysków SSD Premium. Rozbicie jest obsługiwane na dowolnym rozmiarze dysków SSD w warstwie Premium < = 512 GiB (P20 lub poniżej). Te rozmiary dysków umożliwiają szybkie Rozliczanie i używanie systemu kredytowego do zarządzania rozliczeniami. Kredyty są gromadzone w zasobniku obejmującym cały czas, gdy ruch dysku jest niższy od obsługiwanego miejsca docelowego wydajności dla rozmiaru dysku, i zużywa kredyty, gdy ruch przekracza miejsce docelowe. Ruch dyskowy jest śledzony w odniesieniu do operacji we/wy i przepustowości w miejscu docelowym aprowizacji.
+Szeregowanie dysków jest obecnie funkcją w wersji zapoznawczej dla dysków SSD Premium. Rozbicie jest obsługiwane na dowolnym rozmiarze dysków SSD w warstwie Premium < = 512 GiB (P20 lub poniżej). Te rozmiary dysków umożliwiają szybkie Rozliczanie i używanie systemu kredytowego do zarządzania rozliczeniami. Kredyty są gromadzone w zasobniku obejmującym cały czas, gdy ruch dysku jest niższy od obsługiwanego miejsca docelowego wydajności dla rozmiaru dysku, i zużywa kredyty, gdy ruch przekracza miejsce docelowe. Ruch dyskowy jest śledzony w odniesieniu do operacji we/wy i przepustowości w miejscu docelowym aprowizacji. Na rozerwanie dysków nie będą pomijane ograniczenia rozmiaru maszyny wirtualnej w przypadku operacji we/wy lub przepływności.
 
 Funkcja przenoszenia dysków jest domyślnie włączona w nowych wdrożeniach obsługiwanych rozmiarów dysków. Istniejące rozmiary dysków, jeśli obsługują rozbicie dysku, mogą umożliwić Przechodzenie przez jedną z następujących metod:
 
