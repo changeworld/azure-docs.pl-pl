@@ -1,9 +1,12 @@
 - name: Dokumentacja usługi Custom Vision Service
   href: index.yml
 - name: Omówienie
+  expanded: true
   items:
     - name: Co to jest usługa Custom Vision?
       href: home.md
+    - name: Co nowego
+      href: whats-new.md
 - name: Przewodniki Szybki start
   items:
     - name: Korzystanie z portalu internetowego

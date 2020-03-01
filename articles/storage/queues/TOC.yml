@@ -116,7 +116,7 @@
                 - name: PowerShell
                   href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: Interfejs wiersza polecenia platformy Azure
-                  href: ../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                  href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Zarządzanie uprawnieniami dostępu przy użyciu kontroli dostępu opartej na rolach
               items:
                 - name: Portal

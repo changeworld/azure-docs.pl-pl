@@ -5,6 +5,8 @@
   items:
     - name: Czym jest przetwarzanie obrazów?
       href: Home.md
+    - name: Co nowego
+      href: whats-new.md
 - name: Przewodniki Szybki start
   items:
     - name: Korzystanie z zestawu SDK klienta
