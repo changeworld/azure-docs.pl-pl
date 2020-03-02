@@ -10,12 +10,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 4f4849139f0e5c5a8672b9364f7acc03cff6c948
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 429494b829d1307b4f89dbf746d24135a4322a97
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605567"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164461"
 ---
 <div class="content">
    <h1>Rozwiązanie Docker na platformie Azure</h1>   
@@ -31,9 +31,8 @@ Docker to popularna platforma do zarządzania kontenerami i tworzenia ich obraz�
 <h2>Samouczki krok po kroku</h2>
 <p>Dowiedz się, jak używać platformy Docker w aplikacji i w ramach potoku ciągła integracja/ciągłe dostarczanie:</p>
 <ol>
-  <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">Tworzenie kodu w języku Python i PostgreSQL za pomocą platformy Docker</a></li>
-  <li><a href="/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine">Ciągła integracja/ciągłe wdrażanie za pomocą struktury Docker Swarm i usługi Azure DevOps Services</a></li>
-  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">Integrowanie rozwiązań Docker, Jenkins i maszyn wirtualnych z systemem Linux</a></li>
+  <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">Uruchamianie aplikacji internetowej Python (Django) z bazą danych PostgreSQL w usłudze Azure App Service</a></li>
+  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">Budowanie infrastruktury tworzenia aplikacji na maszynie wirtualnej z systemem Linux na platformie Azure przy użyciu usługi Jenkins, GitHub i Docker</a></li>
 </ol>
 <h2>Zasoby</h2>
 <p>Aby uzyskać dodatkowe materiały referencyjne i narzędzia do pracy z platformą Docker na platformie Azure, zobacz poniższe linki.</p>

@@ -11,53 +11,17 @@
     - name: Przy użyciu portalu usługi QnA Maker
       items:
         - name: 1. Tworzenie bazy wiedzy
-          href: quickstarts/create-publish-knowledge-base.md
+          href: Quickstarts/create-publish-knowledge-base.md
         - name: 2. Dodawanie pytań za pomocą metadanych
-          href: quickstarts/add-question-metadata-portal.md
+          href: Quickstarts/add-question-metadata-portal.md
         - name: 3. Uzyskiwanie odpowiedzi przy użyciu narzędzia Postman lub cURL
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: Testowanie przy użyciu pliku wsadowego
       href: Quickstarts/batch-testing.md
-    - name: Korzystanie z interfejsów API REST
-      items:
-        - name: Tworzenie nowej bazy wiedzy
-          items:
-            - name: 'C#'
-              href: Quickstarts/create-new-kb-csharp.md
-            - name: Przejdź
-              href: Quickstarts/create-new-kb-go.md
-            - name: Java
-              href: Quickstarts/create-new-kb-java.md
-            - name: Node.js
-              href: Quickstarts/publish-kb-nodejs.md
-            - name: Python
-              href: Quickstarts/create-new-kb-python.md
-        - name: Publikowanie bazy wiedzy
-          items:
-            - name: 'C#'
-              href: Quickstarts/publish-kb-csharp.md
-            - name: Przejdź
-              href: Quickstarts/publish-kb-go.md
-            - name: Java
-              href: Quickstarts/publish-kb-java.md
-            - name: Node.js
-              href: 'Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base'
-            - name: Python
-              href: Quickstarts/publish-kb-python.md
-        - name: Uzyskiwanie odpowiedzi
-          items:
-            - name: 'C#'
-              href: Quickstarts/get-answer-from-knowledge-base-csharp.md
-            - name: Przejdź
-              href: Quickstarts/get-answer-from-knowledge-base-go.md
-            - name: Java
-              href: Quickstarts/get-answer-from-knowledge-base-java.md
-            - name: Node.js
-              href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
-            - name: Python
-              href: Quickstarts/get-answer-from-knowledge-base-python.md
+    - name: Korzystanie z interfejsu REST
+      href: Quickstarts/quickstart-rest-curl.md
     - name: Używanie zestawu SDK
-      href: ./Quickstarts/quickstart-sdk.md
+      href: Quickstarts/quickstart-sdk.md
 - name: Samouczki
   items:
     - name: Tworzenie bazy wiedzy i uzyskiwanie z niej odpowiedzi

@@ -370,7 +370,7 @@
       items:
         - name: "Wycofywanie rozpocznie się 1 marca 2023\_r."
           href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Omówienie
+        - name: Omówienie migracji
           href: migration-classic-resource-manager-overview.md
         - name: Szczegółowe informacje dotyczące migracji
           href: migration-classic-resource-manager-deep-dive.md

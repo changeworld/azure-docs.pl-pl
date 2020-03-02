@@ -47,6 +47,8 @@
       items:
         - name: Aktualizacja funkcji
           href: azure-ad-roles-features.md
+        - name: Program PowerShell dla ról usługi Azure AD
+          href: powershell-for-azure-ad-roles.md
         - name: Przypisywanie ról
           href: pim-how-to-add-role-to-user.md
         - name: Zatwierdzanie żądań

@@ -375,6 +375,8 @@
           href: kube-advisor-tool.md
         - name: Dostęp do węzła SSH
           href: ssh.md
+        - name: Narzędzia do oceny wydajności w systemie Linux
+          href: troubleshoot-linux.md
 - name: Dokumentacja
   items:
     - name: Interfejs wiersza polecenia platformy Azure

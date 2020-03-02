@@ -242,13 +242,15 @@
           href: brokered-auth.md
         - name: Migracja
           items:
+            - name: Omówienie
+              href: msal-migration.md
             - name: Migrowanie do platformy MSAL.NET
               href: msal-net-migration.md
             - name: Migrowanie do biblioteki MSAL.js
               href: msal-compare-msal-js-and-adal-js.md
             - name: Migrowanie do biblioteki MSAL.Android
               href: migrate-android-adal-msal.md
-            - name: Migrowanie do biblioteki MSAL.iOS/systemu MacOS
+            - name: Migrowanie do biblioteki MSAL.iOS/systemu macOS
               href: migrate-objc-adal-msal.md
             - name: Migrowanie do biblioteki MSAL dla języka Python
               href: migrate-python-adal-msal.md
@@ -403,6 +405,8 @@
           href: v2-admin-consent.md
         - name: Środowiska wyrażania zgody w aplikacji
           href: application-consent-experience.md
+    - name: Dostęp warunkowy
+      href: v2-conditional-access-dev-guide.md
     - name: Chmury krajowe
       items:
         - name: Omówienie

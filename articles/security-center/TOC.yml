@@ -6,8 +6,16 @@
       href: security-center-intro.md
     - name: Obsługiwane platformy
       href: security-center-os-coverage.md
-    - name: Obsługiwane funkcje
-      href: security-center-services.md
+    - name: Funkcje usługi Security Center
+      items:
+        - name: Pokrycie funkcji w przypadku maszyn wirtualnych
+          href: security-center-services.md
+        - name: Pokrycie funkcji w przypadku zasobów usługi Azure PaaS
+          href: features-paas.md
+    - name: Zalecenia dotyczące zabezpieczeń
+      href: recommendations-reference.md
+    - name: Alerty zabezpieczeń i łańcuch eliminacji intencji
+      href: alerts-reference.md
 - name: Przewodniki Szybki start
   expanded: true
   items:

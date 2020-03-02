@@ -1,112 +1,156 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentacja usługi App Service w systemie Linux
+### YamlMime:Landing
+title: Dokumentacja usługi App Service dla systemu Linux
+summary: Usługa Azure App Service umożliwia tworzenie i hostowanie aplikacji internetowych, zapleczy aplikacji mobilnych oraz interfejsów API RESTful w wybranym języku programowania bez zarządzania infrastrukturą. Oferuje automatyczne skalowanie i wysoką dostępność, obsługuje systemy Windows i Linux, a także umożliwia używanie wdrożeń zautomatyzowanych z usług GitHub i Azure DevOps oraz dowolnych repozytoriów Git. Dowiedz się, jak używać usługi Azure App Service, korzystając z przewodników Szybki start, samouczków i przykładów.
 metadata:
-  title: 'Kontenery systemu Linux — samouczki, dokumentacja'
-  meta.description: Learn how to build Linux websites and web applications in App Service. Run your code in a default Docker container or run a custom container.
+  title: Dokumentacja usługi App Service dla systemu Linux
+  description: Dowiedz się, jak tworzyć witryny i aplikacje internetowe w systemie Linux w usłudze App Service. Uruchom kod w domyślnym kontenerze platformy Docker lub uruchom kontener niestandardowy.
   ms.topic: landing-page
-  ms.date: 09/05/2017
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_net.svg'
-            text: .NET Core
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-dotnetcore'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_nodejs.svg'
-            text: Node.js
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-nodejs'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_php.svg'
-            text: PHP
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-php'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg'
-            text: Java
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-java'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_python.svg'
-            text: Python
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-python'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_ruby.svg'
-            text: Ruby
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_docker.svg'
-            text: Docker
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image'
-      - type: paragraph
-        text: 'Dowiedz się, jak przeprowadzać ciągłe wdrażanie:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ../media/index/zip.svg
-            text: ZIP/WAR
-            href: ../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-          - image:
-              src: ../media/index/ftp.svg
-            text: FTP
-            href: ../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-          - image:
-              src: ../media/index/git-icon.svg
-            text: Lokalna usługa Git
-            href: ../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg'
-            text: Azure DevOps
-            href: 'https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json'
-          - image:
-              src: ../media/index/github-octicons.svg
-            text: GitHub
-            href: ../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-          - image:
-              src: ../media/index/bitbucket.svg
-            text: Bitbucket
-            href: ../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-          - image:
-              src: ../media/index/dropbox.svg
-            text: Synchronizacja z usługą Dropbox
-            href: ../deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-          - image:
-              src: ../media/index/onedrive.svg
-            text: Synchronizacja z usługą OneDrive
-            href: ../deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak wdrożyć i monitorować bezpieczną aplikację internetową za pomocą usługi App Service w systemie Linux oraz jak zarządzać tą aplikacją'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Tworzenie aplikacji za pomocą <a href="/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">programu .NET Core z usługą Azure SQL DB</a>, <a href="/azure/app-service/containers/tutorial-java-enterprise-postgresql-app">języka Java Enterprise z usługą PostgreSQL</a> lub <a href="/azure/app-service/containers/tutorial-nodejs-mongodb-app">platformy Node.js z usługą MongoDB</a>'
-          - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Mapowanie istniejącej domeny niestandardowej na aplikację</a>
-          - html: <a href="/azure/app-service/configure-ssl-bindings">Zabezpieczanie niestandardowej nazwy DNS przy użyciu powiązania SSL w usłudze Azure App Service</a>
-          - html: <a href="/azure/cdn/cdn-add-to-web-app">Dodawanie usługi CDN do aplikacji</a>
-  - title: Samples
-    items:
-      - type: paragraph
-        text: Znajdowanie skryptów umożliwiających zarządzanie typowymi zadaniami.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a>
-          - html: <a href="/cli/azure/appservice">Interfejs wiersza polecenia platformy Azure</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Wiersz polecenia
-            html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Interfejs wiersza polecenia platformy Azure</a></p>
-          - title: Języki
-            html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/appservice">Dokumentacja interfejsu API REST</a></p>
+  ms.service: app-service
+  ms.date: 02/26/2020
+  ms.openlocfilehash: dfaea2e99aa67d13fc737294219e557fb624a5ec
+  ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 02/29/2020
+  ms.locfileid: "78191252"
+landingContent:
+- title: Informacje o usłudze App Service w systemie Linux
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa App Service dla systemu Linux?
+      url: app-service-linux-intro.md
+    - text: Usługa App Service w systemie Windows
+      url: /azure/app-service/
+    - text: Środowiska usługi App Service
+      url: ../environment/intro.md
+    - text: Porównanie opcji hostingu
+      url: /azure/architecture/guide/technology-choices/compute-decision-tree
+  - linkListType: whats-new
+    links:
+    - text: Aktualizacje usług
+      url: https://azure.microsoft.com/updates/?product=app-service
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Pierwsza aplikacja ASP.NET Core w systemie Linux
+      url: quickstart-dotnetcore.md
+    - text: Pierwsza aplikacja Node.js w systemie Linux
+      url: quickstart-nodejs.md
+    - text: Pierwsza aplikacja PHP w systemie Linux
+      url: quickstart-php.md
+    - text: Pierwsza aplikacja Java w systemie Linux
+      url: quickstart-java.md
+    - text: Pierwsza aplikacja Python (Flask) w systemie Linux
+      url: quickstart-python.md
+    - text: Pierwsza aplikacja Ruby w systemie Linux
+      url: quickstart-ruby.md
+- title: Typowe zadania
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Mapowanie domeny niestandardowej na aplikację
+      url: ../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: Zabezpieczanie domeny niestandardowej przy użyciu powiązania SSL
+      url: ../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: Uruchamianie aplikacji w środowiskach przejściowych
+      url: ../deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Włączanie dzienników diagnostycznych
+      url: ../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: Łączenie z kontenerem za pośrednictwem protokołu SSH
+      url: app-service-linux-ssh-support.md
+    - text: Migrowanie aktywnej domeny do usługi App Service
+      url: ../manage-custom-dns-migrate-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+- title: Przekazywanie kodu lub zawartości
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Przekazywanie zawartości przy użyciu protokołu FTP
+      url: ../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: Przekazywanie zawartości jako pakietów zip
+      url: ../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: Wypychanie Git z komputera lokalnego
+      url: ../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: Synchronizowanie zawartości z usługą OneDrive lub Dropbox
+      url: ../deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: Ciągła integracja/ciągłe wdrażanie przy użyciu usługi GitHub, BitBucket itp.
+      url: ../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+- title: Aplikacja CRUD z bazą danych
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Aplikacja ASP.NET Core z usługą SQL Database
+      url: tutorial-dotnetcore-sqldb-app.md
+    - text: Aplikacja PHP (Laravel) z usługą Azure MySQL
+      url: tutorial-php-mysql-app.md
+    - text: Aplikacja Node.js (MEAN.js) z usługą MongoDB
+      url: tutorial-nodejs-mongodb-app.md
+    - text: Aplikacja Java (Spring Boot) z usługą Cosmos DB
+      url: tutorial-java-spring-cosmosdb.md
+    - text: Aplikacja Python (Django) z usługą PostgreSQL
+      url: tutorial-python-postgresql-app.md
+    - text: Aplikacja Ruby (Rails) z usługą PostgreSQL
+      url: tutorial-ruby-postgres-app.md
+- title: Uruchamianie kontenerów niestandardowych
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Uruchamianie niestandardowego kontenera systemu Linux
+      url: quickstart-docker.md
+    - text: Uruchamianie aplikacji z wieloma kontenerami (Docker Compose)
+      url: quickstart-multi-container.md
+  - linkListType: tutorial
+    links:
+    - text: Uruchamianie kontenera z usługi Azure Container Registry
+      url: tutorial-custom-docker-image.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ciągła integracja/ciągłe wdrażanie w kontenerze niestandardowym
+      url: app-service-linux-ci-cd.md
+    - text: Łączenie kontenera z plikami magazynu
+      url: how-to-serve-content-from-azure-storage.md
+- title: Zarządzanie i integrowanie
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Zarządzanie planami usługi App Service
+      url: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - linkListType: tutorial
+    links:
+    - text: Dodawanie usługi CDN do aplikacji
+      url: ../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: Uwierzytelnianie użytkowników
+      url: tutorial-auth-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Równoważenie obciążenia za pomocą usługi Traffic Manager
+      url: ../web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: Tworzenie kopii zapasowej aplikacji w obiektach blob magazynu
+      url: ../manage-backup.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+- title: Więcej zasobów
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Biblioteka wideo dotyczących usługi App Service
+      url: https://azure.microsoft.com/resources/videos/index/?services=app-service
+    - text: Szkolenia wideo firmy Pluralsight
+      url: https://www.pluralsight.com/search?q=azure%20app%20service
+  - linkListType: sample
+    links:
+    - text: Przykłady interfejsu wiersza polecenia platformy Azure
+      url: ../samples-cli.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: Przykłady programu Azure PowerShell
+      url: ../samples-powershell.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - linkListType: reference
+    links:
+    - text: Interfejs wiersza polecenia platformy Azure
+      url: /cli/azure/appservice
+    - text: Azure PowerShell
+      url: /powershell/module/az.websites/#app_service
+    - text: Interfejs API REST
+      url: /rest/api/appservice/
+    - text: Resource Manager
+      url: /azure/templates/microsoft.web/allversions

@@ -504,6 +504,8 @@
           href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
     - name: Samouczki
       items:
+        - name: Tworzenie klastra platformy Apache Kafka — interfejs wiersza polecenia platformy Azure
+          href: ./kafka/tutorial-cli-rest-proxy.md
         - name: Używanie interfejsu API producentów i konsumentów platformy Apache Kafka
           href: ./kafka/apache-kafka-producer-consumer-api.md
         - name: Tworzenie aplikacji przy użyciu interfejsu API strumieni platformy Apache Kafka
@@ -548,8 +550,6 @@
               href: ./kafka/apache-kafka-mirroring.md
             - name: Analizowanie dzienników platformy Apache Kafka
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
-            - name: Używanie własnego klucza
-              href: ./kafka/apache-kafka-byok.md
             - name: Szyfrowanie SSL i uwierzytelnianie
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
         - name: Rozwiązywanie problemów

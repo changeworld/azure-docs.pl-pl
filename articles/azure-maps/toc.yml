@@ -181,6 +181,8 @@
           href: display-feature-information-android.md
         - name: Dodawanie warstwy kafelków
           href: how-to-add-tile-layer-android-map.md
+        - name: Wyświetlanie danych o ruchu
+          href: how-to-show-traffic-android.md
     - name: Przesyłanie opinii o danych
       href: how-to-use-feedback-tool.md
 - name: Dokumentacja

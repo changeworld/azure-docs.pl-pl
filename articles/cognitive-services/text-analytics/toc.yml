@@ -42,6 +42,8 @@
     - name: 'Tłumaczenie tekstu, analizowanie tonacji i syntetyzowanie mowy za pomocą platformy Flask'
       maintainContext: true
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
+    - name: Wyodrębnianie informacji w programie Excel przy użyciu usługi Power Automate
+      href: tutorials/extract-excel-information.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Wywoływanie interfejsu API usługi Text Analytics
