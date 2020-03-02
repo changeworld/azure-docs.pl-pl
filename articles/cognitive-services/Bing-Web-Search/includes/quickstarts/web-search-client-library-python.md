@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: aahi
-ms.openlocfilehash: 785840ad0b678337f513a700d37f0ba94671964e
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: ffa493c5bed152eea58d29bbf56215af7ebce5b1
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77652170"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78208231"
 ---
 Wyszukiwanie w sieci Web Bing Biblioteka kliencka ułatwia integrację wyszukiwanie w sieci Web Bing z aplikacją języka Python. Z tego przewodnika Szybki start dowiesz się, jak wysłać żądanie, odebrać odpowiedź JSON oraz filtrować i analizować wyniki.
 
-Chcesz zobaczyć kod teraz? Przykłady dla [Wyszukiwanie Bingch bibliotek klienckich dla języka JavaScript](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search) są dostępne w witrynie GitHub.
+Chcesz zobaczyć kod teraz? Przykłady dla [bibliotek klienta wyszukiwanie Bing dla języka Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search) są dostępne w serwisie GitHub.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne

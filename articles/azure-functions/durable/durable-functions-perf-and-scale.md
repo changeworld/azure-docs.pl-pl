@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ee35f26f9433f6ab342c7dce105638122b9d7717
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486264"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204518"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Wydajność i skalowanie w Durable Functions (Azure Functions)
 
@@ -220,7 +220,7 @@ W następnych sekcjach opisano określone skutki rozszerzonych sesji w programie
 
 ### <a name="orchestrator-function-replay"></a>Powtarzanie funkcji programu Orchestrator
 
-Jak wspomniano wcześniej, funkcje programu Orchestrator są odtwarzane przy użyciu zawartości tabeli **historii** . Domyślnie kod funkcji programu Orchestrator jest odtwarzany za każdym razem, gdy partia komunikatów jest usuwana z kolejki sterującej. Po włączeniu rozszerzonych sesji wystąpienia funkcji programu Orchestrator są przechowywane w pamięci, a nowe komunikaty mogą być przetwarzane bez powtarzania pełnej historii.
+Jak wspomniano wcześniej, funkcje programu Orchestrator są odtwarzane przy użyciu zawartości tabeli **historii** . Domyślnie kod funkcji programu Orchestrator jest odtwarzany za każdym razem, gdy partia komunikatów jest usuwana z kolejki sterującej. Nawet w przypadku korzystania z wentylatorów, wzorca wentylatorów i oczekujących na ukończenie wszystkich zadań (na przykład przy użyciu `Task.WhenAll` w środowisku .NET lub `context.df.Task.all` w języku JavaScript) będzie odtwarzane, które wystąpiły, gdy partie odpowiedzi zadań są przetwarzane w czasie. Po włączeniu rozszerzonych sesji wystąpienia funkcji programu Orchestrator są przechowywane w pamięci, a nowe komunikaty mogą być przetwarzane bez powtarzania pełnej historii.
 
 Zwiększenie wydajności rozszerzonych sesji jest najczęściej zauważalne w następujących sytuacjach:
 

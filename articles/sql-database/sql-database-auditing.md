@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 70f37c70f685ee139db4b417c1c498f9eefb8205
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 27d65c7e6bbc0af20d01d91f1472433f3e7142a9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184761"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206610"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Wprowadzenie do inspekcji bazy danych SQL
 
@@ -116,22 +116,15 @@ Aby skonfigurować zapisywanie dzienników inspekcji do obszaru roboczego Log An
 
 ### <a id="audit-event-hub-destination">Inspekcja w miejscu docelowym centrum zdarzeń</a>
 
-< < < < < < < główny < < < < < < < nagłówek = = = =
->>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 > [!IMPORTANT]
 > Włączanie inspekcji wstrzymanej puli SQL nie jest możliwe. Aby ją włączyć, Cofnij wstrzymanie puli SQL.
 
 > [!WARNING]
-> Włączenie inspekcji na serwerze, na którym znajduje się pula SQL, **spowoduje wznowienie i ponowne wstrzymanie puli SQL** , co może pociągnąć za sobą naliczanie opłat.
-< < < < < < < nagłówek = = = = = =, aby skonfigurować zapisywanie dzienników inspekcji do centrum zdarzeń, wybierz pozycję **centrum zdarzeń (wersja zapoznawcza)** i Otwórz **szczegóły centrum zdarzeń**. Wybierz centrum zdarzeń, w którym będą zapisywane dzienniki, a następnie kliknij przycisk **OK**. Upewnij się, że centrum zdarzeń znajduje się w tym samym regionie, w którym znajduje się baza danych i serwer.
+> Włączenie inspekcji na serwerze, na którym znajduje się pula SQL, **powoduje, że Pula SQL jest wznawiana i ponownie wstrzymywana** , co może spowodować naliczenie opłat.
 
-   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
->>>>>>> <a name="bf6444e83361ab743aca04ae233c420e51ea1e03"></a>bf6444e83361ab743aca04ae233c420e51ea1e03
-=======
 Aby skonfigurować zapisywanie dzienników inspekcji do centrum zdarzeń, wybierz pozycję **centrum zdarzeń (wersja zapoznawcza)** i Otwórz **szczegóły centrum zdarzeń**. Wybierz centrum zdarzeń, w którym będą zapisywane dzienniki, a następnie kliknij przycisk **OK**. Upewnij się, że centrum zdarzeń znajduje się w tym samym regionie, w którym znajduje się baza danych i serwer.
 
    ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
->>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 
 ## <a id="subheading-3"></a>Analizowanie dzienników i raportów inspekcji
 

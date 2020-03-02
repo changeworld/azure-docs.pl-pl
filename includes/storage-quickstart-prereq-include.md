@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 02/04/2018
+ms.date: 02/27/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: afe0b6a2952651461e327371dc746abee411cbb4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b250374cf9827fe8971c1ba02d087ae1a6ce7854
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021042"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206926"
 ---
 Aby uzyskać dostęp do usługi Azure Storage, potrzebujesz subskrypcji platformy Azure. Jeśli nie masz jeszcze subskrypcji, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-Cały dostęp do usługi Azure Storage odbywa się za pośrednictwem konta magazynu. Na potrzeby tego samouczka Szybki start utwórz konto magazynu przy użyciu witryny [Azure Portal](https://portal.azure.com/), programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać pomoc przy tworzeniu konta, zobacz [Tworzenie konta magazynu](../articles/storage/common/storage-account-create.md).
+Cały dostęp do usługi Azure Storage odbywa się za pośrednictwem konta magazynu. Na potrzeby tego samouczka Szybki start utwórz konto magazynu przy użyciu witryny [Azure Portal](https://portal.azure.com/), programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać pomoc dotyczącą tworzenia konta magazynu, zobacz [Tworzenie konta magazynu](../articles/storage/common/storage-account-create.md).

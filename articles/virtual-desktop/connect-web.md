@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: a29081f77587a96dc48930eab359610a42fc0be5
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c738c5b7f233ffa34296eed67eb0f5497f737fc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605816"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206677"
 ---
 # <a name="connect-with-the-web-client"></a>Łączenie się z klientem internetowym
 
@@ -25,10 +25,10 @@ Klient sieci Web umożliwia dostęp do zasobów pulpitu wirtualnego systemu Wind
 
 Chociaż każda przeglądarka z obsługą języka HTML5 powinna działać, oficjalnie obsługujemy następujące systemy operacyjne i przeglądarki.
 
-| Przeglądarka           | Obsługiwane systemy operacyjne                     | Uwagi               |
+| Przeglądarka           | Obsługiwany system operacyjny                     | Uwagi               |
 |-------------------|----------------------------------|---------------------|
-| Microsoft Edge    | Windows                          |                     |
-| Internet Explorer | Windows                          |                     |
+| Microsoft Edge    | System Windows                          |                     |
+| Internet Explorer | System Windows                          |                     |
 | Apple Safari      | macOS                            |                     |
 | Mozilla Firefox   | Windows, macOS, Linux            | Wersja 55 lub nowsza |
 | Google Chrome     | Windows, macOS, Linux, system operacyjny Chrome |                     |
@@ -41,3 +41,7 @@ W przeglądarce przejdź do [klienta sieci Web pulpitu wirtualnego systemu Windo
 >Jeśli zalogowano się już przy użyciu innego konta Azure Active Directory niż ten, który ma być używany dla pulpitu wirtualnego systemu Windows, należy się wylogować lub użyć prywatnego okna przeglądarki.
 
 Po zalogowaniu powinna zostać wyświetlona lista zasobów. Zasoby można uruchamiać, wybierając takie jak normalna aplikacja na karcie **wszystkie zasoby** .
+
+## <a name="next-steps"></a>Następne kroki
+
+Aby dowiedzieć się więcej o używaniu klienta sieci Web, zapoznaj się z tematem Rozpoczynanie [pracy z klientem sieci Web](https://go.microsoft.com/fwlink/?linkid=2120256).

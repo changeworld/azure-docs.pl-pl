@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: a8814030e6c4345227ec05ea1554104e0b21efbc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c80c667cb281168de6f11bbb6a536c01fefb7935
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076536"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206966"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Łączenie sieci wirtualnej z obwodem usługi ExpressRoute za pomocą interfejsu wiersza polecenia
 
@@ -20,29 +20,29 @@ Ten artykuł ułatwia łączenia sieci wirtualnych (Vnet) platformy Azure obwoda
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [Program PowerShell](expressroute-howto-linkvnet-arm.md)
+> * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Interfejs wiersza polecenia platformy Azure](howto-linkvnet-cli.md)
-> * [Wideo — witryna Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [Wideo — Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (klasyczny)](expressroute-howto-linkvnet-classic.md)
 > 
 
 ## <a name="configuration-prerequisites"></a>Wymagania wstępne dotyczące konfiguracji
 
-* Potrzebujesz najnowszej wersji interfejsu wiersza polecenia (CLI). Aby uzyskać więcej informacji, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Potrzebujesz najnowszej wersji interfejsu wiersza polecenia (CLI). Aby uzyskać więcej informacji, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-* Musisz sprawdzić [wymagania wstępne](expressroute-prerequisites.md), [wymagania dotyczące routingu](expressroute-routing.md), i [przepływy pracy](expressroute-workflows.md) przed rozpoczęciem konfiguracji.
+* Przed rozpoczęciem konfiguracji należy sprawdzić wymagania [wstępne](expressroute-prerequisites.md), [wymagania dotyczące routingu](expressroute-routing.md)i [przepływy pracy](expressroute-workflows.md) .
 
 * Musisz mieć aktywny obwód usługi ExpressRoute. 
-  * Postępuj zgodnie z instrukcjami, aby [utworzyć obwód usługi ExpressRoute](howto-circuit-cli.md) i który powinien zostać włączony przez dostawcę połączenia. 
-  * Upewnij się, że prywatnej komunikacji równorzędnej Azure skonfigurowany dla obwodu. Zobacz [Konfigurowanie routingu](howto-routing-cli.md) artykuł, aby uzyskać instrukcje routingu. 
+  * Postępuj zgodnie z instrukcjami, aby [utworzyć obwód usługi ExpressRoute](howto-circuit-cli.md) i mieć obwód włączony przez dostawcę połączenia. 
+  * Upewnij się, że prywatnej komunikacji równorzędnej Azure skonfigurowany dla obwodu. Instrukcje dotyczące routingu można znaleźć w artykule [Konfigurowanie routingu](howto-routing-cli.md) . 
   * Upewnij się, że skonfigurowano prywatnej komunikacji równorzędnej Azure. Komunikację równorzędną BGP między siecią i firmy Microsoft muszą być uruchomione, dzięki czemu można włączyć łączność end-to-end.
-  * Upewnij się, że masz sieci wirtualnej i bramy sieci wirtualnej, utworzona i w pełni zaaprowizowanym. Postępuj zgodnie z instrukcjami, aby [Konfigurowanie bramy sieci wirtualnej dla usługi ExpressRoute](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli). Należy użyć `--gateway-type ExpressRoute`.
+  * Upewnij się, że masz sieci wirtualnej i bramy sieci wirtualnej, utworzona i w pełni zaaprowizowanym. Postępuj zgodnie z instrukcjami, aby [skonfigurować bramę sieci wirtualnej dla usługi ExpressRoute](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli). Upewnij się, że używasz `--gateway-type ExpressRoute`.
 
 * Maksymalnie 10 sieciami wirtualnymi można połączyć standardowy obwód usługi ExpressRoute. Wszystkie sieci wirtualne muszą znajdować się w tym samym regionie geograficznymi, korzystając z standardowy obwód usługi ExpressRoute. 
 
 * Pojedynczej sieci wirtualnej można połączyć maksymalnie cztery obwodów usługi ExpressRoute. Użyj poniżej proces, aby utworzyć nowy obiekt połączenia dla każdy obwód usługi ExpressRoute, z którą jest nawiązywane. Obwody usługi ExpressRoute może być w tej samej subskrypcji, w różnych subskrypcjach lub kombinacji obu.
 
-* Po włączeniu dodatku premium usługi ExpressRoute, możesz połączyć sieć wirtualną poza region geopolityczny obwodu usługi ExpressRoute lub połączyć z większej liczby sieci wirtualnych na obwód usługi ExpressRoute. Aby uzyskać więcej informacji na temat używania dodatku premium, zobacz [— często zadawane pytania](expressroute-faqs.md).
+* Po włączeniu dodatku premium usługi ExpressRoute, możesz połączyć sieć wirtualną poza region geopolityczny obwodu usługi ExpressRoute lub połączyć z większej liczby sieci wirtualnych na obwód usługi ExpressRoute. Aby uzyskać więcej informacji na temat dodatku Premium, zobacz [często zadawane pytania](expressroute-faqs.md).
 
 ## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Łączenie sieci wirtualnej w tej samej subskrypcji z obwodem
 
@@ -73,7 +73,7 @@ Właściciela obwodu ma uprawnienia do modyfikowania i odwołać autoryzacji w d
 
 ### <a name="circuit-owner-operations"></a>Operacje właściciela obwodu
 
-**Aby utworzyć autoryzacji**
+**Aby utworzyć autoryzację**
 
 Właściciela obwodu tworzy autoryzacji, co spowoduje utworzenie klucza autoryzacji, który może służyć przez użytkowników obwodu połączyć ich bramy sieci wirtualnej z obwodem usługi ExpressRoute. Autoryzacja jest prawidłowe dla tylko jedno połączenie.
 
@@ -95,7 +95,7 @@ Odpowiedź zawiera klucz autoryzacji i stanu:
 "resourceGroup": "ExpressRouteResourceGroup"
 ```
 
-**Aby zapoznać się z autoryzacjami**
+**Aby przejrzeć autoryzacji**
 
 Właściciela obwodu, można przejrzeć wszystkie autoryzacje są wydawane w ramach określonego obwodu przez uruchomieniem następującego przykładu:
 
@@ -103,7 +103,7 @@ Właściciela obwodu, można przejrzeć wszystkie autoryzacje są wydawane w ram
 az network express-route auth list --circuit-name MyCircuit -g ExpressRouteResourceGroup
 ```
 
-**Aby dodać autoryzacji**
+**Aby dodać autoryzacje**
 
 Aby dodać autoryzacji właściciela obwodu korzystając z następującego przykładu:
 
@@ -111,7 +111,7 @@ Aby dodać autoryzacji właściciela obwodu korzystając z następującego przyk
 az network express-route auth create --circuit-name MyCircuit -g ExpressRouteResourceGroup -n MyAuthorization1
 ```
 
-**Aby usunąć autoryzacji**
+**Aby usunąć autoryzacje**
 
 Właściciela obwodu można odwołać/usuwanie autoryzacji dla użytkownika, uruchamiając poniższy przykład:
 
@@ -127,7 +127,7 @@ Obwód trzeba podać identyfikator elementu równorzędnego i klucza autoryzacji
 Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 ```
 
-**Aby zrealizować autoryzacji połączenia**
+**Aby zrealizować autoryzację połączenia**
 
 Użytkowników obwodu, można uruchomić poniższy przykład Zrealizuj autoryzację łącza:
 
@@ -135,35 +135,37 @@ Użytkowników obwodu, można uruchomić poniższy przykład Zrealizuj autoryzac
 az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit --authorization-key "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 ```
 
-**Aby zwolnić autoryzacji połączenia**
+**Aby zwolnić autoryzację połączenia**
 
 Autoryzacji można zwolnić, usuwając połączenia prowadzący obwód usługi ExpressRoute w sieci wirtualnej.
 
 ## <a name="modify-a-virtual-network-connection"></a>Modyfikowanie połączenia sieci wirtualnej
 Możesz zaktualizować niektóre właściwości połączenia sieci wirtualnej. 
 
-**Aby zaktualizować wagi połączenia**
+**Aby zaktualizować wagę połączenia**
 
-Sieci wirtualne mogą być połączone wieloma obwodami usługi ExpressRoute. Ten sam prefiks może pojawić się z więcej niż jeden obwód usługi ExpressRoute. Aby wybór połączenia do wysyłania ruchu przeznaczonego dla tego prefiksu, możesz zmienić *RoutingWeight* połączenia. Ruch będzie wysyłany w połączeniu z najwyższą *RoutingWeight*.
+Sieci wirtualne mogą być połączone wieloma obwodami usługi ExpressRoute. Ten sam prefiks może pojawić się z więcej niż jeden obwód usługi ExpressRoute. Aby wybrać połączenie do wysyłania ruchu przeznaczonego dla tego prefiksu, możesz zmienić *RoutingWeight* połączenia. Ruch zostanie wysłany w połączeniu z największą *RoutingWeight*.
 
 ```azurecli
 az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --routing-weight 100
 ```
 
-Zakres *RoutingWeight* 0 do 32 000. Wartość domyślna to 0.
+Zakres *RoutingWeight* ma wartość od 0 do 32000. Wartość domyślna to 0.
 
 ## <a name="configure-expressroute-fastpath"></a>Konfigurowanie ExpressRoute FastPath 
 Możesz włączyć [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) , jeśli obwód ExpressRoute jest na [ExpressRoute Direct](expressroute-erdirect-about.md) , a wirtualna Brama sieć to Ultra Performance lub ErGw3AZ. FastPath poprawia zgodność ścieżki danych, takie jak pakiety na sekundę i połączenia na sekundę między siecią lokalną i siecią wirtualną. 
 
-> [!NOTE] 
-> Jeśli masz już połączenie z siecią wirtualną, ale nie włączono FastPath, musisz usunąć połączenie z siecią wirtualną i utworzyć nowe. 
-> 
->  
+**Skonfiguruj FastPath na nowym połączeniu**
 
 ```azurecli
 az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit
 ```
 
+**Aktualizowanie istniejącego połączenia w celu włączenia FastPath**
+
+```azurecli
+az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true
+```
 
 ## <a name="next-steps"></a>Następne kroki
 

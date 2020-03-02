@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 06/26/2019
-ms.openlocfilehash: 156892a4785bf1644d29b82e98c3b2ae202c5a49
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,mvc
+ms.date: 02/28/2020
+ms.openlocfilehash: aa23b61967b27fefba863255721f4a0709ec02d5
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494704"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204570"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Samouczek: tworzenie aplikacji Scala Maven dla platformy Apache Spark w usłudze HDInsight przy użyciu środowiska IntelliJ
 
-W tym samouczku dowiesz się, jak utworzyć aplikację [Apache Spark](https://spark.apache.org/) napisaną w języku [Scala](https://www.scala-lang.org/) za pomocą narzędzia [Apache Maven](https://maven.apache.org/) i środowiska IntelliJ IDEA. W tym artykule skorzystamy z systemu kompilacji Apache Maven. Na początku użyjemy istniejącego archetypu Maven dla języka Scala, udostępnionego przez środowisko IntelliJ IDEA.  Tworzenie aplikacji Scala w środowisku IntelliJ IDEA obejmuje następujące kroki:
+W tym samouczku dowiesz się, jak utworzyć aplikację [Apache Spark](./apache-spark-overview.md) napisaną w języku [Scala](https://www.scala-lang.org/) za pomocą narzędzia [Apache Maven](https://maven.apache.org/) i środowiska IntelliJ IDEA. W tym artykule skorzystamy z systemu kompilacji Apache Maven. Na początku użyjemy istniejącego archetypu Maven dla języka Scala, udostępnionego przez środowisko IntelliJ IDEA.  Tworzenie aplikacji Scala w środowisku IntelliJ IDEA obejmuje następujące kroki:
 
 * Używanie narzędzia Maven jako systemu kompilacji.
 * Aktualizowanie pliku POM (Project Object Model) umożliwiającego rozpoznawanie zależności modułu Spark.
@@ -61,15 +61,15 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
 
 1. Uruchom środowisko IntelliJ IDEA i wybierz pozycję **Create New Project** (Utwórz nowy projekt), aby otworzyć okno **New Project** (Nowy projekt).
 
-2. Wybierz pozycję **Azure Spark/HDInsight** w okienku po lewej stronie.
+2. W lewym okienku wybierz pozycję **Apache Spark/HDInsight** .
 
 3. Wybierz pozycję **Spark Project (Scala)** w głównym oknie.
 
-4. Z listy rozwijanej **Build tool** (Narzędzie kompilacji), wybierz jedną z następujących pozycji:
+4. Z listy rozwijanej **Narzędzie kompilacji** wybierz jedną z następujących wartości:
       * **Maven** — w celu obsługi kreatora tworzenia projektu Scala.
       * **SBT** — na potrzeby zarządzania zależnościami i kompilacji projektu Scala.
 
-   ![IntelliJ okno dialogowe Nowy projekt](./media/apache-spark-create-standalone-application/create-hdi-scala-app.png)
+   ![IntelliJ okno dialogowe Nowy projekt](./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png)
 
 5. Wybierz opcję **Dalej**.
 
@@ -98,14 +98,16 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
 
 5. Z listy archetypów wybierz pozycję **org.scala-tools.archetypes:scala-archetype-simple**. Ten archetyp pozwala utworzyć prawidłową strukturę katalogów i pobrać wymagane zależności domyślne, umożliwiające napisanie programu w języku Scala.
 
-    ![IntelliJ pomysł tworzenia projektu Maven](./media/apache-spark-create-standalone-application/create-maven-project.png)
+    ![IntelliJ pomysł tworzenia projektu Maven](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
 6. Wybierz opcję **Dalej**.
 
-7. Podaj odpowiednie wartości w polach **GroupId**, **ArtifactId** i **Version**. W tym samouczku są one następujące:
+7. Rozwiń **współrzędne artefaktu**. Podaj odpowiednie wartości dla **identyfikatora GroupID**i **ArtifactId**. **Nazwa**i **Lokalizacja** będą wypełniane automatycznie. W tym samouczku są one następujące:
 
     - **GroupId:** com.microsoft.spark.example
     - **ArtifactId:** SparkSimpleApp
+
+    ![IntelliJ pomysł tworzenia projektu Maven](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
 
 8. Wybierz opcję **Dalej**.
 
@@ -113,7 +115,7 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
 
 10. Sprawdź nazwę i lokalizację projektu, a następnie wybierz pozycję **Finish** (Zakończ).  Zaimportowanie projektu potrwa kilka minut.
 
-11. Po zaimportowaniu projektu w lewym okienku przejdź do pozycji **SparkSimpleApp** > **src** > **test**  >  **scala** > **com** > **microsoft** > **spark**  >  **example**.  Kliknij prawym przyciskiem myszy pozycję Moja **Specyfikacja**, a następnie wybierz pozycję **Usuń.** Ten plik nie jest potrzebny dla aplikacji.  Wybierz przycisk **OK** w oknie dialogowym.
+11. Po zaimportowaniu projektu w lewym okienku przejdź do pozycji **SparkSimpleApp** > **src** > **test** > **scala** > **com** > **microsoft** > **spark** > **example**.  Kliknij prawym przyciskiem myszy pozycję Moja **Specyfikacja**, a następnie wybierz pozycję **Usuń.** Ten plik nie jest potrzebny dla aplikacji.  Wybierz przycisk **OK** w oknie dialogowym.
   
 12. W kolejnych krokach zaktualizujemy plik **pom.xml**, definiując zależności dla aplikacji Spark Scala. Aby automatycznie pobrać i rozpoznać te zależności, musisz odpowiednio skonfigurować narzędzie Maven.
 
@@ -174,7 +176,7 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
 
     1. W menu **File** (Plik) wybierz pozycję **Project Structure...** (Struktura projektu...).
 
-    2. W oknie **Project Structure** (Struktura projektu) przejdź do pozycji **Artifacts** (Artefakty) > **symbol znaku plus +**  > **JAR**  >  **From modules with dependencies...**  (Z modułów z zależnościami).
+    2. W oknie **Project Structure** (Struktura projektu) przejdź do pozycji **Artifacts** (Artefakty) > **symbol znaku plus +**  > **JAR** > **From modules with dependencies...**  (Z modułów z zależnościami).
 
         ![Struktura projektu POMYSŁu IntelliJ Dodaj jar](./media/apache-spark-create-standalone-application/hdinsight-create-jar1.png)
 
@@ -188,7 +190,7 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
 
         ![Struktura projektu POMYSŁu IntelliJ z modułu jar](./media/apache-spark-create-standalone-application/hdinsight-create-jar3.png)
 
-    6. Karta **Output Layout** (Układ danych wyjściowych) zawiera listę wszystkich plików JAR, które są częścią projektu Maven. Możesz usunąć pliki, z którymi aplikacja Scala nie ma bezpośrednich zależności. W przypadku aplikacji, którą tworzysz, możesz usunąć wszystkie pliki oprócz ostatniego (**SparkSimpleApp compile output**). Wybierz pliki JAR do usunięcia, a następnie wybierz symbol znaku minus **-** .
+    6. Karta **Output Layout** (Układ danych wyjściowych) zawiera listę wszystkich plików JAR, które są częścią projektu Maven. Możesz usunąć pliki, z którymi aplikacja Scala nie ma bezpośrednich zależności. W przypadku aplikacji tworzysz tutaj, możesz usunąć wszystkie oprócz ostatniego z nich (**SparkSimpleApp Kompiluj dane wyjściowe**). Wybierz pliki JAR do usunięcia, a następnie wybierz symbol znaku minus **-** .
 
         ![Struktura projektu POMYSŁu IntelliJ usuwanie danych wyjściowych](./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png)
 
@@ -202,7 +204,7 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
 
 Aplikację można uruchomić w klastrze przy użyciu następujących metod:
 
-* **Skopiuj plik JAR aplikacji do obiektu blob magazynu Azure** skojarzonego z klastrem. Możesz to zrobić za pomocą narzędzia wiersza polecenia [**AzCopy**](../../storage/common/storage-use-azcopy.md). Dane możesz przesłać również przy użyciu wielu innych klientów. Więcej informacji na ten temat można znaleźć w artykule [Przekazywanie danych dla zadań Apache Hadoop w usłudze HDInsight](../hdinsight-upload-data.md).
+* **Skopiuj aplikację jar do obiektu BLOB usługi Azure Storage** skojarzonego z klastrem. Możesz to zrobić za pomocą narzędzia wiersza polecenia [**AzCopy**](../../storage/common/storage-use-azcopy.md). Dane możesz przesłać również przy użyciu wielu innych klientów. Więcej informacji na ten temat można znaleźć w artykule [Przekazywanie danych dla zadań Apache Hadoop w usłudze HDInsight](../hdinsight-upload-data.md).
 
 * **Użyj usługi Apache Livy, aby zdalnie przesłać zadanie aplikacji** do klastra Spark. Klastry Spark w usłudze HDInsight zawierają usługę Livy, która udostępnia punkty końcowe REST umożliwiające zdalne przesyłanie zadań Spark. Aby uzyskać więcej informacji, zobacz [Submit Apache Spark jobs remotely using Apache Livy with Spark clusters on HDInsight](apache-spark-livy-rest-interface.md) (Zdalne przesyłanie zadań Apache Spark przy użyciu usługi Apache Livy udostępnianej w klastrach Spark w usłudze HDInsight).
 
@@ -210,7 +212,7 @@ Aplikację można uruchomić w klastrze przy użyciu następujących metod:
 
 Jeśli nie chcesz nadal korzystać z tej aplikacji, Usuń klaster, który został utworzony, wykonując następujące czynności:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 1. W polu **Wyszukaj** w górnej części wpisz **HDInsight**.
 

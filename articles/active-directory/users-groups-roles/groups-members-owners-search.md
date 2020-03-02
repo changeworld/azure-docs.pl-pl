@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d11f5a9f2de8683365d663e85c275c3729ebf8a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901505"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206116"
 ---
-# <a name="search-groups--and-members-preview-in-azure-active-directory"></a>Wyszukaj grupy i członków (wersja zapoznawcza) w Azure Active Directory
+# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Wyszukaj grupy i członków (wersja zapoznawcza) w Azure Active Directory
 
 W tym artykule opisano, jak wyszukiwać członków i właścicieli grupy oraz jak używać filtrów wyszukiwania w ramach wersji zapoznawczej ulepszeń grup w portalu Azure Active Directory (Azure AD). Istnieją wiele ulepszeń w zakresie grup, które ułatwiają zarządzanie grupami, w tym członków i właścicieli, szybko i łatwo. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz temat [Dodatkowe warunki użytkowania dotyczące wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -45,7 +45,7 @@ Jeśli masz jakieś problemy, możesz przełączyć się ze starszego środowisk
 
 ## <a name="group-search-and-sorting"></a>Wyszukiwanie i sortowanie grup
 
-Przeszukiwanie listy grup zostało ulepszone, dzięki czemu po wprowadzeniu ciągu wyszukiwania w polu wyszukiwania automatycznie `startswith` przeszukiwane są i podciągi, a na liście nazw grup. Wyszukiwanie podciągów jest wykonywane tylko na całych słowach i nie zawiera znaków specjalnych.
+Przeszukiwanie listy grup zostało ulepszone, dzięki czemu po wprowadzeniu ciągu wyszukiwania, wyszukiwanie automatycznie przeprowadzi `startswith` i podciągi wyszukiwania na liście nazw grup. Wyszukiwanie podciągów jest wykonywane tylko na całych słowach i nie zawiera znaków specjalnych. W wyszukiwaniu podciągów jest rozróżniana wielkość liter.
 
 ![nowe przeszukiwania podciągów na stronie wszystkie grupy](./media/groups-members-owners-search/groups-search-preview.png)
 

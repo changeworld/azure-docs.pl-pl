@@ -3,12 +3,12 @@ title: Samouczek — Tworzenie kopii zapasowej bazy danych na platformie Azure z
 description: W tym samouczku dowiesz się, jak utworzyć kopię zapasową SAP HANA baz danych działających na maszynie wirtualnej platformy Azure do magazynu Azure Backup Recovery Services przy użyciu interfejsu wiersza polecenia platformy Azure.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 6d35b6ebfc6f47f5775c24407b645b97112387c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cdc8a8fb09a086a2b9212c21d071f267991fa275
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472352"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206626"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Samouczek: Tworzenie kopii zapasowych baz danych SAP HANA na maszynie wirtualnej platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -68,7 +68,7 @@ westus2    saphanaVault     saphanaResourceGroup
 
 ## <a name="register-and-protect-the-sap-hana-instance"></a>Zarejestruj i Chroń wystąpienie SAP HANA
 
-Na maszynie SAP HANA należy uruchomić [skrypt przed rejestracją](https://aka.ms/scriptforpermsonhana) dla SAP HANA wystąpienia (maszyna wirtualna z zainstalowanym SAP HANA), który ma zostać odnaleziony przez usługi platformy Azure. Przed uruchomieniem skryptu upewnij się, że spełniono wszystkie [wymagania wstępne](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites) . Aby dowiedzieć się więcej na temat działania skryptu, zapoznaj się z sekcją [Ustawianie uprawnień](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#setting-up-permissions) .
+Na maszynie SAP HANA należy uruchomić [skrypt przed rejestracją](https://aka.ms/scriptforpermsonhana) dla SAP HANA wystąpienia (maszyna wirtualna z zainstalowanym SAP HANA), który ma zostać odnaleziony przez usługi platformy Azure. Przed uruchomieniem skryptu upewnij się, że spełniono wszystkie [wymagania wstępne](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites) . Aby dowiedzieć się więcej na temat działania skryptu, zapoznaj się z sekcją co to jest [skrypt przed rejestracją](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) .
 
 Po uruchomieniu skryptu wystąpienie SAP HANA może zostać zarejestrowane w utworzonym wcześniej magazynie usługi Recovery Services. Aby zarejestrować wystąpienie, użyj polecenia cmdlet [AZ Backup Container Register](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) . *VMResourceId* to identyfikator zasobu maszyny wirtualnej, który został utworzony w celu zainstalowania SAP HANA.
 

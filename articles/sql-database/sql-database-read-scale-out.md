@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: f111b19eb07c218a9f3250ef3ffdb8a97cf07542
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1a1b9907cd931716949d92d948a7d541fd2d5057
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420732"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206949"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Korzystanie z replik tylko do odczytu w celu równoważenia obciążenia obciążeń zapytań tylko do odczytu
 
@@ -35,7 +35,7 @@ Funkcja odczyt skalowalny w poziomie jest domyślnie włączona w nowych bazach 
 Jeśli chcesz upewnić się, że aplikacja nawiązuje połączenie z repliką podstawową, niezależnie od ustawienia `ApplicationIntent` w parametrach połączenia SQL, należy jawnie wyłączyć skalowanie w poziomie podczas tworzenia bazy danych lub zmiany konfiguracji. Jeśli na przykład baza danych jest uaktualniana z warstwy Standardowa lub Ogólnego przeznaczenia do warstwy Premium, Krytyczne dla działania firmy lub do skalowania i chcesz upewnić się, że wszystkie połączenia nadal przechodzą do repliki podstawowej, wyłącz opcję Odczytaj w poziomie. Aby uzyskać szczegółowe informacje na temat sposobu jego wyłączania, zobacz [Włączanie i wyłączanie skalowania](#enable-and-disable-read-scale-out)w poziomie.
 
 > [!NOTE]
-> Tworzenie zapytań dotyczących magazynu danych, zdarzeń rozszerzonych, programu SQL Profiler i funkcji inspekcji nie są obsługiwane w przypadku replik tylko do odczytu.
+> Magazyn danych zapytania, zdarzenia rozszerzone i funkcje profilera SQL nie są obsługiwane w replikach tylko do odczytu.
 
 ## <a name="data-consistency"></a>Spójność danych
 
@@ -89,11 +89,11 @@ Można wyłączyć i ponownie włączyć funkcję odczytywania skalowania w pozi
 > [!NOTE]
 > Możliwość wyłączenia odczytywania skalowalnego w poziomie jest zapewniana na potrzeby zgodności z poprzednimi wersjami.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Portalu Azure
 
 Ustawienie skalowanie odczyt w poziomie można zarządzać w bloku **Konfiguruj** bazę danych.
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 > [!IMPORTANT]
 > Moduł programu PowerShell Azure Resource Manager (RM) jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. Moduł AzureRM będzie nadal otrzymywać poprawki błędów do co najmniej grudnia 2020.  Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne. Aby uzyskać więcej informacji o zgodności, zobacz [wprowadzenie do nowego Azure PowerShell AZ module](/powershell/azure/new-azureps-module-az).

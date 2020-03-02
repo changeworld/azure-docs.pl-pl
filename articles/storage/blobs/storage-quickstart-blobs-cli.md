@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: 785f68b98d819a58ce43837dc3c9b5a855beeb0a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b0fe0cf0d477d1360d3789f74f30565e15cfd42e
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672518"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206927"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Szybki Start: Tworzenie, pobieranie i wyświetlanie listy obiektów BLOB za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -28,7 +28,7 @@ Interfejs wiersza polecenia platformy Azure to środowisko wiersza polecenia pla
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="use-the-azure-cli-locally"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure lokalnie
+## <a name="install-the-azure-cli-locally"></a>Instalowanie interfejsu wiersza polecenia platformy Azure lokalnie
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia platformy Azure i korzystać z niego lokalnie, ten przewodnik Szybki Start będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie `az --version`, aby sprawdzić wersję. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
@@ -38,11 +38,13 @@ Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, musisz si
 az login
 ```
 
+Aby uzyskać więcej informacji o uwierzytelnianiu za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [Logowanie za pomocą interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli).
+
 ## <a name="authorize-access-to-blob-storage"></a>Autoryzuj dostęp do magazynu obiektów BLOB
 
 Dostęp do magazynu obiektów BLOB można autoryzować z poziomu interfejsu wiersza polecenia platformy Azure przy użyciu poświadczeń usługi Azure AD lub klucza dostępu do konta magazynu. Zalecane jest korzystanie z poświadczeń usługi Azure AD. W tym artykule przedstawiono sposób autoryzacji operacji usługi BLOB Storage przy użyciu usług Azure AD.
 
-Polecenie interfejsu wiersza polecenia platformy Azure dla operacji na danych w usłudze BLOB Storage obsługuje parametr `--auth-mode`, który umożliwia określenie sposobu autoryzacji danej operacji. Ustaw parametr `--auth-mode` na `login`, aby autoryzować się przy użyciu poświadczeń usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Uruchamianie poleceń interfejsu wiersza polecenia platformy Azure przy użyciu poświadczeń usługi Azure AD w celu uzyskania dostępu do danych obiektu BLOB lub kolejki](../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Polecenie interfejsu wiersza polecenia platformy Azure dla operacji na danych w usłudze BLOB Storage obsługuje parametr `--auth-mode`, który umożliwia określenie sposobu autoryzacji danej operacji. Ustaw parametr `--auth-mode` na `login`, aby autoryzować się przy użyciu poświadczeń usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Autoryzuj dostęp do danych obiektu BLOB lub kolejki za pomocą interfejsu wiersza polecenia platformy Azure](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 Tylko operacje na danych magazynu obiektów BLOB obsługują parametr `--auth-mode`. Operacje zarządzania, takie jak tworzenie grupy zasobów lub konta magazynu, automatycznie używają poświadczeń usługi Azure AD do autoryzacji.
 

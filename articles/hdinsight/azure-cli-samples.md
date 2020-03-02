@@ -1,5 +1,5 @@
 ---
-title: 'Azure HDInsight: Przykłady interfejsu wiersza polecenia platformy Azure'
+title: 'Azure HDInsight: przykłady interfejsu wiersza polecenia platformy Azure'
 description: Przykłady interfejsu wiersza polecenia platformy Azure dla typowych zadań w usłudze Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
-ms.openlocfilehash: 7ce2160fa94653a1155daaef166b7fdbb9386e7e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: cbbb38c645e56b2e7b8c70b437b1e5158b09a50b
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266713"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207102"
 ---
-# <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Przykłady interfejsu wiersza polecenia platformy Azure
+# <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: przykłady interfejsu wiersza polecenia platformy Azure
 
 > [!div class="op_single_selector"]
-> [Przykłady dla](hdinsight-sdk-dotnet-samples.md)[języka](hdinsight-sdk-java-samples.md) [](hdinsight-sdk-python-samples.md)Python
-> przykłady dla platformy .NET
-> 
+> Przykłady dla [platformy .net](hdinsight-sdk-dotnet-samples.md)
+> [Python przykłady](hdinsight-sdk-python-samples.md)
+> [Java](hdinsight-sdk-java-samples.md)
 
 Ten artykuł zawiera przykładowe skrypty dla typowych zadań. Dla każdego przykładu należy zaktualizować zmienne przy użyciu odpowiednich wartości, a następnie wykonać polecenie.
 
@@ -27,7 +27,7 @@ Ten artykuł zawiera przykładowe skrypty dla typowych zadań. Dla każdego przy
 
 * Interfejs wiersza polecenia platformy Azure. Aby uzyskać instrukcje [, zobacz Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
-* Opcjonalnie: Bash. W przykładach w tym artykule użyto powłoki bash w systemie Windows 10. Aby uzyskać instrukcje dotyczące instalacji, zobacz artykuł [podsystem instalacji systemu Windows dla systemu Linux w systemie Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) .  Przykłady będą działały z wiersza polecenia systemu Windows z niewielkimi modyfikacjami.
+* Opcjonalnie: bash. W przykładach w tym artykule użyto powłoki bash w systemie Windows 10. Aby uzyskać instrukcje dotyczące instalacji, zobacz artykuł [podsystem instalacji systemu Windows dla systemu Linux w systemie Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) .  Przykłady będą działały z wiersza polecenia systemu Windows z niewielkimi modyfikacjami.
 
 ## <a name="az-login"></a>AZ login
 
@@ -90,7 +90,7 @@ az hdinsight create \
     --cluster-users-group-dns $groupDNS
 ```
 
-### <a name="create-a-kafka-cluster-with-disk-encryptionkafkaapache-kafka-byokmd"></a>Tworzenie klastra Kafka z [szyfrowaniem dysków](kafka/apache-kafka-byok.md)
+### <a name="create-a-kafka-cluster-with-disk-encryption"></a>Tworzenie klastra Kafka z [szyfrowaniem dysków](./disk-encryption.md)
 
 ```azurecli
 export clusterName=CLUSTERNAME

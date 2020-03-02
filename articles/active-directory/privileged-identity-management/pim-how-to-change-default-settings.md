@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/07/2020
+ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77132ae9a10eda7170ac56f2b7c65a3ebcde8d6d
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 4dd525973a8c8ba5bb3103126b4ddb5b6973590a
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498978"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205028"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurowanie ustawień roli usługi Azure AD w Privileged Identity Management
 
@@ -107,7 +107,7 @@ Możesz wymagać od użytkowników wprowadzenia uzasadnienia biznesowego podczas
 
 ## <a name="require-approval-to-activate"></a>Wymagaj zatwierdzenia do aktywacji
 
-Jeśli chcesz wymagać zatwierdzenia w celu aktywowania roli, wykonaj następujące czynności.
+W przypadku ustawienia wielu osób zatwierdzających zatwierdzenie zostanie zakończone zaraz po zatwierdzeniu lub odmowie. Nie można wymagać zatwierdzenia od co najmniej dwóch użytkowników. Aby wymagać zatwierdzenia w celu aktywowania roli, wykonaj następujące czynności.
 
 1. Zaznacz pole wyboru **Wymagaj zatwierdzenia do uaktywnienia** .
 

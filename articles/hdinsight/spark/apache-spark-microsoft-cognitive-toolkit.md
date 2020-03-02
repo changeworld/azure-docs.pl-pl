@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 587de168a17c407abf3c2a7797969df013760a9f
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 1933db624dfef2ffa747ecb043be6730b6b884b5
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156645"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206558"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Używanie Microsoft Cognitive Toolkit modelu uczenia głębokiego z klastrem Azure HDInsight Spark
 
@@ -56,15 +56,15 @@ W tym artykule używamy portalu do zainstalowania zestawu narzędzi po utworzeni
 
 ### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Aby uzyskać instrukcje dotyczące sposobu używania Azure Portal do uruchamiania akcji skryptu, zobacz [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation). Upewnij się, że podano następujące dane wejściowe, aby zainstalować Microsoft Cognitive Toolkit. Użyj następujących wartości dla akcji skryptu:
+Aby uzyskać instrukcje dotyczące sposobu używania Azure Portal do uruchamiania akcji skryptu, zobacz [Dostosowywanie klastrów usługi HDInsight za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md#script-action-during-cluster-creation). Upewnij się, że podano następujące dane wejściowe, aby zainstalować Microsoft Cognitive Toolkit. Użyj następujących wartości dla akcji skryptu:
 
 |Właściwość |Wartość |
 |---|---|
 |Typ skryptu|-Niestandardowe|
-|Nazwa| Zainstaluj MCT|
+|Name (Nazwa)| Zainstaluj MCT|
 |Identyfikator URI skryptu bash|`https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`|
 |Typy węzłów:|Kierownik, proces roboczy|
-|Parametry|Brak|
+|Parametry|None|
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Przekazywanie notesu Jupyter do klastra Azure HDInsight Spark
 
@@ -82,7 +82,7 @@ Aby użyć Microsoft Cognitive Toolkit z klastrem Azure HDInsight Spark, należy
 
 1. Po przekazaniu notesu kliknij nazwę notesu, a następnie postępuj zgodnie z instrukcjami w notesie dotyczącym ładowania zestawu danych i wykonaj artykuł.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Przegląd: platforma Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 

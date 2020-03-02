@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 870d6f8441bf395ba0c02dccf8f3d1c6434410c6
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77013754"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78208216"
 ---
 ## <a name="limitations"></a>Ograniczenia
 
@@ -89,7 +89,7 @@ Aby uzyskać więcej informacji, zobacz [przydziały maszyn wirtualnych vCPU](/a
 
 Bezpłatna wersja próbna i subskrypcje MSDN nie mają przydziału dla dedykowanych hostów platformy Azure.
 
-## <a name="pricing"></a>Cennik
+## <a name="pricing"></a>Ceny
 
 Opłaty za użytkowników są naliczone za dedykowanego hosta, niezależnie od liczby wdrożonych maszyn wirtualnych. W comiesięcznym zestawie danych zostanie wyświetlony nowy typ zasobów do rozliczania. Maszyny wirtualne na dedykowanym hoście nadal będą widoczne w twoim zestawie, ale cena będzie równa 0.
 
@@ -98,6 +98,8 @@ Cena hosta jest ustawiana na podstawie rodziny maszyn wirtualnych, typu (rozmiar
 Opłaty za korzystanie z licencjonowania oprogramowania, magazynu i sieci są rozliczane oddzielnie od hosta i maszyn wirtualnych. Nie wprowadzono zmian w tych elementach rozliczanych.
 
 Aby uzyskać więcej informacji, zobacz [Cennik dedykowanego hosta platformy Azure](https://aka.ms/ADHPricing).
+
+Możesz także zaoszczędzić na kosztach przy użyciu [zastrzeżonego wystąpienia dedykowanych hostów platformy Azure] (.. /articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
  
 ## <a name="vm-families-and-hardware-generations"></a>Rodziny maszyn wirtualnych i generacja sprzętu
 

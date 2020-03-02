@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: c8d2ef0330a32d5cab88355cc749322ec3a5ea30
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530939"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206983"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Często zadawane pytania dotyczące Apache Kafka w usłudze Azure HDInsight
 
@@ -27,7 +27,7 @@ Więcej informacji na temat wersji oficjalnie obsługiwanych składników usług
 Klaster usługi HDInsight Kafka obejmuje następujące zasoby:
 
 * Węzły główne
-* Węzły usługi Zookeeper
+* Dozorcy węzły
 * Węzły brokera (proces roboczy) 
 * Managed Disks platformy Azure dołączone do węzłów brokera
 * Węzły bramy
@@ -50,7 +50,7 @@ Za pomocą [pakiet Enterprise Security (ESP)](../domain-joined/apache-domain-joi
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Czy moje dane są szyfrowane? Czy mogę użyć własnych kluczy?
 
-Wszystkie komunikaty Kafka na dyskach zarządzanych są szyfrowane za pomocą [usługi Azure szyfrowanie usługi Storage (SSE)](../../storage/common/storage-service-encryption.md). Dane przesyłane w trakcie przesyłania (na przykład dane wysyłane z klientów do brokerów i inne sposoby) nie są domyślnie szyfrowane. Istnieje możliwość zaszyfrowania takiego ruchu przez [skonfigurowanie własnego protokołu SSL](./apache-kafka-ssl-encryption-authentication.md). Ponadto Usługa HDInsight umożliwia zarządzanie własnymi kluczami w celu szyfrowania danych przechowywanych w stanie spoczynku. Aby uzyskać więcej informacji, zobacz temat [przenoszenie własnego klucza do Apache Kafka w usłudze Azure HDInsight](apache-kafka-byok.md).
+Wszystkie komunikaty Kafka na dyskach zarządzanych są szyfrowane za pomocą [usługi Azure szyfrowanie usługi Storage (SSE)](../../storage/common/storage-service-encryption.md). Dane przesyłane w trakcie przesyłania (na przykład dane wysyłane z klientów do brokerów i inne sposoby) nie są domyślnie szyfrowane. Istnieje możliwość zaszyfrowania takiego ruchu przez [skonfigurowanie własnego protokołu SSL](./apache-kafka-ssl-encryption-authentication.md). Ponadto Usługa HDInsight umożliwia zarządzanie własnymi kluczami w celu szyfrowania danych przechowywanych w stanie spoczynku. Aby uzyskać więcej informacji, zobacz [szyfrowanie dysków klucza zarządzanego przez klienta](../disk-encryption.md).
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>Jak mogę połączyć klientów z moim klastrem?
 

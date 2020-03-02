@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a727cd57e470f248321011d505f8037808f64298
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 90669ebde9537fdf597fccd621caa54deaed68a6
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656878"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206456"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy
 
@@ -152,7 +152,7 @@ Oto ustawienia zdefiniowane w grupie. ujednolicone SettingsTemplate. O ile nie w
 |  <ul><li>EnableGroupCreation<li>Typ: wartość logiczna<li>Wartość domyślna: prawda |Flaga oznaczająca, czy dla użytkowników niebędących administratorami jest dozwolone tworzenie grup pakietu Office 365. To ustawienie nie wymaga licencji na Azure Active Directory — wersja Premium P1.|
 |  <ul><li>GroupCreationAllowedGroupId<li>Typ: ciąg<li>Wartość domyślna: "" |Identyfikator GUID grupy zabezpieczeń, do której członkowie mogą tworzyć grupy pakietu Office 365, nawet gdy EnableGroupCreation = = false. |
 |  <ul><li>UsageGuidelinesUrl<li>Typ: ciąg<li>Wartość domyślna: "" |Łącze do wytycznych dotyczących użycia grup. |
-|  <ul><li>ClassificationDescriptions<li>Typ: ciąg<li>Wartość domyślna: "" | Rozdzielana przecinkami lista opisów klasyfikacji. Wartość ClassificationDescriptions jest prawidłowa tylko w tym formacie:<br>$setting ["ClassificationDescriptions"] = "Klasyfikacja: Opis, klasyfikacja: Opis"<br>gdzie Klasyfikacja dopasowuje ciągi w ClassificationList.<br>To ustawienie nie ma zastosowania, gdy EnableMIPLabels = = true.|
+|  <ul><li>ClassificationDescriptions<li>Typ: ciąg<li>Wartość domyślna: "" | Rozdzielana przecinkami lista opisów klasyfikacji. Wartość ClassificationDescriptions jest prawidłowa tylko w tym formacie:<br>$setting ["ClassificationDescriptions"] = "Klasyfikacja: Opis, klasyfikacja: Opis"<br>gdzie Klasyfikacja pasuje do wpisu w ClassificationList.<br>To ustawienie nie ma zastosowania, gdy EnableMIPLabels = = true.|
 |  <ul><li>DefaultClassification<li>Typ: ciąg<li>Wartość domyślna: "" | Klasyfikacja, która ma być używana jako Klasyfikacja domyślna dla grupy, jeśli żadna nie została określona.<br>To ustawienie nie ma zastosowania, gdy EnableMIPLabels = = true.|
 |  <ul><li>PrefixSuffixNamingRequirement<li>Typ: ciąg<li>Wartość domyślna: "" | Ciąg o maksymalnej długości 64 znaków, który definiuje konwencję nazewnictwa skonfigurowaną dla grup pakietu Office 365. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup pakietu Office 365](groups-naming-policy.md). |
 | <ul><li>CustomBlockedWordsList<li>Typ: ciąg<li>Wartość domyślna: "" | Ciąg wyrażeń rozdzielonych przecinkami, których użytkownicy nie będą mogli używać w nazwach grup lub aliasach. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup pakietu Office 365](groups-naming-policy.md). |
@@ -161,7 +161,7 @@ Oto ustawienia zdefiniowane w grupie. ujednolicone SettingsTemplate. O ile nie w
 |  <ul><li>AllowGuestsToAccessGroups<li>Typ: wartość logiczna<li>Wartość domyślna: prawda | Wartość logiczna wskazująca, czy użytkownik-Gość może mieć dostęp do zawartości grup pakietu Office 365.  To ustawienie nie wymaga licencji na Azure Active Directory — wersja Premium P1.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Typ: ciąg<li>Wartość domyślna: "" | Adres URL linku do wskazówek dotyczących użycia gościa. |
 |  <ul><li>AllowToAddGuests<li>Typ: wartość logiczna<li>Wartość domyślna: prawda | Wartość logiczna wskazująca, czy można dodawać Gości do tego katalogu. <br>To ustawienie może być zastąpione i stać się tylko do odczytu, jeśli *EnableMIPLabels* ma *wartość true* , a zasady gościa są skojarzone z etykietą czułości przypisaną do grupy. |
-|  <ul><li>ClassificationList<li>Typ: ciąg<li>Wartość domyślna: "" |Rozdzielana przecinkami lista prawidłowych wartości klasyfikacji, które mogą być stosowane do grup pakietu Office 365. <br>To ustawienie nie ma zastosowania, gdy EnableMIPLabels = = true.|
+|  <ul><li>ClassificationList<li>Typ: ciąg<li>Wartość domyślna: "" | Rozdzielana przecinkami lista prawidłowych wartości klasyfikacji, które mogą być stosowane do grup pakietu Office 365. <br>To ustawienie nie ma zastosowania, gdy EnableMIPLabels = = true.|
 |  <ul><li>EnableMIPLabels<li>Typ: wartość logiczna<li>Wartość domyślna: "false" |Flaga oznaczająca, czy etykiety czułości publikowane w centrum zgodności Microsoft 365 mogą być stosowane do grup pakietu Office 365. Aby uzyskać więcej informacji, zobacz [przypisywanie etykiet czułości dla grup Office 365](groups-assign-sensitivity-labels.md). |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Przykład: Konfigurowanie zasad gościa dla grup na poziomie katalogu

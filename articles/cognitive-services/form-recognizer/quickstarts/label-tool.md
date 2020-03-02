@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 301b68d0dfaeef6d5cfdd4d7a5a504794ac877f4
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485356"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205830"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Uczenie modelu aparatu rozpoznawania formularzy z etykietami przy użyciu narzędzia do etykietowania przykładowego
 
@@ -35,12 +35,19 @@ Aby ukończyć ten przewodnik Szybki Start, musisz dysponować:
 ## <a name="set-up-the-sample-labeling-tool"></a>Konfigurowanie przykładowego narzędzia do etykietowania
 
 Użyjesz aparatu platformy Docker, aby uruchomić przykładowe narzędzie do etykietowania. Wykonaj następujące kroki, aby skonfigurować kontener platformy Docker. Podstawowe informacje dotyczące platformy Docker i kontenera można znaleźć w temacie [Omówienie platformy Docker](https://docs.docker.com/engine/docker-overview/).
-1. Najpierw zainstaluj platformę Docker na komputerze-hoście. Komputer hosta może być komputerem lokalnym ([Windows](https://docs.docker.com/docker-for-windows/), [macOS](https://docs.docker.com/docker-for-mac/)lub [Linux](https://docs.docker.com/install/)). Można też użyć usługi hostingu platformy Docker na platformie Azure, takiej jak [usługa Azure Kubernetes](https://docs.microsoft.com/azure/aks/index), [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index)lub klaster Kubernetes [wdrożony w Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910). Komputer hosta musi spełniać następujące wymagania sprzętowe:
+1. Najpierw zainstaluj platformę Docker na komputerze-hoście. W tym przewodniku pokazano, jak używać komputera lokalnego jako hosta. Jeśli chcesz używać usługi hostingu platformy Docker na platformie Azure, zobacz Przewodnik dotyczący [wdrażania przykładowego narzędzia do etykietowania](../deploy-label-tool.md) . 
+
+   Komputer hosta musi spełniać następujące wymagania sprzętowe:
 
     | Kontener | Minimalne | Zalecane|
     |:--|:--|:--|
     |Przykładowe narzędzie do etykietowania|2 rdzeń, 4 GB pamięci|4 rdzenie, 8 GB pamięci|
-    
+
+   Zainstaluj platformę Docker na maszynie, postępując zgodnie z odpowiednimi instrukcjami dla danego systemu operacyjnego: 
+   * [Windows](https://docs.docker.com/docker-for-windows/)
+   * [macOS](https://docs.docker.com/docker-for-mac/)
+   * System [Linux](https://docs.docker.com/install/).
+
 1. Pobierz kontener narzędzia do etykietowania przykładowego za pomocą polecenia `docker pull`.
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
@@ -116,17 +123,23 @@ Kliknij przycisk **Uruchom OCR dla wszystkich plików** w okienku po lewej stron
 
 ### <a name="apply-labels-to-text"></a>Zastosuj etykiety do tekstu
 
-Następnie utworzysz etykiety i zastosujemy je do elementów tekstowych, które mają być rozpoznawane przez model.
+Następnie utworzysz Tagi (etykiety) i zastosujemy je do elementów tekstowych, które mają być rozpoznawane przez model.
 
-1. Najpierw użyj okienka edytora tagów, aby utworzyć Tagi (etykiety), które chcesz zidentyfikować.
+1. Najpierw użyj okienka edytora tagów, aby utworzyć Tagi, które chcesz zidentyfikować.
+  1. Kliknij przycisk **+** , aby utworzyć nowy tag.
+  1. Wprowadź nazwę tagu.
+  1. Naciśnij klawisz ENTER, aby zapisać tag.
 1. W edytorze głównym kliknij i przeciągnij, aby wybrać jedno lub wiele wyrazów z wyróżnionych elementów tekstowych.
+1. Kliknij tag, który chcesz zastosować, lub naciśnij odpowiedni klawisz klawiatury. Klucze liczb są przypisywane jako klawisze dostępu dla pierwszych 10 tagów. Można zmienić kolejność tagów przy użyciu ikon strzałek w górę i w dół w okienku Edytora tagów.
+    > [!Tip]
+    > Podczas etykietowania formularzy należy pamiętać o następujących wskazówkach.
+    > * Do każdego zaznaczonego elementu tekstowego można zastosować tylko jeden tag.
+    > * Każdy tag można zastosować tylko raz na stronę. Jeśli wartość pojawia się wiele razy w tym samym formularzu, Utwórz różne Tagi dla każdego wystąpienia. Na przykład: "Invoice nr 1", "Invoice nr 2" i tak dalej.
+    > * Znaczniki nie mogą obejmować między stronami.
+    > * Etykiety wartości w postaci, w jakiej są wyświetlane w formularzu; nie próbuj podzielić wartości na dwie części z dwoma różnymi tagami. Na przykład pole adresu powinno mieć etykietę z pojedynczym tagiem nawet wtedy, gdy obejmuje wiele wierszy.
+    > * Nie dołączaj kluczy do pól otagowanych,&mdash;tylko wartości.
+    > * Dane tabeli powinny być wykrywane automatycznie i będą dostępne w końcowym wyjściowym pliku JSON. Jeśli jednak model nie wykryje wszystkich danych tabeli, możesz również ręcznie oznaczyć te pola. Oznacz każdą komórkę w tabeli inną etykietą. Jeśli formularze zawierają tabele o różnej liczbie wierszy, upewnij się, że tag zawiera co najmniej jeden formularz o największej możliwej tabeli.
 
-    > [!NOTE]
-    > Obecnie nie można zaznaczyć tekstu, który rozciąga się na kilka stron.
-1. Kliknij tag, który chcesz zastosować, lub naciśnij odpowiedni klawisz klawiatury. Można zastosować tylko jeden tag do każdego zaznaczonego elementu tekstowego, a każdy tag może być stosowany tylko raz na stronę.
-
-    > [!TIP]
-    > Klucze liczb są przypisywane jako klawisze dostępu dla pierwszych dziesięciu tagów. Można zmienić kolejność tagów przy użyciu ikon strzałek w górę i w dół w okienku Edytora tagów.
 
 Wykonaj powyższe kroki, aby oznaczyć pięć formularzy, a następnie przejść do następnego kroku.
 

@@ -1,15 +1,15 @@
 ---
-title: Aktualizowanie właściwości konfiguracji magazynu Recovery Services przy użyciu interfejsu API REST
+title: Aktualizowanie konfiguracji magazynu Recovery Services przy użyciu interfejsu API REST
 description: W tym artykule dowiesz się, jak zaktualizować konfigurację magazynu za pomocą interfejsu API REST.
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 3739f95e3962def9ab669970c48b2d1c546fdc0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390537"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204501"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualizowanie konfiguracji magazynu Recovery Services platformy Azure przy użyciu interfejsu API REST
 
@@ -43,7 +43,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Poniższa odpowiedź dla operacji "GET" została pokazana poniżej:
 
-|Nazwa  |Typ  |Opis  |
+|Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
@@ -83,7 +83,7 @@ Następujące typowe definicje są używane do tworzenia treści żądania
 
 Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją interfejsu API REST](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
 
-|Nazwa  |Wymagane  |Typ  |Opis  |
+|Name (Nazwa)  |Wymagany  |Typ  |Opis  |
 |---------|---------|---------|---------|
 |Element ETag     |         |   Ciąg      |  Opcjonalny element eTag       |
 |location     |  true       |Ciąg         |   Lokalizacja zasobu      |
@@ -107,7 +107,7 @@ Poniższy przykład służy do aktualizowania stanu nietrwałego usuwania do "Di
 
 Poniższa odpowiedź dla operacji "PATCH" została pokazana poniżej:
 
-|Nazwa  |Typ  |Opis  |
+|Name (Nazwa)  |Typ  |Opis  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
@@ -134,4 +134,4 @@ Po przesłaniu żądania "Poprawka" zostanie zwrócona odpowiedź 200 (powodzeni
 Aby uzyskać więcej informacji na temat interfejsów API REST platformy Azure, zobacz następujące dokumenty:
 
 - [Interfejs API REST dostawcy usługi Azure Recovery Services](/rest/api/recoveryservices/)
-- [Get started with Azure REST API (Rozpoczęcie pracy z interfejsem API REST platformy Azure)](/rest/api/azure/)
+- [Rozpoczynanie pracy z interfejsem API REST platformy Azure](/rest/api/azure/)

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 9b8f1065660ea8331853f8804e709134fe682ba7
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 0e3246f9da202b54cc0d1285795c25cfafb678d8
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566118"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207034"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>Importowanie kluczy chronionych przez moduł HSM do usługi Key Vault (wersja zapoznawcza)
 
@@ -90,6 +90,9 @@ KEK musi być:
 - generowane w tym samym magazynie kluczy, w którym zamierzasz zaimportować klucz docelowy
 - Utworzono z dozwolonymi operacjami Key ustawionymi na `import`
 
+> [!NOTE]
+> KEK musi mieć element "Import" jako jedyną dozwoloną operację klucza. "Import" wykluczają się wzajemnie poza wszystkimi innymi kluczowymi operacjami.
+
 Za pomocą polecenia [AZ Key magazynu Utwórz](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) polecenie, aby utworzyć element KEK, który ma kluczowe operacje ustawione na `import`. Zapisz identyfikator klucza (`kid`), który jest zwracany przez następujące polecenie. (Wartość `kid` zostanie użyta w [kroku 3](#step-3-generate-and-prepare-your-key-for-transfer)).
 
 ```azurecli
@@ -115,7 +118,7 @@ Prześlij plik BYOK na podłączonym komputerze.
 > [!NOTE] 
 > Importowanie kluczy RSA 1 024-bitowe nie jest obsługiwane. Obecnie Importowanie klucza krzywej eliptyczna (EC) nie jest obsługiwane.
 > 
-> **Znany problem**: Importowanie klucza docelowego RSA 4K z SafeNet Luna sprzętowych modułów zabezpieczeń nie powiodło się. Po rozwiązaniu problemu ten artykuł zostanie zaktualizowany.
+> **Znany problem**: Importowanie klucza docelowego RSA 4K z SafeNet Luna sprzętowych modułów zabezpieczeń jest obsługiwane tylko przy użyciu oprogramowania układowego 7.4.0 lub nowszego.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>Krok 4. przeniesienie klucza do Azure Key Vault
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: c2b590e623062d5d5ae39261b3b5fa5a37a39122
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: daae9c16797ad9c1b85635f5aec7d0cf884e003f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919224"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206014"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Zarządzane tożsamości w usłudze Azure HDInsight
 
@@ -44,11 +44,11 @@ Tożsamości zarządzane są używane w usłudze Azure HDInsight w wielu scenari
 
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [pakiet Enterprise Security](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
-* [Kafka Bring Your Own Key (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
+* [Szyfrowanie dysków klucza zarządzanego przez klienta](disk-encryption.md)
 
 ## <a name="faq"></a>Często zadawane pytania
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>Co się stanie, jeśli usuniesz tożsamość zarządzaną po utworzeniu klastra?
-Gdy wymagana jest tożsamość zarządzana, klaster będzie uruchamiał problemy. Obecnie nie ma możliwości aktualizacji lub zmiany zarządzania tożsamości po utworzeniu klastra. Zalecamy, aby upewnić się, że zarządzana tożsamość nie została usunięta podczas środowiska uruchomieniowego klastra. Alternatywnie można utworzyć ponownie klaster i przypisać nową tożsamość zarządzaną.
+Gdy wymagana jest tożsamość zarządzana, klaster będzie uruchamiał problemy. Obecnie nie można zaktualizować ani zmienić tożsamości zarządzania po utworzeniu klastra. Zalecamy, aby upewnić się, że zarządzana tożsamość nie została usunięta podczas środowiska uruchomieniowego klastra. Alternatywnie można utworzyć ponownie klaster i przypisać nową tożsamość zarządzaną.
 
 ## <a name="next-steps"></a>Następne kroki
 

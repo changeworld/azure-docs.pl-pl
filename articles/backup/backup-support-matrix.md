@@ -3,12 +3,12 @@ title: Tabela obsługi usługi Azure Backup
 description: Zawiera podsumowanie ustawień obsługi i ograniczeń dotyczących usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 15c2fdfbe63dd73e665a4bac01dd2cd1b1144949
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: dd4ec646c786ee686567aa137845e583a4cf47e3
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505870"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206660"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Macierz obsługi dla Azure Backup
 
@@ -35,7 +35,7 @@ W poniższej tabeli opisano funkcje magazynów Recovery Services:
 **Źródła danych w magazynie magazynu** | Maksymalna 54 400 GB. Nie ma limitu kopii zapasowych maszyn wirtualnych platformy Azure.
 **Kopie zapasowe w magazynie** | **Maszyny wirtualne platformy Azure:** Raz dziennie.<br/><br/>**Maszyny chronione przez program DPM/serwera usługi MAB:** Dwa razy dziennie.<br/><br/> **Maszyny z kopią zapasową bezpośrednio przy użyciu agenta Mars:** Trzy razy dziennie.
 **Kopie zapasowe między magazynami** | Kopia zapasowa znajduje się w regionie.<br/><br/> Potrzebujesz magazynu w każdym regionie świadczenia usługi Azure, który zawiera maszyny wirtualne, dla których chcesz utworzyć kopię zapasową. Nie można utworzyć kopii zapasowej w innym regionie.
-**Przenoszenie magazynów** | [Magazyny można przenosić](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) między subskrypcjami lub między grupami zasobów w ramach tej samej subskrypcji. Jednak przeniesienie magazynów między regionami nie jest obsługiwane.
+**Przenoszenie magazynów** | [Magazyny można przenosić](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) między subskrypcjami lub między grupami zasobów w ramach tej samej subskrypcji. Jednak przeniesienie magazynów między regionami nie jest obsługiwane.
 **Przenoszenie danych między magazynami** | Przeniesienie danych kopii zapasowej między magazynami nie jest obsługiwane.
 **Modyfikuj typ magazynu magazynów** | Możesz zmodyfikować typ replikacji magazynu (magazyn Geograficznie nadmiarowy lub Magazyn lokalnie nadmiarowy) dla magazynu przed zapisaniem kopii zapasowych. Po rozpoczęciu wykonywania kopii zapasowych w magazynie nie można zmienić typu replikacji.
 
@@ -151,10 +151,10 @@ Azure Backup dodano funkcję przywracania między regionami w celu wzmocnienia d
 
 | Typ zarządzania kopiami zapasowymi | Obsługiwane                                                    | Obsługiwane regiony |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Maszyna wirtualna platformy Azure               | Tak. Publiczna ograniczona wersja zapoznawcza obsługiwana dla szyfrowanych maszyn wirtualnych i maszyn wirtualnych o pojemności mniejszej niż 4 TB | Środkowo-zachodnie stany USA   |
-| Agent MARS/lokalnie | Nie                                                           | Brak               |
-| SQL/SAP HANA          | Nie                                                           | Brak               |
-| AFS                    | Nie                                                           | Brak               |
+| Maszyna wirtualna platformy Azure               | Tak. Publiczna ograniczona wersja zapoznawcza obsługiwana dla szyfrowanych maszyn wirtualnych i maszyn wirtualnych o pojemności mniejszej niż 4 TB | Zachodnio-środkowe stany USA   |
+| Agent MARS/lokalnie | Nie                                                           | Nie dotyczy               |
+| SQL/SAP HANA          | Nie                                                           | Nie dotyczy               |
+| AFS                    | Nie                                                           | Nie dotyczy               |
 
 
 

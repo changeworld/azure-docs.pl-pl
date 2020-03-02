@@ -7,16 +7,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1e96a3acf2a576e0656afb3abea9dd787bf989a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: dd21b6520dc68a6f7faa5500054b2865556e3dfb
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750053"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205912"
 ---
-# <a name="azure-disk-encryption-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów Azure Disk Encryption
+# <a name="azure-disk-encryption-troubleshooting-guide"></a>Usługa Azure Disk Encryption przewodnik rozwiązywania problemów
 
-Ten przewodnik jest przeznaczony dla specjalistów IT, analityków zabezpieczeń informacji i administratorów chmury, których organizacje używają Azure Disk Encryption. Ten artykuł ma na celu pomoc w rozwiązywaniu problemów związanych z szyfrowaniem dysków.
+Ten przewodnik jest przeznaczony dla specjalistów IT, analityków zabezpieczeń informacji oraz administratorów chmury, w których organizacje używają usługi Azure Disk Encryption. Ten artykuł stanowi pomagające w rozwiązywaniu problemów dotyczących szyfrowania dysku.
 
 Przed wykonaniem poniższych czynności należy najpierw upewnić się, że maszyny wirtualne, które mają zostać zaszyfrowane, znajdują się wśród [obsługiwanych rozmiarów maszyn wirtualnych i w systemach operacyjnych](disk-encryption-overview.md#supported-vms-and-operating-systems)oraz że zostały spełnione wszystkie wymagania wstępne:
 
@@ -26,18 +26,18 @@ Przed wykonaniem poniższych czynności należy najpierw upewnić się, że masz
 
  
 
-## <a name="troubleshooting-linux-os-disk-encryption"></a>Rozwiązywanie problemów z szyfrowaniem dysków systemu operacyjnego Linux
+## <a name="troubleshooting-linux-os-disk-encryption"></a>Rozwiązywanie problemów z szyfrowania dysku systemu operacyjnego Linux
 
-Szyfrowanie dysków systemu operacyjnego Linux musi odinstalować dysk systemu operacyjnego przed uruchomieniem go przez pełny proces szyfrowania dysku. Jeśli nie można odinstalować dysku, komunikat o błędzie "nie można odinstalować po..." prawdopodobnie wystąpi.
+Szyfrowanie dysków systemu operacyjnego (OS) w systemie Linux należy odinstalować dysku systemu operacyjnego przed jego uruchomieniem proces szyfrowania pełnego dysku. Jeśli go nie można odinstalować dysku, komunikat o błędzie z "nie można odinstalować po..." może nastąpić.
 
-Ten błąd może wystąpić, gdy podjęto próbę szyfrowania dysku systemu operacyjnego na maszynie wirtualnej ze środowiskiem, które zostało zmienione z obsługiwanego obrazu galerii zasobów. Odchylenia od obsługiwanego obrazu mogą zakłócać zdolność rozszerzenia do odinstalowania dysku systemu operacyjnego. Przykłady odchyleń mogą zawierać następujące elementy:
-- Dostosowane obrazy nie są już zgodne z obsługiwanym systemem plików ani schematem partycjonowania.
-- Duże aplikacje, takie jak SAP, MongoDB, Apache Cassandra i Docker nie są obsługiwane, gdy są instalowane i uruchamiane w systemie operacyjnym przed szyfrowaniem. Azure Disk Encryption nie jest w stanie bezpiecznie zamknąć tych procesów zgodnie z wymaganiami w przygotowaniu dysku systemu operacyjnego do szyfrowania dysków. Jeśli nadal istnieją aktywne procesy przechowujące uchwyty plików otwartych na dysku systemu operacyjnego, nie można odinstalować dysku systemu operacyjnego, co spowodowało uszkodzenie dysku systemu operacyjnego. 
-- Niestandardowe skrypty, które są uruchamiane w czasie bliskości do włączonego szyfrowania, lub jeśli w trakcie procesu szyfrowania są wprowadzane inne zmiany na maszynie wirtualnej. Ten konflikt może wystąpić, gdy szablon Azure Resource Manager definiuje wiele rozszerzeń do wykonania jednocześnie lub gdy rozszerzenie niestandardowego skryptu lub inna akcja jest uruchamiany jednocześnie w celu szyfrowania dysku. Serializacja i izolowanie takich kroków może rozwiązać ten problem.
-- Ulepszona ochrona systemu Linux (SELinux) nie została wyłączona przed włączeniem szyfrowania, więc krok dezinstalacji nie powiedzie się. SELinux można ponownie włączyć po zakończeniu szyfrowania.
-- Dysk systemu operacyjnego używa schematu menedżera woluminów logicznych (LVM). Mimo że dostępna jest ograniczona Obsługa dysków danych LVM, dysk systemu operacyjnego LVM nie jest.
-- Minimalne wymagania dotyczące pamięci nie są spełnione (w przypadku szyfrowania dysków systemu operacyjnego zaleca się 7 GB).
-- Dyski danych są rekursywnie zainstalowane w katalogu/mnt/lub nawzajem (na przykład/mnt/data1,/mnt/DATA2,/DATA3 +/DATA3/DATA4).
+Ten błąd może wystąpić, gdy podjęto próbę szyfrowania dysku systemu operacyjnego na maszynie wirtualnej ze środowiskiem, które zostało zmienione z obsługiwanego obrazu galerii zasobów. Odchylenia od obsługiwanych obrazów może kolidować z możliwością rozszerzenia odinstalował dysk systemu operacyjnego. Przykłady odchyleń może zawierać następujące elementy:
+- Dostosowanych obrazów dopasowania nie jest już obsługiwany system plików lub schematu partycjonowania.
+- Duże aplikacje, takie jak SAP, MongoDB, Apache Cassandra i platformy Docker nie są obsługiwane, gdy są one zainstalowane i uruchomione w systemie operacyjnym przed szyfrowania. Usługa Azure Disk Encryption nie może zamknąć te procesy bezpiecznie zgodnie z potrzebami w ramach przygotowania dysku systemu operacyjnego dotyczące szyfrowania dysku. Jeśli są nadal aktywne procesy zawierający otwarte dojścia do plików na dysku systemu operacyjnego, dysku systemu operacyjnego nie może być odinstalowane, uniemożliwiające do szyfrowania dysku systemu operacyjnego. 
+- Niestandardowe skrypty uruchamianą w pobliżu Zamknij czasu jest włączone szyfrowanie, lub jeśli inne jest zmieniana na maszynie Wirtualnej podczas procesu szyfrowania. Ten konflikt może się zdarzyć, gdy szablon usługi Azure Resource Manager definiuje wiele rozszerzeń, aby wykonywać operacje jednocześnie lub rozszerzenia niestandardowego skryptu lub innego działania jest uruchamiany jednocześnie do szyfrowania dysku. Serializacja i izolowania takich kroków może rozwiązać ten problem.
+- Linux zwiększonych zabezpieczeń (SELinux) nie zostały wyłączone przed włączeniem szyfrowania, dlatego krok odinstalowywania zakończy się niepowodzeniem. Może być reenabled SELinux, po zakończeniu szyfrowania.
+- Dysk systemu operacyjnego wykorzystuje schemat Menedżer woluminów logicznych (LVM). Ograniczona obsługa dysku danych LVM jest dostępne, nie ma dysku systemu operacyjnego LVM.
+- Nie są spełnione wymagania minimalnej ilości pamięci (7 GB jest zalecane dla szyfrowania dysku systemu operacyjnego).
+- Dyski danych są rekursywnie zainstalowane w katalogu /mnt/ lub każdego innego (na przykład /mnt/data1, /mnt/data2, /data3 + /data3/data4).
 
 ## <a name="update-the-default-kernel-for-ubuntu-1404-lts"></a>Zaktualizuj domyślne jądro dla Ubuntu 14,04 LTS
 
@@ -65,11 +65,11 @@ Rozszerzenie Microsoft. OSTCExtensions. AzureDiskEncryptionForLinux jest przesta
 
 ## <a name="unable-to-encrypt-linux-disks"></a>Nie można zaszyfrować dysków systemu Linux
 
-W niektórych przypadkach szyfrowanie dysku z systemem Linux jest prawdopodobnie zablokowane z "szyfrowanie dysków systemu operacyjnego rozpoczęte", a protokół SSH jest wyłączony. Proces szyfrowania może zająć od 3-16 godzin do końca obrazu galerii giełdowej. W przypadku dodania dysków z danymi o rozmiarze wieloterabajtowym proces może zająć kilka dni.
+W niektórych przypadkach Linux, szyfrowanie dysków prawdopodobnie nie reaguje na "Do szyfrowania dysku systemu operacyjnego" i ustawieniami SSH jest wyłączona. Szyfrowanie może potrwać od 3 – 16 godzin dla obrazu podstawowego galerii. Jeśli zostaną dodane dyski danych o rozmiarze terabajt multi, proces może potrwać dni.
 
-Sekwencja szyfrowania dysków systemu operacyjnego Linux tymczasowo Odinstalowuje dysk systemu operacyjnego. Następnie wykonuje szyfrowanie całego dysku systemu operacyjnego przed jego ponownym zainstalowaniem w stanie zaszyfrowanego. Szyfrowanie dysków systemu Linux nie zezwala na współbieżne korzystanie z maszyny wirtualnej, gdy szyfrowanie jest w toku. Charakterystyka wydajności maszyny wirtualnej może spowodować znaczącą różnicę czasu wymaganego do ukończenia szyfrowania. Te cechy obejmują rozmiar dysku i czy konto magazynu jest magazynem standardowym lub Premium (SSD).
+Sekwencja szyfrowania dysku systemu operacyjnego Linux tymczasowo umożliwia odinstalowanie dysku systemu operacyjnego. Następnie wykonuje blok po bloku szyfrowanie całego dysku systemu operacyjnego, przed jej ponownie instaluje on w stanie zaszyfrowane. Szyfrowanie dysków systemu Linux nie zezwala na współbieżne korzystanie z maszyny wirtualnej, gdy szyfrowanie jest w toku. Charakterystyki wydajności maszyny wirtualnej można wprowadzać znaczące różnice w czas wymagany do ukończenia szyfrowania. Te właściwości obejmują rozmiar dysku i czy jest standardowe konto magazynu lub magazynu w warstwie premium (SSD).
 
-Aby sprawdzić stan szyfrowania, należy wykonać sondowanie pola **komunikat dotyczący postępu** zwróconego za pomocą polecenia [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) . Gdy dysk systemu operacyjnego jest szyfrowany, maszyna wirtualna przechodzi w stan obsługi i wyłącza protokół SSH, aby zapobiec ewentualnemu zakłóceniowi trwającemu procesowi. Komunikat **EncryptionInProgress** jest raportowany przez większość czasu, podczas gdy szyfrowanie jest w toku. Kilka godzin później komunikat **VMRestartPending** monit o ponowne uruchomienie maszyny wirtualnej. Na przykład:
+Aby sprawdzić stan szyfrowania, należy wykonać sondowanie pola **komunikat dotyczący postępu** zwróconego za pomocą polecenia [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) . Podczas szyfrowania dysku systemu operacyjnego maszyny Wirtualnej przechodzi do stanu obsługi i wyłączenie protokołu SSH w celu uniknięcia zakłóceń w celu ciągły proces. Komunikat **EncryptionInProgress** jest raportowany przez większość czasu, podczas gdy szyfrowanie jest w toku. Kilka godzin później komunikat **VMRestartPending** monit o ponowne uruchomienie maszyny wirtualnej. Na przykład:
 
 
 ```azurepowershell
@@ -86,31 +86,17 @@ OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncry
 ProgressMessage            : OS disk successfully encrypted, please reboot the VM
 ```
 
-Po wyświetleniu monitu o ponowne uruchomienie maszyny wirtualnej, gdy maszyna wirtualna zostanie ponownie uruchomiona, należy poczekać 2-3 minut na ponowny rozruch i w przypadku końcowych kroków, które mają zostać wykonane na elemencie docelowym. Komunikat o stanie zmienia się, gdy szyfrowanie jest ostatecznie zakończone. Po udostępnieniu tego komunikatu zaszyfrowaną dysk systemu operacyjnego będzie gotowy do użycia, a maszyna wirtualna będzie gotowa do użycia ponownie.
+Po wyświetleniu monitu o ponowne uruchomienie maszyny Wirtualnej, a po ponownym uruchomieniu maszyny Wirtualnej, należy poczekać 2 – 3 minuty dla ponownego uruchamiania i ostatnie kroki do wykonania w elemencie docelowym. Ukończ zmiany komunikatów stanu, gdy szyfrowanie jest na końcu. Po udostępnieniu tego komunikatu zaszyfrowanego dysku systemu operacyjnego powinien być gotowy do użycia, a maszyna wirtualna jest gotowa do ponownego wykorzystania.
 
-W następujących przypadkach zaleca się przywrócenie maszyny wirtualnej z powrotem do migawki lub kopii zapasowej wykonanej bezpośrednio przed szyfrowaniem:
-   - Jeśli sekwencja ponownego uruchamiania opisana wcześniej, nie wystąpi.
-   - Jeśli w trakcie tego procesu szyfrowanie systemu operacyjnego zakończyło się niepowodzeniem, w trakcie działania nie powiodło się, gdy wystąpił błąd w trakcie wykonywania tej operacji. Przykładem komunikatu jest błąd "nie można odinstalować" opisany w tym przewodniku.
+W następujących przypadkach zaleca się przywrócenia maszyny Wirtualnej do migawki lub kopii zapasowej wykonanej bezpośrednio przed szyfrowania:
+   - Jeśli sekwencja ponowny rozruch, opisanej powyżej, nie jest realizowane.
+   - Gdy informacje rozruchu, komunikat o postępie lub innych raportu o błędach wskaźników, aby funkcja szyfrowania systemu operacyjnego zakończyło się niepowodzeniem w trakcie tego procesu. Przykładowy komunikat błędu "nie można odinstalować" opisanej w tym przewodniku.
 
-Przed kolejną próbą należy ponownie oszacować charakterystykę maszyny wirtualnej i upewnić się, że spełnione są wszystkie wymagania wstępne.
+Przed kolejnym próby to ponowne ocenienie właściwości maszyny Wirtualnej i upewnij się, że są spełnione wszystkie wymagania wstępne.
 
-## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Rozwiązywanie problemów Azure Disk Encryption za zaporą
+## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Rozwiązywanie problemów z usługi Azure Disk Encryption za zaporą
 
-Gdy łączność jest ograniczona przez ustawienia zapory, wymagania serwera proxy lub sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń), zdolność rozszerzenia do wykonywania wymaganych zadań może być zakłócona. Zakłócenia te mogą spowodować komunikaty o stanie, takie jak "stan rozszerzenia nie jest dostępny na maszynie wirtualnej". W oczekiwanych scenariuszach szyfrowanie nie powiedzie się. Poniższe sekcje zawierają kilka typowych problemów z zaporą, które mogą być zbadane.
-
-### <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
-Wszystkie ustawienia sieciowej grupy zabezpieczeń, które są stosowane, muszą nadal zezwalać, aby punkt końcowy spełniał udokumentowane [wymagania wstępne](disk-encryption-overview.md#networking-requirements) konfiguracji sieci na potrzeby szyfrowania dysku.
-
-### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault za zaporą
-
-Gdy szyfrowanie jest włączane przy użyciu [poświadczeń usługi Azure AD](disk-encryption-linux-aad.md#), docelowa maszyna wirtualna musi zezwalać na połączenie z punktami końcowymi Azure Active Directory i Key Vault punktów końcowych. Bieżące punkty końcowe uwierzytelniania Azure Active Directory są obsługiwane w sekcjach 56 i 59 w dokumentacji [pakietu Office 365 adresy URL i zakresy adresów IP](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) . Instrukcje Key Vault są dostępne w dokumentacji dotyczącej sposobu [uzyskiwania dostępu Azure Key Vault za zaporą](../../key-vault/key-vault-access-behind-firewall.md).
-
-### <a name="azure-instance-metadata-service"></a>Instance Metadata Service platformy Azure 
-Maszyna wirtualna musi mieć dostęp do punktu końcowego [usługi metadanych wystąpienia platformy Azure](../windows/instance-metadata-service.md) , który używa dobrze znanego adresu IP bez obsługi routingu (`169.254.169.254`), do którego można uzyskać dostęp tylko z poziomu maszyny wirtualnej.  Konfiguracje serwera proxy, które modyfikują lokalny ruch HTTP na ten adres (na przykład dodanie nagłówka X-forwardd-for) nie są obsługiwane.
-
-### <a name="linux-package-management-behind-a-firewall"></a>Zarządzanie pakietami systemu Linux za zaporą
-
-W czasie wykonywania Azure Disk Encryption dla systemu Linux opiera się na system zarządzania pakietami dystrybucji docelowej w celu zainstalowania wymaganych składników wymaganych wstępnie przed włączeniem szyfrowania. Jeśli ustawienia zapory uniemożliwiają MASZYNom wirtualnym pobranie i zainstalowanie tych składników, będą oczekiwane kolejne błędy. Kroki konfigurowania tego system zarządzania pakietami mogą się różnić w zależności od dystrybucji. W systemie Red Hat, gdy wymagany jest serwer proxy, należy się upewnić, że usługi Subscription-Manager i yum są poprawnie skonfigurowane. Aby uzyskać więcej informacji, zobacz [temat Rozwiązywanie problemów z usługą Subscription-Manager i yum](https://access.redhat.com/solutions/189533).  
+Zobacz [szyfrowanie dysków w sieci izolowanej](disk-encryption-isolated-network.md)
 
 ## <a name="troubleshooting-encryption-status"></a>Rozwiązywanie problemów ze stanem szyfrowania 
 
@@ -122,7 +108,7 @@ Aby wyłączyć Azure Disk Encryption przy użyciu interfejsu wiersza polecenia,
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym dokumencie zawarto więcej informacji o niektórych typowych problemach w Azure Disk Encryption i sposobach rozwiązywania tych problemów. Aby uzyskać więcej informacji o tej usłudze i jej możliwościach, zobacz następujące artykuły:
+W tym dokumencie przedstawiono więcej informacji na temat niektórych typowych problemów dotyczących usługi Azure Disk Encryption i rozwiązywania tych problemów. Aby uzyskać więcej informacji na temat tej usługi i jego możliwości zobacz następujące artykuły:
 
 - [Zastosuj szyfrowanie dysków w Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)
 - [Szyfrowanie danych platformy Azure w spoczynku](../../security/fundamentals/encryption-atrest.md)

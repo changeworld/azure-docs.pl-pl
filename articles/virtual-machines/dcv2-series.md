@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: d500f7a1f28eff1f638a244022226b0aa0e715cb
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: fd8f01f0fc7180d271404ffee4496ff9cbac7222
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199601"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205929"
 ---
 # <a name="preview-dcv2-series"></a>Wersja zapoznawcza: Seria DCv2
 
@@ -41,7 +41,9 @@ Aktualizacje z zachowaniem pamięci: nieobsługiwane
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
 - Maszyny wirtualne z serii DCv2 to [maszyny wirtualne 2. generacji](./linux/generation-2.md#creating-a-generation-2-vm) i obsługują tylko obrazy `Gen2`.
-
+- Obecnie dostępne tylko w Południowe Zjednoczone Królestwo.
+- Poprzednia generacja poufnych maszyn wirtualnych obliczeń: [Seria DC](sizes-previous-gen.md)
+- Tworzenie maszyn wirtualnych DCv2 przy użyciu witryny Azure Portal [Tworzenie maszyny wirtualnej — Portal](./linux/quick-create-portal.md)
 
 
 
