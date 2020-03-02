@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Dowiedz się, jak rozwiązywać typowe problemy podczas włączania i używania Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
-ms.openlocfilehash: b926e651200a4ab23306b0ec2443cb64400b8f7b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 061f812e7567d96bba092ebc9625756c14c46940
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605250"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662471"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Rozwiązywanie problemów Azure Dev Spaces
 
@@ -474,7 +474,7 @@ Aby włączyć Azure Dev Spaces w klastrze AKS, dla którego ruch wychodzący z 
 | cloudflare.docker.com | HTTPS:443 | Aby ściągnąć obrazy z systemem Linux Alpine i innymi Azure Dev Spaces |
 | gcr.io | HTTP: 443 | Aby ściągnąć obrazy Helm/er|
 | storage.googleapis.com | HTTP: 443 | Aby ściągnąć obrazy Helm/er|
-| azds —<guid>.<location>.azds.io | HTTPS:443 | Aby komunikować się z usługami Azure Dev Spaces zaplecza dla Twojego kontrolera. Dokładną nazwę FQDN można znaleźć w "dataplaneFqdn" w% USERPROFILE%\.azds\settings.JSON|
+| azds —<guid>.<location>. azds.io | HTTPS:443 | Aby komunikować się z usługami Azure Dev Spaces zaplecza dla Twojego kontrolera. Dokładną nazwę FQDN można znaleźć w "dataplaneFqdn" w% USERPROFILE%\.azds\settings.JSON|
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Błąd "nie można odnaleźć klastra \<klastra\> w subskrypcji \<Subscription\>"
 
@@ -484,3 +484,14 @@ Aby rozwiązać ten problem:
 
 * Użyj `az aks use-dev-spaces -g <resource group name> -n <cluster name>`, aby zaktualizować bieżący kontekst. To polecenie umożliwia również Azure Dev Spaces w klastrze AKS, jeśli nie jest jeszcze włączona. Alternatywnie możesz użyć `kubectl config use-context <cluster name>`, aby zaktualizować bieżący kontekst.
 * Użyj `az account show`, aby wyświetlić bieżącą subskrypcję platformy Azure, której dotyczysz, i sprawdź, czy jest ona poprawna. Możesz zmienić subskrypcję docelową przy użyciu `az account set`.
+
+### <a name="error-using-dev-spaces-after-rotating-aks-certificates"></a>Błąd przy użyciu funkcji Spaces dev po AKS certyfikatów
+
+Po [obróceniu certyfikatów w KLASTRZE AKS](../aks/certificate-rotation.md)niektóre operacje, takie jak `azds space list` i `azds up`, zakończą się niepowodzeniem. Należy również odświeżyć certyfikaty na kontrolerze Azure Dev Spaces po obróceniu certyfikatów w klastrze.
+
+Aby rozwiązać ten problem, upewnij się, że *kubeconfig* ma zaktualizowane certyfikaty przy użyciu `az aks get-credentials` następnie uruchom polecenie `azds controller refresh-credentials`. Na przykład:
+
+```azurecli
+az aks get-credentials -g <resource group name> -n <cluster name>
+azds controller refresh-credentials -g <resource group name> -n <cluster name>
+```
