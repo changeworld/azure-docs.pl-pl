@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: 6a999df6daf2fde5133143fe9b22a65d628ecfb2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663951"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208563"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor konfigurację klucza zarządzanego przez klienta 
 
@@ -184,7 +184,7 @@ Authorization: Bearer <token>
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principal-Id"
+    "principalId": "principal-id"
     },
   "properties": {
     "provisioningState": "Succeeded",
@@ -198,10 +198,10 @@ Authorization: Bearer <token>
   }
 ```
 
-"principalId" to identyfikator GUID generowany przez zarządzaną usługę tożsamości dla zasobu *klastra* .
+"nazwa podmiotu zabezpieczeń" to identyfikator GUID generowany przez zarządzaną usługę tożsamości dla zasobu *klastra* .
 
 > [!IMPORTANT]
-> Skopiuj i Zachowaj wartość "Cluster-ID", ponieważ będzie ona potrzebna w następnych krokach.
+> Skopiuj i Zachowaj wartość "Principal-ID", ponieważ będzie ona potrzebna w następnych krokach.
 
 
 ### <a name="grant-key-vault-permissions"></a>Przyznawanie uprawnień Key Vault
@@ -213,7 +213,7 @@ Zaktualizuj Key Vault przy użyciu nowych zasad dostępu, które przyznają upra
 Otwórz Key Vault w Azure Portal, a następnie kliknij pozycję "zasady dostępu" i "+ Dodaj zasady dostępu", aby utworzyć nowe zasady z następującymi ustawieniami:
 
 - Uprawnienia klucza: Wybierz uprawnienia "Pobierz", "Zawijanie klucza" i "Cofnij Zawijanie klucza".
-- Wybierz podmiot zabezpieczeń: wprowadź wartość w polu Nazwa klastra, która została zwrócona w odpowiedzi w poprzednim kroku.
+- Wybierz podmiot zabezpieczeń: wprowadź wartość identyfikatora podmiotu zabezpieczeń, która została zwrócona w odpowiedzi w poprzednim kroku.
 
 ![Przyznawanie uprawnień Key Vault](media/customer-managed-keys/grant-key-vault-permissions.png)
 
@@ -528,10 +528,10 @@ Tożsamość jest przypisana do zasobu *klastra* podczas jego tworzenia.
   "location": "region-name"
 }
 ```
-"principalId" jest identyfikatorem GUID, który został wygenerowany przez zarządzaną usługę tożsamości.
+"zasada-ID" jest identyfikatorem GUID, który został wygenerowany przez zarządzaną usługę tożsamości.
 
 > [!IMPORTANT]
-> Skopiuj i Zachowaj wartość "Cluster-ID", ponieważ będzie ona potrzebna w następnych krokach.
+> Skopiuj i Zachowaj wartość "zasada-identyfikator", ponieważ będzie ona potrzebna w następnych krokach.
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Kojarzenie składnika z zasobem *klastra* przy użyciu [składników — Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) interfejsu API
 

@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/22/2020
-ms.openlocfilehash: 4cac2fcd16f779a6b31e36ca175801eedaa31d5d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.date: 02/28/2020
+ms.openlocfilehash: 9d06b34b459bf1d48aa293a889af57fb6192015d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705823"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208869"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -119,7 +119,7 @@ Utwórz listę ofert klientom z linkiem do bezpłatnej wersji próbnej, podając
 > [!NOTE]
 > Tokeny wysyłane przez aplikację za pomocą linku do wersji próbnej mogą być używane tylko w celu uzyskania informacji o użytkowniku za pomocą usługi Azure AD w celu zautomatyzowania tworzenia kont w aplikacji. Konta Microsoft (MSA) nie są obsługiwane na potrzeby uwierzytelniania przy użyciu tego tokenu.
 
-##### <a name="contact-me"></a>Kontakt ze mną
+##### <a name="contact-me"></a>Skontaktuj się z nami
 Zbierz informacje kontaktowe klienta, łącząc system zarządzania relacjami z klientami (CRM). Klient zostanie poproszony o zgodę na udostępnienie swoich informacji. Te szczegóły klienta, wraz z nazwą oferty, IDENTYFIKATORem i źródłem witryny Marketplace, gdzie znalazły ofertę, zostaną wysłane do skonfigurowanego systemu CRM. Aby uzyskać więcej informacji o konfigurowaniu programu CRM, zobacz [łączenie z usługą Zarządzanie potencjalnymi klientami](#connect-lead-management).
 
 ## <a name="example-marketplace-offer-listing"></a>Przykładowa lista ofert w witrynie Marketplace
@@ -134,16 +134,7 @@ Test jest doskonałym sposobem na pokazanie oferty potencjalnym klientom, dając
 
 Po włączeniu dysku testowego zostanie wyświetlony monit o skonfigurowanie środowiska demonstracyjnego dla klientów w celu wypróbowania oferty przez określony czas. 
 
-### <a name="type-of-test-drive"></a>Typ dysku testowego
-
-- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : szablon wdrożenia zawierający wszystkie zasoby platformy Azure, które składają się na Twoje rozwiązanie. Produkty, które pasują do tego scenariusza, korzystają tylko z zasobów platformy Azure.
-- **[Dynamics 365 for Business Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : Firma Microsoft obsługuje i utrzymuje usługę Test Drive (w tym aprowizacji i wdrożenia) dla systemu planowania zasobów przedsiębiorstwa w przedsiębiorstwie  
-- **[Dynamics 365 dla zaangażowania klienta](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** : Firma Microsoft obsługuje i utrzymuje usługę Test Drive (w tym Provisioning and Deployment) dla systemu zaangażowania klientów (sprzedaż, usługa, usługa projektu, usługa pola itp.).  
-- **[Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : Firma Microsoft hostuje i utrzymuje usługę Test Drive (łącznie z obsługą i wdrażaniem) dla systemu planowania zasobów w ramach finansów i operacji (finansów, operacji, produkcji, łańcucha dostaw itp.). 
-- **[Aplikacja logiki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : szablon wdrożenia obejmujący wszystkie złożone architektury rozwiązań. Wszystkie produkty niestandardowe powinny używać tego typu dysku testowego.
-- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : osadzony link do pulpitu nawigacyjnego skompilowanego niestandardowo. Produkty, które chcą zaprezentować interaktywną wizualizację Power BI, powinny używać tego typu dysku testowego. Wszystko, co musisz przekazać, to osadzony adres URL Power BI.
-
-#### <a name="additional-test-drive-resources"></a>Dodatkowe zasoby dotyczące dysku testowego
+#### <a name="test-drive-resources"></a>Zasoby na dysku testowym
 - [Testowanie najlepszych rozwiązań technicznych](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Testowanie najlepszych rozwiązań marketingowych](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [Testowanie dysku — Omówienie jednego modułu stronicowania](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
@@ -212,7 +203,7 @@ Istnieją dwa rodzaje zmian dostępnych dla komercyjnych wydawców portalu Marke
 - **Identyfikatory dzierżawców** (wymagane): Każda Poprawka niestandardowa może być przeznaczona do maksymalnie 20 identyfikatorów dzierżawy. W przypadku dodania niestandardowej poprawki należy podać co najmniej jeden identyfikator dzierżawy. Identyfikator dzierżawy identyfikuje Twojego klienta na platformie Azure. Możesz polecić klienta dla tego identyfikatora i znaleźć go, przechodząc do portal.azure.com > Azure Active Directory > właściwości. Wartość identyfikatora katalogu to identyfikator dzierżawy (na przykład 50c464d3-4930-494c-963c-1e951d15360e). Możesz również wyszukać identyfikator dzierżawy organizacji klienta przy użyciu adresu URL nazwy domeny, co [to jest mój Microsoft Azure i identyfikator dzierżawy pakietu Office 365?](https://www.whatismytenantid.com).
 - **Opis** (opcjonalnie): Opcjonalnie podaj przyjazny opis identyfikatora dzierżawy, który pomaga zidentyfikować klienta, którego celem jest zmiana.
 
-#### <a name="terms-and-conditions"></a>Postanowienia
+#### <a name="terms-and-conditions"></a>Warunki i postanowienia
 
 Jeśli chcesz podać własne niestandardowe warunki i postanowienia, możesz je wprowadzić w polu warunki i postanowienia. W tym polu można wprowadzić do 10 000 znaków tekstu. Jeśli warunki i postanowienia wymagają dłuższego opisu, wprowadź w tym polu link pojedynczego adresu URL, w którym można znaleźć warunki i postanowienia. Będzie ona wyświetlana klientom jako aktywne łącze.
 
@@ -234,7 +225,7 @@ Podaj szczegóły, które mają być wyświetlane w witrynie Marketplace, w tym 
 - **Nazwa** (wymagana): Nazwa zdefiniowana w tym miejscu zostanie wyświetlona jako tytuł oferty w wybranym portalu Marketplace. Nazwa jest wstępnie wypełniana na podstawie poprzedniej nowej pozycji **oferty** . Nazwa może być znakiem towarowym. Nie może zawierać znaków emoji (chyba że są to symbole towarowe i praw autorskich) i muszą być ograniczone do 50 znaków.
 - **Podsumowanie** (wymagane): Podaj krótki opis oferty, który ma być używany na potrzeby wyników wyszukiwania na liście w portalu Marketplace. W tym polu można wprowadzić do 100 znaków tekstu.
 - **Opis** (wymagane): Podaj opis oferty, która ma zostać wyświetlona na liście przeglądów portalu Marketplace. Rozważ uwzględnienie propozycji wartości, najważniejszych korzyści, wszelkich kategorii lub związków branżowych, możliwości zakupu w aplikacji, wszelkich wymaganych informacji oraz linku, aby dowiedzieć się więcej.
-W tym polu można wprowadzić do 3 000 znaków tekstu. Aby uzyskać dodatkowe wskazówki, zobacz artykuł [Napisz doskonały opis aplikacji](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
+Do 3 000 znaków tekstu można wprowadzić w tym polu, w tym znaczników. Aby uzyskać dodatkowe wskazówki, zobacz artykuł [Napisz doskonały opis aplikacji](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
 - **Słowa kluczowe wyszukiwania**: Wprowadź do trzech słów kluczowych wyszukiwania, których klienci mogą używać w celu znalezienia oferty w portalu Marketplace.
 - **Instrukcje dotyczące** rozpoczynania pracy (wymagane): Wyjaśnij, jak skonfigurować i rozpocząć korzystanie z aplikacji dla potencjalnych klientów.  Ten przewodnik Szybki Start może zawierać linki do bardziej szczegółowej dokumentacji online. W tym polu można wprowadzić do 3 000 znaków tekstu.
 
@@ -290,7 +281,7 @@ Skorzystaj z poniższych instrukcji, aby użyć edytora tekstu sformatowanego:
 #### <a name="files-and-images"></a>Pliki i obrazy
 
 - **Dokumenty** (wymagane): Dodaj powiązane dokumenty marketingowe dla oferty w formacie PDF, co daje co najmniej jedną (1) i trzy (3) dokumenty na ofertę.
-- **Obrazy** (opcjonalnie): istnieje wiele miejsc, w których obrazy logo oferty mogą pojawić się w portalu Marketplace, co wymaga następujących rozmiarów — małe: 48 x 48 pikseli _(wymagane),_ średni: 90 x 90 pikseli, duże: 216 x 216 pikseli _(wymagane),_ szerokie: 255 x 115 pikseli i Hero: 815 x 290 pikseli. Wszystkie obrazy muszą znajdować się w. Format PNG.
+- **Obrazy** (opcjonalnie): istnieje wiele miejsc, w których obrazy logo oferty mogą pojawić się w portalu Marketplace, co wymaga następujących rozmiarów — małe: 48 x 48 pikseli _(wymagane),_ średni: 90 x 90 pikseli _(wymagane)_ , duże: 216 x 216 pikseli _(wymagane),_ szerokie: 255 x 115 pikseli i Hero: 815 x 290 pikseli. Wszystkie obrazy muszą znajdować się w. Format PNG.
 - **Zrzuty ekranu** (wymagane): Dodaj zrzuty ekranu pokazujące Twoją ofertę. Można dodać maksymalnie pięć (5) zrzutów ekranu i mieć rozmiar o 1280 x 720 pikseli. Wszystkie obrazy muszą znajdować się w. Format PNG.
 - **Wideo** (opcjonalnie): Dodaj linki do filmów wideo pokazujących Twoją ofertę. Możesz używać linków do filmów wideo w usłudze YouTube i/lub Vimeo, które są wyświetlane wraz z ofertą dla klientów. Należy również wprowadzić obraz miniatury wideo o rozmiarach do 1280 x 720 pikseli w formacie PNG. Możesz wyświetlić maksymalnie cztery wideo dla każdej oferty.
 
@@ -406,7 +397,7 @@ Wybierz częstotliwość, z jaką klienci muszą uiścić cenę. Należy podać 
 - **Cena**: USD miesięcznie lub USD rocznie
 
 Ceny ustawione w walucie lokalnej (USD = Stany Zjednoczone dolara) są konwertowane na walutę lokalną wszystkich wybranych rynków przy użyciu bieżących stawek wymiany dostępnych podczas instalacji. Sprawdź te ceny przed opublikowaniem, eksportując arkusz kalkulacyjny z cennikiem i sprawdzając cenę na każdym rynku. Jeśli chcesz ustawić ceny niestandardowe na indywidualnym rynku, zmodyfikuj i zaimportuj arkusz cen. Użytkownik jest odpowiedzialny za sprawdzanie poprawności cen i ich ustawienia.
-*\*Najpierw musisz zapisać zmiany cen, aby włączyć eksportowanie danych cen.*
+*\*należy najpierw zapisać zmiany cen, aby umożliwić eksportowanie danych cen.*
 
 Uważnie Przejrzyj ceny przed opublikowaniem, ponieważ istnieją pewne ograniczenia dotyczące tego, co można zmienić po opublikowaniu planu:
 
@@ -447,7 +438,7 @@ Mimo że usługa SaaS oferuje identyfikatory dzierżawców do definiowania prywa
 
 Wybranie oferty w programie CSP pozwala dostawcom rozwiązań w chmurze sprzedawać produkt w ramach rozwiązania do swoich klientów. Aby uzyskać więcej informacji, zobacz [dostawcy rozwiązań w chmurze](https://go.microsoft.com/fwlink/?linkid=2111109).
 
-## <a name="publish"></a>Publikuj
+## <a name="publish"></a>Publikowanie
 
 Po zakończeniu wszystkich wymaganych sekcji oferty wybierz pozycję **Publikuj** w prawym górnym rogu portalu. Nastąpi przekierowanie do strony **Recenzja i publikowanie** .
 

@@ -1,0 +1,58 @@
+---
+title: Azure Security Center funkcje dla obsługiwanych zasobów usługi Azure PaaS.
+description: Na tej stronie przedstawiono dostępność Azure Security Center funkcji dla obsługiwanych zasobów usługi Azure PaaS.
+services: security-center
+documentationcenter: na
+author: memildin
+manager: rkarlin
+ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
+ms.service: security-center
+ms.devlang: na
+ms.topic: conceptual
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 03/01/2020
+ms.author: memildin
+ms.openlocfilehash: 85460724071347a768a924f34290a75d2383b4c0
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78209365"
+---
+# Pokrycie funkcji dla usług Azure PaaS Services<a name="paas-services"></a>
+
+W poniższej tabeli przedstawiono dostępność Azure Security Center funkcji dla obsługiwanych zasobów usługi Azure PaaS.
+
+|Usługa|Zalecenia (bezpłatnie)|Alerty zabezpieczeń (standard)|Ocena luk w zabezpieczeniach (standardowa)|
+|:----|:----:|:----:|:----:|
+|Azure App Service|✔|✔|-|
+|Konto Azure Automation|✔|-|-|
+|Konto Azure Batch|✔|-|-|
+|Azure Blob Storage|✔|✔|-|
+|Azure Cache for Redis|✔|-|-|
+|usług Azure Cloud Services|✔|-|-|
+|Azure Cognitive Search|✔|-|-|
+|Azure Container Registry|-|-|✔|
+|Azure Cosmos DB*|-|✔|-|
+|Azure Data Lake Analytics|✔|-|-|
+|Azure Data Lake Storage|✔|-|-|
+|Azure Database for MySQL *|✔|✔|-|
+|Azure Database for PostgreSQL *|✔|✔|-|
+|Przestrzeń nazw usługi Azure Event Hubs|✔|-|-|
+|Aplikacja usługi Azure Functions|✔|-|-|
+|W usłudze Azure Key Vault|✔|✔ *|-|
+|Azure Kubernetes Service|✔|✔|-|
+|Azure Load Balancer|✔|-|-|
+|Azure Logic Apps|✔|-|-|
+|Bazy danych SQL Azure|✔|✔|✔|
+|Azure Service Bus przestrzeń nazw|✔|-|-|
+|Konto usługi Azure Service Fabric|✔|-|-|
+|Konta usługi Azure Storage|✔|-|-|
+|Usługa Azure Stream Analytics|✔|-|-|
+|Subskrypcja platformy Azure|✔ **|✔|-|
+|Azure Virtual Network</br> (w tym podsieci, karty sieciowe i sieciowe grupy zabezpieczeń)|✔|-|-|
+
+\* te funkcje są obecnie obsługiwane w wersji zapoznawczej.
+
+zalecenia dotyczące \*\* Azure Active Directory (Azure AD) są dostępne tylko dla subskrypcji w warstwie Standardowa.

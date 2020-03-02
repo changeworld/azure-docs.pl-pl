@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 635a66f0275d4df4f858bff61be80900dc58c6fb
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 2e5b01a271eb290229904fc98d1268760e01620d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164478"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208886"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Warstwy cenowe w Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -30,7 +30,7 @@ Aby wybrać warstwę cenową, należy użyć poniższej tabeli jako punktu wyjś
 | Warstwa cenowa | Docelowe obciążenia |
 |:-------------|:-----------------|
 | Podstawowa | Obciążenia, które wymagają lekkich obliczeń i wydajności operacji we/wy. Przykłady obejmują serwery używane do programowania lub testowania oraz nierzadko używane aplikacje. |
-| Ogólnego przeznaczenia | Większość obciążeń firmowych, które wymagają zrównoważonych obliczeń i pamięci dzięki skalowalnej przepływności we/wy. Przykłady obejmują serwery do hostowania aplikacji internetowych i mobilnych oraz inne aplikacje dla przedsiębiorstw.|
+| Ogólne zastosowanie | Większość obciążeń firmowych, które wymagają zrównoważonych obliczeń i pamięci dzięki skalowalnej przepływności we/wy. Przykłady obejmują serwery do hostowania aplikacji internetowych i mobilnych oraz inne aplikacje dla przedsiębiorstw.|
 | Pamięć | Obciążenia baz danych o wysokiej wydajności, które wymagają wydajności w pamięci w celu przyspieszenia przetwarzania transakcji i wyższego współbieżności. Przykładami mogą być serwery do przetwarzania danych w czasie rzeczywistym oraz aplikacji transakcyjnych lub analitycznych o wysokiej wydajności.|
 
 Po utworzeniu serwera można zmienić liczbę rdzeni wirtualnych, generowanie sprzętu i warstwę cenową (oprócz i z Basic) w ciągu kilku sekund. Można także niezależnie dostosować ilość miejsca do magazynowania i okres przechowywania kopii zapasowych w górę lub w dół bez przestojów aplikacji. Po utworzeniu serwera nie można zmienić typu magazynu kopii zapasowej. Aby uzyskać więcej informacji, zobacz sekcję [skalowanie zasobów](#scale-resources) .
@@ -39,7 +39,7 @@ Po utworzeniu serwera można zmienić liczbę rdzeni wirtualnych, generowanie sp
 
 Zasoby obliczeniowe są udostępniane jako rdzeni wirtualnych, które reprezentują logicznego procesora bazowego sprzętu. Chiny Wschodnie 1, Chiny Północne 1, US DoD (region środkowy) i US DoD (region wschodni) używają logicznych procesorów CPU, które są oparte na procesorach Intel E5-2673 v3 (Haswell) 2,4 GHz. Wszystkie pozostałe regiony wykorzystują jednostki logiczne procesorów generacji 5, które są oparte na procesorach Intel E5-2673 v4 (Broadwell) 2,3 GHz.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Magazyn
 
 Zapewniana ilość miejsca w magazynie to pojemność magazynu dostępna dla serwera Azure Database for PostgreSQL. Magazyn jest używany dla plików bazy danych, plików tymczasowych, dzienników transakcji i dzienników serwera PostgreSQL. Całkowita ilość dostępnego miejsca w magazynie określa również wydajność we/wy dostępną dla serwera.
 
@@ -67,7 +67,7 @@ Możesz monitorować użycie we/wy w Azure Portal lub przy użyciu poleceń inte
 
 ### <a name="reaching-the-storage-limit"></a>Osiąganie limitu magazynu
 
-Serwery z magazynem o rozmiarze mniejszym niż 10 GB są oznaczone jako tylko do odczytu, jeśli ilość wolnego miejsca w magazynie jest mniejsza niż 512 MB obsługiwanego rozmiaru magazynu. Serwery z magazynem o rozmiarze mniejszym niż 100 GB są oznaczone jako tylko do odczytu, jeśli ilość wolnego miejsca w magazynie jest mniejsza niż 5% rozmiaru magazynu. Serwery z aprowizowanym magazynem o rozmiarze większym niż 100 GB są oznaczane jako tylko do odczytu, jeśli ilość wolnego miejsca w magazynie jest mniejsza niż 5 GB.
+Serwery z magazynem o rozmiarze mniejszym niż 100 GB są oznaczone jako tylko do odczytu, jeśli ilość wolnego miejsca w magazynie jest mniejsza niż 512 MB lub 5% rozmiaru magazynu. Serwery z aprowizowanym magazynem o rozmiarze większym niż 100 GB są oznaczane jako tylko do odczytu, jeśli ilość wolnego miejsca w magazynie jest mniejsza niż 5 GB.
 
 Jeśli na przykład Zainicjowano obsługę administracyjną 110 GB miejsca w magazynie, a rzeczywiste wykorzystanie przekracza 105 GB, serwer jest oznaczony jako tylko do odczytu. Alternatywnie, jeśli masz zainicjowany 5 GB miejsca w magazynie, serwer jest oznaczony jako tylko do odczytu, gdy ilość wolnego miejsca osiągnie mniej niż 512 MB.
 
@@ -100,7 +100,7 @@ W przypadku zmiany liczby rdzeni wirtualnych, wygenerowania sprzętu lub warstwy
 
 Skalowanie magazynu i zmiana okresu przechowywania kopii zapasowych to prawdziwe operacje online. Brak przestoju i nie ma to znaczenia dla Twojej aplikacji. Jako że liczba operacji we/wy na sekundę jest skalowana wraz z rozmiarem magazynu, można zwiększyć liczbę operacji we/wy dla serwera, skalowanie w górę magazynu.
 
-## <a name="pricing"></a>Ceny
+## <a name="pricing"></a>Cennik
 
 Najbardziej aktualne informacje o cenach można znaleźć na [stronie cennika](https://azure.microsoft.com/pricing/details/PostgreSQL/)usługi. Aby wyświetlić koszt dla wybranej konfiguracji, [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) przedstawia miesięczny koszt na karcie **warstwa cenowa** na podstawie wybranych opcji. Jeśli nie masz subskrypcji platformy Azure, możesz skorzystać z kalkulatora cen platformy Azure, aby uzyskać szacowaną cenę. W witrynie sieci Web [kalkulatora cen platformy Azure](https://azure.microsoft.com/pricing/calculator/) wybierz pozycję **Dodaj elementy**, rozwiń kategorię **bazy danych** i wybierz **Azure Database for PostgreSQL** , aby dostosować opcje.
 

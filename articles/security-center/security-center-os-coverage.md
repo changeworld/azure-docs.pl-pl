@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 39e2deead1affd750d9a5e68985b02ebfe8e0efd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e13149ba802f0f8b9a565e0aabd86ae05167f18b
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921304"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208825"
 ---
 # <a name="supported-platforms"></a>Obsługiwane platformy 
 
@@ -36,12 +36,11 @@ W przypadku środowiska platformy Azure aktywowanego w ramach subskrypcji platfo
 > [!NOTE]
 > Aby uzyskać pełny zestaw funkcji zabezpieczeń, musisz mieć [agenta log Analytics](../azure-monitor/platform/agents-overview.md#log-analytics-agent), który jest używany przez Azure Security Center, zainstalowanych i [prawidłowo skonfigurowany do wysyłania danych do Azure Security Center](security-center-enable-data-collection.md#manual-agent).
 
-
 W poniższych sekcjach wymieniono obsługiwane systemy operacyjne serwera, na których można uruchomić [agenta log Analytics](../azure-monitor/platform/agents-overview.md#log-analytics-agent), który jest używany przez Azure Security Center.
 
 ### Systemy operacyjne Windows Server<a name="os-windows"></a>
 
-|System operacyjny|Obsługiwane przez Azure Security Center|Obsługa integracji z usługą Microsoft Defender ATP|
+|OS|Obsługiwane przez Azure Security Center|Obsługa integracji z usługą Microsoft Defender ATP|
 |:---|:-:|:-:|
 |Windows Server 2019|✔|X|
 |Windows Server 2016|✔|✔|
@@ -85,38 +84,6 @@ Maszyny wirtualne są również tworzone w ramach subskrypcji klienta jako czę�
 ### Cloud Services<a name="cloud-services"></a>
 
 Obsługiwane są również maszyny wirtualne działające w usłudze w chmurze. Monitorowane są tylko role sieć Web i proces roboczy usług Cloud Services, które działają w gniazdach produkcyjnych. Aby dowiedzieć się więcej o usługach w chmurze, zobacz [Omówienie usługi Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
-
-## Usługi PaaS Services<a name="paas-services"></a>
-
-Następujące zasoby usługi Azure PaaS są obsługiwane przez Azure Security Center:
-
-* SQL
-* PostGreSQL
-* MySQL
-* CosmosDB
-* Konto magazynu
-* App Service
-* Funkcja
-* Usługa w chmurze
-* VNet
-* Podsieć
-* Karta sieciowa
-* Sieciowa grupa zabezpieczeń
-* Konto usługi Batch
-* Konto usługi Service Fabric
-* Konto usługi Automation
-* Moduł równoważenia obciążenia
-* Wyszukiwanie
-* Przestrzeń nazw magistrala usług
-* Stream Analytics
-* Przestrzeń nazw centrum zdarzeń
-* Aplikacje logiki
-* Redis
-* Data Lake Analytics
-* Data Lake Store
-* Magazyn kluczy
-
-Aby dowiedzieć się więcej na temat obsługiwanych funkcji dla powyższej listy zasobów PaaS, zobacz [obsługiwane funkcje usług PaaS Services](security-center-services.md#paas-services).
 
 Obsługiwane jest również ochrona Virtual Machines znajdujących się w Azure Stack. Aby uzyskać więcej informacji na temat integracji Security Center z Azure Stack, zobacz Dołączanie [Azure Stack maszyn wirtualnych do Security Center](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack).
 

@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 899f4cba31afed812fa1643b925a38812308042e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552937"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208546"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Ocena i zalecenia dotyczące programu Endpoint Protection w Azure Security Center
 
-Azure Security Center zapewnia oceny kondycji [obsługiwanych](security-center-services.md#supported-endpoint-protection-solutions-) wersji rozwiązań programu Endpoint Protection. W tym artykule opisano scenariusze, które powodują Security Center w celu wygenerowania następujących dwóch zaleceń:
+Azure Security Center zapewnia oceny kondycji [obsługiwanych](security-center-services.md#endpoint-supported) wersji rozwiązań programu Endpoint Protection. W tym artykule opisano scenariusze, które powodują Security Center w celu wygenerowania następujących dwóch zaleceń:
 
 * **Zainstaluj rozwiązania programu Endpoint Protection na maszynie wirtualnej**
 * **Rozwiązywanie problemów z kondycją programu Endpoint Protection na maszynach**
 
-## <a name="windows-defender"></a>Windows Defender
+## <a name="windows-defender"></a>Usługa Windows Defender
 
 * W Security Center zalecane jest **"Instalowanie rozwiązań programu Endpoint Protection na maszynie wirtualnej"** po uruchomieniu [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) , a wynikiem jest **AMServiceEnabled: false**
 
@@ -181,4 +181,4 @@ Dzienniki rozszerzeń programu Microsoft chroniące przed złośliwym kodem są 
 
 ### <a name="support"></a>Pomoc techniczna
 
-Aby uzyskać pomoc, skontaktuj się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Lub plik zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj [pomocy technicznej Microsoft Azure — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Aby uzyskać pomoc, skontaktuj się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Lub plik zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj temat [Microsoft Azure support — często zadawane pytania](https://azure.microsoft.com/support/faq/).
