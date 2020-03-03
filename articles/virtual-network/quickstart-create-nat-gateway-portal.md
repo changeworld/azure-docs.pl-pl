@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 429c221609005136663d5e64a1b8650027cba411
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 231c5f1bc6fd76f4f9e89d2d53639e9abe6cde0e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588743"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228324"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Szybki Start: Tworzenie bramy NAT przy użyciu Azure Portal
 
@@ -32,27 +32,24 @@ Ten przewodnik Szybki Start przedstawia sposób korzystania z usługi Azure Virt
 
 Zaloguj się do [Azure portal](https://portal.azure.com).
 
-### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
+## <a name="virtual-network-and-parameters"></a>Sieć wirtualna i parametry
 
-Przed wdrożeniem maszyny wirtualnej i użyciem bramy NAT należy utworzyć grupę zasobów i sieć wirtualną.  
+Przed wdrożeniem maszyny wirtualnej i użyciem bramy NAT należy utworzyć grupę zasobów i sieć wirtualną.
 
-1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **sieci** > **sieci wirtualnej**lub Wyszukaj **sieć wirtualną** w obszarze wyszukiwania w portalu Marketplace.
+W tej sekcji należy zamienić następujące parametry w krokach z poniższymi informacjami:
 
-2. W obszarze **Utwórz sieć wirtualną** wprowadź lub wybierz następujące informacje:
+| Parametr                   | Wartość                |
+|-----------------------------|----------------------|
+| **\<nazwy grupy zasobów >**  | myResourceGroupNAT |
+| **\<nazwę sieci wirtualnej >** | myVNet          |
+| **\<nazwę regionu >**          | Wschodnie stany USA 2      |
+| **> \<przestrzeni adresowej IPv4**   | 192.168.0.0 \ 16          |
+| **\<nazwę podsieci >**          | mySubnet        |
+| **\<zakres adresów podsieci >** | 192.168.0.0 \ 24          |
 
-    | Ustawienie | Value |
-    | ------- | ----- |
-    | Name (Nazwa) | Wprowadź nazwę **myVNet**. |
-    | Przestrzeń adresowa | wprowadź wartość **192.168.0.0/16**. |
-    | Subskrypcja | Wybierz subskrypcję.|
-    | Grupa zasobów | Wybierz pozycję Create New- **myResourceGroupNAT**. |
-    | Location | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
-    | Podsieć — nazwa | Wprowadź nazwę moja **podsieć**. |
-    | Zakres adresów podsieci: 10.41.0.0/24 | Wprowadź **192.168.0.0/24**. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **Utwórz**.
-
-### <a name="create-a-vm-to-use-the-nat-gateway"></a>Tworzenie maszyny wirtualnej do korzystania z bramy translatora adresów sieciowych
+## <a name="create-a-vm-to-use-the-nat-gateway"></a>Tworzenie maszyny wirtualnej do korzystania z bramy translatora adresów sieciowych
 
 Teraz utworzymy maszynę wirtualną do korzystania z usługi translatora adresów sieciowych. Ta maszyna wirtualna ma publiczny adres IP do użycia jako publiczny adres IP na poziomie wystąpienia, który umożliwia dostęp do maszyny wirtualnej. Usługa translatora adresów sieciowych obsługuje kierunek przepływu i zastępuje domyślne miejsce docelowe w podsieci. Publiczny adres IP maszyny wirtualnej nie będzie używany dla połączeń wychodzących.
 
@@ -96,14 +93,14 @@ W tej sekcji szczegółowo opisano, jak utworzyć i skonfigurować następujące
 
 2. W obszarze **Utwórz publiczny adres IP**wprowadź lub wybierz następujące informacje:
 
-    | Ustawienie | Value |
+    | Ustawienie | Wartość |
     | ------- | ----- |
     | Wersja protokołu IP | Wybierz pozycję **IPv4**.
     | SKU | Wybierz opcję **Standardowa**.
     | Name (Nazwa) | Wprowadź **myPublicIP**. |
     | Subskrypcja | Wybierz subskrypcję.|
     | Grupa zasobów | Wybierz pozycję **myResourceGroupNAT**. |
-    | Location | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
+    | Lokalizacja | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
 
 3. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **Utwórz**.
 

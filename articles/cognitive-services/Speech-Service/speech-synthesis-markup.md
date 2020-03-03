@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: c4a27db8bec6dbbd2f1b2be8acfdd034d45d37d5
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 499770b664757ec0f3a0bd3b26e0de36007741b6
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561924"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228077"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Ulepszanie syntezy przy użyciu języka znaczników syntezy mowy (SSML)
 
@@ -347,6 +347,103 @@ Alfabety fonetyczne składają się z telefonów, które składają się z liter
     </voice>
 </speak>
 ```
+
+## <a name="use-custom-lexicon-to-improve-pronunciation"></a>Korzystanie z leksykonów niestandardowych w celu usprawnienia wymowy
+
+Czasami TTS nie może dokładnie wymawiać wyrazu, na przykład nazwy firmy lub obcej. Deweloperzy mogą definiować odczytywanie tych jednostek w SSML za pomocą tagu `phoneme` i `sub` lub definiować odczytywanie wielu jednostek, odwołując się do niestandardowego pliku leksykonu przy użyciu tagu `lexicon`.
+
+**Obowiązuje**
+
+```XML
+<lexicon uri="string"/>
+```
+
+**Attributes**
+
+| Atrybut | Opis | Wymagane / opcjonalne |
+|-----------|-------------|---------------------|
+| `uri` | Adres zewnętrznego dokumentu innych obszarów roboczych. | Wymagany. |
+
+**Użycie**
+
+Krok 1. Definiowanie słownika niestandardowego 
+
+Można zdefiniować odczytywanie jednostek przez listę niestandardowych elementów leksykonu przechowywanych jako plik XML lub innych obszarów roboczych.
+
+**Przykład**
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="ipa" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme> 
+    <alias>By the way</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme> 
+    <phoneme> bɛˈniːnji</phoneme>
+  </lexeme>
+</lexicon>
+```
+
+Każdy element `lexeme` jest elementem leksykonu. `grapheme` zawiera tekst opisujący orthograph `lexeme`. Formularz odczytu można podać jako `alias`. Ciąg telefonu może być podany w `phoneme` elementu.
+
+Element `lexicon` zawiera co najmniej jeden element `lexeme`. Każdy element `lexeme` zawiera co najmniej jeden element `grapheme` i jeden lub więcej elementów `grapheme`, `alais`i `phoneme`. Element `grapheme` zawiera tekst opisujący <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>. Elementy `alias` są używane do wskazania wymowy akronimu lub skróconego terminu. Element `phoneme` zawiera tekst opisujący sposób wymawiania `lexeme`.
+
+Aby uzyskać więcej informacji na temat niestandardowego pliku leksykonu, zobacz [Specyfikacja leksykonu wymowy (innych obszarów roboczych) w wersji 1,0](https://www.w3.org/TR/pronunciation-lexicon/) w witrynie internetowej W3C.
+
+Krok 2. przekazywanie niestandardowego pliku leksykonu utworzonego w kroku 1 online, można go przechowywać w dowolnym miejscu i sugerujemy przechowywanie go w Microsoft Azure, na przykład [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+
+Krok 3. odwoływanie się do niestandardowego pliku leksykonu w SSML
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
+          xmlns:mstts="http://www.w3.org/2001/mstts" 
+          xml:lang="en-US">
+<lexicon uri="http://www.example.com/customlexicon.xml"/>
+BTW, we will be there probably 8:00 tomorrow morning.
+Could you help leave a message to Robert Benigni for me?
+</speak>
+```
+"BTW" zostanie odczytana jako "w sposób". "Benigni" zostanie odczytany przy użyciu podanej IPA "bɛ ˈ ni ː NJI".  
+
+**Ograniczenie**
+- Rozmiar pliku: niestandardowy limit rozmiaru pliku leksykonu to 100KB, jeśli ten rozmiar zostanie przekroczony, żądanie syntezy zakończy się niepowodzeniem.
+- Odświeżanie pamięci podręcznej leksykonu: niestandardowy Leksykon zostanie zapisany w pamięci podręcznej przy użyciu identyfikatora URI w usłudze TTS podczas pierwszego ładowania. Leksykon z tym samym identyfikatorem URI nie zostanie ponownie załadowany w ciągu 15 minut, więc zmiana leksykonu niestandardowego musi odczekać od 15 minut, aby zaczęła obowiązywać.
+
+**Zestaw telefonu SAPI**
+
+W powyższym przykładzie używamy międzynarodowego zestawu IPA (International Fonetyczn Association). Sugerujemy, aby deweloperzy korzystali z IPA, ponieważ IPA jest standardem międzynarodowym. 
+
+Biorąc pod uwagę, że IPA nie jest łatwy do zapamiętania, firma Microsoft definiuje zestaw dla numerów telefonów SAPI dla siedmiu języków (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`i `zh-TW`). Aby uzyskać więcej informacji o alfabecie, zobacz [odwołanie do alfabetu fonetycznego](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx).
+
+Możesz użyć zestawu telefonów SAPI z niestandardowymi leksykonami, jak pokazano poniżej. Ustaw wartość alfabetu na **SAPI**.
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="sapi" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme> 
+    <alias> By the way </alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme>
+    <phoneme> b eh 1 - n iy - n y iy </phoneme>
+  </lexeme>
+</lexicon>
+```
+
+Aby uzyskać więcej informacji na temat szczegółowego alfabetu SAPI, zobacz [odwołanie do alfabetu SAPI](sapi-phoneset-usage.md).
 
 ## <a name="adjust-prosody"></a>Dostosuj Prosody
 

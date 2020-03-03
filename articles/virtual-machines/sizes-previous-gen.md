@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 700847c041a5b9111414d6b43ff734d83b1ca49f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e0abae8ada603e4e6b98ab0dfe9d794186e00000
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913467"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226785"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Poprzednie generacji rozmiarów maszyn wirtualnych
 
@@ -101,7 +101,7 @@ Buforowanie Premium Storage: nieobsługiwane
 
 Rozmiary warstwy Podstawowa są przeznaczone głównie dla obciążeń związanych z tworzeniem aplikacji i innych aplikacji, które nie wymagają równoważenia obciążenia, automatycznego skalowania ani maszyn wirtualnych korzystających z dużej ilości pamięci.
 
-| Rozmiar — rozmiar\nazwa | Procesor wirtualny | Pamięć|Karty sieciowe (maks.)| Maksymalny rozmiar dysku tymczasowego | Maksymalnie z dyski z danymi (1023 GB każdego)| Maksymalnie z liczba operacji we/wy na sekundę (300 na dysk) |
+| Rozmiar — rozmiar\nazwa | Procesor wirtualny | Memory (Pamięć)|Karty sieciowe (maks.)| Maksymalny rozmiar dysku tymczasowego | Maksymalnie z dyski z danymi (1023 GB każdego)| Maksymalnie z liczba operacji we/wy na sekundę (300 na dysk) |
 |---|---|---|---|---|---|---|
 | A0\Podstawowa_A0 | 1 | 768 MB  | 2 | 20 GB  | 1  | 1x300  |
 | A1\Podstawowa_A1 | 1 | 1,75 GB | 2 | 40 GB  | 2  | 2x300  |
@@ -166,6 +166,9 @@ Rozmiary A8–A11 i serii H są również nazywane *wystąpieniami intensywnie k
 | Standardowa_A11 | 16 | 112 | 382 | 64 | 64x500 | 4 |
 
 <sup>1</sup> W przypadku aplikacji MPI dedykowana sieć zaplecza RDMA jest włączana przez sieć FDR InfiniBand, która zapewnia bardzo małe opóźnienia i wysoką przepustowość.  
+
+> [!NOTE]
+> Maszyny wirtualne A8 – A11 są planowane do wycofania w dniu 3/2021. Aby uzyskać więcej informacji, zobacz [Przewodnik migracji HPC](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 <br>
 

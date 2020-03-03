@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/05/2020
-ms.openlocfilehash: c67fb21783a926f813d165528520b9d088154412
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 03/01/2020
+ms.openlocfilehash: fddffee001266b96bc341738293bbdb42115a978
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162399"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228187"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Używanie Data Lake Storage Gen1 z klastrami usługi Azure HDInsight
 
@@ -31,7 +31,7 @@ W tym artykule dowiesz się, jak Data Lake Storage Gen1 współpracuje z klastra
 
 ## <a name="availability-for-hdinsight-clusters"></a>Dostępność klastrów usługi HDInsight
 
-Apache Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. Podczas procesu tworzenia klastra usługi HDInsight można określić kontener obiektów BLOB w usłudze Azure Storage jako domyślny system plików lub z usługą HDInsight 3,5 i nowszymi wersjami. można wybrać usługę Azure Storage lub Azure Data Lake Storage Gen1 jako domyślny system plików z kilka wyjątków.
+Apache Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. Podczas procesu tworzenia klastra usługi HDInsight można określić kontener obiektów BLOB w usłudze Azure Storage jako domyślny system plików lub z usługą HDInsight 3,5 i nowszymi wersjami. można wybrać usługę Azure Storage lub Azure Data Lake Storage Gen1 jako domyślny system plików z kilka wyjątków. Należy pamiętać, że klaster i konto magazynu muszą być hostowane w tym samym regionie.
 
 Klastry usługi HDInsight mogą używać Data Lake Storage Gen1 na dwa sposoby:
 

@@ -4,16 +4,16 @@ description: Dowiedz się, jak rozwiązywać problemy z rozwiązaniem Update Man
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/31/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5ee1a20d4a3c46cab484b03b5fcc212a79d19047
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513273"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227454"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z Update Management
 
@@ -24,6 +24,36 @@ Istnieje narzędzie do rozwiązywania problemów z agentem dla agenta hybrydoweg
 Jeśli wystąpią problemy podczas próby dołączenia rozwiązania na maszynie wirtualnej, sprawdź dziennik **Operations Manager** w obszarze **Dzienniki aplikacji i usług** na komputerze lokalnym, aby poznać zdarzenia o identyfikatorze 4502 i szczegóły zdarzenia, które zawierają element **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. HybridAgent**.
 
 W poniższej sekcji przedstawiono określone komunikaty o błędach i możliwe rozwiązania dla każdej z nich. Inne problemy z dołączaniem można znaleźć w temacie [Rozwiązywanie problemów z](onboarding.md)dołączaniem rozwiązania.
+
+## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Scenariusz: zastąpiona aktualizacja wskazana jako brakująca w Update Management
+
+### <a name="issue"></a>Problem
+
+Stare aktualizacje są wyświetlane w Update Management na koncie platformy Azure jako brakujące, mimo że zostały zastąpione. Zastąpiona aktualizacja jest taka, która nie musi być zainstalowana, ponieważ dostępna jest nowsza aktualizacja, która rozwiązuje tę samą lukę w zabezpieczeniach. Update Management ignoruje zastąpioną aktualizację i nie ma zastosowania na korzyść zastępowanej aktualizacji. Aby uzyskać informacje o powiązanym problemie, zobacz [Aktualizacja została zastąpiona](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
+
+### <a name="cause"></a>Przyczyna
+
+Zastąpione aktualizacje nie są poprawnie wskazywane jako odrzucone, aby można je było uznać za niemające zastosowania.
+
+### <a name="resolution"></a>Rozwiązanie
+
+Gdy zastąpiona aktualizacja nie ma zastosowania do 100%, należy zmienić stan zatwierdzania tej aktualizacji na **odrzucony**. Aby to zrobić dla wszystkich aktualizacji:
+
+1. Na koncie usługi Automation wybierz pozycję **Update Management** , aby wyświetlić stan komputera. Zobacz [Wyświetlanie ocen aktualizacji](../manage-update-multi.md#view-an-update-assessment).
+
+2. Sprawdź zastąpioną aktualizację, aby upewnić się, że nie ma jej na 100%. 
+
+3. Oznacz aktualizację jako odrzucony, o ile nie masz pytania dotyczącego aktualizacji. 
+
+4. Wybierz pozycję Komputery, a w kolumnie zgodność Wymuś ponowne skanowanie pod kątem zgodności. Zobacz [Zarządzanie aktualizacjami dla wielu maszyn](../manage-update-multi.md).
+
+5. Powtórz powyższe kroki dla innych zastępowanych aktualizacji.
+
+6. Uruchom Kreatora oczyszczania, aby usunąć pliki z odrzuconych aktualizacji. 
+
+7. W przypadku usług WSUS ręcznie Wyczyść wszystkie zastąpione aktualizacje, aby odświeżyć infrastrukturę.
+
+8. Powtórz tę procedurę regularnie, aby poprawić problem z wyświetlaniem i zminimalizować ilość miejsca na dysku używanego do zarządzania aktualizacjami.
 
 ## <a name="nologs"></a>Scenariusz: maszyny nie są wyświetlane w portalu w obszarze Update Management
 
@@ -45,7 +75,7 @@ Może być konieczne ponowne zarejestrowanie i ponowna instalacja hybrydowego pr
 
 Być może zdefiniowano limit przydziału w obszarze roboczym, który został osiągnięty i uniemożliwia dalsze przechowywanie danych.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 * Uruchom narzędzie do rozwiązywania problemów dla [systemu Windows](update-agent-issues.md#troubleshoot-offline) lub [Linux](update-agent-issues-linux.md#troubleshoot-offline), w zależności od systemu operacyjnego.
 
@@ -86,7 +116,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 Dostawca zasobów usługi Automation nie jest zarejestrowany w subskrypcji.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Aby zarejestrować dostawcę zasobów usługi Automation, wykonaj następujące kroki w Azure Portal:
 
@@ -113,7 +143,7 @@ Ten błąd może wystąpić z następujących powodów:
 - Trwa blokowanie komunikacji z kontem usługi Automation.
 - Dołączona maszyna wirtualna może pochodzić ze sklonowanego komputera, który nie został Sysprep z zainstalowanym Microsoft Monitoring Agent (MMA).
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 1. Przejdź do pozycji [Planowanie sieci](../automation-hybrid-runbook-worker.md#network-planning) , aby dowiedzieć się, które adresy i porty muszą być dozwolone, aby Update Management działały.
 2. Jeśli używasz sklonowanego obrazu:
@@ -136,7 +166,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 Ten błąd występuje podczas tworzenia wdrożenia aktualizacji z maszynami wirtualnymi platformy Azure w innej dzierżawie uwzględnionej w wdrożeniu aktualizacji.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Aby zaplanowano te elementy, należy wykonać poniższe obejście. Aby utworzyć harmonogram, można użyć polecenia cmdlet [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) z przełącznikiem `-ForUpdate`. Następnie użyj polecenia cmdlet [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
 ) i przekaż maszyny w innej dzierżawie do parametru `-NonAzureComputer`. Poniższy przykład pokazuje, jak to zrobić:
@@ -161,7 +191,7 @@ Mimo że ustawisz opcję **kontroli ponownego uruchamiania** na **nigdy nie uruc
 
 Windows Update mogą być modyfikowane przez kilka kluczy rejestru, z których każde może zmodyfikować zachowanie ponownego uruchamiania.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Zapoznaj się z kluczami rejestru wymienionymi w obszarze [Konfigurowanie aktualizacji automatycznych, edytując rejestr](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) i [klucze rejestru używane do zarządzania ponownym uruchomieniem](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) , aby upewnić się, że maszyny są prawidłowo skonfigurowane.
 
@@ -185,9 +215,9 @@ Ten błąd może mieć jedną z następujących przyczyn:
 * Wprowadzono aktualizację MMA, która zmieniła SourceComputerId.
 * Działanie przebiegu aktualizacji zostało ograniczone, jeśli osiągnięto limit 2 000 zadań współbieżnych na koncie usługi Automation. Każde wdrożenie jest uznawane za zadanie, a każdy komputer w ramach wdrożenia aktualizacji liczy się jako zadanie. Wszystkie inne zadania usługi Automation lub wdrożenia, które są aktualnie uruchomione na koncie usługi Automation, są wliczane do współbieżnego limitu zadań.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
-W razie potrzeby użyj [grup dynamicznych](../automation-update-management-groups.md) do wdrożeń aktualizacji. Ponadto:
+W razie potrzeby użyj [grup dynamicznych](../automation-update-management-groups.md) do wdrożeń aktualizacji. Dodatkowo:
 
 * Sprawdź, czy maszyna nadal istnieje i jest osiągalna. Jeśli nie istnieje, Edytuj wdrożenie i Usuń maszynę.
 * Zapoznaj się z sekcją [Planowanie sieci](../automation-update-management.md#ports) , aby uzyskać listę portów i adresów wymaganych do Update Management, a następnie sprawdź, czy maszyna spełnia te wymagania.
@@ -208,7 +238,7 @@ Po zarejestrowaniu maszyny z systemem Windows w Update Management są widoczne a
 
 W systemie Windows aktualizacje są instalowane automatycznie zaraz po ich udostępnieniu. Takie zachowanie może spowodować pomyłkę, jeśli aktualizacja nie została zaplanowana do wdrożenia na komputerze.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Klucz rejestru `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` jest domyślnie ustawiony na wartość 4: **Pobierz i zainstaluj**.
 
@@ -230,7 +260,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 Maszyna została już dołączona do innego obszaru roboczego dla Update Management.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 1. Wykonaj kroki opisane w sekcji [maszyny nie są wyświetlane w portalu w obszarze Update Management](#nologs) , aby upewnić się, że komputer jest raportowany do prawidłowego obszaru roboczego.
 2. Wyczyść stare artefakty na maszynie, [usuwając grupę hybrydowych elementów Runbook](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group), a następnie spróbuj ponownie.
@@ -261,7 +291,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 Serwer proxy, Brama lub Zapora mogą blokować komunikację sieciową. 
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Przejrzyj sieć i upewnij się, że odpowiednie porty i adresy są dozwolone. Aby uzyskać listę portów i adresów wymaganych przez Update Management i hybrydowych procesów roboczych elementów Runbook, zobacz [wymagania sieciowe](../automation-hybrid-runbook-worker.md#network-planning) .
 
@@ -279,7 +309,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 Hybrydowy proces roboczy elementu Runbook nie może wygenerować certyfikatu z podpisem własnym.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Sprawdź, czy konto systemowe ma dostęp do odczytu do folderu **C:\ProgramData\Microsoft\Crypto\RSA** , i spróbuj ponownie.
 
@@ -289,7 +319,7 @@ Sprawdź, czy konto systemowe ma dostęp do odczytu do folderu **C:\ProgramData\
 
 Domyślne okno obsługi aktualizacji to 120 minut. Można zwiększyć okno obsługi do maksymalnie 6 godzin lub 360 minut.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Edytuj wszystkie błędy zaplanowanej aktualizacji, a następnie zwiększ okno obsługi.
 
@@ -307,7 +337,7 @@ Aby uzyskać więcej informacji o oknach obsługi, zobacz [Install Updates](../a
 
 Agent aktualizacji (Agent Windows Update w systemie Windows; Menedżer pakietów dla dystrybucji systemu Linux) nie jest prawidłowo skonfigurowany. Update Management polega na agencie aktualizacji maszyny w celu zapewnienia wymaganych aktualizacji, stanu poprawki oraz wyników wdrożonych poprawek. Bez tych informacji Update Management nie może poprawnie zgłosić poprawek wymaganych lub zainstalowanych.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Spróbuj przeprowadzić aktualizacje lokalnie na komputerze. Jeśli to się nie powiedzie, zazwyczaj oznacza to, że wystąpił błąd konfiguracji agenta aktualizacji.
 
@@ -355,7 +385,7 @@ Możliwe przyczyny:
 * Komputer jest nieosiągalny.
 * Aktualizacje mają zależności, które nie zostały rozpoznane.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
 Jeśli wystąpią błędy podczas przebiegu aktualizacji po pomyślnym uruchomieniu, [Sprawdź dane wyjściowe zadania](../manage-update-multi.md#view-results-of-an-update-deployment) z danego komputera w przebiegu. Możesz znaleźć określone komunikaty o błędach z maszyn, które można zbadać i podjąć odpowiednie działania. Update Management wymaga, aby Menedżer pakietów był w dobrej kondycji w przypadku pomyślnych wdrożeń aktualizacji.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 86f474370fe38c7b281e275614b88def5a6c1357
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7a0d94522e478a69f70167183e4c0d60d0d85060
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605099"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226539"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Tworzenie graficzne w Azure Automation
 
@@ -21,7 +21,7 @@ Tworzenie graficzne pozwala tworzyć elementy Runbook dla Azure Automation bez z
 
 ## <a name="graphical-runbooks"></a>Graficzne elementy Runbook
 
-Wszystkie elementy Runbook w Azure Automation są przepływami pracy programu Windows PowerShell. Graficzne elementy Runbook i graficzne elementy Runbook przepływu pracy programu PowerShell generują kod programu PowerShell uruchamiany przez pracowników automatyzacji, ale nie można go wyświetlać ani modyfikować. Graficzny element Runbook można przekonwertować na graficzny element Runbook przepływu pracy programu PowerShell i na odwrót. Nie można jednak skonwertować tych elementów Runbook do tekstowego elementu Runbook. Ponadto w edytorze graficznym automatyzacji nie można zaimportować istniejącego tekstowego elementu Runbook.
+Wszystkie elementy Runbook w Azure Automation są przepływami pracy programu Windows PowerShell. Graficzne elementy Runbook i graficzne elementy Runbook przepływu pracy programu PowerShell generują kod programu PowerShell uruchamiany przez pracowników automatyzacji, ale nie można go wyświetlać ani modyfikować. Graficzny element Runbook można przekonwertować na graficzny element Runbook przepływu pracy programu PowerShell i na odwrót. Nie można jednak skonwertować tych elementów Runbook do tekstowego elementu Runbook. Ponadto edytor graficzny automatyzacji nie może zaimportować tekstowego elementu Runbook.
 
 ## <a name="overview-of-graphical-editor"></a>Przegląd edytora graficznego
 
@@ -31,9 +31,9 @@ Możesz otworzyć Edytor graficzny w Azure Portal, tworząc lub edytując grafic
 
 W poniższych sekcjach opisano kontrolki w edytorze graficznym.
 
-### <a name="canvas"></a>Przestrzeń
+### <a name="canvas-control"></a>formant kanwy
 
-Kontrolka kanwy umożliwia zaprojektowanie elementu Runbook. Możesz dodać działania z węzłów w kontrolce biblioteki do elementu Runbook i połączyć je z linkami, aby zdefiniować logikę elementu Runbook. W dolnej części kanwy znajdują się kontrolki, które umożliwiają powiększanie i pomniejszanie.
+Kontrolka kanwy umożliwia zaprojektowanie elementu Runbook. Możesz dodać działania z węzłów w kontrolce biblioteki do elementu Runbook i połączyć je z linkami do definiowania logiki elementu Runbook. W dolnej części kanwy znajdują się kontrolki, które umożliwiają powiększanie i pomniejszanie.
 
 ### <a name="library-control"></a>Kontrolka biblioteki
 
@@ -42,13 +42,13 @@ Kontrolka Biblioteka umożliwia wybranie [działań](#activities) , które mają
 | Sekcja | Opis |
 |:--- |:--- |
 | Polecenia cmdlet |Wszystkie polecenia cmdlet, które mogą być używane w elemencie Runbook. Polecenia cmdlet są zorganizowane według modułu. Dostępne są wszystkie moduły zainstalowane na koncie usługi Automation. |
-| Elementy Runbook |Elementy Runbook na koncie usługi Automation. Te elementy Runbook można dodać do kanwy, aby można było ich używać jako podrzędnych elementów Runbook. Wyświetlane są tylko elementy Runbook tego samego typu podstawowego co edytowany element Runbook. W przypadku graficznych elementów Runbook są wyświetlane tylko elementy Runbook oparte na programie PowerShell. W przypadku graficznych elementów Runbook przepływu pracy programu PowerShell są wyświetlane tylko elementy Runbook oparte na przepływie pracy programu PowerShell. |
-| dzierżawców |[Zasoby usługi Automation](/previous-versions/azure/dn939988(v=azure.100)) na koncie usługi Automation, których można używać w elemencie Runbook. Dodanie elementu zawartości do elementu Runbook powoduje dodanie działania przepływu pracy, które pobiera wybrany zasób. W przypadku zmiennych zasobów można wybrać, czy dodać działanie, aby uzyskać zmienną, czy ustawić zmienną. |
+| Elementy Runbook |Elementy Runbook na koncie usługi Automation. Te elementy Runbook można dodać do kanwy, aby można było ich używać jako podrzędnych elementów Runbook. Wyświetlane są tylko elementy Runbook tego samego typu podstawowego co edytowany element Runbook. W przypadku graficznych elementów Runbook są wyświetlane tylko elementy Runbook oparte na programie PowerShell. Dla graficznych elementów Runbook przepływu pracy programu PowerShell są wyświetlane tylko elementy Runbook oparte na przepływie pracy programu PowerShell. |
+| Elementy zawartości |[Zasoby usługi Automation](/previous-versions/azure/dn939988(v=azure.100)) na koncie usługi Automation, których można używać w elemencie Runbook. Dodanie elementu zawartości do elementu Runbook powoduje dodanie działania przepływu pracy, które pobiera wybrany zasób. W przypadku zmiennych zasobów można wybrać, czy dodać działanie, aby uzyskać zmienną, czy ustawić zmienną. |
 | Kontrola elementu Runbook |Działania kontroli, które mogą być używane w bieżącym elemencie Runbook. Działanie rozgałęzienia przyjmuje wiele danych wejściowych i oczekuje na ukończenie wszystkich operacji przed kontynuowaniem przepływu pracy. Działanie Code uruchamia co najmniej jeden wiersz programu PowerShell lub kodu przepływu pracy programu PowerShell, w zależności od typu graficznego elementu Runbook. To działanie służy do niestandardowego kodu lub dla funkcjonalności, która jest trudna do osiągnięcia z innymi działaniami. |
 
 ### <a name="configuration-control"></a>Kontrola konfiguracji
 
-Formant konfiguracji umożliwia podanie szczegółowych informacji o obiekcie wybranym na kanwie. Właściwości dostępne w tym formancie zależą od typu wybranego obiektu. Po wybraniu opcji w kontrolce konfiguracja spowoduje to otwarcie dodatkowych bloków w celu podania dodatkowych informacji.
+Formant konfiguracji umożliwia podanie szczegółowych informacji o obiekcie wybranym na kanwie. Właściwości dostępne w tym formancie zależą od typu wybranego obiektu. Po wybraniu opcji w kontrolce konfiguracja zostanie otwarta dodatkowa Kaseta, aby uzyskać więcej informacji.
 
 ### <a name="test-control"></a>Kontrola testu
 
@@ -56,7 +56,7 @@ Kontrolka testu nie jest wyświetlana, gdy edytor graficzny jest uruchamiany po 
 
 ## <a name="activities"></a>Działania
 
-Działania są blokami konstrukcyjnymi elementu Runbook. Działaniem może być polecenie cmdlet programu PowerShell, podrzędny element Runbook lub przepływ pracy. Możesz dodać działanie do elementu Runbook, klikając go prawym przyciskiem myszy w kontrolce biblioteka i wybierając pozycję **Dodaj do kanwy**. Następnie możesz kliknąć i przeciągnąć działanie, aby umieścić je w dowolnym miejscu na kanwie. Lokalizacja działania na kanwie nie ma wpływu na działanie elementu Runbook w jakikolwiek sposób. Można określić układ elementu Runbook w dowolny sposób, który jest najbardziej odpowiedni do wizualizacji swojej operacji.
+Działania są blokami konstrukcyjnymi elementu Runbook. Działaniem może być polecenie cmdlet programu PowerShell, podrzędny element Runbook lub przepływ pracy. Możesz dodać działanie do elementu Runbook, klikając go prawym przyciskiem myszy w kontrolce biblioteka i wybierając pozycję **Dodaj do kanwy**. Następnie możesz kliknąć i przeciągnąć działanie, aby umieścić je w dowolnym miejscu na kanwie. Lokalizacja działania na kanwie nie ma wpływu na działanie elementu Runbook. Można określić układ elementu Runbook w dowolny sposób, który jest najbardziej odpowiedni do wizualizacji swojej operacji.
 
 ![Dodaj do kanwy](media/automation-graphical-authoring-intro/add-to-canvas-revised20165.png)
 
@@ -64,15 +64,15 @@ Wybierz działanie na kanwie, aby skonfigurować jego właściwości i parametry
 
 ### <a name="parameter-sets"></a>Zestawy parametrów
 
-Zestaw parametrów definiuje obowiązkowe i opcjonalne parametry, które akceptują wartości dla konkretnego polecenia cmdlet. Wszystkie polecenia cmdlet mają co najmniej jeden zestaw parametrów, a niektóre z nich mają kilka zestawów. Jeśli polecenie cmdlet ma wiele zestawów parametrów, należy wybrać, które z nich należy użyć przed skonfigurowaniem parametrów. Zestaw parametrów używany przez działanie można zmienić, wybierając pozycję **zestaw parametrów** i wybierając inny zestaw. W takim przypadku wszystkie wartości parametrów, które zostały już skonfigurowane, zostaną utracone.
+Zestaw parametrów definiuje obowiązkowe i opcjonalne parametry, które akceptują wartości dla konkretnego polecenia cmdlet. Wszystkie polecenia cmdlet mają co najmniej jeden zestaw parametrów, a niektóre z nich mają kilka zestawów. Jeśli polecenie cmdlet ma wiele zestawów parametrów, należy wybrać tę, która ma zostać użyta, zanim będzie można skonfigurować parametry. Zestaw parametrów używany przez działanie można zmienić, wybierając pozycję **zestaw parametrów** i wybierając inny zestaw. W takim przypadku wszystkie wartości parametrów, które zostały już skonfigurowane, zostaną utracone.
 
-W poniższym przykładzie polecenie cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) ma trzy zestawy parametrów. W przykładzie zastosowano jeden zestaw o nazwie ListVirtualMachineInResourceGroupParamSet z jednym opcjonalnym parametrem w celu zwrócenia wszystkich maszyn wirtualnych w grupie zasobów. W przykładzie jest również wykorzystywany zestaw parametrów GetVirtualMachineInResourceGroupParamSet do określania maszyny wirtualnej do zwrócenia. Ten zestaw ma dwa obowiązkowe parametry i jeden opcjonalny parametr.
+W poniższym przykładzie polecenie cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) ma trzy zestawy parametrów. W przykładzie zastosowano jeden zestaw o nazwie **ListVirtualMachineInResourceGroupParamSet**z jednym opcjonalnym parametrem w celu zwrócenia wszystkich maszyn wirtualnych w grupie zasobów. W przykładzie jest również wykorzystywany zestaw parametrów **GetVirtualMachineInResourceGroupParamSet** do określania maszyny wirtualnej do zwrócenia. Ten zestaw ma dwa obowiązkowe parametry i jeden opcjonalny parametr.
 
 ![Zestaw parametrów](media/automation-graphical-authoring-intro/get-azurermvm-parameter-sets.png)
 
 #### <a name="parameter-values"></a>Wartości parametrów
 
-Po określeniu wartości parametru, należy wybrać źródło danych w celu określenia sposobu określania wartości. Źródła danych, które są dostępne dla określonego parametru, zależą od prawidłowych wartości dla tego parametru. Na przykład wartość null nie jest dostępna dla parametru, który nie zezwala na wartości null.
+Po określeniu wartości parametru, należy wybrać źródło danych w celu określenia sposobu określania wartości. Źródła danych, które są dostępne dla określonego parametru, zależą od prawidłowych wartości dla tego parametru. Na przykład **wartość null** nie jest dostępna dla parametru, który nie zezwala na wartości null.
 
 | Źródło danych | Opis |
 |:--- |:--- |
@@ -102,7 +102,7 @@ Warunek ponawiania jest wyrażeniem programu PowerShell, które jest oceniane po
 
 ![Opóźnienie ponowienia działania](media/automation-graphical-authoring-intro/retry-condition.png)
 
-Warunek ponawiania może używać zmiennej o nazwie $RetryData, która zapewnia dostęp do informacji o ponownych próbach działania. Ta zmienna ma właściwości w poniższej tabeli:
+Warunek ponawiania może używać zmiennej o nazwie *RetryData* , która zapewnia dostęp do informacji o ponownych próbach działania. Ta zmienna ma właściwości w poniższej tabeli:
 
 | Właściwość | Opis |
 |:--- |:--- |
@@ -136,7 +136,7 @@ Po skonfigurowaniu warunku ponawiania dla działania działanie obejmuje dwie po
 
 Kontrolka skryptu przepływu pracy to specjalne działanie, które akceptuje skrypt środowiska PowerShell lub przepływu pracy programu PowerShell, w zależności od typu graficznego elementu Runbook, który jest tworzony. Ta kontrolka udostępnia funkcje, które mogą nie być dostępne w inny sposób. Nie może akceptować parametrów, ale może używać zmiennych dla danych wyjściowych działań i parametrów wejściowych elementu Runbook. Wszystkie dane wyjściowe działania są dodawane do magistrali danych. Wyjątek jest wyprowadzany bez łącza wychodzącego, w tym przypadku dane wyjściowe są dodawane do danych wyjściowych elementu Runbook.
 
-Na przykład poniższy kod wykonuje obliczenia dat przy użyciu zmiennej wejściowej elementu Runbook o nazwie $NumberOfDays. Następnie wysyła ona obliczoną wartość DateTime jako dane wyjściowe, która będzie używana przez kolejne działania w elemencie Runbook.
+Na przykład poniższy kod wykonuje obliczenia dat przy użyciu zmiennej wejściowej elementu Runbook o nazwie *NumberOfDays*. Następnie wysyła ona obliczoną wartość DateTime jako dane wyjściowe, która będzie używana przez kolejne działania w elemencie Runbook.
 
 ```powershell-interactive
 $DateTimeNow = (Get-Date).ToUniversalTime()
@@ -167,7 +167,7 @@ Graficzny element Runbook rozpoczyna się od wszystkich działań, które nie ma
 
 ### <a name="link-conditions"></a>Warunki łączenia
 
-Gdy określisz warunek dla linku, działanie docelowe jest uruchamiane tylko wtedy, gdy warunek zostanie spełniony. Zwykle używasz zmiennej $ActivityOutput w warunku, aby pobrać dane wyjściowe z działania źródłowego.
+Gdy określisz warunek dla linku, działanie docelowe jest uruchamiane tylko wtedy, gdy warunek zostanie spełniony. Zwykle do pobrania danych wyjściowych z działania źródłowego jest używana zmienna *ActivityOutput* .
 
 Dla łącza potoku należy określić warunek dla pojedynczego obiektu. Element Runbook oblicza warunek dla każdego obiektu wyjściowego przez działanie źródłowe. Następnie uruchamia działanie docelowe dla każdego obiektu, który spełnia warunek. Na przykład za pomocą działania Source polecenia **Get-AzVM**można użyć następującej składni dla linku potoku warunkowego, aby pobrać tylko maszyny wirtualne w grupie zasobów o nazwie grupa1.
 
@@ -175,13 +175,13 @@ Dla łącza potoku należy określić warunek dla pojedynczego obiektu. Element 
 $ActivityOutput['Get Azure VMs'].Name -match "Group1"
 ```
 
-W przypadku linku sekwencji element Runbook oblicza tylko warunek raz, ponieważ zwracana jest pojedyncza tablica zawierająca wszystkie obiekty z działania źródłowego. W związku z tym element Runbook nie może użyć linku sekwencji do filtrowania, takiego jak link potoku. Link sekwencji może po prostu określić, czy następne działanie jest uruchamiane.
+W przypadku linku sekwencji element Runbook oblicza tylko warunek raz, ponieważ zwracana jest pojedyncza tablica zawierająca wszystkie obiekty z działania źródłowego. W związku z tym element Runbook nie może użyć linku sekwencji do filtrowania, tak jak w przypadku linku potoku. Link sekwencji może po prostu określić, czy następne działanie jest uruchamiane.
 
-Na przykład wykonaj następujące czynności w naszym elemencie Runbook startowej maszyny wirtualnej:
+Na przykład wykonaj następujące czynności w naszym elemencie Runbook **startowej maszyny wirtualnej** :
 
 ![Link warunkowy z sekwencjami](media/automation-graphical-authoring-intro/runbook-conditional-links-sequence.png)
 
-Element Runbook używa trzech różnych linków sekwencji, które weryfikują wartości parametrów wejściowych *VMName* i *ResourceGroupName* , aby określić odpowiednią akcję do wykonania. Możliwe akcje to uruchamianie pojedynczej maszyny wirtualnej, uruchamianie wszystkich maszyn wirtualnych w grupie zasobów lub uruchamianie wszystkich maszyn wirtualnych w ramach subskrypcji. W przypadku linku sekwencji między nawiązaniem połączenia z platformą Azure i uzyskaniem pojedynczej maszyny wirtualnej jest to logika warunku:
+Element Runbook używa trzech różnych linków sekwencji, które weryfikują wartości parametrów wejściowych *VMName* i *ResourceGroupName* , aby określić odpowiednią akcję do wykonania. Możliwe akcje to uruchamianie pojedynczej maszyny wirtualnej, uruchamianie wszystkich maszyn wirtualnych w grupie zasobów lub uruchamianie wszystkich maszyn wirtualnych w ramach subskrypcji. W przypadku linku sekwencji między **nawiązaniem połączenia z platformą Azure** i **uzyskaniem pojedynczej maszyny wirtualnej**jest to logika warunku:
 
 ```powershell-interactive
 <#
@@ -216,7 +216,7 @@ Poniższy przykład jest częścią elementu Runbook, który uruchamia zestaw ma
 
 Cykl jest tworzony, gdy działanie docelowe łączy się z powrotem z jego aktywnością źródłową lub innym działaniem, które ostatecznie łączy z powrotem ze źródłem. Tworzenie graficzne nie obsługuje obecnie cykli. Jeśli element Runbook ma cykl, jest on prawidłowo zapisywany, ale po jego uruchomieniu otrzymuje błąd.
 
-![Cykl](media/automation-graphical-authoring-intro/runbook-cycle.png)
+![Cykliczny](media/automation-graphical-authoring-intro/runbook-cycle.png)
 
 ### <a name="data-sharing-between-activities"></a>Udostępnianie danych między działaniami
 
@@ -232,7 +232,7 @@ Pierwszy mechanizm używa źródła danych wyjściowych działania do wypełnien
 
 ![dane wyjściowe działania](media/automation-graphical-authoring-intro/activity-output-datasource-revised20165.png)
 
-Drugi mechanizm dostępu do danych pobiera dane wyjściowe działania w źródle danych wyrażenia programu PowerShell lub z działania skryptu przepływu pracy za pomocą zmiennej ActivityOutput, używając składni pokazanej poniżej. Jeśli dane wyjściowe są obiektem, element Runbook może określić jedną właściwość.
+Drugi mechanizm dostępu do danych pobiera dane wyjściowe działania w źródle danych wyrażenia programu PowerShell lub działanie skryptu przepływu pracy za pomocą zmiennej *ActivityOutput* , używając składni pokazanej poniżej. Jeśli dane wyjściowe są obiektem, element Runbook może określić jedną właściwość.
 
 ```powershell-interactive
 $ActivityOutput['Activity Label']
@@ -249,13 +249,13 @@ Punkty kontrolne są włączone tylko w graficznych elementach Runbook przepływ
 
 ## <a name="runbook-input-and-output"></a>Dane wejściowe i wyjściowe elementu Runbook
 
-### <a name="runbook-input"></a>Dane wejściowe elementu Runbook
+### < nazwę "Runbook-Input" ></a>dane wejściowe elementu Runbook
 
 Element Runbook wymaga wprowadzenia danych przez użytkownika, który uruchamia element Runbook za pośrednictwem Azure Portal lub z innego elementu Runbook, jeśli jest on używany jako element podrzędny. Na przykład dla elementu Runbook, który tworzy maszynę wirtualną, może być konieczne podanie takich informacji jako nazwy maszyny wirtualnej i innych właściwości za każdym razem, gdy element Runbook zostanie uruchomiony.
 
 Element Runbook akceptuje dane wejściowe przez zdefiniowanie co najmniej jednego parametru wejściowego. Użytkownik dostarcza wartości tych parametrów za każdym razem, gdy element Runbook zostanie uruchomiony. Gdy użytkownik uruchamia element Runbook przy użyciu Azure Portal, użytkownik jest monitowany o podanie wartości dla każdego parametru wejściowego obsługiwanego przez element Runbook.
 
-Podczas tworzenia elementu Runbook możesz uzyskać dostęp do jego parametrów wejściowych, klikając przycisk **dane wejściowe i wyjściowe** na pasku narzędzi elementu Runbook. Spowoduje to otwarcie kontrolki **dane wejściowe i wyjściowe** , w której można edytować istniejący parametr wejściowy lub utworzyć nowy, klikając przycisk **Dodaj dane wejściowe**.
+Podczas tworzenia elementu Runbook możesz uzyskać dostęp do jego parametrów wejściowych, klikając przycisk **dane wejściowe i wyjściowe** na pasku narzędzi elementu Runbook. Spowoduje to otwarcie kontrolki dane wejściowe i wyjściowe, w której można edytować istniejący parametr wejściowy lub utworzyć nowy, klikając przycisk **Dodaj dane wejściowe**.
 
 ![Dodaj dane wejściowe](media/automation-graphical-authoring-intro/runbook-edit-add-input.png)
 
@@ -263,11 +263,11 @@ Każdy parametr wejściowy jest definiowany przez właściwości w poniższej ta
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Name (Nazwa) |Unikatowa nazwa parametru. Ta nazwa może zawierać tylko znaki alfanumeryczne i nie może zawierać spacji. |
-| Opis |Opcjonalny opis parametru wejściowego. |
-| Typ |Oczekiwano typu danych dla wartości parametru. Azure Portal zapewnia odpowiednią kontrolę dla typu danych dla każdego parametru podczas monitowania o dane wejściowe. |
-| Mandatory |Ustawienie określające, czy należy podać wartość dla parametru. Nie można uruchomić elementu Runbook, jeśli nie podasz wartości dla każdego obowiązkowego parametru, który nie ma zdefiniowanej wartości domyślnej. |
-| Wartość domyślna |Wartość użyta dla parametru, jeśli nie została podana. Ustaw tę wartość na null lub na konkretną wartość. |
+| Name (Nazwa) | Wymagany. Nazwa parametru. Nazwa musi być unikatowa w elemencie Runbook. Musi rozpoczynać się od litery i może zawierać tylko litery, cyfry i znaki podkreślenia. Nazwa nie może zawierać spacji. |
+| Opis |Opcjonalny. Opis celu dla parametru wejściowego. |
+| Typ | Opcjonalny. Oczekiwano typu danych dla wartości parametru. Azure Portal zapewnia odpowiednią kontrolę dla typu danych dla każdego parametru podczas monitowania o dane wejściowe. Obsługiwane typy parametrów to String, Int32, Int64, decimal, Boolean, DateTime i Object. Jeśli typ danych nie jest zaznaczony, domyślnie jest to ciąg.|
+| Obowiązkowy | Opcjonalny. Ustawienie określające, czy należy podać wartość dla parametru. Jeśli wybierzesz opcję **tak**, należy podać wartość przy uruchamianiu elementu Runbook. Jeśli wybierzesz opcję **nie**, wartość nie jest wymagana, gdy element Runbook zostanie uruchomiony i będzie można użyć wartości domyślnej. Nie można uruchomić elementu Runbook, jeśli nie podasz wartości dla każdego obowiązkowego parametru, który nie ma zdefiniowanej wartości domyślnej. |
+| Wartość domyślna | Opcjonalny. Wartość użyta dla parametru, jeśli nie jest ona przenoszona podczas uruchamiania elementu Runbook. Aby ustawić wartość domyślną, wybierz opcję **niestandardowy**. Wybierz opcję **Brak** , jeśli nie chcesz podawać żadnej wartości domyślnej. |
 
 ### <a name="runbook-output"></a>Wynik uruchomienia elementu Runbook
 
@@ -278,6 +278,7 @@ Tworzenie graficzne zapisuje dane utworzone przez dowolne działanie, które nie
 Jedną z zalet tworzenia grafiki jest możliwość tworzenia elementu Runbook z minimalną wiedzą o programie PowerShell. Obecnie trzeba znać bit programu PowerShell służący do wypełniania pewnych [wartości parametrów](#activities) oraz ustawiania [warunków łączy](#links-and-workflow). Ta sekcja zawiera krótkie wprowadzenie do wyrażeń programu PowerShell. Pełne szczegóły programu PowerShell są dostępne w [skryptach przy użyciu programu Windows PowerShell](https://technet.microsoft.com/library/bb978526.aspx).
 
 ### <a name="powershell-expression-data-source"></a>Źródło danych wyrażenia programu PowerShell
+
 Możesz użyć wyrażenia programu PowerShell jako źródła danych, aby wypełnić wartość [parametru działania](#activities) wynikami kodu programu PowerShell. Wyrażenie może być pojedynczym wierszem kodu, który wykonuje prostą funkcję lub wiele wierszy, które wykonują pewne skomplikowane logiki. Wszystkie dane wyjściowe polecenia, które nie są przypisane do zmiennej, są wyprowadzane do wartości parametru.
 
 Na przykład następujące polecenie wyprowadza bieżącą datę.
@@ -286,7 +287,7 @@ Na przykład następujące polecenie wyprowadza bieżącą datę.
 Get-Date
 ```
 
-Następne polecenia kompilują ciąg z bieżącej daty i przypisujemy go do zmiennej. Kod wysyła zawartość zmiennej do danych wyjściowych.
+Następny fragment kodu kompiluje ciąg z bieżącej daty i przypisuje go do zmiennej. Kod wysyła zawartość zmiennej do danych wyjściowych.
 
 ```powershell-interactive
 $string = "The current date is " + (Get-Date)
@@ -301,9 +302,9 @@ if (($date.DayOfWeek = "Saturday") -or ($date.DayOfWeek = "Sunday")) { "Weekend"
 else { "Weekday" }
 ```
 
-### <a name="activity-output"></a>Dane wyjściowe działania
+### <a name="activity-output"></a>dane wyjściowe działania
 
-Aby użyć danych wyjściowych z poprzedniego działania w elemencie Runbook, użyj zmiennej $ActivityOutput z następującą składnią.
+Aby użyć danych wyjściowych z poprzedniego działania w elemencie Runbook, użyj zmiennej *ActivityOutput* z poniższą składnią.
 
 ```powershell-interactive
 $ActivityOutput['Activity Label'].PropertyName
@@ -343,7 +344,7 @@ Poniższy warunek określa, czy ta sama maszyna wirtualna ma stan inny niż zatr
 $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 ```
 
-W elemencie Runbook można sprzęgać wiele warunków przy użyciu [operatora logicznego](https://technet.microsoft.com/library/hh847789.aspx), takiego jak **-i** lub **-lub**. Na przykład poniższe warunki sprawdzają, czy maszyna wirtualna w poprzednim przykładzie jest w stanie "zatrzymana" lub "zatrzymywanie".
+W elemencie Runbook można sprzęgać wiele warunków przy użyciu [operatora logicznego](https://technet.microsoft.com/library/hh847789.aspx), takiego jak **-i** lub **-lub**. Na przykład poniższe warunki sprawdzają, czy maszyna wirtualna w poprzednim przykładzie jest w stanie **zatrzymania** lub **zatrzymywania**.
 
 ```powershell-interactive
 ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
@@ -379,11 +380,11 @@ Poniższy przykład używa danych wyjściowych działania o nazwie **Pobierz po�
 
 ## <a name="authenticating-to-azure-resources"></a>Uwierzytelnianie w zasobach platformy Azure
 
-Elementy Runbook w Azure Automation zarządzające zasobami platformy Azure wymagają uwierzytelniania na platformie Azure. [Konto Uruchom jako](automation-create-runas-account.md), nazywane również jednostką usługi, jest domyślnym mechanizmem używanym przez element Runbook automatyzacji do uzyskiwania dostępu do Azure Resource Manager zasobów w ramach subskrypcji. Tę funkcję można dodać do graficznego elementu Runbook poprzez dodanie zasobu połączenia AzureRunAsConnection, który korzysta z polecenia cmdlet [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) programu PowerShell, a następnie polecenie cmdlet [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount) do kanwy. Ten scenariusz przedstawiono w poniższym przykładzie.
+Elementy Runbook w Azure Automation zarządzające zasobami platformy Azure wymagają uwierzytelniania na platformie Azure. [Konto Uruchom jako](automation-create-runas-account.md), nazywane również jednostką usługi, jest domyślnym mechanizmem używanym przez element Runbook automatyzacji do uzyskiwania dostępu do Azure Resource Manager zasobów w ramach subskrypcji. Tę funkcję można dodać do graficznego elementu Runbook, dodając zasób połączenia **AzureRunAsConnection** , który używa polecenia cmdlet [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) programu PowerShell do kanwy. Możesz również dodać polecenie cmdlet [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount) . Ten scenariusz przedstawiono w poniższym przykładzie.
 
 ![Uruchom jako działania uwierzytelniania](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
-**Działanie Get as Connection**lub **Get-AutomationConnection**jest skonfigurowane za pomocą źródła danych o stałej wartości o nazwie AzureRunAsConnection.
+**Działanie Get as Connection**lub **Get-AutomationConnection**jest skonfigurowane za pomocą źródła danych o stałej wartości o nazwie **AzureRunAsConnection**.
 
 ![Konfiguracja połączenia Uruchom jako](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)
 
@@ -396,19 +397,19 @@ Następne działanie **Connect-AzAccount**dodaje uwierzytelnione konto Uruchom j
 
 Dla pól parametrów, identyfikator **aplikacji**, **CERTIFICATETHUMBPRINT**i **TENANTID**Określ nazwę właściwości dla ścieżki pola, ponieważ działanie wyprowadza obiekt z wieloma właściwościami. W przeciwnym razie, gdy element Runbook zostanie wykonany, kończy się niepowodzeniem podczas próby uwierzytelnienia. Jest to wymaganie co najmniej minimalne uwierzytelnianie elementu Runbook za pomocą konta Uruchom jako.
 
-Niektórzy subskrybenci tworzą konto usługi Automation przy użyciu [konta użytkownika usługi Azure AD](automation-create-aduser-account.md) do zarządzania klasycznym wdrożeniem platformy Azure lub zasobami Azure Resource Manager. Aby zachować zgodność z poprzednimi wersjami dla tych subskrybentów, mechanizm uwierzytelniania do użycia w elemencie Runbook to polecenie cmdlet **Add-AzureAccount** z [zasobem Credential](automation-credentials.md) , który reprezentuje Active Directory użytkownika z dostępem do konta platformy Azure.
+Niektórzy subskrybenci tworzą konto usługi Automation przy użyciu [konta użytkownika usługi Azure AD](automation-create-aduser-account.md) do zarządzania klasycznym wdrożeniem platformy Azure lub zasobami Azure Resource Manager. Aby zachować zgodność z poprzednimi wersjami dla tych subskrybentów, mechanizm uwierzytelniania do użycia w elemencie Runbook to polecenie cmdlet **Add-AzureAccount** z [zasobem poświadczenia](automation-credentials.md). Element zawartości reprezentuje Active Directory użytkownika z dostępem do konta platformy Azure.
 
-Możesz dodać tę funkcję do graficznego elementu Runbook, dodając zasób poświadczenia do kanwy, a następnie działanie **Add-AzureAccount** , które używa zasobu Credential dla jego danych wejściowych. Zobacz poniższy przykład.
+Tę funkcję można włączyć dla graficznego elementu Runbook, dodając zasób poświadczenia do kanwy, a następnie działanie **Add-AzureAccount** , które używa zasobu Credential dla jego danych wejściowych. Zobacz poniższy przykład.
 
 ![Działania uwierzytelniania](media/automation-graphical-authoring-intro/authentication-activities.png)
 
-Element Runbook musi być uwierzytelniany na początku i po każdym punkcie kontrolnym. W tym celu należy użyć działania **Add-AzureAccount** po wykonaniu dowolnego działania Checkpoint-Workflow. Nie trzeba używać dodatkowego działania związanego z poświadczeniem.
+Element Runbook musi być uwierzytelniany na początku i po każdym punkcie kontrolnym. W tym celu należy użyć działania **Add-AzureAccount** po wykonaniu dowolnego działania **Checkpoint-Workflow** . Nie trzeba używać dodatkowego działania związanego z poświadczeniem.
 
-![Dane wyjściowe działania](media/automation-graphical-authoring-intro/authentication-activity-output.png)
+![dane wyjściowe działania](media/automation-graphical-authoring-intro/authentication-activity-output.png)
 
 ## <a name="exporting-and-importing-a-graphical-runbook"></a>Eksportowanie i importowanie graficznego elementu Runbook
 
-Można wyeksportować tylko opublikowaną wersję graficznego elementu Runbook. Jeśli element Runbook nie został jeszcze opublikowany, przycisk **Eksportuj** jest wyłączony. Po kliknięciu przycisku **Eksportuj** element Runbook zostanie pobrany na komputer lokalny. Nazwa pliku jest zgodna z nazwą elementu Runbook z rozszerzeniem ". graphrunbook".
+Można wyeksportować tylko opublikowaną wersję graficznego elementu Runbook. Jeśli element Runbook nie został jeszcze opublikowany, przycisk **Eksportuj** jest wyłączony. Po kliknięciu przycisku **Eksportuj** element Runbook zostanie pobrany na komputer lokalny. Nazwa pliku jest zgodna z nazwą elementu Runbook z rozszerzeniem **. graphrunbook** .
 
 Możesz zaimportować graficzny lub graficzny plik Runbook przepływu pracy programu PowerShell, wybierając opcję **importowania** podczas dodawania elementu Runbook. Po wybraniu pliku do zaimportowania można zachować tę samą nazwę lub podać nową. W polu **Typ elementu Runbook** jest wyświetlany typ elementu Runbook po dokonaniu oceny wybranego pliku. Jeśli spróbujesz wybrać inny typ, który nie jest poprawny, w edytorze graficznym zostanie wyświetlony komunikat informujący, że istnieją potencjalne konflikty, a podczas konwersji mogą wystąpić błędy składniowe.
 
@@ -416,7 +417,7 @@ Możesz zaimportować graficzny lub graficzny plik Runbook przepływu pracy prog
 
 ## <a name="testing-a-graphical-runbook"></a>Testowanie graficznego elementu Runbook
 
-Każdy graficzny element Runbook w Azure Automation ma wersję roboczą i opublikowaną wersję. Można uruchomić tylko opublikowaną wersję, a można edytować tylko wersję roboczą. Wersję opublikowaną nie mają wpływu żadne zmiany wprowadzone w wersji roboczej. Gdy wersja robocza jest gotowa do użycia, publikuje ją, która zastępuje bieżącą opublikowaną wersję wersją roboczą.
+Każdy graficzny element Runbook w Azure Automation ma wersję roboczą i opublikowaną wersję. Można uruchomić tylko opublikowaną wersję, podczas gdy można edytować wersję roboczą. Wersję opublikowaną nie mają wpływu żadne zmiany wprowadzone w wersji roboczej. Gdy wersja robocza jest gotowa do użycia, publikuje ją, która zastępuje bieżącą opublikowaną wersję wersją roboczą.
 
 Możesz przetestować wersję roboczą elementu Runbook w Azure Portal, pozostawiając opublikowaną wersję bez zmian. Alternatywnie można przetestować nowy element Runbook przed jego opublikowaniem, aby można było sprawdzić, czy element Runbook działa prawidłowo przed wszelkimi zamiennikami wersji. Testowanie elementu Runbook powoduje wykonanie wersji roboczej i gwarantuje, że wszystkie wykonywane działania zostały ukończone. Nie zostanie utworzona historia zadań, ale w okienku danych wyjściowych testu są wyświetlane dane wyjściowe.
 

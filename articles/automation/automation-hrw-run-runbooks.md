@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 31ced19e164d50030386064a81edf3322b12855d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c67fff32770446cac3adef8af50c9e5733077bc7
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191133"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226292"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook
 
@@ -166,7 +166,7 @@ Aby zakończyć przygotowywanie konta Uruchom jako:
 
 1. Zapisz element Runbook **Export-RunAsCertificateToHybridWorker** na komputerze z rozszerzeniem **. ps1** .
 2. Zaimportuj ją na konto usługi Automation.
-3. Edytuj element Runbook, zmieniając wartość zmiennej *$Password* na własne hasło. 
+3. Edytuj element Runbook, zmieniając wartość zmiennej *Password* o własnym haśle. 
 4. Opublikuj element Runbook.
 5. Uruchom element Runbook, który jest przeznaczony dla grupy hybrydowych procesów roboczych elementu Runbook, która uruchamia i uwierzytelnia elementy Runbook przy użyciu konta Uruchom jako. 
 6. Sprawdź strumień zadań, aby zobaczyć, że raport podjął próbę zaimportowania certyfikatu do lokalnego magazynu komputerowego i postępuj zgodnie z wieloma wierszami. To zachowanie zależy od liczby kont usługi Automation zdefiniowanych w ramach subskrypcji i stopnia sukcesu uwierzytelniania.

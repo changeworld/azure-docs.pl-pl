@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: danis
-ms.openlocfilehash: e3a09a0d8412af711bfb6c539dc9d2829b1f0898
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 0309d9a794a978c736ffc4689c46565ee8fb5b00
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964587"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226696"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Obsługa usługi Cloud-init dla maszyn wirtualnych w systemie Azure
 W tym artykule opisano obsługę funkcji [Cloud-init](https://cloudinit.readthedocs.io) w celu skonfigurowania maszyny wirtualnej lub zestawów skalowania maszyn wirtualnych w czasie aprowizacji na platformie Azure. Te konfiguracje usługi Cloud-init są uruchamiane podczas pierwszego rozruchu po udostępnieniu zasobów przez platformę Azure.  
@@ -30,11 +30,11 @@ Inicjowanie obsługi maszyn wirtualnych to proces, w którym platforma Azure prz
 Platforma Azure obsługuje dwa agenci aprowizacji [Cloud-init](https://cloudinit.readthedocs.io)oraz [agenta systemu Azure Linux (wala)](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux).
 
 ## <a name="cloud-init-overview"></a>Cloud-init — Omówienie
-[Cloud-init](https://cloudinit.readthedocs.io) to szeroko stosowane podejście do dostosowywania maszyny wirtualnej z systemem Linux podczas jej pierwszego uruchomienia. Za pomocą pakietu cloud-init można instalować pakiety i zapisywać pliki lub konfigurować użytkowników i zabezpieczenia. Pakiet cloud-init jest wywoływana podczas początkowego rozruchu, dlatego są żadne dodatkowe kroki ani agenci wymagane do zastosowania konfiguracji.  Aby uzyskać więcej informacji na temat poprawnego formatowania plików `#cloud-config` lub innych danych wejściowych, zobacz [witrynę dokumentacji Cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` są to pliki tekstowe zakodowane w formacie base64.
+[Cloud-init](https://cloudinit.readthedocs.io) to szeroko stosowane podejście do dostosowywania maszyny wirtualnej z systemem Linux podczas jej pierwszego uruchomienia. Za pomocą pakietu cloud-init można instalować pakiety i zapisywać pliki lub konfigurować użytkowników i zabezpieczenia. Pakiet cloud-init jest wywoływana podczas początkowego rozruchu, dlatego są żadne dodatkowe kroki ani agenci wymagane do zastosowania konfiguracji.  Aby uzyskać więcej informacji na temat poprawnego formatowania plików `#cloud-config` lub innych danych wejściowych, zobacz [witrynę dokumentacji Cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  Pliki `#cloud-config` są zakodowane w formacie base64.
 
 Usługa Cloud-init działa również między dystrybucjami. Przykładowo nie używa się poleceń **apt-get install** lub **yum install** do zainstalowania pakietu. Zamiast tego możesz zdefiniować listę pakietów do zainstalowania. Usługa Cloud-init automatycznie korzysta z natywnego narzędzia do zarządzania pakietami dla wybranej dystrybucji.
 
-Aktywnie współpracujemy z partnerami zalecanych dystrybucji systemu Linux, aby mogła mieć pakietu cloud-init, włączone obrazów dostępnych w witrynie Azure marketplace. Te obrazy spowodują, że wdrożenia i konfiguracje usługi Cloud-init pracują bezproblemowo z maszynami wirtualnymi i zestawami skalowania maszyn wirtualnych. Początkowo firma Microsoft współpracuje z wystawionymi partnerami dystrybucji i nadrzędnymi systemu Linux w celu zapewnienia funkcji Cloud-init z systemem operacyjnym na platformie Azure, a następnie pakiety są aktualizowane i udostępniane publicznie w repozytoriach pakietów dystrybucji. 
+Aktywnie współpracujemy z partnerami zalecanych dystrybucji systemu Linux, aby mogła mieć pakietu cloud-init, włączone obrazów dostępnych w witrynie Azure marketplace. Te obrazy spowodują, że wdrożenia i konfiguracje usługi Cloud-init pracują bezproblemowo z maszynami wirtualnymi i zestawami skalowania maszyn wirtualnych. Początkowo firma Microsoft współpracuje z zatwierdzonymi partnerami dystrybucji systemu Linux i nadrzędnym, aby zapewnić funkcje Cloud-init z systemem operacyjnym na platformie Azure, a następnie pakiety są aktualizowane i udostępniane publicznie w repozytoriach pakietów dystrybucji. 
 
 Istnieją dwa etapy umożliwiające udostępnienie usługi Cloud-init dla zatwierdzonego systemu operacyjnego Linux dystrybucji na platformie Azure, obsługę pakietów, a następnie obsługę obrazów:
 * "Obsługa pakietu Cloud-init w przypadku dokumentów platformy Azure", które pakiety inicjowania usługi Cloud-init są obsługiwane lub w wersji zapoznawczej, dzięki czemu można używać tych pakietów z systemem operacyjnym w obrazie niestandardowym.
@@ -42,25 +42,25 @@ Istnieją dwa etapy umożliwiające udostępnienie usługi Cloud-init dla zatwie
 
 
 ### <a name="canonical"></a>Canonical
-| Wydawca/wersja| Oferta | JSZ | Wersja | obraz Cloud-init gotowy | Obsługa pakietu Cloud-init na platformie Azure|
+| Wydawca/wersja| Oferta | SKU | Wersja | obraz Cloud-init gotowy | Obsługa pakietu Cloud-init na platformie Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Kanoniczny 18,04 |UbuntuServer |18.04-LTS |najnowsza |tak | tak |
+|Kanoniczny 18,04 |UbuntuServer |18,04 – LTS |najnowsza |tak | tak |
 |Kanoniczny 16,04|UbuntuServer |16.04-LTS |najnowsza |tak | tak |
 |Kanoniczny 14,04|UbuntuServer |14.04.5-LTS |najnowsza |tak | tak |
 
 ### <a name="rhel"></a>RHEL
-| Wydawca/wersja | Oferta | JSZ | Wersja | obraz Cloud-init gotowy | Obsługa pakietu Cloud-init na platformie Azure|
+| Wydawca/wersja | Oferta | SKU | Wersja | obraz Cloud-init gotowy | Obsługa pakietu Cloud-init na platformie Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |tak | tak — obsługa z wersji pakietu: *18.2-1. el7_6.2*|
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | tak (Zwróć uwagę na to, że jest to obraz w wersji zapoznawczej, a wszystkie obrazy z systemem RHEL 7,7 obsługują funkcję Cloud-init, zostanie to 2020 usunięte. | tak — obsługa z wersji pakietu: *18.5 -3. el7*|
-|RedHat 7,7 |RHEL |7 — NIEPRZETWORZONY | nd.| aktualizacje bez obrazu do uruchomienia lutego 2020| tak — obsługa z wersji pakietu: *18.5 -3. el7*|
-|RedHat 7,7 |RHEL |7 — LVM | nd.| aktualizacje bez obrazu do uruchomienia lutego 2020| tak — obsługa z wersji pakietu: *18.5 -3. el7*|
-|RedHat 7,7 |RHEL |7,7 | nd.| aktualizacje bez obrazu do uruchomienia lutego 2020 | tak — obsługa z wersji pakietu: *18.5 -3. el7*|
-|RedHat 7,7 |RHEL — BYOS | RHEL — lvm77 | nd.|aktualizacje bez obrazu do uruchomienia lutego 2020  | tak — obsługa z wersji pakietu: *18.5 -3. el7*|
+|RedHat 7,7 |RHEL |7 — NIEPRZETWORZONY | Nie dotyczy| aktualizacje bez obrazu do uruchomienia lutego 2020| tak — obsługa z wersji pakietu: *18.5 -3. el7*|
+|RedHat 7,7 |RHEL |7 — LVM | Nie dotyczy| aktualizacje bez obrazu do uruchomienia lutego 2020| tak — obsługa z wersji pakietu: *18.5 -3. el7*|
+|RedHat 7,7 |RHEL |7,7 | Nie dotyczy| aktualizacje bez obrazu do uruchomienia lutego 2020 | tak — obsługa z wersji pakietu: *18.5 -3. el7*|
+|RedHat 7,7 |RHEL — BYOS | RHEL — lvm77 | Nie dotyczy|aktualizacje bez obrazu do uruchomienia lutego 2020  | tak — obsługa z wersji pakietu: *18.5 -3. el7*|
 
 ### <a name="centos"></a>CentOS
 
-| Wydawca/wersja | Oferta | JSZ | Wersja | obraz Cloud-init gotowy | Obsługa pakietu Cloud-init na platformie Azure|
+| Wydawca/wersja | Oferta | SKU | Wersja | obraz Cloud-init gotowy | Obsługa pakietu Cloud-init na platformie Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |tak (Zwróć uwagę na to, że jest to obraz w wersji zapoznawczej, a wszystkie obrazy z systemem CentOS 7,7 obsługują funkcję Cloud-init, zostanie to 2020 usunięte. | tak — obsługa z wersji pakietu: *18.5 -3. el7. CentOS*|
 
@@ -68,7 +68,7 @@ Istnieją dwa etapy umożliwiające udostępnienie usługi Cloud-init dla zatwie
 
 ### <a name="oracle"></a>Oracle
 
-| Wydawca/wersja | Oferta | JSZ | Wersja | obraz Cloud-init gotowy | Obsługa pakietu Cloud-init na platformie Azure|
+| Wydawca/wersja | Oferta | SKU | Wersja | obraz Cloud-init gotowy | Obsługa pakietu Cloud-init na platformie Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |Oracle 7,7 |Oracle-Linux |77-Ci |7.7.01| Podgląd obrazu (Zwróć uwagę na to, że jest to obraz w wersji zapoznawczej, a gdy wszystkie obrazy z systemem Oracle 7,7 obsługują funkcję Cloud-init, zostanie ono 2020 usunięte. | nie, w wersji zapoznawczej pakiet jest: *18.5-3.0.1. el7*
 

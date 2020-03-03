@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8391d92a2e2970378c11c043ca9f5d4f6dc44696
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 8acdaabc9f12f7e1bf85cfd8c727369462fe47e4
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939368"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227396"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Szybki Start: Tworzenie prywatnej strefy DNS platformy Azure przy użyciu Azure Portal
 
 Ten przewodnik Szybki Start przeprowadzi Cię przez kroki tworzenia pierwszej prywatnej strefy i rekordu DNS przy użyciu Azure Portal.
 
-Strefa DNS służy do hostowania rekordów systemu DNS dla określonej domeny. Aby rozpocząć hostowanie domeny w usłudze Azure DNS, musisz utworzyć strefę DNS dla tej nazwy domeny. Każdy rekord DNS domeny zostanie utworzony w tej strefie DNS. Aby opublikować prywatną strefę DNS w sieci wirtualnej, musisz określić listę sieci wirtualnych, które mogą rozpoznawać rekordy w strefie.  Są one nazywane *połączonymi* sieciami wirtualnymi. Gdy Autorejestracja jest włączona, Azure DNS aktualizuje także rekordy strefy za każdym razem, gdy maszyna wirtualna jest tworzona, zmienia jej adres IP lub został usunięty.
+Strefa DNS jest używana do hostowania rekordów DNS dla konkretnej domeny. Aby rozpocząć hostowanie domeny w usłudze Azure DNS, musisz utworzyć strefę DNS dla tej nazwy domeny. Każdy rekord DNS domeny zostanie utworzony w tej strefie DNS. Aby opublikować prywatną strefę DNS w sieci wirtualnej, musisz określić listę sieci wirtualnych, które mogą rozpoznawać rekordy w strefie.  Są one nazywane *połączonymi* sieciami wirtualnymi. Gdy Autorejestracja jest włączona, Azure DNS aktualizuje także rekordy strefy za każdym razem, gdy maszyna wirtualna jest tworzona, zmienia jej adres IP lub został usunięty.
 
 W tym przewodniku Szybki start zawarto informacje na temat wykonywania następujących czynności:
 
@@ -48,7 +48,7 @@ Strefa DNS zawiera wpisy DNS dla domeny. Aby rozpocząć hostowanie domeny w us�
 
 1. Na stronie **Tworzenie strefy prywatna strefa DNS** wpisz lub wybierz następujące wartości:
 
-   - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wpisz *MyAzureResourceGroup*, a następnie wybierz **przycisk OK**. Nazwa grupy zasobów musi być unikatowa w ramach subskrypcji platformy Azure. 
+   - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wpisz *MyAzureResourceGroup*, a następnie wybierz **przycisk OK**. Nazwa grupy zasobów musi być unikatowa w ramach subskrypcji platformy Azure.
    -  **Name**: wpisz *Private.contoso.com* w tym przykładzie.
 1. W obszarze **Lokalizacja grupy zasobów**wybierz pozycję **zachodnio-środkowe stany USA**.
 
@@ -58,13 +58,21 @@ Strefa DNS zawiera wpisy DNS dla domeny. Aby rozpocząć hostowanie domeny w us�
 
 Tworzenie strefy może potrwać kilka minut.
 
-## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
+## <a name="virtual-network-and-parameters"></a>Sieć wirtualna i parametry
 
-1. Na stronie portalu w lewym górnym rogu wybierz pozycję **Utwórz zasób**, a następnie pozycję **Sieć**, a następnie wybierz pozycję **Sieć wirtualna**.
-2. W obszarze **Nazwa**wpisz **myAzureVNet**.
-3. W obszarze **Grupa zasobów**wybierz pozycję **MyAzureResourceGroup**.
-4. W obszarze **Lokalizacja**wybierz pozycję **zachodnio-środkowe stany USA**.
-5. Zaakceptuj pozostałe wartości domyślne i wybierz pozycję **Utwórz**.
+W tej sekcji należy zamienić następujące parametry w krokach z poniższymi informacjami:
+
+| Parametr                   | Wartość                |
+|-----------------------------|----------------------|
+| **\<nazwy grupy zasobów >**  | MyAzureResourceGroup |
+| **\<nazwę sieci wirtualnej >** | MyAzureVNet          |
+| **\<nazwę regionu >**          | Zachodnio-środkowe stany USA      |
+| **> \<przestrzeni adresowej IPv4**   | 10.2.0.0 \ 16          |
+| **\<nazwę podsieci >**          | MyAzureSubnet        |
+| **\<zakres adresów podsieci >** | 10.2.0.0 \ 24          |
+
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="link-the-virtual-network"></a>Łączenie sieci wirtualnej
 
@@ -88,9 +96,8 @@ Teraz utworzysz dwie maszyny wirtualne, aby umożliwić przetestowanie strefy pr
 1. Wybierz pozycję **MyAzureResourceGroup** dla grupy zasobów.
 1. Wpisz **myVM01** — jako nazwę maszyny wirtualnej.
 1. Wybierz pozycję **zachodnie stany USA** dla **regionu**.
-1. W polu Nazwa użytkownika administratora wpisz **azureadmin** .
-2. Wpisz **Azure12345678** hasła i Potwierdź hasło.
-
+1. Wprowadź nazwę dla nazwy użytkownika administratora.
+2. Wprowadź hasło i Potwierdź hasło.
 5. W przypadku **publicznych portów ruchu przychodzącego**wybierz opcję **Zezwalaj na wybrane porty**, a następnie wybierz pozycję **RDP (3389)** w obszarze **Wybieranie portów przychodzących**.
 10. Zaakceptuj inne wartości domyślne dla strony, a następnie kliknij przycisk **Dalej: dyski >** .
 11. Zaakceptuj wartości domyślne na stronie **dyski** , a następnie kliknij przycisk **dalej: Sieć >** .

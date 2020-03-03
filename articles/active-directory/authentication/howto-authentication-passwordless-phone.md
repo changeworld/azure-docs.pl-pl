@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a7bf9690b4f50c771afc4745bbc2e5377adbba
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848480"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227065"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Włącz logowanie bez hasła przy użyciu aplikacji Microsoft Authenticator (wersja zapoznawcza)
 
@@ -93,6 +93,10 @@ Użytkownicy końcowi korzystający z usług MFA za pomocą lokalnego serwera us
 ### <a name="device-registration"></a>Rejestracja urządzenia
 
 Jedno z wymagań wstępnych dotyczących tworzenia nowego silnego poświadczenia polega na tym, że urządzenie, na którym zainstalowano aplikację Microsoft Authenticator, musi być również zarejestrowane w ramach dzierżawy usługi Azure AD dla pojedynczego użytkownika. Ze względu na bieżące ograniczenia rejestracji urządzeń urządzenie może być rejestrowane tylko w jednej dzierżawie. Ten limit oznacza, że tylko jedno konto służbowe w aplikacji Microsoft Authenticator może być włączone do logowania za pomocą telefonu.
+
+### <a name="intune-mobile-application-management"></a>Zarządzanie aplikacjami mobilnymi w usłudze Intune 
+
+Użytkownicy końcowi, którzy podlegają zasadom, które wymagają zarządzania aplikacjami mobilnymi (MAM), nie mogą rejestrować poświadczeń bezhaseł w aplikacji Microsoft Authenticator. 
 
 > [!NOTE]
 > Rejestracja urządzeń nie jest taka sama jak w przypadku zarządzania urządzeniami lub "MDM". W katalogu usługi Azure AD kojarzy tylko identyfikator urządzenia i identyfikator użytkownika.  

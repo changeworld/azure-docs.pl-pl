@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425311"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226333"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Dodawanie certyfikatu SSL w Azure App Service
 
@@ -324,7 +324,7 @@ Po zakończeniu operacji odnawiania kliknij pozycję **Synchronizuj**. Operacja 
 > [!NOTE]
 > Jeśli nie klikniesz przycisku **Synchronizuj**, App Service automatycznie zsynchronizuje certyfikat w ciągu 48 godzin.
 
-### <a name="export-certificate"></a>Eksportuj certyfikat
+### <a name="export-certificate"></a>Eksportowanie certyfikatu
 
 Ponieważ Certyfikat usługi App Service jest [Key Vault tajny](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets), można wyeksportować kopię pliku PFX i użyć jej do innych usług platformy Azure lub poza platformą Azure.
 
@@ -349,7 +349,7 @@ Pobrany plik *appservicecertificate. pfx* to pierwotny plik PKCS12, który zawie
 
 ### <a name="delete-certificate"></a>Usuń certyfikat 
 
-Usuwanie certyfikatu App Service jest ostateczne i nieodwracalne. Wszystkie powiązania w App Service z tym certyfikatem staną się nieprawidłowe. Aby zapobiec przypadkowemu usunięciu, platforma Azure umieszcza blokadę certyfikatu. Aby usunąć certyfikat App Service, należy najpierw usunąć blokadę usuwania dla certyfikatu.
+Usuwanie certyfikatu App Service jest ostateczne i nieodwracalne. Usuwanie Certyfikat usługi App Service zasobów powoduje odwołanie do odwołanego certyfikatu. Wszystkie powiązania w App Service z tym certyfikatem staną się nieprawidłowe. Aby zapobiec przypadkowemu usunięciu, platforma Azure umieszcza blokadę certyfikatu. Aby usunąć certyfikat App Service, należy najpierw usunąć blokadę usuwania dla certyfikatu.
 
 Na stronie [certyfikaty App Service](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) wybierz certyfikat, a następnie wybierz pozycję **blokady** w lewym okienku nawigacji.
 

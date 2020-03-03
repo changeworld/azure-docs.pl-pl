@@ -3,15 +3,15 @@ title: Specyfikacja Microsoft Azure FXT Edge | Microsoft Docs
 description: Specyfikacje fizyczne i środowiskowe dla sprzętu usługi Azure FXT Edge
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 90d56ad0cec3d187d4c7307f8c004b14c3860390
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254712"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227481"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Specyfikacje usługi Azure FXT Edge
 
@@ -23,7 +23,7 @@ W tym artykule opisano specyfikacje sprzętu dla węzłów sprzętowych usługi 
 |----------|-----------|-----------|
 | Rdzenie procesora CPU |  16 | 16 |
 | PAMIĘCI  | 1536 GB | 768 GB |
-| Porty sieciowe | 6 x 25/10 GB + 2 x 1 GB | 6 x 25/10 GB + 2 x 1 GB |
+| Porty sieciowe | 6 x 25/10 Gb + 2 x 1 Gb | 6 x 25/10 Gb + 2 x 1 Gb |
 | Pojemność dysków SSD interfejsu NVMe | 25,6 TB | 12,8 TB |
 
 ## <a name="drive-specifications"></a>Specyfikacje dysku
@@ -34,7 +34,7 @@ Numery dysków są drukowane w przestrzeni między dyskami. W systemie plików u
 
 ![Fotografia jednej kieszeni dysku twardego w obudowie FXT, pokazująca numery dysków i etykiety pojemności](media/fxt-drives-photo.png)
 
-| Numery dysków    |  Eksploatacja   |  Specyfikacje |
+| Numery dysków    |  Użycie   |  Specyfikacje |
 |------------------|--------|-----------------|
 | 0, 1             | System operacyjny     | DYSK SSD 480 GB SATA |
 | 2, 3, 4, 5, 6, 7, 8, 9 | Dane   | FXT 6600:3,2 TB dysków SSD interfejsu NVMe <br> FXT 6400:1,6 TB dysków SSD interfejsu NVMe |
@@ -48,7 +48,7 @@ Usługa Azure FXT Edge Fileer została zaprojektowana tak, aby mieściła się w
 
 | Wymiary pliku           |                          |
 |-----------------------------|--------------------------|
-| Proporcj                      | 42,8 mm (1,68 cala)    |
+| Wysokość                      | 42,8 mm (1,68 cala)    |
 | Szerokość (w tym Ears stojaka) | 482,0 mm (18,97 cala)  |
 | Szerokość — obudowa główna      | 434,0 mm (17,08 cala) |
 | Głębokość — stojak Ears do tyłu obudowy głównej                   | 733,82 mm (29,61 cala) |
@@ -66,8 +66,8 @@ Usługa Azure FXT Edge Fileer została zaprojektowana tak, aby mieściła się w
 
 | Wymiar pakietu | Milimetrach | 15 |
 |-------------------|-------------|--------|
-| Proporcj            | 311,2       | 12,25 " |
-| Szerokość             | 642,8       | 25,31 " |
+| Wysokość            | 311,2       | 12,25 " |
+| impulsów             | 642,8       | 25,31 " |
 | Długość            | 1 051,1     | 41,38 " |
 
 ## <a name="power-and-thermal-specifications"></a>Specyfikacje dotyczące mocy i termiczne
@@ -94,9 +94,9 @@ Te wykresy zapewniają zużycie mocy i termiczne pomiary wyjściowe dla często 
 |---------|---|---|---|---|---|
 | Napięcie (V) | 100 | 120 | 208 | 230 | 240 | 
 | Częstotliwość (Hz) | 60 | 60 | 60 | 50 | 50 |
-| Bieżący (A) | 5,02 | 4,16 |2,40 | 2,20 | 2,16 |
+| Bieżący (A) | 5.02 | 4,16 |2,40 | 2,20 | 2,16 |
 | Pozorna moc (VA) | 502 | 499 | 499 | 506 | 518|
-| Współczynnik mocy | 0,99 | 0,99 |0,98 | 0,98 | 0,98 |
+| Współczynnik mocy | 0,99. | 0,99. |0,98 | 0,98 | 0,98 |
 | Rzeczywista moc (W) | 497 |494 | 489 | 496 | 508 |
 | Rozpraszanie termiczne (BTU/godz.) |1696 | 1686 | 1669 | 1692 | 1733 |
 
@@ -104,9 +104,9 @@ Te wykresy zapewniają zużycie mocy i termiczne pomiary wyjściowe dla często 
 |---------|---|---|---|---|---|
 | Napięcie (V) | 100 |120 | 208 | 230 | 240| 
 | Częstotliwość (Hz) | 60 | 60 | 60 | 50 | 50 |
-| Bieżący (A) | 5,98 | 5,01 | 2,81 | 2,55 | 2,48 |
+| Bieżący (A) | 5,98 | 5.01 | 2,81 | 2.55 | 2,48 |
 | Pozorna moc (VA) | 598 | 601 | 584 | 587 | 595 |
-| Współczynnik mocy | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 |
+| Współczynnik mocy | 0,99. | 0,99. | 0,98 | 0,98 | 0,98 |
 | Rzeczywista moc (W) | 592 | 595 | 573 | 575 | 583 |
 | Rozpraszanie termiczne (BTU/godz.) | 2020 |2031 | 1954 | 1961 | 1990 |
 
@@ -116,7 +116,7 @@ Te wykresy zapewniają zużycie mocy i termiczne pomiary wyjściowe dla często 
 | Częstotliwość (Hz) |60 | 60 | 60 | 50 | 50 |
 | Bieżący (A) | 4,63 | 3,86 | 2,24 | 2,04 | 1,94 |
 | Pozorna moc (VA) | 463 | 463 | 466 | 469 | 466 |
-| Współczynnik mocy | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 | 
+| Współczynnik mocy | 0,99. | 0,99. | 0,98 | 0,98 | 0,98 | 
 | Rzeczywista moc (W) | 458 | 459 | 457 | 460 | 456 |
 | Rozpraszanie termiczne (BTU/godz.) | 1564 | 1565 | 1558 | 1569 | 1557 |
 
@@ -124,9 +124,9 @@ Te wykresy zapewniają zużycie mocy i termiczne pomiary wyjściowe dla często 
 |---------|---|---|---|---|---|
 | Napięcie (V) | 100 | 120 | 208 | 230 | 240 |
 | Częstotliwość (Hz) | 60 | 60 | 60 | 50 | 50 |
-| Bieżący (A) | 5,15 | 4,28 | 2,48 | 2,28 | 2,13 |
+| Bieżący (A) | 5.15 | 4,28 | 2,48 | 2,28 | 2,13 |
 | Pozorna moc (VA) | 515 | 514 | 516 | 524 | 511 |
-| Współczynnik mocy | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 |
+| Współczynnik mocy | 0,99. | 0,99. | 0,98 | 0,98 | 0,98 |
 | Rzeczywista moc (W) | 510 | 508 | 506 | 514 | 501 |
 | Rozpraszanie termiczne (BTU/godz.) | 1740 | 1735 | 1725 | 1753 | 1709 |
 
@@ -140,7 +140,7 @@ Ta sekcja zawiera specyfikacje dotyczące środowiska otoczenia sprzętowego.
 |---------------------------|-----------------------------------|-----------------------------|
 | Zakres temperatury otoczenia | 10 oC do 35 °C (50-86 °F)          | -40 °C do 65 °C (-40-149 °F) |
 | Wilgotność względna | 10%-80% bez kondensacji          | 5%-95% bez kondensacji     |
-| Maksymalny punkt Rosa         | 29 °C (84 °F)                       | 33 °C (91 °F)                 |
+| Maksymalny punkt Rosa         | 29 °C (84 °F)                       | 33°C (91°F)                 |
 | Wysokości                  | do 3048 metrów (10 000 stóp), z zastrzeżeniem powyższej klasyfikacji temperatury | do 12 000 metrów (39 370 stóp) |
 
 > [!NOTE] 
@@ -164,5 +164,5 @@ Plik usługi Azure FXT Edge jest zgodny z wymienionymi przepisami.
 |----------------|--------------------------|
 | Bezpieczeństwo ogólne | EN 60950-1:2006 + A1:2010 + a2:2013 + A11:2009 + A12:2011/IEC 60950-1:2005 ED2 + a1:2009 + a2:2013 <br>EN 62311:2008 | 
 | ELEKTROMAGNETYCZNEJ            | FCC A, ICES-003  <br>EN 55032:2012/CISPR 32:2012  <br>EN 55032:2015/CISPR 32:2015  <br>EN 55024:2010 + A1:2015/CISPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/IEC 61000-3-2:2014 (Klasa D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013 |
-| Energia         | Rozporządzenie Komisji (UE) nr. 617/2013  |
+| Energetyczna         | Rozporządzenie Komisji (UE) nr. 617/2013  |
 | RoHS           |    EN 50581:2012   |

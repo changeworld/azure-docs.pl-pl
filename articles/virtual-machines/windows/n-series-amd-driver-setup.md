@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: fdc6834f3fb5ee97f27a6397645b965863e90a6b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6dc8c54b9d138ab62e086cca59cd5b4801fa6130
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190534"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228339"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Instalowanie sterowników AMD GPU na maszynach wirtualnych serii N z systemem Windows
 
@@ -31,13 +31,18 @@ Aby zapoznać się z podstawowymi danymi, pojemnościami magazynu i szczegółam
 
 | System operacyjny | Sterownik |
 | -------- |------------- |
-| Windows 10 EVD — kompilacja 1903 <br/><br/>Windows 10 — kompilacja 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [19. q 4.1](https://download.microsoft.com/download/7/e/5/7e558ac0-3fff-413d-af62-800285a2fc53/Radeon-Pro-Software-for-Enterprise-19.Q4.1-Technical-Preview.exe) (. exe) |
+| Windows 10 EVD — kompilacja 1903 <br/><br/>Windows 10 — kompilacja 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. q 1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (. exe) |
+
 
 ## <a name="driver-installation"></a>Instalacja sterownika
 
 1. Połącz się Pulpit zdalny z każdą maszyną wirtualną serii NVv4.
 
-1. Pobierz i Wyodrębnij pliki instalacji sterownika. Przejdź do folderu i uruchom plik "Setup. exe" w celu zainstalowania obsługiwanego sterownika dla systemu operacyjnego Windows.
+2. Jeśli jesteś klientem usługi NVv4 w wersji zapoznawczej, Zatrzymaj maszynę wirtualną i zaczekaj, aż zostanie ona przeniesiona do stanu zatrzymana (cofnięta alokacja).
+
+3. Uruchom maszynę wirtualną, a następnie Odinstaluj sterownik wersji zapoznawczej, uruchamiając polecenie "amdcleanuputility-x64. exe" znajdujące się w folderze ". ..\AMDCleanUninstallUtility". Dokładne ścieżki różnią się w zależności od tego, gdzie znajdują się pliki instalacyjne poprzednich sterowników.  
+
+4. Pobierz i zainstaluj najnowszą wersję sterownika.
 
 ## <a name="verify-driver-installation"></a>Weryfikuj instalację sterownika
 

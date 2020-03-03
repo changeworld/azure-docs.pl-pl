@@ -17,12 +17,12 @@ ms.date: 04/06/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8bfe668dc2eb4e0e00de34231f4c232f5240a82d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 650e5fb5d0b2c5522a70944991e9e49037c3b4fa
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700757"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226941"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikacji dla platformy tożsamości firmy Microsoft
 
@@ -58,7 +58,7 @@ W tym przepływie aplikacja otrzymuje tokeny bezpośrednio od platformy tożsamo
 
 Aby zapoznać się z tym scenariuszem, wypróbuj jeden z przykładów kodu aplikacji jednostronicowych w sekcji [wprowadzenie do platformy tożsamości firmy Microsoft](v2-overview.md#getting-started) .
 
-## <a name="web-apps"></a>Aplikacje sieci Web
+## <a name="web-apps"></a>Aplikacje internetowe
 
 W przypadku aplikacji sieci Web (.NET, PHP, Java, Ruby, Python, Node), do których użytkownik uzyskuje dostęp za pomocą przeglądarki, można użyć programu [OpenID Connect Connect](active-directory-v2-protocols.md) do logowania użytkownika. W programie OpenID Connect Connect aplikacja sieci Web otrzymuje token ID. Token identyfikatora to token zabezpieczający, który weryfikuje tożsamość użytkownika i zawiera informacje o użytkowniku w formie oświadczeń:
 
@@ -99,7 +99,7 @@ Accept: application/json
 ...
 ```
 
-Internetowy interfejs API używa tokenu dostępu do weryfikowania tożsamości obiektu wywołującego interfejsu API i wyodrębniania informacji o wywołującym z oświadczeń, które są zakodowane w tokenie dostępu. Dodatkowe szczegóły dotyczące różnych typów tokenów używanych w punkcie końcowym platformy tożsamości firmy Microsoft są dostępne w dokumentacji [tokenu dostępu](access-tokens.md) i [id_token](id-tokens.md)
+Internetowy interfejs API używa tokenu dostępu do weryfikowania tożsamości obiektu wywołującego interfejsu API i wyodrębniania informacji o wywołującym z oświadczeń, które są zakodowane w tokenie dostępu. Dodatkowe szczegóły dotyczące różnych typów tokenów używanych w punkcie końcowym platformy tożsamości firmy Microsoft są dostępne w dokumentacji [tokenu dostępu](access-tokens.md) i [id_token](id-tokens.md) .
 
 Internetowy interfejs API może zapewnić użytkownikom możliwość wyboru lub rezygnacji z określonych funkcji lub danych przez ujawnienie uprawnień, nazywanych również [zakresami](v2-permissions-and-consent.md). Aby aplikacja wywołująca uzyskała uprawnienie do zakresu, użytkownik musi wyrazić zgodę na zakres w przepływie. Punkt końcowy platformy tożsamości firmy Microsoft prosi użytkownika o zgodę, a następnie rejestruje uprawnienia we wszystkich tokenach dostępu odbieranych przez internetowy interfejs API. Internetowy interfejs API sprawdza poprawność tokenów dostępu odbieranych na każdym wywołaniu i wykonuje sprawdzanie autoryzacji.
 

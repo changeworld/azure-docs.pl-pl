@@ -4,15 +4,19 @@ description: Dowiedz się, jak Azure Monitor i Log Analytics ułatwiają monitor
 author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
-ms.date: 1/29/2019
-ms.openlocfilehash: c0df972d893e82d7b49d5b3ed2a2bbf7067548c2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.date: 2/28/2020
+ms.openlocfilehash: c4aee7c7e78c6799874194697fb3bc9c4aa33b38
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78201815"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227985"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Samouczek: Rozwiązywanie problemów z aplikacją App Service przy użyciu Azure Monitor
+
+> [!NOTE]
+> Integracja Azure Monitor z App Service jest w [wersji zapoznawczej](https://aka.ms/appsvcblog-azmon).
+>
 
 Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) maksymalizuje dostępność i wydajność aplikacji i usług, udostępniając kompleksowe rozwiązanie do zbierania, analizowania i działania na telemetrii z chmur i środowisk lokalnych.
 
@@ -53,7 +57,7 @@ git remote add azure <url_from_previous_step>
 git push azure master
 ```
 
-## <a name="configure-azure-monitor"></a>Konfigurowanie Azure Monitor
+## <a name="configure-azure-monitor-preview"></a>Konfigurowanie Azure Monitor (wersja zapoznawcza)
 
 ### <a name="create-a-log-analytics-workspace"></a>Tworzenie obszaru roboczego Log Analytics
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f61ab87a3eb1bd4b81a8e67a182a4cb6a09aa069
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4a3eb121b68311084fd516c6abb7e00ad70eba8b
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888956"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226839"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
@@ -55,7 +55,7 @@ Po uruchomieniu funkcji w trybie inspekcji przez rozsądny okres można zmienić
 * Połączenie sieciowe musi istnieć między co najmniej jednym kontrolerem domeny w każdej domenie i co najmniej jednym serwerem, który obsługuje usługę proxy na potrzeby ochrony hasłem. Ta łączność musi zezwalać kontrolerowi domeny na dostęp do portu mapowania punktów końcowych wywołań RPC 135 i portu serwera RPC w usłudze serwera proxy. Domyślnie port serwera RPC to dynamiczny port RPC, ale można go skonfigurować do [korzystania z portu statycznego](#static).
 * Wszystkie maszyny, na których zostanie zainstalowana usługa serwera proxy ochrony haseł usługi Azure AD, muszą mieć dostęp sieciowy do następujących punktów końcowych:
 
-    |**Punkt końcowy**|**Przeznaczenie**|
+    |**Punktu końcowego**|**Przeznaczenie**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Żądania uwierzytelniania|
     |`https://enterpriseregistration.windows.net`|Funkcja ochrony hasłem w usłudze Azure AD|
@@ -106,6 +106,7 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
    * Każda taka usługa może udostępniać tylko zasady haseł dla jednego lasu. Komputer hosta musi być przyłączony do domeny w tym lesie. Domeny główne i podrzędne są obsługiwane. Wymagana jest łączność sieciowa między co najmniej jednym KONTROLERem domeny w każdej domenie lasu i komputerem ochrony hasłem.
    * Usługę serwera proxy można uruchomić na kontrolerze domeny w celu przetestowania. Jednak kontroler domeny wymaga łączności z Internetem, co może stanowić zagrożenie dla bezpieczeństwa. Zalecamy tę konfigurację tylko do celów testowych.
    * Zalecamy co najmniej dwa serwery proxy w celu zapewnienia nadmiarowości. Zobacz [wysoką dostępność](howto-password-ban-bad-on-premises-deploy.md#high-availability).
+   * Nie jest obsługiwane uruchamianie usługi proxy na kontrolerze domeny tylko do odczytu.
 
 1. Zainstaluj usługę proxy ochrony hasłem usługi Azure AD za pomocą instalatora oprogramowania `AzureADPasswordProtectionProxySetup.exe`.
    * Instalacja oprogramowania nie wymaga ponownego uruchomienia komputera. Instalację oprogramowania można zautomatyzować za pomocą standardowych procedur MSI, na przykład:
@@ -137,7 +138,7 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
 
      Po jednokrotnym pomyślnym wykonaniu tego polecenia dla usługi serwera proxy dodatkowe wywołania będą się kończyć powodzeniem, ale nie są potrzebne.
 
-      `Register-AzureADPasswordProtectionProxy` polecenie cmdlet obsługuje następujące trzy tryby uwierzytelniania. Pierwsze dwa tryby obsługują platformę Azure Multi-Factor Authentication, ale trzeci tryb nie jest. Aby uzyskać więcej informacji, zobacz komentarze poniżej.
+      `Register-AzureADPasswordProtectionProxy` polecenie cmdlet obsługuje następujące trzy tryby uwierzytelniania. Pierwsze dwa tryby obsługują platformę Azure Multi-Factor Authentication, ale trzeci tryb nie jest. Aby uzyskać więcej informacji, zobacz poniższe komentarze.
 
      * Tryb uwierzytelniania interaktywnego:
 
@@ -179,11 +180,11 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
    > Podczas pierwszego uruchomienia tego polecenia cmdlet dla określonej dzierżawy platformy Azure może wystąpić zauważalne opóźnienie. O ile nie zgłoszono błędu, nie martw się o to opóźnienie.
 
 1. Zarejestruj Las.
-   * Aby komunikować się z platformą Azure przy użyciu polecenia cmdlet programu PowerShell `Register-AzureADPasswordProtectionForest`, należy zainicjować Las Active Directory lokalnego z poświadczeniami niezbędnymi.
+   * Zainicjuj Las lokalny Active Directory z poświadczeniami niezbędnymi do komunikowania się z platformą Azure przy użyciu polecenia cmdlet programu PowerShell `Register-AzureADPasswordProtectionForest`.
 
       Polecenie cmdlet wymaga poświadczeń administratora globalnego dla dzierżawy platformy Azure.  To polecenie cmdlet należy również uruchomić przy użyciu konta z uprawnieniami administratora lokalnego. Wymaga również lokalnego Active Directory uprawnień administratora przedsiębiorstwa. Ten krok jest uruchamiany raz na las.
 
-      `Register-AzureADPasswordProtectionForest` polecenie cmdlet obsługuje następujące trzy tryby uwierzytelniania. Pierwsze dwa tryby obsługują platformę Azure Multi-Factor Authentication, ale trzeci tryb nie jest. Aby uzyskać więcej informacji, zobacz komentarze poniżej.
+      `Register-AzureADPasswordProtectionForest` polecenie cmdlet obsługuje następujące trzy tryby uwierzytelniania. Pierwsze dwa tryby obsługują platformę Azure Multi-Factor Authentication, ale trzeci tryb nie jest. Aby uzyskać więcej informacji, zobacz poniższe komentarze.
 
      * Tryb uwierzytelniania interaktywnego:
 
@@ -266,7 +267,7 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
    Usługa serwera proxy nie obsługuje korzystania z określonych poświadczeń w celu nawiązania połączenia z serwerem proxy HTTP.
 
 1. Opcjonalnie: Skonfiguruj usługę proxy do ochrony hasłem, aby nasłuchiwać na określonym porcie.
-   * Oprogramowanie agenta DC do ochrony hasłem na kontrolerach domeny używa protokołu RPC przez TCP do komunikowania się z usługą proxy. Domyślnie usługa serwera proxy nasłuchuje na dowolnym dostępnym dynamicznym punkcie końcowym RPC. Można jednak skonfigurować usługę do nasłuchiwania na konkretnym porcie TCP, jeśli jest to konieczne ze względu na topologię sieci lub wymagania dotyczące zapory w danym środowisku.
+   * Oprogramowanie agenta DC do ochrony hasłem na kontrolerach domeny używa protokołu RPC przez TCP do komunikowania się z usługą proxy. Domyślnie usługa serwera proxy nasłuchuje na dowolnym dostępnym dynamicznym punkcie końcowym RPC. Usługę można skonfigurować do nasłuchiwania na konkretnym porcie TCP, jeśli jest to konieczne ze względu na topologię sieci lub wymagania dotyczące zapory w danym środowisku.
       * <a id="static" /></a>, aby skonfigurować usługę do uruchamiania w ramach portu statycznego, należy użyć polecenia cmdlet `Set-AzureADPasswordProtectionProxyConfiguration`.
 
          ```powershell
@@ -306,7 +307,7 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
 
    Usługę agenta DC można zainstalować na komputerze, który nie jest jeszcze kontrolerem domeny. W takim przypadku usługa zostanie uruchomiona i uruchomiona, ale pozostanie nieaktywna, dopóki komputer nie zostanie podwyższony do poziomu kontrolera domeny.
 
-   Instalację oprogramowania można zautomatyzować za pomocą standardowych procedur MSI. Przykład:
+   Instalację oprogramowania można zautomatyzować za pomocą standardowych procedur MSI. Na przykład:
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 
@@ -343,6 +344,8 @@ Nie ma dodatkowych wymagań dotyczących wdrażania ochrony hasłem usługi Azur
 ## <a name="read-only-domain-controllers"></a>Kontrolery domeny tylko do odczytu
 
 Zmiany/zestawy haseł nie są przetwarzane i utrwalane na kontrolerach domeny tylko do odczytu (RODC). Są one przekazywane do zapisywalnych kontrolerów domeny. W związku z tym nie trzeba instalować oprogramowania agenta kontrolera domeny na kontrolerach RODC.
+
+Nie jest obsługiwane uruchamianie usługi proxy na kontrolerze domeny tylko do odczytu.
 
 ## <a name="high-availability"></a>Wysoka dostępność
 

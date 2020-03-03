@@ -3,24 +3,31 @@ title: Konfigurowanie ustawień Windows Update do pracy z platformą Azure Updat
 description: W tym artykule opisano ustawienia Windows Update, które można skonfigurować do pracy z usługą Azure Update Management.
 services: automation
 ms.subservice: update-management
-ms.date: 10/02/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: f6377012a2afd0fb36486edf0af0ac3591b5d1f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7f226c4d297d25644b2650d085655f70d8326927
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366859"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226261"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Skonfiguruj ustawienia Windows Update dla Update Management
 
-Usługa Azure Update Management opiera się na Windows Update do pobrania i zainstalowania aktualizacji systemu Windows. W związku z tym Update Management uwzględnia wiele ustawień używanych przez Windows Update. W przypadku korzystania z ustawień w celu włączenia aktualizacji innych niż Windows program Update Management również będzie zarządzać tymi aktualizacjami. Jeśli chcesz włączyć pobieranie aktualizacji przed wystąpieniem wdrożenia aktualizacji, wdrożenie aktualizacji może być szybsze, wydajniejsze i mniejsze niż okno obsługi.
+Usługa Azure Update Management opiera się na [kliencie Windows Update](https://docs.microsoft.com//windows/deployment/update/windows-update-overview) do pobierania i instalowania aktualizacji systemu Windows. Istnieją określone ustawienia, które są używane przez klienta Windows Update podczas nawiązywania połączenia z usługą Windows Server Update Services (WSUS) lub Windows Update. Wiele z tych ustawień może być zarządzanych przy użyciu:
+
+- Edytor lokalnych zasad grupy
+- Zasady grupy
+- Program PowerShell
+- Bezpośrednie edytowanie rejestru
+
+Update Management przestrzega wielu ustawień określonych w celu kontrolowania Windows Update klienta. W przypadku korzystania z ustawień w celu włączenia aktualizacji innych niż Windows program Update Management również będzie zarządzać tymi aktualizacjami. Jeśli chcesz włączyć pobieranie aktualizacji przed wystąpieniem wdrożenia aktualizacji, wdrożenie aktualizacji może być szybsze, wydajniejsze i mniejsze niż okno obsługi.
 
 ## <a name="pre-download-updates"></a>Aktualizacje przed pobraniem
 
-Aby skonfigurować automatyczne pobieranie aktualizacji w zasady grupy, ustaw [ustawienie Konfiguruj aktualizacje automatyczne](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) na **3**. To ustawienie włącza pobieranie wymaganych aktualizacji w tle, ale nie instaluje ich. W ten sposób Update Management pozostaje w kontroli nad harmonogramami, ale aktualizacje można pobrać poza oknem obsługi Update Management. To zachowanie zapobiega błędom "Przekroczono okno obsługi" w Update Management.
+Aby skonfigurować automatyczne pobieranie aktualizacji, ale nie instalować ich automatycznie, można użyć zasady grupy, aby ustawić [ustawienie Skonfiguruj aktualizacje automatyczne](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) na **3**. To ustawienie włącza pobieranie wymaganych aktualizacji w tle i powiadamia, że aktualizacje są gotowe do zainstalowania. W ten sposób Update Management pozostaje w kontroli nad harmonogramami, ale aktualizacje można pobrać poza oknem obsługi Update Management. To zachowanie uniemożliwia **przekroczenie błędów okna obsługi** w Update Management.
 
-To ustawienie można również włączyć, uruchamiając następujące polecenie programu PowerShell w systemie, który ma zostać skonfigurowany do pobierania aktualizacji:
+To ustawienie można włączyć za pomocą programu PowerShell, uruchamiając następujące polecenie:
 
 ```powershell
 $WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
@@ -28,22 +35,15 @@ $WUSettings.NotificationLevel = 3
 $WUSettings.Save()
 ```
 
-## <a name="disable-automatic-installation"></a>Wyłącz instalację automatyczną
-
-Domyślnie na maszynach wirtualnych platformy Azure jest włączona automatyczna instalacja aktualizacji. Może to spowodować zainstalowanie aktualizacji przed zaplanowaniem ich instalacji przez Update Management. To zachowanie można wyłączyć, ustawiając klucz rejestru `NoAutoUpdate` na `1`. Poniższy fragment kodu programu PowerShell pokazuje, jak to zrobić:
-
-```powershell
-$AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
-Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
-```
-
 ## <a name="configure-reboot-settings"></a>Konfigurowanie ustawień ponownego uruchamiania
 
-Klucze rejestru wymienione w temacie [Konfigurowanie aktualizacji automatycznych przez edycję rejestru](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) i [kluczy rejestru używanych do zarządzania ponownym uruchomieniem](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) mogą spowodować ponowne uruchomienie maszyn, nawet jeśli w ustawieniach **wdrożenia aktualizacji** określono opcję **nigdy nie uruchamiaj ponownie** . Te klucze rejestru należy skonfigurować w taki sposób, aby najlepiej odpowiadały Twojemu środowisku.
+Klucze rejestru wymienione w temacie [Konfigurowanie aktualizacji automatycznych przez edycję rejestru](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) i [kluczy rejestru używanych do zarządzania ponownym uruchomieniem](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) mogą spowodować ponowne uruchomienie maszyn, nawet jeśli w ustawieniach **wdrożenia aktualizacji** określono opcję **nigdy nie uruchamiaj ponownie** . Skonfiguruj te klucze rejestru, aby najlepiej odpowiadały Twojemu środowisku.
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>Włącz aktualizacje dla innych produktów firmy Microsoft
 
-Domyślnie usługa Windows Update udostępnia aktualizacje tylko dla systemu Windows. Jeśli włączysz ustawienie **Chcę otrzymywać aktualizacje dla innych produktów firmy Microsoft podczas aktualizacji systemu Windows** , uzyskasz także aktualizacje dla innych produktów, w tym poprawki zabezpieczeń dla Microsoft SQL Server i innego oprogramowania firmy Microsoft. Tej opcji nie można skonfigurować za pomocą zasady grupy. Uruchom następujące polecenie programu PowerShell w systemach, w których chcesz włączyć inne aktualizacje firmy Microsoft. Update Management będzie zgodne z tym ustawieniem.
+Domyślnie program Windows Update Client jest skonfigurowany do udostępniania tylko aktualizacji dla systemu Windows. Jeśli włączysz ustawienie **Chcę otrzymywać aktualizacje dla innych produktów firmy Microsoft podczas aktualizacji systemu Windows** , uzyskasz także aktualizacje dla innych produktów, w tym poprawki zabezpieczeń dla Microsoft SQL Server i innego oprogramowania firmy Microsoft. Tę opcję można skonfigurować w przypadku pobrania i skopiowania najnowszych [plików szablonów administracyjnych](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra) dostępnych dla systemu Windows 2016 i nowszych.
+
+W przypadku korzystania z systemu Windows Server 2012 R2 nie można skonfigurować tego ustawienia za pomocą zasady grupy. Na tych maszynach Uruchom następujące polecenie programu PowerShell. Update Management jest zgodny z tym ustawieniem.
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -54,11 +54,13 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 ## <a name="wsus-configuration-settings"></a>Ustawienia konfiguracji programu WSUS
 
-Update Management jest zgodny z ustawieniami Windows Server Update Services (WSUS). Ustawienia programu WSUS, które można skonfigurować do pracy z Update Management są wymienione poniżej.
+Update Management obsługuje ustawienia usług WSUS. Ustawienia programu WSUS, które można skonfigurować do pracy z Update Management są wymienione poniżej.
 
 ### <a name="intranet-microsoft-update-service-location"></a>Lokalizacja intranetowej usługi aktualizacji firmy Microsoft
 
-Możesz określić źródła do skanowania i pobierania aktualizacji w obszarze [Określ lokalizację intranetową Microsoft Update usługi](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location).
+Możesz określić źródła do skanowania i pobierania aktualizacji w obszarze [Określ lokalizację intranetową Microsoft Update usługi](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location). Domyślnie program Windows Update Client jest skonfigurowany do pobierania aktualizacji z Windows Update. W przypadku określenia serwera programu WSUS jako źródła dla maszyn, jeśli aktualizacje nie są zatwierdzone w programie WSUS, wdrożenie aktualizacji nie powiedzie się. 
+
+Aby ograniczyć liczbę komputerów tylko do usługi aktualizacji wewnętrznej, skonfiguruj [nie łącz się z dowolnymi Windows Update lokalizacjami internetowymi](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations). 
 
 ## <a name="next-steps"></a>Następne kroki
 

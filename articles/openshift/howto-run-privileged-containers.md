@@ -7,14 +7,14 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: ARO, OpenShift, aquasec, TwistLock, Red Hat
-ms.openlocfilehash: 4241296a991283f14fbb294fdc059ecde58d6d75
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 5d28a19126c9b7ae4ef7afe2a6b69bd4a13e0c83
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069664"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228237"
 ---
-# <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Uruchamianie uprzywilejowanych kontenerów w klastrze Red Hat OpenShift platformy Azure
+# <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Uruchamianie uprzywilejowanych kontenerów w klastrze usługi Azure Red Hat OpenShift
 
 Nie można uruchamiać dowolnych kontenerów uprzywilejowanych w klastrach Red Hat OpenShift platformy Azure.
 W przypadku klastrów ARO mogą działać dwa rozwiązania do monitorowania zabezpieczeń i zgodności.
@@ -121,12 +121,17 @@ Podczas wdrażania wymuszania należy określić następujące pola:
 
 Instrukcje podstawowe, które zamierzamy zmodyfikować, można znaleźć w [dokumentacji wdrożenia w chmurze Prisma](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html)
 
-Rozpocznij od utworzenia nowego projektu OpenShift
+Zacznij od zainstalowania `twistcli` narzędzia, zgodnie z opisem w sekcji "Install Prisma Cloud" i "Pobierz oprogramowanie w chmurze Prisma".
+
+Utwórz nowy projekt OpenShift
 ```
 oc new-project twistlock
 ```
 
-Możesz postępować zgodnie z dokumentacją do momentu, w sekcji "Instalowanie konsoli", użyć rejestru kontenerów chmury Prisma zamiast tworzenia wewnętrznego.
+Pomiń sekcję opcjonalną "wypchnij obrazy w chmurze Prisma do prywatnego rejestru". Nie będzie on działał na platformie Azure Red Hat OpenShift. Zamiast tego należy użyć rejestru online.
+
+Oficjalną dokumentację można wykonać przy zastosowaniu poprawek opisanych poniżej.
+Rozpocznij od sekcji "Instalowanie konsoli".
 
 ### <a name="install-console"></a>Zainstaluj konsolę
 

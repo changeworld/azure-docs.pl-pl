@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 1/14/2020
 ms.author: cbasoglu
-ms.openlocfilehash: 00617fc09f471eaf3dc13a5aa691c4aab2e1e2ec
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b41967033b00144ca5bd52ce23cf8aabcea6749e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424919"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228091"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>Usługi mowy z niesuwerennymi chmurami
 
@@ -56,7 +56,7 @@ W Chinach centrum danych platformy Azure z bezpośrednim dostępem do urządzeń
 - TTS in SpeechSDK: *config. FromHost ("https[]()://chinaeast2.TTS.Speech.Azure.CN", "\<klucz\>");*
 - Tokeny uwierzytelniania:[]()https://chinaeast2.API.Cognitive.Azure.CN/STS/v1.0/issueToken
 - Witryna Azure Portal: https://portal.azure.cn
-- Portal Custom Speech: https://chinaeast2.cris.azure.cn/Home/CustomSpeech
+- Portal Custom Speech: https://speech.azure.cn/CustomSpeech
 - Dostępne jednostki SKU: S0
 - Obsługiwane funkcje:
   - Zamiana mowy na tekst

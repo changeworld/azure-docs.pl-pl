@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 00e8cdbbd765d6baf83f64848030d08d6e712ca1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 600ca893e6d6b81fe24626a99cc1f6de80efb3e8
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661349"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228136"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 
@@ -214,10 +214,12 @@ Przykłady możliwy do uruchomienia można znaleźć w temacie [Application Insi
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>Uaktualnianie ze starszej wersji Application Insights
 
 Istotne zmiany w wersji zestawu SDK V2:
-- Aby umożliwić lepsze sygnatury interfejsu API, niektóre wywołania interfejsu API, takie jak trackPageView, trackexception, zostały zaktualizowane. Uruchamianie w programie IE8 lub w niższych wersjach przeglądarki nie jest obsługiwane.
+- Aby umożliwić lepsze sygnatury interfejsu API, niektóre wywołania interfejsu API, takie jak trackPageView i trackexception, zostały zaktualizowane. Uruchamianie w programie Internet Explorer 8 i wcześniejszych wersjach przeglądarki nie jest obsługiwane.
 - Koperta telemetrii ma zmiany nazwy pola i struktury ze względu na aktualizacje schematu danych.
-- Przeniesiono `context.operation` do `context.telemetryTrace`. Niektóre pola zostały również zmienione (`operation.id` --> `telemetryTrace.traceID`)
-  - Jeśli chcesz ręcznie odświeżyć bieżący identyfikator pageview (na przykład w aplikacjach SPA), można to zrobić za pomocą `appInsights.properties.context.telemetryTrace.traceID = Util.newId()`
+- Przeniesiono `context.operation` do `context.telemetryTrace`. Niektóre pola zostały również zmienione (`operation.id` --> `telemetryTrace.traceID`).
+  - Aby ręcznie odświeżyć bieżący identyfikator pageview (na przykład w aplikacjach SPA), użyj `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`.
+    > [!NOTE]
+    > Aby zachować unikatowy identyfikator śledzenia, w którym wcześniej była używana `Util.newId()`, teraz Użyj `Util.generateW3CId()`. Oba ostatecznie kończą się IDENTYFIKATORem operacji.
 
 Jeśli używasz bieżącego zestawu SDK PRODUKCYJNEgo usługi Application Insights (1.0.20) i chcesz sprawdzić, czy nowy zestaw SDK działa w środowisku uruchomieniowym, zaktualizuj adres URL w zależności od bieżącego scenariusza ładowania zestawu SDK.
 

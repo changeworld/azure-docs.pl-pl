@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4070b004ee791a433b5aeb9e3e0cdd9662fb0429
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6a51e57bd2411c19dfd5e7740f9e918d0bd09e27
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191150"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226474"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook w Azure Automation
 
@@ -152,11 +152,11 @@ Start-AzAutomationRunbook `
 
 W tej sekcji opisano niektóre sposoby obsługi wyjątków lub sporadycznych problemów w elementach Runbook.
 
-#### <a name="erroractionpreference"></a>$ErrorActionPreference
+#### <a name="erroractionpreference"></a>ErrorActionPreference
 
-Zmienna [$ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) określa, jak program PowerShell reaguje na błąd niepowodujący zakończenia. Przerywanie błędów zawsze kończy się niezależnie od *$ErrorActionPreference*.
+Zmienna [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) określa, jak program PowerShell reaguje na błąd niepowodujący zakończenia. Przerywanie błędów zawsze kończy się niezależnie od *ErrorActionPreference*.
 
-Gdy element Runbook używa *$ErrorActionPreference*, zazwyczaj błąd niepowodujący zakończenia, taki jak **PathNotFound** z polecenia cmdlet **GET-ChildItem** , uniemożliwia ukończenie elementu Runbook. W poniższym przykładzie pokazano sposób użycia *$ErrorActionPreference*. Końcowe polecenie **Write-Output** nigdy nie jest wykonywane, gdy skrypt zostaje zatrzymany.
+Gdy element Runbook używa *ErrorActionPreference*, zazwyczaj błąd niepowodujący zakończenia, taki jak **PathNotFound** z polecenia cmdlet **GET-ChildItem** , uniemożliwia ukończenie elementu Runbook. W poniższym przykładzie pokazano użycie *ErrorActionPreference*. Końcowe polecenie **Write-Output** nigdy nie jest wykonywane, gdy skrypt zostaje zatrzymany.
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'

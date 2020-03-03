@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 03/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a64af5d2b19b05ec9a5eda97c43e278cdfb8b4ff
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: bdea51c6cb53222f31a07906785a94073a0293a1
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189110"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226800"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Zarządzanie sesjami logowania jednokrotnego w usłudze Azure Active Directory B2C
 
@@ -124,20 +124,19 @@ Ten dostawca służy do pomijania ekranu "wybieranie dostawcy tożsamości". Zwy
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Ten dostawca służy do zarządzania Azure AD B2C sesji SAML między aplikacją jednostki uzależnionej lub dostawcą federacyjnego tożsamości SAML. Gdy jest używany dostawca rejestracji jednokrotnej do przechowywania sesji dostawcy tożsamości SAML, `IncludeSessionIndex` i `RegisterServiceProviders` muszą być ustawione na `false`. Następujący `SM-Saml-idp` profil techniczny jest używany przez [profil techniczny SAML](saml-technical-profile.md).
+Ten dostawca służy do zarządzania Azure AD B2C sesji SAML między aplikacją jednostki uzależnionej lub dostawcą federacyjnego tożsamości SAML. Gdy jest używany dostawca rejestracji jednokrotnej do przechowywania sesji dostawcy tożsamości SAML, `RegisterServiceProviders` musi być ustawiona na `false`. Następujący `SM-Saml-idp` profil techniczny jest używany przez [profil techniczny SAML](saml-technical-profile.md).
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
-    <Item Key="IncludeSessionIndex">false</Item>
     <Item Key="RegisterServiceProviders">false</Item>
   </Metadata>
 </TechnicalProfile>
 ```
 
-W przypadku korzystania z dostawcy do przechowywania sesji B2C SAML, `IncludeSessionIndex` i `RegisterServiceProviders` muszą mieć ustawioną wartość `true`. Wylogowanie sesji SAML wymaga wykonania `SessionIndex` i `NameID`.
+W przypadku korzystania z dostawcy do przechowywania sesji B2C SAML, `RegisterServiceProviders` musi mieć ustawioną `true`. Wylogowanie sesji SAML wymaga wykonania `SessionIndex` i `NameID`.
 
 Następujący `SM-Saml-idp` profil techniczny jest używany przez [profil techniczny wystawcy SAML](connect-with-saml-service-providers.md)
 
@@ -151,7 +150,7 @@ Następujący `SM-Saml-idp` profil techniczny jest używany przez [profil techni
 
 | Atrybut | Wymagany | Opis|
 | --- | --- | --- |
-| IncludeSessionIndex | Nie | Wskazuje dostawcę, który ma być przechowywany w indeksie sesji. Możliwe wartości: `true` (wartość domyślna) lub `false`.|
+| IncludeSessionIndex | Nie | Obecnie nie są używane, można je zignorować.|
 | RegisterServiceProviders | Nie | Wskazuje, że dostawca powinien rejestrować wszystkich dostawców usług SAML, którzy wystawiły potwierdzenie. Możliwe wartości: `true` (wartość domyślna) lub `false`.|
 
 

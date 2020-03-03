@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/24/2018
 ms.topic: conceptual
-ms.openlocfilehash: b96860afd649f33936ee8dd2954e6873f908a369
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 4c816ade5ae6b416ba716433f385b75e1b32eb92
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605061"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226500"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Mój pierwszy element Runbook przepływu pracy programu PowerShell
 
@@ -36,21 +36,21 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 ## <a name="step-1---create-new-runbook"></a>Krok 1. Tworzenie nowego elementu Runbook
 
-Zacznij od utworzenia prostego elementu Runbook, który wyświetla tekst "Hello world".
+Na początek utworzysz prosty element runbook służący do wyświetlania tekstu **Witaj, świecie**.
 
 1. W witrynie Azure Portal otwórz konto usługi Automation.
 
    Strona konta usługi Automation umożliwia szybki przegląd zasobów na tym koncie. Konto powinno mieć już pewne elementy zawartości. Większość z tych elementów zawartości to moduły automatycznie dołączone do nowego konta usługi Automation. Należy również mieć zasób poświadczeń skojarzony z subskrypcją.
  
 1. Wybierz pozycję **elementy Runbook** w obszarze **Automatyzacja procesów** , aby otworzyć listę elementów Runbook.
-1. Utwórz nowy element Runbook, wybierając pozycję **+ Utwórz element Runbook**.
-1. Nadaj elementowi Runbook nazwę "MyFirstRunbook-Workflow".
+1. Utwórz nowy element Runbook, wybierając pozycję **Utwórz element Runbook**.
+1. Nadaj elementowi Runbook nazwę **MyFirstRunbook-Workflow**.
 1. W tym przypadku utworzysz [element Runbook przepływu pracy programu PowerShell](automation-runbook-types.md#powershell-workflow-runbooks). Wybierz opcję **przepływ pracy programu PowerShell** dla **typu elementu Runbook**.
 1. Kliknij pozycję **Utwórz**, aby utworzyć element Runbook i otworzyć edytor tekstów.
 
 ## <a name="step-2---add-code-to-the-runbook"></a>Krok 2. Dodawanie kodu do elementu Runbook
 
-Możesz wpisać kod bezpośrednio w elemencie Runbook lub wybrać polecenia cmdlet, elementy Runbook i zasoby z kontrolki biblioteka i dodać je do elementu Runbook przy użyciu wszelkich powiązanych parametrów. W tym instruktażu wpisz kod bezpośrednio w elemencie Runbook.
+Możesz wpisać kod bezpośrednio w elemencie Runbook lub wybrać polecenia cmdlet, elementy Runbook i zasoby z kontrolki biblioteka i dodać je do elementu Runbook przy użyciu wszelkich powiązanych parametrów. W tym samouczku wpiszesz kod bezpośrednio w elemencie Runbook.
 
 1. Element Runbook jest obecnie pusty tylko za pomocą wymaganego słowa kluczowego **przepływu pracy** , nazwy elementu Runbook i nawiasów klamrowych, które obejmować cały przepływ pracy.
 
@@ -79,9 +79,9 @@ Przed opublikowaniem elementu Runbook w celu udostępnienia go w środowisku pro
 1. Kliknij przycisk **Rozpocznij** , aby rozpocząć test, z testowaniem tylko włączonej opcji.
 1. Należy pamiętać, że [zadanie elementu Runbook](automation-runbook-execution.md) jest tworzone i jego stan jest wyświetlany w okienku.
 
-   Zadanie jest uruchamiane jako kolejkowane, wskazując, że zadanie oczekuje na dostępność procesu roboczego elementu Runbook w chmurze. Stan zmieni się na rozpoczęty, gdy proces roboczy pozyskuje zadanie. Na koniec stan zostanie uruchomiony, gdy element Runbook faktycznie zacznie działać.
+   Zadanie jest uruchamiane jako **kolejkowane**, wskazując, że zadanie oczekuje na dostępność procesu roboczego elementu Runbook w chmurze. Stan zmieni się na **rozpoczęty** , gdy proces roboczy pozyskuje zadanie. Na koniec stan zostanie **uruchomiony** , gdy element Runbook faktycznie zacznie działać.
 
-1. Po zakończeniu zadania elementu Runbook w okienku test zostaną wyświetlone dane wyjściowe. W tym przypadku zobaczysz "Hello world".
+1. Po zakończeniu zadania elementu Runbook w okienku test zostaną wyświetlone dane wyjściowe. W tym przypadku zostanie wyświetlony tekst **Witaj, świecie**.
 
    ![Witaj, świecie](media/automation-first-runbook-textual/test-output-hello-world.png)
 
@@ -92,8 +92,8 @@ Przed opublikowaniem elementu Runbook w celu udostępnienia go w środowisku pro
 Utworzony element Runbook nadal działa w trybie roboczym. Należy opublikować ją przed uruchomieniem jej w środowisku produkcyjnym. Podczas publikowania elementu Runbook można zastąpić istniejącą wersję opublikowaną wersją roboczą. W tym przypadku nie ma jeszcze wersji opublikowanej, ponieważ element runbook został dopiero utworzony.
 
 1. Kliknij pozycję **Opublikuj**, aby opublikować element Runbook, a następnie kliknij pozycję **Tak** po wyświetleniu monitu.
-1. Przewiń w lewo, aby wyświetlić element Runbook w okienku **elementy Runbook** , i pamiętaj, że wartość **Stan tworzenia** jest ustawiona na publikowanie.
-1. Przewiń z powrotem w prawo, aby wyświetlić okienko dla MyFirstRunbook-Workflow.
+1. Przewiń w lewo, aby wyświetlić element Runbook na stronie **elementów Runbook** , a następnie Zwróć uwagę, że pole **Stan tworzenia** ma wartość **opublikowany**.
+1. Przewiń z powrotem w prawo, aby wyświetlić stronę **MyFirstRunbook-Workflow**.
 
    Opcje w górnej części umożliwiają rozpoczęcie elementu Runbook, zaplanowanie przyszłego czasu rozpoczęcia lub utworzenie [elementu webhook](automation-webhooks.md) , aby można było uruchomić element Runbook za pośrednictwem wywołania http.
 
@@ -107,20 +107,20 @@ Utworzony element Runbook nadal działa w trybie roboczym. Należy opublikować 
 
    ![Podsumowanie zadania](media/automation-first-runbook-textual/job-pane-status-blade-jobsummary.png)
 
-1. Po zakończeniu wyświetlania stanu elementu Runbook kliknij pozycję **dane wyjściowe**. Zostanie otwarta strona wyjście, w której może zostać wyświetlony komunikat "Hello world".
+1. Gdy stan elementu Runbook zmieni się na **Ukończono**, kliknij pozycję **Dane wyjściowe**. Zostanie otwarta strona wyjście, na której zobaczysz komunikat **Hello World** .
 
    ![Podsumowanie zadania](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)
 
 1. Zamknij stronę wyjściową.
 
-1. Kliknij pozycję **Wszystkie dzienniki**, aby otworzyć okienko strumieni dla zadania elementu Runbook. W strumieniu danych wyjściowych powinien być widoczny tylko "Hello world". Należy pamiętać, że w okienku strumienie mogą być wyświetlane inne strumienie zadania elementu Runbook, takie jak pełne strumienie i błędy, jeśli element Runbook zapisze w nich.
+1. Kliknij pozycję **Wszystkie dzienniki**, aby otworzyć okienko strumieni dla zadania elementu Runbook. W strumieniu danych wyjściowych powinien być widoczny tylko **Hello World** . Należy pamiętać, że w okienku strumienie mogą być wyświetlane inne strumienie zadania elementu Runbook, takie jak pełne strumienie i błędy, jeśli element Runbook zapisze w nich.
 
    ![Podsumowanie zadania](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
 
-1. Zamknij okienko strumieni i okienko zadania, aby powrócić do strony MyFirstRunbook.
-1. Kliknij pozycję **zadania** w obszarze **zasoby** , aby otworzyć stronę zadania dla tego elementu Runbook. Ta strona zawiera listę wszystkich zadań utworzonych przez element Runbook. Tylko jedno zadanie jest widoczne na liście, ponieważ zadanie jest uruchamiane tylko raz.
+1. Zamknij okienko strumieni i okienko zadania, aby powrócić do strony **MyFirstRunbook** .
+1. Kliknij pozycję **zadania** w obszarze **zasoby** , aby otworzyć stronę zadania dla tego elementu Runbook. Ta strona zawiera listę wszystkich zadań utworzonych przez element Runbook. Tylko jedno zadanie jest widoczne na liście, ponieważ uruchomiono zadanie tylko raz.
 
-   ![Zadania](media/automation-first-runbook-textual/runbook-control-job-tile.png)
+   ![Stanowiska](media/automation-first-runbook-textual/runbook-control-job-tile.png)
 
 1. Kliknij nazwę zadania, aby otworzyć okienko zadania, które zostało wyświetlone po uruchomieniu elementu Runbook. To okienko służy do wyświetlania szczegółów wszystkich zadań utworzonych dla elementu Runbook.
 
@@ -131,8 +131,8 @@ Element runbook został przetestowany i opublikowany, ale jak do tej pory nie wy
 >[!NOTE]
 >W przypadku elementów Runbook programu PowerShell polecenia **Add-AzAccount** i **Add-AzureRMAccount** są aliasami dla polecenia **Connect-AzAccount**. Możesz użyć tych poleceń cmdlet lub [zaktualizować moduły](automation-update-azure-modules.md) na koncie usługi Automation do najnowszych wersji. Może być konieczne zaktualizowanie modułów, nawet jeśli utworzono nowe konto usługi Automation.
 
-1. Przejdź do strony MyFirstRunbook-Workflow i Otwórz Edytor tekstów, klikając pozycję **Edytuj**.
-2. Usuń wiersz **danych wyjściowych** .
+1. Przejdź do strony **MyFirstRunbook-Workflow** i Otwórz Edytor tekstów, klikając pozycję **Edytuj**.
+2. Usuń wiersz `Write-Output`.
 3. Umieść kursor w pustym wierszu między nawiasami klamrowymi.
 4. Wpisz lub skopiuj i wklej poniższy kod, który obsługuje uwierzytelnianie przy użyciu konta Uruchom jako usługi Automation.
 
@@ -179,7 +179,7 @@ Teraz, gdy element Runbook jest uwierzytelniany w ramach subskrypcji platformy A
 
 ## <a name="step-7---add-an-input-parameter-to-the-runbook"></a>Krok 7. Dodawanie parametru wejściowego do elementu Runbook
 
-Element Runbook aktualnie uruchamia maszynę wirtualną, która została stałe w elemencie Runbook. Będzie bardziej użyteczna, jeśli możesz określić maszynę wirtualną, gdy element Runbook zostanie uruchomiony. Dodaj parametry wejściowe do elementu Runbook, aby zapewnić tę funkcjonalność.
+Element Runbook aktualnie uruchamia maszynę wirtualną, która została stałe w elemencie Runbook. Będzie bardziej użyteczna, jeśli możesz określić maszynę wirtualną, gdy element Runbook zostanie uruchomiony. Dodajmy do elementu Runbook parametry wejściowe w celu zapewnienia tej funkcjonalności.
 
 1. Dodaj wartości dla *VMName* i *ResourceGroupName* do elementu Runbook, a następnie użyj skojarzonych zmiennych z poleceniem cmdlet **Start-AzVM** , jak pokazano poniżej.
 
