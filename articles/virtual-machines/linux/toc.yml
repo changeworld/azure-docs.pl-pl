@@ -130,26 +130,26 @@
               href: ../lsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Optymalizowanie wydajności
               href: storage-performance.md
-        - name: Przyspieszone obliczenia
+        - name: Obliczenia przyspieszane za pomocą procesora GPU
           items:
-            - name: Optymalizacja pod kątem procesora GPU
-              items:
-                - name: Omówienie
-                  href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: Seria NC
-                  href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: Seria NCv2
-                  href: ../ncv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: Seria NCv3
-                  href: ../ncv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: Seria ND
-                  href: ../nd-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: Seria NDv2
-                  href: ../ndv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: Seria NV
-                  href: ../nv-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: Seria NVv3
-                  href: ../nvv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Omówienie
+              href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Seria NC
+              href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Seria NCv2
+              href: ../ncv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Seria NCv3
+              href: ../ncv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Seria ND
+              href: ../nd-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Seria NDv2
+              href: ../ndv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Seria NV
+              href: ../nv-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Seria NVv3
+              href: ../nvv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Seria NVv4
+              href: ../nvv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Konfigurowanie sterowników procesora GPU
               href: n-series-driver-setup.md
         - name: Obliczenia o wysokiej wydajności
@@ -169,6 +169,8 @@
           items:
             - name: Opłacanie maszyn wirtualnych z góry
               href: prepay-reserved-vm-instances.md
+            - name: Opłacanie dedykowanych hostów z góry
+              href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Co to są rezerwacje platformy Azure?
               href: ../../billing/billing-save-compute-costs-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Elastyczność rozmiaru wystąpienia maszyny wirtualnej
@@ -310,6 +312,8 @@
               href: disk-encryption-key-vault.md
             - name: Przykładowe skrypty szyfrowania dysków
               href: disk-encryption-sample-scripts.md
+            - name: Szyfrowanie dysków w sieci izolowanej
+              href: disk-encryption-isolated-network.md
             - name: Rozwiązywanie problemów z szyfrowaniem dysków
               href: disk-encryption-troubleshooting.md
             - name: Często zadawane pytania o szyfrowanie dysków

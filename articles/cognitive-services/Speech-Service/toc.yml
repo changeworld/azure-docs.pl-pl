@@ -193,6 +193,10 @@
           items:
             - name: Interfejs API REST zamiany tekstu na mowę
               href: rest-text-to-speech.md
+        - name: Użycie zestawu dla rozmów telefonicznych
+          items:
+            - name: Użycie zestawu dla rozmów telefonicznych w interfejsie API usługi Mowa (SAPI)
+              href: sapi-phoneset-usage.md
     - name: Zasoby
       items:
         - name: Często zadawane pytania dotyczące zamiany tekstu na mowę
