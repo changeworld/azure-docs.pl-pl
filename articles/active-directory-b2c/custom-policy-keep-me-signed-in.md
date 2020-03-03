@@ -2,20 +2,20 @@
 title: Nie wylogowuj mnie w Azure Active Directory B2C
 description: Dowiedz się, jak skonfigurować rejestrowanie nadal zalogowane (KMSI) w Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84ba68c97f69872e39121915a6edf23aa029fa75
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
-ms.translationtype: HT
+ms.openlocfilehash: 9a27487fa69888b02883c3d9a2151887f41afc45
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161690"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189382"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Włącz opcję Nie wylogowuj mnie (KMSI) w Azure Active Directory B2C
 
@@ -32,11 +32,11 @@ Użytkownicy nie powinni włączać tej opcji na komputerach publicznych.
 - Dzierżawa Azure AD B2C skonfigurowana do zezwalania na logowanie przy użyciu konta lokalnego. KMSI nie jest obsługiwane dla kont zewnętrznych dostawców tożsamości.
 - Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych](custom-policy-get-started.md).
 
-## <a name="configure-the-page-identifier"></a>Skonfiguruj identyfikator strony 
+## <a name="configure-the-page-identifier"></a>Skonfiguruj identyfikator strony
 
 Aby włączyć KMSI, ustaw definicję zawartości `DataUri` elementu na [Identyfikator strony](contentdefinitions.md#datauri) `unifiedssp` i w [wersji strony](page-layout.md) *1.1.0* lub nowszej.
 
-1. Otwórz plik rozszerzenia zasad. Na przykład <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em> . Ten plik rozszerzenia jest jednym z plików zasad uwzględnionych w pakiecie początkowym zasad niestandardowych, który powinien zostać uzyskany w wymaganiu wstępnym, [Rozpocznij od zasad niestandardowych](custom-policy-get-started.md).
+1. Otwórz plik rozszerzenia zasad. Na przykład <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>  . Ten plik rozszerzenia jest jednym z plików zasad uwzględnionych w pakiecie początkowym zasad niestandardowych, który powinien zostać uzyskany w wymaganiu wstępnym, [Rozpocznij od zasad niestandardowych](custom-policy-get-started.md).
 1. Wyszukaj element **BuildingBlocks** . Jeśli element nie istnieje, Dodaj go.
 1. Dodaj element **ContentDefinitions** do elementu **BuildingBlocks** zasad.
 
@@ -51,7 +51,7 @@ Aby włączyć KMSI, ustaw definicję zawartości `DataUri` elementu na [Identyf
       </ContentDefinitions>
     </BuildingBlocks>
     ```
-    
+
 1. Zapisz plik rozszerzeń.
 
 
@@ -73,13 +73,13 @@ Zaktualizuj plik jednostki uzależnionej (RP), który inicjuje utworzoną przez 
     ```
 
     - **SessionExpiryType** — wskazuje, jak sesja jest rozszerzona o czas określony w `SessionExpiryInSeconds` i `KeepAliveInDays`. Wartość `Rolling` (domyślnie) wskazuje, że sesja jest rozszerzana za każdym razem, gdy użytkownik wykonuje uwierzytelnianie. Wartość `Absolute` wskazuje, że użytkownik jest zmuszony do ponownego uwierzytelnienia po upływie określonego czasu.
- 
+
     - **SessionExpiryInSeconds** — okres istnienia plików cookie sesji, gdy nie włączono *logowania* , nie jest włączony lub jeśli użytkownik nie wybierze opcji nie *wylogowuj mnie*. Sesja wygasa po przejściu `SessionExpiryInSeconds` lub zamknięto przeglądarkę.
- 
+
     - **KeepAliveInDays** — okres istnienia plików cookie sesji, gdy jest włączone *Logowanie* , a użytkownik wybierze opcję Nie wylogowuj *mnie*.  Wartość `KeepAliveInDays` ma pierwszeństwo przed wartością `SessionExpiryInSeconds` i określa czas wygaśnięcia sesji. Jeśli użytkownik zamknie przeglądarkę i ponownie otworzy ją później, nadal może się zalogować w trybie dyskretnym, o ile jest w okresie KeepAliveInDays czasu.
-    
+
     Aby uzyskać więcej informacji, zobacz [zachowań podróży użytkownika](relyingparty.md#userjourneybehaviors).
- 
+
 Firma Microsoft zaleca, aby wartość SessionExpiryInSeconds była krótszym okresem (1200 sekund), podczas gdy wartość KeepAliveInDays może być ustawiona na stosunkowo długi okres (30 dni), jak pokazano w następującym przykładzie:
 
 ```XML
