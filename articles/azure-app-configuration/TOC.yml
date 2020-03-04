@@ -21,6 +21,8 @@
           href: quickstart-azure-functions-csharp.md
         - name: Java Spring
           href: quickstart-java-spring-app.md
+        - name: Szablon usługi Azure Resource Manager
+          href: quickstart-resource-manager.md
     - name: Zarządzanie funkcjami
       items:
         - name: ASP.NET Core

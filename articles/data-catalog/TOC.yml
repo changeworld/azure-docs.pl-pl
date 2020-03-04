@@ -4,7 +4,7 @@
   items:
     - name: Co to jest usługa Data Catalog?
       href: overview.md
-- name: Szybki start
+- name: Przewodniki Szybki start
   items:
     - name: Tworzenie usługi Azure Data Catalog
       href: data-catalog-get-started.md

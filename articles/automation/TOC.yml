@@ -84,7 +84,7 @@
             - name: Uruchamianie elementu runbook z poziomu elementu webhook
               href: automation-webhooks.md
             - name: Konfigurowanie parametrów wejściowych elementu runbook
-              href: automation-runbook-input-parameters.md
+              href: runbook-input-parameters.md
             - name: Podrzędne elementy Runbook
               href: automation-child-runbooks.md
             - name: Przekazywanie obiektu JSON do elementu runbook usługi Azure Automation

@@ -5,6 +5,7 @@
     - name: Co to jest usługa Azure Front Door Service?
       href: front-door-overview.md
 - name: Przewodniki Szybki start
+  expanded: true
   items:
     - name: Tworzenie usługi Front Door
       href: quickstart-create-front-door.md
@@ -16,7 +17,7 @@
       href: front-door-custom-domain-https.md
     - name: Konfigurowanie zasad filtrowania geograficznego dla własnej usługi Front Door
       href: front-door-tutorial-geo-filtering.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Szablony usługi Resource Manager
       href: front-door-quickstart-template-samples.md
