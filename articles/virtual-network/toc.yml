@@ -249,8 +249,14 @@
                   href: tutorial-restrict-network-access-to-resources-powershell.md
                 - name: Interfejs wiersza polecenia platformy Azure
                   href: tutorial-restrict-network-access-to-resources-cli.md
-            - name: Tworzenie zasad punktów końcowych
-              href: virtual-network-service-endpoint-policies-portal.md
+            - name: Korzystanie z zasady punktów końcowych usługi
+              items:
+                - name: Azure Portal
+                  href: virtual-network-service-endpoint-policies-portal.md
+                - name: Azure PowerShell
+                  href: virtual-network-service-endpoint-policies-powershell.md
+                - name: Interfejs wiersza polecenia platformy Azure
+                  href: virtual-network-service-endpoint-policies-cli.md
         - name: Routing ruchu sieciowego
           items:
             - name: Azure Portal

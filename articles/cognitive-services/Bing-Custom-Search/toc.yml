@@ -27,17 +27,13 @@
               href: call-endpoint-python.md
         - name: SDK
           items:
-            - name: 'Przy użyciu języka C#'
-              href: sdk-csharp-quick-start.md
-            - name: Korzystanie z języka Python
-              href: sdk-python-quickstart.md
-            - name: Korzystanie z języka Java
-              href: sdk-java-quickstart.md
+            - name: Biblioteki klienckie wyszukiwania niestandardowego Bing
+              href: ./quickstarts/client-libraries.md
 - name: Samouczki
   items:
     - name: Tworzenie strony internetowej z funkcją wyszukiwania niestandardowego
       href: ./tutorials/custom-search-web-page.md
-- name: Przykłady
+- name: Samples
   items:
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
