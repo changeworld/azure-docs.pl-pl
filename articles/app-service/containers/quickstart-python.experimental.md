@@ -10,12 +10,12 @@ ms.author: msangapu
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 9a45353d3223844d828ffc4a8ac248a0ff68f781
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 68dc36ce96737fe8395280c3a833e359084d2fee
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030050"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246854"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Szybki Start: Tworzenie aplikacji w języku Python w Azure App Service w systemie Linux
 
@@ -27,7 +27,7 @@ Jeśli wolisz wdrażać aplikacje za pośrednictwem środowiska IDE, zobacz [wdr
 
 - Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3,7</a> (obsługiwane jest również środowisko Python 3,6)
-- <a href="https://git-scm.com/downloads" target="_blank">Git</a>
+- <a href="https://git-scm.com/downloads" target="_blank">Usługa Git</a>
 - <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Interfejs wiersza polecenia platformy Azure</a>
 
 ## <a name="download-the-sample"></a>Pobierz przykład
@@ -46,13 +46,13 @@ cd python-docs-hello-world
 
 Repozytorium zawiera plik *Application.py* , który informuje App Service, że kod zawiera aplikację z kolbą. Aby uzyskać więcej informacji, zobacz [Proces uruchamiania kontenera i dostosowania](how-to-configure-python.md).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Interfejs wiersza polecenia platformy Azure udostępnia wiele wygodnych poleceń, które są używane z lokalnego terminalu do aprowizacji zasobów platformy Azure i zarządzania nimi z wiersza poleceń. Polecenia służą do wykonywania tych samych zadań, które można wykonać za pomocą Azure Portal w przeglądarce. Do automatyzowania procesów zarządzania można także używać poleceń interfejsu wiersza polecenia w skryptach.
 
 Aby uruchomić polecenia platformy Azure w interfejsie wiersza polecenia platformy Azure, musisz najpierw zalogować się przy użyciu polecenia `az login`. To polecenie umożliwia otwarcie przeglądarki w celu zebrania poświadczeń.
 
-```terminal
+```azurecli
 az login
 ```
 
@@ -63,7 +63,7 @@ az login
 W folderze *Python-docs-Hello-World* , który zawiera przykładowy kod, uruchom następujące polecenie `az webapp up`. Zastąp `<app-name>` globalnie unikatową nazwą aplikacji (*prawidłowe znaki to `a-z`, `0-9`i `-`* ). Zastąp również `<location-name>` z regionem świadczenia usługi Azure, takim jak **środkowe**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia**i tak dalej. (Możesz pobrać listę dozwolonych regionów dla Twojego konta platformy Azure, uruchamiając polecenie [`az account locations-list`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) ).
 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -110,7 +110,7 @@ Przykładowy kod w języku Python używa kontenera systemu Linux w App Service p
 
 W oknie terminalu Użyj poleceń poniżej (odpowiednio dla danego systemu operacyjnego), aby zainstalować wymagane zależności i uruchomić wbudowany serwer programistyczny. 
 
-# <a name="bashtabbash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 python3 -m venv venv
@@ -120,7 +120,7 @@ FLASK_APP=application.py
 flask run
 ```
 
-# <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 py -3 -m venv env
@@ -130,7 +130,7 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 py -3 -m venv env
@@ -161,7 +161,7 @@ Zapisz zmiany i zamknij edytor.
 
 Ponownie Wdróż aplikację przy użyciu następującego polecenia `az webapp up`, używając tego samego polecenia, które zostało użyte do wdrożenia aplikacji po raz pierwszy, zastępując `<app-name>` i `<location-name>` z tymi samymi nazwami, które były używane wcześniej. 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -178,13 +178,13 @@ Można uzyskać dostęp do dzienników konsoli wygenerowanych z wewnątrz aplika
 
 Najpierw Włącz rejestrowanie kontenerów, uruchamiając następujące polecenie w terminalu, zastępując `<app-name>` nazwą aplikacji i `<resource-group-name>` nazwą grupy zasobów pokazaną w danych wyjściowych użytego polecenia `az webapp up` (na przykład "appsvc_rg_Linux_centralus"):
 
-```terminal
+```azurecli
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
 
 Po włączeniu rejestrowania kontenera Uruchom następujące polecenie, aby wyświetlić strumień dziennika:
 
-```terminal
+```azurecli
 az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
@@ -209,7 +209,7 @@ Wybierz nazwę aplikacji platformy Azure.
 
 ![Przejdź do aplikacji w języku Python w App Services w Azure Portal](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
 
-Zostanie wyświetlona strona omówienia aplikacji. Tutaj możesz wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
+Zostanie wyświetlona strona Przegląd aplikacji. Tutaj możesz wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie.
 
 ![Zarządzaj swoją aplikacją w języku Python na stronie Przegląd w Azure Portal](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
 
@@ -221,7 +221,7 @@ W poprzednich krokach utworzono zasoby platformy Azure w grupie zasobów. Grupa 
 
 Jeśli nie chcesz potrzebować tych zasobów w przyszłości, Usuń grupę zasobów, uruchamiając następujące polecenie, zastępując `<resource-group-name>` w grupie zasobów pokazanej w danych wyjściowych polecenia `az webapp up`, na przykład "appsvc_rg_Linux_centralus". Wykonanie polecenia może potrwać minutę.
 
-```terminal
+```azurecli
 az group delete -n <resource-group-name>
 ```
 

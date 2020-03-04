@@ -3,7 +3,7 @@ title: Przygotowywanie wirtualnego dysku twardego Debian systemu Linux na platfo
 description: Dowiedz się, jak tworzyć obrazy Debian VHD do wdrożenia na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: mimckitt
-ms.openlocfilehash: 3cf6a4a98451a36826cadf84b9be8e3ea63efea7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 579704ad663e20fdbb59b94d1d4c5ea831d3a68a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750146"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251705"
 ---
-# <a name="prepare-a-debian-vhd-for-azure"></a>Przygotowywanie wirtualnego dysku twardego systemu Debian dla platformy Azure
+# <a name="prepare-a-debian-vhd-for-azure"></a>Przygotowywanie wirtualnego dysku twardego Debian dla platformy Azure
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tej sekcji założono, że zainstalowano już system operacyjny Debian Linux z pliku ISO pobranego z [witryny internetowej Debian](https://www.debian.org/distrib/) do wirtualnego dysku twardego. Istnieje wiele narzędzi do tworzenia plików VHD; Funkcja Hyper-V jest tylko jednym przykładem. Aby uzyskać instrukcje dotyczące korzystania z funkcji Hyper-V, zobacz [Instalowanie roli funkcji Hyper-v i Konfigurowanie maszyny wirtualnej](https://technet.microsoft.com/library/hh846766.aspx).
 

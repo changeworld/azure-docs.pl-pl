@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Przejrzyj i przetestuj zmiany z żądania ściągnięcia bezpośrednio w usłudze Azure Kubernetes za pomocą akcji usługi GitHub i Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontenery, akcje GitHub, Helm, Siatka usług, routing w sieci usług, polecenia kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: e2b6f47483d2c7b6c4970dac531bada1cecd279e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196556"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252379"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akcje GitHub & usługi Azure Kubernetes (wersja zapoznawcza)
 
@@ -39,7 +39,7 @@ Niniejszy przewodnik zawiera informacje na temat wykonywania następujących czy
 
 Utwórz Azure Container Registry (ACR):
 
-```cmd
+```azurecli
 az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 ```
 
@@ -52,7 +52,7 @@ Zapisz wartość *loginServer* z danych wyjściowych, ponieważ jest ona używan
 
 Użyj [AZ AD Sp Create-for-RBAC][az-ad-sp-create-for-rbac] , aby utworzyć nazwę główną usługi. Na przykład:
 
-```cmd
+```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
@@ -60,19 +60,19 @@ Zapisz dane wyjściowe JSON, ponieważ są używane w późniejszym kroku.
 
 Użyj [AZ AKS show][az-aks-show] , aby wyświetlić *Identyfikator* klastra AKS:
 
-```cmd
+```azurecli
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
 Użyj [AZ ACR show][az-acr-show] , aby wyświetlić *Identyfikator* ACR:
 
-```cmd
+```azurecli
 az acr show --name <acrName> --query id
 ```
 
 Użyj [AZ role przypisanie Create][az-role-assignment-create] , aby dać *współautor* dostęp do klastra AKS i *AcrPush* dostęp do ACR.
 
-```cmd
+```azurecli
 az role assignment create --assignee <ClientId> --scope <AKSId> --role Contributor
 az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 ```
@@ -158,7 +158,7 @@ W przypadku scalenia zmian w gałęzi *głównej* w rozwidleniu zostanie uruchom
 
 ## <a name="clean-up-your-azure-resources"></a>Czyszczenie zasobów platformy Azure
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 

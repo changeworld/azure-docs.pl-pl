@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: 4b9678f72dd69db24b105d4b1d708928e29a09ba
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134515"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251612"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurowanie klienta VPN dla połączeń protokołu P2S OpenVPN: uwierzytelnianie usługi Azure AD
 
@@ -168,9 +168,26 @@ Można zmodyfikować pobrany plik XML profilu i dodać **\<dnssuffixes >\<dnssuf
 </azvpnprofile>
 ```
 
+### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>Jak mogę dodać do klienta sieci VPN niestandardowe serwery DNS?
+
+Można zmodyfikować pobrany plik XML profilu i dodać **\<dnsservers >\<serwer dns > \</dnsserver >\</dnsservers >** Tagi
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnsservers>
+        <dnsserver>x.x.x.x</dnsserver>
+        <dnsserver>y.y.y.y</dnsserver>
+    </dnsservers>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Jak mogę dodać trasy niestandardowe do klienta sieci VPN?
 
-Można zmodyfikować pobrany plik XML profilu i dodać **\<trasę >\<includeroutes >\<destination >\<mask > \</route >\</includeroutes >\</destination >\</mask >** Tagi
+Można zmodyfikować pobrany plik XML profilu i dodać **\<includeroutes >\<route >\<destination >\<mask > \</destination >\</mask >\</route >\</includeroutes >** Tagi
 
 ```
 <azvpnprofile>
@@ -181,6 +198,24 @@ Można zmodyfikować pobrany plik XML profilu i dodać **\<trasę >\<includerout
             <destination>x.x.x.x</destination><mask>24</mask>
         </route>
     </includeroutes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>Jak mogę blokowe (wykluczanie) tras z klienta sieci VPN?
+
+Można zmodyfikować pobrany plik XML profilu i dodać **\<excluderoutes >\<route >\<destination >\<mask > \</destination >\</mask >\</route >\</excluderoutes >** Tagi
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <excluderoutes>
+        <route>
+            <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </excluderoutes>
     
 </clientconfig>
 </azvpnprofile>

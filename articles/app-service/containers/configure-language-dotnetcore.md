@@ -4,12 +4,12 @@ description: Dowiedz się, jak skonfigurować wstępnie utworzony kontener ASP.N
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
-ms.openlocfilehash: 30cd6ad1b5516eb3bc7e858ae364a88ace1b93b3
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: b1d9e59109f5ace25abb9840b48e44ff03d394e7
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917634"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255910"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Konfigurowanie aplikacji ASP.NET Core systemu Linux dla Azure App Service
 
@@ -167,6 +167,8 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 ## <a name="open-ssh-session-in-browser"></a>Otwórz sesję SSH w przeglądarce
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8acdaabc9f12f7e1bf85cfd8c727369462fe47e4
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 52bf9e061eb57c7ce6ea698b7468b5ba5e11b4e8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227396"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244976"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Szybki Start: Tworzenie prywatnej strefy DNS platformy Azure przy użyciu Azure Portal
 
@@ -64,10 +64,10 @@ W tej sekcji należy zamienić następujące parametry w krokach z poniższymi i
 
 | Parametr                   | Wartość                |
 |-----------------------------|----------------------|
-| **\<nazwy grupy zasobów >**  | MyAzureResourceGroup |
+| **\<nazwy grupy zasobów >**  | MyAzureResourceGroup (wybierz istniejącą grupę zasobów) |
 | **\<nazwę sieci wirtualnej >** | MyAzureVNet          |
 | **\<nazwę regionu >**          | Zachodnio-środkowe stany USA      |
-| **> \<przestrzeni adresowej IPv4**   | 10.2.0.0 \ 16          |
+| **\<adres IPv4 >**   | 10.2.0.0 \ 16          |
 | **\<nazwę podsieci >**          | MyAzureSubnet        |
 | **\<zakres adresów podsieci >** | 10.2.0.0 \ 24          |
 

@@ -7,12 +7,12 @@ ms.date: 08/23/2019
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: c02caf7c70dfe88bd3312742fce08137bc360a2e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 585eb1f11a285722e34c6dd084f4c6cb26a06249
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671420"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247619"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Tworzenie aplikacji internetowej Node.js na platformie Azure
 
@@ -34,7 +34,7 @@ Poniższe kroki możesz wykonać przy użyciu komputera z systemem Mac, Windows 
 
 W usłudze Cloud Shell utwórz katalog Szybki start, a następnie przejdź do niego.
 
-```azurecli-interactive
+```console
 mkdir quickstart
 
 cd $HOME/quickstart
@@ -42,13 +42,13 @@ cd $HOME/quickstart
 
 Uruchom następujące polecenie, aby sklonować przykładowe repozytorium aplikacji na komputer lokalny.
 
-```azurecli-interactive
+```console
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
 
 Podczas wykonywania polecenie wyświetli informacje podobne do następującego przykładu:
 
-```bash
+```output
 Cloning into 'nodejs-docs-hello-world'...
 remote: Counting objects: 40, done.
 remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
@@ -102,7 +102,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 Przejdź do nowo utworzonej aplikacji internetowej. Zastąp `<app_name>` unikatową nazwą aplikacji.
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 
@@ -112,7 +112,7 @@ Oto, jak powinna wyglądać Nowa aplikacja sieci Web: ![pustą stronę aplikacji
 
 W usłudze Cloud Shell przejdź do katalogu głównego aplikacji i utwórz nowy plik ZIP dla przykładowego projektu.
 
-```azurecli-interactive
+```console
 cd nodejs-docs-hello-world  
 
 zip -r myUpdatedAppFiles.zip *.*
@@ -130,7 +130,7 @@ To polecenie wdraża pliki i katalogi z pliku ZIP do domyślnego folderu aplikac
 
 Przejdź do wdrożonej aplikacji za pomocą przeglądarki sieci Web.
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 
@@ -155,7 +155,7 @@ Wprowadź niewielką zmianę w tekście w wywołaniu metody `response.end`:
 response.end("Hello Azure!");
 ```
 
-Zapisz zmiany i zamknij edytor. Użyj polecenia `^S` w celu zapisania i polecenia `^Q` w celu zamknięcia programu.
+Zapisz zmiany i zamknij edytor. Użyj polecenia `^S` do zapisania i `^Q`, aby zakończyć program.
 
 Utwórz plik ZIP i wdróż go przy użyciu polecenia [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip).  
 

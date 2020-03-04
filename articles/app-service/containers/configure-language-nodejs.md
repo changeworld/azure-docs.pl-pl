@@ -4,12 +4,12 @@ description: Dowiedz się, jak skonfigurować wstępnie skompilowany kontener No
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 45d7d141bc2ab85ab33be455fc3da5570b0e7f51
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: fdc5129fc395f99cb4c244414ea952b2776dc4dc
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920029"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255855"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Konfigurowanie aplikacji node. js w systemie Linux dla Azure App Service
 
@@ -271,6 +271,8 @@ Gdy działająca aplikacja Node. js działa inaczej w App Service lub zawiera b�
     - Niektóre platformy sieci Web mogą wdrażać pliki statyczne inaczej w trybie produkcyjnym.
     - Niektóre platformy sieci Web mogą używać niestandardowych skryptów uruchamiania podczas pracy w trybie produkcyjnym.
 - Uruchom aplikację w App Service w trybie tworzenia. Na przykład w [średniej wersji js](https://meanjs.org/)można ustawić aplikację na tryb programistyczny w czasie wykonywania, ustawiając ustawienie [aplikacji `NODE_ENV`](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 

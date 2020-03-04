@@ -3,27 +3,27 @@ title: Tworzenie i przekazywanie Ubuntu Linux wirtualnego dysku twardego na plat
 description: Zapoznaj się z tematem tworzenie i przekazywanie wirtualnego dysku twardego (VHD) platformy Azure zawierającego Ubuntu Linux system operacyjny.
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 0079a30c81904d2ba66a014d5ac86467cca94f40
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 1b343fef13127f2b74da92e6b2c5b51767e6e325
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291570"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251676"
 ---
-# <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Ubuntu dla platformy Azure
+# <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Przygotuj maszynę wirtualną Ubuntu dla platformy Azure
 
 
 Ubuntu teraz publikuje oficjalne wirtualne dyski twarde platformy Azure do pobrania w [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/). Jeśli musisz utworzyć własny, wyspecjalizowany obraz Ubuntu dla platformy Azure, zamiast korzystać z procedury ręcznej poniżej, zaleca się rozpoczęcie od tych znanych, działających wirtualnych dysków twardych i dostosowanie ich w razie potrzeby. Najnowsze wersje obrazów można zawsze znaleźć w następujących lokalizacjach:
 
-* Ubuntu 12.04/Precise: [ubuntu-12.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
-* Ubuntu 14.04/Trusty: [ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
+* Ubuntu 12.04/precyzyjne: [Ubuntu-12,04-Server-cloudimg-amd64-disk1. VHD. zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
+* Ubuntu 14.04/TRUSTe: [Ubuntu-14,04-Server-cloudimg-amd64-disk1. VHD. zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 16.04/Xenial: [Ubuntu-16,04-Server-cloudimg-amd64-disk1. vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
 * Ubuntu 18.04/Bionic: [Bionic-Server-cloudimg-amd64. vmdk](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
 * Ubuntu 18.10/Cosmic: [Cosmic-Server-cloudimg-amd64. VHD. zip](http://cloud-images.ubuntu.com/releases/cosmic/release/ubuntu-18.10-server-cloudimg-amd64.vhd.zip)
@@ -107,7 +107,7 @@ W tym artykule założono, że zainstalowano już Ubuntu Linux system operacyjny
 
         # sudo reboot
     
-    **Zobacz też:**
+    **Zobacz również:**
     - [https://wiki.ubuntu.com/Kernel/LTSEnablementStack](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
     - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
 
@@ -137,7 +137,7 @@ W tym artykule założono, że zainstalowano już Ubuntu Linux system operacyjny
 
 1. Kliknij **akcję-> wyłączyć** w Menedżerze funkcji Hyper-V. Wirtualny dysk twardy z systemem Linux jest teraz gotowy do przekazania na platformę Azure.
 
-## <a name="references"></a>Informacje
+## <a name="references"></a>Dokumentacja
 [Ubuntu Włączanie sprzętu (HWE)](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
 
 ## <a name="next-steps"></a>Następne kroki

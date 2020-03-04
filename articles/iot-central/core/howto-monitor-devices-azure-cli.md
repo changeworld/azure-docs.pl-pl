@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 3f18537b4b038844c9aa824593e354c23c792370
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6af6f01449f2f43e6799ef6d7821b9d71b24e603
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026785"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252349"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Monitorowanie łączności urządzeń przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -33,23 +33,26 @@ Użyj rozszerzenia usługi IoT dla interfejsu wiersza polecenia platformy Azure,
 Uruchom następujące polecenie w wierszu polecenia, aby zainstalować program:
 
 ```cmd/sh
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
-Sprawdź wersję rozszerzenia, uruchamiając 
+Sprawdź wersję rozszerzenia, uruchamiając:
+
 ```cmd/sh
 az --version
 ```
-Powinno zostać wyświetlone rozszerzenie Azure-CLI-IoT-EXT o 0.8.1 lub wyższym. Jeśli tak nie jest, uruchom polecenie
+
+Powinno zostać wyświetlone rozszerzenie Azure-IoT to 0.8.1 lub nowsze. Jeśli tak nie jest, uruchom polecenie:
+
 ```cmd/sh
-az extension update --name azure-cli-iot-ext
+az extension update --name azure-iot
 ```
 
 ## <a name="using-the-extension"></a>Przy użyciu rozszerzenia
 
 W poniższych sekcjach opisano typowe polecenia i opcje, których można użyć podczas uruchamiania `az iot central`. Aby wyświetlić pełen zestaw poleceń i opcji, Przekaż `--help` do `az iot central` lub dowolnego z jego poleceń.
 
-### <a name="login"></a>Zaloguj się
+### <a name="login"></a>Login
 
 Zacznij od zalogowania się do interfejsu wiersza polecenia platformy Azure. 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 870d6f8441bf395ba0c02dccf8f3d1c6434410c6
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78208216"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246199"
 ---
 ## <a name="limitations"></a>Ograniczenia
 
@@ -99,7 +99,7 @@ Opłaty za korzystanie z licencjonowania oprogramowania, magazynu i sieci są ro
 
 Aby uzyskać więcej informacji, zobacz [Cennik dedykowanego hosta platformy Azure](https://aka.ms/ADHPricing).
 
-Możesz także zaoszczędzić na kosztach przy użyciu [zastrzeżonego wystąpienia dedykowanych hostów platformy Azure] (.. /articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
+Można także zaoszczędzić na kosztach przy użyciu [zarezerwowanego wystąpienia dedykowanych hostów platformy Azure](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
  
 ## <a name="vm-families-and-hardware-generations"></a>Rodziny maszyn wirtualnych i generacja sprzętu
 

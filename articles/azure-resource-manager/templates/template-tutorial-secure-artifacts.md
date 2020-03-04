@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 42f11ecb8e7c7ae47b5a5ab5ff4f946833945aa1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7069ff363cf274ba855efc9b598d8d01e64e18d1
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472618"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250109"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Samouczek: bezpieczne artefakty we wdrożeniach szablonów Azure Resource Manager
 
@@ -39,7 +39,7 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 * Samouczek przeglądowy [: Importowanie plików BACPAC SQL za pomocą szablonów Azure Resource Manager](./template-tutorial-deploy-sql-extensions-bacpac.md). W tym samouczku został utworzony szablon używany w ramach bieżącego samouczka. W tym artykule udostępniono link do pobrania ukończonego szablonu.
 * Aby zwiększyć bezpieczeństwo, użyj wygenerowanego hasła dla konta administratora programu SQL Server. Oto przykład, którego można użyć do wygenerowania hasła:
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
 

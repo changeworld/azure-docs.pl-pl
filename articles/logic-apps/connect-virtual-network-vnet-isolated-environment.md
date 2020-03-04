@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 63174e1d4950b9f18fd3693511c507ed2dd018b3
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.date: 02/28/2020
+ms.openlocfilehash: 8c9732aec73f6387c9d32bb2333a3e7f834c2165
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500366"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249896"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Nawiązywanie połączenia z sieciami wirtualnymi platformy Azure z Azure Logic Apps przy użyciu środowiska usługi integracji (ISE)
 
@@ -101,15 +101,15 @@ W tej tabeli opisano porty w sieci wirtualnej platformy Azure używane przez ISE
 | Komunikacja z Traffic Manager platformy Azure | Przychodzący | ISE wewnętrzny: 454 <p><p>ISE zewnętrzne: 443 | AzureTrafficManager | VirtualNetwork | |
 | Punkt końcowy zarządzania API Management | Przychodzący | 3443 | APIManagement | VirtualNetwork | |
 | Wdrożenie zasad łącznika | Przychodzący | 3443 | APIManagement | VirtualNetwork | Wymagane do wdrażania i aktualizowania łączników. Zamknięcie lub zablokowanie tego portu powoduje, że wdrożenia ISE kończą się niepowodzeniem i uniemożliwiają aktualizacje lub poprawki łącznika. |
-| Komunikacja z aplikacji logiki | Wychodzące | 80, 443 | VirtualNetwork | Różni się w zależności od miejsca docelowego | Punkty końcowe usługi zewnętrznej, z którą aplikacja logiki musi się komunikować. |
-| Usługa Azure Active Directory | Wychodzące | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
-| Zarządzanie połączeniami | Wychodzące | 443 | VirtualNetwork  | AppService | |
-| Publikowanie dzienników diagnostycznych & metryki | Wychodzące | 443 | VirtualNetwork  | AzureMonitor | |
-| Zależność usługi Azure Storage | Wychodzące | 80, 443, 445 | VirtualNetwork | Magazyn | |
-| Zależność SQL platformy Azure | Wychodzące | 1433 | VirtualNetwork | SQL | |
-| Azure Resource Health | Wychodzące | 1886 | VirtualNetwork | AzureMonitor | Wymagane do publikowania stanu kondycji w Resource Health |
-| Zależność od dziennika do zasad usługi Event Hub i agenta monitorowania | Wychodzące | 5672 | VirtualNetwork | EventHub | |
-| Dostęp do pamięci podręcznej platformy Azure dla wystąpień Redis między wystąpieniami roli | Przychodzący <br>Wychodzące | 6379 – 6383 | VirtualNetwork | VirtualNetwork | Ponadto, aby ISE współpracował z usługą Azure cache for Redis, należy otworzyć te [porty wychodzące i przychodzące opisane w pamięci podręcznej platformy Azure dla Redis często zadawane pytania](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
+| Komunikacja z aplikacji logiki | Wychodzący | 80, 443 | VirtualNetwork | Różni się w zależności od miejsca docelowego | Punkty końcowe usługi zewnętrznej, z którą aplikacja logiki musi się komunikować. |
+| Azure Active Directory | Wychodzący | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
+| Zarządzanie połączeniami | Wychodzący | 443 | VirtualNetwork  | AppService | |
+| Publikowanie dzienników diagnostycznych & metryki | Wychodzący | 443 | VirtualNetwork  | AzureMonitor | |
+| Zależność usługi Azure Storage | Wychodzący | 80, 443, 445 | VirtualNetwork | Storage | |
+| Zależność SQL platformy Azure | Wychodzący | 1433 | VirtualNetwork | SQL | |
+| Azure Resource Health | Wychodzący | 1886 | VirtualNetwork | AzureMonitor | Wymagane do publikowania stanu kondycji w Resource Health |
+| Zależność od dziennika do zasad usługi Event Hub i agenta monitorowania | Wychodzący | 5672 | VirtualNetwork | EventHub | |
+| Dostęp do pamięci podręcznej platformy Azure dla wystąpień Redis między wystąpieniami roli | Przychodzący <br>Wychodzący | 6379 – 6383 | VirtualNetwork | VirtualNetwork | Ponadto, aby ISE współpracował z usługą Azure cache for Redis, należy otworzyć te [porty wychodzące i przychodzące opisane w pamięci podręcznej platformy Azure dla Redis często zadawane pytania](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
 ||||||
 
 <a name="create-environment"></a>
@@ -128,7 +128,7 @@ W tej tabeli opisano porty w sieci wirtualnej platformy Azure używane przez ISE
 
    ![Podaj szczegóły środowiska](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | Właściwość | Wymagane | Value | Opis |
+   | Właściwość | Wymagany | Wartość | Opis |
    |----------|----------|-------|-------------|
    | **Subskrypcja** | Yes | <*Azure-subscription-name*> | Subskrypcja platformy Azure do użycia w danym środowisku |
    | **Grupa zasobów** | Yes | <*Azure-Resource-Group-name*> | Nowa lub istniejąca Grupa zasobów platformy Azure, w której chcesz utworzyć środowisko |

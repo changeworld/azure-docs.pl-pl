@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 44c942e43cd4be1d04f56e828e3e17c58713a706
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559848"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246190"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Magazyn danych i ruch przychodzący w wersji zapoznawczej Azure Time Series Insights
 
@@ -159,10 +159,10 @@ Zapoznaj się z poniższymi zasobami, aby dowiedzieć się więcej na temat opty
 
 Po utworzeniu środowiska Time Series Insights w wersji zapoznawczej *płatność zgodnie z rzeczywistym* użyciem (PAYG) utworzysz dwa zasoby platformy Azure:
 
-* Środowisko wersji zapoznawczej Azure Time Series Insights, które można skonfigurować pod kątem magazynowania w pamięci masowej.
+* Środowisko Azure Time Series Insights w wersji zapoznawczej, które można skonfigurować pod kątem magazynu z ciepłymi danymi.
 * Konto usługi Azure Storage ogólnego przeznaczenia w wersji 1 dla magazynu zimnych danych.
 
-Dane w magazynie ciepłym są dostępne tylko za pośrednictwem [zapytania szeregów czasowych](./time-series-insights-update-tsq.md) i [Eksploratora Azure Time Series Insights Preview](./time-series-insights-update-explorer.md). 
+Dane w magazynie ciepłym są dostępne tylko za pośrednictwem [zapytania szeregów czasowych](./time-series-insights-update-tsq.md) i [Eksploratora Azure Time Series Insights Preview](./time-series-insights-update-explorer.md). Sklep ciepły będzie zawierał ostatnie dane w [okresie przechowywania](./time-series-insights-update-plan.md#the-preview-environment) wybranym podczas tworzenia środowiska Time Series Insights.
 
 Time Series Insights w wersji zapoznawczej zapisuje dane w chłodnym sklepie w usłudze Azure Blob Storage w [formacie pliku Parquet](#parquet-file-format-and-folder-structure). Time Series Insights wersja zapoznawcza zarządza wyłącznie tym zimnym magazynem danych, ale jest dostępny do odczytu bezpośrednio jako standardowe pliki Parquet.
 
@@ -186,12 +186,7 @@ Aby uzyskać dokładny opis magazynu obiektów blob platformy Azure, Przeczytaj 
 
 W przypadku tworzenia środowiska Azure Time Series Insights w wersji zapoznawczej usługa Azure Storage ogólnego przeznaczenia w wersji 1 zostanie utworzona jako długoterminowy chłodny magazyn.  
 
-Wersja zapoznawcza Azure Time Series Insights publikuje do dwóch kopii każdego zdarzenia na koncie usługi Azure Storage. Kopia początkowa ma zdarzenia uporządkowane według czasu pozyskiwania. Ta kolejność zdarzeń jest **zawsze zachowywana** , tak aby inne usługi mogły uzyskiwać dostęp do Twoich zdarzeń bez sekwencjonowania problemów. 
-
-> [!NOTE]
-> Do przetwarzania pierwotnych plików Parquet można także używać platformy Spark, usługi Hadoop i innych znanych narzędzi. 
-
-Time Series Insights Preview również ponownie dzieli na partycje pliki Parquet, które mają zostać zoptymalizowane dla Time Series Insights kwerendy. Ta podzielona na partycje kopia danych również jest zapisywana. 
+Azure Time Series Insights Preview zachowuje maksymalnie dwie kopie każdego zdarzenia na koncie usługi Azure Storage. Jedna kopia przechowuje zdarzenia uporządkowane według czasu pozyskiwania, które zawsze umożliwiają dostęp do zdarzeń w kolejności uporządkowanej według czasu. W miarę upływu czasu program Time Series Insights Preview tworzy również kopię ponownie partycjonowaną danych, która zostanie zoptymalizowana pod kątem wykonywania Time Series Insights kwerendy. 
 
 W publicznej wersji zapoznawczej dane są przechowywane na koncie usługi Azure Storage na czas nieokreślony.
 
@@ -199,15 +194,11 @@ W publicznej wersji zapoznawczej dane są przechowywane na koncie usługi Azure 
 
 Aby zapewnić wydajność zapytań i dostępność danych, nie należy edytować ani usuwać obiektów blob, które są tworzone Time Series Insights Podgląd.
 
-#### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>Uzyskiwanie dostępu do danych i eksportowanie ich z wersji zapoznawczej Time Series Insights
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>Uzyskiwanie dostępu do danych w chłodnym magazynie Time Series Insights Preview 
 
-Możesz chcieć uzyskać dostęp do danych wyświetlanych w Eksploratorze Time Series Insights w wersji zapoznawczej, aby użyć ich w połączeniu z innymi usługami. Na przykład możesz użyć danych do tworzenia raportu w Power BI lub do uczenia modelu uczenia maszynowego przy użyciu Azure Machine Learning Studio. Możesz też użyć danych do przekształcenia, wizualizowania i modelowania w notesach Jupyter.
+Oprócz uzyskiwania dostępu do danych za pomocą zapytania programu [Time Series Insights Preview](./time-series-insights-update-explorer.md) i z [szeregów czasowych](./time-series-insights-update-tsq.md)możesz również uzyskać dostęp do danych bezpośrednio z plików Parquet przechowywanych w chłodnym magazynie. Na przykład można odczytywać, przekształcać i czyścić dane w notesie Jupyter, a następnie używać go do uczenia modelu Azure Machine Learning w tym samym przepływie pracy platformy Spark.
 
-Dostęp do danych można uzyskać na trzy sposoby:
-
-* W Eksploratorze Time Series Insights w wersji zapoznawczej. Dane można eksportować jako plik CSV z Eksploratora. Aby uzyskać więcej informacji, Przeczytaj [Time Series Insights Explorer w wersji zapoznawczej](./time-series-insights-update-explorer.md).
-* Z poziomu interfejsu API usługi Time Series Insights Preview przy użyciu zapytania Get Events. Aby dowiedzieć się więcej na temat tego interfejsu API, Przeczytaj [zapytanie dotyczące szeregów czasowych](./time-series-insights-update-tsq.md).
-* Bezpośrednio z konta usługi Azure Storage. Musisz mieć dostęp do odczytu do dowolnego konta, którego używasz, aby uzyskać dostęp do danych w wersji zapoznawczej Time Series Insights. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Zarządzanie dostępem do zasobów konta magazynu](../storage/blobs/storage-manage-access-to-resources.md).
+Aby uzyskać dostęp do danych bezpośrednio z konta usługi Azure Storage, musisz mieć dostęp do odczytu do konta używanego do przechowywania danych w wersji zapoznawczej Time Series Insights. Następnie można odczytać wybrane dane na podstawie czasu utworzenia pliku Parquet znajdującego się w folderze `PT=Time` opisanym poniżej w sekcji [Format pliku Parquet](#parquet-file-format-and-folder-structure) .  Aby uzyskać więcej informacji na temat włączania dostępu do odczytu do konta magazynu, zobacz [Zarządzanie dostępem do zasobów konta magazynu](../storage/blobs/storage-manage-access-to-resources.md).
 
 #### <a name="data-deletion"></a>Usuwanie danych
 
@@ -215,21 +206,21 @@ Nie usuwaj plików w wersji zapoznawczej Time Series Insights. Zarządzaj powią
 
 ### <a name="parquet-file-format-and-folder-structure"></a>Parquet format pliku i struktura folderów
 
-Parquet to format pliku kolumnowego Open Source, który został zaprojektowany w celu zapewnienia wydajnego magazynu i wydajności. Z tych powodów Time Series Insights w wersji zapoznawczej program używa Parquet. Umożliwia ona Partycjonowanie danych według identyfikatora szeregów czasowych na potrzeby wykonywania zapytań na dużą skalę.  
+Parquet to format pliku kolumnowego Open Source zaprojektowany w celu zapewnienia wydajnego magazynu i wydajności. Time Series Insights w wersji zapoznawczej używa Parquet do włączenia wydajności zapytań opartych na IDENTYFIKATORach szeregów czasowych.  
 
 Aby uzyskać więcej informacji na temat typu pliku Parquet, Przeczytaj [dokumentację dotyczącą Parquet](https://parquet.apache.org/documentation/latest/).
 
 Time Series Insights w wersji zapoznawczej przechowuje kopie danych w następujący sposób:
 
-* Pierwsza kopia początkowa jest podzielona na partycje według czasu pozyskiwania i przechowuje dane w sposób przybliżony w kolejności przybycia. Dane znajdują się w folderze `PT=Time`:
+* Pierwsza kopia początkowa jest podzielona na partycje według czasu pozyskiwania i przechowuje dane w sposób przybliżony w kolejności przybycia. Te dane znajdują się w folderze `PT=Time`:
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-* Druga kopia z podziałem na partycje jest partycjonowana według grupowania identyfikatorów szeregów czasowych i znajduje się w folderze `PT=TsId`:
+* Druga, ponownie partycjonowana kopia jest pogrupowana według identyfikatorów szeregów czasowych i znajduje się w folderze `PT=TsId`:
 
   `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-W obu przypadkach wartości czasu odpowiadają czasowi utworzenia obiektu BLOB. Dane w folderze `PT=Time` są zachowywane. Dane w folderze `PT=TsId` zostaną zoptymalizowane pod kątem zapytania w czasie i nie będą statyczne.
+W obu przypadkach Właściwość Time pliku Parquet odpowiada czasowi utworzenia obiektu BLOB. Dane w folderze `PT=Time` są zachowywane bez zmian po zapisaniu ich w pliku. Dane w folderze `PT=TsId` zostaną zoptymalizowane pod kątem zapytania w czasie i nie są statyczne.
 
 > [!NOTE]
 > * `<YYYY>` mapuje do czwartej reprezentacji roku.
@@ -239,10 +230,10 @@ W obu przypadkach wartości czasu odpowiadają czasowi utworzenia obiektu BLOB. 
 Zdarzenia w wersji zapoznawczej Time Series Insights są mapowane do zawartości pliku Parquet w następujący sposób:
 
 * Każde zdarzenie jest mapowane na jeden wiersz.
-* Każdy wiersz zawiera kolumnę **timestamp** z sygnaturą czasową zdarzenia. Właściwość sygnatury czasowej nigdy nie ma wartości null. Jeśli właściwość sygnatury czasowej nie została określona w źródle zdarzeń, domyślnie przyjmowana jest wartość domyślna **czasu zdarzenia** . Sygnatura czasowa jest zawsze w formacie UTC.
-* Każdy wiersz zawiera kolumny identyfikatorów szeregów czasowych zdefiniowane podczas tworzenia środowiska Time Series Insights. Nazwa właściwości zawiera sufiks `_string`.
+* Każdy wiersz zawiera kolumnę **timestamp** z sygnaturą czasową zdarzenia. Właściwość sygnatury czasowej nigdy nie ma wartości null. Wartość domyślna zdarzenia jest umieszczana w **kolejce czasu** , jeśli właściwość sygnatura czasowa nie została określona w źródle zdarzenia. Sygnatura czasowa przechowywana jest zawsze w formacie UTC.
+* Każdy wiersz zawiera kolumny identyfikatora szeregów czasowych (TSID), zgodnie z definicją podczas tworzenia środowiska Time Series Insights. Nazwa właściwości identyfikatora TSID zawiera sufiks `_string`.
 * Wszystkie inne właściwości wysyłane jako dane telemetryczne są mapowane na nazwy kolumn kończące się na `_string` (ciąg), `_bool` (wartość logiczna), `_datetime` (DateTime) lub `_double` (Double), w zależności od typu właściwości.
-* Ten schemat mapowania dotyczy pierwszej wersji formatu pliku, do którego odwołuje się wartość **V = 1**. W miarę rozwoju tej funkcji można zwiększyć nazwę.
+* Ten schemat mapowania dotyczy pierwszej wersji formatu pliku, do którego odwołuje się wartość **V = 1** i jest przechowywana w folderze podstawowym o tej samej nazwie. W miarę rozwoju tej funkcji ten schemat mapowania może ulec zmianie, a Nazwa odwołania jest zwiększana.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -6,18 +6,18 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 84e5533a17dc70fb5c835089f3a3cec1a86e35bf
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: eecb4dba39ff847515a4a312b7cb74698867c693
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596083"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247907"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Centrum wdrażania dla usługi Azure Kubernetes
 
 Centrum wdrażania w usłudze Azure DevOps upraszcza Konfigurowanie niezawodnego potoku usługi Azure DevOps dla aplikacji. Domyślnie centrum wdrażania konfiguruje potok usługi Azure DevOps w celu wdrożenia aktualizacji aplikacji w klastrze Kubernetes. Można rozszerzyć domyślny skonfigurowany potok usługi Azure DevOps, a także dodać bogatsze możliwości: możliwość uzyskania zatwierdzenia przed wdrożeniem, aprowizacji dodatkowych zasobów platformy Azure, uruchamiania skryptów, uaktualniania aplikacji, a nawet wykonywania dodatkowych testów weryfikacyjnych.
 
-W tym samouczku wykonasz następujące czynności:
+W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Skonfiguruj potok Azure DevOps, aby wdrożyć aktualizacje aplikacji w klastrze Kubernetes.
@@ -39,7 +39,7 @@ W tym samouczku wykonasz następujące czynności:
 
 1. Aby utworzyć klaster AKS, uruchom następujące polecenia:
 
-    ```cmd
+    ```azurecli
     # Create a resource group in the South India location:
 
     az group create --name azooaks --location southindia
@@ -55,7 +55,7 @@ W tym samouczku wykonasz następujące czynności:
 
 1. Wybierz klaster AKS, a następnie wybierz pozycję **centrum wdrażania (wersja zapoznawcza)** w lewym bloku. Wybierz pozycję **Rozpocznij**.
 
-   ![ustawienia](media/deployment-center-launcher/settings.png)
+   ![settings](media/deployment-center-launcher/settings.png)
 
 1. Wybierz lokalizację kodu i wybierz pozycję **dalej**. Następnie wybierz jedną z obecnie obsługiwanych repozytoriów: **[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** lub **GitHub**.
 

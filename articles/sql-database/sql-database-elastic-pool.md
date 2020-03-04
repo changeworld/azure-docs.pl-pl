@@ -11,16 +11,16 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 0cda55d42f0d89d61919b751335ec95ef8143274
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3c476393153f6bc1d18d5c163bcd69484583eb15
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901171"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252702"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pule elastyczne ułatwiają zarządzanie wieloma bazami danych Azure SQL i skalowanie ich
 
-Pule elastyczne usługi SQL Database to proste i niedrogie rozwiązanie do zarządzania i skalowania wielu baz danych, które mają różne i nieprzewidywalne wymagania dotyczące użycia. Bazy danych w elastycznej puli znajdują się na jednym serwerze usługi Azure SQL Database i współdzielą określoną liczbę zasobów za ustaloną cenę. Pule elastyczne pule w usłudze Azure SQL Database umożliwiają deweloperom SaaS optymalizację stosunku ceny do wydajności dla grupy baz danych w ramach określonego budżetu, zapewniając jednocześnie elastyczność wydajności dla każdej bazy danych.
+Pule elastyczne usługi SQL Database to proste i niedrogie rozwiązanie do zarządzania i skalowania wielu baz danych, które mają różne i nieprzewidywalne wymagania dotyczące użycia. Bazy danych w puli elastycznej znajdują się na jednym serwerze Azure SQL Database i udostępniają określoną liczbę zasobów z ustawioną ceną. Pule elastyczne pule w usłudze Azure SQL Database umożliwiają deweloperom SaaS optymalizację stosunku ceny do wydajności dla grupy baz danych w ramach określonego budżetu, zapewniając jednocześnie elastyczność wydajności dla każdej bazy danych.
 
 ## <a name="what-are-sql-elastic-pools"></a>Co to są pule elastyczne SQL
 
@@ -222,6 +222,7 @@ Aby uzyskać więcej informacji, zobacz [tworzenie alertów SQL Database w Azure
 
 ## <a name="next-steps"></a>Następne kroki
 
+- Aby uzyskać informacje o cenach, zobacz [Cennik puli elastycznej](https://azure.microsoft.com/pricing/details/sql-database/elastic).
 - Aby skalować pule elastyczne, zobacz [skalowanie pul elastycznych](sql-database-elastic-pool-scale.md) i [skalowanie elastycznej puli — przykładowego kodu](scripts/sql-database-monitor-and-scale-pool-powershell.md)
 - Film wideo zawiera temat kurs wideo dotyczący usługi [Microsoft Virtual Academy na Azure SQL Database elastycznych możliwościach](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - Aby dowiedzieć się więcej na temat wzorców projektowych dla aplikacji SaaS wykorzystujących pule elastyczne, zobacz artykuł [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) (Wzorce projektowe dla wielodostępnych aplikacji SaaS korzystających z usługi Azure SQL Database).

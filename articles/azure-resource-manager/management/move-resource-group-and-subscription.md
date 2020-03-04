@@ -2,13 +2,13 @@
 title: Przenoszenie zasobów do nowej subskrypcji lub grupy zasobów
 description: Umożliwia przenoszenie zasobów do nowej grupy zasobów lub subskrypcji usługi Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.openlocfilehash: c91081ee25a3b98fa25b8b9b9047da186b22181b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/02/2020
+ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891354"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250165"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -24,7 +24,7 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych czynności. Dzięki 
 
 1. Zasoby, które mają zostać przeniesione, muszą obsługiwać operację przenoszenia. Aby zapoznać się z listą obsługiwanych zasobów, zobacz [przenoszenie obsługi zasobów](move-support-resources.md).
 
-1. Niektóre usługi mają określone ograniczenia lub wymagania dotyczące przemieszczania zasobów. Jeśli przeniesiesz dowolne z następujących usług, przed przeniesieniem Sprawdź, czy zostały podane wskazówki.
+1. Niektóre usługi mają określone ograniczenia lub wymagania dotyczące przemieszczania zasobów. Jeśli przenosisz dowolne z następujących usług, przed przeniesieniem Sprawdź, czy zostały podane wskazówki.
 
    * [App Services wskazówki dotyczące przenoszenia](./move-limitations/app-service-move-limitations.md)
    * [Azure DevOps Services wskazówki dotyczące przenoszenia](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
@@ -33,9 +33,9 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych czynności. Dzięki 
    * [Recovery Services wskazówki dotyczące przenoszenia](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Virtual Machines wskazówki dotyczące przenoszenia](./move-limitations/virtual-machines-move-limitations.md)
 
-1. Subskrypcje źródłowe i docelowe muszą być aktywne. Jeśli masz problemy z włączeniem wyłączonego konta, [Utwórz żądanie pomocy technicznej platformy Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Wybierz **zarządzania subskrypcjami** jako typ problemu.
+1. Subskrypcje źródłowe i docelowe muszą być aktywne. Jeśli masz problemy z włączeniem wyłączonego konta, [Utwórz żądanie pomocy technicznej platformy Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Wybierz pozycję **Zarządzanie subskrypcją** dla typu problemu.
 
-1. Subskrypcje źródłowe i docelowe muszą istnieć w tej samej [dzierżawy usługi Azure Active Directory](../../active-directory/develop/quickstart-create-new-tenant.md). Aby sprawdzić, czy obie subskrypcje mają ten sam identyfikator dzierżawy, należy użyć programu Azure PowerShell lub wiersza polecenia platformy Azure.
+1. Subskrypcje źródłowe i docelowe muszą znajdować się w tej samej [dzierżawie Azure Active Directory](../../active-directory/develop/quickstart-create-new-tenant.md). Aby sprawdzić, czy obie subskrypcje mają ten sam identyfikator dzierżawy, należy użyć programu Azure PowerShell lub wiersza polecenia platformy Azure.
 
    Dla programu Azure PowerShell użyj polecenia:
 
@@ -56,7 +56,7 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych czynności. Dzięki 
    * [Transfer ownership of an Azure subscription to another account](../../billing/billing-subscription-transfer.md) (Przenoszenie własności subskrypcji platformy Azure na inne konto)
    * [Jak skojarzyć lub dodać subskrypcję platformy Azure do usługi Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. Subskrypcja docelowa musi być zarejestrowana dla dostawcy przenoszonego zasobu. Jeśli nie, pojawi się komunikat o błędzie informujący, że **subskrypcja nie jest zarejestrowana dla typu zasobu**. Ten błąd może pojawić się podczas przeniesienia zasobu do nowej subskrypcji, ale ta subskrypcja nigdy nie była używana z typem zasobu.
+1. Subskrypcja docelowa musi być zarejestrowana dla dostawcy przenoszonego zasobu. W przeciwnym razie zostanie wyświetlony komunikat o błędzie informujący, że **subskrypcja nie jest zarejestrowana dla typu zasobu**. Ten błąd może pojawić się podczas przeniesienia zasobu do nowej subskrypcji, ale ta subskrypcja nigdy nie była używana z typem zasobu.
 
    W przypadku programu PowerShell Użyj następujących poleceń, można pobrać stanu rejestracji:
 
@@ -86,10 +86,10 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych czynności. Dzięki 
 
 1. Konto przenoszenia zasobów musi mieć co najmniej następujące uprawnienia:
 
-   * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** na źródłową grupę zasobów.
-   * **Microsoft.Resources/subscriptions/resourceGroups/write** w docelowej grupie zasobów.
+   * **Microsoft. resources/subscriptions/resourceGroups/moveResources/Action** w źródłowej grupie zasobów.
+   * **Microsoft. resources/subscriptions/resourceGroups/Write** w docelowej grupie zasobów.
 
-1. Przed przeniesieniem zasoby, sprawdź limity przydziału subskrypcji dla subskrypcji, którą przenosisz zasoby. Jeśli przenoszenia zasobów oznacza, że subskrypcja przekroczy limit, należy przejrzeć, czy możesz poprosić o zwiększenie limitu przydziału. Aby uzyskać listę limitów i sposób poprosić o zwiększenie zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+1. Przed przeniesieniem zasoby, sprawdź limity przydziału subskrypcji dla subskrypcji, którą przenosisz zasoby. Jeśli przenoszenia zasobów oznacza, że subskrypcja przekroczy limit, należy przejrzeć, czy możesz poprosić o zwiększenie limitu przydziału. Aby zapoznać się z listą limitów i jak zażądać zwiększenia, zobacz [limity subskrypcji i usług platformy Azure, limity przydziału i ograniczenia](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 1. **W przypadku przechodzenia między subskrypcjami zasób i jego zasoby zależne muszą znajdować się w tej samej grupie zasobów i muszą zostać przeniesione ze sobą.** Na przykład maszyna wirtualna z dyskami zarządzanymi będzie wymagała przeniesienia maszyny wirtualnej i zarządzanych dysków wraz z innymi zasobami zależnymi.
 
@@ -111,12 +111,12 @@ Na potrzeby ilustracji mamy tylko jeden zasób zależny.
 
 ## <a name="validate-move"></a>Waliduj przeniesienie
 
-[Zweryfikować operacji przeniesienia](/rest/api/resources/resources/validatemoveresources) umożliwia testowanie scenariusza przenoszenia bez faktycznego przenoszenia zasobów. Użyj tej operacji, aby sprawdzić, czy przeniesienie zakończy się pomyślnie. Walidacja jest wywoływana automatycznie podczas wysyłania żądania przeniesienia. Tej operacji należy używać tylko wtedy, gdy trzeba określić wyniki. Aby wykonać tę operację, musisz mieć:
+[Operacja Weryfikuj przeniesienie](/rest/api/resources/resources/validatemoveresources) umożliwia testowanie scenariusza przenoszenia bez rzeczywistego przenoszenia zasobów. Użyj tej operacji, aby sprawdzić, czy przeniesienie zakończy się pomyślnie. Walidacja jest wywoływana automatycznie podczas wysyłania żądania przeniesienia. Tej operacji należy używać tylko wtedy, gdy trzeba określić wyniki. Aby wykonać tę operację, musisz mieć:
 
 * Nazwa źródłowa grupa zasobów
 * Identyfikator zasobu docelowa grupa zasobów
 * Identyfikator zasobu poszczególnych zasobów, aby przenieść
-* [token dostępu](/rest/api/azure/#acquire-an-access-token) dla swojego konta
+* [token dostępu](/rest/api/azure/#acquire-an-access-token) dla Twojego konta
 
 Wyślij żądanie następujące:
 
@@ -147,7 +147,7 @@ retry-after: 15
 ...
 ```
 
-Kod stanu 202 wskazuje żądanie weryfikacji został zaakceptowany, ale nie zostało jeszcze nieustalona, operację przenoszenia, zostanie wykonana pomyślnie. `location` Wartość zawiera adres URL, którego używasz, aby sprawdzić stan operacji długotrwałej.  
+Kod stanu 202 wskazuje żądanie weryfikacji został zaakceptowany, ale nie zostało jeszcze nieustalona, operację przenoszenia, zostanie wykonana pomyślnie. Wartość `location` zawiera adres URL, którego można użyć do sprawdzenia stanu długotrwałej operacji.  
 
 Aby sprawdzić stan, Wyślij następujące żądanie:
 
@@ -156,7 +156,7 @@ GET <location-url>
 Authorization: Bearer <access-token>
 ```
 
-Podczas operacji jest nadal uruchomione, nadal jest wyświetlany kod stanu 202. Oczekiwania w sekundach `retry-after` wartość przed podjęciem ponownej próby. Jeśli sprawdzanie poprawności operacji przenoszenia przebiegnie pomyślnie, zostanie wyświetlony kod stanu 204. W przypadku niepowodzenia weryfikacji przeniesienia pojawi się komunikat o błędzie, takich jak:
+Podczas operacji jest nadal uruchomione, nadal jest wyświetlany kod stanu 202. Przed ponowieniem próby poczekaj liczbę sekund określoną w wartości `retry-after`. Jeśli sprawdzanie poprawności operacji przenoszenia przebiegnie pomyślnie, zostanie wyświetlony kod stanu 204. W przypadku niepowodzenia weryfikacji przeniesienia pojawi się komunikat o błędzie, takich jak:
 
 ```json
 {"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
@@ -170,11 +170,11 @@ Aby przenieść zasoby, wybierz grupę zasobów z tymi zasobami, a następnie wy
 
 Wybierz, czy przenosisz zasoby do nowej grupy zasobów lub nowej subskrypcji.
 
-Wybierz zasoby do przeniesienia i docelowa grupa zasobów. Potwierdzić, że należy zaktualizować skrypty dla tych zasobów, a następnie wybierz pozycję **OK**. Jeśli w poprzednim kroku wybrano opcję edycji Ikona subskrypcji, możesz również wybrać subskrypcja docelowa.
+Wybierz zasoby do przeniesienia i docelowa grupa zasobów. Potwierdź, że musisz zaktualizować skrypty dla tych zasobów, a następnie wybierz **przycisk OK**. Jeśli w poprzednim kroku wybrano opcję edycji Ikona subskrypcji, możesz również wybrać subskrypcja docelowa.
 
 ![Wybierz miejsce docelowe](./media/move-resource-group-and-subscription/select-destination.png)
 
-W **powiadomienia**, zobaczysz, że działa operacji przenoszenia.
+W obszarze **powiadomienia**zobaczysz, że operacja przenoszenia jest uruchomiona.
 
 ![Pokaż stan przenoszenia](./media/move-resource-group-and-subscription/show-status.png)
 
@@ -194,13 +194,13 @@ $plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
 Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 ```
 
-Aby przejść do nowej subskrypcji, należy dołączyć wartość dla `DestinationSubscriptionId` parametru.
+Aby przejść do nowej subskrypcji, należy uwzględnić wartość parametru `DestinationSubscriptionId`.
 
 Jeśli wystąpi błąd, zobacz [Rozwiązywanie problemów z przeniesieniem zasobów platformy Azure do nowej grupy zasobów lub subskrypcji](troubleshoot-move.md).
 
 ## <a name="use-azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Aby przenieść istniejące zasoby do innej grupy zasobów lub subskrypcji, użyj [przenoszenia zasobów az](/cli/azure/resource?view=azure-cli-latest#az-resource-move) polecenia. Podaj identyfikatory zasobów można przenieść zasobu. Poniższy przykład pokazuje, jak przenieść kilka zasobów do nowej grupy zasobów. W `--ids` parametru, podaj listę rozdzielonych spacjami identyfikatorów można przenieść zasobów.
+Aby przenieść istniejące zasoby do innej grupy zasobów lub subskrypcji, użyj polecenia [AZ Resource Move](/cli/azure/resource?view=azure-cli-latest#az-resource-move) . Podaj identyfikatory zasobów można przenieść zasobu. Poniższy przykład pokazuje, jak przenieść kilka zasobów do nowej grupy zasobów. W parametrze `--ids` Podaj rozdzieloną spacjami listę identyfikatorów zasobów do przeniesienia.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
@@ -208,11 +208,11 @@ plan=$(az resource show -g OldRG -n ExamplePlan --resource-type "Microsoft.Web/s
 az resource move --destination-group newgroup --ids $webapp $plan
 ```
 
-Aby przejść do nowej subskrypcji, podać `--destination-subscription-id` parametru.
+Aby przejść do nowej subskrypcji, podaj parametr `--destination-subscription-id`.
 
 Jeśli wystąpi błąd, zobacz [Rozwiązywanie problemów z przeniesieniem zasobów platformy Azure do nowej grupy zasobów lub subskrypcji](troubleshoot-move.md).
 
-## <a name="use-rest-api"></a>Używanie interfejsu API REST
+## <a name="use-rest-api"></a>Korzystanie z interfejsu API REST
 
 Aby przenieść istniejące zasoby do innej grupy zasobów lub subskrypcji, użyj operacji [Przenieś zasoby](/rest/api/resources/Resources/MoveResources) .
 

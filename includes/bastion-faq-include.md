@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 03/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 922e8a71a22db975685cb82bbd51a125c619ccf2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 17d391a7e6b8ef0558fb73afe363cd96deb60a7d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989500"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78262529"
 ---
 ### <a name="regions"></a>Które regiony są dostępne?
 
@@ -30,6 +30,9 @@ W tej chwili protokół IPv6 nie jest obsługiwany. Usługa Azure bastionu obsł
 ### <a name="rdpssh"></a>Czy potrzebuję klienta RDP lub SSH?
 
 Nie jest potrzebny klient RDP lub SSH do uzyskiwania dostępu do maszyny wirtualnej platformy Azure w Azure Portal. Użyj [Azure Portal](https://portal.azure.com) , aby zezwolić na dostęp do maszyny wirtualnej za pośrednictwem protokołu RDP/SSH bezpośrednio w przeglądarce.
+
+### <a name="rdscal"></a>Czy usługa Azure bastionu wymaga RDS CAL do celów administracyjnych na maszynach wirtualnych hostowanych na platformie Azure?
+Nie, dostęp do maszyn wirtualnych z systemem Windows Server za pomocą usługi Azure bastionu nie wymaga [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) , gdy jest używany wyłącznie do celów administracyjnych.
 
 ### <a name="agent"></a>Czy potrzebuję agenta uruchomionego na maszynie wirtualnej platformy Azure?
 

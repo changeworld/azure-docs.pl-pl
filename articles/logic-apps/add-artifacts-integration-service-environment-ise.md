@@ -1,27 +1,29 @@
 ---
-title: Dodawanie artefaktów do środowisk usługi integracji
+title: Dodawanie zasobów do środowisk usługi integracji
 description: Dodawanie aplikacji logiki, kont integracji, łączników niestandardowych i łączników zarządzanych do środowiska usługi integracji (ISE)
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: e2505d8ee8b8539f158c0a549bedfcd69a954e24
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: d6e5eb8875e6b7d930a002708079dab0e357297f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191685"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250936"
 ---
-# <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Dodaj artefakty do środowiska usługi integracji (ISE) w Azure Logic Apps
+# <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Dodaj zasoby do środowiska usługi integracji (ISE) w Azure Logic Apps
 
-Po utworzeniu [środowiska usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Dodaj artefakty, takie jak aplikacje logiki, konta integracji i łączniki, aby mogły uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure. Na przykład zarządzane łączniki ISE, które staną się dostępne po utworzeniu ISE, nie są automatycznie wyświetlane w Projektancie aplikacji logiki. Aby można było używać tych łączników ISE, należy ręcznie [dodać i wdrożyć te łączniki do ISE](#add-ise-connectors-environment) , aby były wyświetlane w Projektancie aplikacji logiki.
+Po utworzeniu [środowiska usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Dodaj zasoby, takie jak aplikacje logiki, konta integracji i łączniki, aby mogły uzyskiwać dostęp do zasobów w sieci wirtualnej platformy Azure. Na przykład zarządzane łączniki ISE, które staną się dostępne po utworzeniu ISE, nie są automatycznie wyświetlane w Projektancie aplikacji logiki. Aby można było używać tych łączników ISE, należy ręcznie [dodać i wdrożyć te łączniki do ISE](#add-ise-connectors-environment) , aby były wyświetlane w Projektancie aplikacji logiki.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
 * ISE, który został utworzony w celu uruchomienia aplikacji logiki. Jeśli nie masz elementu ISE, [najpierw utwórz ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
+
+* Aby tworzyć, dodawać lub aktualizować zasoby wdrożone w ISE, musisz mieć przypisaną rolę właściciela lub współautora w tym ISE lub masz uprawnienia odziedziczone za pomocą subskrypcji platformy Azure lub grupy zasobów platformy Azure skojarzonej z ISE. Dla osób, które nie mają uprawnień właściciela, współautora lub dziedziczonych, mogą oni mieć przypisaną rolę współautor środowisko usługi integracji lub środowisko usługi integracji rolę dewelopera. Aby uzyskać więcej informacji na temat kontroli dostępu opartej na rolach (RBAC), zobacz [co to jest kontrola dostępu oparta na rolach (RBAC) dla zasobów platformy Azure](../role-based-access-control/overview.md)?
 
 <a name="create-logic-apps-environment"></a>
 
@@ -82,7 +84,7 @@ Aby utworzyć konto integracji korzystające z ISE, wykonaj następujące kroki:
 
 1. [Połącz aplikację logiki z kontem integracji w zwykły sposób](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
-1. Kontynuuj dodawanie artefaktów do konta integracji, takiego jak [partnerzy handlowi](../logic-apps/logic-apps-enterprise-integration-partners.md) i [umowy](../logic-apps/logic-apps-enterprise-integration-agreements.md).
+1. Kontynuuj, dodając zasoby do konta integracji, takie jak [partnerzy handlowi](../logic-apps/logic-apps-enterprise-integration-partners.md) i [umowy](../logic-apps/logic-apps-enterprise-integration-agreements.md).
 
 1. Aby zarządzać kontami integracji w ISE, zobacz [Zarządzanie środowiskiem usługi integracji](../logic-apps/ise-manage-integration-service-environment.md).
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 99ba530d4857520693060d83ad78a7f127003a3d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: f521cc68476e2f9df1cc8288cf41156da3851cd0
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732330"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251889"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Samouczek: równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności przy użyciu usługi Load Balancer w strefie Standardowa w witrynie Azure Portal
 
@@ -41,7 +41,7 @@ Jeśli chcesz, możesz wykonać ten samouczek przy użyciu [interfejsu wiersza p
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
@@ -56,10 +56,10 @@ Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP
     | ---                     | ---                                                |
     | Subskrypcja               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLBAZ* w polu tekstowym.|
-    | Nazwa                   | *myLoadBalancer*                                   |
+    | Name (Nazwa)                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
     | Typ          | Wybierz pozycję **Publiczna**.                                        |
-    | JSZ           | Wybierz pozycję **Standardowy**.                          |
+    | SKU           | Wybierz opcję **Standardowa**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
     | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
     |Strefa dostępności| Wybierz pozycję **Strefowo nadmiarowy**.    |
@@ -69,16 +69,20 @@ Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczny adres IP
 
 W tej sekcji utworzysz sieć wirtualną i maszyny wirtualne w różnych strefach w regionie, a następnie zainstalujesz usługi IIS na maszynach wirtualnych, aby ułatwić testowanie strefowo nadmiarowego modułu równoważenia obciążenia. W rezultacie błąd strefy spowoduje niepowodzenie sondy kondycji maszyny wirtualnej w tej samej strefie, a ruch będzie nadal obsługiwany przez maszyny wirtualne w innych strefach.
 
-### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
-Utwórz sieć wirtualną na potrzeby wdrażania serwerów zaplecza.
+## <a name="virtual-network-and-parameters"></a>Sieć wirtualna i parametry
 
-1. W lewej górnej części ekranu kliknij pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**, a następnie wprowadź następujące wartości dla sieci wirtualnej:
-    - *myVnet* — jako nazwę sieci wirtualnej.
-    - *myResourceGroupLBAZ* — jako nazwę istniejącej grupy zasobów.
-    - *myBackendSubnet* — jako nazwę podsieci.
-2. Kliknij pozycję **Utwórz**, aby utworzyć sieć wirtualną.
+W tej sekcji należy zamienić następujące parametry w krokach z poniższymi informacjami:
 
-    ![Tworzenie sieci wirtualnej](./media/load-balancer-standard-public-availability-zones-portal/2-load-balancer-virtual-network.png)
+| Parametr                   | Wartość                |
+|-----------------------------|----------------------|
+| **\<nazwy grupy zasobów >**  | myResourceGroupLBAZ (wybierz istniejącą grupę zasobów) |
+| **\<nazwę sieci wirtualnej >** | myVNet          |
+| **\<nazwę regionu >**          | Europa Zachodnia      |
+| **\<adres IPv4 >**   | 10.0.0.0 \ 16          |
+| **\<nazwę podsieci >**          | myBackendSubnet        |
+| **\<zakres adresów podsieci >** | 10.0.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
@@ -179,7 +183,7 @@ Na potrzeby rozdzielania ruchu między maszyny wirtualne używana jest pula adre
     - W menu rozwijanym w obszarze **Maszyna wirtualna** kliknij pozycję **myVM1**.
     - W menu rozwijanym w obszarze **Adres IP** kliknij pozycję myVM1.
 4. Kliknij pozycję **Dodaj nowy zasób zaplecza**, aby dodać wszystkie maszyny wirtualne (*myVM2* i *myVM3*) do dodania do puli zaplecza modułu równoważenia obciążenia.
-5. Kliknij pozycję **Dodaj**.
+5. Kliknij pozycję **Add** (Dodaj).
 
     ![Dodawanie do puli adresów zaplecza](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 

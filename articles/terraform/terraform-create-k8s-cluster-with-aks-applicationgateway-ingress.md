@@ -3,12 +3,12 @@ title: Samouczek — Tworzenie Application Gatewayowego kontrolera w usłudze Az
 description: Samouczek pokazujący sposób tworzenia klastra Kubernetes za pomocą usługi Azure Kubernetes Service z usługą Application Gateway jako kontrolerem ruchu przychodzącego
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: b16b0a40d14ecde87b2637976299d05d37d706f3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 14b8f6ba74a06c126da239671cbb2053df19af7d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472268"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251758"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Samouczek: Tworzenie kontrolera Application Gateway transferu danych przychodzących w usłudze Azure Kubernetes Service
 
@@ -765,7 +765,7 @@ Gdy nie jest już potrzebne, Usuń zasoby utworzone w tym artykule.
 
 Zastąp symbol zastępczy odpowiednią wartością. Wszystkie zasoby w określonej grupie zasobów zostaną usunięte.
 
-```bash
+```azurecli
 az group delete -n <resource-group>
 ```
 

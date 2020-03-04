@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 3cb57fae2b1c67ece321a294e56612f49358405a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c4b2dea05b459d6e9ae4eb086fa127d88a84a768
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612715"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249208"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Typowe błędy i kroki rozwiązywania problemów dla Azure Active Directory Domain Services
 
@@ -138,7 +138,7 @@ Jeśli co najmniej jeden użytkownik w dzierżawie usługi Azure AD nie może za
       * [Najnowsza zalecana wersja Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)została wdrożona lub zaktualizowana do programu.
       * Azure AD Connect skonfigurowano w celu [przeprowadzenia pełnej synchronizacji][hybrid-phs].
       * W zależności od rozmiaru katalogu może upłynąć trochę czasu, aż do uzyskania dostępu do kont użytkowników i skrótów poświadczeń w usłudze Azure AD DS. Przed podjęciem próby uwierzytelnienia w domenie zarządzanej upewnij się, że zaczekasz wystarczającą ilość czasu.
-      * Jeśli problem będzie się powtarzać po sprawdzeniu poprzednich kroków, spróbuj ponownie uruchomić *usługę synchronizacji Microsoft Azure AD*. Na [maszynie wirtualnej zarządzania][management-vm]Otwórz wiersz polecenia i uruchom następujące polecenia:
+      * Jeśli problem będzie się powtarzać po sprawdzeniu poprzednich kroków, spróbuj ponownie uruchomić *usługę synchronizacji Microsoft Azure AD*. Na serwerze Azure AD Connect Otwórz wiersz polecenia i uruchom następujące polecenia:
     
         ```console
         net stop 'Microsoft Azure AD Sync'

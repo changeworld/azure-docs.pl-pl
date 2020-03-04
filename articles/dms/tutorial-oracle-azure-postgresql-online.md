@@ -3,8 +3,8 @@ title: 'Samouczek: Migrowanie bazy danych Oracle online do Azure Database for Po
 titleSuffix: Azure Database Migration Service
 description: Dowiedz się, jak przeprowadzić migrację online z programu Oracle lokalnie lub na maszynach wirtualnych do Azure Database for PostgreSQL przy użyciu Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
-ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 14db95adccf5118321bc763cbe599e19febc7eac
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759913"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255566"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Samouczek: Migrowanie bazy danych Oracle do Azure Database for PostgreSQL online przy użyciu usługi DMS (wersja zapoznawcza)
 
 Za pomocą Azure Database Migration Service można migrować bazy danych z baz danych Oracle hostowanych lokalnie lub na maszynach wirtualnych w celu [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) z minimalnym przestojem. Innymi słowy, można przeprowadzić migrację z minimalnym przestojem aplikacji. W tym samouczku przeprowadzisz migrację przykładowej bazy danych **HR** z wystąpienia programu Oracle 11g w środowisku lokalnym lub maszynie wirtualnej do Azure Database for PostgreSQL przy użyciu działania migracji w trybie online w programie Azure Database Migration Service.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 >
 > * Oceń wysiłki migracji przy użyciu narzędzia ora2pg.
@@ -186,7 +186,7 @@ Aby wyeksportować wszystkie obiekty bazy danych w plikach. SQL, można uruchomi
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-Przykład:
+Na przykład:
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
@@ -239,15 +239,15 @@ Aby rozpocząć:
 
     Jeśli nazwa schematu w źródle Oracle i pasuje do tego w Azure Database for PostgreSQL, wówczas Azure Database Migration Service *tworzy schemat tabeli przy użyciu tego samego przypadku jak w elemencie docelowym*.
 
-    Przykład:
+    Na przykład:
 
     | Źródłowy schemat programu Oracle | Docelowa baza danych PostgreSQL. schemat | Usługa DMS utworzyła schemat. tabela. kolumna |
     | ------------- | ------------- | ------------- |
-    | Kadry | targetHR. Public | Public. kraje. country_id |
-    | Kadry | targetHR.trgthr | trgthr. kraje. country_id |
-    | Kadry | targetHR.TARGETHR | "TARGETHR"." KRAJE "." COUNTRY_ID " |
-    | Kadry | targetHR.HR | "HR". " KRAJE "." COUNTRY_ID " |
-    | Kadry | targetHR.Hr | \* Nie można zmapować przypadków mieszanych |
+    | HR | targetHR. Public | Public. kraje. country_id |
+    | HR | targetHR.trgthr | trgthr. kraje. country_id |
+    | HR | targetHR.TARGETHR | "TARGETHR"." KRAJE "." COUNTRY_ID " |
+    | HR | targetHR.HR | "HR". " KRAJE "." COUNTRY_ID " |
+    | HR | targetHR.Hr | \* Nie można zmapować przypadków mieszanych |
 
     \* Aby utworzyć mieszany schemat przypadków i nazwy tabel w docelowym PostgreSQL, skontaktuj się z [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com). Możemy udostępnić skrypt pozwalający skonfigurować mieszany schemat tabeli przypadków w docelowej bazie danych PostgreSQL.
 

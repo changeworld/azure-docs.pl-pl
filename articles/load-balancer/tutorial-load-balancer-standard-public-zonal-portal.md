@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 07d4b206c5651bb708ed8b56437a8769dff46557
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225168"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251905"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Samouczek: równoważenie obciążenia maszyn wirtualnych w strefie dostępności przy użyciu usługi Load Balancer w strefie Standardowa w witrynie Azure Portal
 
@@ -52,9 +52,9 @@ Usługa Load Balancer w warstwie Standardowa obsługuje tylko standardowy public
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Subscription               | Wybierz subskrypcję.    |    
+    | Subskrypcja               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupZLB* w polu tekstowym.|
-    | Nazwa                   | *myLoadBalancer*                                   |
+    | Name (Nazwa)                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
     | Typ          | Wybierz pozycję **Publiczna**.                                        |
     | SKU           | Wybierz opcję **Standardowa**.                          |
@@ -63,18 +63,24 @@ Usługa Load Balancer w warstwie Standardowa obsługuje tylko standardowy public
     |Strefa dostępności| Wybierz pozycję **1**.    |
 3. Na karcie **Przeglądanie + tworzenie** kliknij pozycję **Utwórz**.   
 
-   ## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
+## <a name="create-backend-servers"></a>Tworzenie serwerów zaplecza
 
 W tej sekcji utworzysz sieć wirtualną. Utworzysz też dwie maszyny wirtualne w tej samej strefie (strefie 1) w regionie, aby dodać je do puli zaplecza modułu równoważenia obciążenia. Następnie zainstalujesz usługi IIS na maszynach wirtualnych, aby ułatwić testowanie strefowo nadmiarowego modułu równoważenia obciążenia. Jeśli jedna z maszyn wirtualnych ulegnie awarii, sonda kondycji maszyny wirtualnej w tej samej strefie również ulegnie awarii. Ruch będzie nadal obsługiwany przez pozostałe maszyny wirtualne w tej samej strefie.
 
-### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
-1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.  Wprowadź następujące wartości dla sieci wirtualnej:
-    - **myVNet** — jako nazwę sieci wirtualnej.
-    - **myResourceGroupZLB** — jako nazwę istniejącej grupy zasobów.
-    - **myBackendSubnet** — jako nazwę podsieci.
-2. Wybierz pozycję **Utwórz**, aby utworzyć sieć wirtualną.
+## <a name="virtual-network-and-parameters"></a>Sieć wirtualna i parametry
 
-    ![Tworzenie sieci wirtualnej](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-network.png)
+W tej sekcji należy zamienić następujące parametry w krokach z poniższymi informacjami:
+
+| Parametr                   | Wartość                |
+|-----------------------------|----------------------|
+| **\<nazwy grupy zasobów >**  | myResourceGroupZLB (wybierz istniejącą grupę zasobów) |
+| **\<nazwę sieci wirtualnej >** | myVNet          |
+| **\<nazwę regionu >**          | Europa Zachodnia      |
+| **\<adres IPv4 >**   | 10.0.0.0 \ 16          |
+| **\<nazwę podsieci >**          | myBackendSubnet        |
+| **\<zakres adresów podsieci >** | 10.0.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 

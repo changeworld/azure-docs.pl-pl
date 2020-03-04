@@ -3,12 +3,12 @@ title: Tabela obsługi usługi Azure Backup
 description: Zawiera podsumowanie ustawień obsługi i ograniczeń dotyczących usługi Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: dd4ec646c786ee686567aa137845e583a4cf47e3
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 788da5708178cfa533d4382a4a417cef73f46a5e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206660"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254909"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Macierz obsługi dla Azure Backup
 
@@ -32,7 +32,7 @@ W poniższej tabeli opisano funkcje magazynów Recovery Services:
 --- | ---
 **Magazyny w subskrypcji** | Do 500 magazynów usługi Recovery Services w ramach jednej subskrypcji.
 **Maszyny w magazynie** | Do 1 000 maszyn wirtualnych platformy Azure w jednym magazynie.<br/><br/> Do 50 serwerów serwera usługi MAB można zarejestrować w pojedynczym magazynie.
-**Źródła danych w magazynie magazynu** | Maksymalna 54 400 GB. Nie ma limitu kopii zapasowych maszyn wirtualnych platformy Azure.
+**Źródła danych** | Maksymalny rozmiar pojedynczego [źródła danych](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined) wynosi 54 400 GB. Ten limit nie dotyczy kopii zapasowych maszyny wirtualnej platformy Azure. Żadne limity nie mają zastosowania do łącznej ilości danych, których kopię zapasową można utworzyć w magazynie.
 **Kopie zapasowe w magazynie** | **Maszyny wirtualne platformy Azure:** Raz dziennie.<br/><br/>**Maszyny chronione przez program DPM/serwera usługi MAB:** Dwa razy dziennie.<br/><br/> **Maszyny z kopią zapasową bezpośrednio przy użyciu agenta Mars:** Trzy razy dziennie.
 **Kopie zapasowe między magazynami** | Kopia zapasowa znajduje się w regionie.<br/><br/> Potrzebujesz magazynu w każdym regionie świadczenia usługi Azure, który zawiera maszyny wirtualne, dla których chcesz utworzyć kopię zapasową. Nie można utworzyć kopii zapasowej w innym regionie.
 **Przenoszenie magazynów** | [Magazyny można przenosić](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) między subskrypcjami lub między grupami zasobów w ramach tej samej subskrypcji. Jednak przeniesienie magazynów między regionami nie jest obsługiwane.
@@ -155,8 +155,6 @@ Azure Backup dodano funkcję przywracania między regionami w celu wzmocnienia d
 | Agent MARS/lokalnie | Nie                                                           | Nie dotyczy               |
 | SQL/SAP HANA          | Nie                                                           | Nie dotyczy               |
 | AFS                    | Nie                                                           | Nie dotyczy               |
-
-
 
 ## <a name="next-steps"></a>Następne kroki
 

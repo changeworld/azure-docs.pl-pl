@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 73f490ec069ff44929ca70f4ecf2ab3aca52934d
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 37de55d671bb19cfcd9fd494c2e76f658fc7db21
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209352"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249497"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Wyświetlanie danych o ruchu na mapie przy użyciu Azure Maps Android SDK
 
-Dane przepływu i dane zdarzeń to dwa typy danych ruchu, które mogą być wyświetlane na mapie. W tym przewodniku pokazano, jak wyświetlić oba te dane o ruchu. Dane zdarzeń obejmują dane dotyczące punktów i danych opartych na wierszach dla elementów, takich jak konstrukcje, zamknięcia dróg i awarie. Dane przepływu przedstawiają metryki dotyczące przepływu ruchu w podróży.
+Dane przepływu i dane zdarzeń to dwa typy danych ruchu, które mogą być wyświetlane na mapie. W tym przewodniku pokazano, jak wyświetlić oba typy danych ruchu. Dane zdarzeń obejmują dane dotyczące punktów i danych opartych na wierszach dla elementów, takich jak konstrukcje, zamknięcia dróg i awarie. Dane przepływu przedstawiają metryki dotyczące przepływu ruchu w podróży.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby można było wyświetlić ruch na mapie, należy zainstalować [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) i załadować mapę.
+Aby można było wyświetlić ruch na mapie, należy [utworzyć konto platformy Azure](quick-demo-map-app.md#create-an-account-with-azure-maps)i [uzyskać klucz subskrypcji](quick-demo-map-app.md#get-the-primary-key-for-your-account). Następnie należy zainstalować [Android SDK Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) i załadować mapę.
 
 ## <a name="incidents-traffic-data"></a>Zdarzenia danych ruchu 
 
@@ -38,7 +38,7 @@ protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     mapControl.getMapAsync(map - > {
         map.setTraffic(incidents(true));
-}
+    }
 }
 ```
 
@@ -63,8 +63,9 @@ Użyj poniższego fragmentu kodu, aby ustawić dane przepływu ruchu. Podobnie j
 ```java
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    mapControl.getMapAsync(map -> 
+    mapControl.getMapAsync(map -> {
         map.setTraffic(flow(TrafficFlow.RELATIVE)));
+    }
 }
 ```
 

@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/20/2019
-ms.openlocfilehash: a0874826529b5c9ca5d6d4107fe820cd522d81d0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4e46efaf17ae9bad5df6f1f61f401d3e6de58a85
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894049"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250236"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Serwer Apache ZooKeeper nie może utworzyć kworum w usłudze Azure HDInsight
 
@@ -20,24 +20,31 @@ W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązani
 
 ## <a name="issue"></a>Problem
 
-Serwer Apache ZooKeeper jest w złej kondycji, objawy mogą obejmować: Menedżer zasobów/węzły nazw są w trybie wstrzymania, proste operacje systemu plików HDFS nie działają, `zkFailoverController` jest zatrzymana i nie można go uruchomić, zadania przędzy/Spark/usługi Livy kończą się niepowodzeniem z powodu błędów dozorcy. Może zostać wyświetlony komunikat o błędzie podobny do:
+Serwer Apache ZooKeeper jest w złej kondycji, objawy mogą obejmować: Menedżer zasobów/węzły nazw są w trybie wstrzymania, proste operacje systemu plików HDFS nie działają, `zkFailoverController` jest zatrzymana i nie można go uruchomić, zadania przędzy/Spark/usługi Livy kończą się niepowodzeniem z powodu błędów dozorcy. Nie można uruchomić demonów LLAP w przypadku bezpiecznych klastrów Hive lub interaktywnych. Może zostać wyświetlony komunikat o błędzie podobny do:
 
 ```
 19/06/19 08:27:08 ERROR ZooKeeperStateStore: Fatal Zookeeper error. Shutting down Livy server.
 19/06/19 08:27:08 INFO LivyServer: Shutting down Livy server.
 ```
 
+W dzienniku serwera dozorcy na dowolnym hoście dozorcy w/var/log/Zookeeper/Zookeeper-Zookeeper-Server-\*. out może zostać wyświetlony następujący błąd:
+
+```
+2020-02-12 00:31:52,513 - ERROR [CommitProcessor:1:NIOServerCnxn@178] - Unexpected Exception:
+java.nio.channels.CancelledKeyException
+```
+
 ## <a name="cause"></a>Przyczyna
 
 Gdy ilość plików migawek jest duża lub pliki migawek są uszkodzone, serwer dozorcy nie będzie mógł utworzyć kworum, co spowoduje złej kondycji usługi dozorcy. Serwer dozorcy nie usunie starych plików migawek z jego katalogu danych, ale jest to zadanie okresowe wykonywane przez użytkowników w celu utrzymania healthiness dozorcy. Aby uzyskać więcej informacji, zobacz [dozorcy siły i ograniczenia](https://zookeeper.apache.org/doc/r3.3.5/zookeeperAdmin.html#sc_strengthsAndLimitations).
 
-## <a name="resolution"></a>Rozdzielczość
+## <a name="resolution"></a>Rozwiązanie
 
-Sprawdź katalog danych dozorcy `/hadoop/zookeeper/version-2` i `/hadoop/hdinsight-zookeepe/version-2`, aby dowiedzieć się, czy rozmiar pliku migawek jest duży. Jeśli istnieją duże migawki, wykonaj następujące czynności:
+Sprawdź katalog danych dozorcy `/hadoop/zookeeper/version-2` i `/hadoop/hdinsight-zookeeper/version-2`, aby dowiedzieć się, czy rozmiar pliku migawek jest duży. Jeśli istnieją duże migawki, wykonaj następujące czynności:
 
-1. Wykonaj kopię zapasową migawek w `/hadoop/zookeeper/version-2` i `/hadoop/hdinsight-zookeepe/version-2`.
+1. Wykonaj kopię zapasową migawek w `/hadoop/zookeeper/version-2` i `/hadoop/hdinsight-zookeeper/version-2`.
 
-1. Oczyść migawki w `/hadoop/zookeeper/version-2` i `/hadoop/hdinsight-zookeepe/version-2`.
+1. Oczyść migawki w `/hadoop/zookeeper/version-2` i `/hadoop/hdinsight-zookeeper/version-2`.
 
 1. Uruchom ponownie wszystkie serwery dozorcy z poziomu interfejsu użytkownika Apache Ambari.
 

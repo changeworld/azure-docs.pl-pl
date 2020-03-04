@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Dowiedz się, jak zainstalować Azure Dev Spaces w klastrze AKS i zainstalować narzędzia po stronie klienta.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
-ms.openlocfilehash: 0fd4cce9d25922bea50963c4e87e110759673bbc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: de4f91e3e0e0653519bb48db5e3e8a116e24cc78
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770632"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252006"
 ---
 # <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Instalowanie Azure Dev Spaces na AKS i narzędzi po stronie klienta
 
@@ -25,15 +25,13 @@ Aby można było zainstalować miejsca deweloperskie za pomocą interfejsu wiers
 
 Użyj `use-dev-spaces` polecenia, aby włączyć miejsca deweloperskie w klastrze AKS i postępuj zgodnie z monitami.
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
 ```
 
 Powyższe polecenie włącza miejsca deweloperskie w klastrze *myAKSCluster* w grupie Grupa *zasobów* i tworzy *domyślny* obszar dev.
 
-```cmd
-$ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
-
+```console
 'An Azure Dev Spaces Controller' will be created that targets resource 'myAKSCluster' in resource group 'myResourceGroup'. Continue? (y/N): y
 
 Creating and selecting Azure Dev Spaces Controller 'myAKSCluster' in resource group 'myResourceGroup' that targets resource 'myAKSCluster' in resource group 'myResourceGroup'...2m 24s
@@ -58,7 +56,7 @@ Aby można było zainstalować miejsca deweloperskie przy użyciu Azure Portal, 
 * [Klaster AKS][create-aks-portal] w [obsługiwanym regionie][supported-regions].
 
 Aby zainstalować Azure Dev Spaces przy użyciu Azure Portal:
-1. Zaloguj się do [portalu Azure][az-portal].
+1. Zaloguj się do [Azure portal][az-portal].
 1. Przejdź do klastra AKS.
 1. Kliknij pozycję *spacje dla deweloperów*.
 1. Zmień *wartość opcji* *Włącz funkcję miejsca* do tworzenia i kliknij przycisk *Zapisz*.

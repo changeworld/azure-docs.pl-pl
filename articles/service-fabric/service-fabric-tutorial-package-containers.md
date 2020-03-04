@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 554590a065214c17de0acdea3207876f113b3caf
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614030"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252744"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Samouczek: tworzenie pakietów kontenerów i wdrażanie ich jako aplikacji usługi Service Fabric za pomocą usługi Yeoman
 
-Niniejszy samouczek jest drugą częścią serii. W tym samouczku narzędzie generatora szablonów (Yeoman) jest używane do generowania definicji aplikacji usługi Service Fabric. Ta aplikacja może być następnie używana do wdrażania kontenerów w usłudze Service Fabric. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek jest drugą częścią serii. W tym samouczku narzędzie generatora szablonów (Yeoman) jest używane do generowania definicji aplikacji usługi Service Fabric. Ta aplikacja może być następnie używana do wdrażania kontenerów w usłudze Service Fabric. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Instalowanie narzędzia Yeoman
@@ -114,7 +114,7 @@ Aby usługa Service Fabric pobierała obrazy kontenerów z usługi Azure Contain
 
 Zaloguj się do swojego wystąpienia ACR. Aby wykonać tę operację, użyj polecenia **az acr login**. Podaj unikatową nazwę nadaną rejestrowi kontenerów podczas jego tworzenia.
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -122,7 +122,7 @@ Polecenie zwraca komunikat **Logowanie pomyślne** po ukończeniu.
 
 Następnie uruchom następujące polecenie, aby pobrać hasło rejestru kontenerów. To hasło jest używane przez usługę Service Fabric do uwierzytelniania w usłudze ACR na potrzeby ściągania obrazów kontenera.
 
-```bash
+```azurecli
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
@@ -199,7 +199,7 @@ Aby usługa Service Fabric przypisała tę nazwę DNS do usługi zaplecza, nazwa
 
 Usługa frontonu odczytuje wartość zmiennej środowiskowej, aby poznać nazwę DNS wystąpienia usługi Redis. Ta zmienna środowiskowa jest już zdefiniowana w pliku Dockerfile użytym do generowania obrazu Docker i nie trzeba wykonywać żadnych działań w tym miejscu.
 
-```Dockerfile
+```dockerfile
 ENV REDIS redisbackend.testapp
 ```
 

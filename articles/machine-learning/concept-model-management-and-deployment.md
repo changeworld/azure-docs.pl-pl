@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11a6a668b1028ba1640ef076606d4aeb4c3aae6e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 82866d452289a29dcdcacc12db8048acb7a351ba
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589372"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250857"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Zarządzanie modelami, wdrażanie i monitorowanie za pomocą Azure Machine Learning
 
@@ -71,6 +71,11 @@ Zarejestrowane modele są identyfikowane za pomocą nazwy i wersji. Za każdym r
 Nie można usunąć zarejestrowanego modelu, który jest używany w aktywnym wdrożeniu.
 Aby uzyskać więcej informacji, zobacz sekcję Register model w artykule [Wdrażanie modeli](how-to-deploy-and-where.md#registermodel).
 
+### <a name="profile-models"></a>Modele profilów
+
+Azure Machine Learning może pomóc zrozumieć wymagania dotyczące procesora i pamięci usługi, które zostaną utworzone podczas wdrażania modelu. Profilowanie testuje usługę, która uruchamia model i zwraca informacje takie jak użycie procesora CPU, użycie pamięci i opóźnienie odpowiedzi. Zapewnia również zalecenia dotyczące procesora i pamięci na podstawie użycia zasobów.
+Aby uzyskać więcej informacji, zobacz sekcję profilowania w artykule [Wdrażanie modeli](how-to-deploy-and-where.md#profilemodel).
+
 ### <a name="package-and-debug-models"></a>Modele pakietów i debugowania
 
 Przed wdrożeniem modelu w środowisku produkcyjnym jest on spakowany w obrazie platformy Docker. W większości przypadków tworzenie obrazów odbywa się automatycznie w tle podczas wdrażania. Można ręcznie określić obraz.
@@ -78,10 +83,6 @@ Przed wdrożeniem modelu w środowisku produkcyjnym jest on spakowany w obrazie 
 Jeśli wystąpią problemy z wdrożeniem, można wdrożyć program w lokalnym środowisku programistycznym w celu rozwiązywania problemów i debugowania.
 
 Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli](how-to-deploy-and-where.md#registermodel) i [Rozwiązywanie problemów z wdrożeniami](how-to-troubleshoot-deployment.md).
-
-### <a name="validate-and-profile-models"></a>Weryfikowanie i profilowanie modeli
-
-Azure Machine Learning może użyć profilowania, aby określić idealne ustawienia procesora CPU i pamięci, które mają być używane podczas wdrażania modelu. Sprawdzanie poprawności modelu odbywa się w ramach tego procesu przy użyciu danych dostarczanych przez proces profilowania.
 
 ### <a name="convert-and-optimize-models"></a>Konwertowanie i optymalizowanie modeli
 

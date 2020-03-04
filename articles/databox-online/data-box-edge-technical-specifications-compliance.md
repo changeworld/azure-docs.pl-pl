@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 9e1a7f7cd2643aae61e60d77ad74f4a08266a977
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b646ee9b727d5adf4ec1c8b5c769b3d8f5c0fc1c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863601"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252029"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge specyfikacje techniczne
 
@@ -23,17 +23,17 @@ Składniki sprzętowe Microsoft Azure Data Box Edge urządzeniu przestrzegają s
 
 Urządzenie Data Box Edge ma następujące specyfikacje dotyczące obliczeń i pamięci:
 
-| Specyfikacja           | Wartość                  |
+| Określając           | Wartość                  |
 |-------------------------|----------------------------|
 | Procesor CPU    | 2 X 10 rdzeni procesora CPU                     |
-| Pamięć              | 128 GB pamięci RAM                  |
+| Memory (Pamięć)              | 128 GB pamięci RAM                  |
 
 
 ## <a name="fpga-specifications"></a>Specyfikacje FPGA
 
 FPGA jest dołączana do wszystkich urządzeń Data Box Edge, które umożliwiają Machine Learning (ML) scenariusze. 
 
-| Specyfikacja           | Wartość                  |
+| Określając           | Wartość                  |
 |-------------------------|----------------------------|
 | FPGA   | Intel Arria 10 <br> Dostępne modele sieci neuronowych Network (DNN) są takie same, jak te [obsługiwane przez wystąpienia FPGA chmury](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
 
@@ -42,22 +42,30 @@ FPGA jest dołączana do wszystkich urządzeń Data Box Edge, które umożliwiaj
 
 Urządzenie Data Box Edge ma dwie jednostki dostarczania 100-240 V (PSUs) z wentylatorami o wysokiej wydajności. Dwa PSUs zapewniają nadmiarową konfigurację zasilacza. Jeśli PSU nie powiedzie się, urządzenie będzie nadal działać normalnie na innych PSU, dopóki nie zostanie zastąpiony moduł zakończony niepowodzeniem. W poniższej tabeli przedstawiono specyfikacje techniczne PSUs.
 
-| Specyfikacja           | 750 W PSU                  |
+| Określając           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maksymalna moc wyjściowa    | 750 W                     |
 | Częstotliwość               | 50/60 Hz                   |
 | Wybór zakresu napięcia | Wybór na Wydziale: 100-240 V AC |
-| Możliwość podłączenia gorąca           | Tak                        |
+| Możliwość podłączenia gorąca           | Yes                        |
 
 <!--## Power consumption statistics
 
 The following table lists the typical power consumption data (actual values may vary from the published) for the Data Box Edge device.-->
 
+## <a name="network-interface-specifications"></a>Specyfikacje interfejsu sieciowego
+
+Urządzenie Data Box Edge ma 6 interfejsów sieciowych, PORT1-PORT6.
+
+| Określając           | Opis                 |
+|-------------------------|----------------------------|
+|  Interfejsy sieciowe    | 2 interfejsy 1 GbE — 1 do zarządzania, bez możliwości konfigurowania przez użytkownika, używany do konfiguracji początkowej. Drugi interfejs może być konfigurowany przez użytkownika i służyć do transferu danych. Domyślnie jest interfejsem DHCP. <br>2 interfejsy 25 GbE — mogą również działać jako interfejsy 10 GbE. Te interfejsy danych mogą być konfigurowane przez użytkownika jako DHCP (ustawienie domyślne) lub statyczne. <br> 2 interfejsy 25 GbE — te interfejsy danych mogą być konfigurowane przez użytkownika jako DHCP (ustawienie domyślne) lub statyczne.                  |
+
 ## <a name="storage-specifications"></a>Specyfikacje magazynu
 
 Data Box Edge urządzenia mają 9 X 2,5 "interfejsu NVMe dysków SSD, każdy z pojemnością 1,6 TB. Z tych dysków SSD 1 to dysk systemu operacyjnego, a drugi 8 to dyski z danymi. Całkowita pojemność urządzenia wynosi około 12,5 TB. Poniższa tabela zawiera szczegółowe informacje dotyczące pojemności magazynu urządzenia.
 
-|     Specyfikacja                          |     Wartość             |
+|     Określając                          |     Wartość             |
 |--------------------------------------------|-----------------------|
 |    Liczba dysków półprzewodnikowych (dysków SSD)     |    8                  |
 |    Pojemność jednego dysku SSD                     |    1,6 TB             |
@@ -77,7 +85,7 @@ W poniższej tabeli przedstawiono wymiary obudowy w milimetrach i calach.
 |     Szaf     |     Milimetrach     |     15     |
 |-------------------|---------------------|----------------|
 |    Wysokość         |    44,45            |    1,75 "          |
-|    Szerokość          |    434,1           |    17,09 "          |
+|    impulsów          |    434,1           |    17,09 "          |
 |    Długość          |    740,4           |    29,15 "          |
 
 W poniższej tabeli przedstawiono wymiary pakietu wysyłki w milimetrach i calach.
@@ -85,7 +93,7 @@ W poniższej tabeli przedstawiono wymiary pakietu wysyłki w milimetrach i calac
 |     Pakiet     |     Milimetrach     |     15     |
 |-------------------|---------------------|----------------|
 |    Wysokość         |    311,2            |    12,25 "          |
-|    Szerokość          |    642,8          |    25,31 "          |
+|    impulsów          |    642,8          |    25,31 "          |
 |    Długość          |   1 051,1          |    41,38 "          |
 
 ### <a name="enclosure-weight"></a>Waga obudowy
@@ -122,7 +130,7 @@ W tej sekcji przedstawiono specyfikacje dotyczące środowiska obudowy, takie ja
 |    Orientacja i zamontowanie             |    19 "montaż w stojaku                                                                                                                                                                                        |
 |    Bezpieczeństwo i zatwierdzenia                 |    EN 60950-1:2006 + A1:2010 + a2:2013 + A11:2009 + A12:2011/IEC 60950-1:2005 ED2 + a1:2009 + a2:2013 EN 62311:2008                                                                                                                                                                       |
 |    ELEKTROMAGNETYCZNEJ                                  |    FCC A, ICES-003 <br>EN 55032:2012/CISPR 32:2012  <br>EN 55032:2015/CISPR 32:2015  <br>EN 55024:2010 + A1:2015/CISPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/IEC 61000-3-2:2014 (Klasa D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013                                                                                                                                                                                         |
-|    Energia             |    Rozporządzenie Komisji (UE) nr. 617/2013                                                                                                                                                                                        |
+|    Energetyczna             |    Rozporządzenie Komisji (UE) nr. 617/2013                                                                                                                                                                                        |
 |    RoHS           |    EN 50581:2012                                                                                                                                                                                        |
 
 

@@ -4,12 +4,12 @@ description: Dowiedz się, jak zarządzać spisami dynamicznymi na platformie Az
 keywords: ansible, azure, devops, bash, cloudshell, dynamic inventory
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: d2ebf202cfc9f94b28fc7a512e1fea452401aec6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cd225dcf8a0c307d49e985817b71c491559edb14
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193603"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247858"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Samouczek: Konfigurowanie dynamicznych spisów zasobów platformy Azure przy użyciu rozwiązania ansible
 
@@ -91,25 +91,25 @@ Rozwiązania ansible udostępnia skrypt w języku Python o nazwie [azure_rm. PR]
 
 1. Przy użyciu polecenia GNU `wget` pobierz skrypt `azure_rm.py`:
 
-    ```azurecli-interactive
+    ```python
     wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/azure_rm.py
     ```
 
 1. Przy użyciu polecenia `chmod` zmień uprawnienia dostępu do skryptu `azure_rm.py`. W poniższym poleceniu użyto parametru `+x`, aby zezwolić na wykonanie (uruchomienie) określonego pliku (`azure_rm.py`):
 
-    ```azurecli-interactive
+    ```python
     chmod +x azure_rm.py
     ```
 
 1. Przy użyciu [polecenia ansible](https://docs.ansible.com/ansible/2.4/ansible.html) połącz się z grupą zasobów: 
 
-    ```azurecli-interactive
+    ```python
     ansible -i azure_rm.py ansible-inventory-test-rg -m ping 
     ```
 
 1. Po nawiązaniu połączenia zostaną wyświetlone wyniki podobne do następujących danych wyjściowych:
 
-    ```Output
+    ```output
     ansible-inventory-test-vm1 | SUCCESS => {
         "changed": false,
         "failed": false,
@@ -147,7 +147,7 @@ Począwszy od rozwiązania ansible 2,8, rozwiązania ansible udostępnia [wtyczk
 
 1. Podczas uruchamiania poprzedniego polecenia może zostać wyświetlony następujący błąd:
 
-    ```Output
+    ```output
     Failed to connect to the host via ssh: Host key verification failed.
     ```
     
@@ -159,7 +159,7 @@ Począwszy od rozwiązania ansible 2,8, rozwiązania ansible udostępnia [wtyczk
 
 1. Po uruchomieniu element PlayBook są wyświetlane wyniki podobne do następujących:
   
-    ```Output
+    ```output
     ansible-inventory-test-vm1_0324 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     ansible-inventory-test-vm2_8971 : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     ```
@@ -170,7 +170,7 @@ Począwszy od rozwiązania ansible 2,8, rozwiązania ansible udostępnia [wtyczk
 
 - Po ustawieniu znacznika należy "Włącz" ten tag. Jednym ze sposobów na włączenie znacznika jest wyeksportowanie znacznika do zmiennej środowiskowej `AZURE_TAGS` za pomocą polecenia `export`:
 
-    ```azurecli-interactive
+    ```console
     export AZURE_TAGS=nginx
     ```
     
@@ -182,7 +182,7 @@ Począwszy od rozwiązania ansible 2,8, rozwiązania ansible udostępnia [wtyczk
     
     Zobaczysz teraz tylko jedną maszynę wirtualną (której tag pasuje do wartości wyeksportowanej do zmiennej środowiskowej `AZURE_TAGS`):
 
-    ```Output
+    ```output
        ansible-inventory-test-vm1 | SUCCESS => {
         "changed": false,
         "failed": false,
@@ -194,7 +194,7 @@ Począwszy od rozwiązania ansible 2,8, rozwiązania ansible udostępnia [wtyczk
 
 - Uruchom polecenie `ansible-inventory -i myazure_rm.yml --graph`, aby uzyskać następujące dane wyjściowe:
 
-    ```Output
+    ```output
         @all:
           |--@tag_Ansible_nginx:
           |  |--ansible-inventory-test-vm1_9e2f
@@ -215,7 +215,7 @@ Celem tagów jest umożliwienie szybkiej i łatwej pracy z podgrupami maszyn wir
 
 1. Utwórz plik o nazwie `nginx.yml`:
 
-   ```azurecli-interactive
+   ```console
    code nginx.yml
    ```
 
@@ -255,7 +255,7 @@ Celem tagów jest umożliwienie szybkiej i łatwej pracy z podgrupami maszyn wir
 
 1. Po uruchomieniu element PlayBook są wyświetlane dane wyjściowe podobne do następujących:
 
-    ```Output
+    ```output
     PLAY [Install and start Nginx on an Azure virtual machine] 
 
     TASK [Gathering Facts] 
@@ -285,13 +285,13 @@ W tej sekcji przedstawiono jedną technikę, za pomocą której można sprawdzi�
 
 1. Po nawiązaniu połączenia z maszyną wirtualną `ansible-inventory-test-vm1` uruchom polecenie [nginx -v](https://nginx.org/en/docs/switches.html), aby określić, czy serwer Nginx jest zainstalowany.
 
-    ```azurecli-interactive
+    ```console
     nginx -v
     ```
 
 1. Po uruchomieniu polecenia `nginx -v` zobaczysz wersję serwera Nginx (drugi wiersz), co oznacza, że serwer Nginx został zainstalowany.
 
-    ```Output
+    ```output
     tom@ansible-inventory-test-vm1:~$ nginx -v
 
     nginx version: nginx/1.10.3 (Ubuntu)
@@ -303,7 +303,7 @@ W tej sekcji przedstawiono jedną technikę, za pomocą której można sprawdzi�
 
 1. Wykonanie powyższych kroków dla maszyny wirtualnej `ansible-inventory-test-vm2` daje komunikat informacyjny wskazujący, że można uzyskać Nginx (co oznacza, że nie jest on zainstalowany w tym momencie):
 
-    ```Output
+    ```output
     tom@ansible-inventory-test-vm2:~$ nginx -v
     The program 'nginx' can be found in the following packages:
     * nginx-core

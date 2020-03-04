@@ -9,12 +9,12 @@ manager: ''
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: c5418f8c5e759ad0e5c388e0925fa724fe148797
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 672b663a9cab72d465ea00e0a5ade364eadbf64e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368532"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251524"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Uwierzytelnianie zarządzanej tożsamości za pomocą Azure Active Directory w celu uzyskania dostępu do zasobów Event Hubs
 Usługa Azure Event Hubs obsługuje uwierzytelnianie Azure Active Directory (Azure AD) z [tożsamościami zarządzanymi dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md). Zarządzane tożsamości dla zasobów platformy Azure mogą autoryzować dostęp do zasobów Event Hubs przy użyciu poświadczeń usługi Azure AD z aplikacji uruchomionych na platformie Azure Virtual Machines (maszyny wirtualne), aplikacji funkcji, Virtual Machine Scale Sets i innych usług. Korzystając z tożsamości zarządzanych dla zasobów platformy Azure wraz z uwierzytelnianiem w usłudze Azure AD, można uniknąć zapisywania poświadczeń z aplikacjami uruchomionymi w chmurze.
@@ -79,10 +79,13 @@ Po przypisaniu roli aplikacja sieci Web będzie miała dostęp do Event Hubs zas
 4. Przypisz tę tożsamość do roli **właściciel danych Event Hubs** na poziomie przestrzeni nazw lub na poziomie centrum zdarzeń. 
 5. Uruchom aplikację sieci Web, wprowadź nazwę przestrzeni nazw i nazwę centrum zdarzeń, komunikat, a następnie wybierz pozycję **Wyślij**. Aby odebrać zdarzenie, wybierz pozycję **Receive (odbieranie**). 
 
-#### <a name="azuremessagingeventhubs-latesttablatest"></a>[Azure. Messaging. EventHubs (Najnowsza wersja)](#tab/latest)
+#### <a name="azuremessagingeventhubs-latest"></a>[Azure. Messaging. EventHubs (Najnowsza wersja)](#tab/latest)
 Teraz możesz uruchomić aplikację sieci Web i wskazać przeglądarkę na przykładową stronę aspx. Możesz znaleźć przykładową aplikację sieci Web, która wysyła i odbiera dane z Event Hubs zasobów w [repozytorium GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp).
 
-Zainstaluj najnowszy pakiet z programu [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)i Rozpocznij wysyłanie zdarzeń do Event Hubs przy użyciu **EventHubProducerClient** i otrzymywanie zdarzeń przy użyciu **EventHubConsumerClient**.  
+Zainstaluj najnowszy pakiet z programu [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)i Rozpocznij wysyłanie zdarzeń do Event Hubs przy użyciu **EventHubProducerClient** i otrzymywanie zdarzeń przy użyciu **EventHubConsumerClient**. 
+
+> [!NOTE]
+> Aby zapoznać się z przykładem Java korzystającym z tożsamości zarządzanej do publikowania zdarzeń w centrum zdarzeń, zobacz [Publikowanie zdarzeń za pomocą usługi Azure Identity Sample w witrynie GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs).
 
 ```csharp
 protected async void btnSend_Click(object sender, EventArgs e)
@@ -127,7 +130,7 @@ protected async void btnReceive_Click(object sender, EventArgs e)
 }
 ```
 
-#### <a name="microsoftazureeventhubs-legacytabold"></a>[Microsoft. Azure. EventHubs (starsza wersja)](#tab/old)
+#### <a name="microsoftazureeventhubs-legacy"></a>[Microsoft. Azure. EventHubs (starsza wersja)](#tab/old)
 Teraz możesz uruchomić aplikację sieci Web i wskazać przeglądarkę na przykładową stronę aspx. Możesz znaleźć przykładową aplikację sieci Web, która wysyła i odbiera dane z Event Hubs zasobów w [repozytorium GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp).
 
 Zainstaluj najnowszy pakiet z programu [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)i zacznij wysyłać do i odbierać dane z centrów zdarzeń przy użyciu EventHubClient, jak pokazano w poniższym kodzie: 
@@ -141,11 +144,12 @@ var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHub
 Za pomocą aplikacji Apache Kafka można wysyłać wiadomości i odbierać komunikaty z platformy Azure Event Hubs przy użyciu tożsamości zarządzanej OAuth. Zapoznaj się z poniższym przykładem w witrynie GitHub: [Event Hubs for Kafka — wysyłanie i odbieranie komunikatów przy użyciu tożsamości zarządzanej OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity).
 
 ## <a name="samples"></a>Przykłady
+- Przykłady dla **platformy Azure. Messaging. EventHubs**
+    - [.NET](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+    - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
 - [Przykłady Microsoft. Azure. EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
     Te przykłady używają starej biblioteki **Microsoft. Azure. EventHubs** , ale można ją łatwo zaktualizować do korzystania z najnowszej biblioteki **Azure. Messaging. EventHubs** . Aby przenieść przykład z używania starej biblioteki do nowej, zapoznaj się z [przewodnikiem migrowania z Microsoft. Azure. EventHubs do platformy Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md).
-- [Przykłady dla platformy Azure. Messaging. EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
-
     Ten przykład został zaktualizowany, aby można było użyć najnowszej biblioteki **Azure. Messaging. EventHubs** .
 - [Event Hubs Kafka — wysyłanie i odbieranie komunikatów przy użyciu tożsamości zarządzanej OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
 

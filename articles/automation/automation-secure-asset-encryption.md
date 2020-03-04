@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: e645be5ddd51a4fe7e7610e7f639407d5638f746
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 3c21e2fcdde9bffac91af56d49dfa0bf336e8c0c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920927"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246246"
 ---
 # <a name="secure-assets-in-azure-automation"></a>Zabezpieczanie zasobów w Azure Automation
 
@@ -30,9 +30,9 @@ Każdy bezpieczny zasób jest szyfrowany i przechowywany w Azure Automation przy
 
 ## <a name="customer-managed-keys-with-key-vault-preview"></a>Klucze zarządzane przez klienta z Key Vault (wersja zapoznawcza)
 
-Możesz zarządzać szyfrowaniem bezpiecznych zasobów w Azure Automation na poziomie konta usługi Automation własnymi kluczami. W przypadku określenia klucza zarządzanego przez klienta na poziomie konta usługi Automation ten klucz jest używany do ochrony i kontrolowania dostępu do klucza szyfrowania konta dla konta usługi Automation, które z kolei służy do szyfrowania i odszyfrowywania wszystkich bezpiecznych zasobów. Klucze zarządzane przez klienta zapewniają większą elastyczność tworzenia, obracania, wyłączania i odwoływania kontroli dostępu. Możesz również przeprowadzać inspekcję kluczy szyfrowania używanych do ochrony zabezpieczonych zasobów. 
+Możesz zarządzać szyfrowaniem bezpiecznych zasobów dla konta usługi Automation własnymi kluczami. W przypadku określenia klucza zarządzanego przez klienta na poziomie konta usługi Automation ten klucz jest używany do ochrony i kontroli dostępu do klucza szyfrowania konta dla konta usługi Automation. To z kolei służy do szyfrowania i odszyfrowywania wszystkich bezpiecznych zasobów. Klucze zarządzane przez klienta zapewniają większą elastyczność tworzenia, obracania, wyłączania i odwoływania kontroli dostępu. Możesz również przeprowadzać inspekcję kluczy szyfrowania używanych do ochrony zabezpieczonych zasobów.
 
-Aby przechowywać klucze zarządzane przez klienta, należy użyć Azure Key Vault. Możesz utworzyć własne klucze i zapisać je w magazynie kluczy lub użyć Azure Key Vault interfejsów API do wygenerowania kluczy.  Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](../key-vault/key-vault-overview.md)
+Użyj Azure Key Vault, aby przechowywać klucze zarządzane przez klienta. Możesz utworzyć własne klucze i zapisać je w magazynie kluczy lub użyć Azure Key Vault interfejsów API do wygenerowania kluczy.  Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](../key-vault/key-vault-overview.md)
 
 ## <a name="enable-customer-managed-keys-for-an-automation-account"></a>Włącz klucze zarządzane przez klienta dla konta usługi Automation
 
@@ -40,32 +40,34 @@ Po włączeniu szyfrowania z kluczami zarządzanymi przez klienta dla konta usł
 
 Nowe konto usługi Automation zawsze jest szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. W momencie tworzenia konta nie można włączyć kluczy zarządzanych przez klienta. Klucze zarządzane przez klienta są przechowywane w Azure Key Vault, a Magazyn kluczy musi być zainicjowany przy użyciu zasad dostępu, które przyznają kluczowe uprawnienia do zarządzanej tożsamości skojarzonej z kontem usługi Automation. Tożsamość zarządzana jest dostępna tylko po utworzeniu konta magazynu.
 
-W przypadku modyfikowania klucza używanego do Azure Automation bezpiecznego szyfrowania zasobów przez włączenie lub wyłączenie kluczy zarządzanych przez klienta, zaktualizowanie wersji klucza lub określenie innego klucza, szyfrowanie klucza szyfrowania konta ulega zmianie, ale bezpieczne zasoby na koncie Azure Automation nie trzeba ponownie szyfrować.
+W przypadku modyfikowania klucza używanego do Azure Automation bezpiecznego szyfrowania zasobów przez włączenie lub wyłączenie kluczy zarządzanych przez klienta, zaktualizowanie wersji klucza lub określenie innego klucza szyfrowanie klucza szyfrowania konta zmienia się, ale bezpieczne zasoby w nie trzeba ponownie szyfrować konta Azure Automation.
 
 W poniższych trzech sekcjach opisano Mechanics włączania kluczy zarządzanych przez klienta dla konta usługi Automation. 
 
 > [!NOTE] 
-> Aby włączyć klucze zarządzane przez klienta, należy obecnie wykonać Azure Automation wywołań interfejsu API REST przy użyciu interfejsu API w wersji 2020-01-13-Preview
+> Aby włączyć klucze zarządzane przez klienta, należy wprowadzić Azure Automation wywołań interfejsu API REST przy użyciu interfejsu API w wersji 2020-01-13-Preview
 
 ### <a name="pre-requisites-for-using-customer-managed-keys-in-azure-automation"></a>Wymagania wstępne dotyczące korzystania z kluczy zarządzanych przez klienta w programie Azure Automation
 
-Przed włączeniem kluczy zarządzanych przez klienta dla konta usługi Automation musisz upewnić się, że zostały spełnione następujące wymagania wstępne
+Przed włączeniem kluczy zarządzanych przez klienta dla konta usługi Automation należy upewnić się, że spełnione są następujące wymagania wstępne:
 
  - Klucz, który ma być obsługiwany przez klienta, jest przechowywany w Azure Key Vault. 
- - Należy włączyć zarówno właściwości **nietrwałego usuwania** , jak i **nie przeczyszczania** w magazynie kluczy. Te funkcje są wymagane, aby umożliwić odzyskiwanie kluczy w przypadku przypadkowego usunięcia.
+ - Włącz zarówno właściwości **usuwania nietrwałego** , **jak i nie czyść** w magazynie kluczy. Te funkcje są wymagane, aby umożliwić odzyskiwanie kluczy w przypadku przypadkowego usunięcia.
  - Tylko klucze RSA są obsługiwane z szyfrowaniem Azure Automation. Aby uzyskać więcej informacji na temat kluczy, zobacz [Informacje o kluczach, wpisach tajnych i certyfikatach Azure Key Vault](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
 - Konto usługi Automation i Magazyn kluczy mogą znajdować się w różnych subskrypcjach, ale muszą znajdować się w tej samej dzierżawie Azure Active Directory.
 
 ### <a name="assign-an-identity-to-the-automation-account"></a>Przypisywanie tożsamości do konta usługi Automation
 
-Aby można było używać kluczy zarządzanych przez klienta z kontem usługi Automation, konto usługi Automation musi być uwierzytelniane w magazynie kluczy przechowującym klucze zarządzane przez klienta. Azure Automation używa tożsamości zarządzanych przypisanych przez system do uwierzytelniania konta przy użyciu Key Vault. Aby uzyskać więcej informacji o tożsamościach zarządzanych, zobacz [co to są tożsamości zarządzane dla zasobów platformy Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+Aby można było używać kluczy zarządzanych przez klienta z kontem usługi Automation, konto usługi Automation musi być uwierzytelniane w magazynie kluczy przechowującym klucze zarządzane przez klienta. Azure Automation używa tożsamości zarządzanych przypisanych przez system do uwierzytelniania konta przy użyciu Azure Key Vault. Aby uzyskać więcej informacji o tożsamościach zarządzanych, zobacz [co to są tożsamości zarządzane dla zasobów platformy Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-Skonfiguruj tożsamość zarządzaną przypisaną przez system do konta usługi Automation przy użyciu następującego wywołania interfejsu API REST
+Skonfiguruj tożsamość zarządzaną przypisaną przez system do konta usługi Automation przy użyciu następującego wywołania interfejsu API REST:
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
 ```
-Treść żądania
+
+Treść żądania:
+
 ```json
 { 
  "identity": 
@@ -73,9 +75,9 @@ Treść żądania
   "type": "SystemAssigned" 
   } 
 }
-```    
+```
 
-Tożsamość przypisanego systemu dla konta usługi Automation jest zwracana w odpowiedzi
+Tożsamość przypisanego systemu dla konta usługi Automation jest zwracana w odpowiedzi podobnej do następującej:
 
 ```json
 {
@@ -93,14 +95,15 @@ Tożsamość przypisanego systemu dla konta usługi Automation jest zwracana w o
 
 ### <a name="configure-the-key-vault-access-policy"></a>Konfigurowanie zasad dostępu Key Vault
 
-Po przypisaniu zarządzanej tożsamości do konta usługi Automation można skonfigurować dostęp do Key Vault przechowywania kluczy zarządzanych przez klienta. Azure Automation wymaga funkcji **Get**, **Recover**, **wrapKey**, **UnwrapKey** w kluczach zarządzanych przez klienta.
+Gdy zarządzana tożsamość zostanie przypisana do konta usługi Automation, należy skonfigurować dostęp do magazynu kluczy, w którym są przechowywane klucze zarządzane przez klienta. Azure Automation wymaga funkcji **Get**, **Recover**, **wrapKey**, **UnwrapKey** w kluczach zarządzanych przez klienta.
 
-Takie zasady dostępu można ustawić przy użyciu następującego wywołania interfejsu API REST.
+Takie zasady dostępu można ustawić przy użyciu następującego wywołania interfejsu API REST:
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-group/providers/Microsoft.KeyVault/vaults/sample-vault/accessPolicies/add?api-version=2018-02-14
 ```
-Treść żądania
+
+Treść żądania:
 
 ```json
 {
@@ -125,17 +128,18 @@ Treść żądania
 }
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Pola **tenantId** i **objectid** muszą zostać dostarczone z wartościami Identity **. tenantId** i **Identity. principalId** z odpowiedzi na tożsamość zarządzaną dla konta usługi Automation.
 
 ### <a name="change-the-configuration-of-automation-account-to-use-customer-managed-key"></a>Zmień konfigurację konta usługi Automation, aby używała klucza zarządzanego przez klienta
 
-Na koniec można zmienić konto usługi Automation z kluczy zarządzanych przez program Microsoft na klucze zarządzane przez klienta przy użyciu następującego wywołania interfejsu API REST.
+Na koniec można przełączyć konto usługi Automation z kluczy zarządzanych przez program Microsoft do kluczy zarządzanych przez klienta przy użyciu następującego wywołania interfejsu API REST:
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
 ```
-Treść żądania
+
+Treść żądania:
 
 ```json
  {
@@ -151,6 +155,7 @@ Treść żądania
     }
   }
 ```
+
 Przykładowa odpowiedź
 
 ```json
@@ -177,9 +182,9 @@ Przykładowa odpowiedź
 
 ### <a name="rotate-customer-managed-keys"></a>Obróć klucze zarządzane przez klienta
 
-Klucz zarządzany przez klienta można obrócić w Azure Key Vault zgodnie z zasadami zgodności. Gdy klucz jest obrócony, należy zaktualizować konto usługi Automation, aby korzystało z nowego identyfikatora URI klucza. 
+Klucz zarządzany przez klienta można obrócić w Azure Key Vault zgodnie z zasadami zgodności. Gdy klucz jest obrócony, należy zaktualizować konto usługi Automation, aby korzystało z nowego identyfikatora URI klucza.
 
-Obracanie klucza nie wyzwala ponownego szyfrowania bezpiecznych zasobów na koncie usługi Automation. Od użytkownika nie są wymagane żadne dalsze działania.
+Obracanie klucza nie wyzwala ponownego szyfrowania bezpiecznych zasobów na koncie usługi Automation. Nie są wymagane żadne dalsze działania.
 
 ### <a name="revoke-access-to-customer-managed-keys"></a>Odwołaj dostęp do kluczy zarządzanych przez klienta
 
@@ -187,7 +192,10 @@ Aby odwołać dostęp do kluczy zarządzanych przez klienta, należy użyć prog
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Co to jest usługa Azure Key Vault?](../key-vault/key-vault-overview.md) 
+- [Co to jest Azure Key Vault?](../key-vault/key-vault-overview.md)
+
 - [Zasoby certyfikatów w usłudze Azure Automation](shared-resources/certificates.md)
+
 - [Zasoby poświadczeń w usłudze Azure Automation](shared-resources/credentials.md)
+
 - [Zasoby zmiennych w usłudze Azure Automation](shared-resources/variables.md)

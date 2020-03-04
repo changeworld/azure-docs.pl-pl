@@ -3,12 +3,12 @@ title: Błędy przydziału
 description: Opisuje sposób rozwiązywania problemów z przydziałami zasobów podczas wdrażania zasobów przy użyciu Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.openlocfilehash: d36f7d12f432839760b68c85e1c5761e0caf8d85
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 9b5cce3258a29b6ac6a3db50f880e3242c4d5e8c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659359"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250153"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Rozwiązywanie problemów z przydziałami zasobów
 
@@ -52,7 +52,7 @@ az vm list-usage --location "South Central US"
 
 Które zwraca:
 
-```azurecli
+```output
 [
   {
     "currentValue": 0,
@@ -66,7 +66,7 @@ Które zwraca:
 ]
 ```
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 W przypadku programu PowerShell Użyj polecenia **Get-AzVMUsage** , aby znaleźć przydziały maszyny wirtualnej.
 
@@ -99,7 +99,7 @@ Aby zażądać zwiększenia limitu przydziału, przejdź do portalu i zapoznaj s
 
 2. Wybierz subskrypcję, która wymaga zwiększenia limitu przydziału.
 
-   ![Wybierz subskrypcję](./media/error-resource-quota/select-subscription.png)
+   ![Wybieranie subskrypcji](./media/error-resource-quota/select-subscription.png)
 
 3. Wybierz **użycie i przydziały**
 

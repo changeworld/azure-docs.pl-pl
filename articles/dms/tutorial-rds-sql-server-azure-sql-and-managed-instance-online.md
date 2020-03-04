@@ -3,8 +3,8 @@ title: 'Samouczek: Migrowanie usług RDS SQL Server online do SQL Database'
 titleSuffix: Azure Database Migration Service
 description: Dowiedz się, jak przeprowadzić migrację w trybie online z usług RDS SQL Server do Azure SQL Database pojedynczej bazy danych lub wystąpienia zarządzanego przy użyciu Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 52a6ee282e12f0ece5f16c1fa67c38f07f9d86e7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: db561761acbd5ff991f88cfd18cec8d4625336f2
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751290"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255522"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Samouczek: Migrowanie SQL Server RDS do Azure SQL Database lub Azure SQL Database wystąpienia zarządzanego w trybie online za pomocą usługi DMS
 Azure Database Migration Service można użyć do migrowania baz danych z wystąpienia RDS SQL Server do [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) lub [Azure SQL Database wystąpienia zarządzanego](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) o minimalnym przestoju. W tym samouczku przeprowadzisz migrację bazy danych **Adventureworks2012** do wystąpienia usługi RDS SQL Server SQL Server 2012 (lub nowszego) do Azure SQL Database lub Azure SQL Database wystąpienia zarządzanego przy użyciu Azure Database Migration Service.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Utwórz wystąpienie Azure SQL Database lub Azure SQL Database wystąpienia zarządzanego. 
 > * Migrowanie przykładowego schematu przy użyciu programu Data Migration Assistant.

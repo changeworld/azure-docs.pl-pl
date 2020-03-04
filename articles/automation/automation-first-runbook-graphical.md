@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 351ed146511409fb4c6cc49705c7051b89ea0212
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: b891c8a7bbb33e3a3f18adbbc723d4bc9aa99a3a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226495"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246458"
 ---
 # <a name="my-first-graphical-runbook"></a>Mój pierwszy graficzny element Runbook
 
@@ -22,7 +22,7 @@ ms.locfileid: "78226495"
 > * [Python](automation-first-runbook-textual-python2.md)
 > 
 
-Ten samouczek przeprowadzi Cię przez proces tworzenia [graficznego elementu Runbook](automation-runbook-types.md#graphical-runbooks) w Azure Automation. Zacznij od prostego elementu Runbook, który testuje i publikuje, i uczenie się, jak śledzić stan zadania elementu Runbook. Następnie zmodyfikuj element Runbook, aby faktycznie zarządzać zasobami platformy Azure, w tym przypadku uruchamiając maszynę wirtualną platformy Azure. Ukończ samouczek, aby zwiększyć niezawodność elementu Runbook poprzez dodanie parametrów elementu Runbook i łączy warunkowych.
+Ten samouczek przeprowadzi Cię przez proces tworzenia [graficznego elementu Runbook](automation-runbook-types.md#graphical-runbooks) w usłudze Azure Automation. Zacznij od prostego elementu Runbook, który testuje i publikuje, i uczenie się, jak śledzić stan zadania elementu Runbook. Następnie zmodyfikuj element Runbook, aby faktycznie zarządzać zasobami platformy Azure, w tym przypadku uruchamiając maszynę wirtualną platformy Azure. Ukończ samouczek, aby zwiększyć niezawodność elementu Runbook poprzez dodanie parametrów elementu Runbook i łączy warunkowych.
 
 >[!NOTE]
 >Ten artykuł został zaktualizowany o korzystanie z nowego modułu Azure PowerShell Az. Nadal możesz używać modułu AzureRM, który będzie nadal otrzymywać poprawki błędów do co najmniej grudnia 2020 r. Aby dowiedzieć się więcej na temat nowego modułu Az i zgodności z modułem AzureRM, zobacz [Wprowadzenie do nowego modułu Az programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Instrukcje dotyczące instalacji polecenia AZ module w hybrydowym procesie roboczym elementu Runbook znajdują się w temacie [Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). W przypadku konta usługi Automation można zaktualizować moduły do najnowszej wersji przy użyciu [sposobu aktualizowania modułów Azure PowerShell w programie Azure Automation](automation-update-azure-modules.md).

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b24a08ee0367cc3dbb1c845854a0fbc91e0f1d2c
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 4638b5bfc3ff31d0d2149e7ee227c46d3360a306
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227085"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254991"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny RESTful w zasadach niestandardowych Azure Active Directory B2C
 
@@ -127,7 +127,7 @@ Profil techniczny zwraca również oświadczenia, które nie są zwracane przez 
 | AuthenticationType | Yes | Typ uwierzytelniania wykonywanego przez dostawcę oświadczeń RESTful. Możliwe wartości: `None`, `Basic`, `Bearer`lub `ClientCertificate`. Wartość `None` wskazuje, że interfejs API REST nie jest anonimowy. Wartość `Basic` wskazuje, że interfejs API REST jest zabezpieczony za pomocą uwierzytelniania podstawowego protokołu HTTP. Tylko zweryfikowani użytkownicy, w tym Azure AD B2C, mogą uzyskiwać dostęp do interfejsu API. Wartość `ClientCertificate` (zalecane) wskazuje, że interfejs API REST ogranicza dostęp przy użyciu uwierzytelniania za pomocą certyfikatu klienta. Do interfejsu API można uzyskać dostęp tylko do usług, które mają odpowiednie certyfikaty, na przykład Azure AD B2C. Wartość `Bearer` wskazuje, że interfejs API REST ogranicza dostęp przy użyciu tokenu okaziciela OAuth2 klienta. |
 | AllowInsecureAuthInProduction| Nie| Wskazuje, czy `AuthenticationType` można ustawić na `none` w środowisku produkcyjnym (`DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md) jest ustawiony na `Production`lub nie został określony). Możliwe wartości: true lub false (wartość domyślna). |
 | SendClaimsIn | Nie | Określa sposób, w jaki oświadczenia wejściowe są wysyłane do dostawcy oświadczeń RESTful. Możliwe wartości: `Body` (wartość domyślna), `Form`, `Header`lub `QueryString`. Wartość `Body` to żądanie wejściowe wysyłane w treści żądania w formacie JSON. Wartość `Form` jest wartością wejściową, która jest wysyłana w treści żądania w formacie wartości klucza "&". Wartość `Header` to żądanie wejściowe wysyłane w nagłówku żądania. Wartość `QueryString` to żądanie wejściowe wysyłane w ciągu zapytania żądania. Zlecenia HTTP wywoływane przez poszczególne są następujące:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: Pobierz</li><li>`QueryString`: Pobierz</li></ul> |
-| ClaimsFormat | Nie | Określa format oświadczeń wyjściowych. Możliwe wartości: `Body` (wartość domyślna), `Form`, `Header`lub `QueryString`. Wartość `Body` to zgłoszenie wyjściowe wysyłane w treści żądania w formacie JSON. Wartość `Form` jest wynikiem zgłoszenia, który jest wysyłany w treści żądania w formacie wartości klucza "&" oddzielonym. Wartość `Header` to zgłoszenie wyjściowe wysyłane w nagłówku żądania. Wartość `QueryString` jest wynikiem zgłoszenia wysyłanego w ciągu zapytania żądania. |
+| ClaimsFormat | Nie | Obecnie nie są używane, można je zignorować. |
 | ClaimUsedForRequestPayload| Nie | Nazwa żądania ciągu zawierającego ładunek do wysłania do interfejsu API REST. |
 | Debugujmode | Nie | Uruchamia profil techniczny w trybie debugowania. Możliwe wartości: `true`lub `false` (wartość domyślna). W trybie debugowania interfejs API REST może zwrócić więcej informacji. Zobacz sekcję [zwracającą komunikat o błędzie](#returning-error-message) . |
 | IncludeClaimResolvingInClaimsHandling  | Nie | W przypadku oświadczeń wejściowych i wyjściowych określa, czy w profilu technicznym znajduje się [rozpoznawanie oświadczeń](claim-resolver-overview.md) . Możliwe wartości: `true`lub `false` (wartość domyślna). Jeśli chcesz użyć programu rozpoznawania oświadczeń w profilu technicznym, ustaw tę opcję na `true`. |

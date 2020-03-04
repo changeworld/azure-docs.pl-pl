@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/23/2020
 ms.author: juliako
-ms.openlocfilehash: 3984f33cd97ada9b3d5301e45fe3506966880848
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dac5f75216a8addcaa65407d945a06363e4cbf9d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719674"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251375"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamiczne pakowanie w Media Services v3
 
@@ -93,7 +93,7 @@ Zapoznaj się z listą [formatów i koderów](media-encoder-standard-formats.md)
 
 ## <a name="live-streaming-workflow"></a>Przepływ pracy przesyłania strumieniowego na żywo
 
-Wydarzenie na żywo może być jednym z dwóch typów: kodowanie przekazywane lub na żywo. 
+Wydarzenie na żywo można ustawić na *przekazywanie* (lokalny koder na żywo wysyła strumień o wielokrotnej szybkości transmisji bitów) lub *kodowanie na żywo* (lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów). 
 
 Oto typowy przepływ pracy przesyłania strumieniowego na żywo z pakietem dynamicznym:
 

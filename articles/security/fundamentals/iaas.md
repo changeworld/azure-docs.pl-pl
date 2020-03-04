@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 6a775da59680004dadf0cec872057adfd5a16f49
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0a4daf61d6b791a01f5bfb18e6cfca8118b2f421
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749860"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255937"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące zabezpieczeń dla obciążeń IaaS na platformie Azure
 W tym artykule opisano najlepsze rozwiązania w zakresie zabezpieczeń dotyczące maszyn wirtualnych i systemów operacyjnych.
@@ -67,8 +67,8 @@ Jeśli maszyna wirtualna uruchamia krytyczne aplikacje, które muszą mieć wyso
 
 Zestaw dostępności jest grupą logiczną, której można użyć na platformie Azure, aby upewnić się, że zasoby maszyny wirtualnej, które znajdują się w niej, są od siebie odizolowane, gdy zostaną wdrożone w centrum danych platformy Azure. System Azure zapewnia, że maszyny wirtualne, które są umieszczane w zestawie dostępności, są uruchamiane na wielu serwerach fizycznych, w stojakach obliczeniowych, jednostkach magazynowych i przełącznikach sieciowych. Jeśli wystąpi awaria sprzętu lub oprogramowania platformy Azure, ma to zastosowanie tylko do podzbioru maszyn wirtualnych, a ogólna aplikacja będzie nadal dostępna dla klientów. Zestawy dostępności są istotną funkcją do tworzenia niezawodnych rozwiązań w chmurze.
 
-## <a name="protect-against-malware"></a>Chroń się przed złośliwym oprogramowaniem
-Należy zainstalować ochronę przed złośliwym oprogramowaniem, aby ułatwić identyfikowanie i usuwanie wirusów, programów szpiegujących i innego złośliwego oprogramowania. Można zainstalować [oprogramowanie Microsoft chroniące przed złośliwym kodem](antimalware.md) lub rozwiązanie Endpoint Protection partnera firmy Microsoft ([Trend Micro](https://help.deepsecurity.trendmicro.com/Welcome.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)i [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
+## <a name="protect-against-malware"></a>Ochrona przed złośliwym oprogramowaniem
+Należy zainstalować ochronę przed złośliwym oprogramowaniem, aby ułatwić identyfikowanie i usuwanie wirusów, programów szpiegujących i innego złośliwego oprogramowania. Można zainstalować [oprogramowanie Microsoft chroniące przed złośliwym kodem](antimalware.md) lub rozwiązanie Endpoint Protection partnera firmy Microsoft ([Trend Micro](https://help.deepsecurity.trendmicro.com/Welcome.html), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)i [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
 
 Oprogramowanie chroniące przed złośliwym oprogramowaniem firmy Microsoft oferuje takie funkcje jak ochrona w czasie rzeczywistym, zaplanowane skanowanie, korygowanie złośliwego oprogramowania, aktualizacje sygnatur, aktualizacje aparatu, raportowanie przykładów i zbieranie zdarzeń wykluczania. W przypadku środowisk, które są hostowane niezależnie od środowiska produkcyjnego, można użyć rozszerzenia chroniącego przed złośliwym kodem, aby chronić maszyny wirtualne i usługi w chmurze.
 
@@ -81,7 +81,7 @@ Możesz zintegrować rozwiązania firmy Microsoft chroniące przed złośliwym o
 **Szczegóły**: [Zarządzanie problemami z programem Endpoint protection przy użyciu Security Center](../../security-center/security-center-partner-integration.md)
 
 ## <a name="manage-your-vm-updates"></a>Zarządzanie aktualizacjami maszyny wirtualnej
-Maszyny wirtualne platformy Azure, takie jak wszystkie lokalne maszyny wirtualne, są przeznaczone do zarządzania przez użytkownika. Platforma Azure nie wypycha do nich aktualizacji systemu Windows. Musisz zarządzać aktualizacjami maszyny wirtualnej.
+Maszyny wirtualne platformy Azure, takie jak wszystkie lokalne maszyny wirtualne, są przeznaczone do zarządzania przez użytkownika. Platforma Azure nie wypychanie do nich aktualizacji systemu Windows. Musisz zarządzać aktualizacjami maszyny wirtualnej.
 
 **Najlepsze rozwiązanie**: Zachowaj aktualność maszyn wirtualnych.   
 **Szczegóły**: użyj rozwiązania [Update Management](../../automation/automation-update-management.md) w Azure Automation do zarządzania aktualizacjami systemu operacyjnego na komputerach z systemami Windows i Linux, które są wdrożone na platformie Azure, w środowiskach lokalnych lub w innych dostawcach chmury. Umożliwia ono szybką ocenę stanu dostępnych aktualizacji na wszystkich komputerach agentów oraz zarządzanie procesem instalacji wymaganych aktualizacji serwerów.
@@ -152,13 +152,13 @@ Zalecamy zaszyfrowanie wirtualnych dysków twardych (VHD), aby chronić wolumin 
 Poniżej przedstawiono najlepsze rozwiązania dotyczące korzystania z Azure Disk Encryption:
 
 **Najlepsze rozwiązanie**: Włącz szyfrowanie na maszynach wirtualnych.   
-**Szczegóły**: Azure Disk Encryption generuje i zapisuje klucze szyfrowania do magazynu kluczy. Zarządzanie kluczami szyfrowania w magazynie kluczy wymaga uwierzytelniania usługi Azure AD. Utwórz aplikację usługi Azure AD, w tym celu. Na potrzeby uwierzytelniania, można użyć albo uwierzytelnianie oparte na klucz tajny klienta lub [uwierzytelnianie klienta oparte na certyfikatach usługi Azure AD](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
+**Szczegóły**: Azure Disk Encryption generuje i zapisuje klucze szyfrowania do magazynu kluczy. Zarządzanie kluczami szyfrowania w magazynie kluczy wymaga uwierzytelniania usługi Azure AD. Utwórz aplikację usługi Azure AD, w tym celu. Do celów uwierzytelniania można użyć uwierzytelniania opartego na kluczu tajnym klienta lub [uwierzytelniania usługi Azure AD opartego na certyfikatach klienta](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
 
 **Najlepsze rozwiązanie**: Użyj klucza szyfrowania klucza (KEK) w celu uzyskania dodatkowej warstwy zabezpieczeń dla kluczy szyfrowania. Dodaj KEK do magazynu kluczy.   
 **Szczegóły**: Użyj polecenia cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) , aby utworzyć klucz szyfrowania klucza w magazynie kluczy. Możesz również zaimportować KEK z lokalnego sprzętowego modułu zabezpieczeń (HSM) do zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [dokumentację Key Vault](../../key-vault/key-vault-hsm-protected-keys.md). Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault. Przechowywanie kopii tego klucza w ramach lokalnego modułu HSM zarządzania kluczami zapewnia dodatkową ochronę przed przypadkowym usunięciem kluczy.
 
 **Najlepsze rozwiązanie**: wykonaj [migawkę](../../virtual-machines/windows/snapshot-copy-managed-disk.md) i/lub kopię zapasową przed zaszyfrowaniem dysków. Kopie zapasowe zapewniają opcję odzyskiwania, jeśli wystąpi nieoczekiwany błąd podczas szyfrowania.   
-**Szczegóły**: maszyny wirtualne z dyskami zarządzanymi wymagają utworzenia kopii zapasowej przed wystąpieniem szyfrowania. Po wykonaniu kopii zapasowej można użyć polecenia cmdlet **Set-AzVMDiskEncryptionExtension** w celu zaszyfrowania dysków zarządzanych przez określenie parametru *-skipVmBackup* . Aby uzyskać więcej informacji na temat tworzenia kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych, zobacz [kopia zapasowa Azure](../../backup/backup-azure-vms-encryption.md) artykułu.
+**Szczegóły**: maszyny wirtualne z dyskami zarządzanymi wymagają utworzenia kopii zapasowej przed wystąpieniem szyfrowania. Po wykonaniu kopii zapasowej można użyć polecenia cmdlet **Set-AzVMDiskEncryptionExtension** w celu zaszyfrowania dysków zarządzanych przez określenie parametru *-skipVmBackup* . Aby uzyskać więcej informacji na temat tworzenia kopii zapasowych i przywracania szyfrowanych maszyn wirtualnych, zobacz artykuł [Azure Backup](../../backup/backup-azure-vms-encryption.md) .
 
 **Najlepsze rozwiązanie**: aby upewnić się, że wpisy tajne szyfrowania nie przekraczają granic regionalnych, Azure Disk Encryption potrzebuje magazynu kluczy i maszyn wirtualnych znajdujących się w tym samym regionie.   
 **Szczegóły**: Utwórz i Użyj magazynu kluczy znajdującego się w tym samym regionie co maszyna wirtualna, która ma być szyfrowana.

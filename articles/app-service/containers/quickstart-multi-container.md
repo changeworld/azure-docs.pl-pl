@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 4a0207299b480136e8054fbe3d4579dd98f45267
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 19544d9ea9a86b6c0ad98debc7361f4579cbc998
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430547"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247017"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Tworzenie aplikacji z wieloma kontenerami (w wersji zapoznawczej) przy użyciu konfiguracji narzędzia Docker Compose
 
@@ -21,7 +21,7 @@ ms.locfileid: "75430547"
 
 Funkcja [Web App for Containers](app-service-linux-intro.md) oferuje elastyczny sposób korzystania z obrazów platformy Docker. Ten przewodnik Szybki Start przedstawia sposób wdrażania aplikacji z obsługą kontenera (wersja zapoznawcza) w celu Web App for Containers w [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) przy użyciu konfiguracji Docker Compose.
 
-Użyjesz tego przewodnika Szybki start w usłudze Cloud Shell, ale możesz również uruchomić te polecenia lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) (w wersji 2.0.32 lub nowszej). 
+Ten przewodnik Szybki start można wykonać w usłudze Cloud Shell, ale można te polecenia uruchomić również lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) (w wersji 2.0.32 lub nowszej). 
 
 ![Przykładowa aplikacja wielokontenerowa funkcji Web App for Containers][1]
 
@@ -51,7 +51,7 @@ git clone https://github.com/Azure-Samples/multicontainerwordpress
 cd multicontainerwordpress
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
@@ -63,7 +63,7 @@ az group create --name myResourceGroup --location "South Central US"
 
 Zasadniczo grupy zasobów i zasoby są tworzone w pobliskim regionie.
 
-Po zakończeniu działania polecenia zostaną wyświetlone dane wyjściowe JSON z właściwościami grupy zasobów.
+Po zakończeniu działania polecenia zostanę wyświetlone dane wyjściowe JSON z właściwościami grupy zasobów.
 
 ## <a name="create-an-azure-app-service-plan"></a>Tworzenie planu usługi Azure App Service
 
@@ -99,7 +99,7 @@ Po utworzeniu planu usługi App Service interfejs wiersza polecenia platformy Az
 
 W terminalu usługi Cloud Shell utwórz wielokontenerową [aplikację internetową](app-service-linux-intro.md) w ramach planu usługi App Service `myAppServicePlan`, używając polecenia [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Nie zapomnij zastąpić _\<app_name >_ z unikatową nazwą aplikacji (prawidłowe znaki to `a-z`, `0-9`i `-`).
 
-```bash
+```azurecli
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
 ```
 

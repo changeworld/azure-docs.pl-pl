@@ -3,12 +3,12 @@ title: Zainstaluj wolumin tajny do grupy kontenerów
 description: Dowiedz się, jak zainstalować wolumin tajny, aby przechowywać poufne informacje na potrzeby dostępu do wystąpień kontenerów
 ms.topic: article
 ms.date: 07/19/2018
-ms.openlocfilehash: 7f212a5090923a7d7bf00fc8ac78299f2edcc9c1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 913e3d147519bc73c3c57b8da383f9d373f3666d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533186"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249954"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Zainstaluj wolumin tajny w Azure Container Instances
 
@@ -34,8 +34,11 @@ az container create \
 
 Następujące polecenie [AZ Container exec][az-container-exec] Output pokazuje otwieranie powłoki w działającym kontenerze, wyświetlanie listy plików w woluminie tajnym, a następnie wyświetlanie ich zawartości:
 
-```console
-$ az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
+```azurecli
+az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
+```
+
+```output
 /usr/src/app # ls -1 /mnt/secrets
 mysecret1
 mysecret2

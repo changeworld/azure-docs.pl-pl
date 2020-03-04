@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3353451057037e5f3fd94347a007a9d3b2c0e15
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 388f1cf0231d0a7eae7b059656186b067f537d2e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193088"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250968"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Wdrażanie modeli przy użyciu Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -159,12 +159,6 @@ Aby uzyskać więcej informacji na temat pracy z modelami przeszkolonymi poza Az
 
 <a name="target"></a>
 
-## <a name="choose-a-compute-target"></a>Wybierz element docelowy obliczeń
-
-Do hostowania wdrożenia usługi sieci Web można użyć następujących obiektów docelowych obliczeń lub zasobów obliczeniowych:
-
-[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
-
 ## <a name="single-versus-multi-model-endpoints"></a>Pojedyncze i wielomodelowe punkty końcowe
 Usługa Azure ML obsługuje wdrażanie jednego lub wielu modeli za pojedynczym punktem końcowym.
 
@@ -172,9 +166,9 @@ Punkty końcowe wielu modeli używają kontenera udostępnionego do hostowania w
 
 Przykład E2E, który pokazuje, jak używać wielu modeli za pojedynczym punktem końcowym kontenerów, zobacz [ten przykład](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model)
 
-## <a name="prepare-deployment-artifacts"></a>Przygotowanie artefaktów wdrożenia
+## <a name="prepare-to-deploy"></a>Przygotowywanie do wdrożenia
 
-Aby wdrożyć model, potrzebne są następujące elementy:
+Aby wdrożyć model jako usługę, potrzebne są następujące składniki:
 
 * **Skrypt wejścia & zależności kodu źródłowego**. Ten skrypt akceptuje żądania, ocenia żądania przy użyciu modelu i zwraca wyniki.
 
@@ -187,11 +181,9 @@ Aby wdrożyć model, potrzebne są następujące elementy:
     >
     >   Alternatywą, która może obsłużyć twój scenariusz, jest [Prognoza wsadowa](how-to-use-parallel-run-step.md), która zapewnia dostęp do magazynów danych podczas oceniania.
 
-* **Środowisko wnioskowania**. Obraz podstawowy z zainstalowanymi zależnościami pakietów wymaganymi do uruchomienia modelu.
+* **Konfiguracja wnioskowania**. Konfiguracja wnioskowania określa konfigurację środowiska, skrypt wpisu i inne składniki, które są konieczne do uruchomienia modelu jako usługi.
 
-* **Konfiguracja wdrożenia** dla elementu docelowego obliczeń, który hostuje wdrożony model. Ta konfiguracja zawiera opis zagadnień dotyczących pamięci i procesora CPU wymaganych do uruchomienia modelu.
-
-Te elementy są hermetyzowane w *konfiguracji wnioskowania* i *konfiguracji wdrożenia*. Konfiguracja wnioskowania odwołuje się do skryptu wejścia i innych zależności. Te konfiguracje można definiować programowo, gdy używasz zestawu SDK do wdrożenia. Użytkownik definiuje je w plikach JSON podczas korzystania z interfejsu wiersza polecenia.
+Po zainstalowaniu niezbędnych składników można profilować usługę, która zostanie utworzona w wyniku wdrożenia modelu, aby zrozumieć jego wymagania dotyczące procesora i pamięci.
 
 ### <a id="script"></a>1. Zdefiniuj skrypt i zależności wpisu
 
@@ -267,33 +259,7 @@ Te typy są obecnie obsługiwane:
 * `pyspark`
 * Standardowy obiekt języka Python
 
-Aby użyć generacji schematu, należy uwzględnić pakiet `inference-schema` w pliku środowiska Conda. Aby uzyskać więcej informacji na temat tego pakietu, zobacz [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema).
-
-##### <a name="example-dependencies-file"></a>Przykładowy plik zależności
-
-Następujący YAML jest przykładem pliku zależności Conda dla wnioskowania. Należy pamiętać, że należy wskazać wartość domyślną usługi Azure Wersja > = 1.0.45 jako zależność PIP, ponieważ zawiera ona funkcje wymagane do hostowania modelu jako usługi sieci Web.
-
-```YAML
-name: project_environment
-dependencies:
-  - python=3.6.2
-  - scikit-learn=0.20.0
-  - pip:
-      # You must list azureml-defaults as a pip dependency
-    - azureml-defaults>=1.0.45
-    - inference-schema[numpy-support]
-```
-
-> [!IMPORTANT]
-> Jeśli zależność jest dostępna zarówno w Conda, jak i PIP (od PyPi), firma Microsoft zaleca korzystanie z wersji Conda, ponieważ pakiety Conda zwykle są dostarczane z wstępnie skompilowanymi plikami binarnymi, które sprawiają, że instalacja jest bardziej niezawodna.
->
-> Aby uzyskać więcej informacji, zobacz [Omówienie Conda i PIP](https://www.anaconda.com/understanding-conda-and-pip/).
->
-> Aby sprawdzić, czy zależność jest dostępna za pomocą Conda, użyj polecenia `conda search <package-name>` lub użyj indeksów pakietów w [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) i [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo).
-
-Jeśli chcesz użyć automatycznej generacji schematu, skrypt wejściowy musi zaimportować pakiety `inference-schema`.
-
-Zdefiniuj Przykładowe formaty danych wejściowych i wyjściowych w zmiennych `input_sample` i `output_sample`, które reprezentują formaty żądań i odpowiedzi dla usługi sieci Web. Użyj tych przykładów w funkcji Input i Output dekoratory na funkcji `run()`. Poniższy przykład scikit-Dowiedz się, jak użyć generowania schematu.
+Aby użyć generacji schematu, należy uwzględnić pakiet `inference-schema` w pliku zależności. Aby uzyskać więcej informacji na temat tego pakietu, zobacz [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema). Zdefiniuj Przykładowe formaty danych wejściowych i wyjściowych w zmiennych `input_sample` i `output_sample`, które reprezentują formaty żądań i odpowiedzi dla usługi sieci Web. Użyj tych przykładów w funkcji Input i Output dekoratory na funkcji `run()`. Poniższy przykład scikit-Dowiedz się, jak użyć generowania schematu.
 
 ##### <a name="example-entry-script"></a>Przykładowy skrypt wprowadzania
 
@@ -485,24 +451,52 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inference-environment"></a>2. Zdefiniuj środowisko wnioskowania
+### <a name="2-define-your-inference-configuration"></a>2. Zdefiniuj konfigurację wnioskowania
 
-Konfiguracja wnioskowania opisuje, jak skonfigurować model do tworzenia prognoz. Ta konfiguracja nie jest częścią skryptu wejścia. Odwołuje się do skryptu wejścia i służy do lokalizowania wszystkich zasobów wymaganych przez wdrożenie. Jest on używany później podczas wdrażania modelu.
+Konfiguracja wnioskowania opisuje sposób konfigurowania usługi sieci Web zawierającej model. Nie jest częścią skryptu wejścia. Odwołuje się do skryptu wejścia i służy do lokalizowania wszystkich zasobów wymaganych przez wdrożenie. Jest on używany później podczas wdrażania modelu.
 
-Konfiguracja wnioskowania używa środowisk Azure Machine Learning do definiowania zależności oprogramowania potrzebnych do wdrożenia. Środowiska umożliwiają tworzenie i ponowne używanie zależności oprogramowania wymaganych do szkolenia i wdrażania, a także zarządzanie nimi. Poniższy przykład ilustruje ładowanie środowiska z obszaru roboczego, a następnie używanie go z konfiguracją wnioskowania:
+Konfiguracja wnioskowania używa środowisk Azure Machine Learning do definiowania zależności oprogramowania potrzebnych do wdrożenia. Środowiska umożliwiają tworzenie i ponowne używanie zależności oprogramowania wymaganych do szkolenia i wdrażania, a także zarządzanie nimi. Środowisko można utworzyć na podstawie niestandardowych plików zależności lub użyć jednego z nadzorowanych środowisk Azure Machine Learning. Następujący YAML jest przykładem pliku zależności Conda dla wnioskowania. Należy pamiętać, że należy wskazać wartość domyślną usługi Azure Wersja > = 1.0.45 jako zależność PIP, ponieważ zawiera ona funkcje wymagane do hostowania modelu jako usługi sieci Web. Jeśli chcesz użyć automatycznej generacji schematu, skrypt wejściowy musi również zaimportować pakiety `inference-schema`.
+
+```YAML
+name: project_environment
+dependencies:
+  - python=3.6.2
+  - scikit-learn=0.20.0
+  - pip:
+      # You must list azureml-defaults as a pip dependency
+    - azureml-defaults>=1.0.45
+    - inference-schema[numpy-support]
+```
+
+> [!IMPORTANT]
+> Jeśli zależność jest dostępna zarówno w Conda, jak i PIP (od PyPi), firma Microsoft zaleca korzystanie z wersji Conda, ponieważ pakiety Conda zwykle są dostarczane z wstępnie skompilowanymi plikami binarnymi, które sprawiają, że instalacja jest bardziej niezawodna.
+>
+> Aby uzyskać więcej informacji, zobacz [Omówienie Conda i PIP](https://www.anaconda.com/understanding-conda-and-pip/).
+>
+> Aby sprawdzić, czy zależność jest dostępna za pomocą Conda, użyj polecenia `conda search <package-name>` lub użyj indeksów pakietów w [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) i [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo).
+
+Możesz użyć pliku zależności, aby utworzyć obiekt środowiska i zapisać go w obszarze roboczym do użycia w przyszłości:
+
+```python
+from azureml.core.environment import Environment
+
+
+myenv = Environment.from_conda_specification(name = 'myenv',
+                                             file_path = 'path-to-conda-specification-file'
+myenv.register(workspace=ws)
+```
+
+Poniższy przykład ilustruje ładowanie środowiska z obszaru roboczego, a następnie używanie go z konfiguracją wnioskowania:
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.model import InferenceConfig
 
-myenv = Environment.get(workspace=ws, name="myenv", version="1")
-inference_config = InferenceConfig(entry_script="x/y/score.py",
+
+myenv = Environment.get(workspace=ws, name='myenv', version='1')
+inference_config = InferenceConfig(entry_script='path-to-score.py',
                                    environment=myenv)
 ```
-
-Aby uzyskać więcej informacji o środowiskach, zobacz [Tworzenie środowisk i zarządzanie nimi na potrzeby szkolenia i wdrażania](how-to-use-environments.md).
-
-Można również bezpośrednio określić zależności bez użycia środowiska. W poniższym przykładzie pokazano, jak utworzyć konfigurację wnioskowania, która ładuje zależności oprogramowania z pliku Conda:
 
 Aby uzyskać więcej informacji o środowiskach, zobacz [Tworzenie środowisk i zarządzanie nimi na potrzeby szkolenia i wdrażania](how-to-use-environments.md).
 
@@ -510,7 +504,7 @@ Aby uzyskać więcej informacji na temat konfiguracji wnioskowania, zobacz dokum
 
 Aby uzyskać informacje na temat używania niestandardowego obrazu platformy Docker z konfiguracją wnioskowania, zobacz [jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md).
 
-### <a name="cli-example-of-inferenceconfig"></a>Przykład interfejsu wiersza polecenia InferenceConfig
+#### <a name="cli-example-of-inferenceconfig"></a>Przykład interfejsu wiersza polecenia InferenceConfig
 
 [!INCLUDE [inference config](../../includes/machine-learning-service-inference-config.md)]
 
@@ -528,7 +522,93 @@ W tym przykładzie konfiguracja określa następujące ustawienia:
 
 Aby uzyskać informacje na temat używania niestandardowego obrazu platformy Docker z konfiguracją wnioskowania, zobacz [jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md).
 
-### <a name="3-define-your-deployment-configuration"></a>3. Zdefiniuj konfigurację wdrożenia
+### <a id="profilemodel"></a>3. Profilowanie modelu w celu określenia wykorzystania zasobów
+
+Po zarejestrowaniu modelu i przygotowaniu innych składników niezbędnych do wdrożenia można określić procesor i pamięć, która będzie potrzebna przez wdrożoną usługę. Profilowanie testuje usługę, która uruchamia model i zwraca informacje takie jak użycie procesora CPU, użycie pamięci i opóźnienie odpowiedzi. Zawiera również zalecenia dotyczące procesora CPU i pamięci na podstawie użycia zasobów.
+
+Aby profilować model, wymagany jest:
+* Zarejestrowany model.
+* Konfiguracja wnioskowania na podstawie skryptu wejścia i definicji środowiska wnioskowania.
+* Pojedynczy kolumnowy tabelaryczny zestaw danych, gdzie każdy wiersz zawiera ciąg reprezentujący przykładowe dane żądania.
+
+> [!IMPORTANT]
+> W tym momencie obsługujemy tylko profilowanie usług, które oczekują, aby dane żądania były ciągiem, na przykład: szeregowany ciąg JSON, tekst, serializowany ciąg znaków itd. Zawartość każdego wiersza zestawu danych (String) zostanie umieszczona w treści żądania HTTP i wysłana do usługi hermetyzowania modelu na potrzeby oceniania.
+
+Poniżej znajduje się przykład sposobu konstruowania wejściowego zestawu danych w celu profilowania usługi, która oczekuje, że jej przychodzące dane żądania zawierają Zserializowany kod JSON. W takim przypadku utworzyliśmy zestaw danych oparty na 100 wystąpieniach tej samej zawartości danych żądania. W realnie świecie zalecamy korzystanie z większych zestawów danych zawierających różne dane wejściowe, zwłaszcza jeśli użycie/zachowanie zasobów modelu jest zależne od danych wejściowych.
+
+```python
+import json
+from azureml.core import Datastore
+from azureml.core.dataset import Dataset
+from azureml.data import dataset_type_definitions
+
+input_json = {'data': [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                       [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+# create a string that can be utf-8 encoded and
+# put in the body of the request
+serialized_input_json = json.dumps(input_json)
+dataset_content = []
+for i in range(100):
+    dataset_content.append(serialized_input_json)
+dataset_content = '\n'.join(dataset_content)
+file_name = 'sample_request_data.txt'
+f = open(file_name, 'w')
+f.write(dataset_content)
+f.close()
+
+# upload the txt file created above to the Datastore and create a dataset from it
+data_store = Datastore.get_default(ws)
+data_store.upload_files(['./' + file_name], target_path='sample_request_data')
+datastore_path = [(data_store, 'sample_request_data' +'/' + file_name)]
+sample_request_data = Dataset.Tabular.from_delimited_files(
+    datastore_path, separator='\n',
+    infer_column_types=True,
+    header=dataset_type_definitions.PromoteHeadersBehavior.NO_HEADERS)
+sample_request_data = sample_request_data.register(workspace=ws,
+                                                   name='sample_request_data',
+                                                   create_new_version=True)
+```
+
+Gdy zestaw danych zawierający przykładowe dane żądania są gotowe, Utwórz konfigurację wnioskowania. Konfiguracja wnioskowania jest oparta na score.py i definicji środowiska. W poniższym przykładzie pokazano, jak utworzyć konfigurację wnioskowania i uruchomić profilowanie:
+
+```python
+from azureml.core.model import InferenceConfig, Model
+from azureml.core.dataset import Dataset
+
+
+model = Model(ws, id=model_id)
+inference_config = InferenceConfig(entry_script='path-to-score.py',
+                                   environment=myenv)
+input_dataset = Dataset.get_by_name(workspace=ws, name='sample_request_data')
+profile = Model.profile(ws,
+            'unique_name',
+            [model],
+            inference_config,
+            input_dataset=input_dataset)
+
+profile.wait_for_completion(True)
+
+# see the result
+details = profile.get_details()
+```
+
+Następujące polecenie pokazuje, jak profilować model przy użyciu interfejsu wiersza polecenia:
+
+```azurecli-interactive
+az ml model profile -g <resource-group-name> -w <workspace-name> --inference-config-file <path-to-inf-config.json> -m <model-id> --idi <input-dataset-id> -n <unique-name>
+```
+
+## <a name="deploy-to-target"></a>Wdróż do celu
+
+Wdrożenie używa konfiguracji wdrożenia konfiguracji wnioskowania do wdrożenia modeli. Proces wdrażania jest podobny niezależnie od elementu docelowego obliczeń. Wdrażanie do AKS jest nieco inne, ponieważ należy podać odwołanie do klastra AKS.
+
+### <a name="choose-a-compute-target"></a>Wybierz element docelowy obliczeń
+
+Do hostowania wdrożenia usługi sieci Web można użyć następujących obiektów docelowych obliczeń lub zasobów obliczeniowych:
+
+[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+### <a name="define-your-deployment-configuration"></a>Definiowanie konfiguracji wdrożenia
 
 Przed wdrożeniem modelu należy zdefiniować konfigurację wdrożenia. *Konfiguracja wdrożenia jest specyficzna dla elementu docelowego obliczeń, który będzie hostować usługę sieci Web.* Na przykład podczas lokalnego wdrażania modelu należy określić port, w którym usługa akceptuje żądania. Konfiguracja wdrożenia nie jest częścią skryptu wejścia. Służy do definiowania właściwości obiektu docelowego obliczeń, który będzie hostować model i skrypt wejścia.
 
@@ -547,10 +627,6 @@ Klasy dla lokalnych, Azure Container Instances i usług sieci Web AKS można zai
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
-## <a name="deploy-to-target"></a>Wdróż do celu
-
-Wdrożenie używa konfiguracji wdrożenia konfiguracji wnioskowania do wdrożenia modeli. Proces wdrażania jest podobny niezależnie od elementu docelowego obliczeń. Wdrażanie do AKS jest nieco inne, ponieważ należy podać odwołanie do klastra AKS.
 
 ### <a name="securing-deployments-with-ssl"></a>Zabezpieczanie wdrożeń przy użyciu protokołu SSL
 
@@ -594,7 +670,7 @@ W poniższej tabeli opisano różne stany usług:
 | Stan usługi WebService | Opis | Końcowy stan?
 | ----- | ----- | ----- |
 | Przechodzenie | Usługa jest w trakcie wdrażania. | Nie |
-| W złej kondycji | Usługa została wdrożona, ale jest obecnie nieosiągalna.  | Nie |
+| Nieprawidłowy | Usługa została wdrożona, ale jest obecnie nieosiągalna.  | Nie |
 | Unschedulable | Nie można teraz wdrożyć usługi z powodu braku zasobów. | Nie |
 | Niepowodzenie | Wdrożenie usługi nie powiodło się z powodu błędu lub awarii. | Yes |
 | W dobrej kondycji | Usługa jest w dobrej kondycji, a punkt końcowy jest dostępny. | Yes |
@@ -1076,7 +1152,7 @@ Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą usługi [WebSe
 * [Jak wdrożyć model przy użyciu niestandardowego obrazu platformy Docker](how-to-deploy-custom-docker-image.md)
 * [Rozwiązywanie problemów z wdrażaniem](how-to-troubleshoot-deployment.md)
 * [Zabezpieczanie Azure Machine Learning usług sieci Web przy użyciu protokołu SSL](how-to-secure-web-service.md)
-* [Korzystanie z modelu Azure Machine Learning wdrożonego jako usługa sieci Web](how-to-consume-web-service.md)
+* [Korzystanie z modelu usługi Azure Machine Learning wdrożonego jako usługa internetowa](how-to-consume-web-service.md)
 * [Monitoruj modele Azure Machine Learning przy użyciu Application Insights](how-to-enable-app-insights.md)
 * [Zbieranie danych dla modeli w środowisku produkcyjnym](how-to-enable-data-collection.md)
 

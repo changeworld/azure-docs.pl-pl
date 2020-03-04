@@ -1,24 +1,24 @@
 ---
-title: Słów kluczowych języka SQL dla usługi Azure Cosmos DB
-description: Informacje na temat słów kluczowych języka SQL dla usługi Azure Cosmos DB.
+title: Słowa kluczowe SQL dla Azure Cosmos DB
+description: Dowiedz się więcej na temat słów kluczowych SQL dla Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: c9024f120e0a55162a1f6dba0cd9cbda97f5eebc
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: a9de9435c0e2fb2b67733a995ff412978ea02d89
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342679"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250311"
 ---
-# <a name="keywords-in-azure-cosmos-db"></a>Słowa kluczowe w usłudze Azure Cosmos DB
-Ten artykuł szczegółowo opisuje słów kluczowych, które mogą być używane w zapytaniach SQL usługi Azure Cosmos DB.
+# <a name="keywords-in-azure-cosmos-db"></a>Słowa kluczowe w Azure Cosmos DB
+W tym artykule opisano słowa kluczowe, które mogą być używane w zapytaniach Azure Cosmos DB SQL.
 
-## <a name="between"></a>MIĘDZY
+## <a name="between"></a>ZAKRESU
 
-Jak ANSI SQL można użyć BETWEEN — słowo kluczowe wyrażenia zapytań dotyczących zakresów ciąg lub wartości liczbowych. Na przykład następujące zapytanie zwraca wszystkie elementy, w których klasa pierwszy element podrzędny jest 1-5, włącznie.
+Podobnie jak w przypadku języka ANSI SQL, można użyć słowa kluczowego BETWEEN do ekspresowych zapytań względem zakresów ciągu lub wartości liczbowych. Na przykład następujące zapytanie zwraca wszystkie elementy, w których Klasa pierwszego elementu podrzędnego to 1-5 włącznie.
 
 ```sql
     SELECT *
@@ -26,30 +26,30 @@ Jak ANSI SQL można użyć BETWEEN — słowo kluczowe wyrażenia zapytań dotyc
     WHERE c.grade BETWEEN 1 AND 5
 ```
 
-W odróżnieniu od w ANSI SQL umożliwia także klauzuli BETWEEN w klauzuli FROM, jak w poniższym przykładzie.
+W przeciwieństwie do języka SQL ANSI, można również użyć klauzuli BETWEEN w klauzuli FROM, jak w poniższym przykładzie.
 
 ```sql
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 ```
 
-W interfejsie API SQL, w przeciwieństwie do ANSI SQL można wyrazić zakres zapytań dotyczących właściwości mieszane typy. Na przykład `grade` mogą być podobne do numeru `5` niektóre elementy i parametry, takie jak `grade4` w innych. W takich sytuacjach jak JavaScript, wynikiem porównania między dwoma różnymi typami `Undefined`, dzięki czemu element jest pomijany.
+W przypadku interfejsu SQL API, w przeciwieństwie do ANSI SQL, można wyznaczać zapytania zakresowe względem właściwości typów mieszanych. Na przykład `grade` może być liczbą, taką jak `5` w niektórych elementach, a ciąg, taki jak `grade4` w innych. W takich przypadkach, podobnie jak w języku JavaScript, porównanie między dwoma różnymi typami skutkuje `Undefined`, więc element zostanie pominięty.
 
 > [!TIP]
-> Celu skrócenia czasu wykonywania zapytania należy utworzyć zasady indeksowania, korzystającej z typu indeks zakresu względem dowolnej właściwości liczbowych lub ścieżki, które filtruje klauzuli BETWEEN.
+> Aby przyspieszyć wykonywanie zapytań, Utwórz zasady indeksowania, które używają typu indeksu zakresu względem wszystkich właściwości liczbowych lub ścieżek, które są filtry klauzuli BETWEEN.
 
-## <a name="distinct"></a>DISTINCT
+## <a name="distinct"></a>ITP
 
-Słowo kluczowe DISTINCT pozwala wyeliminować duplikaty w projekcji zapytań.
+Słowo kluczowe DISTINCT eliminuje duplikaty w projekcji zapytania.
+
+W tym przykładzie wartości projektów zapytania dla każdej nazwiska:
 
 ```sql
 SELECT DISTINCT VALUE f.lastName
 FROM Families f
 ```
 
-W tym przykładzie zapytanie projektów wartości dla każdego nazwisko.
-
-Wyniki są:
+Wyniki są następujące:
 
 ```json
 [
@@ -57,14 +57,14 @@ Wyniki są:
 ]
 ```
 
-Można również projektu następującą liczbę unikatowych obiektów. W tym przypadku pola Nazwisko nie istnieje w jednej z dwóch dokumentów, aby zapytanie zwraca pustego obiektu.
+Możesz również projektować unikatowe obiekty. W takim przypadku pole lastName nie istnieje w jednym z dwóch dokumentów, więc zapytanie zwraca pusty obiekt.
 
 ```sql
 SELECT DISTINCT f.lastName
 FROM Families f
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
 [
@@ -75,16 +75,16 @@ Wyniki są:
 ]
 ```
 
-Można także DISTINCT w projekcji w podzapytaniu:
+Elementu DISTINCT można także użyć w projekcji w podzapytaniu:
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
 FROM f
 ```
 
-To zapytanie projektów tablicę, która zawiera givenName każdego elementu podrzędnego, z której zostały usunięte duplikaty. Ta tablica ma alias ChildNames i pokazane zapytanie zewnętrzne.
+To zapytanie bada tablicę zawierającą wszystkie elementy podrzędne o podanym elemencie z usuniętymi duplikatami. Ta tablica jest aliasem jako ChildNames i jest rzutowana w zewnętrznym zapytaniu.
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
 [
@@ -101,9 +101,16 @@ Wyniki są:
     }
 ]
 ```
-## <a name="in"></a> INDIE
 
-Użyj słowa kluczowego w celu sprawdzenia, czy określona wartość pasuje do dowolnej wartości na liście. Na przykład, następujące zapytanie zwraca wszystkie rodziny elementy gdzie `id` jest `WakefieldFamily` lub `AndersenFamily`.
+Zapytania z zagregowaną funkcją systemową i podzapytaniem z instrukcją DISTINCT nie są obsługiwane. Na przykład następujące zapytanie nie jest obsługiwane:
+
+```sql
+SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
+```
+
+## <a name="in"></a>PODCZAS
+
+Użyj słowa kluczowego IN, aby sprawdzić, czy określona wartość pasuje do dowolnej wartości na liście. Na przykład następujące zapytanie zwraca wszystkie elementy rodziny, w których `id` jest `WakefieldFamily` lub `AndersenFamily`.
 
 ```sql
     SELECT *
@@ -111,7 +118,7 @@ Użyj słowa kluczowego w celu sprawdzenia, czy określona wartość pasuje do d
     WHERE Families.id IN ('AndersenFamily', 'WakefieldFamily')
 ```
 
-Poniższy przykład zwraca wszystkie elementy, których stan to dowolnego z określonymi wartościami:
+Poniższy przykład zwraca wszystkie elementy, w których stan jest dowolną z określonych wartości:
 
 ```sql
     SELECT *
@@ -119,20 +126,20 @@ Poniższy przykład zwraca wszystkie elementy, których stan to dowolnego z okre
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-Interfejs API SQL udostępnia obsługę [Iterowanie przez tablice JSON](sql-query-object-array.md#Iteration), z nową konstrukcję dodane za pośrednictwem in — słowo kluczowe w źródle FROM. 
+Interfejs API SQL zapewnia obsługę [iteracji w tablicach JSON](sql-query-object-array.md#Iteration), a nowa konstrukcja dodana za pośrednictwem słowa kluczowego in w źródle from. 
 
-## <a name="top"></a>TOP
+## <a name="top"></a>Do góry
 
-GÓRNY — słowo kluczowe zwraca pierwszy `N` liczba wyników zapytania w kolejności niezdefiniowane. Najlepszym rozwiązaniem, jak za pomocą GÓRNEJ klauzuli ORDER BY ograniczyć wyniki do pierwszego `N` liczba uporządkowane wartości. Połączenie tych dwóch klauzul jest jedynym sposobem, aby przewidywalnie wskazują wiersze, które wpływa na GÓRNYM.
+Słowo kluczowe TOP zwraca pierwszą `N` liczbę wyników zapytania w niezdefiniowanej kolejności. Najlepszym rozwiązaniem jest użycie TOP z klauzulą ORDER BY, aby ograniczyć wyniki do pierwszej `N` liczbę uporządkowanych wartości. Połączenie tych dwóch klauzul jest jedynym sposobem przewidywania, które wiersze mają największe wpływ.
 
-Korzystać z GÓRNEGO, z wartością stałą, jak w poniższym przykładzie, lub z wartością zmiennej za pomocą sparametryzowanych zapytań.
+Możesz użyć TOP z wartością stałą, jak w poniższym przykładzie, lub z wartością zmiennej przy użyciu zapytań parametrycznych.
 
 ```sql
     SELECT TOP 1 *
     FROM Families f
 ```
 
-Wyniki są:
+Wyniki są następujące:
 
 ```json
     [{
@@ -154,8 +161,8 @@ Wyniki są:
     }]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Rozpoczęcie pracy](sql-query-getting-started.md)
-- [Sprzężenia](sql-query-join.md)
-- [Zapytania podrzędne](sql-query-subquery.md)
+- [Łącze](sql-query-join.md)
+- [Podzapytania](sql-query-subquery.md)

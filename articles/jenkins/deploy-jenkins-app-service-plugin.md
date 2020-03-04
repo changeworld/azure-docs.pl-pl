@@ -4,12 +4,12 @@ description: Dowiedz się, jak przy użyciu wtyczki Jenkins usługi Azure App Se
 keywords: jenkins, azure, devops, usługa app service
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: de1bf0ea06210c86ff1da21dcac667754f11d7f4
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcaf45003e865cc5aac3f6bd4580479a27d38b50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158517"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251456"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Wdrażanie w usłudze Azure App Service przy użyciu wtyczki Jenkins 
 
@@ -67,7 +67,7 @@ Aby wdrożyć projekt w funkcji Web Apps, możesz przekazać artefakty kompilacj
 Zanim skonfigurujesz zadanie na serwerze Jenkins, potrzebujesz planu usługi Azure App Service i aplikacji internetowej do uruchomienia aplikacji Java.
 
 
-1. Utwórz plan usługi Azure App Service w warstwie cenowej **BEZPŁATNA** za pomocą następującego `az appservice plan create`polecenia interfejsu wiersza polecenia platformy Azure[: ](/cli/azure/appservice/plan#az-appservice-plan-create). Plan usługi App Service definiuje zasoby fizyczne używane do hostowania aplikacji. Wszystkie aplikacje przypisane do planu usługi App Service współdzielą te zasoby. Zasoby współdzielone pomagają zmniejszyć koszty w przypadku hostowania wielu aplikacji.
+1. Utwórz plan Azure App Service za pomocą warstwy cenowej **bezpłatna** przy użyciu [interfejsu wiersza polecenia platformy Azure](/cli/azure/appservice/plan#az-appservice-plan-create)`az appservice plan create`. Plan usługi App Service definiuje zasoby fizyczne używane do hostowania aplikacji. Wszystkie aplikacje przypisane do planu usługi App Service współdzielą te zasoby. Zasoby współdzielone pomagają zmniejszyć koszty w przypadku hostowania wielu aplikacji.
 2. Utwórz aplikację internetową. Możesz użyć [witryny Azure Portal](/azure/app-service/configure-common) lub następującego `az` polecenia interfejsu wiersza polecenia platformy Azure:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
@@ -118,7 +118,7 @@ Wtyczka Jenkins dla usługi Azure App Service obsługuje potok. Możesz zapozna�
 ### <a name="create-a-jenkins-pipeline"></a>Tworzenie potoku serwera Jenkins
 
 1. Otwórz stronę serwera Jenkins w przeglądarce internetowej. Wybierz pozycję **New Item** (Nowy element).
-2. Podaj nazwę zadania i wybierz pozycję **Pipeline** (Potok). Wybierz **OK**.
+2. Podaj nazwę zadania i wybierz pozycję **Pipeline** (Potok). Kliknij przycisk **OK**.
 3. Wybierz kartę **Pipeline** (Potok).
 4. W polu **Definition** (Definicja) wybierz wartość **Pipeline script from SCM** (Skrypt potoku z menedżera SCM).
 5. W polu **SCM** wybierz wartość **Git**. Wprowadź adres URL usługi GitHub dla swojego rozwidlonego repozytorium. Na przykład: https://&lt;Twoje_rozwidlone_repozytorium>.git.
@@ -186,7 +186,7 @@ W polu **Docker registry URL** (Adres URL rejestru platformy Docker) podaj adres
 ### <a name="create-a-jenkins-pipeline"></a>Tworzenie potoku serwera Jenkins    
 
 1. Otwórz stronę serwera Jenkins w przeglądarce internetowej. Wybierz pozycję **New Item** (Nowy element).
-2. Podaj nazwę zadania i wybierz pozycję **Pipeline** (Potok). Wybierz **OK**.
+2. Podaj nazwę zadania i wybierz pozycję **Pipeline** (Potok). Kliknij przycisk **OK**.
 3. Wybierz kartę **Pipeline** (Potok).
 4. W polu **Definition** (Definicja) wybierz wartość **Pipeline script from SCM** (Skrypt potoku z menedżera SCM).
 5. W polu **SCM** wybierz wartość **Git**. Wprowadź adres URL usługi GitHub dla swojego rozwidlonego repozytorium. Na przykład: https://&lt;Twoje_rozwidlone_repozytorium>.git.
@@ -207,10 +207,13 @@ W polu **Docker registry URL** (Adres URL rejestru platformy Docker) podaj adres
 ### <a name="for-azure-app-service-on-linux"></a>Dla usługi Azure App Service w systemie Linux
 
 1. Aby zweryfikować swoją aplikację internetową, uruchom następujące polecenie w interfejsie wiersza polecenia platformy Azure:
-    ```CLI
+    
+    ```azurecli
     az acr repository list -n <myRegistry> -o json
     ```
+    
     Zostanie wyświetlony następujący komunikat:
+    
     ```CLI
     ["calculator"]
     ```

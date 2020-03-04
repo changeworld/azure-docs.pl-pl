@@ -3,12 +3,12 @@ title: Wdrażanie zasobów przy użyciu interfejsu wiersza polecenia platformy A
 description: Użyj Azure Resource Manager i interfejsu wiersza polecenia platformy Azure, aby wdrożyć zasoby na platformie Azure. Zasoby są zdefiniowane w szablonie usługi Resource Manager.
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 242b9f2a4bc39f8aa083d9c89d3dd7ed850b3489
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 64f60a6e15a0c51e5ee506340c064804f7588693
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154299"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250656"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Deploy resources with Resource Manager templates and Azure CLI (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure)
 
@@ -63,7 +63,7 @@ az group deployment create \
 
 Wdrożenie może potrwać kilka minut. Po zakończeniu zobaczysz komunikat, który zawiera wynik:
 
-```azurecli
+```output
 "provisioningState": "Succeeded",
 ```
 
@@ -150,7 +150,7 @@ az group deployment create \
 
 ## <a name="handle-extended-json-format"></a>Obsługa rozszerzonego formatu JSON
 
-Aby wdrożyć szablon z wielowierszowymi ciągami lub komentarzami, należy użyć przełącznika `--handle-extended-json-format`.  Przykład:
+Aby wdrożyć szablon z wielowierszowymi ciągami lub komentarzami, należy użyć przełącznika `--handle-extended-json-format`.  Na przykład:
 
 ```json
 {
@@ -183,7 +183,7 @@ az group deployment validate \
 
 Jeśli nie wykryto żadnych błędów, polecenie zwraca informacje o wdrożeniu testowym. W szczególności Zwróć uwagę na to, że wartość **błędu** to null.
 
-```azurecli
+```output
 {
   "error": null,
   "properties": {
@@ -192,7 +192,7 @@ Jeśli nie wykryto żadnych błędów, polecenie zwraca informacje o wdrożeniu 
 
 Jeśli zostanie wykryty błąd, polecenie zwróci komunikat o błędzie. Na przykład przekazanie nieprawidłowej wartości dla jednostki SKU konta magazynu zwróci następujący błąd:
 
-```azurecli
+```output
 {
   "error": {
     "code": "InvalidTemplate",
@@ -208,7 +208,7 @@ Jeśli zostanie wykryty błąd, polecenie zwróci komunikat o błędzie. Na przy
 
 Jeśli szablon zawiera błąd składniowy, polecenie zwróci błąd wskazujący, że nie można przeanalizować szablonu. Komunikat wskazuje numer wiersza i położenie błędu analizy.
 
-```azurecli
+```output
 {
   "error": {
     "code": "InvalidTemplate",

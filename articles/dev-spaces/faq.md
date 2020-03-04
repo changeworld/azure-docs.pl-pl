@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Znajdź odpowiedzi na niektóre często zadawane pytania dotyczące Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
-ms.openlocfilehash: 964fa9ec4948bf178c310af8e35913fda5f70c0f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 285fdb7892d2da40dd50e025cb1dd7644ec17ae0
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934180"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255730"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Często zadawane pytania dotyczące Azure Dev Spaces
 
@@ -64,6 +64,14 @@ Tak, można użyć Azure Dev Spaces w klastrach AKS z włączonymi [zakresami ad
 ## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Czy można używać Azure Dev Spaces w klastrach AKS z ograniczonym ruchem wychodzącym dla węzłów klastra?
 
 Tak, można użyć Azure Dev Spaces w klastrach AKS z [ograniczonym ruchem wychodzącym dla węzłów klastra][aks-restrict-egress-traffic] włączonych po dodaniu prawidłowych nazw FQDN. Więcej informacji na temat używania klastrów AKS z ograniczonym ruchem wychodzącym dla węzłów klastra z włączonym Azure Dev Spaces jest dostępny [tutaj](configure-networking.md#ingress-and-egress-network-traffic-requirements).
+
+## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>Czy mogę używać Azure Dev Spaces w przypadku klastrów AKS z włączoną funkcją RBAC?
+
+Tak, można użyć Azure Dev Spaces w klastrach AKS z włączoną funkcją RBAC lub bez niej.
+
+## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Co się stanie po włączeniu ruchu przychodzącego dla projektu w programie Visual Studio?
+
+W przypadku korzystania z programu Visual Studio w celu przygotowania projektu można włączyć obsługę ruchu przychodzącego dla usługi. Włączenie transferu danych przychodzących powoduje utworzenie publicznego punktu końcowego w celu uzyskania dostępu do usługi w ramach klastra AKS, który jest opcjonalny. Jeśli nie włączysz transferu danych przychodzących, usługa będzie dostępna tylko z poziomu klastra AKS.
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled

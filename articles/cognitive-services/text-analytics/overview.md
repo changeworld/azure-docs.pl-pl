@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 11/07/2019
 ms.author: aahi
-ms.openlocfilehash: 0f16c687f9816e99e05c2495a05596bd988ca9d2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 66bc1e5441210b8d9153812c826643159fe53d50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827315"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251325"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Czym jest interfejs API analizy tekstu?
 
-Interfejs API analizy tekstu to usługa oparta na chmurze, która zapewnia zaawansowane przetwarzanie języka naturalnego w przypadku nieprzetworzonego tekstu i obejmuje cztery główne funkcje: tonacji Analysis, wyodrębnianie kluczowych fraz, wykrywanie języka i rozpoznawanie jednostek.
+Interfejs API analizy tekstu to usługa oparta na chmurze, która zapewnia zaawansowane przetwarzanie języka naturalnego w przypadku nieprzetworzonego tekstu i obejmuje cztery główne funkcje: tonacji Analysis, wyodrębnianie kluczowych fraz, wykrywanie języka i rozpoznawanie jednostek nazwanych.
 
 Interfejs API jest częścią usług [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), które są zbiorem algorytmów uczenia maszynowego i sztucznej inteligencji w chmurze do wykorzystania w Twoich projektach programistycznych.
 
@@ -36,7 +36,7 @@ Automatycznie [Wyodrębniaj kluczowe frazy](how-tos/text-analytics-how-to-keywor
 ## <a name="language-detection"></a>Wykrywanie języka
 Możesz [wykryć język, w którym wprowadzany jest tekst wejściowy](how-tos/text-analytics-how-to-language-detection.md) , i zgłosić jeden kod języka dla każdego dokumentu przesłanego na żądanie w szerokim zakresie języków, wariantów, dialektach i niektórych językach regionalnych/kulturowych. Kod języka jest powiązany z oceną, co wskazuje siłę oceny.
 
-## <a name="named-entity-recognition"></a>Rozpoznawanie jednostek znaku
+## <a name="named-entity-recognition"></a>Rozpoznawanie jednostek nazwanych
 [Zidentyfikuj i Kategoryzuj jednostki](how-tos/text-analytics-how-to-entity-linking.md) w tekście jako osoby, miejsca, organizacje, daty/godziny, ilości, wartości procentowe, waluty i nie tylko. Dobrze znane jednostki są również rozpoznawane i łączone z większą ilością informacji w Internecie.
 
 ## <a name="use-containers"></a>Korzystanie z kontenerów
@@ -51,7 +51,7 @@ Przepływ pracy jest prosty: przesyłasz dane do analizy i obsługujesz dane wyj
 
 2. [Sformułuj żądanie](how-tos/text-analytics-how-to-call-api.md#json-schema) zawierające dane jako nieprzetworzony tekst bez struktury, w formacie JSON.
 
-3. Opublikuj żądanie do punktu końcowego utworzonego podczas rejestracji, załączając żądany zasób: analizę tonacji, wyodrębnianie kluczowych fraz, wykrywanie języka lub identyfikację jednostek.
+3. Wyślij żądanie do punktu końcowego ustanowionego podczas rejestracji, dołączając żądany zasób: tonacji Analysis, wyodrębnianie kluczowych fraz, wykrywanie języka lub rozpoznawanie jednostek nazwanych.
 
 4. Prześlij odpowiedź strumieniowo lub przechowaj ją lokalnie. W zależności od żądania wyniki są oceną tonacji, kolekcją wyodrębnionych kluczowych fraz lub kodem języka.
 

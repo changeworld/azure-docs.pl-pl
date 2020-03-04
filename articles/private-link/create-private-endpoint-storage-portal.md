@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 8c76333d5a2be8a2c589dbe54389b023fef34854
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028869"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252529"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Połącz się prywatnie z kontem magazynu przy użyciu prywatnego punktu końcowego platformy Azure
 Prywatny punkt końcowy platformy Azure to podstawowy blok konstrukcyjny dla prywatnego linku na platformie Azure. Dzięki temu zasoby platformy Azure, takie jak maszyny wirtualne, mogą komunikować się prywatnie z zasobami łączy prywatnych.
@@ -22,31 +22,29 @@ W tym przewodniku szybki start dowiesz się, jak utworzyć maszynę wirtualną w
 > [!NOTE]
 > Prywatne punkty końcowe są niedozwolone w połączeniu z punktami końcowymi usługi w tej samej podsieci.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 W tej sekcji utworzysz sieć wirtualną i podsieć służącą do hostowania maszyny wirtualnej, która jest używana do uzyskiwania dostępu do prywatnego zasobu linku (konta magazynu w tym przykładzie).
 
-### <a name="create-the-virtual-network"></a>Tworzenie sieci wirtualnej
+## <a name="virtual-network-and-parameters"></a>Sieć wirtualna i parametry
 
 W tej sekcji utworzysz sieć wirtualną i podsieć do hostowania maszyny wirtualnej, która jest używana do uzyskiwania dostępu do prywatnego zasobu linku.
 
-1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
-1. W obszarze **Utwórz sieć wirtualną** wprowadź lub wybierz następujące informacje:
+W tej sekcji należy zamienić następujące parametry w krokach z poniższymi informacjami:
 
-    | Ustawienie | Wartość |
-    | ------- | ----- |
-    | Nazwa | Wprowadź *MyVirtualNetwork*. |
-    | Przestrzeń adresowa | Wprowadź adres *10.1.0.0/16*. |
-    | Subskrypcja | Wybierz subskrypcję.|
-    | Grupa zasobów | Wybierz pozycję **Utwórz nową**, wprowadź nazwę *myResourceGroup*, a następnie wybierz przycisk **OK**. |
-    | Lokalizacja | Wybierz pozycję **WestCentralUS**.|
-    | Podsieć — nazwa | Wprowadź nazwę moja *podsieć*. |
-    | Zakres adresów podsieci: 10.41.0.0/24 | Wprowadź *10.1.0.0/24*. |
-    |||
-1. Pozostaw resztę jako domyślną i wybierz pozycję **Utwórz**.
+| Parametr                   | Wartość                |
+|-----------------------------|----------------------|
+| **\<nazwy grupy zasobów >**  | myResourceGroup |
+| **\<nazwę sieci wirtualnej >** | myVirtualNetwork          |
+| **\<nazwę regionu >**          | Zachodnio-środkowe stany USA      |
+| **\<adres IPv4 >**   | 10.1.0.0 \ 16          |
+| **\<nazwę podsieci >**          | mySubnet        |
+| **\<zakres adresów podsieci >** | 10.1.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 
 ### <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
@@ -64,7 +62,7 @@ W tej sekcji utworzysz sieć wirtualną i podsieć do hostowania maszyny wirtual
     | Nazwa maszyny wirtualnej | Wprowadź *myVm*. |
     | Region | Wybierz pozycję **WestCentralUS**. |
     | Opcje dostępności | Pozostaw wartość domyślną **Brak wymaganej nadmiarowości infrastruktury**. |
-    | Obraz | Wybierz pozycję **Windows Server 2019 Datacenter**. |
+    | Image (Obraz) | Wybierz pozycję **Windows Server 2019 Datacenter**. |
     | Rozmiar | Pozostaw wartość domyślną **Standardowy DS1, wersja 2**. |
     | **KONTO ADMINISTRATORA** |  |
     | Nazwa użytkownika | Wprowadź wybraną nazwę użytkownika. |
@@ -127,7 +125,7 @@ W tej sekcji utworzysz prywatne konto magazynu przy użyciu prywatnego punktu ko
     | Subskrypcja | Wybierz subskrypcję. |
     | Grupa zasobów | Wybierz pozycję **myResourceGroup**. Utworzono to w poprzedniej sekcji.|
     |Lokalizacja|Wybierz pozycję **WestCentralUS**.|
-    |Nazwa|Wprowadź *myPrivateEndpoint*.  |
+    |Name (Nazwa)|Wprowadź *myPrivateEndpoint*.  |
     |Zasób podrzędny magazynu|Pozostaw domyślny **obiekt BLOB**. |
     | **SIECI** |  |
     | Sieć wirtualna  | Wybierz pozycję *MyVirtualNetwork* *z grupy zasobów*. |
@@ -151,7 +149,7 @@ Połącz się z maszyną wirtualną *myVm* z Internetu w następujący sposób:
 
 1. Wybierz przycisk **Połącz**. Po wybraniu przycisku **Połącz** zostanie otwarta strona **Łączenie z maszyną wirtualną**.
 
-1. Wybierz opcję **Pobierz plik RDP**. Na platformie Azure zostanie utworzony plik Remote Desktop Protocol (*rdp*), który zostanie pobrany na komputer.
+1. Wybierz opcję **Pobierz plik RDP**. Plik Remote Desktop Protocol ( *.rdp*) zostanie utworzony na platformie Azure, a następnie pobrany na komputer.
 
 1. Otwórz *pobrany plik RDP* .
 
@@ -204,7 +202,7 @@ Dodatkowe opcje uzyskiwania dostępu do konta magazynu:
 Gdy skończysz korzystać z prywatnego punktu końcowego, konta magazynu i maszyny wirtualnej, Usuń grupę zasobów i wszystkie zawarte w niej zasoby: 
 1. Wprowadź w polu **wyszukiwania** w górnej części portalu *i wybierz pozycję* *moja zasobów z* wyników wyszukiwania. 
 2. Wybierz pozycję **Usuń grupę zasobów**. 
-3. W polu **WPISZ NAZWĘ GRUPY ZASOBÓW:** wprowadź nazwę *myResourceGroup*, a następnie wybierz pozycję **Usuń**. 
+3. W polu *WPISZ NAZWĘ GRUPY ZASOBÓW:* wprowadź nazwę **myResourceGroup**, a następnie wybierz pozycję **Usuń**. 
 
 ## <a name="next-steps"></a>Następne kroki
 W tym przewodniku szybki start utworzono MASZYNę wirtualną w sieci wirtualnej i na koncie magazynu oraz prywatnym punkcie końcowym. Nawiązano połączenie z jedną maszyną wirtualną z Internetu i bezpieczny dostęp do konta magazynu za pomocą linku prywatnego. Aby dowiedzieć się więcej o prywatnym punkcie końcowym, zobacz [co to jest prywatny punkt końcowy platformy Azure?](private-endpoint-overview.md).

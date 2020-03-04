@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7d27256f64e09a4d4ba3dbf1544eaec4715f6d88
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a2b66cdc7a0704cd3560c0776a0ca5302dc689d2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669917"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250767"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Konfigurowanie Azure Monitor aplikacji języka Python (wersja zapoznawcza)
 
@@ -132,11 +132,20 @@ Poniżej przedstawiono eksporterów, którzy OpenCensus są zamapowane na typy d
         main()
     ```
 
-4. Teraz po uruchomieniu skryptu języka Python nadal powinien zostać wyświetlony monit o wprowadzenie wartości, ale tylko wartość jest drukowana w powłoce. Utworzony `SpanData` zostanie wysłany do Azure Monitor. Emitowane dane zakresu można znaleźć w obszarze `dependencies`.
+4. Teraz po uruchomieniu skryptu języka Python nadal powinien zostać wyświetlony monit o wprowadzenie wartości, ale tylko wartość jest drukowana w powłoce. Utworzony `SpanData` zostanie wysłany do Azure Monitor. Emitowane dane zakresu można znaleźć w obszarze `dependencies`. Aby uzyskać więcej informacji na temat żądań wychodzących, zobacz OpenCensus Python — [zależności](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency).
+Aby uzyskać więcej informacji na temat żądań przychodzących, zobacz OpenCensus Python — [żądania](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request).
 
-5. Aby uzyskać informacje na temat próbkowania w OpenCensus, spójrz na [próbkowanie w OpenCensus](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications).
+#### <a name="sampling"></a>Próbkowanie
 
-6. Aby uzyskać szczegółowe informacje na temat korelacji telemetrii w danych śledzenia, zapoznaj się z tematem [korelacji telemetrii](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)OpenCensus.
+Aby uzyskać informacje na temat próbkowania w OpenCensus, spójrz na [próbkowanie w OpenCensus](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications).
+
+#### <a name="trace-correlation"></a>Korelacja śledzenia
+
+Aby uzyskać szczegółowe informacje na temat korelacji telemetrii w danych śledzenia, zapoznaj się z tematem [korelacji telemetrii](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)języka Python.
+
+#### <a name="modify-telemetry"></a>Modyfikuj dane telemetryczne
+
+Aby uzyskać szczegółowe informacje na temat modyfikowania śledzonych danych [telemetrycznych](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)przed ich wysłaniem do Azure monitor, zobacz OpenCensus.
 
 ### <a name="metrics"></a>Metryki
 
@@ -240,6 +249,32 @@ Poniżej przedstawiono eksporterów, którzy OpenCensus są zamapowane na typy d
     ```
 
 4. Eksporter wyśle dane metryk do Azure Monitor w stałym interwale. Wartość domyślna to co 15 sekund. Śledzimy jedną metrykę, więc dane metryk, z dowolną wartością i sygnaturą czasową, będą wysyłane każdego interwału. Dane można znaleźć w obszarze `customMetrics`.
+
+#### <a name="standard-metrics"></a>Metryki standardowe
+
+Domyślnie eksporter metryk wyśle zestaw metryk standardowych do Azure Monitor. Można to wyłączyć przez ustawienie flagi `enable_standard_metrics`, aby `False` w konstruktorze eksportera metryk.
+
+    ```python
+    ...
+    exporter = metrics_exporter.new_metrics_exporter(
+      enable_standard_metrics=False,
+      connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+    ...
+    ```
+Poniżej znajduje się lista standardowych metryk, które są obecnie wysyłane:
+
+- Dostępna pamięć (w bajtach)
+- Czas procesora CPU (w procentach)
+- Szybkość żądań przychodzących (na sekundę)
+- Średni czas wykonywania żądania przychodzącego (w milisekundach)
+- Szybkość żądania wychodzącego (na sekundę)
+- Użycie procesora CPU przez proces (procent)
+- Prywatne bajty procesu (w bajtach)
+
+Te metryki powinny być dostępne w `performanceCounters`. Przychodząca stawka żądania byłaby `customMetrics`.
+#### <a name="modify-telemetry"></a>Modyfikuj dane telemetryczne
+
+Aby uzyskać szczegółowe informacje na temat modyfikowania śledzonych danych [telemetrycznych](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)przed ich wysłaniem do Azure monitor, zobacz OpenCensus.
 
 ### <a name="logs"></a>Dzienniki
 
@@ -360,8 +395,17 @@ Poniżej przedstawiono eksporterów, którzy OpenCensus są zamapowane na typy d
     except Exception:
     logger.exception('Captured an exception.', extra=properties)
     ```
+#### <a name="sampling"></a>Próbkowanie
 
-7. Aby uzyskać szczegółowe informacje na temat wzbogacania dzienników przy użyciu danych kontekstu śledzenia, zobacz [integracja dzienników](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)OpenCensus języka Python.
+Aby uzyskać informacje na temat próbkowania w OpenCensus, spójrz na [próbkowanie w OpenCensus](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications).
+
+#### <a name="log-correlation"></a>Korelacja dziennika
+
+Aby uzyskać szczegółowe informacje na temat wzbogacania dzienników przy użyciu danych kontekstu śledzenia, zobacz [integracja dzienników](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)OpenCensus języka Python.
+
+#### <a name="modify-telemetry"></a>Modyfikuj dane telemetryczne
+
+Aby uzyskać szczegółowe informacje na temat modyfikowania śledzonych danych [telemetrycznych](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)przed ich wysłaniem do Azure monitor, zobacz OpenCensus.
 
 ## <a name="view-your-data-with-queries"></a>Wyświetlanie danych za pomocą zapytań
 

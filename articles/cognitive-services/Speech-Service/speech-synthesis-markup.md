@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: 499770b664757ec0f3a0bd3b26e0de36007741b6
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: b39b8712f3e8b869d7dbe496dd30f0599aa4150d
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228077"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254790"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Ulepszanie syntezy przy użyciu języka znaczników syntezy mowy (SSML)
 
@@ -195,6 +195,7 @@ Domyślnie usługa zamiany tekstu na mowę służy do syntezowania tekstu przy u
 
 Obecnie w przypadku tych głosów neuronowych są obsługiwane zmiany stylu mowy:
 * `en-US-JessaNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 
 Zmiany są stosowane na poziomie zdania i stylu różnią się w zależności od głosu. Jeśli styl nie jest obsługiwany, usługa zwróci mowę w domyślnym stylu mowy neutralnej.
@@ -220,6 +221,7 @@ Użyj tej tabeli, aby określić, które style wymawiające są obsługiwane dla
 | | `type="chat"` | Czytaj swobodny, swobodny sygnał |
 | | `type="newscast"` | Wyraża formalny sygnał podobny do emisji wiadomości |
 | | `type="customerservice"` | Porozmawiaj w sposób przyjazny i pacjentowy jako usługa klienta |
+| `pt-BR-FranciscaNeural` | `type="cheerful"` | Wyraża rozpoznawania emocji o wartości dodatniej i szczęśliwej |
 | `zh-CN-XiaoxiaoNeural` | `type="newscast"` | Wyraża formalny sygnał podobny do emisji wiadomości |
 | | `type="sentiment"` | Przekazuje komunikat dotykowy lub historię |
 

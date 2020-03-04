@@ -3,7 +3,7 @@ title: Tworzenie i przekazywanie Red Hat Enterprise Linux wirtualnego dysku twar
 description: Zapoznaj się z tematem tworzenie i przekazywanie wirtualnego dysku twardego (VHD) platformy Azure, który zawiera system operacyjny Red Hat Linux.
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: mimckitt
-ms.openlocfilehash: 75b06145ce5328f02cf384753745ef4866c63c64
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a8a0c64a4a68827c77ba54e7f64ecefd7d1ab8af
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155404"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251621"
 ---
-# <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Red Hat dla platformy Azure
+# <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej opartej na systemie Red Hat dla platformy Azure
 W tym artykule dowiesz się, jak przygotować maszynę wirtualną Red Hat Enterprise Linux (RHEL) do użycia na platformie Azure. Wersje RHEL omówione w tym artykule to 6.7 + i 7.1 +. Funkcja hypervisor dla przygotowania, która jest omówiona w tym artykule, to funkcja Hyper-V, maszyna wirtualna oparta na jądrze (KVM) i oprogramowanie VMware. Aby uzyskać więcej informacji na temat wymagań dotyczących uprawnień dla uczestnictwa w programie w ramach programu dostępu do chmury Red Hat, zobacz [witrynę sieci Web dostępu do chmury w systemie Red Hat](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) i [RHEL na platformie Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Aby poznać sposoby automatyzowania tworzenia obrazów RHEL, zobacz [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Przygotowywanie maszyny wirtualnej z systemem Red Hat z poziomu Menedżera funkcji Hyper-V
@@ -164,7 +164,7 @@ W tej sekcji założono, że plik ISO został już pobrany z witryny sieci Web f
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby to zrobić, Otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Przykład:
+1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby to zrobić, Otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Na przykład:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -418,7 +418,7 @@ W tej sekcji założono, że plik ISO został już pobrany z witryny sieci Web f
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby przeprowadzić tę konfigurację, Otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Przykład:
+1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby przeprowadzić tę konfigurację, Otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Na przykład:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -568,7 +568,7 @@ W tej sekcji założono, że zainstalowano już maszynę wirtualną RHEL w oprog
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. W tym celu otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Przykład:
+1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. W tym celu otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Na przykład:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
@@ -676,7 +676,7 @@ W tej sekcji założono, że zainstalowano już maszynę wirtualną RHEL w oprog
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby to zrobić, Otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Przykład:
+1. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby to zrobić, Otwórz `/etc/default/grub` w edytorze tekstów i edytuj parametr `GRUB_CMDLINE_LINUX`. Na przykład:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -900,7 +900,7 @@ W tej sekcji założono, że zainstalowano już maszynę wirtualną RHEL w oprog
 
     b.  Dołącz instalację ISO do stacji dysków DVD.
 
-    d.  Ustaw rozruch systemu BIOS z dysku CD.
+    c.  Ustaw rozruch systemu BIOS z dysku CD.
 
 1. Uruchom maszynę wirtualną. Po wyświetleniu przewodnika instalacji naciśnij klawisz **Tab** , aby skonfigurować opcje rozruchu.
 

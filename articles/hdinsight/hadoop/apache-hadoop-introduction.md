@@ -1,5 +1,5 @@
 ---
-title: Co to jest stos technologii Apache Hadoop? — Azure HDInsight
+title: Co to są Apache Hadoop i MapReduce — Azure HDInsight
 description: Wprowadzenie do usługi HDInsight oraz stos i składniki technologii Apache Hadoop.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
-ms.openlocfilehash: e98a11d9aee1c4f76453dc1716f92514b021444f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 7e8dd69b7c58e090c30ea1aa59feddab610dd3c5
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917836"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244885"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Co to jest Apache Hadoop w usłudze Azure HDInsight?
 

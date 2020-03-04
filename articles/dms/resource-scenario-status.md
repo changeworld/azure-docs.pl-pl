@@ -3,8 +3,8 @@ title: Stan scenariusza migracji bazy danych
 titleSuffix: Azure Database Migration Service
 description: Dowiedz się więcej na temat stanu scenariuszy migracji obsługiwanych przez Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 03fb6a1aff62df878417da55a7da7b42186b3462
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9652b78674d6a6b905eb049564d1b17cdc7c17b7
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437673"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254931"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Stan scenariuszy migracji obsługiwanych przez Azure Database Migration Service
 
@@ -45,15 +45,15 @@ W poniższych tabelach przedstawiono, które scenariusze migracji są obsługiwa
 
 W poniższej tabeli przedstawiono Azure Database Migration Service obsługi migracji w trybie offline.
 
-| Cel  | Źródło | Pomoc techniczna | Stan |
+| Środowisko docelowe  | Element źródłowy | Pomoc techniczna | Stan |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Baza danych SQL Azure** | SQL Server | ✔ | Ogólna dostępność |
+| **Baza danych SQL Azure** | Oprogramowanie SQL Server | ✔ | Ogólna dostępność |
 |   | SQL RDS |  |  |
 |   | Oracle |  |  |
-| **Baza danych Azure SQL** | SQL Server | ✔ | Ogólna dostępność |
+| **Baza danych Azure SQL** | Oprogramowanie SQL Server | ✔ | Ogólna dostępność |
 |   | SQL RDS |  |  |
 |   | Oracle |  |   |
-| **Maszyna wirtualna Azure SQL** | SQL Server | ✔ | Ogólna dostępność |
+| **Maszyna wirtualna Azure SQL** | Oprogramowanie SQL Server | ✔ | Ogólna dostępność |
 |   | Oracle |   |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | Ogólna dostępność |
 | **Azure DB dla MySQL** | MySQL |   |   |
@@ -65,15 +65,15 @@ W poniższej tabeli przedstawiono Azure Database Migration Service obsługi migr
 
 W poniższej tabeli przedstawiono Azure Database Migration Service obsługi migracji w trybie online.
 
-| Cel  | Źródło | Pomoc techniczna | Stan |
+| Środowisko docelowe  | Element źródłowy | Pomoc techniczna | Stan |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Baza danych SQL Azure** | SQL Server | ✔ | Ogólna dostępność |
+| **Baza danych SQL Azure** | Oprogramowanie SQL Server | ✔ | Ogólna dostępność |
 |   | SQL RDS | ✔ | Ogólna dostępność |
 |   | Oracle |  |  |
-| **Baza danych Azure SQL** | SQL Server | ✔ | Ogólna dostępność |
+| **Baza danych Azure SQL** | Oprogramowanie SQL Server | ✔ | Ogólna dostępność |
 |   | SQL RDS | ✔ | Ogólna dostępność |
 |   | Oracle | ✔ | Prywatna wersja zapoznawcza |
-| **Maszyna wirtualna Azure SQL** | SQL Server |   |   |
+| **Maszyna wirtualna Azure SQL** | Oprogramowanie SQL Server |   |   |
 |   | Oracle  |  |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | Ogólna dostępność |
 | **Azure DB dla MySQL** | MySQL | ✔ | Ogólna dostępność |

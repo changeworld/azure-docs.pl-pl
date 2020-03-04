@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 80f8d66795971c6a5c84be7088387e63d7acd7a7
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185537"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248680"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurowanie domen niestandardowych za pomocą usługi Azure serwer proxy aplikacji usługi Azure AD
 
@@ -130,9 +130,9 @@ Nie ma ograniczeń dotyczących metod podpisu certyfikatu. Obsługiwane są Kryp
 
 Można używać certyfikatów symboli wieloznacznych, o ile symbol wieloznaczny pasuje do zewnętrznego adresu URL. W przypadku [aplikacji wieloznacznych](application-proxy-wildcard.md)należy używać certyfikatów wieloznacznych. Aby użyć certyfikatu w celu uzyskania dostępu do domen poddomen, należy dodać symbole wieloznacznej domeny jako alternatywne nazwy podmiotu w tym samym certyfikacie. Na przykład certyfikat dla *\*. Adventure-Works.com* nie będzie działał dla *\*. Apps.Adventure-Works.com* , chyba że dodasz *\*. Apps.Adventure-Works.com* jako alternatywną nazwę podmiotu. 
 
-W przypadku zainstalowania łańcucha certyfikatów na urządzeniach klienckich można użyć certyfikatów wystawionych przez własną infrastrukturę kluczy publicznych (PKI). Usługa Intune może wdrażać te certyfikaty na zarządzanych urządzeniach. W przypadku urządzeń niezarządzanych należy ręcznie zainstalować te certyfikaty.
+W przypadku zainstalowania łańcucha certyfikatów na urządzeniach klienckich można użyć certyfikatów wystawionych przez własną infrastrukturę kluczy publicznych (PKI). Usługa Intune może wdrażać te certyfikaty na zarządzanych urządzeniach. W przypadku urządzeń niezarządzanych należy ręcznie zainstalować te certyfikaty. 
 
-Nie jest dobrym pomysłem na korzystanie z prywatnego głównego urzędu certyfikacji. Prywatny główny urząd certyfikacji powinien również zostać wypychany do komputerów klienckich, co stanowi wiele wyzwań. 
+Nie zalecamy korzystania z prywatnego głównego urzędu certyfikacji, ponieważ należy również przeprowadzić wypychanie do komputerów klienckich prywatnego głównego urzędu certyfikacji, co może spowodować wiele wyzwań.
 
 ### <a name="certificate-management"></a>Zarządzanie certyfikatami
 

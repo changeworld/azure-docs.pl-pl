@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: fe6fbb2c27dcc18cca114e6d10cd382d376a27e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75651308"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250179"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Przetestuj interfejs portalu dla Azure Managed Applications
 
@@ -68,7 +68,7 @@ W przypadku programu PowerShell użyj polecenia:
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
-```azurecli
+```bash
 ./sideload-createuidef.sh \
   -l southcentralus \
   -a .\100-Marketplace-Sample
@@ -84,7 +84,7 @@ W przypadku programu PowerShell użyj polecenia:
 
 W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
 
-```azurecli
+```bash
 ./sideload-createuidef.sh
 ```
 

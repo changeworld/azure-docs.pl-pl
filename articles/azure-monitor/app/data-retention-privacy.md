@@ -3,12 +3,12 @@ title: Przechowywanie i przechowywanie danych w usłudze Azure Application Insig
 description: Zasady przechowywania i zasad zachowania poufności informacji
 ms.topic: conceptual
 ms.date: 09/29/2019
-ms.openlocfilehash: 0b266eb0674f6de7dfb20311bba95bc7f4697f61
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669662"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254874"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w Application Insights
 
@@ -170,6 +170,12 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 Domyślnie `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` jest używany do utrwalania danych. Uprawnienia dostępu do tego folderu są ograniczone do bieżącego użytkownika i administratorów. (Zobacz tutaj [implementację](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) ).
 
 Prefiks folderu `appInsights-node` można przesłonić, zmieniając wartość w czasie wykonywania zmiennej statycznej `Sender.TEMPDIR_PREFIX` znaleziona w polu [Sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384).
+
+### <a name="javascript-browser"></a>JavaScript (przeglądarka)
+
+[Magazyn sesji HTML5](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) służy do utrwalania danych. Używane są dwa oddzielne bufory: `AI_buffer` i `AI_sent_buffer`. Dane telemetryczne, które są przetwarzane w partii i oczekujące na wysłanie, są przechowywane w `AI_buffer`. Dane telemetryczne, które zostały właśnie wysłane, są umieszczane w `AI_sent_buffer` do momentu, gdy serwer pozyskiwania odpowie, że został pomyślnie odebrany. Gdy dane telemetryczne zostały pomyślnie odebrane, zostaną usunięte ze wszystkich buforów. W przypadku błędów przejściowych (na przykład jeśli użytkownik utraci połączenie sieciowe), dane telemetryczne pozostają w `AI_buffer` do momentu jego pomyślnego odebrania lub serwer pozyskiwania odpowie, że dane telemetryczne są nieprawidłowe (na przykład zły schemat lub zbyt stary).
+
+Bufory telemetrii można wyłączyć przez ustawienie [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) `false`. Gdy magazyn sesji jest wyłączony, tablica lokalna jest używana jako magazyn trwały. Ponieważ zestaw JavaScript SDK działa na urządzeniu klienckim, użytkownik ma dostęp do tej lokalizacji magazynu za pomocą narzędzi deweloperskich w przeglądarce.
 
 ### <a name="opencensus-python"></a>OpenCensus Python
 

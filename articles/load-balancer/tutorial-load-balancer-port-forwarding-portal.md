@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 6dda01543a6a7f447adefcc6cc3cfa3ea5da5492
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: e740a65d453a69a987e938a5170ae8e04c7bfe40
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048845"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249882"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Samouczek: Konfigurowanie przekazywania portów w Azure Load Balancer przy użyciu portalu
 
@@ -51,9 +51,9 @@ Najpierw utwórz publiczny moduł równoważenia obciążenia w warstwie Standar
     | ---                     | ---                                                |
     | Subskrypcja               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz pozycję **Utwórz nową** i wpisz *MyResourceGroupLB* w polu tekstowym.|
-    | Nazwa                   | *myLoadBalancer*                                   |
+    | Name (Nazwa)                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
-    | Typ          | wybierz pozycję **Publiczny**.                                        |
+    | Typ          | Wybierz pozycję **Publiczna**.                                        |
     | SKU           | Wybierz opcję **Standardowa**.                          |
     | Publiczny adres IP | Wybierz pozycję**Utwórz nowy**. |
     | Nazwa publicznego adresu IP              | Wpisz *myPublicIP* w polu tekstowym.   |
@@ -68,19 +68,20 @@ Najpierw utwórz publiczny moduł równoważenia obciążenia w warstwie Standar
 
 Utwórz sieć wirtualną z dwiema maszynami wirtualnymi i dodawaj maszyny wirtualne do puli zaplecza modułu równoważenia obciążenia. 
 
-### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
+## <a name="virtual-network-and-parameters"></a>Sieć wirtualna i parametry
 
-1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
-   
-1. W okienku **Tworzenie sieci wirtualnej** wpisz lub wybierz następujące wartości:
-   
-   - **Nazwa**: wpisz *MyVnet*.
-   - **Grupa zasobów**: lista rozwijana **Wybierz istniejącą**, wybierz pozycję **MyResourceGroupLB**. 
-   - **Podsieć** > **Nazwa**: wpisz *MyBackendSubnet*.
-   
-1. Wybierz pozycję **Utwórz**.
+W tej sekcji należy zamienić następujące parametry w krokach z poniższymi informacjami:
 
-   ![Tworzenie sieci wirtualnej](./media/tutorial-load-balancer-port-forwarding-portal/2-load-balancer-virtual-network.png)
+| Parametr                   | Wartość                |
+|-----------------------------|----------------------|
+| **\<nazwy grupy zasobów >**  | myResourceGroupLB (wybierz istniejącą grupę zasobów) |
+| **\<nazwę sieci wirtualnej >** | myVNet          |
+| **\<nazwę regionu >**          | Europa Zachodnia      |
+| **\<adres IPv4 >**   | 10.3.0.0 \ 16          |
+| **\<nazwę podsieci >**          | myBackendSubnet        |
+| **\<zakres adresów podsieci >** | 10.3.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-vms-and-add-them-to-the-load-balancer-back-end-pool"></a>Tworzenie maszyn wirtualnych i dodawanie ich do puli zaplecza modułu równoważenia obciążenia
 
@@ -172,7 +173,7 @@ Pulę zaplecza modułu równoważenia obciążenia utworzono i dodano do niej ma
    
 1. Na stronie **Pule zaplecza** rozwiń węzeł **MyBackendPool** i upewnij się, że na liście znajdują się obydwie maszyny wirtualne: **VM1** i **VM2**.
 
-1. wybierz pozycję **MyBackendPool**. 
+1. Wybierz pozycję **MyBackendPool**. 
    
    Na stronie **MyBackendPool** w obszarach **MASZYNA WIRTUALNA** i **ADRES IP** możesz usunąć lub dodać dostępne maszyny wirtualne do puli.
 
@@ -195,7 +196,7 @@ Sonda kondycji umożliwia modułowi równoważenia obciążenia monitorowanie st
    - **Interwał**: wpisz *15*. Interwał to liczba sekund między próbami sondy.
    - **Próg złej kondycji**: wpisz *2*. Ta wartość to liczba kolejnych niepowodzeń sondy, które występują, zanim kondycja maszyny wirtualnej zostanie uznana za złą.
    
-1. Wybierz **OK**.
+1. Kliknij przycisk **OK**.
    
    ![Dodawanie sondy](./media/tutorial-load-balancer-port-forwarding-portal/4-load-balancer-probes.png)
 
@@ -218,7 +219,7 @@ Reguła modułu równoważenia obciążenia o nazwie **MyLoadBalancerRule** nas�
    - **Pula zaplecza**: wybierz pozycję **MyBackendPool**.
    - **Sonda kondycji**: wybierz pozycję **MyHealthProbe**. 
    
-1. Wybierz **OK**.
+1. Kliknij przycisk **OK**.
    
    ![Dodawanie reguły modułu równoważenia obciążenia](./media/tutorial-load-balancer-port-forwarding-portal/5-load-balancing-rules.png)
 
@@ -239,7 +240,7 @@ Utwórz regułę translatora adresów sieciowych modułu równoważenia obciąż
    - **Mapowanie portów**: wybierz pozycję **niestandardowy**.
    - **Port docelowy**: wpisz *3389*.
    
-1. Wybierz **OK**.
+1. Kliknij przycisk **OK**.
    
 1. Powtórz kroki, aby dodać regułę NAT dla ruchu przychodzącego o nazwie *MyNATRuleVM2*, używając **portu**: *4222* i **docelowej maszyny wirtualnej**: **MyVM2**.
 

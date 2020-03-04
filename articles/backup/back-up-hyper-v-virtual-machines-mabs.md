@@ -3,12 +3,12 @@ title: Tworzenie kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą 
 description: Ten artykuł zawiera procedury tworzenia kopii zapasowych i odzyskiwania maszyn wirtualnych przy użyciu programu Microsoft Azure Backup Server (serwera usługi MAB).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586516"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255061"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą Azure Backup Server
 
@@ -171,7 +171,7 @@ Po wykonaniu kroków opisanych w poprzednich sekcjach i zakończeniu zadania Men
 
 1. Otwórz SQL Server Management Studio i nawiąż połączenie z wystąpieniem, które hostuje bazę danych serwera usługi MAB.
 
-2. Uruchom następujące zapytanie: `select * from tbl_SCH_ScheduleDefinition where JobDefinitionID='9B30D213-B836-4B9E-97C2-DB03C3EB39D7'`. To zapytanie zwraca **Identyfikator harmonogramu ScheduleID**. Zwróć uwagę na ten identyfikator, ponieważ będzie on używany w następnym kroku.
+2. Uruchom następujące zapytanie: `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`. To zapytanie zwraca **Identyfikator harmonogramu ScheduleID**. Zwróć uwagę na ten identyfikator, ponieważ będzie on używany w następnym kroku.
 
 3. W SQL Server Management Studio rozwiń węzeł **SQL Server Agent**, a następnie rozwiń węzeł **zadania**. Kliknij prawym przyciskiem myszy **Identyfikator harmonogramu ScheduleID** , a następnie wybierz pozycję **Rozpocznij zadanie w kroku**.
 

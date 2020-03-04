@@ -10,18 +10,56 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11b8ade765a2b1c1ee25421073983b96c34e5d15
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 6f244fc057638bc94a94c150d9333435c0197a74
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462177"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249743"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Informacje o wersji Azure Machine Learning
 
 W tym artykule dowiesz się więcej na temat wydań Azure Machine Learning.  Aby uzyskać pełną zawartość referencyjną SDK, odwiedź stronę referencyjną [**głównego zestawu sdk Azure Machine Learning dla języka Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) .
 
 Zapoznaj się z [listą znanych problemów](resource-known-issues.md) , aby dowiedzieć się więcej o znanych usterkach i obejść.
+
+## <a name="2020-03-02"></a>2020-03-02
+
+### <a name="azure-machine-learning-sdk-for-python-v112rc0"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.1.2 RC0
+
++ **Poprawki i ulepszenia błędów**
+  + **Azure-automl-Core**
+    + Włączono wnioskowanie w trybie wsadowym (pobierając wiele wierszy raz) dla modeli automl ONNX
+    + Ulepszone wykrywanie częstotliwości zestawów danych, Brak danych lub nieregularne punkty danych
+    + Dodano możliwość usuwania punktów danych, które nie są zgodne z dominującą frequrncy.
+  + **Azure automl — środowisko uruchomieniowe**
+    + Rozwiązano problem z błędem zgłoszonym, jeśli ziarno nieobecne w zestawie szkoleniowym pojawiło się w zestawie testów
+    + Usunięto wymaganie y_query podczas oceniania usługi prognozowania
+  + **Azure-contrib-Mir**
+    + Dodaje funkcje klasy MirWebservice w celu pobrania tokenu dostępu
+  + **Azure — rdzeń**
+    + Wdrożone usługi WebService będą teraz domyślnie `INFO` rejestrowanie. Można to kontrolować przez ustawienie zmiennej środowiskowej `AZUREML_LOG_LEVEL` w wdrożonej usłudze.
+    + Napraw iterację `Dataset.get_all`, aby zwracała wszystkie zestawy danych zarejestrowane w obszarze roboczym.
+    + Ulepsz komunikat o błędzie, gdy nieprawidłowy typ jest przekazywać do argumentu `path` interfejsów API tworzenia zestawu danych.
+    + Zestaw SDK języka Python używa usługi odnajdywania do użycia punktu końcowego "API" zamiast "potoków".
+    + Zamień na nowe trasy we wszystkich wywołaniach zestawu SDK
+    + Zmienia routing wywołań do ModelManagementService na nową ujednoliconą strukturę
+      + Udostępniona Metoda aktualizacji obszaru roboczego jest publicznie dostępna.
+      + Dodano parametr image_build_compute w metodzie aktualizacji obszaru roboczego, aby zezwolić użytkownikom na aktualizowanie obliczeń dla kompilacji obrazu
+    +  Dodano komunikaty o zaniechaniu do starego przepływu pracy profilowania. Stałe profilowania CPU i limity pamięci
+  + **Azure — interpretowanie**
+    + Aktualizacja programu Azure — Interpretuj do interpretacji — Community 0,6. *
+  + **Azure — mlflow**
+    + Dodawanie obsługi dla Niesuwerennych chmur do usługi Azure. mlflow
+  + **Azure — potok — kroki**
+    + Przeniesiono `AutoMLStep` do `azureml-pipeline-steps package`. Zaniechanie `AutoMLStep` w `azureml-train-automl-runtime`.
+  + **Azure-pociąg-automl-Client**
+    + Rozwiązano problem polegający na tym, że niektóre pakiety mogą zostać zainstalowane w nieprawidłowych wersjach w zdalnych uruchomieniach.
+  + **Azure-uczenie-automl — środowisko uruchomieniowe**
+    + Rozwiązano problem z wykrywaniem częstotliwości w zdalnych uruchomieniach
+    + Przeniesiono `AutoMLStep` do `azureml-pipeline-steps package`. Zaniechanie `AutoMLStep` w `azureml-train-automl-runtime`.
+  + **Azure — uczenie rdzeniowe**
+    + Przeniesiono `AutoMLStep` do `azureml-pipeline-steps package`. Zaniechanie `AutoMLStep` w `azureml-train-automl-runtime`.
 
 ## <a name="2020-02-18"></a>2020-02-18
 

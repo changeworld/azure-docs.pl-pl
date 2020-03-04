@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 4d4703ccb4ee96eb69a780f91eae1eb6da9e1578
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5b39186a39fbd2398fb4045ba62797e321fc3284
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225178"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249867"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Samouczek: równoważenie obciążenia ruchem internetowym przez skierowanie go do maszyn wirtualnych przy użyciu witryny Azure Portal
 
@@ -49,9 +49,9 @@ W tej sekcji utworzysz usługa Load Balancer w warstwie Standardowa, która poma
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
-    | Subscription               | Wybierz subskrypcję.    |    
+    | Subskrypcja               | Wybierz subskrypcję.    |    
     | Grupa zasobów         | Wybierz pozycję **Utwórz nowy** i wpisz *myResourceGroupSLB* w polu tekstowym.|
-    | Nazwa                   | *myLoadBalancer*                                   |
+    | Name (Nazwa)                   | *myLoadBalancer*                                   |
     | Region         | Wybierz pozycję **Europa Zachodnia**.                                        |
     | Typ          | Wybierz pozycję **Publiczna**.                                        |
     | SKU           | Wybierz opcję **Standardowa**.                          |
@@ -85,7 +85,7 @@ Aby umożliwić Load Balancer monitorowania stanu aplikacji, należy użyć sond
      
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Nazwa | Wprowadź *myHealthProbe*. |
+    | Name (Nazwa) | Wprowadź *myHealthProbe*. |
     | Protokół | Wybierz pozycję **http**. |
     | Port | Wprowadź *80*.|
     | Interval | Wprowadź *15* dla liczby **interwałów** (w sekundach) między kolejnymi próbami sondowania. |
@@ -103,7 +103,7 @@ Reguła modułu równoważenia obciążenia służy do definiowania sposobu dyst
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | Nazwa | Wprowadź *myHTTPRule*. |
+    | Name (Nazwa) | Wprowadź *myHTTPRule*. |
     | Protokół | wybierz pozycję **TCP**. |
     | Port | Wprowadź *80*.|
     | Port zaplecza | Wprowadź *80*. |
@@ -116,22 +116,20 @@ Reguła modułu równoważenia obciążenia służy do definiowania sposobu dyst
 
 W tej sekcji utworzysz sieć wirtualną, utworzono trzy maszyny wirtualne dla puli zaplecza Load Balancer, a następnie zainstalujesz usługi IIS na maszynach wirtualnych, aby ułatwić testowanie Load Balancer.
 
-### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
+## <a name="virtual-network-and-parameters"></a>Sieć wirtualna i parametry
 
-1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
-2. W obszarze **Utwórz sieć wirtualną** wprowadź lub wybierz następujące informacje:
+W tej sekcji należy zamienić następujące parametry w krokach z poniższymi informacjami:
 
-    | Ustawienie | Wartość |
-    | ------- | ----- |
-    | Nazwa | Wprowadź nazwę *myVNet*. |
-    | Przestrzeń adresowa | Wprowadź adres *10.1.0.0/16*. |
-    | Subscription | Wybierz subskrypcję.|
-    | Grupa zasobów | Wybierz pozycję istniejący zasób — *myResourceGroupSLB*. |
-    | Location | Wybierz pozycję **Europa Zachodnia**.|
-    | Podsieć — nazwa | Wprowadź nazwę podsieci *myBackendSubnet*. |
-    | Zakres adresów podsieci: 10.41.0.0/24 | Wprowadź *10.1.0.0/24*. |
-    
-3. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **Utwórz**.
+| Parametr                   | Wartość                |
+|-----------------------------|----------------------|
+| **\<nazwy grupy zasobów >**  | myResourceGroupSLB (wybierz istniejącą grupę zasobów) |
+| **\<nazwę sieci wirtualnej >** | myVNet          |
+| **\<nazwę regionu >**          | Europa Zachodnia      |
+| **\<adres IPv4 >**   | 10.1.0.0 \ 16          |
+| **\<nazwę podsieci >**          | mySubnet        |
+| **\<zakres adresów podsieci >** | 10.1.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
 

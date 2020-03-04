@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: yelevin
-ms.openlocfilehash: b00f9c9e7de9568a29d2b7a7f4ef84c022ef5679
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 43eba727b1dc724aae6eea3ec77de1363c5db73f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588165"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252514"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Łączenie danych z dzienników pakietu Office 365
 
@@ -33,9 +33,9 @@ Dzienniki inspekcji z [pakietu Office 365](https://docs.microsoft.com/office365/
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Musisz być administratorem globalnym lub administratorem zabezpieczeń w swojej dzierżawie.
-- Jeśli dzierżawa nie ma licencji pakietu Office 365 E3 lub pakietu Office 365 E5, należy włączyć ujednoliconą inspekcję w dzierżawie przy użyciu jednego z następujących procesów:
+- Dzierżawca musi mieć włączoną funkcję ujednoliconej inspekcji. Dzierżawcy z pakietem Office 365 E3 lub E5 mają ujednoliconą inspekcję włączoną domyślnie. <br>Jeśli dzierżawa nie ma żadnej z tych licencji, należy włączyć ujednoliconą inspekcję w dzierżawie przy użyciu jednej z następujących metod:
     - [Za pomocą polecenia cmdlet Set-AdminAuditLogConfig](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) i włączania parametru "UnifiedAuditLogIngestionEnabled").
-    - [Lub przy użyciu interfejsu użytkownika Centrum zabezpieczeń i zgodności](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
+    - [Za pomocą interfejsu użytkownika Centrum zabezpieczeń i zgodności](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
 
 ## <a name="connect-to-office-365"></a>Łączenie z usługą Office 365
 

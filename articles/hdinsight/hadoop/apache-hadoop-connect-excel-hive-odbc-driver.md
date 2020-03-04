@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 12/11/2019
-ms.openlocfilehash: 883192e1d041014c23445b7a2fa0ece45eb76f10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/02/2020
+ms.openlocfilehash: f356009197c0446efa2ea2d7f0e90040229df47b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435813"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251067"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Łączenie programu Excel z Apache Hadoop w usłudze Azure HDInsight za pomocą sterownika Microsoft Hive ODBC
 
@@ -53,9 +53,9 @@ Poniższe kroki pokazują, jak utworzyć źródło danych ODBC Hive.
    |  Data Source Name (Nazwa źródła danych) |Nadaj nazwę źródła danych. |
    |  Hosty |Wprowadź polecenie `HDInsightClusterName.azurehdinsight.net`. Na przykład `myHDICluster.azurehdinsight.net`. Uwaga: `HDInsightClusterName-int.azurehdinsight.net` jest obsługiwana, dopóki maszyna wirtualna klienta jest połączona z tą samą siecią wirtualną. |
    |  Port |Użyj portu **443**. (Ten port został zmieniony z 563 na 443). |
-   |  baza danych |Użyj **domyślnego**. |
+   |  Baza danych |Użyj **domyślnego**. |
    |  Mechanism (Mechanizm) |Wybieranie **usługi HDInsight systemu Windows Azure** |
-   |  Nazwa użytkownika |Wprowadź nazwę użytkownika HTTP klastra usługi HDInsight. Domyślna nazwa użytkownika to **admin**. |
+   |  User Name (Nazwa użytkownika) |Wprowadź nazwę użytkownika HTTP klastra usługi HDInsight. Domyślna nazwa użytkownika to **admin**. |
    |  Hasło |Wprowadź hasło użytkownika klastra usługi HDInsight. Zaznacz pole wyboru **Zapisz hasło (zaszyfrowane)** .|
 
 1. Opcjonalne: Wybierz **Opcje zaawansowane...**  

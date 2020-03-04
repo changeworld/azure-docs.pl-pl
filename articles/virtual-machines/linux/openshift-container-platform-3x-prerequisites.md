@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 069561c4bed55bf6021b594d693e076ef8d313bd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 76e7a9aa9c0f17501885c8bd06c6997fdc8d2104
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035473"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255686"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Wspólne wymagania wstępne dotyczące wdrażania OpenShift Container platform 3,11 na platformie Azure
 
@@ -57,7 +57,7 @@ Zaloguj się do subskrypcji platformy Azure za pomocą polecenia [AZ login](/cli
 ```azurecli 
 az login
 ```
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Należy użyć dedykowanej grupy zasobów, aby hostować Magazyn kluczy. Ta grupa jest oddzielona od grupy zasobów, w której wdrożone są zasoby klastra OpenShift.
 
@@ -97,14 +97,14 @@ Wdrożenie OpenShift korzysta z utworzonego klucza SSH w celu zabezpieczenia dos
 az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/openshift_rsa
 ```
 
-## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi 
+## <a name="create-a-service-principal"></a>Tworzenie jednostki usługi 
 OpenShift komunikuje się z platformą Azure przy użyciu nazwy użytkownika i hasła lub nazwy głównej usługi. Jednostka usługi platformy Azure to tożsamość zabezpieczeń, której można używać z aplikacjami, usługami i narzędziami automatyzacji, takimi jak OpenShift. Użytkownik kontroluje i definiuje uprawnienia do działania, które może wykonywać jednostka usługi na platformie Azure. Najlepszym rozwiązaniem jest zakres uprawnień nazwy głównej usługi do określonych grup zasobów, a nie całej subskrypcji.
 
 Utwórz nazwę główną usługi za pomocą polecenia [AZ AD Sp Create-for-RBAC](/cli/azure/ad/sp) i Wyprowadź wymagane przez OpenShift poświadczenia.
 
-Poniższy przykład tworzy nazwę główną usługi i przypisuje uprawnienia współautora do grupy zasobów o nazwie openshiftrg.
+Poniższy przykład tworzy nazwę główną usługi i przypisuje uprawnienia współautora do grupy zasobów o nazwie *openshiftrg*.
 
-Najpierw utwórz grupę zasobów o nazwie openshiftrg:
+Najpierw utwórz grupę zasobów o nazwie *openshiftrg*:
 
 ```azurecli
 az group create -l eastus -n openshiftrg

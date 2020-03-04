@@ -4,12 +4,12 @@ description: W tym artykule opisano, jak używać ograniczania żądań usługi 
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 129ca3ba32d48345bde931c6bd2084c3da79be39
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 43ccf4f2e8098f6577f18943c4ab4132884b66f2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659376"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251339"
 ---
 # <a name="throttling-resource-manager-requests"></a>Ograniczanie żądań usługi Resource Manager
 
@@ -25,13 +25,13 @@ Wszystkie operacje na poziomie subskrypcji i na poziomie dzierżawy podlegają o
 
 Domyślne limity ograniczania na godzinę przedstawiono w poniższej tabeli.
 
-| Zakres | Operations | Limit |
+| Zakres | Operacje | Limit |
 | ----- | ---------- | ------- |
-| Subskrypcja | — operacje odczytywania | 12000 |
+| Subskrypcja | Odczytywan | 12000 |
 | Subskrypcja | kaskad | 15000 |
-| Subskrypcja | powoduje | 1200 |
-| Dzierżawa | — operacje odczytywania | 12000 |
-| Dzierżawa | powoduje | 1200 |
+| Subskrypcja | Powoduje | 1200 |
+| Dzierżawa | Odczytywan | 12000 |
+| Dzierżawa | Powoduje | 1200 |
 
 Limity te dotyczą podmiotu zabezpieczeń (użytkownika lub aplikacji) zgłaszającego te żądania i identyfikatora subskrypcji lub identyfikatora dzierżawy. Jeśli Twoje żądania pochodzą od więcej niż jednego podmiotu zabezpieczeń, limit w ramach subskrypcji lub dzierżawy jest większy niż 12 000 i 1200 na godzinę.
 
@@ -47,7 +47,7 @@ W tej sekcji omówiono limity ograniczania liczby używanych powszechnie dostawc
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
-### <a name="network-throttling"></a>Ograniczanie przepustowości sieci
+### <a name="network-throttling"></a>Ograniczanie sieci
 
 Dostawca zasobów Microsoft. Network stosuje następujące limity ograniczania przepustowości:
 
@@ -72,7 +72,7 @@ Czasami można zwiększyć limity ograniczania przepustowości. Aby sprawdzić, 
 
 ## <a name="error-code"></a>Kod błędu
 
-W przypadku osiągnięcia limitu otrzymasz kod stanu HTTP **429 zbyt wiele żądań**. Odpowiedź zawiera wartość **retry-After** , która określa liczbę sekund oczekiwania aplikacji (lub uśpienia) przed wysłaniem kolejnego żądania. W przypadku wysłania żądania przed upływem wartość ponownych prób nie jest przetwarzanie Twojego żądania i nową wartość ponownych prób jest zwracana.
+Po osiągnięciu limitu zostanie wyświetlony kod stanu HTTP **429 zbyt wiele żądań**. Odpowiedź zawiera wartość **retry-After** , która określa liczbę sekund oczekiwania aplikacji (lub uśpienia) przed wysłaniem kolejnego żądania. W przypadku wysłania żądania przed upływem wartość ponownych prób nie jest przetwarzanie Twojego żądania i nową wartość ponownych prób jest zwracana.
 
 Po oczekiwaniu na określony czas możesz również zamknąć i ponownie otworzyć połączenie z platformą Azure. Zresetowanie połączenia może wiązać się z innym wystąpieniem Azure Resource Manager.
 
@@ -101,22 +101,22 @@ Dostawca zasobów może również zwracać nagłówki odpowiedzi z informacjami 
 
 Podczas pobierania tych wartości nagłówka w kodzie albo skrypt nie różni się od pobierania dowolnej wartości nagłówka. 
 
-Na przykład w **C#** , pobrać wartość nagłówka z **HttpWebResponse** obiektu o nazwie **odpowiedzi** następującym kodem:
+Na przykład w programie **C#** pobierana jest wartość nagłówka z obiektu **HttpWebResponse** o nazwie **Response** z następującym kodem:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-W **PowerShell**, możesz pobrać wartość nagłówka z operacją Invoke-WebRequest.
+W programie **PowerShell**pobierana jest wartość nagłówka z operacji Invoke-WebRequest.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-Aby uzyskać kompletny przykład programu PowerShell, zobacz [Sprawdź limity usługi Resource Manager w przypadku subskrypcji](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+Aby zapoznać się z kompletnym przykładem programu PowerShell, zobacz [Check Menedżer zasobów Limits for a Subscription](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
 
-Jeśli chcesz zobaczyć pozostałe żądania do debugowania, możesz podać **-debugowanie** parametrem w Twojej **programu PowerShell** polecenia cmdlet.
+Jeśli chcesz zobaczyć pozostałe żądania debugowania, możesz podać parametr **-Debug** w poleceniu cmdlet **programu PowerShell** .
 
 ```powershell
 Get-AzResourceGroup -Debug
@@ -154,7 +154,7 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
-W **wiersza polecenia platformy Azure**, pobrać wartość nagłówka przy użyciu opcji bardziej szczegółowy.
+W **interfejsie wiersza polecenia platformy Azure**można pobrać wartość nagłówka przy użyciu opcji Więcej informacji.
 
 ```azurecli
 az group list --verbose --debug
@@ -162,7 +162,7 @@ az group list --verbose --debug
 
 Zwraca wiele wartości, w tym następujące wartości:
 
-```azurecli
+```output
 msrest.http_logger : Response status: 200
 msrest.http_logger : Response headers:
 msrest.http_logger :     'Cache-Control': 'no-cache'
@@ -182,7 +182,7 @@ az group create -n myresourcegroup --location westus --verbose --debug
 
 Zwraca wiele wartości, w tym następujące wartości:
 
-```azurecli
+```output
 msrest.http_logger : Response status: 201
 msrest.http_logger : Response headers:
 msrest.http_logger :     'Cache-Control': 'no-cache'
@@ -195,6 +195,6 @@ msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać kompletny przykład programu PowerShell, zobacz [Sprawdź limity usługi Resource Manager w przypadku subskrypcji](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
-* Aby uzyskać więcej informacji na temat limity przydziału i ograniczenia, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../../azure-resource-manager/management/azure-subscription-service-limits.md).
-* Aby dowiedzieć się więcej informacji na temat obsługi żądań asynchronicznych REST, zobacz [śledzenie operacji asynchronicznych Azure](async-operations.md).
+* Aby zapoznać się z kompletnym przykładem programu PowerShell, zobacz [Check Menedżer zasobów Limits for a Subscription](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+* Aby uzyskać więcej informacji o limitach i przydziałach, zobacz [limity subskrypcji i usług platformy Azure, limity przydziału i ograniczenia](../../azure-resource-manager/management/azure-subscription-service-limits.md).
+* Aby dowiedzieć się więcej o obsłudze asynchronicznych żądań REST, zobacz [śledzenie asynchronicznych operacji na platformie Azure](async-operations.md).

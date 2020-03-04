@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7a0d94522e478a69f70167183e4c0d60d0d85060
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 15f63544a98c6d7bb7171081d9c3e084890e15ec
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226539"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255999"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Tworzenie graficzne w Azure Automation
 
@@ -249,7 +249,7 @@ Punkty kontrolne są włączone tylko w graficznych elementach Runbook przepływ
 
 ## <a name="runbook-input-and-output"></a>Dane wejściowe i wyjściowe elementu Runbook
 
-### < nazwę "Runbook-Input" ></a>dane wejściowe elementu Runbook
+### Dane wejściowe elementu Runbook<a name="runbook-input"></a>
 
 Element Runbook wymaga wprowadzenia danych przez użytkownika, który uruchamia element Runbook za pośrednictwem Azure Portal lub z innego elementu Runbook, jeśli jest on używany jako element podrzędny. Na przykład dla elementu Runbook, który tworzy maszynę wirtualną, może być konieczne podanie takich informacji jako nazwy maszyny wirtualnej i innych właściwości za każdym razem, gdy element Runbook zostanie uruchomiony.
 

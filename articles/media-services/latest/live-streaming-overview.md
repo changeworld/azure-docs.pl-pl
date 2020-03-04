@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: 93005b181075ac671af6c8d73a3f2a06ed9eb0d8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b366262ce7849658eb84444d873956c25ab38804
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977747"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244660"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe na żywo z Azure Media Services v3
 
@@ -52,7 +52,7 @@ Filtrowanie dynamiczne służy do kontrolowania liczby ścieżek, formatów, szy
 
 ## <a name="live-event-types"></a>Typy zdarzeń na żywo
 
-[Wydarzenia na żywo](https://docs.microsoft.com/rest/api/media/liveevents) odpowiadają za pozyskiwanie i przetwarzanie strumieni wideo na żywo. Wydarzenie na żywo może być jednym z dwóch typów: przekazywaniem i kodowaniem na żywo. Aby uzyskać szczegółowe informacje na temat przesyłania strumieniowego na żywo w Media Services v3, zobacz [zdarzenia na żywo i wyjście na żywo](live-events-outputs-concept.md).
+[Wydarzenia na żywo](https://docs.microsoft.com/rest/api/media/liveevents) odpowiadają za pozyskiwanie i przetwarzanie strumieni wideo na żywo. Wydarzenie na żywo można ustawić na *przekazywanie* (lokalny koder na żywo wysyła strumień o wielokrotnej szybkości transmisji bitów) lub *kodowanie na żywo* (lokalny koder na żywo wysyła strumień o pojedynczej szybkości transmisji bitów). Aby uzyskać szczegółowe informacje na temat przesyłania strumieniowego na żywo w Media Services v3, zobacz [zdarzenia na żywo i wyjście na żywo](live-events-outputs-concept.md).
 
 ### <a name="pass-through"></a>Przekazywanie
 

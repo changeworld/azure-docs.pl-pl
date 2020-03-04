@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 10/03/2019
-ms.openlocfilehash: 3fd1405d8421d71f52d9cd215dd055ce1595abd0
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.custom: hdinsightactive,mvc
+ms.date: 03/02/2020
+ms.openlocfilehash: d7330225ecbdc6715847821a47c140a3c2b8d1b9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327278"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251947"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Samouczek: analizowanie danych platformy Apache Spark przy użyciu usługi Power BI w usłudze HDInsight
 
@@ -128,47 +128,47 @@ Usługa Power BI umożliwia udostępnianie raportów i pulpitów nawigacyjnych w
 
 1. Otwórz program Power BI Desktop.
 
-1. Na karcie **Narzędzia główne** kliknij pozycję **Publikuj**.
+1. Na karcie **Narzędzia główne** wybierz pozycję **Publikuj**.
 
     ![Publikowanie z programu Power BI Desktop](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Publikowanie z programu Power BI Desktop")
 
-1. Wybierz obszar roboczy, do którego chcesz opublikować zestaw danych i raport, a następnie kliknij pozycję **Wybierz**. Na poniższej ilustracji domyślnie wybrany jest **Mój obszar roboczy**.
+1. Wybierz obszar roboczy, w którym chcesz opublikować zestaw danych i raport, a następnie wybierz pozycję **Wybierz**. Na poniższej ilustracji domyślnie wybrany jest **Mój obszar roboczy**.
 
-    ![Wybierz obszar roboczy, aby opublikować zestaw danych i raport](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Wybierz obszar roboczy, aby opublikować zestaw danych i raport") 
+    ![Wybierz obszar roboczy, aby opublikować zestaw danych i raport](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "Wybierz obszar roboczy, aby opublikować zestaw danych i raport")
 
-1. Po pomyślnym zakończeniu publikowania kliknij pozycję **Otwórz „BuildingTemperature.pbix” w usłudze Power BI**.
+1. Po pomyślnym opublikowaniu wybierz pozycję **Otwórz plik "BuildingTemperature. pbix" w Power BI**.
 
-    ![Publikowanie powiodło się, kliknij, aby wprowadzić poświadczenia](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Publikowanie powiodło się, kliknij, aby wprowadzić poświadczenia") 
+    ![Publikowanie powiodło się, kliknij, aby wprowadzić poświadczenia](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "Publikowanie powiodło się, kliknij, aby wprowadzić poświadczenia")
 
-1. W usłudze Power BI kliknij pozycję **Wprowadź poświadczenia**.
+1. W usługa Power BI wybierz pozycję **Wprowadź poświadczenia**.
 
     ![Wprowadź poświadczenia w usługa Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Wprowadź poświadczenia w usługa Power BI")
 
-1. Kliknij pozycję **Edytuj poświadczenia**.
+1. Wybierz pozycję **Edytuj poświadczenia**.
 
     ![Edytuj poświadczenia w usługa Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Edytuj poświadczenia w usługa Power BI")
 
-1. Wprowadź dane konta logowania usługi HDInsight, a następnie kliknij przycisk **Zaloguj**. Domyślna nazwa konta to *admin*.
+1. Wprowadź informacje o koncie logowania usługi HDInsight, a następnie wybierz pozycję **Zaloguj się**. Domyślna nazwa konta to *admin*.
 
     ![Logowanie do klastra Spark](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Logowanie do klastra Spark")
 
-1. W okienku po lewej stronie przejdź do pozycji **Obszary robocze** > **Mój obszar roboczy** > **RAPORTY**, a następnie kliknij pozycję **BuildingTemperature** (temperatura budynku).
+1. W lewym okienku przejdź do **obszaru obszary robocze** > **mój obszar roboczy** > **raporty**, a następnie wybierz pozycję **BuildingTemperature**.
 
     ![Raport wyświetlany w obszarze raporty w okienku po lewej stronie](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Raport wyświetlany w obszarze raporty w okienku po lewej stronie")
 
     Pozycja **BuildingTemperature** powinna również zostać wyświetlona w obszarze **ZESTAWY DANYCH** w okienku po lewej stronie.
 
-    Wizualizacja utworzona w programie Power BI Desktop jest teraz dostępna w usłudze Power BI. 
+    Wizualizacja utworzona w programie Power BI Desktop jest teraz dostępna w usłudze Power BI.
 
-1. Umieść kursor na wizualizacji, a następnie kliknij ikonę pinezki w prawym górnym rogu.
+1. Umieść kursor na wizualizacji, a następnie wybierz ikonę pinezki w prawym górnym rogu.
 
     ![Raport w usługa Power BI](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Raport w usługa Power BI")
 
-1. Wybierz pozycję „Nowy pulpit nawigacyjny”, wprowadź nazwę `Building temperature`, a następnie kliknij przycisk **Przypnij**.
+1. Wybierz pozycję "nowy pulpit nawigacyjny", wprowadź nazwę `Building temperature`a następnie wybierz pozycję **Przypnij**.
 
     ![Przypnij do nowego pulpitu nawigacyjnego](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "Przypnij do nowego pulpitu nawigacyjnego")
 
-1. W raporcie kliknij pozycję **Przejdź do pulpitu nawigacyjnego**.
+1. W raporcie wybierz pozycję **Przejdź do pulpitu nawigacyjnego**.
 
 Wizualizacja zostanie przypięta do pulpitu nawigacyjnego — możesz dodać inne wizualizacje do raportu i przypiąć je do tego samego pulpitu nawigacyjnego. Aby uzyskać więcej informacji na temat raportów i pulpitów nawigacyjnych, zobacz [Raporty w usłudze Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) i [Pulpity nawigacyjne w usłudze Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
 

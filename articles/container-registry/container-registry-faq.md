@@ -5,14 +5,14 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708312"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252076"
 ---
-# <a name="frequently-asked-questions-about-azure-container-registry"></a>Często zadawane pytania dotyczące usługi Azure Container Registry
+# <a name="frequently-asked-questions-about-azure-container-registry"></a>Często zadawane pytania dotyczące Azure Container Registry
 
 W tym artykule opisano często zadawane pytania i znane problemy dotyczące Azure Container Registry.
 
@@ -114,13 +114,13 @@ ACR obsługuje protokół HTTP API v2 usługi Docker. Dostęp do interfejsów AP
 
 Jeśli jesteś w systemie bash:
 
-```bash
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
 Dla programu PowerShell:
 
-```powershell
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
@@ -151,13 +151,13 @@ docker push myregistry.azurecr.io/1gb:latest
 
 Powinien być w stanie zobaczyć, że użycie magazynu zostało zwiększone w Azure Portal lub można użyć zapytania przy użyciu interfejsu wiersza polecenia.
 
-```bash
+```azurecli
 az acr show-usage -n myregistry
 ```
 
 Usuń obraz przy użyciu interfejsu wiersza polecenia platformy Azure lub portalu i sprawdź zaktualizowane użycie w ciągu kilku minut.
 
-```bash
+```azurecli
 az acr repository delete -n myregistry --image 1gb
 ```
 
@@ -188,7 +188,7 @@ Włącz protokół TLS 1,2 przy użyciu dowolnego ostatniego klienta platformy D
 > [!IMPORTANT]
 > Od 13 stycznia 2020, Azure Container Registry będą wymagały wszystkich bezpiecznych połączeń z serwerów i aplikacji do korzystania z protokołu TLS 1,2. Obsługa protokołu TLS 1,0 i 1,1 zostanie wycofana.
 
-### <a name="does-azure-container-registry-support-content-trust"></a>Czy usługa Azure Container Registry obsługuje funkcję zaufania do kontenera?
+### <a name="does-azure-container-registry-support-content-trust"></a>Czy Azure Container Registry obsługuje zaufanie zawartości?
 
 Tak, możesz używać zaufanych obrazów w Azure Container Registry, ponieważ [notariusz platformy Docker](https://docs.docker.com/notary/getting_started/) został zintegrowany i można go włączyć. Aby uzyskać szczegółowe informacje, zobacz [zaufanie zawartości w Azure Container Registry](container-registry-content-trust.md).
 
@@ -216,12 +216,12 @@ Program ACR obsługuje [role niestandardowe](container-registry-roles.md) , któ
   Następnie można przypisać rolę `AcrPull` lub `AcrPush` do użytkownika (Poniższy przykład używa `AcrPull`):
 
   ```azurecli
-    az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
-    ```
+  az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
+  ```
 
   Lub Przypisz rolę do zasady usługi identyfikowanej za pomocą identyfikatora aplikacji:
 
-  ```
+  ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
   ```
 
@@ -239,9 +239,9 @@ Przystawka jest następnie w stanie uwierzytelniać obrazy w rejestrze i uzyskiw
   az acr repository list -n myRegistry
   ```
 
- Aby ściągnąć obraz:
-    
-  ```azurecli
+* Aby ściągnąć obraz:
+
+  ```console
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -275,9 +275,10 @@ Aby rozwiązać problemy ze wspólnym środowiskiem i rejestrem, zobacz [Sprawdz
  - Jeśli `docker pull` nie ulegnie awarii w sposób ciągły, może wystąpić problem z demonem Docker. Problem można ogólnie wyeliminować przez ponowne uruchomienie demona platformy Docker. 
  - Jeśli ten problem będzie nadal występować po ponownym uruchomieniu demona platformy Docker, problem może być przyczyną niektórych problemów z łącznością sieciową z maszyną. Aby sprawdzić, czy sieć ogólna na komputerze jest w dobrej kondycji, uruchom następujące polecenie, aby przetestować łączność z punktem końcowym. Minimalna wersja `az acr`, która zawiera to polecenie kontroli łączności, to 2.2.9. Uaktualnij interfejs wiersza polecenia platformy Azure, jeśli używasz starszej wersji.
  
-   ```azurecli
-    az acr check-health -n myRegistry
-    ```
+  ```azurecli
+  az acr check-health -n myRegistry
+  ```
+
  - Należy zawsze mieć mechanizm ponawiania prób dla wszystkich operacji klienta platformy Docker.
 
 ### <a name="docker-pull-is-slow"></a>Wypychanie platformy Docker jest powolne
@@ -308,7 +309,7 @@ unauthorized: authentication required
 ```
 
 Aby rozwiązać ten problem:
-1. Dodaj `--signature-verification=false` opcji do pliku konfiguracji demona platformy Docker `/etc/sysconfig/docker`. Przykład:
+1. Dodaj `--signature-verification=false` opcji do pliku konfiguracji demona platformy Docker `/etc/sysconfig/docker`. Na przykład:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
@@ -491,14 +492,14 @@ Obecnie nie obsługujemy GitLab dla wyzwalaczy źródłowych.
 
 | Usługa git | Kontekst źródła | Kompilacja ręczna | Automatycznie Kompiluj przez wyzwalacz zatwierdzania |
 |---|---|---|---|
-| Witryna GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Tak | Tak |
-| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Tak | Tak |
-| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Tak | Nie |
-| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Tak | Nie |
+| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Yes | Yes |
+| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Yes | Yes |
+| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Yes | Nie |
+| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Yes | Nie |
 
 ## <a name="run-error-message-troubleshooting"></a>Rozwiązywanie problemów z komunikatem o błędzie
 
-| Komunikat o błędzie | Podręcznik rozwiązywania problemów |
+| Komunikat o błędzie | Przewodnik rozwiązywania problemów |
 |---|---|
 |Nie skonfigurowano dostępu dla maszyny wirtualnej, dlatego nie znaleziono żadnych subskrypcji|Może się tak zdarzyć, jeśli używasz `az login --identity` w zadaniu ACR. Jest to błąd przejściowy i występuje, gdy przypisanie roli zarządzanej tożsamości nie zostanie przekazane. Oczekiwanie na kilka sekund przed ponowną próbą.|
 

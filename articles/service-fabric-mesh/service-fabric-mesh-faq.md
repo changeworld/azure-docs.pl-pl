@@ -4,12 +4,12 @@ description: Zapoznaj się z często zadawanymi pytaniami i odpowiedziami dotycz
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 3fe6289ad7616dec97706c2f1779a74c508a0f76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461991"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252488"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Często zadawane pytania dotyczące Service Fabric siatki
 
@@ -44,10 +44,13 @@ Obecnie ograniczono okres istnienia aplikacji na dwa dni. Jest to w celu zmaksym
 
 Jeśli zobaczysz ten problem, możesz sprawdzić, czy system zamknie go, uruchamiając polecenie `az mesh app show` w interfejsie wiersza polecenia platformy Azure. Sprawdź, czy funkcja zwraca `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
-Przykład: 
+Na przykład: 
 
-```cli
-~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
+```azurecli
+az mesh app show --resource-group myResourceGroup --name helloWorldApp
+```
+
+```output
 {
   "debugParams": null,
   "description": "Service Fabric Mesh HelloWorld Application!",
@@ -104,7 +107,7 @@ Wychodzące zapytania DNS z kontenera do usługi DNS Service Fabric mogą kończ
 
 - Użyj aktualizacji Windows Update Creators (wersja 1709) lub nowszej jako obrazu podstawowego kontenera.
 - Jeśli sama nazwa usługi nie działa, spróbuj użyć w pełni kwalifikowanej nazwy: ServiceName. ApplicationName.
-- W pliku platformy Docker dla usługi Dodaj `EXPOSE <port>` gdzie port jest portem, na którym jest udostępniana usługa. Przykład:
+- W pliku platformy Docker dla usługi Dodaj `EXPOSE <port>` gdzie port jest portem, na którym jest udostępniana usługa. Na przykład:
 
 ```Dockerfile
 EXPOSE 80
@@ -120,7 +123,7 @@ Siatka Azure nie obsługuje obecnie rozpoznawania nazw DNS między aplikacjami.
 
 Inne znane problemy z usługą DNS dotyczące uruchamiania Service Fabric klastra projektowego w systemie Windows 10 można znaleźć w temacie: [debugowanie kontenerów systemu Windows](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) i [znanych problemów z usługą DNS](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
 
-### <a name="networking"></a>Networking
+### <a name="networking"></a>Sieć
 
 Translator adresów sieciowych usługi servicefabric może zniknąć podczas korzystania z aplikacji na komputerze lokalnym. Aby zdiagnozować, czy ten wystąpił, uruchom następujące polecenie w wierszu polecenia:
 

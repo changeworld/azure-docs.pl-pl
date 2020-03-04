@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 743061c1e32d9ca86e90733dbfd66575d2085dbc
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b5b95349b8a84cc8294dbcf9ab80eff8c7b86b9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572304"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247835"
 ---
 # <a name="azure-analysis-services-samples"></a>Przykłady Azure Analysis Services
 
@@ -26,6 +26,9 @@ Repozytorium [Analysis Services](https://github.com/Microsoft/Analysis-Services)
 
 Firma [Adventure Works dla Analysis Services](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks-analysis-services) w witrynie GitHub jest najczęściej używanym przykładowym projektem modelu tabelarycznego. Można pobrać projekt programu VS lub ukończoną przykładową bazę danych modelu tabelarycznego.
 
+## <a name="sample-database-on-azure"></a>Przykładowa baza danych na platformie Azure
+
+Usługa Azure Synapse Analytics (SQL Data Warehouse) zawiera przykładową bazę danych AdventureWorksDW, która może być uwzględniona w zainicjowanym zasobie. Aby dowiedzieć się więcej, zobacz [Szybki Start: Tworzenie i wykonywanie zapytań względem puli SQL usługi Azure Synapse Analytics](/azure/sql-data-warehouse/create-data-warehouse-portal).
 
 ## <a name="sample-databases-on-github"></a>Przykładowe bazy danych w serwisie GitHub
 

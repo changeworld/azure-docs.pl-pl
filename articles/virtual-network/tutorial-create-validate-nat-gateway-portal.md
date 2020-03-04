@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 4baf12533bed523c81ff41a81975f5bf5b918ac2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587009"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250821"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Samouczek: Tworzenie bramy NAT przy użyciu Azure Portal i testowanie usługi translatora adresów sieciowych
 
@@ -36,27 +36,24 @@ Zaloguj się do [Azure portal](https://portal.azure.com).
 
 Przeprowadzimy Cię przez proces konfigurowania pełnego środowiska testowego i wykonywania testów w następnych krokach. Zaczniemy od źródła, które będzie używać zasobu bramy translatora adresów sieciowych, który utworzysz w dalszych krokach.
 
-### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
+## <a name="virtual-network-and-parameters"></a>Sieć wirtualna i parametry
 
 Przed wdrożeniem maszyny wirtualnej i użyciem bramy NAT należy utworzyć grupę zasobów i sieć wirtualną.
 
-1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **sieci** > **sieci wirtualnej**lub Wyszukaj **Virtual Network** w obszarze wyszukiwania w portalu Marketplace.
+W tej sekcji należy zamienić następujące parametry w krokach z poniższymi informacjami:
 
-2. W obszarze **Utwórz sieć wirtualną** wprowadź lub wybierz następujące informacje:
+| Parametr                   | Wartość                |
+|-----------------------------|----------------------|
+| **\<nazwy grupy zasobów >**  | myResourceGroupNAT |
+| **\<nazwę sieci wirtualnej >** | myVNetsource          |
+| **\<nazwę regionu >**          | Wschodnie stany USA 2      |
+| **\<adres IPv4 >**   | 192.168.0.0 \ 16          |
+| **\<nazwę podsieci >**          | mySubnetsource        |
+| **\<zakres adresów podsieci >** | 192.168.0.0 \ 24          |
 
-    | Ustawienie | Value |
-    | ------- | ----- |
-    | Name (Nazwa) | Wprowadź **myVNetsource**. |
-    | Przestrzeń adresowa | wprowadź wartość **192.168.0.0/16**. |
-    | Subskrypcja | Wybierz subskrypcję.|
-    | Grupa zasobów | Wybierz pozycję Create New- **myResourceGroupNAT**. |
-    | Location | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
-    | Podsieć — nazwa | Wprowadź **mySubnetsource**. |
-    | Zakres adresów podsieci: 10.41.0.0/24 | Wprowadź **192.168.0.0/24**. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **Utwórz**.
-
-### <a name="create-source-virtual-machine"></a>Utwórz źródłową maszynę wirtualną
+## <a name="create-source-virtual-machine"></a>Utwórz źródłową maszynę wirtualną
 
 Teraz utworzymy maszynę wirtualną do korzystania z usługi translatora adresów sieciowych. Ta maszyna wirtualna ma publiczny adres IP do użycia jako publiczny adres IP na poziomie wystąpienia, który umożliwia dostęp do maszyny wirtualnej. Usługa translatora adresów sieciowych obsługuje kierunek przepływu i zastępuje domyślne miejsce docelowe w podsieci. Publiczny adres IP maszyny wirtualnej nie będzie używany dla połączeń wychodzących.
 
@@ -104,14 +101,14 @@ W tej sekcji szczegółowo opisano, jak utworzyć i skonfigurować następujące
 
 2. W obszarze **Utwórz publiczny adres IP**wprowadź lub wybierz następujące informacje:
 
-    | Ustawienie | Value |
+    | Ustawienie | Wartość |
     | ------- | ----- |
     | Wersja protokołu IP | Wybierz pozycję **IPv4**.
     | SKU | Wybierz opcję **Standardowa**.
     | Name (Nazwa) | Wprowadź **myPublicIPsource**. |
     | Subskrypcja | Wybierz subskrypcję.|
     | Grupa zasobów | Wybierz pozycję **myResourceGroupNAT**. |
-    | Location | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
+    | Lokalizacja | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
 
 3. Pozostaw resztę ustawień domyślnych, a następnie wybierz pozycję **Utwórz**.
 
@@ -161,25 +158,25 @@ Cały ruch wychodzący do miejsc docelowych w Internecie używa teraz usługi tr
 
 Teraz utworzysz miejsce docelowe dla ruchu wychodzącego przetłumaczonego przez usługę NAT, aby umożliwić jego przetestowanie.
 
-### <a name="configure-virtual-network-for-destination"></a>Skonfiguruj sieć wirtualną dla miejsca docelowego
+
+## <a name="virtual-network-and-parameters-for-destination"></a>Sieć wirtualna i parametry dla miejsca docelowego
 
 Przed wdrożeniem maszyny wirtualnej dla miejsca docelowego należy utworzyć sieć wirtualną, w której może znajdować się docelowa maszyna wirtualna. Poniższe kroki są takie same jak dla źródłowej maszyny wirtualnej z niewielkimi zmianami, aby udostępnić docelowy punkt końcowy.
 
-1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
+W tej sekcji należy zamienić następujące parametry w krokach z poniższymi informacjami:
 
-2. W obszarze **Utwórz sieć wirtualną** wprowadź lub wybierz następujące informacje:
+| Parametr                   | Wartość                |
+|-----------------------------|----------------------|
+| **\<nazwy grupy zasobów >**  | myResourceGroupNAT |
+| **\<nazwę sieci wirtualnej >** | myVNetdestination          |
+| **\<nazwę regionu >**          | Wschodnie stany USA 2      |
+| **\<adres IPv4 >**   | 192.168.0.0 \ 16          |
+| **\<nazwę podsieci >**          | mySubnetdestination        |
+| **\<zakres adresów podsieci >** | 192.168.0.0 \ 24          |
 
-    | Ustawienie | Value |
-    | ------- | ----- |
-    | Name (Nazwa) | Wprowadź **myVNetdestination**. |
-    | Przestrzeń adresowa | wprowadź wartość **192.168.0.0/16**. |
-    | Subskrypcja | Wybierz subskrypcję.|
-    | Grupa zasobów | Wybierz pozycję Create New- **myResourceGroupNAT**. |
-    | Location | Wybierz pozycję **East US 2** (Wschodnie stany USA 2).|
-    | Podsieć — nazwa | Wprowadź **mySubnetdestination**. |
-    | Zakres adresów podsieci: 10.41.0.0/24 | Wprowadź **192.168.0.0/24**. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-### <a name="create-destination-virtual-machine"></a>Utwórz docelową maszynę wirtualną
+## <a name="create-destination-virtual-machine"></a>Utwórz docelową maszynę wirtualną
 
 1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **COMPUTE** > **Ubuntu Server 18,04 LTS**lub Wyszukaj **Ubuntu Server 18,04 LTS** w wyszukiwaniu portalu Marketplace.
 

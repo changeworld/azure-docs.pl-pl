@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: sngun
-ms.openlocfilehash: 670797eb833b0a145a18e20c6bba711ca11609bc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 184fc65dae57292243be9abdca71a129512b3d0b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483286"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252052"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Monitorowanie danych Azure Cosmos DB przy użyciu ustawień diagnostycznych na platformie Azure
 
@@ -20,13 +20,13 @@ Ustawienia diagnostyczne na platformie Azure służą do zbierania dzienników z
 
 Metryki platformy i dzienniki aktywności są zbierane automatycznie. w związku z tym należy utworzyć ustawienie diagnostyczne w celu zbierania dzienników zasobów lub przesyłania ich dalej poza Azure Monitor. Ustawienie diagnostyczne dla kont usługi Azure Cosmos można włączyć, wykonując następujące czynności:
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure Portal](https://portal.azure.com).
 
 1. Przejdź do swojego konta usługi Azure Cosmos. Otwórz okienko **Ustawienia diagnostyczne** , a następnie wybierz opcję **Dodaj ustawienie diagnostyczne** .
 
 1. W okienku **Ustawienia diagnostyczne** Wypełnij formularz następującymi szczegółami: 
 
-    * **Nazwa**: Wprowadź nazwę dla dzienników w celu tworzenia.
+    * **Nazwa**: Wprowadź nazwę dzienników do utworzenia.
 
     * Dzienniki mogą być przechowywane na **koncie magazynu**, **przesyłane strumieniowo do centrum zdarzeń** lub **wysyłane do log Analytics**
 
@@ -99,7 +99,7 @@ Aby uzyskać szczegółowe informacje na temat sposobu tworzenia ustawień diagn
    | summarize count = count()  by OperationName, requestResourceType_s, bin(TimeGenerated, 1h) 
    ```
 
-1. Jaka jest maksymalna przepływność udostępniana przez partycję?
+1. Jaka jest maksymalna przepływność używana przez partycję?
 
    ```Kusto
    AzureDiagnostics

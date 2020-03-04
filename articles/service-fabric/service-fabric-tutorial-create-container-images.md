@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fa7f7a57e16b6ba70535d3f07ebd69abf0784171
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465439"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252783"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Samouczek: tworzenie obrazów kontenerów w klastrze usługi Service Fabric systemu Linux
 
-Ten samouczek jest częścią serii samouczków demonstrujących sposób korzystania z kontenerów w klastrze usługi Service Fabric w systemie Linux. W tym samouczku aplikacja obsługująca wiele kontenerów jest przygotowywana do użycia z usługą Service Fabric. W kolejnych samouczkach te obrazy są używane jako część aplikacji usługi Service Fabric. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek jest częścią serii samouczków demonstrujących sposób korzystania z kontenerów w klastrze usługi Service Fabric w systemie Linux. W tym samouczku aplikacja obsługująca wiele kontenerów jest przygotowywana do użycia z usługą Service Fabric. W kolejnych samouczkach te obrazy są używane jako część aplikacji usługi Service Fabric. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Klonowanie źródła aplikacji z usługi GitHub
@@ -80,13 +80,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 Najpierw uruchom polecenie **AZ login** , aby zalogować się do konta platformy Azure.
 
-```bash
+```azurecli
 az login
 ```
 
 Następnie użyj polecenia **az account**, aby wybrać subskrypcję używaną do utworzenia rejestru usługi Azure Container. Zamiast ciągu <subscription_id> wprowadź identyfikator swojej subskrypcji platformy Azure.
 
-```bash
+```azurecli
 az account set --subscription <subscription_id>
 ```
 
@@ -94,13 +94,13 @@ W przypadku wdrażania usługi Azure Container Registry należy najpierw posiada
 
 Utwórz grupę zasobów za pomocą polecenia **az group create**. W tym przykładzie grupa zasobów o nazwie *myResourceGroup* jest tworzona w regionie *westus*.
 
-```bash
+```azurecli
 az group create --name <myResourceGroup> --location westus
 ```
 
 Utwórz rejestr usługi Azure Container za pomocą polecenia **az acr create**. Zamiast ciągu \<acrName> wpisz nazwę rejestru kontenerów, który ma zostać utworzony w ramach Twojej subskrypcji. Ta nazwa może zawierać tylko znaki alfanumeryczne i musi być unikatowa.
 
-```bash
+```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
@@ -110,7 +110,7 @@ W dalszej części tego samouczka wartość „acrName” jest używana jako sym
 
 Zaloguj się do swojego wystąpienia ACR przed wypchnięciem do niego obrazów. Aby wykonać tę operację, użyj polecenia **az acr login**. Podaj unikatową nazwę nadaną rejestrowi kontenerów podczas jego tworzenia.
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -136,13 +136,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 Aby uzyskać nazwę loginServer, uruchom następujące polecenie:
 
-```bash
+```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
 Spowoduje to wygenerowanie tabeli z następującymi wynikami. Ten wynik zostanie użyty do otagowania obrazu **azure-vote-front** przed jego wypchnięciem do rejestru kontenerów w następnym kroku.
 
-```bash
+```output
 Result
 ------------------
 <acrName>.azurecr.io
@@ -158,7 +158,7 @@ Po otagowaniu uruchom polecenie „docker images”, aby zweryfikować operację
 
 Dane wyjściowe:
 
-```bash
+```output
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
 <acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
@@ -182,13 +182,13 @@ Wykonanie poleceń docker push może potrwać kilka minut.
 
 Aby zwrócić listę obrazów, które zostały wypchnięte do rejestru usługi Azure Container, użyj polecenia [az acr repository list](/cli/azure/acr/repository). Zaktualizuj polecenie nazwą wystąpienia usługi ACR.
 
-```bash
+```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
 Dane wyjściowe:
 
-```bash
+```output
 Result
 ----------------
 azure-vote-front

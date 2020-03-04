@@ -4,12 +4,12 @@ description: Dowiedz się, jak wdrażać Azure Functions przy użyciu wtyczki Az
 keywords: jenkins, azure, metodyki devops, java, usługę azure functions
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 731bac13a596bbeaf970b3f6ce976a582d1f11ae
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470670"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250922"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Wdrażanie do Azure Functions przy użyciu wtyczki Azure Functions Jenkins
 
@@ -31,19 +31,19 @@ W poniższych krokach pokazano, w jaki sposób utworzyć funkcję w języku Java
 
 1. Utwórz grupę zasobów, zastępując symbol zastępczy **&lt;grupa_zasobów>** nazwą grupy zasobów.
 
-    ```cli
+    ```azurecli
     az group create --name <resource_group> --location eastus
     ```
 
 1. Utwórz konto magazynu platformy Azure, zastępując symbole zastępcze odpowiednimi wartościami.
  
-    ```cli
+    ```azurecli
     az storage account create --name <storage_account> --location eastus --resource-group <resource_group> --sku Standard_LRS    
     ```
 
 1. Utwórz testową aplikację funkcji, zastępując symbole zastępcze odpowiednimi wartościami.
 
-    ```cli
+    ```azurecli
     az functionapp create --resource-group <resource_group> --consumption-plan-location eastus --name <function_app> --storage-account <storage_account>
     ```
 
@@ -127,7 +127,7 @@ W tej sekcji utworzysz [potok serwera Jenkins](https://jenkins.io/doc/book/pipel
     }
     ```
 
-## <a name="build-and-deploy"></a>Kompilowanie i rozmieszczanie
+## <a name="build-and-deploy"></a>Tworzenie i wdrażanie
 
 Czas na uruchomienie zadania serwera Jenkins.
 
@@ -148,7 +148,7 @@ Czas na uruchomienie zadania serwera Jenkins.
 
 Jeśli nie planujesz już korzystać z tej aplikacji, usuń utworzone zasoby, wykonując następujące czynności:
 
-```cli
+```azurecli
 az group delete -y --no-wait -n <resource_group>
 ```
 

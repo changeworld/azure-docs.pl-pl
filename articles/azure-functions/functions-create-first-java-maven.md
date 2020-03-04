@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f226736050319d57cd0bc123fdb2211e0faeae11
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 262afc2aa51aea260d5bd810b12e09de60b0c371
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208850"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249598"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Szybki Start: używanie języka Java i Maven do tworzenia i publikowania funkcji na platformie Azure
 
@@ -25,8 +25,8 @@ W tym artykule opisano sposób kompilowania i publikowania funkcji języka Java 
 
 Aby opracowywać funkcje przy użyciu języka Java, musisz mieć zainstalowane następujące składniki:
 
-- [Zestaw Java developer Kit](https://aka.ms/azure-jdks), wersja 8
-- [Apache Maven](https://maven.apache.org), wersja 3,0 lub nowsza
+- Zestaw [Java Developer Kit](https://aka.ms/azure-jdks), wersja 8
+- Narzędzie [Apache Maven](https://maven.apache.org), wersja 3.0 lub nowsza
 - [Interfejs wiersza polecenia platformy Azure]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) w wersji 2.6.666 lub nowszej
 
@@ -98,7 +98,7 @@ mvn azure-functions:run
 
 Poniższe dane wyjściowe są wyświetlane w Azure Functions Core Tools podczas lokalnego uruchamiania projektu:
 
-```Output
+```output
 ...
 
 Now listening on: http://0.0.0.0:7071
@@ -116,7 +116,7 @@ Wyzwól funkcję z wiersza polecenia przy użyciu zwinięcia w nowym oknie termi
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
-```Output
+```output
 Hello AzureFunctions!
 ```
 [Klucz funkcji](functions-bindings-http-webhook-trigger.md#authorization-keys) nie jest wymagany w przypadku uruchamiania lokalnego. Aby zatrzymać wykonywanie kodu funkcji, użyj polecenia `Ctrl+C` w oknie terminala.
@@ -137,7 +137,7 @@ az login
 
 Użyj następującego polecenia Maven, aby wdrożyć projekt w nowej aplikacji funkcji. 
 
-```azurecli
+```console
 mvn azure-functions:deploy
 ```
 
@@ -175,13 +175,13 @@ Możesz teraz użyć skopiowanego adresu URL, aby uzyskać dostęp do funkcji.
 
 Aby sprawdzić aplikację funkcji działającą na platformie Azure przy użyciu `cURL`, Zastąp adres URL z poniższego przykładu adresem URL skopiowanym z portalu.
 
-```azurecli
+```console
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
 Spowoduje to wysłanie żądania POST do punktu końcowego funkcji z `AzureFunctions` w treści żądania. Zostanie wyświetlona następująca odpowiedź.
 
-```Output
+```output
 Hello AzureFunctions!
 ```
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 6cdca78d09c9ca128119a58cb4feaf66bad111bd
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 194da036260a78b27748dfc7f755212ab4f30b1e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78165038"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256030"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Znane problemy i ograniczenia dotyczące migracji z migracji z MongoDB do interfejsu API Azure Cosmos DB dla MongoDB
 
@@ -40,6 +40,8 @@ Znane problemy i ograniczenia związane z migracjami z MongoDB do interfejsu API
 | W parametrach połączenia konta magazynu brakuje informacji o sygnaturze dostępu współdzielonego i w związku z tym nie można ich uwierzytelnić. | Utwórz sygnaturę dostępu współdzielonego w kontenerze obiektów BLOB w Eksplorator usługi Storage i użyj adresu URL z informacjami o sygnaturze SAS kontenera jako parametrów połączenia ze szczegółami źródła.<br><br> |
 
 ## <a name="using-an-unsupported-version-of-the-database"></a>Korzystanie z nieobsługiwanej wersji bazy danych
+
+* **Objaw**: Migracja nie powiedzie się.
 
 | Przyczyna         | Rozwiązanie |
 | ------------- | ------------- |

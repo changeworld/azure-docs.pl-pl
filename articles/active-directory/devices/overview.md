@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d593e5f27dbcd676e2b42975251778a6c48a7d79
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 594f0ed55b5ce5c31e87fd2011f3bc1522a12380
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511879"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249053"
 ---
 # <a name="what-is-a-device-identity"></a>Co to jest tożsamość urządzenia?
 
@@ -37,16 +37,16 @@ Zarządzanie tożsamościami urządzeń jest podstawą dla [dostępu warunkowego
 Aby uzyskać urządzenie w usłudze Azure AD, masz wiele opcji:
 
 - **Zarejestrowane usługi Azure AD**
-   - Urządzenia, które są zarejestrowane w usłudze Azure AD, są zazwyczaj urządzeniami prywatnymi lub przenośnymi i są zalogowane przy użyciu osobistego konto Microsoft lub innego konta lokalnego.
+   - Urządzenia, które są zarejestrowane w usłudze Azure AD, są zazwyczaj urządzeniami prywatnymi lub przenośnymi, a są zalogowani przy użyciu osobistego konto Microsoft lub innego konta lokalnego.
       - Windows 10
       - iOS
       - Android
       - MacOS
 - **Przyłączone do usługi Azure AD**
-   - Urządzenia, które są przyłączone do usługi Azure AD, należą do organizacji i są zalogowani do programu przy użyciu konta usługi Azure AD należącego do tej organizacji. Istnieją one tylko w chmurze.
+   - Urządzenia, które są przyłączone do usługi Azure AD, należą do organizacji i są zalogowane przy użyciu konta usługi Azure AD należącego do tej organizacji. Istnieją one tylko w chmurze.
       - Windows 10 
 - **hybrydowym dołączonym do usługi Azure AD**.
-   - Urządzenia, które są dołączone do hybrydowej usługi Azure AD, są własnością organizacji i są zalogowane do programu przy użyciu konta usługi Azure AD należącego do tej organizacji. Istnieją one w chmurze i lokalnie.
+   - Urządzenia, które są dołączone do hybrydowej usługi Azure AD, są własnością organizacji i są zalogowane przy użyciu konta usługi Azure AD należącego do tej organizacji. Istnieją one w chmurze i lokalnie.
       - Windows 7, 8,1 lub 10
       - System Windows Server 2008 lub nowszy
 
@@ -65,18 +65,18 @@ Rejestrowanie i dołączanie urządzeń do usługi Azure AD zapewnia użytkownik
 
 Urządzenia, które są przyłączone do usługi Azure AD lub korzystają z hybrydowej usługi Azure AD z logowaniem jednokrotnym do zasobów lokalnych organizacji, a także zasobów w chmurze. Więcej informacji można znaleźć w artykule, w [jaki sposób logowanie JEDNOkrotne do zasobów lokalnych działa na urządzeniach przyłączonych do usługi Azure AD](azuread-join-sso.md).
 
-## <a name="device-security"></a>Bezpieczeństwo urządzeń
+## <a name="device-security"></a>Zabezpieczenia urządzenia
 
 - **Zarejestrowane urządzenia usługi Azure AD** wykorzystują konto zarządzane przez użytkownika końcowego, to konto jest konto Microsoft lub innym lokalnym zarządzanym poświadczeniami zabezpieczonymi przy użyciu co najmniej jednej z poniższych opcji.
    - Hasło
-   - PRZYPNIJ
+   - WEJŚCIE
    - Wzorce
    - Windows Hello
 - **Przyłączone do usługi Azure AD lub hybrydowe urządzenia z usługą Azure AD** wykorzystują konto organizacyjne w usłudze Azure AD zabezpieczone przy użyciu co najmniej jednego z następujących elementów.
    - Hasło
    - Windows Hello dla firm
 
-## <a name="provisioning"></a>Inicjowanie obsługi administracyjnej
+## <a name="provisioning"></a>Inicjowanie obsługi
 
 Uzyskiwanie urządzeń w usłudze Azure AD może odbywać się w sposób samoobsługowy lub kontrolowany proces aprowizacji przez administratorów.
 

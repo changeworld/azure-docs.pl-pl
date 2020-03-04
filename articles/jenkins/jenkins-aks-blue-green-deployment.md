@@ -4,12 +4,12 @@ description: Dowiedz się, w jaki sposób przeprowadzić wdrażanie w usłudze A
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, wdrażanie niebieskie zielone, ciągłe dostarczanie, cd
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: ae9c496cd820bf1263cac50fb676990ed65ed0ba
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158560"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251476"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Wdrażanie w usłudze Azure Kubernetes Service (AKS) przy użyciu serwera Jenkins i niebieskiego/zielonego wzorca wdrażania
 
@@ -84,19 +84,19 @@ Aby można było utworzyć zarządzany klaster Kubernetes za pomocą [interfejsu
 
 1. Zaloguj się do swojego konta platformy Azure. Po wprowadzeniu następującego polecenia otrzymasz instrukcje z wyjaśnieniem, jak zakończyć proces logowania. 
     
-    ```bash
+    ```azurecli
     az login
     ```
 
 1. Po uruchomieniu polecenia `az login` z poprzedniego kroku zostanie wyświetlona lista wszystkich Twoich subskrypcji platformy Azure (wraz z ich identyfikatorami subskrypcji). W tym kroku ustawisz domyślną subskrypcję platformy Azure. Zastąp symbol zastępczy &lt;your-subscription-id> identyfikatorem odpowiedniej subskrypcji platformy Azure. 
 
-    ```bash
+    ```azurecli
     az account set -s <your-subscription-id>
     ```
 
 1. Utwórz grupę zasobów. Zastąp symbol zastępczy &lt;your-resource-group-name> nazwą nowej grupy zasobów, a symbol zastępczy &lt;your-location> swoja lokalizacją. Polecenie `az account list-locations` wyświetla wszystkie lokalizacje platformy Azure. W okresie obowiązywania wersji zapoznawczej usługi AKS nie wszystkie lokalizacje są dostępne. Jeśli wprowadzisz lokalizację, która nie jest prawidłowa w tym momencie, zostanie wyświetlony komunikat o błędzie zawierający listę dostępnych lokalizacji.
 
-    ```bash
+    ```azurecli
     az group create -n <your-resource-group-name> -l <your-location>
     ```
 
@@ -129,7 +129,7 @@ Niebieskie/zielone wdrożenie można skonfigurować w usłudze AKS ręcznie lub 
 #### <a name="set-up-a-kubernetes-cluster-manually"></a>Ręczne konfigurowanie klastra Kubernetes 
 1. Pobierz konfigurację Kubernetes do folderu profilu.
 
-    ```bash
+    ```azurecli
     az aks get-credentials -g <your-resource-group-name> -n <your-kubernetes-cluster-name> --admin
     ```
 
@@ -157,13 +157,13 @@ Niebieskie/zielone wdrożenie można skonfigurować w usłudze AKS ręcznie lub 
     
     Zaktualizuj nazwę DNS dla odpowiedniego adresu IP za pomocą następującego polecenia:
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name aks-todoapp --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
     ```
 
     Powtórz wywołanie dla `todoapp-test-blue` i `todoapp-test-green`:
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name todoapp-blue --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
 
     az network public-ip update --dns-name todoapp-green --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
@@ -175,13 +175,13 @@ Niebieskie/zielone wdrożenie można skonfigurować w usłudze AKS ręcznie lub 
 
 1. Uruchom polecenie `az acr create`, aby utworzyć wystąpienie usługi Container Registry. W następnej sekcji możesz następnie użyć polecenia `login server` jako adresu URL rejestru platformy Docker.
 
-    ```bash
+    ```azurecli
     az acr create -n <your-registry-name> -g <your-resource-group-name>
     ```
 
 1. Uruchom polecenie `az acr credential`, aby wyświetlić poświadczenia usługi Container Registry. Zanotuj nazwę użytkownika i hasło rejestru platformy Docker, ponieważ będą one potrzebne w następnej sekcji.
 
-    ```bash
+    ```azurecli
     az acr credential show -n <your-registry-name>
     ```
 
@@ -276,7 +276,7 @@ Więcej informacji dotyczących wdrażania bez jakichkolwiek przestojów można 
 
 Jeżeli nie potrzebujesz już zasobów utworzonych w ramach tego samouczka, możesz je usunąć.
 
-```bash
+```azurecli
 az group delete -y --no-wait -n <your-resource-group-name>
 ```
 

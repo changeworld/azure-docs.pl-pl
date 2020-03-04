@@ -4,12 +4,12 @@ description: Dowiedz się, jak można użyć rozwiązania Ansible do utworzenia 
 keywords: ansible, azure, devops, bash, element playbook, mysql, baza danych
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: f068b3022c94466a20b524240dc293392b1f42ff
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 9cd574417733518b993bb242c2c168aba338e34a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603114"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247865"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Samouczek: Konfigurowanie baz danych w Azure Database for MySQL przy użyciu rozwiązania ansible
 
@@ -24,7 +24,7 @@ ms.locfileid: "77603114"
 > * Tworzenie serwera MySql
 > * Tworzenie bazy danych MySql
 > * Konfigurowanie reguły zapory tak, aby aplikacja zewnętrzna mogła połączyć się z serwerem
-> * Nawiązywanie połączenia z serwerem MySql za pomocą usługi Azure Cloud Shell
+> * Nawiązywanie połączenia z serwerem MySql przy użyciu Azure Cloud Shell
 > * Zbadaj dostępne serwery MySQL
 > * Wyświetl listę wszystkich baz danych w podłączonych serwerach
 
@@ -33,7 +33,7 @@ ms.locfileid: "77603114"
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Kod element PlayBook w tej sekcji tworzy grupę zasobów platformy Azure. Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.  
 
@@ -155,11 +155,15 @@ ansible-playbook mysql_firewall.yml
 
 ## <a name="connect-to-the-server"></a>Nawiązywanie połączenia z serwerem
 
-W tej sekcji użyjesz usługi Azure Cloud Shell, aby nawiązać połączenie z utworzonym wcześniej serwerem.
+W tej sekcji użyjesz Azure Cloud Shell, aby nawiązać połączenie z utworzonym wcześniej serwerem.
 
-1. Wybierz przycisk **Wypróbuj** w poniższym kodzie:
+1. Otwórz shell.azure.com, wybierając pozycję poniżej.
 
-    ```azurecli-interactive
+   [![Uruchom osadzenie](https://shell.azure.com/images/launchcloudshell.png "Uruchamianie usługi Azure Cloud Shell")](https://shell.azure.com)
+
+1. Wprowadź następujący kod:
+
+    ```sql
     mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     ```
 
@@ -171,7 +175,7 @@ W tej sekcji użyjesz usługi Azure Cloud Shell, aby nawiązać połączenie z u
     
     Jeśli wszystko przebiegnie prawidłowo, zobaczysz dane wyjściowe podobne do następujących:
     
-    ```
+    ```output
     demo@Azure:~$ mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     Enter password:
     Welcome to the MySQL monitor.  Commands end with ; or \g.

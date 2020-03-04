@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 0accf502df3616a686a34fc6c96cb2cfc47e6db1
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 03963f60cc364dd36ad55c0a28e92e3b585bb38d
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667822"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255076"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-c"></a>Tworzenie Event Grid połączenia danych dla usługi Azure Eksplorator danych za pomocąC#
 
@@ -85,7 +85,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | clientSecret | *xxxxxxxxxxxxxx* | Wpis tajny klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie. |
 | resourceGroupName | *testrg* | Nazwa grupy zasobów zawierającej klaster.|
 | clusterName | *mykustocluster* | Nazwa klastra.|
-| Bazy | *mykustodatabase* | Nazwa docelowej bazy danych w klastrze.|
+| databaseName | *mykustodatabase* | Nazwa docelowej bazy danych w klastrze.|
 | ConnectionName | *myeventhubconnect* | Wymagana nazwa połączenia danych.|
 | tableName | *StormEvents* | Nazwa tabeli docelowej w docelowej bazie danych.|
 | mappingRuleName | *StormEvents_CSV_Mapping* | Nazwa mapowania kolumny powiązanej z tabelą docelową.|
@@ -94,5 +94,37 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | storageAccountResourceId | *Identyfikator zasobu* | Identyfikator zasobu konta magazynu, który przechowuje dane do pozyskiwania. |
 | odbiorca | *$Default* | Grupa konsumentów centrum zdarzeń.|
 | location | *Środkowe stany USA* | Lokalizacja zasobu połączenia danych.|
+
+## <a name="generate-sample-data"></a>Generowanie danych przykładowych
+
+Teraz, gdy usługa Azure Eksplorator danych i konto magazynu są połączone, można utworzyć przykładowe dane i przekazać je do magazynu obiektów BLOB.
+
+Ten skrypt tworzy nowy kontener na koncie magazynu, przekazuje istniejący plik (jako obiekt BLOB) do tego kontenera, a następnie wyświetla listę obiektów BLOB w kontenerze.
+
+```csharp
+var azureStorageAccountConnectionString=<storage_account_connection_string>;
+
+var containerName=<container_name>;
+var blobName=<blob_name>;
+var localFileName=<file_to_upload>;
+
+// Creating the container
+var azureStorageAccount = CloudStorageAccount.Parse(azureStorageAccountConnectionString);
+var blobClient = azureStorageAccount.CreateCloudBlobClient();
+var container = blobClient.GetContainerReference(containerName);
+container.CreateIfNotExists();
+
+// Set metadata and upload file to blob
+var blob = container.GetBlockBlobReference(blobName);
+blob.Metadata.Add("rawSizeBytes", "4096‬"); // the uncompressed size is 4096 bytes
+blob.Metadata.Add("kustoIngestionMappingReference", "mapping_v2‬");
+blob.UploadFromFile(localFileName);
+
+// List blobs
+var blobs = container.ListBlobs();
+```
+
+> [!NOTE]
+> Usługa Azure Eksplorator danych nie usunie obiektów BLOB po pozyskaniu. Przechowuj obiekty blob przez trzy do pięciu dni przy użyciu [cyklu życia usługi Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) , aby zarządzać usuwaniem obiektów BLOB.
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]

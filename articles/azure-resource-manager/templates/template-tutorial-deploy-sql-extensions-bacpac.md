@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 500e07296040305f1e469fde78988f2551440e58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 27ac4b67aa19aa59abe80ccf9409acf7b587a22b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472625"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250094"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Samouczek: importowanie plików BACPAC bazy danych SQL za pomocą szablonów usługi Azure Resource Manager
 
-Informacje o sposobie importowania pliku BACPAC przy użyciu szablonów usługi Azure Resource Manager z wykorzystaniem rozszerzeń usługi Azure SQL Database. Artefakty wdrożenia to dowolne pliki, oprócz plików szablonów głównych, które są potrzebne do ukończenia wdrożenia. Plik BACPAC jest tu artefaktem. 
+Informacje o sposobie importowania pliku BACPAC przy użyciu szablonów usługi Azure Resource Manager z wykorzystaniem rozszerzeń usługi Azure SQL Database. Artefakty wdrożenia to dowolne pliki, oprócz plików szablonów głównych, które są potrzebne do ukończenia wdrożenia. Artefaktem jest na przykład plik BACPAC. 
 
 W tym samouczku utworzysz szablon służący do wdrażania programu Azure SQL Server i bazy danych SQL i importowania pliku BACPAC. Aby uzyskać informacje dotyczące sposobu wdrażania rozszerzeń maszyny wirtualnej platformy Azure za pomocą szablonów Azure Resource Manager, zobacz [Samouczek: Wdrażanie rozszerzeń maszyn wirtualnych przy użyciu szablonów Azure Resource Manager](./template-tutorial-deploy-vm-extensions.md).
 
@@ -36,7 +36,7 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 * Visual Studio Code z rozszerzeniem narzędzi Menedżer zasobów Tools. [Aby utworzyć szablony Azure Resource Manager, zobacz temat używanie Visual Studio Code](./use-vs-code-to-create-template.md).
 * Aby zwiększyć bezpieczeństwo, użyj wygenerowanego hasła dla konta administratora usługi Azure SQL Server. Oto przykład, którego można użyć do wygenerowania hasła:
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
 

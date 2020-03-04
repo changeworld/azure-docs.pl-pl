@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e9e2fe92939088420f973c5ca112b5f59d07f212
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906594"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252687"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosting statycznej witryny sieci Web w usłudze Azure Storage
 
@@ -50,7 +50,7 @@ Aby przekazać zawartość do kontenera **$Web** , można użyć dowolnego z tyc
 
 Użytkownicy mogą wyświetlać zawartość witryny z przeglądarki przy użyciu publicznego adresu URL witryny sieci Web. Adres URL można znaleźć za pomocą Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell. Użyj tej tabeli jako przewodnika.
 
-|Narzędzie| Wskazówka |
+|Narzędzie| Wskazówki |
 |----|----|
 |**Azure Portal** | [Znajdź adres URL witryny sieci Web przy użyciu Azure Portal](storage-blob-static-website-how-to.md#portal-find-url) |
 |**Interfejs wiersza polecenia platformy Azure** | [Znajdowanie adresu URL witryny sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure](storage-blob-static-website-how-to.md#cli-find-url) |
@@ -92,7 +92,13 @@ Jeśli konto magazynu jest skonfigurowane tak, aby [wymagało bezpiecznego trans
 > [!TIP]
 > Rozważ Hostowanie domeny na platformie Azure. Aby uzyskać więcej informacji, zobacz [Hostowanie domeny w Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
 
-## <a name="pricing"></a>Cennik
+## <a name="adding-http-headers"></a>Dodawanie nagłówków HTTP
+
+Nie ma możliwości skonfigurowania nagłówków w ramach funkcji statycznej witryny sieci Web. Można jednak użyć Azure CDN do dodawania nagłówków i dołączania (lub zastępowania) wartości nagłówka. Zobacz [Dokumentacja aparatu reguł standardowych dla Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference).
+
+Jeśli chcesz użyć nagłówków do sterowania buforowaniem, zobacz temat [kontrola Azure CDN buforowania przy użyciu reguł buforowania](https://docs.microsoft.com/azure/cdn/cdn-caching-rules).
+
+## <a name="pricing"></a>Ceny
 
 Bezpłatnie możesz włączyć hosting statycznej witryny sieci Web. Opłaty są naliczane tylko za magazyn obiektów BLOB wykorzystywany przez lokację i koszty operacji. Aby uzyskać więcej informacji na temat cen usługi Azure Blob Storage, zapoznaj się z [cennikiem usługi azure BLOB Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 

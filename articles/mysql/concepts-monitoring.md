@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: ec99db9406c5c83cdcbf322c45cea40c6643ee8f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: e9ae19e503b6b54e881af3c6477f77ffa1c930b0
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770887"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252616"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Monitorowanie w Azure Database for MySQL
 Monitorowanie danych dotyczących serwerów ułatwia rozwiązywanie problemów i optymalizację w obciążeniu. Azure Database for MySQL oferuje różne metryki, które dają wgląd w zachowanie serwera.
@@ -28,17 +28,17 @@ Te metryki są dostępne dla Azure Database for MySQL:
 |memory_percent|Procent pamięci|Procent|Procent używanej pamięci.|
 |io_consumption_percent|Procent operacji we/wy|Procent|Procent operacji we/wy w użyciu.|
 |storage_percent|Procent miejsca do magazynowania|Procent|Wartość procentowa używanej przestrzeni dyskowej poza maksymalną.|
-|storage_used|Użyty magazyn|Szybkość|Ilość używanej pamięci masowej. Magazyn używany przez usługę może obejmować pliki bazy danych, dzienniki transakcji i Dzienniki serwera.|
+|storage_used|Używany magazyn|Bajty|Ilość używanej pamięci masowej. Magazyn używany przez usługę może obejmować pliki bazy danych, dzienniki transakcji i Dzienniki serwera.|
 |serverlog_storage_percent|Procent magazynu dzienników serwera|Procent|Procent magazynu dzienników serwera używany poza maksymalnym magazynem dzienników serwera.|
-|serverlog_storage_usage|Używany magazyn dzienników serwera|Szybkość|Ilość używanego magazynu dzienników serwera.|
-|serverlog_storage_limit|Limit magazynowania dziennika serwera|Szybkość|Maksymalny magazyn dzienników serwera dla tego serwera.|
-|storage_limit|Limit magazynu|Szybkość|Maksymalny magazyn dla tego serwera.|
-|active_connections|Aktywne połączenia|Liczba|Liczba aktywnych połączeń z serwerem.|
-|connections_failed|Połączenia zakończone niepowodzeniem|Liczba|Liczba nieudanych połączeń z serwerem.|
-|seconds_behind_master|Opóźnienie replikacji w sekundach|Liczba|Liczba sekund, przez jaką serwer repliki jest opóźniony względem serwera głównego.|
-|network_bytes_egress|Sieć — wyjście|Szybkość|Nawiązywanie połączeń sieciowych między aktywnymi połączeniami.|
-|network_bytes_ingress|Sieć — wejście|Szybkość|Sieć w ramach aktywnych połączeń.|
-|backup_storage_used|Używany magazyn kopii zapasowych|Szybkość|Ilość używanego magazynu kopii zapasowych.|
+|serverlog_storage_usage|Używany magazyn dzienników serwera|Bajty|Ilość używanego magazynu dzienników serwera.|
+|serverlog_storage_limit|Limit magazynowania dziennika serwera|Bajty|Maksymalny magazyn dzienników serwera dla tego serwera.|
+|storage_limit|Limit magazynu|Bajty|Maksymalny magazyn dla tego serwera.|
+|active_connections|Aktywne połączenia|Licznik|Liczba aktywnych połączeń z serwerem.|
+|connections_failed|Połączenia zakończone niepowodzeniem|Licznik|Liczba nieudanych połączeń z serwerem.|
+|seconds_behind_master|Opóźnienie replikacji w sekundach|Licznik|Liczba sekund, przez jaką serwer repliki jest opóźniony względem serwera głównego.|
+|network_bytes_egress|Sieć — wyjście|Bajty|Nawiązywanie połączeń sieciowych między aktywnymi połączeniami.|
+|network_bytes_ingress|Sieć — wejście|Bajty|Sieć w ramach aktywnych połączeń.|
+|backup_storage_used|Używany magazyn kopii zapasowych|Bajty|Ilość używanego magazynu kopii zapasowych.|
 
 ## <a name="server-logs"></a>Dzienniki serwera
 Na serwerze można włączyć opcję wolnego zapytania i rejestrowania inspekcji. Te dzienniki są również dostępne za pomocą dzienników diagnostycznych platformy Azure w Azure Monitor dziennikach, Event Hubs i koncie magazynu. Aby dowiedzieć się więcej o rejestrowaniu, odwiedź artykuły [dzienniki inspekcji](concepts-audit-logs.md) i [dzienniki wolnych zapytań](concepts-server-logs.md) .
@@ -52,13 +52,28 @@ Na serwerze można włączyć opcję wolnego zapytania i rejestrowania inspekcji
 ## <a name="performance-recommendations"></a>Zalecenia dotyczące wydajności
 Funkcja [zalecenia dotyczące wydajności](concepts-performance-recommendations.md) umożliwia zidentyfikowanie możliwości zwiększania wydajności obciążeń. Zalecenia dotyczące wydajności zapewniają zalecenia dotyczące tworzenia nowych indeksów, które mają możliwość zwiększenia wydajności obciążeń. Aby utworzyć zalecenia dotyczące indeksów, funkcja uwzględnia różne cechy bazy danych, w tym jej schemat i obciążenie zgłoszone przez magazyn zapytań. Po wdrożeniu wszelkich zaleceń dotyczących wydajności klienci powinni przetestować wydajność, aby oszacować wpływ tych zmian.
 
-## <a name="service-health"></a>Kondycja usługi
-[Usługa Azure Service Health](../service-health/overview.md) udostępnia widok wszystkich powiadomień o kondycji usługi w ramach subskrypcji. Można skonfigurować alerty Service Health, aby powiadomienia użytkownika za pośrednictwem preferowanych kanałów komunikacyjnych w przypadku problemów lub zmian, które mogą mieć wpływ na używane usługi i regiony platformy Azure.
+## <a name="planned-maintenance-notification"></a>Powiadomienie o planowanej konserwacji
 
-Zdarzenia zaplanowanej konserwacji dla Azure Database for MySQL można wyświetlić za pomocą typu zdarzenia **planowanej konserwacji** . Aby dowiedzieć się, jak utworzyć **alerty dotyczące kondycji usługi**, odwiedź artykuł [tworzenie alertów dziennika aktywności w ramach powiadomień dotyczących usług](../service-health/alerts-activity-log-service-notifications.md) .
+**Powiadomienia o planowanej konserwacji** umożliwiają otrzymywanie alertów dotyczących nadchodzącej planowanej konserwacji do Azure Database for MySQL. Te powiadomienia są zintegrowane z zaplanowaną konserwacją [Service Health](../service-health/overview.md) i umożliwiają wyświetlanie całej zaplanowanej konserwacji subskrypcji w jednym miejscu. Pomaga również skalować powiadomienie do odpowiednich odbiorców dla różnych grup zasobów, ponieważ użytkownik może mieć różne kontakty odpowiedzialne za różne zasoby. Otrzymasz powiadomienie o nadchodzącej konserwacji 72 godzin przed wydarzeniem.
+
+> [!Note]
+> Firma Microsoft podejmie próbę udostępnienia **powiadomienia o planowanej konserwacji** 72 godzin dla wszystkich zdarzeń. Jednak w przypadku poprawek krytycznych lub zabezpieczeń powiadomienia mogą być wysyłane bliżej zdarzenia lub zostać pominięte.
+
+### <a name="to-receive-planned-maintenance-notification"></a>Aby odebrać powiadomienie o planowanej konserwacji
+
+1. W [portalu](https://portal.azure.com)wybierz pozycję **Service Health**.
+2. W sekcji **alerty** wybierz pozycję **alerty dotyczące kondycji**.
+3. Wybierz pozycję **+ Dodaj alert kondycji usługi** i wypełnij pola.
+4. Wypełnij pola wymagane. 
+5. Wybierz **Typ zdarzenia**, wybierz pozycję **Planowana konserwacja** lub **Zaznacz wszystko**
+6. W obszarze **grupy akcji** Określ, w jaki sposób chcesz otrzymywać alert (Otrzymuj wiadomość e-mail, wyzwól aplikację logiki itp.).  
+7. Upewnij się, że w momencie utworzenia reguły włączania zostanie ustawiona wartość tak.
+8. Wybierz pozycję **Utwórz regułę alertu** , aby zakończyć alert
+
+Szczegółowe instrukcje dotyczące tworzenia **alertów dotyczących kondycji usługi**można znaleźć w sekcji [tworzenie alertów dziennika aktywności w powiadomieniach dotyczących usług](../service-health/alerts-activity-log-service-notifications.md).
 
 > [!IMPORTANT]
-> Powiadomienia o planowanej konserwacji są dostępne tylko w wersji zapoznawczej dla regionu Wschodnie stany USA i tylko Południowe Zjednoczone Królestwo.
+> Powiadomienia o planowanej konserwacji są obecnie dostępne w wersji zapoznawczej
 
 ## <a name="next-steps"></a>Następne kroki
 - Zobacz [jak skonfigurować alerty](howto-alert-on-metric.md) , aby uzyskać wskazówki dotyczące tworzenia alertu dotyczącego metryki.

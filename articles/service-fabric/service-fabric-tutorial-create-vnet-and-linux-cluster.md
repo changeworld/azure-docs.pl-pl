@@ -4,12 +4,12 @@ description: Dowiedz się, jak wdrożyć klaster usługi Service Fabric systemu 
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 059f0f4b1eac9546f1adc05bf1f2799affc0dd8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f5788f07dd4a4f03a95efaea4b741cd64c930ac5
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465398"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251783"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>wdrażanie klastra usługi Service Fabric systemu Linux w sieci wirtualnej platformy Azure
 
@@ -19,7 +19,7 @@ W tym artykule dowiesz się, jak wdrożyć klaster Service Fabric systemu Linux 
 
 Przed rozpoczęciem:
 
-* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * Zainstaluj [interfejs wiersza polecenia usługi Service Fabric](service-fabric-cli.md).
 * Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli)
 * Aby poznać kluczowe pojęcia dotyczące klastrów, Przeczytaj [temat Omówienie klastrów platformy Azure](service-fabric-azure-clusters-overview.md)
@@ -129,21 +129,25 @@ VaultName="linuxclusterkeyvault"
 VaultGroupName="linuxclusterkeyvaultgroup"
 CertPath="C:\MyCertificates"
 
-az sf cluster create --resource-group $ResourceGroupName --location $Location --cluster-name $ClusterName --template-file C:\temp\cluster\AzureDeploy.json --parameter-file C:\temp\cluster\AzureDeploy.Parameters.json --certificate-password $Password --certificate-output-folder $CertPath --certificate-subject-name $ClusterName.$Location.cloudapp.azure.com --vault-name $VaultName --vault-resource-group $ResourceGroupName
+az sf cluster create --resource-group $ResourceGroupName --location $Location \
+   --cluster-name $ClusterName --template-file C:\temp\cluster\AzureDeploy.json \
+   --parameter-file C:\temp\cluster\AzureDeploy.Parameters.json --certificate-password $Password \
+   --certificate-output-folder $CertPath --certificate-subject-name $ClusterName.$Location.cloudapp.azure.com \
+   --vault-name $VaultName --vault-resource-group $ResourceGroupName
 ```
 
 ## <a name="connect-to-the-secure-cluster"></a>Nawiązywanie połączenia z zabezpieczonym klastrem
 
 Połącz się z klastrem przy użyciu polecenia `sfctl cluster select` interfejsu wiersza polecenia usługi Service Fabric oraz swojego klucza.  Użyj opcji **--no-verify** tylko w przypadku certyfikatu z podpisem własnym.
 
-```azurecli
+```console
 sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
 Za pomocą polecenia `sfctl cluster health` sprawdź poprawność połączenia i upewnij się, że klaster jest w dobrej kondycji.
 
-```azurecli
+```console
 sfctl cluster health
 ```
 

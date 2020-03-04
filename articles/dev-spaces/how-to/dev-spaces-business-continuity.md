@@ -1,5 +1,5 @@
 ---
-title: Ciągłość biznesowa i odzyskiwanie po awarii
+title: Ciągłość działania i odzyskiwanie po awarii
 services: azure-dev-spaces
 author: lisaguthrie
 ms.author: lcozzens
@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Dowiedz się, jak korzystać z usług Azure Dev Spaces i Azure Kubernetes Services w celu zapewnienia ciągłości działania i przygotowania do odzyskiwania po awarii
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 8a223e9610d2b243cd78bf8b674262d6438421a9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8561486bcf8524d309ba46fcbb4b4d3e180d7c72
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438520"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252398"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Ciągłość działania i odzyskiwanie po awarii w Azure Dev Spaces
 
@@ -41,7 +41,7 @@ Powtórz ten proces dla każdego klastra.
 
 Możesz również włączyć funkcję miejsca deweloperskie w wierszu polecenia:
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
@@ -57,7 +57,7 @@ Po poprawnym skonfigurowaniu klastra kopii zapasowej z uruchomioną linią bazow
 
 Wybierz inny klaster z następującym poleceniem interfejsu wiersza polecenia:
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <new resource group name> -n <new cluster name>
 ```
 

@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: e316da12345c0bf1ea3682dadb1a7a65f250747b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f21b440ee0e2c53d9824300e85b683629c1575da
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191098"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252548"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Szybki Start: Tworzenie usługi linku prywatnego przy użyciu Azure Portal
 
@@ -29,21 +29,22 @@ Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 Najpierw Utwórz sieć wirtualną. Następnie utwórz wewnętrzny moduł równoważenia obciążenia, który będzie używany z usługą link prywatny.
 
-### <a name="create-the-virtual-network"></a>Tworzenie sieci wirtualnej
+## <a name="virtual-network-and-parameters"></a>Sieć wirtualna i parametry
 
 W tej sekcji utworzysz sieć wirtualną. Należy również utworzyć podsieć, która będzie hostować moduł równoważenia obciążenia, który uzyskuje dostęp do usługi linków prywatnych.
 
-1. W lewym górnym rogu portalu wybierz pozycję **Utwórz zasób** > **Sieć** > **Sieć wirtualna**.
+W tej sekcji należy zamienić następujące parametry w krokach z poniższymi informacjami:
 
-1. W okienku **Tworzenie sieci wirtualnej** wprowadź lub wybierz następujące wartości:
+| Parametr                   | Wartość                |
+|-----------------------------|----------------------|
+| **\<nazwy grupy zasobów >**  | myResourceGroupLB |
+| **\<nazwę sieci wirtualnej >** | myVNet          |
+| **\<nazwę regionu >**          | Wschodnie stany USA 2      |
+| **\<adres IPv4 >**   | 10.3.0.0 \ 16          |
+| **\<nazwę podsieci >**          | myBackendSubnet        |
+| **\<zakres adresów podsieci >** | 10.3.0.0 \ 24          |
 
-   - **Nazwa**: wprowadź **myVNet**.
-   - **ResourceName**: wybierz pozycję **Utwórz nową**, wprowadź **myResourceGroupLB**i wybierz **przycisk OK**.
-   - **Nazwa** > **podsieci** : wprowadź **myBackendSubnet**.
-
-1. Wybierz pozycję **Utwórz**.
-
-   ![Tworzenie sieci wirtualnej](../load-balancer/media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-a-standard-load-balancer"></a>Tworzenie modułu równoważenia obciążenia w warstwie Standardowa
 

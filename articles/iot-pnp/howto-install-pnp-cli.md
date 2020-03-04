@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: f4e255309d32026b7f2bb4de67fce7ec37c753f6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8dead08017f15a7429655b4bf17b6e8c8e481114
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529579"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251011"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Instalowanie i używanie rozszerzenia Azure IoT dla interfejsu wiersza polecenia platformy Azure
 
@@ -26,7 +26,7 @@ Rozszerzenie Azure IoT dla interfejsu wiersza polecenia platformy Azure to narz�
 - Pracuj z właściwościami urządzeń.
 - Wywoływanie poleceń dotyczących urządzeń.
 
-W tym artykule wyjaśniono, jak:
+W tym artykule pokazano, jak:
 
 - Zainstaluj i skonfiguruj rozszerzenie Azure IoT dla interfejsu wiersza polecenia platformy Azure.
 - Użyj rozszerzenia, aby korzystać z i testować urządzenia.
@@ -40,7 +40,7 @@ Postępuj zgodnie z [instrukcjami instalacji](https://docs.microsoft.com/cli/azu
 
 ### <a name="step-2---install-iot-extension"></a>Krok 2. Instalowanie rozszerzenia IoT
 
-[Plik readme rozszerzenia IoT](https://github.com/Azure/azure-iot-cli-extension) opisuje kilka sposobów instalowania rozszerzenia. Najprostszym sposobem jest uruchomienie polecenia `az extension add --name azure-cli-iot-ext`. Po zakończeniu instalacji można użyć polecenia `az extension list` w celu zweryfikowania aktualnie zainstalowanych rozszerzeń lub polecenia `az extension show --name azure-cli-iot-ext` w celu wyświetlenia szczegółów rozszerzenia IoT. Aby usunąć rozszerzenie, można użyć polecenia `az extension remove --name azure-cli-iot-ext`.
+[Plik readme rozszerzenia IoT](https://github.com/Azure/azure-iot-cli-extension) opisuje kilka sposobów instalowania rozszerzenia. Najprostszym sposobem jest uruchomienie polecenia `az extension add --name azure-iot`. Po zakończeniu instalacji można użyć polecenia `az extension list` w celu zweryfikowania aktualnie zainstalowanych rozszerzeń lub polecenia `az extension show --name azure-iot` w celu wyświetlenia szczegółów rozszerzenia IoT. Aby usunąć rozszerzenie, można użyć polecenia `az extension remove --name azure-iot`.
 
 ## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Korzystanie z rozszerzenia Azure IoT dla interfejsu wiersza polecenia platformy Azure
 

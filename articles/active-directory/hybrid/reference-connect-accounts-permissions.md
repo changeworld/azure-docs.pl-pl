@@ -17,12 +17,12 @@ ms.date: 10/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ae1301be4a3a3c086961aae72fb9eeb12aeda2
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960227"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248775"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: konta i uprawnienia
 
@@ -55,11 +55,10 @@ Oprócz tych trzech kont używanych do uruchamiania Azure AD Connect należy ró
 > [!NOTE]
 > Jest on obsługiwany do zarządzania kontami administracyjnymi używanymi w Azure AD Connect z lasu administracyjnego ESAE (znany również jako "Red Forest").
 > Dedykowane lasy administracyjne umożliwiają organizacjom hostowanie kont administracyjnych, stacji roboczych i grup w środowisku z silniejszymi kontrolami zabezpieczeń niż środowisko produkcyjne.
-> Aby dowiedzieć się więcej na temat dedykowanych lasów administracyjnych, zapoznaj się z [podejściem do projektowania lasów administracyjnych ESAE](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach) .
->>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+> Aby dowiedzieć się więcej na temat dedykowanych lasów administracyjnych, zapoznaj się z [podejściem do projektowania lasów administracyjnych ESAE](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach).
 
 > [!NOTE]
-> Rola administratora globalnego nie jest wymagana po początkowej konfiguracji i jedynym wymaganym koncie będzie konto roli **konta synchronizacji katalogów** . To nie necssarily oznacza, że chcesz po prostu usunąć konto z rolą administratora globalnego. Lepiej jest zmienić rolę na mniej wydajną rolę, ponieważ całkowite usunięcie konta może spowodować problemy, jeśli kiedykolwiek trzeba ponownie uruchomić kreatora. Zmniejszając uprawnienia roli, zawsze można ponownie podwyższyć poziom uprawnieniami, jeśli trzeba będzie ponownie użyć Kreatora Azure AD Connect. 
+> Rola administratora globalnego nie jest wymagana po początkowej konfiguracji i jedynym wymaganym koncie będzie konto roli **konta synchronizacji katalogów** . Nie musi to oznaczać, że chcesz po prostu usunąć konto z rolą administratora globalnego. Lepiej jest zmienić rolę na mniej wydajną rolę, ponieważ całkowite usunięcie konta może spowodować problemy, jeśli kiedykolwiek trzeba ponownie uruchomić kreatora. Zmniejszając uprawnienie roli, można zawsze ponownie podwyższyć poziom uprawnień, jeśli trzeba będzie ponownie użyć Kreatora Azure AD Connect. 
 
 ## <a name="installing-azure-ad-connect"></a>Instalowanie Azure AD Connect
 Kreator instalacji Azure AD Connect oferuje dwie różne ścieżki:
@@ -142,7 +141,7 @@ Musi także mieć przyznane wymagane uprawnienia. Kreator instalacji nie weryfik
 
 Wymagane uprawnienia są zależne od funkcji opcjonalnych, które można włączyć. Jeśli masz wiele domen, uprawnienia muszą zostać przyznane dla wszystkich domen w lesie. Jeśli nie włączysz żadnej z tych funkcji, uprawnienia **użytkownika domeny** domyślnej są wystarczające.
 
-| Funkcja | Uprawnienia |
+| Cecha | Uprawnienia |
 | --- | --- |
 | Funkcja MS-DS-ConsistencyGuid |Uprawnienia do zapisu w atrybucie MS-DS-ConsistencyGuid udokumentowanym w [koncepcji projektowania — przy użyciu MS-ds-ConsistencyGuid jako sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Synchronizacja skrótów haseł |<li>Replikowanie zmian w katalogu</li>  <li>Replikuj wszystkie zmiany katalogu |
@@ -190,7 +189,7 @@ Jeśli używasz programu Connect z kompilacją z 2017 marca lub wcześniejszych,
 
 Jest to tabela domyślnych, zalecanych i obsługiwanych opcji dla konta usługi synchronizacji.
 
-Legendy
+Legenda:
 
 - Opcja **pogrubiona** wskazuje opcję domyślną i w większości przypadków zalecaną opcją.
 - *Kursywa* wskazuje zalecaną opcję, jeśli nie jest opcją domyślną.
@@ -203,8 +202,8 @@ Legendy
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>Niestandardowy | Zdalne SQL</br>Niestandardowy |
 | --- | --- | --- | --- |
-| **komputer autonomiczny/Grupa robocza** | Nieobsługiwane | **VSA**</br>Konto lokalne (2008)</br>Konto lokalne |  Nieobsługiwane |
-| **komputer przyłączony do domeny** | **VSA**</br>Konto lokalne (2008) | **VSA**</br>Konto lokalne (2008)</br>Konto lokalne</br>Konto domeny</br>sMSA,gMSA | **gMSA**</br>Konto domeny |
+| **komputer autonomiczny/Grupa robocza** | Nieobsługiwane | **ATRYBUTU**</br>Konto lokalne (2008)</br>Konto lokalne |  Nieobsługiwane |
+| **komputer przyłączony do domeny** | **ATRYBUTU**</br>Konto lokalne (2008) | **ATRYBUTU**</br>Konto lokalne (2008)</br>Konto lokalne</br>Konto domeny</br>sMSA,gMSA | **gMSA**</br>Konto domeny |
 | **Kontroler domeny** | **Konto domeny** | *gMSA*</br>**Konto domeny**</br>sMSA| *gMSA*</br>**Konto domeny**|
 
 #### <a name="virtual-service-account"></a>Konto usługi wirtualnej

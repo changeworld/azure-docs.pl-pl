@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3df906936cc4e47ee1f43adb0fcbaa0e8c04b0f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 10d3f18fb11dc54f560d867e2b5ff87251e2c836
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656317"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249102"
 ---
 # <a name="conditional-access-grant"></a>Dostęp warunkowy: Udziel
 
@@ -67,35 +67,7 @@ Organizacje mogą zdecydować się na użycie tożsamości urządzenia jako czę
 
 Organizacje mogą wymagać od zatwierdzonej aplikacji klienckiej próby dostępu do wybranych aplikacji w chmurze. Te zatwierdzone aplikacje klienckie obsługują [Zasady ochrony aplikacji usługi Intune](/intune/app-protection-policy) niezależnie od dowolnego rozwiązania do zarządzania urządzeniami przenośnymi (MDM).
 
-To ustawienie dotyczy następujących aplikacji klienckich:
-
-- Microsoft Azure Information Protection
-- Rezerwacje firmy Microsoft
-- Microsoft Cortana
-- Microsoft Dynamics 365
-- Microsoft Edge
-- Microsoft Excel
-- Microsoft Flow
-- Microsoft Intune Managed Browser
-- Microsoft Invoicing
-- Microsoft Kaizala
-- Microsoft Launcher
-- Microsoft OneDrive
-- Microsoft OneNote
-- Microsoft Outlook
-- Microsoft Planner
-- Microsoft PowerApps
-- Microsoft Power BI
-- Microsoft PowerPoint
-- Microsoft SharePoint
-- Microsoft Skype dla firm
-- Microsoft StaffHub
-- Microsoft Stream
-- Microsoft Teams
-- Microsoft To-Do
-- Microsoft Visio
-- Microsoft Word
-- Microsoft Yammer
+Obsługiwane aplikacje można znaleźć w artykule [Microsoft Intune chronione aplikacje](/intune/apps/apps-supported-intune-apps).
 
 **Uwagi**
 
@@ -108,12 +80,7 @@ To ustawienie dotyczy następujących aplikacji klienckich:
 
 W zasadach dostępu warunkowego można wymagać, aby [Zasady ochrony aplikacji usługi Intune](/intune/app-protection-policy) były obecne w aplikacji klienckiej przed udostępnieniem dostępu do wybranych aplikacji w chmurze. 
 
-To ustawienie dotyczy następujących aplikacji klienckich:
-
-- Microsoft Cortana
-- Microsoft OneDrive
-- Microsoft Outlook
-- Microsoft Planner
+Obsługiwane aplikacje można znaleźć w artykule [Microsoft Intune chronione aplikacje](/intune/apps/apps-supported-intune-apps).
 
 **Uwagi**
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c4a0e64e1f08bb3e80eaf67937da10906bfce0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: bae957eba627be7fa3b968585a03d28aa5b0af56
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591612"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255015"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: planowanie implementacji dołączania hybrydowego Azure Active Directory
 
@@ -43,11 +43,11 @@ Aby zaplanować implementację hybrydowej usługi Azure AD, zapoznaj się z:
 
 |   |   |
 | --- | --- |
-| ![Sprawdź][1] | Przejrzyj obsługiwane urządzenia |
-| ![Sprawdź][1] | Przejrzyj interesujące Cię rzeczy |
-| ![Sprawdź][1] | Przeglądanie kontrolowanej weryfikacji hybrydowego sprzężenia usługi Azure AD |
-| ![Sprawdź][1] | Wybierz swój scenariusz w oparciu o infrastrukturę tożsamości |
-| ![Sprawdź][1] | Zapoznaj się z lokalną obsługą UPN usługi AD na potrzeby hybrydowego dołączania do usługi Azure AD |
+| ![Zaznacz][1] | Przejrzyj obsługiwane urządzenia |
+| ![Zaznacz][1] | Przejrzyj interesujące Cię rzeczy |
+| ![Zaznacz][1] | Przeglądanie kontrolowanej weryfikacji hybrydowego sprzężenia usługi Azure AD |
+| ![Zaznacz][1] | Wybierz swój scenariusz w oparciu o infrastrukturę tożsamości |
+| ![Zaznacz][1] | Zapoznaj się z lokalną obsługą UPN usługi AD na potrzeby hybrydowego dołączania do usługi Azure AD |
 
 ## <a name="review-supported-devices"></a>Przejrzyj obsługiwane urządzenia
 
@@ -80,6 +80,8 @@ Jako pierwszy krok planowania należy przejrzeć środowisko i określić, czy n
 
 - Funkcja hybrydowego przyłączania do usługi Azure AD nie jest obsługiwana na urządzeniach niskiego poziomu systemu Windows podczas korzystania z roamingu poświadczeń lub roamingu profilu użytkownika lub profilu obowiązkowego.
 
+- Podstawowe systemy operacyjne serwera nie obsługują żadnego typu rejestracji urządzeń.
+
 ### <a name="os-imaging-considerations"></a>Zagadnienia dotyczące tworzenia obrazu systemu operacyjnego
 - Jeśli korzystasz z narzędzia przygotowywania systemu (Sysprep) i używasz obrazu **sprzed systemu Windows 10 1809** do instalacji, upewnij się, że obraz nie pochodzi z urządzenia, które jest już zarejestrowane w usłudze Azure AD jako sprzężenie hybrydowe usługi Azure AD.
 
@@ -97,7 +99,7 @@ Jeśli urządzenia przyłączone do domeny systemu Windows 10 są zarejestrowane
 > [!NOTE]
 > Zarejestrowane urządzenie usługi Azure AD nie zostanie automatycznie usunięte, jeśli jest zarządzane przez usługę Intune.
 
-### <a name="additional-considerations"></a>Dodatkowe kwestie do uwzględnienia
+### <a name="additional-considerations"></a>Dodatkowe zagadnienia
 - Jeśli środowisko używa infrastruktury pulpitów wirtualnych (VDI), zobacz [tożsamość urządzenia i Wirtualizacja pulpitu](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
 
 - Hybrydowe dołączanie usługi Azure AD jest obsługiwane w przypadku modułu TPM zgodnego ze standardem FIPS 2,0 i nie jest obsługiwane dla modułu TPM 1,2 Jeśli urządzenia są zgodne ze standardem FIPS 1,2, należy je wyłączyć przed przejściem do hybrydowego sprzężenia usługi Azure AD. Firma Microsoft nie udostępnia żadnych narzędzi do wyłączania trybu FIPS dla moduły TPM, ponieważ jest on zależny od producenta modułu TPM. Aby uzyskać pomoc techniczną, skontaktuj się z producentem OEM. Począwszy od wersji Windows 10 1903, moduły TPM 1,2 nie są używane na potrzeby hybrydowego przyłączenia do usługi Azure AD, a urządzenia z tymi moduły tpmami będą uznawane za niemające modułu TPM.

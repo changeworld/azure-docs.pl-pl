@@ -1,18 +1,18 @@
 ---
 title: Apache Spark & Hive — łącznik magazynu Hive — Azure HDInsight
 description: Dowiedz się, jak zintegrować Apache Spark i Apache Hive z łącznikiem magazynu Hive w usłudze Azure HDInsight.
-author: nakhanha
-ms.author: nakhanha
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.openlocfilehash: 765bbc352c493124c1adec68eff456f4d0de3d49
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 03/02/2020
+ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744873"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252407"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrowanie Apache Spark i Apache Hive z łącznikiem magazynu Hive
 
@@ -54,17 +54,17 @@ Skopiuj informacje o węźle z pliku `/etc/hosts` w headnode0 klastra interakcyj
 
 #### <a name="from-your-interactive-query-cluster"></a>Z interaktywnego klastra zapytań
 
-1. Przejdź do strony głównej platformy Apache Ambari dla klastra przy użyciu `https://LLAPCLUSTERNAME.azurehdinsight.net`, gdzie `LLAPCLUSTERNAME` jest nazwą klastra zapytań interaktywnych.
+1. Przejdź do strony klastra Apache Ambari Hive przy użyciu `https://LLAPCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs`, gdzie `LLAPCLUSTERNAME` jest nazwą klastra zapytań interaktywnych.
 
-1. Przejdź do strony **hive** > **konfiguracjami** > **Advanced** > **Advanced Hive-site** > **Hive. dozorcy. kworum** i zanotuj wartość. Wartość może być podobna do: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
+1. Przejdź do **zaawansowanego** > **Ogólne** > **Hive. metadanych. URI** i zanotuj wartość. Wartość może być podobna do: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
 
-1. Przejdź do **gałęzi** > **konfiguracjami** > **Advanced** > **General** > **Hive. metadanych. URI** i zanotuj wartość. Wartość może być podobna do: `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
+1. Przejdź do **zaawansowanej** > **Advanced hive-site** > **Hive. dozorcy. kworum** i zanotuj wartość. Wartość może być podobna do: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
 
 #### <a name="from-your-apache-spark-cluster"></a>Z klastra Apache Spark
 
-1. Przejdź do strony głównej platformy Apache Ambari dla klastra przy użyciu `https://SPARKCLUSTERNAME.azurehdinsight.net`, gdzie `SPARKCLUSTERNAME` jest nazwą klastra Apache Spark.
+1. Przejdź do strony klastra Apache Ambari Hive przy użyciu `https://SPARKCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs`, gdzie `SPARKCLUSTERNAME` jest nazwą klastra Apache Spark.
 
-1. Przejdź do usługi **hive** > **konfiguracjami** > **Advanced** > **Advanced Hive-Interactive-site** > **Hive. llap. Demon. Service. hosty** i zanotuj wartość. Wartość może być podobna do: `@llap0`.
+1. Przejdź do **advanced** > **Advanced Hive-interactive-site** > **Hive. llap. Demon. Service. hosts** i zanotuj wartość. Wartość może być podobna do: `@llap0`.
 
 ### <a name="configure-spark-cluster-settings"></a>Skonfiguruj ustawienia klastra Spark
 
@@ -174,7 +174,7 @@ Platforma Spark nie obsługuje natywnego zapisywania w tabelach z zarządzanym K
     ```scala
     hive.table("sampletable_colorado").show()
     ```
-    
+
     ![Łącznik magazynu Hive pokazuje tabelę programu Hive](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
 
 ### <a name="structured-streaming-writes"></a>Zapisy przesyłania strumieniowego strukturalnego
@@ -253,7 +253,7 @@ Użyj **klawiszy CTRL + C** , aby zatrzymać netcat na drugiej sesji SSH. Użyj 
 
         ![Lista zasad Hive Ranger łącznika magazynu Hive](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. Podaj żądaną nazwę zasad. Wybierz bazę danych **: default**, tabela programu Hive: **Demonstracja**, kolumna Hive: **name**, User: **rsadmin2**, typy dostępu: **SELECT**i **maska częściowa: Pokaż ostatnie 4** z menu **opcji wybierz maskowanie** . Kliknij pozycję **Dodaj**.
+    a. Podaj żądaną nazwę zasad. Wybierz bazę danych **: default**, tabela programu Hive: **Demonstracja**, kolumna Hive: **name**, User: **rsadmin2**, typy dostępu: **SELECT**i **maska częściowa: Pokaż ostatnie 4** z menu **opcji wybierz maskowanie** . Kliknij pozycję **Add** (Dodaj).
                 ![utworzyć zasad](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Ponownie Wyświetl zawartość tabeli. Po zastosowaniu zasad Ranger można zobaczyć tylko cztery ostatnie znaki w kolumnie.
 
@@ -261,5 +261,5 @@ Użyj **klawiszy CTRL + C** , aby zatrzymać netcat na drugiej sesji SSH. Użyj 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Używanie zapytań interakcyjnych w usłudze HDInsight](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
+* [Używanie zapytań interakcyjnych w usłudze HDInsight](./apache-interactive-query-get-started.md)
 * [Przykłady współpracy z łącznikiem magazynu Hive przy użyciu Zeppelin, usługi Livy, Spark-Submit i pyspark](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)

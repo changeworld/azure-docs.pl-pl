@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f5bd6b741f85f35fe03c941ed09728354d6b3d2d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 859f8a9c2bf644461c8945255de9f925b4e943f4
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905706"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251848"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Autouczenie modelu prognozowania szeregów czasowych
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -113,7 +113,7 @@ W przypadku zadań prognozowania automatyczne Uczenie maszynowe korzysta z krok�
 
 Obiekt [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) definiuje ustawienia i dane niezbędne do automatycznego zadania uczenia maszynowego. Podobnie jak w przypadku problemu z regresją, definiuje się standardowe parametry szkolenia, takie jak typ zadania, liczba iteracji, dane szkoleniowe i liczba operacji krzyżowych. W przypadku zadań prognozowania należy ustawić dodatkowe parametry, które mają wpływ na eksperyment. W poniższej tabeli opisano każdy parametr i jego użycie.
 
-| Param | Opis | Wymagane |
+| Param | Opis | Wymagany |
 |-------|-------|-------|
 |`time_column_name`|Służy do określania kolumny DateTime w danych wejściowych używanych do kompilowania szeregów czasowych i wywnioskowania jej częstotliwości.|✓|
 |`grain_column_names`|Nazwy definiujące poszczególne grupy serii w danych wejściowych. Jeśli ziarno nie jest zdefiniowane, zakłada się, że zestaw danych jest jedną serią czasową.||
@@ -178,13 +178,14 @@ Zapoznaj się z [przykładami prognozowanych notesów](https://github.com/Azure/
 ### <a name="configure-a-dnn-enable-forecasting-experiment"></a>Konfigurowanie eksperymentu włączania prognozowania DNN
 
 > [!NOTE]
-> DNN obsługa prognozowania w programie zautomatyzowanym Machine Learning jest w wersji zapoznawczej.
+> Obsługa DNN w przypadku prognozowania w programie zautomatyzowanym Machine Learning jest w wersji zapoznawczej i nie jest obsługiwana w przypadku uruchomień lokalnych.
 
 Aby można było korzystać z DNNs do prognozowania, należy ustawić parametr `enable_dnn` w AutoMLConfig na true. 
 
-Aby można było korzystać z DNNs, zalecamy użycie klastra obliczeniowego AML z jednostkami SKU procesora GPU i co najmniej dwoma węzłami jako elementem docelowym obliczeń. Aby uzyskać więcej informacji, zobacz [dokumentację AML COMPUTE](how-to-set-up-training-targets.md#amlcompute). Aby uzyskać więcej informacji na temat rozmiarów maszyn wirtualnych, które zawierają procesory GPU, zobacz [rozmiary maszyny wirtualnej zoptymalizowane pod kątem procesora GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) .
+Zalecamy używanie klastra obliczeniowego AML z jednostkami SKU procesora GPU i co najmniej dwoma węzłami jako elementem docelowym obliczeń. Aby zapewnić wystarczającą ilość czasu na ukończenie szkolenia DNN, zalecamy ustawienie limitu czasu eksperymentu na co najmniej kilka godzin.
+Aby uzyskać więcej informacji o rozmiarach obliczeniowych i maszyn wirtualnych AML, które obejmują procesor GPU, zapoznaj się z dokumentacją [obliczeń AML](how-to-set-up-training-targets.md#amlcompute) i [rozmiarem maszyny wirtualnej zoptymalizowanej pod kątem procesora GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
 
-Aby zapewnić wystarczającą ilość czasu na ukończenie szkolenia DNN, zalecamy ustawienie limitu czasu eksperymentu na co najmniej kilka godzin.
+Aby zapoznać się ze szczegółowym przykładem kodu korzystającego z DNNs, zobacz [Notes prognozowania produkcji napojów](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) .
 
 ### <a name="view-feature-engineering-summary"></a>Wyświetlanie podsumowania inżynierów funkcji
 

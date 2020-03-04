@@ -6,12 +6,12 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 527002bee1bec4097cf62155efebae06880bad97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bae67b0177823ab4558085db67423edea062fa3c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472394"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250071"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Samouczek: Integrowanie Azure Key Vault w rozmieszczeniu szablonu Menedżer zasobów
 
@@ -42,7 +42,7 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
 * Visual Studio Code z rozszerzeniem Menedżer zasobów Tools. [Aby utworzyć szablony Azure Resource Manager, zobacz temat używanie Visual Studio Code](use-vs-code-to-create-template.md).
 * Aby zwiększyć bezpieczeństwo, użyj wygenerowanego hasła dla konta administratora maszyny wirtualnej. Oto przykład dla generowania hasła:
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
     Sprawdź, czy wygenerowane hasło spełnia wymagania dotyczące hasła maszyny wirtualnej. Każda usługa platformy Azure ma określone wymagania dotyczące hasła. Wymagania dotyczące hasła maszyny wirtualnej można znaleźć w temacie [jakie są wymagania dotyczące haseł podczas tworzenia maszyny wirtualnej?](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
@@ -179,7 +179,7 @@ Podczas wdrażania szablonu należy użyć tej samej grupy zasobów, która zost
 
 Po pomyślnym wdrożeniu maszyny wirtualnej Przetestuj poświadczenia logowania przy użyciu hasła przechowywanego w magazynie kluczy.
 
-1. Otwórz [Portalu Azure](https://portal.azure.com).
+1. Otwórz [portal Azure](https://portal.azure.com).
 
 1. Wybierz pozycję **grupy zasobów** >  **\<*YourResourceGroupName*>**  > **simpleWinVM**.
 1. Wybierz pozycję **Połącz** w górnej części.

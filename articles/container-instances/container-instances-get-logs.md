@@ -4,12 +4,12 @@ description: Dowiedz się, jak pobrać dzienniki kontenerów i zdarzenia w Azure
 ms.topic: article
 ms.date: 12/30/2019
 ms.custom: mvc
-ms.openlocfilehash: fe30ab875aa6cd7f465ffe69672a771e18134e1c
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 0991b9cb1f99606910dbdf2c87b111f67da6da7b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664737"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249994"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Pobieranie dzienników kontenerów i zdarzeń w Azure Container Instances
 
@@ -21,8 +21,11 @@ Aby wyświetlić dzienniki z kodu aplikacji w kontenerze, można użyć poleceni
 
 Poniżej znajdują się dane wyjściowe dziennika z przykładowego kontenera opartego na zadaniach w przypadku [ustawienia wiersza polecenia w wystąpieniu kontenera](container-instances-start-command.md#azure-cli-example), po podaniu nieprawidłowego adresu URL przy użyciu przesłonięcia wiersza polecenia:
 
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
+```azurecli
+az container logs --resource-group myResourceGroup --name mycontainer
+```
+
+```output
 Traceback (most recent call last):
   File "wordcount.py", line 11, in <module>
     urllib.request.urlretrieve (sys.argv[1], "foo.txt")
@@ -49,8 +52,11 @@ Polecenie [AZ Container Attach][az-container-attach] zawiera informacje diagnost
 
 Na przykład dane wyjściowe z kontenera opartego na zadaniach są [ustawiane w wierszu polecenia w wystąpieniu kontenera](container-instances-start-command.md#azure-cli-example), po podaniu prawidłowego adresu URL dużego pliku tekstowego do przetworzenia:
 
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
+```azurecli
+az container attach --resource-group myResourceGroup --name mycontainer
+```
+
+```output
 Container 'mycontainer' is in state 'Unknown'...
 Container 'mycontainer' is in state 'Waiting'...
 Container 'mycontainer' is in state 'Running'...

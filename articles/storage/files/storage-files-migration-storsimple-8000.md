@@ -4,25 +4,19 @@ description: Dowiedz się, jak migrować urządzenie z systemem StorSimple 8100 
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 2/20/2020
+ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: ec3f59c02f73f51ccb4fac21d6ba4cc746a1134e
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 78100a5dd38b211f6b0241d5a0bac10cf86b09f6
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209443"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250948"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 i 8600 migracji do Azure File Sync
 
-Seria StorSimple 8000 ma dwa różne urządzenia fizyczne. Jedyną różnicą między nimi jest ilość lokalnego rozmiaru pamięci podręcznej (miejsce na dysku). To urządzenie jest uruchamiane w lokalnym centrum danych i działa jako pamięć podręczna do danych przechowywanych na platformie Azure.
-W przypadku korzystania z usługi w chmurze, która zakończyła się końcem okresu użytkowania StorSimple 31 2022 w wierszu produktu, przestanie działać.
-
-Konieczna jest migracja z dowolnego urządzenia StorSimple z wystarczającą ilością czasu do zapasu.
-Azure File Sync to naturalna technologia następnika, oferująca więcej funkcji i większą elastyczność niż StorSimple.
-
-Ten artykuł zawiera informacje dotyczące niezbędnej wiedzy i migracji, które należy wykonać, aby przeprowadzić migrację w celu Azure File Sync sukcesu.
+Seria StorSimple 8000 reprezentuje dwie osobne jednostki SKU i można migrować dane z jednej z tych jednostek SKU do środowiska Azure File Syncowego. W tym artykule omówiono Migrowanie obu urządzeń do Azure File Sync i udostępniają niezbędne informacje w tle oraz kroki migracji, aby przeprowadzić migrację Azure File Sync sukces.
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 

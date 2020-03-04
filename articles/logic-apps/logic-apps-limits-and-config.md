@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 02/20/2020
-ms.openlocfilehash: 7157d9c0b96dbb31a158f599efd5489e8059f6ba
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.date: 02/28/2020
+ms.openlocfilehash: 4912b07c60ecc8a2db65d3b8ffb339cf83909396
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78163441"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250844"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informacje o limitach i konfiguracji Azure Logic Apps
 
@@ -195,7 +195,7 @@ Poniżej przedstawiono limity łączników niestandardowych, które można tworz
 | Name (Nazwa) | Limit |
 |------|-------|
 | Zarządzane tożsamości na aplikację logiki | Tożsamość przypisana przez system lub 1 tożsamość przypisana przez użytkownika |
-| Liczba aplikacji logiki, które mają zarządzaną tożsamość w ramach subskrypcji platformy Azure na region | 100 |
+| Liczba aplikacji logiki, które mają zarządzaną tożsamość w ramach subskrypcji platformy Azure na region | 250 |
 |||
 
 <a name="integration-account-limits"></a>

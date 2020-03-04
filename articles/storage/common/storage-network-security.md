@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 2c3b329aa767fbe9795c90ca236008210576fe12
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 7d3b580a939d207bbcc410e13555cdaa28067f87
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514735"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250979"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 
@@ -47,7 +47,7 @@ Ruch dyskowy maszyny wirtualnej (w tym instalowanie i odinstalowywanie operacje 
 
 Klasyczne konta magazynu nie obsługują zapory i sieci wirtualne.
 
-Usługa unmanaged disks w ramach kont magazynu służy za pomocą reguł sieci stosowane do tworzenia kopii zapasowych i przywracanie maszyn wirtualnych, tworząc wyjątek. Ten proces jest udokumentowany w [wyjątki](#exceptions) dalszej części tego artykułu. Wyjątki zapory nie są stosowane w przypadku dysków zarządzanych jako są już zarządzane przez platformę Azure.
+Usługa unmanaged disks w ramach kont magazynu służy za pomocą reguł sieci stosowane do tworzenia kopii zapasowych i przywracanie maszyn wirtualnych, tworząc wyjątek. Ten proces jest udokumentowany w sekcji [wyjątki](#exceptions) tego artykułu. Wyjątki zapory nie są stosowane w przypadku dysków zarządzanych jako są już zarządzane przez platformę Azure.
 
 ## <a name="change-the-default-network-access-rule"></a>Zmień domyślną regułę dostępu do sieci
 
@@ -60,19 +60,19 @@ Domyślnie konta magazynu akceptują połączenia z klientami za pośrednictwem 
 
 Możesz zarządzać domyślnej reguły dostępu do sieci dla kont magazynu w witrynie Azure portal, programu PowerShell lub CLIv2.
 
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Portalu Azure
 
 1. Przejdź do konta magazynu, które chcesz zabezpieczyć.
 
-1. Kliknij w menu Ustawienia o nazwie **zapory i sieci wirtualne**.
+1. Kliknij menu Ustawienia o nazwie **zapory i sieci wirtualne**.
 
-1. Aby odmówić dostępu domyślnie, chce zezwolić na dostęp z **wybrane sieci**. Aby zezwolić na ruch z wszystkich sieci, chce zezwolić na dostęp z **wszystkie sieci**.
+1. Aby domyślnie zablokować dostęp, wybierz opcję zezwolenia na dostęp z **wybranych sieci**. Aby zezwolić na ruch ze wszystkich sieci, wybierz opcję zezwolenia na dostęp ze **wszystkich sieci**.
 
-1. Kliknij przycisk **Zapisz** Aby zastosować zmiany.
+1. Kliknij przycisk **Zapisz** , aby zastosować zmiany.
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Program PowerShell
 
-1. Zainstaluj [programu Azure PowerShell](/powershell/azure/install-Az-ps) i [Zaloguj](/powershell/azure/authenticate-azureps).
+1. Zainstaluj [Azure PowerShell](/powershell/azure/install-Az-ps) i [Zaloguj się](/powershell/azure/authenticate-azureps).
 
 1. Wyświetl stan reguły domyślne dla konta magazynu.
 
@@ -94,7 +94,7 @@ Możesz zarządzać domyślnej reguły dostępu do sieci dla kont magazynu w wit
 
 #### <a name="cliv2"></a>CLIv2
 
-1. Zainstaluj [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [Zaloguj](/cli/azure/authenticate-azure-cli).
+1. Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [Zaloguj się](/cli/azure/authenticate-azure-cli).
 
 1. Wyświetl stan reguły domyślne dla konta magazynu.
 
@@ -118,13 +118,13 @@ Możesz zarządzać domyślnej reguły dostępu do sieci dla kont magazynu w wit
 
 Konta magazynu można skonfigurować tak, aby zezwalały na dostęp tylko z określonych podsieci. Dozwolone podsieci mogą należeć do sieci wirtualnej w tej samej subskrypcji lub w ramach innej subskrypcji, w tym subskrypcji należących do innej dzierżawy Azure Active Directory.
 
-Włącz [punktu końcowego usługi](/azure/virtual-network/virtual-network-service-endpoints-overview) dla usługi Azure Storage w obrębie sieci wirtualnej. Punkt końcowy usługi kieruje ruch z sieci wirtualnej przez optymalną ścieżkę do usługi Azure Storage. Tożsamości podsieci i sieci wirtualnej są również przesyłane z każdym żądaniem. Administratorzy mogą następnie skonfigurować reguły sieci dla konta magazynu, które zezwalają na odbieranie żądań z określonych podsieci w sieci wirtualnej. Udzielono dostępu przez te reguły sieci muszą w dalszym ciągu spełniają wymagania autoryzacji konta magazynu można uzyskać dostęp do danych klientów.
+Włącz [punkt końcowy usługi](/azure/virtual-network/virtual-network-service-endpoints-overview) dla magazynu Azure w sieci wirtualnej. Punkt końcowy usługi kieruje ruch z sieci wirtualnej przez optymalną ścieżkę do usługi Azure Storage. Tożsamości podsieci i sieci wirtualnej są również przesyłane z każdym żądaniem. Administratorzy mogą następnie skonfigurować reguły sieci dla konta magazynu, które zezwalają na odbieranie żądań z określonych podsieci w sieci wirtualnej. Udzielono dostępu przez te reguły sieci muszą w dalszym ciągu spełniają wymagania autoryzacji konta magazynu można uzyskać dostęp do danych klientów.
 
-Każde konto magazynu obsługuje maksymalnie 100 reguł sieci wirtualnej, które mogą być łączone z [reguł sieci IP](#grant-access-from-an-internet-ip-range).
+Każde konto magazynu obsługuje do 100 reguł sieci wirtualnej, które mogą być połączone z [regułami sieci IP](#grant-access-from-an-internet-ip-range).
 
 ### <a name="available-virtual-network-regions"></a>Regiony dostępne sieci wirtualnej
 
-Ogólnie rzecz biorąc punkty końcowe usługi działa między sieciami wirtualnymi i wystąpieniami usług w tym samym regionie platformy Azure. Korzystając z punktów końcowych usługi za pomocą usługi Azure Storage, ten zakres rozszerza się, aby uwzględnić [sparowanym regionie](/azure/best-practices-availability-paired-regions). Punkty końcowe usługi umożliwiają ciągłość działalności biznesowej podczas regionalnej pracy awaryjnej i dostępu do wystąpień tylko do odczytu magazynu geograficznie nadmiarowego (RA-GRS). Reguły sieciowych, określającymi udzielenie dostępu z sieci wirtualnej na koncie magazynu również przyznać dostęp do dowolnego wystąpienia RA-GRS.
+Ogólnie rzecz biorąc punkty końcowe usługi działa między sieciami wirtualnymi i wystąpieniami usług w tym samym regionie platformy Azure. W przypadku korzystania z punktów końcowych usługi w usłudze Azure Storage ten zakres rośnie, aby uwzględnić [sparowany region](/azure/best-practices-availability-paired-regions). Punkty końcowe usługi umożliwiają ciągłość działalności biznesowej podczas regionalnej pracy awaryjnej i dostępu do wystąpień tylko do odczytu magazynu geograficznie nadmiarowego (RA-GRS). Reguły sieciowych, określającymi udzielenie dostępu z sieci wirtualnej na koncie magazynu również przyznać dostęp do dowolnego wystąpienia RA-GRS.
 
 Podczas planowania odzyskiwania po awarii podczas regionalnej awarii, należy wcześniej utworzyć sieci wirtualne w sparowanym regionie. Włączanie punktów końcowych usługi dla usługi Azure Storage z regułami sieciowej udzielanie dostępu z tych alternatywnych sieciach wirtualnych. Te reguły można następnie zastosować do kont magazynu geograficznie nadmiarowego magazynu.
 
@@ -133,7 +133,7 @@ Podczas planowania odzyskiwania po awarii podczas regionalnej awarii, należy wc
 
 ### <a name="required-permissions"></a>Wymagane uprawnienia
 
-Aby zastosować regułę sieci wirtualnej do konta magazynu, użytkownik musi mieć odpowiednie uprawnienia dla dodawanych podsieci. Jest wymagane uprawnienie *Dołącz do usługi do podsieci* i wchodzi w skład *Współautor konta magazynu* wbudowana rola. Mogą być również dodawane do definicji ról niestandardowych.
+Aby zastosować regułę sieci wirtualnej do konta magazynu, użytkownik musi mieć odpowiednie uprawnienia dla dodawanych podsieci. Konieczne uprawnienie jest *przyłączanie usługi do podsieci* i jest uwzględniona w wbudowanej roli *współautor konta magazynu* . Mogą być również dodawane do definicji ról niestandardowych.
 
 Konto magazynu i dostępne sieci wirtualne mogą znajdować się w różnych subskrypcjach, w tym subskrypcje, które są częścią innej dzierżawy usługi Azure AD.
 
@@ -144,28 +144,28 @@ Konto magazynu i dostępne sieci wirtualne mogą znajdować się w różnych sub
 
 Możesz zarządzać reguł sieci wirtualnej dla konta magazynu za pośrednictwem witryny Azure portal, programu PowerShell lub CLIv2.
 
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Portalu Azure
 
 1. Przejdź do konta magazynu, które chcesz zabezpieczyć.
 
-1. Kliknij w menu Ustawienia o nazwie **zapory i sieci wirtualne**.
+1. Kliknij menu Ustawienia o nazwie **zapory i sieci wirtualne**.
 
-1. Sprawdź, czy zostało wybrane, aby zezwolić na dostęp z **wybrane sieci**.
+1. Sprawdź, czy wybrano opcję zezwalania na dostęp z **wybranych sieci**.
 
-1. Aby udzielić dostępu do sieci wirtualnej z nową regułę sieci, w obszarze **sieci wirtualne**, kliknij przycisk **Dodaj istniejącą sieć wirtualną**, wybierz opcję **sieci wirtualne** i **Podsieci** opcje, a następnie kliknij **Dodaj**. Kliknij, aby utworzyć nową sieć wirtualną i przyznać jej dostęp **Dodaj nową sieć wirtualną**. Podaj informacje niezbędne do tworzenia nowej sieci wirtualnej, a następnie kliknij przycisk **Utwórz**.
+1. Aby udzielić dostępu do sieci wirtualnej przy użyciu nowej reguły sieci, w obszarze **sieci wirtualne**kliknij przycisk **Dodaj istniejącą sieć wirtualną**, wybierz opcję **sieci wirtualne** i **podsieci** , a następnie kliknij przycisk **Dodaj**. Aby utworzyć nową sieć wirtualną i udzielić jej dostępu, kliknij przycisk **Dodaj nową sieć wirtualną**. Podaj informacje niezbędne do utworzenia nowej sieci wirtualnej, a następnie kliknij przycisk **Utwórz**.
 
     > [!NOTE]
     > Jeśli punkt końcowy usługi dla usługi Azure Storage nie został wcześniej skonfigurowany dla wybranej sieci wirtualnej i podsieci, możesz go skonfigurować jako część tej operacji.
     >
     > Obecnie do wyboru podczas tworzenia reguły są wyświetlane tylko sieci wirtualne należące do tej samej dzierżawy Azure Active Directory. Aby udzielić dostępu do podsieci w sieci wirtualnej należącej do innej dzierżawy, użyj programu PowerShell, interfejsu wiersza polecenia lub interfejsów API REST.
 
-1. Aby usunąć sieci wirtualnej lub podsieci regułę, kliknij przycisk **...**  Otwórz menu kontekstowe dla sieci wirtualnej lub podsieci, a następnie kliknij przycisk **Usuń**.
+1. Aby usunąć regułę sieci wirtualnej lub podsieci, kliknij przycisk **...** , aby otworzyć menu kontekstowe dla sieci wirtualnej lub podsieci, a następnie kliknij przycisk **Usuń**.
 
-1. Kliknij przycisk **Zapisz** Aby zastosować zmiany.
+1. Kliknij przycisk **Zapisz** , aby zastosować zmiany.
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Program PowerShell
 
-1. Zainstaluj [programu Azure PowerShell](/powershell/azure/install-Az-ps) i [Zaloguj](/powershell/azure/authenticate-azureps).
+1. Zainstaluj [Azure PowerShell](/powershell/azure/install-Az-ps) i [Zaloguj się](/powershell/azure/authenticate-azureps).
 
 1. Lista reguł sieci wirtualnej.
 
@@ -197,11 +197,11 @@ Możesz zarządzać reguł sieci wirtualnej dla konta magazynu za pośrednictwem
     ```
 
 > [!IMPORTANT]
-> Pamiętaj, aby [Ustaw domyślną regułę](#change-the-default-network-access-rule) do **Odmów**, lub reguł sieci nie mają wpływu.
+> Pamiętaj, aby [ustawić regułę domyślną](#change-the-default-network-access-rule) na **odrzucanie**, lub reguły sieciowe nie mają żadnego efektu.
 
 #### <a name="cliv2"></a>CLIv2
 
-1. Zainstaluj [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [Zaloguj](/cli/azure/authenticate-azure-cli).
+1. Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [Zaloguj się](/cli/azure/authenticate-azure-cli).
 
 1. Lista reguł sieci wirtualnej.
 
@@ -235,21 +235,21 @@ Możesz zarządzać reguł sieci wirtualnej dla konta magazynu za pośrednictwem
     ```
 
 > [!IMPORTANT]
-> Pamiętaj, aby [Ustaw domyślną regułę](#change-the-default-network-access-rule) do **Odmów**, lub reguł sieci nie mają wpływu.
+> Pamiętaj, aby [ustawić regułę domyślną](#change-the-default-network-access-rule) na **odrzucanie**, lub reguły sieciowe nie mają żadnego efektu.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Udzielanie dostępu z internetowego zakresu adresów IP
 
 Można skonfigurować konta magazynu, aby zezwolić na dostęp z określonych publicznej sieci internet zakresów adresów IP. Ta konfiguracja daje dostęp do określonych usług internetowych i sieciami lokalnymi i blokuje ruch internetowy ogólne.
 
-Podaj internet dozwolonych zakresów adresów, za pomocą [notacji CIDR](https://tools.ietf.org/html/rfc4632) w formie *16.17.18.0/24* lub jako adres IP poszczególnych adresów, takich jak *16.17.18.19*.
+Podaj dozwolone zakresy adresów internetowych przy użyciu [notacji CIDR](https://tools.ietf.org/html/rfc4632) w postaci *16.17.18.0/24* lub jako indywidualne adresy IP, takie jak *16.17.18.19*.
 
    > [!NOTE]
    > Zakresy adresów małe, za pomocą "/ 31" lub "/ 32" prefiks rozmiary nie są obsługiwane. Tych zakresów powinny być skonfigurowane przy użyciu reguły dotyczące poszczególnych adresów IP.
 
-Reguły sieciowych adresów IP są dozwolone tylko dla **publicznej sieci internet** adresów IP. Zakresy adresów zarezerwowanych dla sieci prywatnych adresów IP (zgodnie z definicją w [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nie są dozwolone w regułach adresów IP. Prywatne sieci obejmują adresów rozpoczynających się _zapis 10.*_ , _172.16. *_  - _172.31. *_ , i _192.168. *_ .
+Reguły sieci IP są dozwolone tylko dla **publicznych** adresów IP. Zakresy adresów IP zarezerwowane dla sieci prywatnych (zgodnie z definicją w [dokumencie RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) nie są dozwolone w regułach adresów IP. Sieci prywatne obejmują adresy, które zaczynają się od _10. *_ , _172,16. *_  - _172,31. *_ , i _192,168. *_ .
 
    > [!NOTE]
-   > Reguły sieciowych adresów IP nie mają wpływu na żądania pochodzące z tym samym regionie platformy Azure jako konto magazynu. Użyj [reguł sieci wirtualnej](#grant-access-from-a-virtual-network) Aby zezwolić na żądania z tego samego regionu.
+   > Reguły sieciowych adresów IP nie mają wpływu na żądania pochodzące z tym samym regionie platformy Azure jako konto magazynu. Użyj [reguł sieci wirtualnej](#grant-access-from-a-virtual-network) , aby zezwolić na żądania tego samego regionu.
 
   > [!NOTE]
   > Usługi wdrożone w tym samym regionie co konto magazynu używają prywatnych adresów IP platformy Azure do komunikacji. Z tego względu nie można ograniczyć dostępu do określonych usług platformy Azure w oparciu o ich publiczny zakres adresów IP ruchu przychodzącego.
@@ -268,23 +268,23 @@ jeśli korzystasz z usługi [ExpressRoute](/azure/expressroute/expressroute-intr
 
 Możesz zarządzać reguł sieci IP dla konta magazynu za pośrednictwem witryny Azure portal, programu PowerShell lub CLIv2.
 
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Portalu Azure
 
 1. Przejdź do konta magazynu, które chcesz zabezpieczyć.
 
-1. Kliknij w menu Ustawienia o nazwie **zapory i sieci wirtualne**.
+1. Kliknij menu Ustawienia o nazwie **zapory i sieci wirtualne**.
 
-1. Sprawdź, czy zostało wybrane, aby zezwolić na dostęp z **wybrane sieci**.
+1. Sprawdź, czy wybrano opcję zezwalania na dostęp z **wybranych sieci**.
 
-1. Aby udzielić dostępu do Internetu, zakres adresów IP, wprowadź adres IP lub zakres adresów (w formacie CIDR) mocy **zapory** > **zakres adresów**.
+1. Aby udzielić dostępu do zakresu internetowego adresu IP, wprowadź adres IP lub zakres adresów (w formacie CIDR) w obszarze > zapory **zakres adresów**.
 
 1. Aby usunąć regułę sieci IP, kliknij ikonę Kosza obok zakresu adresów.
 
-1. Kliknij przycisk **Zapisz** Aby zastosować zmiany.
+1. Kliknij przycisk **Zapisz** , aby zastosować zmiany.
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Program PowerShell
 
-1. Zainstaluj [programu Azure PowerShell](/powershell/azure/install-Az-ps) i [Zaloguj](/powershell/azure/authenticate-azureps).
+1. Zainstaluj [Azure PowerShell](/powershell/azure/install-Az-ps) i [Zaloguj się](/powershell/azure/authenticate-azureps).
 
 1. Lista reguł sieci IP.
 
@@ -317,11 +317,11 @@ Możesz zarządzać reguł sieci IP dla konta magazynu za pośrednictwem witryny
     ```
 
 > [!IMPORTANT]
-> Pamiętaj, aby [Ustaw domyślną regułę](#change-the-default-network-access-rule) do **Odmów**, lub reguł sieci nie mają wpływu.
+> Pamiętaj, aby [ustawić regułę domyślną](#change-the-default-network-access-rule) na **odrzucanie**, lub reguły sieciowe nie mają żadnego efektu.
 
 #### <a name="cliv2"></a>CLIv2
 
-1. Zainstaluj [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [Zaloguj](/cli/azure/authenticate-azure-cli).
+1. Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [Zaloguj się](/cli/azure/authenticate-azure-cli).
 
 1. Lista reguł sieci IP.
 
@@ -354,7 +354,7 @@ Możesz zarządzać reguł sieci IP dla konta magazynu za pośrednictwem witryny
     ```
 
 > [!IMPORTANT]
-> Pamiętaj, aby [Ustaw domyślną regułę](#change-the-default-network-access-rule) do **Odmów**, lub reguł sieci nie mają wpływu.
+> Pamiętaj, aby [ustawić regułę domyślną](#change-the-default-network-access-rule) na **odrzucanie**, lub reguły sieciowe nie mają żadnego efektu.
 
 ## <a name="exceptions"></a>Wyjątki
 
@@ -372,12 +372,12 @@ Po włączeniu ustawienia **Zezwalaj na zaufane usługi firmy Microsoft..** . dl
 
 | Usługa                  | Nazwa dostawcy zasobów     | Dozwolone operacje                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
-| Usługa Azure Backup             | Microsoft.RecoveryServices | Wykonywanie kopii zapasowych i przywracanie dysków niezarządzanych na maszynach wirtualnych IAAS. (niewymagane w przypadku dysków zarządzanych). [Dowiedz się więcej](/azure/backup/backup-introduction-to-azure-backup). |
-| Urządzenie Azure Data Box           | Microsoft.DataBox          | Umożliwia importowanie danych na platformę Azure przy użyciu urządzenie Data Box. [Dowiedz się więcej](/azure/databox/data-box-overview). |
+| Azure Backup             | Microsoft.RecoveryServices | Wykonywanie kopii zapasowych i przywracanie dysków niezarządzanych na maszynach wirtualnych IAAS. (niewymagane w przypadku dysków zarządzanych). [Dowiedz się więcej](/azure/backup/backup-introduction-to-azure-backup). |
+| Azure Data Box           | Microsoft.DataBox          | Umożliwia importowanie danych na platformę Azure przy użyciu urządzenie Data Box. [Dowiedz się więcej](/azure/databox/data-box-overview). |
 | Azure DevTest Labs       | Microsoft.DevTestLab       | Tworzenie i artefaktu instalacji obrazu niestandardowego. [Dowiedz się więcej](/azure/devtest-lab/devtest-lab-overview). |
-| Azure Event Grid         | Microsoft.EventGrid        | Włączanie publikowania zdarzeń usługi Blob Storage i umożliwiają usługi Event Grid opublikować w kolejkach usługi storage. Dowiedz się więcej o [zdarzenia usługi blob storage](/azure/event-grid/event-sources) i [publikowania w kolejkach](/azure/event-grid/event-handlers). |
+| Azure Event Grid         | Microsoft.EventGrid        | Włączanie publikowania zdarzeń usługi Blob Storage i umożliwiają usługi Event Grid opublikować w kolejkach usługi storage. Informacje o [zdarzeniach magazynu obiektów BLOB](/azure/event-grid/event-sources) i [publikowaniu w kolejkach](/azure/event-grid/event-handlers). |
 | Azure Event Hubs         | Microsoft.EventHub         | Archiwizowanie danych za pomocą usługi Event Hubs Capture. [Dowiedz się więcej](/azure/event-hubs/event-hubs-capture-overview). |
-| Usługa Azure File Sync          | Microsoft.StorageSync      | Umożliwia przekształcenie serwera plików Premium na pamięć podręczną dla udziałów plików platformy Azure. Umożliwienie synchronizacji obejmujących wiele witryn, szybkie odzyskiwanie po awarii i tworzenie kopii zapasowej po stronie chmury. [Dowiedz się więcej](../files/storage-sync-files-planning.md) |
+| Azure File Sync          | Microsoft.StorageSync      | Umożliwia przekształcenie serwera plików Premium na pamięć podręczną dla udziałów plików platformy Azure. Umożliwienie synchronizacji obejmujących wiele witryn, szybkie odzyskiwanie po awarii i tworzenie kopii zapasowej po stronie chmury. [Dowiedz się więcej](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | Zainicjuj wstępną zawartość domyślnego systemu plików dla nowego klastra usługi HDInsight. [Dowiedz się więcej](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
 | Eksportowanie importu platformy Azure      | Microsoft.ImportExport     | Umożliwia importowanie danych na platformę Azure i eksportowanie danych z platformy Azure za pomocą usługi Import/Export. [Dowiedz się więcej](/azure/storage/common/storage-import-export-service).  |
 | Azure Monitor            | Microsoft.Insights         | Umożliwia zapisywanie danych monitorowania na zabezpieczonym koncie magazynu, w tym dzienników diagnostycznych zasobów, Azure Active Directory logowania i dzienników inspekcji oraz dzienników Microsoft Intune. [Dowiedz się więcej](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
@@ -386,40 +386,42 @@ Po włączeniu ustawienia **Zezwalaj na zaufane usługi firmy Microsoft..** . dl
 
 Ustawienie **Zezwalaj na zaufane usługi firmy Microsoft...** umożliwia również określonym wystąpieniu poniższych usług uzyskanie dostępu do konta magazynu, jeśli jawnie [przypiszesz rolę RBAC](storage-auth-aad.md#assign-rbac-roles-for-access-rights) do [zarządzanej tożsamości przypisanej do systemu](../../active-directory/managed-identities-azure-resources/overview.md) dla tego wystąpienia zasobu. W takim przypadku zakres dostępu dla wystąpienia odpowiada roli RBAC przypisanej do zarządzanej tożsamości.
 
-| Usługa                        | Nazwa dostawcy zasobów          | Przeznaczenie            |
-| :----------------------------- | :------------------------------------- | :---------- |
+| Usługa                        | Nazwa dostawcy zasobów                 | Przeznaczenie            |
+| :----------------------------- | :------------------------------------- | :----------------- |
+| Azure Cognitive Search         | Microsoft.Search/searchServices        | Umożliwia Wyszukiwanie poznawcze usługom dostęp do kont magazynu na potrzeby indeksowania, przetwarzania i wykonywania zapytań. |
 | Usługa Azure Container Registry Tasks | Microsoft.ContainerRegistry/registries | Zadania ACR mogą uzyskać dostęp do kont magazynu podczas kompilowania obrazów kontenerów. |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | Zezwala na dostęp do kont magazynu za pomocą środowiska uruchomieniowego ADF. |
-| Azure Logic Apps               | Microsoft.Logic/workflows              | Umożliwia aplikacjom logiki dostęp do kont magazynu. [Dowiedz się więcej](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity). |
-| Azure Machine Learning | Microsoft.MachineLearningServices      | Autoryzowane Azure Machine Learning obszary robocze zapisują dane wyjściowe eksperymentu, modele i dzienniki w usłudze BLOB Storage. [Dowiedz się więcej](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). |
+| Azure Data Share               | Microsoft. dataudział/konta           | Zezwala na dostęp do kont magazynu za poorednictwem udziału danych. |
+| Azure Logic Apps               | Microsoft.Logic/workflows              | Umożliwia aplikacjom logiki dostęp do kont magazynu. [Dowiedz się więcej](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md). |
+| Usługa Azure Machine Learning | Microsoft.MachineLearningServices      | Autoryzowane Azure Machine Learning obszary robocze zapisują dane wyjściowe eksperymentu, modele i dzienniki w usłudze BLOB Storage. [Dowiedz się więcej](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Umożliwia importowanie i eksportowanie danych z określonych wystąpień SQL Database przy użyciu bazy. [Dowiedz się więcej](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
-| Azure Stream Analytics         | Microsoft.StreamAnalytics             | Umożliwia zapisanie danych z zadania przesyłania strumieniowego w usłudze BLOB Storage. Ta funkcja jest obecnie dostępna w wersji zapoznawczej. [Dowiedz się więcej](/azure/stream-analytics/blob-output-managed-identity). |
+| Usługa Azure Stream Analytics         | Microsoft.StreamAnalytics             | Umożliwia zapisanie danych z zadania przesyłania strumieniowego w usłudze BLOB Storage. Ta funkcja jest obecnie dostępna w wersji zapoznawczej. [Dowiedz się więcej](/azure/stream-analytics/blob-output-managed-identity). |
 | Azure Synapse Analytics        | Microsoft. Synapse/obszary robocze          | Umożliwia dostęp do danych w usłudze Azure Storage z Synapse Analytics. |
 
 
 ### <a name="storage-analytics-data-access"></a>Dostęp do danych analizy magazynu
 
-W niektórych przypadkach dostęp do odczytu, dzienniki diagnostyczne i metryki z jest wymagana poza granicami sieci. Podczas konfigurowania dostępu do zaufanych usług do konta magazynu można zezwolić na dostęp do odczytu dla plików dziennika, metryk tabel lub obu. [Dowiedz się więcej na temat pracy z usługą storage analytics.](/azure/storage/storage-analytics)
+W niektórych przypadkach dostęp do odczytu, dzienniki diagnostyczne i metryki z jest wymagana poza granicami sieci. Podczas konfigurowania dostępu do zaufanych usług do konta magazynu można zezwolić na dostęp do odczytu dla plików dziennika, metryk tabel lub obu. [Dowiedz się więcej na temat pracy z usługą analiza magazynu.](/azure/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>Zarządzanie wyjątkami
 
 Możesz zarządzać wyjątki od reguły sieci za pośrednictwem witryny Azure portal, programu PowerShell lub wiersza polecenia platformy Azure w wersji 2.
 
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Portalu Azure
 
 1. Przejdź do konta magazynu, które chcesz zabezpieczyć.
 
-1. Kliknij w menu Ustawienia o nazwie **zapory i sieci wirtualne**.
+1. Kliknij menu Ustawienia o nazwie **zapory i sieci wirtualne**.
 
-1. Sprawdź, czy zostało wybrane, aby zezwolić na dostęp z **wybrane sieci**.
+1. Sprawdź, czy wybrano opcję zezwalania na dostęp z **wybranych sieci**.
 
-1. W obszarze **wyjątki**, zaznacz wyjątki chcesz przydzielić.
+1. W obszarze **wyjątki**Wybierz wyjątki, które chcesz udzielić.
 
-1. Kliknij przycisk **Zapisz** Aby zastosować zmiany.
+1. Kliknij przycisk **Zapisz** , aby zastosować zmiany.
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Program PowerShell
 
-1. Zainstaluj [programu Azure PowerShell](/powershell/azure/install-Az-ps) i [Zaloguj](/powershell/azure/authenticate-azureps).
+1. Zainstaluj [Azure PowerShell](/powershell/azure/install-Az-ps) i [Zaloguj się](/powershell/azure/authenticate-azureps).
 
 1. Wyświetl wyjątków dla reguły sieci konta magazynu.
 
@@ -440,11 +442,11 @@ Możesz zarządzać wyjątki od reguły sieci za pośrednictwem witryny Azure po
     ```
 
 > [!IMPORTANT]
-> Pamiętaj, aby [Ustaw domyślną regułę](#change-the-default-network-access-rule) do **Odmów**, lub usunąć wyjątki nie mają wpływu.
+> Pamiętaj, aby [ustawić regułę domyślną](#change-the-default-network-access-rule) na **odrzucanie**lub usunięcie wyjątków nie ma żadnego wpływu.
 
 #### <a name="cliv2"></a>CLIv2
 
-1. Zainstaluj [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [Zaloguj](/cli/azure/authenticate-azure-cli).
+1. Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [Zaloguj się](/cli/azure/authenticate-azure-cli).
 
 1. Wyświetl wyjątków dla reguły sieci konta magazynu.
 
@@ -465,10 +467,10 @@ Możesz zarządzać wyjątki od reguły sieci za pośrednictwem witryny Azure po
     ```
 
 > [!IMPORTANT]
-> Pamiętaj, aby [Ustaw domyślną regułę](#change-the-default-network-access-rule) do **Odmów**, lub usunąć wyjątki nie mają wpływu.
+> Pamiętaj, aby [ustawić regułę domyślną](#change-the-default-network-access-rule) na **odrzucanie**lub usunięcie wyjątków nie ma żadnego wpływu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat punktów końcowych usługi sieci platformy Azure w [punkty końcowe usługi](/azure/virtual-network/virtual-network-service-endpoints-overview).
+Dowiedz się więcej o punktach końcowych usługi sieciowej Azure w [punktach końcowych usługi](/azure/virtual-network/virtual-network-service-endpoints-overview).
 
-Dokładniejsze informacje dotyczące zabezpieczeń usługi Azure Storage w [Przewodnik po zabezpieczeniach usługi Azure Storage](../blobs/security-recommendations.md).
+Dig bardziej szczegółowe zabezpieczenia usługi Azure Storage w [przewodniku po zabezpieczeniach usługi Azure Storage](../blobs/security-recommendations.md).

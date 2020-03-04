@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d53a3f270c1de3c8d533b5886e0051f6aa1ef10d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 961d10f3a0bc4be25a2981e5411cc6a8a75d2105
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776742"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255100"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Wybierz odpowiednią opcję serwera MariaDB na platformie Azure
 
@@ -49,7 +49,7 @@ Główne różnice między tymi opcjami są wymienione w poniższej tabeli:
 
 Istnieje kilka czynników, które mogą mieć wpływ na decyzję o wyborze PaaS lub IaaS do hostowania baz danych MariaDB.
 
-### <a name="cost"></a>Koszt
+### <a name="cost"></a>Koszty
 
 Ograniczone finansowanie jest często podstawowym zagadnieniem, które określa najlepsze rozwiązanie do hostowania baz danych. Jest to prawdziwe, niezależnie od tego, czy jesteś w trakcie uruchamiania z małym środkiem pieniężnym czy zespołem w firmie, który działa w ramach ścisłych ograniczeń budżetowych. W tej sekcji opisano podstawowe informacje dotyczące rozliczeń i licencjonowania na platformie Azure, które mają zastosowanie do Azure Database for MariaDB i MariaDB na maszynach wirtualnych platformy Azure.
 
@@ -82,10 +82,10 @@ Na poniższej liście opisano zagadnienia dotyczące zagadnień administracyjnyc
 
   - Bazy danych
   - Logowanie
-  - Dostosowywanie indeksu
+  - Dostrajanie indeksu
   - Dostrajanie zapytania
   - Inspekcja
-  - Zabezpieczenia
+  - Bezpieczeństwo
 
   Ponadto skonfigurowanie wysokiej dostępności w innym centrum danych wymaga minimalnej konfiguracji lub jej administracji.
 
@@ -102,4 +102,4 @@ Na poniższej liście opisano zagadnienia dotyczące zagadnień administracyjnyc
 ## <a name="next-steps"></a>Następne kroki
 
 * Zobacz [cennik Azure Database for MariaDB](https://azure.microsoft.com/pricing/details/MariaDB/).
-* Rozpoczęcie pracy przez [utworzenie pierwszego serwera](https://review.docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal).
+* Rozpoczęcie pracy przez [utworzenie pierwszego serwera](https://docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal).

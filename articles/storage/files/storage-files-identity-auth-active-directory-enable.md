@@ -4,14 +4,14 @@ description: Dowiedz się, jak włączyć uwierzytelnianie oparte na tożsamośc
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/23/2020
+ms.date: 03/03/2020
 ms.author: rogarana
-ms.openlocfilehash: 419f0506751ddc328539eafa52507b0dd0739c79
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 223906343c2391d03d8526026d3daad3174791ed
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921559"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256058"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Włącz uwierzytelnianie Active Directory za pośrednictwem protokołu SMB dla udziałów plików platformy Azure
 
@@ -62,13 +62,13 @@ Przed włączeniem uwierzytelniania usługi AD dla udziałów plików platformy 
 
 ## <a name="regional-availability"></a>Dostępność regionalna
 
-Azure Files uwierzytelnianie usługi AD (wersja zapoznawcza) jest dostępna w [większości regionów publicznych](https://azure.microsoft.com/global-infrastructure/regions/) z wyjątkiem:
+Azure Files uwierzytelnianie usługi AD (wersja zapoznawcza) jest dostępna w [większości regionów publicznych](https://azure.microsoft.com/global-infrastructure/regions/).
 
+Azure Files uwierzytelnianie usługi AD nie jest dostępne w programie:
 - Zachodnie stany USA
 - Zachodnie stany USA 2
 - Wschodnie stany USA
 - Wschodnie stany USA 2
-- Południowo-środkowe stany USA
 - Europa Zachodnia
 - Europa Północna
 

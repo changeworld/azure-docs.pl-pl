@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73de446513915bbc5cba9d8b9cf23d08d18cc362
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 3139d39797c3bc576bb39f1438b7e6d3f37e3c5c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585989"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248847"
 ---
 # <a name="what-are-security-defaults"></a>Co to są wartości domyślne zabezpieczeń?
 
@@ -69,7 +69,7 @@ Jedną z częstych metod ulepszania ochrony dla wszystkich użytkowników jest w
 
 Aby zapewnić użytkownikom łatwy dostęp do aplikacji w chmurze, usługa Azure AD obsługuje różne protokoły uwierzytelniania, w tym starsze uwierzytelnianie. *Starsza wersja uwierzytelniania* to termin, który odwołuje się do żądania uwierzytelnienia wykonanego przez:
 
-- Starsi klienci pakietu Office, którzy nie korzystają z nowoczesnego uwierzytelniania (na przykład klienta pakietu Office 2010).
+- Klienci, którzy nie korzystają z nowoczesnego uwierzytelniania (na przykład klienta pakietu Office 2010).
 - Każdy klient korzystający ze starszych protokołów poczty, takich jak IMAP, SMTP lub POP3.
 
 Dzisiaj większość nieżądanych prób logowania pochodzi ze starszego uwierzytelniania. Starsza wersja uwierzytelniania nie obsługuje Multi-Factor Authentication. Nawet jeśli masz zasady Multi-Factor Authentication włączone w katalogu, osoba atakująca może się uwierzytelnić przy użyciu starszego protokołu i Multi-Factor Authentication obejścia. 
@@ -83,7 +83,7 @@ Po włączeniu wartości domyślnych zabezpieczeń w dzierżawie zostaną zablok
 
 Organizacje korzystają z różnych usług platformy Azure zarządzanych za pomocą interfejsu API Azure Resource Manager, w tym:
 
-- Azure Portal 
+- Portalu Azure 
 - Azure PowerShell 
 - Interfejs wiersza polecenia platformy Azure
 

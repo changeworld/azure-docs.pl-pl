@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 231c5f1bc6fd76f4f9e89d2d53639e9abe6cde0e
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: c6da4b54dbc982c69e9d3004a5da8f63deffa3e9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228324"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246030"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Szybki Start: Tworzenie bramy NAT przy użyciu Azure Portal
 
@@ -43,7 +43,7 @@ W tej sekcji należy zamienić następujące parametry w krokach z poniższymi i
 | **\<nazwy grupy zasobów >**  | myResourceGroupNAT |
 | **\<nazwę sieci wirtualnej >** | myVNet          |
 | **\<nazwę regionu >**          | Wschodnie stany USA 2      |
-| **> \<przestrzeni adresowej IPv4**   | 192.168.0.0 \ 16          |
+| **\<adres IPv4 >**   | 192.168.0.0 \ 16          |
 | **\<nazwę podsieci >**          | mySubnet        |
 | **\<zakres adresów podsieci >** | 192.168.0.0 \ 24          |
 

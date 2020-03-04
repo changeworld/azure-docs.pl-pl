@@ -4,12 +4,12 @@ description: Często zadawane pytania dotyczące Service Fabric, w tym możliwo�
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 17c1d05e119df8207c0599283f1d04b869e8297b
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293525"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254884"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania dotyczące usługi Service Fabric
 
@@ -22,7 +22,7 @@ Istnieje wiele często zadawanych pytań na temat tego, co Service Fabric może 
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Jak mogę wycofać certyfikat mojego Service Fabric klastra?
 
-Wycofanie wszelkich uaktualnień do aplikacji wymaga wykrywania błędów kondycji przed zatwierdzeniem przez Service Fabric kworum klastra zmiany; zatwierdzone zmiany mogą być rzutowane tylko do przodu. W celu odzyskania klastra może być wymagane przeprowadzenie przez specjalistę eskalacji, jeśli wprowadzono niemonitorowaną zmianę certyfikatu.  [Uaktualnienie aplikacji Service Fabric](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) stosuje [Parametry uaktualnienia aplikacji](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)i zapewnia nieprzerwane obietnice uaktualniania.  Zgodnie z naszym zalecanym trybem monitorowania aplikacji, automatyczny postęp przy użyciu domeny aktualizacji jest oparty na testach kondycji, które są przekazywane automatycznie, jeśli aktualizacja usługi domyślnej nie powiedzie się.
+Wycofanie wszelkich uaktualnień do aplikacji wymaga wykrywania błędów kondycji przed zatwierdzeniem przez Service Fabric kworum klastra zmiany; zatwierdzone zmiany mogą być rzutowane tylko do przodu. W celu odzyskania klastra może być wymagane przeprowadzenie przez specjalistę eskalacji, jeśli wprowadzono niemonitorowaną zmianę certyfikatu.  [Uaktualnienie aplikacji Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) stosuje [Parametry uaktualnienia aplikacji](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)i zapewnia nieprzerwane obietnice uaktualniania.  Zgodnie z naszym zalecanym trybem monitorowania aplikacji, automatyczny postęp przy użyciu domeny aktualizacji jest oparty na testach kondycji, które są przekazywane automatycznie, jeśli aktualizacja usługi domyślnej nie powiedzie się.
  
 Jeśli klaster nadal wykorzystuje Właściwość klasycznego odcisku palca certyfikatu w szablonie Menedżer zasobów, zaleca się [zmianę klastra z odcisku palca certyfikatu na nazwę pospolitą](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn), aby korzystać z nowoczesnych funkcji zarządzania kluczami tajnymi.
 
@@ -34,7 +34,7 @@ Podstawowa technologia klastrowania Service Fabric może służyć do łączenia
 
 Jeśli interesuje Cię ten scenariusz, zachęcamy Cię do skontaktowania Service Fabric się z [listą problemów](https://github.com/azure/service-fabric-issues) w witrynie GitHub, aby uzyskać dodatkowe wskazówki. Zespół Service Fabric pracuje nad zapewnieniem dodatkowego przejrzystości, wskazówek i zaleceń dotyczących tego scenariusza. 
 
-Oto kilka rzeczy, które warto przemyśleć: 
+Niektóre zagadnienia, które należy wziąć pod uwagę: 
 
 1. Zasób klastra Service Fabric na platformie Azure jest obecnie regionalny, podobnie jak w przypadku zestawów skalowania maszyn wirtualnych, na których jest oparty klaster. Oznacza to, że w przypadku awarii regionalnej można utracić możliwość zarządzania klastrem za pośrednictwem Azure Resource Manager lub Azure Portal. Może to być spowodowane tym, że klaster jest uruchomiony i będzie można z nim korzystać bezpośrednio. Ponadto platforma Azure obecnie nie oferuje możliwości korzystania z jednej sieci wirtualnej, która jest używana w różnych regionach. Oznacza to, że klaster wieloregionowy na platformie Azure wymaga [publiczne adresy IP dla każdej maszyny wirtualnej w VM Scale Sets lub w](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine) [bramach sieci VPN platformy Azure](../vpn-gateway/vpn-gateway-about-vpngateways.md). Te wybory sieci mają różne wpływ na koszty, wydajność i w pewnym stopniu projekcie aplikacji, dlatego należy zachować ostrożność analizy i planowania przed zarządzeniem takim środowiskiem.
 2. Konserwacja, zarządzanie i monitorowanie tych maszyn może stać się skomplikowany, szczególnie w przypadku, gdy są one łączone w różne _typy_ środowisk, takie jak między różnymi dostawcami chmury lub między zasobami lokalnymi i platformą Azure. Należy pamiętać, aby upewnić się, że uaktualnienia, monitorowanie, zarządzanie i Diagnostyka są zrozumiałe dla klastra i aplikacji przed uruchomieniem obciążeń produkcyjnych w takim środowisku. Jeśli masz już doświadczenie w rozwiązywaniu tych problemów na platformie Azure lub w własnych centrach danych, prawdopodobnie te same rozwiązania można zastosować podczas tworzenia lub uruchamiania klastra Service Fabric. 
@@ -101,13 +101,13 @@ Nie. Maszyny wirtualne o niskim priorytecie nie są obsługiwane.
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Jakie są katalogi i procesy, które należy wykluczyć podczas uruchamiania programu antywirusowego w moim klastrze?
 
-| **Antywirusowe wykluczone katalogi** |
+| **Wykluczone katalogi oprogramowania antywirusowego** |
 | --- |
 | Program Files\Microsoft Service Fabric |
 | FabricDataRoot (z konfiguracji klastra) |
 | FabricLogRoot (z konfiguracji klastra) |
 
-| **Antywirusowe wykluczone procesy** |
+| **Wykluczone procesy programu antywirusowego** |
 | --- |
 | Fabric.exe |
 | FabricHost.exe |

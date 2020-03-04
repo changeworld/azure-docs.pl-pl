@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: rochakm
-ms.openlocfilehash: 3f97975f09d846cd3277bb8a53a4ad922f1b5b69
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 32d826f3c27cea3d0993c47e8562360315b7bd2e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902553"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256044"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Rozwiązywanie problemów z replikacją maszyny wirtualnej z platformy Azure do platformy Azure
 
-W tym artykule opisano sposób rozwiązywania typowych błędów w Azure Site Recovery podczas replikacji i odzyskiwania maszyn wirtualnych platformy Azure z jednego regionu do innego. Aby uzyskać więcej informacji o obsługiwanych konfiguracjach, zobacz [macierz obsługi do replikowania maszyn wirtualnych platformy Azure](site-recovery-support-matrix-azure-to-azure.md).
+W tym artykule opisano sposób rozwiązywania typowych błędów w Azure Site Recovery podczas replikacji i odzyskiwania maszyn wirtualnych platformy Azure z jednego regionu do innego. Aby uzyskać więcej informacji o obsługiwanych konfiguracjach, zobacz [Macierz obsługi w celu replikowania maszyn wirtualnych platformy Azure](site-recovery-support-matrix-azure-to-azure.md).
 
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Problemy z przydziałami zasobów platformy Azure (kod błędu 150097)
 
@@ -52,7 +52,7 @@ Zaufane certyfikaty główne wymagane do autoryzacji i uwierzytelniania nie są 
 
 ### <a name="fix-the-problem"></a>Rozwiąż problem
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>System Windows
 
 Na maszynie wirtualnej z systemem operacyjnym Windows zainstaluj najnowsze aktualizacje systemu Windows na maszynie wirtualnej, aby wszystkie zaufane certyfikaty główne znajdowały się na komputerze. Postępuj zgodnie z typowym procesem zarządzania aktualizacjami systemu Windows lub aktualizacją certyfikatu w organizacji, aby uzyskać najnowsze certyfikaty główne i zaktualizowaną listę odwołania certyfikatów na maszynach wirtualnych.
 
@@ -80,7 +80,7 @@ Ponieważ system SUSE Linux używa linków symbolicznych (lub *linków symbolicz
 
 1. Jeśli certyfikat głównego urzędu certyfikacji firmy Symantec nie zostanie znaleziony, uruchom następujące polecenie, aby pobrać plik. Sprawdź pod kątem błędów i postępuj zgodnie z zalecanymi akcjami dotyczącymi błędów sieci.
 
-    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
+    **# wget https://docs.broadcom.com/docs-and-downloads/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem-O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
 
 1. Sprawdź, czy certyfikat głównego urzędu certyfikacji Baltimore jest obecny:
 
@@ -88,7 +88,7 @@ Ponieważ system SUSE Linux używa linków symbolicznych (lub *linków symbolicz
 
 1. Jeśli certyfikat głównego urzędu certyfikacji Baltimore nie zostanie znaleziony, Uruchom to polecenie, aby pobrać certyfikat:
 
-    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root. pem**
+    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem-O Baltimore_CyberTrust_Root. pem**
 
 1. Sprawdź, czy certyfikat DigiCert_Global_Root_CA jest obecny:
 
@@ -106,7 +106,7 @@ Ponieważ system SUSE Linux używa linków symbolicznych (lub *linków symbolicz
 
 1. Uruchom te polecenia, aby sprawdzić, czy dla certyfikatów zostały utworzone wartości skrótu podmiotu jako linków symbolicznych:
 
-    - Polecenie:
+    - Dotyczące
 
         **# ls-l | Baltimore grep**
 
@@ -116,7 +116,7 @@ Ponieważ system SUSE Linux używa linków symbolicznych (lub *linków symbolicz
 
         `-rw-r--r-- 1 root root 1303 Jun  5  2014 Baltimore_CyberTrust_Root.pem`
 
-    - Polecenie:
+    - Dotyczące
 
         **# ls-l | VeriSign_Class_3_Public_Primary_Certification_Authority_G5 grep**
 
@@ -126,7 +126,7 @@ Ponieważ system SUSE Linux używa linków symbolicznych (lub *linków symbolicz
 
         `lrwxrwxrwx 1 root root   62 Jan  8 09:48 facacbc6.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem`
 
-    - Polecenie:
+    - Dotyczące
 
         **# ls-l | DigiCert_Global_Root grep**
 
@@ -150,7 +150,7 @@ Ponieważ system SUSE Linux używa linków symbolicznych (lub *linków symbolicz
 
 1. Sprawdź, czy pliki są obecne:
 
-    - Polecenie:
+    - Dotyczące
 
         **# ls-l 653b494a. 0 b204d74a. 0 3513523f. 0**
 
@@ -271,7 +271,7 @@ Aby ponownie zmienić stan replikacji maszyny wirtualnej, możesz wybrać opcję
 
 #### <a name="to-protect-the-disks"></a>Aby chronić dyski
 
-1. Przejdź do **pozycji zreplikowane elementy** > *Nazwa maszyny wirtualnej* > **dyski**.
+1. Przejdź do **pozycji zreplikowane elementy** > *nazwa maszyny wirtualnej* > **dysków**.
 1. Wybierz dysk niechroniony, a następnie wybierz pozycję **Włącz replikację**:
 
     ![Włącz replikację na dyskach maszyn wirtualnych](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
@@ -381,14 +381,14 @@ Instrukcje dotyczące rozwiązywania problemów w [stanie aprowizacji maszyny wi
 Aby włączyć replikację na maszynie wirtualnej, jej stan aprowizacji musi się **powieść**. Wykonaj następujące kroki, aby sprawdzić stan aprowizacji:
 
 1. W Azure Portal wybierz **Eksplorator zasobów** z **wszystkich usług**.
-1. Rozwiń **subskrypcje** listy i wybierz swoją subskrypcję.
-1. Rozwiń **ResourceGroups** listy i wybierz grupę zasobów maszyny wirtualnej.
+1. Rozwiń listę **subskrypcje** i wybierz swoją subskrypcję.
+1. Rozwiń listę **ResourceGroups** i wybierz grupę zasobów maszyny wirtualnej.
 1. Rozwiń listę **zasoby** i wybierz maszynę wirtualną.
 1. Zaznacz pole **provisioningState** w widoku wystąpienia po prawej stronie.
 
 ### <a name="fix-the-problem"></a>Rozwiąż problem
 
-- Jeśli **provisioningState** jest, skontaktuj się z pomocą techniczną, podając szczegóły, aby rozwiązać.
+- Jeśli **provisioningState** **zakończyła się niepowodzeniem**, skontaktuj się z pomocą techniczną, aby uzyskać szczegółowe informacje.
 - W przypadku **aktualizowania** **provisioningState** może być wdrażane inne rozszerzenie. Sprawdź, czy na maszynie wirtualnej istnieją bieżące operacje, poczekaj na ich zakończenie, a następnie spróbuj ponownie wykonać zadanie "Włącz replikację" Site Recovery.
 
 ## <a name="unable-to-select-target-vm-network-selection-tab-is-unavailable"></a>Nie można wybrać docelowej maszyny wirtualnej (karta wybór sieci jest niedostępna)
@@ -466,7 +466,7 @@ Poniższe przykłady są wierszami z plików GRUB, w których pojawiają się na
 
 Zastąp nazwy poszczególnych urządzeń odpowiednimi identyfikatorami UUID:
 
-1. Znajdź identyfikator UUID urządzenia, wykonując polecenie **blkid** ***nazwę urządzenia***. Przykład:
+1. Znajdź identyfikator UUID urządzenia, wykonując polecenie **blkid** ***nazwę urządzenia***. Na przykład:
 
     ```
     blkid /dev/sda1

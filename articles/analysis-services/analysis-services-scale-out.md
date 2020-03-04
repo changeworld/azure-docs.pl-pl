@@ -4,15 +4,15 @@ description: Replikowanie Azure Analysis Services serwerów z skalowaniem w pozi
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310190"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247989"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Skalowanie w poziomie usług Azure Analysis Services
 
@@ -30,7 +30,7 @@ Bez względu na liczbę replik zapytań używanych w puli zapytań przetwarzanie
 
 Skalowanie w górę może potrwać do 5 minut, aby nowe repliki zapytań były przyrostowo dodawane do puli zapytań. Gdy wszystkie nowe repliki zapytań są uruchomione, nowe połączenia klientów są zrównoważone dla zasobów w puli zapytań. Istniejące połączenia klientów nie są zmieniane z zasobu, z którym są obecnie połączone. Podczas skalowania w programie wszystkie istniejące połączenia klientów z pulą zapytań, które są usuwane z puli zapytań, są przerywane. Klienci mogą ponownie połączyć się z innym zasobem puli zapytań.
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
 Podczas konfigurowania skalowania w poziomie po raz pierwszy bazy danych modelu na serwerze podstawowym są *automatycznie* synchronizowane z nowymi replikami w nowej puli zapytań. Automatyczna synchronizacja odbywa się tylko raz. Podczas automatycznej synchronizacji pliki danych serwera podstawowego (szyfrowane przy użyciu magazynu obiektów BLOB) są kopiowane do drugiej lokalizacji, również szyfrowane w usłudze BLOB Storage. Repliki w puli zapytań są następnie *odwodnione* danymi z drugiego zestawu plików. 
 
@@ -74,19 +74,23 @@ W celu uzyskania maksymalnej wydajności operacji przetwarzania i wykonywania za
 
 ## <a name="monitor-qpu-usage"></a>Monitorowanie użycia QPU
 
-Aby ustalić, czy skalowanie w poziomie serwera jest konieczne, Monitoruj serwer w Azure Portal przy użyciu metryk. Jeśli QPU regularnie maxes, oznacza to, że liczba zapytań względem Twoich modeli przekracza limit QPU dla Twojego planu. Metryka długości kolejki zadań puli zapytań zwiększa się także wtedy, gdy liczba zapytań w kolejce puli wątków zapytań przekracza dostępne QPU. 
+Aby ustalić, czy skalowanie w poziomie serwera jest konieczne, [Monitoruj serwer](analysis-services-monitor.md) w Azure Portal przy użyciu metryk. Jeśli QPU regularnie maxes, oznacza to, że liczba zapytań względem Twoich modeli przekracza limit QPU dla Twojego planu. Metryka długości kolejki zadań puli zapytań zwiększa się także wtedy, gdy liczba zapytań w kolejce puli wątków zapytań przekracza dostępne QPU. 
 
 Kolejną dobrą metryką dla oglądania jest średnia QPU przez ServerResourceType. Ta Metryka porównuje średnią QPU dla serwera podstawowego z pulą zapytań. 
 
 ![Metryki skalowania zapytania w poziomie](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
-### <a name="to-configure-qpu-by-serverresourcetype"></a>Aby skonfigurować QPU przez ServerResourceType
+**Aby skonfigurować QPU przez ServerResourceType**
+
 1. Na wykresie liniowym metryki kliknij pozycję **Dodaj metrykę**. 
 2. W **obszarze zasób**wybierz swój serwer, a następnie w **obszarze Przestrzeń nazw**wybierz pozycję **Analysis Services metryki standardowe**, a następnie w polu **Metryka**wybierz pozycję **QPU**, a następnie w obszarze **agregacja**wybierz pozycję **średnia**. 
 3. Kliknij przycisk **Zastosuj podział**. 
 4. W polu **wartości**wybierz pozycję **ServerResourceType**.  
 
-Aby dowiedzieć się więcej, zobacz [monitorowanie metryk serwera](analysis-services-monitor.md).
+### <a name="detailed-diagnostic-logging"></a>Szczegółowe rejestrowanie diagnostyczne
+
+Użyj dzienników Azure Monitor, aby uzyskać bardziej szczegółową diagnostykę skalowania zasobów serwera. Za pomocą dzienników można używać zapytań Log Analytics, aby rozbić QPU i pamięć przez serwer i replikę. Aby dowiedzieć się więcej, zobacz przykładowe zapytania w [dzienniku diagnostyki Analysis Services](analysis-services-logging.md#example-queries).
+
 
 ## <a name="configure-scale-out"></a>Konfigurowanie zwiększania skali w poziomie
 
@@ -102,7 +106,7 @@ Aby dowiedzieć się więcej, zobacz [monitorowanie metryk serwera](analysis-ser
 
 Podczas pierwszego konfigurowania skalowania w poziomie dla serwera modele na serwerze podstawowym są automatycznie synchronizowane z replikami w puli zapytań. Automatyczna synchronizacja odbywa się tylko raz, podczas pierwszej konfiguracji skalowania w poziomie do co najmniej jednej repliki. Kolejne zmiany liczby replik na tym samym serwerze *nie spowodują wyzwolenia innej automatycznej synchronizacji*. Automatyczna synchronizacja nie zostanie wykonana ponownie, nawet jeśli ustawisz serwer na wartość zero replik, a następnie ponownie skalujesz do dowolnej liczby replik. 
 
-## <a name="synchronize"></a>Synchronizuj 
+## <a name="synchronize"></a>Synchronizowanie 
 
 Operacje synchronizacji należy wykonać ręcznie lub przy użyciu interfejsu API REST.
 
@@ -127,9 +131,9 @@ Użyj operacji **synchronizacji** .
 Kody stanu powrotu:
 
 
-|Code  |Opis  |
+|Kod  |Opis  |
 |---------|---------|
-|-1     |  Nieprawidłowe       |
+|-1     |  Nieprawidłowy       |
 |0     | Replikacji        |
 |1     |  Ponownego wypełniania       |
 |2     |   Zakończone       |
@@ -138,7 +142,7 @@ Kody stanu powrotu:
 |||
 
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
