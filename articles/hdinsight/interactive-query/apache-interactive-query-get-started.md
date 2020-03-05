@@ -1,19 +1,19 @@
 ---
 title: Co to jest zapytanie interaktywne w usłudze Azure HDInsight?
 description: Wprowadzenie do interaktywnego zapytania, nazywanego również Apache Hive LLAP, w usłudze Azure HDInsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 09/17/2019
-ms.openlocfilehash: f03797a8c7df1609a32f934bc090c7adc899aa9a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.custom: hdinsightactive
+ms.date: 03/03/2020
+ms.openlocfilehash: e133e08e333cb478269a93cce963566e195d6949
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198926"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271951"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Co to jest zapytanie interaktywne w usłudze Azure HDInsight
 
@@ -36,35 +36,19 @@ Aby uzyskać informacje na temat tworzenia klastra usługi HDInsight, zobacz [Tw
 
 Aby wykonać zapytania programu Hive, dostępne są następujące opcje:
 
-* Korzystanie z programu Microsoft Power BI
-
-    Zobacz [wizualizacje interakcyjne zapytań Apache Hive danych za pomocą Power BI w usłudze Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) zobacz [wizualizowanie danych big data za pomocą Power BI w usłudze Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
-
-* Korzystanie z programu Visual Studio
-
-    Zobacz [nawiązywanie połączenia z usługą Azure HDInsight i uruchamianie zapytań Apache Hive przy użyciu narzędzi Data Lake Tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).
-
-* Korzystanie z programu Visual Studio Code
-
-    Zobacz [używanie Visual Studio Code dla Apache Hive, LLAP lub pySpark](../hdinsight-for-vscode.md).
-* Uruchom Apache Hive przy użyciu widoku Hive usługi Apache Ambari.
-  
-    Zobacz [Używanie widoku Apache Hive z Apache Hadoop w usłudze Azure HDInsight](../hadoop/apache-hadoop-use-hive-ambari-view.md).
-
-* Uruchom Apache Hive przy użyciu Z usługi Beeline.
-  
-    Zobacz [używanie Apache Hive z Apache Hadoop w usłudze HDInsight z z usługi Beeline](../hadoop/apache-hadoop-use-hive-beeline.md).
-  
-    Można użyć Z usługi Beeline z węzła głównego lub pustego węzła krawędzi. Zalecamy używanie Z usługi Beeline z pustego węzła krawędzi. Aby uzyskać informacje dotyczące tworzenia klastra usługi HDInsight za pomocą pustego węzła krawędzi, zobacz [używanie pustych węzłów brzegowych w usłudze HDInsight](../hdinsight-apps-use-edge-node.md).
-* Uruchom Apache Hive, używając ODBC programu Hive.
-  
-    Zobacz [łączenie programu Excel, aby Apache Hadoop za pomocą sterownika Microsoft Hive ODBC](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
+|Metoda |Opis |
+|---|---|
+|Microsoft Power BI|Zobacz [wizualizacje interakcyjne zapytań Apache Hive dane Power BI w usłudze Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md)i [wizualizowanie danych big data za pomocą Power BI w usłudze Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).|
+|Visual Studio|Zobacz [nawiązywanie połączenia z usługą Azure HDInsight i uruchamianie zapytań Apache Hive przy użyciu narzędzi Data Lake Tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).|
+|Visual Studio Code|Zobacz [używanie Visual Studio Code dla Apache Hive, LLAP lub pySpark](../hdinsight-for-vscode.md).|
+|Widok Hive programu Apache Ambari|Zobacz [Używanie widoku Apache Hive z Apache Hadoop w usłudze Azure HDInsight](../hadoop/apache-hadoop-use-hive-ambari-view.md). Widok Hive nie jest dostępny dla usługi HDInsight 4,0.|
+|Apache Z usługi Beeline|Zobacz [używanie Apache Hive z Apache Hadoop w usłudze HDInsight z z usługi Beeline](../hadoop/apache-hadoop-use-hive-beeline.md). Można użyć Z usługi Beeline z węzła głównego lub pustego węzła krawędzi. Zalecamy używanie Z usługi Beeline z pustego węzła krawędzi. Aby uzyskać informacje dotyczące tworzenia klastra usługi HDInsight za pomocą pustego węzła krawędzi, zobacz [używanie pustych węzłów brzegowych w usłudze HDInsight](../hdinsight-apps-use-edge-node.md).|
+|Technologia Hive ODBC|Zobacz [łączenie programu Excel, aby Apache Hadoop za pomocą sterownika Microsoft Hive ODBC](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).|
 
 Aby znaleźć parametry połączenia z usługą Java Database Connectivity (JDBC):
 
-1. Zaloguj się do usługi Apache Ambari, korzystając z następującego adresu URL: `https://<cluster name>.AzureHDInsight.net`.
-2. W menu po lewej stronie wybierz pozycję **Hive**.
-3. Aby skopiować adres URL, wybierz ikonę schowka:
+1. W przeglądarce sieci Web przejdź do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`, gdzie `CLUSTERNAME` jest nazwą klastra.
+1. Aby skopiować adres URL, wybierz ikonę schowka:
 
    ![Zapytanie interaktywne usługi HDInsight Hadoop LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
 

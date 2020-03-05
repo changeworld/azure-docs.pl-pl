@@ -1,14 +1,17 @@
 ---
 title: Łączenie funkcji języka Java z usługą Azure Storage
 description: Dowiedz się, jak połączyć funkcję Java wyzwalaną przez protokół HTTP z usługą Azure Storage przy użyciu powiązania wyjściowego magazynu kolejki.
+author: KarlErickson
+ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: 72e3aad15ea8ef922d89a67891e223b65473b909
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198551"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272801"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Łączenie funkcji języka Java z usługą Azure Storage
 
@@ -112,10 +115,19 @@ Teraz możesz przystąpić do wypróbowania lokalnego nowego powiązania danych 
 
 Tak jak wcześniej, użyj następującego polecenia, aby skompilować projekt i uruchomić środowisko uruchomieniowe funkcji lokalnie:
 
+::: zone pivot="java-build-tools-maven"  
 ```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end
 
 > [!NOTE]  
 > Ponieważ włączono pakiety rozszerzeń w pliku host. JSON, [rozszerzenie powiązania magazynu](functions-bindings-storage-blob.md#add-to-your-functions-app) zostało pobrane i zainstalowane dla Ciebie podczas uruchamiania, wraz z innymi rozszerzeniami powiązań firmy Microsoft.
@@ -138,9 +150,17 @@ Następnie użyj interfejsu wiersza polecenia platformy Azure, aby wyświetlić 
 
 Aby zaktualizować opublikowaną aplikację, ponownie uruchom następujące polecenie:  
 
-```azurecli
+::: zone pivot="java-build-tools-maven"  
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
 
 Ponownie można użyć Zwinięciea do przetestowania wdrożonej funkcji. Tak jak wcześniej, przekaż wartość `AzureFunctions` w treści żądania POST na adres URL, jak w poniższym przykładzie:
 

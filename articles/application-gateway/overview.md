@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/23/2019
+ms.date: 03/03/2020
 ms.author: victorh
-ms.openlocfilehash: 1e80fa23519104c3c62f6a0bf5d65cbbe0848ae2
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: f3621feb688b3b257cd4f685a9be306d75700f4a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443826"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273608"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co to jest Azure Application Gateway?
 
@@ -40,15 +40,15 @@ Brama Application Gateway obsługuje zakończenie protokołu SSL/TLS w bramie, p
 
 ## <a name="autoscaling"></a>Skalowanie automatyczne
 
-Wdrożenia Application Gateway lub WAF w ramach Standard_v2 lub WAF_v2 jednostki SKU obsługują Skalowanie automatyczne i można skalować w górę lub w dół na podstawie zmiany wzorców obciążenia ruchu sieciowego. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. Aby uzyskać więcej informacji na temat Application Gateway funkcji Standard_v2 i WAF_v2, zobacz Automatyczne [skalowanie jednostki SKU w wersji 2](application-gateway-autoscaling-zone-redundant.md).
+Application Gateway Standard_v2 obsługuje skalowanie automatyczne i można skalować w górę lub w dół w zależności od zmiany wzorców obciążenia ruchu sieciowego. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. Aby uzyskać więcej informacji na temat funkcji Standard_v2 Application Gateway, zobacz Automatyczne [skalowanie jednostki SKU w wersji 2](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="zone-redundancy"></a>Nadmiarowość stref
 
-Wdrożenie Application Gateway lub WAF w ramach jednostki SKU Standard_v2 lub WAF_v2 może obejmować wiele Strefy dostępności, oferując lepszą odporność na uszkodzenia i eliminuje konieczność udostępniania osobnych bram aplikacji w każdej strefie.
+Standard_v2 Application Gateway może obejmować wiele Strefy dostępnościów, co zapewnia lepszą odporność na uszkodzenia i eliminuje konieczność udostępniania oddzielnych bram aplikacji w każdej strefie.
 
 ## <a name="static-vip"></a>Statyczny adres VIP
 
-Adres VIP bramy aplikacji w jednostce SKU Standard_v2 lub WAF_v2 obsługuje wyłącznie statyczny typ adresu VIP. Dzięki temu wirtualne adresy IP skojarzone z bramą aplikacji nie zmieniają się nawet w okresie istnienia Application Gateway.
+Jednostka SKU Standard_v2 bramy aplikacji obsługuje wyłącznie statyczny typ adresu VIP. Dzięki temu wirtualne adresy IP skojarzone z bramą aplikacji nie zmieniają się nawet w okresie istnienia Application Gateway.
 
 ## <a name="web-application-firewall"></a>Zapora aplikacji internetowej
 
@@ -75,7 +75,7 @@ Aby uzyskać więcej informacji, zobacz [routing oparty na adresach URL za pomoc
 
 ## <a name="multiple-site-hosting"></a>Hostowanie wielu witryn
 
-Hostowanie wielu witryn pozwala na skonfigurowanie więcej niż jednej witryny internetowej w tym samym wystąpieniu bramy aplikacji. Ta funkcja umożliwia skonfigurowanie bardziej wydajnej topologii dla wdrożeń przez dodanie do 100 witryn sieci Web do jednego Application Gateway lub 40 dla WAF (w celu uzyskania optymalnej wydajności). Każdą witrynę internetową można skierować do jej własnej puli. Na przykład brama aplikacji może obsługiwać ruch dla witryn `contoso.com` i `fabrikam.com` z dwóch pul serwerów o nazwie ContosoServerPool i FabrikamServerPool.
+Hostowanie wielu witryn pozwala na skonfigurowanie więcej niż jednej witryny internetowej w tym samym wystąpieniu bramy aplikacji. Ta funkcja umożliwia skonfigurowanie bardziej wydajnej topologii dla wdrożeń przez dodanie do 100 witryn sieci Web do jednego Application Gateway (w celu uzyskania optymalnej wydajności). Każdą witrynę internetową można skierować do jej własnej puli. Na przykład brama aplikacji może obsługiwać ruch dla witryn `contoso.com` i `fabrikam.com` z dwóch pul serwerów o nazwie ContosoServerPool i FabrikamServerPool.
 
 Żądania dotyczące adresu `http://contoso.com` są kierowane do puli ContosoServerPool, a żądania dotyczące adresu `http://fabrikam.com` — do puli FabrikamServerPool.
 
@@ -115,7 +115,7 @@ Opróżnianie połączeń umożliwia bezproblemowe usunięcie członków puli za
 
 Aby uzyskać więcej informacji, zobacz sekcję opróżnianie połączenia w temacie [Omówienie konfiguracji Application Gateway](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining).
 
-## <a name="custom-error-pages"></a>Strony błędów niestandardowych
+## <a name="custom-error-pages"></a>Niestandardowe strony błędów
 
 Usługa Application Gateway umożliwia tworzenie niestandardowych stron błędów wyświetlanych zamiast domyślnych strony błędów. W przypadku niestandardowych stron błędów możesz użyć własnych oznakowań i układu.
 
@@ -135,15 +135,15 @@ Aby uzyskać więcej informacji, zobacz [Zapisywanie nagłówków HTTP](rewrite-
 
 ## <a name="sizing"></a>Ustalanie rozmiaru
 
-Application Gateway Standard_v2 i WAF_v2 jednostki SKU można skonfigurować na potrzeby wdrożeń skalowania automatycznego lub stałego rozmiaru. Te jednostki SKU nie oferują różnych rozmiarów wystąpień. Aby uzyskać więcej informacji na temat wydajności i cen w wersji 2, zobacz Automatyczne [skalowanie jednostki SKU w wersji 2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
+Standard_v2 Application Gateway można skonfigurować na potrzeby wdrożeń skalowania automatycznego lub stałego rozmiaru. Ta jednostka SKU nie oferuje różnych rozmiarów wystąpień. Aby uzyskać więcej informacji na temat wydajności i cen w wersji 2, zobacz Automatyczne [skalowanie jednostki SKU w wersji 2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
 
-Jednostka SKU Application Gateway Standard i WAF jest obecnie oferowana w trzech rozmiarach: **małych**, **średnich**i **dużych**. Rozmiary małych wystąpień są przeznaczone na potrzeby programowania i scenariuszy testowania.
+Standard Application Gateway jest oferowany w trzech rozmiarach: **małych**, **średnich**i **dużych**. Rozmiary małych wystąpień są przeznaczone na potrzeby programowania i scenariuszy testowania.
 
 Pełna lista limitów usługi Application Gateway znajduje się na stronie [ograniczeń usługi Application Gateway](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
 W poniższej tabeli przedstawiono średnią przepływność wydajności dla każdego wystąpienia usługi Application Gateway V1 z włączonym odciążeniem SSL:
 
-| Średni rozmiar odpowiedzi strony zaplecza | Small | Średnia | Large |
+| Średni rozmiar odpowiedzi strony zaplecza | Small | Medium | Large |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
 | 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |
