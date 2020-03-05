@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: ARO, OpenShift, aquasec, TwistLock, Red Hat
-ms.openlocfilehash: 5d28a19126c9b7ae4ef7afe2a6b69bd4a13e0c83
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228237"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271379"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Uruchamianie uprzywilejowanych kontenerów w klastrze usługi Azure Red Hat OpenShift
 
@@ -137,6 +137,8 @@ Rozpocznij od sekcji "Instalowanie konsoli".
 
 Podczas `oc create -f twistlock_console.yaml` w kroku 2 wystąpi błąd podczas tworzenia przestrzeni nazw.
 Można je bezpiecznie zignorować, dlatego przestrzeń nazw została wcześniej utworzona za pomocą polecenia `oc new-project`.
+
+Użyj `azure-disk` dla typu magazynu.
 
 ### <a name="create-an-external-route-to-console"></a>Tworzenie trasy zewnętrznej w konsoli
 

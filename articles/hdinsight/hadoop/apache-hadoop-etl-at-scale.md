@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/27/2020
-ms.openlocfilehash: f2c18a1e858fcebf8d2c82210f2290cf4a14d061
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/03/2020
+ms.openlocfilehash: 8a4205002a98a5b9670839b0de7b53d81e0221a6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846017"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271930"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Wyodrębnianie, przekształcanie i ładowanie (ETL) na dużą skalę
 
@@ -67,7 +67,7 @@ Dane są zwykle pozyskiwane w usłudze Azure Storage przy użyciu programu Power
 
 ### <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 
-Azure Data Lake Storage (ADLS) to zarządzane repozytorium do skalowania dla danych analitycznych, które są zgodne z systemem plików HDFS.  ADLS używa modelu projektowania podobnego do systemu plików HDFS i oferuje nieograniczoną skalowalność pod względem całkowitej pojemności i rozmiaru poszczególnych plików. ADLS jest bardzo dobre podczas pracy z dużymi plikami, ponieważ duży plik można przechowywać w wielu węzłach.  Partycjonowanie danych w ADLS odbywa się w tle.  Usługa zapewnia ogromną przepływność do obsługi zadań analitycznych z tysiącami równorzędnych funkcji wykonawczych, które efektywnie odczytują i zapisują setki terabajtów danych.
+Azure Data Lake Storage (ADLS) to zarządzane repozytorium do skalowania dla danych analitycznych, które są zgodne z systemem plików HDFS.  ADLS używa modelu projektowania podobnego do systemu plików HDFS i oferuje nieograniczoną skalowalność pod względem całkowitej pojemności i rozmiaru poszczególnych plików. ADLS jest bardzo dobre podczas pracy z dużymi plikami, ponieważ duży plik można przechowywać w wielu węzłach.  Partycjonowanie danych w ADLS odbywa się w tle.  Uzyskujesz ogromne przepływność, aby uruchamiać zadania analityczne z tysiącami współbieżnych modułów uruchamiających, które efektywnie odczytują i zapisują setki terabajtów danych.
 
 Dane są zwykle wprowadzane do ADLS przy użyciu Azure Data Factory, ADLS SDK, AdlCopy Service, Apache pomocą distcp lub Apache Sqoop.  Które z tych usług są duże, zależy od tego, gdzie są dane.  Jeśli dane są obecnie w istniejącym klastrze usługi Hadoop, można użyć usługi Apache pomocą distcp, AdlCopy lub Azure Data Factory.  Jeśli znajduje się na platformie Azure Blob Storage, możesz użyć Azure Data Lake Storage .NET SDK, Azure PowerShell lub Azure Data Factory.
 
@@ -129,7 +129,7 @@ Apache Flume to dystrybuowana, niezawodna i dostępna usługa służąca do wyda
 
 Nie można używać Apache Flume z usługą Azure HDInsight.  Lokalna instalacja usługi Hadoop może używać Flume do wysyłania danych do obiektów blob magazynu Azure lub Azure Data Lake Storage.  Aby uzyskać więcej informacji, zobacz [Korzystanie z platformy Apache Flume z usługą HDInsight](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
-## <a name="transform"></a>Przekształcaj
+## <a name="transform"></a>Przekształcanie
 
 Gdy dane istnieją w wybranej lokalizacji, należy je wyczyścić, połączyć lub przygotować do określonego wzorca użycia.  Usługi Hive, świnie i Spark SQL są dobrym wyborami dla tego rodzaju pracy.  Są one obsługiwane w usłudze HDInsight.
 

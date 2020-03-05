@@ -1,45 +1,45 @@
 ---
 title: Prebudowana jednostka w wersji 2 — LUIS
 titleSuffix: Azure Cognitive Services
-description: Ten artykuł zawiera wstępnie skompilowane informacje o jednostkach geographyV2 w Language Understanding (LUIS).
+description: Ten artykuł zawiera geographyV2 informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 7a269f93820a6029370490448f02038f5aa3eb3e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b2b2b0781abce59628660b669f43110bf91b15e6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464892"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273493"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 prekompilowaną jednostkę dla aplikacji LUIS
-Wstępnie utworzona jednostka geographyV2 wykrywa miejsca. Ponieważ ta jednostka jest już przeszkolone, nie trzeba dodawać przykładowej wyrażenia długości zawierającej GeographyV2 do intencji aplikacji. Jednostka GeographyV2 jest obsługiwana w [kulturze](luis-reference-prebuilt-entities.md)angielskiej.
+Jednostki wstępnie geographyV2 wykrywa miejsc. Ponieważ przeprowadzono już uczenie tę jednostkę, dodawanie wypowiedzi przykład zawierający GeographyV2 do intencji aplikacji nie jest konieczne. Jednostka GeographyV2 jest obsługiwana w [kulturze](luis-reference-prebuilt-entities.md)angielskiej.
 
-## <a name="subtypes"></a>Podtypów
-Lokalizacje geograficzne mają Podtyp:
+## <a name="subtypes"></a>Podtypy
+Lokalizacje geograficzne istnieją podtypy:
 
 |Podtyp|Przeznaczenie|
 |--|--|
-|`poi`|punkt orientacyjny|
+|`poi`|punktu orientacyjnego|
 |`city`|Nazwa miasta|
 |`countryRegion`|Nazwa kraju lub regionu|
-|`continent`|Nazwa kontynentu|
+|`continent`|Nazwa kontynent|
 |`state`|Nazwa województwa|
 
 
-## <a name="resolution-for-geographyv2-entity"></a>Rozwiązanie dla jednostki GeographyV2
+## <a name="resolution-for-geographyv2-entity"></a>Rozpoznawanie GeographyV2 jednostki
 
 Następujące obiekty jednostki są zwracane dla zapytania:
 
 `Carol is visiting the sphinx in gizah egypt in africa before heading to texas.`
 
-#### <a name="v3-responsetabv3"></a>[Odpowiedź v3](#tab/V3)
+#### <a name="v3-response"></a>[Odpowiedź v3](#tab/V3)
 
 Poniższy kod JSON jest z parametrem `verbose` ustawionym na `false`:
 
@@ -72,7 +72,7 @@ Poniższy kod JSON jest z parametrem `verbose` ustawionym na `false`:
 
 W poprzednim pliku JSON `poi` jest skrótem dla **punktu orientacyjnego**.
 
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[Pełna odpowiedź w wersji 3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Pełna odpowiedź w wersji 3](#tab/V3-verbose)
 
 Poniższy kod JSON jest z parametrem `verbose` ustawionym na `true`:
 
@@ -161,7 +161,7 @@ Poniższy kod JSON jest z parametrem `verbose` ustawionym na `true`:
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[Odpowiedź w wersji 2](#tab/V2)
+#### <a name="v2-response"></a>[Odpowiedź w wersji 2](#tab/V2)
 
 Poniższy przykład pokazuje rozdzielczość jednostki **wbudowanej. geographyV2** .
 
@@ -205,10 +205,10 @@ Poniższy przykład pokazuje rozdzielczość jednostki **wbudowanej. geographyV2
     }
 ]
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
 
-Dowiedz się więcej o jednostkach [poczty e-mail](luis-reference-prebuilt-email.md), [liczb](luis-reference-prebuilt-number.md)i [porządkowej](luis-reference-prebuilt-ordinal.md) . 
+Dowiedz się więcej o jednostkach [poczty e-mail](luis-reference-prebuilt-email.md), [liczb](luis-reference-prebuilt-number.md)i [porządkowej](luis-reference-prebuilt-ordinal.md) .

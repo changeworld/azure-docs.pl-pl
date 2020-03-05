@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 02/24/2020
-ms.openlocfilehash: b69cd4c8459ffae363f02247b1f20488afe1cd9b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 8e7874ec2a0ea160d29f8755ca8680c4dfbeec1d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921604"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268498"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Ponowne uczenie modeli za pomocą programu Azure Machine Learning Designer (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -119,7 +119,7 @@ Wykonaj następujące kroki, aby przesłać punkt końcowy potoku z narzędzia P
 
 1. Wybierz potok, który chcesz uruchomić.
 
-1. Wybierz pozycję **Uruchom**.
+1. Wybierz pozycję **Prześlij**.
 
 1. W oknie dialogowym Konfiguracja można określić nową wartość ścieżki danych wejściowych, która wskazuje nowy zestaw danych.
 
@@ -127,7 +127,9 @@ Wykonaj następujące kroki, aby przesłać punkt końcowy potoku z narzędzia P
 
 ### <a name="submit-runs-with-code"></a>Prześlij przebiegi z kodem
 
-Istnieje wiele sposobów uzyskiwania dostępu do punktu końcowego REST programowo w zależności od środowiska deweloperskiego. Możesz znaleźć przykłady kodu, które pokazują, jak przesłać uruchomienia potoku z parametrami na karcie **Korzystanie** z potoku.
+Punkt końcowy REST opublikowanego potoku można znaleźć w panelu przegląd. Wywołując punkt końcowy, możesz ponownie przeprowadzić uczenie opublikowanego potoku.
+
+Aby można było wywołać metodę REST, potrzebny jest nagłówek uwierzytelniania OAuth 2,0 typu okaziciela. Zapoznaj się z poniższą [sekcją samouczka](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) , aby uzyskać więcej szczegółów na temat konfigurowania uwierzytelniania do obszaru roboczego i wykonywania sparametryzowanych wywołań REST.
 
 ## <a name="next-steps"></a>Następne kroki
 

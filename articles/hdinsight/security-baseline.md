@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d6b4f8a7965a7cbcab2616650b40ed93087072b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: 1ace4ce5b9b0fd59a69e908c1f31d1ad4853889b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589976"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271857"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Podstawa zabezpieczeń platformy Azure dla usługi HDInsight
 
@@ -65,7 +65,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: Ochrona krytycznych aplikacji sieci Web
 
-**Wskazówki**: niedostępne; Test porównawczy jest przeznaczony dla usług Azure Apps lub zasobów obliczeniowych obsługujących aplikacje sieci Web.
+**Wskazówki**: nie dotyczy; Test porównawczy jest przeznaczony dla usług Azure Apps lub zasobów obliczeniowych obsługujących aplikacje sieci Web.
 
 **Monitorowanie Azure Security Center**: nie dotyczy
 
@@ -125,7 +125,7 @@ Adresy IP zarządzania usługą HDInsight: https://docs.microsoft.com/azure/hdin
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: zarządzanie ruchem do aplikacji sieci Web
 
-**Wskazówki**: niedostępne; Test porównawczy jest przeznaczony dla usług Azure Apps lub zasobów obliczeniowych obsługujących aplikacje sieci Web.
+**Wskazówki**: nie dotyczy; Test porównawczy jest przeznaczony dla usług Azure Apps lub zasobów obliczeniowych obsługujących aplikacje sieci Web.
 
 **Monitorowanie Azure Security Center**: nie dotyczy
 
@@ -331,7 +331,7 @@ Jak ostrzec dane dziennika usługi log Analytics:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -491,7 +491,7 @@ Jak monitorować działania związane z tożsamościami i dostępem użytkownik�
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -713,7 +713,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Monitorowanie Azure Security Center**: obecnie niedostępna
 
-**Odpowiedzialność**: klient
+**Odpowiedzialność**: udostępnione
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: Szyfruj poufne informacje w spoczynku
 
@@ -779,7 +779,7 @@ Opcjonalnie, jeśli istnieje Rapid7, Qualys lub jakakolwiek inna subskrypcja pla
 
 Jak zainstalować agenta Rapid7 ręcznie:
 
-https://insightvm.help.rapid7.com/v1.0/docs/agent-installation-on-linux
+https://insightvm.help.rapid7.com/docs/azure-security-center
 
 
 Jak zainstalować agenta Qualys ręcznie:
@@ -926,11 +926,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - Niedozwolone typy zasobów
 - Dozwolone typy zasobów
 
-Użyj grafu zasobów platformy Azure, aby wykonywać zapytania/odnajdywać zasoby w ramach subskrypcji.  Upewnij się, że wszystkie zasoby platformy Azure obecne w środowisku są zatwierdzone.
+Użyj grafu zasobów platformy Azure, aby wykonywać zapytania/odnajdywać zasoby w ramach subskrypcji. Upewnij się, że wszystkie zasoby platformy Azure obecne w środowisku są zatwierdzone.
 
 Jak skonfigurować Azure Policy i zarządzać nim: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Jak tworzyć zapytania za pomocą usługi Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+
 
 **Monitorowanie Azure Security Center**: obecnie niedostępna
 
@@ -972,7 +973,9 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 - Niedozwolone typy zasobów
 - Dozwolone typy zasobów
 
+
 Jak skonfigurować Azure Policy i zarządzać nim: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Jak odmówić określonego typu zasobu Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
@@ -993,9 +996,7 @@ Jak odmówić określonego typu zasobu Azure Policy: https://docs.microsoft.com/
 **Wskazówki**: Użyj dostępu warunkowego platformy Azure, aby ograniczyć możliwość korzystania przez użytkowników z Azure Resource Manager przez skonfigurowanie "blokowania dostępu" dla aplikacji "Microsoft Azure Management".
 
 
-Jak skonfigurować dostęp warunkowy w celu blokowania dostępu do Azure Resource Manager:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Jak skonfigurować dostęp warunkowy w celu blokowania dostępu do Azure Resource Manager: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Monitorowanie Azure Security Center**: obecnie niedostępna
 
@@ -1003,7 +1004,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: Ogranicz możliwość wykonywania skryptów w zasobach obliczeniowych przez użytkowników
 
-**Wskazówki**: niedostępne; Nie dotyczy to usługi Azure HDInsight, ponieważ użytkownicy (inni niż administratorzy) klastra nie potrzebują dostępu do poszczególnych węzłów w celu uruchamiania zadań. Administrator klastra ma dostęp do wszystkich węzłów klastra.
+**Wskazówki**: nie dotyczy; Nie dotyczy to usługi Azure HDInsight, ponieważ użytkownicy (inni niż administratorzy) klastra nie potrzebują dostępu do poszczególnych węzłów w celu uruchamiania zadań. Administrator klastra ma dostęp do wszystkich węzłów klastra.
 
 **Monitorowanie Azure Security Center**: obecnie niedostępna
 
@@ -1011,7 +1012,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizyczne lub logiczne rozdzielenie aplikacji wysokiego ryzyka
 
-**Wskazówki**: niedostępne; Test porównawczy jest przeznaczony dla usług Azure Apps lub zasobów obliczeniowych obsługujących aplikacje sieci Web.
+**Wskazówki**: nie dotyczy; Test porównawczy jest przeznaczony dla usług Azure Apps lub zasobów obliczeniowych obsługujących aplikacje sieci Web.
 
 **Monitorowanie Azure Security Center**: obecnie niedostępna
 
@@ -1095,7 +1096,7 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpieczne przechowywanie niestandardowych obrazów systemu operacyjnego
 
-**Wskazówki**: niedostępne; obrazy niestandardowe nie mają zastosowania do usługi Azure HDInsight.
+**Wskazówki**: nie dotyczy; obrazy niestandardowe nie mają zastosowania do usługi Azure HDInsight.
 
 **Monitorowanie Azure Security Center**: obecnie niedostępna
 
@@ -1343,7 +1344,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Wskazówki**: Security Center przypisuje ważność do alertów, ułatwiając określanie priorytetów kolejności, w której uczestniczy każdy alert, dzięki czemu w przypadku naruszenia zabezpieczeń zasobów można od razu uzyskać dostęp. Ważność jest oparta na tym, jak dobrze Security Center znajduje się w wyszukiwaniu lub analitycznym używanym do wystawiania alertu, a także poziom pewności, że istniało złośliwy wpływ na działanie, które prowadziło do alertu.
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -1421,3 +1422,7 @@ Aby uzyskać więcej informacji na temat strategii i sposobu wykonywania czerwon
 
 **Odpowiedzialność**: udostępnione
 
+## <a name="next-steps"></a>Następne kroki
+
+- Zobacz [test porównawczy zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Dowiedz się więcej o [punktach odniesienia zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

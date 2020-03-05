@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 3e831e58b47d53e2924956cab13568c69bc1432e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d889cd3325784f564d03e5d75dde1ec760c66804
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153744"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268539"
 ---
 # <a name="split-data-module"></a>Moduł Split Data
 
@@ -84,34 +84,74 @@ Ten moduł jest szczególnie przydatny, gdy trzeba podzielić dane na zestawy sz
 
     Na podstawie podanego wyrażenia regularnego zestaw danych jest podzielony na dwa zestawy wierszy: wiersze z wartościami, które pasują do wyrażenia i wszystkie pozostałe wiersze. 
 
+W poniższych przykładach pokazano, jak podzielić zestaw danych przy użyciu opcji **wyrażenia regularnego** . 
+
+### <a name="single-whole-word"></a>Pojedyncze całe słowo 
+
+W tym przykładzie do pierwszego zestawu danych są wszystkie wiersze, które zawierają tekst `Gryphon` w kolumnie `Text`i umieszczane są inne wiersze w drugim danych wyjściowych z **podziałem**:
+
+```text
+    \"Text" Gryphon  
+```
+
+### <a name="substring"></a>Podciąg
+
+Ten przykład wyszukuje określony ciąg w dowolnej pozycji w drugiej kolumnie zestawu danych, w tym miejscu według wartości indeksu 1. W dopasowaniu jest rozróżniana wielkość liter.
+
+```text
+(\1) ^[a-f]
+```
+
+Pierwszy wynikowy zestaw danych zawiera wszystkie wiersze, w których kolumna indeksu zaczyna się od jednego z następujących znaków: `a`, `b`, `c`, `d`, `e`, `f`. Wszystkie inne wiersze są kierowane do drugiego danych wyjściowych.
+
 ## <a name="relative-expression-split"></a>Podziel wyrażenie względne.
 
 1. Dodaj moduł [Split Data](./split-data.md) do potoku, a następnie połącz go jako dane wejściowe z zestawem danych, który chcesz podzielić.
   
 2. W obszarze **tryb dzielenia**wybierz pozycję **podział wyrażenia względnego**.
   
-3. W polu tekstowym **wyrażenie relacyjne** wpisz wyrażenie, które wykonuje operację porównania, w pojedynczej kolumnie:
+3. W polu tekstowym **wyrażenie relacyjne** wpisz wyrażenie, które wykonuje operację porównywania w pojedynczej kolumnie:
 
-
- - Kolumna liczbowa:
-    - Kolumna zawiera numery dowolnego typu danych liczbowych, w tym typy danych daty/godziny.
-
-    - Wyrażenie może odwoływać się do maksymalnie jednej nazwy kolumny.
-
-    - Użyj znaku handlowego "i" (&) dla operacji i użyj znaku potoku (|) dla operacji lub.
-
-    - Obsługiwane są następujące operatory: `<`, `>`, `<=`, `>=`, `==`, `!=`
-
-    - Nie można grupować operacji przy użyciu `(` i `)`.
-
- - Kolumna ciągów: 
-    - Obsługiwane są następujące operatory: `==`, `!=`
-
-
+   Dla **kolumny liczbowej**:
+   - Kolumna zawiera numery dowolnego typu danych liczbowych, w tym typy danych daty i godziny.
+   - Wyrażenie może odwoływać się do maksymalnie jednej nazwy kolumny.
+   - Użyj znaku handlowego "`&`" dla operacji i. Użyj `|` znak potoku dla operacji lub.
+   - Obsługiwane są następujące operatory: `<`, `>`, `<=`, `>=`, `==`, `!=`.
+   - Nie można grupować operacji przy użyciu `(` i `)`.
+   
+   Dla **kolumny String**:
+   - Obsługiwane są następujące operatory: `==`, `!=`.
 
 4. Uruchamianie potoku.
 
     Wyrażenie dzieli zestaw danych na dwa zestawy wierszy: wiersze z wartościami, które spełniają warunek i wszystkie pozostałe wiersze.
+
+W poniższych przykładach pokazano, jak podzielić zestaw danych przy użyciu opcji **wyrażenie względne** w module **Split Data** :  
+
+### <a name="using-calendar-year"></a>Przy użyciu roku kalendarzowego
+
+Typowym scenariuszem jest dzielenie zestawu danych według lat. Poniższe wyrażenie wybiera wszystkie wiersze, w których wartości w kolumnie `Year` są większe niż `2010`.
+
+```text
+\"Year" > 2010
+```
+
+Wyrażenie Date musi uwzględniać wszystkie części daty, które są uwzględnione w kolumnie dane, a format dat w kolumnie danych musi być spójny. 
+
+Na przykład w kolumnie daty używającej formatu `mmddyyyy`wyrażenie powinno wyglądać następująco:
+
+```text
+\"Date" > 1/1/2010
+```
+
+### <a name="using-column-indices"></a>Używanie indeksów kolumn
+
+W poniższym wyrażeniu pokazano, jak można użyć indeksu kolumn, aby zaznaczyć wszystkie wiersze w pierwszej kolumnie zestawu danych, które zawierają wartości mniejsze niż lub równe 30, ale nie równe 20.
+
+```text
+(\0)<=30 & !=20
+```
+
 
 ## <a name="next-steps"></a>Następne kroki
 

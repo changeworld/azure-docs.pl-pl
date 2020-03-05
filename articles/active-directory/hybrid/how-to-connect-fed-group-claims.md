@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 3cb53656adb1dbeb5e5597d02edfe5be4dbec6a8
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
-ms.translationtype: MT
+ms.openlocfilehash: 3b45bcff300cc3e749d387ea83df2f96e51d3c66
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170492"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274226"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Konfigurowanie oświadczeń grup dla aplikacji z Azure Active Directory (publiczna wersja zapoznawcza)
 
@@ -30,51 +30,53 @@ Azure Active Directory może zapewnić użytkownikom informacje o członkostwie 
 > Istnieją pewne zastrzeżenia dotyczące tej funkcji w wersji zapoznawczej:
 >
 >- Obsługa używania atrybutów sAMAccountName i identyfikatora zabezpieczeń (SID) synchronizowanych ze środowiska lokalnego została zaprojektowana, aby umożliwić przeniesienie istniejących aplikacji z AD FS i innych dostawców tożsamości. Grupy zarządzane w usłudze Azure AD nie zawierają atrybutów niezbędnych do emisji tych oświadczeń.
->- W dużych organizacjach liczba grup, do których należy użytkownik, może przekroczyć limit, który Azure Active Directory doda do tokenu. 150 grup dla tokenu SAML i 200 dla JWT. Może to prowadzić do nieprzewidzianych wyników. Jeśli jest to potencjalny problem, zalecamy przetestowanie, a jeśli to konieczne, dopóki nie dodamy ulepszeń, aby umożliwić ograniczenie oświadczeń do odpowiednich grup aplikacji.  
+>- W dużych organizacjach liczba grup, do których należy użytkownik, może przekroczyć limit, który Azure Active Directory doda do tokenu. 150 grup dla tokenu SAML i 200 dla JWT. Może to prowadzić do nieprzewidzianych wyników. Jeśli użytkownicy mają dużą liczbę członkostw w grupach, zalecamy użycie opcji w celu ograniczenia grup emitowanych w oświadczeniach do odpowiednich grup dla aplikacji.  
 >- W przypadku tworzenia nowych aplikacji lub w przypadkach, w których można dla nich skonfigurować aplikację, a w przypadku, gdy obsługa grup zagnieżdżonych nie jest wymagana, zaleca się, aby autoryzacja w aplikacji była oparta na rolach aplikacji, a nie w grupach.  Ogranicza to ilość informacji potrzebnych do przechodzenia do tokenu, jest bezpieczniejsze i oddziela przypisanie użytkowników od konfiguracji aplikacji.
 
 ## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>Oświadczenia grupy dla aplikacji migrowanych z AD FS i innych dostawców tożsamości
 
 Wiele aplikacji skonfigurowanych do uwierzytelniania za pomocą AD FS polega na informacjach dotyczących członkostwa w grupach w postaci atrybutów grupy usługi Windows AD.   Te atrybuty to nazwa sAMAccountName grupy, która może być kwalifikowana według nazwy domeny lub identyfikatora zabezpieczeń grupy systemu Windows (GroupSID).  Gdy aplikacja jest federacyjny z AD FS, AD FS używa funkcji TokenGroups, aby pobrać członkostwo w grupach dla użytkownika.
 
-Aby dopasować token do aplikacji otrzymanej od AD FS, oświadczenia grup i ról mogą być emitowane z kwalifikowaną nazwą domeny, a nie identyfikatorem objectID Azure Active Directory grupy.
+Aplikacja, która została przeniesiona z AD FS wymaga oświadczeń w tym samym formacie. Oświadczenia grup i ról mogą być emitowane z Azure Active Directory zawierającego kwalifikowana nazwa użytkownika domeny lub GroupSID zsynchronizowany z Active Directory, a nie obiektu Azure Active Directory objectID grupy.
 
 Obsługiwane formaty oświadczeń grup są następujące:
 
-- Identyfikator **objectid grupy Azure Active Directory** (Dostępne dla wszystkich grup)
-- Nazwa **konta sam** (Dostępne dla grup synchronizowanych z Active Directory)
-- **NetbiosDomain\sAMAccountName** (Dostępne dla grup synchronizowanych z Active Directory)
-- **DNSDomainName\sAMAccountName** (Dostępne dla grup synchronizowanych z Active Directory)
-- **Identyfikator zabezpieczeń grupy lokalnej** (Dostępne dla grup synchronizowanych z Active Directory)
+- Identyfikator **objectid grupy Azure Active Directory** (dostępny dla wszystkich grup)
+- **sAMAccountName** (dostępne dla grup synchronizowanych z Active Directory)
+- **NetbiosDomain\sAMAccountName** (dostępne dla grup synchronizowanych z Active Directory)
+- **DNSDomainName\sAMAccountName** (dostępne dla grup synchronizowanych z Active Directory)
+- **Identyfikator zabezpieczeń grupy lokalnej** (dostępny dla grup synchronizowanych z Active Directory)
 
 > [!NOTE]
 > atrybuty sAMAccountName i właściwości identyfikatora SID grupy lokalnej są dostępne tylko dla obiektów grup synchronizowanych z Active Directory.   Nie są one dostępne w grupach utworzonych w Azure Active Directory ani usługi Office 365.   Aplikacje skonfigurowane w Azure Active Directory, aby uzyskać zsynchronizowane atrybuty grupy lokalnej, pobrać je tylko dla zsynchronizowanych grup.
 
 ## <a name="options-for-applications-to-consume-group-information"></a>Opcje dla aplikacji korzystających z informacji o grupach
 
-Jednym ze sposobów na uzyskanie informacji o grupach przez aplikacje jest wywołanie punktu końcowego grup grafów w celu pobrania członkostwa w grupie dla uwierzytelnionego użytkownika. To wywołanie zapewnia, że wszystkie grupy, do których należy użytkownik, są dostępne nawet wtedy, gdy istnieje duża liczba grup, a aplikacja musi wyliczyć wszystkie grupy, do których należy użytkownik.  Wyliczanie grupowe jest następnie niezależne od ograniczeń rozmiaru tokenu.
+Aplikacje mogą wywoływać punkt końcowy grup programu MS Graph, aby uzyskać informacje o grupie dla uwierzytelnionego użytkownika. To wywołanie zapewnia, że wszystkie grupy, do których należy użytkownik, są dostępne nawet wtedy, gdy istnieje duża liczba grup.  Wyliczanie grupowe jest następnie niezależne od ograniczeń rozmiaru tokenu.
 
-Jeśli jednak istniejąca aplikacja już oczekuje na korzystanie z informacji o grupach przez oświadczenia w tokenie, który odbiera, Azure Active Directory można skonfigurować przy użyciu wielu różnych opcji oświadczeń w celu dopasowania do potrzeb aplikacji.  należy wziąć pod uwagę następujące opcje:
+Jeśli jednak istniejąca aplikacja oczekuje na korzystanie z informacji o grupie za pośrednictwem oświadczeń, Azure Active Directory można skonfigurować przy użyciu wielu różnych formatów oświadczeń.  należy wziąć pod uwagę następujące opcje:
 
-- W przypadku korzystania z członkostwa w grupie w celach autoryzacji w aplikacji zaleca się użycie identyfikatora obiektu grupy, który jest niezmienny i unikatowy w Azure Active Directory i dostępne dla wszystkich grup.
-- Jeśli używasz konta sAMAccountName grupy lokalnej do autoryzacji, użyj nazw kwalifikowanych dla domeny;  istnieje mniej możliwości wystąpienia kolizji nazw. Nazwa sAMAccountName może być unikatowa w ramach domeny Active Directory, ale jeśli więcej niż jedna domena Active Directory jest synchronizowana z dzierżawą Azure Active Directory, istnieje możliwość, że więcej niż jedna grupa ma taką samą nazwę.
+- W przypadku korzystania z członkostwa w grupie w celach autoryzacji w aplikacji zaleca się użycie identyfikatora ObjectID grupy. Identyfikator ObjectID grupy jest niezmienny i unikatowy w Azure Active Directory i jest dostępny dla wszystkich grup.
+- Jeśli używasz konta sAMAccountName grupy lokalnej do autoryzacji, użyj nazw kwalifikowanych dla domeny;  istnieje mniej możliwości kolizji nazw. Nazwa sAMAccountName może być unikatowa w ramach domeny Active Directory, ale jeśli więcej niż jedna domena Active Directory jest synchronizowana z dzierżawą Azure Active Directory, istnieje możliwość, że więcej niż jedna grupa ma taką samą nazwę.
 - Rozważ użycie [ról aplikacji](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) , aby zapewnić warstwę pośrednią między członkostwem grupy a aplikacją.   Następnie aplikacja wykonuje wewnętrzne decyzje dotyczące autoryzacji na podstawie Clams ról w tokenie.
-- Jeśli aplikacja jest skonfigurowana do pobierania atrybutów grup, które są synchronizowane z Active Directory, a grupa nie zawiera tych atrybutów, nie zostanie ona uwzględniona w oświadczeniach.
-- Oświadczenia grupowe w tokenach obejmują grupy zagnieżdżone.   Jeśli użytkownik należy do GroupB, a GroupB jest członkiem grupy, wówczas oświadczenia grupy dla użytkownika będą zawierać zarówno grupę, jak i GroupB. W przypadku organizacji z dużym użyciem zagnieżdżonych grup i użytkowników z dużą liczbą członkostw w grupie liczba grup wymienionych w tokenie może zwiększyć rozmiar tokenu.   Azure Active Directory ogranicza liczbę grup, które będą emitowane w tokenie do 150 dla zatwierdzeń SAML i 200 dla tokenu JWT, aby zapobiec zbyt dużym tokenom.  Jeśli użytkownik jest członkiem większej liczby grup niż limit, grupy są emitowane wraz z linkiem do punktu końcowego grafu, aby uzyskać informacje o grupie.
+- Jeśli aplikacja jest skonfigurowana do pobierania atrybutów grup, które są synchronizowane z Active Directory, a grupa nie zawiera tych atrybutów, nie zostanie uwzględniona w oświadczeniach.
+- Oświadczenia grupowe w tokenach obejmują grupy zagnieżdżone, z wyjątkiem przypadków, gdy przy użyciu opcji ograniczają oświadczenia grupy do grup przypisanych do aplikacji.  Jeśli użytkownik należy do GroupB, a GroupB jest członkiem grupy, wówczas oświadczenia grupy dla użytkownika będą zawierać zarówno grupę, jak i GroupB. Gdy użytkownicy organizacji mają dużą liczbę członkostw w grupie, liczba grup wymieniona w tokenie może zwiększyć rozmiar tokenu.  Azure Active Directory ogranicza liczbę grup, które będą emitowane w tokenie do 150 dla zatwierdzeń SAML i 200 dla tokenu JWT.  Jeśli użytkownik jest członkiem większej liczby grup, grupy zostaną pominięte i zostanie uwzględniony link do punktu końcowego grafu w celu uzyskania informacji o grupie.
 
-> Wymagania wstępne dotyczące używania atrybutów grup synchronizowanych z Active Directory:   Grupy muszą być synchronizowane z Active Directory przy użyciu Azure AD Connect.
+## <a name="prerequisites-for-using-group-attributes-synchronized-from-active-directory"></a>Wymagania wstępne dotyczące używania atrybutów grup synchronizowanych z Active Directory
+
+W przypadku użycia formatu ObjectId oświadczenia członkostwa w grupie mogą być emitowane w tokenach dla każdej grupy. Aby można było używać oświadczeń grup w formacie innym niż identyfikator ObjectId grupy, grupy muszą być synchronizowane z Active Directory przy użyciu Azure AD Connect.
 
 Istnieją dwie kroki konfigurowania Azure Active Directory, aby emitować nazwy grup dla Active Directory grup.
 
-1. **Synchronizuj nazwy grup z Active Directory** Zanim Azure Active Directory mogą emitować nazwy grup lub lokalny identyfikator SID grupy w oświadczeniach grup lub ról, wymagane atrybuty muszą być synchronizowane z Active Directory.  Musisz mieć uruchomiony program Azure AD Connect w wersji 1.2.70 lub nowszej.   Przed wersjami 1.2.70 Azure AD Connect zsynchronizuje obiekty grupy z Active Directory, ale domyślnie nie zawiera wymaganych atrybutów nazwy grupy.  Należy uaktualnić do bieżącej wersji.
+1. **Synchronizuj nazwy grup z Active Directory** Zanim Azure Active Directory mogą emitować nazwy grup lub lokalny identyfikator SID grupy w oświadczeniach grup lub ról, wymagane atrybuty muszą być synchronizowane z Active Directory.  Musisz mieć uruchomiony program Azure AD Connect w wersji 1.2.70 lub nowszej.   Wcześniejsze wersje Azure AD Connect niż 1.2.70 będą synchronizować obiekty grup z Active Directory, ale nie będą zawierać wymaganych atrybutów nazwy grupy.  Uaktualnij do bieżącej wersji.
 
-2. **Skonfiguruj rejestrację aplikacji w Azure Active Directory, aby uwzględnić oświadczenia grupy w tokenach** Oświadczenia grup można skonfigurować w sekcji aplikacje dla przedsiębiorstw w portalu dla galerii lub aplikacji rejestracji jednokrotnej SAML w galerii, lub za pomocą manifestu aplikacji w sekcji rejestracje aplikacji.  Aby skonfigurować oświadczenia grupy w manifeście aplikacji, zobacz sekcję "Konfigurowanie rejestracji aplikacji Azure Active Directory dla atrybutów grup" poniżej.
+2. **Skonfiguruj rejestrację aplikacji w Azure Active Directory, aby uwzględnić oświadczenia grupy w tokenach** Oświadczenia grup można skonfigurować w sekcji aplikacje dla przedsiębiorstw w portalu lub za pomocą manifestu aplikacji w sekcji rejestracje aplikacji.  Aby skonfigurować oświadczenia grupy w manifeście aplikacji, zobacz sekcję "Konfigurowanie rejestracji aplikacji Azure Active Directory dla atrybutów grup" poniżej.
 
-## <a name="configure-group-claims-for-saml-applications-using-sso-configuration"></a>Konfigurowanie oświadczeń grupy dla aplikacji SAML przy użyciu konfiguracji logowania jednokrotnego
+## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>Dodawanie oświadczeń grupy do tokenów dla aplikacji SAML przy użyciu konfiguracji rejestracji jednokrotnej
 
-Aby skonfigurować oświadczenia grupy dla galerii lub aplikacji SAML innej niż Galeria, Otwórz aplikacje dla przedsiębiorstw, kliknij aplikację na liście i wybierz opcję Konfiguracja logowania jednokrotnego.
+Aby skonfigurować oświadczenia grupy dla galerii lub aplikacji SAML innej niż Galeria, Otwórz **aplikacje dla przedsiębiorstw**, kliknij aplikację na liście, wybierz opcję **Konfiguracja logowania**jednokrotnego, a następnie wybierz pozycję **atrybuty użytkownika & oświadczenia**.
 
-Wybierz ikonę edycji obok pozycji "grupy zwracane w tokenie"
+Kliknij pozycję **Dodaj zgłoszenie do grupy**  
 
 ![Interfejs użytkownika oświadczeń](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
@@ -84,24 +86,34 @@ Użyj przycisków radiowych, aby wybrać grupy do uwzględnienia w tokenie
 
 | Wybór | Opis |
 |----------|-------------|
-| **Wszystkie grupy** | Emituje grupy zabezpieczeń i listy dystrybucyjne.   Powoduje również, że role katalogu, do których użytkownik jest przypisany, są emitowane w ramach roszczeń "wids" i wszystkie role aplikacji, do których użytkownik jest przypisany, w ramach roszczeń ról. |
+| **Wszystkie grupy** | Emituje grupy zabezpieczeń i listy dystrybucyjne i role.  |
 | **Grupy zabezpieczeń** | Emituje grupy zabezpieczeń, których użytkownik jest członkiem w ramach roszczeń grupowych |
-| **Listy dystrybucyjne** | Emituje listy dystrybucyjne, których użytkownik jest członkiem |
 | **Role katalogu** | Jeśli użytkownik ma przypisane role katalogu, są emitowane jako wids ' (nie będą wysyłane żądania grup) |
+| **Grupy przypisane do aplikacji** | Emituje tylko te grupy, które są jawnie przypisane do aplikacji, a użytkownik jest członkiem |
 
 Na przykład, aby wyemitować wszystkie grupy zabezpieczeń, których użytkownik jest członkiem, wybierz pozycję grupy zabezpieczeń
 
 ![Interfejs użytkownika oświadczeń](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
-Aby emitować grupy przy użyciu atrybutów Active Directory synchronizowanych z Active Directory zamiast obiektów objectID usługi Azure AD wybierz wymagany format z listy rozwijanej.  Spowoduje to zastąpienie identyfikatora obiektu w oświadczeniach z wartościami ciągu zawierającymi nazwy grup.   Oświadczenia będą uwzględniane tylko w przypadku grup synchronizowanych z Active Directory.
+Aby emitować grupy przy użyciu atrybutów Active Directory synchronizowanych z Active Directory zamiast obiektów objectID usługi Azure AD wybierz wymagany format z listy rozwijanej. Oświadczenia będą uwzględniane tylko w przypadku grup synchronizowanych z Active Directory.
 
 ![Interfejs użytkownika oświadczeń](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+
+Aby emitować tylko grupy przypisane do aplikacji, wybierz **grupy przypisane do aplikacji**
+
+![Interfejs użytkownika oświadczeń](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
+
+Grupy przypisane do aplikacji zostaną uwzględnione w tokenie.  Inne grupy, do których należy użytkownik, zostaną pominięte.  W przypadku tej opcji grupy zagnieżdżone nie są uwzględniane, a użytkownik musi być bezpośrednim członkiem grupy przypisanej do aplikacji.
+
+Aby zmienić grupy przypisane do aplikacji, wybierz aplikację z listy **aplikacje dla przedsiębiorstw** , a następnie kliknij pozycję **Użytkownicy i grupy** w menu nawigacji po lewej stronie aplikacji.
+
+Zobacz metody dokumentu [dotyczące przypisywania użytkowników i grup do aplikacji](../../active-directory/manage-apps/methods-for-assigning-users-and-groups.md#assign-groups) , aby uzyskać szczegółowe informacje o zarządzaniu przypisaniem grupy do aplikacji.
 
 ### <a name="advanced-options"></a>Opcje zaawansowane
 
 Sposób emitowania oświadczeń grup można modyfikować przez ustawienia w obszarze Opcje zaawansowane
 
-Dostosuj nazwę żądania grupy:  W przypadku wybrania tego elementu można określić inny typ oświadczenia dla oświadczeń grupy.   Wprowadź typ zgłoszenia w polu Nazwa i opcjonalną przestrzeń nazw dla żądania w polu przestrzeń nazw.
+Dostosuj nazwę oświadczenia grupy: w przypadku wybrania dla oświadczeń grupy można określić inny typ oświadczenia.   Wprowadź typ zgłoszenia w polu Nazwa i opcjonalną przestrzeń nazw dla żądania w polu przestrzeń nazw.
 
 ![Interfejs użytkownika oświadczeń](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
@@ -112,6 +124,12 @@ Niektóre aplikacje wymagają, aby informacje o członkostwie w grupie były wy�
 > [!NOTE]
 > Jeśli opcja wyemituj dane grupy jako role są używane, w ramach żądania roli będą wyświetlane tylko grupy.  Wszystkie role aplikacji, do których użytkownik jest przypisany, nie będą wyświetlane w ramach roszczeń ról.
 
+### <a name="edit-the-group-claims-configuration"></a>Edytowanie konfiguracji oświadczeń grupy
+
+Po dodaniu konfiguracji oświadczenia grupy do atrybutów użytkownika & konfiguracji oświadczeń opcja dodania oświadczenia grupy będzie wyszarzona.  Aby zmienić konfigurację oświadczenia grupy, kliknij oświadczenie grupy na liście **dodatkowe oświadczenia** .
+
+![Interfejs użytkownika oświadczeń](media/how-to-connect-fed-group-claims/group-claims-ui-7.png)
+
 ## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>Skonfiguruj rejestrację aplikacji usługi Azure AD dla atrybutów grupy
 
 Oświadczenia grup można również skonfigurować w sekcji [opcjonalne oświadczenia](../../active-directory/develop/active-directory-optional-claims.md) [manifestu aplikacji](../../active-directory/develop/reference-app-manifest.md).
@@ -120,12 +138,14 @@ Oświadczenia grup można również skonfigurować w sekcji [opcjonalne oświadc
 
 2. Włącz oświadczenia członkostwa w grupie, zmieniając groupMembershipClaim
 
-   Prawidłowe wartości to:
+Prawidłowe wartości to:
 
-   - Całą
-   - Grupy securitygroup
-   - "DistributionList"
-   - "DirectoryRole"
+| Wybór | Opis |
+|----------|-------------|
+| **Całą** | Emituje grupy zabezpieczeń, listy dystrybucyjne i role |
+| **Grupy securitygroup** | Emituje grupy zabezpieczeń, których użytkownik jest członkiem w ramach roszczeń grupowych |
+| **"DirectoryRole** | Jeśli użytkownik ma przypisane role katalogu, są emitowane jako wids ' (nie będą wysyłane żądania grup) |
+| **"Aplikacja** | Emituje tylko te grupy, które są jawnie przypisane do aplikacji, a użytkownik jest członkiem |
 
    Na przykład:
 
@@ -137,7 +157,7 @@ Oświadczenia grup można również skonfigurować w sekcji [opcjonalne oświadc
 
 3. Określ ustawienia nazw grup opcjonalne oświadczenia.
 
-   Jeśli chcesz, aby grupy w tokenie zawierały atrybuty lokalnych grup usługi AD w sekcji opcjonalne oświadczenia, określ, które opcjonalne oświadczenie typu tokenu należy zastosować do, nazwę opcjonalnego oświadczenia, a także wszystkie wymagane właściwości.  Można wymienić wiele typów tokenów:
+   Jeśli chcesz, aby grupy w tokenie zawierały atrybuty lokalnych grup usługi AD, określ, które opcjonalne oświadczenie o typie tokenu należy zastosować do w sekcji opcjonalne oświadczenia.  Można wymienić wiele typów tokenów:
 
    - idToken dla tokenu identyfikatora OIDC
    - accessToken dla tokenu dostępu OAuth/OIDC
@@ -157,19 +177,19 @@ Oświadczenia grup można również skonfigurować w sekcji [opcjonalne oświadc
    }
    ```
 
-   | Opcjonalny schemat oświadczeń | Value |
+   | Opcjonalny schemat oświadczeń | Wartość |
    |----------|-------------|
    | **Nazwij** | Musi być "grupami" |
-   | **zewnętrz** | Nieużywane. Pomiń lub określ wartość null |
-   | **olejk** | Nieużywane. Pomiń lub określ wartość false |
+   | **zewnętrz** | Nie jest używany. Pomiń lub określ wartość null |
+   | **olejk** | Nie jest używany. Pomiń lub określ wartość false |
    | **AdditionalProperties** | Lista dodatkowych właściwości.  Prawidłowe opcje to "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
 
    W additionalProperties są wymagane tylko jeden z "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name".  Jeśli istnieje więcej niż jeden, zostanie użyta pierwsza wartość i wszystkie pozostałe zostały zignorowane.
 
-   Niektóre aplikacje wymagają informacji o grupie dla użytkownika w ramach roszczeń ról.  Aby zmienić typ roszczeń na z na podstawie zgłoszenia do roli, należy dodać "emit_as_roles" do dodatkowych właściwości.  Wartości grupy będą emitowane w ramach roszczeń ról.
+   Niektóre aplikacje wymagają informacji o grupie dla użytkownika w ramach roszczeń ról.  Aby zmienić typ roszczeń na z na podstawie żądania grupy do roli, Dodaj "emit_as_roles" do dodatkowych właściwości.  Wartości grupy będą emitowane w ramach roszczeń ról.
 
    > [!NOTE]
-   > Jeśli jest używana wartość "emit_as_roles", wszystkie role aplikacji skonfigurowane do przypisania użytkownika nie będą wyświetlane w ramach roszczeń ról
+   > Jeśli zostanie użyta wartość "emit_as_roles", wszystkie role aplikacji skonfigurowane do przypisania użytkownika nie będą wyświetlane w ramach tego żądania
 
 ### <a name="examples"></a>Przykłady
 
@@ -202,4 +222,6 @@ Aby emitować nazwy grup, które mają być zwracane w formacie netbiosDomain\sa
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Co to jest tożsamość hybrydowa?](whatis-hybrid-identity.md)
+[Metody przypisywania użytkowników i grup do aplikacji](../../active-directory/manage-apps/methods-for-assigning-users-and-groups.md#assign-groups)
+
+[Konfigurowanie oświadczeń ról](../../active-directory/develop/active-directory-enterprise-app-role-management.md)

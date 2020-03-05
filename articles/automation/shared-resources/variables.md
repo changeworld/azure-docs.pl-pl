@@ -9,66 +9,75 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ac2c276f051155d7ba18ee91e4ca27acb0b35192
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
-ms.translationtype: MT
+ms.openlocfilehash: 7495c6b114e232a9aad0075e173abebcb3c92cd0
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167986"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273598"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Zmienne zasoby w Azure Automation
 
-Zmienne zasoby to wartości, które są dostępne dla wszystkich elementów Runbook i konfiguracji DSC na koncie usługi Automation. Można nimi zarządzać za pomocą Azure Portal, programu PowerShell, w ramach elementu Runbook lub konfiguracji DSC. Zmienne automatyzacji są przydatne w następujących scenariuszach:
+Zmienne zasoby to wartości, które są dostępne dla wszystkich elementów Runbook i konfiguracji DSC na koncie usługi Automation. Można nimi zarządzać z poziomu Azure Portal, z programu PowerShell, w ramach elementu Runbook lub konfiguracji DSC.
 
-- Udostępnianie wartości między wieloma elementami Runbook lub konfiguracjami DSC.
+Zmienne automatyzacji są przydatne w następujących scenariuszach:
 
-- Udostępnij wartość między wieloma zadaniami z tego samego elementu Runbook lub konfiguracji DSC.
+- Udostępnianie wartości wśród wielu elementów Runbook lub konfiguracji DSC.
 
-- Zarządzaj wartością z portalu lub z wiersza polecenia programu PowerShell, który jest używany przez elementy Runbook lub konfiguracje DSC, takie jak zestaw typowych elementów konfiguracji, takich jak określona lista nazw maszyn wirtualnych, określona grupa zasobów, nazwa domeny usługi AD i wiele więcej.  
+- Udostępnianie wartości między wieloma zadaniami z tego samego elementu Runbook lub konfiguracji DSC.
 
-Ponieważ zmienne automatyzacji są utrwalane, są dostępne nawet wtedy, gdy konfiguracja elementu Runbook lub konfiguracji DSC zakończy się niepowodzeniem. Takie zachowanie umożliwia ustawienie wartości przez jeden element Runbook, który jest następnie używany przez inny lub jest używany przez ten sam element Runbook lub Konfiguracja DSC przy następnym uruchomieniu.
+- Zarządzanie wartością używaną przez elementy Runbook lub konfiguracje DSC z poziomu portalu lub wiersza polecenia programu PowerShell. Przykładem jest zestaw typowych elementów konfiguracji, takich jak określona lista nazw maszyn wirtualnych, określona grupa zasobów, nazwa domeny usługi AD i wiele innych.  
 
-Po utworzeniu zmiennej można określić, że jest ona zaszyfrowana. Zaszyfrowane zmienne są bezpiecznie przechowywane w Azure Automation i nie można pobrać jego wartości z polecenia cmdlet [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) , które jest dostarczane jako część modułu Azure PowerShell. Jedynym sposobem pobrania zaszyfrowanej wartości jest działanie **Get-AutomationVariable** w elemencie Runbook lub konfiguracji DSC. Jeśli chcesz zmienić zaszyfrowaną zmienną na niezaszyfrowaną, należy usunąć i ponownie utworzyć zmienną jako niezaszyfrowaną.
+Ponieważ zmienne automatyzacji są utrwalane, są dostępne nawet wtedy, gdy konfiguracja elementu Runbook lub konfiguracji DSC zakończy się niepowodzeniem. Takie zachowanie umożliwia jednemu elementowi Runbook lub konfiguracji DSC ustawienie wartości, która jest używana przez inny element Runbook, lub przez ten sam plik Runbook lub konfiguracji DSC przy następnym uruchomieniu.
+
+Podczas tworzenia zmiennej można określić jej szyfrowanie i magazyn, Azure Automation jako bezpieczny zasób. Inne zabezpieczane zasoby obejmują poświadczenia, certyfikaty i połączenia. Azure Automation szyfruje te zasoby i zapisuje je przy użyciu unikatowego klucza wygenerowanego dla każdego konta usługi Automation. Klucz jest przechowywany w Key Vault zarządzanym przez system. Przed zapisaniem bezpiecznego elementu zawartości Azure Automation ładuje klucz z Key Vault a następnie używa go do zaszyfrowania elementu zawartości. 
+
+Azure Automation przechowuje każdą zaszyfrowaną zmienną bezpiecznie. Nie można pobrać jej wartości za pomocą polecenia cmdlet [Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) , które jest dostarczane jako część modułu Azure PowerShell. Jedynym sposobem na pobranie zaszyfrowanej wartości jest użycie działania **Get-AutomationVariable** w elemencie Runbook lub konfiguracji DSC.
 
 >[!NOTE]
->Zabezpieczanie zasobów w Azure Automation obejmuje poświadczenia, certyfikaty, połączenia i zmienne zaszyfrowane. Te zasoby są szyfrowane i przechowywane w Azure Automation przy użyciu unikatowego klucza wygenerowanego dla każdego konta usługi Automation. Ten klucz jest przechowywany w Key Vault zarządzanym przez system. Przed zapisaniem bezpiecznego elementu zawartości klucz jest ładowany z Key Vault a następnie używany do szyfrowania elementu zawartości. Ten proces jest zarządzany przez Azure Automation.
+>Jeśli chcesz usunąć szyfrowanie dla zmiennej, należy usunąć zmienną i utworzyć ją ponownie jako niezaszyfrowaną.
+
+>[!NOTE]
+>Ten artykuł został zaktualizowany o korzystanie z nowego modułu Azure PowerShell Az. Nadal możesz używać modułu AzureRM, który będzie nadal otrzymywać poprawki błędów do co najmniej grudnia 2020 r. Aby dowiedzieć się więcej na temat nowego modułu Az i zgodności z modułem AzureRM, zobacz [Wprowadzenie do nowego modułu Az programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Instrukcje dotyczące instalacji polecenia AZ module w hybrydowym procesie roboczym elementu Runbook znajdują się w temacie [Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). W przypadku konta usługi Automation można zaktualizować moduły do najnowszej wersji przy użyciu [sposobu aktualizowania modułów Azure PowerShell w programie Azure Automation](../automation-update-azure-modules.md).
 
 ## <a name="variable-types"></a>Typy zmiennych
 
-Podczas tworzenia zmiennej przy użyciu Azure Portal należy określić typ danych z listy rozwijanej, aby Portal mógł wyświetlić odpowiednią kontrolkę do wprowadzania wartości zmiennej. Zmienna nie jest ograniczona do tego typu danych. Należy ustawić zmienną przy użyciu programu Windows PowerShell, jeśli chcesz określić wartość innego typu. Jeśli określisz **niezdefiniowane**, wartość zmiennej ustawia **$null**i należy ustawić wartość przy użyciu polecenia cmdlet [Set-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable) lub działania **Set-AutomationVariable** . Nie można utworzyć ani zmienić wartości typu złożonej zmiennej w portalu, ale można podać wartość dowolnego typu przy użyciu programu Windows PowerShell. Typy złożone są zwracane jako [parametr PSCustomObject](/dotnet/api/system.management.automation.pscustomobject).
-
-Można przechowywać wiele wartości w pojedynczej zmiennej przez utworzenie tablicy lub Hashtable i zapisanie jej do zmiennej.
-
-Poniżej przedstawiono listę typów zmiennych dostępnych w usłudze Automation:
+Podczas tworzenia zmiennej przy użyciu Azure Portal należy określić typ danych na liście rozwijanej, aby Portal mógł wyświetlić odpowiednią kontrolkę do wprowadzania wartości zmiennej. Następujące typy zmiennych są dostępne w Azure Automation:
 
 * Ciąg
 * Liczba całkowita
-* Data i godzina
+* DateTime
 * Wartość logiczna
 * Null
 
-## <a name="azurerm-powershell-cmdlets"></a>Polecenia cmdlet programu PowerShell AzureRM
+Zmienna nie jest ograniczona do wyznaczono typu danych. Należy ustawić zmienną przy użyciu programu Windows PowerShell, jeśli chcesz określić wartość innego typu. Jeśli nie zostanie **określona**, wartość zmiennej jest równa **null**i należy ustawić wartość przy użyciu polecenia cmdlet [Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) lub działania **Set-AutomationVariable** .
 
-W przypadku AzureRM polecenia cmdlet w poniższej tabeli służą do tworzenia zasobów poświadczeń usługi Automation i zarządzania nimi za pomocą programu Windows PowerShell. Są one dostarczane jako część [modułu AzureRM. Automation](/powershell/azure/overview), który jest dostępny do użycia w elementach Runbook usługi Automation i konfiguracjach DSC.
+Nie można użyć portalu do utworzenia lub zmiany wartości złożonego typu zmiennej. Można jednak podać wartość dowolnego typu przy użyciu programu Windows PowerShell. Typy złożone są pobierane jako [parametr PSCustomObject](/dotnet/api/system.management.automation.pscustomobject).
 
-| Polecenia cmdlet | Opis |
+Można przechowywać wiele wartości w pojedynczej zmiennej przez utworzenie tablicy lub Hashtable i zapisanie jej do zmiennej.
+
+## <a name="powershell-cmdlets-that-create-and-manage-variable-assets"></a>Polecenia cmdlet programu PowerShell, które tworzą i zarządzają zmiennymi zasobów
+
+Polecenia AZ module w poniższej tabeli służą do tworzenia zasobów zmiennych automatyzacji i zarządzania nimi za pomocą programu Windows PowerShell. Są one dostarczane jako część [modułu AZ. Automation](/powershell/azure/overview), który jest dostępny do użycia w elementach Runbook usługi Automation i konfiguracjach DSC.
+
+| Polecenie cmdlet | Opis |
 |:---|:---|
-|[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|Pobiera wartość istniejącej zmiennej.|
-|[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|Tworzy nową zmienną i ustawia jej wartość.|
-|[Remove-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationVariable)|Usuwa istniejącą zmienną.|
-|[Set-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable)|Ustawia wartość istniejącej zmiennej.|
+|[Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | Pobiera wartość istniejącej zmiennej.|
+|[New-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | Tworzy nową zmienną i ustawia jej wartość.|
+|[Remove-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationvariable?view=azps-3.5.0)| Usuwa istniejącą zmienną.|
+|[Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0)| Ustawia wartość istniejącej zmiennej.|
 
-## <a name="activities"></a>Działania
+## <a name="activities-to-access-variables"></a>Działania dotyczące dostępu do zmiennych
 
-Działania w poniższej tabeli służą do uzyskiwania dostępu do zmiennych w elementach Runbook i konfiguracjach DSC. Różnica między poleceniami cmdlet Get-AzureRmAutomationVariable i Get-AutomationVariable została wyjaśniona powyżej na początku tego dokumentu.
+Działania w poniższej tabeli służą do uzyskiwania dostępu do zmiennych w elementach Runbook i konfiguracjach DSC. Różnica między elementami **Get-AzAutomationVariable** i **Get-AutomationVariable** została omówiona w przypadku zmiennych szyfrowanych na początku tego artykułu.
 
-| Działania | Opis |
+| Działanie | Opis |
 |:---|:---|
-|Get-AutomationVariable|Pobiera wartość istniejącej zmiennej.|
-|Set-AutomationVariable|Ustawia wartość istniejącej zmiennej.|
+|**Get-AutomationVariable**|Pobiera wartość istniejącej zmiennej.|
+|**Set-AutomationVariable**|Ustawia wartość istniejącej zmiennej.|
 
 > [!NOTE]
-> Należy unikać używania zmiennych w parametrze-Name polecenia **Get-AutomationVariable** w elemencie Runbook lub konfiguracji DSC, ponieważ może to spowodować komplikację w odnajdywaniu zależności między elementami Runbook i konfiguracją DSC oraz zmiennymi automatyzacji w czasie projektowania.
+> Należy unikać używania zmiennych w parametrze *name* polecenia **Get-AutomationVariable** w elemencie Runbook lub konfiguracji DSC. Użycie tego parametru może komplikuje odnajdywanie zależności między elementami Runbook lub konfiguracjami DSC a zmiennymi automatyzacji w czasie projektowania.
 
 Funkcje w poniższej tabeli służą do uzyskiwania dostępu do zmiennych w elemencie Runbook python2 i pobierania ich.
 
@@ -78,37 +87,37 @@ Funkcje w poniższej tabeli służą do uzyskiwania dostępu do zmiennych w elem
 |automationassets.set_automation_variable|Ustawia wartość istniejącej zmiennej. |
 
 > [!NOTE]
-> Aby uzyskać dostęp do funkcji zasobów, należy zaimportować moduł "automationassets" w górnej części elementu Runbook języka Python.
+> Aby uzyskać dostęp do funkcji zasobów, należy zaimportować moduł **automationassets** w górnej części elementu Runbook języka Python.
 
 ## <a name="creating-a-new-automation-variable"></a>Tworzenie nowej zmiennej automatyzacji
 
-### <a name="to-create-a-new-variable-with-the-azure-portal"></a>Aby utworzyć nową zmienną za pomocą Azure Portal
+### <a name="create-a-new-variable-using-the-azure-portal"></a>Tworzenie nowej zmiennej przy użyciu Azure Portal
 
 1. Na koncie usługi Automation kliknij kafelek **zasoby** , a następnie w bloku **zasoby** wybierz pozycję **zmienne**.
 2. Na kafelku **zmienne** wybierz pozycję **Dodaj zmienną**.
-3. Wypełnij opcje w bloku **Nowa zmienna** , a następnie kliknij przycisk **Utwórz** Zapisz nową zmienną.
+3. Uzupełnij opcje w bloku **Nowa zmienna** , a następnie kliknij przycisk **Utwórz** , aby zapisać nową zmienną.
 
-### <a name="to-create-a-new-variable-with-windows-powershell"></a>Aby utworzyć nową zmienną za pomocą programu Windows PowerShell
+### <a name="create-a-new-variable-with-windows-powershell"></a>Tworzenie nowej zmiennej przy użyciu programu Windows PowerShell
 
-Polecenie cmdlet [New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) tworzy nową zmienną i ustawia jej wartość początkową. Możesz pobrać wartość przy użyciu polecenia [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable). Jeśli wartość jest typu prostego, zwracany jest ten sam typ. Jeśli jest to typ złożony, zwracany jest **parametr PSCustomObject** .
+Skrypt używa polecenia cmdlet **New-AzAutomationVariable** w celu utworzenia nowej zmiennej i ustawienia jej początkowej wartości. Następnie może pobrać wartość przy użyciu polecenia **Get-AzAutomationVariable**. Jeśli wartość jest typu prostego, wówczas pobierany jest ten sam typ. Jeśli jest to typ złożony, pobierany jest typ **parametr PSCustomObject** .
 
-Następujące przykładowe polecenia pokazują, jak utworzyć zmienną typu String, a następnie zwrócić jej wartość.
+Poniższy przykład pokazuje, jak utworzyć zmienną typu String, a następnie zwrócić jej wartość.
 
 ```powershell
-New-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" 
+New-AzAutomationVariable -ResourceGroupName "ResourceGroup01" 
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable' `
 –Encrypted $false –Value 'My String'
-$string = (Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" `
+$string = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 ```
 
-Następujące przykładowe polecenia pokazują, jak utworzyć zmienną typu złożonego, a następnie zwrócić jej właściwości. W tym przypadku jest używany obiekt maszyny wirtualnej z elementu **Get-AzureRmVm** .
+Poniższy przykład pokazuje, jak utworzyć zmienną typu złożonego, a następnie pobrać jej właściwości. W tym przypadku jest używany obiekt maszyny wirtualnej z elementu [Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) .
 
 ```powershell
-$vm = Get-AzureRmVm -ResourceGroupName "ResourceGroup01" –Name "VM01"
-New-AzureRmAutomationVariable –AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable" –Encrypted $false –Value $vm
+$vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01"
+New-AzAutomationVariable –AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable" –Encrypted $false –Value $vm
 
-$vmValue = (Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" `
+$vmValue = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable").Value
 $vmName = $vmValue.Name
 $vmIpAddress = $vmValue.IpAddress
@@ -116,17 +125,21 @@ $vmIpAddress = $vmValue.IpAddress
 
 ## <a name="using-a-variable-in-a-runbook-or-dsc-configuration"></a>Używanie zmiennej w elemencie Runbook lub konfiguracji DSC
 
-Użyj działania **Set-AutomationVariable** , aby ustawić wartość zmiennej automatyzacji w elemencie Runbook programu PowerShell lub konfiguracji DSC, i polecenie **Get-AutomationVariable** , aby je pobrać. Nie należy używać poleceń cmdlet **Set-AzureRMAutomationVariable** i **Get-AzureRMAutomationVariable** w konfiguracji elementu Runbook lub DSC, ponieważ są one mniej wydajne niż działania przepływu pracy. Nie można również pobrać wartości zabezpieczonych zmiennych przy użyciu elementu **Get-AzureRMAutomationVariable**. Jedynym sposobem utworzenia nowej zmiennej z poziomu elementu Runbook lub konfiguracji DSC jest użycie polecenia cmdlet [New-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) .
+Użyj działania **Set-AutomationVariable** , aby ustawić wartość zmiennej automatyzacji w elemencie Runbook programu PowerShell lub konfiguracji DSC, i polecenie **Get-AutomationVariable** , aby je pobrać. Nie należy używać poleceń cmdlet **Set-AzAutomationVariable** i **Get-AzAutomationVariable** ani ich odpowiedników modułów AzureRM w elemencie Runbook lub konfiguracji DSC, ponieważ są one mniej wydajne niż działania przepływu pracy. 
+
+Należy zauważyć, że nie można pobrać wartości bezpiecznej zmiennej z parametrem **Get-AzAutomationVariable** lub jego odpowiednikiem modułu AzureRM. 
+
+Jedynym sposobem utworzenia nowej zmiennej z poziomu elementu Runbook lub konfiguracji DSC jest użycie polecenia cmdlet **New-AzAutomationVariable** .
 
 ### <a name="textual-runbook-samples"></a>Przykładowe elementy Runbook
 
-#### <a name="setting-and-retrieving-a-simple-value-from-a-variable"></a>Ustawianie i pobieranie prostej wartości ze zmiennej
+#### <a name="set-and-retrieve-a-simple-value-from-a-variable"></a>Ustawianie i pobieranie prostej wartości ze zmiennej
 
-Następujące przykładowe polecenia pokazują, jak ustawić i pobrać zmienną w tekstowym elemencie Runbook. W tym przykładzie zakłada się, że zostały utworzone zmienne typu Integer o nazwach *NumberOfIterations* i *NumberOfRunnings* oraz zmienna typu String o nazwie *SampleMessage* .
+Następujące przykładowe polecenia pokazują, jak ustawić i pobrać zmienną w tekstowym elemencie Runbook. W tym przykładzie przyjęto założenie, że tworzone są zmienne całkowite o nazwach *NumberOfIterations* i *NumberOfRunnings* oraz zmienna ciągu o nazwie *SampleMessage*.
 
 ```powershell
-$NumberOfIterations = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfIterations'
-$NumberOfRunnings = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfRunnings'
+$NumberOfIterations = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfIterations'
+$NumberOfRunnings = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfRunnings'
 $SampleMessage = Get-AutomationVariable -Name 'SampleMessage'
 
 Write-Output "Runbook has been run $NumberOfRunnings times."
@@ -134,12 +147,12 @@ Write-Output "Runbook has been run $NumberOfRunnings times."
 for ($i = 1; $i -le $NumberOfIterations; $i++) {
     Write-Output "$i`: $SampleMessage"
 }
-Set-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
+Set-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
 ```
 
-#### <a name="setting-and-retrieving-a-variable-in-python2"></a>Ustawianie i pobieranie zmiennej w python2
+#### <a name="set-and-retrieve-a-variable-in-a-python2-runbook"></a>Ustawianie i pobieranie zmiennej w elemencie Runbook python2
 
-Poniższy przykładowy kod pokazuje, jak używać zmiennej, ustawiać zmienną i obsłużyć wyjątek dla nieistniejącej zmiennej w elemencie Runbook python2.
+Poniższy przykład pokazuje, jak używać zmiennej, ustawiać zmienną i obsłużyć wyjątek dla nieistniejącej zmiennej w elemencie Runbook python2.
 
 ```python
 import automationassets
@@ -156,24 +169,24 @@ automationassets.set_automation_variable("test-variable", "test-string")
 
 # handle a non-existent variable exception
 try:
-    value = automationassets.get_automation_variable("non-existing variable")
+    value = automationassets.get_automation_variable("nonexisting variable")
 except AutomationAssetNotFound:
     print "variable not found"
 ```
 
 ### <a name="graphical-runbook-samples"></a>Graficzne przykłady elementów Runbook
 
-W graficznym elemencie Runbook Dodaj polecenie **Get-AutomationVariable** lub **Set-AutomationVariable** , klikając prawym przyciskiem myszy zmienną w okienku Biblioteka w edytorze graficznym i wybierając żądane działanie.
+W graficznym elemencie Runbook można dodać działanie **Get-AutomationVariable** lub **Set-AutomationVariable** . Po prostu kliknij prawym przyciskiem myszy zmienną w okienku Biblioteka w edytorze graficznym i wybierz odpowiednie działanie.
 
 ![Dodaj zmienną do kanwy](../media/variables/runbook-variable-add-canvas.png)
 
-#### <a name="setting-values-in-a-variable"></a>Ustawianie wartości w zmiennej
+#### <a name="set-values-in-a-variable"></a>Ustawianie wartości w zmiennej
 
-Na poniższej ilustracji przedstawiono przykładowe działania służące do zaktualizowania zmiennej o prostej wartości w graficznym elemencie Runbook. W tym przykładzie polecenie **Get-AzureRmVM** pobiera pojedynczą maszynę wirtualną platformy Azure, a nazwa komputera jest zapisywana w istniejącej zmiennej automatyzacji z typem ciągu. Nie ma znaczenia, czy [łącze jest potokiem, czy sekwencją](../automation-graphical-authoring-intro.md#links-and-workflow) , ponieważ oczekiwano tylko pojedynczego obiektu w danych wyjściowych.
+Na poniższej ilustracji przedstawiono przykładowe działania służące do zaktualizowania zmiennej o prostej wartości w graficznym elemencie Runbook. W tym przykładzie polecenie **Get-AzVM** pobiera pojedynczą maszynę wirtualną platformy Azure i zapisuje nazwę komputera w istniejącej zmiennej automatyzacji z typem ciągu. Nie ma znaczenia, czy [łącze jest potokiem, czy sekwencją](../automation-graphical-authoring-intro.md#links-and-workflow) , ponieważ kod oczekuje tylko pojedynczego obiektu w danych wyjściowych.
 
 ![Ustaw prostą zmienną](../media/variables/runbook-set-simple-variable.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat łączenia działań w tworzeniu grafiki, zobacz [linki w temacie Tworzenie graficzne](../automation-graphical-authoring-intro.md#links-and-workflow)
-- Aby rozpocząć pracę z graficznymi elementami Runbook, zobacz artykuł [My first graphical runbook](../automation-first-runbook-graphical.md) (Mój pierwszy graficzny element Runbook).
+- Aby dowiedzieć się więcej na temat łączenia działań w tworzeniu grafiki, zobacz [linki w temacie Tworzenie graficzne](../automation-graphical-authoring-intro.md#links-and-workflow).
+- Aby rozpocząć pracę z graficznymi elementami Runbook, zobacz [mój pierwszy graficzny element Runbook](../automation-first-runbook-graphical.md).

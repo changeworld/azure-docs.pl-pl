@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 102523316aaa59803fb9a6957457fc7bd4f6ce4f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5a7d4d1917f65cd3d836db83600937a3e3d89de6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186814"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271882"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Samouczek: korzystanie z interfejsów API producentów i odbiorców platformy Apache Kafka
 
@@ -218,5 +218,5 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 
 W tym dokumencie zawarto informacje o sposobie korzystania z interfejsu API producenta i odbiorcy platformy Apache Kafka w usłudze HDInsight. Dowiedz się więcej o pracy z platformą Kafka, korzystając z następujących zasobów:
 
-> [!div class="nextstepaction"]
-> [Analyze Apache Kafka logs (Analizowanie dzienników platformy Apache Kafka)](apache-kafka-log-analytics-operations-management.md)
+* [Użyj serwera proxy REST Kafka](rest-proxy.md)
+* [Analyze Apache Kafka logs (Analizowanie dzienników platformy Apache Kafka)](apache-kafka-log-analytics-operations-management.md)

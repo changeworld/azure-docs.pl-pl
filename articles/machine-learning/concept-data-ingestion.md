@@ -10,19 +10,19 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 3370fc72b45720e2aae5731623843a1bc498911c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
-ms.translationtype: MT
+ms.openlocfilehash: 35c133a4d9d95dc6e942d5b8c3e8d21debb9493b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77652076"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268545"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Pozyskiwanie danych w Azure Machine Learning
 
 W tym artykule poznasz zalety i wady następujących opcji pozyskiwania danych dostępnych w programie Azure Machine Learning. 
 
 1. Potoki [Azure Data Factory](#use-azure-data-factory)
-2. [Azure Machine Learning Python SDK](#use-the-python-sdk)
+2. [Zestaw SDK języka Python usługi Azure Machine Learning](#use-the-python-sdk)
 
 Pozyskiwanie danych to proces, w którym dane bez struktury są wyodrębniane z jednego lub wielu źródeł, a następnie przygotowane do szkolenia modeli uczenia maszynowego. Jest to również czasochłonne, szczególnie jeśli jest wykonywane ręcznie, i jeśli masz duże ilości danych z wielu źródeł. Automatyzacja tego wysiłku powoduje zwolnienie zasobów i gwarantuje, że modele korzystają z najnowszych i odpowiednich danych.
 
@@ -55,7 +55,7 @@ Te kroki i Poniższy diagram ilustrują przepływ pracy pozyskiwania danych Azur
 
 ## <a name="use-the-python-sdk"></a>Korzystanie z zestawu SDK języka Python 
 
-Za pomocą [zestawu SDK języka Python](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py)można uwzględnić zadania pozyskiwania danych w ramach kroku [potoku Azure Machine Learning](how-to-create-your-first-pipeline.md) .
+Za pomocą [zestawu SDK języka Python](https://docs.microsoft.com/python/api/overview/azure/ml)można uwzględnić zadania pozyskiwania danych w ramach kroku [potoku Azure Machine Learning](how-to-create-your-first-pipeline.md) .
 
 Poniższa tabela zawiera podsumowanie specjalistów i con przy użyciu zestawu SDK oraz krok potoku w przypadku zadań pozyskiwania danych.
 

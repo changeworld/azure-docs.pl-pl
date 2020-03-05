@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f19744e6c860ae315b681f5eb090cba23b153af
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b77486064139895799ac5a48327377154f75da6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008337"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273834"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Raport dotyczący ryzykownych logowań w portalu usługi Azure Active Directory
 
@@ -52,15 +52,15 @@ Aby dowiedzieć się, jak przypisać role administracyjne do użytkownika w Azur
 
 Wszystkie wersje usługi Azure AD zapewniają ryzykowne raporty logowania. Jednak poziom szczegółowości raportu zależy od wersji: 
 
-- W **wersjach Azure Active Directory — wersja bezpłatna i Basic**otrzymujesz listę ryzykownych logowań. 
+- W **wersji Azure Active Directory — wersja bezpłatna**otrzymujesz listę ryzykownych logowań. 
 
 - Ponadto wersja **Azure Active Directory — wersja Premium 1** umożliwia sprawdzenie niektórych podstawowych wykryć ryzyka, które zostały wykryte dla każdego raportu. 
 
 - Wersja **Azure Active Directory — wersja Premium 2** zapewnia najbardziej szczegółowe informacje na temat wszystkich wykrytych zagrożeń, a także umożliwia konfigurowanie zasad zabezpieczeń, które automatycznie reagują na skonfigurowane poziomy ryzyka.
 
-## <a name="risky-sign-ins-report-for-azure-ad-free-and-basic-edition"></a>Raport dotyczący ryzykownych logowań w usłudze Azure AD w wersji bezpłatna i podstawowa
+## <a name="risky-sign-ins-report-for-azure-ad-free-edition"></a>Raport dotyczący ryzykownych logowań dla bezpłatnej wersji usługi Azure AD
 
-Wersje bezpłatna i podstawowa usługi Azure AD zapewniają listę ryzykownych logowań wykrytych dla użytkowników. Każdy rekord zawiera następujące atrybuty:
+Wersja Bezpłatna usługi Azure AD udostępnia listę ryzykownych logowań wykrytych dla użytkowników. Każdy rekord zawiera następujące atrybuty:
 
 - **User** — nazwa użytkownika, która była używana podczas operacji logowania.
 - **IP** — adres IP urządzenia, który został użyty do nawiązania połączenia z Azure Active Directory.
@@ -98,7 +98,7 @@ Raport dotyczący ryzykownych logowań w wersjach Premium usługi Azure AD oferu
 
 Po wybraniu wykrywania ryzyka zostanie wyświetlony szczegółowy widok raportu dla tego wykrywania ryzyka, który umożliwia:
 
-- Skonfigurowanie [zasad podejmowania działań naprawczych dotyczących ryzyka związanego z użytkownikiem](../identity-protection/howto-user-risk-policy.md).  
+- Opcja skonfigurowania [zasad podejmowania działań naprawczych dotyczących ryzyka związanego z użytkownikiem](../identity-protection/howto-user-risk-policy.md)  
 
 - Przejrzyj oś czasu wykrywania w celu wykrycia ryzyka  
 

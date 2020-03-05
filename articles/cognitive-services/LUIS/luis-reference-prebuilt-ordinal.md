@@ -1,36 +1,36 @@
 ---
 title: Wstępnie skompilowany obiekt Entity-LUIS
 titleSuffix: Azure Cognitive Services
-description: Ten artykuł zawiera porządkowe wstępnie skompilowane informacje o jednostkach w Language Understanding (LUIS).
+description: Ten artykuł zawiera informacje porządkowe wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: b2a2d9e78a0b152da14bb737079cf0dfdef0dc05
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bb3bb27db48255f534e873ed4e93ac62f07016af
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491243"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273444"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Wstępnie utworzona jednostka dla aplikacji LUIS
-Numer porządkowy jest reprezentacją liczbową obiektu wewnątrz zestawu: `first`, `second`, `third`. Ponieważ ta jednostka jest już przeszkolone, nie trzeba dodawać przykładowej wyrażenia długości zawierającej numer porządkowy do intencji aplikacji. Jednostka porządkowa jest obsługiwana w [wielu kulturach](luis-reference-prebuilt-entities.md). 
+Numer porządkowy jest reprezentacją liczbową obiektu wewnątrz zestawu: `first`, `second`, `third`. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający porządkowego do intencji aplikacji. Jednostka porządkowa jest obsługiwana w [wielu kulturach](luis-reference-prebuilt-entities.md).
 
-## <a name="types-of-ordinal"></a>Typy porządkowe
+## <a name="types-of-ordinal"></a>Typy numer
 Numer porządkowy jest zarządzany przez [Aparaty rozpoznawania tekstu —](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) repozytorium GitHub
 
-## <a name="resolution-for-prebuilt-ordinal-entity"></a>Rozwiązanie dla wstępnie skompilowanej jednostki porządkowej
+## <a name="resolution-for-prebuilt-ordinal-entity"></a>Rozwiązania dla wstępnie utworzone jednostki porządkowe
 
 Następujące obiekty jednostki są zwracane dla zapytania:
 
 `Order the second option`
 
-#### <a name="v3-responsetabv3"></a>[Odpowiedź v3](#tab/V3)
+#### <a name="v3-response"></a>[Odpowiedź v3](#tab/V3)
 
 Poniższy kod JSON jest z parametrem `verbose` ustawionym na `false`:
 
@@ -41,7 +41,7 @@ Poniższy kod JSON jest z parametrem `verbose` ustawionym na `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[Pełna odpowiedź w wersji 3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Pełna odpowiedź w wersji 3](#tab/V3-verbose)
 Poniższy kod JSON jest z parametrem `verbose` ustawionym na `true`:
 
 ```json
@@ -67,7 +67,7 @@ Poniższy kod JSON jest z parametrem `verbose` ustawionym na `true`:
 }
 ```
 
-#### <a name="v2-responsetabv2"></a>[Odpowiedź w wersji 2](#tab/V2)
+#### <a name="v2-response"></a>[Odpowiedź w wersji 2](#tab/V2)
 
 Poniższy przykład pokazuje rozdzielczość jednostki **wbudowanej. porządkowej** .
 
@@ -84,10 +84,10 @@ Poniższy przykład pokazuje rozdzielczość jednostki **wbudowanej. porządkowe
   }
 ]
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
 
-Dowiedz się więcej na temat [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), [numeru telefonu](luis-reference-prebuilt-phonenumber.md)i jednostek [temperatury](luis-reference-prebuilt-temperature.md) . 
+Dowiedz się więcej na temat [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), [numeru telefonu](luis-reference-prebuilt-phonenumber.md)i jednostek [temperatury](luis-reference-prebuilt-temperature.md) .

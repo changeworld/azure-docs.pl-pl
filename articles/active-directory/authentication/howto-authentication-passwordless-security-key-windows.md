@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327f53fb39e58f7b70040eb41b6cd80aca18e510
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: ca6ef244a887e75a0d8b9bb663d5325a33cd1e89
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522037"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269349"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Włącz logowanie za pomocą klucza zabezpieczeń bez hasła na urządzeniach z systemem Windows 10 z Azure Active Directory (wersja zapoznawcza)
 
@@ -35,7 +35,7 @@ Ten dokument koncentruje się na włączaniu uwierzytelniania bezhaseł opartego
 | [Wersja zapoznawcza rejestracji informacji o zabezpieczeniach](concept-registration-mfa-sspr-combined.md) | X | X |
 | Zgodne [FIDO2 klucze zabezpieczeń](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | WebAuthN wymaga systemu Windows 10 w wersji 1809 lub nowszej | X | X |
-| [Urządzenia przyłączone do usługi Azure AD](../devices/concept-azure-ad-join.md) wymagają systemu Windows 10 w wersji 1809 lub nowszej | X |   |
+| [Urządzenia przyłączone do usługi Azure AD](../devices/concept-azure-ad-join.md) wymagają systemu Windows 10 w wersji 1903 lub nowszej | X |   |
 | [Hybrydowe urządzenia dołączone do usługi Azure AD](../devices/concept-azure-ad-join-hybrid.md) wymagają kompilacji niejawnego programu testów systemu Windows 10 18945 lub nowszej |   | X |
 | W pełni poprawione kontrolery domeny systemu Windows Server 2016/2019. |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) w wersji 1.4.32.0 lub nowszej |   | X |
@@ -54,6 +54,7 @@ Następujące scenariusze nie są obsługiwane:
 - Zaloguj się do serwera przy użyciu klucza zabezpieczeń.
 - Jeśli klucz zabezpieczeń nie został użyty do zalogowania się na urządzeniu w trybie online, nie można go użyć do zalogowania się lub odblokowania w trybie offline.
 - Logowanie lub odblokowywanie urządzenia z systemem Windows 10 z kluczem zabezpieczeń zawierającym wiele kont usługi Azure AD. W tym scenariuszu jest używane ostatnie konto dodane do klucza zabezpieczeń. Funkcja WebAuthN umożliwia użytkownikom wybranie konta, które ma być używane.
+- Odblokuj urządzenie z systemem Windows 10 w wersji 1809. Aby uzyskać najlepsze środowisko, Użyj systemu Windows 10 w wersji 1903 lub nowszej.
 
 ## <a name="prepare-devices-for-preview"></a>Przygotuj urządzenia do wersji zapoznawczej
 

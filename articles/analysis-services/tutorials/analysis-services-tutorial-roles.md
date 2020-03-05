@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 3abcfe61f365c3c96dfb6b8eb2ca6cc9e5d3797e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572369"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273682"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Samouczek: konfigurowanie ról administratora i użytkowników serwera
 
@@ -52,7 +52,7 @@ W pozostałych zadaniach użyjesz programu SSMS, aby połączyć się z serwerem
 
 1. W programie SSMS wybierz pozycję **Eksplorator obiektów**, a następnie kliknij pozycję **Połącz** > **Analysis Services**.
 
-    ![Połączenie](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
+    ![Połącz](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
 2. W oknie dialogowym **Połączenie z serwerem** w polu **Nazwa serwera** skopiuj i wklej nazwę serwera skopiowaną z portalu. W polu **Uwierzytelnianie** wybierz pozycję **Active Directory — Uniwersalne z obsługą uwierzytelniania wieloskładnikowego**, a następnie wprowadź nazwę konta użytkownika i naciśnij przycisk **Połącz**.
    
@@ -82,7 +82,7 @@ W tym zadaniu dodasz konto użytkownika lub konto grupowe z usługi Azure AD do 
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>Dodawanie użytkownika do roli administratora modelowej bazy danych
 
-W tym zadaniu dodasz konto użytkownika lub konto grupowe do roli administratora sprzedaży internetowej, która już istnieje w modelu. Ta rola posiada uprawnienia pełnej kontroli (administratora) dla przykładowej bazy danych adventureworks. W tym zadaniu używane jest polecenie języka TMSL [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl), zawarte w gotowym skrypcie.
+W tym zadaniu dodasz konto użytkownika lub konto grupowe do roli administratora sprzedaży internetowej, która już istnieje w modelu. Ta rola posiada uprawnienia pełnej kontroli (administratora) dla przykładowej bazy danych adventureworks. W tym zadaniu używane jest polecenie języka TMSL [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl), zawarte w gotowym skrypcie.
 
 1. W **Eksploratorze obiektów** rozwiń pozycję **Bazy danych** > **adventureworks** > **Role**. 
 2. Kliknij prawym przyciskiem myszy pozycję **Administrator sprzedaży internetowej**, a następnie kliknij pozycję **Rola skryptu jako** > **UTWÓRZ LUB ZAMIEŃ na** > **Nowe okno edytora zapytań**.
@@ -98,7 +98,7 @@ W tym zadaniu dodasz konto użytkownika lub konto grupowe do roli administratora
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>Dodawanie nowej roli modelowej bazy danych i dodawanie użytkownika lub grupy
 
-W tym zadaniu użyjesz polecenia [Create](https://docs.microsoft.com/bi-reference/tmsl/create-command-tmsl) w skrypcie TMSL, aby utworzyć nową globalną rolę sprzedaży internetowej, wybierzesz uprawnienia do *odczytu* dla tej roli i dodasz do niej konto użytkownika lub grupy z usługi Azure AD.
+W tym zadaniu użyjesz polecenia [Create](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) w skrypcie TMSL, aby utworzyć nową globalną rolę sprzedaży internetowej, wybierzesz uprawnienia do *odczytu* dla tej roli i dodasz do niej konto użytkownika lub grupy z usługi Azure AD.
 
 1. W **Eksploratorze obiektów** kliknij prawym przyciskiem myszy pozycję **adventureworks**, a następnie kliknij polecenie **Nowe zapytanie** > **XMLA**. 
 2. Skopiuj i wklej poniższy skrypt języka TMSL w edytorze zapytań:

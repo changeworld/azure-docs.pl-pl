@@ -8,25 +8,25 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8c15ebacd0fd959fe789d7f3a9b33b16ee29a1b2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933623"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270676"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Przestarzałe wstępnie skompilowane jednostki w aplikacji LUIS
 Następujące wstępnie utworzone jednostki są przestarzałe i nie można dodawać do nowych aplikacji usługi LUIS.
 
-* **Data i godzina**: Istniejące aplikacje LUIS, które używają **typu DateTime** , powinny zostać zmigrowane do **datetimeV2**, mimo że jednostka DateTime nadal działa we wstępnie istniejących aplikacjach, które go używają.
-* **Lokalizacja geograficzna**: Istniejące aplikacje LUIS korzystające z lokalizacji geograficznej są obsługiwane do grudnia 2018.
-* **Encyklopedia**: Istniejące aplikacje LUIS korzystające z **encyklopedii** są obsługiwane do 2018 grudnia.
+* **DateTime**: istniejące aplikacje Luis, które używają **typu DateTime** , powinny zostać zmigrowane do **datetimeV2**, mimo że jednostka DateTime nadal działa we wstępnie istniejących aplikacjach, które go używają.
+* **Lokalizacja geograficzna**: istniejące aplikacje Luis korzystające z lokalizacji **geograficznej** są obsługiwane do grudnia 2018.
+* **Encyklopedia**: istniejące aplikacje Luis korzystające z **encyklopedii** są obsługiwane do grudnia 2018.
 
 ## <a name="geography-culture"></a>Lokalizacja geograficzna kultury
-**Lokalizacja geograficzna** jest dostępna tylko w `en-us` ustawień regionalnych.
+**Lokalizacja geograficzna** jest dostępna tylko w `en-us` ustawieniach regionalnych.
 
 #### <a name="3-geography-subtypes"></a>3 podtypy lokalizacji geograficznej
 
@@ -40,10 +40,10 @@ Wstępnie utworzone jednostki   |   Przykładowa wypowiedź   |   JSON
 `builtin.geography.pointOfInterest`   |   `sahara desert`|`{ "type": "builtin.geography.pointOfInterest", "entity": "sahara desert" }`|
 
 ## <a name="encyclopedia-culture"></a>Kultura encyklopedii
-**Encyklopedii** jest dostępna tylko w `en-US` ustawień regionalnych.
+**Encyklopedia** jest dostępna tylko w `en-US` ustawieniach regionalnych.
 
 #### <a name="encyclopedia-subtypes"></a>Podtypy encyklopedii
-Wbudowana jednostka encyklopedii zawiera ponad 100 podtypów w poniższej tabeli: Ponadto jednostki encyklopedii często są mapowane na wiele typów. Na przykład zapytanie Ronald Reagan daje: 
+Wbudowane jednostki encyklopedii zawiera ponad 100 typy podrzędne w poniższej tabeli: Ponadto encyklopedii jednostki są często mapowane na wiele typów. Na przykład zapytanie Ronald Reagan daje:
 
 ```json
 {
@@ -163,5 +163,5 @@ Wstępnie utworzone jednostki   |   Wstępnie utworzone jednostki (typy podrzęd
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [wymiaru](luis-reference-prebuilt-dimension.md), [e-mail](luis-reference-prebuilt-email.md) jednostek i [numer](luis-reference-prebuilt-number.md). 
+Dowiedz się więcej na temat [wymiaru](luis-reference-prebuilt-dimension.md), jednostek [poczty e-mail](luis-reference-prebuilt-email.md) i [liczby](luis-reference-prebuilt-number.md).
 

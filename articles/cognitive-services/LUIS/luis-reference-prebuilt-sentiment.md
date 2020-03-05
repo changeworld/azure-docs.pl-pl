@@ -1,32 +1,32 @@
 ---
 title: Analiza tonacji — LUIS
 titleSuffix: Azure Cognitive Services
-description: W przypadku skonfigurowania analizy tonacji odpowiedź JSON LUIS obejmuje analizę tonacji.
+description: Jeśli jest skonfigurowana analiza tonacji, odpowiedź w formacie json usługi LUIS obejmuje analizę tonacji.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/22/2019
 ms.author: diberry
-ms.openlocfilehash: a91246e4a4b3dc98bf11d2b014478fd40252f14b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dee07859da97f76d9a2db3ccbb71ae74d8ff4846
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508024"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270417"
 ---
 # <a name="sentiment-analysis"></a>Analiza tonacji
-W przypadku skonfigurowania analizy tonacji odpowiedź JSON LUIS obejmuje analizę tonacji. Dowiedz się więcej o analizie tonacji w dokumentacji [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) .
+Jeśli jest skonfigurowana analiza tonacji, odpowiedź w formacie json usługi LUIS obejmuje analizę tonacji. Dowiedz się więcej o analizie tonacji w dokumentacji [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) .
 
 
 ## <a name="resolution-for-sentiment"></a>Rozwiązanie dla tonacji
 
-Dane tonacji to wynik z zakresu od 1 do 0 wskazujący dodatnie (bliżej 1) lub ujemne (bliżej 0) tonacji danych.
+Dane opinii jest wynik w zakresie od 1 i 0, wskazując pozytywny (bliżej 1) lub ujemną (bliżej 0) tonacji danych.
 
-#### <a name="english-languagetabenglish"></a>[Język angielski](#tab/english)
+#### <a name="english-language"></a>[Język angielski](#tab/english)
 
 Gdy kultura jest `en-us`, odpowiedź jest:
 
@@ -37,16 +37,16 @@ Gdy kultura jest `en-us`, odpowiedź jest:
 }
 ```
 
-#### <a name="other-languagestabother-languages"></a>[Inne języki](#tab/other-languages)
+#### <a name="other-languages"></a>[Inne języki](#tab/other-languages)
 
-W przypadku wszystkich innych kultur odpowiedź jest:
+Dla wszystkich innych języków odpowiedź jest:
 
 ```JSON
 "sentimentAnalysis": {
   "score": 0.9163064
 }
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Następne kroki
 

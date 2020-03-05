@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 9f88a69e8d24cfa8654ac2bea3344c9adf81c16a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670410"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269188"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Samouczek: zbieranie i analizowanie dzienników zasobów z zasobów platformy Azure
 
@@ -46,7 +46,7 @@ Obszar roboczy Log Analytics w Azure Monitor zbiera i indeksuje dane dzienników
    - **Subskrypcja**: wybierz subskrypcję do przechowywania obszaru roboczego. Nie musi to być ta sama subskrypcja, która jest taka sama jak monitorowany zasób.
    - **Grupa zasobów**: wybierz istniejącą grupę zasobów lub kliknij pozycję **Utwórz nową** , aby utworzyć nową. Nie musi to być ta sama Grupa zasobów, która jest taka sama jak monitorowany zasób.
    - **Lokalizacja**: Wybierz region platformy Azure lub Utwórz nowy. Nie musi to być ta sama lokalizacja, która jest taka sama jak monitorowany zasób.
-   - **Warstwa cenowa**: wybierz opcję *bezpłatna* , która będzie przechowywać 7 dni danych. Tę warstwę cenową można zmienić później. Kliknij link **log Analytics cennika** , aby dowiedzieć się więcej o różnych warstwach cenowych.
+   - **Warstwa cenowa**: wybierz pozycję *płatność zgodnie z rzeczywistym* użyciem jako warstwę cenową. Tę warstwę cenową można zmienić później. Kliknij link **log Analytics cennika** , aby dowiedzieć się więcej o różnych warstwach cenowych.
 
     ![Nowy obszar roboczy](media/tutorial-resource-logs/new-workspace.png)
 

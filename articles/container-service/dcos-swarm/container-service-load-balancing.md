@@ -7,18 +7,18 @@ ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: d8dff1dc063cc3b940fbdf0698b8b328b90d60b6
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: a8f863f16888e6eca2dbc72c5dd612c38edbe46e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277831"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273373"
 ---
 # <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(PRZESTARZAŁE) Równoważenie obciążenia kontenerów w klastrze DC/OS usługi Azure Container Service
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-W tym artykule pokazujemy, jak utworzyć wewnętrzny moduł równoważenia obciążenia w usłudze Azure Container Service zarządzanej przez rozwiązanie DC/OS przy użyciu narzędzia Marathon-LB. Ta konfiguracja pozwala na skalowanie aplikacji w poziomie. Ponadto umożliwia ona wykorzystanie publicznych i prywatnych klastrów agentów przez umieszczenie modułów równoważenia obciążenia w klastrze publicznym i kontenerów aplikacji w klastrze prywatnym. W tym samouczku zostały wykonane następujące czynności:
+W tym artykule pokazujemy, jak utworzyć wewnętrzny moduł równoważenia obciążenia w usłudze Azure Container Service zarządzanej przez rozwiązanie DC/OS przy użyciu narzędzia Marathon-LB. Ta konfiguracja pozwala na skalowanie aplikacji w poziomie. Ponadto umożliwia ona wykorzystanie publicznych i prywatnych klastrów agentów przez umieszczenie modułów równoważenia obciążenia w klastrze publicznym i kontenerów aplikacji w klastrze prywatnym. W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
 > * Konfigurowanie modułu Marathon Load Balancer
@@ -43,9 +43,11 @@ Usługa **Marathon Load Balancer (marathon-lb)** kieruje żądania przychodzące
 
 Moduł Marathon Load Balancer dynamicznie zmienia konfigurację na podstawie wdrożonych kontenerów. Jest on również odporny na utratę kontenera lub agenta. W takim przypadku rozwiązanie Apache Mesos ponownie uruchamia kontener w innym miejscu, a moduł marathon-lb jest dostosowywany.
 
+Przejdź do [https://shell.azure.com](https://shell.azure.com) , aby otworzyć Cloud Shell w przeglądarce.
+
 Uruchom poniższe polecenie, aby zainstalować moduł Marathon Load Balancer w klastrze agenta publicznego.
 
-```azurecli-interactive
+```console
 dcos package install marathon-lb
 ```
 
@@ -97,7 +99,7 @@ Następnie utwórz plik o nazwie *hello-web.json* i skopiuj poniższą zawartoś
 
 Użyj interfejsu wiersza polecenia DC/OS, aby uruchomić aplikację. Domyślnie moduł Marathon wdraża aplikację w klastrze prywatnym. Oznacza to, że powyższe wdrożenie jest dostępne tylko za pośrednictwem modułu równoważenia obciążenia, co zwykle jest pożądanym zachowaniem.
 
-```azurecli-interactive
+```console
 dcos marathon app add hello-web.json
 ```
 

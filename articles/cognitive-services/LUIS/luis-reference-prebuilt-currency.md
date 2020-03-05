@@ -1,32 +1,32 @@
 ---
 title: Kompilacja jednostkowa w walucie — LUIS
 titleSuffix: Azure Cognitive Services
-description: Ten artykuł zawiera wstępnie skompilowane informacje o jednostce waluty w Language Understanding (LUIS).
+description: Ten artykuł zawiera waluty informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5b49dcc7e999757e119c399bdf01bed7cb312e02
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 56d264fa976967ae4772f50b4aa6f58b30355d6f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465049"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270782"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>Wstępnie utworzona jednostka waluty dla aplikacji LUIS
-Wstępnie utworzona jednostka waluty wykrywa waluty w wielu nominałach i krajach/regionach, niezależnie od kultury aplikacji LUIS. Ponieważ ta jednostka jest już przeszkolone, nie trzeba dodawać przykładowej wyrażenia długości zawierającej walutę do intencji aplikacji. Jednostka waluty jest obsługiwana w [wielu kulturach](luis-reference-prebuilt-entities.md). 
+Wstępnie utworzona jednostka waluty wykrywa waluty w wielu nominałach i krajach/regionach, niezależnie od kultury aplikacji LUIS. Ponieważ przeprowadzono już uczenie tej jednostki, nie musisz Dodawanie wypowiedzi przykład zawierający Waluta intencji aplikacji. Jednostka waluty jest obsługiwana w [wielu kulturach](luis-reference-prebuilt-entities.md).
 
-## <a name="types-of-currency"></a>Typy walut
+## <a name="types-of-currency"></a>Typy waluty
 Waluta jest zarządzana przez [Aparaty rozpoznawania tekstu —](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) repozytorium GitHub
 
-## <a name="resolution-for-currency-entity"></a>Rozwiązanie dla jednostki waluty
+## <a name="resolution-for-currency-entity"></a>Rozwiązania dla jednostki waluty
 
-#### <a name="v3-responsetabv3"></a>[Odpowiedź v3](#tab/V3)
+#### <a name="v3-response"></a>[Odpowiedź v3](#tab/V3)
 
 Poniższy kod JSON jest z parametrem `verbose` ustawionym na `false`:
 
@@ -40,7 +40,7 @@ Poniższy kod JSON jest z parametrem `verbose` ustawionym na `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[Pełna odpowiedź w wersji 3](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Pełna odpowiedź w wersji 3](#tab/V3-verbose)
 Poniższy kod JSON jest z parametrem `verbose` ustawionym na `true`:
 
 ```json
@@ -66,7 +66,7 @@ Poniższy kod JSON jest z parametrem `verbose` ustawionym na `true`:
 }
 ```
 
-#### <a name="v2-responsetabv2"></a>[Odpowiedź w wersji 2](#tab/V2)
+#### <a name="v2-response"></a>[Odpowiedź w wersji 2](#tab/V2)
 
 Poniższy przykład pokazuje rozdzielczość jednostki **wbudowanej.**
 
@@ -84,10 +84,10 @@ Poniższy przykład pokazuje rozdzielczość jednostki **wbudowanej.**
     }
 ]
 ```
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o [punkcie końcowym przewidywania v3](luis-migration-api-v3.md).
 
-Dowiedz się więcej o jednostkach [datetimeV2](luis-reference-prebuilt-datetimev2.md), [Dimension](luis-reference-prebuilt-dimension.md)i [email](luis-reference-prebuilt-email.md) . 
+Dowiedz się więcej o jednostkach [datetimeV2](luis-reference-prebuilt-datetimev2.md), [Dimension](luis-reference-prebuilt-dimension.md)i [email](luis-reference-prebuilt-email.md) .

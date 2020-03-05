@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 772c16dc292d8bce4b927c9c2ce3ff6ee0ed399d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 827c76610162d74c5283177fef4989204321f44b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152129"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268700"
 ---
 # <a name="partition-and-sample-module"></a>Partycja i Przykładowa moduł
 
@@ -154,9 +154,9 @@ Ta opcja jest używana, jeśli zestaw danych został podzielony na wiele partycj
 
 5. Jeśli pracujesz z wieloma partycjami, musisz dodać dodatkowe wystąpienia **partycji i przykładowego** modułu, aby obsługiwać każdą partycję.
 
-    Załóżmy na przykład, że wcześniej podzielone na partycje pacjente na cztery zgięcia przy użyciu wieku. Aby współpracować z każdym indywidualnym zgięciem, potrzebne są cztery kopie **partycji i przykładowego** modułu, a w każdym z nich wybiera się inne zgięcie, jak pokazano poniżej. Nie jest to poprawne użycie elementu **Assign do bezpośredniego składania** danych wyjściowych.  
+    Na przykład **partycja i Przykładowa** moduł w drugim wierszu jest ustawiona do **przypisywania do zgięciów**, a moduły w trzecim wierszu mają ustawioną opcję **Wybierz złożenie**.   
 
-    [![partycja i przykład](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
+    ![Partycja i próbka](./media/module/partition-and-sample.png)
 
 5. Uruchamianie potoku.
 

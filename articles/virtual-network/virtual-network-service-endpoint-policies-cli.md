@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: e04c23f6f27561c2108c97d4def77361a9c50834
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: e01af052a936403162115965f2dc5b3ad46dd9cf
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78253002"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271183"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Zarządzanie eksfiltracjiami danych na kontach usługi Azure Storage za pomocą zasad punktu końcowego usług sieci wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -204,12 +204,12 @@ Utwórz udział plików na koncie magazynu za pomocą [AZ Storage Share Create](
 
 ```azurecli-interactive
 az storage share create \
-  --name my-file-share1 \
+  --name my-file-share \
   --quota 2048 \
   --connection-string $saConnectionString1 > /dev/null
 
 az storage share create \
-  --name my-file-share2 \
+  --name my-file-share \
   --quota 2048 \
   --connection-string $saConnectionString2 > /dev/null
 ```

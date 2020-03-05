@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/03/2020
 ms.author: helohr
-ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 9e42ff0ec5b44dca743d2ec1470c2eef655b9436
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368848"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273105"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Wdrażanie narzędzia diagnostycznego
 
@@ -128,10 +128,9 @@ Przed kontynuowaniem wdrażania narzędzia diagnostycznego zalecamy sprawdzenie,
 Aby upewnić się, że rejestracja aplikacji ma uprawnienia interfejsu API:
 
 1. Otwórz przeglądarkę i Połącz się z [Azure Portal](https://portal.azure.com/) przy użyciu konta administracyjnego.
-2. Przejdź do **rejestracje aplikacji** i poszukaj aplikacja usługi Azure AD rejestracji.
-
-      ![Strona uprawnień interfejsu API.](media/api-permissions-page.png)
-
+2. Przejdź do **Azure Active Directory**.
+3. Przejdź do **rejestracje aplikacji** i wybierz pozycję **wszystkie aplikacje**.
+4. Wyszukaj rejestrację aplikacji usługi Azure AD o tej samej nazwie aplikacji wprowadzonej w kroku 5 [Tworzenie rejestracji aplikacji Azure Active Directory](deploy-diagnostics.md#create-an-azure-active-directory-app-registration).
 
 ### <a name="review-your-log-analytics-workspace"></a>Przeglądanie obszaru roboczego Log Analytics
 

@@ -2,33 +2,31 @@
 title: Wymagania wstępne dotyczące oferty usług Azure i Dynamics 365 Portal Azure Marketplace
 description: Wymagania wstępne dotyczące oferty usługi konsultingowej platformy Azure lub Dynamics 365 w portal Cloud Partner.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 371e7be0795ec93bfdb7b43deb38613cec6a664b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: 88a317fde3d8e3490741b87d6015556fde593ecd
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818113"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268279"
 ---
 # <a name="consulting-service-prerequisites"></a>Wymagania wstępne dotyczące usługi konsultingowej
 
 Przejrzyj opis i wymagania dotyczące tego typu oferty w [usługach konsultingowych dla witryny Azure Marketplace i AppSource](../../consulting-services.md).  Następujące konkretne typy usług konsultingowych mają dodatkowe wymagania:
 
-|     Typ oferty   |    Wymaganie   |
-|     ----------   |    -----------   |
-| Microsoft Azure | Partnerzy muszą mieć certyfikat Silver lub Gold dla [kompetencji platformy w chmurze](https://partner.microsoft.com/membership/cloud-platform-competency). |
-| Dynamics 365 for Customer Engagement | Partnerzy muszą mieć certyfikat Silver lub Gold dotyczący [kompetencji zarządzania relacjami z klientami w chmurze](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency). |
-| Dynamics 365 dla operacji finansowych & | Partnerzy muszą mieć certyfikat Silver lub Gold na potrzeby kwalifikacji związanych z [planowaniem zasobów przedsiębiorstwa](https://partner.microsoft.com/membership/enterprise-resource-planning-competency). Partnerzy muszą także mieć minimalny przychód $25 000 operacji w chmurze w ciągu ostatnich 12 miesięcy. |
-| Dynamics 365 Business Central | Partnerzy muszą mieć działający jako dostawca rozwiązań w chmurze (CSP) lub cyfrowy partner rekordu (DPOR) dla co najmniej jednego klienta. <br/> Aby dowiedzieć się, jak zostać dostawcą usług kryptograficznych, zobacz [Rozpoczynanie pracy jako dostawcy usług kryptograficznych](https://partner.microsoft.com/cloud-solution-provider/get-started). <br/> Aby uzyskać wymagania DPOR, zobacz [Omówienie DPOR](https://partner.microsoft.com/membership/digital-partner-of-record#Membership_Digital_Partner_of_Record_Navigated_Rich_Text_Node1). |
-|  Power BI  | Zapoznaj się z tematem dotyczącym pokazu partnera Power BI. Aby uzyskać więcej informacji, zobacz [kryteria partnera rozwiązania](https://powerbi.microsoft.com/become-a-partner). |
-|  PowerApps       | Partnerzy muszą mieć rozwiązanie opublikowane w [pokazie rozwiązań partnerskich](https://powerapps.microsoft.com/partner-showcase). |
-|  |  |
-
+| Typ oferty | Wymaganie |
+|---------|---------|
+| Dynamics 365 Sales <br> Dynamics 365 Marketing <br> Dynamics 365 Customer Service <br> Usługa pola Dynamics 365 <br> Zasoby ludzkie Dynamics 365 |   Wymagany jest pakiet Gold lub Silver z certyfikatem w [chmurze Business Applications](https://partner.microsoft.com/membership/cloud-business-applications-competency) opcji zaangażowania klientów.    | 
+| Dynamics 365 — finanse <br> Zarządzanie łańcuchem dostaw w usłudze Dynamics 365 <br> Dynamics 365 Commerce <br> Zasoby ludzkie Dynamics 365 <br> Automatyzacja usługi projektu Dynamics 365 |  W przypadku opcji ujednoliconych operacji należy mieć uprawnienia Gold lub Silver z certyfikatem [Business Applications w chmurze](https://partner.microsoft.com/membership/cloud-business-applications-competency) .       |
+| Dynamics 365 Customer Insights | Musi mieć co najmniej 1 pomyślne wdrożenie systemu [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) z co najmniej 5 miar i 5 segmentów. |
+| Dynamics 365 Business Central | Wymagany jest pakiet Gold lub Silver z certyfikatem [planowania zasobów przedsiębiorstwa](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) i musi to być dostawca rozwiązań w chmurze dla co najmniej 3 klientów usługi Business Central. <br> <br> LUB <br> <br> Musi opublikować [aplikację biznesową w programie AppSource](https://appsource.microsoft.com/) |
+| Power BI | Muszą być wymienione na liście [partnerów Power BI](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
+|Power Apps | Musi kwalifikować się do korzystania z zaawansowanych korzyści w [programie partnerskim usługi powerapps](https://aka.ms/PowerAppsPartner). |
 
 ## <a name="next-steps"></a>Następne kroki
 

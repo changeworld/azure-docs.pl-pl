@@ -4,12 +4,12 @@ description: Dowiedz się, jak Azure App Service aktualizować system operacyjny
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 02fa89305c19ee4ec5e151ad36f7f5fa3e130f63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846242"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273635"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Stosowanie poprawek systemu operacyjnego i środowiska uruchomieniowego w Azure App Service
 
@@ -51,7 +51,7 @@ Aktualizacje i przestarzałe środowiska uruchomieniowego są ogłoszone w tym m
 
 ### <a name="new-patch-updates"></a>Nowe aktualizacje poprawek
 
-Aktualizacje poprawek do wersji .NET, PHP, Java SDK lub Tomcat/Jetty są automatycznie stosowane przez zastąpienie istniejącej instalacji nową wersją. Aktualizacje poprawek środowiska Node. js są instalowane równolegle z istniejącymi wersjami (podobnie jak wersje główne i pomocnicze w następnej sekcji). Nowe wersje poprawek w języku Python można instalować ręcznie za pomocą [rozszerzeń lokacji](https://www.siteextensions.net/packages?q=Tags%3A%22python%22), obok wbudowanych instalacji języka Python.
+Aktualizacje poprawek do wersji .NET, PHP, Java SDK lub Tomcat/Jetty są automatycznie stosowane przez zastąpienie istniejącej instalacji nową wersją. Aktualizacje poprawek środowiska Node. js są instalowane równolegle z istniejącymi wersjami (podobnie jak wersje główne i pomocnicze w następnej sekcji). Nowe wersje poprawek w języku Python można instalować ręcznie za pomocą [rozszerzeń lokacji](https://azure.microsoft.com/blog/azure-web-sites-extensions/)obok wbudowanych instalacji języka Python.
 
 ### <a name="new-major-and-minor-versions"></a>Nowe wersje główne i pomocnicze
 
@@ -83,7 +83,7 @@ W poniższej tabeli przedstawiono, jak wersje systemu Windows i środowisko uruc
 | Wersja języka PHP | W `https://<appname>.scm.azurewebsites.net/DebugConsole`Uruchom następujące polecenie w wierszu polecenia: <br> `php --version` |
 | Domyślna wersja środowiska Node. js | W [Cloud Shell](../cloud-shell/overview.md)Uruchom następujące polecenie: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Wersja języka Python | W `https://<appname>.scm.azurewebsites.net/DebugConsole`Uruchom następujące polecenie w wierszu polecenia: <br> `python --version` |  
-| Wersja języka Java | W `https://<appname>.scm.azurewebsites.net/DebugConsole`Uruchom następujące polecenie w wierszu polecenia: <br> `java -version` |  
+| Wersja środowiska Java | W `https://<appname>.scm.azurewebsites.net/DebugConsole`Uruchom następujące polecenie w wierszu polecenia: <br> `java -version` |  
 
 > [!NOTE]  
 > Dostęp do lokalizacji rejestru `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, gdzie są przechowywane informacje o [poprawkach "KB"](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) , jest zablokowany.

@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 529e188d1a4ee00cee7f3d023ab45a48dd0d3c5f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9883256fc801d37acd4ea10226bd9e541f9135f7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428387"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268651"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Nauka danych przy użyciu Data Science Virtual Machine systemu Linux na platformie Azure
 
@@ -60,10 +60,10 @@ Zestaw danych zawiera kilka typów statystyk dla każdej wiadomości e-mail:
 
 * Kolumny, takie jak **word\_freq\__Word_**  , wskazują procent słów w wiadomości E-mail pasującej do *wyrazu*. Na przykład jeśli **słowo\_freq\_** wartość **1**, to 1% wszystkich wyrazów w wiadomości *e-mail.*
 * Kolumny takie jak **char\_freq\__char_**  wskazują procent wszystkich znaków w wiadomości E-mail, która jest *znakiem*.
-* **wielkie\_Uruchom\_długość\_najdłuższy** jest najdłuższy okres sekwencję wielkie litery.
-* **wielkie\_Uruchom\_długość\_średni** jest średnia długość wszystkie sekwencje wielkie litery.
-* **wielkie\_Uruchom\_długość\_całkowita** jest łączna długość wszystkich sekwencji wielkie litery.
-* **spam** wskazuje, czy wiadomość e-mail została uznana za spam, czy nie (1 = wiadomości-śmieci, 0 = nie spamu).
+* **wielka\_\_długość\_najdłuższej** jest najdłuższym długością sekwencji wielkich liter.
+* **wielka\_\_długość\_średnia** to średnia długość wszystkich sekwencji wielkich liter.
+* **wielka\_\_długość\_suma** to łączna długość wszystkich sekwencji wielkich liter.
+* **spam** wskazuje, czy wiadomość e-mail została uznana za spam, czy nie (1 = spam, 0 = nie spam).
 
 ## <a name="explore-the-dataset-by-using-r-open"></a>Eksplorowanie zestawu danych przy użyciu języka R Open
 
@@ -90,7 +90,7 @@ Aby uzyskać inny widok danych:
 
 Ten widok przedstawia typ każdej zmiennej i kilka pierwszych wartości w zestawie danych.
 
-**Spamu** kolumna została odczytana jako liczba całkowita, ale jest faktycznie kategorii zmiennej (lub Authentication). Aby ustawić jej typ:
+Kolumna **spamu** została odczytana jako liczba całkowita, ale w rzeczywistości jest to zmienna kategorii (lub współczynnik). Aby ustawić jej typ:
 
     data$spam <- as.factor(data$spam)
 
@@ -187,6 +187,8 @@ Aby wdrożyć kod drzewa decyzyjnego z poprzedniej sekcji, zaloguj się do Azure
    ![Podstawowy Token autoryzacji Azure Machine Learning Studio (klasyczny)](./media/linux-dsvm-walkthrough/workspace-token.png)
 1. Załaduj pakiet platformy **Azure** , a następnie ustaw wartości zmiennych przy użyciu tokenu i identyfikatora obszaru roboczego w sesji języka R na DSVM:
 
+        if(!require("devtools")) install.packages("devtools")
+        devtools::install_github("RevolutionAnalytics/AzureML")
         if(!require("AzureML")) install.packages("AzureML")
         require(AzureML)
         wsAuth = "<authorization-token>"
@@ -206,9 +208,23 @@ Aby wdrożyć kod drzewa decyzyjnego z poprzedniej sekcji, zaloguj się do Azure
         return(colnames(predictDF)[apply(predictDF, 1, which.max)])
         }
 
+1. Utwórz plik Settings. JSON dla tego obszaru roboczego:
+
+        vim ~/.azureml/settings.json
+
+1. Upewnij się, że poniższa zawartość została umieszczona w pliku Settings. JSON:
+
+         {"workspace":{
+           "id": "<workspace-id>",
+           "authorization_token": "<authorization-token>",
+           "api_endpoint": "https://studioapi.azureml.net",
+           "management_endpoint": "https://management.azureml.net"
+         }
+
 
 1. Opublikuj funkcję **predictSpam** na stronie Azure przy użyciu funkcji **publishWebService** :
 
+        ws <- workspace()
         spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
 
 1. Ta funkcja przyjmuje funkcję **predictSpam** , tworzy usługę sieci Web o nazwie **spamWebService** , która ma zdefiniowane dane wejściowe i wyjściowe, a następnie zwraca informacje o nowym punkcie końcowym.
@@ -370,17 +386,17 @@ Aby załadować i skonfigurować zestaw danych:
 1. Aby załadować plik, wybierz kartę **dane** .
 1. Wybierz selektor obok **nazwy pliku**, a następnie wybierz pozycję **spambaseHeaders. Data**.
 1. Aby załadować plik. Wybierz pozycję **Wykonaj**. Powinno zostać wyświetlone podsumowanie każdej kolumny, w tym określony typ danych. bez względu na to, czy jest to wejście, obiekt docelowy czy inny typ zmiennej; oraz liczbę unikatowych wartości.
-1. Poprawnie zidentyfikował rattle **spamu** kolumny jako element docelowy. Wybierz kolumnę **spam** , a następnie ustaw **docelowy typ danych** na **categoric**.
+1. Rattle poprawnie zidentyfikowała kolumnę **spamu** jako element docelowy. Wybierz kolumnę **spam** , a następnie ustaw **docelowy typ danych** na **categoric**.
 
 Aby eksplorować dane:
 
-1. Wybierz **Eksploruj** kartę.
+1. Wybierz kartę **Eksploruj** .
 1. Aby wyświetlić informacje o typach zmiennych i niektórych statystykach podsumowujących, wybierz pozycję **podsumowanie** > **Wykonaj**.
 1. Aby wyświetlić inne typy statystyk dla każdej zmiennej, wybierz inne opcje, takie jak **opisywanie** lub **podstawy**.
 
 Karta **Eksplorowanie** umożliwia również generowanie szczegółowych wykresów. Do wykreślenia histogram danych:
 
-1. Wybierz **dystrybucje**.
+1. Wybierz opcję **dystrybucje**.
 1. W obszarze **word_freq_remove** i **Word_freq_you**wybierz pozycję **histogram**.
 1. Wybierz pozycję **Wykonaj**. W jednym oknie wykresu powinny być widoczne oba wykresy gęstości, w _których jest jasne, że słowo pojawia_ się częściej _niż w_wiadomościach e-mail.
 
@@ -388,7 +404,7 @@ Wykresy **korelacji** są również interesujące. Aby utworzyć wykres:
 
 1. W obszarze **Typ**wybierz pozycję **korelacja**.
 1. Wybierz pozycję **Wykonaj**.
-1. Rattle wyświetli ostrzeżenie, że zalecane maksymalnie 40 zmiennych. Wybierz **tak** Aby wyświetlić wykres.
+1. Rattle wyświetli ostrzeżenie, że zalecane maksymalnie 40 zmiennych. Wybierz pozycję **tak** , aby wyświetlić wykres.
 
 Istnieje kilka interesujących korelacji: _technologia_ jest silnie skorelowana z _HP_ i _Labs_, na przykład. Jest również silnie skorelowane z _650_ , ponieważ kod obszaru dawców zestawu danych to 650.
 
@@ -413,10 +429,10 @@ Wróć do karty **klaster** . Wybierz pozycję **KMeans**, a następnie ustaw **
 
 Aby utworzyć podstawowy model uczenia maszynowego w strukturze:
 
-1. Wybierz **modelu** karty
+1. Wybierz kartę **model** ,
 1. W polu **Typ**wybierz pozycję **drzewo**.
-1. Wybierz **Execute** do wyświetlenia w drzewie w postaci tekstu w oknie danych wyjściowych.
-1. Wybierz **Rysowanie** przycisk, aby wyświetlić graficzną wersję. Drzewo decyzyjne wygląda podobnie do drzewa uzyskanego wcześniej przy użyciu rpart.
+1. Wybierz polecenie **Execute (wykonaj** ), aby wyświetlić drzewo w formularzu tekstowym w oknie danych wyjściowych.
+1. Wybierz przycisk **rysowania** , aby wyświetlić wersję graficzną. Drzewo decyzyjne wygląda podobnie do drzewa uzyskanego wcześniej przy użyciu rpart.
 
 Przydatna funkcja Rattle może uruchamiać kilka metod uczenia maszynowego i szybko je oceniać. Oto kroki:
 
@@ -425,7 +441,7 @@ Przydatna funkcja Rattle może uruchamiać kilka metod uczenia maszynowego i szy
 1. Po zakończeniu działania Rattle można wybrać dowolną wartość **typu** , na przykład **SVM**, i wyświetlić wyniki.
 1. Możesz również porównać wydajność modeli w zestawie walidacji, korzystając z karty **szacowanie** . Na przykład wybór **macierzy błędów** pokazuje macierz pomyłek, ogólny błąd i średnią błąd klasy dla każdego modelu w zestawie walidacji. Można również wykreślić krzywe ROC, uruchamiać analizę czułości i wykonywać inne typy ocen modeli.
 
-Po zakończeniu tworzenia modeli wybierz kartę **Dziennik** , aby wyświetlić kod języka R, który został uruchomiony przez Rattle podczas sesji. Możesz wybrać **wyeksportować** przycisk, aby go zapisać.
+Po zakończeniu tworzenia modeli wybierz kartę **Dziennik** , aby wyświetlić kod języka R, który został uruchomiony przez Rattle podczas sesji. Możesz wybrać przycisk **Eksportuj** , aby go zapisać.
 
 > [!NOTE]
 > Bieżąca wersja programu Rattle zawiera usterkę. Aby zmodyfikować skrypt lub użyć go do późniejszego powtórzenia kroków, należy wstawić znak **#** przed poleceniem *Eksportuj ten dziennik...* w tekście dziennika.
@@ -495,19 +511,19 @@ Aby skonfigurować połączenie z serwerem lokalnym:
 1. Wybierz pozycję **Windows** > **Wyświetl aliasy.**
 1. Wybierz przycisk **+** , aby utworzyć nowy alias. Dla nowej nazwy aliasu wprowadź **bazę danych spamu**. 
 1. W obszarze **Sterownik**wybierz pozycję **PostgreSQL**.
-1. Ustaw adres URL **jdbc:postgresql://localhost/spam**.
+1. Ustaw adres URL **JDBC: PostgreSQL://localhost/spam**.
 1. Wprowadź nazwę użytkownika i hasło.
 1. Kliknij przycisk **OK**.
-1. Aby otworzyć **połączenia** okna, kliknij dwukrotnie **spamu bazy danych** aliasu.
+1. Aby otworzyć okno **połączenia** , kliknij dwukrotnie alias **bazy danych spamu** .
 1. Wybierz przycisk **Połącz**.
 
 Aby uruchomić kilka zapytań:
 
-1. Wybierz **SQL** kartę.
+1. Wybierz kartę **SQL** .
 1. W polu zapytania w górnej części karty **SQL** wprowadź zapytanie podstawowe, takie jak `SELECT * from data;`.
 1. Naciśnij klawisze CTRL + ENTER, aby uruchomić zapytanie. Domyślnie SQuirreL SQL zwraca pierwsze 100 wierszy z zapytania.
 
-Istnieje wiele zapytań, które można uruchomić, aby eksplorować te dane. Na przykład, jak działa częstotliwość wyraz *wprowadzić* różnią się w wiadomości-śmieci, które pichcisz?
+Istnieje wiele zapytań, które można uruchomić, aby eksplorować te dane. Na przykład, w jaki sposób *częstotliwość wyrazów* różni się między spamem a Ham?
 
     SELECT avg(word_freq_make), spam from data group by spam;
 
@@ -519,7 +535,7 @@ Większość wiadomości e-mail, które mają duże wystąpienie *3W* , jest pra
 
 Jeśli chcesz przeprowadzić Uczenie maszynowe przy użyciu danych przechowywanych w bazie danych PostgreSQL, rozważ użycie [MADlib](https://madlib.incubator.apache.org/).
 
-### <a name="sql-data-warehouse"></a>Hurtownia danych SQL
+### <a name="sql-data-warehouse"></a>SQL Data Warehouse
 
 Azure SQL Data Warehouse to oparta na chmurze baza danych skalowalna w poziomie, która może przetwarzać ogromne ilości danych, zarówno relacyjnych, jak i nierelacyjnych. Aby uzyskać więcej informacji, zobacz [co to jest Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 

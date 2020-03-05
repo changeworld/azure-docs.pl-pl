@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/28/2019
-ms.openlocfilehash: 4fad7d1e3359264c647ffc2d5f67dc547c87a13a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e5c3da94cf2440b30dc59fe20bc51a34095f7d5f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196658"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269061"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optymalizowanie zapytań dzienników w Azure Monitor
 Dzienniki Azure Monitor korzystają z [usługi Azure Eksplorator danych (ADX)](/azure/data-explorer/) do przechowywania danych dziennika i uruchamiania zapytań w celu analizowania tych danych. Tworzy, zarządza i obsługuje klastry ADX oraz optymalizuje je do obciążeń analizy dzienników. Po uruchomieniu zapytania jest on zoptymalizowany i kierowany do odpowiedniego klastra ADX, który przechowuje dane obszaru roboczego. Zarówno dzienniki Azure Monitor, jak i Azure Eksplorator danych korzystają z wielu automatycznych mechanizmów optymalizacji zapytań. Chociaż Optymalizacja automatyczna zapewnia znaczący wzrost, w niektórych przypadkach można znacznie poprawić wydajność zapytań. W tym artykule opisano zagadnienia dotyczące wydajności i kilka technik rozwiązywania tych problemów.
@@ -63,7 +63,7 @@ Niektóre polecenia i funkcje zapytania są intensywnie używane do użycia proc
 
 Te funkcje zużywają procesor proporcjonalnie do liczby wierszy, które są przetwarzane. Najbardziej wydajna Optymalizacja polega na dodaniu tam przypadków, w których warunki w zapytaniu mogą odfiltrować dowolną liczbę rekordów, zanim funkcja intensywnie korzysta z procesora CPU.
 
-Na przykład następujące zapytania generują dokładnie ten sam wynik, ale drugi jest najbardziej wydajny jako warunek [WHERE]() przed analizą wyklucza wiele rekordów:
+Na przykład następujące zapytania generują dokładnie ten sam wynik, ale drugi jest najbardziej wydajny jako warunek [WHERE](/azure/kusto/query/whereoperator) przed analizą wyklucza wiele rekordów:
 
 ```Kusto
 //less efficient

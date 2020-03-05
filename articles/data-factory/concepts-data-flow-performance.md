@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 02/24/2020
-ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: cca22c499efde74bb1469222d2f8a6e576452aa2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587587"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273232"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Przewodnik dotyczący wydajności i dostrajania przepływu danych
 
@@ -59,6 +59,9 @@ Domyślnie włączenie debugowania będzie używać domyślnego środowiska Azur
 
 ![Część źródłowa](media/data-flow/sourcepart3.png "Część źródłowa")
 
+> [!NOTE]
+> Dobry przewodnik ułatwiający wybranie liczby partycji dla źródła jest oparty na liczbie rdzeni ustawionych dla Azure Integration Runtime i pomnożenie liczby przez pięć. Tak więc, na przykład, jeśli przekształcasz serię plików w folderach ADLS i zamierzasz korzystać z 32-rdzeniowego Azure IR, liczba partycji, które będą docelowe, to 32 x 5 = 160 partitions.
+
 ### <a name="source-batch-size-input-and-isolation-level"></a>Rozmiar partii źródłowej, dane wejściowe i poziom izolacji
 
 W obszarze **Opcje źródła** w transformacji źródłowej następujące ustawienia mogą mieć wpływ na wydajność:
@@ -67,7 +70,7 @@ W obszarze **Opcje źródła** w transformacji źródłowej następujące ustawi
 * Ustawienie zapytania może umożliwić filtrowanie wierszy w źródle przed ich nadejściem do przepływu danych w celu przetworzenia. Może to spowodować szybsze pozyskiwanie danych. Jeśli używasz zapytania, możesz dodać opcjonalne wskazówki dotyczące zapytań dla bazy danych Azure SQL, takie jak Odczyt niezatwierdzony.
 * Odczytanie niezatwierdzone zapewni szybsze wyniki zapytania dotyczące transformacji źródłowej
 
-![Element źródłowy](media/data-flow/source4.png "Źródło")
+![Element źródłowy](media/data-flow/source4.png "Element źródłowy")
 
 ### <a name="sink-batch-size"></a>Rozmiar wsadu ujścia
 
@@ -100,7 +103,7 @@ Aby uniknąć wstawiania wierszy w wierszu do magazynu danych, zaznacz pole wybo
 
 W każdym przekształceniu można ustawić schemat partycjonowania, który ma być używany przez fabrykę danych na karcie Optymalizacja. Dobrym sposobem jest pierwsze przetestowanie sink opartych na plikach, zachowując domyślne partycjonowanie i optymalizacje.
 
-* W przypadku mniejszych plików może się okazać, że wybranie *pojedynczej partycji* może czasami pracować lepiej i szybciej niż w przypadku usługi Spark do partycjonowania małych plików.
+* W przypadku mniejszych plików można znaleźć mniejszą liczbę partycji, które czasami mogą pracować lepiej i szybciej niż w przypadku, gdy platforma Spark ma dzielić małe pliki.
 * Jeśli nie masz wystarczającej ilości informacji na temat danych źródłowych, wybierz partycjonowanie działania *okrężne* i ustaw liczbę partycji.
 * Jeśli dane zawierają kolumny, które mogą być dobrymi kluczami skrótów, wybierz opcję *partycjonowanie skrótów*.
 

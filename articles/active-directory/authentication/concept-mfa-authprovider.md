@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43a620d32fcfa7970dbdb5bee9740cc8f8b33e50
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a275e5ab394b54960a2340848152741762b28f8c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155133"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269384"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Kiedy używać dostawcy usługi Azure Multi-Factor Authentication
 
@@ -41,7 +41,7 @@ Po utworzeniu dostawcy usługi MFA nie możesz zmienić modelu użycia (na włą
 
 W przypadku zakupionej wystarczającej liczby licencji na pokrycie wszystkich użytkowników włączonych dla usługi MFA można całkowicie usunąć dostawcę usługi MFA.
 
-Jeśli dostawca usługi MFA nie jest połączony z dzierżawą usługi Azure AD lub łączysz nowego dostawcę usługi MFA z inną dzierżawą usługi Azure AD, ustawienia użytkownika i opcje konfiguracji nie są przenoszone. Ponadto istniejące serwery usługi Azure MFA muszą zostać ponownie aktywowane przy użyciu poświadczeń aktywacji wygenerowanych przez dostawcę usługi MFA. Ponowne aktywowanie serwerów usługi MFA w celu połączenia ich z dostawcą usługi MFA nie ma wpływu na połączenia telefoniczne i wiadomości SMS, ale powiadomienia aplikacji mobilnej przestaną działać dla wszystkich użytkowników, dopóki nie aktywują aplikacji mobilnej.
+Jeśli dostawca usługi MFA nie jest połączony z dzierżawą usługi Azure AD lub łączysz nowego dostawcę usługi MFA z inną dzierżawą usługi Azure AD, ustawienia użytkownika i opcje konfiguracji nie są przenoszone. Ponadto istniejące serwery usługi Azure MFA muszą zostać ponownie aktywowane przy użyciu poświadczeń aktywacji wygenerowanych przez dostawcę usługi MFA.
 
 ### <a name="removing-an-authentication-provider"></a>Usuwanie dostawcy uwierzytelniania
 
@@ -55,7 +55,7 @@ Przed usunięciem dostawcy uwierzytelniania Zwróć uwagę na wszelkie dostosowa
 Serwery usługi Azure MFA połączone z dostawcami należy ponownie aktywować przy użyciu poświadczeń wygenerowanych w obszarze **Azure Portal** > **Azure Active Directory** > **zabezpieczenia** > **MFA** > **Ustawienia serwera**. Przed ponownym uaktywnieniem należy usunąć następujące pliki z katalogu `\Program Files\Multi-Factor Authentication Server\Data\` na serwerach usługi Azure MFA w Twoim środowisku:
 
 - caCert
-- cert
+- zarchiwizowan
 - groupCACert
 - groupKey
 - groupName

@@ -3,12 +3,12 @@ title: Application Insights platformy Azure dla aplikacji ASP.NET Core | Microso
 description: Monitoruj ASP.NET Core aplikacje sieci Web pod kątem dostępności, wydajności i użycia.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 7aa8ae7fd2742e51ab1ccfed26524241f4c11256
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 5028d95ef784b0d309880d0d05371cd42f627d7d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666262"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269217"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights aplikacji ASP.NET Core
 
@@ -158,6 +158,14 @@ Powyższe kroki są wystarczające, aby ułatwić rozpoczęcie zbierania danych 
     ```cshtml
         @Html.Raw(JavaScriptSnippet.FullScript)
         </head>
+    ```
+    
+Alternatywnie można korzystać z `FullScript` `ScriptBody` jest dostępny od zestawu SDK v 2.14. Użyj tej opcji, jeśli musisz kontrolować tag `<script>`, aby ustawić zasady zabezpieczeń zawartości:
+
+    ```cshtml
+        <script> // apply custom changes to this script tag.
+            @Html.Raw(JavaScriptSnippet.ScriptBody)
+        </script>
     ```
 
 Nazwy plików `.cshtml`, do których odwołuje się wcześniej, pochodzą z domyślnego szablonu aplikacji MVC. Ostatecznie, jeśli chcesz prawidłowo włączyć monitorowanie po stronie klienta dla aplikacji, fragment kodu JavaScript musi znajdować się w sekcji `<head>` każdej strony aplikacji, która ma być monitorowana. Ten cel można osiągnąć dla tego szablonu aplikacji przez dodanie fragmentu kodu JavaScript do `_Layout.cshtml`. 

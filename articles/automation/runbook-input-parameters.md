@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ddb08f774bbb8aa3bc4b10bcd0dd213c8583465e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 274ee0fe98281e733994f2d5df38886409cbc913
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249790"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273653"
 ---
 # <a name="runbook-input-parameters"></a>Parametry wejściowe elementu Runbook
 
@@ -148,19 +148,19 @@ W etykiecie poniżej pola wejściowego można zobaczyć właściwości, które z
 * **Polecenia cmdlet Azure Resource Manager:** Można uruchomić element Runbook usługi Automation, który został utworzony w grupie zasobów za pomocą polecenia [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0
 ).
 
-```powershell
-  $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
+   ```powershell
+     $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
   
-  Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
-```
+     Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
+   ```
 
 * **Polecenia cmdlet klasycznego modelu wdrażania platformy Azure:** Można uruchomić element Runbook usługi Automation, który został utworzony w domyślnej grupie zasobów za pomocą polecenia [Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure/start-azureautomationrunbook).
   
-```powershell
-  $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
+   ```powershell
+     $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
   
-  Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
-```
+     Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
+   ```
 
 > [!NOTE]
 > Po uruchomieniu elementu Runbook za pomocą poleceń cmdlet programu PowerShell, domyślny parametr, *MicrosoftApplicationManagementStartedBy*, jest tworzony przy użyciu wartości **PowerShell**. Ten parametr można wyświetlić w okienku Szczegóły zadania.  
@@ -169,7 +169,7 @@ W etykiecie poniżej pola wejściowego można zobaczyć właściwości, które z
 
 * **Metoda Azure Resource Manager:** Element Runbook można uruchomić przy użyciu zestawu SDK języka programowania. Poniżej znajduje się C# fragment kodu służący do uruchamiania elementu Runbook na koncie usługi Automation. Możesz wyświetlić cały kod w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).  
 
-  ```csharp
+   ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
       {
         var response = AutomationClient.Jobs.Create(resourceGroupName, automationAccount, new JobCreateParameters
@@ -185,11 +185,11 @@ W etykiecie poniżej pola wejściowego można zobaczyć właściwości, które z
          });
       return response.Job;
       }
-  ```
+   ```
 
 * **Metoda klasycznego modelu wdrażania platformy Azure:** Element Runbook można uruchomić za pomocą zestawu SDK języka programowania. Poniżej znajduje się C# fragment kodu służący do uruchamiania elementu Runbook na koncie usługi Automation. Możesz wyświetlić cały kod w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).
 
-  ```csharp
+   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
     {
       var response = AutomationClient.Jobs.Create(automationAccount, new JobCreateParameters
@@ -205,20 +205,20 @@ W etykiecie poniżej pola wejściowego można zobaczyć właściwości, które z
        });
       return response.Job;
     }
-  ```
+   ```
 
-  Aby rozpocząć tę metodę, Utwórz słownik do przechowywania parametrów elementu Runbook *VMName* i *resourceGroupName* oraz ich wartości. Następnie Uruchom element Runbook. Poniżej znajduje się C# fragment kodu dotyczący wywoływania metody, która została zdefiniowana powyżej.
+   Aby rozpocząć tę metodę, Utwórz słownik do przechowywania parametrów elementu Runbook *VMName* i *resourceGroupName* oraz ich wartości. Następnie Uruchom element Runbook. Poniżej znajduje się C# fragment kodu dotyczący wywoływania metody, która została zdefiniowana powyżej.
 
-  ```csharp
-  IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
+   ```csharp
+   IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
   
-  // Add parameters to the dictionary.
+   // Add parameters to the dictionary.
   RunbookParameters.Add("VMName", "WSVMClassic");
-  RunbookParameters.Add("resourceGroupName", "WSSC1");
+   RunbookParameters.Add("resourceGroupName", "WSSC1");
   
-  //Call the StartRunbook method with parameters
-  StartRunbook("Get-AzureVMGraphical", RunbookParameters);
-  ```
+   //Call the StartRunbook method with parameters
+   StartRunbook("Get-AzureVMGraphical", RunbookParameters);
+   ```
 
 #### <a name="start-a-runbook-using-the-rest-api-and-assign-parameters"></a>Uruchamianie elementu Runbook przy użyciu interfejsu API REST i przypisywanie parametrów
 
@@ -238,7 +238,7 @@ Aby przekazać parametry do zadania elementu Runbook, użyj treści żądania. W
 
 Jeśli chcesz uruchomić element Runbook **Get-AzureVMTextual** utworzony wcześniej przy użyciu *VMName* i *resourceGroupName* jako parametry, użyj następującego formatu JSON dla treści żądania.
 
-   ```json
+```json
     {
       "properties":{
         "runbook":{
@@ -248,7 +248,7 @@ Jeśli chcesz uruchomić element Runbook **Get-AzureVMTextual** utworzony wcześ
          "resourceGroupName":"ContosoSales"}
         }
     }
-   ```
+```
 
 Kod stanu HTTP 201 jest zwracany, jeśli zadanie zostało pomyślnie utworzone. Aby uzyskać więcej informacji na temat nagłówków odpowiedzi i treści odpowiedzi, zobacz [Tworzenie zadania elementu Runbook za pomocą interfejsu API REST](/rest/api/automation/job/create).
 
@@ -330,7 +330,7 @@ Teraz można wywołać element Runbook z komputera lokalnego przy użyciu Azure 
     >[!NOTE]
     >W przypadku elementów Runbook programu PowerShell polecenia **Add-AzAccount** i **Add-AzureRMAccount** są aliasami dla polecenia **Connect-AzAccount**. Należy zauważyć, że te aliasy nie są dostępne dla graficznych elementów Runbook. Graficzny element Runbook może korzystać tylko **z programu Connect-AzAccount** .
 
-2. Pobierz zawartość zapisanego pliku JSON i przekonwertuj go na ciąg. `JsonPath` to ścieżka, w której zapisano plik JSON.
+1. Pobierz zawartość zapisanego pliku JSON i przekonwertuj go na ciąg. `JsonPath` to ścieżka, w której zapisano plik JSON.
 
    ```powershell
    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
@@ -354,7 +354,7 @@ Teraz można wywołać element Runbook z komputera lokalnego przy użyciu Azure 
    ```
 
    Zwróć uwagę, że ustawiasz wartość *parametrów* w obiekcie programu PowerShell, który zawiera wartości z pliku JSON.
-1. Uruchamianie elementu runbook
+1. Uruchom element Runbook.
 
    ```powershell
    $job = Start-AzAutomationRunbook @RBParams

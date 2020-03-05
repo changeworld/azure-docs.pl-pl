@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e1323467db875968f45557c6a7c0afdfee5e4221
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: dd9b82cbb2984386059988496c550123a8e67a3f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589937"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273095"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Podstawa zabezpieczeń platformy Azure dla Azure SQL Database
 
@@ -122,12 +122,9 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: Wdróż systemy zapobiegania wykrywaniu dostępu do sieci/dostępu intruzów (identyfikatory/adresy IP)
 
-**Wskazówki**: włączono funkcję Advanced Threat Protection (ATP) dla Azure SQL Database.  Użytkownicy otrzymują alerty o podejrzanych działaniach związanych z bazą danych, potencjalnych luk w zabezpieczeniach i atakach iniekcji SQL, a także o nietypowych wzorcach dostępu do bazy danych i zapytań. Zaawansowana ochrona przed zagrożeniami integruje także alerty z Azure Security Center.
+**Wskazówki**: Włącz zaawansowaną ochronę przed zagrożeniami (ATP) dla Azure SQL Database.  Użytkownicy otrzymują alerty o podejrzanych działaniach związanych z bazą danych, potencjalnych luk w zabezpieczeniach i atakach iniekcji SQL, a także o nietypowych wzorcach dostępu do bazy danych i zapytań. Zaawansowana ochrona przed zagrożeniami integruje także alerty z Azure Security Center.
 
-
-Zrozumienie i używanie zaawansowanej ochrony przed zagrożeniami dla Azure SQL Database:
-
-https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
+Zrozumienie i używanie zaawansowanej ochrony przed zagrożeniami dla Azure SQL Database: https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
 **Monitorowanie Azure Security Center**: tak
 
@@ -164,11 +161,14 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Obsługa standardowych konfiguracji zabezpieczeń dla urządzeń sieciowych
 
-**Wskazówki**: Definiowanie i implementowanie konfiguracji zabezpieczeń sieci dla wystąpień serwera Azure SQL Database z Azure Policy. Możesz użyć przestrzeni nazw "Microsoft. SQL", aby zdefiniować niestandardowe definicje zasad, lub użyć dowolnych wbudowanych definicji zasad zaprojektowanych na potrzeby ochrony sieci Azure SQL Database Server. Przykładem odpowiednich wbudowanych zasad zabezpieczeń sieci dla serwera Azure SQL Database powinna być: "SQL Server powinna używać punktu końcowego usługi sieci wirtualnej"
+**Wskazówki**: Definiowanie i implementowanie konfiguracji zabezpieczeń sieci dla wystąpień serwera Azure SQL Database z Azure Policy. Możesz użyć przestrzeni nazw "Microsoft. SQL", aby zdefiniować niestandardowe definicje zasad, lub użyć dowolnych wbudowanych definicji zasad zaprojektowanych na potrzeby ochrony sieci Azure SQL Database Server. Przykładem odpowiednich wbudowanych zasad zabezpieczeń sieci dla serwera Azure SQL Database powinna być: "SQL Server powinna używać punktu końcowego usługi sieci wirtualnej".
+ 
 
 Korzystając z planów platformy Azure, można uprościć duże wdrożenia platformy Azure przez pakowanie kluczowych artefaktów środowiska, takich jak szablony zarządzania zasobami platformy Azure, kontrola dostępu oparta na rolach (RBAC) i zasady, w ramach jednej definicji planu. Łatwo stosuj plan do nowych subskrypcji i środowisk, a następnie dostosuj kontrolę i zarządzanie przy użyciu wersji.
 
+
 Jak skonfigurować Azure Policy i zarządzać nim: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Jak utworzyć Azure Blueprint: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -457,13 +457,27 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **Wskazówki**: używanie raportów zabezpieczeń Azure Active Directory do generowania dzienników i alertów w przypadku wystąpienia podejrzanych lub niebezpiecznych działań w środowisku.
 
+
+
 Użyj zaawansowanej ochrony przed zagrożeniami Azure SQL Database, aby wykrywać anomalie działania wskazujące nietypowe i potencjalnie szkodliwe próby uzyskania dostępu do baz danych lub ich wykorzystania.
 
-Identyfikowanie użytkowników usługi Azure AD oflagowanych w celu działania ryzykownego: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
-Jak monitorować aktywność użytkowników dotyczące tożsamości i dostępu w Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-Przejrzyj zaawansowaną ochronę przed zagrożeniami i potencjalne alerty: https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
+Identyfikowanie użytkowników usługi Azure AD oflagowanych w celu działania ryzykownego:
+
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
+
+
+
+Jak monitorować działania związane z tożsamościami i dostępem użytkowników w Azure Security Center:
+
+https://docs.microsoft.com/azure/security-center/security-center-identity-access
+
+
+
+Przejrzyj zaawansowaną ochronę przed zagrożeniami i potencjalne alerty:
+
+https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
 
 
 **Monitorowanie Azure Security Center**: tak
@@ -473,6 +487,7 @@ Przejrzyj zaawansowaną ochronę przed zagrożeniami i potencjalne alerty: https
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: zarządzanie zasobami platformy Azure tylko z zatwierdzonych lokalizacji
 
 **Wskazówki**: Użyj dostępu warunkowego o nazwie Locations, aby zezwolić portalowi i dostępowi do usługi Azure Resource Management tylko z określonych logicznych grup zakresów adresów IP lub krajów/regionów.
+
 
 Jak skonfigurować nazwane lokalizacje na platformie Azure: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
@@ -714,7 +729,7 @@ Jak utworzyć alerty dla zdarzeń dziennika aktywności platformy Azure:
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -774,7 +789,7 @@ Jak wyeksportować raport oceny luk w zabezpieczeniach w Azure Security Center:
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#implementing-vulnerability-assessment
 
-**Monitorowanie Azure Security Center**: tak
+**Monitorowanie Azure Security Center**: nie dotyczy
 
 **Odpowiedzialność**: klient
 
@@ -796,11 +811,15 @@ Zrozumienie Azure Security Center zabezpieczeń: https://docs.microsoft.com/azur
 
 **Wskazówki**: Użyj grafu zasobów platformy Azure do wykonywania zapytań i odnajdywania wszystkich zasobów (w tym wystąpień usługi Azure SQL Server) w ramach subskrypcji.  Upewnij się, że masz odpowiednie uprawnienia (odczyt) w dzierżawie i że można wyliczyć wszystkie subskrypcje platformy Azure oraz zasoby w ramach subskrypcji.
 
+
 Mimo że klasyczne zasoby platformy Azure mogą zostać odnalezione za pośrednictwem grafu zasobów, zdecydowanie zaleca się tworzenie i używanie Azure Resource Manager zasobów do przodu.
+
 
 Jak tworzyć zapytania za pomocą usługi Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
+
 Jak wyświetlić subskrypcje platformy Azure: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+
 
 Opis kontroli RBAC platformy Azure: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -812,7 +831,11 @@ Opis kontroli RBAC platformy Azure: https://docs.microsoft.com/azure/role-based-
 
 **Wskazówki**: stosowanie tagów do zasobów platformy Azure, dzięki czemu metadane są logicznie zorganizowane w taksonomię.
 
-Jak utworzyć i używać tagów: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+
+
+Tworzenie i używanie tagów:
+
+https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Monitorowanie Azure Security Center**: obecnie niedostępna
 
@@ -822,11 +845,23 @@ Jak utworzyć i używać tagów: https://docs.microsoft.com/azure/azure-resource
 
 **Wskazówki**: używanie tagowania, grup zarządzania i oddzielnych subskrypcji, gdzie to konieczne, do organizowania i śledzenia zasobów. Regularnie Uzgadniaj spis i zapewnij, że nieautoryzowane zasoby są usuwane z subskrypcji w odpowiednim czasie.
 
-Jak utworzyć dodatkowe subskrypcje platformy Azure: https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Jak utworzyć Grupy zarządzania: https://docs.microsoft.com/azure/governance/management-groups/create
 
-Jak utworzyć i używać tagów: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Jak utworzyć dodatkowe subskrypcje platformy Azure:
+
+https://docs.microsoft.com/azure/billing/billing-create-subscription
+
+
+
+Jak utworzyć Grupy zarządzania:
+
+https://docs.microsoft.com/azure/governance/management-groups/create
+
+
+
+Tworzenie i używanie tagów:
+
+https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Monitorowanie Azure Security Center**: obecnie niedostępna
 
@@ -894,6 +929,7 @@ Jak skonfigurować Azure Policy i zarządzać nim: https://docs.microsoft.com/az
 
 Jak odmówić określonego typu zasobu Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
+
 **Monitorowanie Azure Security Center**: nie dotyczy
 
 **Odpowiedzialność**: klient
@@ -911,9 +947,7 @@ Jak odmówić określonego typu zasobu Azure Policy: https://docs.microsoft.com/
 **Wskazówki**: Użyj dostępu warunkowego platformy Azure, aby ograniczyć możliwość korzystania przez użytkowników z Azure Resource Manager przez skonfigurowanie "blokowania dostępu" dla aplikacji "Microsoft Azure Management".
 
 
-Jak skonfigurować dostęp warunkowy w celu blokowania dostępu do Azure Resource Manager:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Jak skonfigurować dostęp warunkowy w celu blokowania dostępu do Azure Resource Manager: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Monitorowanie Azure Security Center**: obecnie niedostępna
 
@@ -1152,7 +1186,7 @@ Informacje o kopiach zapasowych i ciągłości działania w usłudze Azure SQL S
 
 https://docs.microsoft.com/azure/sql-database/sql-database-business-continuity
 
-**Monitorowanie Azure Security Center**: nie dotyczy
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: udostępnione
 
@@ -1204,7 +1238,7 @@ Jak włączyć usuwanie nietrwałe w Key Vault:
 
 https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -1292,7 +1326,7 @@ Jak skonfigurować automatyzację przepływu pracy i Logic Apps:
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Monitorowanie Azure Security Center**: tak
+**Monitorowanie Azure Security Center**: obecnie niedostępna
 
 **Odpowiedzialność**: klient
 
@@ -1314,3 +1348,7 @@ Aby uzyskać więcej informacji na temat strategii i sposobu wykonywania czerwon
 
 **Odpowiedzialność**: udostępnione
 
+## <a name="next-steps"></a>Następne kroki
+
+- Zobacz [test porównawczy zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Dowiedz się więcej o [punktach odniesienia zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: b99827ff9fd01c7179a25fafd05bfc8e4ef8ae63
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 279130fa310b107bd1a016c717c48af3d905251b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921100"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270154"
 ---
 # <a name="streaming-ingestion-preview"></a>Pozyskiwanie strumieniowe (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Użyj operacji pozyskiwania klasycznego (zbiorczego) zamiast pozyskiwania strumi
  
     ![pozyskiwanie przesyłania strumieniowego](media/ingest-data-streaming/streaming-ingestion-on.png)
  
-1. W [interfejsie użytkownika sieci Web](https://dataexplorer.azure.com/)Zdefiniuj zasady pozyskiwania [strumieniowego](/azure/kusto/concepts/streamingingestionpolicy) dla tabel lub baz danych, które będą odbierać dane przesyłane strumieniowo. 
+1. W [interfejsie użytkownika sieci Web](https://dataexplorer.azure.com/)Zdefiniuj zasady pozyskiwania [strumieniowego](/azure/kusto/management/streamingingestionpolicy) dla tabel lub baz danych, które będą odbierać dane przesyłane strumieniowo. 
 
     > [!NOTE]
     > * Jeśli zasady są zdefiniowane na poziomie bazy danych, wszystkie tabele w bazie danych są włączone na potrzeby pozyskiwania strumieniowego.
@@ -63,7 +63,7 @@ Istnieją dwa obsługiwane typy pozyskiwania strumieniowego:
 > [!WARNING]
 > Wyłączenie pozyskiwania przesyłania strumieniowego może potrwać kilka godzin.
 
-1. Porzuć zasady pozyskiwania [strumieniowego](/azure/kusto/concepts/streamingingestionpolicy) ze wszystkich odpowiednich tabel i baz danych. Usunięcie zasad pozyskiwania strumieniowego spowoduje wyzwolenie przepływu danych pozyskiwania strumieniowego z magazynu początkowego do magazynu trwałego w magazynie kolumn (zakresy lub fragmentów). Przenoszenie danych może trwać od kilku sekund do kilku godzin, w zależności od ilości danych w magazynie początkowym oraz sposobu użycia procesora i pamięci przez klaster.
+1. Porzuć zasady pozyskiwania [strumieniowego](/azure/kusto/management/streamingingestionpolicy) ze wszystkich odpowiednich tabel i baz danych. Usunięcie zasad pozyskiwania strumieniowego spowoduje wyzwolenie przepływu danych pozyskiwania strumieniowego z magazynu początkowego do magazynu trwałego w magazynie kolumn (zakresy lub fragmentów). Przenoszenie danych może trwać od kilku sekund do kilku godzin, w zależności od ilości danych w magazynie początkowym oraz sposobu użycia procesora i pamięci przez klaster.
 1. W Azure Portal przejdź do klastra usługi Azure Eksplorator danych. W obszarze **Ustawienia**wybierz pozycję **konfiguracje**. 
 1. W okienku **konfiguracje** wybierz pozycję **wyłączone** , aby wyłączyć pozyskiwanie **strumieniowe**.
 1. Wybierz pozycję **Zapisz**.

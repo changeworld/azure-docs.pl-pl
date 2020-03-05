@@ -3,12 +3,12 @@ title: Jak korzystać z grup zarządzania — Zarządzanie platformą Azure
 description: Dowiedz się, jak wyświetlać, obsługiwać, aktualizować i usuwać hierarchię grup zarządzania.
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 59f1b48e0a668d506a87ae1ef14de6df76b26ad7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 94df67888c0ed0ea532844a92a362a181621d3d3
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751234"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267938"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami za pomocą grup zarządzania
 
@@ -17,6 +17,12 @@ Jeśli Twoja organizacja ma wiele subskrypcji, możesz potrzebować sposobu na w
 Grupy zarządzania umożliwiają zarządzanie klasy korporacyjnej na dużą skalę niezależnie od typu subskrypcji.  Aby dowiedzieć się więcej na temat grup zarządzania, zobacz [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](overview.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+>[!IMPORTANT]
+>Azure Resource Manager tokenów użytkowników i pamięci podręcznej grup zarządzania trwa 30 minut, zanim zostanie wymuszone odświeżenie.  Po wykonaniu akcji takich jak przeniesienie grupy zarządzania lub subskrypcji może potrwać do 30 minut.  
+>Aby wyświetlić aktualizacje wcześniej, musisz zaktualizować token przez odświeżenie przeglądarki, zalogowanie się i wyjście lub żądanie nowego tokenu.  
+
+
 
 ## <a name="change-the-name-of-a-management-group"></a>Zmień nazwę grupy zarządzania
 
@@ -121,7 +127,7 @@ Można wyświetlić dowolną grupę zarządzania, w której jest włączona bezp
 
 1. Aby wyświetlić szczegóły grupy zarządzania, wybierz łącze **(szczegóły)** obok tytułu grupy zarządzania. Jeśli ten link nie jest dostępny, nie masz uprawnień do wyświetlania tej grupy zarządzania.
 
-   ![Główne](./media/main.png)
+   ![Główną](./media/main.png)
 
 ### <a name="view-in-powershell"></a>Wyświetl w programie PowerShell
 

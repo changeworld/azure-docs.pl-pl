@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-october2019
-ms.openlocfilehash: b5382a6a1ea381d57a026e9d42190152e38f7696
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7812b62e2de3181ae1a901241a977e37f855704b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209521"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268040"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>Jak korzystać z usługi Azure queue storage w wersji 2.1 z poziomu języka Python
 
@@ -41,7 +41,7 @@ Przykłady w tym artykule są zapisywane w języku Python i używają [Zestaw SD
 Aby zainstalować program za pośrednictwem indeksu pakietów języka Python (PyPI), wpisz:
 
 ```bash
-pip install azure-storage-blob==2.1.0
+pip install azure-storage-queue==2.1.0
 ```
 
 > [!NOTE]

@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4094ace5772b99c646a31d6a4722bbb080fbfff7
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 779b7d071b1161c53bdba08738539c4c682882d2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589885"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273544"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Podstawowa baza zabezpieczeń Azure dla usługi Batch
 
@@ -59,7 +59,7 @@ Informacje o zabezpieczeniach sieci zapewnianych przez Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -271,7 +271,7 @@ Jak zdalnie nawiązać połączenie z węzłami puli Azure Batch:
 
 https://docs.microsoft.com/azure/batch/batch-api-basics#error-handling
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -323,7 +323,7 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 **Wskazówki**: Użyj usługi Windows Defender na poszczególnych węzłach usługi Batch w przypadku systemów operacyjnych Windows lub podaj własne rozwiązanie chroniące przed złośliwym oprogramowaniem, jeśli używasz systemu Linux.
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -466,7 +466,7 @@ Jak monitorować działania związane z tożsamościami i dostępem użytkownik�
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -511,7 +511,7 @@ Jak korzystać z przeglądów dostępu do tożsamości platformy Azure:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -524,7 +524,7 @@ Jak zintegrować dzienniki aktywności platformy Azure z Azure Monitor:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -551,7 +551,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Odpowiedzialność**: klient
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: Zapewnij firmie Microsoft dostęp do odpowiednich danych klienta w scenariuszach pomocy technicznej
+### <a name="313-divprovide-microsoft-with-access-to-relevant-customer-data-during-support-scenariosbrdiv"></a>3,13: <div>Zapewnianie firmie Microsoft dostępu do odpowiednich danych klienta w trakcie scenariuszy pomocy technicznej<br></div>
 
 **Wskazówki**: niedostępne; Azure Batch nie Skrytka klienta jeszcze obsługiwane. Lista obsługiwanych usług Skrytka klienta: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
@@ -614,9 +614,9 @@ Jak zabezpieczyć konta usługi Azure Storage:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Monitorowanie Azure Security Center**: tak
+**Monitorowanie Azure Security Center**: obecnie niedostępna
 
-**Odpowiedzialność**: klient
+**Odpowiedzialność**: udostępnione
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: Szyfruj wszystkie poufne informacje podczas przesyłania
 
@@ -654,7 +654,7 @@ Jak zabezpieczyć konta usługi Azure Storage:
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Monitorowanie Azure Security Center**: tak
+**Monitorowanie Azure Security Center**: obecnie niedostępna
 
 **Odpowiedzialność**: udostępnione
 
@@ -690,7 +690,7 @@ Zrozumienie ochrony danych klientów na platformie Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Monitorowanie Azure Security Center**: tak
+**Monitorowanie Azure Security Center**: obecnie niedostępna
 
 **Odpowiedzialność**: udostępnione
 
@@ -704,7 +704,7 @@ Jak zarządzać kluczami szyfrowania dla kont usługi Azure Storage:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -728,7 +728,7 @@ Jak włączyć dodatkowe rejestrowanie/inspekcję dla konta usługi Azure Storag
 
 https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -751,7 +751,7 @@ Opcjonalnie, jeśli istnieje Rapid7, Qualys lub jakakolwiek inna subskrypcja pla
 
 **Wskazówki**: Firma Microsoft do obsługi i aktualizacji obrazów węzła podstawowego puli Azure Batch. Upewnij się, że system operacyjny węzłów puli Azure Batch jest zastosowany na czas trwania okresu istnienia klastra, co może wymagać włączenia aktualizacji automatycznych, monitorowania węzłów lub wykonywania okresowych ponownych uruchomień.
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: udostępnione
 
@@ -788,7 +788,7 @@ Opcjonalnie, jeśli istnieje Rapid7, Qualys lub jakakolwiek inna subskrypcja pla
 **Wskazówki**: Użyj grafu zasobów platformy Azure do wykonywania zapytań/odnajdywania wszystkich zasobów (np. obliczeń, magazynu, sieci itp.) w ramach subskrypcji. Upewnij się, że masz odpowiednie uprawnienia (odczyt) w dzierżawie i że można wyliczyć wszystkie subskrypcje platformy Azure oraz zasoby w ramach subskrypcji.
 
 
-Mimo że klasyczne zasoby platformy Azure mogą zostać odnalezione za pośrednictwem grafu zasobów, zdecydowanie zaleca się tworzenie i używanie Azure Resource Manager zasobów do przodu.
+Mimo że klasyczne zasoby platformy Azure mogą zostać odnalezione za pośrednictwem grafu zasobów, zdecydowanie zaleca się tworzenie i używanie zasobów Azure Resource Manager (ARM) do przodu.
 
 
 Jak tworzyć zapytania za pomocą usługi Azure Graph:
@@ -863,9 +863,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - Niedozwolone typy zasobów
 - Dozwolone typy zasobów
 
+
 Użyj grafu zasobów platformy Azure, aby wykonywać zapytania/odnajdywać zasoby w ramach subskrypcji. Upewnij się, że wszystkie zasoby platformy Azure obecne w środowisku są zatwierdzone.
 
+
 Jak skonfigurować Azure Policy i zarządzać nim: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Jak tworzyć zapytania za pomocą usługi Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -901,16 +904,15 @@ Jak tworzyć zapytania za pomocą usługi Azure Graph: https://docs.microsoft.co
 
 **Wskazówki**: Użyj usługi Azure Policy, aby wprowadzić ograniczenia dotyczące typu zasobów, które można utworzyć w subskrypcjach klientów, korzystając z następujących wbudowanych definicji zasad:
 
+
 - Niedozwolone typy zasobów
 - Dozwolone typy zasobów
 
-Jak skonfigurować Azure Policy i zarządzać nimi:
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak skonfigurować Azure Policy i zarządzać nim: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak odmówić określonego typu zasobu Azure Policy:
 
-https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Jak odmówić określonego typu zasobu Azure Policy: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 **Monitorowanie Azure Security Center**: obecnie niedostępna
 
@@ -924,14 +926,12 @@ https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-
 
 **Odpowiedzialność**: klient
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager-via-scripts"></a>6,11: Ogranicz możliwość korzystania przez użytkowników z Azure Resource Manager za pośrednictwem skryptów
+### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6,11: <div>Ogranicz możliwość korzystania przez użytkowników z Azure Resource Manager za pośrednictwem skryptów</div>
 
 **Wskazówki**: Użyj dostępu warunkowego platformy Azure, aby ograniczyć możliwość korzystania przez użytkowników z Azure Resource Manager przez skonfigurowanie "blokowania dostępu" dla aplikacji "Microsoft Azure Management".
 
 
-Jak skonfigurować dostęp warunkowy w celu blokowania dostępu do Azure Resource Manager:
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+Jak skonfigurować dostęp warunkowy w celu blokowania dostępu do Azure Resource Manager: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Monitorowanie Azure Security Center**: obecnie niedostępna
 
@@ -949,9 +949,7 @@ Nie ma to zastosowania do Azure Batch, ponieważ użytkownicy (inni niż adminis
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizyczne lub logiczne rozdzielenie aplikacji wysokiego ryzyka
 
-**Wskazówki**: niedostępne,
-
-Test porównawczy jest przeznaczony dla aplikacji sieci Web uruchamianych w wystąpieniach Azure App Service lub IaaS.
+**Wskazówki**: nie dotyczy, test porównawczy jest przeznaczony dla aplikacji sieci Web uruchamianych w wystąpieniach Azure App Service lub IaaS.
 
 **Monitorowanie Azure Security Center**: nie dotyczy
 
@@ -966,10 +964,14 @@ Test porównawczy jest przeznaczony dla aplikacji sieci Web uruchamianych w wyst
 **Wskazówki**: Użyj aliasów Azure Policy w przestrzeni nazw "Microsoft. Batch", aby utworzyć niestandardowe zasady inspekcji lub wymuszania konfiguracji kont Azure Batch i pul.
 
 
-Jak wyświetlić dostępne aliasy Azure Policy: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Jak wyświetlić dostępne aliasy Azure Policy:
+
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Jak skonfigurować Azure Policy i zarządzać nim: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Jak skonfigurować Azure Policy i zarządzać nimi:
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Monitorowanie Azure Security Center**: nie dotyczy
 
@@ -991,7 +993,9 @@ Jak skonfigurować Azure Policy i zarządzać nim: https://docs.microsoft.com/az
 - Microsoft.Storage
 - Microsoft.Network
 
+
 Jak skonfigurować Azure Policy i zarządzać nim: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 Zrozumienie Azure Policy efektów: https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
@@ -1009,11 +1013,17 @@ Zrozumienie Azure Policy efektów: https://docs.microsoft.com/azure/governance/p
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: bezpiecznie przechowuj konfigurację zasobów platformy Azure
 
-**Wskazówki**: Jeśli używasz niestandardowych definicji zasad platformy Azure dla kont Azure Batch, pul lub powiązanych zasobów, Użyj usługi Azure DevOps/repozytoriów, aby bezpiecznie przechowywać kod i zarządzać nim.
+**Wskazówki**: Jeśli używasz niestandardowych definicji zasad platformy Azure dla kont Azure Batch, pul lub powiązanych zasobów, użyj Azure Repos, aby bezpiecznie przechowywać kod i zarządzać nim.
 
-Jak przechowywać kod w usłudze Azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Dokumentacja Azure Repos: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Jak przechowywać kod w usłudze Azure DevOps:
+
+https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+
+
+Dokumentacja Azure Repos:
+
+https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Monitorowanie Azure Security Center**: nie dotyczy
 
@@ -1024,9 +1034,14 @@ Dokumentacja Azure Repos: https://docs.microsoft.com/azure/devops/repos/index?vi
 **Wskazówki**: Jeśli używasz niestandardowych obrazów dla pul Azure Batch, użyj kontroli dostępu opartej na ROLACH (RBAC), aby zapewnić dostęp do obrazów tylko autoryzowanym użytkownikom.
 
 
-Opis RBAC na platformie Azure: https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+Opis RBAC na platformie Azure:
 
-Jak skonfigurować RBAC na platformie Azure: https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
+https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+
+
+Jak skonfigurować RBAC na platformie Azure:
+
+https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
 **Monitorowanie Azure Security Center**: obecnie niedostępna
 
@@ -1058,8 +1073,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Wskazówki**: Użyj aliasów Azure Policy w przestrzeni nazw "Microsoft. Batch", aby utworzyć zasady niestandardowe do inspekcji lub wymuszania konfiguracji wystąpienia Azure Batch. Można również używać wszelkich wbudowanych zasad utworzonych specjalnie dla Azure Batch lub zasobów używanych przez Azure Batch, takich jak:
 
-- Podsieci powinny być skojarzone z sieciową grupą zabezpieczeń
-- Konta magazynu powinny używać punktu końcowego usługi sieci wirtualnej
+- Podsieci powinny być skojarzone z sieciową grupą zabezpieczeń — konta magazynu powinny używać punktu końcowego usługi sieci wirtualnej
 - Należy włączyć dzienniki diagnostyczne na kontach wsadowych
 
 Jak wyświetlić dostępne aliasy Azure Policy: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
@@ -1098,7 +1112,7 @@ Jak zapewnić uwierzytelnianie Key Vault przy użyciu tożsamości zarządzanej:
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -1187,7 +1201,7 @@ Jak utworzyć kopię zapasową kluczy magazynu kluczy na platformie Azure:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -1205,7 +1219,7 @@ Jak przywrócić klucz zarządzany przez klienta za pomocą programu PowerShell:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: nie dotyczy
 
 **Odpowiedzialność**: klient
 
@@ -1218,7 +1232,7 @@ Jak włączyć usuwanie nietrwałe w Azure Key Vault:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Monitorowanie Azure Security Center**: obecnie niedostępna
+**Monitorowanie Azure Security Center**: tak
 
 **Odpowiedzialność**: klient
 
@@ -1324,3 +1338,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Odpowiedzialność**: udostępnione
 
+## <a name="next-steps"></a>Następne kroki
+
+- Zobacz [test porównawczy zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Dowiedz się więcej o [punktach odniesienia zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
