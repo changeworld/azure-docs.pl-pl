@@ -57,7 +57,7 @@ Należy pamiętać, że monitorowanie na poziomie gościa na platformie Azure i 
     ![Włączanie monitorowania na poziomie gościa na stronie Przegląd](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
 4. Po kilku minutach agent diagnostyki platformy Azure zostanie zainstalowany na maszynie wirtualnej. Zostanie dodany podstawowy zestaw metryk. Odśwież stronę. Dodane liczniki wydajności są wyświetlane na karcie Przegląd.
 5. W obszarze Monitorowanie wybierz pozycję **Metryki**.
-6. Na wykresie metryk w obszarze **Przestrzeń nazw metryki** wybierz pozycję **	Gość (klasyczny)** .
+6. Na wykresie metryk w obszarze **Przestrzeń nazw metryki** wybierz pozycję **Gość (klasyczny)** .
 7. Na liście Metryki można zobaczyć wszystkie dostępne liczniki wydajności dla maszyny wirtualnej gościa.  
     ![Lista przykładowych metryk rozszerzonych](./media/azure-vm-extended-metrics/extended-metrics.png)
 
