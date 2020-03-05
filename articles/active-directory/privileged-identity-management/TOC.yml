@@ -83,7 +83,7 @@
           href: pim-resource-roles-configure-role-settings.md
         - name: Konfigurowanie alertów
           href: pim-resource-roles-configure-alerts.md
-        - name: Wyświetl aktywność i historię inspekcji
+        - name: Wyświetlanie historii inspekcji
           href: azure-pim-resource-rbac.md
         - name: Korzystanie z ról niestandardowych
           href: pim-resource-roles-custom-role-policy.md
