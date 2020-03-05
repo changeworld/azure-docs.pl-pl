@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: b73389a9b1dadfff287718abec1755007cbe859c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f4885bea686267ce0397e9ca6f3e2c0ac8640971
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595120"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273032"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Szybki Start: Wdrażanie klastra usługi Azure Kubernetes Service (AKS) przy użyciu Azure Portal
 
@@ -74,13 +74,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 Aby sprawdzić połączenie z klastrem, użyj polecenia [kubectl get][kubectl-get], aby powrócić do listy węzłów klastra.
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 Poniższe przykładowe dane wyjściowe zawierają jeden węzeł utworzony w poprzednich krokach. Upewnij się, że stan węzła to *Gotowy*:
 
-```
+```output
 NAME                       STATUS    ROLES     AGE       VERSION
 aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 ```
@@ -92,7 +92,7 @@ Plik manifestu platformy Kubernetes definiuje żądany stan klastra, w tym infor
 > [!TIP]
 > W tym przewodniku Szybki start ręcznie utworzysz i wdrożysz manifesty aplikacji w klastrze AKS. W bardziej rzeczywistych scenariuszach możesz użyć [Azure dev Spaces][azure-dev-spaces] , aby szybko iterować i debugować kod bezpośrednio w klastrze AKS. Obszarów Dev Spaces można używać na różnych platformach systemów operacyjnych i w środowiskach deweloperskich, aby pracować razem z innymi członkami zespołu.
 
-W usłudze Cloud Shell Użyj polecenia `nano azure-vote.yaml` lub `vi azure-vote.yaml`, aby utworzyć plik o nazwie `azure-vote.yaml`. Następnie skopiuj w następującej definicji YAML:
+W Cloud Shell Użyj polecenia `nano azure-vote.yaml` lub `vi azure-vote.yaml`, aby utworzyć plik o nazwie `azure-vote.yaml`. Następnie skopiuj w następującej definicji YAML:
 
 ```yaml
 apiVersion: apps/v1
@@ -181,13 +181,13 @@ spec:
 
 Wdróż aplikację przy użyciu polecenia [polecenia kubectl Apply][kubectl-apply] i określ nazwę manifestu YAML:
 
-```azurecli-interactive
+```console
 kubectl apply -f azure-vote.yaml
 ```
 
 Następujące przykładowe dane wyjściowe przedstawiają pomyślnie utworzone wdrożenia i usługi:
 
-```
+```output
 deployment "azure-vote-back" created
 service "azure-vote-back" created
 deployment "azure-vote-front" created
@@ -200,20 +200,20 @@ Podczas uruchamiania aplikacji usługa Kubernetes uwidacznia fronton aplikacji w
 
 Aby monitorować postęp, użyj polecenia [kubectl get-service][kubectl-get] z argumentem `--watch`.
 
-```azurecli-interactive
+```console
 kubectl get service azure-vote-front --watch
 ```
 
 Początkowo adres *EXTERNAL-IP* dla usługi *azure-vote-front* jest wyświetlany jako *oczekujący*.
 
-```
+```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 Gdy dla adresu *EXTERNAL-IP* wartość *oczekujący* zmieni się na rzeczywisty publiczny adres IP, naciśnij klawisze `CTRL-C`, aby zatrzymać proces śledzenia narzędzia `kubectl`. Następujące przykładowe dane wyjściowe przedstawiają prawidłowy publiczny adres IP przypisany do usługi:
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 

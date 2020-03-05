@@ -1,20 +1,22 @@
 ---
-title: Publikowanie funkcji na platformie Azure przy użyciu języka Java i Maven
-description: Utwórz i Opublikuj funkcję wyzwalaną przez protokół HTTP na platformie Azure przy użyciu języka Java i Maven.
-author: rloutlaw
+title: Publikowanie funkcji na platformie Azure przy użyciu języka Java i Maven/Gradle
+description: Utwórz i Opublikuj funkcję wyzwalaną przez protokół HTTP na platformie Azure przy użyciu języka Java i Maven lub Gradle.
+author: KarlErickson
+ms.author: karler
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 262afc2aa51aea260d5bd810b12e09de60b0c371
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: dbdcf2552b453fa72bfec616a02bd45afc45fb0f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249598"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272734"
 ---
-# <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Szybki Start: używanie języka Java i Maven do tworzenia i publikowania funkcji na platformie Azure
+# <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>Szybki Start: używanie języka Java i Maven/Gradle do tworzenia i publikowania funkcji na platformie Azure
 
-W tym artykule opisano sposób kompilowania i publikowania funkcji języka Java w celu Azure Functions przy użyciu narzędzia wiersza polecenia Maven. Gdy wszystko będzie gotowe, kod funkcji jest uruchamiany na platformie Azure w [planie hostingu bezserwerowym](functions-scale.md#consumption-plan) i jest wyzwalany przez żądanie HTTP.
+W tym artykule opisano sposób kompilowania i publikowania funkcji języka Java w celu Azure Functions za pomocą narzędzia wiersza polecenia Maven/Gradle. Gdy wszystko będzie gotowe, kod funkcji jest uruchamiany na platformie Azure w [planie hostingu bezserwerowym](functions-scale.md#consumption-plan) i jest wyzwalany przez żądanie HTTP.
 
 <!--
 > [!NOTE] 
@@ -26,9 +28,15 @@ W tym artykule opisano sposób kompilowania i publikowania funkcji języka Java 
 Aby opracowywać funkcje przy użyciu języka Java, musisz mieć zainstalowane następujące składniki:
 
 - Zestaw [Java Developer Kit](https://aka.ms/azure-jdks), wersja 8
-- Narzędzie [Apache Maven](https://maven.apache.org), wersja 3.0 lub nowsza
 - [Interfejs wiersza polecenia platformy Azure]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) w wersji 2.6.666 lub nowszej
+::: zone pivot="java-build-tools-maven" 
+- Narzędzie [Apache Maven](https://maven.apache.org), wersja 3.0 lub nowsza
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+- [Gradle](https://gradle.org/), wersja 4,10 lub nowsza
+::: zone-end 
 
 Potrzebna jest również aktywna subskrypcja platformy Azure. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,34 +44,20 @@ Potrzebna jest również aktywna subskrypcja platformy Azure. [!INCLUDE [quickst
 > [!IMPORTANT]
 > Aby wykonać wszystkie czynności opisane w tym przewodniku Szybki start, dla zmiennej środowiskowej JAVA_HOME należy ustawić lokalizację instalacji zestawu JDK.
 
-## <a name="generate-a-new-functions-project"></a>Generowanie nowego projektu usługi Functions
+## <a name="prepare-a-functions-project"></a>Przygotuj projekt funkcji
 
+::: zone pivot="java-build-tools-maven" 
 W pustym folderze uruchom następujące polecenie, aby wygenerować projekt usługi Functions z [archetypu narzędzia Maven](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
 
-### <a name="linuxmacos"></a>Linux/macOS
-
 ```bash
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
 > [!NOTE]
+> Jeśli używasz programu PowerShell, pamiętaj, aby dodać "" wokół parametrów.
+
+> [!NOTE]
 > Jeśli występują problemy z uruchomieniem polecenia, należy zapoznać się z używaną wersją `maven-archetype-plugin`. Ponieważ uruchamiasz polecenie w pustym katalogu bez pliku `.pom`, może być podjęta próba użycia wtyczki starszej wersji od `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin`, jeśli uaktualniono Maven ze starszej wersji. Jeśli tak, spróbuj usunąć katalog `maven-archetype-plugin` i ponownie uruchomić polecenie.
-
-### <a name="windows"></a>System Windows
-
-```powershell
-mvn archetype:generate `
-    "-DarchetypeGroupId=com.microsoft.azure" `
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
-
-```cmd
-mvn archetype:generate ^
-    "-DarchetypeGroupId=com.microsoft.azure" ^
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
 
 Maven prosi o podanie wartości, które są potrzebne, aby zakończyć Generowanie projektu przy wdrożeniu. Po wyświetleniu monitu podaj następujące wartości:
 
@@ -79,7 +73,35 @@ Maven prosi o podanie wartości, które są potrzebne, aby zakończyć Generowan
 
 Wpisz `Y` lub naciśnij klawisz ENTER, aby potwierdzić.
 
-Maven tworzy pliki projektu w nowym folderze o nazwie _artifactId_, w tym przykładzie `fabrikam-functions`. 
+Maven tworzy pliki projektu w nowym folderze o nazwie _artifactId_, w tym przykładzie `fabrikam-functions`. Uruchom następujące polecenie, aby zmienić katalog na utworzony folder projektu.
+```bash
+cd fabrikam-function
+```
+
+::: zone-end 
+::: zone pivot="java-build-tools-gradle"
+Użyj następującego polecenia, aby sklonować przykładowy projekt:
+
+```bash
+git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
+cd azure-functions-samples-java/
+```
+
+Otwórz `build.gradle` i Zmień `appName` w poniższej sekcji na unikatową nazwę, aby uniknąć konfliktu nazw domen podczas wdrażania na platformie Azure. 
+
+```gradle
+azurefunctions {
+    resourceGroup = 'java-functions-group'
+    appName = 'azure-functions-sample-demo'
+    pricingTier = 'Consumption'
+    region = 'westus'
+    runtime {
+      os = 'windows'
+    }
+    localDebug = "transport=dt_socket,server=y,suspend=n,address=5005"
+}
+```
+::: zone-end
 
 Otwórz plik New Function. Java ze ścieżki *src/Main/Java* w edytorze tekstów i przejrzyj wygenerowany kod. Ten kod jest funkcją [wyzwalaną przez protokół http](functions-bindings-http-webhook.md) , która umożliwia echo treści żądania. 
 
@@ -88,15 +110,23 @@ Otwórz plik New Function. Java ze ścieżki *src/Main/Java* w edytorze tekstów
 
 ## <a name="run-the-function-locally"></a>Lokalne uruchamianie funkcji
 
-Uruchom następujące polecenie, które zmienia katalog na nowo utworzony folder projektu, a następnie kompiluje i uruchamia projekt funkcji:
+Uruchom następujące polecenie, aby skompilować, a następnie Uruchom projekt funkcji:
 
-```console
-cd fabrikam-function
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end 
 
-Poniższe dane wyjściowe są wyświetlane w Azure Functions Core Tools podczas lokalnego uruchamiania projektu:
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end 
+
+Dane wyjściowe będą wyglądać podobnie jak następujące Azure Functions Core Tools w przypadku uruchamiania projektu lokalnie:
 
 ```output
 ...
@@ -112,7 +142,7 @@ Http Functions:
 
 Wyzwól funkcję z wiersza polecenia przy użyciu zwinięcia w nowym oknie terminalu:
 
-```CMD
+```bash
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
@@ -135,13 +165,22 @@ az login
 > [!TIP]
 > Jeśli Twoje konto ma dostęp do wielu subskrypcji, użyj polecenie [AZ Account Set](/cli/azure/account#az-account-set) , aby ustawić domyślną subskrypcję tej sesji. 
 
-Użyj następującego polecenia Maven, aby wdrożyć projekt w nowej aplikacji funkcji. 
+Użyj następującego polecenia, aby wdrożyć projekt w nowej aplikacji funkcji. 
 
-```console
+
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end 
 
-Ten `azure-functions:deploy` element docelowy Maven tworzy następujące zasoby na platformie Azure:
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
+
+Spowoduje to utworzenie następujących zasobów na platformie Azure:
 
 + Grupa zasobów. Nazwana z _podaną w podanej_ nazwie.
 + Konto magazynu. Wymagane przez funkcje. Nazwa jest generowana losowo na podstawie wymagań dotyczących nazw kont magazynu.

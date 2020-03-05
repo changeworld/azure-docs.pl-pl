@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 5fe82dbce2069b0ae1a88599d020f4ba6b116027
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 9c4a79f196cc0737ddc9490f2fedda99961289f4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595335"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273790"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Szybki Start: Wdrażanie klastra usługi Azure Kubernetes Service (AKS) przy użyciu szablonu Azure Resource Manager
 
@@ -34,9 +34,11 @@ Aby utworzyć klaster AKS przy użyciu szablonu Menedżer zasobów, należy poda
 
 Aby uzyskać dostęp do węzłów AKS, Połącz się za pomocą pary kluczy SSH. Użyj `ssh-keygen` polecenie, aby wygenerować pliki publicznego i prywatnego klucza SSH. Domyślnie te pliki są tworzone w katalogu *~/.SSH* . Jeśli para kluczy SSH o tej samej nazwie istnieje w danej lokalizacji, te pliki są zastępowane.
 
+Przejdź do [https://shell.azure.com](https://shell.azure.com) , aby otworzyć Cloud Shell w przeglądarce.
+
 Następujące polecenie tworzy parę kluczy SSH przy użyciu szyfrowania RSA i długość bitową 2048:
 
-```azurecli-interactive
+```console
 ssh-keygen -t rsa -b 2048
 ```
 
@@ -109,13 +111,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 Aby sprawdzić połączenie z klastrem, użyj polecenia [kubectl get][kubectl-get], aby powrócić do listy węzłów klastra.
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 Następujące przykładowe dane wyjściowe pokazują węzły utworzone w poprzednich krokach. Upewnij się, że stan wszystkich węzłów jest *gotowy*:
 
-```
+```output
 NAME                       STATUS   ROLES   AGE     VERSION
 aks-agentpool-41324942-0   Ready    agent   6m44s   v1.12.6
 aks-agentpool-41324942-1   Ready    agent   6m46s   v1.12.6
@@ -218,13 +220,13 @@ spec:
 
 Wdróż aplikację przy użyciu polecenia [polecenia kubectl Apply][kubectl-apply] i określ nazwę manifestu YAML:
 
-```azurecli-interactive
+```console
 kubectl apply -f azure-vote.yaml
 ```
 
 Następujące przykładowe dane wyjściowe przedstawiają pomyślnie utworzone wdrożenia i usługi:
 
-```
+```output
 deployment "azure-vote-back" created
 service "azure-vote-back" created
 deployment "azure-vote-front" created
@@ -237,20 +239,20 @@ Podczas uruchamiania aplikacji usługa Kubernetes uwidacznia fronton aplikacji w
 
 Aby monitorować postęp, użyj polecenia [kubectl get-service][kubectl-get] z argumentem `--watch`.
 
-```azurecli-interactive
+```console
 kubectl get service azure-vote-front --watch
 ```
 
 Początkowo adres *EXTERNAL-IP* dla usługi *azure-vote-front* jest wyświetlany jako *oczekujący*.
 
-```
+```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 Gdy dla adresu *EXTERNAL-IP* wartość *oczekujący* zmieni się na rzeczywisty publiczny adres IP, naciśnij klawisze `CTRL-C`, aby zatrzymać proces śledzenia narzędzia `kubectl`. Następujące przykładowe dane wyjściowe przedstawiają prawidłowy publiczny adres IP przypisany do usługi:
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 

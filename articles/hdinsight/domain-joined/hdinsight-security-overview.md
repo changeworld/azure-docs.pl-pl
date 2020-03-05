@@ -1,18 +1,18 @@
 ---
 title: Omówienie zabezpieczeń przedsiębiorstwa w usłudze Azure HDInsight
 description: Poznaj różne metody zapewniające bezpieczeństwo przedsiębiorstw w usłudze Azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 09/23/2019
-ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/03/2020
+ms.openlocfilehash: 95bfe7d7788133d8548598cb30c8084bf64a977f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122115"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267722"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Omówienie zabezpieczeń przedsiębiorstwa w usłudze Azure HDInsight
 
@@ -36,13 +36,13 @@ Wszystkie klastry wdrożone w sieci wirtualnej również mają prywatny punkt ko
 
 [Pakiet Enterprise Security](apache-domain-joined-architecture.md) z usługi HDInsight zapewnia uwierzytelnianie oparte na Active Directoryach, obsługa przez wiele użytkowników oraz kontrolę dostępu opartą na rolach. Integracja Active Directory jest realizowana przy użyciu [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). Dzięki tym funkcjom można utworzyć klaster usługi HDInsight połączony z zarządzaną domeną Active Directory. Następnie można skonfigurować listę pracowników w przedsiębiorstwie, którzy mogą uwierzytelniać się w klastrze i logować się do niego.
 
-W przypadku tej konfiguracji pracownicy przedsiębiorstwa mogą zalogować się do węzłów klastra przy użyciu ich poświadczeń domeny. Mogą oni również używać poświadczeń domeny do uwierzytelniania z innymi zatwierdzonymi punktami końcowymi, takimi jak Apache Ambari views, ODBC, JDBC, PowerShell i interfejsy API REST do współpracy z klastrem. 
+W przypadku tej konfiguracji pracownicy przedsiębiorstwa mogą zalogować się do węzłów klastra przy użyciu ich poświadczeń domeny. Mogą oni również używać poświadczeń domeny do uwierzytelniania z innymi zatwierdzonymi punktami końcowymi, takimi jak Apache Ambari views, ODBC, JDBC, PowerShell i interfejsy API REST do współpracy z klastrem.
 
 ### <a name="authorization"></a>Autoryzacja
 
 Najlepszym rozwiązaniem w przypadku większości przedsiębiorstw jest upewnienie się, że nie każdy pracownik ma dostęp do wszystkich zasobów przedsiębiorstwa. Analogicznie, administrator może definiować zasady kontroli dostępu opartej na rolach dla zasobów klastra. Ta wartość jest dostępna tylko w klastrach ESP.
 
-Administrator usługi Hadoop może skonfigurować kontrolę dostępu opartą na rolach (RBAC), aby zabezpieczyć platformę Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md) i [Kafka](apache-domain-joined-run-kafka.md) przy użyciu tych wtyczek w programie Apache Ranger. Skonfigurowanie zasad RBAC umożliwia kojarzenie uprawnień z rolą w organizacji. Ta warstwa abstrakcji ułatwia zapewnienie, że osoby mają tylko uprawnienia niezbędne do wykonywania swoich obowiązków służbowych. Ranger umożliwia także inspekcję dostępu do danych pracowników i wszelkich zmian dokonanych w zasadach kontroli dostępu.
+Administrator usługi Hadoop może skonfigurować kontrolę dostępu opartą na rolach (RBAC), aby zabezpieczyć platformę Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md)i [Kafka](apache-domain-joined-run-kafka.md) przy użyciu tych wtyczek w usłudze Apache Ranger. Skonfigurowanie zasad RBAC umożliwia kojarzenie uprawnień z rolą w organizacji. Ta warstwa abstrakcji ułatwia zapewnienie, że osoby mają tylko uprawnienia niezbędne do wykonywania swoich obowiązków służbowych. Ranger umożliwia także inspekcję dostępu do danych pracowników i wszelkich zmian dokonanych w zasadach kontroli dostępu.
 
 Na przykład administrator może skonfigurować środowisko [Apache Ranger](https://ranger.apache.org/) do ustawiania zasad kontroli dostępu dla usługi Hive. Ta funkcja zapewnia filtrowanie na poziomie wiersza i kolumny (Maskowanie danych) i filtruje poufne dane przed nieautoryzowanymi użytkownikami.
 
@@ -50,9 +50,9 @@ Na przykład administrator może skonfigurować środowisko [Apache Ranger](http
 
 Inspekcja całego dostępu do zasobów klastra i danych jest niezbędna do śledzenia nieautoryzowanego lub niezamierzonego dostępu do zasobów. Jest to ważne, aby chronić zasoby klastra usługi HDInsight przed nieautoryzowanymi użytkownikami i zabezpieczać dane.
 
-Administrator może wyświetlić i zgłosić cały dostęp do zasobów i danych klastra usługi HDInsight. Administrator może również wyświetlać i raportować wszystkie zmiany zasad kontroli dostępu utworzonych w ramach obsługiwanych przez Apache Ranger punktów końcowych. 
+Administrator może wyświetlić i zgłosić cały dostęp do zasobów i danych klastra usługi HDInsight. Administrator może również wyświetlać i raportować wszystkie zmiany zasad kontroli dostępu utworzonych w ramach obsługiwanych przez Apache Ranger punktów końcowych.
 
-Aby uzyskać dostęp do dzienników inspekcji oprogramowania Apache Ranger i Ambari, a także dzienników dostępu SSH, [włącz Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) i Wyświetl tabele, które udostępniają rekordy inspekcji.
+Aby uzyskać dostęp do dzienników inspekcji oprogramowania Apache Ranger i Ambari oraz dzienników dostępu SSH, [włącz Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) i Wyświetl tabele, które udostępniają rekordy inspekcji.
 
 ### <a name="encryption"></a>Szyfrowanie
 
@@ -62,7 +62,7 @@ Oba magazyny danych dla klastrów usługi HDInsight, Azure Blob Storage i Azure 
 
 ### <a name="compliance"></a>Zgodność
 
-Oferty zgodności z platformą Azure opierają się na różnych typach gwarancji, w tym formalnych certyfikatach, zaświadczeniu, ważności, autoryzacji i ocenach wyprodukowanych przez niezależne przedsiębiorstwa przeprowadzające inspekcje stron trzecich, a także zmiany umowne, samooceny i dokumenty ze wskazówkami dla klientów wytwarzane przez firmę Microsoft. Informacje o zgodności usługi HDInsight można znaleźć w [Centrum zaufania firmy Microsoft](https://www.microsoft.com/trust-center) i [Omówienie zgodności Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).
+Oferty zgodności z platformą Azure są oparte na różnych typach gwarancji, w tym formalnych certyfikatach, zaświadczeniu, atestacji, autoryzacji i ocenach wyprodukowanych przez niezależne przedsiębiorstwa audytorów innych firm, zmiany umowne, samooceny i dokumenty ze wskazówkami dla klientów wytwarzane przez firmę Microsoft. Informacje o zgodności usługi HDInsight można znaleźć w [Centrum zaufania firmy Microsoft](https://www.microsoft.com/trust-center) i [Omówienie zgodności Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).
 
 ## <a name="shared-responsibility-model"></a>Współużytkowany model odpowiedzialności
 

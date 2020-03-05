@@ -7,12 +7,12 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 6a530c96c99a9f22f1943a5b874656bcabd9594b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c2bf401713dc7ae3b060181f1df56d0915f68aed
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906477"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269505"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Szybki Start: Zarządzanie obiektami BLOB za pomocą zestawu SDK v10 języka JavaScript w programie Node. js
 
@@ -409,4 +409,4 @@ W tym przewodniku Szybki start pokazano, jak zarządzać obiektami blob i konten
 
 > [!div class="nextstepaction"]
 > [Azure Storage v10 SDK dla repozytorium javascript](https://github.com/Azure/azure-storage-js)
-> [Dokumentacja interfejsu API JavaScript usługi Azure Storage](/javascript/api/overview/azure/storage?view=azure-node-legacy)
+> [Dokumentacja interfejsu API JavaScript usługi Azure Storage](/javascript/api/overview/azure/storage-overview)

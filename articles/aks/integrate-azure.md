@@ -5,12 +5,12 @@ author: zr-msft
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
-ms.openlocfilehash: 8d727256afbe152a4f7022d0fd2454c4677b023c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 2eddedea7d626a92e21442c81aa49e00491958a1
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595607"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273020"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integracja z usługami zarządzanymi przez platformę Azure przy użyciu usługi Open Service Broker for Azure (OSBA)
 
@@ -29,39 +29,43 @@ Razem z [wykazem usług Kubernetes][kubernetes-service-catalog] usługa Open Ser
 
 ## <a name="install-service-catalog"></a>Instalowanie wykazu usług
 
-Pierwszym krokiem jest zainstalowanie wykazu usług w klastrze usługi Kubernetes przy użyciu planu narzędzia Helm. Uaktualnij instalację programu Tiller (serwera narzędzia Helm) w klastrze:
+Pierwszym krokiem jest zainstalowanie wykazu usług w klastrze usługi Kubernetes przy użyciu planu narzędzia Helm.
 
-```azurecli-interactive
+Przejdź do [https://shell.azure.com](https://shell.azure.com) , aby otworzyć Cloud Shell w przeglądarce.
+
+Uaktualnij instalację programu Tiller (serwera narzędzia Helm) w klastrze:
+
+```console
 helm init --upgrade
 ```
 
 Teraz dodaj plan wykazu usług do repozytorium narzędzia Helm:
 
-```azurecli-interactive
+```console
 helm repo add svc-cat https://svc-catalog-charts.storage.googleapis.com
 ```
 
 Na koniec zainstaluj składnik Service Catalog przy użyciu pakietu Helm. Jeśli w klastrze jest włączona kontrola dostępu na podstawie ról, uruchom to polecenie.
 
-```azurecli-interactive
+```console
 helm install svc-cat/catalog --name catalog --namespace catalog --set apiserver.storage.etcd.persistence.enabled=true --set apiserver.healthcheck.enabled=false --set controllerManager.healthcheck.enabled=false --set apiserver.verbosity=2 --set controllerManager.verbosity=2
 ```
 
 Jeśli w klastrze nie jest włączona kontrola dostępu na podstawie ról, uruchom to polecenie.
 
-```azurecli-interactive
+```console
 helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false --set apiserver.storage.etcd.persistence.enabled=true --set apiserver.healthcheck.enabled=false --set controllerManager.healthcheck.enabled=false --set apiserver.verbosity=2 --set controllerManager.verbosity=2
 ```
 
 Po uruchomieniu planu narzędzia Helm upewnij się, że pozycja `servicecatalog` jest wyświetlana w danych wyjściowych następującego polecenia:
 
-```azurecli-interactive
+```console
 kubectl get apiservice
 ```
 
 Na przykład powinny pojawić się dane wyjściowe podobne do następujących (tutaj zostały obcięte):
 
-```
+```output
 NAME                                 AGE
 v1.                                  10m
 v1.authentication.k8s.io             10m
@@ -76,7 +80,7 @@ Następnym krokiem jest zainstalowanie usługi [Open Service Broker for Azure][o
 
 Najpierw dodaj repozytorium narzędzia Helm dla usługi Open Service Broker for Azure:
 
-```azurecli-interactive
+```console
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
 ```
 
@@ -88,7 +92,7 @@ az ad sp create-for-rbac
 
 Dane wyjściowe powinny być podobne do następujących. Zanotuj wartości `appId`, `password` i `tenant`, których użyjesz w następnym kroku.
 
-```JSON
+```json
 {
   "appId": "7248f250-0000-0000-0000-dbdeb8400d85",
   "displayName": "azure-cli-2017-10-15-02-20-15",
@@ -100,7 +104,7 @@ Dane wyjściowe powinny być podobne do następujących. Zanotuj wartości `appI
 
 Ustaw następujące zmienne środowiskowe z podanymi wcześniej wartościami:
 
-```azurecli-interactive
+```console
 AZURE_CLIENT_ID=<appId>
 AZURE_CLIENT_SECRET=<password>
 AZURE_TENANT_ID=<tenant>
@@ -114,7 +118,7 @@ az account show --query id --output tsv
 
 Ustaw następującą zmienną środowiskową z podaną wcześniej wartością:
 
-```azurecli-interactive
+```console
 AZURE_SUBSCRIPTION_ID=[your Azure subscription ID from above]
 ```
 
@@ -132,20 +136,20 @@ Po zakończeniu wdrażania usługi OSBA zainstaluj [interfejs wiersza polecenia 
 
 Uruchom następujące polecenia, aby zainstalować dane binarne interfejsu wiersza polecenia wykazu usług:
 
-```azurecli-interactive
+```console
 curl -sLO https://servicecatalogcli.blob.core.windows.net/cli/latest/$(uname -s)/$(uname -m)/svcat
 chmod +x ./svcat
 ```
 
 Wyświetl listę zainstalowanych brokerów usług:
 
-```azurecli-interactive
+```console
 ./svcat get brokers
 ```
 
 Powinny zostać wyświetlone dane wyjściowe podobne do następujących:
 
-```
+```output
   NAME                               URL                                STATUS
 +------+--------------------------------------------------------------+--------+
   osba   http://osba-open-service-broker-azure.osba.svc.cluster.local   Ready
@@ -153,13 +157,13 @@ Powinny zostać wyświetlone dane wyjściowe podobne do następujących:
 
 Następnie wyświetl listę dostępnych klas usług. Wyświetlane klasy usług to dostępne usługi zarządzane przez platformę Azure, które można aprowizować za pośrednictwem usługi Open Service Broker for Azure.
 
-```azurecli-interactive
+```console
 ./svcat get classes
 ```
 
 Na koniec wyświetl listę wszystkich dostępnych planów usług. Plany usług to warstwy usług dotyczące usług zarządzanych przez platformę Azure. Na przykład w przypadku usługi Azure Database for MySQL są dostępne plany od `basic50` dla warstwy Podstawowa z 50 jednostkami DTU do `standard800` dla warstwy Standardowa z 800 jednostkami DTU.
 
-```azurecli-interactive
+```console
 ./svcat get plans
 ```
 
@@ -167,20 +171,20 @@ Na koniec wyświetl listę wszystkich dostępnych planów usług. Plany usług t
 
 W tym kroku użyjesz narzędzia Helm do zainstalowania zaktualizowanego planu narzędzia Helm dla środowiska WordPress. Plan umożliwia aprowizację zewnętrznego wystąpienia usługi Azure Database for MySQL, z którego może korzystać środowisko WordPress. Ten proces może potrwać kilka minut.
 
-```azurecli-interactive
+```console
 helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0 --set replicaCount=1
 ```
 
 Aby sprawdzić, czy instalacja spowodowała aprowizację odpowiednich zasobów, wyświetl zainstalowane wystąpienia usług i powiązania:
 
-```azurecli-interactive
+```console
 ./svcat get instances -n wordpress
 ./svcat get bindings -n wordpress
 ```
 
 Wyświetl zainstalowane klucze tajne:
 
-```azurecli-interactive
+```console
 kubectl get secrets -n wordpress -o yaml
 ```
 

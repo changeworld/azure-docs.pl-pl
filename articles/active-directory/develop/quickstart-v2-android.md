@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: c4af08a204cbf88c56b699bcbcdd3a7700e0f5e0
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: a184b035e3296f82ecdacf74a99ea7148d99bd49
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78160965"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271110"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Szybki start: logowanie użytkowników i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji dla systemu Android
 
@@ -46,7 +46,7 @@ Aplikacje muszą być reprezentowane przez obiekt aplikacji w Azure Active Direc
 > [!div class="sxs-lookup" renderon="portal"]
 > Uruchom projekt przy użyciu Android Studio.
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [Pobierz przykład kodu]()
+> [Pobierz przykład kodu](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3. Twoja aplikacja jest skonfigurowana i gotowa do uruchomienia

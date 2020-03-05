@@ -4,12 +4,12 @@ description: Dowiedz się, jak utworzyć funkcję z wiersza polecenia, a następ
 ms.date: 01/28/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c8648a0bdfaeeb8a89ea24b0f49610e5bf5c0491
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2a02e1481d975f877508bde02948bc65561b9f13
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190872"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272747"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Szybki Start: Tworzenie funkcji na platformie Azure, która odpowiada na żądania HTTP
 
@@ -364,7 +364,7 @@ Uruchom [`curl`](https://curl.haxx.se/) przy użyciu **adresu URL wywołania**, 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli przejdziesz do następnego kroku, [Dodaj powiązanie danych wyjściowych kolejki usługi Azure Storage](functions-add-output-binding-storage-queue-python.md), Zachowaj wszystkie Twoje zasoby w miarę kompilowania już wykonanej pracy.
+Jeśli przejdziesz do następnego kroku, [Dodaj powiązanie danych wyjściowych kolejki usługi Azure Storage](functions-add-output-binding-storage-queue-cli.md), Zachowaj wszystkie Twoje zasoby w miarę kompilowania już wykonanej pracy.
 
 W przeciwnym razie użyj poniższego polecenia, aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby, aby uniknąć ponoszenia dalszych kosztów.
 

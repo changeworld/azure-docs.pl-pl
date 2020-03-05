@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: 2e4e812ec13c089508fea890df2af1f8372bbe37
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: ce9be980ecdee74f783342f79c0f4b424b88e523
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190419"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267758"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Szybki Start: Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu szablonu Menedżer zasobów
 
@@ -72,7 +72,7 @@ Więcej przykładów szablonów Azure Key Vault można znaleźć [tutaj](https:/
 
 1. Wybierz poniższy obraz, aby zalogować się na platformie Azure i otworzyć szablon. Ten szablon umożliwia utworzenie magazynu kluczy oraz wpisu tajnego.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-key-vault-create%2Fazuredeploy.json"><img src="./media/quick-create-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+    [![Wdrażanie na platformie Azure](../media/template-deployments/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-key-vault-create%2Fazuredeploy.json)
 
 2. Wybierz lub wprowadź następujące wartości.
 
