@@ -247,6 +247,8 @@
           href: virtual-machine-scale-sets-networking.md
         - name: Automatyczne uaktualnienia systemu operacyjnego
           href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Automatyczne naprawy wystąpień (wersja zapoznawcza)
+          href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: Ochrona wystąpień
           href: virtual-machine-scale-sets-instance-protection.md
         - name: Zasady zmniejszania skali w poziomie

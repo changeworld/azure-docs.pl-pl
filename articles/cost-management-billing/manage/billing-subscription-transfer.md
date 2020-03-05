@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3eb76535a8047840a577f5b044001d85c20b13f0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188389"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245386"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Przeniesienie własności rozliczeń subskrypcji platformy Azure na inne konto
 
@@ -45,7 +45,7 @@ Jeśli jesteś klientem z Umową Enterprise (EA), administratorzy w Twoim przeds
 
     > [!IMPORTANT]
     >
-    > Jeśli przeniesiesz subskrypcję do konta w innej dzierżawie usługi Azure AD, wszystkie [przypisania kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md) do zarządzania zasobami w ramach subskrypcji zostaną trwale usunięte. Tylko użytkownik nowego konta, akceptujący żądanie przeniesienia, będzie miał dostęp do zarządzania zasobami w ramach subskrypcji. Więcej informacji — zobacz [Przenoszenie subskrypcji do użytkownika w innej dzierżawie usługi Azure AD](../../cognitive-services/acoustics/known-issues.md). Alternatywnie możesz usunąć zaznaczenie pola dzierżawy usługi Azure AD subskrypcji w celu przeniesienia własności rozliczeń bez przeniesienia subskrypcji do dzierżawy nowego konta. W takim przypadku istniejące uprawnienia RBAC do zarządzania zasobami platformy Azure zostaną zachowane.
+    > Jeśli przeniesiesz subskrypcję do konta w innej dzierżawie usługi Azure AD, wszystkie [przypisania kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/overview.md) do zarządzania zasobami w ramach subskrypcji zostaną trwale usunięte. Tylko użytkownik nowego konta, akceptujący żądanie przeniesienia, będzie miał dostęp do zarządzania zasobami w ramach subskrypcji. Więcej informacji — zobacz [Przenoszenie subskrypcji do użytkownika w innej dzierżawie usługi Azure AD](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories). Alternatywnie możesz usunąć zaznaczenie pola dzierżawy usługi Azure AD subskrypcji w celu przeniesienia własności rozliczeń bez przeniesienia subskrypcji do dzierżawy nowego konta. W takim przypadku istniejące uprawnienia RBAC do zarządzania zasobami platformy Azure zostaną zachowane.
 
     ![Strona wysyłania przeniesienia](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 

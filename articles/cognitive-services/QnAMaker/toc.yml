@@ -16,19 +16,14 @@
           href: Quickstarts/add-question-metadata-portal.md
         - name: 3. Uzyskiwanie odpowiedzi przy użyciu narzędzia Postman lub cURL
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - name: Testowanie przy użyciu pliku wsadowego
-      href: Quickstarts/batch-testing.md
     - name: Korzystanie z interfejsu REST
       href: Quickstarts/quickstart-rest-curl.md
     - name: Używanie zestawu SDK
       href: Quickstarts/quickstart-sdk.md
 - name: Samouczki
   items:
-    - name: Tworzenie bazy wiedzy i uzyskiwanie z niej odpowiedzi
-      displayName: 'curl, publish, chit-chat, chit chat'
-      href: Tutorials/create-publish-query-in-portal.md
-    - name: Tworzenie bota usługi QnA Maker
-      href: Tutorials/create-qna-bot.md
+    - name: Testowanie przy użyciu pliku wsadowego
+      href: Quickstarts/batch-testing.md
 - name: Pojęcia
   items:
     - name: Zasoby platformy Azure
@@ -77,9 +72,6 @@
           href: How-To/business-continuity-plan.md
     - name: Zarządzanie bazą wiedzy
       items:
-        - name: Tworzenie i publikowanie bazy wiedzy
-          href: Quickstarts/create-publish-knowledge-base.md
-          displayName: 'create bot, bot, publish to bot, test, edit'
         - name: Tworzenie bota przy użyciu usług QnA Maker i LUIS
           href: Tutorials/integrate-qnamaker-luis.md
         - name: Wybór języka
@@ -109,8 +101,6 @@
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
     - name: Używanie z aplikacją kliencką
       items:
-        - name: Struktura botów
-          href: Tutorials/create-qna-bot.md
         - name: Usługi LUIS i QnA Maker
           href: Tutorials/integrate-qnamaker-luis.md
     - name: Analiza i telemetria

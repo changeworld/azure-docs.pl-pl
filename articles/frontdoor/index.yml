@@ -1,45 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Azure Front Door Service
+summary: Usługa Azure Front Door jest skalowalnym i bezpiecznym punktem wejścia do szybkiego dostarczania globalnych aplikacji internetowych.
 metadata:
   title: Dokumentacja usługi Azure Front Door Service
-  meta.description: 'Azure Front Door Service provides a scalable and secure entry point for fast delivery of your global web applications. Learn how to use Front Door with our quickstarts, tutorials, and samples.'
+  description: Usługa Azure Front Door Service jest skalowalnym i bezpiecznym punktem wejścia do szybkiego dostarczania globalnych aplikacji internetowych. Dowiedz się, jak używać usługi Front Door, korzystając z przewodników Szybki start, samouczków i przykładów.
   services: frontdoor
-  author: dlepow
   ms.service: frontdoor
   ms.topic: landing-page
-  ms.date: 9/14/2018
-  ms.author: danlep
-abstract:
-  description: 'Usługa Azure Front Door Service jest skalowalnym i bezpiecznym punktem wejścia do szybkiego dostarczania globalnych aplikacji internetowych. Dowiedz się, jak używać usługi Front Door, korzystając z przewodników Szybki start, samouczków i przykładów.'
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: Utwórz usługę Front Door dla globalnej aplikacji internetowej o wysokiej dostępności.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure Portal
-            href: quickstart-create-front-door.md
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak skonfigurować usługę Azure Front Door Service na własne potrzeby.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="front-door-custom-domain.md">Dodawanie do usługi Front Door domeny niestandardowej</a>
-          - html: <a href="front-door-custom-domain-https.md">Włączanie protokołu HTTPS dla domeny niestandardowej</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Wiersz polecenia
-            html: '<p><a href="/cli/azure/ext/front-door">Interfejs wiersza polecenia platformy Azure</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2020942">Azure PowerShell</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/frontdoor">Interfejs API REST</a></p>
+  author: vhorne
+  ms.author: victorh
+  ms.date: 03/03/2020
+  ms.openlocfilehash: 7fdf859bc3d8f970fe16bd031d4fd60919c49a92
+  ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 03/04/2020
+  ms.locfileid: "78273268"
+landingContent:
+- title: Dowiedz się więcej o usłudze Azure Front Door
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure Front Door?
+      url: front-door-overview.md
+- title: Tworzenie usługi Front Door
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie usługi Front Door
+      url: quickstart-create-front-door.md
+- title: Dodawanie domeny niestandardowej
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Dodawanie do usługi Front Door domeny niestandardowej
+      url: front-door-custom-domain.md
+  - linkListType: how-to-guide
+    links:
+    - text: Dołączanie domeny głównej lub domeny wierzchołkowej do usługi Front Door
+      url: front-door-how-to-onboard-apex-domain.md
+- title: Informacje o filtrowaniu geograficznym
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Co to jest filtrowanie geograficzne domeny?
+      url: front-door-geo-filtering.md
+  - linkListType: tutorial
+    links:
+    - text: Konfigurowanie zasad zapory aplikacji internetowej do filtrowania geograficznego
+      url: front-door-tutorial-geo-filtering.md
+- title: Konfigurowanie protokołu HTTPS
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: konfigurowanie protokołu HTTPS w niestandardowej domenie usługi Front Door
+      url: front-door-custom-domain-https.md
+- title: Rozwiązywanie problemów z usługą Azure Front Door
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Typowe problemy z routingiem
+      url: front-door-troubleshoot-routing.md
+    - text: Dozwolone urzędy certyfikacji
+      url: front-door-troubleshoot-allowed-ca.md
+- title: Informacje o równoważeniu obciążenia na platformie Azure
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Równoważenie obciążenia na platformie Azure
+      url: front-door-lb-with-azure-app-delivery-suite.md

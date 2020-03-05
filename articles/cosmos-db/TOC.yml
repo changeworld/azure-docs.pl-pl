@@ -12,8 +12,8 @@
       items:
         - name: Azure Portal
           href: create-cosmosdb-resources-portal.md
-        - name: Szablon usługi Azure Resource Manager
-          displayName: ARM
+        - name: Szablon ARM
+          displayName: Resource Manager
           href: quick-create-template.md
         - name: Aplikacja platformy .NET — wersja 4 zestawu SDK
           href: create-sql-api-dotnet-v4.md

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/19/2019
+ms.date: 03/03/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1003b862d7fbe19545cf705570866479132c1f03
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845482"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273169"
 ---
 ::: zone target="chromeless"
 
@@ -51,7 +51,7 @@ Przed rozpoczęciem upewnij się, że zostały wykonane kroki opisane w artykule
 
 Następne czynności są zależne od lokalizacji, z której zwracasz urządzenie. Instrukcje są różne dla Stanów Zjednoczonych / Kanady, Unii Europejskiej (UE), Australii oraz krajów azjatyckich.
 
-### <a name="in-us-or-canadatabin-us-or-canada"></a>[W Stanach Zjednoczonych lub Kanadzie](#tab/in-us-or-canada)
+### <a name="in-us-or-canada"></a>[W Stanach Zjednoczonych lub Kanadzie](#tab/in-us-or-canada)
 
 W przypadku zwrotu urządzenia w Stanach Zjednoczonych lub Kanadzie wykonaj następujące czynności.
 
@@ -67,7 +67,7 @@ W przypadku zwrotu urządzenia w Stanach Zjednoczonych lub Kanadzie wykonaj nast
     - Jeśli nie podasz numeru śledzenia, firma UPS będzie wymagała uiszczenia dodatkowej opłaty podczas odbioru.
     - Zamiast planowania odbioru możesz także dostarczyć urządzenie Data Box Disk do najbliższego punktu UPS.
 
-### <a name="in-europetabin-europe"></a>[W Europie](#tab/in-europe)
+### <a name="in-europe"></a>[W Europie](#tab/in-europe)
 
 W przypadku zwrotu urządzenia w Europie wykonaj następujące czynności.
 
@@ -80,7 +80,7 @@ W przypadku zwrotu urządzenia w Europie wykonaj następujące czynności.
 4. Przejdź do lokalnej witryny internetowej firmy DHL Express i wybierz pozycję **Utwórz przesyłkę zwrotną**.    
 3. Podaj numer listu przewozowego i kliknij przycisk **Zamówienie kuriera**, aby zaplanować odebranie przesyłki.
 
-### <a name="in-australiatabin-australia"></a>[W Australii](#tab/in-australia)
+### <a name="in-australia"></a>[W Australii](#tab/in-australia)
 
 W przypadku centrów danych w Australii obowiązuje dodatkowe zabezpieczenie. Zabezpieczenie to polega na powiadamianiu z wyprzedzeniem o wszystkich przesyłkach przychodzących. Wykonaj następujące czynności, aby zaplanować odbiór w Australii.
 
@@ -88,7 +88,7 @@ W przypadku centrów danych w Australii obowiązuje dodatkowe zabezpieczenie. Za
 3. Umieść etykietę na opakowaniu. 
 4. Zarezerwuj odbiór online, korzystając z linku https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference. 
 
-### <a name="in-japantabin-japan"></a>[W Japonii](#tab/in-japan)
+### <a name="in-japan"></a>[W Japonii](#tab/in-japan)
 
 1. Na liście przewozowym wpisz nazwę i adres swojej firmy jako dane nadawcy.
 2. Wyślij wiadomość e-mail do firmy Quantium Solutions, korzystając z następującego szablonu.
@@ -115,7 +115,7 @@ W razie konieczności możesz skontaktować się z pomocą techniczną firmy Qua
 - Adres e-mail: Customerservice.JP@quantiumsolutions.com 
 - Numer telefonu：03-5755-0150 
 
-### <a name="in-koreatabin-korea"></a>[W Korei](#tab/in-korea)
+### <a name="in-korea"></a>[W Korei](#tab/in-korea)
 
 1. Upewnij się, że dołączono zwrotny list przewozowy.
 2. Wykonaj następujące czynności, aby zażądać odbioru, gdy jest dostępny list przewozowy:
@@ -130,7 +130,7 @@ W razie konieczności możesz skontaktować się z pomocą techniczną firmy Qua
     4. W przypadku rozmowy telefonicznej otrzymasz słowne potwierdzenie.
 
 
-### <a name="in-singaporetabin-singapore"></a>[W Singapurze](#tab/in-singapore)
+### <a name="in-singapore"></a>[W Singapurze](#tab/in-singapore)
 
 1. Wydrukuj etykietę wysyłkową i umieść ją na opakowaniu. Jeśli etykieta została uszkodzona lub utracona:
     - Przejdź do pozycji **Przegląd > Pobierz etykietę wysyłkową** i pobierz zwrotną etykietę wysyłkową.
@@ -157,7 +157,7 @@ W razie konieczności możesz skontaktować się z pomocą techniczną firmy Qua
 
 3. Przekaż przesyłkę kurierowi.
 
-### <a name="in-self-managedtabin-selfmanaged"></a>[W przypadku samodzielnego zarządzania](#tab/in-selfmanaged)
+### <a name="in-self-managed"></a>[W przypadku samodzielnego zarządzania](#tab/in-selfmanaged)
 
 Jeśli korzystasz z usługi Data Box Disk w Japonii, Singapurze, Korei i Europie Zachodniej oraz masz wybraną opcję samodzielnego zarządzania wysyłką, postępuj zgodnie z następującymi opcjami podczas tworzenia zamówienia. 
 
@@ -175,8 +175,6 @@ Jeśli korzystasz z usługi Data Box Disk w Japonii, Singapurze, Korei i Europie
 3. Zespół operacyjny usługi Azure Data Box zaplanuje razem z Tobą jego dostarczenie do centrum danych platformy Azure.
 
 ::: zone target="docs"
-
----
 
 ## <a name="next-steps"></a>Następne kroki
 

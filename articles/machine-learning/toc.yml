@@ -208,6 +208,9 @@
         - name: Tworzenie zestawów danych z etykietami
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: Pozyskiwanie danych przy użyciu usługi Azure Data Factory
+          displayName: 'data, ingestion, adf'
+          href: how-to-data-ingest-adf.md
         - name: Metodyka DevOps w zakresie pozyskiwania danych
           displayName: 'data, ingestion, devops'
           href: how-to-cicd-data-ingestion.md

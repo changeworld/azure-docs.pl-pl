@@ -3,16 +3,16 @@ title: Umowy EA platformy Azure i poprawki
 description: W tym artykule wyjaśniono, w jaki sposób umowy EA platformy Azure i ich poprawki wpływają na Twoje korzystanie z witryny Azure EA Portal.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: c38f28120b7c84077d8d5012c4be4698680e5fdb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 5198bd240f0c4e23910504fd039d64a73ddb41c9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200816"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301424"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Umowy EA platformy Azure i poprawki
 
@@ -25,10 +25,6 @@ Wszelkie poprawki dotyczące klientów platformy Azure muszą zostać przekazane
 ## <a name="enrollment-provisioning-status"></a>Stan aprowizacji rejestracji
 
 Data rozpoczęcia nowego zobowiązania pieniężnego zależy od daty przetworzenia go w regionalnym centrum operacyjnym. Ponieważ zobowiązania finansowe wynikające z zamówień składanych za pośrednictwem witryny Azure EA Portal są przetwarzane w strefie czasowej UTC, może wystąpić pewne opóźnienie, jeśli Twoje zobowiązanie pieniężne wynikające z zamówień zakupów zostało przetworzone w innym regionie. Data rozpoczęcia obsługi w zamówieniu dostępnym pod adresem https://www.explore.ms wskazuje datę rozpoczęcia zobowiązania pieniężnego. Data rozpoczęcia obsługi odpowiada momentowi wyświetlenia zobowiązania pieniężnego w witrynie Azure EA Portal.
-
-## <a name="special-pricing-and-azure-commitment-discount-amendments"></a>Specjalne ceny i rabat za zobowiązanie dotyczące platformy Azure Commitment Discount
-
-Jeśli wymagane są poprawki dotyczące specjalnych cen i rabatu za zobowiązanie dotyczące platformy Azure (ACD), skontaktuj się z zespołem obsługi klientów. Zespół operacyjny platformy Azure może zastosować rabat ACD po przetworzeniu poprawki przez dział obsługi klientów biznesowych i przekazaniu odpowiedniego żądania do zespołu operacyjnego. Rabat ACD jest stosowany tylko w bieżącym miesiącu. Za wszystkie poprzednie miesiące przyznawane są środki z datą wsteczną. 
 
 ## <a name="support-offer-not-provisioned"></a>Brak aprowizacji oferty pomocy technicznej
 

@@ -26,6 +26,8 @@
           href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Kupowanie rezerwacji usługi Azure Databricks
           href: prepay-databricks-reserved-capacity.md
+        - name: Kupowanie rezerwacji usługi Azure Cache for Redis
+          href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/billing/TOC.json
         - name: Kupowanie rezerwacji usługi App Service
           href: prepay-app-service-isolated-stamp.md
         - name: Kupowanie rezerwacji planu oprogramowania na platformie Azure

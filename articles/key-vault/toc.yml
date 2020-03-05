@@ -23,8 +23,8 @@
       href: quick-create-net.md
     - name: .NET (zestaw SDK w wersji 3)
       href: quick-create-net-v3.md
-    - name: Szablon usługi Resource Manager
-      displayName: ARM
+    - name: Szablon ARM
+      displayName: Resource Manager
       href: quick-create-template.md
 - name: Samouczki
   items:
