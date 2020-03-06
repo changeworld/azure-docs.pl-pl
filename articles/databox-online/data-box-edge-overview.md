@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 654ca34ae4c0e393920965083567e3d9c71148d0
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
-ms.translationtype: MT
+ms.openlocfilehash: 98ea00eb4d45ad045e1da3c4c5680f44e6705432
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863635"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300982"
 ---
 # <a name="what-is-azure-stack-edge"></a>Co to jest rozwiązanie Azure Stack Edge? 
 
@@ -43,7 +43,7 @@ Poniżej przedstawiono różne scenariusze, w których Azure Stack Edge może by
 
 Azure Stack Edge ma następujące możliwości:
 
-|Możliwość |Opis  |
+|Możliwości |Opis  |
 |---------|---------|
 |Przyspieszone inferencing AI| Włączone przez wbudowaną FPGA.|
 |Obliczanie       |Umożliwia analizowanie, przetwarzanie i filtrowanie danych.|
@@ -76,11 +76,11 @@ Rozwiązanie Azure Stack Edge składa się z Azure Stack zasobów brzegowych, Az
     Aby uzyskać informacje na temat korzystania z interfejsu użytkownika opartego na sieci Web, przejdź do [witryny sieci Web za pomocą interfejsu użytkownika w celu administrowania Azure Stack krawędzią](data-box-edge-manage-access-power-connectivity-mode.md).
 
 
-## <a name="region-availability"></a>Dostępność w poszczególnych regionach
+## <a name="region-availability"></a>Dostępność w danym regionie
 
 Azure Stack Edge urządzenie fizyczne, zasób platformy Azure i docelowe konto magazynu, do którego są przesyłane dane, nie muszą znajdować się w tym samym regionie.
 
-- **Dostępność zasobów** — Aby uzyskać listę wszystkich regionów, w których jest dostępny zasób Azure Stack Edge, przejdź do pozycji [dostępne produkty platformy Azure według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Stack Edge można także wdrożyć w chmurze Azure Government. Aby uzyskać więcej informacji, zobacz [co to jest Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+- **Dostępność zasobów** — Aby uzyskać listę wszystkich regionów, w których jest dostępny zasób Azure Stack Edge, zobacz Dostępność [produktów platformy Azure według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Stack Edge można także wdrożyć w chmurze Azure Government. Aby uzyskać więcej informacji, zobacz [co to jest Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
     
 - **Docelowe konta magazynu** — konta magazynu, w których są przechowywane dane, są dostępne we wszystkich regionach platformy Azure. Regiony, w których przechowywane są konta magazynu Azure Stack dane brzegowe, powinny znajdować się w pobliżu lokalizacji urządzenia w celu uzyskania optymalnej wydajności. Duża odległość konta magazynu od urządzenia powoduje długie opóźnienia i mniejszą wydajność. 
 

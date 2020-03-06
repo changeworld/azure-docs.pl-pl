@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4bad140ea1c6b1c59c8f752bc5336bbd49952e16
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b6aac5a963d0f58a3b21b9fb0958793169a3d444
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349520"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302121"
 ---
 # <a name="round-azure-cosmos-db"></a>ROUND (Azure Cosmos DB)
  Zwraca wartość liczbową zaokrągloną do najbliższej wartości całkowitej.  
@@ -51,11 +51,15 @@ ROUND(<numeric_expr>)
 SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, ROUND(-2.6) AS r5  
 ```  
   
-  W tym miejscu znajduje się zestaw wyników.  
+  Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
 ```  
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa będzie korzystać z [indeksu zakresu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 02/03/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: df1602fe82b4a625dd5f01de2bd7236816fbb0ac
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 873db6315841b585aa0ba6bcb843bfe05567836f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164665"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299265"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services wersja 3 — Omówienie
 
@@ -51,8 +51,8 @@ Media Services pozwala tworzyć różne przepływy pracy multimedialnej w chmurz
 * Analizuj nagrania wideo lub zawartość audio. Aby na przykład osiągnąć wyższe zadowolenie klientów, organizacje mogą wyodrębnić mowę jako tekst i tworzyć indeksy wyszukiwania oraz pulpity nawigacyjne. Następnie mogą oni wyodrębnić informacje dotyczące typowych skarg, źródeł skarg i inne odpowiednie dane.
 * Utwórz serwis wideo subskrypcji i przesyłaj strumieniowo zawartość chronioną przez technologię DRM, gdy klient (na przykład studio filmowe) chce ograniczyć dostęp i używanie zastrzeżonych prac objętych prawami autorskimi.
 * Dostarczaj zawartość offline do odtwarzania w samolotach, pociągach i samochodach. Klient może pobrać zawartość do odtworzenia na swój telefon lub tablet, jeśli przewiduje, że zostanie odłączony od sieci.
-* Zaimplementuj platformę wideo edukacyjnej uczenia maszynowego za pomocą Azure Media Services i [platformy Azure interfejsy API usług Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=ai) na potrzeby podpisania mowy i tekstu, tłumaczenia na wiele języków i tak dalej.
-* Dzięki usłudze Azure Media Services oraz [interfejsom API usług Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=ai) możesz dodawać napisy i podpisy do filmów, aby spełnić potrzeby szerszego grona odbiorców (na przykład osób z wadami słuchu lub osób chcących jednocześnie czytać w innym języku).
+* Zaimplementuj platformę wideo edukacyjnej uczenia maszynowego za pomocą Azure Media Services i [platformy Azure interfejsy API usług Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) na potrzeby podpisania mowy i tekstu, tłumaczenia na wiele języków i tak dalej.
+* Dzięki usłudze Azure Media Services oraz [interfejsom API usług Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) możesz dodawać napisy i podpisy do filmów, aby spełnić potrzeby szerszego grona odbiorców (na przykład osób z wadami słuchu lub osób chcących jednocześnie czytać w innym języku).
 * Włącz usługę Azure CDN, aby osiągnąć wysoką skalowalność w celu zapewnienia lepszej obsługi błyskawicznego zwiększenia obciążenia (na przykład na początku wydarzenia prezentującego nowy produkt).
 
 ## <a name="how-can-i-get-started-with-v3"></a>Jak można zacząć korzystać z wersji 3? 

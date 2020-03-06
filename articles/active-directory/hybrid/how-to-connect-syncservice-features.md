@@ -1,6 +1,6 @@
 ---
-title: Funkcji usługi synchronizacji programu Azure AD Connect i Konfiguracja | Dokumentacja firmy Microsoft
-description: Zawiera opis funkcji po stronie usługi, usługa synchronizacji Azure AD Connect.
+title: Azure AD Connect funkcje i konfiguracja usługi synchronizacji | Microsoft Docs
+description: Opisuje funkcje po stronie usługi dla usługi synchronizacji Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,103 +16,103 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be67a6f287e2d6e77070928cbe12542857696011
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347558"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300540"
 ---
-# <a name="azure-ad-connect-sync-service-features"></a>Funkcji usługi synchronizacji programu Azure AD Connect
+# <a name="azure-ad-connect-sync-service-features"></a>Funkcje usługi synchronizacji Azure AD Connect
 
-Funkcja synchronizacji programu Azure AD Connect ma dwa składniki:
+Funkcja synchronizacji Azure AD Connect ma dwa składniki:
 
-* Składnik środowiska lokalnego, o nazwie **synchronizacji programu Azure AD Connect**, nazywane również **aparatu synchronizacji**.
-* Usługi znajdujące się w usłudze Azure AD, znany także jako **Usługa synchronizacji Azure AD Connect**
+* Składnik lokalny o nazwie **Azure AD Connect Sync**, nazywany także **aparatem synchronizacji**.
+* Usługa, która znajduje się w usłudze Azure AD, znana także jako **usługa synchronizacji Azure AD Connect**
 
-W tym temacie opisano sposób, w jaki następujące funkcje **Usługa synchronizacji Azure AD Connect** pracy i jak można skonfigurować je przy użyciu programu Windows PowerShell.
+W tym temacie wyjaśniono, jak działa następujące funkcje **usługi synchronizacji Azure AD Connect** oraz jak można je skonfigurować za pomocą programu Windows PowerShell.
 
-Te ustawienia są konfigurowane przez [Azure Active Directory Module for Windows PowerShell](https://aka.ms/aadposh). Pobierz i zainstaluj je oddzielnie z usługi Azure AD Connect. Polecenia cmdlet opisane w niniejszym dokumencie zostały wprowadzone w [wydanej w marcu 2016 (kompilacja 9031.1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Jeśli nie masz polecenia cmdlet opisane w tym temacie lub generuje ten sam wynik, upewnij się, że uruchomieniu najnowszej wersji.
+Te ustawienia są konfigurowane przez [moduł Azure Active Directory dla środowiska Windows PowerShell](https://aka.ms/aadposh). Pobierz i zainstaluj go niezależnie od Azure AD Connect. Polecenia cmdlet udokumentowane w tym temacie zostały wprowadzone w [wersji 2016 marca (kompilacja 9031,1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Jeśli nie masz poleceń cmdlet opisanych w tym temacie lub nie generują one tego samego wyniku, upewnij się, że uruchamiasz najnowszą wersję.
 
 Aby wyświetlić konfigurację w katalogu usługi Azure AD, uruchom `Get-MsolDirSyncFeatures`.  
-![Get-MsolDirSyncFeatures result](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)
+![wynik Get-MsolDirSyncFeatures](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)
 
-Wiele z tych ustawień można zmienić tylko przy użyciu usługi Azure AD Connect.
+Wiele z tych ustawień można zmienić tylko przez Azure AD Connect.
 
-Następujące ustawienia można skonfigurować przez `Set-MsolDirSyncFeature`:
+Następujące ustawienia można skonfigurować za pomocą `Set-MsolDirSyncFeature`:
 
 | DirSyncFeature | Komentarz |
 | --- | --- |
-| [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |Pozwala obiektów odbędzie userPrincipalName oprócz podstawowego adresu SMTP użytkownika. |
-| [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |Umożliwia aparatu synchronizacji można zaktualizować atrybutu userPrincipalName zarządzane/licencjonowanych użytkowników (inne niż federacyjne). |
+| [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |Umożliwia dołączenie obiektów do obiektu userPrincipalName poza podstawowym adresem SMTP. |
+| [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |Umożliwia aparatowi synchronizacji aktualizowanie atrybutu userPrincipalName dla użytkowników zarządzanych/licencjonowanych (niefederacyjnych). |
 
-Po włączeniu funkcji nie można wyłączyć ponownie.
+Po włączeniu funkcji nie można jej ponownie wyłączyć.
 
 > [!NOTE]
-> Z 24 sierpnia 2016 r. funkcji *odporność względem zduplikowanych atrybutów* jest włączone domyślnie dla nowej usługi Azure AD katalogów. Ta funkcja zostanie także udostępniona i włączona katalogi utworzone przed tą datą. Otrzymasz wiadomość e-mail z powiadomieniem, gdy katalogu staje się włączenia tej funkcji.
+> Od 24 sierpnia 2016 funkcja *odporności na zduplikowane atrybuty* jest domyślnie włączona dla nowych katalogów usługi Azure AD. Ta funkcja zostanie również udostępniona i włączona dla katalogów utworzonych przed tą datą. Otrzymasz wiadomość e-mail z powiadomieniem, gdy w katalogu zostanie włączona ta funkcja.
 > 
 > 
 
-Następujące ustawienia są konfigurowane przy użyciu usługi Azure AD Connect i nie może modyfikować `Set-MsolDirSyncFeature`:
+Następujące ustawienia są konfigurowane przez Azure AD Connect i nie mogą być modyfikowane przez `Set-MsolDirSyncFeature`:
 
 | DirSyncFeature | Komentarz |
 | --- | --- |
 | DeviceWriteback |[Azure AD Connect: Włączanie zapisywania zwrotnego urządzeń](how-to-connect-device-writeback.md) |
-| DirectoryExtensions |[Synchronizacja w programie Azure AD Connect: Rozszerzenia katalogów](how-to-connect-sync-feature-directory-extensions.md) |
-| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Zezwala na atrybut kwarantannie, gdy jest duplikatem innego obiektu, a nie awarii całego obiektu podczas eksportowania. |
-| Synchronizacja skrótów haseł |[Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync](how-to-connect-password-hash-synchronization.md) |
+| DirectoryExtensions |[Azure AD Connect Synchronize: rozszerzenia katalogów](how-to-connect-sync-feature-directory-extensions.md) |
+| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Zezwala atrybutowi na poddawanie kwarantannie, gdy jest to duplikat innego obiektu, a nie niepowodzenie całego obiektu podczas eksportowania. |
+| Synchronizacja skrótów haseł |[Implementowanie synchronizacji skrótów haseł z synchronizacją Azure AD Connect](how-to-connect-password-hash-synchronization.md) |
 |Uwierzytelnianie przekazywane|[Logowanie użytkownika przy użyciu uwierzytelniania przekazywanego usługi Azure Active Directory](how-to-connect-pta.md)|
-| UnifiedGroupWriteback |[Wersja zapoznawcza: Zapisywanie zwrotne grup](how-to-connect-preview.md#group-writeback) |
-| UserWriteback |Nie są obecnie obsługiwane. |
+| UnifiedGroupWriteback |[Wersja zapoznawcza: zapisywanie zwrotne grup](how-to-connect-preview.md#group-writeback) |
+| UserWriteback |Obecnie nie jest obsługiwane. |
 
-## <a name="duplicate-attribute-resiliency"></a>Odporność na duplikowanie atrybutów
+## <a name="duplicate-attribute-resiliency"></a>Odporność na zduplikowane atrybuty
 
-Zamiast przechodzenia do aprowizowania obiekty z zduplikowane UPN / proxyAddresses lub zduplikowanym atrybutem jest "objęte kwarantanną" i przypisano wartości tymczasowej. Po usunięciu konflikt tymczasowe nazwy UPN jest zmieniany na poprawną wartość automatycznie. Aby uzyskać więcej informacji, zobacz [tożsamości synchronizacji i odporności zduplikowanego atrybutu](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
+Zamiast nie można zainicjować obsługi obiektów ze zduplikowanymi Upnmi/proxyAddresses, zduplikowany atrybut jest "poddane kwarantannie" i przypisywana jest wartość tymczasowa. Po rozwiązaniu konfliktu tymczasowa nazwa UPN jest automatycznie zmieniana na właściwą. Aby uzyskać więcej informacji, zobacz [Synchronizacja tożsamości i odporność na zduplikowane atrybuty](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
 
-## <a name="userprincipalname-soft-match"></a>UserPrincipalName soft match
+## <a name="userprincipalname-soft-match"></a>Dopasowanie niewygładzone UserPrincipalName
 
-Po włączeniu tej funkcji miękkiego jest włączona dla nazwy UPN w uzupełnieniu do [podstawowego adresu SMTP użytkownika](https://support.microsoft.com/kb/2641663), który jest zawsze włączona. Opcji soft-match jest używany do dopasowywania istniejących użytkowników w chmurze w usłudze Azure AD przy użyciu lokalnych użytkowników.
+Gdy ta funkcja jest włączona, opcja Niestandardowa zgodność jest włączana dla nazwy UPN oprócz [podstawowego adresu SMTP](https://support.microsoft.com/kb/2641663), który jest zawsze włączony. Niezrównane dopasowanie służy do dopasowania istniejących użytkowników w chmurze w usłudze Azure AD z użytkownikami lokalnymi.
 
-Jeśli potrzebujesz dopasowanie środowiska lokalnego konta usługi AD z istniejących kont utworzonych w chmurze i nie używasz usługi Exchange Online, a następnie ta funkcja jest przydatna. W tym scenariuszu ogólnie nie masz powód, aby ustawić atrybut SMTP w chmurze.
+Jeśli zachodzi potrzeba dopasowania lokalnych kont usługi AD z istniejącymi kontami utworzonymi w chmurze i nie używasz usługi Exchange Online, ta funkcja jest przydatna. W tym scenariuszu zazwyczaj nie istnieje powód, aby ustawić atrybut SMTP w chmurze.
 
-Ta funkcja jest na domyślny dla nowo utworzony katalogów usługi Azure AD. Zostanie wyświetlony, jeśli ta funkcja jest włączona dla Ciebie, uruchamiając:  
+Ta funkcja jest domyślnie włączona w przypadku nowo utworzonych katalogów usługi Azure AD. Aby sprawdzić, czy ta funkcja jest włączona, możesz uruchomić:  
 
 ```powershell
 Get-MsolDirSyncFeatures -Feature EnableSoftMatchOnUpn
 ```
 
-Jeśli ta funkcja nie jest włączona dla katalogu usługi Azure AD, następnie można je włączyć, uruchamiając:  
+Jeśli ta funkcja nie jest włączona dla katalogu usługi Azure AD, możesz ją włączyć, uruchamiając polecenie:  
 
 ```powershell
 Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 ```
 
-## <a name="synchronize-userprincipalname-updates"></a>Synchronizowanie aktualizacji userPrincipalName
+## <a name="synchronize-userprincipalname-updates"></a>Synchronizuj aktualizacje userPrincipalName
 
-W przeszłości aktualizacje atrybut UserPrincipalName przy użyciu usługi synchronizacji ze środowiska lokalnego zostało zablokowane, chyba że oba te warunki są spełnione:
+W przeszłości aktualizacje atrybutu UserPrincipalName przy użyciu usługi synchronizacji z lokalnego programu zostały zablokowane, chyba że oba te warunki są spełnione:
 
-* Użytkownik jest zarządzany (inne niż federacyjne).
+* Użytkownik jest zarządzany (niefederacyjny).
 * Użytkownikowi nie przypisano licencji.
 
-Aby uzyskać więcej informacji, zobacz [nazwy użytkowników w usłudze Office 365, Azure lub Intune nie są zgodne lokalnymi nazwami UPN lub alternatywnym Identyfikatorem logowania](https://support.microsoft.com/kb/2523192).
+Aby uzyskać więcej informacji, zobacz [nazwy użytkowników w pakiecie Office 365, Azure lub Intune nie są zgodne z lokalną nazwą UPN lub alternatywnym identyfikatorem logowania](https://support.microsoft.com/kb/2523192).
 
-Włączenie tej funkcji umożliwia aparatu synchronizacji można zaktualizować właściwości userPrincipalName, gdy jest zmienione w środowisku lokalnym i używasz hasła wyznaczania wartości skrótu synchronizacji lub uwierzytelniania przekazywanego. Jeśli używasz Federacji, ta funkcja nie jest obsługiwana.
+Włączenie tej funkcji pozwala aparatowi synchronizacji aktualizować element userPrincipalName w przypadku jego zmiany w środowisku lokalnym i korzystać z funkcji synchronizacji skrótów haseł lub uwierzytelniania przekazywanego.
 
-Ta funkcja jest na domyślny dla nowo utworzony katalogów usługi Azure AD. Zostanie wyświetlony, jeśli ta funkcja jest włączona dla Ciebie, uruchamiając:  
+Ta funkcja jest domyślnie włączona w przypadku nowo utworzonych katalogów usługi Azure AD. Aby sprawdzić, czy ta funkcja jest włączona, możesz uruchomić:  
 
 ```powershell
 Get-MsolDirSyncFeatures -Feature SynchronizeUpnForManagedUsers
 ```
 
-Jeśli ta funkcja nie jest włączona dla katalogu usługi Azure AD, następnie można je włączyć, uruchamiając:  
+Jeśli ta funkcja nie jest włączona dla katalogu usługi Azure AD, możesz ją włączyć, uruchamiając polecenie:  
 
 ```powershell
 Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 ```
 
-Po włączeniu tej funkcji, wciąż istniejące wartości userPrincipalName-to. Dla następnej zmiany userPrincipalName atrybutu w środowisku lokalnym synchronizacja różnicowa użytkowników zostanie zaktualizowana nazwa UPN.  
+Po włączeniu tej funkcji istniejące wartości userPrincipalName pozostaną bez zmian. Przy następnej zmianie atrybutu userPrincipalName lokalnego, standardowa synchronizacja różnicowa dla użytkowników będzie aktualizować nazwę UPN.  
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Synchronizacja programu Azure AD Connect](how-to-connect-sync-whatis.md)
-* [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).
+* [Integrowanie tożsamości lokalnych z Azure Active Directory](whatis-hybrid-identity.md).

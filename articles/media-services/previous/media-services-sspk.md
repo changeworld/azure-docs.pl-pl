@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 3e7742e7035f3c4f4827a2edae1ad5a705aa221f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 67507dc571b3fab93e61e70c1e8282ee5c0a4630
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693408"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301390"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencjonowanie zestawu portów programu Microsoft® Smooth Streaming klienta 
-## <a name="overview"></a>Przegląd
-Microsoft Smooth Streaming Clienting Kit (**SSPK** for Short) to Smooth Streaming implementacja klienta, która została zoptymalizowana pod kątem pomocy producentom urządzeń osadzonych, operatorom telewizji kablowej i mobilnemu, dostawcom usług zawartości, producentom korzystającym z słuchawek, niezależni dostawcy oprogramowania (ISV) i dostawcy rozwiązań do tworzenia produktów i usług do przesyłania strumieniowego zawartości w formacie Smooth Streaming. SSPK to oparta na urządzeniach i niezależna od platformy implementacja klienta Smooth Streaming, którą można przenieść na dowolne urządzenie i platformę. 
+## <a name="overview"></a>Omówienie
+Microsoft Smooth Streaming Clienting Kit (**SSPK** for Short) to Smooth Streaming implementacja klienta, która została zoptymalizowana pod kątem pomocy producentom urządzeń osadzonych, operatorom telewizji kablowej i mobilnemu, dostawcom usług zawartości, producentom słuchawek, niezależnym dostawcom oprogramowania i dostawcom rozwiązań tworzenie produktów i usług na potrzeby przesyłania strumieniowego zawartości w formacie Smooth Streaming. SSPK to oparta na urządzeniach i niezależna od platformy implementacja klienta Smooth Streaming, którą można przenieść na dowolne urządzenie i platformę. 
 
 Poniżej znajduje się architektura wysokiego poziomu, a Usługa IIS Smooth Streaming Porting Kit to Smooth Streaming implementacja klienta udostępniona przez firmę Microsoft, która obejmuje całą podstawową logikę odtwarzania Smooth Streaming zawartości. Ta zawartość jest następnie przewidziana przez partnerów dla określonego urządzenia lub platformy przez implementację odpowiednich interfejsów. 
 
@@ -71,7 +71,7 @@ Końcowy produkt klienta Smooth Streaming jest oferowany w ramach modelu honorar
 * Brak honorarium dla pierwszych 10 000 implementacji urządzeń w każdym roku 
 
 ## <a name="licensing-procedure-and-sspk-access"></a>Procedura licencjonowania i dostęp SSPK
-[@No__t_1](mailto:sspkinfo@microsoft.com) e-mail wszystkich zapytań licencjonowania.
+[sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) e-mail wszystkich zapytań licencjonowania.
 
 [Portal dystrybucji SSPK](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) jest dostępny dla zarejestrowanych licencji tymczasowych.
 
@@ -82,30 +82,29 @@ Tymczasowe i końcowe licencje SSPK mogą przesyłać pytania techniczne do [smo
 * Adroit Business Solutions, Inc
 * Zaawansowane skojarzenia zabezpieczeń Digital Broadcast
 * Kablosuz Iletism Sanayive dis Ticaret A.S.
-* Technologie Albis Ltd.
+* Albis Technologies Ltd.
 * Alticast Corporation
 * Amazon Digital Services, Inc.
 * Arion Technology, Inc.
-* Oprogramowanie multimedialne z AVC co., Ltd.
+* AVC Multimedia Software Co., Ltd.
 * Cavium, Inc.
 * EchoStar zakup firmy
 * Enseo, Inc.
 * Fluendo sa
-* HANDAN BroadInfoCom co., Ltd.
+* HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
-* iWEDIA sa 
+* iWEDIA S.A. 
 * Wolność usługi globalne usług BV
 * MediaTek Inc.
 * MStar co, Ltd
-* Nintendo co., Ltd.
+* Nintendo Co., Ltd.
 * OpenTV, Inc.
 * Saffron cyfrowo
-* Sichuan Changhong, co., Ltd
+* Sichuan Changhong Electric Co., Ltd
 * SoftAtHome
 * Firma Sony Corporation
 * Tatung Technology Inc.
-* TCL Technology Electronics (Huizhou) co., Ltd.
 * Najlepsze inwestycje Victory, Ltd.
 * Vestel Elektronik Sanayi ve Ticaret A.S.
 * VisualOn, Inc.
@@ -114,7 +113,7 @@ Tymczasowe i końcowe licencje SSPK mogą przesyłać pytania techniczne do [smo
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Ostateczne licencje umowy licencyjnej programu Microsoft Smooth Streaming Client
 * Zaawansowane skojarzenia zabezpieczeń Digital Broadcast
 * Kablosuz Iletism Sanayive dis Ticaret A.S.
-* Technologie Albis Ltd.
+* Albis Technologies Ltd.
 * Amazon Digital Services, Inc.
 * AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
@@ -126,33 +125,32 @@ Tymczasowe i końcowe licencje SSPK mogą przesyłać pytania techniczne do [smo
 * Dongguan Digital AV Technology Corp., Ltd.
 * EchoStar zakup firmy
 * Enseo, Inc.
-* Ograniczone filmy FilmFlex
+* FilmFlex Movies Limited
 * Fluendo sa
-* FUNAI ELEKTRYCZNY CO., LTD
+* FUNAI ELECTRIC CO., LTD
 * Gibson innowacje ograniczone
 * Haier informacje S. R. L
-* HANDAN BroadInfoCom co., Ltd.
-* Hisense International co., Ltd. 
-* Homecast co., Ltd
+* HANDAN BroadInfoCom Co., Ltd.
+* Hisense International Co., Ltd. 
+* Homecast Co., Ltd
 * Hon Hai Precision Industry Co., Ltd.
 * Infomir GMBH
-* Kaonmedia co., Ltd.
+* Kaonmedia Co., Ltd.
 * KDDI Corporation
-* Nintendo co., Ltd.
+* Nintendo Co., Ltd.
 * Pomarańczowy SA
 * Saffron cyfrowo
 * Sagemcom szerokopasmowe SAS
 * Shenzhen Chuangwei-RGB Electronics Co., Ltd.
 * Shenzhena elektronika CO., LTD
-* Shenzhen Jiuzhou, co., Ltd
+* Shenzhen Jiuzhou Electric Co., Ltd
 * Shenzhen Skyworth — Technologia cyfrowa co., Ltd
-* Sichuan Changhong, co., Ltd.
+* Sichuan Changhong Electric Co., Ltd.
 * Skardin przemysł Corp.
 * Fernsehen & GmbH Deutschland
 * SmarDTV sa
 * SoftAtHome
 * Firma Sony Corporation
-* TCL — Marketing zamorski (SRA Makau) — ograniczone
 * Technologie dostarczania Technicolor, SAS
 * Tongfang Global Ltd.
 * Najlepsze inwestycje Victory, Ltd.
@@ -165,6 +163,6 @@ Tymczasowe i końcowe licencje SSPK mogą przesyłać pytania techniczne do [smo
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

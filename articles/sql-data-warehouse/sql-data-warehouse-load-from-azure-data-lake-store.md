@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 02/04/2020
+ms.date: 03/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9a567a8f62f8f12de725f6d9420576680a3005fe
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b0b9cffe0b69545a6d0219941b48ac9eb0f399b3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194584"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300591"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Ładowanie danych z Azure Data Lake Storage na potrzeby analiz SQL
 W tym przewodniku opisano, jak używać wielobazowych tabel zewnętrznych do ładowania danych z Azure Data Lake Storage. Mimo że można uruchamiać zapytania ad hoc dotyczące danych przechowywanych w Data Lake Storage, zalecamy zaimportowanie danych w celu uzyskania najlepszej wydajności. 
@@ -46,6 +46,8 @@ Możesz pominąć tę sekcję i przejść do "Tworzenie zewnętrznego źródła 
 Aby uzyskać dostęp do konta Data Lake Storage, musisz utworzyć klucz główny bazy danych, aby zaszyfrować klucz tajny poświadczeń. Następnie należy utworzyć poświadczenia z zakresem bazy danych w celu przechowywania klucza tajnego. Podczas uwierzytelniania za pomocą nazw głównych usługi (użytkownik aplikacji katalogu platformy Azure) poświadczenia w zakresie bazy danych przechowują poświadczenia jednostki usługi skonfigurowane w usłudze AAD. Można również użyć poświadczenia w zakresie bazy danych do przechowywania klucza konta magazynu dla Gen2.
 
 Aby połączyć się z Data Lake Storage przy użyciu jednostek usługi, należy **najpierw** utworzyć aplikację Azure Active Directory, utworzyć klucz dostępu i udzielić aplikacji dostępu do konta Data Lake Storage. Aby uzyskać instrukcje, zobacz [uwierzytelnianie w Azure Data Lake Storage przy użyciu Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+
+Zaloguj się do puli SQL przy użyciu użytkownika mającego uprawnienia na poziomie kontroli i wykonaj następujące instrukcje SQL w bazie danych:
 
 ```sql
 -- A: Create a Database Master Key.

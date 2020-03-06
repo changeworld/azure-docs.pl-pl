@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: 0f0cf1f066257413f23dd83ffc5ecad0169f7e77
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c634b1288727ae045d1fb8b6f6cdff4a80e757ce
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613831"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298909"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Przyłączanie maszyny wirtualnej z systemem CentOS Linux do domeny zarządzanej Azure AD Domain Services
 
@@ -34,7 +34,7 @@ Do ukończenia tego samouczka potrzebne są następujące zasoby i uprawnienia:
     * W razie konieczności [Utwórz dzierżawę Azure Active Directory][create-azure-ad-tenant] lub [skojarz subskrypcję platformy Azure z Twoim kontem][associate-azure-ad-tenant].
 * Azure Active Directory Domain Services zarządzana domena włączona i skonfigurowana w dzierżawie usługi Azure AD.
     * W razie konieczności pierwszy samouczek [tworzy i konfiguruje wystąpienie Azure Active Directory Domain Services][create-azure-ad-ds-instance].
-* Konto użytkownika, które jest członkiem grupy *administratorów DC usługi Azure AD* w dzierżawie usługi Azure AD.
+* Konto użytkownika, które jest częścią domeny zarządzanej AD DS platformy Azure.
 
 ## <a name="create-and-connect-to-a-centos-linux-vm"></a>Tworzenie maszyny wirtualnej z systemem CentOS Linux i nawiązywanie z nią połączenia
 
@@ -98,15 +98,15 @@ Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej, Dołącz m
     * Sprawdź, czy maszyna wirtualna jest wdrożona w tej samej lub równorzędnej sieci wirtualnej, w której jest dostępna domena zarządzana platformy Azure AD DS.
     * Upewnij się, że ustawienia serwera DNS dla sieci wirtualnej zostały zaktualizowane w taki sposób, aby wskazywały kontrolery domeny w domenie zarządzanej platformy Azure AD DS.
 
-1. Teraz zainicjuj protokół Kerberos za pomocą polecenia `kinit`. Określ użytkownika, który należy do grupy *administratorów kontrolera domeny usługi AAD* . W razie potrzeby [Dodaj konto użytkownika do grupy w usłudze Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+1. Teraz zainicjuj protokół Kerberos za pomocą polecenia `kinit`. Określ użytkownika, który jest częścią domeny zarządzanej AD DS platformy Azure. W razie potrzeby [Dodaj konto użytkownika do grupy w usłudze Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Ponownie nazwa domeny zarządzanej platformy Azure AD DS musi być wpisana WIELKImi LITERAmi. W poniższym przykładzie konto o nazwie `contosoadmin@aaddscontoso.com` jest używane do inicjowania protokołu Kerberos. Wprowadź własne konto użytkownika, które jest członkiem grupy *administratorów domeny usługi AAD* :
+    Ponownie nazwa domeny zarządzanej platformy Azure AD DS musi być wpisana WIELKImi LITERAmi. W poniższym przykładzie konto o nazwie `contosoadmin@aaddscontoso.com` jest używane do inicjowania protokołu Kerberos. Wprowadź własne konto użytkownika, które jest częścią domeny zarządzanej AD DS platformy Azure:
 
     ```console
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. Na koniec Dołącz maszynę do domeny zarządzanej AD DS platformy Azure przy użyciu polecenia `realm join`. Użyj tego samego konta użytkownika, które jest członkiem grupy *administratorów domeny usługi AAD* , która została określona w poprzednim `kinit` polecenie, na przykład `contosoadmin@AADDSCONTOSO.COM`:
+1. Na koniec Dołącz maszynę do domeny zarządzanej AD DS platformy Azure przy użyciu polecenia `realm join`. Użyj tego samego konta użytkownika, które jest częścią domeny zarządzanej AD DS platformy Azure, która została określona w poprzednim `kinit` polecenie, takie jak `contosoadmin@AADDSCONTOSO.COM`:
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'

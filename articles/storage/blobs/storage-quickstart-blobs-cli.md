@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: b0fe0cf0d477d1360d3789f74f30565e15cfd42e
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 58532c6eb6e01a993bce7d6e22a7b5274a465963
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206927"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298190"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Szybki Start: Tworzenie, pobieranie i wyświetlanie listy obiektów BLOB za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -153,7 +153,7 @@ azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz już żadnych zasobów w grupie zasobów, w tym konta magazynu utworzonego w ramach tego przewodnika Szybki Start, Usuń grupę zasobów za pomocą polecenia [AZ Group Delete](/cli/azure/group) . Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach ostrych własnymi wartościami:
+Jeśli chcesz usunąć zasoby utworzone w ramach tego przewodnika Szybki Start, w tym konto magazynu, Usuń grupę zasobów za pomocą polecenia [AZ Group Delete](/cli/azure/group) . Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach ostrych własnymi wartościami:
 
 ```azurecli
 az group delete \

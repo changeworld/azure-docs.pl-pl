@@ -12,18 +12,18 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
-ms.openlocfilehash: 3c18440e87cf50e370b21b5f0ca33b42e0069fc1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8714b7a96197cb4a59b29bada31b5559961bf8e3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161430"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300217"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Ewolucja platformy tożsamości firmy Microsoft
 
 Platforma tożsamości firmy Microsoft jest ewolucją platformy deweloperskiej Azure Active Directory (Azure AD). Dzięki temu deweloperzy mogą tworzyć aplikacje, które logują użytkowników, uzyskują tokeny do wywoływania interfejsów API, takich jak Microsoft Graph lub interfejsy API zaprojektowane przez deweloperów. Obejmuje ona usługę uwierzytelniania, biblioteki typu open-source, rejestrację aplikacji i konfigurację (za pomocą portalu dla deweloperów i interfejsu API aplikacji), pełną dokumentację dla deweloperów, przykłady przewodnika Szybki Start, przykłady kodu, samouczki, przewodniki i inna zawartość dla deweloperów. Platforma tożsamości firmy Microsoft obsługuje standardowe protokoły branżowe, takie jak OAuth 2.0 i OpenID Connect.
 
-Do tej pory większość deweloperów pracowała z platformą Azure AD v 1.0 do uwierzytelniania kont służbowych (zainicjowanych przez usługę Azure AD) przez żądanie tokenów z punktu końcowego usługi Azure AD v 1.0, przy użyciu biblioteki Azure AD Authentication Library (ADAL), Azure Portal dla programu Rejestracja i konfiguracja aplikacji oraz interfejs API programu Graph usługi Azure AD na potrzeby konfiguracji aplikacji programistycznych.
+Do tej pory większość deweloperów pracowała z platformą Azure AD v 1.0 do uwierzytelniania kont służbowych (zainicjowanych przez usługę Azure AD) przez żądanie tokenów z punktu końcowego usługi Azure AD v 1.0, przy użyciu biblioteki Azure AD Authentication Library (ADAL), Azure Portal dla programu Rejestracja i konfiguracja aplikacji oraz interfejs API Microsoft Graph do konfigurowania aplikacji programistycznych.
 
 Za pomocą ujednoliconej platformy tożsamości firmy Microsoft (v 2.0) można napisać kod jednokrotnie i uwierzytelnić tożsamość firmy Microsoft w swojej aplikacji. W przypadku kilku platform zaleca się używanie w pełni obsługiwanej biblioteki uwierzytelniania Microsoft Open Source (MSAL) w odniesieniu do punktów końcowych platformy tożsamości. Usługa MSAL jest prosta do użycia, zapewnia użytkownikom doskonałe funkcje logowania jednokrotnego (SSO, Single Sign-on), pomaga osiągnąć wysoką niezawodność i wydajność oraz jest opracowywana przy użyciu usługi Microsoft Secure Development (SDL). Podczas wywoływania interfejsów API można skonfigurować aplikację tak, aby korzystała z powiększej zgody, która pozwala opóźnić żądanie zgody na bardziej inwazyjne zakresy, dopóki użycie aplikacji zagwarantuje to w czasie wykonywania.  Program MSAL obsługuje również Azure Active Directory B2C, więc klienci używają własnych tożsamości dla konta społecznościowego, przedsiębiorstwa lub lokalnego do uzyskiwania dostępu jednokrotnego do aplikacji i interfejsów API.
 
@@ -49,7 +49,7 @@ Na poniższym diagramie przedstawiono ogólnie środowisko obsługi tożsamości
 
 Aby przeprowadzić integrację z usługą Azure AD B2C (podczas uwierzytelniania tożsamości społecznościowych lub lokalnych), należy zarejestrować aplikację w dzierżawie Azure AD B2C. To środowisko jest również częścią Azure Portal.
 
-**Interfejs API aplikacji w Microsoft Graph** jest obecnie w wersji zapoznawczej. Ten interfejs API umożliwia programowe Konfigurowanie aplikacji zintegrowanych z platformą tożsamości firmy Microsoft na potrzeby uwierzytelniania dowolnej tożsamości firmy Microsoft. Jednak do momentu osiągnięcia ogólnej dostępności tego interfejsu API należy użyć interfejsu API programu Azure AD Graph 1,6 i manifestu aplikacji.
+Użyj [interfejsu API aplikacji](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0) , aby programowo skonfigurować aplikacje zintegrowane z platformą tożsamości firmy Microsoft na potrzeby uwierzytelniania dowolnej tożsamości firmy Microsoft.
 
 ### <a name="msal-libraries"></a>Biblioteki MSAL
 

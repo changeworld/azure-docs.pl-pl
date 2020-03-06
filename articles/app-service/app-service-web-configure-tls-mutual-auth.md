@@ -5,12 +5,12 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44bf98ea0bd82bd261fa565fa068382ecc2a0ba7
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 357ea2cc598bca3e008a74f021895e1e45a3874f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681144"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301011"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurowanie wzajemnego uwierzytelniania TLS dla Azure App Service
 
@@ -19,6 +19,8 @@ Możesz ograniczyć dostęp do aplikacji Azure App Service, włączając dla nie
 > [!NOTE]
 > Jeśli uzyskujesz dostęp do witryny za pośrednictwem protokołu HTTP, a nie HTTPS, nie otrzymasz żadnych certyfikatów klienta. Dlatego jeśli aplikacja wymaga certyfikatów klienta, nie należy zezwalać na żądania do aplikacji za pośrednictwem protokołu HTTP.
 >
+
+[!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
 ## <a name="enable-client-certificates"></a>Włączanie certyfikatów klienta
 

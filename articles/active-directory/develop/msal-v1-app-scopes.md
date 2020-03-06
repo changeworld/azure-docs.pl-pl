@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e0ef46d23ba267bbfc1ff539eb659fafe2b44f8e
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: d5b2ef57af112169fb39e0da7a60b095698ff504
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085682"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299834"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Zakresy dla internetowego interfejsu API akceptujące tokeny v 1.0
 
@@ -25,7 +25,7 @@ Uprawnienia OAuth2 to zakresy uprawnień, Azure Active Directory które aplikacj
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Zakresy żądania dostępu do określonych uprawnień OAuth2 aplikacji v 1.0
 
-Aby uzyskać tokeny dla określonych zakresów aplikacji w wersji 1.0 (na przykład Graf usługi Azure AD, który jest https://graph.windows.net), Utwórz zakresy przez połączenie żądanego identyfikatora zasobu z żądanym uprawnieniem OAuth2 dla tego zasobu.
+Aby uzyskać tokeny dla określonych zakresów aplikacji v 1.0 (na przykład interfejsu API Microsoft Graph, który jest https://graph.microsoft.com), Utwórz zakresy przez połączenie żądanego identyfikatora zasobu z żądanym uprawnieniem OAuth2 dla tego zasobu.
 
 Na przykład w celu uzyskania dostępu w imieniu użytkownika do interfejsu API sieci Web w wersji 1.0, w którym jest `ResourceId`identyfikator URI aplikacji:
 
@@ -37,15 +37,15 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-Aby odczytywać i zapisywać dane z usługi MSAL.NET Azure AD za pomocą usługi Azure AD interfejs API programu Graph (https:\//graph.windows.net/), należy utworzyć listę zakresów, jak pokazano w następujących przykładach:
+Aby odczytywać i zapisywać dane z usługi MSAL.NET Azure AD za pomocą interfejsu API Microsoft Graph (https:\//graph.microsoft.com/), należy utworzyć listę zakresów, jak pokazano w następujących przykładach:
 
 ```csharp
-string ResourceId = "https://graph.windows.net/";
+string ResourceId = "https://graph.microsoft.com/";
 var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 
 ```javascript
-var ResourceId = "https://graph.windows.net/";
+var ResourceId = "https://graph.microsoft.com/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 

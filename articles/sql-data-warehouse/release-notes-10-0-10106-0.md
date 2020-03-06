@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 4811f24fb942689bddcc9d9d1bcb8c33d147c1af
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 934e804b60312a32300c4b884ea8fd15e2195870
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78256013"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302036"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Informacje o wersji usługi Azure Synapse Analytics
 
@@ -38,6 +38,13 @@ Użyj wskazanej wersji, aby potwierdzić, która wersja została zastosowana do 
 > ```
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="february-2020"></a>Luty 2020 r.
+
+| Ulepszenia usługi | Szczegóły |
+| --- | --- |
+|**Poziom zgodności bazy danych (wersja zapoznawcza)**| W tej wersji użytkownicy mogą teraz ustawiać poziom zgodności bazy danych w celu uzyskania zachowań języka Transact-SQL i przetwarzania zapytań określonej wersji aparatu analitycznego SQL. Aby uzyskać więcej informacji, zobacz sekcję [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?view=azure-sqldw-latest&branch=pr-en-us-13797) i [ALTER DATABASE scoped Configuration](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?view=sql-server-ver15).|
+|**Sp_describe_undeclared_parameters**| Zezwól użytkownikom na wyświetlanie metadanych dotyczących niezadeklarowanych parametrów w partii Transact-SQL. Aby uzyskać więcej informacji, zobacz [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?view=sql-server-ver15).|
 
 ## <a name="january-2020"></a>Styczeń 2020 r.
 

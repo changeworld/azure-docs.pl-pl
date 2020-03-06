@@ -4,12 +4,12 @@ description: Zanadzorowana lista najbardziej często zadawanych pytań dotycząc
 ms.topic: troubleshooting
 ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 37aae8e67ccc84a6e22be8ce8a304fc4884ead52
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 4596c16a5d7c9053bf0e27af476c66fe8fa9ed35
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273402"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296103"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Rozwiązywanie problemów dotyczących QnA Maker
 
@@ -224,7 +224,7 @@ Jeśli masz zawartości z wielu języków, należy utworzyć osobną usługą dl
 <details>
 <summary><b>Jak utworzyć nowy Bot z QnA Maker?</b></summary>
 
-**Odpowiedź**: Postępuj zgodnie z instrukcjami w [tej](./Tutorials/create-qna-bot.md) dokumentacji, aby utworzyć bot za pomocą Azure bot Service.
+**Odpowiedź**: Postępuj zgodnie z instrukcjami w [tej](./Quickstarts/create-publish-knowledge-base.md) dokumentacji, aby utworzyć bot za pomocą Azure bot Service.
 
 </details>
 
@@ -255,7 +255,7 @@ Klucz punktu końcowego bazy wiedzy ma etykietę `QnAAuthkey` w usłudze ABS.
 
 **Odpowiedź**: wykonaj następujące kroki, aby osadzić usługę QNA Maker jako kontrolkę rozmowy w sieci Web w witrynie internetowej:
 
-1. Utwórz bot często zadawanych pytań, postępując zgodnie z instrukcjami znajdującymi się [tutaj](./Tutorials/create-qna-bot.md).
+1. Utwórz bot często zadawanych pytań, postępując zgodnie z instrukcjami znajdującymi się [tutaj](./Quickstarts/create-publish-knowledge-base.md).
 2. Włącz rozmowę internetową, wykonując kroki opisane [tutaj](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat) .
 
 </details>

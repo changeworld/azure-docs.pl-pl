@@ -4,15 +4,15 @@ description: Dowiedz się więcej o funkcji StringToNull systemu SQL w Azure Cos
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c7ea3ca82cadb1351d8581f3d652ce060d67969b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 7e17547f88465103b61eabec04978ea806ffa2c9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349250"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296443"
 ---
 # <a name="stringtonull-azure-cosmos-db"></a>StringToNull (Azure Cosmos DB)
  Zwraca wyrażenie przetłumaczone na wartość null. Jeśli wyrażenia nie można przetłumaczyć, funkcja zwraca wartość undefined.  
@@ -34,7 +34,7 @@ StringToNull(<str_expr>)
   
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład pokazuje, jak `StringToNull` zachowuje się w różnych typach. 
+  Poniższy przykład pokazuje, jak `StringToNull` działa w różnych typach. 
 
 Poniżej przedstawiono przykłady z prawidłowymi danymi wejściowymi.
 
@@ -47,7 +47,7 @@ SELECT
     IS_NULL(StringToNull("null   ")) AS n3
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"n1": null, "n2": null, "n3": true}]
@@ -63,7 +63,7 @@ SELECT
     StringToNull("Null")
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{}]
@@ -79,11 +79,15 @@ SELECT
     StringToNull(NaN) 
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{}]
 ```  
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa nie będzie używać indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 

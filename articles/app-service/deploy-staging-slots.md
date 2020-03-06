@@ -3,14 +3,14 @@ title: Konfigurowanie środowisk przejściowych
 description: Dowiedz się, jak wdrażać aplikacje w gnieździe nieprodukcyjnym i przełączać je do środowiska produkcyjnego. Zwiększ niezawodność i Usuń przestoje aplikacji z wdrożeń.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 09/19/2019
+ms.date: 03/04/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666463"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300875"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w Azure App Service
 <a name="Overview"></a>
@@ -23,13 +23,13 @@ Wdrażanie aplikacji w gnieździe nieprodukcyjnym ma następujące zalety:
 * Najpierw Wdrażaj aplikację w gnieździe i wymieniaj ją w środowisku produkcyjnym, aby upewnić się, że wszystkie wystąpienia gniazda są rozgrzane przed zamianą na środowisko produkcyjne. Eliminuje to przestoje podczas wdrażania aplikacji. Przekierowywanie ruchu jest płynne i żadne żądania nie są porzucane z powodu operacji zamiany. Możesz zautomatyzować ten cały przepływ pracy, konfigurując [Automatyczne zamienianie](#Auto-Swap) , gdy nie jest wymagana Walidacja sprzed wymiany.
 * Po wymianie miejsce z wcześniej przemieszczoną aplikacją ma teraz poprzednią aplikację produkcyjną. Jeśli zmiany wprowadzone w gnieździe produkcyjnym nie są oczekiwane, można wykonać te same zamiany w celu przywrócenia "ostatniej znanej dobrej lokacji".
 
-Każda App Service warstwy planu obsługuje inną liczbę miejsc wdrożenia. Nie ma dodatkowych opłat za korzystanie z miejsc wdrożenia. Aby sprawdzić liczbę gniazd obsługiwanych przez warstwę aplikacji, zobacz [limity App Service](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits). 
+Każda App Service warstwy planu obsługuje inną liczbę miejsc wdrożenia. Nie ma dodatkowych opłat za korzystanie z miejsc wdrożenia. Aby sprawdzić liczbę gniazd obsługiwanych przez warstwę aplikacji, zobacz [limity App Service](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits). 
 
 Aby skalować aplikację do innej warstwy, upewnij się, że warstwa docelowa obsługuje liczbę gniazd używanych przez aplikację. Na przykład jeśli aplikacja ma więcej niż pięć gniazd, nie można skalować jej w dół do warstwy **standardowa** , ponieważ warstwa **standardowa** obsługuje tylko pięć miejsc wdrożenia. 
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>Dodawanie miejsca
+## <a name="add-a-slot"></a>Dodaj gniazdo
 Aplikacja musi być uruchomiona w warstwie **standardowa**, **Premium**lub **izolowanej** , aby można było włączyć wiele miejsc wdrożenia.
 
 
@@ -40,7 +40,7 @@ Aplikacja musi być uruchomiona w warstwie **standardowa**, **Premium**lub **izo
 
 2. W lewym okienku wybierz pozycję miejsca **wdrożenia** > **Dodaj miejsce**.
    
-    ![Dodawanie nowego miejsca wdrożenia](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![Dodaj nowe miejsce wdrożenia](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
    > Jeśli aplikacja nie jest jeszcze w warstwie **standardowa**, **Premium**lub **izolowana** , zostanie wyświetlony komunikat z informacją o obsługiwanych warstwach umożliwiających publikowanie etapowe. W tym momencie możesz wybrać opcję **Uaktualnij** i przejść do karty **Skala** aplikacji przed kontynuowaniem.
@@ -170,7 +170,7 @@ Jeśli jakiekolwiek błędy wystąpią w gnieździe docelowym (na przykład w gn
 
 <a name="Auto-Swap"></a>
 
-## <a name="configure-auto-swap"></a>Konfigurowanie zamiany automatycznej
+## <a name="configure-auto-swap"></a>Skonfiguruj funkcję autoswap
 
 > [!NOTE]
 > Funkcja autoswap nie jest obsługiwana w aplikacjach sieci Web w systemie Linux.
@@ -303,7 +303,7 @@ New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot
 ---
 ### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Inicjowanie wymiany przy użyciu wersji zapoznawczej (wymiana wielofazowy) i zastosowanie konfiguracji miejsca docelowego w gnieździe źródłowym
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
@@ -316,7 +316,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ---
 ### <a name="swap-deployment-slots"></a>Wymiana miejsc wdrożenia
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 

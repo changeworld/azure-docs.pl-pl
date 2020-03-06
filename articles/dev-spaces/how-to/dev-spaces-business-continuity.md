@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Dowiedz się, jak korzystać z usług Azure Dev Spaces i Azure Kubernetes Services w celu zapewnienia ciągłości działania i przygotowania do odzyskiwania po awarii
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 8561486bcf8524d309ba46fcbb4b4d3e180d7c72
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252398"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295831"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Ciągłość działania i odzyskiwanie po awarii w Azure Dev Spaces
 
@@ -27,11 +27,9 @@ Włączenie funkcji miejsca deweloperskie w klastrach AKS w różnych regionach 
 
 Aby uzyskać ogólne informacje na temat wdrożeń wieloregionowych AKS, zobacz [Planowanie wdrożenia wieloregionowego](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
 
-Aby uzyskać informacje o wdrażaniu klastra AKS, który jest zgodny z Azure Dev Spaces, zobacz [Tworzenie klastra Kubernetes przy użyciu Azure Cloud Shell](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)
-
 ### <a name="enable-dev-spaces-via-the-azure-portal"></a>Włącz przestrzenie deweloperskie za pomocą Azure Portal
 
-Kliknij element nawigacyjny **Spaces dev** w obszarze właściwości każdego klastra w Azure Portal. Następnie wybierz opcję, aby włączyć funkcję Spaces dev.
+Wybierz element menu **dev Spaces** w obszarze Ustawienia poszczególnych klastrów w Azure Portal. Następnie wybierz opcję włączania funkcji miejsca do magazynowania i zapisywania.
 
 ![Włączanie funkcji Spaces dev za pośrednictwem Azure Portal](../media/common/enable-dev-spaces.jpg)
 
@@ -53,7 +51,7 @@ Najnowsze wersje zestawu bazowych usług należy wdrożyć do klastrów w wielu 
 
 ## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Wybierz poprawny klaster AKS, który ma być używany przez funkcję Spaces dev
 
-Po poprawnym skonfigurowaniu klastra kopii zapasowej z uruchomioną linią bazową zespołu można szybko przełączać się do klastra kopii zapasowej w dowolnym momencie. Następnie można ponownie uruchomić poszczególne usługi, nad którymi pracujesz w miejscach deweloperskich.
+Po poprawnym skonfigurowaniu klastra kopii zapasowej z uruchomioną linią bazową zespołu można szybko przełączać się do klastra kopii zapasowej w dowolnym momencie. Następnie można ponownie uruchomić poszczególne usługi, nad którymi pracujesz w podrzędnych miejscach deweloperskich.
 
 Wybierz inny klaster z następującym poleceniem interfejsu wiersza polecenia:
 

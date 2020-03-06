@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2cb7d82efd010fd7c3395a4f6a9217370d9e5779
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 758ac13530752df481d27e7e253f025f5c8d6430
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349587"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302206"
 ---
 # <a name="replace-azure-cosmos-db"></a>Zamień (Azure Cosmos DB)
  Zamienia wszystkie wystąpienia określonej wartości ciągu na inną wartość ciągu.  
@@ -32,7 +32,7 @@ REPLACE(<str_expr1>, <str_expr2>, <str_expr3>)
    Jest wyrażeniem ciągu, który ma zostać znaleziony.  
   
 *str_expr3*  
-   Jest wyrażeniem ciągu, które służy do zastępowania wystąpień elementu *str_expr2* w *str_expr1*.  
+   Jest wyrażeniem ciągu, które służy do zastępowania wystąpień *str_expr2* w *str_expr1*.  
   
 ## <a name="return-types"></a>Typy zwracane
   
@@ -43,14 +43,18 @@ REPLACE(<str_expr1>, <str_expr2>, <str_expr3>)
   Poniższy przykład pokazuje, jak używać `REPLACE` w zapytaniu.  
   
 ```sql
-SELECT REPLACE("This is a Test", "Test", "desk") AS replace 
+SELECT REPLACE("This is a Test", "Test", "desk") AS replace
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"replace": "This is a desk"}]  
 ```  
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa nie będzie używać indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 

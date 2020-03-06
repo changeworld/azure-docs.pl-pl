@@ -9,20 +9,35 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: b83eb1556ed3f4a41409faf70f6ba9d8cd28322d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
-ms.translationtype: MT
+ms.openlocfilehash: 10e4ba16e00a37d532a2eceb69fedb8f5b62be8b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732182"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301662"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Integracja z usługą git dla Azure Machine Learning
 
-[Git](https://git-scm.com/) to popularny system kontroli wersji, który umożliwia udostępnianie projektów i współpracę z nimi. W przypadku przesłania zadania szkoleniowego do Azure Machine Learning, jeśli pliki szkoleniowe są przechowywane w lokalnym repozytorium git, informacje o repozytorium są śledzone w ramach procesu szkoleniowego.
+[Git](https://git-scm.com/) to popularny system kontroli wersji, który umożliwia udostępnianie i współpracę nad projektami. 
+
+Azure Machine Learning w pełni obsługuje repozytoria Git na potrzeby śledzenia pracy — można klonować repozytoria bezpośrednio do udostępnionego systemu plików obszaru roboczego, korzystać z narzędzia Git na lokalnej stacji roboczej lub używać narzędzia Git z potoku ciągłej integracji/ciągłego dostarczania.
+
+Podczas przesyłania zadania do Azure Machine Learning, jeśli pliki źródłowe są przechowywane w lokalnym repozytorium git, informacje o repozytorium są śledzone w ramach procesu szkoleniowego.
 
 Ponieważ Azure Machine Learning śledzi informacje z lokalnego repozytorium git, nie jest ono powiązane z żadnym określonym centralnym repozytorium. Repozytorium można sklonować z witryny GitHub, GitLab, BitBucket, Azure DevOps lub dowolnej innej usługi zgodnej z Git.
 
-## <a name="how-does-git-integration-work"></a>Jak działa integracja z usługą git?
+## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Klonowanie repozytoriów Git w systemie plików obszaru roboczego
+Azure Machine Learning udostępnia współużytkowany system plików dla wszystkich użytkowników w obszarze roboczym.
+Aby sklonować repozytorium git do tego udziału plików, zalecamy utworzenie wystąpienia obliczeniowego & otwarcie terminalu.
+Po otwarciu terminalu masz dostęp do pełnego klienta git i można klonować i współdziałać z usługą Git za pośrednictwem interfejsu wiersza polecenia usługi git.
+
+Zalecamy klonowanie repozytorium do katalogu użytkowników, tak aby inne osoby nie miały kolizji bezpośrednio w gałęzi roboczej.
+
+Można sklonować dowolne repozytorium git, do których można się uwierzytelnić (GitHub, Azure Repos, BitBucket itp.).
+
+Aby zapoznać się z przewodnikiem dotyczącym korzystania z interfejsu wiersza polecenia usługi git, Przeczytaj [tutaj.](https://guides.github.com/introduction/git-handbook/)
+
+## <a name="track-code-that-comes-from-git-repositories"></a>Śledź kod pochodzący z repozytoriów Git
 
 Po przesłaniu szkolenia z zestawu SDK języka Python lub interfejsu wiersza polecenia Machine Learning pliki potrzebne do uczenia modelu są przekazywane do obszaru roboczego. Jeśli `git` polecenie jest dostępne w środowisku deweloperskim, proces przekazywania używa go do sprawdzenia, czy pliki są przechowywane w repozytorium git. Jeśli tak, to w ramach przebiegu szkoleniowego zostanie również przekazane informacje z repozytorium git. Te informacje są przechowywane w następujących właściwościach przebiegu szkoleniowego:
 
@@ -53,7 +68,7 @@ Jeśli pliki szkoleniowe nie znajdują się w repozytorium Git w środowisku dew
 
 Informacje dotyczące usługi git są przechowywane we właściwościach przebiegu szkoleniowego. Te informacje można wyświetlić przy użyciu Azure Portal, zestawu Python SDK i interfejsu wiersza polecenia. 
 
-### <a name="azure-portal"></a>Portal Azure
+### <a name="azure-portal"></a>Portalu Azure
 
 1. Na [Azure Portal](https://portal.azure.com)wybierz swój obszar roboczy.
 1. Wybierz pozycję __eksperymenty__, a następnie wybierz jedno z eksperymentów.
@@ -89,7 +104,7 @@ Po przesłaniu przebiegu szkoleniowego zwracany jest obiekt [Run](https://docs.m
 run.properties['azureml.git.commit']
 ```
 
-### <a name="cli"></a>Interfejs CLI
+### <a name="cli"></a>Interfejs wiersza polecenia
 
 Za pomocą polecenia `az ml run` CLI można pobrać właściwości z przebiegu. Na przykład następujące polecenie zwraca właściwości dla ostatniego uruchomienia w eksperymentie o nazwie `train-on-amlcompute`:
 

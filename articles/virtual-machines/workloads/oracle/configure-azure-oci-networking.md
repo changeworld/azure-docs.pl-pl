@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 63543c0ac34536b736bd4b8cdbd47fdd98e9f9be
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 0e2e16ccc04ff6df80597d646a00c40551e4cfd0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802209"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302053"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Skonfiguruj bezpośrednie połączenie między platformą Azure a infrastrukturą chmurową Oracle  
 
@@ -35,7 +35,7 @@ Na poniższej ilustracji przedstawiono ogólne omówienie połączeń:
 
 * Aby nawiązać połączenie między platformą Azure a OCI, musisz mieć aktywną subskrypcję platformy Azure i aktywną dzierżawę OCI.
 
-* Połączenie jest możliwe tylko wtedy, gdy lokalizacja komunikacji równorzędnej usługi Azure ExpressRoute znajduje się w pobliżu lub w tej samej lokalizacji komunikacji równorzędnej co OCI FastConnect. Zobacz temat [ograniczenia wersji zapoznawczej](oracle-oci-overview.md#preview-limitations).
+* Połączenie jest możliwe tylko wtedy, gdy lokalizacja komunikacji równorzędnej usługi Azure ExpressRoute znajduje się w pobliżu lub w tej samej lokalizacji komunikacji równorzędnej co OCI FastConnect. Zobacz [dostępność regionów](oracle-oci-overview.md#region-availability).
 
 * Dla tej funkcji w wersji zapoznawczej należy włączyć subskrypcję platformy Azure.
 
@@ -79,7 +79,7 @@ Na poniższej ilustracji przedstawiono ogólne omówienie połączeń:
 
 Po zakończeniu konfiguracji sieci można sprawdzić poprawność konfiguracji, klikając pozycję **Pobierz rekordy ARP** i **Pobierz tabelę tras** w bloku prywatnej komunikacji równorzędnej ExpressRoute w Azure Portal.
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatyzacja
 
 Firma Microsoft stworzyła skrypty Terraform, aby umożliwić automatyczne wdrażanie połączeń sieciowych. Przed wykonaniem skryptów Terraform należy przeprowadzić uwierzytelnienie na platformie Azure, ponieważ wymagają one odpowiednich uprawnień w ramach subskrypcji platformy Azure. Uwierzytelnianie można wykonać przy użyciu jednostki [usługi Azure Active Directory](../../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) lub przy użyciu interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją Terraform](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html).
 

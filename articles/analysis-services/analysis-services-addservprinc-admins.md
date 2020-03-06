@@ -8,19 +8,16 @@ ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b75740e9bff714ad68c93bea7e387e60da2f1c59
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 1370f65405963ebf825e986e6801607a0d96156e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212495"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298092"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Dodawanie jednostki usługi do roli administratora serwera 
 
  Aby zautomatyzować nienadzorowane zadania programu PowerShell, jednostka usługi musi mieć uprawnienia **administratora serwera** na zarządzanym serwerze Analysis Services. W tym artykule opisano sposób dodawania nazwy głównej usługi do roli Administratorzy serwera na platformie Azure jako serwer. Można to zrobić przy użyciu SQL Server Management Studio lub szablonu Menedżer zasobów.
- 
-> [!NOTE]
-> W przypadku operacji serwera przy użyciu poleceń cmdlet Azure PowerShell, jednostka usługi musi również należeć do roli **właściciela** zasobu w [Access Control opartej na rolach (RBAC) na platformie Azure](../role-based-access-control/overview.md). 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Przed ukończeniem tego zadania musisz mieć nazwę główną usługi zarejestrowaną w Azure Active Directory.
@@ -42,7 +39,7 @@ Administratorów serwera można skonfigurować przy użyciu SQL Server Managemen
     
     ![Wyszukaj konto jednostki usługi](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
-## <a name="using-a-resource-manager-template"></a>Korzystanie z szablonu Menedżer zasobów
+## <a name="using-a-resource-manager-template"></a>Używanie szablonu usługi Resource Manager
 
 Administratorzy serwera można również skonfigurować, wdrażając serwer Analysis Services przy użyciu szablonu Azure Resource Manager. Tożsamość, w której działa wdrożenie, musi należeć do roli **współautor** dla zasobu w [Access Control opartej na rolach (RBAC) na platformie Azure](../role-based-access-control/overview.md).
 
@@ -96,6 +93,24 @@ Poniższy szablon Menedżer zasobów wdraża serwer Analysis Services z określo
     ]
 }
 ```
+
+## <a name="using-managed-identities"></a>Korzystanie z tożsamości zarządzanych
+
+Tożsamość zarządzaną można również dodać do listy Administratorzy Analysis Services. Przykładowo może istnieć [aplikacja logiki z tożsamością zarządzaną przez system](../logic-apps/create-managed-service-identity.md)i chcesz udzielić jej uprawnień do administrowania serwerem Analysis Services.
+
+W większości części Azure Portal i interfejsów API tożsamości zarządzane są identyfikowane przy użyciu identyfikatora obiektu nazwy głównej usługi. Jednak Analysis Services wymaga ich zidentyfikowania przy użyciu identyfikatora klienta. Aby uzyskać identyfikator klienta dla jednostki usługi, możesz użyć interfejsu wiersza polecenia platformy Azure:
+
+```bash
+az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o tsv
+```
+
+Alternatywnie możesz użyć programu PowerShell:
+
+```powershell
+(Get-AzureADServicePrincipal -ObjectId <ManagedIdentityServicePrincipalObjectId>).AppId
+```
+
+Tego identyfikatora klienta można następnie użyć w połączeniu z IDENTYFIKATORem dzierżawy, aby dodać zarządzaną tożsamość do listy administratorów Analysis Services, zgodnie z powyższym opisem.
 
 ## <a name="related-information"></a>Informacje pokrewne
 

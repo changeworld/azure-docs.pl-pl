@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 382c588ca005f95f4ae38e7506c0e3e8d842bd2c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909044"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298653"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Wymagania wstępne dotyczące Azure AD Connect aprowizacji w chmurze
 Ten artykuł zawiera wskazówki dotyczące sposobu wybierania i używania usługi Azure Active Directory (Azure AD) w celu nawiązania połączenia z chmurą jako rozwiązania do obsługi tożsamości.
@@ -26,7 +26,7 @@ Ten artykuł zawiera wskazówki dotyczące sposobu wybierania i używania usług
 ## <a name="cloud-provisioning-agent-requirements"></a>Wymagania dotyczące agenta aprowizacji w chmurze
 Aby skorzystać z Azure AD Connect aprowizacji w chmurze, potrzebne są następujące elementy:
     
-- Konto administratora globalnego dla dzierżawy usługi Azure AD.
+- Konto administratora globalnego dla dzierżawy usługi Azure AD, który nie jest użytkownikiem-gościem.
 - Serwer lokalny dla agenta aprowizacji z systemem Windows 2012 R2 lub nowszym.
 - Lokalne konfiguracje zapory.
 
@@ -39,6 +39,10 @@ Pozostała część dokumentu zawiera instrukcje krok po kroku dotyczące tych w
 
 1. Utwórz konto administratora globalnego tylko w chmurze w dzierżawie usługi Azure AD. W ten sposób możesz zarządzać konfiguracją dzierżawy, jeśli usługi lokalne zakończą się niepowodzeniem lub staną się niedostępne. Dowiedz się [, jak dodać konto administratora globalnego tylko w chmurze](../active-directory-users-create-azure-portal.md). Zakończenie tego kroku ma na celu upewnienie się, że dzierżawa nie została zablokowana.
 1. Dodaj co najmniej jedną [niestandardową nazwę domeny](../active-directory-domains-add-azure-portal.md) do dzierżawy usługi Azure AD. Użytkownicy mogą logować się przy użyciu jednej z tych nazw domen.
+
+### <a name="in-your-directory-in-active-directory"></a>W katalogu w Active Directory
+
+Uruchom [Narzędzie IdFix](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) , aby przygotować atrybuty katalogu do synchronizacji.
 
 ### <a name="in-your-on-premises-environment"></a>W środowisku lokalnym
 

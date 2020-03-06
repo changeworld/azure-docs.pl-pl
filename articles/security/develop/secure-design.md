@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 316ed596cfa49987e229004c388267286ff50927
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 889897cfd4dc8714ae3aea556f0924c9dbcd7825
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000966"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299418"
 ---
 # <a name="design-secure-applications-on-azure"></a>Projektowanie bezpiecznych aplikacji na platformie Azure
 W tym artykule opisano działania związane z bezpieczeństwem i kontrolki, które należy wziąć pod uwagę podczas projektowania aplikacji w chmurze. Zasoby szkoleniowe wraz z pytaniami i pojęciami związanymi z bezpieczeństwem, które należy wziąć pod uwagę podczas wymagań i fazy projektowania [cyklu życia Microsoft Security Development (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Celem jest ułatwienie zdefiniowania działań i usług platformy Azure, których można użyć do zaprojektowania bezpieczniejszej aplikacji.
@@ -27,7 +27,7 @@ Następujące fazy SDL zostały omówione w tym artykule:
 
 - Szkolenia
 - Wymagania
-- Projektuj
+- Projekt
 
 ## <a name="training"></a>Szkolenia
 Przed rozpoczęciem opracowywania aplikacji w chmurze należy zapoznać się z tematem bezpieczeństwo i prywatność na platformie Azure. Wykonując ten krok, można zmniejszyć liczbę i ważność luk w zabezpieczeniach w aplikacji. Zostanie przygotowana do odpowiedniej reakcji na stale zmieniający się poziom zagrożenia.
@@ -38,7 +38,7 @@ Skorzystaj z następujących zasobów na etapie uczenia, aby zaznajomić się z 
 
   - [Przewodnik wprowadzenie dla deweloperów platformy Azure](../../guides/developer/azure-developer-guide.md) zawiera podstawowe informacje dla deweloperów, którzy chcą rozpocząć korzystanie z platformy Azure na potrzeby ich tworzenia.
 
-  - [Zestawy SDK i narzędzia](https://docs.microsoft.com/azure/index#pivot=sdkstools) zawiera opis narzędzi dostępnych na platformie Azure.
+  - [Zestawy SDK i narzędzia](https://docs.microsoft.com/azure/index?pivot=sdkstools) zawiera opis narzędzi dostępnych na platformie Azure.
 
   - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) udostępnia narzędzia do współpracy deweloperskiej. Narzędzia te obejmują potoki o wysokiej wydajności, bezpłatne repozytoria Git, konfigurowalne tablice Kanban i rozbudowane zautomatyzowane testowanie obciążenia oparte na chmurze.
     [Centrum zasobów DevOps](https://docs.microsoft.com/azure/devops/learn/) łączy nasze zasoby na potrzeby uczenia DevOps, kontroli wersji Git, metod agile, sposobu pracy z DevOps w firmie Microsoft oraz jak można ocenić własne postępy DevOps.
@@ -66,7 +66,7 @@ Zadawaj pytania zabezpieczające, takie jak:
 
   - Czy moja aplikacja zawiera poufne dane?
 
-  - Czy moja aplikacja gromadzi lub przechowuje dane, które wymagają, aby były zgodne ze standardami branżowymi i programami zgodnymi, takimi jak [Federalna instytucja badawcza (FFIEC)](../blueprints/ffiec-analytics-overview.md) lub [branżowe standardy dotyczące bezpieczeństwa danych (PCI DSS) ](../blueprints/pcidss-analytics-overview.md)?
+  - Czy moja aplikacja gromadzi lub przechowuje dane, które wymagają, aby były zgodne ze standardami branżowymi i programami zgodności, takimi jak [Federalna instytucja badawcza (FFIEC)](../blueprints/ffiec-analytics-overview.md) lub [branżowe standardy dotyczące bezpieczeństwa danych (PCI DSS)](../blueprints/pcidss-analytics-overview.md)?
 
   - Czy moja aplikacja gromadzi lub zawiera poufne dane osobiste lub klienta, które mogą być używane samodzielnie lub z innymi informacjami, aby identyfikować, kontaktować się z lub lokalizować pojedyncze osoby?
 
@@ -97,7 +97,7 @@ Jednak warto również założyć, że nastąpi [naruszenie](https://docs.micros
 
   - Jak odzyskiwać dane z ataku, takiego jak przecieki lub manipulowanie danymi?
 
-## <a name="design"></a>Projektuj
+## <a name="design"></a>Projekt
 
 Faza projektowania ma kluczowe znaczenie dla ustanowienia najlepszych rozwiązań dotyczących projektowania i specyfikacji funkcjonalnych. Ma ona również kluczowe znaczenie dla przeprowadzania analizy ryzyka, która pomaga w ograniczeniu bezpieczeństwa i ochrony prywatności w całym projekcie.
 
@@ -126,10 +126,10 @@ W przypadku programowania należy użyć bezpiecznej biblioteki kodowania i stru
 Upewnij się, że korzystasz z najnowszej wersji platformy i wszystkich funkcji zabezpieczeń, które są dostępne w środowisku. Firma Microsoft oferuje kompleksowy [zestaw narzędzi programistycznych](https://azure.microsoft.com/product-categories/developer-tools/) dla wszystkich deweloperów, którzy pracują nad dowolną platformą lub językiem w celu dostarczania aplikacji w chmurze. Możesz dokonać kodu przy użyciu wybranego języka, wybierając spośród różnych [zestawów SDK](https://azure.microsoft.com/downloads/).
 Możesz korzystać z w pełni funkcjonalnych, zintegrowanych środowisk programistycznych (środowisk IDE) i edytorów, które mają zaawansowane możliwości debugowania i wbudowaną pomoc techniczną platformy Azure.
 
-Firma Microsoft oferuje wiele [języków, struktur i narzędzi](https://docs.microsoft.com/azure/index#pivot=sdkstools&panel=sdkstools-all) , których można użyć do tworzenia aplikacji na platformie Azure. Przykładem jest [platforma Azure dla deweloperów .NET i .NET Core](https://docs.microsoft.com/dotnet/azure/). Dla każdego oferowanego języka i platformy znajdziesz Przewodniki Szybki Start, samouczki i odwołania do interfejsów API, które ułatwiają szybkie rozpoczęcie pracy.
+Firma Microsoft oferuje wiele [języków, struktur i narzędzi](https://docs.microsoft.com/azure/index?pivot=sdkstools&panel=sdkstools-all) , których można użyć do tworzenia aplikacji na platformie Azure. Przykładem jest [platforma Azure dla deweloperów .NET i .NET Core](https://docs.microsoft.com/dotnet/azure/). Dla każdego oferowanego języka i platformy znajdziesz Przewodniki Szybki Start, samouczki i odwołania do interfejsów API, które ułatwiają szybkie rozpoczęcie pracy.
 
 Platforma Azure oferuje różne usługi, których można używać do hostowania witryn i aplikacji sieci Web. Te usługi umożliwiają programowanie w ulubionym języku, niezależnie od tego, czy są to .NET, .NET Core, Java, Ruby, Node. js, PHP lub Python.
-[Azure App Service Web Apps](../../app-service/overview.md) (Web Apps) jest jedną z tych usług.
+[Azure App Service Web Apps](../../app-service/overview.md) (Web Apps) to jedna z tych usług.
 
 Web Apps dodaje możliwości Microsoft Azure do aplikacji. Obejmuje to zabezpieczenia, równoważenie obciążenia, Skalowanie automatyczne i zautomatyzowane zarządzanie. Możesz również skorzystać z możliwości DevOps w Web Apps, takich jak zarządzanie pakietami, środowiska przejściowe, domeny niestandardowe, certyfikaty SSL/TLS i ciągłe wdrażanie z usługi Azure DevOps, GitHub, Docker Hub i innych źródeł.
 
@@ -149,16 +149,16 @@ Modelowanie zagrożeń polega na zidentyfikowaniu potencjalnych zagrożeń bezpi
 
 Aby ułatwić proces modelowania zagrożeń, zaprojektowano [Threat Modeling Tool SDL](threat-modeling-tool.md) z innymi ekspertami. To narzędzie ułatwia modelowanie zagrożeń dla wszystkich deweloperów, oferując jasne wskazówki dotyczące tworzenia i analizowania modeli zagrożeń.
 
-Modelowanie projektu aplikacji i wyliczanie [zagrożeń dotyczących](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) kroków — fałszowanie, manipulowanie, wyparcie, ujawnienie informacji, odmowa usługi i podniesienie uprawnień — we wszystkich granicach zaufania okazało się skutecznym sposobem przechwytywania błędów projektowania Wczesne. W poniższej tabeli przedstawiono listę zagrożeń i przedstawiono przykładowe środki zaradcze korzystające z funkcji oferowanych przez platformę Azure. Te środki zaradcze nie będą działały w każdej sytuacji.
+Modelowanie projektu aplikacji i wyliczanie [zagrożeń dotyczących](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) kroków — fałszowanie, manipulowanie, wyparcie, ujawnienie informacji, odmowa usługi i podniesienie uprawnień — w ramach wszystkich granic zaufania sprawdzono skuteczny sposób na wczesne przechwytywanie błędów projektu. W poniższej tabeli przedstawiono listę zagrożeń i przedstawiono przykładowe środki zaradcze korzystające z funkcji oferowanych przez platformę Azure. Te środki zaradcze nie będą działały w każdej sytuacji.
 
-| Ważną | Właściwość zabezpieczeń | Potencjalne ograniczenia dotyczące platformy Azure |
+| Zagrożenie | Właściwość zabezpieczeń | Potencjalne ograniczenia dotyczące platformy Azure |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Fałszowaniem               | Authentication        | [Wymagaj połączeń HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
-| Manipulowanie              | Integralność             | Sprawdź poprawność certyfikatów SSL/TLS. Aplikacje korzystające z protokołu SSL/TLS muszą w pełni weryfikować certyfikaty X. 509 jednostek, z którymi się łączą. Użyj Azure Key Vault certyfikatów do [zarządzania certyfikatami x509](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |
+| Fałszowaniem               | Uwierzytelnianie        | [Wymagaj połączeń HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
+| Naruszeniu              | Integralność             | Sprawdź poprawność certyfikatów SSL/TLS. Aplikacje korzystające z protokołu SSL/TLS muszą w pełni weryfikować certyfikaty X. 509 jednostek, z którymi się łączą. Użyj Azure Key Vault certyfikatów do [zarządzania certyfikatami x509](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |
 | Rzuca            | Brak wyparcia       | Włącz [monitorowanie i diagnostykę](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)platformy Azure.|
-| Ujawnianie informacji | Poufne       | Szyfruj [poufne dane przechowywane](../fundamentals/encryption-atrest.md) [i przesyłane](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
+| Ujawnienie informacji | Poufne       | Szyfruj [poufne dane przechowywane](../fundamentals/encryption-atrest.md) [i przesyłane](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
 | Odmowa usługi      | Dostępność          | Monitoruj metryki wydajności pod kątem potencjalnych odmowy warunków usługi. Implementuj filtry połączeń. [Usługa Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps), w połączeniu z najlepszymi rozwiązaniami dotyczącymi projektowania aplikacji, zapewnia ochronę przed atakami na DDoS.|
-| Podniesienie uprawnień | Authorization         | Użyj <span class="underline"></span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)Azure Active Directory.|
+| Podniesienie uprawnień | Autoryzacja         | Użyj <span class="underline"></span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)Azure Active Directory.|
 
 ### <a name="reduce-your-attack-surface"></a>Zmniejszenie podatności na ataki
 
@@ -233,7 +233,7 @@ Zaimplementuj dostęp *just-in-Time* (JIT), aby jeszcze bardziej obniżyć czas 
 
 ### <a name="require-re-authentication-for-important-transactions"></a>Wymagaj ponownego uwierzytelniania dla ważnych transakcji
 
-[Fałszerstwo żądania między lokacjami](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (znany również jako *XSRF* lub *CSRF*) jest atakiem na aplikacje hostowane w sieci Web, w których złośliwa aplikacja internetowa ma wpływ na interakcję między przeglądarką klienta i aplikacją sieci Web, która ufa tej przeglądarce. Możliwe jest ataki między lokacjami, ponieważ przeglądarki sieci Web wysyłają automatyczne typy tokenów uwierzytelniania przy użyciu każdego żądania do witryny sieci Web.
+[Sfałszowanie żądań między lokacjami](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (znane również jako *XSRF* lub *CSRF*) jest atakiem na aplikacje hostowane w sieci Web, w których złośliwa aplikacja internetowa ma wpływ na interakcję między przeglądarką klienta a aplikacją sieci Web, która ufa tej przeglądarce. Możliwe jest ataki między lokacjami, ponieważ przeglądarki sieci Web wysyłają automatyczne typy tokenów uwierzytelniania przy użyciu każdego żądania do witryny sieci Web.
 Ta forma wykorzystywania jest również znana jako *atak dwukrotnego kliknięcia* lub *sesji* , ponieważ atakujący wykorzystuje wcześniej uwierzytelnioną sesję użytkownika.
 
 Najlepszym sposobem obrony przed tym rodzajem ataku jest poproszenie użytkownika o coś, że tylko użytkownik może podać przed każdą ważną transakcją, taką jak zakup, Dezaktywacja konta lub zmiana hasła. Użytkownik może poproszony o ponowne wprowadzenie hasła, wykonanie CAPTCHA lub przesłanie klucza tajnego, który będzie miał tylko użytkownik. Najbardziej typowym podejściem jest token tajny.

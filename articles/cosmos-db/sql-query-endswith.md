@@ -4,15 +4,15 @@ description: Dowiedz się więcej o funkcji systemowej ENDSWITH SQL w Azure Cosm
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6b3e692877faab8a8d507a44068d4cdfdc73a916
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 37c5a8b3c44c5ac46b837e4d851d22f85aeaf39c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873356"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299452"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
  Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenia kończy się na drugi.  
@@ -43,11 +43,15 @@ ENDSWITH(<str_expr1>, <str_expr2>)
 SELECT ENDSWITH("abc", "b") AS e1, ENDSWITH("abc", "bc") AS e2 
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"e1": false, "e2": true}]  
 ```  
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa nie będzie używać indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 

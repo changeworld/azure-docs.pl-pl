@@ -12,12 +12,12 @@ ms.date: 12/08/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 23433c816fc7b002c3426a0aac7c0aade8cdb338
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 9ea3388cb65b18c093ffff3ec8b8c9f2764ef189
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585853"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300072"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Instrukcje: dostarczanie opcjonalnych oświadczeń do aplikacji usługi Azure AD
 
@@ -37,7 +37,7 @@ Chociaż opcjonalne oświadczenia są obsługiwane zarówno w tokenach w formaci
 
 | Typ konta | tokeny v 1.0 | tokeny v 2.0  |
 |--------------|---------------|----------------|
-| konto Microsoft osobiste  | N/D  | Obsługiwane |
+| konto Microsoft osobiste  | Nie dotyczy  | Obsługiwane |
 | Konto Azure AD      | Obsługiwane | Obsługiwane |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>zestaw oświadczeń opcjonalnych 1.0 i v 2.0
@@ -88,7 +88,7 @@ Te oświadczenia są zawsze uwzględniane w tokenach usługi Azure AD w wersji 1
 | `nickname`    | pseudonim                        | Dodatkowa nazwa dla użytkownika. Pseudonim jest oddzielony od imienia i nazwiska. | 
 | `family_name` | Nazwisko                       | Zawiera nazwisko, nazwisko lub nazwę rodziny użytkownika, zgodnie z definicją w obiekcie użytkownika. <br>"family_name":"Miller" | Obsługiwane w usłudze MSA i usłudze Azure AD   |
 | `given_name`  | Imię                      | Określa imię i nazwisko użytkownika, zgodnie z ustawieniem obiektu użytkownika.<br>"given_name": "Piotr"                   | Obsługiwane w usłudze MSA i usłudze Azure AD  |
-| `upn`         | Główna nazwa użytkownika | Identyfikator dla użytkownika, którego można użyć z parametrem username_hint.  Nie jest to trwały identyfikator użytkownika i nie należy go używać do kluczowych danych. | Zapoznaj się z [dodatkowymi właściwościami](#additional-properties-of-optional-claims) poniżej w celu skonfigurowania żądania. |
+| `upn`         | Nazwa główna użytkownika | Identyfikator dla użytkownika, którego można użyć z parametrem username_hint.  Nie jest to trwały identyfikator użytkownika i nie należy go używać do kluczowych danych. | Zapoznaj się z [dodatkowymi właściwościami](#additional-properties-of-optional-claims) poniżej w celu skonfigurowania żądania. |
 
 ### <a name="additional-properties-of-optional-claims"></a>Dodatkowe właściwości oświadczeń opcjonalnych
 
@@ -122,7 +122,7 @@ Ten obiekt OptionalClaims powoduje, że token identyfikatora zwracany do klienta
 ## <a name="configuring-optional-claims"></a>Konfigurowanie oświadczeń opcjonalnych
 
 > [!IMPORTANT]
-> Tokeny dostępu są **zawsze** generowane przy użyciu manifestu zasobu, a nie klienta.  Dlatego w żądaniu `...scope=https://graph.microsoft.com/user.read...` zasób jest grafem.  W ten sposób token dostępu jest tworzony przy użyciu manifestu grafu, a nie manifestu klienta.  Zmiana manifestu dla aplikacji nigdy nie spowoduje, że tokeny dla grafu będą wyglądać inaczej.  Aby potwierdzić, że zmiany `accessToken` są obowiązujące, zażądaj tokenu dla aplikacji, a nie innej aplikacji.  
+> Tokeny dostępu są **zawsze** generowane przy użyciu manifestu zasobu, a nie klienta.  Dlatego w żądaniu `...scope=https://graph.microsoft.com/user.read...` zasób jest Microsoft Graphm interfejsem API.  W takim przypadku token dostępu jest tworzony przy użyciu manifestu interfejsu API Microsoft Graph, a nie manifestu klienta.  Zmiana manifestu dla aplikacji nigdy nie spowoduje, że tokeny dla interfejsu API Microsoft Graph będą wyglądały inaczej.  Aby potwierdzić, że zmiany `accessToken` są obowiązujące, zażądaj tokenu dla aplikacji, a nie innej aplikacji.  
 
 Opcjonalne oświadczenia dla aplikacji można skonfigurować za pomocą interfejsu użytkownika lub manifestu aplikacji.
 
@@ -286,7 +286,7 @@ W tej sekcji omówiono opcje konfiguracji w obszarze opcjonalne oświadczenia do
        }
     ```
 
-   | Opcjonalny schemat oświadczeń | Value |
+   | Opcjonalny schemat oświadczeń | Wartość |
    |----------|-------------|
    | **Nazwij** | Musi być "grupami" |
    | **zewnętrz** | Nie jest używany. Pomiń lub określ wartość null |
@@ -349,7 +349,7 @@ W tej sekcji można zapoznać się z scenariuszem, aby dowiedzieć się, jak mo�
 Dostępnych jest wiele opcji aktualizowania właściwości konfiguracji tożsamości aplikacji w celu włączenia i skonfigurowania oświadczeń opcjonalnych:
 -    Możesz użyć interfejsu użytkownika **konfiguracji tokenu (wersja zapoznawcza)** (Zobacz przykład poniżej)
 -    Możesz użyć **manifestu** (Zobacz przykład poniżej). Przeczytaj [dokument manifestu aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest) najpierw, aby zapoznać się z wprowadzeniem do manifestu.
--   Istnieje również możliwość napisania aplikacji, która używa [interfejs API programu Graph](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) do aktualizowania aplikacji. Typ [OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) w podręczniku referencyjnym interfejs API programu Graph może pomóc w konfigurowaniu opcjonalnych oświadczeń.
+-   Istnieje również możliwość napisania aplikacji, która używa [interfejsu API Microsoft Graph](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2F1.0&view=graph-rest-1.0) do aktualizowania aplikacji. Typ [OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) w podręczniku Skorowidz interfejsu API Microsoft Graph może pomóc w konfigurowaniu opcjonalnych oświadczeń.
 
 **Przykład:** W poniższym przykładzie użyto interfejsu użytkownika **konfiguracji tokenu (wersja zapoznawcza)** i **manifestu** w celu dodania opcjonalnych oświadczeń do tokenów dostępu, identyfikatora i SAML przeznaczonych dla danej aplikacji. Różne opcjonalne oświadczenia zostaną dodane do każdego typu tokenu, który aplikacja może odbierać:
 -    Tokeny identyfikatora będą teraz zawierać nazwę UPN dla użytkowników federacyjnych w pełnej formie (`<upn>_<homedomain>#EXT#@<resourcedomain>`).

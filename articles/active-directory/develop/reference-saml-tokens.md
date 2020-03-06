@@ -17,12 +17,12 @@ ms.date: 06/22/2018
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2eb279d8f5871a0c6738ecc89fb7d01730187564
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: e4fcb7835c6315e8a67103883e1635f0ddab1098
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160308"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299758"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Odwołanie do tokenu SAML usługi Azure AD
 
@@ -156,7 +156,7 @@ Jest to przykład typowego tokenu SAML.
 
 ## <a name="related-content"></a>Powiązana zawartość
 
-* Aby dowiedzieć się więcej o zarządzaniu zasadami okresu istnienia tokenu za pośrednictwem usługi Azure AD interfejs API programu Graph, zobacz [operacje zasad](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) wykresów usługi Azure AD i [Jednostka zasad](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity).
+* Zobacz [zasób zasad](https://docs.microsoft.com/graph/api/resources/policy?view=graph-rest-beta), aby dowiedzieć się więcej na temat zarządzania zasadami okresu istnienia tokenu przy użyciu interfejsu API Microsoft Graph.
 * Aby uzyskać więcej informacji i przykładów dotyczących zarządzania zasadami za pomocą poleceń cmdlet programu PowerShell, w tym przykładów, zobacz [konfigurowalne okresy istnienia tokenu w usłudze Azure AD](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json). 
 * Dodawanie [niestandardowych i opcjonalnych oświadczeń](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) do tokenów aplikacji.
 * Użyj logowania jednokrotnego [(SSO) z użyciem protokołu SAML](single-sign-on-saml-protocol.md).

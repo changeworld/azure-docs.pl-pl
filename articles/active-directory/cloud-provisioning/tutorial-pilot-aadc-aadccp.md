@@ -7,22 +7,22 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0bd53b72c334b35daea0864acf61cc432c272ae
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442126"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298823"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Pilotażowa aprowizacja w chmurze dla istniejącego zsynchronizowanego lasu usługi AD 
 
 Ten samouczek przeprowadzi Cię przez pilotażowe Inicjowanie obsługi administracyjnej chmury dla Active Directory lasu testowego, która jest już synchronizowana przy użyciu usługi Azure Active Directory (Azure AD) Connect Sync.
 
-![Utwórz](media/tutorial-migrate-aadc-aadccp/diagram.png)
+![Tworzenie](media/tutorial-migrate-aadc-aadccp/diagram.png)
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 Przed podjęciem próby wykonania tego samouczka należy wziąć pod uwagę następujące elementy:
@@ -31,7 +31,7 @@ Przed podjęciem próby wykonania tego samouczka należy wziąć pod uwagę nast
 3. Upewnij się, że obiekty w zakresie pilotażowym mają wartość MS-ds-consistencyGUID, aby zapewnić, że inicjowanie obsługi administracyjnej w chmurze jest zgodne z obiektami. 
 
    > [!NOTE]
-   > Synchronizacja Azure AD Connect nie powoduje domyślnego wypełnienia *usługi MS-ds-consistencyGUID* dla obiektów Group. Wykonaj kroki opisane w [tym wpisie w blogu](https://blogs.technet.microsoft.com/markrenoden/2017/10/13/choosing-a-sourceanchor-for-groups-in-multi-forest-sync-with-aad-connect/) , aby wypełnić grupę *MS-ds-consistencyGUID* dla obiektów Group.
+   > Synchronizacja Azure AD Connect nie powoduje domyślnego wypełnienia *usługi MS-ds-consistencyGUID* dla obiektów Group.
 
 4. Jest to zaawansowany scenariusz. Upewnij się, że wykonano kroki opisane w tym samouczku.
 
@@ -119,7 +119,7 @@ Należy wykonać te same czynności dla wszystkich typów obiektów (użytkownik
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Zainstaluj agenta aprowizacji Azure AD Connect
 1. Zaloguj się na serwerze, który będzie używany z uprawnieniami administratora przedsiębiorstwa.  Jeśli używasz podstawowego samouczka [środowiska usług AD i Azure](tutorial-basic-ad-azure.md) , będzie on CP1.
-2. Pobierz [tutaj](https://go.microsoft.com/fwlink/?linkid=2109037)agenta aprowizacji Azure AD Connect w chmurze.
+2. Pobierz Azure AD Connect agenta aprowizacji w chmurze, wykonując kroki opisane [tutaj](how-to-install.md#install-the-agent).
 3. Uruchamianie Azure AD Connect aprowizacji w chmurze (AADConnectProvisioningAgent. Installer)
 3. Na ekranie powitalnym **Zaakceptuj** postanowienia licencyjne, a następnie kliknij przycisk **Instaluj**.</br>
 ![Ekran powitalny](media/how-to-install/install1.png)</br>

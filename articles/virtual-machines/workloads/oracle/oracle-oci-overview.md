@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: aacba12b32e9da75c2a4b9a20c0faa235cf6836a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e1249913300be532cc6514f1478bbc6f4183c001
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459305"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300557"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Rozwiązania aplikacji Oracle integrujące Microsoft Azure i infrastrukturę chmurową Oracle (wersja zapoznawcza)
 
@@ -28,7 +28,7 @@ Firmy Microsoft i Oracle współpracują w celu zapewnienia małych opóźnień 
 Korzystając z tej łączności między chmurami, można podzielić aplikację wielowarstwową w celu uruchomienia warstwy bazy danych w infrastrukturze chmury firmy Oracle (OCI) oraz aplikacji i innych warstw na Microsoft Azure. Środowisko jest podobne do uruchamiania całego stosu rozwiązań w pojedynczej chmurze. 
 
 > [!IMPORTANT]
-> Ta funkcja między chmurami jest obecnie dostępna w wersji zapoznawczej i [obowiązują ograniczenia](#preview-limitations). Aby zapewnić łączność z niską opóźnieniami między platformą Azure a OCI, należy najpierw włączyć tę subskrypcję platformy Azure. Musisz zarejestrować się w wersji zapoznawczej, wykonując ten krótki [formularz ankiety](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu). Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie możesz korzystać z tej możliwości, dopóki nie otrzymasz wiadomości e-mail z potwierdzeniem. Możesz również skontaktować się z przedstawicielem firmy Microsoft w celu włączenia tej wersji zapoznawczej. Dostęp do funkcji wersji zapoznawczej podlega dostępności i jest ograniczony przez firmę Microsoft w ramach własnego uznania. Zakończenie ankiety nie gwarantuje dostępu. Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie powinna być używana na potrzeby obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawczych Microsoft Azure. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+> Ta funkcja między chmurami jest obecnie dostępna w wersji zapoznawczej i [obowiązują ograniczenia](#region-availability). Aby zapewnić łączność z niską opóźnieniami między platformą Azure a OCI, należy najpierw włączyć tę subskrypcję platformy Azure. Musisz zarejestrować się w wersji zapoznawczej, wykonując ten krótki [formularz ankiety](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu). Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie możesz korzystać z tej możliwości, dopóki nie otrzymasz wiadomości e-mail z potwierdzeniem. Możesz również skontaktować się z przedstawicielem firmy Microsoft w celu włączenia tej wersji zapoznawczej. Dostęp do funkcji wersji zapoznawczej podlega dostępności i jest ograniczony przez firmę Microsoft w ramach własnego uznania. Zakończenie ankiety nie gwarantuje dostępu. Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie powinna być używana na potrzeby obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawczych Microsoft Azure. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 
 Jeśli interesuje się wdrażanie rozwiązań Oracle w całości w infrastrukturze platformy Azure, zobacz [obrazy maszyn wirtualnych Oracle i ich wdrożenie na Microsoft Azure](oracle-vm-solutions.md).
 
@@ -48,11 +48,15 @@ Poniższy diagram przedstawia ogólny przegląd połączonego rozwiązania. Dla 
 
 ![Omówienie rozwiązania OCI na platformie Azure](media/oracle-oci-overview/crosscloud.png)
 
-## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
+## <a name="region-availability"></a>Dostępność regionów 
 
-* Łączność między chmurami w wersji zapoznawczej jest ograniczona do regionów platformy Azure — Wschodnie stany USA (Wschodnie), Południowe Zjednoczone Królestwo (uksouth) i Kanada Środkowa (canadacentral) oraz regionów OCI Ashburn (Wschodnie stany USA), Londyn (Południowe Zjednoczone Królestwo) i Toronto (Kanada Południowo-Wschodnia). Aby uzyskać Południowe Zjednoczone Królestwo, użyj domeny dostępności 1 (AD 1) w obszarze OCI podczas wdrażania połączeń wzajemnego dla małych opóźnień.
+Łączność między różnymi lokalizacjami w chmurze jest ograniczona do następujących regionów:
+* Azure Wschodnie stany USA (Wschodnie) & OCI Ashburn (Wschodnie stany USA)
+* Azure Południowe Zjednoczone Królestwo (uksouth) & OCI Londyn (Południowe Zjednoczone Królestwo)
+* Azure Kanada Środkowa (canadacentral) & OCI Toronto (Kanada Południowo-Wschodnia)
+* Azure Europa Zachodnia (westeurope) & OCI Amsterdam (Holandia zachodni)
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Sieć
 
 Klienci korporacyjni często decydują się na zróżnicowanie i wdrażaniu obciążeń dla wielu chmur w różnych sytuacjach firmy i operacyjnych. W celu zróżnicowania klienci korzystają z Internetu, sieci VPN IPSec lub bezpośredniego rozwiązania do łączności dostawcy w chmurze za pośrednictwem sieci lokalnej. Połączenia między sieciami w chmurze mogą wymagać znaczących inwestycji w miarę czasu, pieniędzy, projektowania, zaopatrzenia, instalacji, testowania i operacji. 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 89fa06dda418f328b3bc07aada49aa347e35220a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1e18223736964b0327a4c8f6ddb73ddb4f58889a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73182258"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305063"
 ---
 ## <a name="rootcert"></a>Tworzenie certyfikatu głównego z podpisem własnym
 
@@ -28,6 +28,7 @@ Użyj polecenia cmdlet New-SelfSignedCertificate, aby utworzyć certyfikat głó
    -HashAlgorithm sha256 -KeyLength 2048 `
    -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
    ```
+ 3. Pozostaw otwartą konsolę programu PowerShell, jeśli chcesz utworzyć certyfikat klienta bezpośrednio po utworzeniu certyfikatu głównego.
 
 ## <a name="clientcert"></a>Generowanie certyfikatu klienta
 
@@ -37,7 +38,7 @@ Poniższe kroki przeprowadzą Cię przez proces generowania certyfikatu klienta 
 
 W przykładach użyto polecenia cmdlet New-SelfSignedCertificate w celu wygenerowania certyfikatu klienta, który wygaśnie w ciągu roku. Dodatkowe informacje o parametrach, takie jak ustawienie innej wartości wygaśnięcia dla certyfikatu klienta, można znaleźć w temacie [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
-### <a name="example-1"></a>Przykład 1
+### <a name="example-1---powershell-console-session-still-open"></a>Przykład 1 — sesja konsoli programu PowerShell jest nadal otwarta
 
 Użyj tego przykładu, jeśli konsola programu PowerShell nie została zamknięta po utworzeniu certyfikatu głównego z podpisem własnym. Ten przykład jest kontynuowany z poprzedniej sekcji i używa zadeklarowanej zmiennej "$cert". Jeśli konsola programu PowerShell została zamknięta po utworzeniu certyfikatu głównego z podpisem własnym lub tworzenia dodatkowych certyfikatów klienta w nowej sesji konsoli programu PowerShell, wykonaj kroki opisane w [przykładzie 2](#ex2).
 
@@ -51,7 +52,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
 ```
 
-### <a name="ex2"></a>Przykład 2
+### <a name="ex2"></a>Przykład 2 — Nowa sesja konsoli programu PowerShell
 
 Jeśli tworzysz dodatkowe certyfikaty klienta lub nie korzystasz z tej samej sesji programu PowerShell, która została użyta do utworzenia certyfikatu głównego z podpisem własnym, wykonaj następujące czynności:
 

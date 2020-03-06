@@ -4,15 +4,15 @@ description: Dowiedz się więcej o tym, jak Funkcja systemowa "COT" w języku S
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: f049d1295eef3e6a45abeaafe8c22d376f90abe1
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 25c907644f58ee40ea08e5636d68dc0e84564a28
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871503"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299491"
 ---
 # <a name="cot-azure-cosmos-db"></a>COT (Azure Cosmos DB)
  Zwraca trygonometryczny cotangens określonego kąta w radianach w określonym wyrażeniu liczbowym.  
@@ -40,12 +40,15 @@ COT(<numeric_expr>)
 SELECT COT(124.1332) AS cot  
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"cot": -0.040311998371148884}]  
 ```  
-  
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa nie będzie używać indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 

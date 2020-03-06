@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 9cab78e85b8644f29bfcd067b104b1b5c10c2266
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8c7c9c2e3a1195422db30ba913b1cea3a1a360e4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249851"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301696"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Samouczek: Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu Azure Databricks
 
@@ -59,7 +59,7 @@ Przed rozpoczęciem tego samouczka wykonaj następujące zadania:
 
    Jest kilka rzeczy, o których należy pamiętać podczas wykonywania kroków przedstawionych w tym artykule.
 
-   * Wykonując kroki opisane w sekcji [przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) w artykule, należy się upewnić, że rola **współautor danych obiektów blob magazynu** jest przypisana do jednostki usługi w zakresie konta Data Lake Storage Gen2. Jeśli przypiszesz rolę do nadrzędnej grupy zasobów lub subskrypcji, będziesz otrzymywać błędy związane z uprawnieniami, dopóki te przydziały roli nie zostaną rozpropagowane do konta magazynu.
+   * Wykonując kroki opisane w sekcji [przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) w artykule, należy się upewnić, że rola **współautor danych obiektów blob magazynu** jest przypisana do jednostki usługi w zakresie konta Data Lake Storage Gen2. Jeśli przypiszesz rolę do nadrzędnej grupy zasobów lub subskrypcji, będziesz otrzymywać błędy związane z uprawnieniami, dopóki te przydziały roli nie zostaną rozpropagowane do konta magazynu.
 
       Jeśli wolisz używać listy kontroli dostępu (ACL) do kojarzenia jednostki usługi z określonym plikiem lub katalogiem, kontrola dostępu referencyjnego [w Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 

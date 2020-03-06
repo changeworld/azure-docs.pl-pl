@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: f28c33f20556825d84edda34752ac64714327526
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697340"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300013"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Instrukcje: Konfigurowanie warunków użytkowania i zasad zachowania poufności informacji dla aplikacji
 
@@ -43,7 +43,7 @@ Przed dodaniem linków do dokumentów dotyczących warunków użytkowania i zasa
 |---------------|---------------------------------------|
 | Format        | Prawidłowy adres URL                             |
 | Prawidłowe schematy | HTTP i HTTPS<br/>Zalecamy korzystanie z protokołu HTTPS |
-| Długość maksymalna    | 2048 znaków                       |
+| Maksymalna długość    | 2048 znaków                       |
 
 Przykłady: `https://myapp.com/terms-of-service` i `https://myapp.com/privacy-statement`
 
@@ -53,12 +53,12 @@ Gdy warunki użytkowania usługi i zasady zachowania poufności informacji są g
 
 * [Za pomocą Azure Portal](#azure-portal)
 * [Używanie pliku JSON obiektu App](#app-object-json)
-* [Korzystanie z interfejsu API REST MSGraph beta](#msgraph-beta-rest-api)
+* [Korzystanie z interfejsu API Microsoft Graph](#msgraph-rest-api)
 
 ### <a name="azure-portal"></a>Korzystanie z Azure Portal
 Wykonaj następujące kroki w Azure Portal.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 2. Przejdź do sekcji **rejestracje aplikacji** i wybierz aplikację.
 3. Otwórz okienko **znakowania** .
 4. Wypełnij pola adres **URL warunków** użytkowania i **zasady zachowania poufności informacji** .
@@ -77,12 +77,12 @@ Jeśli wolisz bezpośrednio modyfikować kod JSON obiektu App, możesz użyć ed
     }
 ```
 
-### <a name="msgraph-beta-rest-api"></a>Korzystanie z interfejsu API REST MSGraph beta
+### <a name="msgraph-rest-api"></a>Korzystanie z interfejsu API Microsoft Graph
 
-Aby programowo zaktualizować wszystkie swoje aplikacje, możesz użyć interfejsu API REST MSGraph beta w celu zaktualizowania wszystkich aplikacji, aby zawierały linki do dokumentów warunków użytkowania usługi i zasad zachowania poufności informacji.
+Aby programowo zaktualizować wszystkie aplikacje, możesz użyć interfejsu API Microsoft Graph, aby zaktualizować wszystkie aplikacje w celu uwzględnienia linków do dokumentów dotyczących warunków użytkowania usługi i zasad zachowania poufności informacji.
 
 ```
-PATCH https://graph.microsoft.com/beta/applications/{application id}
+PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 { 
     "appId": "{your application id}", 
     "info": { 
@@ -97,4 +97,4 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 
 > [!NOTE]
 > * Należy zachować ostrożność, aby nie zastąpić żadnych istniejących wcześniej wartości przypisanych do któregokolwiek z następujących pól: `supportUrl`, `marketingUrl`i `logoUrl`
-> * Interfejs API REST MSGraph beta będzie działał tylko po zalogowaniu się przy użyciu konta usługi Azure AD. Osobiste konta Microsoft nie są obsługiwane.
+> * Interfejs API Microsoft Graph działa tylko po zalogowaniu się przy użyciu konta usługi Azure AD. Osobiste konta Microsoft nie są obsługiwane.

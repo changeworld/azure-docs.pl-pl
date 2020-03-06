@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a0691bd2a556219b3e3d989a3bbc465fa56b4bf
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b97b542d11e405bab00519c68d2365dada6b6c7f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613807"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298874"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Przyłączanie maszyny wirtualnej CoreOS do domeny zarządzanej Azure AD Domain Services
 
@@ -34,7 +34,7 @@ Do ukończenia tego samouczka potrzebne są następujące zasoby i uprawnienia:
     * W razie konieczności [Utwórz dzierżawę Azure Active Directory][create-azure-ad-tenant] lub [skojarz subskrypcję platformy Azure z Twoim kontem][associate-azure-ad-tenant].
 * Azure Active Directory Domain Services zarządzana domena włączona i skonfigurowana w dzierżawie usługi Azure AD.
     * W razie konieczności pierwszy samouczek [tworzy i konfiguruje wystąpienie Azure Active Directory Domain Services][create-azure-ad-ds-instance].
-* Konto użytkownika, które jest członkiem grupy *administratorów DC usługi Azure AD* w dzierżawie usługi Azure AD.
+* Konto użytkownika, które jest częścią domeny zarządzanej AD DS platformy Azure.
 
 ## <a name="create-and-connect-to-a-coreos-linux-vm"></a>Tworzenie maszyny wirtualnej z systemem CoreOS Linux i nawiązywanie z nią połączenia
 
@@ -134,9 +134,9 @@ Po zaktualizowaniu pliku konfiguracji SSSD przyłączaj maszynę wirtualną do d
     * Sprawdź, czy maszyna wirtualna jest wdrożona w tej samej lub równorzędnej sieci wirtualnej, w której jest dostępna domena zarządzana platformy Azure AD DS.
     * Upewnij się, że ustawienia serwera DNS dla sieci wirtualnej zostały zaktualizowane w taki sposób, aby wskazywały kontrolery domeny w domenie zarządzanej platformy Azure AD DS.
 
-1. Dołącz teraz maszynę wirtualną do domeny zarządzanej AD DS platformy Azure przy użyciu polecenia `adcli join`. Określ użytkownika, który należy do grupy *administratorów kontrolera domeny usługi AAD* . W razie potrzeby [Dodaj konto użytkownika do grupy w usłudze Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+1. Dołącz teraz maszynę wirtualną do domeny zarządzanej AD DS platformy Azure przy użyciu polecenia `adcli join`. Określ użytkownika, który jest częścią domeny zarządzanej AD DS platformy Azure. W razie potrzeby [Dodaj konto użytkownika do grupy w usłudze Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Ponownie nazwa domeny zarządzanej platformy Azure AD DS musi być wpisana WIELKImi LITERAmi. W poniższym przykładzie konto o nazwie `contosoadmin@aaddscontoso.com` jest używane do inicjowania protokołu Kerberos. Wprowadź własne konto użytkownika, które jest członkiem grupy *Administratorzy domeny usługi AAD* .
+    Ponownie nazwa domeny zarządzanej platformy Azure AD DS musi być wpisana WIELKImi LITERAmi. W poniższym przykładzie konto o nazwie `contosoadmin@aaddscontoso.com` jest używane do inicjowania protokołu Kerberos. Wprowadź własne konto użytkownika, które jest częścią domeny zarządzanej AD DS platformy Azure.
 
     ```console
     sudo adcli join -D AADDSCONTOSO.COM -U contosoadmin@AADDSCONTOSO.COM -K /etc/krb5.keytab -H coreos.aaddscontoso.com -N coreos

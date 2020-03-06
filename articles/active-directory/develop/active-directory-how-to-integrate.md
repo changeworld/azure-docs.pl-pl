@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: dbbe501b27bf7ae4d4cb4bc00501aeb1fb06819e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 5e4c6fb91b93b1035c68350a5f77a3c16db7323f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161226"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300116"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integracja z usługą Azure Active Directory
 
@@ -38,13 +38,13 @@ Istnieje kilka sposobów integracji aplikacji z usługą Azure AD. Korzystaj z k
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Przeglądanie w poszukiwaniu użytkowników, zarządzanie aprowizacji użytkowników i kontrolowanie dostępu do aplikacji
 
-**Przeglądaj w poszukiwaniu użytkowników w katalogu.**  Użyj interfejs API programu Graph, aby pomóc użytkownikom w przeszukiwaniu i przeglądaniu innych osób w organizacji Podczas zapraszania osób lub udzielania dostępu, zamiast wymagać od nich wpisywania adresów e-mail. Użytkownicy mogą przeglądać przy użyciu znanego interfejsu stylu książki adresowej, w tym wyświetlania szczegółów hierarchii organizacyjnej. Dowiedz się więcej na temat [interfejs API programu Graph](active-directory-graph-api.md).
+**Przeglądaj w poszukiwaniu użytkowników w katalogu.**  Użyj interfejsu API Microsoft Graph, aby ułatwić użytkownikom wyszukiwanie i przeglądanie w poszukiwaniu innych osób w organizacji Podczas zapraszania osób lub udzielania dostępu, zamiast wymagać od nich wpisywania adresów e-mail. Użytkownicy mogą przeglądać przy użyciu znanego interfejsu stylu książki adresowej, w tym wyświetlania szczegółów hierarchii organizacyjnej. Dowiedz się więcej o [interfejsie API Microsoft Graph](https://docs.microsoft.com/graph/overview).
 
-**Ponowne używanie grup Active Directory i list dystrybucyjnych, którymi już zarządza Twój klient.**  Usługa Azure AD zawiera grupy, które są już używane przez klienta do dystrybucji poczty e-mail i zarządzania dostępem. Korzystając z interfejs API programu Graph, należy ponownie używać tych grup zamiast konieczności tworzenia osobnego zestawu grup i zarządzania nim w aplikacji. Informacje o grupach można także wysyłać do aplikacji w tokenach logowania. Dowiedz się więcej na temat [interfejs API programu Graph](active-directory-graph-api.md).
+**Ponowne używanie grup Active Directory i list dystrybucyjnych, którymi już zarządza Twój klient.**  Usługa Azure AD zawiera grupy, które są już używane przez klienta do dystrybucji poczty e-mail i zarządzania dostępem. Korzystając z interfejsu API Microsoft Graph, należy ponownie używać tych grup zamiast konieczności tworzenia osobnego zestawu grup i zarządzania nim w aplikacji. Informacje o grupach można także wysyłać do aplikacji w tokenach logowania. Dowiedz się więcej o [interfejsie API Microsoft Graph](https://docs.microsoft.com/graph/overview).
 
-**Użyj usługi Azure AD, aby kontrolować, kto ma dostęp do aplikacji.**  Administratorzy i właściciele aplikacji w usłudze Azure AD mogą przypisywać dostęp do aplikacji do określonych użytkowników i grup. Za pomocą interfejs API programu Graph można odczytać tę listę i używać jej do kontrolowania aprowizacji i cofania aprowizacji zasobów i dostępu w aplikacji.
+**Użyj usługi Azure AD, aby kontrolować, kto ma dostęp do aplikacji.**  Administratorzy i właściciele aplikacji w usłudze Azure AD mogą przypisywać dostęp do aplikacji do określonych użytkowników i grup. Za pomocą interfejsu API Microsoft Graph można odczytać tę listę i korzystać z niej w celu kontrolowania aprowizacji i cofania aprowizacji zasobów i dostępu w aplikacji.
 
-**Użyj usługi Azure AD na potrzeby ról opartych na Access Control.**  Administratorzy i właściciele aplikacji mogą przypisywać użytkowników i grupy do ról zdefiniowanych podczas rejestrowania aplikacji w usłudze Azure AD. Informacje o rolach są wysyłane do aplikacji przy użyciu tokenów logowania i mogą być również odczytywane za pomocą interfejs API programu Graph. Dowiedz się więcej o [korzystaniu z usługi Azure AD do autoryzacji](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
+**Użyj usługi Azure AD na potrzeby ról opartych na Access Control.**  Administratorzy i właściciele aplikacji mogą przypisywać użytkowników i grupy do ról zdefiniowanych podczas rejestrowania aplikacji w usłudze Azure AD. Informacje o rolach są wysyłane do aplikacji w tokenach logowania i można je również odczytać przy użyciu interfejsu API Microsoft Graph. Dowiedz się więcej o [korzystaniu z usługi Azure AD do autoryzacji](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Uzyskiwanie dostępu do profilu, kalendarza, poczty e-mail, kontaktów, plików i innych użytkowników
 

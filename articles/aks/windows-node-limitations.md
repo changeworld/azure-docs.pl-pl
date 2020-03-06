@@ -4,12 +4,12 @@ description: Informacje o znanych ograniczeniach w przypadku uruchamiania pul w�
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 157f890c65efd0de9fa7d8d7aa5cb43b4a902dfa
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 65c62324a27e8377a1cc9833595b15cf08c6c820
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615644"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298176"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Bieżące ograniczenia dotyczące pul węzłów systemu Windows Server i obciążeń aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -69,7 +69,7 @@ W trakcie okresu zapoznawczego pule węzłów systemu Windows nie obsługują ro
 
 ## <a name="how-many-node-pools-can-i-create"></a>Ile pul węzłów można utworzyć?
 
-Klaster AKS może mieć maksymalnie osiem pul węzłów (8). W ramach pul węzłów można mieć maksymalnie 400 węzłów. [Ograniczenia puli węzłów][nodepool-limitations].
+Klaster AKS może mieć maksymalnie 10 pul węzłów. W ramach pul węzłów można mieć maksymalnie 1000 węzłów. [Ograniczenia puli węzłów][nodepool-limitations].
 
 ## <a name="what-can-i-name-my-windows-node-pools"></a>Jak Nazywam się pulami węzłów systemu Windows?
 

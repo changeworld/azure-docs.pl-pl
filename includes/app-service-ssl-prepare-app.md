@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 1c3f2009dc71df1a5496d585bdcba986a79ac0d0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
-ms.translationtype: MT
+ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768467"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301010"
 ---
 ## <a name="prepare-your-web-app"></a>Przygotowywanie aplikacji internetowej
 
-Aby powiązać niestandardowy certyfikat protokołu SSL (certyfikat innej firmy lub certyfikat usługi App Service) z Twoją aplikacją internetową, Twój [Plan usługi App Service](https://azure.microsoft.com/pricing/details/app-service/) musi znajdować się w warstwie **Podstawowa**, **Standardowa**, **Premium** lub **Izolowana**. W tym kroku musisz się upewnić, że Twoja aplikacja internetowa jest w obsługiwanej warstwie cenowej.
+Aby utworzyć niestandardowe powiązania zabezpieczeń lub włączyć certyfikaty klienta dla aplikacji App Service, [plan App Service](https://azure.microsoft.com/pricing/details/app-service/) musi znajdować się w warstwie **podstawowa**, **standardowa**, **Premium**lub **izolowana** . W tym kroku musisz się upewnić, że Twoja aplikacja internetowa jest w obsługiwanej warstwie cenowej.
 
-### <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Otwórz [Portalu Azure](https://portal.azure.com).
+Otwórz [portal Azure](https://portal.azure.com).
 
 ### <a name="navigate-to-your-web-app"></a>Przejdź do swojej aplikacji internetowej
 

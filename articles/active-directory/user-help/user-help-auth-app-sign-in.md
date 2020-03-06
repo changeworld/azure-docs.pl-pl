@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b5f2b42728fd6f3d61695b4f88cc416015dd97cb
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: ac61c01c5e45b6e8e001a68781f93c3962cb581f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108258"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78297850"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Zaloguj się do swoich kont przy użyciu aplikacji Microsoft Authenticator
 
-Aplikacja Microsoft Authenticator pomaga w logowaniu się do kont, jeśli używana jest weryfikacja dwuskładnikowa. Weryfikacja dwuskładnikowa zapewnia bezpieczniejszy dostęp do kont, szczególnie podczas wyświetlania informacji poufnych. Ponieważ hasła mogą zostać zapomniane, skradzione lub ujawnione, weryfikacja dwuskładnikowa zapewnia dodatkowy poziom zabezpieczeń, który pomaga chronić konto, utrudniając włamanie się na nie innym osobom.
+Aplikacja Microsoft Authenticator ułatwia zalogowanie się do kont w przypadku korzystania z weryfikacji dwuskładnikowej. Weryfikacja dwuskładnikowa zapewnia bezpieczniejszy dostęp do kont, szczególnie podczas wyświetlania informacji poufnych. Ponieważ hasła mogą zostać zapomniane, skradzione lub ujawnione, weryfikacja dwuskładnikowa zapewnia dodatkowy poziom zabezpieczeń, który pomaga chronić konto, utrudniając włamanie się na nie innym osobom.
 
 Aplikacji Microsoft Authenticator można używać na wiele sposobów, na przykład:
 
@@ -49,13 +49,19 @@ Logowanie przy użyciu telefonu jest dostępne tylko na urządzeniach z systemam
 
 ### <a name="turn-on-phone-sign-in"></a>Włącz logowanie przy użyciu telefonu
 
-- Otwórz aplikację Microsoft Authenticator, przejdź do swojego konta służbowego i Włącz logowanie za pomocą telefonu:
+Otwórz aplikację Microsoft Authenticator, przejdź do swojego konta służbowego i Włącz logowanie za pomocą telefonu.
 
-    - **Jeśli zobaczysz tę ikonę ![ikona wyświetlania](media/user-help-auth-app-sign-in/icon.png).** Jeśli ta ikona jest wyświetlana obok nazwy konta służbowego, oznacza to, że już skonfigurowano logowanie za pomocą telefonu do konta. Może zostać wyświetlony monit o dodanie powiadomień wypychanych dla Twojego konta, dzięki czemu można otrzymywać powiadomienia o żądaniach uwierzytelniania poza aplikacją.
+Na urządzeniu z systemem Android:
 
-    - **Jeśli używasz aplikacji do weryfikacji dwuskładnikowej.** Jeśli używasz już aplikacji i weryfikacji dwuskładnikowej, możesz wybrać strzałkę listy rozwijanej obok nazwy konta, a następnie wybrać pozycję **Włącz logowanie za pomocą telefonu**.
+- **Jeśli zobaczysz tę ikonę ![ikona wyświetlania](media/user-help-auth-app-sign-in/icon.png).** Jeśli ta ikona jest wyświetlana obok nazwy konta służbowego, oznacza to, że już skonfigurowano logowanie za pomocą telefonu do konta. Może zostać wyświetlony monit o dodanie powiadomień wypychanych dla Twojego konta, dzięki czemu można otrzymywać powiadomienia o żądaniach uwierzytelniania poza aplikacją.
+- **Jeśli aplikacja jest już używana do weryfikacji dwuskładnikowej.** Jeśli używasz już aplikacji i weryfikacji dwuskładnikowej, możesz wybrać strzałkę obok nazwy konta, a następnie wybrać pozycję **Włącz logowanie za pomocą telefonu**.
+- **Jeśli nie możesz znaleźć konta służbowego.** Jeśli nie możesz znaleźć konta służbowego na ekranie **konta** aplikacji, oznacza to, że nie został jeszcze dodany do aplikacji. Dodaj swoje konto służbowe, wykonując czynności opisane w artykule [Dodawanie konta służbowego lub szkolnego](user-help-auth-app-add-work-school-account.md) .
 
-    - **Jeśli nie możesz znaleźć konta służbowego.** Jeśli nie możesz znaleźć konta służbowego na ekranie **konta** aplikacji, oznacza to, że nie został jeszcze dodany do aplikacji. Dodaj swoje konto służbowe, wykonując czynności opisane w artykule [Dodawanie konta służbowego lub szkolnego](user-help-auth-app-add-work-school-account.md) .
+Na urządzeniu z systemem iOS:
+
+- **Po naciśnięciu kafelka konta**konto zostanie otwarte w widoku pełny ekran konta. Jeśli zobaczysz, że logowanie za pomocą **telefonu jest włączone** , oznacza to, że użytkownik jest w pełni skonfigurowany, aby zalogować się bez hasła. Jeśli zobaczysz opcję **Włącz logowanie przy użyciu telefonu**, naciśnij ją, aby włączyć logowanie za telefonem.
+- **Jeśli aplikacja została już używana do weryfikacji dwuskładnikowej**, możesz nacisnąć kafelek konta, a następnie rozwinąć w widoku pełny ekran konta. Następnie naciśnij pozycję **Włącz logowanie** przy użyciu telefonu, aby włączyć logowanie przy użyciu telefonu.
+- **Jeśli nie możesz znaleźć konta służbowego** na ekranie **konta** aplikacji, oznacza to, że nie został jeszcze dodany do aplikacji. Dodaj swoje konto służbowe, wykonując czynności opisane w artykule Dodawanie konta służbowego lub szkolnego.
 
 Po włączeniu logowania za pomocą telefonu możesz zalogować się przy użyciu tylko Microsoft Authenticator aplikacji.
 
@@ -82,13 +88,19 @@ Możesz włączyć logowanie za pomocą telefonu do osobistego konto Microsoft, 
 
 ### <a name="turn-on-phone-sign-in"></a>Włącz logowanie przy użyciu telefonu 
 
-- Otwórz aplikację Microsoft Authenticator, przejdź do prywatnego konto Microsoft i Włącz logowanie za pomocą telefonu:
+Otwórz aplikację Microsoft Authenticator, przejdź do swojego konta służbowego i Włącz logowanie za pomocą telefonu.
 
-    - **Jeśli zobaczysz tę ikonę ![ikona wyświetlania](media/user-help-auth-app-sign-in/icon.png).** Jeśli ta ikona jest wyświetlana obok nazwy Twojego konta, oznacza to, że już skonfigurowano logowanie za pomocą telefonu dla konta. Może zostać wyświetlony monit o dodanie powiadomień wypychanych dla Twojego konta, dzięki czemu można otrzymywać powiadomienia o żądaniach uwierzytelniania poza aplikacją.
+Na urządzeniu z systemem Android:
 
-    - **Jeśli używasz aplikacji do weryfikacji dwuskładnikowej.** Jeśli używasz już aplikacji i weryfikacji dwuskładnikowej, możesz wybrać strzałkę listy rozwijanej obok nazwy konta, a następnie wybrać pozycję **Włącz logowanie za pomocą telefonu**.
+- **Jeśli zobaczysz tę ikonę ![ikona wyświetlania](media/user-help-auth-app-sign-in/icon.png).** Jeśli ta ikona jest wyświetlana obok nazwy osobistej konto Microsoft, oznacza to, że już skonfigurowano logowanie za pomocą telefonu dla konta. Może zostać wyświetlony monit o dodanie powiadomień wypychanych dla Twojego konta, dzięki czemu można otrzymywać powiadomienia o żądaniach uwierzytelniania poza aplikacją.
+- **Jeśli używasz aplikacji do weryfikacji dwuskładnikowej.** Jeśli używasz już aplikacji i weryfikacji dwuskładnikowej, możesz wybrać strzałkę obok nazwy konta, a następnie wybrać pozycję **Włącz logowanie za pomocą telefonu**.
+- **Jeśli nie możesz znaleźć konta służbowego.** Jeśli nie możesz znaleźć konta na ekranie **konta** aplikacji, oznacza to, że nie został jeszcze dodany do aplikacji. Dodaj swoje konto, wykonując czynności opisane w artykule [Dodawanie osobistych kont Microsoft](user-help-auth-app-add-personal-ms-account.md) .
 
-    - **Jeśli nie możesz znaleźć konta użytkownika.** Jeśli nie możesz znaleźć konta na ekranie **konta** aplikacji, oznacza to, że nie został jeszcze dodany do aplikacji. Dodaj konto Microsoft osobiste, wykonując czynności opisane w artykule [Dodawanie twojego konto Microsoft prywatnego](user-help-auth-app-add-personal-ms-account.md#add-your-personal-microsoft-account) .
+Na urządzeniu z systemem iOS:
+
+- **Po naciśnięciu kafelka konta**konto zostanie otwarte w widoku pełny ekran konta. Jeśli zobaczysz, że logowanie za pomocą **telefonu jest włączone** , oznacza to, że użytkownik jest w pełni skonfigurowany, aby zalogować się bez hasła. Jeśli zobaczysz opcję **Włącz logowanie przy użyciu telefonu**, naciśnij ją, aby włączyć logowanie za telefonem.
+- **Jeśli aplikacja jest już używana do weryfikacji dwuskładnikowej**, możesz nacisnąć kafelek konta, a następnie rozwinąć w widoku pełny ekran konta. Następnie naciśnij pozycję **Włącz logowanie** przy użyciu telefonu, aby włączyć logowanie przy użyciu telefonu.
+- **Jeśli nie możesz znaleźć konta** na ekranie **konta** aplikacji, oznacza to, że nie został jeszcze dodany do aplikacji. Dodaj konto Microsoft osobiste, wykonując czynności opisane w artykule [Dodawanie osobistych kont Microsoft](user-help-auth-app-add-personal-ms-account.md) .
 
 ### <a name="sign-in-to-your-account-using-phone-sign-in"></a>Zaloguj się do swojego konta przy użyciu logowania za pomocą telefonu
 
@@ -100,7 +112,7 @@ Możesz włączyć logowanie za pomocą telefonu do osobistego konto Microsoft, 
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>Zaloguj się przy użyciu weryfikacji dwuskładnikowej dla swojego konta
 
-Standardowa metoda weryfikacji dwuskładnikowej wymaga wprowadzenia nazwy użytkownika i hasła do urządzenia, do którego się logujesz, a następnie wybrania, czy aplikacja Microsoft Authenticator wysyła powiadomienie, czy wolisz skopiować skojarzony kod weryfikacyjny z ekranu **konta** aplikacji Microsoft Authenticator. Należy włączyć weryfikację dwuskładnikową dla Twojego konta w ramach procesu dodawania konta do aplikacji Microsoft Authenticator.
+Standardowa metoda weryfikacji dwuskładnikowej wymaga wprowadzenia nazwy użytkownika i hasła do urządzenia, do którego się logujesz, a następnie wybrania, czy aplikacja Microsoft Authenticator otrzymuje Microsoft Authenticator aplikację. Na urządzeniu z systemem Android te kody weryfikacyjne można znaleźć na ekranie konta. Na urządzeniu z systemem iOS te kody weryfikacyjne można znaleźć na ekranie **konta** lub w widoku pełny ekran konta, w zależności od typu konta. Należy włączyć weryfikację dwuskładnikową dla Twojego konta w ramach procesu dodawania konta do aplikacji Microsoft Authenticator.
 
 >[!Note]
 >Jeśli nie widzisz konta służbowego lub konta osobistego na ekranie **konta** aplikacji Microsoft Authenticator, oznacza to, że konto nie zostało dodane do aplikacji Microsoft Authenticator. Aby dodać konto, zobacz [Dodawanie konta służbowego](user-help-auth-app-add-work-school-account.md) lub [Dodawanie konta osobistego](user-help-auth-app-add-personal-ms-account.md).

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: e0458fd257942a455daef911a303437fea03b11b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 07e2d6f174e5af4af9bdcac73dc74f5cf061ed41
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122009"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300489"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Szybki Start: korzystanie z usługi Azure cache for Redis za pomocą środowiska Node. js
 
@@ -55,7 +55,7 @@ Nie należy tworzyć nowych połączeń dla każdej operacji w kodzie. Zamiast t
 
 ## <a name="create-a-new-nodejs-app"></a>Tworzenie nowej aplikacji na platformie Node.js
 
-Utwórz nowy plik skryptu o nazwie *redistest.js*.
+Utwórz nowy plik skryptu o nazwie *redistest.js*. Użyj `npm install redis bluebird` polecenia, aby zainstalować wymagane pakiety.
 
 Dodaj do pliku poniższy przykład kodu JavaScript. W tym kodzie pokazano sposób podłączania do wystąpienia usługi Azure Cache for Redis przy użyciu nazwy hosta pamięci podręcznej i kluczowych zmiennych środowiskowych. W kodzie jest również przechowywana i pobierana wartość ciągu w pamięci podręcznej. Następuje wykonanie poleceń `PING` i `CLIENT LIST`. Aby uzyskać więcej przykładów użycia usługi Redis z klientem [node_redis](https://github.com/mranney/node_redis), zobacz [https://redis.js.org/](https://redis.js.org/).
 
@@ -63,6 +63,7 @@ Dodaj do pliku poniższy przykład kodu JavaScript. W tym kodzie pokazano sposó
 var redis = require("redis");
 var bluebird = require("bluebird");
 
+// Convert Redis client API to use promises, to make it usable with async/await syntax
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: a48edda31f19ef4ce1ba23664eef1f51ba9cf8d1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: acaf16e7469b3ea4e5e391db91e37dc76be3b261
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970499"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298534"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Przenoszenie maszyn wirtualnych platformy Azure między Azure Government i regionami publicznymi 
 
@@ -20,7 +20,7 @@ Możesz chcieć przenieść maszyny wirtualne IaaS między Azure Governmentami i
 
 Oprócz używania usługi [Azure Site Recovery](site-recovery-overview.md) do zarządzania odzyskiwaniem maszyn lokalnych i maszyn wirtualnych platformy Azure po awarii oraz ich organizowania dla celów zapewniania ciągłości działania i odzyskiwania po awarii (BCDR, business continuity and disaster recovery) można ją stosować również do zarządzania przenoszeniem maszyn wirtualnych platformy Azure do regionu pomocniczego.       
 
-W tym samouczku pokazano, jak przenieść maszyny wirtualne platformy Azure między Azure Government a publicznymi regionami przy użyciu Azure Site Recovery. Ten sam można rozszerzyć, aby przenieść maszyny wirtualne między parami regionów, które nie znajdują się w tym samym klastrze geograficznym. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku pokazano, jak przenieść maszyny wirtualne platformy Azure między Azure Government a publicznymi regionami przy użyciu Azure Site Recovery. Ten sam można rozszerzyć, aby przenieść maszyny wirtualne między parami regionów, które nie znajdują się w tym samym klastrze geograficznym. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Weryfikowanie wymagań wstępnych
@@ -100,7 +100,7 @@ Na każdym serwerze, który ma zostać zreplikowany, musi być zainstalowana us�
     - [Moduły równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer)
     - [Publiczny adres IP](../virtual-network/virtual-network-public-ip-address.md)
     
-    Informacje na temat innych składników sieciowych zawiera [dokumentacja](https://docs.microsoft.com/azure/#pivot=products&panel=network) sieci. 
+    Wszystkie inne składniki sieci można znaleźć w [dokumentacji](https://docs.microsoft.com/azure/?pivot=products&panel=network)dotyczącej sieci.
 
 4. Ręcznie [utwórz sieć nieprodukcyjną](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) w regionie docelowym, jeśli chcesz przetestować konfigurację przed wykonaniem końcowej migracji do regionu docelowego. Ogranicza to do minimum zaburzenia działania środowiska produkcyjnego i jest zalecane.
 
@@ -115,7 +115,7 @@ Poniżej przedstawiono procedurę kopiowania danych do regionu docelowego przy u
 4. Utwórz grupę zasobów **ContosoRG**.
 5. Określ region platformy Azure. Aby sprawdzić obsługiwane regiony, zobacz sekcję dotyczącą dostępności geograficznej w temacie [Szczegóły cennika usługi Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
 6. W obszarze magazyny Recovery Services kliknij pozycję **przegląd** > **ConsotoVMVault** >  **+ replikacja**
-7. Wybierz pozycję **na platformie Azure,**  > **nie Zwirtualizowana/inna**.
+7. wybierz kolejno pozycje **Na platformę Azure** > **Niezwirtualizowane/inne**.
 
 ### <a name="set-up-the-configuration-server-to-discover-vms"></a>Skonfiguruj serwer konfiguracji w celu odnajdywania maszyn wirtualnych.
 
@@ -163,7 +163,7 @@ Wybierz i zweryfikuj zasoby docelowe.
 2. Określ docelowy model wdrażania.
 3. Usługa Site Recovery sprawdza, czy masz co najmniej jedno zgodne konto magazynu Azure i co najmniej jedną sieć platformy Azure.
 
-   ![Cel](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Środowisko docelowe](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ### <a name="create-a-replication-policy"></a>Tworzenie zasad replikacji

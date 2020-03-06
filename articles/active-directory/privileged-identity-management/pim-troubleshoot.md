@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f54382d652c3fc59b8ff462d41ec8c0fbdbe8498
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 474f2634e6f7ddc1840548c39ae86cb54c3bf08e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596688"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299690"
 ---
 # <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>Rozwiązywanie problemów z usługą Privileged Identity Management
 
@@ -34,9 +34,9 @@ Jako aktywny właściciel lub administrator dostępu użytkowników dla zasobu p
 
 Ten problem może wystąpić, gdy rola administratora dostępu użytkownika dla jednostki usługi PIM została przypadkowo usunięta z subskrypcji. Aby usługa Privileged Identity Management mogła uzyskać dostęp do zasobów platformy Azure, jednostka usługi MS-PIM powinna mieć zawsze przypisaną [rolę administratora dostępu użytkownika](../../role-based-access-control/built-in-roles.md#user-access-administrator) w ramach subskrypcji platformy Azure.
 
-### <a name="resolution"></a>Rozdzielczość
+### <a name="resolution"></a>Rozwiązanie
 
-Przypisz rolę Administrator dostępu użytkowników do nazwy głównej usługi Privileged Identity Management (MS — PIM) na poziomie subskrypcji. To przypisanie powinno umożliwić usłudze Privileged Identity Management dostęp do zasobów platformy Azure. Rolę można przypisywać na poziomie grupy zarządzania lub na poziomie subskrypcji, w zależności od wymagań. Aby uzyskać więcej informacji o nazwach głównych usługi, zobacz [przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role).
+Przypisz rolę Administrator dostępu użytkowników do nazwy głównej usługi Privileged Identity Management (MS — PIM) na poziomie subskrypcji. To przypisanie powinno umożliwić usłudze Privileged Identity Management dostęp do zasobów platformy Azure. Rolę można przypisywać na poziomie grupy zarządzania lub na poziomie subskrypcji, w zależności od wymagań. Aby uzyskać więcej informacji o nazwach głównych usługi, zobacz [przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application).
 
 ## <a name="next-steps"></a>Następne kroki
 

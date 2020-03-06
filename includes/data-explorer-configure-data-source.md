@@ -4,12 +4,12 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 11/03/2019
 ms.author: orspodek
-ms.openlocfilehash: f8b3e541dfd55bbd613af2791329a08402cf8670
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd9d017429b629acad39f5b902e842886c3c818
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581975"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305055"
 ---
 ## <a name="configure-the-data-source"></a>Konfigurowanie źródła danych
 
@@ -21,15 +21,15 @@ Aby skonfigurować Eksplorator danych platformy Azure jako źródło danych dla 
 
 1. Określ właściwości połączenia narzędzia pulpitu nawigacyjnego na podstawie informacji z jednostki usługi Azure AD, a następnie przetestuj połączenie.
 
-### <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
+### <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
 
 Nazwę główną usługi można utworzyć w [Azure Portal](#azure-portal) lub przy użyciu interfejsu wiersza polecenia [platformy Azure](#azure-cli) . Niezależnie od używanej metody, po utworzeniu uzyskasz wartości czterech właściwości połączenia, które będą używane w dalszych krokach.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Portalu Azure
 
 1. Aby utworzyć jednostkę usługi, postępuj zgodnie z instrukcjami w [dokumentacji Azure Portal](/azure/active-directory/develop/howto-create-service-principal-portal).
 
-    1. W sekcji [przypisywanie aplikacji do roli](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) Przypisz typ roli **czytnik** do klastra usługi Azure Eksplorator danych.
+    1. W sekcji [przypisywanie aplikacji do roli](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) Przypisz typ roli **czytnik** do klastra usługi Azure Eksplorator danych.
 
     1. W sekcji [pobieranie wartości dla logowania](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) Skopiuj trzy wartości właściwości omówione w krokach: **Identyfikator katalogu** (identyfikator dzierżawy), **Identyfikator aplikacji**i **hasło**.
 

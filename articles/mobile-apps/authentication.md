@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: bc7d8d4aaec6ebe27a0f8d2ecc11ca408266f7ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 261c12e63f8f348e1673dbc46c89c614caf3283b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453241"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296358"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>Dodawanie uwierzytelniania i zarządzanie tożsamościami użytkowników w aplikacjach mobilnych
 
@@ -20,8 +20,8 @@ Udostępnienie użytkownikowi i ich zachowania w aplikacji pozwala deweloperom l
 
 Użyj następujących usług, aby włączyć uwierzytelnianie użytkowników w aplikacjach mobilnych.
 
-## <a name="visual-studio-app-center"></a>Centrum aplikacji programu Visual Studio
-[App Center auth](/appcenter/auth/) to oparta na chmurze usługa zarządzania tożsamościami, której deweloperzy mogą używać do uwierzytelniania użytkowników i zarządzania tożsamościami użytkowników. Uwierzytelnianie App Center integruje się również z innymi częściami Visual Studio App Center. Deweloperzy mogą używać tożsamości użytkownika do [wyświetlania danych użytkownika](/appcenter/data/index) w innych usługach, a nawet [wysyłać powiadomienia wypychane do użytkowników zamiast poszczególnych urządzeń](/appcenter/push/push-to-user#app-center-auth-set-identity). 
+## <a name="visual-studio-app-center"></a>Visual Studio App Center
+[App Center auth](/appcenter/auth/) to oparta na chmurze usługa zarządzania tożsamościami, której deweloperzy mogą używać do uwierzytelniania użytkowników i zarządzania tożsamościami użytkowników. Uwierzytelnianie App Center integruje się również z innymi częściami Visual Studio App Center. Deweloperzy mogą używać tożsamości użytkownika do [wyświetlania danych użytkownika](/appcenter/data/index) w innych usługach, a nawet [wysyłać powiadomienia wypychane do użytkowników zamiast poszczególnych urządzeń](/appcenter/push/push-to-user#setting-user-identity). 
 
 **Najważniejsze funkcje**
 - Obsługiwane przez Azure Active Directory B2C (Azure AD B2C). 
@@ -36,7 +36,7 @@ Użyj następujących usług, aby włączyć uwierzytelnianie użytkowników w a
 - Proste środowisko użytkownika i środowisko Magical SDK dzięki zapakowaniu biblioteki uwierzytelniania firmy Microsoft z zestawem SDK Visual Studio App Center.
 - Obsługa platformy dla systemów iOS, Android, Xamarin i reagowanie na środowisko natywne.
 
-**Odwołania**
+**Wołują**
 - [Zarejestruj się w usłudze Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 
 - [Wprowadzenie do uwierzytelniania App Center](/appcenter/auth/)
 
@@ -52,13 +52,13 @@ Użyj następujących usług, aby włączyć uwierzytelnianie użytkowników w a
 - Łatwa integracja z bazami danych programu CRM, narzędziami do analizy marketingowej i systemami weryfikacji kont.
 - Przechwyć dane logowania, preferencji i konwersji dla klientów.
 
-**Odwołania**
+**Wołują**
 - [Azure Portal](https://portal.azure.com/)
 - [Dokumentacja Azure AD B2C](/azure/active-directory-b2c/)
 - [Przewodniki Szybki start](/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app)
 - [Przykłady](/azure/active-directory-b2c/code-samples)
 
-## <a name="azure-active-directory"></a>Usługa Active Directory systemu Azure
+## <a name="azure-active-directory"></a>Azure Active Directory
 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) to usługa zarządzania tożsamościami i dostępem w chmurze firmy Microsoft, która ułatwia pracownikom zalogowanie się i uzyskanie dostępu do:
 - Zasoby zewnętrzne, takie jak Microsoft Office 365, Azure Portal i tysiące innych aplikacji oprogramowania jako usługi (SaaS).
 - Zasoby wewnętrzne, takie jak aplikacje w sieci firmowej i intranecie, a także aplikacje w chmurze opracowane przez organizację.
@@ -69,7 +69,7 @@ Użyj następujących usług, aby włączyć uwierzytelnianie użytkowników w a
 - Tysiące wstępnie zintegrowanych aplikacji dla aplikacji komercyjnych i niestandardowych, takich jak Office 365, Salesforce.com i Box.
 - Możliwość zarządzania dostępem w dużej skali.
 
-**Odwołania**
+**Wołują**
 - [Azure Portal](https://portal.azure.com/)
 - [Co to jest usługa Azure AD?](/azure/active-directory/fundamentals/active-directory-whatis)
 - [Rozpoczynanie pracy z usługą Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)

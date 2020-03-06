@@ -2,33 +2,37 @@
 title: Dołączanie rozwiązań Update Management, Change Tracking i spisu z maszyny wirtualnej platformy Azure
 description: Dowiedz się, jak dołączać maszynę wirtualną platformy Azure z rozwiązaniami Update Management, Change Tracking i spisu, które są częścią Azure Automation.
 services: automation
-ms.date: 03/20/2019
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 93222b1b38fa37ec577da6377fdd9aff3fe12018
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 621b429f5dc3a6b6620e4d41ad46763e1d4fa226
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421819"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299534"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Dołączanie rozwiązań Update Management, Change Tracking i spisu z maszyny wirtualnej platformy Azure
 
 Azure Automation udostępnia rozwiązania ułatwiające zarządzanie aktualizacjami zabezpieczeń systemu operacyjnego, śledzenie zmian i spisy, które są zainstalowane na komputerach. Istnieje wiele sposobów na dołączenie maszyn. Możesz dołączyć rozwiązanie z maszyny wirtualnej, z [konta usługi Automation](automation-onboard-solutions-from-automation-account.md), [przeglądać wiele maszyn](automation-onboard-solutions-from-browse.md)lub przy użyciu [elementu Runbook](automation-onboard-solutions.md). W tym artykule opisano dołączanie tych rozwiązań z maszyny wirtualnej platformy Azure.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="enable-the-solutions"></a>Włącz rozwiązania
 
-Przejdź do istniejącej maszyny wirtualnej. W obszarze **operacje**wybierz pozycję **Zarządzanie aktualizacjami**, **spis**lub **śledzenie zmian**. Maszyna wirtualna może istnieć w dowolnym regionie, niezależnie od lokalizacji konta usługi Automation. Podczas dołączania rozwiązania z maszyny wirtualnej należy mieć uprawnienie `Microsoft.OperationalInsights/workspaces/read`, aby określić, czy maszyna wirtualna została dołączona do obszaru roboczego. Aby dowiedzieć się więcej o dodatkowych uprawnieniach, które są w ogóle konieczne, zobacz [uprawnienia wymagane do](automation-role-based-access-control.md#onboarding)dołączania maszyn.
+Najpierw włącz jedno lub wszystkie trzy rozwiązania na maszynie wirtualnej:
 
-Aby włączyć rozwiązanie tylko dla maszyny wirtualnej, upewnij się, że wybrano **opcję Włącz dla tej maszyny wirtualnej** . Aby dołączyć wiele maszyn do rozwiązania, wybierz opcję **Włącz dla maszyn wirtualnych w tej subskrypcji**, a następnie wybierz **pozycję kliknij, aby wybrać maszyny do włączenia**. Aby dowiedzieć się, jak dołączyć wiele maszyn jednocześnie, zobacz Dołączanie [rozwiązań Update Management, Change Tracking i spisu](automation-onboard-solutions-from-automation-account.md).
+1. W [Azure Portal](https://portal.azure.com)z okienka po lewej stronie wybierz pozycję **maszyny wirtualne** lub Wyszukaj i wybierz pozycję **maszyny wirtualne** ze strony **głównej** .
+2. Wybierz maszynę wirtualną, dla której chcesz włączyć rozwiązanie.
+3. Na stronie maszyna wirtualna w obszarze **operacje**wybierz pozycję **Zarządzanie aktualizacjami**, **spis**lub **śledzenie zmian**. Maszyna wirtualna może istnieć w dowolnym regionie, niezależnie od lokalizacji konta usługi Automation. Podczas dołączania rozwiązania z maszyny wirtualnej należy mieć uprawnienie `Microsoft.OperationalInsights/workspaces/read`, aby określić, czy maszyna wirtualna została dołączona do obszaru roboczego. Aby dowiedzieć się więcej o dodatkowych uprawnieniach, które są wymagane, zobacz [uprawnienia wymagane do](automation-role-based-access-control.md#onboarding)dołączania maszyn.
+
+Aby dowiedzieć się, jak dołączyć wiele maszyn jednocześnie, zobacz Dołączanie [rozwiązań Update Management, Change Tracking i spisu](automation-onboard-solutions-from-automation-account.md).
 
 Wybierz obszar roboczy platformy Azure Log Analytics i konto usługi Automation, a następnie wybierz pozycję **Włącz** , aby włączyć rozwiązanie. Włączanie rozwiązania może trwać do 15 minut.
 
-![Dołączanie rozwiązania Update Management](media/automation-onboard-solutions-from-vm/onboard-solution.png)
+![Dołączanie rozwiązania Update Management](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
 Przejdź do innych rozwiązań, a następnie wybierz pozycję **Włącz**. Lista rozwijana Log Analytics obszaru roboczego i konta usługi Automation jest wyłączona, ponieważ te rozwiązania korzystają z tego samego obszaru roboczego i konta usługi Automation jak wcześniej włączone rozwiązanie.
 
@@ -41,9 +45,9 @@ Każde rozwiązanie korzysta z konfiguracji zakresu w obszarze roboczym, aby kie
 
 Jeśli wybrany obszar roboczy nie ma już rozwiązań Update Management lub Change Tracking, zostaną utworzone następujące konfiguracje zakresów:
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+* **MicrosoftDefaultScopeConfig — śledzenia zmian**
 
-* **MicrosoftDefaultScopeConfig-Updates**
+* **MicrosoftDefaultScopeConfig — aktualizacje**
 
 Jeśli wybrany obszar roboczy ma już rozwiązanie, rozwiązanie nie zostanie ponownie wdrożone i nie zostanie dodana konfiguracja zakresu.
 
@@ -55,9 +59,9 @@ Po dodaniu komputera do rozwiązań Update Management, Change Tracking lub spisu
 
 Przejdź do swojego obszaru roboczego. W obszarze **Ogólne**wybierz pozycję **zapisane wyszukiwania**. Dwa zapisane wyszukiwania, które są używane w tych rozwiązaniach, przedstawiono w poniższej tabeli:
 
-|Nazwa     |Kategoria  |Alias  |
+|Name (Nazwa)     |Kategoria  |Alias  |
 |---------|---------|---------|
-|MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
+|MicrosoftDefaultComputerGroup     |  Śledzenia zmian       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualizacje        | Updates__MicrosoftDefaultComputerGroup         |
 
 Wybierz jedno z zapisanych wyszukiwań, aby wyświetlić zapytanie, które jest używane do wypełniania grupy. Na poniższej ilustracji przedstawiono zapytanie i jego wyniki:
@@ -91,7 +95,7 @@ Po usunięciu tych rozwiązań możesz wykonać następujące czynności, aby od
 
 Jeśli użyto rozwiązania Update Management, opcjonalnie możesz chcieć usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
 
-* Harmonogramy aktualizacji — każda z nich będzie mieć nazwy zgodne z utworzonymi wdrożeniami aktualizacji)
+* Harmonogramy aktualizacji — każda z nich będzie mieć nazwy zgodne z utworzonymi wdrożeniami aktualizacji.
 
 * Grupy hybrydowych procesów roboczych utworzone dla rozwiązania — każda z nich będzie podobna do maszyna1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
 
@@ -115,5 +119,7 @@ Aby usunąć maszynę wirtualną z Update Management:
 Przejdź do samouczków dotyczących rozwiązań, aby dowiedzieć się, jak z nich korzystać:
 
 * [Samouczek — zarządzanie aktualizacjami dla maszyny wirtualnej](automation-tutorial-update-management.md)
+
 * [Samouczek — identyfikowanie oprogramowania na maszynie wirtualnej](automation-tutorial-installed-software.md)
+
 * [Samouczek — Rozwiązywanie problemów dotyczących zmian na maszynie wirtualnej](automation-tutorial-troubleshoot-changes.md)

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 286e2ad460e98cfeceab52a3ac21bcba8da2cc7f
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f187dba4eace61695a72e4b7b08731e65ff0d7f9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612804"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299112"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Rozwiązywanie problemów z przyłączaniem do domeny za pomocą Azure AD Domain Services domeny zarządzanej
 
@@ -55,7 +55,7 @@ Aby rozwiązać problemy związane z poświadczeniami, zapoznaj się z następuj
 
 1. Spróbuj użyć formatu UPN, aby określić poświadczenia, takie jak `dee@aaddscontoso.onmicrosoft.com`. Upewnij się, że ta nazwa UPN jest prawidłowo skonfigurowana w usłudze Azure AD.
     * Nazwa *sAMAccountName* dla Twojego konta może zostać wygenerowana automatycznie, jeśli istnieje wielu użytkowników z tym samym PREFIKSEM nazwy UPN w dzierżawie lub jeśli prefiks nazwy UPN jest zbyt długi. W związku z tym format *sAMAccountName* dla konta może być inny niż oczekiwany lub używany w domenie lokalnej.
-1. Spróbuj użyć poświadczeń dla konta użytkownika należącego do grupy *administratorów kontrolera domeny usługi AAD* , aby dołączyć maszyny wirtualne do domeny zarządzanej AD DS platformy Azure.
+1. Spróbuj użyć poświadczeń dla konta użytkownika, które jest częścią domeny zarządzanej AD DS platformy Azure, aby dołączyć maszyny wirtualne do domeny zarządzanej.
 1. Upewnij się, że [włączono synchronizację haseł][enable-password-sync] i upłynął wystarczająco długo, aby można było ukończyć synchronizację wstępnego hasła.
 
 ## <a name="next-steps"></a>Następne kroki

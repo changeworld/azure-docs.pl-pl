@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 54606b4fbbf7ae459298b3842f957de5256ba0df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 799ed0e877bb3bddb3f179cdb3d6df6fca57e4d5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971149"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301356"
 ---
 # <a name="application-gateway-components"></a>Składniki bramy aplikacji
 
@@ -32,7 +32,7 @@ Jednostka SKU V1 można skonfigurować do obsługi statycznego lub dynamicznego 
 
 Nazwa DNS skojarzona z bramą aplikacji nie zmienia cyklu życia bramy. W związku z tym należy użyć aliasu CNAME i wskazać go adres DNS bramy aplikacji.
 
-## <a name="listeners"></a>Odbiorniki
+## <a name="listeners"></a>Obiektów
 
 Odbiornik jest jednostką logiczną, która sprawdza przychodzące żądania połączenia. Odbiornik akceptuje żądanie, jeśli protokół, port, nazwa hosta i adres IP skojarzony z żądaniem są zgodne z tymi samymi elementami, które są skojarzone z konfiguracją odbiornika.
 
@@ -53,7 +53,7 @@ Application Gateway obsługuje cztery protokoły: HTTP, HTTPS, HTTP/2 i WebSocke
 >Obsługa protokołu HTTP/2 jest dostępna dla klientów nawiązujących połączenie z odbiornikami bramy aplikacji. Komunikacja z pulami serwerów zaplecza jest zawsze za pośrednictwem protokołu HTTP/1.1. Domyślnie obsługa protokołu HTTP/2 jest wyłączona. Możesz włączyć tę opcję.
 
 - Określ między protokołami HTTP i HTTPS w konfiguracji odbiornika.
-- Obsługa [protokołów WebSockets i http/2](overview.md#websocket-and-http2-traffic) jest zapewniana w sposób natywny, a [Obsługa protokołu WebSocket](application-gateway-websocket.md) jest domyślnie włączona. Nie ma żadnych ustawień konfigurowanych przez użytkownika umożliwiających selektywne włączenie lub wyłączenie obsługi protokołu WebSocket. Użyj obiektów WebSockets z odbiornikami HTTP i HTTPS.
+- Obsługa [protokołów WebSockets i http/2](features.md#websocket-and-http2-traffic) jest zapewniana w sposób natywny, a [Obsługa protokołu WebSocket](application-gateway-websocket.md) jest domyślnie włączona. Nie ma żadnych ustawień konfigurowanych przez użytkownika umożliwiających selektywne włączenie lub wyłączenie obsługi protokołu WebSocket. Użyj obiektów WebSockets z odbiornikami HTTP i HTTPS.
 
 Użyj odbiornika HTTPS do zakończenia protokołu SSL. Odbiornik HTTPS odciąża szyfrowanie i odszyfrowanie do bramy aplikacji, dzięki czemu serwery sieci Web nie obciążają obciążenia.
 
@@ -67,7 +67,7 @@ Aby uzyskać więcej informacji, zobacz [niestandardowe strony błędów dla bra
 
 Istnieją dwa typy odbiorników:
 
-- **Podstawowy**. Ten typ odbiornika nasłuchuje w pojedynczej lokacji domeny, gdzie ma pojedyncze mapowanie DNS na adres IP bramy aplikacji. Ta konfiguracja odbiornika jest wymagana w przypadku hostowania pojedynczej lokacji za bramą aplikacji.
+- **Podstawowa**. Ten typ odbiornika nasłuchuje w pojedynczej lokacji domeny, gdzie ma pojedyncze mapowanie DNS na adres IP bramy aplikacji. Ta konfiguracja odbiornika jest wymagana w przypadku hostowania pojedynczej lokacji za bramą aplikacji.
 
 - **Wiele witryn**. Ta konfiguracja odbiornika jest wymagana podczas konfigurowania więcej niż jednej aplikacji sieci Web w tym samym wystąpieniu bramy aplikacji. Umożliwia skonfigurowanie bardziej wydajnej topologii dla wdrożeń przez dodanie do 100 witryn sieci Web do jednej bramy aplikacji. Każdą witrynę sieci Web można skierować do jej puli zaplecza. Na przykład trzy poddomeny, abc.contoso.com, xyz.contoso.com i pqr.contoso.com, wskazują adres IP bramy aplikacji. Utworzysz trzy odbiorniki z wieloma lokacjami i skonfigurujesz każdy odbiornik dla odpowiedniego ustawienia portu i protokołu.
 
@@ -85,7 +85,7 @@ Gdy odbiornik akceptuje żądanie, reguła routingu żądań przekazuje żądani
 
 Istnieją dwa typy reguł routingu żądań:
 
-- **Podstawowy**. Wszystkie żądania na skojarzonym odbiorniku (na przykład blog.contoso.com/*) są przekazywane do skojarzonej puli zaplecza przy użyciu skojarzonego ustawienia protokołu HTTP.
+- **Podstawowa**. Wszystkie żądania na skojarzonym odbiorniku (na przykład blog.contoso.com/*) są przekazywane do skojarzonej puli zaplecza przy użyciu skojarzonego ustawienia protokołu HTTP.
 
 - **Oparta na ścieżce**. Ta reguła routingu umożliwia kierowanie żądań na skojarzonym odbiorniku do określonej puli zaplecza na podstawie adresu URL w żądaniu. Jeśli ścieżka adresu URL w żądaniu pasuje do wzorca ścieżki w regule opartej na ścieżce, reguła kieruje to żądanie. Stosuje wzorzec ścieżki tylko do ścieżki URL, a nie do parametrów zapytania. Jeśli ścieżka URL w żądaniu odbiornika nie jest zgodna z żadną regułą opartą na ścieżce, kieruje żądanie do domyślnej puli zaplecza i ustawień protokołu HTTP.
 
@@ -115,9 +115,9 @@ Port i protokół używany w ustawieniach protokołu HTTP określają, czy ruch 
 
 Ten składnik jest również używany do:
 
-- Określ, czy sesja użytkownika ma być przechowywana na tym samym serwerze przy użyciu [koligacji sesji opartej na plikach cookie](overview.md#session-affinity).
+- Określ, czy sesja użytkownika ma być przechowywana na tym samym serwerze przy użyciu [koligacji sesji opartej na plikach cookie](features.md#session-affinity).
 
-- Usuń bezpiecznie członków puli zaplecza przy użyciu [opróżniania połączeń](overview.md#connection-draining).
+- Usuń bezpiecznie członków puli zaplecza przy użyciu [opróżniania połączeń](features.md#connection-draining).
 
 - Skojarz niestandardową sondę, aby monitorować kondycję zaplecza, ustaw interwał limitu czasu żądania, zastąp nazwę hosta i ścieżkę w żądaniu, a następnie podaj prostotę, aby określić ustawienia dla App Service zaplecza.
 
@@ -126,7 +126,7 @@ Ten składnik jest również używany do:
 Pula zaplecza kieruje żądanie do serwerów zaplecza, które umożliwiają żądanie. Pule zaplecza mogą zawierać:
 
 - Karty interfejsów sieciowych
-- Virtual Machine Scale Sets
+- Zestawy skalowania maszyn wirtualnych
 - Publiczne adresy IP
 - Wewnętrzne adresy IP
 - NAZWA FQDN
@@ -152,6 +152,6 @@ Aby uzyskać więcej informacji, zobacz [monitorowanie kondycji bramy aplikacji]
 
 Tworzenie bramy aplikacji:
 
-* [W witrynie Azure Portal](quick-create-portal.md)
+* [W Azure Portal](quick-create-portal.md)
 * [Za pomocą Azure PowerShell](quick-create-powershell.md)
 * [Za pomocą interfejsu wiersza polecenia platformy Azure](quick-create-cli.md)

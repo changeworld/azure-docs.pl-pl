@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 4ffcd82931b4df92aa2885eb043deae90a70526f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 737b25fd4c83c459f033bd7b07f6362909e38056
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695351"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299887"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrowanie aplikacji do MSAL.NET
 
@@ -27,7 +27,7 @@ Zarówno Biblioteka uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NE
 - można uwierzytelnić szerszy zbiór tożsamości firmy Microsoft (tożsamości usługi Azure AD i konta Microsoft, a także konta społecznościowe i lokalne za pośrednictwem Azure AD B2C), ponieważ korzysta on z punktu końcowego platformy tożsamości firmy Microsoft.
 - Użytkownicy będą korzystać z najlepszego środowiska logowania jednokrotnego.
 - Aplikacja może włączyć przyrostową zgodę, a obsługa dostępu warunkowego jest łatwiejsza
-- korzystasz z innowacji.
+- Korzystasz z innowacji.
 
 **MSAL.NET jest teraz zalecaną biblioteką uwierzytelniania do użycia z platformą tożsamości firmy Microsoft**. Żadne nowe funkcje nie zostaną zaimplementowane w systemie ADAL.NET. Wysiłki są skoncentrowane na ulepszaniu MSAL.
 
@@ -118,7 +118,7 @@ Nie wszystkie dotacje są jeszcze obsługiwane w MSAL.NET i punkcie końcowym v 
 
 Poniżej przedstawiono dotacje obsługiwane w ADAL.NET i MSAL.NET dla aplikacji klasycznych i mobilnych
 
-Udziel | ADAL.NET | MSAL.NET
+Uprawnienie | ADAL.NET | MSAL.NET
 ----- |----- | -----
 Interaktywne | [Uwierzytelnianie interakcyjne](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [Interaktywny pozyskiwanie tokenów w usłudze MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
 Zintegrowane uwierzytelnianie systemu Windows | [Uwierzytelnianie zintegrowane w systemie Windows (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Zintegrowane uwierzytelnianie systemu Windows](msal-authentication-flows.md#integrated-windows-authentication)
@@ -129,10 +129,10 @@ Przepływ kodu urządzenia | [Profil urządzenia dla urządzeń bez przeglądare
 
 Poniżej przedstawiono dotacje obsługiwane w ADAL.NET i MSAL.NET dla aplikacji sieci Web, interfejsów API sieci Web i aplikacji demonów:
 
-Typ aplikacji | Udziel | ADAL.NET | MSAL.NET
+Typ aplikacji | Uprawnienie | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Aplikacja internetowa, internetowy interfejs API, Demon | Poświadczenia klienta | [Przepływy poświadczeń klienta w ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Przepływy poświadczeń klienta w MSAL.NET](msal-authentication-flows.md#client-credentials))
-Internetowy interfejs API | W imieniu | [Wywołania usługi do obsługi w imieniu użytkownika z ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [W imieniu programu MSAL.NET](msal-authentication-flows.md#on-behalf-of)
+Interfejs API sieci Web | W imieniu | [Wywołania usługi do obsługi w imieniu użytkownika z ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [W imieniu programu MSAL.NET](msal-authentication-flows.md#on-behalf-of)
 Aplikacja internetowa | Kod uwierzytelniania | [Uzyskiwanie tokenów z kodami autoryzacji w aplikacjach sieci Web za pomocą ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Uzyskiwanie tokenów z kodami autoryzacji w aplikacjach sieci Web za pomocą MSAL.NET](msal-authentication-flows.md#authorization-code)
 
 ### <a name="cache-persistence"></a>Trwałość pamięci podręcznej
@@ -143,7 +143,7 @@ MSAL.NET sprawia, że token buforuje klasę zapieczętowana, usuwając możliwo�
 
 ## <a name="signification-of-the-common-authority"></a>Signification wspólnego urzędu
 
-W wersji 1.0, jeśli używasz urzędu https://login.microsoftonline.com/common , użytkownicy będą mogli zalogować się przy użyciu dowolnego konta usługi AAD (dla dowolnej organizacji). Zobacz [weryfikacja urzędu w ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
+W wersji 1.0, jeśli używasz urzędu https://login.microsoftonline.com/common, użytkownicy będą mogli zalogować się przy użyciu dowolnego konta usługi AAD (dla dowolnej organizacji). Zobacz [weryfikacja urzędu w ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation)
 
 Jeśli używasz urzędu https://login.microsoftonline.com/common w wersji 2.0, zezwolisz użytkownikom na logowanie się za pomocą dowolnej organizacji usługi AAD lub konta Microsoft Personal (MSA). W MSAL.NET, jeśli chcesz ograniczyć logowanie do dowolnego konta usługi AAD (takie samo zachowanie jak w przypadku usługi ADAL.NET), musisz użyć https://login.microsoftonline.com/organizations. Aby uzyskać szczegółowe informacje, zobacz `authority` parametru w [publicznej aplikacji klienckiej](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication).
 
@@ -165,7 +165,7 @@ Uprawnienia OAuth2 są zakresami uprawnień, które aplikacja interfejsu API sie
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Zakresy żądania dostępu do określonych uprawnień OAuth2 aplikacji v 1.0
 
-Jeśli chcesz uzyskać tokeny dla określonych zakresów aplikacji v 1.0 (na przykład Graf usługi AAD, który jest https://graph.windows.net) , musisz utworzyć `scopes` , łącząc żądany identyfikator zasobu z żądanym uprawnieniem OAuth2 dla tego zasobu.
+Jeśli chcesz uzyskać tokeny dla aplikacji akceptującej tokeny w wersji 1.0 (na przykład Microsoft Graph interfejs API, który jest https://graph.microsoft.com), musisz utworzyć `scopes` przez połączenie żądanego identyfikatora zasobu z żądanym uprawnieniem OAuth2 dla tego zasobu.
 
 Na przykład aby uzyskać dostęp do nazwy użytkownika interfejsu API sieci Web w wersji 1.0, dla którego identyfikator URI aplikacji jest `ResourceId`, warto użyć:
 
@@ -173,16 +173,16 @@ Na przykład aby uzyskać dostęp do nazwy użytkownika interfejsu API sieci Web
 var scopes = new [] {  ResourceId+"/user_impersonation"};
 ```
 
-Jeśli chcesz odczytywać i zapisywać dane z MSAL.NET Azure Active Directory przy użyciu interfejsu API programu AAD Graph (https://graph.windows.net/) , utworzysz listę zakresów, jak w poniższym fragmencie kodu:
+Jeśli chcesz odczytywać i zapisywać MSAL.NET Azure Active Directory przy użyciu interfejsu API Microsoft Graph (https://graph.microsoft.com/), utworzysz listę zakresów, jak w poniższym fragmencie kodu:
 
 ```csharp
-ResourceId = "https://graph.windows.net/";
+ResourceId = "https://graph.microsoft.com/";
 var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 
 #### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Ostrzeżenie: należy mieć jeden lub dwa ukośniki w zakresie odpowiadającym interfejsowi API sieci Web w wersji 1.0
 
-Jeśli chcesz napisać zakres odpowiadający interfejsowi API Azure Resource Manager (https://management.core.windows.net/) , musisz zażądać następującego zakresu (należy zauważyć dwa ukośniki). 
+Jeśli chcesz napisać zakres odpowiadający interfejsowi API Azure Resource Manager (https://management.core.windows.net/), musisz zażądać następującego zakresu (należy zauważyć dwa ukośniki). 
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -196,7 +196,7 @@ Wynika to z faktu, że interfejs API Menedżer zasobów oczekuje ukośnika w swo
 Logika używana przez usługę Azure AD jest następująca:
 - Dla punktu końcowego ADAL (v 1.0) z tokenem dostępu w wersji 1.0 (możliwe), AUD = zasób
 - W przypadku usługi MSAL (punkt końcowy v 2.0) żądanie tokenu dostępu dla zasobu akceptującego tokeny v 2.0, AUD = Resource. AppId
-- W przypadku usługi MSAL (punkt końcowy v 2.0) z prośbą o token dostępu dla zasobu akceptującego token dostępu w wersji 1.0 (w tym przypadku powyżej) usługa Azure AD analizuje żądanych odbiorców od żądanego zakresu, pobierając wszystko przed ostatnim ukośnikiem i używając go jako identyfikatora zasobu. W związku z tym jeśli https:\//database.windows.net oczekuje odbiorców "https://database.windows.net/ ", musisz zażądać zakresu protokołu https:\/ /database.windows.net//.default. Zobacz również artykuł problem #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): ukośnik końcowy adresu URL zasobu został pominięty, co spowodowało niepowodzenie uwierzytelniania SQL #747
+- W przypadku usługi MSAL (punkt końcowy v 2.0) z prośbą o token dostępu dla zasobu akceptującego token dostępu w wersji 1.0 (w tym przypadku powyżej) usługa Azure AD analizuje żądanych odbiorców od żądanego zakresu, pobierając wszystko przed ostatnim ukośnikiem i używając go jako identyfikatora zasobu. W związku z tym jeśli https:\//database.windows.net oczekuje odbiorców "https://database.windows.net/", musisz zażądać zakresu protokołu https:\//database.windows.net//.default. Zobacz również artykuł problem #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): ukośnik końcowy adresu URL zasobu został pominięty, co spowodowało niepowodzenie uwierzytelniania SQL #747
 
 
 ### <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Zakresy żądania dostępu do wszystkich uprawnień aplikacji w wersji 1.0

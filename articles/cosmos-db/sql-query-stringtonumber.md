@@ -4,15 +4,15 @@ description: Dowiedz się więcej o funkcji StringToNumber systemu SQL w Azure C
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8b9596738d9b02fa26f9c363287323b905654a1f
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 5ca8d0c4a6d244823dda6f0f79a3cf5c743a12a9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349228"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296426"
 ---
 # <a name="stringtonumber-azure-cosmos-db"></a>StringToNumber (Azure Cosmos DB)
  Zwraca wyrażenie tłumaczone na liczbę. Jeśli wyrażenia nie można przetłumaczyć, funkcja zwraca wartość undefined.  
@@ -34,7 +34,7 @@ StringToNumber(<str_expr>)
   
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład pokazuje, jak `StringToNumber` zachowuje się w różnych typach. 
+  Poniższy przykład pokazuje, jak `StringToNumber` działa w różnych typach. 
 
 Odstęp jest dozwolony tylko przed lub po liczbie.
 
@@ -46,7 +46,7 @@ SELECT
     StringToNumber("-1.79769e+308") AS num4
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
@@ -59,7 +59,7 @@ SELECT
     StringToNumber("0xF")
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 {{}}
@@ -77,11 +77,15 @@ SELECT
     StringToNumber(NaN)
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 {{}}
 ```  
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa nie będzie używać indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 

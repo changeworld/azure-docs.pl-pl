@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 10/21/2019
+ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: ecaf9e007d93b3a99a7609ebf36307f3a6dad15c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2b689588bcbca640dd55b25c52c462ad1a363da5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199958"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296341"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Tworzenie kopii zapasowych i przywracanie danych w puli SQL Synapse platformy Azure
 
@@ -58,7 +58,7 @@ Poniżej znajdują się szczegółowe informacje dotyczące okresów przechowywa
 2. Migawki nie są wykonywane, gdy pula SQL jest wstrzymana.
 3. Wiek punktu przywracania jest mierzony przez bezwzględne dni kalendarzowe od momentu, w którym jest wykonywana punkt przywracania, w tym gdy pula SQL jest wstrzymana.
 4. W dowolnym momencie Pula SQL ma możliwość przechowywania do 42 punktów przywracania zdefiniowanych przez użytkownika i 42 punktów przywracania automatycznego, o ile te punkty przywracania nie osiągnęły 7-dniowego okresu przechowywania
-5. Jeśli wykonywana jest migawka, Pula SQL jest wstrzymana przez więcej niż 7 dni, a następnie wznawia działanie, istnieje możliwość przywrócenia punktu przywracania do momentu, w którym dostępne są 42 całkowite punkty przywracania (w tym zdefiniowane przez użytkownika i automatyczne)
+5. Jeśli tworzona jest migawka, Pula SQL jest wstrzymana przez więcej niż 7 dni, a następnie wznawia się, punkt przywracania będzie trwały do momentu, w którym są 42 całkowite punkty przywracania (w tym zdefiniowane przez użytkownika i automatyczne)
 
 ### <a name="snapshot-retention-when-a-sql-pool-is-dropped"></a>Przechowywanie migawek w przypadku porzucenia puli SQL
 

@@ -4,12 +4,12 @@ description: Zawiera wskazówki dotyczące rozwiązywania problemów ułatwiają
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: f8988d3df7f61d2fce4c8fa5b49e42e872c185b8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: ed91a1cd8600f4e1ac208b0036c3d4ba74c0e6bb
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603139"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295967"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Rozwiązywanie problemów związanych z powolnym tworzeniem kopii zapasowych plików i folderów w usłudze Azure Backup
 
@@ -44,19 +44,19 @@ Zdecydowanie zalecamy także przejrzenie [często zadawanych pytań dotyczących
 
 Wąskie gardła na komputerze, którego kopia zapasowa jest tworzona, mogą spowodować opóźnienia. Na przykład komputer może odczytywać lub zapisywać dane na dysku albo dostępną przepustowość do przesyłania danych za pośrednictwem sieci, mogą spowodować wąskie gardła.
 
-System Windows udostępnia wbudowane narzędzie o nazwie [Performance Monitor](h https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (PerfMon) do wykrywania tych wąskich gardeł.
+System Windows udostępnia wbudowane narzędzie o nazwie [Performance Monitor](https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (PerfMon) do wykrywania tych wąskich gardeł.
 
 Poniżej przedstawiono niektóre liczniki wydajności i zakresy, które mogą być przydatne w diagnozowaniu wąskich gardeł dla optymalnych kopii zapasowych.
 
 | Licznik | Stan |
 | --- | --- |
-| Dysk logiczny (dysk fizyczny) — czas bezczynności (%) |• 100% bezczynności do 50% bezczynności = w dobrej kondycji</br>• 49% bezczynności do 20% bezczynności = ostrzeżenie lub monitor</br>• 19% bezczynności do 0% bezczynności = krytyczne lub poza specyfikacją |
-| Dysk logiczny (dysk fizyczny) — średni czas odczytu lub zapisu dysku w s |• 0,001 MS do 0,015 MS = dobra kondycja</br>• 0,015 od MS do 0,025 MS = ostrzeżenie lub monitor</br>• 0,026 MS lub dłużej = krytyczne lub poza specyfikacją |
+| Dysk logiczny (dysk fizyczny) — czas bezczynności (%) |* 100% bezczynności do 50% bezczynności = w dobrej kondycji</br>* 49% bezczynności do 20% bezczynności = ostrzeżenie lub monitor</br>* 19% bezczynności do 0% bezczynności = krytyczne lub poza specyfikacją |
+| Dysk logiczny (dysk fizyczny) — średni czas odczytu lub zapisu dysku w s |* 0,001 MS do 0,015 MS = dobra kondycja</br>* 0,015 MS do 0,025 MS = ostrzeżenie lub monitor</br>* 0,026 MS lub dłużej = krytyczne lub poza specyfikacją |
 | Dysk logiczny (dysk fizyczny) — bieżąca długość kolejki dysku (dla wszystkich wystąpień) |80 żądań przez ponad 6 minut |
-| Pamięć — Bajty puli niestronicowanej |• Mniej niż 60% używanej puli = dobra kondycja<br>• 61% do 80% używanej puli = ostrzeżenie lub monitor</br>• Większe niż 80% zużywane przez pulę = krytyczne lub poza specyfikacją |
-| Pamięć — bajty w puli stronicowanej |• Mniej niż 60% używanej puli = dobra kondycja</br>• 61% do 80% używanej puli = ostrzeżenie lub monitor</br>• Większe niż 80% zużywane przez pulę = krytyczne lub poza specyfikacją |
-| Pamięć — dostępne megabajty |• 50% dostępnej wolnej pamięci lub więcej = dobra kondycja</br>• 25% dostępnej wolnej pamięci = monitor</br>• 10% dostępnej wolnej pamięci = ostrzeżenie</br>• Mniej niż 100 MB lub 5% dostępnej wolnej pamięci = krytyczne lub poza specyfikacją |
-| Procesor--\%czas procesora (wszystkie wystąpienia) |• Mniej niż 60% zużyte = w dobrej kondycji</br>• od 61% do 90% zużyte = monitor lub przestroga</br>• od 91% do 100% zużyte = krytyczny |
+| Pamięć — Bajty puli niestronicowanej |* Mniej niż 60% używanej puli = dobra kondycja<br>* 61% do 80% używanej puli = ostrzeżenie lub monitor</br>* Większe niż 80% zużywane przez pulę = krytyczne lub poza specyfikacją |
+| Pamięć — bajty w puli stronicowanej |* Mniej niż 60% używanej puli = dobra kondycja</br>* 61% do 80% używanej puli = ostrzeżenie lub monitor</br>* Większe niż 80% zużywane przez pulę = krytyczne lub poza specyfikacją |
+| Pamięć — dostępne megabajty |* 50% wolnej pamięci jest dostępne lub więcej = dobra kondycja</br>* 25% dostępnej wolnej pamięci = monitor</br>* 10% dostępnej wolnej pamięci = ostrzeżenie</br>* Mniej niż 100 MB lub 5% dostępnej wolnej pamięci = krytyczne lub poza specyfikacją |
+| Procesor--\%czas procesora (wszystkie wystąpienia) |* Mniejsze niż 60% zużyte = w dobrej kondycji</br>* od 61% do 90% zużyte = monitor lub przestroga</br>* 91% do 100% zużyte = krytyczny |
 
 > [!NOTE]
 > Jeśli określisz, że infrastruktura jest przyczynaa, zalecamy regularne defragmentowanie dysków w celu zapewnienia lepszej wydajności.

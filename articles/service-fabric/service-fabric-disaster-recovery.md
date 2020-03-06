@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f23624dd0be1e700731e3f5a63c8cd7a00ec4e16
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f9bde0f81dc364aaa09dc9763f2014d83f992371
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458063"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298297"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Odzyskiwanie po awarii na platformie Azure Service Fabric
 Krytyczna część dostarczania wysokiej dostępności zapewnia, że usługi mogą przetrwać wszystkie różne typy awarii. Jest to szczególnie ważne w przypadku nieplanowanych awarii i poza formantem. W tym artykule opisano niektóre typowe tryby awarii, które mogą być awariami, jeśli nie są poprawnie modelowane i zarządzane. Omawia również środki zaradcze i akcje, które należy podjąć w przypadku wystąpienia awarii. Celem jest ograniczenie lub wyeliminowanie ryzyka przestoju lub utraty danych, gdy występują błędy, planowane lub w inny sposób.
@@ -80,28 +80,40 @@ Więcej informacji na temat pojedynczych awarii. Jak widać, są łatwe w obsłu
 
 
 ### <a name="random-failures-leading-to-service-failures"></a>Błędy losowe prowadzące do błędów usługi
-Załóżmy, że usługa miała `InstanceCount` 5 i wiele węzłów, dla których uruchomiono te wystąpienia, nie powiodło się w tym samym czasie. Service Fabric reagować przez automatyczne tworzenie wystąpień zastępczych w innych węzłach. Kontynuuje tworzenie zamian, dopóki usługa nie zostanie przywrócona do żądanej liczby wystąpień. Na przykład załóżmy, że istniała usługa bezstanowa z `InstanceCount`-1, co oznacza, że jest ona uruchamiana na wszystkich prawidłowych węzłach w klastrze. Załóżmy, że niektóre z tych wystąpień zakończył się niepowodzeniem. W takim przypadku Service Fabric Zwróć uwagę, że usługa nie jest w żądanym stanie, i próbuje utworzyć wystąpienia w węzłach, w których się znajdują. 
 
-W przypadku usług stanowych sytuacja zależy od tego, czy usługa ma stan trwały, czy nie. Zależy to również od tego, ile replik ma usługa i ile z nich nie udało się. Określenie, czy wystąpił błąd usługi stanowej i zarządzanie nią następuje po trzech etapach:
+#### <a name="stateless-services"></a>Usługi bezstanowe
+`InstanceCount` dla usługi wskazuje żądaną liczbę wystąpień, które muszą być uruchomione. Gdy dowolne (lub wszystkie) wystąpienia zakończą się niepowodzeniem, Service Fabric reaguje, automatycznie tworząc wystąpienia zastępcze w innych węzłach. Service Fabric kontynuuje tworzenie zamian, dopóki usługa nie zostanie przywrócona do żądanej liczby wystąpień.
+Innym przykładem, jeśli usługa bezstanowa ma `InstanceCount`-1, co oznacza, że jedno wystąpienie powinno być uruchomione na każdym węźle w klastrze. Jeśli niektóre z tych wystąpień zakończył się niepowodzeniem, Service Fabric wykryje, że usługa nie jest w żądanym stanie i podejmie próbę utworzenia wystąpień w węzłach, w których się znajdują.
+
+#### <a name="stateful-services"></a>Usługi stanowe
+Istnieją dwa typy usług stanowych:
+1. Stanowy z utrwalonym stanem
+2. Stanowy z nieutrwalonym stanem (stan jest przechowywany w pamięci)
+
+Odzyskiwanie stanu usługi stanowej jest zależne od typu usługi stanowej oraz liczby replik, których dotyczy usługa i ile nie powiodło się.
+
+Co to jest kworum?
+W usłudze stanowej dane przychodzące są replikowane między replikami (podstawowymi i ActiveSecondary). Jeśli większość replik odbierze dane, dane są uznawane za zatwierdzone kworum (dla 5 replik, 3 to _kworum_). Oznacza to, że w dowolnym momencie jest gwarantowane, że będzie co najmniej kworum replik z najnowszymi danymi. Jeśli replika nie powiedzie się (wypowiedzenie 2 z 5 replik zakończyło się niepowodzeniem), możemy użyć wartości kworum, aby obliczyć, czy można odzyskać (ponieważ pozostałe 3 z 5 replik nadal są dostępne).
+
+Co to jest utrata kworum?
+Gdy kworum replik nie powiedzie się, partycja jest zadeklarowana jako w stanie utraty kworum. Załóżmy, że partycja ma 5 replik, co oznacza, że co najmniej 3 gwarantuje pełne dane. Jeśli kworum (3 out) replik nie powiedzie się, Service Fabric nie można ustalić, czy pozostałe repliki (2 out 5) mają wystarczającą ilość danych do przywrócenia partycji.
+
+Określenie, czy wystąpił błąd usługi stanowej i zarządzanie nią następuje po trzech etapach:
 
 1. Określanie, czy nastąpiła utrata kworum
-   - Utrata kworum polega na każdym czasie, w którym większość replik usługi stanowej nie działa w tym samym czasie, łącznie z podstawowym.
+    - Utrata kworum jest zadeklarowana, gdy większość replik stanowych usług nie działa w tym samym czasie.
 2. Ustalanie, czy utrata kworum jest stała, czy nie
    - W większości przypadków błędy są przejściowe. Procesy są ponownie uruchamiane, węzły zostaną ponownie uruchomione, maszyny wirtualne zostaną zaleczone. Czasami niepowodzenia są trwałe. 
-     - W przypadku usług bez trwałego uszkodzenia kworum lub większej liczby replik _natychmiast_ po utracie trwałych kworum. Gdy Service Fabric wykrywa utratę kworum w nietrwałej usłudze stanowej, natychmiast przechodzi do kroku 3 przez zadeklarowanie (potencjalne) utraty danych. Przechodzenie do utraty danych ma sens, ponieważ Service Fabric wie, że nie ma żadnego punktu oczekiwania na powrót z replik, ponieważ nawet jeśli zostały odzyskane, byłyby puste.
-     - W przypadku stałych usług trwałych awaria kworum lub większej liczby replik powoduje, że Service Fabric rozpocząć oczekiwanie na powrót i przywrócenie kworum przez repliki. Powoduje to awarię usługi dla wszelkich _zapisów_ na partycji, której to dotyczy (lub "zestawu replik") usługi. Jednak odczyty mogą być nadal możliwe z obniżonymi gwarancjami spójności. Domyślna ilość czasu, jaką Service Fabric czeka na przywrócenie kworum, jest nieskończona, ponieważ trwa to (potencjalne) zdarzenie utraty danych i przenosi inne zagrożenia. Zastępowanie domyślnej wartości `QuorumLossWaitDuration` jest możliwe, ale nie jest to zalecane. Zamiast tego należy wykonać wszystkie działania w celu przywrócenia replik w dół. Wymaga to przełączenia węzłów, które są w dół, i upewnienia się, że mogą ponownie instalować dyski, na których zapisano lokalny stan trwały. Jeśli utrata kworum jest spowodowana przez niepowodzenie procesu, Service Fabric automatycznie podejmie próbę odtworzenia procesów i ponownego uruchomienia replik. Jeśli to się nie powiedzie, Service Fabric zgłasza błędy kondycji. Jeśli można je rozwiązać, repliki są zwykle przywracane. Czasami nie można cofnąć replik. Na przykład dyski mogły się nie powiodło, lub fizycznie zniszczone maszyny. W takich przypadkach jest teraz trwałe zdarzenie utraty kworum. Aby powiadomić Service Fabric o przerwaniu oczekiwania na powrót z replik w dół, administrator klastra musi określić partycje, których usług dotyczy, i wywołać interfejs API `Repair-ServiceFabricPartition -PartitionId` lub `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)`.  Ten interfejs API umożliwia określenie identyfikatora partycji, która ma zostać przeniesiona z QuorumLoss i potencjalną utratą.
-
-   > [!NOTE]
-   > _Nie_ można bezpiecznie używać tego interfejsu API w sposób inny niż w przypadku konkretnej partycji. 
-   >
-
+     - W przypadku usług bez trwałego uszkodzenia kworum lub większej liczby replik _natychmiast_ po utracie trwałych kworum. Gdy Service Fabric wykrywa utratę kworum w nietrwałej usłudze stanowej, natychmiast przejdzie do kroku 3 przez zadeklarowanie (potencjalne) utraty danych. W efekcie utraty danych jest to przydatne, ponieważ Service Fabric wie, że nie ma żadnego punktu oczekiwania na powrót z replik, ponieważ nawet jeśli zostały odzyskane z powodu nieutrwalonego charakteru usługi, dane zostały utracone.
+     - W przypadku stałych usług trwałych awaria kworum lub więcej replik powoduje, że Service Fabric czekać, aż repliki powróciją i spowodują przywrócenie kworum. Powoduje to awarię usługi dla wszelkich _zapisów_ na partycji, której to dotyczy (lub "zestawu replik") usługi. Jednak odczyty mogą być nadal możliwe z obniżonymi gwarancjami spójności. Domyślna ilość czasu, jaką Service Fabric czeka na przywrócenie kworum, jest nieskończona, ponieważ trwa to (potencjalne) zdarzenie utraty danych i przenosi inne zagrożenia.
 3. Określanie, czy wystąpiła rzeczywista utrata danych i przywracanie z kopii zapasowych
-   - Gdy Service Fabric wywołuje metodę `OnDataLossAsync`, jest zawsze spowodowane _podejrzaną_ utratą danych. Service Fabric zapewnia, że to wywołanie jest dostarczane do _najlepszej_ pozostałej repliki. Jest to niezależna replika. Z tego powodu zawsze mówimy, że _podejrzewana_ utrata danych polega na tym, że pozostała replika faktycznie ma ten sam stan, co w przypadku, gdy wystąpił problem. Jednak bez tego stanu, aby porównać go z, nie istnieje dobry sposób na Service Fabric lub operatorów, do których należy wiedzieć. W tym momencie Service Fabric również wie, że inne repliki nie zostaną wycofane. To była decyzja podjęta po zatrzymaniu oczekiwania na naprawienie przez chwilę utraty kworum. Najlepszym sposobem działania usługi jest zazwyczaj zawieszanie się i oczekiwanie na konkretną interwencję administracyjną. Co robią typowe implementacje `OnDataLossAsync` metod?
-   - Najpierw należy uruchomić dziennik, który `OnDataLossAsync` został wyzwolony, i wyłączyć wszelkie niezbędne Alerty administracyjne.
-   - Zwykle w tym momencie można wstrzymywać i czekać na dalsze decyzje i akcje wykonywane ręcznie. Jest to spowodowane tym, że nawet jeśli dostępne są kopie zapasowe, może być konieczne ich przygotowanie. Na przykład jeśli dwie różne usługi koordynują informacje, te kopie zapasowe mogą być konieczne do zmodyfikowania, aby upewnić się, że po przywróceniu następuje zgodność informacji tych dwóch usług. 
-   - Często istnieje również inne dane telemetryczne lub wydechowe z usługi. Te metadane mogą być zawarte w innych usługach lub w dziennikach. Te informacje mogą być używane do określenia, czy zostały odebrane jakiekolwiek wywołania i przetworzone na podstawowym poziomie, które nie były obecne w kopii zapasowej lub zreplikowane do tej określonej repliki. Może być konieczne ponowne odtworzenie lub dodanie do kopii zapasowej, zanim będzie możliwe przywrócenie.  
-   - Porównania stanu pozostałej repliki z zawartą w wszystkich dostępnych kopiach zapasowych. W przypadku korzystania z Service Fabric niezawodnych kolekcji dostępne są narzędzia i procesy, które zostały opisane w [tym artykule](service-fabric-reliable-services-backup-restore.md). Celem jest sprawdzenie, czy stan w replice jest wystarczający, czy też to, co może być brak kopii zapasowej.
-   - Po zakończeniu porównywania i w razie potrzeby przywracania kod usługi powinien zwrócić wartość true, jeśli wprowadzono jakiekolwiek zmiany stanu. Jeśli replika ustaliła, że była to Najlepsza dostępna kopia stanu i nie wprowadziła żadnych zmian, zwróć wartość false. Wartość true wskazuje, że wszystkie _Pozostałe_ repliki mogą teraz być niespójne z tym elementem. Zostaną one porzucone i ponownie skompilowane z tej repliki. Wartość false wskazuje, że nie zostały wprowadzone żadne zmiany stanu, więc inne repliki mogą zachować te informacje. 
+   
+   Gdy Service Fabric wywołuje metodę `OnDataLossAsync`, jest zawsze spowodowane _podejrzaną_ utratą danych. Service Fabric zapewnia, że to wywołanie jest dostarczane do _najlepszej_ pozostałej repliki. Jest to niezależna replika. Z tego powodu zawsze mówimy, że _podejrzewana_ utrata danych polega na tym, że pozostała replika faktycznie ma ten sam stan, co w przypadku, gdy wystąpił problem. Jednak bez tego stanu, aby porównać go z, nie istnieje dobry sposób na Service Fabric lub operatorów, do których należy wiedzieć. W tym momencie Service Fabric również wie, że inne repliki nie zostaną wycofane. To była decyzja podjęta po zatrzymaniu oczekiwania na naprawienie przez chwilę utraty kworum. Najlepszym sposobem działania usługi jest zazwyczaj zawieszanie się i oczekiwanie na konkretną interwencję administracyjną. Co robią typowe implementacje `OnDataLossAsync` metod?
+   1. Najpierw należy uruchomić dziennik, który `OnDataLossAsync` został wyzwolony, i wyłączyć wszelkie niezbędne Alerty administracyjne.
+   1. Zwykle w tym momencie można wstrzymywać i czekać na dalsze decyzje i akcje wykonywane ręcznie. Jest to spowodowane tym, że nawet jeśli dostępne są kopie zapasowe, może być konieczne ich przygotowanie. Na przykład jeśli dwie różne usługi koordynują informacje, te kopie zapasowe mogą być konieczne do zmodyfikowania, aby upewnić się, że po przywróceniu następuje zgodność informacji tych dwóch usług. 
+   1. Często istnieje również inne dane telemetryczne lub wydechowe z usługi. Te metadane mogą być zawarte w innych usługach lub w dziennikach. Te informacje mogą być używane do określenia, czy zostały odebrane jakiekolwiek wywołania i przetworzone na podstawowym poziomie, które nie były obecne w kopii zapasowej lub zreplikowane do tej określonej repliki. Może być konieczne ponowne odtworzenie lub dodanie do kopii zapasowej, zanim będzie możliwe przywrócenie.  
+   1. Porównania stanu pozostałej repliki z zawartą w wszystkich dostępnych kopiach zapasowych. W przypadku korzystania z Service Fabric niezawodnych kolekcji dostępne są narzędzia i procesy, które zostały opisane w [tym artykule](service-fabric-reliable-services-backup-restore.md). Celem jest sprawdzenie, czy stan w replice jest wystarczający, czy też to, co może być brak kopii zapasowej.
+   1. Po zakończeniu porównywania i w razie potrzeby przywracania kod usługi powinien zwrócić wartość true, jeśli wprowadzono jakiekolwiek zmiany stanu. Jeśli replika ustaliła, że była to Najlepsza dostępna kopia stanu i nie wprowadziła żadnych zmian, zwróć wartość false. Wartość true wskazuje, że wszystkie _Pozostałe_ repliki mogą teraz być niespójne z tym elementem. Zostaną one porzucone i ponownie skompilowane z tej repliki. Wartość false wskazuje, że nie zostały wprowadzone żadne zmiany stanu, więc inne repliki mogą zachować te informacje. 
 
 Jest to istotne znaczenie dla autorów usług, które mogą powodować utratę danych i scenariusze błędów, zanim usługi są kiedykolwiek wdrożone w środowisku produkcyjnym. Aby chronić przed utratą danych, ważne jest okresowe [wykonywanie kopii zapasowej stanu](service-fabric-reliable-services-backup-restore.md) wszystkich usług stanowych w magazynie geograficznie nadmiarowym. Należy również upewnić się, że można go przywrócić. Ponieważ kopie zapasowe wielu różnych usług są wykonywane w różnych okresach, należy się upewnić, że po przywróceniu usługi będą mieć spójny widok. Rozważmy na przykład sytuację, w której jedna usługa generuje liczbę i zapisuje ją, a następnie wysyła ją do innej usługi, która również ją przechowuje. Po przywróceniu można stwierdzić, że druga usługa ma numer, ale nie jest to pierwsze, ponieważ jego kopia zapasowa nie obejmuje tej operacji.
 
@@ -110,6 +122,25 @@ Jeśli okaże się, że pozostałe repliki są niewystarczające do kontynuowani
 > [!NOTE]
 > Usługi systemowe mogą również mieć negatywny wpływ na kworum, z zachowaniem specyficznym dla danej usługi. Na przykład utrata kworum w usłudze nazw ma wpływ na rozpoznawanie nazw, podczas gdy usługa Menedżer trybu failover blokuje nowe tworzenie usługi i przełączanie w tryb failover. Chociaż usługi systemowe Service Fabric są zgodne z tym samym wzorcem, co usługi do zarządzania stanami, nie zaleca się wyłączania ich z utraty kworum i utraty danych. Zaleca się [wyszukanie pomocy technicznej](service-fabric-support.md) w celu ustalenia rozwiązania, które jest przeznaczone do konkretnej sytuacji.  Zwykle zaleca się po prostu poczekanie, aż repliki w dół zostaną zwrócone.
 >
+
+#### <a name="troubleshooting-quorum-loss"></a>Rozwiązywanie problemów z utratą kworum
+
+Repliki mogą sporadycznie kończyć się niepowodzeniem z powodu przejściowego błędu. Poczekaj przez jakiś czas, ponieważ Service Fabric podejmie próbę ich przełączenia. Jeśli repliki nie były dłużej niż oczekiwany czas trwania, wykonaj poniższe kroki rozwiązywania problemów.
+- Repliki mogą ulec awarii. Sprawdź raporty kondycji na poziomie repliki i dzienniki aplikacji. Zbieraj Zrzuty awaryjne i podejmuj działania niezbędne do odzyskania.
+- Proces repliki mógł przestać odpowiadać. Sprawdź dzienniki aplikacji, aby to sprawdzić. Zbierz zrzut procesu, a następnie Kasuj proces nieodpowiadający. Service Fabric utworzy proces wymiany i podejmie próbę przywrócenia repliki.
+- Węzły obsługujące repliki mogą być wyłączone. Uruchom ponownie źródłową maszynę wirtualną, aby przenieść węzły w górę.
+
+Mogą wystąpić sytuacje, w których nie jest możliwe odzyskanie replik na przykład z powodu niepowodzenia dysków lub nieodpowiadających maszynom. W takich przypadkach Service Fabric musi zostać pożądany, aby nie czekać na odzyskanie repliki.
+NIE należy używać tych metod, jeśli potencjalna utrata danych nie jest akceptowalna do przełączenia usługi do trybu online, w takim przypadku należy wykonać wszystkie działania w kierunku odzyskiwania maszyn fizycznych.
+
+Następujące kroki mogą skutkować utratą danych — należy pamiętać o następujących kwestiach:
+   
+> [!NOTE]
+> _Nie_ można bezpiecznie używać tych metod innych niż w celu dla konkretnych partycji. 
+>
+
+- Użyj interfejsu API `Repair-ServiceFabricPartition -PartitionId` lub `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)`. Ten interfejs API umożliwia określenie identyfikatora partycji do odzyskania z QuorumLoss z potencjalną utratą danych.
+- Jeśli klaster napotyka częste błędy, powodując, że usługi przechodzą w stan utraty kworum, a potencjalną _utratą danych jest akceptowalna_, określenie odpowiedniej wartości [QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) może pomóc w autoodzyskiwaniu usługi. Service Fabric będzie czekać na podaną QuorumLossWaitDuration (domyślnie nieskończone) przed wykonaniem odzyskiwania. Ta metoda _nie jest zalecana_ , ponieważ może to spowodować nieoczekiwane straty danych.
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Dostępność klastra Service Fabric
 Ogólnie mówiąc, sam klaster Service Fabric jest wysoce rozproszonym środowiskiem bez pojedynczych punktów awarii. Awaria jednego z węzłów nie powoduje problemów z dostępnością lub niezawodnością klastra, głównie ponieważ usługi systemu Service Fabric są zgodne z tymi samymi wskazówkami: zawsze są domyślnie uruchamiane z co najmniej trzema replikami i tymi systemami usługi, które nie są uruchamiane bezstanowo na wszystkich węzłach. Podstawowe warstwy Service Fabric sieci i wykrywania błędów są w pełni rozproszone. Większość usług systemowych można odbudować z metadanych w klastrze lub wiedzieć, jak ponownie synchronizować ich stan z innych miejsc. Dostępność klastra może zostać naruszona, jeśli usługi systemowe zaczną korzystać z sytuacji utraty kworum, jak opisano powyżej. W takich przypadkach może nie być możliwe wykonywanie niektórych operacji w klastrze, takich jak uruchamianie uaktualnienia lub wdrażanie nowych usług, ale sam klaster jest nadal w użyciu. Usługi na już uruchomione będą nadal działać w tych warunkach, chyba że wymagają zapisu w usługach systemowych, aby kontynuować działanie. Jeśli na przykład Menedżer trybu failover jest w stanie utraty kworum, wszystkie usługi będą nadal działać, ale wszystkie usługi, które nie powiodą się, nie będą mogły zostać automatycznie ponownie uruchomione, ponieważ wymaga to zaangażowania Menedżer trybu failover. 

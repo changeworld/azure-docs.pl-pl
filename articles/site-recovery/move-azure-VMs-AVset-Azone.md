@@ -7,15 +7,15 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: c9513ca38c665a53bc14f284e87a1cc01035d135
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5728ce7125695b191de4f91d5bd9003384f428a7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693187"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298312"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Przenoszenie maszyn wirtualnych platformy Azure do stref dostępności
-Strefy dostępności na platformie Azure pomaga chronić aplikacje i dane przed awariami centrum danych. Każda strefa dostępności obejmuje co najmniej jedno centrum danych wyposażone w niezależne zasilanie i chłodzenie oraz niezależną sieć. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach. Fizyczne rozdzielenie Strefy dostępności w regionie pomaga chronić aplikacje i dane przed awariami centrów danych. Dzięki Strefy dostępności platforma Azure oferuje umowę dotyczącą poziomu usług (SLA) wynoszącą 99,99% czasu na czas pracy maszyn wirtualnych. Strefy dostępności są obsługiwane w wybranych regionach, jak wspomniano w [strefy dostępności na platformie Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)
+Strefy dostępności na platformie Azure pomaga chronić aplikacje i dane przed awariami centrum danych. Każda strefa dostępności składa się z co najmniej jednego centrum danych wyposażonego w niezależną moc, chłodzenie i sieci. W celu zapewnienia odporności istnieją co najmniej trzy osobne strefy we wszystkich włączonych regionach. Fizyczne rozdzielenie Strefy dostępności w regionie pomaga chronić aplikacje i dane przed awariami centrów danych. Dzięki Strefy dostępności platforma Azure oferuje umowę dotyczącą poziomu usług (SLA) wynoszącą 99,99% czasu na czas pracy maszyn wirtualnych. Strefy dostępności są obsługiwane w wybranych regionach, jak wspomniano w [strefy dostępności na platformie Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)
 
 W scenariuszu, w którym maszyny wirtualne są wdrażane jako *pojedyncze wystąpienie* w określonym regionie i chcesz poprawić dostępność przez przeniesienie tych maszyn wirtualnych do strefy dostępności, możesz to zrobić za pomocą Azure Site Recovery. Tę akcję można następnie podzielić na:
 
@@ -70,7 +70,7 @@ W scenariuszu, w którym maszyny wirtualne są wdrażane jako *pojedyncze wystą
     - [Moduły równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer)
     - [Publiczny adres IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   Wszystkie inne składniki sieci można znaleźć w [dokumentacji](https://docs.microsoft.com/azure/#pivot=products&panel=network)dotyczącej sieci.
+   Wszystkie inne składniki sieci można znaleźć w [dokumentacji](https://docs.microsoft.com/azure/?pivot=products&panel=network)dotyczącej sieci.
 
     > [!IMPORTANT]
     > Upewnij się, że w miejscu docelowym jest używany nadmiarowy moduł równoważenia obciążenia strefy. Więcej informacji można znaleźć pod adresem [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).

@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: evansma
-ms.openlocfilehash: 50e5be309d56f58a79fa19b5270a0b6d2fd3db92
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 1506a4180a5991e6f6e8ed946192bcbf10bbeac0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268251"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296155"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Usługi doradcze dla portalu Azure Marketplace i AppSource
 Usługi doradcze w witrynie Azure Marketplace i AppSource zapewniają partnerom firmy Microsoft cel łączenia się klientów z usługami w celu wspierania i zwiększania użycia platformy Azure i celów firmowych. 
@@ -39,7 +39,7 @@ Oferty usług konsultingowych, które są oparte na systemie Microsoft Dynamics 
 Usługi konsultingowe i oferty usług zarządzanych, które są oparte na Microsoft Azure mogą być wymienione w witrynie Azure Marketplace. Aby uzyskać więcej informacji, zobacz artykuły dotyczące [publikowania usługi Azure Consulting Service](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) i [Publikowanie oferty usług zarządzanych w witrynie Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers).
 
 > [!Note]
-> Usługi doradcze w witrynie Azure Marketplace powinny wykorzystywać oferty skierowane do użytkowników technicznych * *, którzy koncentrują się na *rozwiązaniach i usługach technicznych platformy Azure.* \* * Usługi doradcze w usłudze AppSource powinny korzystać z ofert w celu uzyskania wiedzy w zakresie dostarczania rozwiązań dotyczących jakości dla systemu Dynamics 365, Power BI lub PowerApps, aby wyświetlić listę ofert usług konsultingowych w witrynie AppSource
+> Usługi doradcze w witrynie Azure Marketplace powinny wykorzystywać oferty skierowane do użytkowników technicznych * *, którzy koncentrują się na *rozwiązaniach i usługach technicznych platformy Azure.* \* * Usługi doradcze w AppSource powinny korzystać z ofert opartych na doświadczeniu w dostarczaniu rozwiązań dotyczących jakości dla systemu Dynamics 365, Power BI lub aplikacji zaawansowanych, aby wystawić oferty usług konsultingowych na AppSource
 > 
 > 
 > [!TIP]
@@ -67,7 +67,7 @@ Partnerzy muszą mieć **kompetencje Silver lub Gold** w odpowiednim obszarze dl
 | Dynamics 365 Customer Insights | Musi mieć co najmniej 1 pomyślne wdrożenie systemu [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) z co najmniej 5 miar i 5 segmentów. |
 | Dynamics 365 Business Central | Wymagany jest pakiet Gold lub Silver z certyfikatem [planowania zasobów przedsiębiorstwa](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) i musi to być dostawca rozwiązań w chmurze dla co najmniej 3 klientów usługi Business Central. <br> <br> LUB <br> <br> Musi opublikować [aplikację biznesową w programie AppSource](https://appsource.microsoft.com/) |
 | Power BI | Muszą być wymienione na liście [partnerów Power BI](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
-|Power Apps | Musi kwalifikować się do korzystania z zaawansowanych korzyści w [programie partnerskim usługi powerapps](https://aka.ms/PowerAppsPartner). |
+|Power Apps | Program musi kwalifikować się do korzystania z zaawansowanych korzyści w [programie poprawy aplikacji](https://aka.ms/PowerAppsPartner)usługi. |
 
 Dodatkowe zasoby i pomoc techniczna:
 

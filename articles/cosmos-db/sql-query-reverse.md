@@ -4,15 +4,15 @@ description: Dowiedz się więcej na temat funkcji systemowej SQL Reverse Azure 
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8237918232bd8ba8edb2b8f71440ffd73a913334
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a22e1c8a5f4350bd2f966ee48f96368c648a4a1e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349546"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302172"
 ---
 # <a name="reverse-azure-cosmos-db"></a>Odwróć (Azure Cosmos DB)
  Zwraca wartość ciągu w odwrotnej kolejności.  
@@ -40,11 +40,15 @@ REVERSE(<str_expr>)
 SELECT REVERSE("Abc") AS reverse  
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"reverse": "cbA"}]  
 ```  
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa nie będzie używać indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 
