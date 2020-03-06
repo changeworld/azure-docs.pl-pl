@@ -10,15 +10,15 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896018"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395188"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z platformą Apache Storm przy użyciu usługi Azure HDInsight
 
-Dowiedz się więcej o najważniejszych problemach i ich rozwiązania do pracy z [Apache Storm](https://storm.apache.org/) ładunków w [Apache Ambari](https://ambari.apache.org/).
+Poznaj najważniejsze problemy i ich rozwiązania umożliwiające pracę z [Apache Storm](https://storm.apache.org/) ładunkiami w programie [Apache Ambari](https://ambari.apache.org/).
 
 ## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Jak uzyskać dostęp do interfejsu użytkownika platformy Storm w klastrze?
 
@@ -27,8 +27,8 @@ Masz dwie opcje do uzyskiwania dostępu do interfejsu użytkownika platformy Sto
 ### <a name="apache-ambari-ui"></a>Interfejs użytkownika Apache Ambari
 
 1. Przejdź do pulpitu nawigacyjnego systemu Ambari.
-2. Na liście usług wybierz **Storm**.
-3. W **szybkich łączy** menu, wybierz opcję **interfejs użytkownika platformy Storm**.
+2. Na liście usług wybierz pozycję **burza**.
+3. W menu **szybkie linki** wybierz pozycję **interfejs użytkownika burzy**.
 
 ### <a name="direct-link"></a>Link bezpośredni
 
@@ -40,7 +40,7 @@ Przykład: `https://stormcluster.azurehdinsight.net/stormui`
 
 ## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Jak przenieść informacji dotyczących punktu kontrolnego spout Centrum zdarzeń platformy Storm między do innej?
 
-Podczas opracowywania topologii odczytujących z usługi Azure Event Hubs za pomocą Centrum zdarzeń HDInsight Storm elementu spout plik JAR, musisz wdrożyć topologię, która ma taką samą nazwę w nowym klastrze. Jednak użytkownik musi zachować dane punktu kontrolnego, która została zatwierdzona [Apache ZooKeeper](https://zookeeper.apache.org/) w starym klastrze.
+Podczas opracowywania topologii odczytujących z usługi Azure Event Hubs za pomocą Centrum zdarzeń HDInsight Storm elementu spout plik JAR, musisz wdrożyć topologię, która ma taką samą nazwę w nowym klastrze. Należy jednak zachować dane punktów kontrolnych, które zostały zatwierdzone do [Apache ZooKeeper](https://zookeeper.apache.org/) w starym klastrze.
 
 ### <a name="where-checkpoint-data-is-stored"></a>Gdzie są przechowywane dane punktu kontrolnego
 
@@ -52,11 +52,11 @@ Dane punktu kontrolnego dla przesunięcia jest przechowywany przez spout Centrum
 
 ### <a name="how-to-restore"></a>Jak przywrócić
 
-Aby uzyskać skrypty i bibliotek, których używasz do wyeksportowania danych poza dozorcy, a następnie zaimportować dane z powrotem do dozorcy pod nową nazwą, zobacz [przykłady HDInsight Storm](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0).
+Aby pobrać skrypty i biblioteki, których używasz do eksportowania danych z programu dozorcy, a następnie zaimportuj dane z powrotem do dozorcy z nową nazwą, zobacz [przykłady burzy](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0)w usłudze HDInsight.
 
 Folder biblioteki zawiera pliki JAR, zawierające implementację dla operacji eksportu/importu. Bash folder zawiera przykładowy skrypt, który demonstruje sposób eksportowania danych z serwera dozorcy w starym klastrze, a następnie zaimportuj go ponownie do serwera dozorcy w nowym klastrze.
 
-Uruchom [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) skrypt z węzłów dozorcy w celu wyeksportowania i następnie zaimportowania danych. Zaktualizuj skrypt do poprawnej wersji Hortonworks Data Platform (HDP). (Pracujemy nad ogólnego w HDInsight te skrypty. Ogólny umożliwia uruchamianie skryptów z poziomu każdego węzła w klastrze bez modyfikacji przez użytkownika.)
+Uruchom skrypt [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) z węzłów dozorcy, aby wyeksportować i zaimportować dane. Zaktualizuj skrypt do poprawnej wersji Hortonworks Data Platform (HDP). (Pracujemy nad ogólnego w HDInsight te skrypty. Ogólny umożliwia uruchamianie skryptów z poziomu każdego węzła w klastrze bez modyfikacji przez użytkownika.)
 
 Polecenie eksportu zapisuje metadane w ścieżce rozproszony system plików Apache Hadoop (HDFS) (na platformie Azure Blob Storage lub Azure Data Lake Storage) w ustawionej lokalizacji.
 
@@ -137,11 +137,11 @@ Aby uzyskać więcej informacji o używaniu pliki JAR spout Centrum zdarzeń pla
 
 ### <a name="java-based-topology"></a>Topologii opartych na języku Java
 
-[Przetwarzanie zdarzeń z usługi Azure Event Hubs przy użyciu platformy Apache Storm w HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
+[Przetwarzanie zdarzeń z usługi Azure Event Hubs przy użyciu Apache Storm w usłudze HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C# — na podstawie topologii (Mono w klastrach HDInsight 3.4 + Linux Storm)
 
-[Przetwarzania zdarzeń pochodzących z usługi Azure Event Hubs przy użyciu platformy Apache Storm w HDInsight (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[Przetwarzaj zdarzenia z usługi Azure Event Hubs przy użyciu Apache StormC#w usłudze HDInsight ()](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
 
 ### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>Pliki binarne dla klastrów HDInsight 3.5 + Linux Storm elementów spout Centrum zdarzeń w usłudze najnowsze platformy Apache Storm
 
@@ -149,11 +149,11 @@ Aby dowiedzieć się, jak używać najnowszej elementu Spout centrum zdarzeń bu
 
 ### <a name="source-code-examples"></a>Przykłady kodu źródłowego
 
-Zobacz [przykłady](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) działania do odczytu i zapisu z usługi Azure Event Hub przy użyciu topologii Apache Storm (napisanego w języku Java) w klastrze usługi Azure HDInsight.
+Zapoznaj się z [przykładami](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) dotyczącymi odczytywania i zapisywania z usługi Azure Event Hub przy użyciu topologii Apache Storm (napisanych w języku Java) w klastrze usługi Azure HDInsight.
 
 ## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>Jak znaleźć pliki konfiguracji 2 mechanizmu Log4J systemu Storm w klastrach?
 
-Aby zidentyfikować [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) pliki konfiguracji dla usługi Storm.
+Aby zidentyfikować pliki konfiguracji [Apache Log4J 2](https://logging.apache.org/log4j/2.x/) dla usług burzy.
 
 ### <a name="on-head-nodes"></a>Na węzły główne
 

@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie rozwiązania do zdalnego monitorowania przy użyciu interfejsu wiersza polecenia — Azure | Dokumentacja firmy Microsoft
-description: Ten poradnik pokazuje, jak aprowizowanie akceleratora rozwiązania monitorowania zdalnego przy użyciu interfejsu wiersza polecenia.
+title: Wdrażanie rozwiązania do monitorowania zdalnego przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+description: W tym przewodniku opisano sposób udostępniania akceleratora rozwiązania do zdalnego monitorowania przy użyciu interfejsu wiersza polecenia.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,150 +9,150 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447016"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383129"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Wdrażanie akceleratora rozwiązania monitorowania zdalnego przy użyciu interfejsu wiersza polecenia
+# <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Wdróż Akcelerator rozwiązania do monitorowania zdalnego przy użyciu interfejsu wiersza polecenia
 
-Ten poradnik pokazuje, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego. Możesz wdrożyć rozwiązanie za pomocą interfejsu wiersza polecenia. Można także wdrożyć rozwiązanie za pomocą interfejsu użytkownika opartego na sieci web w azureiotsolutions.com, aby dowiedzieć się więcej na temat tej opcji, zobacz [wdrażanie akceleratora rozwiązania monitorowania zdalnego](quickstart-remote-monitoring-deploy.md) Szybki Start.
+Ten przewodnik przedstawia sposób wdrażania akceleratora rozwiązania do monitorowania zdalnego. Rozwiązanie jest wdrażane przy użyciu interfejsu wiersza polecenia. Możesz również wdrożyć rozwiązanie przy użyciu interfejsu użytkownika opartego na sieci Web w witrynie azureiotsolutions.com, aby dowiedzieć się więcej na temat tej opcji, zobacz sekcję [wdrażanie akceleratora rozwiązania do monitorowania zdalnego](quickstart-remote-monitoring-deploy.md) — Szybki Start.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wdrożyć akcelerator rozwiązań monitorowania zdalnego, konieczne jest aktywna subskrypcja platformy Azure.
+Do wdrożenia akceleratora rozwiązania do monitorowania zdalnego potrzebna jest aktywna subskrypcja platformy Azure.
 
-Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać więcej informacji, zobacz [bezpłatnej wersji próbnej Azure](https://azure.microsoft.com/pricing/free-trial/).
+Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz temat [Bezpłatna wersja próbna systemu Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-Aby uruchomić interfejs wiersza polecenia, musisz mieć [Node.js](https://nodejs.org/) zainstalowane na komputerze lokalnym.
+Aby uruchomić interfejs wiersza polecenia, na komputerze lokalnym musi być zainstalowany program [Node. js](https://nodejs.org/) .
 
 ## <a name="install-the-cli"></a>Instalowanie interfejsu wiersza polecenia
 
-Aby zainstalować interfejs wiersza polecenia, uruchom następujące polecenie w środowisku wiersza polecenia:
+Aby zainstalować interfejs wiersza polecenia, uruchom następujące polecenie w środowisku z wierszem poleceń:
 
 ```cmd/sh
 npm install iot-solutions -g
 ```
 
-## <a name="sign-in-to-the-cli"></a>Zaloguj się do interfejsu wiersza polecenia
+## <a name="sign-in-to-the-cli"></a>Logowanie do interfejsu wiersza polecenia
 
-Zanim będzie można wdrożyć akcelerator rozwiązań, musisz zarejestrować się do subskrypcji platformy Azure przy użyciu interfejsu wiersza polecenia:
+Aby można było wdrożyć Akcelerator rozwiązania, należy zalogować się do subskrypcji platformy Azure przy użyciu interfejsu wiersza polecenia:
 
 ```cmd/sh
 pcs login
 ```
 
-Postępuj zgodnie z wyświetlanymi instrukcjami, aby ukończyć procesu logowania.
+Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby ukończyć proces logowania.
 
 ## <a name="deployment-options"></a>Opcje wdrożenia
 
-Podczas wdrażania akcelerator rozwiązań, dostępnych jest kilka opcji, w wyniku skonfigurowanych przez proces wdrażania:
+Po wdrożeniu akceleratora rozwiązań istnieje kilka opcji konfigurowania procesu wdrażania:
 
 | Opcja | Wartości | Opis |
 | ------ | ------ | ----------- |
-| SKU    | `basic`, `standard`, `local` | A _podstawowe_ wdrożenia jest przeznaczony dla testu i pokazów, jego wszystkie mikrousługi są wdrażane na pojedynczej maszyny wirtualnej. A _standardowa_ wdrożenia jest przeznaczony dla środowiska produkcyjnego, jego mikrousługi są wdrażane na wielu maszynach wirtualnych. A _lokalnego_ wdrożenia konfiguruje kontener platformy Docker, aby uruchomić mikrousług na komputerze lokalnym i korzysta z usług Azure cloud services, takich jak storage i Cosmos DB. |
-| Środowisko uruchomieniowe | `dotnet`, `java` | Wybiera implementacji języka mikrousług. |
+| SKU    | `basic`, `standard`, `local` | _Podstawowe_ wdrożenie jest przeznaczone do testowania i demonstracji, wdraża wszystkie mikrousługi na jednej maszynie wirtualnej. Wdrożenie _standardowe_ jest przeznaczone dla środowiska produkcyjnego, a mikrousługi są wdrażane na kilku maszynach wirtualnych. _Lokalne_ wdrożenie konfiguruje kontener platformy Docker do uruchamiania mikrousług na maszynie lokalnej i korzysta z usług Azure Cloud Services, takich jak storage i Cosmos DB. |
+| Środowisko uruchomieniowe | `dotnet`, `java` | Wybiera implementację języka mikrousług. |
 
-Aby dowiedzieć się, jak korzystać z opcji wdrażania lokalnego, zobacz [uruchamiane lokalnie rozwiązania do zdalnego monitorowania](iot-accelerators-remote-monitoring-deploy-local.md).
+Aby dowiedzieć się, jak korzystać z opcji lokalnego wdrażania, zobacz [lokalne uruchamianie rozwiązania do monitorowania zdalnego](iot-accelerators-remote-monitoring-deploy-local.md).
 
-## <a name="basic-and-standard-deployments"></a>Podstawowa i standardowa wdrożeń
+## <a name="basic-and-standard-deployments"></a>Wdrożenia podstawowe i standardowe
 
-Ta sekcja zawiera podsumowanie najważniejszych różnic między wdrożenia podstawowa i standardowa.
+Ta sekcja zawiera podsumowanie najważniejszych różnic między wdrożeniem podstawowym i standardowym.
 
 ### <a name="basic"></a>Podstawowa
 
-Możecie podstawowego wdrożenia z [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) lub przy użyciu interfejsu wiersza polecenia.
+Można wykonać podstawowe wdrożenie z [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) lub przy użyciu interfejsu wiersza polecenia.
 
-Wdrożenie w warstwie Podstawowa to wdrożenie ukierunkowane na prezentowanie rozwiązania. Aby zmniejszyć koszty, wszystkie mikrousługi są wdrażane na jednej maszynie wirtualnej. To wdrożenie nie używa architektury gotowe do produkcji.
+Podstawowe wdrożenie jest ukierunkowane na zaprezentowanie rozwiązania. Aby obniżyć koszty, wszystkie mikrousługi są wdrażane na jednej maszynie wirtualnej. To wdrożenie nie używa architektury gotowej do produkcji.
 
-Podstawowe wdrożenie tworzy następujące usługi w subskrypcji platformy Azure:
+Podstawowe wdrożenie powoduje utworzenie następujących usług w ramach subskrypcji platformy Azure:
 
-| Count | Resource                       | Typ         | Używane dla |
+| Licznik | Zasób                       | Typ         | Używane dla |
 |-------|--------------------------------|--------------|----------|
-| 1     | [Maszyny wirtualnej systemu Linux](https://azure.microsoft.com/services/virtual-machines/) | Standardowa D1, wersja 2  | Mikrousługi hostingu |
+| 1     | [Maszyna wirtualna z systemem Linux](https://azure.microsoft.com/services/virtual-machines/) | Standardowa D1 v2  | Obsługa mikrousług |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 — warstwa standardowa | Zarządzanie urządzeniami i komunikacja |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standardowa (Standard)        | Przechowywanie danych konfiguracji, zasad, alertów i innych zimnego magazynu |  
-| 1     | [Konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standardowa (Standard)        | Magazyn dla maszyny Wirtualnej i przesyłania strumieniowego punkty kontrolne |
-| 1     | [Aplikacja sieci Web](https://azure.microsoft.com/services/app-service/web/)        |                 | Hosting aplikacji frontonu sieci web |
-| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Zarządzanie tożsamościami użytkowników i zabezpieczeń |
-| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standardowa (Standard)                | Wyświetlanie lokalizacji zawartości |
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Przechowywanie danych konfiguracji, zasad, alertów i innych chłodnych magazynów |  
+| 1     | [Konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Magazynowanie maszyn wirtualnych i punktów kontrolnych przesyłania strumieniowego |
+| 1     | [Aplikacja sieci Web](https://azure.microsoft.com/services/app-service/web/)        |                 | Hosting aplikacji sieci Web frontonu |
+| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Zarządzanie tożsamościami i zabezpieczeniami użytkowników |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Wyświetlanie lokalizacji zasobów |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 jednostki              | Włączanie analizy w czasie rzeczywistym |
-| 1     | [Usługa Azure Device Provisioning](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Inicjowanie obsługi administracyjnej urządzeń na dużą skalę |
-| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 — 1 jednostka              | Magazyn dla analizy telemetrii rozszerzony dane i umożliwia wiadomości |
+| 1     | [Usługa Azure Device Provisioning](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Inicjowanie obsługi administracyjnej urządzeń |
+| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 — 1 jednostka              | Magazyn dla danych komunikatów i umożliwia analizę szczegółowe telemetrii |
 
-### <a name="standard"></a>Standardowa (Standard)
+### <a name="standard"></a>Standard
 
-Możesz tworzyć standardowe wdrożenie tylko przy użyciu interfejsu wiersza polecenia.
+Wdrożenie standardowe można wykonać tylko przy użyciu interfejsu wiersza polecenia.
 
-Standardowe wdrożenie to wdrożenie gotowe do produkcji, który deweloper można dostosować i rozszerzyć. Użyj opcji standardowego wdrożenia, gdy wszystko będzie gotowe do dostosowywania architektury gotowe do produkcji, stworzona z myślą o skalowania i rozszerzalności. Mikrousługi aplikacji są kompilowane jako kontenery platformy Docker i wdrażane za pomocą usługi Azure Kubernetes Service. Koordynatora Kubernetes wdraża, którą można skalować, mikrousługi i zarządza.
+Wdrożenie standardowe to wdrożenie gotowe do produkcji, które deweloper może dostosować i zwiększyć. Użyj standardowej opcji wdrażania, gdy wszystko jest gotowe do dostosowania architektury gotowej do użycia w środowisku produkcyjnym, która jest przeznaczona do skalowania i rozszerzalności. Mikrousługi aplikacji są kompilowane jako kontenery platformy Docker i wdrażane za pomocą usługi Azure Kubernetes. Koordynator Kubernetes wdraża, skaluje i zarządza mikrousług.
 
-Standardowe wdrożenie tworzy następujące usługi w subskrypcji platformy Azure:
+Wdrożenie standardowe tworzy następujące usługi w ramach subskrypcji platformy Azure:
 
-| Licznik | Resource                                     | Jednostka SKU / rozmiar      | Używane dla |
+| Licznik | Zasób                                     | Jednostka SKU/rozmiar      | Używane dla |
 |-------|----------------------------------------------|-----------------|----------|
-| 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Użyj w pełni zarządzanej usługi organizowania kontenerów Kubernetes, wartość domyślna to 3 agentów|
-| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 — warstwa standardowa | Zarządzanie urządzeniami, poleceń i kontroli |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standardowa (Standard)        | Przechowywanie danych konfiguracji i danych telemetrycznych z urządzenia, takie jak reguły, alerty i komunikaty |
-| 5     | [Konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standardowa (Standard)        | 4 dla magazynu maszyn wirtualnych i 1 dla przesyłania strumieniowego punkty kontrolne |
-| 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | Standardowa S1     | Usługa Application gateway, za pośrednictwem protokołu SSL |
-| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Zarządzanie tożsamościami użytkowników i zabezpieczeń |
-| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standardowa (Standard)                | Wyświetlanie lokalizacji zawartości |
+| 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Użyj w pełni zarządzanej usługi aranżacji kontenerów Kubernetes — domyślnie to 3 agenci|
+| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 — warstwa standardowa | Zarządzanie urządzeniami, polecenie i kontrola |
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Przechowywanie danych konfiguracyjnych, jak reguł, alertów i komunikatów telemetrycznych urządzeń |
+| 5     | [Konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | 4 dla magazynu maszyn wirtualnych i 1 dla punktów kontrolnych przesyłania strumieniowego |
+| 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | Standardowa S1     | Brama aplikacji za pośrednictwem protokołu SSL |
+| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Zarządzanie tożsamościami i zabezpieczeniami użytkowników |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Wyświetlanie lokalizacji zasobów |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 jednostki              | Włączanie analizy w czasie rzeczywistym |
-| 1     | [Usługa Azure Device Provisioning](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Inicjowanie obsługi administracyjnej urządzeń na dużą skalę |
-| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 — 1 jednostka              | Magazyn dla analizy telemetrii rozszerzony dane i umożliwia wiadomości |
+| 1     | [Usługa Azure Device Provisioning](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | Inicjowanie obsługi administracyjnej urządzeń |
+| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 — 1 jednostka              | Magazyn dla danych komunikatów i umożliwia analizę szczegółowe telemetrii |
 
 > [!NOTE]
-> Można znaleźć informacje o tych usług w cenach [ https://azure.microsoft.com/pricing ](https://azure.microsoft.com/pricing). Można znaleźć szczegółowe informacje dla Twojej subskrypcji w rozliczeń i zużycia [witryny Azure Portal](https://portal.azure.com/).
+> Informacje o cenach dla tych usług można znaleźć w [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing). Szczegóły dotyczące użycia i rozliczeń dla subskrypcji można znaleźć w [witrynie Azure Portal](https://portal.azure.com/).
 
-## <a name="deploy-the-solution-accelerator"></a>Wdrażanie akceleratora rozwiązań
+## <a name="deploy-the-solution-accelerator"></a>Wdróż Akcelerator rozwiązania
 
-Przykłady wdrożeń:
+Przykłady wdrożenia:
 
-### <a name="example-deploy-net-version"></a>Przykład: wdrożenie wersji platformy .NET
+### <a name="example-deploy-net-version"></a>Przykład: Wdróż wersję .NET
 
-Poniższy przykład pokazuje, jak wdrożyć podstawowa, wersja platformy .NET akceleratora rozwiązania monitorowania zdalnego:
+Poniższy przykład pokazuje, jak wdrożyć wersję Basic, .NET akceleratora rozwiązania do monitorowania zdalnego:
 
 ```cmd/sh
 pcs -t remotemonitoring -s basic -r dotnet
 ```
 
-### <a name="example-deploy-java-version"></a>Przykład: wdrożenie wersji języka Java
+### <a name="example-deploy-java-version"></a>Przykład: Wdróż wersję języka Java
 
-Poniższy przykład pokazuje, jak wdrożyć w warstwie standardowa wersja w języku Java akceleratora rozwiązania monitorowania zdalnego:
+Poniższy przykład pokazuje, jak wdrożyć standardową wersję języka Java dla akceleratora rozwiązania do monitorowania zdalnego:
 
 ```cmd/sh
 pcs -t remotemonitoring -s standard -r java
 ```
 
-### <a name="pcs-command-options"></a>Opcje polecenia komputerów
+### <a name="pcs-command-options"></a>Opcje poleceń komputerów
 
-Po uruchomieniu `pcs` polecenie, aby wdrożyć to rozwiązanie, pojawi się prośba dla:
+Po uruchomieniu polecenia `pcs` w celu wdrożenia rozwiązania zostanie wyświetlony monit:
 
 - Nazwa rozwiązania. Ta nazwa musi być unikatowa.
 - Subskrypcja platformy Azure, która ma być używana.
 - Lokalizacja.
-- Poświadczenia dla maszyn wirtualnych hostujących mikrousług. Dostęp do maszyn wirtualnych w celu rozwiązywania problemów, można użyć tych poświadczeń.
+- Poświadczenia dla maszyn wirtualnych, które obsługują mikrousługi. Przy użyciu tych poświadczeń można uzyskać dostęp do maszyn wirtualnych w celu rozwiązywania problemów.
 
-Gdy `pcs` polecenie zostanie zakończone, wyświetla adres URL Twój nowy akcelerator rozwiązań. `pcs` Polecenie tworzy również plik `{deployment-name}-output.json` zawierający informacje takie jak nazwa usługi IoT Hub, do którego utworzona.
+Po zakończeniu `pcs` polecenie wyświetla adres URL nowego akceleratora rozwiązania. `pcs` polecenie tworzy również `{deployment-name}-output.json` pliku, który zawiera informacje, takie jak nazwa utworzonego IoT Hub.
 
-Aby uzyskać więcej informacji na temat parametrów wiersza polecenia Uruchom polecenie:
+Aby uzyskać więcej informacji na temat parametrów wiersza polecenia, uruchom polecenie:
 
 ```cmd/sh
 pcs -h
 ```
 
-Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia, zobacz [sposób używania interfejsu wiersza polecenia](https://github.com/Azure/pcs-cli/blob/master/README.md).
+Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia, zobacz [jak korzystać z interfejsu wiersza polecenia](https://github.com/Azure/pcs-cli/blob/master/README.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku przedstawiono sposób:
+W tym przewodniku krok po kroku przedstawiono następujące informacje:
 
 > [!div class="checklist"]
 > * Konfigurowanie akceleratora rozwiązań
-> * Wdrażanie akceleratora rozwiązań
-> * Zaloguj się do akceleratora rozwiązań
+> * Wdróż Akcelerator rozwiązania
+> * Zaloguj się do akceleratora rozwiązania
 
-Teraz, że udało Ci się wdrożyć rozwiązania do zdalnego monitorowania, następnym krokiem jest [zapoznaj się z możliwościami pulpitu nawigacyjnego rozwiązania](./quickstart-remote-monitoring-deploy.md).
+Teraz, gdy wdrożono rozwiązanie do monitorowania zdalnego, następnym krokiem jest zapoznanie się z [możliwościami pulpitu nawigacyjnego rozwiązania](./quickstart-remote-monitoring-deploy.md).
 
 <!-- Next how-to guides in the sequence -->

@@ -13,11 +13,11 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928151"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387473"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopiowanie danych do lokalnego lub z programu Oracle w środowisku lokalnym przy użyciu Azure Data Factory
 
@@ -76,13 +76,13 @@ Ten łącznik Oracle obsługuje dwie wersje sterowników:
 
 W przypadku tworzenia potoku kopiowania przy użyciu Kreatora kopiowania typ sterownika jest określany jako autoustalany. Sterownik firmy Microsoft jest używany domyślnie, chyba że wersja bramy jest wcześniejsza niż wersja 2,7 lub jako ujścia jest wybierana baza danych Oracle.
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczynanie pracy
 
 Można utworzyć potok z działaniem kopiowania. Potok przenosi dane do lub z lokalnej bazy danych Oracle przy użyciu różnych narzędzi lub interfejsów API.
 
 Najprostszym sposobem utworzenia potoku jest użycie Kreatora kopiowania. Zobacz [Samouczek: Tworzenie potoku za pomocą Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) , aby zapoznać się z krótkim przewodnikiem tworzenia potoku przy użyciu kreatora kopiowanie danych.
 
-Do utworzenia potoku można także użyć jednego z następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablonu Azure Resource Manager**, **interfejsu API platformy .NET**lub **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku dotyczące sposobu tworzenia potoku, który zawiera działania kopiowania.
+Do utworzenia potoku można także użyć jednego z następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablonu Azure Resource Manager**, **interfejsu API platformy .NET**lub **interfejsu API REST**. Aby uzyskać instrukcje krok po kroku dotyczące tworzenia potoku z działaniem kopiowania, zobacz [Samouczek dotyczący działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
@@ -99,12 +99,12 @@ Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSO
 
 W poniższej tabeli opisano elementy JSON, które są specyficzne dla połączonej usługi Oracle:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
-| type |Właściwość **Type** musi być ustawiona na wartość **OnPremisesOracle**. |Tak |
+| type |Właściwość **Type** musi być ustawiona na wartość **OnPremisesOracle**. |Yes |
 | drivertype | Określ, który sterownik ma być używany do kopiowania danych z lub do bazy danych Oracle. Dozwolone wartości to **Microsoft** i **ODP** (domyślnie). Zobacz [obsługiwaną wersję i instalację,](#supported-versions-and-installation) Aby uzyskać szczegółowe informacje o sterowniku. | Nie |
-| connectionString | Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem bazy danych Oracle dla właściwości **ConnectionString** . | Tak |
-| gatewayName | Nazwa bramy, która jest używana do nawiązywania połączenia z lokalnym serwerem Oracle. |Tak |
+| connectionString | Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem bazy danych Oracle dla właściwości **ConnectionString** . | Yes |
+| gatewayName | Nazwa bramy, która jest używana do nawiązywania połączenia z lokalnym serwerem Oracle. |Yes |
 
 **Przykład: korzystanie z sterownika firmy Microsoft**
 
@@ -150,7 +150,7 @@ Sekcje pliku JSON zestawu danych, takie jak struktura, dostępność i zasady, s
 
 Sekcja **typeProperties** jest inna dla każdego typu zestawu danych i zawiera informacje dotyczące lokalizacji danych w magazynie danych. Sekcja **typeProperties** zestawu danych typu **Oracle** ma następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
 | tableName |Nazwa tabeli w bazie danych Oracle, do której odwołuje się połączona usługa. |Nie (Jeśli określono **oracleReaderQuery** lub **OracleSource** ) |
 
@@ -169,7 +169,7 @@ Właściwości, które są dostępne w sekcji **typeProperties** działania, ró
 
 W działaniu kopiowania, gdy źródłem jest typ **OracleSource** , w sekcji **typeProperties** są dostępne następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
 | oracleReaderQuery |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład "Wybierz \* z **MyTable**". <br/><br/>Jeśli nie zostanie określony, ta instrukcja SQL jest wykonywana: "Select \* from **MyTable**" |Nie<br />(Jeśli określono element **TableName** **zestawu danych** ) |
 
@@ -177,7 +177,7 @@ W działaniu kopiowania, gdy źródłem jest typ **OracleSource** , w sekcji **t
 
 **OracleSink** obsługuje następujące właściwości:
 
-| Właściwość | Opis | Dozwolone wartości | Wymagane |
+| Właściwość | Opis | Dozwolone wartości | Wymagany |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Czas oczekiwania na zakończenie operacji wstawiania partii przed przekroczeniem limitu czasu. |**czasu**<br/><br/> Przykład: 00:30:00 (30 minut) |Nie |
 | writeBatchSize |Wstawia dane do tabeli SQL, gdy rozmiar buforu osiągnie wartość **writeBatchSize**. |Liczba całkowita (liczba wierszy) |Nie (domyślnie: 100) |
@@ -550,7 +550,7 @@ Potok zawiera działanie kopiowania, które jest skonfigurowane do używania wej
 ```
 
 
-## <a name="troubleshooting-tips"></a>Porady dotyczące rozwiązywania problemów
+## <a name="troubleshooting-tips"></a>Wskazówki dotyczące rozwiązywania problemów
 
 ### <a name="problem-1-net-framework-data-provider"></a>Problem 1: .NET Framework Dostawca danych
 
@@ -598,13 +598,13 @@ Podczas przenoszenia danych z programu Oracle następujące mapowania są używa
 | --- | --- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(obsługiwane tylko w systemach Oracle 10g i nowszych w przypadku korzystania ze sterownika firmy Microsoft) |
-| CHAR |Ciąg |
+| DELIKATN |Ciąg |
 | CLOB |Ciąg |
-| DATE |Data i godzina |
-| ZWOLNIJ |Decimal, String (jeśli dokładności > 28) |
+| DATE |DateTime |
+| FLOAT |Decimal, String (jeśli dokładności > 28) |
 | INTEGER |Decimal, String (jeśli dokładności > 28) |
 | INTERWAŁ OD ROKU DO MIESIĄCA |Int32 |
-| INTERWAŁ OD DNIA DO SEKUNDY |TimeSpan |
+| INTERWAŁ OD DNIA DO SEKUNDY |przedział_czasu |
 | LONG |Ciąg |
 | LONG RAW |Byte[] |
 | NCHAR |Ciąg |
@@ -613,12 +613,12 @@ Podczas przenoszenia danych z programu Oracle następujące mapowania są używa
 | NVARCHAR2 |Ciąg |
 | RAW |Byte[] |
 | Właściwość |Ciąg |
-| TIMESTAMP |Data i godzina |
-| TIMESTAMP WITH LOCAL TIME ZONE |Data i godzina |
-| TIMESTAMP WITH TIME ZONE |Data i godzina |
+| TIMESTAMP |DateTime |
+| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
+| TIMESTAMP WITH TIME ZONE |DateTime |
 | UNSIGNED INTEGER |Liczba |
 | VARCHAR2 |Ciąg |
-| XML |Ciąg |
+| {1&gt;XML&lt;1} |Ciąg |
 
 > [!NOTE]
 > Typy danych **Interwał od roku do miesiąca** oraz **Interwał od dnia do sekundy** nie są obsługiwane w przypadku używania sterownika firmy Microsoft.

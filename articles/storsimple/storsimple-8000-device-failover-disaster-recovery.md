@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: c1acc084d5abe3385fe311873dfd64c9009e83f2
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468596"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394595"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>Tryb failover i odzyskiwanie po awarii dla urządzenia z serii StorSimple 8000
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 W tym artykule opisano funkcję przełączenia urządzenia w tryb failover dla urządzeń z serii StorSimple 8000 i sposobu jej użycia w celu odzyskania urządzeń StorSimple w przypadku wystąpienia awarii. StorSimple używa trybu failover urządzenia do migrowania danych z urządzenia źródłowego w centrum danych do innego urządzenia docelowego. Wskazówki zawarte w tym artykule dotyczą urządzeń fizycznych z serii StorSimple 8000 i urządzeń w chmurze z uruchomionymi wersjami oprogramowania Update 3 i nowszymi.
 

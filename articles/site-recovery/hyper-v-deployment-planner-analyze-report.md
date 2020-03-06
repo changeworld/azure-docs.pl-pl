@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084962"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385136"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analizowanie raportu Planista wdrażania usługi Azure Site Recovery
 W tym artykule omówiono arkusze zawarte w raporcie programu Excel wygenerowanym przez Planistę wdrażania usługi Azure Site Recovery w przypadku scenariusza dotyczącego funkcji Hyper-V na platformie Azure.
@@ -41,7 +41,7 @@ Arkusz podsumowania środowiska lokalnego zawiera omówienie profilowanego środ
 
 **Zaobserwowany dzienny typowy współczynnik zmian danych (GB)** : średni współczynnik zmian danych zaobserwowany we wszystkie dni profilowania.
 
-## <a name="recommendations"></a>Polecane elementy 
+## <a name="recommendations"></a>Zalecenia 
 Arkusz Zalecenia raportu dotyczącego replikacji z funkcji Hyper-V do platformy Azure zawiera następujące szczegółowe informacje zgodnie z wybranym żądanym celem punktu odzyskiwania:
 
 ![Zalecenia z raportu replikacji z funkcji Hyper-V do platformy Azure](media/hyper-v-deployment-planner-analyze-report/Recommendations-h2a.png)

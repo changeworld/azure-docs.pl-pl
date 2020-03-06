@@ -4,11 +4,11 @@ description: Pokazuje reguły i ograniczenia dotyczące nazewnictwa zasobów pla
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153166"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391181"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Reguły i ograniczenia nazewnictwa zasobów platformy Azure
 
@@ -140,7 +140,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > [!div class="mx-tableFixed"]
 > | Jednostka | Zakres | Długość | Prawidłowe znaki |
 > | --- | --- | --- | --- |
-> | profile | grupa zasobów | 1-260 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
+> | profiles | grupa zasobów | 1-260 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 > | Profile/punkty końcowe | global | 1-50 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
@@ -482,7 +482,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > | dnsZones | grupa zasobów | 1-63 znaków<br><br>od 2 do 34 etykiet<br><br>Każda etykieta jest zestawem znaków oddzielonych kropką. Na przykład **contoso.com** ma 2 etykiety. | Każda etykieta może zawierać znaki alfanumeryczne, podkreślenia i łączniki.<br><br>Każda etykieta jest oddzielona kropką. |
 > | expressRouteCircuits | grupa zasobów | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
 > | firewallPolicies | grupa zasobów | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
-> | firewallPolicies / ruleGroups | zasady zapory | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
+> | firewallPolicies / ruleGroups | Zasady zapory | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
 > | Usługi frontdoor | global | 5-64 | Alfanumeryczne i łączniki.<br><br>Zacznij i kończyć znakiem alfanumerycznym. |
 > | loadBalancers | grupa zasobów | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
 > | loadBalancers/inboundNatRules | Moduł równoważenia obciążenia | 1-80 | Alfanumeryczne, podkreślenia, kropki i łączniki.<br><br>Zacznij od znaków alfanumerycznych. Kończący alfanumeryczne lub podkreślenie. |
@@ -577,7 +577,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > | komputerów | grupa zasobów | 1-64 | Alfanumeryczne, podkreślenia, nawiasy, łączniki i kropki. |
 > | ResourceGroups | subskrypcję | 1-90 | Alfanumeryczne, podkreślenia, nawiasy, łączniki, kropki i znaki Unicode, które pasują do [dokumentacji wyrażenia regularnego](/rest/api/resources/resourcegroups/createorupdate).<br><br>Nie może kończyć się kropką. |
 > | tagNames | resource | 1-512 | Nie można użyć:<br>`<>%&\?/` |
-> | tagNames/tagValues | nazwa tagu | 1-256 | Wszystkie znaki. |
+> | tagNames/tagValues | Nazwa tagu | 1-256 | Wszystkie znaki. |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
@@ -635,7 +635,7 @@ W poniższych tabelach termin alfanumeryczny odnosi się do:
 > | storageAccounts/managementPolicies | konto magazynu |  | Musi być `default`. |
 > | blob | kontener | 1-1024 | Wszystkie znaki adresu URL, z uwzględnieniem wielkości liter |
 > | kolejka | konto magazynu | 3-63 | Małe litery, cyfry i łączniki.<br><br>Nie można rozpocząć ani zakończyć z łącznikiem. Nie można używać kolejnych łączników. |
-> | tabela | konto magazynu | 3-63 | Znaki alfanumeryczne.<br><br>Zacznij od litery. |
+> | table | konto magazynu | 3-63 | Znaki alfanumeryczne.<br><br>Zacznij od litery. |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 

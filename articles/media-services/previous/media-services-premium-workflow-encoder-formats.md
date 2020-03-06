@@ -15,11 +15,11 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792585"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392954"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Formaty Media Encoder Premium Workflow i kodeki
 
@@ -53,7 +53,7 @@ W poniższej sekcji przedstawiono kodery-dekoder i formaty plików obsługiwane 
 
 * AVC 8-bitowy/10-bitowy, do 4:2:2, włącznie z AVCIntra
 * Avid DNxHD (w MXF)
-* DVCPro/DVCProHD (w MXF)
+* DVCPro/DVCProHD (in MXF)
 * HEVC/H. 265, główny i główny 10 profil
 * JPEG2000
 * MPEG-2 (do 422 profilu i wysokiego poziomu), w tym różne warianty, takie jak XDCAM, XDCAM HD, XDCAM IMX, CableLabs® i D10)
@@ -91,7 +91,7 @@ W poniższej sekcji przedstawiono kodery-dekoder i formaty plików, które są o
 
 * AVC (H. 264; 8-bitowy; maksymalnie wysoki profil, poziom 5,2; 4K Ultra HD; AVC — Intra)
 * Avid DNxHD (w MXF)
-* DVCPro/DVCProHD (w MXF)
+* DVCPro/DVCProHD (in MXF)
 * MPEG-2 (do 422 profilu i wysokiego poziomu), w tym różne warianty, takie jak XDCAM, XDCAM HD, XDCAM IMX, CableLabs® i D10)
 * MPEG-1
 * Windows Media Video/VC-1
@@ -144,7 +144,7 @@ Możesz otworzyć bilet pomocy technicznej, przechodząc do [nowego żądania ob
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

@@ -15,13 +15,13 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
 ms.openlocfilehash: f58bb534728660b85f7d16910dde7a37914fd571
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933958"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387840"
 ---
-# <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Wysoka dostępność i odzyskiwanie awaryjne na potrzeby programu SQL Server na maszynach wirtualnych platformy Azure
+# <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Wysoka dostępność i odzyskiwanie po awarii dla SQL Server na platformie Azure Virtual Machines
 
 Microsoft Azure maszyny wirtualne z SQL Server mogą pomóc obniżyć koszty rozwiązania bazy danych o wysokiej dostępności i odzyskiwania po awarii (HADR cluster). Większość SQL Server rozwiązań HADR Cluster są obsługiwane na maszynach wirtualnych platformy Azure, zarówno jako rozwiązania platformy Azure, jak i w postaci rozwiązań hybrydowych. W rozwiązaniu opartym na platformie Azure cały system HADR Cluster jest uruchamiany na platformie Azure. W konfiguracji hybrydowej część rozwiązania działa na platformie Azure, a druga część działa lokalnie w organizacji. Elastyczność środowiska platformy Azure umożliwia przechodzenie częściowo lub całkowicie na platformę Azure w celu spełnienia wymagań budżetowych i HADR Cluster w zakresie systemów baz danych SQL Server.
 

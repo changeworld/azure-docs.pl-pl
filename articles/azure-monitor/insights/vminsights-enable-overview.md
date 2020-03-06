@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
 ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669577"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362177"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Włączanie Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — Omówienie
 
@@ -206,15 +206,15 @@ Azure Monitor dla maszyn wirtualnych konfiguruje Log Analytics obszaru roboczego
 
 |Nazwa obiektu |Nazwa licznika |
 |------------|-------------|
-|Dysk logiczny |Wartość procentowa wolnego miejsca |
+|Dysk logiczny |% Wolnego miejsca |
 |Dysk logiczny |Średni czas dysku w s/odczyt |
 |Dysk logiczny |Średni czas dysku w s/transfer |
 |Dysk logiczny |Średni czas dysku w s/zapis |
 |Dysk logiczny |Bajty dysku/s |
-|Dysk logiczny |Bajty odczytu dysku/s |
+|Dysk logiczny |Bajty odczytu z dysku/s |
 |Dysk logiczny |Odczyty dysku/s |
 |Dysk logiczny |Transfery dyskowe/s |
-|Dysk logiczny |Bajty zapisu dysku/s |
+|Dysk logiczny |Bajty zapisu na dysku/s |
 |Dysk logiczny |Zapisy dysku/s |
 |Dysk logiczny |Wolne megabajty |
 |Memory (Pamięć) |Dostępna pamięć (MB) |
@@ -227,10 +227,10 @@ Azure Monitor dla maszyn wirtualnych konfiguruje Log Analytics obszaru roboczego
 |Nazwa obiektu |Nazwa licznika |
 |------------|-------------|
 |Dysk logiczny |Procent wykorzystania miejsca |
-|Dysk logiczny |Bajty odczytu dysku/s |
+|Dysk logiczny |Bajty odczytu z dysku/s |
 |Dysk logiczny |Odczyty dysku/s |
 |Dysk logiczny |Transfery dyskowe/s |
-|Dysk logiczny |Bajty zapisu dysku/s |
+|Dysk logiczny |Bajty zapisu na dysku/s |
 |Dysk logiczny |Zapisy dysku/s |
 |Dysk logiczny |Wolne megabajty |
 |Dysk logiczny |Bajty dysku logicznego/s |

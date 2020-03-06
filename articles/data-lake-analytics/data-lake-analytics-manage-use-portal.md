@@ -10,11 +10,11 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839476"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361311"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Zarządzanie Azure Data Lake Analytics przy użyciu Azure Portal
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -29,7 +29,7 @@ W tym artykule opisano sposób zarządzania kontami Azure Data Lake Analytics, �
 
 ### <a name="create-an-account"></a>Tworzenie konta
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 2. Kliknij pozycję **Utwórz zasób** > **Intelligence + Analytics** > **Data Lake Analytics**.
 3. Wybierz wartości dla następujących elementów: 
    1. **Nazwa**: nazwa konta Data Lake Analytics.
@@ -37,16 +37,16 @@ W tym artykule opisano sposób zarządzania kontami Azure Data Lake Analytics, �
    3. **Grupa zasobów**: Grupa zasobów platformy Azure, w której ma zostać utworzone konto. 
    4. **Lokalizacja**: centrum danych platformy Azure dla konta Data Lake Analytics. 
    5. **Data Lake Store**: magazyn domyślny, który ma być używany dla konta Data Lake Analytics. Konto Azure Data Lake Store i konto Data Lake Analytics muszą znajdować się w tej samej lokalizacji.
-4. Kliknij pozycję **Utwórz**. 
+4. Kliknij przycisk **Utwórz**. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Usuwanie konta Data Lake Analytics
 
 Przed usunięciem konta Data Lake Analytics usuń jego domyślne konto Data Lake Store.
 
 1. W Azure Portal przejdź do swojego konta Data Lake Analytics.
-2. Kliknij polecenie **Usuń**.
+2. Kliknij pozycję **Usuń**.
 3. Wpisz nazwę konta.
-4. Kliknij polecenie **Usuń**.
+4. Kliknij pozycję **Usuń**.
 
 <!-- ################################ -->
 <!-- ################################ -->

@@ -4,14 +4,14 @@ description: Jak opisać zasoby punktu końcowego w manifeście usługi, w tym s
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: cc4eedf5e5fee0bbfa0a763e9b9ec0dd25409afa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464174"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382747"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Określanie zasobów w manifeście usługi
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Manifest usługi umożliwia deklarowanie/zmianę zasobów używanych przez usługę bez konieczności zmiany skompilowanego kodu. Usługa Azure Service Fabric obsługuje konfigurację zasobów punktu końcowego dla usługi. Dostęp do zasobów określonych w manifeście usługi można kontrolować za pośrednictwem funkcji zabezpieczeń w manifeście aplikacji. Deklaracja zasobów pozwala na zmianę tych zasobów w czasie wdrażania, co oznacza, że usługa nie musi wprowadzać nowego mechanizmu konfiguracji. Definicja schematu dla pliku servicemanifest. XML jest instalowana z zestawem SDK Service Fabric i narzędziami do *folderu C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
 
 ## <a name="endpoints"></a>Punkty końcowe
@@ -187,7 +187,7 @@ W poniższej tabeli Dodaj następujące parametry:
   </Parameters>
 ```
 
-Podczas wdrażania aplikacji można przekazać te wartości jako elementu applicationparameters.  Przykład:
+Podczas wdrażania aplikacji można przekazać te wartości jako elementu applicationparameters.  Na przykład:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
@@ -195,7 +195,7 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 Uwaga: Jeśli wartości podane dla elementu applicationparameters są puste, wracamy do wartości domyślnej podanej w elemencie servicemanifest dla odpowiadającego punktu Końcowegoname.
 
-Przykład:
+Na przykład:
 
 Jeśli w określonym elemencie servicemanifest
 

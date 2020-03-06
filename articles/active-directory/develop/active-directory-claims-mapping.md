@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 57a66f73a2c0c37426c23c7274853148fd976ac8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699074"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375788"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Instrukcje: Dostosowywanie oświadczeń emitowanych w tokenach dla określonej aplikacji w dzierżawie (wersja zapoznawcza)
 
@@ -87,7 +87,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są używa
 | cloud_graph_host_name |
 | cloud_instance_name |
 | cnf |
-| kod |
+| code |
 | funkcje sterowania |
 | credential_keys |
 | csr |
@@ -97,7 +97,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są używa
 | domain_dns_name |
 | domain_netbios_name |
 | e_exp |
-| email |
+| e-mail |
 | endpoint |
 | enfpolids |
 | exp |
@@ -284,12 +284,12 @@ Element ID identyfikuje, która Właściwość źródła udostępnia wartość d
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabela 3: prawidłowe wartości identyfikatorów na Źródło
 
-| Źródło | ID | Opis |
+| Element źródłowy | ID | Opis |
 |-----|-----|-----|
 | Użytkownik | surname | Nazwa rodziny |
 | Użytkownik | givenname | Imię |
 | Użytkownik | displayname | Nazwa wyświetlana |
-| Użytkownik | obiektu | ObjectID |
+| Użytkownik | obiektu | Obiektu |
 | Użytkownik | mail (poczta) | Adres e-mail |
 | Użytkownik | userprincipalname | Nazwa główna użytkownika |
 | Użytkownik | department|Dział|
@@ -319,14 +319,14 @@ Element ID identyfikuje, która Właściwość źródła udostępnia wartość d
 | Użytkownik | extensionattribute14 | Atrybut rozszerzenia 14 |
 | Użytkownik | extensionattribute15 | Atrybut rozszerzenia 15 |
 | Użytkownik | othermail | Inna poczta |
-| Użytkownik | kraj | Kraj |
+| Użytkownik | trzeciego | Kraj |
 | Użytkownik | city | Miasto |
 | Użytkownik | state | Stan |
 | Użytkownik | stanowiska | Stanowisko |
-| Użytkownik | employeeid | Identyfikator pracownika |
+| Użytkownik | employeeid | IDENTYFIKATOR pracownika |
 | Użytkownik | facsimiletelephonenumber | Numer telefonu faksu |
 | aplikacja, zasób, odbiorcy | displayname | Nazwa wyświetlana |
-| aplikacja, zasób, odbiorcy | Obiekt | ObjectID |
+| aplikacja, zasób, odbiorcy | Obiekt | Obiektu |
 | aplikacja, zasób, odbiorcy | tagów | Główny tag usługi |
 | Firma | tenantcountry | Kraj dzierżawy |
 
@@ -384,12 +384,12 @@ W oparciu o wybraną metodę jest oczekiwany zestaw danych wejściowych i wyjśc
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabela 5: atrybuty dozwolone jako źródło danych dla elementu SAML NameID
 
-|Źródło|ID|Opis|
+|Element źródłowy|ID|Opis|
 |-----|-----|-----|
 | Użytkownik | mail (poczta)|Adres e-mail|
 | Użytkownik | userprincipalname|Nazwa główna użytkownika|
 | Użytkownik | onpremisessamaccountname|Nazwa lokalnego konta sam|
-| Użytkownik | employeeid|Identyfikator pracownika|
+| Użytkownik | employeeid|IDENTYFIKATOR pracownika|
 | Użytkownik | extensionattribute1 | Atrybut rozszerzenia 1 |
 | Użytkownik | extensionattribute2 | Atrybut rozszerzenia 2 |
 | Użytkownik | extensionattribute3 | Atrybut rozszerzenia 3 |
@@ -410,12 +410,12 @@ W oparciu o wybraną metodę jest oczekiwany zestaw danych wejściowych i wyjśc
 
 | TransformationMethod | Ograniczenia |
 | ----- | ----- |
-| ExtractMailPrefix | Brak |
+| ExtractMailPrefix | None |
 | Join | Dołączony sufiks musi być zweryfikowaną domeną dzierżawy zasobu. |
 
 ### <a name="custom-signing-key"></a>Niestandardowy klucz podpisywania
 
-Aby zasady mapowania oświadczeń zaczęły obowiązywać, należy przypisać niestandardowy klucz podpisywania do obiektu jednostki usługi. Zapewnia to potwierdzenie, że tokeny zostały zmodyfikowane przez twórcę zasad mapowania oświadczeń i chroni aplikacje przed zasadami mapowania oświadczeń utworzonymi przez złośliwe podmioty. Aby dodać niestandardowy klucz podpisywania, możesz użyć polecenia cmdlet programu Azure PowerShell `new-azureadapplicationkeycredential`, aby utworzyć poświadczenia klucza symetrycznego dla obiektu aplikacji. Aby uzyskać więcej informacji na temat tego polecenia cmdlet programu Azure PowerShell, kliknij [tutaj](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+Aby zasady mapowania oświadczeń zaczęły obowiązywać, należy przypisać niestandardowy klucz podpisywania do obiektu jednostki usługi. Zapewnia to potwierdzenie, że tokeny zostały zmodyfikowane przez twórcę zasad mapowania oświadczeń i chroni aplikacje przed zasadami mapowania oświadczeń utworzonymi przez złośliwe podmioty. Aby dodać niestandardowy klucz podpisywania, można użyć `new-azureadapplicationkeycredential` polecenia cmdlet Azure PowerShell, aby utworzyć poświadczenia klucza symetrycznego dla obiektu aplikacji. Aby uzyskać więcej informacji na temat tego polecenia cmdlet Azure PowerShell, zobacz polecenie [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
 
 Aplikacje z włączonym mapowaniem oświadczeń muszą sprawdzać poprawność swoich kluczy podpisywania tokenu, dołączając `appid={client_id}` do ich [żądań metadanych połączenia OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Poniżej znajduje się format dokumentu metadanych OpenID Connect Connect, którego należy użyć: 
 
@@ -469,7 +469,7 @@ W tym przykładzie utworzysz zasady, które usuwają podstawowy zestaw roszczeń
       Get-AzureADPolicy
       ```
 1. Przypisz zasady do nazwy głównej usługi. Należy również uzyskać identyfikator ObjectId nazwy głównej usługi.
-   1. Aby wyświetlić wszystkie nazwy główne usługi w organizacji, można [zbadać Microsoft Graph](/graph/traverse-the-graph). Lub w [Eksploratorze grafu](https://developer.microsoft.com/graph/graph-explorer)Zaloguj się do konta usługi Azure AD.
+   1. Aby wyświetlić wszystkie nazwy główne usługi w organizacji, można [wysłać zapytanie do interfejsu API Microsoft Graph](/graph/traverse-the-graph). Lub w [eksploratorze Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer)Zaloguj się do konta usługi Azure AD.
    2. Jeśli masz identyfikator ObjectId nazwy głównej usługi, uruchom następujące polecenie:  
      
       ``` powershell
@@ -493,7 +493,7 @@ W tym przykładzie utworzysz zasady, które dodają elementy IDPracownika i Tena
       Get-AzureADPolicy
       ```
 1. Przypisz zasady do nazwy głównej usługi. Należy również uzyskać identyfikator ObjectId nazwy głównej usługi. 
-   1. Aby wyświetlić wszystkie nazwy główne usługi w organizacji, można [zbadać Microsoft Graph](/graph/traverse-the-graph). Lub w [Eksploratorze grafu](https://developer.microsoft.com/graph/graph-explorer)Zaloguj się do konta usługi Azure AD.
+   1. Aby wyświetlić wszystkie nazwy główne usługi w organizacji, można [wysłać zapytanie do interfejsu API Microsoft Graph](/graph/traverse-the-graph). Lub w [eksploratorze Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer)Zaloguj się do konta usługi Azure AD.
    2. Jeśli masz identyfikator ObjectId nazwy głównej usługi, uruchom następujące polecenie:  
      
       ``` powershell
@@ -517,13 +517,13 @@ W tym przykładzie utworzysz zasady, które emitują niestandardową wartość "
       Get-AzureADPolicy
       ```
 1. Przypisz zasady do nazwy głównej usługi. Należy również uzyskać identyfikator ObjectId nazwy głównej usługi. 
-   1. Aby wyświetlić wszystkie nazwy główne usługi w organizacji, można [zbadać Microsoft Graph](/graph/traverse-the-graph). Lub w [Eksploratorze grafu](https://developer.microsoft.com/graph/graph-explorer)Zaloguj się do konta usługi Azure AD.
+   1. Aby wyświetlić wszystkie nazwy główne usługi w organizacji, można [wysłać zapytanie do interfejsu API Microsoft Graph](/graph/traverse-the-graph). Lub w [eksploratorze Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer)Zaloguj się do konta usługi Azure AD.
    2. Jeśli masz identyfikator ObjectId nazwy głównej usługi, uruchom następujące polecenie: 
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 Aby dowiedzieć się, jak dostosować oświadczenia wystawione w tokenie SAML za pomocą Azure Portal, zobacz [How to: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw](active-directory-saml-claims-customization.md)

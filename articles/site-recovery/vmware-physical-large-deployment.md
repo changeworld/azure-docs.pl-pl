@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895792"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362767"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Konfigurowanie odzyskiwania po awarii na dużą skalę dla maszyn wirtualnych VMware/serwerów fizycznych
 
@@ -26,7 +26,7 @@ W ramach strategii ciągłości działania i odzyskiwania po awarii (BCDR) możn
 - Zgodnie z planem odzyskiwania danych na dużą skalę na potrzeby maszyn wirtualnych VMware i ustalania potrzebnych zasobów platformy Azure można określić wartość RTO, która będzie używana na potrzeby obliczeń pojemności.
 
 
-## <a name="best-practices"></a>Najlepsze rozwiązania
+## <a name="best-practices"></a>Najlepsze praktyki
 
 Niektóre ogólne najlepsze rozwiązania dotyczące odzyskiwania po awarii na dużą skalę. Te najlepsze rozwiązania zostały omówione bardziej szczegółowo w następnych sekcjach dokumentu.
 
@@ -100,7 +100,7 @@ Co oznacza zgodność? Aby uruchomić maszynę wirtualną platformy Azure, platf
 
 **Maszyna jest zgodna z platformą Azure?** | **Limity maszyn wirtualnych platformy Azure (tryb failover dysku zarządzanego)**
 --- | --- 
-Tak | 2000
+Yes | 2000
 Nie | 1000
 
 - Limity zakładają, że minimalne inne zadania są w toku w regionie docelowym dla subskrypcji.
@@ -127,7 +127,7 @@ Ważne jest posiadanie wystarczającej liczby serwerów konfiguracji i skalowaln
  
 Wydajność serwera konfiguracji ma wpływ na liczbę maszyn replikowanych, a nie przez współczynnik zmian danych. Aby ustalić, czy potrzebujesz dodatkowych serwerów konfiguracji, Użyj tych zdefiniowanych limitów maszyn wirtualnych.
 
-**CPU** | **Pamięć** | **Dysk pamięci podręcznej** | **Limit zreplikowanych maszyn**
+**TESTY** | **Rozmiar** | **Dysk pamięci podręcznej** | **Limit zreplikowanych maszyn**
  --- | --- | --- | ---
 8 procesorów wirtualnych vCPU<br> 2 gniazda * 4 rdzenie o częstotliwości 2,5 GHz | 16 GB | 600 GB | Do 550 maszyn<br> Przyjęto założenie, że każdy komputer ma trzy dyski o pojemności 100 GB każdego z nich.
 
@@ -153,7 +153,7 @@ Wydajności serwera przetwarzania mają wpływ szybkości zmian danych, a nie pr
 - Zalecamy dodanie serwera o najwyższej specyfikacji. 
 
 
-**CPU** | **Pamięć** | **Dysk pamięci podręcznej** | **Współczynnik zmian**
+**TESTY** | **Rozmiar** | **Dysk pamięci podręcznej** | **Współczynnik zmian**
  --- | --- | --- | --- 
 12 procesorów wirtualnych vCPU<br> 2 gniazda * 6 rdzenie, 2,5 GHz | 24 GB | 1 GB | Do 2 TB dziennie
 

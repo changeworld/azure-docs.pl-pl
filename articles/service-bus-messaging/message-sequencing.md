@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 54d774c00fa650cb9608f46cc07b9d899709eaa5
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756321"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396274"
 ---
 # <a name="message-sequencing-and-timestamps"></a>Sekwencjonowanie i sygnatury czasowe komunikatów
 
@@ -34,7 +34,7 @@ Niezależny porządek przybycia, na przykład w scenariuszach biznesowych, w kt�
 
 Funkcja sygnatur czasowych działa jako urząd neutralny i godny zaufania, który dokładnie przechwytuje czas UTC przybycia komunikatu, odzwierciedlony we właściwości **EnqueuedTimeUtc** . Ta wartość jest przydatna, jeśli scenariusz biznesowy zależy od terminów, takich jak to, czy element roboczy został przesłany w określonym dniu przed północy, ale przetwarzanie jest daleko do zaległości kolejki.
 
-## <a name="scheduled-messages"></a>Zaplanowane komunikaty
+## <a name="scheduled-messages"></a>Zaplanowane wiadomości
 
 Można przesłać komunikaty do kolejki lub tematu na potrzeby opóźnionego przetwarzania; na przykład, aby zaplanować zadanie do przetworzenia przez system w określonym czasie. Ta funkcja realizuje niezawodne dystrybuowany harmonogram oparty na czasie.
 

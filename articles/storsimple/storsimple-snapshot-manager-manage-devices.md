@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931726"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365863"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Używanie Snapshot Manager StorSimple do nawiązywania połączeń z urządzeniami StorSimple i zarządzania nimi
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Za pomocą węzłów w okienku StorSimple Snapshot Manager **SCOPE** można sprawdzić zaimportowane dane urządzenia StorSimple i odświeżyć połączone urządzenia magazynujące. Ponadto po kliknięciu węzła **urządzenia** można wyświetlić listę połączonych urządzeń i odpowiednie informacje o stanie w okienku **wyników** .
 
-![Połączone urządzenia](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
+![Podłączone urządzenia](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
 
 **Rysunek 1: StorSimple Snapshot Manager podłączonym urządzeniu** 
 
@@ -33,8 +33,8 @@ W zależności **od wybranych opcji** w okienku **wyników** zostaną wyświetlo
 
 | Kolumna wyników | Opis |
 |:--- |:--- |
-| Nazwa |Nazwa urządzenia zgodnie z konfiguracją w klasycznym portalu Azure |
-| Model |Numer modelu urządzenia |
+| Name (Nazwa) |Nazwa urządzenia zgodnie z konfiguracją w klasycznym portalu Azure |
+| Modelowanie |Numer modelu urządzenia |
 | Wersja |Wersja oprogramowania zainstalowanego na urządzeniu |
 | Stan |Czy urządzenie jest dostępne |
 | Ostatnia synchronizacja |Data i godzina ostatniej synchronizacji urządzenia |
@@ -190,7 +190,7 @@ Jeśli urządzenie StorSimple ulegnie awarii i zostanie zastąpione przez urząd
 
 1. Zatrzymaj usługę Microsoft StorSimple Management:
    
-   1. Uruchom Menedżera serwera.
+   1. Rozpocznij Menedżer serwera.
    2. Na pulpicie nawigacyjnym Menedżer serwera w menu **Narzędzia** wybierz pozycję **usługi**.
    3. W oknie **usługi** wybierz **usługę Microsoft StorSimple Management**.
    4. W prawym okienku w obszarze **usługi Microsoft StorSimple Management**kliknij pozycję **Zatrzymaj usługę**.

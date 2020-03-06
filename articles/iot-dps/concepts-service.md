@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975605"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378908"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Koncepcje IoT Hub Device Provisioning Service
 
@@ -31,7 +31,7 @@ Punkt końcowy operacji usługi jest punktem końcowym do zarządzania ustawieni
 
 Punkt końcowy aprowizacji urządzeń jest pojedynczym punktem końcowym używanym przez funkcję autoaprowizacji. Ten adres URL jest taki sam dla wszystkich wystąpień usługi aprowizacji, aby wyeliminować konieczność ponownego wypróbowania urządzeń z nowymi informacjami o połączeniu w scenariuszach łańcucha dostaw. Zakres identyfikatorów zapewnia izolację dzierżawy.
 
-## <a name="linked-iot-hubs"></a>Połączone centra IoT
+## <a name="linked-iot-hubs"></a>Połączone centra IoT Hub
 
 Usługa Device Provisioning może udostępniać tylko urządzenia do centrów IoT, które zostały z nią połączone. Połączenie usługi IoT Hub z wystąpieniem usługi Device Provisioning zapewnia uprawnienia do odczytu/zapisu w rejestrze urządzenia Centrum IoT. za pomocą linku usługa Device Provisioning może zarejestrować identyfikator urządzenia i ustawić początkową konfigurację w ramach sznurka urządzenia. Połączone centra IoT mogą znajdować się w dowolnym regionie świadczenia usługi Azure. Możesz połączyć centra w innych subskrypcjach z usługą aprowizacji.
 
@@ -45,7 +45,7 @@ Ustawienie poziomu usługi, które określa sposób przypisywania urządzeń do 
 
 * **Konfiguracja statyczna za pośrednictwem listy rejestracji**: Specyfikacja żądanego Centrum IoT na liście rejestracji ma pierwszeństwo przed zasadami alokacji poziomu usługi.
 
-## <a name="enrollment"></a>Rejestrowanie
+## <a name="enrollment"></a>Rejestracja
 
 Rejestracja to rekord urządzeń lub grup urządzeń, które mogą zarejestrować się w ramach automatycznej aprowizacji. Rekord rejestracji zawiera informacje o urządzeniu lub grupie urządzeń, w tym:
 - [mechanizm zaświadczania](concepts-security.md#attestation-mechanism) używany przez urządzenie
@@ -73,6 +73,6 @@ Rejestracja indywidualna to wpis dla jednego urządzenia, które może się zare
 
 Rejestracja polega na tym, że rejestr urządzenia pomyślnie zarejestrował się do IoT Hub za pośrednictwem usługi Device Provisioning. Rekordy rejestracji są tworzone automatycznie; można je usunąć, ale nie można ich zaktualizować.
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>Operacje
 
-Operacje są jednostką rozliczeniową usługi Device Provisioning. Jedną z operacji jest pomyślne zakończenie jednej instrukcji do usługi. Operacje obejmują rejestrowanie i ponowne rejestrowanie urządzeń, a także zmiany po stronie serwera, takie jak dodawanie i aktualizowanie wpisów na liście rejestracji.
+Operacje są jednostką rozliczeniową usługi Device Provisioning. Jedną z operacji jest pomyślne zakończenie jednej instrukcji do usługi. Operacje obejmują rejestracje urządzeń i ponowne rejestracje; Operacje obejmują również zmiany po stronie usługi, takie jak Dodawanie wpisów listy rejestracji i aktualizowanie wpisów na liście rejestracji.

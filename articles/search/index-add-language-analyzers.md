@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539403"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379704"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Dodawanie analizatorów języka do pól ciągów w indeksie Wyszukiwanie poznawcze platformy Azure
 
@@ -64,7 +64,7 @@ Aby uzyskać więcej informacji na temat właściwości indeksu, zobacz [Tworzen
 
 |Język|Nazwa analizatora firmy Microsoft|Nazwa analizatora Lucene|  
 |--------------|-----------------------------|--------------------------|  
-|arabski|ar.microsoft|ar. Lucene|  
+|Arabski|ar.microsoft|ar. Lucene|  
 |Armeński||HY. Lucene|  
 |Bengalski|mld USD. Microsoft||  
 |Baskijski||UE. Lucene|  
@@ -75,7 +75,7 @@ Aby uzyskać więcej informacji na temat właściwości indeksu, zobacz [Tworzen
 |Chorwacki|hr.microsoft||  
 |Czeski|cs.microsoft|cs. Lucene|  
 |Duński|da.microsoft|da. Lucene|  
-|holenderski|nl.microsoft|NL. Lucene|  
+|Holenderski|nl.microsoft|NL. Lucene|  
 |Polski|pl. Microsoft|pl. Lucene|  
 |Estoński|et.microsoft||  
 |Fiński|fi.microsoft|Fi. Lucene|  
@@ -87,7 +87,7 @@ Aby uzyskać więcej informacji na temat właściwości indeksu, zobacz [Tworzen
 |Hebrajski|he.microsoft||  
 |Hindi|hi.microsoft|Witaj. Lucene|  
 |Węgierski|hu.microsoft|HU. Lucene|  
-|islandzki|is.microsoft||  
+|Islandzki|is.microsoft||  
 |Indonezyjski (Bahasa)|id.microsoft|Identyfikator. Lucene|  
 |Irlandzki||ga. Lucene|  
 |Włoski|it.microsoft|IT. Lucene|  
@@ -105,7 +105,7 @@ Aby uzyskać więcej informacji na temat właściwości indeksu, zobacz [Tworzen
 |Portugalski (Brazylia)|pt-Br.microsoft|pt-br. Lucene|  
 |Portugalski (Portugalia)|pt-Pt.microsoft|pt-Pt.lucene|  
 |Pendżabski|pa.microsoft||  
-|rumuński|ro.microsoft|ro. Lucene|  
+|Rumuński|ro.microsoft|ro. Lucene|  
 |Rosyjski|ru.microsoft|ru. Lucene|  
 |Serbski (Cyrylica)|SR-cyrylica. Microsoft||  
 |Serbski (łaciński)|sr-latin.microsoft||  
@@ -115,11 +115,11 @@ Aby uzyskać więcej informacji na temat właściwości indeksu, zobacz [Tworzen
 |Szwedzki|sv.microsoft|OHR. Lucene|  
 |Tamilski|ta.microsoft||  
 |Telugu|te. Microsoft||  
-|Tajski|th. Microsoft|th. Lucene|  
+|Tajlandzki|th. Microsoft|th. Lucene|  
 |Turecki|tr.microsoft|TR. Lucene|  
 |Ukraiński|uk.microsoft||  
-|urdu|ur.microsoft||  
-|wietnamski|vi.microsoft||  
+|Urdu|ur.microsoft||  
+|Wietnamski|vi.microsoft||  
 
  Wszystkie analizatory z nazwami oznaczonymi jako " **Lucene** " są obsługiwane przez [analizatory języka Apache Lucene](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ).
 

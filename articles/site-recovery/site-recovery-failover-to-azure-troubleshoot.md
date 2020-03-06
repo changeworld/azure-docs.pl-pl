@@ -10,11 +10,11 @@ ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
 ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754424"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363006"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Rozwiązywanie problemów z błędami w przypadku przejścia w tryb failover maszyny wirtualnej VMware lub komputera fizycznego na platformę Azure
 
@@ -96,7 +96,7 @@ Jeśli przycisk **Połącz** na maszynie wirtualnej w trybie failover na platfor
 
     b.  Upewnij się, że można przyłączyć się do tej samej domeny, w której oczekiwana jest maszyna wirtualna w trybie failover.
 
-    d. Jeśli kontroler domeny **nie** działa prawidłowo, spróbuj zalogować się do maszyny wirtualnej przełączonej w tryb failover przy użyciu konta administratora lokalnego.
+    c. Jeśli kontroler domeny **nie** działa prawidłowo, spróbuj zalogować się do maszyny wirtualnej przełączonej w tryb failover przy użyciu konta administratora lokalnego.
 4. W przypadku korzystania z niestandardowego serwera DNS upewnij się, że jest on dostępny. Można to zrobić, wykonując następujące czynności:
 
     a. Utwórz nową maszynę wirtualną w tej samej sieci i

@@ -4,11 +4,11 @@ description: Opisuje sposób rozwiązywania problemów z rejestracją dostawcy z
 ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.openlocfilehash: a9182be53cc91240a62ab201efc53d674f7cf427
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484521"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390061"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Rozwiązywanie błędów dla rejestracji dostawcy zasobów
 
@@ -79,13 +79,13 @@ Aby uzyskać obsługiwanych wersji interfejsu API dla danego typu zasobu, należ
 
 ## <a name="solution-2---azure-cli"></a>Rozwiązanie 2 — interfejs wiersza polecenia Azure
 
-Aby zobaczyć, czy dostawca jest zarejestrowany, użyj `az provider list` polecenia.
+Aby sprawdzić, czy dostawca jest zarejestrowany, użyj polecenia `az provider list`.
 
 ```azurecli-interactive
 az provider list
 ```
 
-Aby zarejestrować dostawcę zasobów, użyj `az provider register` polecenia, a następnie określ *przestrzeni nazw* do zarejestrowania.
+Aby zarejestrować dostawcę zasobów, użyj polecenia `az provider register` i określ *obszar nazw* do zarejestrowania.
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Cdn
@@ -101,7 +101,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 Można wyświetlić stan rejestracji i zarejestrować przestrzeni nazw dostawcy zasobów za pośrednictwem portalu.
 
-1. W portalu, wybierz **wszystkich usług**.
+1. W portalu wybierz pozycję **wszystkie usługi**.
 
    ![Wybierz wszystkie usługi](./media/error-register-resource-provider/select-all-services.png)
 
@@ -113,10 +113,10 @@ Można wyświetlić stan rejestracji i zarejestrować przestrzeni nazw dostawcy 
 
    ![Wybierz subskrypcję, można zarejestrować dostawcy zasobów](./media/error-register-resource-provider/select-subscription-to-register.png)
 
-1. Dla Twojej subskrypcji, wybierz **dostawców zasobów**.
+1. W przypadku subskrypcji wybierz pozycję **dostawcy zasobów**.
 
    ![Wybierz dostawców zasobów](./media/error-register-resource-provider/select-resource-provider.png)
 
-1. Przyjrzyj się liście dostawców zasobów, a w razie potrzeby zaznacz **zarejestrować** link, aby zarejestrować dostawcę zasobów typu, który próbujesz wdrożyć.
+1. Zapoznaj się z listą dostawców zasobów i w razie potrzeby wybierz łącze **zarejestruj** , aby zarejestrować dostawcę zasobów typu, który próbujesz wdrożyć.
 
    ![Lista dostawców zasobów](./media/error-register-resource-provider/list-resource-providers.png)

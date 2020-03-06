@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
 ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023144"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359910"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalowanie zasobów pojedynczej bazy danych w Azure SQL Database
 
@@ -29,7 +29,7 @@ Poniższy film wideo pokazuje dynamicznie zmieniające się warstwy usług i roz
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 
 > [!IMPORTANT]
-> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
+> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).
 
 ## <a name="impact"></a>Wpływ
 
@@ -50,7 +50,7 @@ Zmiana warstwy usług lub rozmiaru obliczeniowego głównie obejmuje usługę wy
 
 Szacowane opóźnienie zmiany warstwy usług lub ponowne skalowanie wielkości obliczeniowej pojedynczej bazy danych lub puli elastycznej jest opisane w następujący sposób:
 
-|Warstwa usługi|Podstawowa pojedyncza baza danych,</br>Standard (S0-S1)|Podstawowa Pula elastyczna,</br>Standardowa (S2-S12), </br>Hiperskali </br>Ogólnego przeznaczenia pojedynczej bazy danych lub puli elastycznej|Premium lub Krytyczne dla działania firmy pojedynczą bazę danych lub pulę elastyczną|
+|Warstwa usług|Podstawowa pojedyncza baza danych,</br>Standard (S0-S1)|Podstawowa Pula elastyczna,</br>Standardowa (S2-S12), </br>Hiperskali </br>Ogólnego przeznaczenia pojedynczej bazy danych lub puli elastycznej|Premium lub Krytyczne dla działania firmy pojedynczą bazę danych lub pulę elastyczną|
 |:---|:---|:---|:---|
 |**Podstawowa pojedyncza baza danych,</br> Standard (S0-S1)**|&bull; &nbsp;czas opóźnienia niezależny od użytego miejsca</br>&bull; &nbsp;zwykle, mniej niż 5 minut|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|
 |**Podstawowa Pula elastyczna, </br>Standard (S2-S12), </br>do skalowania, </br>Ogólnego przeznaczenia pojedynczej bazy danych lub puli elastycznej**|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|&bull; &nbsp;czas opóźnienia niezależny od użytego miejsca</br>&bull; &nbsp;zwykle, mniej niż 5 minut|&bull; &nbsp;opóźnieniu proporcjonalnym do miejsca bazy danych użytego z powodu kopiowania danych</br>&bull; &nbsp;zwykle, mniej niż 1 minuta na GB zajętego miejsca|
@@ -63,7 +63,7 @@ Szacowane opóźnienie zmiany warstwy usług lub ponowne skalowanie wielkości o
 
 Operacja zmiany warstwy usług lub ponownego skalowania obliczeń może zostać anulowana.
 
-#### <a name="azure-portal"></a>Portal Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 W bloku przegląd bazy danych przejdź do **powiadomień** i kliknij kafelek informujący o trwającej operacji:
 
@@ -112,7 +112,7 @@ Opłaty są naliczane za każdą godzinę, gdy baza danych istnieje przy użyciu
 - Cena magazynu dla pojedynczej bazy danych to suma ilości magazynu danych i magazynu dzienników pomnożona przez cenę jednostkową magazynu warstwy usług. Koszt bazy danych TempDB jest uwzględniany w cenie rdzeń wirtualny. Aby uzyskać szczegółowe informacje na temat ceny dodatkowego magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
+> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>Model zakupu oparty na jednostkach DTU
 
@@ -121,7 +121,7 @@ Opłaty są naliczane za każdą godzinę, gdy baza danych istnieje przy użyciu
 - Cena dodatkowego magazynu dla pojedynczej bazy danych to ilość dodatkowego magazynu pomnożona przez dodatkową cenę jednostkową magazynu warstwy usług. Aby uzyskać szczegółowe informacje na temat ceny dodatkowego magazynu, zobacz [Cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
+> W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [Zarządzanie obszarem plików w Azure SQL Database](sql-database-file-space-management.md).
 
 ### <a name="geo-replicated-database"></a>Baza danych z replikacją geograficzną
 

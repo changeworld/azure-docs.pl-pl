@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150118"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386929"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Optymalizowanie konfiguracji klastra usługi HDInsight przy użyciu oprogramowania Apache Ambari
 
@@ -199,7 +199,7 @@ Ogólną zasadą jest, że posiadanie podziału metody kompresji jest ważne, w 
 
     b. Wybierz pozycję **Dodaj właściwość...** w dolnej części okienka niestandardowe gałęzie — lokacja.
 
-    d. W oknie Dodawanie właściwości wprowadź `mapred.map.output.compression.codec` jako klucz i `org.apache.hadoop.io.compress.SnappyCodec` jako wartość.
+    c. W oknie Dodawanie właściwości wprowadź `mapred.map.output.compression.codec` jako klucz i `org.apache.hadoop.io.compress.SnappyCodec` jako wartość.
 
     d. Wybierz pozycję **Dodaj**.
 
@@ -319,7 +319,7 @@ Podobnie jak w przypadku programu Hive, tryb lokalny służy do przyspieszenia z
 
 Świnie kopiuje pliki JAR wymagane przez UDF do rozproszonej pamięci podręcznej w celu udostępnienia ich dla węzłów zadań. Te Jars nie zmieniają się często. Jeśli ta opcja jest włączona, ustawienie `pig.user.cache.enabled` umożliwia umieszczenie Jars w pamięci podręcznej w celu ponownego użycia dla zadań uruchomionych przez tego samego użytkownika. Powoduje to niewielki wzrost wydajności zadania.
 
-1. Aby włączyć, ustaw dla `pig.user.cache.enabled` wartość true. Wartość domyślna to false.
+1. Aby włączyć, ustaw dla `pig.user.cache.enabled` wartość true. Wartością domyślną jest false.
 
 1. Aby ustawić ścieżkę bazową w pamięci podręcznej Jars, ustaw `pig.user.cache.location` na ścieżkę bazową. Wartość domyślna to `/tmp`.
 
@@ -428,7 +428,7 @@ Rozmiar magazynu jest definiowany przez parametry `hbase.regionserver.global.mem
 
 ### <a name="set-memstore-local-allocation-buffer"></a>Ustaw bufor przydziału lokalnego magazynu
 
-Użycie magazynu lokalnego buforu alokacji jest określane przez `hbase.hregion.memstore.mslab.enabled`właściwości. Po włączeniu (true) zapobiega fragmentacji sterty podczas ciężkiej operacji zapisu. Wartość domyślna to true.
+Użycie magazynu lokalnego buforu alokacji jest określane przez `hbase.hregion.memstore.mslab.enabled`właściwości. Po włączeniu (true) zapobiega fragmentacji sterty podczas ciężkiej operacji zapisu. Wartością domyślną jest true.
 
 ![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 

@@ -7,11 +7,11 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672059"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367662"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w Application Insights
 
@@ -33,7 +33,7 @@ W środowisku mikrousług ślady składników mogą przechodzić do różnych el
 
 ## <a name="example"></a>Przykład
 
-Spójrzmy na przykład. Aplikacja o nazwie ceny giełdowe pokazuje aktualną cenę rynkową przy użyciu zewnętrznego interfejsu API o nazwie Stock. Aplikacja do cen giełdowych ma stronę o nazwie Strona giełdowa, którą otwiera przeglądarka klienta sieci Web przy użyciu `GET /Home/Stock`. Aplikacja wysyła zapytanie do interfejsu API spisu przy użyciu `GET /api/stock/value`wywołania HTTP.
+Przyjrzyjmy się przykładowi. Aplikacja o nazwie ceny giełdowe pokazuje aktualną cenę rynkową przy użyciu zewnętrznego interfejsu API o nazwie Stock. Aplikacja do cen giełdowych ma stronę o nazwie Strona giełdowa, którą otwiera przeglądarka klienta sieci Web przy użyciu `GET /Home/Stock`. Aplikacja wysyła zapytanie do interfejsu API spisu przy użyciu `GET /api/stock/value`wywołania HTTP.
 
 Dane telemetryczne mogą być analizowane przez uruchomienie zapytania:
 
@@ -49,7 +49,7 @@ Zwróć uwagę, że wszystkie elementy telemetrii współużytkują główny `op
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Strona giełdowa                |              | STYz               | STYz         |
 | zależność | Pobierz/Home/Stock           | qJSXU        | STYz               | STYz         |
-| żądanie    | Pobierz domowy/giełdowy            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| request    | Pobierz domowy/giełdowy            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | zależność | Pobierz/API/Stock/Value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
 Gdy wywołanie `GET /api/stock/value` jest nawiązywane w usłudze zewnętrznej, należy znać tożsamość tego serwera, aby można było odpowiednio ustawić pole `dependency.target`. Gdy usługa zewnętrzna nie obsługuje monitorowania, `target` jest ustawiona na nazwę hosta usługi (na przykład `stock-prices-api.com`). Jeśli jednak usługa identyfikuje siebie przez zwrócenie wstępnie zdefiniowanego nagłówka HTTP, `target` zawiera tożsamość usługi umożliwiającą Application Insights kompilowania rozproszonego śledzenia przez przeszukiwanie danych telemetrycznych z tej usługi.

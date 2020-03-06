@@ -14,11 +14,11 @@ ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 244ad7d079fd7baf25f8079557576c42d25ca785
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102067"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387838"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Zarządzanie maszynami wirtualnymi SQL Server na platformie Azure przy użyciu Azure Portal
 
@@ -29,7 +29,7 @@ W [Azure Portal](https://portal.azure.com)zasób **maszyny wirtualne SQL** jest 
 
 ## <a name="remarks"></a>Uwagi
 
-- Zalecamy używanie zasobu **maszyny wirtualne SQL** do wyświetlania maszyn wirtualnych SQL Server i zarządzania nimi na platformie Azure. Obecnie zasób **maszyn wirtualnych SQL** nie obsługuje zarządzania końcami SQL Server maszyn wirtualnych. [](virtual-machines-windows-sql-server-2008-eos-extend-support.md) Aby zarządzać ustawieniami dla punktów końcowych SQL Server, użyj [karty konfiguracja](#access-the-sql-server-configuration-tab) przestarzałej SQL Server. 
+- Zalecamy używanie zasobu **maszyny wirtualne SQL** do wyświetlania maszyn wirtualnych SQL Server i zarządzania nimi na platformie Azure. Obecnie zasób **maszyn wirtualnych SQL** nie obsługuje zarządzania [końcami](virtual-machines-windows-sql-server-2008-eos-extend-support.md) SQL Server maszyn wirtualnych. Aby zarządzać ustawieniami dla punktów końcowych SQL Server, użyj [karty konfiguracja](#access-the-sql-server-configuration-tab) przestarzałej SQL Server. 
 - Zasób **maszyny wirtualne SQL** jest dostępny tylko dla SQL Server maszyn wirtualnych [zarejestrowanych w dostawcy zasobów maszyny wirtualnej SQL](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 
@@ -39,7 +39,7 @@ Aby uzyskać dostęp do zasobu **maszyny wirtualne SQL** , wykonaj następujące
 1. Otwórz [portal Azure](https://portal.azure.com). 
 1. Wybierz pozycję **wszystkie usługi**. 
 1. W polu wyszukiwania wprowadź **maszyny wirtualne SQL** .
-1. (Opcjonalnie): Wybierz gwiazdkę obok pozycji **maszyny wirtualne SQL** , aby dodać tę opcję do menu **Ulubione** . 
+1. (Opcjonalnie): Wybierz gwiazdkę obok pozycji **SQL Virtual Machines** , aby dodać tę opcję do menu **Ulubione** . 
 1. Wybierz pozycję **maszyny wirtualne SQL**. 
 
    ![Znajdź SQL Server maszyn wirtualnych w ramach wszystkich usług](media/virtual-machines-windows-sql-manage-portal/sql-vm-search.png)
@@ -65,7 +65,7 @@ Aby uzyskać dostęp do karty **Konfiguracja** przestarzałej SQL Server, przejd
 1. Wybierz pozycję **wszystkie usługi**. 
 1. W polu wyszukiwania wprowadź **maszyny wirtualne** .
 1. (Opcjonalnie): Wybierz gwiazdkę obok pozycji **maszyny wirtualne** , aby dodać tę opcję do menu **Ulubione** . 
-1. Wybierz **maszyn wirtualnych**. 
+1. Wybierz pozycję **maszyny wirtualne**. 
 
    ![Wyszukaj maszyny wirtualne](media/virtual-machines-windows-sql-manage-portal/vm-search.png)
 

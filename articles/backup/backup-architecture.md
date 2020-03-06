@@ -4,11 +4,11 @@ description: Zawiera omówienie architektury, składników i procesów używanyc
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77584391"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363774"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup architektura i składniki
 
@@ -94,10 +94,10 @@ Poniższa tabela zawiera podsumowanie obsługiwanych funkcji dla różnych typó
 
 **Funkcja** | **Bezpośrednie tworzenie kopii zapasowych plików i folderów (przy użyciu agenta MARS)** | **Kopia zapasowa maszyny wirtualnej platformy Azure** | **Maszyny lub aplikacje z programem DPM/serwera usługi MAB**
 --- | --- | --- | ---
-Tworzenie kopii zapasowej w magazynie | ![Tak][green] | ![Tak][green] | ![Tak][green]
-Utwórz kopię zapasową na dysku programu DPM/serwera usługi MAB, a następnie na platformie Azure | | | ![Tak][green]
-Kompresuj dane wysyłane do kopii zapasowej | ![Tak][green] | Podczas przesyłania danych nie jest używana kompresja. Magazyn jest nieco nieznacznie napompowany, ale przywracanie jest szybsze.  | ![Tak][green]
-Uruchom przyrostową kopię zapasową |![Tak][green] |![Tak][green] |![Tak][green]
+Tworzenie kopii zapasowej w magazynie | ![Yes][green] | ![Yes][green] | ![Yes][green]
+Utwórz kopię zapasową na dysku programu DPM/serwera usługi MAB, a następnie na platformie Azure | | | ![Yes][green]
+Kompresuj dane wysyłane do kopii zapasowej | ![Yes][green] | Podczas przesyłania danych nie jest używana kompresja. Magazyn jest nieco nieznacznie napompowany, ale przywracanie jest szybsze.  | ![Yes][green]
+Uruchom przyrostową kopię zapasową |![Yes][green] |![Yes][green] |![Yes][green]
 Tworzenie kopii zapasowej deduplikowanych dysków | | | ![Częściowo][yellow]<br/><br/> W przypadku serwerów DPM/serwera usługi MAB wdrożonych tylko lokalnie.
 
 ![Klucz tabeli](./media/backup-architecture/table-key.png)

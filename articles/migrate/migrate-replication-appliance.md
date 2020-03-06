@@ -4,18 +4,18 @@ description: Dowiedz się więcej o urządzeniu replikacji Azure Migrate na potr
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901560"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388943"
 ---
 # <a name="replication-appliance"></a>Urządzenie replikacji
 
 W tym artykule opisano urządzenie do replikacji używane przez [Azure Migrate: Narzędzie do migracji serwera](migrate-services-overview.md#azure-migrate-server-migration-tool) podczas migrowania maszyn wirtualnych VMware, maszyn fizycznych i prywatnych/publicznych maszyn wirtualnych do platformy Azure przy użyciu migracji opartej na agentach. 
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Urządzenie replikacji jest wdrażane podczas konfigurowania migracji opartej na agentach maszyn wirtualnych VMware lub serwerów fizycznych. Jest ona wdrażana jako pojedyncza maszyna lokalna jako maszyna wirtualna VMware lub serwer fizyczny. Działa:
 
@@ -91,7 +91,7 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 
 ## <a name="port-access"></a>Dostęp do portu
 
-**urządzenia** | **Połączenie**
+**Pliku** | **Połączenie**
 --- | ---
 Maszyny wirtualne | Usługa mobilności działająca na maszynach wirtualnych komunikuje się z lokalnym urządzeniem replikacji (serwer konfiguracji) na porcie HTTPS 443 przychodzącego na potrzeby zarządzania replikacją.<br/><br/> Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (uruchomionego na komputerze serwera konfiguracji) na porcie HTTPS 9443 w ruchu przychodzącym. Ten port może być modyfikowany.
 Urządzenie replikacji | Urządzenie replikacji organizuje replikację za pomocą platformy Azure przez port HTTPS 443.

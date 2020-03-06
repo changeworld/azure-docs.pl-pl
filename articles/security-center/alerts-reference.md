@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f83385e1c0a360689569424dbba0c4548751916c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: c62af3ddf8b2c2dc8082dc4f4870ecfcdc175ab8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661963"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380734"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Alerty zabezpieczeń — Podręcznik referencyjny
 
@@ -243,7 +243,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 |Alerty|Opis|Zamierzenie ([Dowiedz się więcej](#intentions))|
 |----|----|:----:|
 |**WERSJA zapoznawcza — wykryto powiązanie roli z rolą administratora klastra**|Analiza dzienników inspekcji Kubernetes wykryła nowe powiązanie z rolą administratora klastra, które wynikają z uprawnień administratora. Niepotrzebnie zapewnianie uprawnień administratora może spowodować problemy z eskalacją uprawnień w klastrze.|Trwałość|
-|**Wykryto narażony pulpit nawigacyjny Kubernetes**|Analiza dzienników inspekcji Kubernetes wykryła narażenie pulpitu nawigacyjnego Kubernetes przez usługę równoważenia obciążenia. Uwidocznione pulpity nawigacyjne umożliwiają nieuwierzytelnionego dostępu do zarządzania klastrem i stanowią zagrożenie bezpieczeństwa.|Trwałość|
+|**Wykryto narażony pulpit nawigacyjny Kubernetes**|Analiza dzienników inspekcji Kubernetes wykryła narażenie pulpitu nawigacyjnego Kubernetes przez usługę równoważenia obciążenia. Uwidocznione pulpity nawigacyjne umożliwiają nieuwierzytelnionego dostępu do zarządzania klastrem i stanowią zagrożenie bezpieczeństwa.|Dostęp wstępny|
 |**WERSJA zapoznawcza — Wykryto nową rolę o wysokim poziomie uprawnień**|Analiza dzienników inspekcji Kubernetes wykryła nową rolę o wysokim poziomie uprawnień. Powiązanie z rolą o wysokim poziomie uprawnień daje użytkownikowi/grupie podwyższone uprawnienia w klastrze. Niepotrzebne zapewnianie podwyższonych uprawnień może spowodować problemy z eskalacją uprawnień w klastrze.|Trwałość|
 |**WERSJA zapoznawcza — wykryto nowy kontener w przestrzeni nazw polecenia-system**|Analiza dziennika inspekcji Kubernetes wykryła nowy kontener w przestrzeni nazw polecenia-system, który nie należy do kontenerów, które normalnie działają w tej przestrzeni nazw. Przestrzenie nazw systemu polecenia nie powinny zawierać zasobów użytkownika. Osoby atakujące mogą użyć tej przestrzeni nazw, aby ukryć złośliwe składniki.|Trwałość|
 |**WERSJA zapoznawcza — wykryto kontener wyszukiwania w walucie cyfrowej**|Analiza dziennika inspekcji Kubernetes wykryła kontener, który ma obraz skojarzony z narzędziem wyszukiwania waluty cyfrowej.|Wykonanie|
@@ -263,7 +263,7 @@ Poniżej znajduje się tabela zawierająca opis Azure Security Centerego łańcu
 |**Serwer SSH jest uruchomiony wewnątrz kontenera**|Dzienniki maszyn wskazują, że serwer SSH jest uruchomiony wewnątrz kontenera Docker. Chociaż takie zachowanie może być zamierzone, często wskazuje, że kontener jest niepoprawnie skonfigurowany lub naruszony.|Wykonanie|
 |**Wykryto kontener z obrazem Miner**|Dzienniki maszyn wskazują wykonywanie kontenera Docker z obrazem skojarzonym z wyszukiwaniem w walucie cyfrowej. Takie zachowanie może wskazywać na to, że zasoby są nadmiarowe.|Wykonanie|
 |**Podejrzane żądanie do interfejsu API Kubernetes**|Dzienniki maszyn wskazują, że zostało wysłane podejrzane żądanie do interfejsu API Kubernetes. Żądanie zostało wysłane z węzła Kubernetes, prawdopodobnie z jednego z kontenerów uruchomionych w węźle. Chociaż takie zachowanie może być zamierzone, może to wskazywać na to, że węzeł korzysta z uszkodzonego kontenera.|Wykonanie|
-|**Podejrzane żądanie do pulpitu nawigacyjnego Kubernetes**|Dzienniki maszyn wskazują, że zostało wysłane podejrzane żądanie do pulpitu nawigacyjnego Kubernetes. Żądanie zostało wysłane z węzła Kubernetes, prawdopodobnie z jednego z kontenerów uruchomionych w węźle. Chociaż takie zachowanie może być zamierzone, może to wskazywać na to, że węzeł korzysta z uszkodzonego kontenera.|-|
+|**Podejrzane żądanie do pulpitu nawigacyjnego Kubernetes**|Dzienniki maszyn wskazują, że zostało wysłane podejrzane żądanie do pulpitu nawigacyjnego Kubernetes. Żądanie zostało wysłane z węzła Kubernetes, prawdopodobnie z jednego z kontenerów uruchomionych w węźle. Chociaż takie zachowanie może być zamierzone, może to wskazywać na to, że węzeł korzysta z uszkodzonego kontenera.|Ruch boczny|
 ||||
 
 
@@ -395,7 +395,7 @@ Zrozumienie zamiaru ataku może ułatwić badanie i raportowanie zdarzeń w łat
 
 Seria kroków opisujących postęp cybernetycznego z Rekonesans do danych eksfiltracji jest często określana jako "Kasuj łańcuch". 
 
-Obsługiwane przez Security Center zamiary kasowania łańcucha są oparte na [Mitre ATT™ &](https://attack.mitre.org/matrices/enterprise) i opisano w poniższej tabeli.
+Obsługiwane przez Security Center zamiary kasowania łańcucha są oparte na [Mitre ATT&trade; &](https://attack.mitre.org/matrices/enterprise) i opisano w poniższej tabeli.
 
 |Intencja|Opis|
 |------|-------|

@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705704"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366891"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>Konfigurowanie zasad autoryzacji klucza zawartości
 
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
  Za pomocą Azure Media Services można dostarczyć strumienie MPEG-PAUZy, Smooth Streaming i HTTP Live Streaming (HLS) chronione za pomocą Advanced Encryption Standard (AES) przy użyciu kluczy szyfrowania 128-bitowych lub usługi [PlayReady Digital Rights Management (DRM)](https://www.microsoft.com/playready/overview/). Za pomocą Media Services można również dostarczyć strumienie KRESKOWAne zaszyfrowane za pomocą funkcji DRM Widevine. Obie usługi, PlayReady i Widevine, szyfrują dane zgodnie ze specyfikacją Common Encryption (ISO/IEC CENC 23001-7).
 
 Media Services udostępnia również usługę dostarczania kluczy/licencji, z której klienci mogą uzyskać klucze AES lub licencje PlayReady/Widevine, aby odtworzyć zaszyfrowaną zawartość.
@@ -434,7 +434,7 @@ Aby uzyskać token testowy oparty na ograniczeniu tokenu, który został użyty 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Następne kroki

@@ -16,18 +16,18 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69016729"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392958"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Zaawansowane samouczki Media Encoder Premium Workflow
 ## <a name="overview"></a>Omówienie
 Ten dokument zawiera instruktaże, które pokazują, jak dostosować przepływy pracy za pomocą **Projektant przepływu pracy**. Rzeczywiste pliki przepływu pracy można znaleźć [tutaj](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples).  
 
 ## <a name="toc"></a>TOC
-Omówiono następujące tematy:
+Omówione są następujące tematy:
 
 * [Kodowanie MXF w pojedynczej szybkości transmisji bitów](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)
   * [Uruchamianie nowego przepływu pracy](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_start_new)
@@ -238,7 +238,7 @@ Połącz kod PIN nieskompresowanego wideo pliku multimedialnego danych wejściow
 
 Teraz dostosowuje konfigurację nowego kodera AVC do wyjściowego 960x540 o 2,5 MB/s. (Użyj jego właściwości "Szerokość wyjściowa", "wysokość wyjściowa" i "szybkość transmisji bitów (KB/s)").
 
-Mając na względzie, że chcemy używać uzyskanego zasobu wraz z Azure Media Services "dynamicznym pakietem, punkt końcowy przesyłania strumieniowego musi być w stanie generować z tych plików MP4 HLS/pofragmentowane fragmenty MP4/KRESKOWAne, które są dokładnie wyrównane do siebie w taki sposób, aby Klienci, którzy przełączają się między różnymi szybkościami transmisji bitów, uzyskują jedno płynne, ciągłe środowisko wideo i audio. W takim przypadku musimy upewnić się, że we właściwościach obu koderów AVC rozmiar grupę GOP ("Grupa obrazów") dla obu plików MP4 ma wartość 2 sekund, co może być wykonywane przez:
+Mając na względzie, że chcemy użyć wygenerowanego zasobu wraz z Azure Media Services "dynamicznym pakietem, punkt końcowy przesyłania strumieniowego musi być w stanie generować z tych plików MP4 HLS/pofragmentowane fragmenty MP4/PAUZ, które są dokładnie wyrównane do siebie w sposób, w jaki klienci przełączają się między różnymi szybkościami transmisji bitów i wideo. W takim przypadku musimy upewnić się, że we właściwościach obu koderów AVC rozmiar grupę GOP ("Grupa obrazów") dla obu plików MP4 ma wartość 2 sekund, co może być wykonywane przez:
 
 * Ustawianie trybu grupę GOP rozmiaru na stały rozmiar grupę GOP i
 * Interwał klatek kluczowych do dwóch sekund.
@@ -294,7 +294,7 @@ Utwórz trzeci składnik wyjściowy pliku do wyprowadzania strumienia wychodząc
 *Muxer audio — Tworzenie pliku wyjściowego*
 
 ### <a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>Dodawanie. Plik SMIL
-Aby dynamiczne pakowanie działało w połączeniu z obydwoma plikami MP4 (i MP4 tylko do nagrania dźwiękowego) w naszym Media Services, wymagany jest również plik manifestu (nazywany także plikiem "SMIL"): Zsynchronizowany język integracji multimediów). Ten plik wskazuje, Azure Media Services jakie pliki MP4 są dostępne dla pakowania dynamicznego i które mają być brane pod uwagę w przypadku przesyłania strumieniowego audio. Typowy plik manifestu dla zestawu MP4's z pojedynczym strumieniem audio wygląda następująco:
+Aby dynamiczne pakowanie działało w połączeniu z obydwoma plikami MP4 (i MP4 tylko do nagrania dźwiękowego) w naszym Media Services, wymagany jest również plik manifestu (nazywany także plikiem "SMIL"). Ten plik wskazuje, Azure Media Services jakie pliki MP4 są dostępne dla pakowania dynamicznego i które mają być brane pod uwagę w przypadku przesyłania strumieniowego audio. Typowy plik manifestu dla zestawu MP4's z pojedynczym strumieniem audio wygląda następująco:
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -410,7 +410,7 @@ i dla plików wyjściowych tylko audio:
 Jeśli teraz zmienimy szybkość transmisji bitów dla dowolnego pliku wideo lub audio, odpowiedni koder zostanie ponownie skonfigurowany, a konwencja nazw plików oparta na szybkości transmisji bitów zostanie wykorzystana automatycznie.
 
 ## <a id="thumbnails_to__multibitrate_MP4"></a>Dodawanie miniatur do danych wyjściowych w formacie wieloszybkościowej
-Rozpoczynając od przepływu pracy, który generuje dane wyjściowe z przeprowadzeniem wieloszybkościowego wyszukiwania [z danych wejściowych MXF](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), będziemy teraz dodawać miniatury do danych wyjściowych.
+Rozpoczynając od przepływu pracy, który generuje [dane wyjściowe z przeprowadzeniem wieloszybkościowego wyszukiwania z danych wejściowych MXF](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), będziemy teraz dodawać miniatury do danych wyjściowych.
 
 ### <a id="thumbnails_to__multibitrate_MP4_overview"></a>Omówienie przepływu pracy, w którym można dodać miniatury
 ![Uruchamianie przepływu pracy MP4 z wieloszybkościową usługą](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-start-from.png)
@@ -422,7 +422,7 @@ Serca naszej generacji miniatury będzie składnikiem kodera JPG, który umożli
 
 ![Koder JPG](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-jpg-encoder.png)
 
-*JPG Encoder*
+*Koder JPG*
 
 Nie można jednak bezpośrednio połączyć naszego nieskompresowanego strumienia wideo z pliku multimedialnego do kodera JPG. Zamiast tego oczekuje się, że poszczególne ramki są przekazywane. Można to zrobić za pomocą składnika bramy klatek wideo.
 
@@ -462,7 +462,7 @@ W porównaniu z naszym wideo MP4 składnik programu JPG Encoder wyprowadza więc
 
 *Wprowadzenie do edytora plików JPG przeszukiwania sceny*
 
-Skonfiguruj Właściwość ścieżki folderu wyjściowego z wyrażeniem: $ {ROOT_outputWriteDirectory}
+Skonfiguruj Właściwość ścieżki folderu wyjściowego przy użyciu wyrażenia: $ {ROOT_outputWriteDirectory}
 
 i Właściwość prefiksu filename z:
 
@@ -626,7 +626,7 @@ W naszym oknie dziennika wyświetlane są następujące elementy:
 *Dane wyjściowe dziennika do uzyskiwania dostępu do ścieżek węzłów*
 
 ## <a id="frame_based_trim"></a>Przycinanie danych wyjściowych z wieloszybkościową obsługą ramek
-Rozpoczynając od przepływu pracy, który generuje dane wyjściowe z przeprowadzeniem wieloszybkościowego wyszukiwania [z danych wejściowych MXF](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), będziemy teraz przystąpić do przycinania źródłowego wideo na podstawie liczby klatek.
+Rozpoczynając od przepływu pracy, który generuje [dane wyjściowe z przeprowadzeniem wieloszybkościowego wyszukiwania z danych wejściowych MXF](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), będziemy teraz przystąpić do przycinania źródłowego wideo na podstawie liczby klatek.
 
 ### <a id="frame_based_trim_start"></a>Przegląd strategii, aby rozpocząć dodawanie przycinania do
 ![Przepływ pracy umożliwiający rozpoczęcie dodawania przycinania do](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-workflow-start-adding-trimming-to.png)
@@ -761,7 +761,7 @@ Zostało to zrobione przez normalne operacje manipulowania ciągami. Zmodyfikowa
 
 *Rejestrowanie listy wycinków z wynikiem*
 
-Wykonaj Test-Run, aby zobaczyć, jak strumienie wideo i audio zostały obcięte. Podobnie jak w przypadku więcej niż jednego przebiegu testowego z różnymi wartościami dla punktów przycinania, należy zauważyć, że nie zostaną one jednak uwzględnione. Przyczyną tego jest to, że projektant, w przeciwieństwie do środowiska uruchomieniowego platformy Azure, nie przesłania pliku XML cliplist w każdym przebiegu. Oznacza to, że tylko po raz pierwszy ustawiono punkty w i out, spowoduje to przekształcenie pliku XML, a wszystkie inne, nasze klauzule Guard (if (`clipListXML.indexOf("<trim>") == -1`)) uniemożliwią przepływowi pracy dodanie innego elementu przycinania, gdy już istnieje.
+Wykonaj Test-Run, aby zobaczyć, jak strumienie wideo i audio zostały obcięte. Podobnie jak w przypadku więcej niż jednego przebiegu testowego z różnymi wartościami dla punktów przycinania, należy zauważyć, że nie zostaną one jednak uwzględnione. Przyczyną tego jest to, że projektant, w przeciwieństwie do środowiska uruchomieniowego platformy Azure, nie przesłania pliku XML cliplist w każdym przebiegu. Oznacza to, że tylko po raz pierwszy ustawiono punkty w i out, spowoduje to przekształcenie XML, a wszystkie inne, nasze klauzule Guard (jeśli (`clipListXML.indexOf("<trim>") == -1`)) uniemożliwią przepływowi pracy dodanie innego elementu Trim, gdy już istnieje.
 
 Aby nasz przepływ pracy był wygodny do przetestowania lokalnego, najlepiej dodać kod, który sprawdza, czy element Trim już istnieje. Jeśli tak, możemy ją usunąć przed kontynuowaniem, modyfikując plik XML z nowymi wartościami. Zamiast korzystać z operacji w postaci zwykłego ciągu, jest to raczej bezpieczniejsze do wykonania za pośrednictwem rzeczywistej analizy modelu obiektów XML.
 
@@ -955,5 +955,5 @@ Korzystając z poniższej prostej klauzuli Guard, możemy sprawdzić, czy przyci
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekazywanie opinii
+## <a name="provide-feedback"></a>Przekaż opinię
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

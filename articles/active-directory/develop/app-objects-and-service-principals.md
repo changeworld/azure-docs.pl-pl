@@ -15,17 +15,17 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.openlocfilehash: 19085346fb5797245c9f71911f8178df0a1b742a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698428"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78370298"
 ---
-# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Obiekty aplikacji i jednostki usługi w usłudze Azure Active Directory
+# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Obiekty główne aplikacji i usług w Azure Active Directory
 
 Czasami znaczenie terminu "aplikacja" może być interpretowane w kontekście Azure Active Directory (Azure AD). W tym artykule wyjaśniono koncepcje i konkretne aspekty integracji aplikacji usługi Azure AD z ilustracją rejestracji i zgody dla [aplikacji wielodostępnych](developer-glossary.md#multi-tenant-application).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aplikacja zintegrowana z usługą Azure AD ma konsekwencje wykraczające poza aspekt oprogramowania. "Aplikacja" jest często używana jako termin koncepcyjny, odnoszący się do nie tylko oprogramowania aplikacji, ale także rejestrację i rolę usługi Azure AD w ramach uwierzytelniania/autoryzacji "konwersacje" w czasie wykonywania.
 
@@ -58,13 +58,13 @@ Podmiot zabezpieczeń definiuje zasady dostępu i uprawnienia dla użytkownika/a
 
 Gdy aplikacja uzyskuje uprawnienia dostępu do zasobów w dzierżawie (po rejestracji lub [zgodzie](developer-glossary.md#consent)), tworzony jest obiekt jednostki usługi. Jednostka Microsoft Graph [serviceprincipal][MS-Graph-Sp-Entity] definiuje schemat właściwości obiektu głównego usługi.
 
-### <a name="application-and-service-principal-relationship"></a>Relacja aplikacji i jednostki usługi
+### <a name="application-and-service-principal-relationship"></a>Relacja główna aplikacji i usługi
 
 Rozważmy obiekt aplikacji jako *globalną* reprezentację aplikacji do użycia we wszystkich dzierżawcach i nazwę główną usługi jako reprezentację *lokalną* do użycia w określonej dzierżawie.
 
-Obiekt aplikacji służy jako szablon, z którego *pochodzą* typowe i domyślne właściwości do stosowania podczas tworzenia odpowiednich obiektów jednostki usługi. W związku z tym obiekt aplikacji ma 1:1 relację z aplikacją oprogramowania i 1: wiele relacji z odpowiadającymi im obiektami głównych usług.
+Obiekt Application służy jako szablon, z którego są *tworzone* właściwości wspólne i domyślne do użycia podczas tworzenia odpowiednich obiektów głównych usługi. W związku z tym obiekt aplikacji ma 1:1 relację z aplikacją oprogramowania i 1: wiele relacji z odpowiadającymi im obiektami głównych usług.
 
-Należy utworzyć jednostkę usługi w każdej dzierżawie, w której jest używana aplikacja, umożliwiając jej ustalenie tożsamości logowania i/lub dostęp do zasobów zabezpieczonych przez dzierżawcę. Aplikacja jednej dzierżawy ma tylko jedną jednostkę usługi (w swojej głównej dzierżawie) utworzoną do użycia podczas rejestracji aplikacji i mającą na to zgodę. Wielodostępna aplikacja sieci Web/interfejs API ma także nazwę główną usługi utworzoną w każdej dzierżawie, w której użytkownik z tej dzierżawy wyraził zgodę na jego użycie.
+Należy utworzyć jednostkę usługi w każdej dzierżawie, w której jest używana aplikacja, umożliwiając jej ustalenie tożsamości logowania i/lub dostęp do zasobów zabezpieczonych przez dzierżawcę. Aplikacja o pojedynczej dzierżawie ma tylko jedną jednostkę usługi (w swojej dzierżawie domowej), która została utworzona i wysłana do użycia podczas rejestracji aplikacji. Wielodostępna aplikacja sieci Web/interfejs API ma także nazwę główną usługi utworzoną w każdej dzierżawie, w której użytkownik z tej dzierżawy wyraził zgodę na jego użycie.
 
 > [!NOTE]
 > Wszelkie zmiany wprowadzone w obiekcie aplikacji również są odzwierciedlone w jego obiekcie głównym usługi tylko w dzierżawie głównym aplikacji (dzierżawie, w której został zarejestrowany). W przypadku aplikacji wielodostępnych zmiany w obiekcie aplikacji nie są odzwierciedlane w obiektach głównych usługi dzierżawców klientów, dopóki dostęp nie zostanie usunięty za pomocą [panelu dostępu do aplikacji](https://myapps.microsoft.com) i ponownie udzielony.
@@ -83,7 +83,7 @@ Na poniższym diagramie przedstawiono relację między obiektem aplikacji aplika
 
 W tym przykładowym scenariuszu:
 
-| Czynność | Opis |
+| Krok | Opis |
 |------|-------------|
 | 1    | Jest procesem tworzenia obiektów głównych aplikacji i usług w dzierżawie głównej aplikacji. |
 | 2    | Gdy administratorzy Contoso i fabrikam ukończyją zgodę, obiekt główny usługi jest tworzony w dzierżawie usługi Azure AD swojej firmy i ma przypisane uprawnienia przyznane przez administratora. Należy również pamiętać, że aplikacja KADRowa mogła zostać skonfigurowana/zaprojektowana tak, aby zezwalać użytkownikom na zgodę na użycie indywidualnych. |

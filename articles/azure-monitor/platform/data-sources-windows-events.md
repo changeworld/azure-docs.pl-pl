@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670512"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394417"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Źródła danych dziennika zdarzeń systemu Windows w Azure Monitor
 Dzienniki zdarzeń systemu Windows to jedno z najpopularniejszych [źródeł danych](agent-data-sources.md) do zbierania danych przy użyciu agentów systemu Windows, ponieważ wiele aplikacji zapisuje w dzienniku zdarzeń systemu Windows.  Można zbierać zdarzenia z dzienników standardowych, takich jak system i aplikacja, oprócz określania dzienników niestandardowych utworzonych przez aplikacje, które mają być monitorowane.
@@ -46,7 +46,7 @@ Rekordy zdarzeń systemu Windows mają typ **zdarzenia** i mają właściwości 
 | EventCategory |Kategoria zdarzenia. |
 | EventData |Wszystkie dane zdarzeń w formacie nieprzetworzonym. |
 | EventID |Liczba zdarzeń. |
-| eventLevel |Ważność zdarzenia w postaci numerycznej. |
+| EventLevel |Ważność zdarzenia w postaci numerycznej. |
 | EventLevelName |Ważność zdarzenia w postaci tekstu. |
 | Elemencie |Nazwa dziennika zdarzeń, z którego zostały zebrane zdarzenia. |
 | ParameterXml |Wartości parametrów zdarzenia w formacie XML. |
