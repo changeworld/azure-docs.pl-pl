@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1645d2848c6d4b852a81042c4db8a0f6e90fd8fd
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945814"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399689"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Rozwiązywanie problemów Azure Machine Learning usługi Azure Kubernetes i wdrożenia Azure Container Instances
 
@@ -34,13 +34,13 @@ Zalecane i najbardziej aktualne podejście do wdrażania modelu polega za pośre
 
 3. Wdróż model w usłudze Azure Container Instance (ACI) lub w usłudze Azure Kubernetes Service (AKS).
 
-Dowiedz się więcej na temat tego procesu w [zarządzania modelami](concept-model-management-and-deployment.md) wprowadzenie.
+Dowiedz się więcej o tym procesie w [Zarządzanie modelami](concept-model-management-and-deployment.md) wprowadzenie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Subskrypcji platformy Azure**. Jeśli go nie masz, wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
+* **Subskrypcja platformy Azure**. Jeśli go nie masz, wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree).
 * [Zestaw SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
-* [Wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * [Rozszerzenie interfejsu wiersza polecenia dla Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * Aby debugować lokalnie, musisz mieć działającą instalację platformy Docker w systemie lokalnym.
 
@@ -183,7 +183,7 @@ print(ws.webservices['mysvc'].get_logs())
 
 ## <a name="service-launch-fails"></a>Uruchomienie usługi nie powiedzie się.
 
-Po pomyślnym skompilowaniu obrazu system podejmie próbę uruchomienia kontenera przy użyciu konfiguracji wdrożenia. Jako część procesu rozruchu kontenera `init()` funkcji oceniania skryptu zostanie wywołany przez system. Jeśli istnieją nieobsłużone wyjątki w `init()` funkcji, można napotkać **CrashLoopBackOff** błąd w komunikacie o błędzie.
+Po pomyślnym skompilowaniu obrazu system podejmie próbę uruchomienia kontenera przy użyciu konfiguracji wdrożenia. W ramach procesu uruchamiania kontenera, funkcja `init()` w skrypcie oceniania jest wywoływana przez system. Jeśli w funkcji `init()` występują nieprzechwycone wyjątki, w komunikacie o błędzie może pojawić się błąd **CrashLoopBackOff** .
 
 Skorzystaj z informacji w sekcji [sprawdzanie dziennika platformy Docker](#dockerlog) , aby sprawdzić dzienniki.
 
@@ -204,7 +204,7 @@ Ustawienie poziomu rejestrowania na debugowanie może spowodować zarejestrowani
 
 ## <a name="function-fails-runinput_data"></a>Funkcja kończy się niepowodzeniem: run(input_data)
 
-Jeśli usługa została pomyślnie wdrożona, ale jej ulega awarii, gdy opublikujesz danych do punktu końcowego oceniania, można dodać błąd Przechwytywanie instrukcji w swojej `run(input_data)` funkcji tak, aby zamiast tego zwraca szczegółowy komunikat o błędzie. Przykład:
+Jeśli usługa została pomyślnie wdrożona, ale ulega awarii, gdy dane są ogłaszane w punkcie końcowym oceniania, można dodać instrukcję przechwytywania błędów w funkcji `run(input_data)`, tak aby zamiast tego zwracała szczegółowy komunikat o błędzie. Na przykład:
 
 ```python
 def run(input_data):
@@ -219,7 +219,11 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-**Uwaga**: zwracanie komunikaty o błędach z `run(input_data)` wywołanie powinno się odbywać tylko do celów debugowania. Ze względów bezpieczeństwa nie należy zwracać komunikatów o błędach w ten sposób w środowisku produkcyjnym.
+**Uwaga**: Zwracanie komunikatów o błędach z wywołania `run(input_data)` powinno odbywać się tylko do celów debugowania. Ze względów bezpieczeństwa nie należy zwracać komunikatów o błędach w ten sposób w środowisku produkcyjnym.
+
+## <a name="http-status-code-502"></a>Kod stanu HTTP 502
+
+Kod stanu 502 wskazuje, że usługa zgłosiła wyjątek lub uległa awarii w metodzie `run()` pliku score.py. Aby debugować plik, Skorzystaj z informacji w tym artykule.
 
 ## <a name="http-status-code-503"></a>Kod stanu HTTP 503
 
@@ -261,6 +265,12 @@ Istnieją dwie rzeczy, które mogą pomóc w zapobieganiu kodów stanu 503:
     > Jeśli odbierane są żądania większe niż w przypadku nowych replik minimalnych, może dojść do 503s. Na przykład w miarę wzrostu ruchu do usługi może być konieczne zwiększenie minimalnej liczby replik.
 
 Aby uzyskać więcej informacji na temat ustawiania `autoscale_target_utilization`, `autoscale_max_replicas`i `autoscale_min_replicas` dla programu, zobacz odwołanie do modułu [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) .
+
+## <a name="http-status-code-504"></a>Kod stanu HTTP 504
+
+Kod stanu 504 wskazuje, że upłynął limit czasu żądania. Domyślny limit czasu wynosi 1 minutę.
+
+Można zwiększyć limit czasu lub spróbować przyspieszyć usługę, modyfikując score.py w celu usunięcia niepotrzebnych wywołań. Jeśli te akcje nie rozrozwiązuje problemu, użyj informacji w tym artykule, aby debugować plik score.py. Kod może być w stanie zawieszonym lub nieskończoną pętlą.
 
 ## <a name="advanced-debugging"></a>Zaawansowane debugowanie
 
@@ -426,7 +436,7 @@ Aby wprowadzić zmiany w plikach w obrazie, można dołączyć do uruchomionego 
 
 1. Upewnij się, że zmiany wprowadzone w plikach w kontenerze są zsynchronizowane z lokalnymi plikami, których VS Code używa. W przeciwnym razie środowisko debugera nie będzie działało zgodnie z oczekiwaniami.
 
-### <a name="stop-the-container"></a>Zatrzymywanie kontenera
+### <a name="stop-the-container"></a>Zatrzymaj kontener
 
 Aby zatrzymać kontener, użyj następującego polecenia:
 
@@ -438,5 +448,5 @@ docker stop debug
 
 Dowiedz się więcej o wdrażaniu:
 
-* [Jak wdrażać i którym](how-to-deploy-and-where.md)
-* [Samouczek: Uczenie i wdrażanie modeli](tutorial-train-models-with-aml.md)
+* [Jak wdrożyć i gdzie](how-to-deploy-and-where.md)
+* [Samouczek: uczenie & Wdrażanie modeli](tutorial-train-models-with-aml.md)

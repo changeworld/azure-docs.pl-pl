@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/03/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6bffa114b325e8b98f439e7ff2ce21480407a643
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 51713db8532eb33f102de9320dea9eaeb98c4019
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274914"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359080"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Metryki translatora adresów sieciowych na platformie Azure Virtual Network
 
@@ -57,6 +57,10 @@ Resource Health nie jest obsługiwana.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [Virtual Network translatora adresów sieciowych](nat-overview.md)
-- Informacje o [zasobie bramy translatora adresów sieciowych](nat-gateway-resource.md)
-- Dowiedz się więcej o [Azure monitor](../azure-monitor/overview.md)
+* Dowiedz się więcej o [Virtual Network translatora adresów sieciowych](nat-overview.md)
+* Informacje o [zasobie bramy translatora adresów sieciowych](nat-gateway-resource.md)
+* Dowiedz się więcej o [Azure monitor](../azure-monitor/overview.md)
+* Informacje o [rozwiązywaniu problemów z zasobami bramy translatora adresów sieciowych](troubleshoot-nat.md).
+* [Powiedz nam, co należy utworzyć obok Virtual Network translatora adresów sieciowych w usłudze UserVoice](https://aka.ms/natuservoice).
+
+

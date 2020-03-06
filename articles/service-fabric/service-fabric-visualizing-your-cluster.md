@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
 ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464104"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364971"
 ---
-# <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Wizualizowanie klastra za pomocą Eksploratora usługi Service Fabric
+# <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Wizualizowanie klastra przy użyciu narzędzia Service Fabric Explorer
 
 Service Fabric Explorer (SFX) to narzędzie Open Source służące do sprawdzania klastrów Service Fabric platformy Azure i zarządzania nimi. Service Fabric Explorer to aplikacja klasyczna dla systemów Windows, macOS i Linux.
 
@@ -20,7 +20,7 @@ Service Fabric Explorer (SFX) to narzędzie Open Source służące do sprawdzani
 
 Użyj następujących linków, aby pobrać Service Fabric Explorer jako aplikację klasyczną:
 
-- Windows
+- System Windows
   - https://aka.ms/sfx-windows
 
 - Linux
@@ -119,7 +119,7 @@ Podgląd magazynu obrazów jest funkcją oferowaną w przypadku korzystania z na
 
 ![Service Fabric Explorer mapowanie klastra][sfx-imagestore]
 
-## <a name="backup-and-restore"></a>Wykonywanie kopii zapasowych i odzyskiwanie danych
+## <a name="backup-and-restore"></a>Wykonywanie kopii zapasowych i przywracanie
 Service Fabric Explorer oferuje możliwość tworzenia interfejsów przy użyciu [kopii zapasowych i przywracania](./service-fabric-reliable-services-backup-restore.md). Aby można było wyświetlić funkcje tworzenia kopii zapasowych i przywracania w programie SFX, należy włączyć tryb zaawansowany.
 
 ![Włącz tryb zaawansowany][0]

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 7b009a6e2f540dc076340a6803679a541e60adc7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63ace9af31dd284c61fae188744b24361f33c170
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165347"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377902"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Instrukcje: Migrowanie z usługi Azure Access Control Service
 
@@ -68,13 +68,13 @@ Postępuj zgodnie z instrukcjami w tej sekcji, aby dowiedzieć się, które apli
 ### <a name="download-and-install-acs-powershell"></a>Pobieranie i Instalowanie programu PowerShell ACS
 
 1. Przejdź do Galeria programu PowerShell i Pobierz [ACS. Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
-1. Zainstaluj moduł, uruchamiając
+2. Zainstaluj moduł, uruchamiając
 
     ```powershell
     Install-Module -Name Acs.Namespaces
     ```
 
-1. Pobierz listę wszystkich możliwych poleceń, uruchamiając polecenie
+3. Pobierz listę wszystkich możliwych poleceń, uruchamiając polecenie
 
     ```powershell
     Get-Command -Module Acs.Namespaces
@@ -94,8 +94,8 @@ Postępuj zgodnie z instrukcjami w tej sekcji, aby dowiedzieć się, które apli
   
     Może być konieczne uruchomienie `Set-ExecutionPolicy -ExecutionPolicy Bypass`, aby można było wykonywać polecenia i być administratorem tych subskrypcji w celu wykonywania poleceń.
 
-1. Wyświetl listę dostępnych subskrypcji platformy Azure za pomocą polecenia cmdlet **Get-AcsSubscription** .
-1. Utwórz listę przestrzeni nazw ACS przy użyciu polecenia cmdlet **Get-AcsNamespace** .
+2. Wyświetl listę dostępnych subskrypcji platformy Azure za pomocą polecenia cmdlet **Get-AcsSubscription** .
+3. Utwórz listę przestrzeni nazw ACS przy użyciu polecenia cmdlet **Get-AcsNamespace** .
 
 ### <a name="check-which-applications-will-be-impacted"></a>Sprawdź, które aplikacje mają wpływ
 
@@ -103,8 +103,8 @@ Postępuj zgodnie z instrukcjami w tej sekcji, aby dowiedzieć się, które apli
 
     Na przykład jeśli jedna z przestrzeni nazw to contoso-test, przejdź do `https://contoso-test.accesscontrol.windows.net`
 
-1. W obszarze **relacje zaufania**wybierz pozycję **aplikacje jednostki uzależnionej** , aby wyświetlić listę aplikacji, na które WPŁYNIE wycofanie usługi ACS.
-1. Powtórz kroki 1-2 dla wszystkich innych przestrzeni nazw ACS, które posiadasz.
+2. W obszarze **relacje zaufania**wybierz pozycję **aplikacje jednostki uzależnionej** , aby wyświetlić listę aplikacji, na które WPŁYNIE wycofanie usługi ACS.
+3. Powtórz kroki 1-2 dla wszystkich innych przestrzeni nazw ACS, które posiadasz.
 
 ## <a name="retirement-schedule"></a>Harmonogram wycofania
 
@@ -196,7 +196,7 @@ Na wysokim poziomie *Azure Active Directory jest prawdopodobnie najlepszym wybor
 | Konta Microsoft do użytku osobistego | Obsługiwane | Obsługiwane za pośrednictwem protokołu uwierzytelniania OAuth usługi Azure AD 2.0, ale nie za pośrednictwem żadnych innych protokołów | 
 | Konta w serwisie Facebook, Google, Yahoo | Obsługiwane | Nieobsługiwane |
 | **Protokoły i zgodność z zestawem SDK** | | |
-| Fundacja tożsamość systemu Windows (WIF) | Obsługiwane | Obsługiwane, ale są dostępne ograniczone instrukcje |
+| WIF | Obsługiwane | Obsługiwane, ale są dostępne ograniczone instrukcje |
 | WS-Federation | Obsługiwane | Obsługiwane |
 | OAuth 2.0 | Obsługa wersji 3 | Obsługa specyfikacji RFC 6749, najbardziej nowoczesnej specyfikacji |
 | Usługa WS-Trust | Obsługiwane | Nieobsługiwane |
@@ -205,12 +205,12 @@ Na wysokim poziomie *Azure Active Directory jest prawdopodobnie najlepszym wybor
 | SAML 1.1 | Obsługiwane | Wersja zapoznawcza |
 | SAML 2.0 | Obsługiwane | Obsługiwane |
 | SWT | Obsługiwane | Nieobsługiwane |
-| **Zmiany** | | |
+| **Dostosowania** | | |
 | Dostosowywalny interfejs użytkownika odnajdywania/wybierania obszaru głównego | Kod do pobrania, który można włączyć do aplikacji | Nieobsługiwane |
 | Przekazywanie niestandardowych certyfikatów podpisywania tokenu | Obsługiwane | Obsługiwane |
 | Dostosuj oświadczenia w tokenach |-Przekazuj oświadczenia wejściowe od dostawców tożsamości<br />— Uzyskiwanie tokenu dostępu od dostawcy tożsamości jako żądania<br />-Wygeneruj oświadczenia wyjściowe na podstawie wartości oświadczeń wejściowych<br />-Wygeneruj oświadczenia wyjściowe z wartościami stałymi |— Nie można przekazać oświadczeń od dostawców tożsamości federacyjnych<br />-Nie można uzyskać tokenu dostępu od dostawcy tożsamości jako żądania<br />-Nie można wydać oświadczeń wyjściowych na podstawie wartości oświadczeń wejściowych<br />-Może wydawać oświadczenia wyjściowe z wartościami stałymi<br />— Może wydawać oświadczenia wyjściowe na podstawie właściwości użytkowników zsynchronizowanych z usługą Azure AD |
 | **Automatyzacja** | | |
-| Automatyzowanie zadań związanych z konfiguracją i zarządzaniem | Obsługiwane przez usługę Access Control Management | Obsługiwane przez Microsoft Graph i usługę Azure AD interfejs API programu Graph |
+| Automatyzowanie zadań związanych z konfiguracją i zarządzaniem | Obsługiwane przez usługę Access Control Management | Obsługiwane przy użyciu interfejsu API Microsoft Graph |
 
 Jeśli zdecydujesz, że usługa Azure AD jest najlepszą ścieżką migracji aplikacji i usług, należy pamiętać o dwóch sposobach integracji aplikacji z usługą Azure AD.
 
@@ -256,12 +256,12 @@ Poniższa tabela zawiera porównanie funkcji Access Control, które są istotne 
 | SAML 1.1 | Obsługiwane | Nieobsługiwane |
 | SAML 2.0 | Obsługiwane | Nieobsługiwane |
 | SWT | Obsługiwane | Nieobsługiwane |
-| **Zmiany** | | |
+| **Dostosowania** | | |
 | Dostosowywalny interfejs użytkownika odnajdywania/wybierania obszaru głównego | Kod do pobrania, który można włączyć do aplikacji | W pełni dostosowywalny interfejs użytkownika za pośrednictwem niestandardowego arkusza CSS |
 | Przekazywanie niestandardowych certyfikatów podpisywania tokenu | Obsługiwane | Niestandardowe klucze podpisywania, nie certyfikaty, obsługiwane za pośrednictwem zasad niestandardowych |
 | Dostosuj oświadczenia w tokenach |-Przekazuj oświadczenia wejściowe od dostawców tożsamości<br />— Uzyskiwanie tokenu dostępu od dostawcy tożsamości jako żądania<br />-Wygeneruj oświadczenia wyjściowe na podstawie wartości oświadczeń wejściowych<br />-Wygeneruj oświadczenia wyjściowe z wartościami stałymi |-Może przechodzić przez oświadczenia od dostawców tożsamości; zasady niestandardowe wymagane dla niektórych oświadczeń<br />-Nie można uzyskać tokenu dostępu od dostawcy tożsamości jako żądania<br />-Może wydawać oświadczenia wyjściowe na podstawie wartości oświadczeń wejściowych za pośrednictwem zasad niestandardowych<br />-Może wydawać oświadczenia wyjściowe z wartościami stałymi za pośrednictwem zasad niestandardowych |
 | **Automatyzacja** | | |
-| Automatyzowanie zadań związanych z konfiguracją i zarządzaniem | Obsługiwane przez usługę Access Control Management |-Tworzenie użytkowników dozwolonych za pośrednictwem usługi Azure AD interfejs API programu Graph<br />— Nie można programowo tworzyć dzierżawców B2C, aplikacji ani zasad |
+| Automatyzowanie zadań związanych z konfiguracją i zarządzaniem | Obsługiwane przez usługę Access Control Management |-Tworzenie użytkowników dozwolonych za pomocą interfejsu API Microsoft Graph<br />— Nie można programowo tworzyć dzierżawców B2C, aplikacji ani zasad |
 
 Jeśli zdecydujesz, że Azure AD B2C jest najlepszą ścieżką migracji dla aplikacji i usług, Zacznij od następujących zasobów:
 
@@ -325,7 +325,7 @@ Możesz również użyć usługi Azure AD do uwierzytelniania serwer-serwer przy
 | Metody uwierzytelniania klientów |-Proste hasło<br />-Podpisane SWT<br />-Token SAML od dostawcy tożsamości federacyjnych |-Proste hasło<br />-Z podpisem JWT |
 | Formaty tokenów |- JWT<br />- SAML 1.1<br />- SAML 2.0<br />- SWT<br /> | Tylko JWT |
 | Przekształcenie tokenu |-Dodawanie oświadczeń niestandardowych<br />-Prosta logika wystawiania | Dodawanie oświadczeń niestandardowych | 
-| Automatyzowanie zadań związanych z konfiguracją i zarządzaniem | Obsługiwane przez usługę Access Control Management | Obsługiwane przez Microsoft Graph i usługę Azure AD interfejs API programu Graph |
+| Automatyzowanie zadań związanych z konfiguracją i zarządzaniem | Obsługiwane przez usługę Access Control Management | Obsługiwane przy użyciu interfejsu API Microsoft Graph |
 
 Wskazówki dotyczące implementowania scenariuszy serwer-serwer można znaleźć w następujących zasobach:
 

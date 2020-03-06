@@ -4,11 +4,11 @@ description: Więcej informacji na temat trybu failover i niepowodzenia w Azure 
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539522"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362865"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Informacje o lokalnym przejściu w tryb failover i powrotu po awarii
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: 39fc57a6da20549447f782399e9571f7a0ffeea7
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/05/2020
+ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122529"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398335"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Wdrażanie modelu uczenia głębokiego na potrzeby wnioskowania z procesorem GPU
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -101,7 +101,7 @@ Aby uzyskać więcej informacji na temat korzystania z programu AKS z Azure Mach
 Skrypt wejścia odbiera dane przesyłane do usługi sieci Web, przekazuje je do modelu i zwraca wyniki oceniania. Poniższy skrypt ładuje model Tensorflow podczas uruchamiania, a następnie używa modelu do oceny danych.
 
 > [!TIP]
-> Skrypt wejściowy jest specyficzny dla modelu. Na przykład skrypt musi znać strukturę, która ma być używana z modelem, formatami danych itp.
+> Skrypt wejścia jest specyficzny dla modelu. Na przykład skrypt musi znać strukturę, która ma być używana z modelem, formatami danych itp.
 
 ```python
 import json
@@ -275,7 +275,7 @@ print("prediction:", resp.text)
 
 Aby uzyskać więcej informacji na temat tworzenia aplikacji klienckiej, zobacz [Tworzenie klienta programu w celu użycia wdrożonej usługi sieci Web](how-to-consume-web-service.md).
 
-## <a name="clean-up-the-resources"></a>Oczyszczanie zasobów
+## <a name="clean-up-the-resources"></a>Czyszczenie zasobów
 
 Jeśli klaster AKS został utworzony w ramach tego przykładu, Usuń zasoby po zakończeniu.
 

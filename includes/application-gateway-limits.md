@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 6/5/2019
+ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 6ab6c4c2051ccd2fbb22c383b9ca0af53ceb13d3
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: MT
+ms.openlocfilehash: 48f4c7497583e872c89e4d8cd92dab52ab4f9239
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77054901"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304950"
 ---
 | Zasób | Domyślny/maksymalny limit | Uwaga |
 | --- | --- | --- |
@@ -18,7 +18,7 @@ ms.locfileid: "77054901"
 | Porty frontonu |100<sup>1</sup> | |
 | Pule adresów zaplecza |100<sup>1</sup> | |
 | Serwery zaplecza na pulę |1,200 | |
-| Odbiorniki HTTP |100<sup>1</sup> | |
+| Odbiorniki HTTP |200<sup>1</sup> |Ograniczone do 100 aktywnych odbiorników, które są ruchem routingu. Aktywne odbiorniki = całkowita liczba odbiorników nieaktywnych.<br>Jeśli domyślna konfiguracja wewnątrz reguły routingu jest ustawiona na kierowanie ruchu (na przykład ma odbiornik, pulę zaplecza i ustawienia HTTP), które również liczą się jako odbiornik.|
 | Reguły równoważenia obciążenia HTTP |100<sup>1</sup> | |
 | Ustawienia protokołu HTTP zaplecza |100<sup>1</sup> | |
 | Wystąpienia na bramę |JEDNOSTKA SKU V1 — 32<br>JEDNOSTKA SKU V2 — 125 | |
@@ -36,7 +36,7 @@ ms.locfileid: "77054901"
 | Maksymalna długość adresu URL|32 KB| |
 | Maksymalny rozmiar nagłówka dla protokołu HTTP/2 |4 KB| |
 | Maksymalny rozmiar przekazywania pliku, standardowa |2 GB | |
-| Maksymalny rozmiar przekazywania pliku WAF |bramy WAF o rozmiarze V1, 100 MB<br>Duże bramy WAF w wersji 1, 500 MB<br>v2 WAF, 750 MB| |
+| Maksymalny rozmiar przekazywania pliku WAF |Bramy WAF o rozmiarze V1, 100 MB<br>Duże bramy WAF w wersji 1, 500 MB<br>V2 WAF, 750 MB| |
 | Limit rozmiaru treści WAF, bez plików|128 KB||
 | Maksymalna liczba reguł niestandardowych WAF|100||
 | Maksymalne wykluczenia WAF|100||

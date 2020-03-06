@@ -11,18 +11,18 @@ ms.topic: overview
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 8f27e8e8693fc5d1d3e432b78f2877d71274f146
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f6b55163440b25bf69c76e9b1217c439b0884d5d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978479"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331046"
 ---
 # <a name="what-is-the-translator-text-api"></a>Czym jest interfejs API tłumaczenia tekstu w usłudze Translator?
 
 Interfejs API tłumaczenia tekstu w usłudze Translator można łatwo zintegrować w aplikacjach, witrynach internetowych, narzędziach i rozwiązaniach. Umożliwia on dodawanie wielojęzycznych środowisk użytkowników w [ponad 60 językach](languages.md) i może być używany na dowolnej platformie sprzętowej z dowolnym systemem operacyjnym na potrzeby tłumaczenia tekstów w różnych językach.
 
-Interfejs API tłumaczenia tekstu w usłudze Translator to część [kolekcji interfejsów API usług Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=ai) platformy Azure, zbioru algorytmów uczenia maszynowego i sztucznej inteligencji w chmurze, który można łatwo wykorzystać w swoich projektach programistycznych.
+Interfejs API tłumaczenia tekstu w usłudze Translator to część [kolekcji interfejsów API usług Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) platformy Azure, zbioru algorytmów uczenia maszynowego i sztucznej inteligencji w chmurze, który można łatwo wykorzystać w swoich projektach programistycznych.
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator — informacje
 

@@ -14,12 +14,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5400ede4f3afd9f94d7380c6dfd55d8aa45d08ca
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3a911db36fd03ebcb5e0fc53d4d7f36d68648249
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834250"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399079"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Instrukcje: Dodawanie ról aplikacji do aplikacji i odbieranie ich w tokenie
 
@@ -35,7 +35,7 @@ Te role aplikacji są zdefiniowane w [Azure Portal](https://portal.azure.com) w 
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Deklarowanie ról aplikacji przy użyciu Azure Portal
 
-1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. Na pasku narzędzi portalu wybierz ikonę **katalog i subskrypcję** .
 1. Z listy **Ulubione** lub **wszystkie katalogi** wybierz Active Directory dzierżawy, w której chcesz zarejestrować aplikację.
 1. W Azure Portal Wyszukaj i wybierz pozycję **Azure Active Directory**.
@@ -44,10 +44,10 @@ Te role aplikacji są zdefiniowane w [Azure Portal](https://portal.azure.com) w 
 1. Edytuj manifest aplikacji, lokalizowanie ustawienia `appRoles` i Dodawanie wszystkich ról aplikacji.
 
      > [!NOTE]
-     > Każda definicja roli aplikacji w tym manifeście musi mieć inny prawidłowy identyfikator GUID w kontekście manifestu dla właściwości `id`.    
-     > 
+     > Każda definicja roli aplikacji w tym manifeście musi mieć inny prawidłowy identyfikator GUID w kontekście manifestu dla właściwości `id`.
+     >
      > Właściwość `value` każdej definicji roli aplikacji powinna dokładnie pasować do ciągów, które są używane w kodzie w aplikacji. Właściwość `value` nie może zawierać spacji. Jeśli tak się stanie, podczas zapisywania manifestu zostanie wyświetlony komunikat o błędzie.
-     
+
 1. Zapisz manifest.
 
 ### <a name="examples"></a>Przykłady
@@ -122,7 +122,7 @@ Po dodaniu ról aplikacji w aplikacji można przypisać użytkowników i grupy d
 
 ## <a name="more-information"></a>Więcej informacji
 
-- [Autoryzacja w aplikacji sieci Web przy użyciu ról aplikacji usługi Azure AD &amp; oświadczenia ról (przykład)](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)
+- [Dodawanie autoryzacji przy użyciu ról aplikacji & oświadczenia ról do aplikacji sieci Web ASP.NET Core](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Używanie grup zabezpieczeń i ról aplikacji w aplikacjach (wideo)](https://www.youtube.com/watch?v=V8VUPixLSiM)
 - [Azure Active Directory, teraz z oświadczeniami grupy i rolami aplikacji](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory manifest aplikacji](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

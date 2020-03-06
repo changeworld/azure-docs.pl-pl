@@ -5,14 +5,14 @@ author: chrissie926
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 02/01/2020
 ms.author: menchi
-ms.openlocfilehash: 064bfd7a51f3ccb0252f37fbaa11ebc122a4b97f
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807429"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303600"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Zrozumienie i Używanie modułu bliźniaczych reprezentacji w IoT Hub
 
@@ -176,7 +176,7 @@ Zaplecze rozwiązania działa na sznurze module przy użyciu następujących ope
 
   - Właściwości
 
-    | Nazwa | Wartość |
+    | Name (Nazwa) | Wartość |
     | --- | --- |
     Typ $content | application/json |
     $iothub-enqueuedtime |  Godzina wysłania powiadomienia |
@@ -236,11 +236,15 @@ Wszystkie poprzednie operacje wymagają uprawnienia **ModuleConnect** , zgodnie 
 
 Tagi, żądane właściwości i raportowane właściwości są obiektami JSON z następującymi ograniczeniami:
 
-* Wszystkie klucze w obiektach JSON uwzględniają wielkość liter 64 bajtów UTF-8 UNICODE. Dozwolone znaki wykluczają znaki kontrolne UNICODE (segmenty C0 i C1) oraz `.`, SP i `$`.
+* **Klucze**: wszystkie klucze w obiektach JSON są zależne od wielkości liter 64 bajtów UTF-8 Unicode. Dozwolone znaki wykluczają znaki kontrolne UNICODE (segmenty C0 i C1) oraz `.`, SP i `$`.
 
-* Wszystkie wartości w obiektach JSON mogą mieć następujące typy JSON: Boolean, Number, String, Object. Tablice są niedozwolone. Maksymalna wartość dla liczb całkowitych to 4503599627370495, a minimalna wartość dla liczb całkowitych to-4503599627370496.
+* **Wartości**: wszystkie wartości w obiektach JSON mogą mieć następujące typy JSON: Boolean, Number, String, Object. Tablice są niedozwolone.
 
-* Wszystkie obiekty JSON w tagach, żądanych i raportowanych właściwościach mogą mieć maksymalną głębokość wynoszącą 5. Na przykład następujący obiekt jest prawidłowy:
+    * Liczby całkowite mogą mieć minimalną wartość-4503599627370496 i maksymalną wartość 4503599627370495.
+
+    * Wartości ciągów są kodowane w formacie UTF-8 i mogą mieć maksymalną długość 512 bajtów.
+
+* **Głębokość**: wszystkie obiekty JSON w tagach, żądanych i raportowanych właściwościach mogą mieć maksymalną głębokość wynoszącą 5. Na przykład następujący obiekt jest prawidłowy:
 
     ```json
     {
@@ -262,13 +266,21 @@ Tagi, żądane właściwości i raportowane właściwości są obiektami JSON z 
     }
     ```
 
-* Wszystkie wartości ciągu mogą mieć długość maksymalnie 512 bajtów.
-
 ## <a name="module-twin-size"></a>Rozmiar sznurka modułu
 
-IoT Hub wymusza limit rozmiaru 8 KB dla wartości `tags`, a rozmiar 32 KB zostanie ograniczony dla wartości `properties/desired` i `properties/reported`. Te sumy zawierają wyłącznie elementy tylko do odczytu.
+IoT Hub wymusza limit rozmiaru 8 KB dla wartości `tags`, a rozmiar 32 KB zostanie ograniczony dla wartości `properties/desired` i `properties/reported`. Te sumy zawierają wyłącznie elementy tylko do odczytu, takie jak `$etag`, `$version`i `$metadata/$lastUpdated`.
 
-Rozmiar jest obliczany przez liczenie wszystkich znaków, z wyłączeniem znaków kontrolnych UNICODE (segmenty C0 i C1) i spacji, które znajdują się poza stałymi ciągami.
+Rozmiar bliźniaczy jest obliczany w następujący sposób:
+
+* Dla każdej właściwości w dokumencie JSON IoT Hub zbiorcze obliczenia i dodaje długość klucza i wartości właściwości.
+
+* Klucze właściwości są uznawane za ciągi kodowane w formacie UTF8.
+
+* Proste wartości właściwości są uznawane za ciągi kodowane w formacie UTF8, wartości liczbowe (8 bajtów) lub wartości logicznych (4 bajty).
+
+* Rozmiar ciągów zakodowanych w formacie UTF8 jest obliczany przez liczenie wszystkich znaków, z wyłączeniem znaków kontrolnych UNICODE (segmenty C0 i C1).
+
+* Złożone wartości właściwości (obiekty zagnieżdżone) są obliczane na podstawie zagregowanego rozmiaru kluczy właściwości i wartości właściwości, które zawierają.
 
 IoT Hub odrzuca z powodu błędu wszystkie operacje, które spowodują zwiększenie rozmiaru tych dokumentów powyżej limitu.
 

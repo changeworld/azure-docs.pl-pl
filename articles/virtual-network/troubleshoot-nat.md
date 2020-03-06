@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/02/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 185556e3045cb1a879bc256f4f2932549de71cd8
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: d56cd3b3d286d69a51d8cc14eb8020343cf7295a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274942"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302988"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity-problems"></a>Rozwiązywanie problemów z łącznością NAT na platformie Azure Virtual Network
 
@@ -44,7 +44,7 @@ Pojedynczy [zasób bramy translatora adresów sieciowych](nat-gateway-resource.m
 #### <a name="steps"></a>Kroki:
 
 1. Zbadaj, w jaki sposób aplikacja tworzy łączność wychodzącą (na przykład przegląd kodu lub przechwycenie pakietu). 
-2. Ustal, czy to działanie jest oczekiwane, czy też czy aplikacja jest błędna.  Skorzystaj z metryk w Azure Monitor, aby uzasadnić swoje ustalenia.
+2. Ustal, czy to działanie jest oczekiwane, czy też czy aplikacja jest błędna.  Skorzystaj z [metryk](nat-metrics.md) w Azure monitor, aby uzasadnić swoje ustalenia.
 3. Oceń, czy są obserwowane odpowiednie wzorce.
 4. Oceń, czy wyczerpanie portów podadresów IP powinno być skorygowane przy użyciu dodatkowych adresów, przypisanych do zasobu bramy translatora adresów sieciowych.
 
@@ -83,3 +83,4 @@ W poniższej tabeli można użyć punktu wyjścia, dla którego narzędzia do ur
 
 - Dowiedz się więcej o [Virtual Network translatora adresów sieciowych](nat-overview.md)
 - Informacje o [zasobie bramy translatora adresów sieciowych](nat-gateway-resource.md)
+- Informacje o [metrykach i alertach dotyczących zasobów bramy translatora adresów sieciowych](nat-metrics.md).

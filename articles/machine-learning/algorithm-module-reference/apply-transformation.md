@@ -8,41 +8,45 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 443b021b266a202775e94e44acac3a91a2b70617
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.date: 03/05/2020
+ms.openlocfilehash: ccf9d0c3eef50c7dfd838f1929e52506e8984879
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137584"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395259"
 ---
 # <a name="apply-transformation-module"></a>Zastosuj przekształcenie modułu
 
 W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
 
-Ten moduł służy do modyfikowania wejściowego zestawu danych na podstawie wcześniej obliczonego przekształcenia.  
-  
+Ten moduł służy do modyfikowania wejściowego zestawu danych na podstawie wcześniej obliczonego przekształcenia.
+
 Na przykład jeśli zostały użyte wyniki z przeznaczeniem do normalizacji danych szkoleniowych przy użyciu modułu **normalizowanie danych** , warto użyć wartości z-Score, która została obliczona dla szkolenia w fazie oceniania. W Azure Machine Learning można zapisać metodę normalizacji jako transformację, a następnie za pomocą **zastosowania przekształcenia zastosować** wynikowe dane wejściowe przed oceną.
-  
-Azure Machine Learning zapewnia obsługę tworzenia i stosowania wielu różnych rodzajów niestandardowych transformacji. Na przykład możesz chcieć zapisać, a następnie ponownie użyć transformacji, aby:  
-  
-- Usuń lub Zastąp brakujące wartości, używając **czystego brakujących danych**
-- Normalizowanie danych przy użyciu **normalizacji danych**
-  
+
+## <a name="how-to-save-transformations"></a>Jak zapisywać przekształcenia
+
+Projektant umożliwia zapisywanie przekształceń danych jako **zestawów DataSet** , aby można było używać ich w innych potokach.
+
+1. Wybierz moduł transformacji danych, który został pomyślnie uruchomiony.
+
+1. Wybierz kartę dane **wyjściowe + dzienniki** .
+
+1. Wybierz **ikonę Zapisz** , aby zapisać **transformację wyniku**.
 
 ## <a name="how-to-use-apply-transformation"></a>Jak używać transformacji zastosowania  
   
-1. Dodaj moduł **przekształcenia Zastosuj** do potoku. Ten moduł można znaleźć w kategorii **oceny &** oceniania. 
+1. Dodaj moduł **przekształcenia Zastosuj** do potoku. Ten moduł można znaleźć w sekcji **obliczanie & oceny** w palecie modułów. 
   
-2. Znajdź istniejącą transformację do użycia jako dane wejściowe. Wcześniej zapisane przekształcenia można znaleźć w grupie **Moje zestawy danych** w obszarze Kategorie **zestawów danych** w lewym drzewie modułu.  
+1. Znajdź zapisaną transformację, która ma być używana w obszarze **zestawy danych** > **Moje zestawy danych** w palecie modułów.
+
+1. Połącz dane wyjściowe zapisanej transformacji z lewym portem wejściowym modułu **Zastosuj transformację** .
+
+    Zestaw danych powinien mieć dokładnie ten sam schemat (liczbę kolumn, nazwy kolumn, typy danych) jako zestaw danych, dla którego przekształcenie zostało po raz pierwszy zaprojektowane.  
   
-   
+1. Połącz dane wyjściowe zestawu danych z odpowiedniego modułu z właściwym portem wejściowym modułu **Zastosuj transformację** .
   
-3. Połącz zestaw danych, który ma zostać przekształcony. Zestaw danych powinien mieć dokładnie ten sam schemat (liczbę kolumn, nazwy kolumn, typy danych) jako zestaw danych, dla którego przekształcenie zostało po raz pierwszy zaprojektowane.  
-  
-4. Nie trzeba ustawiać innych parametrów, ponieważ podczas definiowania transformacji jest wykonywane wszystkie dostosowania.  
-  
-5. Aby zastosować transformację do nowego zestawu danych, uruchom potok.  
+1. Aby zastosować transformację do nowego zestawu danych, uruchom potok.  
 
 ## <a name="next-steps"></a>Następne kroki
 

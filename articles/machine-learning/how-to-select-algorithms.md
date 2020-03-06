@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
-ms.date: 01/21/2020
-ms.openlocfilehash: 65f43bf87e704c85d83220f4ffbc50581aafb549
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 03/05/2020
+ms.openlocfilehash: e0482bac9569a834adf3e1cdef2b3f702980eac0
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76315469"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328667"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Jak wybrać algorytmy dla Azure Machine Learning
 
@@ -47,7 +47,7 @@ Gdy wiesz, co chcesz zrobić z danymi, musisz określić dodatkowe wymagania dot
 Wprowadź opcje i ewentualne wady, które są dostępne dla następujących wymagań:
 
 - Odpowiedni
-- Czas trenowania
+- Czas uczenia
 - Liniowość
 - Liczba parametrów
 - Liczba funkcji
@@ -66,7 +66,7 @@ Istnieją trzy sposoby używania modułu szacowania modelu:
 
 Aby uzyskać pełną listę metryk i metod, których można użyć do obliczenia dokładności modeli uczenia maszynowego, zobacz temat [Oceń model modułu](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-model?WT.mc_id=docs-article-lazzeri).
 
-## <a name="training-time"></a>Czas trenowania
+## <a name="training-time"></a>Czas uczenia
 
 W szkole nadzorowanej uczenie się to przy użyciu danych historycznych do kompilowania modelu uczenia maszynowego, który minimalizuje błędy. Liczba minut lub godzin koniecznych do uczenia modelu różni się bardzo znaczącą różnicą między algorytmami. Czas uczenia jest często ściśle związany z dokładnością; zwykle jest to jedna z nich. 
 

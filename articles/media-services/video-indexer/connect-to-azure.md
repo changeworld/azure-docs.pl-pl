@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: dc844392d64178cb9000db15af39f923521efc19
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1f40f16ddbe5231dd754ad97b54e414c6ce9b9e7
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838380"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328833"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Utwórz konto Video Indexer połączone z platformą Azure
 
@@ -45,7 +45,7 @@ Użytkownik i członek w domenie usługi Azure AD. Ten element członkowski będ
 
 Ten użytkownik powinien być członkiem subskrypcji platformy Azure z rolą **właściciela** albo rolami **administratora dostępu** **współautora** i użytkownika. Można dwa razy dodać użytkownika z 2 rolami. Jeden raz z współautor i raz z administratorem dostępu użytkowników.
 
-![Kontrola dostępu](./media/create-account/access-control-iam.png)
+![kontrola dostępu](./media/create-account/access-control-iam.png)
 
 ### <a name="additional-prerequisites-for-manual-flow"></a>Dodatkowe wymagania wstępne dotyczące przepływu ręcznego
 
@@ -124,8 +124,8 @@ Jeśli połączenie z platformą Azure zakończyło się niepowodzeniem, możesz
 4. Aby Video Indexer uwierzytelnić się przy użyciu interfejsu API Media Services, należy utworzyć aplikację usługi AD. Poniższe kroki przeprowadzą Cię przez proces uwierzytelniania usługi Azure AD opisany w temacie [Rozpoczynanie pracy z uwierzytelnianiem w usłudze Azure AD przy użyciu Azure Portal](../previous/media-services-portal-get-started-with-aad.md):
 
     1. Na nowym koncie Media Services wybierz pozycję **dostęp do interfejsu API**.
-    2. Wybierz [metodę uwierzytelniania nazwy głównej usługi](../previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).
-    3. Pobierz identyfikator klienta i klucz tajny klienta, zgodnie z opisem w sekcji [Pobieranie identyfikatora klienta i klucza tajnego klienta](../previous/media-services-portal-get-started-with-aad.md#get-the-client-id-and-client-secret) .
+    2. Wybierz [metodę uwierzytelniania nazwy głównej usługi](../previous/media-services-portal-get-started-with-aad.md).
+    3. Pobierz identyfikator klienta i klucz tajny klienta
 
         Po wybraniu opcji **ustawienia**->**klucze**, Dodaj **Opis**, a następnie naciśnij przycisk **Zapisz**, wartość klucza zostanie wypełniona.
 
@@ -165,7 +165,7 @@ Stosuje się następujące Azure Media Services powiązane zagadnienia:
 
 * W przypadku nawiązania połączenia z nowym kontem Media Services Video Indexer automatycznie uruchamia domyślny **punkt końcowy przesyłania strumieniowego** :
 
-    ![Media Services punkt końcowy przesyłania strumieniowego](./media/create-account/ams-streaming-endpoint.png)
+    ![Punkt końcowy przesyłania strumieniowego usługi Media Services](./media/create-account/ams-streaming-endpoint.png)
 
     Punkty końcowe przesyłania strumieniowego mają znaczny czas uruchamiania. W związku z tym może upłynąć kilka minut od momentu połączenia Twojego konta z platformą Azure, dopóki Twoje wideo nie zostanie przesłane i będzie widoczne w aplikacji sieci Web Video Indexer.
 

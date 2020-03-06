@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 69acb9152d1dc30d986276939e29e8c183095b18
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539607"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330399"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -93,9 +93,7 @@ Następnie utwórz stronę internetową Hello world w programie Visual Studio Co
 
 Program Visual Studio Code przekaże pliki do internetowego punktu końcowego i wyświetli pasek stanu powodzenia. Uruchom witrynę internetową, aby ją wyświetlić na platformie Azure.
 
-![Wyświetlanie wdrożenia statycznej witryny internetowej na platformie Azure](media/storage-blob-static-website-host/view-static-website-endpoint.png)
-
-Pomyślnie ukończono pracę z samouczkiem i wdrożono statyczną witrynę internetową na platformie Azure.
+Samouczek został pomyślnie ukończony i wdrożono statyczną witrynę sieci Web na platformie Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 

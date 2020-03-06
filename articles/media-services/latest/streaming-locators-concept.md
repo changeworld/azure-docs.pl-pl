@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/26/2019
+ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 1cc0132cc17217c858060e107dfcfc090a3ef8a7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 3a9568e1a0307cd1713c511ef42c065424306548
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611002"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302886"
 ---
 # <a name="streaming-locators"></a>Lokalizatory przesyłania strumieniowego
 
@@ -56,7 +56,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
 
-### <a name="encrypted"></a>Szyfrowane 
+### <a name="encrypted"></a>Zaszyfrowane 
 
 Jeśli zachodzi potrzeba zaszyfrowania zawartości przy użyciu szyfrowania CENC, ustaw zasady na "Predefined_MultiDrmCencStreaming". Szyfrowanie Widevine zostanie zastosowane do strumienia PAUZ i oprogramowania PlayReady do wygładzania. Klucz zostanie dostarczony do klienta odtwarzania na podstawie skonfigurowanych licencji DRM.
 
@@ -90,20 +90,21 @@ Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek Media Services](ent
 
 Aby uzyskać lokalizatory przesyłania strumieniowego na podstawie nazwy skojarzonego elementu zawartości, należy wykonać następujące operacje:
 
-|Język|API|
+|Język|Interfejs API|
 |---|---|
 |REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
-|Interfejs CLI|[AZ AMS Asset list-remisjeers-Locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|Interfejs wiersza polecenia|[AZ AMS Asset list-remisjeers-Locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
 |.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="also-see"></a>Zobacz też
+## <a name="see-also"></a>Zobacz też
 
 * [Elementy zawartości](assets-concept.md)
 * [Zasady przesyłania strumieniowego](streaming-policy-concept.md)
 * [Zasady kluczy zawartości](content-key-policy-concept.md)
+* [Samouczek: przekazywanie, kodowanie i przesyłanie strumieniowe filmów wideo przy użyciu platformy .NET](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Samouczek: przekazywanie, kodowanie i przesyłanie strumieniowe filmów wideo przy użyciu platformy .NET](stream-files-tutorial-with-api.md)
+[Jak utworzyć lokalizator przesyłania strumieniowego i adresy URL kompilacji](create-streaming-locator-build-url.md)

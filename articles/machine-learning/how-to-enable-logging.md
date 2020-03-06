@@ -8,13 +8,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
-ms.date: 07/12/2019
-ms.openlocfilehash: 65db6cfa64658edc4e604a009e672ba3aa5e86f3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/05/2020
+ms.openlocfilehash: 73b9ae6bc3c15526bfdafd74330c7b86286631b1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893996"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396140"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Włącz rejestrowanie w Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -101,7 +101,7 @@ Możesz również rejestrować niestandardowe ślady stosu dla usługi sieci Web
 service.update(enable_app_insights=True)
 ```
 
-Aby uzyskać więcej informacji na temat sposobu pracy z Application Insights w programie Azure Machine Learning Studio, zobacz [temat jak to](how-to-enable-app-insights.md) zrobić.
+Aby uzyskać więcej informacji, zobacz [monitorowanie i zbieranie danych z punktów końcowych usługi sieci Web ml](how-to-enable-app-insights.md).
 
 ## <a name="python-native-logging-settings"></a>Natywne ustawienia rejestrowania języka Python
 
@@ -111,3 +111,7 @@ Niektóre dzienniki w zestawie SDK mogą zawierać błąd, który powoduje ustaw
 import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
+
+## <a name="next-steps"></a>Następne kroki
+
+* [Monitorowanie i zbieranie danych z punktów końcowych usługi sieci Web ML](how-to-enable-app-insights.md)

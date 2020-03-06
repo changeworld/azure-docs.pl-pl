@@ -7,21 +7,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 8e2f8fd7f99c359949b02959cc442f2f3d3ebfff
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d61ca8fe7c6f5e7cc400714d7c31a0a7e50b8a88
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912158"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402792"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>Wycofanie protokołu TLS 1,0 i 1,1 w usłudze IoT Hub i usługi Device Provisioning
 
-Aby zapewnić najlepszą w swojej klasie funkcję szyfrowania, IoT Hub i usługi Device Provisioning Service (DPS) są przenoszone do Transport Layer Security (TLS) 1,2 jako mechanizm szyfrowania wybrany dla urządzeń i usług IoT. W związku z tym Starsza obsługa protokołu TLS 1,0 i TLS 1,1, a także kilka niezalecanych w starszej wersji szyfrów zostanie wycofana w **1 lipca 2020**.
-
-
-## <a name="impact"></a>Wpływ
-W oparciu o określone okoliczności i konfiguracje klientów wycofanie protokołu TLS 1,0 i 1,1 oraz niezalecane starsze szyfry mogą mieć wpływ na zmianę w przypadku urządzeń i usług IoT komunikujących się z IoT Hub lub DPS. W niektórych przypadkach urządzenia i usługi, które są niezgodne z tymi zmianami, nie będą mogły połączyć się z IoT Hub lub DPS po powyższej dacie wycinania.
-
+Aby zapewnić najlepszą w swojej klasie funkcję szyfrowania, IoT Hub i usługi Device Provisioning Service (DPS) są przenoszone do Transport Layer Security (TLS) 1,2 jako mechanizm szyfrowania wybrany dla urządzeń i usług IoT. 
 
 ## <a name="supported-ciphers"></a>Obsługiwane szyfry
 

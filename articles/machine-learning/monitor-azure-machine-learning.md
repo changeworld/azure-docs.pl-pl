@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/04/2019
-ms.openlocfilehash: c35afe6e3d6ec74e8fc7cd134f533d1e618c820e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/05/2020
+ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845742"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399109"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning monitorowania
 
@@ -30,7 +30,7 @@ W tym artykule opisano dane monitorowania wygenerowane przez Azure Machine Learn
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Azure Machine Learning dzienniki danych monitorowania przy użyciu Azure Monitor, który jest pełną usługą monitorowania stosu na platformie Azure. Azure Monitor zapewnia pełen zestaw funkcji do monitorowania zasobów platformy Azure. Może również monitorować zasoby w innych chmurach i lokalnie.
+Usługa Azure Machine Learning rejestruje dane monitorowania przy użyciu usługi Azure Monitor, która jest usługą monitorowania pełnego stosu na platformie Azure. Azure Monitor zapewnia pełen zestaw funkcji do monitorowania zasobów platformy Azure. Może również monitorować zasoby w innych chmurach i lokalnie.
 
 Rozpocznij od artykułu [Azure monitor przegląd](/azure/azure-monitor/overview), który zawiera przegląd możliwości monitorowania. Poniższe sekcje zawierają informacje dotyczące korzystania z Azure Monitor z Azure Machine Learning.
 
@@ -38,7 +38,7 @@ Aby zrozumieć koszty związane z Azure Monitor, zobacz [użycie i szacowane kos
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>Monitorowanie danych z Azure Machine Learning
 
-Azure Machine Learning gromadzi te same rodzaje danych monitorowania jak inne zasoby platformy Azure, które są opisane w temacie [monitorowanie danych z zasobów platformy Azure](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data). Aby uzyskać szczegółowe informacje o dziennikach i metrykach utworzonych przez Azure Machine Learning, zobacz [Informacje o danych monitorowania Azure Machine Learning](monitor-resource-reference.md) .
+Usługa Azure Machine Learning zbiera dane monitorowania tego samego typu co inne zasoby platformy Azure, tak jak opisano w artykule [Monitorowanie danych na podstawie zasobów platformy Azure](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data). Aby uzyskać szczegółowe informacje o dziennikach i metrykach utworzonych przez Azure Machine Learning, zobacz [Informacje o danych monitorowania Azure Machine Learning](monitor-resource-reference.md) .
 
 ## <a name="analyzing-metric-data"></a>Analizowanie danych metryki
 
@@ -68,7 +68,7 @@ Poniższa tabela zawiera listę typowych i zalecanych reguł alertów dotyczący
 | Procent wykorzystania przydziałów | Typ agregacji: Average, operator: większe niż, wartość progowa: 90| Gdy wartość procentowa wykorzystania przydziałów jest większa niż 90% |
 | Węzły niezdatne do użytku | Typ agregacji: łącznie, operator: większy niż, wartość progowa: 0 | Gdy istnieje co najmniej jeden niezdatny do użytku węzeł |
 
-## <a name="configuration"></a>Konfigurowanie
+## <a name="configuration"></a>Konfiguracja
 
 > [!IMPORTANT]
 > __Nie trzeba konfigurować metryk dla Azure Machine Learning__, są one zbierane automatycznie i są dostępne w Eksplorator metryk do monitorowania i wysyłania alertów.

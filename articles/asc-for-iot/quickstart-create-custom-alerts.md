@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: 510a2c3f04cc4c307acad18ee3012d9407155f9f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 063e5c9e7d75fd1c07d148c265b1fe64eee3cbc8
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766462"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303532"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Szybki Start: tworzenie alertów niestandardowych
 
@@ -41,7 +41,7 @@ Te grupy mogą reprezentować urządzenia z określonym sprzętem, urządzeniami
 
 Grupy zabezpieczeń są definiowane przez właściwość tag urządzenia o nazwie " **zabezpieczenia**". Domyślnie każde rozwiązanie IoT w IoT Hub ma jedną grupę zabezpieczeń o nazwie **default**. Zmień wartość właściwości Grupa **zabezpieczeń** , aby zmienić grupę zabezpieczeń urządzenia.
  
-Przykład:
+Na przykład:
 
 ```
 {
@@ -80,7 +80,6 @@ Używanie grup zabezpieczeń do grupowania urządzeń w kategorie logiczne. Po u
 ## <a name="alerts-available-for-customization"></a>Alerty dostępne do dostosowania
 
 Azure Security Center dla IoT oferuje dużą liczbę alertów, które można dostosować zgodnie z konkretnymi potrzebami. Zapoznaj się z [dostosowywalną tabelą alertów](concept-customizable-security-alerts.md) w celu uzyskania ważności alertu, źródła danych, opisu i naszych sugerowanych czynności zaradczych w przypadku odebrania każdego alertu. 
-|
 
 
 ## <a name="next-steps"></a>Następne kroki

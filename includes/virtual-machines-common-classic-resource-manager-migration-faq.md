@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 57469bef7014010164234638f3d059ac96b125cf
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912578"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383823"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>Jaki jest czas wymagany do migracji?
 
@@ -22,6 +22,14 @@ Planowanie i wykonywanie migracji znacznie zależy od złożoności architektury
 ## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>Jaka jest definicja nowego klienta na maszynach wirtualnych IaaS (klasyczny)?
 
 Klienci, którzy nie zainstalowali maszyn wirtualnych IaaS (klasyczny) w swoich subskrypcjach w miesiącu Febrauary 2020 (miesiąc przed rozpoczęciem wycofania), są uważani za nowych klientów. 
+
+## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>Jaka jest definicja istniejącego klienta w programie IaaS Virtual Machines (klasyczny)?
+
+Klient, który miał aktywną lub zatrzymaną maszynę wirtualną IaaS (klasyczną) w swoich subskrypcjach w miesiącu lutego 2020, jest traktowany jako istniejący klient. Tylko Ci klienci otrzymują do 1 marca 2023 migracji swoich maszyn wirtualnych z usługi Azure Service Manager do Azure Resource Manager. 
+
+## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Dlaczego otrzymuję komunikat o błędzie "NewClassicVMCreationNotAllowedForSubscription"?
+
+W ramach procesu wycofywania maszyny wirtualne IaaS (klasyczne) nie są już dostępne dla nowych klientów. Firma Microsoft zidentyfikowała Ciebie jako nowych klientów, dlatego nie jest autoryzowana operacja. Zdecydowanie zalecamy używanie [Virtual Machines platformy Azure przy użyciu usługi ARM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Jeśli nie możesz korzystać z maszyn wirtualnych platformy Azure przy użyciu usługi ARM, skontaktuj się z pomocą techniczną dla subskrypcji listy dozwolonych.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Czy ten plan migracji wpływa na moje istniejące usługi lub aplikacje uruchomione na maszynach wirtualnych platformy Azure? 
 

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c841195cacd8c8d7698f69435572587bf04c3d67
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 56f240a5191dd483f89889f3ffe13b1819ca1e53
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008355"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399327"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Wprowadzenie do interfejsu API raportowania Azure Active Directory
 
@@ -50,13 +50,10 @@ Aby uzyskać szczegółowe instrukcje, zobacz [wymagania wstępne dotyczące uzy
 Punkt końcowy Microsoft Graph interfejsu API dla dzienników inspekcji jest `https://graph.microsoft.com/beta/auditLogs/directoryAudits`, a punkt końcowy interfejsu API Microsoft Graph dla logowań jest `https://graph.microsoft.com/beta/auditLogs/signIns`. Aby uzyskać więcej informacji, zobacz Dokumentacja [interfejsu API inspekcji](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) i [Dokumentacja interfejsu API logowania](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
 Ponadto można użyć [interfejsu API wykrywania ryzyka ochrony tożsamości](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) , aby uzyskać programowy dostęp do wykrywania zabezpieczeń przy użyciu Microsoft Graph. Aby uzyskać więcej informacji, zobacz [wprowadzenie do Azure Active Directory Identity Protection i Microsoft Graph](../identity-protection/graph-get-started.md). 
-
-> [!NOTE]
->  **Https:\/\/graph.windows.net\/\<nazwa dzierżawcy\>\/raportów**\/punkt końcowy jest przestarzały. Użyj nowych punktów końcowych interfejsu API opisanych powyżej, aby programowo uzyskać dostęp do raportów o działaniach i zabezpieczeniach.
   
-## <a name="apis-with-graph-explorer"></a>Interfejsy API z Eksploratorem grafów
+## <a name="apis-with-microsoft-graph-explorer"></a>Interfejsy API z Eksploratorem Microsoft Graph
 
-Aby sprawdzić dane dotyczące logowania i inspekcji, można użyć [Eksploratora MSGraph](https://developer.microsoft.com/graph/graph-explorer) . Upewnij się, że logujesz się do swojego konta przy użyciu obu przycisków logowania w interfejsie użytkownika programu Graph Explorer, a następnie ustaw wartość **AuditLog. Read. All** i **Directory. Read. All** Permissions dla Twojej dzierżawy, jak pokazano.   
+Za pomocą [eksploratora Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) można sprawdzić dane logowania i inspekcji interfejsu API. Upewnij się, że logujesz się do swojego konta przy użyciu obu przycisków logowania w interfejsie użytkownika programu Graph Explorer, a następnie ustaw wartość **AuditLog. Read. All** i **Directory. Read. All** Permissions dla Twojej dzierżawy, jak pokazano.   
 
 ![Eksplorator programu Graph](./media/concept-reporting-api/graph-explorer.png)
 

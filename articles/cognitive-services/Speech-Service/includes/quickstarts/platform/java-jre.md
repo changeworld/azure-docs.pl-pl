@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 5f6b994bce1d38872cffb1e6e389136742be6d48
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4970f115ee3eee78d7268e3e955e20048b74df0d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467417"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383938"
 ---
 W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) dla 64-bitowego języka Java 8 JRE.
 
 > [!NOTE]
-> Aby uzyskać informacje dotyczące zestawu Speech Devices SDK oraz urządzenia Roobo, zobacz [Speech Devices SDK](~/articles/cognitive-services/speech-service/speech-devices-sdk.md).
+> W przypadku zestawu Speech Devices SDK i urządzenia Roobo zobacz [Speech Devices SDK](~/articles/cognitive-services/speech-service/speech-devices-sdk.md).
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -29,7 +29,7 @@ W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/arti
 - Pakiet SDK mowy Java jest dostępny dla następujących systemów operacyjnych:
   - Windows: tylko 64-bitowe
   - Mac: macOS X w wersji 10,13 lub nowszej
-  - Linux: 64-bit tylko w Ubuntu 16,04, Ubuntu 18,04 lub Debian 9
+  - Linux: 64-bit tylko w Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -51,6 +51,16 @@ W tym przewodniku przedstawiono sposób instalowania [zestawu Speech SDK](~/arti
         sudo apt-get update
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
+
+  - W systemie RHEL/CentOS 8 Uruchom następujące polecenia, aby zainstalować wymagane pakiety:
+
+        ```sh
+        sudo yum update
+        sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl
+        ```
+
+> [!NOTE]
+> W systemie RHEL/CentOS 8 postępuj zgodnie z instrukcjami dotyczącymi [sposobu konfigurowania OpenSSL dla systemu Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 - W systemie Windows potrzebna jest wersja [Microsoft Visual C++ redystrybucyjna dla programu Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) . Należy pamiętać, że zainstalowanie tego programu po raz pierwszy może wymagać ponownego uruchomienia systemu Windows przed kontynuowaniem pracy z tym przewodnikiem.
 

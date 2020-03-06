@@ -4,12 +4,12 @@ description: Tworzenie wyzwalanej przez protokół HTTP bezserwerowej funkcji pr
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 9dbb22a2449e4c41bff802ab827da4489fc7ffeb
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196539"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331029"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Samouczek: Tworzenie grupy kontenerów za pomocą funkcji platformy Azure wyzwalanej przez protokół HTTP
 
@@ -42,7 +42,7 @@ W tym artykule przyjęto założenie, że projekt jest publikowany przy użyciu 
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>Włączanie tożsamości zarządzanej przez platformę Azure w aplikacji funkcji
 
-Teraz Włącz [zarządzaną tożsamość](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#adding-a-system-assigned-identity) przypisaną przez system w aplikacji funkcji. Host programu PowerShell z uruchomioną aplikacją może automatycznie uwierzytelniać się przy użyciu tej tożsamości, włączając funkcje do wykonywania działań w ramach usług platformy Azure, do których tożsamość uzyskała dostęp. W tym samouczku przyznasz uprawnienia zarządzanej tożsamości do tworzenia zasobów w grupie zasobów aplikacji funkcji. 
+Teraz Włącz [zarządzaną tożsamość](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity) przypisaną przez system w aplikacji funkcji. Host programu PowerShell z uruchomioną aplikacją może automatycznie uwierzytelniać się przy użyciu tej tożsamości, włączając funkcje do wykonywania działań w ramach usług platformy Azure, do których tożsamość uzyskała dostęp. W tym samouczku przyznasz uprawnienia zarządzanej tożsamości do tworzenia zasobów w grupie zasobów aplikacji funkcji. 
 
 Najpierw użyj polecenia [AZ Group Show][az-group-show] , aby uzyskać identyfikator grupy zasobów aplikacji funkcji i zapisać ją w zmiennej środowiskowej. W tym przykładzie przyjęto założenie, że polecenie jest uruchamiane w bash Shell.
 

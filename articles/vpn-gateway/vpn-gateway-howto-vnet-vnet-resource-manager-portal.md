@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18ef9d89a2366e6d4db3c3154bae0bd83e0386f1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: dbdc13b8c861c620bfdbaaf53c0901a51bb9ce08
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654789"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399213"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurowanie połączenia bramy sieci VPN między sieciami wirtualnymi przy użyciu witryny Azure Portal
 
@@ -75,16 +75,16 @@ W tym artykule przedstawiono sposób łączenia sieci wirtualnych przy użyciu t
 
 - **Ustawienia sieci wirtualnej**
     - **Nazwa**: VNet1
-    - **Przestrzeń adresowa**: 10.11.0.0/16
+    - **Przestrzeń adresowa**: 10.1.0.0/16
     - **Subskrypcja**: wybierz subskrypcję, której chcesz użyć.
     - **Grupa zasobów**: TestRG1
     - **Lokalizacja**: Wschodnie stany USA
     - **Podsieć**
         - **Nazwa**: fronton
-        - **Zakres adresów**: 10.11.0.0/24
+        - **Zakres adresów**: 10.1.0.0/24
     - **Podsieć bramy**:
         - **Nazwa**: *GatewaySubnet* jest wypełniana
-        - **Zakres adresów**: 10.11.255.0/27
+        - **Zakres adresów**: 10.1.255.0/27
 
 - **Ustawienia bramy sieci wirtualnej**
     - **Nazwa**: VNet1GW
@@ -126,11 +126,6 @@ Jeśli masz już sieć wirtualną, sprawdź, czy ustawienia są zgodne z projekt
 
 ### <a name="to-create-a-virtual-network"></a>Aby utworzyć sieć wirtualną
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
-
-## <a name="add-additional-address-space-and-create-subnets"></a>Dodawanie dodatkowej przestrzeni adresowej i tworzenie podsieci
-Po utworzeniu sieci wirtualnej można dodać do niej dodatkową przestrzeń adresową oraz utworzyć podsieci.
-
-[!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
 ## <a name="create-a-virtual-network-gateway"></a>Tworzenie bramy sieci wirtualnej
 W tym kroku zostaje utworzona brama dla sieci wirtualnej użytkownika. Tworzenie bramy często może trwać 45 minut lub dłużej, w zależności od wybranej jednostki SKU bramy. W przypadku tworzenia tej konfiguracji w ramach ćwiczenia zobacz [przykładowe ustawienia](#example-settings).

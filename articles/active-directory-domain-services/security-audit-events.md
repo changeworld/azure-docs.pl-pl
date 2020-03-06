@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 89fa2297c50b6f28045f6f934092de3fd5d6c879
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b2138818a9092999dd54b14664f7146f087c4fed
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613054"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328650"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Włącz inspekcje zabezpieczeń dla Azure Active Directory Domain Services
 
@@ -193,7 +193,7 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>Przykładowe zapytanie 2
 
-Wyświetl wszystkie zdarzenia blokady konta (*4740*) od 3 lutego 2020 o godzinie 9 i 10 lutego 2019 północy, posortowane rosnąco według daty i godziny:
+Wyświetl wszystkie zdarzenia blokady konta (*4740*) od 3 lutego 2020 o godzinie 9 i 10 lutego 2020 północy, posortowane rosnąco według daty i godziny:
 
 ```Kusto
 AADDomainServicesAccountManagement

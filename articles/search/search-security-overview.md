@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978587"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396307"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Bezpieczeństwo i prywatność danych na platformie Azure Wyszukiwanie poznawcze
 
@@ -41,7 +41,7 @@ Szyfrowanie rozciąga się w całym potoku indeksowania: od połączeń, transmi
 
 | Warstwa zabezpieczeń | Opis |
 |----------------|-------------|
-| Szyfrowanie danych przesyłanych <br>(HTTPS/SSL/TLS) | Usługa Azure Wyszukiwanie poznawcze nasłuchuje na porcie HTTPS 443. Na całej platformie połączenia z usługami platformy Azure są szyfrowane. <br/><br/>Wszystkie interakcje Wyszukiwanie poznawcze platformy Azure z klientem są zgodne z protokołem SSL/TLS 1,2.  Upewnij się, że używasz TLSv 1.2 dla połączeń SSL z usługą.|
+| Szyfrowanie podczas przesyłania <br>(HTTPS/SSL/TLS) | Usługa Azure Wyszukiwanie poznawcze nasłuchuje na porcie HTTPS 443. Na całej platformie połączenia z usługami platformy Azure są szyfrowane. <br/><br/>Wszystkie interakcje Wyszukiwanie poznawcze platformy Azure z klientem są zgodne z protokołem SSL/TLS 1,2.  Upewnij się, że używasz TLSv 1.2 dla połączeń SSL z usługą.|
 | Szyfrowanie w spoczynku <br>Klucze zarządzane przez firmę Microsoft | Szyfrowanie jest w pełni wewnętrzne w procesie indeksowania, bez wymiernego wpływu na indeksowanie czasu do ukończenia lub rozmiaru indeksu. Odbywa się to automatycznie na wszystkich indeksach, w tym w przypadku aktualizacji przyrostowych, do indeksu, który nie jest w pełni szyfrowany (utworzony przed stycznia 2018).<br><br>Wewnętrznie szyfrowanie jest oparte na [usłudze Azure szyfrowanie usługi Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)przy użyciu 256-bitowego [szyfrowania AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Szyfrowanie jest wewnętrzne dla Wyszukiwanie poznawcze platformy Azure, z certyfikatami i kluczami szyfrowania, które są zarządzane wewnętrznie przez firmę Microsoft i stosowane uniwersalnie. Nie można włączać ani wyłączać szyfrowania, zarządzać nimi ani zastępować własnych kluczy lub wyświetlać ustawienia szyfrowania w portalu lub programowo.<br><br>Szyfrowanie w spoczynku zostało ogłoszone w 24 stycznia 2018 i ma zastosowanie do wszystkich warstw usług, w tym warstwy Bezpłatna, we wszystkich regionach. Aby można było przeprowadzić pełne szyfrowanie, indeksy utworzone przed tą datą muszą zostać porzucone i ponownie skompilowane w celu zaszyfrowania. W przeciwnym razie tylko nowe dane dodane po 24 stycznia są szyfrowane.|
 | Szyfrowanie w spoczynku <br>Klucze zarządzane przez klienta | Szyfrowanie za pomocą kluczy zarządzanych przez klienta jest teraz ogólnie dostępne dla usług wyszukiwania utworzonych w dniu lub po stycznia 2019. Nie jest obsługiwana w przypadku usług bezpłatnych (udostępnionych).<br><br>Usługi Azure Wyszukiwanie poznawcze Indexes i mapy synonimów mogą teraz być szyfrowane w czasie spoczynku z kluczami zarządzanymi klucze klienta w programie Azure Key Vault. Aby dowiedzieć się więcej, zobacz [Zarządzanie kluczami szyfrowania w usłudze Azure wyszukiwanie poznawcze](search-security-manage-encryption-keys.md).<br><br>Ta funkcja nie zastępuje domyślnego szyfrowania w spoczynku, ale zamiast tego stosuje się do niego.<br><br>Włączenie tej funkcji spowoduje zwiększenie rozmiaru indeksu i spadek wydajności zapytań. Na podstawie obserwacji do daty można oczekiwać, że w czasie wykonywania zapytań zostanie wyświetlony wzrost o 30%-60%, chociaż Rzeczywista wydajność będzie się różnić w zależności od definicji indeksu i typów zapytań. Ze względu na ten wpływ na wydajność zalecamy włączenie tej funkcji tylko w przypadku indeksów, które naprawdę wymagają tego.
 
@@ -118,7 +118,7 @@ Centra danych firmy Microsoft zapewniają wiodące w branży zabezpieczenia fizy
 > [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
 
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Wprowadzenie do platformy .NET (w celu utworzenia indeksu przy użyciu klucza administratora)](search-create-index-dotnet.md)
 + [Wprowadzenie do usługi REST (w celu utworzenia indeksu przy użyciu klucza administratora)](search-create-index-rest-api.md)

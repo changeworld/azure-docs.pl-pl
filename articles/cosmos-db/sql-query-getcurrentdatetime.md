@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8a2c3dcd3c8ca6dc9d751e50a7862fe98e6de510
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351026"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303906"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
  Zwraca bieżącą datę i godzinę w formacie UTC (Coordinated Universal Time) jako ciąg ISO 8601.
@@ -25,18 +25,18 @@ GetCurrentDateTime ()
   
 ## <a name="return-types"></a>Typy zwracane
   
-  Zwraca bieżącą wartość ciągu ISO 8601 daty i czasu UTC w formacie `YYYY-MM-DDThh:mm:ss.sssZ` gdzie:
+  Zwraca bieżącą wartość ciągu ISO 8601 daty i czasu UTC w formacie `YYYY-MM-DDThh:mm:ss.fffffffZ` gdzie:
   
   |||
   |-|-|
   |YYYY|rok czterocyfrowy|
   |MM|dwucyfrowy miesiąc (01 = styczeń itd.)|
-  |DODAJ|dwucyfrowy dzień miesiąca (od 01 do 31)|
+  |Dodaj|dwucyfrowy dzień miesiąca (od 01 do 31)|
   |T|Oznaczanie na początku elementów czasu|
-  |formacie|dwie godziny cyfry (od 00 do 23)|
-  |mm|dwie cyfry minut (od 00 do 59)|
-  |RR|dwie cyfry sekund (od 00 do 59)|
-  |.sss|trzy cyfry dziesiętnych części sekundy|
+  |hh|godzina dwucyfrowy (od 00 do 23)|
+  |mm|minuty dwucyfrowe (od 00 do 59)|
+  |ss|dwa cyfry sekund (od 00 do 59)|
+  |. fffffff|siedem cyfr sekund|
   |Z|Oznaczenie UTC (skoordynowany czas uniwersalny)||
   
   Aby uzyskać więcej informacji na temat formatu ISO 8601, zobacz [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -46,6 +46,8 @@ GetCurrentDateTime ()
   GetCurrentDateTime () jest funkcją niedeterministyczną. 
   
   Zwrócony wynik to UTC.
+
+  Precyzja to 7 cyfr z dokładnością do 100 nanosekund.
 
 ## <a name="examples"></a>Przykłady
   
@@ -59,7 +61,7 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
   
 ```json
 [{
-  "currentUtcDateTime": "2019-05-03T20:36:17.784Z"
+  "currentUtcDateTime": "2019-05-03T20:36:17.1234567Z"
 }]  
 ```  
 

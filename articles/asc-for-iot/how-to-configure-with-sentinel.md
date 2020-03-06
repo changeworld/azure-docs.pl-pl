@@ -1,6 +1,6 @@
 ---
 title: Przewodnik Azure Security Center dla usługi IoT na potrzeby konfiguracji z platformą Azure (wersja zapoznawcza) | Microsoft Docs
-description: W tym przewodniku wyjaśniono, jak skonfigurować usługę Azure Wskaźnikowanie do odbierania danych z Azure Security Center na potrzeby rozwiązania IoT.
+description: W tym artykule wyjaśniono, jak skonfigurować usługę Azure Wskaźnikowanie do odbierania danych z Azure Security Center na potrzeby rozwiązania IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
-ms.openlocfilehash: f6e7eddd6ddbcec61c3d8d173891cbc9abaaf08f
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 082b33332051fee9da2aebe63b0c41edb300afaf
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463182"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303549"
 ---
 > [!IMPORTANT]
 > W publicznej wersji zapoznawczej Azure Security Center łącznika danych IoT na platformie Azure.
@@ -48,10 +48,10 @@ W tym przewodniku dowiesz się, jak połączyć Azure Security Center danych IoT
 ## <a name="connect-to-azure-security-center-for-iot"></a>Nawiązywanie połączenia z usługą Azure Security Center dla IoT
 
 1. W obszarze wskaźnik platformy Azure wybierz pozycję **Łączniki danych** , a następnie kliknij kafelek **Azure Security Center for IoT** .
-1. W prawym dolnym okienku kliknij pozycję **Otwórz stronę łącznika**. 
+1. W dolnej części okienka po prawej stronie kliknij pozycję **Otwórz stronę łącznika**. 
 1. Kliknij przycisk **Połącz**obok każdej IoT Hub subskrypcji, której alerty i alerty urządzeń chcesz przesłać do usługi Azure wskaźnikowej. 
-    - Jeśli Azure Security Center dla usługi IoT nie jest włączona w tym centrum, zobaczysz komunikat z ostrzeżeniem o włączeniu. Kliknij link **Włącz** , aby uruchomić usługę. 
-1. Możesz zdecydować, czy alerty od Azure Security Center dla IoT mają automatycznie generować zdarzenia na platformie Azure. W obszarze **Tworzenie zdarzeń**wybierz pozycję **Włącz** , aby włączyć domyślną regułę analityczną w celu automatycznego tworzenia zdarzeń z alertów generowanych w połączonej usłudze zabezpieczeń. Tę regułę można zmienić lub edytować w obszarze **analiza** > **aktywnych** reguł.
+    - Jeśli Azure Security Center dla IoT nie jest włączona w tym centrum, zobaczysz komunikat ostrzegawczy Włącz. Kliknij link **Włącz** , aby uruchomić i włączyć usługę. 
+1. Możesz zdecydować, czy alerty od Azure Security Center dla IoT mają automatycznie generować zdarzenia na platformie Azure. W obszarze **Tworzenie zdarzeń**wybierz pozycję **Włącz** , aby włączyć regułę do automatycznego tworzenia zdarzeń z wygenerowanych alertów.  Tę regułę można zmienić lub edytować w obszarze **analiza** > **aktywnych** reguł.
 
 > [!NOTE]
 >Odświeżenie listy centrów po wprowadzeniu zmian połączenia może zająć 10 sekund lub dłużej. 

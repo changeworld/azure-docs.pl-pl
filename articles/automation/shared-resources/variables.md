@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7495c6b114e232a9aad0075e173abebcb3c92cd0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 4ce56b64502904308f45c74a5471447d93419452
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273598"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303056"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Zmienne zasoby w Azure Automation
 
@@ -33,9 +33,6 @@ Ponieważ zmienne automatyzacji są utrwalane, są dostępne nawet wtedy, gdy ko
 Podczas tworzenia zmiennej można określić jej szyfrowanie i magazyn, Azure Automation jako bezpieczny zasób. Inne zabezpieczane zasoby obejmują poświadczenia, certyfikaty i połączenia. Azure Automation szyfruje te zasoby i zapisuje je przy użyciu unikatowego klucza wygenerowanego dla każdego konta usługi Automation. Klucz jest przechowywany w Key Vault zarządzanym przez system. Przed zapisaniem bezpiecznego elementu zawartości Azure Automation ładuje klucz z Key Vault a następnie używa go do zaszyfrowania elementu zawartości. 
 
 Azure Automation przechowuje każdą zaszyfrowaną zmienną bezpiecznie. Nie można pobrać jej wartości za pomocą polecenia cmdlet [Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) , które jest dostarczane jako część modułu Azure PowerShell. Jedynym sposobem na pobranie zaszyfrowanej wartości jest użycie działania **Get-AutomationVariable** w elemencie Runbook lub konfiguracji DSC.
-
->[!NOTE]
->Jeśli chcesz usunąć szyfrowanie dla zmiennej, należy usunąć zmienną i utworzyć ją ponownie jako niezaszyfrowaną.
 
 >[!NOTE]
 >Ten artykuł został zaktualizowany o korzystanie z nowego modułu Azure PowerShell Az. Nadal możesz używać modułu AzureRM, który będzie nadal otrzymywać poprawki błędów do co najmniej grudnia 2020 r. Aby dowiedzieć się więcej na temat nowego modułu Az i zgodności z modułem AzureRM, zobacz [Wprowadzenie do nowego modułu Az programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Instrukcje dotyczące instalacji polecenia AZ module w hybrydowym procesie roboczym elementu Runbook znajdują się w temacie [Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). W przypadku konta usługi Automation można zaktualizować moduły do najnowszej wersji przy użyciu [sposobu aktualizowania modułów Azure PowerShell w programie Azure Automation](../automation-update-azure-modules.md).
@@ -96,6 +93,9 @@ Funkcje w poniższej tabeli służą do uzyskiwania dostępu do zmiennych w elem
 1. Na koncie usługi Automation kliknij kafelek **zasoby** , a następnie w bloku **zasoby** wybierz pozycję **zmienne**.
 2. Na kafelku **zmienne** wybierz pozycję **Dodaj zmienną**.
 3. Uzupełnij opcje w bloku **Nowa zmienna** , a następnie kliknij przycisk **Utwórz** , aby zapisać nową zmienną.
+
+>[!NOTE]
+>Jeśli chcesz usunąć szyfrowanie dla zmiennej, należy usunąć zmienną i utworzyć ją ponownie jako niezaszyfrowaną.
 
 ### <a name="create-a-new-variable-with-windows-powershell"></a>Tworzenie nowej zmiennej przy użyciu programu Windows PowerShell
 

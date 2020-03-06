@@ -4,12 +4,12 @@ description: Poznaj klastra operator najlepsze rozwiązania dotyczące magazynow
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: a58a42f65472a9c4b495e0cb964eefa40bf82041
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: b1336d10b091be4f3eb2a711401cafd3f58221fe
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649623"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399474"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące magazynu i kopii zapasowych w usłudze Azure Kubernetes Service (AKS)
 
@@ -75,7 +75,7 @@ Gdy zachodzi potrzeba Dołącz magazyn do zasobników, należy użyć woluminy t
 
 ![Trwały wolumin oświadczeń w klastrze usługi Kubernetes usługi Azure (AKS)](media/concepts-storage/persistent-volume-claims.png)
 
-Oświadczenie trwały wolumin (PVC) umożliwia dynamiczne tworzenie magazynu zgodnie z potrzebami. Odpowiednie dyski platformy Azure są tworzone zgodnie z ich zażądać zasobników. W definicji zasobnika żądania woluminu na utworzone i dołączone do ścieżki instalacji zaprojektowane
+Oświadczenie trwały wolumin (PVC) umożliwia dynamiczne tworzenie magazynu zgodnie z potrzebami. Odpowiednie dyski platformy Azure są tworzone zgodnie z ich zażądać zasobników. W definicji poniżej zażądano utworzenia woluminu i dołączenia go do określonej ścieżki instalacji.
 
 Aby uzyskać informacje na temat sposobu dynamicznego tworzenia i używania woluminów, zobacz [oświadczenia dotyczące woluminów trwałych][aks-concepts-storage-pvcs].
 

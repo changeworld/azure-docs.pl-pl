@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 71cf1a2c4a0a2ff07d2aa0b48a8ee3bb3da8a540
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c76b14e4f08ec930159498da4a35fdad0341929e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919718"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372920"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management rozwiązanie na platformie Azure
 
@@ -27,9 +27,9 @@ Update Management dla maszyn wirtualnych można włączyć przy użyciu następu
 > [!NOTE]
 > Rozwiązanie Update Management wymaga połączenia obszaru roboczego Log Analytics z kontem usługi Automation. Aby uzyskać ostateczną listę obsługiwanych regionów, zobacz [mapowania obszaru roboczego platformy Azure](./how-to/region-mappings.md). Mapowania regionów nie mają wpływu na możliwość zarządzania maszynami wirtualnymi w innym regionie niż konto usługi Automation.
 
-Dostępny jest [szablon Menedżer zasobów](automation-update-management-deploy-template.md) platformy Azure, który umożliwia wdrożenie rozwiązania Update Management na nowym lub istniejącym koncie usługi Automation i log Analytics obszarze roboczym w ramach subskrypcji.
-
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+Dostępny jest [szablon Menedżer zasobów](automation-update-management-deploy-template.md) platformy Azure, który umożliwia wdrożenie rozwiązania Update Management na nowym lub istniejącym koncie usługi Automation i log Analytics obszarze roboczym w ramach subskrypcji.
 
 ## <a name="solution-overview"></a>Omówienie rozwiązania
 
@@ -104,7 +104,7 @@ W poniższej tabeli wymieniono nieobsługiwane systemy operacyjne:
 
 Poniższe informacje opisują wymagania klienta specyficzne dla systemu operacyjnego. Aby uzyskać dodatkowe wskazówki, zobacz [Planowanie sieci](#ports).
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>System Windows
 
 Agenci systemu Windows muszą być skonfigurowani do komunikowania się z serwerem WSUS lub muszą mieć dostęp do Microsoft Update.
 
@@ -165,9 +165,9 @@ W poniższej tabeli opisano połączone źródła obsługiwane przez to rozwiąz
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| Agenci dla systemu Windows |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów systemu Windows, a następnie inicjuje instalację wymaganych aktualizacji. |
-| Agenci dla systemu Linux |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów z systemem Linux, a następnie inicjuje instalację wymaganych aktualizacji w obsługiwanych dystrybucjach. |
-| Grupa zarządzania programu Operations Manager |Tak |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/><br/>Bezpośrednie połączenie z agentem Operations Manager do Azure Monitor dzienników nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
+| Agenci dla systemu Windows |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów systemu Windows, a następnie inicjuje instalację wymaganych aktualizacji. |
+| Agenci dla systemu Linux |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów z systemem Linux, a następnie inicjuje instalację wymaganych aktualizacji w obsługiwanych dystrybucjach. |
+| Grupa zarządzania programu Operations Manager |Yes |Rozwiązanie zbiera informacje o aktualizacjach systemu z agentów w połączonej grupie zarządzania.<br/><br/>Bezpośrednie połączenie z agentem Operations Manager do Azure Monitor dzienników nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 
@@ -204,7 +204,7 @@ Postępuj zgodnie z instrukcjami w temacie [Connect Computers bez dostępu do In
 
 W poniższej tabeli wymieniono klasyfikacje aktualizacji w Update Management z definicją dla każdej klasyfikacji.
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>System Windows
 
 |Klasyfikacja  |Opis  |
 |---------|---------|
@@ -248,10 +248,15 @@ Update Management opiera się na lokalnie skonfigurowanym repozytorium aktualiza
 
 Aby rozpocząć aktualizowanie systemów, należy włączyć rozwiązanie Update Management. Poniżej przedstawiono zalecane i obsługiwane metody dołączenia rozwiązania:
 
-* [Z maszyny wirtualnej](automation-onboard-solutions-from-vm.md)
-* [Przeglądanie wielu maszyn](automation-onboard-solutions-from-browse.md)
-* [Na koncie usługi Automation](automation-onboard-solutions-from-automation-account.md)
-* [Z elementem Runbook Azure Automation](automation-onboard-solutions.md)
+- [Z maszyny wirtualnej](automation-onboard-solutions-from-vm.md)
+
+- [Przeglądanie wielu maszyn](automation-onboard-solutions-from-browse.md)
+
+- [Na koncie usługi Automation](automation-onboard-solutions-from-automation-account.md)
+
+- [Z elementem Runbook Azure Automation](automation-onboard-solutions.md)
+
+- [Z szablonem Azure Resource Manager](automation-update-management-deploy-template.md)
 
 ## <a name="next-steps"></a>Następne kroki
 

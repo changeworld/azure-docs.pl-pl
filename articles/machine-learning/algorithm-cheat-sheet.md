@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
-ms.date: 11/04/2019
-ms.openlocfilehash: 82d4131170002a3d9ffd78933c9dc566c3b1d921
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 03/05/2020
+ms.openlocfilehash: 85fbb1c1d26f71903adab2eb96b0c1dd3bf74c33
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767625"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328624"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Arkusz Machine Learning Ściągawka algorytmu dla projektanta Azure Machine Learning
 
@@ -48,7 +48,7 @@ Istnieją trzy główne kategorie uczenia maszynowego: *uczenie nadzorowane*, *n
 
 W uczeniu nadzorowanym każdy punkt danych ma etykietę lub jest skojarzony z kategorią lub wartością zainteresowania. Przykładem etykiety kategorii jest przypisanie obrazu jako "Cat" lub "Dog". Przykładem etykiety wartości jest cena sprzedaży skojarzona z używanym samochodem. Celem szkolenia nadzorowanego jest zbadanie wielu przykładów z etykietami, takich jak te, a następnie umożliwienie przewidywania przyszłych punktów danych. Na przykład identyfikacja nowych zdjęć z właściwym zwierzęciem lub przypisanie dokładnych cen sprzedaży do innych używanych samochodów. Jest to popularny i przydatny typ uczenia maszynowego.
 
-### <a name="unsupervised-learning"></a>Uczenie nienadzorowane
+### <a name="unsupervised-learning"></a>Nienadzorowane uczenie
 
 W przypadku nienadzorowanej uczenia punkty danych nie mają skojarzonych z nimi etykiet. Zamiast tego celem nienadzorowanego algorytmu uczenia jest organizowanie danych w jakiś sposób lub opisywanie jej struktury. Nienadzorowane uczenie grupuje dane do klastrów, jako K-oznacza, lub znajduje różne sposoby przeglądania złożonych danych, tak aby były prostsze.
 

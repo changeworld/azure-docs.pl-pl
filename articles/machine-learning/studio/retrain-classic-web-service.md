@@ -10,12 +10,12 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: eac7674ae4a88621a803c70bd55a88e65b2cb7e9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: caf2437b4a4853bc29f094d082a4ea15d2f7a3c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838694"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388485"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Ponowne uczenie i wdrażanie klasycznej usługi sieci Web (klasycznej)
 
@@ -46,25 +46,12 @@ Punkty końcowe oceniania można dodawać przy użyciu przykładowego kodu podan
 
 1. W Machine Learning Studio (klasyczny), w lewej kolumnie nawigacyjnej kliknij pozycję usługi sieci Web.
 1. W dolnej części pulpitu nawigacyjnego usługi sieci Web kliknij pozycję **Zarządzaj podglądami punktów końcowych**.
-1. Kliknij pozycję **Dodaj**.
-1. Wpisz nazwę i opis nowego punktu końcowego. Wybierz poziom rejestrowania i czy włączono przykładowe dane. Aby uzyskać więcej informacji na temat rejestrowania, zobacz [Włączanie rejestrowania dla usług sieci web Machine Learning](web-services-logging.md).
+1. Kliknij pozycję **Add** (Dodaj).
+1. Wpisz nazwę i opis dla nowego punktu końcowego. Wybierz poziom rejestrowania i czy jest włączony przykładowych danych. Aby uzyskać więcej informacji na temat rejestrowania, zobacz [Włączanie rejestrowania dla usług sieci web Machine Learning](web-services-logging.md).
 
 ## <a name="update-the-added-endpoints-trained-model"></a>Aktualizowanie przeszkolonego modelu dodanego punktu końcowego
 
 ### <a name="retrieve-patch-url"></a>Pobierz adres URL poprawki
-
-### <a name="option-1-programmatically"></a>Opcja 1: programowe
-
-Aby programowo uzyskać poprawny adres URL poprawki, wykonaj następujące kroki:
-
-1. Uruchom przykładowy kod [addendpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) .
-1. Na podstawie danych wyjściowych polecenia addendpoint Znajdź wartość *HelpLocation* i skopiuj adres URL.
-
-   ![HelpLocation w danych wyjściowych przykładu addendpoint.](./media/retrain-classic/addEndpoint-output.png)
-1. Wklej adres URL do przeglądarki, aby przejść do strony, która zawiera linki pomocy dla usługi sieci Web.
-1. Kliknij link **Aktualizuj zasób** , aby otworzyć stronę Pomoc dotycząca poprawek.
-
-### <a name="option-2-use-the-azure-machine-learning-web-services-portal"></a>Opcja 2: korzystanie z portalu usług sieci Web Azure Machine Learning
 
 Wykonaj następujące kroki, aby uzyskać prawidłowy adres URL poprawek przy użyciu portalu sieci Web:
 
@@ -101,8 +88,8 @@ Poniższy przykładowy kod pokazuje, jak zaktualizować punkt końcowy przy uży
                     Location = new AzureBlobDataReference()
                     {
                         BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
-                        RelativeLocation = "your endpoint relative location", //from the output, for example: “experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner”
-                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: “?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl”
+                        RelativeLocation = "your endpoint relative location", //from the output, for example: "experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner"
+                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: "?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl"
                     }
                 }
             }
@@ -131,7 +118,7 @@ Poniższy przykładowy kod pokazuje, jak zaktualizować punkt końcowy przy uży
 
 Wartość parametru *name* w *zasobach* powinna być zgodna z nazwą zasobu zapisanego przeszkolonego modelu w eksperymentie predykcyjnym. Aby uzyskać nazwę zasobu:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Azure portal](https://portal.azure.com).
 1. W menu po lewej stronie kliknij pozycję **Machine Learning**.
 1. W obszarze Nazwa kliknij swój obszar roboczy, a następnie kliknij pozycję **usługi sieci Web**.
 1. W obszarze Nazwa kliknij pozycję **model spisu [EXP predykcyjny.]** .

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 761011cba71c3907994616904cc854003abda7ee
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 70fa17e3e6f91bf393865cc979a8e47e4bf8687b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245132"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393343"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Samouczek: uczenie i wdrażanie modelu z poziomu interfejsu wiersza polecenia
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Dowiedz się, jak wykonać następujące czynności:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
 
 * Aby korzystać z poleceń interfejsu wiersza polecenia w tym dokumencie ze **środowiska lokalnego**, wymagany jest [interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -128,7 +128,7 @@ Odpowiedź z tego polecenia jest podobna do następującej:
 
 Aby uzyskać więcej informacji na temat pracy z grupami zasobów, zobacz [AZ Group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest).
 
-## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
+## <a name="create-a-workspace"></a>Utwórz obszar roboczy
 
 Aby utworzyć nowy obszar roboczy, użyj następującego polecenia. Zastąp `<workspace-name>` nazwą, której chcesz użyć dla tego obszaru roboczego. Zastąp `<resource-group-name>` nazwą grupy zasobów:
 
@@ -375,7 +375,7 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 ```
 
 > [!NOTE]
-> Może pojawić się ostrzeżenie dotyczące "nie można sprawdzić istnienia LocalWebservice". Można bezpiecznie zignorować ten element, ponieważ nie jest wdrażana lokalna usługa sieci Web.
+> Może pojawić się ostrzeżenie dotyczące "nie można sprawdzić istnienia LocalWebservice" lub "nie można utworzyć klienta platformy Docker". Można bezpiecznie zignorować ten element, ponieważ nie jest wdrażana lokalna usługa sieci Web.
 
 To polecenie służy do wdrażania nowej usługi o nazwie `myservice`przy użyciu wersji 1 modelu, który został wcześniej zarejestrowany.
 

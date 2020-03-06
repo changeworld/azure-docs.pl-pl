@@ -1,18 +1,18 @@
 ---
 title: IS_OBJECT w języku zapytań Azure Cosmos DB
-description: Dowiedz się więcej o funkcji IS_OBJECT systemu SQL w Azure Cosmos DB.
+description: Dowiedz się więcej na temat funkcji systemu SQL IS_OBJECT w Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8e55cda57202ce5a08257f1448adc828764ac817
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 43d8237d859249317d7b581e25ed9a2b34d39d00
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349820"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303804"
 ---
 # <a name="is_object-azure-cosmos-db"></a>IS_OBJECT (Azure Cosmos DB)
  Zwraca wartość logiczną wskazującą, czy obiekt JSON typu z określonego wyrażenia.  
@@ -25,7 +25,7 @@ IS_OBJECT(<expr>)
   
 ## <a name="arguments"></a>Argumenty
   
-*expr*  
+*wyrażenie*  
    To dowolne wyrażenie.  
   
 ## <a name="return-types"></a>Typy zwracane
@@ -47,11 +47,15 @@ SELECT
     IS_OBJECT({prop: "value"}.prop2) AS isObj7  
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"isObj1":false,"isObj2":false,"isObj3":false,"isObj4":false,"isObj5":true,"isObj6":false,"isObj7":false}]
 ```  
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa będzie korzystać z [indeksu zakresu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -15,12 +15,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d970bbc5619bc25a1cf5d6abbdcf41fb4a0ae196
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c7c0a4567da11b10b9a0571656103ef2f17c7da4
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77195525"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399050"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Rozwiązywanie problemów Azure Active Directory współpracy B2B
 
@@ -102,7 +102,6 @@ Od 18 listopada 2019 użytkownicy-Goście w katalogu (zdefiniowani jako konta u�
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>W dzierżawie platformy Azure USA nie można zaprosić użytkownika-gościa współpracy B2B
 
 W chmurze platformy Azure dla instytucji rządowych USA współpraca B2B jest obecnie obsługiwana tylko między dzierżawcami, które są zarówno w chmurze platformy Azure USA, jak i obsługują współpracę B2B. Jeśli użytkownik zostanie uczestnikiem dzierżawy, który nie jest częścią chmury dla instytucji rządowych usługi Azure USA lub nie obsługuje jeszcze współpracy B2B, zostanie wyświetlony komunikat o błędzie. Aby uzyskać więcej informacji i ograniczeń, zobacz [Azure Active Directory — wersja Premium odmian P1 i P2](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
-
 
 ## <a name="next-steps"></a>Następne kroki
 

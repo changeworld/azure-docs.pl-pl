@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4882206692c334d6ab6af28feb5d2cba5277eea1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954101"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303940"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Przenoszenie maszyn wirtualnych platformy Azure do innego regionu
 
@@ -45,7 +45,7 @@ W tym samouczku zostaną wykonane następujące czynności:
     - Uprawnienia do tworzenia maszyny wirtualnej w ramach zasobów platformy Azure. Wbudowana rola współautor maszyny wirtualnej ma następujące uprawnienia:
     - Uprawnienie do tworzenia maszyny wirtualnej w wybranej grupie zasobów
     - Uprawnienie do tworzenia maszyny wirtualnej w wybranej sieci wirtualnej
-    - Uprawnienie do zapisu na wybranym koncie magazynu
+    - Uprawnienie do zapisu w wybranym koncie magazynu
     
     - Uprawnienia do zarządzania operacjami Azure Site Recovery. Rola współautor Site Recovery ma wszystkie uprawnienia wymagane do zarządzania operacjami Site Recovery w magazynie Recovery Services.
 
@@ -73,7 +73,7 @@ W tym samouczku zostaną wykonane następujące czynności:
     - [Sieciowe grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
     - [Moduły równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer)
     -  [Publiczny adres IP](../virtual-network/virtual-network-public-ip-address.md)
-    - Wszystkie inne składniki sieci można znaleźć w dokumentacji dotyczącej [sieci](https://docs.microsoft.com/azure/#pivot=products&panel=network).
+    - Wszystkie inne składniki sieci można znaleźć w dokumentacji dotyczącej [sieci](https://docs.microsoft.com/azure/?pivot=products&panel=network).
 
 
 
@@ -115,7 +115,7 @@ Poniższe kroki pokazują, jak przeprowadzić przeniesienie do regionu doceloweg
 4. Po zakończeniu zadania Sprawdź, czy maszyna wirtualna jest wyświetlana w docelowym regionie platformy Azure zgodnie z oczekiwaniami.
 
 
-## <a name="discard"></a>Odrzucone 
+## <a name="discard"></a>Odrzuć 
 
 W przypadku zaznaczenia przenoszonej maszyny wirtualnej i wprowadzenia zmiany do punktu pracy w trybie failover lub przejścia do poprzedniego punktu w obszarze **zreplikowane elementy**kliknij prawym przyciskiem myszy maszynę wirtualną > **Zmień punkt odzyskiwania**. Ten krok pozwala określić inny punkt odzyskiwania i tryb failover dla tego kroku. 
 

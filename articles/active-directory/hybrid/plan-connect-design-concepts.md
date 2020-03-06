@@ -1,5 +1,5 @@
 ---
-title: 'Program Azure AD Connect: Koncepcje projektowania | Microsoft Docs'
+title: 'Azure AD Connect: koncepcje projektowania | Microsoft Docs'
 description: W tym temacie szczegółowo opisano niektóre obszary projektowania implementacji
 services: active-directory
 documentationcenter: ''
@@ -18,13 +18,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135736"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376064"
 ---
-# <a name="azure-ad-connect-design-concepts"></a>Program Azure AD Connect: Zagadnienia dotyczące projektowania
+# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: koncepcje projektowania
 Celem tego dokumentu jest opisywanie obszarów, które muszą być rozważane podczas projektowania implementacji Azure AD Connect. Ten dokument to głębokie szczegółowe w niektórych obszarach. te pojęcia są również krótko opisane w innych dokumentach.
 
 ## <a name="sourceanchor"></a>sourceAnchor
@@ -45,7 +45,7 @@ Wartość atrybutu musi być zgodna z następującymi regułami:
 
 * Mniej niż 60 znaków
   * Znaki, które nie są a-z, A-Z, lub 0-9 są kodowane i zliczane jako 3 znaki
-* Nie zawiera znaku specjalnego: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > () '; : , [ ] " \@ _
+* Nie zawiera znaku specjalnego: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > () '; :, [] "\@ _
 * Musi być globalnie unikatowa
 * Musi to być ciąg, liczba całkowita lub wartość binarna
 * Nie powinna być oparta na nazwie użytkownika, ponieważ mogą one ulec zmianie
@@ -140,7 +140,7 @@ Aby zmienić parametr objectGUID na ConsistencyGuid jako źródłowy atrybut zak
 
 3. Wprowadź swoje poświadczenia administratora usługi Azure AD, a następnie kliknij przycisk **dalej**.
 
-4. Kreator Azure AD Connect analizuje stan atrybutu MS-DS-ConsistencyGuid w Active Directory lokalnym. Jeśli atrybut nie jest skonfigurowany na żadnym obiekcie w katalogu, Azure AD Connect stwierdza, że żadna inna aplikacja nie korzysta obecnie z atrybutu i jest bezpieczna do użycia jako atrybut zakotwiczenia źródła. Kliknij przycisk **dalej** , aby kontynuować.
+4. Kreator Azure AD Connect analizuje stan atrybutu MS-DS-ConsistencyGuid w Active Directory lokalnym. Jeśli atrybut nie jest skonfigurowany na żadnym obiekcie w katalogu, Azure AD Connect stwierdza, że żadna inna aplikacja nie korzysta obecnie z atrybutu i jest bezpieczna do użycia jako atrybut zakotwiczenia źródła. Kliknij przycisk **Dalej**, aby kontynuować.
 
    ![Włącz ConsistencyGuid dla istniejącego wdrożenia — krok 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
@@ -165,12 +165,12 @@ Podczas analizy (krok 4), jeśli atrybut jest skonfigurowany w co najmniej jedny
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>Wpływ na konfigurację Federacji AD FS lub innej firmy
 Jeśli używasz Azure AD Connect do zarządzania wdrożeniem lokalnym AD FS, Azure AD Connect automatycznie aktualizuje reguły dotyczące roszczeń, aby używały tego samego atrybutu AD co sourceAnchor. Daje to pewność, że ImmutableID wygenerowane przez usługi AD FS będzie spójna z wartościami sourceAnchor wyeksportowanymi w usłudze Azure AD.
 
-Jeśli zarządzasz AD FS poza Azure AD Connect lub używasz serwerów federacyjnych innych firm do uwierzytelniania, musisz ręcznie zaktualizować reguły dotyczące roszczeń ImmutableID, aby były zgodne z wartościami sourceAnchor wyeksportowanymi do usługi Azure AD, zgodnie z opisem w temacie. Sekcja artykułu [Modyfikuj reguły dotyczące AD FS](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims). Po zakończeniu instalacji Kreator zwróci następujące ostrzeżenie:
+Jeśli zarządzasz AD FS poza Azure AD Connect lub używasz serwerów federacyjnych innych firm do uwierzytelniania, musisz ręcznie zaktualizować reguły dotyczące roszczeń ImmutableID, aby były zgodne z wartościami sourceAnchor wyeksportowanymi do usługi Azure AD, zgodnie z opisem w sekcji artykułu [Modyfikowanie reguł roszczeń AD FS](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims). Po zakończeniu instalacji Kreator zwróci następujące ostrzeżenie:
 
 ![Konfiguracja Federacji innej firmy](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Dodawanie nowych katalogów do istniejącego wdrożenia
-Załóżmy, że wdrożono Azure AD Connect z włączoną funkcją ConsistencyGuid, a teraz chcesz dodać inny katalog do wdrożenia. Podczas próby dodania katalogu Kreator Azure AD Connect sprawdza stan atrybutu MS-DS-ConsistencyGuid w katalogu. Jeśli atrybut jest skonfigurowany w co najmniej jednym obiekcie w katalogu, Kreator końcowy ten atrybut jest używany przez inne aplikacje i zwraca błąd, jak pokazano na poniższym diagramie. Jeśli masz pewność, że atrybut nie jest używany przez istniejące aplikacje, możesz pominąć ten błąd przez ponowne uruchomienie Kreatora Azure AD Connect z przełącznikiem **/SkipLdapSearch** określonym powyżej lub należy skontaktować się z pomocą techniczną, aby uzyskać więcej informacji .
+Załóżmy, że wdrożono Azure AD Connect z włączoną funkcją ConsistencyGuid, a teraz chcesz dodać inny katalog do wdrożenia. Podczas próby dodania katalogu Kreator Azure AD Connect sprawdza stan atrybutu MS-DS-ConsistencyGuid w katalogu. Jeśli atrybut jest skonfigurowany w co najmniej jednym obiekcie w katalogu, Kreator końcowy ten atrybut jest używany przez inne aplikacje i zwraca błąd, jak pokazano na poniższym diagramie. Jeśli masz pewność, że atrybut nie jest używany przez istniejące aplikacje, możesz pominąć ten błąd przez ponowne uruchomienie Kreatora Azure AD Connect z przełącznikiem **/SkipLdapSearch** określonym powyżej lub należy skontaktować się z pomocą techniczną, aby uzyskać więcej informacji.
 
 ![Dodawanie nowych katalogów do istniejącego wdrożenia](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 
@@ -180,10 +180,10 @@ Podczas integrowania katalogu lokalnego z usługą Azure AD ważne jest, aby zro
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>Wybieranie atrybutu dla elementu userPrincipalName
 Podczas wybierania atrybutu w celu podania wartości nazwy UPN używanej na platformie Azure należy zapewnić
 
-* Wartości atrybutów są zgodne z składnią UPN (RFC 822), która powinna mieć format nazwa_użytkownika\@domena
+* Wartości atrybutów są zgodne z składnią UPN (RFC 822), która powinna mieć format username\@domena
 * Sufiks w wartości jest zgodny z jedną z zweryfikowanych domen niestandardowych w usłudze Azure AD
 
-W ustawieniach ekspresowych założono wybór dla atrybutu jest userPrincipalName. Jeśli atrybut userPrincipalName nie zawiera wartości, na które użytkownicy mają logować się na platformie Azure, należy wybrać opcję **Instalacja**niestandardowa.
+W ustawieniach ekspresowych założono wybór dla atrybutu jest userPrincipalName. Jeśli atrybut userPrincipalName nie zawiera wartości, na które użytkownicy mają logować się na platformie Azure, należy wybrać opcję **Instalacja niestandardowa**.
 
 ### <a name="custom-domain-state-and-upn"></a>Niestandardowy stan domeny i nazwa UPN
 Ważne jest, aby upewnić się, że istnieje zweryfikowana domena dla sufiksu nazwy UPN.

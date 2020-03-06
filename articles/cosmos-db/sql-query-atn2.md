@@ -4,15 +4,15 @@ description: Dowiedz się, w jaki sposób Funkcja systemowa SQL ATN2 w Azure Cos
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 11321ef9d7b81af279b04e0e435b19c645cf3bcf
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 696e14e75998ead04c99fab2b84fc4c742d5f54a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871656"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302665"
 ---
 # <a name="atn2-azure-cosmos-db"></a>ATN2 (Azure Cosmos DB)
  Zwraca wartość główną wartości arcus tangens y / x, wyrażony w radianach.  
@@ -40,11 +40,15 @@ ATN2(<numeric_expr>, <numeric_expr>)
 SELECT ATN2(35.175643, 129.44) AS atn2  
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"atn2": 1.3054517947300646}]  
 ```  
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa nie będzie używać indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 

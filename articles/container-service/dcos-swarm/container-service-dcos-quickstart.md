@@ -7,24 +7,24 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9efedd5b619a2a3bd592019fea3ca48b7244ca10
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 6274e24bae2e2a6eade0122fe244652eb29cacf9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278501"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399223"
 ---
 # <a name="deprecated-deploy-a-dcos-cluster"></a>(PRZESTARZAŁE) Wdrażanie klastra DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-System DC/OS zapewnia rozproszoną platformę dla nowoczesnych, konteneryzowanych aplikacji. Usługa Azure Container Service umożliwia łatwe i szybkie inicjowanie obsługi produkcyjnego klastra DC/OS. W tym przewodniku Szybki start przedstawiono szczegółowo podstawowe kroki wdrażania klastra DC/OS oraz uruchamiania podstawowego obciążenia.
+System DC/OS zapewnia rozproszoną platformę dla nowoczesnych, konteneryzowanych aplikacji. Usługa Azure Container Service umożliwia łatwe i szybkie inicjowanie obsługi produkcyjnego klastra DC/OS. W tym przewodniku szybki start szczegółowo przedstawiono podstawowe kroki niezbędne do wdrożenia klastra DC/OS i uruchamiania podstawowego obciążenia.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Dla tego samouczka wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure. 
+## <a name="log-in-to-azure"></a>Logowanie się do platformy Azure 
 
 Zaloguj się do subskrypcji platformy Azure za pomocą polecenia [az login](/cli/azure/reference-index#az-login) i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
@@ -32,7 +32,7 @@ Zaloguj się do subskrypcji platformy Azure za pomocą polecenia [az login](/cli
 az login
 ```
 
-## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
 
@@ -128,19 +128,19 @@ Domyślny mechanizm planowania w przypadku klastra DC/OS w usłudze ACS to Marat
 
 Uruchom następujące polecenie, aby zaplanować uruchomienie aplikacji w klastrze DC/OS.
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 Aby wyświetlić stan wdrożenia aplikacji, uruchom następujące polecenie.
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 Zamiana wartości w kolumnie **OCZEKIWANIE** z *Prawda* na *Fałsz* oznacza, że wdrażanie aplikacji zostało zakończone.
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/1    ---       ---      False      DOCKER   None
 ```
@@ -165,7 +165,7 @@ az group delete --name myResourceGroup --no-wait
 
 ## <a name="next-steps"></a>Następne kroki
 
-Podczas pracy z tym przewodnikiem Szybki start wdrożono klaster DC/OS i uruchomiono w nim prosty kontener platformy Docker. Aby dowiedzieć się więcej na temat usługi Azure Container Service, przejdź do samouczków dotyczących usługi Azure Container Service.
+W tym przewodniku szybki start wdrożono klaster DC/OS i uruchomiono prosty kontener Docker w klastrze. Aby dowiedzieć się więcej na temat usługi Azure Container Service, przejdź do samouczków dotyczących usługi Azure Container Service.
 
 > [!div class="nextstepaction"]
 > [Manage an ACS DC/OS Cluster](container-service-dcos-manage-tutorial.md) (Zarządzanie klastrem DC/OS usługi ACS)

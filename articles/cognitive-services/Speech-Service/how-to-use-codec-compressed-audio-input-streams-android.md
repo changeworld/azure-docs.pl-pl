@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 01135229167dde3784137ab1b06dfc931766a2e0
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 1539ca9aa18892f617f278e67c8b6141f5f6d880
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805845"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331131"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Instrukcje: korzystanie z kodera-dekoder kompresji audio przy użyciu zestawu Speech SDK w systemie Android
 
 Interfejs API **strumienia danych wejściowych audio** zestawu Speech SDK umożliwia przesyłanie strumieniowo skompresowanego dźwięku do usługi mowy przy użyciu PullStream lub PushStream.
 
 > [!IMPORTANT]
-> Przesyłane strumieniowo skompresowane audio wejściowe jest obecnie obsługiwane dla [ C++systemów, C#i Java w systemie Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md). Jest ona również obsługiwana w przypadku języka Java w systemach Android i [C na platformie iOS](how-to-use-codec-compressed-audio-input-streams-ios.md) .
+> Przesyłane strumieniowo skompresowane audio wejściowe jest obecnie obsługiwane dla [ C++systemów, C#i Java w systemie Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)](how-to-use-codec-compressed-audio-input-streams.md). Jest ona również obsługiwana w przypadku języka Java w systemach Android i [C na platformie iOS](how-to-use-codec-compressed-audio-input-streams-ios.md) .
 > Wymagany jest pakiet Speech SDK w wersji 1.7.0 lub nowszej.
 
 W przypadku WAV/PCM zapoznaj się z dokumentacją mowy linii głównej. Na zewnątrz WAV/PCM obsługiwane są następujące skompresowane formaty danych wejściowych kodera-dekoder:
@@ -37,7 +37,7 @@ W przypadku WAV/PCM zapoznaj się z dokumentacją mowy linii głównej. Na zewn�
 
 Koder-dekoder skompresowany audio jest implementowany przy użyciu [GStreamer](https://gstreamer.freedesktop.org). Ze względów licencjonowania GStreamer pliki binarne nie są kompilowane z zestawem SDK. Musisz użyć wstępnie skompilowanych plików binarnych dla systemu Android. Aby pobrać wstępnie skompilowane biblioteki, zobacz [Instalowanie aplikacji dla systemu Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
-Ciąg `libgstreamer_android.so` jest wymagany. Upewnij się, że wtyczki GStreamer są połączone w `libgstreamer_android.so`.
+`libgstreamer_android.so` jest wymagana. Upewnij się, że wtyczki GStreamer są połączone w `libgstreamer_android.so`.
 
 ```make
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 audioresample audioparsers ogg opusparse opus wavparse alaw mulaw flac

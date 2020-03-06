@@ -2,25 +2,25 @@
 author: rothja
 ms.service: cost-management-billing
 ms.topic: include
-ms.date: 08/09/2019
+ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 83bf357fff8fd3cfb8c0e69af92b36710287898f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: 505e2d8eec20853fba3743b40cbe289585d14d61
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586732"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78305041"
 ---
-| Resource | Wolne | {1&gt;Udostępniane&lt;1} | Podstawowa | Standardowy | Premium (v2) | Ogół </th> |
+| Zasób | Bezpłatna | Udostępnione | Podstawowa | Standard | Premium (v2) | Ogół </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Aplikacje internetowe, mobilne lub API](https://azure.microsoft.com/services/app-service/) na [Azure App Service plan](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Bez ograniczeń<sup>2</sup> |Bez ograniczeń<sup>2</sup> |Bez ograniczeń<sup>2</sup> |Bez ograniczeń<sup>2</sup>|
 | [Plan usługi App Service](../articles/app-service/overview-hosting-plans.md) |10 na region |10 na grupę zasobów |100 na grupę zasobów |100 na grupę zasobów |100 na grupę zasobów |100 na grupę zasobów|
-| Typ wystąpienia obliczeniowego |{1&gt;Udostępniane&lt;1} |{1&gt;Udostępniane&lt;1} |Dedykowane<sup>3</sup> |Dedykowane<sup>3</sup> |Dedykowane<sup>3</sup></p> |Dedykowane<sup>3</sup>|
+| Typ wystąpienia obliczeniowego |Udostępnione |Udostępnione |Dedykowane<sup>3</sup> |Dedykowane<sup>3</sup> |Dedykowane<sup>3</sup></p> |Dedykowane<sup>3</sup>|
 | [Skalowanie w poziomie](../articles/app-service/manage-scale-up.md) (maksymalna liczba wystąpień) |1 udostępniony |1 udostępniony |3 dedykowane<sup>3</sup> |10 dedykowanych<sup>3</sup> |30 dedykowanych<sup>3</sup>|100 dedykowany<sup>4</sup>|
 | Magazyn<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
 | Czas procesora CPU (5 minut)<sup>6</sup> |3 minuty |3 minuty |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a> |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a> |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a> |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a>|
 | Czas procesora CPU (dzień)<sup>6</sup> |60 minut |240 minut |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a> |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a> |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a> |Bez ograniczeń, płatność według [stawek](https://azure.microsoft.com/pricing/details/app-service/) standardowych</a> |
-| Pamięć (1 godzina) |1 024 MB na plan App Service |1 024 MB na aplikację |N/D |N/D |N/D |N/D |
+| Pamięć (1 godzina) |1 024 MB na plan App Service |1 024 MB na aplikację |Nie dotyczy |Nie dotyczy |Nie dotyczy |Nie dotyczy |
 | Przepustowość |165 MB |Nieograniczone, [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) są naliczane |Nieograniczone, [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) są naliczane |Nieograniczone, [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) są naliczane |Nieograniczone, [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) są naliczane |Nieograniczone, [opłaty za transfer danych](https://azure.microsoft.com/pricing/details/data-transfers/) są naliczane |
 | Architektura aplikacji |32 — bit |32 — bit |32-bitowa/64-bitowa |32-bitowa/64-bitowa |32-bitowa/64-bitowa |32-bitowa/64-bitowa |
 | Gniazda sieci Web na wystąpienie<sup>7</sup> |5 |35 |350 |Nieograniczona liczba |Nieograniczona liczba |Nieograniczona liczba |
@@ -36,7 +36,7 @@ ms.locfileid: "77586732"
 | [Skalowanie automatyczne](../articles/app-service/manage-scale-up.md) | | | |X |X |X |
 | [Zadania WebJob](../articles/app-service/webjobs-create.md)<sup>11</sup> |X |X |X |X |X |X |
 | [Monitorowanie punktu końcowego](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
-| [Miejsca przejściowe](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
+| Miejsca [przejściowe](../articles/app-service/deploy-staging-slots.md) na aplikację| | | |5 |20 |20 |
 | Umowa SLA | |  |99.95%|99.95%|99.95%|99.95%|  
 
 <sup>1</sup> Aplikacje i przydziały magazynu są na App Service plan, chyba że zaznaczono inaczej.  

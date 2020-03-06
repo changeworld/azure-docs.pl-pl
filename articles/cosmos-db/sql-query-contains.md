@@ -4,15 +4,15 @@ description: Dowiedz się, jak Funkcja systemowa SQL w Azure Cosmos DB zwraca wa
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 59c0e2628bfde24200bd386adc858ba778790231
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c0c25b63fb6a7bf42bd2ec5b9503cac2cce7583f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871537"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302597"
 ---
 # <a name="contains-azure-cosmos-db"></a>ZAWIERA (Azure Cosmos DB)
  Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu zawiera drugie.  
@@ -43,11 +43,15 @@ CONTAINS(<str_expr1>, <str_expr2>)
 SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2 
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"c1": true, "c2": false}]  
 ```  
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa nie będzie używać indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 

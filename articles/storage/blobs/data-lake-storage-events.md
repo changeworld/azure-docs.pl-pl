@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 85fad873b6c176d2278ea48709d2892ab515a025
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71326993"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303311"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Samouczek: implementowanie wzorca przechwytywania danych w celu zaktualizowania tabeli różnicowej datakostki
 
@@ -42,7 +42,7 @@ Skompilujemy to rozwiązanie w odwrotnej kolejności, rozpoczynając od obszaru 
 
   Jest kilka rzeczy, o których należy pamiętać podczas wykonywania kroków przedstawionych w tym artykule.
 
-  : heavy_check_mark: podczas wykonywania kroków opisanych w sekcji [przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) w artykule, należy się upewnić, że rola **współautor danych obiektów blob magazynu** jest przypisana do jednostki usługi.
+  : heavy_check_mark: podczas wykonywania kroków opisanych w sekcji [przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) w artykule, należy się upewnić, że rola **współautor danych obiektów blob magazynu** jest przypisana do jednostki usługi.
 
   > [!IMPORTANT]
   > Upewnij się, że przypisano rolę w zakresie konta magazynu usługi Data Lake Storage Gen2. Możesz przypisać rolę do nadrzędnej grupy zasobów lub subskrypcji, ale będzie zgłaszany błąd dotyczący uprawnień do momentu rozpropagowania przypisań roli do konta magazynu.
@@ -133,7 +133,7 @@ Aby uzyskać więcej informacji na temat tworzenia klastrów, zobacz [Create a S
 
 1. W utworzonym notesie skopiuj i wklej poniższy blok kodu w pierwszej komórce, ale nie uruchamiaj jeszcze tego kodu.  
 
-   Zastąp `appId`, `password` `tenant` wartości symboli zastępczych w tym bloku kodu wartościami, które zostały zebrane podczas wykonywania wymagań wstępnych w tym samouczku.
+   Zastąp `appId`, `password``tenant` wartości symboli zastępczych w tym bloku kodu wartościami, które zostały zebrane podczas wykonywania wymagań wstępnych w tym samouczku.
 
     ```Python
     dbutils.widgets.text('source_file', "", "Source File")
@@ -336,7 +336,7 @@ Utwórz funkcję platformy Azure, która uruchamia zadanie.
     }
     ```
 
-   Ten kod analizuje informacje o zdarzeniu magazynu, które zostało zgłoszone, a następnie tworzy komunikat żądania z adresem URL pliku, który wyzwolił zdarzenie. W ramach komunikatu funkcja przekazuje wartość do widżetu **source_file** , który został utworzony wcześniej. kod funkcji wysyła komunikat do zadania datakostki i używa tokenu uzyskanego wcześniej jako uwierzytelnianie.
+   Ten kod analizuje informacje o zdarzeniu magazynu, które zostało zgłoszone, a następnie tworzy komunikat żądania z adresem URL pliku, który wyzwolił zdarzenie. W ramach komunikatu funkcja przekazuje wartość do widżetu **source_file** utworzonego wcześniej. kod funkcji wysyła komunikat do zadania datakostki i używa tokenu uzyskanego wcześniej jako uwierzytelnianie.
 
 ## <a name="create-an-event-grid-subscription"></a>Tworzenie subskrypcji usługi Event Grid
 

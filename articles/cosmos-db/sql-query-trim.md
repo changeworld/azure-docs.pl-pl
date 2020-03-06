@@ -4,15 +4,15 @@ description: Dowiedz się więcej na temat przycinania funkcji systemu SQL w Azu
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bcb62dc5b43e05fa96ce9bfb428d6fc9160edde9
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 073efbd91e637a17693617b16c7787d61e150ad7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349102"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304246"
 ---
 # <a name="trim-azure-cosmos-db"></a>Przytnij (Azure Cosmos DB)
  Zwraca wyrażenie ciągu, po usuwa wiodące i końcowe spacje.  
@@ -40,11 +40,15 @@ TRIM(<str_expr>)
 SELECT TRIM("   abc") AS t1, TRIM("   abc   ") AS t2, TRIM("abc   ") AS t3, TRIM("abc") AS t4
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"t1": "abc", "t2": "abc", "t3": "abc", "t4": "abc"}]  
 ``` 
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa nie będzie używać indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 

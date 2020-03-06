@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 11/05/2019
-ms.openlocfilehash: 06b890a9186ec38ce3f851c9f36b778ec7549f76
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/05/2020
+ms.openlocfilehash: 5e90416b23b057ad5079a551242895802ac641c9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77580552"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399129"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Tworzenie obszaru roboczego dla Azure Machine Learning przy użyciu interfejsu wiersza polecenia platformy Azure
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,14 +52,14 @@ Aby zainstalować rozszerzenie Uczenie maszynowe, użyj następującego poleceni
 az extension add -n azure-cli-ml
 ```
 
-## <a name="create-a-workspace"></a>Utwórz obszar roboczy
+## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
 Obszar roboczy Azure Machine Learning opiera się na następujących usługach lub jednostkach platformy Azure:
 
 > [!IMPORTANT]
 > Jeśli nie określisz istniejącej usługi platformy Azure, zostanie ona utworzona automatycznie podczas tworzenia obszaru roboczego. Zawsze należy określić grupę zasobów.
 
-| NDES | Parametr określający istniejące wystąpienie |
+| Usługa | Parametr określający istniejące wystąpienie |
 | ---- | ---- |
 | **Grupa zasobów platformy Azure** | `-g <resource-group-name>`
 | **Konto usługi Azure Storage** | `--storage-account <service-id>` |
@@ -67,7 +67,7 @@ Obszar roboczy Azure Machine Learning opiera się na następujących usługach l
 | **Usługa Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
 
-### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
+### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
 
 Obszar roboczy Azure Machine Learning należy utworzyć w grupie zasobów. Możesz użyć istniejącej grupy zasobów lub utworzyć nową. Aby __utworzyć nową grupę zasobów__, użyj następującego polecenia. Zastąp `<resource-group-name>` nazwą, która ma być używana dla tej grupy zasobów. Zastąp `<location>` w regionie świadczenia usługi Azure, który ma być używany dla tej grupy zasobów:
 

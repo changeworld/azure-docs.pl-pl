@@ -4,15 +4,15 @@ description: Dowiedz się więcej o funkcji ToString systemu SQL w Azure Cosmos 
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 53630a0ecd76459f23a978e98040a86152d7c0d8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 293449b1616e7124245d91c647177b958006009e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349135"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304263"
 ---
 # <a name="tostring-azure-cosmos-db"></a>ToString (Azure Cosmos DB)
  Zwraca ciąg reprezentujący wyrażenie skalarne. 
@@ -25,7 +25,7 @@ ToString(<expr>)
   
 ## <a name="arguments"></a>Argumenty
   
-*expr*  
+*wyrażenie*  
    Jest dowolnym wyrażeniem skalarnym.  
   
 ## <a name="return-types"></a>Typy zwracane
@@ -34,7 +34,7 @@ ToString(<expr>)
   
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład pokazuje, jak `ToString` zachowuje się w różnych typach.   
+  Poniższy przykład pokazuje, jak `ToString` działa w różnych typach.   
   
 ```sql
 SELECT 
@@ -48,7 +48,7 @@ SELECT
     ToString(undefined) AS str8
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"str1": "1", "str2": "Hello World", "str3": "NaN", "str4": "Infinity", "str5": "false", "str6": "0.1234", "str7": "false"}]  
@@ -57,7 +57,7 @@ SELECT
 ```json
 {"Products":[{"ProductID":1,"Weight":4,"WeightUnits":"lb"},{"ProductID":2,"Weight":32,"WeightUnits":"kg"},{"ProductID":3,"Weight":400,"WeightUnits":"g"},{"ProductID":4,"Weight":8999,"WeightUnits":"mg"}]}
 ```    
- W poniższym przykładzie pokazano, jak `ToString` może być używany z innymi funkcjami ciągów, takimi jak `CONCAT`.   
+ Poniższy przykład pokazuje, jak `ToString` mogą być używane z innymi funkcjami ciągów, takimi jak `CONCAT`.   
  
 ```sql
 SELECT 
@@ -65,7 +65,7 @@ CONCAT(ToString(p.Weight), p.WeightUnits)
 FROM p in c.Products 
 ```  
 
-W tym miejscu znajduje się zestaw wyników.  
+Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"$1":"4lb" },
@@ -78,7 +78,7 @@ Biorąc pod uwagę następujące dane wejściowe.
 ```json
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
-W poniższym przykładzie pokazano, jak `ToString` może być używany z innymi funkcjami ciągów, takimi jak `REPLACE`.   
+Poniższy przykład pokazuje, jak `ToString` mogą być używane z innymi funkcjami ciągów, takimi jak `REPLACE`.   
 ```sql
 SELECT 
     n.id AS nutrientID,
@@ -86,7 +86,7 @@ SELECT
 FROM food 
 JOIN n IN food.nutrients
 ```
-W tym miejscu znajduje się zestaw wyników.  
+Tutaj znajduje się zestaw wyników.  
  ```json
 [{"nutrientID":"305"},
 {"nutrientID":"306","nutritionVal":"30"},
@@ -94,6 +94,10 @@ W tym miejscu znajduje się zestaw wyników.
 {"nutrientID":"308","nutritionVal":"90"},
 {"nutrientID":"309","nutritionVal":"null"}]
 ``` 
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa nie będzie używać indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 

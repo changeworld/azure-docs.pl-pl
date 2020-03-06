@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
 ms.date: 01/06/2020
-ms.openlocfilehash: 8906299cc9e2c000dab2ac9d2a345d9aaf238260
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 036efa27fb8d22c32f2f6bce1efe9dea300a3972
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045848"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302778"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Co to są środowiska Azure Machine Learning?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Środowiska Azure Machine Learning określają pakiety języka Python, zmienne środowiskowe i ustawienia oprogramowania wokół skryptów szkoleń i oceniania. Określają one również czasy wykonywania (Python, Spark lub Docker). Są one zarządzane i obsługiwane przez program w obszarze roboczym Machine Learning, które umożliwiają powtarzalny, z inspekcją i przenośne przepływy pracy uczenia maszynowego w różnych obiektach docelowych obliczeń.
+Środowiska Azure Machine Learning określają pakiety języka Python, zmienne środowiskowe i ustawienia oprogramowania wokół skryptów szkoleń i oceniania. Określają one również czasy wykonywania (Python, Spark lub Docker). Środowiska są zarządzane i obsługiwane przez program w obszarze roboczym Machine Learning, które umożliwiają powtarzalny, z inspekcją i przenośne przepływy pracy uczenia maszynowego w różnych celach obliczeniowych.
 
 Możesz użyć obiektu `Environment` w lokalnym obliczeniu, aby:
 * Opracowywanie skryptu szkoleniowego.
@@ -57,6 +57,45 @@ Aby zapoznać się z konkretnymi przykładami kodu, zobacz sekcję "Tworzenie ś
 * Możesz automatycznie tworzyć obrazy platformy Docker w swoich środowiskach.
 
 Aby zapoznać się z przykładami kodu, zobacz sekcję "zarządzanie środowiskami" w temacie [ponowne używanie środowisk do szkolenia i wdrażania](how-to-use-environments.md#manage-environments).
+
+## <a name="environment-building-caching-and-reuse"></a>Kompilowanie, buforowanie i ponowne używanie środowiska
+
+Usługa Azure Machine Learning kompiluje definicje środowiska w obrazy platformy Docker i środowiska Conda. W pamięci podręcznej są również używane środowiska, dzięki czemu można je ponownie wykorzystać w kolejnych przebiegach szkoleniowych i wdrożeniach punktów końcowych usługi.
+
+### <a name="building-environments-as-docker-images"></a>Kompilowanie środowisk jako obrazów platformy Docker
+
+Zazwyczaj podczas pierwszego przesyłania przebiegu przy użyciu środowiska usługa Azure Machine Learning wywołuje [zadanie kompilacji ACR](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview) na Azure Container Registry (ACR) skojarzonym z obszarem roboczym. Skompilowany obraz platformy Docker jest następnie buforowany w obszarze roboczym ACR. Na początku wykonywania przebiegu obraz jest pobierany przez obiekt docelowy obliczeń.
+
+Kompilacja obrazu składa się z dwóch kroków:
+
+ 1. Pobieranie obrazu podstawowego i wykonywanie wszelkich kroków platformy Docker
+ 2. Kompilowanie środowiska Conda zgodnie z zależnościami Conda określonymi w definicji środowiska.
+
+Drugi krok zostanie pominięty w przypadku określenia [zależności zarządzanych przez użytkownika](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py). W takim przypadku użytkownik jest odpowiedzialny za instalację dowolnych pakietów języka Python, dołączając je do obrazu podstawowego lub określając niestandardowe kroki platformy Docker w pierwszym kroku. Użytkownik jest również odpowiedzialny za określenie prawidłowej lokalizacji pliku wykonywalnego języka Python.
+
+### <a name="image-caching-and-reuse"></a>Buforowanie i ponowne użycie obrazu
+
+Jeśli używasz tej samej definicji środowiska dla innego uruchomienia, usługa Azure Machine Learning ponownie używa buforowanego obrazu z obszaru roboczego ACR. 
+
+Aby wyświetlić szczegóły buforowanego obrazu, użyj metody [Environment. get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#get-image-details-workspace-) .
+
+Aby określić, czy ponownie użyć buforowanego obrazu, czy utworzyć nowy, usługa oblicza [wartość skrótu](https://en.wikipedia.org/wiki/Hash_table) z definicji środowiska i porównuje ją z skrótami istniejących środowisk. Skrót jest oparty na:
+ 
+ * Wartość właściwości obrazu podstawowego
+ * Niestandardowa wartość właściwości kroków platformy Docker
+ * Lista pakietów języka Python w definicji Conda
+ * Lista pakietów w definicji platformy Spark 
+
+Wartość skrótu nie jest zależna od nazwy lub wersji środowiska. Zmiany definicji środowiska, takie jak dodawanie lub usuwanie pakietu języka Python lub zmiana wersji pakietu, powodują zmianę wartości skrótu i wyzwalanie odbudowy obrazu. Jeśli jednak po prostu zmienisz nazwę środowiska lub utworzysz nowe środowisko z dokładnymi właściwościami i pakietami istniejącymi, wartość skrótu pozostanie taka sama i zostanie użyty obraz w pamięci podręcznej.
+
+Na poniższym diagramie przedstawiono trzy definicje środowiska. Dwa z nich mają różne nazwy i wersje, ale identyczne obrazy podstawowe i pakiety języka Python. Mają one ten sam skrót i dlatego odpowiadają te same zapisane w pamięci podręcznej. Trzecie środowisko ma inne pakiety i wersje języka Python, dlatego odnosi się do innego obrazu w pamięci podręcznej.
+
+![Diagram pamięci podręcznej środowiska jako obrazów platformy Docker](./media/concept-environments/environment-caching.png)
+
+Jeśli utworzysz środowisko z przypiętym zależnością pakietu, na przykład ```numpy```, to środowisko będzie nadal korzystać z zainstalowanej wersji pakietu w momencie tworzenia środowiska. Ponadto wszystkie przyszłe środowiska ze zgodną definicją będą nadal używane w starej wersji. Aby zaktualizować pakiet, określ numer wersji, aby wymusić Odbudowywanie obrazu, na przykład ```numpy==1.18.1```. Zwróć uwagę, że zostaną zainstalowane nowe zależności, w tym zagnieżdżone, które mogą spowodować uszkodzenie wcześniej działającego scenariusza
+
+> [!WARNING]
+>  Metoda [Environment. Build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace-) spowoduje odbudowanie buforowanego obrazu z możliwym efektem ubocznym aktualizowania przypiętych pakietów i przerwaniem odtwarzalności dla wszystkich definicji środowiska odpowiadających danemu z pamięci podręcznej.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -17,16 +17,16 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f25f13c60a60e1a397e4c63443ee786a9acdf6d1
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273797"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399299"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Wymagania wstępne dotyczące uzyskiwania dostępu do interfejsu API raportowania Azure Active Directory
 
-[Interfejsy API raportowania usługi Azure Active Directory (Azure AD)](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) umożliwiają dostęp programowy do danych za pomocą zestawu interfejsów API opartych na architekturze REST. Te interfejsy API można wywoływać z języków programowania i narzędzi.
+[Interfejsy API raportowania usługi Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api) umożliwiają dostęp programowy do danych za pomocą zestawu interfejsów API opartych na architekturze REST. Te interfejsy API można wywoływać z języków programowania i narzędzi.
 
 Interfejs API raportowania używa protokołu [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) do autoryzacji dostępu do interfejsów API sieci Web.
 
@@ -191,7 +191,6 @@ Te wartości są potrzebne podczas konfigurowania wywołań do interfejsu API ra
 
 W tej sekcji wymieniono typowe komunikaty o błędach, które mogą być używane podczas uzyskiwania dostępu do raportów aktywności przy użyciu interfejsu API Microsoft Graph i kroki ich rozwiązywania.
 
-
 ### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>Błąd: nie można pobrać ról użytkownika z Microsoft Graph
 
  Zaloguj się do swojego konta przy użyciu obu przycisków logowania w interfejsie użytkownika programu Graph Explorer, aby uniknąć błędu podczas próby zalogowania się za pomocą Eksploratora grafów. 
@@ -204,7 +203,6 @@ Jeśli ten komunikat o błędzie jest uruchamiany podczas próby dostępu do log
 
 ![Modyfikuj interfejs użytkownika uprawnień](./media/troubleshoot-graph-api/modify-permissions.png)
 
-
 ### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>Błąd: Dzierżawca nie jest B2C lub dzierżawca nie ma licencji Premium
 
 Uzyskiwanie dostępu do raportów logowania wymaga licencji Azure Active Directory Premium 1 (P1). Jeśli ten komunikat o błędzie jest wyświetlany podczas uzyskiwania dostępu do logowania, upewnij się, że dzierżawa jest licencjonowana przy użyciu licencji usługi Azure AD P1.
@@ -215,7 +213,7 @@ Uzyskiwanie dostępu do raportów logowania wymaga licencji Azure Active Directo
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>Błąd: brak uprawnienia do odczytu danych katalogu usługi AAD w aplikacji 
 
-### <a name="error-application-missing-microsoft-api-read-all-audit-log-data-permission"></a>Błąd: brak uprawnienia Microsoft API "Odczyt wszystkich danych dziennika inspekcji" w aplikacji
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>Błąd: brak aplikacji Microsoft Graph interfejs API "Odczyt wszystkich danych dziennika inspekcji"
 
 Wykonaj kroki opisane w sekcji [wymagania wstępne, aby uzyskać dostęp do interfejsu API raportowania Azure Active Directory](howto-configure-prerequisites-for-reporting-api.md) , aby upewnić się, że aplikacja działa z odpowiednim zestawem uprawnień. 
 

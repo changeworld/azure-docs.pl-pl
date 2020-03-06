@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: yushwang
 ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148336"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392109"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Omówienie konfiguracji urządzeń partnerskiej sieci VPN
 Ten artykuł zawiera omówienie konfigurowania lokalnych urządzeń sieci VPN w celu nawiązania połączenia z bramami sieci VPN platformy Azure. Przykładowa konfiguracja sieci wirtualnej platformy Azure i bramy sieci VPN służy do pokazywania sposobu nawiązywania połączenia z różnymi konfiguracjami lokalnych urządzeń sieci VPN przy użyciu tych samych parametrów.

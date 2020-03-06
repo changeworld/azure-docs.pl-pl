@@ -3,179 +3,152 @@ title: 'Szybki Start: Tworzenie aplikacji sieci Web w języku Node. js'
 description: Wdróż pierwszy Hello world środowiska Node. js, aby Azure App Service w ciągu kilku minut. Wdrażasz za pomocą Visual Studio Code, który jest jednym z wielu sposobów wdrożenia do App Service.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
-ms.date: 09/30/2019
+ms.date: 03/04/2020
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 3fcc4d9d33637cd61f5621cc95788e9de8ffaec6
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1f105792a95115580d52444a617b3fc1678843ca
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500112"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374078"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Tworzenie aplikacji internetowej Node.js na platformie Azure 
 
-Usługa Azure App Service oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. Ten samouczek Szybki start przedstawia sposób wdrażania aplikacji Node.js w usłudze Azure App Service.
+Rozpocznij pracę z Azure App Service przez utworzenie aplikacji node. js/Express lokalnie przy użyciu Visual Studio Code, a następnie wdrożenie aplikacji w chmurze. Ponieważ korzystasz z bezpłatnej warstwy App Service, nie poniesiesz żadnych kosztów, aby ukończyć ten przewodnik Szybki Start.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz konta platformy Azure, [zarejestruj się już dziś](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension) , aby skorzystać z bezpłatnego konta z $200 na kredyty na korzystanie z platformy Azure w celu wypróbowania dowolnej kombinacji usług.
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension).
+- [Node.js i npm](https://nodejs.org). Uruchom polecenie `node --version`, aby sprawdzić, czy jest zainstalowany węzeł Node. js.
+- [Program Visual Studio Code](https://code.visualstudio.com/)
+- [Azure App Service rozszerzenie](vscode:extension/ms-azuretools.vscode-azureappservice) Visual Studio Code.
 
-Wymagane [Visual Studio Code](https://code.visualstudio.com/) zainstalowane wraz z [Node. js i npm](https://nodejs.org/en/download), Menedżer pakietów środowiska Node. js.
+## <a name="clone-and-run-a-local-nodejs-application"></a>Klonowanie i uruchamianie lokalnej aplikacji node. js
 
-Konieczne będzie również zainstalowanie [rozszerzenia Azure App Service](vscode:extension/ms-azuretools.vscode-azureappservice), za pomocą którego można tworzyć i wdrażać Web Apps systemu Linux na platformie Azure jako usługa (PaaS) oraz zarządzać nimi.
+1. Na komputerze lokalnym Otwórz Terminal i Sklonuj przykładowe repozytorium:
 
-### <a name="sign-in"></a>Logowanie
+    ```bash
+    git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
+    ```
 
-Po zainstalowaniu rozszerzenia Zaloguj się do konta platformy Azure. Na pasku działania wybierz pozycję logo platformy Azure, aby wyświetlić Eksplorator **usługi Azure App Service** . Wybierz pozycję **Zaloguj się do platformy Azure...** i postępuj zgodnie z instrukcjami.
+1. Przejdź do nowego folderu aplikacji:
 
-![Zaloguj się do platformy Azure](containers/media/quickstart-nodejs/sign-in.png)
+    ```bash
+    cd nodejs-docs-hello-world
+    ```
 
-### <a name="troubleshooting"></a>Rozwiązywanie problemów
+1. Uruchom aplikację, aby przetestować ją lokalnie:
 
-Jeśli zostanie wyświetlony komunikat o błędzie **"nie można odnaleźć subskrypcji o nazwie [Identyfikator subskrypcji]"** , może to być spowodowane faktem, że jesteś za serwerem proxy i nie można skontaktować się z interfejsem API platformy Azure. Skonfiguruj zmienne środowiskowe `HTTP_PROXY` i `HTTPS_PROXY` za pomocą informacji o serwerze proxy w terminalu przy użyciu `export`.
+    ```bash
+    npm start
+    ```
+    
+1. Otwórz przeglądarkę i przejdź do [http://localhost:1337](http://localhost:1337). W przeglądarce powinna zostać wyświetlona wartość "Hello world!".
 
-```sh
-export HTTPS_PROXY=https://username:password@proxy:8080
-export HTTP_PROXY=http://username:password@proxy:8080
-```
-
-Jeśli ustawienie zmiennych środowiskowych nie rozwiąże problemu, skontaktuj się z nami, wybierając poniższy przycisk **został uruchomiony na przycisku problemu** .
-
-### <a name="prerequisite-check"></a>Sprawdzanie wymagań wstępnych
-
-Przed kontynuowaniem upewnij się, że wszystkie wymagania wstępne zostały zainstalowane i skonfigurowane.
-
-W VS Code adres e-mail platformy Azure powinien zostać wyświetlony na pasku stanu i w ramach subskrypcji w Eksploratorze **usługi Azure App Service** .
-
-> [!div class="nextstepaction"]
-> [Wystąpił problem](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=getting-started)
-
-## <a name="create-your-nodejs-application"></a>Tworzenie aplikacji node. js
-
-Następnie Utwórz aplikację Node. js, którą można wdrożyć w chmurze. Ten przewodnik Szybki Start używa generatora aplikacji w celu szybkiego tworzenia szkieletu aplikacji z poziomu terminalu.
-
-> [!TIP]
-> Jeśli zakończysz już [samouczek środowiska Node. js](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial), możesz przejść do wdrożenia na [platformie Azure](#deploy-to-azure).
-
-### <a name="scaffold-a-new-application-with-the-express-generator"></a>Tworzenie szkieletu nowej aplikacji przy użyciu generatora ekspresowego
-
-[Express](https://www.expressjs.com) to popularna platforma do kompilowania i uruchamiania aplikacji node. js. Można tworzyć szkieletowo nowe aplikacje ekspresowe przy użyciu narzędzia [Generator ekspres](https://expressjs.com/en/starter/generator.html) . Generator ekspresowy jest dostarczany jako moduł npm i może być uruchamiany bezpośrednio (bez instalacji) za pomocą narzędzia wiersza polecenia npm `npx`.
-
-```bash
-npx express-generator myExpressApp --view pug --git
-```
-
-`--view pug --git` parametry informują generatora, aby korzystał z aparatu szablonu [Pug](https://pugjs.org/api/getting-started.html) (wcześniej znanego jako `jade`) i aby utworzyć plik `.gitignore`.
-
-Aby zainstalować wszystkie zależności aplikacji, przejdź do nowego folderu i uruchom `npm install`.
-
-```bash
-cd myExpressApp
-npm install
-```
-
-### <a name="run-the-application"></a>Uruchamianie aplikacji
-
-Następnie upewnij się, że aplikacja działa. W terminalu uruchom aplikację za pomocą polecenia `npm start`, aby uruchomić serwer.
-
-```bash
-npm start
-```
-
-Teraz otwórz przeglądarkę i przejdź do [http://localhost:3000](http://localhost:3000), w której powinny zostać wyświetlone następujące elementy:
-
-![Uruchamianie aplikacji Express](containers/media/quickstart-nodejs/express.png)
+1. Naciśnij klawisz **Ctrl**+**C** w terminalu, aby zatrzymać serwer.
 
 > [!div class="nextstepaction"]
 > [Wystąpił problem](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
 
-## <a name="deploy-to-azure"></a>Wdrażanie na platformie Azure
+## <a name="deploy-the-app-to-azure"></a>Wdrażanie aplikacji na platformie Azure
 
-W tej sekcji wdrażasz aplikację Node. js przy użyciu VS Code i Azure App Service rozszerzenia. W tym przewodniku Szybki Start jest używany Najpopularniejszy model wdrażania, w którym aplikacja jest spakowana i wdrażana w Azure Web App on Linux.
+W tej sekcji wdrażasz aplikację Node. js na platformie Azure przy użyciu VS Code i Azure App Service rozszerzenia.
 
-### <a name="deploy-using-azure-app-service"></a>Wdróż przy użyciu Azure App Service
+1. Upewnij się, że jesteś w folderze *NodeJS-docs-Hello-World* , a następnie zacznij Visual Studio Code za pomocą następującego polecenia:
 
-Najpierw otwórz folder aplikacji w VS Code.
+    ```bash
+    code .
+    ```
 
-```bash
-code .
-```
+1. Na pasku działania VS Code Wybierz logo platformy Azure, aby wyświetlić Eksplorator **usługi Azure App Service** . Wybierz pozycję **Zaloguj się do platformy Azure...** i postępuj zgodnie z instrukcjami. (Zobacz [Rozwiązywanie problemów z logowaniem do platformy Azure poniżej w](#troubleshooting-azure-sign-in) przypadku wystąpienia błędów). Po zalogowaniu się w Eksploratorze powinien zostać wyświetlona nazwa subskrypcji platformy Azure.
 
-W Eksploratorze **usługi Azure App Service** wybierz ikonę strzałki w górę, aby wdrożyć aplikację na platformie Azure.
+    ![Logowanie do platformy Azure](containers/media/quickstart-nodejs/sign-in.png)
 
-![Wdróż w aplikacji sieci Web](containers/media/quickstart-nodejs/deploy.png)
+1. W Eksploratorze **usługi Azure App SERVICE** vs Code wybierz ikonę niebieską Strzałka w górę, aby wdrożyć aplikację na platformie Azure. (Możesz również wywołać to samo polecenie z **palety poleceń** (**Ctrl**+**SHIFT**+**P**), wpisując "Deploy to Web App" i wybierając **Azure App Service: Deploy to Web App**).
 
-> [!TIP]
-> Możesz również wdrożyć z **palety poleceń** (Ctrl + Shift + P), wpisując polecenie "Deploy to Web App" i uruchamiając **Azure App Service: Deploy to Web App** .
-
-1. Wybierz katalog, który jest aktualnie otwarty, `myExpressApp`.
+    ![Wdróż w aplikacji sieci Web](containers/media/quickstart-nodejs/deploy.png)
+        
+1. Wybierz folder *NodeJS-docs-Hello-World* .
 
 1. Wybierz opcję tworzenia opartą na systemie operacyjnym, w którym chcesz wdrożyć:
 
-    - Linux: wybierz pozycję **Utwórz nową aplikację sieci Web**.
-    - System Windows: wybierz pozycję **Utwórz nową aplikację sieci Web** i wybierz opcję **Zaawansowane** .
+    - Linux: wybierz pozycję **Utwórz nową aplikację sieci Web**
+    - System Windows: wybierz pozycję **Utwórz nową aplikację sieci Web... Zaawansowane**
 
-1. Wpisz globalnie unikatową nazwę aplikacji sieci Web, a następnie naciśnij klawisz ENTER. Prawidłowymi znakami dla nazwy aplikacji są "a-z", "0-9" i "-".
+1. Wpisz globalnie unikatową nazwę aplikacji sieci Web, a następnie naciśnij klawisz **Enter**. Nazwa musi być unikatowa w całej platformie Azure i używać tylko znaków alfanumerycznych ("A-Z", "A-z" i "0-9") oraz łączników ("-").
 
 1. W przypadku określania systemu Linux wybierz wersję środowiska Node. js po wyświetleniu monitu. Zalecana jest wersja **LTS** .
 
-1. W przypadku systemu Windows przy użyciu opcji **Zaawansowane** postępuj zgodnie z dodatkowymi monitami:
-    1. Wybierz pozycję **Utwórz nową grupę zasobów**, a następnie wprowadź nazwę grupy zasobów.
+1. Jeśli celem jest system Windows, postępuj zgodnie z dodatkowymi monitami:
+    1. Wybierz pozycję **Utwórz nową grupę zasobów**, a następnie wprowadź nazwę grupy zasobów, na przykład `AppServiceQS-rg`.
     1. Wybierz **system Windows** dla systemu operacyjnego.
-    1. Wybierz istniejący plan App Service lub Utwórz nowy. Możesz wybrać warstwę cenową podczas tworzenia nowego planu.
+    1. Wybierz pozycję **Utwórz nowy plan App Service**, a następnie wprowadź nazwę planu (na przykład `AppServiceQS-plan`), a następnie wybierz pozycję **F1 bezpłatnie** dla warstwy cenowej.
     1. Wybierz pozycję **Pomiń teraz** po wyświetleniu monitu o Application Insights.
     1. Wybierz region w sąsiedztwie lub blisko zasobów, do których chcesz uzyskać dostęp.
 
-1. Po udzieleniu odpowiedzi na wszystkie monity kanał powiadomień pokazuje zasoby platformy Azure, które są tworzone dla aplikacji.
+1. Po udzieleniu odpowiedzi na wszystkie monity VS Code pokaże zasoby platformy Azure, które są tworzone dla aplikacji w oknie podręcznym powiadomienia.
 
-1. Wybierz opcję **tak** po wyświetleniu monitu, aby zaktualizować konfigurację w celu uruchomienia `npm install` na serwerze docelowym. Aplikacja zostanie wdrożona.
+    Podczas wdrażania w systemie Linux wybierz opcję **tak** po wyświetleniu monitu, aby zaktualizować konfigurację w celu uruchomienia `npm install` na docelowym serwerze z systemem Linux.
 
-    ![Skonfigurowane wdrożenie](containers/media/quickstart-nodejs/server-build.png)
+    ![Monituj o aktualizację konfiguracji na docelowym serwerze z systemem Linux](containers/media/quickstart-nodejs/server-build.png)
 
-1. Po uruchomieniu wdrożenia zostanie wyświetlony monit o zaktualizowanie obszaru roboczego, tak aby późniejsze wdrożenia były automatycznie ukierunkowane na tę samą App Service aplikacji sieci Web. Wybierz opcję **tak** , aby upewnić się, że zmiany zostaną wdrożone w odpowiedniej aplikacji.
+1. Wybierz opcję **tak** po wyświetleniu monitu **, aby zawsze wdrażać obszar roboczy "NodeJS-docs-Hello-World" do (nazwa aplikacji) "** . Wybranie pozycji **tak** informuje vs Code, aby automatycznie kierować tę samą aplikację App Service do aplikacji sieci Web z kolejnymi wdrożeniami.
 
-    ![Skonfigurowane wdrożenie](containers/media/quickstart-nodejs/save-configuration.png)
+1. W przypadku wdrażania w systemie Linux wybierz opcję **Przeglądaj witrynę internetową** w wierszu polecenia, aby wyświetlić świeżo wdrożoną aplikację sieci Web po zakończeniu wdrażania. W przeglądarce powinna być wyświetlana wartość "Hello world!"
 
-> [!TIP]
-> Upewnij się, że aplikacja nasłuchuje na porcie dostarczonym przez zmienną środowiskową portów: `process.env.PORT`.
+1. W przypadku wdrażania w systemie Windows należy najpierw ustawić numer wersji środowiska Node. js dla aplikacji sieci Web:
 
-### <a name="browse-the-app-in-azure"></a>Przeglądanie aplikacji na platformie Azure
+    1. W VS Code rozwiń węzeł nowej usługi App Service, kliknij prawym przyciskiem myszy pozycję **Ustawienia aplikacji**, a następnie wybierz pozycję **Dodaj nowe ustawienie...** :
 
-Po zakończeniu wdrażania wybierz pozycję **Przeglądaj witrynę sieci** Web w wierszu polecenia, aby wyświetlić świeżą wdrożoną aplikację sieci Web.
+        ![Dodaj ustawienie aplikacji — polecenie](containers/media/quickstart-nodejs/add-setting.png)
 
-### <a name="troubleshooting"></a>Rozwiązywanie problemów
+    1. Wprowadź `WEBSITE_NODE_DEFAULT_VERSION` dla klucza ustawienia.
+    1. Wprowadź `10.15.2` dla wartości ustawienia.
+    1. Kliknij prawym przyciskiem myszy węzeł usługi App Service i wybierz polecenie **Uruchom ponownie**
 
-Jeśli zostanie wyświetlony komunikat o błędzie **"nie masz uprawnień do wyświetlenia tego katalogu lub strony"** , uruchomienie aplikacji prawdopodobnie nie powiodło się. Przejdź do następnej sekcji i Przejrzyj dane wyjściowe dziennika, aby znaleźć i naprawić błąd. Jeśli nie możesz rozwiązać tego problemu, skontaktuj się z nami, wybierając Poniższy **problem** . Mamy przyjemność pomóc!
+        ![Uruchom ponownie usługę App Service](containers/media/quickstart-nodejs/restart.png)
+
+    1. Kliknij prawym przyciskiem myszy węzeł usługi App Service, a następnie wybierz pozycję **Przeglądaj witrynę sieci Web**.
 
 > [!div class="nextstepaction"]
 > [Wystąpił problem](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
 
+### <a name="troubleshooting-azure-sign-in"></a>Rozwiązywanie problemów z logowaniem do platformy Azure
+
+Jeśli zostanie wyświetlony komunikat o błędzie **"nie można odnaleźć subskrypcji o nazwie [Identyfikator subskrypcji]"** podczas logowania do platformy Azure, może to być spowodowane tym, że jesteś za serwerem proxy i nie można uzyskać dostępu do interfejsu API platformy Azure. Skonfiguruj zmienne środowiskowe `HTTP_PROXY` i `HTTPS_PROXY` za pomocą informacji o serwerze proxy w terminalu przy użyciu `export`.
+
+```bash
+export HTTPS_PROXY=https://username:password@proxy:8080
+export HTTP_PROXY=http://username:password@proxy:8080
+```
+
+Jeśli ustawienie zmiennych środowiskowych nie rozwiąże problemu, skontaktuj się z nami, wybierając powyżej przycisk Rozwiąż **problem** .
+
 ### <a name="update-the-app"></a>Aktualizowanie aplikacji
 
-Zmiany w tej aplikacji można wdrożyć przy użyciu tego samego procesu i wybierając istniejącą aplikację zamiast tworzenia nowej.
+Zmiany w tej aplikacji można wdrożyć przez wprowadzanie zmian w VS Code, zapisywanie plików, a następnie używanie tego samego procesu jak przed wybraniem istniejącej aplikacji zamiast tworzenia nowej.
 
 ## <a name="viewing-logs"></a>Wyświetlanie dzienników
 
-W tej sekcji dowiesz się, jak wyświetlać dzienniki (lub "ogon") z działającej aplikacji App Service. Wszystkie wywołania `console.log` w aplikacji są wyświetlane w oknie dane wyjściowe w Visual Studio Code.
+Możesz wyświetlić dane wyjściowe dziennika (wywołania do `console.log`) z aplikacji bezpośrednio w oknie danych wyjściowych VS Code.
 
-Znajdź aplikację w Eksploratorze **usługi Azure App Service** , kliknij prawym przyciskiem myszy aplikację, a następnie wybierz polecenie **Wyświetl dzienniki przesyłania strumieniowego**.
+1. W Eksploratorze **usługi Azure App Service** kliknij prawym przyciskiem myszy węzeł aplikacji, a następnie wybierz polecenie **Uruchom dzienniki przesyłania strumieniowego**.
 
-Po wyświetleniu monitu wybierz włączenie rejestrowania i ponownie uruchom aplikację. Po ponownym uruchomieniu aplikacji zostanie otwarte okno dane wyjściowe VS Code z połączeniem ze strumieniem dziennika.
+    ![Uruchom dzienniki przesyłania strumieniowego](containers/media/quickstart-nodejs/view-logs.png)
 
-![Wyświetlanie dzienników przesyłania strumieniowego](containers/media/quickstart-nodejs/view-logs.png)
+1. Po wyświetleniu monitu wybierz włączenie rejestrowania i ponownie uruchom aplikację. Po ponownym uruchomieniu aplikacji zostanie otwarte okno dane wyjściowe VS Code z połączeniem ze strumieniem dziennika. 
 
-![Włącz rejestrowanie i ponowne uruchamianie](containers/media/quickstart-nodejs/enable-restart.png)
+    ![Włącz rejestrowanie i ponowne uruchamianie](containers/media/quickstart-nodejs/enable-restart.png)
 
-Po kilku sekundach zobaczysz komunikat informujący o tym, że masz połączenie z usługą przesyłania strumieniowego dziennika. Odśwież stronę kilka razy, aby zobaczyć więcej działań.
+1. Po kilku sekundach w oknie danych wyjściowych zostanie wyświetlony komunikat z informacją o tym, że masz połączenie z usługą przesyłania strumieniowego dziennika. Można generować więcej działań wyjściowych, odświeżając stronę w przeglądarce.
 
-    ```bash
-    2019-09-20 20:37:39.574 INFO  - Initiating warmup request to container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node
-    2019-09-20 20:37:55.011 INFO  - Waiting for response to warmup request for container msdocs-vscode-node_2_00ac292a. Elapsed time = 15.4373071 sec
-    2019-09-20 20:38:08.233 INFO  - Container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node initialized successfully and is ready to serve requests.
-    2019-09-20T20:38:21  Startup Request, url: /Default.cshtml, method: GET, type: request, pid: 61,1,7, SCM_SKIP_SSL_VALIDATION: 0, SCM_BIN_PATH: /opt/Kudu/bin, ScmType: None
-    ```
+    <pre>
+    Connecting to log stream...
+    2020-03-04T19:29:44  Welcome, you are now connected to log-streaming service. The default timeout is 2 hours.
+    Change the timeout with the App Setting SCM_LOGSTREAM_TIMEOUT (in seconds).    
+    </pre>
 
 > [!div class="nextstepaction"]
 > [Wystąpił problem](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)

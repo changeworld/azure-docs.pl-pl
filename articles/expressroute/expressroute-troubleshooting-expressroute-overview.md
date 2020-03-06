@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 69c32370b1f7f7cabb642ab140d69dcec57fb4aa
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 58ae39e8dfdf918ae14ca9bb8dac28405828999e
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551985"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330961"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Weryfikowanie połączenia usługi ExpressRoute
 Ten artykuł ułatwia sprawdzanie i rozwiązywanie problemów z łącznością ExpressRoute. ExpressRoute rozszerza sieć lokalną do chmury firmy Microsoft przez połączenie prywatne, które jest powszechnie obsługiwane przez dostawcę połączenia. ExpressRoute łączności tradycyjnie obejmuje trzy oddzielne strefy sieciowe w następujący sposób:
@@ -34,7 +34,7 @@ Celem tego dokumentu jest ułatwienie użytkownikowi zidentyfikowania, czy wyst�
 >
 >
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Na poniższym diagramie przedstawiono logiczne połączenie sieci klienta z siecią firmy Microsoft przy użyciu ExpressRoute.
 [![1]][1]
 
@@ -275,7 +275,7 @@ Poniższy przykład przedstawia odpowiedź polecenia dla komunikacji równorzęd
 ## <a name="confirm-the-traffic-flow"></a>Potwierdzenie przepływu ruchu
 Aby uzyskać dane statystyczne dotyczące połączonej ścieżki podstawowej i pomocniczej — liczba bajtów w kontekście komunikacji równorzędnej, użyj następującego polecenia:
 
-    Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private
+    Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
 
 Przykładowe dane wyjściowe polecenia to:
 

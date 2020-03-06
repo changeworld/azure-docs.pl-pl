@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: b57ee458b857db5692f34e51f388ca8374a3c03b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: edea7a7b4dcb5ed18adcbab973f9f351543c6422
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524397"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330876"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Samouczek: zabezpieczanie połączenia usługi Azure SQL Database z usługi App Service za pomocą tożsamości zarządzanej
 
@@ -240,6 +240,9 @@ GO
 *\<Identity name >* to nazwa zarządzanej tożsamości w usłudze Azure AD. Ponieważ jest ona przypisana przez system, jest zawsze taka sama jak nazwa aplikacji App Service. Aby udzielić uprawnień dla grupy usługi Azure AD, należy zamiast tego użyć nazwy wyświetlanej grupy (na przykład *myAzureSQLDBAccessGroup*).
 
 Wpisz polecenie `EXIT`, aby powrócić do wiersza polecenia usługi Cloud Shell.
+
+> [!NOTE]
+> Usługi zaplecza tożsamości zarządzanych obsługują również [pamięć podręczną tokenów](overview-managed-identity.md#obtain-tokens-for-azure-resources) , która aktualizuje token dla zasobu docelowego tylko po jego wygaśnięciu. Jeśli wystąpi błąd podczas konfigurowania uprawnień SQL Database i spróbujesz zmodyfikować uprawnienia *po* próbie uzyskania tokenu w aplikacji, nie otrzymasz nowego tokenu ze zaktualizowanymi uprawnieniami do momentu wygaśnięcia tokenu w pamięci podręcznej.
 
 ### <a name="modify-connection-string"></a>Modyfikowanie parametrów połączenia
 

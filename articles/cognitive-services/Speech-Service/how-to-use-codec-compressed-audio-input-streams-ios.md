@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 2089f4191ddd57fa8dc19862bd195756c166f2d4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5d65ac83fc8a41008971108c5b370c1d0416113b
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805862"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331523"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Instrukcje: korzystanie z kodera-dekoder kompresji audio przy użyciu zestawu Speech SDK w systemie iOS
 
 Interfejs API **strumieniowych danych wejściowych audio** zestawu Speech SDK umożliwia przesyłanie strumieniowe skompresowanego dźwięku do usługi mowy przy użyciu strumienia ściągania lub wypychania.
 
 > [!IMPORTANT]
-> Do przesyłania strumieniowego skompresowanego audio w systemie iOS jest wymagany pakiet Speech SDK w wersji 1.7.0 lub nowszej. Jest ona również obsługiwana dla [ C++systemów C#, i Java w systemie Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md) i [Java w środowisku Android.](how-to-use-codec-compressed-audio-input-streams-android.md)
+> Do przesyłania strumieniowego skompresowanego audio w systemie iOS jest wymagany pakiet Speech SDK w wersji 1.7.0 lub nowszej. Jest ona również obsługiwana dla [ C++systemów C#, i Java w systemie Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)](how-to-use-codec-compressed-audio-input-streams.md) i [Java w systemie Android.](how-to-use-codec-compressed-audio-input-streams-android.md)
 
 W przypadku WAV/PCM zapoznaj się z dokumentacją mowy linii głównej. Na zewnątrz WAV/PCM obsługiwane są następujące skompresowane formaty danych wejściowych kodera-dekoder:
 

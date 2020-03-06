@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 26de7a6d05bde8d80e22bd8801ae9b5dc8faeb36
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669560"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359094"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Projektowanie sieci wirtualnych z użyciem zasobów bramy translatora adresów sieciowych (publiczna wersja zapoznawcza)
 
@@ -335,7 +335,7 @@ Port dla tego elementu jest dostępny do ponownego użycia w tym samym docelowym
 ## <a name="limitations"></a>Ograniczenia
 
 - Translator adresów sieciowych jest zgodny z publicznym adresem IP jednostki SKU, publicznym prefiksem adresu IP i zasobami modułu równoważenia obciążenia.   Zasoby podstawowe (na przykład podstawowa usługa równoważenia obciążenia) i wszelkie produkty pochodzące z nich nie są zgodne z translatorem adresów sieciowych.  Zasoby podstawowe muszą być umieszczone w podsieci, która nie jest skonfigurowana przy użyciu translatora adresów sieciowych.
-- Rodzina adresów IPv4 jest obsługiwana.  Translator adresów sieciowych nie współdziała z rodziną adresów IPv6.
+- Rodzina adresów IPv4 jest obsługiwana.  Translator adresów sieciowych nie współdziała z rodziną adresów IPv6.  Nie można wdrożyć translatora adresów sieciowych w podsieci z prefiksem IPv6.
 - Rejestrowanie przepływu sieciowej grupy zabezpieczeń nie jest obsługiwane w przypadku korzystania z translatora adresów sieciowych.
 - Translator adresów sieciowych nie może obejmować wielu sieci wirtualnych.
 
@@ -349,21 +349,25 @@ Chcemy wiedzieć, jak możemy ulepszyć usługę. Udostępnij nam swoją [opini�
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [translatorze adresów sieciowych sieci wirtualnych](nat-overview.md).
-- Samouczek dotyczący weryfikowania bramy translatora adresów sieciowych
-  * [Interfejs wiersza polecenia platformy Azure](tutorial-create-validate-nat-gateway-cli.md),
-  * Program [PowerShell](tutorial-create-validate-nat-gateway-cli.md),
-  * [Portal](tutorial-create-validate-nat-gateway-cli.md)
-- Przewodnik Szybki Start dotyczący wdrażania zasobu bramy translatora adresów sieciowych
-  * [Interfejs wiersza polecenia platformy Azure](./quickstart-create-nat-gateway-cli.md),
-  * Program [PowerShell](./quickstart-create-nat-gateway-powershell.md),
-  * [Portal](./quickstart-create-nat-gateway-portal.md).
-- Dowiedz się więcej o [strefach dostępności](../availability-zones/az-overview.md).
-- Dowiedz się więcej na temat usługi [równoważenia obciążenia w warstwie Standardowa](../load-balancer/load-balancer-standard-overview.md).
-- Dowiedz się więcej na temat [stref dostępności i standardowego modułu równoważenia obciążenia](../load-balancer/load-balancer-standard-availability-zones.md).
-- Dowiedz się więcej o interfejsie API zasobów bramy translatora adresów sieciowych
-  * [interfejs API REST](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
-  * [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
-  * [Program PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
-- [Powiedz nam, co należy utworzyć w następnej kolejności w usłudze UserVoice](https://aka.ms/natuservoice).
-- [Prześlij opinię na temat publicznej wersji zapoznawczej](https://aka.ms/natfeedback).
+* Dowiedz się więcej o [translatorze adresów sieciowych sieci wirtualnych](nat-overview.md).
+* Informacje o [metrykach i alertach dotyczących zasobów bramy translatora adresów sieciowych](nat-metrics.md).
+* Informacje o [rozwiązywaniu problemów z zasobami bramy translatora adresów sieciowych](troubleshoot-nat.md).
+* [Powiedz nam, co należy utworzyć obok Virtual Network translatora adresów sieciowych w usłudze UserVoice](https://aka.ms/natuservoice).
+* [Prześlij opinię na temat publicznej wersji zapoznawczej](https://aka.ms/natfeedback).
+* Samouczek dotyczący weryfikowania bramy translatora adresów sieciowych
+  - [Interfejs wiersza polecenia platformy Azure](tutorial-create-validate-nat-gateway-cli.md),
+  - Program [PowerShell](tutorial-create-validate-nat-gateway-cli.md),
+  - [Portal](tutorial-create-validate-nat-gateway-cli.md)
+* Przewodnik Szybki Start dotyczący wdrażania zasobu bramy translatora adresów sieciowych
+  - [Interfejs wiersza polecenia platformy Azure](./quickstart-create-nat-gateway-cli.md),
+  - Program [PowerShell](./quickstart-create-nat-gateway-powershell.md),
+  - [Portal](./quickstart-create-nat-gateway-portal.md).
+* Informacje o interfejsie API zasobów bramy translatora adresów sieciowych
+  - [interfejs API REST](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
+  - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest),
+  - [Program PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
+* Dowiedz się więcej o [strefach dostępności](../availability-zones/az-overview.md).
+* Dowiedz się więcej na temat usługi [równoważenia obciążenia w warstwie Standardowa](../load-balancer/load-balancer-standard-overview.md).
+* Dowiedz się więcej na temat [stref dostępności i standardowego modułu równoważenia obciążenia](../load-balancer/load-balancer-standard-availability-zones.md).
+
+

@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 36e4506ea290d6109e1d1ae874b7e0f7c11bf50d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 2b530da06b02091ce66ff7c116f3e17ddcc22497
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805828"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331114"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Używanie kodera-dekoder skompresowanego audio z zestawem Speech SDK
 
 Interfejs API **strumienia danych wejściowych audio** zestawu Speech SDK umożliwia przesyłanie strumieniowo skompresowanego dźwięku do usługi mowy przy użyciu PullStream lub PushStream.
 
 > [!IMPORTANT]
-> Przesyłane strumieniowo skompresowane audio wejściowe jest obecnie C++obsługiwane C#dla systemów, i Java w systemie Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9). Jest ona również obsługiwana w przypadku [języka Java w systemach Android](how-to-use-codec-compressed-audio-input-streams-android.md) i [C na platformie iOS](how-to-use-codec-compressed-audio-input-streams-ios.md) .
-> Wymagany jest pakiet Speech SDK w wersji 1.7.0 lub nowszej.
+> Przesyłane strumieniowo skompresowane audio wejściowe jest obecnie C++obsługiwane C#dla systemów, i Java w systemie Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8). Jest ona również obsługiwana w przypadku [języka Java w systemach Android](how-to-use-codec-compressed-audio-input-streams-android.md) i [C na platformie iOS](how-to-use-codec-compressed-audio-input-streams-ios.md) .
+> Wymagany jest program Speech SDK w wersji 1.7.0 lub nowszej (w wersji 1.10.0 lub nowszej dla RHEL 8, CentOS 8).
 
 W przypadku WAV/PCM zapoznaj się z dokumentacją mowy linii głównej.  Na zewnątrz WAV/PCM obsługiwane są następujące skompresowane formaty danych wejściowych kodera-dekoder:
 
@@ -40,6 +40,15 @@ Obsługa skompresowanego dźwięku jest implementowana przy użyciu [GStreamer](
 ```sh
 sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 ```
+
+W systemie RHEL/CentOS 8:
+
+```sh
+sudo yum install gstreamer1 gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-bad-free gstreamer1-plugins-ugly-free
+```
+
+> [!NOTE]
+> W systemie RHEL/CentOS 8 postępuj zgodnie z instrukcjami dotyczącymi [sposobu konfigurowania OpenSSL dla systemu Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Przykładowy kod przy użyciu kodera skompresowanego sygnału audio
 

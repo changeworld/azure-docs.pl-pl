@@ -1,18 +1,18 @@
 ---
 title: IS_DEFINED w języku zapytań Azure Cosmos DB
-description: Dowiedz się więcej o funkcji IS_DEFINED systemu SQL w Azure Cosmos DB.
+description: Dowiedz się więcej na temat funkcji systemu SQL IS_DEFINED w Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2c3193262a41b3c6772d4fe29c78a132bc51bbd8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a5fcaf52d8e9e6b942a95f0b0c43f3f654c5d5d2
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349874"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303855"
 ---
 # <a name="is_defined-azure-cosmos-db"></a>IS_DEFINED (Azure Cosmos DB)
  Zwraca wartość logiczną wskazującą, do właściwości przypisano wartość.  
@@ -25,7 +25,7 @@ IS_DEFINED(<expr>)
   
 ## <a name="arguments"></a>Argumenty
   
-*expr*  
+*wyrażenie*  
    To dowolne wyrażenie.  
   
 ## <a name="return-types"></a>Typy zwracane
@@ -40,11 +40,15 @@ IS_DEFINED(<expr>)
 SELECT IS_DEFINED({ "a" : 5 }.a) AS isDefined1, IS_DEFINED({ "a" : 5 }.b) AS isDefined2 
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"isDefined1":true,"isDefined2":false}]  
 ```  
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa będzie korzystać z [indeksu zakresu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Następne kroki
 

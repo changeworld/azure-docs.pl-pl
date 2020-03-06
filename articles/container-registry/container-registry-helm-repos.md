@@ -3,12 +3,12 @@ title: Przechowuj wykresy Helm
 description: Dowiedz się, jak przechowywać wykresy Helm dla aplikacji Kubernetes przy użyciu repozytoriów w Azure Container Registry
 ms.topic: article
 ms.date: 01/28/2020
-ms.openlocfilehash: 26588bb4dc3cf50656103b50d5d0559908a1ccb7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 7969efe37558fffb26b983131c56ae11f3ef9368
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524635"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398963"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Wypychanie i ściąganie wykresów Helm do usługi Azure Container Registry
 
@@ -118,7 +118,7 @@ helm chart push mycontainerregistry.azurecr.io/helm/wordpress:latest
 
 Po pomyślnym wypchnięciu dane wyjściowe są podobne do:
 
-```console
+```output
 The push refers to repository [mycontainerregistry.azurecr.io/helm/wordpress]
 ref:     mycontainerregistry.azurecr.io/helm/wordpress:latest
 digest:  5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
@@ -141,7 +141,7 @@ az acr repository show \
 
 Dane wyjściowe są podobne do następujących:
 
-```console
+```output
 {
   "changeableAttributes": {
     "deleteEnabled": true,
@@ -168,7 +168,7 @@ az acr repository show-manifests \
 
 Wynik, skrócony w tym przykładzie, pokazuje `configMediaType` `application/vnd.cncf.helm.config.v1+json`:
 
-```console
+```output
 [
   {
     [...]
@@ -216,7 +216,7 @@ helm inspect chart wordpress
 
 Jeśli numer wersji nie zostanie podany, używana jest *Najnowsza* wersja. Helm zwraca szczegółowe informacje o wykresie, jak pokazano w następujących wąskich danych wyjściowych:
 
-```
+```output
 apiVersion: v1
 appVersion: 5.3.2
 dependencies:
@@ -256,7 +256,7 @@ helm install wordpress --generate-name
 
 Po zakończeniu instalacji postępuj zgodnie z instrukcjami w danych wyjściowych polecenia, aby wyświetlić adresy URL i poświadczenia WorPress. Możesz również uruchomić polecenie `kubectl get pods`, aby wyświetlić zasoby Kubernetes wdrożone za pomocą wykresu Helm:
 
-```console
+```output
 NAME                                    READY   STATUS    RESTARTS   AGE
 wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
 wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s
@@ -311,7 +311,7 @@ helm fetch stable/wordpress
 
 Wpisz `ls`, aby wyświetlić pobrany wykres, i zanotuj wersję WordPress zawartą w nazwie pliku. Polecenie `helm fetch stable/wordpress` nie określiło określonej wersji, więc została pobrana *Najnowsza* wersja. W poniższym przykładzie danych wyjściowych wykres WordPress jest w wersji *8.1.0*:
 
-```
+```output
 wordpress-8.1.0.tgz
 ```
 
@@ -323,7 +323,7 @@ az acr helm push --name mycontainerregistry wordpress-8.1.0.tgz
 
 Po kilku chwilach interfejs wiersza polecenia platformy Azure zgłasza, że wykres jest zapisywany, jak pokazano w poniższym przykładzie danych wyjściowych:
 
-```
+```output
 {
   "saved": true
 }
@@ -345,7 +345,7 @@ helm search mycontainerregistry
 
 Wykres WordPress wypychany w poprzednim kroku znajduje się na liście, jak pokazano w następujących przykładowych danych wyjściowych:
 
-```
+```output
 NAME                CHART VERSION   APP VERSION DESCRIPTION
 helmdocs/wordpress  8.1.0           5.3.2       Web publishing platform for building blogs and websites.
 ```
@@ -366,7 +366,7 @@ helm inspect mycontainerregistry/wordpress
 
 Jeśli numer wersji nie zostanie podany, używana jest *Najnowsza* wersja. Helm zwraca szczegółowe informacje o wykresie, jak pokazano w następujących wąskich przykładowych danych wyjściowych:
 
-```
+```output
 apiVersion: v1
 appVersion: 5.3.2
 description: Web publishing platform for building blogs and websites.
@@ -416,7 +416,7 @@ Następujące kroki są wykonywane podczas procesu instalacji:
 
 Po zakończeniu instalacji postępuj zgodnie z instrukcjami w danych wyjściowych polecenia, aby wyświetlić adresy URL i poświadczenia WorPress. Możesz również uruchomić polecenie `kubectl get pods`, aby wyświetlić zasoby Kubernetes wdrożone za pomocą wykresu Helm:
 
-```
+```output
 NAME                                    READY   STATUS    RESTARTS   AGE
 wordpress-1598530621-67c77b6d86-7ldv4   1/1     Running   0          2m48s
 wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s

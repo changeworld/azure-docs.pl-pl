@@ -3,12 +3,12 @@ title: Omówienie magazynów usługi Recovery Services
 description: Omówienie i porównanie między magazynami Recovery Services i magazynami Azure Backup.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 886c63856d3be78c241289caf5abbe73ebeda63f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 327f17aca29f2787c86269e8dd707f5152285154
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172834"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397042"
 ---
 # <a name="recovery-services-vaults-overview"></a>Omówienie magazynów Recovery Services
 
@@ -30,7 +30,7 @@ Magazyny Recovery Services opierają się na Azure Resource Manager modelu platf
 
 - **Ochrona wszystkich konfiguracji Virtual Machines platformy Azure**: magazyny Recovery Services chronią maszyny wirtualne oparte na Menedżer zasobówach, w tym dyski w warstwie Premium, Managed disks i zaszyfrowane maszyny wirtualne. Uaktualnienie magazynu kopii zapasowych do magazynu Recovery Services daje możliwość uaktualnienia maszyn wirtualnych opartych na Service Manager do maszyn wirtualnych opartych na Menedżer zasobów. Podczas uaktualniania magazynu można zachować Service Manager punkty odzyskiwania maszyny wirtualnej i skonfigurować ochronę dla uaktualnionych (Menedżer zasobów włączonych) maszyn wirtualnych. [Dowiedz się więcej](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **Natychmiastowe przywracanie dla maszyn wirtualnych IaaS**: korzystanie z magazynów Recovery Services, można przywrócić pliki i foldery z maszyny wirtualnej IaaS bez przywracania całej maszyny wirtualnej, co umożliwia skrócenie czasów przywracania. Natychmiastowe przywracanie dla maszyn wirtualnych IaaS jest dostępne zarówno dla maszyn wirtualnych z systemem Windows, jak i Linux. [Dowiedz się więcej](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **Natychmiastowe przywracanie dla maszyn wirtualnych IaaS**: korzystanie z magazynów Recovery Services, można przywrócić pliki i foldery z maszyny wirtualnej IaaS bez przywracania całej maszyny wirtualnej, co umożliwia skrócenie czasów przywracania. Natychmiastowe przywracanie dla maszyn wirtualnych IaaS jest dostępne zarówno dla maszyn wirtualnych z systemem Windows, jak i Linux. [Dowiedz się więcej](backup-instant-restore-capability.md)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Zarządzanie magazynami Recovery Services w portalu
 

@@ -4,15 +4,15 @@ description: Dowiedz się więcej o funkcji StringToArray systemu SQL w Azure Co
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2d1f90da50950ac6ff4f87ffe96ebad9f3d811cc
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349282"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302920"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
  Zwraca wyrażenie tłumaczone na tablicę. Jeśli wyrażenia nie można przetłumaczyć, funkcja zwraca wartość undefined.  
@@ -37,7 +37,7 @@ StringToArray(<str_expr>)
   
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład pokazuje, jak `StringToArray` zachowuje się w różnych typach. 
+  Poniższy przykład pokazuje, jak `StringToArray` działa w różnych typach. 
   
  Poniżej przedstawiono przykłady z prawidłowymi danymi wejściowymi.
 
@@ -50,7 +50,7 @@ SELECT
     StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
 ```
 
-W tym miejscu znajduje się zestaw wyników.
+Tutaj znajduje się zestaw wyników.
 
 ```json
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
@@ -59,14 +59,14 @@ W tym miejscu znajduje się zestaw wyników.
 Poniżej przedstawiono przykład nieprawidłowych danych wejściowych. 
    
  Pojedyncze cudzysłowy w tablicy nie są prawidłowymi formatami JSON.
-Mimo że są one prawidłowe w ramach zapytania, nie będą analizowane do prawidłowych tablic. Ciągi w ciągu tablicy muszą mieć wartość ucieczki "[\\" \\ "]" lub otaczające cudzysłowy muszą być pojedynczymi "[" "]".
+Mimo że są one prawidłowe w ramach zapytania, nie będą analizowane do prawidłowych tablic. Ciągi w ciągu tablicy muszą mieć wartość ucieczki "[\\"\\"]" lub otaczające cudzysłowy muszą być pojedynczymi "[" "]".
 
 ```sql
 SELECT
     StringToArray("['5','6','7']")
 ```
 
-W tym miejscu znajduje się zestaw wyników.
+Tutaj znajduje się zestaw wyników.
 
 ```json
 [{}]
@@ -85,11 +85,15 @@ SELECT
     StringToArray(undefined)
 ```
 
-W tym miejscu znajduje się zestaw wyników.
+Tutaj znajduje się zestaw wyników.
 
 ```json
 [{}]
 ```
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa nie będzie używać indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 

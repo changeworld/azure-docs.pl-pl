@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: df2acedd7f472b96d55d9ecc294d47e7173c5f90
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77915711"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329020"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Używanie iniekcji zależności w programie .NET Azure Functions
 
@@ -132,6 +132,52 @@ Jeśli potrzebujesz własnego dostawcy rejestrowania, Zarejestruj niestandardowy
 > - Nie należy dodawać `AddApplicationInsightsTelemetry()` do kolekcji usług, ponieważ rejestruje ona usługi, które powodują konflikt z usługami udostępnianymi przez środowisko.
 > - Nie rejestruj własnych `TelemetryConfiguration` ani `TelemetryClient`, jeśli używasz wbudowanej funkcji Application Insights. Jeśli musisz skonfigurować własne wystąpienie `TelemetryClient`, utwórz je za pomocą wstrzykniętego `TelemetryConfiguration`, jak pokazano w [Azure Functions monitora](./functions-monitoring.md#version-2x-and-later-2).
 
+### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> i ILoggerFactory
+
+Na hoście zostaną wstrzyknięte `ILogger<T>` i `ILoggerFactory` usługi do konstruktorów.  Jednak domyślnie nowe filtry rejestrowania zostaną odfiltrowane z dzienników funkcji.  Należy zmodyfikować plik `host.json`, aby zadecydować o dodatkowych filtrach i kategoriach.  Poniższy przykład ilustruje Dodawanie `ILogger<HttpTrigger>` z dziennikami, które zostaną uwidocznione przez hosta.
+
+```csharp
+namespace MyNamespace
+{
+    public class HttpTrigger
+    {
+        private readonly ILogger<HttpTrigger> _log;
+
+        public HttpTrigger(ILogger<HttpTrigger> log)
+        {
+            _log = log;
+        }
+
+        [FunctionName("HttpTrigger")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
+        {
+            _log.LogInformation("C# HTTP trigger function processed a request.");
+
+            // ...
+    }
+}
+```
+
+I plik `host.json`, który dodaje filtr dziennika.
+
+```json
+{
+    "version": "2.0",
+    "logging": {
+        "applicationInsights": {
+            "samplingExcludedTypes": "Request",
+            "samplingSettings": {
+                "isEnabled": true
+            }
+        },
+        "logLevel": {
+            "MyNamespace.HttpTrigger": "Information"
+        }
+    }
+}
+```
+
 ## <a name="function-app-provided-services"></a>Usługi funkcji dostarczone przez aplikację
 
 Host funkcji rejestruje wiele usług. Następujące usługi są bezpieczne do podjęcia jako zależność w aplikacji:
@@ -208,7 +254,7 @@ Zapoznaj się z [wzorcem opcji w ASP.NET Core](https://docs.microsoft.com/aspnet
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji zawierają następujące zasoby:
+Więcej informacji można znaleźć w następujących zasobach:
 
 - [Jak monitorować aplikację funkcji](functions-monitoring.md)
 - [Najlepsze rozwiązania dotyczące funkcji](functions-best-practices.md)

@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 448b14168e85e75b7ed19e189600186ce11c2902
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756423"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395494"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Bezpieczny dostęp do danych w Azure Cosmos DB
 
@@ -155,7 +155,7 @@ Aby dodać do konta użytkownika dostęp do czytnika konta Azure Cosmos DB, nale
 4. W **polu Przypisz dostęp do**wybierz pozycję **użytkownik, Grupa lub aplikacja usługi Azure AD**.
 5. Wybierz użytkownika, grupę lub aplikację w katalogu, do którego chcesz udzielić dostępu.  Katalog można wyszukać według nazwy wyświetlanej, adresu e-mail lub identyfikatorów obiektów.
     Wybrany użytkownik, Grupa lub aplikacja pojawi się na liście wybranych członków.
-6. Kliknij pozycję **Zapisz**.
+6. Kliknij przycisk **Save** (Zapisz).
 
 Jednostka może teraz odczytywać Azure Cosmos DB zasoby.
 

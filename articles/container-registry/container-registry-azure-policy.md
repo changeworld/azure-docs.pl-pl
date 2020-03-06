@@ -3,12 +3,12 @@ title: Zgodność przy użyciu Azure Policy
 description: Przypisywanie wbudowanych zasad w Azure Policy do inspekcji zgodności rejestrów kontenerów platformy Azure
 ms.topic: article
 ms.date: 02/26/2020
-ms.openlocfilehash: 331fcfaf72b1ad2022aa3edeefefa597e5bcfe17
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 012cd013de1c60fddcfb28e4bca96d761ada41ab
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925672"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330740"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Inspekcja zgodności rejestrów kontenerów platformy Azure przy użyciu Azure Policy
 
@@ -68,14 +68,14 @@ Name                                                                            
 [Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
-Następnie uruchom [AZ Policy State list](/cli/azure/policy/state#az-policy-assignment-list) , aby przywrócić stan zgodności sformatowany w formacie JSON dla wszystkich zasobów w ramach określonego identyfikatora zasad:
+Następnie uruchom [AZ Policy State list](/cli/azure/policy/state#az-policy-state-list) , aby przywrócić stan zgodności sformatowany w formacie JSON dla wszystkich zasobów w ramach określonego identyfikatora zasad:
 
 ```azurecli
 az policy state list \
   --resource <policyID>
 ```
 
-Lub uruchom [AZ Policy State list](/cli/azure/policy/state#az-policy-assignment-list) w celu zwrócenia stanu zgodności w formacie JSON określonego zasobu rejestru, takiego jak mój *Rejestr*:
+Lub uruchom [AZ Policy State list](/cli/azure/policy/state#az-policy-state-list) w celu zwrócenia stanu zgodności w formacie JSON określonego zasobu rejestru, takiego jak mój *Rejestr*:
 
 ```azurecli
 az policy state list \

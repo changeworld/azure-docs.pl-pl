@@ -1,24 +1,24 @@
 ---
-title: Instalowanie Azure Dev Spaces na AKS & narzędzia po stronie klienta
+title: Włączanie Azure Dev Spaces na AKS & instalowania narzędzi po stronie klienta
 services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
-description: Dowiedz się, jak zainstalować Azure Dev Spaces w klastrze AKS i zainstalować narzędzia po stronie klienta.
+description: Dowiedz się, jak włączyć Azure Dev Spaces w klastrze AKS i zainstalować narzędzia po stronie klienta.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, Service siatk, Service siatk Routing, polecenia kubectl, k8s
-ms.openlocfilehash: de4f91e3e0e0653519bb48db5e3e8a116e24cc78
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 0b7f6cb4a801c84df59bd5157d8c2a1a15eaaf7e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252006"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302903"
 ---
-# <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Instalowanie Azure Dev Spaces na AKS i narzędzi po stronie klienta
+# <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>Włącz Azure Dev Spaces w klastrze AKS i zainstaluj narzędzia po stronie klienta
 
-W tym artykule przedstawiono kilka sposobów instalowania Azure Dev Spaces w klastrze AKS oraz instalowania narzędzi po stronie klienta.
+W tym artykule przedstawiono kilka sposobów włączania Azure Dev Spaces w klastrze AKS oraz instalowania narzędzi po stronie klienta.
 
-## <a name="install-azure-dev-spaces-using-the-cli"></a>Instalowanie Azure Dev Spaces przy użyciu interfejsu wiersza polecenia
+## <a name="enable-azure-dev-spaces-using-the-cli"></a>Włączanie Azure Dev Spaces przy użyciu interfejsu wiersza polecenia
 
-Aby można było zainstalować miejsca deweloperskie za pomocą interfejsu wiersza polecenia, potrzebne są:
+Aby można było włączyć funkcję Spaces dev przy użyciu interfejsu wiersza polecenia, potrzebne są:
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto][az-portal-create-account].
 * [Zainstalowano interfejs wiersza polecenia platformy Azure][install-cli].
 * [Klaster AKS][create-aks-cli] w [obsługiwanym regionie][supported-regions].
@@ -49,25 +49,25 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 Polecenie `use-dev-spaces` instaluje również interfejs wiersza polecenia Azure Dev Spaces.
 
-## <a name="install-azure-dev-spaces-using-the-azure-portal"></a>Instalowanie Azure Dev Spaces przy użyciu Azure Portal
+## <a name="enable-azure-dev-spaces-using-the-azure-portal"></a>Włączanie Azure Dev Spaces przy użyciu Azure Portal
 
-Aby można było zainstalować miejsca deweloperskie przy użyciu Azure Portal, potrzebne są:
+Aby można było włączyć funkcję Spaces dev przy użyciu Azure Portal, potrzebne są:
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto][az-portal-create-account].
 * [Klaster AKS][create-aks-portal] w [obsługiwanym regionie][supported-regions].
 
-Aby zainstalować Azure Dev Spaces przy użyciu Azure Portal:
+Aby włączyć Azure Dev Spaces przy użyciu Azure Portal:
 1. Zaloguj się do [Azure portal][az-portal].
 1. Przejdź do klastra AKS.
-1. Kliknij pozycję *spacje dla deweloperów*.
+1. Wybierz element menu *dev Spaces* .
 1. Zmień *wartość opcji* *Włącz funkcję miejsca* do tworzenia i kliknij przycisk *Zapisz*.
 
 ![Włącz funkcję Spaces dev w Azure Portal](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
 
-Zainstalowanie Azure Dev Spaces przy użyciu Azure Portal nie **powoduje** zainstalowania żadnych narzędzi po stronie klienta dla programu Azure dev Spaces.
+Włączenie Azure Dev Spaces przy użyciu Azure Portal nie **powoduje** zainstalowania żadnych narzędzi po stronie klienta dla programu Azure dev Spaces.
 
-## <a name="install-the-client-side-tooling"></a>Instalowanie narzędzi po stronie klienta
+## <a name="install-the-client-side-tools"></a>Instalowanie narzędzi po stronie klienta
 
-Azure Dev Spaces narzędzi po stronie klienta można użyć do współdziałania z miejscami deweloperskimi w klastrze AKS z komputera lokalnego. Istnieje kilka sposobów instalacji narzędzi po stronie klienta:
+Za pomocą narzędzi po stronie klienta Azure Dev Spaces można współdziałać z miejscami deweloperskimi w klastrze AKS z komputera lokalnego. Istnieje kilka sposobów instalacji narzędzi po stronie klienta:
 
 * W [Visual Studio Code][vscode]zainstaluj [rozszerzenie Azure dev Spaces][vscode-extension].
 * W programie [Visual Studio 2019][visual-studio]Zainstaluj obciążenie Programowanie na platformie Azure.

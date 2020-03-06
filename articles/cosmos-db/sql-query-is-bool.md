@@ -1,18 +1,18 @@
 ---
 title: IS_BOOL w języku zapytań Azure Cosmos DB
-description: Dowiedz się więcej o funkcji IS_BOOL systemu SQL w Azure Cosmos DB.
+description: Dowiedz się więcej na temat funkcji systemu SQL IS_BOOL w Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: cb928558483a703a554d3eb6eb049af544f72eb1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b7f1cfb09121309e246b314d57a5e4e475bd0983
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349894"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303872"
 ---
 # <a name="is_bool-azure-cosmos-db"></a>IS_BOOL (Azure Cosmos DB)
  Zwraca wartość logiczną wskazującą, jeśli typ określonego wyrażenie jest wartością logiczną.  
@@ -25,7 +25,7 @@ IS_BOOL(<expr>)
   
 ## <a name="arguments"></a>Argumenty
   
-*expr*  
+*wyrażenie*  
    To dowolne wyrażenie.  
   
 ## <a name="return-types"></a>Typy zwracane
@@ -47,11 +47,15 @@ SELECT
     IS_BOOL({prop: "value"}.prop2) AS isBool7  
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"isBool1":true,"isBool2":false,"isBool3":false,"isBool4":false,"isBool5":false,"isBool6":false,"isBool7":false}]
 ```  
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa będzie korzystać z [indeksu zakresu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Następne kroki
 

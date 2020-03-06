@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: cef572eaf879110fd52657ac358f1261f594692d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 7831ef4bbd65bce7329b1ecf0f602b110a16834b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349616"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302240"
 ---
 # <a name="radians-azure-cosmos-db"></a>RADIANy (Azure Cosmos DB)
  Zwraca wartość w radianach po wprowadzeniu wyrażenia liczbowego w stopniach.  
@@ -40,7 +40,7 @@ RADIANS (<numeric_expr>)
 SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(0.1472738) AS r4, RADIANS(197.1099392) AS r5  
 ```  
   
-  W tym miejscu znajduje się zestaw wyników.  
+  Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{  
@@ -51,6 +51,10 @@ SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(
        "r5": 3.4402174274458375  
    }]  
 ```  
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa nie będzie używać indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 

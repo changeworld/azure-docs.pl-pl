@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: 607020f1d540e83a4d049b96b9ab9a4ebcd385f0
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157257"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302716"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Uruchamianie zadań MapReduce za pomocą Apache Hadoop w usłudze HDInsight przy użyciu usługi REST
 
@@ -26,7 +26,7 @@ Dowiedz się, jak używać interfejsu API REST Apache Hive WebHCat do uruchamian
 
 * Klaster Apache Hadoop w usłudze HDInsight. Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-Dostępne opcje:
+Żadnego
   * Windows PowerShell lub,
   * [Zwinięcie](https://curl.haxx.se/) z [JQ](https://stedolan.github.io/jq/)
 
@@ -37,7 +37,7 @@ Dostępne opcje:
 >
 > Interfejs API REST jest zabezpieczony przy użyciu [podstawowego uwierzytelniania dostępu](https://en.wikipedia.org/wiki/Basic_access_authentication). Należy zawsze tworzyć żądania przy użyciu protokołu HTTPS, aby upewnić się, że poświadczenia są bezpiecznie wysyłane do serwera.
 
-### <a name="curl"></a>Narzędzie Curl
+### <a name="curl"></a>Odsłon
 
 1. Aby ułatwić sobie korzystanie z programu, Ustaw zmienne poniżej. Ten przykład jest oparty na środowisku systemu Windows, należy poprawić w miarę potrzeb w danym środowisku.
 
@@ -96,7 +96,7 @@ Dostępne opcje:
     C:\HDI\jq-win64.exe .status.state
     ```
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Program PowerShell
 
 1. Aby ułatwić sobie korzystanie z programu, Ustaw zmienne poniżej. Zastąp `CLUSTERNAME` rzeczywistą nazwą klastra. Wykonaj polecenie i wprowadź hasło logowania klastra po wyświetleniu monitu.
 
@@ -171,7 +171,7 @@ Dostępne opcje:
 
 1. Gdy stan zadania został zmieniony na `SUCCEEDED`, wyniki zadania można pobrać z usługi Azure Blob Storage. Parametr `statusdir`, który jest przesyłany z zapytaniem, zawiera lokalizację pliku wyjściowego. W tym przykładzie lokalizacja jest `/example/curl`. Ten adres przechowuje dane wyjściowe zadania w domyślnym magazynie klastrów w `/example/curl`.
 
-Możesz wyświetlić i pobrać te pliki przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Aby uzyskać więcej informacji na temat pracy z obiektami BLOB w interfejsie wiersza polecenia platformy Azure, zobacz artykuł [Używanie interfejsu wiersza polecenia platformy Azure z dokumentem usługi Azure Storage](../../storage/common/storage-azure-cli.md#create-and-manage-blobs) .
+Możesz wyświetlić i pobrać te pliki przy użyciu [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Aby uzyskać więcej informacji na temat korzystania z interfejsu wiersza polecenia platformy Azure do pracy z usługą Azure Blob Storage, zobacz [Szybki Start: Tworzenie, pobieranie i wyświetlanie listy obiektów BLOB za pomocą interfejsu wiersza polecenia platformy Azure](../../storage/blobs/storage-quickstart-blobs-cli.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

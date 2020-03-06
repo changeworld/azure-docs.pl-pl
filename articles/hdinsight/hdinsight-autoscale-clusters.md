@@ -7,21 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/21/2020
-ms.openlocfilehash: 6eb8f86d7bfa1c140c6422753840ded8a37ce3c4
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.date: 03/05/2020
+ms.openlocfilehash: 68bc30d08d95fe8e3d20a8ecb7af6c9710951921
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616085"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399717"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatyczne skalowanie klastrów usługi Azure HDInsight
 
 > [!Important]
-> Funkcja automatycznego skalowania usługi Azure HDInsight została udostępniona w celu uzyskania ogólnej dostępności w dniu 7 listopada 2019 dla klastrów Spark i Hadoop i uwzględnionych ulepszeń nie jest dostępna w wersji zapoznawczej tej funkcji. Jeśli klaster Spark został utworzony przed 7 listopada, 2019 i chcą korzystać z funkcji automatycznego skalowania w klastrze, zalecaną ścieżką jest utworzenie nowego klastra i włączenie automatycznego skalowania w nowym klastrze. 
+> Funkcja automatycznego skalowania usługi Azure HDInsight została udostępniona w celu uzyskania ogólnej dostępności w dniu 7 listopada 2019 dla klastrów Spark i Hadoop i uwzględnionych ulepszeń nie jest dostępna w wersji zapoznawczej tej funkcji. Jeśli klaster Spark został utworzony przed 7 listopada, 2019 i chcą korzystać z funkcji automatycznego skalowania w klastrze, zalecaną ścieżką jest utworzenie nowego klastra i włączenie automatycznego skalowania w nowym klastrze.
 >
->Funkcja automatycznego skalowania dla klastrów interakcyjnych (LLAP) i HBase jest nadal w wersji zapoznawczej. Skalowanie automatyczne jest dostępne tylko w klastrach Spark, Hadoop, Interactive Query i HBase. 
-
+> Funkcja automatycznego skalowania dla klastrów interakcyjnych (LLAP) i HBase jest nadal w wersji zapoznawczej. Skalowanie automatyczne jest dostępne tylko w klastrach Spark, Hadoop, Interactive Query i HBase.
 
 Funkcja automatycznego skalowania klastra usługi Azure HDInsight automatycznie skaluje liczbę węzłów procesu roboczego w klastrze. Obecnie nie można skalować innych typów węzłów w klastrze.  Podczas tworzenia nowego klastra usługi HDInsight można ustawić minimalną i maksymalną liczbę węzłów procesu roboczego. Funkcja automatycznego skalowania monitoruje następnie wymagania dotyczące zasobów obciążeń analitycznych i skaluje liczbę węzłów procesu roboczego w górę lub w dół. Ta funkcja nie ma dodatkowych opłat.
 
@@ -59,23 +58,18 @@ Automatyczne skalowanie w sposób ciągły monitoruje klaster i zbiera następuj
 
 Powyższe metryki są sprawdzane co 60 sekund. Funkcja automatycznego skalowania umożliwia skalowanie w górę i w dół w oparciu o te metryki.
 
-### <a name="load-based-cluster-scale-up"></a>Skalowanie klastra opartego na obciążeniach
+### <a name="load-based-scale-conditions"></a>Warunki skalowania na podstawie obciążenia
 
-Po wykryciu następujących warunków automatyczne skalowanie wystawia żądanie skalowania:
+Po wykryciu następujących warunków funkcja automatycznego skalowania wystawia żądanie skalowania:
 
-* Łączny czas oczekiwania procesora CPU jest większy niż całkowity bezpłatny procesor CPU przez więcej niż 3 minuty.
-* Całkowita liczba oczekujących pamięci jest większa niż całkowita ilość wolnej pamięci przez więcej niż 3 minuty.
+|Skalowanie w górę|Skalowanie w dół|
+|---|---|
+|Łączny czas oczekiwania procesora CPU jest większy niż całkowity bezpłatny procesor CPU przez więcej niż 3 minuty.|Całkowita liczba oczekujących procesorów CPU jest mniejsza niż całkowity bezpłatny procesor CPU przez więcej niż 10 minut.|
+|Całkowita liczba oczekujących pamięci jest większa niż całkowita ilość wolnej pamięci przez więcej niż 3 minuty.|Całkowita ilość oczekujących pamięci jest mniejsza niż całkowita ilość wolnej pamięci przez więcej niż 10 minut.|
 
-Usługa HDInsight oblicza, ile nowych węzłów procesu roboczego jest potrzebnych do spełnienia bieżących wymagań procesora i pamięci, a następnie wystawia żądanie skalowania, aby dodać wymaganą liczbę węzłów.
+W przypadku skalowania w górę Usługa HDInsight oblicza liczbę nowych węzłów procesu roboczego, które są potrzebne do spełnienia bieżących wymagań procesora i pamięci, a następnie wystawia żądanie skalowania w celu dodania wymaganej liczby węzłów.
 
-### <a name="load-based-cluster-scale-down"></a>Skalowanie klastra opartego na obciążeniach — w dół
-
-Po wykryciu następujących warunków automatyczne skalowanie wystawia żądanie skalowania w dół:
-
-* Całkowita liczba oczekujących procesorów CPU jest mniejsza niż całkowity bezpłatny procesor CPU przez więcej niż 10 minut.
-* Całkowita ilość oczekujących pamięci jest mniejsza niż całkowita ilość wolnej pamięci przez więcej niż 10 minut.
-
-W oparciu o liczbę kontenerów AM na węzeł i bieżące wymagania dotyczące procesora CPU i pamięci, automatyczne skalowanie wystawia żądanie usunięcia pewnej liczby węzłów. Usługa wykrywa również, które węzły są kandydatami do usunięcia na podstawie bieżącego wykonywania zadania. Operacja skalowania w dół najpierw likwidowanie węzłów, a następnie usunięcie ich z klastra.
+W przypadku skalowania w dół w oparciu o liczbę kontenerów AM na węzeł i bieżące wymagania dotyczące procesora CPU i pamięci, automatyczne skalowanie wystawia żądanie usunięcia pewnej liczby węzłów. Usługa wykrywa również, które węzły są kandydatami do usunięcia na podstawie bieżącego wykonywania zadania. Operacja skalowania w dół najpierw likwidowanie węzłów, a następnie usunięcie ich z klastra.
 
 ## <a name="get-started"></a>Rozpoczynanie pracy
 

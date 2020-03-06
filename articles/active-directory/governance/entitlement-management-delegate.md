@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422584"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376590"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegowanie i role w zarządzaniu prawami usługi Azure AD
 
@@ -84,10 +84,10 @@ Zarządzanie prawami obejmuje następujące role, które są specyficzne dla zar
 
 Ponadto Wyznaczeni osoby zatwierdzające i osoba żądająca pakietu dostępu mają również prawa, chociaż nie są rolami.
 
-| Prawe | Opis |
+| {1&gt;Prawo&lt;1} | Opis |
 | --- | --- |
 | Osoby zatwierdzającej | Autoryzowany przez zasady do zatwierdzania lub odrzucania żądań dostępu do pakietów, chociaż nie mogą zmieniać definicji pakietów dostępu. |
-| Requestor | Autoryzowane przez zasady pakietu dostępu, aby zażądać tego pakietu dostępu. |
+| Obiektu żądającego | Autoryzowane przez zasady pakietu dostępu, aby zażądać tego pakietu dostępu. |
 
 Poniższa tabela zawiera listę zadań, które mogą być wykonywane przez role zarządzania uprawnieniem.
 
@@ -122,8 +122,8 @@ Użytkownik, który nie jest administratorem globalnym lub administratorem użyt
 
 | Rola katalogu usługi Azure AD | Rola zarządzania uprawnieniami | Może dodać grupę zabezpieczeń | Może dodać grupę Office 365 | Można dodać aplikację | Może dodać witrynę usługi SharePoint Online |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Administrator globalny](../users-groups-roles/directory-assign-admin-roles.md) | nd. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Administrator użytkowników](../users-groups-roles/directory-assign-admin-roles.md) | nd. |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Administrator globalny](../users-groups-roles/directory-assign-admin-roles.md) | Nie dotyczy |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Administrator użytkowników](../users-groups-roles/directory-assign-admin-roles.md) | Nie dotyczy |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Administrator usługi Intune](../users-groups-roles/directory-assign-admin-roles.md) | Właściciel katalogu | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [Administrator programu Exchange](../users-groups-roles/directory-assign-admin-roles.md) | Właściciel katalogu |  | :heavy_check_mark: |  |  |
 | [Administrator usługi Teams](../users-groups-roles/directory-assign-admin-roles.md) | Właściciel katalogu |  | :heavy_check_mark: |  |  |

@@ -4,15 +4,15 @@ description: Dowiedz się, jak Funkcja systemowa SQL długości tablicy w Azure 
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9a8bf33befdd842a2979151fef3d54679ee03de1
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3596ce4bc702d5e54225d8c90db2f9563feab670
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871775"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303991"
 ---
 # <a name="array_length-azure-cosmos-db"></a>ARRAY_LENGTH (Azure Cosmos DB)
  Zwraca liczbę elementów określonego wyrażenia tablicy.  
@@ -40,12 +40,15 @@ ARRAY_LENGTH(<arr_expr>)
 SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len  
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"len": 3}]  
 ```  
   
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa nie będzie używać indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 

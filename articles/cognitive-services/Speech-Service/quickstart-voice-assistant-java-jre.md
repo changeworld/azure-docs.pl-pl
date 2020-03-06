@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: dapine
-ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6baa98d50c50146e93b4832053f63f3bead90a6d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119681"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330837"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Szybki Start: Tworzenie asystenta głosowego za pomocą zestawu Speech SDK, Java (wersja zapoznawcza)
 
 Przewodniki Szybki Start są również dostępne w przypadku [zamiany mowy na tekst](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre), zamiany [tekstu na mowę](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre)i [tłumaczenia mowy](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre).
 
-W tym artykule opisano tworzenie aplikacji konsolowej Java za pomocą [zestawu Azure Cognitive Services Speech SDK](speech-sdk.md). Aplikacja nawiązuje połączenie z wcześniej utworzonym bot skonfigurowanym do używania kanału bezpośredniej linii mowy, wysyła żądanie głosowe i zwraca działanie odpowiedzi głosowej (jeśli jest skonfigurowane). Aplikacja została skompilowana za pomocą pakietu Maven zestawu mowy SDK oraz środowiska IDE języka Java w systemie Windows, Ubuntu Linux lub na macOS. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
+W tym artykule opisano tworzenie aplikacji konsolowej Java za pomocą [zestawu Azure Cognitive Services Speech SDK](speech-sdk.md). Aplikacja nawiązuje połączenie z wcześniej utworzonym bot skonfigurowanym do używania kanału bezpośredniej linii mowy, wysyła żądanie głosowe i zwraca działanie odpowiedzi głosowej (jeśli jest skonfigurowane). Aplikacja została skompilowana przy użyciu pakietu Maven SDK mowy i środowiska IDE języka Java w systemie Windows, Linux lub macOS. Działa ona w 64-bitowym środowisku uruchomieniowym Java 8 języka Java (JRE).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Ten przewodnik Szybki start wymaga następujących elementów:
 
-- System operacyjny: Windows (64-bitowy), Ubuntu Linux 16.04/18.04 (64-bitowy) lub macOS 10,13 lub nowszy.
+- System operacyjny: Windows (64-bitowy), Ubuntu Linux 16.04/18.04 (64-bitowy), RHEL/CentOS 8 (x64) lub macOS 10,13 lub nowszy.
 - [Zaćmienie IDE Java](https://www.eclipse.org/downloads/).
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) lub [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 - Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj jeden bezpłatnie](get-started.md) lub utwórz go w [Azure Portal](https://portal.azure.com).
@@ -42,6 +42,17 @@ Jeśli korzystasz z programu Ubuntu 16.04/18.04, upewnij się, że te zależnoś
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
+
+W systemie RHEL/CentOS 8:
+
+```sh
+sudo yum update
+sudo yum groupinstall "Development tools"
+sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl wget
+```
+
+> [!NOTE]
+> W systemie RHEL/CentOS 8 postępuj zgodnie z instrukcjami dotyczącymi [sposobu konfigurowania OpenSSL dla systemu Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 Jeśli korzystasz z systemu Windows (64-bitowego), upewnij się, że zainstalowano pakiet redystrybucyjny Microsoft Visual C++ dla swojej platformy:
 

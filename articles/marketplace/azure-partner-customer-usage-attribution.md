@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: c84f5538d2f553a713b52aa795a10acddac9aff8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c745a37805862b77e7893788d9d089c8447ae465
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819886"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302869"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Udział partnera w zakresie użycia platformy Azure przez klienta
 
@@ -34,7 +34,7 @@ W [aplikacji platformy Azure](https://docs.microsoft.com/azure/marketplace/cloud
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="use-resource-manager-templates"></a>Używanie szablonów Menedżera zasobów
+## <a name="use-resource-manager-templates"></a>Używanie szablonów usługi Resource Manager
 Wiele rozwiązań partnerskich jest wdrażanych w ramach subskrypcji klienta przy użyciu szablonów Menedżer zasobów. Jeśli masz szablon Menedżer zasobów, który jest dostępny w portalu Azure Marketplace, w witrynie GitHub lub w ramach przewodnika Szybki Start, proces modyfikowania szablonu w celu włączenia przypisywania użycia klienta powinien być prosty do przodu.
 
 Aby uzyskać więcej informacji na temat tworzenia i publikowania szablonów rozwiązań, zobacz
@@ -87,7 +87,7 @@ Zasób należy dodać tylko w pliku **mainTemplate. JSON** lub **azuredeploy. JS
 
 ## <a name="use-the-resource-manager-apis"></a>Korzystanie z Menedżer zasobów interfejsów API
 
-W niektórych przypadkach warto wykonać wywołania bezpośrednio do Menedżer zasobów interfejsów API REST w celu wdrożenia usług platformy Azure. [Platforma Azure obsługuje wiele zestawów SDK](https://docs.microsoft.com/azure/#pivot=sdkstools) , aby umożliwić te wywołania. Można użyć jednego z zestawów SDK lub wywołać interfejsy API REST bezpośrednio w celu wdrożenia zasobów.
+W niektórych przypadkach warto wykonać wywołania bezpośrednio do Menedżer zasobów interfejsów API REST w celu wdrożenia usług platformy Azure. [Platforma Azure obsługuje wiele zestawów SDK](https://docs.microsoft.com/azure/?pivot=sdkstools) , aby umożliwić te wywołania. Można użyć jednego z zestawów SDK lub wywołać interfejsy API REST bezpośrednio w celu wdrożenia zasobów.
 
 Jeśli używasz szablonu Menedżer zasobów, należy oznaczyć rozwiązanie, postępując zgodnie z instrukcjami opisanymi wcześniej. Jeśli nie korzystasz z szablonu Menedżer zasobów i tworzysz bezpośrednie wywołania interfejsu API, możesz oznaczyć wdrożenie, aby skojarzyć użycie zasobów platformy Azure.
 
@@ -296,7 +296,7 @@ Możesz również otrzymywać wskazówki techniczne od doradcy technicznej partn
     * Ukończ/Przejrzyj informacje kontaktowe.
     * Szczegóły konsultacji mogą być wstępnie wypełnione lub wybrane z listy rozwijanej.
     * Wprowadź tytuł i opis problemu (Podaj jak najwięcej szczegółów).
-1. Kliknij przycisk Prześlij
+1. Kliknij przycisk Submit (Prześlij).
 
 Wyświetl instrukcje krok po kroku dotyczące zrzutów ekranu w [https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions).
 

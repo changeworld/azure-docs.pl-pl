@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844942"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359578"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Dzienniki w Azure Database for PostgreSQL — pojedynczy serwer
 Azure Database for PostgreSQL umożliwia konfigurowanie i dostęp do standardowych dzienników Postgres. Dzienniki mogą służyć do identyfikowania, rozwiązywania problemów i naprawiania błędów konfiguracji oraz nieoptymalnej wydajności. Rejestrowane informacje można skonfigurować i uzyskać do nich dostęp, w tym błędy, informacje o zapytaniach, rekordy autopróżniowe, połączenia i punkty kontrolne. (Dostęp do dzienników transakcji nie jest dostępny).
@@ -40,7 +40,7 @@ Domyślny format dziennika w Azure Database for PostgreSQL to. log. Przykładowa
 
 Azure Database for PostgreSQL zapewnia krótkoterminową lokalizację przechowywania plików. log. Nowy plik zaczyna się co 1 godzina lub 100 MB, w zależności od tego, co nastąpi wcześniej. Dzienniki są dołączane do bieżącego pliku, ponieważ są emitowane z Postgres.  
 
-Można ustawić okres przechowywania dla tego krótkoterminowego magazynu dzienników przy użyciu parametru `log_retention_period`. Wartość domyślna to 3 dni; Maksymalna wartość to 7 dni. Krótkoterminowa lokalizacja przechowywania może zawierać maksymalnie 1 GB plików dziennika. Po 1 GB najstarsze pliki, niezależnie od okresu przechowywania, zostaną usunięte, aby zwolnić miejsce na nowe dzienniki. 
+Można ustawić okres przechowywania dla tego krótkoterminowego magazynu dzienników przy użyciu parametru `log_retention_period`. Wartość domyślna to 3 dni, a maksymalna to 7 dni. Krótkoterminowa lokalizacja przechowywania może zawierać maksymalnie 1 GB plików dziennika. Po 1 GB najstarsze pliki, niezależnie od okresu przechowywania, zostaną usunięte, aby zwolnić miejsce na nowe dzienniki. 
 
 Aby okresowo przechowywać dzienniki i analizę dzienników, można pobrać pliki dziennika. log i przenieść je do usługi innej firmy. Pliki można pobrać przy użyciu [Azure Portal](howto-configure-server-logs-in-portal.md), [interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-using-cli.md). Alternatywnie można skonfigurować ustawienia diagnostyczne Azure Monitor, które automatycznie emitują dzienniki (w formacie JSON) do dłuższych lokalizacji. Więcej informacji na temat tej opcji można znaleźć w sekcji poniżej. 
 
@@ -96,20 +96,20 @@ W poniższej tabeli opisano pola dla typu **PostgreSQLLogs** . W zależności od
 
 |**Pole** | **Opis** |
 |---|---|
-| tenantId | Identyfikator dzierżawy |
+| TenantId | Identyfikator dzierżawy |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
-| Typ | Typ dziennika. zawsze `AzureDiagnostics` |
+| Typ | Typ dziennika. Zawsze `AzureDiagnostics` |
 | SubscriptionId | Identyfikator GUID subskrypcji, do której należy serwer |
 | ResourceGroup | Nazwa grupy zasobów, do której należy serwer |
-| ResourceProvider | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORPOSTGRESQL` |
+| ResourceProvider | Nazwa dostawcy zasobów. Zawsze `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Identyfikator URI zasobu |
 | Zasób | Nazwa serwera |
 | Kategoria | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | Zmienna | Poziom rejestrowania, przykład: LOG, błąd, Uwaga |
-| Wiadomość | Podstawowy komunikat dziennika | 
+| Komunikat | Podstawowy komunikat dziennika | 
 | Domain | Wersja serwera, przykład: Postgres-10 |
 | Szczegóły | Dodatkowy komunikat dziennika (jeśli dotyczy) |
 | ColumnName | Nazwa kolumny (jeśli dotyczy) |

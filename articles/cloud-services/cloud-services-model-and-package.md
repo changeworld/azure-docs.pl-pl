@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148313"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344506"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co to jest model usługi w chmurze i jak go spakować?
 Usługa w chmurze jest tworzona na podstawie trzech składników: definicji usługi *(. csdef)* , konfiguracji usługi *(. cscfg)* i pakietu usługi *(. cspkg)* . Pliki **ServiceDefinition. csdef** i **ServiceConfig. cscfg** są oparte na języku XML i opisują strukturę usługi w chmurze oraz sposób jej konfiguracji; nazywana zbiorczo modelem. **Servicepackage. cspkg** to plik zip, który jest generowany na podstawie elementu **ServiceDefinition. csdef** i między innymi, zawiera wszystkie wymagane zależności oparte na plikach binarnych. Platforma Azure tworzy usługę w chmurze zarówno z **servicepackage. cspkg** , jak i **ServiceConfig. cscfg**.

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fdb4b7c370d5edadf3e0e5bc0d1ae548da6bcaa9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0446ee4fb238d2fa8447f998536c3c14d968f630
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438661"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303209"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Samouczek: przygotowanie do wdrożenia Azure Data Box Gateway
 
@@ -22,14 +22,14 @@ To jest pierwszy samouczek z serii samouczków dotyczących wdrażania opisując
 
 Do ukończenia procesu instalacji i konfiguracji niezbędne są uprawnienia administratora. Przygotowanie portalu zajmuje mniej niż 10 minut.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie nowego zasobu
 > * Pobieranie obrazu urządzenia wirtualnego
 > * Uzyskiwanie klucza aktywacji
 
-## <a name="get-started"></a>Rozpocznij
+## <a name="get-started"></a>Rozpoczynanie pracy
 
 Proces wdrażania usługi Data Box Gateway opisano w następujących samouczkach w zalecanej kolejności.
 
@@ -94,7 +94,7 @@ Aby utworzyć zasób Data Box Gateway, w Azure Portal wykonaj następujące czyn
     - Lub Portal Azure Government pod tym adresem URL: [https://portal.azure.us](https://portal.azure.us). Aby uzyskać więcej informacji, przejdź do [obszaru łączenie z Azure Government przy użyciu portalu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
 2. W okienku po lewej stronie wybierz pozycję **+ Utwórz zasób**. Wyszukaj **Data Box Edge/Data Box Gateway**. Wybierz pozycję Data Box Edge/Data Box Gateway. Wybierz pozycję **Utwórz**.
-3. Wybierz subskrypcję, która ma być używana dla Data Box Gateway urządzenia. Wybierz region, w którym chcesz wdrożyć zasób Data Box Gateway. W tym wydaniu dostępne są Wschodnie stany USA, Azja Wschodnia Południowe i Europa Zachodnia. Wybierz lokalizację najbliżej regionu geograficznego, w którym chcesz wdrożyć urządzenie. W opcji **Data Box Gateway** wybierz pozycję **Utwórz**.
+3. Wybierz subskrypcję, która ma być używana dla Data Box Gateway urządzenia. Wybierz region, w którym chcesz wdrożyć zasób Data Box Gateway. Aby uzyskać listę wszystkich regionów, w których jest dostępny zasób Azure Stack Edge, zobacz [dostępność produktów platformy Azure według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Wybierz lokalizację najbliżej regionu geograficznego, w którym chcesz wdrożyć urządzenie. W opcji **Data Box Gateway** wybierz pozycję **Utwórz**.
 
     ![Wyszukiwanie usługi Data Box Gateway](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)
 
@@ -109,8 +109,8 @@ Aby utworzyć zasób Data Box Gateway, w Azure Portal wykonaj następujące czyn
 
     |Ustawienie  |Wartość  |
     |---------|---------|
-    |Nazwa   | Przyjazna nazwa identyfikująca zasób.<br>Nazwa może zawierać od 2 do 50 znaków, w tym litery, cyfry i łączniki.<br> Nazwa rozpoczyna się i kończy literą lub cyfrą.        |   
-    |Region     |W tej wersji Wschodnie stany USA, Południowe Azja Wschodnia i Europa Zachodnia są dostępne do wdrożenia zasobu. W przypadku Azure Government dostępne są wszystkie regiony rządowe wymienione w [regionach świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions/) . <br> Wybierz lokalizację najbliżej regionu geograficznego, w którym chcesz wdrożyć urządzenie.|
+    |Name (Nazwa)   | Przyjazna nazwa identyfikująca zasób.<br>Nazwa może zawierać od 2 do 50 znaków, w tym litery, cyfry i łączniki.<br> Nazwa rozpoczyna się i kończy literą lub cyfrą.        |   
+    |Region     |Aby uzyskać listę wszystkich regionów, w których jest dostępny zasób Azure Stack Edge, zobacz [dostępność produktów platformy Azure według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). W przypadku Azure Government dostępne są wszystkie regiony rządowe wymienione w [regionach świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions/) . <br> Wybierz lokalizację najbliżej regionu geograficznego, w którym chcesz wdrożyć urządzenie.|
     
     ![Tworzenie zasobu usługi Data Box Gateway](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e77e597fbd33a1f1358ecaa2d2aea3fe075a70f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 37b59c2a23a8f00e8376be2ac4a7b35a6d58aa28
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187733"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398997"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Jednostronicowe Logowanie przy użyciu niejawnego przepływu OAuth 2,0 w Azure Active Directory B2C
 
@@ -243,12 +243,12 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 ## <a name="next-steps"></a>Następne kroki
 
-### <a name="code-sample-hellojs-with-azure-ad-b2c"></a>Przykład kodu: Hello. js z Azure AD B2C
+### <a name="code-sample-azure-ad-b2c-with-microsoft-authentication-library-for-javascript"></a>Przykład kodu: Azure AD B2C z biblioteką uwierzytelniania firmy Microsoft dla języka JavaScript
 
-[Aplikacja jednostronicowa oparta na powitaniu Witaj. js z Azure AD B2C][github-hello-js-example] (GitHub)
+[Aplikacja jednostronicowa skompilowana przy użyciu msal. js dla Azure AD B2C][github-msal-js-example] (GitHub)
 
-Ten przykład w witrynie GitHub ma pomóc w rozpoczęciu pracy z usługą Azure AD B2C w prostej aplikacji sieci Web, która jest oparta na [powitaniu Witaj. js][github-hello-js] i przy użyciu uwierzytelniania wyskakującego w stylu.
+Ten przykład w serwisie GitHub ma pomóc w rozpoczęciu Azure AD B2C w prostej aplikacji sieci Web utworzonej przy użyciu [msal. js][github-msal-js] i uwierzytelniania wyskakującego w stylu.
 
 <!-- Links - EXTERNAL -->
-[github-hello-js-example]: https://github.com/Azure-Samples/active-directory-b2c-javascript-hellojs-singlepageapp
-[github-hello-js]: https://github.com/MrSwitch/hello.js
+[github-msal-js-example]: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
+[github-msal-js]: https://github.com/AzureAD/microsoft-authentication-library-for-js

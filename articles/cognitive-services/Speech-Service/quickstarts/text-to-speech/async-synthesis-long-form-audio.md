@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: afa9437a00c6f30688c7942feea94f7db7ed490a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d3cd330001bcf53e7bd4fb9e6955c76a9ef20511
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919349"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331080"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Szybki Start: synteza asynchroniczna dla długich form audio w języku Python (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ Ten przewodnik Szybki start wymaga następujących elementów:
 
 * Python 2.7. x lub 3. x.
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)lub ulubiony Edytor tekstu.
-* Subskrypcja platformy Azure i klucz subskrypcji usługi rozpoznawania mowy. [Utwórz konto platformy Azure](../../get-started.md#new-resource) i [Utwórz zasób mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) , aby uzyskać klucz. Podczas tworzenia zasobu mowy upewnij się, że warstwa cenowa jest ustawiona na **S0**, a lokalizacja jest ustawiona na [obsługiwany region](../../regions.md#standard-and-neural-voices).
+* Subskrypcja platformy Azure i klucz subskrypcji usługi rozpoznawania mowy. [Utwórz konto platformy Azure](../../get-started.md#new-resource) i [Utwórz zasób mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-resource) , aby uzyskać klucz. Podczas tworzenia zasobu mowy upewnij się, że warstwa cenowa jest ustawiona na **S0**, a lokalizacja jest ustawiona na [obsługiwany region](../../regions.md#standard-and-neural-voices).
 
 ## <a name="create-a-project-and-import-required-modules"></a>Tworzenie projektu i importowanie wymaganych modułów
 

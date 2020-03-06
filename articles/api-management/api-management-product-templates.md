@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176565"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374403"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Szablony produktów w usłudze Azure API Management
 
-Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu dla deweloperów przy użyciu zestawu szablonów, które konfigurują ich zawartość. Korzystając z składni [DotLiquid](http://dotliquidmarkup.org/) i wybranego edytora, takiego jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i dostępnego zestawu zlokalizowanych [zasobów ciągów](api-management-template-resources.md#strings), [zasobów symboli](api-management-template-resources.md#glyphs)i [kontrolek stron](api-management-page-controls.md), masz doskonałą elastyczność konfigurowania zawartość stron wyświetlanych w postaci dopasowania przy użyciu tych szablonów.  
+Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu dla deweloperów przy użyciu zestawu szablonów, które konfigurują ich zawartość. Korzystając z składni [DotLiquid](http://dotliquidmarkup.org/) i wybranego edytora, takiego jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i dostępnego zestawu zlokalizowanych [zasobów ciągów](api-management-template-resources.md#strings), [zasobów glifów](api-management-template-resources.md#glyphs)i [kontrolek stron](api-management-page-controls.md), masz doskonałą elastyczność konfigurowania zawartości stron w miarę, w jakiej są one widoczne przy użyciu tych szablonów.  
   
  Szablony w tej sekcji umożliwiają dostosowanie zawartości stron produktu w portalu dla deweloperów.  
   
@@ -206,12 +206,12 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
   
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|Produkt|[Iloczyn](api-management-template-data-model-reference.md#Product)|Określony produkt.|  
+|Product (Produkt)|[Iloczyn](api-management-template-data-model-reference.md#Product)|Określony produkt.|  
 |IsDeveloperSubscribed|wartość logiczna|Czy bieżący użytkownik subskrybuje ten produkt.|  
 |SubscriptionState|numer|Stan subskrypcji. Możliwe stany to:<br /><br /> -   `0 - suspended` — subskrypcja została zablokowana i subskrybent nie może wywołać żadnych interfejsów API produktu.<br />-   `1 - active` — subskrypcja jest aktywna.<br />-   `2 - expired` — subskrypcja osiągnęła swoją datę wygaśnięcia i została zdezaktywowana.<br />-   `3 - submitted` — żądanie subskrypcji zostało wykonane przez dewelopera, ale jeszcze nie zostało zatwierdzone lub odrzucone.<br />-   `4 - rejected` — administrator odrzucił żądanie subskrypcji.<br />-   `5 - cancelled` — subskrypcja została anulowana przez dewelopera lub administratora.|  
 |Limity|tablica|Ta właściwość jest przestarzała i nie powinna być używana.|  
 |DelegatedSubscriptionEnabled|wartość logiczna|Czy [delegowanie](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) jest włączone dla tej subskrypcji.|  
-|DelegatedSubscriptionUrl|string|Jeśli Delegowanie jest włączone, delegowany adres URL subskrypcji.|  
+|DelegatedSubscriptionUrl|ciąg|Jeśli Delegowanie jest włączone, delegowany adres URL subskrypcji.|  
 |Nie zgadzam się|wartość logiczna|Jeśli produkt ma warunki, niezależnie od tego, czy bieżący użytkownik wyraził zgodę na warunki.|  
 |Subskrypcje|Kolekcja jednostek [podsumowania subskrypcji](api-management-template-data-model-reference.md#SubscriptionSummary) .|Subskrypcje produktu.|  
 |Programowania|Kolekcja jednostek [interfejsu API](api-management-template-data-model-reference.md#API) .|Interfejsy API w tym produkcie.|  

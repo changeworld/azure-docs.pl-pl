@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: b891c8a7bbb33e3a3f18adbbc723d4bc9aa99a3a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6a967f328a4fbe17f2c451d35f413bd7fdcbc24a
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246458"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331472"
 ---
 # <a name="my-first-graphical-runbook"></a>Mój pierwszy graficzny element Runbook
 
@@ -22,7 +22,7 @@ ms.locfileid: "78246458"
 > * [Python](automation-first-runbook-textual-python2.md)
 > 
 
-Ten samouczek przeprowadzi Cię przez proces tworzenia [graficznego elementu Runbook](automation-runbook-types.md#graphical-runbooks) w usłudze Azure Automation. Zacznij od prostego elementu Runbook, który testuje i publikuje, i uczenie się, jak śledzić stan zadania elementu Runbook. Następnie zmodyfikuj element Runbook, aby faktycznie zarządzać zasobami platformy Azure, w tym przypadku uruchamiając maszynę wirtualną platformy Azure. Ukończ samouczek, aby zwiększyć niezawodność elementu Runbook poprzez dodanie parametrów elementu Runbook i łączy warunkowych.
+Ten samouczek przeprowadzi Cię przez proces tworzenia [graficznego elementu Runbook](automation-runbook-types.md#graphical-runbooks) w usłudze Azure Automation. Zacznij od prostego elementu Runbook, który można testować i publikować, podczas uczenia się, jak śledzić stan zadania elementu Runbook. Następnie zmodyfikuj element Runbook, aby faktycznie zarządzać zasobami platformy Azure, w tym przypadku uruchamiając maszynę wirtualną platformy Azure. Ukończ samouczek, aby zwiększyć niezawodność elementu Runbook poprzez dodanie parametrów elementu Runbook i łączy warunkowych.
 
 >[!NOTE]
 >Ten artykuł został zaktualizowany o korzystanie z nowego modułu Azure PowerShell Az. Nadal możesz używać modułu AzureRM, który będzie nadal otrzymywać poprawki błędów do co najmniej grudnia 2020 r. Aby dowiedzieć się więcej na temat nowego modułu Az i zgodności z modułem AzureRM, zobacz [Wprowadzenie do nowego modułu Az programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Instrukcje dotyczące instalacji polecenia AZ module w hybrydowym procesie roboczym elementu Runbook znajdują się w temacie [Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). W przypadku konta usługi Automation można zaktualizować moduły do najnowszej wersji przy użyciu [sposobu aktualizowania modułów Azure PowerShell w programie Azure Automation](automation-update-azure-modules.md).
@@ -37,7 +37,7 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 ## <a name="step-1---create-runbook"></a>Krok 1. Tworzenie elementu runbook
 
-Zacznij od utworzenia prostego elementu Runbook, który wyświetla tekst "Hello world".
+Na początek utworzysz prosty element runbook służący do wyświetlania tekstu **Witaj, świecie**.
 
 1. W witrynie Azure Portal otwórz konto usługi Automation. 
 
@@ -78,7 +78,7 @@ Przed opublikowaniem elementu Runbook w celu udostępnienia go w środowisku pro
 
    Zadanie jest uruchamiane jako **kolejkowane**, wskazując, że zadanie oczekuje na dostępność procesu roboczego elementu Runbook w chmurze. Stan zmieni się na **rozpoczęty** , gdy proces roboczy pozyskuje zadanie. Na koniec stan zostanie **uruchomiony** , gdy element Runbook faktycznie zacznie działać.
 
-1. Po zakończeniu zadania elementu Runbook na stronie testowej są wyświetlane dane wyjściowe. W tym przypadku zostanie wyświetlony tekst **Witaj, świecie**.<br> ![Witaj, świecie](media/automation-first-runbook-graphical/runbook-test-results.png)
+1. Po zakończeniu zadania elementu Runbook w okienku test zostaną wyświetlone dane wyjściowe. W tym przypadku zostanie wyświetlony tekst **Witaj, świecie**.<br> ![Witaj, świecie](media/automation-first-runbook-graphical/runbook-test-results.png)
 1. Zamknij okienko testowania, aby wrócić do kanwy.
 
 ## <a name="step-4---publish-and-start-the-runbook"></a>Krok 4. Publikowanie i uruchamianie elementu Runbook

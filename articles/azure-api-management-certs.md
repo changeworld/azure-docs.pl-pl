@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
-ms.openlocfilehash: 5ce96796cbfdcefbaf5568ff199cba6a87f65e05
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359878"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329123"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Przekazywanie certyfikatu zarządzania usługami platformy Azure
 Certyfikaty zarządzania umożliwiają uwierzytelnianie przy użyciu klasycznego modelu wdrażania dostarczonego przez platformę Azure. Wiele programów i narzędzi (takich jak Visual Studio lub zestaw Azure SDK) używa tych certyfikatów do automatyzowania konfigurowania i wdrażania różnych usług platformy Azure. 
@@ -34,7 +34,7 @@ Za pomocą [Azure Active Directory](https://azure.microsoft.com/services/active-
 ## <a name="upload-a-management-certificate"></a>Przekazywanie certyfikatu zarządzania
 Po utworzeniu certyfikatu zarządzania (plik. cer z tylko kluczem publicznym) można przekazać go do portalu. Gdy certyfikat jest dostępny w portalu, każda osoba mająca zgodny certyfikat (klucz prywatny) może nawiązać połączenie za pomocą interfejsu API zarządzania i uzyskać dostęp do zasobów dla skojarzonej subskrypcji.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [portalu Azure](https://portal.azure.com).
 2. Kliknij pozycję **wszystkie usługi** na dolnej liście usług platformy Azure, a następnie wybierz pozycję **subskrypcje** w grupie usługi _Ogólne_ .
 
     ![Menu subskrypcji](./media/azure-api-management-certs/subscriptions_menu.png)
@@ -52,4 +52,4 @@ Po utworzeniu certyfikatu zarządzania (plik. cer z tylko kluczem publicznym) mo
     ![Ustawienia](./media/azure-api-management-certs/certificate_details.png)
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, gdy masz certyfikat zarządzania skojarzony z subskrypcją, możesz (po zainstalowaniu zgodnego certyfikatu lokalnie) nawiązać programowo połączenie z [interfejsem API REST klasycznego modelu wdrażania](/azure/#pivot=sdkstools) i zautomatyzować różne zasoby platformy Azure są one również skojarzone z tą subskrypcją.
+Teraz, gdy masz certyfikat zarządzania skojarzony z subskrypcją, możesz (po zainstalowaniu zgodnego certyfikatu lokalnie) nawiązać programowo połączenie z [interfejsem API REST klasycznego modelu wdrażania](/azure/?pivot=sdkstools) i zautomatyzować różne zasoby platformy Azure, które również są skojarzone z tą subskrypcją.

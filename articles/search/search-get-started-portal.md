@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/10/2020
 ms.openlocfilehash: 6a3bbdae0d3fa898621c1c805388252beb891ecf
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121672"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379756"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Szybki Start: Tworzenie indeksu Wyszukiwanie poznawcze platformy Azure w Azure Portal
 > [!div class="op_single_selector"]
@@ -102,7 +102,7 @@ W kreatorze **importu danych** kliknij pozycję **Indeksator** > **Nazwa**, a na
 
 Ten obiekt definiuje proces wykonywalny. Możesz go uruchamiać w ramach harmonogramu cyklicznego, ale na razie użyj opcji domyślnej, aby od razu uruchomić indeksator jeden raz.
 
-Kliknij przycisk **Prześlij**, aby utworzyć i jednocześnie uruchomić indeksator.
+Kliknij przycisk **Prześlij**, aby utworzyć i od razu uruchomić indeksator.
 
   ![Indeksator hoteli](media/search-get-started-portal/hotels-indexer.png)
 

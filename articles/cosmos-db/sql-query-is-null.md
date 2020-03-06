@@ -1,18 +1,18 @@
 ---
 title: IS_NULL w języku zapytań Azure Cosmos DB
-description: Dowiedz się więcej o funkcji IS_NULL systemu SQL w Azure Cosmos DB.
+description: Dowiedz się więcej na temat funkcji systemu SQL IS_NULL w Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 20486b8f8c0436d264135bb09952345548222216
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4dbf21c3052ddd5ebdd62925e65a854c47f59017
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349861"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303838"
 ---
 # <a name="is_null-azure-cosmos-db"></a>IS_NULL (Azure Cosmos DB)
  Zwraca wartość logiczną wskazującą, jeśli typ określonego wyrażenie ma wartość null.  
@@ -25,7 +25,7 @@ IS_NULL(<expr>)
   
 ## <a name="arguments"></a>Argumenty
   
-*expr*  
+*wyrażenie*  
    To dowolne wyrażenie.  
   
 ## <a name="return-types"></a>Typy zwracane
@@ -47,11 +47,15 @@ SELECT
     IS_NULL({prop: "value"}.prop2) AS isNull7  
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{"isNull1":false,"isNull2":false,"isNull3":false,"isNull4":true,"isNull5":false,"isNull6":false,"isNull7":false}]
 ```  
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa będzie korzystać z [indeksu zakresu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Następne kroki
 

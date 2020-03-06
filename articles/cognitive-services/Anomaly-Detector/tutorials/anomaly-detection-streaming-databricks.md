@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 93ee5df4327aa396573665cd0c2cbd8222015cce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448902"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402672"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Samouczek: wykrywanie anomalii na danych przesyłanych strumieniowo przy użyciu Azure Databricks
 
@@ -40,12 +40,10 @@ Ten samouczek obejmuje następujące zadania:
 > * Uruchamianie wykrywania anomalii na Tweetach
 
 > [!Note]
-> W tym samouczku przedstawiono podejście do wdrożenia zalecanej [architektury rozwiązania](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) dla interfejsu API wykrywania anomalii.
+> * W tym samouczku przedstawiono podejście do wdrożenia zalecanej [architektury rozwiązania](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/) dla interfejsu API wykrywania anomalii.
+> * W tym samouczku nie można wykonać bezpłatnej wersji próbnej interfejsu API wykrywania anomalii lub Azure Databricks. 
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
-
-> [!Note]
-> Nie można ukończyć tego samouczka z bezpłatnym kluczem wersji próbnej dla interfejsu API wykrywania anomalii. Aby użyć bezpłatnego konta do utworzenia klastra usługi Azure Databricks, przed utworzeniem klastra przejdź do swojego profilu i zmień swoją subskrypcję na **płatność zgodnie z rzeczywistym użyciem**. Aby uzyskać więcej informacji, zobacz [Bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+Utwórz [subskrypcję platformy Azure](https://azure.microsoft.com/free/) , jeśli jej nie masz.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -153,7 +151,7 @@ Na stronie Biblioteka wybierz klaster, do którego chcesz użyć biblioteki, a n
 
 W tym samouczku użyjesz [interfejsów API wykrywania anomalii w usłudze Azure Cognitive Services](../overview.md) do uruchamiania wykrywania anomalii na strumieniu tweetów niemal w czasie rzeczywistym. Przed użyciem interfejsów API należy utworzyć zasób wykrywania anomalii na platformie Azure i pobrać klucz dostępu, aby używać interfejsów API wykrywania anomalii.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Azure portal](https://portal.azure.com/).
 
 2. Wybierz pozycję **+ Utwórz zasób**.
 
@@ -165,7 +163,7 @@ W tym samouczku użyjesz [interfejsów API wykrywania anomalii w usłudze Azure 
 
     |Wartość |Opis  |
     |---------|---------|
-    |Nazwa     | Nazwa zasobu wykrywania anomalii.        |
+    |Name (Nazwa)     | Nazwa zasobu wykrywania anomalii.        |
     |Subskrypcja     | Subskrypcja platformy Azure, z którą zostanie skojarzony zasób.        |
     |Lokalizacja     | Lokalizacja platformy Azure.        |
     |Warstwa cenowa     | Warstwa cenowa usługi. Aby uzyskać więcej informacji na temat cennika usługi wykrywania anomalii, zobacz [stronę cennika](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/).        |

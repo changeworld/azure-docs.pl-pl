@@ -15,14 +15,14 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931625"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365928"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Używanie Snapshot Manager StorSimple do wyświetlania woluminów i zarządzania nimi
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Aby wybrać woluminy i wyświetlić informacje o nich, można użyć węzła StorSimple **woluminy** Snapshot Manager (w okienku **zakres** ). Woluminy są przedstawiane jako dyski odpowiadające woluminom zainstalowanym przez hosta. Węzeł **woluminy** zawiera woluminy lokalne i typy woluminów obsługiwane przez StorSimple, w tym woluminy wykryte za pomocą interfejsu iSCSI i urządzenia. 
 
 Aby uzyskać więcej informacji o obsługiwanych woluminach, przejdź do [pomocy technicznej dla wielu typów woluminów](storsimple-what-is-snapshot-manager.md#support-for-multiple-volume-types).
@@ -93,7 +93,7 @@ Poniższa procedura umożliwia wyświetlenie informacji na temat lokalnych i Sto
    
    | Kolumna wyników | Opis |
    |:--- |:--- |
-   |  Nazwa |Kolumna **name** zawiera literę dysku przypisaną do każdego wykrytego woluminu. |
+   |  Name (Nazwa) |Kolumna **name** zawiera literę dysku przypisaną do każdego wykrytego woluminu. |
    |  Urządzenie |Kolumna **Device** zawiera adres IP urządzenia podłączonego do komputera hosta. |
    |  Nazwa woluminu urządzenia |Kolumna **Nazwa woluminu urządzenia** zawiera nazwę woluminu urządzenia, do którego należy wybrany wolumin. Jest to nazwa woluminu zdefiniowana w Azure Portal dla tego określonego woluminu. |
    |  Ścieżki dostępu |W kolumnie **ścieżki dostępu** jest wyświetlana ścieżka dostępu do woluminu. Jest to litera dysku lub punkt instalacji, w którym wolumin jest dostępny na komputerze-hoście. |
@@ -183,7 +183,7 @@ Zarządzanie dyskami to narzędzie systemowe do zarządzania dyskami twardymi or
 6. Na stronie **Przypisz literę dysku lub ścieżkę** zaakceptuj wartości domyślne, a następnie kliknij przycisk **dalej**. 
 7. Na stronie **Format woluminu** w polu **rozmiar jednostki alokacji** wybierz pozycję **64 KB**. Zaznacz pole wyboru **Wykonaj szybkie formatowanie** , a następnie kliknij przycisk **dalej**. 
 8. Na stronie **Kończenie nowego woluminu dublowanego** przejrzyj ustawienia, a następnie kliknij przycisk **Zakończ**. 
-9. Zostanie wyświetlony komunikat informujący o tym, że dysk podstawowy zostanie przekonwertowany na dysk dynamiczny. Kliknij przycisk **Tak**.
+9. Zostanie wyświetlony komunikat informujący o tym, że dysk podstawowy zostanie przekonwertowany na dysk dynamiczny. Kliknij przycisk **Yes** (Tak).
    
     ![Komunikat dotyczący konwersji dysku dynamicznego](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
 10. W przystawce Zarządzanie dyskami Sprawdź, czy dysk 1 i dysk 2 są wyświetlane jako woluminy dynamiczne dublowane. (**Dynamiczny** powinien pojawić się w kolumnie Stan, a kolor paska dyspozycyjności powinien zmienić na czerwony, wskazując wolumin dublowany). 

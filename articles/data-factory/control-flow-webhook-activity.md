@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 70c67a99274eaedc5592c7b90b1ef80a3a17acf8
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 8c52bb21276071581a83fb3ee6a3a4a31ba0bb4a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110006"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78400006"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Działanie elementu webhook w Azure Data Factory
 Możesz użyć działania elementu webhook, aby kontrolować wykonywanie potoków za pomocą kodu niestandardowego. Korzystając z działania elementu webhook, klienci mogą wywołać punkt końcowy i przekazać adres URL wywołania zwrotnego. Uruchomienie potoku oczekuje na wywołanie wywołania zwrotnego przed przejściem do następnego działania.
@@ -85,7 +85,7 @@ Określ nazwę użytkownika i hasło, które mają być używane z uwierzytelnia
 }
 ```
 
-### <a name="client-certificate"></a>certyfikat klienta
+### <a name="client-certificate"></a>Certyfikat klienta
 
 Określ zawartość pliku PFX i hasło w formacie base64.
 
@@ -116,6 +116,10 @@ Określ identyfikator URI zasobu, dla którego będzie wymagany token dostępu p
 Azure Data Factory przekaże dodatkową właściwość "callBackUri" w treści do punktu końcowego adresu URL i będzie oczekiwać, że ten identyfikator URI będzie wywoływany przed określoną wartością limitu czasu. Jeśli identyfikator URI nie zostanie wywołany, działanie zakończy się niepowodzeniem ze stanem "TimedOut".
 
 Działanie elementu webhook kończy się niepowodzeniem, gdy wywołanie do niestandardowego punktu końcowego zakończy się niepowodzeniem. Dowolny komunikat o błędzie może zostać dodany do treści wywołania zwrotnego i użyty w kolejnym działaniu.
+
+Dla każdego wywołania interfejsu API REST klient zostanie przekroczy limit czasu, jeśli punkt końcowy nie odpowie w ciągu 1 minuty. Jest to standardowe najlepsze rozwiązanie http. Aby rozwiązać ten problem, należy zaimplementować wzorzec 202 w tym przypadku, gdy punkt końcowy zwróci 202 (zaakceptowano), a klient będzie sondował.
+
+1 minimalny limit czasu dla żądania nie ma niczego do wykonania z limitem czasu działania. Ta wartość zostanie użyta w celu poczekania na callbackUri.
 
 Treść przeniesiona z powrotem do identyfikatora URI wywołania zwrotnego powinna być prawidłowym kodem JSON. Należy ustawić nagłówek Content-Type na `application/json`.
 

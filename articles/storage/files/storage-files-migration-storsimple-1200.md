@@ -7,16 +7,25 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 184101db34edbf5391b37c43770e8393316fe2fc
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 4a32251b60066d6a85595e4d1b6c002f8587c01d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252661"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330944"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 migracja do Azure File Sync
 
 Seria 1200 StorSimple jest urządzeniem wirtualnym, które jest uruchamiane w lokalnym centrum danych. Możliwe jest Migrowanie danych z tego urządzenia do środowiska Azure File Syncowego. Ten artykuł zawiera informacje na temat niezbędnej wiedzy i migracji w celu pomyślnej migracji do Azure File Sync.
+
+## <a name="storsimple"></a>Magazyn StorSimple
+
+StorSimple to wycofany produkt firmy Microsoft. Rozszerzona pomoc techniczna dla tego produktu i jego usługi w chmurze wygasła w dniu 31 2022 grudnia. Ważne jest, aby zacząć planowanie migracji od StorSimple od razu.
+
+Azure File Sync to domyślna i strategiczna usługa platformy Azure, w ramach której można migrować urządzenia StorSimple.
+
+> [!IMPORTANT]
+> Firma Microsoft dokłada starań, aby pomóc klientom w migracji. Wyślij wiadomość e-mail AzureFilesMigration@microsoft. com dla niestandardowego planu migracji oraz pomoc podczas migracji.
 
 ## <a name="azure-file-sync"></a>Azure File Sync
 

@@ -1,18 +1,18 @@
 ---
 title: ST_DISTANCE w języku zapytań Azure Cosmos DB
-description: Dowiedz się więcej o funkcji ST_DISTANCE systemu SQL w Azure Cosmos DB.
+description: Dowiedz się więcej na temat funkcji systemu SQL ST_DISTANCE w Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 1c55bac14b3379f29d57bbad36026749089ec0fd
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4908d5f9f6eccaaaf71308b868d712f0eb96cb52
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349398"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303158"
 ---
 # <a name="st_distance-azure-cosmos-db"></a>ST_DISTANCE (Azure Cosmos DB)
  Zwraca odległość między dwoma wyrażeniami GeoJSON typu Point, Polygon lub LineString.  
@@ -34,21 +34,25 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład pokazuje, jak zwrócić wszystkie dokumenty rodziny, które znajdują się w zakresie 30 km od określonej lokalizacji przy użyciu wbudowanej funkcji `ST_DISTANCE`. .  
+  Poniższy przykład pokazuje, jak zwrócić wszystkie dokumenty rodziny, które znajdują się w zakresie 30 km od określonej lokalizacji za pomocą wbudowanej funkcji `ST_DISTANCE`. .  
   
 ```sql
-SELECT f.id   
-FROM Families f   
+SELECT f.id
+FROM Families f
 WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000  
 ```  
   
- W tym miejscu znajduje się zestaw wyników.  
+ Tutaj znajduje się zestaw wyników.  
   
 ```json
 [{  
   "id": "WakefieldFamily"  
 }]  
-```  
+```
+
+## <a name="remarks"></a>Uwagi
+
+Ta funkcja systemowa będzie korzystać z [indeksu geoprzestrzennego](index-policy.md#spatial-indexes).
 
 ## <a name="next-steps"></a>Następne kroki
 

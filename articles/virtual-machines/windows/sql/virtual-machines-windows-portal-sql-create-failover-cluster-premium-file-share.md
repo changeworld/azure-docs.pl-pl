@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651365"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303226"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu failover SQL Server z udziałem plików w warstwie Premium na maszynach wirtualnych platformy Azure
 
@@ -53,7 +53,7 @@ Sprawdź działanie IOPS w środowisku i sprawdź, czy w wersji Premium udziały
 
 Wiele obciążeń ma rozbicie operacji we/wy, dlatego dobrym pomysłem jest sprawdzenie przez duże użycie i uwzględnienie zarówno maksymalnej liczby IOPS, jak i średniego czasu IOPS. Udziały plików w warstwie Premium zapewniają operacje we/wy na podstawie rozmiaru udziału. Udziały plików w warstwie Premium zapewniają również rozbicie, które pozwala na przebicie operacji we/wy do trzykrotnej kwoty linii bazowej przez maksymalnie jedną godzinę.
 
-Aby uzyskać więcej informacji na temat wydajności udziałów plików w warstwie Premium, zobacz [warstwy wydajności udziału plików](https://docs.microsoft.com/azure/storage/files/storage-files-planning#file-share-performance-tiers).
+Aby uzyskać więcej informacji na temat wydajności udziałów plików w warstwie Premium, zobacz [warstwy wydajności udziału plików](https://docs.microsoft.com/azure/storage/files/storage-files-planning#storage-tiers).
 
 ### <a name="licensing-and-pricing"></a>Licencjonowanie i Cennik
 

@@ -1,7 +1,7 @@
 ---
-title: Zabezpieczanie usług sieci Web przy użyciu protokołu SSL
+title: Zabezpieczanie usług sieci Web przy użyciu protokołu TLS
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak włączyć protokół HTTPS w celu zabezpieczenia usługi sieci Web wdrożonej za pośrednictwem Azure Machine Learning.
+description: Dowiedz się, jak włączyć protokół HTTPS w celu zabezpieczenia usługi sieci Web wdrożonej za pośrednictwem Azure Machine Learning. Azure Machine Learning korzysta z protokołu TLS w wersji 1,2 do zabezpieczania modeli wdrożonych jako usługi sieci Web.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 08/12/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 34c6071a127d0fc0c967991582f629c6ae713783
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1f4b699476902fa24fa285754f13b1c61ddca8f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905211"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355531"
 ---
-# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Użyj protokołu SSL, aby zabezpieczyć usługę sieci Web za pośrednictwem Azure Machine Learning
+# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Użyj protokołu TLS do zabezpieczenia usługi sieci Web za pomocą Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 W tym artykule opisano sposób zabezpieczania usługi sieci Web, która jest wdrażana za pomocą Azure Machine Learning.
@@ -52,7 +52,7 @@ Jest to ogólny proces zabezpieczania usługi sieci Web:
 
 Istnieją niewielkie różnice w przypadku zabezpieczania serwerów docelowych w ramach [wdrożenia](how-to-deploy-and-where.md).
 
-## <a name="get-a-domain-name"></a>Pobierz nazwę domeny
+## <a name="get-a-domain-name"></a>Uzyskanie nazwy domeny
 
 Jeśli nie masz jeszcze nazwy domeny, Kup ją w *rejestratorze nazw domen*. Proces i cena różnią się między Rejestratorami. Rejestrator udostępnia narzędzia do zarządzania nazwą domeny. Te narzędzia służą do mapowania w pełni kwalifikowanej nazwy domeny (FQDN) (takiej jak www\.contoso.com) na adres IP, który hostuje usługę sieci Web.
 
@@ -60,8 +60,8 @@ Jeśli nie masz jeszcze nazwy domeny, Kup ją w *rejestratorze nazw domen*. Proc
 
 Istnieje wiele sposobów uzyskiwania certyfikatu SSL (certyfikatu cyfrowego). Najbardziej powszechnym celem jest zakupienie jednego z *urzędów* certyfikacji (CA). Bez względu na to, gdzie otrzymujesz certyfikat, potrzebne są następujące pliki:
 
-* A **certyfikatu**. Certyfikat musi zawierać pełny łańcuch certyfikatów i musi być "zakodowany przez PEM".
-* A **klucz**. Klucz musi być również zakodowany przez PEM.
+* **Certyfikat**. Certyfikat musi zawierać pełny łańcuch certyfikatów i musi być "zakodowany przez PEM".
+* **Klucz**. Klucz musi być również zakodowany przez PEM.
 
 W przypadku żądania certyfikatu należy podać nazwę FQDN adresu, który ma być używany przez usługę sieci Web (na przykład www\.contoso.com). Adres, który jest umieszczony w certyfikacie i adres używany przez klientów, jest porównywany w celu zweryfikowania tożsamości usługi sieci Web. Jeśli te adresy nie są zgodne, klient otrzymuje komunikat o błędzie.
 
@@ -258,6 +258,6 @@ aks_target.update(update_config)
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Omawiane kwestie:
+Instrukcje:
 + [Korzystanie z modelu uczenia maszynowego wdrożonego jako usługa sieci Web](how-to-consume-web-service.md)
 + [Bezpieczne uruchamianie eksperymentów i wnioskowania wewnątrz sieci wirtualnej platformy Azure](how-to-enable-virtual-network.md)

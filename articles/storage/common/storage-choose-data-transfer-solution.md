@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 838d65da90ec0daef69375e5a75bcb497a0c3512
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: ada96d0d4b167e30cb6e271aa02d0d399a9ae7d3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900402"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303090"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Wybierz rozwiązanie platformy Azure na potrzeby transferu danych
 
@@ -29,7 +29,7 @@ Transfer danych może być w trybie offline lub za pośrednictwem połączenia s
 
 Przenoszenie danych może mieć następujące typy:
 
-- **Transfer w trybie offline przy użyciu urządzeń** z możliwością przewoźnicy — umożliwia korzystanie z fizycznych urządzeń do przesyłania w trybie offline jednorazowych transferów danych. Firma Microsoft wysyła dysk lub bezpieczne wyspecjalizowane urządzenie. Alternatywnie możesz kupić i dostarczyć własne dyski. Kopiujesz dane do urządzenia, a następnie wysyłasz je do platformy Azure, w której dane są przekazywane.  Dostępne opcje w tym przypadku to Data Box Disk, urządzenie Data Box, Data Box Heavy i importowania/eksportowania (używaj własnych dysków).
+- **Transfer w trybie offline przy użyciu urządzeń z możliwością przewoźnicy** — umożliwia korzystanie z fizycznych urządzeń do przesyłania w trybie offline jednorazowych transferów danych. Firma Microsoft wysyła dysk lub bezpieczne wyspecjalizowane urządzenie. Alternatywnie możesz kupić i dostarczyć własne dyski. Kopiujesz dane do urządzenia, a następnie wysyłasz je do platformy Azure, w której dane są przekazywane.  Dostępne opcje w tym przypadku to Data Box Disk, urządzenie Data Box, Data Box Heavy i importowania/eksportowania (używaj własnych dysków).
 
 - **Transfer sieciowy** — przenosisz dane na platformę Azure za pośrednictwem połączenia sieciowego. Można to zrobić na wiele sposobów.
 
@@ -42,7 +42,7 @@ W poniższej wizualizacji przedstawiono wskazówki pozwalające wybrać różne 
 
 ![Narzędzia transferu danych platformy Azure](media/storage-choose-data-transfer-solution/azure-data-transfer-options-3.png)
 
-**Górne limity urządzeń transferu w trybie offline — Data Box Disk, urządzenie Data Box i Data Box Heavy można rozszerzyć, umieszczając wiele zamówień typu urządzenia.*
+**górne limity urządzeń transferu w trybie offline — Data Box Disk, urządzenie Data Box i Data Box Heavy można rozszerzyć, umieszczając wiele zamówień typu urządzenia.*
 
 ## <a name="selecting-a-data-transfer-solution"></a>Wybieranie rozwiązania do transferu danych
 
@@ -50,20 +50,19 @@ Odpowiedz na następujące pytania, aby pomóc wybrać rozwiązanie do transferu
 
 - Czy dostępna przepustowość sieci jest ograniczona lub nieistniejąca i chcesz przenieść duże zestawy danych?
   
-    Jeśli tak, zobacz: [Scenariusz 1: Przesyłaj duże zestawy danych z niewielką przepustowością](storage-solution-large-dataset-low-network.md)sieci.
+    Jeśli tak, zobacz: [scenariusz 1: transfer dużych zestawów danych z niewielką przepustowością sieci](storage-solution-large-dataset-low-network.md).
 - Czy chcesz transferować duże zestawy danych przez sieć i masz umiarkowaną przepustowość sieci?
 
-    Jeśli tak, zobacz: [Scenariusz 2: Transferuj duże zestawy danych z umiarkowaną przepustowością](storage-solution-large-dataset-moderate-high-network.md)sieci.
+    Jeśli tak, zobacz: [Scenariusz 2: transfer dużych zestawów danych z umiarkowaną do dużej przepustowości sieci](storage-solution-large-dataset-moderate-high-network.md).
 - Czy chcesz czasami przenieść kilka plików za pośrednictwem sieci?
 
-    Jeśli tak, zobacz [Scenariusz 3: Transfer małych zestawów danych z ograniczoną przepustowością](storage-solution-small-dataset-low-moderate-network.md)sieci.
+    Jeśli tak, zobacz [Scenariusz 3: transfer małych zestawów danych z ograniczoną do umiarkowanej przepustowości sieci](storage-solution-small-dataset-low-moderate-network.md).
 - Czy szukasz w regularnych odstępach czasu na transfer danych z punktu widzenia?
 
-    Jeśli tak, użyj opcji skryptowych/programistycznych opisanych w [scenariuszu 4: Okresowe transfery](storage-solution-periodic-data-transfer.md)danych.
+    Jeśli tak, użyj opcji skryptowych/programistycznych opisanych w [scenariuszu 4: okresowe transfery danych](storage-solution-periodic-data-transfer.md).
 - Czy szukasz ciągłego transferu danych w toku?
 
-    Jeśli tak, użyj opcji w [scenariuszu 4: Okresowe transfery](storage-solution-periodic-data-transfer.md)danych.
- 
+    Jeśli tak, użyj opcji w [scenariuszu 4: okresowe transfery danych](storage-solution-periodic-data-transfer.md).
 
 ## <a name="data-transfer-feature-in-azure-portal"></a>Funkcja transferu danych w Azure Portal
 
@@ -74,7 +73,7 @@ Możesz również przejść do konta usługi Azure Storage w Azure Portal i wybr
 - [Zapoznaj się z wprowadzeniem do Eksplorator usługi Azure Storage](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
 - [Zapoznaj się z omówieniem AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
 - [Używanie Azure PowerShell z usługą Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
-- [Korzystanie z interfejsu wiersza polecenia platformy Azure z usługą Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
+- [Szybki Start: Tworzenie, pobieranie i wyświetlanie listy obiektów BLOB za pomocą interfejsu wiersza polecenia platformy Azure](../blobs/storage-quickstart-blobs-cli.md)
 - Dowiedz się więcej na temat:
 
     - [Azure Data Box, Azure Data Box Disk i Azure Data Box Heavy do transferów w trybie offline](https://docs.microsoft.com/azure/databox/).

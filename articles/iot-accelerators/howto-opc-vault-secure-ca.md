@@ -9,11 +9,11 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 88f8188779c5fb6b3cd07c67e9f35a6b8f9ad97d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200085"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381125"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>Bezpieczne uruchamianie usługi zarządzania certyfikatami magazynu OPC
 
@@ -34,13 +34,13 @@ Mikrousługa magazynu OPC definiuje następujące role:
 
 - **Czytelnik**: Domyślnie każdy uwierzytelniony użytkownik w dzierżawie ma dostęp do odczytu. 
   - Dostęp do odczytu do aplikacji i żądań certyfikatów. Może wyświetlać listę aplikacji i żądań certyfikatów oraz wykonywać dla nich zapytania. Również informacje o odnajdywaniu urządzeń i certyfikaty publiczne są dostępne z dostępem do odczytu.
-- **Składnik zapisywania**: Rola składnika zapisywania zostaje przypisana do użytkownika w celu dodania uprawnień do zapisu dla określonych zadań. 
+- **Składnik zapisywania**: rola składnika zapisywania zostaje przypisana do użytkownika, aby dodać uprawnienia do zapisu dla określonych zadań. 
   - Dostęp do odczytu i zapisu do aplikacji i żądań certyfikatów. Może rejestrować, aktualizować i wyrejestrować aplikacje. Może tworzyć żądania certyfikatów i uzyskiwać zatwierdzone klucze prywatne i certyfikaty. Można również usunąć klucze prywatne.
-- **Osoba zatwierdzająca**: Rola osoby zatwierdzającej jest przypisana do użytkownika w celu zatwierdzenia lub odrzucenia żądań certyfikatów. Rola nie obejmuje żadnej innej roli.
+- **Osoba zatwierdzająca**: rola osoby zatwierdzającej jest przypisana do użytkownika w celu zatwierdzenia lub odrzucenia żądań certyfikatów. Rola nie obejmuje żadnej innej roli.
   - Oprócz roli osoby zatwierdzającej, aby uzyskać dostęp do interfejsu API mikrousług magazynu OPC, użytkownik musi mieć również uprawnienie do podpisywania klucza w Azure Key Vault, aby można było podpisać certyfikaty.
   - Rola składnika zapisywania i osoby zatwierdzającej powinna być przypisana do różnych użytkowników.
   - Główną rolą osoby zatwierdzającej jest zatwierdzenie generacji i odrzucenie żądań certyfikatów.
-- **Administrator**: Rola Administrator jest przypisana do użytkownika w celu zarządzania grupami certyfikatów. Rola nie obsługuje roli osoby zatwierdzającej, ale zawiera rolę składnika zapisywania.
+- **Administrator**: rola administratora jest przypisana do użytkownika w celu zarządzania grupami certyfikatów. Rola nie obsługuje roli osoby zatwierdzającej, ale zawiera rolę składnika zapisywania.
   - Administrator może zarządzać grupami certyfikatów, zmieniać konfigurację i odwołać certyfikaty aplikacji, wydając nową listę odwołania certyfikatów (CRL).
   - W idealnym przypadku role składnika zapisywania, osoby zatwierdzającej i administratora są przypisywane do różnych użytkowników. Aby zwiększyć bezpieczeństwo, użytkownik z rolą osoby zatwierdzającej lub administratora wymaga również uprawnień do podpisywania kluczy w Key Vault, do wystawiania certyfikatów lub odnowienia certyfikatu urzędu certyfikacji wystawcy.
   - Oprócz roli administratora mikrousług rola obejmuje, ale nie ogranicza się do:
@@ -110,19 +110,19 @@ Przechowywanie spisu zasobów dla wszystkich hostów produkcyjnych (w tym trwał
 #### <a name="inventory-of-the-default-azure-opc-vault-microservice-production-deployment"></a>Spis domyślnego wdrażania mikrousług magazynu platformy Azure OPC 
 
 Na platformie Azure:
-- **Plan App Service**: Plan usługi App Service dla hostów usług. Domyślna wartość S1.
+- **Plan App Service**: plan usługi App Service dla hostów usług. Domyślna wartość S1.
 - **App Service** mikrousługi: Host usługi magazynu OPC.
 - **App Service** dla przykładowej aplikacji: Host przykładowej aplikacji magazynu OPC.
-- **Standard Key Vault**: Przechowywanie wpisów tajnych i kluczy Azure Cosmos DB dla usług sieci Web.
-- **Key Vault Premium**: Do hostowania kluczy urzędu certyfikacji wystawcy, dla usługi podpisywania oraz konfiguracji magazynu i magazynu kluczy prywatnych aplikacji.
-- **Azure Cosmos DB**: Baza danych dla żądań aplikacji i certyfikatów. 
+- **Key Vault Standard**: przechowywanie wpisów tajnych i kluczy Azure Cosmos DB dla usług sieci Web.
+- **Key Vault Premium**: do hostowania kluczy urzędu certyfikacji wystawcy, dla usługi podpisywania oraz konfiguracji magazynu i magazynu kluczy prywatnych aplikacji.
+- **Azure Cosmos DB**: baza danych dla żądań aplikacji i certyfikatów. 
 - **Application Insights**: (opcjonalnie) monitorowanie rozwiązania dla usług i aplikacji sieci Web.
 - **Rejestracja aplikacji usługi Azure AD**: Rejestracja dla przykładowej aplikacji, usługi i modułu brzegowego.
 
 W przypadku usług Cloud Services, wszystkie nazwy hostów, grupy zasobów, nazwy zasobów, identyfikatory subskrypcji i identyfikatory dzierżawy używane do wdrożenia usługi powinny być udokumentowane. 
 
 W Azure IoT Edge lub na lokalnym serwerze IoT Edge:
-- **Moduł IoT Edge magazynu OPC**: Aby zapewnić obsługę globalnego serwera odnajdywania OPC UA programu Factory Network. 
+- **Moduł IoT Edge magazynu OPC**: do obsługi globalnego serwera odnajdywania OPC UA sieci fabryki. 
 
 W przypadku urządzeń IoT Edge nazwy hostów i adresy IP powinny być udokumentowane. 
 
@@ -174,8 +174,8 @@ Usługa magazynu OPC jest urzędem certyfikacji online, który wystawia certyfik
   - Klucze głównego urzędu certyfikacji RSA o typowym okresie istnienia większym lub równym 20 lat muszą mieć wartość 4096 bitów lub większą.
   - Klucze urzędu certyfikacji wystawcy RSA muszą mieć co najmniej 2048 bitów. Jeśli data wygaśnięcia certyfikatu urzędu certyfikacji przypada po 2030, klucz urzędu certyfikacji musi mieć wartość 4096 bitów lub większą.
 - Okres istnienia certyfikatu
-  - Certyfikaty głównego urzędu certyfikacji: Maksymalny okres ważności certyfikatu dla głównych urzędów certyfikacji nie może przekroczyć 25 lat.
-  - Podrzędny urząd certyfikacji lub certyfikaty wystawcy urzędu certyfikacji w trybie online: Maksymalny okres ważności certyfikatu dla urzędów certyfikacji, które są w trybie online i tylko problemy z certyfikatami subskrybenta nie może przekroczyć 6 lat. Dla tych urzędów certyfikacji pokrewny klucz podpisu prywatnego nie może być używany dłużej niż 3 lata w celu wystawiania nowych certyfikatów.<br>
+  - Certyfikaty głównego urzędu certyfikacji: maksymalny okres ważności certyfikatu dla głównych urzędów certyfikacji nie może przekroczyć 25 lat.
+  - Podrzędny urząd certyfikacji lub certyfikaty wystawcy urzędu certyfikacji w trybie online: maksymalny okres ważności certyfikatu dla urzędów certyfikacji w trybie online i tylko problem z certyfikatami subskrybenta nie może przekroczyć 6 lat. Dla tych urzędów certyfikacji pokrewny klucz podpisu prywatnego nie może być używany dłużej niż 3 lata w celu wystawiania nowych certyfikatów.<br>
     > [!IMPORTANT]
     > Certyfikat wystawcy, który jest generowany w domyślnej mikrousługi magazynu OPC bez zewnętrznego głównego urzędu certyfikacji, jest traktowany jak podrzędny urząd certyfikacji online z odpowiednimi wymaganiami i okresami istnienia. Domyślny okres istnienia to 5 lat, z długością klucza większą lub równą 2048.
   - Wszystkie klucze asymetryczne muszą mieć maksymalny okres 5 lat, a zalecany okres ważności wynosi 1 rok.<br>
@@ -190,8 +190,8 @@ Usługa magazynu OPC jest urzędem certyfikacji online, który wystawia certyfik
 
 ### <a name="ca-keys-and-certificates-must-meet-minimum-requirements"></a>Klucze i certyfikaty urzędu certyfikacji muszą spełniać minimalne wymagania
 
-- **Klucze prywatne**: Klucze RSA muszą mieć co najmniej 2048 bitów. Jeśli data wygaśnięcia certyfikatu urzędu certyfikacji przypada po 2030, klucz urzędu certyfikacji musi mieć wartość 4096 bitów lub większą.
-- **Okres istnienia**: Maksymalny okres ważności certyfikatu dla urzędów certyfikacji, które są w trybie online i tylko problemy z certyfikatami subskrybenta nie może przekroczyć 6 lat. Dla tych urzędów certyfikacji pokrewny klucz podpisu prywatnego nie może być używany dłużej niż 3 lata w celu wystawiania nowych certyfikatów.
+- **Klucze prywatne**: klucze RSA muszą mieć co najmniej 2048 bitów. Jeśli data wygaśnięcia certyfikatu urzędu certyfikacji przypada po 2030, klucz urzędu certyfikacji musi mieć wartość 4096 bitów lub większą.
+- **Okres istnienia**: maksymalny okres ważności certyfikatu dla urzędów certyfikacji w trybie online i tylko problem z certyfikatami subskrybenta nie może przekroczyć 6 lat. Dla tych urzędów certyfikacji pokrewny klucz podpisu prywatnego nie może być używany dłużej niż 3 lata w celu wystawiania nowych certyfikatów.
 
 ### <a name="ca-keys-are-protected-using-hardware-security-modules"></a>Klucze urzędu certyfikacji są chronione za pomocą sprzętowych modułów zabezpieczeń
 
@@ -208,7 +208,7 @@ Udokumentowanie i Obsługa standardowych procedur operacyjnych (SPD) dotyczącyc
 - Jak żądanie certyfikatu jest przetwarzane i sprawdzane (jeśli ma to zastosowanie), należy również uwzględnić sposób przetwarzania żądań odnowienia i ponownego generowania certyfikatu. 
 - Jak wystawione certyfikaty są dystrybuowane do subskrybentów. 
 
-SOP magazynu OPC jest opisany w [architekturze magazynu OPC](overview-opc-vault-architecture.md) i [zarządzać usługą certyfikatów magazynu OPC](howto-opc-vault-manage.md). Poniżej zastosowana jest procedura "OPC Unified Architecture Specification część 12: Odnajdywanie i usługi globalne ".
+SOP magazynu OPC jest opisany w [architekturze magazynu OPC](overview-opc-vault-architecture.md) i [zarządzać usługą certyfikatów magazynu OPC](howto-opc-vault-manage.md). Poniżej zastosowana jest procedura "OPC Unified Architecture Specification część 12: odnajdywanie i usługi globalne".
 
 
 ### <a name="document-and-maintain-standard-operational-pki-practices-for-certificate-revocation"></a>Udokumentowanie i Obsługa standardowych praktyk infrastruktury PKI na potrzeby odwoływania certyfikatów

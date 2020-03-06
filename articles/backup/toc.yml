@@ -160,6 +160,8 @@
       items:
         - name: Z witryny Azure Portal
           items:
+            - name: Omówienie
+              href: azure-file-share-backup-overview.md
             - name: Backup
               href: backup-afs.md
             - name: Przywracanie
