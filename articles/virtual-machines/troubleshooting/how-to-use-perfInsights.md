@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058172"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389533"
 ---
 # <a name="how-to-use-perfinsights"></a>Korzystanie z narzędzia PerfInsights
 
@@ -73,21 +73,21 @@ W tym scenariuszu jest uruchamiany specjalny przechwycenie licznika wydajności 
 
 | **Typ**     | **Licznik udziałów klienta SMB** |
 |--------------|-------------------------------|
-| IOPS         | Żądania danych/s             |
+| Liczba operacji we/wy na sekundę         | Żądania danych/s             |
 |              | Żądania odczytu/s             |
 |              | Żądania zapisu/s            |
 | Opóźnienie      | Średnia liczba sekund/żądanie danych         |
 |              | Średni czas odczytu/odczyt                 |
 |              | Średni czas zapisu/s                |
-| Rozmiar we/wy      | Średni Bajty/żądanie danych       |
-|              | Średni Bajty/odczyt               |
-|              | Średni Bajty/zapis              |
+| Rozmiar we/wy      | Średnia liczba bajtów/żądanie danych       |
+|              | Średnia b/odczyt               |
+|              | Średnia liczba bajtów/zapis              |
 | Przepływność   | Bajty danych/s                |
 |              | Bajty odczytu/s                |
 |              | Bajty zapisu/s               |
-| Długość kolejki | Średni Długość kolejki odczytu        |
-|              | Średni Długość kolejki zapisu       |
-|              | Średni Długość kolejki danych        |
+| Długość kolejki | Średnia długość kolejki odczytu        |
+|              | Średnia długość kolejki zapisu       |
+|              | Średnia długość kolejki danych        |
 
 ### <a name="advanced-performance-analysis"></a>Zaawansowana analiza wydajności
 
@@ -104,20 +104,20 @@ Zbierane są informacje o konfiguracji maszyn wirtualnych systemu Windows, dysk�
 |Zebrane dane                              |  |  | Scenariusze wydajności |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
 |                               | Analiza szybkiej wydajności | Benchmarking | Analiza wydajności | Analiza Azure Files | Zaawansowana analiza wydajności |
-| Informacje z dzienników zdarzeń       | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Informacje o systemie                | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Mapa woluminów                        | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Mapa dysku                          | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Uruchamianie zadań                     | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Liczniki niezawodności magazynu      | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Informacje dotyczące magazynu               | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Fsutil Output                     | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Informacje o sterowniku filtru                | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Dane wyjściowe polecenia netstat                    | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Konfiguracja sieci             | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Konfiguracja zapory            | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Konfiguracja SQL Server          | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Ślady diagnostyki wydajności *  | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Informacje z dzienników zdarzeń       | Tak                        | Tak                                | Tak                      | Tak                  | Tak                  |
+| Informacje o systemie                | Tak                        | Tak                                | Tak                      | Tak                  | Tak                  |
+| Mapa woluminów                        | Tak                        | Tak                                | Tak                      | Tak                  | Tak                  |
+| Mapa dysku                          | Tak                        | Tak                                | Tak                      | Tak                  | Tak                  |
+| Uruchomione zadania                     | Tak                        | Tak                                | Tak                      | Tak                  | Tak                  |
+| Liczniki niezawodności magazynu      | Tak                        | Tak                                | Tak                      | Tak                  | Tak                  |
+| Informacje dotyczące magazynu               | Tak                        | Tak                                | Tak                      | Tak                  | Tak                  |
+| Fsutil Output                     | Tak                        | Tak                                | Tak                      | Tak                  | Tak                  |
+| Informacje o sterowniku filtru                | Tak                        | Tak                                | Tak                      | Tak                  | Tak                  |
+| Dane wyjściowe polecenia netstat                    | Tak                        | Tak                                | Tak                      | Tak                  | Tak                  |
+| Konfiguracja sieci             | Tak                        | Tak                                | Tak                      | Tak                  | Tak                  |
+| Konfiguracja zapory            | Tak                        | Tak                                | Tak                      | Tak                  | Tak                  |
+| Konfiguracja SQL Server          | Tak                        | Tak                                | Tak                      | Tak                  | Tak                  |
+| Ślady diagnostyki wydajności *  | Tak                        | Tak                                | Tak                      | Tak                  | Tak                  |
 | Śledzenie licznika wydajności * *      |                            |                                    | Tak                      |                      | Tak                  |
 | Śledzenie licznika SMB * *              |                            |                                    |                          | Tak                  |                      |
 | Śledzenie licznika SQL Server * *       |                            |                                    | Tak                      |                      | Tak                  |
@@ -131,10 +131,10 @@ Zbierane są informacje o konfiguracji maszyn wirtualnych systemu Windows, dysk�
 
 Uruchamia aparat oparty na regułach w tle w celu zbierania danych i diagnozowania bieżących problemów z wydajnością. Obecnie obsługiwane są następujące reguły:
 
-- Reguła HighCpuUsage: Wykrywa duże okresy użycia procesora CPU i pokazuje klientów użycia procesora CPU w tych okresach.
-- Reguła HighDiskUsage: Wykrywa duże okresy użycia dysku na dyskach fizycznych i pokazuje klientów użycia dysku w tych okresach.
-- Reguła HighResolutionDiskMetric: Przedstawia metryki czasowe IOPS, przepływności i operacji we/wy na 50 milisekund dla każdego dysku fizycznego. Ułatwia ona szybkie identyfikowanie okresów ograniczania dysku.
-- Reguła HighMemoryUsage: Wykrywa duże okresy użycia pamięci i pokazuje klientów korzystających z pamięci najczęściej w tych okresach.
+- Reguła HighCpuUsage: wykrywa duże okresy użycia procesora CPU i pokazuje klientów użycia procesora CPU w tych okresach.
+- Reguła HighDiskUsage: wykrywa duże okresy użycia dysku na dyskach fizycznych i pokazuje odbiorców w tych okresach.
+- Reguła HighResolutionDiskMetric: przedstawia metryki czasowe IOPS, przepływności i operacje we/wy na 50 milisekund dla każdego dysku fizycznego. Ułatwia ona szybkie identyfikowanie okresów ograniczania dysku.
+- Reguła HighMemoryUsage: wykrywa duże okresy użycia pamięci i pokazuje odbiorców w tych okresach.
 
 > [!NOTE] 
 > Obecnie obsługiwane są wersje systemu Windows, które zawierają .NET Framework 4,5 lub nowsze wersje.
@@ -252,8 +252,8 @@ W pliku **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. zip** można znaleź
 
 Wybierz kartę **wnioski** .
 
-![Zrzut ekranu przedstawiający](media/how-to-use-perfInsights/pi-finding-tab.png)
-![zrzut ekranu raportu że program perfinsights o że program perfinsights](media/how-to-use-perfInsights/pi-findings.png)
+![zrzut ekranu przedstawiający raport że program perfinsights](media/how-to-use-perfInsights/pi-finding-tab.png)
+![że program perfinsights raportu](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > Ustalenia sklasyfikowane jako duże są znanymi problemami, które mogą powodować problemy z wydajnością. Ustalenia sklasyfikowane jako średnie reprezentują nieoptymalne konfiguracje, które nie muszą powodować problemów z wydajnością. Ustalenia sklasyfikowane jako niskie są tylko w instrukcjach informacyjnych.
@@ -313,5 +313,5 @@ Poniższy zrzut ekranu przedstawia komunikat podobny do następującego:
 
 Postępuj zgodnie z instrukcjami wyświetlanymi w komunikacie, aby uzyskać dostęp do obszaru roboczego transferu plików. Aby zwiększyć bezpieczeństwo, należy zmienić hasło przy pierwszym użyciu.
 
-Po zalogowaniu zostanie wyświetlone okno dialogowe z przekazaniem pliku **\_PerformanceDiagnostics rrrr-mm-dd\_HH-mm-SS-FFF. zip** , który został zebrany przez że program perfinsights.
+Po zalogowaniu zostanie wyświetlone okno dialogowe z przekazaniem pliku **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. zip** , który został zebrany przez że program perfinsights.
 

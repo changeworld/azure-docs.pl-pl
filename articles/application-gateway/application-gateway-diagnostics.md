@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 1ddbc8e909c5ba0b720e893e87c0f495d256a886
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966928"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384806"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Zapasowe dzienniki kondycji i diagnostyczne dla Application Gateway
 
@@ -163,7 +163,7 @@ Dziennik dostępu jest generowany tylko wtedy, gdy włączono go na każdym wyst
 |instanceId     | Application Gateway wystąpienie, które obsłużyło żądanie.        |
 |clientIP     | Adres IP pochodzący od żądania.        |
 |clientPort     | Port źródłowy żądania.       |
-|HttpMethod     | Metoda HTTP używana przez żądanie.       |
+|httpMethod     | Metoda HTTP używana przez żądanie.       |
 |requestUri     | Identyfikator URI odebranego żądania.        |
 |RequestQuery     | **Serwer — rozesłane**: wystąpienie puli zaplecza, które wysłało żądanie.</br>**X-AzureApplicationGateway-log-ID**: identyfikator korelacji używany dla żądania. Może służyć do rozwiązywania problemów z ruchem na serwerach zaplecza. </br>**Serwer-stan**: kod odpowiedzi HTTP otrzymany Application Gateway od zaplecza.       |
 |UserAgent     | Agent użytkownika z nagłówka żądania HTTP.        |
@@ -207,7 +207,7 @@ W przypadku Application Gateway i WAF v2 dzienniki zawierają nieco więcej info
 |instanceId     | Application Gateway wystąpienie, które obsłużyło żądanie.        |
 |clientIP     | Adres IP pochodzący od żądania.        |
 |clientPort     | Port źródłowy żądania.       |
-|HttpMethod     | Metoda HTTP używana przez żądanie.       |
+|httpMethod     | Metoda HTTP używana przez żądanie.       |
 |requestUri     | Identyfikator URI odebranego żądania.        |
 |UserAgent     | Agent użytkownika z nagłówka żądania HTTP.        |
 |httpStatus     | Kod stanu HTTP zwrócony do klienta z Application Gateway.       |
@@ -264,7 +264,7 @@ Dziennik wydajności jest generowany tylko wtedy, gdy włączono go na każdym w
 |requestCount     | Liczba obsłużonych żądań.        |
 |opóźnienie | Średnie opóźnienie (w milisekundach) żądań z wystąpienia do zaplecza, który obsługuje żądania. |
 |failedRequestCount| Liczba żądań zakończonych niepowodzeniem.|
-|Przepływność| Średnia przepływność od ostatniego dziennika, mierzona w bajtach na sekundę.|
+|wydajność| Średnia przepływność od ostatniego dziennika, mierzona w bajtach na sekundę.|
 
 ```json
 {

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0050112dc7d9d2fa20da612691f1ff0927df93fb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662352"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385332"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Metryki niestandardowe w Azure Monitor
 
@@ -156,13 +156,17 @@ Nie ma potrzeby definiowania wstępnie zdefiniowanej metryki niestandardowej w A
 
 ## <a name="using-custom-metrics"></a>Korzystanie z metryk niestandardowych
 Po przesłaniu metryk niestandardowych do Azure Monitor można je przeglądać za pośrednictwem Azure Portal i wysyłać do nich zapytania za pośrednictwem Azure Monitor interfejsów API REST. Możesz również utworzyć na nich alerty, aby powiadomić Cię, gdy zostaną spełnione określone warunki.
+
+> [!NOTE]
+> Aby wyświetlić metryki niestandardowe, musisz być rolą czytelnika lub współautora.
+
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Przeglądaj niestandardowe metryki za pomocą Azure Portal
-1.  Przejdź do witryny [Azure Portal](https://portal.azure.com).
-2.  Wybierz okienko **monitorowanie** .
-3.  Wybierz pozycję **Metryki**.
-4.  Wybierz zasób, względem którego wyemitowano metryki niestandardowe.
-5.  Wybierz przestrzeń nazw metryk dla metryki niestandardowej.
-6.  Wybierz metrykę niestandardową.
+1.    Przejdź do witryny [Azure Portal](https://portal.azure.com).
+2.    Wybierz okienko **monitorowanie** .
+3.    Wybierz pozycję **Metryki**.
+4.    Wybierz zasób, względem którego wyemitowano metryki niestandardowe.
+5.    Wybierz przestrzeń nazw metryk dla metryki niestandardowej.
+6.    Wybierz metrykę niestandardową.
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 W publicznej wersji zapoznawczej możliwość publikowania metryk niestandardowych jest dostępna tylko w podzbiorze regionów świadczenia usługi Azure. To ograniczenie oznacza, że metryki mogą być publikowane tylko dla zasobów w jednym z obsługiwanych regionów. W poniższej tabeli przedstawiono zestaw obsługiwanych regionów świadczenia usługi Azure dla metryk niestandardowych. Wyświetla także odpowiednie punkty końcowe, które metryki dla zasobów w tych regionach powinny być publikowane w:

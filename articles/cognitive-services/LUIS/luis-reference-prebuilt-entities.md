@@ -12,11 +12,11 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270582"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396779"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Jednostki na kulturę w modelu LUIS
 
@@ -25,7 +25,7 @@ Language Understanding (LUIS) oferuje wstępnie utworzonych jednostek. W przypad
 |Kultura|Podhodowli|Uwagi|
 |--|--|--|
 |Chiński|[zh-CN](#chinese-entity-support)||
-|Holenderski|[NL-NL](#dutch-entity-support)||
+|holenderski|[NL-NL](#dutch-entity-support)||
 |Polski|[EN-US (American)](#english-american-entity-support)||
 |Francuski|[fr — CA (Kanada)](#french-canadian-entity-support), [fr-fr (Francja)](#french-france-entity-support), ||
 |Niemiecki|[de-DE](#german-entity-support)||

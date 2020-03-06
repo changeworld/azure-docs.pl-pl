@@ -4,11 +4,11 @@ description: Opisuje sposób partycjonowania Service Fabric usługi stanowe. Par
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434062"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390200"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Dzielenie Service Fabric niezawodnych usług
 Ten artykuł zawiera wprowadzenie do podstawowych pojęć dotyczących partycjonowania Service Fabric niezawodnych usług Azure. Kod źródłowy używany w artykule jest również dostępny w witrynie [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).

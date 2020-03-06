@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604334"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392512"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Wycofanie funkcji Security Center (lipiec 2019)
 
@@ -130,7 +130,7 @@ Aby utworzyć niestandardowe alerty za pomocą platformy Azure — wskaźnik:
 
 Jeśli nie interesuje Cię korzystanie z platformy Azure, możesz utworzyć alerty za pomocą alertów dziennika Azure Monitor. Aby uzyskać instrukcje, zobacz [Tworzenie i wyświetlanie alertów dzienników oraz zarządzanie nimi przy użyciu Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) i [rejestrowania alertów w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
-![Niestandardowe alerty][13]
+![Alerty niestandardowe][13]
 
 Aby uzyskać więcej informacji na temat wycofywania alertów niestandardowych, zobacz [niestandardowe reguły alertów w Azure Security Center (wersja zapoznawcza)](https://docs.microsoft.com/azure/security-center/security-center-custom-alert).
 

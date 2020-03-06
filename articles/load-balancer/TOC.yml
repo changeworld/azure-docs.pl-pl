@@ -12,7 +12,8 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Tworzenie modułu równoważenia obciążenia — PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Tworzenie modułu równoważenia obciążenia — szablon
+    - name: Tworzenie modułu równoważenia obciążenia — szablon usługi ARM
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
   expanded: true
 - name: Samouczki

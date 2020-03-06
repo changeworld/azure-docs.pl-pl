@@ -48,6 +48,8 @@
   href: code-samples.md
 - name: Pojęcia
   items:
+    - name: Najlepsze rozwiązania dotyczące usługi Azure AD B2C
+      href: best-practices.md
     - name: Typy aplikacji
       href: application-types.md
     - name: Protokoły uwierzytelniania

@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 786b21e7571ed173d2da90f587a5b76d8c92a13d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450885"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390738"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Zarządzanie standardem Azure DDoS Protection przy użyciu Azure Portal
 
@@ -44,7 +44,7 @@ Tworzenie więcej niż jednego planu nie jest wymagane w przypadku większości 
 
     |Ustawienie        |Wartość                                              |
     |---------      |---------                                          |
-    |Nazwa           | myDdosProtectionPlan                              |
+    |Name (Nazwa)           | myDdosProtectionPlan                              |
     |Subskrypcja   | Wybierz subskrypcję.                         |
     |Grupa zasobów | Wybierz pozycję **Utwórz nową** i wprowadź nazwę *zasobu* |
     |Lokalizacja       | Wschodnie stany USA                                           |
@@ -57,7 +57,7 @@ Tworzenie więcej niż jednego planu nie jest wymagane w przypadku większości 
 
     | Ustawienie         | Wartość                                                        |
     | ---------       | ---------                                                    |
-    | Nazwa            | myVirtualNetwork                                             |
+    | Name (Nazwa)            | myVirtualNetwork                                             |
     | Subskrypcja    | Wybierz subskrypcję.                                    |
     | Grupa zasobów  | Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**. |
     | Lokalizacja        | Wschodnie stany USA                                                      |
@@ -71,7 +71,7 @@ Nie można przenieść sieci wirtualnej do innej grupy zasobów lub subskrypcji,
 2. Wybierz pozycję **Utwórz zasób** w lewym górnym rogu Azure Portal.
 3. Wprowadź nazwę sieci wirtualnej, dla której chcesz włączyć DDoS Protection Standard dla w **polu Wyszukaj zasoby, usługi i dokumenty** w górnej części portalu. Gdy nazwa sieci wirtualnej pojawi się w wynikach wyszukiwania, wybierz ją.
 4. W obszarze **Ustawienia**wybierz pozycję **Ochrona DDoS**.
-5. Wybierz pozycję **Standardowy**. W obszarze **Plan ochrony DDoS**wybierz istniejący plan ochrony DDoS lub plan, który został utworzony w kroku 1, a następnie wybierz pozycję **Zapisz**. Wybrany plan może być w tej samej lub innej subskrypcji niż sieć wirtualna, ale obie subskrypcje muszą być skojarzone z tą samą dzierżawą Azure Active Directory.
+5. Wybierz opcję **Standardowa**. W obszarze **Plan ochrony DDoS**wybierz istniejący plan ochrony DDoS lub plan, który został utworzony w kroku 1, a następnie wybierz pozycję **Zapisz**. Wybrany plan może być w tej samej lub innej subskrypcji niż sieć wirtualna, ale obie subskrypcje muszą być skojarzone z tą samą dzierżawą Azure Active Directory.
 
 **Polecenia** 
 - Interfejs wiersza polecenia platformy Azure: [AZ Network DDoS-Protection Create](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-create)
@@ -107,14 +107,14 @@ Można wybrać dowolną z dostępnych metryk ochrony DDoS, aby poinformować uż
 
     |Ustawienie                  |Wartość                                                                                               |
     |---------                |---------                                                                                           |
-    |Nazwa                     | myDdosAlert                                                                                        |
+    |Name (Nazwa)                     | myDdosAlert                                                                                        |
     |Subskrypcja             | Wybierz subskrypcję zawierającą publiczny adres IP, dla którego chcesz otrzymywać alerty.        |
     |Grupa zasobów           | Wybierz grupę zasobów zawierającą publiczny adres IP, dla którego chcesz otrzymywać alerty.      |
     |Zasób                 | Wybierz publiczny adres IP, który zawiera publiczny adres IP, dla którego chcesz otrzymywać alerty. DDoS monitoruje publiczne adresy IP przypisane do zasobów w ramach sieci wirtualnej. Jeśli nie masz żadnych zasobów z publicznymi adresami IP w sieci wirtualnej, musisz najpierw utworzyć zasób z publicznym adresem IP. Możesz monitorować publiczny adres IP wszystkich zasobów wdrożonych za pomocą Menedżer zasobów (nieklasyczny) wymienionych w [sieci wirtualnej dla usług platformy Azure](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), z wyjątkiem środowisk Azure App Service i platformy Azure VPN Gateway. Aby kontynuować pracę z tym samouczkiem, możesz szybko utworzyć maszynę wirtualną z [systemem Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) .                   |
     |Metryka                   | W obszarze atak DDoS                                                                            |
     |Próg                | 1- **1** oznacza, że jesteś w trakcie ataku. **0** oznacza, że nie jesteś w trakcie ataku.                         |
     |Okres                   | Wybierz dowolną wybraną wartość.                                                                   |
-    |Powiadom pocztą E-mail         | Zaznacz to pole wyboru.                                                                                  |
+    |Powiadom pocztą E-mail         | Zaznacz pole wyboru                                                                                  |
     |Dodatkowy administrator | Wprowadź swój adres e-mail, jeśli nie jesteś właścicielem, współautorem lub czytelnikem poczty e-mail dla subskrypcji. |
 
     W ciągu kilku minut wykrywania ataków otrzymasz wiadomość e-mail od Azure Monitor metryk, które wyglądają podobnie do poniższej ilustracji:
@@ -230,7 +230,7 @@ Alerty obejmują ogólne informacje o publicznym adresie IP, który jest objęty
 
 Aby można było korzystać z planów ochrony DDoS, Twoje konto musi być przypisane do roli [współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) lub do roli [niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , do której przypisano odpowiednie działania wymienione w poniższej tabeli:
 
-| Działanie                                            | Nazwa                                     |
+| Akcja                                            | Name (Nazwa)                                     |
 | ---------                                         | -------------                            |
 | Microsoft.Network/ddosProtectionPlans/read        | Odczytaj plan ochrony DDoS              |
 | Microsoft.Network/ddosProtectionPlans/write       | Utwórz lub zaktualizuj plan ochrony DDoS  |

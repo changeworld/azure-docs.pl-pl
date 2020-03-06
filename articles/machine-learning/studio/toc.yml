@@ -8,20 +8,20 @@
       href: what-is-ml-studio.md
     - name: Porównanie naszych produktów do uczenia maszynowego
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
-- name: Samouczki
+- name: Przewodniki Szybki start
   items:
     - name: Tworzenie pierwszego eksperymentu
       displayName: quickstart
       href: create-experiment.md
-    - name: Tworzenie rozwiązania do analizy predykcyjnej
-      items:
-        - name: 1 — Tworzenie eksperymentu
-          href: tutorial-part1-credit-risk.md
-        - name: 2 — Trenowanie i ocena
-          href: tutorial-part2-credit-risk-train.md
-        - name: 3 — Wdrażanie usługi internetowej
-          href: tutorial-part3-credit-risk-deploy.md
-- name: Przykłady
+- name: Samouczki
+  items:
+    - name: 1. Tworzenie eksperymentu predykcyjnego
+      href: tutorial-part1-credit-risk.md
+    - name: 2. Szkolenie i ocenianie rozwiązania
+      href: tutorial-part2-credit-risk-train.md
+    - name: 3. Wdrażanie usługi internetowej
+      href: tutorial-part3-credit-risk-deploy.md
+- name: Samples
   items:
     - name: Dostępne zestawy danych
       href: use-sample-datasets.md
@@ -48,7 +48,7 @@
   items:
     - name: Zarządzanie obszarem roboczym
       items:
-        - name: Przycisk Utwórz
+        - name: Utwórz
           href: create-workspace.md
         - name: Zarządzanie
           href: manage-workspace.md

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 0a20ea4236683e26c51bc75309435c65e24271d7
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510264"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396749"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę przy użyciu witryny Azure portal
 
@@ -24,7 +24,7 @@ Aby uzyskać więcej informacji, zobacz [opis IoT Edge wdrożenia automatyczne d
 
 ## <a name="identify-devices-using-tags"></a>Identyfikowanie urządzeń za pomocą tagów
 
-Przed utworzeniem wdrożenia, musisz mieć możliwość określenia urządzeń, które mają wpływ na. Usługa Azure IoT Edge identyfikuje urządzenia przy użyciu **tagi** w bliźniaczej reprezentacji urządzenia. Każde urządzenie może mieć wiele tagów zdefiniowanych w dowolny sposób, który ma sens dla danego rozwiązania.
+Przed utworzeniem wdrożenia, musisz mieć możliwość określenia urządzeń, które mają wpływ na. Azure IoT Edge identyfikuje urządzenia przy użyciu **tagów** z sznurka urządzenia. Każde urządzenie może mieć wiele tagów zdefiniowanych w dowolny sposób, który ma sens dla danego rozwiązania.
 
 Na przykład, Jeśli zarządzasz kampusami z inteligentnymi budynkami, możesz dodać do urządzenia następujące znaczniki lokalizacji, typu pokoju i środowiska:
 
@@ -39,7 +39,7 @@ Na przykład, Jeśli zarządzasz kampusami z inteligentnymi budynkami, możesz d
 }
 ```
 
-Aby uzyskać więcej informacji na temat tagów i bliźniacze reprezentacje urządzeń, zobacz [poznawanie i używanie bliźniaczych reprezentacji urządzeń w usłudze IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
+Aby uzyskać więcej informacji na temat bliźniaczych reprezentacji i tagów urządzeń, zobacz [Omówienie i używanie urządzenia bliźniaczych reprezentacji w IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
 
 ## <a name="create-a-deployment"></a>Tworzenie wdrożenia
 
@@ -55,7 +55,7 @@ Istnieje pięć kroków, aby utworzyć wdrożenie. Poniższe sekcje przeprowadz�
 
 ### <a name="step-1-name-and-label"></a>Krok 1. nazwa i etykieta
 
-1. Nadaj wdrożenia unikatową nazwę, która jest maksymalnie 128 małe litery. Należy unikać miejsca do magazynowania i następujące nieprawidłowe znaki: `& ^ [ ] { } \ | " < > /`.
+1. Nadaj wdrożenia unikatową nazwę, która jest maksymalnie 128 małe litery. Unikaj spacji i następujących nieprawidłowych znaków: `& ^ [ ] { } \ | " < > /`.
 1. Etykiety można dodawać jako pary klucz-wartość, aby ułatwić śledzenie wdrożeń. Na przykład **HostPlatform** i **Linux**, lub **wersja** i **3.0.1**.
 1. Wybierz kolejno pozycje **Następny: moduły** , aby przejść do kroku 2.
 
@@ -79,16 +79,16 @@ Aby dodać niestandardowy kod jako moduł lub ręcznie Dodaj moduł usługi Azur
 1. W sekcji **IoT Edge modułów** na stronie kliknij pozycję **Dodaj**.
 1. Wybierz **moduł IoT Edge** z menu rozwijanego.
 1. Nadaj modułowi **IoT Edge nazwę modułu**.
-1. Aby uzyskać **identyfikator URI obrazu** wprowadź obrazu kontenera dla modułu.
-1. Użyj menu rozwijanego, aby wybrać **zasady ponownego uruchamiania**. Wybierz jedną z następujących opcji:
+1. W polu **Identyfikator URI obrazu** wprowadź obraz kontenera dla modułu.
+1. Użyj menu rozwijanego, aby wybrać **zasady ponownego uruchamiania**. Wybierz spośród następujących opcji:
    * **zawsze** — moduł zawsze jest uruchamiany ponownie, jeśli z jakiegoś powodu zostanie zamknięty.
    * **nigdy** — moduł nigdy nie jest ponownie uruchamiany, jeśli z jakiegoś powodu zostanie zamknięty.
    * w przypadku niepowodzenia — moduł jest uruchamiany ponownie w przypadku awarii, ale nie w przypadku jego **nieprawidłowego** zamknięcia.
    * **w złej kondycji** — moduł jest uruchamiany ponownie, jeśli ulegnie awarii lub zwróci stan złej kondycji. To Ty każdego modułu, aby zaimplementować funkcję stan kondycji.
-1. Użyj menu rozwijanego, aby wybrać **żądanego stanu** dla modułu. Wybierz jedną z następujących opcji:
+1. Użyj menu rozwijanego, aby wybrać **żądany stan** modułu. Wybierz spośród następujących opcji:
    * **uruchomiona** jest opcja domyślna. Moduł zostanie uruchomione natychmiast po wdrożeniu.
    * **zatrzymano** — po wdrożeniu moduł pozostanie bezczynny do momentu wywołania przez użytkownika lub innego modułu.
-1. Określ dowolne **opcje tworzenia kontenera** powinien zostać przekazany do kontenera. Aby uzyskać więcej informacji, zobacz [docker Utwórz](https://docs.docker.com/engine/reference/commandline/create/).
+1. Określ wszelkie **Opcje tworzenia kontenera** , które powinny być przesyłane do kontenera. Aby uzyskać więcej informacji, zobacz [Docker Create](https://docs.docker.com/engine/reference/commandline/create/).
 1. Wybierz pozycję **Ustawienia sznurka modułu** , jeśli chcesz dodać Tagi lub inne właściwości do sznurka modułu.
 1. Wprowadź **zmienne środowiskowe** dla tego modułu. Zmienne środowiskowe udostępniają informacje o konfiguracji do modułu.
 1. Wybierz pozycję **Dodaj** , aby dodać moduł do wdrożenia.
@@ -109,7 +109,7 @@ Aby dodać moduł z usługi Azure Stream Analytics, wykonaj następujące kroki:
 1. Wybierz **moduł Azure Stream Analytics** z menu rozwijanego.
 1. W prawym okienku wybierz swoją **subskrypcję**.
 1. Wybierz zadanie IoT **Edge**.
-1. Wybierz **Zapisz** można dodać modułu do wdrożenia.
+1. Wybierz pozycję **Zapisz** , aby dodać moduł do wdrożenia.
 
 #### <a name="configure-module-settings"></a>Konfigurowanie ustawień modułu
 
@@ -127,7 +127,7 @@ Po skonfigurowaniu wszystkich modułów dla wdrożenia wybierz pozycję **Dalej:
 
 Trasy definiują, jak moduły komunikują się ze sobą w ramach danego wdrożenia. Domyślnie Kreator udostępnia trasę o nazwie **nadrzędny** i zdefiniowany jako **od/messages/\* do $upstream**, co oznacza, że wszystkie komunikaty przesyłane przez wszystkie moduły są wysyłane do centrum IoT Hub.  
 
-Dodawanie lub aktualizowanie tras przy użyciu informacji z [zadeklarować trasy](module-composition.md#declare-routes), a następnie wybierz **dalej** można przejść do sekcji przeglądu.
+Dodaj lub zaktualizuj trasy z informacjami z [deklaracji trasy](module-composition.md#declare-routes), a następnie wybierz pozycję **dalej** , aby przejść do sekcji Przegląd.
 
 Wybierz pozycję **Dalej: metryki**.
 
@@ -139,7 +139,7 @@ Metryki zawierają podsumowanie liczb różnych stanów, które urządzenie moż
 
 1. Wprowadź zapytanie dla **kryteriów metryki**. Zapytanie jest oparte na IoT Edge [raportowanych właściwościach](module-edgeagent-edgehub.md#edgehub-reported-properties)modułu centrum. Metryka reprezentuje liczbę wierszy zwracanych przez zapytanie.
 
-   Przykład:
+   Na przykład:
 
    ```sql
    SELECT deviceId FROM devices
@@ -158,8 +158,8 @@ Jeśli wiele wdrożeń jest przeznaczonych dla tego samego urządzenia, zostanie
 
 Każde wdrożenie warstwowe ukierunkowane na urządzenie musi mieć wyższy priorytet niż wdrożenie podstawowe, aby można je było zastosować.
 
-1. Wprowadź dodatnią liczbę całkowitą dla wdrożenia **priorytet**.
-1. Wprowadź **warunek docelowy** do określenia urządzeń, które zostaną objęte tego wdrożenia. Warunek jest oparty na tagach bliźniaczych urządzeń lub w raportowanych właściwościach urządzenia i powinien być zgodny z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.reported.devicemodel='4000x'`.
+1. Wprowadź dodatnią liczbę całkowitą dla **priorytetu**wdrożenia.
+1. Wprowadź **warunek docelowy** , aby określić, które urządzenia będą ukierunkowane na to wdrożenie. Warunek jest oparty na tagach bliźniaczych urządzeń lub w raportowanych właściwościach urządzenia i powinien być zgodny z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.reported.devicemodel='4000x'`.
 
 Wybierz pozycję **Dalej: Przejrzyj i Utwórz** , aby przejść do ostatniego kroku.
 
@@ -172,17 +172,17 @@ Przejrzyj informacje o wdrożeniu, a następnie wybierz pozycję **Utwórz**.
 Aby wyświetlić szczegóły wdrożenia i monitorowania urządzeń, w których jest on uruchomiony, wykonaj następujące kroki:
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do IoT Hub.
-1. Wybierz **usługi IoT Edge**.
+1. Wybierz **IoT Edge**.
 1. Wybierz kartę **wdrożenia IoT Edge** .
 
    ![Wyświetl wdrożenia usługi IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Sprawdź, czy lista wdrożenia. Dla każdego wdrożenia można wyświetlić następujące informacje:
-   * **Identyfikator** — Nazwa wdrożenia.
+   * **Identyfikator** — nazwa wdrożenia.
    * **Typ** — **typ wdrożenia, wdrożenie lub** **wdrożenie warstwowe**.
    * **Warunek docelowy** — tag używany do definiowania urządzeń docelowych.
-   * **Priorytet** — numer priorytetu, przypisanych do wdrożenia.
-   * **Metryki systemu** - **docelowych** określa liczbę bliźniaczych reprezentacji urządzeń w usłudze IoT Hub, który odpowiada warunkowi określania wartości docelowej i **zastosowano** określa liczbę urządzeń, które mają Gdyby zawartości wdrożenia są stosowane do ich bliźniaczych reprezentacjach modułów usługi IoT Hub.
+   * **Priorytet** — numer priorytetu przypisany do wdrożenia.
+   * **Metryki systemu** - określania wartości **docelowej** określa liczbę urządzeń w IoT Hub, które pasują do warunku określania wartości docelowej, i **zastosowano** określa liczbę urządzeń, na których zastosowano zawartość wdrożenia do ich modułu bliźniaczych reprezentacji w IoT Hub.
    * **Metryki urządzeń** — liczba urządzeń IoT Edge w przypadku powodzenia lub błędów raportowania wdrożenia w środowisku uruchomieniowym klienta IoT Edge.
    * **Metryki niestandardowe** — liczba IoT Edge urządzeń w danych raportowania wdrożenia dla wszystkich metryk zdefiniowanych dla wdrożenia.
    * **Czas utworzenia** — sygnatura czasowa od momentu utworzenia wdrożenia. Sygnatura czasowa jest używany na przerwanie ties, gdy dwa wdrożenia mają ten sam priorytet.
@@ -202,7 +202,7 @@ Jeśli zaktualizujesz warunek docelowy, zachodzą następujące aktualizacje:
 Aby zmodyfikować wdrożenie, użyj następujących kroków:
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do IoT Hub.
-1. Wybierz **usługi IoT Edge**.
+1. Wybierz **IoT Edge**.
 1. Wybierz kartę **wdrożenia IoT Edge** .
 
    ![Wyświetl wdrożenia usługi IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)
@@ -213,18 +213,18 @@ Aby zmodyfikować wdrożenie, użyj następujących kroków:
    * **Metryki** — można modyfikować lub usuwać zdefiniowane metryki lub dodawać nowe.
    * **Etykiety**
    * **Moduły**
-   * **Trasy**
+   * **Rozsyłan**
    * **Wdrożenie**
 
 1. Wybierz pozycję **Zapisz**.
-1. Postępuj zgodnie z instrukcjami w [monitorowania wdrożeń](#monitor-a-deployment) obejrzeć zmiany wprowadzane.
+1. Wykonaj kroki opisane w sekcji [monitorowanie wdrożenia](#monitor-a-deployment) , aby obejrzeć zmiany.
 
 ## <a name="delete-a-deployment"></a>Usuwanie wdrożenia
 
 Po usunięciu wdrożenia wszystkie wdrożone urządzenia przyjmą kolejne wdrożenie o najwyższym priorytecie. Jeśli urządzenia nie spełniają warunek docelowy wszystkich innych wdrożeń, następnie modułów nie są usuwane po usunięciu wdrożenia.
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do IoT Hub.
-1. Wybierz **usługi IoT Edge**.
+1. Wybierz **IoT Edge**.
 1. Wybierz kartę **wdrożenia IoT Edge** .
 
    ![Wyświetl wdrożenia usługi IoT Edge](./media/how-to-deploy-monitor/iot-edge-deployments.png)

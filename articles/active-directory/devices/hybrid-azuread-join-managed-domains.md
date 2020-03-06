@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17bfbc29f38230dc2533c9ccc63cdee4fc776717
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512112"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377049"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Samouczek: konfigurowanie dołączania hybrydowego do usługi Azure Active Directory dla domen zarządzanych
 
@@ -32,7 +32,7 @@ W tym samouczku dowiesz się, jak skonfigurować sprzężenie hybrydowe usługi 
 
 Środowisko zarządzane można wdrożyć za pomocą [synchronizacji skrótów haseł (PHS)](../hybrid/whatis-phs.md) lub [uwierzytelniania przekazującego (PTA)](../hybrid/how-to-connect-pta.md) z [bezproblemowym logowaniem jednokrotnym](../hybrid/how-to-connect-sso.md). Te scenariusze nie wymagają konfigurowania serwera federacyjnego na potrzeby uwierzytelniania.
 
-Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Konfigurowanie dołączenia hybrydowego do usługi Azure AD
@@ -88,7 +88,7 @@ Aby skonfigurować dołączanie hybrydowe do usługi Azure AD przy użyciu progr
 
 1. Uruchom Azure AD Connect, a następnie wybierz pozycję **Konfiguruj**.
 
-   ![Zapraszamy!](./media/hybrid-azuread-join-managed-domains/11.png)
+   ![Powitanie](./media/hybrid-azuread-join-managed-domains/11.png)
 
 1. Na stronie **dodatkowe zadania** wybierz pozycję **Konfiguruj opcje urządzenia**, a następnie wybierz przycisk **dalej**.
 
@@ -96,7 +96,7 @@ Aby skonfigurować dołączanie hybrydowe do usługi Azure AD przy użyciu progr
 
 1. Na stronie **Przegląd** wybierz pozycję **dalej**.
 
-   ![Przegląd](./media/hybrid-azuread-join-managed-domains/13.png)
+   ![Omówienie](./media/hybrid-azuread-join-managed-domains/13.png)
 
 1. Na stronie **Łączenie z usługą Azure AD** wprowadź poświadczenia administratora globalnego dzierżawy usługi Azure AD.  
 
@@ -108,7 +108,7 @@ Aby skonfigurować dołączanie hybrydowe do usługi Azure AD przy użyciu progr
 
 1. Na stronie **SCP** dla każdego lasu, w którym chcesz Azure AD Connect skonfigurować punkt połączenia usługi, wykonaj następujące czynności, a następnie wybierz przycisk **dalej**:
 
-   ![Punkt połączenia z usługą](./media/hybrid-azuread-join-managed-domains/16.png)
+   ![SCP](./media/hybrid-azuread-join-managed-domains/16.png)
 
    1. Wybierz las.
    1. Wybierz usługę uwierzytelniania.
@@ -120,7 +120,7 @@ Aby skonfigurować dołączanie hybrydowe do usługi Azure AD przy użyciu progr
 
 1. Na stronie **gotowy do skonfigurowania** wybierz pozycję **Konfiguruj**.
 
-   ![Wszystko gotowe do skonfigurowania](./media/hybrid-azuread-join-managed-domains/19.png)
+   ![Wszystko gotowe do konfiguracji](./media/hybrid-azuread-join-managed-domains/19.png)
 
 1. Na stronie **Konfiguracja ukończona** wybierz pozycję **Zakończ**.
 
@@ -170,7 +170,7 @@ Korzystając z polecenia cmdlet **Get-MSolDevice** , można sprawdzić szczegó�
 
 **Aby sprawdzić szczegóły usługi**:
 
-1. Uruchom program Windows PowerShell jako administrator.
+1. Otwórz program Windows PowerShell jako administrator.
 1. Wprowadź `Connect-MsolService`, aby nawiązać połączenie z dzierżawcą platformy Azure.  
 1. Wprowadź polecenie `get-msoldevice -deviceId <deviceId>`.
 1. Upewnij się, że opcja **Włączone** ma wartość **Prawda**.

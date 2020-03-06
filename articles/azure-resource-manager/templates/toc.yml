@@ -1,8 +1,8 @@
-- name: Dokumentacja szablonów usługi Azure Resource Manager
+- name: Dokumentacja szablonów usługi ARM
   href: index.yml
 - name: Omówienie
   items:
-    - name: Co to są szablony usługi Azure Resource Manager?
+    - name: Co to są szablony usługi ARM?
       href: overview.md
 - name: Przewodniki Szybki start
   items:

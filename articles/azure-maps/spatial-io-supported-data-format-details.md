@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cbeb1ccaed6ec2c62aaa731e88fcefbe84d1df02
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: fff801731c3c3a94b4039a8c65ad8ccaab7cc725
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370884"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402744"
 ---
 # <a name="supported-data-format-details"></a>Szczegóły obsługiwanego formatu danych
 
@@ -45,7 +45,7 @@ Moduł operacji we/wy jest obsługiwany przez następujące elementy XML. Wszyst
 
 Moduł operacji we/wy jest obsługiwany przez następujące elementy KML.
 
-| Nazwa elementu         | Odczyt    | Zapis   | Uwagi                                                                                                                      |
+| Nazwa elementu         | Odczytywanie    | Zapisywanie   | Uwagi                                                                                                                      |
 |----------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------|
 | `address`            | partial | tak     | Obiekt jest analizowany, ale nie jest używany do pozycjonowania kształtu.                                                                    |
 | `AddressDetails`     | partial | nie      | Obiekt jest analizowany, ale nie jest używany do pozycjonowania kształtu.                                                                    |
@@ -131,7 +131,7 @@ Moduł operacji we/wy jest obsługiwany przez następujące elementy KML.
 
 Moduł operacji we/wy jest obsługiwany przez następujące elementy GeoRSS.
 
-| Nazwa elementu             | Odczyt    | Zapis | Uwagi                                                                                          |
+| Nazwa elementu             | Odczytywanie    | Zapisywanie | Uwagi                                                                                          |
 |--------------------------|---------|-------|------------------------------------------------------------------------------------------------|
 | `atom:author`            | tak     | tak   |                                                                                                |
 | `atom:category`          | tak     | tak   |                                                                                                |
@@ -203,7 +203,7 @@ Moduł operacji we/wy jest obsługiwany przez następujące elementy GeoRSS.
 
 Moduł operacji we/wy jest obsługiwany przez następujące elementy GML. 
 
-| Nazwa elementu            | Odczyt | Zapis | Uwagi                                                                                  |
+| Nazwa elementu            | Odczytywanie | Zapisywanie | Uwagi                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
 | `gml:coordinates`       | tak  | nie    | Zapisany jako `gml:posList`.                                                              |
 | `gml:curveMember`       | tak  | nie    |                                                                                        |
@@ -254,7 +254,7 @@ Moduł operacji we/wy jest obsługiwany przez następujące elementy GML.
 
 Moduł operacji we/wy jest obsługiwany przez następujące elementy GPX.
 
-| Nazwa elementu             | Odczyt    | Zapis   | Uwagi                                                                                       |
+| Nazwa elementu             | Odczytywanie    | Zapisywanie   | Uwagi                                                                                       |
 |--------------------------|---------|---------|---------------------------------------------------------------------------------------------|
 | `gpx:ageofdgpsdata`      | tak     | tak     |                                                                                             |
 | `gpx:author`             | tak     | tak     |                                                                                             |
@@ -306,7 +306,7 @@ Podczas pisania;
   
 ## <a name="supported-well-known-text-geometry-types"></a>Obsługiwane typy geometrii dobrze znanego tekstu
 
-| Typ geometrii | Odczyt | Zapis |
+| Typ geometrii | Odczytywanie | Zapisywanie |
 |--------------|:----:|:-----:|
 | MOMENT | x | x |
 | PUNKT Z | x | x | 
@@ -349,7 +349,7 @@ Rozdzielane dane przestrzenne, takie jak pliki z wartościami rozdzielanymi prze
 
 Podczas odczytywania rozdzielanego pliku zawierającego dane przestrzenne nagłówek zostanie przeanalizowany, aby określić, które kolumny zawierają pola lokalizacji. Jeśli nagłówek zawiera informacje o typie, będzie używany do rzutowania wartości komórek na odpowiedni typ. Jeśli nagłówek nie zostanie określony, pierwszy wiersz zostanie przeanalizowany i użyty do wygenerowania nagłówka. Podczas analizowania pierwszego wiersza sprawdzana jest zgodność z nazwami kolumn o następujących nazwach w sposób niezależny od wielkości liter. Kolejność nazw jest priorytetem, w przypadku gdy w pliku znajdują się dwie lub więcej nazw.
 
-#### <a name="latitude"></a>Zakres
+#### <a name="latitude"></a>Szerokość geograficzna
 
 - `latitude`
 - `lat`
@@ -391,39 +391,39 @@ Pierwszy wiersz danych będzie skanowany pod kątem ciągów, które są w dobrz
 
 Podczas skanowania wiersza nagłówka wszystkie informacje o typie, które są w nazwie kolumny, zostaną wyodrębnione i użyte do rzutowania komórek w tej kolumnie. Oto przykład nazwy kolumny, która ma wartość typu: "ColumnName (typeName)". Obsługiwane są następujące nazwy typu bez uwzględniania wielkości liter:
 
-**Numery**
+#### <a name="numbers"></a>Numery
 
-    - EDM. Int64
-    - int
-    - long
-    - EDM. Double
-    - float
-    - double
-    - liczba
+- EDM. Int64
+- int
+- long
+- EDM. Double
+- float
+- double
+- numer
 
-**Wartości logicznych**
+#### <a name="booleans"></a>wartości logiczne
 
-    - EDM. Boolean
-    - logiczna
-    - wartość logiczna
+- EDM. Boolean
+- logiczna
+- wartość logiczna
 
-**Okres**
+#### <a name="dates"></a>Daty
 
-    - EDM. DateTime
-    - date
-    - datetime
+- EDM. DateTime
+- date
+- datetime
 
-**Lokalizacja geograficzna**
+#### <a name="geography"></a>Geograficzne
 
-    - EDM. Geography
-    - Geograficzne
+- EDM. Geography
+- Geograficzne
 
-**Długooci**
+#### <a name="strings"></a>Ciągi
 
-    - EDM. String
-    - varchar
-    - tekst
-    - ciąg "Case"
+- EDM. String
+- varchar
+- tekst
+- ciąg "Case"
 
 Jeśli nie można wyodrębnić informacji o typie z nagłówka, a dynamiczna opcja wpisywania jest włączona podczas odczytywania, każda komórka zostanie przeanalizowana indywidualnie, aby określić, jaki typ danych najlepiej nadaje się do rzutowania.
 

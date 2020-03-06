@@ -1,5 +1,5 @@
 ---
-title: 'Program Azure AD Connect: Logowanie użytkownika | Microsoft Docs'
+title: 'Azure AD Connect: Logowanie użytkownika | Microsoft Docs'
 description: Azure AD Connect Logowanie użytkownika dla ustawień niestandardowych.
 services: active-directory
 documentationcenter: ''
@@ -17,19 +17,19 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dbcc05093d801261493745c61dc5f68878d338b0
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607668"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376243"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect opcje logowania użytkownika
 Program Azure Active Directory (Azure AD) Connect umożliwia użytkownikom logowanie do zasobów w chmurze i lokalnych przy użyciu tych samych haseł. W tym artykule opisano kluczowe koncepcje dotyczące poszczególnych modeli tożsamości, które ułatwiają wybranie tożsamości, która ma być używana do logowania się do usługi Azure AD.
 
 Jeśli znasz już model tożsamości usługi Azure AD i chcesz dowiedzieć się więcej o określonej metodzie, zobacz odpowiednie łącze:
 
-* [Synchronizacja skrótów haseł](#password-hash-synchronization) z bezproblemowym logowaniem jednokrotnym [(SSO)](how-to-connect-sso.md)
-* [Uwierzytelnianie przekazywane](how-to-connect-pta.md) za pomocą bezproblemowego logowania jednokrotnego [(SSO)](how-to-connect-sso.md)
+* [Synchronizacja skrótów haseł](#password-hash-synchronization) z [bezproblemowym logowaniem jednokrotnym (SSO)](how-to-connect-sso.md)
+* [Uwierzytelnianie przekazywane](how-to-connect-pta.md) za pomocą [bezproblemowego logowania jednokrotnego (SSO)](how-to-connect-sso.md)
 * [Federacyjne Logowanie jednokrotne (z Active Directory Federation Services (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
 * [Konfigurowanie federacji z serwerem PingFederate](#federation-with-pingfederate)
 
@@ -54,7 +54,7 @@ Aby uzyskać szczegółowe informacje na temat wybierania metody uwierzytelniani
 ### <a name="password-hash-synchronization"></a>Synchronizacja skrótów haseł
 W przypadku synchronizacji skrótów haseł skróty użytkowników są synchronizowane z Active Directory lokalnych do usługi Azure AD. Gdy hasła są zmieniane lub resetowane lokalnie, nowe skróty haseł są natychmiast synchronizowane z usługą Azure AD, dzięki czemu użytkownicy będą mogli zawsze używać tego samego hasła dla zasobów w chmurze i zasobów lokalnych. Hasła nigdy nie są wysyłane do usługi Azure AD ani przechowywane w usłudze Azure AD w postaci zwykłego tekstu. Możesz użyć synchronizacji skrótów haseł razem z funkcją zapisywania zwrotnego haseł w celu włączenia samoobsługowego resetowania hasła w usłudze Azure AD.
 
-Ponadto można włączyć bezproblemową [rejestrację](how-to-connect-sso.md) jednokrotną dla użytkowników na komputerach przyłączonych do domeny, które znajdują się w sieci firmowej. W przypadku logowania jednokrotnego użytkownicy muszą wprowadzić nazwę użytkownika, aby pomóc im bezpiecznie uzyskać dostęp do zasobów w chmurze.
+Ponadto można włączyć [bezproblemową rejestrację jednokrotną](how-to-connect-sso.md) dla użytkowników na komputerach przyłączonych do domeny, które znajdują się w sieci firmowej. W przypadku logowania jednokrotnego użytkownicy muszą wprowadzić nazwę użytkownika, aby pomóc im bezpiecznie uzyskać dostęp do zasobów w chmurze.
 
 ![Synchronizacja skrótów haseł](./media/plan-connect-user-signin/passwordhash.png)
 
@@ -77,7 +77,7 @@ Logowanie federacyjne pozwala użytkownikom na logowanie się do usług opartych
 
 <center>
 
-![Federacja z AD FS w systemie Windows Server 2012 R2](./media/plan-connect-user-signin/federatedsignin.png)</center>
+![Federacji z AD FS w systemie Windows Server 2012 R2](./media/plan-connect-user-signin/federatedsignin.png)</center>
 
 #### <a name="deploy-federation-with-ad-fs-in-windows-server-2012-r2"></a>Wdrażanie Federacji z AD FS w systemie Windows Server 2012 R2
 
@@ -128,7 +128,7 @@ Na stronie logowania do usługi Azure AD są wyświetlane sufiksy nazw UPN, któ
 
 | Stan | Opis | Wymagana akcja |
 |:--- |:--- |:--- |
-| Zweryfikowano |Azure AD Connect znaleziono pasującą zweryfikowaną domenę w usłudze Azure AD. Wszyscy użytkownicy tej domeny mogą logować się przy użyciu poświadczeń lokalnych. |Żadna akcja nie jest wymagana. |
+| Sprawdzić |Azure AD Connect znaleziono pasującą zweryfikowaną domenę w usłudze Azure AD. Wszyscy użytkownicy tej domeny mogą logować się przy użyciu poświadczeń lokalnych. |Nie trzeba wykonywać żadnych czynności. |
 | Niezweryfikowane |Azure AD Connect znaleziono pasującą domenę niestandardową w usłudze Azure AD, ale nie została zweryfikowana. Sufiks nazwy UPN użytkowników tej domeny zostanie zmieniony na domyślny sufiks. onmicrosoft.com po synchronizacji, jeśli domena nie została zweryfikowana. | [Sprawdź domenę niestandardową w usłudze Azure AD.](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | Nie dodano |Azure AD Connect nie znalazł domeny niestandardowej, która odpowiada sufiksowi nazwy UPN. Sufiks nazwy UPN użytkowników tej domeny zostanie zmieniony na domyślny sufiks. onmicrosoft.com, jeśli domena nie zostanie dodana i zweryfikowana na platformie Azure. | [Dodaj i sprawdź domenę niestandardową, która odnosi się do sufiksu nazwy UPN.](../fundamentals/add-custom-domain.md) |
 
@@ -151,15 +151,15 @@ Zdecydowanie zalecamy zachowanie domyślnego atrybutu userPrincipalName. Jeśli 
 #### <a name="different-custom-domain-states-and-their-effect-on-the-azure-sign-in-experience"></a>Różne niestandardowe Stany domeny i ich wpływ na środowisko logowania platformy Azure
 Bardzo ważne jest zrozumienie relacji między Stanami domeny niestandardowej w katalogu usługi Azure AD a sufiksami nazw UPN zdefiniowanymi lokalnie. Przyjrzyjmy się różnym możliwościom logowania platformy Azure podczas konfigurowania synchronizacji przy użyciu Azure AD Connect.
 
-Aby uzyskać poniższe informacje, Załóżmy, że będziemy zainteresowani contoso.com sufiksu UPN, który jest używany w katalogu lokalnym jako część nazwy UPN — na przykład user@contoso.com.
+Aby uzyskać następujące informacje, Załóżmy, że będziemy zainteresowani contoso.com sufiksu UPN, który jest używany w katalogu lokalnym jako część nazwy UPN — na przykład user@contoso.com.
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Ustawienia ekspresowe/synchronizacja skrótów haseł
 
 | Stan | Wpływ na środowisko logowania użytkownika platformy Azure |
 |:---:|:--- |
-| Nie dodano |W takim przypadku żadna domena niestandardowa dla contoso.com nie została dodana do katalogu usługi Azure AD. Użytkownicy posiadający nazwę UPN lokalną z sufiksem @contoso.com nie będą mogli korzystać z lokalnej nazwy UPN do logowania się do platformy Azure. Zamiast tego będą musieli używać nowej nazwy UPN udostępnionej przez usługę Azure AD, dodając sufiks dla domyślnego katalogu usługi Azure AD. Na przykład Jeśli synchronizujesz użytkowników z katalogiem usługi Azure AD azurecontoso.onmicrosoft.com, wówczas użytkownik user@contoso.com lokalny otrzyma nazwę user@azurecontoso.onmicrosoft.comUPN. |
+| Nie dodano |W takim przypadku żadna domena niestandardowa dla contoso.com nie została dodana do katalogu usługi Azure AD. Użytkownicy posiadający nazwę UPN lokalną z sufiksem @contoso.com nie będą mogli korzystać z lokalnej nazwy UPN do logowania się do platformy Azure. Zamiast tego będą musieli używać nowej nazwy UPN udostępnionej przez usługę Azure AD, dodając sufiks dla domyślnego katalogu usługi Azure AD. Na przykład Jeśli synchronizujesz użytkowników z katalogiem usługi Azure AD azurecontoso.onmicrosoft.com, wówczas user@contoso.com użytkownika lokalnego otrzyma nazwę UPN user@azurecontoso.onmicrosoft.com. |
 | Niezweryfikowane |W tym przypadku mamy niestandardową contoso.com domeny, która jest dodawana do katalogu usługi Azure AD. Nie jest on jednak jeszcze zweryfikowany. Jeśli przejdziesz do synchronizacji użytkowników bez weryfikowania domeny, użytkownicy otrzymają nową nazwę UPN przez usługę Azure AD, podobnie jak w przypadku scenariusza "nie dodano". |
-| Zweryfikowano |W tym przypadku mamy niestandardową contoso.com domeny, która została już dodana i zweryfikowana w usłudze Azure AD dla sufiksu nazwy UPN. Użytkownicy będą mogli korzystać z lokalnej głównej nazwy użytkownika, na przykład user@contoso.comw celu zalogowania się do platformy Azure po synchronizacji z usługą Azure AD. |
+| Sprawdzić |W tym przypadku mamy niestandardową contoso.com domeny, która została już dodana i zweryfikowana w usłudze Azure AD dla sufiksu nazwy UPN. Użytkownicy będą mogli korzystać z lokalnej głównej nazwy użytkownika, na przykład user@contoso.com, aby zalogować się do platformy Azure po synchronizacji z usługą Azure AD. |
 
 ###### <a name="ad-fs-federation"></a>AD FS Federacja
 Nie można utworzyć Federacji z domyślną domeną. onmicrosoft.com w usłudze Azure AD lub niezweryfikowaną domeną niestandardową w usłudze Azure AD. Gdy uruchamiasz kreatora Azure AD Connect, w przypadku wybrania niezweryfikowanej domeny w celu utworzenia Federacji z programem Azure AD Connect wyświetli monit o wprowadzenie wymaganych rekordów, w których serwer DNS jest hostowany dla domeny. Aby uzyskać więcej informacji, zobacz temat [Weryfikowanie domeny usługi Azure AD wybranej dla Federacji](how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation).
@@ -170,12 +170,12 @@ W przypadku wybrania Federacji opcji logowania użytkownika **z AD FS**należy m
 |:---:|:--- |
 | Nie dodano |W takim przypadku Azure AD Connect nie znalazł pasującej domeny niestandardowej dla sufiksu UPN contoso.com w katalogu usługi Azure AD. Aby użytkownicy mogli się zalogować przy użyciu AD FS z lokalną nazwą UPN (na przykład user@contoso.com), należy dodać niestandardową domenę contoso.com. |
 | Niezweryfikowane |W takim przypadku Azure AD Connect wyświetli odpowiednie informacje o tym, jak można zweryfikować domenę na późniejszym etapie. |
-| Zweryfikowano |W takim przypadku można przejść do konfiguracji bez żadnych dalszych akcji. |
+| Sprawdzić |W takim przypadku można przejść do konfiguracji bez żadnych dalszych akcji. |
 
 ## <a name="changing-the-user-sign-in-method"></a>Zmiana metody logowania użytkownika
 Można zmienić metodę logowania użytkownika z Federacji, synchronizacji skrótów haseł lub uwierzytelniania przekazywanego za pomocą zadań dostępnych w Azure AD Connect po początkowej konfiguracji Azure AD Connect za pomocą kreatora. Uruchom ponownie Kreatora Azure AD Connect i zobaczysz listę zadań, które można wykonać. Wybierz pozycję **Zmień Logowanie użytkownika** z listy zadań.
 
-![Zmień dane logowania użytkownika](./media/plan-connect-user-signin/changeusersignin.png)
+![Zmień Logowanie użytkownika](./media/plan-connect-user-signin/changeusersignin.png)
 
 Na następnej stronie jest wyświetlany monit o podanie poświadczeń dla usługi Azure AD.
 

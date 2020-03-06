@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: cf71f051b014c6ce56290acda5c4b931c23934e2
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
-ms.translationtype: MT
+ms.openlocfilehash: b971176909a9956cd674116963e8ca02fa60e8b3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208952"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358047"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Szybki Start: Tworzenie projektu Azure Functions przy użyciu Visual Studio Code
 
@@ -32,7 +32,7 @@ Przed rozpoczęciem upewnij się, że zostały spełnione następujące wymagani
 + [Node. js](https://nodejs.org/), Active LTS i Maintenance — wersje LTS (zalecane 10.14.1). Aby sprawdzić swoją wersję, użyj polecenia `npm --version`.
 ::: zone-end 
 ::: zone pivot="programming-language-python"
-+ [Python 3,7](https://www.python.org/downloads/release/python-375/) lub [Python 3,6](https://www.python.org/downloads/release/python-368/), który jest obsługiwany przez Azure Functions. Środowisko Python 3,8 nie jest jeszcze obsługiwane. 
++ Środowisko [python 3,8](https://www.python.org/downloads/release/python-381/), [Python 3,7](https://www.python.org/downloads/release/python-375/), [python 3,6](https://www.python.org/downloads/release/python-368/) jest obsługiwane przez Azure Functions.
 ::: zone-end   
 ::: zone pivot="programming-language-powershell"
 + [Program PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)

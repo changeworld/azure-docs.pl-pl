@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965454"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384922"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Wdrażanie usługi StorSimple Menedżer urządzeń dla urządzeń z serii StorSimple 8000
 
@@ -77,13 +77,13 @@ Wykonaj następujące kroki, aby usunąć usługę.
 
     ![Usługa wyszukiwania do usunięcia](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. Spowoduje to przejście do bloku usługi StorSimple Menedżer urządzeń. Kliknij przycisk **Usuń**.
+2. Spowoduje to przejście do bloku usługi StorSimple Menedżer urządzeń. Kliknij pozycję **Usuń**.
 
-    ![Usuwanie usługi](./media/storsimple-8000-manage-service/deletessdevman2.png)
+    ![Usuń usługę](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
 3. Kliknij przycisk **tak** w powiadomieniu o potwierdzeniu. Usunięcie usługi może potrwać kilka minut.
 
-    ![Potwierdzanie usunięcia](./media/storsimple-8000-manage-service/deletessdevman3.png)
+    ![Potwierdzenie usunięcia](./media/storsimple-8000-manage-service/deletessdevman3.png)
 
 ## <a name="get-the-service-registration-key"></a>Pobieranie klucza rejestracji usługi
 
@@ -95,7 +95,7 @@ Wykonaj następujące kroki, aby uzyskać klucz rejestracji usługi.
 
 Przechowuj klucz rejestracji usługi w bezpiecznym miejscu. Ten klucz będzie potrzebny, a także klucz szyfrowania danych usługi, aby zarejestrować dodatkowe urządzenia w tej usłudze. Po uzyskaniu klucza rejestracji usługi należy skonfigurować urządzenie za pomocą interfejsu program Windows PowerShell dla usługi StorSimple.
 
-Aby uzyskać szczegółowe informacje na temat korzystania z tego klucza rejestracji [, zobacz krok 3. Skonfiguruj i Zarejestruj urządzenie za pomocą program Windows PowerShell dla usługi StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+Aby uzyskać szczegółowe informacje na temat korzystania z tego klucza rejestracji, zobacz [krok 3. Konfigurowanie i rejestrowanie urządzenia za pomocą program Windows PowerShell dla usługi StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
 ## <a name="regenerate-the-service-registration-key"></a>Wygeneruj ponownie klucz rejestracji usługi
 Należy ponownie wygenerować klucz rejestracji usługi, jeśli wymagane jest przeprowadzenie wymiany kluczy lub zmiana listy administratorów usługi. W przypadku ponownego wygenerowania klucza nowy klucz jest używany tylko do rejestrowania kolejnych urządzeń. Ten proces nie ma na nie wpływ na urządzenia, które zostały już zarejestrowane.
@@ -103,14 +103,14 @@ Należy ponownie wygenerować klucz rejestracji usługi, jeśli wymagane jest pr
 Wykonaj następujące kroki, aby ponownie wygenerować klucz rejestracji usługi.
 
 ### <a name="to-regenerate-the-service-registration-key"></a>Aby ponownie wygenerować klucz rejestracji usługi
-1. W bloku **StorSimple Menedżer urządzeń** przejdź do pozycji **klucze** **zarządzania &gt;**  .
+1. W bloku **StorSimple Menedżer urządzeń** przejdź do pozycji **zarządzanie** **kluczami**&gt;.
     
     ![Blok Klucze](./media/storsimple-8000-manage-service/regenregkey2.png)
 
 2. W bloku **klucze** kliknij polecenie **Generuj ponownie**.
 
     ![Kliknij pozycję Wygeneruj ponownie](./media/storsimple-8000-manage-service/regenregkey3.png)
-3. W bloku ponowne **generowanie klucza rejestracji usługi** zapoznaj się z akcją wymaganą, gdy klucze zostaną ponownie wygenerowane. Wszystkie kolejne urządzenia zarejestrowane w ramach tej usługi używają nowego klucza rejestracji. Kliknij przycisk Wygeneruj ponownie, aby potwierdzić. Po zakończeniu ponownej generacji otrzymasz powiadomienie.
+3. W bloku ponowne **generowanie klucza rejestracji usługi** zapoznaj się z akcją wymaganą, gdy klucze zostaną ponownie wygenerowane. Wszystkie kolejne urządzenia zarejestrowane w ramach tej usługi używają nowego klucza rejestracji. Kliknij przycisk **Wygeneruj** ponownie, aby potwierdzić. Po zakończeniu ponownej generacji otrzymasz powiadomienie.
 
     ![Potwierdź ponowne wygenerowanie](./media/storsimple-8000-manage-service/regenregkey4.png)
 
@@ -129,7 +129,7 @@ Zmiana klucza szyfrowania danych usługi jest procesem trójwymiarowym:
 2. Przy użyciu program Windows PowerShell dla usługi StorSimple zainicjuj zmianę klucza szyfrowania danych usługi.
 3. Jeśli masz więcej niż jedno urządzenie StorSimple, zaktualizuj klucz szyfrowania danych usługi na innych urządzeniach.
 
-### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>Krok 1: Użyj skryptu programu Windows PowerShell, aby autoryzować urządzenie do zmiany klucza szyfrowania danych usługi
+### <a name="step-1-use-windows-powershell-script-to-authorize-a-device-to-change-the-service-data-encryption-key"></a>Krok 1. używanie skryptu programu Windows PowerShell do autoryzacji urządzenia do zmiany klucza szyfrowania danych usługi
 Zazwyczaj administrator urządzenia będzie żądać, aby administrator usługi autoryzuje urządzenie w celu zmiany kluczy szyfrowania danych usługi. Następnie administrator usługi autoryzuje urządzenie, aby zmienić klucz.
 
 Ten krok jest wykonywany przy użyciu skryptu opartego na Azure Resource Manager. Administrator usługi może wybrać urządzenie, które ma uprawnienia do autoryzacji. Urządzenie jest następnie autoryzowane do uruchomienia procesu zmiany klucza szyfrowania danych usługi. 
@@ -145,7 +145,7 @@ Aby można było autoryzować zmiany klucza szyfrowania danych usługi, urządze
 * Nie można autoryzować urządzenia, gdy trwa Przerzucanie klucza szyfrowania danych usługi.
 * Możesz autoryzować urządzenie, gdy niektóre z urządzeń zarejestrowanych w usłudze przekroczą szyfrowanie, a inne nie. 
 
-### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>Krok 2: Użyj program Windows PowerShell dla usługi StorSimple, aby zainicjować zmianę klucza szyfrowania danych usługi
+### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>Krok 2. użycie program Windows PowerShell dla usługi StorSimple do zainicjowania zmiany klucza szyfrowania danych usługi
 Ten krok jest wykonywany w interfejsie program Windows PowerShell dla usługi StorSimple na autoryzowanym urządzeniu StorSimple.
 
 > [!NOTE]
@@ -170,19 +170,19 @@ Jeśli używasz konsoli szeregowej urządzenia do nawiązywania połączenia z i
    
    Jeśli masz pojedyncze urządzenie zarejestrowane w usłudze, proces przerzucania jest teraz zakończony i możesz pominąć następny krok. Jeśli masz wiele urządzeń zarejestrowanych w usłudze, przejdź do kroku 3.
 
-### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>Krok 3: Aktualizowanie klucza szyfrowania danych usługi na innych urządzeniach StorSimple
+### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>Krok 3. aktualizowanie klucza szyfrowania danych usługi na innych urządzeniach StorSimple
 Te kroki należy wykonać w interfejsie programu Windows PowerShell urządzenia StorSimple, jeśli istnieje wiele urządzeń zarejestrowanych w usłudze StorSimple Manager. Aby zaktualizować wszystkie pozostałe urządzenia StorSimple zarejestrowane w usłudze StorSimple Manager, należy użyć klucza uzyskanego w kroku 2.
 
 Wykonaj następujące kroki, aby zaktualizować szyfrowanie danych usługi na urządzeniu.
 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>Aby zaktualizować klucz szyfrowania danych usługi na urządzeniach fizycznych
 1. Użyj program Windows PowerShell dla usługi StorSimple, aby nawiązać połączenie z konsolą programu. Wybierz opcję 1, aby zalogować się z pełnymi prawami dostępu.
-2. W wierszu polecenia wpisz:`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
-3. Podaj klucz szyfrowania danych usługi uzyskany w [kroku 2: Użyj program Windows PowerShell dla usługi StorSimple, aby zainicjować zmianę](#to-initiate-the-service-data-encryption-key-change)klucza szyfrowania danych usługi.
+2. W wierszu polecenia wpisz: `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+3. Podaj klucz szyfrowania danych usługi uzyskany w [kroku 2: użyj program Windows PowerShell dla usługi StorSimple do zainicjowania zmiany klucza szyfrowania danych usługi](#to-initiate-the-service-data-encryption-key-change).
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>Aby zaktualizować klucz szyfrowania danych usługi na wszystkich urządzeniach chmury 8010/8020
 1. Pobierz i zainstaluj skrypt programu PowerShell [Update-CloudApplianceServiceEncryptionKey. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) . 
-2. Otwórz program PowerShell i w wierszu polecenia wpisz:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
+2. Otwórz program PowerShell i w wierszu polecenia wpisz: `Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Ten skrypt zapewni, że klucz szyfrowania danych usługi jest ustawiony na wszystkich urządzeniach chmury 8010/8020 w ramach Menedżera urządzeń.
 
@@ -191,24 +191,24 @@ W Azure Portal obsługiwane są tylko urządzenia StorSimple z aktualizacją Upd
 
 | Operacja                                                                                                                       | Obsługiwane      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Rejestrowanie urządzenia                                                                                                               | Tak            |
-| Konfigurowanie ustawień urządzenia, takich jak ogólne, Sieć i zabezpieczenia                                                                | Tak            |
-| Skanowanie, pobieranie i instalowanie aktualizacji                                                                                             | Tak            |
-| Dezaktywuj urządzenie                                                                                                               | Tak            |
-| Usuń urządzenie                                                                                                                   | Tak            |
+| Rejestrowanie urządzenia                                                                                                               | Yes            |
+| Konfigurowanie ustawień urządzenia, takich jak ogólne, Sieć i zabezpieczenia                                                                | Yes            |
+| Skanowanie, pobieranie i instalowanie aktualizacji                                                                                             | Yes            |
+| Dezaktywuj urządzenie                                                                                                               | Yes            |
+| Usuwanie urządzenia                                                                                                                   | Yes            |
 | Tworzenie, modyfikowanie i usuwanie kontenera woluminów                                                                                   | Nie             |
 | Tworzenie, modyfikowanie i Usuwanie woluminu                                                                                             | Nie             |
 | Tworzenie, modyfikowanie i usuwanie zasad tworzenia kopii zapasowych                                                                                      | Nie             |
 | Ręczne tworzenie kopii zapasowej                                                                                                            | Nie             |
 | Utwórz zaplanowaną kopię zapasową                                                                                                         | Nie dotyczy |
 | Przywróć z zestawu kopii zapasowych                                                                                                        | Nie             |
-| Klonowanie do urządzenia z aktualizacją 3,0 lub nowszą <br> Na urządzeniu źródłowym jest uruchomiona wersja wcześniejsza niż aktualizacja 3,0.                                | Tak            |
+| Klonowanie do urządzenia z aktualizacją 3,0 lub nowszą <br> Na urządzeniu źródłowym jest uruchomiona wersja wcześniejsza niż aktualizacja 3,0.                                | Yes            |
 | Klonowanie do urządzenia z wersjami przed aktualizacją 3,0                                                                          | Nie             |
-| Tryb failover jako urządzenie źródłowe <br> (z urządzenia z uruchomioną wersją wcześniejszą niż aktualizacja 3,0 do urządzenia z aktualizacją Update 3,0 lub nowszym)                                                               | Tak            |
+| Tryb failover jako urządzenie źródłowe <br> (z urządzenia z uruchomioną wersją wcześniejszą niż aktualizacja 3,0 do urządzenia z aktualizacją Update 3,0 lub nowszym)                                                               | Yes            |
 | Tryb failover jako urządzenie docelowe <br> (na urządzeniu z uruchomioną wersją oprogramowania przed aktualizacją 3,0)                                                                                   | Nie             |
-| Czyszczenie alertu                                                                                                                  | Tak            |
-| Wyświetlanie zasad tworzenia kopii zapasowych, wykazu kopii zapasowych, woluminów, kontenerów woluminów, wykresów monitorowania, zadań i alertów utworzonych w portalu klasycznym | Tak            |
-| Włączanie i wyłączanie kontrolerów urządzeń                                                                                              | Tak            |
+| Czyszczenie alertu                                                                                                                  | Yes            |
+| Wyświetlanie zasad tworzenia kopii zapasowych, wykazu kopii zapasowych, woluminów, kontenerów woluminów, wykresów monitorowania, zadań i alertów utworzonych w portalu klasycznym | Yes            |
+| Włączanie i wyłączanie kontrolerów urządzeń                                                                                              | Yes            |
 
 
 ## <a name="next-steps"></a>Następne kroki

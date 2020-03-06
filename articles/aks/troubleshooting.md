@@ -7,11 +7,11 @@ ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
 ms.openlocfilehash: b7aa90bd19e52059319570f1e7f6e64b90dee6e4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593351"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390303"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z AKS
 
@@ -192,7 +192,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | -- | :--: |
 | 1,10 | 1.10.2 lub nowszy |
 | 1,11 | 1.11.0 lub nowszy |
-| 1,12 i nowsze | N/D |
+| 1,12 i nowsze | Nie dotyczy |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Niepowodzenie podczas ustawiania identyfikatorów UID i GID w mountOptions dla dysku platformy Azure
 
@@ -266,7 +266,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | 1,11 | 1.11.5 lub nowszy |
 | 1,12 | 1.12.3 lub nowszy |
 | 1,13 | 1.13.0 lub nowszy |
-| 1,14 i nowsze | N/D |
+| 1,14 i nowsze | Nie dotyczy |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, możesz wyeliminować problem, czekając kilka minut i ponawiając próbę.
 
@@ -287,7 +287,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | 1,11 | 1.11.6 lub nowszy |
 | 1,12 | 1.12.4 lub nowszy |
 | 1,13 | 1.13.0 lub nowszy |
-| 1,14 i nowsze | N/D |
+| 1,14 i nowsze | Nie dotyczy |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, możesz wyeliminować problem, wykonując następujące czynności:
 
@@ -308,7 +308,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | 1,11 | 1.11.9 lub nowszy |
 | 1,12 | 1.12.7 lub nowszy |
 | 1,13 | 1.13.4 lub nowszy |
-| 1,14 i nowsze | N/D |
+| 1,14 i nowsze | Nie dotyczy |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, możesz wyeliminować problem, ręcznie odłączając dysk.
 
@@ -323,7 +323,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | 1,12 | 1.12.9 lub nowszy |
 | 1,13 | 1.13.6 lub nowszy |
 | 1,14 | 1.14.2 lub nowszy |
-| 1,15 i nowsze | N/D |
+| 1,15 i nowsze | Nie dotyczy |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, a maszyna wirtualna węzła ma przestarzałą listę dysków, możesz rozwiązać ten problem, odłączając wszystkie nieistniejące dyski z maszyny wirtualnej jako pojedynczą operację zbiorczą. **Pojedyncze odłączenie nieistniejących dysków może zakończyć się niepowodzeniem.**
 
@@ -343,7 +343,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | 1,12 | 1.12.10 lub nowszy |
 | 1,13 | 1.13.8 lub nowszy |
 | 1,14 | 1.14.4 lub nowszy |
-| 1,15 i nowsze | N/D |
+| 1,15 i nowsze | Nie dotyczy |
 
 Jeśli używasz wersji programu Kubernetes, która nie ma rozwiązania tego problemu, a maszyna wirtualna w węźle jest w stanie awarii, możesz rozwiązać problem, ręcznie aktualizując stan maszyny wirtualnej przy użyciu jednego z poniższych elementów:
 
@@ -460,7 +460,7 @@ Ten problem został rozwiązany w następujących wersjach programu Kubernetes:
 | -- | :--: |
 | 1,12 | 1.12.6 lub nowszy |
 | 1,13 | 1.13.4 lub nowszy |
-| 1,14 i nowsze | N/D |
+| 1,14 i nowsze | Nie dotyczy |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Azure Files instalacji nie powiodła się z powodu zmiany klucza konta magazynu
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Opisuje wymagania sieciowe dotyczące uruchamiania Azure Dev Spaces w usłudze Azure Kubernetes Services
 keywords: Azure Dev Spaces, Spaces dev, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, CNI, korzystającą wtyczki kubenet, SDN, Network
 ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044989"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389689"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Konfigurowanie sieci dla Azure Dev Spaces w różnych topologiach sieci
 
@@ -28,7 +28,7 @@ Azure Dev Spaces ma pewne wymagania dotyczące ruchu przychodzącego *i* wychodz
 
 Azure Dev Spaces wymaga ruchu przychodzącego i wychodzącego dla następujących nazw FQDN:
 
-| NAZWA FQDN                       | Port       | Eksploatacja      |
+| NAZWA FQDN                       | Port       | Użycie      |
 |----------------------------|------------|----------|
 | cloudflare.docker.com      | HTTPS: 443 | Aby ściągnąć obrazy platformy Docker dla Azure Dev Spaces |
 | gcr.io                     | HTTPS: 443 | Aby ściągnąć obrazy Helm dla Azure Dev Spaces |
@@ -65,7 +65,7 @@ Klastry AKS umożliwiają skonfigurowanie dodatkowych zabezpieczeń, które ogra
 
 W tej chwili Azure Dev Spaces nie jest obsługiwana w przypadku [prywatnych klastrów AKS][aks-private-clusters].
 
-## <a name="client-requirements"></a>Wymagania dotyczące klientów
+## <a name="client-requirements"></a>Wymagania dotyczące klienta
 
 Azure Dev Spaces używa narzędzi po stronie klienta, takich jak rozszerzenie interfejsu wiersza polecenia Azure Dev Spaces, rozszerzenia Visual Studio Code i rozszerzenia programu Visual Studio, aby komunikować się z klastrem AKS na potrzeby debugowania. Aby użyć Azure Dev Spaces narzędzia po stronie klienta, Zezwól na ruch z maszyn deweloperskich do domeny *azds-\*. azds.IO* . Zobacz *dataplaneFqdn* w `USERPROFILE\.azds\settings.json` dla dokładnej nazwy FQDN. W przypadku korzystania z [dozwolonych zakresów adresów IP serwera interfejsu API][auth-range-section]należy również zezwolić na adres IP wszystkich maszyn deweloperskich, które łączą się z klastrem AKS w celu debugowania w celu nawiązania połączenia z serwerem interfejsu API.
 

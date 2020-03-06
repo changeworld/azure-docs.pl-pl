@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938847"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392611"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Przegląd stref i rekordów DNS
 
@@ -109,7 +109,7 @@ Nie należy mylić wielu ciągów w rekordzie DNS z wieloma rekordami TXT w zest
 
 ### <a name="tags"></a>Tagi
 
-Tagi są listą par nazwa-wartość i są używane przez Azure Resource Manager do etykietowania zasobów.  Azure Resource Manager używa tagów do włączania filtrowanych widoków rachunku na korzystanie z platformy Azure, a także umożliwia ustawienie zasad, na których Tagi są wymagane. Aby uzyskać więcej informacji na temat tagów, zobacz [Using tags to organize your Azure resources](../azure-resource-manager/management/tag-resources.md) (Porządkowanie zasobów na platformie Azure za pomocą tagów).
+Tagi są listą par nazwa-wartość i są używane przez Azure Resource Manager do etykietowania zasobów.  Azure Resource Manager używa tagów do włączania filtrowanych widoków rachunku na korzystanie z platformy Azure, a także umożliwia ustawienie zasad, na których Tagi są wymagane. Aby uzyskać więcej informacji na temat tagów, zobacz [Porządkowanie zasobów na platformie Azure za pomocą tagów](../azure-resource-manager/management/tag-resources.md).
 
 Azure DNS obsługuje używanie tagów Azure Resource Manager w zasobach strefy DNS.  Nie obsługuje ona tagów w zestawach rekordów DNS, chociaż jako alternatywny element "Metadata" jest obsługiwany w zestawach rekordów DNS, jak wyjaśniono poniżej.
 
@@ -129,7 +129,7 @@ Na poziomie interfejsu API REST Azure DNS elementy ETag są określane przy uży
 
 | Nagłówek | Zachowanie |
 | --- | --- |
-| Brak |UMIESZCZAj zawsze zakończone powodzeniem (brak testów ETag) |
+| None |UMIESZCZAj zawsze zakończone powodzeniem (brak testów ETag) |
 | If-Match \<ETag > |Element PUT kończy się powodzeniem tylko wtedy, gdy zasób istnieje i element ETag pasuje |
 | If-Match * |PUT kończy się powodzeniem, jeśli zasób istnieje |
 | If-None-Match * |PUT kończy się powodzeniem, jeśli zasób nie istnieje |

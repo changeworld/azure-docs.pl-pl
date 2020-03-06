@@ -6,28 +6,28 @@ ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650658"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380859"
 ---
 # <a name="createuidefinition-functions"></a>Funkcje CreateUiDefinition
 Ta sekcja zawiera sygnatury dla wszystkich obsługiwanych funkcji CreateUiDefinition.
 
-Aby użyć funkcji, należy ująć deklarację w nawiasy kwadratowe. Przykład:
+Aby użyć funkcji, należy ująć deklarację w nawiasy kwadratowe. Na przykład:
 
 ```json
 "[function()]"
 ```
 
-Ciągi i inne funkcje mogą być przywoływane jako parametry dla funkcji, ale ciągi muszą być ujęte w apostrofy. Przykład:
+Ciągi i inne funkcje mogą być przywoływane jako parametry dla funkcji, ale ciągi muszą być ujęte w apostrofy. Na przykład:
 
 ```json
 "[fn1(fn2(), 'foobar')]"
 ```
 
-Jeśli ma to zastosowanie, można odwoływać się do właściwości danych wyjściowych funkcji przy użyciu operatora kropki. Przykład:
+Jeśli ma to zastosowanie, można odwoływać się do właściwości danych wyjściowych funkcji przy użyciu operatora kropki. Na przykład:
 
 ```json
 "[func().prop1]"
@@ -66,7 +66,7 @@ Poniższy przykład może zwrócić `"westus"`:
 ## <a name="string-functions"></a>Funkcje ciągów
 Tych funkcji można używać tylko z ciągami JSON.
 
-### <a name="concat"></a>concat
+### <a name="concat"></a>Concat
 Łączy jeden lub więcej ciągów.
 
 Na przykład jeśli wartość wyjściowa `element1`, jeśli `"bar"`, wówczas ten przykład zwraca ciąg `"foobar!"`:
@@ -189,7 +189,7 @@ Poniższy przykład zwraca `2`:
 "[length(steps('foo').element1)]"
 ```
 
-### <a name="empty"></a>puste
+### <a name="empty"></a>ciągiem
 Zwraca `true`, jeśli ciąg, tablica lub obiekt ma wartość null lub jest pusty.
 
 #### <a name="example-1-string"></a>Przykład 1: ciąg
@@ -229,7 +229,7 @@ Załóżmy, że `element1` jest `null` lub niezdefiniowane. Poniższy przykład 
 "[empty(steps('foo').element1)]"
 ```
 
-### <a name="first"></a>pierwszego
+### <a name="first"></a>Pierwszego
 Zwraca pierwszy znak określonego ciągu; Pierwsza wartość określonej tablicy; lub pierwszy klucz i wartość określonego obiektu.
 
 #### <a name="example-1-string"></a>Przykład 1: ciąg
@@ -327,7 +327,7 @@ Poniższy przykład zwraca `{"key1": "foobar"}`:
 "[take(steps('foo').element1, 1)]"
 ```
 
-### <a name="skip"></a>Pomiń
+### <a name="skip"></a>Skocz
 Pomija określoną liczbę elementów w kolekcji, a następnie zwraca pozostałe elementy.
 
 #### <a name="example-1-string"></a>Przykład 1: ciąg
@@ -383,7 +383,7 @@ Poniższy przykład zwraca `false`:
 "[equals('abc', ['a', 'b', 'c'])]"
 ```
 
-### <a name="less"></a>less
+### <a name="less"></a>wcześniejsz
 Zwraca `true`, jeśli pierwszy parametr jest ściśle mniejszy niż drugi parametr. Ta funkcja obsługuje parametry tylko typu Number i String.
 
 Poniższy przykład zwraca `true`:
@@ -407,7 +407,7 @@ Poniższy przykład zwraca `true`:
 "[lessOrEquals(2, 2)]"
 ```
 
-### <a name="greater"></a>greater
+### <a name="greater"></a>mniejszą
 Zwraca `true`, jeśli pierwszy parametr jest ściśle większy niż drugi parametr. Ta funkcja obsługuje parametry tylko typu Number i String.
 
 Poniższy przykład zwraca `false`:
@@ -431,7 +431,7 @@ Poniższy przykład zwraca `true`:
 "[greaterOrEquals(2, 2)]"
 ```
 
-### <a name="and"></a>oraz
+### <a name="and"></a>i
 Zwraca `true`, jeśli wszystkie parametry mają być `true`ne. Ta funkcja obsługuje co najmniej dwa parametry typu Boolean.
 
 Poniższy przykład zwraca `true`:
@@ -461,7 +461,7 @@ Poniższy przykład zwraca `true`:
 "[or(equals(0, 0), greater(1, 2))]"
 ```
 
-### <a name="not"></a>nie
+### <a name="not"></a>niemożliwe
 Zwraca `true`, jeśli parametr ma wartość `false`. Ta funkcja obsługuje tylko parametry typu Boolean.
 
 Poniższy przykład zwraca `true`:
@@ -518,7 +518,7 @@ Poniższy przykład zwraca `2.9`:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>string
+### <a name="string"></a>ciąg
 Konwertuje parametr na ciąg. Ta funkcja obsługuje parametry wszystkich typów danych JSON.
 
 Poniższy przykład zwraca `"1"`:
@@ -545,7 +545,7 @@ Poniższy przykład zwraca `"{"foo":"bar"}"`:
 "[string({\"foo\":\"bar\"})]"
 ```
 
-### <a name="bool"></a>bool
+### <a name="bool"></a>logiczna
 Konwertuje parametr na wartość logiczną. Ta funkcja obsługuje parametry typu Number, String i Boolean. Podobnie jak w języku JavaScript, każda wartość z wyjątkiem `0` lub `'false'` zwraca `true`.
 
 Poniższy przykład zwraca `true`:
@@ -572,7 +572,7 @@ Poniższy przykład zwraca `true`:
 "[bool('true')]"
 ```
 
-### <a name="parse"></a>analizowanie
+### <a name="parse"></a>Przetwarzania
 Konwertuje parametr na typ natywny. Innymi słowy, ta funkcja jest odwrotnością `string()`. Ta funkcja obsługuje tylko parametry typu String.
 
 Poniższy przykład zwraca `1`:
@@ -705,7 +705,7 @@ Poniższy przykład zwraca `2`:
 "[max(1, 2)]"
 ```
 
-### <a name="range"></a>range
+### <a name="range"></a>zakresu
 Generuje sekwencję liczb całkowitych w określonym zakresie.
 
 Poniższy przykład zwraca `[1,2,3]`:
@@ -714,7 +714,7 @@ Poniższy przykład zwraca `[1,2,3]`:
 "[range(1, 3)]"
 ```
 
-### <a name="rand"></a>rand
+### <a name="rand"></a>Rand
 Zwraca losową liczbę całkowitą znajdującą się w określonym zakresie. Ta funkcja nie generuje kryptograficznie zabezpieczonych liczb losowych.
 
 Poniższy przykład może zwrócić `42`:
@@ -742,7 +742,7 @@ Poniższy przykład zwraca `4`:
 ```
 
 ## <a name="date-functions"></a>Funkcje daty
-### <a name="utcnow"></a>UtcNow
+### <a name="utcnow"></a>utcNow
 Zwraca ciąg w formacie ISO 8601 bieżącej daty i godziny na komputerze lokalnym.
 
 Poniższy przykład może zwrócić `"1990-12-31T23:59:59.000Z"`:

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020628"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379558"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Jak indeksować dokumenty w usłudze Azure Blob Storage przy użyciu usługi Azure Wyszukiwanie poznawcze
 
@@ -256,8 +256,8 @@ Opisane powyżej parametry konfiguracji dotyczą wszystkich obiektów BLOB. Czas
 
 | Nazwa właściwości | Wartość właściwości | Wyjaśnienie |
 | --- | --- | --- |
-| AzureSearch_Skip |"true" |Instruuje indeksator obiektu BLOB, aby całkowicie pominąć obiekt BLOB. Nie podjęto próby przeprowadzenia żadnej metadanych ani wyodrębniania zawartości. Jest to przydatne, gdy konkretny obiekt BLOB powtarza się wielokrotnie i przerywa proces indeksowania. |
-| AzureSearch_SkipContent |"true" |Jest to odpowiednik ustawienia `"dataToExtract" : "allMetadata"` opisanego [powyżej](#PartsOfBlobToIndex) zakresu określonego obiektu BLOB. |
+| AzureSearch_Skip |„true” |Instruuje indeksator obiektu BLOB, aby całkowicie pominąć obiekt BLOB. Nie podjęto próby przeprowadzenia żadnej metadanych ani wyodrębniania zawartości. Jest to przydatne, gdy konkretny obiekt BLOB powtarza się wielokrotnie i przerywa proces indeksowania. |
+| AzureSearch_SkipContent |„true” |Jest to odpowiednik ustawienia `"dataToExtract" : "allMetadata"` opisanego [powyżej](#PartsOfBlobToIndex) zakresu określonego obiektu BLOB. |
 
 <a name="DealingWithErrors"></a>
 ## <a name="dealing-with-errors"></a>Rozpatrywanie błędów
@@ -281,7 +281,7 @@ Usługa Azure Wyszukiwanie poznawcze ogranicza rozmiar indeksowanych obiektów B
 
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 
-Możesz również kontynuować indeksowanie w przypadku wystąpienia błędów w dowolnym momencie przetwarzania, podczas analizowania obiektów blob lub dodawania dokumentów do indeksu. Aby zignorować określoną liczbę błędów, należy ustawić parametry konfiguracji `maxFailedItems` i `maxFailedItemsPerBatch` na odpowiednie wartości. Przykład:
+Możesz również kontynuować indeksowanie w przypadku wystąpienia błędów w dowolnym momencie przetwarzania, podczas analizowania obiektów blob lub dodawania dokumentów do indeksu. Aby zignorować określoną liczbę błędów, należy ustawić parametry konfiguracji `maxFailedItems` i `maxFailedItemsPerBatch` na odpowiednie wartości. Na przykład:
 
     {
       ... other parts of indexer definition

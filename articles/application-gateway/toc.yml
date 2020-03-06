@@ -39,6 +39,8 @@
   items:
     - name: Podstawy
       items:
+        - name: Funkcje usługi Application Gateway
+          href: features.md
         - name: Jak działa usługa Application Gateway
           href: how-application-gateway-works.md
         - name: Składniki usługi Application Gateway

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383677"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393841"
 ---
 # <a name="add-entities-to-extract-data"></a>Dodawanie jednostek do wyodrębniania danych 
 
@@ -90,7 +90,7 @@ Na poniższej liście pokazano kanoniczną nazwę i synonimy.
 |--|--|
 |Czerwony|Użycie Crismon, krew, Apple, ogień|
 |Niebieski|, platforma Azure, kobalt|
-|Zielony|Kelly, limonowa|
+|Znacznika|Kelly, limonowa|
 
 Użyj procedury, aby utworzyć jednostkę listy. Po utworzeniu jednostki listy nie musisz oznaczać przykładu wyrażenia długości w zamiarze. Elementy listy i synonimy są dopasowywane przy użyciu dokładnego tekstu. 
 

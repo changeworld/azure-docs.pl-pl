@@ -4,11 +4,11 @@ description: Dowiedz się, jak skonfigurować bezpieczny klaster Service Fabric 
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452280"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363385"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Tworzenie klastra Service Fabric na platformie Azure przy użyciu Azure Portal
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Utworzenie klastra produkcyjnego w celu spełnienia wymagań dotyczących aplika
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Wyszukaj zasób klastra Service Fabric
 
-Zaloguj się do [portalu Azure][azure-portal].
+Zaloguj się do [Azure portal][azure-portal].
 Kliknij pozycję **Utwórz zasób** , aby dodać nowy szablon zasobu. Wyszukaj szablon klastra Service Fabric w **portalu Marketplace** w obszarze **wszystko**.
 Wybierz z listy pozycję **klaster Service Fabric** .
 

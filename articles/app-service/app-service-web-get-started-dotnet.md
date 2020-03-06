@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 285e4cc1f38dd2adb5934e49d87b43e09d74ce11
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672106"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382595"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Tworzenie aplikacji internetowej ASP.NET Core na platformie Azure
 
@@ -69,7 +69,7 @@ Utwórz aplikację sieci Web ASP.NET Core, wykonując następujące czynności:
    > Jeśli przeprowadzono już logowanie, nie wybieraj jeszcze pozycji **Utwórz**.
    >
 
-   ![Zaloguj się w usłudze Azure](./media/app-service-web-get-started-dotnet/sign-in-azure-vs2019.png)
+   ![Logowanie do platformy Azure](./media/app-service-web-get-started-dotnet/sign-in-azure-vs2019.png)
 
    [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
@@ -87,7 +87,7 @@ Utwórz aplikację sieci Web ASP.NET Core, wykonując następujące czynności:
    |-|-|-|
    |Plan usługi App Service| myAppServicePlan | Nazwa planu usługi App Service. |
    | Lokalizacja | Europa Zachodnia | Centrum danych, w którym hostowana jest aplikacja internetowa. |
-   | Rozmiar | Bezpłatnie | [Warstwa cenowa](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) określa funkcje hostowania. |
+   | Rozmiar | Bezpłatna | [Warstwa cenowa](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) określa funkcje hostowania. |
 
    ![Tworzenie planu usługi App Service](./media/app-service-web-get-started-dotnet/app-service-plan-vs2019.png)
 

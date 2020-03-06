@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973462"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378875"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub Device Provisioning Service pojęcia dotyczące zabezpieczeń 
 
@@ -40,7 +40,7 @@ Sprzętowy moduł zabezpieczeń (HSM) służy do bezpiecznego, opartego na sprz�
 
 Wpisy tajne urządzenia mogą być również przechowywane w oprogramowaniu (pamięci), ale jest mniej bezpieczną postacią magazynu niż moduł HSM.
 
-## <a name="trusted-platform-module"></a>Moduł TPM
+## <a name="trusted-platform-module"></a>moduł TPM
 
 Moduł TPM może odwoływać się do standardu w celu bezpiecznego przechowywania kluczy używanych do uwierzytelniania platformy lub może odwoływać się do interfejsu we/wy używanego do współpracy z modułami implementującymi standard. Moduły TPM może istnieć jako sprzęt dyskretny, zintegrowany sprzęt, oprogramowanie układowe lub oprogramowanie. Dowiedz się więcej o [zaświadczeniu moduły TPM i modułu TPM](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Usługa Device Provisioning obsługuje tylko moduł TPM 2,0.
 

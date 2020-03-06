@@ -13,11 +13,11 @@ ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 9ca44b1917cfaed5d01c31f8f06d98e5e4b611a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438919"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355793"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności i działania przewodnika dostrajania
 
@@ -32,15 +32,15 @@ Działanie kopiowania w usłudze Azure fabryki danych zapewnia najwyższej jako�
 
 Platforma Azure udostępnia zestaw przeznaczonych dla przedsiębiorstw rozwiązaniach magazynu danych magazynu i danych, a działanie kopiowania oferuje wysoce zoptymalizowane środowiska, który jest łatwy do skonfigurowania i ładowaniem. Przy użyciu tylko jednej kopii działania programu można osiągnąć:
 
-* Ładowanie danych do **Azure SQL Data Warehouse** na **1,2 GB/s**. Aby uzyskać wskazówki z przypadkami użycia, zobacz [ładowanie 1 TB w usłudze Azure SQL Data Warehouse z mniej niż 15 minut przy użyciu usługi Azure Data Factory](data-factory-load-sql-data-warehouse.md).
-* Ładowanie danych do **usługi Azure Blob storage** na **1,0 GB/s**
-* Ładowanie danych do **usługi Azure Data Lake Store** na **1,0 GB/s**
+* Ładowanie danych do **Azure SQL Data Warehouse** o **1,2 GB/s**. Aby zapoznać się z przewodnikiem dotyczącym przypadku użycia, zobacz [ładowanie 1 TB do Azure SQL Data Warehouse na 15 minut z Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+* Ładowanie danych do **usługi Azure Blob Storage** o **1,0 GB/s**
+* Ładowanie danych do **Azure Data Lake Store** o **1,0 GB/s**
 
 W tym artykule opisano:
 
-* [Numery identyfikacyjne wydajności](#performance-reference) obsługiwane źródło i ujście magazynu danych, aby ułatwić planowanie projektu.
+* [Numery odwołań wydajności](#performance-reference) dla obsługiwanych magazynów danych źródłowych i ujścia, które ułatwiają planowanie projektu;
 * Funkcje, które mogą zwiększyć przepływność kopiowania w różnych scenariuszach, w tym [jednostki przenoszenia danych w chmurze](#cloud-data-movement-units), [Kopiowanie równoległe](#parallel-copy)i [Kopiowanie etapowe](#staged-copy);
-* [Wskazówki dotyczące dostrajania wydajności](#performance-tuning-steps) dotyczące dostrajania wydajności i kluczowych czynników, które mogą mieć wpływ na wydajność kopii.
+* [Wskazówki dotyczące dostrajania](#performance-tuning-steps) wydajności dotyczące dostrajania wydajności i kluczowych czynników, które mogą mieć wpływ na wydajność kopiowania.
 
 > [!NOTE]
 > Jeśli nie znasz ogólnie działania kopiowania, zobacz [przenoszenie danych za pomocą działania kopiowania](data-factory-data-movement-activities.md) przed przeczytaniem tego artykułu.
@@ -66,11 +66,11 @@ W poniższej tabeli przedstawiono informacje o przepływności kopiowania w MB/s
         <td>32 rdzenie 2,20 GHz Intel Xeon E5-2660 v2</td>
     </tr>
     <tr>
-        <td>Pamięć</td>
+        <td>Memory (Pamięć)</td>
         <td>128 GB</td>
     </tr>
     <tr>
-        <td>Network (Sieć)</td>
+        <td>Network</td>
         <td>Interfejs internetowy: 10 GB/s; Interfejs sieci intranet: 40 GB/s</td>
     </tr>
     </table>
@@ -104,7 +104,7 @@ W tym przykładzie, gdy wartość **współbieżności** jest ustawiona na 2, **
 | Kopiowanie danych między magazynami oparte na plikach | Od 4 do 16 w zależności od liczby i rozmiaru plików. |
 | Innych scenariuszach kopiowania | 4 |
 
-Aby zastąpić to ustawienie domyślne, określ wartość właściwości **cloudDataMovementUnits** w następujący sposób. **Dozwolone wartości** właściwości **cloudDataMovementUnits** to 2, 4, 8, 16, 32. **Rzeczywista liczba DMUs w chmurze** , której operacja kopiowania używa w czasie wykonywania, jest równa lub mniejsza niż skonfigurowana wartość, w zależności od wzorca danych. Aby uzyskać informacje na temat poziomu wydajności, może zostać wyświetlony po skonfigurowaniu większej liczby jednostek dla określonej kopii źródła i ujścia, zobacz [dotyczące wydajności](#performance-reference).
+Aby zastąpić to ustawienie domyślne, określ wartość właściwości **cloudDataMovementUnits** w następujący sposób. **Dozwolone wartości** właściwości **cloudDataMovementUnits** to 2, 4, 8, 16, 32. **Rzeczywista liczba DMUs w chmurze** , której operacja kopiowania używa w czasie wykonywania, jest równa lub mniejsza niż skonfigurowana wartość, w zależności od wzorca danych. Aby uzyskać informacje o poziomie wzmocnienia wydajności, które można uzyskać podczas konfigurowania większej liczby jednostek dla określonego źródła i ujścia kopii, zobacz [informacje dotyczące wydajności](#performance-reference).
 
 ```json
 "activities":[
@@ -132,7 +132,7 @@ Aby zastąpić to ustawienie domyślne, określ wartość właściwości **cloud
 >
 
 ### <a name="parallelcopies"></a>parallelCopies
-Możesz użyć **parallelCopies** właściwości do wskazania równoległości, który działanie kopiowania w celu użycia. Tę właściwość można traktować jako maksymalną liczbę wątków w ramach działania kopiowania, które można odczytać ze źródła lub zapisywać swoich magazynów danych ujścia równolegle.
+Możesz użyć właściwości **parallelCopies** , aby wskazać równoległość, która ma być używana przez działanie kopiowania. Tę właściwość można traktować jako maksymalną liczbę wątków w ramach działania kopiowania, które można odczytać ze źródła lub zapisywać swoich magazynów danych ujścia równolegle.
 
 Dla każdego uruchomienia działania kopiowania usługi fabryka danych określa liczbę równoległych kopii na potrzeby kopiowania danych ze źródła danych przechowywane i danych docelowego. Domyślna liczba kopii równoległych, których używa, zależy od typu używanego źródła i ujścia.
 
@@ -166,9 +166,9 @@ Zwykle zachowanie domyślne powinno zapewnić najlepszą przepływność. Aby je
 ```
 Informacje, które należy zwrócić uwagę:
 
-* Podczas kopiowania danych między magazynami oparte na plikach, **parallelCopies** określić równoległości na poziomie plików. Segmentu w pojedynczym pliku sytuacja może mieć miejsce poniżej automatycznie i w sposób niewidoczny dla użytkownika, a zostało zaprojektowane na potrzeby ładowania danych w równoległych i prostopadły do parallelCopies najlepsze rozmiar fragmentu odpowiedniego dla typu magazynu danego źródła danych. Rzeczywista liczba równoległych kopii usługi data movement service używa dla operacji kopiowania w czasie wykonywania jest nie więcej niż liczba plików, których masz. Jeśli zachowanie kopiowania to **mergeFile**, działanie kopiowania nie mogą korzystać z równoległości na poziomie plików.
+* Podczas kopiowania danych między magazynami opartymi na plikach **parallelCopies** określa równoległość na poziomie pliku. Segmentu w pojedynczym pliku sytuacja może mieć miejsce poniżej automatycznie i w sposób niewidoczny dla użytkownika, a zostało zaprojektowane na potrzeby ładowania danych w równoległych i prostopadły do parallelCopies najlepsze rozmiar fragmentu odpowiedniego dla typu magazynu danego źródła danych. Rzeczywista liczba równoległych kopii usługi data movement service używa dla operacji kopiowania w czasie wykonywania jest nie więcej niż liczba plików, których masz. Jeśli zachowanie kopiowania ma wartość **mergeFile**, działanie Copy nie może korzystać z równoległości na poziomie plików.
 * Po określeniu wartości właściwości **parallelCopies** należy wziąć pod uwagę wzrost obciążenia dla magazynów danych źródłowych i ujścia oraz bramę, jeśli jest to kopia hybrydowa. Dzieje się tak szczególnie, gdy masz wiele działań lub równoczesnych uruchomień działań uruchamianych w odniesieniu do tego samego magazynu danych. Jeśli zauważysz, że magazyn danych lub Brama są przeciążone, zmniejsz wartość **parallelCopies** , aby zwolnić obciążenie.
-* Podczas kopiowania danych z magazynów, które nie są opartą na plikach do magazynów, które są oparte na plikach, usługi data movement service ignoruje **parallelCopies** właściwości. Nawet jeśli równoległości jest określona, nie zostanie zastosowane w tym przypadku.
+* Podczas kopiowania danych z magazynów, które nie są oparte na plikach, do magazynów, które są oparte na plikach, Usługa przenoszenia danych ignoruje Właściwość **parallelCopies** . Nawet jeśli równoległości jest określona, nie zostanie zastosowane w tym przypadku.
 
 > [!NOTE]
 > Aby użyć funkcji **parallelCopies** w przypadku wykonywania kopii hybrydowej, należy użyć bramy zarządzanie danymi w wersji 1,11 lub nowszej.
@@ -178,14 +178,14 @@ Informacje, które należy zwrócić uwagę:
 Aby lepiej wykorzystać te dwie właściwości i zwiększyć przepływność przenoszenia danych, zobacz przykładowe przypadki użycia. Nie musisz konfigurować **parallelCopies** , aby korzystać z zachowania domyślnego. Jeśli skonfigurujesz i **parallelCopies** jest za mały, wiele DMUs w chmurze może nie być w pełni wykorzystane.
 
 ### <a name="billing-impact"></a>Wpływ rozliczeń
-Ma ona **ważne** należy pamiętać, że opłaty są naliczane na podstawie czasu łączna liczba operacji kopiowania. Jeśli zadanie kopiowania używane do podzielenia jednej godziny z jedną jednostką w chmurze, a teraz trwa 15 minut z czterema jednostkami w chmurze, cały rachunek pozostaje niemal taki sam. Na przykład należy użyć czterech jednostek chmur. Pierwsza jednostka chmury poświęca 10 minut, drugi, 10 minut, trzeci, 5 minut i czwarty, 5 minut, wszystkie w jednym uruchomieniu działania kopiowania. Opłata jest naliczana za całkowity czas kopiowania (przenoszenia danych), czyli 10 + 10 + 5 + 5 = 30 minut. Korzystanie z **parallelCopies** nie ma wpływu na rozliczenia.
+Należy pamiętać, że **opłata jest** naliczana na podstawie łącznego czasu operacji kopiowania. Jeśli zadanie kopiowania używane do podzielenia jednej godziny z jedną jednostką w chmurze, a teraz trwa 15 minut z czterema jednostkami w chmurze, cały rachunek pozostaje niemal taki sam. Na przykład należy użyć czterech jednostek chmur. Pierwsza jednostka chmury poświęca 10 minut, drugi, 10 minut, trzeci, 5 minut i czwarty, 5 minut, wszystkie w jednym uruchomieniu działania kopiowania. Opłata jest naliczana za całkowity czas kopiowania (przenoszenia danych), czyli 10 + 10 + 5 + 5 = 30 minut. Korzystanie z **parallelCopies** nie ma wpływu na rozliczenia.
 
 ## <a name="staged-copy"></a>Kopiowania przejściowego
 Podczas kopiowania danych z magazynu danych źródłowych do magazynu danych ujścia, można użyć magazynu obiektów Blob jako tymczasowego magazynu przejściowego. Przemieszczania jest szczególnie użyteczna w następujących przypadkach:
 
-1. **Aby pozyskiwać dane z różnych magazynów danych do usługi SQL Data Warehouse za pomocą programu PolyBase**. Usługa SQL Data Warehouse używa programu PolyBase jako mechanizm o wysokiej przepływności ładowanie dużej ilości danych do usługi SQL Data Warehouse. Dane źródłowe muszą jednak znajdować się w usłudze BLOB Storage i muszą spełniać dodatkowe kryteria. Podczas ładowania danych z magazynu danych innego niż magazyn obiektów blob, można aktywować kopiowanie danych za pośrednictwem tymczasowego tymczasowego magazynu obiektów BLOB. W takiej sytuacji usługi fabryka danych wykonuje przekształcenia danych wymagane, aby upewnić się, że spełnia wymagania programu PolyBase. Następnie używa programu PolyBase do ładowania danych do usługi SQL Data Warehouse. Aby uzyskać więcej informacji, zobacz [Korzystanie z bazy danych w celu ładowania do Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse). Aby uzyskać wskazówki z przypadkami użycia, zobacz [ładowanie 1 TB w usłudze Azure SQL Data Warehouse z mniej niż 15 minut przy użyciu usługi Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+1. Chcesz pozyskać **dane z różnych magazynów danych do SQL Data Warehouse za pośrednictwem bazy**. Usługa SQL Data Warehouse używa programu PolyBase jako mechanizm o wysokiej przepływności ładowanie dużej ilości danych do usługi SQL Data Warehouse. Dane źródłowe muszą jednak znajdować się w usłudze BLOB Storage i muszą spełniać dodatkowe kryteria. Podczas ładowania danych z magazynu danych innego niż magazyn obiektów blob, można aktywować kopiowanie danych za pośrednictwem tymczasowego tymczasowego magazynu obiektów BLOB. W takiej sytuacji usługi fabryka danych wykonuje przekształcenia danych wymagane, aby upewnić się, że spełnia wymagania programu PolyBase. Następnie używa programu PolyBase do ładowania danych do usługi SQL Data Warehouse. Aby uzyskać więcej informacji, zobacz [Korzystanie z bazy danych w celu ładowania do Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse). Aby zapoznać się z przewodnikiem dotyczącym przypadku użycia, zobacz [ładowanie 1 TB do Azure SQL Data Warehouse na 15 minut z Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 2. **Czasami trwa przeprowadzenie hybrydowego przenoszenia danych (czyli kopiowania między lokalnym magazynem danych i magazynem danych w chmurze) przez wolne połączenie sieciowe**. Aby zwiększyć wydajność, można skompresować dane lokalnie, aby przełączać dane do tymczasowego magazynu danych w chmurze. Następnie można zdekompresować dane w magazynie przemieszczania przed załadowaniem ich do docelowego magazynu danych.
-3. **Nie chcesz otworzyć porty inne niż port 80 i portu 443 w zaporze, ze względu na zasady firmowe IT**. Na przykład podczas kopiowania danych z lokalnego magazynu danych ujścia Azure SQL Database lub ujścia Azure SQL Data Warehouse, musisz aktywować komunikacja wychodząca TCP na porcie 1433 dla zapory Windows i zaporą firmową. W tym scenariuszu należy skorzystać z bramy, aby najpierw skopiować dane do wystąpienia tymczasowego magazynu obiektów BLOB za pośrednictwem protokołu HTTP lub HTTPS na porcie 443. Następnie Załaduj dane do SQL Database lub SQL Data Warehouse z przemieszczania magazynu obiektów BLOB. W tym przepływie nie trzeba włączyć port 1433.
+3. **Nie chcesz otwierać portów innych niż port 80 i port 443 w zaporze ze względu na firmowe zasady IT**. Na przykład podczas kopiowania danych z lokalnego magazynu danych ujścia Azure SQL Database lub ujścia Azure SQL Data Warehouse, musisz aktywować komunikacja wychodząca TCP na porcie 1433 dla zapory Windows i zaporą firmową. W tym scenariuszu należy skorzystać z bramy, aby najpierw skopiować dane do wystąpienia tymczasowego magazynu obiektów BLOB za pośrednictwem protokołu HTTP lub HTTPS na porcie 443. Następnie Załaduj dane do SQL Database lub SQL Data Warehouse z przemieszczania magazynu obiektów BLOB. W tym przepływie nie trzeba włączyć port 1433.
 
 ### <a name="how-staged-copy-works"></a>Jak przygotowanych działania kopiowania
 Gdy uaktywniasz funkcję przemieszczania, najpierw dane są kopiowane z magazynu danych źródłowych do przemieszczania magazynu danych (własne). Następnie dane są kopiowane z przejściowy magazyn danych do magazynu danych ujścia. Data Factory automatycznie zarządza przepływem dwuetapowego dla Ciebie. Usługi Data Factory czyści dane tymczasowe z magazynu przejściowego także po ukończeniu przenoszenia danych.
@@ -202,15 +202,15 @@ Gdy aktywujesz przenoszenie danych za pomocą magazynu przejściowego można okr
 
 Obecnie nie można skopiować danych między dwoma magazynami danych w środowisku lokalnym za pomocą magazynu przejściowego. Oczekujemy, że ta opcja będzie dostępna wkrótce.
 
-### <a name="configuration"></a>Konfigurowanie
-Konfigurowanie **enableStaging** ustawienie w działaniu kopiowania, aby określić, czy dane zostaną umieszczone w magazynie obiektów Blob, zanim je załadujesz do docelowego magazynu danych. Po ustawieniu **enableStaging** na true, określ dodatkowe właściwości wymienione w następnej tabeli. Jeśli nie masz, musisz również utworzyć usługi Azure Storage lub magazynu udostępnionego usługi połączonej podpis dostępu dla przemieszczania.
+### <a name="configuration"></a>Konfiguracja
+Skonfiguruj ustawienie **enableStaging** w działaniu Copy, aby określić, czy dane mają zostać przygotowane w magazynie obiektów BLOB przed załadowaniem ich do docelowego magazynu danych. Po ustawieniu **enableStaging** na true, określ dodatkowe właściwości wymienione w następnej tabeli. Jeśli nie masz, musisz również utworzyć usługi Azure Storage lub magazynu udostępnionego usługi połączonej podpis dostępu dla przemieszczania.
 
-| Właściwość | Opis | Wartość domyślna | Wymagane |
+| Właściwość | Opis | Wartość domyślna | Wymagany |
 | --- | --- | --- | --- |
-| **enableStaging** |Określ, czy chcesz skopiować dane za pośrednictwem tymczasowego magazynu przejściowego. |Fałsz |Nie |
-| **linkedServiceName** |Określ nazwę połączonej usługi [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) lub [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , która odwołuje się do wystąpienia magazynu, którego używasz jako tymczasowego magazynu przemieszczania. <br/><br/> Nie można używać magazynu przy użyciu sygnatury dostępu współdzielonego, aby załadować dane do usługi SQL Data Warehouse za pomocą programu PolyBase. Można go użyć w innych scenariuszach. |ND |Tak, gdy **enableStaging** jest ustawiona na wartość TRUE |
-| **path** |Określ ścieżkę magazynu obiektów Blob, która ma zawierać użycia przemieszczonych danych. Jeśli ścieżka nie zostanie określona, usługa tworzy kontener do przechowywania danych tymczasowych. <br/><br/> Określ ścieżkę, tylko wtedy, gdy używasz magazynu przy użyciu sygnatury dostępu współdzielonego lub wymagają danych tymczasowych w określonej lokalizacji. |ND |Nie |
-| **enableCompression** |Określa, czy dane powinny zostać skompresowane przed skopiowaniem ich do miejsca docelowego. To ustawienie powoduje zmniejszenie ilości przesyłanych danych. |Fałsz |Nie |
+| **enableStaging** |Określ, czy chcesz skopiować dane za pośrednictwem tymczasowego magazynu przejściowego. |False |Nie |
+| **linkedServiceName** |Określ nazwę połączonej usługi [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) lub [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , która odwołuje się do wystąpienia magazynu, którego używasz jako tymczasowego magazynu przemieszczania. <br/><br/> Nie można używać magazynu przy użyciu sygnatury dostępu współdzielonego, aby załadować dane do usługi SQL Data Warehouse za pomocą programu PolyBase. Można go użyć w innych scenariuszach. |Nie dotyczy |Tak, gdy **enableStaging** jest ustawiona na wartość true |
+| **path** |Określ ścieżkę magazynu obiektów Blob, która ma zawierać użycia przemieszczonych danych. Jeśli ścieżka nie zostanie określona, usługa tworzy kontener do przechowywania danych tymczasowych. <br/><br/> Określ ścieżkę, tylko wtedy, gdy używasz magazynu przy użyciu sygnatury dostępu współdzielonego lub wymagają danych tymczasowych w określonej lokalizacji. |Nie dotyczy |Nie |
+| **Ustawieniem EnableCompression** |Określa, czy dane powinny zostać skompresowane przed skopiowaniem ich do miejsca docelowego. To ustawienie powoduje zmniejszenie ilości przesyłanych danych. |False |Nie |
 
 Oto przykładowa definicja działania kopiowania przy użyciu właściwości, które są opisane w powyższej tabeli:
 
@@ -248,28 +248,28 @@ Opłaty są naliczane na podstawie dwóch kroków: czas trwania kopiowania i sko
 ## <a name="performance-tuning-steps"></a>Kroki dostosowywania wydajności
 Sugerujemy, wykonaj następujące kroki, aby dostosować wydajność usługi Data Factory za pomocą działania kopiowania:
 
-1. **Ustalenie linii bazowej**. Podczas fazy opracowywania testowanie potoku za pomocą działania kopiowania względem przykładowych danych. Możesz użyć [modelu](data-factory-scheduling-and-execution.md) rozcinania Data Factory, aby ograniczyć ilość danych, z którymi pracujesz.
+1. **Ustanów linię bazową**. Podczas fazy opracowywania testowanie potoku za pomocą działania kopiowania względem przykładowych danych. Możesz użyć [modelu](data-factory-scheduling-and-execution.md) rozcinania Data Factory, aby ograniczyć ilość danych, z którymi pracujesz.
 
    Zbierz charakterystyki czasu wykonywania i wydajności za pomocą **aplikacji do monitorowania i zarządzania**. Wybierz pozycję **monitoruj & Zarządzaj** na stronie głównej Data Factory. W widoku drzewa wybierz **wyjściowy zestaw danych**. Na liście **okna działania** wybierz przebieg działania kopiowania. **Okna działania** wyświetlają czas trwania działania kopiowania i rozmiar kopiowanych danych. Przepływność jest wymieniona w **Eksploratorze okien działania**. Aby dowiedzieć się więcej na temat aplikacji, zobacz [monitorowanie potoków Azure Data Factory i zarządzanie nimi za pomocą aplikacji do monitorowania i zarządzania](data-factory-monitor-manage-app.md).
 
    ![Szczegóły uruchamiania działania](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
 
    W dalszej części artykułu można porównać wydajność i konfigurację Twojego scenariusza, aby skopiować [Informacje o wydajności](#performance-reference) działania z naszych testów.
-2. **Diagnozowanie i zoptymalizować wydajność**. Jeśli wydajność, której możesz obserwować nie spełniają Twoich oczekiwań, musisz określić wąskie gardła wydajności. Następnie zoptymalizować wydajność, aby usunąć lub zmniejszają efekt wąskich gardeł. Pełny opis Diagnostyka wydajności wykracza poza zakres tego artykułu, ale poniżej przedstawiono niektóre typowe kwestie dotyczące:
+2. **Diagnozuj i Optymalizuj wydajność**. Jeśli wydajność, której możesz obserwować nie spełniają Twoich oczekiwań, musisz określić wąskie gardła wydajności. Następnie zoptymalizować wydajność, aby usunąć lub zmniejszają efekt wąskich gardeł. Pełny opis Diagnostyka wydajności wykracza poza zakres tego artykułu, ale poniżej przedstawiono niektóre typowe kwestie dotyczące:
 
    * Funkcje wydajności:
-     * [Kopiuj równoległe](#parallel-copy)
+     * [Kopiowanie równoległe](#parallel-copy)
      * [Jednostki przenoszenia danych w chmurze](#cloud-data-movement-units)
-     * [Kopiowania przejściowego](#staged-copy)
+     * [Kopia przygotowana](#staged-copy)
      * [Skalowalność bramy Zarządzanie danymi](data-factory-data-management-gateway-high-availability-scalability.md)
    * [Brama zarządzania danymi](#considerations-for-data-management-gateway)
    * [Element źródłowy](#considerations-for-the-source)
-   * [obiekt sink](#considerations-for-the-sink)
+   * [Fotografii](#considerations-for-the-sink)
    * [Serializacja i deserializacja](#considerations-for-serialization-and-deserialization)
-   * [Kompresja](#considerations-for-compression)
+   * [Skompresowane](#considerations-for-compression)
    * [Mapowanie kolumn](#considerations-for-column-mapping)
    * [Inne zagadnienia](#other-considerations)
-3. **Rozwiń węzeł Konfiguracja do całego zestawu danych**. Gdy wyniki wykonywania i wydajność są zadowalające, można rozwinąć definicję i aktywny okres potoku w celu pokrycia całego zestawu danych.
+3. **Rozwiń konfigurację do całego zestawu danych**. Gdy wyniki wykonywania i wydajność są zadowalające, można rozwinąć definicję i aktywny okres potoku w celu pokrycia całego zestawu danych.
 
 ## <a name="considerations-for-data-management-gateway"></a>Zagadnienia dotyczące bramy Zarządzanie danymi
 **Konfiguracja bramy**: zalecamy używanie dedykowanego komputera do hostowania bramy zarządzanie danymi. Zapoznaj się [z zagadnieniami dotyczącymi używania bramy zarządzanie danymi](data-factory-data-management-gateway.md#considerations-for-using-gateway).
@@ -280,64 +280,64 @@ Sugerujemy, wykonaj następujące kroki, aby dostosować wydajność usługi Dat
 ### <a name="general"></a>Ogólne
 Pamiętaj, że źródłowy magazyn danych nie jest przeciążony innych obciążeń, które są uruchomione w lub przed nim.
 
-Dla magazynów danych firmy Microsoft, zobacz [monitorowania i dostrajania tematy](#performance-reference) specyficznych dla magazynów danych i pomagają zrozumieć dane przechowywane charakterystyki wydajności, zminimalizować czas reakcji i zmaksymalizowania wydajności.
+W przypadku magazynów danych firmy Microsoft zapoznaj się z tematami dotyczącymi [monitorowania i dostrajania](#performance-reference) , które są specyficzne dla magazynów danych, i poznanie charakterystyki wydajności magazynu danych, minimalizacji czasów odpowiedzi i maksymalnej przepływności.
 
-Jeśli skopiujesz dane z magazynu obiektów BLOB do SQL Data Warehouse, rozważ użycie **bazy** danych w celu zwiększenia wydajności. Zobacz [przy użyciu technologii PolyBase do ładowania danych do usługi Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) Aby uzyskać szczegółowe informacje. Aby uzyskać wskazówki z przypadkami użycia, zobacz [ładowanie 1 TB w usłudze Azure SQL Data Warehouse z mniej niż 15 minut przy użyciu usługi Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+Jeśli skopiujesz dane z magazynu obiektów BLOB do SQL Data Warehouse, rozważ użycie **bazy** danych w celu zwiększenia wydajności. Aby uzyskać szczegółowe informacje [, zobacz Korzystanie z bazy Azure SQL Data Warehouse danych](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) . Aby zapoznać się z przewodnikiem dotyczącym przypadku użycia, zobacz [ładowanie 1 TB do Azure SQL Data Warehouse na 15 minut z Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 ### <a name="file-based-data-stores"></a>Magazyny danych opartych na plikach
 *(W tym magazyn obiektów blob, Data Lake Store, Amazon S3, lokalne systemy plików i lokalne HDFS)*
 
-* **Średni rozmiar pliku i liczba plików**: działanie kopiowania przekazuje jeden plik danych w danym momencie. Przy użyciu tej samej ilości danych do przeniesienia ogólną przepustowość jest mniejszy, jeśli dane składa się z wielu małych plików, a nie kilka dużych plików z powodu fazie uruchamiania dla każdego pliku. W związku z tym jeśli to możliwe, łączenia małych plików do większych plikach w celu uzyskania większej przepływności.
-* **Plik formatowania i kompresji**: Aby uzyskać więcej sposobów na zwiększenie wydajności, zobacz [zagadnienia dotyczące serializacji i deserializacji](#considerations-for-serialization-and-deserialization) i [zagadnienia dotyczące kompresji](#considerations-for-compression) sekcje.
+* **Średni rozmiar pliku i liczba plików**: działanie Copy transferuje dane w jednym pliku naraz. Przy użyciu tej samej ilości danych do przeniesienia ogólną przepustowość jest mniejszy, jeśli dane składa się z wielu małych plików, a nie kilka dużych plików z powodu fazie uruchamiania dla każdego pliku. W związku z tym jeśli to możliwe, łączenia małych plików do większych plikach w celu uzyskania większej przepływności.
+* **Format pliku i kompresja**: Aby uzyskać więcej informacji na temat poprawy wydajności, zobacz [zagadnienia dotyczące serializacji i deserializacji](#considerations-for-serialization-and-deserialization) oraz [zagadnienia](#considerations-for-compression) dotyczące sekcji kompresji.
 * W przypadku scenariusza **lokalnego systemu plików** , w którym **brama zarządzanie danymi** jest wymagana, zapoznaj się z sekcją [uwagi dotyczące zarządzanie danymi Gateway](#considerations-for-data-management-gateway) .
 
 ### <a name="relational-data-stores"></a>Magazyny danych relacyjnych
 *(Zawiera SQL Database; SQL Data Warehouse; Amazon RedShift; Bazy danych SQL Server; i bazy danych Oracle, MySQL, DB2, Teradata, Sybase i PostgreSQL itp.)*
 
-* **Wzorzec danych**: schematu tabeli ma wpływ na przepływność kopiowania. Rozmiar wiersza dużych zapewnia lepszą wydajność niż rozmiar wiersza mały, aby skopiować podobną ilość danych. Przyczyną jest to, że baza danych wydajniej można pobrać mniejszej liczby partii danych, które zawierają mniej wierszy.
-* **Zapytanie lub procedura składowana**: Optymalizowanie logiki kwerendy lub procedury składowanej, określ źródła działania kopiowania można pobrać danych bardziej efektywnie.
+* **Wzorzec danych**: schemat tabeli wpływa na przepływność kopiowania. Rozmiar wiersza dużych zapewnia lepszą wydajność niż rozmiar wiersza mały, aby skopiować podobną ilość danych. Przyczyną jest to, że baza danych wydajniej można pobrać mniejszej liczby partii danych, które zawierają mniej wierszy.
+* **Zapytanie lub procedura składowana**: Optymalizacja logiki zapytania lub procedury składowanej określonej w źródle działania kopiowania w celu bardziej wydajnego pobierania danych.
 * **W przypadku lokalnych relacyjnych baz danych**, takich jak SQL Server i Oracle, które wymagają korzystania z **bramy zarządzanie danymi**, zobacz sekcję Uwagi dotyczące bramy zarządzanie danymi.
 
 ## <a name="considerations-for-the-sink"></a>Zagadnienia dotyczące ujścia
 ### <a name="general"></a>Ogólne
 Pamiętaj, że źródłowy magazyn danych nie jest przeciążony innych obciążeń, które są uruchomione w lub przed nim.
 
-Magazyny danych firmy Microsoft, można znaleźć [monitorowania i dostrajania tematy](#performance-reference) specyficznych dla magazynów danych. Te tematy mogą pomóc zrozumieć charakterystyki wydajności magazynu danych oraz jak zminimalizować czas reakcji i zmaksymalizowania wydajności.
+W przypadku magazynów danych firmy Microsoft należy zapoznać się z [tematami dotyczącymi monitorowania i dostrajania](#performance-reference) , które są specyficzne dla magazynów danych. Te tematy mogą pomóc zrozumieć charakterystyki wydajności magazynu danych oraz jak zminimalizować czas reakcji i zmaksymalizowania wydajności.
 
-Jeśli kopiujesz dane z **magazynu obiektów BLOB** do **SQL Data Warehouse**, rozważ użycie **bazy** danych w celu zwiększenia wydajności. Zobacz [przy użyciu technologii PolyBase do ładowania danych do usługi Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) Aby uzyskać szczegółowe informacje. Aby uzyskać wskazówki z przypadkami użycia, zobacz [ładowanie 1 TB w usłudze Azure SQL Data Warehouse z mniej niż 15 minut przy użyciu usługi Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+Jeśli kopiujesz dane z **magazynu obiektów BLOB** do **SQL Data Warehouse**, rozważ użycie **bazy** danych w celu zwiększenia wydajności. Aby uzyskać szczegółowe informacje [, zobacz Korzystanie z bazy Azure SQL Data Warehouse danych](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) . Aby zapoznać się z przewodnikiem dotyczącym przypadku użycia, zobacz [ładowanie 1 TB do Azure SQL Data Warehouse na 15 minut z Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 
 ### <a name="file-based-data-stores"></a>Magazyny danych opartych na plikach
 *(W tym magazyn obiektów blob, Data Lake Store, Amazon S3, lokalne systemy plików i lokalne HDFS)*
 
-* **Skopiuj zachowanie**: w przypadku kopiowania danych z magazynu danych oparte na plikach, działanie kopiowania ma trzy opcje za pośrednictwem **copyBehavior** właściwości. Ją zachowuje hierarchię, spłaszcza hierarchii lub scala plików. Zachowywanie albo spłaszczanie hierarchii ma niewielki lub zmniejszenie wydajności, ale scalanie plików powoduje zmniejszenie wydajności zwiększyć.
-* **Plik formatowania i kompresji**: zobacz [zagadnienia dotyczące serializacji i deserializacji](#considerations-for-serialization-and-deserialization) i [zagadnienia dotyczące kompresji](#considerations-for-compression) sekcje, aby uzyskać więcej sposobów na zwiększenie wydajności.
+* **Zachowanie kopiowania**: w przypadku kopiowania danych z innego magazynu danych opartego na plikach, działanie kopiowania ma trzy opcje za pośrednictwem właściwości **copyBehavior** . Ją zachowuje hierarchię, spłaszcza hierarchii lub scala plików. Zachowywanie albo spłaszczanie hierarchii ma niewielki lub zmniejszenie wydajności, ale scalanie plików powoduje zmniejszenie wydajności zwiększyć.
+* **Format pliku i kompresowanie**: Zapoznaj się z [zagadnieniami dotyczącymi serializacji i deserializacji](#considerations-for-serialization-and-deserialization) oraz [zagadnień dotyczących kompresji](#considerations-for-compression) , aby uzyskać więcej sposobów na zwiększenie wydajności.
 * **BLOB Storage**: obecnie magazyn obiektów BLOB obsługuje tylko blokowe obiekty blob w celu zoptymalizowania transferu danych i przepływności.
 * W przypadku scenariuszy **z lokalnymi systemami plików** , które wymagają korzystania z **bramy zarządzanie danymi**, zobacz sekcję [zagadnienia dotyczące zarządzanie danymi bramy](#considerations-for-data-management-gateway) .
 
 ### <a name="relational-data-stores"></a>Magazyny danych relacyjnych
 *(Zawiera SQL Database, SQL Data Warehouse, SQL Server baz danych i bazy danych Oracle)*
 
-* **Skopiuj zachowanie**: w zależności od właściwości zostały ustawione dla **sqlSink**, działanie kopiowania zapisuje dane do docelowej bazy danych na różne sposoby.
+* **Zachowanie kopiowania**: w zależności od właściwości ustawionych dla elementu **sqlsink**, działanie Copy zapisuje dane w docelowej bazie danych na różne sposoby.
   * Domyślnie używa usługi przenoszenia danych interfejsu API kopiowania zbiorczego wstawiania danych w Dołącz trybu, który zapewnia najlepszą wydajność.
   * Jeśli skonfigurujesz procedury składowanej w ujściu bazy danych stosuje się jeden wiersz danych w czasie zamiast jako ładowania zbiorczego. Wydajności znacznie spada. Jeśli zestaw danych jest duży, w razie potrzeby Rozważ przełączenie do użycia właściwości **sqlWriterCleanupScript** .
   * W przypadku skonfigurowania właściwości **sqlWriterCleanupScript** dla każdego przebiegu działania kopiowania usługa wyzwala skrypt, a następnie korzysta z interfejsu API kopiowania zbiorczego do wstawiania danych. Na przykład aby zastąpić całą tabelę przy użyciu najnowszych danych, można określić skrypt, aby usunąć wszystkie rekordy przed ładowania zbiorczego nowe dane ze źródła.
-* **Rozmiar danych wzorca i batch**:
+* **Wzorzec danych i rozmiar wsadu**:
   * Schemat tabeli ma wpływ na przepływność kopiowania. Aby skopiować podobną ilość danych, rozmiaru duży wiersz zapewnia lepszą wydajność niż rozmiar wiersza małych ponieważ bazy danych można efektywniej zatwierdzić mniejszej liczby partii danych.
-  * Działanie kopiowania wstawia dane z serii partii. Możesz ustawić liczbę wierszy w zadaniu wsadowym, używając **writeBatchSize** właściwości. Jeśli dane zawierają małe wiersze, możesz ustawić **writeBatchSize** właściwość o wyższej wartości do korzystania z mniejszy narzut partii i wyższej przepływności. Jeśli rozmiar wiersza danych jest duży, należy zachować ostrożność, wraz ze zwiększeniem **writeBatchSize**. O wysokiej wartości może prowadzić do awarii kopiowania spowodowane przeciążeniem bazy danych.
+  * Działanie kopiowania wstawia dane z serii partii. Można ustawić liczbę wierszy w partii przy użyciu właściwości **writeBatchSize** . Jeśli dane zawierają małe wiersze, można ustawić właściwość **writeBatchSize** o wyższej wartości, aby korzystać z niższych nakładów wsadowych i większej przepływności. Jeśli rozmiar wiersza danych jest duży, należy zachować ostrożność w przypadku zwiększenia **writeBatchSize**. O wysokiej wartości może prowadzić do awarii kopiowania spowodowane przeciążeniem bazy danych.
 * **W przypadku lokalnych relacyjnych baz danych** , takich jak SQL Server i Oracle, które wymagają korzystania z **bramy zarządzanie danymi**, zobacz sekcję [uwagi dotyczące bramy zarządzanie danymi](#considerations-for-data-management-gateway) .
 
 ### <a name="nosql-stores"></a>Magazynów NoSQL
 *(Obejmuje magazyn tabel i Azure Cosmos DB)*
 
-* Aby uzyskać **Table storage**:
-  * **Partycja**: zapisywanie danych z partycjami przeplotem znacznie obniża wydajność. Sortowanie danych źródła według klucza partycji, dzięki czemu dane są wstawiane wydajnie w jednej partycji po drugim lub dostosować logiki można zapisać danych do jednej partycji.
+* W przypadku usługi **Table Storage**:
+  * **Partycja**: zapisywanie danych na partycjach z przeplotem znacznie zmniejsza wydajność. Sortowanie danych źródła według klucza partycji, dzięki czemu dane są wstawiane wydajnie w jednej partycji po drugim lub dostosować logiki można zapisać danych do jednej partycji.
 * Dla **Azure Cosmos DB**:
   * **Rozmiar wsadu**: Właściwość **writeBatchSize** ustawia liczbę żądań równoległych do usługi Azure Cosmos DB, aby można było tworzyć dokumenty. Po zwiększeniu **writeBatchSize** można oczekiwać większej wydajności, ponieważ do Azure Cosmos DB są wysyłane więcej żądań równoległych. Należy jednak zapoznać się z ograniczeniami podczas zapisywania do Azure Cosmos DB (komunikat o błędzie: "częstotliwość żądań jest duża"). Różne czynniki mogą prowadzić do ograniczania przepustowości, w tym rozmiaru dokumentu, liczby warunków w dokumentach oraz zasad indeksowania kolekcji docelowej. Aby osiągnąć wyższą przepływność kopiowania, rozważ użycie większej kolekcji, na przykład S3.
 
 ## <a name="considerations-for-serialization-and-deserialization"></a>Zagadnienia dotyczące serializacji i deserializacji
-Serializacja i deserializacja może wystąpić, gdy Twoje wejściowego zestawu danych lub zestawu danych wyjściowych jest plik. Zobacz [obsługiwane formaty plików i kompresji](data-factory-supported-file-and-compression-formats.md) ze szczegółami dotyczącymi obsługiwanych formatów plików przez działanie kopiowania.
+Serializacja i deserializacja może wystąpić, gdy Twoje wejściowego zestawu danych lub zestawu danych wyjściowych jest plik. Zobacz [obsługiwane formaty plików i kompresji](data-factory-supported-file-and-compression-formats.md) ze szczegółowymi informacjami na temat obsługiwanych formatów plików przez działanie kopiowania.
 
-**Skopiuj zachowanie**:
+**Zachowanie kopiowania**:
 
 * Kopiowanie plików między magazynami danych opartych na plikach:
   * Gdy zestawy danych wejściowych i wyjściowych mają takie same ustawienia formatu plików, Usługa przenoszenia danych wykonuje kopię binarną bez serializacji lub deserializacji. Zostanie wyświetlony wyższej przepustowości w porównaniu do scenariusza, w której ustawienia formatu pliku źródła i ujścia różnią się od siebie nawzajem.
@@ -345,21 +345,21 @@ Serializacja i deserializacja może wystąpić, gdy Twoje wejściowego zestawu d
   * Jeśli wejściowe i wyjściowe zestawy danych zarówno mają różne formaty plików lub różne konfiguracje, takie jak ograniczników, usługi data movement service deserializuje dane źródłowe do strumienia, przekształcania i serializować go do formatu wyjściowego, wskazane przez Ciebie. Ta operacja powoduje znacznie bardziej znaczące wydajności, obciążenie w porównaniu do innych scenariuszy.
 * Podczas kopiowania plików do/z magazynu danych, który nie jest oparte na plikach (na przykład z magazynu oparte na plikach do relacyjnego magazynu) krok serializacji lub deserializacji jest wymagany. Ten krok powoduje znaczne obciążenie.
 
-**Format pliku**: format pliku, możesz wybrać mogą mieć wpływ na wydajności kopiowania. Na przykład Avro jest kompaktowego formatu binarnego, który przechowuje metadane z danymi. Posiada obsługi szerokiej gamy w ekosystemie usługi Hadoop do przetwarzania i wykonywania zapytań. Jednak Avro jest droższe do serializacji i deserializacji, co skutkuje niższe przepływności kopiowania w porównaniu do formatu tekstowego. Wybierz ustawienia formatu pliku w całym przepływie przetwarzania całościowo. Rozpoczyna się od co tworzą dane są przechowywane w magazynach danych źródłowych lub ma zostać wyodrębniony z systemów zewnętrznych; najlepszy format dla magazynu, przetwarzanie analityczne i wykonywania zapytań; i w jakim formacie dane powinny być eksportowane do składnic danych programów dla narzędzia do raportowania i wizualizacji. Czasami formatu pliku nieoptymalne do odczytu i zapisu wydajność może być dobrym rozwiązaniem, gdy należy wziąć pod uwagę całkowity analitycznych procesu.
+**Format pliku**: wybrany format pliku może mieć wpływ na wydajność kopiowania. Na przykład Avro jest kompaktowego formatu binarnego, który przechowuje metadane z danymi. Posiada obsługi szerokiej gamy w ekosystemie usługi Hadoop do przetwarzania i wykonywania zapytań. Jednak Avro jest droższe do serializacji i deserializacji, co skutkuje niższe przepływności kopiowania w porównaniu do formatu tekstowego. Wybierz ustawienia formatu pliku w całym przepływie przetwarzania całościowo. Rozpoczyna się od co tworzą dane są przechowywane w magazynach danych źródłowych lub ma zostać wyodrębniony z systemów zewnętrznych; najlepszy format dla magazynu, przetwarzanie analityczne i wykonywania zapytań; i w jakim formacie dane powinny być eksportowane do składnic danych programów dla narzędzia do raportowania i wizualizacji. Czasami formatu pliku nieoptymalne do odczytu i zapisu wydajność może być dobrym rozwiązaniem, gdy należy wziąć pod uwagę całkowity analitycznych procesu.
 
 ## <a name="considerations-for-compression"></a>Zagadnienia dotyczące kompresji
 Gdy zestaw danych wejściowych lub wyjściowych jest plik, można ustawić działania kopiowania, które można wykonać kompresji lub dekompresji, ponieważ zapisuje dane do lokalizacji docelowej. Po wybraniu kompresji, upewnij się zależność między wejścia/wyjścia (We/Wy) i procesora CPU. Kompresowanie danych koszty dodatkowe zasoby obliczeniowe. Ale w zamian zmniejsza we/wy sieci i magazynu. W zależności od danych może zostać wyświetlony boost w ogólną przepływność kopiowania.
 
 **Koder-dekoder**: działanie Copy obsługuje typy kompresji gzip, BZIP2 i Wklęśnięcie. Usługa Azure HDInsight może zużywać wszystkie trzy typy do przetwarzania. Każdy koder-dekoder kompresji ma zalety. Na przykład bzip2 ma najniższą przepływności kopiowania, ale uzyskać najlepszą wydajność zapytań Hive przy użyciu bzip2, ponieważ podzielić ją do przetworzenia. Gzip jest to opcja najbardziej o zrównoważonym obciążeniu, a jest najczęściej używany. Wybierz koder-dekoder, który najlepiej odpowiada Twojemu scenariuszowi end-to-end.
 
-**Poziom**: możesz korzystać z dwóch opcji dla każdego kodera-dekodera kompresji: najszybszych skompresowane i optymalnie skompresowany. Najszybciej skompresowany opcji kompresuje dane tak szybko, jak to możliwe, nawet wtedy, gdy wynikowy plik nie jest optymalnie skompresowany. Opcja optymalnie skompresowany zużywa więcej czasu na kompresji i daje minimalnej ilości danych. Możesz przetestować obie opcje, aby zobaczyć, który zapewnia lepszą wydajność ogólną w Twoim przypadku.
+**Poziom**: można wybrać jedną z dwóch opcji dla każdego kodera kodek kompresji: najszybszy skompresowany i optymalnie skompresowany. Najszybciej skompresowany opcji kompresuje dane tak szybko, jak to możliwe, nawet wtedy, gdy wynikowy plik nie jest optymalnie skompresowany. Opcja optymalnie skompresowany zużywa więcej czasu na kompresji i daje minimalnej ilości danych. Możesz przetestować obie opcje, aby zobaczyć, który zapewnia lepszą wydajność ogólną w Twoim przypadku.
 
 **Uwaga**: Aby skopiować dużą ilość danych między magazynem lokalnym i chmurą, należy rozważyć użycie tymczasowego magazynu obiektów blob z kompresją. Przy użyciu magazynu tymczasowego jest przydatne, gdy przepustowość sieci firmowej i usług platformy Azure jest czynnikiem ograniczającym i chcesz wejściowy zestaw danych i zestawie danych wyjściowych zarówno w postaci bez kompresji. Dokładniej, można przerwać pojedyncze działanie kopiowania w dwóch działaniach kopiowania. Pierwsze działanie kopiowania Kopiuje ze źródła do tymczasowego lub tymczasowego obiektu BLOB w postaci skompresowanej. Drugie działanie kopiowania Kopiuje skompresowane dane z przemieszczania, a następnie dekompresuje podczas zapisywania do ujścia.
 
 ## <a name="considerations-for-column-mapping"></a>Informacje dotyczące mapowania kolumn
-Możesz ustawić **columnMappings** właściwość w działaniu kopiowania do mapy wszystkie lub podzbiór danych wejściowych kolumn na kolumny danych wyjściowych. Po usługi data movement service odczytuje dane ze źródła, trzeba wykonać mapowania kolumn na danych, zanim go zapisuje dane do ujścia. To dodatkowe przetwarzanie zmniejsza przepustowość kopiowania.
+Można ustawić właściwość **ColumnMappings** w działaniu Copy, aby mapować wszystkie lub podzbiór kolumn wejściowych do kolumn danych wyjściowych. Po usługi data movement service odczytuje dane ze źródła, trzeba wykonać mapowania kolumn na danych, zanim go zapisuje dane do ujścia. To dodatkowe przetwarzanie zmniejsza przepustowość kopiowania.
 
-W przypadku odpytywalny magazynie danych źródła, na przykład, jeśli magazynu relacyjnego, takich jak bazy danych SQL Database lub SQL Server, czy jest magazynu NoSQL, takie jak usługi Table storage lub Azure Cosmos DB, należy wziąć pod uwagę wypychanie filtrowanie kolumn i zmianę kolejności logikę w celu **zapytania** właściwości zamiast mapowania kolumn. W ten sposób projekcji występuje, gdy usługi data movement service odczytuje dane z magazynu danych źródłowych, w którym jest znacznie bardziej efektywne.
+Jeśli źródłowy magazyn danych to queryable, na przykład, jeśli jest to magazyn relacyjny, taki jak SQL Database lub SQL Server, lub jeśli jest to Magazyn NoSQL, taki jak Table Storage lub Azure Cosmos DB, rozważ wypchnięcie reguły filtrowania kolumn i zmiany kolejności dla właściwości **zapytania** zamiast korzystania z mapowania kolumn. W ten sposób projekcji występuje, gdy usługi data movement service odczytuje dane z magazynu danych źródłowych, w którym jest znacznie bardziej efektywne.
 
 ## <a name="other-considerations"></a>Inne zagadnienia
 Jeśli rozmiar danych, które mają zostać skopiowane, jest duży, można dostosować logikę biznesową, aby dodatkowo podzielić dane przy użyciu mechanizmu odcinania w Data Factory. Następnie należy zaplanować działanie kopiowania częściej, aby zmniejszyć rozmiar danych dla każdego uruchomienia działania kopiowania.
@@ -367,30 +367,30 @@ Jeśli rozmiar danych, które mają zostać skopiowane, jest duży, można dosto
 Należy zachować ostrożność w zakresie liczby zestawów danych i działań kopiowania wymagających Data Factory łączników do tego samego magazynu danych w tym samym czasie. Wiele zadań jednoczesnych kopii może ograniczać do przechowywania danych i spowodować pogorszenie wydajności, kopii zadania wewnętrzne ponownych prób, a w niektórych przypadkach niepowodzenia wykonywania.
 
 ## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>Przykładowy scenariusz: kopiowanie danych z lokalnego serwera SQL do magazynu obiektów Blob
-**Scenariusz**: potok został opracowany pod kątem kopiowanie danych z lokalnego programu SQL Server do usługi Blob storage w formacie CSV. Aby przyspieszyć zadanie kopiowania, pliki CSV należy skompresowane do formatu bzip2.
+**Scenariusz**: potok został utworzony w celu kopiowania danych z SQL Server lokalnego do magazynu obiektów BLOB w formacie CSV. Aby przyspieszyć zadanie kopiowania, pliki CSV należy skompresowane do formatu bzip2.
 
-**Test i analiza**: przepływności działania kopiowania jest mniej niż 2 MB/s, który jest znacznie wolniejsze niż testów porównawczych wydajności.
+**Testowanie i analiza**: przepływność działania kopiowania jest mniejsza niż 2 MB/s, co jest znacznie wolniejsze niż wynikowy test wydajności.
 
-**Analiza wydajności i dostosowywania**: Aby rozwiązać problem z wydajnością, Przyjrzyjmy się jak dane są przetwarzane i przenoszone.
+**Analiza wydajności i dostrajanie**: Aby rozwiązać problem z wydajnością, przyjrzyjmy się, jak dane są przetwarzane i przenoszone.
 
 1. **Odczytaj dane**: Brama otwiera połączenie w celu SQL Server i wysyła zapytanie. SQL Server odpowiada, wysyłając strumień danych do bramy za pośrednictwem intranetu.
 2. **Serializowanie i kompresowanie danych**: Brama serializować strumień danych do formatu CSV i kompresuje dane do strumienia bzip2.
 3. **Zapisz dane**: Brama przekazuje strumień bzip2 do magazynu obiektów BLOB za pośrednictwem Internetu.
 
-Jak widać, dane są przetwarzane i przenoszone w sposób sekwencyjny przesyłania strumieniowego: SQL Server > LAN > Gateway > sieci WAN > BLOB Storage. **Ogólna wydajność jest kontrolowany za przepustowość minimalna w potoku**.
+Jak widać, dane są przetwarzane i przenoszone w sposób sekwencyjny przesyłania strumieniowego: SQL Server > LAN > Gateway > sieci WAN > BLOB Storage. **Ogólna wydajność jest planowana przez minimalną przepływność w potoku**.
 
 ![Przepływ danych](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
 
 Co najmniej jeden z następujących czynników może spowodować wąskie gardło:
 
-* **Źródło**: sam program SQL Server ma niskiej przepustowości, ze względu na duże obciążenia.
+* **Źródło**: SQL Server samo ma niską przepływność ze względu na duże obciążenia.
 * **Zarządzanie danymi Gateway**:
   * **LAN**: Brama znajduje się daleko od maszyny SQL Server i ma połączenie o niskiej przepustowości.
   * **Brama**: Brama osiągnęła swoje ograniczenia dotyczące obciążenia, aby wykonać następujące operacje:
-    * **Serializacja**: serializacja strumień danych do formatu CSV ma powolne przepływności.
-    * **Kompresja**: wybrano powolne kodera-dekodera kompresji (na przykład, bzip2, czyli 2,8 MB/s z Core i7).
-  * **Sieci WAN**: brakuje przepustowości między siecią firmową i usług platformy Azure (na przykład T1 = 1,544 KB/s; T2 = 6,312 KB/s).
-* **Obiekt sink**: magazyn obiektów Blob jest niska przepływność. (W tym scenariuszu jest mało prawdopodobne, ponieważ jej umowa SLA gwarantuje co najmniej 60 MB/s).
+    * **Serializacja**: Serializowanie strumienia danych do formatu CSV ma niską przepływność.
+    * **Kompresowanie**: wybrano wolny koder-dekoder kompresji (na przykład bzip2, czyli 2,8 MB/s z rdzeniem Core i7).
+  * **Sieć WAN**: przepustowość między siecią firmową i usługami platformy Azure jest niska (na przykład T1 = 1 544 KB/s; T2 = 6 312 KB/s).
+* **Ujścia**: Magazyn obiektów BLOB ma niską przepływność. (W tym scenariuszu jest mało prawdopodobne, ponieważ jej umowa SLA gwarantuje co najmniej 60 MB/s).
 
 W tym przypadku bzip2 kompresji danych może być spowalniania cały potok. Przełączanie do kodera-dekodera kompresji gzip może jej obsługi ułatwiają realizację tego wąskiego gardła.
 
@@ -413,13 +413,13 @@ W tym przypadku bzip2 kompresji danych może być spowalniania cały potok. Prze
 
 ![Scenariusz 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
-## <a name="reference"></a>Informacje ogólne
+## <a name="reference"></a>Dokumentacja
 Poniżej znajdują się informacje dotyczące monitorowania wydajności i dostrajania dla niektórych obsługiwanych magazynów danych:
 
 * Azure Blob Storage: [elementy docelowe skalowalności i wydajności dla magazynu obiektów BLOB](../../storage/blobs/scalability-targets.md) i [wydajności i skalowalności dla usługi BLOB Storage](../../storage/blobs/storage-performance-checklist.md).
 * Azure Table Storage: [elementy docelowe skalowalności i wydajności dla magazynu tabel](../../storage/tables/scalability-targets.md) oraz [listę kontrolną wydajności i skalowalności w magazynie tabel](../../storage/tables/storage-performance-checklist.md).
-* Usługa Azure SQL Database: Możesz [monitorować wydajność](../../sql-database/sql-database-single-database-monitor.md) i sprawdź wartość procentowa jednostki (DTU) dla transakcji bazy danych
-* Usługa Azure SQL Data Warehouse: Jej możliwości jest mierzony w liczbę jednostek magazynu danych (dwu); zobacz [Zarządzaj obliczeniowa w usłudze Azure SQL Data Warehouse (omówienie)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
-* Azure Cosmos DB: [poziomy wydajności w usłudze Azure Cosmos DB](../../cosmos-db/performance-levels.md)
-* Na lokalnym serwerze SQL Server: [monitorowanie i dostrajanie wydajności](https://msdn.microsoft.com/library/ms189081.aspx)
-* Serwer plików w środowisku lokalnym: [dostrajanie wydajności dla serwerów plików](https://msdn.microsoft.com/library/dn567661.aspx)
+* Azure SQL Database: można [monitorować wydajność](../../sql-database/sql-database-single-database-monitor.md) i sprawdzać wartość procentową jednostki transakcji bazy danych (DTU)
+* Azure SQL Data Warehouse: jej możliwości są mierzone w jednostkach magazynu danych (jednostek dwu); Zobacz [zarządzanie mocą obliczeniową w Azure SQL Data Warehouse (omówienie)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Azure Cosmos DB: [poziomy wydajności w Azure Cosmos DB](../../cosmos-db/performance-levels.md)
+* SQL Server lokalny: [monitorowanie i dostrajanie wydajności](https://msdn.microsoft.com/library/ms189081.aspx)
+* Lokalny serwer plików: [dostrajanie wydajności dla serwerów plików](https://msdn.microsoft.com/library/dn567661.aspx)
