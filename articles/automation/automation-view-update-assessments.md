@@ -6,11 +6,11 @@ ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 58d3cf6261456c09195ad6dafaeb781b55d9e5ee
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310088"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372959"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Wyświetlanie ocen aktualizacji Update Management platformy Azure
 
@@ -32,7 +32,7 @@ Wybierz pozycję **brakujące aktualizacje** , aby wyświetlić listę aktualiza
 
 W poniższej tabeli wymieniono obsługiwane klasyfikacje aktualizacji w Update Management z definicją dla każdej klasyfikacji.
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>System Windows
 
 |Klasyfikacja  |Opis  |
 |---------|---------|
@@ -42,10 +42,10 @@ W poniższej tabeli wymieniono obsługiwane klasyfikacje aktualizacji w Update M
 |Pakiety funkcji     | Nowe funkcje produktu dystrybuowane poza wydaniem produktu.        |
 |Dodatki Service Pack     | Zbiorczy zestaw poprawek, które są stosowane do aplikacji.        |
 |Aktualizacje definicji     | Aktualizacja dla wirusów lub innych plików definicji.        |
-|narzędzia     | Narzędzie lub funkcja, która pomaga wykonać jedno lub więcej zadań.        |
+|Narzędzia     | Narzędzie lub funkcja, która pomaga wykonać jedno lub więcej zadań.        |
 |Aktualizacje     | Aktualizacja aplikacji lub pliku, który jest aktualnie zainstalowany.        |
 
-### <a name="linux-2"></a>Linux
+### <a name="linux-2"></a>System
 
 |Klasyfikacja  |Opis  |
 |---------|---------|

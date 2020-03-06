@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie serwera przetwarzania skalowalnego w poziomie podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych z usługą Azure Site Recovery | Dokumentacja firmy Microsoft
+title: Skonfiguruj serwer przetwarzania skalowalny w poziomie podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych przy użyciu Azure Site Recovery | Microsoft Docs "
 description: W tym artykule opisano sposób konfigurowania serwera przetwarzania skalowalnego w poziomie podczas odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych.
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,76 +8,76 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925492"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362812"
 ---
-# <a name="scale-with-additional-process-servers"></a>Skalowanie za pomocą dodatkowych serwerów przetwarzania
+# <a name="scale-with-additional-process-servers"></a>Skalowanie przy użyciu dodatkowych serwerów przetwarzania
 
-Domyślnie, Jeśli replikujesz maszyny wirtualne VMware lub serwery fizyczne do platformy Azure za pomocą [Site Recovery](site-recovery-overview.md), serwer przetwarzania jest zainstalowany na komputerze z serwerem konfiguracji i służy do koordynowania innych transfer danych między Site Recovery i infrastruktury lokalnej. Aby zwiększyć wydajność i skalowanie w poziomie wdrożenie replikacji, możesz dodać autonomicznego dodatkowych serwerów przetwarzania. W tym artykule opisano sposób konfigurowania serwera przetwarzania skalowalnego w poziomie.
+Domyślnie podczas replikowania maszyn wirtualnych VMware lub serwerów fizycznych na platformę Azure przy użyciu [Site Recovery](site-recovery-overview.md)serwer przetwarzania jest zainstalowany na komputerze serwera konfiguracji i służy do koordynowania transferu danych między Site Recovery i infrastrukturą lokalną. Aby zwiększyć pojemność i skalować wdrożenie replikacji, można dodać dodatkowe autonomiczne serwery procesów. W tym artykule opisano sposób konfigurowania serwera przetwarzania skalowalnego w poziomie.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
 ### <a name="capacity-planning"></a>Planowanie pojemności
 
-Upewnij się, że zostały wykonane [planowania pojemności](site-recovery-plan-capacity-vmware.md) potrzeby replikacji oprogramowania VMware. Pomaga to identyfikować jak i kiedy należy wdrażać dodatkowych serwerów przetwarzania.
+Upewnij się, że wykonano [Planowanie pojemności](site-recovery-plan-capacity-vmware.md) na potrzeby replikacji oprogramowania VMware. Dzięki temu można określić, jak i kiedy należy wdrożyć dodatkowe serwery przetwarzania.
 
-Od wersji 9.24 wskazówki jest dodawany podczas wyboru serwera przetwarzania dla nowych replikacji. Serwer przetwarzania są oznaczane dobra kondycja, ostrzegawczy i krytyczny na podstawie określonych kryteriów. Aby poznać różne scenariusze, które mogą mieć wpływ na stan serwera przetwarzania, zobacz [alerty serwera przetwarzania](vmware-physical-azure-monitor-process-server.md#process-server-alerts).
+W wersji 9,24 wskazówki są dodawane podczas wybierania serwera przetwarzania dla nowych replikacji. Serwer przetwarzania zostanie oznaczony jako zdrowy, ostrzegawczy i krytyczny na podstawie określonych kryteriów. Aby poznać różne scenariusze, które mogą mieć wpływ na stan serwera przetwarzania, przejrzyj [alerty serwera przetwarzania](vmware-physical-azure-monitor-process-server.md#process-server-alerts).
 
 > [!NOTE]
-> Korzystanie ze sklonowanym składnika serwera przetwarzania nie jest obsługiwana. Wykonaj kroki opisane w tym artykule, aby każdy PS skalowalnego w poziomie.
+> Użycie składnika sklonowanego serwera przetwarzania nie jest obsługiwane. Wykonaj kroki opisane w tym artykule dla każdej skalowania w poziomie PS.
 
-### <a name="sizing-requirements"></a>Wymagania w zakresie rozmiaru 
+### <a name="sizing-requirements"></a>Wymagania dotyczące ustalania wielkości 
 
-Sprawdź wymagania w zakresie rozmiaru podsumowane w tabeli. Ogólnie rzecz biorąc Jeśli musisz skalować wdrożenie do ponad 200 maszyn źródłowych lub masz łącznie codziennie współczynnik więcej niż 2 TB do zmian danych, potrzebujesz dodatkowych serwerów przetwarzania do obsługi natężenia ruchu.
+Sprawdź wymagania dotyczące ustalania wielkości podsumowania w tabeli. Ogólnie rzecz biorąc, jeśli konieczne jest skalowanie wdrożenia na więcej niż 200 maszyn źródłowych lub łączny dzienny współczynnik zmian wynoszący więcej niż 2 TB, potrzebne są dodatkowe serwery przetwarzania do obsługi natężenia ruchu.
 
-| **Dodatkowym serwerze przetwarzania** | **Rozmiar dysku w pamięci podręcznej** | **Współczynnik zmian danych** | **Chronione maszyny** |
+| **Dodatkowy serwer przetwarzania** | **Rozmiar dysku pamięci podręcznej** | **Szybkość zmian danych** | **Chronione maszyny** |
 | --- | --- | --- | --- |
-|4 Vcpu (2 sockets * 2 rdzenie \@ 2,5 GHz), 8 GB pamięci RAM |300 GB |250 GB lub mniej |Replikowanie maszyn 85 lub mniej. |
-|8 wirtualnych procesorów CPU (2 sockets * 4 rdzenie \@ 2,5 GHz), 12 GB pamięci RAM |600 GB |250 GB do 1 TB |Replikacja między maszynami 85 150. |
-|12 procesorów wirtualnych Vcpu (2 sockets * 6 rdzeni \@ 2,5 GHz) 24 GB pamięci RAM |1 TB |1 TB do 2 TB |Replikacja między maszynami 150 225. |
+|4 procesorów wirtualnych vCPU (2 gniazda * 2 rdzenie \@ 2,5 GHz), 8 GB pamięci |300 GB |250 GB lub mniej |Replikacja maszyn z 85 lub mniej. |
+|8 procesorów wirtualnych vCPU (2 gniazda * 4 rdzenie \@ 2,5 GHz), 12 GB pamięci |600 GB |250 GB do 1 TB |Replikacja między 85-150 maszynami. |
+|12 procesorów wirtualnych vCPU (2 gniazda * 6 rdzeni \@ 2,5 GHz) 24 GB pamięci |1 TB |1 TB do 2 TB |Replikacja między 150-225 maszynami. |
 
-W przypadku, gdy każda chronione maszyny źródłowej skonfigurowano 3 dyskami 100 GB.
+Gdzie każda chroniona maszyna źródłowa jest skonfigurowana z 3 dyskami o 100 GB każdej z nich.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Wymagania wstępne dotyczące dodatkowym serwerze przetwarzania są podsumowane w poniższej tabeli.
+Wymagania wstępne dotyczące dodatkowego serwera przetwarzania zostały podsumowane w poniższej tabeli.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 ## <a name="download-installation-file"></a>Pobierz plik instalacyjny
 
-Pobierz plik instalacyjny na serwer przetwarzania w następujący sposób:
+Pobierz plik instalacyjny dla serwera przetwarzania w następujący sposób:
 
-1. Zaloguj się do witryny Azure portal i przejdź do magazynu usługi Recovery Services.
-2. Otwórz **infrastruktura usługi Site Recovery** > **VMWare i maszyn fizycznych** > **serwery konfiguracji** (w ramach programu VMware i fizycznych Maszyny).
-3. Wybierz serwer konfiguracji, aby przejść do szczegółów serwera. Następnie kliknij przycisk **+ serwer przetwarzania**.
-4. W **serwer Dodaj przetwarzania** >  **wybierz, w której chcesz wdrożyć serwer przetwarzania**, wybierz opcję **Deploy Scale-out serwera przetwarzania w środowisku lokalnym**.
+1. Zaloguj się do Azure Portal i przejdź do magazynu Recovery Services.
+2. Otwórz **Site Recovery infrastrukturę** > oprogramowania **VMware i maszyn fizycznych** > **serwerów konfiguracji** (w obszarze dla maszyn fizycznych z oprogramowaniem VMware &).
+3. Wybierz serwer konfiguracji, aby przejść do szczegółów serwera. Następnie kliknij pozycję **+ serwer przetwarzania**.
+4. W obszarze **Dodawanie serwera przetwarzania** >  **Wybierz lokalizację, w której chcesz wdrożyć serwer przetwarzania**, wybierz pozycję **Wdróż serwer przetwarzania skalowalnego w poziomie w środowisku lokalnym**.
 
-   ![Dodaj stronę serwerów](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
-1. Kliknij przycisk **pobrać z witryny Microsoft Azure Recovery ujednoliconej konfiguracji**. Spowoduje to pobranie najnowszej wersji pliku instalacyjnego.
+   ![Strona dodawania serwerów](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
+1. Kliknij pozycję **pobierz Microsoft Azure Site Recovery ujednolicona konfiguracja**. Spowoduje to pobranie najnowszej wersji pliku instalacyjnego.
 
    > [!WARNING]
-   > Wersja instalacji serwera przetwarzania powinna być taka sama jak, lub starszej niż, wersja serwera konfiguracji zostały uruchomione. Prosty sposób, aby zapewnić zgodność wersji jest użycie tego samego Instalatora, który ostatnio używane do instalowania lub aktualizowania serwera konfiguracji.
+   > Wersja instalacji serwera przetwarzania powinna być taka sama, jak wersja serwera konfiguracji, która jest uruchomiona. Prostym sposobem zapewnienia zgodności wersji jest użycie tego samego Instalatora, który ostatnio został użyty do zainstalowania lub zaktualizowania serwera konfiguracji.
 
-## <a name="install-from-the-ui"></a>Zainstaluj w interfejsie użytkownika
+## <a name="install-from-the-ui"></a>Instalowanie z interfejsu użytkownika
 
-Należy zainstalować w następujący sposób. Po skonfigurowaniu serwera, należy przeprowadzić migrację maszyn źródłowych, które z niej korzystać.
+Zainstaluj program w następujący sposób. Po skonfigurowaniu serwera należy zmigrować maszyny źródłowe, aby z niej korzystać.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-add-process-server.md)]
 
 
-## <a name="install-from-the-command-line"></a>Instalowanie przy użyciu wiersza polecenia
+## <a name="install-from-the-command-line"></a>Instalowanie z wiersza polecenia
 
-Zainstaluj, uruchamiając następujące polecenie:
+Zainstaluj program, uruchamiając następujące polecenie:
 
 ```
 UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMWare/NonVMWare>] [/PSIP <IP address to be used for data transfer] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
 ```
 
-Gdzie parametry wiersza polecenia są następujące:
+Parametry wiersza polecenia są następujące:
 
 [!INCLUDE [site-recovery-unified-setup-parameters](../../includes/site-recovery-unified-installer-command-parameters.md)]
 
@@ -88,9 +88,9 @@ MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
 cd C:\Temp\Extracted
 UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /EnvType "VMWare" /CSIP "10.150.24.119" /PassphraseFilePath "C:\Users\Administrator\Desktop\Passphrase.txt" /DataTransferSecurePort 443
 ```
-### <a name="create-a-proxy-settings-file"></a>Tworzenie pliku ustawień serwera proxy
+### <a name="create-a-proxy-settings-file"></a>Utwórz plik ustawień serwera proxy
 
-Jeśli potrzebujesz skonfigurować serwer proxy, parametr ProxySettingsFilePath przyjmuje plik jako dane wejściowe. Można utworzyć pliku w następujący sposób i przekaż go jako parametr wejściowy ProxySettingsFilePath.
+Jeśli trzeba skonfigurować serwer proxy, parametr ProxySettingsFilePath pobiera plik jako dane wejściowe. Plik można utworzyć w następujący sposób i przekazać go jako parametr wejściowy ProxySettingsFilePath.
 
 ```
 * [ProxySettings]
@@ -101,5 +101,5 @@ Jeśli potrzebujesz skonfigurować serwer proxy, parametr ProxySettingsFilePath 
 * ProxyPassword="Password"
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej o [Zarządzanie przetwarzania ustawień serwera](vmware-azure-manage-process-server.md)
+## <a name="next-steps"></a>Następne kroki
+Więcej informacji na temat [zarządzania ustawieniami serwera przetwarzania](vmware-azure-manage-process-server.md)

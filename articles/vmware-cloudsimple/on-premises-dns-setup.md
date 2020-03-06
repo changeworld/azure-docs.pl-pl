@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (Automatyczna synchronizacja) — Konfigurowanie systemu DNS do automatycznej synchronizacji chmury prywatnej
-description: Opisuje sposób konfigurowania rozpoznawania nazw DNS w celu uzyskania dostępu do programu vCenter Server w chmurze prywatnej o automatycznej synchronizacji z lokalnej stacji roboczej
+title: Rozwiązanie VMware firmy Azure według CloudSimple — Konfigurowanie usługi DNS dla chmury prywatnej CloudSimple
+description: Opisuje sposób konfigurowania rozpoznawania nazw DNS na potrzeby dostępu do programu vCenter Server w chmurze prywatnej CloudSimple z lokalnych stacji roboczych
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,26 +8,26 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 12c4362ae1b075af132d5971f4fe0461c9d91733
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083086"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364415"
 ---
-# <a name="configure-dns-for-name-resolution-for-avs-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurowanie systemu DNS do rozpoznawania nazw w celu automatycznej synchronizacji dostępu do programu vCenter w chmurze prywatnej z poziomu lokalnych stacji roboczych
+# <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurowanie systemu DNS do rozpoznawania nazw dla prywatnego dostępu vCenter w chmurze z lokalnych stacji roboczych
 
-Aby uzyskać dostęp do serwera vCenter w chmurze prywatnej o automatycznej synchronizacji z lokalnych stacji roboczych, należy skonfigurować rozpoznawanie adresów DNS, aby serwer vCenter mógł zostać rozkierowany przy użyciu nazwy hosta i adresu IP.
+Aby uzyskać dostęp do serwera vCenter w chmurze prywatnej CloudSimple z lokalnych stacji roboczych, należy skonfigurować rozpoznawanie adresów DNS, aby serwer vCenter mógł zostać rozkierowany przy użyciu nazwy hosta i adresu IP.
 
-## <a name="obtain-the-ip-address-of-the-dns-server-for-your-avs-private-cloud"></a>Uzyskaj adres IP serwera DNS dla chmury prywatnej do automatycznej synchronizacji
+## <a name="obtain-the-ip-address-of-the-dns-server-for-your-private-cloud"></a>Uzyskaj adres IP serwera DNS dla chmury prywatnej
 
-1. Zaloguj się do [portalu automatycznej](access-cloudsimple-portal.md)rejestracji.
+1. Zaloguj się do [portalu CloudSimple](access-cloudsimple-portal.md).
 
-2. Przejdź do **zasobów** > **automatycznej synchronizacji chmur prywatnych** i wybierz chmurę prywatną do automatycznej synchronizacji, z którą chcesz nawiązać połączenie.
+2. Przejdź do **zasobów** > **chmurami prywatnymi** i wybierz chmurę prywatną, z którą chcesz nawiązać połączenie.
 
-3. Na stronie **Podsumowanie** chmury prywatnej automatycznej synchronizacji w sekcji **podstawowe informacje**Skopiuj adres IP serwera DNS w chmurze automatycznej synchronizacji.
+3. Na stronie **Podsumowanie** w chmurze prywatnej w obszarze **podstawowe informacje**Skopiuj adres IP serwera DNS w chmurze prywatnej.
 
-    ![Automatyczna synchronizacja serwerów DNS w chmurze prywatnej](media/private-cloud-dns-server.png)
+    ![Serwery DNS w chmurze prywatnej](media/private-cloud-dns-server.png)
 
 
 Użyj dowolnej z tych opcji dla konfiguracji DNS.
@@ -71,14 +71,14 @@ zone "az.cloudsimple.io"
 5. Wprowadź nazwę strefy, a następnie kliknij przycisk **dalej**.
 
     ![Nowa strefa](media/DNS05.png)
-6. Wprowadź adresy IP serwerów DNS dla swojej chmury prywatnej automatycznej wersji zastosowanej w portalu do automatycznej synchronizacji.
+6. Wprowadź adresy IP serwerów DNS dla chmury prywatnej uzyskanej z portalu CloudSimple.
 
     ![Nowa strefa](media/DNS06.png)
 7. W razie potrzeby kliknij przycisk **dalej** , aby zakończyć pracę Instalatora kreatora.
 
 ## <a name="create-a-conditional-forwarder"></a>Tworzenie usługi przesyłania dalej warunkowego
 
-Usługa przesyłania dalej warunkowego przekazuje wszystkie żądania rozpoznawania nazw DNS do wywskazanego serwera. W przypadku tej konfiguracji każde żądanie do *. cloudsimple.io jest przekazywane do serwerów DNS znajdujących się w chmurze prywatnej automatycznej synchronizacji. W poniższych przykładach pokazano, jak skonfigurować usługi przesyłania dalej na różnych typach serwerów DNS.
+Usługa przesyłania dalej warunkowego przekazuje wszystkie żądania rozpoznawania nazw DNS do wywskazanego serwera. W przypadku tej konfiguracji każde żądanie do *. cloudsimple.io jest przekazywane do serwerów DNS znajdujących się w chmurze prywatnej. W poniższych przykładach pokazano, jak skonfigurować usługi przesyłania dalej na różnych typach serwerów DNS.
 
 ### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>Tworzenie usługi przesyłania dalej warunkowej na serwerze DNS BIND
 
@@ -99,4 +99,4 @@ zone "az.cloudsimple.io" {
 2. Kliknij prawym przyciskiem myszy pozycję **usługi przesyłania dalej warunkowe** i wybierz opcję dodania nowej usługi przesyłania dalej warunkowego.
 
     ![Warunkowy serwer usługi przesyłania dalej 1 systemu Windows](media/DNS08.png)
-3. Wprowadź domenę DNS i adres IP serwerów DNS w chmurze prywatnej automatycznej synchronizacji, a następnie kliknij przycisk **OK**.
+3. Wprowadź domenę DNS i adres IP serwerów DNS w chmurze prywatnej, a następnie kliknij przycisk **OK**.

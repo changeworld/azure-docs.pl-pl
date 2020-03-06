@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894841"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366793"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Zarządzanie kontrolerami urządzeń StorSimple
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 W tym samouczku opisano różne operacje, które mogą być wykonywane na kontrolerach urządzeń StorSimple. Kontrolery na urządzeniu StorSimple są nadmiarowe (równorzędne) kontrolery w konfiguracji aktywne-pasywne. W danym momencie tylko jeden kontroler jest aktywny i przetwarza wszystkie operacje na dysku i sieci. Drugi kontroler jest w trybie pasywnym. Jeśli aktywny kontroler ulegnie awarii, kontroler pasywny automatycznie stanie się aktywny.
 

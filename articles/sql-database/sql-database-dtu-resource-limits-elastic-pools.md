@@ -12,11 +12,11 @@ ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
 ms.openlocfilehash: 3f6bbef8f274c5efb99d5b98961450aa7b001527
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264869"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359935"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Limity zasobów dla pul elastycznych przy użyciu modelu zakupu jednostek DTU
 
@@ -39,7 +39,7 @@ W przypadku pul elastycznych SQL Database w poniższych tabelach przedstawiono z
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Uwzględniony magazyn na pulę (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Maksymalna liczba opcji magazynu na pulę (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Maksymalna pojemność magazynu OLTP w pamięci na pulę (GB) | ND | ND | ND | ND | ND | ND | ND | ND |
+| Maksymalna pojemność magazynu OLTP w pamięci na pulę (GB) | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy |
 | Maksymalna liczba baz danych na pulę | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -54,7 +54,7 @@ W przypadku pul elastycznych SQL Database w poniższych tabelach przedstawiono z
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Uwzględniony magazyn na pulę (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
 | Maksymalna liczba opcji magazynu na pulę (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
-| Maksymalna pojemność magazynu OLTP w pamięci na pulę (GB) | ND | ND | ND | ND | ND | ND |
+| Maksymalna pojemność magazynu OLTP w pamięci na pulę (GB) | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy |
 | Maksymalna liczba baz danych na pulę | 100 | 200 | 500 | 500 | 500 | 500 |
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -69,7 +69,7 @@ W przypadku pul elastycznych SQL Database w poniższych tabelach przedstawiono z
 |:---|---:|---:|---:| ---: | ---: |
 | Uwzględniony magazyn na pulę (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Maksymalna liczba opcji magazynu na pulę (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Maksymalna pojemność magazynu OLTP w pamięci na pulę (GB) | ND | ND | ND | ND | ND |
+| Maksymalna pojemność magazynu OLTP w pamięci na pulę (GB) | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy | Nie dotyczy |
 | Maksymalna liczba baz danych na pulę | 500 | 500 | 500 | 500 | 500 |
 | Maksymalna liczba współbieżnych procesów roboczych (żądań) na pulę | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Maksymalna liczba współbieżnych sesji na pulę | 30000 | 30000 | 30000 | 30000 | 30000 |

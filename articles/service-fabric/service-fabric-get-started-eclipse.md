@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.openlocfilehash: b779873488f1fff754d4105249b28f545738c11b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645705"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382974"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Wtyczka usługi Service Fabric na potrzeby tworzenia aplikacji Java w środowisku Eclipse
 Eclipse jest jednym z najczęściej używanych zintegrowanych środowisk projektowych (IDE, integrated development environment) przez programistów języka Java. W tym artykule omówiono konfigurowanie środowiska projektowego Eclipse do pracy z usługą Azure Service Fabric. Dowiedz się, jak zainstalować wtyczkę usługi Service Fabric oraz utworzyć aplikację usługi Service Fabric i wdrożyć ją w lokalnym lub zdalnym klastrze usługi Service Fabric w środowisku Eclipse. 
@@ -36,7 +36,7 @@ Zainstaluj program Eclipse Neon lub nowszy z [witryny programu Eclipse](https://
 
 Zainstaluj wtyczkę usługi Service Fabric: w środowisku Eclipse przejdź do pozycji **Help** > **Install New Software** (Pomoc > Instaluj nowe oprogramowanie).
 1. W polu **Pracuj z** wprowadź wartość https:\//DL.Microsoft.com/Eclipse.
-2. Kliknij pozycję **Dodaj**.
+2. Kliknij pozycję **Add** (Dodaj).
 
    ![Wtyczka usługi Service Fabric dla środowiska Eclipse][sf-eclipse-plugin-install]
 3. Wybierz wtyczkę usługi Service Fabric, a następnie kliknij przycisk **Next** (Dalej).
@@ -133,7 +133,7 @@ Aby opublikować aplikację w chmurze, wykonaj następujące kroki:
    - Pole `ConnectionIPOrURL` zawiera adres IP lub adres URL klastra. Należy zauważyć, że wartość nie zawiera schematu adresu URL (`https://`).
    - Domyślnie pole `ConnectionPort` powinno być `19080`, chyba że jawnie zmieniono ten port dla klastra.
    - Pole `ClientKey` powinno wskazywać na plik PEM lub Key o formacie PEM na komputerze lokalnym, który zawiera klucz prywatny certyfikatu klienta lub klastra.
-   - Pole `ClientCert` powinno wskazywać na plik PEM lub CRT o formacie PEM na komputerze lokalnym, który zawiera dane certyfikatu dla klienta lub klastra. certificate. 
+   - Pole `ClientCert` powinno wskazywać na plik PEM lub CRT o formacie PEM na komputerze lokalnym, który zawiera dane certyfikatu dla klienta lub klastra. Certyfikatu. 
 
      ```bash
      {

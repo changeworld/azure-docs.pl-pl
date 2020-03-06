@@ -14,12 +14,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: daf26f346ab10906eb5c37c6d7d2bb24736417cb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d47ed3a4cd4fbdcb69b956d3c8418f70a71cf44f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698820"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375658"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak i dlaczego aplikacje są dodawane do usługi Azure AD
 
@@ -77,7 +77,7 @@ Podobnie jak obiekty aplikacji, jednostki usługi mogą być również tworzone 
 * Gdy administrator dodaje aplikację z galerii aplikacji (spowoduje to również utworzenie bazowego obiektu aplikacji)
 * Dodawanie aplikacji do korzystania z [usługi Azure serwer proxy aplikacji usługi Azure AD](/azure/active-directory/manage-apps/application-proxy)
 * Łączenie aplikacji do logowania jednokrotnego przy użyciu protokołu SAML lub hasła logowania jednokrotnego (SSO)
-* Programowo za pośrednictwem usługi Azure AD interfejs API programu Graph lub programu PowerShell
+* Programowo za pośrednictwem interfejsu API Microsoft Graph lub programu PowerShell
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>Jak obiekty aplikacji i jednostki usługi są ze sobą powiązane?
 
@@ -100,13 +100,13 @@ Aplikacje dodawane samodzielnie (reprezentowane jako **aplikacja (własne)** na 
 
 ### <a name="notes-and-exceptions"></a>Uwagi i wyjątki
 
-* Nie wszystkie jednostki usługi są z powrotem do obiektu aplikacji. Gdy usługa Azure AD została pierwotnie skompilowana, usługi udostępniane aplikacjom były bardziej ograniczone, a jednostka usługi była wystarczająca do ustanowienia tożsamości aplikacji. Oryginalna jednostka usługi była bliższa w kształcie do konta usługi Active Directory systemu Windows Server. Z tego powodu nadal można tworzyć jednostki usługi za pośrednictwem różnych ścieżek, takich jak korzystanie z programu Azure AD PowerShell, bez wcześniejszego tworzenia obiektu aplikacji. Interfejs API programu Graph usługi Azure AD wymaga obiektu aplikacji przed utworzeniem jednostki usługi.
+* Nie wszystkie jednostki usługi są z powrotem do obiektu aplikacji. Gdy usługa Azure AD została pierwotnie skompilowana, usługi udostępniane aplikacjom były bardziej ograniczone, a jednostka usługi była wystarczająca do ustanowienia tożsamości aplikacji. Oryginalna jednostka usługi była bliższa w kształcie do konta usługi Active Directory systemu Windows Server. Z tego powodu nadal można tworzyć jednostki usługi za pośrednictwem różnych ścieżek, takich jak korzystanie z programu Azure AD PowerShell, bez wcześniejszego tworzenia obiektu aplikacji. Interfejs API Microsoft Graph wymaga obiektu aplikacji przed utworzeniem jednostki usługi.
 * Nie wszystkie informacje opisane powyżej są obecnie udostępniane programowo. Następujące elementy są dostępne tylko w interfejsie użytkownika:
   * Reguły przekształcania oświadczeń
   * Mapowania atrybutów (Inicjowanie obsługi użytkownika)
-* Aby uzyskać bardziej szczegółowe informacje o jednostce usługi i obiektach aplikacji, zobacz dokumentację interfejsu API REST usługi Azure AD Graph:
-  * [Aplikacja](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Nazwa główna usługi](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+* Aby uzyskać szczegółowe informacje na temat obiektów głównych i aplikacji usługi, zobacz dokumentację dotyczącą interfejsu API Microsoft Graph:
+  * [Aplikacja](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
+  * [Nazwa główna usługi](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Dlaczego aplikacje integrują się z usługą Azure AD?
 

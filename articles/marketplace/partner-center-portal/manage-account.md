@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 7b7a3a0a87996358436df9f7ee4a266574c0b7db
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927085"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385513"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak zarządzać kontem komercyjnej witryny Marketplace w centrum partnerskim
 
@@ -232,7 +232,7 @@ W przypadku wybrania więcej niż jednej grupy do dodania do konta Centrum partn
 
 Po dodaniu istniejącej grupy Każdy użytkownik, który jest członkiem tej grupy, będzie mógł uzyskać dostęp do konta Centrum partnerskiego z uprawnieniami skojarzonymi z rolą przypisanej do grupy.
 
-#### <a name="add-a-new-group"></a>Dodawanie nowej grupy
+#### <a name="add-a-new-group"></a>Dodaj nową grupę
 
 Aby dodać nową markę do konta Centrum partnerskiego:
 
@@ -291,11 +291,11 @@ Jeśli aplikacja usługi Azure AD odczytuje i zapisuje dane w Microsoft Azure AD
 4. Zobaczysz ekran pokazujący **Identyfikator klienta** i **wartości klucza**. Pamiętaj, aby wydrukować lub skopiować te informacje, ponieważ nie będzie można uzyskać do niej dostępu, gdy opuścisz Tę stronę.
 5. Jeśli chcesz utworzyć więcej kluczy, wybierz pozycję **Dodaj inny klucz**.
 
-## <a name="define-user-roles-and-permissions"></a>Definiowanie uprawnień i ról użytkowników
+## <a name="define-user-roles-and-permissions"></a>Definiowanie ról i uprawnień użytkowników
 
 Użytkownikom firmy można przypisać następujące role i uprawnienia do komercyjnego programu Marketplace w centrum partnerskim:
 
-- **Manager**
+- **Menedżera**
   - Może uzyskać dostęp do wszystkich funkcji konto Microsoft oprócz ustawień podatków i wypłat
   - Może zarządzać użytkownikami, rolami i kontami służbowymi (dzierżawcami)
 - **Developer**

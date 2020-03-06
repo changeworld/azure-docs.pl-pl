@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: 6fd23e3d41dda15b1ec439c1e8b02073722b8871
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073630"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359978"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Tworzenie sieci wirtualnych dla klastrów usługi Azure HDInsight
 
@@ -162,7 +162,7 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
 Wykonaj następujące kroki, aby utworzyć sieć wirtualną ograniczającą ruch przychodzący, ale zezwala na ruch z adresów IP wymaganych przez usługi HDInsight.
 
-1. Użyj poniższego polecenia, aby utworzyć nową sieciową grupę zabezpieczeń `hdisecure`o nazwie. Zamień `RESOURCEGROUP` na grupę zasobów zawierającą Virtual Network platformy Azure. Zamień `LOCATION` na lokalizację (region), w którym została utworzona grupa.
+1. Użyj następującego polecenia, aby utworzyć nową sieciową grupę zabezpieczeń o nazwie `hdisecure`. Zastąp `RESOURCEGROUP` grupą zasobów zawierającą Virtual Network platformy Azure. Zastąp `LOCATION` lokalizacją (regionem), w której utworzono grupę.
 
     ```azurecli
     az network nsg create -g RESOURCEGROUP -n hdisecure -l LOCATION
@@ -170,7 +170,7 @@ Wykonaj następujące kroki, aby utworzyć sieć wirtualną ograniczającą ruch
 
     Po utworzeniu grupy otrzymujesz informacje o nowej grupie.
 
-2. Aby dodać reguły do nowej sieciowej grupy zabezpieczeń, która zezwala na komunikację przychodzącą na porcie 443 z usługi Azure HDInsight Health and Management. Zamień `RESOURCEGROUP` na nazwę grupy zasobów zawierającej Virtual Network platformy Azure.
+2. Aby dodać reguły do nowej sieciowej grupy zabezpieczeń, która zezwala na komunikację przychodzącą na porcie 443 z usługi Azure HDInsight Health and Management. Zastąp `RESOURCEGROUP` nazwą grupy zasobów zawierającej Virtual Network platformy Azure.
 
     > [!IMPORTANT]  
     > Zmień adresy IP dla `hdirule1` i `hdirule2` w tym przykładzie w celu dopasowania do regionu platformy Azure, z którego korzystasz. Te informacje można znaleźć w temacie [adresy IP zarządzania usługą HDInsight](hdinsight-management-ip-addresses.md).
@@ -194,7 +194,7 @@ Wykonaj następujące kroki, aby utworzyć sieć wirtualną ograniczającą ruch
 
         "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
 
-4. Użyj poniższego polecenia, aby zastosować sieciową grupę zabezpieczeń do podsieci. Zastąp wartości `RESOURCEGROUP`iwartościami zwracanymi z poprzedniego kroku. `GUID` Zamień `VNETNAME`nazwę sieci wirtualnej i nazwę podsieci, które chcesz utworzyć. `SUBNETNAME`
+4. Użyj poniższego polecenia, aby zastosować sieciową grupę zabezpieczeń do podsieci. Zastąp wartości `GUID` i `RESOURCEGROUP` wartościami zwróconymi w poprzednim kroku. Zastąp `VNETNAME` i `SUBNETNAME` nazwą sieci wirtualnej i nazwą podsieci, którą chcesz utworzyć.
 
     ```azurecli
     az network vnet subnet update -g RESOURCEGROUP --vnet-name VNETNAME --name SUBNETNAME --set networkSecurityGroup.id="/subscriptions/GUID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
@@ -211,7 +211,7 @@ Poniższy kod ilustruje sposób włączania dostępu SSH z Internetu:
 az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
 ```
 
-## <a id="example-dns"></a>Przyklad Konfiguracja usługi DNS
+## <a id="example-dns"></a>Przykład: Konfiguracja DNS
 
 ### <a name="name-resolution-between-a-virtual-network-and-a-connected-on-premises-network"></a>Rozpoznawanie nazw między siecią wirtualną i połączoną siecią lokalną
 
@@ -227,7 +227,7 @@ Na niestandardowym serwerze DNS w sieci wirtualnej:
 
 1. Użyj Azure PowerShell lub interfejsu wiersza polecenia platformy Azure, aby znaleźć sufiks DNS sieci wirtualnej:
 
-    Zamień `RESOURCEGROUP` na nazwę grupy zasobów zawierającej sieć wirtualną, a następnie wprowadź polecenie:
+    Zastąp `RESOURCEGROUP` nazwą grupy zasobów zawierającej sieć wirtualną, a następnie wprowadź polecenie:
 
     ```powershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
@@ -238,7 +238,7 @@ Na niestandardowym serwerze DNS w sieci wirtualnej:
     az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-2. Na niestandardowym serwerze DNS dla sieci wirtualnej Użyj następującego tekstu jako zawartości `/etc/bind/named.conf.local` pliku:
+2. Na niestandardowym serwerze DNS dla sieci wirtualnej Użyj następującego tekstu jako zawartości pliku `/etc/bind/named.conf.local`:
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
@@ -248,11 +248,11 @@ Na niestandardowym serwerze DNS w sieci wirtualnej:
     };
     ```
 
-    Zastąp `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` wartość sufiksem DNS sieci wirtualnej.
+    Zastąp wartość `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` sufiksem DNS sieci wirtualnej.
 
     Ta konfiguracja kieruje wszystkie żądania DNS dotyczące sufiksu DNS sieci wirtualnej do programu rozpoznawania cyklicznego Azure.
 
-2. Na niestandardowym serwerze DNS dla sieci wirtualnej Użyj następującego tekstu jako zawartości `/etc/bind/named.conf.options` pliku:
+2. Na niestandardowym serwerze DNS dla sieci wirtualnej Użyj następującego tekstu jako zawartości pliku `/etc/bind/named.conf.options`:
 
     ```
     // Clients to accept requests from
@@ -282,9 +282,9 @@ Na niestandardowym serwerze DNS w sieci wirtualnej:
     };
     ```
     
-    * Zastąp `10.0.0.0/16` wartość zakresem adresów IP sieci wirtualnej. Ten wpis umożliwia rozpoznawanie nazw żądań adresów w tym zakresie.
+    * Zastąp wartość `10.0.0.0/16` zakresem adresów IP sieci wirtualnej. Ten wpis umożliwia rozpoznawanie nazw żądań adresów w tym zakresie.
 
-    * Dodaj zakres adresów IP sieci lokalnej do `acl goodclients { ... }` sekcji.  wpis zezwala na żądania rozpoznawania nazw z zasobów w sieci lokalnej.
+    * Dodaj zakres adresów IP sieci lokalnej do sekcji `acl goodclients { ... }`.  wpis zezwala na żądania rozpoznawania nazw z zasobów w sieci lokalnej.
     
     * Zastąp wartość `192.168.0.1` adresem IP lokalnego serwera DNS. Ten wpis kieruje wszystkie pozostałe żądania DNS do lokalnego serwera DNS.
 
@@ -309,7 +309,7 @@ Ten przykład wykonuje następujące założenia:
 
 1. Użyj Azure PowerShell lub interfejsu wiersza polecenia platformy Azure, aby znaleźć sufiks DNS obu sieci wirtualnych:
 
-    Zamień `RESOURCEGROUP` na nazwę grupy zasobów zawierającej sieć wirtualną, a następnie wprowadź polecenie:
+    Zastąp `RESOURCEGROUP` nazwą grupy zasobów zawierającej sieć wirtualną, a następnie wprowadź polecenie:
 
     ```powershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
@@ -320,7 +320,7 @@ Ten przykład wykonuje następujące założenia:
     az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-2. Użyj następującego tekstu jako zawartości `/etc/bind/named.config.local` pliku na niestandardowym serwerze DNS. Wprowadź tę zmianę na niestandardowym serwerze DNS w obu sieciach wirtualnych.
+2. Użyj następującego tekstu jako zawartości pliku `/etc/bind/named.config.local` na niestandardowym serwerze DNS. Wprowadź tę zmianę na niestandardowym serwerze DNS w obu sieciach wirtualnych.
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
@@ -330,9 +330,9 @@ Ten przykład wykonuje następujące założenia:
     };
     ```
 
-    Zastąp wartość sufiksem DNS innej sieci wirtualnej. `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` Ten wpis kieruje żądania dotyczące sufiksu DNS sieci zdalnej do niestandardowego serwera DNS w tej sieci.
+    Zastąp wartość `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` sufiksem DNS __innej__ sieci wirtualnej. Ten wpis kieruje żądania dotyczące sufiksu DNS sieci zdalnej do niestandardowego serwera DNS w tej sieci.
 
-3. Na niestandardowych serwerach DNS w obu sieciach wirtualnych Użyj następującego tekstu jako zawartości `/etc/bind/named.conf.options` pliku:
+3. Na niestandardowych serwerach DNS w obu sieciach wirtualnych Użyj następującego tekstu jako zawartości pliku `/etc/bind/named.conf.options`:
 
     ```
     // Clients to accept requests from
@@ -361,7 +361,7 @@ Ten przykład wykonuje następujące założenia:
     };
     ```
     
-   Zastąp wartości `10.1.0.0/16`iwartościami z zakresu adresów IP sieci wirtualnych. `10.0.0.0/16` Ten wpis umożliwia zasobom w każdej sieci wykonywanie żądań serwerów DNS.
+   Zastąp wartości `10.0.0.0/16` i `10.1.0.0/16` wartościami z zakresu adresów IP sieci wirtualnych. Ten wpis umożliwia zasobom w każdej sieci wykonywanie żądań serwerów DNS.
 
     Wszystkie żądania, które nie są przeznaczone dla sufiksów DNS sieci wirtualnych (na przykład microsoft.com), są obsługiwane przez program rozpoznawania cyklicznego na platformie Azure.
 

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768168"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376233"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizacja programu Azure AD Connect: konfigurowanie filtrowania
 Korzystając z funkcji filtrowania, można kontrolować, które obiekty są wyświetlane w Azure Active Directory (Azure AD) z katalogu lokalnego. Konfiguracja domyślna pobiera wszystkie obiekty we wszystkich domenach w skonfigurowanych lasach. Ogólnie rzecz biorąc jest to zalecana konfiguracja. Użytkownicy korzystający z obciążeń pakietu Office 365, takich jak Exchange Online i Skype dla firm, korzystają z kompletnej globalnej listy adresów, aby mogli wysyłać wiadomości e-mail i wywoływać wszystkich użytkowników. W przypadku konfiguracji domyślnej mogą one korzystać z tego samego środowiska z lokalną implementacją programu Exchange lub Lync.
@@ -140,7 +140,7 @@ Jeśli filtr domeny został zaktualizowany, należy również zaktualizować pro
     * Pełna synchronizacja
     * Import Delta
     * Synchronizacja różnicowa
-    * Eksportuj
+    * Eksportowanie
 3. Dla każdego profilu Dostosuj **dodane** i **usunięte** domeny.
     1. Dla każdego z pięciu profilów wykonaj następujące kroki dla każdej **dodanej** domeny:
         1. Wybierz profil uruchomienia, a następnie kliknij przycisk **nowy krok**.
@@ -279,7 +279,7 @@ W tym przykładzie zmienisz filtrowanie tak, aby były synchronizowane tylko uż
 5. W oknie podręcznym odpowiedź **tak** , aby utworzyć kopię reguły.
 6. Na stronie **Opis** Zmień **pierwszeństwo** na nieużywaną wartość, na przykład 50.
 7. Kliknij pozycję **Filtr zakresu** w obszarze nawigacji po lewej stronie, a następnie kliknij pozycję **Dodaj klauzulę**. W polu **atrybut**wybierz opcję **poczta**. W **operatorze**wybierz pozycję **ENDSWITH**. W polu **wartość**wpisz **\@contoso.com**, a następnie kliknij przycisk **Dodaj klauzulę**. W polu **atrybut**wybierz element **userPrincipalName**. W **operatorze**wybierz pozycję **ENDSWITH**. W polu **wartość**wpisz **\@contoso.com**.
-8. Kliknij pozycję **Zapisz**.
+8. Kliknij przycisk **Save** (Zapisz).
 9. Aby ukończyć konfigurację, należy przeprowadzić **pełną synchronizację**. Kontynuuj odczytywanie sekcji [stosowanie i weryfikowanie zmian](#apply-and-verify-changes).
 
 ## <a name="apply-and-verify-changes"></a>Zastosuj i Weryfikuj zmiany

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 3abd9835c1cf750b926f49442f3e34e96dc9c865
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c51387e92a100cabc5b35ccc7abde0483e77b5b1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917360"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378522"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Często zadawane pytania
 
@@ -91,7 +91,7 @@ Nie. Po utworzeniu domeny zarządzanej Azure AD Domain Services nie można przen
 Nie. Nie masz uprawnień do łączenia się z kontrolerami domeny dla domeny zarządzanej przy użyciu Pulpit zdalny. Członkowie grupy *Administratorzy domeny usługi AAD* mogą administrować zarządzaną domeną przy użyciu narzędzi administracyjnych usług AD, takich jak Active Directory Administration Center (usługach ADAC) lub AD PowerShell. Te narzędzia są instalowane przy użyciu funkcji *Narzędzia administracji zdalnej serwera* na serwerze z systemem Windows przyłączonym do domeny zarządzanej. Aby uzyskać więcej informacji, zobacz [Tworzenie maszyny wirtualnej zarządzania w celu skonfigurowania i administrowania Azure AD Domain Services domeną zarządzaną](tutorial-create-management-vm.md).
 
 ### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>Włączono Azure AD Domain Services. Jakie konto użytkownika jest używane do przyłączania do domeny maszyn do tej domeny?
-Członkowie grupy administracyjnej *administratorzy kontrolera domeny usługi AAD* mogą przyłączać do domeny. Ponadto członkowie tej grupy mają przyznany dostęp pulpitu zdalnego do komputerów, które zostały przyłączone do domeny.
+Każde konto użytkownika, które jest częścią domeny zarządzanej AD DS platformy Azure, może dołączyć do maszyny wirtualnej. Członkowie grupy *Administratorzy domeny usługi AAD* otrzymują dostęp do pulpitu zdalnego dla komputerów, które zostały przyłączone do domeny zarządzanej.
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Czy masz uprawnienia administratora domeny dla domeny zarządzanej dostarczonej przez Azure AD Domain Services?
 Nie. Nie przyznano uprawnień administracyjnych w domenie zarządzanej. Uprawnienia *administratora domeny* i *administratora przedsiębiorstwa* nie są dostępne do użycia w ramach domeny. Członkowie grupy Administratorzy domeny lub Administratorzy przedsiębiorstwa w Active Directory lokalnym nie mają również uprawnień administratora domeny/przedsiębiorstwa w domenie zarządzanej.

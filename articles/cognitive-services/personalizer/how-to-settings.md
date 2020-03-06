@@ -4,11 +4,11 @@ description: Konfiguracja usługi zawiera informacje o tym, jak usługa traktuje
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623723"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381275"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Konfigurowanie pętli uczenia personalizacji
 

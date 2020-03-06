@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543657"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388170"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Użyj pomocą distcp do kopiowania danych między obiektami BLOB usługi Azure Storage a Azure Data Lake Storage Gen2
 
@@ -23,7 +23,7 @@ Pomocą distcp udostępnia wiele parametrów wiersza polecenia i zdecydowanie za
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+* **Subskrypcja platformy Azure**. Zobacz artykuł [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Istniejące konto usługi Azure Storage bez możliwości Data Lake Storage Gen2 (hierarchiczny obszar nazw) jest włączone**.
 * **Konto usługi Azure Storage z włączoną funkcją Data Lake Storage Gen2**. Aby uzyskać instrukcje dotyczące sposobu tworzenia jednego z nich, zobacz [Tworzenie konta magazynu Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
 * **System plików** , który został utworzony na koncie magazynu z włączoną hierarchiczną przestrzenią nazw.
@@ -33,7 +33,7 @@ Pomocą distcp udostępnia wiele parametrów wiersza polecenia i zdecydowanie za
 
 Klaster HDInsight An jest dostarczany z narzędziem pomocą distcp, które może służyć do kopiowania danych z różnych źródeł do klastra usługi HDInsight. Jeśli klaster usługi HDInsight został skonfigurowany tak, aby korzystał z platformy Azure Blob Storage i Azure Data Lake Storage razem, można użyć narzędzia pomocą distcp do kopiowania danych. W tej sekcji zawarto informacje na temat korzystania z narzędzia pomocą distcp.
 
-1. Utwórz sesję SSH z klastrem HDI. Zobacz [nawiązywanie połączenia](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)z klastrem usługi HDInsight opartej na systemie Linux.
+1. Utwórz sesję SSH z klastrem HDI. Zobacz [nawiązywanie połączenia z klastrem usługi HDInsight opartej](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)na systemie Linux.
 
 2. Sprawdź, czy możesz uzyskać dostęp do istniejącego konta ogólnego przeznaczenia w wersji 2 (bez włączonej hierarchicznej przestrzeni nazw).
 
@@ -71,9 +71,9 @@ Ponieważ najniższy stopień szczegółowości pomocą distcp jest pojedynczym 
 
 Oto kilka użytecznych wskazówek.
 
-* **Krok 1. Określ łączną ilość pamięci dostępną dla kolejki** aplikacji przędzy "default" — pierwszym krokiem jest określenie pamięci dostępnej dla kolejki aplikacji przędzy "default". Te informacje są dostępne w portalu Ambari skojarzonym z klastrem. Przejdź do PRZĘDZy i Wyświetl kartę konfiguracje, aby wyświetlić dostępną pamięć PRZĘDZy do kolejki aplikacji "default". Jest to całkowita dostępna pamięć dla zadania pomocą distcp (w rzeczywistości jest to zadanie MapReduce).
+* **Krok 1. określenie całkowitej ilości pamięci dostępnej dla kolejki aplikacji przędzy domyślnej** — pierwszy krok to określenie pamięci dostępnej dla kolejki aplikacji przędzy "default". Te informacje są dostępne w portalu Ambari skojarzonym z klastrem. Przejdź do PRZĘDZy i Wyświetl kartę konfiguracje, aby wyświetlić dostępną pamięć PRZĘDZy do kolejki aplikacji "default". Jest to całkowita dostępna pamięć dla zadania pomocą distcp (w rzeczywistości jest to zadanie MapReduce).
 
-* **Krok 2. Oblicz liczbę funkcji mapowania** — wartość **m** jest równa ilorazowi łącznej ilości pamięci przędzy podzielonej przez rozmiar kontenera przędzy. Informacje o rozmiarze kontenera PRZĘDZy są również dostępne w portalu Ambari. Przejdź do PRZĘDZy i Wyświetl kartę konfiguracje. Rozmiar kontenera PRZĘDZy jest wyświetlany w tym oknie. Równanie, które ma dotrzeć do liczby odwzorowań (**m**) to
+* **Krok 2. Obliczanie liczby odwzorowań** — wartość **m** jest równa ilorazowi ŁĄCZnej ilości pamięci przędzy podzielonej przez rozmiar kontenera przędzy. Informacje o rozmiarze kontenera PRZĘDZy są również dostępne w portalu Ambari. Przejdź do PRZĘDZy i Wyświetl kartę konfiguracje. Rozmiar kontenera PRZĘDZy jest wyświetlany w tym oknie. Równanie, które ma dotrzeć do liczby odwzorowań (**m**) to
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
@@ -81,11 +81,11 @@ Oto kilka użytecznych wskazówek.
 
 Załóżmy, że masz klaster 4x D14v2s i próbujesz przenieść 10 TB danych z 10 różnych folderów. Każdy z folderów zawiera różne ilości danych, a rozmiary plików w poszczególnych folderach są inne.
 
-* **Łączna ilość pamięci przędzy**: W portalu Ambari należy określić, że pamięć PRZĘDZy jest 96 GB dla węzła D14. W związku z tym Łączna ilość pamięci PRZĘDZy dla czterech węzłów klastra to: 
+* **Łączna ilość pamięci przędzy**: w portalu Ambari należy określić, że pamięć przędzy jest 96 GB dla węzła D14. W związku z tym Łączna ilość pamięci PRZĘDZy dla czterech węzłów klastra to: 
 
         YARN memory = 4 * 96GB = 384GB
 
-* **Liczba odwzorowań**: W portalu Ambari należy określić, że rozmiar kontenera PRZĘDZy wynosi 3 072 MB dla węzła klastra D14. Dlatego liczba mapera jest:
+* **Liczba odwzorowań**: w portalu Ambari należy określić, że rozmiar kontenera przędzy wynosi 3 072 MB dla węzła klastra D14. Dlatego liczba mapera jest:
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 

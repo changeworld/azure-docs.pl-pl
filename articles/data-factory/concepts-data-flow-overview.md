@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/19/2019
 ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444505"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395964"
 ---
 # <a name="what-are-mapping-data-flows"></a>Czym są przepływy danych mapowania?
 
@@ -33,13 +33,13 @@ Spowoduje to przejście do kanwy przepływu danych, w której można utworzyć l
 
 Kanwa przepływu danych jest podzielony na trzy części: górny pasek, wykres i panel konfiguracja. 
 
-![Kanwa](media/data-flow/canvas1.png "Kanwa")
+![Przestrzeń](media/data-flow/canvas1.png "Przestrzeń")
 
-### <a name="graph"></a>Grafowa
+### <a name="graph"></a>Graph
 
 Wykres przedstawia strumień transformacji. Pokazuje on dane źródłowe w miarę ich przepływu w jednym lub większej liczbie zlewów. Aby dodać nowe źródło, wybierz pozycję **Dodaj źródło**. Aby dodać nową transformację, wybierz znak plus w prawym dolnym rogu istniejącej transformacji.
 
-![Kanwa](media/data-flow/canvas2.png "Kanwa")
+![Przestrzeń](media/data-flow/canvas2.png "Przestrzeń")
 
 ### <a name="azure-integration-runtime-data-flow-properties"></a>Właściwości przepływu danych środowiska Azure Integration Runtime
 
@@ -87,11 +87,11 @@ Pierwsza karta w okienku Konfiguracja każdej transformacji zawiera ustawienia s
 
 ![Karta Ustawienia źródła](media/data-flow/source1.png "Karta Ustawienia źródła")
 
-#### <a name="optimize"></a>Optymalizowanie
+#### <a name="optimize"></a>Optymalizacja
 
 Karta **Optymalizacja** zawiera ustawienia umożliwiające skonfigurowanie schematów partycjonowania.
 
-![Optymalizacja](media/data-flow/optimize1.png "Optymalizowanie")
+![Optymalizacja](media/data-flow/optimize1.png "Optymalizacja")
 
 Ustawieniem domyślnym jest **użycie bieżącego partycjonowania**, które instruuje Azure Data Factory, aby używać schematu partycjonowania natywnego dla przepływów danych uruchomionych w systemie Spark. W większości scenariuszy zalecamy to ustawienie.
 
@@ -125,11 +125,11 @@ Utwórz wyrażenie, które udostępnia stały zakres dla wartości w kolumnach d
 
 Jeśli masz dobrą wiedzę o kardynalności danych, partycjonowanie kluczy może być dobrą strategią. Partycjonowanie kluczy spowoduje utworzenie partycji dla każdej unikatowej wartości w kolumnie. Nie można ustawić liczby partycji, ponieważ liczba będzie oparta na unikatowych wartościach danych.
 
-#### <a name="inspect"></a>Sprawdź
+#### <a name="inspect"></a>Skontrol
 
 Karta **Inspekcja** umożliwia wyświetlenie metadanych strumienia danych, który jest przekształcany. Widoczne są liczby kolumn, zmienione kolumny, kolumny dodane, typy danych, porządkowanie kolumn i odwołania do kolumn. **Inspekcja** to widok metadanych w trybie tylko do odczytu. Nie musisz mieć włączonego trybu debugowania, aby wyświetlić metadane w okienku **Inspekcja** .
 
-![Skontrol](media/data-flow/inspect1.png "Sprawdź")
+![Skontrol](media/data-flow/inspect1.png "Skontrol")
 
 Gdy zmienisz kształt danych za pomocą transformacji, przepływ zmian metadanych zostanie wyświetlony w okienku **Inspekcja** . Jeśli w transformacji źródłowej nie ma zdefiniowanego schematu, metadane nie będą widoczne w okienku **Inspekcja** . Brak metadanych jest powszechny w scenariuszach dryfowania schematu.
 

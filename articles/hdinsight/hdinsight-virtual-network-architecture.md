@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744732"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389787"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura sieci wirtualnej usługi Azure HDInsight
 
@@ -54,10 +54,10 @@ Poniższa tabela zawiera podsumowanie dziewięciu węzłów klastra utworzonych 
 
 | Typ zasobu | Liczba obecna | Szczegóły |
 | --- | --- | --- |
-|Węzeł główny | dwa |    |
+|Węzeł główny | tymi |    |
 |Węzeł usługi ZooKeeper | trzy | |
-|Węzeł procesu roboczego | dwa | Ta liczba może się różnić w zależności od konfiguracji i skalowania klastra. Do Apache Kafka jest wymagany co najmniej trzy węzły procesu roboczego.  |
-|Węzeł bramy | dwa | Węzły bramy są maszynami wirtualnymi platformy Azure, które są tworzone na platformie Azure, ale nie są widoczne w Twojej subskrypcji. Skontaktuj się z pomocą techniczną, jeśli chcesz ponownie uruchomić te węzły. |
+|Węzeł procesu roboczego | tymi | Ta liczba może się różnić w zależności od konfiguracji i skalowania klastra. Do Apache Kafka jest wymagany co najmniej trzy węzły procesu roboczego.  |
+|Węzeł bramy | tymi | Węzły bramy są maszynami wirtualnymi platformy Azure, które są tworzone na platformie Azure, ale nie są widoczne w Twojej subskrypcji. Skontaktuj się z pomocą techniczną, jeśli chcesz ponownie uruchomić te węzły. |
 
 Następujące zasoby sieciowe są tworzone automatycznie w ramach sieci wirtualnej używanej z usługą HDInsight:
 
@@ -65,7 +65,7 @@ Następujące zasoby sieciowe są tworzone automatycznie w ramach sieci wirtualn
 | --- | --- | --- |
 |Moduł równoważenia obciążenia | trzy | |
 |Interfejsy sieciowe | dziewięć | Ta wartość jest oparta na normalnym klastrze, gdzie każdy węzeł ma własny interfejs sieciowy. Dziewięć interfejsów dotyczą dwa węzły główne, trzy węzły dozorcy, dwa węzły procesu roboczego i dwa węzły bramy wymienione w poprzedniej tabeli. |
-|Publiczne adresy IP | dwa |    |
+|Publiczne adresy IP | tymi |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>Punkty końcowe do łączenia się z usługą HDInsight
 

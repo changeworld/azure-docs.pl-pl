@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 32a453678fe3702fcb4b77f0b04a8ed5c889ef59
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197627"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386077"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Wprowadzenie do Key Vault certyfikatów
 Poniższe scenariusze przedstawiają kilka podstawowych zastosowań usługi zarządzania certyfikatami Key Vault, w tym dodatkowe kroki wymagane do utworzenia pierwszego certyfikatu w magazynie kluczy.
@@ -48,7 +48,7 @@ Certyfikaty składają się z trzech powiązanych zasobów połączonych razem j
 
 - Rozpocznij operację dodawania poświadczeń do magazynu kluczy przez ustawienie zasobu [wystawcy certyfikatu](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) . Wystawca certyfikatu jest jednostką reprezentowaną w Azure Key Vault (KV) jako zasób CertificateIssuer. Służy do przekazywania informacji o źródle certyfikatu KV; Nazwa wystawcy, dostawca, poświadczenia i inne szczegóły administracyjne.
   - Np. MyDigiCertIssuer  
-    -   Dostawca  
+    -   Provider  
     -   Poświadczenia — poświadczenia konta urzędu certyfikacji. Każdy urząd certyfikacji ma własne określone dane.  
 
     Aby uzyskać więcej informacji na temat tworzenia kont z dostawcami urzędów certyfikacji, zobacz pokrewny wpis w [blogu Key Vault](https://aka.ms/kvcertsblog).  

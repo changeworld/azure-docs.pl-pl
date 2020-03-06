@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: cherylmc
 ms.openlocfilehash: fc35654403bbe1375d4188476b11fd0453f74345
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153149"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360316"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Konfigurowanie wymuszonego tunelowania przy użyciu modelu wdrażania usługi Azure Resource Manager
 
-Wymuszane tunelowanie umożliwia przekierowywanie lub „wymuszanie” przekazywania całego ruchu internetowego z powrotem do lokalizacji lokalnej za pośrednictwem tunelu VPN między lokacjami do celów przeprowadzania inspekcji. Jest to wymagane krytycznych dla większości organizacji IT zasad. Bez wymuszonego tunelowania ruch związany z Internetem z maszyn wirtualnych na platformie Azure zawsze przechodzi bezpośrednio z infrastruktury sieci platformy Azure do Internetu bez opcji, która umożliwia inspekcję i inspekcję ruchu. Nieautoryzowany dostęp do Internetu potencjalnie może prowadzić do ujawnienia informacji lub inne rodzaje naruszeń zabezpieczeń.
+Wymuszone tunelowanie umożliwia przekierowywanie lub "force" całego ruchu skierowanego do Internetu z powrotem do Twojej lokalizacji lokalnej za pośrednictwem tunelu sieci VPN typu lokacja-lokacja do celów przeprowadzania inspekcji. Jest to wymagane krytycznych dla większości organizacji IT zasad. Bez wymuszonego tunelowania ruch związany z Internetem z maszyn wirtualnych na platformie Azure zawsze przechodzi bezpośrednio z infrastruktury sieci platformy Azure do Internetu bez opcji, która umożliwia inspekcję i inspekcję ruchu. Nieautoryzowany dostęp do Internetu potencjalnie może prowadzić do ujawnienia informacji lub inne rodzaje naruszeń zabezpieczeń.
 
 
 
@@ -54,7 +54,7 @@ Wymuszone tunelowanie na platformie Azure jest konfigurowane za pośrednictwem t
 * Wymuszone tunelowanie musi być skojarzone z siecią wirtualną, która ma bramę sieci VPN opartą na trasach. Należy ustawić "Domyślna witryna" wśród wielu lokacji lokalnych podłączone do sieci wirtualnej. Ponadto lokalne urządzenie sieci VPN musi być skonfigurowane przy użyciu 0.0.0.0/0 jako selektorów ruchu. 
 * Usługa ExpressRoute wymuszonego tunelowania nie jest skonfigurowany za pomocą tego mechanizmu, ale zamiast tego można włączyć, konfigurując anonsuje trasę domyślną za pośrednictwem sesje komunikacji równorzędnej BGP usługi ExpressRoute. Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
 
-## <a name="configuration-overview"></a>Przegląd konfiguracji
+## <a name="configuration-overview"></a>Omówienie konfiguracji
 
 Poniższa procedura ułatwia utworzenie grupy zasobów i sieci wirtualnej. Następnie utworzysz bramę sieci VPN i skonfigurujesz Wymuszone tunelowanie. W tej procedurze Sieć wirtualna "wielowarstwowa" sieci wirtualnej ma trzy podsieci: "fronton", "MidTier" i "zaplecze" z czterema połączeniami między różnymi lokalizacjami: "DefaultSiteHQ" i trzema gałęziami.
 

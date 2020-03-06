@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: jgao
 ms.openlocfilehash: aa99bdfcbc2f42ae81bdd55c266bcd7d87808031
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484807"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388160"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Wprowadzanie wdrożenia integracji z kondycją na platformie Azure Menedżer wdrażania (publiczna wersja zapoznawcza)
 
@@ -138,7 +138,7 @@ W tym momencie usługa Azure Menedżer wdrażania wie, jak wykonywać zapytania 
 
     1. Po zakończeniu operacji wdrażania maszyny wirtualne mogą być ponownie uruchamiane, ponownie konfigurowane na podstawie nowych danych, a nawet uruchamiane po raz pierwszy. Trwa także czas, aby usługa mogła rozpocząć emitowanie sygnałów kondycji, które mają być agregowane przez dostawcę monitorowania kondycji, aby coś użyteczne. Podczas tego procesu tumultuous może nie mieć sensu Sprawdzenie kondycji usługi, ponieważ aktualizacja nie osiągnęła jeszcze stałego stanu. W rzeczywistości usługa może napadać na zbyt dobre i niezdrowe Stany w miarę ich rozliczania. 
     1. W fazie oczekiwania usługa Service Health nie jest monitorowana. Służy to do zezwalania na tworzenie wdrożonych zasobów przed rozpoczęciem procesu kontroli kondycji. 
-1. Elastyczność
+1. Kształcenia
 
     1. Ponieważ nie można już wiedzieć, jak długo zasoby zajmieją się tworzenie zanim staną się stabilne, faza elastyczna pozwala na elastyczne okresy czasu między zasobami, które są potencjalnie niestabilne i gdy są wymagane do utrzymania dobrej kondycji Państwu.
     1. Po rozpoczęciu fazy elastycznej usługa Azure Menedżer wdrażania rozpocznie okresowe sondowanie podanego punktu końcowego REST w celu zapewnienia kondycji usługi. Interwał sondowania można skonfigurować. 

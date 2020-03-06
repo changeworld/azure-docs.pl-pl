@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: a5dae30c8b8f43602581b39005389211da83cb9e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022309"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375841"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Logowanie i uruchamianie aplikacji z poziomu portalu My Apps
 
@@ -97,7 +97,7 @@ Jeśli masz uprawnienia do uzyskiwania dostępu do aplikacji opartych na chmurze
 
 1. Zaloguj się do swojego konta służbowego lub szkolnego na swoim komputerze.
 
-2. W obsługiwanej przeglądarce sieci Web otwórz i przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację, jeśli przekierujesz użytkownika do dostosowanej strony, takiej jak `https://myapps.microsoft.com/contoso.com`.
+2. W obsługiwanej przeglądarce sieci Web otwórz i przejdź do https://myapps.microsoft.comlub Użyj linku dostarczonego przez organizację, jeśli przekierujesz użytkownika do dostosowanej strony, takiej jak `https://myapps.microsoft.com/contoso.com`.
 
     Zostanie wyświetlona strona **aplikacje** z widocznymi wszystkimi aplikacjami opartymi na chmurze, które są własnością Twojej organizacji, które są dostępne do użycia.
 
@@ -111,7 +111,7 @@ Wyświetlaj aplikacje organizacji i używaj ich z Intune Managed Browser na urz�
 
 1. Na urządzeniu przenośnym Pobierz i zainstaluj aplikację Intune Managed Browser ze [sklepu Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) i [sklep Google Play](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-2. Otwórz aplikację Intune Managed Browser, przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację, jeśli przekierujesz użytkownika do dostosowanej strony, takiej jak https://myapps.microsoft.com/contoso.com.
+2. Otwórz aplikację Intune Managed Browser, przejdź do https://myapps.microsoft.comlub Użyj linku dostarczonego przez organizację, jeśli przekierujesz użytkownika do dostosowanej strony, takiej jak https://myapps.microsoft.com/contoso.com.
 
     Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 
@@ -125,7 +125,7 @@ Wyświetl Portal **Moje aplikacje** i korzystaj z niego z urządzenia iPhone lub
 
 1. Na urządzeniu przenośnym Uruchom aplikację przeglądarki sieci Web, taką jak Safari.
 
-2. Przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację, jeśli przekierujesz użytkownika do dostosowanej strony, takiej jak https://myapps.microsoft.com/contoso.com.
+2. Przejdź do https://myapps.microsoft.comlub Użyj linku dostarczonego przez organizację, jeśli przekierujesz użytkownika do dostosowanej strony, takiej jak https://myapps.microsoft.com/contoso.com.
 
     Zostanie wyświetlona strona **aplikacje** z widocznymi wszystkimi aplikacjami opartymi na chmurze, które są własnością Twojej organizacji, które są dostępne do użycia.
 
@@ -139,7 +139,7 @@ Wyświetl Portal **Moje aplikacje** i korzystaj z niego na urządzeniu z systeme
 
 1. Na urządzeniu przenośnym Uruchom aplikację przeglądarki sieci Web, np. Google Chrome.
 
-2. Przejdź do https://myapps.microsoft.com lub Użyj linku dostarczonego przez organizację, jeśli przekierujesz użytkownika do dostosowanej strony, takiej jak https://myapps.microsoft.com/contoso.com.
+2. Przejdź do https://myapps.microsoft.comlub Użyj linku dostarczonego przez organizację, jeśli przekierujesz użytkownika do dostosowanej strony, takiej jak https://myapps.microsoft.com/contoso.com.
 
     Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
 

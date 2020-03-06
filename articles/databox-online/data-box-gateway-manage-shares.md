@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 9284400254860b47f3aea6de5c79ab4c2a77f199
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60755836"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384576"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Zarządzanie udziałami w usłudze Azure Data Box Gateway przy użyciu witryny Azure Portal 
 
@@ -69,7 +69,7 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby usunąć udział.
 
     ![Wybieranie udziału](media/data-box-gateway-manage-shares/delete-1.png)
 
-2. Kliknij przycisk **Usuń**. 
+2. Kliknij pozycję **Usuń**. 
 
     ![Klikanie polecenia Usuń](media/data-box-gateway-manage-shares/delete-2.png)
 
@@ -85,7 +85,7 @@ Lista udziałów zostanie zaktualizowana w celu uwzględnienia usuniętego udzia
 Funkcja odświeżania umożliwia odświeżenie zawartości udziału lokalnego. Podczas odświeżania udziału inicjowane jest wyszukiwanie w celu odnalezienia wszystkich obiektów platformy Azure, w tym obiektów blob i plików, które zostały dodane do chmury po ostatnio przeprowadzonym odświeżaniu. Te dodatkowe pliki są następnie używane do odświeżenia zawartości udziału lokalnego na urządzeniu. 
 
 > [!NOTE]
-> Uprawnienia i listy kontroli dostępu (ACL) nie są zachowywane w ramach operacji odświeżania. 
+> Uprawnienia i listy kontroli dostępu (ACL) nie są zachowywane w trakcie operacji odświeżania. 
 
 Wykonaj następujące czynności w witrynie Azure Portal, aby odświeżyć udział.
 
@@ -110,7 +110,7 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby odświeżyć udzia
 W przypadku awarii zostanie zgłoszony alert. Alert zawiera szczegółowe informacje o przyczynie awarii oraz zalecenia dotyczące rozwiązania problemu. Alert wskazuje również plik, który zawiera pełne podsumowanie awarii — w tym pliki, których nie udało się zaktualizować lub usunąć.
 
 >[!IMPORTANT]
-> W tej wersji nie odświeżaj więcej niż jeden udział w danym momencie.
+> W tej wersji nie odświeżaj więcej niż jednego udziału jednocześnie.
 
 ## <a name="sync-storage-keys"></a>Synchronizowanie kluczy magazynu
 
@@ -119,7 +119,7 @@ Jeśli klucze konta magazynu zostały wymienione, należy zsynchronizować klucz
 Wykonaj następujące czynności w witrynie Azure Portal, aby zsynchronizować klucz dostępu do magazynu.
 
 1. W zasobie przejdź do sekcji **Przegląd**. 
-2. Na liście udziałów kliknij udział skojarzony z kontem magazynu, które ma zostać zsynchronizowane. Kliknij przycisk **Synchronizuj klucz magazynu**. 
+2. Z listy udziałów wybierz i kliknij udział skojarzony z kontem magazynu, które ma być synchronizowane. Kliknij pozycję **Synchronizuj klucz magazynu**. 
 
      ![Synchronizowanie klucza magazynu 1](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 
@@ -131,6 +131,6 @@ Wykonaj następujące czynności w witrynie Azure Portal, aby zsynchronizować k
 > Wystarczy zrobić to raz dla danego konta magazynu. Nie trzeba powtarzać tej czynności dla wszystkich udziałów powiązanych z tym samym kontem magazynu.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [Zarządzać użytkownikami w witrynie Azure Portal](data-box-gateway-manage-users.md).

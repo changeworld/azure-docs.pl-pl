@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: dacce0d4f40f077b5da6221000192a4398da99e0
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315769"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391825"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Tworzenie skryptów U-SQL przy użyciu narzędzi Data Lake Tools for Visual Studio
 
@@ -37,12 +37,12 @@ W tym artykule opisano, jak używać programu Visual Studio do tworzenia kont Az
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Visual Studio**: Obsługiwane są wszystkie wersje poza Express.
+* **Visual Studio**: obsługiwane są wszystkie wersje z wyjątkiem Express.
 
   * Visual Studio 2019
   * Visual Studio 2017
   * Visual Studio 2015
-  * Visual Studio 2013
+  * Program Visual Studio 2013
 
 * **Zestaw Microsoft Azure SDK dla platformy .NET** w wersji 2.7.1 lub nowszej. Można go zainstalować przy użyciu [Instalatora platformy internetowej](https://www.microsoft.com/web/downloads/platform.aspx).
 * Konto usługi **Data Lake Analytics**. Aby utworzyć konto, zobacz artykuł [Wprowadzenie do pracy z usługą Azure Data Lake Analytics za pomocą witryny Azure Portal](data-lake-analytics-get-started-portal.md).
@@ -82,7 +82,7 @@ OUTPUT @a
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Przesyłanie zadania usługi Data Lake Analytics
 
-1. W programie Visual Studio, wybierz **pliku** > **New** > **projektu**.
+1. W programie Visual Studio wybierz pozycje **Plik** > **Nowy** > **Projekt**.
 
 1. Wybierz typ **projektu U-SQL** , a następnie wybierz przycisk **dalej**. W obszarze **Konfigurowanie nowego projektu**wybierz pozycję **Utwórz**.
 

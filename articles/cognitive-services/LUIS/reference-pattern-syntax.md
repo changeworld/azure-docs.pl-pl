@@ -11,28 +11,28 @@ ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890242"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393822"
 ---
 # <a name="pattern-syntax"></a>Składnia wzorca
 
-Składnia wzorca jest szablonem wypowiedź. Szablon powinien zawierać słów i jednostkami, z którymi chcesz dopasować, a także słów i znaków interpunkcyjnych, który chcesz zignorować. Jest **nie** wyrażenia regularnego.
+Składnia wzorca jest szablonem wypowiedź. Szablon powinien zawierać słów i jednostkami, z którymi chcesz dopasować, a także słów i znaków interpunkcyjnych, który chcesz zignorować. To **nie** jest wyrażenie regularne.
 
 > [!CAUTION]
 > Wzorce zawierają tylko obiekty nadrzędne, które są obsługiwane przez maszynę, a nie podskładniki.
 
-Jednostki we wzorcach są ujęte w nawiasach klamrowych `{}`. Wzorce mogą obejmować jednostek i jednostkami z użyciem rolach. [Wzorzec. any](luis-concept-entity-types.md#patternany-entity) jest jednostką używaną tylko w wzorcach.
+Jednostki w wzorcach są ujęte w nawiasy klamrowe, `{}`. Wzorce mogą obejmować jednostek i jednostkami z użyciem rolach. [Wzorzec. any](luis-concept-entity-types.md#patternany-entity) jest jednostką używaną tylko w wzorcach.
 
 Składnia wzorca obsługuje następującą składnię:
 
 |Funkcja|Składnia|Poziom zagnieżdżenia|Przykład|
 |--|--|--|--|
 |jednostka| {} — nawiasy klamrowe|2|Gdzie jest formularz {Entity-Name}?|
-|opcjonalnie|[] — nawiasy kwadratowe<BR><BR>Istnieje limit 3 na poziomach zagnieżdżenia dowolnej kombinacji opcjonalne i grupowania |2|Znak zapytania jest opcjonalny [?]|
-|grouping|() — nawiasy|2|jest (a \| b)|
+|obowiązkowe|[] — nawiasy kwadratowe<BR><BR>Istnieje limit 3 na poziomach zagnieżdżenia dowolnej kombinacji opcjonalne i grupowania |2|Znak zapytania jest opcjonalny [?]|
+|grupie|() — nawiasy|2|jest (a \| b)|
 |lub| \| — pionowy pasek (potok)<br><br>Istnieje limit 2 na pionowych paskach (lub) w jednej grupie |-|Gdzie jest formularz ({form-Name-Short} &#x7c; {form-Name-Long} &#x7c; {form-Number})|
 |Początek i/lub koniec elementu wypowiedź|^ — karetka|-|^ Rozpocznij wypowiedź<br>wypowiedź wykonuje ^<br>{ścisłe dopasowanie literału dla całej wypowiedź z {Number} jednostką ^|
 
@@ -54,35 +54,35 @@ Jeśli jednostki Entity1 jest lokalizacją z rolami, takimi jak Origin (Seattle)
 |--|--|
 |RedWest-C|dopasowuje zewnętrzną jednostkę grupowania|
 |Seattle|dopasowuje jedną z wewnętrznych jednostek grupowania|
-|Cairo|dopasowuje jedną z wewnętrznych jednostek grupowania|
+|Kair|dopasowuje jedną z wewnętrznych jednostek grupowania|
 
 ## <a name="nesting-limits-for-groups-with-optional-syntax"></a>Limity zagnieżdżania dla grup z opcjonalną składnią
 
 Kombinacja **grupowania** z **opcjonalną** składnią ma limit 3 poziomów zagnieżdżenia.
 
-|Dozwolone|Przykład|
+|Występować|Przykład|
 |--|--|
-|Tak|([(TEST1 &#x7c; TEST2)] &#x7c; test3)|
+|Yes|([(TEST1 &#x7c; TEST2)] &#x7c; test3)|
 |Nie|([([TEST1] &#x7c; TEST2)] &#x7c; test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Limity zagnieżdżania dla grup ze składnią lub-w
 
 Kombinacja **grupowania** z składnią **lub-** w ma limit 2 pionowych słupków.
 
-|Dozwolone|Przykład|
+|Występować|Przykład|
 |--|--|
-|Tak|(TEST1 &#x7c; TEST2 &#x7c; (test3 &#x7c; test4))|
+|Yes|(TEST1 &#x7c; TEST2 &#x7c; (test3 &#x7c; test4))|
 |Nie|(TEST1 &#x7c; TEST2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Składni, aby dodać obiekt do szablonu wzorca
-Dodawanie jednostki do szablonu wzorca, należy ująć nazwę jednostki w nawiasach klamrowych, takich jak `Who does {Employee} manage?`.
+Aby dodać jednostkę do szablonu wzorca, należy ująć nazwę jednostki za pomocą nawiasów klamrowych, takich jak `Who does {Employee} manage?`.
 
 |Wzorzec z jednostką|
 |--|
 |`Who does {Employee} manage?`|
 
 ## <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Składnia służąca do dodawania jednostki i roli do szablonu wzorca
-Rola jednostki jest oznaczona jako `{entity:role}` nazwą jednostki, następuje dwukropek, a następnie nazwę roli. Aby dodać obiekt za pomocą roli do szablonu wzorca, należy ująć nazwę podmiotu i nazwy roli za pomocą nawiasów klamrowych, takich jak `Book a ticket from {Location:Origin} to {Location:Destination}`.
+Rola jednostki jest oznaczona jako `{entity:role}` z nazwą jednostki, po której następuje dwukropek, a następnie nazwa roli. Aby dodać jednostkę z rolą do szablonu wzorca, należy ująć nazwę jednostki i nazwę roli z nawiasami klamrowymi, takimi jak `Book a ticket from {Location:Origin} to {Location:Destination}`.
 
 |Wzorzec z rolami jednostki|
 |--|
@@ -91,7 +91,7 @@ Rola jednostki jest oznaczona jako `{entity:role}` nazwą jednostki, następuje 
 ## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Składnia służąca do dodawania pattern.any do szablonu wzorca
 Jednostka Pattern.any umożliwia dodawanie jednostki o różnej długości do wzorca. Tak długo, jak następnie szablonu wzorca pattern.any może być dowolnej długości.
 
-Aby dodać **Pattern.any** jednostki do szablonu wzorca Otocz jednostki Pattern.any za pomocą nawiasów klamrowych, takich jak `How much does {Booktitle} cost and what format is it available in?`.
+Aby dodać **wzorzec. dowolna** jednostka do szablonu wzorca, otaczająca wzorzec. Każda jednostka z nawiasami klamrowymi, taka jak `How much does {Booktitle} cost and what format is it available in?`.
 
 |Wzorzec z jednostką Pattern.any|
 |--|
@@ -99,9 +99,9 @@ Aby dodać **Pattern.any** jednostki do szablonu wzorca Otocz jednostki Pattern.
 
 |Tytułów książek we wzorcu|
 |--|
-|Ile kosztuje **wykradać tę książkę** kosztów i format jest dostępna w?|
-|Ile kosztuje **poproś** kosztów i format jest dostępna w?|
-|Ile kosztuje **zdarzenia wiedzieć o pies w nocy** kosztów i format jest dostępna w?|
+|Ile kosztuje **ten koszt książki** i w jakim formacie jest dostępny?|
+|Ile jest **poproszonych** kosztów i w jakim formacie jest dostępny?|
+|Jak dużo trwa **chcesz wiedzieć zdarzenia w czasie nocnym i w** jakim formacie jest dostępny?|
 
 Słowa tytułu książki nie są mylące dla LUIS, ponieważ LUIS wie, gdzie się znajduje tytuł książki, na podstawie wzorca. dowolna jednostka.
 
@@ -112,11 +112,11 @@ Utwórz [jawną listę](https://westus.dev.cognitive.microsoft.com/docs/services
 * Wzorzec zawiera [wzorzec. any](luis-concept-entity-types.md#patternany-entity)
 * Składnia wzorca pozwala na możliwość nieprawidłowej ekstrakcji jednostek na podstawie wypowiedź.
 
-Załóżmy, że masz wzorzec, zawierający zarówno opcjonalnych składni `[]`i składnię jednostki `{}`, są one połączone w sposób, aby wyodrębnić dane niepoprawnie.
+Załóżmy na przykład, że masz wzorzec zawierający zarówno składnię opcjonalną, `[]`, jak i składnię jednostki, `{}`, połączone w sposób, aby wyodrębnić dane nieprawidłowo.
 
 Należy wziąć pod uwagę wzorzec "[Znajdź] poziomu poczty e-mail, o {subject} [{osoba}]".
 
-W poniższym wypowiedzi **podmiotu** i **osoby** jednostki są wyodrębniane poprawne i niepoprawne:
+W poniższym wyrażenia długości jednostka **podmiotu** i **osoba osoby** są wyodrębniane poprawnie i niepoprawnie:
 
 |Wypowiedź|Jednostka|Poprawne wyodrębniania|
 |--|--|:--:|
@@ -125,10 +125,10 @@ W poniższym wypowiedzi **podmiotu** i **osoby** jednostki są wyodrębniane pop
 
 W powyższej tabeli podmiot powinien być `the man from La Mancha` (tytuł książki), ale ponieważ temat zawiera opcjonalny wyraz `from`, tytuł jest nieprawidłowo przewidziany.
 
-Aby rozwiązać ten wyjątek z wzorcem, dodać `the man from la mancha` jako dopasowanie jawną listę przy użyciu jednostki {subject} [tworzenia interfejsu API dla listy jawne](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
+Aby naprawić ten wyjątek we wzorcu, Dodaj `the man from la mancha` jako jawne dopasowanie listy dla jednostki {subject} za pomocą [interfejsu API tworzenia dla jawnej listy](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
 
 ## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Składnia służąca do oznaczania opcjonalny tekst w polu wypowiedź szablonu
-Oznacz opcjonalny tekst w wypowiedź przy użyciu składni wyrażeń regularnych nawias kwadratowy, `[]`. Opcjonalny tekst można zagnieżdżać maksymalnie tylko dwa nawiasy kwadratowe nawiasy kwadratowe.
+Oznacz opcjonalny tekst w wypowiedź przy użyciu składni nawiasu kwadratowego wyrażenia regularnego `[]`. Opcjonalny tekst można zagnieżdżać maksymalnie tylko dwa nawiasy kwadratowe nawiasy kwadratowe.
 
 |Wzorzec z opcjonalnym tekstem|Znaczenie|
 |--|--|

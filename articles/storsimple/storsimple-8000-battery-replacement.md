@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276900"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365877"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Zastąp moduł baterii kopii zapasowej na urządzeniu StorSimple
 
@@ -81,10 +81,10 @@ Wykonaj następujące kroki, aby zainstalować wymienny moduł baterii w module 
 ## <a name="maintain-the-backup-battery-module"></a>Obsługa modułu baterii tworzenia kopii zapasowych
 Na urządzeniu z systemem StorSimple moduł baterii tworzenia kopii zapasowych zapewnia zasilanie kontrolera podczas zdarzenia utraty zasilania. Dzięki temu urządzenie StorSimple może zapisywać krytyczne dane przed zamykaniem w kontrolowany sposób. W przypadku dwóch w pełni obciążonych baterii w PCMs system może obsłużyć dwa kolejne zdarzenia utraty.
 
-W Azure Portal **kondycja sprzętu** w bloku **monitor** wskazuje, czy bateria jest uszkodzona, czy zbliża się koniec cyklu życia. Stan baterii jest wskazywany przez **baterię w module PCM 0** lub **baterii w module PCM 1** w obszarze **składniki udostępnione**. Wyświetli ten blok **OBNIŻONY** dla zbliża się z eksploatacji, i dla **osiągnięto** koniec z eksploatacji.
+W Azure Portal **kondycja sprzętu** w bloku **monitor** wskazuje, czy bateria jest uszkodzona, czy zbliża się koniec cyklu życia. Stan baterii jest wskazywany przez **baterię w module PCM 0** lub **baterii w module PCM 1** w obszarze **składniki udostępnione**. W tym bloku zostanie wyświetlony stan **obniżonej wydajności** i **nie powiodło się** osiągnięcie końca okresu użytkowania.
 
 > [!NOTE]
-> Bateria może raportować po prostu zajdzie potrzeba jego naliczane opłaty.
+> **Nie** można zgłosić baterii w przypadku, gdy po prostu musi zostać naliczona opłata.
 
 
 Jeśli zostanie wyświetlony stan **obniżonej sprawności** , zalecamy wykonanie następujących czynności:

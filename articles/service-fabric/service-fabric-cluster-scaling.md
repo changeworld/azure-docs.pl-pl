@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
 ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610084"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386275"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Skalowanie klastrów Service Fabric platformy Azure
 Klaster Service Fabric jest połączonym z siecią zestawem maszyn wirtualnych lub fizycznych, w którym są wdrażane i zarządzane mikrousługi. Maszyna lub maszyna wirtualna będąca częścią klastra nazywa się węzłem. Klastry mogą zawierać potencjalnie tysiące węzłów. Po utworzeniu klastra Service Fabric można skalować klaster w poziomie (zmienić liczbę węzłów) lub w pionie (zmienić zasoby węzłów).  Klaster można skalować w dowolnym momencie, nawet w przypadku uruchamiania obciążeń w klastrze.  W miarę skalowania klastra aplikacje są automatycznie skalowane.
@@ -26,8 +26,8 @@ Zestawy skalowania maszyn wirtualnych to zasób obliczeniowy systemu Azure, któ
 
 Podczas skalowania klastra platformy Azure należy pamiętać o następujących kwestiach:
 - typy węzła podstawowego z uruchomionymi obciążeniami produkcyjnymi powinny mieć zawsze pięć lub więcej węzłów.
-- typy węzłów innych niż podstawowe działające stanowe obciążenia produkcyjne powinny mieć zawsze pięć lub więcej węzłów.
-- typy węzłów innych niż podstawowe, które działają bezstanowe obciążenia produkcyjne, powinny zawsze mieć co najmniej dwa węzły.
+- Typy węzłów innych niż podstawowe działające stanowe obciążenia produkcyjne powinny mieć zawsze pięć lub więcej węzłów.
+- Typy węzłów innych niż podstawowe, które działają bezstanowe obciążenia produkcyjne, powinny zawsze mieć co najmniej dwa węzły.
 - Każdy typ węzła [poziomu trwałości](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Gold lub Silver powinien mieć zawsze pięć lub więcej węzłów.
 - Nie usuwaj losowych wystąpień maszyn wirtualnych/węzłów z typu węzła, zawsze używaj funkcji skalowania w dół zestawu skalowania maszyn wirtualnych. Usunięcie losowych wystąpień maszyn wirtualnych może niekorzystnie wpłynąć na zdolność systemu do prawidłowego równoważenia obciążenia.
 - W przypadku używania reguł skalowania automatycznego Ustaw reguły tak, aby skalowanie w poziomie (usuwanie wystąpień maszyn wirtualnych) było wykonywane po jednym węźle w danym momencie. Skalowanie w dół więcej niż jedno wystąpienie w czasie jest niebezpieczne.

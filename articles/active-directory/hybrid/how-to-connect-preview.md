@@ -1,6 +1,6 @@
 ---
-title: 'Program Azure AD Connect: Funkcje w wersji zapoznawczej | Dokumentacja firmy Microsoft'
-description: W tym temacie opisano więcej szczegółów funkcji, które są dostępne w programie Azure AD Connect w wersji zapoznawczej.
+title: 'Azure AD Connect: funkcje w wersji zapoznawczej | Microsoft Docs'
+description: W tym temacie opisano bardziej szczegółowe funkcje, które są w wersji zapoznawczej w Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,41 +17,41 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347808"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376029"
 ---
 # <a name="more-details-about-features-in-preview"></a>Więcej szczegółów na temat funkcji w wersji zapoznawczej
-W tym temacie opisano sposób użycia funkcji, obecnie w wersji zapoznawczej.
+W tym temacie opisano, jak używać funkcji obecnie dostępnych w wersji zapoznawczej.
 
 ## <a name="group-writeback"></a>Zapisywanie zwrotne grup
-Opcja dla zapisu zwrotnego grup w funkcje opcjonalne służy do zapisywania zwrotnego **grup usługi Office 365** do lasu za pomocą programu Exchange jest zainstalowana. Jest to grupa, która zawsze format zarządzany w chmurze. Jeśli masz dla lokalnego programu Exchange, możesz napisać ponownie te grupy do serwera lokalnego, wysyłanie i odbieranie wiadomości e-mail z tych grup użytkowników z skrzynki pocztowej programu Exchange w środowisku lokalnym.
+Opcja stornowania grupowego w funkcjach opcjonalnych umożliwia Stornowanie **grup pakietu Office 365** do lasu z zainstalowanym programem Exchange. Jest to grupa, która jest zawsze zarządzana w chmurze. Jeśli używasz lokalnego programu Exchange, możesz zapisać te grupy w środowisku lokalnym, aby użytkownicy korzystający z lokalnej skrzynki pocztowej programu Exchange mogli wysyłać i odbierać wiadomości e-mail z tych grup.
 
-Więcej informacji na temat grup usługi Office 365 i sposób ich użycia można znaleźć [tutaj](https://aka.ms/O365g).
+Więcej informacji o grupach pakietu Office 365 i sposobach ich użycia można znaleźć [tutaj](https://aka.ms/O365g).
 
-Grupy usługi Office 365 jest reprezentowany jako grupę dystrybucyjną w lokalnych usługach AD DS. W środowisku lokalnym serwerem Exchange musi być na aktualizację zbiorczą programu Exchange 2013 8 (wydanej w marcu 2015) lub Exchange 2016, rozpoznawał ten nowy typ grupy.
+Grupa Office 365 jest reprezentowana jako grupa dystrybucyjna w AD DS lokalnym. Lokalny serwer Exchange musi znajdować się w programie Exchange 2013 zbiorczej aktualizacji 8 (wydanej w marcu 2015) lub w programie Exchange 2016 w celu rozpoznania tego typu nowej grupy.
 
-**Informacje o wersji zapoznawczej**
+**Uwagi w wersji zapoznawczej**
 
-* Atrybut książki adresu jest obecnie pusta w wersji zapoznawczej. Bez tego atrybutu grupy nie jest widoczna w globalnej. Najprostszym sposobem wypełnienia tego atrybutu jest użycie polecenia cmdlet programu PowerShell programu Exchange `update-recipient`.
-* Tylko lasy ze schematem Exchange są prawidłowe obiekty docelowe dla grup. Jeśli Exchange nie zostało wykryte, zapisywanie zwrotne grup nie jest możliwość włączenia.
-* Obecnie obsługiwane są tylko jednym lasem wdrożeń organizacji programu Exchange. Jeśli masz więcej niż jedną organizację dla lokalnego programu Exchange, należy to rozwiązanie GALSync lokalnych dla tych grup, które będą wyświetlane na innych lasów usługi.
-* Nie obsługuje funkcji zapisywania zwrotnego grup, grup zabezpieczeń lub grup dystrybucji.
+* Atrybut książka adresowa nie jest obecnie wypełniany w wersji zapoznawczej. Bez tego atrybutu Grupa nie jest widoczna w liście. Najprostszym sposobem wypełnienia tego atrybutu jest użycie polecenia cmdlet programu Exchange PowerShell `update-recipient`.
+* Tylko lasy ze schematem programu Exchange są prawidłowymi obiektami docelowymi dla grup. Jeśli nie wykryto żadnego programu Exchange, nie można włączyć funkcji zapisywania zwrotnego grup.
+* Obecnie są obsługiwane tylko wdrożenia organizacji programu Exchange z jednym lasem. Jeśli masz więcej niż jedną lokalną organizację programu Exchange, musisz mieć lokalne rozwiązanie GALSync dla tych grup, które mają być wyświetlane w innych lasach.
+* Funkcja zapisywania zwrotnego grup nie obsługuje grup zabezpieczeń ani grup dystrybucyjnych.
 
 > [!NOTE]
-> Subskrypcja usługi Azure AD Premium jest wymagana dla zapisu zwrotnego grup.
+> Do zapisywania zwrotnego grup jest wymagana subskrypcja Azure AD — wersja Premium.
 > 
 >
 
-## <a name="user-writeback"></a>Zapis zwrotny użytkowników
+## <a name="user-writeback"></a>Zapisywanie zwrotne użytkownika
 > [!IMPORTANT]
-> Funkcja w wersji zapoznawczej funkcji zapisywania zwrotnego użytkownika zostało usunięte w aktualizacji z sierpnia 2015 do programu Azure AD Connect. Jeśli została włączona, należy wyłączyć tę funkcję.
+> Funkcja wersji zapoznawczej zapisywania zwrotnego użytkownika została usunięta z aktualizacji 2015 sierpnia do Azure AD Connect. Jeśli ją włączono, należy wyłączyć tę funkcję.
 >
 >
 
-## <a name="next-steps"></a>Kolejne kroki
-Kontynuuj swoje [instalację niestandardową programu Azure AD Connect](how-to-connect-install-custom.md).
+## <a name="next-steps"></a>Następne kroki
+Kontynuuj [instalację Niestandardową Azure AD Connect](how-to-connect-install-custom.md).
 
 Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).

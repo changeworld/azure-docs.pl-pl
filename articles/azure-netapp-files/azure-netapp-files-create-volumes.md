@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/01/2019
 ms.author: b-juche
 ms.openlocfilehash: 9e8817f802ca1d73ca0f6bfa2b32b1b14b37d7da
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773555"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380875"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Tworzenie woluminu NFS dla usługi Azure NetApp Files
 
@@ -36,7 +36,7 @@ Podsieć musi być delegowana do usługi Azure NetApp Files.
 * Wybór wersji systemu plików NFS do użycia  
   NFSv3 może obsługiwać wiele różnych przypadków użycia i jest często wdrażany w większości aplikacji dla przedsiębiorstw. Należy sprawdzić poprawność wersji (NFSv3 lub NFSv 4.1) wymaganej przez aplikację i utworzyć wolumin przy użyciu odpowiedniej wersji. Jeśli na przykład używasz platformy [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave), zalecane jest blokowanie plików z nfsv 4.1 w NFSv3. 
 
-* Zabezpieczenia  
+* Bezpieczeństwo  
   Obsługa bitów trybu systemu UNIX (odczyt, zapis i wykonywanie) jest dostępna dla NFSv3 i NFSv 4.1. Aby można było zainstalować woluminy NFS, na kliencie NFS jest wymagany dostęp na poziomie głównym.
 
 * Lokalna użytkownicy/Grupa i obsługa protokołu LDAP dla NFSv 4.1  

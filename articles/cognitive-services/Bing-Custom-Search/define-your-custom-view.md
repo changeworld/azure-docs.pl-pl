@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072814"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391958"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Skonfiguruj środowisko wyszukiwanie niestandardowe Bing
 
@@ -27,7 +27,7 @@ Podczas definiowania wycinków sieci Web należy użyć następujących element�
 
 | Nazwa wycinka | Opis                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain     | Wycinek domeny obejmuje całą zawartość znajdującą się w domenie internetowej. Na przykład `www.microsoft.com`. Pominięcie `www.` powoduje również przeszukanie domen poddomen w usłudze Bing. Na przykład jeśli określisz `microsoft.com`, Bing zwróci również wyniki z `support.microsoft.com` lub `technet.microsoft.com`. |
+| Domena     | Wycinek domeny obejmuje całą zawartość znajdującą się w domenie internetowej. Na przykład `www.microsoft.com`. Pominięcie `www.` powoduje również przeszukanie domen poddomen w usłudze Bing. Na przykład jeśli określisz `microsoft.com`, Bing zwróci również wyniki z `support.microsoft.com` lub `technet.microsoft.com`. |
 | Podstrony    | Wycinek podstrony obejmuje całą zawartość znajdującą się na podstronie i ścieżkach poniżej. W ścieżce można określić maksymalnie dwa podstrony. Na przykład: `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | Stron    | Wycinek strony sieci Web może zawierać tylko Tę stronę sieci Web w wyszukiwaniu niestandardowym. Opcjonalnie można określić, czy mają być dołączane podstrony.                                                                                                                                                                                  |
 
@@ -44,7 +44,7 @@ Jeśli nie masz pewności, które wycinki mają być dołączone, możesz wysył
 
 1. Wybierz pozycję "Bing" z listy rozwijanej w okienku podglądu, a następnie wprowadź zapytanie wyszukiwania.
 
-2. Kliknij przycisk **Dodaj witrynę** obok wyniku, który ma zostać uwzględniony. Następnie kliknij przycisk OK.
+2. Kliknij przycisk **Dodaj witrynę** obok wyniku, który ma zostać uwzględniony. Kliknij przycisk OK.
 
 >[!NOTE]
 > [!INCLUDE[publish or revert](./includes/publish-revert.md)]
@@ -129,11 +129,11 @@ Domyślnie strony sieci Web są przypięte tylko do góry wyników wyszukiwania,
 > [!NOTE]
 > Wszystkie porównania między zapytania wyszukiwania użytkownika a zapytaniem wyszukiwania kodu PIN nie uwzględnia wielkości liter.
 
-| Wartość | Opis                                                                          |
+| Value | Opis                                                                          |
 |---------------|----------------------------------------------------------------------------------|
 | rozpoczyna się od | Kod PIN jest dopasowanie, jeśli ciąg zapytania użytkownika zaczyna się od ciągu zapytania kodu PIN |
 | kończy się ciągiem   | Kod PIN jest dopasowanie, jeśli ciąg zapytania użytkownika zostanie zakończony ciągiem zapytania kodu PIN.  |
-| Contains    | Kod PIN jest dopasowanie, jeśli ciąg zapytania użytkownika zawiera ciąg zapytania kodu PIN.   |
+| zawiera    | Kod PIN jest dopasowanie, jeśli ciąg zapytania użytkownika zawiera ciąg zapytania kodu PIN.   |
 
 
 Aby zmienić warunek dopasowania numeru PIN, kliknij ikonę edycji numeru PIN. W kolumnie **warunek dopasowania zapytania** kliknij listę rozwijaną, a następnie wybierz nowy warunek do użycia. Następnie kliknij ikonę Zapisz, aby zapisać zmiany.
@@ -148,7 +148,7 @@ Jeśli wiele numerów PIN spełnia warunek dopasowania, wyszukiwanie niestandard
 
 Jeśli zasubskrybujesz wyszukiwanie niestandardowe na odpowiednim poziomie (zobacz [strony cen](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)), karta **statystyki** jest dodawana do wystąpień produkcyjnych. Karta statystyka zawiera szczegółowe informacje o sposobie używania niestandardowych punktów końcowych wyszukiwania, w tym woluminu wywołań, najważniejszych zapytań, dystrybucji geograficznej, kodów odpowiedzi i bezpiecznego wyszukiwania. Można filtrować szczegóły przy użyciu podanych kontrolek.
 
-## <a name="usage-guidelines"></a>Wytyczne dotyczące użycia
+## <a name="usage-guidelines"></a>Wskazówki dotyczące użycia
 
 - Dla każdego wystąpienia wyszukiwania niestandardowego Maksymalna liczba korekt klasyfikacji, które mogą zostać wprowadzone do **aktywnych** i **zablokowanych** wycinków, jest ograniczona do 400.
 - Dodawanie wycinka do aktywnych lub zablokowanych kart jest liczone jako jedna korekta klasyfikacji.

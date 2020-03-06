@@ -8,11 +8,11 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598259"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362416"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 [Azure Files](storage-files-introduction.md) można wdrożyć na dwa sposoby: przez bezpośrednie zainstalowanie udziałów plików platformy Azure bezserwerowych lub buforowanie udziałów plików platformy Azure lokalnie przy użyciu Azure File Sync. Wybór opcji wdrożenia powoduje zmianę warunków, które należy wziąć pod uwagę podczas planowania wdrożenia. 
@@ -106,7 +106,7 @@ Przed wdrożeniem Azure File Sync należy ocenić, czy jest on zgodny z systemem
 
 Polecenie cmdlet do oceny można zainstalować, instalując moduł AZ PowerShell module, który można zainstalować, postępując zgodnie z instrukcjami tutaj: [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-#### <a name="usage"></a>Użycie  
+#### <a name="usage"></a>Sposób użycia  
 Narzędzie do oceny można wywołać na kilka różnych sposobów: można wykonać testy systemowe, zestawy danych lub oba te elementy. Aby przeprowadzić testy systemu i zestawu danych: 
 
 ```powershell
@@ -136,7 +136,7 @@ Obsługiwane są tylko woluminy NTFS; Systemy plików ReFS, FAT, FAT32 i inne ni
 
 W poniższej tabeli przedstawiono stan międzyoperacyjności funkcji systemu plików NTFS: 
 
-| Funkcja | Stan pomocy technicznej | Uwagi |
+| Cecha | Stan pomocy technicznej | Uwagi |
 |---------|----------------|-------|
 | Listy kontroli dostępu (ACL) | W pełni obsługiwane | Poufne listy kontroli dostępu w stylu systemu Windows są zachowywane przez Azure File Sync i są wymuszane przez system Windows Server w punktach końcowych serwera. Listy ACL można również wymuszać podczas bezpośredniego instalowania udziału plików platformy Azure, jednak wymaga to dodatkowej konfiguracji. Aby uzyskać więcej informacji, zobacz sekcję dotyczącą [tożsamości](#identity) . |
 | Twarde linki | Pominięto | |
@@ -234,7 +234,7 @@ Mimo że zmiany wprowadzone bezpośrednio do udziału plików platformy Azure pr
 > [!Important]  
 > Do pomyślnego wdrożenia Azure File Sync domeny dołączenia do konta magazynu Active Directory nie jest wymagane. Jest to ściśle opcjonalny krok umożliwiający udział plików platformy Azure wymuszanie lokalnych list ACL, gdy użytkownicy instalują udział plików platformy Azure bezpośrednio.
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Sieć
 Agent Azure File Sync komunikuje się z usługą synchronizacji magazynu i udziałem plików platformy Azure przy użyciu protokołu REST Azure File Sync i protokołu FileREST, z których korzystają zawsze protokół HTTPS przez port 443. Protokół SMB nie jest nigdy używany do przekazywania ani pobierania danych między serwerem Windows i udziałem plików platformy Azure. Ponieważ większość organizacji zezwala na ruch HTTPS na porcie 443, ponieważ wymaga to odwiedzania większości witryn sieci Web, specjalna konfiguracja sieci zwykle nie jest wymagana do wdrażania Azure File Sync.
 
 Zgodnie z zasadami organizacji lub unikatowymi wymaganiami prawnymi może być wymagana bardziej restrykcyjna komunikacja z platformą Azure, dlatego Azure File Sync udostępnia kilka mechanizmów konfigurowania sieci. Na podstawie Twoich wymagań można:
@@ -290,40 +290,40 @@ Azure File Sync jest dostępny w następujących regionach:
 
 | Chmura platformy Azure | Region geograficzny | Region platformy Azure | Kod regionu |
 |-------------|-------------------|--------------|-------------|
-| Publiczne | Azja | Azja Wschodnia | `eastasia` |
-| Publiczne | Azja | Azja Południowo-Wschodnia | `southeastasia` |
-| Publiczne | Australia | Australia Wschodnia | `australiaeast` |
-| Publiczne | Australia | Australia Południowo-Wschodnia | `australiasoutheast` |
-| Publiczne | Brazylia | Brazylia Południowa | `brazilsouth` |
-| Publiczne | Kanada | Kanada Środkowa | `canadacentral` |
-| Publiczne | Kanada | Kanada Wschodnia | `canadaeast` |
-| Publiczne | Europa | Europa Północna | `northeurope` |
-| Publiczne | Europa | Europa Zachodnia | `westeurope` |
-| Publiczne | Francja | Francja Środkowa | `francecentral` |
-| Publiczne | Francja | Francja Południowa * | `francesouth` |
-| Publiczne | Indie | Indie Środkowe | `centralindia` |
-| Publiczne | Indie | Indie Południowe | `southindia` |
-| Publiczne | Japonia | Japonia Wschodnia | `japaneast` |
-| Publiczne | Japonia | Japonia Zachodnia | `japanwest` |
-| Publiczne | Korea | Korea Środkowa | `koreacentral` |
-| Publiczne | Korea | Korea Południowa | `koreasouth` |
-| Publiczne | Republika Południowej Afryki | Północna Republika Południowej Afryki | `southafricanorth` |
-| Publiczne | Republika Południowej Afryki | Zachodnia Republika Południowej Afryki * | `southafricawest` |
-| Publiczne | Zjednoczone Emiraty Arabskie | Środkowe Zjednoczone Emiraty Arabskie * | `uaecentral` |
-| Publiczne | Zjednoczone Emiraty Arabskie | Północne Zjednoczone Emiraty Arabskie | `uaenorth` |
-| Publiczne | Zjednoczone Królestwo | Południowe Zjednoczone Królestwo | `uksouth` |
-| Publiczne | Zjednoczone Królestwo | Zachodnie Zjednoczone Królestwo | `ukwest` |
-| Publiczne | US | Środkowe stany USA | `centralus` |
-| Publiczne | US | Wschodnie stany USA | `eastus` |
-| Publiczne | US | Wschodnie stany USA 2 | `eastus2` |
-| Publiczne | US | Środkowo-północne stany USA | `northcentralus` |
-| Publiczne | US | Środkowo-południowe stany USA | `southcentralus` |
-| Publiczne | US | Zachodnio-środkowe stany USA | `westcentralus` |
-| Publiczne | US | Zachodnie stany USA | `westus` |
-| Publiczne | US | Zachodnie stany USA 2 | `westus2` |
-| US Gov | US | Administracja USA — Arizona | `usgovarizona` |
-| US Gov | US | Administracja USA — Teksas | `usgovtexas` |
-| US Gov | US | Administracja USA — Wirginia | `usgovvirginia` |
+| Public | Azja | Azja Wschodnia | `eastasia` |
+| Public | Azja | Azja Południowo-Wschodnia | `southeastasia` |
+| Public | Australia | Australia Wschodnia | `australiaeast` |
+| Public | Australia | Australia Południowo-Wschodnia | `australiasoutheast` |
+| Public | Brazylia | Brazylia Południowa | `brazilsouth` |
+| Public | Kanada | Kanada Środkowa | `canadacentral` |
+| Public | Kanada | Kanada Wschodnia | `canadaeast` |
+| Public | Europa | Europa Północna | `northeurope` |
+| Public | Europa | Europa Zachodnia | `westeurope` |
+| Public | Francja | Francja Środkowa | `francecentral` |
+| Public | Francja | Francja Południowa * | `francesouth` |
+| Public | Indie | Indie Środkowe | `centralindia` |
+| Public | Indie | Indie Południowe | `southindia` |
+| Public | Japonia | Japonia Wschodnia | `japaneast` |
+| Public | Japonia | Japonia Zachodnia | `japanwest` |
+| Public | Korea | Korea Środkowa | `koreacentral` |
+| Public | Korea | Korea Południowa | `koreasouth` |
+| Public | Republika Południowej Afryki | Północna Republika Południowej Afryki | `southafricanorth` |
+| Public | Republika Południowej Afryki | Zachodnia Republika Południowej Afryki * | `southafricawest` |
+| Public | Zjednoczone Emiraty Arabskie | Środkowe Zjednoczone Emiraty Arabskie * | `uaecentral` |
+| Public | Zjednoczone Emiraty Arabskie | Północne Zjednoczone Emiraty Arabskie | `uaenorth` |
+| Public | Zjednoczone Królestwo | Południowe Zjednoczone Królestwo | `uksouth` |
+| Public | Zjednoczone Królestwo | Zachodnie Zjednoczone Królestwo | `ukwest` |
+| Public | USA | Środkowe stany USA | `centralus` |
+| Public | USA | Wschodnie stany USA | `eastus` |
+| Public | USA | Wschodnie stany USA 2 | `eastus2` |
+| Public | USA | Północno-środkowe stany USA | `northcentralus` |
+| Public | USA | Południowo-środkowe stany USA | `southcentralus` |
+| Public | USA | Zachodnio-środkowe stany USA | `westcentralus` |
+| Public | USA | Zachodnie stany USA | `westus` |
+| Public | USA | Zachodnie stany USA 2 | `westus2` |
+| US Gov | USA | US Gov Arizona | `usgovarizona` |
+| US Gov | USA | US Gov Teksas | `usgovtexas` |
+| US Gov | USA | US Gov Wirginia | `usgovvirginia` |
 
 Azure File Sync obsługuje synchronizowanie tylko z udziałem plików platformy Azure, który znajduje się w tym samym regionie co usługa synchronizacji magazynu.
 

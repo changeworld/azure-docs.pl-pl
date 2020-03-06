@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 22060cc6dd5eb15e81a0c397a7b0255f16780d74
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976493"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381014"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Dodawanie maszyny wirtualnej do laboratorium w Azure DevTest Labs
 Jeśli masz już [utworzoną pierwszą maszynę wirtualną](tutorial-create-custom-lab.md#add-a-vm-to-the-lab), możesz to zrobić z wstępnie załadowanego [obrazu z portalu Marketplace](devtest-lab-configure-marketplace-images.md). Teraz, jeśli chcesz dodać kolejne maszyny wirtualne do laboratorium, możesz również wybrać *podstawę* , która jest [obrazem niestandardowym](devtest-lab-create-template.md) lub [formułą](devtest-lab-manage-formulas.md). W tym samouczku pokazano, jak za pomocą Azure Portal dodać maszynę wirtualną do laboratorium w DevTest Labs.
@@ -27,7 +27,7 @@ Jeśli masz już [utworzoną pierwszą maszynę wirtualną](tutorial-create-cust
 W tym artykule pokazano również, jak zarządzać artefaktami dla maszyny wirtualnej w laboratorium.
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Procedura dodawania maszyny wirtualnej do laboratorium w Azure DevTest Labs
-1. Zaloguj się do [portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się do [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Wybierz pozycję **wszystkie usługi**, a następnie wybierz pozycję **DevTest Labs** w sekcji **DEVOPS** . Jeśli wybierzesz pozycję * (gwiazdka) obok pozycji **DevTest Labs** w sekcji **DEVOPS** . Ta akcja dodaje **DevTest Labs** do menu nawigacji po lewej stronie, aby można było łatwo uzyskać do niego dostęp. Następnie możesz wybrać pozycję **DevTest Labs** w menu nawigacji po lewej stronie.
 
     ![Wszystkie usługi — wybierz pozycję DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
@@ -70,7 +70,7 @@ Podczas tworzenia maszyny wirtualnej można dodać istniejące artefakty. Każde
 
 Aby dowiedzieć się, jak tworzyć artefakty, zapoznaj się z artykułem [dotyczącym tworzenia własnych artefaktów do użycia z DevTest Labs](devtest-lab-artifact-author.md).
 
-1. Zaloguj się do [portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się do [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
 1. Z listy laboratoriów wybierz laboratorium zawierające maszynę wirtualną, której chcesz użyć.
 1. Wybierz pozycję **moje maszyny wirtualne**.

@@ -11,13 +11,13 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 9879f98e72e22fc0745a9e91f29216cbe74ab8fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460481"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373680"
 ---
-# <a name="managing-concurrency-in-microsoft-azure-storage"></a>Zarządzanie współbieżnością w usłudze Microsoft Azure Storage
+# <a name="managing-concurrency-in-microsoft-azure-storage"></a>Zarządzanie współbieżnością w Microsoft Azure Storage
 
 Nowoczesne aplikacje internetowe zwykle mają wielu użytkowników, którzy jednocześnie wyświetlają i aktualizują dane. Wymaga to, aby deweloperzy aplikacji mogli dokładnie rozważyć, jak zapewnić użytkownikom końcowym przewidywalne środowisko, szczególnie w przypadku scenariuszy, w których wielu użytkowników może aktualizować te same dane. Istnieją trzy główne strategie współbieżności danych, które zazwyczaj rozważają deweloperzy:  
 
@@ -90,14 +90,14 @@ Poniższa tabela zawiera podsumowanie operacji kontenera akceptujących nagłów
 
 | Operacja | Zwraca wartość ETag kontenera | Akceptuje nagłówki warunkowe |
 |:--- |:--- |:--- |
-| Tworzenie kontenera |Tak |Nie |
-| Pobierz właściwości kontenera |Tak |Nie |
-| Pobierz metadane kontenera |Tak |Nie |
-| Ustawianie metadanych kontenera |Tak |Tak |
-| Pobierz listę ACL kontenerów |Tak |Nie |
-| Ustawianie listy ACL kontenerów |Tak |Tak (*) |
-| Usuwanie kontenera |Nie |Tak |
-| Kontener dzierżawy |Tak |Tak |
+| Tworzenie kontenera |Yes |Nie |
+| Pobierz właściwości kontenera |Yes |Nie |
+| Pobierz metadane kontenera |Yes |Nie |
+| Ustawianie metadanych kontenera |Yes |Yes |
+| Pobierz listę ACL kontenerów |Yes |Nie |
+| Ustawianie listy ACL kontenerów |Yes |Tak (*) |
+| Usuwanie kontenera |Nie |Yes |
+| Kontener dzierżawy |Yes |Yes |
 | Wyświetl listę obiektów BLOB |Nie |Nie |
 
 (*) Uprawnienia zdefiniowane przez SetContainerACL są zapisywane w pamięci podręcznej i aktualizacje tych uprawnień trwają 30 sekund, podczas których aktualizacje nie będą gwarantowane.  
@@ -106,22 +106,22 @@ Poniższa tabela zawiera podsumowanie operacji obiektów blob, które akceptują
 
 | Operacja | Zwraca wartość ETag | Akceptuje nagłówki warunkowe |
 |:--- |:--- |:--- |
-| Put Blob |Tak |Tak |
-| Get Blob |Tak |Tak |
-| Pobierz właściwości obiektu BLOB |Tak |Tak |
-| Ustawianie właściwości obiektu BLOB |Tak |Tak |
-| Pobierz metadane obiektu BLOB |Tak |Tak |
-| Ustawianie metadanych obiektu BLOB |Tak |Tak |
-| Obiekt BLOB dzierżawy (*) |Tak |Tak |
-| Obiekt BLOB migawek |Tak |Tak |
-| Copy Blob |Tak |Tak (dla źródłowego i docelowego obiektu BLOB) |
+| Put Blob |Yes |Yes |
+| Get Blob |Yes |Yes |
+| Pobierz właściwości obiektu BLOB |Yes |Yes |
+| Ustawianie właściwości obiektu BLOB |Yes |Yes |
+| Pobierz metadane obiektu BLOB |Yes |Yes |
+| Ustawianie metadanych obiektu BLOB |Yes |Yes |
+| Obiekt BLOB dzierżawy (*) |Yes |Yes |
+| Obiekt BLOB migawek |Yes |Yes |
+| Copy Blob |Yes |Tak (dla źródłowego i docelowego obiektu BLOB) |
 | Przerwij Kopiowanie obiektu BLOB |Nie |Nie |
-| Usuwanie obiektu Blob |Nie |Tak |
+| Usuwanie obiektu Blob |Nie |Yes |
 | Umieść blok |Nie |Nie |
-| Umieść listę zablokowanych |Tak |Tak |
-| Pobierz listę zablokowanych |Tak |Nie |
-| Umieść stronę |Tak |Tak |
-| Pobierz zakresy stron |Tak |Tak |
+| Umieść listę zablokowanych |Yes |Yes |
+| Pobierz listę zablokowanych |Yes |Nie |
+| Umieść stronę |Yes |Yes |
+| Pobierz zakresy stron |Yes |Yes |
 
 (*) Obiekt BLOB dzierżawy nie zmienia elementu ETag w obiekcie blob.  
 
@@ -179,7 +179,7 @@ Następujące operacje BLOB mogą używać dzierżaw do zarządzania pesymistycz
 * Obiekt BLOB migawki — identyfikator dzierżawy opcjonalny w przypadku istnienia dzierżawy
 * Kopiuj obiekt BLOB — identyfikator dzierżawy jest wymagany, jeśli dzierżawa istnieje w docelowym obiekcie blob
 * Przerwij Kopiowanie obiektu BLOB — identyfikator dzierżawy jest wymagany, jeśli w docelowym obiekcie blob istnieje nieskończona dzierżawa
-* Dzierżawienie obiektu blob  
+* Obiekt BLOB dzierżawy  
 
 ### <a name="pessimistic-concurrency-for-containers"></a>Współbieżność pesymistyczna dla kontenerów
 
@@ -197,9 +197,9 @@ Następujące operacje kontenera mogą używać dzierżaw do zarządzania pesymi
 
 Aby uzyskać więcej informacji, zobacz:  
 
-* [Określanie nagłówków warunkowych dla operacji usługi Blob Service](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [Określanie nagłówków warunkowych dla operacji usługi BLOB Service](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Kontener dzierżawy](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Dzierżawienie obiektu blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Obiekt BLOB dzierżawy](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-table-storage"></a>Zarządzanie współbieżnością w magazynie tabel
 
@@ -244,13 +244,13 @@ Poniższa tabela zawiera podsumowanie sposobu używania wartości ETag przez ope
 
 | Operacja | Zwraca wartość ETag | Wymaga nagłówka żądania if-Match |
 |:--- |:--- |:--- |
-| Jednostki zapytań |Tak |Nie |
-| Wstaw jednostkę |Tak |Nie |
-| Aktualizuj jednostkę |Tak |Tak |
-| Scal jednostkę |Tak |Tak |
-| Usuń jednostkę |Nie |Tak |
-| Wstaw lub Zamień jednostkę |Tak |Nie |
-| Wstaw lub Scal jednostkę |Tak |Nie |
+| Jednostki zapytań |Yes |Nie |
+| Wstaw jednostkę |Yes |Nie |
+| Aktualizuj jednostkę |Yes |Yes |
+| Scal jednostkę |Yes |Yes |
+| Usuń jednostkę |Nie |Yes |
+| Wstaw lub Zamień jednostkę |Yes |Nie |
+| Wstaw lub Scal jednostkę |Yes |Nie |
 
 Należy zauważyć, że operacje **wstawiania i zastępowania jednostki** i **wstawiania lub scalania jednostek** *nie wykonują* żadnych kontroli współbieżności, ponieważ nie wysyłają wartości ETag do usługi Table Service.  
 
@@ -268,7 +268,7 @@ Usługa kolejki nie obsługuje optymistycznej lub pesymistycznej współbieżno�
 
 Aby uzyskać więcej informacji, zobacz:  
 
-* [Interfejs API REST usługi Queue (Kolejka)](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [Interfejs API REST usługi kolejkowania](https://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Pobierz komunikaty](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
 ## <a name="managing-concurrency-in-azure-files"></a>Zarządzanie współbieżnością w Azure Files

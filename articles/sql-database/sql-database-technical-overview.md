@@ -13,11 +13,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
 ms.openlocfilehash: 3932c22ff003a343e4c32aee117a7ddea922fbdb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820743"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360084"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database?
 
@@ -242,7 +242,7 @@ Korzyść użycia hybrydowego platformy Azure SQL Server różni się od przenos
 
 SQL Database klienci mają następujące prawa skojarzone z Korzyść użycia hybrydowego platformy Azure dla SQL Server:
 
-|Wykorzystanie licencji|Co Korzyść użycia hybrydowego platformy Azure na SQL Server uzyskać użytkownika?|
+|Wpływ na licencję|Co Korzyść użycia hybrydowego platformy Azure na SQL Server uzyskać użytkownika?|
 |---|---|
 |Klienci z wersjami SQL Server Enterprise Core z pakietem SA|<li>Może być płacona stawka podstawowa dla Ogólnego przeznaczenia lub Krytyczne dla działania firmy jednostki SKU</li><br><li>1 rdzeń lokalnego = 4 rdzenie w jednostce SKU Ogólnego przeznaczenia</li><br><li>1 rdzeń lokalnego = 1 rdzeń w jednostce SKU Krytyczne dla działania firmy</li>|
 |Klienci z wersjami SQL Server Standard Core z pakietem SA|<li>Można uiścić stawkę bazową tylko dla Ogólnego przeznaczenia jednostki SKU</li><br><li>1 rdzeń lokalnego = 1 rdzeń w jednostce SKU Ogólnego przeznaczenia</li>|

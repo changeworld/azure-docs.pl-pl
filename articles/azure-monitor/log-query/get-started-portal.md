@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 07/19/2019
 ms.openlocfilehash: 1cf1695db50e6aee2a5dae24ed5231fdda7c12de
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670240"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360872"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Wprowadzenie do Log Analytics w Azure Monitor
 
@@ -39,11 +39,11 @@ Log Analytics jest narzędziem sieci Web służącym do zapisywania i wykonywani
 ## <a name="firewall-requirements"></a>Wymagania dotyczące zapory
 Aby można było używać Log Analytics, przeglądarka wymaga dostępu do następujących adresów. Jeśli przeglądarka uzyskuje dostęp do Azure Portal przez zaporę, należy włączyć dostęp do tych adresów.
 
-| URI | Adres IP | Porty |
+| URI | adres IP | Porty |
 |:---|:---|:---|
-| portal.loganalytics.io | Dynamiczny | 80,443 |
-| api.loganalytics.io | Dynamiczny | 80,443 |
-| docs.loganalytics.io | Dynamiczny | 80,443 |
+| portal.loganalytics.io | Dynamiczne | 80,443 |
+| api.loganalytics.io | Dynamiczne | 80,443 |
+| docs.loganalytics.io | Dynamiczne | 80,443 |
 
 ## <a name="basic-queries"></a>Zapytania podstawowe
 Zapytania mogą służyć do wyszukiwania terminów, identyfikowania trendów, analizowania wzorców i udostępniania wielu szczegółowych informacji na podstawie danych. Zacznij od podstawowego zapytania:

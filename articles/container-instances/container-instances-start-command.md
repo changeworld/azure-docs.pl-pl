@@ -4,11 +4,11 @@ description: Ustaw wiersz polecenia, aby przesłonić punkt wejścia w obrazie k
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533409"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365163"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Ustaw wiersz polecenia w wystąpieniu kontenera w celu zastąpienia domyślnej operacji wiersza polecenia
 
@@ -26,7 +26,7 @@ Podobnie jak w przypadku ustawiania [zmiennych środowiskowych](container-instan
   |---------|---------|
   |Ubuntu     |   `/bin/bash`      |
   |Alp     |   `/bin/sh`      |
-  |Windows     |    `cmd`     |
+  |System Windows     |    `cmd`     |
 
   Postępuj zgodnie z konwencjami powłoki, aby połączyć wiele poleceń do uruchomienia w sekwencji.
 

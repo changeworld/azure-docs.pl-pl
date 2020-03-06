@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/9/2019
 ms.openlocfilehash: ba091d05aa243fab08138c96827d2f657d9755de
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976302"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363555"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Jak skonfigurować parametry serwera w Azure Database for MariaDB przy użyciu Azure Portal
 
@@ -21,13 +21,13 @@ Azure Database for MariaDB obsługuje konfigurację niektórych parametrów serw
 
 1. Zaloguj się do Azure Portal, a następnie zlokalizuj serwer Azure Database for MariaDB.
 2. W sekcji **Ustawienia** kliknij pozycję **parametry serwera** , aby otworzyć stronę parametry serwera dla serwera Azure Database for MariaDB.
-![Strona parametrów serwera portalu Azure](./media/howto-server-parameters/azure-portal-server-parameters.png)
-3. Znajdź wszystkie ustawienia, które należy dopasować. Przegląd **opis** kolumny zrozumienie przeznaczenia i dozwolonych wartości.
-![Wyliczanie listy w dół](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Kliknij przycisk **Zapisz** Aby zapisać zmiany.
+![strony parametrów serwera Azure Portal](./media/howto-server-parameters/azure-portal-server-parameters.png)
+3. Znajdź wszystkie ustawienia, które należy dopasować. Przejrzyj kolumnę **Description** , aby zrozumieć przeznaczenie i dozwolone wartości.
+Lista rozwijana ![wyliczania](./media/howto-server-parameters/3-toggle_parameter.png)
+4. Kliknij przycisk **Zapisz** , aby zapisać zmiany.
 ![Zapisz lub Odrzuć zmiany](./media/howto-server-parameters/4-save_parameters.png)
-5. Jeśli masz zapisane nowe wartości dla parametrów, zawsze możesz przywrócić wszystko, co do wartości domyślnych, wybierając **Zresetuj wszystkie do domyślnych**.
-![Zresetuj wszystkie do domyślnych](./media/howto-server-parameters/5-reset_parameters.png)
+5. Jeśli Zapisano nowe wartości parametrów, zawsze możesz przywrócić wszystkie elementy z powrotem do wartości domyślnych, wybierając pozycję **Zresetuj wszystkie do domyślnych**.
+![Resetuj wszystkie do domyślnych](./media/howto-server-parameters/5-reset_parameters.png)
 
 ## <a name="list-of-configurable-server-parameters"></a>Lista parametrów można skonfigurować serwera
 
@@ -35,27 +35,27 @@ Obsługiwany serwer z parametrów stale rośnie. Umożliwia karta parametry serw
 
 ## <a name="non-configurable-server-parameters"></a>Parametry można skonfigurować bez serwera
 
-Pula buforów aparatu InnoDB i maksymalna liczba połączeń nie są konfigurowalne i związane z [warstwy cenowej](concepts-pricing-tiers.md).
+Pula buforów InnoDB i Maksymalna liczba połączeń nie są konfigurowane i powiązane z [warstwą cenową](concepts-pricing-tiers.md).
 
-|**Warstwa cenowa**| **rdzenie wirtualne:**|**Pula buforów aparatu InnoDB (MB)**|
+|**Warstwa cenowa**| **Rdzeń wirtualny**|**Pula buforów InnoDB (MB)**|
 |---|---|---|
-|Basic| 1| 1024|
-|Basic| 2| 2560|
+|Podstawowa| 1| 1024|
+|Podstawowa| 2| 2560|
 |Ogólne zastosowanie| 2| 3584|
 |Ogólne zastosowanie| 4| 7680|
 |Ogólne zastosowanie| 8| 15360|
 |Ogólne zastosowanie| 16| 31232|
 |Ogólne zastosowanie| 32| 62976|
 |Ogólne zastosowanie| 64| 125952|
-|Zoptymalizowane pod kątem pamięci| 2| 7168|
-|Zoptymalizowane pod kątem pamięci| 4| 15360|
-|Zoptymalizowane pod kątem pamięci| 8| 30720|
-|Zoptymalizowane pod kątem pamięci| 16| 62464|
-|Zoptymalizowane pod kątem pamięci| 32| 125952|
+|Pamięć| 2| 7168|
+|Pamięć| 4| 15360|
+|Pamięć| 8| 30720|
+|Pamięć| 16| 62464|
+|Pamięć| 32| 125952|
 
 Te parametry dodatkowy serwer nie są konfigurowane w systemie:
 
-|**Parametr**|**Stała wartość**|
+|**Konstruktora**|**Stała wartość**|
 | :------------------------ | :-------- |
 |innodb_file_per_table w warstwie podstawowa|WYŁĄCZONE|
 |innodb_flush_log_at_trx_commit|1|
@@ -68,10 +68,10 @@ Inne parametry serwera, które nie są wymienione w tym miejscu, są ustawione n
 
 ### <a name="populating-the-time-zone-tables"></a>Wypełnianie tabel strefy czasowej
 
-Tabele strefę czasową na serwerze można wypełnić przez wywołanie metody `az_load_timezone` przechowywane procedury przy użyciu narzędzia wiersza polecenia MySQL lub połączenia aplikacji MySQL Workbench.
+Tabele strefy czasowej na serwerze można wypełnić przez wywołanie procedury składowanej `az_load_timezone` z narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench.
 
 > [!NOTE]
-> Jeśli używasz `az_load_timezone` polecenia za pomocą aplikacji MySQL Workbench, konieczne może być pierwszym Wyłącz tryb awaryjny aktualizacji przy użyciu `SET SQL_SAFE_UPDATES=0;`.
+> Jeśli uruchamiasz polecenie `az_load_timezone` z Workbench MySQL, może być konieczne wyłączenie bezpiecznego trybu aktualizacji przy użyciu `SET SQL_SAFE_UPDATES=0;`.
 
 ```sql
 CALL mysql.az_load_timezone();
@@ -87,13 +87,13 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>Ustawienia globalne poziomu strefy czasowej
 
-To ustawienie globalne poziomu strefy czasowej **parametrów serwera** strony w witrynie Azure portal. Poniżej ustawia globalne strefy czasowej na wartość "US / Pacyfik".
+Strefę czasową na poziomie globalnym można ustawić na stronie **parametrów serwera** w Azure Portal. Poniżej ustawia globalne strefy czasowej na wartość "US / Pacyfik".
 
 ![Ustaw parametr strefy czasowej](./media/howto-server-parameters/timezone.png)
 
 ### <a name="setting-the-session-level-time-zone"></a>Ustawienie strefy czasowej z poziomu sesji
 
-Sesji można ustawić poziomu strefy czasowej, uruchamiając `SET time_zone` polecenia za pomocą narzędzia wiersza polecenia MySQL lub połączenia aplikacji MySQL Workbench. Poniższy przykład ustawia strefę czasową **USA / Pacyfik** strefy czasowej.
+Strefę czasową na poziomie sesji można ustawić, uruchamiając polecenie `SET time_zone` za pomocą narzędzia, takiego jak wiersz polecenia MySQL lub MySQL Workbench. W poniższym przykładzie ustawiono strefę czasową dla strefy czasowej **USA/Pacyfiku** .
 
 ```sql
 SET time_zone = 'US/Pacific';

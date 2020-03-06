@@ -5,11 +5,11 @@ ms.date: 11/21/2019
 ms.topic: conceptual
 ms.reviewer: zeyadr
 ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455725"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384444"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Azure łańcucha bloków Service Consortium
 
@@ -33,12 +33,12 @@ Uczestnicy konsorcjum mogą być osobami lub organizacjami i mogą mieć przypis
 
 | Akcja | Rola użytkownika | Rola administratora
 |--------|:----:|:------------:|
-| Utwórz nowy element członkowski | Yes | Yes |
-| Zaproś nowych członków | Nie | Yes |
-| Ustaw lub Zmień rolę uczestnika elementu członkowskiego | Nie | Yes |
+| Utwórz nowy element członkowski | Tak | Tak |
+| Zaproś nowych członków | Nie | Tak |
+| Ustaw lub Zmień rolę uczestnika elementu członkowskiego | Nie | Tak |
 | Zmień nazwę wyświetlaną elementu członkowskiego | Tylko dla własnej składowej | Tylko dla własnej składowej |
-| Usuń członków | Tylko dla własnej składowej | Yes |
-| Uczestnictwo w transakcjach łańcucha bloków | Yes | Yes |
+| Usuń członków | Tylko dla własnej składowej | Tak |
+| Uczestnictwo w transakcjach łańcucha bloków | Tak | Tak |
 
 ### <a name="user-role"></a>Rola użytkownika
 

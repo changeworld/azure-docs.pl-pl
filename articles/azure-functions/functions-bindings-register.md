@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
 ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484727"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357860"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Rejestrowanie rozszerzeń powiązań Azure Functions
 
@@ -26,10 +26,10 @@ Poniższa tabela zawiera informacje o tym, kiedy i w jaki sposób rejestrujesz p
 
 | Środowisko deweloperskie |Rejestracja<br/> w funkcjach 1. x  |Rejestracja<br/> w funkcjach 2. x  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure Portal|Automatyczne|Automatyczne|
-|Programowanie w języku Non-.NET lub lokalne podstawowe narzędzia platformy Azure|Automatyczne|[Użyj Azure Functions Core Tools i pakietów rozszerzeń](#extension-bundles)|
+|Portalu Azure|Automatyczny|Automatyczny|
+|Programowanie w języku Non-.NET lub lokalne podstawowe narzędzia platformy Azure|Automatyczny|[Użyj Azure Functions Core Tools i pakietów rozszerzeń](#extension-bundles)|
 |C#Biblioteka klas przy użyciu programu Visual Studio|[Korzystanie z narzędzi NuGet](#vs)|[Korzystanie z narzędzi NuGet](#vs)|
-|C#Biblioteka klas przy użyciu Visual Studio Code|Brak|[Użyj interfejs wiersza polecenia platformy .NET Core](#vs-code)|
+|C#Biblioteka klas przy użyciu Visual Studio Code|Nie dotyczy|[Użyj interfejs wiersza polecenia platformy .NET Core](#vs-code)|
 
 ## <a name="extension-bundles"></a>Zestawy rozszerzeń do lokalnego tworzenia
 

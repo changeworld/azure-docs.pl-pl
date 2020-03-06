@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757870"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384747"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Wymagania systemowe Azure Data Box Edge
 
@@ -58,9 +58,9 @@ Azure IoT Edge umożliwia komunikację wychodzącą z lokalnego urządzenia brze
 
 W poniższej tabeli przedstawiono konfigurację portów dla serwerów hostującym środowisko uruchomieniowe Azure IoT Edge:
 
-| Numer portu. | Do lub do zewnątrz | Zakres portów | Wymagane | Wskazówka |
+| Numer portu. | Do lub do zewnątrz | Zakres portów | Wymagany | Wskazówki |
 |----------|-----------|------------|----------|----------|
-| TCP 443 (HTTPS)| Określoną       | WAN        | Tak      | Wychodzące otwarte dla IoT Edge aprowizacji. Ta konfiguracja jest wymagana w przypadku korzystania z ręcznego skryptów lub usługi Azure IoT urządzenia inicjowania obsługi usługi (DPS).|
+| TCP 443 (HTTPS)| Określoną       | WAN        | Yes      | Wychodzące otwarte dla IoT Edge aprowizacji. Ta konfiguracja jest wymagana w przypadku korzystania z ręcznego skryptów lub usługi Azure IoT urządzenia inicjowania obsługi usługi (DPS).|
 
 Aby uzyskać pełne informacje, przejdź do [reguły konfiguracji zapory i portów dla IoT Edge wdrożenia](https://docs.microsoft.com/azure/iot-edge/troubleshoot).
 
@@ -82,9 +82,9 @@ Zalecamy ustawienie reguł zapory dla ruchu wychodzącego na podstawie Data Box 
 
 | Wzorzec adresu URL                      | Składnik lub funkcjonalność                     |   
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Rejestr kontenerów firmy Microsoft (wymagany)               |
+| https:\//mcr.microsoft.com<br></br>https://\*. cdn.mscr.io | Rejestr kontenerów firmy Microsoft (wymagany)               |
 | https://\*. azurecr.io                     | Rejestry kontenerów osobistych i innych firm (opcjonalnie) | 
-| https://\*.azure-devices.net              | Dostęp IoT Hub (wymagany)                             | 
+| https://\*. azure-devices.net              | Dostęp IoT Hub (wymagany)                             | 
 
 ### <a name="url-patterns-for-gateway-for-azure-government"></a>Wzorce adresów URL dla bramy dla Azure Government
 
@@ -94,8 +94,8 @@ Zalecamy ustawienie reguł zapory dla ruchu wychodzącego na podstawie Data Box 
 
 | Wzorzec adresu URL                      | Składnik lub funkcjonalność                     |  
 |----------------------------------|---------------------------------------------|
-| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Rejestr kontenerów firmy Microsoft (wymagany)               |
-| https://\*.azure-devices.us              | Dostęp IoT Hub (wymagany)           |
+| https:\//mcr.microsoft.com<br></br>https://\*. cdn.mscr.com | Rejestr kontenerów firmy Microsoft (wymagany)               |
+| https://\*. azure-devices.us              | Dostęp IoT Hub (wymagany)           |
 | https://\*. azurecr.us                    | Rejestry kontenerów osobistych i innych firm (opcjonalnie) | 
 
 ## <a name="internet-bandwidth"></a>Przepustowość internetowa

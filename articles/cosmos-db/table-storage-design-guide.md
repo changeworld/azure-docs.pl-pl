@@ -9,11 +9,11 @@ author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
 ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771513"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395656"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Przewodnik projektowy tabeli usługi Azure Table Storage: skalowalne i wydajne tabele
 
@@ -52,7 +52,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -72,7 +72,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Cze</td>
@@ -100,7 +100,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 </td>
 </tr>
 <tr>
-<td>Sales</td>
+<td>Sprzedaż</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -109,7 +109,7 @@ Poniższy przykład pokazuje wzór prostej tabeli do przechowywania podmiotów p
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Krzysztof</td>
@@ -159,26 +159,26 @@ Poniższa tabela zawiera kilka najważniejszych wartości, które należy znać 
 Aby uzyskać więcej informacji, zobacz [Omówienie modelu danych Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx).  
 
 ### <a name="cost-considerations"></a>Kwestie związane z kosztami
-Magazyn tabel jest stosunkowo niedrogi, ale należy uwzględnić oszacowania kosztów zarówno w przypadku użycia pojemności, jak i liczby transakcji w ramach oceny dowolnego rozwiązania korzystającego z usługi Table Storage. Jednak w wielu scenariuszach przechowywanie nieznormalizowanych lub zduplikowanych danych w celu poprawy wydajności lub skalowalności rozwiązania jest prawidłowym podejściem. Aby uzyskać więcej informacji o cenach, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
+Magazyn tabel jest stosunkowo niedrogi, ale należy uwzględnić oszacowania kosztów zarówno w przypadku użycia pojemności, jak i liczby transakcji w ramach oceny dowolnego rozwiązania korzystającego z usługi Table Storage. Jednak w wielu scenariuszach przechowywanie nieznormalizowanych lub zduplikowanych danych w celu poprawy wydajności lub skalowalności rozwiązania jest prawidłowym podejściem. Aby uzyskać więcej informacji o cenach, zobacz [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
 
 ## <a name="guidelines-for-table-design"></a>Wytyczne dotyczące projektu tabel
 Te listy zawierają podsumowanie najważniejszych wytycznych, które należy wziąć pod uwagę podczas projektowania tabel. Ten przewodnik zawiera więcej szczegółów w dalszej części artykułu. Wytyczne te różnią się od wytycznych, które zwykle są stosowane w przypadku projektowania relacyjnej bazy danych.  
 
 Projektowanie magazynu tabel do wydajnego *odczytu* :
 
-* **Projektowanie pod kątem wykonywania zapytania w odczycie aplikacji.** Podczas projektowania tabel należy zastanowić się nad zapytaniami (szczególnie w odróżnieniu od opóźnienia), które zostaną uruchomione przed zawieszeniem, jak należy zaktualizować jednostki. Skutkuje to zazwyczaj wydajne i wydajne rozwiązanie.  
+* **Projekt do wykonywania zapytań w aplikacjach z dużym obciążeniem.** Podczas projektowania tabel należy zastanowić się nad zapytaniami (szczególnie w odróżnieniu od opóźnienia), które zostaną uruchomione przed zawieszeniem, jak należy zaktualizować jednostki. Skutkuje to zazwyczaj wydajne i wydajne rozwiązanie.  
 * **W zapytaniach Określ zarówno `PartitionKey`, jak i `RowKey`.** *Zapytania punktowe* , takie jak te, to najbardziej wydajne zapytania dotyczące magazynu tabel.  
-* **Rozważ przechowywanie duplikatów kopii jednostki.** Magazyn tabel jest tani, więc Rozważ przechowywanie tej samej jednostki wielokrotnie (z różnymi kluczami), aby umożliwić wydajniejsze zapytania.  
-* **Należy wziąć pod uwagę denormalizing danych.** Magazyn tabel jest tani, dlatego należy rozważyć denormalizację danych. Na przykład przechowywać podsumowania jednostki tak, aby zapytania dla danych zagregowanych wystarczy dostęp do pojedynczej jednostki.  
+* **Rozważ przechowywanie zduplikowanych kopii jednostek.** Magazyn tabel jest tani, więc Rozważ przechowywanie tej samej jednostki wielokrotnie (z różnymi kluczami), aby umożliwić wydajniejsze zapytania.  
+* **Rozważ wyprowadzenie denormalizacji danych.** Magazyn tabel jest tani, dlatego należy rozważyć denormalizację danych. Na przykład przechowywać podsumowania jednostki tak, aby zapytania dla danych zagregowanych wystarczy dostęp do pojedynczej jednostki.  
 * **Użyj wartości klucza złożonego.** Jedyne klucze są `PartitionKey` i `RowKey`. Aby włączyć alternatywnego kluczem dostępu do ścieżki do jednostek, na przykład użyć wartości klucza złożonego.  
-* **Użyj projekcji zapytań.** Można zmniejszyć ilość danych, który transferu za pośrednictwem sieci przy użyciu kwerend wybierających tylko pola, które są potrzebne.  
+* **Użyj projekcji zapytania.** Można zmniejszyć ilość danych, który transferu za pośrednictwem sieci przy użyciu kwerend wybierających tylko pola, które są potrzebne.  
 
 Projektowanie magazynu tabel do wydajnego *zapisu* :  
 
 * **Nie twórz partycji aktywnych.** Wybierz klucze, które umożliwiają żądań rozkłada się na wielu partycjach w dowolnym momencie.  
-* **Należy unikać skoków ruchu.** Dystrybuuj ruch w rozsądnym czasie i unikaj wzrostu ruchu.
-* **Nie musi utworzyć oddzielną tabelę dla każdego typu jednostki.** Transakcje niepodzielne jest stosowanie różnych typów jednostek, tych typów jednostek można przechowywać w jednej partycji w tej samej tabeli.
-* **Należy wziąć pod uwagę maksymalną przepływność, którą należy osiągnąć.** Należy pamiętać o możliwościach skalowalności w usłudze Table Storage i upewnić się, że projekt nie spowoduje przekroczenia tych elementów.  
+* **Unikaj wzrostu ruchu.** Dystrybuuj ruch w rozsądnym czasie i unikaj wzrostu ruchu.
+* **Niekoniecznie utwórz oddzielną tabelę dla każdego typu jednostki.** Transakcje niepodzielne jest stosowanie różnych typów jednostek, tych typów jednostek można przechowywać w jednej partycji w tej samej tabeli.
+* **Należy wziąć pod uwagę maksymalną przepływność, która ma zostać osiągnięta.** Należy pamiętać o możliwościach skalowalności w usłudze Table Storage i upewnić się, że projekt nie spowoduje przekroczenia tych elementów.  
 
 W dalszej części tego przewodnika zobaczysz przykłady, które przenoszą wszystkie te zasady do ćwiczeń.  
 
@@ -322,7 +322,7 @@ Alternatywnym podejściem jest denormalizowanie danych i przechowywanie tylko je
 
 ![Ilustracja jednostki Employee][2]
 
-Aby uzyskać więcej informacji, zobacz [wzorzec Denormalizacja](#denormalization-pattern) później w tym przewodniku.  
+Aby uzyskać więcej informacji, zobacz [wzorzec denormalizacji](#denormalization-pattern) w dalszej części tego przewodnika.  
 
 Poniższa tabela zawiera podsumowanie specjalistów i wad poszczególnych metod przechowywania jednostek pracowników i działów, które mają relację jeden-do-wielu. Należy również wziąć pod uwagę częstotliwość wykonywania różnych operacji. Może być możliwe zaakceptowanie projektu, który obejmuje kosztowną operację, jeśli ta operacja jest wykonywana tylko rzadko.  
 
@@ -382,7 +382,7 @@ Poniższa tabela zawiera podsumowanie specjalistów i wad poszczególnych metod 
 Jak wybierać spośród tych opcji i które z nich są najbardziej znaczące, zależy to od konkretnych scenariuszy aplikacji. Na przykład jak często modyfikujesz jednostki działu? Czy wszystkie zapytania pracowników potrzebują dodatkowych informacji działu? Jak blisko ograniczeń skalowalności w partycjach lub na koncie magazynu?  
 
 ### <a name="one-to-one-relationships"></a>Relacje jeden do jednego
-Modele domeny mogą zawierać relacje jeden do jednego między jednostkami. Jeśli zachodzi potrzeba zaimplementowania relacji jeden-do-jednego w magazynie tabel, należy również wybrać opcję łączenia dwóch powiązanych jednostek, gdy trzeba je pobrać. Ten link może być niejawny, na podstawie Konwencji w wartościach klucza lub jawne, przez zapisanie linku w postaci `PartitionKey` i `RowKey` wartości w każdej jednostce względem powiązanej jednostki. Aby uzyskać omówienie tego, czy należy przechowywać powiązanych jednostek w tej samej partycji, zobacz sekcję [jeden do wielu relacji](#one-to-many-relationships).  
+Modele domeny mogą zawierać relacje jeden do jednego między jednostkami. Jeśli zachodzi potrzeba zaimplementowania relacji jeden-do-jednego w magazynie tabel, należy również wybrać opcję łączenia dwóch powiązanych jednostek, gdy trzeba je pobrać. Ten link może być niejawny, na podstawie Konwencji w wartościach klucza lub jawne, przez zapisanie linku w postaci `PartitionKey` i `RowKey` wartości w każdej jednostce względem powiązanej jednostki. Aby zapoznać się z omówieniem, czy należy przechowywać powiązane jednostki w tej samej partycji, zobacz [relacje jeden do wielu](#one-to-many-relationships).  
 
 Istnieją także uwagi dotyczące implementacji, które mogą prowadzić do wdrożenia relacji jeden-do-jednego w magazynie tabel:  
 
@@ -430,7 +430,7 @@ Aby obejść brak indeksów pomocniczych, można przechowywać wiele kopii poszc
 Poniższe dwa kryteria filtrowania (jeden wyszukiwany według identyfikatora pracownika) i jeden przeszukiwany przez adres e-mail) określają kwerendy punktowe:  
 
 * $filter = (PartitionKey eq "Sprzedaż") i (RowKey eq "empid_000223")  
-* $filter = (PartitionKey eq "Sprzedaż") i (RowKey eq 'email_jonesj@contoso.com")  
+* $filter = (PartitionKey EQ "Sales") i (RowKey EQ "email_jonesj@contoso.com")  
 
 W przypadku wykonywania zapytań dotyczących zakresu jednostek pracowników można określić zakres posortowany w kolejności identyfikatorów pracowników lub zakres posortowany w kolejności adresów e-mail. Zapytanie dotyczące jednostek z odpowiednim prefiksem w `RowKey`.  
 
@@ -465,8 +465,8 @@ Należy jednak pamiętać, że nie przekracza limitów skalowalności partycji p
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Komunikacja między partycji wzorzec indeks pomocniczy](#inter-partition-secondary-index-pattern)
-* [Wzorzec klucza złożona (c)](#compound-key-pattern)
+* [Wzorzec indeksu pomocniczego między partycjami](#inter-partition-secondary-index-pattern)
+* [Wzorzec klucza złożonego](#compound-key-pattern)
 * [Transakcje grupy jednostek](#entity-group-transactions)
 * [Współpraca z niejednorodnymi typami jednostek](#work-with-heterogeneous-entity-types)
 
@@ -490,7 +490,7 @@ Aby obejść brak indeksów pomocniczych, można przechowywać wiele kopii każd
 Poniższe dwa kryteria filtrowania (jeden wyszukiwany według identyfikatora pracownika) i jeden przeszukiwany przez adres e-mail) określają kwerendy punktowe:  
 
 * $filter = (PartitionKey eq ' empid_Sales") i (RowKey eq"000223")
-* $filter = (PartitionKey eq ' email_Sales") i (RowKey eq 'jonesj@contoso.com")  
+* $filter = (PartitionKey EQ "email_Sales") i (RowKey EQ "jonesj@contoso.com")  
 
 W przypadku wykonywania zapytań dotyczących zakresu jednostek pracowników można określić zakres posortowany w kolejności identyfikatorów pracowników lub zakres posortowany w kolejności adresów e-mail. Zapytanie dotyczące jednostek z odpowiednim prefiksem w `RowKey`.  
 
@@ -502,7 +502,7 @@ Należy zauważyć, że składnia filtru użyta w powyższych przykładach pocho
 #### <a name="issues-and-considerations"></a>Problemy i kwestie do rozważenia
 Podczas podejmowania decyzji o sposobie wdrożenia tego wzorca należy rozważyć następujące punkty:  
 
-* Możesz zachować swoje zduplikowanych wpisów ostatecznie spójną ze sobą przy użyciu [wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern) do zachowania jednostek podstawowych i pomocniczych indeksu.  
+* Zduplikowane jednostki można zachować ze sobą spójnie, korzystając ze [wzorca ostatecznie spójnych transakcji](#eventually-consistent-transactions-pattern) , aby zachować jednostki indeksu podstawowego i pomocniczego.  
 * Magazyn tabel jest stosunkowo tani, więc obciążenie kosztem przechowywania zduplikowanych danych nie powinno być istotnym problemem. Jednak zawsze należy oszacować koszt projektu w oparciu o przewidywane wymagania dotyczące magazynu i dodać tylko zduplikowane jednostki do obsługi zapytań, które będą uruchamiane przez aplikację kliencką.  
 * Wartość używana dla `RowKey` musi być unikatowa dla każdej jednostki. Rozważ użycie wartości klucza złożonego.  
 * Uzupełnienie wartości liczbowych w `RowKey` (na przykład identyfikator pracownika 000223) umożliwia poprawne sortowanie i filtrowanie w oparciu o górną i dolną granicę.  
@@ -523,9 +523,9 @@ Użyj tego wzorca, jeśli chcesz uniknąć przekroczenia limitów skalowalności
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern)  
-* [Wzorzec indeks pomocniczy wewnątrz partycji](#intra-partition-secondary-index-pattern)  
-* [Wzorzec klucza złożona (c)](#compound-key-pattern)  
+* [Wzorzec ostatecznie spójnych transakcji](#eventually-consistent-transactions-pattern)  
+* [Wzorzec indeksu pomocniczego wewnątrz partycji](#intra-partition-secondary-index-pattern)  
+* [Wzorzec klucza złożonego](#compound-key-pattern)  
 * [Transakcje grupy jednostek](#entity-group-transactions)  
 * [Współpraca z niejednorodnymi typami jednostek](#work-with-heterogeneous-entity-types)  
 
@@ -549,7 +549,7 @@ Nie można jednak wykonać tych dwóch operacji za pomocą EGT. Aby uniknąć ry
 
 ![Diagram rozwiązania w celu zachowania spójności ostatecznej][12]
 
-Klient inicjuje operację archiwizowania, umieszczając komunikat w kolejce platformy Azure (w tym przykładzie, aby zarchiwizować pracownika #456). Rola procesu roboczego sonduje kolejkę dla nowych komunikatów; gdy zostanie znaleziony, odczytuje komunikat i pozostawia kopię ukryte w kolejce. Rola procesu roboczego obok pobiera kopię obiektu z **bieżącego** tabeli, wstawia kopię w **archiwum** tabeli, a następnie usuwa oryginalny z **bieżącego** tabeli. Na koniec Jeśli nie wystąpiły błędy z poprzednich kroków, rola procesu roboczego usuwa ukryty komunikat z kolejki.  
+Klient inicjuje operację archiwizowania, umieszczając komunikat w kolejce platformy Azure (w tym przykładzie, aby zarchiwizować pracownika #456). Rola procesu roboczego sonduje kolejkę dla nowych komunikatów; gdy zostanie znaleziony, odczytuje komunikat i pozostawia kopię ukryte w kolejce. Następnie rola proces roboczy pobiera kopię jednostki z **bieżącej** tabeli, wstawia kopię w tabeli **archiwum** , a następnie usuwa oryginalną z **bieżącej** tabeli. Na koniec Jeśli nie wystąpiły błędy z poprzednich kroków, rola procesu roboczego usuwa ukryty komunikat z kolejki.  
 
 W tym przykładzie krok 4 na diagramie wstawia pracownika do tabeli **archiwum** . Może dodać pracownika do obiektu BLOB w magazynie obiektów blob lub w pliku w systemie plików.  
 
@@ -574,7 +574,7 @@ Użyj tego wzorca, gdy użytkownik chce zagwarantować spójność między jedno
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
 * [Transakcje grupy jednostek](#entity-group-transactions)  
-* [Scalanie lub zastępowanie](#merge-or-replace)  
+* [Scal lub Zamień](#merge-or-replace)  
 
 > [!NOTE]
 > Jeśli izolacja transakcji jest ważna dla Twojego rozwiązania, rozważ przeprojektowanie tabel, aby umożliwić korzystanie z EGTs.  
@@ -649,8 +649,8 @@ Użyj tego wzorca, jeśli chcesz wyszukać zestaw jednostek, które współużyt
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Wzorzec klucza złożona (c)](#compound-key-pattern)  
-* [Wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern)  
+* [Wzorzec klucza złożonego](#compound-key-pattern)  
+* [Wzorzec ostatecznie spójnych transakcji](#eventually-consistent-transactions-pattern)  
 * [Transakcje grupy jednostek](#entity-group-transactions)  
 * [Współpraca z niejednorodnymi typami jednostek](#work-with-heterogeneous-entity-types)  
 
@@ -663,7 +663,7 @@ W relacyjnej bazie danych zazwyczaj normalizuje dane w celu usunięcia duplikat�
 ![Ilustracja przedstawiająca jednostkę działu i jednostkę pracownika][16]
 
 #### <a name="solution"></a>Rozwiązanie
-Zamiast przechowywać dane w dwóch oddzielnych jednostkach, zdenormalizowanie danych i przechowywać kopię szczegółach menedżera w jednostce działu. Przykład:  
+Zamiast przechowywać dane w dwóch oddzielnych jednostkach, zdenormalizowanie danych i przechowywać kopię szczegółach menedżera w jednostce działu. Na przykład:  
 
 ![Ilustracja nieznormalizowanej i połączonej jednostki działu][17]
 
@@ -681,7 +681,7 @@ Użyj tego wzorca, gdy potrzebujesz często do wyszukania powiązanych informacj
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Wzorzec klucza złożona (c)](#compound-key-pattern)  
+* [Wzorzec klucza złożonego](#compound-key-pattern)  
 * [Transakcje grupy jednostek](#entity-group-transactions)  
 * [Współpraca z niejednorodnymi typami jednostek](#work-with-heterogeneous-entity-types)
 
@@ -727,7 +727,7 @@ Podczas implementowania tego wzorca mogą być istotne następujące wzorce i ws
 
 * [Transakcje grupy jednostek](#entity-group-transactions)  
 * [Współpraca z niejednorodnymi typami jednostek](#work-with-heterogeneous-entity-types)  
-* [Wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern)  
+* [Wzorzec ostatecznie spójnych transakcji](#eventually-consistent-transactions-pattern)  
 
 ### <a name="log-tail-pattern"></a>Wzorzec ogona dziennika
 Pobierz *n* obiektów ostatnio dodanych do partycji przy użyciu wartości `RowKey`, która sortuje się w odwrotnej kolejności daty i godziny.  
@@ -765,7 +765,7 @@ Użyj tego wzorca, gdy musisz uzyskać dostęp do jednostek w odwrotnej kolejno�
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Dołączana / dołączanie wzorzec niezalecane](#prepend-append-anti-pattern)  
+* [Poprzedź/Dołącz Antywzorzec](#prepend-append-anti-pattern)  
 * [Pobierz jednostki](#retrieve-entities)  
 
 ### <a name="high-volume-delete-pattern"></a>Wzorzec usuwania duża
@@ -830,7 +830,7 @@ Użyj tego wzorca, gdy trzeba zaktualizować i pobrania serii danych skojarzonyc
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
 * [Wzorzec dużych jednostek](#large-entities-pattern)  
-* [Scalanie lub zastępowanie](#merge-or-replace)  
+* [Scal lub Zamień](#merge-or-replace)  
 * [Wzorzec z ostatecznie spójnymi transakcjami](#eventually-consistent-transactions-pattern) (Jeśli przechowujesz serie danych w obiekcie BLOB)  
 
 ### <a name="wide-entities-pattern"></a>Wzorzec szerokiego jednostek
@@ -858,7 +858,7 @@ Użyj tego wzorca, jeśli chcesz przechowywać jednostki, których rozmiar lub l
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
 * [Transakcje grupy jednostek](#entity-group-transactions)
-* [Scalanie lub zastępowanie](#merge-or-replace)
+* [Scal lub Zamień](#merge-or-replace)
 
 ### <a name="large-entities-pattern"></a>Wzorzec dużych jednostek
 Przechowywanie dużych wartości właściwości przy użyciu magazynu obiektów BLOB.  
@@ -883,8 +883,8 @@ Użyj tego wzorca, jeśli chcesz przechowywać jednostki, których rozmiar przek
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern)  
-* [Wzorzec szerokiego jednostek](#wide-entities-pattern)
+* [Wzorzec ostatecznie spójnych transakcji](#eventually-consistent-transactions-pattern)  
+* [Wzorzec szerokiej jednostki](#wide-entities-pattern)
 
 <a name="prepend-append-anti-pattern"></a>
 
@@ -915,8 +915,8 @@ Należy unikać dodawania lub dołączania antywzorców, gdy ilość transakcji 
 #### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Wzorzec klucza złożona (c)](#compound-key-pattern)  
-* [Wzorzec ogona dziennika](#log-tail-pattern)  
+* [Wzorzec klucza złożonego](#compound-key-pattern)  
+* [Wzorzec końca dziennika](#log-tail-pattern)  
 * [Modyfikuj jednostki](#modify-entities)  
 
 ### <a name="log-data-anti-pattern"></a>Wzorzec ochrony danych dziennika
@@ -959,7 +959,7 @@ Podczas podejmowania decyzji o sposobie przechowywania danych dziennika, należy
 W tej sekcji omówiono niektóre zagadnienia, mieć na uwadze podczas implementowania wzorców opisanych w poprzednich sekcjach. Większość w tej sekcji używa przykłady napisane w języku C#, korzystających z biblioteki klienta usługi Storage (wersja 4.3.0 w czasie pisania).  
 
 ### <a name="retrieve-entities"></a>Pobierz jednostki
-Zgodnie z opisem w sekcji [projektowanie pod kątem zapytań](#design-for-querying), najbardziej wydajny zapytanie jest zapytaniem punktu. Jednak w niektórych scenariuszach może być konieczne pobranie wielu jednostek. W tej sekcji opisano niektóre typowe podejścia do pobierania jednostek przy użyciu biblioteki klienta usługi Storage.  
+Jak opisano w temacie [projekt sekcji dotyczącej wykonywania zapytań](#design-for-querying), najbardziej wydajnym zapytaniem jest zapytanie punktowe. Jednak w niektórych scenariuszach może być konieczne pobranie wielu jednostek. W tej sekcji opisano niektóre typowe podejścia do pobierania jednostek przy użyciu biblioteki klienta usługi Storage.  
 
 #### <a name="run-a-point-query-by-using-the-storage-client-library"></a>Uruchamianie zapytania punktu przy użyciu biblioteki klienta usługi Storage
 Najprostszym sposobem uruchomienia zapytania punktu jest użycie operacji **Pobierz** tabelę. Jak pokazano w poniższym C# fragmencie kodu, ta operacja pobiera jednostkę o `PartitionKey` wartości "Sales" i `RowKey` wartości "212":  
@@ -1139,7 +1139,7 @@ Magazyn tabel jest magazynem tabel bez *schematu* . Oznacza to, że pojedyncza t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1159,7 +1159,7 @@ Magazyn tabel jest magazynem tabel bez *schematu* . Oznacza to, że pojedyncza t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1196,7 +1196,7 @@ Magazyn tabel jest magazynem tabel bez *schematu* . Oznacza to, że pojedyncza t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1232,7 +1232,7 @@ Każda jednostka musi nadal mieć wartości `PartitionKey`, `RowKey`i `Timestamp
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Pracownik</td>
@@ -1254,7 +1254,7 @@ Każda jednostka musi nadal mieć wartości `PartitionKey`, `RowKey`i `Timestamp
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Pracownik</td>
@@ -1295,7 +1295,7 @@ Każda jednostka musi nadal mieć wartości `PartitionKey`, `RowKey`i `Timestamp
 <th>FirstName</th>
 <th>LastName</th>
 <th>Wiek</th>
-<th>Adres e-mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Pracownik</td>
